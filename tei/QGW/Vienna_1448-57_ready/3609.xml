@@ -1,0 +1,126 @@
+<?xml version="1.0" encoding="UTF-8"?><!DOCTYPE TEI   SYSTEM "../../../schema/toolbox_full.dtd">
+<TEI xmlns="http://www.tei-c.org/ns/1.0" xmlns:cei="http://www.monasterium.net/NS/cei"
+   xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance">
+   <teiHeader>
+      <fileDesc>
+         <titleStmt>
+            <title>Tei version of 3609 exported from monasterium.net </title>
+         </titleStmt>
+         <publicationStmt>
+            <p/>
+         </publicationStmt>
+         <!--In Original: cei:front/cei:sourceDesc/cei:sourceDescRegest-->
+         <sourceDesc>
+            <bibl type="url">https://www.monasterium.net/mom/AT-WStLA/HAUrk/3609/charter</bibl>
+            <bibl default="false" status="draft">Quellen zur Geschichte der Stadt Wien, Bd. II/2,
+               Nr. 3609 As published in HAUrk by Wiener Stadt- und Landesarchiv </bibl>
+            <msDesc status="draft">
+               <msIdentifier>
+                  <repository>Wiener Stadt- und Landesarchiv</repository>
+                  <idno>3609</idno>
+                  <altIdentifier type="old">
+                     <idno>517861</idno>
+                  </altIdentifier>
+               </msIdentifier>
+               <msContents>
+                  <msItem>
+                     <listBibl default="false">
+                        <bibl default="false" status="draft">Jahrbuch der kais. Kunstsamml. 17b, n°
+                           15284 Regest.</bibl>
+                     </listBibl>
+                  </msItem>
+               </msContents>
+               <physDesc>
+                  <sealDesc>
+                     <seal>
+                        <p>Die Siegel fehlen.Siegler: <quote>Ulreich der Gundloch, burger zu
+                              Wienn</quote>, als Lehensherr des Altars und <quote>Arnolt Gallander,
+                              burger</quote>. </p>
+                     </seal>
+                  </sealDesc>
+               </physDesc>
+            </msDesc>
+         </sourceDesc>
+      </fileDesc>
+      <encodingDesc>
+         <projectDesc default="false">
+            <p><label type="contentual-editing">Dissertation Korbinian Grünwald</label></p>
+         </projectDesc>
+      </encodingDesc>
+      <profileDesc>
+         <creation>
+            <placeName>Wien</placeName>
+            <date when="14550213">1455 II 13</date>
+            <origDate instant="false">zu Wienn, an phincztag vor sand Valentins tag, martiris.
+               [371]</origDate></creation>
+      </profileDesc>
+   </teiHeader>
+   <facsimile>
+      <surface>
+         <graphic
+            url="http://images.monasterium.net/pics/AT-WStLA/HA-U/WStLA-HA-Urkunden_03609_r.jpg"/>
+      </surface>
+      <surface>
+         <graphic
+            url="http://images.monasterium.net/pics/AT-WStLA/HA-U/WStLA-HA-Urkunden_03609_v.jpg"/>
+      </surface>
+   </facsimile>
+   <text>
+      <body>
+         <div type="abstract" resp="kg">
+            <p>
+               <rs type="event" ref="ev__QGW_II_II_3609"><rs type="fn" role="issuer"><rs
+                        type="person" ref="pe__johann_koll_SB_CD_01565">Hanns Ko/ell, <roleName
+                           type="occ" corresp="org__wien-st_stephan">korherr</roleName> zu sand
+                        Stephan zu Wienn, <roleName type="occ"
+                           corresp="org__wien-st_philipp_und_st_jakob_kapelle-altar_st_maria"
+                           >capplan</roleName> Unser Lieben Frauen altars, gelegen in der abseiten
+                        sand Philipps und sand Jacobs cappellen in Kollnerhof daselbs</rs>,</rs>
+                  <triggerstring n="disp">gibt <add>gelts purkrechts</add></triggerstring>
+                  <rs type="fn" role="recipient"><rs type="person"
+                        ref="pe__johann_fuerst_QGW_II_II_3609">Hannsen dem Fürsten, dem <roleName
+                           type="prof">slosser</roleName>, <roleName type="occ" corresp="org__wien">burger</roleName> ze Wienn</rs>, und <rs
+                        type="person" ref="pe__dorothea_QGW_II_II_3609">Dorothen, seiner <roleName
+                           type="kin" corresp="pe__johann_fuerst_QGW_II_II_3609"
+                           >hausfraun</roleName></rs>,</rs>
+                  <rs type="fn" role="transactiongood_II"><measure>1 lb dn.</measure>
+                     <triggerstring n="fn">gelts purkrechts</triggerstring> von <rs type="place"
+                        ref="pl__wien-immo_schlossergasse_5"><roleName type="owner"
+                           corresp="pe__johann_fuerst_QGW_II_II_3609">ihrem</roleName>
+                        <rs type="person" ref="pe__dorothea_QGW_II_II_3609"><add>ihrem</add></rs>
+                        Hause, <roleName type="topo" corresp="pl__wien-schlossergasse">gelegen
+                           undern Slossern zu Wienn</roleName>
+                        <roleName type="topo" corresp="pl__wien-immo_alter_rossmarkt_5"
+                           >hinder</roleName>
+                        <rs type="place" ref="pl__wien-immo_alter_rossmarkt_5">der padstuben
+                              <roleName type="topo" corresp="pl__wien-alter_rossmarkt">am Alten
+                              Rossmarkt</roleName></rs></rs>,</rs>
+                  <rs type="fn" role="transactiongood_I">um <measure>8 lb dn.</measure>
+                     abzulösen.</rs></rs>
+            </p>
+         </div>
+         <div type="seal">
+            <p><rs type="event" ref="ev__QGW_II_II_3609">Siegler: <rs type="person"
+                     ref="pe__ulrich_gundloch_QGW_II_II_3454">Ulreich der Gundloch, <roleName type="occ" corresp="org__wien">burger</roleName> zu Wienn, als
+                        <roleName type="occ" corresp="org__wien-st_philipp_und_st_jakob_kapelle-altar_st_maria"
+                        >Lehensherr</roleName> des Altars</rs> und <rs type="person"
+                     ref="pe__arnold_gallander_QGW_II_III_3864">Arnolt Gallander, <roleName type="occ" corresp="org__wien">burger</roleName></rs>.</rs>
+            </p>
+         </div>
+         <div type="nota">
+            <p>Indorsate: a) Kiczinger, slosser, haus undern Slossern, b) ablosbrief ex parte
+               Kiczinger haus [ under] den Slossern. </p>
+         </div>
+         <div type="lists">
+            <xi:include xmlns:xi="http://www.w3.org/2001/XInclude"
+               href="../../../../indices/placeList.xml" xpointer="element(/1/2/1/1)"/>
+            <xi:include xmlns:xi="http://www.w3.org/2001/XInclude"
+               href="../../../../indices/personList.xml" xpointer="element(/1/2/1/1)"/>
+            <xi:include xmlns:xi="http://www.w3.org/2001/XInclude"
+               href="../../../../indices/eventList.xml" xpointer="element(/1/2/1/1)"/>
+            <xi:include xmlns:xi="http://www.w3.org/2001/XInclude"
+               href="../../../../indices/orgList.xml" xpointer="element(/1/2/1/1)"/>
+         </div>
+      </body>
+   </text>
+</TEI>

@@ -1,0 +1,96 @@
+<?xml version="1.0" encoding="UTF-8"?><!DOCTYPE TEI   SYSTEM "../../../schema/toolbox_full.dtd">
+<TEI xmlns="http://www.tei-c.org/ns/1.0" xmlns:cei="http://www.monasterium.net/NS/cei"
+    xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance">
+    <teiHeader>
+        <fileDesc>
+            <titleStmt>
+                <title>Tei version of 3584 exported from monasterium.net </title>
+            </titleStmt>
+            <publicationStmt>
+                <p/>
+            </publicationStmt>
+            <!--In Original: cei:front/cei:sourceDesc/cei:sourceDescRegest-->
+            <sourceDesc>
+                <bibl type="url">https://www.monasterium.net/mom/AT-WStLA/HAUrk/3584/charter</bibl>
+                <bibl default="false" status="draft">Quellen zur Geschichte der Stadt Wien, Bd.
+                    II/2, Nr. 3584 As published in HAUrk by Wiener Stadt- und Landesarchiv </bibl>
+                <msDesc status="draft">
+                    <msIdentifier>
+                        <repository>Wiener Stadt- und Landesarchiv</repository>
+                        <idno>3584</idno>
+                        <altIdentifier type="old">
+                            <idno>517835</idno>
+                        </altIdentifier>
+                    </msIdentifier>
+                    <physDesc>
+                        <sealDesc>
+                            <seal>
+                                <p>Rückwärts aufgedrücktes Siegel von rothem Wachse unter
+                                    Papierdecke.</p>
+                            </seal>
+                        </sealDesc>
+                    </physDesc>
+                </msDesc>
+            </sourceDesc>
+        </fileDesc>
+        <encodingDesc>
+            <projectDesc default="false">
+                <p><label type="contentual-editing">Dissertation Korbinian Grünwald</label></p>
+            </projectDesc>
+        </encodingDesc>
+        <profileDesc>
+            <creation>
+                <placeName>Wien</placeName>
+                <date when="14540911">1454 IX 11</date>
+                <origDate instant="false">ze Wienn, an mitichen nach Unser Lieben Fraun tag der
+                    Geberung.</origDate></creation>
+        </profileDesc>
+    </teiHeader>
+    <facsimile>
+        <surface>
+            <graphic
+                url="http://images.monasterium.net/pics/AT-WStLA/HA-U/WStLA-HA-Urkunden_03584_r.jpg"
+            />
+        </surface>
+        <surface>
+            <graphic
+                url="http://images.monasterium.net/pics/AT-WStLA/HA-U/WStLA-HA-Urkunden_03584_v.jpg"
+            />
+        </surface>
+    </facsimile>
+    <text>
+        <body>
+            <div type="abstract" resp="kg">
+                <p>
+                    <rs type="event" ref="ev__QGW_II_II_3584"><rs type="fn" role="issuer"><rs
+                                type="person" ref="pe__bernhard_von_schaumberg_QGW_II_II_3360"
+                                >Pernnhart, <roleName type="title_ref" corresp="pl__schaumberg">graf
+                                    ze</roleName> Schaunberg, <roleName type="occ"
+                                    corresp="org__oesterreich-herzogtum">lanndmarschalich</roleName>
+                                in Österreich</rs>,</rs>
+                        <triggerstring n="disp">ertheilt</triggerstring>
+                        <rs type="fn" role="recipient"><rs type="person"
+                                ref="pe__wilhelm_eitzinger_QGW_II_II_3419">Wilhalm dem
+                                Eiczinger</rs></rs> den gleichen Auftrag <triggerstring n="disp"
+                                ><add>egemelt Zuspruch unclaghaft zu machen, im Falle er aber
+                                Einsprache zu erheben hätte, über vierzehn Tage vor ihm oder seinem
+                                Anwälte zu erscheinen</add></triggerstring>
+                        <rs type="fn" role="transactiongood_III">wegen <rs type="place"
+                                ref="pl__goepfritz-immo_1">des hauss <roleName type="topo"
+                                    corresp="pl__goepfritz" cert="medium">zum
+                                Go/eczfrid</roleName></rs></rs>.</rs>
+                </p>
+            </div>
+            <div type="lists">
+                <xi:include xmlns:xi="http://www.w3.org/2001/XInclude"
+                    href="../../../../indices/placeList.xml" xpointer="element(/1/2/1/1)"/>
+                <xi:include xmlns:xi="http://www.w3.org/2001/XInclude"
+                    href="../../../../indices/personList.xml" xpointer="element(/1/2/1/1)"/>
+                <xi:include xmlns:xi="http://www.w3.org/2001/XInclude"
+                    href="../../../../indices/eventList.xml" xpointer="element(/1/2/1/1)"/>
+                <xi:include xmlns:xi="http://www.w3.org/2001/XInclude"
+                    href="../../../../indices/orgList.xml" xpointer="element(/1/2/1/1)"/>
+            </div>
+        </body>
+    </text>
+</TEI>

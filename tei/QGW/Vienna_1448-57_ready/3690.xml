@@ -1,0 +1,127 @@
+<?xml version="1.0" encoding="UTF-8"?><!DOCTYPE TEI   SYSTEM "../../../schema/toolbox_full.dtd">
+<TEI xmlns="http://www.tei-c.org/ns/1.0" xmlns:cei="http://www.monasterium.net/NS/cei"
+   xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance">
+   <teiHeader>
+      <fileDesc>
+         <titleStmt>
+            <title>Tei version of 3690 exported from monasterium.net </title>
+         </titleStmt>
+         <publicationStmt>
+            <p/>
+         </publicationStmt>
+         <!--In Original: cei:front/cei:sourceDesc/cei:sourceDescRegest-->
+         <sourceDesc>
+            <bibl type="url">https://www.monasterium.net/mom/AT-WStLA/HAUrk/3690/charter</bibl>
+            <bibl default="false" status="draft">Quellen zur Geschichte der Stadt Wien, Bd. II/2,
+               Nr. 3690 As published in HAUrk by Wiener Stadt- und Landesarchiv </bibl>
+            <msDesc status="draft">
+               <msIdentifier>
+                  <repository>Wiener Stadt- und Landesarchiv</repository>
+                  <idno>3690</idno>
+                  <altIdentifier type="old">
+                     <idno>517945</idno>
+                  </altIdentifier>
+               </msIdentifier>
+               <physDesc>
+                  <sealDesc>
+                     <seal>
+                        <p>Zwei anhangende, beschädigte Siegel: 1. grün u. Sch., 2. ungefärbt in
+                           Schale. [390]Siegler: der Aussteller und <quote>Larencz von Russt, burger
+                              zu Medling</quote>. </p>
+                     </seal>
+                  </sealDesc>
+               </physDesc>
+            </msDesc>
+         </sourceDesc>
+      </fileDesc>
+      <encodingDesc>
+         <projectDesc default="false">
+            <p><label type="contentual-editing">Dissertation Korbinian Grünwald</label></p>
+         </projectDesc>
+      </encodingDesc>
+      <profileDesc>
+         <creation>
+            <date when="14561213">1456 XII 13</date>
+            <origDate instant="false">an sand Lucein tag, der heiligen
+            junkchfraun.</origDate></creation>
+      </profileDesc>
+   </teiHeader>
+   <facsimile>
+      <surface>
+         <graphic
+            url="http://images.monasterium.net/pics/AT-WStLA/HA-U/WStLA-HA-Urkunden_03690_r.jpg"/>
+      </surface>
+      <surface>
+         <graphic
+            url="http://images.monasterium.net/pics/AT-WStLA/HA-U/WStLA-HA-Urkunden_03690_v.jpg"/>
+      </surface>
+   </facsimile>
+   <text>
+      <body>
+         <div type="abstract" resp="kg">
+            <p>
+               <rs type="event" ref="ev__QGW_II_II_3690"><rs type="fn" role="issuer"><rs
+                        type="person" ref="pe__matthias_langenmantl_QGW_II_II_3690">Mathes
+                        Lanngenmantl, <roleName type="occ" corresp="org__moedling">burger</roleName>
+                        zu Medling</rs>, und <rs type="person" ref="pe__anna_QGW_II_II_3690">Anna,
+                        sein <roleName type="kin" corresp="pe__matthias_langenmantl_QGW_II_II_3690"
+                           >hausfrau</roleName></rs>,</rs>
+                  <triggerstring n="disp">nehmen</triggerstring>
+                  <rs type="fn" role="recipient">von <rs type="person"
+                        ref="pe__heinrich_stupper_QGW_II_II_3573"><roleName type="title"
+                           >herrn</roleName> Hainreichen Stupper, <roleName type="occ"
+                           corresp="org__wien-st_stephan">korherr</roleName> dacz sand Stephan zu
+                        Wienn, <roleName type="rep" corresp="pe__johann_acrum_QGW_II_II_3573"
+                           >anstat</roleName> und <roleName type="rep"
+                           corresp="pe__johann_acrum_QGW_II_II_3573">in nomen</roleName>
+                        <rs type="person" ref="pe__johann_acrum_QGW_II_II_3573"><roleName
+                              type="title">maister</roleName> Hannsen von Arcum, <roleName
+                              type="occ"
+                              corresp="org__wien-st_agnes_auf_der_himmelpforte-kapelle_st_katharina-messe_stetten"
+                              >caplan</roleName> und <roleName type="occ"
+                              corresp="org__wien-st_agnes_auf_der_himmelpforte-kapelle_st_katharina-messe_stetten"
+                              >Verweser</roleName> der andern mess, die weilent her Mertt von Steten
+                           auf sand Kathrein altar zu der Himelporten gestifft hat</rs></rs> ,</rs>
+                  <rs type="fn" role="transactiongood_II"><rs type="place"
+                        ref="pl__moedling-immo_15">einen <roleName type="owner"
+                           corresp="org__wien-st_agnes_auf_der_himmelpforte-kapelle_st_katharina-messe_stetten"
+                           >dazu gehörigen</roleName> Weingarten, <roleName type="topo"
+                           corresp="pl__moedling">gelegen daselbs zu Medling</roleName> zenagst <rs
+                           type="place" ref="pl__moedling-immo_16"><roleName type="owner"
+                              corresp="pe__niklas_zinkk_QGW_II_II_3690">weilent Niclasen des
+                              Zingken</roleName> weingarten</rs>
+                        <roleName type="topo" corresp="pl__moedling-immo_16"><add>zenagst</add> an
+                           ainer seitten</roleName>
+                        <roleName type="topo" corresp="pl__moedling-immo_17">und an der andern
+                           zenagst</roleName>
+                        <rs type="place" ref="pl__moedling-immo_17"><roleName type="owner"
+                              corresp="pe__lukas_wiczinger_QGW_II_II_3690"><rs type="person"
+                                 ref="pe__lukas_wiczinger_QGW_II_II_3690">Lucasen
+                              Wiczinger</rs></roleName> weingarten</rs></rs>,</rs>
+                  <rs type="fn" role="transactiongood_I">gegen einen <triggerstring n="fn"
+                        >Jahresdienst</triggerstring> von <measure>10 sh. dn.</measure></rs>
+                  <triggerstring n="disp">auf Lebenszeit in Bestand</triggerstring>.</rs>
+            </p>
+         </div>
+         <div type="seal">
+            <p><rs type="event" ref="ev__QGW_II_II_3690"><rs type="fn" role="witness">Siegler: der
+                        <rs type="person" ref="pe__matthias_langenmantl_QGW_II_II_3690"
+                        >Aussteller</rs> und <rs type="person"
+                        ref="pe__laurenz_von_rust_QGW_II_II_3329">Larencz von Russt, <roleName
+                           type="occ" corresp="org__moedling">burger</roleName> zu
+                  Medling</rs></rs>.</rs>
+            </p>
+         </div>
+         <div type="lists">
+            <xi:include xmlns:xi="http://www.w3.org/2001/XInclude"
+               href="../../../../indices/placeList.xml" xpointer="element(/1/2/1/1)"/>
+            <xi:include xmlns:xi="http://www.w3.org/2001/XInclude"
+               href="../../../../indices/personList.xml" xpointer="element(/1/2/1/1)"/>
+            <xi:include xmlns:xi="http://www.w3.org/2001/XInclude"
+               href="../../../../indices/eventList.xml" xpointer="element(/1/2/1/1)"/>
+            <xi:include xmlns:xi="http://www.w3.org/2001/XInclude"
+               href="../../../../indices/orgList.xml" xpointer="element(/1/2/1/1)"/>
+         </div>
+      </body>
+   </text>
+</TEI>

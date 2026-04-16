@@ -1,0 +1,150 @@
+<?xml version="1.0" encoding="UTF-8"?><!DOCTYPE TEI   SYSTEM "../../../schema/toolbox_full.dtd">
+<TEI xmlns="http://www.tei-c.org/ns/1.0" xmlns:cei="http://www.monasterium.net/NS/cei"
+   xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance">
+   <teiHeader>
+      <fileDesc>
+         <titleStmt>
+            <title>Tei version of 3416 exported from monasterium.net </title>
+         </titleStmt>
+         <publicationStmt>
+            <p/>
+         </publicationStmt>
+         <!--In Original: cei:front/cei:sourceDesc/cei:sourceDescRegest-->
+         <sourceDesc>
+            <bibl type="url">https://www.monasterium.net/mom/AT-WStLA/HAUrk/3416/charter</bibl>
+            <bibl default="false" status="draft">Quellen zur Geschichte der Stadt Wien, Bd. II/2,
+               Nr. 3416 As published in HAUrk by Wiener Stadt- und Landesarchiv </bibl>
+            <msDesc status="draft">
+               <msIdentifier>
+                  <repository>Wiener Stadt- und Landesarchiv</repository>
+                  <idno>3416</idno>
+                  <altIdentifier type="old">
+                     <idno>517656</idno>
+                  </altIdentifier>
+               </msIdentifier>
+               <physDesc>
+                  <sealDesc>
+                     <seal>
+                        <p>Zwei anhangende Siegel, grün u. Sch.</p>
+                     </seal>
+                  </sealDesc>
+               </physDesc>
+            </msDesc>
+         </sourceDesc>
+      </fileDesc>
+      <encodingDesc>
+         <projectDesc default="false">
+            <p><label type="contentual-editing">Dissertation Korbinian Grünwald</label></p>
+         </projectDesc>
+      </encodingDesc>
+      <profileDesc>
+         <creation>
+            <placeName>Wien</placeName>
+            <date when="14501119">1450 XI 19</date>
+            <origDate instant="false">zu Wienn, an sand Elspethen tag.</origDate></creation>
+      </profileDesc>
+   </teiHeader>
+   <facsimile>
+      <surface>
+         <graphic
+            url="http://images.monasterium.net/pics/AT-WStLA/HA-U/WStLA-HA-Urkunden_03416_r.jpg"/>
+      </surface>
+      <surface>
+         <graphic
+            url="http://images.monasterium.net/pics/AT-WStLA/HA-U/WStLA-HA-Urkunden_03416_v.jpg"/>
+      </surface>
+   </facsimile>
+   <text>
+      <body>
+         <div type="abstract" resp="kg">
+            <p>
+               <rs type="event" ref="ev__QGW_II_II_3416"><rs type="fn" role="issuer"><rs
+                        type="person" ref="pe__peter_weiss_QGW_II_II_3416">Peter Weiss, <roleName
+                           type="prof">tischer</roleName>
+                        <roleName type="title_ref" corresp="pl__wien">zu</roleName> Wienn</rs>, und
+                        <rs type="person" ref="pe__dorothea_QGW_II_II_3416">Dorothe, sein <roleName
+                           type="kin" corresp="pe__peter_weiss_QGW_II_II_3416"
+                        >hausfrau</roleName></rs>,</rs>
+                  <triggerstring n="disp">stellen</triggerstring>
+                  <rs type="fn" role="recipient"><rs type="person" ref="pe__anna_QGW_II_II_3416"
+                        >junckfraun Annen, <rs type="person"
+                           ref="pe__ulrich_wisinger_QGW_II_II_3416">Ulreichs Wisinger <roleName
+                              type="dead">seligen</roleName></rs>
+                        <roleName type="kin" corresp="pe__ulrich_wisinger_QGW_II_II_3416"
+                           >tochter</roleName></rs>,</rs>
+                  <triggerstring n="disp">einen Schuldbrief</triggerstring>
+                  <rs type="fn" role="transactiongood_II">über <measure>4 lb 3 sh.
+                     dn.</measure></rs>
+                  <triggerstring n="disp">aus</triggerstring>. <rs type="event"
+                     ref="ev__QGW_II_II_3416_men_1">Dieselben rühren <rs type="fn"
+                        role="transactiongood_I"><rs type="event" ref="ev__QGW_II_II_3416_men_1"><rs
+                              type="fn" role="transactiongood_I">von dem varunden gutlein her</rs>,
+                           das <rs type="fn" role="issuer"><rs type="person"
+                                 ref="pe__heinrich_koch_QGW_II_II_3416">Hainreich, <roleName
+                                    type="prof">koch</roleName>, ir <roleName type="kin"
+                                    corresp="pe__anna_QGW_II_II_3416">steuffater</roleName>
+                                 <roleName type="kin" corresp="pe__elisabeth_QGW_II_II_3416_a"
+                                       ><add>steuffater</add></roleName><roleName type="dead"
+                                    cert="high"><add>geschafft</add>
+                                    <add>hatte</add></roleName></rs>,</rs>
+                           <rs type="fn" role="recipient"><rs type="person"
+                                 ref="pe__anna_QGW_II_II_3416">ihr</rs> und <rs type="person"
+                                 ref="pe__elisabeth_QGW_II_II_3416_a">ihrer <roleName type="dead"
+                                    >verstorbenen</roleName>
+                                 <roleName type="kin" corresp="pe__anna_QGW_II_II_3416"
+                                    >Schwester</roleName> Elsbethen</rs></rs>
+                           <triggerstring n="disp">geschafft <add>hatte</add></triggerstring></rs></rs>
+                     und <rs type="fn" role="issuer"><rs type="person"
+                           ref="pe__peter_weiss_QGW_II_II_3416">Peter <roleName type="rep"
+                              corresp="pe__katharina_QGW_II_II_3416"><add>vor dem Rathe mit dem
+                                 rechten anbehabt hatte</add></roleName></rs></rs>
+                     <rs type="person" ref="pe__katharina_QGW_II_II_3416">ihrer <roleName type="kin"
+                           corresp="pe__anna_QGW_II_II_3416">steufmuter</roleName>
+                        <roleName type="kin" corresp="pe__elisabeth_QGW_II_II_3416_a"
+                              ><add>steufmuter</add></roleName> Kathrein, <rs type="person"
+                           ref="pe__pankraz_zemstrikcher_QGW_II_II_3416">Pangreczen, des <roleName
+                              type="prof">zêmstricker</roleName></rs>, <roleName type="kin"
+                           corresp="pe__pankraz_zemstrikcher_QGW_II_II_3416"
+                        >hausfraun</roleName></rs>, vor dem Rathe mit dem rechten anbehabt hatte.
+                     Das varund gutl war <rs type="fn" role="other">von <rs type="person"
+                           ref="pe__georg_zaun_QGW_II_II_3416">Jorgen Zaun</rs>, <rs type="person"
+                           ref="pe__johann_gfoehler_QGW_II_II_3416">Hannsen von Gevell</rs>, <rs
+                           type="person" ref="pe__erhard_marbacher_QGW_II_III_4472">Erharten,
+                              <roleName type="prof">smid</roleName></rs>, und <rs type="person"
+                           ref="pe__ulrich_keuffl_QGW_II_II_3416">Ulreichen, <roleName type="prof"
+                              >keuffl</roleName></rs><triggerstring n="disp"><add>geschätzt
+                              worden</add></triggerstring></rs>, <rs type="fn" role="transactiongood_I"
+                        >umb <measure>8 lb 70 dn.</measure>
+                        <triggerstring n="fn">geschätzt worden</triggerstring></rs>. Davon hatte er
+                        <measure>2 lb dn.</measure>
+                     <rs type="fn" role="recipient"><rs type="person"
+                           ref="pe__katharina_QGW_II_II_3416">der genannten Kathrein</rs>
+                        <triggerstring n="reason">dafür ausbezahlt, dass sie Elspethen ain virtail jars
+                           hat inngehabt</triggerstring></rs>, <measure>15 sh. 9 dn.</measure> waren
+                        <rs type="fn" role="recipient"><rs type="org" ref="org__wien">auf das
+                           gericht</rs>, <triggerstring n="reason">umb brief, zedeln und vorsprechen
+                           ausgegeben worden</triggerstring></rs>.</rs></rs>
+            </p>
+         </div>
+         <div type="seal">
+            <p><rs type="event" ref="ev__QGW_II_II_3416"><rs type="fn" role="witness">Besiegelt mit
+                     den Siegeln <rs type="person" ref="pe__friedrich_gerunger_QGW_II_II_3416"
+                        >Friedreichs Gerunger, des <roleName type="occ" corresp="org__wien"
+                           >rats</roleName> der stat zu Wienn</rs>, und <rs type="person"
+                        ref="pe__simon_von_eslarn_QGW_II_II_3263">Simons von Eslorn, <roleName
+                           type="occ" corresp="org__wien">burger</roleName> daselbs</rs>.</rs></rs>
+            </p>
+         </div>
+         <div type="lists">
+            <xi:include xmlns:xi="http://www.w3.org/2001/XInclude"
+               href="../../../../indices/placeList.xml" xpointer="element(/1/2/1/1)"/>
+            <xi:include xmlns:xi="http://www.w3.org/2001/XInclude"
+               href="../../../../indices/personList.xml" xpointer="element(/1/2/1/1)"/>
+            <xi:include xmlns:xi="http://www.w3.org/2001/XInclude"
+               href="../../../../indices/eventList.xml" xpointer="element(/1/2/1/1)"/>
+            <xi:include xmlns:xi="http://www.w3.org/2001/XInclude"
+               href="../../../../indices/orgList.xml" xpointer="element(/1/2/1/1)"/>
+         </div>
+      </body>
+   </text>
+</TEI>

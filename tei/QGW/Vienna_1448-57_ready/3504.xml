@@ -1,0 +1,120 @@
+<?xml version="1.0" encoding="UTF-8"?><!DOCTYPE TEI   SYSTEM "../../../schema/toolbox_full.dtd">
+<TEI xmlns="http://www.tei-c.org/ns/1.0" xmlns:cei="http://www.monasterium.net/NS/cei"
+   xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance">
+   <teiHeader>
+      <fileDesc>
+         <titleStmt>
+            <title>Tei version of 3504 exported from monasterium.net </title>
+         </titleStmt>
+         <publicationStmt>
+            <p/>
+         </publicationStmt>
+         <!--In Original: cei:front/cei:sourceDesc/cei:sourceDescRegest-->
+         <sourceDesc>
+            <bibl type="url">https://www.monasterium.net/mom/AT-WStLA/HAUrk/3504/charter</bibl>
+            <bibl default="false" status="draft">Quellen zur Geschichte der Stadt Wien, Bd. II/2,
+               Nr. 3504 As published in HAUrk by Wiener Stadt- und Landesarchiv </bibl>
+            <msDesc status="draft">
+               <msIdentifier>
+                  <repository>Wiener Stadt- und Landesarchiv</repository>
+                  <idno>3504</idno>
+                  <altIdentifier type="old">
+                     <idno>517748</idno>
+                  </altIdentifier>
+               </msIdentifier>
+               <physDesc>
+                  <sealDesc>
+                     <seal>
+                        <p>Rückwärts aufgedrücktes spitzovales Siegel von grünem Wachse unter Papier
+                           decke.</p>
+                     </seal>
+                  </sealDesc>
+               </physDesc>
+            </msDesc>
+         </sourceDesc>
+      </fileDesc>
+      <encodingDesc>
+         <projectDesc default="false">
+            <p><label type="contentual-editing">Dissertation Korbinian Grünwald</label></p>
+         </projectDesc>
+      </encodingDesc>
+      <profileDesc>
+         <creation>
+            <placeName>Dürnstein</placeName>
+            <date when="14530402">1453 IV 02</date>
+            <origDate instant="false">zu Dirnstain, am montag nach dem heiligen
+            Ostertag.</origDate></creation>
+      </profileDesc>
+   </teiHeader>
+   <facsimile>
+      <surface>
+         <graphic
+            url="http://images.monasterium.net/pics/AT-WStLA/HA-U/WStLA-HA-Urkunden_03504_r.jpg"/>
+      </surface>
+      <surface>
+         <graphic
+            url="http://images.monasterium.net/pics/AT-WStLA/HA-U/WStLA-HA-Urkunden_03504_v.jpg"/>
+      </surface>
+   </facsimile>
+   <text>
+      <body>
+         <div type="abstract" resp="kg">
+            <p>
+               <rs type="event" ref="ev__QGW_II_II_3504"><rs type="fn" role="issuer"><rs
+                        type="person" ref="pe__ursula_QGW_II_II_3504">Ursula</rs> und <rs
+                        type="person" ref="pe__katharina_QGW_II_II_3504">Katherina, pet
+                        Narczendarfferin, <roleName type="occ" corresp="org__duernstein-klarissen"
+                           >classterfrauen</roleName> zu Tirnstain und <roleName type="occ"
+                           corresp="org__duernstein-klarissen">conventswestern</roleName>
+                        daselbs</rs>,</rs>
+                  <triggerstring n="disp">bestätigen, dass</triggerstring> ihnen <rs type="fn"
+                     role="recipient"><rs type="person" ref="pe__adam_herting_QGW_II_II_3494">ihr
+                           <roleName type="kin" corresp="pe__ursula_QGW_II_II_3504"
+                           >Schwager</roleName>
+                        <roleName type="kin" corresp="pe__katharina_QGW_II_II_3504"
+                              ><add>Schwager</add></roleName>, der <roleName type="title"
+                           >edel</roleName> und <roleName type="title">weis</roleName> Adam Hertting
+                           <roleName type="title_ref" corresp="pl__wien">zu</roleName>
+                     Wienn</rs>,</rs>
+                  <rs type="fn" role="transactiongood_II"><rs type="event"
+                        ref="ev__QGW_II_II_3504_men_1"><rs type="fn" role="recipient">von <rs
+                              type="person" ref="pe__katharina_QGW_II_II_3504">ihrem</rs>
+                           <rs type="person" ref="pe__ursula_QGW_II_II_3504"
+                           ><add>ihrem</add></rs></rs>
+                        <triggerstring n="disp">Antheile an dem Nachlasse</triggerstring>
+                        <rs type="fn" role="transactiongood_I"><measure><add>10 lb.
+                              dn.</add></measure>
+                           <triggerstring n="fn"><add>Antheile an dem Nachlasse</add></triggerstring></rs>
+                        <rs type="fn" role="issuer"><rs type="person"
+                              ref="pe__georg_narczendorfer_QGW_II_II_3504">ihres <roleName
+                                 type="kin" corresp="pe__katharina_QGW_II_II_3504"
+                                 >Bruders</roleName>
+                              <roleName type="kin" corresp="pe__ursula_QGW_II_II_3504"
+                                    ><add>Bruders</add></roleName> Jorgen des
+                           Narczendarffer</rs></rs>
+                        <measure>10 lb. dn.</measure>
+                        <triggerstring n="fn"><add>Antheile an dem
+                     Nachlasse</add></triggerstring></rs></rs>
+                  <triggerstring n="disp">entrichtet habe</triggerstring>.</rs>
+            </p>
+         </div>
+         <div type="seal">
+            <p><rs type="event" ref="ev__QGW_II_II_3504"><rs type="fn" role="witness">Besiegelt mit
+                     dem Siegel der <rs type="person" ref="pe__anna_QGW_II_II_3504"><roleName
+                           type="occ" corresp="org__duernstein-klarissen">Aebtissin</roleName> Anna
+                        von Klamm</rs>.</rs></rs>
+            </p>
+         </div>
+         <div type="lists">
+            <xi:include xmlns:xi="http://www.w3.org/2001/XInclude"
+               href="../../../../indices/placeList.xml" xpointer="element(/1/2/1/1)"/>
+            <xi:include xmlns:xi="http://www.w3.org/2001/XInclude"
+               href="../../../../indices/personList.xml" xpointer="element(/1/2/1/1)"/>
+            <xi:include xmlns:xi="http://www.w3.org/2001/XInclude"
+               href="../../../../indices/eventList.xml" xpointer="element(/1/2/1/1)"/>
+            <xi:include xmlns:xi="http://www.w3.org/2001/XInclude"
+               href="../../../../indices/orgList.xml" xpointer="element(/1/2/1/1)"/>
+         </div>
+      </body>
+   </text>
+</TEI>

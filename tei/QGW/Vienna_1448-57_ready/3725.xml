@@ -1,0 +1,49 @@
+<?xml version="1.0" encoding="UTF-8"?><!DOCTYPE TEI   SYSTEM "../../../schema/toolbox_full.dtd"><TEI xmlns="http://www.tei-c.org/ns/1.0" xmlns:cei="http://www.monasterium.net/NS/cei" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"><teiHeader><fileDesc><titleStmt><title>Tei version of 3725 exported from monasterium.net </title></titleStmt><publicationStmt><p/></publicationStmt><!--In Original: cei:front/cei:sourceDesc/cei:sourceDescRegest--><sourceDesc><bibl  type="url">https://www.monasterium.net/mom/AT-WStLA/HAUrk/3725/charter</bibl><bibl default="false" status="draft">Quellen zur Geschichte der Stadt Wien, Bd. II/2,
+               Nr. 3725 As published in HAUrk by Wiener Stadt- und Landesarchiv </bibl><msDesc status="draft"><msIdentifier><repository>Wiener Stadt- und Landesarchiv</repository><idno>3725</idno><altIdentifier type="old"><idno>517981</idno></altIdentifier></msIdentifier><msContents><msItem><listBibl default="false"><bibl default="false" status="draft">Schlager, Wiener Skizzen, 1, 201,
+                           Auszug.</bibl></listBibl></msItem></msContents><physDesc><sealDesc><seal><p>Siegel: 1. anhangend, grün u. Sch., Bruchstück 2. fehlt.Siegler:
+                              <quote>Hanns Meylinger</quote> und der Stadtschreiber <quote>Ulreich
+                              Hirssauer</quote>. </p></seal></sealDesc></physDesc></msDesc></sourceDesc></fileDesc><encodingDesc><projectDesc default="false"><p><label type="contentual-editing">Dissertation Korbinian Grünwald</label></p></projectDesc></encodingDesc><profileDesc><creation>
+            <placeName>Wien</placeName>
+            <date when="14570729">1457 VII 29</date>
+            <origDate instant="false">zu Wienn, an freitag vor sand Stephans tag im
+            snit.</origDate></creation></profileDesc></teiHeader><facsimile><surface><graphic url="http://images.monasterium.net/pics/AT-WStLA/HA-U/WStLA-HA-Urkunden_03725_r.jpg"/></surface><surface><graphic url="http://images.monasterium.net/pics/AT-WStLA/HA-U/WStLA-HA-Urkunden_03725_v.jpg"/></surface></facsimile><text><body><div type="abstract" resp="kg"><p>
+               <rs type="event" ref="ev__QGW_II_II_3725"><rs type="fn" role="issuer"><rs type="person" ref="pe__georg_krumpp_SB_CD_00966">Jörg Krump <roleName type="prof">pinter</roleName>, <roleName type="occ" corresp="org__wien">mitburger</roleName> zu Wienn</rs>, und <rs type="person" ref="pe__katharina_SB_CD_00966">Kathrei, sein <roleName type="kin" corresp="pe__georg_krumpp_SB_CD_00966">hausfrau</roleName></rs>,</rs>
+                  <triggerstring n="disp">verkaufen <add>geltes purkchrechts</add></triggerstring>
+                  <rs type="fn" role="other"><triggerstring n="fn">mit Handen</triggerstring>
+                     <rs type="person" ref="pe__johann_meilinger_QGW_II_II_3629">Hannsen des
+                        Meylinger, <roleName type="occ" corresp="org__wien">burger</roleName>
+                        ze Wienn, künig Lasslaws <roleName type="occ" corresp="pe__ladislaus_QGW_II_II_3461" select="pl__wien-neustift_vor_kaerntnertor">verweser seiner gnaden
+                           gruntpuch</roleName> über die Neustift, vor Kernertor gelegen</rs>,</rs>
+                  <rs type="fn" role="transactiongood_I"><measure>7 lb dn.</measure>
+                     <triggerstring n="fn">geltes purkchrechts</triggerstring> (ablösbar) auf <rs type="place" ref="pl__wien-immo_neustift_vor_kaerntnertor_1"><roleName type="owner" corresp="pe__georg_krumpp_SB_CD_00966">ihrem</roleName>
+                        <roleName type="owner" corresp="pe__katharina_SB_CD_00966"><add>ihrem</add></roleName> Hause und Garten daran, <roleName type="topo" corresp="pl__wien-neustift_vor_kaerntnertor">gelegen daselbs
+                           auf der Neustift</roleName>
+                        <roleName type="topo" corresp="pl__wien-immo_neustift_vor_kaerntnertor_2">zwischen</roleName>
+                        <rs type="place" ref="pl__wien-immo_neustift_vor_kaerntnertor_2"><roleName type="owner" corresp="pe__stephan_meusel_QGW_II_II_3725"><rs type="person" ref="pe__stephan_meusel_QGW_II_II_3725">Steffans
+                                 Meusl, des <roleName type="prof">pekchen</roleName></rs></roleName>
+                           <add>heusern</add></rs>, und <roleName type="topo" corresp="pl__wien-immo_neustift_vor_kaerntnertor_3"><add>zwischen</add></roleName>
+                        <rs type="place" ref="pl__wien-immo_neustift_vor_kaerntnertor_3"><roleName type="owner" corresp="pe__johann_meczendorffer_QGW_II_II_3725"><rs type="person" ref="pe__johann_meczendorffer_QGW_II_II_3725">Hannsen
+                                 Meczendorffer, des <roleName type="prof">pinter</roleName></rs></roleName>, heusern</rs>, <rs type="event" ref="ev__QGW_II_II_3725_men_1"><rs type="fn" role="issuer">von <rs type="place" ref="pl__wien-immo_neustift_vor_kaerntnertor_1">dem</rs> man</rs>
+                           <rs type="fn" role="recipient"><rs type="person" ref="pe__ladislaus_QGW_II_II_3461">dem Könige</rs></rs>
+                           <rs type="fn" role="transactiongood_I"><measure>64 dn.</measure> zu
+                                 <triggerstring n="fn">Grunddienst</triggerstring></rs>
+                           <triggerstring n="disp"><add>Grunddienst</add>
+                     dient</triggerstring></rs></rs>,</rs>
+                  <rs type="fn" role="transactiongood_II">um <measure>56 lb dn.</measure>, <rs type="event" ref="ev__QGW_II_II_3725_men_2"><rs type="fn" role="transactiongood_I">die <measure><add>56 lb dn.</add></measure>
+                           <triggerstring n="fn"><add>geltes purkchrechts</add></triggerstring></rs>
+                        <triggerstring n="disp">emaln gelegen gewesen sind</triggerstring>
+                        <rs type="fn" role="issuer">auf <rs type="place" ref="pl__wien-immo_schiltergasse_2"><roleName type="owner" corresp="pe__johann_praitter_SB_CD_00678">Hannsen, des
+                                 praitter</roleName>, haus <roleName type="topo" corresp="pl__wien-schiltergasse">im
+                              Schilltargesslein</roleName></rs>,</rs>
+                        <triggerstring n="disp">die man damit darab geledigt und gelöst
+                           hat</triggerstring>
+                        <rs type="fn" role="recipient"><rs type="org" ref="org__wien-st_stephan-altar_st_maria-messe_gafferswent_adelheit"/></rs>,</rs></rs>
+                  <rs type="fn" role="recipient"><rs type="person" ref="pe__johann_tengk_QGW_II_II_3725"><roleName type="title">hern</roleName>
+                        Hannsen Tengk, <roleName type="occ" corresp="org__wien-st_stephan-altar_st_maria-messe_gafferswent_adelheit">Kaplan</roleName> der von frau Olhait, Dietmars des Gafferswents witib,
+                        auf Unser Fraun altar dacz sand Stephan zu Wienn gestifteten Messe</rs>, und
+                        <rs type="org" ref="org__wien-st_stephan-altar_st_maria-messe_gafferswent_adelheit">seinen
+                        Nachfolgern</rs>.</rs></rs>
+            </p></div><div type="seal"><p><rs type="event" ref="ev__QGW_II_II_3725"><rs type="fn" role="witness">Siegler: <rs type="person" ref="pe__johann_meilinger_QGW_II_II_3629">Hanns Meylinger</rs>
+                     und <rs type="person" ref="pe__ulrich_hirssauer_QGW_II_II_3239">der <roleName type="occ" corresp="org__wien">Stadtschreiber</roleName> Ulreich
+                        Hirssauer</rs>.</rs></rs>
+            </p></div><div type="lists"><xi:include xmlns:xi="http://www.w3.org/2001/XInclude" href="../../../../indices/placeList.xml" xpointer="element(/1/2/1/1)"/><xi:include xmlns:xi="http://www.w3.org/2001/XInclude" href="../../../../indices/personList.xml" xpointer="element(/1/2/1/1)"/><xi:include xmlns:xi="http://www.w3.org/2001/XInclude" href="../../../../indices/eventList.xml" xpointer="element(/1/2/1/1)"/><xi:include xmlns:xi="http://www.w3.org/2001/XInclude" href="../../../../indices/orgList.xml" xpointer="element(/1/2/1/1)"/></div></body></text></TEI>

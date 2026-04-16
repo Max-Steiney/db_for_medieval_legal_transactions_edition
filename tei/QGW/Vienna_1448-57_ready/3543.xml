@@ -1,0 +1,21 @@
+<?xml version="1.0" encoding="UTF-8"?><!DOCTYPE TEI   SYSTEM "../../../schema/toolbox_full.dtd"><TEI xmlns="http://www.tei-c.org/ns/1.0" xmlns:cei="http://www.monasterium.net/NS/cei" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"><teiHeader><fileDesc><titleStmt><title>Tei version of 3543 exported from monasterium.net </title></titleStmt><publicationStmt><p/></publicationStmt><!--In Original: cei:front/cei:sourceDesc/cei:sourceDescRegest--><sourceDesc><bibl  type="url">https://www.monasterium.net/mom/AT-WStLA/HAUrk/3543/charter</bibl><bibl default="false" status="draft">Quellen zur Geschichte der Stadt Wien, Bd. II/2, Nr. 3543 As published in HAUrk by
+               Wiener Stadt- und Landesarchiv </bibl><msDesc status="draft"><msIdentifier><repository>Wiener Stadt- und Landesarchiv</repository><idno>3543</idno><altIdentifier type="old"><idno>517789</idno></altIdentifier></msIdentifier><physDesc><sealDesc><seal><p>Das Siegel fehlt.</p></seal></sealDesc></physDesc></msDesc></sourceDesc></fileDesc><encodingDesc><projectDesc default="false"><p><label type="contentual-editing">Dissertation Korbinian Grünwald</label></p></projectDesc></encodingDesc><profileDesc><creation>
+            <placeName>Wien</placeName>
+            <date when="14531031">1453 X 31</date>
+            <origDate instant="false">zu Wienn, an Allerheiligen abent.</origDate></creation></profileDesc></teiHeader><facsimile><surface><graphic url="http://images.monasterium.net/pics/AT-WStLA/HA-U/WStLA-HA-Urkunden_03543_r.jpg"/></surface><surface><graphic url="http://images.monasterium.net/pics/AT-WStLA/HA-U/WStLA-HA-Urkunden_03543_v.jpg"/></surface></facsimile><text><body><div type="abstract" resp="kg"><p>
+               <rs type="event" ref="ev__QGW_II_II_3543"><rs type="fn" role="issuer"><rs type="person" ref="pe__niklas_teschler_QGW_II_II_2951">Niclas Teschler,
+                           <roleName type="occ" corresp="org__wien">burgermaister</roleName></rs>,
+                     und <rs type="org" ref="org__wien">der rate der stat zu Wienn</rs></rs>
+                  <rs type="fn" role="other"><triggerstring n="fn">empfehlen</triggerstring>
+                     <rs type="person" ref="pe__barbara_QGW_II_II_3543">Barbara, die <roleName type="kin" corresp="pe__jakob_duerr_QGW_II_II_3543">Tochter</roleName>
+                        des <rs type="person" ref="pe__jakob_duerr_QGW_II_II_3543"><roleName type="dead">verstorbenen</roleName>
+                           <roleName type="prof">Lebzelters</roleName> Jacob Dürr</rs></rs></rs>
+                  <rs type="fn" role="recipient">dem <rs type="person" ref="pe__andreas_diener_QGW_II_II_3543">Andreen Diener, <roleName type="prof">leczelter</roleName>, ihrem <roleName type="occ" corresp="org__wien">mitburger</roleName></rs>, also dass er mitsambt <rs type="person" ref="pe__anna_QGW_II_II_3543"><roleName type="title">fraun</roleName> Annen, des egenanten Dürren <roleName type="kin" corresp="pe__jakob_duerr_QGW_II_II_3543">witiben</roleName></rs>,</rs>
+                  <triggerstring n="disp"><add>empfehlen</add> desselben</triggerstring> Dürren
+                     <triggerstring n="disp">geschefft und geltschult ausrichten und die
+                     benanten</triggerstring> Barbaren <triggerstring n="disp">mit irm leib und gut
+                     innhaben, ziehen und verwesen soll</triggerstring>.</rs>
+            </p></div><div type="seal"><p><rs type="event" ref="ev__QGW_II_II_3543"><rs type="fn" role="witness">Besiegelt mit
+                     ihrem <rs type="org" ref="org__wien">klainem anhangundem
+                  statinsigil</rs>.</rs></rs>
+            </p></div><div type="lists"><xi:include xmlns:xi="http://www.w3.org/2001/XInclude" href="../../../../indices/placeList.xml" xpointer="element(/1/2/1/1)"/><xi:include xmlns:xi="http://www.w3.org/2001/XInclude" href="../../../../indices/personList.xml" xpointer="element(/1/2/1/1)"/><xi:include xmlns:xi="http://www.w3.org/2001/XInclude" href="../../../../indices/eventList.xml" xpointer="element(/1/2/1/1)"/><xi:include xmlns:xi="http://www.w3.org/2001/XInclude" href="../../../../indices/orgList.xml" xpointer="element(/1/2/1/1)"/></div></body></text></TEI>

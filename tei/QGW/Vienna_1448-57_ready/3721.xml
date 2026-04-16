@@ -1,0 +1,26 @@
+<?xml version="1.0" encoding="UTF-8"?><!DOCTYPE TEI   SYSTEM "../../../schema/toolbox_full.dtd"><TEI xmlns="http://www.tei-c.org/ns/1.0" xmlns:cei="http://www.monasterium.net/NS/cei" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"><teiHeader><fileDesc><titleStmt><title>Tei version of 3721 exported from monasterium.net </title></titleStmt><publicationStmt><p/></publicationStmt><!--In Original: cei:front/cei:sourceDesc/cei:sourceDescRegest--><sourceDesc><bibl  type="url">https://www.monasterium.net/mom/AT-WStLA/HAUrk/3721/charter</bibl><bibl default="false" status="draft">Quellen zur Geschichte der Stadt Wien, Bd. II/2,
+               Nr. 3721 As published in HAUrk by Wiener Stadt- und Landesarchiv </bibl><msDesc status="draft"><msIdentifier><repository>Wiener Stadt- und Landesarchiv</repository><idno>3721</idno><altIdentifier type="old"><idno>517977</idno></altIdentifier></msIdentifier><physDesc><sealDesc><seal><p>Zwei rückwärts aufgedrückte Siegel von grünem Wachse,
+                           abgesprungen.Siegler: der Aussteller und <quote>Jörg Reicholf, burger zu
+                              Wienn</quote>, sein Bruder. </p></seal></sealDesc></physDesc></msDesc></sourceDesc></fileDesc><encodingDesc><projectDesc default="false"><p><label type="contentual-editing">Dissertation Korbinian Grünwald</label></p></projectDesc></encodingDesc><profileDesc><creation>
+            <date when="14570718">1457 VII 18</date>
+            <origDate instant="false">an montag vor sand Maria Magdalen tag.</origDate></creation></profileDesc></teiHeader><facsimile><surface><graphic url="http://images.monasterium.net/pics/AT-WStLA/HA-U/WStLA-HA-Urkunden_03721_r.jpg"/></surface><surface><graphic url="http://images.monasterium.net/pics/AT-WStLA/HA-U/WStLA-HA-Urkunden_03721_v.jpg"/></surface></facsimile><text><body><div type="abstract" resp="kg"><p>
+               <rs type="event" ref="ev__QGW_II_II_3721"><rs type="fn" role="issuer"><rs type="person" ref="pe__oswald_reicholf_QGW_II_II_3314">Oswalt
+                     Reicholf</rs></rs>
+                  <triggerstring n="disp">theilt</triggerstring>
+                  <rs type="fn" role="recipient">dem <rs type="org" ref="org__wien">Bürgermeister
+                        und Rathe der Stadt zu Wien sowie den Verwesern ihres Grundbuches</rs></rs>
+                  <triggerstring n="disp">mit</triggerstring>, dass <rs type="event" ref="ev__QGW_II_II_3721_men_1"><rs type="fn" role="issuer"><rs type="person" ref="pe__oswald_reicholf_QGW_II_II_3314">er</rs></rs>
+                     <rs type="fn" role="transactiongood_I"><rs type="place" ref="pl__wien-immo_stubentor_geraeut_vor_5"><roleName type="owner" corresp="pe__oswald_reicholf_QGW_II_II_3314">sein</roleName> Haus,
+                              <roleName type="topo" corresp="pl__wien-stubentor_geraeut_vor">vor
+                              Stubentor im Greut</roleName> gegen <rs type="place" ref="pl__wien-immo_stubentor_geraeut_vor_6"><roleName type="owner" corresp="pe__niklas_purger_QGW_II_III_3758">Niclasen
+                                 Burger</roleName> mül</rs>
+                           <roleName type="topo" corresp="pl__wien-immo_stubentor_geraeut_vor_6"><add>gegen</add> über gelegen</roleName></rs>,</rs>
+                     <rs type="fn" role="recipient">ihrem <rs type="person" ref="pe__georg_silberprenner_QGW_II_II_3721"><roleName type="occ" corresp="org__wien">Mitbürger</roleName> Jorgen, <roleName type="prof" cert="unknown">silberprenner</roleName></rs>,</rs>
+                     <triggerstring n="disp">verkauft habe</triggerstring>,</rs>
+                  <triggerstring n="disp">und ersucht sie, den Kaufbrief mit ihrem gruntinsigl zu
+                     fertigen</triggerstring>.</rs>
+            </p></div><div type="seal"><p><rs type="event" ref="ev__QGW_II_II_3721"><rs type="fn" role="witness">Siegler: <rs type="person" ref="pe__oswald_reicholf_QGW_II_II_3314">der Aussteller</rs>
+                     und <rs type="person" ref="pe__georg_reicholf_QGW_II_II_3611">Jörg Reicholf,
+                           <roleName type="occ" corresp="org__wien">burger</roleName> zu
+                        Wienn, sein <roleName type="kin" corresp="pe__oswald_reicholf_QGW_II_II_3314">Bruder</roleName></rs>.</rs></rs>
+            </p></div><div type="lists"><xi:include xmlns:xi="http://www.w3.org/2001/XInclude" href="../../../../indices/placeList.xml" xpointer="element(/1/2/1/1)"/><xi:include xmlns:xi="http://www.w3.org/2001/XInclude" href="../../../../indices/personList.xml" xpointer="element(/1/2/1/1)"/><xi:include xmlns:xi="http://www.w3.org/2001/XInclude" href="../../../../indices/eventList.xml" xpointer="element(/1/2/1/1)"/><xi:include xmlns:xi="http://www.w3.org/2001/XInclude" href="../../../../indices/orgList.xml" xpointer="element(/1/2/1/1)"/></div></body></text></TEI>

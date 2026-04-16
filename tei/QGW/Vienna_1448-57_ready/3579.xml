@@ -1,0 +1,131 @@
+<?xml version="1.0" encoding="UTF-8"?><!DOCTYPE TEI   SYSTEM "../../../schema/toolbox_full.dtd">
+<TEI xmlns="http://www.tei-c.org/ns/1.0" xmlns:cei="http://www.monasterium.net/NS/cei"
+  xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance">
+  <teiHeader>
+    <fileDesc>
+      <titleStmt>
+        <title>Tei version of 3579 exported from monasterium.net </title>
+      </titleStmt>
+      <publicationStmt>
+        <p/>
+      </publicationStmt>
+      <!--In Original: cei:front/cei:sourceDesc/cei:sourceDescRegest-->
+      <sourceDesc>
+        <bibl type="url">https://www.monasterium.net/mom/AT-WStLA/HAUrk/3579/charter</bibl>
+        <bibl default="false" status="draft">Quellen zur Geschichte der Stadt Wien, Bd. II/2, Nr.
+          3579 As published in HAUrk by Wiener Stadt- und Landesarchiv </bibl>
+        <msDesc status="draft">
+          <msIdentifier>
+            <repository>Wiener Stadt- und Landesarchiv</repository>
+            <idno>3579</idno>
+            <altIdentifier type="old">
+              <idno>517830</idno>
+            </altIdentifier>
+          </msIdentifier>
+          <physDesc>
+            <sealDesc>
+              <seal>
+                <p>Zwei anhangende, beschädigte Siegel, grün u. Sch., 2. fehlt.Siegler der
+                  Aussteller, Oswald Reicholf und der Stadtschreiber <quote>Ulreich
+                    Hirssauer</quote>. </p>
+              </seal>
+            </sealDesc>
+          </physDesc>
+        </msDesc>
+      </sourceDesc>
+    </fileDesc>
+    <encodingDesc>
+      <projectDesc default="false">
+        <p><label type="contentual-editing">Dissertation Korbinian Grünwald</label></p>
+      </projectDesc>
+    </encodingDesc>
+    <profileDesc>
+      <creation>
+        <placeName>Wien</placeName>
+        <date when="14540805">1454 VIII 05</date>
+        <origDate instant="false">zu Wienn, an montag vor sand Larenczen tag.</origDate></creation>
+    </profileDesc>
+  </teiHeader>
+  <facsimile>
+    <surface>
+      <graphic url="http://images.monasterium.net/pics/AT-WStLA/HA-U/WStLA-HA-Urkunden_03579_r.jpg"
+      />
+    </surface>
+    <surface>
+      <graphic url="http://images.monasterium.net/pics/AT-WStLA/HA-U/WStLA-HA-Urkunden_03579_v.jpg"
+      />
+    </surface>
+  </facsimile>
+  <text>
+    <body>
+      <div type="abstract" resp="kg">
+        <p>
+          <rs type="event" ref="ev__QGW_II_II_3579"><rs type="fn" role="issuer"><rs type="person"
+                ref="pe__wolfgang_sneider_QGW_II_II_3579">Wolfgang Sneider, <roleName
+                  type="title_ref" corresp="pl__grinzing">gesessen zu</roleName>
+              Grinczing</rs>,</rs>
+            <triggerstring n="disp">verkauft</triggerstring>
+            <rs type="fn" role="other"><triggerstring n="fn">mit Handen</triggerstring> des <rs
+                type="person" ref="pe__oswald_reicholf_QGW_II_II_3314"><roleName type="title"
+                  >edeln</roleName>
+                <roleName type="title">vesten</roleName>
+                <roleName type="title">ritter</roleName>
+                <roleName type="title">hern</roleName> Oswalts Reicholfs, <roleName type="occ"
+                  corresp="org__wien">burgermaister</roleName> zu Wienn und <roleName type="occ"
+                  corresp="org__klosterneuburg-augustiner_chorherren" select="pl__grinzing"
+                  >verweser</roleName>
+                <roleName type="occ" corresp="org__klosterneuburg-augustiner_chorherren"
+                  select="pl__nussdorf"><add>verweser</add></roleName> Unser Fraun gotshauss zu
+                Klosterneunburg perkgrünt baider ämbter Nustorf und Grinczing</rs>,</rs>
+            <rs type="fn" role="transactiongood_I"><rs type="place" ref="pl__grinzing-immo_10">ein
+                halbes Joch Weingarten, <roleName type="topo" corresp="pl__grinzing">gelegen zu
+                  Grinczing in den Langen Reutten</roleName> zenagst <rs type="place"
+                  ref="pl__grinzing-immo_12"><roleName type="owner"
+                    corresp="pe__otto_seidennater_QGW_II_II_3579"><rs type="person"
+                      ref="pe__otto_seidennater_QGW_II_II_3579"><roleName type="title"
+                        >maister</roleName> Otten, des <roleName type="prof"
+                      >seidennater</roleName></rs></roleName>, weingarten</rs>
+                <roleName type="topo" corresp="pl__grinzing-immo_12"><add>zenagst</add> an aim
+                  tail</roleName>
+                <roleName type="topo" corresp="pl__grinzing-immo_11">und an dem andern
+                  zenagst</roleName>
+                <rs type="place" ref="pl__grinzing-immo_11"><roleName type="owner"
+                    corresp="pe__ulrich_keppl_QGW_II_II_3579"><rs type="person"
+                      ref="pe__ulrich_keppl_QGW_II_II_3579">Ulreichs des Keppl</rs></roleName>
+                  weingarten</rs>, <rs type="event" ref="ev__QGW_II_II_3579_men_1"><rs type="fn"
+                    role="issuer">von dem man</rs>
+                  <rs type="fn" role="transactiongood_I"><measure>fünf Viertel Wein</measure>
+                    <triggerstring n="fn">zu Bergrecht</triggerstring></rs>, <rs type="fn"
+                    role="transactiongood_I"><measure>ainen phening und anderthalb örter</measure>
+                    <triggerstring n="fn">zu voitrecht</triggerstring></rs>
+                  <triggerstring n="disp"><add>zu Bergrecht</add>
+                    <add>zu voitrecht</add> dient</triggerstring>
+                  <rs type="fn" role="recipient"><rs type="org"
+                      ref="org__klosterneuburg-augustiner_chorherren"/></rs></rs></rs>,</rs>
+            <rs type="fn" role="transactiongood_II">um <measure>92 lb dn.</measure></rs>
+            <rs type="fn" role="recipient"><rs type="person"
+                ref="pe__christian_wissinger_QGW_II_II_3328">Cristan Wissinger, des <roleName
+                  type="occ" corresp="org__wien">rats</roleName> der stat zu Wienn <roleName
+                  type="rep" corresp="pe__helena_QGW_II_II_3551"
+                  ><add>geschefftleuten</add></roleName></rs>, und <rs type="person"
+                ref="pe__johann_marchegger_SB_CD_01246">Hannsen Marchegker, <roleName type="occ" corresp="org__wien">burger</roleName> daselbs, fraun Helen , [
+                365] Lienharten des Neunhofer witiben seligen, <roleName type="rep"
+                  corresp="pe__helena_QGW_II_II_3551">geschefftleuten</roleName></rs>, zu <rs
+                type="org" ref="org__wien-st_michael-altar_st_jakob-messe_neunhofer_helena">der nach
+                deren Anordnung auf sand Jacobs altar in sand Michels pharrkirchen zu Wienn
+                gestifteten Messe</rs>.</rs></rs>
+        </p>
+      </div>
+      <div type="lists">
+        <xi:include xmlns:xi="http://www.w3.org/2001/XInclude"
+          href="../../../../indices/placeList.xml" xpointer="element(/1/2/1/1)"/>
+        <xi:include xmlns:xi="http://www.w3.org/2001/XInclude"
+          href="../../../../indices/personList.xml" xpointer="element(/1/2/1/1)"/>
+        <xi:include xmlns:xi="http://www.w3.org/2001/XInclude"
+          href="../../../../indices/eventList.xml" xpointer="element(/1/2/1/1)"/>
+        <xi:include xmlns:xi="http://www.w3.org/2001/XInclude"
+          href="../../../../indices/orgList.xml" xpointer="element(/1/2/1/1)"/>
+      </div>
+    </body>
+  </text>
+</TEI>

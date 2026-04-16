@@ -1,0 +1,122 @@
+<?xml version="1.0" encoding="UTF-8"?><!DOCTYPE TEI   SYSTEM "../../../schema/toolbox_full.dtd">
+<TEI xmlns="http://www.tei-c.org/ns/1.0" xmlns:cei="http://www.monasterium.net/NS/cei"
+   xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance">
+   <teiHeader>
+      <fileDesc>
+         <titleStmt>
+            <title>Tei version of 3539 exported from monasterium.net </title>
+         </titleStmt>
+         <publicationStmt>
+            <p/>
+         </publicationStmt>
+         <!--In Original: cei:front/cei:sourceDesc/cei:sourceDescRegest-->
+         <sourceDesc>
+            <bibl type="url">https://www.monasterium.net/mom/AT-WStLA/HAUrk/3539/charter</bibl>
+            <bibl default="false" status="draft">Quellen zur Geschichte der Stadt Wien, Bd. II/2,
+               Nr. 3539 As published in HAUrk by Wiener Stadt- und Landesarchiv </bibl>
+            <msDesc status="draft">
+               <msIdentifier>
+                  <repository>Wiener Stadt- und Landesarchiv</repository>
+                  <idno>3539</idno>
+                  <altIdentifier type="old">
+                     <idno>517785</idno>
+                  </altIdentifier>
+               </msIdentifier>
+               <msContents>
+                  <msItem>
+                     <listBibl default="false">
+                        <bibl default="false" status="draft">Jahrbuch der kais. Kunstsamml. 17b, n°
+                           15268, Citat mit Siegelabbildung.</bibl>
+                     </listBibl>
+                  </msItem>
+               </msContents>
+               <physDesc>
+                  <sealDesc>
+                     <seal>
+                        <p>Drei anhangende Siegel, grün u. Sch., 1. beschädigt.Siegler: Ebmer,
+                           Purger und der Wiener Bürger <quote>Michel Ruttenstokch</quote>. </p>
+                     </seal>
+                  </sealDesc>
+               </physDesc>
+            </msDesc>
+         </sourceDesc>
+      </fileDesc>
+      <encodingDesc>
+         <projectDesc default="false">
+            <p><label type="contentual-editing">Dissertation Korbinian Grünwald</label></p>
+         </projectDesc>
+      </encodingDesc>
+      <profileDesc>
+         <creation>
+            <placeName>Wien</placeName>
+            <date when="14531001">1453 X 01</date>
+            <origDate instant="false">ze Wienn, an montag nach sand Michels
+            tag.</origDate></creation>
+      </profileDesc>
+   </teiHeader>
+   <facsimile>
+      <surface>
+         <graphic
+            url="http://images.monasterium.net/pics/AT-WStLA/HA-U/WStLA-HA-Urkunden_03539_r.jpg"/>
+      </surface>
+      <surface>
+         <graphic
+            url="http://images.monasterium.net/pics/AT-WStLA/HA-U/WStLA-HA-Urkunden_03539_v.jpg"/>
+      </surface>
+   </facsimile>
+   <text>
+      <body>
+         <div type="abstract" resp="kg">
+            <p>
+               <rs type="event" ref="ev__QGW_II_II_3539"><rs type="fn" role="issuer"><rs
+                        type="person" ref="pe__friedrich_ebmer_QGW_II_II_3350">Fridreich Ebmer,
+                           <roleName type="title">ritter</roleName>
+                        <roleName type="rep" corresp="pe__margarethe_QGW_II_II_3539"><add>ausrichter
+                              und volfurer des gescheffts</add></roleName></rs>, <rs type="person"
+                        ref="pe__niklas_purger_QGW_II_III_3758">Niclas Purger <roleName type="occ" corresp="org__wien"><add>burger</add></roleName>
+                        <roleName type="rep" corresp="pe__margarethe_QGW_II_II_3539"><add>ausrichter
+                              und volfurer des gescheffts</add></roleName></rs> und <rs
+                        type="person" ref="pe__ulrich_meusel_QGW_II_II_3539">Ulreich Me/ausel, baid
+                           <roleName type="occ" corresp="org__wien">burger</roleName> ze
+                        Wienn, und diezeit all drei <roleName type="rep"
+                           corresp="pe__margarethe_QGW_II_II_3539">ausrichter und volfurer des
+                           gescheffts</roleName></rs>,</rs> so weilent <rs type="person"
+                     ref="pe__margarethe_QGW_II_II_3539">Margreth die Rauffenvoglinn <roleName
+                        type="dead">selige</roleName></rs> getan hat, <triggerstring n="disp"
+                     >verleihen</triggerstring>
+                  <rs type="fn" role="transactiongood_I">die nach diesem Geschäfte gestiftete und
+                     mit einer für 200 lb dn. gekauften Gült ausgestattete Wochenmesse</rs>
+                  <rs type="fn" role="recipient">dem <rs type="person"
+                        ref="pe__thomas_ulman_QGW_II_II_3539">Thoman U/elman, <roleName type="occ"
+                           corresp="org__passau-dioezese">accolit</roleName> Passauer
+                     bistums</rs>,</rs> also dass er briesterleiche wirdikait darauf empfahen
+                  solle.</rs>
+            </p>
+         </div>
+         <div type="seal">
+            <p><rs type="event" ref="ev__QGW_II_II_3539"><rs type="fn" role="witness">Siegler: <rs
+                        type="person" ref="pe__friedrich_ebmer_QGW_II_II_3350">Ebmer</rs>, <rs
+                        type="person" ref="pe__niklas_purger_QGW_II_III_3758">Purger</rs> und der
+                        <rs type="person" ref="pe__michael_rutenstokch_QGW_II_II_3307">Wiener
+                           <roleName type="occ" corresp="org__wien">Bürger</roleName> Michel
+                        Ruttenstokch</rs>.</rs></rs>
+            </p>
+         </div>
+         <div type="nota">
+            <p>Indorsate: a) hern Jorg Gleisser von Osterhoffen, b) ypp, c) hern Yppoliten
+               Hasenczagl ist die mess verliehen, die mit tod und abgang, t( empore) m( agistri)
+               Mert Guldein et Gilig Paum. </p>
+         </div>
+         <div type="lists">
+            <xi:include xmlns:xi="http://www.w3.org/2001/XInclude"
+               href="../../../../indices/placeList.xml" xpointer="element(/1/2/1/1)"/>
+            <xi:include xmlns:xi="http://www.w3.org/2001/XInclude"
+               href="../../../../indices/personList.xml" xpointer="element(/1/2/1/1)"/>
+            <xi:include xmlns:xi="http://www.w3.org/2001/XInclude"
+               href="../../../../indices/eventList.xml" xpointer="element(/1/2/1/1)"/>
+            <xi:include xmlns:xi="http://www.w3.org/2001/XInclude"
+               href="../../../../indices/orgList.xml" xpointer="element(/1/2/1/1)"/>
+         </div>
+      </body>
+   </text>
+</TEI>

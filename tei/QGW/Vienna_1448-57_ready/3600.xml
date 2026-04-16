@@ -1,0 +1,29 @@
+<?xml version="1.0" encoding="UTF-8"?><!DOCTYPE TEI   SYSTEM "../../../schema/toolbox_full.dtd"><TEI xmlns="http://www.tei-c.org/ns/1.0" xmlns:cei="http://www.monasterium.net/NS/cei" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"><teiHeader><fileDesc><titleStmt><title>Tei version of 3600 exported from monasterium.net </title></titleStmt><publicationStmt><p/></publicationStmt><!--In Original: cei:front/cei:sourceDesc/cei:sourceDescRegest--><sourceDesc><bibl  type="url">https://www.monasterium.net/mom/AT-WStLA/HAUrk/3600/charter</bibl><bibl default="false" status="draft">Quellen zur Geschichte der Stadt Wien, Bd. II/2,
+               Nr. 3600 As published in HAUrk by Wiener Stadt- und Landesarchiv </bibl><msDesc status="draft"><msIdentifier><repository>Wiener Stadt- und Landesarchiv</repository><idno>3600</idno><altIdentifier type="old"><idno>517851</idno></altIdentifier></msIdentifier><physDesc><sealDesc><seal><p>Zwei anhangende, beschädigte Siegel, grün u. Sch.</p></seal></sealDesc></physDesc></msDesc></sourceDesc></fileDesc><encodingDesc><projectDesc default="false"><p><label type="contentual-editing">Dissertation Korbinian Grünwald</label></p></projectDesc></encodingDesc><profileDesc><creation>
+            <placeName>Wien</placeName>
+            <date when="14541108">1454 XI 08</date>
+            <origDate instant="false">zu Wienn, an freitag vor sand Merten
+            tag.</origDate></creation></profileDesc></teiHeader><facsimile><surface><graphic url="http://images.monasterium.net/pics/AT-WStLA/HA-U/WStLA-HA-Urkunden_03600_r.jpg"/></surface><surface><graphic url="http://images.monasterium.net/pics/AT-WStLA/HA-U/WStLA-HA-Urkunden_03600_v.jpg"/></surface></facsimile><text><body><div type="abstract" resp="kg"><p>
+               <rs type="event" ref="ev__QGW_II_II_3600"><rs type="fn" role="issuer"><rs type="person" ref="pe__magdalena_QGW_II_II_3406">Magdalen, <rs type="person" ref="pe__johann_meichsner_QGW_II_II_3600">Hannsen des Meichsner</rs>
+                        <roleName type="kin" corresp="pe__johann_meichsner_QGW_II_II_3600">hausfrau</roleName>, die emaln <rs type="person" ref="pe__heinrich_pirchvelder_QGW_II_II_3406">Hainreichen
+                           Pirchvelder</rs> auch <roleName type="kin" corresp="pe__heinrich_pirchvelder_QGW_II_II_3406">elichen</roleName>
+                        gehabt hat</rs>,</rs>
+                  <triggerstring n="disp">stellt</triggerstring>
+                  <rs type="fn" role="transactiongood_III">hinsichtlich <rs type="place" ref="pl__wien-immo_kienmarkt_24">des Hauses, <roleName type="topo" corresp="pl__wien-kienmarkt">gelegen am Kienmarkcht</roleName>
+                        <roleName type="topo" corresp="pl__wien-immo_kienmarkt_21">zenagst</roleName>
+                        <rs type="place" ref="pl__wien-immo_kienmarkt_21">des Geukramer haus</rs>,
+                     <rs type="event" ref="ev__QGW_II_II_3600_men_1"><rs type="fn" role="transactiongood_I"><rs type="place" ref="pl__wien-immo_kienmarkt_24">das</rs></rs>
+                           <rs type="fn" role="recipient"><rs type="person" ref="pe__magdalena_QGW_II_II_3406">ihr</rs></rs>
+                           <rs type="fn" role="issuer"><rs type="person" ref="pe__laurenz_pirchvelder_QGW_II_II_3406"><roleName type="kin" corresp="pe__magdalena_QGW_II_II_3406">Sohn</roleName>
+                                 <roleName type="kin" corresp="pe__heinrich_pirchvelder_QGW_II_II_3406" cert="high"><add>Sohn</add></roleName> Larencz der Pirchvelder <roleName type="dead">seliger</roleName></rs></rs> laut seines in das
+                           Stadtbuch eingetragenen <triggerstring n="disp">Geschäftes</triggerstring> ihr
+                              <triggerstring n="disp">vermacht hat</triggerstring></rs></rs>,</rs>
+                  <rs type="fn" role="recipient">dem <rs type="org" ref="org__wien">Bürgermeister
+                        und Rathe der Stadt zu Wien</rs>,</rs> welche sie desselben hauss in ir
+                  gruntpuch nucz und gewer geschafft habent, <triggerstring n="disp">einen Revers
+                     aus</triggerstring>.</rs>
+            </p></div><div type="seal"><p><rs type="event" ref="ev__QGW_II_II_3600"><rs type="fn" role="witness">Besiegelt mit
+                     den Siegeln <rs type="person" ref="pe__peter_schuchler_QGW_II_II_3580">Petern
+                        des Schuchler <roleName type="occ" corresp="org__wien"><add>burger</add></roleName></rs> und <rs type="person" ref="pe__simon_von_eslarn_QGW_II_II_3263">Simons von Eslarn, baid <roleName type="occ" corresp="org__wien">burger</roleName> zu
+                     Wienn</rs>.</rs></rs>
+            </p></div><div type="nota"><p>Indorsat: versorgbrief von der Hainreich Pirchvelderin hauss wegen am Kienmarkt. </p></div><div type="lists"><xi:include xmlns:xi="http://www.w3.org/2001/XInclude" href="../../../../indices/placeList.xml" xpointer="element(/1/2/1/1)"/><xi:include xmlns:xi="http://www.w3.org/2001/XInclude" href="../../../../indices/personList.xml" xpointer="element(/1/2/1/1)"/><xi:include xmlns:xi="http://www.w3.org/2001/XInclude" href="../../../../indices/eventList.xml" xpointer="element(/1/2/1/1)"/><xi:include xmlns:xi="http://www.w3.org/2001/XInclude" href="../../../../indices/orgList.xml" xpointer="element(/1/2/1/1)"/></div></body></text></TEI>

@@ -1,0 +1,109 @@
+<?xml version="1.0" encoding="UTF-8"?><!DOCTYPE TEI   SYSTEM "../../../schema/toolbox_full.dtd">
+<TEI xmlns="http://www.tei-c.org/ns/1.0" xmlns:cei="http://www.monasterium.net/NS/cei"
+   xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance">
+   <teiHeader>
+      <fileDesc>
+         <titleStmt>
+            <title>Tei version of 3454 exported from monasterium.net </title>
+         </titleStmt>
+         <publicationStmt>
+            <p/>
+         </publicationStmt>
+         <!--In Original: cei:front/cei:sourceDesc/cei:sourceDescRegest-->
+         <sourceDesc>
+            <bibl type="url">https://www.monasterium.net/mom/AT-WStLA/HAUrk/3454/charter</bibl>
+            <bibl default="false" status="draft">Quellen zur Geschichte der Stadt Wien, Bd. II/2,
+               Nr. 3454 As published in HAUrk by Wiener Stadt- und Landesarchiv </bibl>
+            <msDesc status="draft">
+               <msIdentifier>
+                  <repository>Wiener Stadt- und Landesarchiv</repository>
+                  <idno>3454</idno>
+                  <altIdentifier type="old">
+                     <idno>517696</idno>
+                  </altIdentifier>
+               </msIdentifier>
+               <physDesc>
+                  <sealDesc>
+                     <seal>
+                        <p>Anhangendes, beschädigtes Siegel, grün u. Sch.</p>
+                     </seal>
+                  </sealDesc>
+               </physDesc>
+            </msDesc>
+         </sourceDesc>
+      </fileDesc>
+      <encodingDesc>
+         <projectDesc default="false">
+            <p><label type="contentual-editing">Dissertation Korbinian Grünwald</label></p>
+         </projectDesc>
+      </encodingDesc>
+      <profileDesc>
+         <creation>
+            <placeName>Wien</placeName>
+            <date when="14511129">1451 XI 29</date>
+            <origDate instant="false">zu Wienn, an sand Andres abent.</origDate></creation>
+      </profileDesc>
+   </teiHeader>
+   <facsimile>
+      <surface>
+         <graphic
+            url="http://images.monasterium.net/pics/AT-WStLA/HA-U/WStLA-HA-Urkunden_03454_v.jpg"/>
+      </surface>
+      <surface>
+         <graphic
+            url="http://images.monasterium.net/pics/AT-WStLA/HA-U/WStLA-HA-Urkunden_03454_r.jpg"/>
+      </surface>
+   </facsimile>
+   <text>
+      <body>
+         <div type="abstract" resp="kg">
+            <p>
+               <rs type="event" ref="ev__QGW_II_II_3454"><rs type="fn" role="issuer"><rs
+                        type="person" ref="pe__johann_koll_SB_CD_01565">Hanns Koll, <roleName
+                           type="occ" corresp="org__wien-st_stephan">korherr</roleName> dacz sand
+                        Stephan zu Wienn, <roleName type="occ"
+                           corresp="org__wien-st_philipp_und_st_jakob_kapelle-altar_st_maria"
+                           >kaplan</roleName> Unser Fraun altar in sand Philipps und sand Jacobs
+                        kappeln in der Kollner hof zu Wienn</rs>,</rs>
+                  <triggerstring n="disp">gibt <add>geltes purkrechts</add></triggerstring>
+                  <rs type="fn" role="recipient"><rs type="person"
+                        ref="pe__christian_widhacker_SB_CD_00626"><roleName type="title"
+                           >hern</roleName> Kristan Widhacker</rs></rs>
+                  <rs type="fn" role="transactiongood_II"><measure>1 lb dn.</measure>
+                     <triggerstring n="fn">geltes purkrechts</triggerstring> von <rs type="place"
+                        ref="pl__wien-immo_kumpfgasse_1"><roleName type="owner"
+                           corresp="pe__christian_widhacker_SB_CD_00626">seinem</roleName> Hause,
+                           <roleName type="topo" corresp="pl__wien-kumpfgasse">in dem
+                           Kumphgesslein</roleName>
+                        <roleName type="topo" corresp="pl__wien-immo_kumpfgasse_6"
+                           >zenagst</roleName>
+                        <rs type="place" ref="pl__wien-immo_kumpfgasse_6">dem Romhof</rs>
+                        gelegen</rs>,</rs>
+                  <rs type="fn" role="transactiongood_I">um <measure>8 lb dn.</measure>
+                     abzulösen</rs>.</rs>
+            </p>
+         </div>
+         <div type="seal">
+            <p><rs type="event" ref="ev__QGW_II_II_3454"><rs type="fn" role="witness">Besiegelt mit
+                     dem Siegel des <rs type="person" ref="pe__ulrich_gundloch_QGW_II_II_3454"
+                        >Wiener <roleName type="occ" corresp="org__wien">Bürgers</roleName>
+                        Ulreichs des Gundloch als <roleName type="occ" corresp="org__wien-st_philipp_und_st_jakob_kapelle-altar_st_maria"
+                           >Lehensherrn des Altars</roleName></rs>.</rs></rs>
+            </p>
+         </div>
+         <div type="nota">
+            <p>Indorsat: Widhacker haus purkrecht. </p>
+         </div>
+         <div type="lists">
+            <xi:include xmlns:xi="http://www.w3.org/2001/XInclude"
+               href="../../../../indices/placeList.xml" xpointer="element(/1/2/1/1)"/>
+            <xi:include xmlns:xi="http://www.w3.org/2001/XInclude"
+               href="../../../../indices/personList.xml" xpointer="element(/1/2/1/1)"/>
+            <xi:include xmlns:xi="http://www.w3.org/2001/XInclude"
+               href="../../../../indices/eventList.xml" xpointer="element(/1/2/1/1)"/>
+            <xi:include xmlns:xi="http://www.w3.org/2001/XInclude"
+               href="../../../../indices/orgList.xml" xpointer="element(/1/2/1/1)"/>
+         </div>
+      </body>
+   </text>
+</TEI>

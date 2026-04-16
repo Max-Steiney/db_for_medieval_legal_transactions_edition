@@ -1,0 +1,120 @@
+<?xml version="1.0" encoding="UTF-8"?><!DOCTYPE TEI   SYSTEM "../../../schema/toolbox_full.dtd">
+<TEI xmlns="http://www.tei-c.org/ns/1.0" xmlns:cei="http://www.monasterium.net/NS/cei"
+   xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance">
+   <teiHeader>
+      <fileDesc>
+         <titleStmt>
+            <title>Tei version of 3452 exported from monasterium.net </title>
+         </titleStmt>
+         <publicationStmt>
+            <p/>
+         </publicationStmt>
+         <!--In Original: cei:front/cei:sourceDesc/cei:sourceDescRegest-->
+         <sourceDesc>
+            <bibl type="url">https://www.monasterium.net/mom/AT-WStLA/HAUrk/3452/charter</bibl>
+            <bibl default="false" status="draft">Quellen zur Geschichte der Stadt Wien, Bd. II/2,
+               Nr. 3452 As published in HAUrk by Wiener Stadt- und Landesarchiv </bibl>
+            <msDesc status="draft">
+               <msIdentifier>
+                  <repository>Wiener Stadt- und Landesarchiv</repository>
+                  <idno>3452</idno>
+                  <altIdentifier type="old">
+                     <idno>517694</idno>
+                  </altIdentifier>
+               </msIdentifier>
+               <physDesc>
+                  <sealDesc>
+                     <seal>
+                        <p>Drei anhangende Siegel, 2., 3. beschädigt.</p>
+                     </seal>
+                  </sealDesc>
+               </physDesc>
+            </msDesc>
+         </sourceDesc>
+      </fileDesc>
+      <encodingDesc>
+         <projectDesc default="false">
+            <p><label type="contentual-editing">Dissertation Korbinian Grünwald</label></p>
+         </projectDesc>
+      </encodingDesc>
+      <profileDesc>
+         <creation>
+            <placeName>Wien</placeName>
+            <date when="14511016">1451 X 16</date>
+            <origDate instant="false">zu Wienn, an sand Gallen tag.</origDate></creation>
+      </profileDesc>
+   </teiHeader>
+   <facsimile>
+      <surface>
+         <graphic
+            url="http://images.monasterium.net/pics/AT-WStLA/HA-U/WStLA-HA-Urkunden_03452_r.jpg"/>
+      </surface>
+      <surface>
+         <graphic
+            url="http://images.monasterium.net/pics/AT-WStLA/HA-U/WStLA-HA-Urkunden_03452_v.jpg"/>
+      </surface>
+   </facsimile>
+   <text>
+      <body>
+         <div type="abstract" resp="kg">
+            <p>
+               <rs type="event" ref="ev__QGW_II_II_3452"><rs type="fn" role="issuer"><rs
+                        type="person" ref="pe__stephan_seuringer_QGW_II_II_3452">Stephan Seuringer,
+                           <roleName type="occ"
+                           corresp="org__wien-st_hieronymus-messe_stadl_michael"
+                           ><add>capplan</add></roleName>
+                        <roleName type="occ" corresp="org__wien-st_koloman-messe_stadl_michael"
+                           >capplan</roleName> der ewigen mess, so Michel Stadel, der
+                        fleischhackher, zu sand Colman und zu sand Yeronimus hie zu lesen zu
+                        stifften geschafft hat</rs>,</rs>
+                  <triggerstring n="disp">beurkundet, dass <add>zu stifften geschafft hat</add>
+                     <add>jerlicher gült gekauft haben</add></triggerstring>
+                  <rs type="event" ref="ev__QGW_II_II_3285"><rs type="fn" role="issuer"><rs
+                           type="person" ref="pe__michael_stadl_SB_CD_00055">dieser</rs></rs>
+                     <rs type="fn" role="recipient"><rs type="org" ref="org__wien-st_koloman">hincz
+                           sand Colman auf dem Goczakcher vor Kernertor</rs></rs>
+                     <rs type="fn" role="transactiongood_II">drei messe, aine am montag, aine am
+                        mittichen und aine am freitag,</rs>
+                     <rs type="fn" role="recipient"><rs type="org" ref="org__wien-st_hieronymus">und
+                           hincz sand Yeronimus</rs></rs>
+                     <rs type="fn" role="transactiongood_II">auch zwo messe, aine am sambstag und
+                        aine am suntag wöchenlich zu lesen,</rs>
+                     <rs type="fn" role="transactiongood_I">von <rs type="place"
+                           ref="pl__wien-immo_hohewarte_1"><roleName type="owner"
+                              corresp="pe__michael_stadl_SB_CD_00055">seinen</roleName> zwain
+                           weingarten, <roleName type="topo" corresp="pl__wien-hohewarte">an der
+                              Hochenbart gelegen</roleName>, genant die Weissmaur</rs>,</rs>
+                     <triggerstring n="fn">zu stifften geschafft hat</triggerstring> ,</rs> dass aber der
+                  Bergherr diese Weingärten zur Messe nicht habe vertigen wollen, <rs type="event"
+                     ref="ev__QGW_II_II_3450">weshalb Conrat Piligreim, Peter von Aslabing, Stephan
+                     Kuefüsser und Caspar Kembnater, des genannten Micheln Stadel gescheftherren,
+                     auf der stat hie zu Wienn 28 lb dn. jerlicher gült <triggerstring n="disp"
+                           ><add>jerlicher gült</add> gekauft haben</triggerstring>,</rs>
+                  <triggerstring n="disp">und stellt über die richtige Ausführung der Stiftung für sich
+                     und seine Nachfolger einen Revers aus</triggerstring>.</rs>
+            </p>
+         </div>
+         <div type="seal">
+            <p><rs type="event" ref="ev__QGW_II_II_3452"><rs type="fn" role="witness">Besiegelt mit
+                     den Siegeln <rs type="person" ref="pe__oswald_reicholf_QGW_II_II_3314">Oswalts
+                        Reicholfs <roleName type="occ" corresp="org__wien"
+                           ><add>burger</add></roleName></rs>, <rs type="person"
+                        ref="pe__stephan_gibing_QGW_II_II_3275">Stephans Gibing, baid <roleName type="occ" corresp="org__wien">burger</roleName></rs>, und <rs
+                        type="person" ref="pe__ulrich_hirssauer_QGW_II_II_3239">Ulreichs Hirssauer,
+                           <roleName type="occ" corresp="org__wien"
+                     >statschreiber</roleName></rs>.</rs></rs>
+            </p>
+         </div>
+         <div type="lists">
+            <xi:include xmlns:xi="http://www.w3.org/2001/XInclude"
+               href="../../../../indices/placeList.xml" xpointer="element(/1/2/1/1)"/>
+            <xi:include xmlns:xi="http://www.w3.org/2001/XInclude"
+               href="../../../../indices/personList.xml" xpointer="element(/1/2/1/1)"/>
+            <xi:include xmlns:xi="http://www.w3.org/2001/XInclude"
+               href="../../../../indices/eventList.xml" xpointer="element(/1/2/1/1)"/>
+            <xi:include xmlns:xi="http://www.w3.org/2001/XInclude"
+               href="../../../../indices/orgList.xml" xpointer="element(/1/2/1/1)"/>
+         </div>
+      </body>
+   </text>
+</TEI>

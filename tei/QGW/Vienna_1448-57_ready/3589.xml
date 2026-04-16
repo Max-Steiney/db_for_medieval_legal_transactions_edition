@@ -1,0 +1,24 @@
+<?xml version="1.0" encoding="UTF-8"?><!DOCTYPE TEI   SYSTEM "../../../schema/toolbox_full.dtd"><TEI xmlns="http://www.tei-c.org/ns/1.0" xmlns:cei="http://www.monasterium.net/NS/cei" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"><teiHeader><fileDesc><titleStmt><title>Tei version of 3589 exported from monasterium.net </title></titleStmt><publicationStmt><p/></publicationStmt><!--In Original: cei:front/cei:sourceDesc/cei:sourceDescRegest--><sourceDesc><bibl  type="url">https://www.monasterium.net/mom/AT-WStLA/HAUrk/3589/charter</bibl><bibl default="false" status="draft">Quellen zur Geschichte der Stadt Wien, Bd. II/2,
+               Nr. 3589 As published in HAUrk by Wiener Stadt- und Landesarchiv </bibl><msDesc status="draft"><msIdentifier><repository>Wiener Stadt- und Landesarchiv</repository><idno>3589</idno><altIdentifier type="old"><idno>517840</idno></altIdentifier></msIdentifier><msContents><msItem><listBibl default="false"><bibl default="false" status="draft">Jahrbuch der kais. Kunstsamml. 17b, n°
+                           15281 Regest.</bibl></listBibl></msItem></msContents><physDesc><sealDesc><seal><p>Das angehängte Spitalsiegel fehlt, das rechts davon auf dem Buge
+                           aufgedrückte Secretsiegel des Spitals von grünem Wachse ist abgesprungen.
+                        </p></seal></sealDesc></physDesc></msDesc></sourceDesc></fileDesc><encodingDesc><projectDesc default="false"><p><label type="contentual-editing">Dissertation Korbinian Grünwald</label></p></projectDesc></encodingDesc><profileDesc><creation>
+            <placeName>Wien</placeName>
+            <date when="14540930">1454 IX 30</date>
+            <origDate instant="false">zu Wienn, an montag nach sand Michels
+            tag.</origDate></creation></profileDesc></teiHeader><facsimile><surface><graphic url="http://images.monasterium.net/pics/AT-WStLA/HA-U/WStLA-HA-Urkunden_03589_a_r.jpg"/></surface><surface><graphic url="http://images.monasterium.net/pics/AT-WStLA/HA-U/WStLA-HA-Urkunden_03589_a_v.jpg"/></surface><surface><graphic url="http://images.monasterium.net/pics/AT-WStLA/HA-U/WStLA-HA-Urkunden_03589_b_r.jpg"/></surface><surface><graphic url="http://images.monasterium.net/pics/AT-WStLA/HA-U/WStLA-HA-Urkunden_03589_b_v.jpg"/></surface></facsimile><text><body><div type="abstract" resp="kg"><p>
+               <rs type="event" ref="ev__QGW_II_II_3589"><rs type="fn" role="issuer"><rs type="person" ref="pe__christian_prenner_SB_CD_01257">Kristan Prenner,
+                           <roleName type="occ" corresp="org__wien-buergerspital">spitalmaister</roleName> der burger Spital vor Kernertor zu
+                     Wienn</rs>,</rs>
+                  <triggerstring n="disp">gibt <add>gelts purkrechts</add></triggerstring>
+                  <rs type="fn" role="recipient"><rs type="person" ref="pe__johann_neisser_QGW_II_II_3589">Hannsen Neisser, dem <roleName type="prof">messrer</roleName>, <roleName type="occ" corresp="org__wien">mitburger</roleName> zu Wienn</rs>,</rs>
+                  <rs type="fn" role="transactiongood_II">36 dn. <triggerstring n="fn">gelts
+                        purkrechts</triggerstring>, so das egenant Spital auf <rs type="place" ref="pl__wien-immo_st_pankraz_13"><roleName type="owner" corresp="pe__johann_neisser_QGW_II_II_3589">seim</roleName> haus,
+                           <roleName type="topo" corresp="pl__wien-st_pankraz">gelegen hinder sand
+                           Pangreczen</roleName>
+                        <roleName type="topo" corresp="pl__wien-immo_st_pankraz_14">zenagst</roleName>
+                        <rs type="place" ref="pl__wien-immo_st_pankraz_14"><roleName type="owner" corresp="pe__johann_scherrubl_SB_CD_00698" cert="high">des
+                              Scherrübleins</roleName> haus</rs></rs>, gehabt hat,</rs>
+                  <rs type="fn" role="transactiongood_I">um <measure>9 sh. 18 dn.</measure>
+                     abzulösen.</rs></rs>
+            </p></div><div type="lists"><xi:include xmlns:xi="http://www.w3.org/2001/XInclude" href="../../../../indices/placeList.xml" xpointer="element(/1/2/1/1)"/><xi:include xmlns:xi="http://www.w3.org/2001/XInclude" href="../../../../indices/personList.xml" xpointer="element(/1/2/1/1)"/><xi:include xmlns:xi="http://www.w3.org/2001/XInclude" href="../../../../indices/eventList.xml" xpointer="element(/1/2/1/1)"/><xi:include xmlns:xi="http://www.w3.org/2001/XInclude" href="../../../../indices/orgList.xml" xpointer="element(/1/2/1/1)"/></div></body></text></TEI>

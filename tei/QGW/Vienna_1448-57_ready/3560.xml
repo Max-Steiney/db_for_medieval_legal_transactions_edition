@@ -1,0 +1,33 @@
+<?xml version="1.0" encoding="UTF-8"?><!DOCTYPE TEI   SYSTEM "../../../schema/toolbox_full.dtd"><TEI xmlns="http://www.tei-c.org/ns/1.0" xmlns:cei="http://www.monasterium.net/NS/cei" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"><teiHeader><fileDesc><titleStmt><title>Tei version of 3560 exported from monasterium.net </title></titleStmt><publicationStmt><p/></publicationStmt><!--In Original: cei:front/cei:sourceDesc/cei:sourceDescRegest--><sourceDesc><bibl  type="url">https://www.monasterium.net/mom/AT-WStLA/HAUrk/3560/charter</bibl><bibl default="false" status="draft">Quellen zur Geschichte der Stadt Wien, Bd. II/2, Nr. 3560 As published in HAUrk by
+               Wiener Stadt- und Landesarchiv </bibl><msDesc status="draft"><msIdentifier><repository>Wiener Stadt- und Landesarchiv</repository><idno>3560</idno><altIdentifier type="old"><idno>517809</idno></altIdentifier></msIdentifier><msContents><msItem><listBibl default="false"><bibl default="false" status="draft">Camesina, Regesten 87 n° 405 Regest.</bibl></listBibl></msItem></msContents><physDesc><sealDesc><seal><p>Anhangendes Stadtsiegel, roth u. Sch. </p></seal></sealDesc></physDesc></msDesc></sourceDesc></fileDesc><encodingDesc><projectDesc default="false"><p><label type="contentual-editing">Dissertation Korbinian Grünwald</label></p></projectDesc></encodingDesc><profileDesc><creation>
+            <placeName>Wien</placeName>
+            <date when="14540209">1454 II 09</date>
+            <origDate instant="false">zu Wienn, an sambstag vor sand Scolastica tag, der heiligen
+               junkchfraun.</origDate></creation></profileDesc></teiHeader><facsimile><surface><graphic url="http://images.monasterium.net/pics/AT-WStLA/HA-U/WStLA-HA-Urkunden_03560_r.jpg"/></surface><surface><graphic url="http://images.monasterium.net/pics/AT-WStLA/HA-U/WStLA-HA-Urkunden_03560_v.jpg"/></surface></facsimile><text><body><div type="abstract" resp="kg"><p>
+               <rs type="event" ref="ev__QGW_II_II_3560"><rs type="fn" role="issuer"><rs type="person" ref="pe__oswald_reicholf_QGW_II_II_3314">Oswalt Reicholf,
+                           <roleName type="occ" corresp="org__wien">burgermaister</roleName></rs>,
+                     und <rs type="org" ref="org__wien">der rat gemain der stat zu Wienn</rs></rs>
+                  <triggerstring n="disp">stellen</triggerstring>
+                  <rs type="fn" role="recipient"><rs type="person" ref="pe__wenzel_QGW_II_II_3489"><roleName type="title">hern</roleName> Wenczlaben, der korherren
+                           <roleName type="occ" corresp="org__wien-st_stephan" cert="unknown">caplan</roleName>, diezeit <roleName type="occ" corresp="org__wien-st_stephan-messe_meczner_anna">verweser</roleName> der
+                        ewigen mess, die frau Anna, weilent Otten des Meczner hausfrau selige, hincz
+                        sand Steffan zu Wienn zu stifften geschafft hat, virstund in der wochen ze
+                        lesen</rs>, und <rs type="org" ref="org__wien-st_stephan-messe_meczner_anna">seinen Nachfolgern</rs></rs>
+                  <triggerstring n="disp">einen Schuldbrief</triggerstring> über <rs type="fn" role="transactiongood_II"><measure>300 lb dn.</measure> guter lanndeswerung in
+                     Österreich</rs>
+                  <triggerstring n="disp">aus</triggerstring>, <rs type="event" ref="ev__QGW_II_II_3489">welche <rs type="fn" role="recipient"><rs type="org" ref="org__wien">ihnen</rs></rs>
+                     <rs type="fn" role="issuer"><rs type="fn" role="transactiongood_I">die
+                                 <measure><add>300 lb dn.</add></measure></rs>
+                        <rs type="person" ref="pe__ulrich_matzleinsdorfer_QGW_II_II_3362"><roleName type="rep" corresp="pe__otto_meczner_QGW_II_II_2591" cert="medium">Geschäftsherren</roleName> des Meczner</rs>
+                        <rs type="person" ref="pe__philipp_kraukcher_QGW_II_II_3353"><roleName type="rep" corresp="pe__otto_meczner_QGW_II_II_2591" cert="medium"><add>Geschäftsherren</add></roleName></rs></rs>
+                     <rs type="fn" role="transactiongood_II"><rs type="org" ref="org__wien-st_stephan-messe_meczner_anna">zur Stiftung dieser
+                           Messe</rs></rs>
+                     <triggerstring n="disp">übergeben hatten</triggerstring>,</rs>
+                  <triggerstring n="disp">verpflichten sich</triggerstring>, <rs type="fn" role="transactiongood_I">jedem Kaplan davon <triggerstring n="fn">jährlich</triggerstring>
+                     <measure>15 lb dn.</measure>
+                     <triggerstring n="fn">zu dienen</triggerstring>,</rs> sowie das Capital im Falle der
+                  Forderung zurückzuzahlen.</rs>
+            </p></div><div type="seal"><p><rs type="event" ref="ev__QGW_II_II_3560"><rs type="fn" role="witness">Besiegelt mit
+                     ihrem <rs type="org" ref="org__wien">klainem anhangundem
+                  statinsigl</rs>.</rs></rs>
+            </p></div><div type="lists"><xi:include xmlns:xi="http://www.w3.org/2001/XInclude" href="../../../../indices/placeList.xml" xpointer="element(/1/2/1/1)"/><xi:include xmlns:xi="http://www.w3.org/2001/XInclude" href="../../../../indices/personList.xml" xpointer="element(/1/2/1/1)"/><xi:include xmlns:xi="http://www.w3.org/2001/XInclude" href="../../../../indices/eventList.xml" xpointer="element(/1/2/1/1)"/><xi:include xmlns:xi="http://www.w3.org/2001/XInclude" href="../../../../indices/orgList.xml" xpointer="element(/1/2/1/1)"/></div></body></text></TEI>

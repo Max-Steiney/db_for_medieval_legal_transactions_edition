@@ -1,0 +1,107 @@
+<?xml version="1.0" encoding="UTF-8"?><!DOCTYPE TEI   SYSTEM "../../../schema/toolbox_full.dtd">
+<TEI xmlns="http://www.tei-c.org/ns/1.0" xmlns:cei="http://www.monasterium.net/NS/cei"
+  xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance">
+  <teiHeader>
+    <fileDesc>
+      <titleStmt>
+        <title>Tei version of 3398 exported from monasterium.net </title>
+      </titleStmt>
+      <publicationStmt>
+        <p/>
+      </publicationStmt>
+      <!--In Original: cei:front/cei:sourceDesc/cei:sourceDescRegest-->
+      <sourceDesc>
+        <bibl type="url">https://www.monasterium.net/mom/AT-WStLA/HAUrk/3398/charter</bibl>
+        <bibl default="false" status="draft">Quellen zur Geschichte der Stadt Wien, Bd. II/2, Nr.
+          3398 As published in HAUrk by Wiener Stadt- und Landesarchiv </bibl>
+        <msDesc status="draft">
+          <msIdentifier>
+            <repository>Wiener Stadt- und Landesarchiv</repository>
+            <idno>3398</idno>
+            <altIdentifier type="old">
+              <idno>517638</idno>
+            </altIdentifier>
+          </msIdentifier>
+          <msContents>
+            <msItem>
+              <listBibl default="false">
+                <bibl default="false" status="draft">Jahrbuch der kais. Kunstsamml. 17b, n° 15248,
+                  Bruchstück.</bibl>
+              </listBibl>
+            </msItem>
+          </msContents>
+          <physDesc>
+            <sealDesc>
+              <seal>
+                <p>Zum. Verschlusse aufgedrücktes Wappensiegel (Sava Fig. 108) von rothem
+                  Wachse.</p>
+              </seal>
+            </sealDesc>
+          </physDesc>
+        </msDesc>
+      </sourceDesc>
+    </fileDesc>
+    <encodingDesc>
+      <projectDesc default="false">
+        <p><label type="contentual-editing">Dissertation Korbinian Grünwald</label></p>
+      </projectDesc>
+    </encodingDesc>
+    <profileDesc>
+      <creation>
+        <placeName>Wiener-Neustadt</placeName>
+        <date when="14500811">1450 VIII 11</date>
+        <origDate instant="false">Geben zu der Neunstat an eritag nach sand Larenczen tag, anno
+          domini etc. Lmo, unsers reichs im aindleften jare. </origDate></creation>
+    </profileDesc>
+  </teiHeader>
+  <facsimile>
+    <surface>
+      <graphic url="http://images.monasterium.net/pics/AT-WStLA/HA-U/WStLA-HA-Urkunden_03398_r.jpg"
+      />
+    </surface>
+    <surface>
+      <graphic url="http://images.monasterium.net/pics/AT-WStLA/HA-U/WStLA-HA-Urkunden_03398_v.jpg"
+      />
+    </surface>
+  </facsimile>
+  <text>
+    <body>
+      <div type="abstract" resp="kg">
+        <p><rs type="event" ref="ev__QGW_II_II_3398"><rs type="fn" role="issuer"><rs type="person"
+                ref="pe__friedrich_v_herzog_von_oesterreich_QGW_II_I_3270">König Friedrich
+              IV.</rs></rs>
+            <triggerstring n="disp">befiehlt</triggerstring>
+            <rs type="fn" role="recipient">dem <rs type="org" ref="org__wien">Bürgermeister und
+                Rathe zu Wien</rs>,</rs>
+            <rs type="fn" role="other"><triggerstring n="fn"><add>mit Vorsprechen</add></triggerstring>
+              <rs type="person" ref="pe__johann_vom_graben_QGW_II_II_3398">seinem Wiener <roleName
+                  type="occ" corresp="org_wien"
+                  select="pe__friedrich_v_herzog_von_oesterreich_QGW_II_I_3270">Bürger</roleName>
+                Hannsen vom Graben</rs></rs>
+            <triggerstring n="disp">hinsichtlich der Ansprüche</triggerstring>, die er <rs type="fn"
+              role="transactiongood_III">von <rs type="place" ref="pl__wien-immo_lichtensteg_1">ains
+                grunts und seiner zugehörung wegen, <roleName type="owner"
+                  corresp="pe__johann_vom_graben_QGW_II_II_3398">sein behausung</roleName>,
+                  <roleName type="topo" corresp="pl__wien-lichtensteg">an dem Liechtensteg daselbs
+                  zu Wienn gelegen</roleName></rs>, beru/orend</rs>, <rs type="fn" role="other"
+                ><triggerstring n="fn"><add>hincz</add> zu</triggerstring>
+              <rs type="person" ref="pe__peter_obrecht_QGW_II_II_3398">Peteria Obrecht</rs></rs> ze
+            haben mainet, <triggerstring n="disp">furderleich recht ergeen zu lassen</triggerstring>.</rs>
+        </p>
+      </div>
+      <div type="nota">
+        <p>Von anderer Hand: commissio domini regis propria. </p>
+      </div>
+      <div type="lists">
+        <xi:include xmlns:xi="http://www.w3.org/2001/XInclude"
+          href="../../../../indices/placeList.xml" xpointer="element(/1/2/1/1)"/>
+        <xi:include xmlns:xi="http://www.w3.org/2001/XInclude"
+          href="../../../../indices/personList.xml" xpointer="element(/1/2/1/1)"/>
+        <xi:include xmlns:xi="http://www.w3.org/2001/XInclude"
+          href="../../../../indices/eventList.xml" xpointer="element(/1/2/1/1)"/>
+        <xi:include xmlns:xi="http://www.w3.org/2001/XInclude"
+          href="../../../../indices/orgList.xml" xpointer="element(/1/2/1/1)"/>
+      </div>
+    </body>
+  </text>
+</TEI>

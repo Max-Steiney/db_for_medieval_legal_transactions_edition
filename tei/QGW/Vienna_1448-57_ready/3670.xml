@@ -1,0 +1,153 @@
+<?xml version="1.0" encoding="UTF-8"?><!DOCTYPE TEI   SYSTEM "../../../schema/toolbox_full.dtd">
+<TEI xmlns="http://www.tei-c.org/ns/1.0" xmlns:cei="http://www.monasterium.net/NS/cei"
+   xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance">
+   <teiHeader>
+      <fileDesc>
+         <titleStmt>
+            <title>Tei version of 3670 exported from monasterium.net </title>
+         </titleStmt>
+         <publicationStmt>
+            <p/>
+         </publicationStmt>
+         <!--In Original: cei:front/cei:sourceDesc/cei:sourceDescRegest-->
+         <sourceDesc>
+            <bibl type="url">https://www.monasterium.net/mom/AT-WStLA/HAUrk/3670/charter</bibl>
+            <bibl default="false" status="draft">Quellen zur Geschichte der Stadt Wien, Bd. II/2,
+               Nr. 3670 As published in HAUrk by Wiener Stadt- und Landesarchiv </bibl>
+            <msDesc status="draft">
+               <msIdentifier>
+                  <repository>Wiener Stadt- und Landesarchiv</repository>
+                  <idno>3670</idno>
+                  <altIdentifier type="old">
+                     <idno>517925</idno>
+                  </altIdentifier>
+               </msIdentifier>
+               <msContents>
+                  <msItem>
+                     <listBibl default="false">
+                        <bibl default="false" status="draft">Camesina, Regesten 89 n° 421 Regest.
+                           [385]</bibl>
+                     </listBibl>
+                  </msItem>
+               </msContents>
+               <physDesc>
+                  <sealDesc>
+                     <seal>
+                        <p>Die Siegel fehlen.</p>
+                     </seal>
+                  </sealDesc>
+               </physDesc>
+            </msDesc>
+         </sourceDesc>
+      </fileDesc>
+      <encodingDesc>
+         <projectDesc default="false">
+            <p><label type="contentual-editing">Dissertation Korbinian Grünwald</label></p>
+         </projectDesc>
+      </encodingDesc>
+      <profileDesc>
+         <creation>
+            <placeName>Wien</placeName>
+            <date when="14560607">1456 VI 07</date>
+            <origDate instant="false">zu Wienn, an montag nach sand Erasems
+            tag.</origDate></creation>
+      </profileDesc>
+   </teiHeader>
+   <facsimile>
+      <surface>
+         <graphic
+            url="http://images.monasterium.net/pics/AT-WStLA/HA-U/WStLA-HA-Urkunden_03670_r.jpg"/>
+      </surface>
+      <surface>
+         <graphic
+            url="http://images.monasterium.net/pics/AT-WStLA/HA-U/WStLA-HA-Urkunden_03670_v.jpg"/>
+      </surface>
+   </facsimile>
+   <text>
+      <body>
+         <div type="abstract" resp="kg">
+            <p>
+               <rs type="event" ref="ev__SB_CD_00311"><rs type="fn" role="issuer"><rs type="person"
+                        ref="pe__diemut_QGW_II_II_3670">Diemut, <rs type="person"
+                           ref="pe__jakob_von_eggenburg_QGW_II_II_3670">Jacoben von Egenburg, des
+                              <roleName type="prof">Sparer</roleName>
+                           <roleName type="title_ref" corresp="pl__wien">zu</roleName> Wienn</rs>,
+                           <roleName type="kin" corresp="pe__jakob_von_eggenburg_QGW_II_II_3670"
+                           >hausfrau</roleName>, die emaln <rs type="person"
+                           ref="pe__ludwig_oesterreicher_QGW_II_II_3670">Ludweigen Osterreicher, den
+                              <roleName type="prof">sneider</roleName>
+                           <roleName type="dead">seligen</roleName></rs>, auch <roleName type="kin"
+                           corresp="pe__ludwig_oesterreicher_QGW_II_II_3670">eleichen</roleName>
+                        gehabt hat</rs>,</rs>
+                  <triggerstring n="disp">verkauft <add>geltes purkchrechts</add></triggerstring>
+                  <rs type="fn" role="other"><triggerstring n="fn">mit Handen</triggerstring>
+                     <rs type="person" ref="pe__niklas_teschler_QGW_II_II_2951"><roleName
+                           type="title">hern</roleName> Niclasen Teschler, <roleName type="occ"
+                           corresp="org__wien">burgermaister</roleName></rs>, und <rs type="org"
+                        ref="org__wien">des Rathes</rs></rs>
+                  <rs type="fn" role="transactiongood_I"><measure>2 lb dn.</measure>
+                     <triggerstring n="fn">geltes purkchrechts</triggerstring> (ablösbar) auf <rs
+                        type="place" ref="pl__wien-immo_hoher_markt_24"><roleName type="owner"
+                           corresp="pe__diemut_QGW_II_II_3670">ihrem</roleName> Hause, <rs
+                           type="event" ref="ev__SB_CD_00311_men_1">das sie und ihr erster Mann mit
+                           gesambter hanndt gekaufft haben,</rs>
+                        <roleName type="topo" corresp="pl__wien-hoher_markt">gelegen am
+                           Hohenmarkcht</roleName>
+                        <roleName type="topo" corresp="pl__wien-wiltwerkerstrasse">am egk, als man
+                           in die Wildwercherstrass geet</roleName>, <roleName type="topo"
+                           corresp="pl__wien-hoher_markt_fischmarkt">gegen dem Vischmarkcht
+                           über</roleName>
+                        <roleName type="topo" corresp="pl__wien-immo_wiltwerkerstrasse_33"
+                           >zenagst</roleName>
+                        <rs type="place" ref="pl__wien-immo_wiltwerkerstrasse_33"><rs type="person"
+                              ref="pe__stephan_tengk_QGW_II_II_3455">Stephan Tengken</rs> haus</rs>,
+                           <rs type="event" ref="ev__QGW_II_II_3670_men_1"><rs type="fn"
+                              role="issuer"><rs type="place" ref="pl__wien-immo_hoher_markt_24"
+                                 >darauf</rs></rs>
+                           <triggerstring n="disp">emaln</triggerstring>
+                           <rs type="fn" role="recipient"><rs type="org"
+                                 ref="org__wien-st_laurenz_am_alten_fleischmarkt">die geistlichen
+                                 fraun zu sand Larenczen zu Wienn</rs></rs>
+                           <rs type="fn" role="transactiongood_I"><measure>2½ lb dn.</measure>
+                              <triggerstring n="fn">gelcz purkchrechts</triggerstring></rs>
+                           <triggerstring n="disp"><add>gelcz purkchrechts</add> gehabt
+                              haben</triggerstring></rs></rs>,</rs>
+                  <rs type="fn" role="transactiongood_II">um <measure>16 lb dn.</measure>, <rs
+                        type="event" ref="ev__SB_CD_00305_men_1">die emaln gelegen gewesen sind auf
+                        Fridreichs Eysner, des spitalschreiber, haus am Salczgriess,</rs>
+                     <rs type="event" ref="ev__QGW_II_II_3670_men_1">damit <rs type="fn"
+                           role="issuer"><rs type="person" ref="pe__diemut_QGW_II_II_3670"
+                           >sie</rs></rs> die vorgenanten 2½ lb dn. <triggerstring n="disp"
+                           >purkchrecht</triggerstring> von ihrem Hause <triggerstring n="disp">geledigt
+                           und gelöst hat</triggerstring>,</rs></rs>
+                  <rs type="fn" role="recipient"><rs type="person"
+                        ref="pe__meinhard_lochner_QGW_II_II_3646"><roleName type="title"
+                           >hern</roleName> Meinharten Lochner, <roleName type="occ"
+                           corresp="org__wien-st_stephan-altar_zwoelfapostel-messe_ybbs_anna"
+                           >caplan</roleName> der mess, die frau Anna von Ibs auf der Zwelfpoten
+                        altar zu sand Stephan zu Wienn gestifft hat</rs>, und <rs type="org"
+                        ref="org__wien-st_stephan-altar_zwoelfapostel-messe_ybbs_anna">seinen
+                        Nachfolgern</rs>.</rs></rs>
+            </p>
+         </div>
+         <div type="seal">
+            <p><rs type="event" ref="ev__QGW_II_II_3670"><rs type="fn" role="witness">Besiegelt mit
+                     dem <rs type="org" ref="org__wien">städtischen Grundsiegel</rs> und dem Siegel
+                     des <rs type="person" ref="pe__simon_von_eslarn_QGW_II_II_3263">Wiener
+                           <roleName type="occ" corresp="org__wien">Bürgers</roleName> Simon
+                        von Eslorn</rs>.</rs></rs>
+            </p>
+         </div>
+         <div type="lists">
+            <xi:include xmlns:xi="http://www.w3.org/2001/XInclude"
+               href="../../../../indices/placeList.xml" xpointer="element(/1/2/1/1)"/>
+            <xi:include xmlns:xi="http://www.w3.org/2001/XInclude"
+               href="../../../../indices/personList.xml" xpointer="element(/1/2/1/1)"/>
+            <xi:include xmlns:xi="http://www.w3.org/2001/XInclude"
+               href="../../../../indices/eventList.xml" xpointer="element(/1/2/1/1)"/>
+            <xi:include xmlns:xi="http://www.w3.org/2001/XInclude"
+               href="../../../../indices/orgList.xml" xpointer="element(/1/2/1/1)"/>
+         </div>
+      </body>
+   </text>
+</TEI>

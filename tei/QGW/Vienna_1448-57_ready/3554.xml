@@ -1,0 +1,140 @@
+<?xml version="1.0" encoding="UTF-8"?><!DOCTYPE TEI   SYSTEM "../../../schema/toolbox_full.dtd">
+<TEI xmlns="http://www.tei-c.org/ns/1.0" xmlns:cei="http://www.monasterium.net/NS/cei"
+   xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance">
+   <teiHeader>
+      <fileDesc>
+         <titleStmt>
+            <title>Tei version of 3554 exported from monasterium.net </title>
+         </titleStmt>
+         <publicationStmt>
+            <p/>
+         </publicationStmt>
+         <!--In Original: cei:front/cei:sourceDesc/cei:sourceDescRegest-->
+         <sourceDesc>
+            <bibl type="url">https://www.monasterium.net/mom/AT-WStLA/HAUrk/3554/charter</bibl>
+            <bibl default="false" status="draft">Quellen zur Geschichte der Stadt Wien, Bd. II/2,
+               Nr. 3554 As published in HAUrk by Wiener Stadt- und Landesarchiv </bibl>
+            <msDesc status="draft">
+               <msIdentifier>
+                  <repository>Wiener Stadt- und Landesarchiv</repository>
+                  <idno>3554</idno>
+                  <altIdentifier type="old">
+                     <idno>517803</idno>
+                  </altIdentifier>
+               </msIdentifier>
+               <physDesc>
+                  <sealDesc>
+                     <seal>
+                        <p>Zwei rückwärts aufgedrückte Siegel von grünem Wachse, 2. beschädigt.</p>
+                     </seal>
+                  </sealDesc>
+               </physDesc>
+            </msDesc>
+         </sourceDesc>
+      </fileDesc>
+      <encodingDesc>
+         <projectDesc default="false">
+            <p><label type="contentual-editing">Dissertation Korbinian Grünwald</label></p>
+         </projectDesc>
+      </encodingDesc>
+      <profileDesc>
+         <creation>
+            <placeName>Wien</placeName>
+            <date when="14540116">1454 I 16</date>
+            <origDate instant="false">zu Wienn, an mitichen vor sand Anthoni
+            tag.</origDate></creation>
+      </profileDesc>
+   </teiHeader>
+   <facsimile>
+      <surface>
+         <graphic
+            url="http://images.monasterium.net/pics/AT-WStLA/HA-U/WStLA-HA-Urkunden_03554_r.jpg"/>
+      </surface>
+      <surface>
+         <graphic
+            url="http://images.monasterium.net/pics/AT-WStLA/HA-U/WStLA-HA-Urkunden_03554_v.jpg"/>
+      </surface>
+   </facsimile>
+   <text>
+      <body>
+         <div type="abstract" resp="kg">
+            <p>
+               <rs type="event" ref="ev__QGW_II_II_3554"><rs type="fn" role="issuer"><rs
+                        type="person" ref="pe__johann_wilhalm_QGW_II_II_3554">Hanns Wilhalm,
+                           <roleName type="title_ref" corresp="pl__haringsee">gesessen zu</roleName>
+                        Haringsee, <roleName type="rep" corresp="pe__lucia_QGW_II_II_3554"
+                           >anstatt</roleName>
+                        <rs type="person" ref="pe__lucia_QGW_II_II_3554">seiner unmündigen <roleName
+                              type="kin" corresp="pe__johann_wilhalm_QGW_II_II_3554"
+                              >Tochter</roleName> Lucein</rs></rs>, <rs type="person"
+                        ref="pe__simon_wilhalm_QGW_II_II_3554">Simon Wilhalm, sein <roleName
+                           type="kin" corresp="pe__johann_wilhalm_QGW_II_II_3554"
+                        >sun</roleName></rs>, <rs type="person" ref="pe__margarethe_QGW_II_II_3554"
+                        >Margreth <roleName type="kin" corresp="pe__johann_wilhalm_QGW_II_II_3554"
+                              ><add>tochter</add></roleName>, <rs type="person"
+                           ref="pe__andreas_schuster_QGW_II_II_3554">Anderleins, des <roleName
+                              type="prof">schuster</roleName>
+                           <roleName type="title_ref" corresp="pl__haringsee">zu</roleName>
+                           Haringsee</rs>
+                        <roleName type="kin" corresp="pe__andreas_schuster_QGW_II_II_3554"
+                           >hausfrau</roleName></rs>, <rs type="person"
+                        ref="pe__dorothea_QGW_II_II_3554">Dorothe <roleName type="kin"
+                           corresp="pe__johann_wilhalm_QGW_II_II_3554"
+                        ><add>tochter</add></roleName>, <rs type="person"
+                           ref="pe__georg_haimel_QGW_II_II_3554">Jorgen Haimel, des <roleName
+                              type="prof">fleischakcher</roleName> daselbs</rs>, <roleName
+                           type="kin" corresp="pe__georg_haimel_QGW_II_II_3554"
+                        >hausfrau</roleName></rs>, und <rs type="person"
+                        ref="pe__barbara_QGW_II_II_3554">Barbara, <rs type="person"
+                           ref="pe__johann_meichsner_QGW_II_II_3554">Hannsen Meichsner, des
+                              <roleName type="prof">pekchen</roleName>
+                           <roleName type="title_ref" corresp="pl__wien">zu</roleName> Wienn</rs>
+                        <roleName type="kin" corresp="pe__johann_meichsner_QGW_II_II_3554"
+                           >hausfrau</roleName>, sein <roleName type="kin"
+                           corresp="pe__johann_wilhalm_QGW_II_II_3554">tochter</roleName></rs>,</rs>
+                  <triggerstring n="disp">stellen</triggerstring>
+                  <rs type="fn" role="transactiongood_I">hinsichtlich des <rs type="event"
+                        ref="NULL">von <rs type="person" ref="pe__katharina_QGW_II_II_3554"
+                              ><roleName type="title">frau</roleName> Kathrei, <rs type="person"
+                              ref="pe__georg_toller_QGW_II_II_3554">Jörgen des Toller</rs>
+                           <roleName type="kin" corresp="pe__georg_toller_QGW_II_II_3554"
+                              >hausfrau</roleName>, ihrer <roleName type="kin"
+                              corresp="pe__barbara_QGW_II_II_3554">muem</roleName>
+                           <roleName type="kin" corresp="pe__dorothea_QGW_II_II_3554"
+                                 ><add>muem</add></roleName>
+                           <roleName type="kin" corresp="pe__lucia_QGW_II_II_3554"
+                              ><add>muem</add></roleName>
+                           <roleName type="kin" corresp="pe__simon_wilhalm_QGW_II_II_3554"
+                                 ><add>muem</add></roleName>
+                           <roleName type="kin" corresp="pe__margarethe_QGW_II_II_3554"
+                                 ><add>muem</add></roleName>
+                           <roleName type="dead">seligen</roleName></rs>, hinterlassenen Gutes,
+                        dessen nächste Erben sie sind</rs>,</rs>
+                  <rs type="fn" role="recipient"><rs type="person"
+                        ref="pe__ulrich_haringseer_QGW_II_II_3554">Ulreichen Haringseer, dem
+                           <roleName type="prof">ledrer</roleName>, <roleName type="occ" corresp="org__wien">mitburger</roleName> zu Wienn</rs>,</rs>
+                  <triggerstring n="disp">eine Vollmacht aus</triggerstring>.</rs>
+            </p>
+         </div>
+         <div type="seal">
+            <p><rs type="event" ref="ev__QGW_II_II_3554"><rs type="fn" role="witness">Besiegelt mit
+                     den Siegeln <rs type="person" ref="pe__ulrich_hirssauer_QGW_II_II_3239"
+                        >Ulreichs Hirssauer, <roleName type="occ" corresp="org__wien"
+                           >statschreiber</roleName> zu Wienn</rs>, und <rs type="person"
+                        ref="pe__matthias_kornmecz_QGW_II_II_3554">Mathesen des Kornmecz, <roleName type="occ" corresp="org__wien">burger</roleName>
+                  daselbs</rs>.</rs></rs>
+            </p>
+         </div>
+         <div type="lists">
+            <xi:include xmlns:xi="http://www.w3.org/2001/XInclude"
+               href="../../../../indices/placeList.xml" xpointer="element(/1/2/1/1)"/>
+            <xi:include xmlns:xi="http://www.w3.org/2001/XInclude"
+               href="../../../../indices/personList.xml" xpointer="element(/1/2/1/1)"/>
+            <xi:include xmlns:xi="http://www.w3.org/2001/XInclude"
+               href="../../../../indices/eventList.xml" xpointer="element(/1/2/1/1)"/>
+            <xi:include xmlns:xi="http://www.w3.org/2001/XInclude"
+               href="../../../../indices/orgList.xml" xpointer="element(/1/2/1/1)"/>
+         </div>
+      </body>
+   </text>
+</TEI>

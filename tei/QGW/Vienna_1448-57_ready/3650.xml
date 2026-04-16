@@ -1,0 +1,158 @@
+<?xml version="1.0" encoding="UTF-8"?><!DOCTYPE TEI   SYSTEM "../../../schema/toolbox_full.dtd">
+<TEI xmlns="http://www.tei-c.org/ns/1.0" xmlns:cei="http://www.monasterium.net/NS/cei"
+      xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance">
+      <teiHeader>
+            <fileDesc>
+                  <titleStmt>
+                        <title>Tei version of 3650 exported from monasterium.net </title>
+                  </titleStmt>
+                  <publicationStmt>
+                        <p/>
+                  </publicationStmt>
+                  <!--In Original: cei:front/cei:sourceDesc/cei:sourceDescRegest-->
+                  <sourceDesc>
+                        <bibl type="url"
+                              >https://www.monasterium.net/mom/AT-WStLA/HAUrk/3650/charter</bibl>
+                        <bibl default="false" status="draft">Quellen zur Geschichte der Stadt Wien,
+                              Bd. II/2, Nr. 3650 As published in HAUrk by Wiener Stadt- und
+                              Landesarchiv </bibl>
+                        <msDesc status="draft">
+                              <msIdentifier>
+                                    <repository>Wiener Stadt- und Landesarchiv</repository>
+                                    <idno>3650</idno>
+                                    <altIdentifier type="old">
+                                          <idno>517903</idno>
+                                    </altIdentifier>
+                              </msIdentifier>
+                              <msContents>
+                                    <msItem>
+                                          <listBibl default="false">
+                                                <bibl default="false" status="draft">Camesina,
+                                                  Regesten 88 n° 417 Regest.</bibl>
+                                          </listBibl>
+                                    </msItem>
+                              </msContents>
+                              <physDesc>
+                                    <sealDesc>
+                                          <seal>
+                                                <p>Siegel: 1. fehlt, 2. anhangend, grün u. Sch. </p>
+                                          </seal>
+                                    </sealDesc>
+                              </physDesc>
+                        </msDesc>
+                  </sourceDesc>
+            </fileDesc>
+            <encodingDesc>
+                  <projectDesc default="false">
+                        <p><label type="contentual-editing">Dissertation Korbinian
+                              Grünwald</label></p>
+                  </projectDesc>
+            </encodingDesc>
+            <profileDesc>
+                  <creation>
+                        <placeName>Wien</placeName>
+                        <date when="14551119">1455 XI 19</date>
+                        <origDate instant="false">zu Wienn, an mittichen sand Elspethen
+                              tag.</origDate></creation>
+            </profileDesc>
+      </teiHeader>
+      <facsimile>
+            <surface>
+                  <graphic
+                        url="http://images.monasterium.net/pics/AT-WStLA/HA-U/WStLA-HA-Urkunden_03650_r.jpg"
+                  />
+            </surface>
+            <surface>
+                  <graphic
+                        url="http://images.monasterium.net/pics/AT-WStLA/HA-U/WStLA-HA-Urkunden_03650_v.jpg"
+                  />
+            </surface>
+      </facsimile>
+      <text>
+            <body>
+                  <div type="abstract" resp="kg">
+                        <p>
+                              <rs type="event" ref="ev__SB_CD_01462"><rs type="fn" role="issuer"><rs
+                                                type="person" ref="pe__niklas_ledrer_QGW_II_II_3650"
+                                                >Niclas, <roleName type="prof">ledrer</roleName>,
+                                                  <roleName type="occ" corresp="org__wien"
+                                                  >mitpurger</roleName> zu Wienn</rs>,</rs>
+                                    <triggerstring n="disp">verkauft <add>gelts
+                                          purkrechts</add></triggerstring>
+                                    <rs type="fn" role="other"><triggerstring n="fn">mit
+                                                Handen</triggerstring> des <rs type="person"
+                                                ref="pe__konrad_hoelczler_QGW_II_II_3350"><roleName
+                                                  type="title">edeln</roleName>
+                                                <roleName type="title">hern</roleName> Conrats des
+                                                Holczler, <roleName type="occ" corresp="org__wien"
+                                                  >burgermaister</roleName></rs>, und <rs type="org"
+                                                ref="org__wien">des Rathes</rs></rs>
+                                    <rs type="fn" role="transactiongood_I"><measure>7 lb
+                                                dn.</measure>
+                                          <triggerstring n="fn">gelts purkrechts</triggerstring>
+                                          (ablösbar) auf <rs type="place"
+                                                ref="pl__wien-immo_baeckerstrasse_vordere_10"
+                                                  ><roleName type="owner"
+                                                  corresp="pe__niklas_ledrer_QGW_II_II_3650"
+                                                  >seinem</roleName> Hause, <roleName type="topo"
+                                                  corresp="pl__wien-baeckerstrasse_vordere">gelegen
+                                                  in der Vordern Pekchenstrass daselbs</roleName>
+                                                zenagst <rs type="place"
+                                                  ref="pl__wien-immo_baeckerstrasse_vordere_11"
+                                                  ><roleName type="owner"
+                                                  corresp="pe__thomas_geweltl_QGW_II_II_3650"><rs
+                                                  type="person"
+                                                  ref="pe__thomas_geweltl_QGW_II_II_3650">Thomans
+                                                  Geweltleins, des <roleName type="prof"
+                                                  >fleischhakcher</roleName></rs></roleName>,
+                                                  haus</rs>, <roleName type="topo"
+                                                  corresp="pl__wien-immo_baeckerstrasse_vordere_11"
+                                                  ><add>zenagst</add> an aim
+                                          tail</roleName></rs>,</rs>
+                                    <rs type="fn" role="transactiongood_II">um <measure>56 lb
+                                                dn.</measure>, <rs type="event"
+                                                ref="ev__SB_CD_00673_nota">die emaln gelegen gewesen
+                                                sind auf weilent Hannsen des Schrots haus innerhalb
+                                                Stubentor, die man damit darab geledigt und gelost
+                                                hat,</rs></rs>
+                                    <rs type="fn" role="recipient"><rs type="person"
+                                                ref="pe__andreas_benedicter_QGW_II_II_3650"
+                                                  ><roleName type="title">hern</roleName> Andren
+                                                Benedicter von [ 380] Waidhofen, <roleName
+                                                  type="occ"
+                                                  corresp="org__wien-st_stephan-kapelle_st_katharina-altar_st_katharina-messe_kurzmann"
+                                                  >capplan</roleName> der messe, die weilent . . .
+                                                der Kurczman auf sand Kathrein altar zu sand Steffan
+                                                zu Wienn gestifft hat</rs>, und <rs type="org"
+                                                ref="org__wien-st_stephan-kapelle_st_katharina-altar_st_katharina-messe_kurzmann"
+                                                >seinen Nachfolgern</rs>.</rs></rs>
+                        </p>
+                  </div>
+                  <div type="seal">
+                        <p><rs type="event" ref="ev__SB_CD_01462"><rs type="fn" role="witness"
+                                          >Besiegelt mit dem <rs type="org" ref="org__wien"
+                                                >städtischen Grundsiegel</rs> und dem Siegel des <rs
+                                                type="person"
+                                                ref="pe__simon_von_eslarn_QGW_II_II_3263">Wiener
+                                                  <roleName type="occ" corresp="org__wien"
+                                                  >Bürgers</roleName> Simon von
+                                    Eslorn</rs>.</rs></rs>
+                        </p>
+                  </div>
+                  <div type="lists">
+                        <xi:include xmlns:xi="http://www.w3.org/2001/XInclude"
+                              href="../../../../indices/placeList.xml"
+                              xpointer="element(/1/2/1/1)"/>
+                        <xi:include xmlns:xi="http://www.w3.org/2001/XInclude"
+                              href="../../../../indices/personList.xml"
+                              xpointer="element(/1/2/1/1)"/>
+                        <xi:include xmlns:xi="http://www.w3.org/2001/XInclude"
+                              href="../../../../indices/eventList.xml"
+                              xpointer="element(/1/2/1/1)"/>
+                        <xi:include xmlns:xi="http://www.w3.org/2001/XInclude"
+                              href="../../../../indices/orgList.xml"
+                              xpointer="element(/1/2/1/1)"/>
+                  </div>
+            </body>
+      </text>
+</TEI>

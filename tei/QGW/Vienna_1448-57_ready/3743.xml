@@ -1,0 +1,109 @@
+<?xml version="1.0" encoding="UTF-8"?><!DOCTYPE TEI   SYSTEM "../../../schema/toolbox_full.dtd">
+<TEI xmlns="http://www.tei-c.org/ns/1.0" xmlns:cei="http://www.monasterium.net/NS/cei"
+  xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance">
+  <teiHeader>
+    <fileDesc>
+      <titleStmt>
+        <title>Tei version of 3743 exported from monasterium.net </title>
+      </titleStmt>
+      <publicationStmt>
+        <p/>
+      </publicationStmt>
+      <!--In Original: cei:front/cei:sourceDesc/cei:sourceDescRegest-->
+      <sourceDesc>
+        <bibl type="url">https://www.monasterium.net/mom/AT-WStLA/HAUrk/3743/charter</bibl>
+        <bibl default="false" status="draft">Quellen zur Geschichte der Stadt Wien, Bd. II/2, Nr.
+          3743 As published in HAUrk by Wiener Stadt- und Landesarchiv </bibl>
+        <msDesc status="draft">
+          <msIdentifier>
+            <repository>Wiener Stadt- und Landesarchiv</repository>
+            <idno>3743</idno>
+            <altIdentifier type="old">
+              <idno>517999</idno>
+            </altIdentifier>
+          </msIdentifier>
+          <physDesc>
+            <sealDesc>
+              <seal>
+                <p>Drei anhangende Siegel: 1., 3. grün u. Sch., 2. roth u. Sch., links
+                  abgeschlagen.</p>
+              </seal>
+            </sealDesc>
+          </physDesc>
+        </msDesc>
+      </sourceDesc>
+    </fileDesc>
+    <encodingDesc>
+      <projectDesc default="false">
+        <p><label type="contentual-editing">Dissertation Korbinian Grünwald</label></p>
+      </projectDesc>
+    </encodingDesc>
+    <profileDesc>
+      <creation>
+        <placeName>Wien</placeName>
+        <date when="14571024">1457 X 24</date>
+        <origDate instant="false">zu Wienn, an montag vor sand Simons und sand Judas
+        tag.</origDate></creation>
+    </profileDesc>
+  </teiHeader>
+  <facsimile>
+    <surface>
+      <graphic url="http://images.monasterium.net/pics/AT-WStLA/HA-U/WStLA-HA-Urkunden_03743_r.jpg"
+      />
+    </surface>
+    <surface>
+      <graphic url="http://images.monasterium.net/pics/AT-WStLA/HA-U/WStLA-HA-Urkunden_03743_v.jpg"
+      />
+    </surface>
+  </facsimile>
+  <text>
+    <body>
+      <div type="abstract" resp="kg">
+        <p>
+          <rs type="event" ref="ev__SB_CD_00777"><rs type="fn" role="issuer"><rs type="person"
+                ref="pe__johann_haringseer_QGW_II_II_2387">Hanns Haringseer, <roleName type="occ" corresp="org__wien">burger</roleName> zu Wienn</rs>,</rs>
+            beurkundet, dass ihm <rs type="fn" role="recipient"><rs type="person"
+                ref="pe__klara_SB_CD_00777">seine <roleName type="kin"
+                  corresp="pe__johann_haringseer_QGW_II_II_2387">Frau</roleName> Clara</rs></rs>
+            <rs type="fn" role="transactiongood_II"><measure>200 lb dn.</measure> zu rechter
+                <triggerstring n="fn">haimsteur</triggerstring> zugebracht,</rs> er ihr dagegen <rs
+              type="fn" role="transactiongood_II"><measure>200 lb dn.</measure> zu rechter
+                <triggerstring n="fn">Widerlegung</triggerstring> versprochen habe,</rs>
+            <triggerstring n="disp">und verschreibt</triggerstring> ihr für diese 400 lb dn. <rs type="fn"
+              role="other"><triggerstring n="fn">mit Handen</triggerstring>
+              <rs type="person" ref="pe__niklas_teschler_QGW_II_II_2951">hern Niclasen des Teschler,
+                  <roleName type="occ" corresp="org__wien">burgermaister</roleName> und <roleName
+                  type="occ" corresp="org__oesterreich-herzogtum" select="pl__wien"
+                  >münssmaister</roleName></rs>, <rs type="org" ref="org__wien">und des
+              Rathes</rs></rs>
+            <rs type="fn" role="transactiongood_I"><triggerstring n="fn">die Ueberteuerung</triggerstring>
+              <rs type="place" ref="pl__wien-immo_muensserstrasse_1"><roleName type="owner"
+                  corresp="pe__johann_haringseer_QGW_II_II_2387">seines</roleName> Hauses, <roleName
+                  type="topo" corresp="pl__wien-muensserstrasse">gelegen in der
+                  Münsserstrass</roleName> zenagst <rs type="place"
+                  ref="pl__wien-immo_muensserstrasse_3"><roleName type="owner"
+                    corresp="pe__konrad_pilgrim_QGW_II_II_3285">Conrats Piligreim</roleName>
+                  haus</rs>
+                <roleName type="topo" corresp="pl__wien-immo_muensserstrasse_3"><add>zenagst
+                  </add>an aim tail</roleName>
+                <roleName type="topo" corresp="pl__wien-immo_muensserstrasse_2">und an dem andern
+                  zenagst</roleName>
+                <rs type="place" ref="pl__wien-immo_muensserstrasse_2"><roleName type="owner"
+                    corresp="pe__stephan_gibing_QGW_II_II_3275">Stephans des Gibing</roleName>
+                  haus</rs>, über die 80 lb dn. haimsteur und morgengab, die Hannsen Winkchler vor
+                darauf verphennt 1 sein.</rs></rs></rs>
+        </p>
+      </div>
+      <div type="lists">
+        <xi:include xmlns:xi="http://www.w3.org/2001/XInclude"
+          href="../../../../indices/placeList.xml" xpointer="element(/1/2/1/1)"/>
+        <xi:include xmlns:xi="http://www.w3.org/2001/XInclude"
+          href="../../../../indices/personList.xml" xpointer="element(/1/2/1/1)"/>
+        <xi:include xmlns:xi="http://www.w3.org/2001/XInclude"
+          href="../../../../indices/eventList.xml" xpointer="element(/1/2/1/1)"/>
+        <xi:include xmlns:xi="http://www.w3.org/2001/XInclude"
+          href="../../../../indices/orgList.xml" xpointer="element(/1/2/1/1)"/>
+      </div>
+    </body>
+  </text>
+</TEI>

@@ -1,0 +1,168 @@
+<?xml version="1.0" encoding="UTF-8"?><!DOCTYPE TEI   SYSTEM "../../../schema/toolbox_full.dtd">
+<TEI xmlns="http://www.tei-c.org/ns/1.0" xmlns:cei="http://www.monasterium.net/NS/cei"
+      xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance">
+      <teiHeader>
+            <fileDesc>
+                  <titleStmt>
+                        <title>Tei version of 3326 exported from monasterium.net </title>
+                  </titleStmt>
+                  <publicationStmt>
+                        <p/>
+                  </publicationStmt>
+                  <!--In Original: cei:front/cei:sourceDesc/cei:sourceDescRegest-->
+                  <sourceDesc>
+                        <bibl type="url"
+                              >https://www.monasterium.net/mom/AT-WStLA/HAUrk/3326/charter</bibl>
+                        <bibl default="false" status="draft">Quellen zur Geschichte der Stadt Wien,
+                              Bd. II/2, Nr. 3326 As published in HAUrk by Wiener Stadt- und
+                              Landesarchiv </bibl>
+                        <msDesc status="draft">
+                              <msIdentifier>
+                                    <repository>Wiener Stadt- und Landesarchiv</repository>
+                                    <idno>3326</idno>
+                                    <altIdentifier type="old">
+                                          <idno>517566</idno>
+                                    </altIdentifier>
+                              </msIdentifier>
+                              <msContents>
+                                    <msItem>
+                                          <listBibl default="false">
+                                                <bibl default="false" status="draft">Camesina,
+                                                  Regesten 83 n° 386 Regest.</bibl>
+                                          </listBibl>
+                                    </msItem>
+                              </msContents>
+                              <physDesc>
+                                    <sealDesc>
+                                          <seal>
+                                                <p>Zwei rückwärts aufgedrückte Siegel von grünem
+                                                  Wachse, abgesprungen.</p>
+                                          </seal>
+                                    </sealDesc>
+                              </physDesc>
+                        </msDesc>
+                  </sourceDesc>
+            </fileDesc>
+            <encodingDesc>
+                  <projectDesc default="false">
+                        <p><label type="contentual-editing">Dissertation Korbinian
+                              Grünwald</label></p>
+                  </projectDesc>
+            </encodingDesc>
+            <profileDesc>
+                  <creation>
+                        <placeName>Wien</placeName>
+                        <date when="14490830">1449 VIII 30</date>
+                        <origDate instant="false">zu Wienn, an sambstag vor sand Giligen
+                              tag.</origDate></creation>
+            </profileDesc>
+      </teiHeader>
+      <facsimile>
+            <surface>
+                  <graphic
+                        url="http://images.monasterium.net/pics/AT-WStLA/HA-U/WStLA-HA-Urkunden_03326_r.jpg"
+                  />
+            </surface>
+            <surface>
+                  <graphic
+                        url="http://images.monasterium.net/pics/AT-WStLA/HA-U/WStLA-HA-Urkunden_03326_v.jpg"
+                  />
+            </surface>
+      </facsimile>
+      <text>
+            <body>
+                  <div type="abstract" resp="kg">
+                        <p><rs type="event" ref="ev__QGW_II_II_3326"><rs type="fn" role="issuer"><rs
+                                                type="person"
+                                                ref="pe__niklas_von_feldsberg_QGW_II_II_3326">Niclas
+                                                von Velczperg, <roleName type="occ"
+                                                  corresp="org__wien-st_stephan-altar_st_veit-messe_neukum"
+                                                  ><add>Kaplan</add></roleName>
+                                                <roleName type="occ"
+                                                  corresp="org__wien-st_stephan-altar_allerseelen-messe_kurcz_anna"
+                                                  >Kaplan</roleName> des Neukum mess auf sand Veits
+                                                altar zu sand Stephan und <rs type="event"
+                                                  ref="ev__QGW_II_II_3326_men_1">der <triggerstring
+                                                  n="disp">mess</triggerstring>, die <rs type="fn"
+                                                  role="issuer"><rs type="person"
+                                                  ref="pe__anna_QGW_II_II_3326"><roleName
+                                                  type="dead" cert="high">weilent</roleName>
+                                                  <roleName type="title">frau</roleName> Anna, <rs
+                                                  type="person" ref="pe__paul_kurcz_QGW_II_II_3326"
+                                                  >Pauln des Kurczen</rs>
+                                                  <roleName type="kin"
+                                                  corresp="pe__paul_kurcz_QGW_II_II_3326"
+                                                  >hausfrau</roleName></rs>,</rs>
+                                                  <rs type="fn" role="recipient">auf <rs type="org"
+                                                  ref="org__wien-st_stephan-altar_allerseelen"
+                                                  >Allerseelen altar daselbst</rs></rs>
+                                                  <triggerstring n="disp">zu stifften geschafft
+                                                  hat</triggerstring></rs></rs>,</rs>
+                                    <triggerstring n="disp">verpflichtet sich</triggerstring> für sich und
+                                    seine Nachfolger, <unclear instant="false"><rs type="fn"
+                                                role="other"><triggerstring n="fn">von dem
+                                                  Ertrage</triggerstring> der zu der Stiftung gehörigen
+                                                Weingärten und von <rs type="place"
+                                                  ref="pl__wien-immo_traubottenstrasse_1">dem Hause
+                                                  <roleName type="topo"
+                                                  corresp="pl__wien-traubottenstrasse">in der
+                                                  Traubottenstrass niden am eck gegen der
+                                                  Rinkchmauer uber</roleName>
+                                                  <roleName type="topo"
+                                                  corresp="pl__wien-immo_traubottenstrasse_2"
+                                                  >zenagst <add>gelegen</add></roleName>
+                                                  <rs type="place"
+                                                  ref="pl__wien-immo_traubottenstrasse_2">des
+                                                  Grubmesser haus gelegen, das der Schotten grund
+                                                  ist</rs>, und <rs type="event"
+                                                  ref="ev__QGW_II_II_3326_men_2"><rs type="fn"
+                                                  role="transactiongood_I"><rs type="place"
+                                                  ref="pl__wien-immo_traubottenstrasse_1"
+                                                  >das</rs></rs>
+                                                  <rs type="fn" role="recipient"><rs type="person"
+                                                  ref="pe__niklas_von_feldsberg_QGW_II_II_3326"
+                                                  >er</rs></rs>
+                                                  <rs type="fn" role="issuer">von <rs type="person"
+                                                  ref="pe__heinrich_groecz_QGW_II_II_3326"
+                                                  >Hainreichen Grotzen, dem <roleName type="prof"
+                                                  >münsser</roleName></rs>, und <rs type="person"
+                                                  ref="pe__magdalena_QGW_II_II_3326">Magdalen,
+                                                  seiner, <roleName type="kin"
+                                                  corresp="pe__heinrich_groecz_QGW_II_II_3326"
+                                                  >hausfraun</roleName></rs>,</rs>
+                                                  <rs type="fn" role="transactiongood_II">um
+                                                  <measure>55 lb dn.</measure></rs>
+                                                  <triggerstring n="disp">gekauft
+                                                  hatte</triggerstring></rs></rs>,</rs></unclear>
+                                    <triggerstring n="disp">in Allem mit der Stadt zu
+                                          leiden</triggerstring>.</rs>
+                        </p>
+                  </div>
+                  <div type="seal">
+                        <p><rs type="event" ref="ev__QGW_II_II_3326"><rs type="fn" role="witness"
+                                          >Besiegelt mit den Siegeln <rs type="person"
+                                                ref="pe__johann_scharfenberger_QGW_II_II_3326"
+                                                >Hannsen Scharffenperger, <roleName type="occ" corresp="org__wien"><add>burger</add></roleName>
+                                                anbalt in der münss</rs>, und <rs type="person"
+                                                ref="pe__johann_puchspaum_QGW_II_II_3038">Hannsen
+                                                Pukspaum, baid <roleName type="occ" corresp="org__wien">burger</roleName> zu
+                                                Wienn</rs>.</rs></rs>
+                        </p>
+                  </div>
+                  <div type="lists">
+                        <xi:include xmlns:xi="http://www.w3.org/2001/XInclude"
+                              href="../../../../indices/placeList.xml"
+                              xpointer="element(/1/2/1/1)"/>
+                        <xi:include xmlns:xi="http://www.w3.org/2001/XInclude"
+                              href="../../../../indices/personList.xml"
+                              xpointer="element(/1/2/1/1)"/>
+                        <xi:include xmlns:xi="http://www.w3.org/2001/XInclude"
+                              href="../../../../indices/eventList.xml"
+                              xpointer="element(/1/2/1/1)"/>
+                        <xi:include xmlns:xi="http://www.w3.org/2001/XInclude"
+                              href="../../../../indices/orgList.xml"
+                              xpointer="element(/1/2/1/1)"/>
+                  </div>
+            </body>
+      </text>
+</TEI>

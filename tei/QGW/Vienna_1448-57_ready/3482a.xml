@@ -1,0 +1,175 @@
+<?xml version="1.0" encoding="UTF-8"?><!DOCTYPE TEI   SYSTEM "../../../schema/toolbox_full.dtd">
+<TEI xmlns="http://www.tei-c.org/ns/1.0" xmlns:cei="http://www.monasterium.net/NS/cei"
+   xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance">
+   <teiHeader>
+      <fileDesc>
+         <titleStmt>
+            <title>Tei version of 3482a exported from monasterium.net </title>
+         </titleStmt>
+         <publicationStmt>
+            <p/>
+         </publicationStmt>
+         <!--In Original: cei:front/cei:sourceDesc/cei:sourceDescRegest-->
+         <sourceDesc>
+            <bibl type="url">https://www.monasterium.net/mom/AT-WStLA/HAUrk/3482a/charter</bibl>
+            <bibl default="false" status="draft">Quellen zur Geschichte der Stadt Wien, Bd. II/2,
+               Nr. a As published in HAUrk by Wiener Stadt- und Landesarchiv </bibl>
+            <msDesc status="draft">
+               <msIdentifier>
+                  <repository>Wiener Stadt- und Landesarchiv</repository>
+                  <idno>3482a</idno>
+                  <altIdentifier type="old">
+                     <idno>517725</idno>
+                  </altIdentifier>
+               </msIdentifier>
+               <physDesc>
+                  <sealDesc>
+                     <seal>
+                        <p>Siegler: <quote>Thoman Losenöppl, die edeln Ulreich Zeller, Perchtold
+                              Vorster, phleger zum Greutschenstain</quote>, [ <quote>342</quote>]
+                              <quote>und Peter Walkam, richter zu Kornneunburg</quote>. </p>
+                     </seal>
+                  </sealDesc>
+               </physDesc>
+            </msDesc>
+         </sourceDesc>
+      </fileDesc>
+      <encodingDesc>
+         <projectDesc default="false">
+            <p><label type="contentual-editing">Dissertation Korbinian Grünwald</label></p>
+         </projectDesc>
+      </encodingDesc>
+      <profileDesc>
+         <creation>
+            <date when="14521021">1452 X 21</date>
+            <origDate instant="false">an sambstag der heiling Aindleftausend Junkfraun
+               tag.</origDate></creation>
+      </profileDesc>
+   </teiHeader>
+   <facsimile/>
+   <text>
+      <body>
+         <div type="abstract" resp="kg">
+            <p>
+               <rs type="event" ref="ev__QGW_II_II_3482a"><rs type="fn" role="issuer"><rs
+                        type="person" ref="pe__johann_QGW_II_II_3482a">Hanns, <roleName type="occ"
+                           corresp="org__horn-pfarre">caplan</roleName> ze Horn <roleName type="rep"
+                           corresp="pe__johann_QGW_II_II_3482a"><add>für</add></roleName>
+                        <roleName type="rep" corresp="pe__achatius_QGW_II_II_3482a"
+                           ><add>für</add></roleName>
+                        <roleName type="rep" corresp="pe__thomas_losenoeppl_QGW_II_II_3482a"
+                              ><add>für</add></roleName>
+                        <roleName type="rep" corresp="pe__stephan_QGW_II_II_3482a"
+                           ><add>für</add></roleName>
+                        <roleName type="rep" corresp="pe__katharina_QGW_II_II_3482a"
+                           ><add>für</add></roleName></rs>, <rs type="person"
+                        ref="pe__achatius_QGW_II_II_3482a">Achacz <roleName type="rep"
+                           corresp="pe__johann_QGW_II_II_3482a"><add>für</add></roleName>
+                        <roleName type="rep" corresp="pe__achatius_QGW_II_II_3482a"
+                           ><add>für</add></roleName>
+                        <roleName type="rep" corresp="pe__thomas_losenoeppl_QGW_II_II_3482a"
+                              ><add>für</add></roleName>
+                        <roleName type="rep" corresp="pe__stephan_QGW_II_II_3482a"
+                           ><add>für</add></roleName>
+                        <roleName type="rep" corresp="pe__katharina_QGW_II_II_3482a"
+                           ><add>für</add></roleName></rs> und <rs type="person"
+                        ref="pe__stephan_QGW_II_II_3482a">Steffan, all drei <roleName type="kin"
+                           corresp="pe__achatius_QGW_II_II_3482a">geprüder</roleName>
+                        <roleName type="kin" corresp="pe__johann_QGW_II_II_3482a"
+                              ><add>geprüder</add></roleName>
+                        <roleName type="rep" corresp="pe__johann_QGW_II_II_3482a"
+                           ><add>für</add></roleName>
+                        <roleName type="rep" corresp="pe__achatius_QGW_II_II_3482a"
+                           ><add>für</add></roleName>
+                        <roleName type="rep" corresp="pe__thomas_losenoeppl_QGW_II_II_3482a"
+                              ><add>für</add></roleName>
+                        <roleName type="rep" corresp="pe__stephan_QGW_II_II_3482a"
+                           ><add>für</add></roleName>
+                        <roleName type="rep" corresp="pe__katharina_QGW_II_II_3482a"
+                           ><add>für</add></roleName></rs>, und <rs type="person"
+                        ref="pe__thomas_losenoeppl_QGW_II_II_3482a">Thoman Losenöppl anstat <rs
+                           type="person" ref="pe__ursula_QGW_II_II_3482a">Ursulen , seiner <roleName
+                              type="kin" corresp="pe__thomas_losenoeppl_QGW_II_II_3482a"
+                              >hausfraun</roleName>, der jeczgemelten gepruder <roleName type="kin"
+                              corresp="pe__achatius_QGW_II_II_3482a">swester</roleName>
+                           <roleName type="kin" corresp="pe__stephan_QGW_II_II_3482a"
+                                 ><add>swester</add></roleName>
+                           <roleName type="kin" corresp="pe__johann_QGW_II_II_3482a"
+                                 ><add>swester</add></roleName>
+                        </rs>
+                        <roleName type="rep" corresp="pe__johann_QGW_II_II_3482a"
+                           ><add>für</add></roleName>
+                        <roleName type="rep" corresp="pe__achatius_QGW_II_II_3482a"
+                           ><add>für</add></roleName>
+                        <roleName type="rep" corresp="pe__thomas_losenoeppl_QGW_II_II_3482a"
+                              ><add>für</add></roleName>
+                        <roleName type="rep" corresp="pe__stephan_QGW_II_II_3482a"
+                           ><add>für</add></roleName>
+                        <roleName type="rep" corresp="pe__katharina_QGW_II_II_3482a"
+                           ><add>für</add></roleName></rs>, übergeben für sich</rs> und die <rs
+                     type="person" ref="pe__katharina_QGW_II_II_3482a">unmündige junkfrau Kathrei,
+                        <rs type="person" ref="pe__barbara_QGW_II_II_3482a"><roleName type="title"
+                           >fraun</roleName> Barbaren der Phannczaglin, ihrer <roleName type="kin"
+                           corresp="pe__achatius_QGW_II_II_3482a">swester</roleName>
+                        <roleName type="kin" corresp="pe__stephan_QGW_II_II_3482a"
+                              ><add>swester</add></roleName>
+                        <roleName type="kin" corresp="pe__johann_QGW_II_II_3482a"
+                           ><add>swester</add></roleName> und <roleName type="kin"
+                           corresp="pe__thomas_losenoeppl_QGW_II_II_3482a">swegrin</roleName>
+                        <roleName type="dead">seligen</roleName></rs>, <roleName type="kin"
+                        corresp="pe__barbara_QGW_II_II_3482a">tochter</roleName></rs>, <rs type="fn"
+                     role="transactiongood_I">ihren Antheil <add>hinterlassenen Gute</add></rs> an
+                  dem <rs type="fn" role="other"><triggerstring n="fn">von <add>hinterlassenen
+                           Gute</add></triggerstring>
+                     <rs type="person" ref="pe__johann_von_maires_QGW_II_II_3818">ihrem <roleName
+                           type="kin" corresp="pe__achatius_QGW_II_II_3482a">ohem</roleName>
+                        <roleName type="kin" corresp="pe__stephan_QGW_II_II_3482a"
+                           ><add>ohem</add></roleName>
+                        <roleName type="kin" corresp="pe__johann_QGW_II_II_3482a"
+                           ><add>ohem</add></roleName>
+                        <roleName type="kin" corresp="pe__ursula_QGW_II_II_3482a"
+                           ><add>ohem</add></roleName>
+                        <roleName type="kin" corresp="pe__barbara_QGW_II_II_3482a"
+                           ><add>ohem</add></roleName>
+                        <roleName type="title">maister</roleName> Hanns von Meirs, <roleName
+                           type="occ" corresp="org__gars-pfarre">pharrer</roleName> zu
+                     Gors</rs>,</rs> hinterlassenen Gute <rs type="fn" role="recipient">dem <rs
+                        type="person" ref="pe__ulrich_eitzinger_QGW_II_II_3270"><roleName
+                           type="title">edeln</roleName>
+                        <roleName type="title">herren</roleName>, <roleName type="title"
+                           >hern</roleName> Ulreichen Eiczinger von Eiczing</rs> und seinen
+                     erben.</rs></rs>
+            </p>
+         </div>
+         <div type="seal">
+            <p><rs type="event" ref="ev__QGW_II_II_3482a"><rs type="fn" role="witness">Siegler: <rs
+                        type="person" ref="pe__thomas_losenoeppl_QGW_II_II_3482a">Thoman
+                        Losenöppl</rs>, die <rs type="person"
+                        ref="pe__ulrich_zeller_QGW_II_II_3482a"><roleName type="title"
+                           >edeln</roleName> Ulreich Zeller</rs>, <rs type="person"
+                        ref="pe__berthold_forster_QGW_II_II_3482a"><roleName type="title"
+                              ><add>edeln</add></roleName> Perchtold Vorster, <roleName type="occ"
+                           corresp="org__kreuzenstein">phleger</roleName> zum Greutschenstain</rs>,
+                     [ 342] und <rs type="person" ref="pe__peter_walkam_QGW_II_II_3482a"><roleName
+                           type="title"><add>edeln</add></roleName> Peter Walkam, <roleName
+                           type="occ" corresp="org__korneuburg">richter</roleName> zu
+                        Kornneunburg</rs>.</rs></rs>
+            </p>
+         </div>
+         <div type="nota">
+            <p>Vidimiert in Urk. n° 3567 von dem Schottenabte Martin, dem die Urkunde von Ulrich
+               Eitzinger vorgelegt worden war. </p>
+         </div>
+         <div type="lists">
+            <xi:include xmlns:xi="http://www.w3.org/2001/XInclude"
+               href="../../../../indices/placeList.xml" xpointer="element(/1/2/1/1)"/>
+            <xi:include xmlns:xi="http://www.w3.org/2001/XInclude"
+               href="../../../../indices/personList.xml" xpointer="element(/1/2/1/1)"/>
+            <xi:include xmlns:xi="http://www.w3.org/2001/XInclude"
+               href="../../../../indices/eventList.xml" xpointer="element(/1/2/1/1)"/>
+            <xi:include xmlns:xi="http://www.w3.org/2001/XInclude"
+               href="../../../../indices/orgList.xml" xpointer="element(/1/2/1/1)"/>
+         </div>
+      </body>
+   </text>
+</TEI>

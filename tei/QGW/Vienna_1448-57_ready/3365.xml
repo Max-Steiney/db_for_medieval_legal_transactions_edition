@@ -1,0 +1,109 @@
+<?xml version="1.0" encoding="UTF-8"?><!DOCTYPE TEI   SYSTEM "../../../schema/toolbox_full.dtd">
+<TEI xmlns="http://www.tei-c.org/ns/1.0" xmlns:cei="http://www.monasterium.net/NS/cei"
+      xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance">
+      <teiHeader>
+            <fileDesc>
+                  <titleStmt>
+                        <title>Tei version of 3365 exported from monasterium.net </title>
+                  </titleStmt>
+                  <publicationStmt>
+                        <p/>
+                  </publicationStmt>
+                  <!--In Original: cei:front/cei:sourceDesc/cei:sourceDescRegest-->
+                  <sourceDesc>
+                        <bibl type="url"
+                              >https://www.monasterium.net/mom/AT-WStLA/HAUrk/3365/charter</bibl>
+                        <bibl default="false" status="draft">Quellen zur Geschichte der Stadt Wien,
+                              Bd. II/2, Nr. 3365 As published in HAUrk by Wiener Stadt- und
+                              Landesarchiv </bibl>
+                        <msDesc status="draft">
+                              <msIdentifier>
+                                    <repository>Wiener Stadt- und Landesarchiv</repository>
+                                    <idno>3365</idno>
+                                    <altIdentifier type="old">
+                                          <idno>517605</idno>
+                                    </altIdentifier>
+                              </msIdentifier>
+                              <physDesc>
+                                    <sealDesc>
+                                          <seal>
+                                                <p>Zum Verschlusse aufgedrücktes Petschaft von
+                                                  rothem Wachse unter Papierdecke.</p>
+                                          </seal>
+                                    </sealDesc>
+                              </physDesc>
+                        </msDesc>
+                  </sourceDesc>
+            </fileDesc>
+            <encodingDesc>
+                  <projectDesc default="false">
+                        <p><label type="contentual-editing">Dissertation Korbinian
+                              Grünwald</label></p>
+                  </projectDesc>
+            </encodingDesc>
+            <profileDesc>
+                  <creation>
+                        <placeName>Vöttau</placeName>
+                        <date when="14500327">1450 III 27</date>
+                        <origDate instant="false">Datum zu Vetau des freitags vor dem Plumastertag,
+                              anno domini milesimo CCCC quinquagesimo.</origDate></creation>
+            </profileDesc>
+      </teiHeader>
+      <facsimile>
+            <surface>
+                  <graphic
+                        url="http://images.monasterium.net/pics/AT-WStLA/HA-U/WStLA-HA-Urkunden_03365_r.jpg"
+                  />
+            </surface>
+            <surface>
+                  <graphic
+                        url="http://images.monasterium.net/pics/AT-WStLA/HA-U/WStLA-HA-Urkunden_03365_v.jpg"
+                  />
+            </surface>
+      </facsimile>
+      <text>
+            <body>
+                  <div type="abstract" resp="kg">
+                        <p>
+                              <rs type="event" ref="ev__QGW_II_II_3365"><rs type="fn" role="issuer"
+                                                ><rs type="person"
+                                                ref="pe__simon_von_leuchtenburg_QGW_II_II_3365"
+                                                >Simel von Leuchtenburgk, <roleName type="title_ref" corresp="pl__voettau">herr</roleName> zu
+                                                Vetau</rs>,</rs>
+                                    <triggerstring n="disp">an</triggerstring>
+                                    <rs type="fn" role="recipient"><rs type="org" ref="org__wien"
+                                                >Bürgermeister und Rath zu Wien</rs>.</rs>
+                                    <rs type="fn" role="other"><rs type="person"
+                                                ref="pe__eustachius_neidekar_QGW_II_II_3365">Sein
+                                                  <roleName type="occ"
+                                                  corresp="pe__simon_von_leuchtenburg_QGW_II_II_3365"
+                                                  >Diener</roleName> Eustachius der Neidekar</rs>
+                                          <triggerstring n="fn">habe ihm geklagt</triggerstring></rs>,
+                                    dass sie ihm ein Haus, des sein mutter rechter erb ist und im
+                                    das lediklich uber hat geben, abgesprochen haben. Er <triggerstring
+                                          n="disp">fordert</triggerstring> sie auf, diesen unbilligen
+                                    Spruch zurückzunehmen und dem Genannten zu seinem Besitze zu
+                                    verhelfen, widrigenfalls er im darinnen bei müsst besteenn und
+                                    helfen als seinem diener.</rs>
+                        </p>
+                  </div>
+                  <div type="nota">
+                        <p>Adresse aussen.</p>
+                  </div>
+                  <div type="lists">
+                        <xi:include xmlns:xi="http://www.w3.org/2001/XInclude"
+                              href="../../../../indices/placeList.xml"
+                              xpointer="element(/1/2/1/1)"/>
+                        <xi:include xmlns:xi="http://www.w3.org/2001/XInclude"
+                              href="../../../../indices/personList.xml"
+                              xpointer="element(/1/2/1/1)"/>
+                        <xi:include xmlns:xi="http://www.w3.org/2001/XInclude"
+                              href="../../../../indices/eventList.xml"
+                              xpointer="element(/1/2/1/1)"/>
+                        <xi:include xmlns:xi="http://www.w3.org/2001/XInclude"
+                              href="../../../../indices/orgList.xml"
+                              xpointer="element(/1/2/1/1)"/>
+                  </div>
+            </body>
+      </text>
+</TEI>

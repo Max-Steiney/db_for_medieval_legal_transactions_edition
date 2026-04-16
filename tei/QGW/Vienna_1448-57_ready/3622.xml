@@ -1,0 +1,31 @@
+<?xml version="1.0" encoding="UTF-8"?><!DOCTYPE TEI   SYSTEM "../../../schema/toolbox_full.dtd"><TEI xmlns="http://www.tei-c.org/ns/1.0" xmlns:cei="http://www.monasterium.net/NS/cei" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"><teiHeader><fileDesc><titleStmt><title>Tei version of 3622 exported from monasterium.net </title></titleStmt><publicationStmt><p/></publicationStmt><!--In Original: cei:front/cei:sourceDesc/cei:sourceDescRegest--><sourceDesc><bibl  type="url">https://www.monasterium.net/mom/AT-WStLA/HAUrk/3622/charter</bibl><bibl default="false" status="draft">Quellen zur Geschichte der Stadt Wien, Bd. II/2,
+               Nr. 3622 As published in HAUrk by Wiener Stadt- und Landesarchiv </bibl><msDesc status="draft"><msIdentifier><repository>Wiener Stadt- und Landesarchiv</repository><idno>3622</idno><altIdentifier type="old"><idno>517875</idno></altIdentifier></msIdentifier><physDesc><sealDesc><seal><p>Die Siegel fehlen.</p></seal></sealDesc></physDesc></msDesc></sourceDesc></fileDesc><encodingDesc><projectDesc default="false"><p><label type="contentual-editing">Dissertation Korbinian Grünwald</label></p></projectDesc></encodingDesc><profileDesc><creation>
+            <placeName>Wien</placeName>
+            <date when="14550414">1455 IV 14</date>
+            <origDate instant="false">zu Wienn, an sand Tiburcien und sand Valerians
+            tag.</origDate></creation></profileDesc></teiHeader><facsimile><surface><graphic url="http://images.monasterium.net/pics/AT-WStLA/HA-U/WStLA-HA-Urkunden_03622_r.jpg"/></surface><surface><graphic url="http://images.monasterium.net/pics/AT-WStLA/HA-U/WStLA-HA-Urkunden_03622_v.jpg"/></surface></facsimile><text><body><div type="abstract" resp="kg"><p>
+               <rs type="event" ref="ev__QGW_II_II_3622"><rs type="fn" role="issuer"><rs type="person" ref="pe__wolfgang_schell_QGW_II_II_3275">Wolfgang
+                     Schell</rs></rs>
+                  <triggerstring n="disp">übergibt seinen Anspruch</triggerstring>
+                  <rs type="fn" role="transactiongood_I"><triggerstring n="fn"><add>Anspruch</add></triggerstring> an die <measure>200 lb dn.</measure>, <rs type="event" ref="ev__QGW_II_II_3275"><rs type="fn" role="transactiongood_I">die <measure><add>200 lb dn.</add></measure></rs>
+                        <rs type="fn" role="recipient"><rs type="person" ref="pe__wolfgang_schell_QGW_II_II_3275">ihm</rs></rs>
+                        <rs type="fn" role="issuer"><rs type="person" ref="pe__stephan_gibing_QGW_II_II_3275">sein <roleName type="kin" corresp="pe__wolfgang_schell_QGW_II_II_3275">steufvater</roleName>
+                              Stephan Gibing, <roleName type="occ" corresp="org__wien">purger</roleName> zu Wienn</rs>,</rs>
+                        <rs type="fn" role="transactiongood_I">auf <rs type="place" ref="pl__wien-immo_kamerhof_1"><roleName type="owner" corresp="pe__stephan_gibing_QGW_II_II_3275">seinem</roleName>
+                              zuhaus, <roleName type="topo" corresp="pl__wien-kamerhof">im
+                                 Kamerhof</roleName>
+                              <roleName type="topo" corresp="pl__wien-immo_kamerhof_3">zenagst</roleName>
+                              <rs type="place" ref="pl__wien-immo_kamerhof_3"><roleName type="owner" corresp="pe__wolfgang_schell_QGW_II_II_3275">seinem</roleName>
+                                 haus</rs> gelegen</rs>, <triggerstring n="impl_rules">für den
+                              Todesfall</triggerstring></rs>
+                        <triggerstring n="disp">verschrieben hat</triggerstring>,</rs></rs>
+                  <triggerstring n="reason">durch sunder gunst und freuntschaft willen</triggerstring>
+                  <rs type="fn" role="recipient"><rs type="person" ref="pe__wolfgang_holnbrunner_QGW_II_II_3079">seinem <roleName type="kin" corresp="pe__wolfgang_schell_QGW_II_II_3275">Vetter</roleName> Wolfgangen
+                        Holnbrunner, des <roleName type="occ" corresp="org__wien">rats</roleName>
+                        der stat zu Wienn</rs>.</rs></rs>
+            </p></div><div type="seal"><p><rs type="event" ref="ev__QGW_II_II_3622"><rs type="fn" role="witness">Besiegelt mit
+                     den Siegeln <rs type="person" ref="pe__johann_welser_QGW_II_II_3379">Hannsen
+                        des Wellser <roleName type="occ" corresp="org__wien"><add>burger</add></roleName></rs> und <rs type="person" ref="pe__stephan_kisling_QGW_II_II_3622">Stephans des Kisling, baid
+                           <roleName type="occ" corresp="org__wien">burger</roleName> zu
+                        Wienn</rs>.</rs></rs>
+            </p></div><div type="nota"><p>Indorsat: von wegen des leibgeding auf des Gibing zuehaus. </p></div><div type="lists"><xi:include xmlns:xi="http://www.w3.org/2001/XInclude" href="../../../../indices/placeList.xml" xpointer="element(/1/2/1/1)"/><xi:include xmlns:xi="http://www.w3.org/2001/XInclude" href="../../../../indices/personList.xml" xpointer="element(/1/2/1/1)"/><xi:include xmlns:xi="http://www.w3.org/2001/XInclude" href="../../../../indices/eventList.xml" xpointer="element(/1/2/1/1)"/><xi:include xmlns:xi="http://www.w3.org/2001/XInclude" href="../../../../indices/orgList.xml" xpointer="element(/1/2/1/1)"/></div></body></text></TEI>

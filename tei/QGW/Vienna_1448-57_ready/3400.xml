@@ -1,0 +1,108 @@
+<?xml version="1.0" encoding="UTF-8"?><!DOCTYPE TEI   SYSTEM "../../../schema/toolbox_full.dtd">
+<TEI xmlns="http://www.tei-c.org/ns/1.0" xmlns:cei="http://www.monasterium.net/NS/cei"
+   xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance">
+   <teiHeader>
+      <fileDesc>
+         <titleStmt>
+            <title>Tei version of 3400 exported from monasterium.net </title>
+         </titleStmt>
+         <publicationStmt>
+            <p/>
+         </publicationStmt>
+         <!--In Original: cei:front/cei:sourceDesc/cei:sourceDescRegest-->
+         <sourceDesc>
+            <bibl type="url">https://www.monasterium.net/mom/AT-WStLA/HAUrk/3400/charter</bibl>
+            <bibl default="false" status="draft">Quellen zur Geschichte der Stadt Wien, Bd. II/2,
+               Nr. 3400 As published in HAUrk by Wiener Stadt- und Landesarchiv </bibl>
+            <msDesc status="draft">
+               <msIdentifier>
+                  <repository>Wiener Stadt- und Landesarchiv</repository>
+                  <idno>3400</idno>
+                  <altIdentifier type="old">
+                     <idno>517640</idno>
+                  </altIdentifier>
+               </msIdentifier>
+               <physDesc>
+                  <sealDesc>
+                     <seal>
+                        <p>Zum Verschlusse aufgedrücktes Wappensiegel (Sava Fig. 108) von rothem
+                           Wachse unter Papierdecke. </p>
+                     </seal>
+                  </sealDesc>
+               </physDesc>
+            </msDesc>
+         </sourceDesc>
+      </fileDesc>
+      <encodingDesc>
+         <projectDesc default="false">
+            <p><label type="contentual-editing">Dissertation Korbinian Grünwald</label></p>
+         </projectDesc>
+      </encodingDesc>
+      <profileDesc>
+         <creation>
+            <placeName>Wiener-Neustadt</placeName>
+            <date when="14500821">1450 VIII 21</date>
+            <origDate instant="false">Geben zu der Neunstat an freitag vor sand Bertelmes tag, anno
+               domini etc. Lmo, unsers reichs im aindleften jare. </origDate></creation>
+      </profileDesc>
+   </teiHeader>
+   <facsimile>
+      <surface>
+         <graphic
+            url="http://images.monasterium.net/pics/AT-WStLA/HA-U/WStLA-HA-Urkunden_03400_r.jpg"/>
+      </surface>
+      <surface>
+         <graphic
+            url="http://images.monasterium.net/pics/AT-WStLA/HA-U/WStLA-HA-Urkunden_03400_v.jpg"/>
+      </surface>
+   </facsimile>
+   <text>
+      <body>
+         <div type="abstract" resp="kg">
+            <p><rs type="event" ref="ev__QGW_II_II_3400"><rs type="fn" role="issuer"><rs
+                        type="person" ref="pe__friedrich_v_herzog_von_oesterreich_QGW_II_I_3270"
+                        >König Friedrich IV.</rs></rs>
+                  <triggerstring n="disp">an</triggerstring>
+                  <rs type="fn" role="recipient"><rs type="org" ref="org__wien">Bürgermeister und
+                        Rath der Stadt zu Wien</rs>.</rs>
+                  <unclear instant="false"><rs type="fn" role="transactiongood_III"><rs
+                           type="person" ref="pe__jakob_lienfelder_QGW_II_II_3400">Jacob, des
+                           Lienvelder <roleName type="kin"
+                              corresp="pe__thomas_lienfelder_QGW_II_II_3400"
+                        >sun</roleName></rs></rs></unclear>, sei <rs type="fn" role="other">dem <rs
+                        type="person" ref="pe__andreas_schoenprugker_QGW_II_II_3376">Wiener
+                           <roleName type="occ" corresp="org__wien">Bürger</roleName> Andren
+                        Schönprukger <roleName type="rep"
+                           corresp="pe__jakob_lienfelder_QGW_II_II_3400"
+                           ><add>gerhaben</add></roleName></rs>
+                     <triggerstring n="fn">mit seim leib und gut uncz zu seinen vogtpern jarn
+                        innzehaben verschriben</triggerstring>,</rs> doch habe <rs type="fn"
+                     role="other">der <rs type="person" ref="pe__thomas_lienfelder_QGW_II_II_3400"
+                        >Klosterneuburger <roleName type="occ" corresp="org__klosterneuburg"
+                           >Bürger</roleName> Thoman Lienvelder <roleName type="dead"
+                              ><add>gestorben</add></roleName></rs>
+                     <triggerstring n="fn">sich den Knaben</triggerstring> von ihnen und dem Schönprugker
+                        <triggerstring n="fn">erbeten</triggerstring>. Da nun Thomas gestorben ist</rs>,
+                  so <triggerstring n="disp">befiehlt</triggerstring> er ihnen, <triggerstring n="disp">den
+                     Knaben zurückzufordern</triggerstring> und <unclear instant="false"><rs type="fn"
+                        role="other">dem <rs type="person"
+                           ref="pe__andreas_schoenprugker_QGW_II_II_3376">Schönprugker</rs></rs>
+                     <triggerstring n="disp">zu übergeben</triggerstring></unclear>.</rs>
+            </p>
+         </div>
+         <div type="nota">
+            <p>Von anderer Hand: commissio domini regis propria. </p>
+         </div>
+         <div type="lists">
+            <xi:include xmlns:xi="http://www.w3.org/2001/XInclude"
+               href="../../../../indices/placeList.xml" xpointer="element(/1/2/1/1)"/>
+            <xi:include xmlns:xi="http://www.w3.org/2001/XInclude"
+               href="../../../../indices/personList.xml" xpointer="element(/1/2/1/1)"/>
+            <xi:include xmlns:xi="http://www.w3.org/2001/XInclude"
+               href="../../../../indices/eventList.xml" xpointer="element(/1/2/1/1)"/>
+            <xi:include xmlns:xi="http://www.w3.org/2001/XInclude"
+               href="../../../../indices/orgList.xml" xpointer="element(/1/2/1/1)"/>
+         </div>
+      </body>
+   </text>
+</TEI>

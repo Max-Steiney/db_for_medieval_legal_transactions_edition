@@ -1,0 +1,138 @@
+<?xml version="1.0" encoding="UTF-8"?><!DOCTYPE TEI   SYSTEM "../../../schema/toolbox_full.dtd">
+<TEI xmlns="http://www.tei-c.org/ns/1.0" xmlns:cei="http://www.monasterium.net/NS/cei"
+   xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance">
+   <teiHeader>
+      <fileDesc>
+         <titleStmt>
+            <title>Tei version of 3744 exported from monasterium.net </title>
+         </titleStmt>
+         <publicationStmt>
+            <p/>
+         </publicationStmt>
+         <!--In Original: cei:front/cei:sourceDesc/cei:sourceDescRegest-->
+         <sourceDesc>
+            <bibl type="url">https://www.monasterium.net/mom/AT-WStLA/HAUrk/3744/charter</bibl>
+            <bibl default="false" status="draft">Quellen zur Geschichte der Stadt Wien, Bd. II/2,
+               Nr. 3744 As published in HAUrk by Wiener Stadt- und Landesarchiv </bibl>
+            <msDesc status="draft">
+               <msIdentifier>
+                  <repository>Wiener Stadt- und Landesarchiv</repository>
+                  <idno>3744</idno>
+                  <altIdentifier type="old">
+                     <idno>518000</idno>
+                  </altIdentifier>
+               </msIdentifier>
+               <msContents>
+                  <msItem>
+                     <listBibl default="false">
+                        <bibl default="false" status="draft">Jahrbuch der kais. Kunstsamml. 17b, n°
+                           15305 cit.</bibl>
+                     </listBibl>
+                  </msItem>
+               </msContents>
+               <physDesc>
+                  <sealDesc>
+                     <seal>
+                        <p>Zwei rückwärts aufgedrückte Siegel von grünem Wachse, 1. beschädigt, 2.
+                           abgesprungen.</p>
+                     </seal>
+                  </sealDesc>
+               </physDesc>
+            </msDesc>
+         </sourceDesc>
+      </fileDesc>
+      <encodingDesc>
+         <projectDesc default="false">
+            <p><label type="contentual-editing">Dissertation Korbinian Grünwald</label></p>
+         </projectDesc>
+      </encodingDesc>
+      <profileDesc>
+         <creation>
+            <placeName>Wien</placeName>
+            <date when="14571026">1457 X 26</date>
+            <origDate instant="false">zu Wienn, an mitichen vor sand Simons und sand Judas
+               tag.</origDate></creation>
+      </profileDesc>
+   </teiHeader>
+   <facsimile>
+      <surface>
+         <graphic
+            url="http://images.monasterium.net/pics/AT-WStLA/HA-U/WStLA-HA-Urkunden_03744_r.jpg"/>
+      </surface>
+      <surface>
+         <graphic
+            url="http://images.monasterium.net/pics/AT-WStLA/HA-U/WStLA-HA-Urkunden_03744_v.jpg"/>
+      </surface>
+   </facsimile>
+   <text>
+      <body>
+         <div type="abstract" resp="kg">
+            <p>
+               <rs type="event" ref="ev__QGW_II_II_3744"><rs type="fn" role="other"><rs
+                        type="person" ref="pe__johann_luchs_QGW_II_II_3744">Hanns Luchs, <roleName
+                           type="occ" corresp="org__wien">burger</roleName> zu Wienn</rs>,
+                        <triggerstring n="fn">beurkundet</triggerstring>,</rs> dass <rs type="fn"
+                     role="issuer"><rs type="person" ref="pe__johann_frankch_QGW_II_II_2680">Hanns
+                        Frankch an geschefft <roleName type="dead">mit tod abgegangen
+                        ist</roleName></rs></rs> und hinder sein <triggerstring n="disp">gelassen
+                     hat</triggerstring> das hernach genant varund gute : Item ainen geltbrief, <rs
+                     type="event" ref="NULL">der da gelaut hat von <rs type="person"
+                        ref="pe__wolfgang_hasler_QGW_II_II_3319">Wolfgangen Hasler</rs> und seiner
+                     hausfraun zehen Hungerisch guldein, daran sie im bei seinem leben ausgericht
+                     habent vier guldein.</rs> Item <rs type="fn" role="recipient">zu <rs
+                        type="person" ref="pe__heinrich_hindernpach_QGW_II_II_3744">Hainreichen
+                        Hindernpach</rs>
+                     <rs type="fn" role="transactiongood_I">in klains pettl, ain haubtpolster, ain
+                        küss, ain alts leillachen, ain alts plabs gulter, das alles gescheczt ist
+                        umb <measure>14 sh. dn.</measure></rs></rs> Item ain swarczen langen rokch,
+                  mit Swebischen zwilich underczogen, und darunder ain alts kelmedreins furrir, umb
+                  10 sh. dn. gescheczt. Davon ist man schuldig gewesen zu geben auf sein begrebnuss
+                  und bestattung 14 sh. dn. <rs type="event" ref="ev__QGW_II_II_3744_men_1"><rs
+                        type="fn" role="transactiongood_I">Den Restbetrag von <measure>6 guldein und
+                           10 sh. dn.</measure></rs>
+                     <triggerstring n="disp">hat</triggerstring>
+                     <rs type="fn" role="recipient"><rs type="person"
+                           ref="pe__heinrich_schuburt_QGW_II_II_3744">Hainreich Schuburt von Koburg
+                              <roleName type="rep" corresp="pe__barbara_QGW_II_II_3744"
+                              >anstat</roleName> und <roleName type="rep"
+                              corresp="pe__barbara_QGW_II_II_3744">zu handen</roleName>
+                           <rs type="person" ref="pe__barbara_QGW_II_II_3744">seiner hausfraun
+                              Barbaren, des egenanten Hannsen Frankchen <roleName type="kin"
+                                 corresp="pe__johann_frankch_QGW_II_II_2680">swester
+                                 tochter</roleName></rs></rs>,</rs>
+                     <rs type="fn" role="issuer">von <rs type="person"
+                           ref="pe__ulrich_matzleinsdorfer_QGW_II_II_3362">Ulreichen
+                           Meczleinstorffer, des <roleName type="occ" corresp="org__wien"
+                              >rats</roleName> und <roleName type="occ" corresp="org__wien">kamrer
+                              der stat</roleName> zu Wienn</rs>, <triggerstring n="fn">pei dem solh gut
+                           von ambts wegen gelegen ist</triggerstring>,</rs>
+                     <triggerstring n="disp">ingenomen</triggerstring> .</rs> Da solches Gut aber Jahr und
+                  Tag unverkumert liegen bleiben sollte, um den Anspruch etwa sich meldender,
+                  näherer Erben zu wahren, so verschreibt sich Hanns Luchs fur den egenanten
+                  Hainreichen Schuburt dem Bürgermeister und Rathe als Bürgen.</rs>
+            </p>
+         </div>
+         <div type="seal">
+            <p><rs type="event" ref="ev__QGW_II_II_3744"><rs type="fn" role="witness">Besiegelt mit
+                     den Siegeln <rs type="person" ref="pe__arnold_gallander_QGW_II_III_3864"
+                        >Arnolten Galander <roleName type="occ" corresp="org__wien"
+                              ><add>burger</add></roleName></rs> und <rs type="person"
+                        ref="pe__konrad_strobel_QGW_II_II_3257">Conraden Strobel, <roleName
+                           type="occ" corresp="org__oesterreich-herzogtum">anwalt in der
+                           münss</roleName>, baid <roleName type="occ" corresp="org__wien"
+                           >burger</roleName> zu Wienn</rs>.</rs></rs>
+            </p>
+         </div>
+         <div type="lists">
+            <xi:include xmlns:xi="http://www.w3.org/2001/XInclude"
+               href="../../../../indices/placeList.xml" xpointer="element(/1/2/1/1)"/>
+            <xi:include xmlns:xi="http://www.w3.org/2001/XInclude"
+               href="../../../../indices/personList.xml" xpointer="element(/1/2/1/1)"/>
+            <xi:include xmlns:xi="http://www.w3.org/2001/XInclude"
+               href="../../../../indices/eventList.xml" xpointer="element(/1/2/1/1)"/>
+            <xi:include xmlns:xi="http://www.w3.org/2001/XInclude"
+               href="../../../../indices/orgList.xml" xpointer="element(/1/2/1/1)"/>
+         </div>
+      </body>
+   </text>
+</TEI>

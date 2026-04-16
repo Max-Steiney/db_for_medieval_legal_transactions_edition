@@ -1,0 +1,187 @@
+<?xml version="1.0" encoding="UTF-8"?><!DOCTYPE TEI   SYSTEM "../../../schema/toolbox_full.dtd">
+<TEI xmlns="http://www.tei-c.org/ns/1.0" xmlns:cei="http://www.monasterium.net/NS/cei"
+  xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance">
+  <teiHeader>
+    <fileDesc>
+      <titleStmt>
+        <title>Tei version of 3616a exported from monasterium.net </title>
+      </titleStmt>
+      <publicationStmt>
+        <p/>
+      </publicationStmt>
+      <!--In Original: cei:front/cei:sourceDesc/cei:sourceDescRegest-->
+      <sourceDesc>
+        <bibl type="url">https://www.monasterium.net/mom/AT-WStLA/HAUrk/3616a/charter</bibl>
+        <bibl default="false" status="draft">Quellen zur Geschichte der Stadt Wien, Bd. II/2, Nr. a
+          As published in HAUrk by Wiener Stadt- und Landesarchiv </bibl>
+        <msDesc status="draft">
+          <msIdentifier>
+            <repository>Wiener Stadt- und Landesarchiv</repository>
+            <idno>3616a</idno>
+            <altIdentifier type="old">
+              <idno>517869</idno>
+            </altIdentifier>
+          </msIdentifier>
+          <msContents>
+            <msItem>
+              <listBibl default="false">
+                <bibl default="false" status="draft">Jahrbuch der kais. Kunstsamml. 17b, n° 15285
+                  Regest.</bibl>
+              </listBibl>
+            </msItem>
+          </msContents>
+          <physDesc>
+            <sealDesc>
+              <seal>
+                <p/>
+              </seal>
+            </sealDesc>
+          </physDesc>
+        </msDesc>
+      </sourceDesc>
+    </fileDesc>
+    <encodingDesc>
+      <projectDesc default="false">
+        <p><label type="contentual-editing">Dissertation Korbinian Grünwald</label></p>
+      </projectDesc>
+    </encodingDesc>
+    <profileDesc>
+      <creation>
+        <placeName>Wien</placeName>
+        <date when="14550324">1455 III 24</date>
+        <origDate instant="false">zu Wienn, an montag Unser Lieben Fraun abend der Kundung in der
+          Vasten.</origDate></creation>
+    </profileDesc>
+  </teiHeader>
+  <facsimile/>
+  <text>
+    <body>
+      <div type="abstract" resp="kg">
+        <p>
+          <rs type="event" ref="ev__QGW_II_II_3616a"><rs type="fn" role="issuer"><rs type="person"
+                ref="pe__johann_gruntreich_QGW_II_II_3257">Hanns Gruntreich, <roleName type="occ"
+                  corresp="org__wien-st_stephan-kapelle_st_erasmus_im_neuen_karner_auf_dem_st_stephansfriedhof-zeche_schreiber"
+                  >zechmaister</roleName> der Schreiberzech auf dem Neuen Korner dacz sand Stephan
+                zu Wienn</rs>, und <rs type="org"
+                ref="org__wien-st_stephan-kapelle_st_erasmus_im_neuen_karner_auf_dem_st_stephansfriedhof-zeche_schreiber"
+                >die bruderschafft gemain daselbs</rs></rs>
+            <triggerstring n="disp">bestätigen</triggerstring>, dass <rs type="fn" role="recipient"><rs
+                type="person" ref="pe__niklas_von_auln_QGW_II_II_3616a"><roleName type="title"
+                  >maister</roleName> Niclas von Auln, <roleName type="occ"
+                  corresp="org__wien-st_stephan">korherr</roleName> Allerheiligen tumkirchen hincz
+                sand Stephan zu Wienn <roleName type="rep"
+                  corresp="pe__johann_sorger_QGW_II_II_3242"
+                ><add>geschefftleut</add></roleName></rs>, <rs type="person"
+                ref="pe__jakob_von_wullersdorf_QGW_II_II_3616a"><roleName type="title"
+                  >maister</roleName> Jacob von Wulderstorff <roleName type="rep"
+                  corresp="pe__johann_sorger_QGW_II_II_3242"
+                ><add>geschefftleut</add></roleName></rs>, <rs type="person"
+                ref="pe__peter_von_nuernberg_QGW_II_II_3616a"><roleName type="title"
+                  >maister</roleName> Peter von Nürenberg <roleName type="rep"
+                  corresp="pe__johann_sorger_QGW_II_II_3242"
+                ><add>geschefftleut</add></roleName></rs>, <rs type="person"
+                ref="pe__laurenz_swancz_QGW_II_II_2627">Larencz Swancz, ainer des <roleName
+                  type="occ" corresp="org__wien">rats</roleName> der stat zu Wienn <roleName
+                  type="rep" corresp="pe__johann_sorger_QGW_II_II_3242"
+                  ><add>geschefftleut</add></roleName></rs>, <rs type="person"
+                ref="pe__ulrich_matzleinsdorfer_QGW_II_II_3362">Ulreich Meczleinstorffer <roleName
+                  type="rep" corresp="pe__johann_sorger_QGW_II_II_3242"
+                  ><add>geschefftleut</add></roleName></rs> und <rs type="person"
+                ref="pe__peter_sturm_QGW_II_II_3616a">Peter Sturm, <roleName type="occ" corresp="org__wien">burger</roleName> daselbs, <rs type="person"
+                  ref="pe__johann_sorger_QGW_II_II_3242">Hannsen des Sorger <roleName type="dead"
+                    >seligen</roleName></rs>
+                <roleName type="rep" corresp="pe__johann_sorger_QGW_II_II_3242"
+                  >geschefftleut</roleName></rs>,</rs> aus demselben geschefft ihnen <triggerstring
+              n="disp">umb</triggerstring> ain ewige <triggerstring n="disp">mess</triggerstring> und zwen
+            ewig jarteg <triggerstring n="disp">übergeben haben</triggerstring>: <rs type="fn"
+              role="transactiongood_II">Von ersten <rs type="place" ref="pl__nussberg-immo_1">ainen
+                weingarten, <roleName type="topo" corresp="pl__nussberg">gelegen am
+                  Nusperg</roleName>, genant der Geisliczer, des ain halbs jeuch ist, <roleName
+                  type="topo" corresp="pl__nussberg-immo_2">zenagst</roleName>
+                <rs type="place" ref="pl__nussberg-immo_2"><roleName type="owner"
+                    corresp="org__wien-schotten">der geistlichen herren hincz den Schotten zu
+                    Wienn</roleName> weingarten</rs></rs> item <rs type="place"
+                ref="pl__salmannsdorf-immo_1">ainen weingarten, <roleName type="topo"
+                  corresp="pl__salmannsdorf">gelegen zu Salmanstorff</roleName>, des ain halbs jeuch
+                ist, <roleName type="topo" corresp="pl__salmannsdorf-immo_2">zenagst</roleName>
+                <rs type="place" ref="pl__salmannsdorf-immo_2"><roleName type="owner"
+                    corresp="pe__georg_huelger_QGW_II_II_3616a"><rs type="person"
+                      ref="pe__georg_huelger_QGW_II_II_3616a">Jörgen Hülger, des
+                    sneider</rs></roleName>, weingarten</rs></rs> item <rs type="place"
+                ref="pl__wien-immo_kaerntnertor_20">ainen weingarten, <roleName type="topo"
+                  corresp="pl__wien-kaerntnertor">gelegen vor Kernertor zu Wienn</roleName>
+                <roleName type="topo" corresp="pl__wien-immo_kaerntnertor_19">pei</roleName>
+                <rs type="place" ref="pl__wien-immo_kaerntnertor_19">des von Schaunberg hof im
+                  Reichen anfangk</rs>, des virdhalbe hofstat ist, <roleName type="topo"
+                  corresp="pl__wien-immo_kaerntnertor_21">zenagst <add>an ainem
+                  tail</add></roleName>
+                <rs type="place" ref="pl__wien-immo_kaerntnertor_21">der sankherren zu sand Michel
+                  zu Wienn weingarten</rs> an ainem tail <roleName type="topo"
+                  corresp="pl__wien-immo_kaerntnertor_22">und an dem andern zunagst</roleName>
+                <rs type="place" ref="pl__wien-immo_kaerntnertor_22"><roleName type="owner"
+                    corresp="pe__wenzel_von_wels_QGW_II_II_3616a"><rs type="person"
+                      ref="pe__wenzel_von_wels_QGW_II_II_3616a"><roleName type="title"
+                        >hern</roleName> Wenczlabs von Wells</rs></roleName> weingarten</rs></rs>
+              item <rs type="place" ref="pl__wien-immo_stubentor_15">ain haus und garten daran
+                mitsambt der smelczhütten dapei mit irn zugehörungen, <roleName type="topo"
+                  corresp="pl__wien-stubentor">gelegen vor Stubentor</roleName>
+                <roleName type="topo" corresp="pl__wien-altdonau">zu Alttunau in der
+                  Froschau</roleName>
+                <roleName type="topo" corresp="pl__wien-immo_stubentor_14">zunagst</roleName>
+                <rs type="place" ref="pl__wien-immo_stubentor_14"><roleName type="owner"
+                    corresp="pe__oswald_reicholf_QGW_II_II_3314"><rs type="person"
+                      ref="pe__oswald_reicholf_QGW_II_II_3314"><roleName type="title"
+                        >hern</roleName> Oswalts Reicholffs</rs></roleName> garten</rs></rs> item
+              ain neus messpuch, ain kelich, zwai rote samadeine messgwant mit iren zugehorungen,
+              zwai silbreine opherkendel und zwai grosse tagzeitpuher.</rs>
+            <triggerstring n="disp">Dafür verpflichten</triggerstring> sie <triggerstring n="disp"
+              >sich</triggerstring>, <rs type="fn" role="recipient">dem vorgenannten <rs type="person"
+                ref="pe__peter_von_nuernberg_QGW_II_II_3616a"><roleName type="title"
+                  >maister</roleName> Peter von Nürenberg, <roleName type="occ"
+                  corresp="org__wien-kapelle_heiliges_kreuz-messe_sorger_johann">Kaplan</roleName>
+                der Messe</rs>, und <rs type="org"
+                ref="org__wien-kapelle_heiliges_kreuz-messe_sorger_johann">seinen
+              Nachfolgern</rs></rs>
+            <rs type="fn" role="transactiongood_I"><triggerstring n="fn">jährlich</triggerstring>
+              <measure>20 lb dn.</measure> solicher münss, die diezeit im lannd zu Osterreich gib
+              und gebig ist,</rs> in vier Quatemberraten <triggerstring n="disp">zu
+              reichen</triggerstring>, wogegen diese die Messe <rs type="org"
+              ref="org__wien-kapelle_heiliges_kreuz">in des heiligen Kreucz capellen, ge. legen <rs
+                type="place" ref="pl__wien-immo_haarmarkt_10">in des obgenanten Sorger haus gegen
+                dem Waghaus <roleName type="topo" corresp="pl__wien-immo_haarmarkt_8"
+                    ><add>gegen</add> über</roleName>, das <roleName type="owner"
+                  corresp="pe__peter_gwerlich_QGW_II_II_3521">jecz Peter Gwerlich von Medling innhat
+                  und besiczet</roleName></rs></rs>, fünfstund in der wochen <triggerstring n="disp"
+              >lesen</triggerstring> sollen. Die Kapläne dürfen sich pherrlicher rechten nicht
+            underwinden zu handeln, weder vil noch wenig, ohne des Propstes von St. Stephan
+            Erlaubnis und haben diesem, was in derselben cappellen [ 373] auf dem altar geophert
+            wirdet, für seine Kirche abzuliefern.</rs>
+        </p>
+      </div>
+      <div type="seal">
+        <p><rs type="event" ref="ev__QGW_II_II_3616a"><rs type="fn" role="witness">Besiegelt mit dem
+              Siegel <rs type="org"
+                ref="org__wien-st_stephan-kapelle_st_erasmus_im_neuen_karner_auf_dem_st_stephansfriedhof-zeche_schreiber"
+                >der Schreiberzeche</rs>, ferner von <rs type="person"
+                ref="pe__simon_poetel_QGW_II_II_2412">Simon Pötl, des <roleName type="occ"
+                  corresp="org__wien">rats</roleName> der stat zu Wienn</rs>, und <rs type="person"
+                ref="pe__ulrich_hirssauer_QGW_II_II_3239">Ulreich Hirssauer, <roleName type="occ"
+                  corresp="org__wien">statschreiber</roleName></rs> daselbs.</rs></rs>
+        </p>
+      </div>
+      <div type="nota">
+        <p>Vidimiert in Urk. n° 3627.</p>
+      </div>
+      <div type="lists">
+        <xi:include xmlns:xi="http://www.w3.org/2001/XInclude"
+          href="../../../../indices/placeList.xml" xpointer="element(/1/2/1/1)"/>
+        <xi:include xmlns:xi="http://www.w3.org/2001/XInclude"
+          href="../../../../indices/personList.xml" xpointer="element(/1/2/1/1)"/>
+        <xi:include xmlns:xi="http://www.w3.org/2001/XInclude"
+          href="../../../../indices/eventList.xml" xpointer="element(/1/2/1/1)"/>
+        <xi:include xmlns:xi="http://www.w3.org/2001/XInclude"
+          href="../../../../indices/orgList.xml" xpointer="element(/1/2/1/1)"/>
+      </div>
+    </body>
+  </text>
+</TEI>

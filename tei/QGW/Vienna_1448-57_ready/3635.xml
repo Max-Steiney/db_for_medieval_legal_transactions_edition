@@ -1,0 +1,21 @@
+<?xml version="1.0" encoding="UTF-8"?><!DOCTYPE TEI   SYSTEM "../../../schema/toolbox_full.dtd"><TEI xmlns="http://www.tei-c.org/ns/1.0" xmlns:cei="http://www.monasterium.net/NS/cei" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"><teiHeader><fileDesc><titleStmt><title>Tei version of 3635 exported from monasterium.net </title></titleStmt><publicationStmt><p/></publicationStmt><!--In Original: cei:front/cei:sourceDesc/cei:sourceDescRegest--><sourceDesc><bibl  type="url">https://www.monasterium.net/mom/AT-WStLA/HAUrk/3635/charter</bibl><bibl default="false" status="draft">Quellen zur Geschichte der Stadt Wien, Bd. II/2,
+               Nr. 3635 As published in HAUrk by Wiener Stadt- und Landesarchiv </bibl><msDesc status="draft"><msIdentifier><repository>Wiener Stadt- und Landesarchiv</repository><idno>3635</idno><altIdentifier type="old"><idno>517888</idno></altIdentifier></msIdentifier><physDesc><sealDesc><seal><p>Zwei rückwärts aufgedrückte Siegel von grünem Wachse,
+                           abgesprungen.Siegler: der Aussteller und <quote>Hanns Ravenspurger,
+                              urtailschreiber, burger zu Wienn</quote>. </p></seal></sealDesc></physDesc></msDesc></sourceDesc></fileDesc><encodingDesc><projectDesc default="false"><p><label type="contentual-editing">Dissertation Korbinian Grünwald</label></p></projectDesc></encodingDesc><profileDesc><creation>
+            <placeName>Wien</placeName>
+            <date when="14550731">1455 VII 31</date>
+            <origDate instant="false">zu Wienn, an phincztag vor sand Stephans tag
+               inventionis.</origDate></creation></profileDesc></teiHeader><facsimile><surface><graphic url="http://images.monasterium.net/pics/AT-WStLA/HA-U/WStLA-HA-Urkunden_03635_r.jpg"/></surface><surface><graphic url="http://images.monasterium.net/pics/AT-WStLA/HA-U/WStLA-HA-Urkunden_03635_v.jpg"/></surface></facsimile><text><body><div type="abstract" resp="kg"><p>
+               <rs type="event" ref="ev__QGW_II_II_3635"><rs type="fn" role="issuer"><rs type="person" ref="pe__heinrich_geukramer_QGW_II_II_3586">Hainreich
+                        Geukramer, <roleName type="occ" corresp="org__wien">burger</roleName>
+                        zu Wienn</rs>,</rs>
+                  <triggerstring n="disp">stellt</triggerstring>
+                  <rs type="fn" role="recipient">dem <rs type="person" ref="pe__ulrich_gundloch_QGW_II_II_3454">Wiener <roleName type="occ" corresp="org__wien">Bürger</roleName> Ulreichen dem Gundlochen</rs></rs>
+                  einen <triggerstring n="disp">Schuldbrief</triggerstring>
+                  <rs type="fn" role="transactiongood_II">über <measure>20 lb dn. der swarczen münss
+                        guter lanndeswerung in Österreich</measure>, <triggerstring n="impl_rules">rückzahlbar an dem nächsten sand Merten tag</triggerstring>,</rs>
+                  <triggerstring n="disp">aus</triggerstring>.</rs>
+            </p></div><div type="seal"><p><rs type="event" ref="ev__QGW_II_II_3635"><rs type="fn" role="witness">Siegler: der
+                        <rs type="person" ref="pe__heinrich_geukramer_QGW_II_II_3586">Aussteller</rs> und <rs type="person" ref="pe__johann_ravensburger_QGW_II_II_3264">Hanns Ravenspurger, <roleName type="occ" corresp="org__wien">urtailschreiber</roleName>, <roleName type="occ" corresp="org__wien">burger</roleName> zu
+                     Wienn</rs>.</rs></rs>
+            </p></div><div type="lists"><xi:include xmlns:xi="http://www.w3.org/2001/XInclude" href="../../../../indices/placeList.xml" xpointer="element(/1/2/1/1)"/><xi:include xmlns:xi="http://www.w3.org/2001/XInclude" href="../../../../indices/personList.xml" xpointer="element(/1/2/1/1)"/><xi:include xmlns:xi="http://www.w3.org/2001/XInclude" href="../../../../indices/eventList.xml" xpointer="element(/1/2/1/1)"/><xi:include xmlns:xi="http://www.w3.org/2001/XInclude" href="../../../../indices/orgList.xml" xpointer="element(/1/2/1/1)"/></div></body></text></TEI>

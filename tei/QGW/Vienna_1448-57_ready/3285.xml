@@ -1,0 +1,173 @@
+<?xml version="1.0" encoding="UTF-8"?><!DOCTYPE TEI   SYSTEM "../../../schema/toolbox_full.dtd">
+<TEI xmlns="http://www.tei-c.org/ns/1.0" xmlns:cei="http://www.monasterium.net/NS/cei"
+   xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance">
+   <teiHeader>
+      <fileDesc>
+         <titleStmt>
+            <title>Tei version of 3285 exported from monasterium.net </title>
+         </titleStmt>
+         <publicationStmt>
+            <p/>
+         </publicationStmt>
+         <!--In Original: cei:front/cei:sourceDesc/cei:sourceDescRegest-->
+         <sourceDesc>
+            <bibl type="url">https://www.monasterium.net/mom/AT-WStLA/HAUrk/3285/charter</bibl>
+            <bibl default="false" status="draft">Quellen zur Geschichte der Stadt Wien, Bd. II/2,
+               Nr. 3285 As published in HAUrk by Wiener Stadt- und Landesarchiv </bibl>
+            <msDesc status="draft">
+               <msIdentifier>
+                  <repository>Wiener Stadt- und Landesarchiv</repository>
+                  <idno>3285</idno>
+                  <altIdentifier type="old">
+                     <idno>517524</idno>
+                  </altIdentifier>
+               </msIdentifier>
+               <msContents>
+                  <msItem>
+                     <listBibl default="false">
+                        <bibl default="false" status="draft">Jahrbuch der kais. Kunstsamml. 17b, n°
+                           15235 cit.</bibl>
+                     </listBibl>
+                  </msItem>
+               </msContents>
+               <physDesc>
+                  <sealDesc>
+                     <seal>
+                        <p>Zwei rückwärts aufgedrückte Siegel von grünem Wachse, ausserdem ist über
+                           Hanfschnüren, mit denen das Testament verschlossen war, das Petschaft des
+                           Ausstellers aufgedrückt.Siegler: der Aussteller und <quote>Ulreich
+                              Menkchover</quote>. </p>
+                     </seal>
+                  </sealDesc>
+               </physDesc>
+            </msDesc>
+         </sourceDesc>
+      </fileDesc>
+      <encodingDesc>
+         <projectDesc default="false">
+            <p><label type="contentual-editing">Dissertation Korbinian Grünwald</label></p>
+         </projectDesc>
+      </encodingDesc>
+      <profileDesc>
+         <creation>
+            <placeName>Wien</placeName>
+            <date when="14490113">1449 I 13</date>
+            <origDate instant="false">ze Wienn, an montag vor sand Anthonien
+            tag.</origDate></creation>
+      </profileDesc>
+   </teiHeader>
+   <facsimile>
+      <surface>
+         <graphic
+            url="http://images.monasterium.net/pics/AT-WStLA/HA-U/WStLA-HA-Urkunden_03285_r.jpg"/>
+      </surface>
+      <surface>
+         <graphic
+            url="http://images.monasterium.net/pics/AT-WStLA/HA-U/WStLA-HA-Urkunden_03285_v.jpg"/>
+      </surface>
+   </facsimile>
+   <text>
+      <body>
+         <div type="abstract" resp="kg">
+            <p>
+               <rs type="event" ref="ev__QGW_II_II_3285"><rs type="fn" role="issuer"><rs
+                        type="person" ref="pe__michael_stadl_SB_CD_00055">Michel Stadel, <roleName
+                           type="occ" corresp="org__wien">burger</roleName> zu Wienn</rs>,</rs>
+                  <triggerstring n="disp">beurkundet seinen letzten Willen</triggerstring>. Er schafft: 1.
+                  dass man ihn erberleich zu der erden bestatten und die echter von St. Stephan den
+                  ersten bis zum dreissigsten Tag des Nachts eine gesungene Vigilie und des Morgens
+                  ein Seelamt halten sollen 2. in die Klöster: <rs type="fn" role="recipient">v <rs
+                        type="org" ref="org__wien-schotten">den Schotten</rs>, gen <rs type="org"
+                        ref="org__wien-st_dorothea">sand Dorothe</rs>, gen <rs type="org"
+                        ref="org__wien-minoriten">den Minnornbrudern</rs>, zu <rs type="org"
+                        ref="org__wien-augustiner_eremiten">den Augustinern</rs>, gen <rs type="org"
+                        ref="org__wien-dominikaner">den Predigern</rs> und <rs type="org"
+                        ref="org__wien-karmeliter">den Weissenbrudern</rs>, gen <rs type="org"
+                        ref="org__wien-st_klara">sand Clarn</rs>, gen <rs type="org"
+                        ref="org__wien-st_niklas_vor_dem_stubentor_zisterzienserinnen">sand Niclas
+                        vor Stubentor</rs>, zu <rs type="org"
+                        ref="org__wien-st_maria_magdalena_vor_dem_schottentor">sand Maria Magdalen
+                        vor Schottentor</rs>, zu <rs type="org"
+                        ref="org__wien-st_laurenz_am_alten_fleischmarkt">sand Larenzen</rs> hincz
+                        <rs type="org" ref="org__wien-st_agnes_auf_der_himmelpforte">der
+                        Himelporten</rs>, zu <rs type="org" ref="org__wien-st_jakob_auf_der_huelben"
+                        >sand Jacob</rs> und hincz <rs type="org" ref="org__wien-st_hieronymus">sand
+                        Jeronimus</rs></rs> je 2 lb dn., wogegen diese nach seinem Ableben des
+                  Nachts eine gesungene Vigilie und des Morgens ein Seelamt begehen sollen 3. dass
+                     <rs type="fn" role="recipient"><rs type="org" ref="org__wien-buergerspital"
+                        >jedem Armen in dem Spital</rs></rs> vom ersten bis zum dreissigsten Tag 1
+                  dn. gegeben werde 4. <rs type="fn" role="recipient">hincz <rs type="org"
+                        ref="org__wien-st_martin_vor_dem_widmertor">sand Mertten</rs>, hincz <rs
+                        type="org" ref="org__wien-st_theobald">sand Tibolt in den dritten
+                     Orden</rs>, in die zwai selheuser, in die dreu <rs type="org"
+                        ref="org__wien-st_johann_in_der_siechenals">siechheuser vor der stat</rs>
+                     <rs type="org" ref="org__wien-st_lazarus_siechenhaus"
+                        ><add>siechheuser</add></rs><rs type="org"
+                        ref="org__wien-st_hiob_zum_klagbaum"><add>siechheuser</add></rs></rs> je 1
+                  lb dn. 5. <rs type="fn" role="recipient">hincz <rs type="org"
+                        ref="org__wien-st_stephan">sand Stephan</rs> zu dem pau</rs> 10 lb dn. und
+                     <rs type="fn" role="recipient">hincz <rs type="org" ref="org__wien-st_michael"
+                        >sand Michel</rs></rs> 5 lb dn., wogegen in beiden Kirchen und im
+                  Bürgerspital eine gesungene Vigilie und ein Seelamt gehalten werden soll 6. <rs
+                     type="fn" role="recipient">den <rs type="org" ref="org__wien-st_hieronymus"
+                        >bekerten fraun zu sand Jeronimus</rs></rs>, jeder 8 ellen tuchs, weiss
+                  Wienner oder Tullner tuch , und 5 lb dn. zur Handvertheilung 7. <rs type="fn"
+                     role="recipient"><triggerstring n="fn">zu einer ewigen Messe</triggerstring>, deren
+                     Lehensherren seine Geschäftsleute und darnach der Bürgermeister und Rath von
+                     Wien sein sollen, und die dreimal wöchentlich <rs type="org"
+                        ref="org__wien-st_koloman">zu sand Kolman auf dem Gotsacker</rs>, zweimal
+                        <rs type="org" ref="org__wien-st_hieronymus">zu sant Jeronimus</rs> gelesen
+                     werden soll,</rs>
+                  <rs type="fn" role="transactiongood_I"><rs type="place"
+                        ref="pl__wien-immo_hohewarte_1"><roleName type="owner"
+                           corresp="pe__michael_stadl_SB_CD_00055">seine</roleName> zwei Weingärten,
+                           <roleName type="topo" corresp="pl__wien-hohewarte">gelegen an der
+                           Hohenwart</roleName>, genant die Weissmaur <roleName type="topo"
+                           corresp="pl__wien-immo_hohewarte_2">zenagst</roleName>
+                        <rs type="place" ref="pl__wien-immo_hohewarte_2">des pharrer von Wering
+                           weingarten</rs></rs></rs> 8. den Rest seines Nachlasses <rs type="fn"
+                     role="recipient">zur Vertheilung an die Armen</rs>. <rs type="fn" role="other"
+                        ><triggerstring n="disp">Als Geschäftsherren werden bestellt</triggerstring>: <rs
+                        type="person" ref="pe__konrad_pilgrim_QGW_II_II_3285">Kunrat Pilgreim
+                           <roleName type="occ" corresp="org__wien"
+                           ><add>burger</add></roleName><roleName type="rep"
+                           corresp="pe__michael_stadl_SB_CD_00055"
+                           ><add>Geschäftsherren</add></roleName><roleName type="prof"
+                              ><add>fleischhacker</add></roleName></rs>, <rs type="person"
+                        ref="pe__peter_von_asslabing_QGW_II_II_3285">Peter von Aslobing <roleName
+                           type="occ" corresp="org__wien"><add>burger</add></roleName><roleName
+                           type="prof"><add>fleischhacker</add></roleName><roleName type="rep"
+                           corresp="pe__michael_stadl_SB_CD_00055"
+                           ><add>Geschäftsherren</add></roleName></rs>, <rs type="person"
+                        ref="pe__stephan_kufuesser_QGW_II_II_3285">Stephan der Chuefuesser <roleName
+                           type="occ" corresp="org__wien"><add>burger</add></roleName><roleName
+                           type="prof"><add>fleischhacker</add></roleName><roleName type="rep"
+                           corresp="pe__michael_stadl_SB_CD_00055"
+                           ><add>Geschäftsherren</add></roleName></rs>, <rs type="person"
+                        ref="pe__kaspar_kemnater_QGW_II_II_3285">Caspar Chemater, <roleName
+                           type="prof">fleischhacker</roleName>, all vier <roleName type="occ"
+                           corresp="org__wien">burger</roleName> ze Wienn<roleName type="rep"
+                           corresp="pe__michael_stadl_SB_CD_00055"
+                           ><add>Geschäftsherren</add></roleName></rs></rs>.</rs>
+            </p>
+         </div>
+         <div type="seal">
+            <p><rs type="event" ref="ev__QGW_II_II_3285"><rs type="fn" role="witness">Siegler: der
+                        <rs type="person" ref="pe__michael_stadl_SB_CD_00055">Aussteller</rs> und
+                        <rs type="person" ref="pe__ulrich_menkchover_QGW_II_II_3240">Ulreich
+                        Menkchover</rs>.</rs></rs>
+            </p>
+         </div>
+         <div type="lists">
+            <xi:include xmlns:xi="http://www.w3.org/2001/XInclude"
+               href="../../../../indices/placeList.xml" xpointer="element(/1/2/1/1)"/>
+            <xi:include xmlns:xi="http://www.w3.org/2001/XInclude"
+               href="../../../../indices/personList.xml" xpointer="element(/1/2/1/1)"/>
+            <xi:include xmlns:xi="http://www.w3.org/2001/XInclude"
+               href="../../../../indices/eventList.xml" xpointer="element(/1/2/1/1)"/>
+            <xi:include xmlns:xi="http://www.w3.org/2001/XInclude"
+               href="../../../../indices/orgList.xml" xpointer="element(/1/2/1/1)"/>
+         </div>
+      </body>
+   </text>
+</TEI>

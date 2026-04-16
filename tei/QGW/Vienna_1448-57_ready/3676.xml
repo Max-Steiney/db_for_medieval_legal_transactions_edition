@@ -1,0 +1,28 @@
+<?xml version="1.0" encoding="UTF-8"?><!DOCTYPE TEI   SYSTEM "../../../schema/toolbox_full.dtd"><TEI xmlns="http://www.tei-c.org/ns/1.0" xmlns:cei="http://www.monasterium.net/NS/cei" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"><teiHeader><fileDesc><titleStmt><title>Tei version of 3676 exported from monasterium.net </title></titleStmt><publicationStmt><p/></publicationStmt><!--In Original: cei:front/cei:sourceDesc/cei:sourceDescRegest--><sourceDesc><bibl  type="url">https://www.monasterium.net/mom/AT-WStLA/HAUrk/3676/charter</bibl><bibl default="false" status="draft">Quellen zur Geschichte der Stadt Wien, Bd. II/2,
+               Nr. 3676 As published in HAUrk by Wiener Stadt- und Landesarchiv </bibl><msDesc status="draft"><msIdentifier><repository>Wiener Stadt- und Landesarchiv</repository><idno>3676</idno><altIdentifier type="old"><idno>517931</idno></altIdentifier></msIdentifier><msContents><msItem><listBibl default="false"><bibl default="false" status="draft">Camesina in den Mitth. des
+                           Alterthumsvereines 72, 13 n° 32.</bibl></listBibl></msItem></msContents><physDesc><sealDesc><seal><p>Zwei anhangende Siegel, grün u. Sch., 2. beschädigt.Siegler: der
+                           Lehensherr und der Wiener Bürger <quote>Veit Schatauer</quote>. </p></seal></sealDesc></physDesc></msDesc></sourceDesc></fileDesc><encodingDesc><projectDesc default="false"><p><label type="contentual-editing">Dissertation Korbinian Grünwald</label></p></projectDesc></encodingDesc><profileDesc><creation>
+            <placeName>Wien</placeName>
+            <date when="14560820">1456 VIII 20</date>
+            <origDate instant="false">zu Wienn, an freitag vor sand Bartholomes tag, des heiligen
+               zwelfpoten.</origDate></creation></profileDesc></teiHeader><facsimile><surface><graphic url="http://images.monasterium.net/pics/AT-WStLA/HA-U/WStLA-HA-Urkunden_03676_r.jpg"/></surface><surface><graphic url="http://images.monasterium.net/pics/AT-WStLA/HA-U/WStLA-HA-Urkunden_03676_v.jpg"/></surface></facsimile><text><body><div type="abstract" resp="kg"><p>
+               <rs type="event" ref="ev__SB_CD_01429_men_1"><rs type="fn" role="issuer"><rs type="person" ref="pe__johann_sibenburger_QGW_II_II_3676">Hanns Sibenburger,
+                           <roleName type="occ" corresp="org__wien-st_peter-altar_st_maria-messe_elsarn">kaplan</roleName> der mess, so die von Eslorn auf Unser Fraun altar zu
+                        sand Peter zu Wienn gestifft habent</rs>,</rs>
+                  <triggerstring n="disp">gibt <add>geltes purkchrechts</add></triggerstring>
+                  <rs type="fn" role="recipient"><rs type="person" ref="pe__niklas_salczburger_QGW_II_II_3676">Niclasen Salczpurger, dem
+                           <roleName type="prof">weber</roleName></rs>, und <rs type="person" ref="pe__elisabeth_QGW_II_II_3676">Elspethen, seiner <roleName type="kin" corresp="pe__niklas_salczburger_QGW_II_II_3676">hausfraun</roleName></rs>,</rs>
+                  <rs type="fn" role="transactiongood_I"><measure>6 sh. dn.</measure>
+                     <triggerstring n="fn"><add>geltes purkchrechts</add></triggerstring> von <rs type="place" ref="pl__wien-immo_st_johannsstrasse_5"><roleName type="owner" corresp="pe__niklas_salczburger_QGW_II_II_3676"><add>ihrem</add></roleName><roleName type="owner" corresp="pe__elisabeth_QGW_II_II_3676">ihrem</roleName> Hause, <roleName type="topo" corresp="pl__wien-st_johannsstrasse">in sand
+                           Johannsstrass</roleName>
+                        <roleName type="topo" corresp="pl__wien-immo_st_johannsstrasse_6">zenagst</roleName>
+                        <rs type="place" ref="pl__wien-immo_st_johannsstrasse_6"><roleName type="owner" corresp="pe__gilg_kunter_QGW_II_II_3676">Giligen,
+                              kunter,</roleName> haus</rs> gelegen</rs>,</rs>
+                  <rs type="fn" role="transactiongood_II">um <measure>6 lb dn.</measure>
+                     abzulösen</rs>
+                  <rs type="event" ref="ev__SB_CD_00365">und legt diesen Betrag für die Messe mit
+                     Einwilligung des Lehensherrn Hannsen von Eslorn auf Elspethen, Jörgen Strigels
+                     hausfraun haus, innerhalb Schottentor gelegen , an.</rs></rs>
+            </p></div><div type="seal"><p><rs type="event" ref="ev__SB_CD_01429_men_1"><rs type="event" ref="ev__SB_CD_00365"><rs type="fn" role="witness">Siegler: der Lehensherr und der <rs type="person" ref="pe__veit_schattauer_QGW_II_II_3676"><roleName type="occ" corresp="org__wien">Wiener Bürger</roleName> Veit
+                           Schatauer</rs></rs></rs>.</rs>
+            </p></div><div type="lists"><xi:include xmlns:xi="http://www.w3.org/2001/XInclude" href="../../../../indices/placeList.xml" xpointer="element(/1/2/1/1)"/><xi:include xmlns:xi="http://www.w3.org/2001/XInclude" href="../../../../indices/personList.xml" xpointer="element(/1/2/1/1)"/><xi:include xmlns:xi="http://www.w3.org/2001/XInclude" href="../../../../indices/eventList.xml" xpointer="element(/1/2/1/1)"/><xi:include xmlns:xi="http://www.w3.org/2001/XInclude" href="../../../../indices/orgList.xml" xpointer="element(/1/2/1/1)"/></div></body></text></TEI>

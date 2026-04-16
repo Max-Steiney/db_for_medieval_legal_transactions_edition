@@ -1,0 +1,20 @@
+<?xml version="1.0" encoding="UTF-8"?><!DOCTYPE TEI   SYSTEM "../../../schema/toolbox_full.dtd"><TEI xmlns="http://www.tei-c.org/ns/1.0" xmlns:cei="http://www.monasterium.net/NS/cei" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"><teiHeader><fileDesc><titleStmt><title>Tei version of 3488 exported from monasterium.net </title></titleStmt><publicationStmt><p/></publicationStmt><!--In Original: cei:front/cei:sourceDesc/cei:sourceDescRegest--><sourceDesc><bibl  type="url">https://www.monasterium.net/mom/AT-WStLA/HAUrk/3488/charter</bibl><bibl default="false" status="draft">Quellen zur Geschichte der Stadt Wien, Bd. II/2, Nr.
+          3488 As published in HAUrk by Wiener Stadt- und Landesarchiv </bibl><msDesc status="draft"><msIdentifier><repository>Wiener Stadt- und Landesarchiv</repository><idno>3488</idno><altIdentifier type="old"><idno>517731</idno></altIdentifier></msIdentifier><physDesc><sealDesc><seal><p>Vorne aufgedrücktes spitzovales Siegel von grünem Wachse unter Papierdecke.</p></seal></sealDesc></physDesc></msDesc></sourceDesc></fileDesc><encodingDesc><projectDesc default="false"><p><label type="contentual-editing">Dissertation Korbinian Grünwald</label></p></projectDesc></encodingDesc><profileDesc><creation>
+        <placeName>Wien</placeName>
+        <date when="14521115">1452 XI 15</date>
+        <origDate instant="false">zu Wienn, am mitichen nach sand Mertein tag.</origDate></creation></profileDesc></teiHeader><facsimile><surface><graphic url="http://images.monasterium.net/pics/AT-WStLA/HA-U/WStLA-HA-Urkunden_03488_r.jpg"/></surface><surface><graphic url="http://images.monasterium.net/pics/AT-WStLA/HA-U/WStLA-HA-Urkunden_03488_v.jpg"/></surface></facsimile><text><body><div type="abstract" resp="kg"><p>
+          <rs type="event" ref="ev__QGW_II_II_3488"><rs type="fn" role="issuer"><rs type="person" ref="pe__michael_QGW_II_II_3488"><roleName type="title">Prueder</roleName> Michel
+                von Wienn, <roleName type="occ" corresp="org__wien-minoriten">gardian</roleName> zu
+                den Minnern pruedern zu Wienn</rs>,</rs>
+            <triggerstring n="disp">bestätigt</triggerstring>, <rs type="fn" role="recipient"><rs type="org" ref="org__wien">bei dem städtischen Grundbuche</rs></rs>
+            <rs type="fn" role="transactiongood_II"><measure>16 lb dn.</measure>
+              <triggerstring n="fn">hauptguts</triggerstring></rs>
+            <triggerstring n="disp">erhalten zu haben</triggerstring>, <rs type="event" ref="ev__QGW_II_II_3488_men_1"><rs type="fn" role="transactiongood_II">welche
+                    <measure><add>16 lb dn.</add></measure></rs>
+              <rs type="fn" role="issuer"><rs type="person" ref="pe__ulrich_sturm_QGW_II_II_3488">Ulreich Sturm</rs></rs>
+              <rs type="fn" role="transactiongood_I">von <rs type="place" ref="pl__wien-immo_st_johannsstrasse_14"><roleName type="owner" corresp="pe__ulrich_sturm_QGW_II_II_3488">seins</roleName> haus wegen <roleName type="topo" corresp="pl__wien-rinkchmauer">pei der
+                Rinkmauer</roleName></rs></rs>, das er <rs type="fn" role="recipient"><rs type="person" ref="pe__christian_wissinger_QGW_II_II_3328">Cristan
+                Wissinger</rs></rs>
+              <triggerstring n="disp">verchaufft</triggerstring>, daselbst hinterlegt hatte <rs type="fn" role="issuer">und die zu <rs type="org" ref="org__wien-st_stephan-kapelle_st_sigmund_und_st_wolfgang-messe_wuerfel">hern
+                  Niclasen Würfel jartag</rs> gehören</rs>.</rs></rs>
+        </p></div><div type="lists"><xi:include xmlns:xi="http://www.w3.org/2001/XInclude" href="../../../../indices/placeList.xml" xpointer="element(/1/2/1/1)"/><xi:include xmlns:xi="http://www.w3.org/2001/XInclude" href="../../../../indices/personList.xml" xpointer="element(/1/2/1/1)"/><xi:include xmlns:xi="http://www.w3.org/2001/XInclude" href="../../../../indices/eventList.xml" xpointer="element(/1/2/1/1)"/><xi:include xmlns:xi="http://www.w3.org/2001/XInclude" href="../../../../indices/orgList.xml" xpointer="element(/1/2/1/1)"/></div></body></text></TEI>

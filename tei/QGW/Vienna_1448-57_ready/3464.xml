@@ -1,0 +1,27 @@
+<?xml version="1.0" encoding="UTF-8"?><!DOCTYPE TEI   SYSTEM "../../../schema/toolbox_full.dtd"><TEI xmlns="http://www.tei-c.org/ns/1.0" xmlns:cei="http://www.monasterium.net/NS/cei" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"><teiHeader><fileDesc><titleStmt><title>Tei version of 3464 exported from monasterium.net </title></titleStmt><publicationStmt><p/></publicationStmt><!--In Original: cei:front/cei:sourceDesc/cei:sourceDescRegest--><sourceDesc><bibl  type="url">https://www.monasterium.net/mom/AT-WStLA/HAUrk/3464/charter</bibl><bibl default="false" status="draft">Quellen zur Geschichte der Stadt Wien,
+                              Bd. II/2, Nr. 3464 As published in HAUrk by Wiener Stadt- und
+                              Landesarchiv </bibl><msDesc status="draft"><msIdentifier><repository>Wiener Stadt- und Landesarchiv</repository><idno>3464</idno><altIdentifier type="old"><idno>517706</idno></altIdentifier></msIdentifier><physDesc><sealDesc><seal><p>Zwei rückwärts aufgedrückte Siegel von grünem
+                                                  Wachse, 1. abgesprungen, 2. unter Papierdecke.</p></seal></sealDesc></physDesc></msDesc></sourceDesc></fileDesc><encodingDesc><projectDesc default="false"><p><label type="contentual-editing">Dissertation Korbinian Grünwald</label></p></projectDesc></encodingDesc><profileDesc><creation>
+                        <placeName>Wien</placeName>
+                        <date when="14520401">1452 IV 01</date>
+                        <origDate instant="false">zu Wienn, an sambstag vor dem
+                        Palmtag.</origDate></creation></profileDesc></teiHeader><facsimile><surface><graphic url="http://images.monasterium.net/pics/AT-WStLA/HA-U/WStLA-HA-Urkunden_03464_r.jpg"/></surface><surface><graphic url="http://images.monasterium.net/pics/AT-WStLA/HA-U/WStLA-HA-Urkunden_03464_v.jpg"/></surface></facsimile><text><body><div type="abstract" resp="kg"><p>
+                              <rs type="event" ref="ev__QGW_II_II_3464"><rs type="fn" role="issuer"><rs type="person" ref="pe__johann_huber_SB_CD_00613"><roleName type="title">Maister</roleName> Hanns Huber,
+                                                  <roleName type="prof">licenciat geistlicher
+                                                  rechten</roleName>
+                                                <roleName type="occ" corresp="org__wien-st_peter-altar_st_maria-messe_straiherin"><add>Kaplan</add></roleName></rs>,</rs>
+                                    <triggerstring n="disp">bestätigt, dass</triggerstring>
+                                    <rs type="fn" role="recipient"><rs type="org" ref="org__wien">Bürgermeister und Rath</rs></rs> ihm <rs type="fn" role="transactiongood_II"><rs type="org" ref="org__wien-st_peter-altar_st_maria-messe_straiherin">die Messe, so weilent frau Klar die Straiherinn in
+                                                sant Peters kappeln zu stifften geschafft
+                                          hat</rs>,</rs>
+                                    <triggerstring n="disp">verliehen haben, und verpflichtet
+                                          sich</triggerstring>, <rs type="fn" role="transactiongood_II"><rs type="place" ref="pl__wien-immo_graben_8"><roleName type="owner" corresp="org__wien-st_peter-altar_st_maria-messe_straiherin" cert="high">das Haus</roleName>
+                                                <roleName type="topo" corresp="pl__wien-graben">am
+                                                  Graben</roleName>
+                                                <roleName type="topo" corresp="pl__wien-melzail_am_graben">an der
+                                                  Melczeil</roleName></rs>,</rs> sowie <triggerstring n="disp">die zugehörigen Gülten innezuhaben und die Messe
+                                          mit den Jahrtagen stiftungsgemäss zu
+                                    verwesen</triggerstring>.</rs>
+                        </p></div><div type="seal"><p><rs type="event" ref="ev__QGW_II_II_3464"><rs type="fn" role="witness">Besiegelt mit den Siegeln <rs type="person" ref="pe__andreas_kelhaimer_QGW_II_II_3460">Andres
+                                                Kelhaimer <roleName type="occ" corresp="org__wien"><add>burger</add></roleName></rs> und <rs type="person" ref="pe__leonhard_gruenpacher_QGW_II_II_2953">Linharts Grunpacher, baid <roleName type="occ" corresp="org__wien">burger</roleName></rs> zu Wienn.</rs></rs>
+                        </p></div><div type="lists"><xi:include xmlns:xi="http://www.w3.org/2001/XInclude" href="../../../../indices/placeList.xml" xpointer="element(/1/2/1/1)"/><xi:include xmlns:xi="http://www.w3.org/2001/XInclude" href="../../../../indices/personList.xml" xpointer="element(/1/2/1/1)"/><xi:include xmlns:xi="http://www.w3.org/2001/XInclude" href="../../../../indices/eventList.xml" xpointer="element(/1/2/1/1)"/><xi:include xmlns:xi="http://www.w3.org/2001/XInclude" href="../../../../indices/orgList.xml" xpointer="element(/1/2/1/1)"/></div></body></text></TEI>

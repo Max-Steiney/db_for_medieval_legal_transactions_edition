@@ -1,0 +1,232 @@
+<?xml version="1.0" encoding="UTF-8"?><!DOCTYPE TEI   SYSTEM "../../../schema/toolbox_full.dtd">
+<TEI xmlns="http://www.tei-c.org/ns/1.0" xmlns:cei="http://www.monasterium.net/NS/cei"
+   xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance">
+   <teiHeader>
+      <fileDesc>
+         <titleStmt>
+            <title>Tei version of 3675 exported from monasterium.net </title>
+         </titleStmt>
+         <publicationStmt>
+            <p/>
+         </publicationStmt>
+         <!--In Original: cei:front/cei:sourceDesc/cei:sourceDescRegest-->
+         <sourceDesc>
+            <bibl type="url">https://www.monasterium.net/mom/AT-WStLA/HAUrk/3675/charter</bibl>
+            <bibl default="false" status="draft">Quellen zur Geschichte der Stadt Wien, Bd. II/2,
+               Nr. 3675 As published in HAUrk by Wiener Stadt- und Landesarchiv </bibl>
+            <msDesc status="draft">
+               <msIdentifier>
+                  <repository>Wiener Stadt- und Landesarchiv</repository>
+                  <idno>3675</idno>
+                  <altIdentifier type="old">
+                     <idno>517930</idno>
+                  </altIdentifier>
+               </msIdentifier>
+               <physDesc>
+                  <sealDesc>
+                     <seal>
+                        <p>Siegel: 1., 3.— 6. fehlen, 2. grün u. Sch., anhangendes Bruchstück der
+                           Schale.Siegler: <quote>Leupolt der Hölczler, frau Margret die
+                              Liechtenhoferin</quote> mit ihrem <quote>gruntinsigil, das zu der
+                              vesten Liechtenstain gehoret, Niclas der Lukchner, Hanns Kuffner
+                           </quote>, die Aebtissin von <quote>sand Niklas</quote> und der Wiener
+                           Stadtschreiber <quote>Ulreich Hirssauer</quote>. </p>
+                     </seal>
+                  </sealDesc>
+               </physDesc>
+            </msDesc>
+         </sourceDesc>
+      </fileDesc>
+      <encodingDesc>
+         <projectDesc default="false">
+            <p><label type="contentual-editing">Dissertation Korbinian Grünwald</label></p>
+         </projectDesc>
+      </encodingDesc>
+      <profileDesc>
+         <creation>
+            <placeName>Wien</placeName>
+            <date when="14560818">1456 VIII 18</date>
+            <origDate instant="false">zu Wienn, an mittichen vor sand Bêrtlmes tag, des heiligen
+               zwelfpoten.</origDate></creation>
+      </profileDesc>
+   </teiHeader>
+   <facsimile>
+      <surface>
+         <graphic
+            url="http://images.monasterium.net/pics/AT-WStLA/HA-U/WStLA-HA-Urkunden_03675_r.jpg"/>
+      </surface>
+      <surface>
+         <graphic
+            url="http://images.monasterium.net/pics/AT-WStLA/HA-U/WStLA-HA-Urkunden_03675_v.jpg"/>
+      </surface>
+   </facsimile>
+   <text>
+      <body>
+         <div type="abstract" resp="kg">
+            <p>
+               <rs type="event" ref="ev__QGW_II_II_3675"><rs type="fn" role="issuer"><rs
+                        type="person" ref="pe__anna_SB_CD_00249">Anna, <rs type="person"
+                           ref="pe__leopold_holczler_QGW_II_II_3675"><roleName type="title"
+                              >hern</roleName> Leupolts des Hölczler</rs>
+                        <roleName type="kin" corresp="pe__leopold_holczler_QGW_II_II_3675"
+                           >hausfrau</roleName>, die emaln Hainreichen den Haiden auch <roleName
+                           type="kin" corresp="pe__heinrich_haiden_QGW_II_II_2564"
+                           >eleichen</roleName> gehabt hat</rs>,</rs>
+                  <triggerstring n="disp">stiftet</triggerstring>
+                  <triggerstring n="reason">für ihr, ihrer <rs type="person"
+                        ref="pe__helena_QGW_II_II_3675"><roleName type="kin"
+                           corresp="pe__anna_SB_CD_00249">Mutter</roleName>
+                        <roleName type="title">fraun</roleName> Helen der Sibenlinderin</rs>, ihres
+                     ersten Mannes, ihrer Vorfahren und Nachkommen Seelenheil</triggerstring>
+                  <triggerstring n="disp">eine Messe</triggerstring>, <triggerstring n="impl_rules">virstund
+                     in der wochen</triggerstring>
+                  <rs type="fn" role="recipient">auf <rs type="org"
+                        ref="org__wien-st_stephan-altar_st_maria">Unserr Fraun altar in
+                        Allerheiligen tumbkirchen dacz sand Steffan</rs></rs>
+                  <triggerstring n="impl_rules">zu lesen</triggerstring>, <triggerstring n="disp"
+                        ><add>verleiht</add></triggerstring>
+                  <rs type="fn" role="other"><triggerstring n="fn">verleiht dieselbe
+                        zuerst</triggerstring>
+                     <rs type="person" ref="pe__martin_wienner_QGW_II_II_3675"><roleName
+                           type="title">hern</roleName> Mertten Wienner von Swabdorf <roleName
+                           type="occ"
+                           corresp="org__wien-st_stephan-altar_st_maria-messe_auf_der_saeule_johann"
+                              ><add>Kaplan</add></roleName></rs></rs>
+                  <triggerstring n="disp">und widmet dazu</triggerstring>: a) <rs type="fn" role="other"
+                        ><triggerstring n="fn">mit Handen</triggerstring>
+                     <rs type="person" ref="pe__johann_hemel_QGW_II_II_3675">Hannsen Hêmel, der <rs
+                           type="person" ref="pe__margarethe_QGW_II_II_3675"><roleName type="title"
+                              >edeln</roleName>
+                           <roleName type="title">fraun</roleName> Margreten der Liechtenhoferin zum
+                           Liechtenstain</rs>
+                        <roleName type="occ" corresp="pe__margarethe_QGW_II_II_3675"
+                           select="pl__maria_enzersdorf">ambtman</roleName> zu Entschestorf</rs>,
+                        <rs type="person" ref="pe__niklas_lukchner_QGW_II_II_3675">Niclasen des
+                        Lukchner, <rs type="person" ref="pe__johann_hindernpach_QGW_II_II_3675"
+                              ><roleName type="title">maister</roleName> Hannsen Hindernpach,
+                              <roleName type="prof">lerer bäbstlicher rechten</roleName>, <roleName
+                              type="occ" corresp="org__moedling">pharrer</roleName> zu Medling</rs>,
+                           <roleName type="occ" corresp="pe__johann_hindernpach_QGW_II_II_3675"
+                           >ambtman</roleName></rs>, und <rs type="person"
+                        ref="pe__johann_kuffner_QGW_II_II_3675">Hannsen des Küfner, des <rs
+                           type="person" ref="pe__wolfgang_von_wallsee_QGW_II_II_3675"><roleName
+                              type="title">edeln</roleName>
+                           <roleName type="title">herren</roleName>, <roleName type="title"
+                              >hern</roleName> Wolfgangs von Walsse, <roleName type="occ"
+                              corresp="org__oesterreich-herzogtum">obristen marschalh</roleName> in
+                           Österreich, <roleName type="occ" corresp="org__steyr">obristen
+                              drugksessen</roleName> in Steir und <unclear instant="false"><roleName
+                                 type="occ" corresp="org__oesterreich-herzogtum">haubtmans ob der
+                                 Enns</roleName></unclear></rs>, <roleName type="occ"
+                           corresp="pe__wolfgang_von_wallsee_QGW_II_II_3675">ambtman</roleName> zu
+                        Medling</rs>,</rs>
+                  <rs type="fn" role="transactiongood_I"><rs type="place" ref="pl__moedling-immo_18"
+                           ><roleName type="owner" corresp="pe__anna_SB_CD_00249">einen</roleName>
+                        Weingarten, <roleName type="topo" corresp="pl__moedling">gelegen daselbs zu
+                           Medling im Hochprunn</roleName>, genant der Phanczagel, zenagst <rs
+                           type="place" ref="pl__moedling-immo_19"><roleName type="owner"
+                              corresp="org__wien-schotten">der Schotten</roleName> weingarten</rs>
+                        <roleName type="topo" corresp="pl__moedling-immo_19"><add>zenagst</add> an
+                           aim rain</roleName>, <rs type="event" ref="ev__QGW_II_II_3675_men_1"><rs
+                              type="fn" role="issuer">von <rs type="place"
+                                 ref="pl__moedling-immo_18">dem</rs> man</rs>
+                           <rs type="fn" role="recipient"><rs type="person"
+                                 ref="pe__margarethe_QGW_II_II_3675">der Lichtenhoferin in ir vesten
+                                 Liechtenstain</rs>,</rs>
+                           <add>je</add>
+                           <rs type="fn" role="transactiongood_I"><measure><add>5
+                                 Helbling</add></measure>
+                              <add>zu</add>
+                              <triggerstring n="fn"><add>Grunddienst</add></triggerstring>
+                              <triggerstring n="disp"><add>Grunddienst</add>
+                                 <add>dient</add></triggerstring></rs></rs>
+                        <rs type="event" ref="ev__QGW_II_II_3675"><rs type="fn" role="issuer"
+                                 ><add>von</add>
+                              <rs type="place" ref="pl__moedling-immo_18"><add>dem</add></rs>
+                              <add>man</add></rs>
+                           <rs type="fn" role="recipient">dem <rs type="org"
+                                 ref="org__moedling-pfarre">Pfarrer zu Mödling</rs></rs>
+                           <add>je</add>
+                           <rs type="fn" role="transactiongood_I"><measure><add>5
+                                 Helbling</add></measure>
+                              <add>zu</add>
+                              <triggerstring n="fn"><add>Grunddienst</add></triggerstring>
+                              <triggerstring n="disp"><add>Grunddienst</add>
+                                 <add>dient</add></triggerstring></rs></rs>
+                        <rs type="event" ref="ev__QGW_II_II_3675_men_3">und <rs type="fn"
+                              role="issuer"><add>von</add>
+                              <rs type="place" ref="pl__moedling-immo_18"><add>dem</add></rs>
+                              <add>man</add></rs>
+                           <rs type="fn" role="recipient">dem <rs type="person"
+                                 ref="pe__wolfgang_von_wallsee_QGW_II_II_3675">Herrn von
+                                 Wallsee</rs></rs> je <rs type="fn" role="transactiongood_I"
+                                 ><measure>5 Helbling</measure> zu <triggerstring n="fn"
+                                 >Grunddienst</triggerstring>
+                              <triggerstring n="disp"><add>Grunddienst</add>
+                           dient</triggerstring></rs></rs></rs></rs> b) <rs type="fn" role="other"
+                        ><triggerstring n="fn">mit Handen</triggerstring>
+                     <rs type="person" ref="pe__anna_QGW_II_II_3626"><roleName type="title"
+                           >swester</roleName> Annen Vösendorfferin, <roleName type="occ"
+                           corresp="org__wien-st_niklas_vor_dem_stubentor_zisterzienserinnen"
+                           >abtessin</roleName> des fraunklosters zu sand Niclas vor Stubentor zu
+                        Wienn</rs>,</rs>
+                  <rs type="fn" role="transactiongood_I"><rs type="place"
+                        ref="pl__wien-immo_jeus_vor_stubentor_3"><roleName type="owner"
+                           corresp="pe__anna_SB_CD_00249">ihren</roleName> Weingarten, <roleName
+                           type="topo" corresp="pl__wien-jeus_vor_stubentor">gelegen daselbs vor
+                           Stubentor auf dem Yeus</roleName>, das ain viertail ist, <roleName
+                           type="topo" corresp="pl__wien-immo_jeus_vor_stubentor_2"
+                           >zenagst</roleName>
+                        <rs type="place" ref="pl__wien-immo_jeus_vor_stubentor_2" cert="medium"
+                              ><roleName type="owner" corresp="org__wien-dominikaner">der
+                              Prediger</roleName> weingarten</rs>, <rs type="event"
+                           ref="ev__QGW_II_II_3675_men_1"><rs type="fn" role="issuer">von <rs
+                                 type="place" ref="pl__wien-immo_jeus_vor_stubentor_3">dem</rs>
+                              man</rs>
+                           <rs type="fn" role="recipient"><rs type="org"
+                                 ref="org__wien-st_niklas_vor_dem_stubentor_zisterzienserinnen"
+                              /></rs>
+                           <rs type="fn" role="transactiongood_I"><measure>85 dn.</measure> zu
+                                 <triggerstring n="fn">Grunddienst</triggerstring></rs>
+                           <triggerstring n="disp"><add>Grunddienst</add>
+                     dient</triggerstring></rs></rs>.</rs>
+                  <triggerstring n="impl_rules">Die Lehenschaft der Messe soll nach ihrem Tode ihrem
+                     Manne, nach dessen Ableben ihrem Sohne Larencz dem Haiden und dem jeweilig
+                     ältesten Descendenten desselben, nach deren Aussterben dem Bürgermeister und
+                     Rathe zustehen.</triggerstring></rs>
+            </p>
+         </div>
+         <div type="seal">
+            <p><rs type="event" ref="ev__QGW_II_II_3675"><rs type="fn" role="witness">Siegler: <rs
+                        type="person" ref="pe__leopold_holczler_QGW_II_II_3675">Leupolt der
+                        Hölczler</rs>, <rs type="person" ref="pe__margarethe_QGW_II_II_3675"
+                           ><roleName type="title">frau</roleName> Margret die Liechtenhoferin mit
+                        ihrem gruntinsigil, das zu der vesten Liechtenstain gehoret</rs>, <rs
+                        type="person" ref="pe__niklas_lukchner_QGW_II_II_3675">Niclas der
+                        Lukchner</rs>, <rs type="person" ref="pe__johann_kuffner_QGW_II_II_3675"
+                        >Hanns Kuffner</rs>, <rs type="person" ref="pe__anna_QGW_II_II_3626">die
+                           <roleName type="occ"
+                           corresp="org__wien-st_niklas_vor_dem_stubentor_zisterzienserinnen"
+                           >Aebtissin</roleName> von sand Niklas</rs> und der <rs type="person"
+                        ref="pe__ulrich_hirssauer_QGW_II_II_3239">Wiener <roleName type="occ"
+                           corresp="org__wien">Stadtschreiber</roleName> Ulreich
+                     Hirssauer</rs>.</rs></rs>
+            </p>
+         </div>
+         <div type="nota">
+            <p>Indorsate: a) ain stiftbrieff über Unsser Fraun altar in Allerheiligen tuemkirchen
+               dacz sandt Steffan. b) Ich hab nie nichts erfragen künden. </p>
+         </div>
+         <div type="lists">
+            <xi:include xmlns:xi="http://www.w3.org/2001/XInclude"
+               href="../../../../indices/placeList.xml" xpointer="element(/1/2/1/1)"/>
+            <xi:include xmlns:xi="http://www.w3.org/2001/XInclude"
+               href="../../../../indices/personList.xml" xpointer="element(/1/2/1/1)"/>
+            <xi:include xmlns:xi="http://www.w3.org/2001/XInclude"
+               href="../../../../indices/eventList.xml" xpointer="element(/1/2/1/1)"/>
+            <xi:include xmlns:xi="http://www.w3.org/2001/XInclude"
+               href="../../../../indices/orgList.xml" xpointer="element(/1/2/1/1)"/>
+         </div>
+      </body>
+   </text>
+</TEI>
