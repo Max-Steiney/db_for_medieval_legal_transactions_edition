@@ -1,0 +1,109 @@
+<?xml version="1.0" encoding="UTF-8" standalone="no"?>
+<!DOCTYPE TEI
+  SYSTEM "../../../schema/toolbox_full.dtd">
+<TEI xmlns:cei="http://www.monasterium.net/NS/cei" xmlns="http://www.tei-c.org/ns/1.0">
+   <teiHeader>
+      <fileDesc>
+         <titleStmt>
+            <title>Tei version of 3774 exported from monasterium.net </title>
+         </titleStmt>
+         <publicationStmt>
+            <p/>
+         </publicationStmt>
+         <!--In Original: cei:front/cei:sourceDesc/cei:sourceDescRegest-->
+         <sourceDesc>
+            <bibl>Quellen zur Geschichte der Stadt Wien, Bd. II/3, Nr. As published in HAUrk by
+               Wiener Stadt- und Landesarchiv </bibl>
+            <msDesc>
+               <msIdentifier>
+                  <repository>Wiener Stadt- und Landesarchiv</repository>
+                  <idno>3774</idno>
+                  <altIdentifier type="old">
+                     <idno>518030</idno>
+                  </altIdentifier>
+               </msIdentifier>
+               <msContents>
+                  <msItem>
+                     <listBibl>
+                        <bibl type="url"
+                           >https://www.monasterium.net/mom/AT-WStLA/HAUrk/3774/charter</bibl>
+                        <bibl>Copeibuch 112 n° 61.</bibl>
+                     </listBibl>
+                  </msItem>
+               </msContents>
+               <physDesc>
+                  <sealDesc>
+                     <seal>
+                        <p>Zwei zum Verschlusse aufgedrückte Petschafte von rothem Wachse unter
+                           Papierdecke.</p>
+                     </seal>
+                  </sealDesc>
+               </physDesc>
+            </msDesc>
+         </sourceDesc>
+      </fileDesc>
+      <profileDesc>
+         <creation>
+            <placeName>Schrattenthal</placeName>
+            <date when="14580313">1458 III 13</date>
+            <origDate>ze Schrattental, am montag nach dem suntag, als man singet Letare, in der
+               Vasten.</origDate>
+         </creation>
+      </profileDesc>
+   </teiHeader>
+   <facsimile>
+      <surface>
+         <graphic
+            url="http://images.monasterium.net/pics/AT-WStLA/HA-U/WStLA-HA-Urkunden_03774_a_r.jpg"/>
+      </surface>
+      <surface>
+         <graphic
+            url="http://images.monasterium.net/pics/AT-WStLA/HA-U/WStLA-HA-Urkunden_03774_a_v.jpg"/>
+      </surface>
+      <surface>
+         <graphic
+            url="http://images.monasterium.net/pics/AT-WStLA/HA-U/WStLA-HA-Urkunden_03774_b_r.jpg"/>
+      </surface>
+      <surface>
+         <graphic
+            url="http://images.monasterium.net/pics/AT-WStLA/HA-U/WStLA-HA-Urkunden_03774_b_v.jpg"/>
+      </surface>
+   </facsimile>
+   <text>
+      <body>
+         <div type="abstract" resp="ms">
+            <p>
+               <rs type="event" ref="ev__QGW_II_III_3774"> <rs type="fn" role="issuer"><rs type="person"
+                  ref="pe__oswald_eitzinger_QGW_II_II_3293">Oswald</rs> und <rs type="person"
+                     ref="pe__stephan_eitzinger_QGW_II_II_3305">Stephan, <roleName type="kin"
+                        corresp="pe__oswald_eitzinger_QGW_II_II_3293">gebrueder</roleName></rs> von
+                  Eitzing,</rs> richten an <rs type="fn" role="recipient"><rs type="org"
+                     ref="org__wien">Bürgermeister, Richter, Rath und die Genannten der Stadt</rs>
+                     zu Wien</rs> die neuerliche Mahnung, für die Freilassung ihres von <rs
+                        type="person" ref="pe__albrecht_herzog_von_oesterreich_QGW_II_II_3617"><roleName type="occ"
+                           corresp="org__oesterreich-herzogtum">Herzog</roleName> Albrecht</rs> gefangenen
+                  <rs type="person" ref="pe__ulrich_eitzinger_QGW_II_II_3270"><roleName type="kin"
+                     corresp="pe__oswald_eitzinger_QGW_II_II_3293">Bruders</roleName><roleName
+                        type="kin" corresp="pe__stephan_eitzinger_QGW_II_II_3305"
+                        ><add>Bruders</add></roleName> Ulrich</rs> zu sorgen. </rs>
+            </p>
+         </div>
+         <div type="nota">
+            <p>
+               <rs type="event" ref="ev__QGW_II_III_3774_nota">Indorsat: 2a littera de fratribus
+                  Eyczinger. </rs>
+            </p>
+         </div>
+         <div type="lists">
+            <xi:include xmlns:xi="http://www.w3.org/2001/XInclude"
+               href="../../../../indices/placeList.xml" xpointer="element(/1/2/1/1)"/>
+            <xi:include xmlns:xi="http://www.w3.org/2001/XInclude"
+               href="../../../../indices/personList.xml" xpointer="element(/1/2/1/1)"/>
+            <xi:include xmlns:xi="http://www.w3.org/2001/XInclude"
+               href="../../../../indices/eventList.xml" xpointer="element(/1/2/1/1)"/>
+            <xi:include xmlns:xi="http://www.w3.org/2001/XInclude"
+               href="../../../../indices/orgList.xml" xpointer="element(/1/2/1/1)"/>
+         </div>
+      </body>
+   </text>
+</TEI>

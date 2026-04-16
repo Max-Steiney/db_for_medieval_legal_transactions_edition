@@ -66,7 +66,8 @@
             decadeMax: 1520,
             sexFilter: 'all',
             tableView: false,
-            instTableView: false
+            instTableView: false,
+            pctMode: false
         };
 
         var drillHandle = DrillDown.bind({});
@@ -82,6 +83,17 @@
                 renderRoleChart();
                 renderInstChart();
             });
+
+        // Percentage toggle
+        var pctBtn = document.getElementById('explore-pct-toggle');
+        if (pctBtn) {
+            pctBtn.addEventListener('click', function() {
+                state.pctMode = !state.pctMode;
+                pctBtn.classList.toggle('active', state.pctMode);
+                pctBtn.setAttribute('aria-pressed', state.pctMode ? 'true' : 'false');
+                renderRoleChart();
+            });
+        }
 
         ChartHelpers.bindToggle('explore-table-toggle', 'explore-role-chart',
             'explore-role-table', state, 'tableView', renderRoleTable);
@@ -140,9 +152,14 @@
                 var role = CANONICAL_ROLES[ri];
                 var segs = [];
                 for (var si = 0; si < sexes.length; si++) {
+                    var rawVal = data[role][sexes[si]] || 0;
+                    var displayVal = state.pctMode && data[role].total > 0
+                        ? Math.round(rawVal / data[role].total * 100)
+                        : rawVal;
                     segs.push({
                         key: sexes[si],
-                        value: data[role][sexes[si]] || 0,
+                        value: displayVal,
+                        rawValue: rawVal,
                         color: SEX_COLORS[sexes[si]]
                     });
                 }
@@ -154,12 +171,14 @@
             ChartHelpers.renderHorizontalBars(wrap, {
                 items: items,
                 labelWidth: 100,
-                ariaLabel: 'Funktionsrollen nach Geschlecht',
+                ariaLabel: 'Funktionsrollen nach Geschlecht' + (state.pctMode ? ' (prozentual)' : ''),
+                tooltipClass: TOOLTIP_CLASS,
                 legend: legend,
                 onTip: function(item, seg) {
-                    var pct = item.total > 0 ? Math.round(seg.value / item.total * 100) : 0;
+                    var raw = seg.rawValue !== undefined ? seg.rawValue : seg.value;
+                    var pct = item.total > 0 ? Math.round(raw / item.total * 100) : 0;
                     return item.label + ' \u00B7 ' + SEX_LABELS[seg.key] + ': ' +
-                        seg.value.toLocaleString('de-DE') + ' (' + pct + ' %)';
+                        raw.toLocaleString('de-DE') + ' (' + pct + ' %)';
                 },
                 onClick: function(item, seg) {
                     openRoleDrillDown(item.role, seg.key);
@@ -287,6 +306,7 @@
                 groupGap: 0,
                 labelFontSize: '12',
                 ariaLabel: 'Organisationstypen nach Ereignish\u00e4ufigkeit',
+                tooltipClass: TOOLTIP_CLASS,
                 onTip: function(item) {
                     return item.label + ': ' + item.total.toLocaleString('de-DE') +
                         ' Ereignisse \u00B7 ' + item.personTotal.toLocaleString('de-DE') +
@@ -341,6 +361,15 @@
 
         ChartHelpers.loadJSON('./data/epic_a.json', 'explore-role-chart', function(data) {
             epicA = data;
+            // E6: handle URL parameter for sex filter pre-selection
+            var sexParam = EdCore.getParam('sex');
+            if (sexParam && ['m', 'f', 'unspecified'].indexOf(sexParam) >= 0) {
+                state.sexFilter = sexParam;
+                var chips = document.querySelectorAll('#explore-sex-filter .explore-chip');
+                chips.forEach(function(c) {
+                    c.classList.toggle('active', c.getAttribute('data-sex') === sexParam);
+                });
+            }
             renderRoleChart();
             renderInstChart();
         });

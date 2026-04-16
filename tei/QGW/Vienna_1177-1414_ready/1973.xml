@@ -1,0 +1,78 @@
+<?xml version="1.0" encoding="UTF-8"?><!DOCTYPE TEI SYSTEM "../../../schema/toolbox_full.dtd"><TEI xmlns="http://www.tei-c.org/ns/1.0" xmlns:cei="http://www.monasterium.net/NS/cei" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance">
+   <teiHeader>
+      <fileDesc>
+         <titleStmt>
+            <title>Tei version of 1973 exported from monasterium.net </title>
+         </titleStmt>
+         <publicationStmt>
+            <p/>
+         </publicationStmt>
+         <!--In Original: cei:front/cei:sourceDesc/cei:sourceDescRegest-->
+         <sourceDesc>
+            <bibl>Quellen zur Geschichte der Stadt Wien, Bd. II/2, Nr. 1973 As published in HAUrk by
+               Wiener Stadt- und Landesarchiv </bibl>
+            <msDesc>
+               <msIdentifier>
+                  <repository>Wiener Stadt- und Landesarchiv</repository>
+                  <idno>1973</idno>
+                  <altIdentifier type="old">
+                     <idno>516181</idno>
+                  </altIdentifier>
+               </msIdentifier>
+               <physDesc>
+                  <sealDesc>
+                     <seal>
+                        <p>Drei anhangende Siegel, 1. roth u. K., beschädigt.Siegler: <quote>Jürge
+                              Synye, richter, Cuncz, fleischhacker, und Mertein von Ach, gesworne
+                              burgr und schepphn </quote>. </p>
+                     </seal>
+                  </sealDesc>
+               </physDesc>
+            </msDesc>
+         </sourceDesc>
+      </fileDesc>       <encodingDesc>          <projectDesc default="false">             <p><label type="contentual-editing">Projekt Christina Lutter Stadt und                   Gemeinschaft</label></p>          </projectDesc>       </encodingDesc>
+      <profileDesc>
+         <creation>
+            <placeName>Prag</placeName>
+            <date when="14131215">1413 XII 15</date>
+            <origDate>zu Prage, am nehsten freitage vor sand Thomas tage, des heiligen
+               czwelfboten.</origDate></creation>
+      </profileDesc>
+   </teiHeader>
+   <facsimile>
+      <surface>
+         <graphic url="http://images.monasterium.net/pics/AT-WStLA/HA-U/WStLA-HA-Urkunden_01973_r.jpg"/>
+      </surface>
+      <surface>
+         <graphic url="http://images.monasterium.net/pics/AT-WStLA/HA-U/WStLA-HA-Urkunden_01973_v.jpg"/>
+      </surface>
+   </facsimile>
+   <text>
+      <body>
+         <div type="abstract">
+            <p>
+               <rs type="event" ref="ev__QGW_II_II_1973"><rs type="fn" role="issuer"><rs type="person" ref="pe__heinrich_kaufmann_QGW_II_II_1973">Heinrich Kaufman,
+                        gesessen in dem hause zu sand Helena, <roleName type="occ" corresp="org__prag">burger</roleName> der grössern stat zu
+                     Prage</rs></rs> , <triggerstring n="disp">beurkundet<add> seinen letzten
+                        Willen</add></triggerstring> mit krankem leibe, doch mit guter redlicher
+                  Vernunft, seinen letzten Willen. Zu Geschäftsvollstreckern <triggerstring n="disp">bestellt</triggerstring> [ 15] er seine <rs type="person" ref="pe__dorothea_QGW_II_II_1973_a"><roleName type="kin" corresp="pe__heinrich_kaufmann_QGW_II_II_1973">Gemahlin</roleName>
+                     Dorothe</rs>, <rs type="person" ref="pe__heinrich_sachsenfelt_QGW_II_I_1712">seinen <roleName type="kin" corresp="pe__heinrich_kaufmann_QGW_II_II_1973">Eidam</roleName> Heinrich Sachsenfelt</rs> und den <rs type="person" ref="pe__reichard_geisler_QGW_II_II_1973">Prager <roleName type="occ" corresp="org__prag">Bürger</roleName> Reichart Geisler</rs>. Er <triggerstring n="disp">ordnet Bezahlung seiner Schulden an</triggerstring>, zur Erbin seines
+                  gesammten Besitzes, darunter 20 Schock grosser, die ihm der <rs type="person" ref="pe__sigmund_QGW_II_II_1973_a">Sigmund, des <rs type="person" ref="pe__otto_QGW_II_II_1973">Otten goldsmides</rs>
+                     <roleName type="kin" corresp="pe__otto_QGW_II_II_1973">son</roleName>, sein
+                        <roleName type="kin" corresp="pe__heinrich_kaufmann_QGW_II_II_1973">Eidam</roleName></rs> schuldet, <triggerstring n="disp">setzt<add>
+                     ein</add></triggerstring> er <rs type="fn" role="recipient"><rs type="person" ref="pe__dorothea_QGW_II_II_1973_a">seine Gemahlin</rs></rs> ein, nach deren
+                  Tode das Haus, falls sie es nicht vortan oder varkümmert hette, <rs type="fn" role="recipient">an seine <rs type="person" ref="pe__sigmund_QGW_II_II_1973_b"><roleName type="kin" corresp="pe__heinrich_kaufmann_QGW_II_II_1973">Enkel</roleName> Sigmund, des genannten Sigmunds <roleName type="kin" corresp="pe__sigmund_QGW_II_II_1973_a">Sohn</roleName></rs>, und <rs type="person" ref="pe__dorothea_QGW_II_II_1973_a">Dorothea, Heinrich
+                        Sachsenfelds <roleName type="kin" corresp="pe__heinrich_sachsenfelt_QGW_II_I_1712">Tochter</roleName><roleName type="kin" corresp="pe__heinrich_kaufmann_QGW_II_II_1973"><add>Enkel</add></roleName></rs></rs>, fallen soll.</rs>
+            </p>
+         </div>
+         <div type="seal">
+            <p><rs type="event" ref="ev__QGW_II_II_1973"><rs type="fn" role="witness">Siegler: <rs type="person" ref="pe__juergen_synye_QGW_II_II_1973">Jürge Synye, <roleName type="occ" corresp="org__prag">richter</roleName></rs>, <rs type="person" ref="pe__konrad_QGW_II_II_1973">Cuncz, <roleName type="prof">fleischhacker</roleName><roleName type="occ" corresp="org__prag"><add>burgr</add></roleName><roleName type="occ" corresp="org__prag"><add>schepphn</add></roleName></rs>, und <rs type="person" ref="pe__martin_von_aachen_QGW_II_II_1973">Mertein von Ach,
+                        gesworne <roleName type="occ" corresp="org__prag">burgr</roleName>und<roleName type="occ" corresp="org__prag">
+                           schepphn</roleName></rs>
+                  </rs>.</rs>
+            </p>
+         </div>
+         <div type="lists"><xi:include xmlns:xi="http://www.w3.org/2001/XInclude" href="../../../../indices/placeList.xml" xpointer="element(/1/2/1/1)"/><xi:include xmlns:xi="http://www.w3.org/2001/XInclude" href="../../../../indices/personList.xml" xpointer="element(/1/2/1/1)"/><xi:include xmlns:xi="http://www.w3.org/2001/XInclude" href="../../../../indices/eventList.xml" xpointer="element(/1/2/1/1)"/><xi:include xmlns:xi="http://www.w3.org/2001/XInclude" href="../../../../indices/orgList.xml" xpointer="element(/1/2/1/1)"/></div>
+      </body>
+   </text>
+</TEI>

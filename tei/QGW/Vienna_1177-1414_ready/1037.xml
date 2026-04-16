@@ -1,0 +1,157 @@
+<?xml version="1.0" encoding="UTF-8"?><!DOCTYPE TEI   SYSTEM "../../../schema/toolbox_full.dtd">
+<TEI xmlns="http://www.tei-c.org/ns/1.0" xmlns:cei="http://www.monasterium.net/NS/cei"
+   xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance">
+   <teiHeader>
+      <fileDesc>
+         <titleStmt>
+            <title>Tei version of 1037 exported from monasterium.net </title>
+         </titleStmt>
+         <publicationStmt>
+            <p/>
+         </publicationStmt>
+         <!--In Original: cei:front/cei:sourceDesc/cei:sourceDescRegest-->
+         <sourceDesc>
+            <bibl type="url">https://www.monasterium.net/mom/AT-WStLA/HAUrk/1037/charter</bibl>
+            <bibl default="false" status="draft">Quellen zur Geschichte der Stadt Wien, Bd. II/1,
+               Nr. 1037 As published in HAUrk by Wiener Stadt- und Landesarchiv </bibl>
+            <msDesc status="draft">
+               <msIdentifier>
+                  <repository>Wiener Stadt- und Landesarchiv</repository>
+                  <idno>1037</idno>
+                  <altIdentifier type="old">
+                     <idno>515228</idno>
+                  </altIdentifier>
+               </msIdentifier>
+               <msContents>
+                  <msItem>
+                     <listBibl default="false">
+                        <bibl default="false" status="draft"/>
+                        <bibl default="false" status="draft">Quellen zur Geschichte der Stadt Wien,
+                           Bd. II/1, Nr. 1037 As published in HAUrk by Wiener Stadt- und
+                           Landesarchiv </bibl>
+                        <bibl default="false" status="draft"/>
+                     </listBibl>
+                  </msItem>
+               </msContents>
+               <physDesc>
+                  <sealDesc>
+                     <seal>
+                        <p>Vier anhangende beschädigte Siegel, 2. grün u. K., spitzoval.</p>
+                     </seal>
+                  </sealDesc>
+               </physDesc>
+            </msDesc>
+         </sourceDesc>
+      </fileDesc>
+      <encodingDesc>
+         <projectDesc default="false">
+            <p><label type="contentual-editing">Projekt Christina Lutter Stadt und
+                  Gemeinschaft</label></p>
+         </projectDesc>
+      </encodingDesc>
+      <profileDesc>
+         <creation>
+            <placeName>Wien</placeName>
+            <date when="13820821">1382 VIII 21</date>
+            <date from="99999999" to="99999999"/>
+            <origDate instant="false">ze Wienn, des nachsten phinztags nach Unser Fraun tage zu der
+               Schidung.</origDate></creation>
+      </profileDesc>
+   </teiHeader>
+   <facsimile>
+      <surface>
+         <graphic
+            url="http://images.monasterium.net/pics/AT-WStLA/HA-U/WStLA-HA-Urkunden_01037_r.jpg"/>
+      </surface>
+      <surface>
+         <graphic
+            url="http://images.monasterium.net/pics/AT-WStLA/HA-U/WStLA-HA-Urkunden_01037_v.jpg"/>
+      </surface>
+   </facsimile>
+   <text>
+      <body>
+         <div type="abstract" resp="cs">
+            <p>
+               <rs type="event" ref="ev__QGW_II_I_1037"><rs type="fn" role="issuer"><rs
+                        type="person" ref="pe__johann_von_harrenstein_QGW_II_I_1010">Hanns von
+                        Harrenstein, <roleName type="occ" corresp="org__wien"
+                           >purger</roleName> ze Wienne</rs> , und <rs type="person"
+                        ref="pe__christine_QGW_II_I_1010">Kristein, seine <roleName type="kin"
+                           corresp="pe__johann_von_harrenstein_QGW_II_I_1010"
+                        >Hausfrau</roleName></rs></rs> , <triggerstring n="disp"
+                     >bestätigen</triggerstring>, 100 lb dn., <rs type="event"
+                     ref="ev__QGW_II_I_1037_men_1">welche die vier Brüder die Pogenstainer zur
+                     Stiftung einer ewigen Messe in dem fraunchloster sand Marien Magdalenen vor
+                     Schottentor ze Wienne auf sand Marten altar geschafft hatten</rs>, <triggerstring
+                     n="disp">eingenommen zu haben</triggerstring>, und <triggerstring n="disp"
+                     >widmen</triggerstring> dafür zu <rs type="fn" role="recipient"><rs type="org"
+                        ref="org__wien-st_maria_magdalena_vor_dem_schottentor-altar_st_martha-messe_pogenstainer"
+                        >dieser</rs></rs> 10 lb dn. gelts purkrechts auf folgenden Erbgütern, <rs
+                     type="event" ref="ev__QGW_II_I_1037_men_2">die <rs type="fn" role="issuer">sie
+                           <rs type="person" ref="pe__johann_von_harrenstein_QGW_II_I_1010"
+                              ><add>Hanns</add></rs>
+                        <add>und</add>
+                        <rs type="person" ref="pe__christine_QGW_II_I_1010"
+                        ><add>Kristein</add></rs></rs>
+                     <triggerstring n="disp">mit gesammter Hand gekauft hatten</triggerstring></rs>: a)
+                     <rs type="fn" role="other"><triggerstring n="fn">mit Handen</triggerstring> ihres <rs
+                        type="person" ref="pe__niklas_schoen_QGW_II_I_1037"> Bergmeisters, des
+                        Schonen Niclas von Nidernsu/efring, <roleName type="occ"
+                           corresp="org__mauerbach-kartaeuser">pergmaister</roleName> der erbern
+                        geistleichen herren ze Allerheiligental ze Maurbach, des ordens von
+                        Karthus</rs></rs> , auf ihrem Joch Weingarten, gelegen in dem
+                  Cheswassersgraben zenechst Wernharts weingarten des Fuchsperger von Grinzing , von
+                  dem man 24 dn. für Berg- und Voitrecht dient, b) <rs type="fn" role="other"
+                        ><triggerstring n="fn">mit Handen</triggerstring> des <rs type="person"
+                        ref="pe__peter_mannseber_QGW_II_I_1037"><roleName type="title"
+                           >Bergmeisters</roleName> Petreins des Mannseber, <roleName type="occ"
+                           corresp="org__klosterneuburg-augustiner_chorherren">amtman</roleName> und
+                           <roleName type="occ" corresp="org__klosterneuburg-augustiner_chorherren"
+                           >pergmaister</roleName> des chlosters ze Neunburk</rs></rs> , auf ihrem
+                  halben Joch Weingarten, gelegen in dem Mukkental zenechst der kapellen weingarten
+                  dacz hern Otten Haimen ze Wienne, der da haisset der Scherig , von dem man 5/4
+                  Wein zu Bergrecht und 3 Helbling zu Voitrecht dient, c) <rs type="fn" role="other"
+                        ><triggerstring n="fn">mit Handen</triggerstring>
+                     <rs type="person" ref="pe__erasmus_von_herzogbierbaum_QGW_II_I_1037">Erasems
+                        von Herzogenpirpaum, <roleName type="occ"
+                           corresp="pe__johann_von_liechtenstein_QGW_II_I_1037">schaffer</roleName>
+                        des <rs type="person" ref="pe__johann_von_liechtenstein_QGW_II_I_1037"
+                              ><roleName type="title">edeln herrn</roleName>
+                           <roleName type="title">hern</roleName> Hannsen von Liechtenstain von
+                           Nicolspurkch, des hochgeborn fürsten herzog Albrechts ze Ostreich etc.
+                              <roleName type="occ"
+                              corresp="pe__albrecht_herzog_von_oesterreich_QGW_II_I_1020"
+                              >hofmaister</roleName></rs></rs></rs> , auf ihrem halben Joch
+                  Weingarten, gelegen ze Grinzing in dem Cheswassersgraben, zunächst ihrem anderen
+                  Weingarten, von dem man 16 ½ dn. zu Berg- und Voitrecht dient.</rs>
+            </p>
+         </div>
+         <div type="seal">
+            <p><rs type="event" ref="ev__QGW_II_I_1037"><rs type="fn" role="witness">Besiegelt mit
+                     den Siegeln: 1. des <rs type="person"
+                        ref="pe__johann_von_harrenstein_QGW_II_I_1010">Ausstellers</rs>, 2. <rs
+                        type="person" ref="pe__stephan_QGW_II_I_1037"><roleName type="title"
+                           >bruder</roleName> Stephans, <roleName type="occ"
+                           corresp="org__mauerbach-kartaeuser">prior</roleName> ze Allerheiligental
+                        ze Maurbach</rs>, 3. und 4. der beiden <rs type="person"
+                        ref="pe__peter_mannseber_QGW_II_I_1037">Bergmeister</rs>
+                     <rs type="person" ref="pe__niklas_schoen_QGW_II_I_1037"
+                        ><add>Bergmeister</add></rs>.</rs></rs>
+            </p>
+         </div>
+         <div type="nota">
+            <p/>
+         </div>
+         <div type="lists">
+            <xi:include xmlns:xi="http://www.w3.org/2001/XInclude"
+               href="../../../../indices/placeList.xml" xpointer="element(/1/2/1/1)"/>
+            <xi:include xmlns:xi="http://www.w3.org/2001/XInclude"
+               href="../../../../indices/personList.xml" xpointer="element(/1/2/1/1)"/>
+            <xi:include xmlns:xi="http://www.w3.org/2001/XInclude"
+               href="../../../../indices/eventList.xml" xpointer="element(/1/2/1/1)"/>
+            <xi:include xmlns:xi="http://www.w3.org/2001/XInclude"
+               href="../../../../indices/orgList.xml" xpointer="element(/1/2/1/1)"/>
+         </div>
+      </body>
+   </text>
+</TEI>

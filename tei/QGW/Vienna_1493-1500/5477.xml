@@ -1,0 +1,106 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<TEI xmlns="http://www.tei-c.org/ns/1.0" xmlns:cei="http://www.monasterium.net/NS/cei"
+   xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance">
+   <teiHeader>
+      <fileDesc>
+         <titleStmt>
+            <title>Tei version of 5477 exported from monasterium.net </title>
+         </titleStmt>
+         <publicationStmt>
+            <p/>
+         </publicationStmt>
+         <!--In Original: cei:front/cei:sourceDesc/cei:sourceDescRegest-->
+         <sourceDesc>
+            <bibl>Quellen zur Geschichte der Stadt Wien, Bd. II/3, Nr. As published in HAUrk by
+               Wiener Stadt- und Landesarchiv </bibl>
+            <msDesc>
+               <msIdentifier>
+                  <repository>Wiener Stadt- und Landesarchiv</repository>
+                  <idno>5477</idno>
+                  <altIdentifier type="old">
+                     <idno>519785</idno>
+                  </altIdentifier>
+               </msIdentifier>
+               <physDesc>
+                  <sealDesc>
+                     <seal>
+                        <p>Zwei rückwärts aufgedrückte Siegel von grünem Wachse unter
+                           Papierdecke.</p>
+                     </seal>
+                  </sealDesc>
+               </physDesc>
+            </msDesc>
+         </sourceDesc>
+      </fileDesc>
+      <encodingDesc>
+         <projectDesc default="false">
+            <p><label type="contentual-editing">Projekt Christina Lutter Stadt und
+                  Gemeinschaft</label></p>
+         </projectDesc>
+      </encodingDesc>
+      <profileDesc>
+         <creation>
+            <placeName>Wien</placeName>
+            <date when="14930315">1493 III 15</date>
+            <origDate>zu Wienn, an freitag nach dem suntag Oculi in der
+            Vasstn.</origDate></creation>
+      </profileDesc>
+   </teiHeader>
+   <facsimile>
+      <surface>
+         <graphic
+            url="http://images.monasterium.net/pics/AT-WStLA/HA-U/WStLA-HA-Urkunden_05477_r.jpg"/>
+      </surface>
+      <surface>
+         <graphic
+            url="http://images.monasterium.net/pics/AT-WStLA/HA-U/WStLA-HA-Urkunden_05477_v.jpg"/>
+      </surface>
+   </facsimile>
+   <text>
+      <body>
+         <div type="abstract">
+            <p>
+               <rs type="fn" role="issuer"><rs type="person" ref="pe__barbara_QGW_II_III_5476"
+                     >Barbara, <rs type="person" ref="pe__wolfgang_tunkchel_QGW_II_III_5476"
+                        >Wolfgangn Tunkehl, <roleName type="occ" corresp="org__wien"
+                           >burger</roleName> zu Wienn</rs>, <roleName type="kin"
+                        corresp="pe__wolfgang_tunkchel_QGW_II_III_5476">hausfrau</roleName>, <rs
+                        type="person" ref="pe__johann_leschenprant_QGW_II_III_4619">Hannsen
+                        Leschenprant, <roleName type="occ" corresp="org__wien">burger</roleName>
+                        daselbs</rs>, und <rs type="person" ref="pe__orea_QGW_II_III_5471">Orea,
+                        seiner <roleName type="kin"
+                           corresp="pe__johann_leschenprant_QGW_II_III_4619">hausfraun</roleName>
+                        <roleName type="dead">selign</roleName></rs>, <roleName type="kin"
+                        corresp="pe__johann_leschenprant_QGW_II_III_4619"
+                        >tochter</roleName><roleName type="kin" corresp="pe__orea_QGW_II_III_5471"
+                           ><add>tochter</add></roleName></rs></rs>, macht <rs type="fn"
+                  role="recipient"><rs type="person" ref="pe__paul_kek_QGW_II_III_5384"><roleName
+                        type="title">herrn</roleName> Pauln Kekchen, <roleName type="occ"
+                        corresp="org__wien">burgermaister</roleName></rs>, <rs type="org"
+                     ref="org__wien">dem Rathe und den Verwesern ihrer Grundbücher</rs></rs>
+               Mittheilung von der mit <rs type="event" ref="ev__QGW_II_III_5476">Urk. n° 5476</rs>
+               verbrieften Uebergabe. </p>
+         </div>
+         <div type="seal">
+            <p><rs type="event" ref="ev__QGW_II_II_5477"><rs type="fn" role="witness">Besiegelt mit
+                     den Siegeln der <rs type="person" ref="pe__johann_mulhauser_QGW_II_III_4119"
+                        >Wiener <roleName type="occ" corresp="org__wien">Bürger</roleName> Hannsen
+                        Mülhauser</rs> und <rs type="person"
+                        ref="pe__erhard_paumschaber_QGW_II_III_4464"><roleName type="title"
+                           corresp="org__wien"><add>Bürger</add></roleName>Erharten
+                     Pemschaber</rs>.</rs>
+               </rs></p>
+         </div>
+         <div type="lists">
+            <xi:include xmlns:xi="http://www.w3.org/2001/XInclude"
+               href="../../../../indices/placeList.xml" xpointer="element(/1/2/1/1)"/>
+            <xi:include xmlns:xi="http://www.w3.org/2001/XInclude"
+               href="../../../../indices/personList.xml" xpointer="element(/1/2/1/1)"/>
+            <xi:include xmlns:xi="http://www.w3.org/2001/XInclude"
+               href="../../../../indices/eventList.xml" xpointer="element(/1/2/1/1)"/>
+            <xi:include xmlns:xi="http://www.w3.org/2001/XInclude"
+               href="../../../../indices/orgList.xml" xpointer="element(/1/2/1/1)"/>
+         </div>
+      </body>
+   </text>
+</TEI>

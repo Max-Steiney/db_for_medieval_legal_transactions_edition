@@ -1,0 +1,153 @@
+<?xml version="1.0" encoding="UTF-8"?><!DOCTYPE TEI SYSTEM "../../../schema/toolbox_full.dtd">
+<TEI xmlns="http://www.tei-c.org/ns/1.0" xmlns:cei="http://www.monasterium.net/NS/cei"
+   xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance">
+   <teiHeader>
+      <fileDesc>
+         <titleStmt>
+            <title>TEI-Version of 277</title>
+         </titleStmt>
+         <publicationStmt>
+            <p/>
+         </publicationStmt>
+         <sourceDesc default="false">
+            <bibl default="false" status="draft">
+               <title type="full"><title type="main">Die Wiener Stadtbücher 1395 -
+                     1430</title><title type="sub">Teil 1: 1395 - 1400</title></title>
+               <author>Wilhelm Brauneder</author>
+               <author>Gerhard Jaritz</author>
+               <pubPlace>Wien</pubPlace>
+               <pubPlace>Köln</pubPlace>
+               <publisher>Böhlau Verlag</publisher>
+            </bibl>
+            <msDesc status="draft">
+               <msIdentifier>
+                  <idno>277</idno>
+               </msIdentifier>
+               <physDesc/>
+            </msDesc>
+         </sourceDesc>
+      </fileDesc>
+      <encodingDesc>
+         <projectDesc>
+            <p><label type="contentual-editing">Projekt Christina Lutter Stadt und
+                  Gemeinschaft</label></p>
+         </projectDesc>
+      </encodingDesc>
+      <profileDesc>
+         <creation>
+            <date when="1398-06-13">(1398 Juni 13, Oberzeiring)</date>
+         </creation>
+      </profileDesc>
+   </teiHeader>
+   <text>
+      <body>
+         <div type="header">
+            <p>Verwandtschaftsweisung für die Familie Chunter</p>
+         </div>
+         <div type="entry" resp="rs">
+            <p> (Indez: Item ain frewntschaftbrief von der Kunter gesIecht) <rs type="event"
+                  ref="ev__StB_I_276">Den erbern und weisen herren, dem purgermaister und dem rat zu
+                  Wienn tun wir kund der erbern lewt namen und chuntschaft der Chunter geslecht man
+                  und weib. <rs type="fn" role="issuer">Des ersten <rs type="person"
+                        ref="pe__konrad_chunter_StB_I_276_a"><roleName type="title"
+                              ><add>erbern</add></roleName>Chunrat des Chunter</rs> und <rs
+                        type="person" ref="pe__katharina_StB_I_276"><roleName type="title"
+                              ><add>erbern</add></roleName>Kathrein, sein <roleName type="kin"
+                           corresp="pe__konrad_chunter_StB_I_276_a">wirtin</roleName>, die des alten
+                        Ekcher zu Grecz <roleName type="kin" corresp="pe__eckhard_StB_I_276"
+                           >tochter</roleName> gebesen ist</rs></rs>, und <rs type="fn"
+                     role="recipient"><rs type="person" ref="pe__konrad_chunter_StB_I_276_b">Chunrat
+                        der Chunter, <roleName type="occ" corresp="org__wiener_neustadt"
+                           >purger</roleName> dacz der Newenstat <roleName type="kin"
+                           corresp="pe__oswald_chunter_StB_I_243"><add>recht
+                           pruder</add></roleName><roleName type="kin"
+                           corresp="pe__konrad_chunter_StB_I_276_a"
+                           ><add>chinder</add></roleName><roleName type="kin"
+                           corresp="pe__katharina_StB_I_276"><add>chinder</add></roleName></rs>, und
+                        <rs type="person" ref="pe__oswald_chunter_StB_I_243">Oswalt der <roleName
+                           type="prof" cert="unknown">Munczer</roleName>, <roleName type="occ" corresp="org__wien">purger</roleName> zu Wienn <roleName type="kin"
+                           corresp="pe__konrad_chunter_StB_I_276_b"><add>recht
+                           pruder</add></roleName><roleName type="kin"
+                           corresp="pe__konrad_chunter_StB_I_276_a"
+                           ><add>chinder</add></roleName><roleName type="kin"
+                           corresp="pe__katharina_StB_I_276"><add>chinder</add></roleName></rs>, die
+                     zwen recht pruder gebesen sint und chinder der erbern lewt</rs>, und <rs
+                     type="fn" role="recipient"><rs type="person" ref="pe__jodok_StB_I_276">Jostel
+                           <roleName type="kin" corresp="pe__konrad_chunter_StB_I_276_b"
+                              ><add>sun</add></roleName>
+                        <roleName type="kin" corresp="pe__oswald_chunter_StB_I_243"><add>rechten
+                              pruder sun</add></roleName></rs></rs> ist <rs type="fn" role="issuer"
+                        ><rs type="person" ref="pe__oswald_chunter_StB_I_243">Oswalds</rs> rechten
+                     pruder sun <rs type="person" ref="pe__konrad_chunter_StB_I_276_b">Chunrats des
+                        Chunter, purger von der Newenstat</rs></rs>. Darnach <rs type="fn"
+                     role="issuer"><rs type="person" ref="pe__stephan_chunter_StB_I_276_a">Stephan
+                        der Chunter <roleName type="kin" corresp="pe__kunigunde_StB_I_276"
+                              ><add>vater </add></roleName></rs> und <rs type="person"
+                        ref="pe__adelheid_StB_I_276"><roleName type="kin"
+                           corresp="pe__kunigunde_StB_I_276"><add>muter</add></roleName> Alhait,
+                        sein <roleName type="kin" corresp="pe__stephan_chunter_StB_I_276_a"
+                           >wirtin</roleName></rs></rs>, die <rs type="fn" role="recipient"><rs
+                        type="person" ref="pe__kunigunde_StB_I_276">Chunigunden</rs></rs> vater und
+                  muter gebesen sind. Darnach <rs type="fn" role="issuer"><rs type="person"
+                        ref="pe__hermann_chunter_StB_I_276">Herman der Chunter <roleName type="kin"
+                           corresp="pe__johann_chunter_StB_I_276_a"><add>vater</add></roleName></rs>
+                     und <rs type="person" ref="pe__gertrud_StB_I_276">Gedraut, sein <roleName
+                           type="kin" corresp="pe__hermann_chunter_StB_I_276">wirtin</roleName>
+                        <roleName type="kin" corresp="pe__johann_chunter_StB_I_276_a"
+                              ><add>muter</add></roleName></rs></rs>, dye <rs type="fn"
+                     role="recipient"><rs type="person" ref="pe__johann_chunter_StB_I_276_a">Hannsen
+                        des Chunter, <roleName type="occ" corresp="org__oberzeiring"
+                           >purger</roleName> auf der Obern Zeyring</rs></rs>, vater und muter
+                  gebesen sint. <rs type="fn" role="recipient"><rs type="person"
+                        ref="pe__stephan_chunter_StB_I_276_b">Darnach Stephan der Chunter, der
+                        Hermans <roleName type="kin" corresp="pe__hermann_chunter_StB_I_276"
+                           >sun</roleName> gebesen ist</rs></rs>, und <rs type="fn" role="issuer"
+                        ><rs type="person" ref="pe__anna_StB_I_276">Anna <roleName type="kin"
+                           corresp="pe__stephan_chunter_StB_I_276_b"
+                           ><add>wirtin</add></roleName><roleName type="kin"
+                           corresp="pe__niklas_StB_I_276"><add>swester</add></roleName><roleName
+                           type="kin" corresp="pe__wolfgang_StB_I_276"
+                           ><add>swester</add></roleName><roleName type="kin"
+                           corresp="pe__bernhard_StB_I_276"><add>swester</add></roleName></rs>, <rs
+                        type="person" ref="pe__stephan_chunter_StB_I_276_b">sein</rs> wirtin, die
+                        <rs type="person" ref="pe__niklas_StB_I_276">der <roleName type="occ"
+                           corresp="org__oberzeiring-propstei">Probst</roleName> an der Nidern
+                        Zeyring Niklas</rs> und <rs type="person" ref="pe__wolfgang_StB_I_276"
+                        >Wolfgangs</rs> und <rs type="person" ref="pe__bernhard_StB_I_276"
+                        >Pernharts</rs> swester gebesen ist</rs>. <rs type="fn" role="recipient">Und
+                        <rs type="person" ref="pe__johann_chunter_StB_I_276_b">Hanns der <roleName
+                           type="prof" cert="high">Seczmaister</roleName>, <roleName type="occ" corresp="org__wien">purger</roleName> zu Wienn, Stephans
+                        und Annen rechter <roleName type="kin"
+                           corresp="pe__stephan_chunter_StB_I_276_b">sun </roleName>
+                        <roleName type="kin" corresp="pe__anna_StB_I_276"
+                        ><add>sun</add></roleName>ist</rs></rs>. Nu lazzen wir ewch noch wizzen, als
+                  man ew vormalen verschriben hat, daz <rs type="fn" role="other"><rs type="person"
+                        ref="pe__rubitz_StB_I_276">der Rubicze</rs> und <rs type="person"
+                        ref="pe__gertrud_rubitzin_StB_I_276">Gedraut die Rubiczeyn</rs> und ir
+                     tochter und ander ir chinder mit dem vorgeschriben geschlecht der Chunter
+                        <triggerstring n="fn">chain frewntschafft von rechter gepurd, davon
+                        frewntschafft chomen solt, nye gehabt habent</triggerstring></rs>. Der brief
+                  ist versiglt mit <rs type="fn" role="witness">der erbern <rs type="person"
+                        ref="pe__johann_muenzmeister_StB_I_276"><roleName type="title"
+                              ><add>erbern</add></roleName>Hanns dez Muenczmaister, die zeit
+                           <roleName type="occ" corresp="org__oberzeiring">richter</roleName> auf
+                        der Obern Zeyring</rs>, und <rs type="person"
+                        ref="pe__erasmus_traberger_StB_I_276"><roleName type="title"
+                              ><add>erbern</add></roleName>Erasmes des Traberger, <roleName type="occ" corresp="org__oberzeiring">purger</roleName>
+                        daselbs</rs>, aufgedrukhten insigilen zu ainem urchund der warhait</rs>,
+                  geben lxxxxviiio an dem achtern tag gots- leichnam.</rs> a) tochter über der Zeile
+               eingefügt. b) Zeyng. </p>
+         </div>
+         <div type="lists">
+            <xi:include xmlns:xi="http://www.w3.org/2001/XInclude"
+               href="../../../../indices/placeList.xml" xpointer="element(/1/2/1/1)"/>
+            <xi:include xmlns:xi="http://www.w3.org/2001/XInclude"
+               href="../../../../indices/personList.xml" xpointer="element(/1/2/1/1)"/>
+            <xi:include xmlns:xi="http://www.w3.org/2001/XInclude"
+               href="../../../../indices/eventList.xml" xpointer="element(/1/2/1/1)"/>
+            <xi:include xmlns:xi="http://www.w3.org/2001/XInclude"
+               href="../../../../indices/orgList.xml" xpointer="element(/1/2/1/1)"/>
+         </div>
+      </body>
+   </text>
+</TEI>

@@ -1,0 +1,96 @@
+<?xml version="1.0" encoding="UTF-8" standalone="no"?>
+<!DOCTYPE TEI
+  SYSTEM "../../../schema/toolbox_full.dtd">
+<TEI xmlns:cei="http://www.monasterium.net/NS/cei" xmlns="http://www.tei-c.org/ns/1.0">
+   <teiHeader>
+      <fileDesc>
+         <titleStmt>
+            <title>Tei version of 3841 exported from monasterium.net </title>
+         </titleStmt>
+         <publicationStmt>
+            <p/>
+         </publicationStmt>
+         <!--In Original: cei:front/cei:sourceDesc/cei:sourceDescRegest-->
+         <sourceDesc>
+            <bibl>Quellen zur Geschichte der Stadt Wien, Bd. II/3, Nr. As published in HAUrk by
+               Wiener Stadt- und Landesarchiv </bibl>
+            <msDesc>
+               <msIdentifier>
+                  <repository>Wiener Stadt- und Landesarchiv</repository>
+                  <idno>3841</idno>
+                  <altIdentifier type="old">
+                     <idno>518102</idno>
+                  </altIdentifier>
+               </msIdentifier>
+               <msContents>
+                  <msItem>
+                     <listBibl>
+                        <bibl type="url"
+                           >https://www.monasterium.net/mom/AT-WStLA/HAUrk/3841/charter</bibl>
+                     </listBibl>
+                  </msItem>
+               </msContents>
+               <physDesc>
+                  <sealDesc>
+                     <seal>
+                        <p>Zum Verschlusse aufgedrücktes Petschaft von grünem Wachse unter
+                           Papierdecke.</p>
+                     </seal>
+                  </sealDesc>
+               </physDesc>
+            </msDesc>
+         </sourceDesc>
+      </fileDesc>
+      <profileDesc>
+         <creation>
+            <placeName>Ebreichsdorf</placeName>
+            <date when="14581213">1458 XII 13</date>
+            <origDate>zu Ebreichstorf, an mitichen sand Lucien tag.</origDate></creation>
+      </profileDesc>
+   </teiHeader>
+   <facsimile>
+      <surface>
+         <graphic
+            url="http://images.monasterium.net/pics/AT-WStLA/HA-U/WStLA-HA-Urkunden_03841_r.jpg"/>
+      </surface>
+      <surface>
+         <graphic
+            url="http://images.monasterium.net/pics/AT-WStLA/HA-U/WStLA-HA-Urkunden_03841_v.jpg"/>
+      </surface>
+   </facsimile>
+   <text>
+      <body>
+         <div type="abstract">
+            <p><rs type="event" ref="ev__QGW_II_III_3841">
+                  <rs type="fn" role="issuer"><rs type="person"
+                        ref="pe__simon_poetel_QGW_II_II_2412">Simon Pötl, <roleName type="occ"
+                           corresp="org__wien">bürger</roleName> ze Wienn,</rs></rs> theilt <rs
+                     type="fn" role="recipient"><rs type="person"
+                        ref="pe__ulrich_hirssauer_QGW_II_II_3239">dem <roleName type="occ"
+                           corresp="org__wien">Stadtschreiber</roleName> Ulreichen
+                     Hirssauer</rs></rs> mit, dass er die ihm zugesandte Abschrift des von <rs
+                     type="person" ref="pe__lassla_graf_QGW_II_III_3819">graf Lassla von Sand Jörgen
+                     und Pösing</rs> eingelangten Schreibens <rs type="person"
+                     ref="pe__poetlin_QGW_II_III_3819">seiner <roleName type="kin"
+                        corresp="pe__simon_poetel_QGW_II_II_2412">Frau</roleName></rs>
+                  vorgelesen und diese darauf erklärt habe, dass ir nicht füg noch wiss mit dem
+                  vorgenanten von Pösing zu taidingen, wann sie nichts innhab, das seins vaters noch
+                  sein sei, main er sei aber spruch nicht zu vertragen, so will sie im rechtens sein
+                  an pillichen steten . </rs></p>
+         </div>
+         <div type="nota">
+            <p><rs type="event" ref="ev__QGW_II_III_3841_nota">Adresse aussen.</rs></p>
+         </div>
+         <div type="lists">
+            <xi:include xmlns:xi="http://www.w3.org/2001/XInclude"
+               href="../../../../indices/placeList.xml" xpointer="element(/1/2/1/1)"/>
+            <xi:include xmlns:xi="http://www.w3.org/2001/XInclude"
+               href="../../../../indices/personList.xml" xpointer="element(/1/2/1/1)"/>
+            <xi:include xmlns:xi="http://www.w3.org/2001/XInclude"
+               href="../../../../indices/eventList.xml" xpointer="element(/1/2/1/1)"/>
+            <xi:include xmlns:xi="http://www.w3.org/2001/XInclude"
+               href="../../../../indices/orgList.xml" xpointer="element(/1/2/1/1)"/>
+         </div>
+      </body>
+   </text>
+</TEI>

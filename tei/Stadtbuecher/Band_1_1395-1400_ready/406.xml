@@ -1,0 +1,108 @@
+<?xml version="1.0" encoding="UTF-8"?><!DOCTYPE TEI SYSTEM "../../../schema/toolbox_full.dtd">
+<TEI xmlns="http://www.tei-c.org/ns/1.0" xmlns:cei="http://www.monasterium.net/NS/cei"
+   xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance">
+   <teiHeader>
+      <fileDesc>
+         <titleStmt>
+            <title>TEI-Version of 406</title>
+         </titleStmt>
+         <publicationStmt>
+            <p/>
+         </publicationStmt>
+         <sourceDesc default="false">
+            <bibl default="false" status="draft">
+               <title type="full"><title type="main">Die Wiener Stadtbücher 1395 -
+                     1430</title><title type="sub">Teil 1: 1395 - 1400</title></title>
+               <author>Wilhelm Brauneder</author>
+               <author>Gerhard Jaritz</author>
+               <pubPlace>Wien</pubPlace>
+               <pubPlace>Köln</pubPlace>
+               <publisher>Böhlau Verlag</publisher>
+            </bibl>
+            <msDesc status="draft">
+               <msIdentifier>
+                  <idno>406</idno>
+               </msIdentifier>
+               <physDesc/>
+            </msDesc>
+         </sourceDesc>
+      </fileDesc>     <encodingDesc>       <projectDesc>         <p><label type="contentual-editing">Projekt Christina Lutter Stadt und Gemeinschaft</label></p>       </projectDesc>     </encodingDesc>
+      <profileDesc>
+         <creation>
+            <date when="1399-08-12">1399 August 12 (1399 August 6, Wien)</date>
+         </creation>
+      </profileDesc>
+   </teiHeader>
+   <text>
+      <body>
+         <div type="header">
+            <p>Geschäft des Peter Goldner von Ybbs</p>
+         </div>                   <div type="entry" resp="rs">
+            <p> pr. sehr., 2 Einbr.=Zg., Me (Indez: Item geseheft Peters Goldner) <rs type="event"
+                  ref="ev__Stb_I_406">An erichtag nach sand Larenczen tag komen fur den rat <rs
+                     type="fn" role="witness"><rs type="person" ref="pe__stephan_eisnein_StB_I_373"
+                        >Stephan der Eysneyn, <roleName type="occ" corresp="org__wien"
+                           >purger</roleName> ze Wien</rs>, und <rs type="person"
+                        ref="pe__leonhard_dristl_StB_I_406">Lienhart der Tristel, <roleName type="occ" corresp="org__ybbs">purger</roleName> zu Ybs <roleName
+                           type="kin" corresp="pe__stephan_eisnein_StB_I_373"
+                           ><add>swager</add></roleName></rs>, und habent da mit irn trewn an aides
+                     stat vor offem rat gesagt ze rechter zeit, als si ze recht solten</rs>, <rs
+                     type="fn" role="issuer">umb das geschefft, so <rs type="person"
+                        ref="pe__peter_goldner_StB_I_406">Peter <roleName type="dead"
+                           >selig</roleName> der <roleName type="prof" cert="low">Goldner</roleName>
+                        von Ybs</rs> an seinen lesten zeiten getan hat, das daz also geschehen sey,
+                     als es an ainer zedel vor offem rat gelesen und verhört ward, und lauttet von
+                     wort zu wort, als hernach geschriben stet</rs>. <rs type="fn" role="other">Von
+                     erst sein geltschuld, die man im beleibt <triggerstring n="fn"
+                        >schuldig</triggerstring>. Do beleibt im <rs type="person"
+                        ref="pe__otto_pekch_StB_I_406">sein <roleName type="kin"
+                           corresp="pe__peter_goldner_StB_I_406">swager</roleName> Ottel der
+                           <roleName type="prof" cert="unknown">Peckh</roleName>, <roleName type="occ" corresp="org__ybbs">purger</roleName> ze Ybs</rs>, 31
+                     guldein, die ich im berait gelichen han</rs>, <rs type="fn" role="other">do hat
+                     er <triggerstring n="fn">herwider an geben</triggerstring>
+                     <rs type="person" ref="pe__heinrich_seiler_StB_I_406">Hainczlein dem
+                        Sayler</rs> 4 tl. d.</rs>
+                  <rs type="fn" role="recipient">So schaff ich <rs type="person"
+                        ref="pe__paul_paur_StB_I_406">Pawlein dem Pawrlein, meinem <roleName
+                           type="kin" corresp="pe__peter_goldner_StB_I_406">geswein</roleName></rs>,
+                     schef und geschirr mit aller zugehörung, was zu der rosszullen gehöret. So
+                     schaff ich Pawrlein, meinem geswein, die zwo lewtzuellen. So schaff ich die 31
+                     guldein, die mir Ottel der Pekch schuldig ist, meinem geswein dem Pawrlein und
+                     alle geschuld, die man uns miteinander schuldig ist, das er <rs type="person"
+                        ref="pe__anna_StB_I_406">meiner <roleName type="kin"
+                           corresp="pe__peter_goldner_StB_I_406">hawsfrawn</roleName> Annen</rs> 32
+                     tl. d. sol ausrichten. So schaff ich auf das nider haws ze nachst dem Rawner
+                     ein 1/2 tl. Wienner phenning ewiges gelt es zu einer gedachtnuzz, <rs
+                        type="org" ref="org__wien-st_maria_am_gestade-messe_goldner_peter_und_anna"
+                        >mir und meiner hawsfrawn dew vorig zu einem jartag, das mans von dem haws
+                        raichen sol, wer das haws innhat, zu Unser Frawn dacz der pharr</rs>. So
+                     schaff ich meiner hawsfrawn Annen die zway hawser ir lebteg, das dew nach irm
+                     tod auf mein erben herwider sullen gevallen. So schaff ich des Pawrleins
+                     tochter der eltern einen roten rokch und ein pet mit aller zugehörung. So
+                     schaff ich in <rs type="org"
+                        ref="org__wien-st_martin_vor_dem_widmertor-schiffleutezeche">dew scheflewt
+                        zech </rs>ein phunt Wienner phenning mir und <rs type="person"
+                        ref="pe__elisabeth_StB_I_406">meiner <roleName type="kin"
+                           corresp="pe__peter_goldner_StB_I_406">hawsfrawn</roleName> Elspeten</rs>,
+                     da man mir alle jar von kerczen schol leichen aus der zech.</rs>
+                  <rs type="fn" role="witness">Und dabey ist gewesen Stephan der Eysnein in der
+                     Schefstrazz und Linhart der Tristel, sein swager, und <rs type="person"
+                        ref="pe__jakob_pflichtel_StB_I_406">Jakel der Phlichtel, die paid <roleName type="occ" corresp="org__ybbs">mitpurger</roleName> von Ybs</rs>.
+                     Und zu einer pessern gedachtnuzz hab ich gepeten die vorgenanten, den Eysnein
+                     Stephan und Lienharten den Tristel, seinen swager, umb ir paider petschad, das
+                     daz furbas b ) stet beleib</rs>. Geben ze Wienn an sand Sixt tag anno
+                  lxxxxviiiio .</rs> a) phenng. b) bas über der Zeile eingefügt. </p>
+         </div>
+         <div type="lists">
+            <xi:include xmlns:xi="http://www.w3.org/2001/XInclude"
+               href="../../../../indices/placeList.xml" xpointer="element(/1/2/1/1)"/>
+            <xi:include xmlns:xi="http://www.w3.org/2001/XInclude"
+               href="../../../../indices/personList.xml" xpointer="element(/1/2/1/1)"/>
+            <xi:include xmlns:xi="http://www.w3.org/2001/XInclude"
+               href="../../../../indices/eventList.xml" xpointer="element(/1/2/1/1)"/>
+            <xi:include xmlns:xi="http://www.w3.org/2001/XInclude"
+               href="../../../../indices/orgList.xml" xpointer="element(/1/2/1/1)"/>
+         </div>
+      </body>
+   </text>
+</TEI>

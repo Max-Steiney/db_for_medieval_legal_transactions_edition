@@ -1,0 +1,95 @@
+<?xml version="1.0" encoding="UTF-8" standalone="no"?>
+<!DOCTYPE TEI
+  SYSTEM "../../../schema/toolbox_full.dtd">
+<TEI xmlns:cei="http://www.monasterium.net/NS/cei" xmlns="http://www.tei-c.org/ns/1.0">
+   <teiHeader>
+      <fileDesc>
+         <titleStmt>
+            <title>Tei version of 3919 exported from monasterium.net </title>
+         </titleStmt>
+         <publicationStmt>
+            <p/>
+         </publicationStmt>
+         <!--In Original: cei:front/cei:sourceDesc/cei:sourceDescRegest-->
+         <sourceDesc>
+            <bibl>Quellen zur Geschichte der Stadt Wien, Bd. II/3, Nr. As published in HAUrk by
+               Wiener Stadt- und Landesarchiv </bibl>
+            <msDesc>
+               <msIdentifier>
+                  <repository>Wiener Stadt- und Landesarchiv</repository>
+                  <idno>3919</idno>
+                  <altIdentifier type="old">
+                     <idno>518182</idno>
+                  </altIdentifier>
+               </msIdentifier>
+               <msContents>
+                  <msItem>
+                     <listBibl>
+                        <bibl type="url"
+                           >https://www.monasterium.net/mom/AT-WStLA/HAUrk/3919/charter</bibl>
+                     </listBibl>
+                  </msItem>
+               </msContents>
+               <physDesc>
+                  <sealDesc>
+                     <seal>
+                        <p>Zum Verschlusse aufgedrücktes Petschaft von grünem Wachse,
+                           abgesprungen.</p>
+                     </seal>
+                  </sealDesc>
+               </physDesc>
+            </msDesc>
+         </sourceDesc>
+      </fileDesc>
+      <profileDesc>
+         <creation>
+            <placeName>Asparn</placeName>
+            <date when="14590805">1459 VIII 05</date>
+            <origDate>zu Asparn, an suntag an sant Oswalds tag.</origDate></creation>
+      </profileDesc>
+   </teiHeader>
+   <facsimile>
+      <surface>
+         <graphic
+            url="http://images.monasterium.net/pics/AT-WStLA/HA-U/WStLA-HA-Urkunden_03919_r.jpg"/>
+      </surface>
+      <surface>
+         <graphic
+            url="http://images.monasterium.net/pics/AT-WStLA/HA-U/WStLA-HA-Urkunden_03919_v.jpg"/>
+      </surface>
+   </facsimile>
+   <text>
+      <body>
+         <div type="abstract" resp="ms">
+            <p><rs type="event" ref="ev__QGW_II_III_3919">
+                  <rs type="fn" role="issuer"><rs type="person"
+                        ref="pe__heinrich_goldast_QGW_II_III_3919">Hainreich Goldast, <roleName
+                           type="occ" corresp="org__asparn_an_der_donau">phleger</roleName> zu
+                        Asparn</rs></rs>, theilt <rs type="fn" role="recipient"><rs type="person"
+                        ref="pe__christian_wissinger_QGW_II_II_3328"><roleName type="occ"
+                           corresp="org__wien"><add>bürgermaister</add></roleName>dem Christoff
+                        Wissinger</rs> und <rs type="person"
+                        ref="pe__friedrich_ebmer_QGW_II_II_3350"><roleName type="occ"
+                           corresp="org__wien"><add>statkamrer</add></roleName>N. Ebner</rs>,
+                     bürgermaister und statkamrer zu Wienn,</rs> mit, dass er die beiden Diener des
+                     <rs type="person" ref="pe__lassla_graf_QGW_II_III_3819">graff Lasslaw von
+                     Pösing</rs>, wegen deren sie ihm ein Schreiben des Kaisers zugeschickt haben,
+                  mit aller irer vertigung ledig und frei hab reiten lassen, des nun zu dem
+                  nagstkunftigen freitag (August 10) drei wochen wirt (Juli 20). </rs></p>
+         </div>
+         <div type="nota">
+            <p><rs type="event" ref="ev__QGW_II_III_3919_nota">Adresse aussen</rs></p>
+         </div>
+         <div type="lists">
+            <xi:include xmlns:xi="http://www.w3.org/2001/XInclude"
+               href="../../../../indices/placeList.xml" xpointer="element(/1/2/1/1)"/>
+            <xi:include xmlns:xi="http://www.w3.org/2001/XInclude"
+               href="../../../../indices/personList.xml" xpointer="element(/1/2/1/1)"/>
+            <xi:include xmlns:xi="http://www.w3.org/2001/XInclude"
+               href="../../../../indices/eventList.xml" xpointer="element(/1/2/1/1)"/>
+            <xi:include xmlns:xi="http://www.w3.org/2001/XInclude"
+               href="../../../../indices/orgList.xml" xpointer="element(/1/2/1/1)"/>
+         </div>
+      </body>
+   </text>
+</TEI>

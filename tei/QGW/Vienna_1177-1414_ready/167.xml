@@ -1,0 +1,22 @@
+<?xml version="1.0" encoding="UTF-8"?><!DOCTYPE TEI   SYSTEM "../../../schema/toolbox_full.dtd"><TEI xmlns="http://www.tei-c.org/ns/1.0" xmlns:cei="http://www.monasterium.net/NS/cei" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"><teiHeader><fileDesc><titleStmt><title>Tei version of 167 exported from monasterium.net </title></titleStmt><publicationStmt><p/></publicationStmt><!--In Original: cei:front/cei:sourceDesc/cei:sourceDescRegest--><sourceDesc><bibl  type="url">https://www.monasterium.net/mom/AT-WStLA/HAUrk/167/charter</bibl><bibl default="false" status="draft">Quellen zur Geschichte der Stadt Wien, Bd. II/1,
+               Nr. 167 As published in HAUrk by Wiener Stadt- und Landesarchiv </bibl><msDesc status="draft"><msIdentifier><repository>Wiener Stadt- und Landesarchiv</repository><idno>167</idno><altIdentifier type="old"><idno>514336</idno></altIdentifier></msIdentifier><physDesc><sealDesc><seal><p>Siegel: 1. fehlt, 2. anhangend.</p></seal></sealDesc></physDesc></msDesc></sourceDesc></fileDesc><encodingDesc><projectDesc default="false"><p><label type="contentual-editing">Projekt Christina Lutter Stadt und Gemeinschaft</label></p></projectDesc></encodingDesc><profileDesc><creation>
+            <placeName>Wien</placeName>
+            <date when="13350614">1335 VI 14</date>
+            <origDate instant="false">ze Wienne, an sande Veits abent.</origDate></creation></profileDesc></teiHeader><facsimile><surface><graphic url="http://images.monasterium.net/pics/AT-WStLA/HA-U/WStLA-HA-Urkunden_00167_r.jpg"/></surface><surface><graphic url="http://images.monasterium.net/pics/AT-WStLA/HA-U/WStLA-HA-Urkunden_00167_v.jpg"/></surface></facsimile><text><body><div type="abstract" resp="lp"><p>
+               <rs type="event" ref="ev__QGW_II_I_167"><rs type="fn" role="issuer"><rs type="person" ref="pe__johann_QGW_II_I_167">Jans, der Chetnerinne <roleName type="kin" corresp="pe__elisabeth_QGW_II_I_167">aidem</roleName></rs>, und <rs type="person" ref="pe__gertrud_QGW_II_I_167"> Gerdraut, seine <roleName type="kin" corresp="pe__johann_QGW_II_I_167">Hausfrau</roleName></rs></rs>, <triggerstring n="disp">verkaufen</triggerstring>
+                  <rs type="fn" role="other"><triggerstring n="fn">mit Handen</triggerstring> ihres <rs type="person" ref="pe__stephan_von_der_wiener_neustadt_QGW_II_I_167">
+                        <roleName type="occ" corresp="org__wiener_neustadt" select="pl__wiener_neustadt">Bergmeisters</roleName>
+                        <roleName type="title">hern</roleName> Stephans von der Neunstat</rs></rs>
+                  drei Achtel Weingarten, leit an dem Spiegel zenechst Ulreichs weingarten des
+                  Cheser, von dem man dem Propst zu Neuburg dreu achtail weins zu Bergrecht dient,
+                     <rs type="fn" role="recipient"><rs type="person" ref="pe__elisabeth_QGW_II_I_167">ihrer <roleName type="kin" corresp="pe__johann_QGW_II_I_167">swiger</roleName>
+                        <roleName type="kin" corresp="pe__gertrud_QGW_II_I_167"><add>swiger</add></roleName>
+                        <roleName type="title">vrown</roleName> Elspeten der
+                  Chetnerinne</rs></rs>.</rs>
+            </p></div><div type="seal"><p><rs type="event" ref="ev__QGW_II_I_167"><rs type="fn" role="witness">Besiegelt von
+                     dem Aussteller <rs type="person" ref="pe__johann_QGW_II_I_167"><add>Johann</add></rs> und dem <rs type="person" ref="pe__stephan_von_der_wiener_neustadt_QGW_II_I_167"><roleName type="occ" corresp="org__wiener_neustadt">Bergmeister</roleName>
+                        <add>Stephan von der Wiener Neustadt</add></rs>
+                  </rs>.</rs></p></div><div type="nota"><p><rs type="event" ref="ev__QGW_II_I_167">Auf dem. Buge von späterer Hand: do man dient
+                  vierdhalb viertail und ain viertail ains viertails ze perkrecht und zwen phening
+                  foitrecht .</rs>
+            </p></div><div type="lists"><xi:include xmlns:xi="http://www.w3.org/2001/XInclude" href="../../../../indices/placeList.xml" xpointer="element(/1/2/1/1)"/><xi:include xmlns:xi="http://www.w3.org/2001/XInclude" href="../../../../indices/personList.xml" xpointer="element(/1/2/1/1)"/><xi:include xmlns:xi="http://www.w3.org/2001/XInclude" href="../../../../indices/eventList.xml" xpointer="element(/1/2/1/1)"/><xi:include xmlns:xi="http://www.w3.org/2001/XInclude" href="../../../../indices/orgList.xml" xpointer="element(/1/2/1/1)"/></div></body></text></TEI>

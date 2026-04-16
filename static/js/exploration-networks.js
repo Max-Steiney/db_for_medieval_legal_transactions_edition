@@ -576,12 +576,130 @@
             }
         }
 
+        // ── E5: Representation Direction Panel ──
+
+        function renderRepDirection() {
+            var repData = epicB && epicB.rep_direction;
+            var repPanels = document.getElementById('explore-rep-panels');
+            if (!repData || !repPanels) return;
+
+            var matrix = repData.matrix || {};
+            var total = repData.total || 0;
+            var statsEl = document.getElementById('explore-rep-stats');
+            if (statsEl) statsEl.textContent = total + ' Vertretungsbeziehungen';
+
+            // Render 2x2 matrix as simple HTML table
+            var matrixEl = document.getElementById('explore-rep-matrix');
+            if (matrixEl) {
+                var sexLabels = ChartHelpers.SEX_LABELS;
+                var sexKeys = ['m', 'f', 'unspecified'];
+                var html = '<table class="explore-data-table" style="max-width:28rem">' +
+                    '<thead><tr><th>Vertreter \\ Vertretene</th>';
+                sexKeys.forEach(function(s) { html += '<th class="num">' + esc(sexLabels[s]) + '</th>'; });
+                html += '</tr></thead><tbody>';
+                sexKeys.forEach(function(repSex) {
+                    html += '<tr><td><strong>' + esc(sexLabels[repSex]) + '</strong></td>';
+                    sexKeys.forEach(function(prinSex) {
+                        var key = repSex + '>' + prinSex;
+                        var count = matrix[key] || 0;
+                        var bg = count > 0 ? 'background:rgba(46,90,136,' + Math.min(0.15 + count / total * 3, 0.8) + ')' : '';
+                        html += '<td class="num" style="' + bg + ';cursor:pointer" data-dir="' + key + '">' + count + '</td>';
+                    });
+                    html += '</tr>';
+                });
+                html += '</tbody></table>';
+                matrixEl.innerHTML = html;
+
+                // Drill-down on matrix cells
+                matrixEl.querySelectorAll('[data-dir]').forEach(function(td) {
+                    td.addEventListener('click', function() {
+                        var dirKey = td.getAttribute('data-dir');
+                        var fkeys = (repData.drill_down || {})[dirKey] || [];
+                        if (fkeys.length) {
+                            var parts = dirKey.split('>');
+                            DrillDown.open(drillHandle,
+                                'Vertretung: ' + sexLabels[parts[0]] + ' → ' + sexLabels[parts[1]],
+                                fkeys);
+                        }
+                    });
+                });
+            }
+
+            // Top representatives and principals as simple lists
+            _renderTopList('explore-rep-top-reps', repData.top_representatives || []);
+            _renderTopList('explore-rep-top-principals', repData.top_principals || []);
+        }
+
+        function _renderTopList(containerId, items) {
+            var container = document.getElementById(containerId);
+            if (!container) return;
+            if (!items.length) { container.innerHTML = '<p class="explore-hint">Keine Daten.</p>'; return; }
+            var html = '<ol class="stats-ranking">';
+            var max = items[0].count;
+            items.forEach(function(item) {
+                var pct = max > 0 ? (item.count / max * 100) : 0;
+                var sexColor = item.sex === 'f' ? ChartHelpers.getToken('--color-sex-f') : ChartHelpers.getToken('--color-sex-m');
+                html += '<li>' +
+                    '<div class="stats-rank-bar-track"><div class="stats-rank-bar-fill" style="width:' + pct.toFixed(1) + '%;background:' + sexColor + '"></div></div>' +
+                    '<span class="stats-rank-name">' + esc(item.name) + '</span>' +
+                    '<span class="stats-rank-count">' + item.count + '</span>' +
+                    '</li>';
+            });
+            html += '</ol>';
+            container.innerHTML = html;
+        }
+
+        // ── D3: Friendship Table ──
+
+        function renderFriendshipTable() {
+            var friendData = epicB && epicB.friendship;
+            var friendPanels = document.getElementById('explore-friend-panels');
+            if (!friendData || !friendPanels) return;
+
+            var statsEl = document.getElementById('explore-friend-stats');
+            if (statsEl) statsEl.textContent = friendData.total_edges + ' Beziehungen, ' + friendData.unique_persons + ' Personen';
+
+            var container = document.getElementById('explore-friend-table');
+            if (!container) return;
+
+            var edges = friendData.edges || [];
+            if (!edges.length) { container.innerHTML = '<p class="explore-hint">Keine Freundschaftsbeziehungen gefunden.</p>'; return; }
+
+            var sexLabels = ChartHelpers.SEX_LABELS;
+            var html = '<table class="explore-data-table"><thead><tr>' +
+                '<th>Person A</th><th>Geschlecht</th><th>Person B</th><th>Geschlecht</th><th>Dokument</th>' +
+                '</tr></thead><tbody>';
+            edges.forEach(function(e) {
+                html += '<tr>' +
+                    '<td>' + esc(e.source_name) + '</td>' +
+                    '<td>' + esc(sexLabels[e.source_sex] || e.source_sex) + '</td>' +
+                    '<td>' + esc(e.target_name) + '</td>' +
+                    '<td>' + esc(sexLabels[e.target_sex] || e.target_sex) + '</td>' +
+                    '<td><a href="./documents/' + esc(e.file_key).replace('f__', '').replace(/_/g, '/') + '.html">' + esc(e.file_key) + '</a></td>' +
+                    '</tr>';
+            });
+            html += '</tbody></table>';
+            container.innerHTML = html;
+        }
+
         // ── Load data and initial render ──
         personSearchInput.classList.remove('hidden');
+
+        // ── E6: Handle URL parameters for cross-epic navigation ──
+        function handleUrlParams() {
+            var personParam = EdCore.getParam('person');
+            if (personParam && personSearchInput) {
+                personSearchInput.value = personParam.replace(/^pe__/, '').replace(/_/g, ' ');
+                personSearchInput.dispatchEvent(new Event('input'));
+            }
+        }
 
         ChartHelpers.loadJSON('./data/epic_b.json', 'explore-rel-chart', function(data) {
             epicB = data;
             renderAll();
+            renderRepDirection();
+            renderFriendshipTable();
+            handleUrlParams();
         });
     }
 

@@ -1,0 +1,114 @@
+<?xml version="1.0" encoding="UTF-8" standalone="no"?>
+<!DOCTYPE TEI
+  SYSTEM "../../../schema/toolbox_full.dtd">
+<TEI xmlns:cei="http://www.monasterium.net/NS/cei" xmlns="http://www.tei-c.org/ns/1.0">
+   <teiHeader>
+      <fileDesc>
+         <titleStmt>
+            <title>Tei version of 3969 exported from monasterium.net </title>
+         </titleStmt>
+         <publicationStmt>
+            <p/>
+         </publicationStmt>
+         <!--In Original: cei:front/cei:sourceDesc/cei:sourceDescRegest-->
+         <sourceDesc>
+            <bibl>Quellen zur Geschichte der Stadt Wien, Bd. II/3, Nr. As published in HAUrk by
+               Wiener Stadt- und Landesarchiv </bibl>
+            <msDesc>
+               <msIdentifier>
+                  <repository>Wiener Stadt- und Landesarchiv</repository>
+                  <idno>3969</idno>
+                  <altIdentifier type="old">
+                     <idno>518234</idno>
+                  </altIdentifier>
+               </msIdentifier>
+               <msContents>
+                  <msItem>
+                     <listBibl>
+                        <bibl type="url"
+                           >https://www.monasterium.net/mom/AT-WStLA/HAUrk/3969/charter</bibl>
+                     </listBibl>
+                  </msItem>
+               </msContents>
+               <physDesc>
+                  <sealDesc>
+                     <seal>
+                        <p>Zwei rückwärts aufgedrückte Siegel von grünem Wachse, 2. unter
+                           Papierdecke.</p>
+                     </seal>
+                  </sealDesc>
+               </physDesc>
+            </msDesc>
+         </sourceDesc>
+      </fileDesc>
+      <profileDesc>
+         <creation>
+            <placeName>Wien</placeName>
+            <date when="14610123">1461 I 23</date>
+            <origDate>zu Wienn, an freitag vor sand Pauls tag conversionis.</origDate></creation>
+      </profileDesc>
+   </teiHeader>
+   <facsimile>
+      <surface>
+         <graphic
+            url="http://images.monasterium.net/pics/AT-WStLA/HA-U/WStLA-HA-Urkunden_03969_r.jpg"/>
+      </surface>
+      <surface>
+         <graphic
+            url="http://images.monasterium.net/pics/AT-WStLA/HA-U/WStLA-HA-Urkunden_03969_v.jpg"/>
+      </surface>
+   </facsimile>
+   <text>
+      <body>
+         <div type="abstract" resp="vh">
+            <p><rs type="event" ref="ev__QGW_II_III_3969">
+                  <rs type="fn" role="issuer"><rs type="person" ref="pe__agathe_QGW_II_III_3969">Agatha, <rs type="person"
+                           ref="pe__wolfgang_retenperger_QGW_II_II_3515">Wolfgangs
+                           Re/atenperger</rs>
+                        <roleName type="kin" corresp="pe__wolfgang_retenperger_QGW_II_II_3515"
+                           >hausfrau</roleName></rs>, und <rs type="person"
+                        ref="pe__margarethe_QGW_II_III_3969">Margreth, <rs type="person"
+                           ref="pe__johann_froner_QGW_II_III_3905">Hannsen Froner</rs>
+                        <roleName type="kin" corresp="pe__johann_froner_QGW_II_III_3905"
+                           >hausfrau</roleName>, ir <roleName type="kin"
+                           corresp="pe__agathe_QGW_II_III_3969">tochter</roleName></rs></rs> ,
+                  bestätigen, von ihrem <rs type="person"
+                     ref="pe__johann_haringseer_QGW_II_III_3910"><roleName type="kin"
+                        corresp="pe__agathe_QGW_II_III_3969">Schwager</roleName> Hanns Haringseer,
+                        <roleName type="occ" corresp="org__wien">burger</roleName> zu Wienn</rs>, 50
+                  lb dn. erhalten zu haben, welche ihnen <rs type="person"
+                     ref="pe__klara_QGW_II_III_3969">frau Klara, <rs type="person"
+                        ref="pe__johann_haringseer_QGW_II_II_2387">Hannsen Haringseer, <rs
+                           type="person" ref="pe__johann_haringseer_QGW_II_III_3910">seins <roleName
+                              type="kin" corresp="pe__johann_haringseer_QGW_II_II_2387"
+                              >vater</roleName></rs></rs>, <roleName type="kin"
+                        corresp="pe__johann_haringseer_QGW_II_II_2387">wittib</roleName>, ihre
+                        <roleName type="kin" corresp="pe__agathe_QGW_II_III_3969">swester</roleName>
+                     und <roleName type="kin" corresp="pe__margarethe_QGW_II_III_3969"
+                        >mum</roleName>
+                     <roleName type="dead">selige</roleName></rs>, geschafft hat von den 200 lb dn.,
+                  die sie auf desselben Haringseer haus, in der Münsserstrass zunagst des Pilgreim
+                  haus gelegen, gehabt hat . </rs></p>
+         </div>
+         <div type="seal">
+            <p><rs type="event" ref="ev__QGW_II_III_3969">Besiegelt mit den Siegeln <rs type="fn"
+                     role="witness"><rs type="person"
+                        ref="pe__sebastian_zieglshauser_QGW_II_III_3864">Sebastians Ziegelshauser,
+                           <roleName type="occ" corresp="org__wien">burger</roleName> zu Wienn</rs>,
+                     und <rs type="person" ref="pe__ulrich_hirssauer_QGW_II_II_3239">Ulreichs
+                        Hirssauer, <roleName type="occ" corresp="org__wien">statschreiber</roleName>
+                        daselbs</rs></rs>. </rs></p>
+         </div>
+         <div type="lists">
+            <xi:include xmlns:xi="http://www.w3.org/2001/XInclude"
+               href="../../../../indices/placeList.xml" xpointer="element(/1/2/1/1)"/>
+            <xi:include xmlns:xi="http://www.w3.org/2001/XInclude"
+               href="../../../../indices/personList.xml" xpointer="element(/1/2/1/1)"/>
+            <xi:include xmlns:xi="http://www.w3.org/2001/XInclude"
+               href="../../../../indices/eventList.xml" xpointer="element(/1/2/1/1)"/>
+            <xi:include xmlns:xi="http://www.w3.org/2001/XInclude"
+               href="../../../../indices/orgList.xml" xpointer="element(/1/2/1/1)"/>
+         </div>
+      </body>
+   </text>
+</TEI>

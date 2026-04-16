@@ -1,0 +1,134 @@
+<?xml version="1.0" encoding="UTF-8"?><!DOCTYPE TEI   SYSTEM "../../../schema/toolbox_full.dtd">
+<TEI xmlns="http://www.tei-c.org/ns/1.0" xmlns:cei="http://www.monasterium.net/NS/cei"
+   xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance">
+   <teiHeader>
+      <fileDesc>
+         <titleStmt>
+            <title>Tei version of 1028 exported from monasterium.net </title>
+         </titleStmt>
+         <publicationStmt>
+            <p/>
+         </publicationStmt>
+         <!--In Original: cei:front/cei:sourceDesc/cei:sourceDescRegest-->
+         <sourceDesc>
+            <bibl type="url">https://www.monasterium.net/mom/AT-WStLA/HAUrk/1028/charter</bibl>
+            <bibl default="false" status="draft">Quellen zur Geschichte der Stadt Wien, Bd. II/1,
+               Nr. 1028 As published in HAUrk by Wiener Stadt- und Landesarchiv </bibl>
+            <msDesc status="draft">
+               <msIdentifier>
+                  <repository>Wiener Stadt- und Landesarchiv</repository>
+                  <idno>1028</idno>
+                  <altIdentifier type="old">
+                     <idno>515219</idno>
+                  </altIdentifier>
+               </msIdentifier>
+               <physDesc>
+                  <sealDesc>
+                     <seal>
+                        <p>Siegel: 1., 2. fehlen, 3. anhangend, grün u. K.</p>
+                     </seal>
+                  </sealDesc>
+               </physDesc>
+            </msDesc>
+         </sourceDesc>
+      </fileDesc>
+      <encodingDesc>
+         <projectDesc default="false">
+            <p><label type="contentual-editing">Projekt Christina Lutter Stadt und
+                  Gemeinschaft</label></p>
+         </projectDesc>
+      </encodingDesc>
+      <profileDesc>
+         <creation>
+            <placeName>Wien</placeName>
+            <date when="13820317">1382 III 17</date>
+            <origDate instant="false">ze Wienne, des nachsten mantags nach sand Gregorien
+               tage.</origDate></creation>
+      </profileDesc>
+   </teiHeader>
+   <facsimile>
+      <surface>
+         <graphic
+            url="http://images.monasterium.net/pics/AT-WStLA/HA-U/WStLA-HA-Urkunden_01028_r.jpg"/>
+      </surface>
+      <surface>
+         <graphic
+            url="http://images.monasterium.net/pics/AT-WStLA/HA-U/WStLA-HA-Urkunden_01028_v.jpg"/>
+      </surface>
+   </facsimile>
+   <text>
+      <body>
+         <div type="abstract" resp="cs">
+            <p>
+               <rs type="event" ref="ev__QGW_II_I_1028"><rs type="fn" role="issuer"><rs
+                        type="person" ref="pe__kadold_von_eckhartsau_ii_QGW_II_I_1028">Chadolt von
+                        Ekkartsaue</rs>, <rs type="person" ref="pe__johann_von_tierna_QGW_II_I_1018"
+                        >Hanns von Tierna, <roleName type="occ" corresp="org__oesterreich-herzogtum"
+                           >huebmaister</roleName> in O/esterreich</rs>, <rs type="person"
+                        ref="pe__johann_von_dietreichstokch_QGW_II_I_1028">Hanns von
+                        Dietreichstokch, <roleName type="occ" corresp="org__oesterreich-herzogtum"
+                           >vorstmaister</roleName> in Osterreich</rs></rs> , <triggerstring n="disp"
+                     >fällen als vom Herzog Albrecht bestellte verhorer in dem <add>Streit folgende
+                        Entscheidung</add></triggerstring>
+                  <rs type="fn" role="other"><triggerstring n="fn">zwischen</triggerstring> dem <rs
+                        type="person" ref="pe__ortolf_vierdung_QGW_II_I_1025">Wiener <roleName
+                           type="occ" corresp="org__wien">Bürger</roleName> Ortolfen dem
+                        Schüchler</rs> und <rs type="person" ref="pe__margarethe_QGW_II_I_1028">
+                        Margreten, <rs type="person" ref="pe__johann_von_eslarn_QGW_II_I_1020"
+                           >Hannsen von Eselarn</rs>
+                        <roleName type="kin" corresp="pe__johann_von_eslarn_QGW_II_I_1020"
+                           >Hausfrau</roleName></rs>, einerseits</rs>, <rs type="fn" role="other"
+                        ><triggerstring n="fn"><add>zwischen</add></triggerstring>
+                     <rs type="person" ref="pe__jakob_wolfsthaler_QGW_II_I_1028">Jacoben dem
+                        Wolfstaler</rs> und seiner <rs type="person"
+                        ref="pe__katharina_QGW_II_I_1028"><roleName type="kin"
+                           corresp="pe__jakob_wolfsthaler_QGW_II_I_1028">Hausfrau</roleName>
+                        Katrein</rs> anderseits</rs> über die von dem <rs type="person"
+                     ref="pe__andreas_cherner_QGW_II_I_1028"><roleName type="dead"
+                        >früheren</roleName>
+                     <roleName type="kin" corresp="pe__katharina_QGW_II_I_1028">Manne</roleName> der
+                     Katrein, Andre dem Cherner</rs>, und seinen Kindern hinterlassenen Güter
+                  ausgebrochenen Streite folgende Entscheidung: Der <rs type="fn" role="recipient"
+                        ><rs type="person" ref="pe__katharina_QGW_II_I_1028">Katrein</rs></rs>
+                  sollen die Güter, die ihr Andre der Cherner geschafft hatte, <triggerstring n="disp"
+                     >zufallen</triggerstring>, ausserdem soll sie der 70 lb dn. minner eins halben
+                  phundes, womit sie die Höfe und Weingärten bestanden hatte, ledig, der
+                  Bestandvertrag aber aufgehoben sein, ferner sollen Ortolf der Schüchler und
+                  Margret, Hannsen hausvrowe von Eselarn, ihr 10 Fass virdigs weins, gelegen in dem
+                  hof ze Prunn, geben. Dagegen sollen <rs type="person"
+                     ref="pe__jakob_wolfsthaler_QGW_II_I_1028">Jacob der Wolfstaler</rs> und seine
+                  <rs type="person" ref="pe__katharina_QGW_II_I_1028"><roleName
+                        type="kin" corresp="pe__jakob_wolfsthaler_QGW_II_I_1028">Hausfrau</roleName>
+                     Katrein</rs> alle anderen von Andre dem Cherner und seinen Kindern
+                  zurückgelassenen Güter, insbesondere auch, was sie etwa an silberassech,
+                  pettgewant, Silbergeschirr, das er ihnen nicht vermacht hatte, innehätten, <rs
+                     type="fn" role="recipient"><rs type="person"
+                        ref="pe__ortolf_vierdung_QGW_II_I_1025">Ortolfen dem Schüchler</rs> und <rs
+                        type="person" ref="pe__margarethe_QGW_II_I_1028">Margreten, Hannsen
+                           <roleName type="kin" corresp="pe__johann_von_eslarn_QGW_II_I_1020"
+                           >hausvrauen</roleName> von Eselarn</rs></rs>, <triggerstring n="disp"
+                        ><add>alle anderen zurückgelassenen Güter</add> ausfolgen</triggerstring>.
+               </rs></p>
+         </div>
+         <div type="seal">
+            <p><rs type="event" ref="ev__QGW_II_I_1028"><rs type="fn" role="witness">Besiegelt von
+                     den <rs type="person" ref="pe__kadold_von_eckhartsau_ii_QGW_II_I_1028"
+                        >Ausstellern</rs>
+                     <rs type="person" ref="pe__johann_von_dietreichstokch_QGW_II_I_1028"
+                           ><add>Aussteller</add></rs>
+                     <rs type="person" ref="pe__johann_von_tierna_QGW_II_I_1018"
+                           ><add>Aussteller</add></rs>.</rs></rs></p>
+         </div>
+         <div type="lists">
+            <xi:include xmlns:xi="http://www.w3.org/2001/XInclude"
+               href="../../../../indices/placeList.xml" xpointer="element(/1/2/1/1)"/>
+            <xi:include xmlns:xi="http://www.w3.org/2001/XInclude"
+               href="../../../../indices/personList.xml" xpointer="element(/1/2/1/1)"/>
+            <xi:include xmlns:xi="http://www.w3.org/2001/XInclude"
+               href="../../../../indices/eventList.xml" xpointer="element(/1/2/1/1)"/>
+            <xi:include xmlns:xi="http://www.w3.org/2001/XInclude"
+               href="../../../../indices/orgList.xml" xpointer="element(/1/2/1/1)"/>
+         </div>
+      </body>
+   </text>
+</TEI>

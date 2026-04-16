@@ -1,0 +1,104 @@
+<?xml version="1.0" encoding="UTF-8"?><!DOCTYPE TEI   SYSTEM "../../../schema/toolbox_full.dtd">
+<TEI xmlns="http://www.tei-c.org/ns/1.0" xmlns:cei="http://www.monasterium.net/NS/cei"
+   xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance">
+   <teiHeader>
+      <fileDesc>
+         <titleStmt>
+            <title>Tei version of 259 exported from monasterium.net </title>
+         </titleStmt>
+         <publicationStmt>
+            <p/>
+         </publicationStmt>
+         <!--In Original: cei:front/cei:sourceDesc/cei:sourceDescRegest-->
+         <sourceDesc>
+            <bibl type="url">https://www.monasterium.net/mom/AT-WStLA/HAUrk/259/charter</bibl>
+            <bibl default="false" status="draft">Quellen zur Geschichte der Stadt Wien, Bd. II/1,
+               Nr. 259 As published in HAUrk by Wiener Stadt- und Landesarchiv </bibl>
+            <msDesc status="draft">
+               <msIdentifier>
+                  <repository>Wiener Stadt- und Landesarchiv</repository>
+                  <idno>259</idno>
+                  <altIdentifier type="old">
+                     <idno>514428</idno>
+                  </altIdentifier>
+               </msIdentifier>
+               <physDesc>
+                  <sealDesc>
+                     <seal>
+                        <p>Beide Siegel fehlen.</p>
+                     </seal>
+                  </sealDesc>
+               </physDesc>
+            </msDesc>
+         </sourceDesc>
+      </fileDesc>
+      <encodingDesc>
+         <projectDesc default="false">
+            <p><label type="contentual-editing">Projekt Christina Lutter Stadt und
+                  Gemeinschaft</label></p>
+         </projectDesc>
+      </encodingDesc>
+      <profileDesc>
+         <creation>
+            <placeName>Wien</placeName>
+            <date when="13430310">1343 III 10</date>
+            <origDate instant="false">Der prief ist geben ze Wienn nach Christes gepu/ert 1300 iar
+               und darnach in dem 43. iar, des montags in der andern Vastwochen.
+            </origDate></creation>
+      </profileDesc>
+   </teiHeader>
+   <facsimile>
+      <surface>
+         <graphic
+            url="http://images.monasterium.net/pics/AT-WStLA/HA-U/WStLA-HA-Urkunden_00259_r.jpg"/>
+      </surface>
+      <surface>
+         <graphic
+            url="http://images.monasterium.net/pics/AT-WStLA/HA-U/WStLA-HA-Urkunden_00259_v.jpg"/>
+      </surface>
+   </facsimile>
+   <text>
+      <body>
+         <div type="abstract" resp="lp">
+            <p><rs type="event" ref="ev__QGW_II_I_259"><rs type="fn" role="issuer"><rs type="person"
+                        ref="pe__johanna_von_pfirt_QGW_II_I_304"><roleName type="title"
+                           >Herzogin</roleName> Johanna, <roleName type="title">Gräfin</roleName> zu
+                        Pfirt</rs></rs>, <triggerstring n="disp">verkauft</triggerstring>
+                  <rs type="fn" role="other"><triggerstring n="fn">mit Handen</triggerstring>
+                     <rs type="person" ref="pe__gerung_chol_QGW_II_I_185">des <roleName type="occ"
+                           corresp="org__klosterneuburg" select="pl__klosterneuburg"
+                           >Bergmeisters</roleName> Gerungs des Choln, <roleName type="occ"
+                           corresp="org__klosterneuburg">amptman</roleName> des chlosters ze
+                        Neunburch</rs></rs>, <rs type="fn" role="recipient"><rs type="person"
+                        ref="pe__konrad_wiltwercher_QGW_II_I_204">ihrem getreuen <roleName
+                           type="occ" corresp="org_wien" cert="high">Bürger</roleName> Chunrat dem
+                        Wiltwercher, <roleName type="occ" corresp="org__wien"
+                           >purgermaister</roleName> ze Wienn</rs>, und <rs type="person"
+                        ref="pe__margarethe_QGW_II_I_204">seiner <roleName type="kin"
+                           corresp="pe__konrad_wiltwercher_QGW_II_I_204">Hausfrau</roleName>
+                        Mergarten</rs></rs> ein halbes Joch Weingarten, der da leit an dem
+                  Purchstal, davon man alle iare dienet dem chloster Unserr Vraun ze Neunburch fumf
+                  viertail weins ze perchrecht und drei helbling ze voitrecht , um 70 Mark Silber,
+                  immer an zehen fumfzehen Schilling Wienner phenng fu/er ein iegleich march.</rs>
+            </p>
+         </div>
+         <div type="seal">
+            <p><rs type="event" ref="ev__QGW_II_I_259"><rs type="fn" role="witness">Besiegelt von
+                        <rs type="person" ref="pe__albrecht_herzog_von_oesterreich_QGW_II_I_596"
+                           ><roleName type="title">Herzog</roleName> Albrecht</rs> und <rs
+                        type="person" ref="pe__johanna_von_pfirt_QGW_II_I_304">der
+                     Herzogin</rs>.</rs></rs></p>
+         </div>
+         <div type="lists">
+            <xi:include xmlns:xi="http://www.w3.org/2001/XInclude"
+               href="../../../../indices/placeList.xml" xpointer="element(/1/2/1/1)"/>
+            <xi:include xmlns:xi="http://www.w3.org/2001/XInclude"
+               href="../../../../indices/personList.xml" xpointer="element(/1/2/1/1)"/>
+            <xi:include xmlns:xi="http://www.w3.org/2001/XInclude"
+               href="../../../../indices/eventList.xml" xpointer="element(/1/2/1/1)"/>
+            <xi:include xmlns:xi="http://www.w3.org/2001/XInclude"
+               href="../../../../indices/orgList.xml" xpointer="element(/1/2/1/1)"/>
+         </div>
+      </body>
+   </text>
+</TEI>

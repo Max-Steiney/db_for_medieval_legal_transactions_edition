@@ -1,0 +1,113 @@
+<?xml version="1.0" encoding="UTF-8" standalone="no"?>
+<!DOCTYPE TEI
+  SYSTEM "../../../schema/toolbox_full.dtd">
+<TEI xmlns:cei="http://www.monasterium.net/NS/cei" xmlns="http://www.tei-c.org/ns/1.0">
+   <teiHeader>
+      <fileDesc>
+         <titleStmt>
+            <title>Tei version of 3967 exported from monasterium.net </title>
+         </titleStmt>
+         <publicationStmt>
+            <p/>
+         </publicationStmt>
+         <!--In Original: cei:front/cei:sourceDesc/cei:sourceDescRegest-->
+         <sourceDesc>
+            <bibl>Quellen zur Geschichte der Stadt Wien, Bd. II/3, Nr. As published in HAUrk by
+               Wiener Stadt- und Landesarchiv </bibl>
+            <msDesc>
+               <msIdentifier>
+                  <repository>Wiener Stadt- und Landesarchiv</repository>
+                  <idno>3967</idno>
+                  <altIdentifier type="old">
+                     <idno>518232</idno>
+                  </altIdentifier>
+               </msIdentifier>
+               <msContents>
+                  <msItem>
+                     <listBibl>
+                        <bibl type="url"
+                           >https://www.monasterium.net/mom/AT-WStLA/HAUrk/3967/charter</bibl>
+                        <bibl>Camesina in den Mitth. des Alterthumsvereines 11, 228 n° 87
+                           unvollständig.</bibl>
+                     </listBibl>
+                  </msItem>
+               </msContents>
+               <physDesc>
+                  <sealDesc>
+                     <seal>
+                        <p>Die angehängten Siegel fehlen.</p>
+                     </seal>
+                  </sealDesc>
+               </physDesc>
+            </msDesc>
+         </sourceDesc>
+      </fileDesc>
+      <profileDesc>
+         <creation>
+            <date when="14610110">1461 I 10</date>
+            <origDate>an sambstag nach sand Erharts tag.</origDate></creation>
+      </profileDesc>
+   </teiHeader>
+   <facsimile>
+      <surface>
+         <graphic
+            url="http://images.monasterium.net/pics/AT-WStLA/HA-U/WStLA-HA-Urkunden_03967_r.jpg"/>
+      </surface>
+      <surface>
+         <graphic
+            url="http://images.monasterium.net/pics/AT-WStLA/HA-U/WStLA-HA-Urkunden_03967_v.jpg"/>
+      </surface>
+   </facsimile>
+   <text>
+      <body>
+         <div type="abstract" resp="vh">
+            <p><rs type="event" ref="ev__QGW_II_III_3967">
+                  <rs type="fn" role="issuer"><rs type="person"
+                        ref="pe__siegfried_nusperger_QGW_II_III_3967">Seicz Nusperger</rs> und <rs
+                        type="person" ref="pe__dorothea_QGW_II_III_3967">Dorothea, sein <roleName
+                           type="kin" corresp="pe__siegfried_nusperger_QGW_II_III_3967"
+                           >hausfrau</roleName></rs></rs>, verkaufen <rs type="fn" role="other"
+                        ><triggerstring n="fn">mit Handen</triggerstring> des <rs type="person"
+                        ref="pe__georg_hindperger_QGW_II_III_3967"><roleName type="title"
+                           >edeln</roleName> Jorgen Hindperger, . . . <roleName type="occ"
+                           corresp="pe__friedrich_iv_herzog_von_oesterreich_QGW_II_I_1332">des
+                           Römischen kaisers etc. pergmaister</roleName> zu Medling</rs></rs>, einen
+                  Weingarten, genant die Löslin, mitsambt der Scheiben oben darauf, gelegen im
+                  Perbestal zunagst Hannsen des Heml von Enczestorf weingarten , von dem man 2 ½
+                  viertail mosts im lesen zu perkrecht, anderhalb ort zu voitrecht dient, umb ain
+                  sum Ungrischer guldein . . . <rs type="fn" role="recipient"><rs type="person"
+                        ref="pe__johann_gruntreich_QGW_II_II_3257">Hannsen Gruntreich, <roleName
+                           type="occ" corresp="org__wien">burger</roleName> zu Wienn, <roleName
+                           type="occ"
+                           corresp="org__wien-st_stephan-kapelle_st_erasmus_im_neuen_karner_auf_dem_st_stephansfriedhof-zeche_schreiber"
+                           >zechmaister</roleName> der Schreiberzech auf dem Neun Korner</rs>,
+                     gelegen auf sand Steffans freithof , . . . zu handen derselben <rs type="org"
+                        ref="org__wien-st_stephan-kapelle_st_erasmus_im_neuen_karner_auf_dem_st_stephansfriedhof-zeche_schreiber"
+                        >zech</rs> und <rs type="org"
+                        ref="org__wien-st_stephan-kapelle_st_erasmus_im_neuen_karner_auf_dem_st_stephansfriedhof-zeche_schreiber-messe_pamerin_anna"
+                           ><rs type="person" ref="pe__anna_pamerin_QGW_II_III_3967">fraun Annen der
+                           Pamerin</rs> stifftung</rs></rs>. </rs></p>
+         </div>
+         <div type="seal">
+            <p><rs type="event" ref="ev__QGW_II_III_3967">Besiegelt mit dem <rs type="fn"
+                     role="witness"><rs type="person"
+                        ref="pe__friedrich_iv_herzog_von_oesterreich_QGW_II_I_1332">kaiserlichen
+                        Bergsiegel</rs>, so uber seiner gnaden perkgrunt zu Medling gehoret, und den
+                     Siegeln des <rs type="person" ref="pe__leonhard_schermiczer_QGW_II_III_3967"
+                           ><roleName type="title">edeln</roleName> Lienhart Schermiczer</rs> und
+                     des <rs type="person" ref="pe__wolfgang_eisenhut_QGW_II_II_3608">Wolfgang
+                        Eisenhuet</rs></rs>, baid gesessen zu Prunn. </rs></p>
+         </div>
+         <div type="lists">
+            <xi:include xmlns:xi="http://www.w3.org/2001/XInclude"
+               href="../../../../indices/placeList.xml" xpointer="element(/1/2/1/1)"/>
+            <xi:include xmlns:xi="http://www.w3.org/2001/XInclude"
+               href="../../../../indices/personList.xml" xpointer="element(/1/2/1/1)"/>
+            <xi:include xmlns:xi="http://www.w3.org/2001/XInclude"
+               href="../../../../indices/eventList.xml" xpointer="element(/1/2/1/1)"/>
+            <xi:include xmlns:xi="http://www.w3.org/2001/XInclude"
+               href="../../../../indices/orgList.xml" xpointer="element(/1/2/1/1)"/>
+         </div>
+      </body>
+   </text>
+</TEI>

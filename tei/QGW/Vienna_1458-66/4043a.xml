@@ -1,0 +1,98 @@
+<?xml version="1.0" encoding="UTF-8" standalone="no"?>
+<!DOCTYPE TEI
+  SYSTEM "../../../schema/toolbox_full.dtd">
+<TEI xmlns:cei="http://www.monasterium.net/NS/cei" xmlns="http://www.tei-c.org/ns/1.0">
+   <teiHeader>
+      <fileDesc>
+         <titleStmt>
+            <title>Tei version of 4043a exported from monasterium.net </title>
+         </titleStmt>
+         <publicationStmt>
+            <p/>
+         </publicationStmt>
+         <!--In Original: cei:front/cei:sourceDesc/cei:sourceDescRegest-->
+         <sourceDesc>
+            <bibl>Quellen zur Geschichte der Stadt Wien, Bd. II/3, Nr. As published in HAUrk by
+               Wiener Stadt- und Landesarchiv </bibl>
+            <msDesc>
+               <msIdentifier>
+                  <repository>Wiener Stadt- und Landesarchiv</repository>
+                  <idno>4043a</idno>
+                  <altIdentifier type="old">
+                     <idno>518314</idno>
+                  </altIdentifier>
+               </msIdentifier>
+               <msContents>
+                  <msItem>
+                     <listBibl>
+                        <bibl type="url"
+                           >https://www.monasterium.net/mom/AT-WStLA/HAUrk/4043a/charter</bibl>
+                     </listBibl>
+                  </msItem>
+               </msContents>
+               <physDesc>
+                  <sealDesc>
+                     <seal>
+                        <p>Siegler: der Aussteller und der Wiener Bürger <quote>Fridrich
+                              Gerunger</quote>. </p>
+                     </seal>
+                  </sealDesc>
+               </physDesc>
+            </msDesc>
+         </sourceDesc>
+      </fileDesc>
+      <profileDesc>
+         <creation>
+            <placeName>Wien</placeName>
+            <date when="14630311">1463 III 11</date>
+            <origDate>zu Wienn, an freitag vor Oculi in der Vasten.</origDate></creation>
+      </profileDesc>
+   </teiHeader>
+   <facsimile/>
+   <text>
+      <body>
+         <div type="abstract" resp="ms">
+            <p><rs type="event" ref="ev__QGW_II_III_4043a">
+                  <rs type="fn" role="issuer"><rs type="person"
+                        ref="pe__peter_liebharter_QGW_II_II_3541">Peter Liebharter, <roleName
+                           type="occ" corresp="org__wien-st_stephan">chorherr</roleName>
+                        Allerheiligen tuembkirchen zu sand Stephan zu Wienn und <roleName type="occ"
+                           corresp="org__wien-st_stephan-altar_zwoelfapostel-messe_liebhart"
+                           >stiftherr</roleName> der ewigen mess in den eren des heiligen zwelfpoten
+                        sand Peters auf aller Zwelfpoten altar zu sand Stephan ze Wienn</rs></rs> ,
+                  der die Störung der von ihm zu dieser Messe gekauften Güter beobachtet hat,
+                  bevollmächtigt <rs type="fn" role="recipient"><rs type="person"
+                        ref="pe__christian_liebharter_QGW_II_III_4043a">seinen <roleName type="kin"
+                           corresp="pe__peter_liebharter_QGW_II_II_3541">Vetter</roleName>
+                        <roleName type="title">hern</roleName> Cristan Liebharter, <roleName
+                           type="occ" corresp="org__wien-st_stephan">korherrn</roleName> zu sand
+                        Stephan und <roleName type="occ"
+                           corresp="org__wien-st_stephan-altar_zwoelfapostel-messe_liebhart"
+                           >capplan</roleName> der vorgenanten stift</rs></rs>, dieselben zu
+                  verkaufen und den Erlös zum Nutzen der Messe auf anderen Gütern anzulegen, und
+                  ertheilt ihm fernere Vollmacht wegen der Errichtung und Begehung des von ihm
+                  gestifteten Jahrtages. </rs></p>
+         </div>
+         <div type="seal">
+            <p><rs type="event" ref="ev__QGW_II_III_4043a"><rs type="fn" role="witness">Siegler: der
+                        <rs type="person" ref="pe__peter_liebharter_QGW_II_II_3541">Aussteller</rs>
+                     und der <rs type="person" ref="pe__peter_gerung_StB_I_492">Wiener <roleName type="occ" corresp="org__wien">Bürger</roleName>
+                        Fridrich Gerunger</rs>.</rs>
+               </rs></p>
+         </div>
+         <div type="nota">
+            <p><rs type="event" ref="ev__QGW_II_III_4043a_nota">Vidimiert in Urk. n° 4237.</rs></p>
+         </div>
+         <div type="lists">
+            <xi:include xmlns:xi="http://www.w3.org/2001/XInclude"
+               href="../../../../indices/placeList.xml" xpointer="element(/1/2/1/1)"/>
+            <xi:include xmlns:xi="http://www.w3.org/2001/XInclude"
+               href="../../../../indices/personList.xml" xpointer="element(/1/2/1/1)"/>
+            <xi:include xmlns:xi="http://www.w3.org/2001/XInclude"
+               href="../../../../indices/eventList.xml" xpointer="element(/1/2/1/1)"/>
+            <xi:include xmlns:xi="http://www.w3.org/2001/XInclude"
+               href="../../../../indices/orgList.xml" xpointer="element(/1/2/1/1)"/>
+         </div>
+      </body>
+   </text>
+</TEI>

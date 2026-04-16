@@ -1,0 +1,104 @@
+<?xml version="1.0" encoding="UTF-8" standalone="no"?>
+<!DOCTYPE TEI
+  SYSTEM "../../../schema/toolbox_full.dtd">
+<TEI xmlns:cei="http://www.monasterium.net/NS/cei" xmlns="http://www.tei-c.org/ns/1.0">
+   <teiHeader>
+      <fileDesc>
+         <titleStmt>
+            <title>Tei version of 4119 exported from monasterium.net </title>
+         </titleStmt>
+         <publicationStmt>
+            <p/>
+         </publicationStmt>
+         <!--In Original: cei:front/cei:sourceDesc/cei:sourceDescRegest-->
+         <sourceDesc>
+            <bibl>Quellen zur Geschichte der Stadt Wien, Bd. II/3, Nr. As published in HAUrk by
+               Wiener Stadt- und Landesarchiv </bibl>
+            <msDesc>
+               <msIdentifier>
+                  <repository>Wiener Stadt- und Landesarchiv</repository>
+                  <idno>4119</idno>
+                  <altIdentifier type="old">
+                     <idno>518394</idno>
+                  </altIdentifier>
+               </msIdentifier>
+               <msContents>
+                  <msItem>
+                     <listBibl>
+                        <bibl type="url"
+                           >https://www.monasterium.net/mom/AT-WStLA/HAUrk/4119/charter</bibl>
+                        <bibl>Hartmann-Franzenshuld, Geschlechterbuch S. 32 cit.</bibl>
+                     </listBibl>
+                  </msItem>
+               </msContents>
+               <physDesc>
+                  <sealDesc>
+                     <seal>
+                        <p>Die angehängten Siegel fehlen.</p>
+                     </seal>
+                  </sealDesc>
+               </physDesc>
+            </msDesc>
+         </sourceDesc>
+      </fileDesc>
+      <profileDesc>
+         <creation>
+            <placeName>Wien</placeName>
+            <date when="14660506">1466 V 06</date>
+            <origDate>zu Wien, an eritag nach des heiligen Kreucz tag invencionis.
+            [97]</origDate></creation>
+      </profileDesc>
+   </teiHeader>
+   <facsimile>
+      <surface>
+         <graphic
+            url="http://images.monasterium.net/pics/AT-WStLA/HA-U/WStLA-HA-Urkunden_04119_r.jpg"/>
+      </surface>
+      <surface>
+         <graphic
+            url="http://images.monasterium.net/pics/AT-WStLA/HA-U/WStLA-HA-Urkunden_04119_v.jpg"/>
+      </surface>
+   </facsimile>
+   <text>
+      <body>
+         <div type="abstract" resp="ms">
+            <p><rs type="event" ref="ev__QGW_II_III_4119">
+                  <rs type="fn" role="issuer"><rs type="person"
+                        ref="pe__matthias_angerfelder_QGW_II_II_3334">Mathes Angerfelder, <roleName
+                           type="occ" corresp="org__wien">burger</roleName> zu Wienn</rs></rs>,
+                  verkauft <rs type="fn" role="other"><triggerstring n="fn">mit Handen</triggerstring> des
+                        <rs type="person" ref="pe__ulrich_matzleinsdorfer_QGW_II_II_3362"><roleName
+                           type="occ" corresp="org__wien">Bürgermeisters</roleName>
+                        <roleName type="title">hern</roleName> Ulreichen Meczleinstorrfer</rs> und
+                        <rs type="org" ref="org__wien">des Rathes</rs></rs> sein Haus und das
+                  zuheusl hinden daran, gelegen am Kienmarkt zunagst Hannsen des Mülhauser haus an
+                  aim tail und an dem andern zunagst Chunczen Pinter von Nürnberg, des kramer, haus,
+                  das von <rs type="person" ref="pe__johann_meichsner_QGW_II_II_3600">Hannsen
+                     Meichsner, <roleName type="occ" corresp="org__wien">mitburger</roleName> hie zu
+                     Wienn</rs>, mit kauff an ihn komen ist, und zwar eine Hälfte <rs type="fn"
+                     role="recipient"><rs type="person" ref="pe__johann_schürger_QGW_II_III_4119"
+                        >Hannsen Schürger, <roleName type="occ" corresp="org__krems"
+                           >statschreiber</roleName> zu Krembs</rs>, und <rs type="person"
+                        ref="pe__anna_QGW_II_III_4119">Annen, seiner <roleName type="kin"
+                           corresp="pe__johann_schürger_QGW_II_III_4119">hausfraun</roleName></rs>,
+                     die andere Hälfte <rs type="person" ref="pe__barbara_QGW_II_III_4119"><roleName
+                           type="title">junkchfraun</roleName> Barbaren, <rs type="person"
+                           ref="pe__georg_heubekch_QGW_II_III_4119">Jörgen des Heybekchen, weilent
+                           gesessen zu Utldorff <roleName type="dead">seligen</roleName></rs>,
+                           <roleName type="kin" corresp="pe__georg_heubekch_QGW_II_III_4119"
+                           >tochter</roleName></rs> .</rs>
+               </rs></p>
+         </div>
+         <div type="lists">
+            <xi:include xmlns:xi="http://www.w3.org/2001/XInclude"
+               href="../../../../indices/placeList.xml" xpointer="element(/1/2/1/1)"/>
+            <xi:include xmlns:xi="http://www.w3.org/2001/XInclude"
+               href="../../../../indices/personList.xml" xpointer="element(/1/2/1/1)"/>
+            <xi:include xmlns:xi="http://www.w3.org/2001/XInclude"
+               href="../../../../indices/eventList.xml" xpointer="element(/1/2/1/1)"/>
+            <xi:include xmlns:xi="http://www.w3.org/2001/XInclude"
+               href="../../../../indices/orgList.xml" xpointer="element(/1/2/1/1)"/>
+         </div>
+      </body>
+   </text>
+</TEI>

@@ -1,0 +1,107 @@
+<?xml version="1.0" encoding="UTF-8"?><!DOCTYPE TEI SYSTEM "../../../schema/toolbox_full.dtd">
+<TEI xmlns="http://www.tei-c.org/ns/1.0" xmlns:cei="http://www.monasterium.net/NS/cei"
+   xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance">
+   <teiHeader>
+      <fileDesc>
+         <titleStmt>
+            <title>Tei version of 2049 exported from monasterium.net </title>
+         </titleStmt>
+         <publicationStmt>
+            <p/>
+         </publicationStmt>
+         <!--In Original: cei:front/cei:sourceDesc/cei:sourceDescRegest-->
+         <sourceDesc>
+            <bibl>Quellen zur Geschichte der Stadt Wien, Bd. II/2, Nr. 2049 As published in HAUrk by
+               Wiener Stadt- und Landesarchiv </bibl>
+            <msDesc>
+               <msIdentifier>
+                  <repository>Wiener Stadt- und Landesarchiv</repository>
+                  <idno>2049</idno>
+                  <altIdentifier type="old">
+                     <idno>516258</idno>
+                  </altIdentifier>
+               </msIdentifier>
+               <physDesc>
+                  <sealDesc>
+                     <seal>
+                        <p>Anhangendes beschädigtes, spitzovales Siegel, schwarz u. K., 2.
+                           fehlt.</p>
+                     </seal>
+                  </sealDesc>
+               </physDesc>
+            </msDesc>
+         </sourceDesc>
+      </fileDesc>
+      <encodingDesc>
+         <projectDesc default="false">
+            <p><label type="contentual-editing">Projekt Christina Lutter Stadt und
+                  Gemeinschaft</label></p>
+         </projectDesc>
+      </encodingDesc>
+      <profileDesc>
+         <creation>
+            <placeName>Wien</placeName>
+            <date when="14170113">1417 I 13</date>
+            <origDate>ze Wienn, an mittichen nach sand Erharts tag.</origDate></creation>
+      </profileDesc>
+   </teiHeader>
+   <facsimile>
+      <surface>
+         <graphic
+            url="http://images.monasterium.net/pics/AT-WStLA/HA-U/WStLA-HA-Urkunden_02049_r.jpg"/>
+      </surface>
+      <surface>
+         <graphic
+            url="http://images.monasterium.net/pics/AT-WStLA/HA-U/WStLA-HA-Urkunden_02049_v.jpg"/>
+      </surface>
+   </facsimile>
+   <text>
+      <body>
+         <div type="abstract">
+            <p><rs type="event" ref="ev__QGW_II_II_2049">
+                  <rs type="fn" role="issuer"><rs type="person" ref="pe__seidel_jude_QGW_II_I_1564"
+                        >Mu/eschl, der <roleName type="title">Jud</roleName>
+                        <roleName type="occ" corresp="org__wien">ze Wienn</roleName>, <rs
+                           type="person" ref="pe__smoyel_jude_QGW_II_I_1564">Smoyels des Juden</rs>
+                        <roleName type="kin" corresp="pe__smoyel_jude_QGW_II_I_1564">sun</roleName>
+                        von der Neunstat</rs></rs>, verkauft <rs type="fn" role="other"><triggerstring
+                        n="fn">mit Handen</triggerstring>
+                     <rs type="person" ref="pe__konrad_QGW_II_II_2049">Chunrats, des <roleName
+                           type="prof">zimerman</roleName> ze To/ebling enhalb des pachs, <roleName
+                           type="occ" corresp="org__klosterneuburg-augustiner_chorherren"
+                           >ambtman</roleName> des klosters ze Neunburg</rs></rs>, seines rechten
+                  Kaufgutes ½ Joch Weingarten, gelegen daselbs ze Tobling im Hard zenegst Hannsen
+                  des Zopphl weingarten, von dem man ½ Eimer Wein zu Bergrecht und 3 Helbling zu
+                  Voitrecht dient, um 43½ lb dn. dem vorgenannten <rs type="fn" role="recipient"><rs
+                        type="person" ref="pe__johann_zoepphl_QGW_II_II_2049">Hannsen dem Zo/epphl,
+                           <roleName type="occ" corresp="org__wien">purger</roleName> ze Wienn</rs>,
+                     und seiner <rs type="person" ref="pe__katharina_QGW_II_II_2049"><roleName
+                           type="kin" corresp="pe__johann_zoepphl_QGW_II_II_2049"
+                           >Hausfrau</roleName> Kathrein</rs></rs>. </rs></p>
+         </div>
+         <div type="seal">
+            <p><rs type="event" ref="ev__QGW_II_II_2049"><rs type="fn" role="witness">Besiegelt mit
+                     den Siegeln des <rs type="person" ref="pe__gebhard_se">obersten <roleName
+                           type="title">Bergherrn</roleName> Gebharts des Seifritstorffer, <roleName
+                           type="occ" corresp="org__klosterneuburg-augustiner_chorherren"
+                           >chorherr</roleName> und <roleName type="occ"
+                           corresp="org__klosterneuburg-augustiner_chorherren">obrister
+                           chellner</roleName> des klosters ze Neunburg</rs>, und des <rs
+                        type="person" ref="pe__heinrich_lerhuber_QGW_II_II_2049">Wiener <roleName
+                           type="occ" corresp="org__wien">Bürger</roleName>s Hainreichs des
+                        Lerhueber</rs>.</rs>
+               </rs></p>
+         </div>
+         <div type="lists">
+            <xi:include xmlns:xi="http://www.w3.org/2001/XInclude"
+               href="../../../../indices/placeList.xml" xpointer="element(/1/2/1/1)"/>
+            <xi:include xmlns:xi="http://www.w3.org/2001/XInclude"
+               href="../../../../indices/personList.xml" xpointer="element(/1/2/1/1)"/>
+            <xi:include xmlns:xi="http://www.w3.org/2001/XInclude"
+               href="../../../../indices/eventList.xml" xpointer="element(/1/2/1/1)"/>
+            <xi:include xmlns:xi="http://www.w3.org/2001/XInclude"
+               href="../../../../indices/orgList.xml" xpointer="element(/1/2/1/1)"/>
+         </div>
+      </body>
+   </text>
+</TEI>

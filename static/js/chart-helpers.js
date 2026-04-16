@@ -57,13 +57,31 @@ var ChartHelpers = (function() {
         var el = document.createElement('div');
         el.className = className;
         document.body.appendChild(el);
-        tooltips[className] = { el: el, timer: null };
+        tooltips[className] = { el: el, timer: null, hovered: false };
+
+        // WCAG 1.4.13: keep tooltip visible while pointer is over it
+        el.addEventListener('mouseenter', function() {
+            tooltips[className].hovered = true;
+            if (tooltips[className].timer) {
+                clearTimeout(tooltips[className].timer);
+                tooltips[className].timer = null;
+            }
+        });
+        el.addEventListener('mouseleave', function() {
+            tooltips[className].hovered = false;
+            hideTooltip(className);
+        });
 
         // Dismiss on touch outside
         document.addEventListener('touchstart', function(e) {
             if (!el.contains(e.target) && !e.target.closest('[data-tip]')) {
                 hideTooltip(className);
             }
+        });
+
+        // WCAG 1.4.13: dismiss on Escape
+        document.addEventListener('keydown', function(e) {
+            if (e.key === 'Escape') hideTooltip(className);
         });
 
         return tooltips[className];
@@ -111,9 +129,11 @@ var ChartHelpers = (function() {
     /**
      * Hide tooltip and clear any auto-dismiss timer.
      */
-    function hideTooltip(className) {
+    function hideTooltip(className, force) {
         var t = tooltips[className];
         if (!t) return;
+        // Don't hide while user is hovering the tooltip (unless forced)
+        if (t.hovered && !force) return;
         t.el.classList.remove('visible');
         if (t.timer) { clearTimeout(t.timer); t.timer = null; }
     }
@@ -317,15 +337,15 @@ var ChartHelpers = (function() {
                         state[sortKeyProp] = key;
                         state[sortAscProp] = textKeys.indexOf(key) >= 0;
                     }
-                    // Update sort arrows
+                    // Update sort arrows + aria-sort
                     for (var j = 0; j < headers.length; j++) {
                         var arrow = headers[j].querySelector('.sort-arrow');
-                        if (arrow) {
-                            if (headers[j] === header) {
-                                arrow.textContent = state[sortAscProp] ? ' \u2191' : ' \u2193';
-                            } else {
-                                arrow.textContent = '';
-                            }
+                        if (headers[j] === header) {
+                            if (arrow) arrow.textContent = state[sortAscProp] ? ' \u2191' : ' \u2193';
+                            headers[j].setAttribute('aria-sort', state[sortAscProp] ? 'ascending' : 'descending');
+                        } else {
+                            if (arrow) arrow.textContent = '';
+                            headers[j].setAttribute('aria-sort', 'none');
                         }
                     }
                     renderFn();
@@ -345,6 +365,7 @@ var ChartHelpers = (function() {
      * @param {number} [config.barGap=2] - gap between bars within a group
      * @param {number} [config.groupGap=16] - gap between groups
      * @param {string} [config.ariaLabel] - SVG aria-label
+     * @param {string} [config.tooltipClass] - CSS class for tooltip (e.g. 'explore-tooltip')
      * @param {function} [config.onTip] - (item, segment, e) -> tooltip HTML string
      * @param {function} [config.onClick] - (item, segment) -> void
      * @param {Array} [config.legend] - [{label, color}] for legend
@@ -391,11 +412,14 @@ var ChartHelpers = (function() {
             totalH += items[hi].segments.length * (barH + barGap) + groupGap;
         }
 
+        // Responsive label width: shrink on narrow containers
+        if (container.clientWidth < 400) labelW = Math.max(80, Math.floor(container.clientWidth * 0.25));
+
         var svg = document.createElementNS(SVG_NS, 'svg');
         svg.setAttribute('width', labelW + chartW + 80);
         svg.setAttribute('height', totalH);
         svg.setAttribute('role', 'img');
-        if (config.ariaLabel) svg.setAttribute('aria-label', config.ariaLabel);
+        svg.setAttribute('aria-label', config.ariaLabel || 'Balkendiagramm');
         svg.style.display = 'block';
 
         var y = 0;
@@ -428,15 +452,16 @@ var ChartHelpers = (function() {
 
                 // Tooltip + click via closure
                 (function(itm, sg, bw) {
+                    var tipCls = config.tooltipClass || 'explore-tooltip';
                     if (config.onTip) {
                         rect.addEventListener('mouseenter', function(e) {
-                            showTooltip(TOOLTIP_CLASS, config.onTip(itm, sg, e), e.clientX, e.clientY);
+                            showTooltip(tipCls, config.onTip(itm, sg, e), e.clientX, e.clientY);
                         });
                         rect.addEventListener('mousemove', function(e) {
-                            moveTooltip(TOOLTIP_CLASS, e.clientX, e.clientY);
+                            moveTooltip(tipCls, e.clientX, e.clientY);
                         });
                         rect.addEventListener('mouseleave', function() {
-                            hideTooltip(TOOLTIP_CLASS);
+                            hideTooltip(tipCls);
                         });
                     }
                     if (config.onClick) {

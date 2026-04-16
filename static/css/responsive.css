@@ -127,9 +127,18 @@
 
     .footer-col-right { text-align: left; }
 
-    /* Horizontal scroll for table on small screens */
+    /* Horizontal scroll for table on small screens with scroll indicator */
     .index-table-wrap {
         overflow-x: auto;
+        background:
+            linear-gradient(to right, var(--color-bg-card) 30%, transparent),
+            linear-gradient(to left, var(--color-bg-card) 30%, transparent),
+            linear-gradient(to right, rgba(44, 40, 37, 0.15), transparent 20px),
+            linear-gradient(to left, rgba(44, 40, 37, 0.15), transparent 20px);
+        background-position: left center, right center, left center, right center;
+        background-repeat: no-repeat;
+        background-size: 40px 100%, 40px 100%, 20px 100%, 20px 100%;
+        background-attachment: local, local, scroll, scroll;
     }
 
     .index-table {
@@ -144,6 +153,48 @@
     .legend-grid-compact {
         grid-template-columns: 1fr 1fr;
     }
+
+    /* WCAG touch targets — minimum 44px on touch devices */
+    .explore-chip,
+    .alpha-btn {
+        min-height: 2.75rem;
+        padding: 0.5rem 0.875rem;
+    }
+
+    .explore-view-toggle,
+    .explore-drilldown-close,
+    .toolbar-btn {
+        min-height: 2.75rem;
+        min-width: 2.75rem;
+    }
+
+    .filter-chip button,
+    .chip-clear,
+    .cite-copy-btn {
+        min-height: 2.75rem;
+        min-width: 2.75rem;
+        display: inline-flex;
+        align-items: center;
+        justify-content: center;
+    }
+
+    /* Annotation toggle popover: full width on mobile */
+    .anno-toggle-popover {
+        right: calc(-1 * var(--space-md));
+        left: calc(-1 * var(--space-md));
+        min-width: auto;
+    }
+
+    /* Heatmap and matrix tables: horizontal scroll on mobile */
+    .explore-chart-wrap { overflow-x: auto; }
+
+    /* Exploration panels: single column on mobile */
+    .explore-panels--roles-top {
+        grid-template-columns: 1fr;
+    }
+
+    /* Quality dashboard: KPIs 2-col on mobile */
+    #quality-kpis { grid-template-columns: repeat(2, 1fr); }
 }
 
 @media (max-width: 480px) {

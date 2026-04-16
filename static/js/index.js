@@ -11,6 +11,7 @@
     function initIndex() {
         var filterPlace = document.getElementById('filter-place');
         var filterFacs = document.getElementById('filter-facs');
+        var filterQuality = document.getElementById('filter-quality');
         var resultCount = document.getElementById('result-count');
         var activeFiltersEl = document.getElementById('active-filters');
 
@@ -21,6 +22,7 @@
             collection: '',
             place: '',
             facs: '',
+            quality: '',
             yearMin: 0,
             yearMax: 9999,
             sortKey: 'di',
@@ -99,6 +101,21 @@
             });
         }
 
+        // --- Quality filter ---
+        if (filterQuality) {
+            filterQuality.addEventListener('change', function() {
+                state.quality = filterQuality.value;
+                applyFilters();
+            });
+        }
+
+        // --- URL parameter pre-filter (e.g. ?quality=2 from quality dashboard) ---
+        var urlQuality = new URLSearchParams(window.location.search).get('quality');
+        if (urlQuality !== null && filterQuality) {
+            state.quality = urlQuality;
+            filterQuality.value = urlQuality;
+        }
+
         // --- Core filter logic ---
         function applyFilters() {
             state.previewIdx = -1;
@@ -108,6 +125,7 @@
                 if (state.place && doc.p !== state.place) return false;
                 if (state.facs === '1' && !doc.f) return false;
                 if (state.facs === '0' && doc.f) return false;
+                if (state.quality !== '' && String(doc.q) !== state.quality) return false;
 
                 // Year range
                 if (state.yearMin > 0 && state.yearMax < 9999) {
@@ -202,6 +220,11 @@
             if (state.facs) {
                 TableInfra.addFilterChip(activeFiltersEl, state.facs === '1' ? 'Mit Faksimile' : 'Ohne Faksimile',
                     clearFilter('facs', function() { if (filterFacs) filterFacs.value = ''; }));
+            }
+            if (state.quality !== '') {
+                var qLabels = {'0': 'Fehlerfrei', '1': 'Hinweise', '2': 'Warnungen'};
+                TableInfra.addFilterChip(activeFiltersEl, 'Qualität: ' + (qLabels[state.quality] || state.quality),
+                    clearFilter('quality', function() { if (filterQuality) filterQuality.value = ''; }));
             }
             if (rangeSlider && rangeSlider.isFiltered()) {
                 TableInfra.addFilterChip(activeFiltersEl, 'Zeitraum: ' + state.yearMin + '\u2013' + state.yearMax,

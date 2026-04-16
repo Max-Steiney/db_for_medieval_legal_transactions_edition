@@ -1,0 +1,123 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<TEI xmlns="http://www.tei-c.org/ns/1.0" xmlns:cei="http://www.monasterium.net/NS/cei"
+   xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance">
+   <teiHeader>
+      <fileDesc>
+         <titleStmt>
+            <title>Tei version of 5480 exported from monasterium.net </title>
+         </titleStmt>
+         <publicationStmt>
+            <p/>
+         </publicationStmt>
+         <!--In Original: cei:front/cei:sourceDesc/cei:sourceDescRegest-->
+         <sourceDesc>
+            <bibl>Quellen zur Geschichte der Stadt Wien, Bd. II/3, Nr. As published in HAUrk by
+               Wiener Stadt- und Landesarchiv </bibl>
+            <msDesc>
+               <msIdentifier>
+                  <repository>Wiener Stadt- und Landesarchiv</repository>
+                  <idno>5480</idno>
+                  <altIdentifier type="old">
+                     <idno>519788</idno>
+                  </altIdentifier>
+               </msIdentifier>
+               <physDesc>
+                  <sealDesc>
+                     <seal>
+                        <p>Zwei rückwärts aufgedrückte Siegel von grünem Wachse unter
+                           Papierdecke.</p>
+                     </seal>
+                  </sealDesc>
+               </physDesc>
+            </msDesc>
+         </sourceDesc>
+      </fileDesc>
+      <encodingDesc>
+         <projectDesc default="false">
+            <p><label type="contentual-editing">Projekt Christina Lutter Stadt und
+                  Gemeinschaft</label></p>
+         </projectDesc>
+      </encodingDesc>
+      <profileDesc>
+         <creation>
+            <placeName>Wien</placeName>
+            <date when="14930330">1493 III 30</date>
+            <origDate>zu Wienn, an sambstag vor dem heilligen Palmtag.</origDate></creation>
+      </profileDesc>
+   </teiHeader>
+   <facsimile>
+      <surface>
+         <graphic
+            url="http://images.monasterium.net/pics/AT-WStLA/HA-U/WStLA-HA-Urkunden_05480_r.jpg"/>
+      </surface>
+      <surface>
+         <graphic
+            url="http://images.monasterium.net/pics/AT-WStLA/HA-U/WStLA-HA-Urkunden_05480_v.jpg"/>
+      </surface>
+   </facsimile>
+   <text>
+      <body>
+         <div type="abstract">
+            <p>
+               <rs type="fn" role="issuer"><rs type="person" ref="pe__georg_knoll_QGW_II_III_5480"
+                     >Jorg Knoll, <rs type="person" ref="pe__wolfgang_knoll_QGW_II_III_5480"
+                        >Wolfgangen Knollen, des <roleName type="prof">pekchen</roleName>, <roleName
+                           type="occ" corresp="org__wien">mitburger</roleName> zu Wienn <roleName
+                           type="dead">seligen</roleName></rs>, <roleName type="kin"
+                        corresp="pe__wolfgang_knoll_QGW_II_III_5480">son</roleName></rs>,</rs>
+               theilt dem <rs type="fn" role="recipient"><rs type="person"
+                     ref="pe__paul_kek_QGW_II_III_5384"><roleName type="occ" corresp="org__wien"
+                        >Bürgermeister</roleName>
+                     <roleName type="title">herren</roleName> Paulen Kegken</rs> und <rs type="org"
+                     ref="org__wien">dem Rathe sowie den Verwesern ihrer Grundbücher</rs></rs> mit,
+               dass er <rs type="fn" role="recipient"><rs type="person"
+                     ref="pe__johann_arnolt_QGW_II_III_5480">Hannsen Arnolt, <roleName type="occ"
+                        corresp="org__ofen">burger</roleName> zu Ofen, seinem <roleName type="kin"
+                        corresp="pe__georg_knoll_QGW_II_III_5480">vetter</roleName></rs></rs>, 281
+               guldein Hungrisch, gut und gerecht in golt und wag, und <rs type="fn"
+                  role="recipient"><rs type="person" ref="pe__helena_QGW_II_III_5480"><roleName
+                        type="title">junkfrauen</roleName> Helen, Micheln Welser <roleName
+                        type="kin" corresp="pe__michael_welser_QGW_II_III_5480"
+                        >tochter</roleName><roleName type="kin" corresp="pe__anna_QGW_II_III_5480"
+                           ><add>tochter</add></roleName>, die er bei <rs type="person"
+                        ref="pe__anna_QGW_II_III_5480">Annen, seiner <roleName type="kin"
+                           corresp="pe__michael_welser_QGW_II_III_5480">hausfraun</roleName> , des
+                        Jorgen <roleName type="kin" corresp="pe__georg_knoll_QGW_II_III_5480"
+                           >swester</roleName>
+                        <roleName type="dead">seligen</roleName></rs>, elichen gehabt hat</rs></rs>,
+               20 lb dn., <rs type="event" ref="NULL">die ir <rs type="person"
+                     ref="pe__elisabeth_QGW_II_III_5480">Elzbeth, Hannsen Ober <roleName type="kin"
+                        corresp="e__johann_ober_QGW_II_III_5480">hausfrau</roleName>, seine
+                        <roleName type="kin" corresp="pe__georg_knoll_QGW_II_III_5480"
+                        >mueter</roleName>, <unclear>ir andel selige</unclear>,</rs> geordent und
+                  geschaft hat</rs>, . . . . schuldig ist, und ersucht sie, den ersten Betrag auf
+               seinem Hause, in der Wolzeil zunagst Ludweigen Mueer, des pegken, haus gelegen, den
+               zweiten auf der Uebertheuerung desselben Hauses in saczweise zu verschreiben. </p>
+         </div>
+         <div type="seal">
+            <p><rs type="event" ref="ev__QGW_II_II_5480"><rs type="fn" role="witness">Besiegelt mit
+                     den Siegeln des <rs type="person" ref="pe__wolfgang_hurber_QGW_II_III_5480"
+                           ><roleName type="title">edeln</roleName> Wolffgangen Hurber<roleName
+                           type="occ" corresp="org__wien"><add>burger</add></roleName></rs> und <rs
+                        type="person" ref="pe__johann_mulhauser_QGW_II_III_4119">Hannsen Mülhauser,
+                        baider <roleName type="occ" corresp="org__wien">burger</roleName> zu
+                        Wienn</rs>.</rs>
+               </rs></p>
+         </div>
+         <div type="nota">
+            <p>Indorsat: wilbrief von Jorgen Knoll zu den seczen auf seinem haus, gelegn in der
+               Wolzeil. </p>
+         </div>
+         <div type="lists">
+            <xi:include xmlns:xi="http://www.w3.org/2001/XInclude"
+               href="../../../../indices/placeList.xml" xpointer="element(/1/2/1/1)"/>
+            <xi:include xmlns:xi="http://www.w3.org/2001/XInclude"
+               href="../../../../indices/personList.xml" xpointer="element(/1/2/1/1)"/>
+            <xi:include xmlns:xi="http://www.w3.org/2001/XInclude"
+               href="../../../../indices/eventList.xml" xpointer="element(/1/2/1/1)"/>
+            <xi:include xmlns:xi="http://www.w3.org/2001/XInclude"
+               href="../../../../indices/orgList.xml" xpointer="element(/1/2/1/1)"/>
+         </div>
+      </body>
+   </text>
+</TEI>

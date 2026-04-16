@@ -1,0 +1,78 @@
+<?xml version="1.0" encoding="UTF-8"?><!DOCTYPE TEI SYSTEM "../../../schema/toolbox_full.dtd">
+<TEI xmlns="http://www.tei-c.org/ns/1.0" xmlns:cei="http://www.monasterium.net/NS/cei"
+   xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance">
+   <teiHeader>
+      <fileDesc>
+         <titleStmt>
+            <title>TEI-Version of 242</title>
+         </titleStmt>
+         <publicationStmt>
+            <p/>
+         </publicationStmt>
+         <sourceDesc default="false">
+            <bibl default="false" status="draft">
+               <title type="full"><title type="main">Die Wiener Stadtbücher 1395 -
+                     1430</title><title type="sub">Teil 1: 1395 - 1400</title></title>
+               <author>Wilhelm Brauneder</author>
+               <author>Gerhard Jaritz</author>
+               <pubPlace>Wien</pubPlace>
+               <pubPlace>Köln</pubPlace>
+               <publisher>Böhlau Verlag</publisher>
+            </bibl>
+            <msDesc status="draft">
+               <msIdentifier>
+                  <idno>242</idno>
+               </msIdentifier>
+               <physDesc/>
+            </msDesc>
+         </sourceDesc>
+      </fileDesc>     <encodingDesc>       <projectDesc>         <p><label type="contentual-editing">Projekt Christina Lutter Stadt und Gemeinschaft</label></p>       </projectDesc>     </encodingDesc>
+      <profileDesc>
+         <creation>
+            <date when="1398-03-07">1398 März 7</date>
+         </creation>
+      </profileDesc>
+   </teiHeader>
+   <text>
+      <body>
+         <div type="header">
+            <p>Verwandtschaftsweisung für (Katharina von Weczldorf) und für (Kunigunde, Gattin des
+               Paul Vischerf)</p>
+         </div>                   <div type="entry" resp="rs">
+            <p> Einbr. 2 Zg. (In dez: Item frewntschaft Hansen des Pewrleins) <rs type="event"
+                  ref="ev__StB_I_241">Desselben tags kom auch fur den rat <rs type="fn"
+                     role="witness"><rs type="person" ref="pe__johann_peurl_StB_I_241">Hanns der
+                        Pewrl</rs> an sein selbs uns an seiner geswistreyd stat und beweist und
+                     pracht mit den erbern lewten, als er ze recht solt, mit <rs type="person"
+                        ref="pe__ulrich_meichsner_StB_I_241"><roleName type="title"
+                              ><add>erbern</add></roleName>Ulreichen dem Meychsner</rs> und <rs
+                        type="person" ref="pe__jakob_wechinger_StB_I_241"><roleName type="title"
+                              ><add>erbern</add></roleName>Jacoben dem Wechinger</rs></rs>, das <rs
+                     type="fn" role="other"><rs type="person"
+                        ref="pe__katharina_von_wetzleinsdorf_StB_I_240" cert="high">ir endel von
+                        irem vater <roleName type="kin" corresp="pe__lindnerin_StB_I_241"
+                              ><add>rechtew geswistreyd</add></roleName></rs> und <rs type="person"
+                        ref="pe__lindnerin_StB_I_241"><rs type="person"
+                           ref="pe__kunigunde_vischerin_StB_I_240">der Paulin der Vischerinn der
+                              <roleName type="prof">Hofgeberinn</roleName></rs>
+                        <roleName type="kin" corresp="pe__kunigunde_vischerin_StB_I_240"
+                           >muter</roleName>
+                        <roleName type="kin" corresp="pe__katharina_von_wetzleinsdorf_StB_I_240"
+                              ><add>rechtew geswistreyd</add></roleName></rs>, <triggerstring n="fn"
+                        >zway rechtew geswistreyd sind gewesen</triggerstring>.</rs> Als darumb die
+                  vorgenanten erbern lewt mit irn trewn an aydes stat vor offem rat habent gesagt,
+                  als sy ze recht solten.</rs> a) Die Namen ergeben sich aus Eintrag 1240. </p>
+         </div>
+         <div type="lists">
+            <xi:include xmlns:xi="http://www.w3.org/2001/XInclude"
+               href="../../../../indices/placeList.xml" xpointer="element(/1/2/1/1)"/>
+            <xi:include xmlns:xi="http://www.w3.org/2001/XInclude"
+               href="../../../../indices/personList.xml" xpointer="element(/1/2/1/1)"/>
+            <xi:include xmlns:xi="http://www.w3.org/2001/XInclude"
+               href="../../../../indices/eventList.xml" xpointer="element(/1/2/1/1)"/>
+            <xi:include xmlns:xi="http://www.w3.org/2001/XInclude"
+               href="../../../../indices/orgList.xml" xpointer="element(/1/2/1/1)"/>
+         </div>
+      </body>
+   </text>
+</TEI>

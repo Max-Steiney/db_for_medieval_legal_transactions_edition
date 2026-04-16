@@ -1,0 +1,106 @@
+<?xml version="1.0" encoding="UTF-8" standalone="no"?>
+<!DOCTYPE TEI
+  SYSTEM "../../../schema/toolbox_full.dtd">
+<TEI xmlns:cei="http://www.monasterium.net/NS/cei" xmlns="http://www.tei-c.org/ns/1.0">
+   <teiHeader>
+      <fileDesc>
+         <titleStmt>
+            <title>Tei version of 4124 exported from monasterium.net </title>
+         </titleStmt>
+         <publicationStmt>
+            <p/>
+         </publicationStmt>
+         <!--In Original: cei:front/cei:sourceDesc/cei:sourceDescRegest-->
+         <sourceDesc>
+            <bibl>Quellen zur Geschichte der Stadt Wien, Bd. II/3, Nr. As published in HAUrk by
+               Wiener Stadt- und Landesarchiv </bibl>
+            <msDesc>
+               <msIdentifier>
+                  <repository>Wiener Stadt- und Landesarchiv</repository>
+                  <idno>4124</idno>
+                  <altIdentifier type="old">
+                     <idno>518403</idno>
+                  </altIdentifier>
+               </msIdentifier>
+               <msContents>
+                  <msItem>
+                     <listBibl>
+                        <bibl type="url"
+                           >https://www.monasterium.net/mom/AT-WStLA/HAUrk/4124/charter</bibl>
+                        <bibl>Schlager, Wiener Skizzen N. F. 2, 230, unvollständig.</bibl>
+                     </listBibl>
+                  </msItem>
+               </msContents>
+               <physDesc>
+                  <sealDesc>
+                     <seal>
+                        <p>Zwei rückwärts aufgedrückte, beschädigte Siegel von grünem Wachse.</p>
+                     </seal>
+                  </sealDesc>
+               </physDesc>
+            </msDesc>
+         </sourceDesc>
+      </fileDesc>
+      <profileDesc>
+         <creation>
+            <placeName>Wien</placeName>
+            <date when="14660801">1466 VIII 01</date>
+            <origDate>zu Wienn, an freitag nach sand Jacobs tag, des heiligen
+            zwelfpoten.</origDate></creation>
+      </profileDesc>
+   </teiHeader>
+   <facsimile>
+      <surface>
+         <graphic
+            url="http://images.monasterium.net/pics/AT-WStLA/HA-U/WStLA-HA-Urkunden_04124_r.jpg"/>
+      </surface>
+      <surface>
+         <graphic
+            url="http://images.monasterium.net/pics/AT-WStLA/HA-U/WStLA-HA-Urkunden_04124_v.jpg"/>
+      </surface>
+   </facsimile>
+   <text>
+      <body>
+         <div type="abstract" resp="vh">
+            <p><rs type="event" ref="ev__QGW_II_III_4124">
+                  <rs type="fn" role="issuer"><rs type="person"
+                        ref="pe__michael_freinsteter_QGW_II_III_4124">Michel Freinsteter von
+                        Nustorf</rs></rs>, der von dem <rs type="person"
+                     ref="pe__martin_enthaimer_QGW_II_III_3968"><roleName type="occ"
+                        corresp="org__wien">Stadtrichter</roleName> Mertt Ennthaimer</rs> gefangen
+                  genommen worden war, weil <rs type="person"
+                     ref="pe__lindl_stresgutl_QGW_II_III_4124">Lindl Stresgutl</rs> . . . offenlich
+                  an der marter hie auf ihn bekannt und verjehen hat, dass sie zusammen auf dem veld
+                  und auf den Strassen ettlich leut beraubt und ir gut genommen haben, als das sein
+                  bekantnuss nêmlich innhelt, der darumb mit dem strang gericht ist worden, gelobt,
+                  da diese Aussage sich als unrichtig erwiesen hat und er aus dem Gefängnisse
+                  entlassen worden ist, dem <rs type="fn" role="recipient"><rs type="person"
+                        ref="pe__friedrich_v_herzog_von_oesterreich_QGW_II_I_3270"><roleName
+                           type="occ" corresp="org__heiliges_roemisches_reich"
+                        >Kaiser</roleName></rs>, <rs type="org" ref="org__wien">seinen Unterthanen,
+                        dem Bürgermeister, Richter, Rathe, allen Bürgern und Inwohnern
+                     Wiens</rs></rs> Urfehde. </rs></p>
+         </div>
+         <div type="seal">
+            <p><rs type="event" ref="ev__QGW_II_III_4124">Besiegelt mit den Siegeln der <rs
+                     type="fn" role="witness"><rs type="person"
+                        ref="pe__georg_reicholf_QGW_II_II_3611">Wiener <roleName type="occ"
+                           corresp="org__wien">Bürger</roleName> Jörigen Reicholf</rs> und <rs
+                        type="person" ref="pe__johann_kuntstokch_QGW_II_II_3530">Hannsen des
+                        Kuntstokch, gesworn <roleName type="prof">weger</roleName>
+                        <roleName type="occ" corresp="org__wien"
+                     ><add>burger</add></roleName></rs></rs>. </rs></p>
+         </div>
+         <div type="lists">
+            <xi:include xmlns:xi="http://www.w3.org/2001/XInclude"
+               href="../../../../indices/placeList.xml" xpointer="element(/1/2/1/1)"/>
+            <xi:include xmlns:xi="http://www.w3.org/2001/XInclude"
+               href="../../../../indices/personList.xml" xpointer="element(/1/2/1/1)"/>
+            <xi:include xmlns:xi="http://www.w3.org/2001/XInclude"
+               href="../../../../indices/eventList.xml" xpointer="element(/1/2/1/1)"/>
+            <xi:include xmlns:xi="http://www.w3.org/2001/XInclude"
+               href="../../../../indices/orgList.xml" xpointer="element(/1/2/1/1)"/>
+         </div>
+      </body>
+   </text>
+</TEI>

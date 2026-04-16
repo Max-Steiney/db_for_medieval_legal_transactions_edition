@@ -1,0 +1,107 @@
+<?xml version="1.0" encoding="UTF-8" standalone="no"?>
+<!DOCTYPE TEI
+  SYSTEM "../../../schema/toolbox_full.dtd">
+<TEI xmlns:cei="http://www.monasterium.net/NS/cei" xmlns="http://www.tei-c.org/ns/1.0">
+   <teiHeader>
+      <fileDesc>
+         <titleStmt>
+            <title>Tei version of 3784 exported from monasterium.net </title>
+         </titleStmt>
+         <publicationStmt>
+            <p/>
+         </publicationStmt>
+         <!--In Original: cei:front/cei:sourceDesc/cei:sourceDescRegest-->
+         <sourceDesc>
+            <bibl>Quellen zur Geschichte der Stadt Wien, Bd. II/3, Nr. As published in HAUrk by
+               Wiener Stadt- und Landesarchiv </bibl>
+            <msDesc>
+               <msIdentifier>
+                  <repository>Wiener Stadt- und Landesarchiv</repository>
+                  <idno>3784</idno>
+                  <altIdentifier type="old">
+                     <idno>518040</idno>
+                  </altIdentifier>
+               </msIdentifier>
+               <msContents>
+                  <msItem>
+                     <listBibl>
+                        <bibl type="url"
+                           >https://www.monasterium.net/mom/AT-WStLA/HAUrk/3784/charter</bibl>
+                        <bibl>Copeibuch 144. n° 80.</bibl>
+                     </listBibl>
+                  </msItem>
+               </msContents>
+               <physDesc>
+                  <sealDesc>
+                     <seal>
+                        <p>Zum Verschlusse aufgedrücktes Wappensiegel (Sava Fig. III) von rothem
+                           Wachse.</p>
+                     </seal>
+                  </sealDesc>
+               </physDesc>
+            </msDesc>
+         </sourceDesc>
+      </fileDesc>
+      <profileDesc>
+         <creation>
+            <placeName>Wiener-Neustadt</placeName>
+            <date when="14580505">1458 V 05</date>
+            <origDate>Geben zu der Neunstat an freitag nach sand Florians tag, anno domini etc.
+               lviij°, unsers reichs im 19. und unsers kaisertumbs im 7. jare. </origDate>
+         </creation>
+      </profileDesc>
+   </teiHeader>
+   <facsimile>
+      <surface>
+         <graphic
+            url="http://images.monasterium.net/pics/AT-WStLA/HA-U/WStLA-HA-Urkunden_03784_r.jpg"/>
+      </surface>
+      <surface>
+         <graphic
+            url="http://images.monasterium.net/pics/AT-WStLA/HA-U/WStLA-HA-Urkunden_03784_v.jpg"/>
+      </surface>
+   </facsimile>
+   <text>
+      <body>
+         <div type="abstract" resp="vh">
+            <p>
+               <rs type="event" ref="ev__QGW_II_III_3784"><rs type="fn" role="issuer"><rs
+                        type="person" ref="pe__friedrich_iii_herzog_von_oesterreich_QGW_II_I_853"
+                           ><roleName type="occ" corresp="org__heiliges_roemisches_reich"
+                           >Kaiser</roleName> Friedrich III.</rs></rs> theilt dem <rs type="fn"
+                     role="recipient"><rs type="org" ref="org__wien">Bürgermeister, Richter, Rathe,
+                        den Genannten und den Bürgern zu Wien</rs></rs> mit, dass er ihre Zuschrift
+                  über ihre Verhandlungen mit <rs type="person"
+                     ref="pe__albrecht_herzog_von_oesterreich_QGW_II_II_3617"><roleName type="occ"
+                        corresp="org__oesterreich-herzogtum">Herzog</roleName> Albrecht</rs> wegen
+                  der Kriegsleute und Beheim sowie ihre Erklärung, dass sie keinen mehr in die Stadt
+                  einlassen werden, ihn, seine <rs type="person" ref="pe__eleonora_QGW_II_II_3698">
+                     <roleName type="kin"
+                        corresp="pe__friedrich_iii_herzog_von_oesterreich_QGW_II_I_853"
+                        >Gemahlin</roleName></rs> und seinen <rs type="person"
+                     ref="pe__ludwig_von_bayern-landshut_QGW_II_II_3433">Schwager, <roleName
+                        type="occ" corresp="org__bayern-herzogtum">herzog</roleName> Ludweigen von
+                     Bayrn</rs>, mit herberg fürgesehen und ihnen 800 person, ze rossen und ze
+                  fussen, entgegenschicken wollen, mit Dank zur Kenntnis genommen habe. Er werde
+                  ihnen die Zeit seiner Ankunft in Wien rechtzeitig wissen lassen. </rs>
+            </p> 
+         </div>
+         <div type="nota">
+            <p>
+               <rs type="event" ref="ev__QGW_II_III_3784_nota">Von anderer Hand: commissio domini
+                  imperatoris in consilio. </rs>
+            </p>
+         </div>
+         <div type="lists">
+            <xi:include xmlns:xi="http://www.w3.org/2001/XInclude"
+               href="../../../../indices/placeList.xml" xpointer="element(/1/2/1/1)"/>
+            <xi:include xmlns:xi="http://www.w3.org/2001/XInclude"
+               href="../../../../indices/personList.xml" xpointer="element(/1/2/1/1)"/>
+            <xi:include xmlns:xi="http://www.w3.org/2001/XInclude"
+               href="../../../../indices/eventList.xml" xpointer="element(/1/2/1/1)"/>
+            <xi:include xmlns:xi="http://www.w3.org/2001/XInclude"
+               href="../../../../indices/orgList.xml" xpointer="element(/1/2/1/1)"/>
+         </div>
+      </body>
+   </text>
+</TEI>

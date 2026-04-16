@@ -1,0 +1,121 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<TEI xmlns="http://www.tei-c.org/ns/1.0" xmlns:cei="http://www.monasterium.net/NS/cei"
+   xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance">
+   <teiHeader>
+      <fileDesc>
+         <titleStmt>
+            <title>Tei version of 5488 exported from monasterium.net </title>
+         </titleStmt>
+         <publicationStmt>
+            <p/>
+         </publicationStmt>
+         <!--In Original: cei:front/cei:sourceDesc/cei:sourceDescRegest-->
+         <sourceDesc>
+            <bibl>Quellen zur Geschichte der Stadt Wien, Bd. II/3, Nr. As published in HAUrk by
+               Wiener Stadt- und Landesarchiv </bibl>
+            <msDesc>
+               <msIdentifier>
+                  <repository>Wiener Stadt- und Landesarchiv</repository>
+                  <idno>5488</idno>
+                  <altIdentifier type="old">
+                     <idno>519796</idno>
+                  </altIdentifier>
+               </msIdentifier>
+               <physDesc>
+                  <sealDesc>
+                     <seal>
+                        <p>Vier rückwärts aufgedrückte Petschafte von rothem Wachse.</p>
+                     </seal>
+                  </sealDesc>
+               </physDesc>
+            </msDesc>
+         </sourceDesc>
+      </fileDesc>
+      <encodingDesc>
+         <projectDesc default="false">
+            <p><label type="contentual-editing">Projekt Christina Lutter Stadt und
+                  Gemeinschaft</label></p>
+         </projectDesc>
+      </encodingDesc>
+      <profileDesc>
+         <creation>
+            <placeName>Wien</placeName>
+            <date when="14930715">1493 VII 15</date>
+            <origDate>zu Wienn, an montag nach sand Margrethn tag, der heiling
+            junkfraun.</origDate></creation>
+      </profileDesc>
+   </teiHeader>
+   <facsimile>
+      <surface>
+         <graphic
+            url="http://images.monasterium.net/pics/AT-WStLA/HA-U/WStLA-HA-Urkunden_05488_a_r.jpg"/>
+      </surface>
+      <surface>
+         <graphic
+            url="http://images.monasterium.net/pics/AT-WStLA/HA-U/WStLA-HA-Urkunden_05488_a_v.jpg"/>
+      </surface>
+      <surface>
+         <graphic
+            url="http://images.monasterium.net/pics/AT-WStLA/HA-U/WStLA-HA-Urkunden_05488_b_01.jpg"
+         />
+      </surface>
+      <surface>
+         <graphic
+            url="http://images.monasterium.net/pics/AT-WStLA/HA-U/WStLA-HA-Urkunden_05488_b_02.jpg"
+         />
+      </surface>
+   </facsimile>
+   <text>
+      <body>
+         <div type="abstract">
+            <p><rs type="event" ref="ev__QGW_II_II_5488">
+                  <rs type="fn" role="issuer"><rs type="person"
+                        ref="pe__christoph_von_liechtenstein_QGW_II_II_2765">Kristoff von
+                        Liechtenstain von Nicolsburg, <roleName type="occ"
+                           corresp="org__oesterreich-herzogtum">landmarschalh</roleName> in
+                        Osterreich, und ander des Romischen kaiser etc. ret zu Wienn</rs></rs>
+                  beurkunden, dass sie, da <rs type="fn" role="recipient"><rs type="person"
+                        ref="pe__michael_dienndorfer_QGW_II_III_5488">der <roleName type="prof"
+                           >Priester</roleName>
+                        <roleName type="title">her</roleName> Michel Dienndorffer<roleName
+                           type="rep" corresp="pe__thomas_von_cilli_QGW_II_III_5488"
+                              ><add>Bevollmächtigte</add></roleName></rs> und <rs type="person"
+                        ref="pe__ambrosius_prelager_QGW_II_III_5488">Ambrosy Prelager<roleName
+                           type="rep" corresp="pe__thomas_von_cilli_QGW_II_III_5488"
+                           >Bevollmächtigte</roleName></rs> als </rs>
+                  <rs type="person" ref="pe__thomas_von_cilli_QGW_II_III_5488"><roleName
+                        type="title">hern</roleName> Thomon, <roleName type="occ"
+                        corresp="org__konstanz-dioezese">bischoffen</roleName> zu Costencz,</rs>
+                  welcher wider <rs type="person" ref="pe__bernhard_radauner_QGW_II_III_5488"
+                     >Wernhardin Radauner, <roleName type="occ" corresp="org__krems"
+                        >burger</roleName> zu Krembs</rs>, als innhaber und handler <rs
+                     type="person" ref="pe__leonhard_radauner_QGW_II_III_4418"><roleName type="dead"
+                        >weilend</roleName> Linharts Radauner, ettwann <roleName type="occ"
+                        corresp="org__wien">burger</roleName> zu Wienn, seines <roleName type="kin"
+                        corresp="pe__bernhard_radauner_QGW_II_III_5488">bruders</roleName></rs>,
+                  gelassen hab und guter, umb 1601 lb 4 sh . [ 439] 18 dn. Wienner werung behalte
+                  gut, so Lienharten Radauner von seinen wegn zu behalte gegebn wer, ainen wagen,
+                  ain fueder heu und etliche lere vas gericht erlangt und behabt hat, derselbn
+                  behabnuss und guts . . . . nicht habhaft noch benügig gemacht sein, . . . . <rs
+                     type="person" ref="pe__florian_halbmpekch_QGW_II_III_5488">Florian Halbmpekhn ,
+                     ihrem <roleName type="prof">gerichtsdienner</roleName></rs>, volmacht und
+                  gewalt gebn habn, . . . . den von Costencz oder sein anwald von seinen wegn zur
+                  Befriedigung seiner Ansprüche <rs type="fn" role="recipient"><rs type="person"
+                        ref="pe__leonhard_radauner_QGW_II_III_4418">Linharts Radauner</rs></rs> hab
+                  und güter, im land Osterreich gelegen, wo sy darauf komen und zaign, in nucz und
+                  gweer zu seczn und gewaltig ze machen , und erlassen den entsprechenden
+                  Ausführungsbefehl. </rs></p>
+         </div>
+         <div type="lists">
+            <xi:include xmlns:xi="http://www.w3.org/2001/XInclude"
+               href="../../../../indices/placeList.xml" xpointer="element(/1/2/1/1)"/>
+            <xi:include xmlns:xi="http://www.w3.org/2001/XInclude"
+               href="../../../../indices/personList.xml" xpointer="element(/1/2/1/1)"/>
+            <xi:include xmlns:xi="http://www.w3.org/2001/XInclude"
+               href="../../../../indices/eventList.xml" xpointer="element(/1/2/1/1)"/>
+            <xi:include xmlns:xi="http://www.w3.org/2001/XInclude"
+               href="../../../../indices/orgList.xml" xpointer="element(/1/2/1/1)"/>
+         </div>
+      </body>
+   </text>
+</TEI>

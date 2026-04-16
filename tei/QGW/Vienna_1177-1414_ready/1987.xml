@@ -1,0 +1,73 @@
+<?xml version="1.0" encoding="UTF-8"?><!DOCTYPE TEI SYSTEM "../../../schema/toolbox_full.dtd"><TEI xmlns="http://www.tei-c.org/ns/1.0" xmlns:cei="http://www.monasterium.net/NS/cei" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance">
+   <teiHeader>
+      <fileDesc>
+         <titleStmt>
+            <title>Tei version of 1987 exported from monasterium.net </title>
+         </titleStmt>
+         <publicationStmt>
+            <p/>
+         </publicationStmt>
+         <!--In Original: cei:front/cei:sourceDesc/cei:sourceDescRegest-->
+         <sourceDesc>
+            <bibl>Quellen zur Geschichte der Stadt Wien, Bd. II/2, Nr. 1987 As published in HAUrk by
+               Wiener Stadt- und Landesarchiv </bibl>
+            <msDesc>
+               <msIdentifier>
+                  <repository>Wiener Stadt- und Landesarchiv</repository>
+                  <idno>1987</idno>
+                  <altIdentifier type="old">
+                     <idno>516195</idno>
+                  </altIdentifier>
+               </msIdentifier>
+               <msContents>
+                  <msItem>
+                     <listBibl>
+                        <bibl>Camesina, Regesten 36 n° 173</bibl>
+                        <bibl>Jahrbuch der kais. Kunstsamml. 16b, n° 13299.</bibl>
+                        <bibl>Uhlirz im Centralblatt für Bibliothekswesen 13 (1896), 90
+                           Regest.</bibl>
+                     </listBibl>
+                  </msItem>
+               </msContents>
+               <physDesc>
+                  <sealDesc>
+                     <seal>
+                        <p>Zwei vorne aufgedrückte Petschafte von grünem Wachse, 2. achteckig.</p>
+                     </seal>
+                  </sealDesc>
+               </physDesc>
+            </msDesc>
+         </sourceDesc>
+      </fileDesc>       <encodingDesc>          <projectDesc default="false">             <p><label type="contentual-editing">Projekt Christina Lutter Stadt und                   Gemeinschaft</label></p>          </projectDesc>       </encodingDesc>
+      <profileDesc>
+         <creation>
+            <date when="14140721">1414 VII 21</date>
+            <origDate>Anno domini MCCCCXIIII, an sand Braxedis tag.</origDate></creation>
+      </profileDesc>
+   </teiHeader>
+   <facsimile>
+      <surface>
+         <graphic url="http://images.monasterium.net/pics/AT-WStLA/HA-U/WStLA-HA-Urkunden_01987_r.jpg"/>
+      </surface>
+      <surface>
+         <graphic url="http://images.monasterium.net/pics/AT-WStLA/HA-U/WStLA-HA-Urkunden_01987_v.jpg"/>
+      </surface>
+   </facsimile>
+   <text>
+      <body>
+         <div type="abstract">
+            <p><rs type="event" ref="ev__QGW_II_II_1987">
+               <rs type="fn" role="issuer"><rs type="person" ref="pe__simon_von_rukersburg_QGW_II_I_1771">Simon von Rukerspurg, <rs type="person" ref="pe__lucia_QGW_II_I_1018"><roleName type="title">fraun</roleName> Lucein der Neczeugerin <roleName type="dead">seliger</roleName></rs> gedechtnuss erster <roleName type="occ" corresp="org__wien-st_stephan-altar_st_martin-messe_naezeugerin_lucia">chaplan</roleName></rs>, und <rs type="person" ref="pe__thomas_von_weitra_QGW_II_II_1987">Thaman van Weitra, <roleName type="occ" corresp="org__wien">purger</roleName> zu Wienn</rs>, gezeug des
+                  geschefts, so dy vorgenant frau an irn lestn zeiten getan hat </rs>, bestätigen,
+               dass <rs type="fn" role="recipient"><rs type="person" ref="pe__johann_mosprunner_QGW_II_I_1096"><roleName type="title">her</roleName>
+                     Hanns Mosprunner<roleName type="occ" corresp="org__wien"><add>purger</add></roleName> und des <roleName type="occ" corresp="org__wien"><add>rats</add></roleName><roleName type="rep" corresp="pe__paul_geir_QGW_II_I_1406"><add>anstat</add></roleName></rs> und
+                     <rs type="person" ref="pe__johann_von_friesach_QGW_II_II_1987"><roleName type="title">her</roleName> Hans von Friesach, paid <roleName type="occ" corresp="org__wien">purger</roleName> und des <roleName type="occ" corresp="org__wien">rats</roleName> zu Wienn, <roleName type="rep" corresp="pe__paul_geir_QGW_II_I_1406">anstat</roleName></rs></rs><rs type="person" ref="pe__paul_geir_QGW_II_I_1406"> <roleName type="title">hern</roleName> Pauln des Geyr<roleName type="dead"><add>seligen</add></roleName></rs> und <rs type="person" ref="pe__ulrich_freindorffer_QGW_II_II_1987"><roleName type="title">hern</roleName> Ulreichs
+                  Freindorffer, <roleName type="dead">seligen</roleName></rs>, vom rat gegebn gscheftherrn desselbigen geschefts , zu
+               der <rs type="org" ref="org__wien-st_stephan-altar_st_martin-messe_naezeugerin_lucia">von der genannten Frau auf sand Merten altar bei St. Stephan gestifteten
+                  Messe</rs> ein Messgewand, zwei Corporaltaschen, ein Messbuch und einen Kelch
+               gegeben haben. </rs></p>
+         </div>
+         <div type="lists"><xi:include xmlns:xi="http://www.w3.org/2001/XInclude" href="../../../../indices/placeList.xml" xpointer="element(/1/2/1/1)"/><xi:include xmlns:xi="http://www.w3.org/2001/XInclude" href="../../../../indices/personList.xml" xpointer="element(/1/2/1/1)"/><xi:include xmlns:xi="http://www.w3.org/2001/XInclude" href="../../../../indices/eventList.xml" xpointer="element(/1/2/1/1)"/><xi:include xmlns:xi="http://www.w3.org/2001/XInclude" href="../../../../indices/orgList.xml" xpointer="element(/1/2/1/1)"/></div>
+      </body>
+   </text>
+</TEI>

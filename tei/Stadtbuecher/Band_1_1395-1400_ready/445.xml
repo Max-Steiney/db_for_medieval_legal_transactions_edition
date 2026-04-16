@@ -1,0 +1,100 @@
+<?xml version="1.0" encoding="UTF-8"?><!DOCTYPE TEI SYSTEM "../../../schema/toolbox_full.dtd">
+<TEI xmlns="http://www.tei-c.org/ns/1.0" xmlns:cei="http://www.monasterium.net/NS/cei"
+   xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance">
+   <teiHeader>
+      <fileDesc>
+         <titleStmt>
+            <title>TEI-Version of 445</title>
+         </titleStmt>
+         <publicationStmt>
+            <p/>
+         </publicationStmt>
+         <sourceDesc default="false">
+            <bibl default="false" status="draft">
+               <title type="full"><title type="main">Die Wiener Stadtbücher 1395 -
+                     1430</title><title type="sub">Teil 1: 1395 - 1400</title></title>
+               <author>Wilhelm Brauneder</author>
+               <author>Gerhard Jaritz</author>
+               <pubPlace>Wien</pubPlace>
+               <pubPlace>Köln</pubPlace>
+               <publisher>Böhlau Verlag</publisher>
+            </bibl>
+            <msDesc status="draft">
+               <msIdentifier>
+                  <idno>445</idno>
+               </msIdentifier>
+               <physDesc/>
+            </msDesc>
+         </sourceDesc>
+      </fileDesc>
+      <encodingDesc>
+         <projectDesc>
+            <p><label type="contentual-editing">Projekt Christina Lutter Stadt und
+                  Gemeinschaft</label></p>
+         </projectDesc>
+      </encodingDesc>
+      <profileDesc>
+         <creation>
+            <date when="1399-11-13">1399 November 13</date>
+         </creation>
+      </profileDesc>
+   </teiHeader>
+   <text>
+      <body>
+         <div type="header">
+            <p>Geschäft der Anna, Gattin des Hans Snurer</p>
+         </div>                   <div type="entry" resp="rs">
+            <p> pr. mü., Einbr. 2 Zg., Ma (Index: Item gescheft Annen Hansen des SnÜrer hausfraw)
+                  <rs type="event" ref="ev__StB_I_445">Desselben tags <rs type="fn" role="witness"
+                     >kom auch fur den rat<rs type="person"
+                        ref="pe__heinrich_von_heidelberg_StB_I_445">Hainreich von Haydelberg</rs>
+                     und hat da beweist mit den erbern leuten ze rechter zeit, als er ze recht solt,
+                     mit <rs type="person" ref="pe__heinrich_schoendl_StB_I_445"><roleName
+                           type="title"><add>erbern </add></roleName>Hainreichen dem Schondlein vom
+                        Hainreichs</rs> und mit <rs type="person" ref="pe__jakob_leithaus_StB_I_445"
+                           ><roleName type="title"><add>erbern</add></roleName>Jacoben dem
+                        Leythaws</rs></rs>, daz geschefft, so <rs type="fn" role="issuer"><rs
+                        type="person" ref="pe__anna_StB_I_445"><roleName type="title"
+                           >fraw</roleName> Ann <roleName type="dead">selig</roleName>, <rs
+                           type="person" ref="pe__johann_snuerer_StB_I_445">Hannsen des <roleName
+                              type="prof" cert="unknown">Snuerer</roleName></rs>
+                        <roleName type="kin" corresp="pe__johann_snuerer_StB_I_445"
+                           >hawsfraw</roleName></rs></rs>, an irn lesten zeiten getan hat. Also das
+                  si geschafft hat <rs type="fn" role="recipient"><rs type="fn" role="transactiongood_I">ein vergultew gurtl</rs> zu <rs
+                        type="org" ref="org__wien-st_michael">Sand Michels pharrchirchen</rs></rs>
+                  und <rs type="fn" role="recipient"><rs type="fn" role="transactiongood_I">funf phunt</rs> hincz den<rs type="org"
+                        ref="org__wien-augustiner_eremiten"> Augenstinern</rs></rs> und irm
+                  peichtiger drey schilling phening und dem <rs type="fn" role="recipient"><rs
+                        type="person" ref="pe__endlein_StB_I_445"><roleName type="kin"
+                           corresp="pe__anna_StB_I_445">chind</roleName> Endlein, daz si bey ir
+                        gehat [!] hat</rs>, <rs type="fn" role="transactiongood_I">zehen phunt phenning und ein pett und swaz darczue
+                  gehort und irer pesten gwant zway</rs></rs>. Darnach hat si geschaft <rs type="fn"
+                     role="recipient"><rs type="person" ref="pe__kunigunde_StB_I_445">Kundlein, irer
+                           <roleName type="kin" corresp="pe__anna_StB_I_445"
+                     >muemen</roleName></rs>, <rs type="fn" role="transactiongood_I">irn graben seydl und einen manntl</rs></rs>. Darnach hat si
+                  geschaft alles ander ir gut, daz uber das vorgenant geschefft uberbeleibt, es sei
+                  phening, wie daz genant ist, nichts ausgenomen, vil noch wenig, dem vorgenanten
+                     <rs type="fn" role="recipient"><rs type="person"
+                        ref="pe__johann_snuerer_StB_I_445">Hannsen dem Snuerer, irm <roleName
+                           type="kin" corresp="pe__anna_StB_I_445">wirt</roleName></rs></rs>,
+                  ledichleich. Und daz <rs type="fn" role="other">vorgenant chind hat si geschaft
+                     dem obgenanten <rs type="person" ref="pe__heinrich_von_heidelberg_StB_I_445"
+                        >erbern mann Hainreichen von Haydlberg</rs>, das er daz <triggerstring n="fn"
+                        >ynnehaben</triggerstring> sol mit leib und mit güt nach seinen trewn</rs>. Als
+                  darumb die obgenanten erbern leut mit irn trewn an ayde stat vor offem rat habent
+                  gesagt, als si ze recht solten.</rs>
+            </p>
+         </div>
+         <div type="lists">
+            <xi:include xmlns:xi="http://www.w3.org/2001/XInclude"
+               href="../../../../indices/placeList.xml" xpointer="element(/1/2/1/1)"/>
+            <xi:include xmlns:xi="http://www.w3.org/2001/XInclude"
+               href="../../../../indices/personList.xml" xpointer="element(/1/2/1/1)"/>
+            <xi:include xmlns:xi="http://www.w3.org/2001/XInclude"
+               href="../../../../indices/eventList.xml" xpointer="element(/1/2/1/1)"/>
+            <xi:include xmlns:xi="http://www.w3.org/2001/XInclude"
+               href="../../../../indices/orgList.xml" xpointer="element(/1/2/1/1)"/>
+         </div>
+      </body>
+   </text>
+</TEI>

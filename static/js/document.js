@@ -249,6 +249,131 @@
 
 
     /* ------------------------------------------------------------------
+       Quality Panel — toggle findings display
+       ------------------------------------------------------------------ */
+
+    function initQualityPanel() {
+        var btn = document.getElementById('quality-toggle');
+        var panel = document.getElementById('quality-panel');
+        if (!btn || !panel) return;
+
+        btn.addEventListener('click', function() {
+            var isVisible = !panel.classList.contains('hidden');
+            if (isVisible) {
+                panel.classList.add('hidden');
+                btn.setAttribute('aria-expanded', 'false');
+            } else {
+                panel.classList.remove('hidden');
+                btn.setAttribute('aria-expanded', 'true');
+            }
+        });
+    }
+
+
+    /* ------------------------------------------------------------------
+       Annotation Toggle — show/hide annotation layers with persistence
+       ------------------------------------------------------------------ */
+
+    function initAnnotationToggle() {
+        var btn = document.getElementById('anno-toggle');
+        var popover = document.getElementById('anno-toggle-popover');
+        var body = document.querySelector('.doc-body');
+        if (!btn || !popover || !body) return;
+
+        var STORAGE_KEY = 'wub-anno-layers';
+        var classMap = {
+            entities: 'hide-entities',
+            functions: 'hide-functions',
+            attributes: 'hide-attributes',
+            triggers: 'hide-triggers'
+        };
+
+        // Restore state from localStorage
+        var saved = null;
+        try { saved = JSON.parse(localStorage.getItem(STORAGE_KEY)); } catch(e) { /* ignore */ }
+        if (saved && typeof saved === 'object') {
+            Object.keys(classMap).forEach(function(layer) {
+                var checkbox = popover.querySelector('[data-layer="' + layer + '"]');
+                if (checkbox && saved[layer] === false) {
+                    checkbox.checked = false;
+                    body.classList.add(classMap[layer]);
+                }
+            });
+        }
+
+        // Checkbox change handler
+        popover.addEventListener('change', function(e) {
+            var checkbox = e.target;
+            if (!checkbox.dataset || !checkbox.dataset.layer) return;
+            var cls = classMap[checkbox.dataset.layer];
+            if (!cls) return;
+            if (checkbox.checked) {
+                body.classList.remove(cls);
+            } else {
+                body.classList.add(cls);
+            }
+            saveState();
+        });
+
+        // Toggle all button
+        var toggleAllBtn = document.getElementById('anno-toggle-all');
+        if (toggleAllBtn) {
+            toggleAllBtn.addEventListener('click', function() {
+                var checkboxes = popover.querySelectorAll('[data-layer]');
+                var allChecked = true;
+                for (var i = 0; i < checkboxes.length; i++) {
+                    if (!checkboxes[i].checked) { allChecked = false; break; }
+                }
+                var newState = !allChecked;
+                for (var j = 0; j < checkboxes.length; j++) {
+                    checkboxes[j].checked = newState;
+                    var cls = classMap[checkboxes[j].dataset.layer];
+                    if (cls) {
+                        if (newState) {
+                            body.classList.remove(cls);
+                        } else {
+                            body.classList.add(cls);
+                        }
+                    }
+                }
+                saveState();
+            });
+        }
+
+        // Popover open/close (same pattern as cite popover)
+        btn.addEventListener('click', function(e) {
+            e.stopPropagation();
+            var isVisible = !popover.classList.contains('hidden');
+            popover.classList.toggle('hidden');
+            btn.setAttribute('aria-expanded', isVisible ? 'false' : 'true');
+        });
+
+        document.addEventListener('click', function(e) {
+            if (!popover.contains(e.target) && e.target !== btn) {
+                popover.classList.add('hidden');
+                btn.setAttribute('aria-expanded', 'false');
+            }
+        });
+
+        document.addEventListener('keydown', function(e) {
+            if (e.key === 'Escape') {
+                popover.classList.add('hidden');
+                btn.setAttribute('aria-expanded', 'false');
+            }
+        });
+
+        function saveState() {
+            var state = {};
+            Object.keys(classMap).forEach(function(layer) {
+                var cb = popover.querySelector('[data-layer="' + layer + '"]');
+                state[layer] = cb ? cb.checked : true;
+            });
+            try { localStorage.setItem(STORAGE_KEY, JSON.stringify(state)); } catch(e) { /* ignore */ }
+        }
+    }
+
+
+    /* ------------------------------------------------------------------
        Initialise on document pages
        ------------------------------------------------------------------ */
 
@@ -256,6 +381,8 @@
         if (document.querySelector('.doc-body')) {
             initFactoidView();
             initCitationHelper();
+            initQualityPanel();
+            initAnnotationToggle();
         }
     });
 

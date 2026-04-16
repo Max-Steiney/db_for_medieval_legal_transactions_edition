@@ -1,0 +1,105 @@
+<?xml version="1.0" encoding="UTF-8" standalone="no"?>
+<!DOCTYPE TEI
+  SYSTEM "../../../schema/toolbox_full.dtd">
+<TEI xmlns:cei="http://www.monasterium.net/NS/cei" xmlns="http://www.tei-c.org/ns/1.0">
+   <teiHeader>
+      <fileDesc>
+         <titleStmt>
+            <title>Tei version of 4051 exported from monasterium.net </title>
+         </titleStmt>
+         <publicationStmt>
+            <p/>
+         </publicationStmt>
+         <!--In Original: cei:front/cei:sourceDesc/cei:sourceDescRegest-->
+         <sourceDesc>
+            <bibl>Quellen zur Geschichte der Stadt Wien, Bd. II/3, Nr. As published in HAUrk by
+               Wiener Stadt- und Landesarchiv </bibl>
+            <msDesc>
+               <msIdentifier>
+                  <repository>Wiener Stadt- und Landesarchiv</repository>
+                  <idno>4051</idno>
+                  <altIdentifier type="old">
+                     <idno>518322</idno>
+                  </altIdentifier>
+               </msIdentifier>
+               <msContents>
+                  <msItem>
+                     <listBibl>
+                        <bibl type="url"
+                           >https://www.monasterium.net/mom/AT-WStLA/HAUrk/4051/charter</bibl>
+                     </listBibl>
+                  </msItem>
+               </msContents>
+               <physDesc>
+                  <sealDesc>
+                     <seal>
+                        <p>Rückwärts aufgedrücktes Wappensiegel von rothem Wachse.</p>
+                     </seal>
+                  </sealDesc>
+               </physDesc>
+            </msDesc>
+         </sourceDesc>
+      </fileDesc>
+      <profileDesc>
+         <creation>
+            <placeName>Wien</placeName>
+            <date when="14630523">1463 V 23</date>
+            <origDate>Geben zu Wienn an montag vor Urbani, anno domini etc. sexagesimo
+               tercio.</origDate></creation>
+      </profileDesc>
+   </teiHeader>
+   <facsimile>
+      <surface>
+         <graphic
+            url="http://images.monasterium.net/pics/AT-WStLA/HA-U/WStLA-HA-Urkunden_04051_r.jpg"/>
+      </surface>
+      <surface>
+         <graphic
+            url="http://images.monasterium.net/pics/AT-WStLA/HA-U/WStLA-HA-Urkunden_04051_v.jpg"/>
+      </surface>
+   </facsimile>
+   <text>
+      <body>
+         <div type="abstract" resp="vh">
+            <p><rs type="event" ref="ev__QGW_II_III_4051"><rs type="fn" role="issuer"><rs
+                        type="person" ref="pe__albrecht_herzog_von_oesterreich_QGW_II_II_3617"><roleName type="occ"
+                           corresp="org__oesterreich-herzogtum">Erzherzog</roleName> Albrecht
+                        VI.</rs></rs> an den <rs type="fn" role="recipient"><rs type="person"
+                        ref="pe__friedrich_ebmer_QGW_II_II_3350">Bürgermeister Fridreich Ebmer</rs>
+                     und den <rs type="org" ref="org__wien">Rath</rs> seiner [ 76] Stadt zu
+                     Wien</rs>. Seinerzeit habe <rs type="person"
+                     ref="pe__oswald_reicholf_QGW_II_II_3314">Oswalt Reicholf</rs> sein halbs haus,
+                  das im gegen <rs type="person" ref="pe__georg_reicholf_QGW_II_II_3611">Jorgen
+                     Reicholf, seinem <roleName type="kin"
+                        corresp="pe__oswald_reicholf_QGW_II_II_3314">bruder</roleName></rs>, mit
+                  tailung gevallen ist, gelegen am Kienmarckt im Winkchel zenachst des Schüchler
+                  haus , ihren vorvordern und deren nachkomen umb 300 lb dn. verseczt, wovon dem <rs
+                     type="person" ref="pe__thomas_roppolt_facs_740_TextRegion_1644916004093_1413"
+                        ><roleName type="prof">Priester</roleName> Thoman Roppolt, <roleName
+                           type="occ" corresp="org__wien-messe_pruefflinger">capplan</roleName> weilent des Prüfflinger mess</rs>,
+                  jährlich 12 lb dn. zu dienen sind. Da er dieses halbe Haus von der tag wegen, so
+                  der bemelt Oswald wider ihn und die stat hie gehandelt hat und ihm seins leibs und
+                  alles seins guts vervallen ist, dem Jörgen Reicholf zu seiner Hälfte gegeben hat,
+                  befiehlt er ihnen, die 300 lb dn. mitsambt den egemelten 12 lb dn. dienst auf des
+                  vorgenannten Oswalden Reicholfs haus gegen Unser Lieben Frauen cappeln über zu
+                  Ottenhaim, das ihm auch verfallen ist, zu der obgenanten mess in ihr stattpuch
+                  nucz und gewer schreiben, dem Jörgen Reicholf sein Haus ledig machen und den sacz
+                  in ihrem saczpuch ausschreiben zu lassen. </rs></p>
+         </div>
+         <div type="nota">
+            <p><rs type="event" ref="ev__QGW_II_III_4051_nota">Von anderer Hand: commissio domini
+                  archiducis in consilio. </rs></p>
+         </div>
+         <div type="lists">
+            <xi:include xmlns:xi="http://www.w3.org/2001/XInclude"
+               href="../../../../indices/placeList.xml" xpointer="element(/1/2/1/1)"/>
+            <xi:include xmlns:xi="http://www.w3.org/2001/XInclude"
+               href="../../../../indices/personList.xml" xpointer="element(/1/2/1/1)"/>
+            <xi:include xmlns:xi="http://www.w3.org/2001/XInclude"
+               href="../../../../indices/eventList.xml" xpointer="element(/1/2/1/1)"/>
+            <xi:include xmlns:xi="http://www.w3.org/2001/XInclude"
+               href="../../../../indices/orgList.xml" xpointer="element(/1/2/1/1)"/>
+         </div>
+      </body>
+   </text>
+</TEI>

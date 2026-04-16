@@ -1,0 +1,159 @@
+<?xml version="1.0" encoding="UTF-8"?><!DOCTYPE TEI   SYSTEM "../../../schema/toolbox_full.dtd">
+<TEI xmlns="http://www.tei-c.org/ns/1.0" xmlns:cei="http://www.monasterium.net/NS/cei"
+   xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance">
+   <teiHeader>
+      <fileDesc>
+         <titleStmt>
+            <title>Tei version of 1484 exported from monasterium.net </title>
+         </titleStmt>
+         <publicationStmt>
+            <p/>
+         </publicationStmt>
+         <!--In Original: cei:front/cei:sourceDesc/cei:sourceDescRegest-->
+         <sourceDesc>
+            <bibl type="url">https://www.monasterium.net/mom/AT-WStLA/HAUrk/1484/charter</bibl>
+            <bibl default="false" status="draft">Quellen zur Geschichte der Stadt Wien, Bd. II/1,
+               Nr. 1484 As published in HAUrk by Wiener Stadt- und Landesarchiv </bibl>
+            <msDesc status="draft">
+               <msIdentifier>
+                  <repository>Wiener Stadt- und Landesarchiv</repository>
+                  <idno>1484</idno>
+                  <altIdentifier type="old">
+                     <idno>515684</idno>
+                  </altIdentifier>
+               </msIdentifier>
+               <msContents>
+                  <msItem>
+                     <listBibl default="false">
+                        <bibl default="false" status="draft">Jahrbuch der kais. Kunstsamml. 16b, no
+                           12946 Regest.</bibl>
+                     </listBibl>
+                  </msItem>
+               </msContents>
+               <physDesc>
+                  <sealDesc>
+                     <seal>
+                        <p>Siegel: 1. fehlt, 2. anhangend, schwarz u. K.</p>
+                     </seal>
+                  </sealDesc>
+               </physDesc>
+            </msDesc>
+         </sourceDesc>
+      </fileDesc>
+      <encodingDesc>
+         <projectDesc default="false">
+            <p><label type="contentual-editing">Projekt Christina Lutter Stadt und
+                  Gemeinschaft</label></p>
+         </projectDesc>
+      </encodingDesc>
+      <profileDesc>
+         <creation>
+            <placeName>Wien</placeName>
+            <date when="14010217">1401 II 17</date>
+            <origDate instant="false">ze Wienne, des nechsten phinztags nach dem Vaschang
+               tag,</origDate></creation>
+      </profileDesc>
+   </teiHeader>
+   <facsimile>
+      <surface>
+         <graphic
+            url="http://images.monasterium.net/pics/AT-WStLA/HA-U/WStLA-HA-Urkunden_01484_r.jpg"/>
+      </surface>
+      <surface>
+         <graphic
+            url="http://images.monasterium.net/pics/AT-WStLA/HA-U/WStLA-HA-Urkunden_01484_v.jpg"/>
+      </surface>
+   </facsimile>
+   <text>
+      <body>
+         <div type="abstract" resp="kg">
+            <p>
+               <rs type="event" ref="ev__QGW_II_I_1484"><rs type="fn" role="issuer"><rs
+                        type="person" ref="pe__peter_egelseber_QGW_II_I_1484">Peter der Egelseber,
+                        der <roleName type="prof">riemer</roleName>, <roleName type="title">purger
+                           ze Wienn</roleName>,</rs></rs>
+                  <triggerstring>beurkundet seinen letzten Willen</triggerstring>. Er schafft: 1. seiner
+                     <rs type="fn" role="recipient"><rs type="person" ref="pe__agnes_QGW_II_I_1484"
+                           ><roleName type="kin" corresp="pe__peter_egelseber_QGW_II_I_1484"
+                           >Frau</roleName> Agnesen</rs></rs>: a) alles das erib, das sie zu
+                  einander gebracht haben b) sein Wohnhaus, <rs type="event"
+                     ref="ev__QGW_II_I_1484_men_1">das ihm von seinen Eltern anerstorben war, mit
+                     der Bestimmung, dass die jeweiligen Besitzer jährlich 14 dn. ewigs gelts den
+                     geistlichen Frauen bei S. Jakob zur Abhaltung eines Jahrtages an sand Pertelmes
+                     abent reichen, am Allerheiligentag 30 arme mensch verköstigen und jedem 1 dn.
+                     geben sollen</rs> 2. zu einer <rs type="fn" role="recipient">ewigen Messe hinz
+                        <rs type="org" ref="org__wien-st_stephan">sand Jacob auf Unser Vraun
+                        altar</rs></rs> seinen Weingarten ze Perchtolczstorf an dem Chunigundenperig
+                  und di zwo tischstet auf dem Riemhaus in dem Vischhof ze Wienn 3. dass man seinen
+                  Weingarten in dem Gotzhausperig verkaufen und von dem Erlöse 9 lb dn. umb ein
+                  Romfart, 6 lb dn. umb ein Achvart und den Rest <rs type="fn" role="recipient">hinz
+                     sand <rs type="org" ref="org__wien-st_stephan">Stephan ze Wienne</rs>, hinz <rs
+                        type="org" ref="org__wien-dominikaner">den Predigern</rs>, hinz <rs
+                        type="org" ref="org__wien-augustiner_eremiten">den Augustinern</rs> und hinz
+                        <rs type="org" ref="org__wien-karmeliter">den Weissenprüdern</rs></rs>,
+                  alles zu dem pau , geben soll 4. dass man seinen Weingarten auf dem Jeus
+                  verkaufen, von dem Erlöse <rs type="fn" role="recipient">seinen beiden <rs
+                        type="person" ref="pe__margarethe_QGW_II_I_1484"><roleName type="kin"
+                           corresp="pe__peter_egelseber_QGW_II_I_1484">Muhmen</roleName> junkfraun
+                        Margreten</rs> 6 lb dn. und irer <rs type="person"
+                        ref="pe__anna_QGW_II_I_1484"><roleName type="kin"
+                           corresp="pe__peter_egelseber_QGW_II_I_1484"><add>Muhme</add></roleName>
+                        <roleName type="kin" corresp="pe__margarethe_QGW_II_I_1484"
+                           >swester</roleName> Annen</rs></rs> 6 lb dn. und den Rest armen Leuten
+                  geben soll 5. dass man den stadel vor Kernertor verkaufen und von dem Erlöse in
+                  die <rs type="fn" role="recipient">dreu siechheuser hinz <rs type="org"
+                        ref="org__wien-st_johann_in_der_siechenals">sand Johanns in der Siechen
+                        Alz/zz/z</rs>, hinz <rs type="org" ref="org__wien-st_lazarus_siechenhaus"
+                        >sand Marx</rs>, hinz <rs type="org" ref="org__wien-st_hiob_zum_klagbaum"
+                        >dem Chlagpaum</rs> und in der <rs type="org" ref="org__wien-buergerspital"
+                        >bürger Spital</rs> den Dürftigen ein Mahl und ein Bad ausrichten</rs> soll
+                  6. <rs type="fn" role="recipient">hinz <rs type="org"
+                        ref="org__wien-st_jakob_auf_der_huelben">sand Jacob</rs> und hinz <rs
+                        type="org" ref="org__wien-st_hieronymus">sand Hieronymus</rs></rs> je einen
+                  Dreiling Wein, armen Leuten den Erlös für den Verkauf seines langen graben seidels
+                  mit dem fuchsein underzu/eg 7. dass das Geld, das sein swecher seliger bei ihm
+                  hinterlegt hat, noch so lange liegen bleiben solle, bis dessen Kinder, denen es
+                  gehört, vogtper werden 8. von seiner fahrenden Habe: a) 2 lb dn., dass man davon
+                  ihn und seine Mutter in das <rs type="fn" role="recipient"><rs type="org"
+                        ref="org__wien-st_stephan">Todtenbuch bei S. Stephan</rs></rs> eintragen
+                  lasse b) <rs type="fn" role="recipient"><rs type="person"
+                        ref="pe__niklas_pipping_QGW_II_I_1484">Niclasen dem Pipping</rs></rs> 14 dn.
+                  c) den <rs type="fn" role="recipient"><rs type="org" ref="org__wien-st_stephan"
+                        >achtherren hinz sand Stephan</rs></rs> 2 lb dn. d) seinem <rs type="fn"
+                     role="recipient"><rs type="person" ref="pe__niklas_QGW_II_I_1484"><roleName
+                           type="occ" corresp="pe__peter_egelseber_QGW_II_I_1484"
+                           >Beichtiger</roleName> Niclasen, des sneider sun,</rs></rs> 60 dn. e) für
+                  30 Messen bei <rs type="fn" role="recipient"><rs type="org"
+                        ref="org__wien-st_jakob_auf_der_huelben">S. Jakob</rs></rs> 30 sh. dn. f) 5
+                  lb dn. seinen <rs type="fn" role="recipient"><rs type="person"
+                        ref="pe__niklas_weiss_QGW_II_I_1484"><roleName type="rep"
+                           corresp="pe__peter_egelseber_QGW_II_I_1484">Geschäftsherren</roleName>,
+                        als welche er Niclasen den Weissen</rs> und <rs type="person"
+                        ref="pe__konrad_hainpekch_QGW_II_I_1484"><roleName type="rep"
+                           corresp="pe__peter_egelseber_QGW_II_I_1484"
+                           ><add>Geschäftsherren</add></roleName>Chunraten den
+                     Hainspekchen</rs></rs> bestellt.</rs>
+            </p>
+         </div>
+         <div type="seal">
+            <p><rs type="event" ref="ev__QGW_II_I_1484"><rs type="fn" role="witness">Besiegelt mit
+                     den Siegeln der <rs type="person" ref="pe__friedrich_dietram_QGW_II_I_1026"
+                           ><roleName type="title">Wiener Bürger</roleName> Fridreichs des
+                        Dietrams</rs> und <rs type="person"
+                        ref="pe__michael_menschein_QGW_II_I_1218"><roleName type="title"><add>Wiener
+                              Bürger</add></roleName> Michels des Mênscheins</rs>.</rs></rs>
+            </p>
+         </div>
+         <div type="lists">
+            <xi:include xmlns:xi="http://www.w3.org/2001/XInclude"
+               href="../../../../indices/placeList.xml" xpointer="element(/1/2/1/1)"/>
+            <xi:include xmlns:xi="http://www.w3.org/2001/XInclude"
+               href="../../../../indices/personList.xml" xpointer="element(/1/2/1/1)"/>
+            <xi:include xmlns:xi="http://www.w3.org/2001/XInclude"
+               href="../../../../indices/eventList.xml" xpointer="element(/1/2/1/1)"/>
+            <xi:include xmlns:xi="http://www.w3.org/2001/XInclude"
+               href="../../../../indices/orgList.xml" xpointer="element(/1/2/1/1)"/>
+         </div>
+      </body>
+   </text>
+</TEI>

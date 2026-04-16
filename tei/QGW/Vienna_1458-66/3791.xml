@@ -1,0 +1,101 @@
+<?xml version="1.0" encoding="UTF-8" standalone="no"?>
+<!DOCTYPE TEI
+  SYSTEM "../../../schema/toolbox_full.dtd">
+<TEI xmlns:cei="http://www.monasterium.net/NS/cei" xmlns="http://www.tei-c.org/ns/1.0">
+   <teiHeader>
+      <fileDesc>
+         <titleStmt>
+            <title>Tei version of 3791 exported from monasterium.net </title>
+         </titleStmt>
+         <publicationStmt>
+            <p/>
+         </publicationStmt>
+         <!--In Original: cei:front/cei:sourceDesc/cei:sourceDescRegest-->
+         <sourceDesc>
+            <bibl>Quellen zur Geschichte der Stadt Wien, Bd. II/3, Nr. As published in HAUrk by
+               Wiener Stadt- und Landesarchiv </bibl>
+            <msDesc>
+               <msIdentifier>
+                  <repository>Wiener Stadt- und Landesarchiv</repository>
+                  <idno>3791</idno>
+                  <altIdentifier type="old">
+                     <idno>518047</idno>
+                  </altIdentifier>
+               </msIdentifier>
+               <msContents>
+                  <msItem>
+                     <listBibl>
+                        <bibl type="url"
+                           >https://www.monasterium.net/mom/AT-WStLA/HAUrk/3791/charter</bibl>
+                        <bibl>Camesina, Regesten 92 n° 436 Regest.</bibl>
+                     </listBibl>
+                  </msItem>
+               </msContents>
+               <physDesc>
+                  <sealDesc>
+                     <seal>
+                        <p>Zwei rückwärts aufgedrückte Siegel von grünem Wachse, abgesprungen.</p>
+                     </seal>
+                  </sealDesc>
+               </physDesc>
+            </msDesc>
+         </sourceDesc>
+      </fileDesc>
+      <profileDesc>
+         <creation>
+            <placeName>Wien</placeName>
+            <date when="14580708">1458 VII 08</date>
+            <origDate>zu Wienn, an sambstag vor sand Margreten tag.</origDate></creation>
+      </profileDesc>
+   </teiHeader>
+   <facsimile>
+      <surface>
+         <graphic
+            url="http://images.monasterium.net/pics/AT-WStLA/HA-U/WStLA-HA-Urkunden_03791_r.jpg"/>
+      </surface>
+      <surface>
+         <graphic
+            url="http://images.monasterium.net/pics/AT-WStLA/HA-U/WStLA-HA-Urkunden_03791_v.jpg"/>
+      </surface>
+   </facsimile>
+   <text>
+      <body>
+         <div type="abstract" resp="vh">
+            <p><rs type="event" ref="ev__QGW_II_III_3791">
+                  <rs type="fn" role="issuer"><rs type="person"
+                        ref="pe__michael_paldauf_SB_CD_01318">Michel Paldauf</rs></rs>, dem <rs
+                     type="fn" role="recipient"><rs type="org" ref="org__wien">Bürgermeister und
+                        Rath</rs></rs>
+                  <rs type="event" ref="NULL">die von <rs type="person"
+                        ref="pe__anna_von_ybbs_QGW_II_III_3791"> frau<!-- hier Titel vergessen -->
+                        Anna von Ybs</rs>
+                     <!-- Wenn du den Altar als Recipient taggst, dann musst du auch Anna als Issuer taggen -->auf
+                        <rs type="fn" role="recipient"><rs type="org"
+                           ref="org__wien-st_stephan-altar_zwoelfapostel">der heiligen Zwelfpoten
+                           altar dacz sand Stephan</rs></rs>
+                     <rs type="org" ref="org__wien-st_stephan-altar_zwoelfapostel-messe_ybbs_anna"
+                        >gestiftete Messe</rs> verliehen haben</rs>, gelobt, die dazu gehörigen
+                  Güter in gutem Stand zu erhalten und die Messe wochenlich zwir zu lesen. </rs></p>
+         </div>
+         <div type="seal">
+            <p><rs type="event" ref="ev__QGW_II_III_3791">Besiegelt mit den Siegeln des <rs
+                     type="fn" role="witness"><rs type="person"
+                        ref="pe__oswald_plesser_QGW_II_II_3677"><roleName type="title"
+                           >edeln</roleName> Oswalten Plesser</rs> und des <rs type="person"
+                        ref="pe__thomas_egkenperger_QGW_II_II_3455">Wiener <roleName type="occ"
+                           corresp="org__wien">Bürgers</roleName> Thomans Egkenperger</rs>.</rs>
+               </rs></p>
+         </div>
+         <div type="lists">
+            <xi:include xmlns:xi="http://www.w3.org/2001/XInclude"
+               href="../../../../indices/placeList.xml" xpointer="element(/1/2/1/1)"/>
+            <xi:include xmlns:xi="http://www.w3.org/2001/XInclude"
+               href="../../../../indices/personList.xml" xpointer="element(/1/2/1/1)"/>
+            <xi:include xmlns:xi="http://www.w3.org/2001/XInclude"
+               href="../../../../indices/eventList.xml" xpointer="element(/1/2/1/1)"/>
+            <xi:include xmlns:xi="http://www.w3.org/2001/XInclude"
+               href="../../../../indices/orgList.xml" xpointer="element(/1/2/1/1)"/>
+         </div>
+      </body>
+   </text>
+</TEI>

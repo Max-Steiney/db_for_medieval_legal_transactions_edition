@@ -1,0 +1,119 @@
+<?xml version="1.0" encoding="UTF-8" standalone="no"?>
+<!DOCTYPE TEI
+  SYSTEM "../../../schema/toolbox_full.dtd">
+<TEI xmlns:cei="http://www.monasterium.net/NS/cei" xmlns="http://www.tei-c.org/ns/1.0">
+   <teiHeader>
+      <fileDesc>
+         <titleStmt>
+            <title>Tei version of 3968 exported from monasterium.net </title>
+         </titleStmt>
+         <publicationStmt>
+            <p/>
+         </publicationStmt>
+         <!--In Original: cei:front/cei:sourceDesc/cei:sourceDescRegest-->
+         <sourceDesc>
+            <bibl>Quellen zur Geschichte der Stadt Wien, Bd. II/3, Nr. As published in HAUrk by
+               Wiener Stadt- und Landesarchiv </bibl>
+            <msDesc>
+               <msIdentifier>
+                  <repository>Wiener Stadt- und Landesarchiv</repository>
+                  <idno>3968</idno>
+                  <altIdentifier type="old">
+                     <idno>518233</idno>
+                  </altIdentifier>
+               </msIdentifier>
+               <msContents>
+                  <msItem>
+                     <listBibl>
+                        <bibl type="url"
+                           >https://www.monasterium.net/mom/AT-WStLA/HAUrk/3968/charter</bibl>
+                        <bibl>Jahrbuch der kais. Kunstsamml. 17b, n° 15329 Regest. [54]</bibl>
+                     </listBibl>
+                  </msItem>
+               </msContents>
+               <physDesc>
+                  <sealDesc>
+                     <seal>
+                        <p>Anhangendes Siegel, ungefärbt in Schale.</p>
+                     </seal>
+                  </sealDesc>
+               </physDesc>
+            </msDesc>
+         </sourceDesc>
+      </fileDesc>
+      <profileDesc>
+         <creation>
+            <placeName>Wien</placeName>
+            <date when="14610112">1461 I 12</date>
+            <origDate>zu Wienn, an montag vor sand Anthoni tag, abbatis.</origDate></creation>
+      </profileDesc>
+   </teiHeader>
+   <facsimile>
+      <surface>
+         <graphic
+            url="http://images.monasterium.net/pics/AT-WStLA/HA-U/WStLA-HA-Urkunden_03968_r.jpg"/>
+      </surface>
+      <surface>
+         <graphic
+            url="http://images.monasterium.net/pics/AT-WStLA/HA-U/WStLA-HA-Urkunden_03968_v.jpg"/>
+      </surface>
+   </facsimile>
+   <text>
+      <body>
+         <div type="abstract" resp="vh">
+            <p><rs type="event" ref="ev__QGW_II_III_3968">
+                  <rs type="fn" role="issuer"><rs type="person"
+                        ref="pe__martin_enthaimer_QGW_II_III_3968">Mert Ennthaimer, <roleName
+                           type="occ" corresp="org__wien">statrichter</roleName> zu Wienn</rs></rs>,
+                  beurkundet, dass vor ihm in der Bürgerschranne <rs type="person"
+                     ref="pe__konrad_tenntschef_QGW_II_III_3968">Conrat Tenntschef <roleName
+                        type="prof"><add>bortenwirker</add></roleName><roleName type="occ"
+                        corresp="org__wien"><add>mitburger</add></roleName><roleName type="rep"
+                        corresp="pe__leonhard_paldauf_QGW_II_III_3968"
+                     ><add>anstat</add></roleName></rs>, <rs type="person"
+                     ref="pe__johann_stettner_QGW_II_III_3968">Hanns Stetner <roleName type="prof"
+                           ><add>bortenwirker</add></roleName><roleName type="occ"
+                        corresp="org__wien"><add>mitburger</add></roleName><roleName type="rep"
+                        corresp="pe__leonhard_paldauf_QGW_II_III_3968"
+                     ><add>anstat</add></roleName></rs> und <rs type="person"
+                     ref="pe__andreas_haller_QGW_II_III_3968">Andre Haller, all drei <roleName
+                        type="prof">portenwurcher</roleName> und <roleName type="occ"
+                        corresp="org__wien">mitburger</roleName> zu Wienn, <roleName type="rep"
+                        corresp="pe__leonhard_paldauf_QGW_II_III_3968">anstat</roleName> ir
+                     selbs</rs> und der andern maister der portenwurcher aller daselbs , . . . durch
+                  irn vorsprechen zu <rs type="person" ref="pe__leonhard_paldauf_QGW_II_III_3968"
+                     >Lienharten Paldauf, dem <roleName type="prof"
+                     >portenwurchergesellen</roleName></rs>, wegen unbefugter Ausübung des
+                  Handwerkes geklagt haben. Der Beklagte verantwortet sich dahin, dass ihm kein
+                  Meister Beschäftigung gegeben habe, weswegen er sich zunächst mit anderer schwerer
+                  Arbeit seinen Lebensunterhalt verdienen musste. Dann sei er bei <rs type="person"
+                     ref="pe__johann_QGW_II_III_3968">Hannsen, dem <roleName type="prof"
+                        >goltsmid</roleName></rs> hie, und <rs type="person"
+                     ref="pe__barbara_QGW_II_III_3968">Barbara, seiner <roleName type="kin"
+                        corresp="pe__johann_QGW_II_III_3968">hausfraun</roleName></rs>, in Dienst
+                  getreten, habe der Frau Borten gewirkt und den Mann menigermaln mit pheffer gen
+                  Merhern und Behem begleitet. Nach weiterer Verhandlung wird entschieden: Nach
+                  allem solchen herkomen, als vor ist begriffen, und besunder umb dass der egenant
+                  Lienhart Paldauf den clagern gern gearbaitt und des an sie begert hiet, der kainer
+                  im aber nicht hiet wellen zu arbaitten geben, dadurch er swere arbait als purdholz
+                  tragen und stekchen klieben verpringen hiet müssen, so vor auch ist berürt, so
+                  sull derselb umb den zuspruch von den clagern und den andern maistern, den
+                  portenwurchern hie, gancz berubt und von der venkchnuss ledig sein und sie sullen
+                  in von derselben venkchnuss müssig machen und im abtragen, was er darinn verzert
+                  und auf das recht gelegt hat, auch sullen sie im zu arbaitten geben, als sie sich
+                  des da vor offem gericht verwilligt haben; teten sie aber des nicht, so möcht er
+                  hinfür arbaitten, wem er wolt, an alle irrung ungeverlich . </rs></p>
+         </div>
+         <div type="lists">
+            <xi:include xmlns:xi="http://www.w3.org/2001/XInclude"
+               href="../../../../indices/placeList.xml" xpointer="element(/1/2/1/1)"/>
+            <xi:include xmlns:xi="http://www.w3.org/2001/XInclude"
+               href="../../../../indices/personList.xml" xpointer="element(/1/2/1/1)"/>
+            <xi:include xmlns:xi="http://www.w3.org/2001/XInclude"
+               href="../../../../indices/eventList.xml" xpointer="element(/1/2/1/1)"/>
+            <xi:include xmlns:xi="http://www.w3.org/2001/XInclude"
+               href="../../../../indices/orgList.xml" xpointer="element(/1/2/1/1)"/>
+         </div>
+      </body>
+   </text>
+</TEI>

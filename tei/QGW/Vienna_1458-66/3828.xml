@@ -1,0 +1,100 @@
+<?xml version="1.0" encoding="UTF-8" standalone="no"?>
+<!DOCTYPE TEI
+  SYSTEM "../../../schema/toolbox_full.dtd">
+<TEI xmlns:cei="http://www.monasterium.net/NS/cei" xmlns="http://www.tei-c.org/ns/1.0">
+   <teiHeader>
+      <fileDesc>
+         <titleStmt>
+            <title>Tei version of 3828 exported from monasterium.net </title>
+         </titleStmt>
+         <publicationStmt>
+            <p/>
+         </publicationStmt>
+         <!--In Original: cei:front/cei:sourceDesc/cei:sourceDescRegest-->
+         <sourceDesc>
+            <bibl>Quellen zur Geschichte der Stadt Wien, Bd. II/3, Nr. As published in HAUrk by
+               Wiener Stadt- und Landesarchiv </bibl>
+            <msDesc>
+               <msIdentifier>
+                  <repository>Wiener Stadt- und Landesarchiv</repository>
+                  <idno>3828</idno>
+                  <altIdentifier type="old">
+                     <idno>518089</idno>
+                  </altIdentifier>
+               </msIdentifier>
+               <msContents>
+                  <msItem>
+                     <listBibl>
+                        <bibl type="url"
+                           >https://www.monasterium.net/mom/AT-WStLA/HAUrk/3828/charter</bibl>
+                        <bibl>Tomaschek, Rechte und Freiheiten 2, 92 n° 158.</bibl>
+                     </listBibl>
+                  </msItem>
+               </msContents>
+               <physDesc>
+                  <sealDesc>
+                     <seal>
+                        <p>Zum Verschlusse aufgedrücktes Stadtsiegel von grünem Wachse unter
+                           Papierdecke.</p>
+                     </seal>
+                  </sealDesc>
+               </physDesc>
+            </msDesc>
+         </sourceDesc>
+      </fileDesc>
+      <profileDesc>
+         <creation>
+            <placeName>Eggenburg</placeName>
+            <date when="14581123">1458 XI 23</date>
+            <origDate>zu Egemburgk, am phincztag vor sand Kathrein tag.</origDate></creation>
+      </profileDesc>
+   </teiHeader>
+   <facsimile>
+      <surface>
+         <graphic
+            url="http://images.monasterium.net/pics/AT-WStLA/HA-U/WStLA-HA-Urkunden_03828_r.jpg"/>
+      </surface>
+      <surface>
+         <graphic
+            url="http://images.monasterium.net/pics/AT-WStLA/HA-U/WStLA-HA-Urkunden_03828_v.jpg"/>
+      </surface>
+   </facsimile>
+   <text>
+      <body>
+         <div type="abstract" resp="vh">
+            <p><rs type="event" ref="ev__QGW_II_III_3828">
+                  <rs type="fn" role="issuer"><rs type="org" ref="org__eggenburg">Burgermaister,
+                        richter und rat zu Egemburgk</rs></rs> an den <rs type="fn" role="recipient"
+                        ><rs type="org" ref="org__wien">Bürgermeister und Rath der Stadt zu
+                        Wien</rs></rs>. Nach altem Gebrauche sei jüngst ein in ihrer Schranne
+                  gesprochenes Urtheil zwischen <rs type="person"
+                     ref="pe__bernhard_jager_QGW_II_III_3828">Bernharten dem Jager</rs> und <rs
+                     type="person" ref="pe__georg_werther_QGW_II_III_3828">Jorigen des Werthern
+                        <roleName type="dead">seligen</roleName>
+                  </rs>kinder an den Wiener Rath gedingt worden, nach Verlesung des in Wien
+                  gefassten Urtheiles beabsichtige aber Wernhart der Jager, weiter ze dingen an den
+                     <rs type="person" ref="pe__friedrich_iii_herzog_von_oesterreich_QGW_II_I_853"
+                        ><roleName type="occ" corresp="org__heiliges_roemisches_reich"
+                        >Kaiser</roleName> als <roleName type="occ"
+                        corresp="org__oesterreich-herzogtum">Landesfürsten</roleName></rs>. Sie
+                  haben nun von ihren eltern und vorvodern gehört, dass von der in dem Wiener Rathe
+                  gefundenen erlosung eines in der Eggenburger Schranne gefällten Rechtspruches
+                  nicht weiter gedingt worden sei, deshalb ersuchen sie die Wiener um bestimmte
+                  Mittheilung darüber, ob eine Appellation gestattet sei oder nicht. </rs></p>
+         </div>
+         <div type="nota">
+            <p><rs type="event" ref="ev__QGW_II_III_3828_nota">Adresse aussen</rs></p>
+         </div>
+         <div type="lists">
+            <xi:include xmlns:xi="http://www.w3.org/2001/XInclude"
+               href="../../../../indices/placeList.xml" xpointer="element(/1/2/1/1)"/>
+            <xi:include xmlns:xi="http://www.w3.org/2001/XInclude"
+               href="../../../../indices/personList.xml" xpointer="element(/1/2/1/1)"/>
+            <xi:include xmlns:xi="http://www.w3.org/2001/XInclude"
+               href="../../../../indices/eventList.xml" xpointer="element(/1/2/1/1)"/>
+            <xi:include xmlns:xi="http://www.w3.org/2001/XInclude"
+               href="../../../../indices/orgList.xml" xpointer="element(/1/2/1/1)"/>
+         </div>
+      </body>
+   </text>
+</TEI>

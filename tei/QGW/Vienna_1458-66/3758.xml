@@ -1,0 +1,103 @@
+<?xml version="1.0" encoding="UTF-8" standalone="no"?>
+<!DOCTYPE TEI
+  SYSTEM "../../../schema/toolbox_full.dtd">
+<TEI xmlns:cei="http://www.monasterium.net/NS/cei" xmlns="http://www.tei-c.org/ns/1.0">
+   <teiHeader>
+      <fileDesc>
+         <titleStmt>
+            <title>Tei version of 3758 exported from monasterium.net </title>
+         </titleStmt>
+         <publicationStmt>
+            <p/>
+         </publicationStmt>
+         <!--In Original: cei:front/cei:sourceDesc/cei:sourceDescRegest-->
+         <sourceDesc>
+            <bibl>Quellen zur Geschichte der Stadt Wien, Bd. II/3, Nr. As published in HAUrk by
+               Wiener Stadt- und Landesarchiv </bibl>
+            <msDesc>
+               <msIdentifier>
+                  <repository>Wiener Stadt- und Landesarchiv</repository>
+                  <idno>3758</idno>
+                  <altIdentifier type="old">
+                     <idno>518014</idno>
+                  </altIdentifier>
+               </msIdentifier>
+               <msContents>
+                  <msItem>
+                     <listBibl>
+                        <bibl type="url"
+                           >https://www.monasterium.net/mom/AT-WStLA/HAUrk/3758/charter</bibl>
+                        <bibl>Camesina, Regesten 28 n° 132, Regest zu 1408 Jänner 23.</bibl>
+                     </listBibl>
+                  </msItem>
+               </msContents>
+               <physDesc>
+                  <sealDesc>
+                     <seal>
+                        <p>Zwei rückwärts aufgedrückte Siegel von grünem Wachse, beschädigt.</p>
+                     </seal>
+                  </sealDesc>
+               </physDesc>
+            </msDesc>
+         </sourceDesc>
+      </fileDesc>
+      <profileDesc>
+         <creation>
+            <placeName>Wien</placeName>
+            <date when="14580124">1458 I 24</date>
+            <origDate>zu Wienn, an eritag vor sant Pauls tag conversionis.</origDate>
+         </creation>
+      </profileDesc>
+   </teiHeader>
+   <facsimile>
+      <surface>
+         <graphic
+            url="http://images.monasterium.net/pics/AT-WStLA/HA-U/WStLA-HA-Urkunden_03758_r.jpg"/>
+      </surface>
+      <surface>
+         <graphic
+            url="http://images.monasterium.net/pics/AT-WStLA/HA-U/WStLA-HA-Urkunden_03758_v.jpg"/>
+      </surface>
+   </facsimile>
+   <text>
+      <body>
+         <div type="abstract" resp="ms">
+            <p>
+               <rs type="event" ref="ev__QGW_II_III_3758">
+                  <rs type="fn" role="issuer"><rs type="person"
+                        ref="pe__georg_fuerberger_SB_CD_000790">Jörig Fürberger, <roleName
+                           type="prof">briester</roleName></rs> Passauer bistumbs</rs>, dem <rs
+                     type="fn" role="recipient">Bürgermeister und Rath</rs> die von <rs
+                     type="person" ref="pe__anna_sindramin_QGW_II_I_1788"><roleName type="title"
+                        >frau</roleName> Anna der Synndramin</rs> auf <rs type="org"
+                     ref="org__wien-st_stephan-altar_allerheiligen-messe_sindram">Allerheiligen
+                     altar dacz sant Stephan zu Wienn gestiftete Messe </rs>verliehen haben, gelobt,
+                  die dazu gehörigen Güter in gutem Stand zu erhalten und die Messe dreistund in der
+                  wochen zu lesen. </rs>
+            </p>
+         </div>
+         <div type="seal">
+            <p>
+               <rs type="event" ref="ev__QGW_II_III_3758">
+                  <rs type="fn" role="witness">Besiegelt mit den Siegeln der Wiener <rs
+                        type="person" ref="pe__niklas_purger_QGW_II_III_3758"><roleName type="occ"
+                           corresp="org__wien">Bürger</roleName> Niclasen des Burger</rs> und <rs
+                        type="person" ref="pe__niklas_ernst_QGW_II_III_3758"><roleName type="occ"
+                           corresp="org__wien"><add>Bürger</add></roleName>Niclasen des
+                     Ernsts</rs>.</rs>
+               </rs>
+            </p>
+         </div>
+         <div type="lists">
+            <xi:include xmlns:xi="http://www.w3.org/2001/XInclude"
+               href="../../../../indices/placeList.xml" xpointer="element(/1/2/1/1)"/>
+            <xi:include xmlns:xi="http://www.w3.org/2001/XInclude"
+               href="../../../../indices/personList.xml" xpointer="element(/1/2/1/1)"/>
+            <xi:include xmlns:xi="http://www.w3.org/2001/XInclude"
+               href="../../../../indices/eventList.xml" xpointer="element(/1/2/1/1)"/>
+            <xi:include xmlns:xi="http://www.w3.org/2001/XInclude"
+               href="../../../../indices/orgList.xml" xpointer="element(/1/2/1/1)"/>
+         </div>
+      </body>
+   </text>
+</TEI>

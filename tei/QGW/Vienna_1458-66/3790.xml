@@ -1,0 +1,98 @@
+<?xml version="1.0" encoding="UTF-8" standalone="no"?>
+<!DOCTYPE TEI
+  SYSTEM "../../../schema/toolbox_full.dtd">
+<TEI xmlns:cei="http://www.monasterium.net/NS/cei" xmlns="http://www.tei-c.org/ns/1.0">
+   <teiHeader>
+      <fileDesc>
+         <titleStmt>
+            <title>Tei version of 3790 exported from monasterium.net </title>
+         </titleStmt>
+         <publicationStmt>
+            <p/>
+         </publicationStmt>
+         <!--In Original: cei:front/cei:sourceDesc/cei:sourceDescRegest-->
+         <sourceDesc>
+            <bibl>Quellen zur Geschichte der Stadt Wien, Bd. II/3, Nr. As published in HAUrk by
+               Wiener Stadt- und Landesarchiv </bibl>
+            <msDesc>
+               <msIdentifier>
+                  <repository>Wiener Stadt- und Landesarchiv</repository>
+                  <idno>3790</idno>
+                  <altIdentifier type="old">
+                     <idno>518046</idno>
+                  </altIdentifier>
+               </msIdentifier>
+               <msContents>
+                  <msItem>
+                     <listBibl>
+                        <bibl type="url"
+                           >https://www.monasterium.net/mom/AT-WStLA/HAUrk/3790/charter</bibl>
+                     </listBibl>
+                  </msItem>
+               </msContents>
+               <physDesc>
+                  <sealDesc>
+                     <seal>
+                        <p>Zum Verschlusse aufgedrücktes Siegel von grünem Wachse unter
+                           Papierdecke.</p>
+                     </seal>
+                  </sealDesc>
+               </physDesc>
+            </msDesc>
+         </sourceDesc>
+      </fileDesc>
+      <profileDesc>
+         <creation>
+            <placeName>Ungarisch-Altenburg</placeName>
+            <date when="14580705">1458 VII 05</date>
+            <origDate>Datum Altenwurkg am mittichen noch Udalrici, anno etc. lviij.</origDate>
+         </creation>
+      </profileDesc>
+   </teiHeader>
+   <facsimile>
+      <surface>
+         <graphic
+            url="http://images.monasterium.net/pics/AT-WStLA/HA-U/WStLA-HA-Urkunden_03790_r.jpg"/>
+      </surface>
+      <surface>
+         <graphic
+            url="http://images.monasterium.net/pics/AT-WStLA/HA-U/WStLA-HA-Urkunden_03790_v.jpg"/>
+      </surface>
+   </facsimile>
+   <text>
+      <body>
+         <div type="abstract" resp="vh">
+            <p>
+               <rs type="event" ref="ev__QGW_II_III_3790">
+                  <rs type="fn" role="issuer"><rs type="person"
+                        ref="pe__sigmund_ii_graf_QGW_II_III_3788">Sigmund, <roleName type="occ"
+                           corresp="org__grafschaft_st_georgen_und_boesing">graff</roleName> zu Sand
+                        Georigen und Posing etc.,</rs></rs> ersucht den <rs type="fn"
+                     role="recipient"><rs type="org" ref="org__wien">Bürgermeister der Stadt zu
+                        Wien</rs></rs>, dafür zu sorgen, dass das dem <rs type="person"
+                     ref="pe__niklas_planer_QGW_II_II_3692">Nicolae Planer</rs> versetzte clainat
+                     <rs type="person" ref="pe__hermann_steinfelder_QGW_II_III_3788">seinem
+                        <roleName type="rep" corresp="pe__sigmund_ii_graf_QGW_II_III_3788">Diener
+                     </roleName>Herman Steinfelder</rs> eingeantwortet werde, und an die von Wienn
+                  weisung zu tun, dass der Schaden, welcher seinen Leuten von den ihren durch die
+                  prunst ergangen ist, vergütet werde. </rs>
+            </p>
+         </div>
+         <div type="nota">
+            <p>
+               <rs type="event" ref="ev__QGW_II_III_3790_nota">Adresse aussen.</rs>
+            </p>
+         </div>
+         <div type="lists">
+            <xi:include xmlns:xi="http://www.w3.org/2001/XInclude"
+               href="../../../../indices/placeList.xml" xpointer="element(/1/2/1/1)"/>
+            <xi:include xmlns:xi="http://www.w3.org/2001/XInclude"
+               href="../../../../indices/personList.xml" xpointer="element(/1/2/1/1)"/>
+            <xi:include xmlns:xi="http://www.w3.org/2001/XInclude"
+               href="../../../../indices/eventList.xml" xpointer="element(/1/2/1/1)"/>
+            <xi:include xmlns:xi="http://www.w3.org/2001/XInclude"
+               href="../../../../indices/orgList.xml" xpointer="element(/1/2/1/1)"/>
+         </div>
+      </body>
+   </text>
+</TEI>

@@ -1,0 +1,93 @@
+<?xml version="1.0" encoding="UTF-8" standalone="no"?>
+<!DOCTYPE TEI
+  SYSTEM "../../../schema/toolbox_full.dtd">
+<TEI xmlns:cei="http://www.monasterium.net/NS/cei" xmlns="http://www.tei-c.org/ns/1.0">
+   <teiHeader>
+      <fileDesc>
+         <titleStmt>
+            <title>Tei version of 4128 exported from monasterium.net </title>
+         </titleStmt>
+         <publicationStmt>
+            <p/>
+         </publicationStmt>
+         <!--In Original: cei:front/cei:sourceDesc/cei:sourceDescRegest-->
+         <sourceDesc>
+            <bibl>Quellen zur Geschichte der Stadt Wien, Bd. II/3, Nr. As published in HAUrk by
+               Wiener Stadt- und Landesarchiv </bibl>
+            <msDesc>
+               <msIdentifier>
+                  <repository>Wiener Stadt- und Landesarchiv</repository>
+                  <idno>4128</idno>
+                  <altIdentifier type="old">
+                     <idno>518407</idno>
+                  </altIdentifier>
+               </msIdentifier>
+               <msContents>
+                  <msItem>
+                     <listBibl>
+                        <bibl type="url"
+                           >https://www.monasterium.net/mom/AT-WStLA/HAUrk/4128/charter</bibl>
+                     </listBibl>
+                  </msItem>
+               </msContents>
+               <physDesc>
+                  <sealDesc>
+                     <seal>
+                        <p>Drei rückwärts aufgedrückte Siegel von grünem Wachse unter
+                           Papierdecke.Siegler: der Aussteller, <quote>die edeln vessten Hanns
+                              Prugkner und Jorg Schekh von Bokching</quote>. </p>
+                     </seal>
+                  </sealDesc>
+               </physDesc>
+            </msDesc>
+         </sourceDesc>
+      </fileDesc>
+      <profileDesc>
+         <creation>
+            <placeName>Wien</placeName>
+            <date when="14660809">1466 VIII 09</date>
+            <origDate>zu Wienn, am sambstag sand Larenczen abend.</origDate></creation>
+      </profileDesc>
+   </teiHeader>
+   <facsimile>
+      <surface>
+         <graphic
+            url="http://images.monasterium.net/pics/AT-WStLA/HA-U/WStLA-HA-Urkunden_04128_r.jpg"/>
+      </surface>
+      <surface>
+         <graphic
+            url="http://images.monasterium.net/pics/AT-WStLA/HA-U/WStLA-HA-Urkunden_04128_v.jpg"/>
+      </surface>
+   </facsimile>
+   <text>
+      <body>
+         <div type="abstract" resp="vh">
+            <p><rs type="event" ref="ev__QGW_II_III_4128">
+                  <rs type="fn" role="issuer"><rs type="person"
+                        ref="pe__ulrich_gravenegker_QGW_II_III_3994">Ulreich, <roleName type="occ"
+                           corresp="org__grafenegg">freiherr</roleName> zu Gravenegk</rs></rs>,
+                  bestätigt, von dem <rs type="org" ref="org__wien">Bürgermeister, Richter, Rathe,
+                     den Genannten und Bürgern zu Wien</rs> an den 16000 Ungrischen guldein, die sie
+                  ihm laut eines kaiserlichen Spruches schulden, 3243 Ungrisch guldein, zwai ort und
+                  30 dn. erhalten zu haben. </rs></p>
+         </div>
+         <div type="seal">
+            <p><rs type="event" ref="ev__QGW_II_III_4128">Siegler: der Aussteller, die <rs
+                     type="person" ref="pe__johann_prugkner_QGW_II_II_3523"><roleName type="title"
+                        >edeln vessten</roleName> Hanns Prugkner und<rs type="person"
+                        ref="pe__georg_schekch_QGW_II_II_3528"><roleName type="title"><add>edl
+                              vesst</add></roleName> Jorg Schekh von Bokching</rs></rs>. </rs></p>
+         </div>
+         <div type="lists">
+            <xi:include xmlns:xi="http://www.w3.org/2001/XInclude"
+               href="../../../../indices/placeList.xml" xpointer="element(/1/2/1/1)"/>
+            <xi:include xmlns:xi="http://www.w3.org/2001/XInclude"
+               href="../../../../indices/personList.xml" xpointer="element(/1/2/1/1)"/>
+            <xi:include xmlns:xi="http://www.w3.org/2001/XInclude"
+               href="../../../../indices/eventList.xml" xpointer="element(/1/2/1/1)"/>
+            <xi:include xmlns:xi="http://www.w3.org/2001/XInclude"
+               href="../../../../indices/orgList.xml" xpointer="element(/1/2/1/1)"/>
+         </div>
+      </body>
+   </text>
+</TEI>

@@ -1,0 +1,135 @@
+<?xml version="1.0" encoding="UTF-8"?><!DOCTYPE TEI   SYSTEM "../../../schema/toolbox_full.dtd">
+<TEI xmlns="http://www.tei-c.org/ns/1.0" xmlns:cei="http://www.monasterium.net/NS/cei"
+   xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance">
+   <teiHeader>
+      <fileDesc>
+         <titleStmt>
+            <title>Tei version of 1185 exported from monasterium.net </title>
+         </titleStmt>
+         <publicationStmt>
+            <p/>
+         </publicationStmt>
+         <!--In Original: cei:front/cei:sourceDesc/cei:sourceDescRegest-->
+         <sourceDesc>
+            <bibl type="url">https://www.monasterium.net/mom/AT-WStLA/HAUrk/1185/charter</bibl>
+            <bibl default="false" status="draft">Quellen zur Geschichte der Stadt Wien, Bd. II/1,
+               Nr. 1185 As published in HAUrk by Wiener Stadt- und Landesarchiv </bibl>
+            <msDesc status="draft">
+               <msIdentifier>
+                  <repository>Wiener Stadt- und Landesarchiv</repository>
+                  <idno>1185</idno>
+                  <altIdentifier type="old">
+                     <idno>515381</idno>
+                  </altIdentifier>
+               </msIdentifier>
+               <msContents>
+                  <msItem>
+                     <listBibl default="false">
+                        <bibl default="false" status="draft"/>
+                        <bibl default="false" status="draft">Quellen zur Geschichte der Stadt Wien,
+                           Bd. II/1, Nr. 1185 As published in HAUrk by Wiener Stadt- und
+                           Landesarchiv </bibl>
+                        <bibl default="false" status="draft"/>
+                     </listBibl>
+                  </msItem>
+               </msContents>
+               <physDesc>
+                  <sealDesc>
+                     <seal>
+                        <p>Die Siegel fehlen.</p>
+                     </seal>
+                  </sealDesc>
+               </physDesc>
+            </msDesc>
+         </sourceDesc>
+      </fileDesc>
+      <encodingDesc>
+         <projectDesc default="false">
+            <p><label type="contentual-editing">Projekt Christina Lutter Stadt und
+                  Gemeinschaft</label></p>
+         </projectDesc>
+      </encodingDesc>
+      <profileDesc>
+         <creation>
+            <date when="13900201">1390 II 01</date>
+            <placeName/>
+            <date from="99999999" to="99999999"/>
+            <origDate instant="false">an Unserr Frown abent ze der
+            Liechtmesse.</origDate></creation>
+      </profileDesc>
+   </teiHeader>
+   <facsimile>
+      <surface>
+         <graphic
+            url="http://images.monasterium.net/pics/AT-WStLA/HA-U/WStLA-HA-Urkunden_01185_r.jpg"/>
+      </surface>
+      <surface>
+         <graphic
+            url="http://images.monasterium.net/pics/AT-WStLA/HA-U/WStLA-HA-Urkunden_01185_v.jpg"/>
+      </surface>
+   </facsimile>
+   <text>
+      <body>
+         <div type="abstract" resp="cs">
+            <p><rs type="event" ref="ev__QGW_II_I_1185"><rs type="fn" role="issuer"><rs
+                        type="person" ref="pe__konrad_schoenprot_QGW_II_I_1001">Chunrat der
+                        Schönprot</rs> und <rs type="person" ref="pe__anna_QGW_II_I_1185_a">Anna,
+                        seine <roleName type="kin" corresp="pe__konrad_schoenprot_QGW_II_I_1001"
+                           >Hausfrau</roleName></rs></rs>, <triggerstring n="disp"
+                     >beurkunden</triggerstring>, dass ihnen der <rs type="fn" role="recipient"><rs
+                        type="person" ref="pe__hermann_von_eslarn_ii_QGW_II_I_1185">Wiener <roleName type="occ" corresp="org__wien">Bürger</roleName> Herman von Eslarn
+                        für sich und <roleName type="rep"
+                           corresp="pe__niklas_von_eslarn_v_QGW_II_I_1185"><add>für</add></roleName>
+                        <roleName type="rep" corresp="pe__anna_QGW_II_I_1185_b"
+                           ><add>für</add></roleName></rs> seine <rs type="person"
+                        ref="pe__niklas_von_eslarn_v_QGW_II_I_1185">
+                        <roleName type="kin" corresp="pe__hermann_von_eslarn_ii_QGW_II_I_1185"
+                           >unmündigen Geschwister</roleName> Niclas</rs> und <rs type="person"
+                        ref="pe__anna_QGW_II_I_1185_b"><add>unmündigen</add>
+                        <roleName type="kin" corresp="pe__hermann_von_eslarn_ii_QGW_II_I_1185"
+                              ><add>Geschwister</add></roleName> Annen</rs></rs>
+                  <rs type="fn" role="other"><triggerstring n="fn">nach Rath und Geheiss</triggerstring>
+                     seines <rs type="person" ref="pe__ulrich_zinkk_QGW_II_I_1066a"><roleName
+                           type="occ" corresp="pe__hermann_von_eslarn_ii_QGW_II_I_1185"
+                           >Verwesers</roleName>
+                        <roleName type="title">hern</roleName> Ulreichs des Zinken, des <roleName
+                           type="occ" corresp="org__wien">rates</roleName> der stat ze
+                     Wienn</rs></rs>, von den 75 sh. dn. Geldes Burgrechts, für welche sein <rs
+                     type="person" ref="pe__hermann_von_eslarn_QGW_II_I_1185"><roleName type="dead"
+                        >verstorbener</roleName>
+                     <roleName type="kin" corresp="pe__hermann_von_eslarn_ii_QGW_II_I_1185"
+                        >Vater</roleName>
+                     <roleName type="title">her</roleName> Herman von Eslarn</rs> ihnen ½ Joch
+                  Weingarten, gelegen ze Starchantzaigen zenechst Hannsen weingarten, des
+                  glokengiesser, verkauft hatte, 7 sh. dn. nachgelassen habe, und verschreiben den
+                  Geschwistern das übrige Pfund Pfenninge ablösbaren Burgrechts <rs type="fn"
+                     role="other"><triggerstring n="fn">mit Handen</triggerstring> des <rs type="person"
+                        ref="pe__ulrich_tumbriczer_QGW_II_I_1082"><roleName type="title"
+                           >Ritters</roleName>
+                        <roleName type="title">hern</roleName> Ulreichs des Tumpratzer, <roleName
+                           type="occ" corresp="org__klosterneuburg-augustiner_chorherren"
+                           >amptman</roleName> des chlosters ze Neunburg</rs></rs>.</rs></p>
+         </div>
+         <div type="seal">
+            <p><rs type="event" ref="ev__QGW_II_I_1185"><rs type="fn" role="witness">Besiegelt mit
+                     den Siegeln: 1. des <rs type="person" ref="pe__ulrich_tumbriczer_QGW_II_I_1082"
+                        >Amtmannes</rs>, 2. des <rs type="person"
+                        ref="pe__konrad_seld_QGW_II_I_1114">Wiener <roleName type="occ" corresp="org__wien">Bürgers</roleName> Chunrats des
+                  Selden</rs></rs>.</rs></p>
+         </div>
+         <div type="nota">
+            <p/>
+         </div>
+         <div type="lists">
+            <xi:include xmlns:xi="http://www.w3.org/2001/XInclude"
+               href="../../../../indices/placeList.xml" xpointer="element(/1/2/1/1)"/>
+            <xi:include xmlns:xi="http://www.w3.org/2001/XInclude"
+               href="../../../../indices/personList.xml" xpointer="element(/1/2/1/1)"/>
+            <xi:include xmlns:xi="http://www.w3.org/2001/XInclude"
+               href="../../../../indices/eventList.xml" xpointer="element(/1/2/1/1)"/>
+            <xi:include xmlns:xi="http://www.w3.org/2001/XInclude"
+               href="../../../../indices/orgList.xml" xpointer="element(/1/2/1/1)"/>
+         </div>
+      </body>
+   </text>
+</TEI>

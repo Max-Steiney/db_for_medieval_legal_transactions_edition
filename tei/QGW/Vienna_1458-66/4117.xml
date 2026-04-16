@@ -1,0 +1,115 @@
+<?xml version="1.0" encoding="UTF-8" standalone="no"?>
+<!DOCTYPE TEI
+  SYSTEM "../../../schema/toolbox_full.dtd">
+<TEI xmlns:cei="http://www.monasterium.net/NS/cei" xmlns="http://www.tei-c.org/ns/1.0">
+   <teiHeader>
+      <fileDesc>
+         <titleStmt>
+            <title>Tei version of 4117 exported from monasterium.net </title>
+         </titleStmt>
+         <publicationStmt>
+            <p/>
+         </publicationStmt>
+         <!--In Original: cei:front/cei:sourceDesc/cei:sourceDescRegest-->
+         <sourceDesc>
+            <bibl>Quellen zur Geschichte der Stadt Wien, Bd. II/3, Nr. As published in HAUrk by
+               Wiener Stadt- und Landesarchiv </bibl>
+            <msDesc>
+               <msIdentifier>
+                  <repository>Wiener Stadt- und Landesarchiv</repository>
+                  <idno>4117</idno>
+                  <altIdentifier type="old">
+                     <idno>518392</idno>
+                  </altIdentifier>
+               </msIdentifier>
+               <msContents>
+                  <msItem>
+                     <listBibl>
+                        <bibl type="url"
+                           >https://www.monasterium.net/mom/AT-WStLA/HAUrk/4117/charter</bibl>
+                     </listBibl>
+                  </msItem>
+               </msContents>
+               <physDesc>
+                  <sealDesc>
+                     <seal>
+                        <p>Zwei anhangende Siegel, grün u. Sch., 3. fehlt.</p>
+                     </seal>
+                  </sealDesc>
+               </physDesc>
+            </msDesc>
+         </sourceDesc>
+      </fileDesc>
+      <profileDesc>
+         <creation>
+            <placeName>Wien</placeName>
+            <date when="14660129">1466 I 29</date>
+            <origDate>zu Wienn, an mittichen vor Unser Lieben Fraun tag der
+            Liechtmess.</origDate></creation>
+      </profileDesc>
+   </teiHeader>
+   <facsimile>
+      <surface>
+         <graphic
+            url="http://images.monasterium.net/pics/AT-WStLA/HA-U/WStLA-HA-Urkunden_04117_r.jpg"/>
+      </surface>
+      <surface>
+         <graphic
+            url="http://images.monasterium.net/pics/AT-WStLA/HA-U/WStLA-HA-Urkunden_04117_v.jpg"/>
+      </surface>
+   </facsimile>
+   <text>
+      <body>
+         <div type="abstract" resp="ms">
+            <p><rs type="event" ref="ev__QGW_II_III_4117">
+                  <rs type="fn" role="issuer"><rs type="person"
+                        ref="pe__erhard_sesmer_QGW_II_III_4117">Erhart Sesmer, der <roleName
+                           type="prof">schuster</roleName>, <roleName type="occ" corresp="org__wien"
+                           >mitburger</roleName> zu Wienn</rs>, und <rs type="person"
+                        ref="pe__magdalena_QGW_II_III_4117">Magdalen, sein <roleName type="kin"
+                           corresp="pe__erhard_sesmer_QGW_II_III_4117">hausfrau</roleName>, <rs
+                           type="person" ref="pe__michael_weniger_SB_CD_01106">Micheln Weniger, des
+                              <roleName type="prof">schuster</roleName>, <roleName type="occ"
+                              corresp="org__wien">burger</roleName> daselbs</rs>, und <rs
+                           type="person" ref="pe__katharina_QGW_II_III_4117">Kathrein, seiner
+                              <roleName type="kin" corresp="pe__michael_weniger_SB_CD_01106">erern
+                              hausfraun</roleName>
+                           <roleName type="dead">seligen</roleName></rs>, <roleName type="kin"
+                           corresp="pe__michael_weniger_SB_CD_01106">tochter</roleName><roleName
+                           type="kin" corresp="pe__katharina_QGW_II_III_4117"
+                           ><add>tochter</add></roleName></rs></rs> , verzichten für 40 lb dn. gegen
+                  dem egenanten <rs type="fn" role="recipient"><rs type="person"
+                        ref="pe__michael_weniger_SB_CD_01106">Micheln Weniger, ihrem <roleName
+                           type="kin" corresp="pe__erhard_sesmer_QGW_II_III_4117">sweher</roleName>
+                        und <roleName type="kin" corresp="pe__magdalena_QGW_II_III_4117"
+                           >vater</roleName></rs>, und <rs type="person"
+                        ref="pe__ursula_QGW_II_III_4117">Ursulen, seiner <roleName type="kin"
+                           corresp="pe__michael_weniger_SB_CD_01106">hausfraun</roleName></rs></rs>,
+                  auf das mütterliche Erbtheil der Magdalen und auf jeden andern Erbanspruch.
+               </rs></p>
+         </div>
+         <div type="seal">
+            <p><rs type="event" ref="ev__QGW_II_III_4117"><rs type="fn" role="witness">Besiegelt mit
+                     den Siegeln des <rs type="person" ref="pe__johann_hashart_QGW_II_II_3424"
+                           ><roleName type="title">edeln</roleName> Hannsen Hasharts, ainer des
+                           <roleName type="occ" corresp="org__wien">rats</roleName> der stat zu
+                        Wienn</rs>, <rs type="person" ref="pe__georg_hiltprant_QGW_II_III_4012"
+                        >Jörgen Hiltprants<roleName type="occ" corresp="org__wien"
+                           ><add>burger</add></roleName></rs> und <rs type="person"
+                        ref="pe__veit_hintperger_QGW_II_II_3311">Veiten Hindperger, baid <roleName
+                           type="occ" corresp="org__wien">burger</roleName> daselbs</rs> .</rs>
+               </rs></p>
+         </div>
+         <div type="lists">
+            <xi:include xmlns:xi="http://www.w3.org/2001/XInclude"
+               href="../../../../indices/placeList.xml" xpointer="element(/1/2/1/1)"/>
+            <xi:include xmlns:xi="http://www.w3.org/2001/XInclude"
+               href="../../../../indices/personList.xml" xpointer="element(/1/2/1/1)"/>
+            <xi:include xmlns:xi="http://www.w3.org/2001/XInclude"
+               href="../../../../indices/eventList.xml" xpointer="element(/1/2/1/1)"/>
+            <xi:include xmlns:xi="http://www.w3.org/2001/XInclude"
+               href="../../../../indices/orgList.xml" xpointer="element(/1/2/1/1)"/>
+         </div>
+      </body>
+   </text>
+</TEI>

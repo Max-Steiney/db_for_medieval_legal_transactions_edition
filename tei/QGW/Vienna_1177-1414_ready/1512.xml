@@ -1,0 +1,23 @@
+<?xml version="1.0" encoding="UTF-8"?><!DOCTYPE TEI   SYSTEM "../../../schema/toolbox_full.dtd"><TEI xmlns="http://www.tei-c.org/ns/1.0" xmlns:cei="http://www.monasterium.net/NS/cei" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"><teiHeader><fileDesc><titleStmt><title>Tei version of 1512 exported from monasterium.net </title></titleStmt><publicationStmt><p/></publicationStmt><!--In Original: cei:front/cei:sourceDesc/cei:sourceDescRegest--><sourceDesc><bibl  type="url">https://www.monasterium.net/mom/AT-WStLA/HAUrk/1512/charter</bibl><bibl default="false" status="draft">Quellen zur Geschichte der Stadt Wien, Bd. II/1, Nr. 1512 As published in HAUrk by
+               Wiener Stadt- und Landesarchiv </bibl><msDesc status="draft"><msIdentifier><repository>Wiener Stadt- und Landesarchiv</repository><idno>1512</idno><altIdentifier type="old"><idno>515712</idno></altIdentifier></msIdentifier><physDesc><sealDesc><seal><p>Vorne aufgedrücktes Siegel von schwarzem Wachse unter Papierdecke.</p></seal></sealDesc></physDesc></msDesc></sourceDesc></fileDesc><encodingDesc><projectDesc default="false"><p><label type="contentual-editing">Projekt Christina Lutter Stadt und Gemeinschaft</label></p></projectDesc></encodingDesc><profileDesc><creation>
+            <placeName>Kirchberg am Wagram</placeName>
+            <date when="14020625">1402 VI 25</date>
+            <origDate instant="false">Der gegeben ist ze Chirichperig auf dem Wagrain, nach Kristes gepurd 1400 jar
+               darnach in dem andern jar, des nachsten suntag nach Sunnbenden.
+            </origDate></creation></profileDesc></teiHeader><facsimile><surface><graphic url="http://images.monasterium.net/pics/AT-WStLA/HA-U/WStLA-HA-Urkunden_01512_r.jpg"/></surface><surface><graphic url="http://images.monasterium.net/pics/AT-WStLA/HA-U/WStLA-HA-Urkunden_01512_v.jpg"/></surface></facsimile><text><body><div type="abstract" resp="kg"><p>
+               <rs type="event" ref="ev__QGW_II_I_1512"><rs type="fn" role="issuer"><rs type="person" ref="pe__katharina_QGW_II_I_1512">Kathrei die
+                     Phefflin</rs></rs>
+                  <triggerstring n="disp">stellt</triggerstring>
+                  <rs type="fn" role="recipient">ihrem <rs type="person" ref="pe__johann_QGW_II_I_1512"><roleName type="kin" corresp="pe__katharina_QGW_II_I_1512">Oheim</roleName> Hannsen, dem
+                           <roleName type="occ" corresp="org__oesterreich-herzogtum" select="pl__stockstal_niederösterreich">amptman</roleName> ze
+                        Niderstokstal</rs>,</rs>
+                  <triggerstring n="disp">eine Vollmacht aus</triggerstring> bezüglich der Güter, die aus
+                  ihres Bruders Kinder Handen Michels, des ledrer von Sand Stephan abm Wagrain,
+                  gestorben sind.</rs>
+            </p></div><div type="seal"><p><rs type="event" ref="ev__QGW_II_I_1512"><rs type="fn" role="witness">Besiegelt mit
+                     dem Siegel des <rs type="person" ref="pe__heinrich_gravenperiger_QGW_II_I_1512"><roleName type="title">erbern</roleName>
+                        <roleName type="title">chnecht</roleName> Hainreichs Gravenperiger,
+                           <roleName type="occ" corresp="org__oesterreich-herzogtum" select="pl__stockstal_niederösterreich">richter</roleName> ze
+                        Obernstokstal</rs>.</rs></rs>
+            </p></div><div type="nota"><p>Indorsat: gleichzeitig, Das ist ain gewaltbrief von Micheln, dem ledrer ab dem
+               Wagrain, swester wegen. </p></div><div type="lists"><xi:include xmlns:xi="http://www.w3.org/2001/XInclude" href="../../../../indices/placeList.xml" xpointer="element(/1/2/1/1)"/><xi:include xmlns:xi="http://www.w3.org/2001/XInclude" href="../../../../indices/personList.xml" xpointer="element(/1/2/1/1)"/><xi:include xmlns:xi="http://www.w3.org/2001/XInclude" href="../../../../indices/eventList.xml" xpointer="element(/1/2/1/1)"/><xi:include xmlns:xi="http://www.w3.org/2001/XInclude" href="../../../../indices/orgList.xml" xpointer="element(/1/2/1/1)"/></div></body></text></TEI>

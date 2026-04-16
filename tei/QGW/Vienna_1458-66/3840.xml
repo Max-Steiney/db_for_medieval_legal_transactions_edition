@@ -1,0 +1,94 @@
+<?xml version="1.0" encoding="UTF-8" standalone="no"?>
+<!DOCTYPE TEI
+  SYSTEM "../../../schema/toolbox_full.dtd">
+<TEI xmlns:cei="http://www.monasterium.net/NS/cei" xmlns="http://www.tei-c.org/ns/1.0">
+   <teiHeader>
+      <fileDesc>
+         <titleStmt>
+            <title>Tei version of 3840 exported from monasterium.net </title>
+         </titleStmt>
+         <publicationStmt>
+            <p/>
+         </publicationStmt>
+         <!--In Original: cei:front/cei:sourceDesc/cei:sourceDescRegest-->
+         <sourceDesc>
+            <bibl>Quellen zur Geschichte der Stadt Wien, Bd. II/3, Nr. As published in HAUrk by
+               Wiener Stadt- und Landesarchiv </bibl>
+            <msDesc>
+               <msIdentifier>
+                  <repository>Wiener Stadt- und Landesarchiv</repository>
+                  <idno>3840</idno>
+                  <altIdentifier type="old">
+                     <idno>518101</idno>
+                  </altIdentifier>
+               </msIdentifier>
+               <msContents>
+                  <msItem>
+                     <listBibl>
+                        <bibl type="url"
+                           >https://www.monasterium.net/mom/AT-WStLA/HAUrk/3840/charter</bibl>
+                     </listBibl>
+                  </msItem>
+               </msContents>
+               <physDesc>
+                  <sealDesc>
+                     <seal>
+                        <p>Zum Verschlusse aufgedrücktes Petschaft von grünem Wachse unter
+                           Papierdecke.</p>
+                     </seal>
+                  </sealDesc>
+               </physDesc>
+            </msDesc>
+         </sourceDesc>
+      </fileDesc>
+      <profileDesc>
+         <creation>
+            <date when="14581209">1458 XII 09</date>
+            <origDate>Datum am samstag nach Concepcionis Marie, anno domini m° ccccmo
+               lviij.</origDate></creation>
+      </profileDesc>
+   </teiHeader>
+   <facsimile>
+      <surface>
+         <graphic
+            url="http://images.monasterium.net/pics/AT-WStLA/HA-U/WStLA-HA-Urkunden_03840_r.jpg"/>
+      </surface>
+      <surface>
+         <graphic
+            url="http://images.monasterium.net/pics/AT-WStLA/HA-U/WStLA-HA-Urkunden_03840_v.jpg"/>
+      </surface>
+   </facsimile>
+   <text>
+      <body>
+         <div type="abstract" resp="ms">
+            <p><rs type="event" ref="ev__QGW_II_III_3840">
+                  <rs type="fn" role="issuer"><rs type="person"
+                        ref="pe__lassla_graf_QGW_II_III_3819">Laslab, <roleName type="title"
+                           >graff</roleName> zu Sandt Jerigen und zu Pösing</rs>,</rs> theilt <rs
+                     type="fn" role="recipient"><rs type="org" ref="org__wien">dem Bürgermeister,
+                        Richter und Rathe der Stadt zu Wien</rs></rs> in Beantwortung ihrer
+                  neuerlichen Zuschrift mit, dass er, falls <rs type="person"
+                     ref="pe__poetlin_QGW_II_III_3819">die Permayn, die yczund <rs type="person"
+                        ref="pe__simon_poetel_QGW_II_II_2412">Simon Potl</rs> hat <roleName
+                        type="kin" corresp="pe__simon_poetel_QGW_II_II_2412"
+                        ><add>hausfrau</add></roleName>,</rs> zur Vorlage der verlangten Quittung
+                  von suntag uber acht tag nach Pressburg kommen wolle, sich ebenfalls da einfinden
+                  und ihr und ihren Freunden für diesen Tag ein treulichs und ungeferleichs glait
+                  zuschicken wolle. </rs></p>
+         </div>
+         <div type="nota">
+            <p><rs type="event" ref="ev__QGW_II_III_3840_nota">Adresse aussen.</rs></p>
+         </div>
+         <div type="lists">
+            <xi:include xmlns:xi="http://www.w3.org/2001/XInclude"
+               href="../../../../indices/placeList.xml" xpointer="element(/1/2/1/1)"/>
+            <xi:include xmlns:xi="http://www.w3.org/2001/XInclude"
+               href="../../../../indices/personList.xml" xpointer="element(/1/2/1/1)"/>
+            <xi:include xmlns:xi="http://www.w3.org/2001/XInclude"
+               href="../../../../indices/eventList.xml" xpointer="element(/1/2/1/1)"/>
+            <xi:include xmlns:xi="http://www.w3.org/2001/XInclude"
+               href="../../../../indices/orgList.xml" xpointer="element(/1/2/1/1)"/>
+         </div>
+      </body>
+   </text>
+</TEI>

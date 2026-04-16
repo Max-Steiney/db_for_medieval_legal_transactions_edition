@@ -1,0 +1,99 @@
+<?xml version="1.0" encoding="UTF-8" standalone="no"?>
+<!DOCTYPE TEI
+  SYSTEM "../../../schema/toolbox_full.dtd">
+<TEI xmlns:cei="http://www.monasterium.net/NS/cei" xmlns="http://www.tei-c.org/ns/1.0">
+   <teiHeader>
+      <fileDesc>
+         <titleStmt>
+            <title>Tei version of 4089 exported from monasterium.net </title>
+         </titleStmt>
+         <publicationStmt>
+            <p/>
+         </publicationStmt>
+         <!--In Original: cei:front/cei:sourceDesc/cei:sourceDescRegest-->
+         <sourceDesc>
+            <bibl>Quellen zur Geschichte der Stadt Wien, Bd. II/3, Nr. As published in HAUrk by
+               Wiener Stadt- und Landesarchiv </bibl>
+            <msDesc>
+               <msIdentifier>
+                  <repository>Wiener Stadt- und Landesarchiv</repository>
+                  <idno>4089</idno>
+                  <altIdentifier type="old">
+                     <idno>518363</idno>
+                  </altIdentifier>
+               </msIdentifier>
+               <msContents>
+                  <msItem>
+                     <listBibl>
+                        <bibl type="url"
+                           >https://www.monasterium.net/mom/AT-WStLA/HAUrk/4089/charter</bibl>
+                     </listBibl>
+                  </msItem>
+               </msContents>
+               <physDesc>
+                  <sealDesc>
+                     <seal>
+                        <p>An Pressel anhangendes Wappensiegel (Sava Fig. 113), roth u. Sch.</p>
+                     </seal>
+                  </sealDesc>
+               </physDesc>
+            </msDesc>
+         </sourceDesc>
+      </fileDesc>
+      <profileDesc>
+         <creation>
+            <placeName>Wiener-Neustadt</placeName>
+            <date when="14641001">1464 X 01</date>
+            <origDate>Der geben ist zu der Neunstat an montag nach sand Michels tag, nach Kristi
+               gepurd im 1400 und 64., unsers kaisertumbs im 13., unserr reich, des Römischen im 25.
+               und des Hungrischen im 6. jaren. </origDate></creation>
+      </profileDesc>
+   </teiHeader>
+   <facsimile>
+      <surface>
+         <graphic
+            url="http://images.monasterium.net/pics/AT-WStLA/HA-U/WStLA-HA-Urkunden_04089_r.jpg"/>
+      </surface>
+      <surface>
+         <graphic
+            url="http://images.monasterium.net/pics/AT-WStLA/HA-U/WStLA-HA-Urkunden_04089_v.jpg"/>
+      </surface>
+   </facsimile>
+   <text>
+      <body>
+         <div type="abstract" resp="vh">
+            <p><rs type="event" ref="ev__QGW_II_III_4089"><rs type="fn" role="issuer"><rs
+                        type="person" ref="pe__friedrich_v_herzog_von_oesterreich_QGW_II_I_3270"
+                           ><roleName type="occ" corresp="org__heiliges_roemisches_reich"
+                           >Kaiser</roleName> Friedrich III.</rs></rs> fällt in dem an ihn
+                  gebrachten Streite zwischen seinem <rs type="person"
+                     ref="pe__ulrich_gravenegker_QGW_II_III_3994"><roleName type="occ"
+                        corresp="pe__friedrich_v_herzog_von_oesterreich_QGW_II_I_3270"
+                        >Rathe</roleName> Ulreichen von Gravenegk</rs> und dem <rs type="org"
+                     ref="org__wien">Bürgermeister, Rathe, den Genannten und Bürgern zu Wien</rs>
+                  die Entscheidung, dass die Wiener in vier an den nächsten vier Weihnachten
+                  fälligen Raten dem von Gravenegk 16000 Unger und ducaten guldein bezahlen und
+                  innerhalb der nächsten 14 Tage <rs type="fn" role="other"><rs type="person"
+                        ref="pe__georg_von_volkenstorf_QGW_II_III_4082a">Jorgen von Volkenstorf, [
+                        85] seinem <roleName type="occ"
+                           corresp="pe__friedrich_v_herzog_von_oesterreich_QGW_II_I_3270"
+                           >Rathe</roleName></rs>, <triggerstring n="fn">zu Handen</triggerstring></rs>
+                  des von Gravenegk die entsprechende Verschreibung übergeben sollen. </rs></p>
+         </div>
+         <div type="nota">
+            <p><rs type="event" ref="ev__QGW_II_III_4089_nota">Auf dem Buge von anderer Hand:
+                  commissio domini imperatoris in consilio. </rs></p>
+         </div>
+         <div type="lists">
+            <xi:include xmlns:xi="http://www.w3.org/2001/XInclude"
+               href="../../../../indices/placeList.xml" xpointer="element(/1/2/1/1)"/>
+            <xi:include xmlns:xi="http://www.w3.org/2001/XInclude"
+               href="../../../../indices/personList.xml" xpointer="element(/1/2/1/1)"/>
+            <xi:include xmlns:xi="http://www.w3.org/2001/XInclude"
+               href="../../../../indices/eventList.xml" xpointer="element(/1/2/1/1)"/>
+            <xi:include xmlns:xi="http://www.w3.org/2001/XInclude"
+               href="../../../../indices/orgList.xml" xpointer="element(/1/2/1/1)"/>
+         </div>
+      </body>
+   </text>
+</TEI>

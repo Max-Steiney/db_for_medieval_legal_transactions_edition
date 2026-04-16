@@ -1,0 +1,99 @@
+<?xml version="1.0" encoding="UTF-8" standalone="no"?>
+<!DOCTYPE TEI
+  SYSTEM "../../../schema/toolbox_full.dtd">
+<TEI xmlns:cei="http://www.monasterium.net/NS/cei" xmlns="http://www.tei-c.org/ns/1.0">
+   <teiHeader>
+      <fileDesc>
+         <titleStmt>
+            <title>Tei version of 3781 exported from monasterium.net </title>
+         </titleStmt>
+         <publicationStmt>
+            <p/>
+         </publicationStmt>
+         <!--In Original: cei:front/cei:sourceDesc/cei:sourceDescRegest-->
+         <sourceDesc>
+            <bibl>Quellen zur Geschichte der Stadt Wien, Bd. II/3, Nr. As published in HAUrk by
+               Wiener Stadt- und Landesarchiv </bibl>
+            <msDesc>
+               <msIdentifier>
+                  <repository>Wiener Stadt- und Landesarchiv</repository>
+                  <idno>3781</idno>
+                  <altIdentifier type="old">
+                     <idno>518037</idno>
+                  </altIdentifier>
+               </msIdentifier>
+               <msContents>
+                  <msItem>
+                     <listBibl>
+                        <bibl type="url"
+                           >https://www.monasterium.net/mom/AT-WStLA/HAUrk/3781/charter</bibl>
+                        <bibl>Copeibuch 141 n° 76.</bibl>
+                     </listBibl>
+                  </msItem>
+               </msContents>
+               <physDesc>
+                  <sealDesc>
+                     <seal>
+                        <p>Gleichzeitige Abschrift, zum Verschlusse aufgedrücktes Siegel.</p>
+                     </seal>
+                  </sealDesc>
+               </physDesc>
+            </msDesc>
+         </sourceDesc>
+      </fileDesc>
+      <profileDesc>
+         <creation>
+            <date when="14580418">1458 IV 18</date>
+            <origDate>an eritag nach Tiburctii.</origDate>
+         </creation>
+      </profileDesc>
+   </teiHeader>
+   <facsimile>
+      <surface>
+         <graphic
+            url="http://images.monasterium.net/pics/AT-WStLA/HA-U/WStLA-HA-Urkunden_03781_r.jpg"/>
+      </surface>
+      <surface>
+         <graphic
+            url="http://images.monasterium.net/pics/AT-WStLA/HA-U/WStLA-HA-Urkunden_03781_v.jpg"/>
+      </surface>
+   </facsimile>
+   <text>
+      <body>
+         <div type="abstract" resp="ms">
+            <p>
+               <rs type="event" ref="ev__QGW_II_III_3781">
+                  <rs type="fn" role="issuer"><rs type="person"
+                        ref="pe__oswald_eitzinger_QGW_II_II_3293">Oswald</rs> und <rs type="person"
+                        ref="pe__stephan_eitzinger_QGW_II_II_3305">Steffan, <roleName type="kin"
+                           corresp="pe__oswald_eitzinger_QGW_II_II_3293">gebrüder</roleName> von
+                        Eyczing</rs>,</rs> richten an den <rs type="fn" role="recipient"
+                     ref="pe__friedrich_v_herzog_von_oesterreich_QGW_II_I_3270"><roleName type="occ"
+                        corresp="org__heiliges_roemisches_reich">Kaiser</roleName></rs> die
+                  neuerliche Bitte, seinen <rs type="person" ref="pe__albrecht_herzog_von_oesterreich_QGW_II_II_3617"
+                        ><roleName type="kin"
+                        corresp="pe__friedrich_v_herzog_von_oesterreich_QGW_II_I_3270"
+                        >Bruder</roleName>
+                     <roleName type="occ" corresp="org__oesterreich-herzogtum">Herzog</roleName>
+                     Albrecht</rs> zur Freilassung ihres <rs type="person"
+                     ref="pe__ulrich_eitzinger_QGW_II_II_3270"><roleName type="kin"
+                        corresp="pe__oswald_eitzinger_QGW_II_II_3293">Bruders</roleName><roleName
+                        type="kin" corresp="pe__stephan_eitzinger_QGW_II_II_3305"
+                        ><add>Bruders</add></roleName> Ulrich</rs> zu veranlassen, indem sie
+                  erklären, dass sie erenthalben ihren bruder in solher venknuss williclich nicht
+                  lenger gelassen möchten. </rs>
+            </p>
+         </div>
+         <div type="lists">
+            <xi:include xmlns:xi="http://www.w3.org/2001/XInclude"
+               href="../../../../indices/placeList.xml" xpointer="element(/1/2/1/1)"/>
+            <xi:include xmlns:xi="http://www.w3.org/2001/XInclude"
+               href="../../../../indices/personList.xml" xpointer="element(/1/2/1/1)"/>
+            <xi:include xmlns:xi="http://www.w3.org/2001/XInclude"
+               href="../../../../indices/eventList.xml" xpointer="element(/1/2/1/1)"/>
+            <xi:include xmlns:xi="http://www.w3.org/2001/XInclude"
+               href="../../../../indices/orgList.xml" xpointer="element(/1/2/1/1)"/>
+         </div>
+      </body>
+   </text>
+</TEI>

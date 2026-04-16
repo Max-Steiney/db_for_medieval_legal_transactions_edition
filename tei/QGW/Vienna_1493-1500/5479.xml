@@ -1,0 +1,100 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<TEI xmlns="http://www.tei-c.org/ns/1.0" xmlns:cei="http://www.monasterium.net/NS/cei"
+   xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance">
+   <teiHeader>
+      <fileDesc>
+         <titleStmt>
+            <title>Tei version of 5479 exported from monasterium.net </title>
+         </titleStmt>
+         <publicationStmt>
+            <p/>
+         </publicationStmt>
+         <!--In Original: cei:front/cei:sourceDesc/cei:sourceDescRegest-->
+         <sourceDesc>
+            <bibl>Quellen zur Geschichte der Stadt Wien, Bd. II/3, Nr. As published in HAUrk by
+               Wiener Stadt- und Landesarchiv </bibl>
+            <msDesc>
+               <msIdentifier>
+                  <repository>Wiener Stadt- und Landesarchiv</repository>
+                  <idno>5479</idno>
+                  <altIdentifier type="old">
+                     <idno>519787</idno>
+                  </altIdentifier>
+               </msIdentifier>
+               <physDesc>
+                  <sealDesc>
+                     <seal>
+                        <p>Zwei rückwärts aufgedrückte, beschädigte Siegel von grünem Wachse.</p>
+                     </seal>
+                  </sealDesc>
+               </physDesc>
+            </msDesc>
+         </sourceDesc>
+      </fileDesc>
+      <encodingDesc>
+         <projectDesc default="false">
+            <p><label type="contentual-editing">Projekt Christina Lutter Stadt und
+                  Gemeinschaft</label></p>
+         </projectDesc>
+      </encodingDesc>
+      <profileDesc>
+         <creation>
+            <placeName>Wien</placeName>
+            <date when="14930328">1493 III 28</date>
+            <origDate>zu Wienn, an phincztag vor Palmarum.</origDate></creation>
+      </profileDesc>
+   </teiHeader>
+   <facsimile>
+      <surface>
+         <graphic
+            url="http://images.monasterium.net/pics/AT-WStLA/HA-U/WStLA-HA-Urkunden_05479_r.jpg"/>
+      </surface>
+      <surface>
+         <graphic
+            url="http://images.monasterium.net/pics/AT-WStLA/HA-U/WStLA-HA-Urkunden_05479_v.jpg"/>
+      </surface>
+   </facsimile>
+   <text>
+      <body>
+         <div type="abstract">
+            <p><rs type="event" ref="ev__QGW_II_II_5479">
+                  <rs type="fn" role="issuer"><rs type="person"
+                        ref="pe__simon_stornschacz_QGW_II_III_5479">Simon Stornschacz, <rs
+                           type="person" ref="pe__paul_stornschacz_QGW_II_III_4250">Pauln
+                           Stornschacz, weilend <roleName type="occ" corresp="org__wien"
+                              >burger</roleName> zu Wienn <roleName type="dead"
+                           >selign</roleName></rs>, sun,</rs></rs> bestätigt, dass <rs type="fn"
+                     role="recipient"><rs type="person" ref="pe__magdalena_QGW_II_III_5479"
+                        >Magdalen, <rs type="person" ref="pe__johann_schiemer_QGW_II_III_5479"
+                           >Hannsen Schiemer, <roleName type="occ" corresp="org__wien"
+                              >burger</roleName> daselbs</rs>, <roleName type="kin"
+                           corresp="pe__johann_schiemer_QGW_II_III_5479">hausfrau</roleName>, seine
+                           <roleName type="kin" corresp="pe__simon_stornschacz_QGW_II_III_5479"
+                           >swester</roleName></rs>,</rs> ihm 100 lb dn. guter landeswerung in
+                  Osterrich bezahlt habe, für die er ihr seinen Antheil an einem halbn tail hauss,
+                  ganczes gelegn am Hormarkt zwischn Pauln Poglinger und [ 436] Mathesn Lugasster
+                  heusern zu kauffn gebn hat. </rs></p>
+         </div>
+         <div type="seal">
+            <p><rs type="event" ref="ev__QGW_II_II_5479"><rs type="fn" role="witness">Besiegelt mit
+                     den Siegeln der Wiener <rs type="person"
+                        ref="pe__matthias_lucaster_QGW_II_III_5479"><roleName type="occ"
+                           corresp="org__wien">Bürger</roleName> Mathesn Lugasster</rs> und <rs
+                        type="person" ref="pe__erhard_hirtt_QGW_II_III_5479"><roleName type="occ"
+                           corresp="org__wien"><add>Bürger</add></roleName>Erharten
+                     Hirttn</rs>.</rs>
+               </rs></p>
+         </div>
+         <div type="lists">
+            <xi:include xmlns:xi="http://www.w3.org/2001/XInclude"
+               href="../../../../indices/placeList.xml" xpointer="element(/1/2/1/1)"/>
+            <xi:include xmlns:xi="http://www.w3.org/2001/XInclude"
+               href="../../../../indices/personList.xml" xpointer="element(/1/2/1/1)"/>
+            <xi:include xmlns:xi="http://www.w3.org/2001/XInclude"
+               href="../../../../indices/eventList.xml" xpointer="element(/1/2/1/1)"/>
+            <xi:include xmlns:xi="http://www.w3.org/2001/XInclude"
+               href="../../../../indices/orgList.xml" xpointer="element(/1/2/1/1)"/>
+         </div>
+      </body>
+   </text>
+</TEI>

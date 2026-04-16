@@ -1,0 +1,102 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<TEI xmlns="http://www.tei-c.org/ns/1.0" xmlns:cei="http://www.monasterium.net/NS/cei"
+   xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance">
+   <teiHeader>
+      <fileDesc>
+         <titleStmt>
+            <title>Tei version of 5511 exported from monasterium.net </title>
+         </titleStmt>
+         <publicationStmt>
+            <p/>
+         </publicationStmt>
+         <!--In Original: cei:front/cei:sourceDesc/cei:sourceDescRegest-->
+         <sourceDesc>
+            <bibl>Quellen zur Geschichte der Stadt Wien, Bd. II/4, Nr. 5511 As published in HAUrk by
+               Wiener Stadt- und Landesarchiv </bibl>
+            <msDesc>
+               <msIdentifier>
+                  <repository>Wiener Stadt- und Landesarchiv</repository>
+                  <idno>5511</idno>
+                  <altIdentifier type="old">
+                     <idno>519819</idno>
+                  </altIdentifier>
+               </msIdentifier>
+               <physDesc>
+                  <sealDesc>
+                     <seal>
+                        <p>Siegel unter Papier: IVA 1: Adler. Sigillum civitatis Olemu . ... is.</p>
+                     </seal>
+                  </sealDesc>
+               </physDesc>
+            </msDesc>
+         </sourceDesc>
+      </fileDesc>
+      <encodingDesc>
+         <projectDesc default="false">
+            <p><label type="contentual-editing">Projekt Christina Lutter Stadt und
+                  Gemeinschaft</label></p>
+         </projectDesc>
+      </encodingDesc>
+      <profileDesc>
+         <creation>
+            <placeName>Olmütz</placeName>
+            <date when="14940620">1494 VI 20</date>
+            <origDate>Datum Olomucz feria VI. ante decem milia militum,1 anno domini millesimo
+               qua-dringentesimo nonagesimo quarto. </origDate></creation>
+      </profileDesc>
+   </teiHeader>
+   <facsimile>
+      <surface>
+         <graphic
+            url="http://images.monasterium.net/pics/AT-WStLA/HA-U/WStLA-HA-Urkunden_05511_r.jpg"/>
+      </surface>
+      <surface>
+         <graphic
+            url="http://images.monasterium.net/pics/AT-WStLA/HA-U/WStLA-HA-Urkunden_05511_v.jpg"/>
+      </surface>
+   </facsimile>
+   <text>
+      <body>
+         <div type="abstract">
+            <p><rs type="event" ref="ev__QGW_II_II_5511"><rs type="fn" role="issuer"><rs type="org"
+                        ref="org__wien">Dem richter, burgermaister uud raath der stadt
+                     Wienn</rs></rs> teilen <rs type="fn" role="recipient"><rs type="org"
+                        ref="org__olmuetz">burgermaister und raath der sadt 3 Olmucz</rs></rs> mit,
+                  daß ihr <rs type="person" ref="pe__johann_appatecker_QGW_II_IV_5511"><roleName
+                        type="occ" corresp="org__olmuetz">Mitbürger</roleName> Johannes
+                     Appatecker</rs> . . . mit willen und wissen seiner elichen <rs type="person"
+                     ref="pe__barbara_QGW_II_III_5495"><roleName type="kin"
+                        corresp="pe__johann_appatecker_QGW_II_IV_5511">hausfrawen</roleName> Barbara
+                     Salczerin</rs> iren waizen und etwann des <rs type="person"
+                     ref="pe__paul_stornschacz_QGW_II_III_4250">Pauli Störnschacz <roleName
+                        type="dead">saliger</roleName></rs> kinder (d. h. ihren Kindern aus früherer
+                  Ehe) ir vaterlich erbtail zwayhunderth pfunth geldtes auf seinem haus vor allen
+                  anderen schuldigern (d. h. als ersten Satz) nach Olmützer Ge-wohnheit in das
+                  stadtbuch vorschriben und vorweist hoth und stellen nun das Ansuchen, man wolle in
+                  Wien ym auch hülflich und raatlich seyn, das ym der bemelten waysen guett, das sie
+                  daselbst nach vatterlichem anfal haben, ... an hindernus und lengere aufschüeb
+                  ausgegeben und vorreicht werden. </rs></p>
+         </div>
+         <div type="seal">
+            <p><rs type="event" ref="ev__QGW_II_II_5511"><rs type="fn" role="witness">Besiegelt mit
+                     dem <rs type="org" ref="org__olmuetz">Olmützer Stadtsiegel</rs>.</rs>
+               </rs></p>
+         </div>
+         <div type="nota">
+            <p>Rückaufschrift: Johannes Apotekhers zu Olmuntz kuntschaft brief, das er des Paul
+               Sternschatz kinder daß zu Olmuntz zwayhundert lb dn .. vernuegund verschriben hab.
+               Datum sambstages (!) vor sannt Achatzien tag, anno 1494. </p>
+         </div>
+         <div type="lists">
+            <xi:include xmlns:xi="http://www.w3.org/2001/XInclude"
+               href="../../../../indices/placeList.xml" xpointer="element(/1/2/1/1)"/>
+            <xi:include xmlns:xi="http://www.w3.org/2001/XInclude"
+               href="../../../../indices/personList.xml" xpointer="element(/1/2/1/1)"/>
+            <xi:include xmlns:xi="http://www.w3.org/2001/XInclude"
+               href="../../../../indices/eventList.xml" xpointer="element(/1/2/1/1)"/>
+            <xi:include xmlns:xi="http://www.w3.org/2001/XInclude"
+               href="../../../../indices/orgList.xml" xpointer="element(/1/2/1/1)"/>
+         </div>
+      </body>
+   </text>
+</TEI>

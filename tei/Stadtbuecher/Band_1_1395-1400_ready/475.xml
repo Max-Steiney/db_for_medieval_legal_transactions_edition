@@ -1,0 +1,124 @@
+<?xml version="1.0" encoding="UTF-8"?><!DOCTYPE TEI SYSTEM "../../../schema/toolbox_full.dtd">
+<TEI xmlns="http://www.tei-c.org/ns/1.0" xmlns:cei="http://www.monasterium.net/NS/cei"
+   xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance">
+   <teiHeader>
+      <fileDesc>
+         <titleStmt>
+            <title>TEI-Version of 475</title>
+         </titleStmt>
+         <publicationStmt>
+            <p/>
+         </publicationStmt>
+         <sourceDesc default="false">
+            <bibl default="false" status="draft">
+               <title type="full"><title type="main">Die Wiener Stadtbücher 1395 -
+                     1430</title><title type="sub">Teil 1: 1395 - 1400</title></title>
+               <author>Wilhelm Brauneder</author>
+               <author>Gerhard Jaritz</author>
+               <pubPlace>Wien</pubPlace>
+               <pubPlace>Köln</pubPlace>
+               <publisher>Böhlau Verlag</publisher>
+            </bibl>
+            <msDesc status="draft">
+               <msIdentifier>
+                  <idno>475</idno>
+               </msIdentifier>
+               <physDesc/>
+            </msDesc>
+         </sourceDesc>
+      </fileDesc>
+      <encodingDesc>
+         <projectDesc>
+            <p><label type="contentual-editing">Projekt Christina Lutter Stadt und
+                  Gemeinschaft</label></p>
+         </projectDesc>
+      </encodingDesc>
+      <profileDesc>
+         <creation>
+            <date when="1399-12-08">(1399 Dezember 8, Wien)</date>
+         </creation>
+      </profileDesc>
+   </teiHeader>
+   <text>
+      <body>
+         <div type="header">
+            <p>Geschäft des Hans Plesperger</p>
+         </div>                   <div type="entry" resp="rs">
+            <p> pr. mü., Einbr. 2 Zg., Ma (Inde:c: Item gescheftbrief Hansen des PI~sperrger)
+               Ausstellung einer Ratsurkunde darüber <rs type="event" ref="ev__StB_I_475"><rs
+                     type="fn" role="other">Wir <rs type="person"
+                        ref="pe__paul_holzkaeufel_QGW_II_I_1010">Pawl der Holczkewffel, zu den
+                        zeiten <roleName type="occ" corresp="org__wien"
+                        >purgermaister</roleName></rs>, und <rs type="org" ref="org__wien">der
+                        gancze rat gemain der stat ze Wienn</rs>
+                     <triggerstring n="fn">bechennen</triggerstring> offenleich mit dem brief</rs>, <rs
+                     type="fn" role="witness">daz fur uns komen ist in offen rat <rs type="person"
+                        ref="pe__niklas_rorcholb_QGW_II_I_1129">Niclas der Rorcholb, unser <roleName type="occ" corresp="org__wien">mitpurger</roleName></rs>, und hat
+                     da vor unser mit den erbern lewten beweist ze rechter zeit, als er ze recht
+                     solt, mit <rs type="person" ref="pe__friedrich_khevenhueller_StB_I_242"
+                           ><roleName type="title"><add>erbern</add></roleName>Fridreichen dem
+                        Chefenhueler</rs> und mit <rs type="person"
+                        ref="pe__konrad_hainpekch_QGW_II_I_1484"><roleName type="title"
+                              ><add>erbern</add></roleName>Chunraten dem Hainspekke</rs>n</rs>, <rs
+                     type="fn" role="issuer">daz geschefft, so <rs type="person"
+                        ref="pe__johann_plesberger_QGW_II_I_1443">sein<roleName type="kin"
+                           corresp="pe__niklas_rorcholb_QGW_II_I_1129">swager</roleName> Hanns
+                           <roleName type="dead">seliger</roleName> der Plesperger</rs> an seinen
+                     leczten zeiten getan hat.</rs>
+                  <rs type="fn" role="recipient">Also daz er geschafft hat, daz man von erst allen
+                     geltern (fol. 79r) gelten sol von seiner varunden hab, daz seiner hawsfrawen
+                     frawen Margreten wol wissentleich ist und seinem swager dem egenanten Niclasen
+                     dem Rorcholben. Darnach hat er geschafft all sein hab, an wew die leit, ez sein
+                     erbgut er odervarundguter, und auch alle gelt schuld chlain oder grozz, wie so
+                     die genant sind oder wo die ligent, nichcz ausgenomen, <rs type="person"
+                        ref="pe__margarethe_QGW_II_I_1443">seiner <roleName type="kin"
+                           corresp="pe__johann_plesberger_QGW_II_I_1443">hawsfrawen</roleName>
+                        <roleName type="title">frawen</roleName> Margreten</rs> und <rs
+                        type="person" ref="pe__katharina_StB_I_474">seiner <roleName type="kin"
+                           corresp="pe__johann_plesberger_QGW_II_I_1443">tochter</roleName>
+                        <roleName type="kin" corresp="pe__margarethe_QGW_II_I_1443"
+                              ><add>tochter</add></roleName><roleName type="title"
+                           >junchfrawen</roleName> Kathrein</rs>, aym alsvil als dem andern zu
+                     gleichem tail, und welichs e abging mit dem tod, so sol es auf daz ander erben.
+                     Wer aber, daz sich ir ains verheyriHet, es wer die muter oder die tochter, so
+                     mochten si wol miteinander tailen.</rs>
+                  <rs type="fn" role="other">Es sol aber <rs type="person"
+                        ref="pe__margarethe_QGW_II_I_1443">die vorgenant <roleName type="kin"
+                           corresp="pe__katharina_StB_I_474">muter</roleName></rs> ir tochter
+                        <triggerstring n="fn">innehaben</triggerstring> unczt daz si vogtber wirt, mit
+                     leib und mit gut. Es sol auch die obgenanten muter vollen gewalt haben ze
+                     tailen mit der tochter, wann si wil. Und die tochter sol oder mag ir
+                     vorgenanten muter chain tailung nicht anpieten e si vogtper wirt.</rs>
+                  <rs type="fn" role="recipient">Und hat auch geschafft zehen phunt phenning zu
+                     einem ewigen jartag <rs type="org"
+                        ref="org__wien-augustiner_eremiten-messe_plesberger_johann">hincz den
+                           <roleName type="title">erbern</roleName> geistleichen herren den
+                        Augustinern ze Wienne</rs>.</rs>
+                  <rs type="fn" role="other">Und dasselbig obgenant geschefft hat er <triggerstring
+                        n="fn">enpholhen</triggerstring>
+                     <rs type="person" ref="pe__niklas_rorcholb_QGW_II_I_1129">Niclasen dem
+                        Rorcholben, seinem <roleName type="kin"
+                           corresp="pe__johann_plesberger_QGW_II_I_1443">swager</roleName></rs>, auf
+                     sein trew, daz chainer seiner frewnt im chain irrung noch hinderung tun sullen,
+                     weder mit chlain noch mit grozz.</rs> Als darumb die obgenanten erbern lewt mit
+                  irn trewn an aydes stat vor uns in offem rat haben gesagt, als si ze recht solten.
+                  Und wen daz geschefft also vor unser in offem rat beweist und pracht ist, daruber
+                  so geben wir den brieff zu einem warn offen urkund der sach versigelten mit der
+                  vorgenanten stat ze Wienn chlainem anhangundem insigel. Geben ze Wienn nach
+                  Christes gepurt drewczehenhundert jar darnach in dem newn und newnczigsten jar,
+                  des nachsten montags nach sand Niclas tag.</rs>
+            </p>
+         </div>
+         <div type="lists">
+            <xi:include xmlns:xi="http://www.w3.org/2001/XInclude"
+               href="../../../../indices/placeList.xml" xpointer="element(/1/2/1/1)"/>
+            <xi:include xmlns:xi="http://www.w3.org/2001/XInclude"
+               href="../../../../indices/personList.xml" xpointer="element(/1/2/1/1)"/>
+            <xi:include xmlns:xi="http://www.w3.org/2001/XInclude"
+               href="../../../../indices/eventList.xml" xpointer="element(/1/2/1/1)"/>
+            <xi:include xmlns:xi="http://www.w3.org/2001/XInclude"
+               href="../../../../indices/orgList.xml" xpointer="element(/1/2/1/1)"/>
+         </div>
+      </body>
+   </text>
+</TEI>

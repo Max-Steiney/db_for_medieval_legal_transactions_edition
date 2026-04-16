@@ -1,0 +1,65 @@
+<?xml version="1.0" encoding="UTF-8"?><!DOCTYPE TEI SYSTEM "../../../schema/toolbox_full.dtd"><TEI xmlns="http://www.tei-c.org/ns/1.0" xmlns:cei="http://www.monasterium.net/NS/cei" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance">
+   <teiHeader>
+      <fileDesc>
+         <titleStmt>
+            <title>Tei version of 1941bis exported from monasterium.net </title>
+         </titleStmt>
+         <publicationStmt>
+            <p/>
+         </publicationStmt>
+         <!--In Original: cei:front/cei:sourceDesc/cei:sourceDescRegest-->
+         <sourceDesc>
+            <bibl>Quellen zur Geschichte der Stadt Wien, Bd. II/2, Nr. 1941bis As published in HAUrk
+               by Wiener Stadt- und Landesarchiv </bibl>
+            <msDesc>
+               <msIdentifier>
+                  <repository>Wiener Stadt- und Landesarchiv</repository>
+                  <idno>1941bis</idno>
+                  <altIdentifier type="old">
+                     <idno>516148</idno>
+                  </altIdentifier>
+               </msIdentifier>
+               <physDesc>
+                  <sealDesc>
+                     <seal>
+                        <p>Anhangendes Siegel, schwarz u. Sch.</p>
+                     </seal>
+                  </sealDesc>
+               </physDesc>
+            </msDesc>
+         </sourceDesc>
+      </fileDesc>       <encodingDesc>          <projectDesc default="false">             <p><label type="contentual-editing">Projekt Christina Lutter Stadt und                   Gemeinschaft</label></p>          </projectDesc>       </encodingDesc>
+      <profileDesc>
+         <creation>
+            <placeName>Trautmannsdorf</placeName>
+            <date when="14130218">1413 II 18</date>
+            <origDate>zu Trautmanstorff, des sambstags vor sant Mathias tage, des heiligen
+               zwelifboten.</origDate></creation>
+      </profileDesc>
+   </teiHeader>
+   <facsimile>
+      <surface>
+         <graphic url="http://images.monasterium.net/pics/AT-WStLA/HA-U/WStLA-HA-Urkunden_01941_b_r.jpg"/>
+      </surface>
+      <surface>
+         <graphic url="http://images.monasterium.net/pics/AT-WStLA/HA-U/WStLA-HA-Urkunden_01941_b_v.jpg"/>
+      </surface>
+   </facsimile>
+   <text>
+      <body>
+         <div type="abstract">
+            <p>
+               <rs type="event" ref="ev__QGW_II_II_1941bis"><rs type="fn" role="issuer"><rs type="person" ref="pe__georg_stuchs_QGW_II_I_1124">Jorig der Stuchs von
+                        Trautmannstorff</rs></rs>
+                  <triggerstring n="disp">erlaubt</triggerstring>
+                  <rs type="fn" role="recipient">dem <rs type="person" ref="pe__niklas_schekrer_StB_I_22"><roleName type="title">ehrbaren Knechte</roleName> Niclas dem Schekrer</rs>
+                     und <rs type="person" ref="pe__diemut_QGW_II_II_1941bis">seiner <roleName type="kin" corresp="pe__niklas_schekrer_StB_I_22">Hausfrau</roleName>
+                        Diemuet</rs></rs>, 3 lb dn. gelts, gelegen zu Stuchsen Neusidel, die von
+                  seiner Herrschaft Trautmanstorff zu Lehen sind, um 30 lb dn. <rs type="fn" role="recipient"><rs type="person" ref="pe__johann_waller_QGW_II_II_1941bis">Hannsen dem Waller</rs> und <rs type="person" ref="pe__barbara_QGW_II_II_1941bis">seiner <roleName type="kin" corresp="pe__johann_waller_QGW_II_II_1941bis">Hausfrau</roleName> Barbara</rs></rs>
+                  <triggerstring n="disp">zu versetzen</triggerstring>.</rs>
+            </p>
+         </div>
+         <div type="lists"><xi:include xmlns:xi="http://www.w3.org/2001/XInclude" href="../../../../indices/placeList.xml" xpointer="element(/1/2/1/1)"/><xi:include xmlns:xi="http://www.w3.org/2001/XInclude" href="../../../../indices/personList.xml" xpointer="element(/1/2/1/1)"/><xi:include xmlns:xi="http://www.w3.org/2001/XInclude" href="../../../../indices/eventList.xml" xpointer="element(/1/2/1/1)"/><xi:include xmlns:xi="http://www.w3.org/2001/XInclude" href="../../../../indices/orgList.xml" xpointer="element(/1/2/1/1)"/></div>
+      </body>
+   </text>
+</TEI>

@@ -1,0 +1,97 @@
+<?xml version="1.0" encoding="UTF-8"?><!DOCTYPE TEI SYSTEM "../../../schema/toolbox_full.dtd">
+<TEI xmlns="http://www.tei-c.org/ns/1.0" xmlns:cei="http://www.monasterium.net/NS/cei"
+   xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance">
+   <teiHeader>
+      <fileDesc>
+         <titleStmt>
+            <title>Tei version of 1996 exported from monasterium.net </title>
+         </titleStmt>
+         <publicationStmt>
+            <p/>
+         </publicationStmt>
+         <!--In Original: cei:front/cei:sourceDesc/cei:sourceDescRegest-->
+         <sourceDesc>
+            <bibl>Quellen zur Geschichte der Stadt Wien, Bd. II/2, Nr. 1996 As published in HAUrk by
+               Wiener Stadt- und Landesarchiv </bibl>
+            <msDesc>
+               <msIdentifier>
+                  <repository>Wiener Stadt- und Landesarchiv</repository>
+                  <idno>1996</idno>
+                  <altIdentifier type="old">
+                     <idno>516204</idno>
+                  </altIdentifier>
+               </msIdentifier>
+               <physDesc>
+                  <sealDesc>
+                     <seal>
+                        <p>Rückwärts aufgedrücktes Siegel von schwarzem Wachse, abgesprungen.</p>
+                     </seal>
+                  </sealDesc>
+               </physDesc>
+            </msDesc>
+         </sourceDesc>
+      </fileDesc>
+      <encodingDesc>
+         <projectDesc default="false">
+            <p><label type="contentual-editing">Projekt Christina Lutter Stadt und
+                  Gemeinschaft</label></p>
+         </projectDesc>
+      </encodingDesc>
+      <profileDesc>
+         <creation>
+            <placeName>Wien</placeName>
+            <date when="14140924">1414 IX 24</date>
+            <origDate>ze Wienn, an montag vor sand Michels tag.</origDate></creation>
+      </profileDesc>
+   </teiHeader>
+   <facsimile>
+      <surface>
+         <graphic
+            url="http://images.monasterium.net/pics/AT-WStLA/HA-U/WStLA-HA-Urkunden_01996_r.jpg"/>
+      </surface>
+      <surface>
+         <graphic
+            url="http://images.monasterium.net/pics/AT-WStLA/HA-U/WStLA-HA-Urkunden_01996_v.jpg"/>
+      </surface>
+   </facsimile>
+   <text>
+      <body>
+         <div type="abstract">
+            <p>
+               <rs type="event" ref="ev__QGW_II_I_1996"><rs type="fn" role="issuer"><rs
+                        type="person" ref="pe__matthias_scheibeben_QGW_II_II_1957">Mathes, . . des
+                        Scheibeben <roleName type="kin"
+                           corresp="pe__peter_scheibeben_QGW_II_II_1957">vetter</roleName> von
+                           Brunn<roleName type="rep" corresp="pe__peter_jarkel_QGW_II_II_1994"
+                              ><add>anstatt</add></roleName></rs></rs>, bestätigt, anstatt Jarkel
+                  von Bracznicz von <rs type="fn" role="recipient"><rs type="person"
+                        ref="pe__paul_wuerfel_QGW_II_II_1928"><roleName type="title">hern</roleName>
+                        Pauln dem Würffel, des <roleName type="occ" corresp="org__wien"
+                           >rats</roleName><roleName type="occ" corresp="org__wien"><add>verweser
+                              des gruntpuchs</add></roleName></rs>, und <rs type="person"
+                        ref="pe__friedrich_dorffner_QGW_II_II_1978">Fridreich dem Dorffner, baid
+                           <roleName type="occ" corresp="org__wien">verweser des
+                           gruntpuchs</roleName> ze Wienn</rs></rs>, 5 lb 48 dn. als Antheil an dem
+                  Erlöse für das in <rs type="event" ref="ev__QGW_II_II_1994">Urk. n° 1994</rs>
+                  erwähnte Haus erhalten zu haben. </rs></p>
+         </div>
+         <div type="seal">
+            <p><rs type="event" ref="ev__QGW_II_II_1996"><rs type="fn" role="witness">Besiegelt von
+                     dem <rs type="person" ref="pe__heinrich_scheppach_QGW_II_I_1544">Wiener
+                           <roleName type="occ" corresp="org__wien">Bürger</roleName> Hainreich dem
+                        Schepach</rs>.</rs>
+               </rs></p>
+         </div>
+         <div type="lists">
+            <xi:include xmlns:xi="http://www.w3.org/2001/XInclude"
+               href="../../../../indices/placeList.xml" xpointer="element(/1/2/1/1)"/>
+            <xi:include xmlns:xi="http://www.w3.org/2001/XInclude"
+               href="../../../../indices/personList.xml" xpointer="element(/1/2/1/1)"/>
+            <xi:include xmlns:xi="http://www.w3.org/2001/XInclude"
+               href="../../../../indices/eventList.xml" xpointer="element(/1/2/1/1)"/>
+            <xi:include xmlns:xi="http://www.w3.org/2001/XInclude"
+               href="../../../../indices/orgList.xml" xpointer="element(/1/2/1/1)"/>
+         </div>
+      </body>
+   </text>
+</TEI>

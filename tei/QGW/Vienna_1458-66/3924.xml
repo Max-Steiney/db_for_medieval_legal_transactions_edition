@@ -1,0 +1,113 @@
+<?xml version="1.0" encoding="UTF-8" standalone="no"?>
+<!DOCTYPE TEI
+  SYSTEM "../../../schema/toolbox_full.dtd">
+<TEI xmlns:cei="http://www.monasterium.net/NS/cei" xmlns="http://www.tei-c.org/ns/1.0">
+   <teiHeader>
+      <fileDesc>
+         <titleStmt>
+            <title>Tei version of 3924 exported from monasterium.net </title>
+         </titleStmt>
+         <publicationStmt>
+            <p/>
+         </publicationStmt>
+         <!--In Original: cei:front/cei:sourceDesc/cei:sourceDescRegest-->
+         <sourceDesc>
+            <bibl>Quellen zur Geschichte der Stadt Wien, Bd. II/3, Nr. As published in HAUrk by
+               Wiener Stadt- und Landesarchiv </bibl>
+            <msDesc>
+               <msIdentifier>
+                  <repository>Wiener Stadt- und Landesarchiv</repository>
+                  <idno>3924</idno>
+                  <altIdentifier type="old">
+                     <idno>518187</idno>
+                  </altIdentifier>
+               </msIdentifier>
+               <msContents>
+                  <msItem>
+                     <listBibl>
+                        <bibl type="url"
+                           >https://www.monasterium.net/mom/AT-WStLA/HAUrk/3924/charter</bibl>
+                     </listBibl>
+                  </msItem>
+               </msContents>
+               <physDesc>
+                  <sealDesc>
+                     <seal>
+                        <p>Zum Verschlusse aufgedrücktes Wappensiegel (Sava Fig. III) von rothem
+                           Wachse unter Papierdecke. </p>
+                     </seal>
+                  </sealDesc>
+               </physDesc>
+            </msDesc>
+         </sourceDesc>
+      </fileDesc>
+      <profileDesc>
+         <creation>
+            <placeName>Krems</placeName>
+            <date when="14590902">1459 IX 02</date>
+            <origDate>Geben zu Krembs an suntag nach sand Giligen tag, anno domini etc. lviiij°,
+               unsers kaisertumbs im 8. und unserr reich, des Römischen im 20. und des Hungrischen
+               im 1. jaren. </origDate></creation>
+      </profileDesc>
+   </teiHeader>
+   <facsimile>
+      <surface>
+         <graphic
+            url="http://images.monasterium.net/pics/AT-WStLA/HA-U/WStLA-HA-Urkunden_03924_r.jpg"/>
+      </surface>
+      <surface>
+         <graphic
+            url="http://images.monasterium.net/pics/AT-WStLA/HA-U/WStLA-HA-Urkunden_03924_v.jpg"/>
+      </surface>
+   </facsimile>
+   <text>
+      <body>
+         <div type="abstract" resp="vh">
+            <p><rs type="event" ref="ev__QGW_II_III_3924"><rs type="fn" role="issuer"><rs
+                        type="person" ref="pe__friedrich_v_herzog_von_oesterreich_QGW_II_I_3270"
+                           ><roleName type="occ" corresp="org__heiliges_roemisches_reich"
+                           >Kaiser</roleName> Friedrich III.</rs></rs> an <rs type="fn"
+                     role="recipient"><rs type="org" ref="org__wien">Bürgermeister, Richter und Rath
+                        zu Wien</rs></rs>. Da er über die jetzt von der <rs type="person"
+                     ref="pe__helena_von_rosigon_QGW_II_III_3923">Elena, <rs type="person"
+                        ref="pe__emerich_graf_QGW_II_III_3923">graf Emreichs <roleName type="dead"
+                              ><add>saligen</add></roleName></rs>
+                     <roleName type="kin" corresp="pe__emerich_graf_QGW_II_III_3923"
+                        >wittib</roleName></rs>, für ihren <rs type="person"
+                     ref="pe__simeon_graf_QGW_II_III_3923"><roleName type="kin"
+                        corresp="pe__helena_von_rosigon_QGW_II_III_3923">Sohn</roleName> Simon</rs>
+                  erhobene Forderung auf Ausfolgung des angeblich einst dem <rs type="person"
+                     ref="pe__ulrich_perman_QGW_II_III_3923">Perman <roleName type="dead"
+                           ><add>saligen</add></roleName></rs> und <rs type="person"
+                     ref="pe__anna_facs_1032_TextRegion_1655717753110_170">seiner <roleName
+                        type="kin" corresp="pe__ulrich_perman_QGW_II_III_3923"
+                     >Hausfrau</roleName></rs>, die jetzt den <rs type="person"
+                     ref="pe__simon_poetel_QGW_II_II_2412">Wiener <roleName type="occ"
+                        corresp="org__wien">Bürger</roleName> Simon Pötl <roleName type="kin"
+                        corresp="pe__anna_facs_1032_TextRegion_1655717753110_170"
+                           ><add>hausfraun</add></roleName></rs> hat, übergebenen [ 43] Geldes schon
+                  zu Recht entschieden habe, seinen Unterthanen aber vormals aus solhen vordrungen
+                  unfug zugezogen ist, so befiehlt er ihnen, anzuordnen, dass kein Wiener Bürger
+                  sich auf das Hungrisch oder daselbumb füge, damit sie von der benannten Elenen und
+                  den iren nicht aufgehalten, noch in schaden pracht werden . </rs></p>
+         </div>
+         <div type="nota">
+            <p><rs type="event" ref="ev__QGW_II_III_3924_nota">Von anderer Hand: commissio domini
+                  imperatoris per d( ominum) <rs type="person"
+                     ref="pe__johann_rorbacher_QGW_II_III_3981">Johannem Rorbacher, <roleName
+                        type="occ" corresp="pe__friedrich_v_herzog_von_oesterreich_QGW_II_I_3270"
+                        >cons( iliarium)</roleName></rs>. </rs></p>
+         </div>
+         <div type="lists">
+            <xi:include xmlns:xi="http://www.w3.org/2001/XInclude"
+               href="../../../../indices/placeList.xml" xpointer="element(/1/2/1/1)"/>
+            <xi:include xmlns:xi="http://www.w3.org/2001/XInclude"
+               href="../../../../indices/personList.xml" xpointer="element(/1/2/1/1)"/>
+            <xi:include xmlns:xi="http://www.w3.org/2001/XInclude"
+               href="../../../../indices/eventList.xml" xpointer="element(/1/2/1/1)"/>
+            <xi:include xmlns:xi="http://www.w3.org/2001/XInclude"
+               href="../../../../indices/orgList.xml" xpointer="element(/1/2/1/1)"/>
+         </div>
+      </body>
+   </text>
+</TEI>

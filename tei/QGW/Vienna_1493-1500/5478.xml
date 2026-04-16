@@ -1,0 +1,94 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<TEI xmlns="http://www.tei-c.org/ns/1.0" xmlns:cei="http://www.monasterium.net/NS/cei"
+   xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance">
+   <teiHeader>
+      <fileDesc>
+         <titleStmt>
+            <title>Tei version of 5478 exported from monasterium.net </title>
+         </titleStmt>
+         <publicationStmt>
+            <p/>
+         </publicationStmt>
+         <!--In Original: cei:front/cei:sourceDesc/cei:sourceDescRegest-->
+         <sourceDesc>
+            <bibl>Quellen zur Geschichte der Stadt Wien, Bd. II/3, Nr. As published in HAUrk by
+               Wiener Stadt- und Landesarchiv </bibl>
+            <msDesc>
+               <msIdentifier>
+                  <repository>Wiener Stadt- und Landesarchiv</repository>
+                  <idno>5478</idno>
+                  <altIdentifier type="old">
+                     <idno>519786</idno>
+                  </altIdentifier>
+               </msIdentifier>
+               <physDesc>
+                  <sealDesc>
+                     <seal>
+                        <p>Die angehängten Siegel fehlen.</p>
+                     </seal>
+                  </sealDesc>
+               </physDesc>
+            </msDesc>
+         </sourceDesc>
+      </fileDesc>
+      <encodingDesc>
+         <projectDesc default="false">
+            <p><label type="contentual-editing">Projekt Christina Lutter Stadt und
+                  Gemeinschaft</label></p>
+         </projectDesc>
+      </encodingDesc>
+      <profileDesc>
+         <creation>
+            <placeName>Wien</placeName>
+            <date when="14930315">1493 III 15</date>
+            <origDate>zu Wienn, on freitag nach dem suntag Oculi in der
+            Vassten.</origDate></creation>
+      </profileDesc>
+   </teiHeader>
+   <facsimile>
+      <surface>
+         <graphic
+            url="http://images.monasterium.net/pics/AT-WStLA/HA-U/WStLA-HA-Urkunden_05478_r.jpg"/>
+      </surface>
+      <surface>
+         <graphic
+            url="http://images.monasterium.net/pics/AT-WStLA/HA-U/WStLA-HA-Urkunden_05478_v.jpg"/>
+      </surface>
+   </facsimile>
+   <text>
+      <body>
+         <div type="abstract">
+            <p><rs type="event" ref="ev__QGW_II_II_5478">
+                  <rs type="fn" role="issuer"><rs type="person"
+                        ref="pe__johann_koeppl_QGW_II_III_5471">Hanns Cöppl, <roleName type="occ"
+                           corresp="org__wien">burger</roleName> zu Wienn</rs></rs>, verkauft <rs
+                     type="fn" role="other"><triggerstring n="fn">mit Handen</triggerstring>
+                     <rs type="person" ref="pe__paul_kek_QGW_II_III_5384">´<roleName type="title"
+                           >hern</roleName> Paulen Kegken, <roleName type="occ" corresp="org__wien"
+                           >burgermaister</roleName></rs>, und des <rs type="org" ref="org__wien"
+                        >Rathes</rs></rs> 5 lb 5 sh. 15 dn. gelts purkrechts (ablösbar) auf seinem
+                  Hause, genannt des von Eslaren haus, gelegen hie on sand Peters freithoff zunagst
+                  weilend des Stadler und Vogelbaider haus on aim tail , um 59 lb 4 sh. dn., die
+                  eemallen auf Cristoffen Rössl, des vorsprechen, haus, genannt auf der Press, an
+                  dem Kienmarkt gelegen, verschriben gewesen sind, . . . . <rs type="fn"
+                     role="recipient"><rs type="person" ref="pe__georg_von_iglau_QGW_II_III_5478"
+                           ><roleName type="title">heren</roleName> Gregorgen von der Igla,
+                           <roleName type="occ"
+                           corresp="org__wien-st_michael-altar_gottesleichnam-messe_eslarn"
+                           >caplon</roleName> der mess, die weilend die von Eslaren auf
+                        Goczleichnamb altar zu sand Michel under dem thuren gestift haben , und
+                        seinen Nachfolgern</rs></rs>. </rs></p>
+         </div>
+         <div type="lists">
+            <xi:include xmlns:xi="http://www.w3.org/2001/XInclude"
+               href="../../../../indices/placeList.xml" xpointer="element(/1/2/1/1)"/>
+            <xi:include xmlns:xi="http://www.w3.org/2001/XInclude"
+               href="../../../../indices/personList.xml" xpointer="element(/1/2/1/1)"/>
+            <xi:include xmlns:xi="http://www.w3.org/2001/XInclude"
+               href="../../../../indices/eventList.xml" xpointer="element(/1/2/1/1)"/>
+            <xi:include xmlns:xi="http://www.w3.org/2001/XInclude"
+               href="../../../../indices/orgList.xml" xpointer="element(/1/2/1/1)"/>
+         </div>
+      </body>
+   </text>
+</TEI>

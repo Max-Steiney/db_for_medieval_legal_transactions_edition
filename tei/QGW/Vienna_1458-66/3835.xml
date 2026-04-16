@@ -1,0 +1,111 @@
+<?xml version="1.0" encoding="UTF-8" standalone="no"?>
+<!DOCTYPE TEI
+  SYSTEM "../../../schema/toolbox_full.dtd">
+<TEI xmlns:cei="http://www.monasterium.net/NS/cei" xmlns="http://www.tei-c.org/ns/1.0">
+   <teiHeader>
+      <fileDesc>
+         <titleStmt>
+            <title>Tei version of 3835 exported from monasterium.net </title>
+         </titleStmt>
+         <publicationStmt>
+            <p/>
+         </publicationStmt>
+         <!--In Original: cei:front/cei:sourceDesc/cei:sourceDescRegest-->
+         <sourceDesc>
+            <bibl>Quellen zur Geschichte der Stadt Wien, Bd. II/3, Nr. As published in HAUrk by
+               Wiener Stadt- und Landesarchiv </bibl>
+            <msDesc>
+               <msIdentifier>
+                  <repository>Wiener Stadt- und Landesarchiv</repository>
+                  <idno>3835</idno>
+                  <altIdentifier type="old">
+                     <idno>518096</idno>
+                  </altIdentifier>
+               </msIdentifier>
+               <msContents>
+                  <msItem>
+                     <listBibl>
+                        <bibl type="url"
+                           >https://www.monasterium.net/mom/AT-WStLA/HAUrk/3835/charter</bibl>
+                     </listBibl>
+                  </msItem>
+               </msContents>
+               <physDesc>
+                  <sealDesc>
+                     <seal>
+                        <p>Zum Verschlusse aufgedrücktes Wappensiegel (Sava Fig. III) von rothem
+                           Wachse.</p>
+                     </seal>
+                  </sealDesc>
+               </physDesc>
+            </msDesc>
+         </sourceDesc>
+      </fileDesc>
+      <profileDesc>
+         <creation>
+            <placeName>Wiener-Neustadt</placeName>
+            <date when="14581127">1458 XI 27</date>
+            <origDate>Geben zu der Neunstat an mantag sand Virgilien tag, anno etc. lviij°, unsers
+               kaisertumbs im 7. jare. </origDate></creation>
+      </profileDesc>
+   </teiHeader>
+   <facsimile>
+      <surface>
+         <graphic
+            url="http://images.monasterium.net/pics/AT-WStLA/HA-U/WStLA-HA-Urkunden_03835_r.jpg"/>
+      </surface>
+      <surface>
+         <graphic
+            url="http://images.monasterium.net/pics/AT-WStLA/HA-U/WStLA-HA-Urkunden_03835_v.jpg"/>
+      </surface>
+   </facsimile>
+   <text>
+      <body>
+         <div type="abstract" resp="ms">
+            <p><rs type="event" ref="ev__QGW_II_III_3835"><rs type="fn" role="issuer"><rs
+                        type="person" ref="pe__friedrich_v_herzog_von_oesterreich_QGW_II_I_3270"
+                           ><roleName type="occ" corresp="org__heiliges_roemisches_reich"
+                           >Kaiser</roleName> Friedrich III.</rs></rs> an <rs type="fn"
+                     role="recipient"><rs type="org" ref="org__wien">Bürgermeister, Richter und Rath
+                        zu Wien</rs></rs>. Da sie ihm des <rs type="person"
+                     ref="pe__michael_windisch_QGW_II_III_3834">Michel Windisch</rs> sag, so er an
+                  der frag in der venknuss zu Wienn getan und darinn ettlicher stuk halben, nemlich
+                  den nam, so dem münssmaister am nagsten an sand Mertten abend (November 10)
+                  zwischen Wienn und dieser unserr stat beschehen ist, anrüret und den Keferhüler
+                  und <rs type="person" ref="pe__johann_QGW_II_III_3835">Hannsen, den ritter</rs>,
+                  und dabei mitsambt im gewesen sein sullen , gemeldet haben, so theilt er ihnen
+                  mit, dass sein <rs type="person" ref="pe__ulrich_keferhueler_QGW_II_III_3835"
+                        ><roleName type="occ"
+                        corresp="pe__friedrich_v_herzog_von_oesterreich_QGW_II_I_3270"
+                        >Diener</roleName> und Hofgesinde Ulreich Keferhüler</rs> sich an dem
+                  genannten Tage in Wien aufgehalten habe, dessen Brüder aber wohl 60 Meilen von
+                  hier entfernt seien, ferner finden sich in seinem Hofgesinde viele Personen Namens
+                  Hanns, welche jenen Verdacht nur ungern ertrügen. <rs type="person"
+                     ref="pe__ulrich_riedrer_QGW_II_II_3445">Ulreich Riedrer, <roleName type="prof"
+                        >doctor</roleName>, sein <roleName type="occ"
+                        corresp="pe__friedrich_v_herzog_von_oesterreich_QGW_II_I_3270"
+                        >Rath</roleName></rs>, in des marstal ettlich teg sich der benant Windisch
+                  enthalten hat, habe ihm bekanntgegeben, dass Letzterer an sand Merten tag in Wien
+                  gewesen und darnach mit ihm herübergeritten sei. Endlich seien die wirklichen
+                  Thäter gefangen worden. Daraus mögen sie ersehen, was von dem Windisch zu halten
+                  sei. Er befiehlt ihnen daher, sich bei dessen weiterer Aussage dieses Schreiben
+                  vor Augen zu halten und ihn bis auf fernere Anordnung im Gefängnisse zu bewahren.
+               </rs></p>
+         </div>
+         <div type="nota">
+            <p><rs type="event" ref="ev__QGW_II_III_3835_nota">Von anderer Hand: commissio domini
+                  imperatoris in consilio. </rs></p>
+         </div>
+         <div type="lists">
+            <xi:include xmlns:xi="http://www.w3.org/2001/XInclude"
+               href="../../../../indices/placeList.xml" xpointer="element(/1/2/1/1)"/>
+            <xi:include xmlns:xi="http://www.w3.org/2001/XInclude"
+               href="../../../../indices/personList.xml" xpointer="element(/1/2/1/1)"/>
+            <xi:include xmlns:xi="http://www.w3.org/2001/XInclude"
+               href="../../../../indices/eventList.xml" xpointer="element(/1/2/1/1)"/>
+            <xi:include xmlns:xi="http://www.w3.org/2001/XInclude"
+               href="../../../../indices/orgList.xml" xpointer="element(/1/2/1/1)"/>
+         </div>
+      </body>
+   </text>
+</TEI>

@@ -53,7 +53,9 @@
                     <div class="nav-dropdown-menu">
                         <a href="./about.html">&Uuml;ber das Projekt</a>
                         <a href="./statistics.html">Statistik</a>
+                        <a href="./quality.html">Qualit&auml;t</a>
                         <a href="./edition_guidelines.html">Editionsrichtlinien</a>
+                        <a href="./impressum.html">Impressum</a>
                     </div>
                 </div>
             </div>
@@ -68,7 +70,7 @@
     <header class="index-header">
         <h1>Wiener Urkundenbuch</h1>
         <p class="index-subtitle">
-            <span class="stat">3.541</span> Quellen,
+            <span class="stat">3.041</span> Quellen,
             <span class="stat">16.084</span> Personen,
             <span class="stat">1.078</span> Organisationen
             <span class="index-date-range">&mdash; Wien, ca. 1177&ndash;1524</span>
@@ -197,7 +199,7 @@
                 <div class="range-bar"
                      data-decade="1330"
                      data-count="93"
-                     style="height: 13%"
+                     style="height: 12%"
                      title="1330er: 93 Dok.">
                 </div>
                 
@@ -225,14 +227,14 @@
                 <div class="range-bar"
                      data-decade="1370"
                      data-count="210"
-                     style="height: 29%"
+                     style="height: 28%"
                      title="1370er: 210 Dok.">
                 </div>
                 
                 <div class="range-bar"
                      data-decade="1380"
                      data-count="216"
-                     style="height: 30%"
+                     style="height: 29%"
                      title="1380er: 216 Dok.">
                 </div>
                 
@@ -266,23 +268,23 @@
                 
                 <div class="range-bar"
                      data-decade="1430"
-                     data-count="1"
-                     style="height: 4%"
-                     title="1430er: 1 Dok.">
+                     data-count="0"
+                     style="height: 0%"
+                     title="1430er: 0 Dok.">
                 </div>
                 
                 <div class="range-bar"
                      data-decade="1440"
-                     data-count="106"
-                     style="height: 15%"
-                     title="1440er: 106 Dok.">
+                     data-count="0"
+                     style="height: 0%"
+                     title="1440er: 0 Dok.">
                 </div>
                 
                 <div class="range-bar"
                      data-decade="1450"
-                     data-count="560"
-                     style="height: 77%"
-                     title="1450er: 560 Dok.">
+                     data-count="167"
+                     style="height: 22%"
+                     title="1450er: 167 Dok.">
                 </div>
                 
                 <div class="range-bar"
@@ -347,10 +349,6 @@
             QGW II/2 (1415–1417) <span class="chip-count">34</span>
         </button>
         
-        <button class="chip" data-collection="QGW/Vienna_1448-57_ready">
-            QGW II/2 (1448–1457) <span class="chip-count">500</span>
-        </button>
-        
         <button class="chip" data-collection="QGW/Vienna_1458-66">
             QGW II/3 (1458–1466) <span class="chip-count">352</span>
         </button>
@@ -365,10 +363,11 @@
     <section class="index-controls">
         
 <div class="search-box">
-    <svg class="search-icon" width="18" height="18" viewBox="0 0 18 18" fill="none">
+    <svg class="search-icon" width="18" height="18" viewBox="0 0 18 18" fill="none" aria-hidden="true">
         <circle cx="7.5" cy="7.5" r="5.5" stroke="currentColor" stroke-width="1.5"/>
         <path d="M12 12L16 16" stroke="currentColor" stroke-width="1.5" stroke-linecap="round"/>
     </svg>
+    <label for="search-input" class="sr-only">Suche nach Nr., Datum, Ort, Schlagwort ...</label>
     <input type="text" id="search-input" placeholder="Suche nach Nr., Datum, Ort, Schlagwort ..." autocomplete="off" spellcheck="false">
     <button class="search-clear hidden" id="search-clear" aria-label="Suche löschen">&times;</button>
 </div>
@@ -377,48 +376,56 @@
             <select id="filter-place" aria-label="Ort filtern">
                 <option value="">Alle Orte</option>
                 
-                <option value="Wien">Wien (2041)</option>
+                <option value="Wien">Wien (1758)</option>
                 
-                <option value="Wiener-Neustadt">Wiener-Neustadt (138)</option>
+                <option value="Wiener-Neustadt">Wiener-Neustadt (63)</option>
                 
-                <option value="Graz">Graz (24)</option>
+                <option value="Graz">Graz (19)</option>
                 
-                <option value="Prag">Prag (18)</option>
+                <option value="Schrattenthal">Schrattenthal (11)</option>
                 
-                <option value="Schrattenthal">Schrattenthal (17)</option>
+                <option value="Pressburg">Pressburg (10)</option>
                 
-                <option value="Pressburg">Pressburg (16)</option>
+                <option value="Linz">Linz (10)</option>
                 
-                <option value="Ofen">Ofen (15)</option>
-                
-                <option value="Linz">Linz (11)</option>
+                <option value="Prag">Prag (10)</option>
                 
                 <option value="Mödling">Mödling (9)</option>
                 
                 <option value="Wiener Neustadt">Wiener Neustadt (9)</option>
                 
-                <option value="Rom">Rom (7)</option>
-                
-                <option value="Baden">Baden (7)</option>
+                <option value="Ofen">Ofen (8)</option>
                 
                 <option value="Krems">Krems (6)</option>
                 
                 <option value="Bösing">Bösing (6)</option>
                 
-                <option value="Korneuburg">Korneuburg (5)</option>
+                <option value="Rom">Rom (4)</option>
+                
+                <option value="Korneuburg">Korneuburg (4)</option>
+                
+                <option value="Brünn">Brünn (4)</option>
                 
             </select>
         </div>
         <div class="filter-group">
             <select id="filter-facs" aria-label="Faksimile">
                 <option value="">Faksimile</option>
-                <option value="1">Mit Faksimile (2892)</option>
-                <option value="0">Ohne Faksimile (649)</option>
+                <option value="1">Mit Faksimile (2398)</option>
+                <option value="0">Ohne Faksimile (643)</option>
+            </select>
+        </div>
+        <div class="filter-group">
+            <select id="filter-quality" aria-label="Qualität">
+                <option value="">Qualität</option>
+                <option value="0">Fehlerfrei (1087)</option>
+                <option value="1">Hinweise (1794)</option>
+                <option value="2">Warnungen (160)</option>
             </select>
         </div>
         
 <div class="result-count" id="result-count">
-    3541 Dokumente
+    3041 Dokumente
 </div>
 
     </section>
@@ -461,7 +468,7 @@
             </div>
             <div class="footer-col footer-col-right">
                 <p>Digitale Aufbereitung: <a href="https://dhcraft.org" class="footer-link">Digital Humanities Craft OG</a></p>
-                <p>Lizenz: <a href="https://creativecommons.org/licenses/by/4.0/" class="footer-link">CC BY 4.0</a> · 3541 Dokumente</p>
+                <p>Lizenz: <a href="https://creativecommons.org/licenses/by/4.0/" class="footer-link">CC BY 4.0</a> · 3041 Dokumente</p>
             </div>
         </div>
     </footer>

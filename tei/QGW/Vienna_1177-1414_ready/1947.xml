@@ -1,0 +1,106 @@
+<?xml version="1.0" encoding="UTF-8"?><!DOCTYPE TEI SYSTEM "../../../schema/toolbox_full.dtd"><TEI xmlns="http://www.tei-c.org/ns/1.0" xmlns:cei="http://www.monasterium.net/NS/cei" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance">
+   <teiHeader>
+      <fileDesc>
+         <titleStmt>
+            <title>Tei version of 1947 exported from monasterium.net </title>
+         </titleStmt>
+         <publicationStmt>
+            <p/>
+         </publicationStmt>
+         <!--In Original: cei:front/cei:sourceDesc/cei:sourceDescRegest-->
+         <sourceDesc>
+            <bibl>Quellen zur Geschichte der Stadt Wien, Bd. II/2, Nr. 1947 As published in HAUrk by
+               Wiener Stadt- und Landesarchiv </bibl>
+            <msDesc>
+               <msIdentifier>
+                  <repository>Wiener Stadt- und Landesarchiv</repository>
+                  <idno>1947</idno>
+                  <altIdentifier type="old">
+                     <idno>516155</idno>
+                  </altIdentifier>
+               </msIdentifier>
+               <msContents>
+                  <msItem>
+                     <listBibl>
+                        <bibl>Camesina, Regesten 34 n° 162 Regest.</bibl>
+                        <bibl>Jahrbuch der kais. Kunstsamml. 16b, n° 13271 Regest.</bibl>
+                     </listBibl>
+                  </msItem>
+               </msContents>
+               <physDesc>
+                  <sealDesc>
+                     <seal>
+                        <p>Sechs anhangende Siegel, 1. grün u. Sch., 2. schwarz u. Sch., 3. roth u.
+                           Sch., beschädigt, 4. roth u. Sch., spitzoval, 5. grün u. K., spitzoval,
+                           6. fehlt, 7. grün u. Sch., 8. fehlt.Siegler: 1., 2. die Aussteller, 3.
+                           das städtische Grundsiegel, 4. die Grundfrau, <quote>5</quote>. Abt
+                           Albrecht von Heiligenkreuz, 6. Prior Haug von Mauerbach, <quote>7. Hanns
+                              der Fuchsel</quote>, Wiener Bürger, 8. <quote>Chunrat der
+                              Kiemseer</quote>, Wiener Bürger. </p>
+                     </seal>
+                  </sealDesc>
+               </physDesc>
+            </msDesc>
+         </sourceDesc>
+      </fileDesc>       <encodingDesc>          <projectDesc default="false">             <p><label type="contentual-editing">Projekt Christina Lutter Stadt und                   Gemeinschaft</label></p>          </projectDesc>       </encodingDesc>
+      <profileDesc>
+         <creation>
+            <placeName>Wien</placeName>
+            <date when="14130512">1413 V 12</date>
+            <origDate>ze Wienn, an sand Pangreczen tag.</origDate></creation>
+      </profileDesc>
+   </teiHeader>
+   <facsimile>
+      <surface>
+         <graphic url="http://images.monasterium.net/pics/AT-WStLA/HA-U/WStLA-HA-Urkunden_01947_r.jpg"/>
+      </surface>
+      <surface>
+         <graphic url="http://images.monasterium.net/pics/AT-WStLA/HA-U/WStLA-HA-Urkunden_01947_v.jpg"/>
+      </surface>
+   </facsimile>
+   <text>
+      <body>
+         <div type="abstract">
+            <p>
+               <rs type="event" ref="ev__QGW_II_II_1947"><rs type="fn" role="issuer"><rs type="person" ref="pe__johann_mosprunner_QGW_II_I_1096">Hanns der
+                        Mosprunner, des <roleName type="occ" corresp="org__wien">rates</roleName>
+                        der stat ze Wienn<roleName type="rep" corresp="pe__johann_arnstorfer_QGW_II_I_1249"><add>
+                              Geschäftsvollstrecker</add></roleName></rs>, und <rs type="person" ref="pe__oswald_pauch_QGW_II_I_1371">Oswalt der Pauch, <roleName type="occ" corresp="org__wien">burger</roleName> ze Wienn<roleName type="rep" corresp="pe__johann_arnstorfer_QGW_II_I_1249"><add>
+                              Geschäftsvollstrecker</add></roleName></rs></rs> , <triggerstring n="disp">stiften</triggerstring> als Geschäftsvollstrecker nach Hanns Arnstorffer
+                  bei <rs type="fn" role="recipient"><rs type="org" ref="org__wien-st_stephan-messe_arnstorfer_johann">St. Stephan eine ewige
+                        Messe</rs></rs>, <triggerstring n="disp">verleihen</triggerstring> sie zuerst <rs type="fn" role="recipient"><rs type="person" ref="pe__philipp_prantesser_QGW_II_II_1947">dem <roleName type="prof">Priester</roleName>
+                        <roleName type="title">hern</roleName> Philippen dem Prantesser</rs></rs>,
+                     <triggerstring n="disp">übertragen die Lehenschaft</triggerstring>
+                  <rs type="fn" role="recipient">dem Rathe</rs> und <triggerstring n="disp">widmen</triggerstring> dazu folgende Güter: 1. zu einem Wohnhause des Kaplans mit
+                  Handen des Bürgermeisters Rudolfs des Angervelder und des Rathes ein Haus in der
+                  Vordern Peckchenstrass, das weilent Thomans seligen des Lehener gewesen ist,
+                  zenechst dem haus, das weilent des Warnhofer gewesen ist 2. Weingärten a) ein
+                  Joch, gelegen zu Grinzing an dem Sunnperg, genant der Kerspaum, der freis aigen
+                  ist, zenechst des pharrer weingarten von der Heiligenstat b) <rs type="fn" role="other"><triggerstring n="fn">mit Handen</triggerstring> der <rs type="person" ref="pe__johanna_stuchsin_QGW_II_II_1947"><roleName type="title">Grundfrau</roleName>
+                        <roleName type="title">swester</roleName> Johannen der Stuchsin, <roleName type="occ" corresp="org__wien-st_klara">abtessin</roleName> dacz sand
+                        Klaren</rs></rs>, ½ Joch, gelegen ze Grinzing in dem Sunnperg, genannt der
+                  Schekch, zenechst Stephans weingarten des Pollen , von dem man 31 dn. zu Berg- und
+                  Voitrecht dient c) mit Handen Hannsen des Hueber zu Gumpolczkirchen, Amtmanns des
+                  Klosters Heiligenkreuz, einen Weingarten, gelegen zu Gumpolczkirichen und haisset
+                  die Rabenstainerin, unter dem weingarten, genant der Rustpeck , von dem man einen
+                  Eimer Wein zu Bergrecht dient d) vier Eimer Wein Bergrechts auf Weingärten daselbs
+                  zu Gumpoltskirchen, 12 dn. und ain hun gelts gruntrechts auf behaustem gut daselbs
+                  e) <rs type="fn" role="other"><triggerstring n="fn">mit Handen</triggerstring> des <rs type="person" ref="pe__konrad_werfer_QGW_II_II_1947"><roleName type="title">Bergmeisters</roleName> Chunrats des Werfer, <roleName type="occ" corresp="org__mauerbach-kartaeuser">Amtmanns</roleName> des Klosters
+                        Mauerbach</rs></rs>, zwei Weingärten zu Gumpoldskirchen, ainer ob der
+                  kirchen und haisset der Spiegel (dient nach Mauerbach 6/4 Wein Bergrecht, in das
+                  Gericht zu Gumpoldskirchen 3 dn. Voitrecht) und das Zicherl daneben (dient nach
+                  Mauerbach ¾ Wein) zenechst der Herzogenpeunt, der ander genant der Rustpekch auf
+                  der Rabenstainerin zenechst des statschreiber von Wienn weingarten , von dem man
+                  nach Mauerbach 12 dn. zu Bergrecht dient.</rs>
+            </p>
+         </div>
+         <div type="seal">
+            <p><rs type="event" ref="ev__QGW_II_II_1947"><rs type="fn" role="witness">Siegler: 1., 2. die <rs type="person" ref="pe__johann_mosprunner_QGW_II_I_1096">Aussteller</rs><rs type="person" ref="pe__oswald_pauch_QGW_II_I_1371"><add>Aussteller</add></rs>, 3. <rs type="org" ref="org__wien">das städtische Grundsiegel</rs>, 4. die <rs type="person" ref="pe__johanna_stuchsin_QGW_II_II_1947">Grundfrau</rs>, 5. <rs type="person" ref="pe__albrecht_QGW_II_I_1896"><roleName type="occ" corresp="org__heiligenkreuz-zisterzienser">Abt</roleName> Albrecht von
+                     Heiligenkreuz</rs>, 6. <rs type="person" ref="pe__haug_QGW_II_II_1930">Prior
+                     Haug von Mauerbach</rs>, 7. <rs type="person" ref="pe__johann_fuechsel_QGW_II_I_1562">Hanns der Fuchsel, Wiener <roleName type="occ" corresp="org__wien">Bürger</roleName></rs>, 8. <rs type="person" ref="pe__konrad_chiemseer_StB_I_178">Chunrat der Kiemseer, Wiener <roleName type="occ" corresp="org__wien">Bürger</roleName></rs>.</rs>
+            </rs></p>
+         </div>
+         <div type="lists"><xi:include xmlns:xi="http://www.w3.org/2001/XInclude" href="../../../../indices/placeList.xml" xpointer="element(/1/2/1/1)"/><xi:include xmlns:xi="http://www.w3.org/2001/XInclude" href="../../../../indices/personList.xml" xpointer="element(/1/2/1/1)"/><xi:include xmlns:xi="http://www.w3.org/2001/XInclude" href="../../../../indices/eventList.xml" xpointer="element(/1/2/1/1)"/><xi:include xmlns:xi="http://www.w3.org/2001/XInclude" href="../../../../indices/orgList.xml" xpointer="element(/1/2/1/1)"/></div>
+      </body>
+   </text>
+</TEI>

@@ -1,0 +1,88 @@
+<?xml version="1.0" encoding="UTF-8" standalone="no"?>
+<!DOCTYPE TEI
+  SYSTEM "../../../schema/toolbox_full.dtd">
+<TEI xmlns:cei="http://www.monasterium.net/NS/cei" xmlns="http://www.tei-c.org/ns/1.0">
+   <teiHeader>
+      <fileDesc>
+         <titleStmt>
+            <title>Tei version of 4064a exported from monasterium.net </title>
+         </titleStmt>
+         <publicationStmt>
+            <p/>
+         </publicationStmt>
+         <!--In Original: cei:front/cei:sourceDesc/cei:sourceDescRegest-->
+         <sourceDesc>
+            <bibl>Quellen zur Geschichte der Stadt Wien, Bd. II/3, Nr. As published in HAUrk by
+               Wiener Stadt- und Landesarchiv </bibl>
+            <msDesc>
+               <msIdentifier>
+                  <repository>Wiener Stadt- und Landesarchiv</repository>
+                  <idno>4064a</idno>
+                  <altIdentifier type="old">
+                     <idno>518336</idno>
+                  </altIdentifier>
+               </msIdentifier>
+               <msContents>
+                  <msItem>
+                     <listBibl>
+                        <bibl type="url"
+                           >https://www.monasterium.net/mom/AT-WStLA/HAUrk/4064a/charter</bibl>
+                     </listBibl>
+                  </msItem>
+               </msContents>
+               <physDesc/>
+            </msDesc>
+         </sourceDesc>
+      </fileDesc>
+      <profileDesc>
+         <creation>
+            <placeName>Wien</placeName>
+            <date when="14630910">1463 IX 10</date>
+            <origDate>zu Wienn, an sambstag nach Unser Lieben Fraun tag der
+            Gepurd.</origDate></creation>
+      </profileDesc>
+   </teiHeader>
+   <facsimile/>
+   <text>
+      <body>
+         <div type="abstract" resp="vh">
+            <p><rs type="event" ref="ev__QGW_II_III_4064a">
+                  <rs type="fn" role="issuer"><rs type="person"
+                        ref="pe__friedrich_ebmer_QGW_II_II_3350">Fridreich Ebner, <roleName
+                           type="title">ritter</roleName>, <roleName type="occ" corresp="org__wien"
+                           >burgermaister</roleName></rs>, und der <rs type="org" ref="org__wien"
+                        >rat gemein der stat zu Wienn</rs></rs> erledigen ein im Berufungswege an
+                  sie gebrachtes Urtheil des Stadtgerichtes dahin, dass der clagtrager ( <rs
+                     type="person" ref="pe__wolfgang_oeczesdorffer_Genannte_Weinzettel_row_220"
+                     >Wolfgang Öczestorffer, <rs type="person"
+                        ref="pe__jakob_oeczestorffer_QGW_II_II_3735">Jacoben des Öczestorffer
+                           <roleName type="dead">seligen</roleName></rs>
+                     <roleName type="kin" corresp="pe__jakob_oeczestorffer_QGW_II_II_3735"
+                        >sun</roleName></rs>,) zur Behauptung seines Anspruches vor allem
+                  nachzuweisen habe, dass sein verstorbener Schuldner ( <rs type="person"
+                     ref="pe__wolfgang_oeczestorffer_QGW_II_III_4064a">Wolfgang Öczestorffer, <rs
+                        type="person" ref="pe__gilg_oeczestorffer_QGW_II_III_4064a">Giligen des
+                        Öczestorffer</rs>
+                     <roleName type="kin" corresp="pe__gilg_oeczestorffer_QGW_II_III_4064a"
+                        >sun</roleName></rs>) wegen der von ihm in Verbot genommenen zwei
+                  Hausdrittel bei dem Grundbuche in rechten tegen nucz und geweer ersucht, diese
+                  aber von den herren bei dem puch ursachhalben der stat notdürften und nicht aus
+                  andern Ursachen nicht hat bekomen mügen . </rs></p>
+         </div>
+         <div type="nota">
+            <p><rs type="event" ref="ev__QGW_II_III_4064a_nota">Transsumiert in Urk. n°
+               4094.</rs></p>
+         </div>
+         <div type="lists">
+            <xi:include xmlns:xi="http://www.w3.org/2001/XInclude"
+               href="../../../../indices/placeList.xml" xpointer="element(/1/2/1/1)"/>
+            <xi:include xmlns:xi="http://www.w3.org/2001/XInclude"
+               href="../../../../indices/personList.xml" xpointer="element(/1/2/1/1)"/>
+            <xi:include xmlns:xi="http://www.w3.org/2001/XInclude"
+               href="../../../../indices/eventList.xml" xpointer="element(/1/2/1/1)"/>
+            <xi:include xmlns:xi="http://www.w3.org/2001/XInclude"
+               href="../../../../indices/orgList.xml" xpointer="element(/1/2/1/1)"/>
+         </div>
+      </body>
+   </text>
+</TEI>

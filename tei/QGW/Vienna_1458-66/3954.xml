@@ -1,0 +1,102 @@
+<?xml version="1.0" encoding="UTF-8" standalone="no"?>
+<!DOCTYPE TEI
+  SYSTEM "../../../schema/toolbox_full.dtd">
+<TEI xmlns:cei="http://www.monasterium.net/NS/cei" xmlns="http://www.tei-c.org/ns/1.0">
+   <teiHeader>
+      <fileDesc>
+         <titleStmt>
+            <title>Tei version of 3954 exported from monasterium.net </title>
+         </titleStmt>
+         <publicationStmt>
+            <p/>
+         </publicationStmt>
+         <!--In Original: cei:front/cei:sourceDesc/cei:sourceDescRegest-->
+         <sourceDesc>
+            <bibl>Quellen zur Geschichte der Stadt Wien, Bd. II/3, Nr. As published in HAUrk by
+               Wiener Stadt- und Landesarchiv </bibl>
+            <msDesc>
+               <msIdentifier>
+                  <repository>Wiener Stadt- und Landesarchiv</repository>
+                  <idno>3954</idno>
+                  <altIdentifier type="old">
+                     <idno>518218</idno>
+                  </altIdentifier>
+               </msIdentifier>
+               <msContents>
+                  <msItem>
+                     <listBibl>
+                        <bibl type="url"
+                           >https://www.monasterium.net/mom/AT-WStLA/HAUrk/3954/charter</bibl>
+                     </listBibl>
+                  </msItem>
+               </msContents>
+               <physDesc>
+                  <sealDesc>
+                     <seal>
+                        <p>Zwei rückwärts aufgedrückte Siegel von grünem Wachse, 1. unter
+                           Papierdecke.</p>
+                     </seal>
+                  </sealDesc>
+               </physDesc>
+            </msDesc>
+         </sourceDesc>
+      </fileDesc>
+      <profileDesc>
+         <creation>
+            <date when="14600516">1460 V 16</date>
+            <origDate>an freitag nach sand Pangreczen tag.</origDate></creation>
+      </profileDesc>
+   </teiHeader>
+   <facsimile>
+      <surface>
+         <graphic
+            url="http://images.monasterium.net/pics/AT-WStLA/HA-U/WStLA-HA-Urkunden_03954_r.jpg"/>
+      </surface>
+      <surface>
+         <graphic
+            url="http://images.monasterium.net/pics/AT-WStLA/HA-U/WStLA-HA-Urkunden_03954_v.jpg"/>
+      </surface>
+   </facsimile>
+   <text>
+      <body>
+         <div type="abstract" resp="ms">
+            <p><rs type="event" ref="ev__QGW_II_III_3954">
+                  <rs type="fn" role="issuer"><rs type="person"
+                        ref="pe__markus_noppinger_QGW_II_III_3899">Marx Noppinger</rs></rs> theilt
+                     <rs type="fn" role="recipient"><rs type="org" ref="org__wien">dem Bürgermeister
+                        und Rath der Stadt zu Wien sowie den Verwesern ihres Grundbuches</rs></rs>
+                  mit, dass <rs type="person" ref="pe__markus_noppinger_QGW_II_III_3899">er</rs> und
+                  der <rs type="person" ref="pe__erasmus_feuchter_QGW_II_III_3899"><roleName
+                        type="title">edel</roleName> Erasem Feuchter</rs> ihr Haus, in der
+                  Kernerstrass zu Wienn oben am Egk gegen Kernertor uber gelegen zunagst Hannsen des
+                  Gebl haus mit der innern seitten, das von <rs type="person"
+                     ref="pe__erhard_han_QGW_II_II_3702"><roleName type="title">maister</roleName>
+                     Erharten Han von Zabarn</rs> in kaufsweis an sie komen ist, dem <rs
+                     type="person" ref="pe__stephan_eisenman_QGW_II_III_3954"><roleName type="title"
+                        >maister</roleName> Stephan Eisenman, <roleName type="prof"
+                        >puchsenmaister</roleName>, <roleName type="occ" corresp="org__wien"
+                        >mitburger</roleName> zu Wienn</rs>, um 200 Ungrisch guldein verkauft haben,
+                  und ersuchen sie, es diesem zu fertigen. </rs></p>
+         </div>
+         <div type="seal">
+            <p><rs type="event" ref="ev__QGW_II_III_3954"><rs type="fn" role="witness">Besiegelt mit
+                     dem Siegel des <rs type="person" ref="pe__markus_noppinger_QGW_II_III_3899"
+                        >Ausstellers</rs> und des <rs type="person"
+                        ref="pe__johann_wildenmanner_QGW_II_III_3899">Hanns Wildenmanner, <roleName
+                           type="occ" corresp="org__salzburg">statschreiber</roleName> zu
+                        Salzburg</rs>.</rs>
+               </rs></p>
+         </div>
+         <div type="lists">
+            <xi:include xmlns:xi="http://www.w3.org/2001/XInclude"
+               href="../../../../indices/placeList.xml" xpointer="element(/1/2/1/1)"/>
+            <xi:include xmlns:xi="http://www.w3.org/2001/XInclude"
+               href="../../../../indices/personList.xml" xpointer="element(/1/2/1/1)"/>
+            <xi:include xmlns:xi="http://www.w3.org/2001/XInclude"
+               href="../../../../indices/eventList.xml" xpointer="element(/1/2/1/1)"/>
+            <xi:include xmlns:xi="http://www.w3.org/2001/XInclude"
+               href="../../../../indices/orgList.xml" xpointer="element(/1/2/1/1)"/>
+         </div>
+      </body>
+   </text>
+</TEI>

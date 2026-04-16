@@ -1,0 +1,35 @@
+<?xml version="1.0" encoding="UTF-8"?><!DOCTYPE TEI   SYSTEM "../../../schema/toolbox_full.dtd"><TEI xmlns="http://www.tei-c.org/ns/1.0" xmlns:cei="http://www.monasterium.net/NS/cei" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"><teiHeader><fileDesc><titleStmt><title>Tei version of 1417bis exported from monasterium.net </title></titleStmt><publicationStmt><p/></publicationStmt><!--In Original: cei:front/cei:sourceDesc/cei:sourceDescRegest--><sourceDesc><bibl  type="url">https://www.monasterium.net/mom/AT-WStLA/HAUrk/1417bis/charter</bibl><bibl default="false" status="draft">Quellen zur Geschichte der Stadt Wien, Bd. II/3, Nachträge zu Band 1 As published
+               in HAUrk by Wiener Stadt- und Landesarchiv </bibl><msDesc status="draft"><msIdentifier><repository>Wiener Stadt- und Landesarchiv</repository><idno>1417bis</idno><altIdentifier type="old"><idno>515617</idno></altIdentifier></msIdentifier><physDesc><sealDesc><seal><p>Zum Verschlusse aufgedrücktes Siegel von grünem Wachse unter
+                           Papierdecke.</p></seal></sealDesc></physDesc></msDesc></sourceDesc></fileDesc><encodingDesc><projectDesc default="false"><p><label type="contentual-editing">Projekt Christina Lutter Stadt und Gemeinschaft</label></p></projectDesc></encodingDesc><profileDesc><creation>
+            <date when="13990214">1399 II 14</date>
+            <origDate instant="false">am freitag in den virtagen.</origDate></creation></profileDesc></teiHeader><facsimile><surface><graphic url="http://images.monasterium.net/pics/AT-WStLA/HA-U/WStLA-HA-Urkunden_01417bis_r.jpg"/></surface><surface><graphic url="http://images.monasterium.net/pics/AT-WStLA/HA-U/WStLA-HA-Urkunden_01417bis_v.jpg"/></surface></facsimile><text><body><div type="abstract" resp="cs"><p><rs type="event" ref="ev__QGW_II_I_1417bis"><rs type="fn" role="issuer"><rs type="org" ref="org__wiener_neustadt">Der rat in der Neunstat</rs></rs>
+                  <triggerstring n="disp">theilt <add>mit</add></triggerstring> dem <rs type="fn" role="recipient"><rs type="org" ref="org__wien">Bürgermeister, Richter und
+                        Rathe der Stadt zu Wien</rs></rs> mit, dass seine <rs type="fn" role="other"><rs type="person" ref="pe__thomas_haiden_QGW_II_I_1417bis"><roleName type="occ" corresp="org__wiener_neustadt">Mitbürger</roleName> Thoman der
+                        Haiden</rs>, <rs type="person" ref="pe__konrad_rueber_QGW_II_I_1417bis"><roleName type="occ" corresp="org__wiener_neustadt"><add>Mitbürger</add></roleName>
+                        <roleName type="kin" corresp="pe__lya_QGW_II_I_1417bis"><add>Ehemann</add></roleName> Chunrat der Rueber, der nimbt sich an
+                           <roleName type="rep" corresp="pe__peter_QGW_II_I_1417bis"><add>für</add></roleName>
+                        <roleName type="rep" corresp="pe__lya_QGW_II_I_1417bis">für</roleName> sein
+                           <rs type="person" ref="pe__lya_QGW_II_I_1417bis"><roleName type="kin" corresp="pe__konrad_rueber_QGW_II_I_1417bis">hausfraun</roleName>, <roleName type="title">fraun</roleName> Lya</rs></rs>, und <rs type="person" ref="pe__jakob_haiden_QGW_II_I_1417bis">
+                        <roleName type="occ" corresp="org__wiener_neustadt"><add>Mitbürger</add></roleName> Jacob der Haiden , der Letzteren
+                           <roleName type="kin" corresp="pe__lya_QGW_II_I_1417bis">Bruder</roleName>
+                        <roleName type="kin" corresp="pe__esther_QGW_II_I_1417bis"><add>Bruder</add></roleName><roleName type="rep" corresp="pe__lya_QGW_II_I_1417bis">für</roleName></rs>, und derselb
+                     Chunrat und Jacob, die habent sich auch angenomen für <rs type="person" ref="pe__peter_QGW_II_I_1417bis">Peterlein, fraun Hester selig <roleName type="kin" corresp="pe__esther_QGW_II_I_1417bis">sun</roleName></rs>, <rs type="person" ref="pe__esther_QGW_II_I_1417bis">
+                        <roleName type="title"><add>frau</add></roleName>
+                        <add>Hester</add>
+                        <roleName type="dead"><add>selig</add></roleName> des egenanten Jacobs
+                           <roleName type="kin" corresp="pe__jakob_haiden_QGW_II_I_1417bis">swester</roleName></rs>,
+                        <triggerstring n="fn"><add>Anspruch an ein Leibgeding</add></triggerstring></rs>
+                  <triggerstring n="disp">ihren Anspruch an ein Leibgeding</triggerstring>, <rs type="fn" role="other"><triggerstring n="fn">welches <add>innhat</add></triggerstring> der <rs type="person" ref="pe__pilgrim_snaeczl_QGW_II_I_1015">Wiener <roleName type="occ" corresp="org__wien">Bürger</roleName> Piligreim der Sneczel</rs></rs>
+                  innhat und daz <rs type="fn" role="other"><triggerstring n="fn">herchomen ist
+                        von</triggerstring>
+                     <rs type="person" ref="pe__anna_QGW_II_I_1418"><roleName type="title">fraun</roleName> Annen, seiner <roleName type="kin" corresp="pe__pilgrim_snaeczl_QGW_II_I_1015">hausfraun</roleName></rs></rs>, <rs type="fn" role="recipient">ihren lieben freunden und miterben, <rs type="person" ref="pe__leonhard_haiden_QGW_II_I_1308"><roleName type="occ" corresp="org__wiener_neustadt"><add>Mitbürger</add></roleName>
+                        <roleName type="friend" corresp="pe__thomas_haiden_QGW_II_I_1417bis"><add>Freund</add></roleName>
+                        <roleName type="friend" corresp="pe__konrad_rueber_QGW_II_I_1417bis"><add>Freund</add></roleName>
+                        <roleName type="friend" corresp="pe__jakob_haiden_QGW_II_I_1417bis"><add>Freund</add></roleName>
+                        <add>miterben</add> Linharten dem Haiden</rs> und <rs type="person" ref="pe__erhard_haiden_QGW_II_I_1417bis"><roleName type="occ" corresp="org__wiener_neustadt"><add>Mitbürger</add></roleName> Erharten
+                        dem Haiden <roleName type="friend" corresp="pe__thomas_haiden_QGW_II_I_1417bis"><add>Freund</add></roleName>
+                        <roleName type="friend" corresp="pe__konrad_rueber_QGW_II_I_1417bis"><add>Freund</add></roleName>
+                        <roleName type="friend" corresp="pe__jakob_haiden_QGW_II_I_1417bis"><add>Freund</add></roleName>
+                        <add>miterben</add>
+                     </rs> , auch seinen mitpurgern</rs>, <triggerstring n="disp">übergeben
+                     haben</triggerstring>.</rs></p></div><div type="lists"><xi:include xmlns:xi="http://www.w3.org/2001/XInclude" href="../../../../indices/placeList.xml" xpointer="element(/1/2/1/1)"/><xi:include xmlns:xi="http://www.w3.org/2001/XInclude" href="../../../../indices/personList.xml" xpointer="element(/1/2/1/1)"/><xi:include xmlns:xi="http://www.w3.org/2001/XInclude" href="../../../../indices/eventList.xml" xpointer="element(/1/2/1/1)"/><xi:include xmlns:xi="http://www.w3.org/2001/XInclude" href="../../../../indices/orgList.xml" xpointer="element(/1/2/1/1)"/></div></body></text></TEI>

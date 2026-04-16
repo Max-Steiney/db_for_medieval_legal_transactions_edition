@@ -1,0 +1,139 @@
+<?xml version="1.0" encoding="UTF-8" standalone="no"?>
+<!DOCTYPE TEI
+  SYSTEM "../../../schema/toolbox_full.dtd">
+<TEI xmlns:cei="http://www.monasterium.net/NS/cei" xmlns="http://www.tei-c.org/ns/1.0">
+   <teiHeader>
+      <fileDesc>
+         <titleStmt>
+            <title>Tei version of 4092 exported from monasterium.net </title>
+         </titleStmt>
+         <publicationStmt>
+            <p/>
+         </publicationStmt>
+         <!--In Original: cei:front/cei:sourceDesc/cei:sourceDescRegest-->
+         <sourceDesc>
+            <bibl>Quellen zur Geschichte der Stadt Wien, Bd. II/3, Nr. As published in HAUrk by
+               Wiener Stadt- und Landesarchiv </bibl>
+            <msDesc>
+               <msIdentifier>
+                  <repository>Wiener Stadt- und Landesarchiv</repository>
+                  <idno>4092</idno>
+                  <altIdentifier type="old">
+                     <idno>518366</idno>
+                  </altIdentifier>
+               </msIdentifier>
+               <msContents>
+                  <msItem>
+                     <listBibl>
+                        <bibl type="url"
+                           >https://www.monasterium.net/mom/AT-WStLA/HAUrk/4092/charter</bibl>
+                        <bibl>Pez, CD. 6c, 395.</bibl>
+                        <bibl>Chmel, Regesten 420 n° 4122 Regest.</bibl>
+                     </listBibl>
+                  </msItem>
+               </msContents>
+               <physDesc>
+                  <sealDesc>
+                     <seal>
+                        <p>An Pressel anhangendes Wappensiegel (Sava Fig. 113), roth u. Sch., mit
+                           Rücksiegel (Sava Fig. 117). </p>
+                     </seal>
+                  </sealDesc>
+               </physDesc>
+            </msDesc>
+         </sourceDesc>
+      </fileDesc>
+      <profileDesc>
+         <creation>
+            <placeName>Wiener-Neustadt</placeName>
+            <date when="14641109">1464 XI 09</date>
+            <origDate>Geben zu der Neunstat an freitag vor sand Mertten tag, nach Kristi gepurde im
+               1400 und 64., unsers kaisertumbs im 13., unserr reich, des Römischen im 25. und des
+               Hungrischen im 6. jaren. </origDate></creation>
+      </profileDesc>
+   </teiHeader>
+   <facsimile>
+      <surface>
+         <graphic
+            url="http://images.monasterium.net/pics/AT-WStLA/HA-U/WStLA-HA-Urkunden_04092_r.jpg"/>
+      </surface>
+      <surface>
+         <graphic
+            url="http://images.monasterium.net/pics/AT-WStLA/HA-U/WStLA-HA-Urkunden_04092_v.jpg"/>
+      </surface>
+   </facsimile>
+   <text>
+      <body>
+         <div type="abstract" resp="vh">
+            <p><rs type="event" ref="ev__QGW_II_III_4092"><rs type="fn" role="issuer"><rs
+                        type="person" ref="pe__friedrich_v_herzog_von_oesterreich_QGW_II_I_3270"
+                           ><roleName type="occ" corresp="org__heiliges_roemisches_reich"
+                           >Kaiser</roleName> Friedrich III.</rs></rs> bestätigt, dass in den
+                  vergangen irrungen, so in seiner stat Wienn gewesen, <rs type="person"
+                     ref="pe__simon_poetel_QGW_II_II_2412">Simon Pötl, sein <roleName type="occ"
+                        corresp="pe__friedrich_v_herzog_von_oesterreich_QGW_II_I_3270"
+                        >diener</roleName><roleName type="occ" corresp="org__wien"
+                        ><add>burger</add></roleName></rs>, <rs type="person"
+                     ref="pe__niklas_teschler_QGW_II_II_2951">Niclas Teschler</rs>, <rs
+                     type="person" ref="pe__johann_kanstorffer_QGW_II_II_3401">Hanns Khanstorffer
+                        <roleName type="occ"
+                        corresp="pe__friedrich_v_herzog_von_oesterreich_QGW_II_I_3270"
+                           ><add>diener</add></roleName><roleName type="occ" corresp="org__wien"
+                           ><add>burger</add></roleName></rs>, <rs type="person"
+                     ref="pe__laurenz_stadler_QGW_II_II_3572">Larencz Stadler <roleName type="occ"
+                        corresp="pe__friedrich_v_herzog_von_oesterreich_QGW_II_I_3270"
+                           ><add>diener</add></roleName><roleName type="occ" corresp="org__wien"
+                           ><add>burger</add></roleName></rs>, <rs type="person"
+                     ref="pe__johann_tanhauser_QGW_II_II_2369">Hanns Tanhauser</rs>, <rs
+                     type="person" ref="pe__ulrich_perman_QGW_II_III_3923">Ulreich Perman <roleName
+                        type="occ" corresp="pe__friedrich_v_herzog_von_oesterreich_QGW_II_I_3270"
+                           ><add>diener</add></roleName><roleName type="occ" corresp="org__wien"
+                           ><add>burger</add></roleName></rs>, weilent <rs type="person"
+                     ref="pe__hartung_von_kappel_der_juengere_QGW_II_III_3823">Harttung von Capell,
+                     der jünger <roleName type="occ"
+                        corresp="pe__friedrich_v_herzog_von_oesterreich_QGW_II_I_3270"
+                           ><add>diener</add></roleName><roleName type="occ" corresp="org__wien"
+                           ><add>burger</add></roleName></rs>, und <rs type="person"
+                     ref="pe__christian_kornfail_QGW_II_III_4047">Cristan Kornfail , seine <roleName
+                        type="occ" corresp="org__wien">Bürger</roleName> und <roleName type="occ"
+                        corresp="pe__friedrich_v_herzog_von_oesterreich_QGW_II_I_3270"
+                        >Diener</roleName></rs>, da sie treu zu ihm hielten und ihm Beistand
+                  leisteten, vil und meniger smach, frevel, peinigung an iren leiben erdulden
+                  mussten, ihnen auch ihre Häuser, erb und ander ir gut und hab, so sie daselbs zu
+                  Wienn gehabt haben, genommen und ihre aus diesem Anlasse erhobenen Klagen gegen
+                  die Stadt am Hofe als berechtigt anerkannt worden seien. Da nun beide Theile diese
+                  Angelegenheit an ihn gebracht haben, entscheidet er: 1. Die Entschädigung für die
+                  den Genannten zugefügten smech, frevel und peinigung festzustellen, bleibt ihm
+                  vorbehalten. Als <rs type="person" ref="pe__hartung_von_kappel_QGW_II_III_3807"
+                     >Rechtsnachfolger des <rs type="person"
+                        ref="pe__hartung_von_kappel_QGW_II_III_4045"><roleName type="dead"
+                           >verstorbenen</roleName> Hartung von Capell <roleName type="kin"
+                           corresp="pe__hartung_von_kappel_QGW_II_III_3807"
+                           ><add>sun</add></roleName></rs> tritt dessen Vater Härtung von Capell,
+                        <roleName type="prof">lerer</roleName> beder rechten, des Kaisers <roleName
+                        type="occ" corresp="pe__friedrich_v_herzog_von_oesterreich_QGW_II_I_3270"
+                        >Rath</roleName></rs>, ein. 2. <rs type="org" ref="org__wien">Bürgermeister
+                     und Rath</rs> sollen jene Geschädigten, welche ein gerichtliches Urtheil
+                  erlangt haben, wieder in den Besitz der ihnen abgedrungenen Häuser und Erbgüter
+                  setzen und veranlassen, dass ihnen ihre erbbrief, geltbrief, pücher und register
+                  wieder eingeantwortet werden. 3. Zum Ersatz für das verlorene Gut und andere
+                  Verluste soll die Stadt ihnen innerhalb der nächsten vier Jahre 46000 guldein
+                  Unger und ducaten in Quatemberraten bezahlen. </rs></p>
+         </div>
+         <div type="nota">
+            <p><rs type="event" ref="ev__QGW_II_III_4092_nota">Auf dem Buge von anderer Hand:
+                  commissio domini imperatoris in consilio. </rs></p>
+         </div>
+         <div type="lists">
+            <xi:include xmlns:xi="http://www.w3.org/2001/XInclude"
+               href="../../../../indices/placeList.xml" xpointer="element(/1/2/1/1)"/>
+            <xi:include xmlns:xi="http://www.w3.org/2001/XInclude"
+               href="../../../../indices/personList.xml" xpointer="element(/1/2/1/1)"/>
+            <xi:include xmlns:xi="http://www.w3.org/2001/XInclude"
+               href="../../../../indices/eventList.xml" xpointer="element(/1/2/1/1)"/>
+            <xi:include xmlns:xi="http://www.w3.org/2001/XInclude"
+               href="../../../../indices/orgList.xml" xpointer="element(/1/2/1/1)"/>
+         </div>
+      </body>
+   </text>
+</TEI>

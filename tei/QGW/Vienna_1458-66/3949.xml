@@ -1,0 +1,100 @@
+<?xml version="1.0" encoding="UTF-8" standalone="no"?>
+<!DOCTYPE TEI
+  SYSTEM "../../../schema/toolbox_full.dtd">
+<TEI xmlns:cei="http://www.monasterium.net/NS/cei" xmlns="http://www.tei-c.org/ns/1.0">
+   <teiHeader>
+      <fileDesc>
+         <titleStmt>
+            <title>Tei version of 3949 exported from monasterium.net </title>
+         </titleStmt>
+         <publicationStmt>
+            <p/>
+         </publicationStmt>
+         <!--In Original: cei:front/cei:sourceDesc/cei:sourceDescRegest-->
+         <sourceDesc>
+            <bibl>Quellen zur Geschichte der Stadt Wien, Bd. II/3, Nr. As published in HAUrk by
+               Wiener Stadt- und Landesarchiv </bibl>
+            <msDesc>
+               <msIdentifier>
+                  <repository>Wiener Stadt- und Landesarchiv</repository>
+                  <idno>3949</idno>
+                  <altIdentifier type="old">
+                     <idno>518213</idno>
+                  </altIdentifier>
+               </msIdentifier>
+               <msContents>
+                  <msItem>
+                     <listBibl>
+                        <bibl type="url"
+                           >https://www.monasterium.net/mom/AT-WStLA/HAUrk/3949/charter</bibl>
+                        <bibl>Camesina, Regesten 94. n° 441 Regest.</bibl>
+                     </listBibl>
+                  </msItem>
+               </msContents>
+               <physDesc>
+                  <sealDesc>
+                     <seal>
+                        <p>Zwei rückwärts aufgedrückte Siegel, 1. von ungefärbtem, 2. von grünem
+                           Wachse.</p>
+                     </seal>
+                  </sealDesc>
+               </physDesc>
+            </msDesc>
+         </sourceDesc>
+      </fileDesc>
+      <profileDesc>
+         <creation>
+            <placeName>Wien</placeName>
+            <date when="14600419">1460 IV 19</date>
+            <origDate>ze Wienn, an sambstag vor sand Jorgen tag.</origDate></creation>
+      </profileDesc>
+   </teiHeader>
+   <facsimile>
+      <surface>
+         <graphic
+            url="http://images.monasterium.net/pics/AT-WStLA/HA-U/WStLA-HA-Urkunden_03949_r.jpg"/>
+      </surface>
+      <surface>
+         <graphic
+            url="http://images.monasterium.net/pics/AT-WStLA/HA-U/WStLA-HA-Urkunden_03949_v.jpg"/>
+      </surface>
+   </facsimile>
+   <text>
+      <body>
+         <div type="abstract" resp="vh">
+            <p><rs type="event" ref="ev__QGW_II_III_3949">
+                  <rs type="fn" role="issuer"><rs type="person"
+                        ref="pe__michael_zumph_QGW_II_III_3949">Michel Zumph</rs></rs>, <rs
+                     type="fn" role="recipient"><rs type="org" ref="org__wien">dem Bürgermeister und
+                        Rath</rs></rs> die von <rs type="person" ref="pe__otto_weiss_QGW_II_I_1680"
+                     >Ott Weiss</rs> auf Allerheiling altar dacz sand Stephan gestiftete <rs
+                     type="org" ref="org__wien-st_stephan-altar_allerheiligen-messe_weiss_otto"
+                     >Messe</rs> nach <rs type="person"
+                     ref="pe__wenzel_kranegker_facs_688_TextRegion_1657538333122_1116"><roleName
+                        type="title">herrn</roleName> Wenzlabs Kranegker <roleName type="dead"
+                        >seligen</roleName></rs> abgang verlihen habent, stellt über die ordentliche
+                  Verwaltung der dazu gehörigen Güter und die Ausführung der Stiftung einen Revers
+                  aus. </rs></p>
+         </div>
+         <div type="seal">
+            <p><rs type="event" ref="ev__QGW_II_III_3949">Besiegelt mit den Siegeln des <rs
+                     type="fn" role="witness"><rs type="person"
+                        ref="pe__oswald_reicholf_QGW_II_II_3314"><roleName type="title">edeln vesten
+                           ritter hern</roleName> Oswalts Reicholf</rs> und des <rs type="person"
+                        ref="pe__johann_eslarn_QGW_II_III_3913">Wiener <roleName type="occ"
+                           corresp="org__wien">Bürgers</roleName> Hannsen von Eslorn</rs></rs>.
+               </rs></p>
+         </div>
+         <div type="lists">
+            <xi:include xmlns:xi="http://www.w3.org/2001/XInclude"
+               href="../../../../indices/placeList.xml" xpointer="element(/1/2/1/1)"/>
+            <xi:include xmlns:xi="http://www.w3.org/2001/XInclude"
+               href="../../../../indices/personList.xml" xpointer="element(/1/2/1/1)"/>
+            <xi:include xmlns:xi="http://www.w3.org/2001/XInclude"
+               href="../../../../indices/eventList.xml" xpointer="element(/1/2/1/1)"/>
+            <xi:include xmlns:xi="http://www.w3.org/2001/XInclude"
+               href="../../../../indices/orgList.xml" xpointer="element(/1/2/1/1)"/>
+         </div>
+      </body>
+   </text>
+</TEI>

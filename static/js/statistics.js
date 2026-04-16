@@ -734,6 +734,51 @@
         }
 
 
+        /* ---- Top Persons (E7) ---- */
+
+        function renderTopPersons() {
+            var container = document.getElementById('top-persons-chart');
+            if (!container || !data.topPersons) return;
+            container.innerHTML = '';
+
+            var items = data.topPersons;
+            if (!items.length) {
+                container.innerHTML = '<p class="stats-no-data">Keine Daten.</p>';
+                return;
+            }
+
+            var ol = document.createElement('ol');
+            ol.className = 'stats-ranking stats-ranking--wide';
+
+            var maxCount = items[0].total;
+            var ROLE_LABELS = ChartHelpers.ROLE_LABELS;
+
+            items.forEach(function(item) {
+                var pct = maxCount > 0 ? (item.total / maxCount * 100) : 0;
+                var sexColor = item.sex === 'f' ? SEX_COLORS.f : (item.sex === 'm' ? SEX_COLORS.m : (gt('--color-text-light') || '#b0a99f'));
+
+                // Role breakdown text
+                var roleParts = [];
+                ['issuer', 'recipient', 'witness', 'other'].forEach(function(r) {
+                    if (item.roles[r]) roleParts.push(ROLE_LABELS[r] + ': ' + item.roles[r]);
+                });
+                var roleText = roleParts.join(' · ');
+
+                var li = document.createElement('li');
+                li.innerHTML =
+                    '<div class="stats-rank-bar-track">' +
+                        '<div class="stats-rank-bar-fill" style="width:' + pct.toFixed(1) + '%;background:' + sexColor + '"></div>' +
+                    '</div>' +
+                    '<span class="stats-rank-name">' + esc(item.name) + '</span>' +
+                    '<span class="stats-rank-roles">' + esc(roleText) + '</span>' +
+                    '<span class="stats-rank-count">' + fmt(item.total) + ' Akte</span>';
+                ol.appendChild(li);
+            });
+
+            container.appendChild(ol);
+        }
+
+
         /* ---- Cross-filter ---- */
 
         function selectCollection(path, label) {
@@ -766,6 +811,7 @@
         renderAnnotation();
         renderCoverage();
         renderRankings();
+        renderTopPersons();
 
         // Responsive: redraw timeline on resize
         if (window.ResizeObserver) {

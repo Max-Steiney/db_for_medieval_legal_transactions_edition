@@ -1,0 +1,101 @@
+<?xml version="1.0" encoding="UTF-8" standalone="no"?>
+<!DOCTYPE TEI
+  SYSTEM "../../../schema/toolbox_full.dtd">
+<TEI xmlns:cei="http://www.monasterium.net/NS/cei" xmlns="http://www.tei-c.org/ns/1.0">
+   <teiHeader>
+      <fileDesc>
+         <titleStmt>
+            <title>Tei version of 3947 exported from monasterium.net </title>
+         </titleStmt>
+         <publicationStmt>
+            <p/>
+         </publicationStmt>
+         <!--In Original: cei:front/cei:sourceDesc/cei:sourceDescRegest-->
+         <sourceDesc>
+            <bibl>Quellen zur Geschichte der Stadt Wien, Bd. II/3, Nr. As published in HAUrk by
+               Wiener Stadt- und Landesarchiv </bibl>
+            <msDesc>
+               <msIdentifier>
+                  <repository>Wiener Stadt- und Landesarchiv</repository>
+                  <idno>3947</idno>
+                  <altIdentifier type="old">
+                     <idno>518211</idno>
+                  </altIdentifier>
+               </msIdentifier>
+               <msContents>
+                  <msItem>
+                     <listBibl>
+                        <bibl type="url"
+                           >https://www.monasterium.net/mom/AT-WStLA/HAUrk/3947/charter</bibl>
+                     </listBibl>
+                  </msItem>
+               </msContents>
+               <physDesc>
+                  <sealDesc>
+                     <seal>
+                        <p>Die angehängten Siegel fehlen.</p>
+                     </seal>
+                  </sealDesc>
+               </physDesc>
+            </msDesc>
+         </sourceDesc>
+      </fileDesc>
+      <profileDesc>
+         <creation>
+            <placeName>Wien</placeName>
+            <date when="14600127">1460 I 27</date>
+            <origDate>zu Wienn, an suntag nach sand Pauls tag seiner bekerung.</origDate></creation>
+      </profileDesc>
+   </teiHeader>
+   <facsimile>
+      <surface>
+         <graphic
+            url="http://images.monasterium.net/pics/AT-WStLA/HA-U/WStLA-HA-Urkunden_03947_r.jpg"/>
+      </surface>
+      <surface>
+         <graphic
+            url="http://images.monasterium.net/pics/AT-WStLA/HA-U/WStLA-HA-Urkunden_03947_v.jpg"/>
+      </surface>
+   </facsimile>
+   <text>
+      <body>
+         <div type="abstract" resp="vh">
+            <p><rs type="event" ref="ev__QGW_II_III_3947"><rs type="fn" role="issuer"><rs
+                        type="person" ref="pe__niklas_vischer_QGW_II_III_3947"> Niclas Vischer,
+                        gesessen zu Lach</rs></rs>, verkauft <rs type="fn" role="other"><triggerstring
+                        n="fn">mit Handen</triggerstring> seiner <rs type="person"
+                        ref="pe__anna_voesendorfferin_QGW_II_III_3947"><roleName type="title"
+                           >gruntfraun swester</roleName> Annen Vösendorfferin, <roleName type="occ"
+                           corresp="org__wien-st_niklas_vor_dem_stubentor_zisterzienserinnen"
+                           >abtessin</roleName> des fraunklosters zu sand Niclas vor
+                     Stubentor</rs></rs> , drei Viertel Weingarten, gelegen im hindern Mittertal
+                  zunagst Hannsen des Meulinger weingarten, von denen man 1½ Eimer Most im Lesen zu
+                  Bergrecht und 7½ dn. zu Voitrecht dient, um 40 lb dn. <rs type="fn"
+                     role="recipient"><rs type="person" ref="pe__konrad_eisenhut_QGW_II_III_3947"
+                        >Kunczen Eisenhut, dem <roleName type="prof">kursner</roleName>, [ 49]
+                           <roleName type="occ" corresp="org__wien">mitburger</roleName> zu
+                        Wienn</rs>, und <rs type="person" ref="pe__anna_QGW_II_III_3947">Annen,
+                        seiner <roleName type="kin" corresp="pe__konrad_eisenhut_QGW_II_III_3947"
+                           >hausfraun</roleName></rs></rs>. </rs></p>
+         </div>
+         <div type="seal">
+            <p><rs type="event" ref="ev__QGW_II_III_3947">Besiegelt mit den Siegeln der <rs
+                     type="fn" role="witness"><rs type="person"
+                        ref="pe__anna_voesendorfferin_QGW_II_III_3947">Aebtissin</rs> und des <rs
+                        type="person" ref="pe__veit_hintperger_QGW_II_II_3311">Wiener <roleName
+                           type="occ" corresp="org__wien">Bürgers</roleName> Veit
+                     Hindperger</rs></rs>. </rs></p>
+         </div>
+         <div type="lists">
+            <xi:include xmlns:xi="http://www.w3.org/2001/XInclude"
+               href="../../../../indices/placeList.xml" xpointer="element(/1/2/1/1)"/>
+            <xi:include xmlns:xi="http://www.w3.org/2001/XInclude"
+               href="../../../../indices/personList.xml" xpointer="element(/1/2/1/1)"/>
+            <xi:include xmlns:xi="http://www.w3.org/2001/XInclude"
+               href="../../../../indices/eventList.xml" xpointer="element(/1/2/1/1)"/>
+            <xi:include xmlns:xi="http://www.w3.org/2001/XInclude"
+               href="../../../../indices/orgList.xml" xpointer="element(/1/2/1/1)"/>
+         </div>
+      </body>
+   </text>
+</TEI>

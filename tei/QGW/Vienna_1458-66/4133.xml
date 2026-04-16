@@ -1,0 +1,147 @@
+<?xml version="1.0" encoding="UTF-8" standalone="no"?>
+<!DOCTYPE TEI
+  SYSTEM "../../../schema/toolbox_full.dtd">
+<TEI xmlns:cei="http://www.monasterium.net/NS/cei" xmlns="http://www.tei-c.org/ns/1.0">
+   <teiHeader>
+      <fileDesc>
+         <titleStmt>
+            <title>Tei version of 4133 exported from monasterium.net </title>
+         </titleStmt>
+         <publicationStmt>
+            <p/>
+         </publicationStmt>
+         <!--In Original: cei:front/cei:sourceDesc/cei:sourceDescRegest-->
+         <sourceDesc>
+            <bibl>Quellen zur Geschichte der Stadt Wien, Bd. II/3, Nr. As published in HAUrk by
+               Wiener Stadt- und Landesarchiv </bibl>
+            <msDesc>
+               <msIdentifier>
+                  <repository>Wiener Stadt- und Landesarchiv</repository>
+                  <idno>4133</idno>
+                  <altIdentifier type="old">
+                     <idno>518412</idno>
+                  </altIdentifier>
+               </msIdentifier>
+               <msContents>
+                  <msItem>
+                     <listBibl>
+                        <bibl type="url"
+                           >https://www.monasterium.net/mom/AT-WStLA/HAUrk/4133/charter</bibl>
+                        <bibl>Jahrbuch der kais. Kunstsamml. 17b, n° 15368 Regest; vgl. auch ebenda
+                           n° 15379.</bibl>
+                     </listBibl>
+                  </msItem>
+               </msContents>
+               <physDesc>
+                  <sealDesc>
+                     <seal>
+                        <p>Zwei anhangende Siegel: 1. sschwarz u. Sch. 2. fehlt, 3. grün u. Sch.,
+                           beschädigt.Siegler: der Aussteller, der edel herr, her Albrecht
+                              von Eberstorf, obrister erbkamrer in Österreich, und der edel vest
+                              Jorig Schekch von Bogking . </p>
+                     </seal>
+                  </sealDesc>
+               </physDesc>
+            </msDesc>
+         </sourceDesc>
+      </fileDesc>
+      <profileDesc>
+         <creation>
+            <placeName>Wien</placeName>
+            <date when="14661008">1466 X 08</date>
+            <origDate>zu Wienn, an mittichen vor sand Colmans tag, des heiligen
+            martrer.</origDate></creation>
+      </profileDesc>
+   </teiHeader>
+   <facsimile>
+      <surface>
+         <graphic
+            url="http://images.monasterium.net/pics/AT-WStLA/HA-U/WStLA-HA-Urkunden_04133_r.jpg"/>
+      </surface>
+      <surface>
+         <graphic
+            url="http://images.monasterium.net/pics/AT-WStLA/HA-U/WStLA-HA-Urkunden_04133_v.jpg"/>
+      </surface>
+   </facsimile>
+   <text>
+      <body>
+         <div type="abstract" resp="vh">
+            <p><rs type="event" ref="ev__QGW_II_III_4133">
+                  <rs type="fn" role="issuer"><rs type="person"
+                        ref="pe__johann_prugkner_QGW_II_II_3523">Hanns Prugkner, der
+                  elter</rs></rs>, beurkundet seinen letzten Willen. Er schafft: 1. 10 lb dn. für
+                  sein Begräbnis bei <rs type="org" ref="org__wien-st_michael">St. Michael zu
+                     Wien</rs>; 2. tausend Messen binnen Jahresfrist nach seinem Tode, wofür jeder
+                  Priester 7 dn. erhalten soll; 3. seinen <rs type="person"
+                     ref="pe__barbara_QGW_II_II_3523"><roleName type="kin"
+                        corresp="pe__johann_prugkner_QGW_II_II_3523">Schwestern</roleName>
+                     Barbaren</rs> und <rs type="person" ref="pe__anna_QGW_II_II_3523"><roleName
+                        type="kin" corresp="pe__johann_prugkner_QGW_II_II_3523"
+                        ><add>Schwester</add></roleName>Annen</rs> je 100 lb dn. 4. <rs
+                     type="person" ref="pe__johann_prugkner_der_juengere_QGW_II_III_4133">Hannsen
+                     Prugkner, dem jungern</rs>, <rs type="person"
+                     ref="pe__georg_prugkner_QGW_II_III_4133">Jorgen, seinem <roleName type="kin"
+                        corresp="pe__johann_prugkner_der_juengere_QGW_II_III_4133"
+                     >pruder</roleName></rs>, <rs type="person"
+                     ref="pe__sighard_prugkner_QGW_II_III_4133"><roleName type="kin"
+                        corresp="pe__johann_prugkner_QGW_II_II_3523"><add>Vetter</add></roleName>
+                     Sigharten</rs> und <rs type="person" ref="pe__martin_prugkner_QGW_II_III_4133"
+                     >Mertten, <roleName type="kin" corresp="pe__johann_prugkner_QGW_II_II_3523"
+                        >vettern</roleName></rs>, den Prugknern , seinen Vettern, sein und seiner
+                  hausfraun seligen stift zu Ebenfurt in sand Ulreichs kirchen mitsambt den briefen
+                  darüber lauttund ; 5. <rs type="person" ref="pe__thomas_QGW_II_III_4133">Thoman,
+                     <rs type="person" ref="pe__johannes_QGW_II_III_4133">Johannesen, seines <roleName type="occ"
+                           corresp="pe__johann_prugkner_QGW_II_II_3523">knaben</roleName></rs>,
+                        <roleName type="occ" corresp="pe__johann_prugkner_QGW_II_II_3523"
+                        >Schulmeister</roleName></rs>, 20 lb dn. und ain gerichts pet mit aller
+                  zugehorung, nicht das pest, noch das erigist; 6. <rs type="person"
+                     ref="pe__wolfgang_QGW_II_III_4133">Wolfgangen, seinem diener</rs>, 14 lb dn.,
+                  ain panczier, ain gollir und ainen eisenhut, auch nicht das pest, noch das ergist,
+                  und ainen neuen swarczen Pernischen sumerrokch und ainen swarczen mantel ; 7. <rs
+                     type="person" ref="pe__margarethe_QGW_II_III_4133">Margrethen, seiner <roleName
+                        type="occ" corresp="pe__johann_prugkner_QGW_II_II_3523"
+                        >schafferin</roleName></rs>, seinen Weingarten, gelegen im Vahental, und all
+                  sein varund gut und hausrat in seinem haus, geleich halbs, ausgenomen sein
+                  beraitschaft, clainad, silberassech, geltschuld, briefe, weingarten, erb,
+                  gruntdinst, gült, aigen, lehen und purkrecht, und Johannesen, irem sun, den andern
+                  halben tail ; 8. den Ueberrest seines Nachlasses der bruderschaft und pharrmenig
+                  sand Michels pharrkirchen zu Wienn, mit der Bestimmung, dass der Kirchmeister den
+                  angefangenen <rs type="org" ref="org__wien-st_michael-altar_st_wolfgang">St.
+                     Wolfgangsaltar</rs> bauen und darauf eine fünfmal in der Woche zu lesende
+                  Messe, sowie ein ewiges Licht stiften solle. Diese <rs type="org"
+                     ref="org__wien-st_michael-altar_st_wolfgang-messe_prugkner">Messe</rs> ist
+                  zuerst dem genannten Johannes zu verleihen, der bis zur Erlangung der
+                  priesterlichen Würde Wohnung und Unterhalt in dem Hause auf der Hochstrass haben
+                  solle. Sollte er nicht Priester werden, so bleibt ihm dennoch dieses Haus und er
+                  hat von der Geldschuld der Stadt 1200 Ungrisch guldein in gold zu erhalten. Stürbe
+                  er ungevogt, so soll sein Antheil an die Messe fallen und seine [ 102] Mutter
+                     Margreth mit 100 lb dn. entschädigt werden. Das Geschäft empfiehlt er <rs
+                     type="person" ref="pe__georg_von_pottendorf_QGW_II_I_1625"><roleName
+                        type="title">hern</roleName> Jorgen von Potendorf, <roleName type="occ"
+                        corresp="org__oesterreich-herzogtum">erbschenkchen und
+                        landmarschalh</roleName> in Osterreich</rs>, dem jeweiligen Kirchmeister und
+                  der pharrmenig von St. Michael. </rs></p>
+         </div>
+         <div type="seal">
+            <p><rs type="event" ref="ev__QGW_II_III_4133">Siegler: der <rs type="fn" role="witness"
+                        ><rs type="person" ref="pe__johann_prugkner_QGW_II_II_3523">Aussteller</rs>,
+                     der <rs type="person" ref="pe__albrecht_von_ebersdorf_QGW_II_II_3391"><roleName
+                           type="title">edel herr, her</roleName> Albrecht von Eberstorf, <roleName
+                           type="occ" corresp="org__oesterreich-herzogtum">obrister
+                           erbkamrer</roleName> in Österreich</rs>, und der <rs type="person"
+                        ref="pe__georg_schekch_QGW_II_II_3528"><roleName type="title">edel
+                           vest</roleName> Jorig Schekch von Bogking</rs></rs> . </rs></p>
+         </div>
+         <div type="lists">
+            <xi:include xmlns:xi="http://www.w3.org/2001/XInclude"
+               href="../../../../indices/placeList.xml" xpointer="element(/1/2/1/1)"/>
+            <xi:include xmlns:xi="http://www.w3.org/2001/XInclude"
+               href="../../../../indices/personList.xml" xpointer="element(/1/2/1/1)"/>
+            <xi:include xmlns:xi="http://www.w3.org/2001/XInclude"
+               href="../../../../indices/eventList.xml" xpointer="element(/1/2/1/1)"/>
+            <xi:include xmlns:xi="http://www.w3.org/2001/XInclude"
+               href="../../../../indices/orgList.xml" xpointer="element(/1/2/1/1)"/>
+         </div>
+      </body>
+   </text>
+</TEI>

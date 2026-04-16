@@ -1,0 +1,111 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<TEI xmlns="http://www.tei-c.org/ns/1.0" xmlns:cei="http://www.monasterium.net/NS/cei"
+   xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance">
+   <teiHeader>
+      <fileDesc>
+         <titleStmt>
+            <title>Tei version of 5506 exported from monasterium.net </title>
+         </titleStmt>
+         <publicationStmt>
+            <p/>
+         </publicationStmt>
+         <!--In Original: cei:front/cei:sourceDesc/cei:sourceDescRegest-->
+         <sourceDesc>
+            <bibl>Quellen zur Geschichte der Stadt Wien, Bd. II/4, Nr. 5506 As published in HAUrk by
+               Wiener Stadt- und Landesarchiv </bibl>
+            <msDesc>
+               <msIdentifier>
+                  <repository>Wiener Stadt- und Landesarchiv</repository>
+                  <idno>5506</idno>
+                  <altIdentifier type="old">
+                     <idno>519814</idno>
+                  </altIdentifier>
+               </msIdentifier>
+               <physDesc>
+                  <sealDesc>
+                     <seal>
+                        <p>Zwei aufgedrückte Rücksiegel: a) Papierdecke abgefallen, grünes Wachs,
+                           beschädigt: IV C: Steigender Hirsch in schräggeteiltem Felde auf Helm
+                           halb. Hirsch: S. Erhart Pawm .... be .. b) Unter Papierdecke. <quote>Mit
+                              urkhund des briefs besiglten mit der erbern weisn Hannsen Mülhawser
+                              und Erharten Pawmschaber baider burger zu Wienn aufgedrukhten insigln
+                           </quote>. </p>
+                     </seal>
+                  </sealDesc>
+               </physDesc>
+            </msDesc>
+         </sourceDesc>
+      </fileDesc>
+      <encodingDesc>
+         <projectDesc default="false">
+            <p><label type="contentual-editing">Projekt Christina Lutter Stadt und
+                  Gemeinschaft</label></p>
+         </projectDesc>
+      </encodingDesc>
+      <profileDesc>
+         <creation>
+            <placeName>Wien</placeName>
+            <date when="14940317">1494 III 17</date>
+            <origDate>Gebn zu Wienn, an möntag nach dem sonntag Judica in der vasten, anno domini
+               etc. nonagesimo quarto. </origDate></creation>
+      </profileDesc>
+   </teiHeader>
+   <facsimile>
+      <surface>
+         <graphic
+            url="http://images.monasterium.net/pics/AT-WStLA/HA-U/WStLA-HA-Urkunden_05506_r.jpg"/>
+      </surface>
+      <surface>
+         <graphic
+            url="http://images.monasterium.net/pics/AT-WStLA/HA-U/WStLA-HA-Urkunden_05506_v.jpg"/>
+      </surface>
+   </facsimile>
+   <text>
+      <body>
+         <div type="abstract">
+            <p>
+               <rs type="fn" role="issuer"><rs type="person"
+                     ref="pe__heinrich_frankch_QGW_II_II_4088">Hainrich Frannkh <roleName type="occ"
+                        corresp="org__wien">burger</roleName> daselbs</rs> und ... <rs type="person"
+                     ref="pe__barbara_QGW_II_IV_5506">Barbara sein <roleName type="kin"
+                        corresp="pe__heinrich_frankch_QGW_II_II_4088">hausfraw</roleName></rs></rs>
+               melden <rs type="fn" role="recipient"><rs type="person"
+                     ref="pe__friedrich_geldrich_QGW_II_IV_5506"><roleName type="title"
+                        >hern</roleName> Fridrichn Geldrich zu den zeitn <roleName type="occ"
+                        corresp="org__wien">burgermaister</roleName></rs> und <rs type="org"
+                     ref="org__wien">dem rate gemain der stat zu Wienn</rs> . . . auch den
+                  innehabern irer gruntbucher</rs> , <rs type="event" ref="NULL">daß sie ihr halbes
+                  haus mit allen den gemechen und gemainn stukhen, so nach laut der tailbrief darzu
+                  gehörn ( und ist der erst tail desselbn haus ganzes gelegen hie under den
+                  fleischpenkhen am platz, genannt des von Tirnaa 1 haus, 2 umb den gegentail
+                  desselbn haus Hanns Leschenprannt seliger und Barbara sein tochter, Wolfgangn
+                  Tunkhel hausfraw nutz und gwer haben ) <rs type="fn" role="recipient">dem <rs
+                        type="person" ref="pe__peter_edlasperger_QGW_II_IV_5506"><roleName
+                           type="title">edln gestrengen ritter herren</roleName> Pettern
+                        Edlasperger, den mön auch nennet <roleName type="occ" corresp="org__ofen"
+                           >Junkhherr</roleName> von Ofen</rs>,</rs> umb vierzehenhundert gülden
+                  hungrisch, guet und gerecht in gold und wag , .... verkauft hoben nach laut aines
+                  kaufbriefs, den mön dem Rate vorbringt und den derselbe mit der stat gruntinsigl
+                  noch besigln soll</rs>. Sie bitten um Löschung ihres Namens und Eintragung des
+               egenanten herren Petern Edlasperger, sein erben oder wem er daz schafft macht oder
+               geit . Wenn sie ainnicherlay merer aufsandung, dann vor stet, thun solten und an
+               disem abgang wer, wollten sie dafür aufkommen. </p>
+         </div>
+         <div type="nota">
+            <p>Rückaufschrift am oberen Rande der umgekehrten Rückseite: Herrn Peterns Edlersperger
+               (durchstrichen) Hainreichs Franken und seiner hausfr. aufsand. (Von anderer Hand:)
+               Über Junckher Petern von Edlasperg halb haus am Luegeckh gelegen, anno 1494. </p>
+         </div>
+         <div type="lists">
+            <xi:include xmlns:xi="http://www.w3.org/2001/XInclude"
+               href="../../../../indices/placeList.xml" xpointer="element(/1/2/1/1)"/>
+            <xi:include xmlns:xi="http://www.w3.org/2001/XInclude"
+               href="../../../../indices/personList.xml" xpointer="element(/1/2/1/1)"/>
+            <xi:include xmlns:xi="http://www.w3.org/2001/XInclude"
+               href="../../../../indices/eventList.xml" xpointer="element(/1/2/1/1)"/>
+            <xi:include xmlns:xi="http://www.w3.org/2001/XInclude"
+               href="../../../../indices/orgList.xml" xpointer="element(/1/2/1/1)"/>
+         </div>
+      </body>
+   </text>
+</TEI>

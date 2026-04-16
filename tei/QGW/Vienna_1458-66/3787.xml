@@ -1,0 +1,100 @@
+<?xml version="1.0" encoding="UTF-8" standalone="no"?>
+<!DOCTYPE TEI
+  SYSTEM "../../../schema/toolbox_full.dtd">
+<TEI xmlns:cei="http://www.monasterium.net/NS/cei" xmlns="http://www.tei-c.org/ns/1.0">
+   <teiHeader>
+      <fileDesc>
+         <titleStmt>
+            <title>Tei version of 3787 exported from monasterium.net </title>
+         </titleStmt>
+         <publicationStmt>
+            <p/>
+         </publicationStmt>
+         <!--In Original: cei:front/cei:sourceDesc/cei:sourceDescRegest-->
+         <sourceDesc>
+            <bibl>Quellen zur Geschichte der Stadt Wien, Bd. II/3, Nr. As published in HAUrk by
+               Wiener Stadt- und Landesarchiv </bibl>
+            <msDesc>
+               <msIdentifier>
+                  <repository>Wiener Stadt- und Landesarchiv</repository>
+                  <idno>3787</idno>
+                  <altIdentifier type="old">
+                     <idno>518043</idno>
+                  </altIdentifier>
+               </msIdentifier>
+               <msContents>
+                  <msItem>
+                     <listBibl>
+                        <bibl type="url"
+                           >https://www.monasterium.net/mom/AT-WStLA/HAUrk/3787/charter</bibl>
+                     </listBibl>
+                  </msItem>
+               </msContents>
+               <physDesc>
+                  <sealDesc>
+                     <seal>
+                        <p>Rückwärts aufgedrücktes Siegel von grünem Wachse, fast ganz
+                           abgesprungen.</p>
+                     </seal>
+                  </sealDesc>
+               </physDesc>
+            </msDesc>
+         </sourceDesc>
+      </fileDesc>
+      <profileDesc>
+         <creation>
+            <placeName>Wien</placeName>
+            <date when="14580622">1458 VI 22</date>
+            <origDate>zu Wienn, an phincztag vor sand Johanns tag ze Sunnbendten.</origDate>
+         </creation>
+      </profileDesc>
+   </teiHeader>
+   <facsimile>
+      <surface>
+         <graphic
+            url="http://images.monasterium.net/pics/AT-WStLA/HA-U/WStLA-HA-Urkunden_03787_r.jpg"/>
+      </surface>
+      <surface>
+         <graphic
+            url="http://images.monasterium.net/pics/AT-WStLA/HA-U/WStLA-HA-Urkunden_03787_v.jpg"/>
+      </surface>
+   </facsimile>
+   <text>
+      <body>
+         <div type="abstract" resp="vh">
+            <p>
+               <rs type="event" ref="ev__QGW_II_III_3787">
+                  <rs type="fn" role="issuer"><rs type="person" ref="pe__laurenz_QGW_II_III_3787"
+                        >Larencz, <roleName type="occ" corresp="org__kleinmariazell-benediktiner"
+                           >abbt</roleName> des gotshauss zu sand Mareinzell</rs></rs>, bestätigt,
+                  dass <rs type="fn" role="recipient">Bürgermeister und Rath</rs> ihm von ains hauss
+                  wegen, des si gruntherren sein, gelegen in der Traubotenstrass gegen der
+                  Rinkchmaur über, das ettwenn <rs type="person"
+                     ref="pe__johann_froelich_a_QGW_II_III_3787">Hannsen Frolichs, des <roleName
+                        type="prof">kursner</roleName>
+                     <roleName type="dead">seligen</roleName></rs>, gewesen ist, daran sein <rs
+                     type="person" ref="pe__johann_froelich_b_QGW_II_III_3787"><roleName type="kin"
+                        corresp="pe__johann_froelich_a_QGW_II_III_3787">sun</roleName> , der
+                        <roleName type="occ" corresp="org__kleinmariazell-benediktiner"
+                        >conventbruder</roleName> Hanns Frolich</rs>, erbliche gerechtikait hiet
+                  gehabt, 4 lb dn., die über die 3 lb dn. gelts purkchrechts, so auf dem egenanten
+                  haus verschriben sein, und über das pau, so <rs type="person"
+                     ref="pe__erhard_von_weitra_QGW_II_II_3608"><roleName type="title"
+                        >maister</roleName> Erhart von Weytra</rs> darinn getan hat, uber beliben
+                  und dem Gotteshause von des Bruders [ 10] wegen angevallen sind, entrichtet haben.
+               </rs>
+            </p> 
+         </div>
+         <div type="lists">
+            <xi:include xmlns:xi="http://www.w3.org/2001/XInclude"
+               href="../../../../indices/placeList.xml" xpointer="element(/1/2/1/1)"/>
+            <xi:include xmlns:xi="http://www.w3.org/2001/XInclude"
+               href="../../../../indices/personList.xml" xpointer="element(/1/2/1/1)"/>
+            <xi:include xmlns:xi="http://www.w3.org/2001/XInclude"
+               href="../../../../indices/eventList.xml" xpointer="element(/1/2/1/1)"/>
+            <xi:include xmlns:xi="http://www.w3.org/2001/XInclude"
+               href="../../../../indices/orgList.xml" xpointer="element(/1/2/1/1)"/>
+         </div>
+      </body>
+   </text>
+</TEI>

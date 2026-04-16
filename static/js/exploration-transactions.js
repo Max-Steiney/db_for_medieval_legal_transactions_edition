@@ -564,12 +564,85 @@
             DrillDown.open(drillHandle, orgName + ' \u2014 Zuwendungen', fkeys);
         }
 
+        // ── E4: Org Type × Transaction Type Matrix ──
+
+        function renderOrgTxMatrix() {
+            var otData = epicC && epicC.org_tx;
+            var container = document.getElementById('explore-orgtx-matrix');
+            var statsEl = document.getElementById('explore-orgtx-stats');
+            if (!otData || !container) return;
+
+            var cov = otData.coverage || {};
+            if (statsEl) {
+                statsEl.textContent = cov.matched_with_tx_type + ' zugeordnete Empfänger-Events von ' +
+                    cov.total_recipient_events + ' (' + cov.match_rate + ' %)';
+            }
+
+            var cells = otData.cells || [];
+            if (!cells.length) {
+                container.innerHTML = '<p class="explore-hint">Keine Daten.</p>';
+                return;
+            }
+
+            // Build unique org types and tx types
+            var orgTypes = [];
+            var txTypes = [];
+            var orgSet = {};
+            var txSet = {};
+            var cellMap = {};
+            var maxCount = 0;
+            cells.forEach(function(c) {
+                if (!orgSet[c.org_type]) { orgTypes.push(c.org_type); orgSet[c.org_type] = true; }
+                if (!txSet[c.tx_type]) { txTypes.push(c.tx_type); txSet[c.tx_type] = true; }
+                cellMap[c.org_type + '__' + c.tx_type] = c.count;
+                if (c.count > maxCount) maxCount = c.count;
+            });
+
+            // Limit to top 12 tx types for readability
+            txTypes = txTypes.slice(0, 12);
+
+            // Render as HTML table (heatmap-style with opacity encoding)
+            var html = '<div style="overflow-x:auto"><table class="explore-data-table" style="font-size:var(--text-xs)">' +
+                '<thead><tr><th>Org-Typ</th>';
+            txTypes.forEach(function(tx) { html += '<th class="num" style="writing-mode:vertical-rl;transform:rotate(180deg);max-width:2rem">' + esc(tx) + '</th>'; });
+            html += '</tr></thead><tbody>';
+
+            orgTypes.forEach(function(ot) {
+                html += '<tr><td>' + esc(ot) + '</td>';
+                txTypes.forEach(function(tx) {
+                    var key = ot + '__' + tx;
+                    var count = cellMap[key] || 0;
+                    var opacity = count > 0 ? 0.15 + 0.85 * (count / maxCount) : 0;
+                    var bg = count > 0 ? 'background:rgba(46,90,136,' + opacity.toFixed(2) + ');color:' + (opacity > 0.5 ? '#fff' : 'inherit') : '';
+                    html += '<td class="num" style="' + bg + ';cursor:' + (count > 0 ? 'pointer' : 'default') + '" ' +
+                        (count > 0 ? 'data-ot="' + esc(ot) + '" data-tx="' + esc(tx) + '"' : '') + '>' +
+                        (count > 0 ? count : '') + '</td>';
+                });
+                html += '</tr>';
+            });
+            html += '</tbody></table></div>';
+            container.innerHTML = html;
+
+            // Drill-down on cells
+            container.querySelectorAll('[data-ot]').forEach(function(td) {
+                td.addEventListener('click', function() {
+                    var ot = td.getAttribute('data-ot');
+                    var tx = td.getAttribute('data-tx');
+                    var fkeys = (otData.drill_down || {})[ot + '__' + tx] || [];
+                    if (fkeys.length) {
+                        DrillDown.open(drillHandle, ot + ' × ' + tx, fkeys);
+                    }
+                });
+            });
+        }
+
         // -- Load data and render --
         ChartHelpers.loadJSON('./data/epic_c.json', 'explore-tx-chart', function(data) {
             epicC = data;
             renderTxChart();
             renderVerbTable();
             renderRecipChart();
+            renderOrgTxMatrix();
         });
     }
 

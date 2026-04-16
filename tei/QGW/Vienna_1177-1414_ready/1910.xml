@@ -1,0 +1,72 @@
+<?xml version="1.0" encoding="UTF-8"?><!DOCTYPE TEI SYSTEM "../../../schema/toolbox_full.dtd"><TEI xmlns="http://www.tei-c.org/ns/1.0" xmlns:cei="http://www.monasterium.net/NS/cei" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance">
+   <teiHeader>
+      <fileDesc>
+         <titleStmt>
+            <title>Tei version of 1910 exported from monasterium.net </title>
+         </titleStmt>
+         <publicationStmt>
+            <p/>
+         </publicationStmt>
+         <!--In Original: cei:front/cei:sourceDesc/cei:sourceDescRegest-->
+         <sourceDesc>
+            <bibl>Quellen zur Geschichte der Stadt Wien, Bd. II/2, Nr. 1910 As published in HAUrk by
+               Wiener Stadt- und Landesarchiv </bibl>
+            <msDesc>
+               <msIdentifier>
+                  <repository>Wiener Stadt- und Landesarchiv</repository>
+                  <idno>1910</idno>
+                  <altIdentifier type="old">
+                     <idno>516115</idno>
+                  </altIdentifier>
+               </msIdentifier>
+               <msContents>
+                  <msItem>
+                     <listBibl>
+                        <bibl>Jahrbuch der kais. Kunstsamml. 16b, n° 13249, mit
+                           Siegelabbildung.</bibl>
+                     </listBibl>
+                  </msItem>
+               </msContents>
+               <physDesc>
+                  <sealDesc>
+                     <seal>
+                        <p>Rückwärts aufgedrücktes Siegel von schwarzem Wachse.</p>
+                     </seal>
+                  </sealDesc>
+               </physDesc>
+            </msDesc>
+         </sourceDesc>
+      </fileDesc>       <encodingDesc>          <projectDesc default="false">             <p><label type="contentual-editing">Projekt Christina Lutter Stadt und                   Gemeinschaft</label></p>          </projectDesc>       </encodingDesc>
+      <profileDesc>
+         <creation>
+            <placeName>Wien</placeName>
+            <date when="14120128">1412 I 28</date>
+            <origDate>zu Wienn, am phincztag nach sand Pauls tag, als er bechert ist
+               worden.</origDate></creation>
+      </profileDesc>
+   </teiHeader>
+   <facsimile>
+      <surface>
+         <graphic url="http://images.monasterium.net/pics/AT-WStLA/HA-U/WStLA-HA-Urkunden_01910_r.jpg"/>
+      </surface>
+      <surface>
+         <graphic url="http://images.monasterium.net/pics/AT-WStLA/HA-U/WStLA-HA-Urkunden_01910_v.jpg"/>
+      </surface>
+   </facsimile>
+   <text>
+      <body>
+         <div type="abstract">
+            <p>
+               <rs type="event" ref="ev__QGW_II_II_1910"><rs type="fn" role="issuer"><rs type="person" ref="pe__thomas_feuchter_QGW_II_I_1902"><roleName type="title">Maister</roleName> Thoman der Feuchter, herzog Albrechts <roleName type="occ" corresp="pe__albrecht_v_herzog_von_oesterreich_QGW_II_I_1730">zimerman</roleName></rs>,</rs>
+                  <triggerstring n="disp">übernimmt</triggerstring> von <rs type="fn" role="recipient"><rs type="person" ref="pe__wolfhard_von_schemnitz_QGW_II_II_1910">Wolfharten dem
+                        Schermiczer, <roleName type="occ" corresp="org__wien">purger</roleName> ze Wienn</rs>, und von <rs type="person" ref="pe__magdalena_QGW_II_II_1910">Magdalen, seiner <roleName type="kin" corresp="pe__wolfhard_von_schemnitz_QGW_II_II_1910">hausfraun</roleName></rs>, <rs type="fn" role="transactiongood_II"><rs type="place" ref="pl__wien-immo_st_pankraz_53"><roleName type="owner" corresp="pe__wolfhard_von_schemnitz_QGW_II_II_1910">deren</roleName><roleName type="owner" corresp="pe__magdalena_QGW_II_II_1910"><add>deren</add></roleName>
+                           beide Häuser, gelegen <roleName type="topo" corresp="pl__wien-st_pankraz">hinder</roleName> sand Pangreczen <roleName type="topo" corresp="pl__wien-peurertor">vor</roleName> Peilertor ze Wienn</rs>
+                        <rs type="place" ref="pl__wien-immo_st_pankraz_54"><roleName type="owner" corresp="pe__wolfhard_von_schemnitz_QGW_II_II_1910"><add>deren</add></roleName><roleName type="owner" corresp="pe__magdalena_QGW_II_II_1910"><add>deren</add></roleName><add>Häuser, gelegen hinder sand
+                                 Pangreczen <roleName type="topo" corresp="pl__wien-peurertor">vor</roleName> Peilertor ze Wienn</add></rs></rs></rs>, zur Erbauung
+                  und Einrichtung von 13 chrem und drei griembt stuben.</rs>
+            </p>
+         </div>
+         <div type="lists"><xi:include xmlns:xi="http://www.w3.org/2001/XInclude" href="../../../../indices/placeList.xml" xpointer="element(/1/2/1/1)"/><xi:include xmlns:xi="http://www.w3.org/2001/XInclude" href="../../../../indices/personList.xml" xpointer="element(/1/2/1/1)"/><xi:include xmlns:xi="http://www.w3.org/2001/XInclude" href="../../../../indices/eventList.xml" xpointer="element(/1/2/1/1)"/><xi:include xmlns:xi="http://www.w3.org/2001/XInclude" href="../../../../indices/orgList.xml" xpointer="element(/1/2/1/1)"/></div>
+      </body>
+   </text>
+</TEI>

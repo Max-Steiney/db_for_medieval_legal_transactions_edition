@@ -1,0 +1,121 @@
+<?xml version="1.0" encoding="UTF-8"?><!DOCTYPE TEI   SYSTEM "../../../schema/toolbox_full.dtd">
+<TEI xmlns="http://www.tei-c.org/ns/1.0" xmlns:cei="http://www.monasterium.net/NS/cei"
+      xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance">
+      <teiHeader>
+            <fileDesc>
+                  <titleStmt>
+                        <title>Tei version of 144 exported from monasterium.net </title>
+                  </titleStmt>
+                  <publicationStmt>
+                        <p/>
+                  </publicationStmt>
+                  <!--In Original: cei:front/cei:sourceDesc/cei:sourceDescRegest-->
+                  <sourceDesc>
+                        <bibl type="url"
+                              >https://www.monasterium.net/mom/AT-WStLA/HAUrk/144/charter</bibl>
+                        <bibl default="false" status="draft">Quellen zur Geschichte der Stadt Wien,
+                              Bd. II/1, Nr. 144 As published in HAUrk by Wiener Stadt- und
+                              Landesarchiv </bibl>
+                        <msDesc status="draft">
+                              <msIdentifier>
+                                    <repository>Wiener Stadt- und Landesarchiv</repository>
+                                    <idno>144</idno>
+                                    <altIdentifier type="old">
+                                          <idno>514313</idno>
+                                    </altIdentifier>
+                              </msIdentifier>
+                              <physDesc>
+                                    <sealDesc>
+                                          <seal>
+                                                <p>Zwei anhangende Siegel: 1. spitzoval, 2.
+                                                  rund.</p>
+                                          </seal>
+                                    </sealDesc>
+                              </physDesc>
+                        </msDesc>
+                  </sourceDesc>
+            </fileDesc>
+            <encodingDesc>
+                  <projectDesc default="false">
+                        <p><label type="contentual-editing">Projekt Christina Lutter Stadt und
+                                    Gemeinschaft</label></p>
+                  </projectDesc>
+            </encodingDesc>
+            <profileDesc>
+                  <creation>
+                        <placeName>Wien</placeName>
+                        <date when="13320505">1332 V 05</date>
+                        <origDate instant="false">ze Wienne, des naechsten erichtages nach des
+                              heiligen Chreutz tage, als es funden wart. </origDate></creation>
+            </profileDesc>
+      </teiHeader>
+      <facsimile>
+            <surface>
+                  <graphic
+                        url="http://images.monasterium.net/pics/AT-WStLA/HA-U/WStLA-HA-Urkunden_00144_r.jpg"
+                  />
+            </surface>
+            <surface>
+                  <graphic
+                        url="http://images.monasterium.net/pics/AT-WStLA/HA-U/WStLA-HA-Urkunden_00144_v.jpg"
+                  />
+            </surface>
+      </facsimile>
+      <text>
+            <body>
+                  <div type="abstract" resp="ks">
+                        <p><rs type="event" ref="ev__QGW_II_I_144"><rs type="fn" role="issuer"><rs
+                                                type="person" ref="pe__martin_QGW_II_I_102">Mert,
+                                                  <roleName type="occ"
+                                                  corresp="org__wien-st_maria_im_rathaus"
+                                                  >Kaplan</roleName> und <roleName type="occ"
+                                                  corresp="org__wien-st_maria_im_rathaus"
+                                                  >Verweser</roleName> der Kapelle Unser Vrowen in
+                                                dem hause, das weiln hern Otten Enhaim gewesen
+                                                ist</rs></rs>, <triggerstring n="disp"
+                                          >verkauft</triggerstring>
+                                    <rs type="fn" role="other"><triggerstring n="fn">mit
+                                                Handen</triggerstring> seines <rs type="person"
+                                                ref="pe__otto_schreiber_QGW_II_I_144"><roleName
+                                                  type="occ" corresp="org__penzing-st_jakob"
+                                                  >Bergmeisters</roleName> Otten des Schreiber von
+                                                Pentzingen</rs></rs> seines rechten Kaufgutes ½ Joch
+                                    Weingarten, der do leit ze Praitense an dem Altenperge, zenaest
+                                    den Heiligen Gaester stathalben, von dem man jährlich 60 dn. für
+                                    Bergrecht und Zehent, 3 dn. zu Voitrecht dient, um 17 Mark
+                                    Silber, ie zwen und sibenzig grosser pehemischer phenning für
+                                    die march, an <rs type="fn" role="recipient"><rs type="person"
+                                                ref="pe__friedrich_im_steinhaus_QGW_II_I_144"
+                                                >Fridreich in dem Steinhaus</rs> und <rs
+                                                type="person" ref="pe__reitze_QGW_II_I_144">seine
+                                                  <roleName type="kin"
+                                                  corresp="pe__friedrich_im_steinhaus_QGW_II_I_144"
+                                                  >Frau</roleName> Reitze</rs>.</rs></rs>
+                        </p>
+                  </div>
+                  <div type="seal">
+                        <p><rs type="event" ref="ev__QGW_II_I_144"><rs type="fn" role="witness"
+                                          >Besiegelt von dem <rs type="person"
+                                                ref="pe__martin_QGW_II_I_102">Aussteller</rs> und
+                                          dem <rs type="person"
+                                                ref="pe__otto_schreiber_QGW_II_I_144"
+                                                >Bergmeister</rs>.</rs></rs>
+                        </p>
+                  </div>
+                  <div type="lists">
+                        <xi:include xmlns:xi="http://www.w3.org/2001/XInclude"
+                              href="../../../../indices/placeList.xml"
+                              xpointer="element(/1/2/1/1)"/>
+                        <xi:include xmlns:xi="http://www.w3.org/2001/XInclude"
+                              href="../../../../indices/personList.xml"
+                              xpointer="element(/1/2/1/1)"/>
+                        <xi:include xmlns:xi="http://www.w3.org/2001/XInclude"
+                              href="../../../../indices/eventList.xml"
+                              xpointer="element(/1/2/1/1)"/>
+                        <xi:include xmlns:xi="http://www.w3.org/2001/XInclude"
+                              href="../../../../indices/orgList.xml"
+                              xpointer="element(/1/2/1/1)"/>
+                  </div>
+            </body>
+      </text>
+</TEI>

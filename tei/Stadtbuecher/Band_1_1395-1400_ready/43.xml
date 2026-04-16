@@ -1,0 +1,174 @@
+<?xml version="1.0" encoding="UTF-8"?><!DOCTYPE TEI SYSTEM "../../../schema/toolbox_full.dtd">
+<TEI xmlns="http://www.tei-c.org/ns/1.0" xmlns:cei="http://www.monasterium.net/NS/cei"
+   xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance">
+   <teiHeader>
+      <fileDesc>
+         <titleStmt>
+            <title>TEI-Version of 43</title>
+         </titleStmt>
+         <publicationStmt>
+            <p/>
+         </publicationStmt>
+         <sourceDesc default="false">
+            <bibl default="false" status="draft">
+               <title type="full"><title type="main">Die Wiener Stadtbücher 1395 -
+                     1430</title><title type="sub">Teil 1: 1395 - 1400</title></title>
+               <author>Wilhelm Brauneder</author>
+               <author>Gerhard Jaritz</author>
+               <pubPlace>Wien</pubPlace>
+               <pubPlace>Köln</pubPlace>
+               <publisher>Böhlau Verlag</publisher>
+            </bibl>
+            <msDesc status="draft">
+               <msIdentifier>
+                  <idno>43</idno>
+               </msIdentifier>
+               <physDesc/>
+            </msDesc>
+         </sourceDesc>
+      </fileDesc>
+      <encodingDesc>
+         <projectDesc>
+            <p><label type="contentual-editing">Projekt Christina Lutter Stadt und
+                  Gemeinschaft</label></p>
+         </projectDesc>
+      </encodingDesc>
+      <profileDesc>
+         <creation>
+            <date when="1396-03-14">1396 März 14</date>
+         </creation>
+      </profileDesc>
+   </teiHeader>
+   <text>
+      <body>
+         <div type="header">
+            <p>Geschäft der Agnes Friedreichin der Kamphschiltin </p>
+         </div>
+         <div type="entry" resp="rs">
+            <p>
+               <rs type="event" ref="ev__StB_I_43">pr. mü., Einbr. 2 Zg., Ma (In dez: Item gescheft
+                  a ) Agnesen Fridreichin Kampfschil- tin) Des nachsten eritags nach Letare ist vor
+                  offem rat ze rechter zeit beweist das geschefft, so <rs type="fn" role="issuer"
+                        ><rs type="person" ref="pe__agnes_StB_I_43"><roleName type="title"
+                           >fraw</roleName> Agnes die Friedreichin, die <roleName type="prof"
+                           cert="unknown">Kamphschiltin</roleName></rs></rs>, getan hat. Von erst
+                  hat si geschafft <rs type="fn" role="recipient"><rs type="person"
+                        ref="pe__katharina_StB_I_43">Katherlein, des <rs type="person"
+                           ref="pe__falkendorfer_StB_I_43_a">Feikchensdorffer</rs>
+                        <roleName type="kin" corresp="pe__falkendorfer_StB_I_43_a"
+                           >tochter</roleName></rs>, <rs type="fn" role="transactiongood_I"><rs
+                           type="place" ref="pl__wien-immo_wieden_2"><roleName type="owner"
+                              corresp="pe__agnes_StB_I_43">ir</roleName> haws halbs gelegen
+                              <roleName type="topo" corresp="pl__wien-kaerntnertor">vor</roleName>
+                           <rs type="place" ref="pl__wien-kaerntnertor">Kernertor auf der Widen ze
+                              Wienn</rs></rs>, und den andern halben tail desselben hawses</rs> hat
+                     si geschafft <rs type="person" ref="pe__andreas_falkendorfer_StB_I_43"
+                        >Andrein</rs> und sein <rs type="person" ref="pe__falkendorfer_StB_I_43_b"
+                        >zwain <roleName type="kin" corresp="pe__andreas_falkendorfer_StB_I_43"
+                           >brudern</roleName>
+                        <roleName type="kin" corresp="pe__falkendorfer_StB_I_43_c"
+                              ><add>brudern</add></roleName>den Veikchendsdorffern</rs><rs
+                        type="person" ref="pe__falkendorfer_StB_I_43_c"><add>zwain <roleName
+                              type="kin" corresp="pe__andreas_falkendorfer_StB_I_43"
+                              >brudern</roleName> den Veikchendsdorffern</add>
+                        <roleName type="kin" corresp="pe__falkendorfer_StB_I_43_b"
+                              ><add>brudern</add></roleName></rs>, und <rs type="fn"
+                        role="transactiongood_I">alles hawsgered, das in dem haws ist,</rs> das hat
+                     si geschafft den vier person, die yecz genant sind. Auch hat si denselben vier
+                     person geschafft <rs type="fn" role="transactiongood_I"><measure>vier phunt
+                           Wienner phenning</measure></rs> yegleichem ain phunt, </rs> der <rs
+                     type="fn" role="other"><rs type="person" ref="pe__wenzel_ladner_StB_I_43"
+                        >Wernczel der <roleName type="prof" cert="unknown">Ladner</roleName></rs>
+                     <rs type="fn" role="transactiongood_I"><measure>drew phunt , b d S ff
+                        </measure>.</rs>
+                     <triggerstring n="fn">gelten sol</triggerstring></rs>. Auch hat si geschafft <rs
+                     type="fn" role="recipient">dem <rs type="org" ref="org__wien-st_stephan">probst
+                        dacz Sand Steffan</rs>
+                     <rs type="fn" role="transactiongood_I"><measure>ain phunt
+                        phenning</measure></rs></rs> und <rs type="fn" role="recipient"><rs
+                        type="org" ref="org__wien-st_stephan">den achtern daselbs</rs> auch <rs
+                        type="fn" role="transactiongood_I"><measure>ain phunt
+                        phenning</measure></rs></rs>
+                  <rs type="fn" role="other"><triggerstring n="fn"><add>gelten
+                     sol</add></triggerstring>von <rs type="person" ref="pe__wenzel_ladner_StB_I_43"
+                        >Wernczlein dem Ladner</rs></rs>, <rs type="fn" role="recipient"><rs
+                        type="org" ref="org__wien-heiligengeistspital">dem maister hincz dem
+                        Heiligen Geist</rs>
+                     <rs type="fn" role="transactiongood_I"><measure>ain phunt
+                        phenning</measure></rs></rs> und <rs type="fn" role="recipient"><rs
+                        type="org" ref="org__wien-heiligengeistspital">den prudern daselbs</rs> auch
+                        <rs type="fn" role="transactiongood_I">
+                        <measure>ain phunt phenning</measure></rs></rs>. Darnach hat si geschafft
+                     <rs type="fn" role="recipient">den vorgenanten vier <rs type="person"
+                        ref="pe__katharina_StB_I_43">person</rs>
+                     <rs type="person" ref="pe__andreas_falkendorfer_StB_I_43"
+                        ><add>person</add></rs>
+                     <rs type="person" ref="pe__falkendorfer_StB_I_43_b"><add>person</add></rs>
+                     <rs type="person" ref="pe__falkendorfer_StB_I_43_c"><add>person</add></rs>
+                     <rs type="fn" role="transactiongood_I">die vier phunt phenning</rs></rs>, die
+                     <rs type="fn" role="other"><rs type="person" ref="pe__paul_StB_I_43">Paul</rs>
+                     in des Gradner haws vor Widmertor <triggerstring n="fn">schuldig
+                     ist</triggerstring></rs>, in geleichen tayl. Si hat auch geschafft <rs type="fn"
+                     role="recipient"><rs type="fn" role="transactiongood_I">irn akcher gelegen in
+                        Meczleinsdorffer veld ze nachst der Jörgin der Phillipin von Hönesdorff</rs>
+                     <rs type="person" ref="pe__georg_goetzendorfer_StB_I_43">Jorgen dem
+                        Geczendorffer</rs>und seinem pruder, und <rs type="fn"
+                        role="transactiongood_I">drew phunt phenning</rs>,</rs> die si sich <rs
+                     type="fn" role="other"><triggerstring n="fn">habent angenomen von</triggerstring>
+                     <rs type="person" ref="pe__andreas_von_iglau_QGW_II_I_1288">Andrein von der
+                        Ygla</rs> und seinem swager</rs>. Auch hat si geschafft <rs type="fn"
+                     role="recipient"><rs type="person" ref="pe__strasserin_StB_I_43">ir <roleName
+                           type="kin" corresp="pe__agnes_StB_I_43">mumen</roleName> der
+                        Strazzerin</rs>
+                     <rs type="fn" role="transactiongood_I">ein silbreinew gurtel</rs>.</rs>
+                  <rs type="fn" role="recipient">Auch hat si geschafft <rs type="person"
+                        ref="pe__danknerin_StB_I_43">ir <roleName type="kin"
+                           corresp="pe__agnes_StB_I_43">mumen</roleName> der Dankchnerin</rs>
+                     <rs type="fn" role="transactiongood_I">irn weingarten gelegen in desr
+                        Scheyben</rs> uncz an irn tode.</rs>
+                  <rs type="fn" role="recipient">Darnach hat si geschafft <rs type="fn"
+                        role="transactiongood_I">ain wysen gelegen ze Achaw ze nachst Kathrein auf
+                        der Hayd</rs>
+                     <rs type="org" ref="org__hennersdorf-pfarre_StB_I_43">hincz Sand Andre und
+                        hincz Sand Erhart zu dem Liecht ze Hönesdorff</rs>,</rs>
+                  <rs type="fn" role="recipient">und dieselb wisen sullen der pharer und der
+                     zechmaister ynnehaben und sol man dem <rs type="org" ref="org__achau-pfarre"
+                        >pharrer ze Achaw</rs> C ) davon dienen funifzehen phenning. </rs><rs
+                     type="fn" role="recipient">Auch hat si geschafft <rs type="person"
+                        ref="pe__pechssingerin_StB_I_43">irer <roleName type="kin"
+                           corresp="pe__agnes_StB_I_43">muemen</roleName> der Pechssingerin</rs>
+                     <rs type="fn" role="transactiongood_I">yren weingarten gelegen auf dem
+                        Stainfeld ze Medling ze nechst dem Pewrler von Pidermannstorf </rs>uncz an
+                     irn tod, und nach irm tode so sol wider erben auf die nachsten frewnt.</rs>
+                  <rs type="fn" role="recipient">So hat si geschafft <rs type="person"
+                        ref="pe__ulrich_fridmann_StB_I_43">Ulreichen dem Frydmann</rs>
+                     <rs type="fn" role="transactiongood_I">ain halbs lehen, das ym selber
+                     dint</rs>.</rs> Und pey dem geschefft sind gewesen <rs type="fn" role="witness"
+                        ><rs type="person" ref="pe__peter_eberger_QGW_II_I_1157">Peter Ewerger</rs>
+                     und <rs type="person" ref="pe__michael_herwart_QGW_II_I_1157">Michel
+                        Herwart</rs></rs>, die auch darumb in offem rat mit irn trewn an ayde stat
+                  habent gesagt, als si ze recht solten. Item <rs type="fn" role="other"><rs
+                        type="person" ref="pe__niklas_koetzler_StB_I_43">Niclas der Chöczler von
+                        Hönestorf</rs>
+                     <triggerstring n="fn">sol der Champhschiltinn gelten</triggerstring></rs> drew phunt
+                  und siben- czig phenning und <rs type="fn" role="other"><rs type="person"
+                        ref="pe__johann_edelmann_StB_I_43">Hanns Edelman</rs><triggerstring n="fn"
+                           ><add>sol der Champhschiltinn gelten</add></triggerstring></rs> ain phunt
+                  phenning, dieselben sol man an ain erb legen. gescheft am Ende de Eintrag!
+                  ge!trichen und am linken Rand der Seite mittel! Verweiszeichen an die vorliegende
+                  Stelle eingefügt. b) probt. C) ze Achaw am rechten Rand mit Verweiszeichen
+                  eingefügt.</rs></p>
+         </div>
+         <div type="lists">
+            <xi:include xmlns:xi="http://www.w3.org/2001/XInclude"
+               href="../../../../indices/placeList.xml" xpointer="element(/1/2/1/1)"/>
+            <xi:include xmlns:xi="http://www.w3.org/2001/XInclude"
+               href="../../../../indices/personList.xml" xpointer="element(/1/2/1/1)"/>
+            <xi:include xmlns:xi="http://www.w3.org/2001/XInclude"
+               href="../../../../indices/eventList.xml" xpointer="element(/1/2/1/1)"/>
+            <xi:include xmlns:xi="http://www.w3.org/2001/XInclude"
+               href="../../../../indices/orgList.xml" xpointer="element(/1/2/1/1)"/>
+         </div>
+      </body>
+   </text>
+</TEI>

@@ -41,6 +41,8 @@
     transition: opacity var(--transition-fast);
 }
 
+/* WCAG 1.4.13: tooltip hoverable + persistent when visible */
 .edition-tooltip.visible, .stats-tooltip.visible, .explore-tooltip.visible {
     opacity: 1;
+    pointer-events: auto;
 }

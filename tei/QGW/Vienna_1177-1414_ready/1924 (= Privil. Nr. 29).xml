@@ -1,0 +1,70 @@
+<?xml version="1.0" encoding="UTF-8"?><!DOCTYPE TEI SYSTEM "../../../schema/toolbox_full.dtd"><TEI xmlns="http://www.tei-c.org/ns/1.0" xmlns:cei="http://www.monasterium.net/NS/cei" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance">
+   <teiHeader>
+      <fileDesc>
+         <titleStmt>
+            <title>Tei version of 1924 (= Privil. Nr. 29) exported from monasterium.net </title>
+         </titleStmt>
+         <publicationStmt>
+            <p/>
+         </publicationStmt>
+         <!--In Original: cei:front/cei:sourceDesc/cei:sourceDescRegest-->
+         <sourceDesc>
+            <bibl>Quellen zur Geschichte der Stadt Wien, Bd. II/2, Nr. 1924 (= Privil. Nr. 29) As
+               published in HAUrk by Wiener Stadt- und Landesarchiv </bibl>
+            <msDesc>
+               <msIdentifier>
+                  <repository>Wiener Stadt- und Landesarchiv</repository>
+                  <idno>1924 (= Privil. Nr. 29)</idno>
+                  <altIdentifier type="old">
+                     <idno>516129</idno>
+                  </altIdentifier>
+               </msIdentifier>
+               <msContents>
+                  <msItem>
+                     <listBibl>
+                        <bibl>Tomaschek, Rechte und Freiheiten 2, 17 n° 114, angeblich aus dem
+                           Original.</bibl>
+                     </listBibl>
+                  </msItem>
+               </msContents>
+               <physDesc>
+                  <sealDesc>
+                     <seal>
+                        <p>An weissrother Seidenschnur anhangendes Reitersiegel (Sava Fig. 75).</p>
+                     </seal>
+                  </sealDesc>
+               </physDesc>
+            </msDesc>
+         </sourceDesc>
+      </fileDesc>       <encodingDesc>          <projectDesc default="false">             <p><label type="contentual-editing">Projekt Christina Lutter Stadt und                   Gemeinschaft</label></p>          </projectDesc>       </encodingDesc>
+      <profileDesc>
+         <creation>
+            <placeName>Wien</placeName>
+            <date when="14120725">1412 VII 25</date>
+            <date from="99999999" to="99999999"/>
+            <origDate>Der geben ist ze Wienn an sant Jacobs tag, des heiligen zwelifboten, nach
+               Kristi gepurd 1400 jar darnach in dem 12. jare. </origDate></creation>
+      </profileDesc>
+   </teiHeader>
+   <facsimile>
+      <surface/>
+   </facsimile>
+   <text>
+      <body>
+         <div type="abstract">
+            <p><rs type="event" ref="ev__QGW_II_II_1924"><rs type="fn" role="issuer"><rs type="person" ref="pe__albrecht_v_herzog_von_oesterreich_QGW_II_I_1730">Herzog Albrecht
+                     V.</rs></rs>
+                  <triggerstring n="disp">bestätigt</triggerstring> den <rs type="fn" role="recipient"><rs type="org" ref="org__wien">Wiener Bürgern</rs></rs> in Anerkennung der
+                  ihm und seinen Vorfahren treu geleisteten Dienste alle ire recht, freihait, gnad,
+                  gut gewonhait, brieve und handvesten mit allen den pu/enten und artikeln, die
+                  darinn sind begriffen , <rs type="event" ref="NULL">wie sie ihnen von <rs type="person" ref="pe__albrecht_iv_herzog_von_oesterreich_QGW_II_I_1332" cert="high">König Albrecht</rs> und den folgenden
+                  Landesfürsten verliehen worden waren</rs>.</rs>
+            </p>
+         </div>
+         <div type="nota">
+            <p>Unter dem Buge rechts: d. dux present. cons. </p>
+         </div>
+         <div type="lists"><xi:include xmlns:xi="http://www.w3.org/2001/XInclude" href="../../../../indices/placeList.xml" xpointer="element(/1/2/1/1)"/><xi:include xmlns:xi="http://www.w3.org/2001/XInclude" href="../../../../indices/personList.xml" xpointer="element(/1/2/1/1)"/><xi:include xmlns:xi="http://www.w3.org/2001/XInclude" href="../../../../indices/eventList.xml" xpointer="element(/1/2/1/1)"/><xi:include xmlns:xi="http://www.w3.org/2001/XInclude" href="../../../../indices/orgList.xml" xpointer="element(/1/2/1/1)"/></div>
+      </body>
+   </text>
+</TEI>

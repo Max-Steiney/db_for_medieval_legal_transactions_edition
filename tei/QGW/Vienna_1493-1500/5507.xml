@@ -1,0 +1,132 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<TEI xmlns="http://www.tei-c.org/ns/1.0" xmlns:cei="http://www.monasterium.net/NS/cei"
+   xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance">
+   <teiHeader>
+      <fileDesc>
+         <titleStmt>
+            <title>Tei version of 5507 exported from monasterium.net </title>
+         </titleStmt>
+         <publicationStmt>
+            <p/>
+         </publicationStmt>
+         <!--In Original: cei:front/cei:sourceDesc/cei:sourceDescRegest-->
+         <sourceDesc>
+            <bibl>Quellen zur Geschichte der Stadt Wien, Bd. II/4, Nr. 5507 As published in HAUrk by
+               Wiener Stadt- und Landesarchiv </bibl>
+            <msDesc>
+               <msIdentifier>
+                  <repository>Wiener Stadt- und Landesarchiv</repository>
+                  <idno>5507</idno>
+                  <altIdentifier type="old">
+                     <idno>519815</idno>
+                  </altIdentifier>
+               </msIdentifier>
+               <physDesc>
+                  <sealDesc>
+                     <seal>
+                        <p>mit zwei aufgedrückten Rücksiegeln unter Papierdecke <quote>Des alles zu
+                              guetem urkunt</quote> .. . <quote>offne kuntschaft, besigeltn
+                              mit</quote> . . . <quote>Hannsn Strasser statrichter und Casparn
+                              Winter burger und des rats zu Gmunden</quote> . .. <quote>beder hie
+                              aufgedrugkten innsigeln</quote> ... <quote>an stat</quote> ihrer
+                              <quote>und der andern des rats</quote>. </p>
+                     </seal>
+                  </sealDesc>
+               </physDesc>
+            </msDesc>
+         </sourceDesc>
+      </fileDesc>
+      <encodingDesc>
+         <projectDesc default="false">
+            <p><label type="contentual-editing">Projekt Christina Lutter Stadt und
+                  Gemeinschaft</label></p>
+         </projectDesc>
+      </encodingDesc>
+      <profileDesc>
+         <creation>
+            <placeName>(Gmunden)</placeName>
+            <date when="14940418">1494 IV 18</date>
+            <origDate>Geben . .. freitag vor sand Jorgentag des heiligen
+            ritter.</origDate></creation>
+      </profileDesc>
+   </teiHeader>
+   <facsimile>
+      <surface>
+         <graphic
+            url="http://images.monasterium.net/pics/AT-WStLA/HA-U/WStLA-HA-Urkunden_05507_r.jpg"/>
+      </surface>
+      <surface>
+         <graphic
+            url="http://images.monasterium.net/pics/AT-WStLA/HA-U/WStLA-HA-Urkunden_05507_v.jpg"/>
+      </surface>
+   </facsimile>
+   <text>
+      <body>
+         <div type="abstract">
+            <p><rs type="event" ref="ev__QGW_II_II_5507">
+                  <rs type="fn" role="issuer"><rs type="org" ref="org__gmunden">Richter und rate der
+                        stat Gmunden</rs></rs> stellen mit dism offnbrieve auf Ansuchen <rs
+                     type="fn" role="recipient"><rs type="person" ref="pe__barbara_QGW_II_IV_5507"
+                        >der <roleName type="title">ersam</roleName> Barbara,<rs type="person"
+                           ref="pe__wolfgang_gwaltshofer_QGW_II_IV_5507"> weilent Wolfganngn
+                           Gwaltshofers <roleName type="occ" corresp="org__gmunden"
+                              >burgers</roleName> zu Gmunnden <roleName type="dead"
+                              >se/aling</roleName></rs>
+                        <roleName type="kin" corresp="pe__wolfgang_gwaltshofer_QGW_II_IV_5507"
+                           >tochter</roleName> und <rs type="person"
+                           ref="pe__johann_schraetntaler_QGW_II_IV_5507"><roleName type="dead"
+                              >weilent</roleName> Hannsn Schrätntaler gelasne</rs>
+                        <roleName type="kin" corresp="pe__johann_schraetntaler_QGW_II_IV_5507"
+                           >witib</roleName></rs></rs>, in offem rate . . . wie sy irer geburd und
+                  herkomens ainer zeugnuss und kuntschaft notturftig wurde <rs type="fn"
+                     role="other"><triggerstring n="fn">auf Grund eidlicher Aussagen</triggerstring>
+                     <rs type="person" ref="pe__wolfgang_sawrspacher_QGW_II_IV_5507">Wolfganngen
+                        Sawrspacher <roleName type="occ" corresp="org__gmunden">burger</roleName> zu
+                        Gmunden</rs>, <rs type="person" ref="pe__hieronymus_strasser_QGW_II_IV_5507"
+                        >Jeronimusn Strasser<roleName type="occ" corresp="org__gmunden"
+                              ><add>inwoner</add></roleName></rs>, <rs type="person"
+                        ref="pe__wolfgang_pogner_QGW_II_IV_5507">Wolfganngen Pogner<roleName
+                           type="occ" corresp="org__gmunden"><add>inwoner</add></roleName></rs>, <rs
+                        type="person" ref="pe__michael_haidinger_QGW_II_IV_5507">Micheln
+                           Haidinger<roleName type="occ" corresp="org__gmunden"
+                           ><add>inwoner</add></roleName></rs> und <rs type="person"
+                        ref="pe__johann_nawfergen_QGW_II_IV_5507">Hannsn Nawfergen <roleName
+                           type="occ" corresp="org__gmunden">inwoner</roleName> daselbs</rs></rs>
+                  das Zeugnis aus, das die benant <rs type="person" ref="pe__barbara_QGW_II_IV_5507"
+                     >Barbara von weilent <rs type="person"
+                        ref="pe__wolfgang_gwaltshofer_QGW_II_IV_5507">Wolfganngn Gwaltshofer burger
+                        zu Gmunden se/aling</rs> und <rs type="person" ref="pe__anna_QGW_II_IV_5507"
+                        >Anna seiner <roleName type="kin"
+                           corresp="pe__wolfgang_gwaltshofer_QGW_II_IV_5507"
+                           >hausfrawen</roleName><roleName type="kin"
+                           corresp="pe__barbara_QGW_II_IV_5507"><add>mutter</add></roleName></rs>
+                     eelichn geborn auch derselb <rs type="person"
+                        ref="pe__wolfgang_gwaltshofer_QGW_II_IV_5507">Wolfganng Gwaltshofer ir
+                           <roleName type="kin" corresp="pe__barbara_QGW_II_IV_5507"
+                           >vater</roleName>, weilent <rs type="person"
+                           ref="pe__sigmund_gwaltshofer_QGW_II_III_4086">Sigmunden Gwaltshofers
+                              <roleName type="occ" corresp="org__oesterreich-herzogtum"
+                              >munnsmaisters</roleName> in Österreich <roleName type="dead"
+                              >seling</roleName> vater - und mueterhalben eelicher und leiblicher
+                              <roleName type="kin" corresp="pe__wolfgang_gwaltshofer_QGW_II_IV_5507"
+                              >brueder</roleName> gewesen</rs></rs></rs>. </rs></p>
+         </div>
+         <div type="nota">
+            <p>Rückaufschrift: N. richters und ratt der statt Gmundtn khuntschaft, Barbaren
+               Wolfganngen Gwaltzhovers burgers daselbst tochter beweisten freundschaft. Actum am
+               freytag vor Jeorgi, anno etc. 1494ten (nachträglich:) zu Sigmundn Gwaltschover zu
+               Wienn. </p>
+         </div>
+         <div type="lists">
+            <xi:include xmlns:xi="http://www.w3.org/2001/XInclude"
+               href="../../../../indices/placeList.xml" xpointer="element(/1/2/1/1)"/>
+            <xi:include xmlns:xi="http://www.w3.org/2001/XInclude"
+               href="../../../../indices/personList.xml" xpointer="element(/1/2/1/1)"/>
+            <xi:include xmlns:xi="http://www.w3.org/2001/XInclude"
+               href="../../../../indices/eventList.xml" xpointer="element(/1/2/1/1)"/>
+            <xi:include xmlns:xi="http://www.w3.org/2001/XInclude"
+               href="../../../../indices/orgList.xml" xpointer="element(/1/2/1/1)"/>
+         </div>
+      </body>
+   </text>
+</TEI>

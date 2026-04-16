@@ -1,0 +1,136 @@
+<?xml version="1.0" encoding="UTF-8"?><!DOCTYPE TEI SYSTEM "../../../schema/toolbox_full.dtd">
+<TEI xmlns="http://www.tei-c.org/ns/1.0" xmlns:cei="http://www.monasterium.net/NS/cei"
+   xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance">
+   <teiHeader>
+      <fileDesc>
+         <titleStmt>
+            <title>TEI-Version of 118</title>
+         </titleStmt>
+         <publicationStmt>
+            <p/>
+         </publicationStmt>
+         <sourceDesc default="false">
+            <bibl default="false" status="draft">
+               <title type="full"><title type="main">Die Wiener Stadtbücher 1395 -
+                     1430</title><title type="sub">Teil 1: 1395 - 1400</title></title>
+               <author>Wilhelm Brauneder</author>
+               <author>Gerhard Jaritz</author>
+               <pubPlace>Wien</pubPlace>
+               <pubPlace>Köln</pubPlace>
+               <publisher>Böhlau Verlag</publisher>
+            </bibl>
+            <msDesc status="draft">
+               <msIdentifier>
+                  <idno>118</idno>
+               </msIdentifier>
+               <physDesc/>
+            </msDesc>
+         </sourceDesc>
+      </fileDesc>
+      <encodingDesc>
+         <projectDesc>
+            <p><label type="contentual-editing">Projekt Christina Lutter Stadt und
+                  Gemeinschaft</label></p>
+         </projectDesc>
+      </encodingDesc>
+      <profileDesc>
+         <creation>
+            <date when="1397-02-17">1397 Februar 17</date>
+         </creation>
+      </profileDesc>
+   </teiHeader>
+   <text>
+      <body>
+         <div type="header">
+            <p>Verwandtschaftsweisung für Katharina und Anna, Kinder des Martin Swebel, und Diemut,
+               Tochter Katharinas, Witwe des Nikolaus Reblein</p>
+         </div>                   <div type="entry" resp="rs">
+            <p> 2 Einbr. 4 Zg. (Indez: Item frewnschaft Merten des Swebleins kinder) <rs
+                  type="event" ref="ev__StB_I_118">Des nachsten sambcztags nach sand Scolastica tag
+                  komen auch fur den rat <rs type="fn" role="witness"><rs type="person"
+                        ref="pe__martin_swebl_StB_I_118">Mertt der Swebel</rs> und <rs type="person"
+                        ref="pe__katharina_StB_I_118_a"><roleName type="title">fraw</roleName>
+                        Kathrey, <roleName type="kin" corresp="pe__niklas_rebel_StB_I_118"
+                              ><add>wittib</add></roleName>
+                        <rs type="person" ref="pe__niklas_rebel_StB_I_118">Niclas <roleName
+                              type="dead">seligen </roleName>wittib des Rebleins</rs></rs>, und
+                     habent da beweist mit den erbern leuten, mit <rs type="person"
+                        ref="pe__heinrich_daucher_StB_I_118"><roleName type="title"
+                              ><add>erbern</add>
+                        </roleName>Hainreichen dem Dawcher</rs>, <rs type="person"
+                        ref="pe__johann_palwein_QGW_II_I_1353"><roleName type="title"
+                              ><add>erbern</add>
+                        </roleName>Hannsen dem Paldweyn</rs>, <rs type="person"
+                        ref="pe__peter_suezzprot_StB_I_6"><roleName type="title"><add>erbern</add>
+                        </roleName>Petrein dem Suzzprot</rs> und mit <rs type="person"
+                        ref="pe__niklas_von_iglau_StB_I_118"><roleName type="title"
+                              ><add>erbern</add>
+                        </roleName>Niclasen von der Ygla</rs></rs>, das <rs type="fn"
+                     role="recipient">des egenanten Mertten des Swebleins zway <rs type="person"
+                        ref="pe__katharina_StB_I_118_b"><roleName type="kin"
+                           corresp="pe__martin_swebl_StB_I_118">kinder</roleName> Kathrey <roleName
+                           type="kin" corresp="pe__konrad_QGW_II_I_1153"><add>rechtew geswistreid
+                              chind</add></roleName><roleName type="kin"
+                           corresp="pe__peter_QGW_II_I_1153_a"><add>rechtew geswistreid
+                           chind</add></roleName><roleName type="kin" corresp="pe__diemut_StB_I_118"
+                              ><add>rechtew geswistreid chind</add></roleName></rs> und <rs
+                        type="person" ref="pe__anna_StB_I_118"><roleName type="kin"
+                           corresp="pe__martin_swebl_StB_I_118"><add>kinder</add></roleName>
+                           Ann<roleName type="kin" corresp="pe__peter_QGW_II_I_1153_a"><add>rechtew
+                              geswistreid chind</add></roleName><roleName type="kin"
+                           corresp="pe__konrad_QGW_II_I_1153"><add>rechtew geswistreid
+                           chind</add></roleName><roleName type="kin" corresp="pe__diemut_StB_I_118"
+                              ><add>rechtew geswistreid chind</add></roleName></rs>, die noch nicht
+                     vogtper sind</rs>, und <rs type="fn" role="recipient"><rs type="person"
+                        ref="pe__diemut_StB_I_118">der egenanten frawn Kathrein <roleName type="kin"
+                           corresp="pe__katharina_StB_I_118_a">tochter</roleName>
+                        <roleName type="title">junkchfraw</roleName> Dyemut<roleName type="kin"
+                           corresp="pe__peter_QGW_II_I_1153_a"><add>rechtew geswistreid
+                           chind</add></roleName><roleName type="kin"
+                           corresp="pe__konrad_QGW_II_I_1153"><add>rechtew geswistreid
+                           chind</add></roleName><roleName type="kin"
+                           corresp="pe__katharina_StB_I_118_b"><add>rechtew geswistreid
+                           chind</add></roleName><roleName type="kin" corresp="pe__anna_StB_I_118"
+                              ><add>rechtew geswistreid chind</add></roleName></rs></rs> mit <rs
+                     type="fn" role="issuer"><rs type="person" ref="pe__peter_QGW_II_I_1153_a"><rs
+                           type="person" ref="pe__johann_ledrer_QGW_II_I_1153">Hannsen des <roleName
+                              type="prof" cert="unknown">Ledrer</roleName></rs> zwayn <roleName
+                           type="kin" corresp="pe__johann_ledrer_QGW_II_I_1153"
+                           >chinden</roleName><roleName type="kin"
+                           corresp="pe__margarethe_StB_I_118"><add>chinden</add></roleName>, den got
+                           <roleName type="dead">gnad</roleName>, Petrein <roleName type="kin"
+                           corresp="pe__katharina_StB_I_118_b"><add>rechtew geswistreid
+                           chind</add></roleName><roleName type="kin" corresp="pe__anna_StB_I_118"
+                              ><add>rechtew geswistreid chind</add></roleName><roleName type="kin"
+                           corresp="pe__diemut_StB_I_118"><add>rechtew geswistreid
+                           chind</add></roleName></rs> und <rs type="person"
+                        ref="pe__konrad_QGW_II_I_1153"><roleName type="kin"
+                           corresp="pe__johann_ledrer_QGW_II_I_1153"
+                           ><add>chinden</add></roleName><roleName type="kin"
+                           corresp="pe__margarethe_StB_I_118"><add>chinden</add></roleName><roleName
+                           type="dead"><add>gnad</add></roleName>Chunraten<roleName type="kin"
+                           corresp="pe__katharina_StB_I_118_b"><add>rechtew geswistreid
+                           chind</add></roleName><roleName type="kin" corresp="pe__anna_StB_I_118"
+                              ><add>rechtew geswistreid chind</add></roleName><roleName type="kin"
+                           corresp="pe__diemut_StB_I_118"><add>rechtew geswistreid
+                           chind</add></roleName></rs>, die er gehabt hat mit <rs type="person"
+                        ref="pe__margarethe_StB_I_118">seiner andern <roleName type="kin"
+                           corresp="pe__johann_ledrer_QGW_II_I_1153">hawsfrawn</roleName>
+                        Margreten</rs></rs>, rechtew geswistreid chind gewesen sind von vater und
+                  von muter. Als darumb die obgenanten erbern leut mit irn trewn an ayde stat vor
+                  offem rat habent gesagt, als si ze recht solten.</rs>
+            </p>
+         </div>
+         <div type="lists">
+            <xi:include xmlns:xi="http://www.w3.org/2001/XInclude"
+               href="../../../../indices/placeList.xml" xpointer="element(/1/2/1/1)"/>
+            <xi:include xmlns:xi="http://www.w3.org/2001/XInclude"
+               href="../../../../indices/personList.xml" xpointer="element(/1/2/1/1)"/>
+            <xi:include xmlns:xi="http://www.w3.org/2001/XInclude"
+               href="../../../../indices/eventList.xml" xpointer="element(/1/2/1/1)"/>
+            <xi:include xmlns:xi="http://www.w3.org/2001/XInclude"
+               href="../../../../indices/orgList.xml" xpointer="element(/1/2/1/1)"/>
+         </div>
+      </body>
+   </text>
+</TEI>

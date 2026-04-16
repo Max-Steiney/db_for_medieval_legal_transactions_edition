@@ -1,0 +1,97 @@
+<?xml version="1.0" encoding="UTF-8" standalone="no"?>
+<!DOCTYPE TEI
+  SYSTEM "../../../schema/toolbox_full.dtd">
+<TEI xmlns:cei="http://www.monasterium.net/NS/cei" xmlns="http://www.tei-c.org/ns/1.0">
+   <teiHeader>
+      <fileDesc>
+         <titleStmt>
+            <title>Tei version of 3771 exported from monasterium.net </title>
+         </titleStmt>
+         <publicationStmt>
+            <p/>
+         </publicationStmt>
+         <!--In Original: cei:front/cei:sourceDesc/cei:sourceDescRegest-->
+         <sourceDesc>
+            <bibl>Quellen zur Geschichte der Stadt Wien, Bd. II/3, Nr. As published in HAUrk by
+               Wiener Stadt- und Landesarchiv </bibl>
+            <msDesc>
+               <msIdentifier>
+                  <repository>Wiener Stadt- und Landesarchiv</repository>
+                  <idno>3771</idno>
+                  <altIdentifier type="old">
+                     <idno>518027</idno>
+                  </altIdentifier>
+               </msIdentifier>
+               <msContents>
+                  <msItem>
+                     <listBibl>
+                        <bibl type="url"
+                           >https://www.monasterium.net/mom/AT-WStLA/HAUrk/3771/charter</bibl>
+                        <bibl>Camesina, Regesten 92 n° 435 Regest.</bibl>
+                     </listBibl>
+                  </msItem>
+               </msContents>
+               <physDesc>
+                  <sealDesc>
+                     <seal>
+                        <p>Zwei rückwärts aufgedrückte Siegel von grünem Wachse, 1. Bruchstück.</p>
+                     </seal>
+                  </sealDesc>
+               </physDesc>
+            </msDesc>
+         </sourceDesc>
+      </fileDesc>
+      <profileDesc>
+         <creation>
+            <placeName>Wien</placeName>
+            <date when="14580311">1458 III 11</date>
+            <origDate>zu Wienn, an sambstag vor dem suntag Letare zu Mittervasten. [6]</origDate>
+         </creation>
+      </profileDesc>
+   </teiHeader>
+   <facsimile>
+      <surface>
+         <graphic
+            url="http://images.monasterium.net/pics/AT-WStLA/HA-U/WStLA-HA-Urkunden_03771_r.jpg"/>
+      </surface>
+      <surface>
+         <graphic
+            url="http://images.monasterium.net/pics/AT-WStLA/HA-U/WStLA-HA-Urkunden_03771_v.jpg"/>
+      </surface>
+   </facsimile>
+   <text>
+      <body>
+         <div type="abstract" resp="vh">
+            <p>
+               <rs type="event" ref="ev__QGW_II_III_3771">
+                  <rs type="fn" role="issuer"><rs type="person"
+                        ref="pe__niklas_klinsler_QGW_II_III_3771">Niclas Klinsler, <roleName
+                           type="occ" corresp="org__wien-st_stephan">achter</roleName> dacz sant
+                        Stephan zu Wienn</rs></rs>, dem <rs type="fn" role="recipient"><rs
+                        type="org" ref="org__wien">Bürgermeister und Rath</rs></rs> die von <rs
+                     type="person" ref="pe__michael_vinkch_QGW_II_I_1082">Michel Vinkch</rs> auf <rs
+                     type="org" ref="org__wien-st_stephan-altar_zwoelfapostel-messe_vinkch_michael"
+                     >Allerheiligen altar dacz sant Stephan gestiftete Messe</rs> verliehen haben,
+                  gelobt, die dazu gehörigen Güter in gutem Stande zu erhalten und die Messe
+                  dreistund in der wochen zu lesen. </rs> 
+            </p>
+         </div>
+         <div type="seal">
+            <p>
+               <rs type="event" ref="ev__QGW_II_III_3771">Besiegelt mit den Siegeln der Wiener
+                  Bürger Steffan des Auer und Hannsen Malchinger. </rs>
+            </p>
+         </div>
+         <div type="lists">
+            <xi:include xmlns:xi="http://www.w3.org/2001/XInclude"
+               href="../../../../indices/placeList.xml" xpointer="element(/1/2/1/1)"/>
+            <xi:include xmlns:xi="http://www.w3.org/2001/XInclude"
+               href="../../../../indices/personList.xml" xpointer="element(/1/2/1/1)"/>
+            <xi:include xmlns:xi="http://www.w3.org/2001/XInclude"
+               href="../../../../indices/eventList.xml" xpointer="element(/1/2/1/1)"/>
+            <xi:include xmlns:xi="http://www.w3.org/2001/XInclude"
+               href="../../../../indices/orgList.xml" xpointer="element(/1/2/1/1)"/>
+         </div>
+      </body>
+   </text>
+</TEI>

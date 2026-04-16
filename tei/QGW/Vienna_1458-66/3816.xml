@@ -1,0 +1,101 @@
+<?xml version="1.0" encoding="UTF-8" standalone="no"?>
+<!DOCTYPE TEI
+  SYSTEM "../../../schema/toolbox_full.dtd">
+<TEI xmlns:cei="http://www.monasterium.net/NS/cei" xmlns="http://www.tei-c.org/ns/1.0">
+   <teiHeader>
+      <fileDesc>
+         <titleStmt>
+            <title>Tei version of 3816 exported from monasterium.net </title>
+         </titleStmt>
+         <publicationStmt>
+            <p/>
+         </publicationStmt>
+         <!--In Original: cei:front/cei:sourceDesc/cei:sourceDescRegest-->
+         <sourceDesc>
+            <bibl>Quellen zur Geschichte der Stadt Wien, Bd. II/3, Nr. As published in HAUrk by
+               Wiener Stadt- und Landesarchiv </bibl>
+            <msDesc>
+               <msIdentifier>
+                  <repository>Wiener Stadt- und Landesarchiv</repository>
+                  <idno>3816</idno>
+                  <altIdentifier type="old">
+                     <idno>518077</idno>
+                  </altIdentifier>
+               </msIdentifier>
+               <msContents>
+                  <msItem>
+                     <listBibl>
+                        <bibl type="url"
+                           >https://www.monasterium.net/mom/AT-WStLA/HAUrk/3816/charter</bibl>
+                     </listBibl>
+                  </msItem>
+               </msContents>
+               <physDesc>
+                  <sealDesc>
+                     <seal>
+                        <p>Zum Verschlusse aufgedrücktes Siegel von grünem Wachse unter
+                           Papierdecke.</p>
+                     </seal>
+                  </sealDesc>
+               </physDesc>
+            </msDesc>
+         </sourceDesc>
+      </fileDesc>
+      <profileDesc>
+         <creation>
+            <placeName>Altenburg</placeName>
+            <date when="14580915">1458 IX 15</date>
+            <origDate>Datum Altenwurkg am freitag nach der Geburt Unser Fraun, anno etc.
+               lviij°.</origDate>
+         </creation>
+      </profileDesc>
+   </teiHeader>
+   <facsimile>
+      <surface>
+         <graphic
+            url="http://images.monasterium.net/pics/AT-WStLA/HA-U/WStLA-HA-Urkunden_03816_r.jpg"/>
+      </surface>
+      <surface>
+         <graphic
+            url="http://images.monasterium.net/pics/AT-WStLA/HA-U/WStLA-HA-Urkunden_03816_v.jpg"/>
+      </surface>
+   </facsimile>
+   <text>
+      <body>
+         <div type="abstract" resp="ms">
+            <p>
+               <rs type="event" ref="ev__QGW_II_III_3816">
+                  <rs type="fn" role="issuer"><rs type="person"
+                        ref="pe__sigmund_ii_graf_QGW_II_III_3788">Sigmund, <roleName type="title"
+                           >graff</roleName> zu Sand Georigen und Pesung etc</rs>.</rs>, an <rs
+                     type="fn" role="recipient"><rs type="person"
+                        ref="pe__friedrich_v_herzog_von_oesterreich_QGW_II_I_3270"><roleName
+                           type="occ" corresp="org__heiliges_roemisches_reich">Kaiser</roleName>
+                        Friedrich III.</rs></rs> Er habe in seiner Angelegenheit gegen die Wiener
+                  sich stets um einen gütlichen Ausgleich bemüht, doch seien seine Abgesandten stets
+                  mit schimphleich und ho/eher antwurt abgefertigt worden. Deshalb bleibe ihm nichts
+                  übrig, als die Sache Gott zu bevelhen, und da er under der <rs type="org"
+                     ref="org__ungarn-koenigreich">coron zu Ungern</rs> behaust sei, so wolle er,
+                  wenn jemand sprich wider ihn habe, gern furkemes sein an den enden, als pilleich
+                  ist doch bitte er den Kaiser, die von Wien zu bewegen, den Seinen ihren Schaden zu
+                  vergüten. </rs>
+            </p>
+         </div>
+         <div type="nota">
+            <p>
+               <rs type="event" ref="ev__QGW_II_III_3816_nota">Adresse aussen.</rs>
+            </p>
+         </div>
+         <div type="lists">
+            <xi:include xmlns:xi="http://www.w3.org/2001/XInclude"
+               href="../../../../indices/placeList.xml" xpointer="element(/1/2/1/1)"/>
+            <xi:include xmlns:xi="http://www.w3.org/2001/XInclude"
+               href="../../../../indices/personList.xml" xpointer="element(/1/2/1/1)"/>
+            <xi:include xmlns:xi="http://www.w3.org/2001/XInclude"
+               href="../../../../indices/eventList.xml" xpointer="element(/1/2/1/1)"/>
+            <xi:include xmlns:xi="http://www.w3.org/2001/XInclude"
+               href="../../../../indices/orgList.xml" xpointer="element(/1/2/1/1)"/>
+         </div>
+      </body>
+   </text>
+</TEI>

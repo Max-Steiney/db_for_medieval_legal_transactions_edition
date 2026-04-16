@@ -1,0 +1,113 @@
+<?xml version="1.0" encoding="UTF-8"?><!DOCTYPE TEI SYSTEM "../../../schema/toolbox_full.dtd">
+<TEI xmlns="http://www.tei-c.org/ns/1.0" xmlns:cei="http://www.monasterium.net/NS/cei"
+   xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance">
+   <teiHeader>
+      <fileDesc>
+         <titleStmt>
+            <title>Tei version of 2043 exported from monasterium.net </title>
+         </titleStmt>
+         <publicationStmt>
+            <p/>
+         </publicationStmt>
+         <!--In Original: cei:front/cei:sourceDesc/cei:sourceDescRegest-->
+         <sourceDesc>
+            <bibl>Quellen zur Geschichte der Stadt Wien, Bd. II/2, Nr. 2043 As published in HAUrk by
+               Wiener Stadt- und Landesarchiv </bibl>
+            <msDesc>
+               <msIdentifier>
+                  <repository>Wiener Stadt- und Landesarchiv</repository>
+                  <idno>2043</idno>
+                  <altIdentifier type="old">
+                     <idno>516252</idno>
+                  </altIdentifier>
+               </msIdentifier>
+               <msContents>
+                  <msItem>
+                     <listBibl>
+                        <bibl>Jahrbuch der kais. Kunstsamml. 16b, n° 13350 Regest.</bibl>
+                     </listBibl>
+                  </msItem>
+               </msContents>
+               <physDesc>
+                  <sealDesc>
+                     <seal>
+                        <p>Zwei rückwärts aufgedrückte Siegel von grünem Wachse, beschädigt.Siegler:
+                           der Aussteller und der Wiener Bürger <quote>Hanns der Füxl</quote>. </p>
+                     </seal>
+                  </sealDesc>
+               </physDesc>
+            </msDesc>
+         </sourceDesc>
+      </fileDesc>
+      <encodingDesc>
+         <projectDesc default="false">
+            <p><label type="contentual-editing">Projekt Christina Lutter Stadt und
+                  Gemeinschaft</label></p>
+         </projectDesc>
+      </encodingDesc>
+      <profileDesc>
+         <creation>
+            <placeName>Enzesfeld</placeName>
+            <date when="14160703">1416 VII 03</date>
+            <origDate>zu Enczesveld, an. freitag vor sand Ulreichs tag.</origDate></creation>
+      </profileDesc>
+   </teiHeader>
+   <facsimile>
+      <surface>
+         <graphic
+            url="http://images.monasterium.net/pics/AT-WStLA/HA-U/WStLA-HA-Urkunden_02043_r.jpg"/>
+      </surface>
+      <surface>
+         <graphic
+            url="http://images.monasterium.net/pics/AT-WStLA/HA-U/WStLA-HA-Urkunden_02043_v.jpg"/>
+      </surface>
+   </facsimile>
+   <text>
+      <body>
+         <div type="abstract">
+            <p><rs type="event" ref="ev__QGW_II_II_2043">
+                  <rs type="fn" role="issuer"><rs type="person" ref="pe__gilg_haider_QGW_II_II_2043"
+                        >Gilig Haider, <roleName type="occ" corresp="org__enzesfeld"
+                        >pfleger</roleName> zu Enczesveld</rs>, und <rs type="person"
+                        ref="pe__anna_QGW_II_II_2043">Anna, sein <roleName type="kin"
+                           corresp="pe__gilg_haider_QGW_II_II_2043">hausfrau</roleName></rs>,
+                     </rs> theilen <rs type="fn" role="recipient"><rs type="person"
+                        ref="pe__konrad_chiemseer_StB_I_178">Chunraten dem Chiemseer, <roleName
+                           type="occ" corresp="org__wien">des raczs</roleName> der stat ze
+                        Wienn</rs>, und <rs type="person" ref="pe__paul_wuerfel_QGW_II_II_1928"
+                        >Pauln dem Würffel<roleName type="occ" corresp="org__wien"
+                        >purger</roleName>, daselbs</rs>, mit, </rs><rs type="event" ref="NULL">dass
+                           sie<add><rs type="fn" role="issuer"><rs type="person"
+                              ref="pe__gilg_haider_QGW_II_II_2043">Gilig Haider</rs> und <rs
+                              type="person" ref="pe__anna_QGW_II_II_2043">Anna, sein <roleName
+                                 type="kin" corresp="pe__gilg_haider_QGW_II_II_2043"
+                                 >hausfrau</roleName></rs></rs></add> dem <rs type="fn"
+                        role="recipient"><rs type="person" ref="pe__peter_eila_QGW_II_II_2043"
+                              ><roleName type="prof">Goldschmied</roleName> Petern von Eila</rs> ihr
+                        Haus an dem Alten Rosmarkt, in dem er wohnt, für 80 lb dn. verpfändet
+                        haben</rs></rs>, und ersuchen sie, ihn deshalb in der stat saczpuech zu
+                  schreiben. Er soll das Haus vom nächsten St. Michaelstage über vier Jahre
+                  innehaben, nach welcher Zeit es frei von jeder Schuld wieder an sie zurückfallen
+                  solle. </rs></p>
+         </div>
+         <div type="seal">
+            <p><rs type="event" ref="ev__QGW_II_II_2043"><rs type="fn" role="witness">Siegler: <rs
+                        type="person" ref="pe__gilg_haider_QGW_II_II_2043">der Aussteller</rs> und
+                        <rs type="person" ref="pe__johann_fuechsel_QGW_II_I_1562">der Wiener
+                           <roleName type="occ" corresp="org__wien">Bürger</roleName> Hanns der
+                        Füxl</rs>.</rs>
+               </rs></p>
+         </div>
+         <div type="lists">
+            <xi:include xmlns:xi="http://www.w3.org/2001/XInclude"
+               href="../../../../indices/placeList.xml" xpointer="element(/1/2/1/1)"/>
+            <xi:include xmlns:xi="http://www.w3.org/2001/XInclude"
+               href="../../../../indices/personList.xml" xpointer="element(/1/2/1/1)"/>
+            <xi:include xmlns:xi="http://www.w3.org/2001/XInclude"
+               href="../../../../indices/eventList.xml" xpointer="element(/1/2/1/1)"/>
+            <xi:include xmlns:xi="http://www.w3.org/2001/XInclude"
+               href="../../../../indices/orgList.xml" xpointer="element(/1/2/1/1)"/>
+         </div>
+      </body>
+   </text>
+</TEI>

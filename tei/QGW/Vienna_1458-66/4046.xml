@@ -1,0 +1,123 @@
+<?xml version="1.0" encoding="UTF-8" standalone="no"?>
+<!DOCTYPE TEI
+  SYSTEM "../../../schema/toolbox_full.dtd">
+<TEI xmlns:cei="http://www.monasterium.net/NS/cei" xmlns="http://www.tei-c.org/ns/1.0">
+   <teiHeader>
+      <fileDesc>
+         <titleStmt>
+            <title>Tei version of 4046 exported from monasterium.net </title>
+         </titleStmt>
+         <publicationStmt>
+            <p/>
+         </publicationStmt>
+         <!--In Original: cei:front/cei:sourceDesc/cei:sourceDescRegest-->
+         <sourceDesc>
+            <bibl>Quellen zur Geschichte der Stadt Wien, Bd. II/3, Nr. As published in HAUrk by
+               Wiener Stadt- und Landesarchiv </bibl>
+            <msDesc>
+               <msIdentifier>
+                  <repository>Wiener Stadt- und Landesarchiv</repository>
+                  <idno>4046</idno>
+                  <altIdentifier type="old">
+                     <idno>518317</idno>
+                  </altIdentifier>
+               </msIdentifier>
+               <msContents>
+                  <msItem>
+                     <listBibl>
+                        <bibl type="url"
+                           >https://www.monasterium.net/mom/AT-WStLA/HAUrk/4046/charter</bibl>
+                     </listBibl>
+                  </msItem>
+               </msContents>
+               <physDesc>
+                  <sealDesc>
+                     <seal>
+                        <p>Anhangendes Siegel, grün u. Sch.</p>
+                     </seal>
+                  </sealDesc>
+               </physDesc>
+            </msDesc>
+         </sourceDesc>
+      </fileDesc>
+      <profileDesc>
+         <creation>
+            <placeName>Wien</placeName>
+            <date when="14630401">1463 IV 01</date>
+            <origDate>zu Wienn, an freitag vor dem Palmtag.</origDate></creation>
+      </profileDesc>
+   </teiHeader>
+   <facsimile>
+      <surface>
+         <graphic
+            url="http://images.monasterium.net/pics/AT-WStLA/HA-U/WStLA-HA-Urkunden_04046_r.jpg"/>
+      </surface>
+      <surface>
+         <graphic
+            url="http://images.monasterium.net/pics/AT-WStLA/HA-U/WStLA-HA-Urkunden_04046_v.jpg"/>
+      </surface>
+   </facsimile>
+   <text>
+      <body>
+         <div type="abstract" resp="vh">
+            <p><rs type="event" ref="ev__QGW_II_III_4046">
+                  <rs type="fn" role="issuer"><rs type="person"
+                        ref="pe__laurenz_schoenperger_QGW_II_III_4046">Larencz Schönnperger,
+                           <roleName type="occ" corresp="org__wien">statrichter</roleName> zu
+                        Wienn</rs></rs>, beurkundet, dass vor <rs type="person"
+                     ref="pe__leonhard_holczhaimer_QGW_II_III_4046"><roleName type="rep"
+                        corresp="pe__laurenz_schoenperger_QGW_II_III_4046">seinem</roleName>
+                     <roleName type="occ" corresp="org__wien">nachrichter</roleName> Lienharten
+                     Holczhaimer</rs> in der Bürgerschranne <rs type="person"
+                     ref="pe__leonhard_stadler_QGW_II_III_4046">Lienhart Stadler <roleName
+                        type="rep" corresp="pe__martin_guldein_QGW_II_III_3897">anstat seins
+                        herren</roleName></rs> . . . . <rs type="fn" role="recipient"><rs
+                        type="person" ref="pe__martin_guldein_QGW_II_III_3897"><roleName
+                           type="title">maister</roleName> Merten Guldein, <roleName type="prof"
+                           >lerer</roleName> in der erznei, <roleName type="occ"
+                           corresp="org__wien-buergerspital">spitalmaister</roleName> der
+                        Burgerspital vor Kernertor zu Wienn</rs></rs> , durch seinen Vorsprechen
+                  nachgewiesen habe, wie er emaln . . . geklagt hiet auf <rs type="person"
+                     ref="pe__andreas_auer_QGW_II_III_4046">Andreen des Auer, <roleName type="occ"
+                        corresp="org__wien">burger</roleName> zu Wienn</rs>, haus, gelegen undern
+                  Satlern daselbs zunagst weilent Andreen Hofmaister, des kürsner, haus an aim tail,
+                  umb 26 lb dn. gelts purkrechts . Dieses Burgrecht hatten <rs type="person"
+                     ref="pe__michael_puff_von_schrick_QGW_II_III_4046"><roleName type="title"
+                        >maister</roleName> Michel Puff von Schrickh, <roleName type="prof"
+                        >lerer</roleName> in der erznei <roleName type="rep"
+                        corresp="pe__margarethe_QGW_II_III_4046"><add>als
+                        Geschäftleute</add></roleName></rs>, und <rs type="person"
+                     ref="pe__stephan_auer_QGW_II_II_2608">Stephan Auer, des Andreen <roleName
+                        type="kin" corresp="pe__andreas_auer_QGW_II_III_4046">Vater</roleName>,
+                        <roleName type="rep" corresp="pe__margarethe_QGW_II_III_4046">als
+                        Geschäftleute</roleName></rs> nach <rs type="person"
+                     ref="pe__margarethe_QGW_II_III_4046"><roleName type="title">fraun</roleName>
+                     Margrethen, des Andreen <roleName type="kin"
+                        corresp="pe__andreas_auer_QGW_II_III_4046">Mutter</roleName></rs>, zu Handen
+                  des Bürgerspitals auf dem Hause angelegt. Nun haben sie aber das Burgrecht, das
+                  ihnen von den zwei letzten Jahren, die sich zu der Quattember zu dem vergangenen
+                  sand Michels tag geendt hieten, im Betrage von 52 lb dn. versessen war, sammt den
+                  1000 lb dn. haubtguts, daran solcher purkrechtsdienst gevallen sol, dem
+                  Bürgerspital-Meister übergeben. Dieser erhob darauf die Klage wegen des
+                  versessenen Burgrechtsdienstes und aller darauf ertheilten zwispild. Da Andre Auer
+                  nach erfolgtem, durch den geswornen fronpoten ausgewiesenem zewissentun nicht vor
+                  Gericht erschienen ist, so gibt der Richter dem Kläger <rs type="person"
+                     ref="pe__johann_meurl_QGW_II_III_4046">Hanns Meurl</rs> und <rs type="person"
+                     ref="pe__kaspar_tendl_QGW_II_II_2809">Caspar Tendl</rs>, baid gesworn
+                  vorsprechen, als beschaupoten mit und macht nach deren Aussage maister Merten
+                  Guldein als spitalmaister zu handen desselben Spitals des Hauses gewaltig.
+               </rs></p>
+         </div>
+         <div type="lists">
+            <xi:include xmlns:xi="http://www.w3.org/2001/XInclude"
+               href="../../../../indices/placeList.xml" xpointer="element(/1/2/1/1)"/>
+            <xi:include xmlns:xi="http://www.w3.org/2001/XInclude"
+               href="../../../../indices/personList.xml" xpointer="element(/1/2/1/1)"/>
+            <xi:include xmlns:xi="http://www.w3.org/2001/XInclude"
+               href="../../../../indices/eventList.xml" xpointer="element(/1/2/1/1)"/>
+            <xi:include xmlns:xi="http://www.w3.org/2001/XInclude"
+               href="../../../../indices/orgList.xml" xpointer="element(/1/2/1/1)"/>
+         </div>
+      </body>
+   </text>
+</TEI>

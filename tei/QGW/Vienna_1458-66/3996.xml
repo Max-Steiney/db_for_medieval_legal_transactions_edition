@@ -1,0 +1,101 @@
+<?xml version="1.0" encoding="UTF-8" standalone="no"?>
+<!DOCTYPE TEI
+  SYSTEM "../../../schema/toolbox_full.dtd">
+<TEI xmlns:cei="http://www.monasterium.net/NS/cei" xmlns="http://www.tei-c.org/ns/1.0">
+   <teiHeader>
+      <fileDesc>
+         <titleStmt>
+            <title>Tei version of 3996 exported from monasterium.net </title>
+         </titleStmt>
+         <publicationStmt>
+            <p/>
+         </publicationStmt>
+         <!--In Original: cei:front/cei:sourceDesc/cei:sourceDescRegest-->
+         <sourceDesc>
+            <bibl>Quellen zur Geschichte der Stadt Wien, Bd. II/3, Nr. As published in HAUrk by
+               Wiener Stadt- und Landesarchiv </bibl>
+            <msDesc>
+               <msIdentifier>
+                  <repository>Wiener Stadt- und Landesarchiv</repository>
+                  <idno>3996</idno>
+                  <altIdentifier type="old">
+                     <idno>518262</idno>
+                  </altIdentifier>
+               </msIdentifier>
+               <msContents>
+                  <msItem>
+                     <listBibl>
+                        <bibl type="url"
+                           >https://www.monasterium.net/mom/AT-WStLA/HAUrk/3996/charter</bibl>
+                        <bibl>Copeibuch 262 n° 127.</bibl>
+                     </listBibl>
+                  </msItem>
+               </msContents>
+               <physDesc>
+                  <sealDesc>
+                     <seal>
+                        <p>Rückwärts aufgedrücktes Wappensiegel (Sava Fig. 93).</p>
+                     </seal>
+                  </sealDesc>
+               </physDesc>
+            </msDesc>
+         </sourceDesc>
+      </fileDesc>
+      <profileDesc>
+         <creation>
+            <placeName>im veld im Gluthafen</placeName>
+            <date when="14619999">1461</date>
+            <origDate>Geben im veld (von anderer Hand über der Zeile nachgetragen im Gluthafen) an
+               phincztag nach sand Jacobs tag, anno domini etc. sexagesimo primo.
+            </origDate></creation>
+      </profileDesc>
+   </teiHeader>
+   <facsimile>
+      <surface>
+         <graphic
+            url="http://images.monasterium.net/pics/AT-WStLA/HA-U/WStLA-HA-Urkunden_03996_r.jpg"/>
+      </surface>
+      <surface>
+         <graphic
+            url="http://images.monasterium.net/pics/AT-WStLA/HA-U/WStLA-HA-Urkunden_03996_v.jpg"/>
+      </surface>
+   </facsimile>
+   <text>
+      <body>
+         <div type="abstract" resp="ms">
+            <p><rs type="event" ref="ev__QGW_II_III_3996"><rs type="fn" role="issuer"><rs
+                        type="person" ref="pe__albrecht_herzog_von_oesterreich_QGW_II_II_3617"><roleName type="occ"
+                           corresp="org__oesterreich_herzogtum">Erzherzog</roleName> Albrecht
+                        VI.</rs></rs> an <rs type="fn" role="recipient"><rs type="org"
+                        ref="org__wien">Bürgermeister, Richter, Rath, die Genannten und gancze
+                        gemainde ze Wienn</rs></rs>. Er verwahrt sich gegen die über ihn
+                  ausgestreuten Gerüchte, insbesondere gegen den Vorwurf, dass die <rs type="org"
+                     ref="org__ybbs">Bürger zu Ybbs</rs> und <rs type="org" ref="org__tulln"
+                        ><add>Bürger zu</add>Tulln</rs>, die sich ihm friedlich angeschlossen
+                  hatten, schlecht behandelt worden seien, und gegen die Verdächtigung, er habe es
+                  auf die Wiener mit einem mercklichen anslag abgesehen, da er von Linz mit 180000
+                  guldein Schulden ausgezogen sei, wovon er den grössten Theil gen Eger verspilt
+                  haben sollte. Er fordert sie auf, ihm mit Treue und Vertrauen entgegenzukommen und
+                  etliche Bevollmächtigte zu entsenden, mit denen er ihr und des <rs type="org"
+                     ref="org__oesterreich-herzogtum">ganczen haus Österreich</rs> nucz und frummen
+                  betrachten wolle. Geleites würden diese nicht bedürfen, da er solhs nicht in
+                  widerwertikait, noch ihnen zu beschedigung [ 60] angefangen, sunder ihnen zu allem
+                  gut. </rs></p>
+         </div>
+         <div type="nota">
+            <p><rs type="event" ref="ev__QGW_II_III_3996_nota">Von anderer Hand: dominus archidux in
+                  consilio. </rs></p>
+         </div>
+         <div type="lists">
+            <xi:include xmlns:xi="http://www.w3.org/2001/XInclude"
+               href="../../../../indices/placeList.xml" xpointer="element(/1/2/1/1)"/>
+            <xi:include xmlns:xi="http://www.w3.org/2001/XInclude"
+               href="../../../../indices/personList.xml" xpointer="element(/1/2/1/1)"/>
+            <xi:include xmlns:xi="http://www.w3.org/2001/XInclude"
+               href="../../../../indices/eventList.xml" xpointer="element(/1/2/1/1)"/>
+            <xi:include xmlns:xi="http://www.w3.org/2001/XInclude"
+               href="../../../../indices/orgList.xml" xpointer="element(/1/2/1/1)"/>
+         </div>
+      </body>
+   </text>
+</TEI>

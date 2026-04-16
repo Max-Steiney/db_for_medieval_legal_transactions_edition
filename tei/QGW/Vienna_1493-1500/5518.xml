@@ -1,0 +1,133 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<TEI xmlns="http://www.tei-c.org/ns/1.0" xmlns:cei="http://www.monasterium.net/NS/cei"
+   xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance">
+   <teiHeader>
+      <fileDesc>
+         <titleStmt>
+            <title>Tei version of 5518 exported from monasterium.net </title>
+         </titleStmt>
+         <publicationStmt>
+            <p/>
+         </publicationStmt>
+         <!--In Original: cei:front/cei:sourceDesc/cei:sourceDescRegest-->
+         <sourceDesc>
+            <bibl>Quellen zur Geschichte der Stadt Wien, Bd. II/4, Nr. 5518 As published in HAUrk by
+               Wiener Stadt- und Landesarchiv </bibl>
+            <msDesc>
+               <msIdentifier>
+                  <repository>Wiener Stadt- und Landesarchiv</repository>
+                  <idno>5518</idno>
+                  <altIdentifier type="old">
+                     <idno>519829</idno>
+                  </altIdentifier>
+               </msIdentifier>
+               <physDesc>
+                  <sealDesc>
+                     <seal>
+                        <p>mit zwei aufgedrückten grünen Rücksiegeln. 1. Papierdecke abgefallen IV
+                           C: im Schilde springender, auf dem Helme wachsender Hirsch: S. * Erhart *
+                           Pawmschaber * 2. unter Papierdecke. <quote>Mit urkund der quittung
+                              besiglten mit</quote> . . . <quote>Hannsen Mulhauser und Erharten
+                              Beinschaber1 baider burger zu Wienn aufgedrukhten insigln</quote>.
+                        </p>
+                     </seal>
+                  </sealDesc>
+               </physDesc>
+            </msDesc>
+         </sourceDesc>
+      </fileDesc>
+      <encodingDesc>
+         <projectDesc default="false">
+            <p><label type="contentual-editing">Projekt Christina Lutter Stadt und
+                  Gemeinschaft</label></p>
+         </projectDesc>
+      </encodingDesc>
+      <profileDesc>
+         <creation>
+            <placeName>Wien</placeName>
+            <date when="14940909">1494 IX 09</date>
+            <origDate>Geben zu Wienn, an eritag nach unser lieben frawntag irer geburd, anno domini
+               etc. nonagesimo quarto. </origDate></creation>
+      </profileDesc>
+   </teiHeader>
+   <facsimile>
+      <surface>
+         <graphic
+            url="http://images.monasterium.net/pics/AT-WStLA/HA-U/WStLA-HA-Urkunden_05518_r.jpg"/>
+      </surface>
+      <surface>
+         <graphic
+            url="http://images.monasterium.net/pics/AT-WStLA/HA-U/WStLA-HA-Urkunden_05518_v.jpg"/>
+      </surface>
+   </facsimile>
+   <text>
+      <body>
+         <div type="abstract">
+            <p><rs type="event" ref="ev__QGW_II_II_5518">
+                  <rs type="fn" role="issuer"><rs type="person"
+                        ref="pe__heinrich_frankch_QGW_II_II_4088">Hainreich Frannkh <roleName
+                           type="occ" corresp="org__wien">burger</roleName> zu Wienn</rs> und <rs
+                        type="person" ref="pe__barbara_QGW_II_IV_5506">seine <roleName type="kin"
+                           corresp="pe__heinrich_frankch_QGW_II_II_4088">Hausfrau</roleName>
+                        Barbara</rs></rs> haben <rs type="fn" role="recipient"><rs type="person"
+                        ref="pe__peter_edlasperger_QGW_II_IV_5506">dem <roleName type="title">edln
+                           gestrengen ritter herrn</roleName> Petern Edlasperger von Ofen</rs></rs>
+                  ihr halbes haus mit seiner zugehorung ganzes, genant des von Tierna haus, bei dem
+                  Liechtensteg undern Fleischpenkhen zunagst weilend Sigmunden Gwaltzhover
+                  munssmaister in Osterreich burger zu Wienn seligen haus gelegen, verkauft und des
+                  in der stat Wienn gruntbu/och gefertigt . Nun waren auf den drein fleischpenken
+                  die zunagst bei dem vordernthor in demselben halben haus ligen , von dem <rs
+                     type="person" ref="pe__heinrich_frankch_QGW_II_II_2150"><roleName type="kin"
+                        corresp="pe__heinrich_frankch_QGW_II_II_4088">Großvater</roleName> des
+                     Ausstellers Hainreich Frannkh ( mein een seliger)</rs> seiner <rs type="person"
+                     ref="pe__anna_QGW_II_IV_5518"><roleName type="kin"
+                        corresp="pe__heinrich_frankch_QGW_II_II_2150">hausfrawn</roleName> Annen,
+                     Hermans von Eslarn <roleName type="kin"
+                        corresp="pe__hermann_von_eslarn_ii_QGW_II_I_1185">tochter</roleName> (
+                     meiner <roleName type="kin" corresp="pe__heinrich_frankch_QGW_II_II_4088"
+                        >e/andlein</roleName>) </rs>300 lb Pf. zu margengab vermacht und verschriben
+                  und zu derselben stat gruntbuch erlegt. Von dieser Summe gebühren dem Aussteller
+                  für sich und seinen <rs type="person" ref="pe__albrecht_frankch_QGW_II_II_4088"
+                        ><roleName type="kin" corresp="pe__heinrich_frankch_QGW_II_II_4088"
+                        >Bruder</roleName> Albrechtn Frannkhen</rs>, der ihm sein gerechtigkait
+                  ubergeben hate, 100 lb Pf. gegen dem <rs type="person"
+                     ref="pe__johann_koeppl_QGW_II_III_5471"><roleName type="title">ersamen
+                        weisen</roleName> Hannsen Köppl, diezeit ainer des <roleName type="occ"
+                        corresp="org__wien">rats</roleName>,</rs> und <rs type="person"
+                     ref="pe__barbara_QGW_II_III_5476">Barbaren <rs type="person"
+                        ref="pe__wolfgang_tunkchel_QGW_II_III_5476">Wolfgangen Tungkhl <roleName
+                           type="occ" corresp="org__wien">burger</roleName> zu Wienn</rs>
+                     <roleName type="kin" corresp="pe__wolfgang_tunkchel_QGW_II_III_5476"
+                        >hausfrawn</roleName>
+                  </rs>. Daß diese 100 lb Pf. ihm <rs type="person"
+                     ref="pe__friedrich_geldrich_QGW_II_IV_5506"><roleName type="title"
+                        >her</roleName> Friderich Geldrich zu den zeiten <roleName type="occ"
+                        corresp="org__wien">burgermaister</roleName></rs> und <rs type="org"
+                     ref="org__wien">der rat gemain der stat hie</rs> . . . durch <rs type="person"
+                     ref="pe__johann_lanczhart_QGW_II_III_5485">Hannsen Lannczharten, irn <roleName
+                        type="occ" corresp="org__wien">mitgesworen</roleName> des rats<roleName
+                        type="occ" corresp="org__wien"><add>innhaber und verweser des vorgenanten
+                           irs gruntbu/ochs</add></roleName></rs> und <rs type="person"
+                     ref="pe__bernhard_flander_QGW_II_III_5486">Pernharten Flannder irn <roleName
+                        type="occ" corresp="org__wien">mitburger</roleName>, baid <roleName
+                        type="occ" corresp="org__wien">innhaber und verweser des vorgenanten irs
+                        gruntbu/ochs</roleName></rs> . . . vervoligen haben laßen , quittiert nun
+                  der Aussteller. </rs></p>
+         </div>
+         <div type="nota">
+            <p>Dorsualnotiz rechts unten: Hainrich Frankhen quittung umb c lb dn (in späterer
+               Schrift:) von Petern von Edlesperg hauß wegen. </p>
+         </div>
+         <div type="lists">
+            <xi:include xmlns:xi="http://www.w3.org/2001/XInclude"
+               href="../../../../indices/placeList.xml" xpointer="element(/1/2/1/1)"/>
+            <xi:include xmlns:xi="http://www.w3.org/2001/XInclude"
+               href="../../../../indices/personList.xml" xpointer="element(/1/2/1/1)"/>
+            <xi:include xmlns:xi="http://www.w3.org/2001/XInclude"
+               href="../../../../indices/eventList.xml" xpointer="element(/1/2/1/1)"/>
+            <xi:include xmlns:xi="http://www.w3.org/2001/XInclude"
+               href="../../../../indices/orgList.xml" xpointer="element(/1/2/1/1)"/>
+         </div>
+      </body>
+   </text>
+</TEI>

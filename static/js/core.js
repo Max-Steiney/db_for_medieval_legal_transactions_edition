@@ -95,11 +95,25 @@ var EdCore = (function() {
 
 
     /* ------------------------------------------------------------------
+       URL parameter utility (E6 cross-epic navigation)
+       ------------------------------------------------------------------ */
+
+    function getParam(name) {
+        try {
+            return new URLSearchParams(window.location.search).get(name);
+        } catch(e) {
+            return null;
+        }
+    }
+
+
+    /* ------------------------------------------------------------------
        Public API
        ------------------------------------------------------------------ */
 
     return {
-        esc: esc
+        esc: esc,
+        getParam: getParam
     };
 
 })();

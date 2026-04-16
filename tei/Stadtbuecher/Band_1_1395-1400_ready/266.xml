@@ -1,0 +1,110 @@
+<?xml version="1.0" encoding="UTF-8"?><!DOCTYPE TEI SYSTEM "../../../schema/toolbox_full.dtd">
+<TEI xmlns="http://www.tei-c.org/ns/1.0" xmlns:cei="http://www.monasterium.net/NS/cei"
+   xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance">
+   <teiHeader>
+      <fileDesc>
+         <titleStmt>
+            <title>TEI-Version of 267</title>
+         </titleStmt>
+         <publicationStmt>
+            <p/>
+         </publicationStmt>
+         <sourceDesc default="false">
+            <bibl default="false" status="draft">
+               <title type="full"><title type="main">Die Wiener Stadtbücher 1395 -
+                     1430</title><title type="sub">Teil 1: 1395 - 1400</title></title>
+               <author>Wilhelm Brauneder</author>
+               <author>Gerhard Jaritz</author>
+               <pubPlace>Wien</pubPlace>
+               <pubPlace>Köln</pubPlace>
+               <publisher>Böhlau Verlag</publisher>
+            </bibl>
+            <msDesc status="draft">
+               <msIdentifier>
+                  <idno>267</idno>
+               </msIdentifier>
+               <physDesc/>
+            </msDesc>
+         </sourceDesc>
+      </fileDesc>
+      <encodingDesc>
+         <projectDesc>
+            <p><label type="contentual-editing">Projekt Christina Lutter Stadt und
+                  Gemeinschaft</label></p>
+         </projectDesc>
+      </encodingDesc>
+      <profileDesc>
+         <creation>
+            <date when="1398-05-23">1398 Mai 23</date>
+         </creation>
+      </profileDesc>
+   </teiHeader>
+   <text>
+      <body>
+         <div type="header">
+            <p>Geschäft des Kuncz Hasser</p>
+         </div>                   <div type="entry" resp="rs">
+            <p> pr. mü., Einbr. 2 Zg., Ma (Indez: Item gescheft Chuncz Hasser) <rs type="event"
+                  ref="ev__StB_I_266">Des nachsten phincztags vor dem phingsttag kom fur den rat <rs
+                     type="fn" role="witness"><rs type="person" ref="pe__margarethe_StB_I_266"
+                           ><roleName type="title">fraw </roleName>Margret, <roleName type="kin"
+                           corresp="pe__konrad_hasser_StB_I_266"><add>witib</add></roleName><rs
+                           type="person" ref="pe__konrad_hasser_StB_I_266">Chunczen <roleName
+                              type="dead">seligen</roleName> witib des Hasser</rs></rs>, und hat da
+                     beweist mit den erbern lewten ze rechter zeit, als si ze recht solt, mit <rs
+                        type="person" ref="pe__ulrich_rokk_QGW_II_I_1090"><roleName type="title"
+                              ><add>erbern</add></roleName>Ulreichen dem Rokken</rs> und <rs
+                        type="person" ref="pe__peter_chramer_StB_I_183"><roleName type="title"
+                              ><add>erbern</add></roleName>Petrein dem <roleName type="prof"
+                           cert="unknown">Chramer</roleName></rs></rs>, das geschefft, so <rs
+                     type="fn" role="issuer"><rs type="person" ref="pe__konrad_hasser_StB_I_266">der
+                        vogenant ir wirt</rs> an seinen lesten zeiten getan hat</rs>. <rs type="fn"
+                     role="recipient">Von erst hat er geschafft <rs type="person"
+                        ref="pe__margarethe_StB_I_266">der egenanten seiner hausfrawn</rs> die
+                     funfczehen phunt, die er in der chram hat. So hat er geschafft von den newn und
+                     zwainczig phunden, die im Ulreich der Rok schuldig ist beliben, <rs
+                        type="person" ref="pe__michael_StB_I_266">seinem <roleName type="kin"
+                           corresp="pe__konrad_hasser_StB_I_266">chind</roleName> Micheln</rs> zwelf
+                     phunt phenning, die sol Peter der Chramer ynnhaben, uncz das daz chind zu
+                     seinen beschaiden jarn chumpt. Wer aber, das daz chind abgieng mit dem tod, so
+                     sullen derselben zwelf phunt gevallen acht phunt <rs type="person"
+                        ref="pe__niklas_hasser_StB_I_266">Niclasen dem Hasser, seinem<roleName
+                           type="kin" corresp="pe__konrad_hasser_StB_I_266">bruder</roleName></rs>,
+                     und die vier phunt seiner hawsfrawn. Item so hat er geschafft <rs type="org"
+                        ref="org__wien-karmeliter">hincz den Weizzen prudern ayn phunt zu dem
+                        paw</rs> und <rs type="person" ref="pe__endlein_StB_I_266">seiner <roleName type="occ" corresp="pe__konrad_hasser_StB_I_266">dyern</roleName> der
+                        Endlein</rs> auch ain phunt phenning. Und hat geschafft <rs type="org"
+                        ref="org__wien-karmeliter-messe_hasser_konrad_StB_I_266" cert="medium"
+                        >dreizzig messe durch seiner sel hayl willen</rs> und ayn Zellfart. Item so
+                     peleibt ich schuldig <rs type="person" ref="pe__endlein_oelerin_StB_I_266"
+                        >Endlein der <roleName type="prof" cert="unknown">Oelerin</roleName></rs>
+                     zway phunt phenning. Item <rs type="person"
+                        ref="pe__martin_wachsgiesser_QGW_II_I_1494">dem Martine dem <roleName
+                           type="prof" cert="unknown">Wachsgiezzer</roleName></rs> funfczehen
+                     schilling und <rs type="person" ref="pe__niklas_faerber_StB_I_266">Niclasen dem
+                           <roleName type="prof" cert="unknown">Verber</roleName></rs> acht und
+                     achczig phenning und seinem pruder Niclasen dem Hasser funf phunt. Und was uber
+                     wirt, das hat er geschafft seiner hawsfrawn Margreten.</rs>
+                  <rs type="fn" role="other">Und hat dasselb sein geschefft <triggerstring n="fn"
+                        >ausczerichten</triggerstring> enpholhen <rs type="person"
+                        ref="pe__margarethe_StB_I_266">der egenanten seiner hawsfrawn</rs> mit der
+                     egenanten zwayer <rs type="person" ref="pe__ulrich_rokk_QGW_II_I_1090">erbern
+                        mann</rs>
+                     <rs type="person" ref="pe__peter_chramer_StB_I_183"><add>erbern
+                     mann</add></rs>wizzen.</rs> Als darumb die obgenanten erbern lewt mit irn trewn
+                  an aydes stat vor offem rat habent gesagt, als si ze recht solten.</rs>
+            </p>
+         </div>
+         <div type="lists">
+            <xi:include xmlns:xi="http://www.w3.org/2001/XInclude"
+               href="../../../../indices/placeList.xml" xpointer="element(/1/2/1/1)"/>
+            <xi:include xmlns:xi="http://www.w3.org/2001/XInclude"
+               href="../../../../indices/personList.xml" xpointer="element(/1/2/1/1)"/>
+            <xi:include xmlns:xi="http://www.w3.org/2001/XInclude"
+               href="../../../../indices/eventList.xml" xpointer="element(/1/2/1/1)"/>
+            <xi:include xmlns:xi="http://www.w3.org/2001/XInclude"
+               href="../../../../indices/orgList.xml" xpointer="element(/1/2/1/1)"/>
+         </div>
+      </body>
+   </text>
+</TEI>

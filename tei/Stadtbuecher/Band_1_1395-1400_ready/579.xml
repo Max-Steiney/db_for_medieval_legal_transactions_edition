@@ -1,0 +1,281 @@
+<?xml version="1.0" encoding="UTF-8"?><!DOCTYPE TEI SYSTEM "../../../schema/toolbox_full.dtd">
+<TEI xmlns="http://www.tei-c.org/ns/1.0" xmlns:cei="http://www.monasterium.net/NS/cei"
+   xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance">
+   <teiHeader>
+      <fileDesc>
+         <titleStmt>
+            <title>TEI-Version of 579</title>
+         </titleStmt>
+         <publicationStmt>
+            <p/>
+         </publicationStmt>
+         <sourceDesc default="false">
+            <bibl default="false" status="draft">
+               <title type="full"><title type="main">Die Wiener Stadtbücher 1395 -
+                     1430</title><title type="sub">Teil 1: 1395 - 1400</title></title>
+               <author>Wilhelm Brauneder</author>
+               <author>Gerhard Jaritz</author>
+               <pubPlace>Wien</pubPlace>
+               <pubPlace>Köln</pubPlace>
+               <publisher>Böhlau Verlag</publisher>
+            </bibl>
+            <msDesc status="draft">
+               <msIdentifier>
+                  <idno>579</idno>
+               </msIdentifier>
+               <physDesc/>
+            </msDesc>
+         </sourceDesc>
+      </fileDesc>
+      <encodingDesc>
+         <projectDesc>
+            <p><label type="contentual-editing">Projekt Christina Lutter Stadt und
+                  Gemeinschaft</label></p>
+         </projectDesc>
+      </encodingDesc>
+      <profileDesc>
+         <creation>
+            <date when="1400-07-13">1400 Juli 13</date>
+         </creation>
+      </profileDesc>
+   </teiHeader>
+   <text>
+      <body>
+         <div type="header">
+            <p>Geschäft des Erhard HofJchirchner</p>
+         </div>                   <div type="entry" resp="rs">
+            <p> pr. sehr. Einbr. 4 Zg., Sa (Inde:z:: Item geseheft Erharts des Hofehireher)
+               (lol.99r) <rs type="event" ref="ev__StB_I_579">Des nachsten erigtags nach sand
+                  Margreten tag <rs type="fn" role="witness">kom fur den rat <rs type="person"
+                        ref="pe__margarethe_StB_I_579"><roleName type="title">fraw</roleName>
+                        Margret, <rs type="person" ref="pe__erhard_hofkircher_StB_I_188">Erharts
+                              <roleName type="dead">seligen</roleName> des Hoffchircher</rs>
+                        <roleName type="kin" corresp="pe__erhard_hofkircher_StB_I_188"
+                           >witib</roleName></rs>, und hat da beweist mit den erbern lewten ze
+                     rechter zeit, als si ze recht solt, mit <rs type="person"
+                        ref="pe__martin_wachsgiesser_QGW_II_I_1494"><roleName type="title"
+                              ><add>erbern</add></roleName>Mertten dem <roleName type="prof"
+                           cert="unknown">Wachsgiezzer</roleName>
+                        <roleName type="occ" corresp="org__wien"><add>rates</add></roleName></rs>
+                     und mit <rs type="person" ref="pe__martin_hausleitter_QGW_II_I_1234"><roleName
+                           type="title"><add>erbern</add></roleName>Merten dem Hawsleitter, die zeit
+                        bayd des <roleName type="occ" corresp="org__wien">rates</roleName> der stat
+                        ze Wienn</rs>, und <rs type="person" ref="pe__niklas_pymir_StB_I_579"
+                           ><roleName type="title"><add>erbern</add></roleName>Nyclasen dem Pyemier,
+                        seinem <roleName type="kin" corresp="pe__erhard_hofkircher_StB_I_188"
+                           >swager</roleName>,<roleName type="occ" corresp="org__wien"
+                              ><add>purger</add></roleName></rs> und mit <rs type="person"
+                        ref="pe__konrad_hainpekch_QGW_II_I_1484"><roleName type="title"
+                              ><add>erbern</add></roleName>Chunraten dem Hainczpekchen, seinem
+                           <roleName type="kin" corresp="pe__erhard_hofkircher_StB_I_188"
+                           >vettern</roleName>, bayd <roleName type="occ" corresp="org__wien"
+                           >purger</roleName> ze Wienn</rs>,</rs>
+                  <rs type="fn" role="issuer">das geschefft, so <rs type="person"
+                        ref="pe__erhard_hofkircher_StB_I_188">der egenant Erhart Hoffkircher, ir
+                           <roleName type="kin" corresp="pe__margarethe_StB_I_579">
+                        wirt</roleName></rs>, an seinen leczten zeiten getan hat, als es an einer
+                     zedel vor offem rat gelesen und verhört wart, und lawtet von wort ze wort, als
+                     hernach geschriben stet.</rs>
+                  <rs type="fn" role="other">Nu mochten <rs type="person"
+                        ref="pe__martin_wachsgiesser_QGW_II_I_1494">die vorgenanten erbern lewt</rs>
+                     <rs type="person" ref="pe__martin_hausleitter_QGW_II_I_1234"><add>die
+                           vorgenanten erbern lewt</add></rs>
+                     <rs type="person" ref="pe__niklas_pymir_StB_I_579"><add>die vorgenanten erbern
+                           lewt</add></rs>
+                     <rs type="person" ref="pe__konrad_hainpekch_QGW_II_I_1484"><add>die vorgenanten
+                           erbern lewt</add></rs>umb dasselb geschefft nicht gesagen nach der stat
+                     recht, seind in der egenant Erhart dasselb geschefft <triggerstring n="fn"
+                        >auszerichten</triggerstring> enpholichen het.</rs>
+                  <rs type="fn" role="other">Und darumb namen <rs type="org" ref="org__wien"
+                        >wir</rs> es von in zu unsern hannden und haben auch in dasselb geschefft
+                     wider hincz irn trewen <triggerstring n="fn">enpholhen auszerichtn und ze
+                        volfurn</triggerstring> in der weis, als es der vorgenant Erhart der
+                     Hoffkircher geschafft und gemaint hat.</rs> Und lawtet die zedel also. Nota
+                  mein geschefft, daz ich Erhart Hoffkircher getan hab. <rs type="fn"
+                     role="recipient">Item von erst schaff ich <rs type="person"
+                        ref="pe__margarethe_StB_I_579">meiner hawsfrawen Margreten</rs> mein haws,
+                     darinn ich yczund wesenleich siez, daz si daz sol haben unverchumertes uncz an
+                     iren tod. Und wenn si abgeen mit dem tod, so sol man daz haws verchawffen und
+                     sol man daz gelt geben <rs type="org" ref="org__wien-buergerspital">in daz
+                        spital in die sutten</rs> und hawsarmen lewten, wo man wais, da es an
+                     gestattet sey. Item so schaff ich <rs type="person"
+                        ref="pe__margarethe_StB_I_579">ir</rs> den weingarten gelegen ze Sufring,
+                     des anderthalb jewch ist, daz si den auch sol haben unverchumert ir lebteg, und
+                     nach irem tod sol man denselben weingarten hinlassen umb den dritten emmer und
+                     denselben drittail sol man geben <rs type="org" ref="org__wien-buergerspital"
+                        >in daz spital in die sutten</rs> und andern hawsarmen lewten von
+                     hannd.</rs>
+                  <rs type="fn" role="other">Ich schaff, daz <rs type="person"
+                        ref="pe__margarethe_StB_I_579">mein hawsfraw</rs> sol <triggerstring n="fn"
+                        >vessen</triggerstring> alle nucz aus allen meinen erben, die ich verschafft
+                     hab und auch aus meines swager Michels weingarten daz gegenwurtig iar.</rs>
+                  <rs type="fn" role="other">Ich schaff auch, daz <rs type="person"
+                        ref="pe__margarethe_StB_I_579">mein hawsfraw</rs> daz haws an dem Graben
+                     alle jar sol <triggerstring n="fn">hinlassen</triggerstring> und sol dasselb gelt
+                     auch armen lewten geben durch unser baider sele willen.</rs>
+                  <rs type="fn" role="other"><rs type="person" ref="pe__margarethe_StB_I_579"
+                        >Si</rs> sol auch daz haws von dem hofezins <triggerstring n="fn"
+                        >pessern</triggerstring>, wenn des notdurfft ist, alslang si lebt,</rs>
+                  <rs type="fn" role="recipient">und nach irem tod sol es verchaufft werden und
+                     dasselb gelt sol man geben <rs type="org" ref="org__wien-buergerspital">in daz
+                        spital in die sutten</rs> und andern hawsarmen lewten von hannden. Nota daz
+                     haws mit der hoffstat in der Laymgrueb vor Wydmertor, daz ich <rs type="person"
+                        ref="pe__andreas_von_muehlbach_StB_I_579">Andren von Mulbach, dem <roleName
+                           type="prof">pinter</roleName></rs>, verchaufft hab umb purchrecht, daz er
+                     mir sechs jar davon raichen sol allew iar drew phunt und achczig phenning an
+                     sand Kathrein tag, und wenn die sechs jar also aus gericht und volfurt werden,
+                     so sol der egenant pinter dann genczleich und gar ledig sein. Auch schaff ich
+                        <rs type="person" ref="pe__margarethe_StB_I_579">meiner hawsfrawn</rs> all
+                     mein varundhab, die ich hin der mein lass und wo ich die hab, es sey
+                     kawfmanschafft, gelter, wein oder an aller anderr habe, die ich denn hinder
+                     mein lass, aus genomen</rs>
+                  <rs type="fn" role="other">daz <rs type="person" ref="pe__margarethe_StB_I_579"
+                        >si</rs> davon sol <triggerstring n="fn">ausrichten</triggerstring> alle die
+                     stukch, die hernach begriffen werdent und die ich schaff auszerichten mit
+                     beraittem gelt, und die erb, die ich schaff meinen frewnden und den iren.</rs>
+                  <rs type="fn" role="recipient"> Item ich schaff <rs type="person"
+                        ref="pe__konrad_spannagel_StB_I_579">meinem <roleName type="kin"
+                           corresp="pe__erhard_hofkircher_StB_I_188">vettern</roleName> Chunraten
+                        dem Spannagel</rs> mein panczyr und mein gute hawben und meinen
+                     paydenhanter, zwen plechhantschuch und funf phunt phenning. Item <rs
+                        type="person" ref="pe__andreas_hunger_StB_I_579">meinem <roleName type="kin"
+                           corresp="pe__erhard_hofkircher_StB_I_188">vettern</roleName>
+                        <roleName type="title">hern</roleName> Andre dem Hunger</rs> ein predigpuch
+                     und zehen phunt phenning und meinen plaben seidel mit der chursen, daz er umb
+                     mein sele pitt,</rs>
+                  <rs type="fn" role="other">und 6 guldein, die <rs type="person"
+                        ref="pe__andreas_hunger_StB_I_579">er</rs> mir <triggerstring n="fn">gelten
+                        sol</triggerstring>,</rs>
+                  <rs type="fn" role="recipient">der sag ich <rs type="person"
+                        ref="pe__andreas_hunger_StB_I_579">in</rs> auch ledig. Item ich schaff <rs
+                        type="person" ref="pe__erhard_zu_ofen_StB_I_579">meinem <roleName type="kin"
+                           corresp="pe__erhard_hofkircher_StB_I_188">vettern</roleName> Erharten ze
+                        Ofen</rs> meinen tail ze Weichs in Payrn ob Strawbing an den aygen und 5 tl.
+                     dn. darczu. Item ich schaff <rs type="person" ref="pe__wolfgang_StB_I_579"
+                        >meinem <roleName type="kin" corresp="pe__erhard_hofkircher_StB_I_188"
+                           >vettern</roleName> Wolfgangen</rs> ein halbs jewch weingarten ze
+                     Praittensee ze nechst dem Chirichweg und 10 tl. dn. Item so schaff ich <rs
+                        type="person" ref="pe__barbara_StB_I_579">meiner <roleName type="kin"
+                           corresp="pe__erhard_hofkircher_StB_I_188">muemen</roleName> Barbare, <rs
+                           type="person" ref="pe__wolfgang_StB_I_579">des Wolfgangs</rs>
+                        <roleName type="kin" corresp="pe__wolfgang_StB_I_579"
+                        >swester</roleName></rs>, ain virtail weingarten an dem Nusperg, also daz si
+                     davon raichen sol 10 tl. dn., wem ich die main, es sey irem vater oder irem
+                     bruder.</rs>
+                  <rs type="fn" role="other">Und dieselben zway geswistreid mitsambt den zwain
+                     weingarten, die ich in geschafft hab, enphilich ich <rs type="person"
+                        ref="pe__konrad_hainpekch_QGW_II_I_1484">meinen vettern Chunraten dem
+                        Haynspekchen</rs>, also daz er si <triggerstring n="fn">innehaben und
+                        verwesen</triggerstring> sol, alslang unczt daz si zu iren beschaiden jarn
+                     chomen.</rs> Wer aber, daz si abgiengen ee denn si zu iren beschaiden jarn
+                  kamen, so sullen die vorgenanten zwen weingarten erben auf irew geswistreid. <rs
+                     type="fn" role="recipient">Gingen aber dieselben geswistreid auch ab mit dem
+                     tod ee daz si zu iren beschaiden jaren chamen, so sol man die zwen weingarten
+                     verchauffen und sol daz gelt geben in daz spital <rs type="org"
+                        ref="org__wien-buergerspital">in die sutten</rs> von hannden und andern
+                     hawsarmen leuten, da es angestattet sey. Item so schaff ich <rs type="person"
+                        ref="pe__andreas_von_iglau_QGW_II_I_1288"><rs type="person"
+                           ref="pe__margarethe_StB_I_579">meiner hawsfrawen</rs>
+                        <roleName type="kin" corresp="pe__margarethe_StB_I_579">bruder</roleName>
+                        Andren von der Ygla, meinem <roleName type="kin"
+                           corresp="pe__erhard_hofkircher_StB_I_188">swager</roleName></rs>, ein
+                     halbs jewch weingarten ze Praitensee in dem Altenperg, also daz er den haben
+                     sol sein lebteg, und nach seinem tod so sol er gevallen <rs type="org"
+                        ref="org__wien-st_hieronymus">den frawen hincz Sand Jeronimo</rs>
+                     ledichleich und allen iren frumen damit ze schaffen. Item ich schaff zehen
+                     armen junchfrawen, die erber lewt chind sein, ye ainer 5 tl. dn. zu einem
+                     frumen mann oder knecht, die man damit bestatten sol nach meiner hawsfrawen rat
+                     und der geschefftherren rat, den ich mein geschefft enphilich. Item ich schaff
+                     ain Romfart, daz man die gen sol nach meinem tod ze stet und demselben sol man
+                     geben 8 tl. dn. Item ich schaff 10 tl. dn. <rs type="org"
+                        ref="org__wien-stubenbruecke">zu der prukk vor Stubentor</rs>. Item ich
+                     schaff hincz den zwain siechhawsern, <rs type="org"
+                        ref="org__wien-st_lazarus_siechenhaus">hincz Sand Marx</rs> und <rs
+                        type="org" ref="org__wien-st_hiob_zum_klagbaum">hincz dem Chlagpawm</rs>,
+                     ein gancz jar die vir quatember zu yder quatember ein pad und nach dem pad ydem
+                     siechen menschen einen phenning. Item ich schaff <rs type="org"
+                        ref="org__wien-st_niklas_vor_dem_stubentor_zisterzienserinnen">hincz Sand
+                        Niclas zu dem frawnchloster</rs> 1/2 tl. dn. Item ich schaff <rs type="org"
+                        ref="org__wien-st_niklas_vor_stubentor_kapelle">hincz dem Armen Sand
+                        Niclas</rs> 60 dn. Item ich schaff <rs type="org" ref="org__erdberg-st_paul"
+                        >hincz Sand Pawl</rs> 60 d. Item ich schaff <rs type="org"
+                        ref="org__wien-dominikaner">hincz den Predigern zu irem paw</rs>, wenn si
+                     daz anhebent, 5 tl. dn., also beschaidenleich, daz si mich und mein hawsfrawen
+                     sullen schreiben in ir totenpuch und unser darinn gedenkchen und auch wenn ich
+                     egenanter Erhart Hofkircher abgen mit dem tod, <rs type="org"
+                        ref="org__wien-dominikaner-messe_hofkircher_erhard">so sullen si mir ein
+                        gesuengenew selmess singen in irem chloster und ein vigilig mit hem gelt und
+                        sullen auch denn zu meiner begrebnuss gen hincz Sand Stephan</rs>. Item ich
+                     schaff <rs type="org" ref="org__wien-st_laurenz_am_alten_fleischmarkt">den
+                        frawen hincz Sand Lawrenczen</rs> 1/2 tl. dn. Ich schaff <rs type="org"
+                        ref="org__wien-st_jakob_auf_der_huelben">den frawn hincz Sand Jacob</rs> 60
+                     dn. Item <rs type="org" ref="org__wien-st_agnes_auf_der_himmelpforte">den
+                        frawen hincz der Himmelporten</rs> 60 dn. Item <rs type="org"
+                        ref="org__wien-st_hieronymus">den puesserin hincz Sand Jeronimo</rs> 1/2 tl.
+                     d. Item ich schaff <rs type="org" ref="org__wien-st_stephan">hincz Sand Stephan
+                        zu dem paw, wenn man daz angevengt</rs>, 10 tl. dn. Item <rs type="org"
+                        ref="org__wien-karmeliter-messe_hofkircher_erhard_und_margarethe">hincz den
+                        Weissen prudern</rs> 2 tl. phenning, daz si mich und mein hawsfrawn
+                     Margreten in daz totenpuch schreiben und unser baider sel gedenkchen. Item <rs
+                        type="org" ref="org__wien-st_maria_magdalena_vor_dem_schottentor">hincz Sand
+                        Marienmagdalen</rs> 60 phenning. Item ich schaff <rs type="org"
+                        ref="org__wien-st_stephan-kapelle_st_erasmus_im_neuen_karner_auf_dem_st_stephansfriedhof-zeche_schreiber-messe_hofkircher_erhard"
+                        >auf den karner in unser bruderschafft</rs> 2 tl. dn., daz man mir, wenn ich
+                     abgen mit dem tod, sol singen ein selampt mit 9 messen und ein vigilig, mit 9
+                     leczen und sol ydem priester auf dem karner geben 6 phenning, daz si umb mein
+                     sel pitten, und dem schuler 4 dn. Item ich schaff <rs type="org"
+                        ref="org__wien-st_maria_am_gestade">hincz Unser Frawn auf der Stetten zu dem
+                        paw</rs> 2 tl. dn. Item den frawn <rs type="org" ref="org__wien-st_theobald"
+                        >hincz Sand Tybold</rs> 60 dn. Item <rs type="org" ref="org__wien-minoriten"
+                        >den Minnern brudern zu irem paw</rs> 1 tl. d. Item <rs type="org"
+                        ref="org__wien-st_peter-kapelle_st_valentin">hincz Sand Peter an Sand
+                        Valentins kappellen</rs> 1 tl. dn., wenn man daran pawen wirt. Item ich
+                     schaff auch zu geben <rs type="org" ref="org__wien-weg_vor_dem_schottentor">zu
+                        dem posen weg vor Schottentor</rs> 2 tl. dn., wenn man den machen wirdet.
+                     Item ich schaff, daz man vier grab Wienner loden sol kauffen und sol die
+                     sneiden und tailen under arm lewt, die des notdurftig sind, yedem menschen 5
+                     ellen. Item ich schaff, daz man mich <rs type="org"
+                        ref="org__wien-st_stephan">erberleich bestatten sol bey meiner pharr
+                        dacz Sand Stephan</rs>. Item ich schaff, daz man <rs type="person"
+                        ref="pe__ottin_StB_I_579">Ottinn der <roleName type="prof" cert="unknown"
+                           >Pinterin</roleName>, <rs type="person" ref="pe__hosenknopf_StB_I_579"
+                           >des <roleName type="prof" cert="unknown">Hosenknophs</roleName></rs>
+                        <roleName type="kin" corresp="pe__hosenknopf_StB_I_579"
+                           >hawsfrawen</roleName></rs>, geben sol 10 ß. dn. Item ich schaff, daz man
+                        <rs type="person" ref="pe__stephan_StB_I_579">meinem <roleName type="occ"
+                           corresp="pe__erhard_hofkircher_StB_I_188">peichtvatern</roleName>
+                        <roleName type="title">hern</roleName> Stephan</rs> geben sol 1 tl. dn., daz
+                     er meiner sel gedenk. Item ich schaff, daz man mich und mein hawsfrawn sol
+                     schreiben <rs type="org" ref="org__wien-st_stephan">in daz totenpuch hincz Sand
+                        Stephan</rs>, was daz kostet. Item ich schaff, daz man <rs type="person"
+                        ref="pe__niklas_StB_I_579">Niclasen, meinem <roleName type="kin"
+                           corresp="pe__erhard_hofkircher_StB_I_188">gevattern</roleName></rs>, sein
+                     weingertel ledig lass, daz da stet in der Heiligengeister puch.</rs>
+                  <rs type="fn" role="other">Daz vorgeschriben mein geschefft alles schaff und
+                     enphilich ich den erbern lewten <rs type="person"
+                        ref="pe__martin_wachsgiesser_QGW_II_I_1494">Mertten dem Wachsgiezzer</rs>,
+                        <rs type="person" ref="pe__martin_hausleitter_QGW_II_I_1234">Mertten dem
+                        Hawsleitter</rs>, die zeit baid des rats der stat ze Wienn, und <rs
+                        type="person" ref="pe__niklas_pymir_StB_I_579">Niclas dem Pymier, meinem
+                        swager</rs>, und<rs type="person" ref="pe__konrad_hainpekch_QGW_II_I_1484">
+                        Chunraten dem Hainczpekchen, meinem vettern</rs>, bayd purger ze Wienn, daz
+                     si also <rs type="person" ref="pe__margarethe_StB_I_579">mitsambt meiner
+                        hawsfrawen</rs>
+                     <triggerstring n="fn">ausrichten und volfurn</triggerstring>, als ich daz geschafft
+                     han und als ich in des besunderleich getraw.</rs> Als darumb die obgenanten
+                  lewt mit iren trewen an aydes stat vor offem rat habent gesagt, als si ze recht
+                  solten.</rs> 4) Gebessert von dazz. </p>
+         </div>
+         <div type="lists">
+            <xi:include xmlns:xi="http://www.w3.org/2001/XInclude"
+               href="../../../../indices/placeList.xml" xpointer="element(/1/2/1/1)"/>
+            <xi:include xmlns:xi="http://www.w3.org/2001/XInclude"
+               href="../../../../indices/personList.xml" xpointer="element(/1/2/1/1)"/>
+            <xi:include xmlns:xi="http://www.w3.org/2001/XInclude"
+               href="../../../../indices/eventList.xml" xpointer="element(/1/2/1/1)"/>
+            <xi:include xmlns:xi="http://www.w3.org/2001/XInclude"
+               href="../../../../indices/orgList.xml" xpointer="element(/1/2/1/1)"/>
+         </div>
+      </body>
+   </text>
+</TEI>

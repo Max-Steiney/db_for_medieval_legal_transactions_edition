@@ -1,0 +1,101 @@
+<?xml version="1.0" encoding="UTF-8" standalone="no"?>
+<!DOCTYPE TEI
+  SYSTEM "../../../schema/toolbox_full.dtd">
+<TEI xmlns:cei="http://www.monasterium.net/NS/cei" xmlns="http://www.tei-c.org/ns/1.0">
+   <teiHeader>
+      <fileDesc>
+         <titleStmt>
+            <title>Tei version of 3775 exported from monasterium.net </title>
+         </titleStmt>
+         <publicationStmt>
+            <p/>
+         </publicationStmt>
+         <!--In Original: cei:front/cei:sourceDesc/cei:sourceDescRegest-->
+         <sourceDesc>
+            <bibl>Quellen zur Geschichte der Stadt Wien, Bd. II/3, Nr. As published in HAUrk by
+               Wiener Stadt- und Landesarchiv </bibl>
+            <msDesc>
+               <msIdentifier>
+                  <repository>Wiener Stadt- und Landesarchiv</repository>
+                  <idno>3775</idno>
+                  <altIdentifier type="old">
+                     <idno>518031</idno>
+                  </altIdentifier>
+               </msIdentifier>
+               <msContents>
+                  <msItem>
+                     <listBibl>
+                        <bibl type="url"
+                           >https://www.monasterium.net/mom/AT-WStLA/HAUrk/3775/charter</bibl>
+                        <bibl>Copeibuch 115 n° 63.</bibl>
+                     </listBibl>
+                  </msItem>
+               </msContents>
+               <physDesc>
+                  <sealDesc>
+                     <seal>
+                        <p>Zum Verschlusse aufgedrücktes Wappensiegel von rothem Wachse,
+                           Bruchstück</p>
+                     </seal>
+                  </sealDesc>
+               </physDesc>
+            </msDesc>
+         </sourceDesc>
+      </fileDesc>
+      <profileDesc>
+         <creation>
+            <placeName>Prag</placeName>
+            <date when="14580313">1458 III 13</date>
+            <origDate>Geben zu Prag am montag nach Gregorii, anno domini etc. lviij°.</origDate>
+         </creation>
+      </profileDesc>
+   </teiHeader>
+   <facsimile>
+      <surface>
+         <graphic
+            url="http://images.monasterium.net/pics/AT-WStLA/HA-U/WStLA-HA-Urkunden_03775_r.jpg"/>
+      </surface>
+      <surface>
+         <graphic
+            url="http://images.monasterium.net/pics/AT-WStLA/HA-U/WStLA-HA-Urkunden_03775_v.jpg"/>
+      </surface>
+   </facsimile>
+   <text>
+      <body>
+         <div type="abstract" resp="ms">
+            <p>
+               <rs type="event" ref="ev__QGW_II_III_3775"> <rs type="fn" role="issuer"><rs type="person"
+                  ref="pe__georg_koenig_von_boehmen_QGW_II_III_3775">Jörg, <roleName type="occ"
+                     corresp="org__boehmen-koenigreich">künig</roleName> zu Behem etc.</rs></rs>,
+                  richtet an <rs type="fn" role="issuer"><rs type="org" ref="org__wien">Bürgermeister,
+                     Richter, Rath, die Genannten und die gancze gemain</rs> der stat Wienn</rs> die
+                  Mahnung, da sie jeczund ihrer selbs mechtig und frei, mit gelüben und aiden kein
+                  regenden fürsten verpunden sei, für die Sicherheit und Freilassung des <rs
+                     type="person" ref="pe__ulrich_eitzinger_QGW_II_II_3270"><roleName type="title"
+                        >edln</roleName> Ulrichen von Eyczingen</rs>, welcher dem <rs type="person"
+                           ref="pe__ladislaus_QGW_II_II_3461"><roleName type="dead">verstorbenen</roleName>
+                           <roleName type="occ" corresp="org__boehmen-koenigreich">König</roleName>
+                           Ladislaus</rs>, sowie überhaupt dem <rs type="org"
+                              ref="org__oesterreich-herzogtum">haus zu Österreich</rs> und ihnen selbst
+                  treulichen gedient und vil liebs getan habe, Sorge zu tragen.  </rs>
+            </p>
+         </div>
+         <div type="nota">
+            <p>
+               <rs type="event" ref="ev__QGW_II_III_3775_nota">Von anderer Hand: commissio domini
+                  regis in consilio. </rs>
+            </p>
+         </div>
+         <div type="lists">
+            <xi:include xmlns:xi="http://www.w3.org/2001/XInclude"
+               href="../../../../indices/placeList.xml" xpointer="element(/1/2/1/1)"/>
+            <xi:include xmlns:xi="http://www.w3.org/2001/XInclude"
+               href="../../../../indices/personList.xml" xpointer="element(/1/2/1/1)"/>
+            <xi:include xmlns:xi="http://www.w3.org/2001/XInclude"
+               href="../../../../indices/eventList.xml" xpointer="element(/1/2/1/1)"/>
+            <xi:include xmlns:xi="http://www.w3.org/2001/XInclude"
+               href="../../../../indices/orgList.xml" xpointer="element(/1/2/1/1)"/>
+         </div>
+      </body>
+   </text>
+</TEI>

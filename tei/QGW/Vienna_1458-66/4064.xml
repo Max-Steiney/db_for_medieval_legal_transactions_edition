@@ -1,0 +1,114 @@
+<?xml version="1.0" encoding="UTF-8" standalone="no"?>
+<!DOCTYPE TEI
+  SYSTEM "../../../schema/toolbox_full.dtd">
+<TEI xmlns:cei="http://www.monasterium.net/NS/cei" xmlns="http://www.tei-c.org/ns/1.0">
+   <teiHeader>
+      <fileDesc>
+         <titleStmt>
+            <title>Tei version of 4064 exported from monasterium.net </title>
+         </titleStmt>
+         <publicationStmt>
+            <p/>
+         </publicationStmt>
+         <!--In Original: cei:front/cei:sourceDesc/cei:sourceDescRegest-->
+         <sourceDesc>
+            <bibl>Quellen zur Geschichte der Stadt Wien, Bd. II/3, Nr. As published in HAUrk by
+               Wiener Stadt- und Landesarchiv </bibl>
+            <msDesc>
+               <msIdentifier>
+                  <repository>Wiener Stadt- und Landesarchiv</repository>
+                  <idno>4064</idno>
+                  <altIdentifier type="old">
+                     <idno>518335</idno>
+                  </altIdentifier>
+               </msIdentifier>
+               <msContents>
+                  <msItem>
+                     <listBibl>
+                        <bibl type="url"
+                           >https://www.monasterium.net/mom/AT-WStLA/HAUrk/4064/charter</bibl>
+                     </listBibl>
+                  </msItem>
+               </msContents>
+               <physDesc>
+                  <sealDesc>
+                     <seal>
+                        <p>Rückwärts aufgedrücktes Wappensiegel von rothem Wachse unter
+                           Papierdecke.</p>
+                     </seal>
+                  </sealDesc>
+               </physDesc>
+            </msDesc>
+         </sourceDesc>
+      </fileDesc>
+      <profileDesc>
+         <creation>
+            <date when="14630822">1463 VIII 22</date>
+            <origDate>Geben an montag vor sand Bertlmes tag, anno domini etc. sexagesimo
+               tercio.</origDate></creation>
+      </profileDesc>
+   </teiHeader>
+   <facsimile>
+      <surface>
+         <graphic
+            url="http://images.monasterium.net/pics/AT-WStLA/HA-U/WStLA-HA-Urkunden_04064_r.jpg"/>
+      </surface>
+      <surface>
+         <graphic
+            url="http://images.monasterium.net/pics/AT-WStLA/HA-U/WStLA-HA-Urkunden_04064_v.jpg"/>
+      </surface>
+   </facsimile>
+   <text>
+      <body>
+         <div type="abstract" resp="vh">
+            <p><rs type="event" ref="ev__QGW_II_III_4064"><rs type="fn" role="issuer"><rs
+                        type="person" ref="pe__albrecht_herzog_von_oesterreich_QGW_II_II_3617"><roleName type="occ"
+                           corresp="org__oesterreich-herzogtum">Erzherzog</roleName> Albrecht
+                        VI.</rs></rs> bestätigt, dass ihm <rs type="person"
+                     ref="pe__michael_phuntimaschen_QGW_II_III_4064">Michel Pfuntimaschen <roleName
+                        type="occ" corresp="org__wien"><add>burger</add></roleName></rs>, <rs
+                     type="person" ref="pe__erhard_poeschendorffer_QGW_II_II_3563">Erhart
+                     Pöschendarffer <roleName type="occ" corresp="org__wien"
+                        ><add>burger</add></roleName></rs>, <rs type="person"
+                     ref="pe__gregor_herman_QGW_II_III_4064">Gregorig Herman, <roleName type="prof"
+                        >puchfeler</roleName>
+                     <roleName type="occ" corresp="org__wien"><add>burger</add></roleName></rs>, <rs
+                     type="person" ref="pe__gilg_von_herzogenburg_QGW_II_III_4064">Gilig, <roleName
+                        type="prof">riemer</roleName> von Herzogburg <roleName type="occ"
+                        corresp="org__wien"><add>burger</add></roleName></rs>, <rs type="person"
+                     ref="pe__ruprecht_paumgartner_QGW_II_III_4064">Rueprecht Paungartner, <roleName
+                        type="prof">riemer</roleName>
+                     <roleName type="occ" corresp="org__wien"><add>burger</add></roleName></rs>, <rs
+                     type="person" ref="pe__konrad_reutter_QGW_II_III_4064">Conrad Reutter,
+                        <roleName type="prof">appotecker</roleName>
+                     <roleName type="occ" corresp="org__wien"><add>burger</add></roleName></rs>, <rs
+                     type="person" ref="pe__zirfos_waczlab_QGW_II_III_4064">Zirfos Waczlab,
+                        <roleName type="prof">wuntarzt</roleName>
+                     <roleName type="occ" corresp="org__wien"><add>burger</add></roleName></rs>, <rs
+                     type="person" ref="pe__thomas_meichsner_QGW_II_III_4064">Thoman Meichsner
+                        <roleName type="occ" corresp="org__wien"><add>burger</add></roleName></rs>
+                  und <rs type="person" ref="pe__konrad_kuendle_QGW_II_III_4064">Conrat Kuendle,
+                        <roleName type="prof">tuchscherer</roleName>
+                     <roleName type="occ" corresp="org__wien"><add>burger</add></roleName></rs> ,
+                  seine burger hie, <rs type="person"
+                     ref="pe__michael_mannersdorffer_QGW_II_III_4064">Micheln Menesdarffer</rs>
+                  porgen von der groben verhandlung wegen, so derselb Menestarffer wider ihn und die
+                  Seinigen getan, 5000 Hungrisch gulden entrichtet haben. </rs></p>
+         </div>
+         <div type="nota">
+            <p><rs type="event" ref="ev__QGW_II_III_4064_nota">Von anderer Hand: commissio domini
+                  archiducis per consilium. </rs></p>
+         </div>
+         <div type="lists">
+            <xi:include xmlns:xi="http://www.w3.org/2001/XInclude"
+               href="../../../../indices/placeList.xml" xpointer="element(/1/2/1/1)"/>
+            <xi:include xmlns:xi="http://www.w3.org/2001/XInclude"
+               href="../../../../indices/personList.xml" xpointer="element(/1/2/1/1)"/>
+            <xi:include xmlns:xi="http://www.w3.org/2001/XInclude"
+               href="../../../../indices/eventList.xml" xpointer="element(/1/2/1/1)"/>
+            <xi:include xmlns:xi="http://www.w3.org/2001/XInclude"
+               href="../../../../indices/orgList.xml" xpointer="element(/1/2/1/1)"/>
+         </div>
+      </body>
+   </text>
+</TEI>

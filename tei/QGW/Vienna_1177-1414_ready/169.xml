@@ -1,0 +1,133 @@
+<?xml version="1.0" encoding="UTF-8"?><!DOCTYPE TEI   SYSTEM "../../../schema/toolbox_full.dtd">
+<TEI xmlns="http://www.tei-c.org/ns/1.0" xmlns:cei="http://www.monasterium.net/NS/cei"
+   xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance">
+   <teiHeader>
+      <fileDesc>
+         <titleStmt>
+            <title>Tei version of 169 exported from monasterium.net </title>
+         </titleStmt>
+         <publicationStmt>
+            <p/>
+         </publicationStmt>
+         <!--In Original: cei:front/cei:sourceDesc/cei:sourceDescRegest-->
+         <sourceDesc>
+            <bibl type="url">https://www.monasterium.net/mom/AT-WStLA/HAUrk/169/charter</bibl>
+            <bibl default="false" status="draft">Quellen zur Geschichte der Stadt Wien, Bd. II/1,
+               Nr. 169 As published in HAUrk by Wiener Stadt- und Landesarchiv </bibl>
+            <msDesc status="draft">
+               <msIdentifier>
+                  <repository>Wiener Stadt- und Landesarchiv</repository>
+                  <idno>169</idno>
+                  <altIdentifier type="old">
+                     <idno>514338</idno>
+                  </altIdentifier>
+               </msIdentifier>
+               <physDesc>
+                  <sealDesc>
+                     <seal>
+                        <p>Drei anhangende Siegel.</p>
+                     </seal>
+                  </sealDesc>
+               </physDesc>
+            </msDesc>
+         </sourceDesc>
+      </fileDesc>
+      <encodingDesc>
+         <projectDesc default="false">
+            <p><label type="contentual-editing">Projekt Christina Lutter Stadt und
+                  Gemeinschaft</label></p>
+         </projectDesc>
+      </encodingDesc>
+      <profileDesc>
+         <creation>
+            <placeName>Wien</placeName>
+            <date when="13350929">1335 IX 29</date>
+            <origDate instant="false">ze Wienne, an sant Michels tage.</origDate></creation>
+      </profileDesc>
+   </teiHeader>
+   <facsimile>
+      <surface>
+         <graphic
+            url="http://images.monasterium.net/pics/AT-WStLA/HA-U/WStLA-HA-Urkunden_00169_r.jpg"/>
+      </surface>
+      <surface>
+         <graphic
+            url="http://images.monasterium.net/pics/AT-WStLA/HA-U/WStLA-HA-Urkunden_00169_v.jpg"/>
+      </surface>
+   </facsimile>
+   <text>
+      <body>
+         <div type="abstract" resp="lp">
+            <p>
+               <rs type="event" ref="ev__QGW_II_I_169"><rs type="fn" role="issuer"><rs type="person"
+                        ref="pe__otto_hauenlos_QGW_II_I_169">Otte der Hauenlos, <roleName type="occ" corresp="org__moedling">purgraf </roleName>ze
+                        Medlich</rs>, und <rs type="person" ref="pe__ofmei_QGW_II_I_169">Ofmei,
+                        seine <roleName type="kin" corresp="pe__otto_hauenlos_QGW_II_I_169"
+                           >Hausfrau</roleName></rs></rs>, <triggerstring n="disp"
+                     >verkaufen</triggerstring>
+                  <rs type="fn" role="other"><triggerstring n="fn">mit Handen</triggerstring>
+                     <rs type="person" ref="pe__dietrich_von_enzersdorf_QGW_II_I_169">Dietreichs von
+                        Engelschalichstorf, zu den zeiten <roleName type="occ"
+                           corresp="pe__elisabeth_herzogin_von_oesterreich_QGW_II_I_789"
+                           >underperchmaister</roleName>
+                        <rs type="person" ref="pe__elisabeth_herzogin_von_oesterreich_QGW_II_I_789"
+                           >der hochgeborn <roleName type="title">vrowen</roleName>
+                           <roleName type="title">herzoginne</roleName> Elsbeten, <roleName
+                              type="kin" corresp="pe__heinrich_herzog_von_oesterreich_QGW_II_I_90"
+                                 ><add>wittibe </add></roleName>des <rs type="person"
+                              ref="pe__heinrich_herzog_von_oesterreich_QGW_II_I_90">edeln hochgeborn
+                                 <roleName type="title">fu/ersten</roleName><roleName type="dead"
+                                 >wittibe</roleName>
+                              <roleName type="occ" corresp="org__oesterreich-herzogtum"
+                                 >herzoge</roleName> Hainreichs in Österreich und in Steyr
+                              saelig</rs></rs></rs></rs> , ihren Weingarten, der da leit ze Medlich
+                  vor dem Wintal und haisset der Griez/zweingart zenachst Hiersleins weingarten des
+                  Paeusleins, da man alle iar von dient einen halben emmer weins ze perchrecht und
+                  einen halben Wienner phenninge ze voitrecht , um 25 lb dn. <rs type="fn"
+                     role="recipient"><rs type="person" ref="pe__anna_QGW_II_I_169">der <roleName
+                           type="title">erbern</roleName>
+                        <roleName type="title">junchvrowen</roleName>
+                        <roleName type="title">vron</roleName> Annen, <roleName type="kin"
+                           corresp="pe__otto_hurnpekch_QGW_II_I_169"><add>tochter</add></roleName>
+                        <rs type="person" ref="pe__otto_hurnpekch_QGW_II_I_169">
+                           <roleName type="title">hern</roleName> Otten tochter des Hurnpechen,
+                              <roleName type="dead">dem got genade</roleName></rs></rs></rs>. <rs
+                     type="fn" role="other"> Sie setzen sich <rs type="person"
+                        ref="pe__otto_hauenlos_QGW_II_I_169"><add>Otto Hauenlos</add></rs>
+                     <add>und</add>
+                     <rs type="person" ref="pe__ofmei_QGW_II_I_169"><add>Ofmei</add></rs> und den
+                        <rs type="person" ref="pe__heinrich_hauenlos_QGW_II_I_169"><roleName
+                           type="kin" corresp="pe__otto_hauenlos_QGW_II_I_169">Bruder
+                        </roleName>Ottos Hainreich den Hauenlos, <roleName type="occ"
+                           corresp="org__moedling">richter </roleName>ze Medlich</rs>, <triggerstring
+                        n="fn">zu rechtem Schirm</triggerstring></rs>.</rs>
+            </p>
+         </div>
+         <div type="seal">
+            <p><rs type="event" ref="ev__QGW_II_I_169"><rs type="fn" role="witness">Besiegelt mit
+                     den Siegeln: 1. des Ausstellers <rs type="person"
+                        ref="pe__otto_hauenlos_QGW_II_I_169">Otto Hauenlos</rs>, 2. des <rs
+                        type="person" ref="pe__heinrich_von_eisenburg_QGW_II_I_161"><roleName
+                           type="occ" corresp="pe__elisabeth_herzogin_von_oesterreich_QGW_II_I_789"
+                              ><roleName type="title">obersten Bergmeisters</roleName></roleName>
+                        <roleName type="title">hern</roleName> Hainreichs von Eisenburch, <roleName
+                           type="occ" corresp="pe__elisabeth_herzogin_von_oesterreich_QGW_II_I_789"
+                           >Hofmeisters</roleName> der Herzogin Elsbet</rs>, 3. <rs type="person"
+                        ref="pe__friedrich_heuzz_QGW_II_I_197"><roleName type="title"
+                           >hern</roleName> Fridreichs des Heuz/zz/zen von
+                  Lachssendorf</rs>.</rs></rs>
+            </p>
+         </div>
+         <div type="lists">
+            <xi:include xmlns:xi="http://www.w3.org/2001/XInclude"
+               href="../../../../indices/placeList.xml" xpointer="element(/1/2/1/1)"/>
+            <xi:include xmlns:xi="http://www.w3.org/2001/XInclude"
+               href="../../../../indices/personList.xml" xpointer="element(/1/2/1/1)"/>
+            <xi:include xmlns:xi="http://www.w3.org/2001/XInclude"
+               href="../../../../indices/eventList.xml" xpointer="element(/1/2/1/1)"/>
+            <xi:include xmlns:xi="http://www.w3.org/2001/XInclude"
+               href="../../../../indices/orgList.xml" xpointer="element(/1/2/1/1)"/>
+         </div>
+      </body>
+   </text>
+</TEI>

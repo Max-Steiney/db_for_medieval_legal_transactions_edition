@@ -1,0 +1,137 @@
+<?xml version="1.0" encoding="UTF-8"?><!DOCTYPE TEI   SYSTEM "../../../schema/toolbox_full.dtd">
+<TEI xmlns="http://www.tei-c.org/ns/1.0" xmlns:cei="http://www.monasterium.net/NS/cei"
+   xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance">
+   <teiHeader>
+      <fileDesc>
+         <titleStmt>
+            <title>Tei version of 810 exported from monasterium.net </title>
+         </titleStmt>
+         <publicationStmt>
+            <p/>
+         </publicationStmt>
+         <!--In Original: cei:front/cei:sourceDesc/cei:sourceDescRegest-->
+         <sourceDesc>
+            <bibl type="url">https://www.monasterium.net/mom/AT-WStLA/HAUrk/810/charter</bibl>
+            <bibl default="false" status="draft">Quellen zur Geschichte der Stadt Wien, Bd. II/1,
+               Nr. 810 As published in HAUrk by Wiener Stadt- und Landesarchiv </bibl>
+            <msDesc status="draft">
+               <msIdentifier>
+                  <repository>Wiener Stadt- und Landesarchiv</repository>
+                  <idno>810</idno>
+                  <altIdentifier type="old">
+                     <idno>514998</idno>
+                  </altIdentifier>
+               </msIdentifier>
+               <msContents>
+                  <msItem>
+                     <listBibl default="false">
+                        <bibl default="false" status="draft"/>
+                        <bibl default="false" status="draft">Quellen zur Geschichte der Stadt Wien,
+                           Bd. II/1, Nr. 810 As published in HAUrk by Wiener Stadt- und Landesarchiv </bibl>
+                        <bibl default="false" status="draft"/>
+                     </listBibl>
+                  </msItem>
+               </msContents>
+               <physDesc>
+                  <sealDesc>
+                     <seal>
+                        <p>Vier anhangende Siegel, 3. grün u. K.</p>
+                     </seal>
+                  </sealDesc>
+               </physDesc>
+            </msDesc>
+         </sourceDesc>
+      </fileDesc>
+      <encodingDesc>
+         <projectDesc default="false">
+            <p><label type="contentual-editing">Projekt Christina Lutter Stadt und
+                  Gemeinschaft</label></p>
+         </projectDesc>
+      </encodingDesc>
+      <profileDesc>
+         <creation>
+            <placeName>Wien</placeName>
+            <date when="13720522">1372 V 22</date>
+            <date from="99999999" to="99999999"/>
+            <origDate instant="false">ze Wienne, des sambztags in den Quatembern ze
+               Phingsten.</origDate></creation>
+      </profileDesc>
+   </teiHeader>
+   <facsimile>
+      <surface>
+         <graphic
+            url="http://images.monasterium.net/pics/AT-WStLA/HA-U/WStLA-HA-Urkunden_00810_r.jpg"/>
+      </surface>
+      <surface>
+         <graphic
+            url="http://images.monasterium.net/pics/AT-WStLA/HA-U/WStLA-HA-Urkunden_00810_v.jpg"/>
+      </surface>
+   </facsimile>
+   <text>
+      <body>
+         <div type="abstract" resp="cs">
+            <p>
+               <rs type="event" ref="ev__QGW_II_I_810"><rs type="fn" role="issuer"><rs type="person"
+                        ref="pe__martin_reisenperger_QGW_II_I_810">Mert der Reisenperger</rs> und
+                        <rs type="person" ref="pe__martin_QGW_II_I_810"><roleName type="title"
+                           >maister</roleName> Mert, der <roleName type="prof">pogner</roleName> von
+                        Gundramstorf</rs></rs> , <triggerstring n="disp">stellen eine Urkunde aus über
+                     die Vollziehung <add>des Geschäfts</add></triggerstring> des ihnen empfohlenen
+                  Geschäftes des <rs type="fn" role="recipient"><rs type="person"
+                        ref="pe__jakob_reisenperger_QGW_II_I_810"><roleName type="title"
+                           >hern</roleName> Jacob des Reisenperger</rs></rs>, das sie vor dem Rathe
+                  bewiesen hatten, als es ze einer gedechtnusse in der stat puch geschrieben stet
+                  und besunderlich als der brief sagt , den sie von Herzog Albrecht darüber haben.
+                  Sie <triggerstring n="disp">verkaufen</triggerstring> siebenzehenthalben emmer und ain
+                  halbs viertail weins gelts purchrechts, die freies Eigen sind und von denen
+                  aindlif emmer und ain halbs viertail auf 15 Setzen Aecker Weingärten ze
+                  Gundramsdorf an dem Grillenperg und 6 ½ Eimer auf 7 Setzen Weingärten ebenda an
+                  dem Grillenperg, und haisset die Pernerinne, zenachst dem weingarten, der da
+                  haisset die Fröschlinne , liegen, <rs type="event" ref="ev__QGW_II_I_810_men_1"
+                     >welches Bergrecht Jakob der Reisenperger und seine Hausfrau Elsbet miteinander
+                     erkauft und erarbeitet hatten</rs>, um 28 lb dn. dem <rs type="fn"
+                     role="recipient"><rs type="person" ref="pe__niklas_dratlauf_QGW_II_I_810"
+                           ><roleName type="occ" corresp="org__wien">Wiener Bürger</roleName>
+                        <roleName type="title">hern</roleName> Nichlasen dem Dratlauf</rs></rs>. Von
+                  diesem Betrage <triggerstring n="disp">zahlen sie folgende Legate aus</triggerstring>:
+                  den Chorherren dacz <rs type="fn" role="recipient"><rs type="org"
+                        ref="org__wien-st_stephan">Allerheiligen tumkirchen dacz sand Stephan ze
+                        Wienne</rs></rs> 18 lb dn. von des geschäfts wegen, das die egenant vrowe
+                  Elsbet getan hat 4 lb dn. dem <rs type="person"
+                     ref="pe__johann_cherner_QGW_II_I_810"><roleName type="occ"
+                        corresp="pe__jakob_reisenperger_QGW_II_I_810">Beichtiger</roleName> Jakobs
+                        <roleName type="title">hern</roleName> Jansen dem Chaerner, <roleName
+                        type="occ" corresp="org__wien-st_stephan">chorherrn</roleName> daselbss</rs>
+                  6 lb dn. dem <rs type="person" ref="pe__jakob_reisenperger_QGW_II_I_810"><roleName
+                        type="title">Bruder</roleName> Jakobs dem Chriechen</rs>. </rs></p>
+         </div>
+         <div type="seal">
+            <p><rs type="event" ref="ev__QGW_II_I_810"><rs type="fn" role="witness">Besiegelt mit
+                     den Siegeln: 1. <rs type="person" ref="pe__martin_QGW_II_I_810"
+                     >Aussteller</rs>, 2. der <rs type="person"
+                        ref="pe__martin_reisenperger_QGW_II_I_810">Aussteller</rs>, 3. des <rs
+                        type="person" ref="pe__ulrich_roessl_QGW_II_I_1025"><roleName type="occ"
+                           corresp="org__wien">Bürgermeisters</roleName>
+                        <roleName type="title">hern</roleName> Ulreichs des Rossleins</rs>, 4.<rs
+                        type="person" ref="pe__leopold_von_feldsberg_QGW_II_I_810">
+                        <roleName type="title">hern</roleName> Leupolts von Veltsperkch, <roleName
+                           type="occ" corresp="org__wien">statschreiber</roleName> ze
+                     Wienne</rs>.</rs></rs>
+            </p>
+         </div>
+         <div type="nota">
+            <p/>
+         </div>
+         <div type="lists">
+            <xi:include xmlns:xi="http://www.w3.org/2001/XInclude"
+               href="../../../../indices/placeList.xml" xpointer="element(/1/2/1/1)"/>
+            <xi:include xmlns:xi="http://www.w3.org/2001/XInclude"
+               href="../../../../indices/personList.xml" xpointer="element(/1/2/1/1)"/>
+            <xi:include xmlns:xi="http://www.w3.org/2001/XInclude"
+               href="../../../../indices/eventList.xml" xpointer="element(/1/2/1/1)"/>
+            <xi:include xmlns:xi="http://www.w3.org/2001/XInclude"
+               href="../../../../indices/orgList.xml" xpointer="element(/1/2/1/1)"/>
+         </div>
+      </body>
+   </text>
+</TEI>

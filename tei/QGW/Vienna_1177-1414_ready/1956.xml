@@ -1,0 +1,124 @@
+<?xml version="1.0" encoding="UTF-8"?><!DOCTYPE TEI SYSTEM "../../../schema/toolbox_full.dtd"><TEI xmlns="http://www.tei-c.org/ns/1.0" xmlns:cei="http://www.monasterium.net/NS/cei" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance">
+   <teiHeader>
+      <fileDesc>
+         <titleStmt>
+            <title>Tei version of 1956 exported from monasterium.net </title>
+         </titleStmt>
+         <publicationStmt>
+            <p/>
+         </publicationStmt>
+         <!--In Original: cei:front/cei:sourceDesc/cei:sourceDescRegest-->
+         <sourceDesc>
+            <bibl>Quellen zur Geschichte der Stadt Wien, Bd. II/2, Nr. 1956 As published in HAUrk by
+               Wiener Stadt- und Landesarchiv </bibl>
+            <msDesc>
+               <msIdentifier>
+                  <repository>Wiener Stadt- und Landesarchiv</repository>
+                  <idno>1956</idno>
+                  <altIdentifier type="old">
+                     <idno>516164</idno>
+                  </altIdentifier>
+               </msIdentifier>
+               <msContents>
+                  <msItem>
+                     <listBibl>
+                        <bibl>Camesina, Regesten 34 n° 164. Regest zu September 4.</bibl>
+                        <bibl>Jahrbuch der kais. Kunstsamml. 16b, n° 13276 Regest.</bibl>
+                        <bibl>Uhlirz im Centralblatt für Bibliothekswesen 13, 90 Regest.</bibl>
+                     </listBibl>
+                  </msItem>
+               </msContents>
+               <physDesc>
+                  <sealDesc>
+                     <seal>
+                        <p>Fünf anhangende Siegel: 1.—3., 5. grün u. Sch., 4. roth u. Sch.</p>
+                     </seal>
+                  </sealDesc>
+               </physDesc>
+            </msDesc>
+         </sourceDesc>
+      </fileDesc>       <encodingDesc>          <projectDesc default="false">             <p><label type="contentual-editing">Projekt Christina Lutter Stadt und                   Gemeinschaft</label></p>          </projectDesc>       </encodingDesc>
+      <profileDesc>
+         <creation>
+            <placeName>Wien</placeName>
+            <date when="14130828">1413 VIII 28</date>
+            <origDate>ze Wienn, des nachsten montags vor sand Gilgen tag.</origDate></creation>
+      </profileDesc>
+   </teiHeader>
+   <facsimile>
+      <surface>
+         <graphic url="http://images.monasterium.net/pics/AT-WStLA/HA-U/WStLA-HA-Urkunden_01956_r.jpg"/>
+      </surface>
+      <surface>
+         <graphic url="http://images.monasterium.net/pics/AT-WStLA/HA-U/WStLA-HA-Urkunden_01956_v.jpg"/>
+      </surface>
+   </facsimile>
+   <text>
+      <body>
+         <div type="abstract">
+            <p>
+               <rs type="event" ref="ev__QGW_II_II_1956"><rs type="fn" role="issuer"><rs type="person" ref="pe__rudolf_angerfelder_QGW_II_I_1335">Rudolf der
+                        Angervelder, <roleName type="occ" corresp="org__wien">burgermaister</roleName> ze Wienn und <roleName type="occ" corresp="org__oesterreich-herzogtum">munssmaister</roleName> in
+                           Osterreich<roleName type="rep" corresp="pe__michael_vinkch_QGW_II_I_1082"><add>Geschäftsvollstrecker</add></roleName></rs>,<rs type="person" ref="pe__johann_mosprunner_QGW_II_I_1096"> Hanns der Mosprunner<roleName type="occ" corresp="org__wien"><add>rates</add></roleName><roleName type="rep" corresp="pe__michael_vinkch_QGW_II_I_1082"><add>Geschäftsvollstrecker</add></roleName></rs> und <rs type="person" ref="pe__stephan_poll_QGW_II_I_1615">Stephan der Poll, baid
+                        des <roleName type="occ" corresp="org__wien">rates</roleName><roleName type="rep" corresp="pe__michael_vinkch_QGW_II_I_1082"><add>Geschäftsvollstrecker</add></roleName></rs></rs> , <triggerstring n="disp">beurkunden, dass</triggerstring>
+                  <rs type="fn" role="issuer"><rs type="person" ref="pe__michael_vinkch_QGW_II_I_1082">Michel Vinck</rs></rs>, dessen
+                  Geschäftsvollstrecker sie sind, laut seines <rs type="event" ref="ev__StB_I_70">in
+                     das Stadtbuch eingetragenen Geschäftes</rs> die Stiftung einer <rs type="org" ref="org__wien-st_stephan-altar_zwoelfapostel-messe_vinkch_michael">ewigen
+                     Messe hincz Allerheiligen tumkirchen dacz sand Stephan</rs> mit zwein priestern
+                  und capellanen angeordnet und dazu seine beiden Weingärten, genannt der Liephart
+                  und der Wilhalm, sowie 400 lb dn. von seiner fahrenden Habe vermacht habe. In
+                  Folge scheinberiger notdurft und irrung sei die Ausführung dieses Legates bisher
+                  verhindert worden, nunmehr <triggerstring n="disp">vollziehen sie die
+                     Stiftung</triggerstring> mit folgenden Bestimmungen: 1.Die Lehenschaft der Messe
+                  steht <rs type="fn" role="recipient">den nächsten Erben des Stifters, in
+                     Ermangelung solcher dem Rathe zu und dem entsprechend hat der <rs type="person" ref="pe__leonhard_hausleitter_QGW_II_I_1367">Wiener <roleName type="occ" corresp="org__wien">Bürger</roleName> Lienhart der
+                        Hausleitter, Michels des Vincken rechter <roleName type="kin" corresp="pe__michael_vinkch_QGW_II_I_1082">swestersun</roleName></rs>,
+                     sie den <rs type="person" ref="pe__stephan_nussdorfer_QGW_II_I_1490"><roleName type="prof">Priestern</roleName> Stephann dem Nusdorffer, <roleName type="occ" corresp="org__wien-st_stephan">korherrn</roleName> von
+                        S. Stephan</rs>, und <rs type="person" ref="pe__albrecht_von_dem_neunhaus_QGW_II_II_1956"><roleName type="prof"><add>Priestern</add></roleName>Albrechten von dem Neuenhaus</rs></rs>
+                  verliehen. 2. Sie widmen dazu folgende Güter und Gülten: a) <rs type="fn" role="other"><triggerstring n="fn">mit Handen</triggerstring> des <rs type="person" ref="pe__wolfgang_purkchartsperger_QGW_II_I_1560"><roleName type="occ" corresp="org__wien">Stadtrichters</roleName> Wolfgangs
+                        des Purkhartsperger</rs> und des <rs type="org" ref="org__wien">Rathes</rs></rs> 40 lb 60 dn. geltes purkrechts auf Rudolfs des Angervelder
+                  Haus an dem Lichtensteg zunächst dem Hause, das weilent hern Hannsen seligen von
+                  Tyrna gewesen ist, die um 322 lb dn. gekauft worden sind b) 9 lb 6 sh. dn. geltes
+                  purkrechts auf der uberteurung des hauses, das weilent Jorgen seligen von
+                  Nikolspurg gewesen ist, gelegen an dem Harmarkchte an ainem tail zenechst der
+                  Schönaicherinne haus und an dem andern tail zenechst der gassen, über die
+                  morgengab, haimsteur und verlornes gut, dafür dasselbig haus fraun Dorothen,
+                  weilend seiner hausfraun, versaczt ist , welche Gült um 78 lb dn. gekauft wurde
+                  c) <rs type="fn" role="other"><triggerstring n="fn">mit Handen</triggerstring>
+                     <rs type="person" ref="pe__heinrich_von_strassburg_QGW_II_II_1956">Hainreichs
+                        von Strasspurg, <roleName type="occ" corresp="org__neuberg-zisterzienser">ambtman und pergmaister</roleName> des gotshauses Unser Fraun ze
+                        Neunburg</rs>,</rs> zwei Weingärten, ainer gelegen ze Ottakchring in dem
+                  Haunoltsprunn, des ain gancz jeuch an ain ochtail ains jeuchs ist, zenechst . .
+                  des Vaschangs weingarten, von dem man 2½ Eimer Wein an ain virtail und an ain
+                  virtail ains virtails zu Bergrecht, 5 dn. 1 Ort zu Voitrecht und 13 dn. von dem
+                  fürfang dient, so leit der ander auch daselbs ze Ottakchring an dem Liephart, des
+                  dreu virtail ains jeuchs sind, und leit das halb jeuch (dient 3 dn. Bergrecht)
+                  zwischen dem weingarten, der weilent Niclass des Stainer gewesen ist, und . . des
+                  jungen Vorlaufs weingarten, den beiden got genad, so leit ain virtail (dient 2½
+                  Viertel Wein Bergrecht und 4½ dn. Voitrecht) oberthalben zenechst Otten weingarten
+                  des Horner. an ainem tail und aber zenechst . . des jungen Vorlaufs weingarten an
+                  dem andern tail. [ 12] 3. Ausserdem geben sie zur Messe zwei Messbücher, von denen
+                  das eine 20 lb dn., das andere 16 lb dn. kostet, zwei Kelche und zwei
+                  Messgewänder, das alles in dem sagrer dacz dem egenanten sand Stephan leit. 4. Die
+                  beiden Kapläne sollen alljährlich des nachsten suntags nach sand Simons und sand
+                  Judas tag, der heiligen zwelifpoten, einen Jahrtag begehen.</rs>
+            </p>
+         </div>
+         <div type="seal">
+            <p><rs type="event" ref="ev__QGW_II_II_1956"><rs type="fn" role="witness">Besiegelt mit
+                     den Siegeln der Aussteller<rs type="person" ref="pe__rudolf_angerfelder_QGW_II_I_1335"><add>Rudolf der Angervelder,
+                           burgermaister ze Wienn und munssmaister in Osterreich</add></rs>,<rs type="person" ref="pe__johann_mosprunner_QGW_II_I_1096">
+                        <add>Hanns der Mosprunner</add></rs> und <rs type="person" ref="pe__stephan_poll_QGW_II_I_1615"><add>Stephan der Poll, baid des
+                           rates</add></rs>, dem <rs type="org" ref="org__wien">städtischen
+                        Grundsiegel</rs> und dem Siegel des <rs type="person" ref="pe__heinrich_von_strassburg_QGW_II_II_1956">Amtmannes</rs>.</rs></rs>
+            </p>
+         </div>
+         <div type="nota">
+            <p>Auf dem Buge rechts: Nota das obgenant purkrecht ist ab des Angerfelder haus geledigt
+               und auf ainen weingarten, genant die Votz, gelegt am Nusperg neben ainem weingarten,
+               genant Armansgrub, gelegt . </p>
+         </div>
+         <div type="lists"><xi:include xmlns:xi="http://www.w3.org/2001/XInclude" href="../../../../indices/placeList.xml" xpointer="element(/1/2/1/1)"/><xi:include xmlns:xi="http://www.w3.org/2001/XInclude" href="../../../../indices/personList.xml" xpointer="element(/1/2/1/1)"/><xi:include xmlns:xi="http://www.w3.org/2001/XInclude" href="../../../../indices/eventList.xml" xpointer="element(/1/2/1/1)"/><xi:include xmlns:xi="http://www.w3.org/2001/XInclude" href="../../../../indices/orgList.xml" xpointer="element(/1/2/1/1)"/></div>
+      </body>
+   </text>
+</TEI>

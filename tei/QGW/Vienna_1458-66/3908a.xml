@@ -1,0 +1,87 @@
+<?xml version="1.0" encoding="UTF-8" standalone="no"?>
+<!DOCTYPE TEI
+  SYSTEM "../../../schema/toolbox_full.dtd">
+<TEI xmlns:cei="http://www.monasterium.net/NS/cei" xmlns="http://www.tei-c.org/ns/1.0">
+   <teiHeader>
+      <fileDesc>
+         <titleStmt>
+            <title>Tei version of 3908a exported from monasterium.net </title>
+         </titleStmt>
+         <publicationStmt>
+            <p/>
+         </publicationStmt>
+         <!--In Original: cei:front/cei:sourceDesc/cei:sourceDescRegest-->
+         <sourceDesc>
+            <bibl>Quellen zur Geschichte der Stadt Wien, Bd. II/3, Nr. As published in HAUrk by
+               Wiener Stadt- und Landesarchiv </bibl>
+            <msDesc>
+               <msIdentifier>
+                  <repository>Wiener Stadt- und Landesarchiv</repository>
+                  <idno>3908a</idno>
+                  <altIdentifier type="old">
+                     <idno>518171</idno>
+                  </altIdentifier>
+               </msIdentifier>
+               <msContents>
+                  <msItem>
+                     <listBibl>
+                        <bibl type="url"
+                           >https://www.monasterium.net/mom/AT-WStLA/HAUrk/3908a/charter</bibl>
+                     </listBibl>
+                  </msItem>
+               </msContents>
+               <physDesc/>
+            </msDesc>
+         </sourceDesc>
+      </fileDesc>
+      <profileDesc>
+         <creation>
+            <placeName>Wien</placeName>
+            <date when="14590718">1459 VII 18</date>
+            <origDate>Geben zu Wienn am achzehenten tag des monads julii, anno domini etc.
+               quinquagesimo nono, unser reiche, des Römischen im 20., des kaisertumbs im 8. und des
+               Hungarischen im 1. jaren. </origDate></creation>
+      </profileDesc>
+   </teiHeader>
+   <facsimile/>
+   <text>
+      <body>
+         <div type="abstract" resp="vh">
+            <p><rs type="event" ref="ev__QGW_II_III_3908a"><rs type="fn" role="issuer"><rs
+                        type="person" ref="pe__friedrich_v_herzog_von_oesterreich_QGW_II_I_3270"
+                           ><roleName type="occ" corresp="org__heiliges_roemisches_reich"
+                           >Kaiser</roleName> Friedrich III.</rs></rs> an <rs type="fn"
+                     role="recipient"><rs type="org" ref="org__nieder-wesel">Bürgermeister, Rath,
+                        scheffen, urtailsprecher und etliche purger der stat zu Wesel</rs></rs>. Ihr
+                  Mitbürger <rs type="person" ref="pe__dietrich_amelongk_QGW_II_III_3935">Dietreich
+                     Amelongk habe als Anwalt und <roleName type="rep"
+                        corresp="pe__leutgart_QGW_II_III_3908a">Vormund</roleName></rs> seiner <rs
+                     type="person" ref="pe__leutgart_QGW_II_III_3908a"><roleName type="kin"
+                        corresp="pe__dietrich_amelongk_QGW_II_III_3935">Schwester</roleName>
+                     Leutgarten</rs>, weilent <rs type="person"
+                     ref="pe__dietrich_offerman_QGW_II_III_3908a">Dietreichen Offermans elich
+                        <roleName type="kin" corresp="pe__leutgart_QGW_II_III_3908a"
+                        >hausfrau</roleName></rs>, gegen ein von dem Gerichte zu Wesel gefälltes
+                  Urtheil an ihn appelliert. Er lädt sie daher auf den 45. Tag nach Zustellung
+                  dieser Citation zur Verhandlung vor. </rs></p>
+         </div>
+         <div type="nota">
+            <p><rs type="event" ref="ev__QGW_II_III_3908a_nota"> Ad mandatum domini imperatoris <rs
+                     type="person" ref="pe__ulrich_welzly_QGW_II_III_3956">Ulricus Welczel,
+                        <roleName type="occ"
+                        corresp="pe__friedrich_v_herzog_von_oesterreich_QGW_II_I_3270"
+                        >concellarius</roleName></rs>. </rs></p>
+         </div>
+         <div type="lists">
+            <xi:include xmlns:xi="http://www.w3.org/2001/XInclude"
+               href="../../../../indices/placeList.xml" xpointer="element(/1/2/1/1)"/>
+            <xi:include xmlns:xi="http://www.w3.org/2001/XInclude"
+               href="../../../../indices/personList.xml" xpointer="element(/1/2/1/1)"/>
+            <xi:include xmlns:xi="http://www.w3.org/2001/XInclude"
+               href="../../../../indices/eventList.xml" xpointer="element(/1/2/1/1)"/>
+            <xi:include xmlns:xi="http://www.w3.org/2001/XInclude"
+               href="../../../../indices/orgList.xml" xpointer="element(/1/2/1/1)"/>
+         </div>
+      </body>
+   </text>
+</TEI>

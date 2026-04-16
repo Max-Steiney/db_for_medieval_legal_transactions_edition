@@ -1,0 +1,122 @@
+<?xml version="1.0" encoding="UTF-8" standalone="no"?>
+<!DOCTYPE TEI
+  SYSTEM "../../../schema/toolbox_full.dtd">
+<TEI xmlns:cei="http://www.monasterium.net/NS/cei" xmlns="http://www.tei-c.org/ns/1.0">
+   <teiHeader>
+      <fileDesc>
+         <titleStmt>
+            <title>Tei version of 4139 exported from monasterium.net </title>
+         </titleStmt>
+         <publicationStmt>
+            <p/>
+         </publicationStmt>
+         <!--In Original: cei:front/cei:sourceDesc/cei:sourceDescRegest-->
+         <sourceDesc>
+            <bibl>Quellen zur Geschichte der Stadt Wien, Bd. II/3, Nr. As published in HAUrk by
+               Wiener Stadt- und Landesarchiv </bibl>
+            <msDesc>
+               <msIdentifier>
+                  <repository>Wiener Stadt- und Landesarchiv</repository>
+                  <idno>4139</idno>
+                  <altIdentifier type="old">
+                     <idno>518418</idno>
+                  </altIdentifier>
+               </msIdentifier>
+               <msContents>
+                  <msItem>
+                     <listBibl>
+                        <bibl type="url"
+                           >https://www.monasterium.net/mom/AT-WStLA/HAUrk/4139/charter</bibl>
+                     </listBibl>
+                  </msItem>
+               </msContents>
+               <physDesc>
+                  <sealDesc>
+                     <seal>
+                        <p>Zwei rückwärts aufgedrückte Siegel von grünem Wachse, 1.
+                           beschädigtSiegler: <quote>Ernreich Köppl</quote> und <quote>maister Veit
+                              Griessenpek, burger zu Wienn</quote>. </p>
+                     </seal>
+                  </sealDesc>
+               </physDesc>
+            </msDesc>
+         </sourceDesc>
+      </fileDesc>
+      <profileDesc>
+         <creation>
+            <placeName>Wien</placeName>
+            <date when="14661212">1466 XII 12</date>
+            <origDate>zu Wienn, an freitag vor sand Lucein tag.</origDate></creation>
+      </profileDesc>
+   </teiHeader>
+   <facsimile>
+      <surface>
+         <graphic
+            url="http://images.monasterium.net/pics/AT-WStLA/HA-U/WStLA-HA-Urkunden_04139_r.jpg"/>
+      </surface>
+      <surface>
+         <graphic
+            url="http://images.monasterium.net/pics/AT-WStLA/HA-U/WStLA-HA-Urkunden_04139_v.jpg"/>
+      </surface>
+   </facsimile>
+   <text>
+      <body>
+         <div type="abstract" resp="vh">
+            <p><rs type="event" ref="ev__QGW_II_III_4139">
+                  <rs type="fn" role="issuer"><rs type="person"
+                        ref="pe__stephan_stressl_QGW_II_III_4139">Steffan Stressl <roleName
+                           type="occ" corresp="org__wien"><add>ratsherr</add></roleName><roleName
+                           type="rep" corresp="pe__barbara_QGW_II_III_4139"
+                           ><add>geschefftherr</add></roleName></rs> und <rs type="person"
+                        ref="pe__ernreich_koeppl_QGW_II_III_4139"><roleName type="rep"
+                           corresp="pe__barbara_QGW_II_III_4139"><add>geschefftherr</add></roleName>
+                        Ernreich Köppl, des <roleName type="occ" corresp="org__wien">rats</roleName>
+                        der stat zu Wienn</rs></rs>, beurkunden, dass sie über Ansuchen <rs
+                     type="person" ref="pe__laurenz_panholcz_QGW_II_III_4139">Larencz Panholcz, des
+                        <roleName type="prof">öler</roleName></rs>, und <rs type="person"
+                     ref="pe__wolfgang_grueber_QGW_II_III_4139">Wolfgang Grueber, des <roleName
+                        type="prof">eisner</roleName>, <roleName type="occ" corresp="org__wien"
+                        >mitburger</roleName> zu Wienn</rs>, als geschefftleut <rs type="person"
+                     ref="pe__barbara_QGW_II_III_4139">Barbaren, <rs type="person"
+                        ref="pe__stephan_waidhover_QGW_II_III_4139">Stephans Waidhofer</rs>
+                     <roleName type="kin" corresp="pe__stephan_waidhover_QGW_II_III_4139"
+                        >witib</roleName></rs>, das Haus, gelegen am Graben an der Melzeil zenagst
+                  Stephan Auer, des schebhuter, haus, das die benant Barbara zu verkauffen geschafft
+                  hiet , <rs type="fn" role="other"><triggerstring n="fn">im Auftrage</triggerstring>
+                     <rs type="org" ref="org__wien">des Rathes</rs></rs> und im Einvernehmen mit der
+                  stat <rs type="person" ref="pe__johann_retsch_QGW_II_III_4139"><roleName
+                        type="occ" corresp="org__wien">gesworen werchleuten</roleName>, <roleName
+                        type="title">maister</roleName> Hannsen Retsch, dem <roleName type="prof"
+                        >stainmessen</roleName></rs>, und <rs type="person"
+                     ref="pe__johann_rorer_QGW_II_III_4139"><roleName type="occ" corresp="org__wien"
+                           ><add>gesworen werchmann</add></roleName>
+                     <roleName type="title">maister</roleName> Hannsen Rorer, dem <roleName
+                        type="prof">zimerman</roleName></rs> , auf 100 lb dn. geschätzt haben.
+               </rs></p>
+         </div>
+         <div type="seal">
+            <p><rs type="event" ref="ev__QGW_II_III_4139">Siegler: <rs type="fn" role="witness"><rs
+                        type="person" ref="pe__ernreich_koeppl_QGW_II_III_4139">Ernreich Köppl</rs>
+                     und <rs type="person"
+                        ref="pe__veit_griessenpekh_Genanntenliste_1461-64_facs_1_tr_7_tl_26"
+                           ><roleName type="title">maister</roleName> Veit Griessenpek, <roleName
+                           type="occ" corresp="org__wien">burger</roleName> zu Wienn</rs></rs>.
+               </rs></p>
+         </div>
+         <div type="nota">
+            <p><rs type="event" ref="ev__QGW_II_III_4139_nota">Indorsat: Waidhoferin am Graben
+                  schaczbrief. </rs></p>
+         </div>
+         <div type="lists">
+            <xi:include xmlns:xi="http://www.w3.org/2001/XInclude"
+               href="../../../../indices/placeList.xml" xpointer="element(/1/2/1/1)"/>
+            <xi:include xmlns:xi="http://www.w3.org/2001/XInclude"
+               href="../../../../indices/personList.xml" xpointer="element(/1/2/1/1)"/>
+            <xi:include xmlns:xi="http://www.w3.org/2001/XInclude"
+               href="../../../../indices/eventList.xml" xpointer="element(/1/2/1/1)"/>
+            <xi:include xmlns:xi="http://www.w3.org/2001/XInclude"
+               href="../../../../indices/orgList.xml" xpointer="element(/1/2/1/1)"/>
+         </div>
+      </body>
+   </text>
+</TEI>

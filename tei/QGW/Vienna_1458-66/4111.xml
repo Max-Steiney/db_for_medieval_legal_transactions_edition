@@ -1,0 +1,103 @@
+<?xml version="1.0" encoding="UTF-8" standalone="no"?>
+<!DOCTYPE TEI
+  SYSTEM "../../../schema/toolbox_full.dtd">
+<TEI xmlns:cei="http://www.monasterium.net/NS/cei" xmlns="http://www.tei-c.org/ns/1.0">
+   <teiHeader>
+      <fileDesc>
+         <titleStmt>
+            <title>Tei version of 4111 exported from monasterium.net </title>
+         </titleStmt>
+         <publicationStmt>
+            <p/>
+         </publicationStmt>
+         <!--In Original: cei:front/cei:sourceDesc/cei:sourceDescRegest-->
+         <sourceDesc>
+            <bibl>Quellen zur Geschichte der Stadt Wien, Bd. II/3, Nr. As published in HAUrk by
+               Wiener Stadt- und Landesarchiv </bibl>
+            <msDesc>
+               <msIdentifier>
+                  <repository>Wiener Stadt- und Landesarchiv</repository>
+                  <idno>4111</idno>
+                  <altIdentifier type="old">
+                     <idno>518385</idno>
+                  </altIdentifier>
+               </msIdentifier>
+               <msContents>
+                  <msItem>
+                     <listBibl>
+                        <bibl type="url"
+                           >https://www.monasterium.net/mom/AT-WStLA/HAUrk/4111/charter</bibl>
+                     </listBibl>
+                  </msItem>
+               </msContents>
+               <physDesc>
+                  <sealDesc>
+                     <seal>
+                        <p>Fünf vorne aufgedrückte Siegel von grünem Wachse unter Papierdecke.</p>
+                     </seal>
+                  </sealDesc>
+               </physDesc>
+            </msDesc>
+         </sourceDesc>
+      </fileDesc>
+      <profileDesc>
+         <creation>
+            <date when="14650919">1465 IX 19</date>
+            <origDate>Geschehen an phincztag vor sand Matheus tag, des heiligen zwelifpoten und
+               ewangelisten, anno domini etc. sexagesimo quinto. </origDate></creation>
+      </profileDesc>
+   </teiHeader>
+   <facsimile>
+      <surface>
+         <graphic
+            url="http://images.monasterium.net/pics/AT-WStLA/HA-U/WStLA-HA-Urkunden_04111_r.jpg"/>
+      </surface>
+      <surface>
+         <graphic
+            url="http://images.monasterium.net/pics/AT-WStLA/HA-U/WStLA-HA-Urkunden_04111_v.jpg"/>
+      </surface>
+   </facsimile>
+   <text>
+      <body>
+         <div type="abstract" resp="vh">
+            <p><rs type="event" ref="ev__QGW_II_III_4111">
+                  <rs type="fn" role="issuer"><rs type="person"
+                        ref="pe__niklas_auf_dem_gutlein_QGW_II_III_4111">Niclas auf dem Gutlein, der
+                           <roleName type="title">ersamen geistlichen herrn</roleName> zun Schotten
+                        zu Wienn <roleName type="occ" corresp="org__wien-schotten"
+                           >ambtman</roleName> irer grünt und güter vor Stubentor</rs> daselbs
+                     gelegen, <rs type="person"
+                        ref="pe__wolfgang_humel_facs_945_TextRegion_1657876477879_360">Wolfgang Huml
+                           <roleName type="occ" corresp="org__wien-schotten"
+                           ><add>vierer</add></roleName></rs>, <rs type="person"
+                        ref="pe__johann_kolb_QGW_II_III_4111">Hanns Kolb <roleName type="occ"
+                           corresp="org__wien-schotten"><add>vierer</add></roleName></rs>, <rs
+                        type="person" ref="pe__michael_hauer_QGW_II_III_4111">Michel Hauer <roleName
+                           type="occ" corresp="org__wien-schotten"><add>vierer</add></roleName></rs>
+                     und <rs type="person" ref="pe__johann_glaser_QGW_II_III_4111">Hanns Glaser,
+                        gesworn <roleName type="occ" corresp="org__wien-schotten"
+                        >vierer</roleName></rs> daselbs vor Stubentor</rs> , beurkunden, dass <rs
+                     type="person" ref="pe__barbara_facs_1132_TextRegion_1653397666253_1553"
+                     >Barbara, <rs type="person"
+                        ref="pe__oswald_prunner_facs_1132_TextRegion_1653397666253_1553">Oswalts
+                        Prunner, des <roleName type="prof">oler</roleName>, <roleName type="occ"
+                           corresp="org__wien">burger</roleName> daselbs</rs>, <roleName type="kin"
+                        corresp="pe__oswald_prunner_facs_1132_TextRegion_1653397666253_1553"
+                        >hausfrau</roleName></rs>, ihnen ihre gerechtikait gegeben und sie gebeten
+                  habe, ain virtail und ain sechstail weingartens, gelegen auf dem Jeus zunagst dem
+                  Gatern, zu schätzen, und dass derselbe ohne die heurige Frucht nicht mehr als 50
+                  lb dn. werth sei. </rs></p>
+         </div>
+         <div type="lists">
+            <xi:include xmlns:xi="http://www.w3.org/2001/XInclude"
+               href="../../../../indices/placeList.xml" xpointer="element(/1/2/1/1)"/>
+            <xi:include xmlns:xi="http://www.w3.org/2001/XInclude"
+               href="../../../../indices/personList.xml" xpointer="element(/1/2/1/1)"/>
+            <xi:include xmlns:xi="http://www.w3.org/2001/XInclude"
+               href="../../../../indices/eventList.xml" xpointer="element(/1/2/1/1)"/>
+            <xi:include xmlns:xi="http://www.w3.org/2001/XInclude"
+               href="../../../../indices/orgList.xml" xpointer="element(/1/2/1/1)"/>
+         </div>
+      </body>
+   </text>
+</TEI>

@@ -1,0 +1,113 @@
+<?xml version="1.0" encoding="UTF-8" standalone="no"?>
+<!DOCTYPE TEI
+  SYSTEM "../../../schema/toolbox_full.dtd">
+<TEI xmlns:cei="http://www.monasterium.net/NS/cei" xmlns="http://www.tei-c.org/ns/1.0">
+   <teiHeader>
+      <fileDesc>
+         <titleStmt>
+            <title>Tei version of 3945 exported from monasterium.net </title>
+         </titleStmt>
+         <publicationStmt>
+            <p/>
+         </publicationStmt>
+         <!--In Original: cei:front/cei:sourceDesc/cei:sourceDescRegest-->
+         <sourceDesc>
+            <bibl>Quellen zur Geschichte der Stadt Wien, Bd. II/3, Nr. As published in HAUrk by
+               Wiener Stadt- und Landesarchiv </bibl>
+            <msDesc>
+               <msIdentifier>
+                  <repository>Wiener Stadt- und Landesarchiv</repository>
+                  <idno>3945</idno>
+                  <altIdentifier type="old">
+                     <idno>518209</idno>
+                  </altIdentifier>
+               </msIdentifier>
+               <msContents>
+                  <msItem>
+                     <listBibl>
+                        <bibl type="url"
+                           >https://www.monasterium.net/mom/AT-WStLA/HAUrk/3945/charter</bibl>
+                     </listBibl>
+                  </msItem>
+               </msContents>
+               <physDesc>
+                  <sealDesc>
+                     <seal>
+                        <p>Zwei anhangende Siegel, grün u. Sch.</p>
+                     </seal>
+                  </sealDesc>
+               </physDesc>
+            </msDesc>
+         </sourceDesc>
+      </fileDesc>
+      <profileDesc>
+         <creation>
+            <placeName>Wien</placeName>
+            <date when="14591227">1459 XII 27</date>
+            <origDate>Geben zu Wienn an sand Johanns tag in den heiligen Weichnachtveirtagen, nach
+               Cristi gepurt 1400 jar und darnach in dem 60. jare. </origDate></creation>
+      </profileDesc>
+   </teiHeader>
+   <facsimile>
+      <surface>
+         <graphic
+            url="http://images.monasterium.net/pics/AT-WStLA/HA-U/WStLA-HA-Urkunden_03945_r.jpg"/>
+      </surface>
+      <surface>
+         <graphic
+            url="http://images.monasterium.net/pics/AT-WStLA/HA-U/WStLA-HA-Urkunden_03945_v.jpg"/>
+      </surface>
+   </facsimile>
+   <text>
+      <body>
+         <div type="abstract" resp="vh">
+            <p><rs type="event" ref="ev__QGW_II_III_3945">
+                  <rs type="fn" role="issuer"><rs type="person"
+                        ref="pe__wolfgang_muscher_QGW_II_III_3945">Wolfgang Muscher von Waidhoven,
+                           <roleName type="occ" corresp="org__wien-st_stephan">achter</roleName>
+                        dacz sand Stephan zu Wienn</rs></rs>, dem <rs type="fn" role="recipient"><rs
+                        type="person" ref="pe__konrad_pilgrim_QGW_II_II_3285">Kunrat Pilgreim
+                           <roleName type="occ" corresp="org__wien"
+                           ><add>burger</add></roleName><roleName type="rep"
+                           corresp="pe__michael_stadl_SB_CD_00055"
+                           ><add>geschefftleut</add></roleName></rs> und <rs type="person"
+                        ref="pe__kaspar_kemnater_QGW_II_II_3285">Caspar Kembnater, baid <roleName
+                           type="occ" corresp="org__wien">burger</roleName> hie zu
+                        Wienn</rs><roleName type="rep" corresp="pe__michael_stadl_SB_CD_00055"
+                           ><add>geschefftleut</add></roleName></rs>, <rs type="person"
+                     ref="pe__michael_stadl_SB_CD_00055">Micheln Stadl, des <roleName type="prof"
+                        >fleischakcher</roleName>
+                     <roleName type="dead">seligen</roleName></rs> geschefftleut , die für dessen
+                  und seiner <rs type="person" ref="pe__katharina_QGW_II_III_3945"><roleName
+                        type="kin" corresp="pe__michael_stadl_SB_CD_00055">Gemahlin</roleName>
+                     Kathrein</rs> bei S. Kolmann und S. Jeronimus gestiftete und mit 28 lb dn.
+                  jerlicher gült, die si auf die stat hie gekaufft, dotierte <rs type="org"
+                     ref="org__wien-st_hieronymus-messe_stadl_michael">Messe</rs>, welche ihnen mit
+                     <rs type="person" ref="pe__wolfgang_weissenburger_QGW_II_II_3709"><roleName
+                        type="title">hern</roleName> Wolfgangs Weissenburger, <roleName type="occ"
+                        corresp="org__wien-st_stephan">kormaister</roleName> zu sand Stephan, . . .
+                     tod</rs> und abgang ledig ist worden, verliehen haben, stellt über die
+                  stiftungsgemässe Abhaltung dieser Messe einen Revers aus. </rs></p>
+         </div>
+         <div type="seal">
+            <p><rs type="event" ref="ev__QGW_II_III_3945">Besiegelt mit den Siegeln <rs type="fn"
+                     role="witness"><rs type="person" ref="pe__wolfgang_holnbrunner_QGW_II_II_3079"
+                        >Wolfgangs Holnbrunner<roleName type="occ" corresp="org__wien"
+                              ><add>burger</add></roleName></rs> und <rs type="person"
+                        ref="pe__stephan_kisling_QGW_II_II_3622">Stephans Kislings, baid <roleName
+                           type="occ" corresp="org__wien">burger</roleName> zu Wienn</rs></rs>.
+               </rs></p>
+         </div>
+         <div type="lists">
+            <xi:include xmlns:xi="http://www.w3.org/2001/XInclude"
+               href="../../../../indices/placeList.xml" xpointer="element(/1/2/1/1)"/>
+            <xi:include xmlns:xi="http://www.w3.org/2001/XInclude"
+               href="../../../../indices/personList.xml" xpointer="element(/1/2/1/1)"/>
+            <xi:include xmlns:xi="http://www.w3.org/2001/XInclude"
+               href="../../../../indices/eventList.xml" xpointer="element(/1/2/1/1)"/>
+            <xi:include xmlns:xi="http://www.w3.org/2001/XInclude"
+               href="../../../../indices/orgList.xml" xpointer="element(/1/2/1/1)"/>
+         </div>
+      </body>
+   </text>
+</TEI>

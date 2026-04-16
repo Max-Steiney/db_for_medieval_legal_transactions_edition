@@ -1,0 +1,90 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<TEI xmlns="http://www.tei-c.org/ns/1.0" xmlns:cei="http://www.monasterium.net/NS/cei"
+   xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance">
+   <teiHeader>
+      <fileDesc>
+         <titleStmt>
+            <title>Tei version of 5517 exported from monasterium.net </title>
+         </titleStmt>
+         <publicationStmt>
+            <p/>
+         </publicationStmt>
+         <!--In Original: cei:front/cei:sourceDesc/cei:sourceDescRegest-->
+         <sourceDesc>
+            <bibl>Quellen zur Geschichte der Stadt Wien, Bd. II/4, Nr. 5517 As published in HAUrk by
+               Wiener Stadt- und Landesarchiv </bibl>
+            <msDesc>
+               <msIdentifier>
+                  <repository>Wiener Stadt- und Landesarchiv</repository>
+                  <idno>5517</idno>
+                  <altIdentifier type="old">
+                     <idno>519828</idno>
+                  </altIdentifier>
+               </msIdentifier>
+               <physDesc>
+                  <sealDesc>
+                     <seal>
+                        <p>mit zerbrochenem Schlusssiegel <quote>Richter und ra/ot der stat
+                              Pressburgk</quote>. </p>
+                     </seal>
+                  </sealDesc>
+               </physDesc>
+            </msDesc>
+         </sourceDesc>
+      </fileDesc>
+      <encodingDesc>
+         <projectDesc default="false">
+            <p><label type="contentual-editing">Projekt Christina Lutter Stadt und
+                  Gemeinschaft</label></p>
+         </projectDesc>
+      </encodingDesc>
+      <profileDesc>
+         <creation>
+            <placeName>Preßburg</placeName>
+            <date when="14940814">1494 VIII 14</date>
+            <origDate>Geben am pfinztag unser lieben frawen a/obent der himelfart, anno domini etc.
+               LXXXXIIII°.</origDate></creation>
+      </profileDesc>
+   </teiHeader>
+   <facsimile>
+      <surface>
+         <graphic
+            url="http://images.monasterium.net/pics/AT-WStLA/HA-U/WStLA-HA-Urkunden_05517_r.jpg"/>
+      </surface>
+      <surface>
+         <graphic
+            url="http://images.monasterium.net/pics/AT-WStLA/HA-U/WStLA-HA-Urkunden_05517_v.jpg"/>
+      </surface>
+   </facsimile>
+   <text>
+      <body>
+         <div type="abstract">
+            <p><rs type="event" ref="ev__QGW_II_II_5517"><rs type="fn" role="issuer"><rs type="org"
+                        ref="org__pressburg">Richter und Rat der Stadt Preßburg</rs></rs> an den <rs
+                     type="fn" role="recipient"><rs type="org" ref="org__wien">Bürgermeister,
+                        Richter und Rat zu Wien</rs></rs> wegen deren Schreiben in Angelegenheit
+                  dess <rs type="person" ref="pe__matthias_engel_QGW_II_IV_5517">Mathess Engel,
+                     Weissawers <roleName type="occ" corresp="pe__weissawer_QGW_II_IV_5517"
+                        >diener</roleName></rs> ettlicher brief halben gethon. Sie hätten dorauf den
+                  Mathesen zu redt gesetzt und sovil dorinn vleis fu/orkert, das er sich mit solchen
+                  briefen, dorzu er dann sprüch und ettwas gerechtigka/oit ze haben verma/opint, von
+                  heut über dreu wochen sich selbs hinauf fugen d. h. nach Wien begeben und in dem
+                  handel vertreten wil. . . . </rs></p>
+         </div>
+         <div type="nota">
+            <p>Adresse:: Den fürsichtigen ersamen und weisen bu/orgermaister richter und rät der
+               stat zu Wienn unsern lieben herrn und gu/oten freundten . </p>
+         </div>
+         <div type="lists">
+            <xi:include xmlns:xi="http://www.w3.org/2001/XInclude"
+               href="../../../../indices/placeList.xml" xpointer="element(/1/2/1/1)"/>
+            <xi:include xmlns:xi="http://www.w3.org/2001/XInclude"
+               href="../../../../indices/personList.xml" xpointer="element(/1/2/1/1)"/>
+            <xi:include xmlns:xi="http://www.w3.org/2001/XInclude"
+               href="../../../../indices/eventList.xml" xpointer="element(/1/2/1/1)"/>
+            <xi:include xmlns:xi="http://www.w3.org/2001/XInclude"
+               href="../../../../indices/orgList.xml" xpointer="element(/1/2/1/1)"/>
+         </div>
+      </body>
+   </text>
+</TEI>

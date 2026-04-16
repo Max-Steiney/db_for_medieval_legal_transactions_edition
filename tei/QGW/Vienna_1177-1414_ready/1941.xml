@@ -1,0 +1,80 @@
+<?xml version="1.0" encoding="UTF-8"?><!DOCTYPE TEI SYSTEM "../../../schema/toolbox_full.dtd"><TEI xmlns="http://www.tei-c.org/ns/1.0" xmlns:cei="http://www.monasterium.net/NS/cei" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance">
+   <teiHeader>
+      <fileDesc>
+         <titleStmt>
+            <title>Tei version of 1941 exported from monasterium.net </title>
+         </titleStmt>
+         <publicationStmt>
+            <p/>
+         </publicationStmt>
+         <!--In Original: cei:front/cei:sourceDesc/cei:sourceDescRegest-->
+         <sourceDesc>
+            <bibl>Quellen zur Geschichte der Stadt Wien, Bd. II/2, Nr. 1941 As published in HAUrk by
+               Wiener Stadt- und Landesarchiv </bibl>
+            <msDesc>
+               <msIdentifier>
+                  <repository>Wiener Stadt- und Landesarchiv</repository>
+                  <idno>1941</idno>
+                  <altIdentifier type="old">
+                     <idno>516147</idno>
+                  </altIdentifier>
+               </msIdentifier>
+               <msContents>
+                  <msItem>
+                     <listBibl>
+                        <bibl>Camesina, Regesten 34 n° 161 Regest.</bibl>
+                     </listBibl>
+                  </msItem>
+               </msContents>
+               <physDesc>
+                  <sealDesc>
+                     <seal>
+                        <p>Zwei anhangende Siegel, schwarz u. K., 1. beschädigt.</p>
+                     </seal>
+                  </sealDesc>
+               </physDesc>
+            </msDesc>
+         </sourceDesc>
+      </fileDesc>       <encodingDesc>          <projectDesc default="false">             <p><label type="contentual-editing">Projekt Christina Lutter Stadt und                   Gemeinschaft</label></p>          </projectDesc>       </encodingDesc>
+      <profileDesc>
+         <creation>
+            <placeName>Wien</placeName>
+            <date when="14130206">1413 II 06</date>
+            <origDate>zu Wienn, des nachsten montags nach Unser Lieben Fraun tag zu der
+               Liechtmess.</origDate></creation>
+      </profileDesc>
+   </teiHeader>
+   <facsimile>
+      <surface>
+         <graphic url="http://images.monasterium.net/pics/AT-WStLA/HA-U/WStLA-HA-Urkunden_01941_a_r.jpg"/>
+      </surface>
+      <surface>
+         <graphic url="http://images.monasterium.net/pics/AT-WStLA/HA-U/WStLA-HA-Urkunden_01941_a_v.jpg"/>
+      </surface>
+   </facsimile>
+   <text>
+      <body>
+         <div type="abstract">
+            <p>
+               <rs type="event" ref="ev__QGW_II_II_1941"><rs type="fn" role="issuer"><rs type="person" ref="pe__eberhard_varholczer_QGW_II_II_1941">Eberhart der
+                        Varholczer, <roleName type="occ" corresp="org__wien">burger</roleName>
+                        zu Wienn,</rs> und <rs type="person" ref="pe__kunigunde_QGW_II_II_1941">Kunigund, seine <roleName type="kin" corresp="pe__eberhard_varholczer_QGW_II_II_1941">Hausfrau</roleName>,</rs></rs>
+                  <triggerstring n="disp">versprechen</triggerstring>, 5 lb dn. gelts purkchrechts, die
+                  sie <rs type="fn" role="recipient"><rs type="person" ref="pe__laurenz_von_neunburg_QGW_II_II_1941"><roleName type="title">hern</roleName> Larenczen von Neunburg,
+                     <roleName type="occ" corresp="org__wien-st_stephan-kapelle_st_katharina-altar_st_katharina-messe_kurczman">Kaplan</roleName> der von Ulreich dem Kurczman auf sand Kathrein altar hinz sand
+                        Stephan gestifteten Messe,</rs> und seinen Nachfolgern</rs> auf ihrem Hause,
+                  gelegen in der Kernerstrass zu Wienn, genant des Glükchs rad, zenechst dem haus,
+                  das weilent Chonrats des Herscheftleins gewesen ist , verkauft haben, gegebenen
+                  Falles nur auf [ 8] einmal, und zwar mit 40 lb dn. <triggerstring n="disp">abzulösen</triggerstring>.</rs>
+            </p>
+         </div>
+         <div type="seal">
+            <p><rs type="event" ref="ev__QGW_II_II_1941"><rs type="fn" role="witness">Besiegelt mit
+                     den Siegeln der <rs type="person" ref="pe__johann_mustrer_QGW_II_II_1941">Wiener <roleName type="occ" corresp="org__wien">Bürger</roleName> Hannsen des Mustrer</rs> und <rs type="person" ref="pe__heinrich_scheppach_QGW_II_I_1544">Hainreichs des
+                           Scheppachs<roleName type="occ" corresp="org__wien"><add>Bürger</add></roleName></rs>.</rs></rs>
+            </p>
+         </div>
+         <div type="lists"><xi:include xmlns:xi="http://www.w3.org/2001/XInclude" href="../../../../indices/placeList.xml" xpointer="element(/1/2/1/1)"/><xi:include xmlns:xi="http://www.w3.org/2001/XInclude" href="../../../../indices/personList.xml" xpointer="element(/1/2/1/1)"/><xi:include xmlns:xi="http://www.w3.org/2001/XInclude" href="../../../../indices/eventList.xml" xpointer="element(/1/2/1/1)"/><xi:include xmlns:xi="http://www.w3.org/2001/XInclude" href="../../../../indices/orgList.xml" xpointer="element(/1/2/1/1)"/></div>
+      </body>
+   </text>
+</TEI>

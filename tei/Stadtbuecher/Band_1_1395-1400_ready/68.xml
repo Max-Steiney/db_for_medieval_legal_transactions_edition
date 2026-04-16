@@ -1,0 +1,103 @@
+<?xml version="1.0" encoding="UTF-8"?><!DOCTYPE TEI SYSTEM "../../../schema/toolbox_full.dtd">
+<TEI xmlns="http://www.tei-c.org/ns/1.0" xmlns:cei="http://www.monasterium.net/NS/cei"
+    xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance">
+    <teiHeader>
+        <fileDesc>
+            <titleStmt>
+                <title>TEI-Version of 68</title>
+            </titleStmt>
+            <publicationStmt>
+                <p/>
+            </publicationStmt>
+            <sourceDesc default="false">
+                <bibl default="false" status="draft">
+                    <title type="full"><title type="main">Die Wiener Stadtbücher 1395 -
+                            1430</title><title type="sub">Teil 1: 1395 - 1400</title></title>
+                    <author>Wilhelm Brauneder</author>
+                    <author>Gerhard Jaritz</author>
+                    <pubPlace>Wien</pubPlace>
+                    <pubPlace>Köln</pubPlace>
+                    <publisher>Böhlau Verlag</publisher>
+                </bibl>
+                <msDesc status="draft">
+                    <msIdentifier>
+                        <idno>68</idno>
+                    </msIdentifier>
+                    <physDesc/>
+                </msDesc>
+            </sourceDesc>
+        </fileDesc>
+        <encodingDesc>
+            <projectDesc>
+                <p><label type="contentual-editing">Projekt Christina Lutter Stadt und
+                        Gemeinschaft</label></p>
+            </projectDesc>
+        </encodingDesc>
+        <profileDesc>
+            <creation>
+                <date when="1396-07-18">1396 .Juli 18</date>
+            </creation>
+        </profileDesc>
+    </teiHeader>
+    <text>
+        <body>
+            <div type="header">
+                <p>Geschäft des Hermann Hantschuster</p>
+            </div>                   <div type="entry" resp="rs">
+                <p> pr. mü., Einbr. 3 Zg., Ma (Indez: Item gescheft Hermans des HantschÜster) <rs
+                        type="event" ref="ev__StB_I_68">Des nachsten eritags vor sand Marien
+                        Magdalen tag kom fur den rat <rs type="fn" role="other"><rs type="person"
+                                ref="pe__margarethe_StB_I_68"><roleName type="title">fraw</roleName>
+                                Margret, <roleName type="kin"
+                                    corresp="pe__hermann_handschuster_StB_I_68"
+                                    ><add>wittib</add></roleName>
+                                <rs type="person" ref="pe__hermann_handschuster_StB_I_68">Hermans
+                                        <roleName type="dead">seligen wittib</roleName> des
+                                        <roleName type="prof" cert="unknown"
+                                    >Hantschuster</roleName></rs></rs>, und <triggerstring n="fn">hat
+                                da beweist</triggerstring>
+                        </rs>, <rs type="fn" role="recipient">mit den erbern leuten zu rechter zeit,
+                            als si ze recht solt, mit <rs type="person"
+                                ref="pe__siegfried_zistel_QGW_II_I_1498"><roleName type="title"
+                                        ><add>erbern leuten</add></roleName> Seyczen dem Zistl</rs>,
+                                <rs type="person" ref="pe__konrad_iricher_StB_I_68"><roleName
+                                    type="title"><add>erbern leuten</add></roleName>Chunraten dem
+                                    <roleName type="prof" cert="unknown">Iricher</roleName></rs> und
+                            mit <rs type="person" ref="pe__niklas_unger_StB_I_23"><roleName
+                                    type="title"><add>erbern leuten</add></roleName>Niclasen dem
+                                Ungerlein</rs></rs>, daz geschefft, so <rs type="fn" role="issuer"
+                                ><rs type="person" ref="pe__hermann_handschuster_StB_I_68">der
+                                vorgenant Herman, <roleName type="kin"
+                                    corresp="pe__margarethe_StB_I_68">ir wirt</roleName></rs></rs>,
+                        an seinen lesten zeiten getan hat. Also das er geschafft hat <rs type="fn"
+                            role="recipient"><rs type="person" ref="pe__margarethe_StB_I_68">der
+                                egenanten <roleName type="kin"
+                                    corresp="pe__hermann_handschuster_StB_I_68">seiner
+                                    hawsfrawn</roleName> Margreten</rs></rs> zwaynczig phunt Wienner
+                        phenning. Darnach hat er geschafft umb zwo fertt, aynew gen Ach und aynew
+                        gen Rom, zehen phunt. !tem <rs type="fn" role="recipient">hincz <rs
+                                type="org" ref="org__wien-st_stephan">Sand Stephan ze Wienn zu dem
+                                paw </rs></rs>ayn phunt,<rs type="fn" role="recipient"> hincz <rs
+                                type="org" ref="org__wien-dominikaner">den Predigern</rs></rs> ayn
+                        phunt. !tem <rs type="fn" role="recipient"><rs type="org"
+                                ref="org__wien-st_jakob_auf_der_huelben">den geistleichen frawn
+                                hincz Sand Jacob ze Wienn</rs></rs> ayn phunt. Darnach hat er
+                        geschafft dem Pikchel dreizzig gruntfel. Auch hat er geschafft, das man der
+                        egenanten seiner hawsfrawn Margreten geben sol die lederfel und acht meczen
+                        weinstain. Als darumb die obgenanten erbern leut mit irn trewn an ayde stat
+                        vor offem rat habent gesagt, als si ze recht solten.</rs>
+                </p>
+            </div>
+            <div type="lists">
+                <xi:include xmlns:xi="http://www.w3.org/2001/XInclude"
+                    href="../../../../indices/placeList.xml" xpointer="element(/1/2/1/1)"/>
+                <xi:include xmlns:xi="http://www.w3.org/2001/XInclude"
+                    href="../../../../indices/personList.xml" xpointer="element(/1/2/1/1)"/>
+                <xi:include xmlns:xi="http://www.w3.org/2001/XInclude"
+                    href="../../../../indices/eventList.xml" xpointer="element(/1/2/1/1)"/>
+                <xi:include xmlns:xi="http://www.w3.org/2001/XInclude"
+                    href="../../../../indices/orgList.xml" xpointer="element(/1/2/1/1)"/>
+            </div>
+        </body>
+    </text>
+</TEI>

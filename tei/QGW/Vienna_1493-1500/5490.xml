@@ -1,0 +1,115 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<TEI xmlns="http://www.tei-c.org/ns/1.0" xmlns:cei="http://www.monasterium.net/NS/cei"
+   xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance">
+   <teiHeader>
+      <fileDesc>
+         <titleStmt>
+            <title>Tei version of 5490 exported from monasterium.net </title>
+         </titleStmt>
+         <publicationStmt>
+            <p/>
+         </publicationStmt>
+         <!--In Original: cei:front/cei:sourceDesc/cei:sourceDescRegest-->
+         <sourceDesc>
+            <bibl>Quellen zur Geschichte der Stadt Wien, Bd. II/3, Nr. As published in HAUrk by
+               Wiener Stadt- und Landesarchiv </bibl>
+            <msDesc>
+               <msIdentifier>
+                  <repository>Wiener Stadt- und Landesarchiv</repository>
+                  <idno>5490</idno>
+                  <altIdentifier type="old">
+                     <idno>519798</idno>
+                  </altIdentifier>
+               </msIdentifier>
+               <physDesc>
+                  <sealDesc>
+                     <seal>
+                        <p>Rückwärts aufgedrücktes, beschädigtes Siegel von grünem Wachse.</p>
+                     </seal>
+                  </sealDesc>
+               </physDesc>
+            </msDesc>
+         </sourceDesc>
+      </fileDesc>
+      <encodingDesc>
+         <projectDesc default="false">
+            <p><label type="contentual-editing">Projekt Christina Lutter Stadt und
+                  Gemeinschaft</label></p>
+         </projectDesc>
+      </encodingDesc>
+      <profileDesc>
+         <creation>
+            <placeName>Bruck a. d. Leitha</placeName>
+            <date when="14930728">1493 VII 28</date>
+            <origDate>zu Pruck an der Leyta, am suntag nach sand Jacobs tag, des heilign
+               zwelfpotten.</origDate></creation>
+      </profileDesc>
+   </teiHeader>
+   <facsimile>
+      <surface>
+         <graphic
+            url="http://images.monasterium.net/pics/AT-WStLA/HA-U/WStLA-HA-Urkunden_05490_r.jpg"/>
+      </surface>
+      <surface>
+         <graphic
+            url="http://images.monasterium.net/pics/AT-WStLA/HA-U/WStLA-HA-Urkunden_05490_v.jpg"/>
+      </surface>
+   </facsimile>
+   <text>
+      <body>
+         <div type="abstract">
+            <p><rs type="event" ref="ev__QGW_II_II_5490">
+                  <rs type="fn" role="issuer"><rs type="org" ref="org__bruck_an_der_leitha">Richter
+                        und der rate gemainlich der statt zu Pruck an der Leyta</rs></rs>
+                  beurkunden, dass die <rs type="fn" role="recipient"><rs type="person"
+                        ref="pe__klara_QGW_II_III_5490"><roleName type="title">edl frau</roleName>
+                        Clara, des <rs type="person"
+                           ref="pe__bartholomaeus_volderndorffer_QGW_II_III_5490"><roleName
+                              type="title">edln</roleName> Bartholomee Vollerndorffer, ihres
+                              <roleName type="occ" corresp="org__bruck_an_der_leitha"
+                              >mitburger</roleName></rs>, eeliche <roleName type="kin"
+                           corresp="pe__bartholomaeus_volderndorffer_QGW_II_III_5490"
+                           >hausfrau</roleName> und weilent <rs type="person"
+                           ref="pe__johann_froelich_QGW_II_III_5490">Hannsen Fröleich, auch ihres
+                              <roleName type="occ" corresp="org__bruck_an_der_leitha"
+                              >mitburger</roleName>
+                           <roleName type="dead">seligen</roleName></rs>, und <rs type="person"
+                           ref="pe__elisabeth_QGW_II_III_5490">Elspethen, seiner gelassen <roleName
+                              type="kin" corresp="pe__johann_froelich_QGW_II_III_5490"
+                              >wittib</roleName>,</rs>
+                        <roleName type="kin" corresp="pe__johann_froelich_QGW_II_III_5490"
+                           >tochter</roleName><roleName type="kin"
+                           corresp="pe__johann_froelich_QGW_II_III_5490"
+                           ><add>tochter</add></roleName></rs>,</rs> vor ihnen <rs type="fn"
+                     role="other"><triggerstring n="fn">durch die eidliche Aussage</triggerstring>
+                     <rs type="person" ref="pe__paul_poendler_QGW_II_III_5490">Paul Pöndler, ihres
+                           <roleName type="occ" corresp="org__bruck_an_der_leitha"
+                           >ratgenoss</roleName><roleName type="occ"
+                           corresp="org__bruck_an_der_leitha"><add>mitburger</add></roleName>,</rs>
+                     <rs type="person" ref="pe__michael_paumer_QGW_II_III_5490">Michaeln Paumer
+                           <roleName type="occ" corresp="org__bruck_an_der_leitha"
+                              ><add>mitburger</add></roleName></rs>und <rs type="person"
+                        ref="pe__martin_pachfurtter_QGW_II_III_5490">Mertt Pachfurtter, all drei
+                        ihrer <roleName type="occ" corresp="org__bruck_an_der_leitha"
+                           >mitburger</roleName></rs>,</rs> nachgewiesen habe, dass sie der
+                  obbenannten zwair kanleut rechte leipliche tochter sei. </rs></p>
+         </div>
+         <div type="seal">
+            <p><rs type="event" ref="ev__QGW_II_II_5490"><rs type="fn" role="witness">Besiegelt mit
+                     ihrem aufgedrukten <rs type="org" ref="org__bruck_an_der_leitha"
+                        >statinsigl</rs>.</rs>
+               </rs></p>
+         </div>
+         <div type="lists">
+            <xi:include xmlns:xi="http://www.w3.org/2001/XInclude"
+               href="../../../../indices/placeList.xml" xpointer="element(/1/2/1/1)"/>
+            <xi:include xmlns:xi="http://www.w3.org/2001/XInclude"
+               href="../../../../indices/personList.xml" xpointer="element(/1/2/1/1)"/>
+            <xi:include xmlns:xi="http://www.w3.org/2001/XInclude"
+               href="../../../../indices/eventList.xml" xpointer="element(/1/2/1/1)"/>
+            <xi:include xmlns:xi="http://www.w3.org/2001/XInclude"
+               href="../../../../indices/orgList.xml" xpointer="element(/1/2/1/1)"/>
+         </div>
+      </body>
+   </text>
+</TEI>

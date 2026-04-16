@@ -1,0 +1,114 @@
+<?xml version="1.0" encoding="UTF-8" standalone="no"?>
+<!DOCTYPE TEI
+  SYSTEM "../../../schema/toolbox_full.dtd">
+<TEI xmlns:cei="http://www.monasterium.net/NS/cei" xmlns="http://www.tei-c.org/ns/1.0">
+   <teiHeader>
+      <fileDesc>
+         <titleStmt>
+            <title>Tei version of 4032 exported from monasterium.net </title>
+         </titleStmt>
+         <publicationStmt>
+            <p/>
+         </publicationStmt>
+         <!--In Original: cei:front/cei:sourceDesc/cei:sourceDescRegest-->
+         <sourceDesc>
+            <bibl>Quellen zur Geschichte der Stadt Wien, Bd. II/3, Nr. As published in HAUrk by
+               Wiener Stadt- und Landesarchiv </bibl>
+            <msDesc>
+               <msIdentifier>
+                  <repository>Wiener Stadt- und Landesarchiv</repository>
+                  <idno>4032</idno>
+                  <altIdentifier type="old">
+                     <idno>518298</idno>
+                  </altIdentifier>
+               </msIdentifier>
+               <msContents>
+                  <msItem>
+                     <listBibl>
+                        <bibl type="url"
+                           >https://www.monasterium.net/mom/AT-WStLA/HAUrk/4032/charter</bibl>
+                     </listBibl>
+                  </msItem>
+               </msContents>
+               <physDesc>
+                  <sealDesc>
+                     <seal>
+                        <p>Siegel: 1. fehlt, 2. anhangend, grün u. Sch.</p>
+                     </seal>
+                  </sealDesc>
+               </physDesc>
+            </msDesc>
+         </sourceDesc>
+      </fileDesc>
+      <profileDesc>
+         <creation>
+            <placeName>Wien</placeName>
+            <date when="14620726">1462 VII 26</date>
+            <origDate>zu Wienn, an montag nach sand Jacobs tag im snit.</origDate></creation>
+      </profileDesc>
+   </teiHeader>
+   <facsimile>
+      <surface>
+         <graphic
+            url="http://images.monasterium.net/pics/AT-WStLA/HA-U/WStLA-HA-Urkunden_04032_r.jpg"/>
+      </surface>
+      <surface>
+         <graphic
+            url="http://images.monasterium.net/pics/AT-WStLA/HA-U/WStLA-HA-Urkunden_04032_v.jpg"/>
+      </surface>
+   </facsimile>
+   <text>
+      <body>
+         <div type="abstract" resp="vh">
+            <p><rs type="event" ref="ev__QGW_II_III_4032">
+                  <rs type="fn" role="issuer"><rs type="person"
+                        ref="pe__johann_veyalroesel_QGW_II_III_5495">Hanns Veyalrösel, der <roleName
+                           type="prof">pekch</roleName>, <roleName type="occ" corresp="org__wien"
+                           >mitburger</roleName> zu Wienn</rs>, und <rs type="person"
+                        ref="pe__anna_QGW_II_III_4032">Anna, sein <roleName type="kin"
+                           corresp="pe__johann_veyalroesel_QGW_II_III_5495"
+                     >hausfrau</roleName></rs></rs>, verkaufen <rs type="fn" role="other"
+                        ><triggerstring n="fn">mit Handen</triggerstring> des <rs type="person"
+                        ref="pe__christian_prenner_SB_CD_01257"><roleName type="occ"
+                           corresp="org__wien">Bürgermeisters</roleName>
+                        <roleName type="title">hern</roleName> [ 70] Kristans Prenner</rs> und des
+                        <rs type="org" ref="org__wien">Rathes</rs></rs> 3 lb dn. geltes purkrechts
+                  (ablösbar) auf ihrem Hause, gelegen vor Stubentor zenagst der padstuben, genant
+                  die Huntinn, von dem man <rs type="person" ref="pe__peter_geuss_SB_CD_01598"
+                        ><roleName type="title">maister</roleName> Petern Geussen, <roleName
+                        type="occ" corresp="org__wien-st_pankraz">verweser</roleName> sand
+                     Pangreczen kappeln am Hof zu Wienn</rs>, 3 lb 80 dn . (abzulösen mit 26 lb 5
+                  sh. 14 dn.) zu Burgrecht dient, um 30 lb dn., die emaln gelegen gewesen sind auf
+                  Veiten Hintperger haus, gelegen pei Schottentor gegen der Schotten hof über
+                  zenagst Lucasen Lindenwieser haus, . . . . <rs type="fn" role="recipient"><rs
+                        type="person" ref="pe__niklas_kiliber_SB_CD_00231"><roleName type="title"
+                           >hern</roleName> Niclasen Kiliber , <roleName type="occ"
+                           corresp="org__wien-gottesleichnam_kapelle_vor_dem_werdertor-altar_st_maria-messe_flekch"
+                           >Caplan</roleName></rs> der von Ulreich Flekch auf Unser Fraun altar in
+                     sand Johanns kappeln vor Werdertor gestifteten Messe, und seinen
+                     Nachfolgern</rs>. </rs></p>
+         </div>
+         <div type="seal">
+            <p><rs type="event" ref="ev__QGW_II_III_4032">Besiegelt mit dem <rs type="fn"
+                     role="witness"><rs type="org" ref="org__wien">städtischen Grundsiegel</rs> und
+                     dem Siegel des <rs type="person" ref="pe__johann_kuntstokch_QGW_II_II_3530"
+                        >Wiener <roleName type="occ" corresp="org__wien">Bürgers</roleName> Hanns
+                        Kuntstokh, gesworner <roleName type="prof">weger</roleName></rs></rs>.
+               </rs></p>
+         </div>
+         <div type="nota">
+            <p><rs type="event" ref="ev__QGW_II_III_4032_nota">Indorsat: Album 42. </rs></p>
+         </div>
+         <div type="lists">
+            <xi:include xmlns:xi="http://www.w3.org/2001/XInclude"
+               href="../../../../indices/placeList.xml" xpointer="element(/1/2/1/1)"/>
+            <xi:include xmlns:xi="http://www.w3.org/2001/XInclude"
+               href="../../../../indices/personList.xml" xpointer="element(/1/2/1/1)"/>
+            <xi:include xmlns:xi="http://www.w3.org/2001/XInclude"
+               href="../../../../indices/eventList.xml" xpointer="element(/1/2/1/1)"/>
+            <xi:include xmlns:xi="http://www.w3.org/2001/XInclude"
+               href="../../../../indices/orgList.xml" xpointer="element(/1/2/1/1)"/>
+         </div>
+      </body>
+   </text>
+</TEI>

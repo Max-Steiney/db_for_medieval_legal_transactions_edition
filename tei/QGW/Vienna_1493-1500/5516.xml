@@ -1,0 +1,155 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<TEI xmlns="http://www.tei-c.org/ns/1.0" xmlns:cei="http://www.monasterium.net/NS/cei"
+   xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance">
+   <teiHeader>
+      <fileDesc>
+         <titleStmt>
+            <title>Tei version of 5516 exported from monasterium.net </title>
+         </titleStmt>
+         <publicationStmt>
+            <p/>
+         </publicationStmt>
+         <!--In Original: cei:front/cei:sourceDesc/cei:sourceDescRegest-->
+         <sourceDesc>
+            <bibl>Quellen zur Geschichte der Stadt Wien, Bd. II/4, Nr. 5516 As published in HAUrk by
+               Wiener Stadt- und Landesarchiv </bibl>
+            <msDesc>
+               <msIdentifier>
+                  <repository>Wiener Stadt- und Landesarchiv</repository>
+                  <idno>5516</idno>
+                  <altIdentifier type="old">
+                     <idno>519826</idno>
+                  </altIdentifier>
+               </msIdentifier>
+               <msContents>
+                  <msItem>
+                     <listBibl>
+                        <bibl>Wr. Archiv 7/1494.</bibl>
+                     </listBibl>
+                  </msItem>
+               </msContents>
+               <physDesc>
+                  <sealDesc>
+                     <seal>
+                        <p>Siegel fehlt</p>
+                     </seal>
+                  </sealDesc>
+               </physDesc>
+            </msDesc>
+         </sourceDesc>
+      </fileDesc>
+      <encodingDesc>
+         <projectDesc default="false">
+            <p><label type="contentual-editing">Projekt Christina Lutter Stadt und
+                  Gemeinschaft</label></p>
+         </projectDesc>
+      </encodingDesc>
+      <profileDesc>
+         <creation>
+            <placeName>Wien</placeName>
+            <date when="14940729">1494 VII 29</date>
+            <origDate>Bescheiden an eritag nach sand Jacobs tag des heiligen zwelifboten im
+               snit.</origDate></creation>
+      </profileDesc>
+   </teiHeader>
+   <facsimile>
+      <surface>
+         <graphic
+            url="http://images.monasterium.net/pics/AT-WStLA/HA-U/WStLA-HA-Urkunden_05516_r.jpg"/>
+      </surface>
+      <surface>
+         <graphic
+            url="http://images.monasterium.net/pics/AT-WStLA/HA-U/WStLA-HA-Urkunden_05516_v.jpg"/>
+      </surface>
+   </facsimile>
+   <text>
+      <body>
+         <div type="abstract">
+            <p><rs type="event" ref="ev__QGW_II_II_5516">
+                  <rs type="fn" role="issuer"><rs type="person"
+                        ref="pe__friedrich_geldrich_QGW_II_IV_5506">Friderich Geldrich zu den zeiten
+                           <roleName type="occ" corresp="org__wien">burgermaister</roleName></rs>
+                     und <rs type="org" ref="org__wien">der rat gemain der stat Wienn</rs></rs>
+                  stellen einen Gerichtsbrief aus, wonach <rs type="fn" role="recipient"><rs
+                        type="person" ref="pe__regina_gruenbeckhin_QGW_II_IV_5516"><roleName
+                           type="title">fraw</roleName> Regina Gruenpekhin, Wiener <roleName
+                           type="occ" corresp="org__wien">mitburgerin</roleName>,</rs> fu/or sich
+                     selbs und . . . <rs type="person" ref="pe__georg_beham_QGW_II_IV_5516">Jörg
+                        Behem <roleName type="occ" corresp="org__pressburg">burger</roleName> zu
+                        Presburg <roleName type="rep" corresp="pe__dorothea_QGW_II_IV_5516"
+                           >für</roleName></rs>
+                     <rs type="person" ref="pe__dorothea_QGW_II_IV_5516">ihre <roleName type="kin"
+                           corresp="pe__regina_gruenbeckhin_QGW_II_IV_5516">Schwester</roleName>
+                        Dorothea, seine <roleName type="kin"
+                           corresp="pe__georg_beham_QGW_II_IV_5516">Hausfrau</roleName>,</rs> der
+                     gewalt er hat</rs>, . . . ainn brief, von <rs type="person"
+                     ref="pe__johann_ingelstetter_QGW_II_III_4334">Hannsen Ingelsteter <roleName
+                        type="dead">seligen</roleName></rs> ausgegangen, fu/orgebracht haben unter
+                  dem Siegel des Ausstellers, dem gruntinsigl der Stadt und des <rs type="person"
+                     ref="pe__lewbenbekh_QGW_II_IV_5516">Lewbenpekh</rs> zeuginsigl, betreffend die
+                  Verpfändung eines demselben gehörigen Hauses am Harmarkht gelegen für 200 lb Wr.
+                  Pf. an irs vateren tochter, ihre swester und irn erben . . . dem sy nach abgang
+                     <rs type="person" ref="pe__georg_talhaimer_QGW_II_II_3559">Jörgen Talheimer
+                        <roleName type="kin" corresp="pe__anna_QGW_II_IV_5516"
+                        ><add>hauswirt</add></roleName></rs> nachgestanden, und daß sie nun
+                  Überantwortung jenes Hauses beansprucht und Verlesung des inserierten Pfandbriefes
+                  von 1476 September 18 1 vom Gerichte erreicht habe. Dem gegenüber habe <rs
+                     type="fn" role="recipient"><rs type="person"
+                        ref="pe__sigmund_siebenbuerger_QGW_II_III_4983">Sigmund Sybenburger yetz . .
+                        . <roleName type="occ" corresp="org__wien">mitgeswören des rats</roleName>,
+                        dieweil er <roleName type="occ" corresp="org__wien">richter</roleName>
+                        gewesen we/ar, <roleName type="rep" corresp="pe__hedwig_QGW_II_IV_5516">in
+                           nomen</roleName></rs></rs>
+                  <rs type="person" ref="pe__hedwig_QGW_II_IV_5516">seiner <roleName type="kin"
+                        corresp="pe__sigmund_siebenbuerger_QGW_II_III_4983">hausfrawn</roleName>
+                     Hedweigen, des egenanten Inglsteter <roleName type="kin"
+                        corresp="pe__johann_ingelstetter_QGW_II_III_4334">tochter</roleName>
+                  </rs>, Schwierigkeiten gemacht, welche sie zu beheben bitten, chainn 2 inwurf und
+                  auszug dawider verhindern liessen sonder auf iren unvermailigten brief erchennäten
+                  , damit sie in den Besitz des Hauses als des Pfandobjektes oder aber der
+                  Pfandsumme gelangen könnten. Siebenbürger jedoch antburt, das die klagerin nach
+                  des Talhaimer tod in jarsfrist die zwaihundert phund mit recht nicht er - vordert,
+                  darumb sy dann von iren spruchen gefallen we/aren, dies unter Berufung auf eine
+                  Stelle des Wiener Stadtrechtes, als solh recht mit ausgedrukhten worten in «
+                  unserm» Eysnen Statbu/och begriffen we/are, das dann klerlich innhielt: Wer umb
+                  haimbstewr in jarsfrist nicht klaghaft wurde, dem sol mön nicht darumb antburten
+                  das recht hiet auch die moringgab . Diese Eintragung ins Eysneinbuch stamme aus
+                  dem Jahre i35i, eritag vor mittvasten (März 22.) 1 Doch erbiete sich Siebenbürger,
+                  ob deshalb im icht weisung not sein wurde, . . . die furzubringen, doch
+                  überflüssiger weisung nicht verphlichtund. Außerdem habe <rs type="person"
+                     ref="pe__anna_QGW_II_IV_5516">Anna, Hannsen Goldn <roleName type="kin"
+                        corresp="pe__johann_gold_QGW_II_IV_5516">tochter</roleName></rs>, die 200 lb
+                  Pf. irm hauswirt Jorgen Talhaimer in irm gescheft zugeaignet, also das er der ab
+                  dem egenanten halben haus ledig sein und mit demselbn haus allen seinen frumen
+                  handln solt . . . on aller irer erben und frewnd und on me/anigclichs von iren
+                  wegen irrung und hindernuss . Die Verschreibung von irem mann Jörgen Talhaimer sei
+                  durch besagtes Vermächtnis vernicht und kraftlos weder in geistlichen noch
+                  weltlichen rechten etc., inhalt des am 28. Dezember 1463 2 ins Stadtbuch
+                  eingetragenen, hier transsumierten Testamentes von 1462 Dezember 5, Wien 3 Jörg
+                  Talhaimer habe auf Grund dieses Testamentes den maistentail der zwairhundert phund
+                  phening eingenomen und emphangen, wofür Siebenbürger den Beweis zu erbringen
+                  erbötig sei. Das Erkenntnis lautet: Weis der antburter heut oder zu te/agen, des
+                  zu recht genu/og ist, das der satzgeltbrief erlöst und die schulden, darinn
+                  gemeldt, dennen so er laut, ausgericht und bezalt sei, werde gehört er thue das
+                  oder nicht, beschehe verrer was recht ist . Beide Teile begehren und erhalten des
+                  gesprochn rechtns . . . gerichts urkund. </rs></p>
+         </div>
+         <div type="seal">
+            <p><rs type="event" ref="ev__QGW_II_II_5516">Besiegelt mit dem Stadtsiegel.</rs></p>
+         </div>
+         <div type="nota">
+            <p>Rückaufschriften: Presentata feria 5ta post Egidy 98. </p>
+         </div>
+         <div type="lists">
+            <xi:include xmlns:xi="http://www.w3.org/2001/XInclude"
+               href="../../../../indices/placeList.xml" xpointer="element(/1/2/1/1)"/>
+            <xi:include xmlns:xi="http://www.w3.org/2001/XInclude"
+               href="../../../../indices/personList.xml" xpointer="element(/1/2/1/1)"/>
+            <xi:include xmlns:xi="http://www.w3.org/2001/XInclude"
+               href="../../../../indices/eventList.xml" xpointer="element(/1/2/1/1)"/>
+            <xi:include xmlns:xi="http://www.w3.org/2001/XInclude"
+               href="../../../../indices/orgList.xml" xpointer="element(/1/2/1/1)"/>
+         </div>
+      </body>
+   </text>
+</TEI>

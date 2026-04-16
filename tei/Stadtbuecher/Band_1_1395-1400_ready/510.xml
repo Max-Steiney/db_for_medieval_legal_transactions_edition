@@ -1,0 +1,122 @@
+<?xml version="1.0" encoding="UTF-8"?><!DOCTYPE TEI SYSTEM "../../../schema/toolbox_full.dtd">
+<TEI xmlns="http://www.tei-c.org/ns/1.0" xmlns:cei="http://www.monasterium.net/NS/cei"
+   xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance">
+   <teiHeader>
+      <fileDesc>
+         <titleStmt>
+            <title>TEI-Version of 510</title>
+         </titleStmt>
+         <publicationStmt>
+            <p/>
+         </publicationStmt>
+         <sourceDesc default="false">
+            <bibl default="false" status="draft">
+               <title type="full"><title type="main">Die Wiener Stadtbücher 1395 -
+                     1430</title><title type="sub">Teil 1: 1395 - 1400</title></title>
+               <author>Wilhelm Brauneder</author>
+               <author>Gerhard Jaritz</author>
+               <pubPlace>Wien</pubPlace>
+               <pubPlace>Köln</pubPlace>
+               <publisher>Böhlau Verlag</publisher>
+            </bibl>
+            <msDesc status="draft">
+               <msIdentifier>
+                  <idno>510</idno>
+               </msIdentifier>
+               <physDesc/>
+            </msDesc>
+         </sourceDesc>
+      </fileDesc>
+      <encodingDesc>
+         <projectDesc>
+            <p><label type="contentual-editing">Projekt Christina Lutter Stadt und
+                  Gemeinschaft</label></p>
+         </projectDesc>
+      </encodingDesc>
+      <profileDesc>
+         <creation>
+            <date when="1399-12-28">(1399 Dezember 28, Wels)</date>
+         </creation>
+      </profileDesc>
+   </teiHeader>
+   <text>
+      <body>
+         <div type="header">
+            <p>Mitteilung einer Verwandtschaftsweisung für Wernhart zu Nehaym, seine Gattin Elsbeth,
+               deren Sohn Hans und Peter von Strashaym, Bruder der Elsbeth</p>
+         </div>
+         <div type="entry" resp="rs">
+            <p> mehrere Zg. (Inde:l!: Item frewnschaft [!] Hansen Nehaymer) <rs type="event"
+                  ref="ev__StB_I_510">Empfehlung für Hans, auch in Vertretung seiner Mutter, und
+                  seinen Onkel Peter von Strashaym in der Verlassenschaftssache nach Margarethe,
+                  Gattin des Ulrich Mossprenner Unsern willigen frewntleichen dinst. Wisset, lieben
+                  herren, es ist <rs type="fn" role="witness">fur uns komen <rs type="person"
+                        ref="pe__bernhard_nehamer_StB_I_510">Wernhart zu Nehaym</rs>, <rs
+                        type="person" ref="pe__elisabeth_StB_I_510">Elspet, sein <roleName
+                           type="kin" corresp="pe__bernhard_nehamer_StB_I_510"
+                        >hawsfraw</roleName></rs>, und <rs type="person"
+                        ref="pe__johann_nehamer_StB_I_510">Hanns Nehaymer, <roleName type="kin"
+                           corresp="pe__bernhard_nehamer_StB_I_510">sun</roleName><roleName
+                           type="kin" corresp="pe__elisabeth_StB_I_510"
+                        ><add>sun</add></roleName></rs>, und <rs type="person"
+                        ref="pe__peter_von_strassham_StB_I_510">Peter von Strashaym, <rs
+                           type="person" ref="pe__elisabeth_StB_I_510">der egenanten Elspeten</rs>
+                        <roleName type="kin" corresp="pe__elisabeth_StB_I_510"
+                        >prueder</roleName></rs></rs>, und habent uns ze wizzen tan, wie Elspet,
+                  Wernharts hawsfraw von Newhaym, und Peter von Strashaym, ir prueder, ain swester
+                  ze Wienn gehabt habent genant <rs type="fn" role="issuer"><rs type="person"
+                        ref="pe__margarethe_StB_I_510">Margaret, <roleName type="kin"
+                           corresp="pe__elisabeth_StB_I_510"><add>swester</add></roleName><roleName
+                           type="kin" corresp="pe__peter_von_strassham_StB_I_510"
+                           ><add>swester</add></roleName><rs type="person"
+                           ref="pe__ulrich_mosbrenner_StB_I_510">Ulreichs Mossprenner <roleName
+                              type="kin" corresp="pe__elisabeth_StB_I_510"
+                              ><add>swager</add></roleName><roleName type="kin"
+                              corresp="pe__peter_von_strassham_StB_I_510"
+                              ><add>swager</add></roleName><roleName type="dead">tod</roleName></rs>
+                        <roleName type="kin" corresp="pe__ulrich_mosbrenner_StB_I_510"
+                           >hawsfraw</roleName>. Derselb ir swager und auch ir swester paydew
+                           <roleName type="dead">tod</roleName> sein</rs></rs>, <rs type="fn"
+                     role="other">und darnach habent si <rs type="person"
+                        ref="pe__johann_nehamer_StB_I_510">den egenanten Hannsen Nehaymer, irn sun
+                        und <roleName type="kin" corresp="pe__peter_von_strassham_StB_I_510"
+                           >vettern</roleName></rs>, gesant gen Wienn <triggerstring n="fn"
+                        >inzenemen</triggerstring> das gut so Ulreich Massprenner und sein hawsfraw
+                     Margaret seligen lassen habent.</rs> Der hat an uns pracht, wie er das getan
+                  hab und fur ewch in denn rat chommen sey. <rs type="fn" role="other">Da habt <rs
+                        type="org" ref="org__wien">ir</rs> im <triggerstring n="fn"
+                        >geantwurtt</triggerstring>, er schull weisen zu rechter zeit mit zwayn erbern
+                     mannen, ob er gesein well rechter erib des gutes, so Ulreich Massprenner und
+                     Margaret, sein hawsfraw, lassen habent.</rs> Derselben wejsung er vor ewr nicht
+                  tun mocht. Nu hat er, sein vater und muter und der ege- nant Pet er von Strashaym
+                  zwen mann fur uns pracht und ander frum lewt, die pey irm ayd und trewn vor unser
+                  bechannt und gesprochen habent, das Margret, Ulreichs Massprenner hawsfrawn, der
+                  egenanten Elspeten und Petrein von Strazzhaym rechtew swester ist gewesen von
+                  vater und von muter. Das sich das also vergangen hat, das sprechen wir pey unsern
+                  trewn. <rs type="fn" role="witness">Nu chumbt<rs type="person"
+                        ref="pe__peter_von_strassham_StB_I_510"> Peter von Strazzhaym</rs> fur sich
+                     selber und <rs type="person" ref="pe__johann_nehamer_StB_I_510">Hanns Nehaymer
+                     </rs> an stat seiner muter fur ewch.</rs>
+                  <rs type="fn" role="other"><triggerstring n="fn">Pitten</triggerstring>
+                     <rs type="org" ref="org__wels">wir</rs> ewr ersamchayt mit allem vleizz, ir
+                     seit in durch unsern willen fuderleich und geholffen und ratund, das in das
+                     widervar darczu (fol.86r) und si recht erben sein, daz wellen wir in solhen
+                     oder merern sachen verdienen gern und umb ewch und die ewrn verdienen.</rs>
+                  <rs type="fn" role="witness">Verslossen mit unsers stat insigil, geben an der
+                     chindlein tag in dem weychnacht weyrtagen anno etc. lxxxxviiii o • <rs
+                        type="org" ref="org__wels">Richter und der rat der stat zu Wels</rs>
+                     etc.</rs></rs> U) Danach freie Stelle. </p>
+         </div>
+         <div type="lists">
+            <xi:include xmlns:xi="http://www.w3.org/2001/XInclude"
+               href="../../../../indices/placeList.xml" xpointer="element(/1/2/1/1)"/>
+            <xi:include xmlns:xi="http://www.w3.org/2001/XInclude"
+               href="../../../../indices/personList.xml" xpointer="element(/1/2/1/1)"/>
+            <xi:include xmlns:xi="http://www.w3.org/2001/XInclude"
+               href="../../../../indices/eventList.xml" xpointer="element(/1/2/1/1)"/>
+            <xi:include xmlns:xi="http://www.w3.org/2001/XInclude"
+               href="../../../../indices/orgList.xml" xpointer="element(/1/2/1/1)"/>
+         </div>
+      </body>
+   </text>
+</TEI>

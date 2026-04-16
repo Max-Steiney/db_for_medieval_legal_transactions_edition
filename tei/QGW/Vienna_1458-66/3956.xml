@@ -1,0 +1,110 @@
+<?xml version="1.0" encoding="UTF-8" standalone="no"?>
+<!DOCTYPE TEI
+  SYSTEM "../../../schema/toolbox_full.dtd">
+<TEI xmlns:cei="http://www.monasterium.net/NS/cei" xmlns="http://www.tei-c.org/ns/1.0">
+   <teiHeader>
+      <fileDesc>
+         <titleStmt>
+            <title>Tei version of 3956 exported from monasterium.net </title>
+         </titleStmt>
+         <publicationStmt>
+            <p/>
+         </publicationStmt>
+         <!--In Original: cei:front/cei:sourceDesc/cei:sourceDescRegest-->
+         <sourceDesc>
+            <bibl>Quellen zur Geschichte der Stadt Wien, Bd. II/3, Nr. As published in HAUrk by
+               Wiener Stadt- und Landesarchiv </bibl>
+            <msDesc>
+               <msIdentifier>
+                  <repository>Wiener Stadt- und Landesarchiv</repository>
+                  <idno>3956</idno>
+                  <altIdentifier type="old">
+                     <idno>518220</idno>
+                  </altIdentifier>
+               </msIdentifier>
+               <msContents>
+                  <msItem>
+                     <listBibl>
+                        <bibl type="url"
+                           >https://www.monasterium.net/mom/AT-WStLA/HAUrk/3956/charter</bibl>
+                     </listBibl>
+                  </msItem>
+               </msContents>
+               <physDesc>
+                  <sealDesc>
+                     <seal>
+                        <p>Zwei vorne aufgedrückte Siegel von grünem Wachse unter Papierdecke.</p>
+                     </seal>
+                  </sealDesc>
+               </physDesc>
+            </msDesc>
+         </sourceDesc>
+      </fileDesc>
+      <profileDesc>
+         <creation>
+            <placeName>Gmunden</placeName>
+            <date when="14600903">1460 IX 03</date>
+            <origDate>zu Gmunden, an mitichen vor Unser Lieben Fraun tag
+            Nativitatis.</origDate></creation>
+      </profileDesc>
+   </teiHeader>
+   <facsimile>
+      <surface>
+         <graphic
+            url="http://images.monasterium.net/pics/AT-WStLA/HA-U/WStLA-HA-Urkunden_03956_r.jpg"/>
+      </surface>
+      <surface>
+         <graphic
+            url="http://images.monasterium.net/pics/AT-WStLA/HA-U/WStLA-HA-Urkunden_03956_v.jpg"/>
+      </surface>
+   </facsimile>
+   <text>
+      <body>
+         <div type="abstract" resp="ms">
+            <p><rs type="event" ref="ev__QGW_II_III_3956">
+                  <rs type="fn" role="issuer"><rs type="person" ref="pe__helena_QGW_II_III_3956"
+                        >Helena, <rs type="person" ref="pe__andreas_perleinsreutter_QGW_II_III_3934"
+                           >Andres Perleinsreitter</rs>
+                        <roleName type="kin" corresp="pe__andreas_perleinsreutter_QGW_II_III_3934"
+                           >hausfrau</roleName>, <rs type="person"
+                           ref="pe__leopold_weiss_QGW_II_II_2987">Leopolcz des Weissen <roleName
+                              type="dead">säligen</roleName></rs>
+                        <roleName type="kin" corresp="pe__leopold_weiss_QGW_II_II_2987"
+                           >tochter</roleName></rs></rs>, theilt <rs type="fn" role="issuer"><rs
+                        type="org" ref="org__wien">dem Bürgermeister und Rathe der Stadt zu
+                        Wien</rs></rs> mit, dass <rs type="person" ref="pe__helena_QGW_II_III_3956"
+                        >sie</rs> ihre Hälfte des ihr und ihrer <rs type="person"
+                        ref="pe__margarethe_facs_751_TextRegion_1658304069070_121"><roleName
+                           type="kin" corresp="pe__helena_QGW_II_III_3956">Mutter</roleName>
+                        Margreten</rs> von ihrem Vater anerstorbenen Hauses, glegen zu Wienn in der
+                     Münsserstrass zunagst Hannsen von Eslorn haus an aim tail und stösst mit dem
+                     andern tail in den Kamerhof, <rs type="person"
+                           ref="pe__ulrich_welzly_QGW_II_III_3956">dem <roleName type="title"
+                              >edln</roleName>
+                           <roleName type="title">herrn</roleName>, <roleName type="title"
+                              >hern</roleName> Ulreichen Welczlin, des heiligen Römischen Reichs
+                              <roleName type="occ" corresp="org__heiliges_roemisches_reich"
+                              >canzler</roleName></rs> , verkauft habe, und ersucht sie, diesem
+                     das Haus zu fertigen.
+               </rs></p>
+         </div>
+         <div type="seal">
+            <p><rs type="event" ref="ev__QGW_II_III_3956"><rs type="fn" role="witness">Besiegelt mit
+                     den Siegeln <rs type="person" ref="pe__andreas_perleinsreutter_QGW_II_III_3934"
+                        >Andreen Perleinsreitter</rs> und des <rs type="person"
+                        ref="pe__konrad_freitag_QGW_II_III_3956"><roleName type="title"
+                           >edln</roleName> Conraten des Freitags</rs></rs>. </rs></p>
+         </div>
+         <div type="lists">
+            <xi:include xmlns:xi="http://www.w3.org/2001/XInclude"
+               href="../../../../indices/placeList.xml" xpointer="element(/1/2/1/1)"/>
+            <xi:include xmlns:xi="http://www.w3.org/2001/XInclude"
+               href="../../../../indices/personList.xml" xpointer="element(/1/2/1/1)"/>
+            <xi:include xmlns:xi="http://www.w3.org/2001/XInclude"
+               href="../../../../indices/eventList.xml" xpointer="element(/1/2/1/1)"/>
+            <xi:include xmlns:xi="http://www.w3.org/2001/XInclude"
+               href="../../../../indices/orgList.xml" xpointer="element(/1/2/1/1)"/>
+         </div>
+      </body>
+   </text>
+</TEI>

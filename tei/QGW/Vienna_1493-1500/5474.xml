@@ -1,0 +1,113 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<TEI xmlns="http://www.tei-c.org/ns/1.0" xmlns:cei="http://www.monasterium.net/NS/cei"
+   xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance">
+   <teiHeader>
+      <fileDesc>
+         <titleStmt>
+            <title>Tei version of 5474 exported from monasterium.net </title>
+         </titleStmt>
+         <publicationStmt>
+            <p/>
+         </publicationStmt>
+         <!--In Original: cei:front/cei:sourceDesc/cei:sourceDescRegest-->
+         <sourceDesc>
+            <bibl>Quellen zur Geschichte der Stadt Wien, Bd. II/3, Nr. As published in HAUrk by
+               Wiener Stadt- und Landesarchiv </bibl>
+            <msDesc>
+               <msIdentifier>
+                  <repository>Wiener Stadt- und Landesarchiv</repository>
+                  <idno>5474</idno>
+                  <altIdentifier type="old">
+                     <idno>519782</idno>
+                  </altIdentifier>
+               </msIdentifier>
+               <physDesc>
+                  <sealDesc>
+                     <seal>
+                        <p>Zwei rückwärts aufgedrückte Siegel von grünem Wachse unter
+                           Papierdecke.Siegler: der edle feste <quote>Pernhart Schellenberger zu
+                              Piberstain</quote> und der edle <quote>Sigmund Mändl, hausphleger zu
+                              Luftenberg</quote>. </p>
+                     </seal>
+                  </sealDesc>
+               </physDesc>
+            </msDesc>
+         </sourceDesc>
+      </fileDesc>
+      <encodingDesc>
+         <projectDesc default="false">
+            <p><label type="contentual-editing">Projekt Christina Lutter Stadt und
+                  Gemeinschaft</label></p>
+         </projectDesc>
+      </encodingDesc>
+      <profileDesc>
+         <creation>
+            <date when="14930310">1493 III 10</date>
+            <origDate>suntag, als man singet Oculi in der Vassten.</origDate></creation>
+      </profileDesc>
+   </teiHeader>
+   <facsimile>
+      <surface>
+         <graphic
+            url="http://images.monasterium.net/pics/AT-WStLA/HA-U/WStLA-HA-Urkunden_05474_r.jpg"/>
+      </surface>
+      <surface>
+         <graphic
+            url="http://images.monasterium.net/pics/AT-WStLA/HA-U/WStLA-HA-Urkunden_05474_v.jpg"/>
+      </surface>
+   </facsimile>
+   <text>
+      <body>
+         <div type="abstract">
+            <p><rs type="event" ref="ev__QGW_II_II_5474">
+                  <rs type="fn" role="issuer"><rs type="person" ref="pe__jakob_leb_QGW_II_III_5474"
+                        >Jacob Leb zu Puech<roleName type="kin"
+                           corresp="pe__ulrich_leb_QGW_II_III_5474"
+                           ><add>kinder</add></roleName><roleName type="kin"
+                           corresp="pe__katharina_QGW_II_III_5474"><add>kinder</add></roleName></rs>
+                     und <rs type="person" ref="pe__brigitta_QGW_II_III_5474">Breid, sein <roleName
+                           type="kin" corresp="pe__jakob_leb_QGW_II_III_5474">swester</roleName>,
+                        Stephan des Kelhaimer eeliche <roleName type="kin"
+                           corresp="pe__stephan_kelhaimer_QGW_II_II_3602"
+                           >hausfrau</roleName><roleName type="kin"
+                           corresp="pe__ulrich_leb_QGW_II_III_5474"
+                           ><add>kinder</add></roleName><roleName type="kin"
+                           corresp="pe__katharina_QGW_II_III_5474"
+                     ><add>kinder</add></roleName></rs></rs>, <rs type="person"
+                     ref="pe__ulrich_leb_QGW_II_III_5474">Ulrich des Leben von Puech</rs> und <rs
+                     type="person" ref="pe__katharina_QGW_II_III_5474">Kathrei, seiner <roleName
+                        type="kin" corresp="pe__ulrich_leb_QGW_II_III_5474">hausfrau</roleName>
+                     <roleName type="dead">seligen</roleName></rs>, kinder , stellen wegen des von
+                  ihrem <rs type="person" ref="pe__niklas_leb_QGW_II_III_5474"><roleName type="kin"
+                        corresp="pe__jakob_leb_QGW_II_III_5474">Bruder</roleName><roleName
+                        type="kin" corresp="pe__brigitta_QGW_II_III_5474"
+                        ><add>Bruder</add></roleName> Niklasen dem Leben, weilend <roleName
+                        type="occ" corresp="org__wien">mitpurger</roleName> zu Wienn <roleName
+                        type="dead">seligen</roleName></rs>, hinterlassenen Gutes dem genannten <rs
+                     type="fn" role="recipient"><rs type="person"
+                        ref="pe__stephan_kelhaimer_QGW_II_II_3602">Stephan Kelhaimer</rs></rs> eine
+                  Vollmacht aus. </rs></p>
+         </div>
+         <div type="seal">
+            <p><rs type="event" ref="ev__QGW_II_II_5474"><rs type="fn" role="witness">Siegler: <rs
+                        type="person" ref="pe__bernhard_schellenberger_QGW_II_III_5474">der
+                           <roleName type="title">edle feste</roleName> Pernhart Schellenberger zu
+                        Piberstain</rs> und der <rs type="person"
+                        ref="pe__sigmund_maendl_QGW_II_III_5474"><roleName type="title"
+                           >edle</roleName> Sigmund Mändl, <roleName type="occ"
+                           corresp="org__luftenberg">hausphleger</roleName> zu Luftenberg</rs>.
+                  </rs></rs></p>
+         </div>
+         <div type="lists">
+            <xi:include xmlns:xi="http://www.w3.org/2001/XInclude"
+               href="../../../../indices/placeList.xml" xpointer="element(/1/2/1/1)"/>
+            <xi:include xmlns:xi="http://www.w3.org/2001/XInclude"
+               href="../../../../indices/personList.xml" xpointer="element(/1/2/1/1)"/>
+            <xi:include xmlns:xi="http://www.w3.org/2001/XInclude"
+               href="../../../../indices/eventList.xml" xpointer="element(/1/2/1/1)"/>
+            <xi:include xmlns:xi="http://www.w3.org/2001/XInclude"
+               href="../../../../indices/orgList.xml" xpointer="element(/1/2/1/1)"/>
+         </div>
+      </body>
+   </text>
+</TEI>

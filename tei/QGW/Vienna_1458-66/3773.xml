@@ -1,0 +1,103 @@
+<?xml version="1.0" encoding="UTF-8" standalone="no"?>
+<!DOCTYPE TEI
+  SYSTEM "../../../schema/toolbox_full.dtd">
+<TEI xmlns:cei="http://www.monasterium.net/NS/cei" xmlns="http://www.tei-c.org/ns/1.0">
+   <teiHeader>
+      <fileDesc>
+         <titleStmt>
+            <title>Tei version of 3773 exported from monasterium.net </title>
+         </titleStmt>
+         <publicationStmt>
+            <p/>
+         </publicationStmt>
+         <!--In Original: cei:front/cei:sourceDesc/cei:sourceDescRegest-->
+         <sourceDesc>
+            <bibl>Quellen zur Geschichte der Stadt Wien, Bd. II/3, Nr. As published in HAUrk by
+               Wiener Stadt- und Landesarchiv </bibl>
+            <msDesc>
+               <msIdentifier>
+                  <repository>Wiener Stadt- und Landesarchiv</repository>
+                  <idno>3773</idno>
+                  <altIdentifier type="old">
+                     <idno>518029</idno>
+                  </altIdentifier>
+               </msIdentifier>
+               <msContents>
+                  <msItem>
+                     <listBibl>
+                        <bibl type="url"
+                           >https://www.monasterium.net/mom/AT-WStLA/HAUrk/3773/charter</bibl>
+                        <bibl>Copeibuch 112 n° 60.</bibl>
+                     </listBibl>
+                  </msItem>
+               </msContents>
+               <physDesc>
+                  <sealDesc>
+                     <seal>
+                        <p>Zum Verschlusse aufgedrücktes Wappensiegel (Sava Fig. III) von rothem
+                           Wachse.</p>
+                     </seal>
+                  </sealDesc>
+               </physDesc>
+            </msDesc>
+         </sourceDesc>
+      </fileDesc>
+      <profileDesc>
+         <creation>
+            <placeName>Wiener-Neustadt</placeName>
+            <date when="14580312">1458 III 12</date>
+            <origDate>Geben zu der Neunstat an suntag sand Gregorn tag, anno domini etc. lviij°,
+               unsers reichs im 18. und des kaisertumbs im 6. jaren. </origDate>
+         </creation>
+      </profileDesc>
+   </teiHeader>
+   <facsimile>
+      <surface>
+         <graphic
+            url="http://images.monasterium.net/pics/AT-WStLA/HA-U/WStLA-HA-Urkunden_03773_r.jpg"/>
+      </surface>
+      <surface>
+         <graphic
+            url="http://images.monasterium.net/pics/AT-WStLA/HA-U/WStLA-HA-Urkunden_03773_v.jpg"/>
+      </surface>
+   </facsimile>
+   <text>
+      <body>
+         <div type="abstract" resp="vh">
+            <p>
+               <rs type="event" ref="ev__QGW_II_III_3773"><rs type="fn" role="issuer"><rs
+                        type="person" ref="pe__friedrich_iii_herzog_von_oesterreich_QGW_II_I_853"
+                           ><roleName type="occ" corresp="org__heiliges_roemisches_reich"
+                           >Kaiser</roleName> Friedrich III.</rs></rs> theilt dem <rs type="fn"
+                     role="recipient"><rs type="org" ref="org__wien">Bürgermeister, Richter, Rathe,
+                        den Genannten und den Bürgern zu Wien</rs></rs> mit, dass er über Ersuchen
+                  der freuntschaft des <rs type="person" ref="pe__ulrich_eitzinger_QGW_II_II_3270"
+                     >Ulrich Eitzinger</rs> sich an seinen <rs type="person"
+                     ref="pe__albrecht_herzog_von_oesterreich_QGW_II_II_3617"><roleName type="kin"
+                        corresp="pe__friedrich_iii_herzog_von_oesterreich_QGW_II_I_853"
+                        >Bruder</roleName>, <roleName type="occ"
+                        corresp="org__oesterreich-herzogtum">Herzog</roleName> Albrecht</rs>, wegen
+                  dessen Freilassung gewendet habe, und befiehlt ihnen, sich in gleichem Sinne bei
+                  dem Herzoge zu verwenden. Glaube dieser, irgendwelche Ansprüche an Eitzinger zu
+                  haben, so sei er bereit, diese in Verhandlung zu nehmen. </rs> 
+            </p>
+         </div>
+         <div type="nota">
+            <p>
+               <rs type="event" ref="ev__QGW_II_III_3773_nota">Von anderer Hand: commissio domini
+                  imperatoris in consilio. </rs>
+            </p>
+         </div>
+         <div type="lists">
+            <xi:include xmlns:xi="http://www.w3.org/2001/XInclude"
+               href="../../../../indices/placeList.xml" xpointer="element(/1/2/1/1)"/>
+            <xi:include xmlns:xi="http://www.w3.org/2001/XInclude"
+               href="../../../../indices/personList.xml" xpointer="element(/1/2/1/1)"/>
+            <xi:include xmlns:xi="http://www.w3.org/2001/XInclude"
+               href="../../../../indices/eventList.xml" xpointer="element(/1/2/1/1)"/>
+            <xi:include xmlns:xi="http://www.w3.org/2001/XInclude"
+               href="../../../../indices/orgList.xml" xpointer="element(/1/2/1/1)"/>
+         </div>
+      </body>
+   </text>
+</TEI>

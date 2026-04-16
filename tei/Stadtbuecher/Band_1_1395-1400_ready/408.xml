@@ -1,0 +1,124 @@
+<?xml version="1.0" encoding="UTF-8"?><!DOCTYPE TEI SYSTEM "../../../schema/toolbox_full.dtd">
+<TEI xmlns="http://www.tei-c.org/ns/1.0" xmlns:cei="http://www.monasterium.net/NS/cei"
+   xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance">
+   <teiHeader>
+      <fileDesc>
+         <titleStmt>
+            <title>TEI-Version of 408</title>
+         </titleStmt>
+         <publicationStmt>
+            <p/>
+         </publicationStmt>
+         <sourceDesc default="false">
+            <bibl default="false" status="draft">
+               <title type="full"><title type="main">Die Wiener Stadtbücher 1395 -
+                     1430</title><title type="sub">Teil 1: 1395 - 1400</title></title>
+               <author>Wilhelm Brauneder</author>
+               <author>Gerhard Jaritz</author>
+               <pubPlace>Wien</pubPlace>
+               <pubPlace>Köln</pubPlace>
+               <publisher>Böhlau Verlag</publisher>
+            </bibl>
+            <msDesc status="draft">
+               <msIdentifier>
+                  <idno>408</idno>
+               </msIdentifier>
+               <physDesc/>
+            </msDesc>
+         </sourceDesc>
+      </fileDesc>     <encodingDesc>       <projectDesc>         <p><label type="contentual-editing">Projekt Christina Lutter Stadt und Gemeinschaft</label></p>       </projectDesc>     </encodingDesc>
+      <profileDesc>
+         <creation>
+            <date when="1399-07-03">1399 Juli 3</date>
+         </creation>
+      </profileDesc>
+   </teiHeader>
+   <text>
+      <body>
+         <div type="header">
+            <p>Geschäft des Nikolaus Lang, Ächter zu St. Stephan</p>
+         </div>                   <div type="entry" resp="rs">
+            <p> pr. mü., 2 Einbr. 2 Zg., Ma (Index: Item geseheft hern Niclass des Lang zu den
+               zeiten achter ad Sancturn Stephanum) (fol.68v) <rs type="event" ref="ev__StB_I_408"
+                  >An sand Ulreichs abend chömen fur den rat <rs type="fn" role="witness"><rs
+                        type="person" ref="pe__jakob_paumgartner_QGW_II_I_1182">Jacob der <roleName
+                           type="prof" cert="unknown"> Pawngartner</roleName>
+                        <roleName type="occ" corresp="org__wien"
+                        ><add>purger</add></roleName></rs>und <rs type="person"
+                        ref="pe__heinrich_smid_StB_I_408">Hainreich der <roleName type="prof"
+                           cert="unknown">Smid</roleName> bey dem Spital, paid <roleName type="occ" corresp="org__wien">purger</roleName> zu Wien</rs>, und
+                     habent da weweist <rs type="person" ref="pe__stephan_von_asbach_QGW_II_I_1437"
+                        >mit den <roleName type="title">erbern</roleName> herren <roleName
+                           type="title">hern</roleName> Stephann von Aschpach, die zeit <roleName
+                           type="occ" corresp="org__wien-st_stephan">echter</roleName> dacz Sand
+                        Stephan</rs>, und <rs type="person" ref="pe__georg_haugenrauter_StB_I_408"
+                           ><roleName type="title"><add>erbern</add></roleName>
+                        <roleName type="title">hern</roleName> Jörigen Hawgenrawtter, die zeit
+                           <roleName type="occ" corresp="org__wien-st_stephan">vicary</roleName>
+                        daselbens</rs></rs>, <rs type="fn" role="issuer">das geschefft, so <rs
+                        type="person" ref="pe__niklas_lang_StB_I_253"><roleName type="title"
+                           >her</roleName> Niclas der Lanng, weilent <roleName type="occ"
+                           corresp="org__wien-st_stephan">echter</roleName> dacz Sand Stephan ze
+                        Wienn</rs>, an seinen lesten zeiten getan hat.</rs>
+                  <rs type="fn" role="recipient">Von erst hat er geschafft <rs type="org"
+                        ref="org__wien-st_stephan-messe_lang_niklas_StB_I_408">sein gut mettenpuch
+                        zu einem ewigen jartag hincz Sand Stephan, als daselbs der chirichen sit und
+                        gewonhait ist.</rs> Und dasselb puch sol man fur ander lewt ze chawffen
+                     geben <rs type="person" ref="pe__eberhard_StB_I_408"><roleName type="title"
+                           >hern</roleName> Eberharten, <roleName type="occ"
+                           corresp="org__moosbrunn-pfarre">pharrer</roleName> ze Mosprunn</rs>. Item
+                     das ander mettenpuch schafft er seinem diener. Item seinen Albertum hat er
+                     geschafft in dy zedel und in das totenpuch und <rs type="person"
+                        ref="pe__stephan_lang_QGW_II_I_1646"><roleName type="title">hern</roleName>
+                        Stephann dem Langen</rs> sol man es fur ander lewt geben ze verchawffen umb
+                     3 lb. d. Und andrew meine pucher alle sol man verchawffen und dasselb gelt sol
+                     man tailen armen priestern und under ander arm lewt. Item sein pettgewant und
+                     leybgewant sol man verchawffen und das gelt tailen under arm lewt. Item tisch,
+                     almar, kisten, chandeln und assach, wie das genant ist, mit aller ander
+                     varunden hab nichts ausgenomen, das sol man alles verchawffen und das gelt
+                     tailen under arm lewt. Darnach hater gemeldet die gelt schuld, die er schuldig
+                     beleibt. <rs type="org" ref="org__wien-deutsche_herren">Item dem comentewr in
+                        dem Dawtschenhaws</rs> 10 lb. und zwen ler dreiling. Item <rs type="person"
+                        ref="pe__margarethe_StB_I_408">Margreta</rs> 3 lb. Item dem <rs
+                        type="person" ref="pe__wenzel_schmied_StB_I_408">Wenczel <roleName
+                           type="prof" cert="unknown">Smid</roleName></rs> 2 Ib. d. Item <rs
+                        type="person" ref="pe__georg_bei_dem_weispacher_StB_I_408">Georio bey dem
+                        Weispacher</rs> 2Ib. Item <rs type="person"
+                        ref="pe__johann_bei_st_michael_StB_I_408">Johanni ad Sanctum Michahelem</rs>
+                     2 Ib. Item dem <rs type="person" ref="pe__niklas_am_lichtensteg_StB_I_408"
+                        >Nicolae am Liechtensteg</rs> 1 Ib. d.</rs>
+                  <rs type="fn" role="other">Darnach hat er gemeldet die geltschuld, die man im
+                        <triggerstring n="fn">schuldig</triggerstring> beleibt. Item <rs type="person"
+                        ref="pe__stephan_landschreiber_StB_I_99">Stephan <roleName type="prof"
+                           cert="unknown">Lanntschreiber</roleName></rs> 2 lb. Item <rs
+                        type="person" ref="pe__oswald_bei_st_maria_magdalena_StB_I_408">Ösel bey
+                        Sand Magdalen</rs> 9 ß. d. Item <rs type="person" ref="pe__peter_StB_I_408"
+                           ><roleName type="title">dominus</roleName> Petrus in Novo Ciuitate</rs> 2
+                     lb. Item <rs type="person" ref="pe__georg_StB_I_408"><triggerstring n="fn"
+                           >dominus</triggerstring> Georius</rs> 14 ß. d. Item <rs type="person"
+                        ref="pe__glaser_StB_I_408">der <roleName type="prof" cert="high"
+                           >Glaser</roleName></rs> 6 ß. 10 d. Item <rs type="person"
+                        ref="pe__ulrichin_StB_I_408">die Ulreichinn am Hof, die <roleName
+                           type="prof">Gloetmacherinn</roleName></rs>, 1/2 lb. Item <rs
+                        type="person" ref="pe__michael_rotschmied_StB_I_408">Michel <roleName
+                           type="prof" cert="high">Rotsmid</roleName></rs> 10 ß. dn. Item 6 fuder
+                     wein gelegen dacz <rs type="person" ref="pe__leonhard_sneider_StB_I_146"
+                        >Lienharten dem <roleName type="prof" cert="unknown">Sneyder</roleName> am
+                        Graben</rs>. Davon sol man seinen geltern auch gelten.</rs> Als darum die
+                  erbern herren bey ierer gewissen vor unser in offem rat habent gesagt, als si ze
+                  recht solten.</rs>
+            </p>
+         </div>
+         <div type="lists">
+            <xi:include xmlns:xi="http://www.w3.org/2001/XInclude"
+               href="../../../../indices/placeList.xml" xpointer="element(/1/2/1/1)"/>
+            <xi:include xmlns:xi="http://www.w3.org/2001/XInclude"
+               href="../../../../indices/personList.xml" xpointer="element(/1/2/1/1)"/>
+            <xi:include xmlns:xi="http://www.w3.org/2001/XInclude"
+               href="../../../../indices/eventList.xml" xpointer="element(/1/2/1/1)"/>
+            <xi:include xmlns:xi="http://www.w3.org/2001/XInclude"
+               href="../../../../indices/orgList.xml" xpointer="element(/1/2/1/1)"/>
+         </div>
+      </body>
+   </text>
+</TEI>

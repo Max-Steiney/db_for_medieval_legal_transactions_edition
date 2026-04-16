@@ -1,0 +1,110 @@
+<?xml version="1.0" encoding="UTF-8" standalone="no"?>
+<!DOCTYPE TEI
+  SYSTEM "../../../schema/toolbox_full.dtd">
+<TEI xmlns:cei="http://www.monasterium.net/NS/cei" xmlns="http://www.tei-c.org/ns/1.0">
+   <teiHeader>
+      <fileDesc>
+         <titleStmt>
+            <title>Tei version of 3891 exported from monasterium.net </title>
+         </titleStmt>
+         <publicationStmt>
+            <p/>
+         </publicationStmt>
+         <!--In Original: cei:front/cei:sourceDesc/cei:sourceDescRegest-->
+         <sourceDesc>
+            <bibl>Quellen zur Geschichte der Stadt Wien, Bd. II/3, Nr. As published in HAUrk by
+               Wiener Stadt- und Landesarchiv </bibl>
+            <msDesc>
+               <msIdentifier>
+                  <repository>Wiener Stadt- und Landesarchiv</repository>
+                  <idno>3891</idno>
+                  <altIdentifier type="old">
+                     <idno>518153</idno>
+                  </altIdentifier>
+               </msIdentifier>
+               <msContents>
+                  <msItem>
+                     <listBibl>
+                        <bibl type="url"
+                           >https://www.monasterium.net/mom/AT-WStLA/HAUrk/3891/charter</bibl>
+                     </listBibl>
+                  </msItem>
+               </msContents>
+               <physDesc>
+                  <sealDesc>
+                     <seal>
+                        <p>Die angehängten Siegel fehlen.</p>
+                     </seal>
+                  </sealDesc>
+               </physDesc>
+            </msDesc>
+         </sourceDesc>
+      </fileDesc>
+      <profileDesc>
+         <creation>
+            <placeName>Wien</placeName>
+            <date when="14590523">1459 V 23</date>
+            <origDate>zu Wienn, an mitichen vor sand Urbans tag.</origDate></creation>
+      </profileDesc>
+   </teiHeader>
+   <facsimile>
+      <surface>
+         <graphic
+            url="http://images.monasterium.net/pics/AT-WStLA/HA-U/WStLA-HA-Urkunden_03891_r.jpg"/>
+      </surface>
+      <surface>
+         <graphic
+            url="http://images.monasterium.net/pics/AT-WStLA/HA-U/WStLA-HA-Urkunden_03891_v.jpg"/>
+      </surface>
+   </facsimile>
+   <text>
+      <body>
+         <div type="abstract" resp="vh">
+            <p><rs type="event" ref="ev__QGW_II_III_3891">
+                  <rs type="fn" role="issuer"><rs type="person"
+                        ref="pe__niklas_lebhofer_QGW_II_II_3634">Niclas Lebhover, des <roleName
+                           type="occ" corresp="org__wien">rats</roleName> der stat zu Wienn und
+                           <roleName type="occ" corresp="org__wien-st_michael-zeche_gottesleichnam"
+                           >zechmaister</roleName> Goczleichnams zech zu sand Michel</rs>, und die
+                        <rs type="org" ref="org__wien-st_michael-zeche_gottesleichnam">zechprüder
+                        gemain</rs> derselben zech</rs> verkaufen <rs type="fn" role="other"
+                        ><triggerstring n="fn">mit Handen</triggerstring>
+                     <rs type="person" ref="pe__sebastian_zieglshauser_QGW_II_III_3864"><roleName
+                           type="title">hern</roleName> Sebastians Ziegelshauser, <roleName
+                           type="occ" corresp="org__wien">statrichter</roleName>, und des <roleName
+                           type="occ" corresp="org__wien">Rathes</roleName></rs></rs> einen Stall,
+                  der zu ihrer Badstube hinder sandt Pangrêczen gehöret hat, gelegen in dem hof
+                  derselben padstuben hinden an Jörgen Goltperger, des satler, haus, darein man get
+                  aus hern Jacoben des Starhen haus , um 64 lb dn. dem <rs type="fn"
+                     role="recipient"><rs type="person" ref="pe__jakob_starch_QGW_II_II_3557"
+                        >genannten <roleName type="title">hern</roleName> Jacoben Starch, <roleName
+                           type="occ" corresp="org__wien">burgermaister</roleName></rs></rs>. Die
+                  Besitzer des Stalles sollen an irn venstern, die sie heraus in der padstuben hof
+                  machen lassen zu irn notdürfften, ungehindert sein und ir regenwasser ab dem dach
+                  des stals in den hof daselbs rinnen lassen . </rs></p>
+         </div>
+         <div type="seal">
+            <p><rs type="event" ref="ev__QGW_II_III_3891">Besiegelt mit dem Siegel der <rs type="fn"
+                     role="witness"><rs type="org" ref="org__wien-st_michael-zeche_gottesleichnam"
+                        >Zeche</rs>, dem <rs type="org" ref="org__wien">städtischen Grundsiegel</rs>
+                     und dem Siegel des <rs type="person" ref="pe__georg_prunntaler_QGW_II_II_3240"
+                        >Wiener <roleName type="occ" corresp="org__wien">Bürgers</roleName> Jörgen
+                        Prunntaler</rs></rs>. </rs></p>
+         </div>
+         <div type="nota">
+            <p><rs type="event" ref="ev__QGW_II_III_3891_nota">Indorsat: ain kaufbrief stock und
+                  stal zenegst dem pad und uber die venster. </rs></p>
+         </div>
+         <div type="lists">
+            <xi:include xmlns:xi="http://www.w3.org/2001/XInclude"
+               href="../../../../indices/placeList.xml" xpointer="element(/1/2/1/1)"/>
+            <xi:include xmlns:xi="http://www.w3.org/2001/XInclude"
+               href="../../../../indices/personList.xml" xpointer="element(/1/2/1/1)"/>
+            <xi:include xmlns:xi="http://www.w3.org/2001/XInclude"
+               href="../../../../indices/eventList.xml" xpointer="element(/1/2/1/1)"/>
+            <xi:include xmlns:xi="http://www.w3.org/2001/XInclude"
+               href="../../../../indices/orgList.xml" xpointer="element(/1/2/1/1)"/>
+         </div>
+      </body>
+   </text>
+</TEI>

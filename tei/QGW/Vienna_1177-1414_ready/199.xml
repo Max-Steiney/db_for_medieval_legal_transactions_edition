@@ -1,0 +1,126 @@
+<?xml version="1.0" encoding="UTF-8"?><!DOCTYPE TEI   SYSTEM "../../../schema/toolbox_full.dtd">
+<TEI xmlns="http://www.tei-c.org/ns/1.0" xmlns:cei="http://www.monasterium.net/NS/cei"
+      xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance">
+      <teiHeader>
+            <fileDesc>
+                  <titleStmt>
+                        <title>Tei version of 199 exported from monasterium.net </title>
+                  </titleStmt>
+                  <publicationStmt>
+                        <p/>
+                  </publicationStmt>
+                  <!--In Original: cei:front/cei:sourceDesc/cei:sourceDescRegest-->
+                  <sourceDesc>
+                        <bibl type="url"
+                              >https://www.monasterium.net/mom/AT-WStLA/HAUrk/199/charter</bibl>
+                        <bibl default="false" status="draft">Quellen zur Geschichte der Stadt Wien,
+                              Bd. II/1, Nr. 199 As published in HAUrk by Wiener Stadt- und
+                              Landesarchiv </bibl>
+                        <msDesc status="draft">
+                              <msIdentifier>
+                                    <repository>Wiener Stadt- und Landesarchiv</repository>
+                                    <idno>199</idno>
+                                    <altIdentifier type="old">
+                                          <idno>514368</idno>
+                                    </altIdentifier>
+                              </msIdentifier>
+                              <physDesc>
+                                    <sealDesc>
+                                          <seal>
+                                                <p>Das Siegel der Priorin fehlt, das des Convents
+                                                  anhangend, spitzoval.</p>
+                                          </seal>
+                                    </sealDesc>
+                              </physDesc>
+                        </msDesc>
+                  </sourceDesc>
+            </fileDesc>
+            <encodingDesc>
+                  <projectDesc default="false">
+                        <p><label type="contentual-editing">Projekt Christina Lutter Stadt und
+                                    Gemeinschaft</label></p>
+                  </projectDesc>
+            </encodingDesc>
+            <profileDesc>
+                  <creation>
+                        <date when="13380703">1338 VII 03</date>
+                        <origDate instant="false">an sande Ulreichs abent.</origDate></creation>
+            </profileDesc>
+      </teiHeader>
+      <facsimile>
+            <surface>
+                  <graphic
+                        url="http://images.monasterium.net/pics/AT-WStLA/HA-U/WStLA-HA-Urkunden_00199_r.jpg"
+                  />
+            </surface>
+            <surface>
+                  <graphic
+                        url="http://images.monasterium.net/pics/AT-WStLA/HA-U/WStLA-HA-Urkunden_00199_v.jpg"
+                  />
+            </surface>
+      </facsimile>
+      <text>
+            <body>
+                  <div type="abstract" resp="lp">
+                        <p>
+                              <rs type="event" ref="ev__QGW_II_I_199"><rs type="fn" role="issuer"
+                                                ><rs type="person"
+                                                ref="pe__vromut_von_kaja_QGW_II_I_199"><roleName
+                                                  type="title">Swester</roleName> Vromu/et von
+                                                Cheiawe, <roleName type="occ"
+                                                  corresp="org__tulln-dominikanerinnen"
+                                                  >priorinne</roleName></rs>, und <rs type="org"
+                                                ref="org__tulln-dominikanerinnen">der convent gemain
+                                                der vrowen in dem chloster ze Tullen Prediger
+                                                ordens</rs></rs>
+                                    <triggerstring n="disp">verkaufen</triggerstring> das Haus, <rs
+                                          type="event" ref="ev__QGW_II_I_199_men_1">das ihr <rs
+                                                type="person"
+                                                ref="pe__heinrich_auf_der_saeule_QGW_II_I_199"
+                                                  ><roleName type="occ"
+                                                  corresp="org__tulln-dominikanerinnen">Schaffer
+                                                </roleName>her Hainreich auf der Seule </rs>um
+                                          versessenes Burgrecht in ihre Gewalt gebracht hat</rs>,
+                                    das da leit ze Wienne an dem Alten Fleischmarcht an dem eke gen
+                                    sande Larenzen chloster uber und das hern Chunrats des Gartner
+                                    gewesen ist , auf dem sie 6 lb dn. Geldes Burgrechts haben, um
+                                    34 lb dn. <rs type="fn" role="recipient"><rs type="person"
+                                                ref="pe__berthold_poll_QGW_II_I_121"><roleName
+                                                  type="title">hern</roleName> Pertholten dem
+                                                Pollen, <roleName type="occ" corresp="org__wien">purger ze
+                                                Wienne</roleName></rs>, und <rs type="person"
+                                                ref="pe__margarethe_QGW_II_I_182"><roleName
+                                                  type="kin"
+                                                  corresp="pe__berthold_poll_QGW_II_I_121">seiner
+                                                  Hausfrau</roleName> Margitten</rs></rs>.</rs>
+                        </p>
+                  </div>
+                  <div type="seal">
+                        <p><rs type="event" ref="ev__QGW_II_I_199">Das <rs type="fn" role="witness"
+                                                ><rs type="person"
+                                                ref="pe__vromut_von_kaja_QGW_II_I_199">Siegel der
+                                                Priorin</rs> fehlt, das <rs type="org"
+                                                ref="org__tulln-dominikanerinnen">des
+                                          Convents</rs></rs> anhangend, spitzoval.</rs>
+                        </p>
+                  </div>
+                  <div type="nota">
+                        <p>Indorsat: Aufschrift des Magister Theodericus. N. </p>
+                  </div>
+                  <div type="lists">
+                        <xi:include xmlns:xi="http://www.w3.org/2001/XInclude"
+                              href="../../../../indices/placeList.xml"
+                              xpointer="element(/1/2/1/1)"/>
+                        <xi:include xmlns:xi="http://www.w3.org/2001/XInclude"
+                              href="../../../../indices/personList.xml"
+                              xpointer="element(/1/2/1/1)"/>
+                        <xi:include xmlns:xi="http://www.w3.org/2001/XInclude"
+                              href="../../../../indices/eventList.xml"
+                              xpointer="element(/1/2/1/1)"/>
+                        <xi:include xmlns:xi="http://www.w3.org/2001/XInclude"
+                              href="../../../../indices/orgList.xml"
+                              xpointer="element(/1/2/1/1)"/>
+                  </div>
+            </body>
+      </text>
+</TEI>

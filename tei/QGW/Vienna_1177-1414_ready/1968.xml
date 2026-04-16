@@ -1,0 +1,69 @@
+<?xml version="1.0" encoding="UTF-8"?><!DOCTYPE TEI SYSTEM "../../../schema/toolbox_full.dtd"><TEI xmlns="http://www.tei-c.org/ns/1.0" xmlns:cei="http://www.monasterium.net/NS/cei" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance">
+   <teiHeader>
+      <fileDesc>
+         <titleStmt>
+            <title>Tei version of 1968 exported from monasterium.net </title>
+         </titleStmt>
+         <publicationStmt>
+            <p/>
+         </publicationStmt>
+         <!--In Original: cei:front/cei:sourceDesc/cei:sourceDescRegest-->
+         <sourceDesc>
+            <bibl>Quellen zur Geschichte der Stadt Wien, Bd. II/2, Nr. 1968 As published in HAUrk by
+               Wiener Stadt- und Landesarchiv </bibl>
+            <msDesc>
+               <msIdentifier>
+                  <repository>Wiener Stadt- und Landesarchiv</repository>
+                  <idno>1968</idno>
+                  <altIdentifier type="old">
+                     <idno>516176</idno>
+                  </altIdentifier>
+               </msIdentifier>
+               <physDesc>
+                  <sealDesc>
+                     <seal>
+                        <p>Anhangendes Siegel, schwarz u. Sch.</p>
+                     </seal>
+                  </sealDesc>
+               </physDesc>
+            </msDesc>
+         </sourceDesc>
+      </fileDesc>       <encodingDesc>          <projectDesc default="false">             <p><label type="contentual-editing">Projekt Christina Lutter Stadt und                   Gemeinschaft</label></p>          </projectDesc>       </encodingDesc>
+      <profileDesc>
+         <creation>
+            <placeName>Wien</placeName>
+            <date when="14131114">1413 XI 14</date>
+            <origDate>ze Wienn, an erichtag vor sand Elsbeten tag.</origDate></creation>
+      </profileDesc>
+   </teiHeader>
+   <facsimile>
+      <surface>
+         <graphic url="http://images.monasterium.net/pics/AT-WStLA/HA-U/WStLA-HA-Urkunden_01968_r.jpg"/>
+      </surface>
+      <surface>
+         <graphic url="http://images.monasterium.net/pics/AT-WStLA/HA-U/WStLA-HA-Urkunden_01968_v.jpg"/>
+      </surface>
+   </facsimile>
+   <text>
+      <body>
+         <div type="abstract">
+            <p>
+               <rs type="event" ref="ev__QGW_II_II_1968"><rs type="fn" role="issuer"><rs type="person" ref="pe__peter_rigelpeck_QGW_II_II_1961">Peter der
+                        Rigelpekch</rs></rs>
+                  <triggerstring n="disp">verleiht</triggerstring>
+                  <rs type="fn" role="recipient">dem <rs type="person" ref="pe__stephan_von_grafendorf_QGW_II_II_1961"><roleName type="prof">Priester</roleName>
+                        <roleName type="title">hern</roleName> Stephann von Gre/avendorf, Passauer
+                        bistumbs</rs></rs>, die von <rs type="person" ref="pe__kunigunde_QGW_320">seiner <roleName type="kin" corresp="pe__peter_rigelpeck_QGW_II_II_1961">endel</roleName>
+                     <roleName type="title">frau</roleName> Kunigund, Ruedolfs des Graven
+                     <roleName type="kin" corresp="pe__rudolf_graf_QGW_II_I_1421">hausfrau</roleName>,</rs> in sand Stephans tumkirichen auf sand Ulreichs altar, der nu
+                  verpaut ist worden, darumb man dieselb ewig mess auf sand Blasien altar in der
+                  herzogen capelln yecz verweset , gestiftete <rs type="org" ref="org__wien-st_stephan-altar_st_ulrich-messe_graf">Messe</rs>, welche durch
+                  den Tod hern Ludweigs des Pollen ledig geworden war, mit den zugehörigen beiden
+                  Weingärten, ainer gelegen ze Praitensee, des dreu achtail sind und der ander
+                  gelegen ze Dornpach, des ain drittail ist .</rs>
+            </p>
+         </div>
+         <div type="lists"><xi:include xmlns:xi="http://www.w3.org/2001/XInclude" href="../../../../indices/placeList.xml" xpointer="element(/1/2/1/1)"/><xi:include xmlns:xi="http://www.w3.org/2001/XInclude" href="../../../../indices/personList.xml" xpointer="element(/1/2/1/1)"/><xi:include xmlns:xi="http://www.w3.org/2001/XInclude" href="../../../../indices/eventList.xml" xpointer="element(/1/2/1/1)"/><xi:include xmlns:xi="http://www.w3.org/2001/XInclude" href="../../../../indices/orgList.xml" xpointer="element(/1/2/1/1)"/></div>
+      </body>
+   </text>
+</TEI>

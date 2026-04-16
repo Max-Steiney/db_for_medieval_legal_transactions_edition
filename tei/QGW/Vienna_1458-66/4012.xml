@@ -1,0 +1,120 @@
+<?xml version="1.0" encoding="UTF-8" standalone="no"?>
+<!DOCTYPE TEI
+  SYSTEM "../../../schema/toolbox_full.dtd">
+<TEI xmlns:cei="http://www.monasterium.net/NS/cei" xmlns="http://www.tei-c.org/ns/1.0">
+   <teiHeader>
+      <fileDesc>
+         <titleStmt>
+            <title>Tei version of 4012 exported from monasterium.net </title>
+         </titleStmt>
+         <publicationStmt>
+            <p/>
+         </publicationStmt>
+         <!--In Original: cei:front/cei:sourceDesc/cei:sourceDescRegest-->
+         <sourceDesc>
+            <bibl>Quellen zur Geschichte der Stadt Wien, Bd. II/3, Nr. As published in HAUrk by
+               Wiener Stadt- und Landesarchiv </bibl>
+            <msDesc>
+               <msIdentifier>
+                  <repository>Wiener Stadt- und Landesarchiv</repository>
+                  <idno>4012</idno>
+                  <altIdentifier type="old">
+                     <idno>518278</idno>
+                  </altIdentifier>
+               </msIdentifier>
+               <msContents>
+                  <msItem>
+                     <listBibl>
+                        <bibl type="url"
+                           >https://www.monasterium.net/mom/AT-WStLA/HAUrk/4012/charter</bibl>
+                     </listBibl>
+                  </msItem>
+               </msContents>
+               <physDesc>
+                  <sealDesc>
+                     <seal>
+                        <p>Siegel: 1. anhangend, grün u. Sch., beschädigt, 2. abgerissen, grün u.
+                           Sch.Siegler: das Kloster und <quote>der edl vesst Pernhard Mülfelder,
+                              phleger auf dem Achstain</quote>. </p>
+                     </seal>
+                  </sealDesc>
+               </physDesc>
+            </msDesc>
+         </sourceDesc>
+      </fileDesc>
+      <profileDesc>
+         <creation>
+            <placeName>Aggsbach</placeName>
+            <date when="14611126">1461 XI 26</date>
+            <origDate>zu Achspach, an phincztag nach sand Kathrein tag.</origDate></creation>
+      </profileDesc>
+   </teiHeader>
+   <facsimile>
+      <surface>
+         <graphic
+            url="http://images.monasterium.net/pics/AT-WStLA/HA-U/WStLA-HA-Urkunden_04012_r.jpg"/>
+      </surface>
+      <surface>
+         <graphic
+            url="http://images.monasterium.net/pics/AT-WStLA/HA-U/WStLA-HA-Urkunden_04012_v.jpg"/>
+      </surface>
+   </facsimile>
+   <text>
+      <body>
+         <div type="abstract" resp="vh">
+            <p><rs type="event" ref="ev__QGW_II_III_4012">
+                  <rs type="fn" role="issuer"><rs type="person"
+                        ref="pe__ludwig_zeller_QGW_II_III_4012"><roleName type="title"
+                           >Bruder</roleName> Ludweig Zeller, <rs type="person"
+                           ref="pe__johann_zeller_QGW_II_III_4012"><roleName type="title"
+                              >maister</roleName> Hannsen Zeller, <roleName type="prof"
+                              >lerer</roleName> in der erznei <roleName type="dead"
+                              >seligen</roleName>
+                        </rs>, und <rs type="person" ref="pe__margarethe_QGW_II_III_4012">Margreten,
+                           seiner <roleName type="kin" corresp="pe__johann_zeller_QGW_II_III_4012"
+                              >hausfraun</roleName>, <roleName type="kin"
+                              corresp="pe__ludwig_zeller_QGW_II_III_4012"
+                              ><add>sun</add></roleName><roleName type="kin"
+                              corresp="pe__margarethe_QGW_II_III_4012">sun</roleName></rs>,
+                           <roleName type="occ" corresp="org__aggsbach-kartaeuser"
+                           >conventbrueder</roleName> Unser Fraun Porten zu Achspach, Kartuser
+                        ordens</rs></rs> , verzichtet <rs type="fn" role="other"><triggerstring n="fn"
+                        >mit Einwilligung</triggerstring> seiner obristen väter, <rs type="person"
+                        ref="pe__bartholomaeus_QGW_II_III_4012"><roleName type="title"
+                           >bruder</roleName> Pertlmeen, <roleName type="occ"
+                           corresp="org__aggsbach-kartaeuser">prior</roleName></rs>, und des <rs
+                        type="org" ref="org__aggsbach-kartaeuser">convents gemain</rs></rs> zu
+                  Gunsten <rs type="fn" role="recipient"><rs type="person"
+                        ref="pe__margarethe_QGW_II_III_4012">seiner <roleName type="kin"
+                           corresp="pe__ludwig_zeller_QGW_II_III_4012">Mutter</roleName></rs></rs>
+                  auf sein gesammtes väterliches und mütterliches Erbe, wogegen er 1½ Joch
+                  Weingarten, gelegen in der Dürren Wering bei dem Gerstenhof, genant die
+                  Fünfkircherin, zunagst maister Mertten Guldein weingarten , erhalten hat.
+               </rs></p>
+         </div>
+         <div type="seal">
+            <p><rs type="event" ref="ev__QGW_II_III_4012">Siegler: das <rs type="fn" role="witness"
+                        ><rs type="org" ref="org__aggsbach-kartaeuser">Kloster</rs> und der <rs
+                        type="person" ref="pe__bernhard_muelfelder_QGW_II_III_4012"><roleName
+                           type="title">edl vesst</roleName> Pernhard Mülfelder, <roleName
+                           type="occ" corresp="org__burg_aggstein">phleger</roleName> auf dem
+                        Achstain</rs></rs>. </rs></p>
+         </div>
+         <div type="nota">
+            <p><rs type="event" ref="ev__QGW_II_III_4012_nota">Indorsat: bruder Ludweig Zeller,
+                  karthuser zu Achspach, verzeichbrief ist zu scherm zu dem puch erlegt an Freitag
+                  ante Palmarum (April 1) anno etx. lxiii°. [ 64] </rs></p>
+         </div>
+         <div type="lists">
+            <xi:include xmlns:xi="http://www.w3.org/2001/XInclude"
+               href="../../../../indices/placeList.xml" xpointer="element(/1/2/1/1)"/>
+            <xi:include xmlns:xi="http://www.w3.org/2001/XInclude"
+               href="../../../../indices/personList.xml" xpointer="element(/1/2/1/1)"/>
+            <xi:include xmlns:xi="http://www.w3.org/2001/XInclude"
+               href="../../../../indices/eventList.xml" xpointer="element(/1/2/1/1)"/>
+            <xi:include xmlns:xi="http://www.w3.org/2001/XInclude"
+               href="../../../../indices/orgList.xml" xpointer="element(/1/2/1/1)"/>
+         </div>
+      </body>
+   </text>
+</TEI>

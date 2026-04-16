@@ -1,0 +1,116 @@
+<?xml version="1.0" encoding="UTF-8"?><!DOCTYPE TEI   SYSTEM "../../../schema/toolbox_full.dtd">
+<TEI xmlns="http://www.tei-c.org/ns/1.0" xmlns:cei="http://www.monasterium.net/NS/cei"
+   xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance">
+   <teiHeader>
+      <fileDesc>
+         <titleStmt>
+            <title>Tei version of 196 exported from monasterium.net </title>
+         </titleStmt>
+         <publicationStmt>
+            <p/>
+         </publicationStmt>
+         <!--In Original: cei:front/cei:sourceDesc/cei:sourceDescRegest-->
+         <sourceDesc>
+            <bibl type="url">https://www.monasterium.net/mom/AT-WStLA/HAUrk/196/charter</bibl>
+            <bibl default="false" status="draft">Quellen zur Geschichte der Stadt Wien, Bd. II/1,
+               Nr. 196 As published in HAUrk by Wiener Stadt- und Landesarchiv </bibl>
+            <msDesc status="draft">
+               <msIdentifier>
+                  <repository>Wiener Stadt- und Landesarchiv</repository>
+                  <idno>196</idno>
+                  <altIdentifier type="old">
+                     <idno>514365</idno>
+                  </altIdentifier>
+               </msIdentifier>
+               <physDesc>
+                  <sealDesc>
+                     <seal>
+                        <p>Drei anhangende Siegel no 2 fehlt, no 3 grün u. K.</p>
+                     </seal>
+                  </sealDesc>
+               </physDesc>
+            </msDesc>
+         </sourceDesc>
+      </fileDesc>
+      <encodingDesc>
+         <projectDesc default="false">
+            <p><label type="contentual-editing">Projekt Christina Lutter Stadt und
+                  Gemeinschaft</label></p>
+         </projectDesc>
+      </encodingDesc>
+      <profileDesc>
+         <creation>
+            <placeName>Wien</placeName>
+            <date when="13380615">1338 VI 15</date>
+            <origDate instant="false">ze Wienne, an sande Veits tage.</origDate></creation>
+      </profileDesc>
+   </teiHeader>
+   <facsimile>
+      <surface>
+         <graphic
+            url="http://images.monasterium.net/pics/AT-WStLA/HA-U/WStLA-HA-Urkunden_00196_r.jpg"/>
+      </surface>
+      <surface>
+         <graphic
+            url="http://images.monasterium.net/pics/AT-WStLA/HA-U/WStLA-HA-Urkunden_00196_v.jpg"/>
+      </surface>
+   </facsimile>
+   <text>
+      <body>
+         <div type="abstract" resp="ks">
+            <p>
+               <rs type="event" ref="ev__QGW_II_I_196"><rs type="fn" role="issuer"><rs type="person"
+                        ref="pe__wilhelm_in_dem_strohof_QGW_II_I_197">Wilhalm, <roleName type="kin"
+                           corresp="pe__wilhelm_in_dem_strohof_QGW_II_I_180">sun</roleName><rs
+                           type="person" ref="pe__wilhelm_in_dem_strohof_QGW_II_I_180"><roleName
+                              type="title">hern</roleName> Wilhalms sun in dem Strahof, <roleName
+                              type="dead">dem got genade</roleName></rs></rs>, und seine
+                     Geschwister</rs>
+                  <triggerstring n="disp">stellen <add>einen Schuldbrief aus</add></triggerstring>
+                  <rs type="fn" role="recipient"><rs type="person"
+                        ref="pe__konrad_wiltwercher_QGW_II_I_204">ihrem <roleName type="kin"
+                           corresp="pe__wilhelm_in_dem_strohof_QGW_II_I_197">geswein</roleName>
+                        Chunraten dem Wiltwercher</rs></rs> einen Schuldbrief über 80 lb dn. aus,<rs
+                     type="event" ref="ev__QGW_II_I_196_men_1"> wovon er 44 lb dn. bereits den
+                     Eltern geliehen und mit 36 lb dn. ihren Baumgarten sammt dem Hause, der da leit
+                     in der Nidern Aue, von Petern Vogelein, purger ze Augspu/erch, gelöst
+                     hatte.</rs> Dafür <triggerstring n="disp">verpfänden</triggerstring> sie ihm <rs
+                     type="fn" role="other"><triggerstring n="fn">mit Handen</triggerstring>
+                     <rs type="person" ref="pe__niklas_QGW_II_I_196">ihres <roleName type="title"
+                           >Grundherrn</roleName>
+                        <roleName type="title">bruder</roleName> Niclas, <roleName type="occ"
+                           corresp="org__wien-st_johann_in_der_kaerntnerstrasse"
+                           >comenteur</roleName> ze sande Johans in der Chernerstrasse ze
+                        Wienne</rs></rs>, diesen Baumgarten mit dem Hause, von dem man jährlich 54
+                  dn. zu Grundrecht dient.</rs>
+            </p>
+         </div>
+         <div type="seal">
+            <p><rs type="event" ref="ev__QGW_II_I_196">Besiegelt mit den Siegeln: <rs type="fn"
+                     role="witness"><rs type="person" ref="pe__niklas_QGW_II_I_196">1. des
+                        Grundherrn,</rs>
+                     <rs type="person" ref="pe__hermann_snaeczl_QGW_II_I_196">2. <roleName
+                           type="title">hern</roleName> Hermans des Snetzleins,</rs>
+                     <rs type="person" ref="pe__herbert_auf_der_saeule_QGW_II_I_184">3. <roleName
+                           type="title">hern</roleName> Herborts auf der Seule,</rs>
+                     <rs type="person" ref="pe__hermann_von_st_poelten_QGW_II_I_118">4. <roleName
+                           type="title">hern</roleName> Hermans, der <roleName type="kin"
+                              corresp="pe__rudolfine_QGW_II_I_417"
+                           ><add>eninchel</add></roleName><rs type="person"
+                           ref="pe__rudolfine_QGW_II_I_417">Rudolfinne eninchel von Sande
+                           Polten.</rs></rs></rs></rs>
+            </p>
+         </div>
+         <div type="lists">
+            <xi:include xmlns:xi="http://www.w3.org/2001/XInclude"
+               href="../../../../indices/placeList.xml" xpointer="element(/1/2/1/1)"/>
+            <xi:include xmlns:xi="http://www.w3.org/2001/XInclude"
+               href="../../../../indices/personList.xml" xpointer="element(/1/2/1/1)"/>
+            <xi:include xmlns:xi="http://www.w3.org/2001/XInclude"
+               href="../../../../indices/eventList.xml" xpointer="element(/1/2/1/1)"/>
+            <xi:include xmlns:xi="http://www.w3.org/2001/XInclude"
+               href="../../../../indices/orgList.xml" xpointer="element(/1/2/1/1)"/>
+         </div>
+      </body>
+   </text>
+</TEI>

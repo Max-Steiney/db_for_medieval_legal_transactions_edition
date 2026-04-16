@@ -1,0 +1,104 @@
+<?xml version="1.0" encoding="UTF-8" standalone="no"?>
+<!DOCTYPE TEI
+  SYSTEM "../../../schema/toolbox_full.dtd">
+<TEI xmlns:cei="http://www.monasterium.net/NS/cei" xmlns="http://www.tei-c.org/ns/1.0">
+   <teiHeader>
+      <fileDesc>
+         <titleStmt>
+            <title>Tei version of 4122 exported from monasterium.net </title>
+         </titleStmt>
+         <publicationStmt>
+            <p/>
+         </publicationStmt>
+         <!--In Original: cei:front/cei:sourceDesc/cei:sourceDescRegest-->
+         <sourceDesc>
+            <bibl>Quellen zur Geschichte der Stadt Wien, Bd. II/3, Nr. As published in HAUrk by
+               Wiener Stadt- und Landesarchiv </bibl>
+            <msDesc>
+               <msIdentifier>
+                  <repository>Wiener Stadt- und Landesarchiv</repository>
+                  <idno>4122</idno>
+                  <altIdentifier type="old">
+                     <idno>518399</idno>
+                  </altIdentifier>
+               </msIdentifier>
+               <msContents>
+                  <msItem>
+                     <listBibl>
+                        <bibl type="url"
+                           >https://www.monasterium.net/mom/AT-WStLA/HAUrk/4122/charter</bibl>
+                        <bibl>Hartmann-Franzenshuld, Geschlechterbuch S. 52 cit.</bibl>
+                     </listBibl>
+                  </msItem>
+               </msContents>
+               <physDesc>
+                  <sealDesc>
+                     <seal>
+                        <p>Zwei rückwärts aufgedrückte, beschädigte Siegel: 1. von ungefärbtem, 2.
+                           von grünem Wachse.Siegler: der Aussteller und der Wiener Bürger
+                              <quote>Jorg Reicholf</quote>. </p>
+                     </seal>
+                  </sealDesc>
+               </physDesc>
+            </msDesc>
+         </sourceDesc>
+      </fileDesc>
+      <profileDesc>
+         <creation>
+            <placeName>Wien</placeName>
+            <date when="14660709">1466 VII 09</date>
+            <origDate>zu Wienn, an mitichen vor sand Margrethen tag.</origDate></creation>
+      </profileDesc>
+   </teiHeader>
+   <facsimile>
+      <surface>
+         <graphic
+            url="http://images.monasterium.net/pics/AT-WStLA/HA-U/WStLA-HA-Urkunden_04122_r.jpg"/>
+      </surface>
+      <surface>
+         <graphic
+            url="http://images.monasterium.net/pics/AT-WStLA/HA-U/WStLA-HA-Urkunden_04122_v.jpg"/>
+      </surface>
+   </facsimile>
+   <text>
+      <body>
+         <div type="abstract" resp="ms">
+            <p><rs type="event" ref="ev__QGW_II_III_4122">
+                  <rs type="fn" role="issuer"><rs type="person"
+                        ref="pe__andreas_auer_QGW_II_III_4046">Andre Auer, <roleName type="occ"
+                           corresp="org__wien">burger</roleName> zu Wienn</rs></rs>, bestätigt, dass
+                  ihm der <rs type="person" ref="pe__sigmund_gwaltshofer_QGW_II_III_4086">Wiener
+                        <roleName type="occ" corresp="org__wien">Bürger</roleName> Sigmund
+                     Gwaltshofer</rs> . . . . . phenwertt für 33 Ungrisch guldein, rückzahlbar am
+                  nächsten sand Michels tag, geliehen und er ihm dafür versprochen habe, ihm die
+                  Uebertheuerung seines hauss, gelegen in sand Johanns strass hie zenagst weilent
+                  herrn Jorgen von Kürring hauss , über die 10 Ungrisch guldein, darumb es vormalen
+                  . . . <rs type="person" ref="pe__ulrich_griessenpekch_QGW_II_III_3878"><roleName
+                        type="title">maister</roleName> Ulreichen Griessenpekchen, <roleName
+                        type="prof">licenciaten geistlicher rechten</roleName>, <roleName type="occ"
+                        corresp="org__wien">statschreiber</roleName> zu Wienn</rs>, in der stat
+                  gruntpuch daselbs versaczt ist , zu verpfänden, und ersucht <rs type="fn"
+                     role="recipient"><rs type="org" ref="org__wien">den Bürgermeister und Rath
+                        sowie die Verweser ihres Grundbuches</rs></rs>, ihm diese Verpfändung in
+                  ihrem Satzbuche zu fertigen. </rs></p>
+         </div>
+         <div type="seal">
+            <p><rs type="event" ref="ev__QGW_II_III_4122"><rs type="fn" role="witness">Siegler: der
+                        <rs type="person" ref="pe__andreas_auer_QGW_II_III_4046">Aussteller</rs> und
+                     der <rs type="person" ref="pe__georg_reicholf_QGW_II_II_3611">Wiener <roleName
+                           type="occ" corresp="org__wien">Bürger</roleName> Jorg Reicholf</rs>.</rs>
+               </rs></p>
+         </div>
+         <div type="lists">
+            <xi:include xmlns:xi="http://www.w3.org/2001/XInclude"
+               href="../../../../indices/placeList.xml" xpointer="element(/1/2/1/1)"/>
+            <xi:include xmlns:xi="http://www.w3.org/2001/XInclude"
+               href="../../../../indices/personList.xml" xpointer="element(/1/2/1/1)"/>
+            <xi:include xmlns:xi="http://www.w3.org/2001/XInclude"
+               href="../../../../indices/eventList.xml" xpointer="element(/1/2/1/1)"/>
+            <xi:include xmlns:xi="http://www.w3.org/2001/XInclude"
+               href="../../../../indices/orgList.xml" xpointer="element(/1/2/1/1)"/>
+         </div>
+      </body>
+   </text>
+</TEI>

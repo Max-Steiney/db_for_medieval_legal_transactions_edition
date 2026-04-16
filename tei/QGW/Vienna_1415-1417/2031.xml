@@ -1,0 +1,116 @@
+<?xml version="1.0" encoding="UTF-8"?><!DOCTYPE TEI SYSTEM "../../../schema/toolbox_full.dtd">
+<TEI xmlns="http://www.tei-c.org/ns/1.0" xmlns:cei="http://www.monasterium.net/NS/cei"
+   xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance">
+   <teiHeader>
+      <fileDesc>
+         <titleStmt>
+            <title>Tei version of 2031 exported from monasterium.net </title>
+         </titleStmt>
+         <publicationStmt>
+            <p/>
+         </publicationStmt>
+         <!--In Original: cei:front/cei:sourceDesc/cei:sourceDescRegest-->
+         <sourceDesc>
+            <bibl>Quellen zur Geschichte der Stadt Wien, Bd. II/2, Nr. 2031 As published in HAUrk by
+               Wiener Stadt- und Landesarchiv </bibl>
+            <msDesc>
+               <msIdentifier>
+                  <repository>Wiener Stadt- und Landesarchiv</repository>
+                  <idno>2031</idno>
+                  <altIdentifier type="old">
+                     <idno>516239</idno>
+                  </altIdentifier>
+               </msIdentifier>
+               <msContents>
+                  <msItem>
+                     <listBibl>
+                        <bibl>Camesina, Regesten 39 n° 188 Regest.</bibl>
+                     </listBibl>
+                  </msItem>
+               </msContents>
+               <physDesc>
+                  <sealDesc>
+                     <seal>
+                        <p>Zwei anhangende Siegel: 1. grün u. Sch., spitzoval, 2. grün u. K.,
+                           beschädigt.</p>
+                     </seal>
+                  </sealDesc>
+               </physDesc>
+            </msDesc>
+         </sourceDesc>
+      </fileDesc>
+      <encodingDesc>
+         <projectDesc default="false">
+            <p><label type="contentual-editing">Projekt Christina Lutter Stadt und
+                  Gemeinschaft</label></p>
+         </projectDesc>
+      </encodingDesc>
+      <profileDesc>
+         <creation>
+            <placeName>Wien</placeName>
+            <date when="14160109">1416 I 09</date>
+            <origDate>zu Wienn, des nachsten phincztags nach sand Erharts tag.</origDate></creation>
+      </profileDesc>
+   </teiHeader>
+   <facsimile>
+      <surface>
+         <graphic
+            url="http://images.monasterium.net/pics/AT-WStLA/HA-U/WStLA-HA-Urkunden_02031_r.jpg"/>
+      </surface>
+      <surface>
+         <graphic
+            url="http://images.monasterium.net/pics/AT-WStLA/HA-U/WStLA-HA-Urkunden_02031_v.jpg"/>
+      </surface>
+   </facsimile>
+   <text>
+      <body>
+         <div type="abstract">
+            <p><rs type="event" ref="ev__QGW_II_II_2031">
+                  <rs type="fn" role="issuer"><rs type="person"
+                        ref="pe__niklas_karnpuechel_QGW_II_II_2031">Niclas der Karnpüchel</rs> und
+                        <rs type="person" ref="pe__katharina_QGW_II_II_2031">Kathrei <roleName
+                           type="kin" corresp="pe__niklas_karnpuechel_QGW_II_II_2031">sein
+                           hausfrau</roleName></rs>,</rs>,verkaufen <rs type="fn" role="other"
+                        ><triggerstring n="fn">mit Handen</triggerstring><rs type="person"
+                        ref="pe__katharina_langin_QGW_II_II_2031"> ihrer <roleName type="title"
+                           >Bergfrau</roleName><roleName type="title">swester</roleName> Kathrein der
+                        Langin, <roleName type="occ"
+                           corresp="org__wien-st_niklas_vor_dem_stubentor_zisterzienserinnen"
+                           >abtessin</roleName> der geistleichen [ 25] fraun kloster dacz sand Nicla
+                        vor Stubentor</rs></rs> drei Achtel Weingarten, gelegen in den Twerchlussen
+                  an aim tail zenechst Hannsen weingarten des Zopfleins und an dem andern tail
+                  zenechst Hannsen weingarten, des phister , von denen man 3½ sh. dn. zu Grunddienst
+                  dient, <rs type="fn" role="recipient"><rs type="person"
+                        ref="pe__friedrich_QGW_II_II_2031"><roleName type="title">hern</roleName>
+                        Fridreichen, <roleName type="occ" corresp="org__wien-st_stephan"
+                           >curherr</roleName> dacz sand Stephan und <roleName type="occ"
+                           corresp="org__wien-st_stephan">Kaplan</roleName> der von <rs
+                           type="event" ref="NULL"><rs type="fn" role="issuer"><rs type="person"
+                                 ref="pe__elisabeth_adeloltin_QGW_II_II_2031"><roleName type="title">frau</roleName> Elspet der
+                                 Adeloltin</rs></rs></rs> daselbst gestifteten Messe</rs></rs>, um
+                  23 lb dn., von denen 19 lb dn. von dem Verkaufe eines Hauses in dem Greut vor
+                  Stubentor herrühren, 4 lb dn. aber von Friedrich aus Eigenem beigesteuert worden
+                  sind. </rs></p>
+         </div>
+         <div type="seal">
+            <p><rs type="event" ref="ev__QGW_II_II_2031"><rs type="fn" role="witness">Besiegelt mit
+                     den Siegeln der <rs type="person" ref="pe__katharina_langin_QGW_II_II_2031"
+                        >Bergfrau</rs> und des <rs type="person"
+                        ref="pe__ulrich_herwart_QGW_II_I_1098"><roleName type="occ"
+                           corresp="org__wien">Stadtschreibers</roleName> Ulreichs des
+                     Herwart</rs>.</rs>
+               </rs></p>
+         </div>
+         <div type="lists">
+            <xi:include xmlns:xi="http://www.w3.org/2001/XInclude"
+               href="../../../../indices/placeList.xml" xpointer="element(/1/2/1/1)"/>
+            <xi:include xmlns:xi="http://www.w3.org/2001/XInclude"
+               href="../../../../indices/personList.xml" xpointer="element(/1/2/1/1)"/>
+            <xi:include xmlns:xi="http://www.w3.org/2001/XInclude"
+               href="../../../../indices/eventList.xml" xpointer="element(/1/2/1/1)"/>
+            <xi:include xmlns:xi="http://www.w3.org/2001/XInclude"
+               href="../../../../indices/orgList.xml" xpointer="element(/1/2/1/1)"/>
+         </div>
+      </body>
+   </text>
+</TEI>

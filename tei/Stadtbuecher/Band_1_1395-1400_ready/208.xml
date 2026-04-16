@@ -1,0 +1,148 @@
+<?xml version="1.0" encoding="UTF-8"?><!DOCTYPE TEI SYSTEM "../../../schema/toolbox_full.dtd">
+<TEI xmlns="http://www.tei-c.org/ns/1.0" xmlns:cei="http://www.monasterium.net/NS/cei"
+   xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance">
+   <teiHeader>
+      <fileDesc>
+         <titleStmt>
+            <title>TEI-Version of 207</title>
+         </titleStmt>
+         <publicationStmt>
+            <p/>
+         </publicationStmt>
+         <sourceDesc default="false">
+            <bibl default="false" status="draft">
+               <title type="full"><title type="main">Die Wiener Stadtbücher 1395 -
+                     1430</title><title type="sub">Teil 1: 1395 - 1400</title></title>
+               <author>Wilhelm Brauneder</author>
+               <author>Gerhard Jaritz</author>
+               <pubPlace>Wien</pubPlace>
+               <pubPlace>Köln</pubPlace>
+               <publisher>Böhlau Verlag</publisher>
+            </bibl>
+            <msDesc status="draft">
+               <msIdentifier>
+                  <idno>207</idno>
+               </msIdentifier>
+               <physDesc/>
+            </msDesc>
+         </sourceDesc>
+      </fileDesc>
+      <encodingDesc>
+         <projectDesc>
+            <p><label type="contentual-editing">Projekt Christina Lutter Stadt und
+                  Gemeinschaft</label></p>
+         </projectDesc>
+      </encodingDesc>
+      <profileDesc>
+         <creation>
+            <date when="1397-12-01">1397 Dezember 1</date>
+         </creation>
+      </profileDesc>
+   </teiHeader>
+   <text>
+      <body>
+         <div type="header">
+            <p>Geschäft des Konrad Gukenwerger</p>
+         </div>                   <div type="entry" resp="rs">
+            <p> pr. mü., Einbr. 3 Zg., Ma (Indez: Item gescheft Chunrat Gukenwerger und sein
+               geltschuld) <rs type="event" ref="ev__StB_I_208">Des nachsten samcztags nach sand
+                  Kathrein tag kom fur den rat der stat ze Wienn <rs type="fn" role="witness"><rs
+                        type="person" ref="pe__dorothea_StB_I_208"><roleName type="title"
+                           >fraw</roleName> Dorothe, <rs type="person"
+                           ref="pe__konrad_guggenberger_StB_I_208">Chunrats <roleName type="dead"
+                              >selig</roleName> des Gukenwerger, des <roleName type="prof"
+                              >floczer</roleName></rs>, <roleName type="kin"
+                           corresp="pe__konrad_guggenberger_StB_I_208">witib</roleName></rs>, und
+                     hat da beweist ze rechter zeit, als si ze recht solt, mit <rs type="person"
+                        ref="pe__simon_StB_I_208">dem <roleName type="title">erbern</roleName>
+                        <roleName type="title">herren</roleName>
+                        <roleName type="title">hern</roleName> Symann, die zeit <roleName type="occ"
+                           corresp="org__wien-gottesleichnam_kapelle_vor_dem_werdertor"
+                           >chappellan</roleName> im dem Werd Sand Johannis chappellen vor Wedertor
+                        ze Wienn</rs>, und mit <rs type="person"
+                        ref="pe__heinrich_wertheimer_StB_I_208">Hainreich dem Werthaymer</rs></rs>,
+                  das geschefft, so <rs type="fn" role="issuer"><rs type="person"
+                        ref="pe__konrad_guggenberger_StB_I_208">der vorgenant Chunrat, ir <roleName
+                           type="kin" corresp="pe__dorothea_StB_I_208">wirt</roleName></rs>,</rs> an
+                  seinen lesten zeiten getan hat. <rs type="fn" role="recipient">Also das er von
+                     erst geschafft hat <rs type="person" ref="pe__dorothea_StB_I_208">der egenanten
+                        seiner hawsfraw Dorothen</rs> alles daz gut und geltschult, das uber die
+                     gelt er uber wirt, es sein weingarten, wein, holcz, stekchen und varundguet,
+                     wie das genant ist, daz si allen irn frumen damit schaffen sol mit verchawffen
+                     (fol.36r) und mit verseczen und sol seiner sel davon gedenkchen nach irn trewn.
+                     Darnach hat er geschafft <rs type="person" ref="pe__elisabeth_StB_I_208"
+                        >Elspeten, seiner swester</rs>, ain weingarten ze Mewrling genant der
+                     Rettenpelcz zu irn tegen, das si den pawn sol und davon sich nern und nach irm
+                     tod sol erben auf sein nachst erben. Und ob si den weingarten nicht in gutem
+                     mittern paw hielt, so sullen sich desselben weingartens underwinden sein nachst
+                     erben an alles recht. Darnach hat er geschafft <rs type="person"
+                        ref="pe__peter_olm_StB_I_208">Petrein dem Olm und seiner hawsfrawn</rs> und
+                     allen irn erben die chlay werichstat ledichleich an allen chrieg. Auch hat er
+                     geschafft der egenanten seiner hawsfrawn Dorothen den obern chlewbhof zu irn
+                     tegen, also ob si fleczwerich treyben wil, so sol si den hof selber behalten.
+                     Wer aber des nicht, so sol si denselben hof lassen <rs type="person"
+                        ref="pe__heinrich_StB_I_208">Hainreichen, seins <roleName type="kin"
+                           corresp="pe__konrad_guggenberger_StB_I_208">bruder sun</roleName></rs>,
+                     fur ander lewt, alle jar umb ain phunt phenning davon zu verdienen, und nach
+                     irm tod sol er erben auf denselben seinen vetern oder, ob er nicht wer, auf
+                     sein nachst erben. Auch hat er geschafft derselben seiner hawsfrawn sein haws,
+                     da er selben in gesessen ist gewesen, ledichleich, das chain frewnt da engegen
+                     sprechen sol. <rs type="org"
+                        ref="org__wien-gottesleichnam_kapelle_vor_dem_werdertor-messe_guggenberger_konrad"
+                        >Auch hat er geschafft zu Gotes Leichnams chappellen und Sand Johanns vor
+                        Wedertor ain virtail weingarten gelegen zu Mewrling zu ainem ewigen jartag
+                        und des sol sich der chappelan daselbs underwinden und den pawn und die nucz
+                        davon fessen und den jartag dovon begen, als gewontlich ist und der
+                        weingarten getragen mag.</rs> Darnach hat er gemelldet, waz er schuldig ist.
+                     Von erst <rs type="person" ref="pe__hadio_StB_I_208">Hadio dem Judem</rs> zway
+                     und funfczig phunt. Item <rs type="person" ref="pe__hotz_StB_I_208">Hoczem dem
+                        Judem</rs> drew und dreizzig phunt. Item <rs type="person"
+                        ref="pe__hirz_StB_I_208">Hyrzzen dem Judem</rs> dreyzzig phunt. Item <rs
+                        type="person" ref="pe__selikchmann_QGW_II_I_965">Selichkman dem Judem
+                     </rs>zwayczig [!] phunt. Item <rs type="person" ref="pe__sudlein_StB_I_220"
+                        cert="high">Sundlein dem Judem</rs> zwaiczig [!] phunt. Item <rs
+                        type="person" ref="pe__heinrich_wertheimer_StB_I_208">Hainreichen dem
+                        Werthaymer</rs> funf phunt. Item <rs type="person"
+                        ref="pe__ulrich_StB_I_208">Ulreich dem <roleName type="occ"
+                           corresp="org__spitz-gemeinde">Amptman</roleName> von Spiczz</rs> drew
+                     phunt. Item <rs type="person" ref="pe__puchperger_StB_I_208">dem
+                        Puchperger</rs> siben phunt. Item <rs type="person"
+                        ref="pe__niklas_holzmarkt_StB_I_208">Niclasen <roleName type="prof"
+                           cert="unknown">Holczmarkcht</roleName> in Dreschirchen</rs> zwayczig
+                     phunt. Item <rs type="person" ref="pe__enzersdorfer_StB_I_208">dem
+                        Enczestarffer</rs> acht halb phunt. Item <rs type="person"
+                        ref="pe__berthold_chemser_StB_I_208">Perichtoden [!] dem Chemser von
+                        Steyr</rs> sechczehen phunt. Item Petrein dem Olm funf phunt minus 60
+                     phenning. Item dem <rs type="person" ref="pe__konrad_von_meidling_StB_I_208"
+                        >Chunczlein von Mewrling</rs> 3 tl., dem <rs type="person"
+                        ref="pe__kessel_StB_I_208">Chessel von Steyr</rs> drew tl. phenning b
+                     ).</rs>
+                  <rs type="fn" role="other">Darnach hat er gemeldet, was man im <triggerstring n="fn"
+                        >schuldig beleibt</triggerstring>. Von erst <rs type="person"
+                        ref="pe__resch_StB_I_208">Resch der Fleischhakcher von Steyr</rs> achczehen
+                     phunt. Item <rs type="person" ref="pe__jakob_flaschner_StB_I_134">Jacob Flasch,
+                        der <roleName type="prof">vischer</roleName></rs>, 15 ß. d. an ander
+                     geltschult, die nach aus leyt und nicht gerayttet ist.</rs>
+                  <rs type="fn" role="other">Das vorgeschriben <triggerstring n="fn">sein geschefft
+                        alles hat er ausczerichten enpholichen</triggerstring>
+                     <rs type="person" ref="pe__ulrich_flekch_QGW_II_I_1195">dem <roleName
+                           type="title">erbern</roleName> mann Ulreichen dem Flechk</rs> hincz
+                     seinen trewn und nach seiner gewissen.</rs>Als darumb der obgenant her Syman
+                  bey seiner priesterschafft und Hainreich der Werthaymer mit seinen trewn an aydes
+                  stat vor offem rat habent gesagt, als si ze recht solten.</rs> a) Erste6 i von
+               virtail über der Zeile eingefügt. b) Danach folgt größerer leerer Zwischenraum, der
+               wohl für die Eintragung weiterer Schulden gedacht war. </p>
+         </div>
+         <div type="lists">
+            <xi:include xmlns:xi="http://www.w3.org/2001/XInclude"
+               href="../../../../indices/placeList.xml" xpointer="element(/1/2/1/1)"/>
+            <xi:include xmlns:xi="http://www.w3.org/2001/XInclude"
+               href="../../../../indices/personList.xml" xpointer="element(/1/2/1/1)"/>
+            <xi:include xmlns:xi="http://www.w3.org/2001/XInclude"
+               href="../../../../indices/eventList.xml" xpointer="element(/1/2/1/1)"/>
+            <xi:include xmlns:xi="http://www.w3.org/2001/XInclude"
+               href="../../../../indices/orgList.xml" xpointer="element(/1/2/1/1)"/>
+         </div>
+      </body>
+   </text>
+</TEI>

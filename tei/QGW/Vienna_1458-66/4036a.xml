@@ -1,0 +1,91 @@
+<?xml version="1.0" encoding="UTF-8" standalone="no"?>
+<!DOCTYPE TEI
+  SYSTEM "../../../schema/toolbox_full.dtd">
+<TEI xmlns:cei="http://www.monasterium.net/NS/cei" xmlns="http://www.tei-c.org/ns/1.0">
+   <teiHeader>
+      <fileDesc>
+         <titleStmt>
+            <title>Tei version of 4036a exported from monasterium.net </title>
+         </titleStmt>
+         <publicationStmt>
+            <p/>
+         </publicationStmt>
+         <!--In Original: cei:front/cei:sourceDesc/cei:sourceDescRegest-->
+         <sourceDesc>
+            <bibl>Quellen zur Geschichte der Stadt Wien, Bd. II/3, Nr. As published in HAUrk by
+               Wiener Stadt- und Landesarchiv </bibl>
+            <msDesc>
+               <msIdentifier>
+                  <repository>Wiener Stadt- und Landesarchiv</repository>
+                  <idno>4036a</idno>
+                  <altIdentifier type="old">
+                     <idno>518303</idno>
+                  </altIdentifier>
+               </msIdentifier>
+               <msContents>
+                  <msItem>
+                     <listBibl>
+                        <bibl type="url"
+                           >https://www.monasterium.net/mom/AT-WStLA/HAUrk/4036a/charter</bibl>
+                        <bibl>Schlager, Wiener Skizzen N. F. 1, 395</bibl>
+                     </listBibl>
+                  </msItem>
+               </msContents>
+               <physDesc/>
+            </msDesc>
+         </sourceDesc>
+      </fileDesc>
+      <profileDesc>
+         <creation>
+            <placeName>Wien</placeName>
+            <date when="14621018">1462 X 18</date>
+            <origDate>Geben zu Wienn an montag nach sand Gallen tag, anno domini etc. im 62., unsers
+               kaisertumbs im 11. jare. </origDate></creation>
+      </profileDesc>
+   </teiHeader>
+   <facsimile/>
+   <text>
+      <body>
+         <div type="abstract" resp="ms">
+            <p><rs type="event" ref="ev__QGW_II_III_4036a"><rs type="fn" role="issuer"><rs
+                        type="person" ref="pe__friedrich_v_herzog_von_oesterreich_QGW_II_I_3270"
+                           ><roleName type="occ" corresp="org__heiliges_roemisches_reich"
+                           >Kaiser</roleName> Friedrich III.</rs></rs> an die <rs type="fn"
+                     role="recipient"><rs type="org" ref="org__wien-zeche_leinbater">Zechmeister und
+                        Zechleute der leinbater zech hie zu Wienn</rs></rs>. Nachdem seine Räthe von
+                  gemainer stat gefangen und soldner umb seine Burgk in und vor der stat gelegt
+                  worden waren, habe er mehrmals an gemaine stat begern lassen, ettlich aus inen
+                  abzuordnen, mit denen er über die Herstellung des Friedens verhandeln könne,
+                  darauf aber keine Antwort erhalten. Am letzten Samstag (October 16) seien der <rs
+                     type="person" ref="pe__wiser_QGW_II_III_4036a">Wiser, <roleName type="prof"
+                        >kürsner</roleName></rs>, <rs type="person"
+                     ref="pe__wolfgang_pesst_QGW_II_III_4036a">Wolfgang Pesst</rs> und ein anderer
+                  Bürger von gemainer stat in potschafft gesandt worden, die unter Anderen an seine
+                  Räthe geworben haben, dass er kain pau an seiner Purckh fürnemen, und was von
+                  neuem gepaut wer, abbrechen lassen solle. Darauf habe er sie durch seine Räthe
+                  dahin beschieden, dass er keinen Bau zu Jemandes Schaden, sondern nur zu
+                  auffenthalt nach gelegenhait der jeczundigen leuff vornehmen werde, und
+                  seinerseits verlangt, dass sie kainerlai pau ihm zu smach beginnen. Daraufhin
+                  haben der stat söldner an derselben nacht pau fürgenommen vor Widmertor pei der
+                  pruckhen und in seine Purgk und fraun zimer geschossen. Da er annehmen müsse, dass
+                  das nicht nach ihrem Willen geschehe, so ersucht er sie mitzuhelfen, dass solche
+                  frömdigkait und grob hendel abgestellt und die Dinge in einen bessern Stand
+                  gebracht werden. </rs></p>
+         </div>
+         <div type="nota">
+            <p><rs type="event" ref="ev__QGW_II_III_4036a_nota"> Commissio domini imperatoris in
+                  consilio. </rs></p>
+         </div>
+         <div type="lists">
+            <xi:include xmlns:xi="http://www.w3.org/2001/XInclude"
+               href="../../../../indices/placeList.xml" xpointer="element(/1/2/1/1)"/>
+            <xi:include xmlns:xi="http://www.w3.org/2001/XInclude"
+               href="../../../../indices/personList.xml" xpointer="element(/1/2/1/1)"/>
+            <xi:include xmlns:xi="http://www.w3.org/2001/XInclude"
+               href="../../../../indices/eventList.xml" xpointer="element(/1/2/1/1)"/>
+            <xi:include xmlns:xi="http://www.w3.org/2001/XInclude"
+               href="../../../../indices/orgList.xml" xpointer="element(/1/2/1/1)"/>
+         </div>
+      </body>
+   </text>
+</TEI>

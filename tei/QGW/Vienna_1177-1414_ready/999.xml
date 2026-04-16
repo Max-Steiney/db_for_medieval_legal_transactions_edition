@@ -1,0 +1,128 @@
+<?xml version="1.0" encoding="UTF-8"?><!DOCTYPE TEI   SYSTEM "../../../schema/toolbox_full.dtd">
+<TEI xmlns="http://www.tei-c.org/ns/1.0" xmlns:cei="http://www.monasterium.net/NS/cei"
+   xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance">
+   <teiHeader>
+      <fileDesc>
+         <titleStmt>
+            <title>Tei version of 999 exported from monasterium.net </title>
+         </titleStmt>
+         <publicationStmt>
+            <p/>
+         </publicationStmt>
+         <!--In Original: cei:front/cei:sourceDesc/cei:sourceDescRegest-->
+         <sourceDesc>
+            <bibl type="url">https://www.monasterium.net/mom/AT-WStLA/HAUrk/999/charter</bibl>
+            <bibl default="false" status="draft">Quellen zur Geschichte der Stadt Wien, Bd. II/1,
+               Nr. 999 As published in HAUrk by Wiener Stadt- und Landesarchiv </bibl>
+            <msDesc status="draft">
+               <msIdentifier>
+                  <repository>Wiener Stadt- und Landesarchiv</repository>
+                  <idno>999</idno>
+                  <altIdentifier type="old">
+                     <idno>515190</idno>
+                  </altIdentifier>
+               </msIdentifier>
+               <physDesc>
+                  <sealDesc>
+                     <seal>
+                        <p>Zwei anhangende Siegel, 2. beschädigt.</p>
+                     </seal>
+                  </sealDesc>
+               </physDesc>
+            </msDesc>
+         </sourceDesc>
+      </fileDesc>
+      <encodingDesc>
+         <projectDesc default="false">
+            <p><label type="contentual-editing">Projekt Christina Lutter Stadt und
+                  Gemeinschaft</label></p>
+         </projectDesc>
+      </encodingDesc>
+      <profileDesc>
+         <creation>
+            <placeName>Wien</placeName>
+            <date when="13810311">1381 III 11</date>
+            <origDate instant="false">ze Wienn, des montags in der andern
+            Vastwochen.</origDate></creation>
+      </profileDesc>
+   </teiHeader>
+   <facsimile>
+      <surface>
+         <graphic
+            url="http://images.monasterium.net/pics/AT-WStLA/HA-U/WStLA-HA-Urkunden_00999_r.jpg"/>
+      </surface>
+      <surface>
+         <graphic
+            url="http://images.monasterium.net/pics/AT-WStLA/HA-U/WStLA-HA-Urkunden_00999_v.jpg"/>
+      </surface>
+   </facsimile>
+   <text>
+      <body>
+         <div type="abstract" resp="cs">
+            <p>
+               <rs type="event" ref="ev__QGW_II_I_999"><rs type="fn" role="issuer"><rs type="person"
+                        ref="pe__johann_cherner_QGW_II_I_810">Janns Cherner <roleName type="rep"
+                           corresp="pe__thomas_cherner_QGW_II_I_999"
+                     ><add>für</add></roleName></rs></rs>
+                  <triggerstring n="disp">überlässt</triggerstring> für sich und <rs type="fn"
+                     role="other"><triggerstring n="fn"><add>für</add></triggerstring> seinen <rs
+                        type="person" ref="pe__thomas_cherner_QGW_II_I_999"><roleName type="kin"
+                           corresp="pe__johann_cherner_QGW_II_I_810">unmündigen Bruder</roleName>
+                        Thoman</rs></rs>
+                  <rs type="fn" role="recipient"><rs type="person" ref="pe__katharina_QGW_II_I_600"
+                        >ihrer <roleName type="kin" corresp="pe__johann_cherner_QGW_II_I_810"
+                           >Stiefmutter</roleName>
+                        <roleName type="kin" corresp="pe__thomas_cherner_QGW_II_I_999"
+                              ><add>Stiefmutter</add></roleName> Kathrein <roleName type="kin"
+                           corresp="pe__andreas_cherner_QGW_II_I_1028"
+                        ><add>witib</add></roleName></rs></rs>, <rs type="person"
+                     ref="pe__andreas_cherner_QGW_II_I_1028">Andres <roleName type="dead"
+                        >wittib</roleName> des Cherner, ihres <roleName type="kin"
+                        corresp="pe__thomas_cherner_QGW_II_I_999">Vaters</roleName>
+                     <roleName type="kin" corresp="pe__johann_cherner_QGW_II_I_810"
+                        ><add>Vater</add></roleName></rs>, <triggerstring n="disp">bis zum nächsten
+                     Mathiastage die Nutzniessung zweier Höfe und der dazu gehörigen
+                     Gründe</triggerstring>, wofür sie ihnen 26 lb dn. <triggerstring n="disp">zu
+                     entrichten hat</triggerstring>: Von erst den hof, der weilnt des Ramungs gewesen
+                  ist, gelegen zu Prunne, darin gehört ein secz weingarten hinden daran, zwen
+                  weingärten, gelegen auf dem Stainveld, neunthalb jeuchart akchers, 42 dn. geltes
+                  auf behaustem gut, gruntdiensts 86 dn . und 14 Tagwerke wismads darnach des
+                  Pekchen hof, gelegen daselbs, darin gehört ein secz weingarten hinden daran, ain
+                  lb dn. gelts gruntdinsts, ain halb jeuch weingarten, gelegen an der Unrest,
+                  fünfthalb jeuchart akchers und sechsthalb tagwerich wismades darnach das uberlent,
+                  das weilnt des Grasperger und des Grablokchs gewesen ist, ein weingart, gelegen in
+                  dem Wiennweg, und neun jeuchart akchers und fünfthalb jeuchart akchers, vir
+                  tagwerich wismads, zwen chrautgerten und aber vir tagwerch wismads zunachst dem
+                  Swemblein darnach zwen weingarten, ainer gelegen zu Engschestorf an dem
+                  Prunnerperg und haisset der Pachweingart, so leit der ander zu Aeczkeinstorf,
+                  genant der Rumpel ferner in den beiden Höfen dreu gesperr mit heu, zwo
+                  dwerchspangen mit gestro/eb, zwen lang stöss holz von dem stadel unz an die
+                  schuphen bei dem chasten, acht chue, sechs und zwainzig schof, fümf lember und ain
+                  chalb .</rs>
+            </p>
+         </div>
+         <div type="seal">
+            <p><rs type="event" ref="ev__QGW_II_I_999"><rs type="fn" role="witness">Besiegelt mit
+                     den Siegeln: 1. <rs type="person" ref="pe__ulrich_poll_QGW_II_I_1167"><roleName
+                           type="title">hern</roleName> Ulreichs des Pollen, des <roleName
+                           type="occ" corresp="org__wien">rats der stat</roleName> ze Wienn</rs>, 2.
+                     des <rs type="person" ref="pe__jakob_vierdung_QGW_II_I_1109"><roleName
+                           type="kin" corresp="pe__johann_cherner_QGW_II_I_810">Vetters</roleName>
+                        <roleName type="kin" corresp="pe__thomas_cherner_QGW_II_I_999"
+                              ><add>Vetters</add></roleName> der Brüder Jacobs des
+                     Vierdungs</rs>.</rs></rs>
+            </p>
+         </div>
+         <div type="lists">
+            <xi:include xmlns:xi="http://www.w3.org/2001/XInclude"
+               href="../../../../indices/placeList.xml" xpointer="element(/1/2/1/1)"/>
+            <xi:include xmlns:xi="http://www.w3.org/2001/XInclude"
+               href="../../../../indices/personList.xml" xpointer="element(/1/2/1/1)"/>
+            <xi:include xmlns:xi="http://www.w3.org/2001/XInclude"
+               href="../../../../indices/eventList.xml" xpointer="element(/1/2/1/1)"/>
+            <xi:include xmlns:xi="http://www.w3.org/2001/XInclude"
+               href="../../../../indices/orgList.xml" xpointer="element(/1/2/1/1)"/>
+         </div>
+      </body>
+   </text>
+</TEI>

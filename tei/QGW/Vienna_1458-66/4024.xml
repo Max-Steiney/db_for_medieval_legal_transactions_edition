@@ -1,0 +1,90 @@
+<?xml version="1.0" encoding="UTF-8" standalone="no"?>
+<!DOCTYPE TEI
+  SYSTEM "../../../schema/toolbox_full.dtd">
+<TEI xmlns:cei="http://www.monasterium.net/NS/cei" xmlns="http://www.tei-c.org/ns/1.0">
+   <teiHeader>
+      <fileDesc>
+         <titleStmt>
+            <title>Tei version of 4024 exported from monasterium.net </title>
+         </titleStmt>
+         <publicationStmt>
+            <p/>
+         </publicationStmt>
+         <!--In Original: cei:front/cei:sourceDesc/cei:sourceDescRegest-->
+         <sourceDesc>
+            <bibl>Quellen zur Geschichte der Stadt Wien, Bd. II/3, Nr. As published in HAUrk by
+               Wiener Stadt- und Landesarchiv </bibl>
+            <msDesc>
+               <msIdentifier>
+                  <repository>Wiener Stadt- und Landesarchiv</repository>
+                  <idno>4024</idno>
+                  <altIdentifier type="old">
+                     <idno>518290</idno>
+                  </altIdentifier>
+               </msIdentifier>
+               <msContents>
+                  <msItem>
+                     <listBibl>
+                        <bibl type="url"
+                           >https://www.monasterium.net/mom/AT-WStLA/HAUrk/4024/charter</bibl>
+                     </listBibl>
+                  </msItem>
+               </msContents>
+               <physDesc>
+                  <sealDesc>
+                     <seal>
+                        <p>Das angehängte Siegel fehlt.</p>
+                     </seal>
+                  </sealDesc>
+               </physDesc>
+            </msDesc>
+         </sourceDesc>
+      </fileDesc>
+      <profileDesc>
+         <creation>
+            <placeName>Wien</placeName>
+            <date when="14620409">1462 IV 09</date>
+            <origDate>zu Wienn, an freitag vor dem heiligen Palmtag.</origDate></creation>
+      </profileDesc>
+   </teiHeader>
+   <facsimile>
+      <surface>
+         <graphic
+            url="http://images.monasterium.net/pics/AT-WStLA/HA-U/WStLA-HA-Urkunden_04024_r.jpg"/>
+      </surface>
+      <surface>
+         <graphic
+            url="http://images.monasterium.net/pics/AT-WStLA/HA-U/WStLA-HA-Urkunden_04024_v.jpg"/>
+      </surface>
+   </facsimile>
+   <text>
+      <body>
+         <div type="abstract" resp="vh">
+            <p><rs type="event" ref="ev__QGW_II_III_4024">
+                  <rs type="fn" role="issuer"><rs type="person"
+                        ref="pe__christian_prenner_SB_CD_01257">Kristan Prenner, <roleName
+                           type="occ" corresp="org__wien">burgermaister</roleName></rs>, und der <rs
+                        type="org" ref="org__wien">rat gemain der stat zu Wienn</rs></rs> stellen
+                  der <rs type="fn" role="recipient"><rs type="person" ref="pe__agnes_QGW_II_III_4039">edeln fraun Angnesen, <rs type="person"
+                           ref="pe__urban_hunczhaim_QGW_II_III_4039">Urbans von Hunczhaim <roleName
+                              type="dead"><add>selig</add></roleName></rs>
+                        <roleName type="kin" corresp="pe__urban_hunczhaim_QGW_II_III_4039">witib</roleName></rs></rs>, einen Schuldbrief über 1000 guter
+                  Ungrischer guldein, gerecht in gold und wag, rückzahlbar nach vier Jahren, aus und
+                  gestatten ihr, in diesem Jahre 32 Fuder, in den nächsten drei Jahren je 25 Fuder
+                  ihres Weines, der am Hainperg bei Haimburg gewachsen ist, in die Stadt zu führen
+                  und hier an alle schaczsteur, ansleg und mitleidung auszuschenken und zu
+                  verkaufen. </rs></p>
+         </div>
+         <div type="lists">
+            <xi:include xmlns:xi="http://www.w3.org/2001/XInclude"
+               href="../../../../indices/placeList.xml" xpointer="element(/1/2/1/1)"/>
+            <xi:include xmlns:xi="http://www.w3.org/2001/XInclude"
+               href="../../../../indices/personList.xml" xpointer="element(/1/2/1/1)"/>
+            <xi:include xmlns:xi="http://www.w3.org/2001/XInclude"
+               href="../../../../indices/eventList.xml" xpointer="element(/1/2/1/1)"/>
+            <xi:include xmlns:xi="http://www.w3.org/2001/XInclude"
+               href="../../../../indices/orgList.xml" xpointer="element(/1/2/1/1)"/>
+         </div>
+      </body>
+   </text>
+</TEI>

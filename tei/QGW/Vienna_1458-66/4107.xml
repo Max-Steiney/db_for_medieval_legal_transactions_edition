@@ -1,0 +1,106 @@
+<?xml version="1.0" encoding="UTF-8" standalone="no"?>
+<!DOCTYPE TEI
+  SYSTEM "../../../schema/toolbox_full.dtd">
+<TEI xmlns:cei="http://www.monasterium.net/NS/cei" xmlns="http://www.tei-c.org/ns/1.0">
+   <teiHeader>
+      <fileDesc>
+         <titleStmt>
+            <title>Tei version of 4107 exported from monasterium.net </title>
+         </titleStmt>
+         <publicationStmt>
+            <p/>
+         </publicationStmt>
+         <!--In Original: cei:front/cei:sourceDesc/cei:sourceDescRegest-->
+         <sourceDesc>
+            <bibl>Quellen zur Geschichte der Stadt Wien, Bd. II/3, Nr. As published in HAUrk by
+               Wiener Stadt- und Landesarchiv </bibl>
+            <msDesc>
+               <msIdentifier>
+                  <repository>Wiener Stadt- und Landesarchiv</repository>
+                  <idno>4107</idno>
+                  <altIdentifier type="old">
+                     <idno>518381</idno>
+                  </altIdentifier>
+               </msIdentifier>
+               <msContents>
+                  <msItem>
+                     <listBibl>
+                        <bibl type="url"
+                           >https://www.monasterium.net/mom/AT-WStLA/HAUrk/4107/charter</bibl>
+                     </listBibl>
+                  </msItem>
+               </msContents>
+               <physDesc>
+                  <sealDesc>
+                     <seal>
+                        <p>Rückwärts aufgedrücktes Spitalsiegel von rothem Wachse unter Papierdecke,
+                           spitzoval.</p>
+                     </seal>
+                  </sealDesc>
+               </physDesc>
+            </msDesc>
+         </sourceDesc>
+      </fileDesc>
+      <profileDesc>
+         <creation>
+            <placeName>Wien</placeName>
+            <date when="14650817">1465 VIII 17</date>
+            <origDate>zu Wienn, an sambstag nach sand Larenczen tag.</origDate></creation>
+      </profileDesc>
+   </teiHeader>
+   <facsimile>
+      <surface>
+         <graphic
+            url="http://images.monasterium.net/pics/AT-WStLA/HA-U/WStLA-HA-Urkunden_04107_r.jpg"/>
+      </surface>
+      <surface>
+         <graphic
+            url="http://images.monasterium.net/pics/AT-WStLA/HA-U/WStLA-HA-Urkunden_04107_v.jpg"/>
+      </surface>
+   </facsimile>
+   <text>
+      <body>
+         <div type="abstract" resp="vh">
+            <p><rs type="event" ref="ev__QGW_II_III_4107">
+                  <rs type="fn" role="issuer"><rs type="person"
+                        ref="pe__wolfgang_ruland_QGW_II_II_3632">Wolfgang Rueland, des <roleName
+                           type="occ" corresp="org__wien">rats</roleName> und <roleName type="occ"
+                           corresp="org__wien-buergerspital">spitalmaister</roleName> der
+                        Burgerspital vor Kernertor</rs></rs>, der ein Haus, gelegen undern Satlern
+                  zenagst Andres Hofmaister, des kursner, haus, . . . <rs type="person"
+                     ref="pe__elisabeth_QGW_II_III_4107"><roleName type="title">fraun</roleName>
+                     Elspethen, <rs type="person" ref="pe__johann_doerffel_QGW_II_III_4107">Hannsen
+                        Dörffel</rs>
+                     <roleName type="kin" corresp="pe__johann_doerffel_QGW_II_III_4107"
+                        >hausfraun</roleName>, die vormaln <rs type="person"
+                        ref="pe__kaspar_gutentag_QGW_II_III_4107">Casparn Gutentag <roleName
+                           type="dead">seligen</roleName></rs> auch <roleName type="kin"
+                        corresp="pe__kaspar_gutentag_QGW_II_III_4107">elichen gehabt</roleName></rs>
+                  , verkauft hat, stellt wegen eines Grundzettels über 26 lb dn. purkrecht, die mit
+                  1000 lb dn. abzulösen gewesen und von <rs type="person"
+                     ref="pe__margarethe_facs_1030_TextRegion_1644847080652_674"><roleName
+                        type="title">fraun</roleName> Margreth, <rs type="person"
+                        ref="pe__stephan_auer_SB_CD_00229">Steffans Auer, <roleName type="occ"
+                           corresp="org__wien">burger</roleName> zu Wienn</rs>, <roleName type="kin"
+                        corresp="pe__stephan_auer_SB_CD_00229">hausfraun</roleName></rs>, den armen
+                  Leuten im Spitale geschafft worden sind, den sein Vorgänger <rs type="person"
+                     ref="pe__martin_guldein_QGW_II_III_3897"><roleName type="title"
+                        >maister</roleName> Mert Guldein, <roleName type="prof">lerer</roleName> in
+                     der erznei</rs>, genommen hatte, und wegen des darüber ausgefertigten
+                  Burgrechtbriefes, welche beide verlegt worden waren, dem <rs type="fn"
+                     role="recipient"><rs type="org" ref="org__wien">Bürgermeister und Rathe</rs>
+                     sowie den Verwesern ihres Grundbuches</rs> einen Revers aus. </rs></p>
+         </div>
+         <div type="lists">
+            <xi:include xmlns:xi="http://www.w3.org/2001/XInclude"
+               href="../../../../indices/placeList.xml" xpointer="element(/1/2/1/1)"/>
+            <xi:include xmlns:xi="http://www.w3.org/2001/XInclude"
+               href="../../../../indices/personList.xml" xpointer="element(/1/2/1/1)"/>
+            <xi:include xmlns:xi="http://www.w3.org/2001/XInclude"
+               href="../../../../indices/eventList.xml" xpointer="element(/1/2/1/1)"/>
+            <xi:include xmlns:xi="http://www.w3.org/2001/XInclude"
+               href="../../../../indices/orgList.xml" xpointer="element(/1/2/1/1)"/>
+         </div>
+      </body>
+   </text>
+</TEI>

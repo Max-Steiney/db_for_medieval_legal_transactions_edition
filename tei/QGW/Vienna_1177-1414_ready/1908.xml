@@ -1,0 +1,91 @@
+<?xml version="1.0" encoding="UTF-8"?><!DOCTYPE TEI SYSTEM "../../../schema/toolbox_full.dtd"><TEI xmlns="http://www.tei-c.org/ns/1.0" xmlns:cei="http://www.monasterium.net/NS/cei" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance">
+   <teiHeader>
+      <fileDesc>
+         <titleStmt>
+            <title>Tei version of 1908 exported from monasterium.net </title>
+         </titleStmt>
+         <publicationStmt>
+            <p/>
+         </publicationStmt>
+         <!--In Original: cei:front/cei:sourceDesc/cei:sourceDescRegest-->
+         <sourceDesc>
+            <bibl>Quellen zur Geschichte der Stadt Wien, Bd. II/2, Nr. 1908 As published in HAUrk by
+               Wiener Stadt- und Landesarchiv </bibl>
+            <msDesc>
+               <msIdentifier>
+                  <repository>Wiener Stadt- und Landesarchiv</repository>
+                  <idno>1908</idno>
+                  <altIdentifier type="old">
+                     <idno>516113</idno>
+                  </altIdentifier>
+               </msIdentifier>
+               <msContents>
+                  <msItem>
+                     <listBibl>
+                        <bibl>Jahrbuch der kais. Kunstsamml. 16b, n° 13248 Regest.</bibl>
+                     </listBibl>
+                  </msItem>
+               </msContents>
+               <physDesc>
+                  <sealDesc>
+                     <seal>
+                        <p>Rückwärts aufgedrücktes ovales Petschaft von rothem Wachse,
+                           beschädigt.</p>
+                     </seal>
+                  </sealDesc>
+               </physDesc>
+            </msDesc>
+         </sourceDesc>
+      </fileDesc>       <encodingDesc>          <projectDesc default="false">             <p><label type="contentual-editing">Projekt Christina Lutter Stadt und                   Gemeinschaft</label></p>          </projectDesc>       </encodingDesc>
+      <profileDesc>
+         <creation>
+            <placeName>Wien</placeName>
+            <date when="14120122">1412 I 22</date>
+            <origDate>Geben ze [2] Wienn an freitag nach sant Agnesen tag, anno domini etc.
+               duodecimo.</origDate></creation>
+      </profileDesc>
+   </teiHeader>
+   <facsimile>
+      <surface>
+         <graphic url="http://images.monasterium.net/pics/AT-WStLA/HA-U/WStLA-HA-Urkunden_01908_r.jpg"/>
+      </surface>
+      <surface>
+         <graphic url="http://images.monasterium.net/pics/AT-WStLA/HA-U/WStLA-HA-Urkunden_01908_v.jpg"/>
+      </surface>
+   </facsimile>
+   <text>
+      <body>
+         <div type="abstract">
+            <p><rs type="event" ref="ev__QGW_II_II_1908"><rs type="fn" role="issuer"><rs type="person" ref="pe__beatrix_von_zollern_nuernberg_QGW_II_I_1048"><roleName type="title">Herzogin</roleName> Beatrix<roleName type="occ" corresp="org__wien-burgkapelle-messe_beatrix_von_zollern_nuernberg"><add>zu Lehen geht</add></roleName></rs></rs>
+                  <triggerstring n="disp">genehmigt<add> verkauft</add><add> gekauft
+                     habe</add></triggerstring>, dass <rs type="fn" role="recipient"><rs type="person" ref="pe__petrus_von_mautern_QGW_II_II_1908">Peter von Mauttarn, <roleName type="occ" corresp="org__wien-burgkapelle-messe_beatrix_von_zollern_nuernberg">kaplan</roleName> Unsrer Fraun mess in der Purkch ze Wienn, die von ihr
+                        zu Lehen geht</rs>,</rs>
+                  <rs type="event" ref="ev__QGW_II_II_1908_men_1"><rs type="fn" role="issuer"><rs type="person" ref="pe__petrus_von_mautern_QGW_II_II_1908"><roleName type="occ" corresp="org__wien-burgkapelle-messe_beatrix_von_zollern_nuernberg"><add>kaplan</add></roleName></rs></rs><rs type="fn" role="transactiongood_I"><rs type="place" ref="pl__wien-immo_kohlmarkt_31">ein Haus <roleName type="topo" corresp="pl__wien-kohlmarkt">an
+                              dem</roleName>
+                           <rs type="place" ref="pl__wien-kohlmarkt">Kolmarkcht</rs>
+                           <roleName type="topo" corresp="pl__wien-st_michael">gegen <rs type="place" ref="pl__wien-st_michael">sant Michel</rs>
+                              über</roleName>, <roleName type="owner" corresp="pe__johann_QGW_II_II_1908">das weilent <rs type="person" ref="pe__johann_QGW_II_II_1908">Hannsen, des <roleName type="prof">harnaschmaister</roleName>
+                                 <roleName type="dead">seligen</roleName></rs>, gewesen
+                              ist</roleName></rs></rs> , <rs type="fn" role="transactiongood_II">um
+                           <measure>129 lb dn.</measure></rs>
+                     <triggerstring n="disp">verkauft</triggerstring></rs> und <rs type="event" ref="ev__QGW_II_II_1908_men_2"><rs type="fn" role="transactiongood_II">dafür<measure>
+                           <add>129 lb dn.</add></measure></rs>
+                     <rs type="fn" role="recipient">zu <rs type="person" ref="pe__petrus_von_mautern_QGW_II_II_1908"><roleName type="occ" corresp="org__wien-burgkapelle-messe_beatrix_von_zollern_nuernberg"><add>kaplan</add></roleName></rs><rs type="org" ref="org__wien-burgkapelle-messe_beatrix_von_zollern_nuernberg">der
+                           Messe</rs></rs>
+                     <rs type="fn" role="transactiongood_I"><rs type="place" ref="pl__wien-immo_st_agnes_auf_der_himmelpforte_11">ein anderes Haus
+                              <roleName type="topo" corresp="pl__wien-st_agnes_auf_der_himmelpforte">bei der</roleName>
+                           <rs type="place" ref="pl__wien-st_agnes_auf_der_himmelpforte">Himelporten</rs>
+                           <roleName type="topo" corresp="pl__wien-immo_st_poeltner_hof">gegen <rs type="place" ref="pl__wien-immo_st_poeltner_hof">Pöltinger
+                                 hoff</rs> über</roleName>, <roleName type="owner" corresp="pe__bonacurs_QGW_II_II_1908">das weilent <rs type="person" ref="pe__bonacurs_QGW_II_II_1908"><roleName type="title">maister</roleName> Bonacurs</rs> gewesen
+                        ist</roleName></rs>,</rs>
+                     <triggerstring n="disp">gekauft habe</triggerstring></rs>.</rs>
+            </p>
+         </div>
+         <div type="nota">
+            <p>Indorsate: a) ain Urlaubbrief von von Nuremberg uber, b) fraun Beatriczen ain haus,
+               anno 1412. </p>
+         </div>
+         <div type="lists"><xi:include xmlns:xi="http://www.w3.org/2001/XInclude" href="../../../../indices/placeList.xml" xpointer="element(/1/2/1/1)"/><xi:include xmlns:xi="http://www.w3.org/2001/XInclude" href="../../../../indices/personList.xml" xpointer="element(/1/2/1/1)"/><xi:include xmlns:xi="http://www.w3.org/2001/XInclude" href="../../../../indices/eventList.xml" xpointer="element(/1/2/1/1)"/><xi:include xmlns:xi="http://www.w3.org/2001/XInclude" href="../../../../indices/orgList.xml" xpointer="element(/1/2/1/1)"/></div>
+      </body>
+   </text>
+</TEI>

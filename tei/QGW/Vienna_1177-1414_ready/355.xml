@@ -1,0 +1,116 @@
+<?xml version="1.0" encoding="UTF-8"?><!DOCTYPE TEI   SYSTEM "../../../schema/toolbox_full.dtd">
+<TEI xmlns="http://www.tei-c.org/ns/1.0" xmlns:cei="http://www.monasterium.net/NS/cei"
+   xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance">
+   <teiHeader>
+      <fileDesc>
+         <titleStmt>
+            <title>Tei version of 355 exported from monasterium.net </title>
+         </titleStmt>
+         <publicationStmt>
+            <p/>
+         </publicationStmt>
+         <!--In Original: cei:front/cei:sourceDesc/cei:sourceDescRegest-->
+         <sourceDesc>
+            <bibl type="url">https://www.monasterium.net/mom/AT-WStLA/HAUrk/355/charter</bibl>
+            <bibl default="false" status="draft">Quellen zur Geschichte der Stadt Wien, Bd. II/1,
+               Nr. 355 As published in HAUrk by Wiener Stadt- und Landesarchiv </bibl>
+            <msDesc status="draft">
+               <msIdentifier>
+                  <repository>Wiener Stadt- und Landesarchiv</repository>
+                  <idno>355</idno>
+                  <altIdentifier type="old">
+                     <idno>514525</idno>
+                  </altIdentifier>
+               </msIdentifier>
+               <physDesc>
+                  <sealDesc>
+                     <seal>
+                        <p>Zwei anhangende Siegel.</p>
+                     </seal>
+                  </sealDesc>
+               </physDesc>
+            </msDesc>
+         </sourceDesc>
+      </fileDesc>
+      <encodingDesc>
+         <projectDesc default="false">
+            <p><label type="contentual-editing">Projekt Christina Lutter Stadt und
+                  Gemeinschaft</label></p>
+         </projectDesc>
+      </encodingDesc>
+      <profileDesc>
+         <creation>
+            <placeName>Mödling</placeName>
+            <date when="13500322">1350 III 22</date>
+            <origDate instant="false">ze Medlinch, des montags in der
+            Pluemosterwochen.</origDate></creation>
+      </profileDesc>
+   </teiHeader>
+   <facsimile>
+      <surface>
+         <graphic
+            url="http://images.monasterium.net/pics/AT-WStLA/HA-U/WStLA-HA-Urkunden_00355_r.jpg"/>
+      </surface>
+      <surface>
+         <graphic
+            url="http://images.monasterium.net/pics/AT-WStLA/HA-U/WStLA-HA-Urkunden_00355_v.jpg"/>
+      </surface>
+   </facsimile>
+   <text>
+      <body>
+         <div type="abstract" resp="ks">
+            <p>
+               <rs type="event" ref="ev__QGW_II_I_355"><rs type="fn" role="issuer"><rs type="person"
+                        ref="pe__niklas_paltram_QGW_II_I_353">Nicla der Paltram, <roleName
+                           type="occ" corresp="pe__johanna_von_pfirt_QGW_II_I_304"
+                           >perigmaister</roleName> der Herzogin Johanna</rs></rs>, <triggerstring
+                     n="disp">beurkundet</triggerstring>, dass vor ihm in der Schranne zu Medlinch <rs
+                     type="fn" role="other"><rs type="person"
+                        ref="pe__haunold_schuchler_QGW_II_I_170"><roleName type="title"
+                           >her</roleName> Haunolt der Schuechler, <roleName type="occ" corresp="org__wien">purger</roleName> ze Wienn</rs>, <triggerstring n="fn"
+                        >mit Vorsprechen</triggerstring></rs> geklagt habe <rs type="fn" role="other"
+                        ><triggerstring n="fn">hinz</triggerstring>
+                     <rs type="person" ref="pe__niklas_emrinch_QGW_II_I_355">Niclas weingarten des
+                        Emrinch</rs></rs>, der do leit in der Pachlukchen ze Prunn, um 1 lb dn.
+                  versessenes Burgrecht und um die zwispil, di mit recht darauf gegangen sind. Er
+                  gibt ihm <rs type="fn" role="other">die in no 353 genannten <triggerstring n="fn"
+                        >Boten und Schätzleute</triggerstring><rs type="person"
+                        ref="pe__heinrich_werder_QGW_II_I_304"><add>Hainreichen den
+                        Werder</add></rs>, <rs type="person" ref="pe__martin_sulzer_QGW_II_I_353"
+                           ><add>Merten den Sulczer</add></rs>
+                     <rs type="person" ref="pe__eberhard_choelbl_QGW_II_I_447"><add>Eberharten den
+                           Cho/elblein</add></rs></rs> mit und macht <rs type="fn" role="recipient"
+                     >ihn</rs> nach deren Aussage des Weingartens gewaltig.</rs>
+            </p>
+         </div>
+         <div type="seal">
+            <p><rs type="event" ref="ev__QGW_II_I_355"><rs type="fn" role="witness">Besiegelt wie no
+                     353 <rs type="person" ref="pe__niklas_paltram_QGW_II_I_353"><add>1. des
+                           Ausstellers</add></rs>, <rs type="person"
+                        ref="pe__wulfing_von_goetzendorf_QGW_II_I_421">
+                        <roleName type="title"><add>hern</add></roleName>
+                        <add>Wulfungs von Geczendorf,</add>
+                        <roleName type="occ" corresp="org__oesterreich-herzogtum"
+                              ><add>huebmaister</add></roleName>
+                        <add>in Oesterreich und</add>
+                        <roleName type="occ"
+                           corresp="pe__albrecht_herzog_von_oesterreich_QGW_II_I_596"
+                           select="pl__moedling"><add>purggraf</add></roleName>
+                        <add>ze Medlinch des herzogs Albrecht</add></rs>.</rs></rs></p>
+         </div>
+         <div type="nota">
+            <p>Indorsat: Aufschrift des Magister Theodericus. M. </p>
+         </div>
+         <div type="lists">
+            <xi:include xmlns:xi="http://www.w3.org/2001/XInclude"
+               href="../../../../indices/placeList.xml" xpointer="element(/1/2/1/1)"/>
+            <xi:include xmlns:xi="http://www.w3.org/2001/XInclude"
+               href="../../../../indices/personList.xml" xpointer="element(/1/2/1/1)"/>
+            <xi:include xmlns:xi="http://www.w3.org/2001/XInclude"
+               href="../../../../indices/eventList.xml" xpointer="element(/1/2/1/1)"/>
+            <xi:include xmlns:xi="http://www.w3.org/2001/XInclude"
+               href="../../../../indices/orgList.xml" xpointer="element(/1/2/1/1)"/>
+         </div>
+      </body>
+   </text>
+</TEI>

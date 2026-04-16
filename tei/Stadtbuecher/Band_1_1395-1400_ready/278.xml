@@ -1,0 +1,107 @@
+<?xml version="1.0" encoding="UTF-8"?><!DOCTYPE TEI SYSTEM "../../../schema/toolbox_full.dtd">
+<TEI xmlns="http://www.tei-c.org/ns/1.0" xmlns:cei="http://www.monasterium.net/NS/cei"
+   xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance">
+   <teiHeader>
+      <fileDesc>
+         <titleStmt>
+            <title>TEI-Version of 279</title>
+         </titleStmt>
+         <publicationStmt>
+            <p/>
+         </publicationStmt>
+         <sourceDesc default="false">
+            <bibl default="false" status="draft">
+               <title type="full"><title type="main">Die Wiener Stadtbücher 1395 -
+                     1430</title><title type="sub">Teil 1: 1395 - 1400</title></title>
+               <author>Wilhelm Brauneder</author>
+               <author>Gerhard Jaritz</author>
+               <pubPlace>Wien</pubPlace>
+               <pubPlace>Köln</pubPlace>
+               <publisher>Böhlau Verlag</publisher>
+            </bibl>
+            <msDesc status="draft">
+               <msIdentifier>
+                  <idno>279</idno>
+               </msIdentifier>
+               <physDesc/>
+            </msDesc>
+         </sourceDesc>
+      </fileDesc>     <encodingDesc>       <projectDesc>         <p><label type="contentual-editing">Projekt Christina Lutter Stadt und Gemeinschaft</label></p>       </projectDesc>     </encodingDesc>
+      <profileDesc>
+         <creation>
+            <date when="1398-04-16">(1398 April 16, Oberzeiring)</date>
+         </creation>
+      </profileDesc>
+   </teiHeader>
+   <text>
+      <body>
+         <div type="header">
+            <p>Mitteilung der Verwandtschaftsweisung (zu 276)</p>
+         </div>                   <div type="entry" resp="rs">
+            <p> 5 Zg. (Indez: Item aber ain kuntschaft von den Kuntern) (fol.46v) <rs type="event"
+                  ref="ev__StB_I_278">Den erbern und weisen lewten, dem purgermaister und dem rat zu
+                  Wienn enpieten <rs type="fn" role="witness"><rs type="person"
+                        ref="pe__johann_muenzmeister_StB_I_276">ich Hanns Munczmaister, die zeit
+                        richter auf der Obern Zeyrig</rs></rs>, und der rat mit der gemain purger
+                  daselbs unsern dienst mit fleiz. Wir lazzen ew wizzen, daz <rs type="fn"
+                     role="recipient">die erbern lewt an uns pracht habent und ruefent uns an <rs
+                        type="person" ref="pe__andreas_vischl_QGW_II_I_1089"><roleName type="title"
+                              ><add>erbern</add></roleName>Andre der Vischel, <roleName type="prof"
+                           >silberprenner</roleName></rs>, und <rs type="person"
+                        ref="pe__johann_chunter_StB_I_276_b"><roleName type="title"
+                              ><add>erbern</add></roleName>Hanns Chunter, sein <roleName type="kin"
+                           corresp="pe__andreas_vischl_QGW_II_I_1089">vetter</roleName>, <roleName
+                           type="prof" corresp="org__wien">seczmaister zu Wienn</roleName></rs>, daz
+                     wir in zu derchennen geben ayn chuntschafft von der frewntschafft wegen</rs>.
+                  Nu haben wir <rs type="fn" role="witness">die eltisten besant, die die
+                     frewntschafft von alter derchennent, des ersten genant der <rs type="person"
+                        ref="pe__christian_lang_StB_I_278"><roleName type="title"
+                           ><add>erbern</add></roleName>Lang Christan, des <roleName type="occ"
+                           corresp="org__oberzeiring">rates</roleName> ayner</rs>, darnach <rs
+                        type="person" ref="pe__erasmus_traberger_StB_I_276"><roleName type="title"
+                              ><add>erbern</add></roleName>Asme der Traberger, auch des <roleName
+                           type="occ" corresp="org__oberzeiring">rats</roleName> ainer</rs>, und <rs
+                        type="person" ref="pe__heinrich_juengling_StB_I_278"><roleName type="title"
+                              ><add>erbern</add></roleName>Hainreich der Juenglinch, auch des
+                           <roleName type="occ" corresp="org__oberzeiring">rats</roleName>
+                        ainer</rs>, von der gemain der <rs type="person"
+                        ref="pe__laurenz_luder_StB_I_278"><roleName type="title"
+                           ><add>erbern</add></roleName><roleName type="occ" corresp="org__oberzeiring"><add>purger</add></roleName> Larencz der
+                        Luder</rs> und <rs type="person" ref="pe__heinrich_widder_StB_I_278"
+                           ><roleName type="title"><add>erbern</add></roleName><roleName type="occ" corresp="org__oberzeiring"><add>purger</add></roleName>
+                        Hainreich der Wider</rs> und ander erber lewt genug, purger daselbs, und
+                     erber frawen drey, die von alter auch das geschlecht derchant habent.</rs>
+                  Dieselben piderlewt, man und frawen, han ich Hanns Munczmaister, richter auf der
+                  Obern Zeyrig b ) und der a ) rat daselbs geh ort und sprechent, daz<rs type="fn"
+                     role="other"> die <rs type="person" ref="pe__dorothea_StB_I_243"><roleName
+                           type="title">fraw</roleName> Dorothe die Hannslodin von Grecz</rs> und
+                        <rs type="person" ref="pe__margarethe_StB_I_278">Margret, ir <roleName
+                           type="kin" corresp="pe__dorothea_StB_I_243">swester</roleName>, die <rs
+                           type="person" ref="pe__heinrich_scheppach_QGW_II_I_1544">Hainreich des
+                           Schepacher</rs> wirtin gebesen ist</rs>, das die vorgenant zwo frawen mit
+                     chainerlay freuntschafft mit allen Chuntern, man und frawen, <triggerstring n="fn"
+                        >von chainerley sipp, die freuntschafft pringt, nye gehabt
+                        habent</triggerstring>.</rs> Daz habent die vorgenantend) erbern lewte), man
+                  und frawen, vor mein Hannsen dem Munczmaister, richter auf der Obern Zeyrig, und
+                  vor dem rat und der gemain purger daselbs vergehen pey iren trewen an aydes stat,
+                  daz der sach also ist und anders nicht. Mit urchund des briefs, der a ) versigilt
+                  ist mit der erbern Hannsen des Munczmaister, richter auf der Obern Zeyrig, und
+                  Asmen des Traberger, purger daselbs, aufgedrukhten insigil an unser aller stat
+                  durch unser fleizzigen pet!) willen. Datum anno etc. und in dem lxxxxviiio des
+                  nesten erigtags nach Quasimodogeniti.</rs> a) deo b) Zyerig. C) Danach
+               ge8trichene8 Scepach. d) vorgenaten. e) Danach gestrichenes f. !) Danach ge8trichenes
+               ge. </p>
+         </div>
+         <div type="lists">
+            <xi:include xmlns:xi="http://www.w3.org/2001/XInclude"
+               href="../../../../indices/placeList.xml" xpointer="element(/1/2/1/1)"/>
+            <xi:include xmlns:xi="http://www.w3.org/2001/XInclude"
+               href="../../../../indices/personList.xml" xpointer="element(/1/2/1/1)"/>
+            <xi:include xmlns:xi="http://www.w3.org/2001/XInclude"
+               href="../../../../indices/eventList.xml" xpointer="element(/1/2/1/1)"/>
+            <xi:include xmlns:xi="http://www.w3.org/2001/XInclude"
+               href="../../../../indices/orgList.xml" xpointer="element(/1/2/1/1)"/>
+         </div>
+      </body>
+   </text>
+</TEI>

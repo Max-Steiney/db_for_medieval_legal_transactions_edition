@@ -1,0 +1,95 @@
+<?xml version="1.0" encoding="UTF-8" standalone="no"?>
+<!DOCTYPE TEI
+  SYSTEM "../../../schema/toolbox_full.dtd">
+<TEI xmlns:cei="http://www.monasterium.net/NS/cei" xmlns="http://www.tei-c.org/ns/1.0">
+   <teiHeader>
+      <fileDesc>
+         <titleStmt>
+            <title>Tei version of 4028 exported from monasterium.net </title>
+         </titleStmt>
+         <publicationStmt>
+            <p/>
+         </publicationStmt>
+         <!--In Original: cei:front/cei:sourceDesc/cei:sourceDescRegest-->
+         <sourceDesc>
+            <bibl>Quellen zur Geschichte der Stadt Wien, Bd. II/3, Nr. As published in HAUrk by
+               Wiener Stadt- und Landesarchiv </bibl>
+            <msDesc>
+               <msIdentifier>
+                  <repository>Wiener Stadt- und Landesarchiv</repository>
+                  <idno>4028</idno>
+                  <altIdentifier type="old">
+                     <idno>518294</idno>
+                  </altIdentifier>
+               </msIdentifier>
+               <msContents>
+                  <msItem>
+                     <listBibl>
+                        <bibl type="url"
+                           >https://www.monasterium.net/mom/AT-WStLA/HAUrk/4028/charter</bibl>
+                     </listBibl>
+                  </msItem>
+               </msContents>
+               <physDesc>
+                  <sealDesc>
+                     <seal>
+                        <p>Rückwärts aufgedrücktes Siegel von ungefärbtem Wachse.Versiegelt mit
+                              <quote>des gerichts zu Nüremberg zuruckaufgedrucktem insigel</quote>.
+                        </p>
+                     </seal>
+                  </sealDesc>
+               </physDesc>
+            </msDesc>
+         </sourceDesc>
+      </fileDesc>
+      <profileDesc>
+         <creation>
+            <date when="14620630">1462 VI 30</date>
+            <origDate>am mitwochen vor Unser Lieben Frauen tag, Visitacionis zu Latein
+               genannt.</origDate></creation>
+      </profileDesc>
+   </teiHeader>
+   <facsimile>
+      <surface>
+         <graphic
+            url="http://images.monasterium.net/pics/AT-WStLA/HA-U/WStLA-HA-Urkunden_04028_r.jpg"/>
+      </surface>
+      <surface>
+         <graphic
+            url="http://images.monasterium.net/pics/AT-WStLA/HA-U/WStLA-HA-Urkunden_04028_v.jpg"/>
+      </surface>
+   </facsimile>
+   <text>
+      <body>
+         <div type="abstract" resp="vh">
+            <p><rs type="event" ref="ev__QGW_II_III_4028">
+                  <rs type="fn" role="issuer"><rs type="person"
+                        ref="pe__sigmund_von_egloffstein_QGW_II_III_4028">Sigmund vom Eglofstein,
+                        ritter, schultheiss</rs>, und die <rs type="org" ref="org__nuernberg"
+                        >schöppfen der stat zu Nüremberg</rs></rs> beurkunden, dass vor ihnen im
+                  Gerichte <rs type="person" ref="pe__niklas_gross_QGW_II_III_4031">Niclas Gross,
+                        <roleName type="occ" corresp="org__nuernberg">burger</roleName> und des
+                        <roleName type="occ" corresp="org__nuernberg">rats</roleName> zu
+                     Nuremberg</rs>, mit fürsprechen vorgebracht habe, wie ihm von <rs type="person"
+                     ref="pe__wolfgang_winter_SB_CD_00055">Wolfgang Wintter, <roleName type="title">ausgetrettnem,
+                     ungeurlaupten burger zu Nüremberg</roleName></rs>, ohne billige Ursache und trotz seines
+                  Rechtbotes ein mutwillig ungepurlich veintschafft zugeschriben worden sei, und
+                  dass er in dieser Angelegenheit, da Winter zu Wien im Gefängnis liege, dem <rs
+                     type="person" ref="pe__heinrich_rais_QGW_II_III_4028">Heinczen Raysen sein
+                     vollen und ganczen gewalt bevolhen und <roleName type="rep"
+                        corresp="pe__niklas_gross_QGW_II_III_4031">geben</roleName> habe</rs>.
+               </rs></p>
+         </div>
+         <div type="lists">
+            <xi:include xmlns:xi="http://www.w3.org/2001/XInclude"
+               href="../../../../indices/placeList.xml" xpointer="element(/1/2/1/1)"/>
+            <xi:include xmlns:xi="http://www.w3.org/2001/XInclude"
+               href="../../../../indices/personList.xml" xpointer="element(/1/2/1/1)"/>
+            <xi:include xmlns:xi="http://www.w3.org/2001/XInclude"
+               href="../../../../indices/eventList.xml" xpointer="element(/1/2/1/1)"/>
+            <xi:include xmlns:xi="http://www.w3.org/2001/XInclude"
+               href="../../../../indices/orgList.xml" xpointer="element(/1/2/1/1)"/>
+         </div>
+      </body>
+   </text>
+</TEI>

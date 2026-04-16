@@ -1,0 +1,103 @@
+<?xml version="1.0" encoding="UTF-8" standalone="no"?>
+<!DOCTYPE TEI
+  SYSTEM "../../../schema/toolbox_full.dtd">
+<TEI xmlns:cei="http://www.monasterium.net/NS/cei" xmlns="http://www.tei-c.org/ns/1.0">
+   <teiHeader>
+      <fileDesc>
+         <titleStmt>
+            <title>Tei version of 4087 exported from monasterium.net </title>
+         </titleStmt>
+         <publicationStmt>
+            <p/>
+         </publicationStmt>
+         <!--In Original: cei:front/cei:sourceDesc/cei:sourceDescRegest-->
+         <sourceDesc>
+            <bibl>Quellen zur Geschichte der Stadt Wien, Bd. II/3, Nr. As published in HAUrk by
+               Wiener Stadt- und Landesarchiv </bibl>
+            <msDesc>
+               <msIdentifier>
+                  <repository>Wiener Stadt- und Landesarchiv</repository>
+                  <idno>4087</idno>
+                  <altIdentifier type="old">
+                     <idno>518361</idno>
+                  </altIdentifier>
+               </msIdentifier>
+               <msContents>
+                  <msItem>
+                     <listBibl>
+                        <bibl type="url"
+                           >https://www.monasterium.net/mom/AT-WStLA/HAUrk/4087/charter</bibl>
+                        <bibl>Jahrbuch der kais. Kunstsamml. 17b, n° 15361 Regest.</bibl>
+                     </listBibl>
+                  </msItem>
+               </msContents>
+               <physDesc>
+                  <sealDesc>
+                     <seal>
+                        <p>Anhangendes Siegel, roth u. Sch.</p>
+                     </seal>
+                  </sealDesc>
+               </physDesc>
+            </msDesc>
+         </sourceDesc>
+      </fileDesc>
+      <profileDesc>
+         <creation>
+            <placeName>Wien</placeName>
+            <date when="14640830">1464 VIII 30</date>
+            <origDate>zu Wienn, an phincztag vor sand Giligen tag.</origDate></creation>
+      </profileDesc>
+   </teiHeader>
+   <facsimile>
+      <surface>
+         <graphic
+            url="http://images.monasterium.net/pics/AT-WStLA/HA-U/WStLA-HA-Urkunden_04087_r.jpg"/>
+      </surface>
+      <surface>
+         <graphic
+            url="http://images.monasterium.net/pics/AT-WStLA/HA-U/WStLA-HA-Urkunden_04087_v.jpg"/>
+      </surface>
+   </facsimile>
+   <text>
+      <body>
+         <div type="abstract" resp="vh">
+            <p><rs type="event" ref="ev__QGW_II_III_4087">
+                  <rs type="fn" role="issuer"><rs type="org" ref="org__wien">Burgermaister und rat
+                        der stat zu Wienn</rs></rs> übergeben <rs type="person"
+                     ref="pe__hippolytus_jerusalemer_QGW_II_III_4087">Yppoliten, <rs type="person"
+                        ref="pe__wolfgang_jerusalemer_QGW_II_III_4087">Wolfgangs Jerusalemer, des
+                           <roleName type="prof">messrer</roleName>
+                        <roleName type="dead"><add>selig</add></roleName></rs>, und <rs
+                        type="person" ref="pe__osanna_QGW_II_III_4087">Osannen, seiner <roleName
+                           type="kin" corresp="pe__wolfgang_jerusalemer_QGW_II_III_4087"
+                           >hausfraun</roleName>, <roleName type="dead">seligen</roleName></rs>,
+                        <roleName type="title">unmündigen</roleName>
+                     <roleName type="kin" corresp="pe__wolfgang_jerusalemer_QGW_II_III_4087"
+                        >Sohn</roleName>
+                     <roleName type="kin" corresp="pe__osanna_QGW_II_III_4087"
+                        ><add>Sohn</add></roleName></rs>, in gerhabsweise ihren <rs type="fn"
+                     role="recipient"><rs type="person" ref="pe__johann_thiem_QGW_II_III_4087"
+                           ><roleName type="occ" corresp="org__wien">Mitbürgern</roleName> Hannsen
+                        Thiem</rs> und <rs type="person"
+                        ref="pe__bernhard_waidhover_QGW_II_III_4087"><roleName type="occ"
+                           corresp="org__wien"><add>mitbürger</add></roleName> Pernharten Waidhover,
+                        dem <roleName type="prof">puchveler</roleName></rs></rs>. </rs></p>
+         </div>
+         <div type="seal">
+            <p><rs type="event" ref="ev__QGW_II_III_4087">Besiegelt mit ihrem <rs type="fn"
+                     role="witness"><rs type="org" ref="org__wien">klainem anhangundem
+                        statinsigl</rs></rs>. </rs></p>
+         </div>
+         <div type="lists">
+            <xi:include xmlns:xi="http://www.w3.org/2001/XInclude"
+               href="../../../../indices/placeList.xml" xpointer="element(/1/2/1/1)"/>
+            <xi:include xmlns:xi="http://www.w3.org/2001/XInclude"
+               href="../../../../indices/personList.xml" xpointer="element(/1/2/1/1)"/>
+            <xi:include xmlns:xi="http://www.w3.org/2001/XInclude"
+               href="../../../../indices/eventList.xml" xpointer="element(/1/2/1/1)"/>
+            <xi:include xmlns:xi="http://www.w3.org/2001/XInclude"
+               href="../../../../indices/orgList.xml" xpointer="element(/1/2/1/1)"/>
+         </div>
+      </body>
+   </text>
+</TEI>

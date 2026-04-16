@@ -1,0 +1,116 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<TEI xmlns="http://www.tei-c.org/ns/1.0" xmlns:cei="http://www.monasterium.net/NS/cei"
+   xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance">
+   <teiHeader>
+      <fileDesc>
+         <titleStmt>
+            <title>Tei version of 5505 exported from monasterium.net </title>
+         </titleStmt>
+         <publicationStmt>
+            <p/>
+         </publicationStmt>
+         <!--In Original: cei:front/cei:sourceDesc/cei:sourceDescRegest-->
+         <sourceDesc>
+            <bibl>Quellen zur Geschichte der Stadt Wien, Bd. II/4, Nr. 5505 As published in HAUrk by
+               Wiener Stadt- und Landesarchiv </bibl>
+            <msDesc>
+               <msIdentifier>
+                  <repository>Wiener Stadt- und Landesarchiv</repository>
+                  <idno>5505</idno>
+                  <altIdentifier type="old">
+                     <idno>519813</idno>
+                  </altIdentifier>
+               </msIdentifier>
+               <physDesc>
+                  <sealDesc>
+                     <seal>
+                        <p>mit zwei aufgedrückten Rücksiegeln unter Papier.</p>
+                     </seal>
+                  </sealDesc>
+               </physDesc>
+            </msDesc>
+         </sourceDesc>
+      </fileDesc>
+      <encodingDesc>
+         <projectDesc default="false">
+            <p><label type="contentual-editing">Projekt Christina Lutter Stadt und
+                  Gemeinschaft</label></p>
+         </projectDesc>
+      </encodingDesc>
+      <profileDesc>
+         <creation>
+            <placeName>Wien</placeName>
+            <date when="14940310">1494 III 10</date>
+            <origDate>Geben zu Wienn, an montag vor dem suntag, daran man singet Judica in der
+               vasten, anno domini etc. nonagesimo quarto. </origDate></creation>
+      </profileDesc>
+   </teiHeader>
+   <facsimile>
+      <surface>
+         <graphic
+            url="http://images.monasterium.net/pics/AT-WStLA/HA-U/WStLA-HA-Urkunden_05505_r.jpg"/>
+      </surface>
+      <surface>
+         <graphic
+            url="http://images.monasterium.net/pics/AT-WStLA/HA-U/WStLA-HA-Urkunden_05505_v.jpg"/>
+      </surface>
+   </facsimile>
+   <text>
+      <body>
+         <div type="abstract">
+            <p><rs type="event" ref="ev__QGW_II_II_5505">
+                  <rs type="fn" role="issuer"><rs type="person"
+                        ref="pe__georg_knoll_QGW_II_III_5493">Jörg Knoll <rs type="person"
+                           ref="pe__wolfgang_knoll_QGW_II_III_5480">weilnt Wolfgangen Knollen des
+                              <roleName type="prof">pekhen</roleName>
+                           <roleName type="occ" corresp="org__wien">burger</roleName> zu Wienn
+                              <roleName type="dead">seligen</roleName></rs>
+                        <roleName type="kin" corresp="pe__wolfgang_knoll_QGW_II_III_5480"
+                           >su/on</roleName></rs></rs> hat <rs type="fn" role="recipient"><rs
+                        type="person" ref="pe__johann_lanczhart_QGW_II_III_5485">seinen <roleName
+                           type="kin" corresp="pe__georg_knoll_QGW_II_III_5493">Vetter</roleName>
+                        Hannsen Lanntzhart diezeit ainer des <roleName type="occ"
+                           corresp="org__wien">rats</roleName> der stat daselbs</rs></rs>
+                  bevollmächtigt, Knolls haus in derWolltzeil daselbs zu Wienn, mit ainem tail
+                  zunagst Ludbigen Mu/orren des Pekhen haus gelegen zu verkhaufen und solichen kauf
+                  in derselben stat Wienn gruntpu/och auch aufsand- und kaufbriefen zu fertigen, umb
+                  die insigl sovil er der darzu/o bedorff zu bitten, den Kaufpreis zu „ meinen" (d.
+                  i. des Vollmachtsausstellers) handen einzunehmen, Schulden, für welche der
+                  Aussteller gemeltes haus in obberu/ortem gruntpu/och ver- saczt hab auszurichten,
+                  auch allen Verpflichtungen hinsichtlich der statsstewr, ansleg und ander
+                  mitleidung nachzukommen, kurz daß er alles und yedes, so in solicher Sachen
+                  notturft ist oder sein wirdet, fu/ornemen, handeln und thu/on sol , was der
+                  Aussteller, wenn anwesend, selbst tun würde. We/ar auch, das er icht merers oder
+                  pessers gewalts dann hier innebegriffen ist, benötigen würde, so ist solche
+                  Vollmacht hiemit dem Hans Lanzhart erteilt in allem rechten als ob derselb gewalt
+                  mit nemlichen sonderlichen worten, püncten, clausin und articln hierinne auch
+                  begriffen were . </rs></p>
+         </div>
+         <div type="seal">
+            <p><rs type="event" ref="ev__QGW_II_II_5505"><rs type="fn" role="witness">Besiegelt mit
+                     den aufgedrückten Siegeln <rs type="person"
+                        ref="pe__wolfgang_rieder_QGW_II_II_3297">Wolfganngen Rieder <roleName
+                           type="occ" corresp="org__wien">urtailschreiber</roleName> diezeit auch
+                        ainer des obgemelten <roleName type="occ" corresp="org__wien"
+                           >rats</roleName></rs> und <rs type="person"
+                        ref="pe__johann_mulhauser_QGW_II_III_4119">Hannsen Mülhawser <roleName
+                           type="occ" corresp="org__wien">burger</roleName> zu Wienn</rs>.</rs>
+               </rs></p>
+         </div>
+         <div type="nota">
+            <p>Gleichzeitige Rückaufschrift am oberen Rande der umgekehrten Rückseite: Jörg Knollen
+               g </p>
+         </div>
+         <div type="lists">
+            <xi:include xmlns:xi="http://www.w3.org/2001/XInclude"
+               href="../../../../indices/placeList.xml" xpointer="element(/1/2/1/1)"/>
+            <xi:include xmlns:xi="http://www.w3.org/2001/XInclude"
+               href="../../../../indices/personList.xml" xpointer="element(/1/2/1/1)"/>
+            <xi:include xmlns:xi="http://www.w3.org/2001/XInclude"
+               href="../../../../indices/eventList.xml" xpointer="element(/1/2/1/1)"/>
+            <xi:include xmlns:xi="http://www.w3.org/2001/XInclude"
+               href="../../../../indices/orgList.xml" xpointer="element(/1/2/1/1)"/>
+         </div>
+      </body>
+   </text>
+</TEI>

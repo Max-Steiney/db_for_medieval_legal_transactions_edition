@@ -1,0 +1,126 @@
+<?xml version="1.0" encoding="UTF-8" standalone="no"?>
+<!DOCTYPE TEI
+  SYSTEM "../../../schema/toolbox_full.dtd">
+<TEI xmlns:cei="http://www.monasterium.net/NS/cei" xmlns="http://www.tei-c.org/ns/1.0">
+   <teiHeader>
+      <fileDesc>
+         <titleStmt>
+            <title>Tei version of 3892 exported from monasterium.net </title>
+         </titleStmt>
+         <publicationStmt>
+            <p/>
+         </publicationStmt>
+         <!--In Original: cei:front/cei:sourceDesc/cei:sourceDescRegest-->
+         <sourceDesc>
+            <bibl>Quellen zur Geschichte der Stadt Wien, Bd. II/3, Nr. As published in HAUrk by
+               Wiener Stadt- und Landesarchiv </bibl>
+            <msDesc>
+               <msIdentifier>
+                  <repository>Wiener Stadt- und Landesarchiv</repository>
+                  <idno>3892</idno>
+                  <altIdentifier type="old">
+                     <idno>518154</idno>
+                  </altIdentifier>
+               </msIdentifier>
+               <msContents>
+                  <msItem>
+                     <listBibl>
+                        <bibl type="url"
+                           >https://www.monasterium.net/mom/AT-WStLA/HAUrk/3892/charter</bibl>
+                     </listBibl>
+                  </msItem>
+               </msContents>
+               <physDesc>
+                  <sealDesc>
+                     <seal>
+                        <p>Rückwärts aufgedrücktes Wappensiegel (Sava Fig. 111) von rothem
+                           Wachse.</p>
+                     </seal>
+                  </sealDesc>
+               </physDesc>
+            </msDesc>
+         </sourceDesc>
+      </fileDesc>
+      <profileDesc>
+         <creation>
+            <placeName>Wiener Neu Stadt</placeName>
+            <date when="14590525">1459 V 25</date>
+            <origDate>Geben zu der Neunstat an freitag sand Urbans tag, anno domini etc. lviiij°,
+               unsers kaisertumbs im 8., unserr reich, des Römischen im 20. und des Hungrischen im
+               1. jaren. </origDate></creation>
+      </profileDesc>
+   </teiHeader>
+   <facsimile>
+      <surface>
+         <graphic
+            url="http://images.monasterium.net/pics/AT-WStLA/HA-U/WStLA-HA-Urkunden_03892_r.jpg"/>
+      </surface>
+      <surface>
+         <graphic
+            url="http://images.monasterium.net/pics/AT-WStLA/HA-U/WStLA-HA-Urkunden_03892_v.jpg"/>
+      </surface>
+   </facsimile>
+   <text>
+      <body>
+         <div type="abstract" resp="vh">
+            <p><rs type="event" ref="ev__QGW_II_III_3892"><rs type="fn" role="issuer"><rs
+                        type="person" ref="pe__friedrich_v_herzog_von_oesterreich_QGW_II_I_3270"
+                           ><roleName type="occ" corresp="org__heiliges_roemisches_reich"
+                           >Kaiser</roleName> Friedrich III.</rs></rs> an <rs type="fn"
+                     role="recipient"><rs type="org" ref="org__wien">Bürgermeister, Richter und Rath
+                        zu Wien</rs></rs>. Er habe sie seinerzeit von der <rs type="person"
+                     ref="pe__katharina_QGW_II_III_3892">Kathrei, <rs type="person"
+                        ref="pe__niklas_trubenberger_QGW_II_III_3892">Niclasen Trübenperger,
+                           <roleName type="occ" corresp="org__wien">burger</roleName> zu Wienn
+                           <roleName type="rep" corresp="pe__leonhard_lehenholzer_QGW_II_II_3371"
+                              ><add>geschefftherr</add></roleName></rs>, <roleName type="kin"
+                        corresp="pe__niklas_trubenberger_QGW_II_III_3892">[hausfrau]</roleName></rs>
+                  heiratguts wegen, so ir weilent <rs type="person"
+                     ref="pe__leonhard_lehenholzer_QGW_II_II_3371">Lienhart Lehenholczer zu irem
+                        <roleName type="dead"><add>seligen</add></roleName>varigen <roleName
+                        type="kin" corresp="pe__katharina_QGW_II_III_3892">mann</roleName></rs> ze
+                  geben versprochen hat , beauftragt, denselben Trübenperger, ferner <rs
+                     type="person" ref="pe__niklas_teschler_QGW_II_II_2951">Niclasen Teschler
+                        <roleName type="occ" corresp="org__wien"
+                        ><add>burger</add></roleName><roleName type="rep"
+                        corresp="pe__leonhard_lehenholzer_QGW_II_II_3371"
+                        ><add>geschefftherr</add></roleName></rs>, <rs type="person"
+                     ref="pe__stephan_tengk_QGW_II_II_3455">Steffan Tengken <roleName type="occ"
+                        corresp="org__wien"><add>burger</add></roleName><roleName type="rep"
+                        corresp="pe__leonhard_lehenholzer_QGW_II_II_3371"
+                        ><add>geschefftherr</add></roleName></rs>, <rs type="person"
+                     ref="pe__thomas_praitenweidacher_QGW_II_II_3462">Thoman Praitenweidacher
+                        <roleName type="occ" corresp="org__wien"
+                        ><add>burger</add></roleName><roleName type="rep"
+                        corresp="pe__leonhard_lehenholzer_QGW_II_II_3371"
+                        ><add>geschefftherr</add></roleName></rs> und <rs type="person"
+                     ref="pe__johann_progentl_QGW_II_III_3892">Hannsen Progentel, <roleName
+                        type="occ" corresp="org__wien">burger</roleName> zu Wienn, als <roleName
+                        type="rep" corresp="pe__leonhard_lehenholzer_QGW_II_II_3371"
+                        >geschefftleut</roleName></rs> des egenannten Lehenholczer , vorzuladen und
+                  darob ze sein, damit der egenannten Kathrein volge, das so ir rechtlich zugehöre.
+                  Nun habe ihm Kathrei vorgebracht, dass sie ir klag und vordrung in ainer zedel dem
+                  Rathe geantwurtt habe, darinn doch ir natdurfft der sachenhalb nicht aigentlich
+                  begriffen sei, weshalb sie dieselb zedel wieder zurückverlangt habe, was ihr aber
+                  von dem Rathe abgeschlagen worden sei. Er befiehlt ihnen daher, der Kathrei
+                  obbemelte zedel wiederzugeben, sie die nach iren natdurfften seczen zu lassen und
+                  auf Grund der neuen Verantwortung die Parteien vorzuladen, sie entweder gütlich zu
+                  vergleichen oder mit recht zu entscheiden. </rs></p>
+         </div>
+         <div type="nota">
+            <p><rs type="event" ref="ev__QGW_II_III_3892_nota">Von anderer Hand: commissio domini
+                  imperatoris in consilio. </rs></p>
+         </div>
+         <div type="lists">
+            <xi:include xmlns:xi="http://www.w3.org/2001/XInclude"
+               href="../../../../indices/placeList.xml" xpointer="element(/1/2/1/1)"/>
+            <xi:include xmlns:xi="http://www.w3.org/2001/XInclude"
+               href="../../../../indices/personList.xml" xpointer="element(/1/2/1/1)"/>
+            <xi:include xmlns:xi="http://www.w3.org/2001/XInclude"
+               href="../../../../indices/eventList.xml" xpointer="element(/1/2/1/1)"/>
+            <xi:include xmlns:xi="http://www.w3.org/2001/XInclude"
+               href="../../../../indices/orgList.xml" xpointer="element(/1/2/1/1)"/>
+         </div>
+      </body>
+   </text>
+</TEI>

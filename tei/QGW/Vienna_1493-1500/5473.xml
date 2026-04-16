@@ -1,0 +1,116 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<TEI xmlns="http://www.tei-c.org/ns/1.0" xmlns:cei="http://www.monasterium.net/NS/cei"
+   xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance">
+   <teiHeader>
+      <fileDesc>
+         <titleStmt>
+            <title>Tei version of 5473 exported from monasterium.net </title>
+         </titleStmt>
+         <publicationStmt>
+            <p/>
+         </publicationStmt>
+         <!--In Original: cei:front/cei:sourceDesc/cei:sourceDescRegest-->
+         <sourceDesc>
+            <bibl>Quellen zur Geschichte der Stadt Wien, Bd. II/3, Nr. As published in HAUrk by
+               Wiener Stadt- und Landesarchiv </bibl>
+            <msDesc>
+               <msIdentifier>
+                  <repository>Wiener Stadt- und Landesarchiv</repository>
+                  <idno>5473</idno>
+                  <altIdentifier type="old">
+                     <idno>519781</idno>
+                  </altIdentifier>
+               </msIdentifier>
+               <msContents>
+                  <msItem>
+                     <listBibl>
+                        <bibl>Camesina, Regesten 113 n° 533 Regest.</bibl>
+                     </listBibl>
+                  </msItem>
+               </msContents>
+               <physDesc>
+                  <sealDesc>
+                     <seal>
+                        <p>Signet und Bestätigungsclausel des <quote>Fridericus Himler, clericus
+                              Herbipolensis diocesis, publicus sacra imperiali auctoritate notarius,
+                              causarumque curie Wiennensis scriba juratus </quote>. </p>
+                     </seal>
+                  </sealDesc>
+               </physDesc>
+            </msDesc>
+         </sourceDesc>
+      </fileDesc>
+      <encodingDesc>
+         <projectDesc default="false">
+            <p><label type="contentual-editing">Projekt Christina Lutter Stadt und
+                  Gemeinschaft</label></p>
+         </projectDesc>
+      </encodingDesc>
+      <profileDesc>
+         <creation>
+            <placeName>Wien</placeName>
+            <date when="14930206">1493 II 06</date>
+            <origDate>Acta fuerunt hec Wienne in ecclesia kathedrali sub anno, indicione, die, mense
+               et pontificatu, quibus supra, praesentibus honorabilibus viris, dominis Johanne Syn
+               et Daniele Schächel de Enczistorff, dominorum canonicorum capellanis, presbyteris
+               Wiennensis </origDate></creation>
+      </profileDesc>
+   </teiHeader>
+   <facsimile>
+      <surface>
+         <graphic
+            url="http://images.monasterium.net/pics/AT-WStLA/HA-U/WStLA-HA-Urkunden_05473_r.jpg"/>
+      </surface>
+      <surface>
+         <graphic
+            url="http://images.monasterium.net/pics/AT-WStLA/HA-U/WStLA-HA-Urkunden_05473_v.jpg"/>
+      </surface>
+   </facsimile>
+   <text>
+      <body>
+         <div type="abstract">
+            <p><rs type="event" ref="ev__QGW_II_II_5473">* Anno a nativitate ( domini) millesimo
+                  quadringentesimo nonagesimo tercio, indicione undecima, die vero Mercurii, sexta
+                  mensis februarii, pontificatus sanctissimi in Christo patris et domini nostri,
+                  domini Alexandri, divina providencia pape sexti, anno eius primo , in Gegenwart
+                  des öffentlichen Notars und der Zeugen <triggerstring n="disp">weist<add>
+                     an</add></triggerstring>
+                  <rs type="fn" role="issuer"><rs type="person"
+                        ref="pe__wilhelm_gerhaertl_QGW_II_III_5473"><roleName type="title"
+                           >dominus</roleName> Wilhelmus Gerhärtl, Decretorum licenciatus, <roleName
+                           type="prof" cert="unknown">canonicus ecclesie Wiennensis et ipsius curie
+                           in spiritualibus vicarius generalis et officialis ex commissione speciali
+                           venerabilis capituli Wiennensis, sede episcopali protunc
+                           vacante</roleName></rs></rs> , auf Grund eines vorgelegten, von <rs
+                     type="person" ref="pe__johann_prugkmaister_QGW_II_III_5473">Johannes
+                     Prugkmaister, <roleName type="occ" corresp="org__passau-dioezese"
+                        >clericus</roleName> Pataviensis, <roleName type="prof">notarius
+                        publicus</roleName></rs>, ausgefertigten Instrumentes <rs type="fn"
+                     role="recipient">
+                     <rs type="person" ref="pe__wolfgang_toedl_QGW_II_III_5473"><roleName
+                           type="title">dominum</roleName> Wolfgangum Tödl, <roleName type="occ"
+                           corresp="org__stratzing-st_nikolaus" cert="unknown">plebanum
+                           ecclesie</roleName> [ 434] sancti Nicolai in Straczing</rs></rs>, in den
+                  Besitz des <rs type="org" ref="org__wien-st_stephan-altar_dreikoenige">in der
+                     Stephanskirche gelegenen Dreikönigsaltars</rs> ein, welcher durch den
+                  freiwilligen Verzicht des <rs type="person"
+                     ref="pe__erhard_simonis_QGW_II_III_5473">letzten <roleName type="occ"
+                        corresp="org__wien-st_stephan-altar_dreikoenige">Rectors</roleName>,
+                        <roleName type="title">domini</roleName> Erhardi Symonis, <roleName
+                        type="org" corresp="org__salzburg-st_maria">capellani</roleName> ecclesie
+                     beate Marie Virginis in Mülln extra civitatem Salzburgensem</rs> , erledigt
+                  worden war. </rs></p>
+         </div>
+         <div type="lists">
+            <xi:include xmlns:xi="http://www.w3.org/2001/XInclude"
+               href="../../../../indices/placeList.xml" xpointer="element(/1/2/1/1)"/>
+            <xi:include xmlns:xi="http://www.w3.org/2001/XInclude"
+               href="../../../../indices/personList.xml" xpointer="element(/1/2/1/1)"/>
+            <xi:include xmlns:xi="http://www.w3.org/2001/XInclude"
+               href="../../../../indices/eventList.xml" xpointer="element(/1/2/1/1)"/>
+            <xi:include xmlns:xi="http://www.w3.org/2001/XInclude"
+               href="../../../../indices/orgList.xml" xpointer="element(/1/2/1/1)"/>
+         </div>
+      </body>
+   </text>
+</TEI>

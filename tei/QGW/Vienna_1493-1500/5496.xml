@@ -1,0 +1,104 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<TEI xmlns="http://www.tei-c.org/ns/1.0" xmlns:cei="http://www.monasterium.net/NS/cei"
+   xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance">
+   <teiHeader>
+      <fileDesc>
+         <titleStmt>
+            <title>Tei version of 5496 exported from monasterium.net </title>
+         </titleStmt>
+         <publicationStmt>
+            <p/>
+         </publicationStmt>
+         <!--In Original: cei:front/cei:sourceDesc/cei:sourceDescRegest-->
+         <sourceDesc>
+            <bibl>Quellen zur Geschichte der Stadt Wien, Bd. II/3, Nr. As published in HAUrk by
+               Wiener Stadt- und Landesarchiv </bibl>
+            <msDesc>
+               <msIdentifier>
+                  <repository>Wiener Stadt- und Landesarchiv</repository>
+                  <idno>5496</idno>
+                  <altIdentifier type="old">
+                     <idno>519804</idno>
+                  </altIdentifier>
+               </msIdentifier>
+               <physDesc>
+                  <sealDesc>
+                     <seal>
+                        <p>Zwei anhangende Siegel, grün u. Sch.</p>
+                     </seal>
+                  </sealDesc>
+               </physDesc>
+            </msDesc>
+         </sourceDesc>
+      </fileDesc>
+      <encodingDesc>
+         <projectDesc default="false">
+            <p><label type="contentual-editing">Projekt Christina Lutter Stadt und
+                  Gemeinschaft</label></p>
+         </projectDesc>
+      </encodingDesc>
+      <profileDesc>
+         <creation>
+            <placeName>Ober-Sulz</placeName>
+            <date when="14931104">1493 XI 04</date>
+            <origDate>zu Obernsulcz, an monntag vor sand Leonharts tag, des heiligen
+               abbts.</origDate></creation>
+      </profileDesc>
+   </teiHeader>
+   <facsimile>
+      <surface>
+         <graphic
+            url="http://images.monasterium.net/pics/AT-WStLA/HA-U/WStLA-HA-Urkunden_05496_r.jpg"/>
+      </surface>
+      <surface>
+         <graphic
+            url="http://images.monasterium.net/pics/AT-WStLA/HA-U/WStLA-HA-Urkunden_05496_v.jpg"/>
+      </surface>
+   </facsimile>
+   <text>
+      <body>
+         <div type="abstract">
+            <p><rs type="event" ref="ev__QGW_II_II_5496">
+                  <rs type="fn" role="issuer"><rs type="person"
+                        ref="pe__michael_vorstl_QGW_II_III_5496">Michel Vorsstl, <roleName
+                           type="occ" corresp="org__obernsulz">richter</roleName></rs>, <rs
+                        type="person" ref="pe__gilg_zimmermann_QGW_II_II_3264">Gilig Zimerman
+                           <roleName type="prof">zechmaister</roleName></rs>, <rs type="person"
+                        ref="pe__paul_zechmeister_QGW_II_III_5496">Paul Zechmaister, baid <roleName
+                           type="prof">zechmaister</roleName></rs>, und <rs type="org"
+                        ref="org__obernsulz">die gancz gemain zu Obernsulcz</rs></rs> verkaufen zwei
+                  zur Pfarrkirche daselbst gehörige Weingärten, ainer, des sechs viertail ist,
+                  genannt das Full, zunagst des obgenanntn Michel Vörsstl weingarttn, davon man
+                  järlichen diennet den herrn zum Heilign Kreucz 6 dn. zu sand Michels tag zu
+                  gruntdienst, und der ander, des vier viertail sind, genannt der Holczweingarttn,
+                  zunagst Jannsen Wolff weingartn, davon man jerlichen dient zu des Neithartn liecht
+                  in der pfarr zu Obernsulcz 5 dn. auch zu sand Michels tag zu gruntdienst, baid zu
+                  Obernsulcz , um 37 lb dn. <rs type="fn" role="recipient"><rs type="person"
+                        ref="pe__wolfgang_placzer_QGW_II_III_5496"><roleName type="title"
+                           >hern</roleName> Wolfgangen Placzer, <roleName type="occ"
+                           corresp="org__passau-dioezese">briester</roleName> Passauer
+                        bistumbs,</rs> und seinen erben</rs>. </rs></p>
+         </div>
+         <div type="seal">
+            <p><rs type="event" ref="ev__QGW_II_II_5496"><rs type="fn" role="witness">Besiegelt mit
+                     den Siegeln des <rs type="person" ref="pe__wolfgang_hurber_QGW_II_III_5480"
+                           ><roleName type="title">edeln</roleName> Wolfgangn Hurber<roleName
+                           type="occ" corresp="org__wien"><add>burger</add></roleName></rs> und <rs
+                        type="person" ref="pe__johann_mulhauser_QGW_II_III_4119">Hannsen Mülhauser,
+                        baider <roleName type="occ" corresp="org__wien">burger</roleName> zu
+                        Wienn</rs>.</rs>
+               </rs></p>
+         </div>
+         <div type="lists">
+            <xi:include xmlns:xi="http://www.w3.org/2001/XInclude"
+               href="../../../../indices/placeList.xml" xpointer="element(/1/2/1/1)"/>
+            <xi:include xmlns:xi="http://www.w3.org/2001/XInclude"
+               href="../../../../indices/personList.xml" xpointer="element(/1/2/1/1)"/>
+            <xi:include xmlns:xi="http://www.w3.org/2001/XInclude"
+               href="../../../../indices/eventList.xml" xpointer="element(/1/2/1/1)"/>
+            <xi:include xmlns:xi="http://www.w3.org/2001/XInclude"
+               href="../../../../indices/orgList.xml" xpointer="element(/1/2/1/1)"/>
+         </div>
+      </body>
+   </text>
+</TEI>

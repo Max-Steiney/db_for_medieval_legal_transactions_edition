@@ -1,0 +1,91 @@
+<?xml version="1.0" encoding="UTF-8"?><!DOCTYPE TEI SYSTEM "../../../schema/toolbox_full.dtd"><TEI xmlns="http://www.tei-c.org/ns/1.0" xmlns:cei="http://www.monasterium.net/NS/cei" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance">
+   <teiHeader>
+      <fileDesc>
+         <titleStmt>
+            <title>Tei version of 1961 exported from monasterium.net </title>
+         </titleStmt>
+         <publicationStmt>
+            <p/>
+         </publicationStmt>
+         <!--In Original: cei:front/cei:sourceDesc/cei:sourceDescRegest-->
+         <sourceDesc>
+            <bibl>Quellen zur Geschichte der Stadt Wien, Bd. II/2, Nr. 1961 As published in HAUrk by
+               Wiener Stadt- und Landesarchiv </bibl>
+            <msDesc>
+               <msIdentifier>
+                  <repository>Wiener Stadt- und Landesarchiv</repository>
+                  <idno>1961</idno>
+                  <altIdentifier type="old">
+                     <idno>516169</idno>
+                  </altIdentifier>
+               </msIdentifier>
+               <msContents>
+                  <msItem>
+                     <listBibl>
+                        <bibl>Camesina, Regesten 34 n° 167 Regest.</bibl>
+                        <bibl>Jahrbuch der kais. Kunstsamml. 16b, n° 13279 Regest.</bibl>
+                     </listBibl>
+                  </msItem>
+               </msContents>
+               <physDesc>
+                  <sealDesc>
+                     <seal>
+                        <p>Anhangendes Siegel, roth u. Sch. </p>
+                     </seal>
+                  </sealDesc>
+               </physDesc>
+            </msDesc>
+         </sourceDesc>
+      </fileDesc>       <encodingDesc>          <projectDesc default="false">             <p><label type="contentual-editing">Projekt Christina Lutter Stadt und                   Gemeinschaft</label></p>          </projectDesc>       </encodingDesc>
+      <profileDesc>
+         <creation>
+            <placeName>Wien</placeName>
+            <date when="14131005">1413 X 05</date>
+            <origDate>ze Wienn, an pfincztag nach sand Michels tag.</origDate></creation>
+      </profileDesc>
+   </teiHeader>
+   <facsimile>
+      <surface>
+         <graphic url="http://images.monasterium.net/pics/AT-WStLA/HA-U/WStLA-HA-Urkunden_01961_r.jpg"/>
+      </surface>
+      <surface>
+         <graphic url="http://images.monasterium.net/pics/AT-WStLA/HA-U/WStLA-HA-Urkunden_01961_v.jpg"/>
+      </surface>
+   </facsimile>
+   <text>
+      <body>
+         <div type="abstract">
+            <p>
+               <rs type="event" ref="ev__QGW_II_II_1961"><rs type="fn" role="issuer"><rs type="person" ref="pe__rudolf_angerfelder_QGW_II_I_1335">Rudolf der
+                        Angervelder, <roleName type="occ" corresp="org__wien">burgermaister</roleName></rs>, und <rs type="org" ref="org__wien">der
+                        rat gemain der stat ze Wienn</rs></rs>
+                  <triggerstring n="disp">beurkunden, dass</triggerstring> ihr <rs type="fn" role="recipient"><rs type="person" ref="pe__georg_grunnpekch_QGW_II_I_1304"><roleName type="occ" corresp="org__wien">mitgesworner</roleName> Jorg
+                        der Grünpeck</rs></rs> ihnen vorgebracht habe, <rs type="event" ref="NULL">wie er als Gerhab des <rs type="person" ref="pe__peter_rigelpeck_QGW_II_II_1961"><roleName type="kin" corresp="pe__georg_grunnpekch_QGW_II_I_1304"><add>Gerhab
+                           </add></roleName>Peter Rigelpeck</rs> eine von dessen an <rs type="person" ref="pe__kunigunde_QGW_320"><roleName type="title">frau</roleName> Kunigund, Rudolfs des Graven <roleName type="kin" corresp="pe__rudolf_graf_QGW_II_I_1421">hausfrau</roleName></rs>, hincz
+                        <rs type="org" ref="org__wien-st_stephan-altar_st_ulrich">Allerheiligen
+                        tumbkirchen hincz sand Stepfan auf sand Ulreichs altar</rs>, der nu verpaut
+                     ist worden, davon man dieselb ewig mess auf sand Blasien altar in der herzogen
+                     kapelln yecz verweset , gestiftete Messe seinem <rs type="person" ref="pe__ludwig_poll_QGW_II_II_1961"><roleName type="kin" corresp="pe__georg_grunnpekch_QGW_II_I_1304">Stiefsohne</roleName> hern
+                        Ludweigen dem Pollen, <roleName type="dead">dem got genad</roleName></rs>,
+                     mit zwei Weingärten, ainer gelegen ze Praitensee, des dreu achttail sind, der
+                     ander ze Dornpach, des ain drittail ains jeuchs ist</rs> , <triggerstring n="disp">verliehen habe</triggerstring>. Da die beiden Weingärten von missratnuss der
+                  frücht so gar urpau worden, dass sie villeicht derselben ewigen mess, seinem sun
+                  und seinen nachkomen enwrcht und öd worden wern , habe er sie mit seinem eigenen
+                  Gut in rechten Stand gebracht und verlange nach dem Tode seines Stiefsohnes
+                  entweder den Ertrag derselben oder den Ersatz seiner Auslagen. Dagegen erhebt der
+                     <rs type="fn" role="recipient"><rs type="person" ref="pe__stephan_von_grafendorf_QGW_II_II_1961"><roleName type="prof">Priester</roleName>
+                        <roleName type="title">her</roleName> Stepfan von Grefendorf</rs></rs>, dem
+                  Peter Rigelpeck die Messe nach Ludwigs Tod verliehen hatte, Einsprache und der
+                  Rath <triggerstring n="disp">entscheidet</triggerstring> zu seinen Gunsten auf Ablehnung
+                  der Ansprüche Grünpecks.</rs>
+            </p>
+         </div>
+         <div type="seal">
+            <p><rs type="event" ref="ev__QGW_II_II_1961"><rs type="fn" role="witness">Besiegelt mit
+                     der <rs type="org" ref="org__wien">stat klainem insigel</rs>.</rs></rs>
+            </p>
+         </div>
+         <div type="lists"><xi:include xmlns:xi="http://www.w3.org/2001/XInclude" href="../../../../indices/placeList.xml" xpointer="element(/1/2/1/1)"/><xi:include xmlns:xi="http://www.w3.org/2001/XInclude" href="../../../../indices/personList.xml" xpointer="element(/1/2/1/1)"/><xi:include xmlns:xi="http://www.w3.org/2001/XInclude" href="../../../../indices/eventList.xml" xpointer="element(/1/2/1/1)"/><xi:include xmlns:xi="http://www.w3.org/2001/XInclude" href="../../../../indices/orgList.xml" xpointer="element(/1/2/1/1)"/></div>
+      </body>
+   </text>
+</TEI>

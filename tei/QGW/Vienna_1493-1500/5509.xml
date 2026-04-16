@@ -1,0 +1,205 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<TEI xmlns="http://www.tei-c.org/ns/1.0" xmlns:cei="http://www.monasterium.net/NS/cei"
+   xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance">
+   <teiHeader>
+      <fileDesc>
+         <titleStmt>
+            <title>Tei version of 5509 exported from monasterium.net </title>
+         </titleStmt>
+         <publicationStmt>
+            <p/>
+         </publicationStmt>
+         <!--In Original: cei:front/cei:sourceDesc/cei:sourceDescRegest-->
+         <sourceDesc>
+            <bibl>Quellen zur Geschichte der Stadt Wien, Bd. II/4, Nr. 5509 As published in HAUrk by
+               Wiener Stadt- und Landesarchiv </bibl>
+            <msDesc>
+               <msIdentifier>
+                  <repository>Wiener Stadt- und Landesarchiv</repository>
+                  <idno>5509</idno>
+                  <altIdentifier type="old">
+                     <idno>519817</idno>
+                  </altIdentifier>
+               </msIdentifier>
+               <physDesc>
+                  <sealDesc>
+                     <seal>
+                        <p>Mit 4 Hängesiegeln in grünem Wachse an Pergamentpresseln. a) IV C, im
+                           Schilde und auf dem Helme ein stehender Mann, in den erhobenen Händen
+                           Fische haltend: Stefan - Enn (auf Spruchband) b) IV C beschädigt, im
+                           Schilde stehender, auf dem Flug wachsender, gepanzerter Mann, in
+                           erhobenen Händen Muscheln haltend: ..., Hittndorffer c) IV C im
+                           dreigeteilten Schilde und auf dem Fluge 3 natürliche Rosen: Görig –
+                           Jordan d) IV C auf quergeteiltem Schilde und zwischen den Flügen Leopard:
+                           Wolfgang - rieder.Siegler: die beiden ersten Aussteller für Prantsteter,
+                           Vinkh und Smidinger bittet man <quote>die ersamen weisen Geörgen Jordan,
+                              die zeit an</quote>- <quote>wald in der münß, burger zu Wienn, und
+                              Wolfganngen Rieder statschreiber daselbs</quote> zu siegeln. </p>
+                     </seal>
+                  </sealDesc>
+               </physDesc>
+            </msDesc>
+         </sourceDesc>
+      </fileDesc>
+      <encodingDesc>
+         <projectDesc default="false">
+            <p><label type="contentual-editing">Projekt Christina Lutter Stadt und
+                  Gemeinschaft</label></p>
+         </projectDesc>
+      </encodingDesc>
+      <profileDesc>
+         <creation>
+            <placeName>Wien</placeName>
+            <date when="14940523">1494 V 23</date>
+            <origDate>Beschechen zu Wienn, an freitag vor sannd Urbans tag des heiligen babsts . .
+               .</origDate></creation>
+      </profileDesc>
+   </teiHeader>
+   <facsimile>
+      <surface>
+         <graphic
+            url="http://images.monasterium.net/pics/AT-WStLA/HA-U/WStLA-HA-Urkunden_05509_r.jpg"/>
+      </surface>
+      <surface>
+         <graphic
+            url="http://images.monasterium.net/pics/AT-WStLA/HA-U/WStLA-HA-Urkunden_05509_v.jpg"/>
+      </surface>
+   </facsimile>
+   <text>
+      <body>
+         <div type="abstract">
+            <p><rs type="event" ref="ev__QGW_II_II_5509">
+                  <rs type="fn" role="issuer"><rs type="person"
+                        ref="pe__stephan_een_QGW_II_III_5481">Steffan Een<roleName type="occ"
+                           corresp="org__wien"><add>rats</add></roleName></rs>, . . . <rs
+                        type="person" ref="pe__laurenz_hittendorffer_QGW_II_III_5495">Larenncz
+                        Hittenndorffer, diezeit bed des <roleName type="occ" corresp="org__wien"
+                           >rats</roleName></rs>, . . . <rs type="person"
+                        ref="pe__andreas_prantstetter_QGW_II_III_5495">Anndre
+                        Pranntste/ater</rs>,<rs type="person" ref="pe__peter_vinkh_QGW_II_IV_5509">
+                        Paul Vinkh</rs> und . . . <rs type="person"
+                        ref="pe__heinrich_smidinger_QGW_II_III_5486">Hainrich Smidinger, <roleName
+                           type="occ" corresp="org__wien">burger</roleName> zu Wienn</rs></rs>
+                  Schiedsrichter in Angelegenheit des Testaments <rs type="person"
+                     ref="pe__barbara_QGW_II_IV_5509_a">weilent <roleName type="title"
+                        >fraw</roleName> Barbara, <rs type="person"
+                        ref="pe__niklas_ernst_QGW_II_IV_5509">Niclasen Ernsts <roleName type="occ"
+                           corresp="org__wien">burger</roleName> daselbs <roleName type="dead"
+                           >wittib</roleName></rs><roleName type="kin"
+                        corresp="pe__niklas_ernst_QGW_II_IV_5509"><add>wittib</add></roleName>
+                     <roleName type="dead">selige</roleName></rs> . . ., das vor dem .. . <rs
+                     type="org" ref="org__wien">rate der stat</rs> hie geweist und in das statpu/och
+                  eingeschriben ... ist . .. dawider dann ... <rs type="person"
+                     ref="pe__michael_seuer_QGW_II_IV_5509">Michel Sewer <roleName type="occ"
+                        corresp="org__wien">burger</roleName> zu Wienn<roleName type="kin"
+                        corresp="pe__barbara_QGW_II_IV_5509_a"><add>aiden</add></roleName></rs> und
+                     <rs type="person" ref="pe__margarethe_QGW_II_IV_5509">Margreth sein <roleName
+                        type="kin" corresp="pe__michael_seuer_QGW_II_IV_5509">hausfraw</roleName>, .
+                     . . Niclasen Ernsts und Barbaren seiner hausfraun seligen <roleName type="kin"
+                        corresp="pe__niklas_ernst_QGW_II_IV_5509">tochter</roleName><roleName
+                        type="kin" corresp="pe__barbara_QGW_II_IV_5509_a"
+                        ><add>tochter</add></roleName>,</rs> auch <rs type="person"
+                     ref="pe__georg_ebersperger_QGW_II_IV_5509_a">Jörg Ebersperger <roleName
+                        type="occ" corresp="org__wien">burger</roleName> ... zu Wienn ... als
+                        <roleName type="rep" corresp="pe__georg_ebersperger_QGW_II_IV_5509_b"
+                        >gerhab</roleName>
+                     <rs type="person" ref="pe__georg_ebersperger_QGW_II_IV_5509_b">Jörgen seins
+                           <roleName type="kin" corresp="pe__georg_ebersperger_QGW_II_IV_5509_a"
+                           >su/ons</roleName></rs>,</rs> den er bei <rs type="person"
+                     ref="pe__anna_QGW_II_IV_5509">Annen seiner <roleName type="dead"
+                        >erern</roleName>
+                     <roleName type="kin" corresp="pe__georg_ebersperger_QGW_II_IV_5509_a"
+                        >hausfraun</roleName> auch ... n Ernsts und n seiner hausfrawn <roleName
+                        type="kin" corresp="pe__niklas_ernst_QGW_II_IV_5509"
+                        >tochter</roleName><roleName type="kin"
+                        corresp="pe__barbara_QGW_II_IV_5509_a"><add>tochter</add></roleName></rs>
+                  elichen erobert, einred gehabt haben . .. auch von der schulden wegen, so die ...
+                  Ernstin dem .. . Sewer irm aiden schuldig worden und noch unbezalt ist, mit <rs
+                     type="person" ref="pe__oswald_ernst_QGW_II_IV_5509">Oswalden Ernst, auch
+                        <roleName type="occ" corresp="org__wien">burger</roleName> zu Wienn, irem
+                        <roleName type="kin" corresp="pe__barbara_QGW_II_IV_5509_a"
+                        >swager</roleName> und <unclear>brüder</unclear></rs> ettwas in zwitre/acht
+                  . . . körnen - jene genannten Schiedsrichter entscheiden wie folgt: Vonerst, als
+                  die obgenannt Barbara Ernstin vir weinge/arten, ainer der 3/4 ist, am Nusperg, der
+                  ander, des 5/4 sein zu Peczleinstorf, der dritt, der 2/4 sind, im veld zu Herrnalß
+                  und der vird, genannt Pogner Her 1/2 jeuch ist, zu Salmanstorf gelegen . .. irn
+                  kindern Oswalden Ernst, Margrethen Sewerin und Jörgen Ebersperger irm enenkh- lein
+                  für 200 phund phening . . heimstewr und hewratgu/ot auf irm hauß in der Hindern-
+                  pekhnstraß hie, mit aim tail neben sannd Philipp pfarrhof gele/agen, verschriben .
+                  . . hat , wird bestimmt, daß sie <rs type="fn" role="recipient"><rs type="person"
+                        ref="pe__oswald_ernst_QGW_II_IV_5509">dem Ernst</rs></rs> verbleiben, der
+                  oder dessen Erben den beiden anderen Teilen mit zusammen 133 lb 80 Pfennigen . . .
+                  auf sand Mertten tag des Jahres 1495 schiristkunftig an verziehen ausrichten und
+                  bezaln sol ... - Oswalden Ernst sollen auch die hernach benanten drei
+                  weinge/arten, ainer, des 1/2 jeuch ist, bei Newnburg in dem Wolfsgraben, der
+                  ander, der 5/4 sein, am Klaiczingerperg, und der dritt, der auch 1/2 jeuch ist,
+                  gelegen in dem Mitternperg, .. auch die 400 ungrisch guldein, so im sein mueter
+                  auf irm haus Under den Satlern hie gelegen, desgleichen auch die varund hab usw.
+                  geschafft hat, auch ledigclichen zusteen und von den beiden anderen Teilen
+                  grundbücherlich gewährleistet werden, wogegen ihnen Oswald binnen drei Jahren 132
+                  Pfund Pfennige gueter landeswerung in Osterreich auszahlen, auch die Salczerin und
+                  all zeainzig geltschulden, so sein mu/oter schuldig ist, ausrichten und bezaln
+                  soll alles von seinem gu/ot an seiner swester und jungen Ebersperger seins vettern
+                  schaden ... - Die silbrein gürtl, auch die silbrein Paternoster und der silbrein
+                  pecher, so . . . Barbara Ernstin <rs type="fn" role="recipient">derselben <rs
+                        type="person" ref="pe__margarethe_QGW_II_IV_5509">Sewerin</rs> ir lebtte/eg
+                     zu haben und nach irm tod <rs type="person" ref="pe__barbara_QGW_II_IV_5509_b"
+                        >Bärblein irm <roleName type="kin" corresp="pe__barbara_QGW_II_IV_5509_a"
+                           >enenkhlein</roleName></rs></rs> zuezesteen geschaft hat , sollen hinfort
+                  der Sewerin allein gehören. - Item die ¾ weingarten in der Kalichgrueb gelegen, so
+                  in gemeltem gesche/offt nicht begriffen sein und die den drei Erben zu gleichen
+                  Teilen gehören sollen, wurden dem <rs type="fn" role="recipient"><rs type="person"
+                        ref="pe__georg_ebersperger_QGW_II_IV_5509_b">jungen Ebersperger</rs></rs>
+                  ledigclichen zuegesprochen in süllen auch .. . Ernst und sein swester umb
+                  dieselben 3/4 weingarten alain ledigclich nucz und gweer bringen . - Für das Geld,
+                  welches die Erblasserin Micheln Sewer irm aiden schuldig worden ist und noch
+                  unbezalt aussteet, sollen das Haus in der Hindern Pekhnstraß gelegen den
+                  Gläubigern eingeantwortet werden und darumb von seiner hausfraun auch Oswalden
+                  Ernst seinem swager und alten Ebersperger, als gerhaben seins su/ons (Georg) in
+                  der stat hie gruntpu/och ledigclich in nucz und gweer bracht und gevertigt werden
+                  . . . Was aber sölh haus über yeczgemeldt schulden tewrer und pesser wert ist,
+                  dieselb Übermaß sol auf demselben hauß . . ., seiner hausfraun ledigclichen
+                  gevallen und beleiben. Hinsichtlich der anderweitigen hier nicht berührten
+                  Bestimmungen des Testaments soll dieses aufrecht bleiben. - Dem Schiedspruche
+                  Widersprechende sollen Römischer künigclicher Maiestet etc., unserm
+                  allergne/adigisten herrn zweiunddreissigk phund, zu Sannd Steffan zum paw
+                  fünfzechen phund und der stat Wienn zechen phund phennig zu peen zu geben
+                  verfallen sein , ohne daß dadurch der Schiedspruch hinfällig würde. Von diesem
+                  wird jedem Teil ein Exemplar eingehändigt. </rs></p>
+         </div>
+         <div type="seal">
+            <p><rs type="event" ref="ev__QGW_II_II_5509"><rs type="fn" role="witness">Siegler: die
+                     beiden ersten Aussteller<rs type="person" ref="pe__stephan_een_QGW_II_III_5481"
+                           ><add>Aussteller</add></rs>, . . . <rs type="person"
+                        ref="pe__laurenz_hittendorffer_QGW_II_III_5495"><add>Aussteller</add></rs>,
+                     . . . <rs type="person" ref="pe__andreas_prantstetter_QGW_II_III_5495">Anndre
+                        Pranntste/ater</rs> für Prantsteter, Vinkh und Smidinger bittet man die <rs
+                        type="person" ref="pe__georg_jordan_QGW_II_IV_5509"><roleName type="title"
+                           >ersamen weisen</roleName> Geörgen Jordan, die zeit <roleName type="occ"
+                           corresp="org__wien">anwald in der münß</roleName>, <roleName type="occ"
+                           corresp="org__wien">burger</roleName> zu Wienn</rs>, und <rs
+                        type="person" ref="pe__wolfgang_rieder_QGW_II_II_3297"><roleName
+                           type="title"><add>ersamen weisen</add></roleName>Wolfganngen Rieder
+                           <roleName type="occ" corresp="org__wien">statschreiber</roleName> daselbs
+                        zu siegeln</rs>.</rs>
+               </rs></p>
+         </div>
+         <div type="nota">
+            <p>Ältere Rückaufschrift: Sprug (!) brieffe zwischen Margarethen Michel Sever
+               hausfrauen, Jörgen Ewersperger und Oswalden Ernst von wegen Barbara des Niclas Ernsts
+               witib säligen gelassne gueter, des datum usw. - Jüngere: Oswalden Ernst spruch und
+               aufsand- brief seines hauß halben. </p>
+         </div>
+         <div type="lists">
+            <xi:include xmlns:xi="http://www.w3.org/2001/XInclude"
+               href="../../../../indices/placeList.xml" xpointer="element(/1/2/1/1)"/>
+            <xi:include xmlns:xi="http://www.w3.org/2001/XInclude"
+               href="../../../../indices/personList.xml" xpointer="element(/1/2/1/1)"/>
+            <xi:include xmlns:xi="http://www.w3.org/2001/XInclude"
+               href="../../../../indices/eventList.xml" xpointer="element(/1/2/1/1)"/>
+            <xi:include xmlns:xi="http://www.w3.org/2001/XInclude"
+               href="../../../../indices/orgList.xml" xpointer="element(/1/2/1/1)"/>
+         </div>
+      </body>
+   </text>
+</TEI>

@@ -1,0 +1,86 @@
+<?xml version="1.0" encoding="UTF-8"?><!DOCTYPE TEI SYSTEM "../../../schema/toolbox_full.dtd"><TEI xmlns="http://www.tei-c.org/ns/1.0" xmlns:cei="http://www.monasterium.net/NS/cei" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance">
+   <teiHeader>
+      <fileDesc>
+         <titleStmt>
+            <title>Tei version of 1914 exported from monasterium.net </title>
+         </titleStmt>
+         <publicationStmt>
+            <p/>
+         </publicationStmt>
+         <!--In Original: cei:front/cei:sourceDesc/cei:sourceDescRegest-->
+         <sourceDesc>
+            <bibl>Quellen zur Geschichte der Stadt Wien, Bd. II/2, Nr. 1914 As published in HAUrk by
+               Wiener Stadt- und Landesarchiv </bibl>
+            <msDesc>
+               <msIdentifier>
+                  <repository>Wiener Stadt- und Landesarchiv</repository>
+                  <idno>1914</idno>
+                  <altIdentifier type="old">
+                     <idno>516119</idno>
+                  </altIdentifier>
+               </msIdentifier>
+               <msContents>
+                  <msItem>
+                     <listBibl>
+                        <bibl>Camesina, Regesten 33 n° 157 Regest.</bibl>
+                     </listBibl>
+                  </msItem>
+               </msContents>
+               <physDesc>
+                  <sealDesc>
+                     <seal>
+                        <p>Anhangendes spitzovales Siegel, schwarz u. Sch., beschädigt, 2., 3.
+                           fehlen.</p>
+                     </seal>
+                  </sealDesc>
+               </physDesc>
+            </msDesc>
+         </sourceDesc>
+      </fileDesc>       <encodingDesc>          <projectDesc default="false">             <p><label type="contentual-editing">Projekt Christina Lutter Stadt und                   Gemeinschaft</label></p>          </projectDesc>       </encodingDesc>
+      <profileDesc>
+         <creation>
+            <placeName>Wien</placeName>
+            <date when="14120319">1412 III 19</date>
+            <origDate>ze Wienn, an Samstag vor Judica in der Vasten.</origDate></creation>
+      </profileDesc>
+   </teiHeader>
+   <facsimile>
+      <surface>
+         <graphic url="http://images.monasterium.net/pics/AT-WStLA/HA-U/WStLA-HA-Urkunden_01914_r.jpg"/>
+      </surface>
+      <surface>
+         <graphic url="http://images.monasterium.net/pics/AT-WStLA/HA-U/WStLA-HA-Urkunden_01914_v.jpg"/>
+      </surface>
+   </facsimile>
+   <text>
+      <body>
+         <div type="abstract">
+            <p>
+               <rs type="event" ref="ev__QGW_II_II_1914"><rs type="fn" role="issuer"><rs type="person" ref="pe__niklas_rat_StB_I_452">Niclas Rat, <roleName type="occ" corresp="org__wien-st_stephan-kapelle_tierna">capplan</roleName> der von Tyrna cappellen, gelegen in Allerheiligen
+                        tumkirchen zu sand Stephan ze Wienn und diezeit <roleName type="occ" corresp="org__erdberg-st_paul">pharrer</roleName> dacz sand Paul vor
+                        Stubentor</rs></rs> , <triggerstring n="disp">gibt</triggerstring>
+                  <rs type="fn" role="other"><triggerstring n="fn">mit Einwilligung</triggerstring>
+                     <rs type="person" ref="pe__markus_von_tierna_QGW_II_II_1914">seines <roleName type="occ" corresp="pe__niklas_rat_StB_I_452">Lehensherrn</roleName>, des <roleName type="title">edln</roleName>
+                        Marxen von Tyrna</rs>,</rs> seines rechten Kauf gutes <rs type="fn" role="transactiongood_I">zwei Weingärten, von denen einer (½ Joch) <rs type="place" ref="pl__wien-immo_laimgrub_vor_widmertor_rusten_3"><roleName type="owner" corresp="pe__niklas_rat_StB_I_452"><add>seines
+                           </add></roleName>in dem Hard bei den Rusten <roleName type="topo" corresp="pl__wien-immo_laimgrub_vor_widmertor_rusten_4">zenechst</roleName> Chunrats weingarten von Wirtzpurg</rs>, der andere
+                        <rs type="place" ref="pl__wien-immo_smelczenstainhaufen_1">am
+                        Smelczenstainhaufen <roleName type="topo" corresp="pl__wien-immo_smelczenstainhaufen_2">zenechst</roleName>
+                        <rs type="person" ref="pe__peter_von_mautern_QGW_II_II_1914"><roleName type="title">hern</roleName> Petreins</rs> weingarten von Mauttarn
+                           gelegen<roleName type="owner" corresp="pe__niklas_rat_StB_I_452"><add>seines
+                              </add></roleName></rs> ist</rs>, und deren jeder zu <rs type="fn" role="recipient"><rs type="org" ref="org__wien-st_stephan-kapelle_tierna">der genannten
+                        Kapelle</rs></rs> einen Eimer Bergrecht mit 3 dn. Voitrecht dient, zu dem
+                  halben tail der vorgenanten von Tyrna cappellen, den er zu Lehen hat, mit der
+                  Bestimmung, dass der jeweilige Kaplan für ihn des nachsten tags nach sand Dorothea
+                  tag einen Jahrtag [ 3] begehen solle und jedem Priester, der desselben tags vigily
+                  singet und mess leset, 10 dn. zu reichen seien. </rs></p>
+         </div>
+         <div type="seal">
+            <p><rs type="event" ref="ev__QGW_II_II_1914"><rs type="fn" role="witness">Besiegelt mit
+                     den Siegeln des <rs type="person" ref="pe__niklas_rat_StB_I_452">Ausstellers</rs>, des <rs type="person" ref="pe__markus_von_tierna_QGW_II_II_1914">Lehensherrn</rs> und <rs type="person" ref="pe__niklas_von_neuburg_QGW_II_I_1438"><roleName type="title">hern</roleName> Niclasen von Neunburg, <roleName type="occ" corresp="org__huetteldorf-pfarre">pharrer</roleName> ze
+                     U/eteldorf</rs>.</rs>
+               </rs></p>
+         </div>
+         <div type="lists"><xi:include xmlns:xi="http://www.w3.org/2001/XInclude" href="../../../../indices/placeList.xml" xpointer="element(/1/2/1/1)"/><xi:include xmlns:xi="http://www.w3.org/2001/XInclude" href="../../../../indices/personList.xml" xpointer="element(/1/2/1/1)"/><xi:include xmlns:xi="http://www.w3.org/2001/XInclude" href="../../../../indices/eventList.xml" xpointer="element(/1/2/1/1)"/><xi:include xmlns:xi="http://www.w3.org/2001/XInclude" href="../../../../indices/orgList.xml" xpointer="element(/1/2/1/1)"/></div>
+      </body>
+   </text>
+</TEI>

@@ -1,0 +1,123 @@
+<?xml version="1.0" encoding="UTF-8"?><!DOCTYPE TEI   SYSTEM "../../../schema/toolbox_full.dtd">
+<TEI xmlns="http://www.tei-c.org/ns/1.0" xmlns:cei="http://www.monasterium.net/NS/cei"
+      xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance">
+      <teiHeader>
+            <fileDesc>
+                  <titleStmt>
+                        <title>Tei version of 439 exported from monasterium.net </title>
+                  </titleStmt>
+                  <publicationStmt>
+                        <p/>
+                  </publicationStmt>
+                  <!--In Original: cei:front/cei:sourceDesc/cei:sourceDescRegest-->
+                  <sourceDesc>
+                        <bibl type="url"
+                              >https://www.monasterium.net/mom/AT-WStLA/HAUrk/439/charter</bibl>
+                        <bibl default="false" status="draft">Quellen zur Geschichte der Stadt Wien,
+                              Bd. II/1, Nr. 439 As published in HAUrk by Wiener Stadt- und
+                              Landesarchiv </bibl>
+                        <msDesc status="draft">
+                              <msIdentifier>
+                                    <repository>Wiener Stadt- und Landesarchiv</repository>
+                                    <idno>439</idno>
+                                    <altIdentifier type="old">
+                                          <idno>514610</idno>
+                                    </altIdentifier>
+                              </msIdentifier>
+                              <physDesc>
+                                    <sealDesc>
+                                          <seal>
+                                                <p>Drei anhangende Siegel: 1. grün u. K., spitzoval,
+                                                  2. grün u. K., rund, 3. ungefärbt, spitzoval.</p>
+                                          </seal>
+                                    </sealDesc>
+                              </physDesc>
+                        </msDesc>
+                  </sourceDesc>
+            </fileDesc>
+            <encodingDesc>
+                  <projectDesc default="false">
+                        <p><label type="contentual-editing">Projekt Christina Lutter Stadt und
+                                    Gemeinschaft</label></p>
+                  </projectDesc>
+            </encodingDesc>
+            <profileDesc>
+                  <creation>
+                        <placeName>Wien</placeName>
+                        <date when="13530624">1353 VI 24</date>
+                        <origDate instant="false">ze Wienne, an sand Johans tag ze
+                              Sunobenten.</origDate></creation>
+            </profileDesc>
+      </teiHeader>
+      <facsimile>
+            <surface>
+                  <graphic
+                        url="http://images.monasterium.net/pics/AT-WStLA/HA-U/WStLA-HA-Urkunden_00439_r.jpg"
+                  />
+            </surface>
+            <surface>
+                  <graphic
+                        url="http://images.monasterium.net/pics/AT-WStLA/HA-U/WStLA-HA-Urkunden_00439_v.jpg"
+                  />
+            </surface>
+      </facsimile>
+      <text>
+            <body>
+                  <div type="abstract" resp="ks">
+                        <p>
+                              <rs type="event" ref="ev__QGW_II_I_439"><rs type="fn" role="issuer"
+                                                ><rs type="person" ref="pe__heinrich_QGW_II_I_439"
+                                                >Hainreich, <roleName type="occ"
+                                                  corresp="org__wien-st_jakob_auf_der_huelben"
+                                                  >chappellan</roleName> dacz sand Jacob ze
+                                                Wienne</rs></rs>, <triggerstring n="disp">gibt
+                                                <add>nach seinem Tode </add></triggerstring>das Haus,
+                                    gelegen vor Chaernertor ze Wienne gegen der purger Spital riztür
+                                    über, zenaechst Ludweigs haus, des schuester, da man auch alle
+                                    iar von dient in der purger Spital ze Wienn 60 dn. ze gruntrecht
+                                    und hinz sand Pangraetzen ze Wienn 1 lb dn ., hinz den
+                                    Augustinern ze Wienne 1 lb und hern Stiborii saelig, weiln des
+                                    herzogen chuchenmaister, 1 lb und vron Margreten, Chunrats
+                                    tochter des Schreiber, 10 sh. dn., alles ze purchrecht, das
+                                    weiln gewesen ist Herborts, des Spitals mair, und das er um den
+                                    angeführten Dienst gekauft hatte, nach seinem Tode <rs type="fn"
+                                          role="recipient"><rs type="org"
+                                                ref="org__wien-buergerspital">den Dürftigen im
+                                                Spitale</rs></rs>.</rs>
+                        </p>
+                  </div>
+                  <div type="seal">
+                        <p><rs type="event" ref="ev__QGW_II_I_439"><rs type="fn" role="witness"
+                                          >Besiegelt mit den Siegeln: 1. des <rs type="person"
+                                                ref="pe__heinrich_QGW_II_I_439">Ausstellers</rs>, 2.
+                                                <rs type="person" ref="pe__ulrich_QGW_II_I_439">des
+                                                  <roleName type="title">Priesters</roleName>
+                                                <roleName type="title">hern</roleName> Ulreichs,
+                                                  <roleName type="occ"
+                                                  corresp="org__wien-st_stephan"
+                                                  >chormaister</roleName> ze Wienn</rs>, 3. <rs
+                                                type="person" ref="pe__johann_QGW_II_I_439"
+                                                  ><roleName type="title">hern</roleName> Jansen,
+                                                  <roleName type="occ"
+                                                  corresp="org__wien-st_maria_am_gestade"
+                                                  >chappellan</roleName> der chappelln Unser Vrowen
+                                                auf der Stetten ze Wienne</rs>.</rs></rs>
+                        </p>
+                  </div>
+                  <div type="lists">
+                        <xi:include xmlns:xi="http://www.w3.org/2001/XInclude"
+                              href="../../../../indices/placeList.xml"
+                              xpointer="element(/1/2/1/1)"/>
+                        <xi:include xmlns:xi="http://www.w3.org/2001/XInclude"
+                              href="../../../../indices/personList.xml"
+                              xpointer="element(/1/2/1/1)"/>
+                        <xi:include xmlns:xi="http://www.w3.org/2001/XInclude"
+                              href="../../../../indices/eventList.xml"
+                              xpointer="element(/1/2/1/1)"/>
+                        <xi:include xmlns:xi="http://www.w3.org/2001/XInclude"
+                              href="../../../../indices/orgList.xml"
+                              xpointer="element(/1/2/1/1)"/>
+                  </div>
+            </body>
+      </text>
+</TEI>

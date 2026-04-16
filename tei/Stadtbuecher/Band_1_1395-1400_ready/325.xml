@@ -1,0 +1,105 @@
+<?xml version="1.0" encoding="UTF-8"?><!DOCTYPE TEI SYSTEM "../../../schema/toolbox_full.dtd">
+<TEI xmlns="http://www.tei-c.org/ns/1.0" xmlns:cei="http://www.monasterium.net/NS/cei"
+   xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance">
+   <teiHeader>
+      <fileDesc>
+         <titleStmt>
+            <title>TEI-Version of 325</title>
+         </titleStmt>
+         <publicationStmt>
+            <p/>
+         </publicationStmt>
+         <sourceDesc default="false">
+            <bibl default="false" status="draft">
+               <title type="full"><title type="main">Die Wiener Stadtbücher 1395 -
+                     1430</title><title type="sub">Teil 1: 1395 - 1400</title></title>
+               <author>Wilhelm Brauneder</author>
+               <author>Gerhard Jaritz</author>
+               <pubPlace>Wien</pubPlace>
+               <pubPlace>Köln</pubPlace>
+               <publisher>Böhlau Verlag</publisher>
+            </bibl>
+            <msDesc status="draft">
+               <msIdentifier>
+                  <idno>325</idno>
+               </msIdentifier>
+               <physDesc/>
+            </msDesc>
+         </sourceDesc>
+      </fileDesc>     <encodingDesc>       <projectDesc>         <p><label type="contentual-editing">Projekt Christina Lutter Stadt und Gemeinschaft</label></p>       </projectDesc>     </encodingDesc>
+      <profileDesc>
+         <creation>
+            <date when="1399-01-09">1399 Januar 9</date>
+         </creation>
+      </profileDesc>
+   </teiHeader>
+   <text>
+      <body>
+         <div type="header">
+            <p>Geschäft des Andreas Mawrperger</p>
+         </div>                   <div type="entry" resp="rs">
+            <p> pr. mü., Einbr. 2 Zg., Ma (Inde:z: Item gescheft Andren Maurperger) (fol.54 r ) <rs
+                  type="event" ref="ev__StB_I_325">Item des nachsten phincztags nach sand Erharts
+                  tag kom fur den rat <rs type="fn" role="witness"><rs type="person"
+                        ref="pe__helena_StB_I_325"><roleName type="title">fraw</roleName> Elen,
+                           <roleName type="kin" corresp="pe__andreas_maurperger_StB_I_303"
+                              ><add>wittib</add></roleName><rs type="person"
+                           ref="pe__andreas_maurperger_StB_I_303">Andres <roleName type="dead"
+                              >seligen</roleName> wittib des Mawrperger</rs></rs>, und hat da
+                     beweist mit den erbern leuten ze rechter zeit, als si ze recht solt, mit <rs
+                        type="person" ref="pe__andreas_chottrer_StB_I_269"><roleName type="title"
+                              ><add>erbern</add></roleName>Andren dem Chottrer</rs> und mit <rs
+                        type="person" ref="pe__wolfhard_zolner_StB_I_325"><roleName type="title"
+                              ><add>erbern</add></roleName>Wolfhart dem <roleName type="prof"
+                           cert="unknown">Zollner</roleName></rs></rs>, <rs type="fn" role="issuer"
+                     >daz geschefft, so <rs type="person" ref="pe__andreas_maurperger_StB_I_303">der
+                        vorgenant ir <roleName type="kin" corresp="pe__helena_StB_I_325"
+                           >wirt</roleName></rs> an seinen lesten zeiten getan hat.</rs>
+                  <rs type="fn" role="recipient">Also das er von erst geschafft hat vir fueder weyns
+                        <rs type="org" ref="org__wien-buergerspital">den armen leuten in der purger
+                        spital vor Kernertor ze Wienn</rs>, das man in die tegleich ze speisweyn
+                     geben sol, und ayn fueder weyns <rs type="org" ref="org__wien-st_hieronymus"
+                        >hincz Sand Jeronimo den becherten frawn</rs> auch ze speisweyn. Item <rs
+                        type="org" ref="org__wien-st_johann_in_der_siechenals">hincz Sand Johanns in
+                        der Syechenalzz</rs>, <rs type="org" ref="org__wien-st_hiob_zum_klagbaum"
+                        >hincz dem Chlagpawm</rs> und <rs type="org"
+                        ref="org__wien-st_lazarus_siechenhaus">hincz Sand Lazers den syechen</rs>
+                     auch ayn fueder weyns und <rs type="org" ref="org__wien-minoriten">einem armen
+                        schueler zehen phunt phenning, den man damit in der Minner bruder orden
+                        helffen sol, daz er got fur in pit</rs>. Auch hat er geschafft <rs
+                        type="person" ref="pe__kunigunde_StB_I_325">Kundlein, seiner <roleName type="occ" corresp="pe__andreas_maurperger_StB_I_303"
+                           >dienerynn</roleName></rs>, 2 tl. d. Item <rs type="person"
+                        ref="pe__peter_StB_I_325">seiner <roleName type="kin"
+                           corresp="pe__andreas_maurperger_StB_I_303">swester kinder</roleName> ze
+                        Brunn Peterlein <roleName type="kin" corresp="pe__katharina_StB_I_325"
+                              ><add>swester kinder</add></roleName></rs> und <rs type="person"
+                        ref="pe__katharina_StB_I_325">Keterlein <add>
+                           <roleName type="kin" corresp="pe__andreas_maurperger_StB_I_303">swester
+                              kinder</roleName> ze Brunn</add>
+                        <roleName type="kin" corresp="pe__peter_StB_I_325"><add>swester
+                           kinder</add></roleName></rs> seinen weingarten genant die Hofstat gelegen
+                     gegen dem Chlagpawm uber. Darnach hat er geschafft <rs type="person"
+                        ref="pe__helena_StB_I_325">der egenanten seiner hawsfrawn Elen</rs> alle
+                     ander sein hab, erbgut und varundgüt, die er hat in dem lannd ze Österreich,
+                     ledichleich und freileich ze haben und allen lrn frumen damit ze schaffen,
+                     verchauffen, verseczen und geben, wem si welle, vor aller Irrung.</rs>
+                  <rs type="fn" role="other">Und hat auch das vorgeschriben sein geschefft
+                        <triggerstring n="fn">ausczerichten</triggerstring> enpholichen <rs type="person"
+                        ref="pe__helena_StB_I_325">derselben seiner hawsfrawn Elen</rs> hincz irn
+                     trewn.</rs> Als darumb die obgenanten erbern leut mit irn trewn an ayde stat
+                  vor offem rat habent gesagt, als si ze recht solten.</rs>
+            </p>
+         </div>
+         <div type="lists">
+            <xi:include xmlns:xi="http://www.w3.org/2001/XInclude"
+               href="../../../../indices/placeList.xml" xpointer="element(/1/2/1/1)"/>
+            <xi:include xmlns:xi="http://www.w3.org/2001/XInclude"
+               href="../../../../indices/personList.xml" xpointer="element(/1/2/1/1)"/>
+            <xi:include xmlns:xi="http://www.w3.org/2001/XInclude"
+               href="../../../../indices/eventList.xml" xpointer="element(/1/2/1/1)"/>
+            <xi:include xmlns:xi="http://www.w3.org/2001/XInclude"
+               href="../../../../indices/orgList.xml" xpointer="element(/1/2/1/1)"/>
+         </div>
+      </body>
+   </text>
+</TEI>

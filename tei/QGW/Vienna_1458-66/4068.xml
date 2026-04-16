@@ -1,0 +1,100 @@
+<?xml version="1.0" encoding="UTF-8" standalone="no"?>
+<!DOCTYPE TEI
+  SYSTEM "../../../schema/toolbox_full.dtd">
+<TEI xmlns:cei="http://www.monasterium.net/NS/cei" xmlns="http://www.tei-c.org/ns/1.0">
+   <teiHeader>
+      <fileDesc>
+         <titleStmt>
+            <title>Tei version of 4068 exported from monasterium.net </title>
+         </titleStmt>
+         <publicationStmt>
+            <p/>
+         </publicationStmt>
+         <!--In Original: cei:front/cei:sourceDesc/cei:sourceDescRegest-->
+         <sourceDesc>
+            <bibl>Quellen zur Geschichte der Stadt Wien, Bd. II/3, Nr. As published in HAUrk by
+               Wiener Stadt- und Landesarchiv </bibl>
+            <msDesc>
+               <msIdentifier>
+                  <repository>Wiener Stadt- und Landesarchiv</repository>
+                  <idno>4068</idno>
+                  <altIdentifier type="old">
+                     <idno>518340</idno>
+                  </altIdentifier>
+               </msIdentifier>
+               <msContents>
+                  <msItem>
+                     <listBibl>
+                        <bibl type="url"
+                           >https://www.monasterium.net/mom/AT-WStLA/HAUrk/4068/charter</bibl>
+                     </listBibl>
+                  </msItem>
+               </msContents>
+               <physDesc>
+                  <sealDesc>
+                     <seal>
+                        <p>Vier rückwärts aufgedrückte Petschafte von grünem Wachse, 4.
+                           abgesprungen.</p>
+                     </seal>
+                  </sealDesc>
+               </physDesc>
+            </msDesc>
+         </sourceDesc>
+      </fileDesc>
+      <profileDesc>
+         <creation>
+            <placeName>Wien</placeName>
+            <date when="14631113">1463 XI 13</date>
+            <origDate>zu Wienn, an suntag nach sand Mertten tag.</origDate></creation>
+      </profileDesc>
+   </teiHeader>
+   <facsimile>
+      <surface>
+         <graphic
+            url="http://images.monasterium.net/pics/AT-WStLA/HA-U/WStLA-HA-Urkunden_04068_r.jpg"/>
+      </surface>
+      <surface>
+         <graphic
+            url="http://images.monasterium.net/pics/AT-WStLA/HA-U/WStLA-HA-Urkunden_04068_v.jpg"/>
+      </surface>
+   </facsimile>
+   <text>
+      <body>
+         <div type="abstract" resp="vh">
+            <p><rs type="event" ref="ev__QGW_II_III_4068">
+                  <rs type="fn" role="issuer"><rs type="person"
+                        ref="pe__georg_pellndorfer_QGW_II_III_4068">Jörg Pellndorffer, <roleName
+                           type="prof">anwald</roleName>
+                        <roleName type="title"><add>ritter</add></roleName></rs>, <rs type="person"
+                        ref="pe__friedrich_ebmer_QGW_II_II_3350">Friedreich Ebmer, <roleName
+                           type="occ" corresp="org__wien">burgermaister</roleName>, baid <roleName
+                           type="title">ritter</roleName></rs>, <rs type="person"
+                        ref="pe__johann_haug_QGW_II_III_4068">Hanns Haug, <roleName type="occ"
+                           corresp="org__wien">statkamrer</roleName>
+                        <roleName type="occ" corresp="org__wien"><add>rat</add></roleName></rs>, und
+                        <rs type="person" ref="pe__kolomann_wulderstorffer_QGW_II_III_4068">Colman
+                        Wulderstorffer, baid des <roleName type="occ" corresp="org__wien"
+                           >rats</roleName> der stat zu Wienn</rs></rs> , stellen ain beredzedel
+                  über den zwischen <rs type="person" ref="pe__friedrich_haesl_QGW_II_III_4068"
+                     >Fridreichen Häsl, dem <roleName type="prof">sneider</roleName></rs>, und <rs
+                     type="person" ref="pe__johann_payr_QGW_II_III_3970">Hannsen Payr, dem <roleName
+                        type="prof">schuster</roleName>, <roleName type="occ" corresp="org__wien">mitburger</roleName> zu Wienn</rs>, getroffenen
+                  Vergleich aus. Der Letztere soll dem Fridreichen Häsl für haubtgut und schaden 36
+                  Ungrisch guldein, gerecht in gold und wag , in zwei Raten auf Mittervasten und auf
+                  die Phingsten entrichten und ihm dafür sein Haus in der stat gruntpuch verseczen.
+                  Wer diesen Spruch nicht hält, soll der Stadt 12 lb dn. zu rechter peen verfallen
+                  sein und sein Recht gegen den anderen Theil verlieren. </rs></p>
+         </div>
+         <div type="lists">
+            <xi:include xmlns:xi="http://www.w3.org/2001/XInclude"
+               href="../../../../indices/placeList.xml" xpointer="element(/1/2/1/1)"/>
+            <xi:include xmlns:xi="http://www.w3.org/2001/XInclude"
+               href="../../../../indices/personList.xml" xpointer="element(/1/2/1/1)"/>
+            <xi:include xmlns:xi="http://www.w3.org/2001/XInclude"
+               href="../../../../indices/eventList.xml" xpointer="element(/1/2/1/1)"/>
+            <xi:include xmlns:xi="http://www.w3.org/2001/XInclude"
+               href="../../../../indices/orgList.xml" xpointer="element(/1/2/1/1)"/>
+         </div>
+      </body>
+   </text>
+</TEI>

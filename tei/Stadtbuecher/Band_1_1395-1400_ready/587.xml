@@ -1,0 +1,143 @@
+<?xml version="1.0" encoding="UTF-8"?><!DOCTYPE TEI SYSTEM "../../../schema/toolbox_full.dtd">
+<TEI xmlns="http://www.tei-c.org/ns/1.0" xmlns:cei="http://www.monasterium.net/NS/cei"
+    xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance">
+    <teiHeader>
+        <fileDesc>
+            <titleStmt>
+                <title>TEI-Version of 587</title>
+            </titleStmt>
+            <publicationStmt>
+                <p/>
+            </publicationStmt>
+            <sourceDesc default="false">
+                <bibl default="false" status="draft">
+                    <title type="full"><title type="main">Die Wiener Stadtbücher 1395 -
+                            1430</title><title type="sub">Teil 1: 1395 - 1400</title></title>
+                    <author>Wilhelm Brauneder</author>
+                    <author>Gerhard Jaritz</author>
+                    <pubPlace>Wien</pubPlace>
+                    <pubPlace>Köln</pubPlace>
+                    <publisher>Böhlau Verlag</publisher>
+                </bibl>
+                <msDesc status="draft">
+                    <msIdentifier>
+                        <idno>587</idno>
+                    </msIdentifier>
+                    <physDesc/>
+                </msDesc>
+            </sourceDesc>
+        </fileDesc>
+        <encodingDesc>
+            <projectDesc>
+                <p><label type="contentual-editing">Projekt Christina Lutter Stadt und
+                        Gemeinschaft</label></p>
+            </projectDesc>
+        </encodingDesc>
+        <profileDesc>
+            <creation>
+                <date from="1395-01-01" to="1400-12-31"> o. D. </date>
+            </creation>
+        </profileDesc>
+    </teiHeader>
+    <text>
+        <body>
+            <div type="header">
+                <p>Feststellung nachgelassener Schulden nach Heinrich, Schneider von Herzog Ernst
+                    (vgl. 551, 599) </p>
+            </div>                   <div type="entry" resp="rs">
+                <p> (Indez: Item geltsehuld Hainreiehs herezog Ernsts sneyder) <rs type="event"
+                        ref="ev__StB_I_587
+                    ">Hie ist vermerkcht <rs type="fn" role="other">die
+                            geltschuld, die <rs type="person" ref="pe__heinrich_wisler_StB_I_551"
+                                >Hainreich <roleName type="dead">seliger</roleName>, <rs
+                                    type="person"
+                                    ref="pe__ernst_herzog_von_oesterreich_QGW_II_I_1332"><roleName
+                                        type="title">herczog</roleName> Ernsts</rs>
+                                <roleName type="occ"
+                                    corresp="pe__ernst_herzog_von_oesterreich_QGW_II_I_1332"
+                                    >sneyder</roleName></rs>, <triggerstring n="fn">schuldig
+                                beliben</triggerstring> ist,</rs>
+                        <rs type="fn" role="issuer">da <rs type="person"
+                                ref="pe__heinrich_wisler_StB_I_551">er</rs> ab ist gangen mit dem
+                            tod.</rs> Item <rs type="fn" role="recipient"><rs type="person"
+                                ref="pe__zinkk_StB_I_108">dem Zinkken</rs></rs> 20 tl. 3 ß., <rs
+                            type="fn" role="witness"><rs type="person" ref="pe__zinkk_StB_I_108"
+                                >der</rs> ist zewg mit seim petschaid.</rs> Item <rs type="fn"
+                            role="recipient"><rs type="person"
+                                ref="pe__wilhelm_hansgraf_QGW_II_I_1403">Wilhalm dem
+                                Ramperstorffer</rs>
+                        </rs>7 ß. 10 dn., <rs type="fn" role="witness">zewg mit <rs type="person"
+                                ref="pe__wilhelm_hansgraf_QGW_II_I_1403">seim</rs> petschayd.</rs>
+                        Item <rs type="fn" role="recipient"><rs type="person"
+                                ref="pe__menschein_StB_I_587">dem Menschein</rs></rs> 3 tl. 25 dn.,
+                            <rs type="fn" role="witness">zewg mit <rs type="person"
+                                ref="pe__menschein_StB_I_587">seim</rs> petschaid.</rs> Item <rs
+                            type="fn" role="recipient"><rs type="person"
+                                ref="pe__philipp_von_kaum_StB_I_587">Philippen von Kawm</rs></rs> 5
+                        guldein 60 dn., <rs type="person" ref="pe__philipp_von_kaum_StB_I_587">zewg
+                            mit seim petschayd.</rs> Item <rs type="fn" role="recipient"><rs
+                                type="person" ref="pe__johann_von_bozen_StB_I_587">Johannem von
+                                Paczen</rs></rs> 3 tl. dn. Item <rs type="fn" role="recipient"><rs
+                                type="person" ref="pe__johann_wachsgiesser_StB_I_164">Johannem dem
+                                    <roleName type="prof" cert="unknown"
+                                >Wachsgiesser</roleName></rs></rs> 7 tl., zewg mit <rs type="fn"
+                            role="witness"><rs type="person" ref="pe__johann_wachsgiesser_StB_I_164"
+                                >seym</rs> petschaid</rs>. Item <rs type="fn" role="recipient"><rs
+                                type="person" ref="pe__hakcher_StB_I_587">dem <roleName type="prof"
+                                    cert="unknown">Hakker</roleName></rs></rs> 35 tl. dn., <rs
+                            type="fn" role="witness">des sind zewgen <rs type="person"
+                                ref="pe__niklas_stuchs_StB_I_587">Niclas Stuchs</rs> und <rs
+                                type="person" ref="pe__heinrich_unbeschaiden_StB_I_587">Hainreich
+                                Unbeschayden</rs> mit irn petschayden.</rs> Item <rs type="fn"
+                            role="recipient"><rs type="person" ref="pe__konrad_kraemer_StB_I_587"
+                                >Chunczen dem <roleName type="prof" cert="unknown"
+                                    >Chramer</roleName></rs></rs> 13 tl. 3 ß. 10 dn., <rs type="fn"
+                            role="witness">zewg mit <rs type="person"
+                                ref="pe__konrad_kraemer_StB_I_587">seim</rs> petschaid.</rs> Item
+                            <rs type="fn" role="recipient"><rs type="person"
+                                ref="pe__waicz_StB_I_146">Wayczen dem <roleName type="prof"
+                                    cert="unknown">Kramer</roleName></rs></rs> 13 tl. 2 dn., <rs
+                            type="fn" role="witness">zewg mit <rs type="person"
+                                ref="pe__waicz_StB_I_146">seinem</rs> petschaid.</rs> Item <rs
+                            type="fn" role="recipient"><rs type="person"
+                                ref="pe__laurenz_goldschmied_StB_I_587">Lorenczen dem <roleName
+                                    type="prof" cert="unknown">Goltsmid</roleName></rs></rs> 4 tl. 5
+                        ß., <rs type="fn" role="witness">zewg mit <rs type="person"
+                                ref="pe__laurenz_goldschmied_StB_I_587">seinem</rs> petschaid</rs>.
+                        Item <rs type="fn" role="recipient"><rs type="person"
+                                ref="pe__peter_haubner_StB_I_587">Petren dem <roleName type="prof"
+                                    cert="unknown">Haubner</roleName></rs></rs> 1 tl. <rs type="fn"
+                            role="witness">mit <rs type="person" ref="pe__peter_haubner_StB_I_587"
+                                >seim</rs> petschaid.</rs> Item <rs type="fn" role="recipient"><rs
+                                type="person" ref="pe__helbling_StB_I_587">Helbling dem <roleName
+                                    type="prof" cert="unknown">Kursner</roleName></rs></rs> 12 ß.,
+                            <rs type="fn" role="witness">zewg mit <rs type="person"
+                                ref="pe__helbling_StB_I_587">seinem</rs> petschaid.</rs> Item <rs
+                            type="fn" role="recipient">
+                            <rs type="person" ref="pe__heinrich_im_nest_StB_I_587">Hainreich im
+                                Nest</rs></rs> 18 ß. 20 dn., <rs type="fn" role="witness">zeug mit
+                                <rs type="person" ref="pe__heinrich_im_nest_StB_I_587">seim</rs>
+                            petschaid.</rs> Item <rs type="fn" role="recipient"><rs type="person"
+                                ref="pe__ulrich_scherer_StB_I_587">Ulreichen dem <roleName
+                                    type="prof">Scherer</roleName></rs></rs> 13 ß. dn., <rs
+                            type="fn" role="recipient"> zewg mit <rs type="person"
+                                ref="pe__ulrich_scherer_StB_I_587">seinem</rs> petschaid.</rs> Item
+                            <rs type="fn" role="recipient"><rs type="person" ref="pe__leb_StB_I_587"
+                                >dem Leben</rs></rs> 3 guldein 14 grozz, <rs type="fn"
+                            role="witness">der ist auch zewg mit <rs type="person"
+                                ref="pe__leb_StB_I_587">seinem</rs> petschaid.</rs></rs> a)
+                    beiliben. </p>
+            </div>
+            <div type="lists">
+                <xi:include xmlns:xi="http://www.w3.org/2001/XInclude"
+                    href="../../../../indices/placeList.xml" xpointer="element(/1/2/1/1)"/>
+                <xi:include xmlns:xi="http://www.w3.org/2001/XInclude"
+                    href="../../../../indices/personList.xml" xpointer="element(/1/2/1/1)"/>
+                <xi:include xmlns:xi="http://www.w3.org/2001/XInclude"
+                    href="../../../../indices/eventList.xml" xpointer="element(/1/2/1/1)"/>
+                <xi:include xmlns:xi="http://www.w3.org/2001/XInclude"
+                    href="../../../../indices/orgList.xml" xpointer="element(/1/2/1/1)"/>
+            </div>
+        </body>
+    </text>
+</TEI>

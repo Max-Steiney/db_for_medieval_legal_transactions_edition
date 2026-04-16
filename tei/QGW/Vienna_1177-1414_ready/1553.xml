@@ -1,0 +1,132 @@
+<?xml version="1.0" encoding="UTF-8"?><!DOCTYPE TEI   SYSTEM "../../../schema/toolbox_full.dtd">
+<TEI xmlns="http://www.tei-c.org/ns/1.0" xmlns:cei="http://www.monasterium.net/NS/cei"
+   xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance">
+   <teiHeader>
+      <fileDesc>
+         <titleStmt>
+            <title>Tei version of 1553 exported from monasterium.net </title>
+         </titleStmt>
+         <publicationStmt>
+            <p/>
+         </publicationStmt>
+         <!--In Original: cei:front/cei:sourceDesc/cei:sourceDescRegest-->
+         <sourceDesc>
+            <bibl type="url">https://www.monasterium.net/mom/AT-WStLA/HAUrk/1553/charter</bibl>
+            <bibl default="false" status="draft">Quellen zur Geschichte der Stadt Wien, Bd. II/1,
+               Nr. 1553 As published in HAUrk by Wiener Stadt- und Landesarchiv </bibl>
+            <msDesc status="draft">
+               <msIdentifier>
+                  <repository>Wiener Stadt- und Landesarchiv</repository>
+                  <idno>1553</idno>
+                  <altIdentifier type="old">
+                     <idno>515754</idno>
+                  </altIdentifier>
+               </msIdentifier>
+               <physDesc>
+                  <sealDesc>
+                     <seal>
+                        <p>Drei anhangende Siegel, grün u. Sch., 1. spitzoval, 3. Bruchstück.</p>
+                     </seal>
+                  </sealDesc>
+               </physDesc>
+            </msDesc>
+         </sourceDesc>
+      </fileDesc>
+      <encodingDesc>
+         <projectDesc default="false">
+            <p><label type="contentual-editing">Projekt Christina Lutter Stadt und
+                  Gemeinschaft</label></p>
+         </projectDesc>
+      </encodingDesc>
+      <profileDesc>
+         <creation>
+            <placeName>Wien</placeName>
+            <date when="14030901">1403 IX 01</date>
+            <origDate instant="false">an sand Giligen tag.</origDate></creation>
+      </profileDesc>
+   </teiHeader>
+   <facsimile>
+      <surface>
+         <graphic
+            url="http://images.monasterium.net/pics/AT-WStLA/HA-U/WStLA-HA-Urkunden_01553_r.jpg"/>
+      </surface>
+      <surface>
+         <graphic
+            url="http://images.monasterium.net/pics/AT-WStLA/HA-U/WStLA-HA-Urkunden_01553_v.jpg"/>
+      </surface>
+   </facsimile>
+   <!-- Wie Fürsten zu Liechtenstein anlegen -->
+   <text>
+      <body>
+         <div type="abstract" resp="kg">
+            <p>
+               <rs type="event" ref="ev__QGW_II_I_1553"><rs type="fn" role="issuer"><rs
+                        type="person" ref="pe__jakob_pekch_QGW_II_I_1553">Jakob, der <roleName
+                           type="prof">pekch</roleName> bei dem Rotenturn</rs>, und <rs
+                        type="person" ref="pe__barbara_QGW_II_I_1553">Barbara, seine <roleName
+                           type="kin" corresp="pe__jakob_pekch_QGW_II_I_1553"
+                        >Hausfrau</roleName></rs>,</rs>
+                  <triggerstring n="disp">stellen</triggerstring>
+                  <rs type="fn" role="recipient"><rs type="person"
+                        ref="pe__heinrich_QGW_II_I_1553_b">Haidenrekhen <roleName type="kin"
+                           corresp="pe__heinrich_QGW_II_I_1553_a"><add>Kindern</add></roleName></rs>
+                     und <rs type="person" ref="pe__georg_QGW_II_I_1553">Jörgen, den unmündigen
+                           <roleName type="kin" corresp="pe__heinrich_QGW_II_I_1553_a"
+                           >Kindern</roleName>
+                        <rs type="person" ref="pe__heinrich_QGW_II_I_1553_a">Haidenreichs <roleName
+                              type="dead">seligen</roleName>, des <roleName type="prof"
+                              >ledrer</roleName></rs></rs>,</rs>
+                  <triggerstring n="disp">einen Schuldbrief</triggerstring> über 100 lb dn. <triggerstring
+                     n="disp">aus und verpfänden</triggerstring> ihnen dafür: a) <rs type="fn"
+                     role="other"><triggerstring n="fn">mit Handen</triggerstring>
+                     <rs type="person" ref="pe__leonhard_QGW_II_I_1553">Lienharts des Mu/echsen,
+                           <roleName type="occ" corresp="org__mauerbach-kartaeuser">pergmaister
+                              <unclear instant="false">zu Eczkestorf</unclear></roleName> der
+                        geistleichen herren ze Allerheiligental ze Maurbach, des ordens von
+                        Karthus</rs>,</rs> zwei Weingärten, baid gelegen in dem Liesningerperg,
+                  ainer des ein halbs jeuch ist, zenagst hern Stephans weingarten, pharrer ze
+                  Eczkestorf , von dem man einen Eimer Wein zu Bergrecht und 3 dn. zu Voitrecht
+                  dient, so leit der ander weingarten, des ain rehel ist, neben dem egenanten halben
+                  jeuch und dient ein Viertel Wein zu Bergrecht, 3 dn. zu Voitrecht, b) <rs
+                     type="fn" role="other"><triggerstring n="fn">mit Handen</triggerstring>
+                     <rs type="person" ref="pe__ulrich_wolf_QGW_II_I_1366">Ulreichs des Wolfen,
+                              <unclear><roleName type="occ" corresp="org__lichtenstein_familie"
+                              >verweser</roleName></unclear> der <unclear><rs type="org"
+                              ref="org__lichtenstein_familie">edeln herren guter von Liechtenstain
+                              von Mu/erau</rs></unclear></rs>,</rs> ein Joch Weingarten, gelegen vor
+                  Stubentor ze Wienn an dem Rennweg oben an dem Liechtenstain zenegst Jo/ergen
+                  weingarten des Pretnagel, von dem man 57 ½ dn. zu Grundrecht dient. <rs
+                     type="event" ref="ev__QGW_II_I_1553_men_1">Die 100 lb dn. sind der Erlös für
+                     ein Haus, gelegen aufem Graben vor Stubentor zenegst Rudolfs haus des
+                     Angervelder, das an der Kinder Statt Niclasen, des Dauher vetter, dem ledrer,
+                     und seiner Hausfrau Kathrein verkauft worden war.</rs></rs>
+            </p>
+         </div>
+         <div type="seal">
+            <p><rs type="event" ref="ev__QGW_II_I_1553"><rs type="fn" role="witness">Besiegelt mit
+                     den Siegeln: 1. <rs type="person" ref="pe__hugo_QGW_II_I_1553"><roleName
+                           type="title">pruder</roleName> Haugen,<roleName type="occ"
+                           corresp="org__mauerbach-kartaeuser"> prior</roleName> ze Mauerbach</rs>,
+                     2. <rs type="person" ref="pe__ulrich_wolf_QGW_II_I_1366">Ulreichs des
+                        Wolfs</rs>, 3. <rs type="person" ref="pe__niklas_valich_QGW_II_I_1544"
+                        >Niclas des Valichs, des <roleName type="occ" corresp="org__wien">rates der
+                           stat</roleName> ze Wienn</rs>.</rs></rs>
+            </p>
+         </div>
+         <div type="nota">
+            <p>Indorsat: Der brief leit Niclasen, des Dauher vetter, ze scherm uber sein haus,
+               gelegen vor Stubentor ze Wienn. </p>
+         </div>
+         <div type="lists">
+            <xi:include xmlns:xi="http://www.w3.org/2001/XInclude"
+               href="../../../../indices/placeList.xml" xpointer="element(/1/2/1/1)"/>
+            <xi:include xmlns:xi="http://www.w3.org/2001/XInclude"
+               href="../../../../indices/personList.xml" xpointer="element(/1/2/1/1)"/>
+            <xi:include xmlns:xi="http://www.w3.org/2001/XInclude"
+               href="../../../../indices/eventList.xml" xpointer="element(/1/2/1/1)"/>
+            <xi:include xmlns:xi="http://www.w3.org/2001/XInclude"
+               href="../../../../indices/orgList.xml" xpointer="element(/1/2/1/1)"/>
+         </div>
+      </body>
+   </text>
+</TEI>

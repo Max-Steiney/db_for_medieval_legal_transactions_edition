@@ -13,6 +13,7 @@ var DrillDown = (function() {
     var docsLookupLoading = false;
     var currentData = [];
     var boundOverlays = {};
+    var previousFocus = null; // WCAG: restore focus on close
 
     /* ------------------------------------------------------------------
        Lazy-load docs_lookup.json (shared across all explorers)
@@ -68,6 +69,11 @@ var DrillDown = (function() {
         function close() {
             overlay.classList.add('hidden');
             document.body.style.overflow = '';
+            // WCAG: restore focus to trigger element
+            if (previousFocus) {
+                previousFocus.focus();
+                previousFocus = null;
+            }
         }
 
         if (closeBtn) closeBtn.addEventListener('click', close);
@@ -79,6 +85,27 @@ var DrillDown = (function() {
         document.addEventListener('keydown', function(e) {
             if (e.key === 'Escape' && !overlay.classList.contains('hidden')) {
                 close();
+            }
+        });
+
+        // WCAG: focus trap — keep Tab cycling within the overlay
+        // Queries focusable elements dynamically (content is populated after open)
+        overlay.addEventListener('keydown', function(e) {
+            if (e.key !== 'Tab' || overlay.classList.contains('hidden')) return;
+            var focusable = overlay.querySelectorAll('a[href], button:not([disabled]), input, [tabindex]:not([tabindex="-1"])');
+            if (!focusable.length) return;
+            var first = focusable[0];
+            var last = focusable[focusable.length - 1];
+            if (e.shiftKey) {
+                if (document.activeElement === first) {
+                    e.preventDefault();
+                    last.focus();
+                }
+            } else {
+                if (document.activeElement === last) {
+                    e.preventDefault();
+                    first.focus();
+                }
             }
         });
 
@@ -113,11 +140,16 @@ var DrillDown = (function() {
 
     function open(handle, title, fileKeys) {
         if (!handle || !fileKeys.length) return;
+        // WCAG: store trigger element for focus restoration
+        previousFocus = document.activeElement;
         handle.titleEl.textContent = title;
         handle.tbodyEl.innerHTML = '<tr><td colspan="4" style="text-align:center;color:#8c8680">Lade Dokumentdaten\u2026</td></tr>';
         handle.countEl.textContent = fileKeys.length + ' Dokumente';
         handle.overlay.classList.remove('hidden');
         document.body.style.overflow = 'hidden';
+        // WCAG: move focus to close button
+        var closeBtn = handle.overlay.querySelector('.explore-drilldown-close');
+        if (closeBtn) closeBtn.focus();
 
         loadDocsLookup(function(lookup) {
             currentData = [];

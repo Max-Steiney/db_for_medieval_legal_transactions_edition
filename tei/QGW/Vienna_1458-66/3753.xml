@@ -1,0 +1,98 @@
+<?xml version="1.0" encoding="UTF-8" standalone="no"?>
+<!DOCTYPE TEI
+  SYSTEM "../../../schema/toolbox_full.dtd">
+<TEI xmlns:cei="http://www.monasterium.net/NS/cei" xmlns="http://www.tei-c.org/ns/1.0">
+   <teiHeader>
+      <fileDesc>
+         <titleStmt>
+            <title>Tei version of 3753 exported from monasterium.net </title>
+         </titleStmt>
+         <publicationStmt>
+            <p/>
+         </publicationStmt>
+         <!--In Original: cei:front/cei:sourceDesc/cei:sourceDescRegest-->
+         <sourceDesc>
+            <bibl>Quellen zur Geschichte der Stadt Wien, Bd. II/3, Nr. As published in HAUrk by
+               Wiener Stadt- und Landesarchiv </bibl>
+            <msDesc>
+               <msIdentifier>
+                  <repository>Wiener Stadt- und Landesarchiv</repository>
+                  <idno>3753</idno>
+                  <altIdentifier type="old">
+                     <idno>518009</idno>
+                  </altIdentifier>
+               </msIdentifier>
+               <msContents>
+                  <msItem>
+                     <listBibl>
+                        <bibl type="url"
+                           >https://www.monasterium.net/mom/AT-WStLA/HAUrk/3753/charter</bibl>
+                     </listBibl>
+                  </msItem>
+               </msContents>
+               <physDesc>
+                  <sealDesc>
+                     <seal>
+                        <p>Vorne aufgedrücktes Petschaft und Siegel von grünem Wachse unter
+                           Papierdecke.</p>
+                     </seal>
+                  </sealDesc>
+               </physDesc>
+            </msDesc>
+         </sourceDesc>
+      </fileDesc>
+      <profileDesc>
+         <creation>
+            <date when="14589999">1458</date>
+            <origDate>Der geben ist nach Cristi gepurt 1400 und in dem 58.
+            jarn.</origDate></creation>
+      </profileDesc>
+   </teiHeader>
+   <facsimile>
+      <surface>
+         <graphic
+            url="http://images.monasterium.net/pics/AT-WStLA/HA-U/WStLA-HA-Urkunden_03753_r.jpg"/>
+      </surface>
+      <surface>
+         <graphic
+            url="http://images.monasterium.net/pics/AT-WStLA/HA-U/WStLA-HA-Urkunden_03753_v.jpg"/>
+      </surface>
+   </facsimile>
+   <text>
+      <body>
+         <div type="abstract" resp="ms">
+            <p><rs type="event" ref="ev__QGW_II_III_3753">
+                  <rs type="fn" role="issuer"><rs type="person" ref="pe__johann_QGW_II_II_3753"
+                           >Johanns<roleName type="title"><add>graffen</add></roleName></rs> und <rs
+                        type="person" ref="pe__sigmund_ii_graf_QGW_II_III_3788">Sigmund, <roleName
+                           type="kin" corresp="pe__johann_QGW_II_II_3753">gebruder</roleName>,
+                           <roleName type="title">graffen</roleName> zu Sand Georigen und
+                        Posing</rs></rs>, bestätigen, dass <rs type="person"
+                     ref="pe__berthold_thum_QGW_II_II_3753"><roleName type="rep"
+                        corresp="pe__sigmund_ii_graf_QGW_II_III_3788">in ihrem
+                        Auftrage</roleName><roleName type="rep" corresp="pe__johann_QGW_II_III_3753"
+                           ><add>in ihrem Auftrage</add></roleName> Berichtold Thum von
+                     Nornwerkg</rs> ettleich ihrer chlainatt dem <rs type="fn" role="recipient"><rs
+                        type="person" ref="pe__niklas_planer_QGW_II_II_3692">Wiener <roleName
+                           type="occ" corresp="org__wien">Bürger</roleName> Nicolae Planer</rs></rs>
+                  versetzt und wieder gelöst habe, und sagen den Letzteren von des chlainatt wegen
+                  quitt, frei und ledig. </rs></p>
+         </div>
+         <div type="nota">
+            <p><rs type="event" ref="ev__QGW_II_III_3753_nota">Indorsat: Von graf Sigmunds von
+                  Posing quittung dem Niclasen Planer über die clainet, die im versaczt gewesen sein
+                  . </rs></p>
+         </div>
+         <div type="lists">
+            <xi:include xmlns:xi="http://www.w3.org/2001/XInclude"
+               href="../../../../indices/placeList.xml" xpointer="element(/1/2/1/1)"/>
+            <xi:include xmlns:xi="http://www.w3.org/2001/XInclude"
+               href="../../../../indices/personList.xml" xpointer="element(/1/2/1/1)"/>
+            <xi:include xmlns:xi="http://www.w3.org/2001/XInclude"
+               href="../../../../indices/eventList.xml" xpointer="element(/1/2/1/1)"/>
+            <xi:include xmlns:xi="http://www.w3.org/2001/XInclude"
+               href="../../../../indices/orgList.xml" xpointer="element(/1/2/1/1)"/>
+         </div>
+      </body>
+   </text>
+</TEI>

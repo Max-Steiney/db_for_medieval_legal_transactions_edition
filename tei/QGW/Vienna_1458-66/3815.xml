@@ -1,0 +1,114 @@
+<?xml version="1.0" encoding="UTF-8" standalone="no"?>
+<!DOCTYPE TEI
+  SYSTEM "../../../schema/toolbox_full.dtd">
+<TEI xmlns:cei="http://www.monasterium.net/NS/cei" xmlns="http://www.tei-c.org/ns/1.0">
+   <teiHeader>
+      <fileDesc>
+         <titleStmt>
+            <title>Tei version of 3815 exported from monasterium.net </title>
+         </titleStmt>
+         <publicationStmt>
+            <p/>
+         </publicationStmt>
+         <!--In Original: cei:front/cei:sourceDesc/cei:sourceDescRegest-->
+         <sourceDesc>
+            <bibl>Quellen zur Geschichte der Stadt Wien, Bd. II/3, Nr. As published in HAUrk by
+               Wiener Stadt- und Landesarchiv </bibl>
+            <msDesc>
+               <msIdentifier>
+                  <repository>Wiener Stadt- und Landesarchiv</repository>
+                  <idno>3815</idno>
+                  <altIdentifier type="old">
+                     <idno>518076</idno>
+                  </altIdentifier>
+               </msIdentifier>
+               <msContents>
+                  <msItem>
+                     <listBibl>
+                        <bibl type="url"
+                           >https://www.monasterium.net/mom/AT-WStLA/HAUrk/3815/charter</bibl>
+                     </listBibl>
+                  </msItem>
+               </msContents>
+               <physDesc>
+                  <sealDesc>
+                     <seal>
+                        <p>Zum Verschlusse aufgedrücktes Siegel von grünem Wachse unter
+                           Papierdecke.</p>
+                     </seal>
+                  </sealDesc>
+               </physDesc>
+            </msDesc>
+         </sourceDesc>
+      </fileDesc>
+      <profileDesc>
+         <creation>
+            <placeName>Ungarisch-Altenburg</placeName>
+            <date when="14580913">1458 IX 13</date>
+            <origDate>Geben auff Altenburg in vi(gili)a exaltacionis sancte Crucis, anno etc.
+               lviij°.</origDate>
+         </creation>
+      </profileDesc>
+   </teiHeader>
+   <facsimile>
+      <surface>
+         <graphic
+            url="http://images.monasterium.net/pics/AT-WStLA/HA-U/WStLA-HA-Urkunden_03815_r.jpg"/>
+      </surface>
+      <surface>
+         <graphic
+            url="http://images.monasterium.net/pics/AT-WStLA/HA-U/WStLA-HA-Urkunden_03815_v.jpg"/>
+      </surface>
+   </facsimile>
+   <text>
+      <body>
+         <div type="abstract" resp="ms">
+            <p>
+               <rs type="event" ref="ev__QGW_II_III_3815"> <rs type="fn" role="issuer"><rs type="person"
+                  ref="pe__sigmund_ii_graf_QGW_II_III_3788">Sigmund, <roleName type="title"
+                     >groff</roleName> zu Sand Georgen und Posing etc.</rs></rs>, an <rs
+                        type="fn" role="recipient"><rs type="org" ref="org__wien">die Genannten und die
+                           gemain zu Wienn</rs></rs>. Er habe von wegen des Schadens, so seinen leuten zu
+                  Altenburgk von ettlichen aus ihrem mittel ergangen ist prunsthalben, vor dem <rs
+                     type="person" ref="pe__ladislaus_QGW_II_II_3461">König Lasla</rs> ihre vorgeer des
+                  rats angelangt, insbesondere <rs type="person"
+                     ref="pe__niklas_teschler_QGW_II_II_2951">Niclas Teschler, den damaligen <roleName
+                        type="occ" corresp="org__wien">Bürgermeister</roleName></rs>, und <rs
+                           type="person" ref="pe__christoph_oeczestorffer_QGW_II_II_3245">Kristoff
+                           Öczesdorffer</rs>, der sich damals verwilligt hatte, seinen Leuten ain genügen ze
+                  tuen, damit [ 16] sie nur nicht an der Fahrt zu dem Könige gehindert werden, und
+                  wiederholt durch Briefe und Abgesandte seine Forderungen bekannt gegeben, doch habe
+                  man ihn allweg mit Worten hingehalten. Seinem <rs type="person"
+                     ref="pe__hermann_steinfelder_QGW_II_III_3788"><roleName type="occ"
+                        corresp="pe__sigmund_ii_graf_QGW_II_III_3788">Diener</roleName> Hermann</rs>
+                  habe man gesagt, es möchten die kommen, denen der Schade widerfahren sei, darauf habe
+                  er <rs type="person" ref="pe__maternus_QGW_II_III_3815"><roleName type="title"
+                     >hern</roleName> Mathern, <unclear><roleName type="occ"
+                        corresp="org__altenburg">pharrer</roleName></unclear></rs>, und den <rs
+                           type="person" ref="pe__johann_strendel_QGW_II_III_3815">Hans Strendel,
+                           <unclear><roleName type="occ" corresp="org__altenburg"
+                              >richter</roleName></unclear> zu Altenburgk</rs>, und die leut damit, die
+                  schaden empfangen haben , hinaufgeschickt, sie seien aber mit schimpflicher antwurt
+                  abgefertigt worden. Da er jedoch gute Nachbarschaft halten wolle, so ersucht er sie,
+                  den Bürgermeister und Rath zu underweisen, dass den Seinen ain genugsamliche
+                  widerkerung umb iren schaden beschech. </rs>
+            </p>
+         </div>
+         <div type="nota">
+            <p>
+               <rs type="event" ref="ev__QGW_II_III_3815_nota">Adresse aussen</rs>
+            </p>
+         </div>
+         <div type="lists">
+            <xi:include xmlns:xi="http://www.w3.org/2001/XInclude"
+               href="../../../../indices/placeList.xml" xpointer="element(/1/2/1/1)"/>
+            <xi:include xmlns:xi="http://www.w3.org/2001/XInclude"
+               href="../../../../indices/personList.xml" xpointer="element(/1/2/1/1)"/>
+            <xi:include xmlns:xi="http://www.w3.org/2001/XInclude"
+               href="../../../../indices/eventList.xml" xpointer="element(/1/2/1/1)"/>
+            <xi:include xmlns:xi="http://www.w3.org/2001/XInclude"
+               href="../../../../indices/orgList.xml" xpointer="element(/1/2/1/1)"/>
+         </div>
+      </body>
+   </text>
+</TEI>

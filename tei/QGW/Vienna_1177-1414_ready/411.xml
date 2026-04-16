@@ -1,0 +1,143 @@
+<?xml version="1.0" encoding="UTF-8"?><!DOCTYPE TEI   SYSTEM "../../../schema/toolbox_full.dtd">
+<TEI xmlns="http://www.tei-c.org/ns/1.0" xmlns:cei="http://www.monasterium.net/NS/cei"
+   xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance">
+   <teiHeader>
+      <fileDesc>
+         <titleStmt>
+            <title>Tei version of 411 exported from monasterium.net </title>
+         </titleStmt>
+         <publicationStmt>
+            <p/>
+         </publicationStmt>
+         <!--In Original: cei:front/cei:sourceDesc/cei:sourceDescRegest-->
+         <sourceDesc>
+            <bibl type="url">https://www.monasterium.net/mom/AT-WStLA/HAUrk/411/charter</bibl>
+            <bibl default="false" status="draft">Quellen zur Geschichte der Stadt Wien, Bd. II/1,
+               Nr. 411 As published in HAUrk by Wiener Stadt- und Landesarchiv </bibl>
+            <msDesc status="draft">
+               <msIdentifier>
+                  <repository>Wiener Stadt- und Landesarchiv</repository>
+                  <idno>411</idno>
+                  <altIdentifier type="old">
+                     <idno>514582</idno>
+                  </altIdentifier>
+               </msIdentifier>
+               <msContents>
+                  <msItem>
+                     <listBibl default="false">
+                        <bibl default="false" status="draft">Fischer, Brevis Notitia 2, 160
+                           cit.</bibl>
+                     </listBibl>
+                  </msItem>
+               </msContents>
+               <physDesc>
+                  <sealDesc>
+                     <seal>
+                        <p>Fünf anhangende Siegel: 1. grün u. K., spitzoval, 2. roth u. K., rund, 3.
+                           roth u. K., spitzoval, 4. ungefärbt, rund, 5. roth u. K., rund,
+                           Bruchstück.</p>
+                     </seal>
+                  </sealDesc>
+               </physDesc>
+            </msDesc>
+         </sourceDesc>
+      </fileDesc>
+      <encodingDesc>
+         <projectDesc default="false">
+            <p><label type="contentual-editing">Projekt Christina Lutter Stadt und
+                  Gemeinschaft</label></p>
+         </projectDesc>
+      </encodingDesc>
+      <profileDesc>
+         <creation>
+            <placeName>Wien</placeName>
+            <date when="13520809">1352 VIII 09</date>
+            <origDate instant="false">ze Wienne, des naechsten phintztages vor sand Larentzen
+               tag.</origDate></creation>
+      </profileDesc>
+   </teiHeader>
+   <facsimile>
+      <surface>
+         <graphic
+            url="http://images.monasterium.net/pics/AT-WStLA/HA-U/WStLA-HA-Urkunden_00411_r.jpg"/>
+      </surface>
+      <surface>
+         <graphic
+            url="http://images.monasterium.net/pics/AT-WStLA/HA-U/WStLA-HA-Urkunden_00411_v.jpg"/>
+      </surface>
+   </facsimile>
+   <text>
+      <body>
+         <div type="abstract" resp="lp">
+            <p>
+               <rs type="event" ref="ev__QGW_II_I_411"><rs type="fn" role="issuer"><rs type="person"
+                        ref="pe__jakob_poll_QGW_II_I_770">Jacob der Poll, <roleName type="occ"
+                           corresp="org__wien-st_maria_im_rathaus">chaplan</roleName> der chapellen
+                        Unser Vrowen in der purger Rathaus ze Wienn, hern Otten Haimen Stiftung
+                        sälig</rs></rs> ,<triggerstring n="disp"> urkundet</triggerstring><rs type="event"
+                     ref="ev__QGW_II_I_411_men_1">über die Anlage der von <rs type="person"
+                        ref="pe__stephan_poll_QGW_II_I_1138"> seinem <roleName type="kin"
+                           corresp="pe__jakob_poll_QGW_II_I_770"> Bruder</roleName> Stephan dem
+                        Pollen </rs> zur Kapelle gewidmeten 70 lb dn. und über die Ausführung der
+                     von diesem dafür angeordneten Messstiftung</rs>. Jakob hat für die 70 lb dn.
+                     <triggerstring n="disp">gekauft</triggerstring>: 3 lb 6 sh. dn. <triggerstring n="disp"
+                     >gelts purchrechts ewigs</triggerstring> auf dem haus, das weiln <rs type="person"
+                     ref="pe__konrad_swab_QGW_II_I_411">Chunrats des Swabs, <roleName type="prof"
+                        >des snaider</roleName></rs>, gewesen ist, das da leit in der
+                  Wiltwercherstrasse ze Wienn an dem ekke gegen dem Vischmarcht über zena/echst
+                  Lucas haus, des hansgrafen 2 ½ lb dn. gelts ewigs purgrechts, die da ligent an dem
+                  Liechtensteg ze Wienne auf <rs type="person" ref="pe__gebhard_QGW_II_I_411"
+                     >Gebharts haus <roleName type="occ"
+                        corresp="pe__friedrich_von_tierna_QGW_II_I_1106"
+                        ><add>diener</add></roleName>,<rs type="person"
+                        ref="pe__friedrich_von_tierna_QGW_II_I_1106"><roleName type="title"
+                           >hern</roleName> Fridreichs diener von Tierna</rs>
+                  </rs>, das weiln <rs type="person" ref="pe__muenich_chramer_QGW_II__I_411"
+                     >Münichs, des chramer </rs>, gewesen ist, zenaechst dem haus, das weiln<rs
+                     type="person" ref="pe__niklas_suzz_QGW_II_I_411"> Nichlas des Su/ez/zz/zen</rs>
+                  gewesen ist ferner <triggerstring n="disp">gibt er dazu</triggerstring>
+                  <rs type="fn" role="other"><triggerstring n="fn">mit Handen </triggerstring><rs
+                        type="person" ref="pe__ernst_ochs_QGW_II_I_411">des <roleName type="title"
+                           >Bergherrn</roleName>
+                        <roleName type="title">bru/eder</roleName> Ernsteins des Ochsen, <roleName
+                           type="occ" corresp="org__wien-deutsche_herren">comiteur</roleName> datz
+                        dem Ta/eutschen haus ze Wienne</rs></rs>, 2 lb dn, auf einem halben Joch
+                  Weingarten, gelegen ze Chlaitzing und haisset der Pogner. Endlich <triggerstring
+                     n="disp">stiftet</triggerstring>Jakob selbst für sich <triggerstring n="disp">einen
+                     ewigen Jahrtag</triggerstring> mit 4 lb dn. gelts ewigs purchrechts auf <rs
+                     type="person" ref="pe__michael_poll_QGW_II_I_440">seines <roleName type="kin"
+                        corresp="pe__jakob_poll_QGW_II_I_770">Bruders</roleName> haus Michels des
+                     Pollen</rs>, das da leit in der Wiltwercherstrasse ze Wienne an einem tail an
+                  dem ekke des gässleins gegen der vorgenanten chapellen widemhaus über und an dem
+                  andern tail zunächst dem Hause<rs type="person"
+                     ref="pe__ulrich_poll_QGW_II_I_1167"> seines <roleName type="kin"
+                        corresp="pe__jakob_poll_QGW_II_I_770">Bruders</roleName> Ulreichs des
+                     Pollen</rs>. </rs></p>
+         </div>
+         <div type="seal">
+            <p><rs type="event" ref="ev__QGW_II_I_411"><rs type="fn" role="witness">Besiegelt mit
+                     den Siegeln: 1.<rs type="person" ref="pe__jakob_poll_QGW_II_I_770"> des
+                        Ausstellers</rs>, 2.<rs type="org" ref="org__wien-deutsche_herren"> des
+                        Deutschen Hauses</rs>, 3. <rs type="person" ref="pe__ulrich_QGW_II_I_407">
+                        <roleName type="title">maister</roleName> Ulreichs, des Passauer
+                        Officials</rs>, 4.<rs type="person"
+                        ref="pe__friedrich_von_tierna_QGW_II_I_1106"><roleName type="title"
+                           >hern</roleName> Fridreichs von Tierna,<roleName type="occ"
+                           corresp="org__wien">purgermaister ze Wienne</roleName></rs>, 5. <rs
+                        type="person" ref="pe__heinrich_wuerfel_QGW_II_I_459"><roleName type="title"
+                           >hern</roleName> Hainreichs des Würfels </rs>, <rs type="org"
+                        ref="org__wien">des rats der stat ze Wienne</rs></rs></rs> . </p>
+         </div>
+         <div type="lists">
+            <xi:include xmlns:xi="http://www.w3.org/2001/XInclude"
+               href="../../../../indices/placeList.xml" xpointer="element(/1/2/1/1)"/>
+            <xi:include xmlns:xi="http://www.w3.org/2001/XInclude"
+               href="../../../../indices/personList.xml" xpointer="element(/1/2/1/1)"/>
+            <xi:include xmlns:xi="http://www.w3.org/2001/XInclude"
+               href="../../../../indices/eventList.xml" xpointer="element(/1/2/1/1)"/>
+            <xi:include xmlns:xi="http://www.w3.org/2001/XInclude"
+               href="../../../../indices/orgList.xml" xpointer="element(/1/2/1/1)"/>
+         </div>
+      </body>
+   </text>
+</TEI>

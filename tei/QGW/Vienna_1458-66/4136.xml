@@ -1,0 +1,107 @@
+<?xml version="1.0" encoding="UTF-8" standalone="no"?>
+<!DOCTYPE TEI
+  SYSTEM "../../../schema/toolbox_full.dtd">
+<TEI xmlns:cei="http://www.monasterium.net/NS/cei" xmlns="http://www.tei-c.org/ns/1.0">
+   <teiHeader>
+      <fileDesc>
+         <titleStmt>
+            <title>Tei version of 4136 exported from monasterium.net </title>
+         </titleStmt>
+         <publicationStmt>
+            <p/>
+         </publicationStmt>
+         <!--In Original: cei:front/cei:sourceDesc/cei:sourceDescRegest-->
+         <sourceDesc>
+            <bibl>Quellen zur Geschichte der Stadt Wien, Bd. II/3, Nr. As published in HAUrk by
+               Wiener Stadt- und Landesarchiv </bibl>
+            <msDesc>
+               <msIdentifier>
+                  <repository>Wiener Stadt- und Landesarchiv</repository>
+                  <idno>4136</idno>
+                  <altIdentifier type="old">
+                     <idno>518415</idno>
+                  </altIdentifier>
+               </msIdentifier>
+               <msContents>
+                  <msItem>
+                     <listBibl>
+                        <bibl type="url"
+                           >https://www.monasterium.net/mom/AT-WStLA/HAUrk/4136/charter</bibl>
+                     </listBibl>
+                  </msItem>
+               </msContents>
+               <physDesc>
+                  <sealDesc>
+                     <seal>
+                        <p>Zwei rückwärts aufgedrückte Siegel von rothem Wachse.Siegler: die
+                           Ausstellerin und [ <quote>103</quote>] der <quote>edl herr, her Stephan
+                              Eiczinger von Eiczing</quote>. </p>
+                     </seal>
+                  </sealDesc>
+               </physDesc>
+            </msDesc>
+         </sourceDesc>
+      </fileDesc>
+      <profileDesc>
+         <creation>
+            <date when="14661128">1466 XI 28</date>
+            <origDate>an freitag vor sand Andres tag, des heiligen
+            zwelifpoten.</origDate></creation>
+      </profileDesc>
+   </teiHeader>
+   <facsimile>
+      <surface>
+         <graphic
+            url="http://images.monasterium.net/pics/AT-WStLA/HA-U/WStLA-HA-Urkunden_04136_r.jpg"/>
+      </surface>
+      <surface>
+         <graphic
+            url="http://images.monasterium.net/pics/AT-WStLA/HA-U/WStLA-HA-Urkunden_04136_v.jpg"/>
+      </surface>
+   </facsimile>
+   <text>
+      <body>
+         <div type="abstract" resp="ms">
+            <p><rs type="event" ref="ev__QGW_II_III_4136">
+                  <rs type="fn" role="issuer"><rs type="person" ref="pe__barbara_QGW_II_III_4136"
+                        >Barbara, <rs type="person" ref="pe__stephan_kraft_QGW_II_III_4136"
+                           >Stephanen Krafften von Marspach, <roleName type="dead">dem Got
+                              gnad</roleName></rs>, <roleName type="kin"
+                           corresp="pe__stephan_kraft_QGW_II_III_4136">tochter</roleName> und des
+                           <rs type="person" ref="pe__ulrich_eitzinger_QGW_II_II_3270"><roleName
+                              type="title">edeln</roleName>
+                           <roleName type="title">herrn</roleName>, <roleName type="title"
+                              >hern</roleName> Ulreichs Eiczinger von Eiczing<roleName type="dead"
+                                 ><add>witib</add></roleName></rs>
+                        <roleName type="kin" corresp="pe__ulrich_eitzinger_QGW_II_II_3270"
+                           >witib</roleName></rs></rs>, theilt <rs type="fn" role="recipient"><rs
+                        type="org" ref="org__wien">dem Bürgermeister und Rath der Stadt zu
+                     Wien</rs></rs> mit, dass sie ihr haus, stadl und paungarten, hinden daran, im
+                  Gereutt vor Stubentor zu Wienn zenachst weilent Herwarts auf der Seyl garten , . .
+                  . <rs type="person" ref="pe__pankraz_snekchenreut_QGW_II_III_4136">dem <roleName
+                        type="title">edeln</roleName> Pangreczen von Snekchenreutt</rs> verkauft
+                  habe und ersucht sie, den beiliegenden Kaufbrief mit ihrem Grundsiegel zu
+                  fertigen, sowie die Aus und Einschreibung im Grundbuch zu veranlassen. </rs></p>
+         </div>
+         <div type="seal">
+            <p><rs type="event" ref="ev__QGW_II_III_4136"><rs type="fn" role="witness">Siegler: die
+                        <rs type="person" ref="pe__barbara_QGW_II_III_4136">Ausstellerin</rs> und [
+                     103] <rs type="person" ref="pe__stephan_eitzinger_QGW_II_II_3305">der <roleName
+                           type="title">edl</roleName>
+                        <roleName type="title">herr</roleName>, <roleName type="title"
+                           >her</roleName> Stephan Eiczinger von Eiczing</rs>.</rs>
+               </rs></p>
+         </div>
+         <div type="lists">
+            <xi:include xmlns:xi="http://www.w3.org/2001/XInclude"
+               href="../../../../indices/placeList.xml" xpointer="element(/1/2/1/1)"/>
+            <xi:include xmlns:xi="http://www.w3.org/2001/XInclude"
+               href="../../../../indices/personList.xml" xpointer="element(/1/2/1/1)"/>
+            <xi:include xmlns:xi="http://www.w3.org/2001/XInclude"
+               href="../../../../indices/eventList.xml" xpointer="element(/1/2/1/1)"/>
+            <xi:include xmlns:xi="http://www.w3.org/2001/XInclude"
+               href="../../../../indices/orgList.xml" xpointer="element(/1/2/1/1)"/>
+         </div>
+      </body>
+   </text>
+</TEI>

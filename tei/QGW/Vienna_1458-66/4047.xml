@@ -1,0 +1,125 @@
+<?xml version="1.0" encoding="UTF-8" standalone="no"?>
+<!DOCTYPE TEI
+  SYSTEM "../../../schema/toolbox_full.dtd">
+<TEI xmlns:cei="http://www.monasterium.net/NS/cei" xmlns="http://www.tei-c.org/ns/1.0">
+   <teiHeader>
+      <fileDesc>
+         <titleStmt>
+            <title>Tei version of 4047 exported from monasterium.net </title>
+         </titleStmt>
+         <publicationStmt>
+            <p/>
+         </publicationStmt>
+         <!--In Original: cei:front/cei:sourceDesc/cei:sourceDescRegest-->
+         <sourceDesc>
+            <bibl>Quellen zur Geschichte der Stadt Wien, Bd. II/3, Nr. As published in HAUrk by
+               Wiener Stadt- und Landesarchiv </bibl>
+            <msDesc>
+               <msIdentifier>
+                  <repository>Wiener Stadt- und Landesarchiv</repository>
+                  <idno>4047</idno>
+                  <altIdentifier type="old">
+                     <idno>518318</idno>
+                  </altIdentifier>
+               </msIdentifier>
+               <msContents>
+                  <msItem>
+                     <listBibl>
+                        <bibl type="url"
+                           >https://www.monasterium.net/mom/AT-WStLA/HAUrk/4047/charter</bibl>
+                        <bibl>Chmel, Regesten 402 n°3985 Regest aus Abschrift.</bibl>
+                     </listBibl>
+                  </msItem>
+               </msContents>
+               <physDesc>
+                  <sealDesc>
+                     <seal>
+                        <p>An violetter Seidenschnur anhangendes Münzsiegel (Sava 136 n° III und
+                           Fig. 98) secretiert mit Sava Fig. 117, in alter Lederkapsel mit dem
+                           Kreuzwappen. </p>
+                     </seal>
+                  </sealDesc>
+               </physDesc>
+            </msDesc>
+         </sourceDesc>
+      </fileDesc>
+      <profileDesc>
+         <creation>
+            <placeName>Wiener-Neustadt</placeName>
+            <date when="14630419">1463 IV 19</date>
+            <origDate>Mit urkunt diss briefs mit unserm kaiserlichen majestatt insigel besiegelt.
+               Geben mit urtail zu der Neunstat am neunzehenden tag des monads aprilis, nach Christi
+               gepurde 1400 und im 63., unserr reich, des Römischen im 24., des kaisertumbs im 12.
+               und des H </origDate></creation>
+      </profileDesc>
+   </teiHeader>
+   <facsimile>
+      <surface>
+         <graphic
+            url="http://images.monasterium.net/pics/AT-WStLA/HA-U/WStLA-HA-Urkunden_04047_r.jpg"/>
+      </surface>
+      <surface>
+         <graphic
+            url="http://images.monasterium.net/pics/AT-WStLA/HA-U/WStLA-HA-Urkunden_04047_v.jpg"/>
+      </surface>
+   </facsimile>
+   <text>
+      <body>
+         <div type="abstract" resp="vh">
+            <p><rs type="event" ref="ev__QGW_II_III_4047"><rs type="fn" role="issuer"><rs
+                        type="person" ref="pe__friedrich_v_herzog_von_oesterreich_QGW_II_I_3270"
+                           ><roleName type="occ" corresp="org__heiliges_roemisches_reich"
+                           >Kaiser</roleName> Friedrich III.</rs></rs> bringt zur allgemeinen
+                  Kenntnis, dass am heutigen Tage, als er sein kaiserlich gericht in eigner person
+                  besessen hat, vor demselben <rs type="person"
+                     ref="pe__niklas_teschler_QGW_II_II_2951">Niclas Teschler, <roleName type="occ"
+                        corresp="org__wien">münssmaister</roleName>
+                     <roleName type="occ" corresp="org__wien"><add>burger</add></roleName></rs>, <rs
+                     type="person" ref="pe__johann_kanstorffer_QGW_II_II_3401">Hanns Kanstorffer
+                        <add>burger</add></rs>, <rs type="person"
+                     ref="pe__laurenz_stadler_QGW_II_II_3572">Larencz Stadler <roleName type="occ"
+                        corresp="org__wien"><add>burger</add></roleName></rs>, <rs type="person"
+                     ref="pe__johann_kanstorffer_QGW_II_II_3401">Hanns Tanhauser <roleName
+                        type="occ" corresp="org__wien"><add>burger</add></roleName></rs>, <rs
+                     type="person" ref="pe__simon_poetel_QGW_II_II_2412">Simon Pottel <roleName
+                        type="occ" corresp="org__wien"><add>burger</add></roleName></rs>, <rs
+                     type="person" ref="pe__ulrich_perman_QGW_II_III_3923">Ulreich Perman <roleName
+                        type="occ" corresp="org__wien"><add>burger</add></roleName></rs>, <rs
+                     type="person" ref="pe__hartung_von_kappel_der_juengere_QGW_II_III_3823"
+                     >Harttung von Cappell, der junger <roleName type="occ" corresp="org__wien"
+                           ><add>burger</add></roleName></rs>, und <rs type="person"
+                     ref="pe__christian_kornfail_QGW_II_III_4047">Cristan Kornfail, seine <roleName
+                        type="occ" corresp="org__wien">burger</roleName> zu Wienn</rs>, einen von
+                  ihm am 24. März erlassenen ladung- und gepottbriefe gegen die, so sich nennen <rs
+                     type="org" ref="org__wien">burgermaister, richter, rat, genant [ 75] und
+                     gemeinde seiner statt Wienn </rs>verlesen liessen (Urk. n° 3045). Auf diese
+                  Ladung sei nun ein santprief der Wiener eingelangt, in dem sie zur Beschickung des
+                  Gerichts um Geleit für sechzehn Personen ersuchen, das ihnen vom Kaiser
+                  verschrieben wurde. Trotzdem erschienen sie nicht, worauf entschieden wurde, dass
+                  ihnen von gerichts wegen zu dreien malen solt gerufft werden. Da sie sich auch
+                  nach diesem Rufe nicht dem Gerichte stellten, so wurde das Urtheil gefällt, dass
+                  die clager ir clag und sprüche erfolgt und erstanden und die von Wienn umb solchen
+                  iren frevel, gewalt und verhandel, in der clag bestimet, wider ere getan haben,
+                  auch sie alle in des heiligen Reichs acht und aberacht und all und jeglich ander
+                  pene und pusse, in der vermelten ladung und clag bestimmet, verfallen sein sollen,
+                  bis sie den Klägern Genüge geleistet haben. Auf Grund dieses Urtheils spricht der
+                  Kaiser über sie des heiligen Reichs acht und aberacht aus und setzt sie mit Leib
+                  und Gut in unfriden. </rs></p>
+         </div>
+         <div type="nota">
+            <p><rs type="event" ref="ev__QGW_II_III_4047_nota">Auf dem Buge: ad mandatum domini
+                  imperatoris. </rs></p>
+         </div>
+         <div type="lists">
+            <xi:include xmlns:xi="http://www.w3.org/2001/XInclude"
+               href="../../../../indices/placeList.xml" xpointer="element(/1/2/1/1)"/>
+            <xi:include xmlns:xi="http://www.w3.org/2001/XInclude"
+               href="../../../../indices/personList.xml" xpointer="element(/1/2/1/1)"/>
+            <xi:include xmlns:xi="http://www.w3.org/2001/XInclude"
+               href="../../../../indices/eventList.xml" xpointer="element(/1/2/1/1)"/>
+            <xi:include xmlns:xi="http://www.w3.org/2001/XInclude"
+               href="../../../../indices/orgList.xml" xpointer="element(/1/2/1/1)"/>
+         </div>
+      </body>
+   </text>
+</TEI>

@@ -1,0 +1,200 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<TEI xmlns="http://www.tei-c.org/ns/1.0" xmlns:cei="http://www.monasterium.net/NS/cei"
+   xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance">
+   <teiHeader>
+      <fileDesc>
+         <titleStmt>
+            <title>Tei version of 5495 exported from monasterium.net </title>
+         </titleStmt>
+         <publicationStmt>
+            <p/>
+         </publicationStmt>
+         <!--In Original: cei:front/cei:sourceDesc/cei:sourceDescRegest-->
+         <sourceDesc>
+            <bibl>Quellen zur Geschichte der Stadt Wien, Bd. II/3, Nr. As published in HAUrk by
+               Wiener Stadt- und Landesarchiv </bibl>
+            <msDesc>
+               <msIdentifier>
+                  <repository>Wiener Stadt- und Landesarchiv</repository>
+                  <idno>5495</idno>
+                  <altIdentifier type="old">
+                     <idno>519803</idno>
+                  </altIdentifier>
+               </msIdentifier>
+               <physDesc>
+                  <sealDesc>
+                     <seal>
+                        <p>Fünf anhangende Siegel: 1., 2., 4., 5. grün u. Sch., 3. schwarz u.
+                           Sch.Siegler: Taschendorfer, Rieder, Schrutauer, Een und der edle
+                              <quote>Blasi Englhartsteter, statkamrer, baid des vorbenanten rates
+                              der stat zu Wienn</quote>. </p>
+                     </seal>
+                  </sealDesc>
+               </physDesc>
+            </msDesc>
+         </sourceDesc>
+      </fileDesc>
+      <encodingDesc>
+         <projectDesc default="false">
+            <p><label type="contentual-editing">Projekt Christina Lutter Stadt und
+                  Gemeinschaft</label></p>
+         </projectDesc>
+      </encodingDesc>
+      <profileDesc>
+         <creation>
+            <placeName>Wien</placeName>
+            <date when="14930914">1493 IX 14</date>
+            <origDate>zu Wienn, an sambstag des heilligen Kreucz tag seiner
+            erhöchung.</origDate></creation>
+      </profileDesc>
+   </teiHeader>
+   <facsimile>
+      <surface>
+         <graphic
+            url="http://images.monasterium.net/pics/AT-WStLA/HA-U/WStLA-HA-Urkunden_05495_r.jpg"/>
+      </surface>
+      <surface>
+         <graphic
+            url="http://images.monasterium.net/pics/AT-WStLA/HA-U/WStLA-HA-Urkunden_05495_v.jpg"/>
+      </surface>
+   </facsimile>
+   <text>
+      <body>
+         <div type="abstract">
+            <p>
+               <rs type="fn" role="issuer"><rs type="person"
+                     ref="pe__laurenz_taschendorfer_QGW_II_III_5485">Larencz Taschendorffer<roleName
+                        type="occ" corresp="org__wien"><add> des rates der stat
+                        Wienn</add></roleName></rs>, <rs type="person"
+                     ref="pe__wolfgang_rieder_QGW_II_II_3297">Wolffgang Rieder<roleName type="occ"
+                        corresp="org__wien"><add> des rates der stat Wienn</add></roleName></rs>,
+                     <rs type="person" ref="pe__johann_kress_QGW_II_III_5495">Hanns Cress von
+                        Kolen<roleName type="occ" corresp="org__wien"><add> des rates der stat
+                           Wienn</add></roleName></rs>, <rs type="person"
+                     ref="pe__laurenz_hittendorffer_QGW_II_III_5495">Larencz Hittendorffer, der an
+                        <rs type="person" ref="pe__stephan_een_QGW_II_III_5481"><roleName
+                           type="title">hern</roleName> Steffen Een</rs>
+                     <roleName type="rep" corresp="pe__stephan_een_QGW_II_III_5481"
+                        >stat</roleName><roleName type="occ" corresp="org__wien"><add> des rates der
+                           stat Wienn</add></roleName></rs>, so dieselbzeit bei der sach seiner
+                  notdurft und gescheft halben nit gesein hat künnen, von den hienach geschriben
+                  tailen zu dem handel genomen ist, all vier des rates der stat Wienn, <rs
+                     type="person" ref="pe__heinrich_schrutauer_QGW_II_III_3421">Hainreich
+                     Schrutauer</rs> und <rs type="person"
+                     ref="pe__bernhard_flander_QGW_II_III_5486">Pernhart Flander, <roleName
+                        type="occ" corresp="org__wien">burger</roleName> daselbs</rs> ,</rs>
+               bestätigen die in dem Streite zwischen <rs type="fn" role="recipient"><rs
+                     type="person" ref="pe__johann_lanczhart_QGW_II_III_5485">Hanns
+                        Lanczhart<roleName type="occ" corresp="org__wien">burger</roleName><roleName
+                        type="rep" corresp="pe__barbara_QGW_II_III_5495"
+                        ><add>Bevollmächtigten</add></roleName></rs> und <rs type="person"
+                     ref="pe__andreas_prantstetter_QGW_II_III_5495">Andre Prantstetter, bed
+                        <roleName type="occ" corresp="org__wien">burger</roleName> zu Wienn, als
+                        <roleName type="rep" corresp="pe__barbara_QGW_II_III_5495"
+                        >Bevollmächtigten</roleName></rs>
+                  <rs type="person" ref="pe__barbara_QGW_II_III_5495">der <roleName type="title"
+                        >Frau</roleName> Barbaren, <rs type="person"
+                        ref="pe__paul_stornschacz_QGW_II_III_4250">Paulen Storenschacz, weilend
+                           <roleName type="occ" corresp="org__wien">burger</roleName> daselbs
+                           <roleName type="dead">seligen</roleName></rs>, <roleName type="kin"
+                        corresp="pe__paul_stornschacz_QGW_II_III_4250">wittibn</roleName></rs>, an
+                  aim, <rs type="person" ref="pe__paul_hoelfues_QGW_II_III_5495">Paul Holfues als
+                        <roleName type="rep" corresp="pe__simon_stornschacz_QGW_II_III_5479"
+                        >Bevollmächtigtem</roleName> Simons, des obgenannten Storenschacz sun,</rs>
+                  <rs type="person" ref="pe__magdalena_QGW_II_III_5479">Magdalen, des jeczgenannten
+                     Simons <roleName type="kin" corresp="pe__simon_stornschacz_QGW_II_III_5479"
+                        >swester</roleName> und Hannsen Schiemer <roleName type="kin"
+                        corresp="pe__johann_schiemer_QGW_II_III_5479">hausfraun</roleName></rs>, fur
+                  sich selbs, <rs type="person" ref="pe__lukas_wild_QGW_II_III_5495">Lucas Wild als
+                        <roleName type="rep" corresp="pe__paul_QGW_II_III_5495">Gerhaben</roleName>
+                     Paulen, auch des obgenannten Paulen Storenschacz sun</rs>, <rs type="person"
+                     ref="pe__ulrich_noerczl_QGW_II_III_4030">Ulreich Nörczl<roleName type="rep"
+                        corresp="pe__johann_stornschacz_QGW_II_III_5495"
+                        ><add>Gerhaben</add></roleName><roleName type="rep"
+                        corresp="pe__christine_QGW_II_III_5495"
+                        ><add>Gerhaben</add></roleName><roleName type="rep"
+                        corresp="pe__martha_QGW_II_III_5495"><add>Gerhaben</add></roleName></rs> und
+                     <rs type="person" ref="pe__johann_veyalroesel_QGW_II_III_5495">Hanns
+                     Veyalrösel, der <roleName type="prof">pegk</roleName>, <roleName type="occ"
+                        corresp="org__wien">burger</roleName> zu Wienn , als <roleName type="rep"
+                        corresp="pe__johann_stornschacz_QGW_II_III_5495"
+                        >Gerhaben</roleName><roleName type="rep"
+                        corresp="pe__christine_QGW_II_III_5495"
+                        ><add>Gerhaben</add></roleName><roleName type="rep"
+                        corresp="pe__martha_QGW_II_III_5495"><add>Gerhaben</add></roleName>
+                     <rs type="person" ref="pe__johann_stornschacz_QGW_II_III_5495"
+                           >Hensleins<roleName type="kin"
+                           corresp="pe__paul_stornschacz_QGW_II_III_4250"
+                           ><add>kinder</add></roleName><roleName type="kin"
+                           corresp="pe_barbara_QGW_II_III_4250"><add>kinder</add></roleName></rs>,
+                        <rs type="person" ref="pe__christine_QGW_II_III_5495"><roleName type="title"
+                           >junkfraun</roleName> Cristinen<roleName type="kin"
+                           corresp="pe__paul_stornschacz_QGW_II_III_4250"
+                           ><add>kinder</add></roleName><roleName type="kin"
+                           corresp="pe_barbara_QGW_II_III_4250"><add>kinder</add></roleName></rs>
+                     und <rs type="person" ref="pe__martha_QGW_II_III_5495">Marthen, auch des
+                        obgenannten Paulen Storenschacz, des elteren, <roleName type="kin"
+                           corresp="pe__paul_stornschacz_QGW_II_III_4250">kinder</roleName><roleName
+                           type="kin" corresp="pe_barbara_QGW_II_III_4250"
+                           ><add>kinder</add></roleName></rs>, so er bei der obgemelten <rs
+                        type="person" ref="pe__barbara_QGW_II_III_5495"><roleName type="title"
+                           >frauen</roleName> Barbaren, seiner <roleName type="kin"
+                           corresp="pe__paul_stornschacz_QGW_II_III_4250"
+                        >hausfrauen</roleName>,</rs> elichen gehabt hat,</rs> am andern tail</rs> .
+               . . . von wegen 750 guldein Hungerisch, der bemelten frauen Barbaren haimsteur und
+               widerlegung, und ander spruch und vordrung, <rs type="event" ref="NULL">so sy auf des
+                  egenannten Paulen Storenschacz, ires mannes, gelassen erb und varund gut von dem
+                  Bürgermeister und Rathe der Stadt Wien erlangt und behabt haben</rs>, gefällte
+               Entscheidung. Barbara soll für ihre Ansprüche und für die 60 lb dn., die sie laut
+               einer vorgelegten Quittung zu Olomuncz für den egenanten Storenschacz, iren hauswirt,
+               bezahlt hat, 250 lb dn. erhalten. Ihren vor genannten drei Kindern sollen von ihr 200
+               lb dn. auf Erbgütern zu Olomuncz verschrieben werden. Von dem Uebermasse sollen des
+               Storenschacz gelter bezahlt und der Rest in drei Theile getheilt werden, von denen
+                  <rs type="fn" role="recipient">zwei der <rs type="person"
+                     ref="pe__magdalena_QGW_II_III_5479">Magdalen Schiemerin</rs> und iren zwaien
+                     <rs type="person" ref="pe__simon_stornschacz_QGW_II_III_5479"><roleName
+                        type="kin" corresp="pe__magdalena_QGW_II_III_5479">bruedern</roleName>,
+                     Simon</rs> und <rs type="person" ref="pe__paul_hoelfues_QGW_II_III_5495"
+                        >Paule<roleName type="kin" corresp="pe__magdalena_QGW_II_III_5479"
+                           ><add>bruedern</add></roleName>n</rs></rs>, und der dritt tail durch
+               Gottes und des obgemelten Storenschacz sel hail willen gegeben werden sollen. Das
+               Viertel Weingarten, genannt Aichel, am Nusperg gelegn, soll dem obgenannten Paulen
+               Storenchacz verbleiben, die 300 lb dn., so Permon dem Storenschacz geschaft hat,
+               sollen für dessen Kinder eingebracht und unter ihnen zu gleichen Theilen getheilt
+               werden. Wer den Spruch nicht hält, soll dem Römischen Könige 50 lb dn., Allerheiligen
+               tumbkirchen zu sand Steffon zum pau 32 lb dn., der stat hie zu gemainem nucz 20 lb
+               dn., dem statrichter zu Wienn 10 lb dn. gueter landeswerung in Osterreich [ 442] zu
+               pen zu geben verfallen sein. </p>
+         </div>
+         <div type="seal">
+            <p><rs type="event" ref="ev__QGW_II_II_5495"><rs type="fn" role="witness">Siegler: <rs
+                        type="person" ref="pe__laurenz_taschendorfer_QGW_II_III_5485"
+                        >Taschendorfer</rs>, <rs type="person"
+                        ref="pe__wolfgang_rieder_QGW_II_II_3297">Rieder</rs>, <rs type="person"
+                        ref="pe__heinrich_schrutauer_QGW_II_III_3421">Schrutauer<roleName type="occ"
+                           corresp="org__wien">rates</roleName></rs>, <rs type="person"
+                        ref="pe__stephan_een_QGW_II_III_5481">Een</rs> und <rs type="person"
+                        ref="pe__blasius_engelhartstetter_QGW_II_III_5495">der <roleName
+                           type="title">edle</roleName> Blasi Englhartsteter, <roleName type="occ"
+                           corresp="org__wien">statkamrer</roleName>, baid des vorbenanten <roleName
+                           type="occ" corresp="org__wien">rates</roleName> der stat zu
+                     Wienn</rs>.</rs>
+               </rs></p>
+         </div>
+         <div type="nota">
+            <p>Indorsat: Registrata in libro civitatis Wiennensis anno domini 1494 an eritag post
+               exaltacionem sancte Crucis (September 16), folio libri 37. </p>
+         </div>
+         <div type="lists">
+            <xi:include xmlns:xi="http://www.w3.org/2001/XInclude"
+               href="../../../../indices/placeList.xml" xpointer="element(/1/2/1/1)"/>
+            <xi:include xmlns:xi="http://www.w3.org/2001/XInclude"
+               href="../../../../indices/personList.xml" xpointer="element(/1/2/1/1)"/>
+            <xi:include xmlns:xi="http://www.w3.org/2001/XInclude"
+               href="../../../../indices/eventList.xml" xpointer="element(/1/2/1/1)"/>
+            <xi:include xmlns:xi="http://www.w3.org/2001/XInclude"
+               href="../../../../indices/orgList.xml" xpointer="element(/1/2/1/1)"/>
+         </div>
+      </body>
+   </text>
+</TEI>

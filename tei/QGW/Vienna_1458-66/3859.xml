@@ -1,0 +1,99 @@
+<?xml version="1.0" encoding="UTF-8" standalone="no"?>
+<!DOCTYPE TEI
+  SYSTEM "../../../schema/toolbox_full.dtd">
+<TEI xmlns:cei="http://www.monasterium.net/NS/cei" xmlns="http://www.tei-c.org/ns/1.0">
+   <teiHeader>
+      <fileDesc>
+         <titleStmt>
+            <title>Tei version of 3859 exported from monasterium.net </title>
+         </titleStmt>
+         <publicationStmt>
+            <p/>
+         </publicationStmt>
+         <!--In Original: cei:front/cei:sourceDesc/cei:sourceDescRegest-->
+         <sourceDesc>
+            <bibl>Quellen zur Geschichte der Stadt Wien, Bd. II/3, Nr. As published in HAUrk by
+               Wiener Stadt- und Landesarchiv </bibl>
+            <msDesc>
+               <msIdentifier>
+                  <repository>Wiener Stadt- und Landesarchiv</repository>
+                  <idno>3859</idno>
+                  <altIdentifier type="old">
+                     <idno>518121</idno>
+                  </altIdentifier>
+               </msIdentifier>
+               <msContents>
+                  <msItem>
+                     <listBibl>
+                        <bibl type="url"
+                           >https://www.monasterium.net/mom/AT-WStLA/HAUrk/3859/charter</bibl>
+                     </listBibl>
+                  </msItem>
+               </msContents>
+               <physDesc>
+                  <sealDesc>
+                     <seal>
+                        <p>Zum Verschlusse aufgedrücktes Petschaft von grünem Wachse,
+                           abgesprungen.</p>
+                     </seal>
+                  </sealDesc>
+               </physDesc>
+            </msDesc>
+         </sourceDesc>
+      </fileDesc>
+      <profileDesc>
+         <creation>
+            <placeName>Wien</placeName>
+            <date when="14590227">1459 II 27</date>
+            <origDate>zu Wienn, an eritag nach Oculi in der Vasten.</origDate></creation>
+      </profileDesc>
+   </teiHeader>
+   <facsimile>
+      <surface>
+         <graphic
+            url="http://images.monasterium.net/pics/AT-WStLA/HA-U/WStLA-HA-Urkunden_03859_r.jpg"/>
+      </surface>
+      <surface>
+         <graphic
+            url="http://images.monasterium.net/pics/AT-WStLA/HA-U/WStLA-HA-Urkunden_03859_v.jpg"/>
+      </surface>
+   </facsimile>
+   <text>
+      <body>
+         <div type="abstract">
+            <p><rs type="event" ref="ev__QGW_II_III_3859"><rs type="fn" role="issuer">
+                     <rs type="person" ref="pe__thomas_swarcz_QGW_II_II_2673">Thoman Swarcz,
+                           <roleName type="occ" corresp="org__wien">verweser des
+                           burgermaisterambt</roleName></rs>, und <rs type="org" ref="org__wien">der
+                        rat der stat zu Wienn</rs></rs> an den <rs type="fn" role="recipient"><rs
+                        type="org" ref="org__wien">Bürgermeister und den Rath der Stadt zu Wien, die
+                        jecz in der Neunstat sind</rs></rs>. Am heutigen Tage seien vor ihnen im
+                  gehaimen rat erschienen der <rs type="org" ref="org__wien-schotten">Abt zu den
+                     Schotten</rs>, der <rs type="org" ref="org__wien-st_dorothea">Propst zu sand
+                     Dorothe</rs> und der <rs type="org" ref="org__mauerbach-kartaeuser">prior von
+                     Maurbach</rs> und haben ihnen vorgebracht, dass die zeit irer weinfur und
+                  weinschenkchens zu sand Michels tag nagstkünftig ausgen werde , es ihnen aber
+                  unleidlich und grosser schad wer, sollte ihnen das weiterhin nicht gestattet
+                  werden. Die Prälaten hätten ferner einen Artikel aus einem brief, laut dessen, im
+                  Falle als nach Ablauf der gesteckten Frist sich beide Theile nicht vereinen
+                  sollten, dem Landesfürsten die Entscheidung zufalle, und einen [ 26] von dem
+                  Kaiser ausgegangenen brief verlesen. Daraufhin hätten sie die sach angestelt bis
+                  zur Rückkehr der Adressaten und ersuchen diese unter Anschluss einer Abschrift
+                  dieses Briefes, die Angelegenheit. zum Nutzen der Stadt zu betreiben. </rs></p>
+         </div>
+         <div type="nota">
+            <p><rs type="event" ref="ev__QGW_II_III_3859_nota">Adresse aussen.</rs></p>
+         </div>
+         <div type="lists">
+            <xi:include xmlns:xi="http://www.w3.org/2001/XInclude"
+               href="../../../../indices/placeList.xml" xpointer="element(/1/2/1/1)"/>
+            <xi:include xmlns:xi="http://www.w3.org/2001/XInclude"
+               href="../../../../indices/personList.xml" xpointer="element(/1/2/1/1)"/>
+            <xi:include xmlns:xi="http://www.w3.org/2001/XInclude"
+               href="../../../../indices/eventList.xml" xpointer="element(/1/2/1/1)"/>
+            <xi:include xmlns:xi="http://www.w3.org/2001/XInclude"
+               href="../../../../indices/orgList.xml" xpointer="element(/1/2/1/1)"/>
+         </div>
+      </body>
+   </text>
+</TEI>

@@ -1,0 +1,111 @@
+<?xml version="1.0" encoding="UTF-8" standalone="no"?>
+<!DOCTYPE TEI
+  SYSTEM "../../../schema/toolbox_full.dtd">
+<TEI xmlns:cei="http://www.monasterium.net/NS/cei" xmlns="http://www.tei-c.org/ns/1.0">
+   <teiHeader>
+      <fileDesc>
+         <titleStmt>
+            <title>Tei version of 4102 exported from monasterium.net </title>
+         </titleStmt>
+         <publicationStmt>
+            <p/>
+         </publicationStmt>
+         <!--In Original: cei:front/cei:sourceDesc/cei:sourceDescRegest-->
+         <sourceDesc>
+            <bibl>Quellen zur Geschichte der Stadt Wien, Bd. II/3, Nr. As published in HAUrk by
+               Wiener Stadt- und Landesarchiv </bibl>
+            <msDesc>
+               <msIdentifier>
+                  <repository>Wiener Stadt- und Landesarchiv</repository>
+                  <idno>4102</idno>
+                  <altIdentifier type="old">
+                     <idno>518376</idno>
+                  </altIdentifier>
+               </msIdentifier>
+               <msContents>
+                  <msItem>
+                     <listBibl>
+                        <bibl type="url"
+                           >https://www.monasterium.net/mom/AT-WStLA/HAUrk/4102/charter</bibl>
+                     </listBibl>
+                  </msItem>
+               </msContents>
+               <physDesc>
+                  <sealDesc>
+                     <seal>
+                        <p>Zwei rückwärts aufgedrückte, beschädigte Siegel von grünem
+                           Wachse.Siegler: der Aussteller und <quote>Hanns Kuntstockch, gesworner
+                              weger, burger zu Wienn</quote>. </p>
+                     </seal>
+                  </sealDesc>
+               </physDesc>
+            </msDesc>
+         </sourceDesc>
+      </fileDesc>
+      <profileDesc>
+         <creation>
+            <placeName>Wien</placeName>
+            <date when="14650315">1465 III 15</date>
+            <origDate>zu Wienn, an freitag vor dem suntag Oculi in der Vasten.</origDate></creation>
+      </profileDesc>
+   </teiHeader>
+   <facsimile>
+      <surface>
+         <graphic
+            url="http://images.monasterium.net/pics/AT-WStLA/HA-U/WStLA-HA-Urkunden_04102_r.jpg"/>
+      </surface>
+      <surface>
+         <graphic
+            url="http://images.monasterium.net/pics/AT-WStLA/HA-U/WStLA-HA-Urkunden_04102_v.jpg"/>
+      </surface>
+   </facsimile>
+   <text>
+      <body>
+         <div type="abstract" resp="ms">
+            <p><rs type="event" ref="ev__QGW_II_III_4102">
+                  <rs type="fn" role="issuer"><rs type="person"
+                        ref="pe__wolfgang_von_der_leiten_QGW_II_II_3603">Wolfgang von der
+                        Leytten</rs></rs> stellt hinsichtlich des Hauses, gelegen in der
+                  Wiltwercherstrass zenagst der Slikchen haus an aim tail und an dem andern am egk,
+                  als man gen Unser Fraun durch den Swipogen geet , das ihm von <rs type="person"
+                     ref="pe__georg_peilhakch_QGW_II_III_4102">Jorgen Peilhakchen, seinem <roleName
+                        type="kin" corresp="pe__wolfgang_von_der_leiten_QGW_II_II_3603"
+                        >Vetter</roleName></rs>, anerstorben ist, wegen einer in Verlust gerathenen
+                  grundtzedel <rs type="fn" role="recipient"><rs type="org" ref="org__wien">dem
+                        Bürgermeister und Rathe sowie den Verwesern ihres Grundbuches</rs></rs>
+                  einen Revers aus. </rs></p>
+         </div>
+         <div type="seal">
+            <p><rs type="event" ref="ev__QGW_II_III_4102"><rs type="fn" role="witness">Siegler: der
+                        <rs type="person" ref="pe__wolfgang_von_der_leiten_QGW_II_II_3603"
+                        >Aussteller</rs> und <rs type="person"
+                        ref="pe__johann_kuntstokch_QGW_II_II_3530">Hanns Kuntstockch, gesworner
+                           <roleName type="prof">weger</roleName>, <roleName type="occ"
+                           >burger</roleName> zu Wienn</rs>.</rs>
+               </rs></p>
+         </div>
+         <div type="nota">
+            <p><rs type="event" ref="ev__QGW_II_III_4102_nota">Unter den Acten befindet sich
+                  folgender von dem Stadtschreiber Ulreich Griessenpekch, licenciat geistlicher
+                  rechten, mit seinem Petschafte beglaubigte Auszug aus dem Stadtbuche: Anno domini
+                  etc. sexagesimo quinto, des phincztags vor dem suntag Oculi in der Vasten (1465
+                  März. 14) hat der edl Wolfgang von der Leytten vor dem Rathe mit Jorgen
+                  Epishauser, statrichter, und Hannsen Hashart, des rats der stat zu Wienn,
+                  bewiesen, dass Jorg Peilhakch, Erharten des Peilhakchen, weilant burger zu Wienn,
+                  sun, seiner rechten swester sun gewesen sei. Die Mutter Jörgs, Gedraut, war eine
+                  Schwester Wolfgangs, beider Eltern waren Hanns von der Leytten und Elspeth.
+               </rs></p>
+         </div>
+         <div type="lists">
+            <xi:include xmlns:xi="http://www.w3.org/2001/XInclude"
+               href="../../../../indices/placeList.xml" xpointer="element(/1/2/1/1)"/>
+            <xi:include xmlns:xi="http://www.w3.org/2001/XInclude"
+               href="../../../../indices/personList.xml" xpointer="element(/1/2/1/1)"/>
+            <xi:include xmlns:xi="http://www.w3.org/2001/XInclude"
+               href="../../../../indices/eventList.xml" xpointer="element(/1/2/1/1)"/>
+            <xi:include xmlns:xi="http://www.w3.org/2001/XInclude"
+               href="../../../../indices/orgList.xml" xpointer="element(/1/2/1/1)"/>
+         </div>
+      </body>
+   </text>
+</TEI>

@@ -1,0 +1,130 @@
+<?xml version="1.0" encoding="UTF-8"?><!DOCTYPE TEI   SYSTEM "../../../schema/toolbox_full.dtd">
+<TEI xmlns="http://www.tei-c.org/ns/1.0" xmlns:cei="http://www.monasterium.net/NS/cei"
+      xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance">
+      <teiHeader>
+            <fileDesc>
+                  <titleStmt>
+                        <title>Tei version of 113 exported from monasterium.net </title>
+                  </titleStmt>
+                  <publicationStmt>
+                        <p/>
+                  </publicationStmt>
+                  <!--In Original: cei:front/cei:sourceDesc/cei:sourceDescRegest-->
+                  <sourceDesc>
+                        <bibl type="url"
+                              >https://www.monasterium.net/mom/AT-WStLA/HAUrk/113/charter</bibl>
+                        <bibl default="false" status="draft">Quellen zur Geschichte der Stadt Wien,
+                              Bd. II/1, Nr. 113 As published in HAUrk by Wiener Stadt- und
+                              Landesarchiv </bibl>
+                        <msDesc status="draft">
+                              <msIdentifier>
+                                    <repository>Wiener Stadt- und Landesarchiv</repository>
+                                    <idno>113</idno>
+                                    <altIdentifier type="old">
+                                          <idno>514281</idno>
+                                    </altIdentifier>
+                              </msIdentifier>
+                              <physDesc>
+                                    <sealDesc>
+                                          <seal>
+                                                <p>Anhangendes Siegel Herzog Ottos (Sava, Fig. 25),
+                                                  roth u. Sch.</p>
+                                          </seal>
+                                    </sealDesc>
+                              </physDesc>
+                        </msDesc>
+                  </sourceDesc>
+            </fileDesc>
+            <encodingDesc>
+                  <projectDesc default="false">
+                        <p><label type="contentual-editing">Projekt Christina Lutter Stadt und
+                                    Gemeinschaft</label></p>
+                  </projectDesc>
+            </encodingDesc>
+            <profileDesc>
+                  <creation>
+                        <placeName>Graz</placeName>
+                        <date when="13290125">1329 I 25</date>
+                        <origDate instant="false">Der ist geben ze Gre/atz an sand Pauls tag, do man
+                              zalt nach Christes gebu/erd dreuzehen jar in dem 29. jar, unsers
+                              chunig Frider.riches in dem 15. iar. </origDate></creation>
+            </profileDesc>
+      </teiHeader>
+      <facsimile>
+            <surface>
+                  <graphic
+                        url="http://images.monasterium.net/pics/AT-WStLA/HA-U/WStLA-HA-Urkunden_00113_r.jpg"
+                  />
+            </surface>
+            <surface>
+                  <graphic
+                        url="http://images.monasterium.net/pics/AT-WStLA/HA-U/WStLA-HA-Urkunden_00113_v.jpg"
+                  />
+            </surface>
+      </facsimile>
+      <text>
+            <body>
+                  <div type="abstract" resp="lp">
+                        <p><rs type="event" ref="ev__QGW_II_I_113"><rs type="fn" role="issuer"><rs
+                                                type="person"
+                                                ref="pe__friedrich_iii_herzog_von_oesterreich_QGW_II_I_853"
+                                                  ><roleName type="occ" corresp="org__heiliges_roemisches_reich"
+                                                  >König</roleName> Friedrich,<roleName type="occ" corresp="org__oesterreich-herzogtum"><add>Herzog
+                                                  </add>
+                                                </roleName>
+                                                <roleName type="occ" corresp="org__steiermark-herzogtum"><add>Herzog
+                                                  </add></roleName></rs>, <rs type="person"
+                                                ref="pe__albrecht_herzog_von_oesterreich_QGW_II_I_596"
+                                                  >Albrecht<roleName type="occ" corresp="org__oesterreich-herzogtum"
+                                                  ><add>Herzog</add>
+                                                </roleName>
+                                                <roleName type="occ" corresp="org__steiermark-herzogtum"><add>Herzog
+                                                  </add></roleName></rs> und <rs type="person"
+                                                ref="pe__otto_herzog_von_oesterreich_QGW_II_I_837"
+                                                >Otto, <roleName type="occ" corresp="org__oesterreich-herzogtum">Herzöge zu
+                                                  Oesterreich und Steyr</roleName>
+                                                <roleName type="occ" corresp="org__steiermark-herzogtum"
+                                                  ><add>Herzog</add></roleName></rs>,</rs>
+                                    <triggerstring n="disp">beurkunden</triggerstring>, dass sie der <rs
+                                          type="fn" role="recipient"><rs type="org"
+                                                ref="org__neuberg-zisterzienser">neustift des
+                                                chlosters ze sand Marien in dem Neunperg grabs
+                                                ordens</rs></rs>, <triggerstring n="disp">ze selgeret
+                                          alljährlich ein phunt fu/eder salzes an den sieden ze
+                                          Halstat geschenkt haben</triggerstring> und dem Kloster
+                                    erlauben, ebenda noch ein halbes phunt fu/eder salzs zu kaufen,
+                                    das sich baidenthalben zeucht u/of zwelf phunt chueffel des
+                                    chlainen pandes. Für die Zufuhr des Salzes von Hallstadt nach
+                                    Wien <triggerstring n="disp">verleihen</triggerstring> sie dem Kloster
+                                    Mauthfreiheit.</rs>
+                        </p>
+                  </div>
+                  <div type="seal">
+                        <p><rs type="event" ref="ev__QGW_II_I_113"><rs type="fn" role="witness"
+                                          >Besiegelt mit <rs type="person"
+                                                ref="pe__otto_herzog_von_oesterreich_QGW_II_I_837"
+                                                >unsern insigeln.</rs><rs type="person"
+                                                ref="pe__albrecht_herzog_von_oesterreich_QGW_II_I_596"
+                                                  ><add>unsern insigeln</add></rs>
+                                          <rs type="person"
+                                                ref="pe__friedrich_iii_herzog_von_oesterreich_QGW_II_I_853"
+                                                  ><add>unsern ingigeln</add></rs></rs></rs>
+                        </p>
+                  </div>
+                  <div type="lists">
+                        <xi:include xmlns:xi="http://www.w3.org/2001/XInclude"
+                              href="../../../../indices/placeList.xml"
+                              xpointer="element(/1/2/1/1)"/>
+                        <xi:include xmlns:xi="http://www.w3.org/2001/XInclude"
+                              href="../../../../indices/personList.xml"
+                              xpointer="element(/1/2/1/1)"/>
+                        <xi:include xmlns:xi="http://www.w3.org/2001/XInclude"
+                              href="../../../../indices/eventList.xml"
+                              xpointer="element(/1/2/1/1)"/>
+                        <xi:include xmlns:xi="http://www.w3.org/2001/XInclude"
+                              href="../../../../indices/orgList.xml"
+                              xpointer="element(/1/2/1/1)"/>
+                  </div>
+            </body>
+      </text>
+</TEI>

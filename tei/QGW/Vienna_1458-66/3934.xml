@@ -1,0 +1,111 @@
+<?xml version="1.0" encoding="UTF-8" standalone="no"?>
+<!DOCTYPE TEI
+  SYSTEM "../../../schema/toolbox_full.dtd">
+<TEI xmlns:cei="http://www.monasterium.net/NS/cei" xmlns="http://www.tei-c.org/ns/1.0">
+   <teiHeader>
+      <fileDesc>
+         <titleStmt>
+            <title>Tei version of 3934 exported from monasterium.net </title>
+         </titleStmt>
+         <publicationStmt>
+            <p/>
+         </publicationStmt>
+         <!--In Original: cei:front/cei:sourceDesc/cei:sourceDescRegest-->
+         <sourceDesc>
+            <bibl>Quellen zur Geschichte der Stadt Wien, Bd. II/3, Nr. As published in HAUrk by
+               Wiener Stadt- und Landesarchiv </bibl>
+            <msDesc>
+               <msIdentifier>
+                  <repository>Wiener Stadt- und Landesarchiv</repository>
+                  <idno>3934</idno>
+                  <altIdentifier type="old">
+                     <idno>518198</idno>
+                  </altIdentifier>
+               </msIdentifier>
+               <msContents>
+                  <msItem>
+                     <listBibl>
+                        <bibl type="url"
+                           >https://www.monasterium.net/mom/AT-WStLA/HAUrk/3934/charter</bibl>
+                     </listBibl>
+                  </msItem>
+               </msContents>
+               <physDesc>
+                  <sealDesc>
+                     <seal>
+                        <p>Zwei rückwärts aufgedrückte Siegel von grünem Wachse unter
+                           Papierdecke.</p>
+                     </seal>
+                  </sealDesc>
+               </physDesc>
+            </msDesc>
+         </sourceDesc>
+      </fileDesc>
+      <profileDesc>
+         <creation>
+            <placeName>Gmunden</placeName>
+            <date when="14591112">1459 XI 12</date>
+            <origDate>zu Gmunden, an mantag nach sand Merten tag.</origDate></creation>
+      </profileDesc>
+   </teiHeader>
+   <facsimile>
+      <surface>
+         <graphic
+            url="http://images.monasterium.net/pics/AT-WStLA/HA-U/WStLA-HA-Urkunden_03934_r.jpg"/>
+      </surface>
+      <surface>
+         <graphic
+            url="http://images.monasterium.net/pics/AT-WStLA/HA-U/WStLA-HA-Urkunden_03934_v.jpg"/>
+      </surface>
+   </facsimile>
+   <text>
+      <body>
+         <div type="abstract" resp="ms">
+            <p><rs type="event" ref="ev__QGW_II_III_3934">
+                  <rs type="fn" role="issuer"><rs type="person"
+                        ref="pe__johann_gebel_QGW_II_II_3578a">Hanns Gebel, <roleName type="occ"
+                           corresp="org__gmunden">mautter</roleName> zu Gmunden</rs>, und <rs
+                        type="person" ref="pe__felicitas_SB_CD_00617">Felicitas, sein <roleName
+                           type="kin" corresp="pe__johann_gebel_QGW_II_II_3578a"
+                        >hausfrau</roleName></rs></rs>, theilen <rs type="fn" role="recipient"><rs
+                        type="person" ref="pe__andreas_schoenprugker_QGW_II_II_3376">Andren dem
+                        Schonprukker, <roleName type="occ" corresp="org__wien">ainer des
+                           rats</roleName><roleName type="occ" corresp="org__wien"><add>verbeser der
+                              stat zu Wienn gruntpuch</add></roleName></rs>, und <rs type="person"
+                        ref="pe__thomas_egkenperger_QGW_II_II_3455">Thoman dem Ekkenperger,
+                           <roleName type="occ" corresp="org__wien">burger</roleName>, und ycz baid
+                           <roleName type="occ" corresp="org__wien">verbeser der stat zu Wienn
+                           gruntpuch</roleName></rs></rs> , mit, dass sie die Uebertheuerung ihres
+                  Hauses bei Kernertor über die 6 lb dn. gelts purkrechts, so darauf ligent, und die
+                  100 lb dn., so der <rs type="person" ref="pe__georg_perckhaimer_QGW_II_III_3934"
+                        ><roleName type="title">edel</roleName>
+                     <roleName type="title">vest</roleName>
+                     <roleName type="title">ritter</roleName> her Jorig der Perkhaimer</rs> darauf
+                  hat, um 54 lb dn. den Augustinern versetzt haben auf die behabung, welche diese
+                  durch das Gericht gegen sie erlangt haben, und ersuchen sie, den <rs type="org"
+                     ref="org__wien-augustiner_eremiten">Augustinern</rs> diesen Satz in das
+                  Grundbuch zu schreiben, wobei sie einwilligen, dass zur Rückzahlung den
+                  Augustinern während der nächsten drei Jahre je 18 lb dn. von dem hofzins
+                  entrichtet werden. </rs></p>
+         </div>
+         <div type="seal">
+            <p><rs type="event" ref="ev__QGW_II_III_3934"><rs type="fn" role="witness">Besiegelt mit
+                     den Siegeln <rs type="person" ref="pe__johann_gebel_QGW_II_II_3578a">des
+                        Ausstellers</rs> und <rs type="person"
+                        ref="pe__andreas_perleinsreutter_QGW_II_III_3934">Andreen des
+                        Perleinsreutter, <roleName type="occ" corresp="org__gmunden"
+                           >ambtman</roleName> zu Gmunden</rs></rs>. </rs></p>
+         </div>
+         <div type="lists">
+            <xi:include xmlns:xi="http://www.w3.org/2001/XInclude"
+               href="../../../../indices/placeList.xml" xpointer="element(/1/2/1/1)"/>
+            <xi:include xmlns:xi="http://www.w3.org/2001/XInclude"
+               href="../../../../indices/personList.xml" xpointer="element(/1/2/1/1)"/>
+            <xi:include xmlns:xi="http://www.w3.org/2001/XInclude"
+               href="../../../../indices/eventList.xml" xpointer="element(/1/2/1/1)"/>
+            <xi:include xmlns:xi="http://www.w3.org/2001/XInclude"
+               href="../../../../indices/orgList.xml" xpointer="element(/1/2/1/1)"/>
+         </div>
+      </body>
+   </text>
+</TEI>

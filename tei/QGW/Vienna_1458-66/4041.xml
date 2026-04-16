@@ -1,0 +1,109 @@
+<?xml version="1.0" encoding="UTF-8" standalone="no"?>
+<!DOCTYPE TEI
+  SYSTEM "../../../schema/toolbox_full.dtd">
+<TEI xmlns:cei="http://www.monasterium.net/NS/cei" xmlns="http://www.tei-c.org/ns/1.0">
+   <teiHeader>
+      <fileDesc>
+         <titleStmt>
+            <title>Tei version of 4041 exported from monasterium.net </title>
+         </titleStmt>
+         <publicationStmt>
+            <p/>
+         </publicationStmt>
+         <!--In Original: cei:front/cei:sourceDesc/cei:sourceDescRegest-->
+         <sourceDesc>
+            <bibl>Quellen zur Geschichte der Stadt Wien, Bd. II/3, Nr. As published in HAUrk by
+               Wiener Stadt- und Landesarchiv </bibl>
+            <msDesc>
+               <msIdentifier>
+                  <repository>Wiener Stadt- und Landesarchiv</repository>
+                  <idno>4041</idno>
+                  <altIdentifier type="old">
+                     <idno>518311</idno>
+                  </altIdentifier>
+               </msIdentifier>
+               <msContents>
+                  <msItem>
+                     <listBibl>
+                        <bibl type="url"
+                           >https://www.monasterium.net/mom/AT-WStLA/HAUrk/4041/charter</bibl>
+                     </listBibl>
+                  </msItem>
+               </msContents>
+               <physDesc>
+                  <sealDesc>
+                     <seal>
+                        <p>Siegel: 1. fehlt, 2. anhangend, grün u. Sch., unten abgeschlagen.Siegler:
+                           der Aussteller und <quote>maister Ulreich Griessenpekch, licenciat
+                              geistlicher rechten, statschreiber zu Wienn</quote>. </p>
+                     </seal>
+                  </sealDesc>
+               </physDesc>
+            </msDesc>
+         </sourceDesc>
+      </fileDesc>
+      <profileDesc>
+         <creation>
+            <placeName>Wien</placeName>
+            <date when="14630113">1463 I 13</date>
+            <origDate>zu Wienn, an phincztag nach sand Erharts tag.</origDate></creation>
+      </profileDesc>
+   </teiHeader>
+   <facsimile>
+      <surface>
+         <graphic
+            url="http://images.monasterium.net/pics/AT-WStLA/HA-U/WStLA-HA-Urkunden_04041_r.jpg"/>
+      </surface>
+      <surface>
+         <graphic
+            url="http://images.monasterium.net/pics/AT-WStLA/HA-U/WStLA-HA-Urkunden_04041_v.jpg"/>
+      </surface>
+   </facsimile>
+   <text>
+      <body>
+         <div type="abstract" resp="ms">
+            <p><rs type="event" ref="ev__QGW_II_III_4041">
+                  <rs type="fn" role="issuer"><rs type="person"
+                        ref="pe__heinrich_senftleben_QGW_II_II_3263">Hainreich Senftleben, <roleName
+                           type="occ" corresp="org__breslau-dioezese">techant</roleName> und
+                           <roleName type="occ" corresp="org__breslau-dioezese">tumherr</roleName>
+                        zu Bresslau und <roleName type="occ" corresp="org__wien-st_maria_im_rathaus"
+                           >obrister kapplan</roleName> Unser Fraun kappeln, gelegen in der burger
+                        Rathaus zu Wienn, hern Otten und Haimen stifftung</rs></rs> , verlässt <rs
+                     type="fn" role="recipient"><rs type="person"
+                        ref="pe__georg_murhaimer_QGW_II_III_4041">Jorgen Murhaimer von Nustorf</rs>
+                     und <rs type="person" ref="pe__magdalena_QGW_II_III_4041">Magdalen, seiner
+                           <roleName type="kin" corresp="pe__georg_murhaimer_QGW_II_III_4041"
+                           >hausfraun</roleName></rs></rs>, zwei der Kapelle gehörige Weingärten,
+                  ainer gelegen in der Mitternschozz, am Nusperg, des ain halbs jeuch ist, genant
+                  der Weiderfelder, zenagst Hannsen Haringseer weingarten, davon man jerlich dient
+                  dem kloster zu Neunburg funf virtail weins zu perkrecht und drei helbling zu
+                  voitrecht, und ain drittail weingarten, under dem benanten weingarten gelegen
+                  zenagst Steffans Schachen zu Nustorf weingarten, davon man jerlich dint dem
+                  egenanten goczhaus 7 stauf und ain drittail ainer stauf weins zu perkrecht und ain
+                  helbling zu voitrecht , gegen jährliche Leistung des dritten Eimers Most pei der
+                  press aus dem grant auf Lebenszeit in Bestand. </rs></p>
+         </div>
+         <div type="seal">
+            <p><rs type="event" ref="ev__QGW_II_III_4041"><rs type="fn" role="witness">Siegler: der
+                        <rs type="person" ref="pe__heinrich_senftleben_QGW_II_II_3263"
+                        >Aussteller</rs> und <rs type="person"
+                        ref="pe__ulrich_griessenpekch_QGW_II_III_3878"><roleName type="title"
+                           >maister</roleName> Ulreich Griessenpekch, <roleName type="prof"
+                           >licenciat geistlicher rechten</roleName>, <roleName type="occ"
+                           corresp="org__wien">statschreiber</roleName> zu Wienn</rs>.</rs>
+               </rs></p>
+         </div>
+         <div type="lists">
+            <xi:include xmlns:xi="http://www.w3.org/2001/XInclude"
+               href="../../../../indices/placeList.xml" xpointer="element(/1/2/1/1)"/>
+            <xi:include xmlns:xi="http://www.w3.org/2001/XInclude"
+               href="../../../../indices/personList.xml" xpointer="element(/1/2/1/1)"/>
+            <xi:include xmlns:xi="http://www.w3.org/2001/XInclude"
+               href="../../../../indices/eventList.xml" xpointer="element(/1/2/1/1)"/>
+            <xi:include xmlns:xi="http://www.w3.org/2001/XInclude"
+               href="../../../../indices/orgList.xml" xpointer="element(/1/2/1/1)"/>
+         </div>
+      </body>
+   </text>
+</TEI>

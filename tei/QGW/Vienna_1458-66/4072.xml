@@ -1,0 +1,96 @@
+<?xml version="1.0" encoding="UTF-8" standalone="no"?>
+<!DOCTYPE TEI
+  SYSTEM "../../../schema/toolbox_full.dtd">
+<TEI xmlns:cei="http://www.monasterium.net/NS/cei" xmlns="http://www.tei-c.org/ns/1.0">
+   <teiHeader>
+      <fileDesc>
+         <titleStmt>
+            <title>Tei version of 4072 exported from monasterium.net </title>
+         </titleStmt>
+         <publicationStmt>
+            <p/>
+         </publicationStmt>
+         <!--In Original: cei:front/cei:sourceDesc/cei:sourceDescRegest-->
+         <sourceDesc>
+            <bibl>Quellen zur Geschichte der Stadt Wien, Bd. II/3, Nr. As published in HAUrk by
+               Wiener Stadt- und Landesarchiv </bibl>
+            <msDesc>
+               <msIdentifier>
+                  <repository>Wiener Stadt- und Landesarchiv</repository>
+                  <idno>4072</idno>
+                  <altIdentifier type="old">
+                     <idno>518344</idno>
+                  </altIdentifier>
+               </msIdentifier>
+               <msContents>
+                  <msItem>
+                     <listBibl>
+                        <bibl type="url"
+                           >https://www.monasterium.net/mom/AT-WStLA/HAUrk/4072/charter</bibl>
+                     </listBibl>
+                  </msItem>
+               </msContents>
+               <physDesc>
+                  <sealDesc>
+                     <seal>
+                        <p>Zwei rückwärts aufgedrückte Siegel von grünem Wachse,
+                           abgesprungen.Siegler: der Aussteller und der Wiener Bürger <quote>Niclas
+                              Leytl</quote>. </p>
+                     </seal>
+                  </sealDesc>
+               </physDesc>
+            </msDesc>
+         </sourceDesc>
+      </fileDesc>
+      <profileDesc>
+         <creation>
+            <placeName>Wien</placeName>
+            <date when="14631202">1463 XII 02</date>
+            <origDate>zu Wienn, an freitag vor sant Barbara tag.</origDate></creation>
+      </profileDesc>
+   </teiHeader>
+   <facsimile>
+      <surface>
+         <graphic
+            url="http://images.monasterium.net/pics/AT-WStLA/HA-U/WStLA-HA-Urkunden_04072_r.jpg"/>
+      </surface>
+      <surface>
+         <graphic
+            url="http://images.monasterium.net/pics/AT-WStLA/HA-U/WStLA-HA-Urkunden_04072_v.jpg"/>
+      </surface>
+   </facsimile>
+   <text>
+      <body>
+         <div type="abstract" resp="vh">
+            <p><rs type="event" ref="ev__QGW_II_III_4072">
+                  <rs type="fn" role="issuer"><rs type="person"
+                        ref="pe__oswald_treskircher_QGW_II_III_4070">Oswald Dreskircher, <roleName
+                           type="occ" corresp="org__wien">mitburger</roleName> zu Wienn</rs></rs>,
+                  stellt <rs type="fn" role="recipient"><rs type="person"
+                        ref="pe__Georg_himperger_prior_augustiner_QGW_II_III_4072"><roleName
+                           type="title">bruder</roleName> Jorgen Himperger, <roleName type="occ"
+                           corresp="org__wien-st_dorothea">prior</roleName> zu den Augustinern zu
+                        Wienn</rs>, und dem <rs type="org" ref="org__wien-st_dorothea">convent
+                        gemain daselbs</rs></rs> einen Schuldbrief über 40 lb dn. für Wein aus und
+                  verpflichtet sich zur Rückzahlung am nächsten sant Jörgen tag. </rs></p>
+         </div>
+         <div type="seal">
+            <p><rs type="event" ref="ev__QGW_II_III_4072">Siegler: der <rs type="fn" role="witness"
+                        ><rs type="person" ref="pe__oswald_treskircher_QGW_II_III_4070"
+                        >Aussteller</rs> und der <rs type="person"
+                        ref="pe__niklas_leutel_QGW_II_II_3410">Wiener <roleName type="occ"
+                           corresp="org__wien">Bürger</roleName> Niclas Leytl</rs></rs>. </rs></p>
+         </div>
+         <div type="lists">
+            <xi:include xmlns:xi="http://www.w3.org/2001/XInclude"
+               href="../../../../indices/placeList.xml" xpointer="element(/1/2/1/1)"/>
+            <xi:include xmlns:xi="http://www.w3.org/2001/XInclude"
+               href="../../../../indices/personList.xml" xpointer="element(/1/2/1/1)"/>
+            <xi:include xmlns:xi="http://www.w3.org/2001/XInclude"
+               href="../../../../indices/eventList.xml" xpointer="element(/1/2/1/1)"/>
+            <xi:include xmlns:xi="http://www.w3.org/2001/XInclude"
+               href="../../../../indices/orgList.xml" xpointer="element(/1/2/1/1)"/>
+         </div>
+      </body>
+   </text>
+</TEI>

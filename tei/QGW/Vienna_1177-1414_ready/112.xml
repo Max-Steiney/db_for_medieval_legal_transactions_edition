@@ -1,0 +1,120 @@
+<?xml version="1.0" encoding="UTF-8"?><!DOCTYPE TEI   SYSTEM "../../../schema/toolbox_full.dtd">
+<TEI xmlns="http://www.tei-c.org/ns/1.0" xmlns:cei="http://www.monasterium.net/NS/cei"
+   xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance">
+   <teiHeader>
+      <fileDesc>
+         <titleStmt>
+            <title>Tei version of 112 exported from monasterium.net </title>
+         </titleStmt>
+         <publicationStmt>
+            <p/>
+         </publicationStmt>
+         <!--In Original: cei:front/cei:sourceDesc/cei:sourceDescRegest-->
+         <sourceDesc>
+            <bibl type="url">https://www.monasterium.net/mom/AT-WStLA/HAUrk/112/charter</bibl>
+            <bibl default="false" status="draft">Quellen zur Geschichte der Stadt Wien, Bd. II/1,
+               Nr. 112 As published in HAUrk by Wiener Stadt- und Landesarchiv </bibl>
+            <msDesc status="draft">
+               <msIdentifier>
+                  <repository>Wiener Stadt- und Landesarchiv</repository>
+                  <idno>112</idno>
+                  <altIdentifier type="old">
+                     <idno>514280</idno>
+                  </altIdentifier>
+               </msIdentifier>
+               <physDesc>
+                  <sealDesc>
+                     <seal>
+                        <p>Siegel: 1. fehlt, 2. anhangend.</p>
+                     </seal>
+                  </sealDesc>
+               </physDesc>
+            </msDesc>
+         </sourceDesc>
+      </fileDesc>
+      <encodingDesc>
+         <projectDesc default="false">
+            <p><label type="contentual-editing">Projekt Christina Lutter Stadt und
+                  Gemeinschaft</label></p>
+         </projectDesc>
+      </encodingDesc>
+      <profileDesc>
+         <creation>
+            <date when="13281213">1328 XII 13</date>
+            <origDate instant="false">an sant Lucein. tag.</origDate></creation>
+      </profileDesc>
+   </teiHeader>
+   <facsimile>
+      <surface>
+         <graphic
+            url="http://images.monasterium.net/pics/AT-WStLA/HA-U/WStLA-HA-Urkunden_00112_r.jpg"/>
+      </surface>
+      <surface>
+         <graphic
+            url="http://images.monasterium.net/pics/AT-WStLA/HA-U/WStLA-HA-Urkunden_00112_v.jpg"/>
+      </surface>
+   </facsimile>
+   <text>
+      <body>
+         <div type="abstract" resp="lp">
+            <p>
+               <rs type="event" ref="ev__QGW_II_I_112"><rs type="fn" role="issuer"><rs type="person"
+                        ref="pe__otto_von_eslarn_FRA_II_1327_IV_23">Ott von Eslarn</rs> und <rs
+                        type="person" ref="pe__elisabeth_FRA_II_348">Elspet, seine <roleName
+                           type="kin" corresp="pe__otto_von_eslarn_FRA_II_1327_IV_23"
+                           >Hausfrau</roleName></rs>,</rs>
+                  <triggerstring n="disp">verkaufen</triggerstring> 5 lb dn. <triggerstring n="disp">Geldes
+                     Burgrechts</triggerstring> auf dem Hause <rs type="person"
+                     ref="pe__eberhard_zendl_QGW_II_I_112"><roleName type="title">hern</roleName>
+                     Eberharts, <rs type="person" ref="pe__ulrich_zaendel_QGW_II_I_112"><roleName
+                           type="title">hern</roleName> Ulreichs aidem des Zendleins, <roleName
+                           type="dead">dem got genade</roleName>,</rs>
+                     <roleName type="kin" corresp="pe__ulrich_zaendel_QGW_II_I_112"
+                        ><add>aidem</add></roleName></rs> das da leit an dem Graben zenechst der
+                  Ernstinne hause, der vesselsneiderinne , <rs type="event"
+                     ref="ev__QGW_II_I_112_men_1">die sie von diesem Eberhard und <rs type="person"
+                        ref="pe__brigitta_QGW_II_I_112">seiner <roleName type="kin"
+                           corresp="pe__eberhard_zendl_QGW_II_I_112">Hausfrau</roleName> Preid</rs>
+                     angekauft hatten</rs>, um 20 Mark Silber Wiener Gewichts, ie zwen und sibenzich
+                  grosse pehemischer phenning für ain igleiche march, <rs type="fn" role="recipient"
+                        ><rs type="person" ref="pe__konrad_von_bruenn_QGW_II_I_112"><roleName
+                           type="title">hern</roleName> Chunraten von Brünne, <rs type="person"
+                           ref="pe__dietrich_von_olmuetz_QGW_II_I_112"><roleName type="title"
+                              >hern</roleName> Dietreichs aidem von Olmuncz</rs><roleName type="kin"
+                           corresp="pe__dietrich_von_olmuetz_QGW_II_I_112"
+                           ><add>aidem</add></roleName></rs> , und <rs type="person"
+                        ref="pe__kunigunde_QGW_II_I_112">seiner <roleName type="kin"
+                           corresp="pe__konrad_von_bruenn_QGW_II_I_112">Hausfrau</roleName>
+                        Chunigunden</rs></rs>. Der seinerzeit von Eberhard ausgestellte, von dem <rs
+                     type="person" ref="pe__mauritius_von_den_schotten_QGW_II_I_112"><roleName
+                        type="occ" corresp="org__wien-schotten">Schottenabte</roleName> Mauritius
+                     als <roleName type="title">Grundherrn</roleName></rs>, sowie von <rs
+                     type="person" ref="pe__niklas_von_eslarn_FRA_II_1327_IV_23"><roleName
+                        type="title">hern</roleName> Niclas von Eslaren</rs> besiegelte Kaufbrief
+                  wurde bei dieser Gelegenheit dem neuen Leiheherrn übergeben.</rs>
+            </p>
+         </div>
+         <div type="seal">
+            <p><rs type="event" ref="ev__QGW_II_I_112"><rs type="fn" role="witness">Besiegelt mit
+                     den Siegeln: 1. <rs type="person" ref="pe__otto_von_eslarn_FRA_II_1327_IV_23"
+                        >des Ausstellers,</rs> 2. <rs type="person"
+                        ref="pe__berthold_poll_QGW_II_I_112"><roleName type="title">hern</roleName>
+                        Perchtolts des Pollen hinder der Slachstuben.</rs></rs></rs>
+            </p>
+         </div>
+         <div type="nota">
+            <p>Indorsat: Aufschrift des Magister Theodericus. L. </p>
+         </div>
+         <div type="lists">
+            <xi:include xmlns:xi="http://www.w3.org/2001/XInclude"
+               href="../../../../indices/placeList.xml" xpointer="element(/1/2/1/1)"/>
+            <xi:include xmlns:xi="http://www.w3.org/2001/XInclude"
+               href="../../../../indices/personList.xml" xpointer="element(/1/2/1/1)"/>
+            <xi:include xmlns:xi="http://www.w3.org/2001/XInclude"
+               href="../../../../indices/eventList.xml" xpointer="element(/1/2/1/1)"/>
+            <xi:include xmlns:xi="http://www.w3.org/2001/XInclude"
+               href="../../../../indices/orgList.xml" xpointer="element(/1/2/1/1)"/>
+         </div>
+      </body>
+   </text>
+</TEI>

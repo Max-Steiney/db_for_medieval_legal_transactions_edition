@@ -1,0 +1,104 @@
+<?xml version="1.0" encoding="UTF-8" standalone="no"?>
+<!DOCTYPE TEI
+  SYSTEM "../../../schema/toolbox_full.dtd">
+<TEI xmlns:cei="http://www.monasterium.net/NS/cei" xmlns="http://www.tei-c.org/ns/1.0">
+   <teiHeader>
+      <fileDesc>
+         <titleStmt>
+            <title>Tei version of 4059 exported from monasterium.net </title>
+         </titleStmt>
+         <publicationStmt>
+            <p/>
+         </publicationStmt>
+         <!--In Original: cei:front/cei:sourceDesc/cei:sourceDescRegest-->
+         <sourceDesc>
+            <bibl>Quellen zur Geschichte der Stadt Wien, Bd. II/3, Nr. As published in HAUrk by
+               Wiener Stadt- und Landesarchiv </bibl>
+            <msDesc>
+               <msIdentifier>
+                  <repository>Wiener Stadt- und Landesarchiv</repository>
+                  <idno>4059</idno>
+                  <altIdentifier type="old">
+                     <idno>518330</idno>
+                  </altIdentifier>
+               </msIdentifier>
+               <msContents>
+                  <msItem>
+                     <listBibl>
+                        <bibl type="url"
+                           >https://www.monasterium.net/mom/AT-WStLA/HAUrk/4059/charter</bibl>
+                        <bibl>Jahrbuch der kais. Kunstsamml. 17b, n° 15354.</bibl>
+                     </listBibl>
+                  </msItem>
+               </msContents>
+               <physDesc>
+                  <sealDesc>
+                     <seal>
+                        <p>Das angehängte Siegel fehlt.</p>
+                     </seal>
+                  </sealDesc>
+               </physDesc>
+            </msDesc>
+         </sourceDesc>
+      </fileDesc>
+      <profileDesc>
+         <creation>
+            <placeName>Wien</placeName>
+            <date when="14630714">1463 VII 14</date>
+            <origDate>Mit urkund des briefs. Geben zu Wienn an phincztag nach sand Margareten tag,
+               nach Kristi gepurde 1400 darnach in dem 63. jare. </origDate></creation>
+      </profileDesc>
+   </teiHeader>
+   <facsimile>
+      <surface>
+         <graphic
+            url="http://images.monasterium.net/pics/AT-WStLA/HA-U/WStLA-HA-Urkunden_04059_r.jpg"/>
+      </surface>
+      <surface>
+         <graphic
+            url="http://images.monasterium.net/pics/AT-WStLA/HA-U/WStLA-HA-Urkunden_04059_v.jpg"/>
+      </surface>
+   </facsimile>
+   <text>
+      <body>
+         <div type="abstract" resp="ms">
+            <p><rs type="event" ref="ev__QGW_II_III_4059"><rs type="fn" role="issuer"><rs
+                        type="person" ref="pe__albrecht_herzog_von_oesterreich_QGW_II_II_3617"
+                           ><roleName type="occ" corresp="org__oesterreich-herzogtum"
+                           >Erzherzog</roleName> Albrecht VI.</rs></rs> bringt zur allgemeinen
+                  Kenntnis, dass <rs type="person" ref="pe__niklas_syn_QGW_II_II_3666">Niclas Syn,
+                     vorzeiten <roleName type="occ" corresp="org__wien-st_stephan">echter</roleName>
+                     zu sand Steffan</rs>, als er bei <rs type="person"
+                     ref="pe__konrad_QGW_II_III_4059">Conraten, <roleName type="prof"
+                        >swertfeger</roleName> zu Wienn</rs>, <unclear>swiger</unclear> von der welt
+                  lesten endt und geschefft gewesen ist , daraus als bei zehen gulden . . .
+                  demselben swertfeger zu schaden für sich genommen habe und auch in der sachen, so
+                  sich an dem heiligen Osterabent nagstvergangen (April 9) mit einlassen ettlichs
+                  geraisigs volkchs seiner veindt wider ihn und seine <rs type="org" ref="org__wien"
+                     >statt Wienn</rs> begeben, und mit dem bann gern vil irrung gemacht hiet und
+                  deshalb die Stadt räumen und meiden musste, und gibt dem vorgenannten <rs
+                     type="fn" role="recipient"><rs type="person" ref="pe__konrad_QGW_II_III_4059"
+                        >Conraten</rs> und <rs type="person" ref="pe__bartholomaeus_QGW_II_III_4059"
+                        >Bertlmeen, swertfeger</rs></rs>, seinem gewerkchen, zu ergeczung des
+                  obgemelten gescheffts schaden einen ihm verfallenen Weingarten, gelegen in der
+                  Urlukchen, des ain halbs jeuch ist, zunagst des Spitals weingarten an ainer und an
+                  der andern seitten eins weingarten, der zu Unser Fraun altar zu sand [ 78] Steffan
+                  gehört, und des egenanten Syn gewesen ist. </rs></p>
+         </div>
+         <div type="nota">
+            <p><rs type="event" ref="ev__QGW_II_III_4059_nota">Von anderer Hand: ad mandatum domini
+                  archiducis per se ipsum. </rs></p>
+         </div>
+         <div type="lists">
+            <xi:include xmlns:xi="http://www.w3.org/2001/XInclude"
+               href="../../../../indices/placeList.xml" xpointer="element(/1/2/1/1)"/>
+            <xi:include xmlns:xi="http://www.w3.org/2001/XInclude"
+               href="../../../../indices/personList.xml" xpointer="element(/1/2/1/1)"/>
+            <xi:include xmlns:xi="http://www.w3.org/2001/XInclude"
+               href="../../../../indices/eventList.xml" xpointer="element(/1/2/1/1)"/>
+            <xi:include xmlns:xi="http://www.w3.org/2001/XInclude"
+               href="../../../../indices/orgList.xml" xpointer="element(/1/2/1/1)"/>
+         </div>
+      </body>
+   </text>
+</TEI>

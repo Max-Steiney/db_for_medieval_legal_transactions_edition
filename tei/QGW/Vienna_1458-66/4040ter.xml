@@ -1,0 +1,92 @@
+<?xml version="1.0" encoding="UTF-8" standalone="no"?>
+<!DOCTYPE TEI
+  SYSTEM "../../../schema/toolbox_full.dtd">
+<TEI xmlns:cei="http://www.monasterium.net/NS/cei" xmlns="http://www.tei-c.org/ns/1.0">
+   <teiHeader>
+      <fileDesc>
+         <titleStmt>
+            <title>Tei version of 4040ter exported from monasterium.net </title>
+         </titleStmt>
+         <publicationStmt>
+            <p/>
+         </publicationStmt>
+         <!--In Original: cei:front/cei:sourceDesc/cei:sourceDescRegest-->
+         <sourceDesc>
+            <bibl>Quellen zur Geschichte der Stadt Wien, Bd. II/3, Nr. As published in HAUrk by
+               Wiener Stadt- und Landesarchiv </bibl>
+            <msDesc>
+               <msIdentifier>
+                  <repository>Wiener Stadt- und Landesarchiv</repository>
+                  <idno>4040ter</idno>
+                  <altIdentifier type="old">
+                     <idno>518310</idno>
+                  </altIdentifier>
+               </msIdentifier>
+               <msContents>
+                  <msItem>
+                     <listBibl>
+                        <bibl type="url"
+                           >https://www.monasterium.net/mom/AT-WStLA/HAUrk/4040ter/charter</bibl>
+                        <bibl>Quellen zur Geschichte Wiens I, 2, 8 n° 1283, Regest aus einem Vidimus
+                           vom Jahre 1600. [73] </bibl>
+                     </listBibl>
+                  </msItem>
+               </msContents>
+               <physDesc>
+                  <sealDesc>
+                     <seal>
+                        <p>Das an einer Pressel angehängte Siegel fehlt.</p>
+                     </seal>
+                  </sealDesc>
+               </physDesc>
+            </msDesc>
+         </sourceDesc>
+      </fileDesc>
+      <profileDesc>
+         <creation>
+            <placeName>Wien</placeName>
+            <date when="14630102">1463 I 02</date>
+            <origDate>Mit urkund des briefs. Datum zu Wienn an suntag vor der heiligen Dreier Kunig
+               tag, nach Kristi gepurt im 1400 und im 63. jaren. </origDate></creation>
+      </profileDesc>
+   </teiHeader>
+   <facsimile/>
+   <text>
+      <body>
+         <div type="abstract" resp="fn">
+            <p><rs type="event" ref="ev__QGW_II_III_4040ter"><rs type="fn" role="issuer"><rs
+                        type="person" ref="pe__albrecht_herzog_von_oesterreich_QGW_II_II_3617"><roleName type="occ"
+                           corresp="org__oesterreich-herzogtum">Erzherzog</roleName> Albrecht
+                        VI</rs>.</rs> bestätigt den <rs type="fn" role="recipient"><rs type="org"
+                        ref="org__wien-zeche_fischermeister">vischkeuffeln, hie zu Wienn gesessen
+                        und wonhaften, die jecz in der vischerzech</rs></rs> sind oder jee hinfür zu
+                  zeiten darinn sein werdent , die ihnen von dem <rs type="person"
+                     ref="pe__ladislaus_QGW_II_II_3461"><roleName type="dead"
+                        >verstorbenen</roleName> König Ladislaus</rs> verliehene Freiheit, was sie
+                  visch auf wasser oder auf land herab oder von Hungern herauf zu seiner stat
+                  notturften herbringen und füren, dass sie die mautfrei und an all irrung und
+                  hindernuss mügen fürfüren und nicht phlichtig sein sullen, ichcz davon zu geben,
+                  und wenn gest visch her gen Wienn bringent durch verkaufen willen und ainen tag
+                  damit zu markcht steen und die offenlich vail habent, als das gewondlich ist, was
+                  in dann derselben visch von dem ersten tag uberbleibent, die sie nicht hingebent,
+                  die mugent dieselben vischkeuffl dann erst an dem andern tag von in kauffen als
+                  ander burger und die verrer hingeben und damit handeln nach irn notdurften .
+               </rs></p>
+         </div>
+         <div type="nota">
+            <p><rs type="event" ref="ev__QGW_II_III_4040ter_nota">Von anderer Hand: dominus archidux
+                  in consilio. </rs></p>
+         </div>
+         <div type="lists">
+            <xi:include xmlns:xi="http://www.w3.org/2001/XInclude"
+               href="../../../../indices/placeList.xml" xpointer="element(/1/2/1/1)"/>
+            <xi:include xmlns:xi="http://www.w3.org/2001/XInclude"
+               href="../../../../indices/personList.xml" xpointer="element(/1/2/1/1)"/>
+            <xi:include xmlns:xi="http://www.w3.org/2001/XInclude"
+               href="../../../../indices/eventList.xml" xpointer="element(/1/2/1/1)"/>
+            <xi:include xmlns:xi="http://www.w3.org/2001/XInclude"
+               href="../../../../indices/orgList.xml" xpointer="element(/1/2/1/1)"/>
+         </div>
+      </body>
+   </text>
+</TEI>

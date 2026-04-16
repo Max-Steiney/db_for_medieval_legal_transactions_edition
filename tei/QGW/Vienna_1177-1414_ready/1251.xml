@@ -1,0 +1,182 @@
+<?xml version="1.0" encoding="UTF-8"?><!DOCTYPE TEI   SYSTEM "../../../schema/toolbox_full.dtd">
+<TEI xmlns="http://www.tei-c.org/ns/1.0" xmlns:cei="http://www.monasterium.net/NS/cei"
+   xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance">
+   <teiHeader>
+      <fileDesc>
+         <titleStmt>
+            <title>Tei version of 1251 exported from monasterium.net </title>
+         </titleStmt>
+         <publicationStmt>
+            <p/>
+         </publicationStmt>
+         <!--In Original: cei:front/cei:sourceDesc/cei:sourceDescRegest-->
+         <sourceDesc>
+            <bibl type="url">https://www.monasterium.net/mom/AT-WStLA/HAUrk/1251/charter</bibl>
+            <bibl default="false" status="draft">Quellen zur Geschichte der Stadt Wien, Bd. II/1,
+               Nr. 1251 As published in HAUrk by Wiener Stadt- und Landesarchiv </bibl>
+            <msDesc status="draft">
+               <msIdentifier>
+                  <repository>Wiener Stadt- und Landesarchiv</repository>
+                  <idno>1251</idno>
+                  <altIdentifier type="old">
+                     <idno>515448</idno>
+                  </altIdentifier>
+               </msIdentifier>
+               <physDesc>
+                  <sealDesc>
+                     <seal>
+                        <p>Vier anhangende Siegel: 1. grün u. K., beschädigt, 2. schwarz u. K., 3.
+                           schwarz u. K., achteckig, 4. schwarz u. K.</p>
+                     </seal>
+                  </sealDesc>
+               </physDesc>
+            </msDesc>
+         </sourceDesc>
+      </fileDesc>
+      <encodingDesc>
+         <projectDesc default="false">
+            <p><label type="contentual-editing">Projekt Christina Lutter Stadt und
+                  Gemeinschaft</label></p>
+         </projectDesc>
+      </encodingDesc>
+      <profileDesc>
+         <creation>
+            <placeName>Wien</placeName>
+            <date when="13930121">1393 I 21</date>
+            <origDate instant="false">ze Wienn, an sand Agnesen tag, der heiligen
+               junkchfraun.</origDate></creation>
+      </profileDesc>
+   </teiHeader>
+   <facsimile>
+      <surface>
+         <graphic
+            url="http://images.monasterium.net/pics/AT-WStLA/HA-U/WStLA-HA-Urkunden_01251_r.jpg"/>
+      </surface>
+      <surface>
+         <graphic
+            url="http://images.monasterium.net/pics/AT-WStLA/HA-U/WStLA-HA-Urkunden_01251_v.jpg"/>
+      </surface>
+   </facsimile>
+   <text>
+      <body>
+         <div type="abstract" resp="cs">
+            <p><rs type="event" ref="ev__QGW_II_I_1251"><rs type="event" ref="ev__QGW_II_I_1250">Die
+                     in Urk. no 1250 angeführten Spruchleute fällen in dem dort bezeichneten
+                     Streite</rs>
+                  <rs type="fn" role="issuer"><rs type="person"
+                        ref="pe__albrecht_von_ottenstein_QGW_II_I_1248"><roleName type="title"
+                              ><add>erbern</add></roleName>
+                        <roleName type="title"><add>herren</add></roleName>
+                        <roleName type="title"><add>hern</add></roleName>
+                        <add>Albern von Ottenstain,</add>
+                        <roleName type="occ" corresp="org__oesterreich-herzogtum"
+                              ><add>hofrichter</add></roleName>
+                        <add>in Osterreich</add></rs>, <rs type="person"
+                        ref="pe__heinrich_von_lichtenegg_QGW_II_I_1250"><roleName type="title"
+                              ><add>erbern</add></roleName>
+                        <roleName type="title"><add>herren</add></roleName>
+                        <roleName type="title"><add>hern</add></roleName>
+                        <add>Hainreichen von Liechtenekk, der</add>
+                        <rs type="person" ref="pe__beatrix_von_zollern_nuernberg_QGW_II_I_1048"
+                              ><add>herzogin</add></rs>
+                        <roleName type="occ"
+                           corresp="pe__beatrix_von_zollern_nuernberg_QGW_II_I_1048"
+                              ><add>hofmaister</add></roleName></rs>, <rs type="person"
+                        ref="pe__ulrich_von_lichtenegg_QGW_II_I_1250"><roleName type="title"
+                              ><add>erbern</add></roleName>
+                        <roleName type="title"><add>herren</add></roleName>
+                        <roleName type="title"><add>hern</add></roleName>
+                        <add>Ulreichen von Liechtenekk</add></rs>, <rs type="person"
+                        ref="pe__wulfing_ebergassinger_QGW_II_I_1250"><roleName type="title"
+                              ><add>erbern</add></roleName>
+                        <roleName type="title"><add>herren</add></roleName>
+                        <roleName type="title"><add>hern</add></roleName>
+                        <add>Wulffingen den Ebergoz/zz/zinger</add></rs>, <rs type="person"
+                        ref="pe__georg_pollnheimer_QGW_II_I_1011"><roleName type="title"
+                              ><add>erbern</add></roleName>
+                        <roleName type="title"><add>herren</add></roleName>
+                        <roleName type="title"><add>hern</add></roleName>
+                        <add>Jorgen den Pollnhaimer</add></rs>
+                     <add>und</add>
+                     <rs type="person" ref="pe__heinrich_chlammer_QGW_II_I_1146"><roleName
+                           type="title"><add>erbern</add></roleName>
+                        <roleName type="title"><add>herren</add></roleName>
+                        <roleName type="title"><add>hern</add></roleName>
+                        <add>Hainreich den Chlammer</add></rs>
+                     <add>und hinder die</add>
+                     <rs type="person" ref="pe__walchun_von_adlar_QGW_II_I_1250"><roleName
+                           type="title"><add>erbern</add></roleName>
+                        <roleName type="title"><add>herren</add></roleName>
+                        <roleName type="title"><add>hern</add></roleName>
+                        <add>Walkun von Adlar</add></rs>
+                     <add>und</add>
+                     <rs type="person" ref="pe__johann_pellendorfer_QGW_II_I_1250"><roleName
+                           type="title"><add>erbern</add></roleName>
+                        <roleName type="title"><add>ritter</add></roleName>
+                        <add>Würfels</add>
+                        <roleName type="kin" corresp="pe__niklas_wuerfel_QGW_II_I_1001"
+                              ><add>Eidam</add></roleName>
+                        <add>Hannsen den Pellndorfer</add></rs>, <add>und hinder die</add>
+                     <rs type="person" ref="pe__michael_geukramer_QGW_II_I_1235"><roleName
+                           type="title"><add>erbern</add></roleName>
+                        <add>läute Micheln den Geuchramer,</add>
+                        <roleName type="occ" corresp="org__wien"><add>purgermaister</add></roleName>
+                        <add>und</add>
+                        <roleName type="occ" corresp="org__oesterreich-herzogtum" select="pl__wien"
+                              ><add>münzmaister</add></roleName>
+                        <add>ze Wienn</add></rs>, <add>und</add>
+                     <rs type="person" ref="pe__friedrich_chraft_QGW_II_I_1250"><roleName
+                           type="title"><add>erbern</add></roleName>
+                        <add>läute</add>
+                        <add>Fridreichen den Chraft,</add>
+                        <roleName type="occ" corresp="org__krems"><add>mauter</add></roleName>
+                        <add>und</add>
+                        <roleName type="occ" corresp="org__krems"><add>richter</add></roleName><add>
+                           ze Chrems</add></rs></rs>
+                  <triggerstring n="disp"><add>fällen</add> folgende Entscheidung</triggerstring>: <rs
+                     type="fn" role="recipient"><rs type="person"
+                        ref="pe__niklas_wuerfel_QGW_II_I_1001">Niclas der Würffel</rs></rs>
+                  <triggerstring n="disp">soll <add>auszahlen</add></triggerstring> seinem <rs
+                     type="person" ref="pe__johann_messenbacher_QGW_II_I_1250"><roleName type="kin"
+                        corresp="pe__niklas_wuerfel_QGW_II_I_1001">Eidam</roleName>
+                     <add>Hansen</add> dem Messenbekchen</rs> zu den 500 lb dn., die er von ihm
+                  innegehabt hat, 100 lb dn., und dieser soll die gesammten 600 lb dn. seiner <rs
+                     type="person" ref="pe__anna_QGW_II_I_1250"><roleName type="kin"
+                        corresp="pe__johann_messenbacher_QGW_II_I_1250">Frau</roleName> Annen, hern
+                     Niclas <roleName type="kin" corresp="pe__niklas_wuerfel_QGW_II_I_1001"
+                        >tochter</roleName></rs>, <triggerstring n="disp">zu Morgengabe
+                     geben</triggerstring>, ferner soll Niclas seiner Tochter 400 lb dn. <triggerstring
+                     n="disp">zu Heimsteuer auszahlen</triggerstring> und seinen Eidam sammt Frau und
+                  Gesinde noch bis zum nächsten Michaelstage in der chost haben. Für die Auszahlung
+                  der 100 lb und 400 lb dn. wird Niclasen dem Würffel eine Frist von zwei Monaten
+                  von dem Tage an, da sein Eidam die betreffende Forderung stellt,
+               zugestanden.</rs></p>
+         </div>
+         <div type="seal">
+            <p><rs type="event" ref="ev__QGW_II_I_1251"><rs type="fn" role="witness">Besiegelt mit
+                     den Siegeln: 1. <rs type="person"
+                        ref="pe__albrecht_von_ottenstein_QGW_II_I_1248">Albers des
+                     Ottenstainer</rs>, 2. <rs type="person"
+                        ref="pe__heinrich_von_lichtenegg_QGW_II_I_1250">Hainreichs des
+                        Liechtenekker</rs>, 3. <rs type="person"
+                        ref="pe__johann_pellendorfer_QGW_II_I_1250">Hannsen des Pellendorfer</rs>,
+                     4. <rs type="person" ref="pe__michael_geukramer_QGW_II_I_1235">Michels des
+                        Gaukramer</rs></rs>.</rs></p>
+         </div>
+         <div type="nota">
+            <p>Indorsat: Das sint der spruchbrief und hindergangbrief zwischen mein herrn und dem
+               Messenpecken. </p>
+         </div>
+         <div type="lists">
+            <xi:include xmlns:xi="http://www.w3.org/2001/XInclude"
+               href="../../../../indices/placeList.xml" xpointer="element(/1/2/1/1)"/>
+            <xi:include xmlns:xi="http://www.w3.org/2001/XInclude"
+               href="../../../../indices/personList.xml" xpointer="element(/1/2/1/1)"/>
+            <xi:include xmlns:xi="http://www.w3.org/2001/XInclude"
+               href="../../../../indices/eventList.xml" xpointer="element(/1/2/1/1)"/>
+            <xi:include xmlns:xi="http://www.w3.org/2001/XInclude"
+               href="../../../../indices/orgList.xml" xpointer="element(/1/2/1/1)"/>
+         </div>
+      </body>
+   </text>
+</TEI>

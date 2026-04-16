@@ -1,0 +1,127 @@
+<?xml version="1.0" encoding="UTF-8"?><!DOCTYPE TEI   SYSTEM "../../../schema/toolbox_full.dtd">
+<TEI xmlns="http://www.tei-c.org/ns/1.0" xmlns:cei="http://www.monasterium.net/NS/cei"
+   xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance">
+   <teiHeader>
+      <fileDesc>
+         <titleStmt>
+            <title>Tei version of 910 exported from monasterium.net </title>
+         </titleStmt>
+         <publicationStmt>
+            <p/>
+         </publicationStmt>
+         <!--In Original: cei:front/cei:sourceDesc/cei:sourceDescRegest-->
+         <sourceDesc>
+            <bibl type="url">https://www.monasterium.net/mom/AT-WStLA/HAUrk/910/charter</bibl>
+            <bibl default="false" status="draft">Quellen zur Geschichte der Stadt Wien, Bd. II/1,
+               Nr. 910 As published in HAUrk by Wiener Stadt- und Landesarchiv </bibl>
+            <msDesc status="draft">
+               <msIdentifier>
+                  <repository>Wiener Stadt- und Landesarchiv</repository>
+                  <idno>910</idno>
+                  <altIdentifier type="old">
+                     <idno>515100</idno>
+                  </altIdentifier>
+               </msIdentifier>
+               <msContents>
+                  <msItem>
+                     <listBibl default="false">
+                        <bibl default="false" status="draft">Camesina in Mitth. des
+                           Alterthumsvereines 12, 11 no 5.</bibl>
+                        <bibl default="false" status="draft">Quellen zur Geschichte der Stadt Wien,
+                           Bd. II/1, Nr. 910 As published in HAUrk by Wiener Stadt- und Landesarchiv </bibl>
+                        <bibl default="false" status="draft"/>
+                     </listBibl>
+                  </msItem>
+               </msContents>
+               <physDesc>
+                  <sealDesc>
+                     <seal>
+                        <p>Zwei anhangende Siegel, 1. roth u. Sch.</p>
+                     </seal>
+                  </sealDesc>
+               </physDesc>
+            </msDesc>
+         </sourceDesc>
+      </fileDesc>
+      <encodingDesc>
+         <projectDesc default="false">
+            <p><label type="contentual-editing">Projekt Christina Lutter Stadt und
+                  Gemeinschaft</label></p>
+         </projectDesc>
+      </encodingDesc>
+      <profileDesc>
+         <creation>
+            <placeName>Wien</placeName>
+            <date when="13770704">1377 VII 04</date>
+            <date from="99999999" to="99999999"/>
+            <origDate instant="false">ze Wienne, an sand Ulreichs tag.</origDate></creation>
+      </profileDesc>
+   </teiHeader>
+   <facsimile>
+      <surface>
+         <graphic
+            url="http://images.monasterium.net/pics/AT-WStLA/HA-U/WStLA-HA-Urkunden_00910_r.jpg"/>
+      </surface>
+      <surface>
+         <graphic
+            url="http://images.monasterium.net/pics/AT-WStLA/HA-U/WStLA-HA-Urkunden_00910_v.jpg"/>
+      </surface>
+   </facsimile>
+   <text>
+      <body>
+         <div type="abstract" resp="cs">
+            <p>
+               <rs type="event" ref="ev__QGW_II_I_910"><rs type="fn" role="issuer"><rs type="person"
+                        ref="pe__klara_QGW_II_I_910">Chlar, <roleName type="kin"
+                           corresp="pe__konrad_nucze_QGW_II_I_910"><add>Witwe</add></roleName></rs>
+                     <rs type="person" ref="pe__konrad_nucze_QGW_II_I_910">Chunrats <roleName
+                           type="dead">witib</roleName> des Nu/eczleins</rs></rs>, <triggerstring
+                     n="disp">verkauft</triggerstring>
+                  <rs type="fn" role="other"><triggerstring n="fn">mit Handen</triggerstring>
+                     <rs type="person" ref="pe__niklas_QGW_II_I_910">Niclas, des <roleName
+                           type="occ" corresp="org__st_veit-gemeinde">Richters</roleName> zu Sand
+                        Veit</rs></rs> und <rs type="fn" role="other"><triggerstring n="fn"><add>mit
+                           Handen von</add></triggerstring>
+                     <rs type="person" ref="pe__berthold_von_wehingen_QGW_II_I_1055"><roleName
+                           type="title">Bergmeisters</roleName>
+                        <roleName type="title">hern</roleName> Perichtolts, <roleName type="occ"
+                           corresp="org__wien-st_stephan">probst</roleName> der tumchirichen dacz
+                        sand Stephan ze Wienne</rs></rs> , ein Vierteljoch Weingarten, gelegen dacz
+                  Sand Veit in den alten Saeczen zenechst Ulreichs weingarten des Plankchen, von dem
+                  man drei Viertel Wein zu Bergrecht und 3 Helbling zu Voitrecht dient, <rs
+                     type="event" ref="ev__QGW_II_I_910_men_1">der ihr bei der Theilung gegen ihren
+                        <rs type="person" ref="pe__stephan_nuczel_QGW_II_I_910"><roleName type="kin"
+                           corresp="pe__klara_QGW_II_I_910">Schwager</roleName> Stephann den Nuczel
+                        von Sand Veit</rs> zugefallen war</rs>, um 13 lb dn. <rs type="fn"
+                     role="recipient"><rs type="person" ref="pe__siegfried_QGW_II_I_800"><roleName
+                           type="title">hern</roleName> Seifriden , <roleName type="occ"
+                           corresp="org__wien-st_peter-altar_st_maria-messe_straiherin">Kaplan und
+                           Verweser</roleName></rs> der von Frau Chlarn der Straiherinn, der got
+                     gnad, auf sant Erharts alter dacz sand Peter ze Wienne gestifteten Messe</rs> .
+               </rs></p>
+         </div>
+         <div type="seal">
+            <p><rs type="event" ref="ev__QGW_II_I_910"><rs type="fn" role="witness">Besiegelt mit
+                     den Siegeln: 1. des <rs type="person"
+                        ref="pe__berthold_von_wehingen_QGW_II_I_1055">Bergherrn</rs>, 2. <rs
+                        type="person" ref="pe__friedrich_dietram_QGW_II_I_1026">Fridreichs des
+                        Dietrams, <roleName type="occ" corresp="org__wien">des rates der stat ze
+                           Wienn</roleName></rs>.</rs></rs>
+            </p>
+         </div>
+         <div type="nota">
+            <p/>
+         </div>
+         <div type="lists">
+            <xi:include xmlns:xi="http://www.w3.org/2001/XInclude"
+               href="../../../../indices/placeList.xml" xpointer="element(/1/2/1/1)"/>
+            <xi:include xmlns:xi="http://www.w3.org/2001/XInclude"
+               href="../../../../indices/personList.xml" xpointer="element(/1/2/1/1)"/>
+            <xi:include xmlns:xi="http://www.w3.org/2001/XInclude"
+               href="../../../../indices/eventList.xml" xpointer="element(/1/2/1/1)"/>
+            <xi:include xmlns:xi="http://www.w3.org/2001/XInclude"
+               href="../../../../indices/orgList.xml" xpointer="element(/1/2/1/1)"/>
+         </div>
+      </body>
+   </text>
+</TEI>

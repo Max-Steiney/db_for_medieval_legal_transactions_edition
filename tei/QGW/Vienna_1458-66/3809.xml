@@ -1,0 +1,102 @@
+<?xml version="1.0" encoding="UTF-8" standalone="no"?>
+<!DOCTYPE TEI
+  SYSTEM "../../../schema/toolbox_full.dtd">
+<TEI xmlns:cei="http://www.monasterium.net/NS/cei" xmlns="http://www.tei-c.org/ns/1.0">
+   <teiHeader>
+      <fileDesc>
+         <titleStmt>
+            <title>Tei version of 3809 exported from monasterium.net </title>
+         </titleStmt>
+         <publicationStmt>
+            <p/>
+         </publicationStmt>
+         <!--In Original: cei:front/cei:sourceDesc/cei:sourceDescRegest-->
+         <sourceDesc>
+            <bibl>Quellen zur Geschichte der Stadt Wien, Bd. II/3, Nr. As published in HAUrk by
+               Wiener Stadt- und Landesarchiv </bibl>
+            <msDesc>
+               <msIdentifier>
+                  <repository>Wiener Stadt- und Landesarchiv</repository>
+                  <idno>3809</idno>
+                  <altIdentifier type="old">
+                     <idno>518070</idno>
+                  </altIdentifier>
+               </msIdentifier>
+               <msContents>
+                  <msItem>
+                     <listBibl>
+                        <bibl type="url"
+                           >https://www.monasterium.net/mom/AT-WStLA/HAUrk/3809/charter</bibl>
+                        <bibl>Chmel, Regesten 361 n° 3621 Regest.</bibl>
+                        <bibl>Copeibuch 162 n° 83.</bibl>
+                     </listBibl>
+                  </msItem>
+               </msContents>
+               <physDesc>
+                  <sealDesc>
+                     <seal>
+                        <p>An Pressel anhangendes Wappensiegel (Sava Fig. 150 n° IV) roth u.
+                           Sch.</p>
+                     </seal>
+                  </sealDesc>
+               </physDesc>
+            </msDesc>
+         </sourceDesc>
+      </fileDesc>
+      <profileDesc>
+         <creation>
+            <placeName>Korneuburg</placeName>
+            <date when="14580824">1458 VIII 24</date>
+            <origDate>Mit urkund des briefs. Geben zu Karnneunburg an sand Bartholomes tag, anno
+               domini etc. quinquagesimo octavo. </origDate></creation>
+      </profileDesc>
+   </teiHeader>
+   <facsimile>
+      <surface>
+         <graphic
+            url="http://images.monasterium.net/pics/AT-WStLA/HA-U/WStLA-HA-Urkunden_03809_r.jpg"/>
+      </surface>
+      <surface>
+         <graphic
+            url="http://images.monasterium.net/pics/AT-WStLA/HA-U/WStLA-HA-Urkunden_03809_v.jpg"/>
+      </surface>
+   </facsimile>
+   <text>
+      <body>
+         <div type="abstract" resp="vh">
+            <p><rs type="event" ref="ev__QGW_II_III_3809"><rs type="fn" role="issuer"><rs
+                        type="person" ref="pe__albrecht_herzog_von_oesterreich_QGW_II_II_3617"><roleName type="occ"
+                           corresp="org__oesterreich-herzogtum">Erzherzog</roleName> Albrecht
+                        VI.</rs></rs> theilt dem <rs type="fn" role="recipient"><rs type="org"
+                        ref="org__wien">Bürgermeister, Richter, Rathe, den Genannten und der ganczen
+                        gemain der stat zu Wienn mit</rs></rs>, dass er um frid und gemachs willen
+                  sich mit dem <rs type="person"
+                     ref="pe__friedrich_iii_herzog_von_oesterreich_QGW_II_I_853"><roleName
+                        type="occ" corresp="org__heiliges_roemisches_reich">Kaiser</roleName></rs>
+                  dahin vertragen habe, diesem alles seines regirenden gewalts an der stat zu Wienn
+                  abzutreten, befiehlt ihnen daher, dem Kaiser ein erbhuldigung zu thun und im
+                  erblich gewertig zu sein mit allem regirenden gewalt, des sie ihm von seinet und
+                  seines <rs type="person" ref="pe__sigmund_ii_graf_QGW_II_III_3788"><roleName
+                        type="kin" corresp="pe__albrecht_herzog_von_oesterreich_QGW_II_II_3617">vettern</roleName>
+                     <roleName type="occ" corresp="org__grafschaft_st_georgen_und_boesing"
+                        >herzog</roleName> Sigmunds</rs> wegen phlichtig seien, und sagt sie darnach
+                  aller huldung und pflicht, die sie ihm getan haben oder phlichtig seien, gancz und
+                  gar ledig und müssig. </rs></p>
+         </div>
+         <div type="nota">
+            <p><rs type="event" ref="ev__QGW_II_III_3809_nota">Von anderer Hand: d( ominus) ar( chi)
+                  d( ux) in cons( ilio). </rs></p>
+         </div>
+         <div type="lists">
+            <xi:include xmlns:xi="http://www.w3.org/2001/XInclude"
+               href="../../../../indices/placeList.xml" xpointer="element(/1/2/1/1)"/>
+            <xi:include xmlns:xi="http://www.w3.org/2001/XInclude"
+               href="../../../../indices/personList.xml" xpointer="element(/1/2/1/1)"/>
+            <xi:include xmlns:xi="http://www.w3.org/2001/XInclude"
+               href="../../../../indices/eventList.xml" xpointer="element(/1/2/1/1)"/>
+            <xi:include xmlns:xi="http://www.w3.org/2001/XInclude"
+               href="../../../../indices/orgList.xml" xpointer="element(/1/2/1/1)"/>
+         </div>
+      </body>
+   </text>
+</TEI>

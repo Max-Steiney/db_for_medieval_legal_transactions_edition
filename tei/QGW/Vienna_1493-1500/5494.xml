@@ -1,0 +1,106 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<TEI xmlns="http://www.tei-c.org/ns/1.0" xmlns:cei="http://www.monasterium.net/NS/cei"
+   xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance">
+   <teiHeader>
+      <fileDesc>
+         <titleStmt>
+            <title>Tei version of 5494 exported from monasterium.net </title>
+         </titleStmt>
+         <publicationStmt>
+            <p/>
+         </publicationStmt>
+         <!--In Original: cei:front/cei:sourceDesc/cei:sourceDescRegest-->
+         <sourceDesc>
+            <bibl>Quellen zur Geschichte der Stadt Wien, Bd. II/3, Nr. As published in HAUrk by
+               Wiener Stadt- und Landesarchiv </bibl>
+            <msDesc>
+               <msIdentifier>
+                  <repository>Wiener Stadt- und Landesarchiv</repository>
+                  <idno>5494</idno>
+                  <altIdentifier type="old">
+                     <idno>519802</idno>
+                  </altIdentifier>
+               </msIdentifier>
+               <msContents>
+                  <msItem>
+                     <listBibl>
+                        <bibl>Camesina, Regesten 114 n° 536 Regest.</bibl>
+                     </listBibl>
+                  </msItem>
+               </msContents>
+               <physDesc>
+                  <sealDesc>
+                     <seal>
+                        <p>Anhangendes Siegel, roth u. Sch., zerbrochen.</p>
+                     </seal>
+                  </sealDesc>
+               </physDesc>
+            </msDesc>
+         </sourceDesc>
+      </fileDesc>
+      <encodingDesc>
+         <projectDesc default="false">
+            <p><label type="contentual-editing">Projekt Christina Lutter Stadt und
+                  Gemeinschaft</label></p>
+         </projectDesc>
+      </encodingDesc>
+      <profileDesc>
+         <creation>
+            <placeName>Wien</placeName>
+            <date when="14930912">1493 IX 12</date>
+            <origDate>zu Wienn, an phincztag nach Unser Lieben Fraun tag
+            Nativitatis.</origDate></creation>
+      </profileDesc>
+   </teiHeader>
+   <facsimile>
+      <surface>
+         <graphic
+            url="http://images.monasterium.net/pics/AT-WStLA/HA-U/WStLA-HA-Urkunden_05494_r.jpg"/>
+      </surface>
+      <surface>
+         <graphic
+            url="http://images.monasterium.net/pics/AT-WStLA/HA-U/WStLA-HA-Urkunden_05494_v.jpg"/>
+      </surface>
+   </facsimile>
+   <text>
+      <body>
+         <div type="abstract">
+            <p><rs type="event" ref="ev__QGW_II_II_5494">
+                  <rs type="fn" role="issuer"><rs type="person" ref="pe__paul_kek_QGW_II_III_5384"
+                        >Paul Kegk, <roleName type="occ" corresp="org__wien"
+                           >burgermaister</roleName></rs>, und <rs type="org" ref="org__wien">der
+                        rate gemain der stat Wienn</rs></rs> verleihen die <rs type="org"
+                     ref="org__wien-st_stephan-altar_allerseelen-messe_meczner">ewige Messe, die
+                     weilend <rs type="person" ref="pe__anna_QGW_II_II_3489"><roleName type="title"
+                           >frau</roleName> Anna, <rs type="person"
+                           ref="pe__otto_meczner_QGW_II_II_2591">Otten Meczner<roleName type="dead"
+                                 ><add>witib</add></roleName></rs>
+                        <roleName type="kin" corresp="pe__otto_meczner_QGW_II_II_2591"
+                           >wittib</roleName>
+                        <roleName type="dead">selige</roleName></rs>, auf Allerselen altar zu sand
+                     Steffan hie gestift hat und die ihnen mit lediger und freier übergab</rs> . . .
+                  . <rs type="person" ref="pe__michael_wisent_QGW_II_III_5494"><roleName
+                        type="title">hern</roleName> Micheln Wisent ledig</rs> worden ist, . . .
+                     .<rs type="fn" role="recipient">
+                     <rs type="person" ref="pe__michael_deimler_QGW_II_III_5494">Michaeln Deymel von
+                        Re/ob, <roleName type="occ" corresp="org__passau-dioezese"
+                           >accolit</roleName> Passauer pistumbs</rs></rs> . </rs></p>
+         </div>
+         <div type="seal">
+            <p><rs type="event" ref="ev__QGW_II_II_5494"><rs type="fn" role="witness">Besiegelt mit
+                     ihrem anhangundem <rs type="org" ref="org__wien">statinsigl</rs>.</rs>
+               </rs></p>
+         </div>
+         <div type="lists">
+            <xi:include xmlns:xi="http://www.w3.org/2001/XInclude"
+               href="../../../../indices/placeList.xml" xpointer="element(/1/2/1/1)"/>
+            <xi:include xmlns:xi="http://www.w3.org/2001/XInclude"
+               href="../../../../indices/personList.xml" xpointer="element(/1/2/1/1)"/>
+            <xi:include xmlns:xi="http://www.w3.org/2001/XInclude"
+               href="../../../../indices/eventList.xml" xpointer="element(/1/2/1/1)"/>
+            <xi:include xmlns:xi="http://www.w3.org/2001/XInclude"
+               href="../../../../indices/orgList.xml" xpointer="element(/1/2/1/1)"/>
+         </div>
+      </body>
+   </text>
+</TEI>

@@ -1,0 +1,20 @@
+<?xml version="1.0" encoding="UTF-8"?><!DOCTYPE TEI   SYSTEM "../../../schema/toolbox_full.dtd"><TEI xmlns="http://www.tei-c.org/ns/1.0" xmlns:cei="http://www.monasterium.net/NS/cei" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"><teiHeader><fileDesc><titleStmt><title>Tei version of 707 exported from monasterium.net </title></titleStmt><publicationStmt><p/></publicationStmt><!--In Original: cei:front/cei:sourceDesc/cei:sourceDescRegest--><sourceDesc><bibl  type="url">https://www.monasterium.net/mom/AT-WStLA/HAUrk/707/charter</bibl><bibl default="false" status="draft">Quellen zur Geschichte der Stadt Wien, Bd. II/1,
+               Nr. 707 As published in HAUrk by Wiener Stadt- und Landesarchiv </bibl><msDesc status="draft"><msIdentifier><repository>Wiener Stadt- und Landesarchiv</repository><idno>707</idno><altIdentifier type="old"><idno>514888</idno></altIdentifier></msIdentifier><physDesc><sealDesc><seal><p>Zwei anhangende Siegel, 1. spitzoval.</p></seal></sealDesc></physDesc></msDesc></sourceDesc></fileDesc><encodingDesc><projectDesc default="false"><p><label type="contentual-editing">Projekt Christina Lutter Stadt und Gemeinschaft</label></p></projectDesc></encodingDesc><profileDesc><creation>
+            <placeName>Wien</placeName>
+            <date when="13670927">1367 IX 27</date>
+            <origDate instant="false">ze Wienn, des nasten mantags vor sand Michels
+            tag.</origDate></creation></profileDesc></teiHeader><facsimile><surface><graphic url="http://images.monasterium.net/pics/AT-WStLA/HA-U/WStLA-HA-Urkunden_00707_r.jpg"/></surface><surface><graphic url="http://images.monasterium.net/pics/AT-WStLA/HA-U/WStLA-HA-Urkunden_00707_v.jpg"/></surface></facsimile><text><body><div type="abstract" resp="lp"><p><rs type="event" ref="ev__QGW_II_I_707"><rs type="fn" role="issuer">
+                     <rs type="person" ref="pe__eberhard_negell_QGW_II_I_728">Eberhard der Negell,
+                           <roleName type="occ" corresp="org__wien-st_michael">chirchmaister</roleName> dacz sand Michel ze Wienne</rs></rs>,
+                     <triggerstring n="disp">gibt</triggerstring>
+                  <rs type="fn" role="other"><triggerstring n="fn">nach dem Gebote</triggerstring>
+                     <rs type="person" ref="pe__rudolf_iv_herzog_von_oesterreich_QGW_II_I_769"><roleName type="title">Herzog</roleName> Rudolfs IV.</rs></rs>
+                  <rs type="fn" role="recipient"><rs type="person" ref="pe__thomas_swaeml_QGW_II_I_1012"><roleName type="title">hern</roleName>
+                        Thoman dem Swêmblein, <roleName type="occ" corresp="org__wien">purgermaister</roleName></rs>, und dem <rs type="org" ref="org__wien">rat gemain der stat ze Wienn</rs></rs> 30 dn. gelts gruntrechts , welche
+                  die genannte Kirche auf dem smertisch, gelegen an der Schrann, gehabt hatte, um 1
+                  lb dn. abzulösen.</rs>
+            </p></div><div type="seal"><p><rs type="event" ref="ev__QGW_II_I_707"><rs type="fn" role="witness">Besiegelt mit
+                     den Siegeln: 1. <rs type="org" ref="org__wien-st_michael">der S.
+                        Michaelskirche</rs>, 2. <rs type="person" ref="pe__konrad_chamrer_QGW_II_I_918">Chunrads des Chamrer an dem Alten
+                        Cholmarcht ze Wienn</rs>.</rs>
+               </rs></p></div><div type="lists"><xi:include xmlns:xi="http://www.w3.org/2001/XInclude" href="../../../../indices/placeList.xml" xpointer="element(/1/2/1/1)"/><xi:include xmlns:xi="http://www.w3.org/2001/XInclude" href="../../../../indices/personList.xml" xpointer="element(/1/2/1/1)"/><xi:include xmlns:xi="http://www.w3.org/2001/XInclude" href="../../../../indices/eventList.xml" xpointer="element(/1/2/1/1)"/><xi:include xmlns:xi="http://www.w3.org/2001/XInclude" href="../../../../indices/orgList.xml" xpointer="element(/1/2/1/1)"/></div></body></text></TEI>

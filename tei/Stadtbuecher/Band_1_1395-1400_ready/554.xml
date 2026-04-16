@@ -1,0 +1,100 @@
+<?xml version="1.0" encoding="UTF-8"?><!DOCTYPE TEI SYSTEM "../../../schema/toolbox_full.dtd">
+<TEI xmlns="http://www.tei-c.org/ns/1.0" xmlns:cei="http://www.monasterium.net/NS/cei"
+   xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance">
+   <teiHeader>
+      <fileDesc>
+         <titleStmt>
+            <title>TEI-Version of 554</title>
+         </titleStmt>
+         <publicationStmt>
+            <p/>
+         </publicationStmt>
+         <sourceDesc default="false">
+            <bibl default="false" status="draft">
+               <title type="full"><title type="main">Die Wiener Stadtbücher 1395 -
+                     1430</title><title type="sub">Teil 1: 1395 - 1400</title></title>
+               <author>Wilhelm Brauneder</author>
+               <author>Gerhard Jaritz</author>
+               <pubPlace>Wien</pubPlace>
+               <pubPlace>Köln</pubPlace>
+               <publisher>Böhlau Verlag</publisher>
+            </bibl>
+            <msDesc status="draft">
+               <msIdentifier>
+                  <idno>554</idno>
+               </msIdentifier>
+               <physDesc/>
+            </msDesc>
+         </sourceDesc>
+      </fileDesc>
+      <encodingDesc>
+         <projectDesc>
+            <p><label type="contentual-editing">Projekt Christina Lutter Stadt und
+                  Gemeinschaft</label></p>
+         </projectDesc>
+      </encodingDesc>
+      <profileDesc>
+         <creation>
+            <date when="1400-05-02">(1400 Mai 2, Wartberg)</date>
+         </creation>
+      </profileDesc>
+   </teiHeader>
+   <text>
+      <body>
+         <div type="header">
+            <p>Mitteilung des Erbverzichts der Margarethe, Gattin des Jans Olm, nach Jörg, Sohn des
+               Andreas Prunhawser, zugunsten ihres Vaters Hans Ledrer</p>
+         </div>                   <div type="entry" resp="rs">
+            <p> (Indez: !tem ain aufgabbrief Margreten Jansen hausfraw des Olms) <rs type="event"
+                  ref="ev__StB_I_554">Unsern frewntleich gruezz und unser dinst mit trewen lieben
+                  herren. <rs type="fn" role="other"><rs type="org" ref="org__wartberg">Wir der
+                        richter und die gesworn pruger zu dem Wartperig</rs>
+                     <triggerstring n="fn">bechennen</triggerstring> offenleich mit dem brief</rs>, <rs
+                     type="fn" role="witness">das fur uns chommen ist <rs type="person"
+                        ref="pe__margarethe_StB_I_554">die <roleName type="title">erber</roleName>
+                        fraw <roleName type="title">fraw</roleName> Margret, <roleName type="kin"
+                           corresp="pe__johann_olm_StB_I_554"><add>hawsfraw</add></roleName><rs
+                           type="person" ref="pe__johann_olm_StB_I_554">Jannsen hawsfraw des
+                           Olms</rs></rs>,</rs>
+                  <rs type="fn" role="other">und <rs type="person" ref="pe__margarethe_StB_I_554"
+                           ><add>Margret</add></rs>hat da vor unser mit gutleichem willen
+                        unbetwungenleichen<triggerstring n="fn"> aufgeben</triggerstring>
+                  </rs>
+                  <rs type="fn" role="recipient"><rs type="person"
+                        ref="pe__johann_lederer_StB_I_554">irm <roleName type="kin"
+                           corresp="pe__margarethe_StB_I_554">vater</roleName> Hannsen dem <roleName
+                           type="prof" cert="unknown">Ledrer</roleName> von Vasendorf</rs> allen irn
+                     tayl und allew irew recht, die si gehabt hat an den gutern, es sein hawser oder
+                     weingarten,</rs> die <rs type="fn" role="recipient"><rs type="person"
+                        ref="pe__margarethe_StB_I_554">si</rs></rs>
+                  <rs type="fn" role="issuer">von <rs type="person" ref="pe__georg_StB_I_554">irm
+                           <roleName type="kin" corresp="pe__margarethe_StB_I_554"
+                           >vettern</roleName> Jorgen, <roleName type="kin"
+                           corresp="pe__andreas_prunnhauser_StB_I_554"><add>sun</add></roleName><rs
+                           type="person" ref="pe__andreas_prunnhauser_StB_I_554">Andres sun des
+                           Prunhawser <roleName type="dead">genad</roleName></rs>, den payden got
+                           <roleName type="dead">genad</roleName></rs>, ledichleihen anerstorben
+                     sind</rs>. Also das der egenant ir vater den egenanten irn tayl und allew die
+                  recht, die si an denselben gutern gehabt hat, sol furbas ledichleich und freyleich
+                  haben und allen seinen frummen domit schaffena), verchawffen, verseczen und geben,
+                  wem er welle, und daz damit tun und hanndeln, das im aller pest fuegt oder wol
+                  gevalle vor aller irrunge. <rs type="fn" role="witness">Mit urchunde dicz briefs
+                     versigelt mit <rs type="person" ref="pe__niklas_hermann_StB_I_554">unsers
+                           <roleName type="occ" corresp="org__wartberg">richter</roleName> Nikel
+                        Hermans</rs> aufgedruktem insigel. </rs>Geben zu dem Wartperig des andern
+                  suntags noch ostern, als man singet Misericordia domini, anno domini milesimo
+                  quadringentesimo.</rs> a) Danach gestrichenes ver. </p>
+         </div>
+         <div type="lists">
+            <xi:include xmlns:xi="http://www.w3.org/2001/XInclude"
+               href="../../../../indices/placeList.xml" xpointer="element(/1/2/1/1)"/>
+            <xi:include xmlns:xi="http://www.w3.org/2001/XInclude"
+               href="../../../../indices/personList.xml" xpointer="element(/1/2/1/1)"/>
+            <xi:include xmlns:xi="http://www.w3.org/2001/XInclude"
+               href="../../../../indices/eventList.xml" xpointer="element(/1/2/1/1)"/>
+            <xi:include xmlns:xi="http://www.w3.org/2001/XInclude"
+               href="../../../../indices/orgList.xml" xpointer="element(/1/2/1/1)"/>
+         </div>
+      </body>
+   </text>
+</TEI>

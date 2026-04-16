@@ -1,0 +1,94 @@
+<?xml version="1.0" encoding="UTF-8"?><!DOCTYPE TEI   SYSTEM "../../../schema/toolbox_full.dtd">
+<TEI xmlns="http://www.tei-c.org/ns/1.0" xmlns:cei="http://www.monasterium.net/NS/cei"
+  xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance">
+  <teiHeader>
+    <fileDesc>
+      <titleStmt>
+        <title>Tei version of 413 exported from monasterium.net </title>
+      </titleStmt>
+      <publicationStmt>
+        <p/>
+      </publicationStmt>
+      <!--In Original: cei:front/cei:sourceDesc/cei:sourceDescRegest-->
+      <sourceDesc>
+        <bibl type="url">https://www.monasterium.net/mom/AT-WStLA/HAUrk/413/charter</bibl>
+        <bibl default="false" status="draft">Quellen zur Geschichte der Stadt Wien, Bd. II/1, Nr.
+          413 As published in HAUrk by Wiener Stadt- und Landesarchiv </bibl>
+        <msDesc status="draft">
+          <msIdentifier>
+            <repository>Wiener Stadt- und Landesarchiv</repository>
+            <idno>413</idno>
+            <altIdentifier type="old">
+              <idno>514584</idno>
+            </altIdentifier>
+          </msIdentifier>
+          <msContents>
+            <msItem>
+              <listBibl default="false">
+                <bibl default="false" status="draft">Hormayr, Wien 2, UB. 74 no 72.</bibl>
+              </listBibl>
+            </msItem>
+          </msContents>
+          <physDesc>
+            <sealDesc>
+              <seal>
+                <p>Rückwärts aufgedrücktes, mit Pergamentstreifen angehängtes Siegel, abgesprungen,
+                  darunter die Worte: commissio regis et regine et relatio Wolfardi. </p>
+              </seal>
+            </sealDesc>
+          </physDesc>
+        </msDesc>
+      </sourceDesc>
+    </fileDesc>
+    <encodingDesc>
+      <projectDesc default="false">
+        <p><label type="contentual-editing">Projekt Christina Lutter Stadt und
+          Gemeinschaft</label></p>
+      </projectDesc>
+    </encodingDesc>
+    <profileDesc>
+      <creation>
+        <placeName>Ofen</placeName>
+        <date when="13520910">1352 IX 10</date>
+        <origDate instant="false">Datum Bude feria secunda proxima post festum nativitatis beate
+          Virginis, anno domini MCCC//oLmo secundo. </origDate></creation>
+    </profileDesc>
+  </teiHeader>
+  <facsimile>
+    <surface>
+      <graphic url="http://images.monasterium.net/pics/AT-WStLA/HA-U/WStLA-HA-Urkunden_00413_r.jpg"
+      />
+    </surface>
+    <surface>
+      <graphic url="http://images.monasterium.net/pics/AT-WStLA/HA-U/WStLA-HA-Urkunden_00413_v.jpg"
+      />
+    </surface>
+  </facsimile>
+  <text>
+    <body>
+      <div type="abstract" resp="lp">
+        <p>*<rs type="event" ref="ev__QGW_II_I_413">
+            <rs type="fn" role="issuer"><rs type="person"
+                ref="pe__ludwig_koenig_von_ungarn_QGW_II_I_838">Ludwig, <roleName type="occ"
+                  corresp="org_ungarn">König</roleName> von Ungarn</rs></rs>, <triggerstring n="disp"
+              >bestimmt</triggerstring>,<rs type="fn" role="recipient">
+              <rs type="org" ref="org__wien"> dass die Fleischhauer aus Wien</rs> und die anderen
+              Handelsleute aus dem Gebiete des Herzogs Albrecht bis Oedenburg</rs> keine anderen
+            Abgaben, als in villa Chyeagi zur Herstellung der Marienkirche von einem beladenen Wagen
+            einen Helbling und in tributo fratrum Cruciferorum de Suprunio von einem Loden oder
+            Stück grauen Tuches drei Helblinge zu entrichten haben.</rs>
+        </p>
+      </div>
+      <div type="lists">
+        <xi:include xmlns:xi="http://www.w3.org/2001/XInclude"
+          href="../../../../indices/placeList.xml" xpointer="element(/1/2/1/1)"/>
+        <xi:include xmlns:xi="http://www.w3.org/2001/XInclude"
+          href="../../../../indices/personList.xml" xpointer="element(/1/2/1/1)"/>
+        <xi:include xmlns:xi="http://www.w3.org/2001/XInclude"
+          href="../../../../indices/eventList.xml" xpointer="element(/1/2/1/1)"/>
+        <xi:include xmlns:xi="http://www.w3.org/2001/XInclude"
+          href="../../../../indices/orgList.xml" xpointer="element(/1/2/1/1)"/>
+      </div>
+    </body>
+  </text>
+</TEI>

@@ -1,0 +1,151 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<TEI xmlns="http://www.tei-c.org/ns/1.0" xmlns:cei="http://www.monasterium.net/NS/cei"
+   xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance">
+   <teiHeader>
+      <fileDesc>
+         <titleStmt>
+            <title>Tei version of 5520 exported from monasterium.net </title>
+         </titleStmt>
+         <publicationStmt>
+            <p/>
+         </publicationStmt>
+         <!--In Original: cei:front/cei:sourceDesc/cei:sourceDescRegest-->
+         <sourceDesc>
+            <bibl>Quellen zur Geschichte der Stadt Wien, Bd. II/4, Nr. 5520 As published in HAUrk by
+               Wiener Stadt- und Landesarchiv </bibl>
+            <msDesc>
+               <msIdentifier>
+                  <repository>Wiener Stadt- und Landesarchiv</repository>
+                  <idno>5520</idno>
+                  <altIdentifier type="old">
+                     <idno>519831</idno>
+                  </altIdentifier>
+               </msIdentifier>
+               <physDesc>
+                  <sealDesc>
+                     <seal>
+                        <p>mit zwei grünen, der Rückseite aufgedrückten Siegeln, das erste
+                           beschädigt, das zweite unter Papierdecke wie in n° 5518.Siegler:
+                              <quote>Hanns Mülhauser und Erhart Painschaber</quote>, beide ...
+                              <quote>burger zu Wien</quote>... </p>
+                     </seal>
+                  </sealDesc>
+               </physDesc>
+            </msDesc>
+         </sourceDesc>
+      </fileDesc>
+      <encodingDesc>
+         <projectDesc default="false">
+            <p><label type="contentual-editing">Projekt Christina Lutter Stadt und
+                  Gemeinschaft</label></p>
+         </projectDesc>
+      </encodingDesc>
+      <profileDesc>
+         <creation>
+            <placeName>Wien</placeName>
+            <date when="14940924">1494 IX 24</date>
+            <origDate>Geben zu Wienn, an mittichen nach sand Matheus tag des heiligen zweifboten und
+               ewangelisten, anno domini etc. nonagesimo quarto. </origDate></creation>
+      </profileDesc>
+   </teiHeader>
+   <facsimile>
+      <surface>
+         <graphic
+            url="http://images.monasterium.net/pics/AT-WStLA/HA-U/WStLA-HA-Urkunden_05520_r.jpg"/>
+      </surface>
+      <surface>
+         <graphic
+            url="http://images.monasterium.net/pics/AT-WStLA/HA-U/WStLA-HA-Urkunden_05520_v.jpg"/>
+      </surface>
+   </facsimile>
+   <text>
+      <body>
+         <div type="abstract">
+            <p><rs type="event" ref="ev__QGW_II_II_5520">
+                  <rs type="fn" role="issuer"><rs type="person" ref="pe__anna_liebin_QGW_II_IV_5520"
+                        >Lionhart Lieblein ab der Prantstat beym Frankhenmarkht im Attergee
+                           <roleName type="rep" corresp="pe__anna_liebin_QGW_II_IV_5520"
+                           >anstat</roleName>
+                        <rs type="person" ref="pe__anna_liebin_QGW_II_IV_5520">Annen seiner
+                              <roleName type="kin" corresp="pe__leonhard_lieblein_QGW_II_IV_5520"
+                              >hausfraun</roleName></rs></rs>, <rs type="person"
+                        ref="pe__georg_brantsteter_QGW_II_IV_5520">Jörgen Pranntsteter <roleName
+                           type="occ" corresp="org__ischl">burger</roleName> zu Ysschl</rs>, <rs
+                        type="person" ref="pe__thomas_brantsteter_QGW_II_IV_5520">Thomans
+                        Prantsteter zu Tuetingern im Attergee<roleName type="kin"
+                           corresp="pe__georg_brantsteter_QGW_II_IV_5520"
+                           ><add>swäger</add></roleName></rs> und <rs type="person"
+                        ref="pe__barbara_QGW_II_IV_5520_a">Barbaren <rs type="person"
+                           ref="pe__johann_brantsteter_QGW_II_IV_5520">Hannsen Prantsteter <roleName
+                              type="dead">weilend</roleName> zu He/alkingern</rs> gelassen <roleName
+                           type="kin" corresp="pe__johann_brantsteter_QGW_II_IV_5520"
+                           >tochter</roleName> seiner swäger und <roleName type="kin"
+                           corresp="pe__georg_brantsteter_QGW_II_IV_5520">swägerin</roleName>,</rs>
+                     von denen er Vollmacht hat - einesteils - und <rs type="person"
+                        ref="pe__johann_hawshaimer_QGW_II_IV_5520">Hanns Hawshaimer <roleName
+                           type="rep" corresp="pe__regina_QGW_II_IV_5520">anstat</roleName><roleName
+                           type="rep" corresp="pe__barbara_QGW_II_IV_5520_a"
+                           ><add>anstat</add></roleName>
+                        <rs type="person" ref="pe__regina_QGW_II_IV_5520">Reginen Wernharten O/oders
+                           elichen <roleName type="kin" corresp="pe__bernhard_eder_QGW_II_IV_5520"
+                              >tochter</roleName> und Walthesarn Steyr zu Se/aling im Attergee
+                           eelichen <roleName type="kin"
+                              corresp="pe__balthasar_steyr_QGW_II_IV_5520">hausfraun</roleName>
+                           seiner <roleName type="kin"
+                              corresp="pe__johann_hawshaimer_QGW_II_IV_5520">mueter</roleName></rs>
+                        und <rs type="person" ref="pe__barbara_QGW_II_IV_5520_b">Barbaren auch des
+                           yetzgenannten Oders <roleName type="kin"
+                              corresp="pe__bernhard_eder_QGW_II_IV_5520">tochter</roleName> und <rs
+                              type="person" ref="pe__johann_smid_QGW_II_IV_5520">Hannsen Smids
+                                 <roleName type="occ" corresp="org__graz">burger</roleName> zu
+                              Gre/atz</rs> eelichen <roleName type="kin"
+                              corresp="pe__johann_smid_QGW_II_IV_5520">hausfrawn</roleName> seiner
+                              <roleName type="kin" corresp="pe__johann_hawshaimer_QGW_II_IV_5520"
+                              >muemen</roleName></rs> als ihr Bevollmächtigter</rs> - andernteils
+                     -</rs> vereinbaren mit <rs type="fn" role="recipient"><rs type="person"
+                        ref="pe__wolfgang_keppler_QGW_II_III_4250">Wolfganng Ka/eppler <roleName
+                           type="occ" corresp="org__wien">burger</roleName> zu Wienn</rs></rs> von
+                  wegen des Erbes, so <rs type="person" ref="pe__martin_brantsteter_QGW_II_IV_5520"
+                     >Mert Prantsteter <roleName type="prof">zimermon</roleName>, <roleName
+                        type="occ" corresp="org__wien">mitburger</roleName> zu Wienn</rs> der
+                  obgenannten Annen Liebin (!) und irer miterben bruder und vetter, und<rs
+                     type="person" ref="pe__anna_QGW_II_IV_5520"> Anna sein <roleName type="kin"
+                        corresp="pe__wolfgang_keppler_QGW_II_III_4250">hausfraw</roleName>, der
+                     obvermelten Reginen Steyrin und Barbaren Smidin <roleName type="kin"
+                        corresp="pe__regina_QGW_II_IV_5520">swester</roleName><roleName type="kin"
+                        corresp="pe__barbara_QGW_II_IV_5520_b"><add>swester</add></roleName>
+                     seligen</rs> . .. hinder in gelassen, das .. . Cappler, als ain gerhab der
+                  Mert-Prantstetterischen kinder, die ungevogt mit tod abgangen und verschaiden
+                  sind, der in gegenburt und beiwesen . . . <rs type="person"
+                     ref="pe__lukas_tugentlich_QGW_II_IV_5508">Lucasen Tugentlich<roleName
+                        type="occ" corresp="org__wien"><add>rats</add></roleName></rs> und <rs
+                     type="person" ref="pe__georg_reisinger_QGW_II_III_5498">Jörgen Reysinger, baid
+                     . . . des <roleName type="occ" corresp="org__wien">rats</roleName> der stat zu
+                     Wienn</rs> , .. . raitung getan hat und falls die Aussteller das Erbe antreten
+                  wollten, noch 2 lb 6 ß 21 Pf. zu bekommen hätte, weder an sie, noch sie an ihn
+                  (Kappler) wegen des Erbes der gestimbten Eenleut Mertten Prantsteter und Annen
+                  seiner hausfraun Anspruch haben solle. </rs></p>
+         </div>
+         <div type="seal">
+            <p><rs type="event" ref="ev__QGW_II_II_5520"><rs type="fn" role="witness">Siegler: <rs
+                        type="person" ref="pe__johann_mulhauser_QGW_II_III_4119">Hanns Mülhauser
+                     </rs>und <rs type="person" ref="pe__erhard_pawmschaber_QGW_II_IV_5520">Erhart
+                        Painschaber, beide ... burger zu Wien</rs>... </rs></rs></p>
+         </div>
+         <div type="nota">
+            <p>Rückaufschrift in der rechten unteren Ecke: prantsteter (folgt gel. verlöscht)
+               gbittum (= Quittun g). </p>
+         </div>
+         <div type="lists">
+            <xi:include xmlns:xi="http://www.w3.org/2001/XInclude"
+               href="../../../../indices/placeList.xml" xpointer="element(/1/2/1/1)"/>
+            <xi:include xmlns:xi="http://www.w3.org/2001/XInclude"
+               href="../../../../indices/personList.xml" xpointer="element(/1/2/1/1)"/>
+            <xi:include xmlns:xi="http://www.w3.org/2001/XInclude"
+               href="../../../../indices/eventList.xml" xpointer="element(/1/2/1/1)"/>
+            <xi:include xmlns:xi="http://www.w3.org/2001/XInclude"
+               href="../../../../indices/orgList.xml" xpointer="element(/1/2/1/1)"/>
+         </div>
+      </body>
+   </text>
+</TEI>

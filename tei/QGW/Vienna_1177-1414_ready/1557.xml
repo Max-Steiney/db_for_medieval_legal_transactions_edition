@@ -1,0 +1,29 @@
+<?xml version="1.0" encoding="UTF-8"?><!DOCTYPE TEI   SYSTEM "../../../schema/toolbox_full.dtd"><TEI xmlns="http://www.tei-c.org/ns/1.0" xmlns:cei="http://www.monasterium.net/NS/cei" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"><teiHeader><fileDesc><titleStmt><title>Tei version of 1557 exported from monasterium.net </title></titleStmt><publicationStmt><p/></publicationStmt><!--In Original: cei:front/cei:sourceDesc/cei:sourceDescRegest--><sourceDesc><bibl  type="url">https://www.monasterium.net/mom/AT-WStLA/HAUrk/1557/charter</bibl><bibl default="false" status="draft">Quellen zur Geschichte der Stadt Wien, Bd. II/1,
+               Nr. 1557 As published in HAUrk by Wiener Stadt- und Landesarchiv </bibl><msDesc status="draft"><msIdentifier><repository>Wiener Stadt- und Landesarchiv</repository><idno>1557</idno><altIdentifier type="old"><idno>515758</idno></altIdentifier></msIdentifier><physDesc><sealDesc><seal><p>Die Siegel fehlen.</p></seal></sealDesc></physDesc></msDesc></sourceDesc></fileDesc><encodingDesc><projectDesc default="false"><p><label type="contentual-editing">Projekt Christina Lutter Stadt und Gemeinschaft</label></p></projectDesc></encodingDesc><profileDesc><creation>
+            <placeName>Wien</placeName>
+            <date when="14030914">1403 IX 14</date>
+            <origDate instant="false">ze Wienn, des nachsten freitags an des heiligen Chrauz tags,
+               als es erhocht ist worden.</origDate></creation></profileDesc></teiHeader><facsimile><surface><graphic url="http://images.monasterium.net/pics/AT-WStLA/HA-U/WStLA-HA-Urkunden_01557_r.jpg"/></surface><surface><graphic url="http://images.monasterium.net/pics/AT-WStLA/HA-U/WStLA-HA-Urkunden_01557_v.jpg"/></surface></facsimile><text><body><div type="abstract" resp="kg"><p>
+               <rs type="event" ref="ev__QGW_II_I_1557"><rs type="fn" role="issuer"><rs type="person" ref="pe__ruediger_snuerer_QGW_II_I_1585">Rueger der Snu/erer,
+                           <roleName type="occ" corresp="org__wien"><add>innern
+                           rats</add></roleName></rs>
+                     <rs type="person" ref="pe__martin_hausleitter_QGW_II_I_1234">Mert der
+                        Hausleitter, paid des <roleName type="occ" corresp="org__wien">innern
+                           rats</roleName> der stat ze Wienn</rs>, und <rs type="person" ref="pe__meinhard_pfeilschnitzer_QGW_II_I_1557">Meinhart, der pheilsniczer,
+                        des <roleName type="occ" corresp="org__wien">aussern
+                     rats</roleName></rs>,</rs>
+                  <triggerstring n="disp">stellen</triggerstring>
+                  <rs type="fn" role="recipient"><rs type="person" ref="pe__lesier_QGW_II_I_1557">Lesiern, dem Juden, <roleName type="kin" corresp="pe__patusch_QGW_II_I_1557"><add>öchem</add></roleName>
+                        <rs type="person" ref="pe__patusch_QGW_II_I_1557">Parusch öchem von
+                           Perichtolczdorf</rs></rs>,</rs>
+                  <triggerstring n="disp">einen Schuldbrief</triggerstring> über 44 lb dn. <triggerstring n="disp">aus</triggerstring>, <rs type="event" ref="ev__QGW_II_I_1557_men_1">die sie zu der stat
+                     notdurft zu dem uberlegen entlehnt haben</rs>, verpflichten sich zur
+                  Rückzahlung am nächsten sand Merten tag, beziehungsweise zur Leistung eines
+                  gesuechs von 3 dn. wöchentlich für ein Pfund, und setzen ihren gesammten Besitz zu
+                  Pfand.</rs>
+            </p></div><div type="seal"><p><rs type="event" ref="ev__QGW_II_I_1557"><rs type="fn" role="witness">Besiegelt mit
+                     den Siegeln der beiden ersten <rs type="person" ref="pe__ruediger_snuerer_QGW_II_I_1585">Aussteller</rs>
+                     <rs type="person" ref="pe__martin_hausleitter_QGW_II_I_1234"><add>Aussteller</add></rs> und des <rs type="person" ref="pe__haunold_schuchler_QGW_II_I_1557"><roleName type="occ" corresp="org__wien">Bürgermeisters</roleName>
+                        <roleName type="title">hern</roleName> Haunolts des
+                  Schuechler</rs>.</rs></rs>
+            </p></div><div type="lists"><xi:include xmlns:xi="http://www.w3.org/2001/XInclude" href="../../../../indices/placeList.xml" xpointer="element(/1/2/1/1)"/><xi:include xmlns:xi="http://www.w3.org/2001/XInclude" href="../../../../indices/personList.xml" xpointer="element(/1/2/1/1)"/><xi:include xmlns:xi="http://www.w3.org/2001/XInclude" href="../../../../indices/eventList.xml" xpointer="element(/1/2/1/1)"/><xi:include xmlns:xi="http://www.w3.org/2001/XInclude" href="../../../../indices/orgList.xml" xpointer="element(/1/2/1/1)"/></div></body></text></TEI>

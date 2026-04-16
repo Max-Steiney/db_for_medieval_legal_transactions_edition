@@ -1,0 +1,111 @@
+<?xml version="1.0" encoding="UTF-8"?><!DOCTYPE TEI   SYSTEM "../../../schema/toolbox_full.dtd">
+<TEI xmlns="http://www.tei-c.org/ns/1.0" xmlns:cei="http://www.monasterium.net/NS/cei"
+   xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance">
+   <teiHeader>
+      <fileDesc>
+         <titleStmt>
+            <title>Tei version of 1756 exported from monasterium.net </title>
+         </titleStmt>
+         <publicationStmt>
+            <p/>
+         </publicationStmt>
+         <!--In Original: cei:front/cei:sourceDesc/cei:sourceDescRegest-->
+         <sourceDesc>
+            <bibl type="url">https://www.monasterium.net/mom/AT-WStLA/HAUrk/1756/charter</bibl>
+            <bibl default="false" status="draft">Quellen zur Geschichte der Stadt Wien, Bd. II/1,
+               Nr. 1756 As published in HAUrk by Wiener Stadt- und Landesarchiv </bibl>
+            <msDesc status="draft">
+               <msIdentifier>
+                  <repository>Wiener Stadt- und Landesarchiv</repository>
+                  <idno>1756</idno>
+                  <altIdentifier type="old">
+                     <idno>515958</idno>
+                  </altIdentifier>
+               </msIdentifier>
+               <physDesc>
+                  <sealDesc>
+                     <seal>
+                        <p>Zwei anhangende Siegel, schwarz u. Sch. , 2. fehlt.</p>
+                     </seal>
+                  </sealDesc>
+               </physDesc>
+            </msDesc>
+         </sourceDesc>
+      </fileDesc>
+      <encodingDesc>
+         <projectDesc default="false">
+            <p><label type="contentual-editing">Projekt Christina Lutter Stadt und
+                  Gemeinschaft</label></p>
+         </projectDesc>
+      </encodingDesc>
+      <profileDesc>
+         <creation>
+            <date when="14090320">1409 III 20</date>
+            <origDate instant="false">Geben nach Christi gepurde 1400 jar darnach in dem 9. jar, des
+               nachsten mitichens vor Unser Fraun tag Anucciationis. </origDate></creation>
+      </profileDesc>
+   </teiHeader>
+   <facsimile>
+      <surface>
+         <graphic
+            url="http://images.monasterium.net/pics/AT-WStLA/HA-U/WStLA-HA-Urkunden_01756_r.jpg"/>
+      </surface>
+      <surface>
+         <graphic
+            url="http://images.monasterium.net/pics/AT-WStLA/HA-U/WStLA-HA-Urkunden_01756_v.jpg"/>
+      </surface>
+   </facsimile>
+   <text>
+      <body>
+         <div type="abstract" resp="cs">
+            <p>
+               <rs type="event" ref="ev__QGW_II_I_1756"><rs type="fn" role="issuer"><rs
+                        type="person" ref="pe__leb_nussdorfer_QGW_II_I_1752">Leb der
+                           Nusdorfer<roleName type="occ" corresp="org__perchtoldsdorf"
+                              ><add>rat</add></roleName><roleName type="occ" corresp="org__perchtoldsdorf"><add>purger</add></roleName></rs>, <rs
+                        type="person" ref="pe__johann_poelzl_QGW_II_I_1646">Hanns der
+                           Pollczl<roleName type="occ" corresp="org__perchtoldsdorf"
+                           ><add>rat</add></roleName><roleName type="occ" corresp="org__perchtoldsdorf"><add>purger</add></roleName></rs>,<rs
+                        type="person" ref="pe__bernhard_haug_QGW_II_I_1749"> Wernhart der
+                           Haug<roleName type="occ" corresp="org__perchtoldsdorf"
+                           ><add>rat</add></roleName>,</rs>
+                     <rs type="person" ref="pe__niklas_desendel_QGW_II_I_1756">Niclas der alt
+                        Desendel </rs>und <rs type="person"
+                        ref="pe__niklas_sauberhart_QGW_II_I_1756">Niclas der Sauberhart, all
+                           <roleName type="occ" corresp="org__perchtoldsdorf"
+                           >purger</roleName> und des <roleName type="occ"
+                           corresp="org__perchtoldsdorf">rates</roleName> ze
+                     Perichtoltczdorf</rs></rs> , <triggerstring n="disp">beurkunden</triggerstring> die
+                  von ihnen in dem Streite zwischen <rs type="fn" role="recipient"><rs type="person"
+                        ref="pe__agnes_QGW_II_I_1756"><roleName type="title">fraun</roleName>
+                        Angnesen der Gabliczerin</rs> und <rs type="person"
+                        ref="pe__barbara_QGW_II_I_1756">ihrer <roleName type="kin"
+                           corresp="pe__agnes_QGW_II_I_1756">Tochter</roleName> Barbare, Ruegern des
+                        Rarvogel <roleName type="kin" corresp="pe__ruediger_rarvogel_QGW_II_I_1756"
+                           >hausfrau</roleName>,</rs>
+                  </rs>über das von Hanns dem Gabliczer zurückgelassene fahrende Gut <triggerstring
+                     n="disp">gefällte Entscheidung</triggerstring>.</rs>
+            </p>
+         </div>
+         <div type="seal">
+            <p><rs type="event" ref="ev__QGW_II_I_1756"><rs type="fn" role="witness">Besiegelt von
+                     den drei erstgenannten <rs type="person" ref="pe__leb_nussdorfer_QGW_II_I_1752"
+                        >Ausstellern</rs>
+                     <rs type="person" ref="pe__johann_poelzl_QGW_II_I_1646"
+                        ><add>Aussteller</add></rs><rs type="person"
+                        ref="pe__bernhard_haug_QGW_II_I_1749"><add>Aussteller</add></rs>.</rs></rs>
+            </p>
+         </div>
+         <div type="lists">
+            <xi:include xmlns:xi="http://www.w3.org/2001/XInclude"
+               href="../../../../indices/placeList.xml" xpointer="element(/1/2/1/1)"/>
+            <xi:include xmlns:xi="http://www.w3.org/2001/XInclude"
+               href="../../../../indices/personList.xml" xpointer="element(/1/2/1/1)"/>
+            <xi:include xmlns:xi="http://www.w3.org/2001/XInclude"
+               href="../../../../indices/eventList.xml" xpointer="element(/1/2/1/1)"/>
+            <xi:include xmlns:xi="http://www.w3.org/2001/XInclude"
+               href="../../../../indices/orgList.xml" xpointer="element(/1/2/1/1)"/>
+         </div>
+      </body>
+   </text>
+</TEI>

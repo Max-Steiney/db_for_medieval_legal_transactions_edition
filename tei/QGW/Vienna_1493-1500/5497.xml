@@ -1,0 +1,114 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<TEI xmlns="http://www.tei-c.org/ns/1.0" xmlns:cei="http://www.monasterium.net/NS/cei"
+   xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance">
+   <teiHeader>
+      <fileDesc>
+         <titleStmt>
+            <title>Tei version of 5497 exported from monasterium.net </title>
+         </titleStmt>
+         <publicationStmt>
+            <p/>
+         </publicationStmt>
+         <!--In Original: cei:front/cei:sourceDesc/cei:sourceDescRegest-->
+         <sourceDesc>
+            <bibl>Quellen zur Geschichte der Stadt Wien, Bd. II/3, Nr. As published in HAUrk by
+               Wiener Stadt- und Landesarchiv </bibl>
+            <msDesc>
+               <msIdentifier>
+                  <repository>Wiener Stadt- und Landesarchiv</repository>
+                  <idno>5497</idno>
+                  <altIdentifier type="old">
+                     <idno>519805</idno>
+                  </altIdentifier>
+               </msIdentifier>
+               <msContents>
+                  <msItem>
+                     <listBibl>
+                        <bibl>Camesina, Regesten 114 n° 537 Regest.</bibl>
+                     </listBibl>
+                  </msItem>
+               </msContents>
+               <physDesc>
+                  <sealDesc>
+                     <seal>
+                        <p>Zwei anhangende Siegel: 1. roth u. Sch., 2. grün u. Sch.Siegler:
+                              <quote>her Hieronime Hollnbrunner, lerer bäbstlicher rechtn, und her
+                              Hanns Wuestenstainer, baid thumbherren der obgenanntn sand Steffans
+                              kirchen </quote>. </p>
+                     </seal>
+                  </sealDesc>
+               </physDesc>
+            </msDesc>
+         </sourceDesc>
+      </fileDesc>
+      <encodingDesc>
+         <projectDesc default="false">
+            <p><label type="contentual-editing">Projekt Christina Lutter Stadt und
+                  Gemeinschaft</label></p>
+         </projectDesc>
+      </encodingDesc>
+      <profileDesc>
+         <creation>
+            <placeName>Wien</placeName>
+            <date when="14931106">1493 XI 06</date>
+            <origDate>zu Wienn, an mittichen sand Leonharcz tag, des heiligen abbts und
+               peichtinger.</origDate></creation>
+      </profileDesc>
+   </teiHeader>
+   <facsimile>
+      <surface>
+         <graphic
+            url="http://images.monasterium.net/pics/AT-WStLA/HA-U/WStLA-HA-Urkunden_05497_r.jpg"/>
+      </surface>
+      <surface>
+         <graphic
+            url="http://images.monasterium.net/pics/AT-WStLA/HA-U/WStLA-HA-Urkunden_05497_v.jpg"/>
+      </surface>
+   </facsimile>
+   <text>
+      <body>
+         <div type="abstract">
+            <p>
+               <rs type="fn" role="issuer"><rs type="person"
+                     ref="pe__wolfgang_placzer_QGW_II_III_5496">Wolfgang Placzer, <roleName
+                        type="occ" corresp="org__passau-dioezese">briester</roleName> Passauer
+                     bistumbs</rs></rs>, widmet zu der <rs type="fn" role="recipient"><rs type="org"
+                     ref="org__wien-st_stephan">ewigen Messe, die<rs type="person"
+                        ref="pe__dorothea_QGW_II_III_5497"> weilent <roleName type="title"
+                           >frau</roleName> Dorothee, <rs type="person"
+                           ref="pe__georg_polhaimer_QGW_II_III_5497">Jorgen Bolheimer <roleName
+                              type="dead">witib</roleName></rs>
+                        <roleName type="kin" corresp="pe__georg_polhaimer_QGW_II_III_5497"
+                              ><add>witib</add></roleName><roleName type="dead"
+                        >selige</roleName></rs>, dreimal in der wochen in Allerheiligen tumbkirchen
+                     zu sand Steffan hie zu lesen und ze haltn gestift hat</rs>
+               </rs>, deren Lehenherren Bürgermeister und Rath der Stadt zu Wien sind, die beiden
+               von ihm gekauften Weingärten zu Ober-Sulz <rs type="event" ref="ev__QGW_II_III_5496"
+                  >(vgl. Urk. n° 5496)</rs> mit der Bestimmung, dass dafür zu jener Stiftung noch
+               eine vierte Messe an jedem Samstag gelesen werden solle. </p>
+         </div>
+         <div type="seal">
+            <p><rs type="event" ref="ev__QGW_II_II_5497"><rs type="fn" role="witness">Siegler: <rs
+                        type="person" ref="pe__hieronymus_holabrunner_QGW_II_III_5497"><roleName
+                           type="title">her</roleName> Hieronime Hollnbrunner, <roleName type="prof"
+                           >lerer bäbstlicher rechtn</roleName><roleName type="occ"
+                           corresp="org__wien-st_stephan"><add>thumbherren</add></roleName></rs>,
+                     und <rs type="person" ref="pe__johann_wuchstenstainer_QGW_II_III_5497"
+                           ><roleName type="title">her</roleName> Hanns Wuestenstainer, baid
+                           <roleName type="occ" corresp="org__wien-st_stephan"
+                           >thumbherren</roleName> der obgenanntn sand Steffans kirchen</rs>
+                  </rs>. </rs></p>
+         </div>
+         <div type="lists">
+            <xi:include xmlns:xi="http://www.w3.org/2001/XInclude"
+               href="../../../../indices/placeList.xml" xpointer="element(/1/2/1/1)"/>
+            <xi:include xmlns:xi="http://www.w3.org/2001/XInclude"
+               href="../../../../indices/personList.xml" xpointer="element(/1/2/1/1)"/>
+            <xi:include xmlns:xi="http://www.w3.org/2001/XInclude"
+               href="../../../../indices/eventList.xml" xpointer="element(/1/2/1/1)"/>
+            <xi:include xmlns:xi="http://www.w3.org/2001/XInclude"
+               href="../../../../indices/orgList.xml" xpointer="element(/1/2/1/1)"/>
+         </div>
+      </body>
+   </text>
+</TEI>

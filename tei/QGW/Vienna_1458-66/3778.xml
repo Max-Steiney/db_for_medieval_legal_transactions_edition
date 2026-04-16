@@ -1,0 +1,110 @@
+<?xml version="1.0" encoding="UTF-8" standalone="no"?>
+<!DOCTYPE TEI
+  SYSTEM "../../../schema/toolbox_full.dtd">
+<TEI xmlns:cei="http://www.monasterium.net/NS/cei" xmlns="http://www.tei-c.org/ns/1.0">
+   <teiHeader>
+      <fileDesc>
+         <titleStmt>
+            <title>Tei version of 3778 exported from monasterium.net </title>
+         </titleStmt>
+         <publicationStmt>
+            <p/>
+         </publicationStmt>
+         <!--In Original: cei:front/cei:sourceDesc/cei:sourceDescRegest-->
+         <sourceDesc>
+            <bibl>Quellen zur Geschichte der Stadt Wien, Bd. II/3, Nr. As published in HAUrk by
+               Wiener Stadt- und Landesarchiv </bibl>
+            <msDesc>
+               <msIdentifier>
+                  <repository>Wiener Stadt- und Landesarchiv</repository>
+                  <idno>3778</idno>
+                  <altIdentifier type="old">
+                     <idno>518034</idno>
+                  </altIdentifier>
+               </msIdentifier>
+               <msContents>
+                  <msItem>
+                     <listBibl>
+                        <bibl type="url"
+                           >https://www.monasterium.net/mom/AT-WStLA/HAUrk/3778/charter</bibl>
+                        <bibl>Copeibuch 129 n° 68.</bibl>
+                     </listBibl>
+                  </msItem>
+               </msContents>
+               <physDesc>
+                  <sealDesc>
+                     <seal>
+                        <p>Ein rückwärts aufgedrücktes Siegel von rothem Wachse und zwölf rückwärts
+                           aufgedrückte Petschafte von rothem und schwarzem Wachse, das [8] Siegel
+                           des Bischofs abgesprungen. </p>
+                     </seal>
+                  </sealDesc>
+               </physDesc>
+            </msDesc>
+         </sourceDesc>
+      </fileDesc>
+      <profileDesc>
+         <creation>
+            <placeName>Brünn</placeName>
+            <date when="14580408">1458 IV 08</date>
+            <origDate>Geben zu Brünn am sambstag vor dem suntag Quasimodo, annorum domini et. lviij°
+               anno Prothasius, von Gotis genoden erwelter und bestelter bischoff zu Olomuncz.
+               Przemek, von Gotis genoden herzog zu Tesschin und herre zu Grosen Glogau etc. Jan von
+               Czimburgk </origDate>
+         </creation>
+      </profileDesc>
+   </teiHeader>
+   <facsimile>
+      <surface>
+         <graphic
+            url="http://images.monasterium.net/pics/AT-WStLA/HA-U/WStLA-HA-Urkunden_03778_a_r.jpg"/>
+      </surface>
+      <surface>
+         <graphic
+            url="http://images.monasterium.net/pics/AT-WStLA/HA-U/WStLA-HA-Urkunden_03778_a_v.jpg"/>
+      </surface>
+      <surface>
+         <graphic
+            url="http://images.monasterium.net/pics/AT-WStLA/HA-U/WStLA-HA-Urkunden_03778_b_r.jpg"/>
+      </surface>
+      <surface>
+         <graphic
+            url="http://images.monasterium.net/pics/AT-WStLA/HA-U/WStLA-HA-Urkunden_03778_b_v.jpg"/>
+      </surface>
+   </facsimile>
+   <text>
+      <body>
+         <div type="abstract" resp="ms">
+            <p>
+               <rs type="event" ref="ev__QGW_II_III_3778"><rs type="fn" role="issuer"><rs type="org"
+                        ref="org__maehren">Die mährischen Stände</rs></rs> an <rs type="fn"
+                     role="recipient"><rs type="org" ref="org__wien">Bürgermeister, Richter und
+                        Rath</rs> der Stadt Wien</rs>. Ueber das persönliche Anbringen des <rs
+                     type="person" ref="pe__stephan_eitzinger_QGW_II_II_3305"><roleName type="title"
+                        >edeln Herrn</roleName> Steffan Eyczinger von Eyczing</rs> als Inwohners des
+                  Landes zu Merhern ersuchen sie die Wiener, sich um die Freilassung des <rs
+                     type="person" ref="pe__ulrich_eitzinger_QGW_II_II_3270">Ulrich Eitzinger</rs>
+                  zu bemühen, widrigenfalls sie den <rs type="person"
+                     ref="pe__oswald_eitzinger_QGW_II_II_3293"><roleName type="kin"
+                        corresp="pe__stephan_eitzinger_QGW_II_II_3305">Brüdern</roleName>
+                     Oswald</rs> und Stephan alle Unterstützung angedeihen lassen werden. </rs>
+            </p>
+         </div>
+         <div type="nota">
+            <p>
+               <rs type="event" ref="ev__QGW_II_III_3778_nota">Adresse aussen.</rs>
+            </p>
+         </div>
+         <div type="lists">
+            <xi:include xmlns:xi="http://www.w3.org/2001/XInclude"
+               href="../../../../indices/placeList.xml" xpointer="element(/1/2/1/1)"/>
+            <xi:include xmlns:xi="http://www.w3.org/2001/XInclude"
+               href="../../../../indices/personList.xml" xpointer="element(/1/2/1/1)"/>
+            <xi:include xmlns:xi="http://www.w3.org/2001/XInclude"
+               href="../../../../indices/eventList.xml" xpointer="element(/1/2/1/1)"/>
+            <xi:include xmlns:xi="http://www.w3.org/2001/XInclude"
+               href="../../../../indices/orgList.xml" xpointer="element(/1/2/1/1)"/>
+         </div>
+      </body>
+   </text>
+</TEI>

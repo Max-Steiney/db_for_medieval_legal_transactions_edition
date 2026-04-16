@@ -1,0 +1,110 @@
+<?xml version="1.0" encoding="UTF-8" standalone="no"?>
+<!DOCTYPE TEI
+  SYSTEM "../../../schema/toolbox_full.dtd">
+<TEI xmlns:cei="http://www.monasterium.net/NS/cei" xmlns="http://www.tei-c.org/ns/1.0">
+   <teiHeader>
+      <fileDesc>
+         <titleStmt>
+            <title>Tei version of 4030 exported from monasterium.net </title>
+         </titleStmt>
+         <publicationStmt>
+            <p/>
+         </publicationStmt>
+         <!--In Original: cei:front/cei:sourceDesc/cei:sourceDescRegest-->
+         <sourceDesc>
+            <bibl>Quellen zur Geschichte der Stadt Wien, Bd. II/3, Nr. As published in HAUrk by
+               Wiener Stadt- und Landesarchiv </bibl>
+            <msDesc>
+               <msIdentifier>
+                  <repository>Wiener Stadt- und Landesarchiv</repository>
+                  <idno>4030</idno>
+                  <altIdentifier type="old">
+                     <idno>518296</idno>
+                  </altIdentifier>
+               </msIdentifier>
+               <msContents>
+                  <msItem>
+                     <listBibl>
+                        <bibl type="url"
+                           >https://www.monasterium.net/mom/AT-WStLA/HAUrk/4030/charter</bibl>
+                        <bibl>Jahrbuch der kais. Kunstsamml. 17b, n° 15337 Regest.</bibl>
+                     </listBibl>
+                  </msItem>
+               </msContents>
+               <physDesc>
+                  <sealDesc>
+                     <seal>
+                        <p>Zwei anhangende Siegel: 1. roth u. Sch., 2. grün u. Sch.</p>
+                     </seal>
+                  </sealDesc>
+               </physDesc>
+            </msDesc>
+         </sourceDesc>
+      </fileDesc>
+      <profileDesc>
+         <creation>
+            <placeName>Wien</placeName>
+            <date when="14620707">1462 VII 07</date>
+            <origDate>zu Wienn, an mitichen nach sand Ulreichs tag.</origDate></creation>
+      </profileDesc>
+   </teiHeader>
+   <facsimile>
+      <surface>
+         <graphic
+            url="http://images.monasterium.net/pics/AT-WStLA/HA-U/WStLA-HA-Urkunden_04030_r.jpg"/>
+      </surface>
+      <surface>
+         <graphic
+            url="http://images.monasterium.net/pics/AT-WStLA/HA-U/WStLA-HA-Urkunden_04030_v.jpg"/>
+      </surface>
+   </facsimile>
+   <text>
+      <body>
+         <div type="abstract" resp="vh">
+            <p><rs type="event" ref="ev__QGW_II_III_4030">
+                  <rs type="fn" role="issuer"><rs type="person"
+                        ref="pe__ulrich_noerczl_QGW_II_III_4030">Ulreich Nörczl, der <roleName
+                           type="prof">kursner</roleName>, <roleName type="occ" corresp="org__wien"
+                           >mitburger</roleName> zu Wienn</rs>, und <rs type="person"
+                        ref="pe__elisabeth_QGW_II_III_4030">Elsbet, sein <roleName type="kin"
+                           corresp="pe__ulrich_noerczl_QGW_II_III_4030"
+                     >hausfrau</roleName></rs></rs>, verkaufen <rs type="fn" role="other"
+                        ><triggerstring n="fn">mit Handen</triggerstring> des <rs type="person"
+                        ref="pe__christian_prenner_SB_CD_01257"><roleName type="occ"
+                           corresp="org__wien">Bürgermeisters</roleName>
+                        <roleName type="title">hern</roleName> Kristan Prenner</rs> und des <rs
+                        type="org" ref="org__wien">Rathes</rs></rs> 2 lb dn. geltes purkrechts
+                  (ablösbar) auf ihrem Hause, gelegen in der Schulstrass am egk zenagst dem Munshof
+                  an ainer seitten, umb 16 lb dn ., die emaln gelegen gewesen sein auf Hannsen
+                  Ofner, des münsser, und Dorothen, seiner hausfraun, haus, gelegen in der Vordern
+                  Schulstrass zenagst Hannsen Hirssen, des kramer, haus, . . . . <rs type="fn"
+                     role="recipient"><rs type="person" ref="pe__martin_karphaimer_QGW_II_II_2842"
+                           ><roleName type="title">hern</roleName> Merten Karphaimer , <roleName
+                           type="occ"
+                           corresp="org__wien-st_maria_am_gestade-altar_st_hieronymus-messe_strobein"
+                           >Caplan</roleName></rs> der von <rs type="person"
+                        ref="pe__stephan_strobein_QGW_II_I_1086">Steffan Strowein</rs> auf sand
+                     Yeronimus altar, in Unser Fraun kappeln auf der Stetten zu Wienn gelegen ,
+                     gestifteten Messe</rs>. </rs></p>
+         </div>
+         <div type="seal">
+            <p><rs type="event" ref="ev__QGW_II_III_4030">Besiegelt mit dem <rs type="fn"
+                     role="witness"><rs type="org" ref="org__wien">städtischen Grundsiegel</rs> und
+                     dem Siegel des <rs type="person" ref="pe__johann_kuntstokch_QGW_II_II_3530"
+                        >Wiener <roleName type="occ" corresp="org__wien">Bürgers</roleName> Hanns
+                        Kuntstokch, gesworner <roleName type="prof">weger</roleName></rs></rs>.
+               </rs></p>
+         </div>
+         <div type="lists">
+            <xi:include xmlns:xi="http://www.w3.org/2001/XInclude"
+               href="../../../../indices/placeList.xml" xpointer="element(/1/2/1/1)"/>
+            <xi:include xmlns:xi="http://www.w3.org/2001/XInclude"
+               href="../../../../indices/personList.xml" xpointer="element(/1/2/1/1)"/>
+            <xi:include xmlns:xi="http://www.w3.org/2001/XInclude"
+               href="../../../../indices/eventList.xml" xpointer="element(/1/2/1/1)"/>
+            <xi:include xmlns:xi="http://www.w3.org/2001/XInclude"
+               href="../../../../indices/orgList.xml" xpointer="element(/1/2/1/1)"/>
+         </div>
+      </body>
+   </text>
+</TEI>

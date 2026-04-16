@@ -1,0 +1,107 @@
+<?xml version="1.0" encoding="UTF-8"?><!DOCTYPE TEI SYSTEM "../../../schema/toolbox_full.dtd">
+<TEI xmlns="http://www.tei-c.org/ns/1.0" xmlns:cei="http://www.monasterium.net/NS/cei"
+   xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance">
+   <teiHeader>
+      <fileDesc>
+         <titleStmt>
+            <title>TEI-Version of 585</title>
+         </titleStmt>
+         <publicationStmt>
+            <p/>
+         </publicationStmt>
+         <sourceDesc default="false">
+            <bibl default="false" status="draft">
+               <title type="full"><title type="main">Die Wiener Stadtbücher 1395 -
+                     1430</title><title type="sub">Teil 1: 1395 - 1400</title></title>
+               <author>Wilhelm Brauneder</author>
+               <author>Gerhard Jaritz</author>
+               <pubPlace>Wien</pubPlace>
+               <pubPlace>Köln</pubPlace>
+               <publisher>Böhlau Verlag</publisher>
+            </bibl>
+            <msDesc status="draft">
+               <msIdentifier>
+                  <idno>585</idno>
+               </msIdentifier>
+               <physDesc/>
+            </msDesc>
+         </sourceDesc>
+      </fileDesc>
+      <encodingDesc>
+         <projectDesc>
+            <p><label type="contentual-editing">Projekt Christina Lutter Stadt und
+                  Gemeinschaft</label></p>
+         </projectDesc>
+      </encodingDesc>
+      <profileDesc>
+         <creation>
+            <date when="1400-07-27">1400 Juli 27</date>
+         </creation>
+      </profileDesc>
+   </teiHeader>
+   <text>
+      <body>
+         <div type="header">
+            <p>Verwandtschaftsweisung für Andreas und Jakob Krämer und Eisbeth, Gattin des Nikolaus
+               Würczer</p>
+         </div>                   <div type="entry" resp="rs">
+            <p> 3 Einbr. 2 Zg. (In dez: Item frewntsehaft Hainreiehs des Kram~r) (fol.100v) <rs
+                  type="event" ref="ev__StB_I_585">Des nachsten eritags nach sand Jacobs tag des
+                  zwelfpoten <rs type="fn" role="witness">komen fur den rat <rs type="person"
+                        ref="pe__andreas_kraemer_StB_I_585">Andre <add>die <roleName type="prof"
+                              cert="unknown">Chramer</roleName></add>
+                        <roleName type="kin" corresp="pe__jakob_kraemer_StB_I_585"
+                              ><add>gebruder</add></roleName></rs> und <rs type="person"
+                        ref="pe__jakob_kraemer_StB_I_585">Jacob, <roleName type="kin"
+                           corresp="pe__andreas_kraemer_StB_I_585">gebruder</roleName>, die
+                           <roleName type="prof" cert="unknown">Chramer</roleName>
+                     </rs> und <rs type="person" ref="pe__elisabeth_StB_I_585"><roleName
+                           type="title">fraw</roleName> Elspet, <roleName type="kin"
+                           corresp="pe__niklas_wurzer_StB_I_585"><add>hawsfraw</add></roleName><rs
+                           type="person" ref="pe__niklas_wurzer_StB_I_585">Niclas hawsfraw des
+                              <roleName type="prof" cert="unknown">Wuerczer</roleName></rs>, ir
+                           <roleName type="kin" corresp="pe__andreas_kraemer_StB_I_585"
+                           >swester</roleName><roleName type="kin"
+                           corresp="pe__jakob_kraemer_StB_I_585"><add>swester</add></roleName></rs>,
+                     und habent da beweist mit den erbern leuten, als si ze recht solten, mit <rs
+                        type="person" ref="pe__ulrich_chilpperlein_StB_I_585"><roleName type="title"
+                              ><add>erbern</add></roleName>Ulreichen dem Chilpperlein</rs> und mit
+                        <rs type="person" ref="pe__michael_kytel_StB_I_585"><roleName type="title"
+                              ><add>erbern</add></roleName>Micheln dem Chitl</rs>,</rs> das <rs
+                     type="fn" role="recipient"><rs type="person"
+                        ref="pe__andreas_kraemer_StB_I_585"><add>ir</add></rs>
+                     <rs type="person" ref="pe__niklas_gartner_StB_I_585"><add>ir</add></rs>
+                     <rs type="person" ref="pe__elisabeth_StB_I_585"><add>ir</add></rs></rs>
+                  <rs type="fn" role="issuer"><rs type="person" ref="pe__heinrich_kraemer_StB_I_585"
+                        >ir <roleName type="kin" corresp="pe__andreas_kraemer_StB_I_585"
+                           >vater</roleName>
+                        <roleName type="kin" corresp="pe__jakob_kraemer_StB_I_585"
+                           ><add>vater</add></roleName>
+                        <roleName type="kin" corresp="pe__elisabeth_StB_I_585"
+                           ><add>vater</add></roleName> Hainreich der <roleName type="prof"
+                           cert="unknown">Chramer</roleName>
+                        <roleName type="dead"><add>genad</add></roleName>
+                        <roleName type="kin" corresp="pe__niklas_gartner_StB_I_585"><add>recht
+                              bruder</add></roleName></rs> und <rs type="person"
+                        ref="pe__niklas_gartner_StB_I_585">Niclas der Gartner, der <roleName
+                           type="prof">taschner</roleName>, den bayden got <roleName type="dead"
+                           >genad</roleName>, zwen <roleName type="kin"
+                           corresp="pe__heinrich_kraemer_StB_I_585">recht bruder</roleName> gewesen
+                        sind von vater und von muter.</rs></rs> Als darumb die obgenanten erbern
+                  leut mit irn trewn an ayde stat vor offem rat habent gesagt, als si ze recht
+                  solten.</rs>
+            </p>
+         </div>
+         <div type="lists">
+            <xi:include xmlns:xi="http://www.w3.org/2001/XInclude"
+               href="../../../../indices/placeList.xml" xpointer="element(/1/2/1/1)"/>
+            <xi:include xmlns:xi="http://www.w3.org/2001/XInclude"
+               href="../../../../indices/personList.xml" xpointer="element(/1/2/1/1)"/>
+            <xi:include xmlns:xi="http://www.w3.org/2001/XInclude"
+               href="../../../../indices/eventList.xml" xpointer="element(/1/2/1/1)"/>
+            <xi:include xmlns:xi="http://www.w3.org/2001/XInclude"
+               href="../../../../indices/orgList.xml" xpointer="element(/1/2/1/1)"/>
+         </div>
+      </body>
+   </text>
+</TEI>

@@ -1,0 +1,104 @@
+<?xml version="1.0" encoding="UTF-8"?><!DOCTYPE TEI   SYSTEM "../../../schema/toolbox_full.dtd">
+<TEI xmlns="http://www.tei-c.org/ns/1.0" xmlns:cei="http://www.monasterium.net/NS/cei"
+   xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance">
+   <teiHeader>
+      <fileDesc>
+         <titleStmt>
+            <title>Tei version of 1881 exported from monasterium.net </title>
+         </titleStmt>
+         <publicationStmt>
+            <p/>
+         </publicationStmt>
+         <!--In Original: cei:front/cei:sourceDesc/cei:sourceDescRegest-->
+         <sourceDesc>
+            <bibl type="url">https://www.monasterium.net/mom/AT-WStLA/HAUrk/1881/charter</bibl>
+            <bibl default="false" status="draft">Quellen zur Geschichte der Stadt Wien, Bd. II/1,
+               Nr. 1881 As published in HAUrk by Wiener Stadt- und Landesarchiv </bibl>
+            <msDesc status="draft">
+               <msIdentifier>
+                  <repository>Wiener Stadt- und Landesarchiv</repository>
+                  <idno>1881</idno>
+                  <altIdentifier type="old">
+                     <idno>516085</idno>
+                  </altIdentifier>
+               </msIdentifier>
+               <physDesc>
+                  <sealDesc>
+                     <seal>
+                        <p>Vorne aufgedrücktes Petschaft von schwarzem Wachse.</p>
+                     </seal>
+                  </sealDesc>
+               </physDesc>
+            </msDesc>
+         </sourceDesc>
+      </fileDesc>
+      <encodingDesc>
+         <projectDesc default="false">
+            <p><label type="contentual-editing">Projekt Christina Lutter Stadt und
+                  Gemeinschaft</label></p>
+         </projectDesc>
+      </encodingDesc>
+      <profileDesc>
+         <creation>
+            <placeName>Wien</placeName>
+            <date when="14110530">1411 V 30</date>
+            <origDate instant="false">Geben ze Wienn an sand Petronellen abent, 1400 und aindlef
+               jar.</origDate></creation>
+      </profileDesc>
+   </teiHeader>
+   <facsimile>
+      <surface>
+         <graphic
+            url="http://images.monasterium.net/pics/AT-WStLA/HA-U/WStLA-HA-Urkunden_01881_r.jpg"/>
+      </surface>
+      <surface>
+         <graphic
+            url="http://images.monasterium.net/pics/AT-WStLA/HA-U/WStLA-HA-Urkunden_01881_v.jpg"/>
+      </surface>
+   </facsimile>
+   <text>
+      <body>
+         <div type="abstract" resp="cs">
+            <p>
+               <rs type="event" ref="ev__QGW_II_I_1881"><rs type="fn" role="issuer"><rs
+                        type="person" ref="pe__konrad_chiemseer_StB_I_178">Chunrat der Chiemseer,
+                           <roleName type="occ" corresp="org__wien-buergerspital"
+                           >schpitolmaister</roleName> var Chernertor ze Wienn</rs>,</rs>
+                  <triggerstring n="disp">bestätigt</triggerstring>, <rs type="fn" role="recipient">dass
+                        <rs type="person" ref="pe__johann_mosprunner_QGW_II_I_1096">Hans
+                           Mosprunner<roleName type="rep"
+                           corresp="pe__johann_arnstorfer_QGW_II_I_1249"
+                           ><add>geschefftherren</add></roleName></rs> und<rs type="person"
+                        ref="pe__oswald_pauch_QGW_II_I_1371"> Aswald der Pauch, paid <roleName
+                           type="rep" corresp="pe__johann_arnstorfer_QGW_II_I_1249"
+                           >geschefftherren</roleName></rs></rs>
+                  <rs type="person" ref="pe__johann_arnstorfer_QGW_II_I_1249">Hansen des
+                     Arnstorffer</rs> und <rs type="person" ref="pe__margarethe_QGW_II_I_1614"
+                     >Margreten, seiner <roleName type="kin"
+                        corresp="pe__johann_arnstorfer_QGW_II_I_1249">hausvraun</roleName>,
+                  </rs>durch gotes willen van der übermass des <rs type="event" ref="ev__QGW_II_I_1614"
+                     >geschefts</rs> ihm 72 guter guldein <triggerstring n="disp">gegeben
+                     haben,</triggerstring> davon man den armen leuten in das <rs type="org"
+                     ref="org__wien-buergerspital">Schpital ze Wienn </rs>chaufen sol smalcz und
+                  chês und ander ding zu irn notdu/erften .</rs>
+            </p>
+         </div>
+         <div type="seal">
+            <p><rs type="event" ref="ev__QGW_II_I_1881"><rs type="fn" role="witness">Besiegelt mit
+                     dem petschad des <rs type="person" ref="pe__konrad_chiemseer_StB_I_178"
+                        >Ausstellers</rs>.</rs></rs>
+            </p>
+         </div>
+         <div type="lists">
+            <xi:include xmlns:xi="http://www.w3.org/2001/XInclude"
+               href="../../../../indices/placeList.xml" xpointer="element(/1/2/1/1)"/>
+            <xi:include xmlns:xi="http://www.w3.org/2001/XInclude"
+               href="../../../../indices/personList.xml" xpointer="element(/1/2/1/1)"/>
+            <xi:include xmlns:xi="http://www.w3.org/2001/XInclude"
+               href="../../../../indices/eventList.xml" xpointer="element(/1/2/1/1)"/>
+            <xi:include xmlns:xi="http://www.w3.org/2001/XInclude"
+               href="../../../../indices/orgList.xml" xpointer="element(/1/2/1/1)"/>
+         </div>
+      </body>
+   </text>
+</TEI>

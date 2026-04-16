@@ -1,0 +1,137 @@
+<?xml version="1.0" encoding="UTF-8" standalone="no"?>
+<!DOCTYPE TEI
+  SYSTEM "../../../schema/toolbox_full.dtd">
+<TEI xmlns:cei="http://www.monasterium.net/NS/cei" xmlns="http://www.tei-c.org/ns/1.0">
+   <teiHeader>
+      <fileDesc>
+         <titleStmt>
+            <title>Tei version of 3848 exported from monasterium.net </title>
+         </titleStmt>
+         <publicationStmt>
+            <p/>
+         </publicationStmt>
+         <!--In Original: cei:front/cei:sourceDesc/cei:sourceDescRegest-->
+         <sourceDesc>
+            <bibl>Quellen zur Geschichte der Stadt Wien, Bd. II/3, Nr. As published in HAUrk by
+               Wiener Stadt- und Landesarchiv </bibl>
+            <msDesc>
+               <msIdentifier>
+                  <repository>Wiener Stadt- und Landesarchiv</repository>
+                  <idno>3848</idno>
+                  <altIdentifier type="old">
+                     <idno>518109</idno>
+                  </altIdentifier>
+               </msIdentifier>
+               <msContents>
+                  <msItem>
+                     <listBibl>
+                        <bibl type="url"
+                           >https://www.monasterium.net/mom/AT-WStLA/HAUrk/3848/charter</bibl>
+                        <bibl>Camesina, Regesten 92 n° 437 Regest.</bibl>
+                        <bibl>Jahrbuch der kais. Kunstsamml. 17b, n° 15314 Regest.</bibl>
+                     </listBibl>
+                  </msItem>
+               </msContents>
+               <physDesc>
+                  <sealDesc>
+                     <seal>
+                        <p>Die angehängten Siegel fehlen.</p>
+                     </seal>
+                  </sealDesc>
+               </physDesc>
+            </msDesc>
+         </sourceDesc>
+      </fileDesc>
+      <profileDesc>
+         <creation>
+            <placeName>Wien</placeName>
+            <date when="14590206">1459 II 06</date>
+            <origDate>zu Wienn, an sand Dorothea tag, der heiligen junkfraun.</origDate></creation>
+      </profileDesc>
+   </teiHeader>
+   <facsimile>
+      <surface>
+         <graphic
+            url="http://images.monasterium.net/pics/AT-WStLA/HA-U/WStLA-HA-Urkunden_03848_r.jpg"/>
+      </surface>
+      <surface>
+         <graphic
+            url="http://images.monasterium.net/pics/AT-WStLA/HA-U/WStLA-HA-Urkunden_03848_v.jpg"/>
+      </surface>
+   </facsimile>
+   <text>
+      <body>
+         <div type="abstract" resp="vh">
+            <p><rs type="event" ref="ev__QGW_II_III_3848"><rs type="fn" role="issuer"><rs
+                        type="person"
+                        ref="pe__wenzel_kranegker_facs_688_TextRegion_1657538333122_1116">Wenczlab
+                        Kranegker von Wels, <roleName type="occ"
+                           corresp="org__wien-st_stephan-altar_allerheiligen"
+                        >kormaister</roleName></rs>, und die <rs type="org"
+                        ref="org__wien-st_stephan-altar_allerheiligen">curherren und diener
+                        Allerheiligen tumbkirchen dacz sand Stephan zu Wienn</rs></rs> beurkunden,
+                  dass <rs type="person" ref="pe__stephan_kisling_QGW_II_II_3622">Stephan Kisling,
+                        <roleName type="occ" corresp="org__wien">burger</roleName> zu Wienn</rs>,
+                  und <rs type="person" ref="pe__anna_SB_CD_00084">Anna, sein <roleName type="kin"
+                        corresp="pe__stephan_kisling_QGW_II_II_3622">hausfrau</roleName>, <rs
+                        type="person" ref="pe__peter_volczian_QGW_II_II_3239"><roleName type="title"
+                           >maister</roleName> Peter Volczian, <roleName type="prof"
+                           >lerer</roleName> in der erznei <roleName type="dead"
+                        >seligen</roleName></rs>, <roleName type="kin"
+                        corresp="pe__peter_volczian_QGW_II_II_3239">tochter</roleName></rs> , für
+                  ihr Seelenheil <rs type="fn" role="other"><triggerstring n="fn">mit
+                        Einwilligung</triggerstring> des <rs type="person"
+                        ref="pe__albrecht_von_schaumberg_QGW_II_II_3677"><roleName type="occ"
+                           corresp="org__wien-st_stephan">Propstes</roleName> Albrecht, <roleName
+                           type="occ" corresp="org__schaumberg-grafschaft">Grafen zu
+                           Schaunberg</roleName></rs></rs>, gestifft habent, das respons Tenebre
+                  facte sunt etc. zu gedechtnuss des heiligen pittern leidens Unsers Herrn Jesu
+                  Cristi all freitag ze singen , und dazu 6 lb dn. geltes gemainer landeswerung in
+                  Österreich auf der überteuerung irs vadern und mitterntail hauss gegen sand
+                  Stephans freithof über in der Sunigerstrass am egk zenagst Erharts Wolfstain, des
+                  maler, haus gelegen an aim tail, uber die 150 lb dn ., die <rs type="person"
+                     ref="pe__niklas_veit_QGW_II_III_3848">Niclasen Veiten, des <roleName
+                        type="prof">kürsner</roleName> seligen, sun, irm <roleName type="kin"
+                        corresp="pe__stephan_kisling_QGW_II_II_3622">vettern</roleName></rs>, emalen
+                  darauf verschriben sein , gewidmet haben. Die Stiftung soll in folgender Weise
+                  ausgeführt werden: 1. Derjenige der acht curherren, der am Freitag ambter ist,
+                  soll nach dem fronambt in seinem messgewant mit den leviten bei dem altar steen,
+                  solang uncz dass der cantor das obgenant respons Tenebre facte sunt etc. mit den
+                  knaben andêchticlichen gesungen hat . Darauf soll der ambter singen den versigkl
+                  Proprio filio suo etc. und darnach ain colecten von dem leiden Unsers Herren Jesu
+                  Cristi . Während man das Respons singt, soll der Messner die grosse Glocke läuten
+                  lassen, welche gewöhnlich zu dem Salve Regina geläutet wird. 2. Dagegen sollen die
+                  Besitzer obiger Uebertheuerung jährlich reichen: a) an dem Palmtag dem Chormeister
+                  ½ lb 24 dn., wovon das halbe Pfund dem Kirchmeister zur Besserung der Glocke, 12
+                  dn. ainem herren zu geben sind, der an dem Ostertag die abendpredig tut, welcher
+                  dafür aufrichticlich mit lauter stimb und andacht die stifft verkunden, auch das
+                  volkch vleissiclich ermonen soll, wo sie an irer arbait sein und die gross glogken
+                  am freitag nach dem fronambt zu mittentag horent leutten, dass sie dester
+                  andechticlicher gedechtnuss haben sullen des grossen pittern leidens Unsers Herrn
+                  Jesu Cristi mit dem antlas, der darzu geben ist oder wirdet , während die
+                  restlichen 12 dn. dem Chormeister verbleiben. b) an sant Jorgen und sant Michels
+                  tag je 2 lb 5 sh. 18 dn. guter landeswerung, wovon jedesmal dem Propste zu sein
+                  porczen 30 dn., den Curherren 6 sh. dn., den Leviten 60 dn., dem Cantor 7 sh., dem
+                  laiguster, dass er den sagrer offen halten und auf den ambter warten sol, 30 dn.,
+                  dem Messner für das Geläute ½ lb 18 dn. gebühren. </rs></p>
+         </div>
+         <div type="seal">
+            <p><rs type="event" ref="ev__QGW_II_III_3848">Besiegelt mit den Siegeln des <rs
+                     type="fn" role="witness"><rs type="person"
+                        ref="pe__albrecht_von_schaumberg_QGW_II_II_3677">Propstes</rs> und der <rs
+                        type="org" ref="org__wien-st_stephan-altar_allerheiligen"
+                  >Cur</rs></rs>.</rs></p>
+         </div>
+         <div type="lists">
+            <xi:include xmlns:xi="http://www.w3.org/2001/XInclude"
+               href="../../../../indices/placeList.xml" xpointer="element(/1/2/1/1)"/>
+            <xi:include xmlns:xi="http://www.w3.org/2001/XInclude"
+               href="../../../../indices/personList.xml" xpointer="element(/1/2/1/1)"/>
+            <xi:include xmlns:xi="http://www.w3.org/2001/XInclude"
+               href="../../../../indices/eventList.xml" xpointer="element(/1/2/1/1)"/>
+            <xi:include xmlns:xi="http://www.w3.org/2001/XInclude"
+               href="../../../../indices/orgList.xml" xpointer="element(/1/2/1/1)"/>
+         </div>
+      </body>
+   </text>
+</TEI>

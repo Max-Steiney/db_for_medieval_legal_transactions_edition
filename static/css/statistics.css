@@ -547,4 +547,16 @@ span.stats-gender-m { color: var(--color-sex-m-muted); }
     opacity: 0.7;
 }
 
+/* Top Persons ranking — wider layout for role breakdown */
+.stats-ranking--wide .stats-rank-roles {
+    font-family: var(--font-sans);
+    font-size: var(--text-2xs);
+    color: var(--color-text-muted);
+    margin-left: var(--space-sm);
+    white-space: nowrap;
+    overflow: hidden;
+    text-overflow: ellipsis;
+    max-width: 24rem;
+}
+
 

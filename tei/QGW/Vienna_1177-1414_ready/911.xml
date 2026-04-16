@@ -1,0 +1,166 @@
+<?xml version="1.0" encoding="UTF-8"?><!DOCTYPE TEI   SYSTEM "../../../schema/toolbox_full.dtd">
+<TEI xmlns="http://www.tei-c.org/ns/1.0" xmlns:cei="http://www.monasterium.net/NS/cei"
+   xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance">
+   <teiHeader>
+      <fileDesc>
+         <titleStmt>
+            <title>Tei version of 911 exported from monasterium.net </title>
+         </titleStmt>
+         <publicationStmt>
+            <p/>
+         </publicationStmt>
+         <!--In Original: cei:front/cei:sourceDesc/cei:sourceDescRegest-->
+         <sourceDesc>
+            <bibl type="url">https://www.monasterium.net/mom/AT-WStLA/HAUrk/911/charter</bibl>
+            <bibl default="false" status="draft">Quellen zur Geschichte der Stadt Wien, Bd. II/1,
+               Nr. 911 As published in HAUrk by Wiener Stadt- und Landesarchiv </bibl>
+            <msDesc status="draft">
+               <msIdentifier>
+                  <repository>Wiener Stadt- und Landesarchiv</repository>
+                  <idno>911</idno>
+                  <altIdentifier type="old">
+                     <idno>515101</idno>
+                  </altIdentifier>
+               </msIdentifier>
+               <msContents>
+                  <msItem>
+                     <listBibl default="false">
+                        <bibl default="false" status="draft"/>
+                        <bibl default="false" status="draft">Quellen zur Geschichte der Stadt Wien,
+                           Bd. II/1, Nr. 911 As published in HAUrk by Wiener Stadt- und Landesarchiv </bibl>
+                        <bibl default="false" status="draft"/>
+                     </listBibl>
+                  </msItem>
+               </msContents>
+               <physDesc>
+                  <sealDesc>
+                     <seal>
+                        <p>Zwei Ausfertigungen: A. mit drei anhangenden Siegeln: 1. ungefärbt,
+                           spitzoval, 2. schwarz u. K., rund, 3. ungefärbt, rund.</p>
+                     </seal>
+                  </sealDesc>
+               </physDesc>
+            </msDesc>
+         </sourceDesc>
+      </fileDesc>
+      <encodingDesc>
+         <projectDesc default="false">
+            <p><label type="contentual-editing">Projekt Christina Lutter Stadt und
+                  Gemeinschaft</label></p>
+         </projectDesc>
+      </encodingDesc>
+      <profileDesc>
+         <creation>
+            <placeName>Wien</placeName>
+            <date when="13770814">1377 VIII 14</date>
+            <date from="99999999" to="99999999"/>
+            <origDate instant="false">Der brief ist geben (Der geben ist B.) ze Wienn nach Christs
+               gepurd 1300 jar darnach in dem 77. jare, an Unser Vrown abend zu der Schidunge.
+            </origDate></creation>
+      </profileDesc>
+   </teiHeader>
+   <facsimile>
+      <surface>
+         <graphic
+            url="http://images.monasterium.net/pics/AT-WStLA/HA-U/WStLA-HA-Urkunden_00911_a_r.jpg"/>
+      </surface>
+      <surface>
+         <graphic
+            url="http://images.monasterium.net/pics/AT-WStLA/HA-U/WStLA-HA-Urkunden_00911_a_v.jpg"/>
+      </surface>
+      <surface>
+         <graphic
+            url="http://images.monasterium.net/pics/AT-WStLA/HA-U/WStLA-HA-Urkunden_00911_b_r.jpg"/>
+      </surface>
+      <surface>
+         <graphic
+            url="http://images.monasterium.net/pics/AT-WStLA/HA-U/WStLA-HA-Urkunden_00911_b_v.jpg"/>
+      </surface>
+   </facsimile>
+   <text>
+      <body>
+         <div type="abstract" resp="cs">
+            <p>
+               <rs type="event" ref="ev__QGW_II_I_911"><rs type="fn" role="issuer"><rs type="person"
+                        ref="pe__jakob_poll_QGW_II_I_770">Jacob der Poll, <roleName type="occ"
+                           corresp="org__wien-st_maria_im_rathaus">chaplan</roleName> Unser Vrowen
+                        chapellen, gelegen in der purger Rathaus ze Wienne, hern Ottenhaimen seligen
+                        Stiftung <roleName type="rep" corresp="pe__leonhard_poll_QGW_II_I_1152"
+                              ><add>Geschäftsvollstrecker</add></roleName></rs> , <rs type="person"
+                        ref="pe__paul_holzkaeufel_QGW_II_I_1010">Paul der Holzchouffel, <roleName
+                           type="occ" corresp="org__wien">purgermaister</roleName> ze Wienne
+                           <roleName type="rep" corresp="pe__leonhard_poll_QGW_II_I_1152"
+                              ><add>Geschäftsvollstrecker</add></roleName></rs> , und <rs
+                        type="person" ref="pe__niklas_von_der_schemnitz_iii_QGW_II_I_1371">Nichlas
+                        der Schêbnitzer, <roleName type="occ" corresp="org__wien">purger ze
+                           Wienne</roleName>
+                        <roleName type="rep" corresp="pe__leonhard_poll_QGW_II_I_1152"
+                              ><add>Geschäftsvollstrecker</add></roleName></rs></rs> , <triggerstring
+                     n="disp">stellen <add>den Stiftbrief aus</add></triggerstring> als
+                  Geschäftsvollstrecker Lienharts des Pollen den Stiftbrief für die von diesem
+                  letztwillig angeordnete <rs type="fn" role="recipient"><rs type="org"
+                        ref="org__wien-st_philipp_und_st_jakob_kapelle-altar_st_maria-messe_leonhard_poll_QGW_II_I_889_a"
+                        >Messe</rs></rs> in sand Philipps und sand Jacobs chapellen, gelegen in
+                  weilnt seinem haus in der Hindern Pekchenstrasse , aus. <rs type="person"
+                     ref="pe__leonhard_poll_QGW_II_I_1152"><roleName type="dead"
+                           ><add>letztwillig</add></roleName> Lienhart</rs> hat dazu gewidmet seinen
+                  gewantcheller, gelegen under den Langenlauben ze Wienne, der nichts dient weder
+                  gruntrecht noch purkrecht , . und leit derselb cheller zenast Hainreichs des
+                  Rêschleins gewantcheller, und ein Dritteljoch Weingarten, gelegen an dem Nusperg
+                  und haisset das. Aekcherl, zenast Stephans weingarten des Leitner, von dem man dem
+                  chloster ze Neunburkch dreu viertail und zwo stêff weins ze perkrecht und neun ört
+                  ze voitrecht und hern Hannsen von Tirna 15 dn. ze überzins dient. Lehensfrau der
+                  Messe ist die <rs type="fn" role="other"><rs type="person"
+                        ref="pe__elisabeth_QGW_II_I_798"><roleName type="occ" corresp="org__wien-st_philipp_und_st_jakob_kapelle-altar_st_maria-messe_leonhard_poll_QGW_II_I_889_a"
+                              ><add>Lehensfrau</add></roleName>
+                        <roleName type="kin" corresp="pe__leonhard_poll_QGW_II_I_1152"
+                           >Witwe</roleName> Lienharts, Elsbet</rs></rs> nach ihrem Tode soll das
+                  Recht der Verleihung an den jeweiligen Spitalmeister des <rs type="fn"
+                     role="other"><rs type="org" ref="org__wien-buergerspital"
+                     >Bürgerspitales</rs></rs> übergehen. Elsbet hat die Messe dem <rs type="person"
+                     ref="pe__michael_von_der_wiener_neustadt_QGW_II_I_911"><roleName type="prof"
+                        >Priester</roleName>
+                     <roleName type="title">hern</roleName> Micheln von der Neunstat</rs>
+                  <triggerstring n="disp">verliehen</triggerstring>. Die Geschäftsvollstrecker treffen ,
+                  indem sie <triggerstring n="disp">Dotation und Verleihung genehmigen</triggerstring>,
+                  (in B. eingeschaltet: <rs type="fn" role="other"><triggerstring n="fn">im
+                        Einvernehmen</triggerstring> mit dem <rs type="person"
+                        ref="pe__johann_von_waidhofen_QGW_II_I_798"><roleName type="occ"
+                           corresp="org__wien-st_philipp_und_st_jakob_kapelle">obersten Kaplan der
+                           Kapelle</roleName>
+                        <roleName type="title">hern</roleName> Johannsen von Waidhofen</rs></rs> )
+                  die nothwendigen Bestimmungen über die mit der Messe verbundenen
+                  Verpflichtungen.</rs>
+            </p>
+         </div>
+         <div type="seal">
+            <p><rs type="event" ref="ev__QGW_II_I_911"><rs type="fn" role="witness">Besiegelt : 1.-
+                     3. von den <rs type="person" ref="pe__jakob_poll_QGW_II_I_770">Ausstellern</rs>
+                     <rs type="person" ref="pe__paul_holzkaeufel_QGW_II_I_1010"
+                           ><add>Ausstellern</add></rs>
+                     <rs type="person" ref="pe__niklas_von_der_schemnitz_iii_QGW_II_I_1371"
+                           ><add>Ausstellern</add></rs>(und in B. noch mit den Siegeln 4. des <rs
+                        type="person" ref="pe__johann_von_waidhofen_QGW_II_I_798">obersten
+                        Kaplans</rs> und 5. des <rs type="person"
+                        ref="pe__berthold_von_wehingen_QGW_II_I_1055"><roleName type="occ"
+                           corresp="org__wien-st_stephan">Propstes</roleName> Berthold von S.
+                        Stephan</rs>).</rs>
+               </rs></p>
+         </div>
+         <div type="nota">
+            <p>Indorsat: a) Littera Kraftonis ad sanctum Philippum et Jacobum, b) Missa Colomanni
+               Ladendorfer. </p>
+         </div>
+         <div type="lists">
+            <xi:include xmlns:xi="http://www.w3.org/2001/XInclude"
+               href="../../../../indices/placeList.xml" xpointer="element(/1/2/1/1)"/>
+            <xi:include xmlns:xi="http://www.w3.org/2001/XInclude"
+               href="../../../../indices/personList.xml" xpointer="element(/1/2/1/1)"/>
+            <xi:include xmlns:xi="http://www.w3.org/2001/XInclude"
+               href="../../../../indices/eventList.xml" xpointer="element(/1/2/1/1)"/>
+            <xi:include xmlns:xi="http://www.w3.org/2001/XInclude"
+               href="../../../../indices/orgList.xml" xpointer="element(/1/2/1/1)"/>
+         </div>
+      </body>
+   </text>
+</TEI>

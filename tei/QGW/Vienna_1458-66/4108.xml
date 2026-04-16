@@ -1,0 +1,117 @@
+<?xml version="1.0" encoding="UTF-8" standalone="no"?>
+<!DOCTYPE TEI
+  SYSTEM "../../../schema/toolbox_full.dtd">
+<TEI xmlns:cei="http://www.monasterium.net/NS/cei" xmlns="http://www.tei-c.org/ns/1.0">
+   <teiHeader>
+      <fileDesc>
+         <titleStmt>
+            <title>Tei version of 4108 exported from monasterium.net </title>
+         </titleStmt>
+         <publicationStmt>
+            <p/>
+         </publicationStmt>
+         <!--In Original: cei:front/cei:sourceDesc/cei:sourceDescRegest-->
+         <sourceDesc>
+            <bibl>Quellen zur Geschichte der Stadt Wien, Bd. II/3, Nr. As published in HAUrk by
+               Wiener Stadt- und Landesarchiv </bibl>
+            <msDesc>
+               <msIdentifier>
+                  <repository>Wiener Stadt- und Landesarchiv</repository>
+                  <idno>4108</idno>
+                  <altIdentifier type="old">
+                     <idno>518382</idno>
+                  </altIdentifier>
+               </msIdentifier>
+               <msContents>
+                  <msItem>
+                     <listBibl>
+                        <bibl type="url"
+                           >https://www.monasterium.net/mom/AT-WStLA/HAUrk/4108/charter</bibl>
+                     </listBibl>
+                  </msItem>
+               </msContents>
+               <physDesc>
+                  <sealDesc>
+                     <seal>
+                        <p>Das angehängte Siegel fehlt.</p>
+                     </seal>
+                  </sealDesc>
+               </physDesc>
+            </msDesc>
+         </sourceDesc>
+      </fileDesc>
+      <profileDesc>
+         <creation>
+            <placeName>Wien</placeName>
+            <date when="14650822">1465 VIII 22</date>
+            <origDate>zu Wienn, an phincztag vor sand Bartholomes tag, des heiligen
+               zwelifpoten.</origDate></creation>
+      </profileDesc>
+   </teiHeader>
+   <facsimile>
+      <surface>
+         <graphic
+            url="http://images.monasterium.net/pics/AT-WStLA/HA-U/WStLA-HA-Urkunden_04108_r.jpg"/>
+      </surface>
+      <surface>
+         <graphic
+            url="http://images.monasterium.net/pics/AT-WStLA/HA-U/WStLA-HA-Urkunden_04108_v.jpg"/>
+      </surface>
+   </facsimile>
+   <text>
+      <body>
+         <div type="abstract" resp="vh">
+            <p><rs type="event" ref="ev__QGW_II_III_4108">
+                  <rs type="fn" role="issuer"><rs type="person"
+                        ref="pe__ulrich_meczleinstorffer_QGW_II_III_3971">Ulreich Meczleinstorffer,
+                           <roleName type="occ" corresp="org__wien">burgermaister</roleName></rs>,
+                     und der <rs type="org" ref="org__wien">rat gemain der stat zu Wienn</rs></rs>
+                  fällen in dem Streite zwischen <rs type="person" ref="pe__anna_QGW_II_III_4081"
+                     >fraun Annen, <rs type="person"
+                        ref="pe__christoph_oeczestorffer_QGW_II_II_3245">Cristoffen Öczestorffer,
+                        ihres <roleName type="occ" corresp="org__wien">mitburger</roleName></rs>,
+                        <roleName type="kin" corresp="pe__christoph_oeczestorffer_QGW_II_II_3245"
+                        >hausfrau</roleName>, die vormaln <rs type="person"
+                        ref="pe__christian_flemming_QGW_II_III_4081">Cristann Flemming, den
+                           <roleName type="prof">fleischakcher</roleName>
+                        <roleName type="dead">seligen</roleName></rs>, auch <roleName type="kin"
+                        corresp="pe__christian_flemming_QGW_II_III_4081">eelichen gehabt</roleName>
+                     hat</rs> , und <rs type="person" ref="pe__niklas_lainbacher_QGW_II_II_2652"
+                     >Niclasen Lainbacher, der hochwirdigen Universitet <roleName type="occ"
+                        corresp="org__wien-universitaet">richter</roleName>
+                     <roleName type="occ" corresp="org__wien"><add>burger</add></roleName></rs>, und
+                     <rs type="person" ref="pe__erhard_von_moedling_QGW_II_III_4108">Erharten von
+                     Medling, baid ihr <roleName type="occ" corresp="org__wien"
+                     >mitburger</roleName></rs>, den Gerhaben der Kinder Flemmings, folgende
+                  Entscheidung: Seind Cristan Flemming, unser mitburger seliger, in berednusse
+                  seiner heiratt, so er mit der obgenannten Annen, seiner hausfraun, getan,
+                  derselben seiner hausfraun zu rechter morgengab und widerlegung 200 lb dn. gegen
+                  den 100 lb dn. haimbsteur ze geben und nach unserm statrechten hie zu Wienn
+                  anzulegen versprochen hat nach lautt der bemelten beredtzedeln und dass auch der
+                  obgemelt Christan Flemming solch 100 lb dn. haimbsteur in sein gewalt emphangen
+                  hat, als das die kundtschaftbrief, die wir darumb gehört haben und der nach unserm
+                  statrechten zu recht genug ist, lautter innhalten, und davon so ist pillich und
+                  recht, dass der obgenanten fraun Annen solch 100 lb dn. haimsteur und die 200 lb
+                  dn. morgengab und widerlegung von allem irs benanten manns Christan Flemming
+                  seligen gelassen gut auf erbgüter angelegt und damit gehandelt werde, als
+                  heimsteur, morgengab und widerlegung recht ist, alles nach unserm statrechten
+                  ungeverlich . </rs></p>
+         </div>
+         <div type="seal">
+            <p><rs type="event" ref="ev__QGW_II_III_4108">Besiegelt mit ihrem <rs type="fn"
+                     role="witness"><rs type="org" ref="org__wien">klainem anhangundem
+                        statinsigl</rs></rs>. </rs></p>
+         </div>
+         <div type="lists">
+            <xi:include xmlns:xi="http://www.w3.org/2001/XInclude"
+               href="../../../../indices/placeList.xml" xpointer="element(/1/2/1/1)"/>
+            <xi:include xmlns:xi="http://www.w3.org/2001/XInclude"
+               href="../../../../indices/personList.xml" xpointer="element(/1/2/1/1)"/>
+            <xi:include xmlns:xi="http://www.w3.org/2001/XInclude"
+               href="../../../../indices/eventList.xml" xpointer="element(/1/2/1/1)"/>
+            <xi:include xmlns:xi="http://www.w3.org/2001/XInclude"
+               href="../../../../indices/orgList.xml" xpointer="element(/1/2/1/1)"/>
+         </div>
+      </body>
+   </text>
+</TEI>
