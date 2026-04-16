@@ -100,57 +100,41 @@
 <thead>
 <tr>
 <th>Collection</th>
-<th>Files</th>
-<th>DOCTYPE</th>
 <th>Period</th>
 </tr>
 </thead>
 <tbody>
 <tr>
 <td>QGW/Vienna_1177-1414_ready</td>
-<td>2,037</td>
-<td>2,036 full, 1 without</td>
 <td>1177--1414</td>
 </tr>
 <tr>
-<td>Stadtbuecher/Band_1_1395-1400_ready</td>
-<td>628</td>
-<td>all full</td>
-<td>1395--1400</td>
+<td>QGW/Vienna_1415-1417</td>
+<td>1415--1417</td>
+</tr>
+<tr>
+<td>QGW/Vienna_1448-57_ready</td>
+<td>1448--1457</td>
 </tr>
 <tr>
 <td>QGW/Vienna_1458-66</td>
-<td>412</td>
-<td>all full</td>
 <td>1458--1466</td>
 </tr>
 <tr>
 <td>QGW/Vienna_1493-1500</td>
-<td>305</td>
-<td>54 full, 251 without</td>
 <td>1493--1500</td>
 </tr>
 <tr>
-<td>QGW/Vienna_1415-1417</td>
-<td>75</td>
-<td>74 full, 1 without</td>
-<td>1415--1417</td>
-</tr>
-<tr>
 <td>QGW/Vienna_1524</td>
-<td>73</td>
-<td>all without</td>
-<td>1524</td>
+<td>1524 (abstracts only, not in build)</td>
 </tr>
 <tr>
-<td><strong>Total</strong></td>
-<td><strong>3,530</strong></td>
-<td><strong>all with DOCTYPE</strong></td>
-<td></td>
+<td>Stadtbuecher/Band_1_1395-1400_ready</td>
+<td>1395--1400</td>
 </tr>
 </tbody>
 </table>
-<p>All files reference <code>toolbox_full.dtd</code> via DOCTYPE (326 files without DOCTYPE were fixed in Phase B.2). <code>toolbox_light.dtd</code> (126 elements, subset of full) was never used.</p>
+<p>Current file counts and DOCTYPE coverage are reported by <code>python -m pipeline validate</code> and in the edition's <code>statistics.html</code>. All files reference <code>toolbox_full.dtd</code> via DOCTYPE; remaining files without DOCTYPE were fixed in Phase B.2. <code>toolbox_light.dtd</code> (subset of full) was never used.</p>
 <p><strong>DTD comparison:</strong> 7 elements only in full (lb, cert, row, measure, author, pubPlace, publisher). All 126 light elements exist in full. Consequence: only one schema (full) is needed.</p>
 <h3 id="relaxng-schema">RelaxNG Schema<a class="headerlink" href="#relaxng-schema" title="Permanent link">&para;</a></h3>
 <p>RelaxNG schema <code>sources/schema/toolbox.rng</code> (~860 lines) replaces the DTD as active schema (Gutachten requirement #2). Hand-written from empirical analysis because: (1) <code>trang</code> converter requires Java (unavailable), (2) DTD was bloated with ODD artifacts (133 defined elements, only 48 used).</p>
@@ -311,7 +295,8 @@
 </tbody>
 </table>
 <h3 id="data-quality-phase-b3">Data Quality (Phase B.3)<a class="headerlink" href="#data-quality-phase-b3" title="Permanent link">&para;</a></h3>
-<p>Referential integrity check across all 3,530 files (0 orphaned pe/org/pl refs, 0 duplicate IDs):</p>
+<p>Referential integrity checks cover all source files: zero orphaned <code>pe/org/pl</code> refs, zero duplicate IDs. Current per-metric counts are in the live validation report at <code>pipeline/output/validation_report.{json,md}</code>.</p>
+<p>Historical snapshot for reference:</p>
 <table>
 <thead>
 <tr>

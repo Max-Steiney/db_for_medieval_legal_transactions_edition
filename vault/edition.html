@@ -99,7 +99,7 @@
     
     <div class="guidelines-body vault-body">
         <h1 id="digital-edition-web-frontend">Digital Edition (Web Frontend)<a class="headerlink" href="#digital-edition-web-frontend" title="Permanent link">&para;</a></h1>
-<p>Static HTML edition of the 3,041 TEI-XML source documents, built as browsable, annotated web pages for GitHub Pages hosting.</p>
+<p>Static HTML edition of the TEI-XML source documents, built as browsable, annotated web pages for GitHub Pages hosting.</p>
 <h2 id="architecture">Architecture<a class="headerlink" href="#architecture" title="Permanent link">&para;</a></h2>
 <p><strong>Static site generator</strong> approach: Python/lxml + Jinja2 builds HTML from TEI-XML sources. No server required — output is pure HTML/CSS/JS served from <code>docs/</code>.</p>
 <div class="highlight"><pre><span></span><code>edition/                    Source code (Python package)
@@ -133,14 +133,11 @@
 docs/                       Generated output (GitHub Pages root)
   .nojekyll                 Prevent Jekyll processing
   index.html                Browse/search page with embedded JSON
-  persons.html              Person register (16,084 entries)
-  organisations.html        Organisation register (1,078 entries)
-  places.html               Place register (2,537 entries)
-  documents/                3,041 HTML files (mirrors sources/ without &quot;done/&quot;)
-  register/                 19,699 entity detail pages
-    persons/                ~16,084 pages (pe__*.html)
-    orgs/                   ~1,078 pages (org__*.html)
-    places/                 ~2,537 pages (pl__*.html)
+  persons.html              Person register
+  organisations.html        Organisation register
+  places.html               Place register
+  documents/                HTML files (mirrors sources/ without &quot;done/&quot;)
+  register/                 JSON entity index (lazy-loaded)
   static/                   Copied from edition/static/
 </code></pre></div>
 
@@ -217,10 +214,10 @@ python<span class="w"> </span>-m<span class="w"> </span>pytest<span class="w"> <
 <p>Search JSON fields: <code>id</code>=idno, <code>d</code>=date_display, <code>di</code>=date_iso, <code>p</code>=place, <code>t</code>=regest (200ch), <code>u</code>=url, <code>cp</code>=collection_path, <code>cl</code>=collection_label, <code>tf</code>=full regest (500ch), <code>f</code>=has_facsimile, <code>fu</code>=first facs URL, <code>pc</code>=person_count.</p>
 <h2 id="performance">Performance<a class="headerlink" href="#performance" title="Permanent link">&para;</a></h2>
 <ul>
-<li><strong>3,041 documents + 19,699 register detail pages in ~70s</strong></li>
-<li>Register loading: ~1.8s (16,084 persons, 1,078 orgs, 2,537 places)</li>
-<li>Reverse index: 10,339 entities linked to documents</li>
-<li>82 tests, all passing</li>
+<li>Full corpus build in under two minutes on a single CPU core</li>
+<li>Register loading a few seconds at build time</li>
+<li>Reverse index aggregates entity → document links across the corpus</li>
+<li>Test suite passes end-to-end</li>
 </ul>
 <h2 id="tei-html-rendering">TEI → HTML Rendering<a class="headerlink" href="#tei-html-rendering" title="Permanent link">&para;</a></h2>
 <p>The renderer (<code>renderer.py</code>) walks the TEI element tree recursively using a dispatch table (<code>ELEMENT_HANDLERS</code>). Entity rendering (person/org/place) uses a shared <code>_ENTITY_MAP</code> dispatch to avoid triplication. Templates only handle page layout; the renderer builds the HTML string for the annotated document body.</p>
@@ -518,7 +515,7 @@ Data:       [pe__konrad_goldstein]          ← xml:id, monospace
 </code></pre></div>
 
 <h2 id="document-count-note">Document Count Note<a class="headerlink" href="#document-count-note" title="Permanent link">&para;</a></h2>
-<p>The plan mentions 3,530 source files but only <strong>3,041</strong> have the <code>done/</code> marker. The remaining ~489 files are not in <code>done/</code> directories and are excluded from the edition build (no <code>done/</code> directory in their path).</p>
+<p>The edition build only considers source files under a <code>done/</code> marker directory. Files outside <code>done/</code> (drafts, not-yet-released) are excluded from the build. Current published counts are visible in <code>statistics.html</code>.</p>
 <h2 id="github-pages-deployment">GitHub Pages Deployment<a class="headerlink" href="#github-pages-deployment" title="Permanent link">&para;</a></h2>
 <ol>
 <li>Run <code>python -m edition build</code></li>

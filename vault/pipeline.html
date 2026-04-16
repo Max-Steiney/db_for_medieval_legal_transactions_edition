@@ -104,7 +104,7 @@
 <p>Three independent processing paths share the same XML source data:</p>
 <div class="highlight"><pre><span></span><code>                    ┌──────────────────────────────────┐
                     │         SOURCE DATA               │
-                    │  sources/*.xml    (3,530 TEI)     │
+                    │  sources/*.xml    (TEI corpus)    │
                     │  indices/*.xml    (3 registers)   │
                     │  normalisation_lists/*.csv (4)    │
                     └──────┬──────────┬──────────┬─────┘
@@ -122,15 +122,15 @@
 │                      │ │  + guidelines.md     │ │                      │
 │  ┌────────────────┐  │ │  ┌────────────────┐  │ │  ┌────────────────┐  │
 │  │ 21 CSVs        │  │ │  │ docs/          │  │ │  │ Reports        │  │
-│  │ 101,948 rows   │  │ │  │ 3,041 pages    │  │ │  │ validation_    │  │
-│  │ pipeline/output│  │ │  │ 19,699 register│  │ │  │ report.json/md │  │
-│  │ 313 tests      │  │ │  │ vault (8 docs) │  │ │  │ 0 errors       │  │
-│  └────────────────┘  │ │  │ 70 tests       │  │ │  │ 21 schema tests│  │
+│  │ CSV output     │  │ │  │ edition pages  │  │ │  │ validation_    │  │
+│  │ pipeline/output│  │ │  │ register pages │  │ │  │ report.json/md │  │
+│  │ pipeline tests │  │ │  │ vault (8 docs) │  │ │  │ 0 errors       │  │
+│  └────────────────┘  │ │  │ edition tests  │  │ │  │ schema tests   │  │
 │                      │ │  └────────────────┘  │ │  └────────────────┘  │
 └──────────────────────┘ └──────────────────────┘ └──────────────────────┘
 
 Legacy paths (archived, not active):
-  analysis_3/    XSLT/Saxon pipeline → 101,929 rows (regression reference)
+  analysis_3/    XSLT/Saxon pipeline (regression reference)
   data_export/   Curated CSV snapshots (historical, K6 filter discontinued)
 </code></pre></div>
 
@@ -605,14 +605,14 @@ Master data (directly from indices/, without filenames.csv):
     test_text_utils.py          -- unit tests for normalize_space, elem_text, all_text_not_add
     test_csv_writer.py          -- unit tests for CsvWriter format
     test_schema.py              -- 21 tests: RelaxNG parse, 4 representative files,
-                                   8 edge cases, 6 rejection, 1 full corpus (3,530 files)
+                                   8 edge cases, 6 rejection, 1 full corpus
     test_validate.py            -- 5 tests: schema load, corpus validation, invalid detection, CLI exit codes
     test_integrity.py           -- 17 tests: ref splitting, referential integrity, duplicates,
                                    normalisation, annotation, report generation
 </code></pre></div>
 
 <h3 id="schema-validation-phase-b1">Schema Validation (Phase B.1)<a class="headerlink" href="#schema-validation-phase-b1" title="Permanent link">&para;</a></h3>
-<p>RelaxNG schema <code>sources/schema/toolbox.rng</code> (~860 lines) validates all 3,530 source files:
+<p>RelaxNG schema <code>sources/schema/toolbox.rng</code> (~860 lines) validates all source files:
 - 48 elements + xi:include (85 unused DTD elements excluded)
 - 6 named attribute groups (att.global, att.typed, att.datable.w3c, att.declarable, att.docStatus, att.sortable)
 - Enumerations enforced: roleName/@type (13 values), triggerstring/@n (4), catchwords/@n (4), rs/@role (7)
@@ -621,7 +621,7 @@ Master data (directly from indices/, without filenames.csv):
 - Full design rationale summarised in <code>knowledge/project.md</code> Section 2</p>
 <h3 id="standalone-validation-phase-b2">Standalone Validation (Phase B.2)<a class="headerlink" href="#standalone-validation-phase-b2" title="Permanent link">&para;</a></h3>
 <p><code>pipeline/validate.py</code> — validation module, callable via <code>python -m pipeline validate</code>:
-- RelaxNG validation of all 3,530 source files against <code>toolbox.rng</code>
+- RelaxNG validation of all source files against <code>toolbox.rng</code>
 - Options: <code>--verbose</code> (per-file detail), <code>--quiet</code> (summary only)
 - Exit codes: 0 = all valid, 1 = errors found (CI-compatible)
 - All 326 previously-missing DOCTYPE declarations inserted (B.2a)</p>
@@ -848,7 +848,7 @@ Master data (directly from indices/, without filenames.csv):
 <li><code>xmlns:xsi</code> prefix must be declared on the <code>&lt;grammar&gt;</code> element, otherwise <code>etree.RelaxNG()</code> fails with "no namespace for prefix xsi"</li>
 <li><code>etree.RelaxNG()</code> only accepts XML syntax, not Compact Syntax</li>
 <li><code>etree._RelaxNG</code> is not a public class — use <code>hasattr(obj, "validate")</code> instead of <code>isinstance()</code></li>
-<li>RelaxNG validation of 3,530 files completes in &lt;1 second</li>
+<li>RelaxNG validation of the full corpus completes in about a second</li>
 <li>RelaxNG forbids duplicate attribute definitions on a single element — attribute groups that conflict with per-element attributes must be excluded (see <code>project.md</code> Section 2)</li>
 </ul>
 <h2 id="er-model">ER Model<a class="headerlink" href="#er-model" title="Permanent link">&para;</a></h2>

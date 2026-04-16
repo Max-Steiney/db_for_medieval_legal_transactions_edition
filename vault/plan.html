@@ -149,9 +149,9 @@ H (independent, done)
 </tr>
 <tr>
 <td>K5</td>
-<td>Low place annotation (49 direct refs): intentional?</td>
+<td>Low place annotation (few direct refs): intentional?</td>
 <td>C, Doku</td>
-<td><strong>Resolved</strong> -- placeList is an external gazetteer (2,537 IDs); only 74 are referenced anywhere in 3,530 sources (2.9%). Annotation was done for ~16 files (Stadtbücher Band 1, select QGW). No data loss; this is the annotation status quo.</td>
+<td><strong>Resolved</strong> -- placeList is a large external gazetteer, only a small fraction of IDs is referenced in sources. Annotation is concentrated in Stadtbücher Band 1 and select QGW files. No data loss; this is the annotation status quo.</td>
 </tr>
 <tr>
 <td>K6</td>
@@ -178,16 +178,16 @@ H (independent, done)
 <p>Security (credentials removed, LICENSE CC-BY-4.0, CRediT roles, .gitignore, README fixes), data quality (5 typos, 17 orphaned refs, 4 ID prefix fixes, orgList duplicate cleaned), normalisation lists cleaned (duplicates, column names, encoding), documentation updated (curation logic, empty tables, place annotation, DOCTYPEs).</p>
 <hr />
 <h2 id="phase-b-schema-validation-done">Phase B -- Schema &amp; Validation DONE<a class="headerlink" href="#phase-b-schema-validation-done" title="Permanent link">&para;</a></h2>
-<p>B.1: DTD→RelaxNG conversion (<code>sources/schema/toolbox.rng</code>, ~860 lines, 48 elements, 6 attribute groups). Iterative validation: 0 errors across 3,530 files. 21 schema tests. ODD-vs-RelaxNG decision documented (Gutachten #2).</p>
-<p>B.2: DOCTYPE added to 326 files. <code>pipeline/validate.py</code> CLI with exit codes. All 3,530 files validated.</p>
-<p>B.3: Referential integrity (0 orphaned pe/org/pl refs, 158 NULL, 6,242 event refs systemic). Normalisation matching (triggerstring 316/2112, roleName 1609/3197). 0 duplicate IDs. 187 annotation findings classified (0 errors). 1,947 instant attributes removed. XPointer conformance: 48,421 '#' prefixes added (Gutachten #4). Validation report: <code>pipeline/output/validation_report.{json,md}</code>.</p>
+<p>B.1: DTD→RelaxNG conversion (<code>sources/schema/toolbox.rng</code>, ~860 lines, 48 elements, 6 attribute groups). Iterative validation: 0 errors across all source files. 21 schema tests. ODD-vs-RelaxNG decision documented (Gutachten #2).</p>
+<p>B.2: DOCTYPE added to 326 files. <code>pipeline/validate.py</code> CLI with exit codes. All source files validated.</p>
+<p>B.3: Referential integrity (0 orphaned pe/org/pl refs, NULL placeholders documented, <code>event</code> refs have no register by design). Normalisation matching for triggerstring and roleName. 0 duplicate IDs. Annotation findings classified (0 errors). Instant attributes removed; XPointer conformance fixed (Gutachten #4). Validation report: <code>pipeline/output/validation_report.{json,md}</code>.</p>
 <hr />
 <h2 id="phase-c-edition-guidelines-done">Phase C -- Edition Guidelines DONE<a class="headerlink" href="#phase-c-edition-guidelines-done" title="Permanent link">&para;</a></h2>
-<p><code>edition/content/edition_guidelines.md</code> (8 sections, German): project context, 4-level annotation model with real XML examples, 7-step tagging workflow, ID construction rules, function roles (13 types), normalisation rules, curation logic, 7 editors with CRediT roles. Fulfils Gutachten #5 (individualisation) and #6 (encoding guidelines).</p>
-<p>Build: Markdown→HTML via Python-Markdown, Jinja2 template, nav link on all 3,041+ pages, ~170 lines CSS, 8 tests.</p>
+<p><code>edition/content/edition_guidelines.md</code> (8 sections, German): project context, 4-level annotation model with real XML examples, 7-step tagging workflow, ID construction rules, function roles (13 types), normalisation rules, curation logic, editors with CRediT roles. Fulfils Gutachten #5 (individualisation) and #6 (encoding guidelines).</p>
+<p>Build: Markdown→HTML via Python-Markdown, Jinja2 template, nav link on all edition pages, CSS styling, 8 tests.</p>
 <hr />
 <h2 id="phase-d-python-pipeline-core-done">Phase D -- Python Pipeline Core DONE<a class="headerlink" href="#phase-d-python-pipeline-core-done" title="Permanent link">&para;</a></h2>
-<p>11 transformers reimplemented from XSLT: filenames (3,530), persons (16,084), organisations (1,078), places (2,537), events (5,813), persons/orgs/places_in_events (18,995 + 2,533 + 7), persons/orgs/places_in_sources (28,259 + 8,983 + 63). Infrastructure: config, csv_writer, xml_loader, text_utils, date_parser. 87,882 rows total, 118 tests. 6/11 content-identical with XSLT, 5/11 differ only by Phase A corrections.</p>
+<p>11 transformers reimplemented from XSLT (filenames, persons, organisations, places, events, persons/orgs/places_in_events, persons/orgs/places_in_sources). Infrastructure: config, csv_writer, xml_loader, text_utils, date_parser. 118 tests. 6/11 content-identical with XSLT, 5/11 differ only by Phase A corrections. Current row counts in <code>pipeline/output/timing.json</code>.</p>
 <hr />
 <h2 id="phase-e-python-pipeline-relations">Phase E -- Python Pipeline Relations<a class="headerlink" href="#phase-e-python-pipeline-relations" title="Permanent link">&para;</a></h2>
 <h3 id="e1-person-relations-x6-types-done">E.1 Person Relations x6 Types DONE<a class="headerlink" href="#e1-person-relations-x6-types-done" title="Permanent link">&para;</a></h3>
@@ -250,7 +250,7 @@ The PHP/MariaDB web frontend (K7) and documentation repo access (K8) are no long
 </ul>
 <h3 id="h3-web-interface-navigation-done">H.3 Web Interface &amp; Navigation DONE<a class="headerlink" href="#h3-web-interface-navigation-done" title="Permanent link">&para;</a></h3>
 <ul>
-<li>[x] Static HTML generation for 3,041 "done" documents (~7s build, two-pass architecture)</li>
+<li>[x] Static HTML generation for all "done" documents (two-pass architecture)</li>
 <li>[x] Index page: timeline sparkline, collection chips, faceted filters (place, facs, decade)</li>
 <li>[x] Search: client-side full-text (JSON embedded in index.html, pre-computed search strings)</li>
 <li>[x] Progressive table rendering (IntersectionObserver, 100-row batches)</li>
