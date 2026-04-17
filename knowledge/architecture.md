@@ -10,7 +10,7 @@ Jede Stufe ist für sich nachvollziehbar. Wer eine Aussage der Oberfläche anzwe
 
 ## TEI als Quelle
 
-Die Quelldaten liegen in TEI-XML vor, dem etablierten Standard für die digitale Edition historischer Texte. Die Wahl ist nicht konjunkturell, sondern langfristig gedacht: TEI dokumentiert Text und Annotation in einem einzigen Dokument und bleibt auch nach dem Ende dieser Edition lesbar.
+Die Quelldaten liegen in TEI-XML vor, dem etablierten Standard für die digitale Edition historischer Texte. Die Wahl ist nicht konjunkturell, sondern langfristig gedacht. TEI dokumentiert Text und Annotation in einem einzigen Dokument und bleibt auch nach dem Ende dieser Edition lesbar.
 
 Die Annotationsebenen der Edition sind in [[data#Annotationsebenen]] beschrieben.
 
@@ -38,11 +38,11 @@ Das heißt nicht, dass der Prototyp instabil wäre. Es heißt, dass Entscheidung
 
 ## Trennung Quelle und Build-Output
 
-Templates und Build-Code liegen getrennt vom erzeugten Build-Output. Inhaltliche Änderungen gehören in die Quelle und werden durch einen Build-Lauf wirksam. Im Output-Ordner werden HTML-Dateien nicht direkt editiert, außer Meta-Dateien wie CLAUDE.md und dem [[knowledge]]-Ordner.
+Templates und Build-Code liegen getrennt vom erzeugten Build-Output. Inhaltliche Änderungen gehören in die Quelle und werden durch einen Build-Lauf wirksam. Im Output-Ordner werden HTML-Dateien nicht direkt editiert, außer Meta-Dateien wie CLAUDE.md und der Wissensbasis im `knowledge/`-Ordner.
 
 ## Clientseitige Suche und Filter
 
-Suche und Filter laufen im Browser gegen vorgebaute JSON-Indexe. Der Vorteil ist, dass keine Serverlogik betrieben werden muss und dass die Anfrage-URL zitierbar bleibt. Die Grenze liegt im Volumen: sehr große Indexe belasten das Laden einer Seite und erfordern Teilindexe oder progressive Ladeverfahren.
+Suche und Filter laufen im Browser gegen vorgebaute JSON-Indexe. Der Vorteil ist, dass keine Serverlogik betrieben werden muss und dass die Anfrage-URL zitierbar bleibt. Die Grenze liegt im Volumen. Sehr große Indexe belasten das Laden einer Seite und erfordern Teilindexe oder progressive Ladeverfahren.
 
 ## Auslieferung über statisches Hosting
 

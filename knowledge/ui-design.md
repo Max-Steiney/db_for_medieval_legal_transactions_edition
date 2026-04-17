@@ -16,15 +16,25 @@ Siehe [[requirements#Informationsdichte vor reduzierter Ästhetik]], [[decisions
 
 Die Hauptnavigation gliedert sich in fünf Bereiche.
 
-Der Bereich Dokumente ist der Einstieg zur Volltextsuche und zum Durchsuchen der [[glossar#Quelle|Quellen]]. Er trägt die Grundoperationen Suchen, Filtern nach Zeitraum und Nachladen der Volltexte einzelner Quellen.
+### Dokumente
 
-Der Bereich Register fasst Personen, Organisationen und Orte zusammen. Konsolidierte Identitäten aus den drei Registern werden hier gelistet, jeweils mit Rückverweisen in die zugehörigen Quellen.
+Einstieg zur Volltextsuche und zum Durchsuchen der [[glossar#Quelle|Quellen]]. Der Bereich trägt die Grundoperationen Suchen, Filtern nach Zeitraum und Nachladen der Volltexte einzelner Quellen.
 
-Der Bereich Exploration bietet visuell-explorative Zugänge zu den Daten. Er bedient ergebnisoffene Fragestellungen nach dem Muster Überblick, Filter, Details auf Anforderung.
+### Register
 
-Der Bereich Analyse hält einen klassischen Abfragemodus bereit. Er bedient gezielte, wiederkehrende Kombinationen aus Bestand, Rolle, Geschlecht und Nennungsart. Exploration und Analyse stehen nebeneinander, nicht anstelle voneinander.
+Fasst Personen, Organisationen und Orte zusammen. Konsolidierte Identitäten aus den drei Registern werden hier gelistet, jeweils mit Rückverweisen in die zugehörigen Quellen.
 
-Der Bereich Projekt bündelt Metaebenen des UI: Über das Projekt, Statistik, Qualität, Editionsrichtlinien, Glossar und Impressum.
+### Exploration
+
+Bietet visuell-explorative Zugänge zu den Daten. Der Bereich bedient ergebnisoffene Fragestellungen nach dem Muster Überblick, Filter, Details auf Anforderung.
+
+### Analyse
+
+Hält einen klassischen Abfragemodus bereit. Der Bereich bedient gezielte, wiederkehrende Kombinationen aus Bestand, [[glossar#Rolle]], Geschlecht und Nennungsart. Exploration und Analyse stehen nebeneinander, nicht anstelle voneinander.
+
+### Projekt
+
+Bündelt Metaebenen des UI. Über das Projekt, Statistik, Qualität, Editionsrichtlinien, Glossar und Impressum.
 
 ## Zwei Modi nebeneinander
 

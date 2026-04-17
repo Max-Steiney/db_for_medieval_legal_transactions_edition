@@ -74,7 +74,7 @@ Getroffene Leitentscheidungen mit Begründung. Zeitlos formuliert. Pro Eintrag E
 
 **Begründung.** Die flache Struktur macht den Vault in Obsidian unmittelbar nutzbar und senkt die Einstiegshürde für Mit-Autorinnen. Ein README wäre Redundanz, weil Einstieg und Übersicht aus der Dateiliste selbst hervorgehen.
 
-**Konsequenz.** Dokumente im [[knowledge]]-Ordner folgen dieser Struktur. Verlinkung geschieht über Wiki-Syntax, nicht über Markdown-Referenzen.
+**Konsequenz.** Dokumente im `knowledge/`-Ordner folgen dieser Struktur. Verlinkung geschieht über Wiki-Syntax, nicht über Markdown-Referenzen.
 
 ## Zeitlose Formulierung der Wissensbasis
 
