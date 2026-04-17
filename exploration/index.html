@@ -74,9 +74,89 @@
         <h1>Exploration</h1>
         <p class="explore-lede">
             Interaktive Forschungsvisualisierungen zu
-            <strong>16.084</strong> Personen
-            in <strong>5.002</strong> Rechtsgesch&auml;ften
-            aus 2.635 Quellen.
+            <span class="prov-stat-container">
+                
+<button type="button" class="prov-trigger"
+        aria-expanded="false" aria-haspopup="dialog"
+        aria-controls="prov-expl-persons"
+        data-prov-trigger="prov-expl-persons"><strong>16.084</strong></button>
+
+                
+<aside class="prov-popover" id="prov-expl-persons"
+       role="dialog" aria-hidden="true" aria-label="Herkunft: Individuelle Personen">
+    <header class="prov-popover-head">
+        <h3 class="prov-popover-title">Individuelle Personen</h3>
+        <p class="prov-popover-sub">Zählebene: eine Identität pro Person</p>
+        <button type="button" class="prov-popover-close" aria-label="Schließen">&times;</button>
+    </header>
+    <div class="prov-popover-body">
+        
+                    <p class="prov-def">Jede Person z\u00e4hlt einmal, unabh\u00e4ngig von der Anzahl ihrer Nennungen. Siehe <a href="../project/glossary.html#individuelle-person">Glossar</a>.</p>
+                    <footer class="prov-foot">
+                        <span class="prov-foot-source"><code>indices/personList.xml</code></span>
+                        <a class="prov-foot-link" href="../project/glossary.html#individuelle-person">&rarr; Glossar</a>
+                    </footer>
+                
+    </div>
+</aside>
+
+            </span> Personen
+            in
+            <span class="prov-stat-container">
+                
+<button type="button" class="prov-trigger"
+        aria-expanded="false" aria-haspopup="dialog"
+        aria-controls="prov-expl-events"
+        data-prov-trigger="prov-expl-events"><strong>5.002</strong></button>
+
+                
+<aside class="prov-popover" id="prov-expl-events"
+       role="dialog" aria-hidden="true" aria-label="Herkunft: Rechtsgeschäfte">
+    <header class="prov-popover-head">
+        <h3 class="prov-popover-title">Rechtsgeschäfte</h3>
+        <p class="prov-popover-sub">Summe der annotierten Events im Freigabestand</p>
+        <button type="button" class="prov-popover-close" aria-label="Schließen">&times;</button>
+    </header>
+    <div class="prov-popover-body">
+        
+                    <p class="prov-def">Events sind die kleinste Einheit, auf die sich Rollen und Beteiligte beziehen. Eine Quelle kann mehrere Events dokumentieren. Siehe <a href="../project/glossary.html#event">Glossar</a>.</p>
+                    <footer class="prov-foot">
+                        <span class="prov-foot-source"><code>sources/*/done/*.xml (tei:event)</code></span>
+                        <a class="prov-foot-link" href="../project/glossary.html#event">&rarr; Glossar</a>
+                    </footer>
+                
+    </div>
+</aside>
+
+            </span> Rechtsgesch&auml;ften
+            aus
+            <span class="prov-stat-container">
+                
+<button type="button" class="prov-trigger"
+        aria-expanded="false" aria-haspopup="dialog"
+        aria-controls="prov-expl-docs"
+        data-prov-trigger="prov-expl-docs"><strong>2.635</strong></button>
+
+                
+<aside class="prov-popover" id="prov-expl-docs"
+       role="dialog" aria-hidden="true" aria-label="Herkunft: Quellen">
+    <header class="prov-popover-head">
+        <h3 class="prov-popover-title">Quellen</h3>
+        <p class="prov-popover-sub">TEI-Regesten im Freigabestand</p>
+        <button type="button" class="prov-popover-close" aria-label="Schließen">&times;</button>
+    </header>
+    <div class="prov-popover-body">
+        
+                    <p class="prov-def">Freigegebene TEI-Quellen aus allen Quellenkorpora. Der Zeitraum ist 1177–1412 (mit Ergänzungen bis 1414 für QGW II/1 und II/2).</p>
+                    <footer class="prov-foot">
+                        <span class="prov-foot-source"><code>sources/*/done/*.xml</code></span>
+                        <a class="prov-foot-link" href="../project/statistics.html">&rarr; Statistik</a>
+                    </footer>
+                
+    </div>
+</aside>
+
+            </span> Quellen.
         </p>
     </header>
 

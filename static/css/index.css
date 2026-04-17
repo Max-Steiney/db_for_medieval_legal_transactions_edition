@@ -212,6 +212,24 @@
     color: var(--anno-person);
 }
 
+.chip-form {
+    font-size: var(--text-2xs);
+    text-transform: uppercase;
+    letter-spacing: 0.08em;
+    color: var(--color-text-muted);
+    font-weight: 500;
+    padding: 1px 6px;
+    border-radius: 3px;
+    background: var(--color-bg-warm);
+    border: 1px solid var(--color-border-light);
+}
+
+.chip.active .chip-form {
+    color: var(--anno-person);
+    background: var(--color-bg-card);
+    border-color: var(--anno-person);
+}
+
 .chip-active {
     padding: var(--space-xs) 0.75rem;
     border-color: var(--anno-person);

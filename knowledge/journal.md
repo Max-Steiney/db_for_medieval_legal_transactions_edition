@@ -12,6 +12,32 @@ Einträge in umgekehrt chronologischer Reihenfolge, neueste oben.
 
 ---
 
+## 2026-04-17 Terminologie-Konsolidierung, Erschlie\u00dfungsform, Provenienz-Ausrollung
+
+Die UI-Terminologie wird durchgehend auf die kanonischen Begriffe aus [[glossar]] und [[decisions#Begriff Quellenkorpus]] gezogen. Alle benutzerseitig sichtbaren Vorkommen von „Dokument(e)" werden zu „Quelle(n)", „Rechtsakt(e)" zu „Rechtsgesch\u00e4ft(e)", eine verbliebene „Sammlung"-Spaltenkopfzeile zu „Quellenkorpus". Technische Labels auf HTML-Ebene (ARIA-Attribute, CSS-IDs) bleiben unber\u00fchrt, weil sie sich auf das HTML-Dokument als Tr\u00e4gerformat beziehen, nicht auf die Quelle der Edition.
+
+Die [[data#Erschlie\u00dfungsformen|Erschlie\u00dfungsform]] eines Quellenkorpus ist im UI an den Quellenkorpus-Chips der Dokumenten-\u00dcbersicht sichtbar. QGW-Best\u00e4nde tragen das Label „Regest + Faksimile", Stadtb\u00fccher tragen „Volltext". Die Zuordnung liegt als Build-Konstante `_transmission_form` vor und fliesst in die `collections`-Datenstruktur mit ein.
+
+Die Provenienz-Tooltip-Komponente wird von den Startseiten-KPIs auf weitere Seiten ausgerollt: Exploration-Hub (Personen, Rechtsgesch\u00e4fte, Quellen), Personenregister (Gesamt-Eintr\u00e4ge mit Hinweis auf quellenbereinigte Z\u00e4hlung pro Eintrag), Datenqualit\u00e4t (Quellen gesamt). Das Muster ist dasselbe wie auf der Startseite; die Popover-Inhalte verweisen jeweils auf die relevanten Glossar-Eintr\u00e4ge und Dateipfade.
+
+Offen f\u00fcr eigene Sessions:
+
+- **Z\u00e4hlebenen-Umschalter [[requirements#Umschaltbarkeit der Z\u00e4hlebenen]].** Implementierungspfad: globaler Schalter in der Navbar oder Filter-Leiste, persistierter Zustand im `localStorage`, propagiert via `window.COUNT_MODE` an die Exploration-Skripte. Jeder Counter muss pro Zahl wissen, welche der beiden Ebenen er anzeigen kann; f\u00fcr die Mehrzahl der Exploration-Seiten bedeutet das eine parallele JSON-Struktur (oder zus\u00e4tzliche Felder in den bestehenden `epic_*`-Dateien), die beide Ebenen vorhalten. Der Provenienz-Tooltip zeigt in jedem Popover den gew\u00e4hlten Modus.
+
+- **Menschen-Events-Toggle [[ui-design#Menschen-Events-Toggle]].** Implementierungspfad analog: `window.INCLUDE_HUMAN_EVENTS`, persistiert, propagiert. Datenmodell-Seite: die Aggregatoren m\u00fcssen Nennungen trennen, je nachdem ob sie aus einem prim\u00e4ren Event stammen oder als Verweis auf ein fr\u00fcheres Event vorliegen. Voraussetzung ist eine belastbare Markierung im TEI-Datenstrom. Bei fehlender Markierung zeigt das UI den aktuellen stillschweigenden Zustand (Einschluss) offen, statt ihn zu verschleiern.
+
+- **Bestandsfilter universell [[ui-design#Bestandsfilter]].** Derzeit wirkt der Filter nur auf der Quellen-\u00dcbersicht. Implementierungspfad: eine gemeinsame Filter-Komponente mit `window.CORPUS_FILTER` als Zustand, die alle Seiten beim Laden konsultieren. Die Seiten selbst m\u00fcssen ihre Aggregate so aufbauen, dass sie auf beliebige Teilmengen der Korpora herunter-rechenbar sind. F\u00fcr die Exploration-Skripte heisst das, dass die `epic_*`-JSONs zus\u00e4tzlich eine korpusbasierte Unterschl\u00fcsselung tragen.
+
+- **Analyse-Seite mit Template-Familien.** Blaupause in [[quer ui]]. Umsetzung erfordert Fachteam-Entscheidung \u00fcber die initiale Familienmenge. Technischer Pfad: clientseitige Template-Engine mit Slot-Parametern, Live-Counts aus den `epic_*`-Aggregaten, Drill-down \u00fcber das bestehende `docs_lookup.json`.
+
+Kleinere UX-Punkte, die ohne Phase-2-Abh\u00e4ngigkeit umgesetzt werden k\u00f6nnen:
+
+- Multi-Select-Chips f\u00fcr den Quellenkorpus-Filter (mehrere Korpora gleichzeitig).
+- Tag-Farbdifferenzierung f\u00fcr Rollen in der Einzelquellen-Ansicht.
+- Mouse-over-Legenden in den Exploration-Visualisierungen, mit kurzen Erkl\u00e4rungen der Achsen und Kodierungen.
+- F-Faktoid-Legende (Markierung weiblicher Faktoid-Gruppen in den Rollen-Ansichten).
+- Archivinfos auf der Einzelquellen-Ansicht (Signatur, Bestand, Faszikel, sofern aus TEI-Header extrahierbar).
+
 ## 2026-04-17 Startseiten-Layout, Datenstand und offene Phase-2-Punkte
 
 Die Startseite wird konzeptionell neu geordnet. Statt einer einzelnen Exploration-Sektion mit Trennstrich stehen zwei gleichberechtigte Säulen nebeneinander: Exploration (vier visuelle Zugänge) und Analyse (Einstieg zur Grundabfragen-Seite im Template-Familien-Stil von [[quer ui]]). Eyebrow-Labels in Sans-Caps markieren die Bereiche ohne optischen Schwergewichte wie border-bottom. Die Entry-Cards (Quellen, Personenregister, Über das Projekt) tragen Icons in der Akzentfarbe. Die Farblogik stabilisiert sich: blau für Akzente (Icons, Labels, interaktive Elemente), schwarz für Inhaltstitel, gedämpftes Grau für Beschreibungstexte.
