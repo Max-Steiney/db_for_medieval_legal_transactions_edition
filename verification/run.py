@@ -10,7 +10,7 @@ from __future__ import annotations
 import sys
 import time
 
-from verification import compare, parse_indices, parse_tei, report
+from verification import compare, parse_indices, parse_tei, provenance, report
 
 
 def main() -> int:
@@ -31,6 +31,9 @@ def main() -> int:
 
     print("[verify] Vergleichen ...")
     results = compare.run_checks(docs, persons, orgs, places)
+
+    print("[verify] Provenienz-Konsistenz pruefen ...")
+    results.extend(provenance.run_provenance_checks())
 
     match = sum(1 for r in results if r.status == "match")
     mismatch = sum(1 for r in results if r.status == "mismatch")

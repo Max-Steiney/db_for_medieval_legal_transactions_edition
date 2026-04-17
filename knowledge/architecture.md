@@ -62,9 +62,9 @@ Die statische Architektur leistet keine Echtzeit-Daten, keine persistierten Nutz
 
 ## Provenienz-Indizes
 
-Jede aggregierte Kennzahl im Frontend ist auf die Menge der zugrundeliegenden Quelldokumente rückführbar. Die Rückführung geschieht nicht durch Inline-Erweiterung der bestehenden Aggregat-JSONs, sondern durch separate Provenienz-Dateien mit identischer Schlüsselstruktur. Das Frontend lädt diese Dateien erst bei Bedarf (etwa beim Öffnen eines Provenienz-Tooltips) nach.
+Jede aggregierte Kennzahl im Frontend ist auf die Menge der zugrundeliegenden Quelldokumente rückführbar. Die Rückführung geschieht als `drill_down`-Abschnitt innerhalb der Aggregat-JSONs, der zu jedem Kreuztabellen-Feld die sortierte Liste der beitragenden `file_key`-Verweise führt. Das Frontend löst die Provenienz durch Lookup im selben JSON auf, der die Zahlen liefert; zusätzliche Metadaten zum Einzeldokument kommen aus `data/docs_lookup.json`.
 
-Konsequenz für den Build: jede Aggregations-Funktion liefert zusätzlich eine Variante, die statt Counter-Werten Listen von Dokument-IDs sammelt. Begründung in [[decisions#Parallele Provenienz-Drill-down-JSONs]], Umsetzung in [[ui-design#Provenienz-Tooltip]].
+Konsequenz für den Build: jede Aggregations-Funktion füllt `drill_down` parallel zu den Counter-Werten. Begründung in [[decisions#Provenienz als inline Drill-down in den Aggregat-JSONs]], Umsetzung in [[ui-design#Provenienz-Tooltip]].
 
 ## Siehe auch
 

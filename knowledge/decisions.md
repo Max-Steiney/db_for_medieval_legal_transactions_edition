@@ -84,15 +84,15 @@ Getroffene Leitentscheidungen mit Begründung. Zeitlos formuliert. Pro Eintrag E
 
 **Konsequenz.** Das Test-Set läuft auf Abruf und schreibt versionierte Reports. Diskrepanzen führen zu Korrekturen in Templates, Aggregations-Logik oder Quell-Daten. Gleichzeitig dient dieselbe Aggregations-Logik als Fundament für die [[#Parallele Provenienz-Drill-down-JSONs]], weil beide dieselben Zählungen auf derselben Quellebene nachvollziehen. Siehe [[architecture#Verifikations-Test-Set]].
 
-## Parallele Provenienz-Drill-down-JSONs
+## Provenienz als inline Drill-down in den Aggregat-JSONs
 
-**Status.** Beschlossen. Umsetzung ist als eigene Arbeitsetappe vorgesehen und im [[journal]] nachzulesen.
+**Entscheidung.** Die Provenienz einer aggregierten Zahl — also die Liste der Quelldokumente, die sie stützen — lebt als `drill_down`-Unterstruktur **innerhalb** der jeweiligen Aggregat-JSON, nicht als separate Datei.
 
-**Entscheidung.** Die Provenienz einer aggregierten Zahl (welche Quelldokumente der Zahl zugrunde liegen) wird in separaten JSON-Dateien parallel zu den bestehenden Aggregat-JSONs ausgewiesen, nicht als eingebettete Liste in jedem Wert.
+**Begründung.** Bei der Prüfung des Build-Outputs zeigte sich, dass vier der fünf aggregierten JSONs die Provenienz-Information bereits als inline Drill-down tragen (role × sex → file_keys, relation type × sex → file_keys, transaction type × decade → file_keys, place → file_keys). Eine separate Parallel-JSON-Struktur wäre Duplikation derselben Information. Die inline Form hält Aggregat und Provenienz zusammen, ohne dass ein Frontend-Reader zwei Dateien korrelieren muss.
 
-**Begründung.** Die bestehenden Aggregat-JSONs haben stabile Konsumentenverträge im Frontend-JavaScript. Eine Erweiterung jedes Wertes von Zahl auf Dict zwingt jedes Lesefragment zu Anpassungen. Parallele Dateien halten den Eingriff minimal, lassen sich inkrementell einführen und werden vom Frontend erst bei Bedarf (etwa für Tooltips) nachgeladen.
+**Konsequenz.** Jeder Aggregat-JSON enthält einen `drill_down`-Abschnitt mit dem gleichen Schlüsselmuster wie die Counter-Werte, aber mit sortierten Listen von `file_key`-Verweisen statt Zahlen. Das Frontend löst einen Tooltip durch Lookup im gleichen JSON auf, ohne zusätzliches Nachladen. Die Zielkonsumption für das `file_key` ist `data/docs_lookup.json`, das jeden Schlüssel auf URL, Regest und Metadaten abbildet. Siehe [[requirements#Datenrobustheit und Provenienz]] und [[ui-design#Provenienz-Tooltip]].
 
-**Konsequenz.** Pro Aggregat-Kategorie existiert eine Provenienz-Variante mit identischer Schlüsselstruktur, aber Listen von Dokument-IDs statt Counter-Werten. Siehe [[requirements#Datenrobustheit und Provenienz]] und [[ui-design#Provenienz-Tooltip]].
+**Nicht gemeint ist**, dass Aggregat-JSONs gegenseitig referenzieren oder fachlich zirkulär werden. `drill_down` ist eine reine Quellenauflistung, keine Aggregation zweiter Ordnung.
 
 ## Zeitlose Formulierung der Wissensbasis
 

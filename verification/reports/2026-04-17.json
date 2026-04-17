@@ -1,10 +1,10 @@
 {
   "date": "2026-04-17",
   "summary": {
-    "total": 20,
-    "match": 6,
-    "mismatch": 5,
-    "known_gap": 3,
+    "total": 29,
+    "match": 8,
+    "mismatch": 7,
+    "known_gap": 8,
     "info": 6
   },
   "results": [
@@ -256,6 +256,69 @@
       "json": null,
       "status": "info",
       "note": "Top-20 Roh-Trigger für disp; Vergleich mit normalisierten Transaktionstypen in epic_c noch offen."
+    },
+    {
+      "name": "provenance.epic_a.role_sex.known_gap",
+      "tei": "13147 file_keys geprüft",
+      "json": "1569 Einträge aus Vienna_1448-57_ready",
+      "status": "known_gap",
+      "note": "file_keys aus filenames.csv ohne TEI-Quelle. Dieselbe Wurzel wie docs.total: Pipeline zählt zusätzlich Dokumente ohne TEI."
+    },
+    {
+      "name": "provenance.epic_b.drill_down.known_gap",
+      "tei": "15766 file_keys geprüft",
+      "json": "1928 Einträge aus Vienna_1448-57_ready",
+      "status": "known_gap",
+      "note": "file_keys aus filenames.csv ohne TEI-Quelle. Dieselbe Wurzel wie docs.total: Pipeline zählt zusätzlich Dokumente ohne TEI."
+    },
+    {
+      "name": "provenance.epic_b.persons.rels.known_gap",
+      "tei": "16194 file_keys geprüft",
+      "json": "2199 Einträge aus Vienna_1448-57_ready",
+      "status": "known_gap",
+      "note": "file_keys aus filenames.csv ohne TEI-Quelle. Dieselbe Wurzel wie docs.total: Pipeline zählt zusätzlich Dokumente ohne TEI."
+    },
+    {
+      "name": "provenance.epic_c.drill_down.known_gap",
+      "tei": "2802 file_keys geprüft",
+      "json": "805 Einträge aus Vienna_1448-57_ready",
+      "status": "known_gap",
+      "note": "file_keys aus filenames.csv ohne TEI-Quelle. Dieselbe Wurzel wie docs.total: Pipeline zählt zusätzlich Dokumente ohne TEI."
+    },
+    {
+      "name": "provenance.epic_d.places.known_gap",
+      "tei": "925 file_keys geprüft",
+      "json": "882 Einträge aus Vienna_1448-57_ready",
+      "status": "known_gap",
+      "note": "file_keys aus filenames.csv ohne TEI-Quelle. Dieselbe Wurzel wie docs.total: Pipeline zählt zusätzlich Dokumente ohne TEI."
+    },
+    {
+      "name": "provenance.epic_d.coverage",
+      "tei": "alle referenced Places",
+      "json": "haben file_keys",
+      "status": "match",
+      "note": null
+    },
+    {
+      "name": "provenance.register.persons",
+      "tei": "17326 Doc-URLs geprüft",
+      "json": "12 unbekannt, Beispiele: ['documents/QGW/Vienna_1177-1414_ready/1542 a.html', 'documents/QGW/Vienna_1177-1414_ready/1924 (= Privil. Nr. 29).html', 'documents/QGW/Vienna_1458-66/4002 (= Privil. Nr. 46).html']",
+      "status": "mismatch",
+      "note": "Register verweist auf Dokument-URL, die nicht in docs_lookup.json auflösbar ist."
+    },
+    {
+      "name": "provenance.register.organisations",
+      "tei": "5323 Doc-URLs geprüft",
+      "json": "6 unbekannt, Beispiele: ['documents/QGW/Vienna_1177-1414_ready/1542 a.html', 'documents/QGW/Vienna_1177-1414_ready/1924 (= Privil. Nr. 29).html', 'documents/QGW/Vienna_1458-66/4002 (= Privil. Nr. 46).html']",
+      "status": "mismatch",
+      "note": "Register verweist auf Dokument-URL, die nicht in docs_lookup.json auflösbar ist."
+    },
+    {
+      "name": "provenance.register.places",
+      "tei": "43 Doc-URLs geprüft",
+      "json": "alle in docs_lookup",
+      "status": "match",
+      "note": null
     }
   ]
 }
