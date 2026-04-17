@@ -1,0 +1,254 @@
+/* ==========================================================================
+   Provenienz-Popover
+   Wiederverwendbare Inline-Komponente. Pro aggregierter Zahl ein Trigger
+   (Zahl selbst mit gepunkteter Unterstreichung) und ein Popover-Aside mit
+   Definition, Aufschlüsselung und Quellen-Verweis.
+   Fundament für die Phase-2-Komponente "Provenienz-Tooltip".
+   ========================================================================== */
+
+.prov-stat-container {
+    position: relative;
+    display: inline-block;
+    white-space: nowrap;
+}
+
+/* ----- Trigger: die Zahl selbst ist interaktiv -------------------------- */
+
+.prov-trigger {
+    background: none;
+    border: none;
+    padding: 0;
+    margin: 0;
+    font: inherit;
+    color: inherit;
+    cursor: help;
+    text-decoration: underline dotted var(--color-text-light);
+    text-decoration-thickness: 1px;
+    text-underline-offset: 3px;
+    transition: text-decoration-color 140ms ease, color 140ms ease;
+}
+
+.prov-trigger:hover,
+.prov-trigger:focus-visible,
+.prov-trigger[aria-expanded="true"] {
+    text-decoration-color: var(--color-accent);
+    color: var(--color-text);
+    outline: none;
+}
+
+.prov-trigger[aria-expanded="true"] {
+    text-decoration-style: solid;
+}
+
+/* ----- Popover-Container ----------------------------------------------- */
+
+.prov-popover {
+    display: none;
+    position: absolute;
+    top: calc(100% + 14px);
+    left: 50%;
+    transform: translateX(-50%);
+    width: 340px;
+    max-width: calc(100vw - 32px);
+    background: var(--color-bg-card);
+    border: 1px solid var(--color-border);
+    border-radius: 4px;
+    box-shadow: 0 8px 28px rgba(44, 40, 37, 0.10), 0 1px 3px rgba(44, 40, 37, 0.06);
+    padding: 0;
+    z-index: 150;
+    font-family: var(--font-sans);
+    text-align: left;
+    white-space: normal;
+    animation: prov-fade-in 140ms ease;
+}
+
+.prov-popover[aria-hidden="false"] {
+    display: block;
+}
+
+@keyframes prov-fade-in {
+    from { opacity: 0; transform: translateX(-50%) translateY(-4px); }
+    to   { opacity: 1; transform: translateX(-50%) translateY(0); }
+}
+
+/* Kleiner Pfeil nach oben zum Trigger */
+.prov-popover::before {
+    content: '';
+    position: absolute;
+    top: -6px;
+    left: 50%;
+    transform: translateX(-50%) rotate(45deg);
+    width: 10px;
+    height: 10px;
+    background: var(--color-bg-card);
+    border-top: 1px solid var(--color-border);
+    border-left: 1px solid var(--color-border);
+}
+
+/* ----- Kopf ------------------------------------------------------------ */
+
+.prov-popover-head {
+    padding: 12px 16px 10px;
+    border-bottom: 1px solid var(--color-border-light);
+    position: relative;
+}
+
+.prov-popover-title {
+    margin: 0;
+    font-family: var(--font-serif, var(--font-sans));
+    font-size: var(--text-base);
+    font-weight: 600;
+    color: var(--color-text);
+    line-height: 1.2;
+}
+
+.prov-popover-sub {
+    margin: 4px 0 0;
+    font-size: var(--text-xs);
+    color: var(--color-text-muted);
+    font-style: italic;
+    letter-spacing: 0.02em;
+}
+
+.prov-popover-close {
+    position: absolute;
+    top: 6px;
+    right: 8px;
+    background: none;
+    border: none;
+    padding: 4px 7px;
+    font-size: 16px;
+    line-height: 1;
+    color: var(--color-text-light);
+    cursor: pointer;
+    border-radius: 3px;
+    transition: color 120ms, background 120ms;
+}
+
+.prov-popover-close:hover {
+    color: var(--color-text);
+    background: var(--color-bg-hover);
+}
+
+/* ----- Body ------------------------------------------------------------ */
+
+.prov-popover-body {
+    padding: 12px 16px 14px;
+}
+
+.prov-popover-body > :first-child { margin-top: 0; }
+.prov-popover-body > :last-child  { margin-bottom: 0; }
+
+.prov-def {
+    margin: 0 0 12px;
+    font-size: var(--text-sm);
+    line-height: 1.5;
+    color: var(--color-text);
+}
+
+.prov-def em {
+    font-style: normal;
+    font-weight: 500;
+    border-bottom: 1px dotted var(--color-text-light);
+}
+
+/* Aufschlüsselung als schlanke Tabelle */
+.prov-breakdown {
+    width: 100%;
+    border-collapse: collapse;
+    margin: 0;
+    font-size: var(--text-xs);
+    font-variant-numeric: tabular-nums;
+}
+
+.prov-breakdown td {
+    padding: 5px 0;
+    border-bottom: 1px solid var(--color-border-light);
+    color: var(--color-text-muted);
+    vertical-align: baseline;
+}
+
+.prov-breakdown tr:last-child td {
+    border-bottom: none;
+}
+
+.prov-breakdown td.num {
+    text-align: right;
+    color: var(--color-text);
+    font-weight: 500;
+    padding-left: 12px;
+}
+
+.prov-breakdown tr.total td {
+    border-top: 1px solid var(--color-border-dark);
+    padding-top: 6px;
+    font-weight: 600;
+    color: var(--color-text);
+}
+
+.prov-breakdown tr.total td.num {
+    font-weight: 700;
+}
+
+/* ----- Footer: Quelle + Link ------------------------------------------- */
+
+.prov-foot {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    gap: 12px;
+    margin: 12px 0 0;
+    padding-top: 10px;
+    border-top: 1px solid var(--color-border-light);
+    font-size: var(--text-xs);
+    color: var(--color-text-muted);
+}
+
+.prov-foot-source {
+    flex: 1;
+    min-width: 0;
+    overflow: hidden;
+    text-overflow: ellipsis;
+}
+
+.prov-foot code {
+    font-family: var(--font-mono);
+    font-size: 0.88em;
+    color: var(--color-text);
+    background: var(--color-bg-warm);
+    padding: 1px 5px;
+    border-radius: 3px;
+    border: 1px solid var(--color-border-light);
+}
+
+.prov-foot-link {
+    color: var(--color-accent);
+    white-space: nowrap;
+    text-decoration: none;
+    font-weight: 500;
+}
+
+.prov-foot-link:hover {
+    text-decoration: underline;
+}
+
+/* ----- Responsive: mobile zentriert statt absolute ---------------------- */
+
+@media (max-width: 520px) {
+    .prov-popover {
+        position: fixed;
+        top: auto;
+        bottom: 16px;
+        left: 16px;
+        right: 16px;
+        transform: none;
+        width: auto;
+        max-width: none;
+    }
+    .prov-popover[aria-hidden="false"] {
+        transform: none;
+    }
+    .prov-popover::before {
+        display: none;
+    }
+}

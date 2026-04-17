@@ -58,37 +58,6 @@
     color: var(--color-text-light);
 }
 
-.start-hero-prov {
-    max-width: 64ch;
-    margin: var(--space-md) auto 0;
-    font-family: var(--font-sans);
-    font-size: var(--text-sm);
-    color: var(--color-text-muted);
-    text-align: left;
-}
-.start-hero-prov > summary {
-    cursor: pointer;
-    color: var(--color-link, var(--color-text));
-    text-align: center;
-    padding: var(--space-xs) 0;
-    user-select: none;
-}
-.start-hero-prov > summary:hover {
-    text-decoration: underline;
-}
-.start-hero-prov-body {
-    padding: var(--space-sm) var(--space-md);
-    margin-top: var(--space-xs);
-    border-left: 2px solid var(--color-border, #ccc);
-    background: var(--color-surface-alt, rgba(0,0,0,0.02));
-}
-.start-hero-prov-body p {
-    margin: 0 0 var(--space-sm);
-}
-.start-hero-prov-body ul {
-    margin: 0 0 var(--space-sm);
-    padding-left: 1.2em;
-}
 
 /* Entry cards */
 .start-entry-grid {
