@@ -57,7 +57,7 @@ cp -r docs/* -> Edition-Repo
 - **Quellenkorpus** — oberste Gruppe, etwa `QGW` oder `Stadtbücher`.
 - **Quelle** — einzelne Urkunde oder Regest.
 - **Event / Rechtsgeschäft** — in einer Quelle verzeichnete Transaktion.
-- **Gesamtnennung** — jede Erwähnung einer Person, Organisation oder eines Ortes.
+- **Gesamtnennung** — Person×Quelle-Beziehung, quellenbereinigt gezählt: Mehrfacherwähnungen derselben Person in derselben Quelle zählen einmal.
 - **Individuelle Person / Organisation / Ort** — konsolidierter Registereintrag.
 
 Definitionen und Abgrenzungen: [knowledge/glossar.md](knowledge/glossar.md).
