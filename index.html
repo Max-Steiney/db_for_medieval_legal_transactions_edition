@@ -37,8 +37,8 @@
                     <button class="nav-dropdown-trigger" aria-expanded="false" aria-haspopup="true">Register <span class="nav-dropdown-arrow">&#x25BE;</span></button>
                     <div class="nav-dropdown-menu">
                         <a href="./register/persons.html">Personen</a>
-                        <a href="./register/organisations.html">Organisationen</a>
-                        <a href="./register/places.html">Orte</a>
+                        <a href="./register/organisations.html" class="nav-disabled" aria-disabled="true" title="Noch nicht freigegeben">Organisationen</a>
+                        <a href="./register/places.html" class="nav-disabled" aria-disabled="true" title="Noch nicht freigegeben">Orte</a>
                     </div>
                 </div>
                 <div class="nav-dropdown">
@@ -79,7 +79,7 @@
         </p>
         <div class="start-hero-stats">
             <span class="start-hero-stat">
-                <strong>3.041</strong> Quellen
+                <strong>2.635</strong> Quellen
             </span>
             <span class="start-hero-sep">&middot;</span>
             <span class="start-hero-stat">
@@ -87,6 +87,36 @@
                 <span class="start-hero-stat-sub">(&#9792;&thinsp;4.224 &middot; &#9794;&thinsp;11.860)</span>
             </span>
         </div>
+        <details class="start-hero-prov">
+            <summary>Wie kommen diese Zahlen zustande?</summary>
+            <div class="start-hero-prov-body">
+                <p>
+                    <strong>Quellen</strong> zählt TEI-XML-Regesten aus freigegebenen Quellenkorpora (1177–1412 (mit Ergänzungen bis 1414 für QGW II/1 und II/2)).
+                    Aufschlüsselung:
+                </p>
+                <ul>
+                    
+                    <li>QGW II/1 (1177–1414): 2023</li>
+                    
+                    <li>Stadtbücher Bd. 1 (1395–1400): 578</li>
+                    
+                    <li>QGW II/2 (1415–1417): 34</li>
+                    
+                </ul>
+                <p>
+                    <strong>Individuelle Personen</strong> ist die Anzahl konsolidierter Einträge im Personenregister
+                    (<code>personList.xml</code>): 16.084. Eine Person zählt einmal, unabhängig davon,
+                    in wie vielen Quellen sie erscheint. Die Zählebene „Gesamtnennungen" (alle Erwähnungen) ist davon
+                    zu unterscheiden. Geschlecht: &#9792;&thinsp;4.224 weiblich, &#9794;&thinsp;11.860 männlich.
+                </p>
+                <p>
+                    Zahlen werden automatisiert gegen die TEI-Quellen verifiziert. Details und Aggregate:
+                    <a href="./project/statistics.html">Statistik</a>,
+                    <a href="./project/quality.html">Qualität</a>,
+                    <a href="./project/glossary.html">Glossar</a>.
+                </p>
+            </div>
+        </details>
     </header>
 
     
@@ -94,7 +124,7 @@
         <a href="./documents.html" class="start-entry-card">
             <p class="start-entry-card-title">Quellen durchsuchen</p>
             <p class="start-entry-card-desc">
-                3.041 Quellen aus 5 Quellenkorpora
+                2.635 Quellen aus 3 Quellenkorpora
                 mit Volltextsuche, Zeitfilter und Faksimile-Ansicht.
             </p>
         </a>
@@ -209,16 +239,6 @@
                 <span class="start-collection-count">34 Quellen</span>
             </div>
             
-            <div class="start-collection-item">
-                <span class="start-collection-label">QGW II/3 (1458–1466)</span>
-                <span class="start-collection-count">352 Quellen</span>
-            </div>
-            
-            <div class="start-collection-item">
-                <span class="start-collection-label">QGW II/4 (1493–1500)</span>
-                <span class="start-collection-count">54 Quellen</span>
-            </div>
-            
         </div>
         <p class="start-transmission-note">
             1418–1447: noch nicht ausgewertet.
@@ -239,11 +259,12 @@
             </div>
             <div class="footer-col footer-col-right">
                 <p>Technische Umsetzung: <a href="https://dhcraft.org" class="footer-link">Digital Humanities Craft OG</a></p>
-                <p>Lizenz: noch zu kl&auml;ren &middot; Startseite generiert am 2026-04-17</p>
+                <p>Lizenz: <a href="./impressum.html#lizenz" class="footer-link">CC BY 4.0</a> &middot; Startseite generiert am 2026-04-17</p>
             </div>
         </div>
     </footer>
 
+    <script>window.RELEASED_PERIOD = {min: 1177, max: 1414};</script>
     <script src="./static/js/core.js"></script>
     
 </body>

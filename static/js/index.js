@@ -153,7 +153,7 @@
             });
 
             renderer.render(filteredDocs);
-            if (resultCount) resultCount.textContent = filteredDocs.length + ' Dokumente';
+            if (resultCount) resultCount.textContent = filteredDocs.length + ' Quellen';
             updateActiveFilters();
         }
 

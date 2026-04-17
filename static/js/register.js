@@ -1,5 +1,5 @@
 /* ==========================================================================
-   Wiener Urkundenbuch — Digital Edition
+   Stadt und Gemeinschaft Wien — Datenbank
    Register page: search, filter, sort
    ========================================================================== */
 
@@ -61,7 +61,7 @@
                     td.innerHTML = '<div class="detail-content"><p class="no-docs-note">Keine Dokumente verkn\u00fcpft.</p></div>';
                 } else {
                     var html = '<div class="detail-content"><table class="detail-doc-table"><thead><tr>'
-                        + '<th>Nr.</th><th>Datum</th><th>Sammlung</th><th>Regest</th></tr></thead><tbody>';
+                        + '<th>Nr.</th><th>Datum</th><th>Quellenkorpus</th><th>Regest</th></tr></thead><tbody>';
                     for (var i = 0; i < docs.length; i++) {
                         var d = docs[i];
                         html += '<tr><td><a href="' + esc(d.u) + '">' + esc(d.i) + '</a></td>'
@@ -254,19 +254,34 @@
             }
         }
 
-        // Deep-link: auto-expand entity from URL hash (e.g. persons.html#pe__123)
+        // Deep-link: auto-expand entity from URL hash (e.g. register/persons.html#pe__123)
         function openFromHash() {
             var hash = window.location.hash;
             if (!hash || hash.length < 2) return;
             var targetId = decodeURIComponent(hash.substring(1));
-            var row = tbody.querySelector('tr[data-entity-id="' + CSS.escape(targetId) + '"]');
-            if (!row) return;
-            row.scrollIntoView({ block: 'center' });
             var entry = null;
             for (var i = 0; i < allEntries.length; i++) {
                 if (allEntries[i].id === targetId) { entry = allEntries[i]; break; }
             }
-            if (entry) renderDetailRow(entry, row);
+            if (!entry) return;
+            // Filter via Suche auf die Ziel-ID, damit das Target im tbody
+            // landet (_s enthält die ID). Sonst blockiert die Paginierung.
+            // state.query muss lowercase sein, weil _s lowercase gespeichert wird.
+            state.query = targetId.toLowerCase();
+            state.letter = '';
+            state.typeFilter = '';
+            state.docsFilter = '';
+            state.qualityFilter = '';
+            var si = document.getElementById('search-input');
+            if (si) si.value = targetId;
+            if (filterType) filterType.value = '';
+            if (filterDocs) filterDocs.value = '';
+            if (filterQuality) filterQuality.value = '';
+            applyFilters();
+            var row = tbody.querySelector('tr[data-entity-id="' + CSS.escape(targetId) + '"]');
+            if (!row) return;
+            row.scrollIntoView({ block: 'center' });
+            renderDetailRow(entry, row);
         }
 
         // --- Load data from external JSON file ---

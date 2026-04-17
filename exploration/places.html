@@ -43,8 +43,8 @@
                     <button class="nav-dropdown-trigger" aria-expanded="false" aria-haspopup="true">Register <span class="nav-dropdown-arrow">&#x25BE;</span></button>
                     <div class="nav-dropdown-menu">
                         <a href="../register/persons.html">Personen</a>
-                        <a href="../register/organisations.html">Organisationen</a>
-                        <a href="../register/places.html">Orte</a>
+                        <a href="../register/organisations.html" class="nav-disabled" aria-disabled="true" title="Noch nicht freigegeben">Organisationen</a>
+                        <a href="../register/places.html" class="nav-disabled" aria-disabled="true" title="Noch nicht freigegeben">Orte</a>
                     </div>
                 </div>
                 <div class="nav-dropdown">
@@ -88,9 +88,9 @@
                     &middot;
                     371 Siedlungen auf der Karte
                     &middot;
-                    661 referenziert
+                    37 referenziert
                     &middot;
-                    925 Verknüpfungen
+                    38 Verknüpfungen
                 </span>
             </div>
             
@@ -100,13 +100,13 @@
     <div class="explore-range-wrap" id="explore-range-wrap">
         <div class="explore-range-track" id="explore-range-track">
             <div class="explore-range-fill" id="explore-range-fill"></div>
-            <input type="range" id="explore-range-min" min="1177" max="1412" step="10" value="1177" aria-label="Zeitraum von">
-            <input type="range" id="explore-range-max" min="1177" max="1412" step="10" value="1412" aria-label="Zeitraum bis">
+            <input type="range" id="explore-range-min" min="1177" max="1414" step="10" value="1177" aria-label="Zeitraum von">
+            <input type="range" id="explore-range-max" min="1177" max="1414" step="10" value="1414" aria-label="Zeitraum bis">
         </div>
-        <span class="explore-range-display" id="explore-range-display">1177–1412</span>
+        <span class="explore-range-display" id="explore-range-display">1177–1414</span>
     </div>
     
-    <span class="explore-gap-note hidden" id="explore-gap-note">Lücke 1418–1447</span>
+    <span class="explore-gap-note hidden" id="explore-gap-note">1418–1447: noch nicht ausgewertet</span>
     
 </div>
 
@@ -223,11 +223,12 @@
             </div>
             <div class="footer-col footer-col-right">
                 <p>Technische Umsetzung: <a href="https://dhcraft.org" class="footer-link">Digital Humanities Craft OG</a></p>
-                <p>Lizenz: noch zu kl&auml;ren &middot; Orte generiert am 2026-04-17</p>
+                <p>Lizenz: <a href="../impressum.html#lizenz" class="footer-link">CC BY 4.0</a> &middot; Orte generiert am 2026-04-17</p>
             </div>
         </div>
     </footer>
 
+    <script>window.RELEASED_PERIOD = {min: 1177, max: 1414};</script>
     <script src="../static/js/core.js"></script>
     
 <script src="https://unpkg.com/leaflet@1.9.4/dist/leaflet.js"

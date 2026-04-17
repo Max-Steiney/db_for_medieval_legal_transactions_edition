@@ -39,8 +39,8 @@
                     <button class="nav-dropdown-trigger" aria-expanded="false" aria-haspopup="true">Register <span class="nav-dropdown-arrow">&#x25BE;</span></button>
                     <div class="nav-dropdown-menu">
                         <a href="../../../register/persons.html">Personen</a>
-                        <a href="../../../register/organisations.html">Organisationen</a>
-                        <a href="../../../register/places.html">Orte</a>
+                        <a href="../../../register/organisations.html" class="nav-disabled" aria-disabled="true" title="Noch nicht freigegeben">Organisationen</a>
+                        <a href="../../../register/places.html" class="nav-disabled" aria-disabled="true" title="Noch nicht freigegeben">Orte</a>
                     </div>
                 </div>
                 <div class="nav-dropdown">
@@ -77,7 +77,7 @@
         <div class="doc-toolbar-inner">
             <div class="doc-toolbar-left">
                 <nav class="doc-breadcrumb">
-                    <a href="../../../documents.html">Dokumente</a>
+                    <a href="../../../documents.html">Quellen</a>
                     <span class="bc-sep">›</span>
                     <span>QGW II/1 (1177–1414)</span>
                 </nav>
@@ -149,14 +149,14 @@
     <div class="doc-content">
         <!-- Document body (rendered TEI) -->
         <div class="doc-body">
-            <section class="tei-abstract"><p><span class="anno-event" data-ref="ev__QGW_II_I_725"><span class="anno-fn anno-fn-issuer" data-role="issuer"><span class="fn-label">Aussteller*in</span><a class="anno-person" data-ref="pe__karl_iv_QGW_II_I_725" title="Karl Kaiser [pe__karl_iv_QGW_II_I_725]" href="../../../persons.html#pe__karl_iv_QGW_II_I_725"><span class="anno-attr anno-attr-title">Kaiser</span> Karl
+            <section class="tei-abstract"><p><span class="anno-event" data-ref="ev__QGW_II_I_725"><span class="anno-fn anno-fn-issuer" data-role="issuer"><span class="fn-label">Aussteller*in</span><a class="anno-person" data-ref="pe__karl_iv_QGW_II_I_725" title="Karl Kaiser [pe__karl_iv_QGW_II_I_725]" href="../../../register/persons.html#pe__karl_iv_QGW_II_I_725"><span class="anno-attr anno-attr-title">Kaiser</span> Karl
                         IV.</a></span>
-                  <span class="anno-trigger anno-trigger-disp">gestattet</span>, dass <span class="anno-fn anno-fn-recipient" data-role="recipient"><span class="fn-label">Empfänger*in</span><a class="anno-org" data-ref="org__oesterreich-herzogtum" title="Herzogtum Österreich (Herzogtum) [org__oesterreich-herzogtum]" href="../../../organisations.html#org__oesterreich-herzogtum">die österreichischen
+                  <span class="anno-trigger anno-trigger-disp">gestattet</span>, dass <span class="anno-fn anno-fn-recipient" data-role="recipient"><span class="fn-label">Empfänger*in</span><a class="anno-org" data-ref="org__oesterreich-herzogtum" title="Herzogtum Österreich (Herzogtum) [org__oesterreich-herzogtum]" href="../../../register/organisations.html#org__oesterreich-herzogtum">die österreichischen
                         Kaufleute</a></span> ihren Wein durch Mähren nach Böhmen und nach Polen
                   führen, ihn aber auch in Mähren selbst ablegen dürfen, wogegen die Kaufleute von
                   Mähren, Böhmen und Polen ihr getreide allerlei, wie man das genennen mag, nach
                   Oesterreich verführen können.</span>
-            </p></section><section class="tei-seal"><p><span class="anno-event" data-ref="ev__QGW_II_I_725"><span class="anno-fn anno-fn-witness" data-role="witness"><span class="fn-label">Zeug*in</span><a class="anno-person" data-ref="pe__karl_iv_QGW_II_I_725" title="Karl Kaiser [pe__karl_iv_QGW_II_I_725]" href="../../../persons.html#pe__karl_iv_QGW_II_I_725">Besiegelt mit der keiserlichen
+            </p></section><section class="tei-seal"><p><span class="anno-event" data-ref="ev__QGW_II_I_725"><span class="anno-fn anno-fn-witness" data-role="witness"><span class="fn-label">Zeug*in</span><a class="anno-person" data-ref="pe__karl_iv_QGW_II_I_725" title="Karl Kaiser [pe__karl_iv_QGW_II_I_725]" href="../../../register/persons.html#pe__karl_iv_QGW_II_I_725">Besiegelt mit der keiserlichen
                         maiestat anhangendem insigel</a></span>.</span>
             </p></section><section class="tei-nota"><p>Auf dem Buge von anderer Hand: ad mandatum cesaris cancellarius. </p></section>
 
@@ -351,11 +351,12 @@
             </div>
             <div class="footer-col footer-col-right">
                 <p>Technische Umsetzung: <a href="https://dhcraft.org" class="footer-link">Digital Humanities Craft OG</a></p>
-                <p>Lizenz: noch zu kl&auml;ren &middot; QGW II/1 (1177–1414) &middot; Nr. 725</p>
+                <p>Lizenz: <a href="../../../impressum.html#lizenz" class="footer-link">CC BY 4.0</a> &middot; QGW II/1 (1177–1414) &middot; Nr. 725</p>
             </div>
         </div>
     </footer>
 
+    <script>window.RELEASED_PERIOD = {min: 1177, max: 1414};</script>
     <script src="../../../static/js/core.js"></script>
     
 <script src="../../../static/js/tooltips.js"></script>

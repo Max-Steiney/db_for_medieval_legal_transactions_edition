@@ -39,8 +39,8 @@
                     <button class="nav-dropdown-trigger" aria-expanded="false" aria-haspopup="true">Register <span class="nav-dropdown-arrow">&#x25BE;</span></button>
                     <div class="nav-dropdown-menu">
                         <a href="../../../register/persons.html">Personen</a>
-                        <a href="../../../register/organisations.html">Organisationen</a>
-                        <a href="../../../register/places.html">Orte</a>
+                        <a href="../../../register/organisations.html" class="nav-disabled" aria-disabled="true" title="Noch nicht freigegeben">Organisationen</a>
+                        <a href="../../../register/places.html" class="nav-disabled" aria-disabled="true" title="Noch nicht freigegeben">Orte</a>
                     </div>
                 </div>
                 <div class="nav-dropdown">
@@ -77,7 +77,7 @@
         <div class="doc-toolbar-inner">
             <div class="doc-toolbar-left">
                 <nav class="doc-breadcrumb">
-                    <a href="../../../documents.html">Dokumente</a>
+                    <a href="../../../documents.html">Quellen</a>
                     <span class="bc-sep">›</span>
                     <span>QGW II/1 (1177–1414)</span>
                 </nav>
@@ -152,9 +152,9 @@
             
          <section class="tei-abstract">
             <p>
-               <span class="anno-event" data-ref="ev__QGW_II_II_1953"><span class="anno-fn anno-fn-issuer" data-role="issuer"><span class="fn-label">Aussteller*in</span><a class="anno-person" data-ref="pe__johann_aczinger_QGW_II_II_3549" title="Johann Aczinger [pe__johann_aczinger_QGW_II_II_3549]" href="../../../persons.html#pe__johann_aczinger_QGW_II_II_3549">Hanns Aczinger,
+               <span class="anno-event" data-ref="ev__QGW_II_II_1953"><span class="anno-fn anno-fn-issuer" data-role="issuer"><span class="fn-label">Aussteller*in</span><a class="anno-person" data-ref="pe__johann_aczinger_QGW_II_II_3549" title="Johann Aczinger [pe__johann_aczinger_QGW_II_II_3549]" href="../../../register/persons.html#pe__johann_aczinger_QGW_II_II_3549">Hanns Aczinger,
                         <span class="anno-attr anno-attr-occ" data-corresp="org__wien">büriger</span> ze Wienn</a>,</span>
-                  <span class="anno-trigger anno-trigger-disp">bestätigt</span>, von <span class="anno-fn anno-fn-recipient" data-role="recipient"><span class="fn-label">Empfänger*in</span><a class="anno-person" data-ref="pe__stephan_schernhaimer_QGW_II_II_1953" title="Stephan Schernhaimer [pe__stephan_schernhaimer_QGW_II_II_1953]" href="../../../persons.html#pe__stephan_schernhaimer_QGW_II_II_1953">Stephan
+                  <span class="anno-trigger anno-trigger-disp">bestätigt</span>, von <span class="anno-fn anno-fn-recipient" data-role="recipient"><span class="fn-label">Empfänger*in</span><a class="anno-person" data-ref="pe__stephan_schernhaimer_QGW_II_II_1953" title="Stephan Schernhaimer [pe__stephan_schernhaimer_QGW_II_II_1953]" href="../../../register/persons.html#pe__stephan_schernhaimer_QGW_II_II_1953">Stephan
                         Scherenhaimer, <span class="anno-attr anno-attr-occ" data-corresp="org__wien">mitpüriger</span> ze Wienn</a></span>, 42 lb dn. <span class="anno-trigger anno-trigger-disp">erhalten zu haben</span>, <span class="anno-event" data-ref="NULL"> die gebesen sind
                      Merten des Helbling, püriger ze Merczuslog, und die er hinz dem Scherenhaimer
                      verboten hat von wegen der gehaiss und urlaub herzog Albrechts ze
@@ -163,8 +163,8 @@
          </section>
          <section class="tei-seal">
             <p><span class="anno-event" data-ref="ev__QGW_II_II_1953"><span class="anno-fn anno-fn-witness" data-role="witness"><span class="fn-label">Zeug*in</span>Siegler: der
-                        <a class="anno-person" data-ref="pe__johann_aczinger_QGW_II_II_3549" title="Johann Aczinger [pe__johann_aczinger_QGW_II_II_3549]" href="../../../persons.html#pe__johann_aczinger_QGW_II_II_3549">Aussteller</a>
-                     und der <a class="anno-person" data-ref="pe__michael_menschein_QGW_II_I_1218" title="Michael Menschein [pe__michael_menschein_QGW_II_I_1218]" href="../../../persons.html#pe__michael_menschein_QGW_II_I_1218">Wiener
+                        <a class="anno-person" data-ref="pe__johann_aczinger_QGW_II_II_3549" title="Johann Aczinger [pe__johann_aczinger_QGW_II_II_3549]" href="../../../register/persons.html#pe__johann_aczinger_QGW_II_II_3549">Aussteller</a>
+                     und der <a class="anno-person" data-ref="pe__michael_menschein_QGW_II_I_1218" title="Michael Menschein [pe__michael_menschein_QGW_II_I_1218]" href="../../../register/persons.html#pe__michael_menschein_QGW_II_I_1218">Wiener
                         <span class="anno-attr anno-attr-occ" data-corresp="org__wien">Bürger</span> Michel der Menschein</a>.</span></span>
             </p>
          </section>
@@ -357,11 +357,12 @@
             </div>
             <div class="footer-col footer-col-right">
                 <p>Technische Umsetzung: <a href="https://dhcraft.org" class="footer-link">Digital Humanities Craft OG</a></p>
-                <p>Lizenz: noch zu kl&auml;ren &middot; QGW II/1 (1177–1414) &middot; Nr. 1953</p>
+                <p>Lizenz: <a href="../../../impressum.html#lizenz" class="footer-link">CC BY 4.0</a> &middot; QGW II/1 (1177–1414) &middot; Nr. 1953</p>
             </div>
         </div>
     </footer>
 
+    <script>window.RELEASED_PERIOD = {min: 1177, max: 1414};</script>
     <script src="../../../static/js/core.js"></script>
     
 <script src="../../../static/js/tooltips.js"></script>

@@ -3,7 +3,7 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Dokumentenverzeichnis — Datenbank</title>
+    <title>Quellenverzeichnis — Datenbank</title>
     <link rel="preconnect" href="https://fonts.googleapis.com">
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
     <link href="https://fonts.googleapis.com/css2?family=Crimson+Pro:ital,wght@0,300;0,400;0,500;0,600;0,700;1,300;1,400;1,500&family=Inter:wght@300;400;500;600&family=JetBrains+Mono:wght@400&display=swap" rel="stylesheet">
@@ -36,8 +36,8 @@
                     <button class="nav-dropdown-trigger" aria-expanded="false" aria-haspopup="true">Register <span class="nav-dropdown-arrow">&#x25BE;</span></button>
                     <div class="nav-dropdown-menu">
                         <a href="./register/persons.html">Personen</a>
-                        <a href="./register/organisations.html">Organisationen</a>
-                        <a href="./register/places.html">Orte</a>
+                        <a href="./register/organisations.html" class="nav-disabled" aria-disabled="true" title="Noch nicht freigegeben">Organisationen</a>
+                        <a href="./register/places.html" class="nav-disabled" aria-disabled="true" title="Noch nicht freigegeben">Orte</a>
                     </div>
                 </div>
                 <div class="nav-dropdown">
@@ -73,7 +73,7 @@
     <header class="index-header">
         <h1>Quellenverzeichnis</h1>
         <p class="index-subtitle">
-            <span class="stat">3.041</span> Quellen,
+            <span class="stat">2.635</span> Quellen,
             <span class="stat">16.084</span> individuelle Personen
             <span class="index-date-range">&mdash; Wien, 1177–1412 (mit Ergänzungen bis 1414 für QGW II/1 und II/2)</span>
         </p>
@@ -83,7 +83,7 @@
     
     <section class="range-slider-section">
         <div class="range-slider" id="range-slider"
-             data-min="1177" data-max="1494">
+             data-min="1177" data-max="1414">
             <div class="range-histogram" id="range-histogram">
                 
                 <div class="range-bar"
@@ -261,76 +261,20 @@
                      title="1410er: 243 Dok.">
                 </div>
                 
-                <div class="range-bar"
-                     data-decade="1420"
-                     data-count="0"
-                     style="height: 0%"
-                     title="1420er: 0 Dok.">
-                </div>
-                
-                <div class="range-bar"
-                     data-decade="1430"
-                     data-count="0"
-                     style="height: 0%"
-                     title="1430er: 0 Dok.">
-                </div>
-                
-                <div class="range-bar"
-                     data-decade="1440"
-                     data-count="0"
-                     style="height: 0%"
-                     title="1440er: 0 Dok.">
-                </div>
-                
-                <div class="range-bar"
-                     data-decade="1450"
-                     data-count="167"
-                     style="height: 22%"
-                     title="1450er: 167 Dok.">
-                </div>
-                
-                <div class="range-bar"
-                     data-decade="1460"
-                     data-count="185"
-                     style="height: 25%"
-                     title="1460er: 185 Dok.">
-                </div>
-                
-                <div class="range-bar"
-                     data-decade="1470"
-                     data-count="0"
-                     style="height: 0%"
-                     title="1470er: 0 Dok.">
-                </div>
-                
-                <div class="range-bar"
-                     data-decade="1480"
-                     data-count="0"
-                     style="height: 0%"
-                     title="1480er: 0 Dok.">
-                </div>
-                
-                <div class="range-bar"
-                     data-decade="1490"
-                     data-count="54"
-                     style="height: 7%"
-                     title="1490er: 54 Dok.">
-                </div>
-                
             </div>
             <div class="range-inputs">
                 <input type="range" id="range-min"
-                       min="1177" max="1494"
+                       min="1177" max="1414"
                        value="1177" step="1"
                        aria-label="Startjahr">
                 <input type="range" id="range-max"
-                       min="1177" max="1494"
-                       value="1494" step="1"
+                       min="1177" max="1414"
+                       value="1414" step="1"
                        aria-label="Endjahr">
             </div>
             <div class="range-labels">
                 <span class="range-label-min" id="range-label-min">1177</span>
-                <span class="range-label-max" id="range-label-max">1494</span>
+                <span class="range-label-max" id="range-label-max">1414</span>
             </div>
         </div>
     </section>
@@ -349,14 +293,6 @@
         
         <button class="chip" data-collection="QGW/Vienna_1415-1417">
             QGW II/2 (1415–1417) <span class="chip-count">34</span>
-        </button>
-        
-        <button class="chip" data-collection="QGW/Vienna_1458-66">
-            QGW II/3 (1458–1466) <span class="chip-count">352</span>
-        </button>
-        
-        <button class="chip" data-collection="QGW/Vienna_1493-1500">
-            QGW II/4 (1493–1500) <span class="chip-count">54</span>
         </button>
         
     </section>
@@ -378,56 +314,56 @@
             <select id="filter-place" aria-label="Ort filtern">
                 <option value="">Alle Orte</option>
                 
-                <option value="Wien">Wien (1758)</option>
+                <option value="Wien">Wien (1537)</option>
                 
-                <option value="Wiener-Neustadt">Wiener-Neustadt (63)</option>
-                
-                <option value="Graz">Graz (19)</option>
-                
-                <option value="Schrattenthal">Schrattenthal (11)</option>
-                
-                <option value="Pressburg">Pressburg (10)</option>
-                
-                <option value="Linz">Linz (10)</option>
-                
-                <option value="Prag">Prag (10)</option>
+                <option value="Pressburg">Pressburg (9)</option>
                 
                 <option value="Mödling">Mödling (9)</option>
                 
+                <option value="Prag">Prag (9)</option>
+                
                 <option value="Wiener Neustadt">Wiener Neustadt (9)</option>
                 
-                <option value="Ofen">Ofen (8)</option>
+                <option value="Graz">Graz (6)</option>
                 
-                <option value="Krems">Krems (6)</option>
+                <option value="Ofen">Ofen (6)</option>
                 
-                <option value="Bösing">Bösing (6)</option>
+                <option value="Wiener-Neustadt">Wiener-Neustadt (6)</option>
+                
+                <option value="Krems">Krems (5)</option>
                 
                 <option value="Rom">Rom (4)</option>
                 
-                <option value="Korneuburg">Korneuburg (4)</option>
+                <option value="Venedig">Venedig (3)</option>
                 
-                <option value="Brünn">Brünn (4)</option>
+                <option value="Linz">Linz (3)</option>
+                
+                <option value="Avignon">Avignon (3)</option>
+                
+                <option value="St. Pölten">St. Pölten (3)</option>
+                
+                <option value="Tulln">Tulln (3)</option>
                 
             </select>
         </div>
         <div class="filter-group">
             <select id="filter-facs" aria-label="Faksimile">
                 <option value="">Faksimile</option>
-                <option value="1">Mit Faksimile (2398)</option>
-                <option value="0">Ohne Faksimile (643)</option>
+                <option value="1">Mit Faksimile (2011)</option>
+                <option value="0">Ohne Faksimile (624)</option>
             </select>
         </div>
         <div class="filter-group">
             <select id="filter-quality" aria-label="Qualität">
                 <option value="">Qualität</option>
-                <option value="0">Fehlerfrei (1087)</option>
-                <option value="1">Hinweise (1794)</option>
-                <option value="2">Warnungen (160)</option>
+                <option value="0">Fehlerfrei (697)</option>
+                <option value="1">Hinweise (1793)</option>
+                <option value="2">Warnungen (145)</option>
             </select>
         </div>
         
 <div class="result-count" id="result-count">
-    3041 Dokumente
+    2635 Quellen
 </div>
 
     </section>
@@ -452,7 +388,7 @@
         </table>
         
 <div class="no-results hidden" id="no-results">
-    <p>Keine Dokumente gefunden.</p>
+    <p>Keine Quellen gefunden.</p>
 </div>
 
     </section>
@@ -471,11 +407,12 @@
             </div>
             <div class="footer-col footer-col-right">
                 <p>Technische Umsetzung: <a href="https://dhcraft.org" class="footer-link">Digital Humanities Craft OG</a></p>
-                <p>Lizenz: noch zu kl&auml;ren &middot; 3041 Dokumente</p>
+                <p>Lizenz: <a href="./impressum.html#lizenz" class="footer-link">CC BY 4.0</a> &middot; 2635 Quellen</p>
             </div>
         </div>
     </footer>
 
+    <script>window.RELEASED_PERIOD = {min: 1177, max: 1414};</script>
     <script src="./static/js/core.js"></script>
     
 <script src="./static/js/table-infra.js"></script>

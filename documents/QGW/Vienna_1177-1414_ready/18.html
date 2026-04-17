@@ -39,8 +39,8 @@
                     <button class="nav-dropdown-trigger" aria-expanded="false" aria-haspopup="true">Register <span class="nav-dropdown-arrow">&#x25BE;</span></button>
                     <div class="nav-dropdown-menu">
                         <a href="../../../register/persons.html">Personen</a>
-                        <a href="../../../register/organisations.html">Organisationen</a>
-                        <a href="../../../register/places.html">Orte</a>
+                        <a href="../../../register/organisations.html" class="nav-disabled" aria-disabled="true" title="Noch nicht freigegeben">Organisationen</a>
+                        <a href="../../../register/places.html" class="nav-disabled" aria-disabled="true" title="Noch nicht freigegeben">Orte</a>
                     </div>
                 </div>
                 <div class="nav-dropdown">
@@ -77,7 +77,7 @@
         <div class="doc-toolbar-inner">
             <div class="doc-toolbar-left">
                 <nav class="doc-breadcrumb">
-                    <a href="../../../documents.html">Dokumente</a>
+                    <a href="../../../documents.html">Quellen</a>
                     <span class="bc-sep">›</span>
                     <span>QGW II/1 (1177–1414)</span>
                 </nav>
@@ -149,9 +149,9 @@
     <div class="doc-content">
         <!-- Document body (rendered TEI) -->
         <div class="doc-body">
-            <section class="tei-abstract"><p><span class="anno-event" data-ref="ev__QGW_II_I_18">* <a class="anno-person" data-ref="pe__siegfried_leubel_QGW_II_I_18" title="Siegfried Leubel Leubel [pe__siegfried_leubel_QGW_II_I_18]" href="../../../persons.html#pe__siegfried_leubel_QGW_II_I_18">Sifridus dictus Leublo, Wiener <span class="anno-attr anno-attr-occ" data-corresp="org__wien">Bürger</span></a>, <span class="anno-trigger anno-trigger-disp">bezeugt</span>, dass er für seiner Eltern, Gemahlinnen und
+            <section class="tei-abstract"><p><span class="anno-event" data-ref="ev__QGW_II_I_18">* <a class="anno-person" data-ref="pe__siegfried_leubel_QGW_II_I_18" title="Siegfried Leubel Leubel [pe__siegfried_leubel_QGW_II_I_18]" href="../../../register/persons.html#pe__siegfried_leubel_QGW_II_I_18">Sifridus dictus Leublo, Wiener <span class="anno-attr anno-attr-occ" data-corresp="org__wien">Bürger</span></a>, <span class="anno-trigger anno-trigger-disp">bezeugt</span>, dass er für seiner Eltern, Gemahlinnen und
                      Verwandten<span class="anno-trigger anno-trigger-disp"> Seelenheil in seinem Hause eine Kapelle
-                     gestiftet habe</span>, <span class="anno-fn anno-fn-recipient" data-role="recipient"><span class="fn-label">Empfänger*in</span><a class="anno-org" data-ref="org__wien-st_philipp_und_st_jakob_kapelle" title="St. Philipp und Jakobkapelle (Kirche_Kapelle) [org__wien-st_philipp_und_st_jakob_kapelle]" href="../../../organisations.html#org__wien-st_philipp_und_st_jakob_kapelle"><span class="tei-add">in seinem Hause eine
+                     gestiftet habe</span>, <span class="anno-fn anno-fn-recipient" data-role="recipient"><span class="fn-label">Empfänger*in</span><a class="anno-org" data-ref="org__wien-st_philipp_und_st_jakob_kapelle" title="St. Philipp und Jakobkapelle (Kirche_Kapelle) [org__wien-st_philipp_und_st_jakob_kapelle]" href="../../../register/organisations.html#org__wien-st_philipp_und_st_jakob_kapelle"><span class="tei-add">in seinem Hause eine
                            Kapelle gestiftet habe</span></a></span> und verfügt, dass sie nach dem
                   Tode des Herrn Konrad nur einem würdigen Priester übertragen werde, der dieselbe
                   ordentlich zu verwalten und jeden Montag eine Seelenmesse zu lesen hat. Zur
@@ -160,7 +160,7 @@
                   von dem Hause der Wislibinne, einen Weingarten in Sancto loco, genannt Longus
                   ager, und ein Haus bei dem Chore mit einem Keller, der den Grund der Kapelle
                   bildet.</span>
-            </p></section><section class="tei-seal"><p><span class="anno-event" data-ref="ev__QGW_II_I_18"><span class="anno-fn anno-fn-witness" data-role="witness"><span class="fn-label">Zeug*in</span>Siegler: <a class="anno-person" data-ref="pe__wilhelm_QGW_II_I_17" title="Wilhelm [pe__wilhelm_QGW_II_I_17]" href="../../../persons.html#pe__wilhelm_QGW_II_I_17">1. der Schottenabt</a>, <a class="anno-person" data-ref="pe__siegfried_leubel_QGW_II_I_18" title="Siegfried Leubel Leubel [pe__siegfried_leubel_QGW_II_I_18]" href="../../../persons.html#pe__siegfried_leubel_QGW_II_I_18">2. der
+            </p></section><section class="tei-seal"><p><span class="anno-event" data-ref="ev__QGW_II_I_18"><span class="anno-fn anno-fn-witness" data-role="witness"><span class="fn-label">Zeug*in</span>Siegler: <a class="anno-person" data-ref="pe__wilhelm_QGW_II_I_17" title="Wilhelm [pe__wilhelm_QGW_II_I_17]" href="../../../register/persons.html#pe__wilhelm_QGW_II_I_17">1. der Schottenabt</a>, <a class="anno-person" data-ref="pe__siegfried_leubel_QGW_II_I_18" title="Siegfried Leubel Leubel [pe__siegfried_leubel_QGW_II_I_18]" href="../../../register/persons.html#pe__siegfried_leubel_QGW_II_I_18">2. der
                      Aussteller</a></span></span>.</p></section><section class="tei-nota"><p>Indorsat: 14. Jahrh. Littera fundacionis capelle beatorum apostolorum Philippi et
                Jacobi. </p></section>
 
@@ -355,11 +355,12 @@
             </div>
             <div class="footer-col footer-col-right">
                 <p>Technische Umsetzung: <a href="https://dhcraft.org" class="footer-link">Digital Humanities Craft OG</a></p>
-                <p>Lizenz: noch zu kl&auml;ren &middot; QGW II/1 (1177–1414) &middot; Nr. 18</p>
+                <p>Lizenz: <a href="../../../impressum.html#lizenz" class="footer-link">CC BY 4.0</a> &middot; QGW II/1 (1177–1414) &middot; Nr. 18</p>
             </div>
         </div>
     </footer>
 
+    <script>window.RELEASED_PERIOD = {min: 1177, max: 1414};</script>
     <script src="../../../static/js/core.js"></script>
     
 <script src="../../../static/js/tooltips.js"></script>

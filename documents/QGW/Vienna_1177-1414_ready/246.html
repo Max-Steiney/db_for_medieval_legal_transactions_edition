@@ -39,8 +39,8 @@
                     <button class="nav-dropdown-trigger" aria-expanded="false" aria-haspopup="true">Register <span class="nav-dropdown-arrow">&#x25BE;</span></button>
                     <div class="nav-dropdown-menu">
                         <a href="../../../register/persons.html">Personen</a>
-                        <a href="../../../register/organisations.html">Organisationen</a>
-                        <a href="../../../register/places.html">Orte</a>
+                        <a href="../../../register/organisations.html" class="nav-disabled" aria-disabled="true" title="Noch nicht freigegeben">Organisationen</a>
+                        <a href="../../../register/places.html" class="nav-disabled" aria-disabled="true" title="Noch nicht freigegeben">Orte</a>
                     </div>
                 </div>
                 <div class="nav-dropdown">
@@ -77,7 +77,7 @@
         <div class="doc-toolbar-inner">
             <div class="doc-toolbar-left">
                 <nav class="doc-breadcrumb">
-                    <a href="../../../documents.html">Dokumente</a>
+                    <a href="../../../documents.html">Quellen</a>
                     <span class="bc-sep">›</span>
                     <span>QGW II/1 (1177–1414)</span>
                 </nav>
@@ -147,10 +147,10 @@
         <!-- Document body (rendered TEI) -->
         <div class="doc-body">
             <section class="tei-abstract"><p>
-               <span class="anno-event" data-ref="ev__QGW_II_I_246"><span class="anno-fn anno-fn-issuer" data-role="issuer"><span class="fn-label">Aussteller*in</span><a class="anno-person" data-ref="pe__jakob_von_feldsberg" title="Jakob von Feldsberg von Feldsberg [pe__jakob_von_feldsberg]" href="../../../persons.html#pe__jakob_von_feldsberg"><span class="anno-attr anno-attr-title">Pruder</span> Jacob
-                        van Velsperch, <span class="anno-attr anno-attr-occ" data-corresp="org__wien-dominikaner">prior</span>,</a> und aller <a class="anno-org" data-ref="org__wien-dominikaner" title="Dominikaner (Prediger) Wien (Kloster_m) [org__wien-dominikaner]" href="../../../organisations.html#org__wien-dominikaner">convent der pruder Prediger ordens ze
+               <span class="anno-event" data-ref="ev__QGW_II_I_246"><span class="anno-fn anno-fn-issuer" data-role="issuer"><span class="fn-label">Aussteller*in</span><a class="anno-person" data-ref="pe__jakob_von_feldsberg" title="Jakob von Feldsberg von Feldsberg [pe__jakob_von_feldsberg]" href="../../../register/persons.html#pe__jakob_von_feldsberg"><span class="anno-attr anno-attr-title">Pruder</span> Jacob
+                        van Velsperch, <span class="anno-attr anno-attr-occ" data-corresp="org__wien-dominikaner">prior</span>,</a> und aller <a class="anno-org" data-ref="org__wien-dominikaner" title="Dominikaner (Prediger) Wien (Kloster_m) [org__wien-dominikaner]" href="../../../register/organisations.html#org__wien-dominikaner">convent der pruder Prediger ordens ze
                      Wienn</a></span>
-                  <span class="anno-trigger anno-trigger-disp">verpflichten</span> sich gegen <span class="anno-fn anno-fn-recipient" data-role="recipient"><span class="fn-label">Empfänger*in</span><a class="anno-person" data-ref="pe__elisabeth_QGW_II_I_189_a" title="Elisabeth von Neuburg [pe__elisabeth_QGW_II_I_189_a]" href="../../../persons.html#pe__elisabeth_QGW_II_I_189_a"><span class="anno-attr anno-attr-title">Frau</span> Elspet <span class="anno-attr anno-attr-kin" data-corresp="pe__otto_percz"><span class="tei-add">witwe</span></span>, weilen <a class="anno-person" data-ref="pe__otto_percz" title="Otto Percz Percz [pe__otto_percz]" href="../../../persons.html#pe__otto_percz"><span class="anno-attr anno-attr-title">herrn</span> Otten Percz witwe ze Neunburch klosteres
+                  <span class="anno-trigger anno-trigger-disp">verpflichten</span> sich gegen <span class="anno-fn anno-fn-recipient" data-role="recipient"><span class="fn-label">Empfänger*in</span><a class="anno-person" data-ref="pe__elisabeth_QGW_II_I_189_a" title="Elisabeth von Neuburg [pe__elisabeth_QGW_II_I_189_a]" href="../../../register/persons.html#pe__elisabeth_QGW_II_I_189_a"><span class="anno-attr anno-attr-title">Frau</span> Elspet <span class="anno-attr anno-attr-kin" data-corresp="pe__otto_percz"><span class="tei-add">witwe</span></span>, weilen <a class="anno-person" data-ref="pe__otto_percz" title="Otto Percz Percz [pe__otto_percz]" href="../../../register/persons.html#pe__otto_percz"><span class="anno-attr anno-attr-title">herrn</span> Otten Percz witwe ze Neunburch klosteres
                         halb</a></a></span>, eine tägliche Messe zu lesen und alljährlich des
                   nächsten tages nach sant Giligen tag einen Jahrtag zu begehen, wogegen sie
                   jährlich 4 lb dn. gult erhalten sollen.</span>
@@ -347,11 +347,12 @@
             </div>
             <div class="footer-col footer-col-right">
                 <p>Technische Umsetzung: <a href="https://dhcraft.org" class="footer-link">Digital Humanities Craft OG</a></p>
-                <p>Lizenz: noch zu kl&auml;ren &middot; QGW II/1 (1177–1414) &middot; Nr. 246</p>
+                <p>Lizenz: <a href="../../../impressum.html#lizenz" class="footer-link">CC BY 4.0</a> &middot; QGW II/1 (1177–1414) &middot; Nr. 246</p>
             </div>
         </div>
     </footer>
 
+    <script>window.RELEASED_PERIOD = {min: 1177, max: 1414};</script>
     <script src="../../../static/js/core.js"></script>
     
 <script src="../../../static/js/tooltips.js"></script>

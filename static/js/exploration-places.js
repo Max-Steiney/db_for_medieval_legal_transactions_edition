@@ -24,6 +24,7 @@
         var selectedPlaceId = null;
 
         // State
+        var RP = window.RELEASED_PERIOD || {min: 1177, max: 1414};
         var state = {
             search: '',
             typeFilter: 'all',
@@ -31,8 +32,8 @@
             geoFilter: 'all',
             sortField: 'doc_count',
             sortDir: -1,
-            decadeMin: 1170,
-            decadeMax: 1520
+            decadeMin: RP.min,
+            decadeMax: RP.max
         };
 
         var timeActive = false;
@@ -69,7 +70,7 @@
 
         // -- Shared bindings --
         ChartHelpers.bindTimeRange('explore', state, function() {
-            timeActive = (state.decadeMin > 1170 || state.decadeMax < 1520);
+            timeActive = (state.decadeMin > RP.min || state.decadeMax < RP.max);
             if (epicD) {
                 populateMap();
                 renderTable();

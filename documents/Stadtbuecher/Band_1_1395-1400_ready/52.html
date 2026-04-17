@@ -39,8 +39,8 @@
                     <button class="nav-dropdown-trigger" aria-expanded="false" aria-haspopup="true">Register <span class="nav-dropdown-arrow">&#x25BE;</span></button>
                     <div class="nav-dropdown-menu">
                         <a href="../../../register/persons.html">Personen</a>
-                        <a href="../../../register/organisations.html">Organisationen</a>
-                        <a href="../../../register/places.html">Orte</a>
+                        <a href="../../../register/organisations.html" class="nav-disabled" aria-disabled="true" title="Noch nicht freigegeben">Organisationen</a>
+                        <a href="../../../register/places.html" class="nav-disabled" aria-disabled="true" title="Noch nicht freigegeben">Orte</a>
                     </div>
                 </div>
                 <div class="nav-dropdown">
@@ -77,7 +77,7 @@
         <div class="doc-toolbar-inner">
             <div class="doc-toolbar-left">
                 <nav class="doc-breadcrumb">
-                    <a href="../../../documents.html">Dokumente</a>
+                    <a href="../../../documents.html">Quellen</a>
                     <span class="bc-sep">›</span>
                     <span>Stadtbücher Bd. 1 (1395–1400)</span>
                 </nav>
@@ -147,11 +147,11 @@
         <!-- Document body (rendered TEI) -->
         <div class="doc-body">
             <header class="tei-header"><p>Mitteilung einer Volljährigkeits weisung für Andreas, Sohn des Hans Puchel</p></header><section class="tei-div"><p> Einbr., Zeugen (Indez: Item weisung Andres Hansen des Puchel sun seiner jar) (fol.7v)
-            <span class="anno-event" data-ref="ev__StB_I_52"><span class="anno-fn anno-fn-recipient" data-role="recipient"><span class="fn-label">Empfänger*in</span><a class="anno-org" data-ref="org__wien" title="Wien (Stadt) [org__wien]" href="../../../organisations.html#org__wien">Den erbern herren, dem purgermaister, dem richter und dem rat ze
-                Wienn </a></span>enbieten wir, <span class="anno-fn anno-fn-issuer" data-role="issuer"><span class="fn-label">Aussteller*in</span><a class="anno-org" data-ref="org__tulln" title="Tulln (Stadt) [org__tulln]" href="../../../organisations.html#org__tulln">der richter und der rat ze Tulln</a></span>, uns ern willigen dinst
-            ze allen zeiten. Wir lazzen ewr weishait wizzen, das <span class="anno-fn anno-fn-other" data-role="other"><span class="fn-label">Sonstige</span><a class="anno-person" data-ref="pe__johann_puechel_StB_I_52" title="Johann Püchel [pe__johann_puechel_StB_I_52]" href="../../../persons.html#pe__johann_puechel_StB_I_52">Hanns der Puchel </a>fur uns chomen
+            <span class="anno-event" data-ref="ev__StB_I_52"><span class="anno-fn anno-fn-recipient" data-role="recipient"><span class="fn-label">Empfänger*in</span><a class="anno-org" data-ref="org__wien" title="Wien (Stadt) [org__wien]" href="../../../register/organisations.html#org__wien">Den erbern herren, dem purgermaister, dem richter und dem rat ze
+                Wienn </a></span>enbieten wir, <span class="anno-fn anno-fn-issuer" data-role="issuer"><span class="fn-label">Aussteller*in</span><a class="anno-org" data-ref="org__tulln" title="Tulln (Stadt) [org__tulln]" href="../../../register/organisations.html#org__tulln">der richter und der rat ze Tulln</a></span>, uns ern willigen dinst
+            ze allen zeiten. Wir lazzen ewr weishait wizzen, das <span class="anno-fn anno-fn-other" data-role="other"><span class="fn-label">Sonstige</span><a class="anno-person" data-ref="pe__johann_puechel_StB_I_52" title="Johann Püchel [pe__johann_puechel_StB_I_52]" href="../../../register/persons.html#pe__johann_puechel_StB_I_52">Hanns der Puchel </a>fur uns chomen
               ist in den rat und <span class="anno-trigger anno-trigger-fn">hat beweist</span></span> mit erbern frumen
-            lewten, das <span class="anno-fn anno-fn-recipient" data-role="recipient"><span class="fn-label">Empfänger*in</span><a class="anno-person" data-ref="pe__andreas_puechel_StB_I_52" title="Andreas Püchel [pe__andreas_puechel_StB_I_52]" href="../../../persons.html#pe__andreas_puechel_StB_I_52"><span class="anno-attr anno-attr-kin" data-corresp="pe__johann_puechel_StB_I_52">sein sun</span> Andre</a>
+            lewten, das <span class="anno-fn anno-fn-recipient" data-role="recipient"><span class="fn-label">Empfänger*in</span><a class="anno-person" data-ref="pe__andreas_puechel_StB_I_52" title="Andreas Püchel [pe__andreas_puechel_StB_I_52]" href="../../../register/persons.html#pe__andreas_puechel_StB_I_52"><span class="anno-attr anno-attr-kin" data-corresp="pe__johann_puechel_StB_I_52">sein sun</span> Andre</a>
             </span>zu seinen volligen jarn chomen sey und sey uber achczehen jar. Nu pitt wir euch,
             das ir ym alles das gevallen lazzet, das im pilleich gevallen sol. Das wellen wir umb
             euch all zeyt gern verdienen.</span></p></section>
@@ -290,11 +290,12 @@
             </div>
             <div class="footer-col footer-col-right">
                 <p>Technische Umsetzung: <a href="https://dhcraft.org" class="footer-link">Digital Humanities Craft OG</a></p>
-                <p>Lizenz: noch zu kl&auml;ren &middot; Stadtbücher Bd. 1 (1395–1400) &middot; Nr. 52</p>
+                <p>Lizenz: <a href="../../../impressum.html#lizenz" class="footer-link">CC BY 4.0</a> &middot; Stadtbücher Bd. 1 (1395–1400) &middot; Nr. 52</p>
             </div>
         </div>
     </footer>
 
+    <script>window.RELEASED_PERIOD = {min: 1177, max: 1414};</script>
     <script src="../../../static/js/core.js"></script>
     
 <script src="../../../static/js/tooltips.js"></script>

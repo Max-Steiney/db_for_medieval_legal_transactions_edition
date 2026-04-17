@@ -39,8 +39,8 @@
                     <button class="nav-dropdown-trigger" aria-expanded="false" aria-haspopup="true">Register <span class="nav-dropdown-arrow">&#x25BE;</span></button>
                     <div class="nav-dropdown-menu">
                         <a href="../../../register/persons.html">Personen</a>
-                        <a href="../../../register/organisations.html">Organisationen</a>
-                        <a href="../../../register/places.html">Orte</a>
+                        <a href="../../../register/organisations.html" class="nav-disabled" aria-disabled="true" title="Noch nicht freigegeben">Organisationen</a>
+                        <a href="../../../register/places.html" class="nav-disabled" aria-disabled="true" title="Noch nicht freigegeben">Orte</a>
                     </div>
                 </div>
                 <div class="nav-dropdown">
@@ -77,7 +77,7 @@
         <div class="doc-toolbar-inner">
             <div class="doc-toolbar-left">
                 <nav class="doc-breadcrumb">
-                    <a href="../../../documents.html">Dokumente</a>
+                    <a href="../../../documents.html">Quellen</a>
                     <span class="bc-sep">›</span>
                     <span>QGW II/1 (1177–1414)</span>
                 </nav>
@@ -150,11 +150,11 @@
         <!-- Document body (rendered TEI) -->
         <div class="doc-body">
             <section class="tei-abstract"><p>
-               <span class="anno-event" data-ref="ev__QGW_II_I_684"><span class="anno-fn anno-fn-issuer" data-role="issuer"><span class="fn-label">Aussteller*in</span><a class="anno-person" data-ref="pe__albrecht_kagraner_QGW_II_I_684" title="Albrecht Kagraner [pe__albrecht_kagraner_QGW_II_I_684]" href="../../../persons.html#pe__albrecht_kagraner_QGW_II_I_684">Albrecht der Chagraner</a> und <a class="anno-person" data-ref="pe__adelheid_QGW_II_I_684" title="Adelheid Kagranerin [pe__adelheid_QGW_II_I_684]" href="../../../persons.html#pe__adelheid_QGW_II_I_684">Alhait, seine <span class="anno-attr anno-attr-kin" data-corresp="pe__albrecht_kagraner_QGW_II_I_684">Hausfrau</span></a></span>, <span class="anno-trigger anno-trigger-disp">verkaufen</span> 2 lb dn. geltes purchrechtes (ablösbar) auf ihrem Hause
+               <span class="anno-event" data-ref="ev__QGW_II_I_684"><span class="anno-fn anno-fn-issuer" data-role="issuer"><span class="fn-label">Aussteller*in</span><a class="anno-person" data-ref="pe__albrecht_kagraner_QGW_II_I_684" title="Albrecht Kagraner [pe__albrecht_kagraner_QGW_II_I_684]" href="../../../register/persons.html#pe__albrecht_kagraner_QGW_II_I_684">Albrecht der Chagraner</a> und <a class="anno-person" data-ref="pe__adelheid_QGW_II_I_684" title="Adelheid Kagranerin [pe__adelheid_QGW_II_I_684]" href="../../../register/persons.html#pe__adelheid_QGW_II_I_684">Alhait, seine <span class="anno-attr anno-attr-kin" data-corresp="pe__albrecht_kagraner_QGW_II_I_684">Hausfrau</span></a></span>, <span class="anno-trigger anno-trigger-disp">verkaufen</span> 2 lb dn. geltes purchrechtes (ablösbar) auf ihrem Hause
                   und dem Gärtlein hinden daran, gelegen in der Lantstrasse vor Stubentor ze Wienne
                   zenêchst Petreins haus des Lengleins , von dem man den geistlichen Frauen zu S.
                   Niklas 40 dn. zu Grundrecht dient, um 16 lb dn. <span class="anno-fn anno-fn-recipient" data-role="recipient"><span class="fn-label">Empfänger*in</span>der
-                        <a class="anno-person" data-ref="pe__christine_QGW_II_I_1171" title="Christine Witzin [pe__christine_QGW_II_I_1171]" href="../../../persons.html#pe__christine_QGW_II_I_1171"><span class="anno-attr anno-attr-title">swester</span> Christein der Witzinne, <span class="anno-attr anno-attr-occ" data-corresp="org__wien-st_niklas_vor_dem_stubentor_zisterzienserinnen">abtessinne</span></a>, und dem <a class="anno-org" data-ref="org__wien-st_niklas_vor_dem_stubentor_zisterzienserinnen" title="St. Niklas (vor dem Stubentor) Wien (Kloster_f) [org__wien-st_niklas_vor_dem_stubentor_zisterzienserinnen]" href="../../../organisations.html#org__wien-st_niklas_vor_dem_stubentor_zisterzienserinnen">convent
+                        <a class="anno-person" data-ref="pe__christine_QGW_II_I_1171" title="Christine Witzin [pe__christine_QGW_II_I_1171]" href="../../../register/persons.html#pe__christine_QGW_II_I_1171"><span class="anno-attr anno-attr-title">swester</span> Christein der Witzinne, <span class="anno-attr anno-attr-occ" data-corresp="org__wien-st_niklas_vor_dem_stubentor_zisterzienserinnen">abtessinne</span></a>, und dem <a class="anno-org" data-ref="org__wien-st_niklas_vor_dem_stubentor_zisterzienserinnen" title="St. Niklas (vor dem Stubentor) Wien (Kloster_f) [org__wien-st_niklas_vor_dem_stubentor_zisterzienserinnen]" href="../../../register/organisations.html#org__wien-st_niklas_vor_dem_stubentor_zisterzienserinnen">convent
                         gemain dacz sant Niclas ze Wienne</a></span> .</span>
             </p></section>
 
@@ -349,11 +349,12 @@
             </div>
             <div class="footer-col footer-col-right">
                 <p>Technische Umsetzung: <a href="https://dhcraft.org" class="footer-link">Digital Humanities Craft OG</a></p>
-                <p>Lizenz: noch zu kl&auml;ren &middot; QGW II/1 (1177–1414) &middot; Nr. 684</p>
+                <p>Lizenz: <a href="../../../impressum.html#lizenz" class="footer-link">CC BY 4.0</a> &middot; QGW II/1 (1177–1414) &middot; Nr. 684</p>
             </div>
         </div>
     </footer>
 
+    <script>window.RELEASED_PERIOD = {min: 1177, max: 1414};</script>
     <script src="../../../static/js/core.js"></script>
     
 <script src="../../../static/js/tooltips.js"></script>

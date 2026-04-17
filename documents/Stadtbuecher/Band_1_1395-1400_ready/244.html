@@ -39,8 +39,8 @@
                     <button class="nav-dropdown-trigger" aria-expanded="false" aria-haspopup="true">Register <span class="nav-dropdown-arrow">&#x25BE;</span></button>
                     <div class="nav-dropdown-menu">
                         <a href="../../../register/persons.html">Personen</a>
-                        <a href="../../../register/organisations.html">Organisationen</a>
-                        <a href="../../../register/places.html">Orte</a>
+                        <a href="../../../register/organisations.html" class="nav-disabled" aria-disabled="true" title="Noch nicht freigegeben">Organisationen</a>
+                        <a href="../../../register/places.html" class="nav-disabled" aria-disabled="true" title="Noch nicht freigegeben">Orte</a>
                     </div>
                 </div>
                 <div class="nav-dropdown">
@@ -77,7 +77,7 @@
         <div class="doc-toolbar-inner">
             <div class="doc-toolbar-left">
                 <nav class="doc-breadcrumb">
-                    <a href="../../../documents.html">Dokumente</a>
+                    <a href="../../../documents.html">Quellen</a>
                     <span class="bc-sep">›</span>
                     <span>Stadtbücher Bd. 1 (1395–1400)</span>
                 </nav>
@@ -150,12 +150,12 @@
          <header class="tei-header">
             <p>Volljährigkeitsweisung für Peter, Sohn der Schonnhildtynn</p>
          </header>                   <section class="tei-entry">
-            <p> Einbr. 2 Zg. (In dez: Item weisung Petreins der Schonnhiltin sun seiner jar) <span class="anno-event" data-ref="ev__StB_I_244">Desselben tags kom auch fur den rat <span class="anno-fn anno-fn-witness" data-role="witness"><span class="fn-label">Zeug*in</span><a class="anno-person" data-ref="pe__peter_StB_I_244" title="Peter [pe__peter_StB_I_244]" href="../../../persons.html#pe__peter_StB_I_244">Peter, <a class="anno-person" data-ref="pe__laurenz_StB_I_244" title="Laurenz [pe__laurenz_StB_I_244]" href="../../../persons.html#pe__laurenz_StB_I_244">Larencz</a>
-                        <span class="anno-attr anno-attr-kin" data-corresp="pe__laurenz_StB_I_244">sun</span>, <a class="anno-person" data-ref="pe__schoenhildin_StB_I_244" title="Schönhildin [pe__schoenhildin_StB_I_244]" href="../../../persons.html#pe__schoenhildin_StB_I_244">der Schoennhildtynn</a>
+            <p> Einbr. 2 Zg. (In dez: Item weisung Petreins der Schonnhiltin sun seiner jar) <span class="anno-event" data-ref="ev__StB_I_244">Desselben tags kom auch fur den rat <span class="anno-fn anno-fn-witness" data-role="witness"><span class="fn-label">Zeug*in</span><a class="anno-person" data-ref="pe__peter_StB_I_244" title="Peter [pe__peter_StB_I_244]" href="../../../register/persons.html#pe__peter_StB_I_244">Peter, <a class="anno-person" data-ref="pe__laurenz_StB_I_244" title="Laurenz [pe__laurenz_StB_I_244]" href="../../../register/persons.html#pe__laurenz_StB_I_244">Larencz</a>
+                        <span class="anno-attr anno-attr-kin" data-corresp="pe__laurenz_StB_I_244">sun</span>, <a class="anno-person" data-ref="pe__schoenhildin_StB_I_244" title="Schönhildin [pe__schoenhildin_StB_I_244]" href="../../../register/persons.html#pe__schoenhildin_StB_I_244">der Schoennhildtynn</a>
                         <span class="anno-attr anno-attr-kin" data-corresp="pe__schoenhildin_StB_I_244">sun</span></a>, und hat da beweist mit den zwayn erbern mannen, als er
-                     ze recht solt, mit <a class="anno-person" data-ref="pe__peter_vorster_StB_I_144" title="Peter Vorster [pe__peter_vorster_StB_I_144]" href="../../../persons.html#pe__peter_vorster_StB_I_144"><span class="anno-attr anno-attr-title"><span class="tei-add">erbern</span></span>Petrein dem
-                        Vorster</a> und mit <a class="anno-person" data-ref="pe__konrad_hesel_StB_I_244" title="Konrad Hesel [pe__konrad_hesel_StB_I_244]" href="../../../persons.html#pe__konrad_hesel_StB_I_244"><span class="anno-attr anno-attr-title"><span class="tei-add">erbern</span></span>Chunraten dem
-                        Heslein</a></span> , daz <span class="anno-fn anno-fn-recipient" data-role="recipient"><span class="fn-label">Empfänger*in</span><a class="anno-person" data-ref="pe__peter_StB_I_244" title="Peter [pe__peter_StB_I_244]" href="../../../persons.html#pe__peter_StB_I_244">er</a> die zeit seinew volligew beschaydnew jar
+                     ze recht solt, mit <a class="anno-person" data-ref="pe__peter_vorster_StB_I_144" title="Peter Vorster [pe__peter_vorster_StB_I_144]" href="../../../register/persons.html#pe__peter_vorster_StB_I_144"><span class="anno-attr anno-attr-title"><span class="tei-add">erbern</span></span>Petrein dem
+                        Vorster</a> und mit <a class="anno-person" data-ref="pe__konrad_hesel_StB_I_244" title="Konrad Hesel [pe__konrad_hesel_StB_I_244]" href="../../../register/persons.html#pe__konrad_hesel_StB_I_244"><span class="anno-attr anno-attr-title"><span class="tei-add">erbern</span></span>Chunraten dem
+                        Heslein</a></span> , daz <span class="anno-fn anno-fn-recipient" data-role="recipient"><span class="fn-label">Empfänger*in</span><a class="anno-person" data-ref="pe__peter_StB_I_244" title="Peter [pe__peter_StB_I_244]" href="../../../register/persons.html#pe__peter_StB_I_244">er</a> die zeit seinew volligew beschaydnew jar
                      gehabt hat nach der stat recht ze Wienn</span>. Als die obgenanten erbern leut
                   mit irn trewn an ayts stat vor unsern in offenn rat habent gesagt, als si ze recht
                   solten.</span>
@@ -298,11 +298,12 @@
             </div>
             <div class="footer-col footer-col-right">
                 <p>Technische Umsetzung: <a href="https://dhcraft.org" class="footer-link">Digital Humanities Craft OG</a></p>
-                <p>Lizenz: noch zu kl&auml;ren &middot; Stadtbücher Bd. 1 (1395–1400) &middot; Nr. 245</p>
+                <p>Lizenz: <a href="../../../impressum.html#lizenz" class="footer-link">CC BY 4.0</a> &middot; Stadtbücher Bd. 1 (1395–1400) &middot; Nr. 245</p>
             </div>
         </div>
     </footer>
 
+    <script>window.RELEASED_PERIOD = {min: 1177, max: 1414};</script>
     <script src="../../../static/js/core.js"></script>
     
 <script src="../../../static/js/tooltips.js"></script>

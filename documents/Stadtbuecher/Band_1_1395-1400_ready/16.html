@@ -39,8 +39,8 @@
                     <button class="nav-dropdown-trigger" aria-expanded="false" aria-haspopup="true">Register <span class="nav-dropdown-arrow">&#x25BE;</span></button>
                     <div class="nav-dropdown-menu">
                         <a href="../../../register/persons.html">Personen</a>
-                        <a href="../../../register/organisations.html">Organisationen</a>
-                        <a href="../../../register/places.html">Orte</a>
+                        <a href="../../../register/organisations.html" class="nav-disabled" aria-disabled="true" title="Noch nicht freigegeben">Organisationen</a>
+                        <a href="../../../register/places.html" class="nav-disabled" aria-disabled="true" title="Noch nicht freigegeben">Orte</a>
                     </div>
                 </div>
                 <div class="nav-dropdown">
@@ -77,7 +77,7 @@
         <div class="doc-toolbar-inner">
             <div class="doc-toolbar-left">
                 <nav class="doc-breadcrumb">
-                    <a href="../../../documents.html">Dokumente</a>
+                    <a href="../../../documents.html">Quellen</a>
                     <span class="bc-sep">›</span>
                     <span>Stadtbücher Bd. 1 (1395–1400)</span>
                 </nav>
@@ -153,12 +153,12 @@
                         <p>
                               <span class="anno-event" data-ref="ev__StB_I_16">pr. mü., Einbr. 2 Zg., Ma
                                     (Inde:z:: Item geschert Hansen Gulhers sun) Desselben tags hat
-                                    auch der vorgenant <span class="anno-fn anno-fn-witness" data-role="witness"><span class="fn-label">Zeug*in</span><a class="anno-person" data-ref="pe__ruediger_guelher_StB_I_15" title="Rüdiger Guelher der Lederer [pe__ruediger_guelher_StB_I_15]" href="../../../persons.html#pe__ruediger_guelher_StB_I_15">Rueger der Gulher</a> des egenanten seins suns
+                                    auch der vorgenant <span class="anno-fn anno-fn-witness" data-role="witness"><span class="fn-label">Zeug*in</span><a class="anno-person" data-ref="pe__ruediger_guelher_StB_I_15" title="Rüdiger Guelher der Lederer [pe__ruediger_guelher_StB_I_15]" href="../../../register/persons.html#pe__ruediger_guelher_StB_I_15">Rueger der Gulher</a> des egenanten seins suns
                                           Hannsen geschefft beweist mit den erbern leuten ze rechter
-                                          zeit, als er ze recht solt, mit <a class="anno-person" data-ref="pe__johann_ledrer_QGW_II_I_1153" title="Johann der Ledrer [pe__johann_ledrer_QGW_II_I_1153]" href="../../../persons.html#pe__johann_ledrer_QGW_II_I_1153"><span class="anno-attr anno-attr-title"><span class="tei-add">erbern</span></span> Hannsen
-                                                dem <span class="anno-attr anno-attr-prof">Ledrer</span></a> und mit <a class="anno-person" data-ref="pe__konrad_gartner_StB_I_16" title="Konrad Gärtner Gärtner [pe__konrad_gartner_StB_I_16]" href="../../../persons.html#pe__konrad_gartner_StB_I_16"><span class="anno-attr anno-attr-title"><span class="tei-add">erbern</span></span>
-                                                Chunraten dem <span class="anno-attr anno-attr-prof">Gartner</span></a></span>. Also das <span class="anno-fn anno-fn-issuer" data-role="issuer"><span class="fn-label">Aussteller*in</span><a class="anno-person" data-ref="pe__johann_StB_I_16" title="Johann [pe__johann_StB_I_16]" href="../../../persons.html#pe__johann_StB_I_16">er</a></span> geschafft hat
-                                    dem <span class="anno-fn anno-fn-recipient" data-role="recipient"><span class="fn-label">Empfänger*in</span><a class="anno-person" data-ref="pe__ruediger_guelher_StB_I_15" title="Rüdiger Guelher der Lederer [pe__ruediger_guelher_StB_I_15]" href="../../../persons.html#pe__ruediger_guelher_StB_I_15">egenanten
+                                          zeit, als er ze recht solt, mit <a class="anno-person" data-ref="pe__johann_ledrer_QGW_II_I_1153" title="Johann der Ledrer [pe__johann_ledrer_QGW_II_I_1153]" href="../../../register/persons.html#pe__johann_ledrer_QGW_II_I_1153"><span class="anno-attr anno-attr-title"><span class="tei-add">erbern</span></span> Hannsen
+                                                dem <span class="anno-attr anno-attr-prof">Ledrer</span></a> und mit <a class="anno-person" data-ref="pe__konrad_gartner_StB_I_16" title="Konrad Gärtner Gärtner [pe__konrad_gartner_StB_I_16]" href="../../../register/persons.html#pe__konrad_gartner_StB_I_16"><span class="anno-attr anno-attr-title"><span class="tei-add">erbern</span></span>
+                                                Chunraten dem <span class="anno-attr anno-attr-prof">Gartner</span></a></span>. Also das <span class="anno-fn anno-fn-issuer" data-role="issuer"><span class="fn-label">Aussteller*in</span><a class="anno-person" data-ref="pe__johann_StB_I_16" title="Johann [pe__johann_StB_I_16]" href="../../../register/persons.html#pe__johann_StB_I_16">er</a></span> geschafft hat
+                                    dem <span class="anno-fn anno-fn-recipient" data-role="recipient"><span class="fn-label">Empfänger*in</span><a class="anno-person" data-ref="pe__ruediger_guelher_StB_I_15" title="Rüdiger Guelher der Lederer [pe__ruediger_guelher_StB_I_15]" href="../../../register/persons.html#pe__ruediger_guelher_StB_I_15">egenanten
                                                 Rugern, seinem <span class="anno-attr anno-attr-kin" data-corresp="pe__johann_StB_I_16">vater</span></a></span>, sein haws gelegen vor
                                     Werdertor under den Ledrern ze Wienn ze nechst Ulreichs haws des
                                     Herwarts, die zeit statschreiber ze Wienn, und alle ander sein
@@ -305,11 +305,12 @@
             </div>
             <div class="footer-col footer-col-right">
                 <p>Technische Umsetzung: <a href="https://dhcraft.org" class="footer-link">Digital Humanities Craft OG</a></p>
-                <p>Lizenz: noch zu kl&auml;ren &middot; Stadtbücher Bd. 1 (1395–1400) &middot; Nr. 16</p>
+                <p>Lizenz: <a href="../../../impressum.html#lizenz" class="footer-link">CC BY 4.0</a> &middot; Stadtbücher Bd. 1 (1395–1400) &middot; Nr. 16</p>
             </div>
         </div>
     </footer>
 
+    <script>window.RELEASED_PERIOD = {min: 1177, max: 1414};</script>
     <script src="../../../static/js/core.js"></script>
     
 <script src="../../../static/js/tooltips.js"></script>

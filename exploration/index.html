@@ -36,8 +36,8 @@
                     <button class="nav-dropdown-trigger" aria-expanded="false" aria-haspopup="true">Register <span class="nav-dropdown-arrow">&#x25BE;</span></button>
                     <div class="nav-dropdown-menu">
                         <a href="../register/persons.html">Personen</a>
-                        <a href="../register/organisations.html">Organisationen</a>
-                        <a href="../register/places.html">Orte</a>
+                        <a href="../register/organisations.html" class="nav-disabled" aria-disabled="true" title="Noch nicht freigegeben">Organisationen</a>
+                        <a href="../register/places.html" class="nav-disabled" aria-disabled="true" title="Noch nicht freigegeben">Orte</a>
                     </div>
                 </div>
                 <div class="nav-dropdown">
@@ -75,8 +75,8 @@
         <p class="explore-lede">
             Interaktive Forschungsvisualisierungen zu
             <strong>16.084</strong> Personen
-            in <strong>7.032</strong> Rechtsakten
-            aus 3.041 Quellen.
+            in <strong>5.002</strong> Rechtsakten
+            aus 2.635 Quellen.
         </p>
     </header>
 
@@ -155,7 +155,7 @@
     
     <div class="explore-transparency" id="explore-transparency">
         <span class="explore-trans-item">
-            <strong>3.041</strong> Dokumente
+            <strong>2.635</strong> Dokumente
         </span>
         <span class="explore-trans-sep">&middot;</span>
         <span class="explore-trans-item">
@@ -169,7 +169,7 @@
         </span>
         <span class="explore-trans-sep">&middot;</span>
         <span class="explore-trans-item explore-trans-caveat">
-            Normalisierungsrate: 26.5&nbsp;%
+            Normalisierungsrate: 21.1&nbsp;%
         </span>
     </div>
 
@@ -186,11 +186,12 @@
             </div>
             <div class="footer-col footer-col-right">
                 <p>Technische Umsetzung: <a href="https://dhcraft.org" class="footer-link">Digital Humanities Craft OG</a></p>
-                <p>Lizenz: noch zu kl&auml;ren &middot; Exploration generiert am 2026-04-17</p>
+                <p>Lizenz: <a href="../impressum.html#lizenz" class="footer-link">CC BY 4.0</a> &middot; Exploration generiert am 2026-04-17</p>
             </div>
         </div>
     </footer>
 
+    <script>window.RELEASED_PERIOD = {min: 1177, max: 1414};</script>
     <script src="../static/js/core.js"></script>
     
 </body>

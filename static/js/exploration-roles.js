@@ -61,9 +61,10 @@
         var ORG_COLOR = ChartHelpers.getToken('--color-rel-occ') || '#2e5a88';
 
         // State
+        var RP = window.RELEASED_PERIOD || {min: 1177, max: 1414};
         var state = {
-            decadeMin: 1170,
-            decadeMax: 1520,
+            decadeMin: RP.min,
+            decadeMax: RP.max,
             sexFilter: 'all',
             tableView: false,
             instTableView: false,

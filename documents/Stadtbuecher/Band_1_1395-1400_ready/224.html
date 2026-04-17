@@ -39,8 +39,8 @@
                     <button class="nav-dropdown-trigger" aria-expanded="false" aria-haspopup="true">Register <span class="nav-dropdown-arrow">&#x25BE;</span></button>
                     <div class="nav-dropdown-menu">
                         <a href="../../../register/persons.html">Personen</a>
-                        <a href="../../../register/organisations.html">Organisationen</a>
-                        <a href="../../../register/places.html">Orte</a>
+                        <a href="../../../register/organisations.html" class="nav-disabled" aria-disabled="true" title="Noch nicht freigegeben">Organisationen</a>
+                        <a href="../../../register/places.html" class="nav-disabled" aria-disabled="true" title="Noch nicht freigegeben">Orte</a>
                     </div>
                 </div>
                 <div class="nav-dropdown">
@@ -77,7 +77,7 @@
         <div class="doc-toolbar-inner">
             <div class="doc-toolbar-left">
                 <nav class="doc-breadcrumb">
-                    <a href="../../../documents.html">Dokumente</a>
+                    <a href="../../../documents.html">Quellen</a>
                     <span class="bc-sep">›</span>
                     <span>Stadtbücher Bd. 1 (1395–1400)</span>
                 </nav>
@@ -152,13 +152,13 @@
          </header>                   <section class="tei-entry">
             <p> pr. rnü., Einbr. 2 Zg., Ma (Indez: Itern gescheft Margreten Chunrats Eyssteter uxor)
                (101.3 9r) <span class="anno-event" data-ref="ev__StB_I_224">Des nachsten eritags vor sand Agnesen
-                  tag köm fur den rat der stat zu Wienn <span class="anno-fn anno-fn-witness" data-role="witness"><span class="fn-label">Zeug*in</span><a class="anno-person" data-ref="pe__konrad_eissteter_StB_I_224" title="Konrad Eissteter der Bogner [pe__konrad_eissteter_StB_I_224]" href="../../../persons.html#pe__konrad_eissteter_StB_I_224">Chunrat der Eyssteter,
+                  tag köm fur den rat der stat zu Wienn <span class="anno-fn anno-fn-witness" data-role="witness"><span class="fn-label">Zeug*in</span><a class="anno-person" data-ref="pe__konrad_eissteter_StB_I_224" title="Konrad Eissteter der Bogner [pe__konrad_eissteter_StB_I_224]" href="../../../register/persons.html#pe__konrad_eissteter_StB_I_224">Chunrat der Eyssteter,
                         der <span class="anno-attr anno-attr-prof">pogner</span></a>, und hat da
-                     beweist mit den erbern leuten ze rechter zeit, als er Ze recht solt, mit <a class="anno-person" data-ref="pe__dietrich_preuzz_QGW_II_I_1442" title="Dietrich Preuzz von Nikolsburg [pe__dietrich_preuzz_QGW_II_I_1442]" href="../../../persons.html#pe__dietrich_preuzz_QGW_II_I_1442"><span class="anno-attr anno-attr-title"><span class="tei-add">erbern</span></span>Dietreichen dem Prewzzen, unsern
+                     beweist mit den erbern leuten ze rechter zeit, als er Ze recht solt, mit <a class="anno-person" data-ref="pe__dietrich_preuzz_QGW_II_I_1442" title="Dietrich Preuzz von Nikolsburg [pe__dietrich_preuzz_QGW_II_I_1442]" href="../../../register/persons.html#pe__dietrich_preuzz_QGW_II_I_1442"><span class="anno-attr anno-attr-title"><span class="tei-add">erbern</span></span>Dietreichen dem Prewzzen, unsern
                            <span class="anno-attr anno-attr-occ" data-corresp="org__wien">mitgesworn</span></a>, und
-                     mit <a class="anno-person" data-ref="pe__andreas_bogner_StB_I_224" title="Andreas Bogner von Deggendorf [pe__andreas_bogner_StB_I_224]" href="../../../persons.html#pe__andreas_bogner_StB_I_224"><span class="anno-attr anno-attr-title"><span class="tei-add">erbern</span></span>
+                     mit <a class="anno-person" data-ref="pe__andreas_bogner_StB_I_224" title="Andreas Bogner von Deggendorf [pe__andreas_bogner_StB_I_224]" href="../../../register/persons.html#pe__andreas_bogner_StB_I_224"><span class="anno-attr anno-attr-title"><span class="tei-add">erbern</span></span>
                         <span class="anno-attr anno-attr-title">maister</span> Andren dem <span class="anno-attr anno-attr-prof">Pogner</span> von Dekendarf</a></span>, daz geschefft, so
-                     <span class="anno-fn anno-fn-issuer" data-role="issuer"><span class="fn-label">Aussteller*in</span><a class="anno-person" data-ref="pe__margarethe_StB_I_224" title="Margarethe Eissteterin (d. 1398-01-15) [pe__margarethe_StB_I_224]" href="../../../persons.html#pe__margarethe_StB_I_224">sein <span class="anno-attr anno-attr-kin" data-corresp="pe__konrad_eissteter_StB_I_224">hausfraw</span> Marigret, der <span class="anno-attr anno-attr-dead">got
+                     <span class="anno-fn anno-fn-issuer" data-role="issuer"><span class="fn-label">Aussteller*in</span><a class="anno-person" data-ref="pe__margarethe_StB_I_224" title="Margarethe Eissteterin (d. 1398-01-15) [pe__margarethe_StB_I_224]" href="../../../register/persons.html#pe__margarethe_StB_I_224">sein <span class="anno-attr anno-attr-kin" data-corresp="pe__konrad_eissteter_StB_I_224">hausfraw</span> Marigret, der <span class="anno-attr anno-attr-dead">got
                            genad</span></a></span>, an irn lesten zeiten getan hat. Also daz si
                      <span class="anno-fn anno-fn-recipient" data-role="recipient"><span class="fn-label">Empfänger*in</span>dem vorgenanten Chunraten, irm wirt</span>,
                   geschafft hat alle ir hab, eribgut und varuntgut, wie daz genant oder wa daz
@@ -305,11 +305,12 @@
             </div>
             <div class="footer-col footer-col-right">
                 <p>Technische Umsetzung: <a href="https://dhcraft.org" class="footer-link">Digital Humanities Craft OG</a></p>
-                <p>Lizenz: noch zu kl&auml;ren &middot; Stadtbücher Bd. 1 (1395–1400) &middot; Nr. 224</p>
+                <p>Lizenz: <a href="../../../impressum.html#lizenz" class="footer-link">CC BY 4.0</a> &middot; Stadtbücher Bd. 1 (1395–1400) &middot; Nr. 224</p>
             </div>
         </div>
     </footer>
 
+    <script>window.RELEASED_PERIOD = {min: 1177, max: 1414};</script>
     <script src="../../../static/js/core.js"></script>
     
 <script src="../../../static/js/tooltips.js"></script>

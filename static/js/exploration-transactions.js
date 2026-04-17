@@ -50,9 +50,10 @@
         function orgTypeLabel(key) { return ORG_TYPE_LABELS[key] || key.replace(/_/g, ' '); }
 
         // State
+        var RP = window.RELEASED_PERIOD || {min: 1177, max: 1414};
         var state = {
-            decadeMin: 1170,
-            decadeMax: 1520,
+            decadeMin: RP.min,
+            decadeMax: RP.max,
             txTableView: false,
             recipTableView: false,
             verbSearch: '',

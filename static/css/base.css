@@ -230,6 +230,16 @@ tr[role="button"] { cursor: pointer; }
     background: rgba(255, 255, 255, 0.08);
 }
 
+.nav-dropdown-menu a.nav-disabled {
+    opacity: 0.45;
+    font-style: italic;
+}
+.nav-dropdown-menu a.nav-disabled::after {
+    content: " (in Vorbereitung)";
+    font-size: 0.85em;
+    opacity: 0.8;
+}
+
 /* Nav hamburger (hidden on desktop) */
 .nav-hamburger {
     display: none;
