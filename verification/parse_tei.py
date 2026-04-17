@@ -1,4 +1,4 @@
-"""TEI-Parser für das Test-Set.
+"""TEI-Parser für das Verifikations-Set.
 
 Liest einzelne TEI-Dokumente aus `sources/QGW/**` und
 `sources/Stadtbuecher/**` und extrahiert die Informationen, die für
@@ -7,7 +7,7 @@ Aggregation und Vergleich mit den Frontend-JSONs gebraucht werden.
 Scope: Struktur, die im Corpus tatsächlich verwendet wird (getestet an
 QGW/Vienna_1177-1414_ready und Stadtbuecher/Band_1_1395-1400_ready).
 Andere Korpora ohne TEI-Quelle im Pipeline-Repo werden nicht abgedeckt
-(siehe tests/README.md).
+(siehe verification/README.md).
 """
 
 from __future__ import annotations
@@ -18,7 +18,7 @@ from typing import Iterable, List, Optional, Set, Tuple
 
 from lxml import etree
 
-from tests.config import COLLECTIONS_WITH_TEI, NS, TEI_SOURCES_DIR
+from verification.config import COLLECTIONS_WITH_TEI, NS, TEI_SOURCES_DIR
 
 TEI_NS = NS["tei"]
 TEI_PREFIX = f"{{{TEI_NS}}}"

@@ -2,7 +2,7 @@
 
 Extrahiert aus jedem Aggregat-JSON die für compare.py relevanten
 Kennzahlen in Python-Dicts. Struktur folgt den Feldnamen, die auch
-`tests/inventory.md` verwendet.
+`verification/inventory.md` verwendet.
 """
 
 from __future__ import annotations
@@ -10,7 +10,7 @@ from __future__ import annotations
 import json
 from typing import Dict
 
-from tests.config import DATA_DIR
+from verification.config import DATA_DIR
 
 
 def _load(name: str):

@@ -86,6 +86,8 @@ Getroffene Leitentscheidungen mit Begründung. Zeitlos formuliert. Pro Eintrag E
 
 ## Parallele Provenienz-Drill-down-JSONs
 
+**Status.** Beschlossen. Umsetzung ist als eigene Arbeitsetappe vorgesehen und im [[journal]] nachzulesen.
+
 **Entscheidung.** Die Provenienz einer aggregierten Zahl (welche Quelldokumente der Zahl zugrunde liegen) wird in separaten JSON-Dateien parallel zu den bestehenden Aggregat-JSONs ausgewiesen, nicht als eingebettete Liste in jedem Wert.
 
 **Begründung.** Die bestehenden Aggregat-JSONs haben stabile Konsumentenverträge im Frontend-JavaScript. Eine Erweiterung jedes Wertes von Zahl auf Dict zwingt jedes Lesefragment zu Anpassungen. Parallele Dateien halten den Eingriff minimal, lassen sich inkrementell einführen und werden vom Frontend erst bei Bedarf (etwa für Tooltips) nachgeladen.

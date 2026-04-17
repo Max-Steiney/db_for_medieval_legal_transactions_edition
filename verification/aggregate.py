@@ -9,8 +9,8 @@ from __future__ import annotations
 from collections import Counter
 from typing import Dict, List, Optional, Tuple
 
-from tests.parse_indices import OrgRecord, PersonRecord, PlaceRecord
-from tests.parse_tei import DocRecord
+from verification.parse_indices import OrgRecord, PersonRecord, PlaceRecord
+from verification.parse_tei import DocRecord
 
 
 def docs_total(docs: List[DocRecord]) -> int:

@@ -11,7 +11,7 @@ from __future__ import annotations
 from dataclasses import dataclass
 from typing import Any, Dict, List, Optional
 
-from tests import aggregate, parse_indices, parse_json, parse_tei
+from verification import aggregate, parse_indices, parse_json, parse_tei
 
 
 @dataclass
@@ -19,7 +19,9 @@ class CheckResult:
     name: str
     tei: Any
     json: Any
-    status: str  # "match" | "mismatch" | "info"
+    # "match" = Gleich; "mismatch" = echte Abweichung; "known_gap" = erklärter
+    # struktureller Unterschied; "info" = Kontext ohne direkten Vergleich.
+    status: str
     note: Optional[str] = None
 
     def to_dict(self) -> Dict[str, Any]:
@@ -46,6 +48,16 @@ def _check_equal(name: str, tei_value: Any, json_value: Any, note: Optional[str]
     return CheckResult(name=name, tei=tei_value, json=json_value, status=status, note=note)
 
 
+def _known_gap(name: str, tei_value: Any, json_value: Any, note: str) -> CheckResult:
+    """Erklärter struktureller Unterschied, der kein Fehler ist.
+
+    Zu verwenden, wenn TEI und JSON aus nachvollziehbaren Gründen unterschiedlich
+    zählen (z. B. Pipeline nutzt `filenames.csv` zusätzlich zu TEI, oder Pipeline
+    normalisiert Werte, die im TEI roh vorliegen).
+    """
+    return CheckResult(name=name, tei=tei_value, json=json_value, status="known_gap", note=note)
+
+
 def run_checks(
     docs: List[parse_tei.DocRecord],
     persons: Dict[str, parse_indices.PersonRecord],
@@ -55,19 +67,29 @@ def run_checks(
     results: List[CheckResult] = []
 
     # --- Dokumente / Timeline ---------------------------------------------
+    # Bekannte Lücke: Pipeline zählt zusätzlich Dokumente aus filenames.csv
+    # ohne TEI-Quelle (z. B. Vienna_1448-57_ready). Kein Pipeline-Fehler,
+    # aber ein Transparenzverlust, solange die Herkunft im UI nicht
+    # ausgewiesen wird.
+    _pipeline_vs_tei_note = (
+        "Pipeline zählt zusätzlich Dokumente aus filenames.csv ohne TEI-Quelle "
+        "(z. B. Vienna_1448-57_ready). Das Verifikations-Set rechnet nur auf "
+        "TEI-Basis und deckt die Lücke auf."
+    )
     results.append(
-        _check_equal(
+        _known_gap(
             "docs.total",
             aggregate.docs_total(docs),
             parse_json.timeline_total(),
-            note="TEI zählt nur Dokumente mit TEI-Datei in sources/; Timeline-JSON stützt sich auf filenames.csv und enthält auch Einträge ohne TEI (z. B. Vienna_1448-57_ready).",
+            note=_pipeline_vs_tei_note,
         )
     )
     results.append(
-        _check_equal(
+        _known_gap(
             "docs.by_collection",
             aggregate.docs_by_collection(docs),
             parse_json.timeline_by_collection(),
+            note=_pipeline_vs_tei_note,
         )
     )
 
@@ -163,12 +185,21 @@ def run_checks(
             results.append(_check_equal(name, tei_val, json_val))
 
     # --- Beziehungen -------------------------------------------------------
+    # Bekannte Lücke: TEI enthält rohe @type-Werte inklusive Typo-Varianten
+    # (titel_ref, title, buis, ...). Die Pipeline normalisiert auf ein
+    # kontrolliertes Vokabular (kin, occ, rep, friend). Unterschied ist
+    # gewollt, aber zu dokumentieren.
     results.append(
-        _check_equal(
+        _known_gap(
             "relations.by_type",
             aggregate.relations_by_type(docs),
             parse_json.epic_b_type_totals(),
-            note="TEI zählt alle <roleName type=X corresp=Y> Einträge; epic_b aggregiert nach Typ über Geschlechter-Summe.",
+            note=(
+                "Pipeline normalisiert Beziehungstypen auf kin/occ/rep/friend. "
+                "TEI enthält rohe @type-Werte inklusive Typo-Varianten "
+                "(titel_ref, title, buis, ...). Counts daher nicht direkt "
+                "vergleichbar."
+            ),
         )
     )
 

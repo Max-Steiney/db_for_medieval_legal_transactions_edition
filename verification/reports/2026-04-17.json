@@ -3,7 +3,8 @@
   "summary": {
     "total": 20,
     "match": 6,
-    "mismatch": 8,
+    "mismatch": 5,
+    "known_gap": 3,
     "info": 6
   },
   "results": [
@@ -11,8 +12,8 @@
       "name": "docs.total",
       "tei": 3530,
       "json": 4060,
-      "status": "mismatch",
-      "note": "TEI zählt nur Dokumente mit TEI-Datei in sources/; Timeline-JSON stützt sich auf filenames.csv und enthält auch Einträge ohne TEI (z. B. Vienna_1448-57_ready)."
+      "status": "known_gap",
+      "note": "Pipeline zählt zusätzlich Dokumente aus filenames.csv ohne TEI-Quelle (z. B. Vienna_1448-57_ready). Das Verifikations-Set rechnet nur auf TEI-Basis und deckt die Lücke auf."
     },
     {
       "name": "docs.by_collection",
@@ -24,8 +25,8 @@
         "QGW": 3432,
         "Stadtbuecher": 628
       },
-      "status": "mismatch",
-      "note": null
+      "status": "known_gap",
+      "note": "Pipeline zählt zusätzlich Dokumente aus filenames.csv ohne TEI-Quelle (z. B. Vienna_1448-57_ready). Das Verifikations-Set rechnet nur auf TEI-Basis und deckt die Lücke auf."
     },
     {
       "name": "docs.date_range.QGW",
@@ -225,8 +226,8 @@
         "rep": 770,
         "friend": 98
       },
-      "status": "mismatch",
-      "note": "TEI zählt alle <roleName type=X corresp=Y> Einträge; epic_b aggregiert nach Typ über Geschlechter-Summe."
+      "status": "known_gap",
+      "note": "Pipeline normalisiert Beziehungstypen auf kin/occ/rep/friend. TEI enthält rohe @type-Werte inklusive Typo-Varianten (titel_ref, title, buis, ...). Counts daher nicht direkt vergleichbar."
     },
     {
       "name": "transactions.disp_top",

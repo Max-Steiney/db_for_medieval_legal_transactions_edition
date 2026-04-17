@@ -7,8 +7,8 @@ from datetime import date
 from pathlib import Path
 from typing import Iterable, List
 
-from tests.compare import CheckResult
-from tests.config import REPORTS_DIR
+from verification.compare import CheckResult
+from verification.config import REPORTS_DIR
 
 
 def _format_value(value) -> str:
@@ -30,12 +30,34 @@ def _format_value(value) -> str:
 
 
 def _status_emoji(status: str) -> str:
-    return {"match": "OK", "mismatch": "FAIL", "info": "INFO"}.get(status, status)
+    return {
+        "match": "OK",
+        "mismatch": "FAIL",
+        "known_gap": "GAP",
+        "info": "INFO",
+    }.get(status, status)
+
+
+def _write_detail_section(lines: List[str], results: List[CheckResult], status: str, heading: str) -> None:
+    filtered = [r for r in results if r.status == status]
+    if not filtered:
+        return
+    lines.append(heading)
+    lines.append("")
+    for r in filtered:
+        lines.append(f"### {r.name}")
+        lines.append("")
+        lines.append(f"- TEI: `{_format_value(r.tei)}`")
+        lines.append(f"- JSON: `{_format_value(r.json)}`")
+        if r.note:
+            lines.append(f"- Notiz: {r.note}")
+        lines.append("")
 
 
 def write_markdown(results: List[CheckResult], dest: Path) -> None:
     match = sum(1 for r in results if r.status == "match")
     mismatch = sum(1 for r in results if r.status == "mismatch")
+    known_gap = sum(1 for r in results if r.status == "known_gap")
     info = sum(1 for r in results if r.status == "info")
 
     lines: List[str] = []
@@ -46,46 +68,25 @@ def write_markdown(results: List[CheckResult], dest: Path) -> None:
     lines.append(f"- Checks gesamt: {len(results)}")
     lines.append(f"- Match: {match}")
     lines.append(f"- Mismatch: {mismatch}")
+    lines.append(f"- Bekannte Lücken: {known_gap}")
     lines.append(f"- Info / Nicht direkt vergleichbar: {info}")
     lines.append("")
 
-    if mismatch:
-        lines.append("## Mismatches")
-        lines.append("")
-        for r in results:
-            if r.status != "mismatch":
-                continue
-            lines.append(f"### {r.name}")
-            lines.append("")
-            lines.append(f"- TEI: `{_format_value(r.tei)}`")
-            lines.append(f"- JSON: `{_format_value(r.json)}`")
-            if r.note:
-                lines.append(f"- Notiz: {r.note}")
-            lines.append("")
+    _write_detail_section(lines, results, "mismatch", "## Mismatches")
+    _write_detail_section(lines, results, "known_gap", "## Bekannte Lücken")
 
-    lines.append("## Matches")
-    lines.append("")
-    lines.append("| Status | Name | Wert |")
-    lines.append("|---|---|---|")
-    for r in results:
-        if r.status != "match":
-            continue
-        lines.append(f"| {_status_emoji(r.status)} | {r.name} | `{_format_value(r.tei)}` |")
-    lines.append("")
-
-    if info:
-        lines.append("## Info / Kontext-Aggregate ohne direkten Vergleich")
+    if match:
+        lines.append("## Matches")
         lines.append("")
+        lines.append("| Status | Name | Wert |")
+        lines.append("|---|---|---|")
         for r in results:
-            if r.status != "info":
+            if r.status != "match":
                 continue
-            lines.append(f"### {r.name}")
-            lines.append("")
-            lines.append(f"- TEI: `{_format_value(r.tei)}`")
-            lines.append(f"- JSON: `{_format_value(r.json)}`")
-            if r.note:
-                lines.append(f"- Notiz: {r.note}")
-            lines.append("")
+            lines.append(f"| {_status_emoji(r.status)} | {r.name} | `{_format_value(r.tei)}` |")
+        lines.append("")
+
+    _write_detail_section(lines, results, "info", "## Info / Kontext-Aggregate ohne direkten Vergleich")
 
     REPORTS_DIR.mkdir(parents=True, exist_ok=True)
     dest.write_text("\n".join(lines), encoding="utf-8")
@@ -98,6 +99,7 @@ def write_json(results: List[CheckResult], dest: Path) -> None:
             "total": len(results),
             "match": sum(1 for r in results if r.status == "match"),
             "mismatch": sum(1 for r in results if r.status == "mismatch"),
+            "known_gap": sum(1 for r in results if r.status == "known_gap"),
             "info": sum(1 for r in results if r.status == "info"),
         },
         "results": [r.to_dict() for r in results],

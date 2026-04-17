@@ -12,7 +12,7 @@ from typing import Dict, Optional
 
 from lxml import etree
 
-from tests.config import NS, ORG_LIST, PERSON_LIST, PLACE_LIST
+from verification.config import NS, ORG_LIST, PERSON_LIST, PLACE_LIST
 
 
 @dataclass
