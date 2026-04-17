@@ -1,0 +1,260 @@
+{
+  "date": "2026-04-17",
+  "summary": {
+    "total": 20,
+    "match": 6,
+    "mismatch": 8,
+    "info": 6
+  },
+  "results": [
+    {
+      "name": "docs.total",
+      "tei": 3530,
+      "json": 4060,
+      "status": "mismatch",
+      "note": "TEI zählt nur Dokumente mit TEI-Datei in sources/; Timeline-JSON stützt sich auf filenames.csv und enthält auch Einträge ohne TEI (z. B. Vienna_1448-57_ready)."
+    },
+    {
+      "name": "docs.by_collection",
+      "tei": {
+        "QGW": 2902,
+        "Stadtbuecher": 628
+      },
+      "json": {
+        "QGW": 3432,
+        "Stadtbuecher": 628
+      },
+      "status": "mismatch",
+      "note": null
+    },
+    {
+      "name": "docs.date_range.QGW",
+      "tei": {
+        "min_date": "1177-05-10",
+        "max_date": "1526-10-22"
+      },
+      "json": {
+        "min_date": "1177-05-10",
+        "max_date": "1526-10-22"
+      },
+      "status": "match",
+      "note": null
+    },
+    {
+      "name": "docs.date_range.Stadtbuecher",
+      "tei": {
+        "min_date": "1388-07-13",
+        "max_date": "1401-11-03"
+      },
+      "json": {
+        "min_date": "1388-07-13",
+        "max_date": "1401-11-03"
+      },
+      "status": "match",
+      "note": null
+    },
+    {
+      "name": "persons.total_individual",
+      "tei": 16084,
+      "json": 16084,
+      "status": "match",
+      "note": "Individuelle Personen im Register personList.xml vs. Länge persons_search.json."
+    },
+    {
+      "name": "persons.by_sex",
+      "tei": {
+        "m": 11860,
+        "f": 4224
+      },
+      "json": {
+        "m": 11860,
+        "f": 4224
+      },
+      "status": "match",
+      "note": null
+    },
+    {
+      "name": "orgs.total_individual",
+      "tei": 1078,
+      "json": 1078,
+      "status": "match",
+      "note": null
+    },
+    {
+      "name": "places.total_individual",
+      "tei": 2537,
+      "json": 2537,
+      "status": "match",
+      "note": null
+    },
+    {
+      "name": "events.total",
+      "tei": 4421,
+      "json": 7032,
+      "status": "info",
+      "note": "epic_a.coverage.total_events zählt Event-Nennungen (nicht dedupliziert); TEI-Zählung dedupliziert pro Dokument nach Event-Ref. Kein direkter Match zu erwarten."
+    },
+    {
+      "name": "roles.by_role",
+      "tei": {
+        "issuer": 5107,
+        "other": 2720,
+        "witness": 5702,
+        "recipient": 5136,
+        "none": 2493,
+        "transactiongood_I": 3
+      },
+      "json": null,
+      "status": "info",
+      "note": "Rollen-Counter aus TEI; kein direktes Pendant in JSON (nur role_by_sex)."
+    },
+    {
+      "name": "roles.by_role_sex.issuer",
+      "tei": {
+        "m": 3952,
+        "f": 1155
+      },
+      "json": {
+        "m": 4139,
+        "f": 1289
+      },
+      "status": "mismatch",
+      "note": null
+    },
+    {
+      "name": "roles.by_role_sex.none",
+      "tei": {
+        "m": 1998,
+        "f": 495
+      },
+      "json": {
+        "m": 2334,
+        "f": 390
+      },
+      "status": "mismatch",
+      "note": null
+    },
+    {
+      "name": "roles.by_role_sex.other",
+      "tei": {
+        "f": 390,
+        "m": 2330
+      },
+      "json": {
+        "f": 435,
+        "m": 2495
+      },
+      "status": "mismatch",
+      "note": null
+    },
+    {
+      "name": "roles.by_role_sex.recipient",
+      "tei": {
+        "m": 3596,
+        "f": 1540
+      },
+      "json": {
+        "m": 3773,
+        "f": 1634
+      },
+      "status": "mismatch",
+      "note": null
+    },
+    {
+      "name": "roles.by_role_sex.transactiongood_I",
+      "tei": {
+        "m": 3
+      },
+      "json": {
+        "m": 3
+      },
+      "status": "info",
+      "note": "Pseudo-Rolle aus TEI-Annotationsfehlern; kein echter Rollen-Wert."
+    },
+    {
+      "name": "roles.by_role_sex.transactiongood_II",
+      "tei": null,
+      "json": {
+        "m": 1
+      },
+      "status": "info",
+      "note": "Pseudo-Rolle aus TEI-Annotationsfehlern; kein echter Rollen-Wert."
+    },
+    {
+      "name": "roles.by_role_sex.transactiongood_III",
+      "tei": null,
+      "json": {
+        "m": 2
+      },
+      "status": "info",
+      "note": "Pseudo-Rolle aus TEI-Annotationsfehlern; kein echter Rollen-Wert."
+    },
+    {
+      "name": "roles.by_role_sex.witness",
+      "tei": {
+        "m": 5372,
+        "f": 330
+      },
+      "json": {
+        "m": 5382,
+        "f": 312
+      },
+      "status": "mismatch",
+      "note": null
+    },
+    {
+      "name": "relations.by_type",
+      "tei": {
+        "occ": 7297,
+        "kin": 6778,
+        "rep": 597,
+        "friend": 87,
+        "titel_ref": 1,
+        "title": 7,
+        "topo": 21,
+        "owner": 19,
+        "prof": 16,
+        "title_ref": 2,
+        "dead": 1,
+        "kind": 1,
+        "org": 2
+      },
+      "json": {
+        "kin": 7176,
+        "occ": 8150,
+        "rep": 770,
+        "friend": 98
+      },
+      "status": "mismatch",
+      "note": "TEI zählt alle <roleName type=X corresp=Y> Einträge; epic_b aggregiert nach Typ über Geschlechter-Summe."
+    },
+    {
+      "name": "transactions.disp_top",
+      "tei": {
+        "verkaufen": 353,
+        "verkauft": 199,
+        "bestätigt": 154,
+        "bestätigen": 134,
+        "beurkundet": 86,
+        "gibt": 78,
+        "beurkunden": 76,
+        "stellen": 48,
+        "schafft": 33,
+        "geben": 31,
+        "geklagt habe": 30,
+        "theilt": 28,
+        "stellt": 27,
+        "verpflichten sich": 25,
+        "weist": 24,
+        "verleiht": 24,
+        "einen schuldbrief": 22,
+        "widmet": 21,
+        "macht": 20,
+        "schreibt": 20
+      },
+      "json": null,
+      "status": "info",
+      "note": "Top-20 Roh-Trigger für disp; Vergleich mit normalisierten Transaktionstypen in epic_c noch offen."
+    }
+  ]
+}
