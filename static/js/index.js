@@ -236,7 +236,7 @@
         var tbody = document.getElementById('doc-tbody');
         tbody.innerHTML = '<tr><td colspan="4" style="text-align:center;padding:2rem;color:var(--color-text-muted)">Daten werden geladen\u2026</td></tr>';
 
-        fetch('./data/search.json')
+        fetch((window.ROOT_PATH || '.') + '/data/search.json')
             .then(function(r) { return r.json(); })
             .then(function(data) {
                 allDocs = data;

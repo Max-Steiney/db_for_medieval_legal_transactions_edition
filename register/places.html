@@ -1,0 +1,242 @@
+<!DOCTYPE html>
+<html lang="de">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Orte — Datenbank</title>
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Crimson+Pro:ital,wght@0,300;0,400;0,500;0,600;0,700;1,300;1,400;1,500&family=Inter:wght@300;400;500;600&family=JetBrains+Mono:wght@400&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="../static/css/tokens.css">
+    <link rel="stylesheet" href="../static/css/base.css">
+    <link rel="stylesheet" href="../static/css/components.css">
+    <link rel="stylesheet" href="../static/css/responsive.css">
+    <link rel="stylesheet" href="../static/css/print.css">
+    <script>window.ROOT_PATH = "..";</script>
+    
+<link rel="stylesheet" href="../static/css/index.css">
+<link rel="stylesheet" href="../static/css/register.css">
+
+</head>
+<body>
+    <a class="skip-link" href="#main-content">Zum Inhalt springen</a>
+    <nav class="site-nav">
+        <div class="nav-inner">
+            <a href="../index.html" class="nav-brand">
+                <span class="nav-brand-sigil">&#x2756;</span>
+                <span class="nav-brand-text">Stadt und Gemeinschaft Wien</span>
+                <span class="nav-brand-sub">Datenbank zu mittelalterlichen Rechtsgesch&auml;ften</span>
+            </a>
+            <span class="nav-badge">Prototyp</span>
+            <button class="nav-hamburger" id="nav-hamburger" aria-label="Menü öffnen" aria-expanded="false">
+                <span></span><span></span><span></span>
+            </button>
+            <div class="nav-links" id="nav-links">
+                <a href="../documents.html">Quellen</a>
+                <div class="nav-dropdown">
+                    <button class="nav-dropdown-trigger" aria-expanded="false" aria-haspopup="true">Register <span class="nav-dropdown-arrow">&#x25BE;</span></button>
+                    <div class="nav-dropdown-menu">
+                        <a href="../register/persons.html">Personen</a>
+                        <a href="../register/organisations.html">Organisationen</a>
+                        <a href="../register/places.html">Orte</a>
+                    </div>
+                </div>
+                <div class="nav-dropdown">
+                    <button class="nav-dropdown-trigger" aria-expanded="false" aria-haspopup="true">Exploration <span class="nav-dropdown-arrow">&#x25BE;</span></button>
+                    <div class="nav-dropdown-menu">
+                        <a href="../exploration/roles.html">Rollen</a>
+                        <a href="../exploration/networks.html">Beziehungen</a>
+                        <a href="../exploration/transactions.html">Transaktionen</a>
+                        <a href="../exploration/places.html">Orte</a>
+                    </div>
+                </div>
+                <a href="../analysis/index.html">Analyse</a>
+                <div class="nav-dropdown">
+                    <button class="nav-dropdown-trigger" aria-expanded="false" aria-haspopup="true">Projekt <span class="nav-dropdown-arrow">&#x25BE;</span></button>
+                    <div class="nav-dropdown-menu">
+                        <a href="../project/about.html">&Uuml;ber das Projekt</a>
+                        <a href="../project/statistics.html">Statistik</a>
+                        <a href="../project/quality.html">Qualit&auml;t</a>
+                        <a href="../project/edition-guidelines.html">Editionsrichtlinien</a>
+                        <a href="../project/glossary.html">Glossar</a>
+                        <a href="../impressum.html">Impressum</a>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </nav>
+
+    <main class="site-main" id="main-content">
+        
+<div class="index-page register-page">
+
+    <header class="index-header">
+        <h1>Orte</h1>
+        <p class="index-subtitle">
+            <span class="stat">2.537</span> Einträge
+        </p>
+    </header>
+
+    <!-- Alphabet quick-nav -->
+    <nav class="alphabet-bar" aria-label="Alphabetische Navigation">
+        
+        <button class="alpha-btn" data-letter="A">A</button>
+        
+        <button class="alpha-btn" data-letter="B">B</button>
+        
+        <button class="alpha-btn" data-letter="C">C</button>
+        
+        <button class="alpha-btn" data-letter="D">D</button>
+        
+        <button class="alpha-btn" data-letter="E">E</button>
+        
+        <button class="alpha-btn" data-letter="F">F</button>
+        
+        <button class="alpha-btn" data-letter="G">G</button>
+        
+        <button class="alpha-btn" data-letter="H">H</button>
+        
+        <button class="alpha-btn" data-letter="I">I</button>
+        
+        <button class="alpha-btn" data-letter="J">J</button>
+        
+        <button class="alpha-btn" data-letter="K">K</button>
+        
+        <button class="alpha-btn" data-letter="L">L</button>
+        
+        <button class="alpha-btn" data-letter="M">M</button>
+        
+        <button class="alpha-btn" data-letter="N">N</button>
+        
+        <button class="alpha-btn" data-letter="O">O</button>
+        
+        <button class="alpha-btn" data-letter="P">P</button>
+        
+        <button class="alpha-btn" data-letter="Q">Q</button>
+        
+        <button class="alpha-btn" data-letter="R">R</button>
+        
+        <button class="alpha-btn" data-letter="S">S</button>
+        
+        <button class="alpha-btn" data-letter="T">T</button>
+        
+        <button class="alpha-btn" data-letter="U">U</button>
+        
+        <button class="alpha-btn" data-letter="V">V</button>
+        
+        <button class="alpha-btn" data-letter="W">W</button>
+        
+        <button class="alpha-btn" data-letter="X">X</button>
+        
+        <button class="alpha-btn" data-letter="Y">Y</button>
+        
+        <button class="alpha-btn" data-letter="Z">Z</button>
+        
+        <button class="alpha-btn alpha-btn-all active" data-letter="">Alle</button>
+    </nav>
+
+    <!-- Search and filter bar -->
+    <section class="index-controls">
+        
+<div class="search-box">
+    <svg class="search-icon" width="18" height="18" viewBox="0 0 18 18" fill="none" aria-hidden="true">
+        <circle cx="7.5" cy="7.5" r="5.5" stroke="currentColor" stroke-width="1.5"/>
+        <path d="M12 12L16 16" stroke="currentColor" stroke-width="1.5" stroke-linecap="round"/>
+    </svg>
+    <label for="search-input" class="sr-only">Suche nach Name, ID ...</label>
+    <input type="text" id="search-input" placeholder="Suche nach Name, ID ..." autocomplete="off" spellcheck="false">
+    <button class="search-clear hidden" id="search-clear" aria-label="Suche löschen">&times;</button>
+</div>
+
+        
+        <div class="filter-group">
+            <select id="filter-type" aria-label="Typ filtern">
+                <option value="">Alle Typ</option>
+                
+                <option value="immo">immo</option>
+                
+                <option value="river">river</option>
+                
+                <option value="settlement">settlement</option>
+                
+                <option value="street">street</option>
+                
+            </select>
+        </div>
+        
+        <div class="filter-group">
+            <select id="filter-docs" aria-label="Dokumentverknüpfungen">
+                <option value="">Dokumentverknüpfungen</option>
+                <option value="1">Mit Dokumenten</option>
+                <option value="0">Ohne Dokumente</option>
+            </select>
+        </div>
+        <div class="filter-group">
+            <select id="filter-quality" aria-label="Datenqualität">
+                <option value="">Datenqualität</option>
+                <option value="0">Fehlerfrei</option>
+                <option value="1">Hinweise</option>
+                <option value="2">Warnungen</option>
+            </select>
+        </div>
+        
+<div class="result-count" id="result-count">
+    2537 Einträge
+</div>
+
+    </section>
+
+    
+<div class="active-filters" id="active-filters"></div>
+
+
+    <!-- Register table -->
+    <section class="index-table-wrap">
+        <table class="index-table" id="register-table" data-type="places">
+            <thead>
+                <tr>
+                    <th class="col-name" data-sort="n">Name</th>
+                    
+                    <th class="col-type" data-sort="tp">Typ</th>
+                    
+                    <th class="col-docs" data-sort="dc">Dok.</th>
+                    <th class="col-quality" data-sort="qw" title="Datenqualität (schlechtester Score der verknüpften Dokumente)">Q</th>
+                    <th class="col-id" data-sort="id">ID</th>
+                </tr>
+            </thead>
+            <tbody id="register-tbody">
+            </tbody>
+        </table>
+        
+<div class="no-results hidden" id="no-results">
+    <p>Keine Einträge gefunden.</p>
+</div>
+
+    </section>
+
+</div>
+
+
+    </main>
+
+    <footer class="site-footer">
+        <div class="footer-inner">
+            <div class="footer-col">
+                <p class="footer-project">Stadt und Gemeinschaft Wien &mdash; Datenbank</p>
+                <p>Tr&auml;gerprojekt &raquo;Stadt und Gemeinschaft&laquo; (Universit&auml;t Wien) &middot; Dissertation &raquo;Im Netz der Stadt&laquo;</p>
+                <p class="footer-meta">Datenstand: 2026-04-17</p>
+            </div>
+            <div class="footer-col footer-col-right">
+                <p>Technische Umsetzung: <a href="https://dhcraft.org" class="footer-link">Digital Humanities Craft OG</a></p>
+                <p>Lizenz: noch zu kl&auml;ren &middot; 2537 Orte</p>
+            </div>
+        </div>
+    </footer>
+
+    <script src="../static/js/core.js"></script>
+    
+<script src="../static/js/table-infra.js"></script>
+<script src="../static/js/register.js"></script>
+
+</body>
+</html>

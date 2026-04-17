@@ -675,7 +675,7 @@
                     '<td>' + esc(sexLabels[e.source_sex] || e.source_sex) + '</td>' +
                     '<td>' + esc(e.target_name) + '</td>' +
                     '<td>' + esc(sexLabels[e.target_sex] || e.target_sex) + '</td>' +
-                    '<td><a href="./documents/' + esc(e.file_key).replace('f__', '').replace(/_/g, '/') + '.html">' + esc(e.file_key) + '</a></td>' +
+                    '<td><a href="' + (window.ROOT_PATH || '.') + '/documents/' + esc(e.file_key).replace('f__', '').replace(/_/g, '/') + '.html">' + esc(e.file_key) + '</a></td>' +
                     '</tr>';
             });
             html += '</tbody></table>';
@@ -694,7 +694,7 @@
             }
         }
 
-        ChartHelpers.loadJSON('./data/epic_b.json', 'explore-rel-chart', function(data) {
+        ChartHelpers.loadJSON((window.ROOT_PATH || '.') + '/data/epic_b.json', 'explore-rel-chart', function(data) {
             epicB = data;
             renderAll();
             renderRepDirection();

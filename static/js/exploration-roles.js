@@ -359,7 +359,7 @@
         // Data loading
         // ================================================================
 
-        ChartHelpers.loadJSON('./data/epic_a.json', 'explore-role-chart', function(data) {
+        ChartHelpers.loadJSON((window.ROOT_PATH || '.') + '/data/epic_a.json', 'explore-role-chart', function(data) {
             epicA = data;
             // E6: handle URL parameter for sex filter pre-selection
             var sexParam = EdCore.getParam('sex');

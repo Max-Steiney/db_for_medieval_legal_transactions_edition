@@ -34,7 +34,7 @@
 
         // --- Detail JSON cache ---
         var detailCache = null;  // lazy-loaded JSON { entityId: [{u,i,d,c,r},...] }
-        var jsonFile = 'register/' + regType + '.json';
+        var jsonFile = (window.ROOT_PATH || '.') + '/register/' + regType + '.json';
 
         function loadDetailJSON(cb) {
             if (detailCache) { cb(detailCache); return; }
@@ -273,7 +273,7 @@
         var loadingTbody = document.getElementById('register-tbody');
         loadingTbody.innerHTML = '<tr><td colspan="' + colCount + '" style="text-align:center;padding:2rem;color:var(--color-text-muted)">Daten werden geladen\u2026</td></tr>';
 
-        fetch('./data/' + regType + '_search.json')
+        fetch((window.ROOT_PATH || '.') + '/data/' + regType + '_search.json')
             .then(function(r) { return r.json(); })
             .then(function(data) {
                 allEntries = data;

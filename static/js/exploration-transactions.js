@@ -637,7 +637,7 @@
         }
 
         // -- Load data and render --
-        ChartHelpers.loadJSON('./data/epic_c.json', 'explore-tx-chart', function(data) {
+        ChartHelpers.loadJSON((window.ROOT_PATH || '.') + '/data/epic_c.json', 'explore-tx-chart', function(data) {
             epicC = data;
             renderTxChart();
             renderVerbTable();

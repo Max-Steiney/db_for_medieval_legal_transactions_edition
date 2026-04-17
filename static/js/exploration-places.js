@@ -363,7 +363,7 @@
         // -- Init: load data and render --
         initMap();
 
-        ChartHelpers.loadJSON('./data/epic_d.json', 'explore-map', function(data) {
+        ChartHelpers.loadJSON((window.ROOT_PATH || '.') + '/data/epic_d.json', 'explore-map', function(data) {
             epicD = data;
             populateMap();
             renderTable();

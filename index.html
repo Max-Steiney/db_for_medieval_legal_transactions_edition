@@ -3,7 +3,7 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Startseite — Digital Edition</title>
+    <title>Startseite — Datenbank</title>
     <link rel="preconnect" href="https://fonts.googleapis.com">
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
     <link href="https://fonts.googleapis.com/css2?family=Crimson+Pro:ital,wght@0,300;0,400;0,500;0,600;0,700;1,300;1,400;1,500&family=Inter:wght@300;400;500;600&family=JetBrains+Mono:wght@400&display=swap" rel="stylesheet">
@@ -12,6 +12,7 @@
     <link rel="stylesheet" href="./static/css/components.css">
     <link rel="stylesheet" href="./static/css/responsive.css">
     <link rel="stylesheet" href="./static/css/print.css">
+    <script>window.ROOT_PATH = ".";</script>
     
 <link rel="stylesheet" href="./static/css/exploration.css">
 <link rel="stylesheet" href="./static/css/startseite.css">
@@ -23,39 +24,41 @@
         <div class="nav-inner">
             <a href="./index.html" class="nav-brand">
                 <span class="nav-brand-sigil">&#x2756;</span>
-                <span class="nav-brand-text">Wiener Urkundenbuch</span>
-                <span class="nav-brand-sub">Digital Edition</span>
+                <span class="nav-brand-text">Stadt und Gemeinschaft Wien</span>
+                <span class="nav-brand-sub">Datenbank zu mittelalterlichen Rechtsgesch&auml;ften</span>
             </a>
-            <span class="nav-badge">Forschungsvorschau</span>
+            <span class="nav-badge">Prototyp</span>
             <button class="nav-hamburger" id="nav-hamburger" aria-label="Menü öffnen" aria-expanded="false">
                 <span></span><span></span><span></span>
             </button>
             <div class="nav-links" id="nav-links">
-                <a href="./documents.html">Dokumente</a>
+                <a href="./documents.html">Quellen</a>
                 <div class="nav-dropdown">
                     <button class="nav-dropdown-trigger" aria-expanded="false" aria-haspopup="true">Register <span class="nav-dropdown-arrow">&#x25BE;</span></button>
                     <div class="nav-dropdown-menu">
-                        <a href="./persons.html">Personen</a>
-                        <a href="./organisations.html">Organisationen</a>
-                        <a href="./places.html">Orte</a>
+                        <a href="./register/persons.html">Personen</a>
+                        <a href="./register/organisations.html">Organisationen</a>
+                        <a href="./register/places.html">Orte</a>
                     </div>
                 </div>
                 <div class="nav-dropdown">
                     <button class="nav-dropdown-trigger" aria-expanded="false" aria-haspopup="true">Exploration <span class="nav-dropdown-arrow">&#x25BE;</span></button>
                     <div class="nav-dropdown-menu">
-                        <a href="./exploration_roles.html">Rollen</a>
-                        <a href="./exploration_networks.html">Beziehungen</a>
-                        <a href="./exploration_transactions.html">Transaktionen</a>
-                        <a href="./exploration_places.html">Orte</a>
+                        <a href="./exploration/roles.html">Rollen</a>
+                        <a href="./exploration/networks.html">Beziehungen</a>
+                        <a href="./exploration/transactions.html">Transaktionen</a>
+                        <a href="./exploration/places.html">Orte</a>
                     </div>
                 </div>
+                <a href="./analysis/index.html">Analyse</a>
                 <div class="nav-dropdown">
                     <button class="nav-dropdown-trigger" aria-expanded="false" aria-haspopup="true">Projekt <span class="nav-dropdown-arrow">&#x25BE;</span></button>
                     <div class="nav-dropdown-menu">
-                        <a href="./about.html">&Uuml;ber das Projekt</a>
-                        <a href="./statistics.html">Statistik</a>
-                        <a href="./quality.html">Qualit&auml;t</a>
-                        <a href="./edition_guidelines.html">Editionsrichtlinien</a>
+                        <a href="./project/about.html">&Uuml;ber das Projekt</a>
+                        <a href="./project/statistics.html">Statistik</a>
+                        <a href="./project/quality.html">Qualit&auml;t</a>
+                        <a href="./project/edition-guidelines.html">Editionsrichtlinien</a>
+                        <a href="./project/glossary.html">Glossar</a>
                         <a href="./impressum.html">Impressum</a>
                     </div>
                 </div>
@@ -69,27 +72,19 @@
 
     
     <header class="start-hero">
-        <h1>Wiener Urkundenbuch</h1>
-        <p class="start-hero-sub">Digital Edition</p>
+        <h1>Stadt und Gemeinschaft Wien</h1>
+        <p class="start-hero-sub">Datenbank zu mittelalterlichen Rechtsgesch&auml;ften</p>
         <p class="start-hero-desc">
-            Digitale Erschlie&szlig;ung mittelalterlicher Wiener Rechtsgesch&auml;fte, ca. 1177&ndash;1524.
+            Datenbank zu mittelalterlichen Wiener Rechtsgesch&auml;ften, 1177–1412 (mit Ergänzungen bis 1414 für QGW II/1 und II/2).
         </p>
         <div class="start-hero-stats">
             <span class="start-hero-stat">
-                <strong>3.541</strong> Quellen
+                <strong>3.041</strong> Quellen
             </span>
             <span class="start-hero-sep">&middot;</span>
             <span class="start-hero-stat">
-                <strong>16.084</strong> Personen
+                <strong>16.084</strong> Gesamtnennungen Personen
                 <span class="start-hero-stat-sub">(&#9792;&thinsp;4.224 &middot; &#9794;&thinsp;11.860)</span>
-            </span>
-            <span class="start-hero-sep">&middot;</span>
-            <span class="start-hero-stat">
-                <strong>1.078</strong> Organisationen
-            </span>
-            <span class="start-hero-sep">&middot;</span>
-            <span class="start-hero-stat">
-                <strong>2.537</strong> Orte
             </span>
         </div>
     </header>
@@ -97,21 +92,20 @@
     
     <div class="start-entry-grid">
         <a href="./documents.html" class="start-entry-card">
-            <p class="start-entry-card-title">Dokumente durchsuchen</p>
+            <p class="start-entry-card-title">Quellen durchsuchen</p>
             <p class="start-entry-card-desc">
-                3.541 Quellen aus 6 Sammlungen
+                3.041 Quellen aus 5 Quellenkorpora
                 mit Volltextsuche, Zeitfilter und Faksimile-Ansicht.
             </p>
         </a>
-        <a href="./persons.html" class="start-entry-card">
-            <p class="start-entry-card-title">Register erkunden</p>
+        <a href="./register/persons.html" class="start-entry-card">
+            <p class="start-entry-card-title">Personenregister</p>
             <p class="start-entry-card-desc">
-                16.084 Personen,
-                1.078 Organisationen,
-                2.537 Orte.
+                16.084 Gesamtnennungen von Personen.
+                Organisationen und Orte folgen, sobald freigegeben.
             </p>
         </a>
-        <a href="./about.html" class="start-entry-card">
+        <a href="./project/about.html" class="start-entry-card">
             <p class="start-entry-card-title">&Uuml;ber das Projekt</p>
             <p class="start-entry-card-desc">
                 Forschungskontext, Quellenbestand, Annotationsmodell
@@ -125,7 +119,7 @@
         <h2>Exploration</h2>
         <div class="explore-hub-grid">
 
-            <a href="./exploration_roles.html" class="explore-hub-card explore-hub-card--active">
+            <a href="./exploration/roles.html" class="explore-hub-card explore-hub-card--active">
                 <div class="explore-hub-card-icon">
                     <svg width="40" height="40" viewBox="0 0 40 40" fill="none" xmlns="http://www.w3.org/2000/svg">
                         <rect x="4" y="8" width="12" height="24" rx="2" stroke="currentColor" stroke-width="1.5" fill="none"/>
@@ -142,7 +136,7 @@
                 <span class="explore-hub-card-status explore-hub-card-status--ready">Verf&uuml;gbar</span>
             </a>
 
-            <a href="./exploration_networks.html" class="explore-hub-card explore-hub-card--active">
+            <a href="./exploration/networks.html" class="explore-hub-card explore-hub-card--active">
                 <div class="explore-hub-card-icon">
                     <svg width="40" height="40" viewBox="0 0 40 40" fill="none" xmlns="http://www.w3.org/2000/svg">
                         <circle cx="12" cy="14" r="4" stroke="currentColor" stroke-width="1.5"/>
@@ -161,7 +155,7 @@
                 <span class="explore-hub-card-status explore-hub-card-status--ready">Verf&uuml;gbar</span>
             </a>
 
-            <a href="./exploration_transactions.html" class="explore-hub-card explore-hub-card--active">
+            <a href="./exploration/transactions.html" class="explore-hub-card explore-hub-card--active">
                 <div class="explore-hub-card-icon">
                     <svg width="40" height="40" viewBox="0 0 40 40" fill="none" xmlns="http://www.w3.org/2000/svg">
                         <rect x="6" y="24" width="8" height="8" rx="1" stroke="currentColor" stroke-width="1.5" fill="currentColor" fill-opacity="0.15"/>
@@ -177,7 +171,7 @@
                 <span class="explore-hub-card-status explore-hub-card-status--ready">Verf&uuml;gbar</span>
             </a>
 
-            <a href="./exploration_places.html" class="explore-hub-card explore-hub-card--active">
+            <a href="./exploration/places.html" class="explore-hub-card explore-hub-card--active">
                 <div class="explore-hub-card-icon">
                     <svg width="40" height="40" viewBox="0 0 40 40" fill="none" xmlns="http://www.w3.org/2000/svg">
                         <path d="M20 6C14.5 6 10 10.5 10 16C10 24 20 34 20 34C20 34 30 24 30 16C30 10.5 25.5 6 20 6Z" stroke="currentColor" stroke-width="1.5" fill="currentColor" fill-opacity="0.1"/>
@@ -197,7 +191,7 @@
 
     
     <section class="start-section">
-        <h2>Sammlungsbestand</h2>
+        <h2>Quellenkorpora</h2>
         <div class="start-collections">
             
             <div class="start-collection-item">
@@ -216,11 +210,6 @@
             </div>
             
             <div class="start-collection-item">
-                <span class="start-collection-label">QGW II/2 (1448–1457)</span>
-                <span class="start-collection-count">500 Quellen</span>
-            </div>
-            
-            <div class="start-collection-item">
                 <span class="start-collection-label">QGW II/3 (1458–1466)</span>
                 <span class="start-collection-count">352 Quellen</span>
             </div>
@@ -232,7 +221,7 @@
             
         </div>
         <p class="start-transmission-note">
-            &Uuml;berlieferungsl&uuml;cke: 1418&ndash;1447 (keine Quellen&uuml;berlieferung)
+            1418–1447: noch nicht ausgewertet.
         </p>
     </section>
 
@@ -244,12 +233,13 @@
     <footer class="site-footer">
         <div class="footer-inner">
             <div class="footer-col">
-                <p class="footer-project">Wiener Urkundenbuch — Digital Edition</p>
-                <p>Forschungsprojekte &raquo;Im Netz der Stadt&laquo; · &raquo;Stadt und Gemeinschaft&laquo; (Universit&auml;t Wien)</p>
+                <p class="footer-project">Stadt und Gemeinschaft Wien &mdash; Datenbank</p>
+                <p>Tr&auml;gerprojekt &raquo;Stadt und Gemeinschaft&laquo; (Universit&auml;t Wien) &middot; Dissertation &raquo;Im Netz der Stadt&laquo;</p>
+                <p class="footer-meta">Datenstand: 2026-04-17</p>
             </div>
             <div class="footer-col footer-col-right">
-                <p>Digitale Aufbereitung: <a href="https://dhcraft.org" class="footer-link">Digital Humanities Craft OG</a></p>
-                <p>Lizenz: <a href="https://creativecommons.org/licenses/by/4.0/" class="footer-link">CC BY 4.0</a> · Startseite generiert am 2026-04-16</p>
+                <p>Technische Umsetzung: <a href="https://dhcraft.org" class="footer-link">Digital Humanities Craft OG</a></p>
+                <p>Lizenz: noch zu kl&auml;ren &middot; Startseite generiert am 2026-04-17</p>
             </div>
         </div>
     </footer>

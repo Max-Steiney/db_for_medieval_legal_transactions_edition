@@ -30,7 +30,7 @@ var DrillDown = (function() {
             return;
         }
         docsLookupLoading = true;
-        fetch('./data/docs_lookup.json')
+        fetch((window.ROOT_PATH || '.') + '/data/docs_lookup.json')
             .then(function(res) { return res.json(); })
             .then(function(data) {
                 docsLookup = data;
