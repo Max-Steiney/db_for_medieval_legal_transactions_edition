@@ -12,11 +12,11 @@ Achtung: Nicht verwechseln mit einer Quelle als Ganzes. Die Unterscheidung träg
 
 ## Gesamtnennung
 
-Jede Erwähnung einer Person, Organisation oder eines Ortes in den Quellen des Korpus, summiert über alle Vorkommen. Eine Person, die in drei Quellen genannt wird, trägt drei Gesamtnennungen bei.
+Eine Beziehung zwischen einer Person, Organisation oder einem Ort und einer Quelle, in der sie genannt wird. Wer in drei Quellen vorkommt, trägt drei Gesamtnennungen bei. Eine Person, die in derselben Quelle mehrfach erwähnt wird (typisch für Zeugenreihen oder Urteilslisten), trägt für diese Quelle nur eine Gesamtnennung bei (quellenbereinigte Zählung).
 
-Gesamtnennungen sind die Zählebene für Häufigkeit gesellschaftlicher Präsenz. Sie machen Aussagen über Dichte und Funktionsträgerschaft möglich.
+Gesamtnennungen sind die Zählebene für Häufigkeit gesellschaftlicher Präsenz. Sie machen Aussagen über Dichte und Funktionsträgerschaft möglich, ohne durch Mehrfachnennungen in einzelnen Urteilsformeln verzerrt zu werden.
 
-Achtung: Nicht zu verwechseln mit [[#Individuelle Person]]. Beide Zählebenen sind gleichzeitig gültig, beantworten aber verschiedene Fragen. Verwendet in [[requirements#Umschaltbarkeit der Zählebenen]].
+Achtung: Nicht zu verwechseln mit [[#Individuelle Person]]. Beide Zählebenen sind gleichzeitig gültig, beantworten aber verschiedene Fragen. Verwendet in [[requirements#Umschaltbarkeit der Zählebenen]] und [[decisions#Quellenbereinigte Z\u00e4hlung]].
 
 ## Individuelle Person
 
