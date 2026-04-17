@@ -66,6 +66,18 @@ Jede aggregierte Kennzahl im Frontend ist auf die Menge der zugrundeliegenden Qu
 
 Konsequenz für den Build: jede Aggregations-Funktion füllt `drill_down` parallel zu den Counter-Werten. Begründung in [[decisions#Provenienz als inline Drill-down in den Aggregat-JSONs]], Umsetzung in [[ui-design#Provenienz-Tooltip]].
 
+## Quellenbereinigte Aggregation als Invariante
+
+Das Zählen von Entitäten pro Quelle erfolgt mengenbasiert: die Extraktionsfunktion im Build liefert pro Quelldokument eine Menge referenzierter Entity-IDs, nicht eine Liste mit möglichen Duplikaten. Eine Person, Organisation oder ein Ort wird pro Quelle höchstens einmal gezählt, auch wenn die TEI-Auszeichnung sie im Text mehrfach markiert. Siehe [[decisions#Quellenbereinigte Zählung]] für die Begründung und [[glossar#Gesamtnennung]] für die begriffliche Konsequenz im UI.
+
+Damit ist die Aggregation robust gegen Urteilslisten, Zeugenreihen und Formelwiederholungen, die eine ungereinigte Zählung verzerren würden.
+
+## Datenstand aus dem Pipeline-Repo
+
+Die Fußzeile der Edition führt einen **Datenstand**, der auf den letzten Commit des Pipeline-Repos verweist. Technisch ermittelt der Build das Commit-Datum per `git log -1 --format=%cI` im Pipeline-Repo-Root und formatiert es in lesbarer deutscher Langform. Der Datenstand ist damit nicht das Tagesdatum des Build-Laufs, sondern der Stand der Quellen, auf denen der Build beruht.
+
+Getrennt davon bleibt das **Build-Datum** als Zeitstempel pro gerenderter Seite. Es markiert, wann die Einzelseite zuletzt neu gebaut wurde. Beide Angaben werden lesbar, nicht als ISO-Zeichenkette ausgegeben. Siehe [[ui-design#Datenstand und Build-Datum]].
+
 ## Siehe auch
 
 - [[data]] was verarbeitet wird

@@ -38,6 +38,8 @@ Die Daten sind in vier Ebenen organisiert. [[glossar#Quellenkorpus]] ist die obe
 
 Jede Ebene hat ihre eigene Zählung. Wer nach Urkunden zählt, bleibt auf Quellenebene. Wer nach Rechtsgeschäften zählt, steigt auf Event-Ebene ab. Wer nach Personen zählt, wählt zwischen [[glossar#Gesamtnennung]] und [[glossar#Individuelle Person]].
 
+Auf der Nennungsebene gilt: Mehrfacherwähnungen einer Entität innerhalb einer Quelle werden bei der Aggregation zu einer Nennung zusammengefasst. Die Zählebene [[glossar#Gesamtnennung]] ist damit quellenbereinigt. Die Entscheidung und ihr Hintergrund stehen in [[decisions#Quellenbereinigte Zählung]], die technische Umsetzung in [[architecture#Quellenbereinigte Aggregation als Invariante]].
+
 ## Register
 
 Die Edition führt drei parallele Register: Personen, Organisationen, Orte. Jeder Eintrag ist eine konsolidierte Identität mit eindeutiger ID und verknüpft die Vorkommen in den Quellen.

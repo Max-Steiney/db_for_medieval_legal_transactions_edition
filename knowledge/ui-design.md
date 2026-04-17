@@ -90,7 +90,25 @@ Das Responsive-Verhalten zielt auf Laptop- und Tablet-Arbeitsplätze. Ein Mobile
 
 ## Farbkodierung und Typografie
 
-Die Farbpalette bleibt zurückhaltend, damit die Daten im Vordergrund stehen. Serifen-Typografie trägt lange Lese-Texte wie Regesten. Sans-Serif trägt UI-Elemente und Zahlen, weil beide schneller erfasst werden müssen.
+Die Farbpalette bleibt zurückhaltend, damit die Daten im Vordergrund stehen. Drei Ebenen tragen die visuelle Hierarchie:
+
+- **Akzentblau** markiert Interaktives und Kategorien: Icons, Eyebrow-Labels, Link-Hover, Provenienz-Trigger, aktive Filter.
+- **Schwarz** trägt den Inhaltstitel: Seiten-Überschriften, Card-Titel, Regesttexte.
+- **Gedämpftes Grau** trägt Beschreibungstexte, Metadaten und Fußnoten.
+
+Die Zuordnung ist kein Dekorationsmuster, sondern eine semantische Kodierung: eine blaue Stelle ist navigierbar oder kategorisiert, eine schwarze Stelle ist Inhalt, eine graue Stelle ist Kontext. Nutzerinnen, die die Oberfläche über die Zeit lesen lernen, verlassen sich darauf.
+
+Serifen-Typografie trägt lange Lese-Texte wie Regesten. Sans-Serif trägt UI-Elemente und Zahlen, weil beide schneller erfasst werden müssen.
+
+## Startseite als Zwei-Säulen-Einstieg
+
+Die Startseite führt die beiden gleichberechtigten Zugänge der Navigation — Exploration und Analyse — als nebeneinanderstehende Säulen vor. Eyebrow-Labels in Sans-Caps markieren die Bereiche, ohne sie durch schwergewichtige Trennlinien gegeneinander abzugrenzen. Die Exploration-Säule hält ein 2×2-Raster visueller Zugänge (Rollen, Beziehungen, Transaktionen, Orte). Die Analyse-Säule zeigt den Einstieg zu den Template-Familien, die in [[quer ui]] konzeptionell ausgearbeitet sind.
+
+Darüber liegen drei Entry-Cards (Quellen durchsuchen, Personenregister, Über das Projekt) mit Akzentfarben-Icons. Sie tragen den pragmatischen Alltag, während die Säulen darunter die beiden methodischen Zugänge verorten.
+
+## Datenstand und Build-Datum
+
+Die Fußzeile unterscheidet zwei Datumsangaben. Der **Datenstand** ist das Datum des letzten Commits im Pipeline-Repo, umgesetzt in lesbarer deutscher Langform. Er verweist auf den Stand der Quellen, nicht auf den Zeitpunkt, zu dem die statischen Seiten gebaut wurden. Das **Build-Datum** erscheint pro Seite im Fußzeilen-Zusatz und markiert den Zeitpunkt der jeweiligen Seitengenerierung. Beide sind in lesbarer Form, nicht als ISO-Zeichenkette. Siehe [[architecture#Datenstand aus dem Pipeline-Repo]].
 
 ## Zitierbarkeit einzelner Ansichten
 

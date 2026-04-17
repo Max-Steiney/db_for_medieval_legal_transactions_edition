@@ -72,7 +72,7 @@ Publikationen verweisen auf einen Stichtag, nicht auf einen bewegten Stand. Ohne
 
 ### Wie
 
-Persistente Identifier oder stabile URLs zu versionierten Datenständen werden im UI ausgewiesen. Der aktuelle Datenstand ist in der Fußzeile jeder Seite sichtbar. Siehe [[ui-design#Zitierbarkeit einzelner Ansichten]].
+Persistente Identifier oder stabile URLs zu versionierten Datenständen werden im UI ausgewiesen. Der aktuelle Datenstand ist in der Fußzeile jeder Seite sichtbar als Datum des letzten Commits im Pipeline-Repo, in lesbarer Langform. Er ist damit der Stand der Quellen, nicht der Zeitpunkt des Build-Laufs. Umsetzung in [[architecture#Datenstand aus dem Pipeline-Repo]], UI-Ausprägung in [[ui-design#Datenstand und Build-Datum]] und [[ui-design#Zitierbarkeit einzelner Ansichten]].
 
 ## Informationsdichte vor reduzierter Ästhetik
 
