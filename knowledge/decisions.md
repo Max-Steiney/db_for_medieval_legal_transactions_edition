@@ -92,7 +92,7 @@ Getroffene Leitentscheidungen mit Begründung. Zeitlos formuliert. Pro Eintrag E
 
 **Begründung.** Eine Zahl, die aus derselben Pipeline stammt, die sie angeblich verifiziert, verifiziert sich selbst nicht. Die Frage, ob ein Label an einer Zahl semantisch korrekt ist, lässt sich nur beantworten, wenn eine zweite, unabhängige Rechnung sie bestätigt. Die Implementierung in Python mit `lxml` vermeidet CSV-Zwischenstufen und trifft auf die Quelle direkt.
 
-**Konsequenz.** Das Test-Set läuft auf Abruf und schreibt versionierte Reports. Diskrepanzen führen zu Korrekturen in Templates, Aggregations-Logik oder Quell-Daten. Gleichzeitig dient dieselbe Aggregations-Logik als Fundament für die [[#Parallele Provenienz-Drill-down-JSONs]], weil beide dieselben Zählungen auf derselben Quellebene nachvollziehen. Siehe [[architecture#Verifikations-Test-Set]].
+**Konsequenz.** Das Test-Set läuft auf Abruf und schreibt versionierte Reports. Diskrepanzen führen zu Korrekturen in Templates, Aggregations-Logik oder Quell-Daten. Gleichzeitig dient dieselbe Aggregations-Logik als Fundament für die [[#Provenienz als inline Drill-down in den Aggregat-JSONs]], weil beide dieselben Zählungen auf derselben Quellebene nachvollziehen. Siehe [[architecture#Verifikations-Test-Set]].
 
 ## Provenienz als inline Drill-down in den Aggregat-JSONs
 

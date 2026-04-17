@@ -12,29 +12,29 @@ Einträge in umgekehrt chronologischer Reihenfolge, neueste oben.
 
 ---
 
-## 2026-04-17 Terminologie-Konsolidierung, Erschlie\u00dfungsform, Provenienz-Ausrollung
+## 2026-04-17 Terminologie-Konsolidierung, Erschließungsform, Provenienz-Ausrollung
 
-Die UI-Terminologie wird durchgehend auf die kanonischen Begriffe aus [[glossar]] und [[decisions#Begriff Quellenkorpus]] gezogen. Alle benutzerseitig sichtbaren Vorkommen von „Dokument(e)" werden zu „Quelle(n)", „Rechtsakt(e)" zu „Rechtsgesch\u00e4ft(e)", eine verbliebene „Sammlung"-Spaltenkopfzeile zu „Quellenkorpus". Technische Labels auf HTML-Ebene (ARIA-Attribute, CSS-IDs) bleiben unber\u00fchrt, weil sie sich auf das HTML-Dokument als Tr\u00e4gerformat beziehen, nicht auf die Quelle der Edition.
+Die UI-Terminologie wird durchgehend auf die kanonischen Begriffe aus [[glossar]] und [[decisions#Begriff Quellenkorpus]] gezogen. Alle benutzerseitig sichtbaren Vorkommen von „Dokument(e)" werden zu „Quelle(n)", „Rechtsakt(e)" zu „Rechtsgeschäft(e)", eine verbliebene „Sammlung"-Spaltenkopfzeile zu „Quellenkorpus". Technische Labels auf HTML-Ebene (ARIA-Attribute, CSS-IDs) bleiben unberührt, weil sie sich auf das HTML-Dokument als Trägerformat beziehen, nicht auf die Quelle der Edition.
 
-Die [[data#Erschlie\u00dfungsformen|Erschlie\u00dfungsform]] eines Quellenkorpus ist im UI an den Quellenkorpus-Chips der Dokumenten-\u00dcbersicht sichtbar. QGW-Best\u00e4nde tragen das Label „Regest + Faksimile", Stadtb\u00fccher tragen „Volltext". Die Zuordnung liegt als Build-Konstante `_transmission_form` vor und fliesst in die `collections`-Datenstruktur mit ein.
+Die [[data#Erschließungsformen|Erschließungsform]] eines Quellenkorpus ist im UI an den Quellenkorpus-Chips der Dokumenten-Übersicht sichtbar. QGW-Bestände tragen das Label „Regest + Faksimile", Stadtbücher tragen „Volltext". Die Zuordnung liegt als Build-Konstante `_transmission_form` vor und fliesst in die `collections`-Datenstruktur mit ein.
 
-Die Provenienz-Tooltip-Komponente wird von den Startseiten-KPIs auf weitere Seiten ausgerollt: Exploration-Hub (Personen, Rechtsgesch\u00e4fte, Quellen), Personenregister (Gesamt-Eintr\u00e4ge mit Hinweis auf quellenbereinigte Z\u00e4hlung pro Eintrag), Datenqualit\u00e4t (Quellen gesamt). Das Muster ist dasselbe wie auf der Startseite; die Popover-Inhalte verweisen jeweils auf die relevanten Glossar-Eintr\u00e4ge und Dateipfade.
+Die Provenienz-Tooltip-Komponente wird von den Startseiten-KPIs auf weitere Seiten ausgerollt: Exploration-Hub (Personen, Rechtsgeschäfte, Quellen), Personenregister (Gesamt-Einträge mit Hinweis auf quellenbereinigte Zählung pro Eintrag), Datenqualität (Quellen gesamt). Das Muster ist dasselbe wie auf der Startseite; die Popover-Inhalte verweisen jeweils auf die relevanten Glossar-Einträge und Dateipfade.
 
-Offen f\u00fcr eigene Sessions:
+Offen für eigene Sessions:
 
-- **Z\u00e4hlebenen-Umschalter [[requirements#Umschaltbarkeit der Z\u00e4hlebenen]].** Implementierungspfad: globaler Schalter in der Navbar oder Filter-Leiste, persistierter Zustand im `localStorage`, propagiert via `window.COUNT_MODE` an die Exploration-Skripte. Jeder Counter muss pro Zahl wissen, welche der beiden Ebenen er anzeigen kann; f\u00fcr die Mehrzahl der Exploration-Seiten bedeutet das eine parallele JSON-Struktur (oder zus\u00e4tzliche Felder in den bestehenden `epic_*`-Dateien), die beide Ebenen vorhalten. Der Provenienz-Tooltip zeigt in jedem Popover den gew\u00e4hlten Modus.
+- **Zählebenen-Umschalter [[requirements#Umschaltbarkeit der Zählebenen]].** Implementierungspfad: globaler Schalter in der Navbar oder Filter-Leiste, persistierter Zustand im `localStorage`, propagiert via `window.COUNT_MODE` an die Exploration-Skripte. Jeder Counter muss pro Zahl wissen, welche der beiden Ebenen er anzeigen kann; für die Mehrzahl der Exploration-Seiten bedeutet das eine parallele JSON-Struktur (oder zusätzliche Felder in den bestehenden `epic_*`-Dateien), die beide Ebenen vorhalten. Der Provenienz-Tooltip zeigt in jedem Popover den gewählten Modus.
 
-- **Menschen-Events-Toggle [[ui-design#Menschen-Events-Toggle]].** Implementierungspfad analog: `window.INCLUDE_HUMAN_EVENTS`, persistiert, propagiert. Datenmodell-Seite: die Aggregatoren m\u00fcssen Nennungen trennen, je nachdem ob sie aus einem prim\u00e4ren Event stammen oder als Verweis auf ein fr\u00fcheres Event vorliegen. Voraussetzung ist eine belastbare Markierung im TEI-Datenstrom. Bei fehlender Markierung zeigt das UI den aktuellen stillschweigenden Zustand (Einschluss) offen, statt ihn zu verschleiern.
+- **Menschen-Events-Toggle [[ui-design#Menschen-Events-Toggle]].** Implementierungspfad analog: `window.INCLUDE_HUMAN_EVENTS`, persistiert, propagiert. Datenmodell-Seite: die Aggregatoren müssen Nennungen trennen, je nachdem ob sie aus einem primären Event stammen oder als Verweis auf ein früheres Event vorliegen. Voraussetzung ist eine belastbare Markierung im TEI-Datenstrom. Bei fehlender Markierung zeigt das UI den aktuellen stillschweigenden Zustand (Einschluss) offen, statt ihn zu verschleiern.
 
-- **Bestandsfilter universell [[ui-design#Bestandsfilter]].** Derzeit wirkt der Filter nur auf der Quellen-\u00dcbersicht. Implementierungspfad: eine gemeinsame Filter-Komponente mit `window.CORPUS_FILTER` als Zustand, die alle Seiten beim Laden konsultieren. Die Seiten selbst m\u00fcssen ihre Aggregate so aufbauen, dass sie auf beliebige Teilmengen der Korpora herunter-rechenbar sind. F\u00fcr die Exploration-Skripte heisst das, dass die `epic_*`-JSONs zus\u00e4tzlich eine korpusbasierte Unterschl\u00fcsselung tragen.
+- **Bestandsfilter universell [[ui-design#Bestandsfilter]].** Derzeit wirkt der Filter nur auf der Quellen-Übersicht. Implementierungspfad: eine gemeinsame Filter-Komponente mit `window.CORPUS_FILTER` als Zustand, die alle Seiten beim Laden konsultieren. Die Seiten selbst müssen ihre Aggregate so aufbauen, dass sie auf beliebige Teilmengen der Korpora herunter-rechenbar sind. Für die Exploration-Skripte heisst das, dass die `epic_*`-JSONs zusätzlich eine korpusbasierte Unterschlüsselung tragen.
 
-- **Analyse-Seite mit Template-Familien.** Blaupause in [[quer ui]]. Umsetzung erfordert Fachteam-Entscheidung \u00fcber die initiale Familienmenge. Technischer Pfad: clientseitige Template-Engine mit Slot-Parametern, Live-Counts aus den `epic_*`-Aggregaten, Drill-down \u00fcber das bestehende `docs_lookup.json`.
+- **Analyse-Seite mit Template-Familien.** Blaupause in [[quer ui]]. Umsetzung erfordert Fachteam-Entscheidung über die initiale Familienmenge. Technischer Pfad: clientseitige Template-Engine mit Slot-Parametern, Live-Counts aus den `epic_*`-Aggregaten, Drill-down über das bestehende `docs_lookup.json`.
 
-Kleinere UX-Punkte, die ohne Phase-2-Abh\u00e4ngigkeit umgesetzt werden k\u00f6nnen:
+Kleinere UX-Punkte, die ohne Phase-2-Abhängigkeit umgesetzt werden können:
 
-- Multi-Select-Chips f\u00fcr den Quellenkorpus-Filter (mehrere Korpora gleichzeitig).
-- Tag-Farbdifferenzierung f\u00fcr Rollen in der Einzelquellen-Ansicht.
-- Mouse-over-Legenden in den Exploration-Visualisierungen, mit kurzen Erkl\u00e4rungen der Achsen und Kodierungen.
+- Multi-Select-Chips für den Quellenkorpus-Filter (mehrere Korpora gleichzeitig).
+- Tag-Farbdifferenzierung für Rollen in der Einzelquellen-Ansicht.
+- Mouse-over-Legenden in den Exploration-Visualisierungen, mit kurzen Erklärungen der Achsen und Kodierungen.
 - F-Faktoid-Legende (Markierung weiblicher Faktoid-Gruppen in den Rollen-Ansichten).
 - Archivinfos auf der Einzelquellen-Ansicht (Signatur, Bestand, Faszikel, sofern aus TEI-Header extrahierbar).
 
@@ -51,7 +51,7 @@ Offen bleibt aus der Phase-2-Liste des CS-Feedbacks:
 - **Zählebenen-Umschalter** zwischen Gesamtnennungen und Individuellen Personen in allen betroffenen Visualisierungen ([[requirements#Umschaltbarkeit der Zählebenen]]). Ohne diese Umschaltung zeigen Rollen- und Beziehungs-Ansichten nur eine Zählebene.
 - **Menschen-Events-Toggle** ([[glossar#Menschen-Event]]): aktiv ein- und ausschließbar, konsistent durch alle abhängigen Darstellungen. Ohne Toggle ist der aktuelle Zustand stillschweigend ein Ausschluss, was Vergleiche über Visualisierungen erschwert.
 - **Bestandsfilter universell** in allen Visualisierungen, nicht nur in den Quellen-Suchseiten. Sinnvoll, sobald Organisationen und Orte freigegeben sind.
-- **Persistente Referenzierbarkeit / PID**: beschlossen, aber technische Ausprägung (w3id, ARK, Handle) braucht Stakeholder-Entscheidung. Siehe [[requirements#Persistente Referenzierbarkeit]].
+- **Persistente Referenzierbarkeit / PID**: beschlossen, aber technische Ausprägung (w3id, ARK, Handle) braucht Stakeholder-Entscheidung. Siehe [[requirements#Zitierfähige Datenstände]].
 - **Provenienz-Tooltip-Ausrollung** auf Register- und Exploration-Seiten. Die Komponente ist etabliert, der Einsatzort bisher auf Startseiten-KPIs beschränkt.
 
 Außerhalb der Phase 2 stehen vereinzelte Daten-Anomalien im TEI-Bestand: Pseudo-Rollen außerhalb des kontrollierten Vokabulars, Sonderzeichen-URLs in docs_lookup.json, eine Witness-Anomalie in ausgewählten Quellen. Die Bereinigung läuft auf Seite der TEI-Annotation. Das Verifikations-Test-Set macht sie als `known_gap` sichtbar.

@@ -16,7 +16,7 @@ Eine Beziehung zwischen einer Person, Organisation oder einem Ort und einer Quel
 
 Gesamtnennungen sind die Zählebene für Häufigkeit gesellschaftlicher Präsenz. Sie machen Aussagen über Dichte und Funktionsträgerschaft möglich, ohne durch Mehrfachnennungen in einzelnen Urteilsformeln verzerrt zu werden.
 
-Achtung: Nicht zu verwechseln mit [[#Individuelle Person]]. Beide Zählebenen sind gleichzeitig gültig, beantworten aber verschiedene Fragen. Verwendet in [[requirements#Umschaltbarkeit der Zählebenen]] und [[decisions#Quellenbereinigte Z\u00e4hlung]].
+Achtung: Nicht zu verwechseln mit [[#Individuelle Person]]. Beide Zählebenen sind gleichzeitig gültig, beantworten aber verschiedene Fragen. Verwendet in [[requirements#Umschaltbarkeit der Zählebenen]] und [[decisions#Quellenbereinigte Zählung]].
 
 ## Individuelle Person
 
