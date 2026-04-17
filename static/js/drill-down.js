@@ -143,8 +143,8 @@ var DrillDown = (function() {
         // WCAG: store trigger element for focus restoration
         previousFocus = document.activeElement;
         handle.titleEl.textContent = title;
-        handle.tbodyEl.innerHTML = '<tr><td colspan="4" style="text-align:center;color:#8c8680">Lade Dokumentdaten\u2026</td></tr>';
-        handle.countEl.textContent = fileKeys.length + ' Dokumente';
+        handle.tbodyEl.innerHTML = '<tr><td colspan="4" style="text-align:center;color:#8c8680">Lade Quellendaten\u2026</td></tr>';
+        handle.countEl.textContent = fileKeys.length + ' Quellen';
         handle.overlay.classList.remove('hidden');
         document.body.style.overflow = 'hidden';
         // WCAG: move focus to close button
@@ -166,7 +166,7 @@ var DrillDown = (function() {
                     '<td>' + esc(doc.r) + '</td>';
                 handle.tbodyEl.appendChild(tr);
             }
-            handle.countEl.textContent = currentData.length + ' Dokumente';
+            handle.countEl.textContent = currentData.length + ' Quellen';
         });
     }
 

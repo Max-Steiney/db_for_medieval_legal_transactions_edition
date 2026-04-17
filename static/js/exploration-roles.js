@@ -353,7 +353,7 @@
             var fkeys = (epicA.drill_down.org_type || {})[orgType] || [];
             if (!fkeys.length) return;
             var label = ORG_TYPE_LABELS[orgType] || orgType;
-            DrillDown.open(drillHandle, label + ' \u2014 Dokumente', fkeys);
+            DrillDown.open(drillHandle, label + ' \u2014 Quellen', fkeys);
         }
 
         // ================================================================

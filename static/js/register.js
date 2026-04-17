@@ -58,7 +58,7 @@
                 var td = document.createElement('td');
                 td.colSpan = colCount;
                 if (docs.length === 0) {
-                    td.innerHTML = '<div class="detail-content"><p class="no-docs-note">Keine Dokumente verkn\u00fcpft.</p></div>';
+                    td.innerHTML = '<div class="detail-content"><p class="no-docs-note">Keine Quellen verkn\u00fcpft.</p></div>';
                 } else {
                     var html = '<div class="detail-content"><table class="detail-doc-table"><thead><tr>'
                         + '<th>Nr.</th><th>Datum</th><th>Quellenkorpus</th><th>Regest</th></tr></thead><tbody>';
@@ -108,7 +108,7 @@
                 // Quality indicator (worst score across linked documents)
                 var qLabel = entry.qw === 2 ? '\u26a0' : entry.qw === 1 ? '\u2139' : entry.qw === 0 ? '\u2713' : '\u2013';
                 var qClass = 'quality-dot quality-' + (entry.qw === 2 ? 'warning' : entry.qw === 1 ? 'notice' : entry.qw === 0 ? 'ok' : 'na');
-                html += '<td class="col-quality"><span class="' + qClass + '" title="' + (entry.qw === 2 ? 'Warnungen' : entry.qw === 1 ? 'Hinweise' : entry.qw === 0 ? 'Fehlerfrei' : 'Keine Dokumente') + '">' + qLabel + '</span></td>';
+                html += '<td class="col-quality"><span class="' + qClass + '" title="' + (entry.qw === 2 ? 'Warnungen' : entry.qw === 1 ? 'Hinweise' : entry.qw === 0 ? 'Fehlerfrei' : 'Keine Quellen') + '">' + qLabel + '</span></td>';
 
                 html += '<td class="col-id"><span class="cell-id">' + esc(entry.id) + '</span></td>';
 
@@ -246,7 +246,7 @@
                 });
             }
             if (state.docsFilter) {
-                TableInfra.addFilterChip(activeFiltersEl, state.docsFilter === '1' ? 'Mit Dokumenten' : 'Ohne Dokumente', function() {
+                TableInfra.addFilterChip(activeFiltersEl, state.docsFilter === '1' ? 'Mit Quellen' : 'Ohne Quellen', function() {
                     state.docsFilter = '';
                     if (filterDocs) filterDocs.value = '';
                     applyFilters();

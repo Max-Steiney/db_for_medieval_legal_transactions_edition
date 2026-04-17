@@ -188,9 +188,9 @@
                     fill: 'transparent', 'data-tip': '1'
                 });
                 hit.addEventListener('mouseenter', function(e) {
-                    var tipText = '<strong>' + d.decade + 'er</strong>: ' + fmt(d.count) + ' Dokumente';
+                    var tipText = '<strong>' + d.decade + 'er</strong>: ' + fmt(d.count) + ' Quellen';
                     if (state.selectedCollection && collCount > 0) {
-                        tipText += '<br><small>davon ' + fmt(collCount) + ' in gew\u00e4hlter Sammlung</small>';
+                        tipText += '<br><small>davon ' + fmt(collCount) + ' im gew\u00e4hlten Quellenkorpus</small>';
                     }
                     showTip(tipText, e.clientX, e.clientY);
                     // Highlight bar
@@ -460,7 +460,7 @@
             if (introEl) {
                 introEl.textContent = fmt(data.summary.totalAnnotations) +
                     ' Annotationselemente insgesamt, durchschnittlich ' +
-                    data.summary.avgAnnotations + ' pro Dokument';
+                    data.summary.avgAnnotations + ' pro Quelle';
             }
             renderAnnotationTypes();
             renderPersonDistribution();

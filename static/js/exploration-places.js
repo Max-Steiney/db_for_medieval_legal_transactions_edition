@@ -147,10 +147,10 @@
             var h = '<div class="explore-map-popup">';
             h += '<strong>' + esc(p.name) + '</strong>';
             h += '<br>' + esc(TYPE_LABELS[p.type] || p.type);
-            h += '<br>' + (p.doc_count || 0) + ' Dokumente';
+            h += '<br>' + (p.doc_count || 0) + ' Quellen';
             if (p.file_keys && p.file_keys.length > 0) {
                 h += '<br><a href="#" class="explore-popup-docs" data-place-id="'
-                   + esc(p.id) + '">Dokumente anzeigen</a>';
+                   + esc(p.id) + '">Quellen anzeigen</a>';
             }
             h += '</div>';
             return h;
@@ -164,7 +164,7 @@
             var pid = link.getAttribute('data-place-id');
             var place = epicD.places.find(function(p) { return p.id === pid; });
             if (place && place.file_keys) {
-                DrillDown.open(drillHandle, esc(place.name) + ' \u2014 Dokumente', place.file_keys);
+                DrillDown.open(drillHandle, esc(place.name) + ' \u2014 Quellen', place.file_keys);
             }
         });
 
@@ -281,7 +281,7 @@
                 }
                 var place = epicD.places.find(function(pp) { return pp.id === pid; });
                 if (place && place.file_keys && place.file_keys.length > 0) {
-                    DrillDown.open(drillHandle, esc(place.name) + ' \u2014 Dokumente', place.file_keys);
+                    DrillDown.open(drillHandle, esc(place.name) + ' \u2014 Quellen', place.file_keys);
                 }
             });
 

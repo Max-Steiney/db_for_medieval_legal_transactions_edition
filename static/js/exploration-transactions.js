@@ -316,7 +316,7 @@
             var normInRange = filtered.types['_not_normalised'] || 0;
             var normPct = filtered.total > 0 ? Math.round((filtered.total - normInRange) / filtered.total * 100) : 0;
             footer.textContent = 'Datenbasis: ' + filtered.total.toLocaleString('de-DE') +
-                ' Rechtsakte \u00B7 Normalisiert: ' + normPct + ' % \u00B7 ' +
+                ' Rechtsgesch\u00e4fte \u00B7 Normalisiert: ' + normPct + ' % \u00B7 ' +
                 state.decadeMin + '\u2013' + state.decadeMax;
         }
 

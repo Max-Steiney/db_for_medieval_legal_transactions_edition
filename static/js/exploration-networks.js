@@ -668,7 +668,7 @@
 
             var sexLabels = ChartHelpers.SEX_LABELS;
             var html = '<table class="explore-data-table"><thead><tr>' +
-                '<th>Person A</th><th>Geschlecht</th><th>Person B</th><th>Geschlecht</th><th>Dokument</th>' +
+                '<th>Person A</th><th>Geschlecht</th><th>Person B</th><th>Geschlecht</th><th>Quelle</th>' +
                 '</tr></thead><tbody>';
             edges.forEach(function(e) {
                 html += '<tr>' +

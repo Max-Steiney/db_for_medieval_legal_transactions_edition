@@ -56,7 +56,7 @@
         if (!container || !data.byCollection) return;
 
         var html = '<table class="explore-data-table"><thead><tr>' +
-            '<th>Sammlung</th><th class="num">Dokumente</th>' +
+            '<th>Quellenkorpus</th><th class="num">Quellen</th>' +
             '<th class="num">Fehlerfrei</th><th class="num">Hinweise</th>' +
             '<th class="num">Warnungen</th><th class="num">Fehlerquote</th>' +
             '</tr></thead><tbody>';

@@ -188,7 +188,7 @@
                 '<span>' + esc(doc.cl) + '</span>' +
                 (doc.pc ? '<span>' + doc.pc + ' Personen</span>' : '') +
                 '</div>' +
-                '<a href="' + esc(doc.u) + '" class="preview-link">Dokument anzeigen \u2192</a>' +
+                '<a href="' + esc(doc.u) + '" class="preview-link">Quelle anzeigen \u2192</a>' +
                 '</div>' +
                 thumbHtml +
                 '</div></td>';
