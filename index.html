@@ -92,12 +92,11 @@
        role="dialog" aria-hidden="true" aria-label="Herkunft: Quellen">
     <header class="prov-popover-head">
         <h3 class="prov-popover-title">Quellen</h3>
-        <p class="prov-popover-sub">Zählebene: TEI-Regest</p>
+        <p class="prov-popover-sub">TEI-Regesten · freigegeben 1177–1412 (mit Ergänzungen bis 1414 für QGW II/1 und II/2)</p>
         <button type="button" class="prov-popover-close" aria-label="Schließen">&times;</button>
     </header>
     <div class="prov-popover-body">
         
-                    <p class="prov-def">Freigegebene TEI-XML-Regesten aus den Quellenkorpora <em>1177–1412 (mit Ergänzungen bis 1414 für QGW II/1 und II/2)</em>.</p>
                     <table class="prov-breakdown">
                         
                         <tr>
@@ -121,7 +120,7 @@
                         </tr>
                     </table>
                     <footer class="prov-foot">
-                        <span class="prov-foot-source">Quelle: <code>sources/*/done/*.xml</code></span>
+                        <span class="prov-foot-source"><code>sources/*/done/*.xml</code></span>
                         <a class="prov-foot-link" href="./project/statistics.html">&rarr; Statistik</a>
                     </footer>
                 
@@ -143,19 +142,18 @@
        role="dialog" aria-hidden="true" aria-label="Herkunft: Individuelle Personen">
     <header class="prov-popover-head">
         <h3 class="prov-popover-title">Individuelle Personen</h3>
-        <p class="prov-popover-sub">Zählebene: konsolidierte Identität</p>
+        <p class="prov-popover-sub">Konsolidierte Identität · nicht Gesamtnennungen</p>
         <button type="button" class="prov-popover-close" aria-label="Schließen">&times;</button>
     </header>
     <div class="prov-popover-body">
         
-                    <p class="prov-def">Jede historische Person zählt <em>einmal</em>, unabhängig davon, wie oft sie in den Quellen erwähnt wird. Die Zählebene <em>Gesamtnennungen</em> (alle Erwähnungen) ist davon zu unterscheiden.</p>
                     <table class="prov-breakdown">
-                        <tr><td>&#9792; Weiblich</td><td class="num">4.224</td></tr>
-                        <tr><td>&#9794; Männlich</td><td class="num">11.860</td></tr>
-                        <tr class="total"><td>Gesamt</td><td class="num">16.084</td></tr>
+                        <tr><td>&#9792; weiblich</td><td class="num">4.224</td><td class="pct">26.3 %</td></tr>
+                        <tr><td>&#9794; männlich</td><td class="num">11.860</td><td class="pct">73.7 %</td></tr>
+                        <tr class="total"><td>Gesamt</td><td class="num">16.084</td><td class="pct">100 %</td></tr>
                     </table>
                     <footer class="prov-foot">
-                        <span class="prov-foot-source">Quelle: <code>indices/personList.xml</code></span>
+                        <span class="prov-foot-source"><code>indices/personList.xml</code></span>
                         <a class="prov-foot-link" href="./project/glossary.html#individuelle-person">&rarr; Glossar</a>
                     </footer>
                 
@@ -171,14 +169,14 @@
         data-prov-trigger="prov-hero-sex-f">4.224</button>
 
 <aside class="prov-popover" id="prov-hero-sex-f"
-       role="dialog" aria-hidden="true" aria-label="Herkunft: Weibliche Personen">
+       role="dialog" aria-hidden="true" aria-label="Herkunft: Weiblich">
     <header class="prov-popover-head">
-        <h3 class="prov-popover-title">Weibliche Personen</h3>
-        <p class="prov-popover-sub">Zählebene: konsolidierte Identität · @sex="f"</p>
+        <h3 class="prov-popover-title">Weiblich</h3>
+        <p class="prov-popover-sub">@sex="f" im Personenregister</p>
         <button type="button" class="prov-popover-close" aria-label="Schließen">&times;</button>
     </header>
     <div class="prov-popover-body">
-        <p class="prov-def">Individuelle Personen mit Geschlechtsangabe <em>f</em> im Personenregister. Anteil am Gesamt: <strong>26.3 %</strong>.</p><table class="prov-breakdown"><tr><td>Weiblich</td><td class="num">4.224</td></tr><tr><td>Anteil</td><td class="num">26.3 %</td></tr></table><footer class="prov-foot"><span class="prov-foot-source">Quelle: <code>indices/personList.xml</code></span><a class="prov-foot-link" href="./project/glossary.html#individuelle-person">&rarr; Glossar</a></footer>
+        <p class="prov-ratio">4.224 <span class="prov-ratio-sep">von</span> 16.084 <span class="prov-ratio-pct">· 26.3 %</span></p><footer class="prov-foot"><span class="prov-foot-source"><code>indices/personList.xml</code></span><a class="prov-foot-link" href="./project/glossary.html#individuelle-person">&rarr; Glossar</a></footer>
     </div>
 </aside>
 </span> &middot; &#9794;&thinsp;<span class="prov-stat-container">
@@ -188,14 +186,14 @@
         data-prov-trigger="prov-hero-sex-m">11.860</button>
 
 <aside class="prov-popover" id="prov-hero-sex-m"
-       role="dialog" aria-hidden="true" aria-label="Herkunft: Männliche Personen">
+       role="dialog" aria-hidden="true" aria-label="Herkunft: Männlich">
     <header class="prov-popover-head">
-        <h3 class="prov-popover-title">Männliche Personen</h3>
-        <p class="prov-popover-sub">Zählebene: konsolidierte Identität · @sex="m"</p>
+        <h3 class="prov-popover-title">Männlich</h3>
+        <p class="prov-popover-sub">@sex="m" im Personenregister</p>
         <button type="button" class="prov-popover-close" aria-label="Schließen">&times;</button>
     </header>
     <div class="prov-popover-body">
-        <p class="prov-def">Individuelle Personen mit Geschlechtsangabe <em>m</em> im Personenregister. Anteil am Gesamt: <strong>73.7 %</strong>.</p><table class="prov-breakdown"><tr><td>Männlich</td><td class="num">11.860</td></tr><tr><td>Anteil</td><td class="num">73.7 %</td></tr></table><footer class="prov-foot"><span class="prov-foot-source">Quelle: <code>indices/personList.xml</code></span><a class="prov-foot-link" href="./project/glossary.html#individuelle-person">&rarr; Glossar</a></footer>
+        <p class="prov-ratio">11.860 <span class="prov-ratio-sep">von</span> 16.084 <span class="prov-ratio-pct">· 73.7 %</span></p><footer class="prov-foot"><span class="prov-foot-source"><code>indices/personList.xml</code></span><a class="prov-foot-link" href="./project/glossary.html#individuelle-person">&rarr; Glossar</a></footer>
     </div>
 </aside>
 </span>)</span>
