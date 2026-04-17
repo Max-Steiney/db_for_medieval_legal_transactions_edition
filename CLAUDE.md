@@ -25,7 +25,7 @@ Build schreibt nach `docs/`. Von dort wird in dieses Repo gesynct.
 
 Ausnahmen:
 - `vault/` — Promptotyping-Dokumentation (Legacy-Build-Output aus dem Pipeline-Repo).
-- `knowledge/` — konzeptionelle Frontend-Wissensbasis, wird direkt hier gepflegt. Obsidian-kompatible Markdowns mit `[[Wiki-Links]]`. Zeitlos formuliert, keine Meetings / Personen / Quantitäten. Ausnahmen: [[journal]] ist chronologisch und enthält Entscheidungspfade; [[quer ui]] ist eine Analyse-Blaupause mit konkreten quantitativen Eckdaten zum Zeitpunkt ihrer Erstellung. Siehe `knowledge/decisions.md` für Leitentscheidungen.
+- `knowledge/` — konzeptionelle Frontend-Wissensbasis, wird direkt hier gepflegt. Obsidian-kompatible Markdowns mit `[[Wiki-Links]]`. Zeitlos formuliert, keine Meetings / Personen / Quantitäten. Ausnahmen: [[journal]] ist chronologisch und enthält Entscheidungspfade; [[analyse]] ist eine Analyse-Blaupause mit konkreten quantitativen Eckdaten zum Zeitpunkt ihrer Erstellung. Siehe `knowledge/decisions.md` für Leitentscheidungen.
 - `verification/` — unabhängiges Verifikations-Test-Set, wird direkt hier gepflegt.
 - `CLAUDE.md`, `README` u. ä. Meta-Dateien.
 
@@ -38,7 +38,7 @@ Ausnahmen:
 /data/                    JSON-Indexe (search, register, epics, timeline, quality)
 /register/                Personen-, Organisations-, Ortsregister (HTML + JSON)
 /exploration/             visuell-explorative Zugänge (Rollen, Beziehungen, Transaktionen, Orte)
-/analysis/                klassischer Abfragemodus (in Vorbereitung, siehe knowledge/quer ui.md)
+/analysis/                klassischer Abfragemodus (in Vorbereitung, siehe knowledge/analyse.md)
 /project/                 About, Statistik, Qualität, Editionsrichtlinien, Glossar, Impressum
 /static/                  CSS, JS, Fonts
 /vault/                   Legacy-Promptotyping-Dokumentation
@@ -99,7 +99,7 @@ Quelle: CS-Feedback 2026-04-17 (Meeting). Status pro Punkt:
 2. **Umschalter Gesamtnennungen ↔ Individuelle Personen** — Konzept in [[requirements#Umschaltbarkeit der Zählebenen]] und [[ui-design#Zählebenen-Umschalter]]. Implementierungspfad in [[journal]] (Eintrag Terminologie-Konsolidierung).
 3. **Menschen-Events-Toggle** — analog, Implementierungspfad in [[journal]].
 4. **Bestandsfilter universell** — Korpus-Chips auf Quellen-Übersicht; universelle Ausrollung offen, Implementierungspfad in [[journal]].
-5. **Analyse-Seite mit Template-Familien** — Blaupause in [[quer ui]]. Konkrete Familienmenge braucht Fachteam.
+5. **Analyse-Seite mit Template-Familien** — Blaupause in [[analyse]]. Konkrete Familienmenge braucht Fachteam.
 6. **Persistente Referenzierbarkeit / PID** — beschlossen, technische Ausprägung (w3id, ARK, Handle) braucht Stakeholder-Entscheidung. Siehe [[requirements#Zitierfähige Datenstände]].
 7. **Datenstand prominent** — erledigt, lebt im Footer als Pipeline-Commit-Datum in deutscher Langform.
 8. **Quellenbereinigung klären** — erledigt. Zählung ist quellenbereinigt, dokumentiert in [[glossar#Gesamtnennung]], [[decisions#Quellenbereinigte Zählung]] und im Provenienz-Tooltip der individuellen Person.
@@ -128,5 +128,5 @@ Quelle: CS-Feedback 2026-04-17 (Meeting). Status pro Punkt:
 | Erschließungsform-Mapping | `../db_for_medieval_legal_transactions/edition/build._transmission_form` |
 | Freigabestand (Zeitraum, Korpora) | `../db_for_medieval_legal_transactions/edition/config.py` |
 | Verifikations-Test-Set | `verification/` (Python, lxml), siehe [[architecture#Verifikations-Test-Set]] |
-| Analyse-Blaupause | `knowledge/quer ui.md` |
-| Konzeptionelle Wissensbasis | `knowledge/` (data, requirements, architecture, ui-design, scholar-user-stories, glossar, decisions, journal, quer ui) |
+| Analyse-Blaupause | `knowledge/analyse.md` |
+| Konzeptionelle Wissensbasis | `knowledge/` (data, requirements, architecture, ui-design, scholar-user-stories, glossar, decisions, journal, analyse, exploration) |

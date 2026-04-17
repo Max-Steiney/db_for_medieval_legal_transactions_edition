@@ -102,7 +102,7 @@ Serifen-Typografie trägt lange Lese-Texte wie Regesten. Sans-Serif trägt UI-El
 
 ## Startseite als Zwei-Säulen-Einstieg
 
-Die Startseite führt die beiden gleichberechtigten Zugänge der Navigation — Exploration und Analyse — als nebeneinanderstehende Säulen vor. Eyebrow-Labels in Sans-Caps markieren die Bereiche, ohne sie durch schwergewichtige Trennlinien gegeneinander abzugrenzen. Die Exploration-Säule hält ein 2×2-Raster visueller Zugänge (Rollen, Beziehungen, Transaktionen, Orte). Die Analyse-Säule zeigt den Einstieg zu den Template-Familien, die in [[quer ui]] konzeptionell ausgearbeitet sind.
+Die Startseite führt die beiden gleichberechtigten Zugänge der Navigation — Exploration und Analyse — als nebeneinanderstehende Säulen vor. Eyebrow-Labels in Sans-Caps markieren die Bereiche, ohne sie durch schwergewichtige Trennlinien gegeneinander abzugrenzen. Die Exploration-Säule hält ein 2×2-Raster visueller Zugänge (Rollen, Beziehungen, Transaktionen, Orte). Die Analyse-Säule zeigt den Einstieg zu den Template-Familien, die in [[analyse]] konzeptionell ausgearbeitet sind.
 
 Darüber liegen drei Entry-Cards (Quellen durchsuchen, Personenregister, Über das Projekt) mit Akzentfarben-Icons. Sie tragen den pragmatischen Alltag, während die Säulen darunter die beiden methodischen Zugänge verorten.
 
@@ -121,3 +121,5 @@ Siehe [[requirements#Zitierfähige Datenstände]].
 - [[requirements]] Anforderungen, die das Design umsetzt
 - [[scholar-user-stories]] Nutzungsszenarien, die die Komponenten motivieren
 - [[glossar]] Begriffe, die im UI erklärt werden
+- [[exploration]] Detailkonzept des visuell-explorativen Zweigs
+- [[analyse]] Detailkonzept des analytischen Query-Bereichs

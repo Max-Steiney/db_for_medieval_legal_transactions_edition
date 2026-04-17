@@ -75,9 +75,61 @@
             <div class="explore-header-title">
                 <h1>Rollen</h1>
                 <span class="explore-header-stats">
-                    16.084 Personen
+                    <span class="prov-stat-container">
+                        
+<button type="button" class="prov-trigger"
+        aria-expanded="false" aria-haspopup="dialog"
+        aria-controls="prov-roles-persons"
+        data-prov-trigger="prov-roles-persons">16.084</button>
+
+                        
+<aside class="prov-popover" id="prov-roles-persons"
+       role="dialog" aria-hidden="true" aria-label="Herkunft: Individuelle Personen">
+    <header class="prov-popover-head">
+        <h3 class="prov-popover-title">Individuelle Personen</h3>
+        <p class="prov-popover-sub">Personen mit mindestens einer Rollen-Zuschreibung</p>
+        <button type="button" class="prov-popover-close" aria-label="Schließen">&times;</button>
+    </header>
+    <div class="prov-popover-body">
+        
+                            <p class="prov-def">Gez&auml;hlt werden individuelle Personen aus dem Personenregister. Rollen-Aggregationen werden quellenbereinigt aus dem TEI aggregiert.</p>
+                            <footer class="prov-foot">
+                                <span class="prov-foot-source"><code>epic_a.json</code></span>
+                                <a class="prov-foot-link" href="../project/glossary.html#individuelle-person">&rarr; Glossar</a>
+                            </footer>
+                        
+    </div>
+</aside>
+
+                    </span> Personen
                     &middot;
-                    5.002 Rechtsgesch&auml;fte
+                    <span class="prov-stat-container">
+                        
+<button type="button" class="prov-trigger"
+        aria-expanded="false" aria-haspopup="dialog"
+        aria-controls="prov-roles-events"
+        data-prov-trigger="prov-roles-events">5.002</button>
+
+                        
+<aside class="prov-popover" id="prov-roles-events"
+       role="dialog" aria-hidden="true" aria-label="Herkunft: Rechtsgesch&auml;fte">
+    <header class="prov-popover-head">
+        <h3 class="prov-popover-title">Rechtsgesch&auml;fte</h3>
+        <p class="prov-popover-sub">Annotierte Events in den Quellen</p>
+        <button type="button" class="prov-popover-close" aria-label="Schließen">&times;</button>
+    </header>
+    <div class="prov-popover-body">
+        
+                            <p class="prov-def">Summe aller Events im Freigabestand. Jedes Event tr&auml;gt ein Rollengef&uuml;ge aus Ausstellung, Empfang und Zeugenschaft.</p>
+                            <footer class="prov-foot">
+                                <span class="prov-foot-source"><code>sources/*/done/*.xml (tei:event)</code></span>
+                                <a class="prov-foot-link" href="../project/glossary.html#event">&rarr; Glossar</a>
+                            </footer>
+                        
+    </div>
+</aside>
+
+                    </span> Rechtsgesch&auml;fte
                     &middot;
                     3.865 mit Institutionsbezug
                     &middot;

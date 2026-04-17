@@ -28,7 +28,7 @@ Offen für eigene Sessions:
 
 - **Bestandsfilter universell [[ui-design#Bestandsfilter]].** Derzeit wirkt der Filter nur auf der Quellen-Übersicht. Implementierungspfad: eine gemeinsame Filter-Komponente mit `window.CORPUS_FILTER` als Zustand, die alle Seiten beim Laden konsultieren. Die Seiten selbst müssen ihre Aggregate so aufbauen, dass sie auf beliebige Teilmengen der Korpora herunter-rechenbar sind. Für die Exploration-Skripte heisst das, dass die `epic_*`-JSONs zusätzlich eine korpusbasierte Unterschlüsselung tragen.
 
-- **Analyse-Seite mit Template-Familien.** Blaupause in [[quer ui]]. Umsetzung erfordert Fachteam-Entscheidung über die initiale Familienmenge. Technischer Pfad: clientseitige Template-Engine mit Slot-Parametern, Live-Counts aus den `epic_*`-Aggregaten, Drill-down über das bestehende `docs_lookup.json`.
+- **Analyse-Seite mit Template-Familien.** Blaupause in [[analyse]]. Umsetzung erfordert Fachteam-Entscheidung über die initiale Familienmenge. Technischer Pfad: clientseitige Template-Engine mit Slot-Parametern, Live-Counts aus den `epic_*`-Aggregaten, Drill-down über das bestehende `docs_lookup.json`.
 
 Kleinere UX-Punkte, die ohne Phase-2-Abhängigkeit umgesetzt werden können:
 
@@ -40,7 +40,7 @@ Kleinere UX-Punkte, die ohne Phase-2-Abhängigkeit umgesetzt werden können:
 
 ## 2026-04-17 Startseiten-Layout, Datenstand und offene Phase-2-Punkte
 
-Die Startseite wird konzeptionell neu geordnet. Statt einer einzelnen Exploration-Sektion mit Trennstrich stehen zwei gleichberechtigte Säulen nebeneinander: Exploration (vier visuelle Zugänge) und Analyse (Einstieg zur Grundabfragen-Seite im Template-Familien-Stil von [[quer ui]]). Eyebrow-Labels in Sans-Caps markieren die Bereiche ohne optischen Schwergewichte wie border-bottom. Die Entry-Cards (Quellen, Personenregister, Über das Projekt) tragen Icons in der Akzentfarbe. Die Farblogik stabilisiert sich: blau für Akzente (Icons, Labels, interaktive Elemente), schwarz für Inhaltstitel, gedämpftes Grau für Beschreibungstexte.
+Die Startseite wird konzeptionell neu geordnet. Statt einer einzelnen Exploration-Sektion mit Trennstrich stehen zwei gleichberechtigte Säulen nebeneinander: Exploration (vier visuelle Zugänge) und Analyse (Einstieg zur Grundabfragen-Seite im Template-Familien-Stil von [[analyse]]). Eyebrow-Labels in Sans-Caps markieren die Bereiche ohne optischen Schwergewichte wie border-bottom. Die Entry-Cards (Quellen, Personenregister, Über das Projekt) tragen Icons in der Akzentfarbe. Die Farblogik stabilisiert sich: blau für Akzente (Icons, Labels, interaktive Elemente), schwarz für Inhaltstitel, gedämpftes Grau für Beschreibungstexte.
 
 Der Footer trennt Datenstand und Build-Datum. Bis zuletzt zeigte „Datenstand" das Tagesdatum des Builds, was inhaltlich falsch ist. Der Datenstand ist nun das Datum des letzten Commits im Pipeline-Repo, ermittelt über `git log -1 --format=%cI` und in deutscher Langform ausgegeben. Die Hilfsfunktionen `_format_german_date` und `_pipeline_repo_data_date` liegen in `edition/build.py`. Die Dissertations-Zeile im Footer entfällt; sie war Projekthistorie, nicht Editionskontext.
 
