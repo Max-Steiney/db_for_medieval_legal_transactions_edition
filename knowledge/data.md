@@ -1,59 +1,67 @@
 # Datenbasis
 
-Was die Edition als Gegenstand dokumentiert und wie die Daten strukturiert sind. Fachbegriffe werden verwendet, nicht definiert — siehe [[glossar]].
+Was die Edition als Gegenstand dokumentiert und wie die Daten strukturiert sind. Fachbegriffe werden verwendet, nicht definiert. Definitionen in [[glossar]].
 
 ## Gegenstand
 
-<!-- Welche Art von Material wird erschlossen? Mittelalterliche Wiener Rechtsgeschäfte. Welcher Zeitraum ist freigegeben? 1177–1412, Ausnahme 1414 für QGW II/1 und II/2. -->
+Die Edition erschließt mittelalterliche Wiener Rechtsgeschäfte in schriftlicher Überlieferung. Der Fokus liegt auf Urkunden und urkundlich verfassten Einträgen in Stadtbüchern, die rechtliche Transaktionen dokumentieren.
+
+Der freigegebene Zeitraum beginnt 1177 und endet 1412, mit einer Ausnahme bis 1414 für die Quellenkorpora QGW II/1 und QGW II/2. Außerhalb dieses Rahmens liegende Zeitabschnitte werden nicht angezeigt.
 
 ## Quellenkorpora
 
-<!-- Welche [[glossar#Quellenkorpus]] sind enthalten? Herkunft, Charakteristik, Abgrenzung. Nicht: Stückzahlen. -->
+Die Daten sind in Quellenkorpora organisiert, die sich in Zeitraum, Provenienz und Erschließungsform unterscheiden.
 
-### QGW (Quellen zur Geschichte Wiens)
+Das QGW-Corpus bündelt die „Quellen zur Geschichte Wiens" in mehreren Bänden. Die Stadtbücher bilden eine eigenständige Quellengruppe mit abweichender Überlieferungsform. Weitere Korpora wie Gewerbücher und Grundbücher werden im Build-Prozess vorgehalten, sind aber zum aktuellen Zeitpunkt nicht freigegeben.
 
-### Stadtbücher
+Welche Korpora im UI tatsächlich sichtbar sind, entscheidet sich am Freigabestand, nicht an der technischen Verfügbarkeit.
 
-### Nicht oder nur teilweise ausgewertet
+## Nicht oder nur teilweise ausgewertet
 
-<!-- Zeitraum 1418–1447: „noch nicht ausgewertet", kein Überlieferungsverlust. -->
+Der Zeitraum 1418 bis 1447 ist im UI als „noch nicht ausgewertet" gekennzeichnet. Die Überlieferung existiert, die redaktionelle Auswertung steht aus. Der frühere Begriff „Überlieferungslücke" war sachlich falsch und wird nicht mehr verwendet.
+
+Organisationen und Orte sind als Register-Dimensionen angelegt, aber zum aktuellen Zeitpunkt nicht freigegeben. Nur das Personenregister ist öffentlich.
 
 ## Erschließungsformen
 
-<!-- Monasterium (Digitalisate + Regesten), Stadtbücher (edierter Volltext), Grundbücher (unterschiedlicher Erschließungsstatus). Konsequenzen für die Darstellung im UI: Unterschiede müssen sichtbar sein. -->
+Die Quellenkorpora unterscheiden sich in der Form ihrer Erschließung. Die Unterscheidung ist an der Oberfläche sichtbar zu machen, weil sie bestimmt, welche Art von Aussage eine Quelle stützt.
+
+Monasterium-Quellen liegen als digitalisierte Faksimiles mit zugeordneten Regesten vor. Ein Regest ist eine redaktionelle Zusammenfassung; der zugrunde liegende Text ist nicht vollständig ediert, aber im Digitalisat einsehbar.
+
+Die Stadtbücher sind als edierter Volltext erschlossen. Textgenaue Belege sind hier möglich, weil die Edition die Wortlaute wiedergibt.
+
+Grundbücher und verwandte Bestände befinden sich auf unterschiedlichen Stufen der Erschließung. Der Status wird pro Bestand ausgewiesen.
 
 ## Hierarchie der Daten
 
-<!-- [[glossar#Quellenkorpus]] > [[glossar#Quelle]] > [[glossar#Event]] > [[glossar#Gesamtnennung]]. Jede Ebene hat eigene Zähl- und Filterlogik. -->
+Die Daten sind in vier Ebenen organisiert. [[glossar#Quellenkorpus]] ist die oberste Gruppierung, darunter einzelne [[glossar#Quelle|Quellen]], darunter einzelne [[glossar#Event|Events]], darunter einzelne Nennungen.
+
+Jede Ebene hat ihre eigene Zählung. Wer nach Urkunden zählt, bleibt auf Quellenebene. Wer nach Rechtsgeschäften zählt, steigt auf Event-Ebene ab. Wer nach Personen zählt, wählt zwischen [[glossar#Gesamtnennung]] und [[glossar#Individuelle Person]].
 
 ## Register
 
-<!-- Drei parallele Register: Personen, Organisationen, Orte. Jede [[glossar#Individuelle Person]]/Organisation/Ort hat eine konsolidierte Identität mit eindeutiger ID. Verbindung zu den Quellen über Referenzen im annotierten Text. -->
+Die Edition führt drei parallele Register: Personen, Organisationen, Orte. Jeder Eintrag ist eine konsolidierte Identität mit eindeutiger ID und verknüpft die Vorkommen in den Quellen.
+
+Die Register sind nicht redundant zu den Quellen, sondern deren Bezugspunkt. Ohne Register gäbe es nur Namensketten ohne Zuordnung zu individuellen Entitäten.
 
 ## Annotationsebenen
 
-<!-- Vier Ebenen der TEI-Auszeichnung. -->
+Die TEI-Auszeichnung arbeitet auf vier Ebenen.
 
-### Events
+Events bilden die oberste Auszeichnungsebene. Sie halten ein konkretes Rechtsgeschäft als strukturierte Einheit zusammen.
 
-### Funktionen und Rollen
+Funktionen und Rollen spezifizieren, in welcher Eigenschaft eine Person oder Organisation an einem Event beteiligt ist. Das kontrollierte Vokabular ist in [[glossar#Rolle]] festgelegt.
 
-<!-- Verweis auf [[glossar#Rolle]] für das kontrollierte Vokabular. -->
+Entitäten referenzieren die Register-Einträge für Personen, Organisationen und Orte.
 
-### Entitäten
+Attribute halten zusätzliche Merkmale fest, etwa Verwandtschaftsbeziehungen, Berufe oder topographische Zuordnungen.
 
-### Attribute
+## Sonderfall Menschen-Events
 
-## Sonderfall: Menschen-Events
-
-<!-- Definition in [[glossar#Menschen-Event]]. Datenseitige Konsequenz: Personen mit Namensauszeichnung, die aber nicht zum unmittelbaren Rechtsgeschäft der Quelle gehören. -->
-
-## Freigabestand
-
-<!-- Welche Register sind öffentlich, welche nicht. Aktuelle Beschränkung auf Personen. Orte und Organisationen: noch nicht freigegeben. -->
+Im Datenbestand vorkommend. Definition in [[glossar#Menschen-Event]], UI-Behandlung in [[requirements#Menschen-Events-Behandlung]].
 
 ## Siehe auch
 
-- [[glossar]] — Definitionen der verwendeten Begriffe
-- [[architecture]] — wie die Daten technisch verarbeitet werden
-- [[requirements]] — welche Anforderungen sich aus der Datenstruktur ableiten
+- [[glossar]] Definitionen der verwendeten Begriffe
+- [[architecture]] wie die Daten technisch verarbeitet werden
+- [[requirements]] welche Anforderungen sich aus der Datenstruktur ableiten

@@ -1,74 +1,101 @@
 # Entscheidungen
 
-Getroffene Entscheidungen mit Begründung. Zeitlos formuliert. Format: *Entscheidung — Begründung — Konsequenz fürs UI*.
+Getroffene Leitentscheidungen mit Begründung. Zeitlos formuliert. Pro Eintrag Entscheidung, Begründung und Konsequenz, optional eine Abgrenzung, was ausdrücklich nicht gemeint ist.
 
 ## Titel und Untertitel
 
-<!-- Entscheidung: Haupttitel „Stadt und Gemeinschaft Wien", Untertitel „Database for Medieval Legal Transactions". -->
-<!-- Begründung: bereits etablierter Titel in der alten Datenbank; terminologische Kontinuität. -->
-<!-- Konsequenz: Titel konsistent in Navigationsleiste, Seitentitel, Fußzeile. -->
+**Entscheidung.** Der Haupttitel der Edition lautet „Stadt und Gemeinschaft Wien", der Untertitel „Database for Medieval Legal Transactions".
+
+**Begründung.** Beide Bezeichnungen sind in den Projektpublikationen etabliert. Eine abweichende Neubenennung würde Kontinuität mit bereits gedruckten Texten brechen.
+
+**Konsequenz.** Der Titel ist in Navigationsleiste, Seitentitel und Fußzeile konsistent zu führen.
 
 ## Exploration und Analyse als getrennte Bereiche
 
-<!-- Entscheidung: zwei Navigationsbereiche nebeneinander, nicht einer statt des anderen. -->
-<!-- Begründung: unterschiedliche Zugangsformen (ergebnisoffen explorativ vs. gezielt abfragend). Eine Zusammenlegung verwässert beide. -->
-<!-- Konsequenz: siehe [[ui-design#Navigation]]. -->
+**Entscheidung.** Das UI führt zwei Navigationsbereiche nebeneinander: Exploration und Analyse.
 
-## Begriff „Gesamtnennungen"
+**Begründung.** Beide Bereiche bedienen unterschiedliche Forschungssituationen und verlangen entgegengesetzte Interaktionsmuster. Die Exploration arbeitet ergebnisoffen mit Überblicksdarstellungen. Die Analyse arbeitet gezielt mit vordefinierten Abfragekombinationen. Eine Zusammenlegung wäre für beide Seiten ein Verlust.
 
-<!-- Entscheidung: [[glossar#Gesamtnennung]] statt „Nennungen". -->
-<!-- Begründung: das Präfix schafft explizite Abgrenzung zur [[glossar#Individuelle Person]] — reduziert Missverständnisse in publikationsrelevanten Zahlen. -->
-<!-- Konsequenz: Begriff überall im UI einheitlich verwenden. -->
+**Konsequenz.** Siehe [[ui-design#Navigation]] und [[ui-design#Zwei Modi nebeneinander]].
 
-## Begriff „Quellenkorpus"
+**Nicht gemeint ist**, dass Exploration und Analyse streng disjunkt wären. Eine Nutzerin kann in der Exploration eine Auffälligkeit entdecken und in der Analyse gezielt weiterverfolgen.
 
-<!-- Entscheidung: [[glossar#Quellenkorpus]] statt „Sammlung". -->
-<!-- Begründung: in der alten Datenbank etablierter Begriff; fachlich präziser. -->
-<!-- Konsequenz: Labels, Filter, Seitentitel sprechen von Quellenkorpus. -->
+## Begriff Gesamtnennungen
+
+**Entscheidung.** Die Zählebene aller Erwähnungen heißt im UI „Gesamtnennungen", nicht „Nennungen".
+
+**Begründung.** Das Präfix schafft eine explizite Abgrenzung zur [[glossar#Individuelle Person]] und reduziert die Verwechslungsgefahr in publikationsrelevanten Zahlen. Die Kurzform „Nennungen" war zu nahe an der alltagssprachlichen Verwendung und lud zu Fehlinterpretationen ein.
+
+**Konsequenz.** Alle UI-Labels, Filter- und Achsenbeschriftungen verwenden „Gesamtnennungen". Siehe [[glossar#Gesamtnennung]].
+
+## Begriff Quellenkorpus
+
+**Entscheidung.** Die oberste Gruppierungsebene der Datenbasis heißt „Quellenkorpus", nicht „Sammlung".
+
+**Begründung.** „Sammlung" suggeriert einen kuratorischen Akt, den der Bestand so nicht erfahren hat. „Quellenkorpus" ist der fachhistorisch präzisere Begriff und wird in den Projektpublikationen durchgehend verwendet.
+
+**Konsequenz.** Labels, Filter und Seitentitel sprechen von Quellenkorpus. Siehe [[glossar#Quellenkorpus]].
 
 ## Freigegebener Zeitraum
 
-<!-- Entscheidung: Anzeige 1177–1412, Ausnahme 1414 für QGW II/1 und II/2. -->
-<!-- Begründung: nur freigegebene Regesten im Frontend; andere Werte sind fehlerhafte Ableitungen. -->
-<!-- Konsequenz: Zeitregler und Anzeigen verwenden diesen Bereich; Abweichungen gelten als Fehler. -->
+**Entscheidung.** Das UI zeigt den Zeitraum 1177 bis 1412, mit einer Ausnahme bis 1414 für QGW II/1 und QGW II/2.
+
+**Begründung.** Nur freigegebene Regesten werden im Frontend angezeigt. Andere Werte in anderen Ansichten (etwa 1524 oder 1520) waren fehlerhafte Ableitungen aus unbereinigten Quellen.
+
+**Konsequenz.** Zeitregler und Anzeigen verwenden diesen Bereich. Abweichungen gelten als Fehler.
 
 ## Formulierung „noch nicht ausgewertet"
 
-<!-- Entscheidung: Lücke 1418–1447 wird als „noch nicht ausgewertet" bezeichnet, nicht als „Überlieferungslücke". -->
-<!-- Begründung: die Überlieferung existiert; nur die Auswertung steht noch aus. Die alte Formulierung war sachlich falsch. -->
+**Entscheidung.** Der Zeitraum 1418 bis 1447 wird als „noch nicht ausgewertet" bezeichnet, nicht als „Überlieferungslücke".
+
+**Begründung.** Die Überlieferung existiert. Nur die redaktionelle Auswertung steht aus. Die frühere Formulierung war sachlich falsch und wäre in einer wissenschaftlich verwendbaren Edition nicht haltbar.
+
+**Konsequenz.** Der Begriff ist an allen sichtbaren Stellen konsequent zu verwenden.
 
 ## Personenregister-Freigabe
 
-<!-- Entscheidung: aktuell nur Personenregister öffentlich; Organisationen und Orte nicht freigegeben. -->
-<!-- Begründung: unterschiedlicher Bearbeitungsstand. Freigabe folgt, sobald die jeweilige Qualität das zulässt. -->
-<!-- Konsequenz: Orte- und Organisationen-Seiten zeigen Platzhalter oder sind deaktiviert. -->
+**Entscheidung.** Aktuell ist nur das Personenregister öffentlich. Organisationen- und Ortsregister sind nicht freigegeben.
+
+**Begründung.** Der Bearbeitungsstand der drei Register unterscheidet sich. Eine Freigabe unreifer Register widerspräche dem Anspruch an Datenrobustheit.
+
+**Konsequenz.** Organisationen- und Ortsregister-Seiten zeigen Platzhalter oder sind deaktiviert, bis ihre Qualität eine Freigabe zulässt.
 
 ## Trennung Edition-Repo und Pipeline-Repo
 
-<!-- Entscheidung: Build-Output in eigenem Repository, getrennt vom Pipeline- und Template-Quellcode. -->
-<!-- Begründung: siehe [[architecture#Warum zwei Repos]]. -->
-<!-- Konsequenz: HTMLs werden nicht direkt editiert; Änderungen gehen durch Rebuild. -->
+**Entscheidung.** Build-Output liegt in einem eigenen Repository, getrennt vom Pipeline- und Template-Quellcode.
+
+**Begründung.** Siehe [[architecture#Trennung Quelle und Build-Output]]. Die Trennung hält die Historie der Inhaltsänderungen übersichtlich und reduziert das Risiko, dass Output-Artefakte mit Quelländerungen verwechselt werden.
+
+**Konsequenz.** HTMLs werden nicht direkt editiert. Änderungen gehen durch Rebuild.
 
 ## Obsidian-kompatibles Knowledge-Format
 
-<!-- Entscheidung: konzeptionelle Wissensbasis als flache Markdown-Dateien mit Wiki-Links, keine Unterordner, kein README. -->
-<!-- Begründung: niedrige Einstiegshürde, in Obsidian nutzbar (Graph-View, Backlinks), leicht in andere Formate überführbar. -->
-<!-- Konsequenz: Dokumente in [[knowledge/]] folgen dieser Struktur. -->
+**Entscheidung.** Die konzeptionelle Wissensbasis liegt als flache Markdown-Dateien mit Wiki-Links vor, ohne Unterordner, ohne Nummernpräfixe und ohne README.
+
+**Begründung.** Die flache Struktur macht den Vault in Obsidian unmittelbar nutzbar und senkt die Einstiegshürde für Mit-Autorinnen. Ein README wäre Redundanz, weil Einstieg und Übersicht aus der Dateiliste selbst hervorgehen.
+
+**Konsequenz.** Dokumente im [[knowledge]]-Ordner folgen dieser Struktur. Verlinkung geschieht über Wiki-Syntax, nicht über Markdown-Referenzen.
 
 ## Zeitlose Formulierung der Wissensbasis
 
-<!-- Entscheidung: keine Personennamen, keine Meeting-Datumsangaben, keine Quantitäten des Korpus in der Wissensbasis. -->
-<!-- Begründung: Konzepte sollen unabhängig von operativen Einzelheiten langfristig gültig bleiben. -->
-<!-- Konsequenz: [[journal]] ist das einzige chronologische Dokument; alle anderen sind zeitlos. -->
+**Entscheidung.** Die Dokumente der Wissensbasis sind zeitlos formuliert, mit Ausnahme von [[journal]].
+
+**Begründung.** Konzepte, Anforderungen und Entscheidungen bleiben länger gültig als operative Einzelheiten. Ein Dokument, das mit einem konkreten Stichtag verknüpft ist, veraltet schneller und lädt zur Überarbeitung in die falsche Richtung ein.
+
+**Konsequenz.** Keine Personennamen, keine Meeting-Datumsangaben, keine Quantitäten des Korpus. Ausnahme bleibt das journal.md als chronologisches Arbeitstagebuch.
 
 ## Maximaler Informations-Output als Gestaltungsleitlinie
 
-<!-- Entscheidung: [[ui-design#Leitprinzip: Maximaler Informations-Output]] gilt vor reduzierter Ästhetik. -->
-<!-- Begründung: Fachnutzerinnen brauchen Provenienz; Reduktion, die Provenienz verschleiert, ist dysfunktional. -->
-<!-- Konsequenz: Tooltips, Filterstatus, Zählebenen-Anzeige dauerhaft sichtbar. -->
+**Entscheidung.** Das UI priorisiert Nachvollziehbarkeit vor reduzierter Darstellung.
+
+**Begründung.** Fachnutzerinnen brauchen Herkunftsanzeigen an jeder Zahl. Eine Reduktion, die Herkunft verschleiert, ist für die wissenschaftliche Verwendung dysfunktional.
+
+**Konsequenz.** Tooltips, Filterstatus und Zählebenen-Anzeige sind dauerhaft sichtbar. Ausführung in [[ui-design#Leitprinzip Maximaler Informations-Output]].
+
+**Nicht gemeint ist**, dass Dichte Unübersichtlichkeit bedeutet. Die Oberfläche strebt hohe Informationsdichte mit klarer hierarchischer Gliederung an, nicht visuelles Rauschen.
 
 ## Siehe auch
 
-- [[requirements]] — Anforderungen, aus denen Entscheidungen folgen
-- [[ui-design]] — gestalterische Umsetzung
-- [[journal]] — chronologische Herleitung einzelner Entscheidungen
+- [[requirements]] Anforderungen, aus denen die Entscheidungen folgen
+- [[ui-design]] gestalterische Umsetzung
+- [[journal]] chronologischer Pfad, auf dem Entscheidungen entstanden sind

@@ -1,63 +1,117 @@
 # Scholar User Stories
 
-Nutzungsszenarien aus Forscherinnen-Perspektive. Pro Story: *Als Forscherin, die … will ich …, damit …*, gefolgt von einer kurzen Ableitung, welche Komponenten und Filter dafür notwendig sind.
+Nutzungsszenarien aus Forscherinnen-Perspektive. Pro Story ein Szenario im Muster *Als Forscherin, die …, will ich …, damit …*. Darunter eine knappe Ableitung, welche Anforderung, Komponente und Begriffe das Szenario adressiert.
 
-## Ausgangsbestand prüfen
+Die Stories sind nach drei Gruppen sortiert: zentrale Forschungsoperationen, wissenschaftliche Absicherung, begriffliche Orientierung.
 
-<!-- Als Forscherin, die einen Teilbestand untersucht, will ich sehen, auf welchem [[glossar#Quellenkorpus]] meine aktuellen Zahlen basieren, damit ich weiß, ob sie mit meiner Fragestellung übereinstimmen. -->
+## Zentrale Forschungsoperationen
 
-<!-- Ableitung: Bestandsfilter mit Statusanzeige, Provenienz-Tooltip an jeder Zahl. Siehe [[ui-design#Bestandsfilter]], [[ui-design#Provenienz-Tooltip]]. -->
+### Verteilung einer Kategorie überblicken
 
-## Zwischen Zählebenen wechseln
+*Als Forscherin, die Häufigkeitsstrukturen in einer Kategorie untersucht, will ich jederzeit zwischen [[glossar#Gesamtnennung]] und [[glossar#Individuelle Person]] umschalten, damit ich Frequenz und Breite sauber voneinander trennen kann.*
 
-<!-- Als Forscherin, die gesellschaftliche Struktur untersucht, will ich jederzeit zwischen [[glossar#Gesamtnennung]] und [[glossar#Individuelle Person]] umschalten, damit ich Häufigkeit und Breite unterscheide. -->
+Ableitung:
+- Anforderung [[requirements#Umschaltbarkeit der Zählebenen]]
+- Komponente [[ui-design#Zählebenen-Umschalter]]
+- Begriffe [[glossar#Gesamtnennung]], [[glossar#Individuelle Person]]
 
-<!-- Ableitung: globaler Zählebenen-Umschalter; Prozentsätze auf beiden Ebenen verfügbar. Siehe [[ui-design#Zählebenen-Umschalter]], [[requirements#Umschaltbarkeit der Zählebenen]]. -->
+### Rollenbasierte Akteursanalyse
 
-## Menschen-Events kontrolliert behandeln
+*Als Forscherin, die Geschlechteranteile in einer bestimmten [[glossar#Rolle]] untersucht, will ich nach Rolle und Geschlecht gleichzeitig filtern, damit ich die Verteilung unmittelbar ablesen kann.*
 
-<!-- Als Forscherin, die präzise Angaben zu Personen in einem Rechtsgeschäft machen will, will ich [[glossar#Menschen-Event]] explizit ein- oder ausschließen, damit meine Statistiken nicht durch referenzierte Personen aus früheren Geschäften verzerrt werden. -->
+Ableitung:
+- Anforderung [[requirements#Bestandsfilterung als universelle Dimension]]
+- Komponente [[ui-design#Analyse]]
+- Begriff [[glossar#Rolle]]
 
-<!-- Ableitung: Menschen-Events-Toggle, Statusanzeige in der Provenienz. Siehe [[ui-design#Menschen-Events-Toggle]], [[requirements#Menschen-Events-Behandlung]]. -->
+### Bestandsvergleich
 
-## Rollenkombinationen auswerten
+*Als Forscherin, die einen Teilbestand gegen den Gesamtbestand kontrastiert, will ich die gleiche Kategorie auf beide Bestände anwenden, damit ich Auffälligkeiten des Teilbestands erkenne.*
 
-<!-- Als Forscherin, die Ehepaare als gemeinsam handelnde Akteure untersucht, will ich gezielt Quellen mit dieser [[glossar#Rollenkombination]] finden und über Zeit darstellen, damit ich Muster erkenne. -->
+Ableitung:
+- Anforderung [[requirements#Bestandsfilterung als universelle Dimension]]
+- Komponente [[ui-design#Bestandsfilter]]
+- Begriff [[glossar#Quellenkorpus]]
 
-<!-- Ableitung: Analyse-Bereich mit vordefinierten Rollenkombinationen. Siehe [[ui-design#Analyse]]. -->
+### Zeitverlauf einer Kategorie
 
-## Zitierfähige Zahlen für Publikation
+*Als Forscherin, die Entwicklungen über die Zeit untersucht, will ich eine Kategorie im Zeitraster sehen, damit ich Kontinuitäten und Brüche erkenne.*
 
-<!-- Als Forscherin, die Zahlen in einer Publikation verwendet, will ich den Datenstand zum Zeitpunkt der Einreichung dauerhaft referenzieren, damit meine Aussagen überprüfbar bleiben. -->
+Ableitung:
+- Komponente [[ui-design#Zeitfilter]], [[ui-design#Exploration]]
 
-<!-- Ableitung: persistente Identifier, Datenstand in der Fußzeile. Siehe [[requirements#Zitierfähige Datenstände]]. -->
+### Rollenkombination abfragen
 
-## Ergebnisoffen erkunden
+*Als Forscherin, die gemeinsam handelnde Eheleute untersucht, will ich diese [[glossar#Rollenkombination]] direkt abrufen, damit ich nicht jede Abfrage manuell zusammenbaue.*
 
-<!-- Als Forscherin, die noch keine zugespitzte Frage hat, will ich Verteilungen überblicken und durch Filter schrittweise eingrenzen, damit ich Auffälligkeiten entdecke. -->
+Ableitung:
+- Komponente [[ui-design#Analyse]]
+- Begriff [[glossar#Rollenkombination]]
 
-<!-- Ableitung: Exploration-Bereich mit Überblicksvisualisierungen. Siehe [[ui-design#Exploration]]. -->
+## Wissenschaftliche Absicherung
 
-## Gezielte wiederkehrende Abfrage
+### Provenienz einer Zahl prüfen
 
-<!-- Als Forscherin, die eine bestimmte Kombination aus Bestand × Rolle × Geschlecht regelmäßig abfragt, will ich sie ohne Interaktionsabfolge direkt aufrufen, damit ich effizient arbeite. -->
+*Als Forscherin, die eine Zahl in einer Publikation verwenden will, will ich an Ort und Stelle sehen, welcher Bestand und welche Operation der Zahl zugrunde liegen, damit ich sie gegenüber Reviewerinnen vertreten kann.*
 
-<!-- Ableitung: Analyse-Bereich mit vordefinierten Grundabfragen. Siehe [[ui-design#Analyse]]. -->
+Ableitung:
+- Anforderung [[requirements#Datenrobustheit und Provenienz]]
+- Komponente [[ui-design#Provenienz-Tooltip]]
 
-## Begriffe verstehen
+### Peer-Review einer Abfrage
 
-<!-- Als Forscherin, die den Begriff [[glossar#Menschen-Event]] zum ersten Mal sieht, will ich ihn an Ort und Stelle erklärt bekommen, damit ich weiß, was eine Filteraktion bewirkt. -->
+*Als Forscherin, die eine Auswertung einer Kollegin prüft, will ich dieselbe Filterkombination aufrufen können wie sie, damit wir auf derselben Datensicht diskutieren.*
 
-<!-- Ableitung: Tooltip-Integration des Glossars, Glossar-Seite. Siehe [[ui-design#Glossar-Integration]]. -->
+Ableitung:
+- Anforderung [[requirements#Zitierfähige Datenstände]]
+- Komponente [[ui-design#Zitierbarkeit einzelner Ansichten]]
 
-## Ergebnisse peer-reviewen
+### Publikationsreife Zitation
 
-<!-- Als Forscherin, die Ergebnisse einer Kollegin prüft, will ich die gleiche Filterkombination ansteuern können wie sie, damit wir wirklich dasselbe sehen. -->
+*Als Forscherin, die Zahlen in einer Veröffentlichung zitiert, will ich einen eingefrorenen Datenstand zum Stichtag der Einreichung referenzieren, damit meine Aussagen langfristig überprüfbar bleiben.*
 
-<!-- Ableitung: Zitierbare URLs mit Filterzustand. Siehe [[ui-design#Zitierbarkeit einzelner Ansichten]]. -->
+Ableitung:
+- Anforderung [[requirements#Zitierfähige Datenstände]]
+
+### Fehlerverdacht lokalisieren
+
+*Als Forscherin, die eine unplausible Zahl sieht, will ich erkennen können, ob der Grund in den Quelldaten, in der Transformation oder in der Darstellung liegt, damit ich den Fehler präzise benennen kann.*
+
+Ableitung:
+- Anforderung [[requirements#Datenrobustheit und Provenienz]]
+- Komponente [[ui-design#Provenienz-Tooltip]]
+- Fundament [[architecture]]
+
+## Begriffliche Orientierung
+
+### Unbekannten Begriff an Ort und Stelle verstehen
+
+*Als Forscherin, die einem projektspezifischen Begriff wie [[glossar#Menschen-Event]] zum ersten Mal begegnet, will ich seine Bedeutung im UI nachschlagen, ohne den Kontext zu verlassen, damit ich die Konsequenz einer Filteraktion verstehe.*
+
+Ableitung:
+- Komponente [[ui-design#Glossar-Integration]]
+- Begriff [[glossar#Menschen-Event]]
+
+### Menschen-Events kontrolliert behandeln
+
+*Als Forscherin, die exakte Statistiken zu Personen in einem Rechtsgeschäft aufstellt, will ich [[glossar#Menschen-Event|Menschen-Events]] aktiv ein- oder ausschließen, damit referenzierte Personen aus früheren Geschäften meine Zahlen nicht verzerren.*
+
+Ableitung:
+- Anforderung [[requirements#Menschen-Events-Behandlung]]
+- Komponente [[ui-design#Menschen-Events-Toggle]]
+- Begriff [[glossar#Menschen-Event]]
+
+## Wiederkehrende Grundabfragen
+
+*Als Forscherin, die wiederkehrende Fragen an die Datenbank stellt, will ich eine Liste vordefinierter Grundabfragen direkt aufrufen, damit ich nicht jedes Mal die Filterabfolge manuell durchklicke.*
+
+Die Liste der konkreten Grundabfragen wird mit dem Fachteam festgelegt. Typische Kandidaten sind Abfragen nach Rollen und Geschlecht, nach [[glossar#Rollenkombination|Rollenkombinationen]] und nach Bestandsvergleichen.
+
+Ableitung:
+- Komponente [[ui-design#Analyse]]
 
 ## Siehe auch
 
-- [[requirements]] — systematische Anforderungsableitung
-- [[ui-design]] — konkrete Umsetzung
-- [[glossar]] — verwendete Fachbegriffe
+- [[requirements]] systematische Anforderungsableitung
+- [[ui-design]] konkrete Umsetzung
+- [[glossar]] verwendete Fachbegriffe
