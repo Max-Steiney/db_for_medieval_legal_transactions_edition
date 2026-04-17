@@ -4,9 +4,9 @@ Getroffene Leitentscheidungen mit Begründung. Zeitlos formuliert. Pro Eintrag E
 
 ## Titel und Untertitel
 
-**Entscheidung.** Der Haupttitel der Edition lautet „Stadt und Gemeinschaft Wien", der Untertitel „Database for Medieval Legal Transactions".
+**Entscheidung.** Der Haupttitel der Edition lautet „Stadt und Gemeinschaft Wien", der Untertitel „Datenbank zu mittelalterlichen Rechtsgeschäften".
 
-**Begründung.** Beide Bezeichnungen sind in den Projektpublikationen etabliert. Eine abweichende Neubenennung würde Kontinuität mit bereits gedruckten Texten brechen.
+**Begründung.** Der Haupttitel ist in den Projektpublikationen etabliert. Eine abweichende Neubenennung würde Kontinuität mit bereits gedruckten Texten brechen. Der Untertitel ist deutsch, damit das UI sprachlich durchgängig bleibt und nicht ohne Anlass zwischen Deutsch und Englisch wechselt.
 
 **Konsequenz.** Der Titel ist in Navigationsleiste, Seitentitel und Fußzeile konsistent zu führen.
 
@@ -22,11 +22,11 @@ Getroffene Leitentscheidungen mit Begründung. Zeitlos formuliert. Pro Eintrag E
 
 ## Begriff Gesamtnennungen
 
-**Entscheidung.** Die Zählebene aller Erwähnungen heißt im UI „Gesamtnennungen", nicht „Nennungen".
+**Entscheidung.** Die Zählebene aller Erwähnungen heißt im UI „Gesamtnennungen", nicht „Nennungen". Die Zählebene der konsolidierten Register-Einträge heißt „Individuelle Personen", „Individuelle Organisationen", „Individuelle Orte".
 
 **Begründung.** Das Präfix schafft eine explizite Abgrenzung zur [[glossar#Individuelle Person]] und reduziert die Verwechslungsgefahr in publikationsrelevanten Zahlen. Die Kurzform „Nennungen" war zu nahe an der alltagssprachlichen Verwendung und lud zu Fehlinterpretationen ein.
 
-**Konsequenz.** Alle UI-Labels, Filter- und Achsenbeschriftungen verwenden „Gesamtnennungen". Siehe [[glossar#Gesamtnennung]].
+**Konsequenz.** Alle UI-Labels, Filter- und Achsenbeschriftungen verwenden „Gesamtnennungen" oder „Individuelle Personen". Siehe [[glossar#Gesamtnennung]]. Welche der beiden Zählebenen einer konkreten Zahl zugrunde liegt, muss an jeder Zahl per [[ui-design#Provenienz-Tooltip]] erkennbar sein. Ein Label, das eine Zahl fälschlich der anderen Zählebene zuordnet, ist ein Fehler im Sinne von [[requirements#Datenrobustheit und Provenienz]] und wird von [[architecture#Verifikations-Test-Set]] sichtbar gemacht.
 
 ## Begriff Quellenkorpus
 
@@ -75,6 +75,22 @@ Getroffene Leitentscheidungen mit Begründung. Zeitlos formuliert. Pro Eintrag E
 **Begründung.** Die flache Struktur macht den Vault in Obsidian unmittelbar nutzbar und senkt die Einstiegshürde für Mit-Autorinnen. Ein README wäre Redundanz, weil Einstieg und Übersicht aus der Dateiliste selbst hervorgehen.
 
 **Konsequenz.** Dokumente im `knowledge/`-Ordner folgen dieser Struktur. Verlinkung geschieht über Wiki-Syntax, nicht über Markdown-Referenzen.
+
+## Verifikations-Test-Set als eigenständige Komponente
+
+**Entscheidung.** Neben der Pipeline existiert ein unabhängiges Verifikations-Test-Set, das die TEI-Quellen und Register-XMLs eigenständig einliest, die Aggregate nachrechnet und gegen die vom Build erzeugten JSON-Ausgaben legt.
+
+**Begründung.** Eine Zahl, die aus derselben Pipeline stammt, die sie angeblich verifiziert, verifiziert sich selbst nicht. Die Frage, ob ein Label an einer Zahl semantisch korrekt ist, lässt sich nur beantworten, wenn eine zweite, unabhängige Rechnung sie bestätigt. Die Implementierung in Python mit `lxml` vermeidet CSV-Zwischenstufen und trifft auf die Quelle direkt.
+
+**Konsequenz.** Das Test-Set läuft auf Abruf und schreibt versionierte Reports. Diskrepanzen führen zu Korrekturen in Templates, Aggregations-Logik oder Quell-Daten. Gleichzeitig dient dieselbe Aggregations-Logik als Fundament für die [[#Parallele Provenienz-Drill-down-JSONs]], weil beide dieselben Zählungen auf derselben Quellebene nachvollziehen. Siehe [[architecture#Verifikations-Test-Set]].
+
+## Parallele Provenienz-Drill-down-JSONs
+
+**Entscheidung.** Die Provenienz einer aggregierten Zahl (welche Quelldokumente der Zahl zugrunde liegen) wird in separaten JSON-Dateien parallel zu den bestehenden Aggregat-JSONs ausgewiesen, nicht als eingebettete Liste in jedem Wert.
+
+**Begründung.** Die bestehenden Aggregat-JSONs haben stabile Konsumentenverträge im Frontend-JavaScript. Eine Erweiterung jedes Wertes von Zahl auf Dict zwingt jedes Lesefragment zu Anpassungen. Parallele Dateien halten den Eingriff minimal, lassen sich inkrementell einführen und werden vom Frontend erst bei Bedarf (etwa für Tooltips) nachgeladen.
+
+**Konsequenz.** Pro Aggregat-Kategorie existiert eine Provenienz-Variante mit identischer Schlüsselstruktur, aber Listen von Dokument-IDs statt Counter-Werten. Siehe [[requirements#Datenrobustheit und Provenienz]] und [[ui-design#Provenienz-Tooltip]].
 
 ## Zeitlose Formulierung der Wissensbasis
 

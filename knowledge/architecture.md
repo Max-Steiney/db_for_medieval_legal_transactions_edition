@@ -20,6 +20,14 @@ Die Python-Pipeline leistet Validierung, Transformation und Aggregation. Sie pr�
 
 Die Wahl von Python mit lxml folgt aus zwei Gründen. Die Werkzeugkette kommt ohne Java-Abhängigkeiten aus. Und Regressionstests sind in Python leichter zu schreiben und zu pflegen als in klassischen XSLT-Pipelines.
 
+## Verifikations-Test-Set
+
+Parallel zur Pipeline existiert ein unabhängiges Test-Set im Edition-Repo. Es liest die TEI-Quellen und Register-XMLs ohne Umweg über die Pipeline-Zwischenformate ein, rechnet Aggregate eigenständig nach und vergleicht sie mit den JSON-Ausgaben, die das Frontend konsumiert. Abweichungen zwischen Test-Aggregat und JSON-Aggregat sind ein Signal, das entweder auf einen Pipeline-Fehler, eine Fehl-Beschriftung in Templates oder auf eine Datenlücke hinweist.
+
+Das Test-Set nutzt dieselbe Technologie wie die Pipeline (Python, lxml), ist aber bewusst ein separater Codepfad ohne geteilte Aggregations-Funktionen. Die Trennung ist die Verifikationsgarantie: Eine Zahl, die aus derselben Pipeline stammt, die sie angeblich verifiziert, verifiziert sich selbst nicht.
+
+Reports sind versioniert und menschen- wie maschinenlesbar. Begründung in [[decisions#Verifikations-Test-Set als eigenständige Komponente]].
+
 ## Templates
 
 Die Oberfläche ist durch Jinja2-Templates definiert. Ein Basis-Template hält Navigation und Fußzeile zentral. Detail-Templates erweitern es um den jeweiligen Inhalt. Eine Änderung am Rahmen greift in allen Seiten, eine Änderung an einer Detailseite bleibt lokal.
@@ -51,6 +59,12 @@ GitHub Pages ist der Auslieferungskanal. Die Wahl ist kostenfrei, zuverlässig u
 ## Grenzen der Architektur
 
 Die statische Architektur leistet keine Echtzeit-Daten, keine persistierten Nutzereingaben und keine Authentifizierung. Das ist akzeptabel, weil die Edition Publikationsform ist, nicht kollaboratives Werkzeug. Wer an den Quelldaten arbeitet, tut das auf einer anderen Ebene als der, die die Edition bedient.
+
+## Provenienz-Indizes
+
+Jede aggregierte Kennzahl im Frontend ist auf die Menge der zugrundeliegenden Quelldokumente rückführbar. Die Rückführung geschieht nicht durch Inline-Erweiterung der bestehenden Aggregat-JSONs, sondern durch separate Provenienz-Dateien mit identischer Schlüsselstruktur. Das Frontend lädt diese Dateien erst bei Bedarf (etwa beim Öffnen eines Provenienz-Tooltips) nach.
+
+Konsequenz für den Build: jede Aggregations-Funktion liefert zusätzlich eine Variante, die statt Counter-Werten Listen von Dokument-IDs sammelt. Begründung in [[decisions#Parallele Provenienz-Drill-down-JSONs]], Umsetzung in [[ui-design#Provenienz-Tooltip]].
 
 ## Siehe auch
 
