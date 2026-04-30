@@ -1,55 +1,70 @@
-# Stadt und Gemeinschaft Wien — Datenbank zu mittelalterlichen Rechtsgeschäften
+﻿# Stadt und Gemeinschaft Wien — Datenbank zu mittelalterlichen Rechtsgeschäften
 
 Digitale Edition zu mittelalterlichen Wiener Rechtsgeschäften, freigegebener Zeitraum 1177–1412 (QGW II/1 und II/2 bis 1414).
 
-Dieses Repository enthält den **Build-Output** der Edition und wird über GitHub Pages als statische Website ausgeliefert. HTML-, JSON- und Asset-Dateien werden nicht direkt hier bearbeitet, sondern aus dem Pipeline-Repository gerendert und synchronisiert.
+Dieses Repository ist die **Publikations-Schicht** der Edition: Build-Code, Templates, statische Assets, gerenderte Seite. Die GitHub-Pages-Bereitstellung läuft aus diesem Repo.
 
 ## Zwei-Repository-Setup
 
-- **Edition-Repository (dieses Repo):** reiner Build-Output für GitHub Pages.
-- **Pipeline-Repository:** `../db_for_medieval_legal_transactions` — enthält TEI-Quellen, Registerdaten, Jinja2-Templates, Build-Code, statische Assets und redaktionelle Konfiguration.
+- **Frontend-Repo (dieses Repo):** `frontend/` (Build-Code, Jinja2-Templates, Content-Markdown, statische Assets, Tests), `docs/` (Build-Output für GitHub Pages), `knowledge/` (konzeptionelle Frontend-Wissensbasis), `verification/` (unabhängiges Verifikations-Test-Set).
+- **Pipeline-Repo:** `../db_for_medieval_legal_transactions` — TEI-Quellen, Register, Normalisierungslisten, RelaxNG-Schema, Python-Pipeline (CSV-Generator), redaktionelle Annotationsrichtlinien.
 
-Arbeitsfluss:
+Beide Repos müssen nebeneinander geklont sein. `frontend/__init__.py` legt das Pipeline-Repo automatisch auf `sys.path`, damit `from pipeline.config import …` ohne Install-Step funktioniert.
 
 ```
-Pipeline-Repo
-  sources/        TEI-XML
-  indices/        Register (Personen, Organisationen, Orte)
-  edition/
-    templates/    Jinja2
-    content/      Markdown (About, Impressum, Editionsrichtlinien)
-    static/       CSS, JS, Fonts
-    config.py     redaktionelle Festlegungen
-    build.py      Build-Orchestrierung
+parent/
+  db_for_medieval_legal_transactions/         ← Datengrundlage
+    sources/        TEI-XML
+    indices/        Register (Personen, Organisationen, Orte)
+    pipeline/       Python/lxml-Pipeline → pipeline/output/*.csv
+  db_for_medieval_legal_transactions_edition/ ← dieses Repo
+    frontend/
+      templates/    Jinja2
+      content/      Markdown (About, Impressum, Editionsrichtlinien)
+      static/       CSS, JS, Fonts
+      config.py     redaktionelle Festlegungen
+      build.py      Build-Orchestrierung
+    docs/           Build-Output (von GitHub Pages serviert)
+```
 
-python -m edition build
-  -> schreibt nach docs/
+## Build
 
-cp -r docs/* -> Edition-Repo
-  -> GitHub Pages liefert statisch aus
+```
+# Voraussetzung: Pipeline-Repo nebenan, CSVs aktuell
+cd ../db_for_medieval_legal_transactions
+python -m pipeline transform           # CSVs neu erzeugen (wenn TEI-Quellen sich geändert haben)
+
+cd ../db_for_medieval_legal_transactions_edition
+python -m frontend build               # Site neu rendern → docs/
+python -m frontend build --single FILE # einzelne Quelle
+python -m pytest frontend/tests/       # Frontend-Tests
 ```
 
 ## Technischer Stack
 
-- **Quellen:** TEI-XML (Urkunden, Regesten, Register).
+- **Quellen:** TEI-XML (Urkunden, Regesten, Register) — im Pipeline-Repo.
 - **Build:** Python mit `lxml` für TEI-Parsing und `Jinja2` für HTML-Rendering.
 - **Daten:** aggregierte JSON-Dateien für clientseitiges Suchen, Filtern und Visualisieren.
 - **Frontend:** statische HTMLs, Vanilla-JS-Module, eigenes CSS. Kein Framework, keine Serverlogik.
-- **Hosting:** GitHub Pages.
+- **Hosting:** GitHub Pages aus `docs/`.
 
 ## Struktur
 
 ```
-/                         Einstiegsseiten: index, documents, impressum
-/documents/<corpus>/...   Regesten (aus TEI gerenderte Einzelseiten)
-/tei/<corpus>/...         TEI-XML-Downloads der freigegebenen Quellen
-/register/                Personen-, Organisations-, Ortsregister (HTML + JSON)
-/exploration/             visuell-explorative Zugänge: Rollen, Beziehungen, Transaktionen, Orte
-/analysis/                klassischer Abfragemodus (in Vorbereitung)
-/project/                 About, Statistik, Qualität, Editionsrichtlinien, Glossar
-/data/                    JSON-Indexe (Suche, Timeline, Register, Qualität)
-/static/                  CSS, JS, Fonts
-/knowledge/               konzeptionelle Wissensbasis (Obsidian-Markdown, direkt hier gepflegt)
+frontend/                 Build-Code, Templates, Content, Assets, Tests
+docs/                     Build-Output (GitHub-Pages-Source)
+  /                       Einstiegsseiten: index, documents, impressum
+  /documents/             Regesten (aus TEI gerenderte Einzelseiten)
+  /tei/                   TEI-XML-Downloads der freigegebenen Quellen
+  /register/              Personen-, Organisations-, Ortsregister (HTML + JSON)
+  /exploration/           visuell-explorative Zugänge
+  /analysis/              klassischer Abfragemodus (in Vorbereitung)
+  /project/               About, Statistik, Qualität, Editionsrichtlinien, Glossar
+  /data/                  JSON-Indexe (Suche, Timeline, Register, Qualität)
+  /static/                CSS, JS, Fonts
+knowledge/                konzeptionelle Wissensbasis (Obsidian-Markdown)
+verification/             unabhängiges Verifikations-Test-Set (Python, lxml)
+vault/                    Legacy-Promptotyping-Dokumentation
 ```
 
 ## Begriffshierarchie
@@ -62,30 +77,21 @@ cp -r docs/* -> Edition-Repo
 
 Definitionen und Abgrenzungen: [knowledge/glossar.md](knowledge/glossar.md).
 
-## Ausnahmen vom Build-Output
-
-Zwei Ordner werden direkt in diesem Repository gepflegt und nicht aus dem Pipeline-Repo erzeugt:
-
-- **`knowledge/`** — konzeptionelle Frontend-Wissensbasis. Obsidian-kompatible Markdowns mit Wiki-Links. Zeitlos formuliert, ohne Meeting-Bezüge, Personennamen oder Quantitäten des Korpus. Enthält Daten-, Anforderungs-, Architektur- und Design-Dokumentation, ein Glossar sowie ein Arbeitstagebuch.
-- **`vault/`** — Legacy-Dokumentation aus dem Pipeline-Repo (Promptotyping).
-
-Meta-Dateien (`CLAUDE.md`, `README.md`, `.gitignore`) werden ebenfalls hier gepflegt.
-
 ## Freigabestatus
 
 - Freigegebener Zeitraum: **1177–1412**, Erweiterung **bis 1414 für QGW II/1 und II/2**.
 - Bestand **1418–1447** ist noch nicht ausgewertet.
 - Organisations- und Ortsregister sind vorbereitet, inhaltlich aber noch nicht freigegeben.
 
-Die redaktionellen Festlegungen liegen zentral in `edition/config.py` (Pipeline-Repo).
+Redaktionelle Festlegungen: `frontend/config.py` (Zeitraum, Anzeige) und `../db_for_medieval_legal_transactions/pipeline/config.py::RELEASED_CORPORA` (Korpora-Set).
 
 ## Lokales Preview
 
 ```
-python -m http.server 8765
+python -m http.server 8765 --directory docs/
 ```
 
-im Repository-Root. Aufruf unter `http://localhost:8765/`.
+Aufruf unter `http://localhost:8765/`.
 
 ## Lizenz
 
