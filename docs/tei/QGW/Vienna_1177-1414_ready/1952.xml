@@ -1,0 +1,64 @@
+<?xml version="1.0" encoding="UTF-8"?><!DOCTYPE TEI SYSTEM "../../../schema/toolbox_full.dtd"><TEI xmlns="http://www.tei-c.org/ns/1.0" xmlns:cei="http://www.monasterium.net/NS/cei" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance">
+   <teiHeader>
+      <fileDesc>
+         <titleStmt>
+            <title>Tei version of 1952 exported from monasterium.net </title>
+         </titleStmt>
+         <publicationStmt>
+            <p/>
+         </publicationStmt>
+         <!--In Original: cei:front/cei:sourceDesc/cei:sourceDescRegest-->
+         <sourceDesc>
+            <bibl>Quellen zur Geschichte der Stadt Wien, Bd. II/2, Nr. 1952 As published in HAUrk by
+               Wiener Stadt- und Landesarchiv </bibl>
+            <msDesc>
+               <msIdentifier>
+                  <repository>Wiener Stadt- und Landesarchiv</repository>
+                  <idno>1952</idno>
+                  <altIdentifier type="old">
+                     <idno>516160</idno>
+                  </altIdentifier>
+               </msIdentifier>
+               <physDesc>
+                  <sealDesc>
+                     <seal>
+                        <p>Anhangendes Wappensiegel (Sava Fig. 78), roth u. Sch.</p>
+                     </seal>
+                  </sealDesc>
+               </physDesc>
+            </msDesc>
+         </sourceDesc>
+      </fileDesc>       <encodingDesc>          <projectDesc default="false">             <p><label type="contentual-editing">Projekt Christina Lutter Stadt und                   Gemeinschaft</label></p>          </projectDesc>       </encodingDesc>
+      <profileDesc>
+         <creation>
+            <placeName>Wien</placeName>
+            <date when="14130708">1413 VII 08</date>
+            <origDate>Geben ze Wienn an samcztag nach sant Ulreichs tag, nach Kristi gepurde 1400
+               jar darnach im 13. jare. </origDate></creation>
+      </profileDesc>
+   </teiHeader>
+   <facsimile>
+      <surface>
+         <graphic url="http://images.monasterium.net/pics/AT-WStLA/HA-U/WStLA-HA-Urkunden_01952_r.jpg"/>
+      </surface>
+      <surface>
+         <graphic url="http://images.monasterium.net/pics/AT-WStLA/HA-U/WStLA-HA-Urkunden_01952_v.jpg"/>
+      </surface>
+   </facsimile>
+   <text>
+      <body>
+         <div type="abstract">
+            <p><rs type="event" ref="#ev__QGW_II_II_1952"><rs type="fn" role="issuer"><rs type="person" ref="#pe__albrecht_v_herzog_von_oesterreich_QGW_II_I_1730">Herzog Albrecht
+                     V.</rs> </rs><triggerstring n="disp">bestätigt</triggerstring>, dass ihm der <rs type="fn" role="recipient"><rs type="org" ref="#org__wien">Bürgermeister, Richter und Rath</rs></rs> durch seiner vleissigen
+                  bete willen zu merkleichen notdurften 8000 guldein <triggerstring n="disp">geliehen
+                     haben</triggerstring>, und <triggerstring n="disp">verpflichtet sich</triggerstring>,
+                  dieselben bis zum nächsten sant Jörgen tag von der Landsteuer zurückzuzahlen.</rs>
+            </p>
+         </div>
+         <div type="nota">
+            <p> d. d( ux) in cons( ilio). </p>
+         </div>
+         <div type="lists"><xi:include xmlns:xi="http://www.w3.org/2001/XInclude" href="../../../../indices/placeList.xml" xpointer="element(/1/2/1/1)"/><xi:include xmlns:xi="http://www.w3.org/2001/XInclude" href="../../../../indices/personList.xml" xpointer="element(/1/2/1/1)"/><xi:include xmlns:xi="http://www.w3.org/2001/XInclude" href="../../../../indices/eventList.xml" xpointer="element(/1/2/1/1)"/><xi:include xmlns:xi="http://www.w3.org/2001/XInclude" href="../../../../indices/orgList.xml" xpointer="element(/1/2/1/1)"/></div>
+      </body>
+   </text>
+</TEI>

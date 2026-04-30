@@ -1,0 +1,21 @@
+<?xml version="1.0" encoding="UTF-8"?><!DOCTYPE TEI   SYSTEM "../../../schema/toolbox_full.dtd"><TEI xmlns="http://www.tei-c.org/ns/1.0" xmlns:cei="http://www.monasterium.net/NS/cei" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"><teiHeader><fileDesc><titleStmt><title>Tei version of 1506 exported from monasterium.net </title></titleStmt><publicationStmt><p/></publicationStmt><!--In Original: cei:front/cei:sourceDesc/cei:sourceDescRegest--><sourceDesc><bibl  type="url">https://www.monasterium.net/mom/AT-WStLA/HAUrk/1506/charter</bibl><bibl default="false" status="draft">Quellen zur Geschichte der Stadt Wien, Bd. II/1, Nr. 1506 As published in HAUrk by
+               Wiener Stadt- und Landesarchiv </bibl><msDesc status="draft"><msIdentifier><repository>Wiener Stadt- und Landesarchiv</repository><idno>1506</idno><altIdentifier type="old"><idno>515706</idno></altIdentifier></msIdentifier><physDesc><sealDesc><seal><p>Drei anhangende Siegel, schwarz u. Sch.</p></seal></sealDesc></physDesc></msDesc></sourceDesc></fileDesc><encodingDesc><projectDesc default="false"><p><label type="contentual-editing">Projekt Christina Lutter Stadt und Gemeinschaft</label></p></projectDesc></encodingDesc><profileDesc><creation>
+            <placeName>Pottendorf</placeName>
+            <date when="14020328">1402 III 28</date>
+            <origDate instant="false">Der geben ist ze Pottendorf, an eritag in den Osterveirtagen, nach Kristi
+               geburd 1400 jar und darnach in dem andern jare. </origDate></creation></profileDesc></teiHeader><facsimile><surface><graphic url="http://images.monasterium.net/pics/AT-WStLA/HA-U/WStLA-HA-Urkunden_01506_r.jpg"/></surface><surface><graphic url="http://images.monasterium.net/pics/AT-WStLA/HA-U/WStLA-HA-Urkunden_01506_v.jpg"/></surface></facsimile><text><body><div type="abstract" resp="kg"><p>
+               <rs type="event" ref="#ev__QGW_II_I_1506"><rs type="fn" role="issuer"><rs type="person" ref="#pe__michael_duerr_QGW_II_I_1506">Michel der
+                     Du/err</rs></rs>
+                  <triggerstring n="disp">verpfändet</triggerstring>
+                  <rs type="fn" role="other"><triggerstring n="fn">mit Einwilligung</triggerstring> seines
+                        <rs type="person" ref="#pe__johann_von_pottendorf_QGW_II_I_1506"><roleName type="title">Lehensherrn</roleName>
+                        <roleName type="title">hern</roleName> Hannsen von Pottendorf</rs></rs>
+                  <rs type="fn" role="recipient">seiner <rs type="person" ref="#pe__anna_QGW_II_I_1506"><roleName type="kin" corresp="#pe__michael_duerr_QGW_II_I_1506">wirtin</roleName>
+                        <roleName type="title">fraun</roleName> Annen</rs></rs> seinen Hof, gelegen
+                  ze Pottendorf, <rs type="event" ref="#ev__QGW_II_I_1506_men_1">den er von Erharten dem Pe/ausslein
+                     gekauft hatte</rs>.</rs>
+            </p></div><div type="seal"><p><rs type="event" ref="#ev__QGW_II_I_1506"><rs type="fn" role="witness">Besiegelt mit
+                     den Siegeln des <rs type="person" ref="#pe__michael_duerr_QGW_II_I_1506">Ausstellers</rs> und seiner <rs type="person" ref="#pe__ulrich_weitan_QGW_II_I_1506"><roleName type="friend" corresp="#pe__michael_duerr_QGW_II_I_1506">lieben Freunde</roleName>
+                        U/olreichs des Weitan</rs> und <rs type="person" ref="#pe__wilhelm_linzer_QGW_II_I_1506"><roleName type="friend" corresp="#pe__michael_duerr_QGW_II_I_1506"><add>lieben
+                           Freunde</add></roleName> Wilhalms des Linnzer</rs>.</rs></rs>
+            </p></div><div type="lists"><xi:include xmlns:xi="http://www.w3.org/2001/XInclude" href="../../../../indices/placeList.xml" xpointer="element(/1/2/1/1)"/><xi:include xmlns:xi="http://www.w3.org/2001/XInclude" href="../../../../indices/personList.xml" xpointer="element(/1/2/1/1)"/><xi:include xmlns:xi="http://www.w3.org/2001/XInclude" href="../../../../indices/eventList.xml" xpointer="element(/1/2/1/1)"/><xi:include xmlns:xi="http://www.w3.org/2001/XInclude" href="../../../../indices/orgList.xml" xpointer="element(/1/2/1/1)"/></div></body></text></TEI>

@@ -1,0 +1,71 @@
+<?xml version="1.0" encoding="UTF-8"?><!DOCTYPE TEI SYSTEM "../../../schema/toolbox_full.dtd"><TEI xmlns="http://www.tei-c.org/ns/1.0" xmlns:cei="http://www.monasterium.net/NS/cei" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance">
+   <teiHeader>
+      <fileDesc>
+         <titleStmt>
+            <title>Tei version of 2004 exported from monasterium.net </title>
+         </titleStmt>
+         <publicationStmt>
+            <p/>
+         </publicationStmt>
+         <!--In Original: cei:front/cei:sourceDesc/cei:sourceDescRegest-->
+         <sourceDesc>
+            <bibl>Quellen zur Geschichte der Stadt Wien, Bd. II/2, Nr. 2004 As published in HAUrk by
+               Wiener Stadt- und Landesarchiv </bibl>
+            <msDesc>
+               <msIdentifier>
+                  <repository>Wiener Stadt- und Landesarchiv</repository>
+                  <idno>2004</idno>
+                  <altIdentifier type="old">
+                     <idno>516212</idno>
+                  </altIdentifier>
+               </msIdentifier>
+               <physDesc>
+                  <sealDesc>
+                     <seal>
+                        <p>Das Siegel fehlt.</p>
+                     </seal>
+                  </sealDesc>
+               </physDesc>
+            </msDesc>
+         </sourceDesc>
+      </fileDesc>       <encodingDesc>          <projectDesc default="false">             <p><label type="contentual-editing">Projekt Christina Lutter Stadt und                   Gemeinschaft</label></p>          </projectDesc>       </encodingDesc>
+      <profileDesc>
+         <creation>
+            <placeName>Wien</placeName>
+            <date when="14141220">1414 XII 20</date>
+            <origDate>ze Wienn, an phincztag vor sand Thomans tag.</origDate></creation>
+      </profileDesc>
+   </teiHeader>
+   <facsimile>
+      <surface>
+         <graphic url="http://images.monasterium.net/pics/AT-WStLA/HA-U/WStLA-HA-Urkunden_02004_r.jpg"/>
+      </surface>
+      <surface>
+         <graphic url="http://images.monasterium.net/pics/AT-WStLA/HA-U/WStLA-HA-Urkunden_02004_v.jpg"/>
+      </surface>
+   </facsimile>
+   <text>
+      <body>
+         <div type="abstract">
+            <p><rs type="event" ref="#ev__QGW_II_II_2004">
+               <rs type="fn" role="issuer"><rs type="person" ref="#pe__rudolf_angerfelder_QGW_II_I_1335">Rudolf der Angervelder, <roleName type="occ" corresp="#org__wien">burgermaister</roleName> und <roleName type="occ" corresp="#org__wien">münssmaister</roleName>,</rs> und <rs type="org" ref="#org__wien">der rat gemain der stat ze Wienn</rs></rs>
+               beurkunden, dass <rs type="fn" role="recipient"><rs type="person" ref="#pe__elisabeth_QGW_II_I_1620"><roleName type="title">frau</roleName>
+                     Elspet, Merten des Eisnein <roleName type="kin" corresp="#pe__martin_eisnein_QGW_II_I_1620">witib</roleName>,</rs></rs> ihnen
+               vorgebracht habe, wie <rs type="person" ref="#pe__martin_eisnein_QGW_II_I_1620">ihr
+                     Mann<roleName type="dead"><add>witib</add></roleName></rs> sich, ihr und seinem
+                  <rs type="person" ref="#pe__michael_QGW_II_I_1620"><roleName type="kin" corresp="#pe__martin_eisnein_QGW_II_I_1620">Sohne</roleName> Michel</rs> erster
+               Ehe mit Margreten ein Haus in der Scheffstrass zenechst Ulreichs haus, des ircher,
+               gekauft habe. Da nun Mert mit Hinterlassung von Kindern zweiter Ehe gestorben ist, so
+               beansprucht sie für diese das Recht mitzuerben. Dagegen verlangt Michel, dass das
+               Haus zur Hälfte ihm, zur Hälfte seiner Stiefmutter gehören solle. <rs type="org" ref="#org__wien">Der Rath</rs> entscheidet in diesem Sinne, da das Haus den drei
+               Personen gechauft ist und das ungetailt mit einander gehabt habent und der obgenant
+               Mert also abgegangen und verschaiden ist . </rs></p>
+         </div>
+         <div type="seal">
+            <p><rs type="event" ref="#ev__QGW_II_II_2004"><rs type="fn" role="witness">Besiegelt mit der <rs type="org" ref="#org__wien">stat</rs> klainem insigel.</rs>
+            </rs></p>
+         </div>
+         <div type="lists"><xi:include xmlns:xi="http://www.w3.org/2001/XInclude" href="../../../../indices/placeList.xml" xpointer="element(/1/2/1/1)"/><xi:include xmlns:xi="http://www.w3.org/2001/XInclude" href="../../../../indices/personList.xml" xpointer="element(/1/2/1/1)"/><xi:include xmlns:xi="http://www.w3.org/2001/XInclude" href="../../../../indices/eventList.xml" xpointer="element(/1/2/1/1)"/><xi:include xmlns:xi="http://www.w3.org/2001/XInclude" href="../../../../indices/orgList.xml" xpointer="element(/1/2/1/1)"/></div>
+      </body>
+   </text>
+</TEI>

@@ -1,0 +1,125 @@
+<?xml version="1.0" encoding="UTF-8"?><!DOCTYPE TEI SYSTEM "../../../schema/toolbox_full.dtd">
+<TEI xmlns="http://www.tei-c.org/ns/1.0" xmlns:cei="http://www.monasterium.net/NS/cei"
+   xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance">
+   <teiHeader>
+      <fileDesc>
+         <titleStmt>
+            <title>Tei version of 2046 exported from monasterium.net </title>
+         </titleStmt>
+         <publicationStmt>
+            <p/>
+         </publicationStmt>
+         <!--In Original: cei:front/cei:sourceDesc/cei:sourceDescRegest-->
+         <sourceDesc>
+            <bibl>Quellen zur Geschichte der Stadt Wien, Bd. II/2, Nr. 2046 As published in HAUrk by
+               Wiener Stadt- und Landesarchiv </bibl>
+            <msDesc>
+               <msIdentifier>
+                  <repository>Wiener Stadt- und Landesarchiv</repository>
+                  <idno>2046</idno>
+                  <altIdentifier type="old">
+                     <idno>516255</idno>
+                  </altIdentifier>
+               </msIdentifier>
+               <msContents>
+                  <msItem>
+                     <listBibl>
+                        <bibl>Jahrbuch der kais. Kunstsamml. 16b, n° 13360 Regest.</bibl>
+                     </listBibl>
+                  </msItem>
+               </msContents>
+               <physDesc>
+                  <sealDesc>
+                     <seal>
+                        <p>Die Siegel fehlen.</p>
+                     </seal>
+                  </sealDesc>
+               </physDesc>
+            </msDesc>
+         </sourceDesc>
+      </fileDesc>
+      <encodingDesc>
+         <projectDesc default="false">
+            <p><label type="contentual-editing">Projekt Christina Lutter Stadt und
+                  Gemeinschaft</label></p>
+         </projectDesc>
+      </encodingDesc>
+      <profileDesc>
+         <creation>
+            <placeName>Wien</placeName>
+            <date when="14161022">1416 X 22</date>
+            <origDate>ze Wienn, des nechsten phincztags nach der heiligen Aindleftausent Maid
+               tag.</origDate></creation>
+      </profileDesc>
+   </teiHeader>
+   <facsimile>
+      <surface>
+         <graphic
+            url="http://images.monasterium.net/pics/AT-WStLA/HA-U/WStLA-HA-Urkunden_02046_r.jpg"/>
+      </surface>
+      <surface>
+         <graphic
+            url="http://images.monasterium.net/pics/AT-WStLA/HA-U/WStLA-HA-Urkunden_02046_v.jpg"/>
+      </surface>
+   </facsimile>
+   <text>
+      <body>
+         <div type="abstract">
+            <p><rs type="event" ref="#ev__QGW_II_II_2046">
+                  <rs type="fn" role="issuer"><rs type="person" ref="#pe__ulrich_wild_QGW_II_II_2042"
+                        >Ulreich der Wild, <roleName type="occ" corresp="#org__wien"
+                           >purger</roleName> ze Wienn</rs></rs>, beurkundet seinen letzten Willen.
+                  Er schafft: 1.seinen Eltern 10 lb dn. und für den gleichen Betrag gewant zu
+                  chlaidern 2. 500 Seelenmessen 3. den Siechen zu <rs type="fn" role="recipient"><rs
+                        type="org" ref="#org__wien-st_lazarus_siechenhaus">sand Marx</rs></rs> und
+                     <rs type="fn" role="recipient"><rs type="org"
+                        ref="#org__wien-st_hiob_zum_klagbaum">zu dem Klagpaum</rs></rs>, in der <rs
+                     type="fn" role="recipient"><rs type="org" ref="#org__wien-pilgrimhaus"
+                        >pilgreimen haus</rs></rs>, <rs type="fn" role="recipient">zu dem Baue von
+                        <rs type="org" ref="#org__wien-st_stephan">St. Stephan</rs></rs> und <rs
+                     type="fn" role="recipient">gen <rs type="org" ref="#org__passau-dioezese"
+                        >Passau</rs></rs> je 1 lb dn. 4. dass man seine Kleider und das Mailanisch
+                  panezir verkaufen, den Erlös zur Handvertheilung an Arme verwenden soll 5. seiner
+                     <rs type="fn" role="recipient"><rs type="person" ref="#pe__anna_QGW_II_II_2046"
+                           ><roleName type="kin" corresp="#pe__ulrich_wild_QGW_II_II_2042"
+                           >Frau</roleName> Annen</rs></rs> 150 lb dn., die er ihr zur Morgengabe
+                  gelobt hat, zwei silberne Becher und die Hälfte des Bettgewandes 6. seinem <rs
+                     type="fn" role="recipient"><rs type="person"
+                        ref="#pe__thomas_wild_QGW_II_II_2046"><roleName type="kin"
+                           corresp="#pe__ulrich_wild_QGW_II_II_2042">Bruder</roleName>
+                     Thomas</rs></rs> 50 lb dn. oder gewant und seine Weingärten zu Medling im Pruel
+                  im nidern und obern Gereul 7. alles übrig bleibende Gut seinen Kindern, die aber
+                  seinen Eltern jährlich 8 lb dn. zu reichen haben. Endlich trifft er Bestimmungen
+                  für den Fall des Ablebens der Eltern oder der Kinder und <rs type="fn"
+                     role="other"><triggerstring n="fn">empfiehlt</triggerstring> das Geschäft den <rs
+                        type="person" ref="#pe__hermann_hesel_QGW_II_II_3274">Wiener <roleName
+                           type="occ" corresp="#org__wien">Bürger</roleName>n Herman dem Hêsel</rs>
+                     und <rs type="person" ref="#pe__johann_hemerl_QGW_II_II_3494"><add><roleName
+                              type="occ" corresp="#org__wien">Bürger</roleName></add>Hannsen dem
+                        Hêmerl</rs></rs>. </rs></p>
+         </div>
+         <div type="seal">
+            <p><rs type="event" ref="#ev__QGW_II_II_2046"><rs type="fn" role="witness">Besiegelt mit
+                     den Siegeln <rs type="person" ref="#pe__johann_unger_QGW_II_II_2046">Hannsen des
+                        Unger, [ 29] <roleName type="occ" corresp="#org__oesterreich-herzogtum"
+                           >hannsgraf</roleName> in Osterreich</rs>, und <rs type="person"
+                        ref="#pe__johann_saeul_QGW_II_II_2046">Hannsen auf der Seul, <roleName
+                           type="occ" corresp="#org__wien">purger</roleName> ze Wienn</rs>.</rs>
+               </rs></p>
+         </div>
+         <div type="nota">
+            <p>Indorsat: geschefftbrief. </p>
+         </div>
+         <div type="lists">
+            <xi:include xmlns:xi="http://www.w3.org/2001/XInclude"
+               href="../../../../indices/placeList.xml" xpointer="element(/1/2/1/1)"/>
+            <xi:include xmlns:xi="http://www.w3.org/2001/XInclude"
+               href="../../../../indices/personList.xml" xpointer="element(/1/2/1/1)"/>
+            <xi:include xmlns:xi="http://www.w3.org/2001/XInclude"
+               href="../../../../indices/eventList.xml" xpointer="element(/1/2/1/1)"/>
+            <xi:include xmlns:xi="http://www.w3.org/2001/XInclude"
+               href="../../../../indices/orgList.xml" xpointer="element(/1/2/1/1)"/>
+         </div>
+      </body>
+   </text>
+</TEI>

@@ -1,0 +1,66 @@
+<?xml version="1.0" encoding="UTF-8"?><!DOCTYPE TEI SYSTEM "../../../schema/toolbox_full.dtd"><TEI xmlns="http://www.tei-c.org/ns/1.0" xmlns:cei="http://www.monasterium.net/NS/cei" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance">
+   <teiHeader>
+      <fileDesc>
+         <titleStmt>
+            <title>Tei version of 1915 exported from monasterium.net </title>
+         </titleStmt>
+         <publicationStmt>
+            <p/>
+         </publicationStmt>
+         <!--In Original: cei:front/cei:sourceDesc/cei:sourceDescRegest-->
+         <sourceDesc>
+            <bibl>Quellen zur Geschichte der Stadt Wien, Bd. II/2, Nr. 1915 As published in HAUrk by
+               Wiener Stadt- und Landesarchiv </bibl>
+            <msDesc>
+               <msIdentifier>
+                  <repository>Wiener Stadt- und Landesarchiv</repository>
+                  <idno>1915</idno>
+                  <altIdentifier type="old">
+                     <idno>516120</idno>
+                  </altIdentifier>
+               </msIdentifier>
+               <physDesc>
+                  <sealDesc>
+                     <seal>
+                        <p>Rückwärts aufgedrücktes Wappensiegel (Sava Fig. 78) von rothem Wachse
+                           unter Papierdecke.</p>
+                     </seal>
+                  </sealDesc>
+               </physDesc>
+            </msDesc>
+         </sourceDesc>
+      </fileDesc>       <encodingDesc>          <projectDesc default="false">             <p><label type="contentual-editing">Projekt Christina Lutter Stadt und                   Gemeinschaft</label></p>          </projectDesc>       </encodingDesc>
+      <profileDesc>
+         <creation>
+            <placeName>Wien</placeName>
+            <date when="14120325">1412 III 25</date>
+            <origDate>Geben ze Wienn an Unserr Fraun tag Annunciacionis, anno domini millesimo
+               quadringentesimo duodecimo. </origDate></creation>
+      </profileDesc>
+   </teiHeader>
+   <facsimile>
+      <surface>
+         <graphic url="http://images.monasterium.net/pics/AT-WStLA/HA-U/WStLA-HA-Urkunden_01915_r.jpg"/>
+      </surface>
+      <surface>
+         <graphic url="http://images.monasterium.net/pics/AT-WStLA/HA-U/WStLA-HA-Urkunden_01915_v.jpg"/>
+      </surface>
+   </facsimile>
+   <text>
+      <body>
+         <div type="abstract">
+            <p><rs type="event" ref="#ev__QGW_II_II_1915"><rs type="fn" role="issuer"><rs type="person" ref="#pe__albrecht_v_herzog_von_oesterreich_QGW_II_I_1730">Herzog Albrecht V.</rs></rs>
+                  <triggerstring n="disp">beauftragt</triggerstring>
+                  <rs type="fn" role="recipient"><rs type="org" ref="#org__wien">den Bürgermeister,
+                        Richter und Rath zu Wien</rs></rs>, von den Gütern, <rs type="event" ref="NULL">so <rs type="person" ref="#pe__resch_QGW_II_II_1915"><roleName type="dead">weilent</roleName> Resch, der <roleName type="prof">pinter</roleName></rs>, hinder im lassen hat</rs>, so viel zu verkaufen,
+                  dass davon die geltschuld bezahlt und die anderen erib und güter damit gepaut und
+                  inngehalden werden.</rs>
+            </p>
+         </div>
+         <div type="nota">
+            <p> d. dux per m( agistrum) cur( ie) ad relacionem no( tarii) ca( mere). </p>
+         </div>
+         <div type="lists"><xi:include xmlns:xi="http://www.w3.org/2001/XInclude" href="../../../../indices/placeList.xml" xpointer="element(/1/2/1/1)"/><xi:include xmlns:xi="http://www.w3.org/2001/XInclude" href="../../../../indices/personList.xml" xpointer="element(/1/2/1/1)"/><xi:include xmlns:xi="http://www.w3.org/2001/XInclude" href="../../../../indices/eventList.xml" xpointer="element(/1/2/1/1)"/><xi:include xmlns:xi="http://www.w3.org/2001/XInclude" href="../../../../indices/orgList.xml" xpointer="element(/1/2/1/1)"/></div>
+      </body>
+   </text>
+</TEI>

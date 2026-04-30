@@ -1,0 +1,111 @@
+<?xml version="1.0" encoding="UTF-8"?><!DOCTYPE TEI SYSTEM "../../../schema/toolbox_full.dtd">
+<TEI xmlns="http://www.tei-c.org/ns/1.0" xmlns:cei="http://www.monasterium.net/NS/cei"
+   xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance">
+   <teiHeader>
+      <fileDesc>
+         <titleStmt>
+            <title>Tei version of 2044 exported from monasterium.net </title>
+         </titleStmt>
+         <publicationStmt>
+            <p/>
+         </publicationStmt>
+         <!--In Original: cei:front/cei:sourceDesc/cei:sourceDescRegest-->
+         <sourceDesc>
+            <bibl>Quellen zur Geschichte der Stadt Wien, Bd. II/2, Nr. 2044 As published in HAUrk by
+               Wiener Stadt- und Landesarchiv </bibl>
+            <msDesc>
+               <msIdentifier>
+                  <repository>Wiener Stadt- und Landesarchiv</repository>
+                  <idno>2044</idno>
+                  <altIdentifier type="old">
+                     <idno>516253</idno>
+                  </altIdentifier>
+               </msIdentifier>
+               <physDesc>
+                  <sealDesc>
+                     <seal>
+                        <p>Zum Verschlusse aufgedrücktes Petschaft von grünem Wachse unter
+                           Papierdecke.</p>
+                     </seal>
+                  </sealDesc>
+               </physDesc>
+            </msDesc>
+         </sourceDesc>
+      </fileDesc>
+      <encodingDesc>
+         <projectDesc default="false">
+            <p><label type="contentual-editing">Projekt Christina Lutter Stadt und
+                  Gemeinschaft</label></p>
+         </projectDesc>
+      </encodingDesc>
+      <profileDesc>
+         <creation>
+            <date when="14160706">1416 VII 06</date>
+            <origDate>am montag nach sand Ulreichs tag.</origDate></creation>
+      </profileDesc>
+   </teiHeader>
+   <facsimile>
+      <surface>
+         <graphic
+            url="http://images.monasterium.net/pics/AT-WStLA/HA-U/WStLA-HA-Urkunden_02044_r.jpg"/>
+      </surface>
+      <surface>
+         <graphic
+            url="http://images.monasterium.net/pics/AT-WStLA/HA-U/WStLA-HA-Urkunden_02044_v.jpg"/>
+      </surface>
+   </facsimile>
+   <text>
+      <body>
+         <div type="abstract">
+            <p><rs type="event" ref="#ev__QGW_II_II_2044">
+                  <rs type="fn" role="issuer"><rs type="person"
+                        ref="#pe__heinrich_hekchel_QGW_II_I_1538">Hainreich Hekchel, <roleName
+                           type="occ" corresp="#org__wiener_neustadt">purger</roleName> in der
+                        Neunstat</rs></rs>, schreibt <rs type="fn" role="recipient"><rs type="org"
+                        ref="#org__wien">dem Bürgermeister, Richter und Rath der Stadt zu
+                     Wien</rs></rs> wegen <rs type="event" ref="NULL"><rs type="fn" role="issuer"
+                           ><rs type="person" ref="#pe__heinrich_hekchel_QGW_II_I_1538">seines</rs></rs>
+                     Streithandels mit dem <rs type="fn" role="other"><rs type="person"
+                           ref="#pe__johann_potschacher_QGW_II_I_1649">Potschacher</rs></rs> über das
+                     <rs type="event" ref="NULL">Geschäft des <rs type="fn" role="recipient"><rs type="person"
+                           ref="#pe__ludwig_rueschel_QGW_II_II_2044">Ludweig Rueschel</rs></rs>, das
+                     im Jahre 1383 ausgestellt und im Jahre 1404 bestätigt worden war</rs>, in
+                  welcher Sache <rs type="person"
+                        ref="#pe__johann_hekchel_QGW_II_II_2044">sein <roleName type="kin"
+                           corresp="#pe__heinrich_hekchel_QGW_II_I_1538">Sohn</roleName></rs> in Wien
+                     weile. Er macht sie darauf aufmerksam, dass Rueschel sein Weib mit zwei
+                  Kindern sitzen liess und von dannen zog, der <rs type="event" ref="NULL"><rs
+                        type="fn" role="issuer"><rs type="person"
+                           ref="#pe__johann_potschacher_QGW_II_I_1649">Pottschacher</rs></rs> aber
+                     das Haus und zwei Weingärten vor Jahren <rs type="fn" role="recipient">ihrem
+                           <rs type="person" ref="#pe__hermann_swarcz_QGW_II_II_2044"><roleName
+                              type="dead">verstorbenen</roleName>
+                           <roleName type="occ" corresp="#org__wien">Mitbürger</roleName> dem
+                           Swarczen Herman</rs>, insbesondere <rs type="person"
+                           ref="#pe__klara_QGW_II_II_2044">der Frau <add><roleName type="kin"
+                                 corresp="#pe__hermann_swarcz_QGW_II_II_2044"
+                           >witwe</roleName></add>desselben, die <roleName type="kin"
+                              corresp="#pe__paul_wagendruessel_QGW_II_II_2044">jezund der</roleName>
+                        </rs>
+                        <rs type="person" ref="#pe__paul_wagendruessel_QGW_II_II_2044"
+                           >Wagendrussel</rs> hat, verkauft</rs> und durch Vermittelung des Haidel
+                     einen herzoglichen Brief erwirkt habe</rs>. Er ersucht sie um ihre
+                  Unterstützung in dem jetzt schon zehn Jahre währenden Streite und empfiehlt ihnen
+                  seinen sun, den armen chnaben. </rs></rs></p>
+         </div>
+         <div type="nota">
+            <p>Adresse aussen.</p>
+         </div>
+         <div type="lists">
+            <xi:include xmlns:xi="http://www.w3.org/2001/XInclude"
+               href="../../../../indices/placeList.xml" xpointer="element(/1/2/1/1)"/>
+            <xi:include xmlns:xi="http://www.w3.org/2001/XInclude"
+               href="../../../../indices/personList.xml" xpointer="element(/1/2/1/1)"/>
+            <xi:include xmlns:xi="http://www.w3.org/2001/XInclude"
+               href="../../../../indices/eventList.xml" xpointer="element(/1/2/1/1)"/>
+            <xi:include xmlns:xi="http://www.w3.org/2001/XInclude"
+               href="../../../../indices/orgList.xml" xpointer="element(/1/2/1/1)"/>
+         </div>
+      </body>
+   </text>
+</TEI>

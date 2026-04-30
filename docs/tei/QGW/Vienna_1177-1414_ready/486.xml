@@ -1,0 +1,23 @@
+<?xml version="1.0" encoding="UTF-8"?><!DOCTYPE TEI   SYSTEM "../../../schema/toolbox_full.dtd"><TEI xmlns="http://www.tei-c.org/ns/1.0" xmlns:cei="http://www.monasterium.net/NS/cei" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"><teiHeader><fileDesc><titleStmt><title>Tei version of 486 exported from monasterium.net </title></titleStmt><publicationStmt><p/></publicationStmt><!--In Original: cei:front/cei:sourceDesc/cei:sourceDescRegest--><sourceDesc><bibl  type="url">https://www.monasterium.net/mom/AT-WStLA/HAUrk/486/charter</bibl><bibl default="false" status="draft">Quellen zur Geschichte der Stadt Wien, Bd. II/1, Nr.
+          486 As published in HAUrk by Wiener Stadt- und Landesarchiv </bibl><msDesc status="draft"><msIdentifier><repository>Wiener Stadt- und Landesarchiv</repository><idno>486</idno><altIdentifier type="old"><idno>514660</idno></altIdentifier></msIdentifier><physDesc><sealDesc><seal><p>Drei anhangende Siegel, 1. beschädigt.</p></seal></sealDesc></physDesc></msDesc></sourceDesc></fileDesc><encodingDesc><projectDesc default="false"><p><label type="contentual-editing">Projekt Christina Lutter Stadt und Gemeinschaft</label></p></projectDesc></encodingDesc><profileDesc><creation>
+        <placeName>Wien</placeName>
+        <date when="13560823">1356 VIII 23</date>
+      </creation></profileDesc></teiHeader><facsimile><surface><graphic url="http://images.monasterium.net/pics/AT-WStLA/HA-U/WStLA-HA-Urkunden_00486_r.jpg"/></surface><surface><graphic url="http://images.monasterium.net/pics/AT-WStLA/HA-U/WStLA-HA-Urkunden_00486_v.jpg"/></surface></facsimile><text><body><div type="abstract" resp="ks"><p>
+          <rs type="event" ref="#ev__QGW_II_I_486"><rs type="fn" role="issuer"><rs type="person" ref="#pe__dietrich_flusthart_QGW_II_I_572">Dietreich der Flusthart</rs></rs>
+            <triggerstring n="disp">widmet für<add> Seelenheil</add></triggerstring>
+            <rs type="fn" role="other"><rs type="person" ref="#pe__dietrich_flusthart_QGW_II_I_572">sein</rs> und seiner <rs type="person" ref="#pe__margarethe_QGW_II_I_486"><roleName type="dead">verstorbenen</roleName>
+                <roleName type="kin" corresp="#pe__dietrich_flusthart_QGW_II_I_572">Frau</roleName>
+                Mergarten</rs>
+              <triggerstring n="fn">Seelenheil</triggerstring></rs> 10 lb dn. gelts ewigs purchrechts auf
+            der patstuben, gelegen hinder den Phailsniczern ze Wienne und haisset dacz den Rören,
+            und auf dem pachhaus daran , die ihm seine Frau zu freier Verfügung vermacht hatte, <rs type="fn" role="recipient"><rs type="org" ref="#org__wien-st_stephan-altar_st_maria">zu
+                einer ewigen Messe auf Unser Vrowen altar in der absehen in dem chor sant Stephans
+                pharrchirchen ze Wienne</rs></rs> und <triggerstring n="disp">verleiht</triggerstring> die
+            Messe seinem <rs type="fn" role="recipient"><rs type="person" ref="#pe__niklas_QGW_II_I_506"><roleName type="occ" corresp="#org__wien-st_stephan-altar_st_maria-messe_flusthart">Kaplan</roleName>,
+                dem <roleName type="prof">Priester</roleName>
+                <roleName type="title">hern</roleName> Nichlasen</rs></rs>.</rs>
+        </p></div><div type="seal"><p><rs type="event" ref="#ev__QGW_II_I_486"><rs type="fn" role="witness">Besiegelt mit den
+              Siegeln: <rs type="person" ref="#pe__dietrich_flusthart_QGW_II_I_572">1. des
+                Ausstellers</rs>, <rs type="person" ref="#pe__johann_poll_QGW_II_I_850">2. <roleName type="title">hern</roleName> Jansen des Pollen</rs>, <rs type="person" ref="#pe__sieghard_brunner_QGW_II_I_889">3. <roleName type="title">hern</roleName>
+                Sigharts des Prunner</rs>.</rs></rs>
+        </p></div><div type="nota"><p>Camesina, Regesten 5 no 14 Regest. </p></div><div type="lists"><xi:include xmlns:xi="http://www.w3.org/2001/XInclude" href="../../../../indices/placeList.xml" xpointer="element(/1/2/1/1)"/><xi:include xmlns:xi="http://www.w3.org/2001/XInclude" href="../../../../indices/personList.xml" xpointer="element(/1/2/1/1)"/><xi:include xmlns:xi="http://www.w3.org/2001/XInclude" href="../../../../indices/eventList.xml" xpointer="element(/1/2/1/1)"/><xi:include xmlns:xi="http://www.w3.org/2001/XInclude" href="../../../../indices/orgList.xml" xpointer="element(/1/2/1/1)"/></div></body></text></TEI>

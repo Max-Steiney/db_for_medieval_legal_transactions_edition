@@ -1,0 +1,104 @@
+<?xml version="1.0" encoding="UTF-8"?><!DOCTYPE TEI SYSTEM "../../../schema/toolbox_full.dtd">
+<TEI xmlns="http://www.tei-c.org/ns/1.0" xmlns:cei="http://www.monasterium.net/NS/cei"
+   xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance">
+   <teiHeader>
+      <fileDesc>
+         <titleStmt>
+            <title>TEI-Version of 415</title>
+         </titleStmt>
+         <publicationStmt>
+            <p/>
+         </publicationStmt>
+         <sourceDesc default="false">
+            <bibl default="false" status="draft">
+               <title type="full"><title type="main">Die Wiener Stadtbücher 1395 -
+                     1430</title><title type="sub">Teil 1: 1395 - 1400</title></title>
+               <author>Wilhelm Brauneder</author>
+               <author>Gerhard Jaritz</author>
+               <pubPlace>Wien</pubPlace>
+               <pubPlace>Köln</pubPlace>
+               <publisher>Böhlau Verlag</publisher>
+            </bibl>
+            <msDesc status="draft">
+               <msIdentifier>
+                  <idno>415</idno>
+               </msIdentifier>
+               <physDesc/>
+            </msDesc>
+         </sourceDesc>
+      </fileDesc>     <encodingDesc>       <projectDesc>         <p><label type="contentual-editing">Projekt Christina Lutter Stadt und Gemeinschaft</label></p>       </projectDesc>     </encodingDesc>
+      <profileDesc>
+         <creation>
+            <date when="1399-09-09">1399 September 9</date>
+         </creation>
+      </profileDesc>
+   </teiHeader>
+   <text>
+      <body>
+         <div type="header">
+            <p>Geschäjt des Heinrich von Hainfeld, des Münzer</p>
+         </div>                   <div type="entry" resp="rs">
+            <p> pr. sehr., 2 Einbr. 2 Zg., Sa (Indez: Item gescheft Hainreich Munsser gesch~ft von
+               Hainveld) (fol.69v) <rs type="event" ref="#ev__StB_I_415">An erichtag nach Unser Frawn
+                  tag als si geporn ward <rs type="fn" role="witness">komen fur den rat der stat ze
+                     Wienn <rs type="person" ref="#pe__johann_in_dem_mauthaus_StB_I_443">Hanns im
+                           <roleName type="prof" cert="high">Mauthaws</roleName></rs> und <rs
+                        type="person" ref="#pe__niklas_rotschmied">Niclas der <roleName type="prof"
+                           cert="high">Rotsmid</roleName></rs> und habent das beweist mit den erbern
+                     leuten zu rechter zeit, als si ze recht solten, mit <rs type="person"
+                        ref="#pe__christian_rotschmied_StB_I_234"><roleName type="title"
+                              ><add>erbern</add></roleName>Christann dem <roleName type="prof"
+                           cert="high">Rotsmid</roleName></rs> und mit <rs type="person"
+                        ref="#pe__ulrich_kupferschmied_StB_I_234"><roleName type="title"
+                              ><add>erbern</add></roleName>Ulreichen dem <roleName type="prof"
+                           cert="high">Chuphersmid</roleName></rs></rs>, <rs type="fn" role="issuer"
+                     >das geschefft, so <rs type="person" ref="#pe__heinrich_von_hainfeld_StB_I_415"
+                        >Hainreich <roleName type="dead">seliger</roleName> von Hainfeld, der
+                           <roleName type="prof">munnzzer</roleName></rs>, an seinen lesten zeiten
+                     getan hat, als es an einer zedel vor offem rat gelesen und verhort ward und
+                     lautt von wort ze wart, als hernach geschriben stet. Hie ist ze merkchen, das
+                     ich Hainreich von Hainfeld, der munnzzer, recht und redleich geschafft
+                     hab.</rs>
+                  <rs type="fn" role="recipient">Von erst so schaff ich durich meiner sel und auch
+                     durich meiner vorvordrigen hausfrawn sel hail willen ein Achfart. Item so
+                     schaff ich durich meiner sel hail ein Romfart. Item so schaff ich meinen grunn
+                     seydel, das man den sol verchauffen und davon sol ausrichten 60 selmess und 2
+                     Zellfart. Und was da uber beleibet, das sol man raichen armen lewten durich
+                     meiner sel willen. Item so schaff ich <rs type="person"
+                        ref="#pe__agnes_StB_I_415">meiner <roleName type="kin"
+                           corresp="#pe__heinrich_von_hainfeld_StB_I_415">hausfrawn</roleName>
+                        Agnesen</rs> alles mein petgewant halbes und meinem pruder und seinen kinden
+                     halbes, das si sullen tailn schon. Item so schaff ich meiner hawsfrawn Agnesen
+                     1 weingarten, der do ist gelegen bey Sand Lazar in Seczen. Item so schaff ich
+                     meiner hawsfrawn Agnesen alles frawngewant, das meiner vodrigen hausfrawn ist
+                     gewesen von menteln und von rokchen und sloyrn. Item so schaff ich ir auch
+                     alles zinnasseich. Item so schaff ich meinem pruder das haws und seinen kinden.
+                     Item und schaff auch meinem pruder und seinen kinden 3 weingarten, ein
+                     viertail, das do ist gelegen am Gaisrokk ze nachst dem Gemach, dem pinter, und
+                     die andern 2 sind gelegen ze Wering, der auch zway achtail sein. Item so schaff
+                     ich, das mein pruder von zwain fudern weins und von zwain silberasseich und von
+                     einer silbrein gurtel, das er davon sol ausrichten und gelten, was ich schuldig
+                     pin.</rs>
+                  <rs type="fn" role="other">Und das dicz geschefft unczebrochen beleib zu einer
+                     zeugnus und sicherhait des gescheffts, so han ich geruffen darczu <rs
+                        type="person" ref="#pe__johann_in_dem_mauthaus_StB_I_443">Hannsen im
+                        Mauthaws</rs> und <rs type="person" ref="#pe__niklas_rotschmied">Niclasen den
+                        Ratsmid</rs> zu einer geczeugnuzz des gescheffts und han das in <triggerstring
+                        n="fn">empholhen</triggerstring> auf ir trew.</rs> Als darumb die obgenanten
+                  erbern leut mit irn trewn an aydes stat vor unser in offem rat habent gesagt, als
+                  si ze recht solten.</rs>
+            </p>
+         </div>
+         <div type="lists">
+            <xi:include xmlns:xi="http://www.w3.org/2001/XInclude"
+               href="../../../../indices/placeList.xml" xpointer="element(/1/2/1/1)"/>
+            <xi:include xmlns:xi="http://www.w3.org/2001/XInclude"
+               href="../../../../indices/personList.xml" xpointer="element(/1/2/1/1)"/>
+            <xi:include xmlns:xi="http://www.w3.org/2001/XInclude"
+               href="../../../../indices/eventList.xml" xpointer="element(/1/2/1/1)"/>
+            <xi:include xmlns:xi="http://www.w3.org/2001/XInclude"
+               href="../../../../indices/orgList.xml" xpointer="element(/1/2/1/1)"/>
+         </div>
+      </body>
+   </text>
+</TEI>

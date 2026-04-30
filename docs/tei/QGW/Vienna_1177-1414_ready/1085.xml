@@ -1,0 +1,118 @@
+<?xml version="1.0" encoding="UTF-8"?><!DOCTYPE TEI   SYSTEM "../../../schema/toolbox_full.dtd">
+<TEI xmlns="http://www.tei-c.org/ns/1.0" xmlns:cei="http://www.monasterium.net/NS/cei"
+   xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance">
+   <teiHeader>
+      <fileDesc>
+         <titleStmt>
+            <title>Tei version of 1085 exported from monasterium.net </title>
+         </titleStmt>
+         <publicationStmt>
+            <p/>
+         </publicationStmt>
+         <!--In Original: cei:front/cei:sourceDesc/cei:sourceDescRegest-->
+         <sourceDesc>
+            <bibl type="url">https://www.monasterium.net/mom/AT-WStLA/HAUrk/1085/charter</bibl>
+            <bibl default="false" status="draft">Quellen zur Geschichte der Stadt Wien, Bd. II/1,
+               Nr. 1085 As published in HAUrk by Wiener Stadt- und Landesarchiv </bibl>
+            <msDesc status="draft">
+               <msIdentifier>
+                  <repository>Wiener Stadt- und Landesarchiv</repository>
+                  <idno>1085</idno>
+                  <altIdentifier type="old">
+                     <idno>515278</idno>
+                  </altIdentifier>
+               </msIdentifier>
+               <msContents>
+                  <msItem>
+                     <listBibl default="false">
+                        <bibl default="false" status="draft">Jahrbuch der kais. Kunstsamml. 16b, no
+                           12783 Regest.</bibl>
+                        <bibl default="false" status="draft">Quellen zur Geschichte der Stadt Wien,
+                           Bd. II/1, Nr. 1085 As published in HAUrk by Wiener Stadt- und
+                           Landesarchiv </bibl>
+                     </listBibl>
+                  </msItem>
+               </msContents>
+               <physDesc>
+                  <sealDesc>
+                     <seal>
+                        <p>Die Siegel fehlen.</p>
+                     </seal>
+                  </sealDesc>
+               </physDesc>
+            </msDesc>
+         </sourceDesc>
+      </fileDesc>
+      <encodingDesc>
+         <projectDesc default="false">
+            <p><label type="contentual-editing">Projekt Christina Lutter Stadt und
+                  Gemeinschaft</label></p>
+         </projectDesc>
+      </encodingDesc>
+      <profileDesc>
+         <creation>
+            <placeName>Wien</placeName>
+            <date when="13850322">1385 III 22</date>
+            <origDate instant="false">ze Wienn, des nächsten mittichens vor dem
+            Palmtage.</origDate></creation>
+      </profileDesc>
+   </teiHeader>
+   <facsimile>
+      <surface>
+         <graphic
+            url="http://images.monasterium.net/pics/AT-WStLA/HA-U/WStLA-HA-Urkunden_01085_r.jpg"/>
+      </surface>
+      <surface>
+         <graphic
+            url="http://images.monasterium.net/pics/AT-WStLA/HA-U/WStLA-HA-Urkunden_01085_v.jpg"/>
+      </surface>
+   </facsimile>
+   <text>
+      <body>
+         <div type="abstract" resp="cs">
+            <p>
+               <rs type="event" ref="#ev__QGW_II_I_1085"><rs type="fn" role="issuer"><rs
+                        type="person" ref="#pe__johann_jan_QGW_II_I_1085">Janns der Jan, der
+                           <roleName type="prof">goltsmid</roleName>, <roleName type="occ" corresp="#org__wien">purger</roleName> ze Wienne</rs></rs>, <triggerstring
+                     n="disp">verkauft</triggerstring>
+                  <rs type="fn" role="other"><triggerstring n="fn">mit Handen</triggerstring> des <rs
+                        type="person" ref="#pe__paul_holzkaeufel_QGW_II_I_1010"><roleName type="occ"
+                           corresp="#org__wien">Bürgermeisters</roleName>
+                        <roleName type="title">hern</roleName> Pauln des Holzkäuffels</rs> und des
+                        <rs type="org" ref="#org__wien">rates gemain der stat ze Wienn</rs></rs> ein
+                  Haus, <rs type="event" ref="#ev__QGW_II_I_1085_men_1">das ihm seine <rs
+                        type="person" ref="#pe__dorothea_QGW_II_I_895"><roleName type="dead"
+                           >frühere</roleName>
+                        <roleName type="kin" corresp="#pe__johann_jan_QGW_II_I_1085"
+                           >Hausfrau</roleName> Dorothe</rs> hinterlassen hatte</rs>, gelegen in der
+                  Goltsmiedgassen bei sand Stephan ze Wienn zenechst Hannsen haus des Görlitz , um
+                  200 lb dn. <rs type="fn" role="recipient"><rs type="person"
+                        ref="#pe__oswald_pauch_QGW_II_I_1371">Oswalden dem Pauch, dem <roleName
+                           type="prof">goltsmied</roleName>, <roleName type="occ" corresp="#org__wien">purger</roleName> ze Wienn</rs>, und seiner <rs
+                        type="person" ref="#pe__margarethe_QGW_II_I_1085"><roleName type="kin"
+                           corresp="#pe__oswald_pauch_QGW_II_I_1371">Hausfrau</roleName>
+                        Margreten</rs></rs>.</rs>
+            </p>
+         </div>
+         <div type="seal">
+            <p><rs type="event" ref="#ev__QGW_II_I_1085"><rs type="fn" role="witness">Besiegelt : 1.
+                     mit dem Siegel des <rs type="person" ref="#pe__johann_jan_QGW_II_I_1085"
+                        >Ausstellers</rs>, 2. mit dem <rs type="org" ref="#org__wien">städtischen
+                        Grundsiegel</rs>, 3. mit dem Siegel <rs type="person"
+                        ref="#pe__johann_prentschenk_QGW_II_I_1047">Hannsen des Prentschenkchen, des
+                           <roleName type="prof">goltsmieds</roleName>, <roleName type="occ" corresp="#org__wien">purger</roleName> ze Wienn</rs>.</rs></rs>
+            </p>
+         </div>
+         <div type="lists">
+            <xi:include xmlns:xi="http://www.w3.org/2001/XInclude"
+               href="../../../../indices/placeList.xml" xpointer="element(/1/2/1/1)"/>
+            <xi:include xmlns:xi="http://www.w3.org/2001/XInclude"
+               href="../../../../indices/personList.xml" xpointer="element(/1/2/1/1)"/>
+            <xi:include xmlns:xi="http://www.w3.org/2001/XInclude"
+               href="../../../../indices/eventList.xml" xpointer="element(/1/2/1/1)"/>
+            <xi:include xmlns:xi="http://www.w3.org/2001/XInclude"
+               href="../../../../indices/orgList.xml" xpointer="element(/1/2/1/1)"/>
+         </div>
+      </body>
+   </text>
+</TEI>

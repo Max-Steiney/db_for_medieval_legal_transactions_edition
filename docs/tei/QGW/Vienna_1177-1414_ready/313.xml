@@ -1,0 +1,263 @@
+<?xml version="1.0" encoding="UTF-8"?><!DOCTYPE TEI   SYSTEM "../../../schema/toolbox_full.dtd">
+<TEI xmlns="http://www.tei-c.org/ns/1.0" xmlns:cei="http://www.monasterium.net/NS/cei"
+   xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance">
+   <teiHeader>
+      <fileDesc>
+         <titleStmt>
+            <title>Tei version of 313 exported from monasterium.net </title>
+         </titleStmt>
+         <publicationStmt>
+            <p/>
+         </publicationStmt>
+         <!--In Original: cei:front/cei:sourceDesc/cei:sourceDescRegest-->
+         <sourceDesc>
+            <bibl type="url">https://www.monasterium.net/mom/AT-WStLA/HAUrk/313/charter</bibl>
+            <bibl default="false" status="draft">Quellen zur Geschichte der Stadt Wien, Bd. II/1,
+               Nr. 313 As published in HAUrk by Wiener Stadt- und Landesarchiv </bibl>
+            <msDesc status="draft">
+               <msIdentifier>
+                  <repository>Wiener Stadt- und Landesarchiv</repository>
+                  <idno>313</idno>
+                  <altIdentifier type="old">
+                     <idno>514483</idno>
+                  </altIdentifier>
+               </msIdentifier>
+               <msContents>
+                  <msItem>
+                     <listBibl default="false">
+                        <bibl default="false" status="draft">Schlager, Wiener Skizzen 2, 292 no
+                           5.</bibl>
+                        <bibl default="false" status="draft">Jahrbuch der kais. Kunstsamml. 16b, no
+                           12695, Regest.</bibl>
+                     </listBibl>
+                  </msItem>
+               </msContents>
+               <physDesc>
+                  <sealDesc>
+                     <seal>
+                        <p>Neun anhangende Siegel: I., 2., 4., 8., 9. ungefärbt, rund, 3. ungefärbt,
+                           sechseckig, 5. grün u. K., rund, 6. grün u. K., 7. sechseckig, 10.
+                           fehlt.14. seiner Tochter <quote>Annen</quote> 2 Joch Weingarten <quote>ze
+                              Otachrinne</quote>, 1 ½ Joch Weingarten <quote>an dem Sunnperge
+                              zwischen Grinzingen und To/eblich</quote>. Im Falle seines und seiner
+                           Frau Ablebens soll die Tochter beide Weingärten zur gesammten
+                           Erbschaftsmasse schlagen und diese mit ihrem Bruder Hermann theilen. 15.
+                           Er schafft seiner Schwester Elsbeten, <quote>Jansen hausfrauen des
+                              Stainpekchen</quote>, seine Mühle <quote>dacz Porcz</quote>16. seinem
+                           Oheim <quote>Reimprechten</quote> 40 Tagwerke <quote>wismades</quote> und
+                           sein Holz <quote>an dem Gluthaven</quote> 17. seinem Oheim
+                              <quote>Walthern</quote> 2 Fuder Wein aus seinem Weingarten <quote>ze
+                              Otachrinne</quote> 18. seinem <quote>geswein Merten</quote> seinen
+                              <quote>swartzen vollen</quote> 19. ½ <quote>lb dn. geltes
+                              purchrechtes, das da leit auf einem prottisch an dem Hohenmarchte,
+                              gegen dem Vischhof uber, in Unsers Herren Gotes Leichnam zeche
+                           </quote>. 20. Er ordnet die Bezahlung seiner Schulden an. 21. Zur
+                           Gesammterbin seines übrigbleibenden Gutes setzt er seine Frau ein. 22.
+                           Sollte sich diese nochmals verheiraten, so soll sie ihre Morgengabe von
+                           400 lb dn. und dazu 200 lb dn. erhalten. Zu Geschäftsvollstreckern und zu
+                           Vormündern seiner Kinder bestimmt er <quote>hern Weichard und hern
+                              Ulreich bei den Minnern pru/edern</quote>, seinen <quote>geswei
+                              Merten, Jans in dem Strohof, Reimprecht pei dem Prunne</quote>. </p>
+                     </seal>
+                  </sealDesc>
+               </physDesc>
+            </msDesc>
+         </sourceDesc>
+      </fileDesc>
+      <encodingDesc>
+         <projectDesc default="false">
+            <p><label type="contentual-editing">Projekt Christina Lutter Stadt und
+                  Gemeinschaft</label></p>
+         </projectDesc>
+      </encodingDesc>
+      <profileDesc>
+         <creation>
+            <placeName>Wien</placeName>
+            <date when="13740629">1347 VI 29</date>
+            <date from="99999999" to="99999999"/>
+            <origDate instant="false">ze Wienne nach Christi gepurt dreutzehen hundert iar dar nach
+               in dem syben und viertzgisten iar an sant Peter und sant Pauls Tage. (1347 VI 29)
+            </origDate></creation>
+      </profileDesc>
+   </teiHeader>
+   <facsimile>
+      <surface>
+         <graphic
+            url="http://images.monasterium.net/pics/AT-WStLA/HA-U/WStLA-HA-Urkunden_00313_r.jpg"/>
+      </surface>
+      <surface>
+         <graphic
+            url="http://images.monasterium.net/pics/AT-WStLA/HA-U/WStLA-HA-Urkunden_00313_v.jpg"/>
+      </surface>
+   </facsimile>
+   <text>
+      <body>
+         <div type="abstract">
+            <p><rs type="event" ref="#ev__QGW_II_I_313"><rs type="fn" role="issuer"><rs type="person"
+                        ref="#pe__wilhelm_bei_dem_brunnen_QGW_II_I_289">Wilhalm bei dem Prunnen,
+                           <roleName type="occ" corresp="#org__wien">purger</roleName> ze
+                     Wienne</rs>,</rs>
+                  <triggerstring n="disp">beurkundet seinen letzten Willen</triggerstring>. Er <triggerstring
+                     n="disp">schafft</triggerstring>: 1. <rs type="fn" role="recipient"><rs
+                        type="person" ref="#pe__katharina_QGW_II_I_313">seiner <roleName type="kin"
+                           corresp="#pe__wilhelm_bei_dem_brunnen_QGW_II_I_289">Schwester</roleName>
+                        <roleName type="title">swester</roleName> Katrein datz sand Jacob</rs> 16 lb
+                     dn. zum Ankaufe von 2 lb dn. gelts, die nach ihrem Ableben dem <rs type="org"
+                        ref="#org__wien-st_jakob_auf_der_huelben">Kloster</rs></rs> zur Abhaltung
+                  eines Jahrtages zufallen sollen 2. a) <rs type="fn" role="recipient"><rs
+                        type="person" ref="#pe__christine_wilhalmin">seiner <roleName type="kin"
+                           corresp="#pe__wilhelm_bei_dem_brunnen_QGW_II_I_289">Muhme</roleName>
+                        <roleName type="title">swester</roleName> Christein der Wilhalminne in
+                        demselben Kloster</rs></rs> 5 lb dn., b) <rs type="fn" role="recipient"><rs
+                        type="person" ref="#pe__gertrud_jakobin"><roleName type="title"
+                           >swester</roleName> Gedrauten der Jacobinne</rs></rs> 2 lb dn., c) <rs
+                     type="fn" role="recipient"><rs type="person" ref="#pe__peter_QGW_II_I_313"
+                           ><roleName type="title">pruder</roleName> Petrein ze
+                     Liligenvelde</rs></rs> 2 lb dn., d) hinz <rs type="fn" role="recipient"><rs
+                        type="org" ref="#org__wien-dominikaner">den Predigern</rs></rs> zu dem paue 2
+                  lb dn., e) hinz <rs type="fn" role="recipient"><rs type="org"
+                        ref="#org__wien-st_maria_am_gestade">Unser Vrowen auf der Stetten</rs></rs>
+                  zu dem paue 6 lb dn., f) <rs type="fn" role="recipient"><rs type="person"
+                        ref="#pe__lambert_strohof_QGW_II_I_422">Lambern <roleName type="kin"
+                           corresp="#pe__wilhelm_in_dem_strohof_QGW_II_I_180"
+                           ><add>Sohn</add></roleName></rs> und <rs type="person"
+                        ref="#pe__kaspar_QGW_II_I_313">Casparn, den <roleName type="kin"
+                           corresp="#pe__wilhelm_in_dem_strohof_QGW_II_I_180"
+                     >Söhnen</roleName></rs></rs>
+                  <rs type="person" ref="#pe__wilhelm_in_dem_strohof_QGW_II_I_197">seines <roleName
+                        type="dead">verstorbenen</roleName>
+                     <roleName type="kin" corresp="#pe__wilhelm_bei_dem_brunnen_QGW_II_I_289"
+                        >Oheims</roleName> Wilhalm in dem Strohof</rs>, 20 lb dn., g) <rs type="fn"
+                     role="recipient"><rs type="person" ref="#pe__achatius_QGW_II_I_313">Achazio,
+                        irem <roleName type="kin" corresp="#pe__kaspar_QGW_II_I_313"
+                           >pruder</roleName> datz Sant Polten</rs>, und ihren zwei Schwestern datz
+                     sand Jacob ze Wienne</rs> 12 lb dn., h) <rs type="fn" role="recipient"><rs
+                        type="person" ref="#pe__ulrich_mergeb_QGW_II_I_313">seinem <roleName
+                           type="kin" corresp="#pe__wilhelm_bei_dem_brunnen_QGW_II_I_289"
+                           >Oheim</roleName> Ulreichen dem Mergeb </rs>2 lb dn., i) der <rs
+                        type="person" ref="#pe__pokschedlin_QGW_II_I_313">alten Pokchschedlinne</rs>
+                     5 lb dn., k) irr snu/er 4 lb dn., I) seinem Schulmeister 2 lb dn., m) <rs
+                        type="person" ref="#pe__elbl_QGW_II_I_313">Aelblein, dem <roleName
+                           type="prof">wagenchnecht</roleName></rs>, 1 lb dn., n) seinem Koch ½ lb
+                     dn., o) <rs type="person" ref="#pe__berthold_QGW_II_I_313">Pernolten</rs> 1 lb
+                     dn., p) <rs type="person" ref="#pe__simon_QGW_II_I_290">seinem Beichtiger
+                           <roleName type="title">hern</roleName> Simon, <roleName type="occ"
+                           corresp="#org__wien-st_stephan">chormaister</roleName> dacz sand Stephan
+                        ze Wienne</rs>, 1 lb dn., q) <rs type="person" ref="#pe__ulrich_QGW_II_I_313"
+                           ><roleName type="title">pruder</roleName> Ulreichen dacz den
+                        Predigern</rs> 2 lb dn., r) <rs type="person" ref="#pe__gertrud_QGW_II_I_313"
+                        >der alten Gedrauten</rs> 3 lb dn., s) seinem Kaplan 3 lb dn., t) <rs
+                        type="person" ref="#pe__wisent_QGW_II_I_313">Wisenten, seinem <roleName
+                           type="occ" corresp="#pe__wilhelm_bei_dem_brunnen_QGW_II_I_289"
+                           >Diener</roleName></rs>, 1 lb dn., u) <rs type="person"
+                        ref="#pe__vridhaimer_QGW_II_I_313">seinem <roleName type="occ"
+                           corresp="#pe__wilhelm_bei_dem_brunnen_QGW_II_I_289">Diener</roleName> dem
+                        Vridhamer</rs>, 4 lb dn. 3. <rs type="person" ref="#pe__niklas_wetschrat"
+                        >seinem <roleName type="kin"
+                           corresp="#pe__wilhelm_bei_dem_brunnen_QGW_II_I_289">Bruder</roleName>
+                        <roleName type="title">pru/eder</roleName> Nichlasen Wetschrat ze
+                        Liligenveld</rs> 4 lb dn. geltes von seinem neuen Hause auf der Stetten mit
+                     dem Vorbehalte des Heimfalles an seine Erben 4. dem<rs type="org"
+                        ref="#org__lilienfeld-zisterzienser"> Convent zu Lilienfeld </rs>3 lb dn.
+                     geltes purchrechts auf des Zo/etleins haus, des sneider, das da leit auf den
+                     Lauben ze Wienne, das weiln des Vruntsperger gewesen ist</rs> . 5. Er
+                     <triggerstring n="disp">ordnet <add>an</add></triggerstring> sein Begräbnis in
+                  Lilienfeld an. 6. Er <triggerstring n="disp">schafft</triggerstring>, dass man geben sol
+                  hincz <rs type="fn" role="recipient"><rs type="org" ref="#org__wien-st_stephan"
+                        >sant Stephan ze Wienne</rs> ain guldeins tuch, 7. <rs type="org"
+                        ref="#org__wien-buergerspital">den Dürftigen im Bürgerspital</rs> um 10 lb
+                     dn. leineins tuch kaufen, ein Mahl, ein Bad und ein neues Bettstroh geben
+                     solle. 8. Er schafft seinem <rs type="person"
+                        ref="#pe__otto_bei_dem_brunnen_QGW_II_I_190"><roleName type="kin"
+                           corresp="#pe__wilhelm_bei_dem_brunnen_QGW_II_I_289">Vetter</roleName>
+                        Otten bei dem Prunnen</rs> ½ Joch Weingarten, der da leit in dem Vohental 9.
+                        <rs type="person" ref="#pe__kunigunde_QGW_II_I_313">seiner <roleName
+                           type="kin" corresp="#pe__wilhelm_bei_dem_brunnen_QGW_II_I_289"
+                           >Muhme</roleName> Chunigunden, der <roleName type="kin"
+                           corresp="#pe__jakob_bei_dem_brunnen_QGW_II_I_122"
+                     >Tochter</roleName></rs></rs>
+                  <rs type="person" ref="#pe__jakob_bei_dem_brunnen_QGW_II_I_122">seines <roleName
+                        type="kin" corresp="#pe__wilhelm_bei_dem_brunnen_QGW_II_I_289"
+                        >Vetters</roleName> Jacobs bei dem Prunnen, <roleName type="dead">dem got
+                        genade</roleName></rs>, 20 lb dn. zu den 30 lb dn., die er ihr schuldet 10.
+                     <rs type="fn" role="recipient">dass man 2 lb dn. Geldes Burgrechts kaufen solle
+                     hinz den <rs type="org" ref="#org__wien-dominikaner">Predigern</rs> ze Wienne zu
+                     einem Jahrtage für seine Eltern an Unsers Herrn Gotes Leichnams abent.</rs> 11.
+                  Er <triggerstring n="disp">schafft</triggerstring>, dass man 3 lb dn. Geldes kaufe der
+                     <rs type="fn" role="recipient"><rs type="org" ref="#org__inzersdorf-pfarre"
+                        >Pfarrkirche ze Inzestorf,</rs><unclear instant="false"> also dass der
+                        pharrer daselbens ewichleichen alle wochen zwo messe davon haben sol ze
+                        Willendorf in meiner chappellen</unclear>. 12. Er schafft den Kindern seiner
+                     Schwester, weiln Merten hausvrowe, hern Hermans sun an dem Chienmarchte, <rs
+                        type="fn" role="recipient"><rs type="person" ref="#pe__dorothea_QGW_II_I_313"
+                           >Torathen <roleName type="kin"
+                              corresp="#pe__wilhelm_bei_dem_brunnen_QGW_II_I_289"
+                              ><add>nichte</add></roleName></rs> und <rs type="person"
+                           ref="#pe__anna_b_QGW_II_I_313">Annen<roleName type="kin"
+                              corresp="#pe__wilhelm_bei_dem_brunnen_QGW_II_I_289"
+                              ><add>nichte</add></roleName></rs></rs>, seine beiden Baumgärten ze
+                     Alttunawe und das haus dabei 13. seinem <rs type="person"
+                        ref="#pe__heinrich_bei_dem_brunnen_QGW_II_I_313"><roleName type="kin"
+                           corresp="#pe__wilhelm_bei_dem_brunnen_QGW_II_I_289">Bruder</roleName>
+                        Hainreichen</rs> dritthalb phunt dn. geltes, die da ligent auf des Meller
+                     haus, des münzer, bei der Pognerstrasse 14. <rs type="person"
+                        ref="#pe__anna_a_QGW_II_I_313">seiner <roleName type="kin"
+                           corresp="#pe__wilhelm_bei_dem_brunnen_QGW_II_I_289">Tochter</roleName>
+                        Annen</rs> 2 Joch Weingarten ze Otachrinne, 1 ½ Joch Weingarten an dem
+                     Sunnperge zwischen Grinzingen und To/eblich.</rs> Im Falle seines und seiner
+                  Frau Ablebens soll <rs type="fn" role="recipient"> die Tochter beide Weingärten
+                     zur gesammten Erbschaftsmasse schlagen und diese mit <rs type="person"
+                        ref="#pe__hermann_bei_dem_brunnen_QGW_II_I_805"> ihrem <roleName type="kin"
+                           corresp="#pe__anna_a_QGW_II_I_313">Bruder</roleName> Hermann</rs></rs>
+                  theilen. 15. Er schafft <rs type="fn" role="recipient"><rs type="person"
+                        ref="#pe__elisabeth_QGW_II_I_313">seiner <roleName type="kin"
+                           corresp="#pe__wilhelm_bei_dem_brunnen_QGW_II_I_289">Schwester</roleName>
+                        Elsbeten, Jansen <roleName type="kin"
+                           corresp="#pe__johann_stainpeckh_QGW_II_I_698">hausfrauen</roleName> des
+                        Stainpekchen</rs>, seine Mühle dacz Porcz 16. seinem <rs type="person"
+                        ref="#pe__reimprecht_bei_dem_brunnen_QGW_II_I_434"><roleName type="kin"
+                           corresp="#pe__wilhelm_bei_dem_brunnen_QGW_II_I_289">Oheim</roleName>
+                        Reimprechten</rs> 40 Tagwerke wismades und sein Holz an dem Gluthaven 17.
+                        <rs type="person" ref="#pe__walter_bei_dem_brunnen_QGW_II_I_313"> seinem
+                           <roleName type="kin" corresp="#pe__wilhelm_bei_dem_brunnen_QGW_II_I_289"
+                           >Oheim</roleName> Walthern</rs> 2 Fuder Wein aus seinem Weingarten ze
+                     Otachrinne 18. <rs type="person" ref="#pe__martin_QGW_II_I_313"> seinem
+                           <roleName type="kin" corresp="#pe__wilhelm_bei_dem_brunnen_QGW_II_I_289"
+                           >geswein</roleName> Merten </rs>seinen swartzen vollen 19. ½ lb dn.
+                     geltes purchrechtes, das da leit auf einem prottisch an dem Hohenmarchte, gegen
+                     dem Vischhof uber, in Unsers Herren Gotes Leichnam zeche</rs>. 20. Er
+                     <triggerstring n="disp">ordnet die Bezahlung seiner Schulden an</triggerstring>. 21.
+                  Zur Gesammterbin seines übrigbleibenden Gutes <triggerstring n="disp"
+                     >setzt</triggerstring> er <rs type="fn" role="recipient">seine Frau</rs> ein. 22.
+                  Sollte sich diese nochmals verheiraten, so soll sie ihre Morgengabe von 400 lb dn.
+                  und dazu 200 lb dn. erhalten. Zu Geschäftsvollstreckern und zu Vormündern seiner
+                  Kinder <triggerstring n="disp">bestimmt</triggerstring> er <rs type="fn"
+                     role="recipient"><rs type="person"
+                        ref="#pe__weichart_bei_den_minderbruedern_QGW_II_I_118"><roleName
+                           type="title">hern</roleName> Weichard</rs> und <rs type="person"
+                        ref="#pe__ulrich_bei_den_minderbrueder_QGW_II_I_554"><roleName type="title"
+                           >hern</roleName> Ulreich bei den Minnern pru/edern</rs>, <rs
+                        type="person" ref="#pe__martin_QGW_II_I_313">seinen geswei Merten</rs>, <rs
+                        type="person" ref="#pe__johann_in_dem_strohof_QGW_II_I_330">Jans in dem
+                        Strohof</rs>, <rs type="person"
+                        ref="#pe__reimprecht_bei_dem_brunnen_QGW_II_I_434">Reimprecht pei dem
+                        Prunne</rs>. </rs></rs></p>
+         </div>
+         <div type="nota">
+            <p>Dorsual: Daz ist des Wilhalms Geschaeft bei dem prunnen 1347 29. Juni Wilhalms bey
+               dem prunnen geschaefft brief des datum an sannd Peter unnd Paulstag Nach Christi
+               gepurt anno 1347 </p>
+         </div>
+         <div type="lists">
+            <xi:include xmlns:xi="http://www.w3.org/2001/XInclude"
+               href="../../../../indices/placeList.xml" xpointer="element(/1/2/1/1)"/>
+            <xi:include xmlns:xi="http://www.w3.org/2001/XInclude"
+               href="../../../../indices/personList.xml" xpointer="element(/1/2/1/1)"/>
+            <xi:include xmlns:xi="http://www.w3.org/2001/XInclude"
+               href="../../../../indices/eventList.xml" xpointer="element(/1/2/1/1)"/>
+            <xi:include xmlns:xi="http://www.w3.org/2001/XInclude"
+               href="../../../../indices/orgList.xml" xpointer="element(/1/2/1/1)"/>
+         </div>
+      </body>
+   </text>
+</TEI>

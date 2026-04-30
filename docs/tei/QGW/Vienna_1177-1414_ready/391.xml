@@ -1,0 +1,113 @@
+<?xml version="1.0" encoding="UTF-8"?><!DOCTYPE TEI   SYSTEM "../../../schema/toolbox_full.dtd">
+<TEI xmlns="http://www.tei-c.org/ns/1.0" xmlns:cei="http://www.monasterium.net/NS/cei"
+      xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance">
+      <teiHeader>
+            <fileDesc>
+                  <titleStmt>
+                        <title>Tei version of 391 exported from monasterium.net </title>
+                  </titleStmt>
+                  <publicationStmt>
+                        <p/>
+                  </publicationStmt>
+                  <!--In Original: cei:front/cei:sourceDesc/cei:sourceDescRegest-->
+                  <sourceDesc>
+                        <bibl type="url"
+                              >https://www.monasterium.net/mom/AT-WStLA/HAUrk/391/charter</bibl>
+                        <bibl default="false" status="draft">Quellen zur Geschichte der Stadt Wien,
+                              Bd. II/1, Nr. 391 As published in HAUrk by Wiener Stadt- und
+                              Landesarchiv </bibl>
+                        <msDesc status="draft">
+                              <msIdentifier>
+                                    <repository>Wiener Stadt- und Landesarchiv</repository>
+                                    <idno>391</idno>
+                                    <altIdentifier type="old">
+                                          <idno>514562</idno>
+                                    </altIdentifier>
+                              </msIdentifier>
+                              <physDesc>
+                                    <sealDesc>
+                                          <seal>
+                                                <p>Das Siegel fehlt.</p>
+                                          </seal>
+                                    </sealDesc>
+                              </physDesc>
+                        </msDesc>
+                  </sourceDesc>
+            </fileDesc>
+            <encodingDesc>
+                  <projectDesc default="false">
+                        <p><label type="contentual-editing">Projekt Christina Lutter Stadt und
+                                    Gemeinschaft</label></p>
+                  </projectDesc>
+            </encodingDesc>
+            <profileDesc>
+                  <creation>
+                        <placeName>Wien</placeName>
+                        <date when="13510825">1351 VIII 25</date>
+                        <origDate instant="false">ze Wienne, des nechsten phinztags vor sand Giligen
+                              tage.</origDate></creation>
+            </profileDesc>
+      </teiHeader>
+      <facsimile>
+            <surface>
+                  <graphic
+                        url="http://images.monasterium.net/pics/AT-WStLA/HA-U/WStLA-HA-Urkunden_00391_r.jpg"
+                  />
+            </surface>
+            <surface>
+                  <graphic
+                        url="http://images.monasterium.net/pics/AT-WStLA/HA-U/WStLA-HA-Urkunden_00391_v.jpg"
+                  />
+            </surface>
+      </facsimile>
+      <text>
+            <body>
+                  <div type="abstract" resp="ks">
+                        <p>
+                              <rs type="event" ref="#ev__QGW_II_I_391"><rs type="fn" role="issuer"
+                                                ><rs type="person" ref="#pe__benedikt_QGW_II_I_191"
+                                                >Benedict, <roleName type="occ"
+                                                  corresp="#org__wien-schotten">amptman</roleName>
+                                                der Schotten gu/et ze Wienne</rs></rs>, <triggerstring
+                                          n="disp">bestätigt</triggerstring>, dass in seinem offenen
+                                    Gerichte der <rs type="fn" role="recipient"><rs type="person"
+                                                ref="#pe__jakob_poll_QGW_II_I_511">Wiener <roleName type="occ" corresp="#org__wien"
+                                                  >Bürger</roleName> Jacob der Polle</rs></rs> mit
+                                    Vorsprechen geklagt habe auf Niclas prantstat, des chaltsmides,
+                                    und auf die hofstat weingarten hinden daran, gelegen in der
+                                    Hierspeunt zenest Niclas prantstat des Hiernprechen , um 5 dn.
+                                    und 3 sh. dn. versessenes Burgrecht und die darauf mit Recht
+                                    ertheilten zwispilde. Er gibt dem Kläger die <rs type="fn"
+                                          role="other"><triggerstring n="fn">Vorsprechen</triggerstring>
+                                          <rs type="person" ref="#pe__otto_haekchl_QGW_II_I_391"
+                                                  ><add>Otten den Heklein</add></rs>
+                                          <add>und</add>
+                                          <rs type="person" ref="#pe__ulrich_halbemmer_QGW_II_I_412"
+                                                  ><add>Ulreichen den Halbemmer</add></rs></rs>
+                                    <rs type="fn" role="other"><rs type="person"
+                                                ref="#pe__otto_haekchl_QGW_II_I_391">Otten den
+                                                Heklein</rs> und <rs type="person"
+                                                ref="#pe__ulrich_halbemmer_QGW_II_I_412">Ulreichen
+                                                den Halbemmer</rs> als <triggerstring n="fn"
+                                                >Schätzleute</triggerstring></rs> mit und macht ihn
+                                    nach deren Aussage der Brandstatt und der Hofstatt
+                                    gewaltig.</rs>
+                        </p>
+                  </div>
+                  <div type="lists">
+                        <xi:include xmlns:xi="http://www.w3.org/2001/XInclude"
+                              href="../../../../indices/placeList.xml"
+                              xpointer="element(/1/2/1/1)"/>
+                        <xi:include xmlns:xi="http://www.w3.org/2001/XInclude"
+                              href="../../../../indices/personList.xml"
+                              xpointer="element(/1/2/1/1)"/>
+                        <xi:include xmlns:xi="http://www.w3.org/2001/XInclude"
+                              href="../../../../indices/eventList.xml"
+                              xpointer="element(/1/2/1/1)"/>
+                        <xi:include xmlns:xi="http://www.w3.org/2001/XInclude"
+                              href="../../../../indices/orgList.xml"
+                              xpointer="element(/1/2/1/1)"/>
+                  </div>
+            </body>
+      </text>
+</TEI>

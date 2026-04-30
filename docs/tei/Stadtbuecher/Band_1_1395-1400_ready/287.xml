@@ -1,0 +1,121 @@
+<?xml version="1.0" encoding="UTF-8"?><!DOCTYPE TEI SYSTEM "../../../schema/toolbox_full.dtd">
+<TEI xmlns="http://www.tei-c.org/ns/1.0" xmlns:cei="http://www.monasterium.net/NS/cei"
+   xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance">
+   <teiHeader>
+      <fileDesc>
+         <titleStmt>
+            <title>TEI-Version of 288</title>
+         </titleStmt>
+         <publicationStmt>
+            <p/>
+         </publicationStmt>
+         <sourceDesc default="false">
+            <bibl default="false" status="draft">
+               <title type="full"><title type="main">Die Wiener Stadtbücher 1395 -
+                     1430</title><title type="sub">Teil 1: 1395 - 1400</title></title>
+               <author>Wilhelm Brauneder</author>
+               <author>Gerhard Jaritz</author>
+               <pubPlace>Wien</pubPlace>
+               <pubPlace>Köln</pubPlace>
+               <publisher>Böhlau Verlag</publisher>
+            </bibl>
+            <msDesc status="draft">
+               <msIdentifier>
+                  <idno>288</idno>
+               </msIdentifier>
+               <physDesc/>
+            </msDesc>
+         </sourceDesc>
+      </fileDesc>     <encodingDesc>       <projectDesc>         <p><label type="contentual-editing">Projekt Christina Lutter Stadt und Gemeinschaft</label></p>       </projectDesc>     </encodingDesc>
+      <profileDesc>
+         <creation>
+            <date when="1398-08-23">1398 August 23</date>
+         </creation>
+      </profileDesc>
+   </teiHeader>
+   <text>
+      <body>
+         <div type="header">
+            <p>Geschäft des Hans Neytel</p>
+         </div>                   <div type="entry" resp="rs">
+            <p> pr. mü., 3 Einbr. Zg., Ma (Indez: Item gescheft Hans Neytel)<rs type="event"
+                  ref="#ev__StB_I_287">
+                  <rs type="fn" role="witness">An sand Bartholomes abend kom fur den rat <rs
+                        type="person" ref="#pe__georg_loniker_StB_I_287">Jorg der Loeniker <roleName
+                           type="kin" corresp="#pe__johann_loniker_StB_I_287"
+                           ><add>gepruder</add></roleName><roleName type="kin"
+                           corresp="#pe__kaspar_loniker_StB_I_287"
+                        ><add>gepruder</add></roleName></rs> und <rs type="person"
+                        ref="#pe__johann_loniker_StB_I_287">Hanns Loeniker <roleName type="kin"
+                           corresp="#pe__georg_loniker_StB_I_287"><add>gepruder</add></roleName>
+                        <roleName type="kin" corresp="#pe__kaspar_loniker_StB_I_287"
+                              ><add>gepruder</add></roleName></rs> und <rs type="person"
+                        ref="#pe__kaspar_loniker_StB_I_287">Kaspar Loeniker, all drey <roleName
+                           type="kin" corresp="#pe__johann_loniker_StB_I_287"
+                           >gepruder</roleName><roleName type="kin"
+                           corresp="#pe__georg_loniker_StB_I_287"
+                     ><add>gepruder</add></roleName></rs>, und habent webeyst und pracht mit erbern
+                     lewten ze rechter zeit, als si ze recht solten, mit <rs type="person"
+                        ref="#pe__peter_grueber_QGW_II_I_1674"><roleName type="title"
+                              ><add>erbern</add></roleName>Petrein dem Gruber</rs> und <rs
+                        type="person" ref="#pe__johann_von_ofen_QGW_II_I_1009"><roleName type="title"
+                              ><add>erbern</add></roleName>Hannsen von Ofen</rs>,</rs>
+                  <rs type="fn" role="issuer">daz geschefft, so <rs type="person"
+                        ref="#pe__johann_neitel_StB_I_287">ir <roleName type="kin"
+                           corresp="#pe__johann_loniker_StB_I_287">bruder</roleName>
+                        <roleName type="kin" corresp="#pe__georg_loniker_StB_I_287"
+                           ><add>bruder</add></roleName><roleName type="kin"
+                           corresp="#pe__kaspar_loniker_StB_I_287"><add>bruder</add></roleName> Hanns
+                           <roleName type="dead">selig </roleName>der Neytel</rs> getan hat.</rs>
+                  <rs type="fn" role="recipient">Also daz er <rs type="person"
+                        ref="#pe__johann_loniker_StB_I_287">in mitteinander </rs>
+                     <rs type="person" ref="#pe__georg_loniker_StB_I_287"><add>in
+                        mitteinander</add></rs>
+                     <rs type="person" ref="#pe__kaspar_loniker_StB_I_287"><add>in
+                        mitteinander</add></rs>geschafft hat sein zwen weingarten gelegen an dem
+                     Alzzekk, ledichleich irn frumen damit schaffen. Und darnach habent sy mit
+                     gutleichem willen unbetwungenleich zu in genomen in gleichen tayl <rs
+                        type="person" ref="#pe__kunigunde_StB_I_287">ir <roleName type="kin"
+                           corresp="#pe__johann_loniker_StB_I_287">muter</roleName>
+                        <roleName type="kin" corresp="#pe__georg_loniker_StB_I_287"
+                           ><add>muter</add></roleName>
+                        <roleName type="kin" corresp="#pe__kaspar_loniker_StB_I_287"
+                           ><add>muter</add></roleName>
+                        <roleName type="kin" corresp="#pe__johann_neitel_StB_I_287"
+                           ><add>muter</add></roleName>Chungunden</rs> und <rs type="person"
+                        ref="#pe__paul_StB_I_287">des egenanten Neytleins <roleName type="kin"
+                           corresp="#pe__johann_neitel_StB_I_287">swester kinder</roleName>Pawln</rs>
+                     und <rs type="person" ref="#pe__elisabeth_StB_I_287">Elspeten, die noch zu irn
+                        beschayden jarn nicht komen sind <roleName type="kin"
+                           corresp="#pe__johann_neitel_StB_I_287"><add>swester
+                           kinder</add></roleName></rs>, also daz die vorgenanten drey bruder und ir
+                     muter in gleichem tayl und die vorgenanten zway geschwistreyd ain tayl, der ir
+                     muter angepurd hiet, der vorgenanten weingarten sullen furbas ledichleichen
+                     haben mit solher underschaid, das <rs type="person"
+                        ref="#pe__katharina_StB_I_287"><roleName type="title">fraw</roleName> Katrey,
+                        des vorgenanten Neytleins <roleName type="kin"
+                           corresp="#pe__johann_neitel_StB_I_287">wittib</roleName></rs>, die
+                     egenanten zwen weingarten lesen und die nuczz daraus vesen sol und sol den
+                     vorgenanten erben zehen phunt Wienner phenning geben an alles vercziehen, als
+                     um daz geschefft die egenanten erbern leut mit irn trewn an aydes stat vor
+                     unser gesagt habend, als sy ze recht solten. Auch hat er in demselben seinem
+                     geschefft dem vorgenantem Jorgen, seinem bruder, besunderleich geschafft seinen
+                     weingarten gelegen in dem Mittern Hord ze nachst des Rinkler weingarten
+                     ledichleich an allen chrieg und hat in ledig lazzen der zehen phunt phenning,
+                     die er im weylent an demselben weingarten gegeben hat.</rs></rs> a) Danach
+               ge6trichenes ad. b) uno C) des vorgenanten Neytleins wittib am rechten Rand durch
+               Verweiszeichen einge- fügt. d) vorgenatem. </p>
+         </div>
+         <div type="lists">
+            <xi:include xmlns:xi="http://www.w3.org/2001/XInclude"
+               href="../../../../indices/placeList.xml" xpointer="element(/1/2/1/1)"/>
+            <xi:include xmlns:xi="http://www.w3.org/2001/XInclude"
+               href="../../../../indices/personList.xml" xpointer="element(/1/2/1/1)"/>
+            <xi:include xmlns:xi="http://www.w3.org/2001/XInclude"
+               href="../../../../indices/eventList.xml" xpointer="element(/1/2/1/1)"/>
+            <xi:include xmlns:xi="http://www.w3.org/2001/XInclude"
+               href="../../../../indices/orgList.xml" xpointer="element(/1/2/1/1)"/>
+         </div>
+      </body>
+   </text>
+</TEI>

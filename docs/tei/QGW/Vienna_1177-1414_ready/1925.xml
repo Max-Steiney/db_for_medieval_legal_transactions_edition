@@ -1,0 +1,69 @@
+<?xml version="1.0" encoding="UTF-8"?><!DOCTYPE TEI SYSTEM "../../../schema/toolbox_full.dtd"><TEI xmlns="http://www.tei-c.org/ns/1.0" xmlns:cei="http://www.monasterium.net/NS/cei" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance">
+   <teiHeader>
+      <fileDesc>
+         <titleStmt>
+            <title>Tei version of 1925 exported from monasterium.net </title>
+         </titleStmt>
+         <publicationStmt>
+            <p/>
+         </publicationStmt>
+         <!--In Original: cei:front/cei:sourceDesc/cei:sourceDescRegest-->
+         <sourceDesc>
+            <bibl>Quellen zur Geschichte der Stadt Wien, Bd. II/2, Nr. 1925 As published in HAUrk by
+               Wiener Stadt- und Landesarchiv </bibl>
+            <msDesc>
+               <msIdentifier>
+                  <repository>Wiener Stadt- und Landesarchiv</repository>
+                  <idno>1925</idno>
+                  <altIdentifier type="old">
+                     <idno>516130</idno>
+                  </altIdentifier>
+               </msIdentifier>
+               <msContents>
+                  <msItem>
+                     <listBibl>
+                        <bibl>Jahrbuch der kais. Kunstsamml. 16b, n° 13255 Regest.</bibl>
+                     </listBibl>
+                  </msItem>
+               </msContents>
+               <physDesc>
+                  <sealDesc>
+                     <seal>
+                        <p>Anhangendes Wappensiegel (Sava Fig. 65), roth u. Sch.</p>
+                     </seal>
+                  </sealDesc>
+               </physDesc>
+            </msDesc>
+         </sourceDesc>
+      </fileDesc>       <encodingDesc>          <projectDesc default="false">             <p><label type="contentual-editing">Projekt Christina Lutter Stadt und                   Gemeinschaft</label></p>          </projectDesc>       </encodingDesc>
+      <profileDesc>
+         <creation>
+            <placeName>Wiener-Neustadt</placeName>
+            <date when="14120727">1412 VII 27</date>
+            <origDate>Geben ze der Neunstat an mittichen nach sant Jacobs tag, nach Krists gepurd
+               1400 jar darnach in dem 12. jare. </origDate></creation>
+      </profileDesc>
+   </teiHeader>
+   <facsimile>
+      <surface>
+         <graphic url="http://images.monasterium.net/pics/AT-WStLA/HA-U/WStLA-HA-Urkunden_01925_r.jpg"/>
+      </surface>
+      <surface>
+         <graphic url="http://images.monasterium.net/pics/AT-WStLA/HA-U/WStLA-HA-Urkunden_01925_v.jpg"/>
+      </surface>
+   </facsimile>
+   <text>
+      <body>
+         <div type="abstract">
+            <p><rs type="event" ref="#ev__QGW_II_II_1925"><rs type="fn" role="issuer"><rs type="person" ref="#pe__ernst_herzog_von_oesterreich_QGW_II_I_1332">Herzog
+                        Ernst</rs></rs>
+                  <triggerstring n="disp">gibt</triggerstring> sein Haus zu Wien in dem Kampfgesslein, <rs type="event" ref="NULL">das er von <rs type="person" ref="#pe__johann_von_schotten_QGW_II_II_1925">Hannsen von Schotten <roleName type="occ" corresp="#org__wiener_neustadt"><add>Bürger</add></roleName></rs> gekauft hat</rs>, <rs type="fn" role="recipient">seinem Bürger in der Neunstat <rs type="person" ref="#pe__simon_zinngiesser_QGW_II_I_1609">Simon, dem <roleName type="prof">zingiesser</roleName></rs>, und seiner <rs type="person" ref="#pe__brigitta_QGW_II_II_1925"><roleName type="kin" corresp="#pe__simon_zinngiesser_QGW_II_I_1609">Hausfrau</roleName> Breiden</rs></rs>.</rs>
+            </p>
+         </div>
+         <div type="nota">
+            <p> d. d( ux) per m( agistrum) cam( ere) Stiklp( erger). </p>
+         </div>
+         <div type="lists"><xi:include xmlns:xi="http://www.w3.org/2001/XInclude" href="../../../../indices/placeList.xml" xpointer="element(/1/2/1/1)"/><xi:include xmlns:xi="http://www.w3.org/2001/XInclude" href="../../../../indices/personList.xml" xpointer="element(/1/2/1/1)"/><xi:include xmlns:xi="http://www.w3.org/2001/XInclude" href="../../../../indices/eventList.xml" xpointer="element(/1/2/1/1)"/><xi:include xmlns:xi="http://www.w3.org/2001/XInclude" href="../../../../indices/orgList.xml" xpointer="element(/1/2/1/1)"/></div>
+      </body>
+   </text>
+</TEI>

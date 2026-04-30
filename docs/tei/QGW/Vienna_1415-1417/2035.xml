@@ -1,0 +1,106 @@
+<?xml version="1.0" encoding="UTF-8"?><!DOCTYPE TEI SYSTEM "../../../schema/toolbox_full.dtd">
+<TEI xmlns="http://www.tei-c.org/ns/1.0" xmlns:cei="http://www.monasterium.net/NS/cei"
+   xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance">
+   <teiHeader>
+      <fileDesc>
+         <titleStmt>
+            <title>Tei version of 2035 exported from monasterium.net </title>
+         </titleStmt>
+         <publicationStmt>
+            <p/>
+         </publicationStmt>
+         <!--In Original: cei:front/cei:sourceDesc/cei:sourceDescRegest-->
+         <sourceDesc>
+            <bibl>Quellen zur Geschichte der Stadt Wien, Bd. II/2, Nr. 2035 As published in HAUrk by
+               Wiener Stadt- und Landesarchiv </bibl>
+            <msDesc>
+               <msIdentifier>
+                  <repository>Wiener Stadt- und Landesarchiv</repository>
+                  <idno>2035</idno>
+                  <altIdentifier type="old">
+                     <idno>516243</idno>
+                  </altIdentifier>
+               </msIdentifier>
+               <msContents>
+                  <msItem>
+                     <listBibl>
+                        <bibl>Jahrbuch der kais. Kunstsamml. 16b, n° 13345 Regest.[26]</bibl>
+                     </listBibl>
+                  </msItem>
+               </msContents>
+               <physDesc>
+                  <sealDesc>
+                     <seal>
+                        <p>Die Siegel fehlen.</p>
+                     </seal>
+                  </sealDesc>
+               </physDesc>
+            </msDesc>
+         </sourceDesc>
+      </fileDesc>
+      <encodingDesc>
+         <projectDesc default="false">
+            <p><label type="contentual-editing">Projekt Christina Lutter Stadt und
+                  Gemeinschaft</label></p>
+         </projectDesc>
+      </encodingDesc>
+      <profileDesc>
+         <creation>
+            <date when="14160503">1416 V 03</date>
+            <origDate>Der do geben ist nach Cristigepurt 1400 jar und darnach in dem 16. jar, der
+               dominiken, als man singet Misericordia domini. </origDate></creation>
+      </profileDesc>
+   </teiHeader>
+   <facsimile>
+      <surface>
+         <graphic
+            url="http://images.monasterium.net/pics/AT-WStLA/HA-U/WStLA-HA-Urkunden_02035_r.jpg"/>
+      </surface>
+      <surface>
+         <graphic
+            url="http://images.monasterium.net/pics/AT-WStLA/HA-U/WStLA-HA-Urkunden_02035_v.jpg"/>
+      </surface>
+   </facsimile>
+   <text>
+      <body>
+         <div type="abstract">
+            <p><rs type="event" ref="#ev__QGW_II_II_2035">
+                  <rs type="fn" role="issuer"><rs type="person"
+                        ref="#pe__matthias_fluegel_QGW_II_II_2035"><roleName type="occ"
+                           corresp="#org__kuttenberg"><add>münzerschopfen</add></roleName>Mathes
+                        Flügel</rs>,<rs type="person" ref="#pe__lukas_muenczer_QGW_II_II_2035"
+                           ><roleName type="occ" corresp="#org__kuttenberg"
+                           ><add>münzerschopfen</add></roleName>Lucas Münczer</rs>, <rs
+                        type="person" ref="#pe__wenzel_taepler_QGW_II_II_1909"><roleName type="occ"
+                           corresp="#org__kuttenberg"><add>münzerschopfen</add></roleName>Wenczlaw
+                        Topler</rs>, <rs type="person" ref="#pe__burkhard_rosental_QGW_II_II_2035"
+                        >Purkart von Rosental, <roleName type="occ" corresp="#org__kuttenberg"
+                           >münzerschopfen</roleName> in den smiden</rs>, <rs type="person"
+                        ref="#pe__hanmann_alder_QGW_II_II_1909"><roleName type="occ"
+                           corresp="#org__kuttenberg"><add>schopfen</add></roleName>Hanman
+                     Alder</rs>, <rs type="person" ref="#pe__johann_piesk_QGW_II_II_2035"><roleName
+                           type="occ" corresp="#org__kuttenberg"><add>schopfen</add></roleName>Hannus
+                        von Piesk</rs>, <rs type="person" ref="#pe__johann_swab_QGW_II_II_1974"
+                        >Hannus Swab, <roleName type="occ" corresp="#org__kuttenberg"
+                           >schopfen</roleName> in dem preghaus</rs>, bestätigen</rs>, dass <rs
+                     type="person" ref="#pe__heinrich_flemming_QGW_II_II_2035">Heinreich Flemming,
+                        <roleName type="prof">goltsmid</roleName> auf dem perg zum Chutten</rs>, ein
+                  vierteil einer smiden, gelegen auf dem königlichen Münzhofe, genant in der Prager
+                  smiden, um 50 schock grosser gueter Prager pfenning von <rs type="person"
+                     ref="#pe__paul_meiler_QGW_II_II_2035">Paul Meiler, etwenn <roleName type="occ"
+                        corresp="#org__kuttenberg">perkschreiber</roleName> des pergs zun
+                     Chutten</rs> , gekauft habe. </rs></p>
+         </div>
+         <div type="lists">
+            <xi:include xmlns:xi="http://www.w3.org/2001/XInclude"
+               href="../../../../indices/placeList.xml" xpointer="element(/1/2/1/1)"/>
+            <xi:include xmlns:xi="http://www.w3.org/2001/XInclude"
+               href="../../../../indices/personList.xml" xpointer="element(/1/2/1/1)"/>
+            <xi:include xmlns:xi="http://www.w3.org/2001/XInclude"
+               href="../../../../indices/eventList.xml" xpointer="element(/1/2/1/1)"/>
+            <xi:include xmlns:xi="http://www.w3.org/2001/XInclude"
+               href="../../../../indices/orgList.xml" xpointer="element(/1/2/1/1)"/>
+         </div>
+      </body>
+   </text>
+</TEI>

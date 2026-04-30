@@ -1,0 +1,77 @@
+<?xml version="1.0" encoding="UTF-8"?><!DOCTYPE TEI SYSTEM "../../../schema/toolbox_full.dtd">
+<TEI xmlns="http://www.tei-c.org/ns/1.0" xmlns:cei="http://www.monasterium.net/NS/cei"
+   xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance">
+   <teiHeader>
+      <fileDesc>
+         <titleStmt>
+            <title>TEI-Version of 495</title>
+         </titleStmt>
+         <publicationStmt>
+            <p/>
+         </publicationStmt>
+         <sourceDesc default="false">
+            <bibl default="false" status="draft">
+               <title type="full"><title type="main">Die Wiener Stadtbücher 1395 -
+                     1430</title><title type="sub">Teil 1: 1395 - 1400</title></title>
+               <author>Wilhelm Brauneder</author>
+               <author>Gerhard Jaritz</author>
+               <pubPlace>Wien</pubPlace>
+               <pubPlace>Köln</pubPlace>
+               <publisher>Böhlau Verlag</publisher>
+            </bibl>
+            <msDesc status="draft">
+               <msIdentifier>
+                  <idno>495</idno>
+               </msIdentifier>
+               <physDesc/>
+            </msDesc>
+         </sourceDesc>
+      </fileDesc>     <encodingDesc>       <projectDesc>         <p><label type="contentual-editing">Projekt Christina Lutter Stadt und Gemeinschaft</label></p>       </projectDesc>     </encodingDesc>
+      <profileDesc>
+         <creation>
+            <date when="1399-12-16">1399 Dezember 16</date>
+         </creation>
+      </profileDesc>
+   </teiHeader>
+   <text>
+      <body>
+         <div type="header">
+            <p> Geschäft der Kunigunde, Gattin des Meinhard Ledrer </p>
+         </div>                   <div type="entry" resp="rs">
+            <p> pr. mü., Einbr. 2 Zg. Ma (Index: Item geschefft G ) Kunigunden Meinharts des Ledrer
+               hausfraw) (fol.8lv) <rs type="event" ref="#ev__StB_I_495">Dez nagsten erichtags nach
+                  sand Lucein tag <rs type="fn" role="witness">kam fur den rat <rs type="person"
+                        ref="#pe__meinhard_lederer_StB_I_15">Meinhart der <roleName type="prof"
+                           cert="high">Ledrer</roleName></rs> und hat da beweyst mit den erbern
+                     lewten zu rechter zeit, als er ze recht scholt, mit <rs type="person"
+                        ref="#pe__ruediger_guelher_StB_I_15"><roleName type="title"
+                           ><add>erbern</add></roleName>Ruegern dem Guelher</rs> und mit <rs
+                        type="person" ref="#pe__georg_faerber_StB_I_495"><roleName type="title"
+                              ><add>erbern</add></roleName>Jorgen dem <roleName type="prof"
+                           cert="high">Verber</roleName></rs></rs>, <rs type="fn" role="issuer">daz
+                     geschefft, so <rs type="person" ref="#pe__kunigunde_StB_I_495">sein <roleName
+                           type="kin" corresp="#pe__meinhard_lederer_StB_I_15">hawsfraw</roleName>
+                        Kunigund, der got <roleName type="dead">gnad</roleName></rs>, an irn lesten
+                     zeiten getan hat</rs>. <rs type="fn" role="recipient">Also das si geschafft hat
+                        <rs type="person" ref="#pe__meinhard_lederer_StB_I_15">dem egenanten
+                        Meinhartn, irm <roleName type="kin" corresp="#pe__kunigunde_StB_I_495"
+                           >wirt</roleName></rs>, all ir hab, erbgut und varundgut, daz si mitein-
+                     ander mit gesambter hannt gechawfft habent, ledichleich allen seinen frummen
+                     domit ze schaffen, verchawffen, verseczen, schaffen, machen und geben, wem er
+                     welle, an allen irsal.</rs> Als darumb die obgenanten erbern lewt mit irn trewn
+                  an aydes stat vor offem rat habent gesagt, als si zu recht scholten.</rs> a
+               geschefft über der Zeile eingefügt. </p>
+         </div>
+         <div type="lists">
+            <xi:include xmlns:xi="http://www.w3.org/2001/XInclude"
+               href="../../../../indices/placeList.xml" xpointer="element(/1/2/1/1)"/>
+            <xi:include xmlns:xi="http://www.w3.org/2001/XInclude"
+               href="../../../../indices/personList.xml" xpointer="element(/1/2/1/1)"/>
+            <xi:include xmlns:xi="http://www.w3.org/2001/XInclude"
+               href="../../../../indices/eventList.xml" xpointer="element(/1/2/1/1)"/>
+            <xi:include xmlns:xi="http://www.w3.org/2001/XInclude"
+               href="../../../../indices/orgList.xml" xpointer="element(/1/2/1/1)"/>
+         </div>
+      </body>
+   </text>
+</TEI>

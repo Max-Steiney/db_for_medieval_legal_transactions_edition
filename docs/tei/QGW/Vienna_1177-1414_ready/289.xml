@@ -1,0 +1,131 @@
+<?xml version="1.0" encoding="UTF-8"?><!DOCTYPE TEI   SYSTEM "../../../schema/toolbox_full.dtd">
+<TEI xmlns="http://www.tei-c.org/ns/1.0" xmlns:cei="http://www.monasterium.net/NS/cei"
+   xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance">
+   <teiHeader>
+      <fileDesc>
+         <titleStmt>
+            <title>Tei version of 289 exported from monasterium.net </title>
+         </titleStmt>
+         <publicationStmt>
+            <p/>
+         </publicationStmt>
+         <!--In Original: cei:front/cei:sourceDesc/cei:sourceDescRegest-->
+         <sourceDesc>
+            <bibl type="url">https://www.monasterium.net/mom/AT-WStLA/HAUrk/289/charter</bibl>
+            <bibl default="false" status="draft">Quellen zur Geschichte der Stadt Wien, Bd. II/1,
+               Nr. 289 As published in HAUrk by Wiener Stadt- und Landesarchiv </bibl>
+            <msDesc status="draft">
+               <msIdentifier>
+                  <repository>Wiener Stadt- und Landesarchiv</repository>
+                  <idno>289</idno>
+                  <altIdentifier type="old">
+                     <idno>514458</idno>
+                  </altIdentifier>
+               </msIdentifier>
+               <msContents>
+                  <msItem>
+                     <listBibl default="false">
+                        <bibl default="false" status="draft">Camesina in Mitth. des
+                           Alterthumsvereines 12, 19.</bibl>
+                     </listBibl>
+                  </msItem>
+               </msContents>
+               <physDesc>
+                  <sealDesc>
+                     <seal>
+                        <p>Vier anhangende Siegel, grün u. K.: 1., 2. rund, 3. spitzoval, 4.
+                           viereckig.</p>
+                     </seal>
+                  </sealDesc>
+               </physDesc>
+            </msDesc>
+         </sourceDesc>
+      </fileDesc>
+      <encodingDesc>
+         <projectDesc default="false">
+            <p><label type="contentual-editing">Projekt Christina Lutter Stadt und
+                  Gemeinschaft</label></p>
+         </projectDesc>
+      </encodingDesc>
+      <profileDesc>
+         <creation>
+            <placeName>Wien</placeName>
+            <date when="13450323">1345 III 23</date>
+            <origDate instant="false">ze Wienne, des mittichens in der Antloz/zwochen an dem
+               heiligen Antloz/zabent.</origDate></creation>
+      </profileDesc>
+   </teiHeader>
+   <facsimile>
+      <surface>
+         <graphic
+            url="http://images.monasterium.net/pics/AT-WStLA/HA-U/WStLA-HA-Urkunden_00289_r.jpg"/>
+      </surface>
+      <surface>
+         <graphic
+            url="http://images.monasterium.net/pics/AT-WStLA/HA-U/WStLA-HA-Urkunden_00289_v.jpg"/>
+      </surface>
+   </facsimile>
+   <text>
+      <body>
+         <div type="abstract" resp="lp">
+            <p><rs type="event" ref="#ev__QGW_II_I_289"><rs type="fn" role="issuer"><rs type="person"
+                        ref="#pe__dietrich_urbetsch_QGW_II_I_950">Dietreich der Urbaetsch</rs></rs>
+                  <triggerstring n="disp">schafft</triggerstring>
+                  <rs type="fn" role="other"><triggerstring n="fn">gemäss einem
+                        <add>Versprechen</add></triggerstring>
+                     <rs type="person" ref="#pe__gerburg_QGW_II_I_289">seiner <roleName type="dead"
+                           >verstorbenen</roleName>
+                        <roleName type="kin" corresp="#pe__dietrich_urbetsch_QGW_II_I_950"
+                           >Mutter</roleName> Gerwirg</rs>
+                     <triggerstring n="disp">gegebenen Versprechen</triggerstring></rs>
+                  <rs type="fn" role="other"><triggerstring n="fn">mit Willen</triggerstring>
+                     <rs type="person" ref="#pe__elisabeth_QGW_II_I_386">seiner <roleName type="kin"
+                           corresp="#pe__dietrich_urbetsch_QGW_II_I_950">Frau</roleName> Elspet</rs>
+                     und seiner Erben</rs>, sowie <rs type="fn" role="other"><triggerstring n="fn">mit
+                        Handen</triggerstring>
+                     <rs type="person" ref="#pe__johann_greiffe_QGW_II_I_390">seines <roleName
+                           type="title">Grundherrn</roleName> des <roleName type="title"
+                           >Ritters</roleName>
+                        <roleName type="title">hern</roleName> Jansen des Greifen</rs></rs> 6 lb dn.
+                  geltes ewiges purchrechtes ( auf hern Hermannes haus, der Ruedolfinne enenchel von
+                  Sand Polten, gelegen an dem Chienmarkcht zenaest hern Hermanns haus des
+                  Snaetzleins, da er selber ietzund inne gesessen ist, 4 lb dn ., und auf des
+                  Huetstokches haus, des satler in der Wiltwercherstrasse, 2 lb dn.) zu <rs
+                     type="fn" role="recipient"><rs type="org"
+                        ref="#org__wien-st_peter-kapelle_st_valentin-messe_urbetsch">einer ewigen
+                        Messe in die Kapelle hinz sand Peter auf sand Valenteins alter</rs></rs>,
+                  mit der Bestimmung, dass die Gült <rs type="fn" role="recipient">dem <rs
+                        type="person" ref="#pe__leb_von_pulkau_QGW_II_I_289"><roleName type="occ"
+                           corresp="#org__wien-st_peter-kapelle_st_valentin">Kaplan</roleName> der
+                        Kapelle <roleName type="title">hern</roleName> Leben von Pulka</rs></rs>
+                  geleistet werde, der sie <rs type="fn" role="recipient">dem <rs type="person"
+                        ref="#pe__niklas_QGW_II_I_289"><roleName type="prof">Priester</roleName>
+                        <roleName type="title">hern</roleName> Nicla</rs></rs> weiterzugeben
+                  habe.</rs></p>
+         </div>
+         <div type="seal">
+            <p><rs type="event" ref="#ev__QGW_II_I_289"><rs type="fn" role="witness">Besiegelt mit
+                     den Siegeln: 1. <rs type="person" ref="#pe__dietrich_urbetsch_QGW_II_I_950">des
+                        Ausstellers</rs>, 2. <rs type="person" ref="#pe__johann_greiffe_QGW_II_I_390"
+                        >des Grundherrn</rs>, 3. <rs type="person" ref="#pe__simon_QGW_II_I_290"
+                           ><roleName type="title">hern</roleName> Simons, <roleName type="occ"
+                           corresp="#org__wien-st_stephan">chormaister</roleName> dacz sand Stephan
+                        ze Wienne</rs>, 4. <rs type="person"
+                        ref="#pe__wilhelm_bei_dem_brunnen_QGW_II_I_289">des <roleName type="kin"
+                           corresp="#pe__dietrich_urbetsch_QGW_II_I_950">Oheims</roleName> des
+                        Ausstellers <roleName type="title">hern</roleName> Wilhalms bei dem
+                        Prunne</rs>.</rs></rs></p>
+         </div>
+         <div type="lists">
+            <xi:include xmlns:xi="http://www.w3.org/2001/XInclude"
+               href="../../../../indices/placeList.xml" xpointer="element(/1/2/1/1)"/>
+            <xi:include xmlns:xi="http://www.w3.org/2001/XInclude"
+               href="../../../../indices/personList.xml" xpointer="element(/1/2/1/1)"/>
+            <xi:include xmlns:xi="http://www.w3.org/2001/XInclude"
+               href="../../../../indices/eventList.xml" xpointer="element(/1/2/1/1)"/>
+            <xi:include xmlns:xi="http://www.w3.org/2001/XInclude"
+               href="../../../../indices/orgList.xml" xpointer="element(/1/2/1/1)"/>
+         </div>
+      </body>
+   </text>
+</TEI>

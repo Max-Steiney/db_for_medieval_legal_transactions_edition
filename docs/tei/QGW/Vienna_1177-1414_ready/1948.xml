@@ -1,0 +1,82 @@
+<?xml version="1.0" encoding="UTF-8"?><!DOCTYPE TEI SYSTEM "../../../schema/toolbox_full.dtd"><TEI xmlns="http://www.tei-c.org/ns/1.0" xmlns:cei="http://www.monasterium.net/NS/cei" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance">
+   <teiHeader>
+      <fileDesc>
+         <titleStmt>
+            <title>Tei version of 1948 exported from monasterium.net </title>
+         </titleStmt>
+         <publicationStmt>
+            <p/>
+         </publicationStmt>
+         <!--In Original: cei:front/cei:sourceDesc/cei:sourceDescRegest-->
+         <sourceDesc>
+            <bibl>Quellen zur Geschichte der Stadt Wien, Bd. II/2, Nr. 1948 As published in HAUrk by
+               Wiener Stadt- und Landesarchiv </bibl>
+            <msDesc>
+               <msIdentifier>
+                  <repository>Wiener Stadt- und Landesarchiv</repository>
+                  <idno>1948</idno>
+                  <altIdentifier type="old">
+                     <idno>516156</idno>
+                  </altIdentifier>
+               </msIdentifier>
+               <msContents>
+                  <msItem>
+                     <listBibl>
+                        <bibl>Wiedemann in den Mitth. des Alterthumsvereines 32, 58 Regest.</bibl>
+                     </listBibl>
+                  </msItem>
+               </msContents>
+               <physDesc>
+                  <sealDesc>
+                     <seal>
+                        <p>Drei anhangende Siegel, 1. grün u. K., spitzoval, 2. spitzoval, 3. grün
+                           u. Sch.</p>
+                     </seal>
+                  </sealDesc>
+               </physDesc>
+            </msDesc>
+         </sourceDesc>
+      </fileDesc>       <encodingDesc>          <projectDesc default="false">             <p><label type="contentual-editing">Projekt Christina Lutter Stadt und                   Gemeinschaft</label></p>          </projectDesc>       </encodingDesc>
+      <profileDesc>
+         <creation>
+            <placeName>Wien</placeName>
+            <date when="14130526">1413 V 26</date>
+            <origDate>zu Wienn, des nachsten freitags nach sand Urbans tag.</origDate></creation>
+      </profileDesc>
+   </teiHeader>
+   <facsimile>
+      <surface>
+         <graphic url="http://images.monasterium.net/pics/AT-WStLA/HA-U/WStLA-HA-Urkunden_01948_r.jpg"/>
+      </surface>
+      <surface>
+         <graphic url="http://images.monasterium.net/pics/AT-WStLA/HA-U/WStLA-HA-Urkunden_01948_v.jpg"/>
+      </surface>
+   </facsimile>
+   <text>
+      <body>
+         <div type="abstract">
+            <p>
+               <rs type="event" ref="#ev__QGW_II_II_1948"><rs type="fn" role="issuer"><rs type="person" ref="#pe__agnes_schekchin_QGW_II_II_1948">Swester Agnes die
+                        Schekchinn, <roleName type="occ" corresp="#org__wien-st_jakob_auf_der_huelben">maisterin</roleName> dacz
+                        sand Jacob auf der Hulben ze Wienn</rs>, und der <rs type="org" ref="#org__wien-st_jakob_auf_der_huelben">convent gemain daselbs</rs></rs>
+                  <triggerstring n="disp">verkaufen</triggerstring>
+                  <rs type="fn" role="other"><triggerstring n="fn">mit Handen</triggerstring> ihres <rs type="person" ref="#pe__andreas_ris_QGW_II_I_1477"><roleName type="title">Bergherrn</roleName> Andres des Rysen</rs></rs> 3 lb dn. gelts
+                  purkchrechts (ablösbar) auf 1½ Joch Weingarten, gelegen an dem Hungerperg zenechst
+                  dem weingarten, der weilent hern Christoffern des Syrfeier gewesen ist , von dem
+                  man 3 sh. dn. für Berg- und Voitrecht dient, zu <rs type="person" ref="#pe__konrad_QGW_II_II_1948"><roleName type="title">hern</roleName>
+                     Chonrats, hern Hermans sun von Sand Polten</rs>
+                  <rs type="fn" role="recipient"><rs type="org" ref="#org__wien-st_jakob_auf_der_huelben-messe_konrad_von_st_poelten">jartag</rs></rs>, um [ 10] 24 lb dn.,
+                     <rs type="event" ref="NULL">für welche 3 lb dn. gelts von Hannsen des Ramsauer
+                     und Dorothen, seiner hausfraun, haus, gelegen inderthalb Stubentor zu Wienn
+                     zenechst des egenanten Andres haus des Rysen , abgelöst worden waren</rs>.</rs>
+            </p>
+         </div>
+         <div type="seal">
+            <p><rs type="event" ref="#ev__QGW_II_II_1948"><rs type="fn" role="witness">Besiegelt mit
+                     den Siegeln der <rs type="person" ref="#pe__agnes_schekchin_QGW_II_II_1948">Meisterin</rs>, des <rs type="org" ref="#org__wien-st_jakob_auf_der_huelben">Conventes</rs> und des <rs type="person" ref="#pe__andreas_ris_QGW_II_I_1477">Bergherrn</rs>.</rs></rs>
+            </p>
+         </div>
+         <div type="lists"><xi:include xmlns:xi="http://www.w3.org/2001/XInclude" href="../../../../indices/placeList.xml" xpointer="element(/1/2/1/1)"/><xi:include xmlns:xi="http://www.w3.org/2001/XInclude" href="../../../../indices/personList.xml" xpointer="element(/1/2/1/1)"/><xi:include xmlns:xi="http://www.w3.org/2001/XInclude" href="../../../../indices/eventList.xml" xpointer="element(/1/2/1/1)"/><xi:include xmlns:xi="http://www.w3.org/2001/XInclude" href="../../../../indices/orgList.xml" xpointer="element(/1/2/1/1)"/></div>
+      </body>
+   </text>
+</TEI>

@@ -1,0 +1,165 @@
+<?xml version="1.0" encoding="UTF-8"?><!DOCTYPE TEI SYSTEM "../../../schema/toolbox_full.dtd">
+<TEI xmlns="http://www.tei-c.org/ns/1.0" xmlns:cei="http://www.monasterium.net/NS/cei"
+   xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance">
+   <teiHeader>
+      <fileDesc>
+         <titleStmt>
+            <title>TEI-Version of 624</title>
+         </titleStmt>
+         <publicationStmt>
+            <p/>
+         </publicationStmt>
+         <sourceDesc default="false">
+            <bibl default="false" status="draft">
+               <title type="full"><title type="main">Die Wiener Stadtbücher 1395 -
+                     1430</title><title type="sub">Teil 1: 1395 - 1400</title></title>
+               <author>Wilhelm Brauneder</author>
+               <author>Gerhard Jaritz</author>
+               <pubPlace>Wien</pubPlace>
+               <pubPlace>Köln</pubPlace>
+               <publisher>Böhlau Verlag</publisher>
+            </bibl>
+            <msDesc status="draft">
+               <msIdentifier>
+                  <idno>624</idno>
+               </msIdentifier>
+               <physDesc/>
+            </msDesc>
+         </sourceDesc>
+      </fileDesc>
+      <encodingDesc>
+         <projectDesc>
+            <p><label type="contentual-editing">Projekt Christina Lutter Stadt und
+                  Gemeinschaft</label></p>
+         </projectDesc>
+      </encodingDesc>
+      <profileDesc>
+         <creation>
+            <date when="1400-12-23">1400 Dezember 23</date>
+         </creation>
+      </profileDesc>
+   </teiHeader>
+   <text>
+      <body>
+         <div type="header">
+            <p>Geschäft der Katharina, Witwe des Christian von Strazz</p>
+         </div>
+         <div type="entry" resp="rs">
+            <p> pr. sehr. Einbr. 2 Zg., Sa (Indez: Item gescheft Kathrein Kristans witib von Strazz)
+                  <rs type="event" ref="#ev__StB_I_624">Des nechsten phincztags vor dem weichnacht
+                  tag <rs type="fn" role="witness">kom fur den rat <rs type="person"
+                        ref="#pe__andreas_raabser_StB_I_318">Andre der Raczger</rs> und hat da
+                     beweist mit den zwain erbern mannen, mit <rs type="person"
+                        ref="#pe__johann_sneberger_StB_I_624"><roleName type="title"
+                           ><add>erber</add></roleName>Hannsen dem Sneberger</rs> und mit <rs
+                        type="person" ref="#pe__friedrich_seiler_StB_I_303"><roleName type="title"
+                              ><add>erber</add></roleName>Fridreichen dem <roleName type="prof"
+                           cert="unknown">Sayler</roleName></rs>, zu rechter zeyt, als er ze recht
+                     sold,</rs>
+                  <rs type="fn" role="issuer">das geschefft, so <rs type="person"
+                        ref="#pe__katharina_StB_I_624"><roleName type="title">fraw</roleName> Kathrey
+                           <roleName type="dead">selig</roleName>, <roleName type="kin"
+                           corresp="#pe__christian_von_strass_StB_I_624"><add>witib</add></roleName>
+                        <rs type="person" ref="#pe__christian_von_strass_StB_I_624">Christanns
+                              <roleName type="dead">witib</roleName> von Strazz</rs></rs>, an iren
+                     lesten zeyten getan hat, als es an ainer zedel in offem rat gelesen und verhort
+                     war, und lawtet, als hernach geschriben stet.</rs> Von erst schaff ich <rs
+                     type="fn" role="recipient"><rs type="fn" role="transactiongood_I">10 phunt
+                           phenning<add>von den 20 phunt dn., do ich umb geben hab meinen weingarten
+                           zu Sufring und haizzet der Zeuner</add></rs>
+                     <rs type="person" ref="#pe__andreas_StB_I_624"><roleName type="title"
+                           >pruder</roleName> Andren hincz den Predigern</rs></rs> von den 20 phunt
+                  dn., do ich umb geben hab meinen weingarten zu Sufring und haizzet der Zeuner. Und
+                  schaff die andern <rs type="fn" role="recipient"><rs type="fn"
+                        role="transactiongood_I">10 lb. dn. von denselben 20 phunden</rs>
+                     <rs type="person" ref="#pe__matthias_StB_I_624">meinem <roleName type="kin"
+                           corresp="#pe__katharina_StB_I_624">gevatern</roleName> dem Mathes, <rs
+                           type="person" ref="#pe__hartmann_StB_I_624">des Hartmans</rs>
+                        <roleName type="kin" corresp="#pe__hartmann_StB_I_624"
+                     >aydem</roleName></rs></rs>, das er dieselben dahin geb, als ich mit im
+                  geschafft hab. Ich schaff auch <rs type="fn" role="recipient"><rs type="org"
+                        ref="#org__wien-st_klara-messe_von_strass_christian_und_katharina">den frawn
+                        hincz Sand Chlarn</rs>
+                     <rs type="fn" role="transactiongood_I">12 lb. dn. auf meinem weingarten ze
+                        Surring pey der kirchen und haist der weingarten der
+                  Harnungzperig</rs></rs>, das dieselben frawn alle jar mir pegen einen jartag ze
+                  trost meiner sel und meins wirts sel des obgenanten Christans und allen gelaubigen
+                  selen , und <rs type="fn" role="recipient"><rs type="fn" role="transactiongood_I"
+                        >2 lb.<add> auch auf dem weingarten</add></rs>
+                     <rs type="org" ref="#org__wien-karmeliter">hincz den Weisen prudern hincz dem
+                        paw</rs> auch auf dem weingarten</rs>. Ich schaff auch <rs type="fn"
+                     role="recipient"><rs type="fn" role="transactiongood_I">auf demselben
+                        weingarten 2 lb. dn.</rs>
+                     <rs type="org" ref="#org__wien-st_stephan">hincz Sand Stephan zu dem
+                     paw</rs></rs>. Ich schaff auch, wann man denselben weingarten verchaufft und
+                  das geschefft darauf ausricht, swas denn da uber wirt, das sol man geben <rs
+                     type="org" ref="#org__wien-buergerspital">armen lewten in das spital</rs> von
+                  handen ze handen. Ich schaff auf <rs type="fn" role="recipient"><rs type="fn"
+                        role="transactiongood_I">meinen weinenn den dreiling von Gumpendorf</rs>
+                     <rs type="org" ref="#org__wien-st_hieronymus">den frawn hincz Sand
+                        Jeronimen</rs></rs>. Ich schaff den dreiling von Surring umb ein Romfart.
+                  Ich schaff <rs type="fn" role="recipient">auf dem klainen vesslein meinem
+                     peichtiger <rs type="fn" role="transactiongood_I">2 lb. dn. und 3 lb.</rs>
+                     <rs type="org" ref="#org__wien-st_stephan-messe_von_strass_katharina">den herren
+                        hincz Sand Stephan, die mit gotesleichnam ausgent, das sy umb mein sel
+                        pitten, wenn sy ausgent mit gotesleichnam</rs></rs>. Ich schaff <rs
+                     type="fn" role="recipient"><rs type="person"
+                        ref="#pe__andreas_raabser_StB_I_318"><roleName type="kin"
+                           corresp="#pe__katharina_StB_I_624">meines vettern sun</roleName> Andren
+                        des Ragezer</rs>
+                     <rs type="fn" role="transactiongood_I">das fuder wein von Surring</rs></rs>,
+                     <rs type="fn" role="other">davon sol <rs type="person"
+                        ref="#pe__andreas_raabser_StB_I_318">er</rs>
+                     <triggerstring n="fn">geben</triggerstring></rs>
+                  <rs type="fn" role="recipient"><rs type="fn" role="transactiongood_I">1 lb.
+                        dn.</rs>
+                     <rs type="org" ref="#org__wien-st_stephan">hincz Sand Stephan, das man mich
+                        schreib in das totenpuch</rs></rs>. <rs type="fn" role="recipient"><rs
+                        type="fn" role="transactiongood_I">Das ubrig auf demselben fuder weins</rs>
+                     schaff ich <rs type="person" ref="#pe__andreas_raabser_StB_I_318">ym</rs></rs>.
+                  Item ich schaff <rs type="fn" role="recipient"><rs type="person"
+                        ref="#pe__johann_StB_I_624">dem Hannsen, <rs type="person"
+                           ref="#pe__andreas_raabser_StB_I_318">desselben Andres</rs>
+                        <roleName type="kin" corresp="#pe__andreas_raabser_StB_I_318"
+                        >sun</roleName></rs>, <rs type="fn" role="transactiongood_I">meinen silbrein
+                        vergulten chopf</rs>. Ich schaff desselben meins vettern schaffer <rs
+                        type="fn" role="transactiongood_I">meiner pett ains, da ich auf lig, und
+                        einen choczen</rs>.</rs> Ich schaff meiner diern meinen swarczen manntel und
+                  das petgwant, da sy auf leyt. Ich schaff daruber <rs type="fn" role="recipient"
+                        ><rs type="person" ref="#pe__dorothea_StB_I_624">einer <roleName type="title"
+                           >junkfrawn</roleName>, die haisset Dorothe, <rs type="person"
+                           ref="#pe__matthias_schneider_StB_I_624">des Mathes <roleName type="prof"
+                              >Sneider</roleName></rs>
+                        <roleName type="kin" corresp="#pe__matthias_schneider_StB_I_624"
+                           >tochter</roleName></rs>, <rs type="fn" role="transactiongood_I">meinen
+                        plaben manntel und was ich in meiner chamer lazz von allem hawsgeret und das
+                        groz pett und den hawbtpolster</rs>, das man sey damit bestatt</rs>. Ich
+                  schaff auch <rs type="fn" role="recipient"><rs type="person"
+                        ref="#pe__johann_StB_I_624">meins vorgenanten vettern sun</rs>
+                     <rs type="fn" role="transactiongood_I">mein newe chisten</rs></rs>. Ich schaff
+                  auch, das man die zwen lidrein polster hingeb und geb die den armen lewten durich
+                  meiner sel willen. <rs type="fn" role="other">Und des gescheffts sol <triggerstring
+                        n="fn">ausrichter</triggerstring> sein <rs type="person"
+                        ref="#pe__andreas_raabser_StB_I_318">mein <roleName type="kin"
+                           corresp="#pe__katharina_StB_I_624">vetter</roleName> Andre der
+                        Ragczer</rs>,</rs>
+                  <rs type="fn" role="recipient">und schaff <rs type="person"
+                        ref="#pe__andreas_raabser_StB_I_318">im</rs>
+                     <rs type="fn" role="transactiongood_I">meinen scheibligen tisch</rs>.</rs> Als
+                  darumb die obgenanten erbern lewt mit iren trewn an aydes stat habent gesagt vor
+                  offem rat, als sy ze recht solten.</rs> a) i von mein über der Zeile eingefügt. b)
+               newe irrtümlich wiederholt da8 er8te gestrichen. </p>
+         </div>
+         <div type="lists">
+            <xi:include xmlns:xi="http://www.w3.org/2001/XInclude"
+               href="../../../../indices/placeList.xml" xpointer="element(/1/2/1/1)"/>
+            <xi:include xmlns:xi="http://www.w3.org/2001/XInclude"
+               href="../../../../indices/personList.xml" xpointer="element(/1/2/1/1)"/>
+            <xi:include xmlns:xi="http://www.w3.org/2001/XInclude"
+               href="../../../../indices/eventList.xml" xpointer="element(/1/2/1/1)"/>
+            <xi:include xmlns:xi="http://www.w3.org/2001/XInclude"
+               href="../../../../indices/orgList.xml" xpointer="element(/1/2/1/1)"/>
+         </div>
+      </body>
+   </text>
+</TEI>

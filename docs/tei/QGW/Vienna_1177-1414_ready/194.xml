@@ -1,0 +1,123 @@
+<?xml version="1.0" encoding="UTF-8"?><!DOCTYPE TEI   SYSTEM "../../../schema/toolbox_full.dtd">
+<TEI xmlns="http://www.tei-c.org/ns/1.0" xmlns:cei="http://www.monasterium.net/NS/cei"
+   xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance">
+   <teiHeader>
+      <fileDesc>
+         <titleStmt>
+            <title>Tei version of 194 exported from monasterium.net </title>
+         </titleStmt>
+         <publicationStmt>
+            <p/>
+         </publicationStmt>
+         <!--In Original: cei:front/cei:sourceDesc/cei:sourceDescRegest-->
+         <sourceDesc>
+            <bibl type="url">https://www.monasterium.net/mom/AT-WStLA/HAUrk/194/charter</bibl>
+            <bibl default="false" status="draft">Quellen zur Geschichte der Stadt Wien, Bd. II/1,
+               Nr. 194 As published in HAUrk by Wiener Stadt- und Landesarchiv </bibl>
+            <msDesc status="draft">
+               <msIdentifier>
+                  <repository>Wiener Stadt- und Landesarchiv</repository>
+                  <idno>194</idno>
+                  <altIdentifier type="old">
+                     <idno>514363</idno>
+                  </altIdentifier>
+               </msIdentifier>
+               <physDesc>
+                  <sealDesc>
+                     <seal>
+                        <p>Zwei anhangende Siegel: 1. roth u. K., rund, 2. ungefärbt, spitzoval,
+                           beschädigt, 3., 4. fehlen.</p>
+                     </seal>
+                  </sealDesc>
+               </physDesc>
+            </msDesc>
+         </sourceDesc>
+      </fileDesc>
+      <encodingDesc>
+         <projectDesc default="false">
+            <p><label type="contentual-editing">Projekt Christina Lutter Stadt und
+                  Gemeinschaft</label></p>
+         </projectDesc>
+      </encodingDesc>
+      <profileDesc>
+         <creation>
+            <placeName>Wien</placeName>
+            <date when="13380516">1338 V 16</date>
+            <origDate instant="false">ze Wienn, sampztages vor dem Auffert tag Unsers
+               Herren.</origDate></creation>
+      </profileDesc>
+   </teiHeader>
+   <facsimile>
+      <surface>
+         <graphic
+            url="http://images.monasterium.net/pics/AT-WStLA/HA-U/WStLA-HA-Urkunden_00194_r.jpg"/>
+      </surface>
+      <surface>
+         <graphic
+            url="http://images.monasterium.net/pics/AT-WStLA/HA-U/WStLA-HA-Urkunden_00194_v.jpg"/>
+      </surface>
+   </facsimile>
+   <text>
+      <body>
+         <div type="abstract" resp="ks">
+            <p>
+               <rs type="event" ref="#ev__QGW_II_I_194"><rs type="fn" role="issuer"><rs type="person"
+                        ref="#pe__katharina_QGW_II_I_194">Katrei, <roleName type="kin"
+                           corresp="#pe__friedrich_pruknaer_QGW_II_I_194"><add>tochter</add></roleName><rs
+                           type="person" ref="#pe__friedrich_pruknaer_QGW_II_I_194"><roleName
+                              type="title">hern</roleName> Fridreichs tochter des Pruknaer,
+                              <roleName type="dead">dem got genade</roleName></rs></rs></rs>,
+                     <triggerstring n="disp">verkauft</triggerstring>
+                  <rs type="fn" role="other"><triggerstring n="fn">mit Handen</triggerstring>
+                     <rs type="person" ref="#pe__ulrich_QGW_II_I_194">ihres <roleName type="title"
+                           >Bergherrn</roleName>
+                        <roleName type="occ" corresp="#org__wien-deutsche_herren">bru/oder</roleName>
+                        Ulreichs, <roleName type="occ" corresp="#org__wien-deutsche_herren"
+                           >comiteur</roleName> dacz dem Tautschen haus ze Wienn</rs></rs>, ein ihr
+                     <rs type="event" ref="#ev__QGW_II_I_194_men_1">von ihrem Vater angefallenes
+                     halbes Joch Weingarten</rs>, der da leit dacz Chlaitzingen und haisset der
+                  Pogner zenaechst hern Chunrades weingarten, des hansgraven, do man alle iar von
+                  dienet 62 dn. für perchrecht und für voitrecht , um 57 lb dn. <rs type="fn"
+                     role="recipient"><rs type="person" ref="#pe__konrad_QGW_II_I_194">Chunraden, dem
+                        pekchen in der Schauffellukchen</rs>, <rs type="person"
+                        ref="#pe__margarethe_QGW_II_I_194"><roleName type="kin"
+                           corresp="#pe__konrad_QGW_II_I_194">seiner Hausfrau</roleName>
+                        Margreten</rs> und <rs type="person"
+                        ref="#pe__heinrich_in_dem_gewelten_keller_QGW_II_I_194">seinem <roleName
+                           type="kin" corresp="#pe__konrad_QGW_II_I_194">Bruder</roleName>
+                        Hainreichen in dem geweltem cheler.</rs></rs></rs>
+            </p>
+         </div>
+         <div type="seal">
+            <p><rs type="event" ref="#ev__QGW_II_I_194">Besiegelt mit den Siegeln: <rs type="fn"
+                     role="witness"><rs type="org" ref="#org__wien-deutsche_herren">1. der Herren
+                        datz dem Taeutschen haus ze Wienn,</rs>
+                     <rs type="person" ref="#pe__pitrolf_QGW_II_I_194">2. <roleName type="title"
+                           >hern</roleName> Pitrolfs, <roleName type="occ"
+                           corresp="#org__grauscharn-pfarre">pfarrer</roleName> ze Grauscharn und
+                           <roleName type="occ" corresp="#org__passau-domkapitel"
+                           >chorherre</roleName> ze Passau,</rs>
+                     <rs type="person" ref="#pe__dietrich_urbetsch_QGW_II_I_950">3. <roleName
+                           type="title">hern</roleName> Dietreiches des Urbetzschen, <roleName
+                           type="occ" corresp="#org__wien">richter</roleName> ze Wienn,</rs>
+                     <rs type="person" ref="#pe__konrad_von_eslarn_QGW_II_I_178">4. <roleName
+                           type="title">hern</roleName> Chunrades von Eslarn, <roleName type="occ"
+                           corresp="#org__wien">purgermaister</roleName> ze Wienn.</rs></rs></rs>
+            </p>
+         </div>
+         <div type="nota">
+            <p>Indorsat: Aufschrift des Magister Theodericus. M. </p>
+         </div>
+         <div type="lists">
+            <xi:include xmlns:xi="http://www.w3.org/2001/XInclude"
+               href="../../../../indices/placeList.xml" xpointer="element(/1/2/1/1)"/>
+            <xi:include xmlns:xi="http://www.w3.org/2001/XInclude"
+               href="../../../../indices/personList.xml" xpointer="element(/1/2/1/1)"/>
+            <xi:include xmlns:xi="http://www.w3.org/2001/XInclude"
+               href="../../../../indices/eventList.xml" xpointer="element(/1/2/1/1)"/>
+            <xi:include xmlns:xi="http://www.w3.org/2001/XInclude"
+               href="../../../../indices/orgList.xml" xpointer="element(/1/2/1/1)"/>
+         </div>
+      </body>
+   </text>
+</TEI>

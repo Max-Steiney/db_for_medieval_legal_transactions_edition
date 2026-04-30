@@ -1,0 +1,83 @@
+<?xml version="1.0" encoding="UTF-8"?><!DOCTYPE TEI SYSTEM "../../../schema/toolbox_full.dtd">
+<TEI xmlns="http://www.tei-c.org/ns/1.0" xmlns:cei="http://www.monasterium.net/NS/cei"
+  xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance">
+  <teiHeader>
+    <fileDesc>
+      <titleStmt>
+        <title>TEI-Version of 157</title>
+      </titleStmt>
+      <publicationStmt>
+        <p/>
+      </publicationStmt>
+      <sourceDesc default="false">
+        <bibl default="false" status="draft">
+          <title type="full"><title type="main">Die Wiener Stadtbücher 1395 - 1430</title><title
+              type="sub">Teil 1: 1395 - 1400</title></title>
+          <author>Wilhelm Brauneder</author>
+          <author>Gerhard Jaritz</author>
+          <pubPlace>Wien</pubPlace>
+          <pubPlace>Köln</pubPlace>
+          <publisher>Böhlau Verlag</publisher>
+        </bibl>
+        <msDesc status="draft">
+          <msIdentifier>
+            <idno>157</idno>
+          </msIdentifier>
+          <physDesc/>
+        </msDesc>
+      </sourceDesc>
+    </fileDesc>
+    <encodingDesc>
+      <projectDesc>
+        <p><label type="contentual-editing">Projekt Christina Lutter Stadt und
+          Gemeinschaft</label></p>
+      </projectDesc>
+    </encodingDesc>
+    <profileDesc>
+      <creation>
+        <date when="1397-06-16">1397 Juni 16</date>
+      </creation>
+    </profileDesc>
+  </teiHeader>
+  <text>
+    <body>
+      <div type="header">
+        <p>Verwandtschaftsweisung für Elsbeth, Witwe des Jörg Ledrer </p>
+      </div>
+      <div>
+        <p> Einbr. 2 Zg. (Inde:ll: Item frewntschaft Elspeten Jorgen des Ledrer hausfraw) <rs
+            type="event" ref="#ev__StB_I_157">Desselben tags kom fur den rat <rs type="fn"
+              role="witness"><rs type="person" ref="#pe__elisabeth_StB_I_157"><roleName type="title"
+                  >fraw</roleName> Elspet, <roleName type="kin"
+                  corresp="#pe__georg_lederer_StB_I_157"><add>witib</add></roleName><rs type="person"
+                  ref="#pe__georg_lederer_StB_I_157">Jorgen <roleName type="dead">witib</roleName>
+                  des <roleName type="prof" cert="high">Ledrer</roleName></rs></rs>, und hat beweist
+              und pracht mit erbern lewten, als si ze recht solt, mit <rs type="person"
+                ref="#pe__peter_suezzprot_StB_I_6"><roleName type="title"
+                  ><add>erbern</add></roleName>Petrein dem Suezzprot, dem <roleName type="prof"
+                  >yrcher</roleName></rs>, und mit <rs type="person"
+                ref="#pe__niklas_nappelt_StB_I_157"><roleName type="title"
+                  ><add>erbern</add></roleName>Niclasen dem Nappelten</rs></rs>, das <rs type="fn"
+              role="recipient"><rs type="person" ref="#pe__elisabeth_StB_I_157">si <roleName
+                  type="kin" corresp="#pe__johann_lederer"><add>rechtew swester
+                  tachter</add></roleName></rs></rs>
+            <rs type="fn" role="issuer"><rs type="person" ref="#pe__johann_lederer">Jannsen seligen
+                des <roleName type="prof" cert="high">Ledrer</roleName>
+                <roleName type="kin" corresp="#pe__elisabeth_StB_I_157">rechtew swester
+                  tachter</roleName></rs></rs> gewesen ist a ). Als darumb die obgenanten erbern
+            lewt mit irn trewn an ayde stat vor offem rat habent gesagt, als si ze recht
+            solten.</rs> a) ist über der Zeile eingefügt. </p>
+      </div>
+      <div type="lists">
+        <xi:include xmlns:xi="http://www.w3.org/2001/XInclude"
+          href="../../../../indices/placeList.xml" xpointer="element(/1/2/1/1)"/>
+        <xi:include xmlns:xi="http://www.w3.org/2001/XInclude"
+          href="../../../../indices/personList.xml" xpointer="element(/1/2/1/1)"/>
+        <xi:include xmlns:xi="http://www.w3.org/2001/XInclude"
+          href="../../../../indices/eventList.xml" xpointer="element(/1/2/1/1)"/>
+        <xi:include xmlns:xi="http://www.w3.org/2001/XInclude"
+          href="../../../../indices/orgList.xml" xpointer="element(/1/2/1/1)"/>
+      </div>
+    </body>
+  </text>
+</TEI>

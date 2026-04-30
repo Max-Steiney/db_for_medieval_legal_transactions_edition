@@ -1,0 +1,158 @@
+<?xml version="1.0" encoding="UTF-8"?><!DOCTYPE TEI   SYSTEM "../../../schema/toolbox_full.dtd">
+<TEI xmlns="http://www.tei-c.org/ns/1.0" xmlns:cei="http://www.monasterium.net/NS/cei"
+   xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance">
+   <teiHeader>
+      <fileDesc>
+         <titleStmt>
+            <title>Tei version of 66 exported from monasterium.net </title>
+         </titleStmt>
+         <publicationStmt>
+            <p/>
+         </publicationStmt>
+         <!--In Original: cei:front/cei:sourceDesc/cei:sourceDescRegest-->
+         <sourceDesc>
+            <bibl type="url">https://www.monasterium.net/mom/AT-WStLA/HAUrk/66/charter</bibl>
+            <bibl default="false" status="draft">Quellen zur Geschichte der Stadt Wien, Bd. II/1,
+               Nr. 66 As published in HAUrk by Wiener Stadt- und Landesarchiv </bibl>
+            <msDesc status="draft">
+               <msIdentifier>
+                  <repository>Wiener Stadt- und Landesarchiv</repository>
+                  <idno>66</idno>
+                  <altIdentifier type="old">
+                     <idno>514233</idno>
+                  </altIdentifier>
+               </msIdentifier>
+               <physDesc>
+                  <sealDesc>
+                     <seal>
+                        <p>Sechs anhangende Siegel: 1. Dietrichs, rund, beschädigt, 2. Wernharts,
+                           schildförmig, zerbrochen, 3. Heinrichs, rund, beschädigt, 4. Alberts,
+                           rund, 5. Haidenreichs, rund, beschädigt, 6. Konrads, rund.</p>
+                     </seal>
+                  </sealDesc>
+               </physDesc>
+            </msDesc>
+         </sourceDesc>
+      </fileDesc>
+      <encodingDesc>
+         <projectDesc default="false">
+            <p><label type="contentual-editing">Projekt Christina Lutter Stadt und
+                  Gemeinschaft</label></p>
+         </projectDesc>
+      </encodingDesc>
+      <profileDesc>
+         <creation>
+            <placeName>Wien</placeName>
+            <date when="13170320">1317 III 20</date>
+            <origDate instant="false">ze Wienne, vierzehn tage vor Ostern.</origDate></creation>
+      </profileDesc>
+   </teiHeader>
+   <facsimile>
+      <surface>
+         <graphic
+            url="http://images.monasterium.net/pics/AT-WStLA/HA-U/WStLA-HA-Urkunden_00066_r.jpg"/>
+      </surface>
+      <surface>
+         <graphic
+            url="http://images.monasterium.net/pics/AT-WStLA/HA-U/WStLA-HA-Urkunden_00066_v.jpg"/>
+      </surface>
+   </facsimile>
+   <text>
+      <body>
+         <div type="abstract" resp="lp">
+            <p><rs type="event" ref="#ev__QGW_II_I_66">
+                  <rs type="fn" role="issuer"><rs type="person"
+                        ref="#pe__heinrich_von_tachenstein_QGW_II_I_66">Haidenreich von
+                        Toehenstein</rs> und <rs type="person" ref="#pe__offemei_QGW_II_I_66"
+                        >Offenei, seine <roleName type="kin"
+                           corresp="#pe__heinrich_von_tachenstein_QGW_II_I_66"
+                        >Hausfrau</roleName></rs>,<rs type="person"
+                        ref="#pe__bernhard_von_weidervelde_QGW_II_I_66"> Werenhart von Weidervelde
+                     </rs>und <rs type="person" ref="#pe__margarethe_QGW_II_I_66_a">Margret, seine
+                           <roleName type="kin" corresp="#pe__bernhard_von_weidervelde_QGW_II_I_66"
+                           >Hausfrau</roleName></rs>, <rs type="person"
+                        ref="#pe__heinrich_von_weidervelde_QGW_II_I_66">Hainrich von Weidervelde,
+                        sein <roleName type="kin" corresp="#pe__bernhard_von_weidervelde_QGW_II_I_66"
+                           >Bruder</roleName></rs>, <rs type="person"
+                        ref="#pe__albrecht_von_baden_QGW_II_I_66">Alber, <roleName type="kin"
+                           corresp="#pe__heinrich_von_baden_QGW_II_I_66"><add>sun</add></roleName>
+                        <rs type="person" ref="#pe__heinrich_von_baden_QGW_II_I_66"><roleName
+                              type="title">hern</roleName> Hainrichs sun von Paden</rs></rs>, und<rs
+                        type="person" ref="#pe__margarethe_QGW_II_I_66_b"> Margret, seine <roleName
+                           type="kin" corresp="#pe__albrecht_von_baden_QGW_II_I_66"
+                           >Hausfrau</roleName></rs>,<rs type="person"
+                        ref="#pe__dietrich_von_mannswoerth_QGW_II_I_312"> Dietrich von Manswerde</rs>
+                     und <rs type="person" ref="#pe__anna_QGW_II_I_66">Anne, seine <roleName
+                           type="kin" corresp="#pe__dietrich_von_mannswoerth_QGW_II_I_312"
+                           >Hausfrau</roleName></rs>, <rs type="person"
+                        ref="#pe__heinrich_lonholz_QGW_II_I_66">Hainrich <add>des Lonholz
+                        chint</add></rs> und <rs type="person" ref="#pe__katharina_QGW_II_I_66"
+                        >Katerei, des Lonholz chint</rs></rs>, <triggerstring n="disp">verkaufen mit
+                     gesammter</triggerstring> und<rs type="fn" role="other">
+                     <triggerstring n="fn">mit <add>Hand</add></triggerstring> ihrer Bergherren Hand (<rs
+                        type="person" ref="#pe__markhard_von_mistelbach_QGW_II_I_141">
+                        <roleName type="title"><add>Grundherr</add></roleName><roleName type="title"
+                           >h.</roleName> Marchardes von Mistelbach</rs>
+                     <rs type="person" ref="#pe__rudolf_von_ebersdorf_QGW_II_I_66"><roleName
+                           type="title">h.</roleName> Ruedolffes von Eberstorf, <roleName type="occ"
+                           corresp="#org__oesterreich-herzogtum">oberister chameraer</roleName> in
+                        Oesterreich</rs>
+                     <rs type="person" ref="#pe__greiffe_QGW_II_I_75"><roleName type="title"
+                           >h.</roleName> Greiffen pi Unsrer Vrowen auf der Stetten ze Wienne</rs>
+                     <rs type="person" ref="#pe__simon_pellendorf_QGW_II_I_81">Simons des
+                        Pellendorfer, <roleName type="occ"
+                           corresp="#org__klosterneuburg-augustinerchorfrauen">amptmannes</roleName>
+                        des goteshauses Unser Vrowen ze Neunburch</rs>)</rs> ein Joch Weingarten,
+                  gelegen an dem Nussberg zenaehest hern Chunrades weingarten des Nustorffer, <rs
+                     type="event" ref="NULL">der ihnen von ihrer <rs type="person"
+                        ref="#pe__margarethe_QGW_II_I_66_c"><roleName type="kin"
+                           corresp="#pe__bernhard_von_weidervelde_QGW_II_I_66">Mutter</roleName>,
+                           <roleName type="title">vron</roleName> Margreten der Weidervelderinne,
+                           <roleName type="dead">anerstorben</roleName> war</rs></rs>, um 500 lb dn.
+                     <rs type="fn" role="recipient">den Kindern <rs type="person"
+                        ref="#pe__niklas_von_schemnitz_QGW_II_I_66">Niclas <roleName type="kin"
+                           corresp="#pe__ruediger_von_schemnitz_QGW_II_I_66_a"
+                           ><add>sun</add></roleName></rs>, <rs type="person"
+                        ref="#pe__ruediger_von_schemnitz_QGW_II_I_66_b">Ruegern <roleName type="kin"
+                           corresp="#pe__ruediger_von_schemnitz_QGW_II_I_66_a"
+                           ><add>sun</add></roleName></rs> und <rs type="person"
+                        ref="#pe__heinrich_von_schemnitz_QGW_II_I_66">Hainrichen,<roleName type="kin"
+                           corresp="#pe__ruediger_von_schemnitz_QGW_II_I_66_a"
+                           ><add>sun</add></roleName>
+                        <rs type="person" ref="#pe__ruediger_von_schemnitz_QGW_II_I_66_a"><roleName
+                              type="title">hern</roleName> Ruegers suen von der Schaewentz,
+                              <roleName type="dead">dem got genad</roleName></rs></rs></rs>, und
+                     <triggerstring n="disp">stellen sich</triggerstring> (mit Ausnahme der beiden Kinder)
+                     <triggerstring n="disp">als Bürgen gegen jeden Anspruch</triggerstring></rs>.</p>
+         </div>
+         <div type="seal">
+            <p><rs type="event" ref="#ev__QGW_II_I_66"><rs type="fn" role="witness">Besiegelt mit den
+                     Siegeln 1.- 5. der männlichen Aussteller und Bürgen, <rs type="person"
+                        ref="#pe__dietrich_von_mannswoerth_QGW_II_I_312"><add>1.
+                     Dietrichs</add></rs>, <rs type="person"
+                        ref="#pe__bernhard_von_weidervelde_QGW_II_I_66"><add>2. Wernharts</add></rs>,
+                        <rs type="person" ref="#pe__heinrich_von_weidervelde_QGW_II_I_66"><add>3.
+                           Heinrichs</add></rs>, <rs type="person"
+                        ref="#pe__albrecht_von_baden_QGW_II_I_66"><add>4. Alberts</add></rs>, <rs
+                        type="person" ref="#pe__heinrich_von_tachenstein_QGW_II_I_66"><add>5.
+                           Haidenreichs</add></rs>
+                     <rs type="person" ref="#pe__konrad_nussdorf_QGW_II_I_110">6. <roleName
+                           type="title">hern</roleName> Chunrades des Nustorfaer, der des
+                        vorgenanten weingarten choufman gewesen ist</rs>.</rs></rs></p>
+         </div>
+         <div type="nota">
+            <p>Indorsat: Aufschrift des Magister Theodericus. L. </p>
+         </div>
+         <div type="lists">
+            <xi:include xmlns:xi="http://www.w3.org/2001/XInclude"
+               href="../../../../indices/placeList.xml" xpointer="element(/1/2/1/1)"/>
+            <xi:include xmlns:xi="http://www.w3.org/2001/XInclude"
+               href="../../../../indices/personList.xml" xpointer="element(/1/2/1/1)"/>
+            <xi:include xmlns:xi="http://www.w3.org/2001/XInclude"
+               href="../../../../indices/eventList.xml" xpointer="element(/1/2/1/1)"/>
+            <xi:include xmlns:xi="http://www.w3.org/2001/XInclude"
+               href="../../../../indices/orgList.xml" xpointer="element(/1/2/1/1)"/>
+         </div>
+      </body>
+   </text>
+</TEI>

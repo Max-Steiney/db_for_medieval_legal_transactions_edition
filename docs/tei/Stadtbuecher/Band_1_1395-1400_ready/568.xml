@@ -1,0 +1,121 @@
+<?xml version="1.0" encoding="UTF-8"?><!DOCTYPE TEI SYSTEM "../../../schema/toolbox_full.dtd">
+<TEI xmlns="http://www.tei-c.org/ns/1.0" xmlns:cei="http://www.monasterium.net/NS/cei"
+   xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance">
+   <teiHeader>
+      <fileDesc>
+         <titleStmt>
+            <title>TEI-Version of 568</title>
+         </titleStmt>
+         <publicationStmt>
+            <p/>
+         </publicationStmt>
+         <sourceDesc default="false">
+            <bibl default="false" status="draft">
+               <title type="full"><title type="main">Die Wiener Stadtbücher 1395 -
+                     1430</title><title type="sub">Teil 1: 1395 - 1400</title></title>
+               <author>Wilhelm Brauneder</author>
+               <author>Gerhard Jaritz</author>
+               <pubPlace>Wien</pubPlace>
+               <pubPlace>Köln</pubPlace>
+               <publisher>Böhlau Verlag</publisher>
+            </bibl>
+            <msDesc status="draft">
+               <msIdentifier>
+                  <idno>568</idno>
+               </msIdentifier>
+               <physDesc/>
+            </msDesc>
+         </sourceDesc>
+      </fileDesc>
+      <encodingDesc>
+         <projectDesc>
+            <p><label type="contentual-editing">Projekt Christina Lutter Stadt und
+                  Gemeinschaft</label></p>
+         </projectDesc>
+      </encodingDesc>
+      <profileDesc>
+         <creation>
+            <date when="1400-04-23">(1400 April 23, Krems)</date>
+         </creation>
+      </profileDesc>
+   </teiHeader>
+   <text>
+      <body>
+         <div type="header">
+            <p>Mitteilung des Schiedsspruches bezüglich des Nachlasses nach Ulrich Sam</p>
+         </div>                   <div type="entry" resp="rs">
+            <p> (Indez: Item ain spruchbrief von Johannesn Chunrat des Sneyder sun) <rs type="event"
+                  ref="#ev__StB_I_568"><rs type="fn" role="witness">Ich <rs type="person"
+                        ref="#pe__leonhard_von_gfoehl_StB_I_568">Lyenhart von Gevell, die zeit
+                           <roleName type="occ" corresp="#org__krems-eisentuerhof"
+                           >hofmaister</roleName> dacz der Eysneintür ze Krems</rs>, und ich <rs
+                        type="person" ref="#pe__stephan_von_woelbling_StB_I_568">Stephan von Welmikch
+                           <roleName type="occ" corresp="#org__krems"
+                        ><add>rates</add></roleName></rs> und <rs type="person"
+                        ref="#pe__wichpoto_pehem_StB_I_568">Weypot Pehem<roleName type="occ"
+                           corresp="#org__krems"><add>rates</add></roleName></rs> und <rs
+                        type="person" ref="#pe__martin_eggenburger_FRA_II_52_1409_VII_12">Martein
+                        Egenburger, die zeit all drey des <roleName type="occ" corresp="#org__krems"
+                           >rates</roleName> ze Krems</rs>, vergehen offennleich mit dem brief </rs>
+                  <rs type="fn" role="other">umb die <triggerstring n="fn">stoezz und
+                        krieg</triggerstring>, so <rs type="person" ref="#pe__johann_StB_I_568"
+                        >Johannes, <roleName type="kin" corresp="#pe__konrad_schneider_StB_I_568"
+                              ><add>sun</add></roleName><rs type="person"
+                           ref="#pe__konrad_schneider_StB_I_568">Chuenrats des <roleName type="prof"
+                              cert="unknown">Sneyder</roleName> sun von Perichtolczgadem</rs></rs>
+                     und <rs type="person" ref="#pe__margarethe_StB_I_568_a">Margret, sein <roleName
+                           type="kin" corresp="#pe__johann_StB_I_568">swester</roleName></rs>, ains
+                     tails und <rs type="person" ref="#pe__margarethe_StB_I_568_b">Margret die
+                        Heinkemmin von Weinczürl</rs> des andern tails miteinander gehabt habent
+                     </rs><rs type="fn" role="issuer">von der hab und guter wegen, so <rs
+                        type="person" ref="#pe__ulrich_sam_StB_I_568">Ulreich der Sam, dem got
+                           <roleName type="dead">gnad</roleName>, mit dem tod hinder im lassen hat,
+                        der <rs type="person" ref="#pe__margarethe_StB_I_568_b">der vorgenanten
+                           Margreten</rs> eleicher <roleName type="kin"
+                           corresp="#pe__margarethe_StB_I_568_b">wirt</roleName> gewesen
+                     ist</rs>.</rs> Und umb dieselben krieg und stözz, dew si miteinander gehabt
+                  habent, sind sew ze paider seyten unbetwungenleich und nach grösser gepet hinder
+                  uns vorgenanten vier spruchmann gegangen, das <rs type="fn" role="other"><rs
+                        type="person" ref="#pe__leonhard_von_gfoehl_StB_I_568">wir</rs>
+                     <rs type="person" ref="#pe__stephan_von_woelbling_StB_I_568"><add>wir</add></rs>
+                     <rs type="person" ref="#pe__wichpoto_pehem_StB_I_568"><add>wir</add></rs>
+                     <rs type="person" ref="#pe__martin_eggenburger_FRA_II_52_1409_VII_12"
+                           ><add>wir</add></rs> zwischen in mynn und <triggerstring n="fn">recht
+                        sprechen</triggerstring>.</rs>
+                  <rs type="fn" role="recipient">Das haben wir auch getan und haben auch <rs
+                        type="person" ref="#pe__johann_StB_I_568">dem vorgenanten Johannes, Chuenrats
+                        des Sneyder sun</rs>, und <rs type="person" ref="#pe__margarethe_StB_I_568_a"
+                        >Margreten, seiner swester</rs>, gesprochen ainen weingarten gelegen ze
+                     Gerestorf genant das Seussnek und ain haws gelegen ze Weinczuerl und ainen
+                     weingarten gelegen ze Wienn ausserhalb Sand Ulreich und ist genant die
+                     Chelberspewnt, dew gueter ledig und unverchumert damit allen irn frumen ze
+                     schaffen, wie sew verlustet. Und habent auch darumb <rs type="person"
+                        ref="#pe__margarethe_StB_I_568_b">der obgenanten <roleName type="title"
+                           >frawn</roleName> Margreten, des obgenanten Ulreichs <roleName type="kin"
+                              corresp="#pe__ulrich_sam_StB_I_568">witib</roleName>, dem got gnad</rs>,
+                     vier phunt Wienner phenning geben zu andern gütern, die ier gevallen und
+                     gesprochen sind, dew hie nicht benant sind.</rs>
+                  <rs type="fn" role="witness">Mit urchund des briefs versigelt mit unsern
+                     vorgenanten vier <rs type="person" ref="#pe__leonhard_von_gfoehl_StB_I_568"
+                        >spruchmann</rs>
+                     <rs type="person" ref="#pe__stephan_von_woelbling_StB_I_568"
+                           ><add>spruchmann</add></rs>
+                     <rs type="person" ref="#pe__wichpoto_pehem_StB_I_568"><add>spruchmann</add></rs>
+                     <rs type="person" ref="#pe__martin_eggenburger_FRA_II_52_1409_VII_12"
+                           ><add>spruchmann</add></rs>aller aufgedrukchtem insigilen,</rs> geben von
+                  Christi gepurd in dem virczehenhundertistem jar an sand Gorigen abend.</rs> a)
+               Danach geßtrichenes ze Wienn ausserhalb Sand Ulreich. </p>
+         </div>
+         <div type="lists">
+            <xi:include xmlns:xi="http://www.w3.org/2001/XInclude"
+               href="../../../../indices/placeList.xml" xpointer="element(/1/2/1/1)"/>
+            <xi:include xmlns:xi="http://www.w3.org/2001/XInclude"
+               href="../../../../indices/personList.xml" xpointer="element(/1/2/1/1)"/>
+            <xi:include xmlns:xi="http://www.w3.org/2001/XInclude"
+               href="../../../../indices/eventList.xml" xpointer="element(/1/2/1/1)"/>
+            <xi:include xmlns:xi="http://www.w3.org/2001/XInclude"
+               href="../../../../indices/orgList.xml" xpointer="element(/1/2/1/1)"/>
+         </div>
+      </body>
+   </text>
+</TEI>

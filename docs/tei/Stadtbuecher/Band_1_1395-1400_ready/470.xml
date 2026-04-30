@@ -1,0 +1,95 @@
+<?xml version="1.0" encoding="UTF-8"?><!DOCTYPE TEI SYSTEM "../../../schema/toolbox_full.dtd">
+<TEI xmlns="http://www.tei-c.org/ns/1.0" xmlns:cei="http://www.monasterium.net/NS/cei"
+   xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance">
+   <teiHeader>
+      <fileDesc>
+         <titleStmt>
+            <title>TEI-Version of 470</title>
+         </titleStmt>
+         <publicationStmt>
+            <p/>
+         </publicationStmt>
+         <sourceDesc default="false">
+            <bibl default="false" status="draft">
+               <title type="full"><title type="main">Die Wiener Stadtbücher 1395 -
+                     1430</title><title type="sub">Teil 1: 1395 - 1400</title></title>
+               <author>Wilhelm Brauneder</author>
+               <author>Gerhard Jaritz</author>
+               <pubPlace>Wien</pubPlace>
+               <pubPlace>Köln</pubPlace>
+               <publisher>Böhlau Verlag</publisher>
+            </bibl>
+            <msDesc status="draft">
+               <msIdentifier>
+                  <idno>470</idno>
+               </msIdentifier>
+               <physDesc/>
+            </msDesc>
+         </sourceDesc>
+      </fileDesc>     <encodingDesc>       <projectDesc>         <p><label type="contentual-editing">Projekt Christina Lutter Stadt und Gemeinschaft</label></p>       </projectDesc>     </encodingDesc>
+      <profileDesc>
+         <creation>
+            <date when="1399-12-02">1399 Dezember 2</date>
+         </creation>
+      </profileDesc>
+   </teiHeader>
+   <text>
+      <body>
+         <div type="header">
+            <p>Geschäft des Ulrich, Wirt im Haus der Herzogin zu Wien</p>
+         </div>                   <div type="entry" resp="rs">
+            <p> pr. mü., Einbr. 3 Zg., Ma (Inde:x: Item geseheft Ulreiehs wirt in der herezogin
+               haus) <rs type="event" ref="#ev__StB_I_470">Des nachsten erigtags nach sand Andres tag
+                  a ) <rs type="fn" role="witness">kom fur den rat <rs type="person"
+                        ref="#pe__heilwig_StB_I_470"><roleName type="title">fraw</roleName> Hailweig,
+                           <roleName type="kin" corresp="#pe__ulrich_StB_I_470"
+                           ><add>witib</add></roleName>
+                        <rs type="person" ref="#pe__ulrich_StB_I_470">Ulreichs <roleName type="dead"
+                              >seligen</roleName> witib, weylent <roleName type="prof"
+                              >wirt</roleName>
+                           <roleName type="occ"
+                              corresp="#pe__beatrix_von_zollern_nuernberg_QGW_II_I_1048" cert="high"
+                                 ><add>wirt</add></roleName>in der Herczoginn haws ze
+                        Wienn</rs></rs>, und hat da beweist mit den erbern lewten ze rechter zeit,
+                     als si ze recht solt, mit <rs type="person" ref="#pe__martin_chunter_StB_I_470"
+                           ><roleName type="title"><add>erbern</add></roleName>Mertten dem <roleName
+                           type="prof" cert="unknown">Chuntter</roleName></rs>, <rs type="person"
+                        ref="#pe__jakob_wagner_StB_I_470"><roleName type="title"
+                           ><add>erbern</add></roleName>Jacoben dem <roleName type="prof"
+                           cert="unknown">Wagner</roleName></rs> und mit <rs type="person"
+                        ref="#pe__johann_bader_StB_I_470"><roleName type="title"
+                           ><add>erbern</add></roleName>Hannsen dem <roleName type="prof"
+                           >Pader</roleName> am Sweinmarkcht</rs></rs>, <rs type="fn" role="issuer"
+                     >daz geschefft, so der vorgenant <rs type="person" ref="#pe__ulrich_StB_I_470"
+                        >ir <roleName type="kin" corresp="#pe__heilwig_StB_I_470"
+                        >wirt</roleName></rs> an seinen leczten zeiten getan hat</rs>. <rs type="fn"
+                     role="recipient">Von erst hat er geschafft seiner swester chinde, zwain
+                     junkhfrawen, einen weingarten genant der Rapelstorffer ze nechst des spitals
+                     weingarten an aim tail und ze nechst des Muleich weingarten an dem andern tail.
+                     Und darnach hat er geschafft <rs type="person" ref="#pe__heilwig_StB_I_470"
+                        >seiner <roleName type="kin" corresp="#pe__ulrich_StB_I_470"
+                           >hawsfrawen</roleName> Hailweigen</rs> ainn weingarten gelegen an dem
+                     Amaispach und einn weingarten an dem Newnperig hin der Penczing, also daz si
+                     mit den weingarten tun mag, waz si wil, ledichleich zu verseczen und zu
+                     verchauffen an alle irrung. Und hat geschafft derselben seiner hawsfrawen alle
+                     varunde hab, die er hinder im lat, wie die genant ist, nichcz ausgenomen, und
+                     darczu alle sein geltschult, die man im gelten sol. Und schaft davon seinem
+                     pruder zwelif schilling, die er im hat schullen gelten. Und davon sol dieselbig
+                     sein hawsfraw auzrichten ein Romfart von dem geschefft, so er ir geschafft
+                     hat.</rs> Als darumb die obgenanten erbern lewt bey irn starkchen ayden vor
+                  offem rat haben gesagt, als si ze recht solten.</rs> a) tag über der Zeile
+               eingefügt. </p>
+         </div>
+         <div type="lists">
+            <xi:include xmlns:xi="http://www.w3.org/2001/XInclude"
+               href="../../../../indices/placeList.xml" xpointer="element(/1/2/1/1)"/>
+            <xi:include xmlns:xi="http://www.w3.org/2001/XInclude"
+               href="../../../../indices/personList.xml" xpointer="element(/1/2/1/1)"/>
+            <xi:include xmlns:xi="http://www.w3.org/2001/XInclude"
+               href="../../../../indices/eventList.xml" xpointer="element(/1/2/1/1)"/>
+            <xi:include xmlns:xi="http://www.w3.org/2001/XInclude"
+               href="../../../../indices/orgList.xml" xpointer="element(/1/2/1/1)"/>
+         </div>
+      </body>
+   </text>
+</TEI>

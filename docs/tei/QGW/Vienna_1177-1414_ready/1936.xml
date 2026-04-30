@@ -1,0 +1,84 @@
+<?xml version="1.0" encoding="UTF-8"?><!DOCTYPE TEI SYSTEM "../../../schema/toolbox_full.dtd"><TEI xmlns="http://www.tei-c.org/ns/1.0" xmlns:cei="http://www.monasterium.net/NS/cei" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance">
+   <teiHeader>
+      <fileDesc>
+         <titleStmt>
+            <title>Tei version of 1936 exported from monasterium.net </title>
+         </titleStmt>
+         <publicationStmt>
+            <p/>
+         </publicationStmt>
+         <!--In Original: cei:front/cei:sourceDesc/cei:sourceDescRegest-->
+         <sourceDesc>
+            <bibl>Quellen zur Geschichte der Stadt Wien, Bd. II/2, Nr. 1936 As published in HAUrk by
+               Wiener Stadt- und Landesarchiv </bibl>
+            <msDesc>
+               <msIdentifier>
+                  <repository>Wiener Stadt- und Landesarchiv</repository>
+                  <idno>1936</idno>
+                  <altIdentifier type="old">
+                     <idno>516142</idno>
+                  </altIdentifier>
+               </msIdentifier>
+               <msContents>
+                  <msItem>
+                     <listBibl>
+                        <bibl>Jahrbuch der kais. Kunstsamml. 16b, n° 13266 Regest.</bibl>
+                     </listBibl>
+                  </msItem>
+               </msContents>
+               <physDesc>
+                  <sealDesc>
+                     <seal>
+                        <p>Zwei Ausfertigungen mit je zwei anhangenden Siegeln, 1. grün u. K., 2.
+                           schwarz u. K.</p>
+                     </seal>
+                  </sealDesc>
+               </physDesc>
+            </msDesc>
+         </sourceDesc>
+      </fileDesc>       <encodingDesc>          <projectDesc default="false">             <p><label type="contentual-editing">Projekt Christina Lutter Stadt und                   Gemeinschaft</label></p>          </projectDesc>       </encodingDesc>
+      <profileDesc>
+         <creation>
+            <placeName>Wien</placeName>
+            <date when="14121203">1412 XII 03</date>
+            <origDate>zu Wienn, des nechsten sambstags vor sand Barbaren tag.</origDate></creation>
+      </profileDesc>
+   </teiHeader>
+   <facsimile>
+      <surface>
+         <graphic url="http://images.monasterium.net/pics/AT-WStLA/HA-U/WStLA-HA-Urkunden_01936_a_r.jpg"/>
+      </surface>
+      <surface>
+         <graphic url="http://images.monasterium.net/pics/AT-WStLA/HA-U/WStLA-HA-Urkunden_01936_a_v.jpg"/>
+      </surface>
+      <surface>
+         <graphic url="http://images.monasterium.net/pics/AT-WStLA/HA-U/WStLA-HA-Urkunden_01936_b_r.jpg"/>
+      </surface>
+      <surface>
+         <graphic url="http://images.monasterium.net/pics/AT-WStLA/HA-U/WStLA-HA-Urkunden_01936_b_v.jpg"/>
+      </surface>
+   </facsimile>
+   <text>
+      <body>
+         <div type="abstract">
+            <p>
+               <rs type="event" ref="#ev__QGW_II_II_1936"><rs type="fn" role="issuer"><rs type="person" ref="#pe__niklas_QGW_II_II_1936">Niclas, <rs type="person" ref="#pe__dietrich_von_neunberg_QGW_II_II_1936">Dietreichs <roleName type="dead">seligen</roleName> vom Neunperg</rs>
+                        <roleName type="kin" corresp="#pe__dietrich_von_neunberg_QGW_II_II_1936">sun</roleName>,</rs> und <rs type="person" ref="#pe__anna_QGW_II_II_1936">Ann, sein <roleName type="kin" corresp="#pe__niklas_QGW_II_II_1936">swester</roleName></rs></rs>, <triggerstring n="disp">beurkunden <add>die
+                        Theilung</add></triggerstring> die <rs type="fn" role="other"><triggerstring n="fn">nach rat</triggerstring> der zwair <rs type="person" ref="#pe__ulrich_warnhofer_QGW_II_I_1538"><roleName type="occ" corresp="#org__wien" cert="medium">werichmann</roleName>, <roleName type="title">maister</roleName> Ulreichs des Warnhover, des
+                        <roleName type="prof">stainmeczen</roleName></rs>, und <rs type="person" ref="#pe__hermann_QGW_II_II_1936"><roleName type="title">maister</roleName> Hermans, des <roleName type="prof">zimermans</roleName><roleName type="occ" corresp="#org__wien" cert="medium"><add>werichmann</add></roleName></rs></rs> , vorgenommene [ 7] Theilung des
+                  ihnen von ihrem Vater anerstorbenen Hauses, gelegen in der Tu/enfoltstrass zu
+                  Wienn zenechst Petreins des Obeinander haus an aim tail und an dem andern tail
+                  zenechst Jacobs haus, des kramer .</rs>
+            </p>
+         </div>
+         <div type="seal">
+            <p><rs type="event" ref="#ev__QGW_II_II_1936"><rs type="fn" role="witness">Besiegelt mit
+                     den Siegeln <rs type="person" ref="#pe__ulrich_herwart_QGW_II_I_1098">Ulreichs
+                        des Herwarts, <roleName type="occ" corresp="#org__wien">statschreiber</roleName> zu Wienn</rs>, und <rs type="person" ref="#pe__martin_wachsgiesser_QGW_II_I_1494">Martins, des <roleName type="prof">wachsgiesser</roleName>,
+                        <roleName type="occ" corresp="#org__wien">purger</roleName> daselbs</rs></rs> .</rs>
+            </p>
+         </div>
+         <div type="lists"><xi:include xmlns:xi="http://www.w3.org/2001/XInclude" href="../../../../indices/placeList.xml" xpointer="element(/1/2/1/1)"/><xi:include xmlns:xi="http://www.w3.org/2001/XInclude" href="../../../../indices/personList.xml" xpointer="element(/1/2/1/1)"/><xi:include xmlns:xi="http://www.w3.org/2001/XInclude" href="../../../../indices/eventList.xml" xpointer="element(/1/2/1/1)"/><xi:include xmlns:xi="http://www.w3.org/2001/XInclude" href="../../../../indices/orgList.xml" xpointer="element(/1/2/1/1)"/></div>
+      </body>
+   </text>
+</TEI>

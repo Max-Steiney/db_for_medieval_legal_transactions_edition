@@ -1,0 +1,130 @@
+<?xml version="1.0" encoding="UTF-8"?><!DOCTYPE TEI SYSTEM "../../../schema/toolbox_full.dtd">
+<TEI xmlns="http://www.tei-c.org/ns/1.0" xmlns:cei="http://www.monasterium.net/NS/cei"
+   xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance">
+   <teiHeader>
+      <fileDesc>
+         <titleStmt>
+            <title>TEI-Version of 234</title>
+         </titleStmt>
+         <publicationStmt>
+            <p/>
+         </publicationStmt>
+         <sourceDesc default="false">
+            <bibl default="false" status="draft">
+               <title type="full"><title type="main">Die Wiener Stadtbücher 1395 -
+                     1430</title><title type="sub">Teil 1: 1395 - 1400</title></title>
+               <author>Wilhelm Brauneder</author>
+               <author>Gerhard Jaritz</author>
+               <pubPlace>Wien</pubPlace>
+               <pubPlace>Köln</pubPlace>
+               <publisher>Böhlau Verlag</publisher>
+            </bibl>
+            <msDesc status="draft">
+               <msIdentifier>
+                  <idno>234</idno>
+               </msIdentifier>
+               <physDesc/>
+            </msDesc>
+         </sourceDesc>
+      </fileDesc>
+      <encodingDesc>
+         <projectDesc>
+            <p><label type="contentual-editing">Projekt Christina Lutter Stadt und
+                  Gemeinschaft</label></p>
+         </projectDesc>
+      </encodingDesc>
+      <profileDesc>
+         <creation>
+            <date when="1398-02-28">1398 Februar 28</date>
+         </creation>
+      </profileDesc>
+   </teiHeader>
+   <text>
+      <body>
+         <div type="header">
+            <p>Geschäft des Seifried Zaynmaister</p>
+         </div>                   <div type="entry" resp="rs">
+            <p> pr. mü., Einbr. 3 Zg., Ma (Inde:z: Item gescheft Seyfrid Zaynmaister) <rs
+                  type="event" ref="#ev__StB_I_234">Item des nachsten phincztags vor Reminiscere in
+                  der vasten kom fur den rat <rs type="fn" role="witness"><rs type="person"
+                        ref="#pe__niklas_radschmied_QGW_II_I_1062">Niclas der <roleName type="prof"
+                           cert="high">Ratsmid</roleName></rs> und beweist und pracht mit erbern
+                     laeuten zu rechter zeit, als er ze recht solt, mit <rs type="person"
+                        ref="#pe__niklas_vom_perg_StB_I_234"><roleName type="title"
+                           ><add>erbern</add></roleName>Niclasen vom Perg</rs>, <rs type="person"
+                        ref="#pe__christian_rotschmied_StB_I_234"><roleName type="title"
+                              ><add>erbern</add></roleName>Christann dem <roleName type="prof"
+                           cert="high">Ratsmid</roleName></rs>und <rs type="person"
+                        ref="#pe__ulrich_kupferschmied_StB_I_234"><roleName type="title"
+                              ><add>erbern</add></roleName>Ulreichen dem <roleName type="prof"
+                           cert="high">Chuphersmid</roleName></rs></rs>, das geschefft, das <rs
+                     type="fn" role="issuer"><rs type="person"
+                        ref="#pe__siegfried_zainmeister_StB_I_234">Seyfrid der <roleName type="prof"
+                           cert="high">Zaynmaister</roleName></rs></rs> getan hat. <rs type="fn"
+                     role="recipient">Von erst hat er geschafft <rs type="person"
+                        ref="#pe__siegfried_schoendl_StB_I_234">seinem <roleName type="kin"
+                           corresp="#pe__siegfried_zainmeister_StB_I_234">en</roleName> Seyczl dem
+                        Schondlein</rs> seinen weingarten gelegen ym Chesserwasser Graben neben des
+                     Pymir weingarten in der Pognerstrazz, des drew achtail sind.</rs>
+                  <rs type="fn" role="other">Und sol in auch <triggerstring n="fn">pawn</triggerstring>
+                     <rs type="person" ref="#pe__niklas_radschmied_QGW_II_I_1062">Niclas der
+                        Ratsmid</rs> und den wein <triggerstring n="fn">vechsen</triggerstring>, alslang
+                     uncz das der chnab frucht per wirt, und wirt icht uber, das sol er im
+                        <triggerstring n="fn">zu hilff geben</triggerstring> an seinen gewant.</rs>
+                  <rs type="fn" role="recipient">Item so schafft er <rs type="person"
+                        ref="#pe__margarethe_StB_I_234">seinem <roleName type="kin"
+                           corresp="#pe__siegfried_zainmeister_StB_I_234">enynkchel</roleName> der
+                        Margreten</rs> sein pests pet und zway leyblachen und zway chuezz und ein
+                     polster und ein gulter, das chost zwelf schilling.</rs>
+                  <rs type="fn" role="other"> Und das sol auch <triggerstring n="fn"
+                        >ynnhaben</triggerstring>
+                     <rs type="person" ref="#pe__niklas_radschmied_QGW_II_I_1062">Niclas der
+                        Ratsmid</rs>, alslang uncz das si vogtper wirt und einen man nympt, so sol
+                     er irs geben.</rs>
+                  <rs type="fn" role="recipient">Item so hat er geschafft <rs type="org"
+                        ref="#org__wien-dominikaner-messe_zainmeister_siegfried_und_katharina_StB_I_234"
+                        >hincz den Predigern 2 tl. d., das sy in und <rs type="person"
+                           ref="#pe__katharina_StB_I_234">sein <roleName type="kin"
+                              corresp="#pe__siegfried_zainmeister_StB_I_234">hawsfrawn</roleName>
+                           Kathrein </rs>schreyben in das totenpuch und das sy in ein jartag begen,
+                        alslang und ir trew beczewgt</rs>. Item <rs type="person"
+                        ref="#pe__konrad_StB_I_234"><roleName type="title">pruder</roleName>
+                        Chunraten, seinem <roleName type="kin"
+                           corresp="#pe__siegfried_zainmeister_StB_I_234">goten</roleName></rs>, ein
+                     hawppolster, das er auch ir baider sel gedenkch. Item so hat er geschafft das
+                     ander gut alles, nichts ausgenomen, <rs type="person"
+                        ref="#pe__niklas_radschmied_QGW_II_I_1062">seinem <roleName type="kin"
+                           corresp="#pe__siegfried_zainmeister_StB_I_234">gevater</roleName> Niclasen
+                        dem Ratsmid</rs>, das er im davon ausricht ein Romfart und drey Zellfert und
+                     sechs wanndlungcherczen, yedew zu drin phunden, aine <rs type="org"
+                        ref="#org__wien-st_lazarus_siechenhaus">gen Sand Lazers</rs>, die ander <rs
+                        type="org" ref="#org__erdberg-st_paul" cert="medium">gen Sand Paul</rs>, die
+                     dryt <rs type="org" ref="#org__wien-st_peter">gen Sand Peter</rs>, die vierd <rs
+                        type="org" ref="#org__wien-st_jakob_auf_der_huelben">gen Sand Jacob</rs>, die
+                     funft <rs type="org"
+                        ref="#org__wien-st_niklas_vor_dem_stubentor_zisterzienserinnen">gen Sand
+                        Nicla</rs>, die sechst <rs type="org"
+                        ref="#org__wien-st_stephan-kapelle_st_erasmus_im_neuen_karner_auf_dem_st_stephansfriedhof"
+                        >gen Sand Erasm in die grufft</rs></rs>.<rs type="fn" role="other">Und den
+                     geschefftbrief sol ynnhaben <rs type="person"
+                        ref="#pe__niklas_radschmied_QGW_II_I_1062">sein <roleName type="kin"
+                           corresp="#pe__siegfried_zainmeister_StB_I_234">gevater</roleName> Niclas
+                        der Ratsmid</rs> und des vorgenanten gescheffts <triggerstring n="fn"
+                        >ausrichter</triggerstring> sein.</rs> Als darumb die vorgenanten erbern lewt
+                  mit irn trewn an aydes stat vor offem rat habent gesagt, als sy ze recht
+                  solten.</rs>
+            </p>
+         </div>
+         <div type="lists">
+            <xi:include xmlns:xi="http://www.w3.org/2001/XInclude"
+               href="../../../../indices/placeList.xml" xpointer="element(/1/2/1/1)"/>
+            <xi:include xmlns:xi="http://www.w3.org/2001/XInclude"
+               href="../../../../indices/personList.xml" xpointer="element(/1/2/1/1)"/>
+            <xi:include xmlns:xi="http://www.w3.org/2001/XInclude"
+               href="../../../../indices/eventList.xml" xpointer="element(/1/2/1/1)"/>
+            <xi:include xmlns:xi="http://www.w3.org/2001/XInclude"
+               href="../../../../indices/orgList.xml" xpointer="element(/1/2/1/1)"/>
+         </div>
+      </body>
+   </text>
+</TEI>

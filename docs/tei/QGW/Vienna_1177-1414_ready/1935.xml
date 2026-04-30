@@ -1,0 +1,100 @@
+<?xml version="1.0" encoding="UTF-8"?><!DOCTYPE TEI SYSTEM "../../../schema/toolbox_full.dtd"><TEI xmlns="http://www.tei-c.org/ns/1.0" xmlns:cei="http://www.monasterium.net/NS/cei" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance">
+   <teiHeader>
+      <fileDesc>
+         <titleStmt>
+            <title>Tei version of 1935 exported from monasterium.net </title>
+         </titleStmt>
+         <publicationStmt>
+            <p/>
+         </publicationStmt>
+         <!--In Original: cei:front/cei:sourceDesc/cei:sourceDescRegest-->
+         <sourceDesc>
+            <bibl>Quellen zur Geschichte der Stadt Wien, Bd. II/2, Nr. 1935 As published in HAUrk by
+               Wiener Stadt- und Landesarchiv </bibl>
+            <msDesc>
+               <msIdentifier>
+                  <repository>Wiener Stadt- und Landesarchiv</repository>
+                  <idno>1935</idno>
+                  <altIdentifier type="old">
+                     <idno>516141</idno>
+                  </altIdentifier>
+               </msIdentifier>
+               <msContents>
+                  <msItem>
+                     <listBibl>
+                        <bibl>Camesina in den Mitth. des Alterthumsvereines 12, 12 n° 20.</bibl>
+                     </listBibl>
+                  </msItem>
+               </msContents>
+               <physDesc>
+                  <sealDesc>
+                     <seal>
+                        <p>Vier anhangende Siegel: 1. grün u. Sch., 2. roth u. Sch., spitzoval,
+                           beschädigt, 3. fehlt, 4. schwarz u. Sch., 5. grün u. Sch.Siegler: 1.
+                              <quote>Simon der Pairsteter</quote>, 2. <quote>Andre von Grillenperg,
+                              chorherr und official des tuembs zu Passau mit seins officials ambt
+                              insigl </quote>, 3. <quote>Perchtolt der Auer, caplan sand Pangreczen
+                              capellen an der herzogen Hof zu Wienn gelegen</quote>, 4. <quote>Jorg
+                              der Grünpekch, des rats der stat zu Wienn, 5. Hanns der Gerestenner,
+                              purger daselbs</quote>. </p>
+                     </seal>
+                  </sealDesc>
+               </physDesc>
+            </msDesc>
+         </sourceDesc>
+      </fileDesc>       <encodingDesc>          <projectDesc default="false">             <p><label type="contentual-editing">Projekt Christina Lutter Stadt und                   Gemeinschaft</label></p>          </projectDesc>       </encodingDesc>
+      <profileDesc>
+         <creation>
+            <placeName>Wien</placeName>
+            <date when="14121121">1412 XI 21</date>
+            <origDate>zu Wienn, des negsten mantags nach sand Elspeten tag.</origDate></creation>
+      </profileDesc>
+   </teiHeader>
+   <facsimile>
+      <surface>
+         <graphic url="http://images.monasterium.net/pics/AT-WStLA/HA-U/WStLA-HA-Urkunden_01935_r.jpg"/>
+      </surface>
+      <surface>
+         <graphic url="http://images.monasterium.net/pics/AT-WStLA/HA-U/WStLA-HA-Urkunden_01935_v.jpg"/>
+      </surface>
+   </facsimile>
+   <text>
+      <body>
+         <div type="abstract">
+            <p>
+               <rs type="event" ref="#ev__QGW_II_II_1935"><rs type="fn" role="issuer"><rs type="person" ref="#pe__simon_pairstetter_QGW_II_I_1087">Simon der
+                        Pairsteter, <roleName type="occ" corresp="#org__weikersdorf-pfarre">pharrer</roleName> ze Weikkendorf und <roleName type="occ" corresp="#org__wien-st_peter">obrister capplan</roleName> sand Peters
+                        kappelln zu Wienn <roleName type="occ" corresp="#pe__eberhard_chastner_QGW_II_I_1328"><add>Geschäftsvollstrecker</add></roleName></rs>, und <rs type="person" ref="#pe__johann_von_ofen_QGW_II_I_1009">Hanns von Ofen,
+                           <roleName type="occ" corresp="#org__wien">purger</roleName> ze
+                           Wienn<roleName type="occ" corresp="#pe__eberhard_chastner_QGW_II_I_1328"><add>Geschäftsvollstrecker</add></roleName></rs>
+                  </rs>, <triggerstring n="disp">widmen</triggerstring> als Geschäftsvollstrecker nach
+                  Eberhard dem Chastner pei Peilertor zur <rs type="fn" role="recipient"><rs type="org" ref="#org__wien-st_peter">St. Peterskapelle</rs></rs> folgende
+                  Güter: Den halben zehent, weinzehent und traidzehent, grossen und chlainen,
+                  gelegen zu Sozz und zu Veslau , den sie von dem Abte und dem Gotteshause zu Melk
+                  gekauft hatten, und 4 Joch Weingarten, der zwai gelegen sint in dem Chrotenpach
+                  und zwai hinder Obern Süfring, genant die Praiten, die weilent Chuenrats des
+                  Vorlaufs seligen gewesen sind , und die ihnen für ein Darlehen von 250 lb dn.
+                  zugesprochen worden waren. Dagegen soll der oberste Kaplan einen Priester
+                  bestellen, der täglich für das Seelenheil des Erblassers eine Messe liest, ein
+                  ewiges Licht vor dem St. Peters-Altar beleuchten, vier Schülern, die beim Gesänge
+                  mithelfen, jährlich je 1 lb dn. reichen, acht Pfundkerzen am Charfreitage bei dem
+                  heiligen Grabe brennen und von vier Schülern beim heil. Grabe Tag und Nacht den
+                  salter lesen lassen. Kommt er diesen Verpflichtungen nicht nach, so hat er dem
+                  Passauer Official 2 lb dn. zu entrichten.</rs>
+            </p>
+         </div>
+         <div type="seal">
+            <p><rs type="event" ref="#ev__QGW_II_II_1935"><rs type="fn" role="witness">Siegler: 1.
+                        <rs type="person" ref="#pe__simon_pairstetter_QGW_II_I_1087">Simon der
+                        Pairsteter</rs>, 2. <rs type="person" ref="#pe__andreas_von_grillenperg_QGW_II_I_1859">Andre von Grillenperg,
+                           <roleName type="occ" corresp="#org__passau-domkapitel">chorherr</roleName> und <roleName type="occ" corresp="#org__passau-domkapitel">official</roleName> des tuembs zu Passau mit seins
+                        officials ambt insigl</rs> , 3. <rs type="person" ref="#pe__berthold_auer_QGW_II_II_1935">Perchtolt der Auer, <roleName type="occ" corresp="#org__wien-st_pankraz">caplan</roleName> sand
+                        Pangreczen capellen an der herzogen Hof zu Wienn gelegen</rs>, 4. <rs type="person" ref="#pe__georg_grunnpekch_QGW_II_I_1304">Jorg der Grünpekch,
+                        des <roleName type="occ" corresp="#org__wien">rats</roleName> der stat zu Wienn</rs>, 5. <rs type="person" ref="#pe__johann_gerestenner_QGW_II_II_1930">Hanns der Gerestenner, <roleName type="occ" corresp="#org__wien">purger</roleName>
+                        daselbs</rs>.</rs></rs>
+            </p>
+         </div>
+         <div type="lists"><xi:include xmlns:xi="http://www.w3.org/2001/XInclude" href="../../../../indices/placeList.xml" xpointer="element(/1/2/1/1)"/><xi:include xmlns:xi="http://www.w3.org/2001/XInclude" href="../../../../indices/personList.xml" xpointer="element(/1/2/1/1)"/><xi:include xmlns:xi="http://www.w3.org/2001/XInclude" href="../../../../indices/eventList.xml" xpointer="element(/1/2/1/1)"/><xi:include xmlns:xi="http://www.w3.org/2001/XInclude" href="../../../../indices/orgList.xml" xpointer="element(/1/2/1/1)"/></div>
+      </body>
+   </text>
+</TEI>

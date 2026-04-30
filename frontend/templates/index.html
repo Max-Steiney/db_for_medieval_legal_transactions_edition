@@ -1,0 +1,124 @@
+{% extends "base.html" %}
+{% from "macros.html" import search_box, result_count, active_filters, no_results %}
+
+{% block title %}Quellenverzeichnis{% endblock %}
+
+{% block head %}
+<link rel="stylesheet" href="{{ root_path }}/static/css/index.css">
+{% endblock %}
+
+{% block content %}
+<div class="index-page">
+
+    <!-- Overview: corpus summary + timeline -->
+    <header class="index-header">
+        <h1>Quellenverzeichnis</h1>
+        <p class="index-subtitle">
+            <span class="stat">{{ "{:,}".format(total_count).replace(",", ".") }}</span> Quellen,
+            <span class="stat">{{ "{:,}".format(person_register_count).replace(",", ".") }}</span> individuelle Personen
+            <span class="index-date-range">&mdash; Wien, {{ released_period_label }}</span>
+        </p>
+    </header>
+
+    <!-- Range slider with histogram -->
+    {% if timeline_data %}
+    <section class="range-slider-section">
+        <div class="range-slider" id="range-slider"
+             data-min="{{ min_year }}" data-max="{{ max_year }}">
+            <div class="range-histogram" id="range-histogram">
+                {% for d in timeline_data %}
+                <div class="range-bar"
+                     data-decade="{{ d.decade }}"
+                     data-count="{{ d.count }}"
+                     style="height: {{ [4, (d.count / max_count * 100)|int]|max if d.count > 0 else 0 }}%"
+                     title="{{ d.decade }}er: {{ d.count }} Dok.">
+                </div>
+                {% endfor %}
+            </div>
+            <div class="range-inputs">
+                <input type="range" id="range-min"
+                       min="{{ min_year }}" max="{{ max_year }}"
+                       value="{{ min_year }}" step="1"
+                       aria-label="Startjahr">
+                <input type="range" id="range-max"
+                       min="{{ min_year }}" max="{{ max_year }}"
+                       value="{{ max_year }}" step="1"
+                       aria-label="Endjahr">
+            </div>
+            <div class="range-labels">
+                <span class="range-label-min" id="range-label-min">{{ min_year }}</span>
+                <span class="range-label-max" id="range-label-max">{{ max_year }}</span>
+            </div>
+        </div>
+    </section>
+    {% endif %}
+
+    <!-- Collection chips -->
+    <section class="collection-chips">
+        {% for key, col in collections.items() %}
+        <button class="chip" data-collection="{{ key }}" title="Erschlie&szlig;ungsform: {{ col.form }}">
+            {{ col.label }}
+            <span class="chip-form">{{ col.form }}</span>
+            <span class="chip-count">{{ col.count }}</span>
+        </button>
+        {% endfor %}
+    </section>
+
+    <!-- Search and filter bar -->
+    <section class="index-controls">
+        {{ search_box('Suche nach Nr., Datum, Ort, Schlagwort ...') }}
+        <div class="filter-group">
+            <select id="filter-place" aria-label="Ort filtern">
+                <option value="">Alle Orte</option>
+                {% for place_name, place_count in top_places %}
+                <option value="{{ place_name }}">{{ place_name }} ({{ place_count }})</option>
+                {% endfor %}
+            </select>
+        </div>
+        <div class="filter-group">
+            <select id="filter-facs" aria-label="Faksimile">
+                <option value="">Faksimile</option>
+                <option value="1">Mit Faksimile ({{ facs_count }})</option>
+                <option value="0">Ohne Faksimile ({{ total_count - facs_count }})</option>
+            </select>
+        </div>
+        <div class="filter-group">
+            <select id="filter-quality" aria-label="Qualität">
+                <option value="">Qualität</option>
+                <option value="0">Fehlerfrei ({{ quality_ok }})</option>
+                <option value="1">Hinweise ({{ quality_notice }})</option>
+                <option value="2">Warnungen ({{ quality_warning }})</option>
+            </select>
+        </div>
+        {{ result_count(total_count, 'Quellen') }}
+    </section>
+
+    {{ active_filters() }}
+
+    <!-- Document table -->
+    <section class="index-table-wrap">
+        <table class="index-table" id="doc-table">
+            <thead>
+                <tr>
+                    <th class="col-idno" data-sort="id">Nr.</th>
+                    <th class="col-date" data-sort="di">Datum</th>
+                    <th class="col-place" data-sort="p">Ort</th>
+                    <th class="col-title" data-sort="t">Regest</th>
+                </tr>
+            </thead>
+            <tbody id="doc-tbody">
+            </tbody>
+        </table>
+        {{ no_results('Keine Quellen gefunden.') }}
+    </section>
+
+</div>
+
+{% endblock %}
+
+{% block scripts %}
+<script src="{{ root_path }}/static/js/table-infra.js"></script>
+<script src="{{ root_path }}/static/js/index.js"></script>
+{% endblock %}
+
+{% block footer_info %}{{ total_count }} Quellen{% endblock %}

@@ -1,0 +1,388 @@
+<!DOCTYPE html>
+<html lang="de">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Startseite — Datenbank</title>
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Crimson+Pro:ital,wght@0,300;0,400;0,500;0,600;0,700;1,300;1,400;1,500&family=Inter:wght@300;400;500;600&family=JetBrains+Mono:wght@400&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="./static/css/tokens.css">
+    <link rel="stylesheet" href="./static/css/base.css">
+    <link rel="stylesheet" href="./static/css/components.css">
+    <link rel="stylesheet" href="./static/css/responsive.css">
+    <link rel="stylesheet" href="./static/css/print.css">
+    <link rel="stylesheet" href="./static/css/provenance.css">
+    <script>window.ROOT_PATH = ".";</script>
+    
+<link rel="stylesheet" href="./static/css/exploration.css">
+<link rel="stylesheet" href="./static/css/startseite.css">
+
+</head>
+<body>
+    <a class="skip-link" href="#main-content">Zum Inhalt springen</a>
+    <nav class="site-nav">
+        <div class="nav-inner">
+            <a href="./index.html" class="nav-brand">
+                <span class="nav-brand-sigil">&#x2756;</span>
+                <span class="nav-brand-text">Stadt und Gemeinschaft Wien</span>
+            </a>
+            <span class="nav-badge">Prototyp</span>
+            <button class="nav-hamburger" id="nav-hamburger" aria-label="Menü öffnen" aria-expanded="false">
+                <span></span><span></span><span></span>
+            </button>
+            <div class="nav-links" id="nav-links">
+                <a href="./documents.html">Quellen</a>
+                <div class="nav-dropdown">
+                    <button class="nav-dropdown-trigger" aria-expanded="false" aria-haspopup="true">Register <span class="nav-dropdown-arrow">&#x25BE;</span></button>
+                    <div class="nav-dropdown-menu">
+                        <a href="./register/persons.html">Personen</a>
+                        <a href="./register/organisations.html" class="nav-disabled" aria-disabled="true" title="Noch nicht freigegeben">Organisationen</a>
+                        <a href="./register/places.html" class="nav-disabled" aria-disabled="true" title="Noch nicht freigegeben">Orte</a>
+                    </div>
+                </div>
+                <div class="nav-dropdown">
+                    <button class="nav-dropdown-trigger" aria-expanded="false" aria-haspopup="true">Exploration <span class="nav-dropdown-arrow">&#x25BE;</span></button>
+                    <div class="nav-dropdown-menu">
+                        <a href="./exploration/roles.html">Rollen</a>
+                        <a href="./exploration/networks.html">Beziehungen</a>
+                        <a href="./exploration/transactions.html">Transaktionen</a>
+                        <a href="./exploration/places.html">Orte</a>
+                    </div>
+                </div>
+                <a href="./analysis/index.html">Analyse</a>
+                <div class="nav-dropdown">
+                    <button class="nav-dropdown-trigger" aria-expanded="false" aria-haspopup="true">Projekt <span class="nav-dropdown-arrow">&#x25BE;</span></button>
+                    <div class="nav-dropdown-menu">
+                        <a href="./project/about.html">&Uuml;ber das Projekt</a>
+                        <a href="./project/statistics.html">Statistik</a>
+                        <a href="./project/quality.html">Qualit&auml;t</a>
+                        <a href="./project/edition-guidelines.html">Editionsrichtlinien</a>
+                        <a href="./project/glossary.html">Glossar</a>
+                        <a href="./impressum.html">Impressum</a>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </nav>
+
+    <main class="site-main" id="main-content">
+        
+<div class="start-page">
+
+    
+    <header class="start-hero">
+        <h1>Stadt und Gemeinschaft Wien</h1>
+        <p class="start-hero-desc">
+            Datenbank zu mittelalterlichen Wiener Rechtsgesch&auml;ften, 1177–1412 (mit Ergänzungen bis 1414 für QGW II/1 und II/2).
+        </p>
+        
+        
+        <div class="start-hero-stats">
+            <span class="prov-stat-container">
+                
+<button type="button" class="prov-trigger"
+        aria-expanded="false" aria-haspopup="dialog"
+        aria-controls="prov-hero-sources"
+        data-prov-trigger="prov-hero-sources"><strong>2.635</strong></button>
+
+                
+<aside class="prov-popover" id="prov-hero-sources"
+       role="dialog" aria-hidden="true" aria-label="Herkunft: Quellen">
+    <header class="prov-popover-head">
+        <h3 class="prov-popover-title">Quellen</h3>
+        <p class="prov-popover-sub">TEI-Regesten · freigegeben 1177–1412 (mit Ergänzungen bis 1414 für QGW II/1 und II/2)</p>
+        <button type="button" class="prov-popover-close" aria-label="Schließen">&times;</button>
+    </header>
+    <div class="prov-popover-body">
+        
+                    <table class="prov-breakdown">
+                        
+                        <tr>
+                            <td>QGW II/1 (1177–1414)</td>
+                            <td class="num">2.023</td>
+                        </tr>
+                        
+                        <tr>
+                            <td>Stadtbücher Bd. 1 (1395–1400)</td>
+                            <td class="num">578</td>
+                        </tr>
+                        
+                        <tr>
+                            <td>QGW II/2 (1415–1417)</td>
+                            <td class="num">34</td>
+                        </tr>
+                        
+                        <tr class="total">
+                            <td>Gesamt</td>
+                            <td class="num">2.635</td>
+                        </tr>
+                    </table>
+                    <p class="prov-note">1418–1447: noch nicht ausgewertet.</p>
+                    <footer class="prov-foot">
+                        <span class="prov-foot-source"><code>sources/*/done/*.xml</code></span>
+                        <a class="prov-foot-link" href="./project/statistics.html">&rarr; Statistik</a>
+                    </footer>
+                
+    </div>
+</aside>
+
+            </span>
+            Quellen
+            <span class="start-hero-sep">&middot;</span>
+            <span class="prov-stat-container">
+                
+<button type="button" class="prov-trigger"
+        aria-expanded="false" aria-haspopup="dialog"
+        aria-controls="prov-hero-persons"
+        data-prov-trigger="prov-hero-persons"><strong>16.084</strong></button>
+
+                
+<aside class="prov-popover" id="prov-hero-persons"
+       role="dialog" aria-hidden="true" aria-label="Herkunft: Individuelle Personen">
+    <header class="prov-popover-head">
+        <h3 class="prov-popover-title">Individuelle Personen</h3>
+        <p class="prov-popover-sub">Zählebene: eine Identität pro Person</p>
+        <button type="button" class="prov-popover-close" aria-label="Schließen">&times;</button>
+    </header>
+    <div class="prov-popover-body">
+        
+                    <p class="prov-def">Jede Person zählt <em>einmal</em>, unabhängig davon, in wie vielen Quellen sie erwähnt wird. Die alternative Zählebene <em>Gesamtnennungen</em> zählt pro Person eine Nennung je Quelle, in der sie vorkommt &mdash; Mehrfacherwähnungen innerhalb einer Quelle werden zusammengefasst (<a href="./project/glossary.html#gesamtnennung">quellenbereinigt</a>).</p>
+                    <footer class="prov-foot">
+                        <span class="prov-foot-source"><code>indices/personList.xml</code></span>
+                        <a class="prov-foot-link" href="./project/glossary.html#individuelle-person">&rarr; Glossar</a>
+                    </footer>
+                
+    </div>
+</aside>
+
+            </span>
+            individuelle Personen
+            
+            
+            
+            <span class="start-hero-stat-sub">
+                (&#9792;&thinsp;
+<span class="prov-stat-container">
+    
+<button type="button" class="prov-trigger"
+        aria-expanded="false" aria-haspopup="dialog"
+        aria-controls="prov-hero-sex-f"
+        data-prov-trigger="prov-hero-sex-f">4.224</button>
+
+    
+<aside class="prov-popover" id="prov-hero-sex-f"
+       role="dialog" aria-hidden="true" aria-label="Herkunft: Weiblich">
+    <header class="prov-popover-head">
+        <h3 class="prov-popover-title">Weiblich</h3>
+        <p class="prov-popover-sub">@sex="f" im Personenregister</p>
+        <button type="button" class="prov-popover-close" aria-label="Schließen">&times;</button>
+    </header>
+    <div class="prov-popover-body">
+        
+        <p class="prov-ratio">4.224 <span class="prov-ratio-sep">von</span> 16.084 <span class="prov-ratio-pct">&middot; 26,3&nbsp;%</span></p>
+        <footer class="prov-foot">
+            <span class="prov-foot-source"><code>indices/personList.xml</code></span>
+            <a class="prov-foot-link" href="./project/glossary.html#individuelle-person">&rarr; Glossar</a>
+        </footer>
+    
+    </div>
+</aside>
+
+</span>
+
+                &middot;
+                &#9794;&thinsp;
+<span class="prov-stat-container">
+    
+<button type="button" class="prov-trigger"
+        aria-expanded="false" aria-haspopup="dialog"
+        aria-controls="prov-hero-sex-m"
+        data-prov-trigger="prov-hero-sex-m">11.860</button>
+
+    
+<aside class="prov-popover" id="prov-hero-sex-m"
+       role="dialog" aria-hidden="true" aria-label="Herkunft: Männlich">
+    <header class="prov-popover-head">
+        <h3 class="prov-popover-title">Männlich</h3>
+        <p class="prov-popover-sub">@sex="m" im Personenregister</p>
+        <button type="button" class="prov-popover-close" aria-label="Schließen">&times;</button>
+    </header>
+    <div class="prov-popover-body">
+        
+        <p class="prov-ratio">11.860 <span class="prov-ratio-sep">von</span> 16.084 <span class="prov-ratio-pct">&middot; 73,7&nbsp;%</span></p>
+        <footer class="prov-foot">
+            <span class="prov-foot-source"><code>indices/personList.xml</code></span>
+            <a class="prov-foot-link" href="./project/glossary.html#individuelle-person">&rarr; Glossar</a>
+        </footer>
+    
+    </div>
+</aside>
+
+</span>
+)
+            </span>
+        </div>
+    </header>
+
+    
+    <div class="start-entry-grid">
+        <a href="./documents.html" class="start-entry-card">
+            <div class="start-entry-card-icon">
+                <svg width="32" height="32" viewBox="0 0 32 32" fill="none" xmlns="http://www.w3.org/2000/svg" aria-hidden="true">
+                    <rect x="6" y="4" width="16" height="20" rx="1.5" stroke="currentColor" stroke-width="1.5" fill="currentColor" fill-opacity="0.1"/>
+                    <rect x="10" y="8" width="16" height="20" rx="1.5" stroke="currentColor" stroke-width="1.5" fill="none"/>
+                    <line x1="13" y1="14" x2="23" y2="14" stroke="currentColor" stroke-width="1.5" stroke-linecap="round"/>
+                    <line x1="13" y1="18" x2="23" y2="18" stroke="currentColor" stroke-width="1.5" stroke-linecap="round"/>
+                    <line x1="13" y1="22" x2="19" y2="22" stroke="currentColor" stroke-width="1.5" stroke-linecap="round"/>
+                </svg>
+            </div>
+            <p class="start-entry-card-title">Quellen durchsuchen</p>
+            <p class="start-entry-card-desc">
+                2.635 Quellen aus 3 Quellenkorpora
+                mit Volltextsuche, Zeitfilter und Faksimile-Ansicht.
+            </p>
+        </a>
+        <a href="./register/persons.html" class="start-entry-card">
+            <div class="start-entry-card-icon">
+                <svg width="32" height="32" viewBox="0 0 32 32" fill="none" xmlns="http://www.w3.org/2000/svg" aria-hidden="true">
+                    <circle cx="11" cy="11" r="4" stroke="currentColor" stroke-width="1.5" fill="currentColor" fill-opacity="0.15"/>
+                    <path d="M4 26 C4 21, 7 18, 11 18 C15 18, 18 21, 18 26" stroke="currentColor" stroke-width="1.5" fill="none" stroke-linecap="round"/>
+                    <circle cx="22" cy="13" r="3" stroke="currentColor" stroke-width="1.5" fill="none"/>
+                    <path d="M18 24 C18 21, 20 19, 22 19 C25 19, 28 21, 28 25" stroke="currentColor" stroke-width="1.5" fill="none" stroke-linecap="round"/>
+                </svg>
+            </div>
+            <p class="start-entry-card-title">Personenregister</p>
+            <p class="start-entry-card-desc">
+                16.084 individuelle Personen aus den Quellen.
+                Organisationen und Orte folgen, sobald freigegeben.
+            </p>
+        </a>
+        <a href="./project/about.html" class="start-entry-card">
+            <div class="start-entry-card-icon">
+                <svg width="32" height="32" viewBox="0 0 32 32" fill="none" xmlns="http://www.w3.org/2000/svg" aria-hidden="true">
+                    <circle cx="16" cy="16" r="12" stroke="currentColor" stroke-width="1.5" fill="currentColor" fill-opacity="0.1"/>
+                    <circle cx="16" cy="10.5" r="1.6" fill="currentColor"/>
+                    <line x1="16" y1="14" x2="16" y2="23" stroke="currentColor" stroke-width="1.8" stroke-linecap="round"/>
+                </svg>
+            </div>
+            <p class="start-entry-card-title">&Uuml;ber das Projekt</p>
+            <p class="start-entry-card-desc">
+                Forschungskontext, Quellenbestand, Annotationsmodell
+                und Editionsrichtlinien.
+            </p>
+        </a>
+    </div>
+
+    
+    <section class="start-twoways">
+
+        <div class="start-twoways-column">
+            <p class="start-twoways-eyebrow">Exploration</p>
+            <p class="start-twoways-intro">Offene, visuelle &Uuml;berblicksdarstellungen der Datenbest&auml;nde.</p>
+            <div class="start-twoways-grid">
+
+                <a href="./exploration/roles.html" class="explore-hub-card explore-hub-card--active">
+                    <div class="explore-hub-card-icon">
+                        <svg width="40" height="40" viewBox="0 0 40 40" fill="none" xmlns="http://www.w3.org/2000/svg">
+                            <rect x="4" y="8" width="12" height="24" rx="2" stroke="currentColor" stroke-width="1.5" fill="none"/>
+                            <rect x="4" y="8" width="12" height="14" rx="2" fill="currentColor" opacity="0.15"/>
+                            <rect x="20" y="12" width="12" height="20" rx="2" stroke="currentColor" stroke-width="1.5" fill="none"/>
+                            <rect x="20" y="12" width="12" height="10" rx="2" fill="currentColor" opacity="0.15"/>
+                        </svg>
+                    </div>
+                    <h2 class="explore-hub-card-title">Rollen</h2>
+                    <p class="explore-hub-card-desc">Funktionsrollen nach Geschlecht, institutionelle Zugeh&ouml;rigkeit und Personenprofile.</p>
+                </a>
+
+                <a href="./exploration/networks.html" class="explore-hub-card explore-hub-card--active">
+                    <div class="explore-hub-card-icon">
+                        <svg width="40" height="40" viewBox="0 0 40 40" fill="none" xmlns="http://www.w3.org/2000/svg">
+                            <circle cx="12" cy="14" r="4" stroke="currentColor" stroke-width="1.5"/>
+                            <circle cx="28" cy="14" r="4" stroke="currentColor" stroke-width="1.5"/>
+                            <circle cx="20" cy="28" r="4" stroke="currentColor" stroke-width="1.5"/>
+                            <line x1="15.5" y1="16.5" x2="17" y2="25" stroke="currentColor" stroke-width="1.5" stroke-dasharray="2 2"/>
+                            <line x1="24.5" y1="16.5" x2="23" y2="25" stroke="currentColor" stroke-width="1.5" stroke-dasharray="2 2"/>
+                            <line x1="16" y1="14" x2="24" y2="14" stroke="currentColor" stroke-width="1.5" stroke-dasharray="2 2"/>
+                        </svg>
+                    </div>
+                    <h2 class="explore-hub-card-title">Beziehungen</h2>
+                    <p class="explore-hub-card-desc">Annotierte Beziehungen nach Verwandtschaft, Beruf, Vertretung und Freundschaft.</p>
+                </a>
+
+                <a href="./exploration/transactions.html" class="explore-hub-card explore-hub-card--active">
+                    <div class="explore-hub-card-icon">
+                        <svg width="40" height="40" viewBox="0 0 40 40" fill="none" xmlns="http://www.w3.org/2000/svg">
+                            <rect x="6" y="24" width="8" height="8" rx="1" stroke="currentColor" stroke-width="1.5" fill="currentColor" fill-opacity="0.15"/>
+                            <rect x="16" y="16" width="8" height="16" rx="1" stroke="currentColor" stroke-width="1.5" fill="currentColor" fill-opacity="0.15"/>
+                            <rect x="26" y="8" width="8" height="24" rx="1" stroke="currentColor" stroke-width="1.5" fill="currentColor" fill-opacity="0.15"/>
+                        </svg>
+                    </div>
+                    <h2 class="explore-hub-card-title">Transaktionen</h2>
+                    <p class="explore-hub-card-desc">Repertoire der Rechtsgesch&auml;fte: Typen, Verbverteilung und Empf&auml;ngerstrukturen im Zeitverlauf.</p>
+                </a>
+
+                <a href="./exploration/places.html" class="explore-hub-card explore-hub-card--active">
+                    <div class="explore-hub-card-icon">
+                        <svg width="40" height="40" viewBox="0 0 40 40" fill="none" xmlns="http://www.w3.org/2000/svg">
+                            <path d="M20 6C14.5 6 10 10.5 10 16C10 24 20 34 20 34C20 34 30 24 30 16C30 10.5 25.5 6 20 6Z" stroke="currentColor" stroke-width="1.5" fill="currentColor" fill-opacity="0.1"/>
+                            <circle cx="20" cy="16" r="4" stroke="currentColor" stroke-width="1.5"/>
+                        </svg>
+                    </div>
+                    <h2 class="explore-hub-card-title">Orte</h2>
+                    <p class="explore-hub-card-desc">Einzugsgebiet der Rechtsgesch&auml;fte: Siedlungskarte und vollst&auml;ndiges Ortsregister.</p>
+                </a>
+
+            </div>
+        </div>
+
+        <div class="start-twoways-column">
+            <p class="start-twoways-eyebrow">Analyse</p>
+            <p class="start-twoways-intro">Gezielte Abfragen mit vordefinierten Template-Familien.</p>
+            <a href="./analysis/index.html" class="explore-hub-card explore-hub-card--active">
+                <div class="explore-hub-card-icon">
+                    <svg width="40" height="40" viewBox="0 0 40 40" fill="none" xmlns="http://www.w3.org/2000/svg" aria-hidden="true">
+                        <rect x="6" y="6" width="28" height="28" rx="2" stroke="currentColor" stroke-width="1.5" fill="none"/>
+                        <line x1="6" y1="14" x2="34" y2="14" stroke="currentColor" stroke-width="1.5"/>
+                        <line x1="14" y1="14" x2="14" y2="34" stroke="currentColor" stroke-width="1.5"/>
+                        <rect x="18" y="18" width="5" height="4" fill="currentColor" fill-opacity="0.3"/>
+                        <rect x="25" y="18" width="7" height="4" fill="currentColor" fill-opacity="0.5"/>
+                        <rect x="18" y="24" width="8" height="4" fill="currentColor" fill-opacity="0.4"/>
+                        <rect x="28" y="24" width="4" height="4" fill="currentColor" fill-opacity="0.2"/>
+                    </svg>
+                </div>
+                <h2 class="explore-hub-card-title">Grundabfragen</h2>
+                <p class="explore-hub-card-desc">
+                    Template-Kombinationen aus Rolle, Geschlecht, Bestand und Zeitraum
+                    f&uuml;r wiederkehrende Forschungsfragen.
+                </p>
+            </a>
+        </div>
+
+    </section>
+
+
+</div>
+
+    </main>
+
+    <footer class="site-footer">
+        <div class="footer-inner">
+            <div class="footer-col">
+                <p class="footer-project">Stadt und Gemeinschaft Wien &mdash; Datenbank</p>
+                <p>Tr&auml;gerprojekt &raquo;Stadt und Gemeinschaft&laquo; (Universit&auml;t Wien)</p>
+                <p class="footer-meta">Datenstand: 30. April 2026</p>
+            </div>
+            <div class="footer-col footer-col-right">
+                <p>Technische Umsetzung: <a href="https://dhcraft.org" class="footer-link">Digital Humanities Craft OG</a></p>
+                <p>Lizenz: <a href="./impressum.html#lizenz" class="footer-link">CC BY 4.0</a> &middot; Startseite generiert am 30. April 2026</p>
+            </div>
+        </div>
+    </footer>
+
+    <script>window.RELEASED_PERIOD = {min: 1177, max: 1414};</script>
+    <script src="./static/js/core.js"></script>
+    <script src="./static/js/provenance.js"></script>
+    
+</body>
+</html>

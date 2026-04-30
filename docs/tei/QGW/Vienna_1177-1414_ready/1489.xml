@@ -1,0 +1,121 @@
+<?xml version="1.0" encoding="UTF-8"?><!DOCTYPE TEI   SYSTEM "../../../schema/toolbox_full.dtd">
+<TEI xmlns="http://www.tei-c.org/ns/1.0" xmlns:cei="http://www.monasterium.net/NS/cei"
+   xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance">
+   <teiHeader>
+      <fileDesc>
+         <titleStmt>
+            <title>Tei version of 1489 exported from monasterium.net </title>
+         </titleStmt>
+         <publicationStmt>
+            <p/>
+         </publicationStmt>
+         <!--In Original: cei:front/cei:sourceDesc/cei:sourceDescRegest-->
+         <sourceDesc>
+            <bibl type="url">https://www.monasterium.net/mom/AT-WStLA/HAUrk/1489/charter</bibl>
+            <bibl default="false" status="draft">Quellen zur Geschichte der Stadt Wien, Bd. II/1,
+               Nr. 1489 As published in HAUrk by Wiener Stadt- und Landesarchiv </bibl>
+            <msDesc status="draft">
+               <msIdentifier>
+                  <repository>Wiener Stadt- und Landesarchiv</repository>
+                  <idno>1489</idno>
+                  <altIdentifier type="old">
+                     <idno>515689</idno>
+                  </altIdentifier>
+               </msIdentifier>
+               <physDesc>
+                  <sealDesc>
+                     <seal>
+                        <p>Zwei anhangende Siegel: 1. roth u. Sch., zerbrochen (Sava Fig. 57), 2.
+                           schwarz u. Sch.</p>
+                     </seal>
+                  </sealDesc>
+               </physDesc>
+            </msDesc>
+         </sourceDesc>
+      </fileDesc>
+      <encodingDesc>
+         <projectDesc default="false">
+            <p><label type="contentual-editing">Projekt Christina Lutter Stadt und
+                  Gemeinschaft</label></p>
+         </projectDesc>
+      </encodingDesc>
+      <profileDesc>
+         <creation>
+            <placeName>Wien</placeName>
+            <date when="14010622">1401 VI 22</date>
+            <origDate instant="false">ze Wienn, des nagsten mittichens vor sand Johanns tag ze
+               Sunnbenden.</origDate></creation>
+      </profileDesc>
+   </teiHeader>
+   <facsimile>
+      <surface>
+         <graphic
+            url="http://images.monasterium.net/pics/AT-WStLA/HA-U/WStLA-HA-Urkunden_01489_r.jpg"/>
+      </surface>
+      <surface>
+         <graphic
+            url="http://images.monasterium.net/pics/AT-WStLA/HA-U/WStLA-HA-Urkunden_01489_v.jpg"/>
+      </surface>
+   </facsimile>
+   <text>
+      <body>
+         <div type="abstract" resp="kg">
+            <p>
+               <rs type="event" ref="#ev__QGW_II_I_1489"><rs type="fn" role="issuer"><rs
+                        type="person" ref="#pe__simon_rorer_von_hebersdorf_QGW_II_I_1489">Simon Rorer
+                        von Heberstorf, <roleName type="occ" corresp="#org__wien-buergerspital"
+                           >caplan</roleName> in der <rs type="org" ref="#org__wien-buergerspital"
+                           >purger Spital vor Chêrnertor ze Wienn</rs>, <roleName type="rep"
+                           corresp="#pe__johann_chienast_QGW_II_I_1489">ausrichter und volfu/erer des
+                           geschefts</roleName></rs></rs>, <rs type="event"
+                     ref="#ev__QGW_II_I_1489_men_1">so <rs type="person"
+                        ref="#pe__johann_chienast_QGW_II_I_1489">Hanns der Chienast</rs> geschafft
+                     hat</rs>, <triggerstring n="disp">verkauft</triggerstring>
+                  <rs type="fn" role="other"><triggerstring n="fn">mit Handen</triggerstring>
+                     <rs type="person" ref="#pe__christian_duerr_QGW_II_I_1489">Kristans des Dürren,
+                           <roleName type="occ"
+                           corresp="#pe__albrecht_iv_herzog_von_oesterreich_QGW_II_I_1332"
+                           >perigmaister</roleName>
+                        <roleName type="occ"
+                           corresp="#pe__wilhelm_herzog_von_oesterreich_QGW_II_I_1313"
+                              ><add>perigmaister</add></roleName>
+                        <rs type="person" ref="#pe__wilhelm_herzog_von_oesterreich_QGW_II_I_1313"
+                           >herzog Wilhalms</rs> und <rs type="person"
+                           ref="#pe__albrecht_iv_herzog_von_oesterreich_QGW_II_I_1332">herzog
+                           Albrechts</rs></rs></rs>, ein von dem Kienast hinterlassenes Achtel
+                  Weingarten, gelegen in dem Altenlerichveld zenagst Me/andleins weingarten bei dem
+                  Prunn, von dem man den Herzögen 5 Helbling zu Grundrecht dient, um 14 lb dn. <rs
+                     type="fn" role="recipient"><rs type="person" ref="#pe__andreas_QGW_II_I_1489"
+                           ><roleName type="title">maister</roleName> Andren, <rs type="person"
+                           ref="#pe__albrecht_iv_herzog_von_oesterreich_QGW_II_I_1332">herzog
+                           Albrechts</rs>
+                        <roleName type="occ"
+                           corresp="#pe__albrecht_iv_herzog_von_oesterreich_QGW_II_I_1332"
+                           >choch</roleName></rs>, und seiner <rs type="person"
+                        ref="#pe__ottilia_GQW_II_I_1489_QGW_II_I_1489"><roleName type="kin"
+                           corresp="#pe__andreas_QGW_II_I_1489">hausfraun</roleName>
+                        <roleName type="title">fraun</roleName> Otilien</rs></rs>.</rs>
+            </p>
+         </div>
+         <div type="seal">
+            <p><rs type="event" ref="#ev__QGW_II_I_1489"><rs type="fn" role="witness">Besiegelt mit
+                     dem <rs type="person" ref="#pe__christian_duerr_QGW_II_I_1489">herzoglichen
+                        perkinsigil</rs> und dem Siegel <rs type="person"
+                        ref="#pe__konrad_bei_dem_gottesacker_QGW_II_I_1489">Chunrats bei dem
+                        Gotsakcher, des <roleName type="occ" corresp="#org__wien">aussern rates der
+                           stat ze Wienn</roleName></rs>.</rs></rs>
+            </p>
+         </div>
+         <div type="lists">
+            <xi:include xmlns:xi="http://www.w3.org/2001/XInclude"
+               href="../../../../indices/placeList.xml" xpointer="element(/1/2/1/1)"/>
+            <xi:include xmlns:xi="http://www.w3.org/2001/XInclude"
+               href="../../../../indices/personList.xml" xpointer="element(/1/2/1/1)"/>
+            <xi:include xmlns:xi="http://www.w3.org/2001/XInclude"
+               href="../../../../indices/eventList.xml" xpointer="element(/1/2/1/1)"/>
+            <xi:include xmlns:xi="http://www.w3.org/2001/XInclude"
+               href="../../../../indices/orgList.xml" xpointer="element(/1/2/1/1)"/>
+         </div>
+      </body>
+   </text>
+</TEI>

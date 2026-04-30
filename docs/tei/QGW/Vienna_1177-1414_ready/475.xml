@@ -1,0 +1,135 @@
+<?xml version="1.0" encoding="UTF-8"?><!DOCTYPE TEI   SYSTEM "../../../schema/toolbox_full.dtd">
+<TEI xmlns="http://www.tei-c.org/ns/1.0" xmlns:cei="http://www.monasterium.net/NS/cei"
+  xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance">
+  <teiHeader>
+    <fileDesc>
+      <titleStmt>
+        <title>Tei version of 475 exported from monasterium.net </title>
+      </titleStmt>
+      <publicationStmt>
+        <p/>
+      </publicationStmt>
+      <!--In Original: cei:front/cei:sourceDesc/cei:sourceDescRegest-->
+      <sourceDesc>
+        <bibl type="url">https://www.monasterium.net/mom/AT-WStLA/HAUrk/475/charter</bibl>
+        <bibl default="false" status="draft">Quellen zur Geschichte der Stadt Wien, Bd. II/1, Nr.
+          475 As published in HAUrk by Wiener Stadt- und Landesarchiv </bibl>
+        <msDesc status="draft">
+          <msIdentifier>
+            <repository>Wiener Stadt- und Landesarchiv</repository>
+            <idno>475</idno>
+            <altIdentifier type="old">
+              <idno>514648</idno>
+            </altIdentifier>
+          </msIdentifier>
+          <msContents>
+            <msItem>
+              <listBibl default="false">
+                <bibl default="false" status="draft">Hormayr's Taschenbuch 1843, 382 no 16.</bibl>
+                <bibl default="false" status="draft">Jahrbuch der kais. Kunstsamml. 18b, n» 16023,
+                  Citat mit Siegelabbildung.</bibl>
+              </listBibl>
+            </msItem>
+          </msContents>
+          <physDesc>
+            <sealDesc>
+              <seal>
+                <p>Drei anhangende Siegel, 1. roth u. K.</p>
+              </seal>
+            </sealDesc>
+          </physDesc>
+        </msDesc>
+      </sourceDesc>
+    </fileDesc>
+    <encodingDesc>
+      <projectDesc default="false">
+        <p><label type="contentual-editing">Projekt Christina Lutter Stadt und
+          Gemeinschaft</label></p>
+      </projectDesc>
+    </encodingDesc>
+    <profileDesc>
+      <creation>
+        <placeName>Wien</placeName>
+        <date when="13560105">1356 I 05</date>
+        <origDate instant="false">ze Wienne, an dem Percht abent.</origDate></creation>
+    </profileDesc>
+  </teiHeader>
+  <facsimile>
+    <surface>
+      <graphic url="http://images.monasterium.net/pics/AT-WStLA/HA-U/WStLA-HA-Urkunden_00475_r.jpg"
+      />
+    </surface>
+    <surface>
+      <graphic url="http://images.monasterium.net/pics/AT-WStLA/HA-U/WStLA-HA-Urkunden_00475_v.jpg"
+      />
+    </surface>
+  </facsimile>
+  <text>
+    <body>
+      <div type="abstract" resp="lp">
+        <p>
+          <rs type="event" ref="#ev__QGW_II_I_475"><rs type="fn" role="issuer"><rs type="person"
+                ref="#pe__siegfried_reicholf_QGW_II_I_1242">Seifrid, weiln gesessen an des herzogen
+                stat in der Münze ze Wienne</rs>, und <rs type="person"
+                ref="#pe__margarethe_QGW_II_I_417_b">Margret, seine <roleName type="kin"
+                  corresp="#pe__siegfried_reicholf_QGW_II_I_1242">Hausfrau</roleName></rs></rs>,
+              <triggerstring n="disp">verkaufen</triggerstring>
+            <rs type="fn" role="other"><triggerstring n="fn">mit Handen</triggerstring>
+              <rs type="person" ref="#pe__albrecht_rampersdorfer_QGW_II_I_388">ihres <roleName
+                  type="title">Grundherrn</roleName>
+                <roleName type="title">hern</roleName> Albrechts des Ramperstorfer, <roleName
+                  type="occ" corresp="#org__wien-buergerspital">obrister spitalmaister</roleName> der
+                purger Spital ze Wienne</rs></rs>, 5 lb dn. gelts purchrechts , die sie gehabt haben
+            auf <rs type="person" ref="#pe__pilgrim_rot_QGW_II_I_408_b">ihres <roleName type="kin"
+                corresp="#pe__siegfried_reicholf_QGW_II_I_1242">Schwagers</roleName>
+              <roleName type="kin" corresp="#pe__margarethe_QGW_II_I_417_b"
+                ><add>Schwager</add></roleName> Pilgreims, <rs type="person"
+                ref="#pe__pilgrim_rot_QGW_II_I_408_a">des Roten hern Pilgreims</rs>
+              <roleName type="kin" corresp="#pe__pilgrim_rot_QGW_II_I_408_a">sun</roleName></rs>,
+            zwain tailen des hauses, gelegen in der Vodern Pekchenstrasse ze Wienne, das weiln des
+            vorgenannten Roten hern Pilgreims gewesen ist, zenaechst des Maeurleins haus , um 50 lb
+            dn. <rs type="fn" role="recipient"><rs type="person" ref="#pe__niklas_QGW_II_I_345"
+                  ><roleName type="title">hern</roleName> Nichlasen, <roleName type="occ"
+                  corresp="#org__wien-st_maria_im_rathaus-messe_friedrich_von_ragelsdorf"
+                  >chapplan</roleName> und <roleName type="occ"
+                  corresp="#org__wien-st_maria_im_rathaus-messe_friedrich_von_ragelsdorf"
+                  >verweser</roleName> der ewigen messe, die sein <rs type="person"
+                  ref="#pe__friedrich_von_ragelsdorf_QGW_II_I_793"><roleName type="kin"
+                    corresp="#pe__niklas_QGW_II_I_345">pruder</roleName> Fridreich von Raechleinstorf
+                    <roleName type="occ" corresp="#pe__reimprecht_zaunrüde_QGW_II_I_305"
+                      ><add>schreiber</add></roleName>, <rs type="person"
+                    ref="#pe__reimprecht_zaunrüde_QGW_II_I_305">weiln hern Reimprechts schreiber des
+                    Zaunrüden <roleName type="dead">saelig</roleName></rs></rs>, gewidempt und
+                gestifft hat in die chappelln Unser Vrowen in der purger Rathaus ze Wienne, hern
+                Otten Haim Stiftung saelig</rs></rs> . Niklas hat dieses Burgrecht zu der Messe
+            gekauft von den phenningen, darumb er hern Stephan dem Pollen, gesessen an des herzogen
+            stat in der Münze ze Wienne, verchauft hat ein halbs jeuch weingarten, gelegen ze
+            Otakchrinne an der Roten Erde und haisset die Swu/epel, den auch vormals der vorgenant
+            Fridreich von Raechleinsdorf zu der egenanten ewigen messe geschafft hat gehabt .</rs>
+        </p>
+      </div>
+      <div type="seal">
+        <p><rs type="event" ref="#ev__QGW_II_I_475"><rs type="fn" role="witness">Besiegelt mit den
+              Siegeln: 1. <rs type="person" ref="#pe__siegfried_reicholf_QGW_II_I_1242">des
+                Ausstellers</rs>, 2. <rs type="person" ref="#pe__albrecht_rampersdorfer_QGW_II_I_388"
+                >des <roleName type="title">Grundherrn</roleName> Albrechts des
+              Rampertstorffer</rs>, 3. <rs type="person" ref="#pe__heinrich_oeler_QGW_II_I_771"
+                  ><roleName type="title">hern</roleName> Hainreichs des Öler</rs>.</rs></rs>
+        </p>
+      </div>
+      <div type="nota">
+        <p>Indorsat: Von des Ebner haus wegen. </p>
+      </div>
+      <div type="lists">
+        <xi:include xmlns:xi="http://www.w3.org/2001/XInclude"
+          href="../../../../indices/placeList.xml" xpointer="element(/1/2/1/1)"/>
+        <xi:include xmlns:xi="http://www.w3.org/2001/XInclude"
+          href="../../../../indices/personList.xml" xpointer="element(/1/2/1/1)"/>
+        <xi:include xmlns:xi="http://www.w3.org/2001/XInclude"
+          href="../../../../indices/eventList.xml" xpointer="element(/1/2/1/1)"/>
+        <xi:include xmlns:xi="http://www.w3.org/2001/XInclude"
+          href="../../../../indices/orgList.xml" xpointer="element(/1/2/1/1)"/>
+      </div>
+    </body>
+  </text>
+</TEI>

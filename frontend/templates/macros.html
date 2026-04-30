@@ -1,0 +1,177 @@
+{# Reusable UI components for the digital edition templates #}
+
+{# Previous/next document navigation #}
+{% macro doc_nav(meta, root_path, extra_class='') %}
+<nav class="doc-paging{{ ' ' + extra_class if extra_class }}">
+    {% if meta.prev_url %}
+    <a href="{{ root_path }}/{{ meta.prev_url }}" class="doc-paging-prev">&larr; Nr. {{ meta.prev_id }}</a>
+    {% else %}
+    <span class="doc-paging-prev"></span>
+    {% endif %}
+    {% if meta.next_url %}
+    <a href="{{ root_path }}/{{ meta.next_url }}" class="doc-paging-next">Nr. {{ meta.next_id }} &rarr;</a>
+    {% else %}
+    <span class="doc-paging-next"></span>
+    {% endif %}
+</nav>
+{% endmacro %}
+
+{# External link SVG icon #}
+{% macro external_icon() %}
+<svg width="12" height="12" viewBox="0 0 12 12" fill="none"><path d="M3.5 1.5H2C1.72 1.5 1.5 1.72 1.5 2V10C1.5 10.28 1.72 10.5 2 10.5H10C10.28 10.5 10.5 10.28 10.5 10V8.5M7 1.5H10.5V5M10.25 1.75L5.5 6.5" stroke="currentColor" stroke-linecap="round" stroke-linejoin="round"/></svg>
+{% endmacro %}
+
+{# Search box with icon and clear button #}
+{% macro search_box(placeholder='Suche ...') %}
+<div class="search-box">
+    <svg class="search-icon" width="18" height="18" viewBox="0 0 18 18" fill="none" aria-hidden="true">
+        <circle cx="7.5" cy="7.5" r="5.5" stroke="currentColor" stroke-width="1.5"/>
+        <path d="M12 12L16 16" stroke="currentColor" stroke-width="1.5" stroke-linecap="round"/>
+    </svg>
+    <label for="search-input" class="sr-only">{{ placeholder }}</label>
+    <input type="text" id="search-input" placeholder="{{ placeholder }}" autocomplete="off" spellcheck="false">
+    <button class="search-clear hidden" id="search-clear" aria-label="Suche löschen">&times;</button>
+</div>
+{% endmacro %}
+
+{# Result count display #}
+{% macro result_count(count, label='Quellen') %}
+<div class="result-count" id="result-count">
+    {{ count }} {{ label }}
+</div>
+{% endmacro %}
+
+{# Active filters container (JS-managed) #}
+{% macro active_filters() %}
+<div class="active-filters" id="active-filters"></div>
+{% endmacro %}
+
+{# No-results message #}
+{% macro no_results(message='Keine Einträge gefunden.') %}
+<div class="no-results hidden" id="no-results">
+    <p>{{ message }}</p>
+</div>
+{% endmacro %}
+
+{# Embedded JSON data for JS #}
+{% macro json_data(script_id, data_json) %}
+<script id="{{ script_id }}" type="application/json">{{ data_json }}</script>
+{% endmacro %}
+
+{# Time-range slider for exploration pages #}
+{% macro time_range_slider(id_prefix='explore', min=None, max=None, step=10) %}
+{% set _min = min if min is not none else released_period.min_year %}
+{% set _max = max if max is not none else released_period.max_year_with_extensions %}
+<div class="explore-header-time">
+    <div class="explore-range-wrap" id="{{ id_prefix }}-range-wrap">
+        <div class="explore-range-track" id="{{ id_prefix }}-range-track">
+            <div class="explore-range-fill" id="{{ id_prefix }}-range-fill"></div>
+            <input type="range" id="{{ id_prefix }}-range-min" min="{{ _min }}" max="{{ _max }}" step="{{ step }}" value="{{ _min }}" aria-label="Zeitraum von">
+            <input type="range" id="{{ id_prefix }}-range-max" min="{{ _min }}" max="{{ _max }}" step="{{ step }}" value="{{ _max }}" aria-label="Zeitraum bis">
+        </div>
+        <span class="explore-range-display" id="{{ id_prefix }}-range-display">{{ _min }}–{{ _max }}</span>
+    </div>
+    {% if released_period.unprocessed_gaps %}
+    <span class="explore-gap-note hidden" id="{{ id_prefix }}-gap-note">{{ released_period.unprocessed_gaps[0]['from'] }}–{{ released_period.unprocessed_gaps[0]['to'] }}: noch nicht ausgewertet</span>
+    {% endif %}
+</div>
+{% endmacro %}
+
+{# Drill-down document overlay — reusable across exploration pages #}
+{% macro drill_down_overlay(id_prefix='explore-drilldown', wide=false) %}
+<div class="explore-drilldown-overlay hidden" id="{{ id_prefix }}" role="dialog"
+     aria-label="Quellenliste" aria-modal="true">
+    <div class="explore-drilldown-inner{{ ' explore-drilldown-inner--wide' if wide }}">
+        <div class="explore-drilldown-header">
+            <h3 id="{{ id_prefix }}-title">Quellen</h3>
+            <button class="explore-drilldown-close" id="{{ id_prefix }}-close"
+                    aria-label="Schließen">&times;</button>
+        </div>
+        <div class="explore-drilldown-body" id="{{ id_prefix }}-body">
+            <table class="explore-data-table">
+                <thead>
+                    <tr>
+                        <th>Nr.</th>
+                        <th>Datum</th>
+                        <th>Quellenkorpus</th>
+                        <th>Regest</th>
+                    </tr>
+                </thead>
+                <tbody id="{{ id_prefix }}-tbody"></tbody>
+            </table>
+        </div>
+        <div class="explore-drilldown-footer">
+            <span id="{{ id_prefix }}-count"></span>
+            <button class="explore-btn" id="{{ id_prefix }}-export">CSV-Export</button>
+        </div>
+    </div>
+</div>
+{% endmacro %}
+
+{# ============================================================
+   Provenienz-Komponente (Projekt-Standard)
+   ============================================================
+   Pattern: jede aggregierte Zahl im UI wird in einen
+   prov-stat-container gewrappt. Der Trigger ist die Zahl
+   selbst. Das Popover liegt als Sibling direkt daneben.
+
+   Interaktion:
+   - Hover / Focus  öffnet Popover (transient)
+   - Klick          fixiert Popover (persistent)
+   - ESC / Outside  schließt
+
+   Verwendung:
+   <span class="prov-stat-container">
+       {{ prov_trigger('my-id') }}<strong>2.635</strong> Quellen{{ prov_trigger_end() }}
+       {% call prov_popover('my-id', 'Quellen', 'Zählebene: ...') %}
+           <p class="prov-def">Kurze Definition.</p>
+           <table class="prov-breakdown">...</table>
+           <footer class="prov-foot">
+               <span class="prov-foot-source">Quelle: <code>...</code></span>
+               <a class="prov-foot-link" href="...">→ Statistik</a>
+           </footer>
+       {% endcall %}
+   </span>
+
+   Oder kompakter via prov_stat mit caller-Content für den Trigger:
+   {% call prov_stat('my-id') %}<strong>2.635</strong> Quellen{% endcall %}
+   (Popover muss direkt darunter gerendert werden.) #}
+
+{% macro prov_stat(popover_id) %}
+<button type="button" class="prov-trigger"
+        aria-expanded="false" aria-haspopup="dialog"
+        aria-controls="{{ popover_id }}"
+        data-prov-trigger="{{ popover_id }}">{{ caller() }}</button>
+{% endmacro %}
+
+{% macro prov_popover(popover_id, title, subtitle='') %}
+<aside class="prov-popover" id="{{ popover_id }}"
+       role="dialog" aria-hidden="true" aria-label="Herkunft: {{ title }}">
+    <header class="prov-popover-head">
+        <h3 class="prov-popover-title">{{ title }}</h3>
+        {% if subtitle %}<p class="prov-popover-sub">{{ subtitle }}</p>{% endif %}
+        <button type="button" class="prov-popover-close" aria-label="Schließen">&times;</button>
+    </header>
+    <div class="prov-popover-body">
+        {{ caller() }}
+    </div>
+</aside>
+{% endmacro %}
+
+{# Komplettes "Teilmenge von Gesamt"-Stat mit Trigger + Popover.
+   Zeigt im Popover ein prov-ratio-Verhältnis und einen Standard-Footer.
+   Für Phase-2 wiederverwendbar, wo immer eine Untermenge ins Verhältnis
+   zu einem bekannten Gesamt gesetzt wird. #}
+{% macro prov_ratio_stat(popover_id, title, subtitle, count, of_total, pct,
+                         source, link_href, link_label) %}
+<span class="prov-stat-container">
+    {% call prov_stat(popover_id) %}{{ count }}{% endcall %}
+    {% call prov_popover(popover_id, title, subtitle) %}
+        <p class="prov-ratio">{{ count }} <span class="prov-ratio-sep">von</span> {{ of_total }} <span class="prov-ratio-pct">&middot; {{ pct }}&nbsp;%</span></p>
+        <footer class="prov-foot">
+            <span class="prov-foot-source"><code>{{ source }}</code></span>
+            <a class="prov-foot-link" href="{{ link_href }}">&rarr; {{ link_label }}</a>
+        </footer>
+    {% endcall %}
+</span>
+{% endmacro %}

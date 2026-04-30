@@ -1,0 +1,223 @@
+{% extends "base.html" %}
+{% from "macros.html" import doc_nav, external_icon %}
+
+{% block title %}{{ meta.idno }} ({{ meta.date_display }}){% endblock %}
+
+{% block head %}
+<link rel="stylesheet" href="{{ root_path }}/static/css/document.css">
+<link rel="canonical" href="{{ meta.url }}">
+<meta name="citation_title" content="Nr. {{ meta.idno }}{% if meta.date_display %} ({{ meta.date_display }}){% endif %}">
+<meta name="citation_collection" content="{{ meta.collection_label }}">
+{% endblock %}
+
+{% block content %}
+<article class="document{% if meta.facsimile_urls %} has-facsimile{% endif %}">
+
+    <!-- Compact toolbar (sticky below nav) -->
+    <div class="doc-toolbar">
+        <div class="doc-toolbar-inner">
+            <div class="doc-toolbar-left">
+                <nav class="doc-breadcrumb">
+                    <a href="{{ root_path }}/documents.html">Quellen</a>
+                    <span class="bc-sep">›</span>
+                    <span>{{ meta.collection_label }}</span>
+                </nav>
+                <div class="doc-toolbar-title">
+                    <strong>Nr. {{ meta.idno }}</strong>
+                    {% if meta.date_display %}
+                    <span class="toolbar-sep">·</span>
+                    <span class="toolbar-date">{{ meta.date_display }}</span>
+                    {% endif %}
+                    {% if meta.place %}
+                    <span class="toolbar-sep">·</span>
+                    <span class="toolbar-place">{{ meta.place }}</span>
+                    {% endif %}
+                </div>
+            </div>
+            <div class="doc-toolbar-right">
+                {# TEI-XML download (static copy) #}
+                <a class="toolbar-btn" href="{{ root_path }}/{{ meta.tei_url }}"
+                   download="{{ meta.idno }}.xml" title="TEI-XML herunterladen">&#x2B07;</a>
+                {# Quality indicator badge #}
+                {% set q_cls = ['quality-ok', 'quality-notice', 'quality-warning'][meta.quality_score] %}
+                {% set q_labels = ['OK', 'Hinweis', 'Warnung'] %}
+                <button class="toolbar-btn toolbar-quality toolbar-{{ q_cls }}"
+                        id="quality-toggle" aria-expanded="false"
+                        title="Datenqualität: {{ meta.quality_count }} {{ q_labels[meta.quality_score] }}{{ 'e' if meta.quality_score == 1 and meta.quality_count != 1 }}{{ 'en' if meta.quality_score == 2 and meta.quality_count != 1 }}">&#x2714;</button>
+                {# Annotation layer toggle #}
+                <button class="toolbar-btn" id="anno-toggle" aria-expanded="false"
+                        title="Annotationsebenen ein-/ausblenden">&#x25CE;</button>
+                <div class="anno-toggle-popover hidden" id="anno-toggle-popover">
+                    <div class="anno-toggle-header">Annotationsebenen</div>
+                    <label class="anno-toggle-item">
+                        <input type="checkbox" checked data-layer="entities">
+                        <span class="legend-swatch swatch-person"></span> Entitäten
+                    </label>
+                    <label class="anno-toggle-item">
+                        <input type="checkbox" checked data-layer="functions">
+                        <span class="legend-swatch swatch-fn-issuer"></span> Funktionsrollen
+                    </label>
+                    <label class="anno-toggle-item">
+                        <input type="checkbox" checked data-layer="attributes">
+                        <span class="legend-swatch swatch-attr"></span> Attribute
+                    </label>
+                    <label class="anno-toggle-item">
+                        <input type="checkbox" checked data-layer="triggers">
+                        <span class="legend-swatch swatch-trigger"></span> Dispositivformel
+                    </label>
+                    <hr class="anno-toggle-sep">
+                    <button class="anno-toggle-all" id="anno-toggle-all">Alle ein/aus</button>
+                </div>
+                {# Factoid view + citation helper #}
+                <button class="toolbar-btn" id="factoid-toggle" aria-expanded="false" title="Faktoid-Ansicht">&#x1D5A5;</button>
+                <button class="toolbar-btn" id="cite-toggle" aria-expanded="false" title="Zitieren">&#x201E;&#x201C;</button>
+                <div class="cite-popover hidden" id="cite-popover"></div>
+                {{ doc_nav(meta, root_path, 'doc-paging-inline') }}
+            </div>
+        </div>
+    </div>
+
+    <!-- Content area: synopsis grid (text + facsimile) -->
+    <div class="doc-content">
+        <!-- Document body (rendered TEI) -->
+        <div class="doc-body">
+            {{ body | safe }}
+
+            <!-- Data layer: always visible provenance strip -->
+            <footer class="doc-provenance">
+                <span class="prov-label">Datenherkunft</span>
+                <span class="prov-item"><code>{{ meta.source_path }}</code></span>
+                <span class="prov-sep">·</span>
+                <span class="prov-item">{{ meta.collection_label }} <code class="prov-path">{{ meta.collection_path }}</code></span>
+                <span class="prov-sep">·</span>
+                <span class="prov-item">{{ meta.person_count }} Pers., {{ meta.org_count }} Org.</span>
+                <span class="prov-sep">·</span>
+                <span class="prov-item"><code>edition/renderer.py</code> → Jinja2</span>
+            </footer>
+        </div>
+
+        {% if meta.facsimile_urls %}
+        <!-- Facsimile panel (always visible for has-facsimile) -->
+        <div class="doc-facs-panel">
+            <div class="facs-viewer">
+                <div class="facs-controls">
+                    {% if meta.facsimile_urls|length > 1 %}
+                    <button class="facs-prev" aria-label="Vorherige Seite" disabled>&#8249;</button>
+                    {% endif %}
+                    <span class="facs-page-indicator">
+                        Seite <span id="facs-current">1</span>/<span>{{ meta.facsimile_urls|length }}</span>
+                    </span>
+                    {% if meta.facsimile_urls|length > 1 %}
+                    <button class="facs-next" aria-label="Nächste Seite">&#8250;</button>
+                    {% endif %}
+                </div>
+                <div class="facs-image-wrap" id="facs-image-wrap">
+                    <img class="facs-image" id="facs-image"
+                         alt="Faksimile von Nr. {{ meta.idno }}"
+                         loading="lazy">
+                </div>
+                <div class="facs-zoom-controls">
+                    <button class="facs-zoom-in" aria-label="Vergrößern">+</button>
+                    <button class="facs-zoom-out" aria-label="Verkleinern">&minus;</button>
+                    <button class="facs-zoom-reset" aria-label="Zurücksetzen">1:1</button>
+                </div>
+                <p class="facs-attribution">
+                    Bild: <a href="{{ meta.source_url or meta.facsimile_urls[0] }}" target="_blank" rel="noopener">Monasterium.net</a>
+                </p>
+            </div>
+        </div>
+        <!-- Facsimile URLs for JS -->
+        <script class="facs-urls" type="application/json">{{ meta.facsimile_urls | tojson }}</script>
+        {% endif %}
+    </div>
+
+    <!-- Factoid view (toggleable, generated by JS) -->
+    <section class="factoid-view hidden" id="factoid-view" aria-label="Faktoid-Ansicht"></section>
+
+    <!-- Quality findings panel (toggleable, server-rendered) -->
+    <section class="quality-panel hidden" id="quality-panel" aria-label="Datenqualität">
+        {% if meta.quality_count == 0 %}
+        <p class="quality-empty">Keine Auffälligkeiten. Alle Validierungsprüfungen bestanden.</p>
+        {% else %}
+        <div class="quality-header">
+            <span class="quality-count">{{ meta.quality_count }} Auffälligkeit{{ 'en' if meta.quality_count != 1 }}</span>
+        </div>
+        <table class="quality-table">
+            <thead><tr><th>Schwere</th><th>Kategorie</th><th>Detail</th></tr></thead>
+            <tbody>
+            {% for f in meta.quality_findings %}
+            <tr class="quality-row-{{ f.severity }}">
+                <td><span class="quality-severity quality-sev-{{ f.severity }}">{{ f.severity }}</span></td>
+                <td>{{ f.category }}</td>
+                <td>{{ f.detail }}</td>
+            </tr>
+            {% endfor %}
+            </tbody>
+        </table>
+        {% endif %}
+    </section>
+
+    <!-- Document metadata for JS (citation helper) -->
+    <script id="doc-meta" type="application/json">{{ {"idno": meta.idno, "date_display": meta.date_display, "citation": meta.citation or "", "collection_label": meta.collection_label, "place": meta.place or "", "quality_score": meta.quality_score} | tojson }}</script>
+
+    <!-- Details: metadata + annotation legend (compact, below content) -->
+    <section class="doc-details">
+        <div class="doc-details-meta">
+            {% set detail_fields = [
+                ('Archiv', meta.repository),
+                ('Originaldatierung', meta.orig_date),
+                ('Quelle', meta.citation),
+            ] %}
+            <dl class="details-dl">
+                {% for label, value in detail_fields %}
+                {% if value %}
+                <dt>{{ label }}</dt>
+                <dd>{{ value }}</dd>
+                {% endif %}
+                {% endfor %}
+                {% if meta.source_url %}
+                <dt>Digitalisat</dt>
+                <dd><a href="{{ meta.source_url }}" target="_blank" rel="noopener" class="details-ext-link">Monasterium.net {{ external_icon() }}</a></dd>
+                {% endif %}
+            </dl>
+        </div>
+        <div class="doc-details-legend">
+            {% set legend_items = [
+                ('person', 'Person'), ('org', 'Organisation'), ('place', 'Ort'),
+                ('fn-issuer', 'Aussteller*in'), ('fn-recipient', 'Empfänger*in'), ('fn-witness', 'Zeug*in'),
+                ('trigger', 'Dispositivformel'), ('add', 'Editorische Ergänzung'),
+                ('attr', 'Attribut / Rolle'),
+            ] %}
+            <div class="legend-grid legend-grid-compact">
+                {% for cls, label in legend_items %}
+                <div class="legend-item">
+                    <span class="legend-swatch swatch-{{ cls }}"></span>
+                    <span>{{ label }}</span>
+                </div>
+                {% endfor %}
+            </div>
+        </div>
+    </section>
+
+    <!-- Bottom navigation -->
+    {{ doc_nav(meta, root_path, 'doc-paging-bottom') }}
+
+    <!-- Print-only metadata (hidden on screen, shown in print) -->
+    <div class="doc-print-meta">
+        <h1>Nr. {{ meta.idno }}</h1>
+        {% if meta.date_display %}<p><strong>Datum:</strong> {{ meta.date_display }}</p>{% endif %}
+        {% if meta.place %}<p><strong>Ort:</strong> {{ meta.place }}</p>{% endif %}
+        {% if meta.repository %}<p><strong>Archiv:</strong> {{ meta.repository }}</p>{% endif %}
+        {% if meta.citation %}<p><strong>Quelle:</strong> {{ meta.citation }}</p>{% endif %}
+    </div>
+
+</article>
+{% endblock %}
+
+{% block scripts %}
+<script src="{{ root_path }}/static/js/tooltips.js"></script>
+<script src="{{ root_path }}/static/js/facsimile.js"></script>
+<script src="{{ root_path }}/static/js/document.js"></script>
+{% endblock %}
+
+{% block footer_info %}{{ meta.collection_label }} &middot; Nr. {{ meta.idno }}{% endblock %}

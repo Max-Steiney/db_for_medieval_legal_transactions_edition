@@ -1,0 +1,96 @@
+<?xml version="1.0" encoding="UTF-8"?><!DOCTYPE TEI SYSTEM "../../../schema/toolbox_full.dtd">
+<TEI xmlns="http://www.tei-c.org/ns/1.0" xmlns:cei="http://www.monasterium.net/NS/cei"
+   xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance">
+   <teiHeader>
+      <fileDesc>
+         <titleStmt>
+            <title>TEI-Version of 611</title>
+         </titleStmt>
+         <publicationStmt>
+            <p/>
+         </publicationStmt>
+         <sourceDesc default="false">
+            <bibl default="false" status="draft">
+               <title type="full"><title type="main">Die Wiener Stadtbücher 1395 -
+                     1430</title><title type="sub">Teil 1: 1395 - 1400</title></title>
+               <author>Wilhelm Brauneder</author>
+               <author>Gerhard Jaritz</author>
+               <pubPlace>Wien</pubPlace>
+               <pubPlace>Köln</pubPlace>
+               <publisher>Böhlau Verlag</publisher>
+            </bibl>
+            <msDesc status="draft">
+               <msIdentifier>
+                  <idno>611</idno>
+               </msIdentifier>
+               <physDesc/>
+            </msDesc>
+         </sourceDesc>
+      </fileDesc>
+      <encodingDesc>
+         <projectDesc>
+            <p><label type="contentual-editing">Projekt Christina Lutter Stadt und
+                  Gemeinschaft</label></p>
+         </projectDesc>
+      </encodingDesc>
+      <profileDesc>
+         <creation>
+            <date when="1400-08-14">(1400 August 14, Trient)</date>
+         </creation>
+      </profileDesc>
+   </teiHeader>
+   <text>
+      <body>
+         <div type="header">
+            <p>Bestätigung des Hans, Vetter des Hans Elsterlein, über den Empfang seiner Erb- schaft
+               nach diesem</p>
+         </div>                   <div type="entry" resp="rs">
+            <p> 1 Zg. (Index: Item ain quittung Hansen des Elsterleins vetter) <rs type="event"
+                  ref="#ev__StB_I_611"><rs type="fn" role="witness">Ich <rs type="person"
+                        ref="#pe__johann_StB_I_592">Hennsel, <roleName type="kin"
+                           corresp="#pe__johann_elsterl_QGW_II_I_1170"><add>vetter</add></roleName>
+                        <rs type="person" ref="#pe__johann_elsterl_QGW_II_I_1170">Hannsen des
+                           Elsterleins <roleName type="dead">seliger</roleName> vetter von
+                           Wienn</rs></rs>, bekenn und tuen kunt mit dem brif</rs>, <rs type="fn"
+                     role="other">wann mich <rs type="person" ref="#pe__katharina_StB_I_592">mein
+                           <roleName type="kin" corresp="#pe__johann_StB_I_592">mum</roleName>, des
+                        genanten meins vettern seligen <roleName type="kin"
+                           corresp="#pe__johann_elsterl_QGW_II_I_1170">witibe</roleName></rs>,
+                        <triggerstring n="fn">ausricht beczalt und inantwurt</triggerstring></rs>
+                  <rs type="fn" role="recipient">die hab, die <rs type="person"
+                        ref="#pe__johann_StB_I_592">mir</rs></rs>
+                  <rs type="fn" role="issuer"><rs type="person"
+                        ref="#pe__johann_elsterl_QGW_II_I_1170">mein genanter <roleName type="kin"
+                           corresp="#pe__johann_StB_I_592">vetter</roleName> geschaft und hinder im
+                        lassen hat von <roleName type="dead">todes</roleName> wegen</rs>,</rs> es
+                  sein phening, erb schafft oder ander gut, wie das genant ist, das sich mit der
+                  warhait und guter kuntschaft erfinden mag, das ich furbas dhain vodrung noch
+                  ansprach hincz ir oder iren erben tun wil weder in der hofschrann noch in dem rat
+                  noch vor geistleichen oder wertleichen rechten. <rs type="fn" role="other">Das
+                     gelub <rs type="person" ref="#pe__johann_StB_I_592">ich</rs> ir fur mich und
+                     mein erben stet ze halden bey meinen trewn an gever und <triggerstring n="fn"
+                        >verczeich</triggerstring> mich auch der andern hab aller, die mein obgenanter
+                     vetter seliger gelassen hat.</rs>
+                  <rs type="fn" role="witness">Mit urchund des brifs versigilt mit des erwirdigen
+                        <rs type="person" ref="#pe__georg_StB_I_611">meins gnedigen lieben <roleName type="occ" corresp="#pe__johann_StB_I_592">herren</roleName>
+                        <roleName type="title">hern</roleName> Jorigens, <roleName type="occ"
+                           corresp="#org__trient-dioezese">bischofs</roleName> ze Trient</rs>
+                     aufgedrukchtem insigil, der das durch meiner fleizziger bett willen zu
+                     geczeugnuzz der genanten sache auf den brif gelegt hat, im an allen schaden,
+                     wann ich zu disen zeyten aigens insigil nicht enhan.</rs> Geben ze Trient an
+                  Unser Frawn abend Assumpcionis domini mcccco.</rs> a) Danach ge3trichenes Wie.
+            </p>
+         </div>
+         <div type="lists">
+            <xi:include xmlns:xi="http://www.w3.org/2001/XInclude"
+               href="../../../../indices/placeList.xml" xpointer="element(/1/2/1/1)"/>
+            <xi:include xmlns:xi="http://www.w3.org/2001/XInclude"
+               href="../../../../indices/personList.xml" xpointer="element(/1/2/1/1)"/>
+            <xi:include xmlns:xi="http://www.w3.org/2001/XInclude"
+               href="../../../../indices/eventList.xml" xpointer="element(/1/2/1/1)"/>
+            <xi:include xmlns:xi="http://www.w3.org/2001/XInclude"
+               href="../../../../indices/orgList.xml" xpointer="element(/1/2/1/1)"/>
+         </div>
+      </body>
+   </text>
+</TEI>

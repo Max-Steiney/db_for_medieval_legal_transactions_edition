@@ -1,0 +1,129 @@
+<?xml version="1.0" encoding="UTF-8"?><!DOCTYPE TEI   SYSTEM "../../../schema/toolbox_full.dtd">
+<TEI xmlns="http://www.tei-c.org/ns/1.0" xmlns:cei="http://www.monasterium.net/NS/cei"
+   xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance">
+   <teiHeader>
+      <fileDesc>
+         <titleStmt>
+            <title>Tei version of 1486 exported from monasterium.net </title>
+         </titleStmt>
+         <publicationStmt>
+            <p/>
+         </publicationStmt>
+         <!--In Original: cei:front/cei:sourceDesc/cei:sourceDescRegest-->
+         <sourceDesc>
+            <bibl type="url">https://www.monasterium.net/mom/AT-WStLA/HAUrk/1486/charter</bibl>
+            <bibl default="false" status="draft">Quellen zur Geschichte der Stadt Wien, Bd. II/1,
+               Nr. 1486 As published in HAUrk by Wiener Stadt- und Landesarchiv </bibl>
+            <msDesc status="draft">
+               <msIdentifier>
+                  <repository>Wiener Stadt- und Landesarchiv</repository>
+                  <idno>1486</idno>
+                  <altIdentifier type="old">
+                     <idno>515686</idno>
+                  </altIdentifier>
+               </msIdentifier>
+               <physDesc>
+                  <sealDesc>
+                     <seal>
+                        <p>Zwei Ausfertigungen: A. Drei anhangende Siegel: 1. roth u. Sch., 2., 3.
+                           grün u. Sch.</p>
+                     </seal>
+                  </sealDesc>
+               </physDesc>
+            </msDesc>
+         </sourceDesc>
+      </fileDesc>
+      <encodingDesc>
+         <projectDesc default="false">
+            <p><label type="contentual-editing">Projekt Christina Lutter Stadt und
+                  Gemeinschaft</label></p>
+         </projectDesc>
+      </encodingDesc>
+      <profileDesc>
+         <creation>
+            <date when="14010424">1401 IV 24</date>
+            <origDate instant="false">an sand Go/ergen tag.</origDate></creation>
+      </profileDesc>
+   </teiHeader>
+   <facsimile>
+      <surface>
+         <graphic
+            url="http://images.monasterium.net/pics/AT-WStLA/HA-U/WStLA-HA-Urkunden_01486_a_r.jpg"/>
+      </surface>
+      <surface>
+         <graphic
+            url="http://images.monasterium.net/pics/AT-WStLA/HA-U/WStLA-HA-Urkunden_01486_a_v.jpg"/>
+      </surface>
+      <surface>
+         <graphic
+            url="http://images.monasterium.net/pics/AT-WStLA/HA-U/WStLA-HA-Urkunden_01486_b_r.jpg"/>
+      </surface>
+      <surface>
+         <graphic
+            url="http://images.monasterium.net/pics/AT-WStLA/HA-U/WStLA-HA-Urkunden_01486_b_v.jpg"/>
+      </surface>
+   </facsimile>
+   <text>
+      <body>
+         <div type="abstract" resp="kg">
+            <p>
+               <rs type="event" ref="#ev__QGW_II_I_1486_a"><rs type="fn" role="issuer"><rs
+                        type="person" ref="#pe__simon_pairstetter_QGW_II_I_1087">Simeon der
+                        Payrsteter, <roleName type="occ" corresp="#org__wien-st_peter"
+                           >pharrer</roleName> dacz <rs type="org" ref="#org__wien-st_peter">sand
+                           Peter ze Wienn</rs></rs>, <rs type="person"
+                        ref="#pe__konrad_vorlauf_QGW_II_I_1320">Chunrat der Vorlauf, des <roleName
+                           type="occ" corresp="#org__wien">rates der stat daselbs</roleName></rs>,
+                        <rs type="person" ref="#pe__ulrich_ekprecht_QGW_II_I_1149">Ulreich der
+                        Ekkprecht <roleName type="occ" corresp="#org__wien"><add>bürger ze
+                              Wienn</add></roleName></rs> und <rs type="person"
+                        ref="#pe__johann_von_ofen_QGW_II_I_1009">Hanns von Ofen, <roleName type="occ" corresp="#org__wien">bürger ze
+                  Wienn</roleName></rs></rs>, <triggerstring n="disp">beurkunden</triggerstring>, <rs
+                     type="event" ref="#ev__QGW_II_I_1486_a_men_1">dass sie von dem Abte Ludweigen,
+                     dem Prior und dem Convent ze Melkch auf widerkauf den halben Zehent ze
+                     So/ez/zz/z und ze Veslau um 400 lb dn., <rs type="event"
+                        ref="#ev__QGW_II_I_1486_a_men_1">für welche das Kloster einen andern Zehent,
+                        gelegen ze Perchtolczdorf, der dem von Rappach gestanden ist, erwarb</rs>,
+                     gekauft haben, und zwar für das Geld, <rs type="event"
+                        ref="#ev__QGW_II_I_1486_a_men_2">für welches sie als Geschäftsherren des
+                        Wiener Bürgers Eberharts des Chastner dessen Haus, gelegen bei Pêla/ertor ze
+                        Wienn, das dieser zu einer ewigen Messe bei S. Peter geschafft hatte,
+                        verkauft haben</rs></rs></rs>. <rs type="event" ref="#ev__QGW_II_I_1486_b"
+                     ><rs type="fn" role="issuer"><rs type="person"
+                        ref="#pe__simon_pairstetter_QGW_II_I_1087"><add>Simeon der Payrsteter,</add>
+                        <roleName type="occ" corresp="#org__wien-st_peter"
+                           ><add>pharrer</add></roleName>
+                        <add>dacz sand Peter ze Wienn</add></rs>, <rs type="person"
+                        ref="#pe__konrad_vorlauf_QGW_II_I_1320"><add>Chunrat der Vorlauf, des</add>
+                        <roleName type="occ" corresp="#org__wien"><add>rates der stat
+                           daselbs</add></roleName></rs>, <rs type="person"
+                        ref="#pe__ulrich_ekprecht_QGW_II_I_1149"><add>Ulreich der Ekkprecht</add>
+                        <roleName type="occ" corresp="#org__wien"><add>bürger ze
+                           Wienn</add></roleName></rs>
+                     <add>und</add>
+                     <rs type="person" ref="#pe__johann_von_ofen_QGW_II_I_1009"><add>Hanns von
+                           Ofen,</add>
+                        <roleName type="occ" corresp="#org__wien"><add>bürger ze
+                           Wienn</add></roleName></rs>Sie</rs>
+                  <triggerstring n="disp">widmen</triggerstring> statt des Hauses zu dieser <rs type="fn"
+                     role="recipient"><rs type="org" ref="#org__wien-st_peter">Messe</rs></rs> den
+                  gekauften Zehent, dessen Grenzen folgendermassen angegeben werden: Und hebt sich
+                  an mit dem gemêrk gen Paden bei der Rinn an des Friczestorfer weingarten und dem
+                  weg nach fuer die Huetsa/eul und uber das Sigharcztal und was des ze der
+                  tenkenhant ist, wann man hinreitt, und das ander gemerk bei Veslau das geit in
+                  Guenvarner gemerk an den zehend, der weilen des Prenner gewesen ist .</rs>
+            </p>
+         </div>
+         <div type="lists">
+            <xi:include xmlns:xi="http://www.w3.org/2001/XInclude"
+               href="../../../../indices/placeList.xml" xpointer="element(/1/2/1/1)"/>
+            <xi:include xmlns:xi="http://www.w3.org/2001/XInclude"
+               href="../../../../indices/personList.xml" xpointer="element(/1/2/1/1)"/>
+            <xi:include xmlns:xi="http://www.w3.org/2001/XInclude"
+               href="../../../../indices/eventList.xml" xpointer="element(/1/2/1/1)"/>
+            <xi:include xmlns:xi="http://www.w3.org/2001/XInclude"
+               href="../../../../indices/orgList.xml" xpointer="element(/1/2/1/1)"/>
+         </div>
+      </body>
+   </text>
+</TEI>

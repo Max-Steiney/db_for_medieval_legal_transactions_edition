@@ -1,0 +1,37 @@
+{% extends "base.html" %}
+{% block title %}Über das Projekt{% endblock %}
+
+{% block head %}
+<link rel="stylesheet" href="{{ root_path }}/static/css/content.css">
+{% endblock %}
+
+{% block content %}
+<article class="guidelines-page">
+    <div class="guidelines-header">
+        <h1>&Uuml;ber das Projekt</h1>
+        <p class="guidelines-subtitle">Prosopographische Datenbank mittelalterlicher Wiener Rechtsgesch&auml;fte</p>
+    </div>
+
+    <div class="guidelines-layout" id="guidelines-layout">
+        <nav class="guidelines-sidebar" id="guidelines-sidebar" aria-label="Inhaltsverzeichnis">
+            <div class="guidelines-toc">
+                <h2>Inhalt</h2>
+                {{ toc | safe }}
+            </div>
+        </nav>
+        <div class="guidelines-body">
+            {{ content | safe }}
+        </div>
+    </div>
+
+    <footer class="guidelines-footer">
+        <p>Zuletzt aktualisiert: {{ build_date }}</p>
+    </footer>
+</article>
+{% endblock %}
+
+{% block scripts %}
+<script src="{{ root_path }}/static/js/content.js"></script>
+{% endblock %}
+
+{% block footer_info %}&Uuml;ber das Projekt{% endblock %}

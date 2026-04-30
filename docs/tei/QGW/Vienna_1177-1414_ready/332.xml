@@ -1,0 +1,108 @@
+<?xml version="1.0" encoding="UTF-8"?><!DOCTYPE TEI   SYSTEM "../../../schema/toolbox_full.dtd">
+<TEI xmlns="http://www.tei-c.org/ns/1.0" xmlns:cei="http://www.monasterium.net/NS/cei"
+   xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance">
+   <teiHeader>
+      <fileDesc>
+         <titleStmt>
+            <title>Tei version of 332 exported from monasterium.net </title>
+         </titleStmt>
+         <publicationStmt>
+            <p/>
+         </publicationStmt>
+         <!--In Original: cei:front/cei:sourceDesc/cei:sourceDescRegest-->
+         <sourceDesc>
+            <bibl type="url">https://www.monasterium.net/mom/AT-WStLA/HAUrk/332/charter</bibl>
+            <bibl default="false" status="draft">Quellen zur Geschichte der Stadt Wien, Bd. II/1,
+               Nr. 332 As published in HAUrk by Wiener Stadt- und Landesarchiv </bibl>
+            <msDesc status="draft">
+               <msIdentifier>
+                  <repository>Wiener Stadt- und Landesarchiv</repository>
+                  <idno>332</idno>
+                  <altIdentifier type="old">
+                     <idno>514502</idno>
+                  </altIdentifier>
+               </msIdentifier>
+               <physDesc>
+                  <sealDesc>
+                     <seal>
+                        <p>Zwei anhangende Siegel.</p>
+                     </seal>
+                  </sealDesc>
+               </physDesc>
+            </msDesc>
+         </sourceDesc>
+      </fileDesc>
+      <encodingDesc>
+         <projectDesc default="false">
+            <p><label type="contentual-editing">Projekt Christina Lutter Stadt und
+                  Gemeinschaft</label></p>
+         </projectDesc>
+      </encodingDesc>
+      <profileDesc>
+         <creation>
+            <placeName>Wien</placeName>
+            <date when="13490405">1349 IV 05</date>
+            <origDate instant="false">ze Wienne, an dem Palmtage.</origDate></creation>
+      </profileDesc>
+   </teiHeader>
+   <facsimile>
+      <surface>
+         <graphic
+            url="http://images.monasterium.net/pics/AT-WStLA/HA-U/WStLA-HA-Urkunden_00332_r.jpg"/>
+      </surface>
+      <surface>
+         <graphic
+            url="http://images.monasterium.net/pics/AT-WStLA/HA-U/WStLA-HA-Urkunden_00332_v.jpg"/>
+      </surface>
+   </facsimile>
+   <text>
+      <body>
+         <div type="abstract" resp="ks">
+            <p>
+               <rs type="event" ref="#ev__QGW_II_I_332"><rs type="fn" role="issuer"><rs type="person"
+                        ref="#pe__stephan_schaerdinger_QGW_II_I_332">Stephan der Scherdinger von
+                        Grinzing</rs> und <rs type="person" ref="#pe__katharina_QGW_II_I_332"
+                        >Kathrei, seine <roleName type="kin"
+                           corresp="#pe__stephan_schaerdinger_QGW_II_I_332"
+                     >Hausfrau</roleName></rs></rs>, <triggerstring n="disp">verkaufen</triggerstring>
+                  <rs type="fn" role="other"><triggerstring n="fn">mit Handen</triggerstring> ihres <rs
+                        type="person" ref="#pe__heinrich_straiher_QGW_II_I_331"><roleName
+                           type="title">Bergherrn</roleName><roleName type="title">hern</roleName>
+                        Hainreichs des Straicher, <roleName type="occ"
+                           corresp="#org__oesterreich-herzogtum" select="#pl__dornbach"
+                           >hofmaister</roleName> ze Dornpach</rs></rs>, ein Joch Weingarten, der do
+                  leit ze Dornpach in der Aue und haisst der Chelbel und leit zenest dem weingarten,
+                  der weilnt maister Liepharts, des arczt, gewesen ist, dem got genade, <rs
+                     type="event" ref="#ev__QGW_II_I_332_men_1">dovon man alle iar dient in den hof
+                     ze Dornpach 60 dn. ze perchrecht und 3 dn. ze voitrecht</rs> , um 40 lb dn. <rs
+                     type="fn" role="recipient"><rs type="person"
+                        ref="#pe__haunold_schuchler_QGW_II_I_170"><roleName type="title"
+                           >hern</roleName> Haunolten dem Schuchler, <roleName type="occ" corresp="#org__wien">purger</roleName> ze Wienne</rs></rs>. [Die Kaufsumme
+                  ist gleicher Herkunft wie in no 331.]</rs>
+            </p>
+         </div>
+         <div type="seal">
+            <p><rs type="event" ref="#ev__QGW_II_I_332"><rs type="fn" role="witness">Besiegelt mit
+                     den Siegeln: 1. des <rs type="person" ref="#pe__heinrich_straiher_QGW_II_I_331"
+                        >Bergherrn</rs>, 2. <rs type="person"
+                        ref="#pe__leopold_schuchler_QGW_II_I_332"><roleName type="title"
+                           >hern</roleName> Leupolts des Schüchler, <roleName type="occ"
+                           corresp="#org__wien">richter</roleName> ze Wienne</rs></rs>.</rs>
+            </p>
+         </div>
+         <div type="nota">
+            <p>Indorsat: Aufschrift des Magister Theodericus. K. </p>
+         </div>
+         <div type="lists">
+            <xi:include xmlns:xi="http://www.w3.org/2001/XInclude"
+               href="../../../../indices/placeList.xml" xpointer="element(/1/2/1/1)"/>
+            <xi:include xmlns:xi="http://www.w3.org/2001/XInclude"
+               href="../../../../indices/personList.xml" xpointer="element(/1/2/1/1)"/>
+            <xi:include xmlns:xi="http://www.w3.org/2001/XInclude"
+               href="../../../../indices/eventList.xml" xpointer="element(/1/2/1/1)"/>
+            <xi:include xmlns:xi="http://www.w3.org/2001/XInclude"
+               href="../../../../indices/orgList.xml" xpointer="element(/1/2/1/1)"/>
+         </div>
+      </body>
+   </text>
+</TEI>

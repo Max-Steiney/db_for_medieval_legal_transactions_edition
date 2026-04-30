@@ -1,0 +1,158 @@
+/* === Wiener Urkundenbuch -- Startseite === */
+
+/* Hero — compact with integrated stats */
+.start-hero {
+    text-align: center;
+    max-width: var(--max-width);
+    margin: 0 auto var(--space-lg);
+    padding-bottom: var(--space-lg);
+    border-bottom: 1px solid var(--color-border-light);
+}
+
+.start-hero h1 {
+    font-family: var(--font-serif);
+    font-size: var(--text-2xl);
+    font-weight: 600;
+    margin: 0;
+}
+
+.start-hero-desc {
+    font-size: var(--text-sm);
+    color: var(--color-text-muted);
+    max-width: 44rem;
+    margin: 0 auto var(--space-md);
+    line-height: var(--leading-body);
+}
+
+/* Inline stats bar — replaces bulky KPI cards */
+.start-hero-stats {
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: center;
+    gap: var(--space-xs);
+    font-family: var(--font-sans);
+    font-size: var(--text-sm);
+    color: var(--color-text-muted);
+}
+
+.start-hero-sep {
+    color: var(--color-text-light);
+}
+
+.start-hero-stat-sub {
+    font-size: var(--text-xs);
+    color: var(--color-text-light);
+}
+
+
+/* Entry cards */
+.start-entry-grid {
+    display: grid;
+    grid-template-columns: repeat(3, 1fr);
+    gap: var(--space-md);
+    margin-bottom: var(--space-xl);
+}
+
+/* Card surface base: components.css */
+.start-entry-card {
+    display: block;
+    padding: var(--space-md) var(--space-lg);
+    text-decoration: none;
+    color: var(--color-text);
+    transition: border-color var(--transition-fast), box-shadow var(--transition-fast);
+}
+
+.start-entry-card:hover {
+    border-color: var(--anno-person);
+    box-shadow: var(--shadow-md);
+}
+
+.start-entry-card-icon {
+    color: var(--anno-person);
+    margin-bottom: var(--space-xs);
+    line-height: 0;
+}
+
+.start-entry-card-title {
+    font-family: var(--font-sans);
+    font-size: var(--text-lg);
+    font-weight: 600;
+    margin: 0 0 var(--space-xs);
+}
+
+.start-entry-card-desc {
+    font-size: var(--text-sm);
+    color: var(--color-text-muted);
+    margin: 0;
+    line-height: 1.5;
+}
+
+/* Zwei Wege: Exploration und Analyse als gleichberechtigte S\u00e4ulen */
+.start-twoways {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    gap: var(--space-xl);
+    margin-bottom: var(--space-xl);
+}
+
+.start-twoways-column {
+    display: flex;
+    flex-direction: column;
+}
+
+.start-twoways-eyebrow {
+    font-family: var(--font-sans);
+    font-size: var(--text-xs);
+    font-weight: 600;
+    text-transform: uppercase;
+    letter-spacing: 0.12em;
+    color: var(--anno-person);
+    margin: 0 0 var(--space-2xs);
+}
+
+.start-twoways-intro {
+    font-family: var(--font-serif);
+    font-size: var(--text-lg);
+    color: var(--color-text);
+    margin: 0 0 var(--space-md);
+    line-height: 1.3;
+}
+
+.start-twoways-grid {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    gap: var(--space-md);
+    flex: 1;
+}
+
+
+
+.start-build-info {
+    font-family: var(--font-sans);
+    font-size: var(--text-xs);
+    color: var(--color-text-light);
+    margin-top: var(--space-md);
+}
+
+.start-build-info a {
+    color: var(--anno-person);
+    text-decoration: none;
+}
+
+.start-build-info a:hover {
+    text-decoration: underline;
+}
+
+/* Responsive */
+@media (max-width: 900px) {
+    .start-twoways { grid-template-columns: 1fr; gap: var(--space-lg); }
+}
+
+@media (max-width: 768px) {
+    .start-entry-grid { grid-template-columns: 1fr; }
+    .start-hero-stats { flex-direction: column; gap: var(--space-xs); }
+}
+
+@media (max-width: 600px) {
+    .start-twoways-grid { grid-template-columns: 1fr; }
+}

@@ -1,0 +1,143 @@
+<?xml version="1.0" encoding="UTF-8"?><!DOCTYPE TEI SYSTEM "../../../schema/toolbox_full.dtd">
+<TEI xmlns="http://www.tei-c.org/ns/1.0" xmlns:cei="http://www.monasterium.net/NS/cei"
+      xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance">
+      <teiHeader>
+            <fileDesc>
+                  <titleStmt>
+                        <title>TEI-Version of 455</title>
+                  </titleStmt>
+                  <publicationStmt>
+                        <p/>
+                  </publicationStmt>
+                  <sourceDesc default="false">
+                        <bibl default="false" status="draft">
+                              <title type="full"><title type="main">Die Wiener Stadtbücher 1395 -
+                                          1430</title><title type="sub">Teil 1: 1395 -
+                                    1400</title></title>
+                              <author>Wilhelm Brauneder</author>
+                              <author>Gerhard Jaritz</author>
+                              <pubPlace>Wien</pubPlace>
+                              <pubPlace>Köln</pubPlace>
+                              <publisher>Böhlau Verlag</publisher>
+                        </bibl>
+                        <msDesc status="draft">
+                              <msIdentifier>
+                                    <idno>455</idno>
+                              </msIdentifier>
+                              <physDesc/>
+                        </msDesc>
+                  </sourceDesc>
+            </fileDesc>     <encodingDesc>       <projectDesc>         <p><label type="contentual-editing">Projekt Christina Lutter Stadt und Gemeinschaft</label></p>       </projectDesc>     </encodingDesc>
+            <profileDesc>
+                  <creation>
+                        <date when="1399-11-20">1399 November 20</date>
+                  </creation>
+            </profileDesc>
+      </teiHeader>
+      <text>
+            <body>
+                  <div type="header">
+                        <p>Geschäft der Margarethe, Gattin des Hans Schussler</p>
+                  </div>                   <div type="entry" resp="rs">
+                        <p> pr. mü., Einbr. 3 Zg., Ma (Inde::e: Item gescheft Margreten Hansen des
+                              Schussler hausfraw) <rs type="event" ref="#ev__StB_I_455">Desselben
+                                    tags kom auch fur den rat <rs type="fn" role="witness"><rs
+                                                type="person" ref="#pe__johann_schussler_StB_I_455"
+                                                >Hanns der Schussler</rs> und hat da beweist mit den
+                                          erbern leuten zu rechter zeit, als er ze recht solt, mit
+                                                <rs type="person" ref="#pe__heinrich_kekch"><roleName
+                                                  type="title"
+                                                ><add>erbern</add></roleName>Hainreichen dem
+                                                Chekchen</rs>, <rs type="person"
+                                                ref="#pe__stephan_schersmyd_StB_I_455"><roleName
+                                                  type="title"><add>erbern</add></roleName>Stephann
+                                                dem <roleName type="prof" cert="unknown"
+                                                  >Schersmyd</roleName></rs> und mit <rs
+                                                type="person" ref="#pe__thomas_fasszieher"><roleName
+                                                  type="title"><add>erbern</add></roleName>Thomann
+                                                dem <roleName type="prof" cert="unknown"
+                                                  >Vascziecher</roleName></rs></rs>, daz geschefft,
+                                    so <rs type="fn" role="issuer"><rs type="person"
+                                                ref="#pe__margarethe_StB_I_455">sein <roleName
+                                                  type="kin"
+                                                  corresp="#pe__johann_schussler_StB_I_455"
+                                                  >hawsfraw</roleName> Margret <roleName type="dead"
+                                                  >selig</roleName></rs></rs> an irn lesten zeiten
+                                    getan hat, daz si <rs type="fn" role="other"><rs type="person"
+                                                ref="#pe__johann_schussler_StB_I_455">in </rs>auch
+                                          hincz irn trewn <triggerstring n="fn"
+                                                >ausczerichten</triggerstring> enpholichen het</rs>. Nu
+                                    mochten si nach der stat recht darumb nicht gesagen, darumb wir
+                                    dasselb geschefft von in zu unsern hannden namen und haben es
+                                    hinwider enpholichen <rs type="fn" role="other"><rs
+                                                type="person" ref="#pe__heinrich_kekch">dem egenanten
+                                                Hainreichen dem Chekchen</rs> hincz seinen trewn
+                                                <triggerstring n="fn">ausczerichten</triggerstring></rs>
+                                    in der weise, als hernach geschriben stet. Item <rs type="fn"
+                                          role="recipient"><rs type="fn" role="transactiongood_I">daz haws an dem
+                                    Hof hat si geben um 26 tl.</rs>, daz hat si geschafft 
+                                          <rs type="person" ref="#pe__johann_schussler_StB_I_455">dem
+                                                egenanten Hannsen, <roleName type="kin"
+                                                  corresp="#pe__margarethe_StB_I_455">irm
+                                                  wirt</roleName></rs></rs>, ayntweder daz haws oder
+                                    daz gelt verchawffen, verseczen, wem er wil, und leyt ze nechst
+                                    Stephann von Weissenpach. Item darczue ein hofstat weingartens
+                                    zu Gumppendorf ze nachst des Roten Jekleins weingarten, darauf
+                                    ee geschafft ist drew phunt <rs type="fn" role="recipient">einem
+                                          chnaben</rs>, wenn der zu siben jarn chumt, so sol man im
+                                    die geben. Darczue hat si demselben <rs type="fn"
+                                          role="recipient"><rs type="person"
+                                                ref="#pe__johann_schussler_StB_I_455"><roleName
+                                                  type="kin" corresp="#pe__margarethe_StB_I_455">irm
+                                                  wirt</roleName></rs></rs> geschafft a ) swaz man
+                                    ir schuldig ist beliben. Von erst <rs type="fn" role="other"
+                                                ><add>schuldig ist beliben</add><rs type="person"
+                                                ref="#pe__heinrich_schuster_StB_I_455">Hainreich
+                                                  <roleName type="prof" cert="unknown"
+                                                  >Schuster</roleName> von Fösendorf</rs></rs> 7 tl.
+                                    72 d. Item <rs type="fn" role="other"><triggerstring n="fn"
+                                                  ><add>schuldig ist beliben</add></triggerstring><rs
+                                                type="person" ref="#pe__hermann_schuster_StB_I_455"
+                                                >Hermann <roleName type="prof" cert="unknown"
+                                                  >Schuster</roleName></rs></rs> 12 ß. d. Item <rs
+                                          type="fn" role="other"><triggerstring n="fn"><add>schuldig
+                                                  ist beliben</add></triggerstring><rs type="person"
+                                                ref="#pe__philipp_schuster_StB_I_455">Philipp
+                                                  <roleName type="prof" cert="unknown"
+                                                  >Schuster</roleName></rs></rs> 3 tl. Item <rs
+                                          type="fn" role="other"><triggerstring n="fn"><add>schuldig
+                                                  ist beliben</add></triggerstring><rs type="person"
+                                                ref="#pe__ulrich_schuster_StB_I_455">Ulreich
+                                                  <roleName type="prof" cert="unknown"
+                                                  >Schuster</roleName></rs></rs> 5 ß. Item darczue
+                                    hat si <rs type="fn" role="recipient"><rs type="person"
+                                                ref="#pe__johann_schussler_StB_I_455">im</rs></rs>
+                                    auch geschafft alle ander ir geltschuld. Darnach hat si ge-
+                                    schafft irn rawchen mantl <rs type="fn" role="recipient"><rs
+                                                type="person" ref="#pe__diemut_StB_I_455"><roleName
+                                                  type="kin" corresp="#pe__margarethe_StB_I_455">irer
+                                                  swester</roleName> Muetlein</rs> und <rs type="fn" role="transactiongood_I">irn
+                                    plaben seydl</rs></rs>. Item <rs type="fn" role="recipient">irer
+                                          mueter</rs> einen graben seydl und ein chursen. Als darumb
+                                    die obgenanten Hainreich der Chekch mit seinen trewn an ayde
+                                    stat und Stephan und Thoman bey irn starkehen ayden vor offem
+                                    rat habent gesagt, als si ze recht solten. a) ge$chat.</rs>
+                        </p>
+                  </div>
+                  <div type="lists">
+                        <xi:include xmlns:xi="http://www.w3.org/2001/XInclude"
+                              href="../../../../indices/placeList.xml"
+                              xpointer="element(/1/2/1/1)"/>
+                        <xi:include xmlns:xi="http://www.w3.org/2001/XInclude"
+                              href="../../../../indices/personList.xml"
+                              xpointer="element(/1/2/1/1)"/>
+                        <xi:include xmlns:xi="http://www.w3.org/2001/XInclude"
+                              href="../../../../indices/eventList.xml"
+                              xpointer="element(/1/2/1/1)"/>
+                        <xi:include xmlns:xi="http://www.w3.org/2001/XInclude"
+                              href="../../../../indices/orgList.xml"
+                              xpointer="element(/1/2/1/1)"/>
+                  </div>
+            </body>
+      </text>
+</TEI>

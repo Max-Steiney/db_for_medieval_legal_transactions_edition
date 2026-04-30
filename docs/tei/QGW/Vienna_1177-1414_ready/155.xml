@@ -1,0 +1,147 @@
+<?xml version="1.0" encoding="UTF-8"?><!DOCTYPE TEI   SYSTEM "../../../schema/toolbox_full.dtd">
+<TEI xmlns="http://www.tei-c.org/ns/1.0" xmlns:cei="http://www.monasterium.net/NS/cei"
+   xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance">
+   <teiHeader>
+      <fileDesc>
+         <titleStmt>
+            <title>Tei version of 155 exported from monasterium.net </title>
+         </titleStmt>
+         <publicationStmt>
+            <p/>
+         </publicationStmt>
+         <!--In Original: cei:front/cei:sourceDesc/cei:sourceDescRegest-->
+         <sourceDesc>
+            <bibl type="url">https://www.monasterium.net/mom/AT-WStLA/HAUrk/155/charter</bibl>
+            <bibl default="false" status="draft">Quellen zur Geschichte der Stadt Wien, Bd. II/1,
+               Nr. 155 As published in HAUrk by Wiener Stadt- und Landesarchiv </bibl>
+            <msDesc status="draft">
+               <msIdentifier>
+                  <repository>Wiener Stadt- und Landesarchiv</repository>
+                  <idno>155</idno>
+                  <altIdentifier type="old">
+                     <idno>514324</idno>
+                  </altIdentifier>
+               </msIdentifier>
+               <msContents>
+                  <msItem>
+                     <listBibl default="false">
+                        <bibl default="false" status="draft">Jahrbuch der kais. Kunstsamml. 16b, no
+                           12683 Regest.</bibl>
+                     </listBibl>
+                  </msItem>
+               </msContents>
+               <physDesc>
+                  <sealDesc>
+                     <seal>
+                        <p>Vier anhangende Siegel: 1. sechseckig, 2. - 4. rund.</p>
+                     </seal>
+                  </sealDesc>
+               </physDesc>
+            </msDesc>
+         </sourceDesc>
+      </fileDesc>
+      <encodingDesc>
+         <projectDesc default="false">
+            <p><label type="contentual-editing">Projekt Christina Lutter Stadt und
+                  Gemeinschaft</label></p>
+         </projectDesc>
+      </encodingDesc>
+      <profileDesc>
+         <creation>
+            <placeName>Wien</placeName>
+            <date when="13330703">1333 VII 03</date>
+            <origDate instant="false">ze Wienne, an sand Ulreichs abent.</origDate></creation>
+      </profileDesc>
+   </teiHeader>
+   <facsimile>
+      <surface>
+         <graphic
+            url="http://images.monasterium.net/pics/AT-WStLA/HA-U/WStLA-HA-Urkunden_00155_r.jpg"/>
+      </surface>
+      <surface>
+         <graphic
+            url="http://images.monasterium.net/pics/AT-WStLA/HA-U/WStLA-HA-Urkunden_00155_v.jpg"/>
+      </surface>
+   </facsimile>
+   <text>
+      <body>
+         <div type="abstract" resp="lp">
+            <p>
+               <rs type="event" ref="#ev__QGW_II_I_155">
+                  <rs type="fn" role="issuer"><rs type="person"
+                        ref="#pe__weichart_bei_den_minderbruedern_QGW_II_I_118">Weichart pei den
+                        Minnern prudern, der Herzogin in Oesterreich <roleName type="occ"
+                           corresp="#pe__johanna_von_pfirt_QGW_II_I_304" cert="high"
+                           >Hofmeister</roleName></rs>, <rs type="person"
+                        ref="#pe__ulrich_bei_den_minderbruedern_FRA_II_1316_II_02.1">Ulreich pei den
+                        Prudern, sein <roleName type="kin"
+                           corresp="#pe__weichart_bei_den_minderbruedern_QGW_II_I_118"
+                           >Bruder</roleName></rs>, <rs type="person"
+                        ref="#pe__hermann_snaeczl_QGW_II_I_196">Herman der Snaetzel, <roleName type="occ" corresp="#org__wien">purgermaister</roleName> ze
+                        Wienne</rs>, und <rs type="person"
+                        ref="#pe__hermann_von_st_poelten_QGW_II_I_118">Hermann, der <roleName
+                           type="kin" corresp="#pe__rudolfine_QGW_II_I_417"
+                           ><add>eninchel</add></roleName>
+                        <rs type="person" ref="#pe__rudolfine_QGW_II_I_417">Rudolfinne eninchel von
+                           Sand Polten</rs></rs></rs>, <triggerstring n="disp">Urkunden als
+                     Schiedsleute</triggerstring> in einem <rs type="fn" role="other"><triggerstring
+                        n="fn">Streite</triggerstring> zwischen <rs type="person"
+                        ref="#pe__peter_schlosser_QGW_II_I_155">Petern,<roleName type="kin"
+                           corresp="#pe__otto_schlosser_QGW_II_I_155"><add>sun</add>
+                        </roleName><rs type="person" ref="#pe__otto_schlosser_QGW_II_I_155"><roleName
+                              type="title">hern</roleName> Otten sun, des <roleName type="prof"
+                              >slosser</roleName>, <roleName type="dead">dem got gnade</roleName>
+                        </rs></rs>, und seinen Muhmen, den Nonnen von S. Jacob, <rs type="person"
+                        ref="#pe__christine_QGW_II_I_155"><roleName type="title">Schwester</roleName>
+                        Christein <roleName type="kin" corresp="#pe__otto_schlosser_QGW_II_I_155"
+                              ><add>muhme</add></roleName></rs> und <rs type="person"
+                        ref="#pe__agnes_QGW_II_I_155"><roleName type="title">Schwester</roleName>
+                        Agnes <roleName type="kin" corresp="#pe__otto_schlosser_QGW_II_I_155"
+                              ><add>muhme</add></roleName></rs></rs>, über ein Joch Weingarten ze
+                  Prunne, haisset der Gileis, der ihm von Vater und Mutter anerstorben ist. Sie
+                     <triggerstring n="disp">entscheiden</triggerstring>, dass Peter den <rs type="fn"
+                     role="recipient">beiden Frauen <rs type="person" ref="#pe__agnes_QGW_II_I_155"
+                           ><add>Schwester Agnes</add></rs>
+                     <rs type="person" ref="#pe__christine_QGW_II_I_155"><add>Schwester
+                           Christine</add></rs> für den Weingarten jährlich 5 lb dn. Burgrecht von
+                     seinem Hause in der Pekchenstrasse ze Wienne oder von einem anderen Hause in
+                     der rinkchmauer dienen soll, dass nach dem Ableben der Nonnen 2 lb dn. dieses
+                     Burgrechts wieder an Peter, 3 lb dn. aber an das Kloster S. Jakob zu einem
+                     Seelgeräte fallen sollen, und dass der diesjährige Ertrag des Weingartens den
+                     beiden Nonnen zukommen solle.</rs></rs>
+            </p>
+         </div>
+         <div type="seal">
+            <p><rs type="event" ref="#ev__QGW_II_I_155"><rs type="fn" role="witness">Besiegelt von
+                     den Ausstellern <rs type="person"
+                        ref="#pe__weichart_bei_den_minderbruedern_QGW_II_I_118"><add>Weichart pei den
+                           Minnern prudern, der Herzogin in Oesterreich Hofmeister</add></rs>, <rs
+                        type="person" ref="#pe__ulrich_bei_den_minderbruedern_FRA_II_1316_II_02.1"
+                           ><add>Ulreich pei den Prudern, sein</add>
+                        <roleName type="kin"
+                           corresp="#pe__weichart_bei_den_minderbruedern_QGW_II_I_118"
+                              ><add>Bruder</add></roleName></rs>, <rs type="person"
+                        ref="#pe__hermann_snaeczl_QGW_II_I_196"><add>Herman der Snaetzel,</add>
+                        <roleName type="occ" corresp="#org__wien"
+                           ><add>purgermaister</add></roleName>
+                        <add>ze Wienne</add></rs>, <add>und</add>
+                     <rs type="person" ref="#pe__hermann_von_st_poelten_QGW_II_I_118"
+                           ><add>Hermann</add>
+                        <roleName type="kin" corresp="#pe__rudolfine_QGW_II_I_417"
+                              ><add>eninchel</add></roleName><add>, der</add>
+                        <rs type="person" ref="#pe__rudolfine_QGW_II_I_417"><add>Rudolfinne eninchel
+                              von Sand Polten</add></rs></rs></rs></rs>.</p>
+         </div>
+         <div type="lists">
+            <xi:include xmlns:xi="http://www.w3.org/2001/XInclude"
+               href="../../../../indices/placeList.xml" xpointer="element(/1/2/1/1)"/>
+            <xi:include xmlns:xi="http://www.w3.org/2001/XInclude"
+               href="../../../../indices/personList.xml" xpointer="element(/1/2/1/1)"/>
+            <xi:include xmlns:xi="http://www.w3.org/2001/XInclude"
+               href="../../../../indices/eventList.xml" xpointer="element(/1/2/1/1)"/>
+            <xi:include xmlns:xi="http://www.w3.org/2001/XInclude"
+               href="../../../../indices/orgList.xml" xpointer="element(/1/2/1/1)"/>
+         </div>
+      </body>
+   </text>
+</TEI>

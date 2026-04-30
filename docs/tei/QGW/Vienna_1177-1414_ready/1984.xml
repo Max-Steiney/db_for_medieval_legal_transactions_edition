@@ -1,0 +1,69 @@
+<?xml version="1.0" encoding="UTF-8"?><!DOCTYPE TEI SYSTEM "../../../schema/toolbox_full.dtd"><TEI xmlns="http://www.tei-c.org/ns/1.0" xmlns:cei="http://www.monasterium.net/NS/cei" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance">
+   <teiHeader>
+      <fileDesc>
+         <titleStmt>
+            <title>Tei version of 1984 exported from monasterium.net </title>
+         </titleStmt>
+         <publicationStmt>
+            <p/>
+         </publicationStmt>
+         <!--In Original: cei:front/cei:sourceDesc/cei:sourceDescRegest-->
+         <sourceDesc>
+            <bibl>Quellen zur Geschichte der Stadt Wien, Bd. II/2, Nr. 1984 As published in HAUrk by
+               Wiener Stadt- und Landesarchiv </bibl>
+            <msDesc>
+               <msIdentifier>
+                  <repository>Wiener Stadt- und Landesarchiv</repository>
+                  <idno>1984</idno>
+                  <altIdentifier type="old">
+                     <idno>516192</idno>
+                  </altIdentifier>
+               </msIdentifier>
+               <physDesc>
+                  <sealDesc>
+                     <seal>
+                        <p>Die Siegel fehlen.</p>
+                     </seal>
+                  </sealDesc>
+               </physDesc>
+            </msDesc>
+         </sourceDesc>
+      </fileDesc>       <encodingDesc>          <projectDesc default="false">             <p><label type="contentual-editing">Projekt Christina Lutter Stadt und                   Gemeinschaft</label></p>          </projectDesc>       </encodingDesc>
+      <profileDesc>
+         <creation>
+            <placeName>Wien</placeName>
+            <date when="14140602">1414 VI 02</date>
+            <origDate>ze Wienn, an sambstag nach sand Petronellen tag.</origDate></creation>
+      </profileDesc>
+   </teiHeader>
+   <facsimile>
+      <surface>
+         <graphic url="http://images.monasterium.net/pics/AT-WStLA/HA-U/WStLA-HA-Urkunden_01984_r.jpg"/>
+      </surface>
+      <surface>
+         <graphic url="http://images.monasterium.net/pics/AT-WStLA/HA-U/WStLA-HA-Urkunden_01984_v.jpg"/>
+      </surface>
+   </facsimile>
+   <text>
+      <body>
+         <div type="abstract">
+            <p><rs type="event" ref="#ev__QGW_II_II_1984">
+               <rs type="fn" role="issuer"><rs type="person" ref="#pe__kaspar_guenzburger_QGW_II_II_1984">Caspar der Gu/onczperger, den man
+                     nennet Scho/ennaicher, <roleName type="occ" corresp="#org__wien">burger</roleName> ze Wienn</rs></rs>, verkauft für sich und <rs type="person" ref="#pe__friedrich_guenzburger_QGW_II_II_1984">seinen <roleName type="kin" corresp="#pe__kaspar_guenzburger_QGW_II_II_1984">Bruder</roleName>
+                  Fridreichen den Gu/onczperger, der zu seinen beschaiden jarn noch nicht komen
+                  ist,</rs> von rechter ehafter not von wegen der geltschuld , darin sie ihr <rs type="person" ref="#pe__peter_guenzburger_QGW_II_I_1235"><roleName type="kin" corresp="#pe__kaspar_guenzburger_QGW_II_II_1984">Vater</roleName>
+                  <roleName type="kin" corresp="#pe__friedrich_guenzburger_QGW_II_II_1984"><add>Vater</add></roleName>Peter der Gu/onczperger <roleName type="dead">seliger</roleName></rs> ze gelten hinder im lassen hat, <rs type="fn" role="other"><triggerstring n="fn">mit Handen </triggerstring><rs type="person" ref="#pe__thomas_plodl_QGW_II_II_1984">Thomans des Plödl, <roleName type="occ" corresp="#org__klosterneuburg-augustiner_chorherren">ambtman</roleName> des
+                     klosters ze Neunburgk</rs></rs>, ½ Joch Weingarten, gelegen ze Grinzing in dem
+               Mukkental, genannt die Plahen, zenechst Herbarts in der Scheffstrass weingarten, von
+               dem man ½ lb dn. zu Bergrecht, Zehent und Voitrecht dient, um 300 lb dn. <rs type="fn" role="recipient"><rs type="person" ref="#pe__paul_wuerfel_QGW_II_II_1928">seinem <roleName type="kin" corresp="#pe__kaspar_guenzburger_QGW_II_II_1984">Vetter</roleName> Pauln dem Würffl, des <roleName type="occ" corresp="#org__wien">rats</roleName> der [ 17] stat ze Wienn</rs>.</rs>
+            </rs></p>
+         </div>
+         <div type="seal">
+            <p><rs type="event" ref="#ev__QGW_II_II_1984"><rs type="fn" role="witness">Besiegelt von dem <rs type="person" ref="#pe__kaspar_guenzburger_QGW_II_II_1984">Aussteller</rs>, dem <rs type="person" ref="#pe__thomas_plodl_QGW_II_II_1984">Amtmanne</rs> und dem<rs type="person" ref="#pe__ulrich_wuerfel_QGW_II_I_1404"> <roleName type="kin" corresp="#pe__kaspar_guenzburger_QGW_II_II_1984">Vetter</roleName> des Ausstellers
+                     Ulreichen dem Würffl</rs>.</rs>
+            </rs></p>
+         </div>
+         <div type="lists"><xi:include xmlns:xi="http://www.w3.org/2001/XInclude" href="../../../../indices/placeList.xml" xpointer="element(/1/2/1/1)"/><xi:include xmlns:xi="http://www.w3.org/2001/XInclude" href="../../../../indices/personList.xml" xpointer="element(/1/2/1/1)"/><xi:include xmlns:xi="http://www.w3.org/2001/XInclude" href="../../../../indices/eventList.xml" xpointer="element(/1/2/1/1)"/><xi:include xmlns:xi="http://www.w3.org/2001/XInclude" href="../../../../indices/orgList.xml" xpointer="element(/1/2/1/1)"/></div>
+      </body>
+   </text>
+</TEI>

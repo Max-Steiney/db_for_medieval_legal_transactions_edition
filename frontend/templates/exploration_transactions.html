@@ -1,0 +1,206 @@
+﻿{% extends "base.html" %}
+{% from "macros.html" import drill_down_overlay, time_range_slider, prov_stat, prov_popover %}
+
+{% block title %}Transaktionen — Exploration{% endblock %}
+
+{% block head %}
+<link rel="stylesheet" href="{{ root_path }}/static/css/exploration.css">
+{% endblock %}
+
+{% block content %}
+<div class="explore-page" id="exploration-page">
+
+    {% if epic_c_json is defined %}
+
+    {# ── Unified header: title + stats + time slider ─────────── #}
+    <header class="explore-header-unified" id="explore-filters">
+        <div class="explore-header-row">
+            <div class="explore-header-title">
+                <h1>Transaktionen</h1>
+                <span class="explore-header-stats">
+                    <span class="prov-stat-container">
+                        {% call prov_stat('prov-tx-events') %}{{ "{:,}".format(total_events_c|default(0)).replace(",", ".") }}{% endcall %}
+                        {% call prov_popover('prov-tx-events', 'Rechtsgesch&auml;fte', 'Annotierte Events mit Transaktionsverb') %}
+                            <p class="prov-def">Summe aller Events mit annotierter Transaktion im Freigabestand. Events ohne Verb werden nicht gez&auml;hlt.</p>
+                            <footer class="prov-foot">
+                                <span class="prov-foot-source"><code>epic_c.json</code></span>
+                                <a class="prov-foot-link" href="{{ root_path }}/project/glossary.html#rechtsgeschaft">&rarr; Glossar</a>
+                            </footer>
+                        {% endcall %}
+                    </span> Rechtsgesch&auml;fte
+                    &middot;
+                    {{ "{:,}".format(unique_verb_forms|default(0)).replace(",", ".") }} Verbformen
+                    &middot;
+                    {{ "{:,}".format(recipient_orgs|default(0)).replace(",", ".") }} Empf&auml;ngerinstitutionen
+                    &middot;
+                    <span class="explore-trans-caveat" title="Anteil der Events mit normalisiertem Transaktionsverb gegen&uuml;ber dem kontrollierten Vokabular">Normalisierung: {{ norm_rate_pct }}&nbsp;%</span>
+                </span>
+            </div>
+            {{ time_range_slider() }}
+        </div>
+    </header>
+
+    {# ── Panels ──────────────────────────────────────────────── #}
+    <div class="explore-panels explore-panels--two-one">
+        {# Panel 1: Transaction types over time #}
+        <div class="explore-panel explore-panel--chart explore-panel--wide" id="explore-panel-timeline">
+            <div class="explore-panel-header">
+                <h2>Transaktionstypen im Zeitverlauf</h2>
+                <div class="explore-panel-controls">
+                    <button class="explore-view-toggle" id="explore-tx-table-toggle"
+                            aria-label="Tabellenansicht">
+                        <span class="explore-icon-table">&#x2637;</span>
+                    </button>
+                </div>
+            </div>
+            <div class="explore-chart-wrap" id="explore-tx-chart"
+                 role="img" aria-label="Transaktionstypen im Zeitverlauf als gestapeltes Balkendiagramm">
+            </div>
+            <div class="explore-table-wrap hidden" id="explore-tx-table">
+                <table class="explore-data-table">
+                    <thead>
+                        <tr>
+                            <th>Transaktionstyp</th>
+                            <th>Anzahl</th>
+                            <th>Anteil</th>
+                        </tr>
+                    </thead>
+                    <tbody id="explore-tx-tbody"></tbody>
+                </table>
+            </div>
+            <div class="explore-panel-footer" id="explore-tx-footer"></div>
+        </div>
+
+        {# Panel 2: Verb form browser #}
+        <div class="explore-panel explore-panel--table" id="explore-panel-verbs">
+            <div class="explore-panel-header">
+                <h2>Verb-Browser</h2>
+                <div class="explore-panel-controls">
+                    <input type="text" class="explore-search-input" id="explore-verb-search"
+                           placeholder="Verbform suchen…" aria-label="Verbform suchen">
+                    <select class="explore-filter-select" id="explore-verb-norm-filter"
+                            aria-label="Normalisierungsstatus">
+                        <option value="all">Alle</option>
+                        <option value="normalised">Normalisiert</option>
+                        <option value="not_normalised">Nicht normalisiert</option>
+                    </select>
+                </div>
+            </div>
+            <div class="explore-table-wrap" id="explore-verb-table-wrap">
+                <table class="explore-data-table explore-data-table--sortable" id="explore-verb-table">
+                    <thead>
+                        <tr>
+                            <th data-sort="form" class="sortable">Verbform <span class="sort-arrow"></span></th>
+                            <th data-sort="freq" class="sortable num">Häufigkeit <span class="sort-arrow"></span></th>
+                            <th data-sort="norm" class="sortable">Normalisiert zu <span class="sort-arrow"></span></th>
+                            <th data-sort="doc_count" class="sortable num">Quellen <span class="sort-arrow"></span></th>
+                        </tr>
+                    </thead>
+                    <tbody id="explore-verb-tbody"></tbody>
+                </table>
+            </div>
+            <div class="explore-panel-footer" id="explore-verb-footer"></div>
+        </div>
+
+        {# Panel 3: Institutional recipients #}
+        <div class="explore-panel explore-panel--chart" id="explore-panel-recipients">
+            <div class="explore-panel-header">
+                <h2>Institutionelle Empfänger</h2>
+                <div class="explore-panel-controls">
+                    <button class="explore-view-toggle" id="explore-recip-table-toggle"
+                            aria-label="Tabellenansicht">
+                        <span class="explore-icon-table">&#x2637;</span>
+                    </button>
+                </div>
+            </div>
+            <div class="explore-chart-wrap" id="explore-recip-chart"
+                 role="img" aria-label="Empfänger nach Organisationstyp als Balkendiagramm">
+            </div>
+            <div class="explore-table-wrap hidden" id="explore-recip-table">
+                <table class="explore-data-table">
+                    <thead>
+                        <tr>
+                            <th>Organisationstyp</th>
+                            <th>Empfangene Zuwendungen</th>
+                        </tr>
+                    </thead>
+                    <tbody id="explore-recip-tbody"></tbody>
+                </table>
+            </div>
+            <div class="explore-panel-footer" id="explore-recip-footer"></div>
+        </div>
+    </div>
+
+    {# ── Institution detail overlay ────────────────────────────── #}
+    <div class="explore-drilldown-overlay hidden" id="explore-inst-detail" role="dialog"
+         aria-label="Institutionsdetail" aria-modal="true">
+        <div class="explore-drilldown-inner explore-drilldown-inner--wide">
+            <div class="explore-drilldown-header">
+                <h3 id="explore-inst-detail-title">Institution</h3>
+                <button class="explore-drilldown-close" id="explore-inst-detail-close"
+                        aria-label="Schließen">&times;</button>
+            </div>
+            <div class="explore-drilldown-body" id="explore-inst-detail-body">
+                <table class="explore-data-table">
+                    <thead>
+                        <tr>
+                            <th>Institution</th>
+                            <th>Typ</th>
+                            <th class="num">Zuwendungen</th>
+                        </tr>
+                    </thead>
+                    <tbody id="explore-inst-detail-tbody"></tbody>
+                </table>
+            </div>
+            <div class="explore-drilldown-footer">
+                <span id="explore-inst-detail-count"></span>
+            </div>
+        </div>
+    </div>
+
+    {# ── Panel 4: Org Type × Transaction Type Matrix (E4) ────────── #}
+    <div class="explore-panels">
+        <div class="explore-panel explore-panel--full">
+            <div class="explore-panel-header">
+                <h2>Institutionstyp × Transaktionstyp</h2>
+                <span class="explore-header-stats" id="explore-orgtx-stats"></span>
+            </div>
+            <div class="explore-chart-wrap" id="explore-orgtx-matrix"
+                 role="img" aria-label="Kreuztabelle Institutionstyp und Transaktionstyp"></div>
+            <div class="explore-panel-footer" id="explore-orgtx-footer">
+                Forschungsfrage B3: Welche Institutionstypen empfangen welche Transaktionsarten?
+            </div>
+        </div>
+    </div>
+
+    {# ── Drill-down document overlay ────────────────────────────── #}
+    {{ drill_down_overlay() }}
+
+    {% else %}
+    {# Fallback placeholder when epic_c.json is not available #}
+    <div class="explore-placeholder-page">
+        <div class="explore-placeholder-page-icon">
+            <svg width="64" height="64" viewBox="0 0 40 40" fill="none" xmlns="http://www.w3.org/2000/svg">
+                <rect x="6" y="24" width="8" height="8" rx="1" stroke="currentColor" stroke-width="1.5" fill="currentColor" fill-opacity="0.15"/>
+                <rect x="16" y="16" width="8" height="16" rx="1" stroke="currentColor" stroke-width="1.5" fill="currentColor" fill-opacity="0.15"/>
+                <rect x="26" y="8" width="8" height="24" rx="1" stroke="currentColor" stroke-width="1.5" fill="currentColor" fill-opacity="0.15"/>
+            </svg>
+        </div>
+        <h2 class="explore-placeholder-page-title">Transaktionen</h2>
+        <p class="explore-placeholder-page-text">
+            Daten werden generiert. Bitte führen Sie <code>python -m frontend build</code> aus.
+        </p>
+    </div>
+    {% endif %}
+
+</div>
+{% endblock %}
+
+{% block scripts %}
+<script src="{{ root_path }}/static/js/table-infra.js"></script>
+<script src="{{ root_path }}/static/js/chart-helpers.js"></script>
+<script src="{{ root_path }}/static/js/drill-down.js"></script>
+<script src="{{ root_path }}/static/js/exploration-transactions.js"></script>
+{% endblock %}
+
+{% block footer_info %}Transaktionen generiert am {{ build_date }}{% endblock %}

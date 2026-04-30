@@ -1,0 +1,127 @@
+<?xml version="1.0" encoding="UTF-8"?><!DOCTYPE TEI   SYSTEM "../../../schema/toolbox_full.dtd">
+<TEI xmlns="http://www.tei-c.org/ns/1.0" xmlns:cei="http://www.monasterium.net/NS/cei"
+    xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance">
+    <teiHeader>
+        <fileDesc>
+            <titleStmt>
+                <title>Tei version of 216 exported from monasterium.net </title>
+            </titleStmt>
+            <publicationStmt>
+                <p/>
+            </publicationStmt>
+            <!--In Original: cei:front/cei:sourceDesc/cei:sourceDescRegest-->
+            <sourceDesc>
+                <bibl type="url">https://www.monasterium.net/mom/AT-WStLA/HAUrk/216/charter</bibl>
+                <bibl default="false" status="draft">Quellen zur Geschichte der Stadt Wien, Bd.
+                    II/1, Nr. 216 As published in HAUrk by Wiener Stadt- und Landesarchiv </bibl>
+                <msDesc status="draft">
+                    <msIdentifier>
+                        <repository>Wiener Stadt- und Landesarchiv</repository>
+                        <idno>216</idno>
+                        <altIdentifier type="old">
+                            <idno>514385</idno>
+                        </altIdentifier>
+                    </msIdentifier>
+                    <physDesc>
+                        <sealDesc>
+                            <seal>
+                                <p>Vier anhangende Siegel: 1. roth u. K., spitzoval, 2. grün u. K.,
+                                    spitzoval, 3. grün u. K., sechseckig, 4. grün u. K., rund.</p>
+                            </seal>
+                        </sealDesc>
+                    </physDesc>
+                </msDesc>
+            </sourceDesc>
+        </fileDesc>
+        <encodingDesc>
+            <projectDesc default="false">
+                <p><label type="contentual-editing">Projekt Christina Lutter Stadt und
+                        Gemeinschaft</label></p>
+            </projectDesc>
+        </encodingDesc>
+        <profileDesc>
+            <creation>
+                <date when="13400317">1340 III 17</date>
+                <origDate instant="false">an sand Gedrauten tag in der Vasten.</origDate></creation>
+        </profileDesc>
+    </teiHeader>
+    <facsimile>
+        <surface>
+            <graphic
+                url="http://images.monasterium.net/pics/AT-WStLA/HA-U/WStLA-HA-Urkunden_00216_r.jpg"
+            />
+        </surface>
+        <surface>
+            <graphic
+                url="http://images.monasterium.net/pics/AT-WStLA/HA-U/WStLA-HA-Urkunden_00216_v.jpg"
+            />
+        </surface>
+    </facsimile>
+    <text>
+        <body>
+            <div type="abstract" resp="ks">
+                <p>
+                    <rs type="event" ref="#ev__QGW_II_I_216"><rs type="fn" role="issuer"><rs
+                                type="person" ref="#pe__elisabeth_QGW_II_I_216">Elspet, <roleName
+                                    type="kin" corresp="#pe__konrad_methsieder_QGW_II_I_216"
+                                    >wittibe</roleName>
+                                <rs type="person" ref="#pe__konrad_methsieder_QGW_II_I_216">Chunrates
+                                        <roleName type="dead">wittibe</roleName> des
+                                metsieder</rs></rs>,</rs>
+                        <triggerstring n="disp">verkauft</triggerstring>
+                        <rs type="fn" role="other"><triggerstring n="fn">nach Rath</triggerstring> des <rs
+                                type="person" ref="#pe__heinrich_QGW_II_I_216"><roleName type="occ"
+                                    corresp="#org__wien-schotten">Schottenabtes</roleName>
+                                Hainreich</rs></rs> und <rs type="fn" role="other"><triggerstring
+                                n="fn">mit Handen</triggerstring> ihrer <rs type="person"
+                                ref="#pe__albrecht_von_hohenberg_II_QGW_II_I_216"><roleName
+                                    type="title">Grundherren</roleName> ( <roleName type="title"
+                                    >graf</roleName> Albrechts von Hohenwerch, <roleName type="occ"
+                                    corresp="#org__wien-st_stephan">pharrer</roleName> datz sand
+                                Stephan zu Wienne</rs>, <rs type="person"
+                                ref="#pe__jakob_maeserl_QGW_II_I_121"><roleName type="title"
+                                        ><add>Grundherren</add></roleName>
+                                <roleName type="title">hern</roleName> Jacobes des Maeserlein,
+                                    <roleName type="occ" corresp="#org__wien-buergerspital">obrister
+                                    spitalmaister</roleName> der purger Spital ze Wienne</rs> und
+                                <rs type="person" ref="#pe__herbert_auf_der_saeule_QGW_II_I_184"
+                                    ><roleName type="title"><add>Grundherren</add></roleName>
+                                <roleName type="title">hern</roleName> Herworts auf der Seule
+                            )</rs></rs> ihres rechten ledigen Burgrechts 11 lb dn., die sie
+                        wittibenweise gekauft hatte, wovon 5 lb dn. geltes ligent auf Leutoldes
+                        haus, des Wolfes sun von Radaun, pei Werdertor, das sie früher besessen
+                        hatte, und 6 lb dn. gelts purchrechts auf Stephans hause des Pophinger in
+                        der Wollzeil, das weiln und e Dietmares des Rauber gewesen ist , um 99 lb
+                        dn. <rs type="fn" role="recipient"><rs type="person"
+                                ref="#pe__dietrich_urbetsch_QGW_II_I_950"><roleName type="title"
+                                    >hern</roleName> Dietreichen dem Urbetschen, <roleName type="occ" corresp="#org__wien">purger</roleName> ze
+                                Wienne</rs>, und seiner <rs type="person"
+                                ref="#pe__elisabeth_QGW_II_I_386"><roleName type="kin"
+                                    corresp="#pe__dietrich_urbetsch_QGW_II_I_950">Hausfrau</roleName>
+                                Elspet</rs></rs>.</rs>
+                </p>
+            </div>
+            <div type="seal">
+                <p><rs type="event" ref="#ev__QGW_II_I_216"><rs type="fn" role="witness">Besiegelt
+                            mit den Siegeln des <rs type="person" ref="#pe__heinrich_QGW_II_I_216"
+                                >Schottenabtes</rs> und der <rs type="person"
+                                ref="#pe__albrecht_von_hohenberg_II_QGW_II_I_216">Grundherren</rs>
+                            <rs type="person" ref="#pe__jakob_maeserl_QGW_II_I_121"
+                                    ><add>Grundherren</add></rs>
+                            <rs type="person" ref="#pe__herbert_auf_der_saeule_QGW_II_I_184"
+                                    ><add>Grundherren</add></rs>.</rs></rs>
+                </p>
+            </div>
+            <div type="lists">
+                <xi:include xmlns:xi="http://www.w3.org/2001/XInclude"
+                    href="../../../../indices/placeList.xml" xpointer="element(/1/2/1/1)"/>
+                <xi:include xmlns:xi="http://www.w3.org/2001/XInclude"
+                    href="../../../../indices/personList.xml" xpointer="element(/1/2/1/1)"/>
+                <xi:include xmlns:xi="http://www.w3.org/2001/XInclude"
+                    href="../../../../indices/eventList.xml" xpointer="element(/1/2/1/1)"/>
+                <xi:include xmlns:xi="http://www.w3.org/2001/XInclude"
+                    href="../../../../indices/orgList.xml" xpointer="element(/1/2/1/1)"/>
+            </div>
+        </body>
+    </text>
+</TEI>

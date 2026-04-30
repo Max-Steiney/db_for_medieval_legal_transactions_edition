@@ -1,0 +1,19 @@
+<?xml version="1.0" encoding="UTF-8"?><!DOCTYPE TEI   SYSTEM "../../../schema/toolbox_full.dtd"><TEI xmlns="http://www.tei-c.org/ns/1.0" xmlns:cei="http://www.monasterium.net/NS/cei" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"><teiHeader><fileDesc><titleStmt><title>Tei version of 1815 exported from monasterium.net </title></titleStmt><publicationStmt><p/></publicationStmt><!--In Original: cei:front/cei:sourceDesc/cei:sourceDescRegest--><sourceDesc><bibl  type="url">https://www.monasterium.net/mom/AT-WStLA/HAUrk/1815/charter</bibl><bibl default="false" status="draft">Quellen zur Geschichte der Stadt Wien, Bd. II/1, Nr. 1815 As published in HAUrk by
+               Wiener Stadt- und Landesarchiv </bibl><msDesc status="draft"><msIdentifier><repository>Wiener Stadt- und Landesarchiv</repository><idno>1815</idno><altIdentifier type="old"><idno>516018</idno></altIdentifier></msIdentifier><physDesc><sealDesc><seal><p>Zwei vorne aufgedrückte Siegel.</p></seal></sealDesc></physDesc></msDesc></sourceDesc></fileDesc><encodingDesc><projectDesc default="false"><p><label type="contentual-editing">Projekt Christina Lutter Stadt und Gemeinschaft</label></p></projectDesc></encodingDesc><profileDesc><creation>
+            <placeName>Waidhofen a.d.Thaya</placeName>
+            <date when="14101031">1410 X 31</date>
+            <origDate instant="false">Geben zu Waidhofen auf der Tey an Allerheiligen abent, anno etc. M CCCC
+               decimo.</origDate></creation></profileDesc></teiHeader><facsimile><surface><graphic url="http://images.monasterium.net/pics/AT-WStLA/HA-U/WStLA-HA-Urkunden_01815_r.jpg"/></surface><surface><graphic url="http://images.monasterium.net/pics/AT-WStLA/HA-U/WStLA-HA-Urkunden_01815_v.jpg"/></surface></facsimile><text><body><div type="abstract" resp="cs"><p>
+               <rs type="event" ref="#ev__QGW_II_I_1815"><rs type="fn" role="issuer"><rs type="person" ref="#pe__friedrich_geras_QGW_II_I_1815">Fridreich der
+                        Garaz/zz/z</rs></rs>
+                  <triggerstring n="disp">theilt <add>mit</add></triggerstring>
+                  <rs type="fn" role="recipient"><rs type="org" ref="#org__wien">dem Bürger meister
+                        und dem Rathe der Stadt zu Wien</rs></rs> mit, dass er mit dem von seinem
+                     <rs type="person" ref="#pe__johann_drezzidler_QGW_II_I_1815"><roleName type="kin" corresp="#pe__friedrich_geras_QGW_II_I_1815">Bruder</roleName>
+                     hern Hans dem Drez/zz/zidler, <roleName type="occ" corresp="#org__raabs-pfarre">pharrer</roleName> ze Raptz/zz/z</rs>, vor genommenen Verkaufe ihres
+                  Hauses, gelegen zu Wien hinder dem Neunmark, <triggerstring n="disp">ganz
+                     einverstanden sei</triggerstring>.</rs>
+            </p></div><div type="seal"><p><rs type="event" ref="#ev__QGW_II_I_1815"><rs type="fn" role="witness">Besiegelt mit
+                     den Siegeln des <rs type="person" ref="#pe__friedrich_geras_QGW_II_I_1815">Ausstellers</rs> und<rs type="person" ref="#pe__heinrich_leubestorfer_QGW_II_I_1815"> des <roleName type="title">erbern</roleName> <roleName type="prof">chnechts</roleName> Hainreis
+                        des Leubestorffer.</rs></rs></rs>
+            </p></div><div type="lists"><xi:include xmlns:xi="http://www.w3.org/2001/XInclude" href="../../../../indices/placeList.xml" xpointer="element(/1/2/1/1)"/><xi:include xmlns:xi="http://www.w3.org/2001/XInclude" href="../../../../indices/personList.xml" xpointer="element(/1/2/1/1)"/><xi:include xmlns:xi="http://www.w3.org/2001/XInclude" href="../../../../indices/eventList.xml" xpointer="element(/1/2/1/1)"/><xi:include xmlns:xi="http://www.w3.org/2001/XInclude" href="../../../../indices/orgList.xml" xpointer="element(/1/2/1/1)"/></div></body></text></TEI>

@@ -1,0 +1,121 @@
+<?xml version="1.0" encoding="UTF-8"?><!DOCTYPE TEI   SYSTEM "../../../schema/toolbox_full.dtd">
+<TEI xmlns="http://www.tei-c.org/ns/1.0" xmlns:cei="http://www.monasterium.net/NS/cei"
+      xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance">
+      <teiHeader>
+            <fileDesc>
+                  <titleStmt>
+                        <title>Tei version of 1360 exported from monasterium.net </title>
+                  </titleStmt>
+                  <publicationStmt>
+                        <p/>
+                  </publicationStmt>
+                  <!--In Original: cei:front/cei:sourceDesc/cei:sourceDescRegest-->
+                  <sourceDesc>
+                        <bibl type="url"
+                              >https://www.monasterium.net/mom/AT-WStLA/HAUrk/1360/charter</bibl>
+                        <bibl default="false" status="draft">Quellen zur Geschichte der Stadt Wien,
+                              Bd. II/1, Nr. 1360 As published in HAUrk by Wiener Stadt- und
+                              Landesarchiv </bibl>
+                        <msDesc status="draft">
+                              <msIdentifier>
+                                    <repository>Wiener Stadt- und Landesarchiv</repository>
+                                    <idno>1360</idno>
+                                    <altIdentifier type="old">
+                                          <idno>515559</idno>
+                                    </altIdentifier>
+                              </msIdentifier>
+                              <physDesc>
+                                    <sealDesc>
+                                          <seal>
+                                                <p>Anhangendes Wappensiegel (Sava Fig. 51) mit
+                                                  Rücksiegel (Sava Fig. 52), roth u. Sch., rechts
+                                                  abgeschlagen. </p>
+                                          </seal>
+                                    </sealDesc>
+                              </physDesc>
+                        </msDesc>
+                  </sourceDesc>
+            </fileDesc>
+            <encodingDesc>
+                  <projectDesc default="false">
+                        <p><label type="contentual-editing">Projekt Christina Lutter Stadt und
+                                    Gemeinschaft</label></p>
+                  </projectDesc>
+            </encodingDesc>
+            <profileDesc>
+                  <creation>
+                        <placeName>Wien</placeName>
+                        <date when="13970320">1397 III 20</date>
+                        <origDate instant="false">Geben ze Wienn an eritag vor Unserr Fraun tag
+                              Annunciacionis, nach Crists gepurd 1300 jar und darnach in dem 97.
+                              jare. </origDate></creation>
+            </profileDesc>
+      </teiHeader>
+      <facsimile>
+            <surface>
+                  <graphic
+                        url="http://images.monasterium.net/pics/AT-WStLA/HA-U/WStLA-HA-Urkunden_01360_a_r.jpg"
+                  />
+            </surface>
+            <surface>
+                  <graphic
+                        url="http://images.monasterium.net/pics/AT-WStLA/HA-U/WStLA-HA-Urkunden_01360_a_v.jpg"
+                  />
+            </surface>
+            <surface>
+                  <graphic
+                        url="http://images.monasterium.net/pics/AT-WStLA/HA-U/WStLA-HA-Urkunden_01360_b_r.jpg"
+                  />
+            </surface>
+            <surface>
+                  <graphic
+                        url="http://images.monasterium.net/pics/AT-WStLA/HA-U/WStLA-HA-Urkunden_01360_b_v.jpg"
+                  />
+            </surface>
+      </facsimile>
+      <text>
+            <body>
+                  <div type="abstract" resp="cs">
+                        <p><rs type="event" ref="#ev__QGW_II_I_1360"><rs type="fn" role="issuer"><rs
+                                                type="person"
+                                                ref="#pe__albrecht_iv_herzog_von_oesterreich_QGW_II_I_1332"
+                                                  ><roleName type="occ" corresp="#org__oesterreich-herzogtum"
+                                                  >Herzog</roleName> Albrecht IV.</rs></rs>
+                                    <triggerstring n="disp">gibt</triggerstring> seinem <rs type="fn"
+                                          role="recipient"><rs type="person"
+                                                ref="#pe__albrecht_hadmannsdorfer_QGW_II_I_1360"
+                                                  ><roleName type="occ"
+                                                  corresp="#pe__albrecht_iv_herzog_von_oesterreich_QGW_II_I_1332"
+                                                  >kamrer</roleName> Albern dem
+                                          Hadmanstorfer</rs></rs> seine Hälfte des öden Hauses,
+                                    gelegen hie ze Wienn zenachst Wolfharten des Poben seligen haus
+                                    gegen den Tu/ochlauben über, <rs type="event"
+                                          ref="#ev__QGW_II_I_1360_men_1">das vormals Steussen kinder,
+                                          seiner Juden zu Wien, gewesen ist</rs>.</rs>
+                        </p>
+                  </div>
+                  <div type="nota">
+                        <p><rs type="event" ref="#ev__QGW_II_I_1360"><rs type="fn" role="witness"><rs
+                                                type="person"
+                                                ref="#pe__albrecht_iv_herzog_von_oesterreich_QGW_II_I_1332"
+                                                >Von gleicher Hand: dominus dux</rs>
+                                          <rs type="person" ref="#pe__ulrich_von_rohr_QGW_II_I_1231"
+                                                >per Ulr. vom Ror</rs></rs>.</rs></p>
+                  </div>
+                  <div type="lists">
+                        <xi:include xmlns:xi="http://www.w3.org/2001/XInclude"
+                              href="../../../../indices/placeList.xml"
+                              xpointer="element(/1/2/1/1)"/>
+                        <xi:include xmlns:xi="http://www.w3.org/2001/XInclude"
+                              href="../../../../indices/personList.xml"
+                              xpointer="element(/1/2/1/1)"/>
+                        <xi:include xmlns:xi="http://www.w3.org/2001/XInclude"
+                              href="../../../../indices/eventList.xml"
+                              xpointer="element(/1/2/1/1)"/>
+                        <xi:include xmlns:xi="http://www.w3.org/2001/XInclude"
+                              href="../../../../indices/orgList.xml"
+                              xpointer="element(/1/2/1/1)"/>
+                  </div>
+            </body>
+      </text>
+</TEI>

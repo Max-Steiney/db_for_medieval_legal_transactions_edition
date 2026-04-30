@@ -1,0 +1,110 @@
+<?xml version="1.0" encoding="UTF-8"?><!DOCTYPE TEI SYSTEM "../../../schema/toolbox_full.dtd">
+<TEI xmlns="http://www.tei-c.org/ns/1.0" xmlns:cei="http://www.monasterium.net/NS/cei"
+   xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance">
+   <teiHeader>
+      <fileDesc>
+         <titleStmt>
+            <title>Tei version of 1999 exported from monasterium.net </title>
+         </titleStmt>
+         <publicationStmt>
+            <p/>
+         </publicationStmt>
+         <!--In Original: cei:front/cei:sourceDesc/cei:sourceDescRegest-->
+         <sourceDesc>
+            <bibl>Quellen zur Geschichte der Stadt Wien, Bd. II/2, Nr. 1999 As published in HAUrk by
+               Wiener Stadt- und Landesarchiv </bibl>
+            <msDesc>
+               <msIdentifier>
+                  <repository>Wiener Stadt- und Landesarchiv</repository>
+                  <idno>1999</idno>
+                  <altIdentifier type="old">
+                     <idno>516207</idno>
+                  </altIdentifier>
+               </msIdentifier>
+               <msContents>
+                  <msItem>
+                     <listBibl>
+                        <bibl>Camesina, Regesten 37 n° 176.</bibl>
+                     </listBibl>
+                  </msItem>
+               </msContents>
+               <physDesc>
+                  <sealDesc>
+                     <seal>
+                        <p>Anhangendes Bruchstück des kleinen Stadtsiegels, roth u. Sch.</p>
+                     </seal>
+                  </sealDesc>
+               </physDesc>
+            </msDesc>
+         </sourceDesc>
+      </fileDesc>
+      <encodingDesc>
+         <projectDesc default="false">
+            <p><label type="contentual-editing">Projekt Christina Lutter Stadt und
+                  Gemeinschaft</label></p>
+         </projectDesc>
+      </encodingDesc>
+      <profileDesc>
+         <creation>
+            <placeName>Wien</placeName>
+            <date when="14141002">1414 X 02</date>
+            <origDate>daselbs, an ertag nach sand Michels tag.</origDate></creation>
+      </profileDesc>
+   </teiHeader>
+   <facsimile>
+      <surface>
+         <graphic
+            url="http://images.monasterium.net/pics/AT-WStLA/HA-U/WStLA-HA-Urkunden_01999_r.jpg"/>
+      </surface>
+      <surface>
+         <graphic
+            url="http://images.monasterium.net/pics/AT-WStLA/HA-U/WStLA-HA-Urkunden_01999_v.jpg"/>
+      </surface>
+   </facsimile>
+   <text>
+      <body>
+         <div type="abstract">
+            <p>
+               <rs type="event" ref="#ev__QGW_II_I_1999"><rs type="fn" role="issuer"><rs
+                        type="person" ref="#pe__rudolf_angerfelder_QGW_II_I_1335">Rudolf der
+                        Angerfelder, <roleName type="occ" corresp="#org__wien"
+                           >burgermaister</roleName> und <roleName type="occ" corresp="#org__wien"
+                           >münssmaister</roleName>,</rs> und <rs type="org" ref="#org__wien">der rat
+                        gemain der stat ze Wienn</rs></rs> transsumieren die ihnen von <rs type="fn"
+                     role="recipient"><rs type="person" ref="#pe__anna_QGW_II_I_1597"><roleName
+                           type="title">Frau</roleName> Ann, weilent <rs type="person"
+                           ref="#pe__jakob_stichel_QGW_II_II_3713">Jacobs <roleName type="dead"
+                              >seligen</roleName> des Stichels</rs>
+                        <roleName type="kin" corresp="#pe__jakob_stichel_QGW_II_II_3713"
+                           >witib</roleName>, die darnach <rs type="person"
+                           ref="#pe__johann_ziernast_QGW_II_I_1371">Hannsen den Ziernast, dem auch
+                              <roleName type="dead">got genad</roleName>,</rs>
+                        <roleName type="kin" corresp="#pe__johann_ziernast_QGW_II_I_1371"
+                           >elichen</roleName> gnomen hat</rs></rs> , vorgelegten vier Urkunden n°
+                     <rs type="event" ref="#ev__QGW_II_I_1726">1726</rs>, <rs type="event"
+                     ref="#ev__QGW_II_I_1725">1725</rs>, <rs type="event" ref="#ev__QGW_II_I_1626"
+                     >1626</rs>, <rs type="event" ref="#ev__QGW_II_I_1625">1625</rs> und bestätigen,
+                  dass <rs type="fn" role="recipient">Hanns Ziernast</rs> in seinem in das Stadtbuch
+                  eingetragenen Geschäfte verordnet habe, für das, was er in seins vorvodern
+                  gescheft seinem weib noch schuldig ist, anzelegen das egenant weingertel, genant
+                  das Sentel, und drei holden ze Grinzing und das ain phunt gelts ze Grinzing, da
+                  sol man das haus von pesser, das zu demselben gescheft gehört .</rs>
+            </p>
+         </div>
+         <div type="seal">
+            <p><rs type="event" ref="#ev__QGW_II_II_1999"><rs type="fn" role="witness">Besiegelt mit
+                     der <rs type="org" ref="#org__wien">stat</rs> klainem insigel. </rs></rs></p>
+         </div>
+         <div type="lists">
+            <xi:include xmlns:xi="http://www.w3.org/2001/XInclude"
+               href="../../../../indices/placeList.xml" xpointer="element(/1/2/1/1)"/>
+            <xi:include xmlns:xi="http://www.w3.org/2001/XInclude"
+               href="../../../../indices/personList.xml" xpointer="element(/1/2/1/1)"/>
+            <xi:include xmlns:xi="http://www.w3.org/2001/XInclude"
+               href="../../../../indices/eventList.xml" xpointer="element(/1/2/1/1)"/>
+            <xi:include xmlns:xi="http://www.w3.org/2001/XInclude"
+               href="../../../../indices/orgList.xml" xpointer="element(/1/2/1/1)"/>
+         </div>
+      </body>
+   </text>
+</TEI>

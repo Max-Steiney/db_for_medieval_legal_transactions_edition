@@ -1,0 +1,145 @@
+<?xml version="1.0" encoding="UTF-8"?><!DOCTYPE TEI SYSTEM "../../../schema/toolbox_full.dtd">
+<TEI xmlns="http://www.tei-c.org/ns/1.0" xmlns:cei="http://www.monasterium.net/NS/cei"
+   xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance">
+   <teiHeader>
+      <fileDesc>
+         <titleStmt>
+            <title>TEI-Version of 540</title>
+         </titleStmt>
+         <publicationStmt>
+            <p/>
+         </publicationStmt>
+         <sourceDesc default="false">
+            <bibl default="false" status="draft">
+               <title type="full"><title type="main">Die Wiener Stadtbücher 1395 -
+                     1430</title><title type="sub">Teil 1: 1395 - 1400</title></title>
+               <author>Wilhelm Brauneder</author>
+               <author>Gerhard Jaritz</author>
+               <pubPlace>Wien</pubPlace>
+               <pubPlace>Köln</pubPlace>
+               <publisher>Böhlau Verlag</publisher>
+            </bibl>
+            <msDesc status="draft">
+               <msIdentifier>
+                  <idno>540</idno>
+               </msIdentifier>
+               <physDesc/>
+            </msDesc>
+         </sourceDesc>
+      </fileDesc>
+      <encodingDesc>
+         <projectDesc>
+            <p><label type="contentual-editing">Projekt Christina Lutter Stadt und
+                  Gemeinschaft</label></p>
+         </projectDesc>
+      </encodingDesc>
+      <profileDesc>
+         <creation>
+            <date when="1390-08-26">(1390 August 26, Wien)</date>
+         </creation>
+      </profileDesc>
+   </teiHeader>
+   <text>
+      <body>
+         <div type="header">
+            <p>Geschäft des Jörg bei dem Prunn</p>
+         </div>                   <div type="entry" resp="rs">
+            <p> pr. sehr., keine Zg., Siegel des Ausstellers, S (Indez: Item geseheftbrief Jorgen
+               bey Prunn) <rs type="event" ref="#ev__StB_I_540"><rs type="fn" role="issuer">Ich <rs
+                        type="person" ref="#pe__georg_bei_dem_brunnen_StB_I_484">Jorg pey dem Prünn,
+                           <roleName type="occ" corresp="#org__wien">purger</roleName> ze
+                        Wienn</rs>, vergich und tun chunt allen den, die den brief lesent oder hornt
+                     lesen, die nu lebent und hernach chunftig sind,</rs> das ich mit gutem willen,
+                  mit wolbedachtem müte und mit gesundem leyb und <rs type="fn" role="other"
+                        ><triggerstring n="fn">mit willen und gunst</triggerstring>
+                     <rs type="person" ref="#pe__elisabeth_StB_I_540">meiner <roleName type="kin"
+                           corresp="#pe__georg_bei_dem_brunnen_StB_I_484">hawsfrawn</roleName>
+                        <roleName type="title">frawn</roleName> Elspeten</rs></rs> zu der zeit, do
+                  ich es wol getün mocht, recht und redleich geschafft han, orden und schaff auch
+                  mit dem brief mein geschefft, als ich wil, das es erst noch meinem tod also stet
+                  und unczebrochen beleib. <rs type="fn" role="recipient">Von erst so schaff ich <rs
+                        type="org" ref="#org__wien-karmeliter">zu dem paw dacz denn Weyssen prüdern
+                        ze Wienn </rs>vier phunt phenning und <rs type="person"
+                        ref="#pe__niklas_StB_I_540">Niclasen, der egenanten <roleName type="kin"
+                           corresp="#pe__elisabeth_StB_I_540">meiner hawsfrawn
+                        prueder</roleName></rs>, zehen phunt und <rs type="person"
+                        ref="#pe__michael_StB_I_540">Michelen, <roleName type="kin"
+                           corresp="#pe__georg_bei_dem_brunnen_StB_I_484">meiner swester
+                           enynkchel</roleName></rs>, auch zehen phunt und <rs type="person"
+                        ref="#pe__christian_StB_I_540_a">Christann, dem grossern</rs>, vier phunt und
+                        <rs type="person" ref="#pe__christian_StB_I_540_b">Christann, dem
+                        chlaynern</rs>, auch vier phunt und <rs type="person"
+                        ref="#pe__wolfgang_StB_I_540">Genglein</rs> vier phunt, <rs type="person"
+                        ref="#pe__johann_StB_I_540_a">dem Johannes, meinem <roleName type="occ"
+                           corresp="#pe__georg_bei_dem_brunnen_StB_I_484">schreyber</roleName></rs>,
+                     sechs phunt, <rs type="person" ref="#pe__katharina_StB_I_540">Kathreyn, meyner
+                           <roleName type="occ" corresp="#pe__georg_bei_dem_brunnen_StB_I_484"
+                           >dienerynn</roleName></rs>, vier phunt und <rs type="person"
+                        ref="#pe__margarethe_StB_I_540_a">Margareten, irer <roleName type="kin"
+                           corresp="#pe__katharina_StB_I_540">swester</roleName></rs>, auch vier
+                     phunt alles Wienner phenning ob derselben Margareten,</rs>
+                  <rs type="fn" role="other">die <rs type="person" ref="#pe__elisabeth_StB_I_540">dy
+                        egenant mein hawsfrawn</rs>
+                     <triggerstring n="fn">geben</triggerstring> wil.</rs>
+                  <rs type="fn" role="recipient">Und schaff <rs type="person"
+                        ref="#pe__johann_StB_I_540_b">dem Johannes, meinem <roleName type="occ"
+                           corresp="#pe__georg_bei_dem_brunnen_StB_I_484"
+                        >schuelmayster</roleName></rs>, meinen gruen mantel mit der noerczein
+                     chürsen,</rs>
+                  <rs type="fn" role="other">ob im den auch die egenant <rs type="person"
+                        ref="#pe__elisabeth_StB_I_540">mein hawsfraw</rs>
+                     <triggerstring n="fn">geben</triggerstring> wil.</rs>
+                  <rs type="fn" role="recipient">Darnach schaff ich <rs type="person"
+                        ref="#pe__peter_StB_I_540">Petreyn</rs> meins gewants für zway phunt Wienner
+                     phenning und <rs type="person" ref="#pe__margarethe_StB_I_540_b">Margareten,
+                           <roleName type="kin" corresp="#pe__georg_bei_dem_brunnen_StB_I_484">meiner
+                           swesster tochter</roleName></rs> funif phunt, ob si noch lebt, und <rs
+                        type="person" ref="#pe__ulrich_henkerlein_StB_I_540">Ulreichs des Henkerleins
+                        chinden</rs> sechs phunt, die man in an ein erib legen sol, und <rs
+                        type="person" ref="#pe__dietrich_paur_StB_I_540">Dietreichs des <roleName
+                           type="prof" cert="unknown">Pawrn</roleName> chinden</rs> vier phunt und
+                        <rs type="person" ref="#pe__konrad_wagner_StB_I_540">Chunraten dem <roleName
+                           type="prof" cert="unknown">Wagner</roleName> und seinen chinden <add>dacz
+                           Stetelndorff</add>
+                        <roleName type="kin" corresp="#pe__wagner_StB_I_540_a"
+                           ><add>pruedern</add></roleName><roleName type="kin"
+                           corresp="#pe__wagner_StB_I_540_b"><add>pruedern</add></roleName></rs> auch
+                     vier phunt dacz Stetelndorff und <rs type="person" ref="#pe__wagner_StB_I_540_a"
+                        >desselben Chunrats des Wagner 2 <roleName type="kin"
+                           corresp="#pe__konrad_wagner_StB_I_540">pruedern</roleName>
+                        <roleName type="kin" corresp="#pe__wagner_StB_I_540_b"
+                           ><add>pruedern</add></roleName> von vater und von mueter</rs>
+                     <rs type="person" ref="#pe__wagner_StB_I_540_b"><add>desselben Chunrats des
+                           Wagner 2 <roleName type="kin" corresp="#pe__konrad_wagner_StB_I_540"
+                              >pruedern von vater und von mueter</roleName></add>
+                        <roleName type="kin" corresp="#pe__wagner_StB_I_540_a"
+                           ><add>pruedern</add></roleName>
+                     </rs>vier phunt und <rs type="person" ref="#pe__johann_dekcher_StB_I_484"
+                        >Jannsen des Dekcher chinden pey der hawsfrawn, die er yeczund hat</rs>,
+                     auch vier phunt alles Wienner phenning.</rs>
+                  <rs type="fn" role="other">Es sol auch <rs type="person"
+                        ref="#pe__elisabeth_StB_I_540">die vorgenant Elspet, mein hawsfraw</rs>, das
+                     vorgeschriben geschefft alles von meiner hab <triggerstring n="fn">ausrichten und
+                        geben</triggerstring> noch meinem tod, wenne si das wol getun und gehaben mag
+                     und sol noch mag sey nyemant verrer treyben an gever.</rs> Und das daz
+                  geschefft erst noch meinem tod also stet (fol.92v) und unczebrochen beleib,
+                  daruber so gib ich obgenanten Jorig pey dem Prunn den brief zu einem warn urchund
+                  der sach versigilten <rs type="person" ref="#pe__georg_bei_dem_brunnen_StB_I_484"
+                     >mit meinen aufgedrukchtem insigel</rs>. Der brief ist geben ze Wien nach
+                  Christs gepürd drewczehen hundert jar darnach in dem newnczigistem jare des
+                  negsten freytags vor sand Giligen tag.</rs>
+            </p>
+         </div>
+         <div type="lists">
+            <xi:include xmlns:xi="http://www.w3.org/2001/XInclude"
+               href="../../../../indices/placeList.xml" xpointer="element(/1/2/1/1)"/>
+            <xi:include xmlns:xi="http://www.w3.org/2001/XInclude"
+               href="../../../../indices/personList.xml" xpointer="element(/1/2/1/1)"/>
+            <xi:include xmlns:xi="http://www.w3.org/2001/XInclude"
+               href="../../../../indices/eventList.xml" xpointer="element(/1/2/1/1)"/>
+            <xi:include xmlns:xi="http://www.w3.org/2001/XInclude"
+               href="../../../../indices/orgList.xml" xpointer="element(/1/2/1/1)"/>
+         </div>
+      </body>
+   </text>
+</TEI>

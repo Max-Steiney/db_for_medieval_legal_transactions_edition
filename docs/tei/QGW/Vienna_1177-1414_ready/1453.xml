@@ -1,0 +1,124 @@
+<?xml version="1.0" encoding="UTF-8"?><!DOCTYPE TEI   SYSTEM "../../../schema/toolbox_full.dtd">
+<TEI xmlns="http://www.tei-c.org/ns/1.0" xmlns:cei="http://www.monasterium.net/NS/cei"
+   xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance">
+   <teiHeader>
+      <fileDesc>
+         <titleStmt>
+            <title>Tei version of 1453 exported from monasterium.net </title>
+         </titleStmt>
+         <publicationStmt>
+            <p/>
+         </publicationStmt>
+         <!--In Original: cei:front/cei:sourceDesc/cei:sourceDescRegest-->
+         <sourceDesc>
+            <bibl type="url">https://www.monasterium.net/mom/AT-WStLA/HAUrk/1453/charter</bibl>
+            <bibl default="false" status="draft">Quellen zur Geschichte der Stadt Wien, Bd. II/1,
+               Nr. 1453 As published in HAUrk by Wiener Stadt- und Landesarchiv </bibl>
+            <msDesc status="draft">
+               <msIdentifier>
+                  <repository>Wiener Stadt- und Landesarchiv</repository>
+                  <idno>1453</idno>
+                  <altIdentifier type="old">
+                     <idno>515653</idno>
+                  </altIdentifier>
+               </msIdentifier>
+               <msContents>
+                  <msItem>
+                     <listBibl default="false">
+                        <bibl default="false" status="draft">Camesina, Regesten 20 no 84.
+                           Regest.</bibl>
+                     </listBibl>
+                  </msItem>
+               </msContents>
+               <physDesc>
+                  <sealDesc>
+                     <seal>
+                        <p>Drei anhangende Siegel: 1. roth u. K., spitzoval, Bruchstück, 2. grün u.
+                           K., beschädigt, 3. fehlt, 4. schwarz u. Sch.</p>
+                     </seal>
+                  </sealDesc>
+               </physDesc>
+            </msDesc>
+         </sourceDesc>
+      </fileDesc>
+      <encodingDesc>
+         <projectDesc default="false">
+            <p><label type="contentual-editing">Projekt Christina Lutter Stadt und
+                  Gemeinschaft</label></p>
+         </projectDesc>
+      </encodingDesc>
+      <profileDesc>
+         <creation>
+            <placeName>Wien</placeName>
+            <date when="14000301">1400 III 01</date>
+            <origDate instant="false">ze Wienn, des nachsten montags nach sand Mathias tag, des
+               zwelifpoten.</origDate></creation>
+      </profileDesc>
+   </teiHeader>
+   <facsimile>
+      <surface>
+         <graphic
+            url="http://images.monasterium.net/pics/AT-WStLA/HA-U/WStLA-HA-Urkunden_01453_r.jpg"/>
+      </surface>
+      <surface>
+         <graphic
+            url="http://images.monasterium.net/pics/AT-WStLA/HA-U/WStLA-HA-Urkunden_01453_v.jpg"/>
+      </surface>
+   </facsimile>
+   <text>
+      <body>
+         <div type="abstract" resp="kg">
+            <p>
+               <rs type="event" ref="#ev__QGW_II_I_1453"><rs type="fn" role="issuer"><rs
+                        type="person" ref="#pe__margarethe_chranvogelin_QGW_II_I_1129">Margret die
+                        Kranfoglin, <roleName type="occ" corresp="#org__wien"
+                           >purgerin</roleName> ze Wienn</rs></rs>, <triggerstring n="disp"
+                     >stiftet</triggerstring> eine <rs type="fn" role="recipient"><rs type="org"
+                        ref="#org__wien-st_stephan-altar_st_martin-messe_chranvogel">ewige Messe auf
+                        sand Merten altar, gelegen in Allerheiligen tumkirchen dacz sand Stephan ze
+                        Wienn</rs></rs>, und <triggerstring n="disp">widmet</triggerstring> zu derselben
+                  erstens <rs type="fn" role="other"><triggerstring n="fn">mit Handen</triggerstring><rs
+                        type="person" ref="#pe__dorothea_von_gutenstain_QGW_II_I_1520"><roleName
+                           type="title">swester</roleName> Dorothen von Gu/etenstain, <roleName
+                           type="occ" corresp="#org__wien-st_klara">abtessinn</roleName> dacz sand
+                        Chlarn ze Wienne</rs></rs>, ½ Joch Weingarten, des weilent zwen weinge/arten
+                  gewesen sind, gelegen ze Grinzing in dem Kirichgraben und haisset die Krephlinn,
+                  zenechst dem weingarten, genant die Hannsgrafinn , von dem man dem <rs type="org"
+                     ref="#org__wien-st_klara">S. Clarakloster</rs> 30 dn. für Berg- und Voitrecht
+                  und dem Pfarrer dacz der Heiligenstat zu einem ewigen Jahrtag 1 lb dn. dient,
+                  zweitens 10 lb dn. geltes, gelegen ze Rêkendorf, <rs type="event"
+                     ref="#ev__QGW_II_I_1453_men_1">die sie von dem <rs type="person"
+                        ref="#pe__johann_schenk_von_ried_QGW_II_I_1416"><roleName type="title"
+                           >Ritter</roleName>
+                        <roleName type="title">hern</roleName> Hannsen dem Schenkchen von Ried</rs>
+                     gekauft hatte.</rs></rs>
+            </p>
+         </div>
+         <div type="seal">
+            <p><rs type="event" ref="#ev__QGW_II_I_1453">Besiegelt mit den Siegeln: <rs type="fn"
+                     role="witness">1. der <rs type="person"
+                        ref="#pe__dorothea_von_gutenstain_QGW_II_I_1520">Bergfrau</rs>, 2. <rs
+                        type="person" ref="#pe__dietrich_prenner_QGW_II_I_1178"><roleName
+                           type="title">hern</roleName> Dietreichs des Prenner, <roleName type="occ"
+                           corresp="#org__oesterreich-herzogtum">münssmaister in
+                           Österreich</roleName></rs>, 5. <rs type="person"
+                        ref="#pe__niklas_von_der_schemnitz_iii_QGW_II_I_1371">Niclas des Schêrmiczer
+                           <roleName type="title"><add>Bürger</add></roleName></rs>, 4. <rs
+                        type="person" ref="#pe__michael_menschein_QGW_II_I_1218">Michels des
+                        Mênscheins, paid <roleName type="title">purger ze
+                  Wienn</roleName></rs></rs>.</rs>
+            </p>
+         </div>
+         <div type="lists">
+            <xi:include xmlns:xi="http://www.w3.org/2001/XInclude"
+               href="../../../../indices/placeList.xml" xpointer="element(/1/2/1/1)"/>
+            <xi:include xmlns:xi="http://www.w3.org/2001/XInclude"
+               href="../../../../indices/personList.xml" xpointer="element(/1/2/1/1)"/>
+            <xi:include xmlns:xi="http://www.w3.org/2001/XInclude"
+               href="../../../../indices/eventList.xml" xpointer="element(/1/2/1/1)"/>
+            <xi:include xmlns:xi="http://www.w3.org/2001/XInclude"
+               href="../../../../indices/orgList.xml" xpointer="element(/1/2/1/1)"/>
+         </div>
+      </body>
+   </text>
+</TEI>

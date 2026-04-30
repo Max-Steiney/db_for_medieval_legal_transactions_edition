@@ -1,0 +1,117 @@
+<?xml version="1.0" encoding="UTF-8"?><!DOCTYPE TEI SYSTEM "../../../schema/toolbox_full.dtd">
+<TEI xmlns="http://www.tei-c.org/ns/1.0" xmlns:cei="http://www.monasterium.net/NS/cei"
+   xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance">
+   <teiHeader>
+      <fileDesc>
+         <titleStmt>
+            <title>TEI-Version of 532</title>
+         </titleStmt>
+         <publicationStmt>
+            <p/>
+         </publicationStmt>
+         <sourceDesc default="false">
+            <bibl default="false" status="draft">
+               <title type="full"><title type="main">Die Wiener Stadtbücher 1395 -
+                     1430</title><title type="sub">Teil 1: 1395 - 1400</title></title>
+               <author>Wilhelm Brauneder</author>
+               <author>Gerhard Jaritz</author>
+               <pubPlace>Wien</pubPlace>
+               <pubPlace>Köln</pubPlace>
+               <publisher>Böhlau Verlag</publisher>
+            </bibl>
+            <msDesc status="draft">
+               <msIdentifier>
+                  <idno>532</idno>
+               </msIdentifier>
+               <physDesc/>
+            </msDesc>
+         </sourceDesc>
+      </fileDesc>
+      <encodingDesc>
+         <projectDesc>
+            <p><label type="contentual-editing">Projekt Christina Lutter Stadt und
+                  Gemeinschaft</label></p>
+         </projectDesc>
+      </encodingDesc>
+      <profileDesc>
+         <creation>
+            <date from="1400-01-01" to="1400-12-31">(1400)</date>
+         </creation>
+      </profileDesc>
+   </teiHeader>
+   <text>
+      <body>
+         <div type="header">
+            <p>Mitteilungen einer Verwandtschafts weisung für Lorenz Plattner zu Wienn, Hans von
+               Wilendorf und Paul von Ratengrueb</p>
+         </div>                   <div type="entry" resp="rs">
+            <p> (Indez: Item frewntschaft Larenczen des Plattnh) <rs type="event"
+                  ref="#ev__StB_I_532"><rs type="fn" role="other">Ich <rs type="person"
+                        ref="#pe__johann_fritzelsdorfer_StB_I_532">Hanns Fryczendorffer, die zeit
+                           <roleName type="occ" corresp="#org__strelzhof">hofmayster</roleName> ze
+                        Strelcz</rs>, <triggerstring n="fn">enpewt</triggerstring> dem purgermaister und
+                     dem ganczen rat ze Wienn mein trewn dinst</rs>. <rs type="fn" role="witness"
+                     >Ich lazz ew wissen, das für mich chommen ist <rs type="person"
+                        ref="#pe__niklas_krotner_StB_I_532">Niclas der Chrotner <add>gesezzen ze
+                           Wilendorff</add></rs> und <rs type="person"
+                        ref="#pe__konrad_engelwer_StB_I_532">Chunrat Engelwer <add>gesezzen ze
+                           Wilendorff</add></rs> und <rs type="person" ref="#pe__paul_weyr_StB_I_532"
+                        >Pawl Weyr gesezzen ze Wilendorff</rs> und habent gesagt pey irn trewn an
+                     aydes stat vor mein und vor dem <rs type="person" ref="#pe__moritz_StB_I_532"
+                           ><roleName type="title">erbern</roleName> mann Maricien, die zeit
+                           <roleName type="occ" corresp="#org__schrattenstein">purkchgraff</roleName>
+                        ze Schratenstayn</rs>,</rs>
+                  <rs type="fn" role="recipient">daz <rs type="person"
+                        ref="#pe__laurenz_plattner_StB_I_532">Lorencz <roleName type="prof"
+                           cert="high">Plattner</roleName> ze Wienn <roleName type="kin"
+                           corresp="#pe__johann_plattner_StB_I_532"><add>recht geswistreyd
+                              chind</add></roleName><roleName type="kin"
+                           corresp="#pe__johann_von_willendorf_StB_I_532"><add>recht geswistreyd
+                              chind</add></roleName><roleName type="kin"
+                           corresp="#pe__paul_von_rothengrub_StB_I_532"><add>recht geswistreyd
+                              chind</add></roleName></rs> und <rs type="person"
+                        ref="#pe__johann_von_willendorf_StB_I_532">Hanns von Wilendorf <roleName
+                           type="kin" corresp="#pe__laurenz_plattner_StB_I_532"><add>recht
+                              geswistreyd chind</add></roleName><roleName type="kin"
+                           corresp="#pe__johann_plattner_StB_I_532"><add>recht geswistreyd
+                              chind</add></roleName><roleName type="kin"
+                           corresp="#pe__paul_von_rothengrub_StB_I_532"><add>recht geswistreyd
+                              chind</add></roleName></rs> und <rs type="person"
+                        ref="#pe__paul_von_rothengrub_StB_I_532">Pawl von Ratengrueb <roleName
+                           type="kin" corresp="#pe__laurenz_plattner_StB_I_532"><add>recht
+                              geswistreyd chind</add></roleName><roleName type="kin"
+                           corresp="#pe__johann_plattner_StB_I_532"><add>recht geswistreyd
+                              chind</add></roleName><roleName type="kin"
+                           corresp="#pe__johann_von_willendorf_StB_I_532"><add>recht geswistreyd
+                              chind</add></roleName></rs> recht geswistreyd chind sein</rs>
+                  <rs type="fn" role="issuer">mit <rs type="person"
+                        ref="#pe__johann_plattner_StB_I_532">Hannsen dem <roleName type="prof"
+                           cert="high">Plattner</roleName> ze Wienn, dem got <roleName type="dead"
+                           >gnad</roleName>
+                        <roleName type="kin" corresp="#pe__laurenz_plattner_StB_I_532"><add>recht
+                              geswistreyd chind</add></roleName><roleName type="kin"
+                           corresp="#pe__johann_von_willendorf_StB_I_532"><add>recht geswistreyd
+                              chind</add></roleName><roleName type="kin"
+                           corresp="#pe__paul_von_rothengrub_StB_I_532"><add>recht geswistreyd
+                              chind</add></roleName></rs>.</rs>
+                  <rs type="fn" role="witness">Und das die sach also geschehen und gehandelt sey, so
+                     versigel ich den brief mit <rs type="person"
+                        ref="#pe__johann_fritzelsdorfer_StB_I_532">meim aufgedrukchtem insigil</rs>.
+                     Und des ist <rs type="person" ref="#pe__moritz_StB_I_532">zewg der vorgenant
+                        erber man Maricz, purkchgraff ze Schratenstayn</rs>, in payden und irn erben
+                     an schaden.</rs> Anno etc. mOcccco.</rs>
+            </p>
+         </div>
+         <div type="lists">
+            <xi:include xmlns:xi="http://www.w3.org/2001/XInclude"
+               href="../../../../indices/placeList.xml" xpointer="element(/1/2/1/1)"/>
+            <xi:include xmlns:xi="http://www.w3.org/2001/XInclude"
+               href="../../../../indices/personList.xml" xpointer="element(/1/2/1/1)"/>
+            <xi:include xmlns:xi="http://www.w3.org/2001/XInclude"
+               href="../../../../indices/eventList.xml" xpointer="element(/1/2/1/1)"/>
+            <xi:include xmlns:xi="http://www.w3.org/2001/XInclude"
+               href="../../../../indices/orgList.xml" xpointer="element(/1/2/1/1)"/>
+         </div>
+      </body>
+   </text>
+</TEI>

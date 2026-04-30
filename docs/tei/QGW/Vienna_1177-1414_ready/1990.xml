@@ -1,0 +1,64 @@
+<?xml version="1.0" encoding="UTF-8"?><!DOCTYPE TEI SYSTEM "../../../schema/toolbox_full.dtd"><TEI xmlns="http://www.tei-c.org/ns/1.0" xmlns:cei="http://www.monasterium.net/NS/cei" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance">
+   <teiHeader>
+      <fileDesc>
+         <titleStmt>
+            <title>Tei version of 1990 exported from monasterium.net </title>
+         </titleStmt>
+         <publicationStmt>
+            <p/>
+         </publicationStmt>
+         <!--In Original: cei:front/cei:sourceDesc/cei:sourceDescRegest-->
+         <sourceDesc>
+            <bibl>Quellen zur Geschichte der Stadt Wien, Bd. II/2, Nr. 1990 As published in HAUrk by
+               Wiener Stadt- und Landesarchiv </bibl>
+            <msDesc>
+               <msIdentifier>
+                  <repository>Wiener Stadt- und Landesarchiv</repository>
+                  <idno>1990</idno>
+                  <altIdentifier type="old">
+                     <idno>516198</idno>
+                  </altIdentifier>
+               </msIdentifier>
+               <physDesc>
+                  <sealDesc>
+                     <seal>
+                        <p>Anhangendes spitzovales Siegel des Priors, grün u. Sch., das des
+                           Conventes fehlt.</p>
+                     </seal>
+                  </sealDesc>
+               </physDesc>
+            </msDesc>
+         </sourceDesc>
+      </fileDesc>       <encodingDesc>          <projectDesc default="false">             <p><label type="contentual-editing">Projekt Christina Lutter Stadt und                   Gemeinschaft</label></p>          </projectDesc>       </encodingDesc>
+      <profileDesc>
+         <creation>
+            <placeName>Wien</placeName>
+            <date when="14140804">1414 VIII 04</date>
+            <origDate>ze Wienn, an samstag nach sand Stephans tag im snyt.
+            [18]</origDate></creation>
+      </profileDesc>
+   </teiHeader>
+   <facsimile>
+      <surface>
+         <graphic url="http://images.monasterium.net/pics/AT-WStLA/HA-U/WStLA-HA-Urkunden_01990_r.jpg"/>
+      </surface>
+      <surface>
+         <graphic url="http://images.monasterium.net/pics/AT-WStLA/HA-U/WStLA-HA-Urkunden_01990_v.jpg"/>
+      </surface>
+   </facsimile>
+   <text>
+      <body>
+         <div type="abstract">
+            <p><rs type="event" ref="#ev__QGW_II_II_1990">
+               <rs type="fn" role="issuer"><rs type="person" ref="#pe__wolfhard_von_wien_QGW_II_I_1849"><roleName type="title">Brueder</roleName> Wolfhart von Wienn,
+                     <roleName type="occ" corresp="#org__wien-karmeliter">prior</roleName>,</rs> und <rs type="org" ref="#org__wien-karmeliter">der convent gemain
+                     des goczhauses Unser Frauen brüder Ordens von dem perg Carmelo, gelegen an des
+                     herzogen Hof ze Wienn</rs> ,</rs> bestätigen, dass <rs type="fn" role="recipient"><rs type="person" ref="#pe__lasslab_hering_QGW_II_II_1990">der
+                     <roleName type="title">edel her</roleName> Lasslab der Hering</rs></rs> ihnen zur Stiftung einer Kapelle, des
+               Gottesdienstes und selgeretes darin 320 guldein, Messgewänder, ein Messbuch und einen
+               Kelch gegeben habe, und verpflichten sich zur Ausführung dieser Stiftung. </rs></p>
+         </div>
+         <div type="lists"><xi:include xmlns:xi="http://www.w3.org/2001/XInclude" href="../../../../indices/placeList.xml" xpointer="element(/1/2/1/1)"/><xi:include xmlns:xi="http://www.w3.org/2001/XInclude" href="../../../../indices/personList.xml" xpointer="element(/1/2/1/1)"/><xi:include xmlns:xi="http://www.w3.org/2001/XInclude" href="../../../../indices/eventList.xml" xpointer="element(/1/2/1/1)"/><xi:include xmlns:xi="http://www.w3.org/2001/XInclude" href="../../../../indices/orgList.xml" xpointer="element(/1/2/1/1)"/></div>
+      </body>
+   </text>
+</TEI>

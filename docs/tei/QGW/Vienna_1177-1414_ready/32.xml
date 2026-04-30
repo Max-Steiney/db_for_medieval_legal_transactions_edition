@@ -1,0 +1,161 @@
+<?xml version="1.0" encoding="UTF-8"?><!DOCTYPE TEI   SYSTEM "../../../schema/toolbox_full.dtd">
+<TEI xmlns="http://www.tei-c.org/ns/1.0" xmlns:cei="http://www.monasterium.net/NS/cei"
+      xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance">
+      <teiHeader>
+            <fileDesc>
+                  <titleStmt>
+                        <title>Tei version of 32 exported from monasterium.net </title>
+                  </titleStmt>
+                  <publicationStmt>
+                        <p/>
+                  </publicationStmt>
+                  <!--In Original: cei:front/cei:sourceDesc/cei:sourceDescRegest-->
+                  <sourceDesc>
+                        <bibl type="url"
+                              >https://www.monasterium.net/mom/AT-WStLA/HAUrk/32/charter</bibl>
+                        <bibl default="false" status="draft">Quellen zur Geschichte der Stadt Wien,
+                              Bd. II/1, Nr. 32 As published in HAUrk by Wiener Stadt- und
+                              Landesarchiv </bibl>
+                        <msDesc status="draft">
+                              <msIdentifier>
+                                    <repository>Wiener Stadt- und Landesarchiv</repository>
+                                    <idno>32</idno>
+                                    <altIdentifier type="old">
+                                          <idno>514194</idno>
+                                    </altIdentifier>
+                              </msIdentifier>
+                              <msContents>
+                                    <msItem>
+                                          <listBibl default="false">
+                                                <bibl default="false" status="draft">Fischer, Brevis
+                                                  Notitia I, 173 Regest.</bibl>
+                                                <bibl default="false" status="draft">Hormayr, Wien
+                                                  7, UB. 209 no 270.</bibl>
+                                          </listBibl>
+                                    </msItem>
+                              </msContents>
+                              <physDesc>
+                                    <sealDesc>
+                                          <seal>
+                                                <p>Drei Ausfertigungen, jede mit dem an gelb und
+                                                  rother Seidenschnur anhangenden ovalen Siegel des
+                                                  Ausstellers von ungefärbtem Wachse in Schüssel.
+                                                </p>
+                                          </seal>
+                                    </sealDesc>
+                              </physDesc>
+                        </msDesc>
+                  </sourceDesc>
+            </fileDesc>
+            <encodingDesc>
+                  <projectDesc default="false">
+                        <p><label type="contentual-editing">Projekt Christina Lutter Stadt und
+                                    Gemeinschaft</label></p>
+                  </projectDesc>
+            </encodingDesc>
+            <profileDesc>
+                  <creation>
+                        <placeName>Wien</placeName>
+                        <date when="13011218">1301 XII 18</date>
+                        <origDate instant="false">Actum et datum Wienne, anno domini M//occc°primo,
+                              XV. kal. januarii.</origDate></creation>
+            </profileDesc>
+      </teiHeader>
+      <facsimile>
+            <surface>
+                  <graphic
+                        url="http://images.monasterium.net/pics/AT-WStLA/HA-U/WStLA-HA-Urkunden_00032_a_r.jpg"
+                  />
+            </surface>
+            <surface>
+                  <graphic
+                        url="http://images.monasterium.net/pics/AT-WStLA/HA-U/WStLA-HA-Urkunden_00032_a_v.jpg"
+                  />
+            </surface>
+            <surface>
+                  <graphic
+                        url="http://images.monasterium.net/pics/AT-WStLA/HA-U/WStLA-HA-Urkunden_00032_b_r.jpg"
+                  />
+            </surface>
+            <surface>
+                  <graphic
+                        url="http://images.monasterium.net/pics/AT-WStLA/HA-U/WStLA-HA-Urkunden_00032_b_v.jpg"
+                  />
+            </surface>
+            <surface>
+                  <graphic
+                        url="http://images.monasterium.net/pics/AT-WStLA/HA-U/WStLA-HA-Urkunden_00032_c_r.jpg"
+                  />
+            </surface>
+            <surface>
+                  <graphic
+                        url="http://images.monasterium.net/pics/AT-WStLA/HA-U/WStLA-HA-Urkunden_00032_c_v.jpg"
+                  />
+            </surface>
+      </facsimile>
+      <text>
+            <body>
+                  <div type="abstract" resp="ks">
+                        <p><rs type="event" ref="#ev__QGW_II_I_32">* <rs type="fn" role="issuer"
+                                          >Wernhard, Bischof von Passau</rs>, <triggerstring n="disp"
+                                          >bezeugt</triggerstring>, dass der <rs type="fn"
+                                          role="recipient"><rs type="person"
+                                                ref="#pe__gottfried_QGW_II_I_32">Passauer <roleName
+                                                  type="occ" corresp="#org__passau-domkapitel"
+                                                  >Propst</roleName> Gottfried, <roleName type="occ"
+                                                  corresp="#org__wien-st_stephan">Pfarrer</roleName>
+                                                der S. Stephanskirche zu Wien</rs></rs>, <rs
+                                          type="event" ref="NULL"><rs type="fn" role="issuer"><rs
+                                                  type="person" ref="#pe__gottfried_QGW_II_I_32"
+                                                  ><add>Propst Gottfried</add></rs></rs>
+                                          <rs type="fn" role="recipient"><rs type="org"
+                                                  ref="#org__wien-st_maria_im_rathaus">die in der
+                                                  Stadt Wien bei dem Hause der Brüder Haimo und
+                                                  Otto, der Ritter, in dem gemeinen Durchgange zur
+                                                  Wiltwercherstrasse von dem Letzteren errichtete
+                                                  und ausgestattete Kapelle</rs></rs>
+                                          <triggerstring n="disp">von den Pfarrrechten
+                                                befreit</triggerstring> habe <rs type="person"
+                                                ref="#pe__heimo_QGW_II_I_72"><roleName type="kin"
+                                                  corresp="#pe__otto_QGW_II_I_186"
+                                                  ><add>Brüder</add></roleName>
+                                                <add>Haimo</add>
+                                                <roleName type="title"
+                                                ><add>Ritter</add></roleName></rs>
+                                          <add>und</add>
+                                          <rs type="person" ref="#pe__otto_QGW_II_I_186"><add>Otto,
+                                                  der</add>
+                                                <roleName type="title"><add>Ritter</add></roleName>
+                                                <roleName type="kin" corresp="#pe__heimo_QGW_II_I_72"
+                                                  ><add>Brüder</add></roleName></rs></rs>, und
+                                          <triggerstring n="disp">bestätigt diese
+                                          Befreiung</triggerstring> um so eher, als <rs type="event"
+                                          ref="#ev__QGW_II_I_27"><rs type="fn" role="issuer"><rs
+                                                  type="person" ref="#pe__otto_QGW_II_I_186">der
+                                                  genannte Otto</rs></rs> der <rs type="fn"
+                                                role="recipient"><rs type="org"
+                                                  ref="#org__wien-st_stephan"
+                                                >Stephanskirche</rs></rs> 2 lb dn. Burgrechts (
+                                          redditus jure civili annis singulis persolvendos) auf den
+                                          gegenüber dem Hause und der Kirche von S. Johannes
+                                          gelegenen Häusern des Metzo <triggerstring n="disp"
+                                                >gegeben</triggerstring> hat</rs>.</rs>
+                        </p>
+                  </div>
+                  <div type="lists">
+                        <xi:include xmlns:xi="http://www.w3.org/2001/XInclude"
+                              href="../../../../indices/placeList.xml"
+                              xpointer="element(/1/2/1/1)"/>
+                        <xi:include xmlns:xi="http://www.w3.org/2001/XInclude"
+                              href="../../../../indices/personList.xml"
+                              xpointer="element(/1/2/1/1)"/>
+                        <xi:include xmlns:xi="http://www.w3.org/2001/XInclude"
+                              href="../../../../indices/eventList.xml"
+                              xpointer="element(/1/2/1/1)"/>
+                        <xi:include xmlns:xi="http://www.w3.org/2001/XInclude"
+                              href="../../../../indices/orgList.xml"
+                              xpointer="element(/1/2/1/1)"/>
+                  </div>
+            </body>
+      </text>
+</TEI>

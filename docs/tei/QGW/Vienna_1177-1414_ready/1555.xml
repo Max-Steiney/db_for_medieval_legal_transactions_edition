@@ -1,0 +1,126 @@
+<?xml version="1.0" encoding="UTF-8"?><!DOCTYPE TEI   SYSTEM "../../../schema/toolbox_full.dtd">
+<TEI xmlns="http://www.tei-c.org/ns/1.0" xmlns:cei="http://www.monasterium.net/NS/cei"
+   xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance">
+   <teiHeader>
+      <fileDesc>
+         <titleStmt>
+            <title>Tei version of 1555 exported from monasterium.net </title>
+         </titleStmt>
+         <publicationStmt>
+            <p/>
+         </publicationStmt>
+         <!--In Original: cei:front/cei:sourceDesc/cei:sourceDescRegest-->
+         <sourceDesc>
+            <bibl type="url">https://www.monasterium.net/mom/AT-WStLA/HAUrk/1555/charter</bibl>
+            <bibl default="false" status="draft">Quellen zur Geschichte der Stadt Wien, Bd. II/1,
+               Nr. 1555 As published in HAUrk by Wiener Stadt- und Landesarchiv </bibl>
+            <msDesc status="draft">
+               <msIdentifier>
+                  <repository>Wiener Stadt- und Landesarchiv</repository>
+                  <idno>1555</idno>
+                  <altIdentifier type="old">
+                     <idno>515756</idno>
+                  </altIdentifier>
+               </msIdentifier>
+               <physDesc>
+                  <sealDesc>
+                     <seal>
+                        <p>Das Siegel fehlt.</p>
+                     </seal>
+                  </sealDesc>
+               </physDesc>
+            </msDesc>
+         </sourceDesc>
+      </fileDesc>
+      <encodingDesc>
+         <projectDesc default="false">
+            <p><label type="contentual-editing">Projekt Christina Lutter Stadt und
+                  Gemeinschaft</label></p>
+         </projectDesc>
+      </encodingDesc>
+      <profileDesc>
+         <creation>
+            <placeName>Wien</placeName>
+            <date when="14030907">1403 IX 07</date>
+            <origDate instant="false">Geben ze Wienn nach Kristes geburde 1400 jar darnach in dem 3.
+               jar, an Unser Fraun abend, als si geborn ward. </origDate></creation>
+      </profileDesc>
+   </teiHeader>
+   <facsimile>
+      <surface>
+         <graphic
+            url="http://images.monasterium.net/pics/AT-WStLA/HA-U/WStLA-HA-Urkunden_01555_r.jpg"/>
+      </surface>
+      <surface>
+         <graphic
+            url="http://images.monasterium.net/pics/AT-WStLA/HA-U/WStLA-HA-Urkunden_01555_v.jpg"/>
+      </surface>
+   </facsimile>
+   <text>
+      <body>
+         <div type="abstract" resp="kg">
+            <p>
+               <rs type="event" ref="#ev__QGW_II_I_1555"><rs type="fn" role="issuer"><rs
+                        type="person" ref="#pe__haunold_schuchler_QGW_II_I_1557">Haunold der
+                        Schuchler, <roleName type="occ" corresp="#org__wien"
+                        >burgermaister</roleName></rs>, und der <rs type="org" ref="#org__wien">rat
+                        gemain der stat ze Wienn</rs>,</rs>
+                  <triggerstring n="disp">beurkunden</triggerstring>, dass ihnen <rs type="fn"
+                     role="recipient"><rs type="person" ref="#pe__simon_QGW_II_I_1555"><roleName
+                           type="title">bruder</roleName> Simon, <roleName type="occ"
+                           corresp="#org__raab-dominikaner">conventbruder</roleName> in der <rs
+                           type="org" ref="#org__raab-dominikaner">geistleichen herren chloster dacz
+                           den Predigern ze Rab</rs></rs>,</rs> vorgebracht habe, wie sein swester
+                  frau Margret, weilent Simons des Chu/ernberger hausfrau, ein Haus zurückgelassen
+                  habe, gelegen an dem Hohenmarkcht in dem Wingkel ze Wienn zenechst dem Saithaus,
+                  das sie laut der ihnen vorgelegten Urkunde, welche auch in das Stadtbuch
+                  eingetragen, darin aber vertilgt und abgetan was, gekauft hatte, und von dem
+                  Bruder Simon zu wissen meint, wie es aus seiner Schwester gewalt chomen wer. Dem
+                  entgegen beweisen <rs type="fn" role="recipient"><rs type="person"
+                        ref="#pe__johann_QGW_II_I_1555">Hanns, <roleName type="kin"
+                           corresp="#pe__august_kursner_QGW_II_I_1555"><add>sun</add></roleName>
+                        <rs type="person" ref="#pe__august_kursner_QGW_II_I_1555">Augustins <roleName
+                              type="dead">seligen</roleName> sun des <roleName type="prof"
+                              >chu/ersner</roleName></rs></rs>, und seine zwo <rs type="person"
+                        ref="#pe__katharina_QGW_II_I_1555"><roleName type="kin"
+                           corresp="#pe__johann_QGW_II_I_1555">swestern</roleName> Kathrei, <roleName
+                           type="kin" corresp="#pe__ulrich_eisner_QGW_II_I_1555"
+                           ><add>hausfrau</add></roleName>
+                        <rs type="person" ref="#pe__ulrich_eisner_QGW_II_I_1555">Ulreichs hausfrau
+                           des <roleName type="prof">eisner</roleName></rs></rs>, und <rs
+                        type="person" ref="#pe__kunigunde_QGW_II_I_1555"><roleName type="kin"
+                           corresp="#pe__johann_QGW_II_I_1555"><add>swestern</add></roleName>
+                        Ku/enigund, <roleName type="kin" corresp="#pe__katharina_QGW_II_I_1555"
+                              ><add>swestern</add></roleName>
+                        <roleName type="kin"
+                           corresp="#pe__georg_fleischhacker_von_gumpoltskirchen_QGW_II_I_1555"
+                              ><add>hausfrau</add></roleName>
+                        <rs type="person"
+                           ref="#pe__georg_fleischhacker_von_gumpoltskirchen_QGW_II_I_1555">Jorgen
+                           hausfrau des <roleName type="prof">fleischhakcher</roleName> von
+                           Gumpolczkirchen</rs></rs>,</rs> dass ihr Vater das Haus vil lenger und
+                  mer denne rêcht teg, wol 22 jar in nucz und in beruhter gewer bei gutem gericht
+                  unversprochenleich innegehabt hiet, und hiet auch dasselb haus in derselben frist
+                  dreistund verchumert und versaczt, wie das im Grundbuche eingetragen sei. Der Rath
+                     <triggerstring n="disp">entscheidet</triggerstring> gegen Simon.</rs>
+            </p>
+         </div>
+         <div type="seal">
+            <p><rs type="event" ref="#ev__QGW_II_I_1555"><rs type="fn" role="witness">Besiegelt mit
+                     der <rs type="org" ref="#org__wien">stat ze Wienn klainem anhangundem
+                        insigil</rs>.</rs></rs>
+            </p>
+         </div>
+         <div type="lists">
+            <xi:include xmlns:xi="http://www.w3.org/2001/XInclude"
+               href="../../../../indices/placeList.xml" xpointer="element(/1/2/1/1)"/>
+            <xi:include xmlns:xi="http://www.w3.org/2001/XInclude"
+               href="../../../../indices/personList.xml" xpointer="element(/1/2/1/1)"/>
+            <xi:include xmlns:xi="http://www.w3.org/2001/XInclude"
+               href="../../../../indices/eventList.xml" xpointer="element(/1/2/1/1)"/>
+            <xi:include xmlns:xi="http://www.w3.org/2001/XInclude"
+               href="../../../../indices/orgList.xml" xpointer="element(/1/2/1/1)"/>
+         </div>
+      </body>
+   </text>
+</TEI>

@@ -1,0 +1,19 @@
+<?xml version="1.0" encoding="UTF-8"?><!DOCTYPE TEI SYSTEM "../../../schema/toolbox_full.dtd"><TEI xmlns="http://www.tei-c.org/ns/1.0" xmlns:cei="http://www.monasterium.net/NS/cei" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"><teiHeader><fileDesc><titleStmt><title>TEI-Version of 94</title></titleStmt><publicationStmt><p/></publicationStmt><sourceDesc default="false"><bibl default="false" status="draft">
+          <title type="full"><title type="main">Die Wiener Stadtbücher 1395 - 1430</title><title type="sub">Teil 1: 1395 - 1400</title></title>
+          <author>Wilhelm Brauneder</author>
+          <author>Gerhard Jaritz</author>
+          <pubPlace>Wien</pubPlace>
+          <pubPlace>Köln</pubPlace>
+          <publisher>Böhlau Verlag</publisher>
+        </bibl><msDesc status="draft"><msIdentifier><idno>94</idno></msIdentifier><physDesc/></msDesc></sourceDesc></fileDesc>     <encodingDesc>       <projectDesc>         <p><label type="contentual-editing">Projekt Christina Lutter Stadt und Gemeinschaft</label></p>       </projectDesc>     </encodingDesc><profileDesc><creation>
+        <date when="1396-12-02">1396 Dezember 2</date>
+      </creation></profileDesc></teiHeader><text><body><div type="header"><p>Verwandtschafts weisung für Anna, Gattin des Nikolaus Pechssinger</p></div><div><p> Einbr. 2 Zg. (Inde:ll: Item frewntschaft Niclass hausfraw des Pesch[inger]) <rs type="event" ref="#ev__StB_I_94">Des nachsten sambcztags nach sand Kathrein tag kom auch
+            fur den rat <rs type="fn" role="other"><rs type="person" ref="#pe__anna_StB_I_94"><roleName type="title">fraw</roleName> Ann, <roleName type="kin" corresp="#pe__niklas_peschinger_StB_I_94"><add>hawsfraw</add></roleName>
+                <rs type="person" ref="#pe__niklas_peschinger_StB_I_94">Niclas hawsfraw des
+                  Pechssinger</rs></rs>, und <triggerstring n="fn">hat da beweist</triggerstring></rs>
+            <rs type="fn" role="witness">mit den erbern leuten, mit <rs type="person" ref="#pe__johann_edelmann_StB_I_43"><roleName type="title"><add>erbern</add></roleName> Jannsen dem Edelmann von Honestorf</rs> und mit <rs type="person" ref="#pe__otto_StB_I_94"><roleName type="title"><add>erbern</add></roleName>Otten des Huetter sun auch von Hönestorf</rs></rs>,
+            das <rs type="fn" role="recipient"><rs type="person" ref="#pe__anna_StB_I_94">si</rs></rs> und <rs type="fn" role="issuer"><rs type="person" ref="#pe__agnes_StB_I_43"><roleName type="title">fraw</roleName> Angnes die <roleName type="prof" cert="unknown">Champhschiltinn</roleName>, <roleName type="dead">der
+                  got gnad</roleName>zwayr rechten bruder <roleName type="kin" corresp="#pe__anna_StB_I_94">töchter</roleName></rs></rs>, gewesen sein. Als darumb
+            die obgenanten erbern leut mit irn trewn an ayde stat vor offem rat habent gesagt, als
+            si ze recht solten.</rs>
+        </p></div><div type="lists"><xi:include xmlns:xi="http://www.w3.org/2001/XInclude" href="../../../../indices/placeList.xml" xpointer="element(/1/2/1/1)"/><xi:include xmlns:xi="http://www.w3.org/2001/XInclude" href="../../../../indices/personList.xml" xpointer="element(/1/2/1/1)"/><xi:include xmlns:xi="http://www.w3.org/2001/XInclude" href="../../../../indices/eventList.xml" xpointer="element(/1/2/1/1)"/><xi:include xmlns:xi="http://www.w3.org/2001/XInclude" href="../../../../indices/orgList.xml" xpointer="element(/1/2/1/1)"/></div></body></text></TEI>

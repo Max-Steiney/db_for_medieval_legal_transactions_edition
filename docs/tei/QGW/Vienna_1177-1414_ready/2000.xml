@@ -1,0 +1,75 @@
+<?xml version="1.0" encoding="UTF-8"?><!DOCTYPE TEI SYSTEM "../../../schema/toolbox_full.dtd"><TEI xmlns="http://www.tei-c.org/ns/1.0" xmlns:cei="http://www.monasterium.net/NS/cei" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance">
+   <teiHeader>
+      <fileDesc>
+         <titleStmt>
+            <title>Tei version of 2000 exported from monasterium.net </title>
+         </titleStmt>
+         <publicationStmt>
+            <p/>
+         </publicationStmt>
+         <!--In Original: cei:front/cei:sourceDesc/cei:sourceDescRegest-->
+         <sourceDesc>
+            <bibl>Quellen zur Geschichte der Stadt Wien, Bd. II/2, Nr. 2000 As published in HAUrk by
+               Wiener Stadt- und Landesarchiv </bibl>
+            <msDesc>
+               <msIdentifier>
+                  <repository>Wiener Stadt- und Landesarchiv</repository>
+                  <idno>2000</idno>
+                  <altIdentifier type="old">
+                     <idno>516208</idno>
+                  </altIdentifier>
+               </msIdentifier>
+               <physDesc>
+                  <sealDesc>
+                     <seal>
+                        <p>Zwei anhangende Siegel, 1. schwarz u. K., 2. grün u. K., beschädigt.</p>
+                     </seal>
+                  </sealDesc>
+               </physDesc>
+            </msDesc>
+         </sourceDesc>
+      </fileDesc>       <encodingDesc>          <projectDesc default="false">             <p><label type="contentual-editing">Projekt Christina Lutter Stadt und                   Gemeinschaft</label></p>          </projectDesc>       </encodingDesc>
+      <profileDesc>
+         <creation>
+            <placeName>Wien</placeName>
+            <date when="14141022">1414 X 22</date>
+            <origDate>ze Wienn, des nechsten montags nach der heiligen Aindleftausent Magt
+               tag.</origDate></creation>
+      </profileDesc>
+   </teiHeader>
+   <facsimile>
+      <surface>
+         <graphic url="http://images.monasterium.net/pics/AT-WStLA/HA-U/WStLA-HA-Urkunden_02000_r.jpg"/>
+      </surface>
+      <surface>
+         <graphic url="http://images.monasterium.net/pics/AT-WStLA/HA-U/WStLA-HA-Urkunden_02000_v.jpg"/>
+      </surface>
+   </facsimile>
+   <text>
+      <body>
+         <div type="abstract">
+            <p><rs type="event" ref="#ev__QGW_II_II_2000"><rs type="fn" role="issuer"><rs type="person" ref="#pe__niklas_rosenauer_QGW_II_II_2000">Niklas der Rosenauer ze
+                     Ottakchrinn</rs> und <rs type="person" ref="#pe__katharina_QGW_II_II_2000">Kathrei, sein <roleName type="kin" corresp="#pe__niklas_rosenauer_QGW_II_II_2000">hausfrau</roleName></rs></rs>,
+               stellen <rs type="fn" role="recipient"><rs type="person" ref="#pe__matthias_QGW_II_II_2000">dem <roleName type="prof">Priester</roleName>
+                     <roleName type="title">hern</roleName> Mathesen, <roleName type="occ" corresp="#org__hietzing-pfarre">capplan</roleName> der cappellen Unser
+                     Fraun ze Hieczing,</rs></rs> einen Schuldbrief über 40 lb dn. aus, rückzahlbar
+               am nächsten sand Jörgen tag, und verpfänden ihm dafür <rs type="fn" role="other"><triggerstring n="fn">mit Handen</triggerstring>
+                  <rs type="person" ref="#pe__heinrich_von_strassburg_QGW_II_II_1956">Hainreichs von
+                     Straspurg, <roleName type="occ" corresp="#org__neuberg-zisterzienser">amptman</roleName> des chlosters ze Neunburg</rs>,</rs> ½ Joch Weingarten,
+               gelegen ze Ottakchrinn in der Ertprust zenechst Niclass weingarten des Edelparcz, von
+               dem man 5 Viertel Wein zu Bergrecht und 3 dn. zu Voitrecht dient. </rs></p>
+         </div>
+         <div type="seal">
+            <p><rs type="event" ref="#ev__QGW_II_II_2000"><rs type="fn" role="witness">Besiegelt mit den Siegeln des <rs type="person" ref="#pe__niklas_rosenauer_QGW_II_II_2000">Ausstellers</rs> und des <rs type="person" ref="#pe__heinrich_von_strassburg_QGW_II_II_1956">Amtmannes</rs>.
+               </rs></rs></p>
+         </div>
+         <div type="nota">
+            <p>Indorsat: Item man sol den brief nicht ausgeben, es sei denn die vierczig pfund wider
+               angelegt an ain erb, darinn berürt werd, dass dieselben vierczig pfund herkomen sein
+               von Wolfharts Pirchner haus in der Hindern Pekchenstrass, die man damit abgeledigt
+               und gelöst hat . </p>
+         </div>
+         <div type="lists"><xi:include xmlns:xi="http://www.w3.org/2001/XInclude" href="../../../../indices/placeList.xml" xpointer="element(/1/2/1/1)"/><xi:include xmlns:xi="http://www.w3.org/2001/XInclude" href="../../../../indices/personList.xml" xpointer="element(/1/2/1/1)"/><xi:include xmlns:xi="http://www.w3.org/2001/XInclude" href="../../../../indices/eventList.xml" xpointer="element(/1/2/1/1)"/><xi:include xmlns:xi="http://www.w3.org/2001/XInclude" href="../../../../indices/orgList.xml" xpointer="element(/1/2/1/1)"/></div>
+      </body>
+   </text>
+</TEI>

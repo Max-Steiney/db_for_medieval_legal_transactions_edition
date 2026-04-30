@@ -1,0 +1,123 @@
+<?xml version="1.0" encoding="UTF-8"?><!DOCTYPE TEI   SYSTEM "../../../schema/toolbox_full.dtd">
+<TEI xmlns="http://www.tei-c.org/ns/1.0" xmlns:cei="http://www.monasterium.net/NS/cei"
+   xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance">
+   <teiHeader>
+      <fileDesc>
+         <titleStmt>
+            <title>Tei version of 1106 exported from monasterium.net </title>
+         </titleStmt>
+         <publicationStmt>
+            <p/>
+         </publicationStmt>
+         <!--In Original: cei:front/cei:sourceDesc/cei:sourceDescRegest-->
+         <sourceDesc>
+            <bibl type="url">https://www.monasterium.net/mom/AT-WStLA/HAUrk/1106/charter</bibl>
+            <bibl default="false" status="draft">Quellen zur Geschichte der Stadt Wien, Bd. II/1,
+               Nr. 1106 As published in HAUrk by Wiener Stadt- und Landesarchiv </bibl>
+            <msDesc status="draft">
+               <msIdentifier>
+                  <repository>Wiener Stadt- und Landesarchiv</repository>
+                  <idno>1106</idno>
+                  <altIdentifier type="old">
+                     <idno>515300</idno>
+                  </altIdentifier>
+               </msIdentifier>
+               <physDesc>
+                  <sealDesc>
+                     <seal>
+                        <p>Drei anhangende Siegel: 1. grün u. K., 2. roth u. K., 3. grün u. K.</p>
+                     </seal>
+                  </sealDesc>
+               </physDesc>
+            </msDesc>
+         </sourceDesc>
+      </fileDesc>
+      <encodingDesc>
+         <projectDesc default="false">
+            <p><label type="contentual-editing">Projekt Christina Lutter Stadt und
+                  Gemeinschaft</label></p>
+         </projectDesc>
+      </encodingDesc>
+      <profileDesc>
+         <creation>
+            <placeName>Wien</placeName>
+            <date when="13860619">1386 VI 19</date>
+            <origDate instant="false">ze Wienn, des nächsten eritags vor Gotsleichnams
+               tag.</origDate></creation>
+      </profileDesc>
+   </teiHeader>
+   <facsimile>
+      <surface>
+         <graphic
+            url="http://images.monasterium.net/pics/AT-WStLA/HA-U/WStLA-HA-Urkunden_01106_r.jpg"/>
+      </surface>
+      <surface>
+         <graphic
+            url="http://images.monasterium.net/pics/AT-WStLA/HA-U/WStLA-HA-Urkunden_01106_v.jpg"/>
+      </surface>
+   </facsimile>
+   <text>
+      <body>
+         <div type="abstract" resp="cs">
+            <p>
+               <rs type="event" ref="#ev__QGW_II_I_1106"><rs type="fn" role="issuer"><rs
+                        type="person" ref="#pe__friedrich_von_tierna_ii_QGW_II_I_1106">Fridreich von
+                        Tierna</rs></rs>
+                  <triggerstring n="disp">verkauft</triggerstring>
+                  <rs type="fn" role="other"><triggerstring n="fn">mit Händen</triggerstring> des <rs
+                        type="person" ref="#pe__paul_holzkaeufel_QGW_II_I_1010"><roleName type="occ"
+                           corresp="#org__wien">Bürgermeisters</roleName> Pauln des Holzkeuffels</rs>
+                     und des <rs type="org" ref="#org__wien">rates gemain der stat ze Wienn</rs></rs>
+                  seine padstuben, genant die Perliebinne, an ainem tail gelegen an dem Harmarkcht
+                  ze Wienn gegen Stephans haus des Leitner über, und stosset mit dem hinndern tail
+                  in das Ratgessel, zenechst dem haus, das weilnt Chunrats seligen von Gors gewesen
+                  ist, und das haus, genant in dem Chiel, zenechst der selben padstuben, und den
+                  Ratprunn in dem egenanten Ratgesslein ,. das alles zu derselben padstuben gehöret,
+                  welche ihm in der Erbtheilung mit seinem <rs type="person"
+                     ref="#pe__johann_von_tierna_QGW_II_I_1018"><roleName type="kin"
+                        corresp="#pe__friedrich_von_tierna_ii_QGW_II_I_1106">Bruder</roleName>
+                     <roleName type="title">hern</roleName> Hannsen von Tierna, <roleName type="occ"
+                        corresp="#org__oesterreich-herzogtum">hubmaister</roleName> in
+                     Österreich</rs>, nach dem Tode ihres <rs type="person"
+                     ref="#pe__friedrich_von_tierna_QGW_II_I_1106"><roleName type="kin"
+                        corresp="#pe__friedrich_von_tierna_ii_QGW_II_I_1106"
+                        >Vaters</roleName><roleName type="kin"
+                        corresp="#pe__johann_von_tierna_QGW_II_I_1018"><add>Vaters</add></roleName>
+                     <roleName type="title">hern</roleName> Fridreichs von Tierna</rs> zugefallen
+                  war, um 250 lb dn. <rs type="fn" role="recipient"><rs type="person"
+                        ref="#pe__friedrich_dietram_QGW_II_I_1026">Friedreichen dem Dietramen, des
+                           <roleName type="occ" corresp="#org__wien">rates</roleName> der stat ze
+                        Wienn</rs>, und dem <rs type="person"
+                        ref="#pe__paul_paurberger_QGW_II_I_1033">Wiener <roleName type="occ"
+                           corresp="#org__wien">Bürger</roleName> Pauln dem Peurberger</rs></rs>.
+                  Diese <triggerstring n="disp">verwenden hiezu</triggerstring> den Erlös für das von
+                  ihnen verkaufte haus, gelegen an dem Harmarkcht ze Wienn ze nechst der
+                  Schönaicherinne haus, <rs type="event" ref="#ev__QGW_II_I_1106_men_1">das <rs
+                        type="person" ref="#pe__klara_QGW_II_I_1133"><roleName type="title"
+                           >frau</roleName> Chlar <roleName type="dead">seligeu</roleName>, des
+                        egenanten Fridreichs des Dietrams <roleName type="kin"
+                           corresp="#pe__friedrich_dietram_QGW_II_I_1026">hausfrau</roleName></rs> ,
+                     zu einem selgre/at geschafft hatte</rs>.</rs></p>
+         </div>
+         <div type="seal">
+            <p><rs type="event" ref="#ev__QGW_II_I_1106"><rs type="fn" role="witness">Besiegelt : 1.
+                     mit dem Siegel des <rs type="person"
+                        ref="#pe__friedrich_von_tierna_QGW_II_I_1106">Ausstellers</rs>, 2. dem <rs
+                        type="org" ref="#org__wien">städtischen Grundsiegel</rs>, 3. dem Siegel des
+                        <rs type="person" ref="#pe__johann_von_tierna_QGW_II_I_1018"
+                     >Hubmeisters</rs>.</rs></rs>
+            </p>
+         </div>
+         <div type="lists">
+            <xi:include xmlns:xi="http://www.w3.org/2001/XInclude"
+               href="../../../../indices/placeList.xml" xpointer="element(/1/2/1/1)"/>
+            <xi:include xmlns:xi="http://www.w3.org/2001/XInclude"
+               href="../../../../indices/personList.xml" xpointer="element(/1/2/1/1)"/>
+            <xi:include xmlns:xi="http://www.w3.org/2001/XInclude"
+               href="../../../../indices/eventList.xml" xpointer="element(/1/2/1/1)"/>
+            <xi:include xmlns:xi="http://www.w3.org/2001/XInclude"
+               href="../../../../indices/orgList.xml" xpointer="element(/1/2/1/1)"/>
+         </div>
+      </body>
+   </text>
+</TEI>

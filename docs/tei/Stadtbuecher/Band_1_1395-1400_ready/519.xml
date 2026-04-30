@@ -1,0 +1,97 @@
+<?xml version="1.0" encoding="UTF-8"?><!DOCTYPE TEI SYSTEM "../../../schema/toolbox_full.dtd">
+<TEI xmlns="http://www.tei-c.org/ns/1.0" xmlns:cei="http://www.monasterium.net/NS/cei"
+   xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance">
+   <teiHeader>
+      <fileDesc>
+         <titleStmt>
+            <title>TEI-Version of 519</title>
+         </titleStmt>
+         <publicationStmt>
+            <p/>
+         </publicationStmt>
+         <sourceDesc default="false">
+            <bibl default="false" status="draft">
+               <title type="full"><title type="main">Die Wiener Stadtbücher 1395 -
+                     1430</title><title type="sub">Teil 1: 1395 - 1400</title></title>
+               <author>Wilhelm Brauneder</author>
+               <author>Gerhard Jaritz</author>
+               <pubPlace>Wien</pubPlace>
+               <pubPlace>Köln</pubPlace>
+               <publisher>Böhlau Verlag</publisher>
+            </bibl>
+            <msDesc status="draft">
+               <msIdentifier>
+                  <idno>519</idno>
+               </msIdentifier>
+               <physDesc/>
+            </msDesc>
+         </sourceDesc>
+      </fileDesc>
+      <encodingDesc>
+         <projectDesc>
+            <p><label type="contentual-editing">Projekt Christina Lutter Stadt und
+                  Gemeinschaft</label></p>
+         </projectDesc>
+      </encodingDesc>
+      <profileDesc>
+         <creation>
+            <date when="1400-01-28">1400 Januar 28</date>
+         </creation>
+      </profileDesc>
+   </teiHeader>
+   <text>
+      <body>
+         <div type="header">
+            <p>Geschäft des Erhard Rennesel</p>
+         </div>                   <div type="entry" resp="rs">
+            <p> pr. schr., 3 Einbr. = Zg., Sc (Indez: Item gescheft Erharts des RenneseI) (fol.88r)
+                  <rs type="event" ref="#ev__StB_I_519">Desselben tags <rs type="fn" role="witness"
+                     >kommen fur den rat <rs type="person" ref="#pe__johann_gallnroder_QGW_II_I_1303"
+                        >Hanns Gallnroder</rs> und <rs type="person"
+                        ref="#pe__niklas_maler_StB_I_440">Niclas der <roleName type="prof"
+                           cert="unknown">Maler</roleName></rs> und <rs type="person"
+                        ref="#pe__markus_glaser_StB_I_237">Marx der <roleName type="prof"
+                           cert="unknown">Glaser</roleName></rs> und habent do vor unser gesagt mit
+                     irn trewn an aydes stat vor offem rat zu rechter zeit, als si ze recht
+                     solten,</rs>
+                  <rs type="fn" role="issuer">umb das geschefft, so <rs type="person"
+                        ref="#pe__erhard_rennesel_StB_I_286">Erhart <roleName type="dead"
+                           >seliger</roleName> der Rennesel</rs> an seinen lesten zeiten getan hat,
+                     das daz also geschehen sey, als es an ayner zedeln gelesen und gehort ward, die
+                     da lawttet und sagt von wart ze wart, als es hernach geschriben stet.</rs>
+                  <rs type="fn" role="recipient">Hie ist vermerkcht, das ich Erhard der Rennesel
+                     schaff <rs type="person" ref="#pe__margarethe_StB_I_519">meiner <roleName
+                           type="kin" corresp="#pe__erhard_rennesel_StB_I_286">hawsfraw</roleName>
+                        Margareten</rs> und dem chind meins vettern geschafft, als er mirs geschafft
+                     hat, und was ich hab. Wer aber das, das mein hawsfraw ee abgieng mit dem tod
+                     denn das chind, so schaff ich iz hinwider auf daz chind. Und schaff auch das
+                     chind und daz geschefft und all die hab, die do ist, auf den <rs type="person"
+                        ref="#pe__martin_hausleitter_QGW_II_I_1234">Martine Hawsleytter</rs> zu
+                     seinen trewn zu einem vorgeer, als er got darumb anttwurtten sol an dem
+                     jungisten tag.</rs> Wer aber, daz das chind ee abgieng denn mein hawsfraw
+                  Margareth, so schaff ich ys hinwider auf mein hawsfrawn Margareten alsampt, domit
+                  ze tun und ze lassen, wie si wil. <rs type="fn" role="other">Und sol auch <rs
+                        type="person" ref="#pe__margarethe_StB_I_519"><add>mein hawsfraw
+                           Margarethmein hawsfraw Margareth</add></rs> das chind <triggerstring n="fn"
+                        >ynnehaben</triggerstring>, alslang uncz das es vogt per wirt.</rs> Und sol
+                  auch den weingarten nicht verseczen noch verchawffen, es sey denn, das ein rechtew
+                  notturfft do sey des leibs. <rs type="fn" role="other">Und ob sich <rs
+                        type="person" ref="#pe__martin_hausleitter_QGW_II_I_1234">der Martine</rs>
+                     wolt des chindes ee <triggerstring n="fn">underwinden</triggerstring>, so sol ein
+                     gleicher tayl do sein in aller hab.</rs> Lieben herren, das daz geschefft also
+                  stet beleibt, do pitt ich ewch umb durch gocz willen.</rs> ) und über
+               der Zeile eingefügt. b) der. </p>
+         </div>
+         <div type="lists">
+            <xi:include xmlns:xi="http://www.w3.org/2001/XInclude"
+               href="../../../../indices/placeList.xml" xpointer="element(/1/2/1/1)"/>
+            <xi:include xmlns:xi="http://www.w3.org/2001/XInclude"
+               href="../../../../indices/personList.xml" xpointer="element(/1/2/1/1)"/>
+            <xi:include xmlns:xi="http://www.w3.org/2001/XInclude"
+               href="../../../../indices/eventList.xml" xpointer="element(/1/2/1/1)"/>
+            <xi:include xmlns:xi="http://www.w3.org/2001/XInclude"
+               href="../../../../indices/orgList.xml" xpointer="element(/1/2/1/1)"/>
+         </div>
+      </body>
+   </text>
+</TEI>

@@ -1,0 +1,66 @@
+<?xml version="1.0" encoding="UTF-8"?><!DOCTYPE TEI SYSTEM "../../../schema/toolbox_full.dtd"><TEI xmlns="http://www.tei-c.org/ns/1.0" xmlns:cei="http://www.monasterium.net/NS/cei" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance">
+   <teiHeader>
+      <fileDesc>
+         <titleStmt>
+            <title>Tei version of 1957 exported from monasterium.net </title>
+         </titleStmt>
+         <publicationStmt>
+            <p/>
+         </publicationStmt>
+         <!--In Original: cei:front/cei:sourceDesc/cei:sourceDescRegest-->
+         <sourceDesc>
+            <bibl>Quellen zur Geschichte der Stadt Wien, Bd. II/2, Nr. 1957 As published in HAUrk by
+               Wiener Stadt- und Landesarchiv </bibl>
+            <msDesc>
+               <msIdentifier>
+                  <repository>Wiener Stadt- und Landesarchiv</repository>
+                  <idno>1957</idno>
+                  <altIdentifier type="old">
+                     <idno>516165</idno>
+                  </altIdentifier>
+               </msIdentifier>
+               <physDesc>
+                  <sealDesc>
+                     <seal>
+                        <p>Vorne aufgedrücktes Stadtsiegel von grünem Wachse, abgesprungen.</p>
+                     </seal>
+                  </sealDesc>
+               </physDesc>
+            </msDesc>
+         </sourceDesc>
+      </fileDesc>       <encodingDesc>          <projectDesc default="false">             <p><label type="contentual-editing">Projekt Christina Lutter Stadt und                   Gemeinschaft</label></p>          </projectDesc>       </encodingDesc>
+      <profileDesc>
+         <creation>
+            <placeName>Brünn</placeName>
+            <date when="14130828">1413 VIII 28</date>
+            <origDate>zu Brunne, an montag an sandt Augustini tage.</origDate></creation>
+      </profileDesc>
+   </teiHeader>
+   <facsimile>
+      <surface>
+         <graphic url="http://images.monasterium.net/pics/AT-WStLA/HA-U/WStLA-HA-Urkunden_01957_r.jpg"/>
+      </surface>
+      <surface>
+         <graphic url="http://images.monasterium.net/pics/AT-WStLA/HA-U/WStLA-HA-Urkunden_01957_v.jpg"/>
+      </surface>
+   </facsimile>
+   <text>
+      <body>
+         <div type="abstract">
+            <p><rs type="event" ref="#ev__QGW_II_II_1957"><rs type="fn" role="issuer"><rs type="org" ref="#org__bruenn">Bürgermeister und Rath der Stadt zu Brunne</rs></rs>
+                  <triggerstring n="disp">theilen<add> mit</add></triggerstring>
+                  <rs type="fn" role="recipient"><rs type="org" ref="#org__wien">dem Bürgermeister
+                        und Rath der Stadt zu Wienne</rs></rs> mit, dass ihre <rs type="person" ref="#pe__peter_scheibeben_QGW_II_II_1957"><roleName type="occ" corresp="#org__bruenn">Mitbürger</roleName> Peter Scheibeben</rs>, <rs type="person" ref="#pe__honnus_piernar_QGW_II_II_1957">Honnus Piernar<roleName type="occ" corresp="#org__bruenn"><add>Mitbürger</add></roleName></rs>,
+               <rs type="person" ref="#pe__martin_chunusch_QGW_II_II_1957">Mertl Chunusch<roleName type="occ" corresp="#org__bruenn"><add>Mitbürger</add></roleName></rs>
+                  und der <rs type="person" ref="#pe__niklas_QGW_II_II_1957"><roleName type="occ" corresp="#org__bruenn">Rat</roleName> Nikal</rs> vor ihnen
+                  wegen des von <rs type="person" ref="#pe__stephan_muenich_QGW_II_II_1957">Stephl
+                     Münich</rs> in Wien zurückgelassenen Gutes erschienen seien, dass sie ihnen,
+                  entsprechend der Forderung des Wiener Rathes, einen Quittbrief ausstellen und
+                  dieselben den <rs type="person" ref="#pe__matthias_scheibeben_QGW_II_II_1957">Mathes genant Scheibeben</rs> zur Uebernahme des Gutes bevollmächtigt
+                  haben.</rs>
+            </p>
+         </div>
+         <div type="lists"><xi:include xmlns:xi="http://www.w3.org/2001/XInclude" href="../../../../indices/placeList.xml" xpointer="element(/1/2/1/1)"/><xi:include xmlns:xi="http://www.w3.org/2001/XInclude" href="../../../../indices/personList.xml" xpointer="element(/1/2/1/1)"/><xi:include xmlns:xi="http://www.w3.org/2001/XInclude" href="../../../../indices/eventList.xml" xpointer="element(/1/2/1/1)"/><xi:include xmlns:xi="http://www.w3.org/2001/XInclude" href="../../../../indices/orgList.xml" xpointer="element(/1/2/1/1)"/></div>
+      </body>
+   </text>
+</TEI>

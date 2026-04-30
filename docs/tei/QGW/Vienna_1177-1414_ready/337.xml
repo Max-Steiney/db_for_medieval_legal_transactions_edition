@@ -1,0 +1,115 @@
+<?xml version="1.0" encoding="UTF-8"?><!DOCTYPE TEI   SYSTEM "../../../schema/toolbox_full.dtd">
+<TEI xmlns="http://www.tei-c.org/ns/1.0" xmlns:cei="http://www.monasterium.net/NS/cei"
+   xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance">
+   <teiHeader>
+      <fileDesc>
+         <titleStmt>
+            <title>Tei version of 337 exported from monasterium.net </title>
+         </titleStmt>
+         <publicationStmt>
+            <p/>
+         </publicationStmt>
+         <!--In Original: cei:front/cei:sourceDesc/cei:sourceDescRegest-->
+         <sourceDesc>
+            <bibl type="url">https://www.monasterium.net/mom/AT-WStLA/HAUrk/337/charter</bibl>
+            <bibl default="false" status="draft">Quellen zur Geschichte der Stadt Wien, Bd. II/1,
+               Nr. 337 As published in HAUrk by Wiener Stadt- und Landesarchiv </bibl>
+            <msDesc status="draft">
+               <msIdentifier>
+                  <repository>Wiener Stadt- und Landesarchiv</repository>
+                  <idno>337</idno>
+                  <altIdentifier type="old">
+                     <idno>514507</idno>
+                  </altIdentifier>
+               </msIdentifier>
+               <physDesc>
+                  <sealDesc>
+                     <seal>
+                        <p>Zwei anhangende Siegel: 1. oval, 2. rund.</p>
+                     </seal>
+                  </sealDesc>
+               </physDesc>
+            </msDesc>
+         </sourceDesc>
+      </fileDesc>
+      <encodingDesc>
+         <projectDesc default="false">
+            <p><label type="contentual-editing">Projekt Christina Lutter Stadt und
+                  Gemeinschaft</label></p>
+         </projectDesc>
+      </encodingDesc>
+      <profileDesc>
+         <creation>
+            <date when="13490717">1349 VII 17</date>
+            <origDate instant="false">an sand Alexi tag.</origDate></creation>
+      </profileDesc>
+   </teiHeader>
+   <facsimile>
+      <surface>
+         <graphic
+            url="http://images.monasterium.net/pics/AT-WStLA/HA-U/WStLA-HA-Urkunden_00337_r.jpg"/>
+      </surface>
+      <surface>
+         <graphic
+            url="http://images.monasterium.net/pics/AT-WStLA/HA-U/WStLA-HA-Urkunden_00337_v.jpg"/>
+      </surface>
+   </facsimile>
+   <text>
+      <body>
+         <div type="abstract" resp="lp">
+            <p>
+               <rs type="event" ref="#ev__QGW_II_I_337"><rs type="fn" role="issuer"><rs type="person"
+                        ref="#pe__johann_sohlschneider_QGW_II_I_337">Jans, der <roleName type="prof"
+                           >solsneider</roleName>, <roleName type="kin"
+                              corresp="#pe__marolt_sohlschneider_QGW_II_I_337"><add>aidem</add></roleName><rs type="person"
+                           ref="#pe__marolt_sohlschneider_QGW_II_I_337">Maroltes aidem , des
+                              <roleName type="prof">solsneider</roleName></rs></rs>, und<rs
+                        type="person" ref="#pe__anna_QGW_II_I_337">Anne, seine <roleName type="kin"
+                           corresp="#pe__johann_sohlschneider_QGW_II_I_337"
+                     >Hausfrau</roleName></rs></rs>, <triggerstring n="disp">bestätigen</triggerstring>,
+                  dass sie <rs type="fn" role="other"><triggerstring n="fn">den Streit, den sie
+                        mit</triggerstring><rs type="person" ref="#pe__katharina_QGW_II_I_337"><roleName
+                           type="title">Frau</roleName> Katrein, <roleName type="kin"
+                           corresp="#pe__gottfried_witz_QGW_II_I_337"><add>wittib</add></roleName><rs
+                           type="person" ref="#pe__gottfried_witz_QGW_II_I_337"><roleName
+                              type="title">hern</roleName> Gotfrides seligen<roleName type="dead"
+                              >wittib</roleName> des Witzen</rs></rs></rs>, umb 1 lb dn. geltes
+                  purchrechts gehabt haben, das diese auf ihrem Hause in dem Lederhof, das weiln des
+                  Hochspranch gewesen ist, zunaest Jansen dem Vedrer gehabt und früher von Frau
+                  Perichten, Jacobs hausvrow in dem Lederhof, um 6 lb dn. gekauft hatte, <rs
+                     type="fn" role="other"><triggerstring n="fn"><add>den
+                        Streit</add>vor</triggerstring><rs type="person" ref="#pe__pitrolf_QGW_II_I_337"
+                           ><roleName type="title">maister</roleName>Pitrolfen, des pischolf
+                           <roleName type="occ" corresp="#org__passau-dioezese">amptman</roleName>
+                        und <roleName type="occ" corresp="#org__passau-dioezese">Verweser</roleName>
+                        von Passau</rs></rs>, gebracht haben. Dieser<triggerstring n="disp"
+                     >entscheidet</triggerstring> dahin, dass das Burgrecht auf 6 sh. dn.
+                  herabgemindert werde, womit sich beide Theile einverstanden erklären.</rs>
+            </p>
+         </div>
+         <div type="seal">
+            <p><rs type="event" ref="#ev__QGW_II_I_337"><rs type="fn" role="witness">Besiegelt mit
+                     den Siegeln: 1. des <rs type="person"
+                        ref="#pe__berthold_schuetzenmeister_QGW_II_I_153"><roleName type="title"
+                           >obersten Grundherrn</roleName><roleName type="title">hern</roleName>
+                        Perichtoltes, des Schutzenmaister sun, <roleName type="occ"
+                           corresp="#org__wien-buergerspital">spitalmaister</roleName> der purger
+                        Spital zu Wienne</rs>, 2. <rs type="person"
+                        ref="#pe__bernhard_von_ybbs_QGW_II_I_337"><roleName type="title"
+                           >hern</roleName> Pernhartes, des <roleName type="occ" corresp="#org__wien"
+                           >statschreiber</roleName> ze Wienne</rs></rs>.</rs>
+            </p>
+         </div>
+         <div type="lists">
+            <xi:include xmlns:xi="http://www.w3.org/2001/XInclude"
+               href="../../../../indices/placeList.xml" xpointer="element(/1/2/1/1)"/>
+            <xi:include xmlns:xi="http://www.w3.org/2001/XInclude"
+               href="../../../../indices/personList.xml" xpointer="element(/1/2/1/1)"/>
+            <xi:include xmlns:xi="http://www.w3.org/2001/XInclude"
+               href="../../../../indices/eventList.xml" xpointer="element(/1/2/1/1)"/>
+            <xi:include xmlns:xi="http://www.w3.org/2001/XInclude"
+               href="../../../../indices/orgList.xml" xpointer="element(/1/2/1/1)"/>
+         </div>
+      </body>
+   </text>
+</TEI>

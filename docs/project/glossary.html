@@ -1,0 +1,173 @@
+<!DOCTYPE html>
+<html lang="de">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Glossar — Datenbank</title>
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Crimson+Pro:ital,wght@0,300;0,400;0,500;0,600;0,700;1,300;1,400;1,500&family=Inter:wght@300;400;500;600&family=JetBrains+Mono:wght@400&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="../static/css/tokens.css">
+    <link rel="stylesheet" href="../static/css/base.css">
+    <link rel="stylesheet" href="../static/css/components.css">
+    <link rel="stylesheet" href="../static/css/responsive.css">
+    <link rel="stylesheet" href="../static/css/print.css">
+    <link rel="stylesheet" href="../static/css/provenance.css">
+    <script>window.ROOT_PATH = "..";</script>
+    
+<link rel="stylesheet" href="../static/css/content.css">
+
+</head>
+<body>
+    <a class="skip-link" href="#main-content">Zum Inhalt springen</a>
+    <nav class="site-nav">
+        <div class="nav-inner">
+            <a href="../index.html" class="nav-brand">
+                <span class="nav-brand-sigil">&#x2756;</span>
+                <span class="nav-brand-text">Stadt und Gemeinschaft Wien</span>
+            </a>
+            <span class="nav-badge">Prototyp</span>
+            <button class="nav-hamburger" id="nav-hamburger" aria-label="Menü öffnen" aria-expanded="false">
+                <span></span><span></span><span></span>
+            </button>
+            <div class="nav-links" id="nav-links">
+                <a href="../documents.html">Quellen</a>
+                <div class="nav-dropdown">
+                    <button class="nav-dropdown-trigger" aria-expanded="false" aria-haspopup="true">Register <span class="nav-dropdown-arrow">&#x25BE;</span></button>
+                    <div class="nav-dropdown-menu">
+                        <a href="../register/persons.html">Personen</a>
+                        <a href="../register/organisations.html" class="nav-disabled" aria-disabled="true" title="Noch nicht freigegeben">Organisationen</a>
+                        <a href="../register/places.html" class="nav-disabled" aria-disabled="true" title="Noch nicht freigegeben">Orte</a>
+                    </div>
+                </div>
+                <div class="nav-dropdown">
+                    <button class="nav-dropdown-trigger" aria-expanded="false" aria-haspopup="true">Exploration <span class="nav-dropdown-arrow">&#x25BE;</span></button>
+                    <div class="nav-dropdown-menu">
+                        <a href="../exploration/roles.html">Rollen</a>
+                        <a href="../exploration/networks.html">Beziehungen</a>
+                        <a href="../exploration/transactions.html">Transaktionen</a>
+                        <a href="../exploration/places.html">Orte</a>
+                    </div>
+                </div>
+                <a href="../analysis/index.html">Analyse</a>
+                <div class="nav-dropdown">
+                    <button class="nav-dropdown-trigger" aria-expanded="false" aria-haspopup="true">Projekt <span class="nav-dropdown-arrow">&#x25BE;</span></button>
+                    <div class="nav-dropdown-menu">
+                        <a href="../project/about.html">&Uuml;ber das Projekt</a>
+                        <a href="../project/statistics.html">Statistik</a>
+                        <a href="../project/quality.html">Qualit&auml;t</a>
+                        <a href="../project/edition-guidelines.html">Editionsrichtlinien</a>
+                        <a href="../project/glossary.html">Glossar</a>
+                        <a href="../impressum.html">Impressum</a>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </nav>
+
+    <main class="site-main" id="main-content">
+        
+<article class="guidelines-page">
+    <div class="guidelines-header">
+        <h1>Glossar</h1>
+        <p class="guidelines-subtitle">Kanonische Definitionen aller Fachbegriffe der Edition</p>
+    </div>
+
+    <div class="guidelines-layout" id="guidelines-layout">
+        <nav class="guidelines-sidebar" id="guidelines-sidebar" aria-label="Inhaltsverzeichnis">
+            <div class="guidelines-toc">
+                <h2>Inhalt</h2>
+                <div class="toc">
+<ul>
+<li><a href="#event">Event</a></li>
+<li><a href="#gesamtnennung">Gesamtnennung</a></li>
+<li><a href="#individuelle-person">Individuelle Person</a></li>
+<li><a href="#menschen-event">Menschen-Event</a></li>
+<li><a href="#quelle">Quelle</a></li>
+<li><a href="#quellenkorpus">Quellenkorpus</a></li>
+<li><a href="#rechtsgeschaft">Rechtsgeschäft</a></li>
+<li><a href="#rolle">Rolle</a></li>
+<li><a href="#rollenkombination">Rollenkombination</a></li>
+<li><a href="#siehe-auch">Siehe auch</a></li>
+</ul>
+</div>
+
+            </div>
+        </nav>
+        <div class="guidelines-body">
+            <h1 id="glossar">Glossar<a class="headerlink" href="#glossar" title="Permanent link">&para;</a></h1>
+<p>Kanonische Definitionen aller Fachbegriffe der Edition. Quelle für Tooltips und die Glossar-Seite im UI. Alphabetisch sortiert. Pro Eintrag Definition, Abgrenzung und, wo nötig, eine Notiz zu häufigen Verwechslungen.</p>
+<h2 id="event">Event<a class="headerlink" href="#event" title="Permanent link">&para;</a></h2>
+<p>Ein konkretes Rechtsgeschäft, das in einer Quelle verzeichnet ist. Events sind die kleinste Einheit, auf die sich Rollen, Beteiligte und Transaktionsangaben beziehen.</p>
+<p>Eine Quelle kann mehrere Events dokumentieren. Events wiederum können aufeinander verweisen, etwa wenn ein späteres Rechtsgeschäft auf ein früheres zurückbezieht.</p>
+<p>Achtung: Nicht verwechseln mit einer Quelle als Ganzes. Die Unterscheidung trägt alle Zähl- und Filteroperationen. Verwendet in Hierarchie der Daten, requirements.</p>
+<h2 id="gesamtnennung">Gesamtnennung<a class="headerlink" href="#gesamtnennung" title="Permanent link">&para;</a></h2>
+<p>Eine Beziehung zwischen einer Person, Organisation oder einem Ort und einer Quelle, in der sie genannt wird. Wer in drei Quellen vorkommt, trägt drei Gesamtnennungen bei. Eine Person, die in derselben Quelle mehrfach erwähnt wird (typisch für Zeugenreihen oder Urteilslisten), trägt für diese Quelle nur eine Gesamtnennung bei (quellenbereinigte Zählung).</p>
+<p>Gesamtnennungen sind die Zählebene für Häufigkeit gesellschaftlicher Präsenz. Sie machen Aussagen über Dichte und Funktionsträgerschaft möglich, ohne durch Mehrfachnennungen in einzelnen Urteilsformeln verzerrt zu werden.</p>
+<p>Achtung: Nicht zu verwechseln mit <a href="#individuelle-person">Individuelle Person</a>. Beide Zählebenen sind gleichzeitig gültig, beantworten aber verschiedene Fragen. Verwendet in Umschaltbarkeit der Zählebenen und Quellenbereinigte Zählung.</p>
+<h2 id="individuelle-person">Individuelle Person<a class="headerlink" href="#individuelle-person" title="Permanent link">&para;</a></h2>
+<p>Eine konsolidierte Identität im Personenregister, unabhängig von der Anzahl ihrer Nennungen. Dieselbe historische Person ist genau eine individuelle Person, auch wenn sie in fünfzig Quellen erscheint.</p>
+<p>Die Zählebene für gesellschaftliche Struktur. Sie beantwortet, wie viele unterscheidbare Akteurinnen und Akteure das Korpus enthält. Analog gelten individuelle Organisationen und individuelle Orte.</p>
+<p>Verwendet in Umschaltbarkeit der Zählebenen, scholar-user-stories.</p>
+<h2 id="menschen-event">Menschen-Event<a class="headerlink" href="#menschen-event" title="Permanent link">&para;</a></h2>
+<p>Eine Person, die in einem Rechtsgeschäft namentlich erwähnt wird, weil sie in einem früheren, referenzierten Geschäft bereits vorkam. Sie ist mit einem Personennamen belegt, gehört aber nicht zum unmittelbaren Ereignis der aktuellen Quelle.</p>
+<p>Der Begriff ist spezifisch für das Datenmodell der Edition und außerhalb nicht selbsterklärend. Das UI macht den Ein- oder Ausschlussstatus an jeder Abfrage sichtbar und lässt die Nutzerin aktiv entscheiden.</p>
+<p>Achtung: Eine stillschweigende Einbeziehung oder ein stillschweigender Ausschluss verändert Statistiken. Die asymmetrische Behandlung in verschiedenen Anzeigen macht Vergleiche ungültig. Verwendet in Menschen-Events-Behandlung, Menschen-Events-Toggle.</p>
+<h2 id="quelle">Quelle<a class="headerlink" href="#quelle" title="Permanent link">&para;</a></h2>
+<p>Eine einzelne Urkunde oder ein einzelnes Regest als Datensatz-Einheit. Die Quelle ist der Träger eines oder mehrerer Events.</p>
+<p>Im UI konsequent „Quelle" statt „Dokument". Die alternative Bezeichnung war in früheren Oberflächen unklar, weil sie mit Dateiformaten und Digitalisaten verwechselt werden konnte.</p>
+<p>Achtung: Eine Quelle ist nicht dasselbe wie ein <a href="#event">Event</a>. Wer nach Rechtsgeschäften zählt, zählt Events. Wer nach Urkunden zählt, zählt Quellen. Verwendet in Hierarchie der Daten.</p>
+<h2 id="quellenkorpus">Quellenkorpus<a class="headerlink" href="#quellenkorpus" title="Permanent link">&para;</a></h2>
+<p>Eine thematisch und editorisch zusammengehörige Gruppe von Quellen (beispielsweise die QGW-Bände oder die Stadtbücher). Der Quellenkorpus ist die oberste Gliederungsebene der Datenbasis.</p>
+<p>Der Begriff ersetzt die frühere Bezeichnung „Sammlung". „Sammlung" ist editionsphilologisch ungenau, weil sie einen kuratorischen Akt nahelegt, den der Bestand so nicht erfahren hat.</p>
+<p>Verwendet in Quellenkorpora, Bestandsfilter, Begriff Quellenkorpus.</p>
+<h2 id="rechtsgeschaft">Rechtsgeschäft<a class="headerlink" href="#rechtsgeschaft" title="Permanent link">&para;</a></h2>
+<p>Eine Transaktion mit rechtlich bindender Wirkung zwischen Akteurinnen und Akteuren, niedergelegt in einer Quelle. Typische Rechtsgeschäfte sind Kauf, Verkauf, Schenkung, Verleihung, Verpfändung und Zeugenschaft.</p>
+<p>Rechtsgeschäfte sind der historische Gegenstand der Datenbank. Ihre Auszeichnung im Datenmodell geschieht über <a href="#event">Event</a>. Rechtsgeschäft ist der fachliche Begriff, Event die technische Kategorie.</p>
+<p>Achtung: Im Sprachgebrauch werden „Event" und „Rechtsgeschäft" oft synonym verwendet. Im Glossar und im UI sind sie trennscharf zu halten. Verwendet in Gegenstand.</p>
+<h2 id="rolle">Rolle<a class="headerlink" href="#rolle" title="Permanent link">&para;</a></h2>
+<p>Die Funktion einer Person oder Organisation in einem Event. Das kontrollierte Vokabular der Rollen ist kurz und festgelegt: <code>issuer</code> (ausstellend), <code>recipient</code> (empfangend), <code>sealer or witness</code> (siegelnd oder bezeugend), <code>other</code>, <code>none</code>.</p>
+<p>Nur diese Werte sind gültig. Ein offenes Rollenvokabular wäre statistisch unbrauchbar, weil es die Aggregation über das Korpus verhinderte.</p>
+<p>Verwendet in requirements, Rollenbasierte Akteursanalyse, Analyse.</p>
+<h2 id="rollenkombination">Rollenkombination<a class="headerlink" href="#rollenkombination" title="Permanent link">&para;</a></h2>
+<p>Eine aus mehreren Rollen abgeleitete Kategorie, die das UI als Abfrage zugänglich macht. Beispiele sind gemeinsam handelnde Eheleute oder Witwen in einer bestimmten Rolle.</p>
+<p>Rollenkombinationen sind keine eigene Annotationsebene im Datenmodell, sondern eine Auswertungsperspektive. Sie entstehen durch Kombination von Rollenattributen und anderen Merkmalen wie Geschlecht oder Beziehungstyp.</p>
+<p>Verwendet in scholar-user-stories, Analyse.</p>
+<h2 id="siehe-auch">Siehe auch<a class="headerlink" href="#siehe-auch" title="Permanent link">&para;</a></h2>
+<ul>
+<li>data setzt diese Begriffe systemisch in Verbindung</li>
+<li>requirements leitet aus Zählebenen und Vokabular funktionale Anforderungen ab</li>
+<li>ui-design setzt die Umschaltbarkeit und das Rollenvokabular als Komponenten um</li>
+</ul>
+        </div>
+    </div>
+
+    <footer class="guidelines-footer">
+        <p>Zuletzt aktualisiert: 30. April 2026</p>
+    </footer>
+</article>
+
+    </main>
+
+    <footer class="site-footer">
+        <div class="footer-inner">
+            <div class="footer-col">
+                <p class="footer-project">Stadt und Gemeinschaft Wien &mdash; Datenbank</p>
+                <p>Tr&auml;gerprojekt &raquo;Stadt und Gemeinschaft&laquo; (Universit&auml;t Wien)</p>
+                <p class="footer-meta">Datenstand: 30. April 2026</p>
+            </div>
+            <div class="footer-col footer-col-right">
+                <p>Technische Umsetzung: <a href="https://dhcraft.org" class="footer-link">Digital Humanities Craft OG</a></p>
+                <p>Lizenz: <a href="../impressum.html#lizenz" class="footer-link">CC BY 4.0</a> &middot; Glossar</p>
+            </div>
+        </div>
+    </footer>
+
+    <script>window.RELEASED_PERIOD = {min: 1177, max: 1414};</script>
+    <script src="../static/js/core.js"></script>
+    <script src="../static/js/provenance.js"></script>
+    
+<script src="../static/js/content.js"></script>
+
+</body>
+</html>

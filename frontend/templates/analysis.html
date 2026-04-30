@@ -1,0 +1,33 @@
+{% extends "base.html" %}
+
+{% block title %}Analyse{% endblock %}
+
+{% block content %}
+<div class="vault-page">
+    <header class="vault-header">
+        <h1>Analyse</h1>
+        <p class="vault-subtitle">Klassischer Abfragemodus für wiederkehrende Forschungsfragen.</p>
+    </header>
+
+    <article style="max-width: 760px;">
+        <p>
+            Der Bereich <strong>Analyse</strong> stellt vordefinierte Grundabfragen bereit
+            (Kombinationen aus Bestand, Rolle, Geschlecht und Nennungsart). Er ergänzt
+            die <a href="{{ root_path }}/exploration/index.html">Exploration</a>:
+            wo dort visuell-explorativ nach Mustern gesucht wird, beantwortet die Analyse
+            gezielte, wiederkehrende Forschungsfragen.
+        </p>
+
+        <p>
+            Die konkrete Liste der Grundabfragen wird gemeinsam mit dem Fachteam erarbeitet.
+            Diese Seite ist ein Platzhalter, bis die Liste festgelegt ist.
+        </p>
+
+        <p style="color: var(--color-text-muted); font-style: italic;">
+            In Vorbereitung.
+        </p>
+    </article>
+</div>
+{% endblock %}
+
+{% block footer_info %}Seite generiert am {{ build_date }}{% endblock %}

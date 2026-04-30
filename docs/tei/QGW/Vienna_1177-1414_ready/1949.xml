@@ -1,0 +1,67 @@
+<?xml version="1.0" encoding="UTF-8"?><!DOCTYPE TEI SYSTEM "../../../schema/toolbox_full.dtd"><TEI xmlns="http://www.tei-c.org/ns/1.0" xmlns:cei="http://www.monasterium.net/NS/cei" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance">
+   <teiHeader>
+      <fileDesc>
+         <titleStmt>
+            <title>Tei version of 1949 exported from monasterium.net </title>
+         </titleStmt>
+         <publicationStmt>
+            <p/>
+         </publicationStmt>
+         <!--In Original: cei:front/cei:sourceDesc/cei:sourceDescRegest-->
+         <sourceDesc>
+            <bibl>Quellen zur Geschichte der Stadt Wien, Bd. II/2, Nr. 1949 As published in HAUrk by
+               Wiener Stadt- und Landesarchiv </bibl>
+            <msDesc>
+               <msIdentifier>
+                  <repository>Wiener Stadt- und Landesarchiv</repository>
+                  <idno>1949</idno>
+                  <altIdentifier type="old">
+                     <idno>516157</idno>
+                  </altIdentifier>
+               </msIdentifier>
+               <physDesc>
+                  <sealDesc>
+                     <seal>
+                        <p>Zwei anhangende Siegel, roth u. K., 1. spitzoval.</p>
+                     </seal>
+                  </sealDesc>
+               </physDesc>
+            </msDesc>
+         </sourceDesc>
+      </fileDesc>       <encodingDesc>          <projectDesc default="false">             <p><label type="contentual-editing">Projekt Christina Lutter Stadt und                   Gemeinschaft</label></p>          </projectDesc>       </encodingDesc>
+      <profileDesc>
+         <creation>
+            <placeName>Wien</placeName>
+            <date when="14130530">1413 V 30</date>
+            <origDate>ze Wienn, an ertag vor Unsers Herren Auffart tag.</origDate></creation>
+      </profileDesc>
+   </teiHeader>
+   <facsimile>
+      <surface>
+         <graphic url="http://images.monasterium.net/pics/AT-WStLA/HA-U/WStLA-HA-Urkunden_01949_r.jpg"/>
+      </surface>
+      <surface>
+         <graphic url="http://images.monasterium.net/pics/AT-WStLA/HA-U/WStLA-HA-Urkunden_01949_v.jpg"/>
+      </surface>
+   </facsimile>
+   <text>
+      <body>
+         <div type="abstract">
+            <p>
+               <rs type="event" ref="#ev__QGW_II_II_1949"><rs type="fn" role="issuer"><rs type="person" ref="#pe__johanna_stuchsin_QGW_II_II_1947"><roleName type="title">Swester</roleName> Johanna die
+                        Stuchsin, <roleName type="occ" corresp="#org__wien-st_klara">abtessin</roleName> der geistlichen fraun kloster dacz sand Klaren ze
+                        Wienn</rs>, und der <rs type="org" ref="#org__wien-st_klara">convent gemain
+                        daselbs</rs></rs>
+                  <triggerstring n="disp">verpflichten sich</triggerstring>, <rs type="fn" role="recipient"><rs type="org" ref="#org__wien-st_klara-messe_kottrer_georg">den Jahrtag</rs></rs>, <rs type="event" ref="NULL">den der <rs type="person" ref="#pe__georg_kottrer_QGW_II_II_1921">Wiener Bürger
+                     Jo/erig <roleName type="dead">selig</roleName> der Kottrer</rs> in ihrem Kloster gestiftet und zu dem er zwei
+                     Weingärten gewidme that, ainer gelegen ze Klainczing auf dem pach, den er von
+                     Chunraden, seligen dem riemer, gechaufft hat, und der ander gelegen ze
+                     Gundramstorff an dem Wartperg, genant die Junckfrawe </rs>, acht Tage vor oder
+                  nach sand Bartolomees tag nach ihres Klosters Sitte und Gewohnheit zu
+                  begehen.</rs>
+            </p>
+         </div>
+         <div type="lists"><xi:include xmlns:xi="http://www.w3.org/2001/XInclude" href="../../../../indices/placeList.xml" xpointer="element(/1/2/1/1)"/><xi:include xmlns:xi="http://www.w3.org/2001/XInclude" href="../../../../indices/personList.xml" xpointer="element(/1/2/1/1)"/><xi:include xmlns:xi="http://www.w3.org/2001/XInclude" href="../../../../indices/eventList.xml" xpointer="element(/1/2/1/1)"/><xi:include xmlns:xi="http://www.w3.org/2001/XInclude" href="../../../../indices/orgList.xml" xpointer="element(/1/2/1/1)"/></div>
+      </body>
+   </text>
+</TEI>

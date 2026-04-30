@@ -1,0 +1,118 @@
+<?xml version="1.0" encoding="UTF-8"?><!DOCTYPE TEI   SYSTEM "../../../schema/toolbox_full.dtd">
+<TEI xmlns="http://www.tei-c.org/ns/1.0" xmlns:cei="http://www.monasterium.net/NS/cei"
+   xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance">
+   <teiHeader>
+      <fileDesc>
+         <titleStmt>
+            <title>Tei version of 1668 exported from monasterium.net </title>
+         </titleStmt>
+         <publicationStmt>
+            <p/>
+         </publicationStmt>
+         <!--In Original: cei:front/cei:sourceDesc/cei:sourceDescRegest-->
+         <sourceDesc>
+            <bibl type="url">https://www.monasterium.net/mom/AT-WStLA/HAUrk/1668/charter</bibl>
+            <bibl default="false" status="draft">Quellen zur Geschichte der Stadt Wien, Bd. II/1,
+               Nr. 1668 As published in HAUrk by Wiener Stadt- und Landesarchiv </bibl>
+            <msDesc status="draft">
+               <msIdentifier>
+                  <repository>Wiener Stadt- und Landesarchiv</repository>
+                  <idno>1668</idno>
+                  <altIdentifier type="old">
+                     <idno>515869</idno>
+                  </altIdentifier>
+               </msIdentifier>
+               <physDesc>
+                  <sealDesc>
+                     <seal>
+                        <p>Die Siegel fehlen.</p>
+                     </seal>
+                  </sealDesc>
+               </physDesc>
+            </msDesc>
+         </sourceDesc>
+      </fileDesc>
+      <encodingDesc>
+         <projectDesc default="false">
+            <p><label type="contentual-editing">Projekt Christina Lutter Stadt und
+                  Gemeinschaft</label></p>
+         </projectDesc>
+      </encodingDesc>
+      <profileDesc>
+         <creation>
+            <date when="14060918">1406 IX 18</date>
+            <origDate instant="false">des negsten sambstags vor sand Matheus tag, des heiligen
+               zwelifpoten und ewangelisten.</origDate></creation>
+      </profileDesc>
+   </teiHeader>
+   <facsimile>
+      <surface>
+         <graphic
+            url="http://images.monasterium.net/pics/AT-WStLA/HA-U/WStLA-HA-Urkunden_01668_r.jpg"/>
+      </surface>
+      <surface>
+         <graphic
+            url="http://images.monasterium.net/pics/AT-WStLA/HA-U/WStLA-HA-Urkunden_01668_v.jpg"/>
+      </surface>
+   </facsimile>
+   <text>
+      <body>
+         <div type="abstract" resp="cs">
+            <p>
+               <rs type="event" ref="#ev__QGW_II_I_1668"><rs type="fn" role="issuer"><rs
+                        type="person" ref="#pe__elisabeth_QGW_II_I_1668_a">Elspet <roleName type="kin"
+                           corresp="#pe__markhard_emmrich_von_enns_QGW_II_I_1668"
+                           ><add>tochter</add></roleName></rs>, <rs type="person"
+                        ref="#pe__anna_QGW_II_I_1668">Ann<roleName type="kin"
+                           corresp="#pe__markhard_emmrich_von_enns_QGW_II_I_1668"
+                           ><add>tochter</add></roleName></rs> und <rs type="person"
+                        ref="#pe__klara_QGW_II_I_1668">Chlar<roleName type="kin"
+                           corresp="#pe__markhard_emmrich_von_enns_QGW_II_I_1668"
+                           ><add>tochter</add></roleName></rs>, Maricharts töchter, des iricher von
+                     Ens,</rs>
+                  <triggerstring n="disp">bestätigen</triggerstring>, dass ihr <rs type="fn"
+                     role="recipient"><rs type="person" ref="#pe__ulrich_schabenkes_QGW_II_I_1668"
+                           ><roleName type="kin" corresp="#pe__elisabeth_QGW_II_I_1668_a"
+                           >Schwager</roleName>
+                        <roleName type="kin" corresp="#pe__klara_QGW_II_I_1668"
+                           ><add>Schwager</add></roleName><roleName type="kin"
+                           corresp="#pe__anna_QGW_II_I_1668"><add>Schwager</add></roleName>Ulreich
+                        der Schabenkes, <roleName type="occ" corresp="#org__wien">purger</roleName>
+                        ze Wienn</rs></rs>, ihnen 50 lb dn. <triggerstring n="disp">ausbezahlt
+                     habe</triggerstring> von seinem Hause, gelegen in der Wildwercherstrass ze Wienn
+                  zerlegst dem haus, das weilent Hainreichs, tuechscherer, ist gewesen , <rs
+                     type="event" ref="NULL">das er mit <rs type="person"
+                        ref="#pe__elisabeth_QGW_II_I_1668_b">seiner <roleName type="dead"
+                           >früheren</roleName>
+                        <roleName type="kin" corresp="#pe__ulrich_schabenkes_QGW_II_I_1668"
+                           >Frau</roleName> Elspet, ihrer <roleName type="kin"
+                           corresp="#pe__klara_QGW_II_I_1668">Muhme</roleName><roleName type="kin"
+                           corresp="#pe__elisabeth_QGW_II_I_1668_a"
+                           ><add>Muhme</add></roleName><roleName type="kin"
+                           corresp="#pe__anna_QGW_II_I_1668"><add>Muhme</add></roleName>,</rs> deren
+                     nächste Erben sie sind, gekauft hatte</rs>.</rs>
+            </p>
+         </div>
+         <div type="seal">
+            <p><rs type="event" ref="#ev__QGW_II_I_1668"><rs type="fn" role="witness">Besiegelt mit
+                     den Siegeln <rs type="person" ref="#pe__johann_mosprunner_QGW_II_I_1096"
+                           ><roleName type="title">hern</roleName> Hannsen des Mosprunner, des
+                        innern <roleName type="occ" corresp="#org__wien">rates</roleName> der stat ze
+                        Wienn,</rs> und <rs type="person" ref="#pe__konrad_rokk_QGW_II_I_1031"
+                        >Chunraten des Rokken, <roleName type="occ" corresp="#org__wien"
+                           >purger</roleName> daselbens</rs> .</rs></rs>
+            </p>
+         </div>
+         <div type="lists">
+            <xi:include xmlns:xi="http://www.w3.org/2001/XInclude"
+               href="../../../../indices/placeList.xml" xpointer="element(/1/2/1/1)"/>
+            <xi:include xmlns:xi="http://www.w3.org/2001/XInclude"
+               href="../../../../indices/personList.xml" xpointer="element(/1/2/1/1)"/>
+            <xi:include xmlns:xi="http://www.w3.org/2001/XInclude"
+               href="../../../../indices/eventList.xml" xpointer="element(/1/2/1/1)"/>
+            <xi:include xmlns:xi="http://www.w3.org/2001/XInclude"
+               href="../../../../indices/orgList.xml" xpointer="element(/1/2/1/1)"/>
+         </div>
+      </body>
+   </text>
+</TEI>

@@ -1,0 +1,200 @@
+<?xml version="1.0" encoding="UTF-8"?><!DOCTYPE TEI   SYSTEM "../../../schema/toolbox_full.dtd">
+<TEI xmlns="http://www.tei-c.org/ns/1.0" xmlns:cei="http://www.monasterium.net/NS/cei"
+   xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance">
+   <teiHeader>
+      <fileDesc>
+         <titleStmt>
+            <title>Tei version of 186 exported from monasterium.net </title>
+         </titleStmt>
+         <publicationStmt>
+            <p/>
+         </publicationStmt>
+         <!--In Original: cei:front/cei:sourceDesc/cei:sourceDescRegest-->
+         <sourceDesc>
+            <bibl type="url">https://www.monasterium.net/mom/AT-WStLA/HAUrk/186/charter</bibl>
+            <bibl default="false" status="draft">Quellen zur Geschichte der Stadt Wien, Bd. II/1,
+               Nr. 186 As published in HAUrk by Wiener Stadt- und Landesarchiv </bibl>
+            <msDesc status="draft">
+               <msIdentifier>
+                  <repository>Wiener Stadt- und Landesarchiv</repository>
+                  <idno>186</idno>
+                  <altIdentifier type="old">
+                     <idno>514355</idno>
+                  </altIdentifier>
+               </msIdentifier>
+               <physDesc>
+                  <sealDesc>
+                     <seal>
+                        <p>Siebzehn anhangende Siegel: no 11 sechseckig, no 15 röthlich u. K., no 16
+                           grün u. K. </p>
+                     </seal>
+                  </sealDesc>
+               </physDesc>
+            </msDesc>
+         </sourceDesc>
+      </fileDesc>
+      <encodingDesc>
+         <projectDesc default="false">
+            <p><label type="contentual-editing">Projekt Christina Lutter Stadt und
+                  Gemeinschaft</label></p>
+         </projectDesc>
+      </encodingDesc>
+      <profileDesc>
+         <creation>
+            <placeName>Wien</placeName>
+            <date when="13380125">1338 I 25</date>
+            <origDate instant="false">ze Wienne, an sant Pauls tage, als er bechert ward.</origDate>
+         </creation>
+      </profileDesc>
+   </teiHeader>
+   <facsimile>
+      <surface>
+         <graphic
+            url="http://images.monasterium.net/pics/AT-WStLA/HA-U/WStLA-HA-Urkunden_00186_r.jpg"/>
+      </surface>
+      <surface>
+         <graphic
+            url="http://images.monasterium.net/pics/AT-WStLA/HA-U/WStLA-HA-Urkunden_00186_v.jpg"/>
+      </surface>
+   </facsimile>
+   <text>
+      <body>
+         <div type="abstract" resp="ks">
+            <p>
+               <rs type="event" ref="#ev__QGW_II_I_186"><rs type="fn" role="issuer"><rs type="person"
+                        ref="#pe__heinrich_stainpekch_QGW_II_I_186">Hainreich der Stainpeck</rs> und
+                        <rs type="person" ref="#pe__kunigunde_QGW_II_I_186">Chunigunt, seine
+                           <roleName type="kin" corresp="#pe__heinrich_stainpekch_QGW_II_I_186"
+                           >Hausfrau</roleName></rs>
+                     <rs type="person" ref="#pe__wilhelm_von_watzmannsdorf_QGW_II_I_186">Wilhalm von
+                        Watzmanstorf</rs> und <rs type="person" ref="#pe__klara_QGW_II_I_186">Chlar,
+                        seine <roleName type="kin"
+                           corresp="#pe__wilhelm_von_watzmannsdorf_QGW_II_I_186"
+                        >Hausfrau</roleName></rs>
+                     <rs type="person" ref="#pe__praunreich_von_steinakirchen_QGW_II_I_186">Praun von
+                        Steinachirichen</rs> und <rs type="person" ref="#pe__jutta_QGW_II_I_186"
+                        >Jeut, seine <roleName type="kin"
+                           corresp="#pe__praunreich_von_steinakirchen_QGW_II_I_186"
+                           >Hausfrau</roleName></rs>
+                     <rs type="person" ref="#pe__dietmar_von_harmannsdorf_QGW_II_I_186">Dietmar von
+                        Hadmarstorf</rs> und <rs type="person" ref="#pe__margarethe_QGW_II_I_186"
+                        >Margret, seine <roleName type="kin"
+                           corresp="#pe__dietmar_von_harmannsdorf_QGW_II_I_186"
+                        >Hausfrau</roleName></rs>
+                     <rs type="person" ref="#pe__leb_vierdung_QGW_II_I_186">Leb der Vierdunge von der
+                        Neuenstat</rs> und <rs type="person" ref="#pe__elisabeth_QGW_II_I_186"
+                        >Elsbet, seine <roleName type="kin" corresp="#pe__leb_vierdung_QGW_II_I_186"
+                           >Hausfrau</roleName></rs>
+                     <rs type="person" ref="#pe__heinrich_poltz_QGW_II_I_186">Hainreich der
+                        Poltz</rs> und <rs type="person" ref="#pe__katharina_QGW_II_I_186">Katrei,
+                        seine <roleName type="kin" corresp="#pe__heinrich_poltz_QGW_II_I_186"
+                           >Hausfrau</roleName></rs>
+                     <rs type="person" ref="#pe__stephan_von_harrach_QGW_II_I_186">Stephan<roleName
+                           type="kin" corresp="#pe__buschk_von_harrach_QGW_II_I_186"
+                              ><add>chinder</add></roleName></rs>, <rs type="person"
+                        ref="#pe__benisch_von_harrach_QGW_II_I_186">Benisch,<roleName type="kin"
+                           corresp="#pe__buschk_von_harrach_QGW_II_I_186"
+                           ><add>chinder</add></roleName></rs>
+                     <rs type="person" ref="#pe__dietrich_von_harrach_QGW_II_I_186">Ditreich,
+                           <roleName type="kin" corresp="#pe__buschk_von_harrach_QGW_II_I_186"
+                              ><add>chinder</add></roleName></rs>
+                     <rs type="person" ref="#pe__buschk_von_harrach_QGW_II_I_186"><roleName
+                           type="title">hern</roleName> Buschken chinder von Horach, <roleName
+                           type="dead">dem got genade</roleName></rs></rs>, <triggerstring n="disp"
+                     >verkaufen</triggerstring> von ihrem <rs type="event" ref="#ev__QGW_II_I_186_men_1"
+                     >Erbgute, das ihnen von ihrem Oheim Stephan dem Chrigler vermacht worden
+                     war,</rs> a) <rs type="fn" role="other"><triggerstring n="fn">mit ihres
+                           <add>Hand</add></triggerstring>
+                     <rs type="person" ref="#pe__johann_greiffe_QGW_II_I_390"><roleName type="title"
+                           >Grundherrn</roleName> Hand, <roleName type="title">hern</roleName>
+                        Jansen des Greiffen,</rs></rs> ihr Haus, das da leit under den
+                  Flâeschpenchen bei sant Stephan ze Wienne und den marstal, der darzu geho/eret,
+                  gegen des Poltz haus über, belastet mit einem Helbling Grundrecht, b) <rs
+                     type="fn" role="other"><triggerstring n="fn">mit ihrer</triggerstring>
+                     <rs type="person" ref="#pe__gertrud_QGW_II_I_186"><roleName type="title"
+                           >Bergfrau</roleName> Hand, <roleName type="title">vron</roleName>
+                        Gedrauten, <rs type="person" ref="#pe__otto_QGW_II_I_186"><roleName
+                              type="title">hern</roleName> Otten <roleName type="kin"
+                              corresp="#pe__gertrud_QGW_II_I_186">wittibe</roleName>
+                           <roleName type="dead"><add>witwe</add></roleName> des
+                     Haimen,</rs></rs></rs> ein Joch Weingarten, der da leit an dem Hasenekke, der
+                  weilen des Rorer gewesen ist, und leit zwischen hern Pilgreims Weingarten des
+                  Chitzels und Jansen weingarten des Murren, belastet mit 3 Eimern Wein Bergrecht
+                  und 3 dn. Voitrecht, c) <rs type="fn" role="other"><triggerstring n="fn">mit
+                        ihres</triggerstring>
+                     <rs type="person" ref="#pe__konrad_wiltwercher_QGW_II_I_204"><roleName
+                           type="title">Bergherrn</roleName> Hand, <roleName type="title"
+                           >hern</roleName> Chunrats des Wiltwaericher,</rs></rs> ein Joch
+                  Weingarten, der da haisset der Zeisselperch und sto/esset auf die
+                  Neuenburgerstrasse, und leit zwischen dem weingarten, der da haisset der Vrowen
+                  ermel, und des Wu/elfleinstorfer Weingarten, belastet mit 2 Eimern Wein Bergrecht
+                  und 2 dn. Voitrecht, d) <rs type="fn" role="other"><triggerstring n="fn">mit
+                        Handen</triggerstring> ihres <rs type="person"
+                        ref="#pe__johann_gmundner_QGW_II_I_186"><roleName type="title"
+                           >Bergherrn</roleName>
+                        <roleName type="title">hern</roleName> Jansen des Gmunder</rs></rs> 5
+                  Viertel Weingarten, der da leit an dem Alssekke zenaehst der Teutschen Herren
+                  weingarten, belastet mit 3 ¾ Eimern Wein Bergrecht und 7 ½ dn. Voitrecht, um 900
+                  lb dn. <rs type="fn" role="recipient"><rs type="person"
+                        ref="#pe__friedrich_von_tierna_QGW_II_I_1106"><roleName type="title"
+                           >hern</roleName> Fridreichen von Tirnach, <roleName type="occ"
+                           corresp="#org__wien">purger</roleName> ze Wienne,</rs> und <rs
+                        type="person" ref="#pe__anna_QGW_II_I_186"><roleName type="kin"
+                           corresp="#pe__friedrich_von_tierna_QGW_II_I_1106">seiner
+                           Hausfrau</roleName> Anna.</rs></rs></rs>
+            </p>
+         </div>
+         <div type="seal">
+            <p><rs type="event" ref="#ev__QGW_II_I_186">Besiegelt mit den Siegeln: <rs type="fn"
+                     role="witness"><rs type="person" ref="#pe__heinrich_stainpekch_QGW_II_I_186">1.
+                        Hainrich des Stainpech,</rs>
+                     <rs type="person" ref="#pe__wilhelm_von_watzmannsdorf_QGW_II_I_186">2. Wilhalms
+                        von Watzmanstorf,</rs>
+                     <rs type="person" ref="#pe__praunreich_von_steinakirchen_QGW_II_I_186">3. Prauns
+                        von Steinachirchen,</rs>
+                     <rs type="person" ref="#pe__dietmar_von_harmannsdorf_QGW_II_I_186">4. Dietmars
+                        von Hadmarstorf,</rs>
+                     <rs type="person" ref="#pe__leb_vierdung_QGW_II_I_186">5. Leb des Vierdung,</rs>
+                     <rs type="person" ref="#pe__heinrich_poltz_QGW_II_I_186">6. Hainreich des
+                        Poltz,</rs>
+                     <rs type="person" ref="#pe__stephan_von_harrach_QGW_II_I_186">7. Stephan von
+                        Horach,</rs>
+                     <rs type="person" ref="#pe__benisch_von_harrach_QGW_II_I_186">8. Benisch von
+                        Horrach,</rs>
+                     <rs type="person" ref="#pe__johann_greiffe_QGW_II_I_390">9. des Grundherrn,</rs>
+                     <rs type="person" ref="#pe__gertrud_QGW_II_I_186">10. der Bergfrau Gerdrud,</rs>
+                     <rs type="person" ref="#pe__konrad_wiltwercher_QGW_II_I_204">11. Chunrat des
+                        Wiltwercher,</rs>
+                     <rs type="person" ref="#pe__johann_gmundner_QGW_II_I_186">12. Jans des
+                        Gmunder,</rs> ferner der <rs type="person"
+                        ref="#pe__ulrich_von_lassberg_QGW_II_I_186"><roleName type="title"
+                           >Ritter</roleName> 13. <roleName type="title">hern</roleName> Ulreichs
+                        von Loz/zperige, <roleName type="occ" corresp="#org__oesterreich-herzogtum"
+                           >schützenmaister</roleName> in Osterreich,</rs><rs type="person"
+                        ref="#pe__benisch_von_harrach_QGW_II_I_186">14. <roleName type="title"
+                              ><add>Ritter</add></roleName>
+                        <roleName type="title">hern</roleName> Benisch von Horach (= no 8),</rs>
+                     endlich 15. <rs type="person" ref="#pe__dietrich_urbetsch_QGW_II_I_950"
+                           ><roleName type="title">hern</roleName> Dietreichs des Urbaetschen,
+                           <roleName type="occ" corresp="#org__wien">richter</roleName> ze
+                        Wienne,</rs> 16. <rs type="person" ref="#pe__konrad_von_eslarn_QGW_II_I_178"
+                           ><roleName type="title">hern</roleName> Chunrats von Eslarn, <roleName
+                           type="occ" corresp="#org__wien">purgermaister</roleName> ze Wienne,</rs>
+                     17. <rs type="person" ref="#pe__engelbrecht_panch_QGW_II_I_178">
+                        <roleName type="title">hern</roleName> Engelprechts des
+                  Paniken.</rs></rs></rs>
+            </p>
+         </div>
+         <div type="lists">
+            <xi:include xmlns:xi="http://www.w3.org/2001/XInclude"
+               href="../../../../indices/placeList.xml" xpointer="element(/1/2/1/1)"/>
+            <xi:include xmlns:xi="http://www.w3.org/2001/XInclude"
+               href="../../../../indices/personList.xml" xpointer="element(/1/2/1/1)"/>
+            <xi:include xmlns:xi="http://www.w3.org/2001/XInclude"
+               href="../../../../indices/eventList.xml" xpointer="element(/1/2/1/1)"/>
+            <xi:include xmlns:xi="http://www.w3.org/2001/XInclude"
+               href="../../../../indices/orgList.xml" xpointer="element(/1/2/1/1)"/>
+         </div>
+      </body>
+   </text>
+</TEI>

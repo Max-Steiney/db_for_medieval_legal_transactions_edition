@@ -1,0 +1,116 @@
+<?xml version="1.0" encoding="UTF-8"?><!DOCTYPE TEI   SYSTEM "../../../schema/toolbox_full.dtd">
+<TEI xmlns="http://www.tei-c.org/ns/1.0" xmlns:cei="http://www.monasterium.net/NS/cei"
+   xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance">
+   <teiHeader>
+      <fileDesc>
+         <titleStmt>
+            <title>Tei version of 843 exported from monasterium.net </title>
+         </titleStmt>
+         <publicationStmt>
+            <p/>
+         </publicationStmt>
+         <!--In Original: cei:front/cei:sourceDesc/cei:sourceDescRegest-->
+         <sourceDesc>
+            <bibl type="url">https://www.monasterium.net/mom/AT-WStLA/HAUrk/843/charter</bibl>
+            <bibl default="false" status="draft">Quellen zur Geschichte der Stadt Wien, Bd. II/1,
+               Nr. 843 As published in HAUrk by Wiener Stadt- und Landesarchiv </bibl>
+            <msDesc status="draft">
+               <msIdentifier>
+                  <repository>Wiener Stadt- und Landesarchiv</repository>
+                  <idno>843</idno>
+                  <altIdentifier type="old">
+                     <idno>515031</idno>
+                  </altIdentifier>
+               </msIdentifier>
+               <physDesc>
+                  <sealDesc>
+                     <seal>
+                        <p>Zwei anhangende Siegel, 1. roth u. K.</p>
+                     </seal>
+                  </sealDesc>
+               </physDesc>
+            </msDesc>
+         </sourceDesc>
+      </fileDesc>
+      <encodingDesc>
+         <projectDesc default="false">
+            <p><label type="contentual-editing">Projekt Christina Lutter Stadt und
+                  Gemeinschaft</label></p>
+         </projectDesc>
+      </encodingDesc>
+      <profileDesc>
+         <creation>
+            <placeName>Wien</placeName>
+            <date when="13741124">1374 XI 24</date>
+            <origDate instant="false">ze Wienne, an sand Kathrein abende, der heiligen
+               junchvrown.</origDate></creation>
+      </profileDesc>
+   </teiHeader>
+   <facsimile>
+      <surface>
+         <graphic
+            url="http://images.monasterium.net/pics/AT-WStLA/HA-U/WStLA-HA-Urkunden_00843_r.jpg"/>
+      </surface>
+      <surface>
+         <graphic
+            url="http://images.monasterium.net/pics/AT-WStLA/HA-U/WStLA-HA-Urkunden_00843_v.jpg"/>
+      </surface>
+   </facsimile>
+   <text>
+      <body>
+         <div type="abstract" resp="cs">
+            <p>
+               <rs type="event" ref="#ev__QGW_II_I_843"><rs type="fn" role="issuer"><rs type="person"
+                        ref="#pe__simon_zerrer_QGW_II_I_843">Simon der Zerrer, <rs type="person"
+                           ref="#pe__stephan_zerrer_QGW_II_I_843">Stephans <roleName type="dead"
+                              >sêlig</roleName> des Zerrer</rs> <roleName type="kin"
+                              corresp="#pe__stephan_zerrer_QGW_II_I_843"
+                     >sun</roleName></rs></rs>, <triggerstring n="disp">bestätigt</triggerstring>,
+                  dass während seiner und seiner <rs type="person" ref="#pe__katharina_QGW_II_I_843">
+                     <roleName type="kin" corresp="#pe__simon_zerrer_QGW_II_I_843"
+                        >Geschwister</roleName>
+                     <roleName type="dead"><add>verstorben</add></roleName> Kathrein</rs> und <rs
+                     type="person" ref="#pe__herrant_QGW_II_I_843"><roleName type="kin"
+                        corresp="#pe__simon_zerrer_QGW_II_I_843"
+                        ><add>Bruder</add></roleName><roleName type="dead"
+                        ><add>verstorben</add></roleName> Herrants</rs> Unmündigkeit ihr Haus,
+                  gelegen an dem Hohenmarkcht ze Wienne, genant das Schreinhaus, zenêchst des
+                  Chrechsner haus, von dem man Chunrads chinden von Waidhofen 3 lb 30 dn. zu
+                  Burgrecht dient, <triggerstring n="disp">verkauft worden sei</triggerstring>. Da seine
+                  Geschwister gestorben sind und ihm allein die verzeihung und aufgebung des
+                  vorgenanten hauses anerstorben ist, so <triggerstring n="disp">verzichtet <add>auf
+                        jeglichen Anspruch</add></triggerstring> er <rs type="fn" role="other"
+                        ><triggerstring n="fn">mit Handen</triggerstring> des <rs type="person"
+                        ref="#pe__johann_an_dem_kienmarkt_QGW_II_I_1009"><roleName type="occ"
+                           corresp="#org__wien">Bürgermeisters</roleName>
+                        <roleName type="title">hern</roleName> Jannsen an dem Chienmarkcht</rs> und
+                     des <rs type="org" ref="#org__wien">rats gemain der stat ze Wienne</rs></rs>
+                  gegenüber dem Besitzer des Hauses <rs type="fn" role="recipient"><rs type="person"
+                        ref="#pe__stephan_frauendorfer_QGW_II_I_843">Stephan dem Vrowndörfer</rs> und
+                     seiner <rs type="person" ref="#pe__elisabeth_QGW_II_I_843"><roleName type="kin"
+                           corresp="#pe__stephan_frauendorfer_QGW_II_I_843">Hausfrau</roleName>
+                        Elsbeten</rs></rs> auf jeglichen Anspruch an dasselbe.</rs>
+            </p>
+         </div>
+         <div type="seal">
+            <p><rs type="event" ref="#ev__QGW_II_I_843"><rs type="fn" role="witness">Besiegelt mit
+                     dem <rs type="org" ref="#org__wien">städtischen Grundsiegel</rs> und dem
+                        Siegel<rs type="person" ref="#pe__friedrich_dietram_QGW_II_I_1026"><roleName
+                           type="title">hern</roleName> Fridreichs des Dietrams, <roleName
+                           type="occ" corresp="#org__wien-buergerspital">spitalmaister</roleName> der
+                        purger Spital ze Wienn</rs></rs>.</rs>
+            </p>
+         </div>
+         <div type="lists">
+            <xi:include xmlns:xi="http://www.w3.org/2001/XInclude"
+               href="../../../../indices/placeList.xml" xpointer="element(/1/2/1/1)"/>
+            <xi:include xmlns:xi="http://www.w3.org/2001/XInclude"
+               href="../../../../indices/personList.xml" xpointer="element(/1/2/1/1)"/>
+            <xi:include xmlns:xi="http://www.w3.org/2001/XInclude"
+               href="../../../../indices/eventList.xml" xpointer="element(/1/2/1/1)"/>
+            <xi:include xmlns:xi="http://www.w3.org/2001/XInclude"
+               href="../../../../indices/orgList.xml" xpointer="element(/1/2/1/1)"/>
+         </div>
+      </body>
+   </text>
+</TEI>

@@ -1,0 +1,28 @@
+<?xml version="1.0" encoding="UTF-8"?><!DOCTYPE TEI   SYSTEM "../../../schema/toolbox_full.dtd"><TEI xmlns="http://www.tei-c.org/ns/1.0" xmlns:cei="http://www.monasterium.net/NS/cei" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"><teiHeader><fileDesc><titleStmt><title>Tei version of 1628 exported from monasterium.net </title></titleStmt><publicationStmt><p/></publicationStmt><!--In Original: cei:front/cei:sourceDesc/cei:sourceDescRegest--><sourceDesc><bibl  type="url">https://www.monasterium.net/mom/AT-WStLA/HAUrk/1628/charter</bibl><bibl default="false" status="draft">Quellen zur Geschichte der Stadt Wien, Bd. II/1, Nr. 1628 As published in HAUrk by
+               Wiener Stadt- und Landesarchiv </bibl><msDesc status="draft"><msIdentifier><repository>Wiener Stadt- und Landesarchiv</repository><idno>1628</idno><altIdentifier type="old"><idno>515829</idno></altIdentifier></msIdentifier><msContents><msItem><listBibl default="false"><bibl default="false" status="draft">Jahrbuch der kais. Kunstsamml. 16b, no 13103 Regest.</bibl></listBibl></msItem></msContents><physDesc><sealDesc><seal><p>Die Siegel fehlen.</p></seal></sealDesc></physDesc></msDesc></sourceDesc></fileDesc><encodingDesc><projectDesc default="false"><p><label type="contentual-editing">Projekt Christina Lutter Stadt und Gemeinschaft</label></p></projectDesc></encodingDesc><profileDesc><creation>
+            <placeName>Wien</placeName>
+            <date when="14050820">1405 VIII 20</date>
+            <origDate instant="false">ze Wienn, des negsten phinztags vor sand Pertelmes tag.</origDate></creation></profileDesc></teiHeader><facsimile><surface><graphic url="http://images.monasterium.net/pics/AT-WStLA/HA-U/WStLA-HA-Urkunden_01628_r.jpg"/></surface><surface><graphic url="http://images.monasterium.net/pics/AT-WStLA/HA-U/WStLA-HA-Urkunden_01628_v.jpg"/></surface></facsimile><text><body><div type="abstract" resp="cs"><p>
+               <rs type="event" ref="#ev__QGW_II_I_1628"><rs type="fn" role="issuer"><rs type="person" ref="#pe__simon_zinngiesser_QGW_II_I_1609">Simon, der <roleName type="prof">zingiesser</roleName>
+                        <roleName type="occ" corresp="#org__wien"><add>purger</add></roleName>,</rs>
+                     <rs type="person" ref="#pe__johann_lechner_QGW_II_I_1628">Hanns der Lechner
+                           <roleName type="occ" corresp="#org__wien"><add>purger</add></roleName>,</rs>
+                     <rs type="person" ref="#pe__konrad_spaet_QGW_II_I_1534">Chunrat der Spêt
+                           <roleName type="occ" corresp="#org__wien"><add>purger</add></roleName></rs> und <rs type="person" ref="#pe__johann_nimervol_StB_I_69">Hanns der Nimervol, all vier <roleName type="occ" corresp="#org__wien">purger</roleName> ze
+                     Wienn,</rs></rs>
+                  <triggerstring n="disp">entscheiden</triggerstring>
+                  <rs type="fn" role="other"><triggerstring n="fn">nach dem Rathe</triggerstring> des <rs type="person" ref="#pe__paul_wuerfel_QGW_II_I_1200"><roleName type="occ" corresp="#org__wien">Bürgermeisters</roleName>
+                        <roleName type="title">hern</roleName> Pauln des Würffels</rs> und <rs type="person" ref="#pe__niklas_preuzz_QGW_II_I_1628"><roleName type="title">hern</roleName> Chlausen des Preussen, des <roleName type="occ" corresp="#org__wien">rats</roleName> und <roleName type="occ" corresp="#org__wien">kamrer</roleName> daselbs</rs></rs>, <triggerstring n="disp">den Streit</triggerstring>
+                  <rs type="fn" role="other"><triggerstring n="fn">zwischen</triggerstring>
+                     <rs type="person" ref="#pe__lucia_QGW_II_I_1628"><roleName type="title">fraun</roleName> Lucein, Hainreichs <roleName type="kin" corresp="#pe__heinrich_QGW_II_I_1628">witib</roleName> des zingiesser von
+                        Wirtzpurg</rs></rs>, ains tails und <rs type="fn" role="other"><triggerstring n="fn"><add>zwischen</add></triggerstring>
+                     <rs type="person" ref="#pe__konrad_von_plaben_QGW_II_I_1628">Chunraten von
+                        Plaben, des <roleName type="prof">zingiesser</roleName>,</rs></rs> des andern tails dahin, dass Chunrat die
+                  eine Hälfte des Gartens gegen der statmaur pei der gassen am ekk zenegste Thomann
+                  dem Chreussen und Lucei die andere Hälfte an ihrem Hause zenegst Thomann dem Fuchs
+                  innehaben soll. Wer den Spruch verletzt, soll 20 lb dn. zu dem Bau von S. Stephan,
+                  20 lb dn. zu der prukk vor Stubentor und 5 lb dn. dem Stadtrichter bezahlen.</rs>
+            </p></div><div type="seal"><p><rs type="event" ref="#ev__QGW_II_I_1628"><rs type="fn" role="witness">Besiegelt mit
+                     den Siegeln <rs type="person" ref="#pe__simon_zinngiesser_QGW_II_I_1609">Simons,
+                        des zingiesser</rs>, und <rs type="person" ref="#pe__konrad_spaet_QGW_II_I_1534">Chunrats des Spe/aten</rs>.</rs></rs>
+            </p></div><div type="lists"><xi:include xmlns:xi="http://www.w3.org/2001/XInclude" href="../../../../indices/placeList.xml" xpointer="element(/1/2/1/1)"/><xi:include xmlns:xi="http://www.w3.org/2001/XInclude" href="../../../../indices/personList.xml" xpointer="element(/1/2/1/1)"/><xi:include xmlns:xi="http://www.w3.org/2001/XInclude" href="../../../../indices/eventList.xml" xpointer="element(/1/2/1/1)"/><xi:include xmlns:xi="http://www.w3.org/2001/XInclude" href="../../../../indices/orgList.xml" xpointer="element(/1/2/1/1)"/></div></body></text></TEI>

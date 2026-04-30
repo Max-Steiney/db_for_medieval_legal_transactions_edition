@@ -1,0 +1,143 @@
+<?xml version="1.0" encoding="UTF-8"?><!DOCTYPE TEI   SYSTEM "../../../schema/toolbox_full.dtd">
+<TEI xmlns="http://www.tei-c.org/ns/1.0" xmlns:cei="http://www.monasterium.net/NS/cei"
+      xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance">
+      <teiHeader>
+            <fileDesc>
+                  <titleStmt>
+                        <title>Tei version of 954 exported from monasterium.net </title>
+                  </titleStmt>
+                  <publicationStmt>
+                        <p/>
+                  </publicationStmt>
+                  <!--In Original: cei:front/cei:sourceDesc/cei:sourceDescRegest-->
+                  <sourceDesc>
+                        <bibl type="url"
+                              >https://www.monasterium.net/mom/AT-WStLA/HAUrk/954/charter</bibl>
+                        <bibl default="false" status="draft">Quellen zur Geschichte der Stadt Wien,
+                              Bd. II/1, Nr. 954 As published in HAUrk by Wiener Stadt- und
+                              Landesarchiv </bibl>
+                        <msDesc status="draft">
+                              <msIdentifier>
+                                    <repository>Wiener Stadt- und Landesarchiv</repository>
+                                    <idno>954</idno>
+                                    <altIdentifier type="old">
+                                          <idno>515144</idno>
+                                    </altIdentifier>
+                              </msIdentifier>
+                              <msContents>
+                                    <msItem>
+                                          <listBibl default="false">
+                                                <bibl default="false" status="draft"/>
+                                                <bibl default="false" status="draft">Quellen zur
+                                                  Geschichte der Stadt Wien, Bd. II/1, Nr. 954 As
+                                                  published in HAUrk by Wiener Stadt- und
+                                                  Landesarchiv </bibl>
+                                                <bibl default="false" status="draft"/>
+                                          </listBibl>
+                                    </msItem>
+                              </msContents>
+                              <physDesc>
+                                    <sealDesc>
+                                          <seal>
+                                                <p>Das Siegel fehlt.</p>
+                                          </seal>
+                                    </sealDesc>
+                              </physDesc>
+                        </msDesc>
+                  </sourceDesc>
+            </fileDesc>
+            <encodingDesc>
+                  <projectDesc default="false">
+                        <p><label type="contentual-editing">Projekt Christina Lutter Stadt und
+                                    Gemeinschaft</label></p>
+                  </projectDesc>
+            </encodingDesc>
+            <profileDesc>
+                  <creation>
+                        <placeName>Wien</placeName>
+                        <date when="13781113">1378 XI 13</date>
+                        <date from="99999999" to="99999999"/>
+                        <origDate instant="false">Datum ibidem Wienne die XIII. mensis novembris,
+                              anno domini millesimo trecentesimo septuagesimo octavo.
+                        </origDate></creation>
+            </profileDesc>
+      </teiHeader>
+      <facsimile>
+            <surface>
+                  <graphic
+                        url="http://images.monasterium.net/pics/AT-WStLA/HA-U/WStLA-HA-Urkunden_00954_r.jpg"
+                  />
+            </surface>
+            <surface>
+                  <graphic
+                        url="http://images.monasterium.net/pics/AT-WStLA/HA-U/WStLA-HA-Urkunden_00954_v.jpg"
+                  />
+            </surface>
+      </facsimile>
+      <text>
+            <body>
+                  <div type="abstract" resp="cs">
+                        <p>* <rs type="event" ref="#ev__QGW_II_I_954"><rs type="fn" role="issuer"><rs
+                                                type="person"
+                                                ref="#pe__albrecht_bischof_von_passau_QGW_II_I_1007"
+                                                  ><roleName type="occ"
+                                                  corresp="#org__passau-dioezese">Bischof</roleName>
+                                                Albert von Passau</rs></rs>
+                                    <triggerstring n="disp">genehmigt</triggerstring> die von der <rs
+                                          type="fn" role="recipient"><rs type="person"
+                                                ref="#pe__engel_QGW_II_I_954"><roleName type="kin"
+                                                  corresp="#pe__stephan_leitner_QGW_II_I_1012"
+                                                  >Gemahlin</roleName> des <rs type="person"
+                                                  ref="#pe__stephan_leitner_QGW_II_I_1012">Wiener
+                                                  <roleName type="occ" corresp="#org__wien"
+                                                  >Bürgers</roleName> Stephan des Leitner</rs> ,
+                                                Engela</rs> , auf Grund einer letztwilligen
+                                          Verfügung ihres <rs type="person"
+                                                ref="#pe__ortolf_mit_den_gevattern_QGW_II_I_954"
+                                                  ><roleName type="dead">ersten</roleName>
+                                                <roleName type="kin"
+                                                  corresp="#pe__engel_QGW_II_I_954">Mannes</roleName>
+                                                Ortolfi, dicti Mit der Gevattern </rs></rs>, in der
+                                    Kapelle beate Marie virginis in Ottenhaim Wienne gestiftete <rs
+                                          type="fn" role="recipient"><rs type="org"
+                                                ref="#org__wien-st_maria_im_rathaus-messe_gevattern"
+                                                >Messe</rs></rs>, deren Präsentation dem genannten
+                                          <rs type="fn" role="recipient">Ehepaare <rs type="person"
+                                                ref="#pe__engel_QGW_II_I_954"><add>Engela</add></rs>
+                                          <add>und</add>
+                                          <rs type="person" ref="#pe__stephan_leitner_QGW_II_I_1012"
+                                                  ><roleName type="occ" corresp="#org__wien"
+                                                  ><add>Wiener Bürger</add></roleName>
+                                                <add>Stephan</add></rs></rs> auf Lebenszeit, nach
+                                    ihrem Tode dem <rs type="fn" role="recipient"><rs type="org"
+                                                ref="#org__wien-st_maria_im_rathaus">Rector der
+                                                Kapelle</rs></rs>
+                                    <triggerstring n="disp"><add>Präsentation</add> zustehen
+                                          soll</triggerstring>, während die Einsetzung dem <rs
+                                          type="fn" role="recipient"><rs type="org"
+                                                ref="#org__passau-dioezese">Bischof von
+                                          Passau</rs></rs>
+                                    <triggerstring n="disp"><add>Einsetzung</add> vorbehalten
+                                          bleibt</triggerstring>.</rs>
+                        </p>
+                  </div>
+                  <div type="nota">
+                        <p>Indorsat: Aufschrift des Magister Theodericus. ff. </p>
+                  </div>
+                  <div type="lists">
+                        <xi:include xmlns:xi="http://www.w3.org/2001/XInclude"
+                              href="../../../../indices/placeList.xml"
+                              xpointer="element(/1/2/1/1)"/>
+                        <xi:include xmlns:xi="http://www.w3.org/2001/XInclude"
+                              href="../../../../indices/personList.xml"
+                              xpointer="element(/1/2/1/1)"/>
+                        <xi:include xmlns:xi="http://www.w3.org/2001/XInclude"
+                              href="../../../../indices/eventList.xml"
+                              xpointer="element(/1/2/1/1)"/>
+                        <xi:include xmlns:xi="http://www.w3.org/2001/XInclude"
+                              href="../../../../indices/orgList.xml"
+                              xpointer="element(/1/2/1/1)"/>
+                  </div>
+            </body>
+      </text>
+</TEI>

@@ -1,0 +1,114 @@
+<?xml version="1.0" encoding="UTF-8"?><!DOCTYPE TEI   SYSTEM "../../../schema/toolbox_full.dtd">
+<TEI xmlns="http://www.tei-c.org/ns/1.0" xmlns:cei="http://www.monasterium.net/NS/cei"
+   xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance">
+   <teiHeader>
+      <fileDesc>
+         <titleStmt>
+            <title>Tei version of 1870 exported from monasterium.net </title>
+         </titleStmt>
+         <publicationStmt>
+            <p/>
+         </publicationStmt>
+         <!--In Original: cei:front/cei:sourceDesc/cei:sourceDescRegest-->
+         <sourceDesc>
+            <bibl type="url">https://www.monasterium.net/mom/AT-WStLA/HAUrk/1870/charter</bibl>
+            <bibl default="false" status="draft">Quellen zur Geschichte der Stadt Wien, Bd. II/1,
+               Nr. 1870 As published in HAUrk by Wiener Stadt- und Landesarchiv </bibl>
+            <msDesc status="draft">
+               <msIdentifier>
+                  <repository>Wiener Stadt- und Landesarchiv</repository>
+                  <idno>1870</idno>
+                  <altIdentifier type="old">
+                     <idno>516074</idno>
+                  </altIdentifier>
+               </msIdentifier>
+               <physDesc>
+                  <sealDesc>
+                     <seal>
+                        <p>Zwei anhangende Siegel: 1. grün u. Sch., rechts abgehackt, 2. schwarz u.
+                           K.</p>
+                     </seal>
+                  </sealDesc>
+               </physDesc>
+            </msDesc>
+         </sourceDesc>
+      </fileDesc>
+      <encodingDesc>
+         <projectDesc default="false">
+            <p><label type="contentual-editing">Projekt Christina Lutter Stadt und
+                  Gemeinschaft</label></p>
+         </projectDesc>
+      </encodingDesc>
+      <profileDesc>
+         <creation>
+            <placeName>Wien</placeName>
+            <date when="14110429">1411 IV 29</date>
+            <origDate instant="false">ze Wienn, des nechsten mitichens vor sand Philipps und sand
+               Jacobs tag, der heiligen zwelifpoten. </origDate></creation>
+      </profileDesc>
+   </teiHeader>
+   <facsimile>
+      <surface>
+         <graphic
+            url="http://images.monasterium.net/pics/AT-WStLA/HA-U/WStLA-HA-Urkunden_01870_r.jpg"/>
+      </surface>
+      <surface>
+         <graphic
+            url="http://images.monasterium.net/pics/AT-WStLA/HA-U/WStLA-HA-Urkunden_01870_v.jpg"/>
+      </surface>
+   </facsimile>
+   <text>
+      <body>
+         <div type="abstract" resp="cs">
+            <p><rs type="event" ref="#ev__QGW_II_I_1870">
+                  <rs type="fn" role="issuer"><rs type="person" ref="#pe__dorothea_QGW_II_I_1870"
+                        >Dorothe <roleName type="kin" corresp="#pe__johann_wiczinger_QGW_II_I_1870"
+                              ><add>witib</add></roleName><add>für</add><roleName type="rep"
+                           corresp="#pe__barbara_QGW_II_I_1870"><add>für</add></roleName></rs>,</rs>
+                  <rs type="person" ref="#pe__johann_wiczinger_QGW_II_I_1870">Hannsen <roleName
+                        type="dead">witiben</roleName> des Wiczinger,</rs><rs type="fn"
+                     role="issuer">
+                     <rs type="person" ref="#pe__johann_QGW_II_I_1870">Hanns<roleName type="kin"
+                           corresp="#pe__dorothea_QGW_II_I_1870"><add>sun</add></roleName></rs> und
+                        <rs type="person" ref="#pe__lukas_QGW_II_I_1870">Lucas, ir <roleName
+                           type="kin" corresp="#pe__dorothea_QGW_II_I_1870"
+                     >su/en</roleName>,</rs></rs>
+                  <triggerstring n="disp">beurkunden</triggerstring> für sich und für die noch nicht <rs
+                     type="person" ref="#pe__barbara_QGW_II_I_1870">vogtbare <roleName type="title"
+                        >junkfraun</roleName> Barbaren, ihre <roleName type="kin"
+                        corresp="#pe__dorothea_QGW_II_I_1870">Tochter</roleName>, beziehungsweise
+                        <roleName type="kin" corresp="#pe__lukas_QGW_II_I_1870"
+                        >Schwester</roleName><roleName type="kin" corresp="#pe__johann_QGW_II_I_1870"
+                           ><add>schwester</add></roleName>,</rs> aus dem <rs type="event"
+                              ref="#ev__QGW_II_I_1845">Geschäfte <rs type="person" ref="#pe__leonhard_schaur_QGW_II_I_1242">des <roleName type="kin"
+                           corresp="#pe__dorothea_QGW_II_I_1870">Bruders</roleName> der Dorothea,
+                           <roleName type="title">hern</roleName> Lienharts des Schaur</rs>,</rs>
+                  600 guter guldein und den hausgerecht, das Wohnhaus und alle gekauften
+                     Weingärten<triggerstring n="disp"> erhalten zu haben.</triggerstring></rs>
+            </p>
+         </div>
+         <div type="seal">
+            <p><rs type="event" ref="#ev__QGW_II_I_1870"><rs type="fn" role="witness">Besiegelt mit
+                     den Siegeln <rs type="person" ref="#pe__paul_wuerfel_QGW_II_I_1200"><roleName
+                           type="title">hern</roleName> Pauln des Würffel, <roleName type="occ"
+                           corresp="#org__oesterreich-herzogtum">münssmaister</roleName> in
+                        Österreich, </rs>und <rs type="person"
+                        ref="#pe__friedrich_von_aschbach_QGW_II_I_1705">Fridreichs von Aschpach,
+                           <roleName type="occ" corresp="#org__oesterreich-herzogtum"
+                           >lantschreiber</roleName> in Osterreich und <roleName type="occ"
+                           corresp="#org__wien">urtailschreiber</roleName> ze Wienn</rs> .</rs></rs>
+            </p>
+         </div>
+         <div type="lists">
+            <xi:include xmlns:xi="http://www.w3.org/2001/XInclude"
+               href="../../../../indices/placeList.xml" xpointer="element(/1/2/1/1)"/>
+            <xi:include xmlns:xi="http://www.w3.org/2001/XInclude"
+               href="../../../../indices/personList.xml" xpointer="element(/1/2/1/1)"/>
+            <xi:include xmlns:xi="http://www.w3.org/2001/XInclude"
+               href="../../../../indices/eventList.xml" xpointer="element(/1/2/1/1)"/>
+            <xi:include xmlns:xi="http://www.w3.org/2001/XInclude"
+               href="../../../../indices/orgList.xml" xpointer="element(/1/2/1/1)"/>
+         </div>
+      </body>
+   </text>
+</TEI>

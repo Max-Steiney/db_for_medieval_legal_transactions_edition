@@ -1,0 +1,104 @@
+<?xml version="1.0" encoding="UTF-8"?><!DOCTYPE TEI   SYSTEM "../../../schema/toolbox_full.dtd">
+<TEI xmlns="http://www.tei-c.org/ns/1.0" xmlns:cei="http://www.monasterium.net/NS/cei"
+   xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance">
+   <teiHeader>
+      <fileDesc>
+         <titleStmt>
+            <title>Tei version of 1708 exported from monasterium.net </title>
+         </titleStmt>
+         <publicationStmt>
+            <p/>
+         </publicationStmt>
+         <!--In Original: cei:front/cei:sourceDesc/cei:sourceDescRegest-->
+         <sourceDesc>
+            <bibl type="url">https://www.monasterium.net/mom/AT-WStLA/HAUrk/1708/charter</bibl>
+            <bibl default="false" status="draft">Quellen zur Geschichte der Stadt Wien, Bd. II/1,
+               Nr. 1708 As published in HAUrk by Wiener Stadt- und Landesarchiv </bibl>
+            <msDesc status="draft">
+               <msIdentifier>
+                  <repository>Wiener Stadt- und Landesarchiv</repository>
+                  <idno>1708</idno>
+                  <altIdentifier type="old">
+                     <idno>515910</idno>
+                  </altIdentifier>
+               </msIdentifier>
+               <physDesc>
+                  <sealDesc>
+                     <seal>
+                        <p>Vorne aufgedrücktes Siegel von rothem Wachse.</p>
+                     </seal>
+                  </sealDesc>
+               </physDesc>
+            </msDesc>
+         </sourceDesc>
+      </fileDesc>
+      <encodingDesc>
+         <projectDesc default="false">
+            <p><label type="contentual-editing">Projekt Christina Lutter Stadt und
+                  Gemeinschaft</label></p>
+         </projectDesc>
+      </encodingDesc>
+      <profileDesc>
+         <creation>
+            <placeName>Brunn</placeName>
+            <date when="14070606">1407 VI 06</date>
+            <origDate instant="false">Geben ze Wrünn (verbessert aus Wienn) am mantag nach Erasmi,
+               martyris, anno etc. CCCC//o VII//o. </origDate></creation>
+      </profileDesc>
+   </teiHeader>
+   <facsimile>
+      <surface>
+         <graphic
+            url="http://images.monasterium.net/pics/AT-WStLA/HA-U/WStLA-HA-Urkunden_01708_r.jpg"/>
+      </surface>
+      <surface>
+         <graphic
+            url="http://images.monasterium.net/pics/AT-WStLA/HA-U/WStLA-HA-Urkunden_01708_v.jpg"/>
+      </surface>
+   </facsimile>
+   <text>
+      <body>
+         <div type="abstract" resp="cs">
+            <p>
+               <rs type="event" ref="#ev__QGW_II_I_1708"><rs type="fn" role="issuer"><rs
+                        type="person" ref="#pe__peter_grueber_QGW_II_I_1708">Peter der
+                     Grueber</rs></rs>
+                  <triggerstring n="disp">schreibt</triggerstring>
+                  <rs type="fn" role="recipient"><rs type="org" ref="#org__wien">dem Bürgermeister
+                        und Rath zu Wien</rs></rs>, <rs type="event" ref="NULL">dass er <rs
+                        type="person" ref="#pe__peter_grueber_QGW_II_I_1674">seinen <roleName
+                           type="kin" corresp="#pe__peter_grueber_QGW_II_I_1708">Vetter</roleName>
+                        Peter den Grueber, purger ze Wienn,</rs>
+                     <triggerstring n="disp">bevollmächtigt habe</triggerstring>, das Haus, gelegen ze
+                     Wienn pei der Himelporten, das er von <rs type="person"
+                        ref="#pe__andreas_schoendl_QGW_II_I_1708">Andree dem Schonndlein</rs> und
+                     dessen <rs type="person" ref="#pe__margarethe_QGW_II_I_1708"><roleName
+                        type="kin" corresp="#pe__andreas_schoendl_QGW_II_I_1708">Hausfrau</roleName>
+                        Marigreden</rs> um 60 lb dn., wovon 20 lb dn. bezahlt, 40 lb dn. aber auf
+                     das Haus in dem Grundbuch vorgemerkt worden waren, gekauft hatte, und von dem
+                     er jährlich 2 lb dn. zu dem jartag Niclas von Ofen seligen und 3 lb dn. der
+                     genannten fraun Marigreden diente</rs>, <triggerstring n="disp">zu
+                     verkaufen</triggerstring>. Da nun das Haus um 46 lb dn. verkauft worden ist, so
+                     <triggerstring n="disp">verfügt</triggerstring> er, dass 40 lb dn. bei dem Grundbuche
+                  erlegt werden sollen, um das Haus frei zu machen, den Rest aber sein Vetter
+                  einnehmen solle.</rs>
+            </p>
+         </div>
+         <div type="seal">
+            <p><rs type="event" ref="#ev__QGW_II_I_1708"><rs type="fn" role="witness">Besiegelt von
+                     dem <rs type="person" ref="#pe__peter_grueber_QGW_II_I_1708"
+                     >Aussteller</rs>.</rs></rs></p>
+         </div>
+         <div type="lists">
+            <xi:include xmlns:xi="http://www.w3.org/2001/XInclude"
+               href="../../../../indices/placeList.xml" xpointer="element(/1/2/1/1)"/>
+            <xi:include xmlns:xi="http://www.w3.org/2001/XInclude"
+               href="../../../../indices/personList.xml" xpointer="element(/1/2/1/1)"/>
+            <xi:include xmlns:xi="http://www.w3.org/2001/XInclude"
+               href="../../../../indices/eventList.xml" xpointer="element(/1/2/1/1)"/>
+            <xi:include xmlns:xi="http://www.w3.org/2001/XInclude"
+               href="../../../../indices/orgList.xml" xpointer="element(/1/2/1/1)"/>
+         </div>
+      </body>
+   </text>
+</TEI>

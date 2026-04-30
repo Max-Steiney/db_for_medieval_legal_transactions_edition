@@ -1,49 +1,66 @@
-# CLAUDE.md — Edition Repo (Build Output)
+# CLAUDE.md — Frontend Repo
 
 ## Was ist das hier?
 
-Dieses Repo ist der **Build-Output** der Digital Edition für GitHub Pages. Es wird per Sync-Commit aus dem Pipeline-Repo aktualisiert.
+Dieses Repo ist die **Publikations-Schicht** der Digital Edition. Hier liegen:
 
-**Pipeline-Repo (Quelle):** `../db_for_medieval_legal_transactions/`
-- Jinja2-Templates: `edition/templates/`
-- Content (Markdown): `edition/content/`
-- Build-Code: `edition/build.py`
-- Statische Assets: `edition/static/`
-- Registerdaten: `indices/`
-- TEI-Quellen: `sources/`
+- `frontend/` — Build-Code (Python/Jinja2), Templates, Content (Markdown), statische Assets, Tests
+- `docs/` — gerenderte Seite, von GitHub Pages serviert
+- `knowledge/` — konzeptionelle Frontend-Wissensbasis (Obsidian-Markdown)
+- `verification/` — unabhängiges Verifikations-Test-Set
+- `vault/` — Legacy-Promptotyping-Dokumentation
+
+Die **Datengrundlage** (TEI-Quellen, Register, Normalisierungslisten, Pipeline) liegt im Schwester-Repo `../db_for_medieval_legal_transactions`. Beide Repos müssen nebeneinander geklont sein; `frontend/__init__.py` legt das Pipeline-Repo automatisch auf `sys.path`, damit `from pipeline.config import …` funktioniert (kein Install-Step, kein Submodule).
 
 ## Arbeitsregel
 
-**HTML-/JSON-Dateien hier nicht direkt editieren.** Änderungen gehören ins Pipeline-Repo, dann:
+**Frontend-Änderungen** (Templates, Build-Code, Content, statische Assets) gehören hierher. Build:
+
+```
+python -m frontend build                # baut docs/ aus aktuellem Pipeline-Output
+python -m frontend build --single FILE  # einzelne Quelle
+python -m pytest frontend/tests/        # Frontend-Tests
+```
+
+**TEI-Quellen, Register, Pipeline-Code** gehören ins Schwester-Repo. Wenn du dort etwas änderst:
 
 ```
 cd ../db_for_medieval_legal_transactions
-python -m edition build
+python -m pipeline transform     # CSVs neu erzeugen
+cd -
+python -m frontend build         # Frontend gegen frische CSVs neu bauen
 ```
 
-Build schreibt nach `docs/`. Von dort wird in dieses Repo gesynct.
-
-Ausnahmen:
-- `vault/` — Promptotyping-Dokumentation (Legacy-Build-Output aus dem Pipeline-Repo).
-- `knowledge/` — konzeptionelle Frontend-Wissensbasis, wird direkt hier gepflegt. Obsidian-kompatible Markdowns mit `[[Wiki-Links]]`. Zeitlos formuliert, keine Meetings / Personen / Quantitäten. Ausnahmen: [[journal]] ist chronologisch und enthält Entscheidungspfade; [[analyse]] ist eine Analyse-Blaupause mit konkreten quantitativen Eckdaten zum Zeitpunkt ihrer Erstellung. Siehe `knowledge/decisions.md` für Leitentscheidungen.
-- `verification/` — unabhängiges Verifikations-Test-Set, wird direkt hier gepflegt.
+Anmerkungen zu Nicht-Build-Inhalten dieses Repos:
+- `knowledge/` — konzeptionelle Frontend-Wissensbasis. Obsidian-kompatible Markdowns mit `[[Wiki-Links]]`. Zeitlos formuliert, keine Meetings / Personen / Quantitäten. Ausnahmen: [[journal]] ist chronologisch und enthält Entscheidungspfade; [[analyse]] ist eine Analyse-Blaupause mit konkreten quantitativen Eckdaten zum Zeitpunkt ihrer Erstellung. Siehe `knowledge/decisions.md` für Leitentscheidungen.
+- `verification/` — unabhängiges Verifikations-Test-Set.
+- `vault/` — Legacy-Promptotyping-Dokumentation.
 - `CLAUDE.md`, `README` u. ä. Meta-Dateien.
 
 ## Struktur
 
 ```
-/                         Portal-Einstiegsseiten + flache HTMLs (index, documents, persons, ...)
-/documents/<coll>/<sub>/  Regesten als HTMLs, aus TEI gerendert
-/tei/<coll>/<sub>/        TEI-XML-Downloads der freigegebenen Quellen
-/data/                    JSON-Indexe (search, register, epics, timeline, quality)
-/register/                Personen-, Organisations-, Ortsregister (HTML + JSON)
-/exploration/             visuell-explorative Zugänge (Rollen, Beziehungen, Transaktionen, Orte)
-/analysis/                klassischer Abfragemodus (in Vorbereitung, siehe knowledge/analyse.md)
-/project/                 About, Statistik, Qualität, Editionsrichtlinien, Glossar, Impressum
-/static/                  CSS, JS, Fonts
-/vault/                   Legacy-Promptotyping-Dokumentation
-/knowledge/               konzeptionelle Frontend-Wissensbasis (Obsidian-Markdown)
-/verification/            Unabhängiges Verifikations-Test-Set (Python, lxml)
+frontend/                 Build-Code: Python (build.py, aggregator.py, renderer.py, register.py),
+                          Templates (Jinja2), Content (Markdown), statische Assets, Tests
+docs/                     gerenderte Seite (von GitHub Pages serviert)
+  /                       Portal-Einstiegsseiten + flache HTMLs (index, documents, persons, ...)
+  /documents/             Regesten als HTMLs, aus TEI gerendert
+  /tei/                   TEI-XML-Downloads der freigegebenen Quellen
+  /data/                  JSON-Indexe (search, register, epics, timeline, quality)
+  /register/              Personen-, Organisations-, Ortsregister (HTML + JSON)
+  /exploration/           visuell-explorative Zugänge (Rollen, Beziehungen, Transaktionen, Orte)
+  /analysis/              klassischer Abfragemodus (in Vorbereitung, siehe knowledge/analyse.md)
+  /project/               About, Statistik, Qualität, Editionsrichtlinien, Glossar, Impressum
+  /static/                CSS, JS, Fonts
+knowledge/                konzeptionelle Frontend-Wissensbasis (Obsidian-Markdown)
+verification/             Unabhängiges Verifikations-Test-Set (Python, lxml)
+vault/                    Legacy-Promptotyping-Dokumentation
+
+../db_for_medieval_legal_transactions/   Schwester-Repo (Datengrundlage)
+  sources/                TEI-Quellen (read by frontend via filesystem)
+  indices/                Register
+  pipeline/               CSV-Generator (read via from pipeline.config import …)
+  pipeline/output/        CSVs (read by frontend)
 ```
 
 ## Finale Terminologie-Entscheidungen (Stand 2026-04-17)
@@ -73,11 +90,11 @@ Die Nav-Brand zeigt nur den Haupttitel. Der Sub-Text lebt ausschließlich als He
 
 **Zeitraum-Anzeige (Freigabestand)**
 - **1177–1412**, Ausnahme **1414 für QGW II/1 und II/2**.
-- Zentrale Konfiguration: `edition/config.RELEASED_PERIOD`. Hardcoded Zahlen in Templates gelten als Fehler.
+- Zentrale Konfiguration: `frontend/config.RELEASED_PERIOD`. Hardcoded Zahlen in Templates gelten als Fehler.
 - Warntext „Überlieferungslücke 1418–1447" → **„noch nicht ausgewertet"**.
 
 **Datenstand (Fußzeile)**
-- **Datenstand** ist das Datum des letzten Pipeline-Repo-Commits, nicht das Build-Datum. Ermittelt über `git log -1 --format=%cI` in `edition/build._pipeline_repo_data_date`.
+- **Datenstand** ist das Datum des letzten Pipeline-Repo-Commits, nicht das Build-Datum. Ermittelt über `git log -1 --format=%cI` in `frontend/build._pipeline_repo_data_date`.
 - Lesbare deutsche Langform (z. B. „17. April 2026"), nicht ISO.
 
 **Farblogik**
@@ -113,20 +130,23 @@ Quelle: CS-Feedback 2026-04-17 (Meeting). Status pro Punkt:
 - **Keine Emojis** in irgendeiner Ausgabe.
 - **Minimale Lösungen:** pragmatisch vor ausgebaut. Copy-Paste-Snippets statt neuer UI-Seiten, wenn möglich.
 - **Keine Annahmen:** Wenn Kontext fehlt, entweder recherchieren oder Rückfrage stellen — nicht raten.
-- **Vor Änderungen am Build-Output**: prüfen, ob die Änderung ins Pipeline-Repo gehört. Wenn ja: dort machen, rebuild, syncen.
+- **Vor Änderungen**: prüfen, ob die Änderung Frontend (Templates / Build-Code / Content) oder Datengrundlage (TEI / Register / Pipeline) betrifft. Frontend hier; Datengrundlage im Schwester-Repo `../db_for_medieval_legal_transactions`. `docs/` ist Build-Output und wird durch `python -m frontend build` neu erzeugt — nicht direkt editieren.
 
 ## Vor-Start-Checkliste
 
 | Aufgabe | Lies zuerst |
 |---|---|
-| Titel/Nav/Footer ändern | `../db_for_medieval_legal_transactions/edition/templates/base.html` |
-| Startseite-Inhalt ändern | `../db_for_medieval_legal_transactions/edition/templates/startseite.html` |
-| Editionsrichtlinien | `../db_for_medieval_legal_transactions/edition/content/edition_guidelines.md` |
-| About / Impressum / Glossar | `../db_for_medieval_legal_transactions/edition/content/` |
-| Quellen-Übersicht (Filter, Chips) | `../db_for_medieval_legal_transactions/edition/templates/index.html` |
-| Provenienz-Tooltip einsetzen | `../db_for_medieval_legal_transactions/edition/templates/macros.html` (`prov_stat`, `prov_popover`, `prov_ratio_stat`) |
-| Erschließungsform-Mapping | `../db_for_medieval_legal_transactions/edition/build._transmission_form` |
-| Freigabestand (Zeitraum, Korpora) | `../db_for_medieval_legal_transactions/edition/config.py` |
+| Titel/Nav/Footer ändern | `frontend/templates/base.html` |
+| Startseite-Inhalt ändern | `frontend/templates/startseite.html` |
+| Editionsrichtlinien | `frontend/content/edition_guidelines.md` |
+| About / Impressum / Glossar | `frontend/content/` |
+| Quellen-Übersicht (Filter, Chips) | `frontend/templates/index.html` |
+| Provenienz-Tooltip einsetzen | `frontend/templates/macros.html` (`prov_stat`, `prov_popover`, `prov_ratio_stat`) |
+| Erschließungsform-Mapping | `frontend/build._transmission_form` |
+| Freigabestand (Zeitraum, Korpora) | `frontend/config.py` (Zeitraum) und `../db_for_medieval_legal_transactions/pipeline/config.py::RELEASED_CORPORA` (Korpora-Set) |
+| TEI-Quellen | `../db_for_medieval_legal_transactions/sources/` |
+| Register | `../db_for_medieval_legal_transactions/indices/` |
+| Pipeline / CSV-Format | `../db_for_medieval_legal_transactions/knowledge/architecture.md` |
 | Verifikations-Test-Set | `verification/` (Python, lxml), siehe [[architecture#Verifikations-Test-Set]] |
 | Analyse-Blaupause | `knowledge/analyse.md` |
 | Konzeptionelle Wissensbasis | `knowledge/` (data, requirements, architecture, ui-design, scholar-user-stories, glossar, decisions, journal, analyse, exploration) |

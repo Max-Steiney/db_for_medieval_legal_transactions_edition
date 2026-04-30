@@ -1,0 +1,141 @@
+<?xml version="1.0" encoding="UTF-8"?><!DOCTYPE TEI SYSTEM "../../../schema/toolbox_full.dtd">
+<TEI xmlns="http://www.tei-c.org/ns/1.0" xmlns:cei="http://www.monasterium.net/NS/cei"
+   xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance">
+   <teiHeader>
+      <fileDesc>
+         <titleStmt>
+            <title>TEI-Version of 264</title>
+         </titleStmt>
+         <publicationStmt>
+            <p/>
+         </publicationStmt>
+         <sourceDesc default="false">
+            <bibl default="false" status="draft">
+               <title type="full"><title type="main">Die Wiener Stadtbücher 1395 -
+                     1430</title><title type="sub">Teil 1: 1395 - 1400</title></title>
+               <author>Wilhelm Brauneder</author>
+               <author>Gerhard Jaritz</author>
+               <pubPlace>Wien</pubPlace>
+               <pubPlace>Köln</pubPlace>
+               <publisher>Böhlau Verlag</publisher>
+            </bibl>
+            <msDesc status="draft">
+               <msIdentifier>
+                  <idno>264</idno>
+               </msIdentifier>
+               <physDesc/>
+            </msDesc>
+         </sourceDesc>
+      </fileDesc>
+      <encodingDesc>
+         <projectDesc>
+            <p><label type="contentual-editing">Projekt Christina Lutter Stadt und
+                  Gemeinschaft</label></p>
+         </projectDesc>
+      </encodingDesc>
+      <profileDesc>
+         <creation>
+            <date when="1398-05-07">1398 Mai 7</date>
+         </creation>
+      </profileDesc>
+   </teiHeader>
+   <text>
+      <body>
+         <div type="header">
+            <p>Geschäft der Margarethe, Witwe des Friedrich, Wirtin im Göttweiger Hof </p>
+         </div>
+         <div type="entry" resp="rs">
+            <p> pr. mü., 2 Einbr. 2 Zg., Ma (Indez: Item geschert Margreten whtin in der Kotweiger
+               hof) <rs type="event" ref="#ev__StB_I_263">Des nachsten ertags nach des heiligen
+                  chrewcz tag als es funden ward komen fur den rat der stat ze Wienn <rs type="fn"
+                     role="witness"><rs type="person" ref="#pe__johann_lankusch_StB_I_263"><roleName
+                           type="title"><add>erbern</add></roleName>Hanns der Lannkusch in der
+                        Schefstrazz ze Wienn</rs> und <rs type="person"
+                        ref="#pe__niklas_pierbaumer_StB_I_220"><roleName type="title"
+                              ><add>erbern</add></roleName>Niclas der Pierpawmer</rs> und habent da
+                     beweist zu rechter zeit, als si ze recht solten, mit dem <rs type="person"
+                        ref="#pe__jakob_von_neuburg_QGW_II_I_1552"><roleName type="title"
+                           >erbern</roleName>
+                        <roleName type="title">herren</roleName>
+                        <roleName type="title">hern</roleName> Jacoben von Newnwurkch, <roleName
+                           type="occ" corresp="#org__wien-st_stephan">die zeit achter dacz Sand
+                           Stephan ze Wienn</roleName></rs> und mit dem <rs type="person"
+                        ref="#pe__herbert_in_der_scheffstrasse_QGW_II_I_1102"><roleName type="title"
+                           >erbern</roleName> mannen Herwarten in der Schefstrazz ze Wien</rs></rs>
+                  daz geschefft, so <rs type="fn" role="issuer"><rs type="person"
+                        ref="#pe__margarethe_StB_I_263_a">die <roleName type="title">erber</roleName>
+                        <roleName type="title">fraw</roleName>
+                        <roleName type="title">fraw</roleName> Margret, <rs type="person"
+                           ref="#pe__friedrich_QGW_II_I_664">Fridreichs <roleName type="dead"
+                              >seligen</roleName></rs>
+                        <roleName type="kin" corresp="#pe__friedrich_QGW_II_I_664">witib</roleName>
+                        <roleName type="dead" cert="high">weilnt</roleName>
+                        <roleName type="prof" corresp="#org__goettweig-benediktiner">wirtin in der
+                           Chottweiger hof ze Wienn</roleName></rs></rs>, an irn lesten zeiten getan
+                  hat, als hernach geschriben stet. Von erst hat si geschafft <rs type="fn"
+                     role="recipient"><rs type="person" ref="#pe__margarethe_StB_I_263_b"><roleName
+                           type="title">frawn</roleName> Margreten, <roleName type="kin"
+                           corresp="#pe__margarethe_StB_I_263_a">irs pruders tachter</roleName>, <rs
+                           type="fn" role="transactiongood_I">28 a ) tl. d.</rs></rs> Darnach hat si
+                     geschafft <rs type="fn" role="recipient"><rs type="person"
+                           ref="#pe__ruediger_StB_I_263">irs mannes ändlein, des Rugers <roleName
+                              type="prof" cert="high">Goltsmit</roleName> tachter</rs>, <rs
+                           type="fn" role="transactiongood_I">10 tl. d. und daz pest pet under zwam
+                           peten und ayn haubpolster und zway leilachen und 1 gulter und 2
+                           chtizz</rs></rs>. Item <rs type="fn" role="recipient"><rs type="org"
+                           ref="#org__wien-st_stephan">hincz Sand Stephan zu dem paw </rs><rs
+                           type="fn" role="transactiongood_I">5 tl. d.</rs></rs> Darnach hat si
+                     geschafft <rs type="fn" role="recipient"><rs type="org"
+                           ref="#org__wien-deutsche_herren">hincz den Dewschen herren</rs>
+                        <rs type="fn" role="transactiongood_I">5 tl. d.</rs></rs> Item <rs type="fn"
+                        role="recipient"><rs type="person" ref="#pe__jakob_StB_I_263"><roleName
+                              type="title">hern</roleName> Jacoben <roleName type="occ"
+                              corresp="#pe__margarethe_StB_I_263_a">irm peichtinger</roleName></rs>,
+                           <rs type="fn" role="transactiongood_I">3 tl. d.</rs></rs> Item <rs
+                        type="fn" role="recipient"><rs type="person"
+                           ref="#pe__andreasin_pelerin_StB_I_263">der Andrein der Pelerin</rs>
+                        <rs type="fn" role="transactiongood_I">1 tl. d.</rs></rs> Item <rs type="fn"
+                        role="recipient"><rs type="org"
+                           ref="#org__wien-st_lazarus_siechenhaus-messe_margarethe_StB_I_263_a">hincz
+                           Sand Lazers <rs type="fn" role="transactiongood_I">6 tl. d.</rs>
+                        </rs>zu einem jartag und zu einem pad</rs>. Item <rs type="fn"
+                        role="recipient"><rs type="fn" role="transactiongood_I">ayn phunt</rs> umb
+                        zwo Zelfert. Item si <rs type="org"
+                           ref="#org__wien-st_stephan-messe_margarethe_StB_I_263_a">hat auch
+                           geschefft, ob si abge mit dem tod, daz man irs begen sol den ersten, den
+                           sybentten und den dreischisten als lobleich gewanhait ist dacz Sand
+                           Stephan ze Wienn</rs></rs>. Item si schaff auch den herren, die daz
+                     goczwart reden, 1 phunt in das totenpuch und 1 phunt in den tottenbrief.
+                     Darnach hat si geschafft alle ir varundhab wie die genant ist, nichts
+                     ausgenomen, der egenanten frawn Margreten apos irs pruder tachter,
+                     ledichleichen allen irn frumen damit ze schaffen vo: aller irrung. Und hat auch
+                     der rat <rs type="fn" role="other">den obgenanten <rs type="person"
+                           ref="#pe__johann_lankusch_StB_I_263">Hannsen dem Langguschen</rs> und <rs
+                           type="person" ref="#pe__niklas_pierbaumer_StB_I_220">Nyclasen dem
+                           Pierpawmer</rs> das egenant geschefft hincz irn trewn <triggerstring n="fn"
+                           >auzzerichten</triggerstring> enpholhen </rs>in der weyse, als vor
+                     geschriben stet.d ) .und daz vorgenant geschefft, daz si getan hat, daz hat si
+                     geschafft auf Ir haws gelegen pey der Hymelporten ze Wienn, daz man verchauffen
+                     sol, daz man daz geschefft ausricht von dem egenanten irm haws. <rs type="fn"
+                        role="recipient">Und was ubrigs da uber wirt uber daz haws, daz enphilich
+                        ich <rs type="person" ref="#pe__johann_lankusch_StB_I_263">in</rs>
+                        <rs type="person" ref="#pe__niklas_pierbaumer_StB_I_220"
+                        ><add>in</add></rs>hincz C ) irn trewn</rs>.</rs> Als darumb die obgenanten
+                  erbern leut mit irn trewn an ayds stat vor offem rat habent gesagt, als si ze
+                  recht solten.</rs> --- a) xxiix. b) adlein. C) Mez. d) Die zwei .vor~ergehende.n
+               Sätze ~ind am Schluß des Eintrags verzeichnet und durch Verweuzelchen an dle~er
+               Stelle eingefügt. </p>
+         </div>
+         <div type="lists">
+            <xi:include xmlns:xi="http://www.w3.org/2001/XInclude"
+               href="../../../../indices/placeList.xml" xpointer="element(/1/2/1/1)"/>
+            <xi:include xmlns:xi="http://www.w3.org/2001/XInclude"
+               href="../../../../indices/personList.xml" xpointer="element(/1/2/1/1)"/>
+            <xi:include xmlns:xi="http://www.w3.org/2001/XInclude"
+               href="../../../../indices/eventList.xml" xpointer="element(/1/2/1/1)"/>
+            <xi:include xmlns:xi="http://www.w3.org/2001/XInclude"
+               href="../../../../indices/orgList.xml" xpointer="element(/1/2/1/1)"/>
+         </div>
+      </body>
+   </text>
+</TEI>

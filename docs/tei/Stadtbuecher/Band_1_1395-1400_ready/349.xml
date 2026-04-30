@@ -1,0 +1,88 @@
+<?xml version="1.0" encoding="UTF-8"?><!DOCTYPE TEI SYSTEM "../../../schema/toolbox_full.dtd">
+<TEI xmlns="http://www.tei-c.org/ns/1.0" xmlns:cei="http://www.monasterium.net/NS/cei"
+   xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance">
+   <teiHeader>
+      <fileDesc>
+         <titleStmt>
+            <title>TEI-Version of 349</title>
+         </titleStmt>
+         <publicationStmt>
+            <p/>
+         </publicationStmt>
+         <sourceDesc default="false">
+            <bibl default="false" status="draft">
+               <title type="full"><title type="main">Die Wiener Stadtbücher 1395 -
+                     1430</title><title type="sub">Teil 1: 1395 - 1400</title></title>
+               <author>Wilhelm Brauneder</author>
+               <author>Gerhard Jaritz</author>
+               <pubPlace>Wien</pubPlace>
+               <pubPlace>Köln</pubPlace>
+               <publisher>Böhlau Verlag</publisher>
+            </bibl>
+            <msDesc status="draft">
+               <msIdentifier>
+                  <idno>349</idno>
+               </msIdentifier>
+               <physDesc/>
+            </msDesc>
+         </sourceDesc>
+      </fileDesc>     <encodingDesc>       <projectDesc>         <p><label type="contentual-editing">Projekt Christina Lutter Stadt und Gemeinschaft</label></p>       </projectDesc>     </encodingDesc>
+      <profileDesc>
+         <creation>
+            <date when="1399-02-20">1399 Februar 20</date>
+         </creation>
+      </profileDesc>
+   </teiHeader>
+   <text>
+      <body>
+         <div type="header">
+            <p>Verwandtschaftsweisung für Christian, Anna, Gattin des Jakob von Sankt Pölten und
+               Katharina, Gattin des Ruger Ewigtrukch</p>
+         </div>                   <div type="entry" resp="rs">
+            <p> Einbr. 2 Zg. (Indez: Item frewntsehaft Annen Jaeobs hausfraw von Sand Pölten) <rs
+                  type="event" ref="#ev__StB_I_349">Desselben tags <rs type="fn" role="witness">kom
+                     auch fur den rat <rs type="person" ref="#pe__niklas_von_meidling_StB_I_349"
+                        >Niclas von Mewrling</rs> und hat da beweist mit den erbern leuten, als er
+                     ze recht solt, mit <rs type="person" ref="#pe__wolfhard_zolner_StB_I_325"
+                           ><roleName type="title"><add>erbern</add></roleName>Wolfharten dem
+                           <roleName type="prof" cert="high">Zollner</roleName></rs> und mit <rs
+                        type="person" ref="#pe__georg_spindler_StB_I_349"><roleName type="title"
+                              ><add>erbern</add></roleName>Jorgen dem <roleName type="prof"
+                           cert="unknown">Spindler</roleName></rs></rs>, das <rs type="fn"
+                     role="recipient"><rs type="person" ref="#pe__christian_StB_I_349">Kristan, der
+                        noch zu seinen beschaiden jarn nicht komen ist</rs>, und <rs type="person"
+                        ref="#pe__anna_StB_I_349"><roleName type="title">fraw</roleName> Ann,
+                           <roleName type="kin" corresp="#pe__jakob_von_st_poelten_StB_I_349"
+                              ><add>hawsfraw</add></roleName><rs type="person"
+                           ref="#pe__jakob_von_st_poelten_StB_I_349">Jacobs hawsfraw von Sand
+                           Polten</rs></rs>, und <rs type="person" ref="#pe__katharina_StB_I_349"
+                        >Kathrei, <roleName type="kin" corresp="#pe__ruediger_ewigtruck_StB_I_349"
+                              ><add>hawsfraw </add></roleName><rs type="person"
+                           ref="#pe__ruediger_ewigtruck_StB_I_349">Ruegers hawsfraw des
+                           Ewigtrukchs</rs></rs></rs>, <rs type="fn" role="issuer"><rs type="person"
+                        ref="#pe__johann_raidl_StB_I_349">Jannsen <roleName type="dead"
+                           >seligen</roleName> des Raydleins, weilnt <roleName type="prof"
+                           >zollner</roleName> auf dem Mawtthaws an dem Hochenmarkcht ze Wienn,
+                           <roleName type="kin" corresp="#pe__christian_StB_I_349">rechtew swester
+                           chinder</roleName>
+                        <roleName type="kin" corresp="#pe__anna_StB_I_349"><add>rechtew swester
+                              chinder</add></roleName><roleName type="kin"
+                           corresp="#pe__katharina_StB_I_349"><add>rechtew swester
+                           chinder</add></roleName></rs> gewesen sind</rs>. Als darumb die
+                  obgenanten erbern leut mit irn trewn an ayde stat vor offem rat habent gesagt, als
+                  si ze recht solten.</rs>
+            </p>
+         </div>
+         <div type="lists">
+            <xi:include xmlns:xi="http://www.w3.org/2001/XInclude"
+               href="../../../../indices/placeList.xml" xpointer="element(/1/2/1/1)"/>
+            <xi:include xmlns:xi="http://www.w3.org/2001/XInclude"
+               href="../../../../indices/personList.xml" xpointer="element(/1/2/1/1)"/>
+            <xi:include xmlns:xi="http://www.w3.org/2001/XInclude"
+               href="../../../../indices/eventList.xml" xpointer="element(/1/2/1/1)"/>
+            <xi:include xmlns:xi="http://www.w3.org/2001/XInclude"
+               href="../../../../indices/orgList.xml" xpointer="element(/1/2/1/1)"/>
+         </div>
+      </body>
+   </text>
+</TEI>

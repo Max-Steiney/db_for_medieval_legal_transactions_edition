@@ -1,0 +1,134 @@
+<?xml version="1.0" encoding="UTF-8"?><!DOCTYPE TEI SYSTEM "../../../schema/toolbox_full.dtd">
+<TEI xmlns="http://www.tei-c.org/ns/1.0" xmlns:cei="http://www.monasterium.net/NS/cei"
+  xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance">
+  <teiHeader>
+    <fileDesc>
+      <titleStmt>
+        <title>TEI-Version of 122</title>
+      </titleStmt>
+      <publicationStmt>
+        <p/>
+      </publicationStmt>
+      <sourceDesc default="false">
+        <bibl default="false" status="draft">
+          <title type="full"><title type="main">Die Wiener Stadtbücher 1395 - 1430</title><title
+              type="sub">Teil 1: 1395 - 1400</title></title>
+          <author>Wilhelm Brauneder</author>
+          <author>Gerhard Jaritz</author>
+          <pubPlace>Wien</pubPlace>
+          <pubPlace>Köln</pubPlace>
+          <publisher>Böhlau Verlag</publisher>
+        </bibl>
+        <msDesc status="draft">
+          <msIdentifier>
+            <idno>122</idno>
+          </msIdentifier>
+          <physDesc/>
+        </msDesc>
+      </sourceDesc>
+    </fileDesc>
+    <encodingDesc>
+      <projectDesc>
+        <p><label type="contentual-editing">Projekt Christina Lutter Stadt und
+          Gemeinschaft</label></p>
+      </projectDesc>
+    </encodingDesc>
+    <profileDesc>
+      <creation>
+        <date when="1397-02-22">1397 Februar 22</date>
+      </creation>
+    </profileDesc>
+  </teiHeader>
+  <text>
+    <body>
+      <div type="header">
+        <p>Geschäft des Dietrich Schondlein</p>
+      </div>
+      <div>
+        <p> pr. mü., Einbr. 3 Zg., Ma (Inde:z:: Item gescheft Dietreich des Schondieins) (fol.20v)
+            <rs type="event" ref="#ev__StB_I_122">Des nagsten phincztags vor sand Mathyas tag des
+            heiligen zwelifpoten kom fur den rat <rs type="fn" role="witness"><rs type="person"
+                ref="#pe__magdalena_StB_I_122"><roleName type="title">fraw</roleName> Magdalen, <rs
+                  type="person" ref="#pe__dietrich_schoendl_StB_I_122">Dyetreichs <roleName
+                    type="dead">seligen</roleName> des Schoendleins</rs>
+                <roleName type="kin" corresp="#pe__dietrich_schoendl_StB_I_122"
+              >witib</roleName></rs>, und beweist und pracht da mit den erbern leuten <rs
+                type="person" ref="#pe__johann_rokk_QGW_II_I_1371"><roleName type="title"
+                    ><add>erbern</add></roleName><roleName type="title">hern</roleName> Hannsen dem
+                Rokgen, die zeit mit uns <roleName type="occ" corresp="#org__wien">gesworn</roleName>
+                des rats</rs>, <rs type="person" ref="#pe__franz_tuchscherer_StB_I_122"><roleName
+                  type="title"><add>erbern</add></roleName>Franczen dem <roleName type="prof"
+                  cert="high">Tuchscherer</roleName></rs> und mit <rs type="person"
+                ref="#pe__johann_in_dem_mauthaus_StB_I_443"><roleName type="title"
+                  ><add>erbern</add></roleName>Hannsen <roleName type="prof" cert="high">in dem
+                  Mawtthaws</roleName></rs></rs> zu rechter zeit, als si ze recht solt, das
+            geschefft, so <rs type="fn" role="issuer"><rs type="person"
+                ref="#pe__dietrich_schoendl_StB_I_122">der egenant ir <roleName type="kin"
+                  corresp="#pe__magdalena_StB_I_122">wirt</roleName></rs></rs> an seinen lesten
+            zeiten getan hat. Also daz er geschafft von erst <rs type="fn" role="recipient"><rs
+                type="person" ref="#pe__magdalena_StB_I_122">seiner hausfrawn der egenanten
+                Magdalen</rs></rs> sechczig phunt Wienner phenning ledichleich, also daz si furbas
+            mit dem haws gelegen vor Stubentor ze nest dem Alten Mawtthaws und mit andern erbgutern,
+            die wir miteinander gechaufft haben, nicht mer zu sprechen hab. Und die obgenanten
+            sechczig phunt sol man ir ausrichten von vier fudern und vier dreylingen wein und vier
+            zenten messingen, und daz ist der frawn guter wille gewesen. Darnach hat er geschafft
+            derselben seiner hausfrawn allen hawsgered, ausgenomen ain pet, ein tysch und ein
+            truchen, die sullen bei dem haws beleiben. !tem so hat er geschafft seiner hausfrawn
+            tochter einen weingarten genant am Reynspekch. Darnach hat er geschafft, daz sein
+            hausfraw in dem haws beleiben sol, dieweil sy witib ist. Item so hat er geschafft <rs
+              type="fn" role="recipient"><rs type="person" ref="#pe__siegfried_StB_I_122">seinem
+                  <roleName type="kin" corresp="#pe__dietrich_schoendl_StB_I_122">sun</roleName> dem
+                Seyczlein</rs></rs> allen seinen werchczeug, der in dem klainem haws ist, und alles
+            sein gewant und harnasch, daz zu seinem leib gehort hat. Iem einen grun seydel hat er
+            geschafft <rs type="fn" role="recipient"><rs type="person" ref="#pe__gilg_StB_I_122"
+                >einem arm <roleName type="prof">knecht</roleName> genant der Gylig</rs></rs>. Iem
+            einen graben seydel <rs type="fn" role="recipient"><rs type="person"
+                ref="#pe__andreas_StB_I_122"><roleName type="title">hern</roleName> Andrein, dem
+                  <roleName type="occ" corresp="#org__wien-st_stephan">phaffen</roleName> dacz Sand
+                Steffann ze Wienn</rs></rs>. Item seinem peychtvatter ain phunt Wienner phenning.
+            Item ain phunt Wienner phening armen leuten, die weil er auf der erd stet. Item so
+            schaff ich zway phunt ainer armen junkchfrawn, daran es bestat ist, daz man zu eren
+            bring. Item umb einen loden achczehen schilling Wienner phenning meinen vier muemen. So
+            sind das die guter, die er hinder im lassen hat. Von erst zway hewser vor Stubentor und
+            drew viertail weingartens an dem lews. Item vier fuder und vier dreyling wein und vier
+            zenten messing. Item fur acht phunt habern. Item einen sylbrein vergulten choph, der
+            stet zwelifthalb phunt von meiner swiger. Item ein sylbreine schal. Item sechs zenten
+            galmei. <rs type="fn" role="recipient">So sol man von denselben guetern, die er hinder
+              im lassen hat, sein gelter ausrichten, den er schuldig ist. Von erst <rs type="person"
+                ref="#pe__berthold_unter_den_wentkrämern_StB_I_122">dem Perichtolde <roleName
+                  type="prof" cert="unknown">undern Wenkchkremen</roleName></rs> drew phunt Wienner
+              phenning. Item <rs type="person" ref="#pe__niklas_chramerin_StB_I_122">der Nycolayn
+                Kramerinn an dem Lyechtensteg</rs> funif schilling Wienner phenning. Item <rs
+                type="person" ref="#pe__johann_StB_I_122">dem Hannsen gen Merchern</rs> umb ein
+              pehemisch tuch funifthalb phunt und dreissig Wienner phenningh. Item <rs type="person"
+                ref="#pe__niklas_von_perg_StB_I_122">dem Niclasen von Perg</rs> zway phunt Wienner
+              phenning, der ist er beczalt</rs> a ). <rs type="fn" role="other">Item so ist das
+                <triggerstring n="fn">die geltschuld, die man im schuldig ist</triggerstring>. Von erst
+                <rs type="person" ref="#pe__berthold_gutenkuchel_StB_I_122">Perchtold
+                Gutenkuchel</rs> zwelif schilling. Item <rs type="person" ref="#pe__mandl_StB_I_122"
+                >Manndl, sein <roleName type="occ" corresp="#pe__dietrich_schoendl_StB_I_122"
+                  >wainczurl</roleName></rs>, sechs schilling alles Wienner phenning. Item sein
+              swager aindlef phunt Wienner phenning auf wein.</rs> Und daz geschefft alles hat er
+            enpholichen <rs type="fn" role="other"><rs type="person"
+                ref="#pe__georg_von_dornbach_StB_I_443">seinem <roleName type="kin"
+                  corresp="#pe__dietrich_schoendl_StB_I_122">aydem</roleName> Jorgen von
+                Dornpach</rs> hincz seinen trewn <triggerstring n="fn">ausczerichten und ze volfürn und
+                daz er auch seinew kinder mitsambt den guetern, die er in lassen hat, ynnhaben
+                sol</triggerstring></rs>, als er im des besunderleich getrawt hat und als er got an dem
+            jungistem tag darumb anttwurten sol. Als umb das obgenant geschefft die egenanten erbern
+            leut mit irn trewn an ayde stat vor offem rat habent gesagt, als si ze recht
+            solten.</rs> a) der ist er beczalt am rechten Rand der Seite hinzugefügt. </p>
+      </div>
+      <div type="lists">
+        <xi:include xmlns:xi="http://www.w3.org/2001/XInclude"
+          href="../../../../indices/placeList.xml" xpointer="element(/1/2/1/1)"/>
+        <xi:include xmlns:xi="http://www.w3.org/2001/XInclude"
+          href="../../../../indices/personList.xml" xpointer="element(/1/2/1/1)"/>
+        <xi:include xmlns:xi="http://www.w3.org/2001/XInclude"
+          href="../../../../indices/eventList.xml" xpointer="element(/1/2/1/1)"/>
+        <xi:include xmlns:xi="http://www.w3.org/2001/XInclude"
+          href="../../../../indices/orgList.xml" xpointer="element(/1/2/1/1)"/>
+      </div>
+    </body>
+  </text>
+</TEI>

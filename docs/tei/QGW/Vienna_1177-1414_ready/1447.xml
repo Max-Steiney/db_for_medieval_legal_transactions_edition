@@ -1,0 +1,178 @@
+<?xml version="1.0" encoding="UTF-8"?><!DOCTYPE TEI   SYSTEM "../../../schema/toolbox_full.dtd">
+<TEI xmlns="http://www.tei-c.org/ns/1.0" xmlns:cei="http://www.monasterium.net/NS/cei"
+   xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance">
+   <teiHeader>
+      <fileDesc>
+         <titleStmt>
+            <title>Tei version of 1447 exported from monasterium.net </title>
+         </titleStmt>
+         <publicationStmt>
+            <p/>
+         </publicationStmt>
+         <!--In Original: cei:front/cei:sourceDesc/cei:sourceDescRegest-->
+         <sourceDesc>
+            <bibl type="url">https://www.monasterium.net/mom/AT-WStLA/HAUrk/1447/charter</bibl>
+            <bibl default="false" status="draft">Quellen zur Geschichte der Stadt Wien, Bd. II/1,
+               Nr. 1447 As published in HAUrk by Wiener Stadt- und Landesarchiv </bibl>
+            <msDesc status="draft">
+               <msIdentifier>
+                  <repository>Wiener Stadt- und Landesarchiv</repository>
+                  <idno>1447</idno>
+                  <altIdentifier type="old">
+                     <idno>515647</idno>
+                  </altIdentifier>
+               </msIdentifier>
+               <msContents>
+                  <msItem>
+                     <listBibl default="false">
+                        <bibl default="false" status="draft">Camesina, Regesten 19 no 82
+                           Regest.</bibl>
+                     </listBibl>
+                  </msItem>
+               </msContents>
+               <physDesc>
+                  <sealDesc>
+                     <seal>
+                        <p>Neun anhangende Siegel: 1. roth u. Sch, 2. grün u. Sch., beschädigt, 3.
+                           grün u. Sch, spitzoval, 4., 5. schwarz u. K., 6., 7. schwarz u. Sch., 8.
+                           grün u. Sch, beschädigt, 9. schwarz u. Sch.</p>
+                     </seal>
+                  </sealDesc>
+               </physDesc>
+            </msDesc>
+         </sourceDesc>
+      </fileDesc>
+      <encodingDesc>
+         <projectDesc default="false">
+            <p><label type="contentual-editing">Projekt Christina Lutter Stadt und
+                  Gemeinschaft</label></p>
+         </projectDesc>
+      </encodingDesc>
+      <profileDesc>
+         <creation>
+            <placeName>Wien</placeName>
+            <date when="14000119">1400 I 19</date>
+            <date from="99999999" to="99999999"/>
+            <origDate instant="false">ze Wienn, des negsten montags vor ,sand Pauls tag, als er
+               wechert ist.</origDate></creation>
+      </profileDesc>
+   </teiHeader>
+   <facsimile>
+      <surface>
+         <graphic
+            url="http://images.monasterium.net/pics/AT-WStLA/HA-U/WStLA-HA-Urkunden_01447_r.jpg"/>
+      </surface>
+      <surface>
+         <graphic
+            url="http://images.monasterium.net/pics/AT-WStLA/HA-U/WStLA-HA-Urkunden_01447_v.jpg"/>
+      </surface>
+   </facsimile>
+   <text>
+      <body>
+         <div type="abstract" resp="kg">
+            <p>
+               <rs type="event" ref="#ev__QGW_II_I_1447"><rs type="fn" role="issuer"><rs
+                        type="person" ref="#pe__anton_QGW_II_I_1223">Anthoni, <roleName type="occ"
+                           corresp="#org__wien-st_stephan">probst</roleName> dacz sand Stephan zu
+                        Wienn <roleName type="rep" corresp="#pe__niklas_wuerfel_QGW_II_I_1001"
+                              ><add>Geschäftsherren</add></roleName></rs>, <rs type="person"
+                        ref="#pe__paul_wuerfel_QGW_II_I_1200">Paul der Würffel <roleName type="rep"
+                           corresp="#pe__niklas_wuerfel_QGW_II_I_1001"
+                           ><add>Geschäftsherren</add></roleName></rs>, <rs type="person"
+                        ref="#pe__wolfhard_QGW_II_I_1447">Wolfhart, <roleName type="occ"
+                           corresp="#org__moedling-pfarre">pharrer</roleName> zu Mülbach <roleName
+                           type="rep" corresp="#pe__niklas_wuerfel_QGW_II_I_1001"
+                              ><add>Geschäftsherren</add></roleName></rs>, und <rs type="person"
+                        ref="#pe__leonhard_von_moedling_QGW_II_I_1328">Lienhart von Medlikch
+                           <roleName type="occ" corresp="#pe__niklas_wuerfel_QGW_II_I_1001"
+                              ><add>Geschäftsherren</add></roleName></rs>, Geschäftsherren nach
+                     Niklas dem Würfel, <rs type="person" ref="#pe__johann_ziernast_QGW_II_I_1371"
+                        >Hanns der Ziernast</rs>, <rs type="person"
+                        ref="#pe__michael_menschein_QGW_II_I_1218">Michel der Mênschein</rs>, <rs
+                        type="person" ref="#pe__martin_hausleitter_QGW_II_I_1234">Mert der
+                        Hausleiter</rs>, <rs type="person"
+                        ref="#pe__bernhard_hauenstainer_QGW_II_I_1404">Pernhart von Haunstain</rs>
+                     und <rs type="person" ref="#pe__ulrich_herwart_QGW_II_I_1098">Ulreich der
+                        Herwart, <roleName type="occ" corresp="#org__wien">statschreiber</roleName>
+                        ze Wienn</rs></rs>, <triggerstring n="disp">entscheiden in dem
+                     Streite</triggerstring>
+                  <rs type="fn" role="other">
+                     <triggerstring n="fn">zwischen</triggerstring>
+                     <rs type="person" ref="#pe__niklas_wuerfel_von_nussdorf_QGW_II_I_1107">Niklasen
+                        dem Würffel</rs> einerseits, <rs type="person"
+                        ref="#pe__johann_wuerfel_QGW_II_I_1404"><roleName type="title"
+                           >hern</roleName> Hannsen <roleName type="kin"
+                           corresp="#pe__niklas_wuerfel_von_nussdorf_QGW_II_I_1107"
+                              ><add>prüdern</add></roleName></rs>, <rs type="person"
+                        ref="#pe__ulrich_wuerfel_QGW_II_I_1404"><roleName type="title"
+                           >hern</roleName> Ulreichen <roleName type="kin"
+                           corresp="#pe__niklas_wuerfel_von_nussdorf_QGW_II_I_1107"
+                              ><add>prüdern</add></roleName></rs> und <rs type="person"
+                        ref="#pe__sigmund_wuerfel_QGW_II_I_1404">
+                        <roleName type="title">hern</roleName> Sigmunden, seinen <roleName
+                           type="kin" corresp="#pe__niklas_wuerfel_von_nussdorf_QGW_II_I_1107"
+                           >prüdern</roleName>, den Würffeln</rs>, anderseits</rs>
+                  <triggerstring n="disp">über die Erbtheilung</triggerstring> nach ihrem <rs
+                     type="person" ref="#pe__niklas_wuerfel_QGW_II_I_1001">Vater</rs>. Sie
+                     <triggerstring n="disp">ordnen <add>an</add></triggerstring> im Wesentlichen die
+                  Ausführung des <rs type="event" ref="#ev__QGW_II_I_1404">von Letzterem beurkundeten
+                     Testamentes (vgl. no 1404)</rs> bis zu den nächsten Mittvasten an und
+                     <triggerstring n="disp">bestimmen</triggerstring> insbesondere, dass die Münichbisen
+                  und der Weingarten, genant das Perbestal, <rs type="fn" role="recipient"><rs
+                        type="person" ref="#pe__johann_wuerfel_QGW_II_I_1404"><roleName type="title"
+                           >hern</roleName> Hannsen</rs></rs>, das Joch Weingarten in den Scheukchen
+                     <rs type="fn" role="recipient"><rs type="person"
+                        ref="#pe__niklas_wuerfel_von_nussdorf_QGW_II_I_1107">Niclasen</rs></rs>
+                  <triggerstring n="disp">verbleiben sollen</triggerstring>, dass die vier Brüder ihrem
+                     <rs type="fn" role="recipient"><rs type="person"
+                        ref="#pe__bartholomaeus_wuerfel_QGW_II_I_1375"><roleName type="kin"
+                           corresp="#pe__niklas_wuerfel_von_nussdorf_QGW_II_I_1107">Bruder</roleName>
+                        <roleName type="kin" corresp="#pe__sigmund_wuerfel_QGW_II_I_1404"
+                              ><add>Bruder</add></roleName>
+                        <roleName type="kin" corresp="#pe__ulrich_wuerfel_QGW_II_I_1404"
+                              ><add>Bruder</add></roleName>
+                        <roleName type="kin" corresp="#pe__johann_wuerfel_QGW_II_I_1404"
+                              ><add>Bruder</add></roleName> Wartholome</rs></rs> über die 40 lb dn.,
+                     <rs type="event" ref="#ev__QGW_II_I_1447_men_2">welche ihm ihr Vater von dem
+                     Urfahr zu Nussdorf geschafft hatte</rs>, eine Urkunde ausstellen und für die
+                  Instandhaltung des von dem Vater <rs type="org"
+                     ref="#org__wien-st_stephan-kapelle_st_sigmund_und_st_wolfgang-messe_wuerfel"
+                     >gestifteten ewigen Lichtes in der kapelln dacz sand Stephan</rs> Sorge tragen
+                  sollen. Wer den Spruch nicht hält, soll seines Rechtes verlustig gehen, jedem der
+                  Herzöge 200 lb dn., der Stadt zu Wien 100 lb dn. und zu dem Baue von S. Stephan
+                  100 lb dn. zahlen.</rs>
+            </p>
+         </div>
+         <div type="seal">
+            <p><rs type="event" ref="#ev__QGW_II_I_1447"><rs type="fn" role="recipient">Besiegelt von
+                     den <rs type="person" ref="#pe__anton_QGW_II_I_1223"
+                        ><add>Aussteller</add></rs><rs type="person"
+                        ref="#pe__paul_wuerfel_QGW_II_I_1200"><add>Aussteller</add></rs><rs
+                        type="person" ref="#pe__wolfhard_QGW_II_I_1447"><add>Aussteller</add></rs><rs
+                        type="person" ref="#pe__leonhard_von_moedling_QGW_II_I_1328"
+                           ><add>Aussteller</add></rs><rs type="person"
+                        ref="#pe__johann_ziernast_QGW_II_I_1371"><add>Aussteller</add></rs><rs
+                        type="person" ref="#pe__michael_menschein_QGW_II_I_1218"
+                           ><add>Aussteller</add></rs><rs type="person"
+                        ref="#pe__martin_hausleitter_QGW_II_I_1234"><add>Aussteller</add></rs><rs
+                        type="person" ref="#pe__bernhard_hauenstainer_QGW_II_I_1404"
+                           ><add>Aussteller</add></rs><rs type="person"
+                        ref="#pe__ulrich_herwart_QGW_II_I_1098">Ausstellern</rs>.</rs></rs>
+            </p>
+         </div>
+         <div type="nota">
+            <p/>
+         </div>
+         <div type="lists">
+            <xi:include xmlns:xi="http://www.w3.org/2001/XInclude"
+               href="../../../../indices/placeList.xml" xpointer="element(/1/2/1/1)"/>
+            <xi:include xmlns:xi="http://www.w3.org/2001/XInclude"
+               href="../../../../indices/personList.xml" xpointer="element(/1/2/1/1)"/>
+            <xi:include xmlns:xi="http://www.w3.org/2001/XInclude"
+               href="../../../../indices/eventList.xml" xpointer="element(/1/2/1/1)"/>
+            <xi:include xmlns:xi="http://www.w3.org/2001/XInclude"
+               href="../../../../indices/orgList.xml" xpointer="element(/1/2/1/1)"/>
+         </div>
+      </body>
+   </text>
+</TEI>

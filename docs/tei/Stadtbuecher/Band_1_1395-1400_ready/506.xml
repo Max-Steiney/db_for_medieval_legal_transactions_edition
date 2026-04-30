@@ -1,0 +1,95 @@
+<?xml version="1.0" encoding="UTF-8"?><!DOCTYPE TEI SYSTEM "../../../schema/toolbox_full.dtd">
+<TEI xmlns="http://www.tei-c.org/ns/1.0" xmlns:cei="http://www.monasterium.net/NS/cei"
+   xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance">
+   <teiHeader>
+      <fileDesc>
+         <titleStmt>
+            <title>TEI-Version of 506</title>
+         </titleStmt>
+         <publicationStmt>
+            <p/>
+         </publicationStmt>
+         <sourceDesc default="false">
+            <bibl default="false" status="draft">
+               <title type="full"><title type="main">Die Wiener Stadtbücher 1395 -
+                     1430</title><title type="sub">Teil 1: 1395 - 1400</title></title>
+               <author>Wilhelm Brauneder</author>
+               <author>Gerhard Jaritz</author>
+               <pubPlace>Wien</pubPlace>
+               <pubPlace>Köln</pubPlace>
+               <publisher>Böhlau Verlag</publisher>
+            </bibl>
+            <msDesc status="draft">
+               <msIdentifier>
+                  <idno>506</idno>
+               </msIdentifier>
+               <physDesc/>
+            </msDesc>
+         </sourceDesc>
+      </fileDesc>     <encodingDesc>       <projectDesc>         <p><label type="contentual-editing">Projekt Christina Lutter Stadt und Gemeinschaft</label></p>       </projectDesc>     </encodingDesc>
+      <profileDesc>
+         <creation>
+            <date when="1400-01-15">1400 Januar 15</date>
+         </creation>
+      </profileDesc>
+   </teiHeader>
+   <text>
+      <body>
+         <div type="header">
+            <p> Geschäft des Christian N ewnhofer </p>
+         </div>                   <div type="entry" resp="rs">
+            <p> pr. mü., Einbr. 2 Zg., Ma (Index: Item gescheft Kristan des Newnhofer) <rs
+                  type="event" ref="#ev__StB_I_506">Des negsten phincztags vor sand Anthony tag <rs
+                     type="fn" role="witness">kam fur den rat <rs type="person"
+                        ref="#pe__dorothea_StB_I_506"><roleName type="title">fraw</roleName> Dorothe,
+                           <roleName type="kin" corresp="#pe__christian_neunhofer_StB_I_506"
+                              ><add>witib</add></roleName><rs type="person"
+                           ref="#pe__christian_neunhofer_StB_I_506">Christian <roleName type="dead"
+                              >seligen</roleName> witib des Newnhofer</rs></rs>, und hat do beweist
+                     mit den erbern lewten, als si ze recht scholt, mit <rs type="person"
+                        ref="#pe__georg_varkusch_StB_I_506"><roleName type="title"
+                           ><add>erbern</add></roleName>Jorgen dem Varkusch</rs> und mit <rs
+                        type="person" ref="#pe__johann_perman_QGW_II_I_1602"><roleName type="title"
+                              ><add>erbern</add></roleName>Hannsen dem Perman</rs></rs>, <rs
+                     type="fn" role="issuer">das geschefft, so <rs type="person"
+                        ref="#pe__christian_neunhofer_StB_I_506">der vorgenant ir <roleName
+                           type="kin" corresp="#pe__dorothea_StB_I_506">wirt</roleName></rs> an
+                     seinen lesten zeiten getan hat.</rs>
+                  <rs type="fn" role="recipient">Von erst hat er geschafft, das man all sein
+                     geltschuld, die er ze gelten hinder im lasset und gelassen hat, swas ayn warew
+                     chuntschafft und gewissen ist, ausrichten und vergelten schol an vercziehen.
+                     Darnach hat er geschafft <rs type="person" ref="#pe__dorothea_StB_I_506">seiner
+                        hawsfrawn Dorothen</rs> ledichleich vier weingarten gelegen ze Gundramstorf,
+                     die si zu im bracht hat, das si damit tue, was si welle. Darnach hat er
+                     geschafft derselben seiner hawsfrawn und seinen dreyn kindern miteinander in
+                     geleichen tayl, ainem recht als vil als dem andern an geverd, alles sein gut,
+                     erbgut und varundgilt, swas des ist oder wirt uber die egenant sein gelt
+                     schuld, in der beschayden, das dieselb sein hawsfraw mit denselben dreyn
+                     chinden tayln sol und was in denne zu irm tayl gevellet,</rs>
+                  <rs type="fn" role="other">da sol <rs type="person" ref="#pe__dorothea_StB_I_506"
+                        >si</rs> dieselben chind mit <triggerstring n="fn">ynnehaben und
+                        verwesen</triggerstring> und schol dem rat hie von derselben chind tayl alle
+                     jar rayttung tun an verzieh. </rs>Wer aber, das dieselb sein hawsfraw ir ding
+                  verchert und ainen man nem, der den chinden unnuczleich und ze swer wer, so sol
+                  der rat sich derselben chind mit sambt irm gut ze stet underwinden. Wer aber, das
+                  dieselben drew chind alle abgiengen mit dem tod, ee denn si ze irn beschayden jarn
+                  kemmen oder ee denn si vogt per wurden, so schol ir tail gutes gevallen halber auf
+                  die egenanten ir muter und der ander halb tayl sol gevallen halber auf sein frewnt
+                  und halber (fo 1. 85r) durch got und seiner sele hayl willen. Als darumb die
+                  obgenanten erbern lewt mit irn trewn an aydes stat vor offem rat [habent gesagt],
+                  als si ze recht scholten.</rs>
+            </p>
+         </div>
+         <div type="lists">
+            <xi:include xmlns:xi="http://www.w3.org/2001/XInclude"
+               href="../../../../indices/placeList.xml" xpointer="element(/1/2/1/1)"/>
+            <xi:include xmlns:xi="http://www.w3.org/2001/XInclude"
+               href="../../../../indices/personList.xml" xpointer="element(/1/2/1/1)"/>
+            <xi:include xmlns:xi="http://www.w3.org/2001/XInclude"
+               href="../../../../indices/eventList.xml" xpointer="element(/1/2/1/1)"/>
+            <xi:include xmlns:xi="http://www.w3.org/2001/XInclude"
+               href="../../../../indices/orgList.xml" xpointer="element(/1/2/1/1)"/>
+         </div>
+      </body>
+   </text>
+</TEI>

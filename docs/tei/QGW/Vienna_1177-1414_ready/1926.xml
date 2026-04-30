@@ -1,0 +1,67 @@
+<?xml version="1.0" encoding="UTF-8"?><!DOCTYPE TEI SYSTEM "../../../schema/toolbox_full.dtd"><TEI xmlns="http://www.tei-c.org/ns/1.0" xmlns:cei="http://www.monasterium.net/NS/cei" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance">
+   <teiHeader>
+      <fileDesc>
+         <titleStmt>
+            <title>Tei version of 1926 exported from monasterium.net </title>
+         </titleStmt>
+         <publicationStmt>
+            <p/>
+         </publicationStmt>
+         <!--In Original: cei:front/cei:sourceDesc/cei:sourceDescRegest-->
+         <sourceDesc>
+            <bibl>Quellen zur Geschichte der Stadt Wien, Bd. II/2, Nr. 1926 As published in HAUrk by
+               Wiener Stadt- und Landesarchiv </bibl>
+            <msDesc>
+               <msIdentifier>
+                  <repository>Wiener Stadt- und Landesarchiv</repository>
+                  <idno>1926</idno>
+                  <altIdentifier type="old">
+                     <idno>516131</idno>
+                  </altIdentifier>
+               </msIdentifier>
+               <physDesc>
+                  <sealDesc>
+                     <seal>
+                        <p>Rückwärts aufgedrücktes Siegelvon grünem Wachse, abgesprungen.</p>
+                     </seal>
+                  </sealDesc>
+               </physDesc>
+            </msDesc>
+         </sourceDesc>
+      </fileDesc>       <encodingDesc>          <projectDesc default="false">             <p><label type="contentual-editing">Projekt Christina Lutter Stadt und                   Gemeinschaft</label></p>          </projectDesc>       </encodingDesc>
+      <profileDesc>
+         <creation>
+            <placeName>Linz</placeName>
+            <date when="14120809">1412 VIII 09</date>
+            <origDate>ze Lincz, an sand Larenczen abent.</origDate></creation>
+      </profileDesc>
+   </teiHeader>
+   <facsimile>
+      <surface>
+         <graphic url="http://images.monasterium.net/pics/AT-WStLA/HA-U/WStLA-HA-Urkunden_01926_r.jpg"/>
+      </surface>
+      <surface>
+         <graphic url="http://images.monasterium.net/pics/AT-WStLA/HA-U/WStLA-HA-Urkunden_01926_v.jpg"/>
+      </surface>
+   </facsimile>
+   <text>
+      <body>
+         <div type="abstract">
+            <p>
+               <rs type="event" ref="#ev__QGW_II_II_1926"><rs type="fn" role="issuer"><rs type="person" ref="#pe__georg_eninkchl_QGW_II_I_1721">Gorg der Enenkchl,
+                           <roleName type="occ" corresp="#org__linz">mauter</roleName> ze
+                     Lincz</rs></rs>, <triggerstring n="disp">übersendet</triggerstring>
+                  <rs type="fn" role="recipient"><rs type="person" ref="#pe__rudolf_angerfelder_QGW_II_I_1335">seinem <roleName type="kin" corresp="#pe__georg_eninkchl_QGW_II_I_1721">Schwager</roleName> Ruedolfen
+                        dem Angerfelder</rs></rs>
+                  <triggerstring n="disp">den Kaufbrief</triggerstring> über sein Haus zu Wien, gelegen in
+                  dem chlainn gesslein pei sand Stephan, <rs type="event" ref="NULL">das er der <rs type="person" ref="#pe__anna_QGW_II_II_1926"><roleName type="title">Frau</roleName> Annen, <rs type="person" ref="#pe__ulrich_pirchvelder_QGW_II_II_1926">Ulreichs des Pirchfellder,
+                           des eltern, <roleName type="dead">witibm</roleName></rs>,<roleName type="kin" corresp="#pe__ulrich_pirchvelder_QGW_II_II_1926"><add>witib</add></roleName>
+                        <roleName type="occ" corresp="#org__wien">purgerin</roleName> ze
+                        Wienn</rs>, verkauft hat,</rs>
+                  <triggerstring n="disp">mit der Bitte, ihn zu besiegeln</triggerstring>.</rs>
+            </p>
+         </div>
+         <div type="lists"><xi:include xmlns:xi="http://www.w3.org/2001/XInclude" href="../../../../indices/placeList.xml" xpointer="element(/1/2/1/1)"/><xi:include xmlns:xi="http://www.w3.org/2001/XInclude" href="../../../../indices/personList.xml" xpointer="element(/1/2/1/1)"/><xi:include xmlns:xi="http://www.w3.org/2001/XInclude" href="../../../../indices/eventList.xml" xpointer="element(/1/2/1/1)"/><xi:include xmlns:xi="http://www.w3.org/2001/XInclude" href="../../../../indices/orgList.xml" xpointer="element(/1/2/1/1)"/></div>
+      </body>
+   </text>
+</TEI>

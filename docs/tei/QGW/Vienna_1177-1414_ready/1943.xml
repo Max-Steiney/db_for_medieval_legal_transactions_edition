@@ -1,0 +1,68 @@
+<?xml version="1.0" encoding="UTF-8"?><!DOCTYPE TEI SYSTEM "../../../schema/toolbox_full.dtd"><TEI xmlns="http://www.tei-c.org/ns/1.0" xmlns:cei="http://www.monasterium.net/NS/cei" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance">
+   <teiHeader>
+      <fileDesc>
+         <titleStmt>
+            <title>Tei version of 1943 exported from monasterium.net </title>
+         </titleStmt>
+         <publicationStmt>
+            <p/>
+         </publicationStmt>
+         <!--In Original: cei:front/cei:sourceDesc/cei:sourceDescRegest-->
+         <sourceDesc>
+            <bibl>Quellen zur Geschichte der Stadt Wien, Bd. II/2, Nr. 1943 As published in HAUrk by
+               Wiener Stadt- und Landesarchiv </bibl>
+            <msDesc>
+               <msIdentifier>
+                  <repository>Wiener Stadt- und Landesarchiv</repository>
+                  <idno>1943</idno>
+                  <altIdentifier type="old">
+                     <idno>516151</idno>
+                  </altIdentifier>
+               </msIdentifier>
+               <physDesc>
+                  <sealDesc>
+                     <seal>
+                        <p>Zum Verschlusse aufgedrücktes Petschaft von grünem Wachse.</p>
+                     </seal>
+                  </sealDesc>
+               </physDesc>
+            </msDesc>
+         </sourceDesc>
+      </fileDesc>       <encodingDesc>          <projectDesc default="false">             <p><label type="contentual-editing">Projekt Christina Lutter Stadt und                   Gemeinschaft</label></p>          </projectDesc>       </encodingDesc>
+      <profileDesc>
+         <creation>
+            <placeName>Rodaun</placeName>
+            <date when="14130303">1413 III 03</date>
+            <origDate>zu Radaun, an freitag vor Vasnacht.</origDate></creation>
+      </profileDesc>
+   </teiHeader>
+   <facsimile>
+      <surface>
+         <graphic url="http://images.monasterium.net/pics/AT-WStLA/HA-U/WStLA-HA-Urkunden_01943_r.jpg"/>
+      </surface>
+      <surface>
+         <graphic url="http://images.monasterium.net/pics/AT-WStLA/HA-U/WStLA-HA-Urkunden_01943_v.jpg"/>
+      </surface>
+   </facsimile>
+   <text>
+      <body>
+         <div type="abstract">
+            <p>
+               <rs type="event" ref="#ev__QGW_II_II_1943"><rs type="fn" role="issuer"><rs type="person" ref="#pe__johann_wuerfel_QGW_II_II_2623">Hanns Wurffel von
+                        Rodaun</rs></rs>
+                  <triggerstring n="disp">theilt<add> mit</add></triggerstring>
+                  <rs type="fn" role="recipient"><rs type="person" ref="#pe__wolfhard_von_schemnitz_QGW_II_II_1910">seinem <roleName type="friend" corresp="#pe__johann_wuerfel_QGW_II_II_2623">sonderlieben
+                           Freunde</roleName> Wolfgang Schermiczer</rs></rs> mit, dass er <rs type="person" ref="#pe__johann_gresser_QGW_II_II_1943">Hannsen dem Gresser von
+                     Ybbs</rs> sein Gut für Bürgschaft und Geldschuld mit dem rechten behabt, auf
+                  Bitten der Frau desselben aber ihr und den Kindern die erb, haus und eker
+                  wiedergegeben habe, und <triggerstring n="disp">bittet</triggerstring> ihn, die darüber
+                  ausgestellte Urkunde zu besiegeln.</rs>
+            </p>
+         </div>
+         <div type="nota">
+            <p>Adresse aussen.</p>
+         </div>
+         <div type="lists"><xi:include xmlns:xi="http://www.w3.org/2001/XInclude" href="../../../../indices/placeList.xml" xpointer="element(/1/2/1/1)"/><xi:include xmlns:xi="http://www.w3.org/2001/XInclude" href="../../../../indices/personList.xml" xpointer="element(/1/2/1/1)"/><xi:include xmlns:xi="http://www.w3.org/2001/XInclude" href="../../../../indices/eventList.xml" xpointer="element(/1/2/1/1)"/><xi:include xmlns:xi="http://www.w3.org/2001/XInclude" href="../../../../indices/orgList.xml" xpointer="element(/1/2/1/1)"/></div>
+      </body>
+   </text>
+</TEI>

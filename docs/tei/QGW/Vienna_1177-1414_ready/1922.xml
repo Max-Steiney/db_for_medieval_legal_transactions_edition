@@ -1,0 +1,74 @@
+<?xml version="1.0" encoding="UTF-8"?><!DOCTYPE TEI SYSTEM "../../../schema/toolbox_full.dtd"><TEI xmlns="http://www.tei-c.org/ns/1.0" xmlns:cei="http://www.monasterium.net/NS/cei" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance">
+   <teiHeader>
+      <fileDesc>
+         <titleStmt>
+            <title>Tei version of 1922 exported from monasterium.net </title>
+         </titleStmt>
+         <publicationStmt>
+            <p/>
+         </publicationStmt>
+         <!--In Original: cei:front/cei:sourceDesc/cei:sourceDescRegest-->
+         <sourceDesc>
+            <bibl>Quellen zur Geschichte der Stadt Wien, Bd. II/2, Nr. 1922 As published in HAUrk by
+               Wiener Stadt- und Landesarchiv </bibl>
+            <msDesc>
+               <msIdentifier>
+                  <repository>Wiener Stadt- und Landesarchiv</repository>
+                  <idno>1922</idno>
+                  <altIdentifier type="old">
+                     <idno>516127</idno>
+                  </altIdentifier>
+               </msIdentifier>
+               <physDesc>
+                  <sealDesc>
+                     <seal>
+                        <p>Zwei anhangende, beschädigte Siegel, grün u. K.</p>
+                     </seal>
+                  </sealDesc>
+               </physDesc>
+            </msDesc>
+         </sourceDesc>
+      </fileDesc>       <encodingDesc>          <projectDesc default="false">             <p><label type="contentual-editing">Projekt Christina Lutter Stadt und                   Gemeinschaft</label></p>          </projectDesc>       </encodingDesc>
+      <profileDesc>
+         <creation>
+            <placeName>Wien</placeName>
+            <date when="14120606">1412 VI 06</date>
+            <origDate>zu Wienn, an montag nach Gotsleichnams tag.</origDate></creation>
+      </profileDesc>
+   </teiHeader>
+   <facsimile>
+      <surface>
+         <graphic url="http://images.monasterium.net/pics/AT-WStLA/HA-U/WStLA-HA-Urkunden_01922_r.jpg"/>
+      </surface>
+      <surface>
+         <graphic url="http://images.monasterium.net/pics/AT-WStLA/HA-U/WStLA-HA-Urkunden_01922_v.jpg"/>
+      </surface>
+   </facsimile>
+   <text>
+      <body>
+         <div type="abstract">
+            <p>
+               <rs type="event" ref="#ev__QGW_II_II_1922"><rs type="fn" role="issuer"><rs type="person" ref="#pe__johann_von_dem_kamp_StB_I_106">Hans vom Kamp, des
+                           <roleName type="occ" corresp="#org__wien">rats</roleName> der stat zu
+                        Wienn,</rs> und <rs type="person" ref="#pe__dorothea_QGW_II_II_1922">Dorothe,
+                        Chunrats des Grueber <roleName type="kin" corresp="#pe__leopold_zichner_QGW_II_II_1922">hausfrau</roleName>, <rs type="person" ref="#pe__leopold_zichner_QGW_II_II_1922">Leupolts <roleName type="dead">seligen</roleName> des Zichner</rs>
+                        <roleName type="kin" corresp="#pe__konrad_gruber_QGW_II_II_1922">tochter</roleName></rs></rs> , <triggerstring n="disp">stellen</triggerstring>
+                  <rs type="fn" role="recipient">dem Bürgermeister und Rathe</rs> hinsichtlich der
+                  mit dem Grundsiegel bestätigten Urkunde, <rs type="event" ref="NULL">mit der sie
+                     das Haus, gelegen auf der Goldsmit, das weilnt Hannsen seligen des Greiffen
+                     gewesen ist, zenechst Lienharts haus von Seveld, Mathesen, dem pinter , und
+                     seiner Hausfrau Kathrein verkauft haben</rs>, <triggerstring n="disp">einen Revers
+                     aus</triggerstring>.</rs>
+            </p>
+         </div>
+         <div type="seal">
+            <p><rs type="event" ref="#ev__QGW_II_II_1922"><rs type="fn" role="witness">Besiegelt mit
+                     den Siegeln des <rs type="person" ref="#pe__ulrich_herwart_QGW_II_I_1098"><roleName type="occ" corresp="#org__wien">Stadtschreibers</roleName>
+                        Ulreich des Herwarts</rs> und des <rs type="person" ref="#pe__wolfhard_pirchner_QGW_II_I_1789">Wiener <roleName type="occ" corresp="#org__wien">Bürgers</roleName> Wolfharts des
+                  Pirchner</rs>.</rs></rs>
+            </p>
+         </div>
+         <div type="lists"><xi:include xmlns:xi="http://www.w3.org/2001/XInclude" href="../../../../indices/placeList.xml" xpointer="element(/1/2/1/1)"/><xi:include xmlns:xi="http://www.w3.org/2001/XInclude" href="../../../../indices/personList.xml" xpointer="element(/1/2/1/1)"/><xi:include xmlns:xi="http://www.w3.org/2001/XInclude" href="../../../../indices/eventList.xml" xpointer="element(/1/2/1/1)"/><xi:include xmlns:xi="http://www.w3.org/2001/XInclude" href="../../../../indices/orgList.xml" xpointer="element(/1/2/1/1)"/></div>
+      </body>
+   </text>
+</TEI>

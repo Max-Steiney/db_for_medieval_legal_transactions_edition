@@ -1,0 +1,37 @@
+{% extends "base.html" %}
+{% block title %}Glossar{% endblock %}
+
+{% block head %}
+<link rel="stylesheet" href="{{ root_path }}/static/css/content.css">
+{% endblock %}
+
+{% block content %}
+<article class="guidelines-page">
+    <div class="guidelines-header">
+        <h1>Glossar</h1>
+        <p class="guidelines-subtitle">Kanonische Definitionen aller Fachbegriffe der Edition</p>
+    </div>
+
+    <div class="guidelines-layout" id="guidelines-layout">
+        <nav class="guidelines-sidebar" id="guidelines-sidebar" aria-label="Inhaltsverzeichnis">
+            <div class="guidelines-toc">
+                <h2>Inhalt</h2>
+                {{ toc | safe }}
+            </div>
+        </nav>
+        <div class="guidelines-body">
+            {{ content | safe }}
+        </div>
+    </div>
+
+    <footer class="guidelines-footer">
+        <p>Zuletzt aktualisiert: {{ build_date }}</p>
+    </footer>
+</article>
+{% endblock %}
+
+{% block scripts %}
+<script src="{{ root_path }}/static/js/content.js"></script>
+{% endblock %}
+
+{% block footer_info %}Glossar{% endblock %}
