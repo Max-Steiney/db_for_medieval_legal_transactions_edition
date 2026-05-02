@@ -1,6 +1,12 @@
 # UI-Design
 
-Gestaltungsprinzipien, Navigationsstruktur und Kernkomponenten der Oberfläche.
+Gestaltungsprinzipien, Navigationsstruktur und Kernkomponenten der Oberfläche. Konzeptionell formuliert; konkrete Klassen, Tokens und Pixelmaße leben im Code unter `frontend/static/css/` und `frontend/templates/`.
+
+## Gestaltungshaltung
+
+Die Oberfläche folgt einer wissenschaftlichen Lese-Gravitation. Serifen-Typografie und ein warmer, pergamentnaher Hintergrund signalisieren ein Forschungswerkzeug, kein Konsumprodukt. Annotationen sind farbig, aber zurückgenommen — sie sollen sichtbar sein, ohne mit dem Quellentext zu konkurrieren. Der Entwurf zielt auf Laptop- und Tablet-Arbeitsplätze und respektiert Druckausgabe als gleichberechtigten Lesemodus. Mobile-First wäre hier dysfunktional, weil Recherche an kleinen Bildschirmen die Informationsdichte nicht trägt.
+
+Eine zweischichtige Lesart durchzieht das UI: technische Identifikatoren (Datei-Schlüssel, Personen-IDs, TEI-Annotationen) koexistieren mit menschenlesbaren Labels. Beide Schichten sind sichtbar — die technische, weil Nachvollziehbarkeit ohne sie nicht funktioniert; die menschenlesbare, weil Bedienbarkeit ohne sie nicht funktioniert.
 
 ## Leitprinzip Maximaler Informations-Output
 
@@ -41,6 +47,10 @@ Bündelt Metaebenen des UI. Über das Projekt, Statistik, Qualität, Editionsric
 Exploration und Analyse bedienen unterschiedliche Forschungssituationen. Die Exploration ist für Nutzerinnen ohne vorab spezifizierte Frage, die Analyse für Nutzerinnen mit einer bestimmten Abfragekombination, die sie regelmäßig braucht.
 
 Eine Zusammenlegung wäre unsauber, weil die jeweiligen Interaktionsmuster gegeneinander arbeiten. Exploration verlangt offene Einstiegspunkte und schrittweise Eingrenzung. Analyse verlangt direkten Zugriff auf eine definierte Abfrage.
+
+## Information-Seeking-Muster
+
+Die Oberfläche folgt der Sequenz „Überblick zuerst, dann zoomen und filtern, dann Details auf Anforderung". Dasselbe Muster wiederholt sich auf jeder Listen- oder Aggregat-Seite: oben Filter und Suche, in der Mitte die Liste oder Aggregat-Darstellung, an einzelnen Zellen oder Zeilen ein Drill-down, der die zugrunde liegenden Quellen aufschlüsselt. Die Konsistenz ist nicht Stilfrage, sondern Lernfrage — wer ein Muster auf einer Seite verstanden hat, bedient andere Seiten unmittelbar.
 
 ## Kernkomponenten
 
@@ -84,6 +94,18 @@ Ein Zeitregler mit flankierenden Eingabefeldern schränkt die Anzeige auf einen 
 
 Fachbegriffe im UI verweisen auf die Glossar-Seite ([[glossar]]). Beim ersten Auftreten eines Begriffs erscheint optional ein Tooltip mit der Kurzdefinition.
 
+### Drill-down-Overlay
+
+Aggregierte Zahlen sind klickbar. Der Klick öffnet ein Overlay mit der Liste der beitragenden Quellen, jeweils mit Datum, Kurzregest und Link in die Edition. Das Overlay ist sortierbar und exportierbar; es schließt über Schaltfläche, Klick außerhalb oder Escape. Dieses Muster ist über alle aggregat-tragenden Ansichten konsistent — Exploration, Analyse, Statistik — und nutzt dieselbe technische Komponente. Begründung in [[architecture#Provenienz-Indizes]].
+
+### Quellen-Detailseite mit Text-Bild-Synopse
+
+Die Detailseite einer Quelle stellt edierten Text und Faksimile nebeneinander, sofern ein Faksimile vorliegt. Die Synopse ist Default, kein Tab — wer Text und Bild gleichzeitig braucht, soll dafür nicht klicken müssen. Quellen ohne Faksimile fallen auf eine zentrierte Lese-Spalte zurück. Eine ausschaltbare Annotations-Schicht macht die TEI-Auszeichnung sichtbar oder unsichtbar.
+
+### Register-Listenseite
+
+Personen-, Organisations- und Ortsregister teilen sich ein einheitliches Listenseiten-Muster: Alphabet-Leiste, Suche, Filter (Geschlecht/Typ/Quellenanzahl), sortierbare Tabelle. Eine Zeile lässt sich aufklappen und zeigt alle verlinkten Quellen direkt darunter. Die Inline-Detail-Erweiterung vermeidet Seiten-Sprünge und hält den Filterkontext erhalten.
+
 ## Layout-Grundsätze
 
 Informationsdichte steht vor Weißraum. Filter- und Statusleisten bleiben persistent sichtbar, auch wenn Inhalte gescrollt werden. Brotkrumennavigation führt Nutzerinnen zurück zu übergeordneten Ansichten.
@@ -100,7 +122,9 @@ Die Farbpalette bleibt zurückhaltend, damit die Daten im Vordergrund stehen. Dr
 
 Die Zuordnung ist kein Dekorationsmuster, sondern eine semantische Kodierung: eine blaue Stelle ist navigierbar oder kategorisiert, eine schwarze Stelle ist Inhalt, eine graue Stelle ist Kontext. Nutzerinnen, die die Oberfläche über die Zeit lesen lernen, verlassen sich darauf.
 
-Serifen-Typografie trägt lange Lese-Texte wie Regesten. Sans-Serif trägt UI-Elemente und Zahlen, weil beide schneller erfasst werden müssen.
+Annotationen im edierten Quellentext folgen einer eigenen Farblogik: Personen tragen ein gedämpftes Blau, Organisationen ein gedämpftes Lila, Orte ein gedämpftes Grün. Funktionsrollen (Aussteller, Empfänger, Zeuge) liegen als linker Rahmen über Gruppen von Entitäten und folgen einer eigenen, akademisch-warmen Palette. Editorische Eingriffe (Hinzufügungen, Unleserliches) verwenden konventionelle philologische Markierungen (Kursive in eckigen Klammern, Wellenlinie). Ziel ist Sichtbarkeit ohne Konkurrenz zum Lese-Text.
+
+Serifen-Typografie trägt lange Lese-Texte wie Regesten. Sans-Serif trägt UI-Elemente und Zahlen, weil beide schneller erfasst werden müssen. Monospace markiert technische Identifikatoren und Pfade — sie sollen sichtbar als technisch lesbar sein.
 
 ## Startseite als Zwei-Säulen-Einstieg
 
@@ -117,6 +141,10 @@ Die Fußzeile unterscheidet zwei Datumsangaben. Der **Datenstand** ist das Datum
 Ansichten mit gesetzten Filtern sind über ihre URL referenzierbar. Der Filterzustand lebt im URL-Fragment oder Query-String. Nutzerinnen, die eine Ansicht an Kolleginnen weitergeben, schicken damit dasselbe, was sie selbst sehen.
 
 Siehe [[requirements#Zitierfähige Datenstände]].
+
+## Druckausgabe
+
+Jede Detailseite hat einen sinnvollen Druck-Zustand. Navigation, Filterleisten und Faksimile-Panel werden ausgeblendet; eine eigene Print-Metadaten-Zeile (Nummer, Datum, Ort, Archiv, Zitiervorschlag) wird sichtbar. Annotationen erscheinen als feine Unterstreichungen ohne Hintergrund, weil farbige Flächen im Druck eher stören als helfen. Ziel ist eine ausdruckbare Quelle, die ohne weitere Bearbeitung in einer wissenschaftlichen Arbeit zitiert werden kann.
 
 ## Siehe auch
 

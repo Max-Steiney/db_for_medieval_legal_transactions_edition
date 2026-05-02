@@ -14,6 +14,26 @@ Die Exploration erlaubt Nutzerinnen, sich einem Teilbestand anzunähern, ohne zu
 
 Das Muster ist dasselbe für alle vier Sub-Seiten: aggregierte Übersicht, interaktive Filter, Drill-down auf Einzelbelegebene. Die [[ui-design#Provenienz-Tip und Glossar-Tip]]-Komponente macht die Herkunft jeder gezeigten Zahl an Ort und Stelle einsehbar.
 
+## Visualisierungs-Prinzipien
+
+Vier Prinzipien tragen alle Sub-Seiten gleichermaßen.
+
+**Transparenz.** Jede Visualisierung deklariert ihre Datengrundlage, ihre Coverage-Quote und ihre Unsicherheiten. Fehlende oder unsichere Werte erscheinen als eigene Kategorie, nicht als stillschweigende Auslassung.
+
+**Rückverfolgbarkeit.** Jeder aggregierte Datenpunkt erlaubt Drill-down auf die zugrundeliegenden Quellen. Direkte Referenzen (`rs/@ref`) und indirekte Referenzen (`@corresp`) führen beide in die Detailansicht; der Referenz-Typ wird ausgewiesen.
+
+**Wiederverwendbarkeit.** Aggregierte und Register-Daten sind mit Metadaten exportierbar. Quellen und Register-Einträge tragen stabile Referenzen für Zitation.
+
+**Eine Sub-Seite, eine Visualisierung.** Jede Sub-Seite ist eine zusammenhängende interaktive Visualisierung aus mehreren Panels, die einen gemeinsamen Filterkontext teilen. Eine Filteränderung in einem Panel wirkt auf alle Panels derselben Sub-Seite.
+
+## Zwei Normalisierungs-Systeme
+
+Zwei unabhängige Normalisierungs-Systeme prägen die Sub-Seiten Rollen und Transaktionen.
+
+Die **Transaktionstyp-Normalisierung** wirkt auf das dispositive Verb des Rechtsgeschäfts (verkaufen, schenken, verleihen). Sie betrifft die Transaktions-Sub-Seite und den Transaktionstyp-Filter überall sonst. Die Coverage-Quote ist niedrig: ein erheblicher Teil der Verben ist noch nicht in das kontrollierte Vokabular überführt.
+
+Die **Funktions-Normalisierung** wirkt auf die Rolle, in der eine Person an einem Event beteiligt ist (Aussteller, Empfänger, Zeuge). Sie operiert auf einer eigenen Liste von Triggerstrings. Die Coverage-Quote unterscheidet sich von der Transaktionstyp-Normalisierung — beide Systeme dürfen nicht zu einer Kennzahl zusammengezogen werden, weil sie analytisch verschiedene Fragen beantworten. Jede Coverage-Angabe nennt das System, auf das sie sich bezieht.
+
 ## Die vier Sub-Seiten
 
 Die Exploration gliedert sich in vier thematische Sub-Seiten, die jeweils eine zentrale Dimension der Datenbasis tragen. Die Zuordnung ist nicht disjunkt: eine Person hat Rollen, steht in Beziehungen, trägt zu Transaktionen bei und ist mit Orten verknüpft. Die Sub-Seiten unterscheiden sich darin, welche Dimension sie zum primären Zugang machen.
@@ -31,6 +51,10 @@ Typische Fragen: „In welchen Rollen treten Frauen in Stadtbüchern auf?", „W
 Einstieg über annotierte Verbindungen zwischen Personen: Verwandtschaft, Beruf, Vertretung, Freundschaft. Die Sub-Seite macht Netzwerkstrukturen und Geschlechter-Asymmetrien in diesen Beziehungstypen sichtbar.
 
 Datenquelle: `epic_b.json` mit den Kantenlisten und ihrer Klassifikation. Die Zählung auf Personenebene bleibt quellenbereinigt (siehe [[decisions#Quellenbereinigte Zählung]]).
+
+Die zugrundeliegende **Co-Occurrence-Definition** ist enger als reines Auftreten in derselben Quelle: zwei Personen ko-okkurrieren, wenn sie im selben `<rs type="event">` annotiert sind, also Beteiligte desselben Rechtsgeschäfts. Damit zählen Zeugenreihen und Urteilslisten nicht als eine einzelne Beziehung. Die Frequenz zwischen zwei Personen ist die Anzahl der gemeinsamen Events.
+
+Statt eines kraftgerichteten Netzwerks zeigt die Sub-Seite eine Beziehungs-Heatmap mit gruppierten Balken (Beziehungstyp × Geschlecht) und einer paginierten Label-Heatmap (Beziehungslabel × Typkategorie). Begründung: Die meisten Co-Occurrence-Kanten haben Gewicht 1 — ein Strukturartefakt der Urkundenform, kein analytisch belastbares Beziehungsmaß. Eine Force-Layout-Darstellung würde bei Korpus-Größenordnung als unleserliches „Knäuel" erscheinen. Die Heatmap konzentriert sich auf das, was die TEI-Annotation explizit aussagt: die sechs annotierten Beziehungstypen.
 
 Typische Fragen: „Wie oft treten Ehepaare gemeinsam als Aussteller auf?", „Wie verteilen sich berufliche Beziehungen im Zeitverlauf?", „Welche Freundschaftsbeziehungen überspannen Bestandsgrenzen?".
 
@@ -59,6 +83,14 @@ Jede Sub-Seite hält drei Ebenen:
 3. **Drill-down** — Klick auf eine Aggregat-Zelle öffnet ein Overlay mit den beitragenden Quellen. Die `file_key`-Listen kommen aus dem `drill_down`-Abschnitt des jeweiligen `epic_*.json`, aufgelöst über `data/docs_lookup.json`.
 
 Die Drill-down-Komponente ist eine gemeinsame UI-Infrastruktur (siehe [[architecture#Provenienz-Indizes]]).
+
+## Filterlogik und Anfangszustand
+
+Eine Filteränderung in einer Sub-Seite wirkt auf alle Panels derselben Sub-Seite gleichzeitig. Anklickbare Elemente (Balken, Heatmap-Zelle, Karten-Marker) tragen einen Hover-Zustand und einen Cursor-Wechsel; ein Klick führt entweder in eine Detailansicht oder in das Drill-down-Overlay.
+
+Der Anfangszustand ist konsequent neutral: voller Zeitraum, keine Filter, kein vorausgewähltes Element. Eine Vorauswahl würde redaktionell wirken — einer einzelnen Person, einem einzelnen Ort eine Sonderstellung geben, die in den Daten so nicht angelegt ist.
+
+Die Übergänge zwischen den Sub-Seiten sind möglich, wo die Daten sie tragen. Aus den Rollen kann man eine Person ins Beziehungsnetzwerk übernehmen; aus den Transaktionen kann ein Empfänger-Ort auf der Karte erscheinen; aus den Orten lassen sich die Transaktionen vor Ort öffnen. Cross-Navigations-Punkte erscheinen nur, wenn die Daten sie stützen.
 
 ## Zusammenspiel mit übergreifenden Komponenten
 
