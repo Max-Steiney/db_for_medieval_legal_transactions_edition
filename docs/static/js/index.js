@@ -533,6 +533,18 @@
         // 10 Zeichen, das gibt uns ein lex-konsistentes Sortierfeld.
         // Strings vergleichen wir locale-aware ('de'), damit Umlaute richtig
         // einsortiert werden.
+        //
+        // Editorische Notation: '[Wien]' (eckige Klammern = editorisch
+        // erschlossener Ortsname) soll bei W sortieren, nicht bei '['.
+        // Analog 'Wien,' (Komma als Restzeichen aus Quelle) soll bei Wien
+        // landen. _sortKey strippt eckige Klammern global und bereinigt
+        // fuehrende/nachgestellte Interpunktion, die nur Notation ist —
+        // 'St. Pölten' bleibt unangetastet, weil Punkte intern stehen.
+        function _sortKey(v) {
+            return String(v)
+                .replace(/[\[\]]/g, '')
+                .replace(/^[\s,;:]+|[\s,;:]+$/g, '');
+        }
         function _compareDocs(a, b, key, dir) {
             let va = a[key];
             let vb = b[key];
@@ -548,7 +560,7 @@
             if (typeof va === 'number' && typeof vb === 'number') {
                 return (va - vb) * dir;
             }
-            return String(va).localeCompare(String(vb), 'de') * dir;
+            return _sortKey(va).localeCompare(_sortKey(vb), 'de') * dir;
         }
 
         // --- Core filter logic ---
