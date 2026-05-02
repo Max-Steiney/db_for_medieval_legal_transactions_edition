@@ -1,0 +1,69 @@
+name: Frontend tests + smoke build + verification
+
+on:
+  push:
+    branches: [main]
+  pull_request:
+    branches: [main]
+
+jobs:
+  frontend:
+    name: Frontend tests + smoke build + verification
+    runs-on: ubuntu-latest
+    steps:
+      # 1. Check out THIS repo at $GITHUB_WORKSPACE/db_for_medieval_legal_transactions_edition
+      - uses: actions/checkout@v4
+        with:
+          path: db_for_medieval_legal_transactions_edition
+
+      # 2. Check out the sibling pipeline repo next to it (same parent dir)
+      #    so frontend/__init__.py finds it via Path(...).parent.parent.parent
+      - uses: actions/checkout@v4
+        with:
+          repository: chpollin/db_for_medieval_legal_transactions
+          path: db_for_medieval_legal_transactions
+
+      - uses: actions/setup-python@v5
+        with:
+          python-version: "3.11"
+
+      - name: Install dependencies
+        run: |
+          pip install -r db_for_medieval_legal_transactions/requirements.txt
+          pip install -r db_for_medieval_legal_transactions_edition/frontend/requirements.txt
+          pip install pytest
+
+      - name: Generate pipeline CSVs (frontend reads them)
+        working-directory: db_for_medieval_legal_transactions
+        run: python -m pipeline transform
+
+      # Smoke-Build muss vor den Tests laufen, weil test_data_schema.py
+      # gegen den realen Build-Output unter docs/data/ prueft.
+      - name: Smoke build
+        working-directory: db_for_medieval_legal_transactions_edition
+        run: python -m frontend build
+
+      - name: Run frontend tests
+        working-directory: db_for_medieval_legal_transactions_edition
+        run: python -m pytest frontend/tests/ -v --tb=short
+
+      # Verifikations-Test-Set laeuft als nicht-blockierender Drift-Monitor.
+      # Liest TEI-Quellen und Register unabhaengig von Pipeline und Aggregator
+      # ein, vergleicht mit docs/data/-JSONs. Mismatches sind aktuell als
+      # Domain-Audit-Aufgaben dokumentiert (siehe verification/README.md);
+      # sie sollen sichtbar bleiben, ohne CI rot zu schalten.
+      - name: Verification (non-blocking drift monitor)
+        id: verify
+        continue-on-error: true
+        working-directory: db_for_medieval_legal_transactions_edition
+        run: python -m verification.run
+
+      # Verifikations-Reports immer hochladen, auch wenn der Lauf
+      # mismatches gemeldet hat - so sind sie als CI-Artifact nachlesbar.
+      - name: Upload verification reports
+        if: always()
+        uses: actions/upload-artifact@v4
+        with:
+          name: verification-reports
+          path: db_for_medieval_legal_transactions_edition/verification/reports/
+          if-no-files-found: ignore

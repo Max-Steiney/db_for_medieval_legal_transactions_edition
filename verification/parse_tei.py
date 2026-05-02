@@ -207,10 +207,18 @@ def parse_document(path: Path) -> Optional[DocRecord]:
 
 
 def iter_sources(collections: Iterable[str] = COLLECTIONS_WITH_TEI) -> Iterable[Path]:
-    """Yield alle TEI-Dateien unterhalb der angegebenen Quellenkorpora.
+    """Yield alle TEI-Dateien unterhalb der freigegebenen Quellenkorpora.
+
+    Filtert auf `pipeline.config.RELEASED_CORPORA` ({collection}/{subcollection}-
+    Pfade): nur freigegebene Bände tragen zum Vergleich bei. Die JSON-Outputs
+    des Frontends sind ebenfalls auf diesen Filter eingegrenzt; die
+    Verifikation muss denselben Scope nehmen, sonst entstehen
+    Konzept-Mismatches statt echter Drift-Befunde.
 
     Überspringt Schema-Ordner (`sources/**/schema/**`) und den Root-Schema-Ordner.
     """
+    from pipeline.config import is_released_corpus
+
     for collection in collections:
         base = TEI_SOURCES_DIR / collection
         if not base.exists():
@@ -219,11 +227,23 @@ def iter_sources(collections: Iterable[str] = COLLECTIONS_WITH_TEI) -> Iterable[
             # Schemas überspringen
             if any(part.lower() == "schema" for part in path.parts):
                 continue
+            # RELEASED_CORPORA-Filter: braucht den (collection/subcollection)-
+            # Pfad relativ zu TEI_SOURCES_DIR; non-released Bände werden
+            # uebersprungen.
+            try:
+                rel = path.relative_to(TEI_SOURCES_DIR)
+            except ValueError:
+                continue
+            if len(rel.parts) < 2:
+                continue
+            corpus_path = f"{rel.parts[0]}/{rel.parts[1]}"
+            if not is_released_corpus(corpus_path):
+                continue
             yield path
 
 
 def scan_sources(collections: Iterable[str] = COLLECTIONS_WITH_TEI) -> List[DocRecord]:
-    """Lädt und parst alle TEI-Dateien der angegebenen Quellenkorpora."""
+    """Lädt und parst alle TEI-Dateien der freigegebenen Quellenkorpora."""
     docs: List[DocRecord] = []
     for path in iter_sources(collections):
         rec = parse_document(path)
