@@ -507,7 +507,7 @@
             return [
                 { label: 'Personen gesamt',       value: c.person_count || 0 },
                 { label: 'Frauen',                value: sd.f || 0 },
-                { label: 'Maenner',               value: sd.m || 0 },
+                { label: 'Männer',                value: sd.m || 0 },
                 { label: 'mit Institutionsbezug', value: c.persons_with_org || 0 }
             ];
         },

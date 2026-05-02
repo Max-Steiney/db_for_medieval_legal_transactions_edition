@@ -171,7 +171,7 @@
 
             ChartHelpers.renderHorizontalBars(wrap, {
                 items: items,
-                labelWidth: 100,
+                labelWidth: 140,  // 'Aussteller:innen' / 'Empfaenger:innen' brauchen den Platz
                 ariaLabel: 'Funktionsrollen nach Geschlecht' + (state.pctMode ? ' (prozentual)' : ''),
                 tooltipClass: TOOLTIP_CLASS,
                 legend: legend,
@@ -301,7 +301,7 @@
 
             ChartHelpers.renderHorizontalBars(wrap, {
                 items: items,
-                labelWidth: 120,
+                labelWidth: 160,  // 'Spital/Siechenhaus', 'Zeche/Bruderschaft' brauchen den Platz
                 barHeight: 22,
                 barGap: 6,
                 groupGap: 0,

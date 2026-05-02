@@ -139,16 +139,18 @@ class TestRegisterTemplateM3:
         template_path = Path(__file__).parent.parent / "templates" / "register_list.html"
         return template_path.read_text(encoding="utf-8")
 
-    def test_quality_filter_dropdown(self, template_html):
-        assert 'id="filter-quality"' in template_html
+    def test_quality_filter_dropdown_removed(self, template_html):
+        # Reader-facing Quality-UI im Register entfernt (analog Quellseite):
+        # Pipeline-Validation-Findings sind editor-internes Pruefmittel,
+        # kein Leser-relevantes Qualitaetssignal.
+        assert 'id="filter-quality"' not in template_html
 
-    def test_quality_column_header(self, template_html):
-        assert 'data-sort="qw"' in template_html
+    def test_quality_column_removed(self, template_html):
+        assert 'data-sort="qw"' not in template_html
 
-    def test_quality_filter_options(self, template_html):
-        assert "Fehlerfrei" in template_html
-        assert "Hinweise" in template_html
-        assert "Warnungen" in template_html
+    def test_quality_filter_options_removed(self, template_html):
+        assert "Fehlerfrei" not in template_html
+        assert "Warnungen" not in template_html
 
 
 # --- JS structure tests ---
@@ -179,8 +181,8 @@ class TestRegisterJsM3:
         js_path = Path(__file__).parent.parent / "static" / "js" / "register.js"
         return js_path.read_text(encoding="utf-8")
 
-    def test_quality_filter_in_register(self, js_source):
-        assert "filter-quality" in js_source
+    def test_quality_filter_not_in_register(self, js_source):
+        assert "filter-quality" not in js_source
 
 
 # --- CSS structure tests ---

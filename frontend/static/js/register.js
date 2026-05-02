@@ -14,7 +14,6 @@
         let regType = table.dataset.type;
         let filterType = document.getElementById('filter-type');
         let filterDocs = document.getElementById('filter-docs');
-        let filterQuality = document.getElementById('filter-quality');
         let resultCount = document.getElementById('result-count');
         let activeFiltersEl = document.getElementById('active-filters');
 
@@ -24,13 +23,12 @@
             letter: '',
             typeFilter: '',
             docsFilter: '',
-            qualityFilter: '',
             sortKey: 'n',
             sortDir: 1
         };
 
         let filteredEntries = [];
-        let colCount = regType === 'persons' ? 6 : 5;
+        let colCount = regType === 'persons' ? 5 : 4;
 
         // --- Detail JSON cache ---
         let detailCache = null;  // lazy-loaded JSON { entityId: [{u,i,d,c,r},...] }
@@ -105,11 +103,6 @@
                     html += '<td class="col-docs"><span class="' + dcClass + '">' + entry.dc + '</span></td>';
                 }
 
-                // Quality indicator (worst score across linked documents)
-                let qLabel = entry.qw === 2 ? '\u26a0' : entry.qw === 1 ? '\u2139' : entry.qw === 0 ? '\u2713' : '\u2013';
-                let qClass = 'quality-dot quality-' + (entry.qw === 2 ? 'warning' : entry.qw === 1 ? 'notice' : entry.qw === 0 ? 'ok' : 'na');
-                html += '<td class="col-quality"><span class="' + qClass + '" title="' + (entry.qw === 2 ? 'Warnungen' : entry.qw === 1 ? 'Hinweise' : entry.qw === 0 ? 'Fehlerfrei' : 'Keine Quellen') + '">' + qLabel + '</span></td>';
-
                 html += '<td class="col-id"><span class="cell-id">' + esc(entry.id) + '</span></td>';
 
                 tr.innerHTML = html;
@@ -171,14 +164,6 @@
             });
         }
 
-        // --- Quality filter ---
-        if (filterQuality) {
-            filterQuality.addEventListener('change', function() {
-                state.qualityFilter = filterQuality.value;
-                applyFilters();
-            });
-        }
-
         // --- Core filter ---
         function applyFilters() {
             filteredEntries = allEntries.filter(function(entry) {
@@ -191,11 +176,6 @@
 
                 if (state.docsFilter === '1' && entry.dc === 0) return false;
                 if (state.docsFilter === '0' && entry.dc > 0) return false;
-
-                if (state.qualityFilter !== '') {
-                    let qVal = parseInt(state.qualityFilter);
-                    if (entry.qw !== qVal) return false;
-                }
 
                 if (state.query) {
                     let words = state.query.split(/\s+/);
@@ -210,7 +190,7 @@
             // Sort
             filteredEntries.sort(function(a, b) {
                 let va, vb;
-                if (state.sortKey === 'dc' || state.sortKey === 'qw') {
+                if (state.sortKey === 'dc') {
                     va = a[state.sortKey]; vb = b[state.sortKey];
                 } else {
                     va = (a[state.sortKey] || '').toLowerCase();

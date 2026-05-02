@@ -55,14 +55,6 @@
                 <option value="1">Mit Quellen</option>
             </select>
         </div>
-        <div class="filter-group">
-            <select id="filter-quality" aria-label="Datenqualität">
-                <option value="">Datenqualität</option>
-                <option value="0">Fehlerfrei</option>
-                <option value="1">Hinweise</option>
-                <option value="2">Warnungen</option>
-            </select>
-        </div>
         {{ result_count(total_count, 'Einträge') }}
     </section>
 
@@ -81,7 +73,6 @@
                     <th class="col-type" data-sort="tp">Typ</th>
                     {% endif %}
                     <th class="col-docs" data-sort="dc" title="Anzahl Quellen mit Nennung (quellenbereinigt)">Quellen</th>
-                    <th class="col-quality" data-sort="qw" title="Datenqualit&auml;t (schlechtester Score der verkn&uuml;pften Quellen)">Q</th>
                     <th class="col-id" data-sort="id">ID</th>
                 </tr>
             </thead>

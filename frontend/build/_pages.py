@@ -644,6 +644,8 @@ def _build_impressum(env):
         toc=toc_html,
         build_date=_format_german_date(date.today()),
         root_path=".",
+        page_title="Impressum",
+        page_subtitle="Lizenz, Verantwortliche, Datenquellen, Zitierweise",
     )
 
     DOCS_DIR.mkdir(parents=True, exist_ok=True)
