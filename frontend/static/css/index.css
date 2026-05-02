@@ -74,6 +74,25 @@
     margin-top: -2px;
 }
 
+/* Track-Hintergrund hinter beiden Range-Inputs. Beide Inputs ueberlappen
+   sich vollstaendig (position: absolute, width: 100%); wenn ihre Tracks
+   selbst gefaerbt waeren, wuerde der Track des spaeteren Inputs den Daumen
+   des frueheren verdecken (sichtbar als "Daumen hinter der Linie"). Daher
+   die Inputs-Tracks transparent halten und den grauen Streifen einmalig
+   hier zeichnen. */
+.range-inputs::before {
+    content: '';
+    position: absolute;
+    left: 0;
+    right: 0;
+    top: 10.5px;
+    height: 3px;
+    background: var(--color-border);
+    border-radius: 2px;
+    z-index: 0;
+    pointer-events: none;
+}
+
 .range-inputs input[type="range"] {
     position: absolute;
     width: 100%;
@@ -90,7 +109,7 @@
 
 .range-inputs input[type="range"]::-webkit-slider-runnable-track {
     height: 3px;
-    background: var(--color-border);
+    background: transparent;
     border-radius: 2px;
 }
 
@@ -114,7 +133,7 @@
 
 .range-inputs input[type="range"]::-moz-range-track {
     height: 3px;
-    background: var(--color-border);
+    background: transparent;
     border-radius: 2px;
     border: none;
 }
