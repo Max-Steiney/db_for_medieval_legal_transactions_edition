@@ -6,18 +6,23 @@
 (function() {
     'use strict';
 
-    var esc = EdCore.esc;
+    let esc = EdCore.esc;
 
     function initIndex() {
-        var filterPlace = document.getElementById('filter-place');
-        var filterFacs = document.getElementById('filter-facs');
-        var filterQuality = document.getElementById('filter-quality');
-        var resultCount = document.getElementById('result-count');
-        var activeFiltersEl = document.getElementById('active-filters');
+        let filterPlace = document.getElementById('filter-place');
+        let filterFacs = document.getElementById('filter-facs');
+        let filterQuality = document.getElementById('filter-quality');
+        let resultCount = document.getElementById('result-count');
+        let activeFiltersEl = document.getElementById('active-filters');
+        // Forward-Deklaration: rangeSlider wird in updateActiveFilters
+        // referenziert, BEVOR initRangeSlider zurueckkehrt (Init-Callback
+        // ruft applyFilters synchron). Mit let ist die Variable in TDZ,
+        // wenn sie nicht vorher deklariert ist.
+        let rangeSlider;
 
         // State
-        var allDocs = [];
-        var state = {
+        let allDocs = [];
+        let state = {
             query: '',
             collection: '',
             place: '',
@@ -30,11 +35,11 @@
             previewIdx: -1
         };
 
-        var collectionLabels = {};
-        var filteredDocs = [];
+        let collectionLabels = {};
+        let filteredDocs = [];
 
         // --- Table renderer ---
-        var renderer = TableInfra.createTableRenderer({
+        let renderer = TableInfra.createTableRenderer({
             tbodyId: 'doc-tbody',
             noResultsId: 'no-results',
             colCount: 4,
@@ -66,13 +71,13 @@
         TableInfra.setupSortHeaders('doc-table', state, applyFilters);
 
         // --- Range slider ---
-        var rangeSlider = TableInfra.initRangeSlider(state, applyFilters);
+        rangeSlider = TableInfra.initRangeSlider(state, applyFilters);
 
         // --- Collection chips ---
-        var chips = document.querySelectorAll('.collection-chips .chip');
+        let chips = document.querySelectorAll('.collection-chips .chip');
         chips.forEach(function(chip) {
             chip.addEventListener('click', function() {
-                var val = chip.getAttribute('data-collection');
+                let val = chip.getAttribute('data-collection');
                 if (state.collection === val) {
                     state.collection = '';
                     chip.classList.remove('active');
@@ -110,7 +115,7 @@
         }
 
         // --- URL parameter pre-filter (e.g. ?quality=2 from quality dashboard) ---
-        var urlQuality = new URLSearchParams(window.location.search).get('quality');
+        let urlQuality = new URLSearchParams(window.location.search).get('quality');
         if (urlQuality !== null && filterQuality) {
             state.quality = urlQuality;
             filterQuality.value = urlQuality;
@@ -129,14 +134,14 @@
 
                 // Year range
                 if (state.yearMin > 0 && state.yearMax < 9999) {
-                    var year = parseInt(doc.di);
+                    let year = parseInt(doc.di);
                     if (isNaN(year) || year < state.yearMin || year > state.yearMax) return false;
                 }
 
                 // Text search (multi-word AND)
                 if (state.query) {
-                    var words = state.query.split(/\s+/);
-                    for (var i = 0; i < words.length; i++) {
+                    let words = state.query.split(/\s+/);
+                    for (let i = 0; i < words.length; i++) {
                         if (doc._s.indexOf(words[i]) === -1) return false;
                     }
                 }
@@ -145,8 +150,8 @@
             });
 
             filteredDocs.sort(function(a, b) {
-                var va = a[state.sortKey] || '';
-                var vb = b[state.sortKey] || '';
+                let va = a[state.sortKey] || '';
+                let vb = b[state.sortKey] || '';
                 if (va < vb) return -state.sortDir;
                 if (va > vb) return state.sortDir;
                 return 0;
@@ -159,21 +164,21 @@
 
         // --- Preview row ---
         function togglePreview(idx) {
-            var tbody = document.getElementById('doc-tbody');
-            var existing = tbody.querySelector('.preview-row');
+            let tbody = document.getElementById('doc-tbody');
+            let existing = tbody.querySelector('.preview-row');
             if (existing) existing.remove();
 
             if (state.previewIdx === idx) { state.previewIdx = -1; return; }
 
             state.previewIdx = idx;
-            var doc = filteredDocs[idx];
-            var tr = tbody.querySelector('tr[data-idx="' + idx + '"]');
+            let doc = filteredDocs[idx];
+            let tr = tbody.querySelector('tr[data-idx="' + idx + '"]');
             if (!tr) return;
 
-            var previewTr = document.createElement('tr');
+            let previewTr = document.createElement('tr');
             previewTr.className = 'preview-row';
 
-            var thumbHtml = '';
+            let thumbHtml = '';
             if (doc.fu) {
                 thumbHtml = '<div class="preview-thumb"><img src="' + esc(doc.fu) + '" loading="lazy" alt="Faksimile"></div>';
             }
@@ -222,7 +227,7 @@
                     clearFilter('facs', function() { if (filterFacs) filterFacs.value = ''; }));
             }
             if (state.quality !== '') {
-                var qLabels = {'0': 'Fehlerfrei', '1': 'Hinweise', '2': 'Warnungen'};
+                let qLabels = {'0': 'Fehlerfrei', '1': 'Hinweise', '2': 'Warnungen'};
                 TableInfra.addFilterChip(activeFiltersEl, 'Qualität: ' + (qLabels[state.quality] || state.quality),
                     clearFilter('quality', function() { if (filterQuality) filterQuality.value = ''; }));
             }
@@ -233,16 +238,17 @@
         }
 
         // --- Load data from external JSON file ---
-        var tbody = document.getElementById('doc-tbody');
-        tbody.innerHTML = '<tr><td colspan="4" style="text-align:center;padding:2rem;color:var(--color-text-muted)">Daten werden geladen\u2026</td></tr>';
+        let tbody = document.getElementById('doc-tbody');
+        tbody.innerHTML = '<tr><td colspan="4" style="text-align:center;padding:2rem;color:let(--color-text-muted)">Daten werden geladen\u2026</td></tr>';
 
         fetch((window.ROOT_PATH || '.') + '/data/search.json')
             .then(function(r) { return r.json(); })
             .then(function(data) {
                 allDocs = data;
-                // Pre-compute search strings and collection label map
+                // Pre-compute search strings (V3: Umlaut-tolerant via EdCore.normForSearch)
+                let norm = EdCore.normForSearch;
                 allDocs.forEach(function(doc) {
-                    doc._s = (doc.t + ' ' + doc.d + ' ' + doc.p + ' ' + doc.id + ' ' + doc.cl).toLowerCase();
+                    doc._s = norm(doc.t + ' ' + doc.d + ' ' + doc.p + ' ' + doc.id + ' ' + doc.cl);
                     if (doc.cp && !collectionLabels[doc.cp]) collectionLabels[doc.cp] = doc.cl;
                 });
                 filteredDocs = allDocs.slice();
@@ -250,7 +256,7 @@
             })
             .catch(function(err) {
                 console.warn('Suchdaten konnten nicht geladen werden:', err);
-                tbody.innerHTML = '<tr><td colspan="4" style="text-align:center;padding:2rem;color:var(--color-text-muted)">Daten konnten nicht geladen werden.</td></tr>';
+                tbody.innerHTML = '<tr><td colspan="4" style="text-align:center;padding:2rem;color:let(--color-text-muted)">Daten konnten nicht geladen werden.</td></tr>';
             });
     }
 

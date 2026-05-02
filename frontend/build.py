@@ -10,6 +10,7 @@ from datetime import date, datetime
 from pathlib import Path
 
 from jinja2 import Environment, FileSystemLoader
+from markupsafe import Markup
 import markdown as markdown_lib
 
 from pipeline.config import SOURCES_DIR, NS_MAP, REPO_ROOT
@@ -88,6 +89,7 @@ from pipeline.utils.date_parser import create_date
 from frontend.config import (
     DOCS_DIR, TEMPLATES_DIR, STATIC_DIR, CONTENT_DIR, KNOWLEDGE_DIR,
     DATA_DIR, FACSIMILE_BASE_URLS, VALIDATION_REPORT_PATH,
+    EDITION_GUIDELINES_PATH,
     RELEASED_PERIOD, RELEASED_CORPORA, is_released_corpus,
     released_period_label, unprocessed_gaps_label, max_year_with_extensions,
 )
@@ -576,8 +578,7 @@ def build_all():
     # Build register pages
     _build_register_list_pages(persons, orgs, places, reverse_index, env)
     _build_register_json(reverse_index)
-    # Build statistics dashboard
-    _build_statistics(all_metadata, persons, orgs, places, reverse_index, env)
+    # Statistics dashboard removed: KPIs now live on the Datengrundlage page.
 
     # Build exploration page (V1 shared + V2 Epic A)
     _build_exploration(all_metadata, persons, env)
@@ -589,12 +590,14 @@ def build_all():
     _build_about(env)
     _build_impressum(env)
 
-    # Build glossary + analysis placeholder page
+    # Build glossary + analysis page (with categories source-of-truth)
     _build_glossary(env)
+    _write_categories()
+    _write_query_vocabulary()
     _build_analysis(env)
 
-    # Build quality dashboard (M2)
-    _build_quality_dashboard(all_metadata, quality_index, env)
+    # Datengrundlage-Inhalte sind in die Provenance-Tooltips integriert,
+    # daher keine eigene Seite mehr.
 
     # Copy static assets + TEI sources
     _copy_static()
@@ -825,23 +828,39 @@ def _build_index(all_metadata, env, register_counts=None):
 
 def _build_startseite(all_metadata, persons, orgs, places, collections, env):
     """Build the portal landing page (index.html)."""
-    total_docs = len(all_metadata)
-    total_persons = len(persons)
+    kpis = _compute_release_kpis()
+    corpus_rows = _compute_corpus_breakdown()
+    total_docs = kpis["sources_total"]
+    total_persons = kpis["distinct_persons"]
+    total_mentions = kpis["person_mentions"]
+    total_events = kpis["distinct_events"]
+    register_total = kpis["register_total"]
+    matrix_columns = _compute_matrix_columns(total_docs, total_mentions, total_events)
     total_orgs = len(orgs)
     total_places = len(places)
-    sex_m = sum(1 for p in persons.values() if p.get("sex") == "m")
-    sex_f = sum(1 for p in persons.values() if p.get("sex") == "f")
+    # Sex breakdown still derived from the register; only counts persons that
+    # are actually present in released sources.
+    released_person_keys = _released_person_keys()
+    sex_m = sum(1 for pid, p in persons.items()
+                if pid in released_person_keys and p.get("sex") == "m")
+    sex_f = sum(1 for pid, p in persons.items()
+                if pid in released_person_keys and p.get("sex") == "f")
 
     template = env.get_template("startseite.html")
     html = template.render(
         total_docs=total_docs,
         total_persons=total_persons,
+        total_mentions=total_mentions,
+        total_events=total_events,
+        register_total=register_total,
         total_orgs=total_orgs,
         total_places=total_places,
         sex_m=sex_m,
         sex_f=sex_f,
         collection_count=len(collections),
         collections=collections,
+        corpus_rows=corpus_rows,
+        matrix_columns=matrix_columns,
         build_date=_format_german_date(date.today()),
         root_path=".",
     )
@@ -859,10 +878,19 @@ def _entity_quality_worst(entity_id, reverse_index):
     return max(d.get("quality_score", 0) for d in docs)
 
 
-def _person_search_data(persons, reverse_index):
-    """Build compact JSON list for the persons register page."""
+def _person_search_data(persons, reverse_index, released_keys=None):
+    """Build compact JSON list for the persons register page.
+
+    If ``released_keys`` is provided, only persons that appear in at least
+    one released TEI source are emitted. The full register has ~16k
+    entries; the released subset is ~8.4k. Stakeholder requirement: the
+    public register must mirror the released corpus, not the editorial
+    workspace.
+    """
     data = []
     for xml_id, p in persons.items():
+        if released_keys is not None and xml_id not in released_keys:
+            continue
         data.append({
             "id": xml_id,
             "n": p["display"],
@@ -915,34 +943,28 @@ def _build_register_list_pages(persons, orgs, places, reverse_index, env):
     Nur das Personenregister ist öffentlich freigegeben (siehe
     decisions.md#Personenregister-Freigabe). Organisationen und Orte
     bekommen eine Platzhalter-Seite, bis der redaktionelle Abgleich
-    abgeschlossen ist.
+    abgeschlossen ist. Das Personenregister wird auf die in den
+    freigegebenen Quellen tatsächlich annotierten Personen gefiltert.
     """
     template = env.get_template("register_list.html")
-    placeholder_tpl = env.get_template("register_placeholder.html")
+    released_person_keys = _released_person_keys()
 
-    RELEASED = {"persons"}  # bei Freigabe um "organisations", "places" ergänzen
-
+    # Nur das Personenregister wird gebaut. Organisationen und Orte sind
+    # nicht aus der Navigation erreichbar; ihre Placeholder-Seiten werden
+    # nicht mehr erzeugt.
     configs = [
         ("persons", "Personen", persons, _person_search_data),
-        ("organisations", "Organisationen", orgs, _org_search_data),
-        ("places", "Orte", places, _place_search_data),
     ]
 
     for reg_type, label, register, data_fn in configs:
         out = DOCS_DIR / "register" / f"{reg_type}.html"
         out.parent.mkdir(parents=True, exist_ok=True)
 
-        if reg_type not in RELEASED:
-            html = placeholder_tpl.render(
-                register_label=label,
-                build_date=_format_german_date(date.today()),
-                root_path="..",
-            )
-            out.write_text(html, encoding="utf-8")
-            print(f"  Register placeholder: register/{reg_type}.html (nicht freigegeben)")
-            continue
-
-        search_data = data_fn(register, reverse_index)
+        if reg_type == "persons":
+            search_data = data_fn(register, reverse_index,
+                                  released_keys=released_person_keys)
+        else:
+            search_data = data_fn(register, reverse_index)
 
         # Write search data to external JSON file (reduces page size)
         DATA_DIR.mkdir(parents=True, exist_ok=True)
@@ -950,9 +972,14 @@ def _build_register_list_pages(persons, orgs, places, reverse_index, env):
             json.dumps(search_data, ensure_ascii=False), encoding="utf-8"
         )
 
-        # Collect unique types/sexes for filter dropdowns
+        # Collect unique types/sexes for filter dropdowns. Filter pool is
+        # limited to entities actually present on the page.
         if reg_type == "persons":
-            filter_values = sorted({p["sex"] for p in register.values() if p["sex"]})
+            visible_ids = {row["id"] for row in search_data}
+            filter_values = sorted({
+                register[pid]["sex"] for pid in visible_ids
+                if register.get(pid, {}).get("sex")
+            })
             filter_label = "Geschlecht"
             filter_map = {"m": "Männlich", "f": "Weiblich", "u": "Unbekannt"}
         elif reg_type == "organisations":
@@ -967,7 +994,7 @@ def _build_register_list_pages(persons, orgs, places, reverse_index, env):
         html = template.render(
             register_type=reg_type,
             register_label=label,
-            total_count=len(register),
+            total_count=len(search_data),
             filter_values=filter_values,
             filter_label=filter_label,
             filter_map=filter_map,
@@ -975,18 +1002,30 @@ def _build_register_list_pages(persons, orgs, places, reverse_index, env):
         )
 
         out.write_text(html, encoding="utf-8")
-        print(f"  Register list: register/{reg_type}.html ({len(register)} entries)")
+        print(f"  Register list: register/{reg_type}.html ({len(search_data)} entries)")
 
 
 def _build_register_json(reverse_index):
-    """Write reverse-index data as JSON files for client-side detail views."""
+    """Write reverse-index data as JSON files for client-side detail views.
+
+    Personen werden auf den Released-Set aus ``_released_person_keys()``
+    eingeschr&auml;nkt: nur Personen, die mindestens einmal als
+    ``<rs type="person">`` in einer freigegebenen Quelle auftreten,
+    landen in ``register/persons.json``. Reine ``@corresp``-Hilfsverkn&uuml;pfungen
+    z&auml;hlen nicht als Erw&auml;hnung — entsprechend der Konvention im
+    Glossar (siehe knowledge/glossar.md#Gesamtnennung).
+    """
     out_dir = DOCS_DIR / "register"
     out_dir.mkdir(parents=True, exist_ok=True)
+
+    released_persons = _released_person_keys()
 
     # Split by ID prefix — keys match register page filenames
     buckets = {"persons": {}, "organisations": {}, "places": {}}
     for eid, docs in reverse_index.items():
         if eid.startswith("pe__"):
+            if eid not in released_persons:
+                continue
             bucket = "persons"
         elif eid.startswith("org__"):
             bucket = "organisations"
@@ -1007,372 +1046,315 @@ def _build_register_json(reverse_index):
         print(f"  Register JSON: {name}.json ({len(data)} entities)")
 
 
-def _build_statistics(all_metadata, persons, orgs, places, reverse_index, env):
-    """Build the statistics dashboard page with embedded JSON for client-side charts."""
+def _released_person_keys():
+    """Return the set of distinct person_keys that appear anywhere in the
+    released TEI sources. This matches the headline "Individuelle Personen"
+    figure: a person enters the public register as soon as she is annotated
+    in any released file, regardless of whether the only attestation sits
+    inside a mentioned (nested) rs-event."""
+    from lxml import etree
+    from pipeline.config import SOURCES_DIR
 
-    total_docs = len(all_metadata)
+    keys = set()
+    for path_key in RELEASED_CORPORA:
+        coll, sub = path_key.split("/", 1)
+        done = SOURCES_DIR / coll / sub / "done"
+        if not done.exists():
+            continue
+        for tei_file in done.rglob("*.xml"):
+            try:
+                tree = etree.parse(str(tei_file))
+            except etree.XMLSyntaxError:
+                continue
+            for el in tree.xpath(_XP_PERSONS_ALL, namespaces=_TEI_NS):
+                ref = (el.get("ref") or "").strip().lstrip("#")
+                if ref.startswith("pe__"):
+                    keys.add(ref)
+    return keys
 
-    # --- Date range + timeline ---
-    decade_counts = Counter()
-    century_counts = Counter()
-    collection_decade_counts = {}   # {collection_path: Counter(decade -> count)}
-    collection_fn_roles = {}        # {collection_path: Counter(role -> count)}
-    collection_fn_roles_sex = {}    # {collection_path: {role: Counter(sex -> count)}}
-    all_years = []
 
-    for m in all_metadata:
-        cp = m.get("collection_path", "")
-        year_str = m.get("date_iso", "")[:4]
-        if year_str.isdigit():
-            year = int(year_str)
-            all_years.append(year)
-            decade = (year // 10) * 10
-            decade_counts[decade] += 1
-            century = (year // 100) * 100
-            century_counts[century] += 1
-            collection_decade_counts.setdefault(cp, Counter())[decade] += 1
+_TEI_NS = {"tei": "http://www.tei-c.org/ns/1.0"}
 
-        # Per-collection function role totals
-        for role, count in m.get("fn_role_counts", {}).items():
-            collection_fn_roles.setdefault(cp, Counter())[role] += count
+# XPath specs — single source of truth for all release-KPIs. These are the
+# same expressions documented in the public Provenance-Tooltips on the
+# homepage. Counted directly against the released TEI files; CSV outputs
+# from the pipeline are only used for non-KPI auxiliary data.
+_XP_TOP_EVENTS = (
+    "//tei:body//tei:rs[@type='event']"
+    "[not(ancestor::tei:rs[@type='event'])]"
+)
+# Persons that are not inside a nested (mentioned) rs-event:
+_XP_PERSONS_EXCL_MENTIONED = (
+    "//tei:body//tei:*[@type='person']"
+    "[not(ancestor::tei:rs[@type='event']"
+    "     [ancestor::tei:rs[@type='event']])]"
+)
+_XP_PERSONS_ALL = "//tei:body//tei:*[@type='person']"
 
-        # Per-collection function role + gender (person-level)
-        for role, pids in m.get("fn_role_person_ids", {}).items():
-            canonical = role if role in ("issuer", "recipient", "witness") else "other"
-            role_sex = collection_fn_roles_sex.setdefault(cp, {})
-            for pid in pids:
-                sex = persons.get(pid, {}).get("sex", "u")
-                role_sex.setdefault(canonical, Counter())[sex] += 1
 
-    min_year = min(all_years) if all_years else 1177
-    max_year = max(all_years) if all_years else 1524
+def _scan_released_tei():
+    """Walk all released TEI sources and collect KPIs directly via XPath.
 
-    # Fill gaps in decade timeline
-    if decade_counts:
-        min_decade = min(decade_counts.keys())
-        max_decade = max(decade_counts.keys())
-        timeline_data = [
-            {"decade": d, "count": decade_counts.get(d, 0)}
-            for d in range(min_decade, max_decade + 10, 10)
-        ]
-    else:
-        timeline_data = []
+    Single source of truth for the release-level numbers shown on the
+    homepage. The pipeline CSVs are not used here. Two passes per file:
 
-    century_data = [{"century": c, "count": n} for c, n in sorted(century_counts.items())]
+    - ``_XP_PERSONS_ALL`` drives the distinct-person count and
+      "Quellen mit Personen" — a person counts as soon as she is annotated
+      anywhere in a released file, including inside a nested rs-event.
+    - ``_XP_PERSONS_EXCL_MENTIONED`` drives the mention count — a mention
+      only counts if the annotation is not inside a nested rs-event.
 
-    # --- Facsimile count ---
-    facs_count = sum(1 for m in all_metadata if m.get("has_facsimile"))
-    facs_pct = round(facs_count / total_docs * 100, 1) if total_docs else 0
+    Asymmetry is intentional and documented in
+    ``knowledge/decisions.md`` ("Asymmetrische Zählung: individuelle
+    Personen vs. Nennungen").
 
-    # --- Annotation depth ---
-    total_annotations = 0
-    fn_role_totals = Counter()
-    annotation_breakdown = Counter()
-    person_histogram = Counter()  # fine-grained: person_count -> num_docs
+    Returns a tuple (totals, per_corpus) where totals is a flat dict and
+    per_corpus is a list of dicts with the same shape per corpus, ordered
+    as in RELEASED_CORPORA.
+    """
+    from lxml import etree
+    from pipeline.config import SOURCES_DIR
 
-    for m in all_metadata:
-        pc = m.get("person_count", 0)
-        oc = m.get("org_count", 0)
-        ec = m.get("event_count", 0)
-        fc = m.get("fn_count", 0)
-        rc = m.get("rolename_count", 0)
-        tc = m.get("triggerstring_count", 0)
-        total_annotations += pc + oc + ec + fc + rc + tc
-
-        annotation_breakdown["persons"] += pc
-        annotation_breakdown["orgs"] += oc
-        annotation_breakdown["events"] += ec
-        annotation_breakdown["functions"] += fc
-        annotation_breakdown["rolenames"] += rc
-        annotation_breakdown["triggerstrings"] += tc
-
-        # Fine-grained person count histogram (cap display at 30+)
-        person_histogram[min(pc, 30)] += 1
-
-        # Function role breakdown
-        for role, count in m.get("fn_role_counts", {}).items():
-            fn_role_totals[role] += count
-
-    avg_annotations = round(total_annotations / total_docs, 1) if total_docs else 0
-
-    # --- Gender breakdown per function role (corpus-wide) ---
-    fn_role_sex = {}  # {role: Counter(sex -> count)}
-    for m in all_metadata:
-        for role, pids in m.get("fn_role_person_ids", {}).items():
-            canonical = role if role in ("issuer", "recipient", "witness") else "other"
-            for pid in pids:
-                sex = persons.get(pid, {}).get("sex", "u")
-                fn_role_sex.setdefault(canonical, Counter())[sex] += 1
-
-    person_histogram_data = [
-        {"bucket": i, "count": person_histogram.get(i, 0)}
-        for i in range(31)
-    ]
-
-    # --- Entity coverage ---
-    person_linked = sum(1 for pid in persons if pid in reverse_index)
-    org_linked = sum(1 for oid in orgs if oid in reverse_index)
-    place_linked = sum(1 for plid in places if plid in reverse_index)
-
-    def _pct(linked, total):
-        return round(linked / total * 100, 1) if total else 0
-
-    coverage = {
-        "persons": {"linked": person_linked, "total": len(persons),
-                     "pct": _pct(person_linked, len(persons))},
-        "orgs": {"linked": org_linked, "total": len(orgs),
-                  "pct": _pct(org_linked, len(orgs))},
-        "places": {"linked": place_linked, "total": len(places),
-                    "pct": _pct(place_linked, len(places))},
-    }
-
-    # --- Top-10 most referenced ---
-    def _top_entities(source, register, name_fn, filter_fn=None, n=10):
-        """Rank entities by reference count, return top N."""
-        items = (
-            (eid, cnt if isinstance(cnt, int) else len(cnt))
-            for eid, cnt in source.items()
-            if eid in register and (filter_fn is None or filter_fn(register[eid]))
-        )
-        ranked = sorted(items, key=lambda x: x[1], reverse=True)[:n]
-        return [{"id": eid, "name": name_fn(register[eid]), "count": cnt}
-                for eid, cnt in ranked]
-
-    _person_name = lambda p: p["display"]
-    _org_name = lambda o: o["name"]
-    _is_female = lambda p: p["sex"] == "f"
-    _is_male = lambda p: p["sex"] == "m"
-
-    # Corpus-wide: source is reverse_index (eid -> list of docs)
-    ri_counts = {eid: len(docs) for eid, docs in reverse_index.items()}
-    top_women = _top_entities(ri_counts, persons, _person_name, _is_female)
-    top_men = _top_entities(ri_counts, persons, _person_name, _is_male)
-    top_orgs = _top_entities(ri_counts, orgs, _org_name)
-
-    # --- Per-collection top-10 (for cross-filtering) ---
-    collection_entity_counts = {}  # {cp: Counter(eid -> count)}
-    for eid, docs in reverse_index.items():
-        for doc_entry in docs:
-            cp = doc_entry.get("collection_path", "")
-            collection_entity_counts.setdefault(cp, Counter())[eid] += 1
-
-    per_collection_top = {}
-    for cp, entity_counter in collection_entity_counts.items():
-        per_collection_top[cp] = {
-            "women": _top_entities(entity_counter, persons, _person_name, _is_female),
-            "men": _top_entities(entity_counter, persons, _person_name, _is_male),
-            "orgs": _top_entities(entity_counter, orgs, _org_name),
+    def _new_bucket():
+        return {
+            "sources": 0,
+            "files_with_persons": set(),
+            "person_mentions": 0,
+            "distinct_persons": set(),
+            "distinct_events": set(),
         }
 
-    # --- Collection comparison ---
-    collection_stats = {}
-    for m in all_metadata:
-        cp = m.get("collection_path", "")
-        if cp not in collection_stats:
-            collection_stats[cp] = {
-                "label": m.get("collection_label", cp),
-                "docs": 0, "years": [], "person_sum": 0, "facs": 0,
-            }
-        cs = collection_stats[cp]
-        cs["docs"] += 1
-        year_str = m.get("date_iso", "")[:4]
-        if year_str.isdigit():
-            cs["years"].append(int(year_str))
-        cs["person_sum"] += m.get("person_count", 0)
-        if m.get("has_facsimile"):
-            cs["facs"] += 1
+    totals = _new_bucket()
+    per_corpus = {c: _new_bucket() for c in RELEASED_CORPORA}
 
-    collections_json = []
-    for cp, cs in sorted(collection_stats.items()):
-        date_range = ""
-        if cs["years"]:
-            date_range = f"{min(cs['years'])}–{max(cs['years'])}"
-        avg_persons = round(cs["person_sum"] / cs["docs"], 1) if cs["docs"] else 0
-        coll_facs_pct = round(cs["facs"] / cs["docs"] * 100) if cs["docs"] else 0
-        collections_json.append({
-            "path": cp,
-            "label": cs["label"],
-            "docs": cs["docs"],
-            "dateRange": date_range,
-            "avgPersons": avg_persons,
-            "facsPct": coll_facs_pct,
-            "facsCount": cs["facs"],
-            "pctOfTotal": round(cs["docs"] / total_docs * 100, 1) if total_docs else 0,
-            "decades": dict(collection_decade_counts.get(cp, {})),
-            "fnRoles": dict(collection_fn_roles.get(cp, {})),
-            "fnRolesSex": {role: dict(counts)
-                           for role, counts in collection_fn_roles_sex.get(cp, {}).items()},
-        })
-
-    # --- Top persons by event participation (across all roles) ---
-    person_event_counts = Counter()  # person_id -> total mentions
-    person_role_breakdown = {}       # person_id -> {role: count}
-    for m in all_metadata:
-        for role, pids in m.get("fn_role_person_ids", {}).items():
-            canonical = role if role in ("issuer", "recipient", "witness") else "other"
-            for pid in pids:
-                person_event_counts[pid] += 1
-                person_role_breakdown.setdefault(pid, Counter())[canonical] += 1
-
-    top_persons = []
-    for pid, total in person_event_counts.most_common(20):
-        if pid not in persons:
+    for path_key in RELEASED_CORPORA:
+        coll, sub = path_key.split("/", 1)
+        done = SOURCES_DIR / coll / sub / "done"
+        if not done.exists():
             continue
-        p = persons[pid]
-        roles = dict(person_role_breakdown.get(pid, {}))
-        top_persons.append({
-            "id": pid,
-            "name": p["display"],
-            "sex": p.get("sex", "u"),
-            "total": total,
-            "roles": roles,
-        })
-        if len(top_persons) >= 20:
-            break
+        for tei_file in sorted(done.rglob("*.xml")):
+            try:
+                tree = etree.parse(str(tei_file))
+            except etree.XMLSyntaxError:
+                continue
+            cb = per_corpus[path_key]
+            cb["sources"] += 1
+            totals["sources"] += 1
 
-    # --- Build comprehensive JSON for client-side charts ---
-    stats_json = {
-        "summary": {
-            "totalDocs": total_docs,
-            "totalPersons": len(persons),
-            "totalOrgs": len(orgs),
-            "totalPlaces": len(places),
-            "dateRange": f"ca.\u00a0{min_year}\u2013{max_year}",
-            "facsCount": facs_count,
-            "facsPct": facs_pct,
-            "totalAnnotations": total_annotations,
-            "avgAnnotations": avg_annotations,
-            "totalWomen": sum(1 for p in persons.values() if p["sex"] == "f"),
-            "totalMen": sum(1 for p in persons.values() if p["sex"] == "m"),
+            for ev in tree.xpath(_XP_TOP_EVENTS, namespaces=_TEI_NS):
+                ref = (ev.get("ref") or "").strip().lstrip("#")
+                if ref:
+                    cb["distinct_events"].add(ref)
+                    totals["distinct_events"].add(ref)
+
+            # Person-Nennungen: ohne mentioned (XPath-Filter
+            # schließt Personen in nested rs-events aus).
+            for el in tree.xpath(_XP_PERSONS_EXCL_MENTIONED, namespaces=_TEI_NS):
+                ref = (el.get("ref") or "").strip().lstrip("#")
+                if not ref.startswith("pe__"):
+                    continue
+                cb["person_mentions"] += 1
+                totals["person_mentions"] += 1
+
+            # Alle Person-Annotationen: bestimmt "Quellen mit Personen"
+            # und die distinct individual person count (eine Person ist im
+            # öffentlichen Register, sobald sie irgendwo in einer
+            # freigegebenen Quelle als @type='person' annotiert ist).
+            file_has_person = False
+            for el in tree.xpath(_XP_PERSONS_ALL, namespaces=_TEI_NS):
+                ref = (el.get("ref") or "").strip().lstrip("#")
+                if not ref.startswith("pe__"):
+                    continue
+                file_has_person = True
+                cb["distinct_persons"].add(ref)
+                totals["distinct_persons"].add(ref)
+            if file_has_person:
+                cb["files_with_persons"].add(tei_file.name)
+                totals["files_with_persons"].add(str(tei_file))
+
+    def _flatten(b):
+        return {
+            "sources": b["sources"],
+            "sources_with_persons": len(b["files_with_persons"]),
+            "person_mentions": b["person_mentions"],
+            "distinct_persons": len(b["distinct_persons"]),
+            "distinct_events": len(b["distinct_events"]),
+        }
+
+    flat_totals = _flatten(totals)
+    flat_per_corpus = [
+        {"path": c, "label": COLLECTION_LABELS.get(c, c), **_flatten(per_corpus[c])}
+        for c in RELEASED_CORPORA
+    ]
+    return flat_totals, flat_per_corpus
+
+
+def _compute_matrix_columns(total_docs, total_mentions, total_events):
+    """Liefert die Spalten-Configs der Korpus-Matrix als Datenstruktur.
+
+    Drei Datenspalten — Quellen, Nennungen, Events. Jede Spalte traegt
+    sowohl die Glossar-Definition (fuer den i-Icon-Tooltip am Header)
+    als auch den Provenienz-XPath (fuer den Tooltip an der Gesamt-Zahl).
+    Das Template iteriert ueber diese Liste, statt jeden Block einzeln
+    auszuschreiben.
+
+    XPath-HTML wird mit ``Markup`` markiert, damit Jinja2 die
+    Syntax-Highlighting-Spans nicht escaped.
+    """
+    return [
+        {
+            "id": "sources",
+            "label": "Quellen",
+            "glossary_id": "gloss-quelle",
+            "glossary_term": "Quelle",
+            "glossary_anchor": "quelle",
+            "glossary_def": Markup(
+                "Eine einzelne Urkunde oder ein Regest als Datensatz-Einheit. "
+                "Tr&auml;ger eines oder mehrerer Events."
+            ),
+            "total": total_docs,
+            "row_key": "sources",
+            "prov_id": "prov-total-sources",
+            "prov_title": "Quellen — Provenienz",
+            "prov_xpath": Markup(
+                '<span class="xp-axis">//</span>'
+                '<span class="xp-elem">tei:TEI</span>'
+            ),
+            "prov_note": Markup(
+                "aus <code>sources/&lt;korpus&gt;/done/</code>, "
+                "eingeschr&auml;nkt auf freigegebene Korpora."
+            ),
         },
-        "timeline": timeline_data,
-        "centuries": century_data,
-        "collections": collections_json,
-        "fnRoles": dict(fn_role_totals),
-        "fnRolesSex": {role: dict(counts) for role, counts in fn_role_sex.items()},
-        "annotationBreakdown": dict(annotation_breakdown),
-        "personDistribution": person_histogram_data,
-        "coverage": coverage,
-        "topWomen": top_women,
-        "topMen": top_men,
-        "topOrgs": top_orgs,
-        "topPersons": top_persons,
-        "perCollectionTop": per_collection_top,
-    }
-
-    # --- Render ---
-    template = env.get_template("statistics.html")
-    html = template.render(
-        build_date=_format_german_date(date.today()),
-        stats_data_json=json.dumps(stats_json, ensure_ascii=False),
-        # Server-side variables for no-JS fallback header
-        total_docs=total_docs,
-        total_persons=len(persons),
-        total_women=sum(1 for p in persons.values() if p["sex"] == "f"),
-        total_men=sum(1 for p in persons.values() if p["sex"] == "m"),
-        total_orgs=len(orgs),
-        total_places=len(places),
-        date_range=f"ca.\u00a0{min_year}\u2013{max_year}",
-        facs_count=facs_count,
-        facs_pct=facs_pct,
-        total_annotations=total_annotations,
-        avg_annotations=avg_annotations,
-        root_path="..",
-    )
-
-    out = DOCS_DIR / "project" / "statistics.html"
-    out.parent.mkdir(parents=True, exist_ok=True)
-    out.write_text(html, encoding="utf-8")
-    print("  Statistics page: project/statistics.html")
-
-
-def _build_quality_dashboard(all_metadata, quality_index, env):
-    """Build the quality dashboard page (M2)."""
-    total_files = len(all_metadata)
-    files_with_findings = sum(1 for m in all_metadata if m.get("quality_count", 0) > 0)
-    files_ok = sum(1 for m in all_metadata if m.get("quality_score", 0) == 0)
-    files_notice = sum(1 for m in all_metadata if m.get("quality_score", 0) == 1)
-    files_warning = sum(1 for m in all_metadata if m.get("quality_score", 0) == 2)
-
-    # Per-category breakdown
-    by_category = Counter()
-    by_severity = Counter()
-    by_collection = {}
-    for m in all_metadata:
-        for f in m.get("quality_findings", []):
-            by_category[f["category"]] += 1
-            by_severity[f["severity"]] += 1
-        cp = m.get("collection_path", "")
-        cl = m.get("collection_label", cp)
-        if cp not in by_collection:
-            by_collection[cp] = {
-                "label": cl, "total": 0, "ok": 0, "notice": 0, "warning": 0,
-            }
-        by_collection[cp]["total"] += 1
-        score = m.get("quality_score", 0)
-        if score == 0:
-            by_collection[cp]["ok"] += 1
-        elif score == 1:
-            by_collection[cp]["notice"] += 1
-        else:
-            by_collection[cp]["warning"] += 1
-
-    total_findings = sum(by_severity.values())
-
-    # Per-file data for export
-    file_quality = []
-    for m in all_metadata:
-        file_quality.append({
-            "file": m.get("source_path", ""),
-            "idno": m.get("idno", ""),
-            "collection": m.get("collection_label", ""),
-            "score": m.get("quality_score", 0),
-            "count": m.get("quality_count", 0),
-            "categories": ";".join(sorted({f["category"]
-                                           for f in m.get("quality_findings", [])})),
-        })
-
-    quality_json = {
-        "summary": {
-            "totalFiles": total_files,
-            "filesWithFindings": files_with_findings,
-            "filesOk": files_ok,
-            "filesNotice": files_notice,
-            "filesWarning": files_warning,
-            "totalFindings": total_findings,
+        {
+            "id": "mentions",
+            "label": "Nennungen",
+            "glossary_id": "gloss-nennung",
+            "glossary_term": "Gesamtnennung",
+            "glossary_anchor": "gesamtnennung",
+            "glossary_def": Markup(
+                "Eine Beziehung zwischen einer Person und einer Quelle, in "
+                "der sie genannt wird. Quellenbereinigt: Mehrfacherw&auml;hnungen "
+                "in derselben Quelle z&auml;hlen einmal."
+            ),
+            "total": total_mentions,
+            "row_key": "mentions",
+            "prov_id": "prov-total-mentions",
+            "prov_title": "Nennungen — Provenienz",
+            "prov_xpath": Markup(
+                '<span class="xp-axis">//</span><span class="xp-elem">tei:body</span>'
+                '<span class="xp-axis">//</span><span class="xp-elem">tei:*</span>'
+                '<span class="xp-pred">[</span><span class="xp-attr">@type</span>='
+                '<span class="xp-string">\'person\'</span><span class="xp-pred">]</span>\n'
+                '<span class="xp-pred">  [not(</span>'
+                '<span class="xp-axis">ancestor::</span><span class="xp-elem">tei:rs</span>'
+                '<span class="xp-pred">[</span><span class="xp-attr">@type</span>='
+                '<span class="xp-string">\'event\'</span><span class="xp-pred">]</span>\n'
+                '<span class="xp-pred">       [</span>'
+                '<span class="xp-axis">ancestor::</span><span class="xp-elem">tei:rs</span>'
+                '<span class="xp-pred">[</span><span class="xp-attr">@type</span>='
+                '<span class="xp-string">\'event\'</span><span class="xp-pred">]])]</span>'
+            ),
+            "prov_note": Markup(
+                "<code>@corresp</code> und Personen in verschachtelten Events "
+                "ausgeschlossen."
+            ),
         },
-        "bySeverity": dict(by_severity),
-        "byCategory": [
-            {"category": cat, "count": cnt}
-            for cat, cnt in by_category.most_common()
-        ],
-        "byCollection": [
-            {"path": cp, **data}
-            for cp, data in sorted(by_collection.items())
-        ],
-        "files": file_quality,
+        {
+            "id": "events",
+            "label": "Events",
+            "glossary_id": "gloss-event",
+            "glossary_term": "Event",
+            "glossary_anchor": "event",
+            "glossary_def": Markup(
+                "Ein konkreter Vorgang im Quellentext: Rechtsgesch&auml;ft "
+                "(Kauf, Schenkung &hellip;), Siegelvermerk, Kanzleieintrag "
+                "oder Notiz."
+            ),
+            "total": total_events,
+            "row_key": "events",
+            "prov_id": "prov-total-events",
+            "prov_title": "Events — Provenienz",
+            "prov_xpath": Markup(
+                '<span class="xp-axis">//</span><span class="xp-elem">tei:body</span>'
+                '<span class="xp-axis">//</span><span class="xp-elem">tei:rs</span>'
+                '<span class="xp-pred">[</span><span class="xp-attr">@type</span>='
+                '<span class="xp-string">\'event\'</span><span class="xp-pred">]</span>\n'
+                '<span class="xp-pred">  [not(</span>'
+                '<span class="xp-axis">ancestor::</span><span class="xp-elem">tei:rs</span>'
+                '<span class="xp-pred">[</span><span class="xp-attr">@type</span>='
+                '<span class="xp-string">\'event\'</span><span class="xp-pred">])]</span>'
+            ),
+            "prov_note": Markup(
+                "distinct &uuml;ber <code>@ref</code>; verschachtelte rs-Events "
+                "ausgeschlossen."
+            ),
+        },
+    ]
+
+
+def _compute_corpus_breakdown():
+    """Backward-compatible wrapper around _scan_released_tei for the start
+    page Korpus-Matrix. Personen in mentioned Events sind ausgeschlossen
+    (legacy-konsistent).
+    """
+    _, per_corpus = _scan_released_tei()
+    return [
+        {
+            "path": c["path"],
+            "label": c["label"],
+            "sources": c["sources"],
+            "mentions": c["person_mentions"],
+            "events": c["distinct_events"],
+        }
+        for c in per_corpus
+    ]
+
+
+def _compute_release_kpis():
+    """Compute the canonical released-data KPIs directly from TEI via XPath.
+
+    Wraps :func:`_scan_released_tei`. The default values match the legacy
+    frontend output:
+
+    - ``sources_total``, ``sources_with_persons`` — file-level counts.
+    - ``distinct_persons`` — distinct ``pe__``-keys across all
+      person-annotations (including those inside mentioned rs-events).
+    - ``person_mentions`` — mention count *outside* mentioned rs-events.
+    - ``distinct_events`` — distinct top-level ``<rs type='event'>``.
+    - ``register_total`` — size of the full person register
+      (``indices/personList.xml``), shown for context.
+    """
+    import csv as _csv
+    from pipeline.config import PIPELINE_OUTPUT
+
+    totals, _ = _scan_released_tei()
+
+    register_total = 0
+    pe_path = PIPELINE_OUTPUT / "persons.csv"
+    with pe_path.open(encoding="utf-8") as fh:
+        register_total = sum(1 for _ in _csv.DictReader(fh, delimiter=";"))
+
+    return {
+        "sources_total": totals["sources"],
+        "sources_with_persons": totals["sources_with_persons"],
+        "distinct_persons": totals["distinct_persons"],
+        "person_mentions": totals["person_mentions"],
+        "distinct_events": totals["distinct_events"],
+        "register_total": register_total,
     }
-
-    template = env.get_template("quality.html")
-    html = template.render(
-        build_date=_format_german_date(date.today()),
-        quality_data_json=json.dumps(quality_json, ensure_ascii=False),
-        total_files=total_files,
-        files_ok=files_ok,
-        files_notice=files_notice,
-        files_warning=files_warning,
-        total_findings=total_findings,
-        root_path="..",
-    )
-
-    out = DOCS_DIR / "project" / "quality.html"
-    out.parent.mkdir(parents=True, exist_ok=True)
-    out.write_text(html, encoding="utf-8")
-    print(f"  Quality dashboard: project/quality.html ({total_findings} findings)")
 
 
 def _build_exploration(all_metadata, persons, env):
-    """Build exploration hub + 4 subpages (roles, networks, transactions, places)."""
+    """Build exploration hub + 4 subpages (roles, networks, transactions, places).
+
+    Header-KPIs (Personen, Events, Geschlechter, Personen mit
+    Institutionsbezug) sind auf den freigegebenen Korpus eingeschr&auml;nkt
+    und stammen aus ``_compute_release_kpis()`` + ``_released_person_keys()``
+    — gleiche XPath-Quelle wie Startseite und Analyse-Header.
+    Normalisierungsrate kommt weiterhin aus ``epic_a.json``, weil sie
+    eine Aggregator-Statistik &uuml;ber annotierte Verben ist und keine
+    Personen-Z&auml;hlung.
+    """
     # Load pre-computed epic_a.json
     epic_a_path = DATA_DIR / "epic_a.json"
     if not epic_a_path.exists():
@@ -1380,18 +1362,26 @@ def _build_exploration(all_metadata, persons, env):
               file=sys.stderr)
         return
 
+    kpis = _compute_release_kpis()
+    released_persons = _released_person_keys()
+
     total_docs = len(all_metadata)
-    total_persons = len(persons)
-    sex_m = sum(1 for p in persons.values() if p.get("sex") == "m")
-    sex_f = sum(1 for p in persons.values() if p.get("sex") == "f")
+    total_persons = kpis["distinct_persons"]
+    total_events = kpis["distinct_events"]
+    sex_m = sum(1 for pid, p in persons.items()
+                if pid in released_persons and p.get("sex") == "m")
+    sex_f = sum(1 for pid, p in persons.items()
+                if pid in released_persons and p.get("sex") == "f")
     sex_u = total_persons - sex_m - sex_f
 
-    # Parse epic_a for event count and normalisation rate (JS fetches it directly)
+    # Aggregator-Coverage: nur die Normalisierungsrate aus epic_a verwenden
+    # (Personen-/Event-Counts haben wir bereits released-only oben).
     epic_a = json.loads(epic_a_path.read_text(encoding="utf-8"))
-    total_events = epic_a.get("coverage", {}).get("total_events", 0)
+    epic_a_total_events = epic_a.get("coverage", {}).get("total_events", 0)
     norm_rate = epic_a.get("coverage", {}).get("normalisation_rate", 0)
-    norm_rate_pct = round(norm_rate / total_events * 100, 1) if total_events else 0
-    persons_with_org = epic_a.get("coverage", {}).get("persons_with_org", 0)
+    norm_rate_pct = (round(norm_rate / epic_a_total_events * 100, 1)
+                     if epic_a_total_events else 0)
+    persons_with_org = _persons_with_org_released(released_persons)
     org_type_count = epic_a.get("coverage", {}).get("org_type_count", 0)
 
     shared_vars = dict(
@@ -1486,8 +1476,14 @@ def _build_exploration(all_metadata, persons, env):
 
 
 def _build_guidelines(env):
-    """Build edition guidelines page from Markdown source."""
-    md_path = CONTENT_DIR / "edition_guidelines.md"
+    """Build edition guidelines page from Markdown source.
+
+    The guidelines are editorial documentation of the annotation model
+    for the source data; they live in the pipeline repository's root
+    (`edition_guidelines.md`) rather than in the frontend's content/
+    folder, because they describe the data, not the publication.
+    """
+    md_path = EDITION_GUIDELINES_PATH
     if not md_path.exists():
         print("  WARN: edition_guidelines.md not found, skipping guidelines page.",
               file=sys.stderr)
@@ -1609,12 +1605,121 @@ def _build_glossary(env):
     print("  Glossary page: project/glossary.html")
 
 
+def _write_categories():
+    """Copy categories.json from content/ to docs/data/, with build metadata.
+
+    The source file lives in `frontend/content/categories.json` and is the
+    versioned editorial mapping `org_type -> category` (geistlich/weltlich/
+    sonstige). It is validated against the org-type list in epic_a.json so
+    that the pipeline cannot silently introduce types that the editorial
+    classification does not yet cover.
+    """
+    src = CONTENT_DIR / "categories.json"
+    if not src.exists():
+        print("  WARN: categories.json not found, skipping.", file=sys.stderr)
+        return
+
+    data = json.loads(src.read_text(encoding="utf-8"))
+    data.setdefault("meta", {})["created"] = date.today().isoformat()
+
+    # Validate against epic_a if present (released-corpora org types).
+    epic_a_path = DATA_DIR / "epic_a.json"
+    if epic_a_path.exists():
+        try:
+            epic_a = json.loads(epic_a_path.read_text(encoding="utf-8"))
+            real_types = set(epic_a.get("observations", {}).get("org_type_totals", {}).keys())
+            mapped_types = {t for ts in data.get("categories", {}).values() for t in ts}
+            missing = real_types - mapped_types
+            extra = mapped_types - real_types
+            if missing:
+                print(f"  WARN: org types in epic_a not classified: {sorted(missing)}", file=sys.stderr)
+            if extra:
+                print(f"  WARN: classified types not in epic_a: {sorted(extra)}", file=sys.stderr)
+        except (json.JSONDecodeError, OSError):
+            pass  # Validation is best-effort; do not block build.
+
+    DATA_DIR.mkdir(parents=True, exist_ok=True)
+    (DATA_DIR / "categories.json").write_text(
+        json.dumps(data, ensure_ascii=False, indent=2), encoding="utf-8"
+    )
+    print("  Categories: data/categories.json")
+
+
+def _write_query_vocabulary():
+    """Copy query_vocabulary.json from content/ to docs/data/.
+
+    Vocabulary fuer den Satz-Builder der Analyse-Seite. Liefert Subjekte,
+    Filter, Werte-Listen mit Verb-Phrasen, Gruppierungen und Aggregationen.
+    Wird vom Satz-Builder im Browser geladen.
+    """
+    src = CONTENT_DIR / "query_vocabulary.json"
+    if not src.exists():
+        print("  WARN: query_vocabulary.json not found, skipping.", file=sys.stderr)
+        return
+
+    data = json.loads(src.read_text(encoding="utf-8"))
+    data.setdefault("meta", {})["created"] = date.today().isoformat()
+
+    DATA_DIR.mkdir(parents=True, exist_ok=True)
+    (DATA_DIR / "query_vocabulary.json").write_text(
+        json.dumps(data, ensure_ascii=False, indent=2), encoding="utf-8"
+    )
+    print("  Query vocabulary: data/query_vocabulary.json")
+
+
+def _persons_with_org_released(released_persons):
+    """Z&auml;hle distinct Personen aus dem Released-Set, die in mindestens
+    einem Event mit einer Organisations-Verkn&uuml;pfung beteiligt sind.
+
+    Liest persons_in_events.csv x orgs_in_events.csv und schneidet auf
+    ``released_persons``. Idempotent gegen&uuml;ber Erst-Build (gibt 0
+    zur&uuml;ck, wenn die Aggregator-CSVs nicht vorhanden sind).
+    """
+    try:
+        from frontend.aggregator import _cached_csv
+        pie_rows = _cached_csv("persons_in_events.csv")
+        oie_rows = _cached_csv("orgs_in_events.csv")
+    except Exception:
+        return 0
+    events_with_org = {r.get("event_key", "") for r in oie_rows
+                       if r.get("event_key")}
+    out = set()
+    for r in pie_rows:
+        pk = r.get("person_key", "")
+        ek = r.get("event_key", "")
+        if pk in released_persons and ek in events_with_org:
+            out.add(pk)
+    return len(out)
+
+
 def _build_analysis(env):
-    """Build analysis placeholder page (classical query mode, content TBD)."""
+    """Build analysis page (classical query mode with template families).
+
+    Header-KPIs werden auf den freigegebenen Korpus eingeschr&auml;nkt:
+    Personen und Events kommen aus ``_compute_release_kpis()`` (gleiche
+    XPath-Quelle wie die Startseite); ``persons_with_org`` wird aus
+    ``persons_in_events.csv`` x ``orgs_in_events.csv`` gegen die
+    Released-Personenmenge neu berechnet.
+    """
+    kpis = _compute_release_kpis()
+    released_persons = _released_person_keys()
+    persons_with_org = _persons_with_org_released(released_persons)
+
+    header_stats = {
+        "total_events": kpis["distinct_events"],
+        "person_count": kpis["distinct_persons"],
+        "persons_with_org": persons_with_org,
+    }
+
+    from datetime import datetime
+    assets_version = datetime.now().strftime("%Y%m%d%H%M%S")
+
     template = env.get_template("analysis.html")
     html = template.render(
         build_date=_format_german_date(date.today()),
         root_path="..",
+        header_stats=header_stats,
+        assets_version=assets_version,
     )
     out = DOCS_DIR / "analysis" / "index.html"
     out.parent.mkdir(parents=True, exist_ok=True)

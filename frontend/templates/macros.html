@@ -144,13 +144,43 @@
         data-prov-trigger="{{ popover_id }}">{{ caller() }}</button>
 {% endmacro %}
 
-{% macro prov_popover(popover_id, title, subtitle='') %}
-<aside class="prov-popover" id="{{ popover_id }}"
+{% macro prov_popover(popover_id, title, subtitle='', placement='bottom') %}
+<aside class="prov-popover{% if placement == 'top' %} prov-popover--top{% endif %}" id="{{ popover_id }}"
        role="dialog" aria-hidden="true" aria-label="Herkunft: {{ title }}">
     <header class="prov-popover-head">
         <h3 class="prov-popover-title">{{ title }}</h3>
         {% if subtitle %}<p class="prov-popover-sub">{{ subtitle }}</p>{% endif %}
         <button type="button" class="prov-popover-close" aria-label="Schließen">&times;</button>
+    </header>
+    <div class="prov-popover-body">
+        {{ caller() }}
+    </div>
+</aside>
+{% endmacro %}
+
+{# Glossar-Tip: kleines i-Icon mit Begriffsdefinition.
+   Pendant zum Provenienz-Tooltip, aber begriffsorientiert statt zahlenorientiert.
+   Trigger steht NEBEN einem Begriff (z. B. Spalten-Header).
+   Verwendet die gleiche Popover-Mechanik (data-prov-trigger / .prov-popover),
+   damit die JS-Logik aus provenance.js dieselbe ist. #}
+{% macro glossary_tip(term_id, term_label, placement='bottom') %}
+<button type="button" class="prov-trigger prov-trigger--icon"
+        aria-expanded="false" aria-haspopup="dialog"
+        aria-controls="{{ term_id }}"
+        data-prov-trigger="{{ term_id }}"
+        aria-label="Definition: {{ term_label }}">
+    <svg width="13" height="13" viewBox="0 0 16 16" aria-hidden="true">
+        <circle cx="8" cy="8" r="7" stroke="currentColor" stroke-width="1.4" fill="none"/>
+        <text x="8" y="11.6" text-anchor="middle" font-size="9.5" font-weight="700"
+              fill="currentColor" font-family="Georgia, serif">i</text>
+    </svg>
+</button>
+<aside class="prov-popover prov-popover--glossary{% if placement == 'top' %} prov-popover--top{% endif %}"
+       id="{{ term_id }}" role="dialog" aria-hidden="true"
+       aria-label="Definition: {{ term_label }}">
+    <header class="prov-popover-head">
+        <h3 class="prov-popover-title">{{ term_label }}</h3>
+        <button type="button" class="prov-popover-close" aria-label="Schlie&szlig;en">&times;</button>
     </header>
     <div class="prov-popover-body">
         {{ caller() }}
