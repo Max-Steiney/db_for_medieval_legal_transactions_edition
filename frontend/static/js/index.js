@@ -43,9 +43,44 @@
 
         // --- Content cell renderer (Inhalt-Spalte) ---
         // Persons-Badge mit Geschlechter-Aufschluesselung im title; danach
-        // Form-Pills R/S/E/N (TEI-Annotations-Tiefe) mit Erklaerung im title;
-        // Multi-Event-Indikator, wenn die Quelle mehrere Rechtsgeschaefte
-        // dokumentiert (Sonderfall, ~11 von 2601 Quellen).
+        // Form-Pills R/S/E/N (TEI-Annotations-Tiefe) plus Faksimile-Pill
+        // F als kleine Strich-Icons; Multi-Event-Indikator, wenn die Quelle
+        // mehrere Rechtsgeschaefte dokumentiert.
+        //
+        // Icons sind currentColor-Strich-SVGs, damit sie die Pillen-Farbe
+        // (--anno-person) erben und Hover-States ohne Sonderlogik mitnehmen.
+        let FORM_ICONS = {
+            // Regest: drei zusammenfassende Linien (Standard-"Summary")
+            r: '<svg viewBox="0 0 16 16" aria-hidden="true">' +
+               '<path d="M3.5 5h9M3.5 8h9M3.5 11h6" ' +
+               'stroke="currentColor" stroke-width="1.4" stroke-linecap="round" fill="none"/>' +
+               '</svg>',
+            // Siegel: Wachs-Siegel-Anmutung (Kreis mit Stern-Innenstruktur)
+            s: '<svg viewBox="0 0 16 16" aria-hidden="true">' +
+               '<circle cx="8" cy="8" r="4.6" stroke="currentColor" stroke-width="1.4" fill="none"/>' +
+               '<path d="M8 4.5v7M4.5 8h7M5.5 5.5l5 5M10.5 5.5l-5 5" ' +
+               'stroke="currentColor" stroke-width="0.9" fill="none"/>' +
+               '</svg>',
+            // Eintrag: aufgeschlagenes Buch / zwei Seiten
+            e: '<svg viewBox="0 0 16 16" aria-hidden="true">' +
+               '<path d="M8 4.5v8M3 4.5c1.5 0 3.4.4 5 1.2c1.6-.8 3.5-1.2 5-1.2v7c-1.5 0-3.4.4-5 1.2c-1.6-.8-3.5-1.2-5-1.2v-7z" ' +
+               'stroke="currentColor" stroke-width="1.3" stroke-linejoin="round" fill="none"/>' +
+               '</svg>',
+            // Nota: Lesezeichen / kleiner Notiz-Marker
+            n: '<svg viewBox="0 0 16 16" aria-hidden="true">' +
+               '<path d="M5 3h6v10l-3-2.2L5 13z" ' +
+               'stroke="currentColor" stroke-width="1.3" stroke-linejoin="round" fill="none"/>' +
+               '</svg>',
+            // Faksimile: Bild-Rahmen mit Sonne-und-Berg-Andeutung
+            f: '<svg viewBox="0 0 16 16" aria-hidden="true">' +
+               '<rect x="2.4" y="3.4" width="11.2" height="9.2" rx="1" ' +
+               'stroke="currentColor" stroke-width="1.3" fill="none"/>' +
+               '<circle cx="6" cy="7" r="1.1" stroke="currentColor" stroke-width="1.1" fill="none"/>' +
+               '<path d="M2.6 11.6l3-2.6l2.4 2l3-2.6l2.4 2.2" ' +
+               'stroke="currentColor" stroke-width="1.2" stroke-linejoin="round" fill="none"/>' +
+               '</svg>'
+        };
+
         function renderContent(doc) {
             let parts = [];
 
@@ -65,14 +100,17 @@
             }
 
             let pills = [];
-            if (doc.ecR > 0) pills.push(['R', 'Regest', 'Regest-Annotation (TEI <div type="abstract">)']);
-            if (doc.ecS > 0) pills.push(['S', 'Siegel', 'Siegelbeschreibung (TEI <div type="seal">)']);
-            if (doc.ecE > 0) pills.push(['E', 'Eintrag', 'Stadtbuch-Eintrag (TEI <div type="entry">)']);
-            if (doc.ecN > 0) pills.push(['N', 'Nota', 'Nachsatz/Notiz (TEI <div type="nota">)']);
+            if (doc.ecR > 0) pills.push(['r', 'Regest', 'Regest-Annotation (TEI <div type="abstract">)']);
+            if (doc.ecS > 0) pills.push(['s', 'Siegel', 'Siegelbeschreibung (TEI <div type="seal">)']);
+            if (doc.ecE > 0) pills.push(['e', 'Eintrag', 'Stadtbuch-Eintrag (TEI <div type="entry">)']);
+            if (doc.ecN > 0) pills.push(['n', 'Nota', 'Nachsatz/Notiz (TEI <div type="nota">)']);
+            if (doc.f) pills.push(['f', 'Faksimile', 'Digitalisat des Originals verlinkt']);
             if (pills.length) {
                 let html = pills.map(function(p) {
-                    return '<span class="form-pill form-pill-' + p[0].toLowerCase() +
-                           '" title="' + esc(p[1] + ': ' + p[2]) + '">' + p[0] + '</span>';
+                    return '<span class="form-pill form-pill-' + p[0] +
+                           '" title="' + esc(p[1] + ': ' + p[2]) +
+                           '" aria-label="' + esc(p[1]) + '">' +
+                           FORM_ICONS[p[0]] + '</span>';
                 }).join('');
                 parts.push('<span class="form-pills">' + html + '</span>');
             }
@@ -81,6 +119,21 @@
                 parts.push(
                     '<span class="multi-event" title="Mehrere Rechtsgesch\u00e4fte in einer Quelle">' +
                     '\u26a1 ' + doc.ec + ' Rechtsgesch\u00e4fte</span>'
+                );
+            }
+
+            // Qualitaets-Dot ganz rechts. Ausgangsbasis: validation_report.json
+            // der Pipeline; Score 0 = fehlerfrei, 1 = Hinweise (info), 2 =
+            // Warnungen (warning/error). qc traegt die Anzahl Findings.
+            if (doc.q > 0) {
+                let qLabel = doc.q === 2 ? 'Warnung' : 'Hinweis';
+                let qTitle = qLabel + (doc.qc ? ': ' + doc.qc + ' Finding' +
+                    (doc.qc === 1 ? '' : 's') : '') +
+                    '\nKlick auf die Zeile zeigt Details.';
+                parts.push(
+                    '<span class="quality-dot quality-dot--q' + doc.q +
+                    '" title="' + esc(qTitle) +
+                    '" aria-label="' + esc(qLabel) + '"></span>'
                 );
             }
 
@@ -100,21 +153,34 @@
             return '<td class="col-date"' + attr + '>' + esc(dateText) + '</td>';
         }
 
+        // SVG-Chevron als Ausklapp-Affordance. Wird per CSS rotiert,
+        // sobald die Zeile expandiert ist (.doc-row.is-open).
+        let CHEVRON_SVG =
+            '<svg class="row-chevron" viewBox="0 0 16 16" aria-hidden="true">' +
+            '<path d="M6 4l4 4l-4 4" stroke="currentColor" stroke-width="1.6" ' +
+            'stroke-linecap="round" stroke-linejoin="round" fill="none"/>' +
+            '</svg>';
+
         // --- Table renderer ---
         let renderer = TableInfra.createTableRenderer({
             tbodyId: 'doc-tbody',
             noResultsId: 'no-results',
             colCount: 5,
             renderRow: function(doc, i, tr) {
+                tr.classList.add('doc-row');
                 tr.setAttribute('data-idx', i);
                 tr.innerHTML =
                     '<td class="col-idno"><a href="' + esc(doc.u) + '" class="doc-link">' + esc(doc.id) + '</a></td>' +
                     renderDateCell(doc) +
                     '<td class="col-place">' + esc(doc.p) + '</td>' +
                     '<td class="col-title"><span class="cell-title">' + esc(doc.t) + '</span></td>' +
-                    '<td class="col-content">' + renderContent(doc) + '</td>';
+                    '<td class="col-content"><div class="col-content-inner">' +
+                        '<div class="col-content-pills">' + renderContent(doc) + '</div>' +
+                        CHEVRON_SVG +
+                    '</div></td>';
                 tr.tabIndex = 0;
                 tr.setAttribute('role', 'button');
+                tr.setAttribute('aria-expanded', 'false');
                 tr.setAttribute('aria-label', 'Vorschau f\u00fcr Nr. ' + doc.id);
                 (function(idx) {
                     tr.addEventListener('click', function(e) {
@@ -434,6 +500,11 @@
         function togglePreview(idx) {
             let tbody = document.getElementById('doc-tbody');
             let existing = tbody.querySelector('.preview-row');
+            // Vorher offene Zeile als geschlossen markieren (Chevron dreht zurueck).
+            tbody.querySelectorAll('.doc-row.is-open').forEach(function(r) {
+                r.classList.remove('is-open');
+                r.setAttribute('aria-expanded', 'false');
+            });
             if (existing) existing.remove();
 
             if (state.previewIdx === idx) { state.previewIdx = -1; return; }
@@ -442,6 +513,8 @@
             let doc = filteredDocs[idx];
             let tr = tbody.querySelector('tr[data-idx="' + idx + '"]');
             if (!tr) return;
+            tr.classList.add('is-open');
+            tr.setAttribute('aria-expanded', 'true');
 
             let previewTr = document.createElement('tr');
             previewTr.className = 'preview-row';
@@ -451,10 +524,31 @@
                 thumbHtml = '<div class="preview-thumb"><img src="' + esc(doc.fu) + '" loading="lazy" alt="Faksimile"></div>';
             }
 
+            // Qualitaets-Findings: Wenn die Zeile einen Quality-Score hat,
+            // listen wir Kategorie + Zaehlung in der Vorschau auf. Der
+            // search.json-Eintrag traegt nur Score und Anzahl; eine
+            // Kategorienliste pro Quelle liegt nicht im Index. Daher zeigen
+            // wir Score-Label + Anzahl, mit Link auf den Qualitaets-Tab
+            // der Datengrundlage als Folgeschritt.
+            let qualityHtml = '';
+            if (doc.q > 0) {
+                let label = doc.q === 2 ? 'Warnungen' : 'Hinweise';
+                let count = doc.qc || 0;
+                qualityHtml =
+                    '<div class="preview-quality preview-quality--q' + doc.q + '">' +
+                    '<span class="quality-dot quality-dot--q' + doc.q + '"></span>' +
+                    '<strong>' + esc(label) + ':</strong> ' +
+                    count + ' Finding' + (count === 1 ? '' : 's') +
+                    ' aus der Pipeline-Validierung. ' +
+                    '<span class="preview-quality-hint">Details in der Quellansicht.</span>' +
+                    '</div>';
+            }
+
             previewTr.innerHTML =
                 '<td colspan="5"><div class="doc-preview">' +
                 '<div class="preview-text">' +
                 '<p class="preview-regest">' + esc(doc.tf || doc.t) + '</p>' +
+                qualityHtml +
                 '<div class="preview-meta">' +
                 '<span>' + esc(doc.d) + '</span>' +
                 (doc.p ? '<span>' + esc(doc.p) + '</span>' : '') +
