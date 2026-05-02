@@ -2,6 +2,12 @@
 
 Kanonische Definitionen aller Fachbegriffe der Edition. Quelle für Tooltips und die Glossar-Seite im UI. Alphabetisch sortiert. Pro Eintrag Definition, Abgrenzung und, wo nötig, eine Notiz zu häufigen Verwechslungen.
 
+## Erschließungsform
+
+Die Form, in der eine Quelle in der Edition zugänglich gemacht wird: als [[#Regest]] mit [[#Faksimile]] oder als edierter [[#Volltext]]. Die Erschließungsform bestimmt, welche Art von Aussage eine Quelle stützt. Aus einem Volltext lassen sich textgenaue Belege ziehen; ein Regest stützt nur die zusammengefasste Aussage, das Faksimile dient der Verifikation am Bild.
+
+Verwendet in [[data#Erschließungsformen]].
+
 ## Event
 
 Ein konkretes Rechtsgeschäft, das in einer Quelle verzeichnet ist. Events sind die kleinste Einheit, auf die sich Rollen, Beteiligte und Transaktionsangaben beziehen.
@@ -9,6 +15,12 @@ Ein konkretes Rechtsgeschäft, das in einer Quelle verzeichnet ist. Events sind 
 Eine Quelle kann mehrere Events dokumentieren. Events wiederum können aufeinander verweisen, etwa wenn ein späteres Rechtsgeschäft auf ein früheres zurückbezieht.
 
 Achtung: Nicht verwechseln mit einer Quelle als Ganzes. Die Unterscheidung trägt alle Zähl- und Filteroperationen. Verwendet in [[data#Hierarchie der Daten]], [[requirements]].
+
+## Faksimile
+
+Die digitale Reproduktion einer Quelle als Bild. Ein Faksimile zeigt die Quelle, wie sie überliefert ist, ohne sie zu transkribieren. Es macht die paläografische Lesart der Quelle einsehbar und erlaubt die Verifikation einer Lesung gegen das Original.
+
+In der Edition liegen Faksimiles für QGW-Bestände vor, eingebunden über die Monasterium-Plattform. Stadtbücher haben (noch) keine Faksimiles. Verwendet in [[data#Erschließungsformen]], [[#Erschließungsform]].
 
 ## Gesamtnennung
 
@@ -75,6 +87,14 @@ Der Begriff ersetzt die frühere Bezeichnung „Sammlung". „Sammlung" ist edit
 
 Verwendet in [[data#Quellenkorpora]], [[ui-design#Bestandsfilter]], [[decisions#Begriff Quellenkorpus]].
 
+## Regest
+
+Eine redaktionelle Zusammenfassung des wesentlichen Inhalts einer Quelle. Das Regest fasst Gegenstand, Beteiligte, Datum und Ort eines [[#Rechtsgeschäft|Rechtsgeschäfts]] zusammen, ohne den Quellentext im Wortlaut wiederzugeben.
+
+Im Datenbestand der QGW-Bände ist das Regest die primäre Erschließungsform; der Quellentext wird nicht ediert, ist aber im [[#Faksimile]] einsehbar. Aussagen, die textgenaue Wortlaute brauchen, lassen sich aus einem Regest nicht ableiten — sie verlangen den [[#Volltext]] oder einen Blick ins Faksimile.
+
+Verwendet in [[data#Erschließungsformen]], [[#Erschließungsform]].
+
 ## Rechtsgeschäft
 
 Eine Transaktion mit rechtlich bindender Wirkung zwischen Akteurinnen und Akteuren, niedergelegt in einer Quelle. Typische Rechtsgeschäfte sind Kauf, Verkauf, Schenkung, Verleihung, Verpfändung und Zeugenschaft.
@@ -98,6 +118,14 @@ Eine aus mehreren Rollen abgeleitete Kategorie, die das UI als Abfrage zugängli
 Rollenkombinationen sind keine eigene Annotationsebene im Datenmodell, sondern eine Auswertungsperspektive. Sie entstehen durch Kombination von Rollenattributen und anderen Merkmalen wie Geschlecht oder Beziehungstyp.
 
 Verwendet in [[scholar-user-stories]], [[analyse]].
+
+## Volltext
+
+Der edierte Wortlaut einer Quelle, transkribiert und annotiert. Im Volltext sind Personen, Organisationen, Orte und Rechtsgeschäfte unmittelbar im Quellentext markiert; textgenaue Belege sind möglich.
+
+In der Edition sind die Stadtbücher als Volltext erschlossen. QGW-Bestände sind über [[#Regest]] und [[#Faksimile]] erschlossen, ohne Volltext-Edition.
+
+Verwendet in [[data#Erschließungsformen]], [[#Erschließungsform]].
 
 ## Siehe auch
 

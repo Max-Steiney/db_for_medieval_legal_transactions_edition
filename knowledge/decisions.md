@@ -139,9 +139,9 @@ Verschachtelte rs-Events landen über `pipeline/utils/event_helpers.py::iter_top
 
 ## Obsidian-kompatibles Knowledge-Format
 
-**Entscheidung.** Die konzeptionelle Wissensbasis liegt als flache Markdown-Dateien mit Wiki-Links vor, ohne Unterordner, ohne Nummernpräfixe und ohne README.
+**Entscheidung.** Die konzeptionelle Wissensbasis liegt als flache Markdown-Dateien mit Wiki-Links vor, ohne Unterordner und ohne Nummernpräfixe. Eine einzige Strukturdatei ([[index]]) dient als Lesepfad-Einstieg und Wegweiser; sie trägt keine inhaltliche Substanz.
 
-**Begründung.** Die flache Struktur macht den Vault in Obsidian unmittelbar nutzbar und senkt die Einstiegshürde für Mit-Autorinnen. Ein README wäre Redundanz, weil Einstieg und Übersicht aus der Dateiliste selbst hervorgehen.
+**Begründung.** Die flache Struktur macht den Vault in Obsidian unmittelbar nutzbar und senkt die Einstiegshürde für Mit-Autorinnen. Ein klassisches README mit Build-Anleitungen oder Repo-Setup gehört nicht in die Wissensbasis — solche Inhalte leben in `README.md` und `CLAUDE.md` im Repo-Root. Eine Lesepfad-Datei ist demgegenüber selbst Wissensdokument: sie sagt, in welcher Reihenfolge die Konzepte aufeinander aufbauen und wo welcher Begriff kanonisch definiert ist.
 
 **Konsequenz.** Dokumente im `knowledge/`-Ordner folgen dieser Struktur. Verlinkung geschieht über Wiki-Syntax, nicht über Markdown-Referenzen.
 
