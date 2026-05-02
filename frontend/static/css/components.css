@@ -31,11 +31,17 @@
 .edition-tooltip, .stats-tooltip, .explore-tooltip {
     position: fixed;
     z-index: var(--z-tooltip);
-    background: var(--color-bg-nav);
-    color: var(--color-text-inverse);
+    /* Optisch konsistent mit dem prov-popover-System (Startseite, Glossar-
+       Tips): helles Card mit Border + dezentem Schatten, Serif-Titel,
+       dunkler Text. So wirkt das Tooltip-Erlebnis ueber die ganze Seite
+       wie ein einheitliches Family — egal ob Hover-Tooltip auf Pillen
+       oder Klick-Popover auf Statistik-Zahlen. */
+    background: var(--color-bg-card);
+    color: var(--color-text);
+    border: 1px solid var(--color-border);
     font-family: var(--font-sans);
-    border-radius: var(--radius);
-    box-shadow: var(--shadow-lg);
+    border-radius: 4px;
+    box-shadow: 0 8px 28px rgba(44, 40, 37, 0.10), 0 1px 3px rgba(44, 40, 37, 0.06);
     pointer-events: none;
     opacity: 0;
     transition: opacity var(--transition-fast);
@@ -57,10 +63,11 @@
    Die '.edition-tooltip--data'-Klasse schaltet zwischen den beiden Layouts.
    --------------------------------------------------------------------- */
 .edition-tooltip {
-    font-size: var(--text-xs);
+    font-size: var(--text-sm);
     line-height: 1.5;
-    padding: var(--space-sm) var(--space-md);
-    max-width: 28rem;
+    padding: 10px 14px;
+    max-width: min(360px, calc(100vw - 32px));
+    min-width: 180px;
     transform: translateY(4px);
     transition: opacity var(--transition-fast), transform var(--transition-fast);
 }
@@ -76,8 +83,8 @@
     display: block;
     font-family: var(--font-mono);
     font-size: var(--text-2xs);
-    opacity: 0.5;
-    margin-top: 2px;
+    color: var(--color-text-muted);
+    margin-top: 4px;
 }
 
 .tooltip-type {
@@ -89,6 +96,7 @@
     padding: 1px 6px;
     border-radius: 2px;
     margin-right: var(--space-xs);
+    color: #fff;
 }
 .tooltip-type:empty { display: none; }
 
@@ -97,24 +105,28 @@
 .tooltip-type-place    { background: var(--anno-place); }
 .tooltip-type-fn       { background: var(--anno-fn-issuer); }
 
-/* Daten-Tooltip: Titel oben, optionale Beschreibung darunter. */
+/* Daten-Tooltip: Titel oben (Serif, fett — passt zum prov-popover-Title),
+   optionale Beschreibung darunter (Sans, gedaempft). */
 .tooltip-body {
     display: none;
 }
 .edition-tooltip--data .tooltip-name {
     display: block;
+    font-family: var(--font-serif, var(--font-sans));
+    font-size: var(--text-base);
     font-weight: 600;
+    line-height: 1.2;
+    color: var(--color-text);
 }
 .edition-tooltip--data .tooltip-body {
     display: block;
-    margin-top: 3px;
-    opacity: 0.78;
-    font-size: var(--text-2xs);
+    margin-top: 6px;
+    color: var(--color-text-muted);
+    font-size: var(--text-xs);
     line-height: 1.45;
 }
-.edition-tooltip--data:not(:has(.tooltip-body:not(:empty))) .tooltip-body {
-    /* fallback, falls :has nicht greift: leerer Body wird vom JS leer
-       gesetzt — display:none bleibt dann durch obige Default-Regel. */
+.edition-tooltip--data .tooltip-body:empty {
+    display: none;
 }
 
 
