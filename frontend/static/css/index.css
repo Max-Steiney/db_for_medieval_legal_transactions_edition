@@ -387,10 +387,17 @@
 
 /* --- Document table --- */
 .index-table-wrap {
-    /* overflow-x: auto verhindert das Abschneiden der Inhalt-Spalte
-       auf schmalen Viewports (Mobile, Tablet) — die Tabelle bekommt
-       horizontalen Scroll, statt sichtbar abzuschneiden. */
-    overflow-x: auto;
+    /* Default: kein Overflow-Containment, damit Header-Popovers
+       (Provenienz-Tooltips) ueber den Tabellenrand hinausragen koennen.
+       Bei schmalen Viewports schaltet die Media-Query-Regel weiter unten
+       wieder auf horizontalen Scroll um — dort sind die Popovers seltener
+       relevant und werden notfalls horizontal mitgescrollt. */
+    overflow: visible;
+}
+@media (max-width: 1024px) {
+    .index-table-wrap {
+        overflow-x: auto;
+    }
 }
 
 .index-table {

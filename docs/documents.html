@@ -9,15 +9,15 @@
     <title>Quellen — Datenbank</title>
     <link rel="preload" as="font" type="font/woff2" crossorigin
           href="./static/fonts/inter-400-latin.woff2">
-    <link rel="stylesheet" href="./static/css/fonts.css?v=20260502175327">
-    <link rel="stylesheet" href="./static/css/tokens.css?v=20260502175327">
-    <link rel="stylesheet" href="./static/css/base.css?v=20260502175327">
-    <link rel="stylesheet" href="./static/css/components.css?v=20260502175327">
-    <link rel="stylesheet" href="./static/css/responsive.css?v=20260502175327">
-    <link rel="stylesheet" href="./static/css/print.css?v=20260502175327">
-    <link rel="stylesheet" href="./static/css/provenance.css?v=20260502175327">
+    <link rel="stylesheet" href="./static/css/fonts.css?v=20260502181514">
+    <link rel="stylesheet" href="./static/css/tokens.css?v=20260502181514">
+    <link rel="stylesheet" href="./static/css/base.css?v=20260502181514">
+    <link rel="stylesheet" href="./static/css/components.css?v=20260502181514">
+    <link rel="stylesheet" href="./static/css/responsive.css?v=20260502181514">
+    <link rel="stylesheet" href="./static/css/print.css?v=20260502181514">
+    <link rel="stylesheet" href="./static/css/provenance.css?v=20260502181514">
     
-<link rel="stylesheet" href="./static/css/index.css?v=20260502175327">
+<link rel="stylesheet" href="./static/css/index.css?v=20260502181514">
 
 </head>
 <body data-root-path="."
@@ -458,10 +458,150 @@
                     <thead>
                         <tr>
                             <th class="col-idno" data-sort="id">Nr.</th>
-                            <th class="col-date" data-sort="di">Datum</th>
-                            <th class="col-place" data-sort="p">Ort</th>
-                            <th class="col-title">Regest</th>
-                            <th class="col-content" data-sort="pcd">Beteiligte</th>
+                            <th class="col-date" data-sort="di">
+                                <span class="prov-stat-container">Datum
+<button type="button" class="prov-trigger prov-trigger--icon"
+        aria-expanded="false" aria-haspopup="dialog"
+        aria-controls="col-info-datum"
+        data-prov-trigger="col-info-datum"
+        aria-label="Definition: Datum">
+    <svg width="13" height="13" viewBox="0 0 16 16" aria-hidden="true">
+        <circle cx="8" cy="8" r="7" stroke="currentColor" stroke-width="1.4" fill="none"/>
+        <text x="8" y="11.6" text-anchor="middle" font-size="9.5" font-weight="700"
+              fill="currentColor" font-family="Georgia, serif">i</text>
+    </svg>
+</button>
+<aside class="prov-popover prov-popover--glossary"
+       id="col-info-datum" role="dialog" aria-hidden="true"
+       aria-label="Definition: Datum">
+    <header class="prov-popover-head">
+        <h3 class="prov-popover-title">Datum</h3>
+        <button type="button" class="prov-popover-close" aria-label="Schlie&szlig;en">&times;</button>
+    </header>
+    <div class="prov-popover-body">
+        
+                                    <p class="prov-def">Ausstellungsdatum der Quelle, normalisiert nach ISO. Range-Datierungen wie „1198–1230" entstehen aus <code>@from</code>+<code>@to</code> oder <code>@notBefore</code>+<code>@notAfter</code>; sie werden nach Startjahr sortiert.</p>
+                                    <footer class="prov-foot">
+                                        <span class="prov-foot-source">
+                                            <strong>ISO-Datum:</strong> 8-stufige Kaskade<br>
+                                            <code>tei:teiHeader//tei:date[1]/@notBefore | @from+@to | @notAfter | @when</code>,<br>
+                                            Fallback auf <code>tei:origin[1]/&hellip;</code><br>
+                                            <strong>Display:</strong> <code>tei:teiHeader//tei:profileDesc/tei:creation/tei:date</code>
+                                        </span>
+                                    </footer>
+                                
+    </div>
+</aside>
+</span>
+                            </th>
+                            <th class="col-place" data-sort="p">
+                                <span class="prov-stat-container">Ort
+<button type="button" class="prov-trigger prov-trigger--icon"
+        aria-expanded="false" aria-haspopup="dialog"
+        aria-controls="col-info-ort"
+        data-prov-trigger="col-info-ort"
+        aria-label="Definition: Ort">
+    <svg width="13" height="13" viewBox="0 0 16 16" aria-hidden="true">
+        <circle cx="8" cy="8" r="7" stroke="currentColor" stroke-width="1.4" fill="none"/>
+        <text x="8" y="11.6" text-anchor="middle" font-size="9.5" font-weight="700"
+              fill="currentColor" font-family="Georgia, serif">i</text>
+    </svg>
+</button>
+<aside class="prov-popover prov-popover--glossary"
+       id="col-info-ort" role="dialog" aria-hidden="true"
+       aria-label="Definition: Ort">
+    <header class="prov-popover-head">
+        <h3 class="prov-popover-title">Ort</h3>
+        <button type="button" class="prov-popover-close" aria-label="Schlie&szlig;en">&times;</button>
+    </header>
+    <div class="prov-popover-body">
+        
+                                    <p class="prov-def">Ausstellungsort der Quelle laut TEI-Header. Klammer-Notation („[Wien]") markiert editorisch erschlossene Werte; sie werden beim Sortieren wie der Klartext eingeordnet.</p>
+                                    <footer class="prov-foot">
+                                        <span class="prov-foot-source">
+                                            <code>tei:teiHeader//tei:profileDesc/tei:creation/tei:placeName</code>
+                                        </span>
+                                    </footer>
+                                
+    </div>
+</aside>
+</span>
+                            </th>
+                            <th class="col-title">
+                                <span class="prov-stat-container">Regest
+<button type="button" class="prov-trigger prov-trigger--icon"
+        aria-expanded="false" aria-haspopup="dialog"
+        aria-controls="col-info-regest"
+        data-prov-trigger="col-info-regest"
+        aria-label="Definition: Regest">
+    <svg width="13" height="13" viewBox="0 0 16 16" aria-hidden="true">
+        <circle cx="8" cy="8" r="7" stroke="currentColor" stroke-width="1.4" fill="none"/>
+        <text x="8" y="11.6" text-anchor="middle" font-size="9.5" font-weight="700"
+              fill="currentColor" font-family="Georgia, serif">i</text>
+    </svg>
+</button>
+<aside class="prov-popover prov-popover--glossary"
+       id="col-info-regest" role="dialog" aria-hidden="true"
+       aria-label="Definition: Regest">
+    <header class="prov-popover-head">
+        <h3 class="prov-popover-title">Regest</h3>
+        <button type="button" class="prov-popover-close" aria-label="Schlie&szlig;en">&times;</button>
+    </header>
+    <div class="prov-popover-body">
+        
+                                    <p class="prov-def">Inhaltszusammenfassung der Quelle. Die Tabelle zeigt die ersten 200 Zeichen; die Vorschau und die Detailseite enthalten den vollen Regest.</p>
+                                    <footer class="prov-foot">
+                                        <span class="prov-foot-source">
+                                            <code>tei:text//tei:div[@type='abstract']</code><br>
+                                            Fallback bei reinen Stadtbuch-Eintr&auml;gen: <code>tei:div[@type='entry']</code>
+                                        </span>
+                                        <a class="prov-foot-link" href="./project/glossary.html#regest">&rarr; im Glossar</a>
+                                    </footer>
+                                
+    </div>
+</aside>
+</span>
+                            </th>
+                            <th class="col-content" data-sort="pcd">
+                                <span class="prov-stat-container">Beteiligte
+<button type="button" class="prov-trigger prov-trigger--icon"
+        aria-expanded="false" aria-haspopup="dialog"
+        aria-controls="col-info-beteiligte"
+        data-prov-trigger="col-info-beteiligte"
+        aria-label="Definition: Beteiligte">
+    <svg width="13" height="13" viewBox="0 0 16 16" aria-hidden="true">
+        <circle cx="8" cy="8" r="7" stroke="currentColor" stroke-width="1.4" fill="none"/>
+        <text x="8" y="11.6" text-anchor="middle" font-size="9.5" font-weight="700"
+              fill="currentColor" font-family="Georgia, serif">i</text>
+    </svg>
+</button>
+<aside class="prov-popover prov-popover--glossary"
+       id="col-info-beteiligte" role="dialog" aria-hidden="true"
+       aria-label="Definition: Beteiligte">
+    <header class="prov-popover-head">
+        <h3 class="prov-popover-title">Beteiligte</h3>
+        <button type="button" class="prov-popover-close" aria-label="Schlie&szlig;en">&times;</button>
+    </header>
+    <div class="prov-popover-body">
+        
+                                    <p class="prov-def">Anzahl <em>individueller</em> Personen pro Quelle (dedupliziert). Mehrfachnennungen derselben Person z&auml;hlen einmal. Der Zahlenwert ist der Sortierschl&uuml;ssel der Spalte; die Pillen rechts daneben markieren TEI-Strukturen, Faksimile und Multi-Event.</p>
+                                    <footer class="prov-foot">
+                                        <span class="prov-foot-source">
+                                            <strong>Personenzahl:</strong> distinkte <code>person_key</code> pro <code>file_key</code><br>
+                                            <code>pipeline/output/persons_in_sources.csv</code><br>
+                                            Geschlechter-Aufschl&uuml;sselung aus <code>persons.csv</code> Feld <code>sex</code><br><br>
+                                            <strong>Pillen R/S/E/N:</strong> distinkte Events pro <code>event_in</code><br>
+                                            <code>pipeline/output/events_in_sources.csv</code> (= TEI <code>tei:div[@type='abstract'|'seal'|'entry'|'nota']</code>)<br><br>
+                                            <strong>Faksimile-Pille:</strong> <code>tei:facsimile//tei:graphic[@url]</code><br>
+                                            <strong>Multi-Event-Pille:</strong> &ge; 2 distinkte Events
+                                        </span>
+                                        <a class="prov-foot-link" href="./project/glossary.html#individuelle-person">&rarr; im Glossar</a>
+                                    </footer>
+                                
+    </div>
+</aside>
+</span>
+                            </th>
                         </tr>
                     </thead>
                     <tbody id="doc-tbody">
@@ -497,12 +637,12 @@
         </div>
     </footer>
 
-    <script src="./static/js/core.js?v=20260502175327"></script>
-    <script src="./static/js/provenance.js?v=20260502175327"></script>
+    <script src="./static/js/core.js?v=20260502181514"></script>
+    <script src="./static/js/provenance.js?v=20260502181514"></script>
     
-<script src="./static/js/table-infra.js?v=20260502175327"></script>
-<script src="./static/js/tooltips.js?v=20260502175327"></script>
-<script src="./static/js/index.js?v=20260502175327"></script>
+<script src="./static/js/table-infra.js?v=20260502181514"></script>
+<script src="./static/js/tooltips.js?v=20260502181514"></script>
+<script src="./static/js/index.js?v=20260502181514"></script>
 
 </body>
 </html>

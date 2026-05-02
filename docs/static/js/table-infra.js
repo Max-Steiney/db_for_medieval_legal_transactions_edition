@@ -140,7 +140,12 @@ let TableInfra = (function() {
     function setupSortHeaders(tableId, state, applyFilters) {
         let headers = document.querySelectorAll('#' + tableId + ' th[data-sort]');
         headers.forEach(function(th) {
-            th.addEventListener('click', function() {
+            th.addEventListener('click', function(e) {
+                // Klicks auf den Provenienz-Trigger (i-Icon) oder das
+                // dazu gehoerende Popover sollen NICHT die Sortierung
+                // ausloesen — sie oeffnen die Quellenangabe und sind
+                // damit ein anderer Interaktionspfad als der Spalten-Sort.
+                if (e.target.closest('.prov-trigger, .prov-popover')) return;
                 let key = th.getAttribute('data-sort');
                 if (state.sortKey === key) {
                     state.sortDir *= -1;
