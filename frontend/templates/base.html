@@ -3,13 +3,13 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <meta http-equiv="Content-Security-Policy" content="default-src 'self'; script-src 'self' https://unpkg.com; style-src 'self' https://fonts.googleapis.com https://unpkg.com; font-src 'self' https://fonts.gstatic.com; img-src 'self' data: https://*.tile.openstreetmap.org https://images.monasterium.net https://www.monasterium.net; connect-src 'self'; frame-ancestors 'none'; base-uri 'self'; form-action 'self'; upgrade-insecure-requests">
+    <meta http-equiv="Content-Security-Policy" content="default-src 'self'; script-src 'self'; style-src 'self'; font-src 'self'; img-src 'self' data: https://images.monasterium.net https://www.monasterium.net; connect-src 'self'; frame-ancestors 'none'; base-uri 'self'; form-action 'self'; upgrade-insecure-requests">
     <meta name="referrer" content="strict-origin-when-cross-origin">
     <meta http-equiv="Permissions-Policy" content="camera=(), microphone=(), geolocation=(), interest-cohort=()">
     <title>{% block title %}Stadt und Gemeinschaft Wien{% endblock %} — Datenbank</title>
-    <link rel="preconnect" href="https://fonts.googleapis.com">
-    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-    <link href="https://fonts.googleapis.com/css2?family=Crimson+Pro:ital,wght@0,300;0,400;0,500;0,600;0,700;1,300;1,400;1,500&family=Inter:wght@300;400;500;600&family=JetBrains+Mono:wght@400&display=swap" rel="stylesheet">
+    <link rel="preload" as="font" type="font/woff2" crossorigin
+          href="{{ root_path }}/static/fonts/inter-400-latin.woff2">
+    <link rel="stylesheet" href="{{ root_path }}/static/css/fonts.css?v={{ asset_v }}">
     <link rel="stylesheet" href="{{ root_path }}/static/css/tokens.css?v={{ asset_v }}">
     <link rel="stylesheet" href="{{ root_path }}/static/css/base.css?v={{ asset_v }}">
     <link rel="stylesheet" href="{{ root_path }}/static/css/components.css?v={{ asset_v }}">
@@ -46,7 +46,6 @@
                         <a href="{{ root_path }}/exploration/roles.html">Rollen</a>
                         <a href="{{ root_path }}/exploration/networks.html">Beziehungen</a>
                         <a href="{{ root_path }}/exploration/transactions.html">Transaktionen</a>
-                        <a href="{{ root_path }}/exploration/places.html">Orte</a>
                     </div>
                 </div>
                 <a href="{{ root_path }}/analysis/index.html">Analyse</a>

@@ -3,22 +3,26 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="Content-Security-Policy" content="default-src 'self'; script-src 'self'; style-src 'self'; font-src 'self'; img-src 'self' data: https://images.monasterium.net https://www.monasterium.net; connect-src 'self'; frame-ancestors 'none'; base-uri 'self'; form-action 'self'; upgrade-insecure-requests">
+    <meta name="referrer" content="strict-origin-when-cross-origin">
+    <meta http-equiv="Permissions-Policy" content="camera=(), microphone=(), geolocation=(), interest-cohort=()">
     <title>Glossar — Datenbank</title>
-    <link rel="preconnect" href="https://fonts.googleapis.com">
-    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-    <link href="https://fonts.googleapis.com/css2?family=Crimson+Pro:ital,wght@0,300;0,400;0,500;0,600;0,700;1,300;1,400;1,500&family=Inter:wght@300;400;500;600&family=JetBrains+Mono:wght@400&display=swap" rel="stylesheet">
-    <link rel="stylesheet" href="../static/css/tokens.css">
-    <link rel="stylesheet" href="../static/css/base.css">
-    <link rel="stylesheet" href="../static/css/components.css">
-    <link rel="stylesheet" href="../static/css/responsive.css">
-    <link rel="stylesheet" href="../static/css/print.css">
-    <link rel="stylesheet" href="../static/css/provenance.css">
-    <script>window.ROOT_PATH = "..";</script>
+    <link rel="preload" as="font" type="font/woff2" crossorigin
+          href="../static/fonts/inter-400-latin.woff2">
+    <link rel="stylesheet" href="../static/css/fonts.css?v=20260502142559">
+    <link rel="stylesheet" href="../static/css/tokens.css?v=20260502142559">
+    <link rel="stylesheet" href="../static/css/base.css?v=20260502142559">
+    <link rel="stylesheet" href="../static/css/components.css?v=20260502142559">
+    <link rel="stylesheet" href="../static/css/responsive.css?v=20260502142559">
+    <link rel="stylesheet" href="../static/css/print.css?v=20260502142559">
+    <link rel="stylesheet" href="../static/css/provenance.css?v=20260502142559">
     
-<link rel="stylesheet" href="../static/css/content.css">
+<link rel="stylesheet" href="../static/css/content.css?v=20260502142559">
 
 </head>
-<body>
+<body data-root-path=".."
+      data-released-min="1177"
+      data-released-max="1414">
     <a class="skip-link" href="#main-content">Zum Inhalt springen</a>
     <nav class="site-nav">
         <div class="nav-inner">
@@ -36,8 +40,6 @@
                     <button class="nav-dropdown-trigger" aria-expanded="false" aria-haspopup="true">Register <span class="nav-dropdown-arrow">&#x25BE;</span></button>
                     <div class="nav-dropdown-menu">
                         <a href="../register/persons.html">Personen</a>
-                        <a href="../register/organisations.html" class="nav-disabled" aria-disabled="true" title="Noch nicht freigegeben">Organisationen</a>
-                        <a href="../register/places.html" class="nav-disabled" aria-disabled="true" title="Noch nicht freigegeben">Orte</a>
                     </div>
                 </div>
                 <div class="nav-dropdown">
@@ -46,7 +48,6 @@
                         <a href="../exploration/roles.html">Rollen</a>
                         <a href="../exploration/networks.html">Beziehungen</a>
                         <a href="../exploration/transactions.html">Transaktionen</a>
-                        <a href="../exploration/places.html">Orte</a>
                     </div>
                 </div>
                 <a href="../analysis/index.html">Analyse</a>
@@ -54,8 +55,6 @@
                     <button class="nav-dropdown-trigger" aria-expanded="false" aria-haspopup="true">Projekt <span class="nav-dropdown-arrow">&#x25BE;</span></button>
                     <div class="nav-dropdown-menu">
                         <a href="../project/about.html">&Uuml;ber das Projekt</a>
-                        <a href="../project/statistics.html">Statistik</a>
-                        <a href="../project/quality.html">Qualit&auml;t</a>
                         <a href="../project/edition-guidelines.html">Editionsrichtlinien</a>
                         <a href="../project/glossary.html">Glossar</a>
                         <a href="../impressum.html">Impressum</a>
@@ -79,15 +78,19 @@
                 <h2>Inhalt</h2>
                 <div class="toc">
 <ul>
+<li><a href="#erschlieungsform">Erschließungsform</a></li>
 <li><a href="#event">Event</a></li>
+<li><a href="#faksimile">Faksimile</a></li>
 <li><a href="#gesamtnennung">Gesamtnennung</a></li>
 <li><a href="#individuelle-person">Individuelle Person</a></li>
 <li><a href="#menschen-event">Menschen-Event</a></li>
 <li><a href="#quelle">Quelle</a></li>
 <li><a href="#quellenkorpus">Quellenkorpus</a></li>
+<li><a href="#regest">Regest</a></li>
 <li><a href="#rechtsgeschaft">Rechtsgeschäft</a></li>
 <li><a href="#rolle">Rolle</a></li>
 <li><a href="#rollenkombination">Rollenkombination</a></li>
+<li><a href="#volltext">Volltext</a></li>
 <li><a href="#siehe-auch">Siehe auch</a></li>
 </ul>
 </div>
@@ -97,17 +100,41 @@
         <div class="guidelines-body">
             <h1 id="glossar">Glossar<a class="headerlink" href="#glossar" title="Permanent link">&para;</a></h1>
 <p>Kanonische Definitionen aller Fachbegriffe der Edition. Quelle für Tooltips und die Glossar-Seite im UI. Alphabetisch sortiert. Pro Eintrag Definition, Abgrenzung und, wo nötig, eine Notiz zu häufigen Verwechslungen.</p>
+<h2 id="erschlieungsform">Erschließungsform<a class="headerlink" href="#erschlieungsform" title="Permanent link">&para;</a></h2>
+<p>Die Form, in der eine Quelle in der Edition zugänglich gemacht wird: als <a href="#regest">Regest</a> mit <a href="#faksimile">Faksimile</a> oder als edierter <a href="#volltext">Volltext</a>. Die Erschließungsform bestimmt, welche Art von Aussage eine Quelle stützt. Aus einem Volltext lassen sich textgenaue Belege ziehen; ein Regest stützt nur die zusammengefasste Aussage, das Faksimile dient der Verifikation am Bild.</p>
+<p>Verwendet in Erschließungsformen.</p>
 <h2 id="event">Event<a class="headerlink" href="#event" title="Permanent link">&para;</a></h2>
 <p>Ein konkretes Rechtsgeschäft, das in einer Quelle verzeichnet ist. Events sind die kleinste Einheit, auf die sich Rollen, Beteiligte und Transaktionsangaben beziehen.</p>
 <p>Eine Quelle kann mehrere Events dokumentieren. Events wiederum können aufeinander verweisen, etwa wenn ein späteres Rechtsgeschäft auf ein früheres zurückbezieht.</p>
 <p>Achtung: Nicht verwechseln mit einer Quelle als Ganzes. Die Unterscheidung trägt alle Zähl- und Filteroperationen. Verwendet in Hierarchie der Daten, requirements.</p>
+<h2 id="faksimile">Faksimile<a class="headerlink" href="#faksimile" title="Permanent link">&para;</a></h2>
+<p>Die digitale Reproduktion einer Quelle als Bild. Ein Faksimile zeigt die Quelle, wie sie überliefert ist, ohne sie zu transkribieren. Es macht die paläografische Lesart der Quelle einsehbar und erlaubt die Verifikation einer Lesung gegen das Original.</p>
+<p>In der Edition liegen Faksimiles für QGW-Bestände vor, eingebunden über die Monasterium-Plattform. Stadtbücher haben (noch) keine Faksimiles. Verwendet in Erschließungsformen, <a href="#erschliessungsform">Erschließungsform</a>.</p>
 <h2 id="gesamtnennung">Gesamtnennung<a class="headerlink" href="#gesamtnennung" title="Permanent link">&para;</a></h2>
 <p>Eine Beziehung zwischen einer Person, Organisation oder einem Ort und einer Quelle, in der sie genannt wird. Wer in drei Quellen vorkommt, trägt drei Gesamtnennungen bei. Eine Person, die in derselben Quelle mehrfach erwähnt wird (typisch für Zeugenreihen oder Urteilslisten), trägt für diese Quelle nur eine Gesamtnennung bei (quellenbereinigte Zählung).</p>
 <p>Gesamtnennungen sind die Zählebene für Häufigkeit gesellschaftlicher Präsenz. Sie machen Aussagen über Dichte und Funktionsträgerschaft möglich, ohne durch Mehrfachnennungen in einzelnen Urteilsformeln verzerrt zu werden.</p>
+<p>Zählregel TEI: Eine Gesamtnennung entsteht ausschließlich aus einer direkten Personen-Annotation im Quellentext (<code>&lt;rs type="person"&gt;</code> mit <code>@ref</code> auf einen Personeneintrag). Zwei Arten von Annotationen werden zusätzlich ausgeschlossen:</p>
+<ol>
+<li>Korrespondierende Hilfsverknüpfungen (<code>@corresp</code> ohne <code>@type="person"</code>) — sie sind administrative Verknüpfungen für Beziehungen, keine Quellentext-Erwähnungen.</li>
+<li>Personen-Annotationen innerhalb verschachtelter <code>&lt;rs type="event"&gt;</code>-Elemente (mentioned Events) — sie verweisen auf andere, früher referenzierte Geschäfte und sind keine Akteure des aktuellen Quellenereignisses.</li>
+</ol>
+<p>Diese doppelte Filterung folgt dem Altsystem (PHP/MariaDB-Frontend) und der editionswissenschaftlichen Konvention. Verifikations-XPath:</p>
+<div class="highlight"><pre><span></span><code>//tei:body//tei:*[@type=&#39;person&#39;]
+  [not(ancestor::tei:rs[@type=&#39;event&#39;]
+       [ancestor::tei:rs[@type=&#39;event&#39;]])]
+</code></pre></div>
+
 <p>Achtung: Nicht zu verwechseln mit <a href="#individuelle-person">Individuelle Person</a>. Beide Zählebenen sind gleichzeitig gültig, beantworten aber verschiedene Fragen. Verwendet in Umschaltbarkeit der Zählebenen und Quellenbereinigte Zählung.</p>
 <h2 id="individuelle-person">Individuelle Person<a class="headerlink" href="#individuelle-person" title="Permanent link">&para;</a></h2>
 <p>Eine konsolidierte Identität im Personenregister, unabhängig von der Anzahl ihrer Nennungen. Dieselbe historische Person ist genau eine individuelle Person, auch wenn sie in fünfzig Quellen erscheint.</p>
 <p>Die Zählebene für gesellschaftliche Struktur. Sie beantwortet, wie viele unterscheidbare Akteurinnen und Akteure das Korpus enthält. Analog gelten individuelle Organisationen und individuelle Orte.</p>
+<p>Zählregel: Eine Person zählt im Frontend, sobald sie in mindestens einer freigegebenen Quelle als <code>&lt;rs type="person"&gt;</code> annotiert ist — egal ob direkt im Top-Level-Event oder innerhalb eines verschachtelten (mentioned) rs-Events. Personen, die ausschließlich über <code>@corresp</code>-Hilfsverknüpfungen oder nur in nicht freigegebenen Korpora referenziert werden, sind im Personenregister des Frontends nicht enthalten. Die Gesamtgröße des Personenregisters in <code>indices/personList.xml</code> ist daher größer als die im Frontend ausgewiesene Anzahl individueller Personen.</p>
+<p>Asymmetrie zur Gesamtnennung: Eine Person erscheint im Distinct-Count, sobald sie irgendwo annotiert ist; ihre Nennungen werden aber nur außerhalb mentioned Events gezählt. Das ist gewollt — eine Person, die nur als Querverweis in einem mentioned Event auftritt, ist <em>bekannt</em> (gehört in das Register), aber nicht <em>Akteur</em> der aktuellen Quelle (zählt also nicht zu den Nennungen).</p>
+<p>Verifikations-XPath:</p>
+<div class="highlight"><pre><span></span><code>//tei:body//tei:*[@type=&#39;person&#39;]/@ref
+</code></pre></div>
+
+<p>distinct über den <code>@ref</code>-Wert (Personen-Schlüssel <code>pe__…</code>).</p>
 <p>Verwendet in Umschaltbarkeit der Zählebenen, scholar-user-stories.</p>
 <h2 id="menschen-event">Menschen-Event<a class="headerlink" href="#menschen-event" title="Permanent link">&para;</a></h2>
 <p>Eine Person, die in einem Rechtsgeschäft namentlich erwähnt wird, weil sie in einem früheren, referenzierten Geschäft bereits vorkam. Sie ist mit einem Personennamen belegt, gehört aber nicht zum unmittelbaren Ereignis der aktuellen Quelle.</p>
@@ -121,6 +148,10 @@
 <p>Eine thematisch und editorisch zusammengehörige Gruppe von Quellen (beispielsweise die QGW-Bände oder die Stadtbücher). Der Quellenkorpus ist die oberste Gliederungsebene der Datenbasis.</p>
 <p>Der Begriff ersetzt die frühere Bezeichnung „Sammlung". „Sammlung" ist editionsphilologisch ungenau, weil sie einen kuratorischen Akt nahelegt, den der Bestand so nicht erfahren hat.</p>
 <p>Verwendet in Quellenkorpora, Bestandsfilter, Begriff Quellenkorpus.</p>
+<h2 id="regest">Regest<a class="headerlink" href="#regest" title="Permanent link">&para;</a></h2>
+<p>Eine redaktionelle Zusammenfassung des wesentlichen Inhalts einer Quelle. Das Regest fasst Gegenstand, Beteiligte, Datum und Ort eines <a href="#rechtsgeschaftrechtsgeschafts">Rechtsgeschäft|Rechtsgeschäfts</a> zusammen, ohne den Quellentext im Wortlaut wiederzugeben.</p>
+<p>Im Datenbestand der QGW-Bände ist das Regest die primäre Erschließungsform; der Quellentext wird nicht ediert, ist aber im <a href="#faksimile">Faksimile</a> einsehbar. Aussagen, die textgenaue Wortlaute brauchen, lassen sich aus einem Regest nicht ableiten — sie verlangen den <a href="#volltext">Volltext</a> oder einen Blick ins Faksimile.</p>
+<p>Verwendet in Erschließungsformen, <a href="#erschliessungsform">Erschließungsform</a>.</p>
 <h2 id="rechtsgeschaft">Rechtsgeschäft<a class="headerlink" href="#rechtsgeschaft" title="Permanent link">&para;</a></h2>
 <p>Eine Transaktion mit rechtlich bindender Wirkung zwischen Akteurinnen und Akteuren, niedergelegt in einer Quelle. Typische Rechtsgeschäfte sind Kauf, Verkauf, Schenkung, Verleihung, Verpfändung und Zeugenschaft.</p>
 <p>Rechtsgeschäfte sind der historische Gegenstand der Datenbank. Ihre Auszeichnung im Datenmodell geschieht über <a href="#event">Event</a>. Rechtsgeschäft ist der fachliche Begriff, Event die technische Kategorie.</p>
@@ -128,11 +159,15 @@
 <h2 id="rolle">Rolle<a class="headerlink" href="#rolle" title="Permanent link">&para;</a></h2>
 <p>Die Funktion einer Person oder Organisation in einem Event. Das kontrollierte Vokabular der Rollen ist kurz und festgelegt: <code>issuer</code> (ausstellend), <code>recipient</code> (empfangend), <code>sealer or witness</code> (siegelnd oder bezeugend), <code>other</code>, <code>none</code>.</p>
 <p>Nur diese Werte sind gültig. Ein offenes Rollenvokabular wäre statistisch unbrauchbar, weil es die Aggregation über das Korpus verhinderte.</p>
-<p>Verwendet in requirements, Rollenbasierte Akteursanalyse, Analyse.</p>
+<p>Verwendet in requirements, Rollenbasierte Akteursanalyse, analyse.</p>
 <h2 id="rollenkombination">Rollenkombination<a class="headerlink" href="#rollenkombination" title="Permanent link">&para;</a></h2>
 <p>Eine aus mehreren Rollen abgeleitete Kategorie, die das UI als Abfrage zugänglich macht. Beispiele sind gemeinsam handelnde Eheleute oder Witwen in einer bestimmten Rolle.</p>
 <p>Rollenkombinationen sind keine eigene Annotationsebene im Datenmodell, sondern eine Auswertungsperspektive. Sie entstehen durch Kombination von Rollenattributen und anderen Merkmalen wie Geschlecht oder Beziehungstyp.</p>
-<p>Verwendet in scholar-user-stories, Analyse.</p>
+<p>Verwendet in scholar-user-stories, analyse.</p>
+<h2 id="volltext">Volltext<a class="headerlink" href="#volltext" title="Permanent link">&para;</a></h2>
+<p>Der edierte Wortlaut einer Quelle, transkribiert und annotiert. Im Volltext sind Personen, Organisationen, Orte und Rechtsgeschäfte unmittelbar im Quellentext markiert; textgenaue Belege sind möglich.</p>
+<p>In der Edition sind die Stadtbücher als Volltext erschlossen. QGW-Bestände sind über <a href="#regest">Regest</a> und <a href="#faksimile">Faksimile</a> erschlossen, ohne Volltext-Edition.</p>
+<p>Verwendet in Erschließungsformen, <a href="#erschliessungsform">Erschließungsform</a>.</p>
 <h2 id="siehe-auch">Siehe auch<a class="headerlink" href="#siehe-auch" title="Permanent link">&para;</a></h2>
 <ul>
 <li>data setzt diese Begriffe systemisch in Verbindung</li>
@@ -143,7 +178,7 @@
     </div>
 
     <footer class="guidelines-footer">
-        <p>Zuletzt aktualisiert: 30. April 2026</p>
+        <p>Zuletzt aktualisiert: 2. Mai 2026</p>
     </footer>
 </article>
 
@@ -163,11 +198,10 @@
         </div>
     </footer>
 
-    <script>window.RELEASED_PERIOD = {min: 1177, max: 1414};</script>
-    <script src="../static/js/core.js"></script>
-    <script src="../static/js/provenance.js"></script>
+    <script src="../static/js/core.js?v=20260502142559"></script>
+    <script src="../static/js/provenance.js?v=20260502142559"></script>
     
-<script src="../static/js/content.js"></script>
+<script src="../static/js/content.js?v=20260502142559"></script>
 
 </body>
 </html>

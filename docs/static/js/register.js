@@ -6,20 +6,20 @@
 (function() {
     'use strict';
 
-    var esc = EdCore.esc;
+    let esc = EdCore.esc;
 
     function initRegister() {
-        var table = document.getElementById('register-table');
+        let table = document.getElementById('register-table');
         if (!table) return;
-        var regType = table.dataset.type;
-        var filterType = document.getElementById('filter-type');
-        var filterDocs = document.getElementById('filter-docs');
-        var filterQuality = document.getElementById('filter-quality');
-        var resultCount = document.getElementById('result-count');
-        var activeFiltersEl = document.getElementById('active-filters');
+        let regType = table.dataset.type;
+        let filterType = document.getElementById('filter-type');
+        let filterDocs = document.getElementById('filter-docs');
+        let filterQuality = document.getElementById('filter-quality');
+        let resultCount = document.getElementById('result-count');
+        let activeFiltersEl = document.getElementById('active-filters');
 
-        var allEntries = [];
-        var state = {
+        let allEntries = [];
+        let state = {
             query: '',
             letter: '',
             typeFilter: '',
@@ -29,12 +29,12 @@
             sortDir: 1
         };
 
-        var filteredEntries = [];
-        var colCount = regType === 'persons' ? 6 : 5;
+        let filteredEntries = [];
+        let colCount = regType === 'persons' ? 6 : 5;
 
         // --- Detail JSON cache ---
-        var detailCache = null;  // lazy-loaded JSON { entityId: [{u,i,d,c,r},...] }
-        var jsonFile = (window.ROOT_PATH || '.') + '/register/' + regType + '.json';
+        let detailCache = null;  // lazy-loaded JSON { entityId: [{u,i,d,c,r},...] }
+        let jsonFile = (window.ROOT_PATH || '.') + '/register/' + regType + '.json';
 
         function loadDetailJSON(cb) {
             if (detailCache) { cb(detailCache); return; }
@@ -45,25 +45,25 @@
         }
 
         function renderDetailRow(entry, parentTr) {
-            var existing = parentTr.nextElementSibling;
+            let existing = parentTr.nextElementSibling;
             if (existing && existing.classList.contains('detail-row')) {
                 existing.remove();
                 parentTr.classList.remove('expanded');
                 return;
             }
             loadDetailJSON(function(cache) {
-                var docs = cache[entry.id] || [];
-                var detailTr = document.createElement('tr');
+                let docs = cache[entry.id] || [];
+                let detailTr = document.createElement('tr');
                 detailTr.className = 'detail-row';
-                var td = document.createElement('td');
+                let td = document.createElement('td');
                 td.colSpan = colCount;
                 if (docs.length === 0) {
                     td.innerHTML = '<div class="detail-content"><p class="no-docs-note">Keine Quellen verkn\u00fcpft.</p></div>';
                 } else {
-                    var html = '<div class="detail-content"><table class="detail-doc-table"><thead><tr>'
+                    let html = '<div class="detail-content"><table class="detail-doc-table"><thead><tr>'
                         + '<th>Nr.</th><th>Datum</th><th>Quellenkorpus</th><th>Regest</th></tr></thead><tbody>';
-                    for (var i = 0; i < docs.length; i++) {
-                        var d = docs[i];
+                    for (let i = 0; i < docs.length; i++) {
+                        let d = docs[i];
                         html += '<tr><td><a href="' + esc(d.u) + '">' + esc(d.i) + '</a></td>'
                             + '<td>' + esc(d.d) + '</td>'
                             + '<td>' + esc(d.c) + '</td>'
@@ -79,20 +79,20 @@
         }
 
         // --- Table renderer ---
-        var renderer = TableInfra.createTableRenderer({
+        let renderer = TableInfra.createTableRenderer({
             tbodyId: 'register-tbody',
             noResultsId: 'no-results',
             colCount: colCount,
             renderRow: function(entry, i, tr) {
                 tr.dataset.entityId = entry.id;
-                var dcClass = entry.dc === 0 ? 'doc-count-badge doc-count-zero' : 'doc-count-badge';
-                var nameBtn = entry.dc > 0
+                let dcClass = entry.dc === 0 ? 'doc-count-badge doc-count-zero' : 'doc-count-badge';
+                let nameBtn = entry.dc > 0
                     ? '<button class="register-name register-name-linked" data-idx="' + i + '">' + esc(entry.n) + '</button>'
                     : '<span class="register-name">' + esc(entry.n) + '</span>';
-                var html = '<td class="col-name">' + nameBtn + '</td>';
+                let html = '<td class="col-name">' + nameBtn + '</td>';
 
                 if (regType === 'persons') {
-                    var sexLabel = entry.sex === 'm' ? 'm' : entry.sex === 'f' ? 'w' : '\u2013';
+                    let sexLabel = entry.sex === 'm' ? 'm' : entry.sex === 'f' ? 'w' : '\u2013';
                     html += '<td class="col-sex">' + sexLabel + '</td>';
                     html += '<td class="col-death">' + esc(entry.d) + '</td>';
                 } else {
@@ -106,8 +106,8 @@
                 }
 
                 // Quality indicator (worst score across linked documents)
-                var qLabel = entry.qw === 2 ? '\u26a0' : entry.qw === 1 ? '\u2139' : entry.qw === 0 ? '\u2713' : '\u2013';
-                var qClass = 'quality-dot quality-' + (entry.qw === 2 ? 'warning' : entry.qw === 1 ? 'notice' : entry.qw === 0 ? 'ok' : 'na');
+                let qLabel = entry.qw === 2 ? '\u26a0' : entry.qw === 1 ? '\u2139' : entry.qw === 0 ? '\u2713' : '\u2013';
+                let qClass = 'quality-dot quality-' + (entry.qw === 2 ? 'warning' : entry.qw === 1 ? 'notice' : entry.qw === 0 ? 'ok' : 'na');
                 html += '<td class="col-quality"><span class="' + qClass + '" title="' + (entry.qw === 2 ? 'Warnungen' : entry.qw === 1 ? 'Hinweise' : entry.qw === 0 ? 'Fehlerfrei' : 'Keine Quellen') + '">' + qLabel + '</span></td>';
 
                 html += '<td class="col-id"><span class="cell-id">' + esc(entry.id) + '</span></td>';
@@ -117,15 +117,15 @@
         });
 
         // --- Click handler for inline detail expansion ---
-        var tbody = document.getElementById('register-tbody');
+        let tbody = document.getElementById('register-tbody');
         tbody.addEventListener('click', function(e) {
             // Clickable: name button OR doc-count badge (when dc > 0)
-            var trigger = e.target.closest('.register-name-linked, .doc-count-link');
+            let trigger = e.target.closest('.register-name-linked, .doc-count-link');
             if (!trigger) return;
-            var tr = trigger.closest('tr');
-            var entityId = tr.dataset.entityId;
-            var entry = null;
-            for (var i = 0; i < allEntries.length; i++) {
+            let tr = trigger.closest('tr');
+            let entityId = tr.dataset.entityId;
+            let entry = null;
+            for (let i = 0; i < allEntries.length; i++) {
                 if (allEntries[i].id === entityId) { entry = allEntries[i]; break; }
             }
             if (entry && entry.dc > 0) renderDetailRow(entry, tr);
@@ -136,10 +136,10 @@
         TableInfra.setupSortHeaders('register-table', state, applyFilters);
 
         // --- Alphabet bar ---
-        var alphaBtns = document.querySelectorAll('.alpha-btn');
+        let alphaBtns = document.querySelectorAll('.alpha-btn');
         alphaBtns.forEach(function(btn) {
             btn.addEventListener('click', function() {
-                var letter = btn.dataset.letter;
+                let letter = btn.dataset.letter;
                 if (state.letter === letter) {
                     state.letter = '';
                 } else {
@@ -185,7 +185,7 @@
                 if (state.letter && entry._fl !== state.letter) return false;
 
                 if (state.typeFilter) {
-                    var field = regType === 'persons' ? entry.sex : entry.tp;
+                    let field = regType === 'persons' ? entry.sex : entry.tp;
                     if (field !== state.typeFilter) return false;
                 }
 
@@ -193,13 +193,13 @@
                 if (state.docsFilter === '0' && entry.dc > 0) return false;
 
                 if (state.qualityFilter !== '') {
-                    var qVal = parseInt(state.qualityFilter);
+                    let qVal = parseInt(state.qualityFilter);
                     if (entry.qw !== qVal) return false;
                 }
 
                 if (state.query) {
-                    var words = state.query.split(/\s+/);
-                    for (var i = 0; i < words.length; i++) {
+                    let words = state.query.split(/\s+/);
+                    for (let i = 0; i < words.length; i++) {
                         if (entry._s.indexOf(words[i]) === -1) return false;
                     }
                 }
@@ -209,7 +209,7 @@
 
             // Sort
             filteredEntries.sort(function(a, b) {
-                var va, vb;
+                let va, vb;
                 if (state.sortKey === 'dc' || state.sortKey === 'qw') {
                     va = a[state.sortKey]; vb = b[state.sortKey];
                 } else {
@@ -256,45 +256,47 @@
 
         // Deep-link: auto-expand entity from URL hash (e.g. register/persons.html#pe__123)
         function openFromHash() {
-            var hash = window.location.hash;
+            let hash = window.location.hash;
             if (!hash || hash.length < 2) return;
-            var targetId = decodeURIComponent(hash.substring(1));
-            var entry = null;
-            for (var i = 0; i < allEntries.length; i++) {
+            let targetId = decodeURIComponent(hash.substring(1));
+            let entry = null;
+            for (let i = 0; i < allEntries.length; i++) {
                 if (allEntries[i].id === targetId) { entry = allEntries[i]; break; }
             }
             if (!entry) return;
             // Filter via Suche auf die Ziel-ID, damit das Target im tbody
             // landet (_s enthält die ID). Sonst blockiert die Paginierung.
-            // state.query muss lowercase sein, weil _s lowercase gespeichert wird.
-            state.query = targetId.toLowerCase();
+            // state.query muss mit der gleichen Normalisierung (V3) erfolgen,
+            // mit der auch _s vorberechnet wurde.
+            state.query = EdCore.normForSearch(targetId);
             state.letter = '';
             state.typeFilter = '';
             state.docsFilter = '';
             state.qualityFilter = '';
-            var si = document.getElementById('search-input');
+            let si = document.getElementById('search-input');
             if (si) si.value = targetId;
             if (filterType) filterType.value = '';
             if (filterDocs) filterDocs.value = '';
             if (filterQuality) filterQuality.value = '';
             applyFilters();
-            var row = tbody.querySelector('tr[data-entity-id="' + CSS.escape(targetId) + '"]');
+            let row = tbody.querySelector('tr[data-entity-id="' + CSS.escape(targetId) + '"]');
             if (!row) return;
             row.scrollIntoView({ block: 'center' });
             renderDetailRow(entry, row);
         }
 
         // --- Load data from external JSON file ---
-        var loadingTbody = document.getElementById('register-tbody');
-        loadingTbody.innerHTML = '<tr><td colspan="' + colCount + '" style="text-align:center;padding:2rem;color:var(--color-text-muted)">Daten werden geladen\u2026</td></tr>';
+        let loadingTbody = document.getElementById('register-tbody');
+        loadingTbody.innerHTML = '<tr><td colspan="' + colCount + '" class="cell-placeholder">Daten werden geladen\u2026</td></tr>';
 
         fetch((window.ROOT_PATH || '.') + '/data/' + regType + '_search.json')
             .then(function(r) { return r.json(); })
             .then(function(data) {
                 allEntries = data;
-                // Pre-compute search strings
+                // Pre-compute search strings (V3: Umlaut-tolerant via EdCore.normForSearch)
+                let norm = EdCore.normForSearch;
                 allEntries.forEach(function(entry) {
-                    entry._s = (entry.n + ' ' + entry.id + ' ' + (entry.tp || '') + ' ' + (entry.fn || '') + ' ' + (entry.sn || '')).toLowerCase();
+                    entry._s = norm(entry.n + ' ' + entry.id + ' ' + (entry.tp || '') + ' ' + (entry.fn || '') + ' ' + (entry.sn || ''));
                     entry._fl = entry.n.charAt(0).toUpperCase();
                 });
                 filteredEntries = allEntries.slice();
@@ -304,7 +306,7 @@
             })
             .catch(function(err) {
                 console.warn('Register-Daten konnten nicht geladen werden:', err);
-                loadingTbody.innerHTML = '<tr><td colspan="' + colCount + '" style="text-align:center;padding:2rem;color:var(--color-text-muted)">Daten konnten nicht geladen werden.</td></tr>';
+                loadingTbody.innerHTML = '<tr><td colspan="' + colCount + '" class="cell-placeholder">Daten konnten nicht geladen werden.</td></tr>';
             });
     }
 

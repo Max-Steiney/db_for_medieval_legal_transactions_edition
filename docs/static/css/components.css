@@ -46,3 +46,31 @@
     opacity: 1;
     pointer-events: auto;
 }
+
+
+/* --- Cross-cutting JS-rendered table patterns ---
+   Used by table-infra, drill-down, register, index, exploration-* and
+   chart-helpers when injecting HTML at runtime. Replacing prior
+   inline-style strings.
+   ------------------------------------------------------------------ */
+
+/* Centred placeholder text for loading / empty states inside tables and
+   chart containers. Always paired with colspan on the wrapping <td>. */
+.cell-placeholder {
+    text-align: center;
+    padding: 2rem;
+    color: var(--color-text-muted);
+}
+
+/* Invisible sentinel row used by IntersectionObserver-driven progressive
+   table rendering. Carries no visual weight. */
+.table-sentinel {
+    height: 1px;
+    padding: 0;
+    border: none;
+}
+
+/* Inline secondary text in dynamic markup (e.g. label variants). */
+.text-muted-inline {
+    color: var(--color-text-muted);
+}

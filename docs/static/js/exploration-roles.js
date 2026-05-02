@@ -10,12 +10,12 @@
 (function() {
     'use strict';
 
-    var esc = EdCore.esc;
-    var fmt = ChartHelpers.fmt;
-    var TOOLTIP_CLASS = 'explore-tooltip';
+    let esc = EdCore.esc;
+    let fmt = ChartHelpers.fmt;
+    let TOOLTIP_CLASS = 'explore-tooltip';
 
     // Human-readable labels for org types
-    var ORG_TYPE_LABELS = {
+    let ORG_TYPE_LABELS = {
         'Messe': 'Messe/Stiftung',
         'Pfarre': 'Pfarre',
         'Stadt': 'Stadt',
@@ -46,23 +46,23 @@
 
         ChartHelpers.createTooltip(TOOLTIP_CLASS);
 
-        var epicA = null;
+        let epicA = null;
 
         // Colour map
-        var SEX_COLORS = {
+        let SEX_COLORS = {
             m: ChartHelpers.getToken('--color-sex-m') || '#2e5a88',
             f: ChartHelpers.getToken('--color-sex-f') || '#b85c2f',
             unspecified: ChartHelpers.getToken('--color-sex-none') || '#b0a99f'
         };
-        var SEX_LABELS = ChartHelpers.SEX_LABELS;
-        var ROLE_LABELS = ChartHelpers.ROLE_LABELS;
-        var CANONICAL_ROLES = ChartHelpers.ROLE_ORDER;
-        var SEX_KEYS = ['m', 'f', 'unspecified'];
-        var ORG_COLOR = ChartHelpers.getToken('--color-rel-occ') || '#2e5a88';
+        let SEX_LABELS = ChartHelpers.SEX_LABELS;
+        let ROLE_LABELS = ChartHelpers.ROLE_LABELS;
+        let CANONICAL_ROLES = ChartHelpers.ROLE_ORDER;
+        let SEX_KEYS = ['m', 'f', 'unspecified'];
+        let ORG_COLOR = ChartHelpers.getToken('--color-rel-occ') || '#2e5a88';
 
         // State
-        var RP = window.RELEASED_PERIOD || {min: 1177, max: 1414};
-        var state = {
+        let RP = window.RELEASED_PERIOD || {min: 1177, max: 1414};
+        let state = {
             decadeMin: RP.min,
             decadeMax: RP.max,
             sexFilter: 'all',
@@ -71,7 +71,7 @@
             pctMode: false
         };
 
-        var drillHandle = DrillDown.bind({});
+        let drillHandle = DrillDown.bind({});
 
         // -- Shared bindings --
         ChartHelpers.bindTimeRange('explore', state, function() {
@@ -86,7 +86,7 @@
             });
 
         // Percentage toggle
-        var pctBtn = document.getElementById('explore-pct-toggle');
+        let pctBtn = document.getElementById('explore-pct-toggle');
         if (pctBtn) {
             pctBtn.addEventListener('click', function() {
                 state.pctMode = !state.pctMode;
@@ -107,33 +107,33 @@
         // ================================================================
 
         function getFilteredData() {
-            var obs = epicA.observations;
-            var roleDecade = obs.role_by_sex_by_decade;
+            let obs = epicA.observations;
+            let roleDecade = obs.role_by_sex_by_decade;
 
-            var result = {};
-            for (var ri = 0; ri < CANONICAL_ROLES.length; ri++) {
-                var role = CANONICAL_ROLES[ri];
+            let result = {};
+            for (let ri = 0; ri < CANONICAL_ROLES.length; ri++) {
+                let role = CANONICAL_ROLES[ri];
                 result[role] = { m: 0, f: 0, unspecified: 0, total: 0 };
 
-                var decadeData = roleDecade[role] || {};
-                for (var dStr in decadeData) {
-                    var d = parseInt(dStr, 10);
+                let decadeData = roleDecade[role] || {};
+                for (let dStr in decadeData) {
+                    let d = parseInt(dStr, 10);
                     if (d < state.decadeMin || d > state.decadeMax) continue;
-                    var sexCounts = decadeData[dStr];
-                    for (var si = 0; si < SEX_KEYS.length; si++) {
-                        var sex = SEX_KEYS[si];
+                    let sexCounts = decadeData[dStr];
+                    for (let si = 0; si < SEX_KEYS.length; si++) {
+                        let sex = SEX_KEYS[si];
                         result[role][sex] += sexCounts[sex] || 0;
                     }
                 }
                 result[role].total = result[role].m + result[role].f + result[role].unspecified;
             }
             // Merge empty-role data into "other"
-            var emptyDecade = roleDecade[''] || {};
-            for (var edStr in emptyDecade) {
-                var ed = parseInt(edStr, 10);
+            let emptyDecade = roleDecade[''] || {};
+            for (let edStr in emptyDecade) {
+                let ed = parseInt(edStr, 10);
                 if (ed < state.decadeMin || ed > state.decadeMax) continue;
-                var eSex = emptyDecade[edStr];
-                for (var esi = 0; esi < SEX_KEYS.length; esi++) {
+                let eSex = emptyDecade[edStr];
+                for (let esi = 0; esi < SEX_KEYS.length; esi++) {
                     result.other[SEX_KEYS[esi]] += eSex[SEX_KEYS[esi]] || 0;
                 }
             }
@@ -143,18 +143,18 @@
         }
 
         function renderRoleChart() {
-            var data = getFilteredData();
-            var wrap = document.getElementById('explore-role-chart');
-            var sexes = state.sexFilter === 'all' ? SEX_KEYS : [state.sexFilter];
+            let data = getFilteredData();
+            let wrap = document.getElementById('explore-role-chart');
+            let sexes = state.sexFilter === 'all' ? SEX_KEYS : [state.sexFilter];
 
             // Build items for shared bar chart
-            var items = [];
-            for (var ri = 0; ri < CANONICAL_ROLES.length; ri++) {
-                var role = CANONICAL_ROLES[ri];
-                var segs = [];
-                for (var si = 0; si < sexes.length; si++) {
-                    var rawVal = data[role][sexes[si]] || 0;
-                    var displayVal = state.pctMode && data[role].total > 0
+            let items = [];
+            for (let ri = 0; ri < CANONICAL_ROLES.length; ri++) {
+                let role = CANONICAL_ROLES[ri];
+                let segs = [];
+                for (let si = 0; si < sexes.length; si++) {
+                    let rawVal = data[role][sexes[si]] || 0;
+                    let displayVal = state.pctMode && data[role].total > 0
                         ? Math.round(rawVal / data[role].total * 100)
                         : rawVal;
                     segs.push({
@@ -167,7 +167,7 @@
                 items.push({ label: ROLE_LABELS[role] || role, role: role, segments: segs, total: data[role].total });
             }
 
-            var legend = sexes.map(function(s) { return { label: SEX_LABELS[s], color: SEX_COLORS[s] }; });
+            let legend = sexes.map(function(s) { return { label: SEX_LABELS[s], color: SEX_COLORS[s] }; });
 
             ChartHelpers.renderHorizontalBars(wrap, {
                 items: items,
@@ -176,8 +176,8 @@
                 tooltipClass: TOOLTIP_CLASS,
                 legend: legend,
                 onTip: function(item, seg) {
-                    var raw = seg.rawValue !== undefined ? seg.rawValue : seg.value;
-                    var pct = item.total > 0 ? Math.round(raw / item.total * 100) : 0;
+                    let raw = seg.rawValue !== undefined ? seg.rawValue : seg.value;
+                    let pct = item.total > 0 ? Math.round(raw / item.total * 100) : 0;
                     return item.label + ' \u00B7 ' + SEX_LABELS[seg.key] + ': ' +
                         raw.toLocaleString('de-DE') + ' (' + pct + ' %)';
                 },
@@ -186,24 +186,24 @@
                 }
             });
 
-            var grandTotal = 0;
-            for (var ft = 0; ft < CANONICAL_ROLES.length; ft++) {
+            let grandTotal = 0;
+            for (let ft = 0; ft < CANONICAL_ROLES.length; ft++) {
                 grandTotal += data[CANONICAL_ROLES[ft]].total;
             }
-            var footer = document.getElementById('explore-role-footer');
+            let footer = document.getElementById('explore-role-footer');
             footer.textContent = 'Datenbasis: ' + grandTotal.toLocaleString('de-DE') +
                 ' Personen-Ereignis-Zuordnungen \u00B7 Zeitraum ' +
                 state.decadeMin + '\u2013' + state.decadeMax;
         }
 
         function renderRoleTable() {
-            var data = getFilteredData();
-            var tbody = document.getElementById('explore-role-tbody');
+            let data = getFilteredData();
+            let tbody = document.getElementById('explore-role-tbody');
             tbody.innerHTML = '';
-            for (var ri = 0; ri < CANONICAL_ROLES.length; ri++) {
-                var role = CANONICAL_ROLES[ri];
-                var d = data[role];
-                var tr = document.createElement('tr');
+            for (let ri = 0; ri < CANONICAL_ROLES.length; ri++) {
+                let role = CANONICAL_ROLES[ri];
+                let d = data[role];
+                let tr = document.createElement('tr');
                 tr.innerHTML =
                     '<td>' + (ROLE_LABELS[role] || role) + '</td>' +
                     '<td class="num">' + d.m.toLocaleString('de-DE') + '</td>' +
@@ -215,13 +215,13 @@
         }
 
         function openRoleDrillDown(role, sex) {
-            var drillDownData = epicA.drill_down || {};
-            var roleFkeys = (drillDownData.role_sex || {})[role] || {};
-            var fkeys = roleFkeys[sex] || [];
+            let drillDownData = epicA.drill_down || {};
+            let roleFkeys = (drillDownData.role_sex || {})[role] || {};
+            let fkeys = roleFkeys[sex] || [];
             if (role === 'other') {
-                var emptyFkeys = ((drillDownData.role_sex || {})[''] || {})[sex] || [];
+                let emptyFkeys = ((drillDownData.role_sex || {})[''] || {})[sex] || [];
                 fkeys = fkeys.concat(emptyFkeys);
-                var seen = {};
+                let seen = {};
                 fkeys = fkeys.filter(function(fk) {
                     if (seen[fk]) return false;
                     seen[fk] = true;
@@ -237,28 +237,28 @@
         // ================================================================
 
         function getFilteredOrgData() {
-            var obs = epicA.observations;
-            var orgByDecade = obs.org_type_by_decade || {};
-            var orgBySex = obs.org_type_by_sex || {};
+            let obs = epicA.observations;
+            let orgByDecade = obs.org_type_by_decade || {};
+            let orgBySex = obs.org_type_by_sex || {};
 
-            var allTypes = {};
-            for (var ot in orgByDecade) { allTypes[ot] = true; }
+            let allTypes = {};
+            for (let ot in orgByDecade) { allTypes[ot] = true; }
 
-            var result = [];
-            for (var otype in allTypes) {
-                var decades = orgByDecade[otype] || {};
-                var total = 0;
-                for (var dStr in decades) {
-                    var d = parseInt(dStr, 10);
+            let result = [];
+            for (let otype in allTypes) {
+                let decades = orgByDecade[otype] || {};
+                let total = 0;
+                for (let dStr in decades) {
+                    let d = parseInt(dStr, 10);
                     if (d < state.decadeMin || d > state.decadeMax) continue;
                     total += decades[dStr];
                 }
                 if (total === 0) continue;
 
-                var sexData = orgBySex[otype] || {};
-                var m = sexData.m || 0;
-                var f = sexData.f || 0;
-                var u = sexData.unspecified || 0;
+                let sexData = orgBySex[otype] || {};
+                let m = sexData.m || 0;
+                let f = sexData.f || 0;
+                let u = sexData.unspecified || 0;
 
                 if (state.sexFilter !== 'all') {
                     if (state.sexFilter === 'm' && m === 0) continue;
@@ -280,15 +280,15 @@
 
         function renderInstChart() {
             if (!epicA) return;
-            var data = getFilteredOrgData();
-            var wrap = document.getElementById('explore-inst-chart');
+            let data = getFilteredOrgData();
+            let wrap = document.getElementById('explore-inst-chart');
 
             if (data.length === 0) {
-                wrap.innerHTML = '<p style="text-align:center;padding:2rem;color:var(--color-text-muted)">Keine Daten f\u00fcr diesen Zeitraum.</p>';
+                wrap.innerHTML = '<p class="cell-placeholder">Keine Daten f\u00fcr diesen Zeitraum.</p>';
                 return;
             }
 
-            var items = data.map(function(d) {
+            let items = data.map(function(d) {
                 return {
                     label: d.label,
                     type: d.type,
@@ -318,21 +318,21 @@
                 }
             });
 
-            var totalEvents = 0;
-            for (var ti = 0; ti < data.length; ti++) totalEvents += data[ti].total;
-            var footer = document.getElementById('explore-inst-footer');
+            let totalEvents = 0;
+            for (let ti = 0; ti < data.length; ti++) totalEvents += data[ti].total;
+            let footer = document.getElementById('explore-inst-footer');
             footer.textContent = data.length + ' Organisationstypen \u00B7 ' +
                 totalEvents.toLocaleString('de-DE') + ' Ereignisse \u00B7 Zeitraum ' +
                 state.decadeMin + '\u2013' + state.decadeMax;
         }
 
         function renderInstTable() {
-            var data = getFilteredOrgData();
-            var tbody = document.getElementById('explore-inst-tbody');
+            let data = getFilteredOrgData();
+            let tbody = document.getElementById('explore-inst-tbody');
             tbody.innerHTML = '';
-            for (var i = 0; i < data.length; i++) {
-                var d = data[i];
-                var tr = document.createElement('tr');
+            for (let i = 0; i < data.length; i++) {
+                let d = data[i];
+                let tr = document.createElement('tr');
                 tr.innerHTML =
                     '<td>' + esc(d.label) + '</td>' +
                     '<td class="num">' + d.m.toLocaleString('de-DE') + '</td>' +
@@ -350,9 +350,9 @@
         }
 
         function openOrgDrillDown(orgType) {
-            var fkeys = (epicA.drill_down.org_type || {})[orgType] || [];
+            let fkeys = (epicA.drill_down.org_type || {})[orgType] || [];
             if (!fkeys.length) return;
-            var label = ORG_TYPE_LABELS[orgType] || orgType;
+            let label = ORG_TYPE_LABELS[orgType] || orgType;
             DrillDown.open(drillHandle, label + ' \u2014 Quellen', fkeys);
         }
 
@@ -363,10 +363,10 @@
         ChartHelpers.loadJSON((window.ROOT_PATH || '.') + '/data/epic_a.json', 'explore-role-chart', function(data) {
             epicA = data;
             // E6: handle URL parameter for sex filter pre-selection
-            var sexParam = EdCore.getParam('sex');
+            let sexParam = EdCore.getParam('sex');
             if (sexParam && ['m', 'f', 'unspecified'].indexOf(sexParam) >= 0) {
                 state.sexFilter = sexParam;
-                var chips = document.querySelectorAll('#explore-sex-filter .explore-chip');
+                let chips = document.querySelectorAll('#explore-sex-filter .explore-chip');
                 chips.forEach(function(c) {
                     c.classList.toggle('active', c.getAttribute('data-sex') === sexParam);
                 });

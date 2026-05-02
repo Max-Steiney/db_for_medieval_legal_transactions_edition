@@ -180,29 +180,6 @@ Konzeptionelle Beschreibung: [knowledge/data.md#Aggregat-Schicht](../../knowledg
 
 ---
 
-## `epic_d.json` — Orte
-
-**Zweck.** Datenbasis der Sub-Seite [Orte](../exploration/places.html). Ortsregister mit Referenzierungs- und Georeferenzierungsstatus, Karten-Datenquelle.
-
-**Producer.** `frontend/aggregator.py::aggregate_epic_d`.
-**Consumer.** `frontend/static/js/exploration-places.js`.
-
-**Form.** `{meta, places: [...], coverage}`.
-
-| Feld pro Place | Bedeutung |
-|---|---|
-| `id` | Place-ID (`pl__…`) |
-| `name` | Lesbarer Name |
-| `type` | Register-Typ (`settlement`, `immo`, …) |
-| `lat` / `lng` | Koordinaten oder `null` |
-| `geonames` | GeoNames-URL oder leer |
-| `has_coords` / `has_geonames` | Boolean |
-| `referenced` | Boolean: in mindestens einer freigegebenen Quelle referenziert |
-| `doc_count` | Anzahl Quellen, die diesen Ort referenzieren |
-| `decades` | Liste der Dekaden, in denen der Ort vorkommt |
-
----
-
 ## `persons_search.json`
 
 **Zweck.** Such-Index für das Personenregister.

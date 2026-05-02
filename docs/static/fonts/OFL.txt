@@ -1,0 +1,24 @@
+Self-Hosted Schriften — Lizenzhinweis
+=====================================
+
+Alle hier abgelegten woff2-Dateien stehen unter der SIL Open Font
+License v1.1 (https://scripts.sil.org/OFL). Diese erlaubt freies
+Verwenden, Studieren, Modifizieren und Weiterverteilen — inklusive
+der Auslieferung im Rahmen einer Web-Edition wie dieser.
+
+  Crimson Pro     Copyright (c) 2018, Jacques Le Bailly
+                  https://github.com/Fonthausen/CrimsonPro
+                  https://fonts.google.com/specimen/Crimson+Pro
+
+  Inter           Copyright (c) 2016 The Inter Project Authors
+                  https://github.com/rsms/inter
+                  https://fonts.google.com/specimen/Inter
+
+  JetBrains Mono  Copyright (c) 2020, JetBrains s.r.o.
+                  https://github.com/JetBrains/JetBrainsMono
+                  https://fonts.google.com/specimen/JetBrains+Mono
+
+Die Dateien sind Subsets (latin, latin-ext) und wurden mit dem
+Skript `frontend/scripts/download_fonts.py` von der Google Fonts
+CSS2-API geholt. Vollstaendige Lizenztexte liegen in den jeweiligen
+Upstream-Repositories.

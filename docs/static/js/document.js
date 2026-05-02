@@ -6,7 +6,7 @@
 (function() {
     'use strict';
 
-    var esc = EdCore.esc;
+    let esc = EdCore.esc;
 
 
     /* ------------------------------------------------------------------
@@ -14,14 +14,14 @@
        ------------------------------------------------------------------ */
 
     function initFactoidView() {
-        var toggleBtn = document.getElementById('factoid-toggle');
-        var container = document.getElementById('factoid-view');
+        let toggleBtn = document.getElementById('factoid-toggle');
+        let container = document.getElementById('factoid-view');
         if (!toggleBtn || !container) return;
 
-        var built = false;
+        let built = false;
 
         toggleBtn.addEventListener('click', function() {
-            var isVisible = !container.classList.contains('hidden');
+            let isVisible = !container.classList.contains('hidden');
             if (isVisible) {
                 container.classList.add('hidden');
                 toggleBtn.setAttribute('aria-expanded', 'false');
@@ -37,17 +37,17 @@
     }
 
     function buildFactoidTable(container) {
-        var body = document.querySelector('.doc-body');
+        let body = document.querySelector('.doc-body');
         if (!body) return;
 
-        var factoids = [];
+        let factoids = [];
 
         // Walk all function role spans — each is a factoid context
-        var fnSpans = body.querySelectorAll('.anno-fn');
-        for (var i = 0; i < fnSpans.length; i++) {
-            var fnSpan = fnSpans[i];
-            var role = fnSpan.getAttribute('data-role') || '';
-            var roleLabel = {
+        let fnSpans = body.querySelectorAll('.anno-fn');
+        for (let i = 0; i < fnSpans.length; i++) {
+            let fnSpan = fnSpans[i];
+            let role = fnSpan.getAttribute('data-role') || '';
+            let roleLabel = {
                 'issuer': 'Aussteller*in',
                 'recipient': 'Empf\u00e4nger*in',
                 'witness': 'Zeug*in',
@@ -55,26 +55,26 @@
             }[role] || role;
 
             // Find entities within this function span
-            var entities = fnSpan.querySelectorAll('.anno-person, .anno-org, .anno-place');
-            for (var j = 0; j < entities.length; j++) {
-                var entity = entities[j];
-                var type = entity.classList.contains('anno-person') ? 'Person' :
+            let entities = fnSpan.querySelectorAll('.anno-person, .anno-org, .anno-place');
+            for (let j = 0; j < entities.length; j++) {
+                let entity = entities[j];
+                let type = entity.classList.contains('anno-person') ? 'Person' :
                            entity.classList.contains('anno-org') ? 'Organisation' : 'Ort';
-                var ref = entity.getAttribute('data-ref') || '';
-                var name = entity.textContent.trim();
-                var title = entity.getAttribute('title') || entity.getAttribute('data-title') || '';
+                let ref = entity.getAttribute('data-ref') || '';
+                let name = entity.textContent.trim();
+                let title = entity.getAttribute('title') || entity.getAttribute('data-title') || '';
                 if (title) name = title.replace(/\s*\[.*\]\s*$/, '') || name;
 
                 // Collect attributes (roleName) within or near this entity
-                var attrs = [];
-                var attrSpans = entity.querySelectorAll('.anno-attr');
-                for (var k = 0; k < attrSpans.length; k++) {
+                let attrs = [];
+                let attrSpans = entity.querySelectorAll('.anno-attr');
+                for (let k = 0; k < attrSpans.length; k++) {
                     attrs.push(attrSpans[k].textContent.trim());
                 }
 
                 // Find event context (closest parent anno-event)
-                var eventSpan = entity.closest('.anno-event');
-                var eventRef = eventSpan ? (eventSpan.getAttribute('data-ref') || '') : '';
+                let eventSpan = entity.closest('.anno-event');
+                let eventRef = eventSpan ? (eventSpan.getAttribute('data-ref') || '') : '';
 
                 factoids.push({
                     entity: name,
@@ -88,25 +88,25 @@
         }
 
         // Also find entities NOT inside any function span (standalone annotations)
-        var allEntities = body.querySelectorAll('.anno-person, .anno-org, .anno-place');
-        for (var m = 0; m < allEntities.length; m++) {
-            var el = allEntities[m];
+        let allEntities = body.querySelectorAll('.anno-person, .anno-org, .anno-place');
+        for (let m = 0; m < allEntities.length; m++) {
+            let el = allEntities[m];
             if (el.closest('.anno-fn')) continue; // already captured above
-            var elType = el.classList.contains('anno-person') ? 'Person' :
+            let elType = el.classList.contains('anno-person') ? 'Person' :
                          el.classList.contains('anno-org') ? 'Organisation' : 'Ort';
-            var elRef = el.getAttribute('data-ref') || '';
-            var elName = el.textContent.trim();
-            var elTitle = el.getAttribute('title') || el.getAttribute('data-title') || '';
+            let elRef = el.getAttribute('data-ref') || '';
+            let elName = el.textContent.trim();
+            let elTitle = el.getAttribute('title') || el.getAttribute('data-title') || '';
             if (elTitle) elName = elTitle.replace(/\s*\[.*\]\s*$/, '') || elName;
 
-            var elAttrs = [];
-            var elAttrSpans = el.querySelectorAll('.anno-attr');
-            for (var n = 0; n < elAttrSpans.length; n++) {
+            let elAttrs = [];
+            let elAttrSpans = el.querySelectorAll('.anno-attr');
+            for (let n = 0; n < elAttrSpans.length; n++) {
                 elAttrs.push(elAttrSpans[n].textContent.trim());
             }
 
-            var elEvent = el.closest('.anno-event');
-            var elEventRef = elEvent ? (elEvent.getAttribute('data-ref') || '') : '';
+            let elEvent = el.closest('.anno-event');
+            let elEventRef = elEvent ? (elEvent.getAttribute('data-ref') || '') : '';
 
             factoids.push({
                 entity: elName,
@@ -123,11 +123,11 @@
             return;
         }
 
-        var html = '<table class="factoid-table"><thead><tr>'
+        let html = '<table class="factoid-table"><thead><tr>'
             + '<th>Entit\u00e4t</th><th>Typ</th><th>Rolle</th><th>Attribute</th><th>Event</th><th>ID</th>'
             + '</tr></thead><tbody>';
-        for (var p = 0; p < factoids.length; p++) {
-            var f = factoids[p];
+        for (let p = 0; p < factoids.length; p++) {
+            let f = factoids[p];
             html += '<tr>'
                 + '<td>' + esc(f.entity) + '</td>'
                 + '<td><span class="factoid-type factoid-type-' + f.type.toLowerCase() + '">' + esc(f.type) + '</span></td>'
@@ -150,13 +150,13 @@
        ------------------------------------------------------------------ */
 
     function initCitationHelper() {
-        var btn = document.getElementById('cite-toggle');
-        var popover = document.getElementById('cite-popover');
+        let btn = document.getElementById('cite-toggle');
+        let popover = document.getElementById('cite-popover');
         if (!btn || !popover) return;
 
         btn.addEventListener('click', function(e) {
             e.stopPropagation();
-            var isVisible = !popover.classList.contains('hidden');
+            let isVisible = !popover.classList.contains('hidden');
             if (isVisible) {
                 popover.classList.add('hidden');
                 btn.setAttribute('aria-expanded', 'false');
@@ -184,20 +184,20 @@
 
     function buildCitations(popover) {
         // Read metadata from the page DOM
-        var metaScript = document.getElementById('doc-meta');
+        let metaScript = document.getElementById('doc-meta');
         if (!metaScript) return;
-        var meta;
+        let meta;
         try { meta = JSON.parse(metaScript.textContent); } catch(e) { return; }
 
-        var idno = meta.idno || '';
-        var dateDisplay = meta.date_display || '';
-        var citation = meta.citation || '';
-        var collection = meta.collection_label || '';
-        var url = window.location.href;
-        var today = new Date().toISOString().slice(0, 10);
+        let idno = meta.idno || '';
+        let dateDisplay = meta.date_display || '';
+        let citation = meta.citation || '';
+        let collection = meta.collection_label || '';
+        let url = window.location.href;
+        let today = new Date().toISOString().slice(0, 10);
 
         // Chicago style
-        var chicago = '';
+        let chicago = '';
         if (citation) {
             chicago = citation + '.';
         } else {
@@ -209,8 +209,8 @@
         chicago += ' ' + url + ' (Zugriff: ' + today + ').';
 
         // BibTeX
-        var bibKey = 'WUB_' + idno.replace(/[^a-zA-Z0-9_]/g, '_');
-        var bibtex = '@misc{' + bibKey + ',\n'
+        let bibKey = 'WUB_' + idno.replace(/[^a-zA-Z0-9_]/g, '_');
+        let bibtex = '@misc{' + bibKey + ',\n'
             + '  title     = {Nr. ' + idno + (dateDisplay ? ' (' + dateDisplay + ')' : '') + '},\n'
             + '  author    = {{Wiener Urkundenbuch Digital}},\n'
             + '  publisher = {Universität Wien},\n'
@@ -231,14 +231,14 @@
             + '</div>';
 
         // Wire up copy buttons
-        var copyBtns = popover.querySelectorAll('.cite-copy-btn');
-        for (var i = 0; i < copyBtns.length; i++) {
+        let copyBtns = popover.querySelectorAll('.cite-copy-btn');
+        for (let i = 0; i < copyBtns.length; i++) {
             copyBtns[i].addEventListener('click', function(e) {
                 e.stopPropagation();
-                var targetId = this.getAttribute('data-target');
-                var textEl = document.getElementById(targetId);
+                let targetId = this.getAttribute('data-target');
+                let textEl = document.getElementById(targetId);
                 if (!textEl) return;
-                var text = textEl.textContent;
+                let text = textEl.textContent;
                 navigator.clipboard.writeText(text).then(function() {
                     e.target.textContent = '\u2713';
                     setTimeout(function() { e.target.textContent = '\u2398'; }, 1500);
@@ -253,12 +253,12 @@
        ------------------------------------------------------------------ */
 
     function initQualityPanel() {
-        var btn = document.getElementById('quality-toggle');
-        var panel = document.getElementById('quality-panel');
+        let btn = document.getElementById('quality-toggle');
+        let panel = document.getElementById('quality-panel');
         if (!btn || !panel) return;
 
         btn.addEventListener('click', function() {
-            var isVisible = !panel.classList.contains('hidden');
+            let isVisible = !panel.classList.contains('hidden');
             if (isVisible) {
                 panel.classList.add('hidden');
                 btn.setAttribute('aria-expanded', 'false');
@@ -275,13 +275,13 @@
        ------------------------------------------------------------------ */
 
     function initAnnotationToggle() {
-        var btn = document.getElementById('anno-toggle');
-        var popover = document.getElementById('anno-toggle-popover');
-        var body = document.querySelector('.doc-body');
+        let btn = document.getElementById('anno-toggle');
+        let popover = document.getElementById('anno-toggle-popover');
+        let body = document.querySelector('.doc-body');
         if (!btn || !popover || !body) return;
 
-        var STORAGE_KEY = 'wub-anno-layers';
-        var classMap = {
+        let STORAGE_KEY = 'wub-anno-layers';
+        let classMap = {
             entities: 'hide-entities',
             functions: 'hide-functions',
             attributes: 'hide-attributes',
@@ -289,11 +289,11 @@
         };
 
         // Restore state from localStorage
-        var saved = null;
+        let saved = null;
         try { saved = JSON.parse(localStorage.getItem(STORAGE_KEY)); } catch(e) { /* ignore */ }
         if (saved && typeof saved === 'object') {
             Object.keys(classMap).forEach(function(layer) {
-                var checkbox = popover.querySelector('[data-layer="' + layer + '"]');
+                let checkbox = popover.querySelector('[data-layer="' + layer + '"]');
                 if (checkbox && saved[layer] === false) {
                     checkbox.checked = false;
                     body.classList.add(classMap[layer]);
@@ -303,9 +303,9 @@
 
         // Checkbox change handler
         popover.addEventListener('change', function(e) {
-            var checkbox = e.target;
+            let checkbox = e.target;
             if (!checkbox.dataset || !checkbox.dataset.layer) return;
-            var cls = classMap[checkbox.dataset.layer];
+            let cls = classMap[checkbox.dataset.layer];
             if (!cls) return;
             if (checkbox.checked) {
                 body.classList.remove(cls);
@@ -316,18 +316,18 @@
         });
 
         // Toggle all button
-        var toggleAllBtn = document.getElementById('anno-toggle-all');
+        let toggleAllBtn = document.getElementById('anno-toggle-all');
         if (toggleAllBtn) {
             toggleAllBtn.addEventListener('click', function() {
-                var checkboxes = popover.querySelectorAll('[data-layer]');
-                var allChecked = true;
-                for (var i = 0; i < checkboxes.length; i++) {
+                let checkboxes = popover.querySelectorAll('[data-layer]');
+                let allChecked = true;
+                for (let i = 0; i < checkboxes.length; i++) {
                     if (!checkboxes[i].checked) { allChecked = false; break; }
                 }
-                var newState = !allChecked;
-                for (var j = 0; j < checkboxes.length; j++) {
+                let newState = !allChecked;
+                for (let j = 0; j < checkboxes.length; j++) {
                     checkboxes[j].checked = newState;
-                    var cls = classMap[checkboxes[j].dataset.layer];
+                    let cls = classMap[checkboxes[j].dataset.layer];
                     if (cls) {
                         if (newState) {
                             body.classList.remove(cls);
@@ -343,7 +343,7 @@
         // Popover open/close (same pattern as cite popover)
         btn.addEventListener('click', function(e) {
             e.stopPropagation();
-            var isVisible = !popover.classList.contains('hidden');
+            let isVisible = !popover.classList.contains('hidden');
             popover.classList.toggle('hidden');
             btn.setAttribute('aria-expanded', isVisible ? 'false' : 'true');
         });
@@ -363,9 +363,9 @@
         });
 
         function saveState() {
-            var state = {};
+            let state = {};
             Object.keys(classMap).forEach(function(layer) {
-                var cb = popover.querySelector('[data-layer="' + layer + '"]');
+                let cb = popover.querySelector('[data-layer="' + layer + '"]');
                 state[layer] = cb ? cb.checked : true;
             });
             try { localStorage.setItem(STORAGE_KEY, JSON.stringify(state)); } catch(e) { /* ignore */ }

@@ -3,22 +3,26 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Quellenverzeichnis — Datenbank</title>
-    <link rel="preconnect" href="https://fonts.googleapis.com">
-    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-    <link href="https://fonts.googleapis.com/css2?family=Crimson+Pro:ital,wght@0,300;0,400;0,500;0,600;0,700;1,300;1,400;1,500&family=Inter:wght@300;400;500;600&family=JetBrains+Mono:wght@400&display=swap" rel="stylesheet">
-    <link rel="stylesheet" href="./static/css/tokens.css">
-    <link rel="stylesheet" href="./static/css/base.css">
-    <link rel="stylesheet" href="./static/css/components.css">
-    <link rel="stylesheet" href="./static/css/responsive.css">
-    <link rel="stylesheet" href="./static/css/print.css">
-    <link rel="stylesheet" href="./static/css/provenance.css">
-    <script>window.ROOT_PATH = ".";</script>
+    <meta http-equiv="Content-Security-Policy" content="default-src 'self'; script-src 'self'; style-src 'self'; font-src 'self'; img-src 'self' data: https://images.monasterium.net https://www.monasterium.net; connect-src 'self'; frame-ancestors 'none'; base-uri 'self'; form-action 'self'; upgrade-insecure-requests">
+    <meta name="referrer" content="strict-origin-when-cross-origin">
+    <meta http-equiv="Permissions-Policy" content="camera=(), microphone=(), geolocation=(), interest-cohort=()">
+    <title>Quellen — Datenbank</title>
+    <link rel="preload" as="font" type="font/woff2" crossorigin
+          href="./static/fonts/inter-400-latin.woff2">
+    <link rel="stylesheet" href="./static/css/fonts.css?v=20260502142559">
+    <link rel="stylesheet" href="./static/css/tokens.css?v=20260502142559">
+    <link rel="stylesheet" href="./static/css/base.css?v=20260502142559">
+    <link rel="stylesheet" href="./static/css/components.css?v=20260502142559">
+    <link rel="stylesheet" href="./static/css/responsive.css?v=20260502142559">
+    <link rel="stylesheet" href="./static/css/print.css?v=20260502142559">
+    <link rel="stylesheet" href="./static/css/provenance.css?v=20260502142559">
     
-<link rel="stylesheet" href="./static/css/index.css">
+<link rel="stylesheet" href="./static/css/index.css?v=20260502142559">
 
 </head>
-<body>
+<body data-root-path="."
+      data-released-min="1177"
+      data-released-max="1414">
     <a class="skip-link" href="#main-content">Zum Inhalt springen</a>
     <nav class="site-nav">
         <div class="nav-inner">
@@ -36,8 +40,6 @@
                     <button class="nav-dropdown-trigger" aria-expanded="false" aria-haspopup="true">Register <span class="nav-dropdown-arrow">&#x25BE;</span></button>
                     <div class="nav-dropdown-menu">
                         <a href="./register/persons.html">Personen</a>
-                        <a href="./register/organisations.html" class="nav-disabled" aria-disabled="true" title="Noch nicht freigegeben">Organisationen</a>
-                        <a href="./register/places.html" class="nav-disabled" aria-disabled="true" title="Noch nicht freigegeben">Orte</a>
                     </div>
                 </div>
                 <div class="nav-dropdown">
@@ -46,7 +48,6 @@
                         <a href="./exploration/roles.html">Rollen</a>
                         <a href="./exploration/networks.html">Beziehungen</a>
                         <a href="./exploration/transactions.html">Transaktionen</a>
-                        <a href="./exploration/places.html">Orte</a>
                     </div>
                 </div>
                 <a href="./analysis/index.html">Analyse</a>
@@ -54,8 +55,6 @@
                     <button class="nav-dropdown-trigger" aria-expanded="false" aria-haspopup="true">Projekt <span class="nav-dropdown-arrow">&#x25BE;</span></button>
                     <div class="nav-dropdown-menu">
                         <a href="./project/about.html">&Uuml;ber das Projekt</a>
-                        <a href="./project/statistics.html">Statistik</a>
-                        <a href="./project/quality.html">Qualit&auml;t</a>
                         <a href="./project/edition-guidelines.html">Editionsrichtlinien</a>
                         <a href="./project/glossary.html">Glossar</a>
                         <a href="./impressum.html">Impressum</a>
@@ -69,335 +68,376 @@
         
 <div class="index-page">
 
-    <!-- Overview: corpus summary + timeline -->
     <header class="index-header">
-        <h1>Quellenverzeichnis</h1>
-        <p class="index-subtitle">
-            <span class="stat">2.635</span> Quellen,
-            <span class="stat">16.084</span> individuelle Personen
-            <span class="index-date-range">&mdash; Wien, 1177–1412 (mit Ergänzungen bis 1414 für QGW II/1 und II/2)</span>
-        </p>
+        <h1>Quellen</h1>
     </header>
 
-    <!-- Range slider with histogram -->
-    
-    <section class="range-slider-section">
-        <div class="range-slider" id="range-slider"
-             data-min="1177" data-max="1414">
-            <div class="range-histogram" id="range-histogram">
-                
-                <div class="range-bar"
-                     data-decade="1170"
-                     data-count="1"
-                     style="height: 4%"
-                     title="1170er: 1 Dok.">
-                </div>
-                
-                <div class="range-bar"
-                     data-decade="1180"
-                     data-count="0"
-                     style="height: 0%"
-                     title="1180er: 0 Dok.">
-                </div>
-                
-                <div class="range-bar"
-                     data-decade="1190"
-                     data-count="1"
-                     style="height: 4%"
-                     title="1190er: 1 Dok.">
-                </div>
-                
-                <div class="range-bar"
-                     data-decade="1200"
-                     data-count="1"
-                     style="height: 4%"
-                     title="1200er: 1 Dok.">
-                </div>
-                
-                <div class="range-bar"
-                     data-decade="1210"
-                     data-count="0"
-                     style="height: 0%"
-                     title="1210er: 0 Dok.">
-                </div>
-                
-                <div class="range-bar"
-                     data-decade="1220"
-                     data-count="1"
-                     style="height: 4%"
-                     title="1220er: 1 Dok.">
-                </div>
-                
-                <div class="range-bar"
-                     data-decade="1230"
-                     data-count="1"
-                     style="height: 4%"
-                     title="1230er: 1 Dok.">
-                </div>
-                
-                <div class="range-bar"
-                     data-decade="1240"
-                     data-count="0"
-                     style="height: 0%"
-                     title="1240er: 0 Dok.">
-                </div>
-                
-                <div class="range-bar"
-                     data-decade="1250"
-                     data-count="1"
-                     style="height: 4%"
-                     title="1250er: 1 Dok.">
-                </div>
-                
-                <div class="range-bar"
-                     data-decade="1260"
-                     data-count="3"
-                     style="height: 4%"
-                     title="1260er: 3 Dok.">
-                </div>
-                
-                <div class="range-bar"
-                     data-decade="1270"
-                     data-count="8"
-                     style="height: 4%"
-                     title="1270er: 8 Dok.">
-                </div>
-                
-                <div class="range-bar"
-                     data-decade="1280"
-                     data-count="6"
-                     style="height: 4%"
-                     title="1280er: 6 Dok.">
-                </div>
-                
-                <div class="range-bar"
-                     data-decade="1290"
-                     data-count="7"
-                     style="height: 4%"
-                     title="1290er: 7 Dok.">
-                </div>
-                
-                <div class="range-bar"
-                     data-decade="1300"
-                     data-count="26"
-                     style="height: 4%"
-                     title="1300er: 26 Dok.">
-                </div>
-                
-                <div class="range-bar"
-                     data-decade="1310"
-                     data-count="29"
-                     style="height: 4%"
-                     title="1310er: 29 Dok.">
-                </div>
-                
-                <div class="range-bar"
-                     data-decade="1320"
-                     data-count="45"
-                     style="height: 6%"
-                     title="1320er: 45 Dok.">
-                </div>
-                
-                <div class="range-bar"
-                     data-decade="1330"
-                     data-count="93"
-                     style="height: 12%"
-                     title="1330er: 93 Dok.">
-                </div>
-                
-                <div class="range-bar"
-                     data-decade="1340"
-                     data-count="135"
-                     style="height: 18%"
-                     title="1340er: 135 Dok.">
-                </div>
-                
-                <div class="range-bar"
-                     data-decade="1350"
-                     data-count="191"
-                     style="height: 26%"
-                     title="1350er: 191 Dok.">
-                </div>
-                
-                <div class="range-bar"
-                     data-decade="1360"
-                     data-count="241"
-                     style="height: 33%"
-                     title="1360er: 241 Dok.">
-                </div>
-                
-                <div class="range-bar"
-                     data-decade="1370"
-                     data-count="210"
-                     style="height: 28%"
-                     title="1370er: 210 Dok.">
-                </div>
-                
-                <div class="range-bar"
-                     data-decade="1380"
-                     data-count="216"
-                     style="height: 29%"
-                     title="1380er: 216 Dok.">
-                </div>
-                
-                <div class="range-bar"
-                     data-decade="1390"
-                     data-count="730"
-                     style="height: 100%"
-                     title="1390er: 730 Dok.">
-                </div>
-                
-                <div class="range-bar"
-                     data-decade="1400"
-                     data-count="446"
-                     style="height: 61%"
-                     title="1400er: 446 Dok.">
-                </div>
-                
-                <div class="range-bar"
-                     data-decade="1410"
-                     data-count="243"
-                     style="height: 33%"
-                     title="1410er: 243 Dok.">
-                </div>
-                
-            </div>
-            <div class="range-inputs">
-                <input type="range" id="range-min"
-                       min="1177" max="1414"
-                       value="1177" step="1"
-                       aria-label="Startjahr">
-                <input type="range" id="range-max"
-                       min="1177" max="1414"
-                       value="1414" step="1"
-                       aria-label="Endjahr">
-            </div>
-            <div class="range-labels">
-                <span class="range-label-min" id="range-label-min">1177</span>
-                <span class="range-label-max" id="range-label-max">1414</span>
-            </div>
-        </div>
-    </section>
-    
+    <div class="index-layout">
 
-    <!-- Collection chips -->
-    <section class="collection-chips">
-        
-        <button class="chip" data-collection="QGW/Vienna_1177-1414_ready" title="Erschlie&szlig;ungsform: Regest + Faksimile">
-            QGW II/1 (1177–1414)
-            <span class="chip-form">Regest + Faksimile</span>
-            <span class="chip-count">2023</span>
-        </button>
-        
-        <button class="chip" data-collection="Stadtbuecher/Band_1_1395-1400_ready" title="Erschlie&szlig;ungsform: Volltext">
-            Stadtbücher Bd. 1 (1395–1400)
-            <span class="chip-form">Volltext</span>
-            <span class="chip-count">578</span>
-        </button>
-        
-        <button class="chip" data-collection="QGW/Vienna_1415-1417" title="Erschlie&szlig;ungsform: Regest + Faksimile">
-            QGW II/2 (1415–1417)
-            <span class="chip-form">Regest + Faksimile</span>
-            <span class="chip-count">34</span>
-        </button>
-        
-    </section>
+        <aside class="index-sidebar" aria-label="Filter">
 
-    <!-- Search and filter bar -->
-    <section class="index-controls">
-        
+            
+            <section class="sidebar-block">
+                <p class="sidebar-block-label">Zeitraum</p>
+                <div class="range-slider" id="range-slider"
+                     data-min="1177" data-max="1414">
+                    <div class="range-histogram" id="range-histogram">
+                        
+                        <div class="range-bar"
+                             data-decade="1170"
+                             data-count="1"
+                             data-height="4"
+                             title="1170er: 1 Dok.">
+                        </div>
+                        
+                        <div class="range-bar"
+                             data-decade="1180"
+                             data-count="0"
+                             data-height="0"
+                             title="1180er: 0 Dok.">
+                        </div>
+                        
+                        <div class="range-bar"
+                             data-decade="1190"
+                             data-count="1"
+                             data-height="4"
+                             title="1190er: 1 Dok.">
+                        </div>
+                        
+                        <div class="range-bar"
+                             data-decade="1200"
+                             data-count="1"
+                             data-height="4"
+                             title="1200er: 1 Dok.">
+                        </div>
+                        
+                        <div class="range-bar"
+                             data-decade="1210"
+                             data-count="0"
+                             data-height="0"
+                             title="1210er: 0 Dok.">
+                        </div>
+                        
+                        <div class="range-bar"
+                             data-decade="1220"
+                             data-count="1"
+                             data-height="4"
+                             title="1220er: 1 Dok.">
+                        </div>
+                        
+                        <div class="range-bar"
+                             data-decade="1230"
+                             data-count="1"
+                             data-height="4"
+                             title="1230er: 1 Dok.">
+                        </div>
+                        
+                        <div class="range-bar"
+                             data-decade="1240"
+                             data-count="0"
+                             data-height="0"
+                             title="1240er: 0 Dok.">
+                        </div>
+                        
+                        <div class="range-bar"
+                             data-decade="1250"
+                             data-count="1"
+                             data-height="4"
+                             title="1250er: 1 Dok.">
+                        </div>
+                        
+                        <div class="range-bar"
+                             data-decade="1260"
+                             data-count="3"
+                             data-height="4"
+                             title="1260er: 3 Dok.">
+                        </div>
+                        
+                        <div class="range-bar"
+                             data-decade="1270"
+                             data-count="8"
+                             data-height="4"
+                             title="1270er: 8 Dok.">
+                        </div>
+                        
+                        <div class="range-bar"
+                             data-decade="1280"
+                             data-count="6"
+                             data-height="4"
+                             title="1280er: 6 Dok.">
+                        </div>
+                        
+                        <div class="range-bar"
+                             data-decade="1290"
+                             data-count="7"
+                             data-height="4"
+                             title="1290er: 7 Dok.">
+                        </div>
+                        
+                        <div class="range-bar"
+                             data-decade="1300"
+                             data-count="26"
+                             data-height="4"
+                             title="1300er: 26 Dok.">
+                        </div>
+                        
+                        <div class="range-bar"
+                             data-decade="1310"
+                             data-count="29"
+                             data-height="4"
+                             title="1310er: 29 Dok.">
+                        </div>
+                        
+                        <div class="range-bar"
+                             data-decade="1320"
+                             data-count="45"
+                             data-height="6"
+                             title="1320er: 45 Dok.">
+                        </div>
+                        
+                        <div class="range-bar"
+                             data-decade="1330"
+                             data-count="93"
+                             data-height="12"
+                             title="1330er: 93 Dok.">
+                        </div>
+                        
+                        <div class="range-bar"
+                             data-decade="1340"
+                             data-count="135"
+                             data-height="18"
+                             title="1340er: 135 Dok.">
+                        </div>
+                        
+                        <div class="range-bar"
+                             data-decade="1350"
+                             data-count="191"
+                             data-height="26"
+                             title="1350er: 191 Dok.">
+                        </div>
+                        
+                        <div class="range-bar"
+                             data-decade="1360"
+                             data-count="241"
+                             data-height="33"
+                             title="1360er: 241 Dok.">
+                        </div>
+                        
+                        <div class="range-bar"
+                             data-decade="1370"
+                             data-count="210"
+                             data-height="28"
+                             title="1370er: 210 Dok.">
+                        </div>
+                        
+                        <div class="range-bar"
+                             data-decade="1380"
+                             data-count="216"
+                             data-height="29"
+                             title="1380er: 216 Dok.">
+                        </div>
+                        
+                        <div class="range-bar"
+                             data-decade="1390"
+                             data-count="730"
+                             data-height="100"
+                             title="1390er: 730 Dok.">
+                        </div>
+                        
+                        <div class="range-bar"
+                             data-decade="1400"
+                             data-count="446"
+                             data-height="61"
+                             title="1400er: 446 Dok.">
+                        </div>
+                        
+                        <div class="range-bar"
+                             data-decade="1410"
+                             data-count="209"
+                             data-height="28"
+                             title="1410er: 209 Dok.">
+                        </div>
+                        
+                    </div>
+                    <div class="range-inputs">
+                        <input type="range" id="range-min"
+                               min="1177" max="1414"
+                               value="1177" step="1"
+                               aria-label="Startjahr">
+                        <input type="range" id="range-max"
+                               min="1177" max="1414"
+                               value="1414" step="1"
+                               aria-label="Endjahr">
+                    </div>
+                    <div class="range-labels">
+                        <span class="range-label-min" id="range-label-min">1177</span>
+                        <span class="range-label-max" id="range-label-max">1414</span>
+                    </div>
+                </div>
+            </section>
+            
+
+            <section class="sidebar-block">
+                <p class="sidebar-block-label">Quellenkorpus</p>
+                <div class="collection-chips collection-chips--stack">
+                    
+                    <button class="chip" data-collection="QGW/Vienna_1177-1414_ready">
+                        <span class="chip-label">QGW II/1 (1177–1414)</span>
+                        <span class="chip-count" data-corpus-total="2023">2023</span>
+                    </button>
+                    
+                    <button class="chip" data-collection="Stadtbuecher/Band_1_1395-1400_ready">
+                        <span class="chip-label">Stadtbücher Bd. 1 (1395–1400)</span>
+                        <span class="chip-count" data-corpus-total="578">578</span>
+                    </button>
+                    
+                </div>
+            </section>
+
+            <section class="sidebar-block">
+                <p class="sidebar-block-label">Suche</p>
+                
 <div class="search-box">
     <svg class="search-icon" width="18" height="18" viewBox="0 0 18 18" fill="none" aria-hidden="true">
         <circle cx="7.5" cy="7.5" r="5.5" stroke="currentColor" stroke-width="1.5"/>
         <path d="M12 12L16 16" stroke="currentColor" stroke-width="1.5" stroke-linecap="round"/>
     </svg>
-    <label for="search-input" class="sr-only">Suche nach Nr., Datum, Ort, Schlagwort ...</label>
-    <input type="text" id="search-input" placeholder="Suche nach Nr., Datum, Ort, Schlagwort ..." autocomplete="off" spellcheck="false">
+    <label for="search-input" class="sr-only">Nr., Datum, Ort, Schlagwort …</label>
+    <input type="text" id="search-input" placeholder="Nr., Datum, Ort, Schlagwort …" autocomplete="off" spellcheck="false">
     <button class="search-clear hidden" id="search-clear" aria-label="Suche löschen">&times;</button>
 </div>
 
-        <div class="filter-group">
-            <select id="filter-place" aria-label="Ort filtern">
-                <option value="">Alle Orte</option>
-                
-                <option value="Wien">Wien (1537)</option>
-                
-                <option value="Pressburg">Pressburg (9)</option>
-                
-                <option value="Mödling">Mödling (9)</option>
-                
-                <option value="Prag">Prag (9)</option>
-                
-                <option value="Wiener Neustadt">Wiener Neustadt (9)</option>
-                
-                <option value="Graz">Graz (6)</option>
-                
-                <option value="Ofen">Ofen (6)</option>
-                
-                <option value="Wiener-Neustadt">Wiener-Neustadt (6)</option>
-                
-                <option value="Krems">Krems (5)</option>
-                
-                <option value="Rom">Rom (4)</option>
-                
-                <option value="Venedig">Venedig (3)</option>
-                
-                <option value="Linz">Linz (3)</option>
-                
-                <option value="Avignon">Avignon (3)</option>
-                
-                <option value="St. Pölten">St. Pölten (3)</option>
-                
-                <option value="Tulln">Tulln (3)</option>
-                
-            </select>
-        </div>
-        <div class="filter-group">
-            <select id="filter-facs" aria-label="Faksimile">
-                <option value="">Faksimile</option>
-                <option value="1">Mit Faksimile (2011)</option>
-                <option value="0">Ohne Faksimile (624)</option>
-            </select>
-        </div>
-        <div class="filter-group">
-            <select id="filter-quality" aria-label="Qualität">
-                <option value="">Qualität</option>
-                <option value="0">Fehlerfrei (697)</option>
-                <option value="1">Hinweise (1919)</option>
-                <option value="2">Warnungen (19)</option>
-            </select>
-        </div>
-        
+            </section>
+
+            <section class="sidebar-block">
+                <p class="sidebar-block-label">Ort</p>
+                <select id="filter-place" aria-label="Ort filtern">
+                    <option value="">Alle Orte</option>
+                    
+                    <option value="Wien">Wien (1515)</option>
+                    
+                    <option value="Pressburg">Pressburg (9)</option>
+                    
+                    <option value="Mödling">Mödling (9)</option>
+                    
+                    <option value="Prag">Prag (9)</option>
+                    
+                    <option value="Wiener Neustadt">Wiener Neustadt (9)</option>
+                    
+                    <option value="Graz">Graz (6)</option>
+                    
+                    <option value="Ofen">Ofen (6)</option>
+                    
+                    <option value="Wiener-Neustadt">Wiener-Neustadt (6)</option>
+                    
+                    <option value="Krems">Krems (5)</option>
+                    
+                    <option value="Rom">Rom (4)</option>
+                    
+                    <option value="Venedig">Venedig (3)</option>
+                    
+                    <option value="Linz">Linz (3)</option>
+                    
+                    <option value="Avignon">Avignon (3)</option>
+                    
+                    <option value="St. Pölten">St. Pölten (3)</option>
+                    
+                    <option value="Tulln">Tulln (3)</option>
+                    
+                </select>
+            </section>
+
+            <section class="sidebar-block">
+                <p class="sidebar-block-label">Faksimile</p>
+                <select id="filter-facs" aria-label="Faksimile">
+                    <option value="">alle</option>
+                    <option value="1">mit Faksimile (1978)</option>
+                    <option value="0">ohne Faksimile (623)</option>
+                </select>
+            </section>
+
+            <section class="sidebar-block">
+                <p class="sidebar-block-label">Qualität</p>
+                <select id="filter-quality" aria-label="Qualität">
+                    <option value="">alle</option>
+                    <option value="0">fehlerfrei (672)</option>
+                    <option value="1">Hinweise (1911)</option>
+                    <option value="2">Warnungen (18)</option>
+                </select>
+            </section>
+
+            <button type="button" class="sidebar-reset" id="filter-reset"
+                    aria-label="Alle Filter zurücksetzen">
+                ↺ Filter zurücksetzen
+            </button>
+
+        </aside>
+
+        <div class="index-main">
+
+            <div class="main-toolbar">
+                <span class="result-count-wrap">
+                    
 <div class="result-count" id="result-count">
-    2635 Quellen
+    2601 Quellen
 </div>
 
-    </section>
+<button type="button" class="prov-trigger prov-trigger--icon"
+        aria-expanded="false" aria-haspopup="dialog"
+        aria-controls="gloss-quelle-results"
+        data-prov-trigger="gloss-quelle-results"
+        aria-label="Definition: Quelle">
+    <svg width="13" height="13" viewBox="0 0 16 16" aria-hidden="true">
+        <circle cx="8" cy="8" r="7" stroke="currentColor" stroke-width="1.4" fill="none"/>
+        <text x="8" y="11.6" text-anchor="middle" font-size="9.5" font-weight="700"
+              fill="currentColor" font-family="Georgia, serif">i</text>
+    </svg>
+</button>
+<aside class="prov-popover prov-popover--glossary"
+       id="gloss-quelle-results" role="dialog" aria-hidden="true"
+       aria-label="Definition: Quelle">
+    <header class="prov-popover-head">
+        <h3 class="prov-popover-title">Quelle</h3>
+        <button type="button" class="prov-popover-close" aria-label="Schlie&szlig;en">&times;</button>
+    </header>
+    <div class="prov-popover-body">
+        
+                        <p class="prov-def">Eine einzelne &Uuml;berlieferungseinheit (Urkunde, Stadtbuch-Eintrag) mit eigenem TEI-Dokument.</p>
+                        <a class="prov-foot-link" href="./project/glossary.html#quelle">&rarr; im Glossar</a>
+                    
+    </div>
+</aside>
 
-    
+                </span>
+                
 <div class="active-filters" id="active-filters"></div>
 
+            </div>
 
-    <!-- Document table -->
-    <section class="index-table-wrap">
-        <table class="index-table" id="doc-table">
-            <thead>
-                <tr>
-                    <th class="col-idno" data-sort="id">Nr.</th>
-                    <th class="col-date" data-sort="di">Datum</th>
-                    <th class="col-place" data-sort="p">Ort</th>
-                    <th class="col-title" data-sort="t">Regest</th>
-                </tr>
-            </thead>
-            <tbody id="doc-tbody">
-            </tbody>
-        </table>
-        
+            <section class="index-table-wrap">
+                <table class="index-table" id="doc-table">
+                    <thead>
+                        <tr>
+                            <th class="col-idno" data-sort="id">Nr.</th>
+                            <th class="col-date" data-sort="di">Datum</th>
+                            <th class="col-place" data-sort="p">Ort</th>
+                            <th class="col-title" data-sort="t">Regest</th>
+                            <th class="col-content" data-sort="pcd">Inhalt</th>
+                        </tr>
+                    </thead>
+                    <tbody id="doc-tbody">
+                    </tbody>
+                </table>
+                
 <div class="no-results hidden" id="no-results">
     <p>Keine Quellen gefunden.</p>
 </div>
 
-    </section>
+            </section>
+
+        </div>
+
+    </div>
 
 </div>
 
@@ -413,17 +453,16 @@
             </div>
             <div class="footer-col footer-col-right">
                 <p>Technische Umsetzung: <a href="https://dhcraft.org" class="footer-link">Digital Humanities Craft OG</a></p>
-                <p>Lizenz: <a href="./impressum.html#lizenz" class="footer-link">CC BY 4.0</a> &middot; 2635 Quellen</p>
+                <p>Lizenz: <a href="./impressum.html#lizenz" class="footer-link">CC BY 4.0</a></p>
             </div>
         </div>
     </footer>
 
-    <script>window.RELEASED_PERIOD = {min: 1177, max: 1414};</script>
-    <script src="./static/js/core.js"></script>
-    <script src="./static/js/provenance.js"></script>
+    <script src="./static/js/core.js?v=20260502142559"></script>
+    <script src="./static/js/provenance.js?v=20260502142559"></script>
     
-<script src="./static/js/table-infra.js"></script>
-<script src="./static/js/index.js"></script>
+<script src="./static/js/table-infra.js?v=20260502142559"></script>
+<script src="./static/js/index.js?v=20260502142559"></script>
 
 </body>
 </html>

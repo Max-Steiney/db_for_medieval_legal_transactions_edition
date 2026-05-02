@@ -9,7 +9,6 @@ Submodule layout:
 - epic_a.py — aggregate_epic_a (epic_a.json: roles)
 - epic_b.py — aggregate_epic_b (epic_b.json: relationships)
 - epic_c.py — aggregate_epic_c (epic_c.json: transactions)
-- epic_d.py — aggregate_epic_d (epic_d.json: places)
 - docs.py — aggregate_docs (docs_aggregate.json) + build_docs_lookup
 - _run.py — run_aggregation orchestrator
 
@@ -33,7 +32,6 @@ from .timeline import aggregate_timeline
 from .epic_a import aggregate_epic_a
 from .epic_b import aggregate_epic_b
 from .epic_c import aggregate_epic_c
-from .epic_d import aggregate_epic_d
 from .docs import _parse_date_range, aggregate_docs, build_docs_lookup
 from ._run import run_aggregation
 
@@ -53,7 +51,6 @@ __all__ = [
     "aggregate_epic_a",
     "aggregate_epic_b",
     "aggregate_epic_c",
-    "aggregate_epic_d",
     "aggregate_timeline",
     "build_docs_lookup",
     "run_aggregation",

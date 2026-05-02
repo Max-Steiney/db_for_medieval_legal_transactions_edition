@@ -32,8 +32,11 @@ parent/
 - `templates/` — Jinja2 templates for document, register, statistics, and
   exploration pages.
 - `static/` — CSS, JavaScript, fonts, images.
-- `content/` — Markdown content rendered into the site (notably
-  `edition_guidelines.md`).
+- `content/` — Markdown content rendered into the site (about, impressum).
+  The annotation guidelines themselves (`edition_guidelines.md`) live in
+  the sibling pipeline repository's root, because they describe the
+  source-data annotation model rather than publication content; the
+  frontend renders them via `EDITION_GUIDELINES_PATH`.
 - `tests/` — automated tests (renderer, build, register pages, statistics,
   exploration).
 
@@ -67,4 +70,4 @@ python -m pytest frontend/tests/                                  # frontend tes
 - [../knowledge/ui.md](../knowledge/ui.md) — UI components, templates, JavaScript modules.
 - [../knowledge/design.md](../knowledge/design.md) — design system (tokens, colours, typography).
 - [../knowledge/visualization.md](../knowledge/visualization.md) — visualisation perspectives and open questions.
-- [content/edition_guidelines.md](content/edition_guidelines.md) — annotation model and editorial conventions (rendered into the site).
+- [../../db_for_medieval_legal_transactions/edition_guidelines.md](../../db_for_medieval_legal_transactions/edition_guidelines.md) — annotation model and editorial conventions (lives in the pipeline repo, rendered into the site by `_build_guidelines()`).

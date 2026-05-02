@@ -21,7 +21,7 @@ Der Datenbestand liegt in Form vorkonfektionierter JSON-Dateien vor, die bereits
 
 ### 2.1 Datenbestand
 
-Pro Ebene liegt eine eigene JSON vor: Quellen in `search.json` und `docs_lookup.json`, Personen in `persons_search.json`, vorberechnete Aggregate in `epic_a.json` (Rollen), `epic_b.json` (Beziehungen), `epic_c.json` (Transaktionen), `epic_d.json` (Orte). Organisations- und Ortsregister sind nicht freigegeben; ihre Aggregate erscheinen ausschließlich als anonymisierte Typ-Verteilungen in den `epic_*`-Dateien.
+Pro Ebene liegt eine eigene JSON vor: Quellen in `search.json` und `docs_lookup.json`, Personen in `persons_search.json`, vorberechnete Aggregate in `epic_a.json` (Rollen), `epic_b.json` (Beziehungen), `epic_c.json` (Transaktionen). Organisations- und Ortsregister sind nicht freigegeben; ihre Aggregate erscheinen ausschließlich als anonymisierte Typ-Verteilungen in den `epic_*`-Dateien.
 
 Zeitraum: freigegeben 1177 bis 1412 (Ausnahmen bis 1414 für QGW II/1 und II/2), mit nicht ausgewertetem Bereich 1418 bis 1447. Die Dokumentdichte ist stark ungleichverteilt — wenige Dutzend Dokumente in den ersten zwei Jahrhunderten, ein Dichte-Schwerpunkt im späten 14. Jahrhundert (insbesondere Stadtbücher). Konkrete Zahlen leben in den `coverage`-Blöcken der Aggregate und im Footer der Edition.
 
@@ -53,7 +53,6 @@ Die `epic_*.json` enthalten bereits vorberechnete Kreuztabellen mit Drill-Down-L
 - `epic_a.json` Rollen × Geschlecht × Dekade × Organisationstyp (Event-Partizipationen)
 - `epic_b.json` Beziehungen (Verwandtschaft, Beruf, Vertretung, Freundschaft), 12.178 insgesamt
 - `epic_c.json` Transaktionstypen × Dekade × Organisationstyp
-- `epic_d.json` Ortsregister mit Referenzierungs- und Georeferenzierungsstatus
 
 Die Struktur jeder Datei ist dreigeteilt:
 

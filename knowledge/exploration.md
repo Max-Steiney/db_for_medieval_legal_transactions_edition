@@ -66,20 +66,12 @@ Datenquelle: `epic_c.json` mit `tx_timeline`, der Verbform-Normalisierungstabell
 
 Typische Fragen: „Wann setzt die Schenkungspraxis an geistliche Empfänger ein?", „Welche Verbformen werden noch nicht in das kontrollierte Vokabular normalisiert?", „Wie verschiebt sich das Typenprofil zwischen Regest- und Volltext-Beständen?".
 
-### Orte
-
-Einstieg über das Einzugsgebiet der Rechtsgeschäfte. Neben einer Siedlungskarte steht ein vollständiges Ortsregister mit Referenzierungs- und Georeferenzierungsstatus.
-
-Datenquelle: `epic_d.json` mit `places` und deren `file_keys`. Nicht alle Orte sind georeferenziert; die Sub-Seite weist beide Zahlen (referenziert und georeferenziert) separat aus.
-
-Typische Fragen: „Welche Siedlungen außerhalb Wiens erscheinen besonders häufig?", „Welche Orte tauchen nur in den Stadtbüchern auf?", „Wo liegen die georeferenzierten Lücken?".
-
 ## Gemeinsames Muster: Überblick → Filter → Drill-down
 
 Jede Sub-Seite hält drei Ebenen:
 
 1. **Überblick** — aggregierte Zahlen als Kacheln, Balken, Karten oder Listen. Die Aggregate stammen aus den vorkompilierten `epic_*.json` und sind ohne weitere Berechnung abrufbar.
-2. **Filter** — global angewandt auf die Überblicksdarstellung. Minimalausstattung: Zeitraum, Quellenkorpus. Sub-Seiten-spezifisch kommen hinzu: Geschlecht (Rollen, Beziehungen), Organisationstyp (Rollen, Transaktionen), Beziehungstyp (Beziehungen), Ort-Klasse (Orte).
+2. **Filter** — global angewandt auf die Überblicksdarstellung. Minimalausstattung: Zeitraum, Quellenkorpus. Sub-Seiten-spezifisch kommen hinzu: Geschlecht (Rollen, Beziehungen), Organisationstyp (Rollen, Transaktionen), Beziehungstyp (Beziehungen).
 3. **Drill-down** — Klick auf eine Aggregat-Zelle öffnet ein Overlay mit den beitragenden Quellen. Die `file_key`-Listen kommen aus dem `drill_down`-Abschnitt des jeweiligen `epic_*.json`, aufgelöst über `data/docs_lookup.json`.
 
 Die Drill-down-Komponente ist eine gemeinsame UI-Infrastruktur (siehe [[architecture#Provenienz-Indizes]]).

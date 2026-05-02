@@ -180,6 +180,18 @@
     padding: 0.25rem 0.5rem 0.25rem 0;
     overflow-wrap: anywhere;
 }
+.start-card-matrix tbody th .corpus-link {
+    color: inherit;
+    text-decoration: none;
+    transition: color var(--transition-fast);
+}
+.start-card-matrix tbody th .corpus-link:hover,
+.start-card-matrix tbody th .corpus-link:focus-visible {
+    color: var(--anno-person);
+    text-decoration: underline;
+    text-decoration-thickness: 1px;
+    text-underline-offset: 3px;
+}
 .start-card-matrix tbody td,
 .start-card-matrix tfoot td {
     text-align: right;
@@ -245,11 +257,14 @@
     transform: translateX(2px);
 }
 
-/* \u2500\u2500 Zwei Wege: Exploration und Analyse als gleichberechtigte S\u00e4ulen \u2500\u2500\u2500 */
+/* \u2500\u2500 Zwei Wege: Exploration und Analyse als gleichberechtigte S\u00e4ulen \u2500\u2500\u2500
+   Abstand nach oben deutlich groesser, damit die Section sich klar
+   von den Entry-Cards loest. */
 .start-twoways {
     display: grid;
     grid-template-columns: 1fr 1fr;
-    gap: var(--space-lg);
+    gap: var(--space-xl);
+    margin-top: var(--space-xl);
     margin-bottom: var(--space-md);
 }
 
@@ -258,37 +273,46 @@
     flex-direction: column;
 }
 
-.start-twoways-eyebrow {
-    font-family: var(--font-sans);
-    font-size: var(--text-xs);
+.start-twoways-heading {
+    font-family: var(--font-serif);
+    font-size: var(--text-xl);
     font-weight: 600;
-    text-transform: uppercase;
-    letter-spacing: 0.12em;
-    color: var(--anno-person);
+    color: var(--color-text);
     margin: 0 0 var(--space-2xs);
+    line-height: 1.2;
+    letter-spacing: -0.01em;
 }
 
 .start-twoways-intro {
-    font-family: var(--font-serif);
-    font-size: var(--text-base);
+    font-family: var(--font-sans);
+    font-size: var(--text-sm);
     color: var(--color-text-muted);
-    margin: 0 0 var(--space-sm);
-    line-height: 1.35;
+    margin: 0 0 var(--space-md);
+    line-height: 1.5;
+    max-width: 38rem;
 }
 
 .start-twoways-grid {
     display: grid;
     grid-template-columns: 1fr 1fr;
+    grid-auto-rows: min-content;
     gap: var(--space-sm);
     flex: 1;
+    align-content: start;
 }
 
-/* Kompaktere Explore-Hub-Cards auf der Startseite */
-.start-twoways-grid .explore-hub-card { padding: var(--space-sm) var(--space-md); }
+/* Kompaktere Explore-Hub-Cards auf der Startseite. min-height haelt
+   die Symmetrie zwischen Exploration (4 Cards) und Analyse (1 Card),
+   unabhaengig von der Beschreibungslaenge. */
+.start-twoways-grid .explore-hub-card {
+    padding: var(--space-sm) var(--space-md);
+    min-height: 11rem;
+}
 .start-twoways-grid .explore-hub-card-icon { margin-bottom: var(--space-xs); }
 .start-twoways-grid .explore-hub-card-icon svg { width: 28px; height: 28px; }
 .start-twoways-grid .explore-hub-card-title { font-size: var(--text-base); }
 .start-twoways-grid .explore-hub-card-desc { font-size: var(--text-sm); margin-bottom: var(--space-xs); }
+
 
 
 

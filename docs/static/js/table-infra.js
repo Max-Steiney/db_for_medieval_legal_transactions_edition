@@ -3,10 +3,10 @@
    Shared table infrastructure (range slider, search, sort, renderer, chips)
    ========================================================================== */
 
-var TableInfra = (function() {
+let TableInfra = (function() {
     'use strict';
 
-    var esc = EdCore.esc;
+    let esc = EdCore.esc;
 
 
     /* ------------------------------------------------------------------
@@ -14,30 +14,30 @@ var TableInfra = (function() {
        ------------------------------------------------------------------ */
 
     function initRangeSlider(state, applyFilters) {
-        var slider = document.getElementById('range-slider');
+        let slider = document.getElementById('range-slider');
         if (!slider) return null;
 
-        var rangeMin = document.getElementById('range-min');
-        var rangeMax = document.getElementById('range-max');
-        var labelMin = document.getElementById('range-label-min');
-        var labelMax = document.getElementById('range-label-max');
-        var histogram = document.getElementById('range-histogram');
-        var bars = histogram ? histogram.querySelectorAll('.range-bar') : [];
+        let rangeMin = document.getElementById('range-min');
+        let rangeMax = document.getElementById('range-max');
+        let labelMin = document.getElementById('range-label-min');
+        let labelMax = document.getElementById('range-label-max');
+        let histogram = document.getElementById('range-histogram');
+        let bars = histogram ? histogram.querySelectorAll('.range-bar') : [];
 
-        var dataMin = parseInt(slider.dataset.min);
-        var dataMax = parseInt(slider.dataset.max);
+        let dataMin = parseInt(slider.dataset.min);
+        let dataMax = parseInt(slider.dataset.max);
 
         state.yearMin = dataMin;
         state.yearMax = dataMax;
 
         // Track fill element
-        var trackFill = document.createElement('div');
+        let trackFill = document.createElement('div');
         trackFill.className = 'range-track-fill';
         slider.querySelector('.range-inputs').appendChild(trackFill);
 
         function updateSlider() {
-            var minVal = parseInt(rangeMin.value);
-            var maxVal = parseInt(rangeMax.value);
+            let minVal = parseInt(rangeMin.value);
+            let maxVal = parseInt(rangeMax.value);
 
             // Prevent crossing
             if (minVal > maxVal) {
@@ -54,9 +54,9 @@ var TableInfra = (function() {
             state.yearMax = maxVal;
 
             // Percentages for positioning
-            var range = dataMax - dataMin;
-            var pctMin = range > 0 ? (minVal - dataMin) / range * 100 : 0;
-            var pctMax = range > 0 ? (maxVal - dataMin) / range * 100 : 100;
+            let range = dataMax - dataMin;
+            let pctMin = range > 0 ? (minVal - dataMin) / range * 100 : 0;
+            let pctMax = range > 0 ? (maxVal - dataMin) / range * 100 : 100;
 
             // Update labels — position them at handle locations
             labelMin.textContent = minVal;
@@ -70,8 +70,8 @@ var TableInfra = (function() {
 
             // Histogram bar opacity
             bars.forEach(function(bar) {
-                var decade = parseInt(bar.dataset.decade);
-                var decadeEnd = decade + 9;
+                let decade = parseInt(bar.dataset.decade);
+                let decadeEnd = decade + 9;
                 if (decade >= minVal && decadeEnd <= maxVal) {
                     bar.className = 'range-bar in-range';
                 } else if (decadeEnd < minVal || decade > maxVal) {
@@ -108,14 +108,18 @@ var TableInfra = (function() {
        ------------------------------------------------------------------ */
 
     function setupSearch(state, applyFilters) {
-        var searchInput = document.getElementById('search-input');
-        var searchClear = document.getElementById('search-clear');
+        let searchInput = document.getElementById('search-input');
+        let searchClear = document.getElementById('search-clear');
         if (!searchInput) return;
-        var searchTimer;
+        let searchTimer;
+        // V3 Diakritika: Suchanfrage mit der gleichen Normalisierung
+        // versehen wie die Pre-Compute-Strings (umlaut-tolerant).
+        let norm = (window.EdCore && EdCore.normForSearch) ||
+                   function(s) { return (s || '').toLowerCase(); };
         searchInput.addEventListener('input', function() {
             clearTimeout(searchTimer);
             searchTimer = setTimeout(function() {
-                state.query = searchInput.value.trim().toLowerCase();
+                state.query = norm(searchInput.value.trim());
                 searchClear.classList.toggle('hidden', !state.query);
                 applyFilters();
             }, 200);
@@ -134,10 +138,10 @@ var TableInfra = (function() {
        ------------------------------------------------------------------ */
 
     function setupSortHeaders(tableId, state, applyFilters) {
-        var headers = document.querySelectorAll('#' + tableId + ' th[data-sort]');
+        let headers = document.querySelectorAll('#' + tableId + ' th[data-sort]');
         headers.forEach(function(th) {
             th.addEventListener('click', function() {
-                var key = th.getAttribute('data-sort');
+                let key = th.getAttribute('data-sort');
                 if (state.sortKey === key) {
                     state.sortDir *= -1;
                 } else {
@@ -159,12 +163,12 @@ var TableInfra = (function() {
        ------------------------------------------------------------------ */
 
     function createTableRenderer(config) {
-        var tbody = document.getElementById(config.tbodyId);
-        var noResults = document.getElementById(config.noResultsId);
-        var batchSize = config.batchSize || 100;
-        var renderedCount = 0;
-        var observer = null;
-        var items = [];
+        let tbody = document.getElementById(config.tbodyId);
+        let noResults = document.getElementById(config.noResultsId);
+        let batchSize = config.batchSize || 100;
+        let renderedCount = 0;
+        let observer = null;
+        let items = [];
 
         function renderTable() {
             tbody.innerHTML = '';
@@ -176,10 +180,10 @@ var TableInfra = (function() {
         }
 
         function renderBatch() {
-            var end = Math.min(renderedCount + batchSize, items.length);
-            var fragment = document.createDocumentFragment();
-            for (var i = renderedCount; i < end; i++) {
-                var tr = document.createElement('tr');
+            let end = Math.min(renderedCount + batchSize, items.length);
+            let fragment = document.createDocumentFragment();
+            for (let i = renderedCount; i < end; i++) {
+                let tr = document.createElement('tr');
                 config.renderRow(items[i], i, tr);
                 fragment.appendChild(tr);
             }
@@ -190,9 +194,9 @@ var TableInfra = (function() {
         function setupScrollObserver() {
             if (observer) observer.disconnect();
             if (renderedCount >= items.length) return;
-            var sentinel = document.createElement('tr');
+            let sentinel = document.createElement('tr');
             sentinel.className = 'scroll-sentinel';
-            sentinel.innerHTML = '<td colspan="' + config.colCount + '" style="height:1px;padding:0;border:none"></td>';
+            sentinel.innerHTML = '<td colspan="' + config.colCount + '" class="table-sentinel"></td>';
             tbody.appendChild(sentinel);
             observer = new IntersectionObserver(function(entries) {
                 if (entries[0].isIntersecting && renderedCount < items.length) {
@@ -218,7 +222,7 @@ var TableInfra = (function() {
        ------------------------------------------------------------------ */
 
     function addFilterChip(container, label, onRemove) {
-        var chip = document.createElement('span');
+        let chip = document.createElement('span');
         chip.className = 'filter-chip';
         chip.innerHTML = esc(label) + ' <button aria-label="Filter entfernen">\u00D7</button>';
         chip.querySelector('button').addEventListener('click', onRemove);

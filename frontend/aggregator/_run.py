@@ -7,7 +7,6 @@ from .timeline import aggregate_timeline
 from .epic_a import aggregate_epic_a
 from .epic_b import aggregate_epic_b
 from .epic_c import aggregate_epic_c
-from .epic_d import aggregate_epic_d
 from .docs import aggregate_docs
 
 
@@ -42,10 +41,6 @@ def run_aggregation(docs_data_dir: Path, reverse_index: dict | None = None) -> d
     print(f"  Epic C: {epic_c['coverage']['unique_verb_forms']} verb forms, "
           f"{epic_c['coverage']['recipient_orgs']} recipients")
 
-    epic_d = aggregate_epic_d(docs_data_dir, reverse_index)
-    print(f"  Epic D: {epic_d['coverage']['total']} places, "
-          f"{epic_d['coverage']['referenced']} referenced")
-
     docs_agg = aggregate_docs(docs_data_dir)
     print(f"  Docs aggregate: {docs_agg['total']} sources, "
           f"{docs_agg['with_persons']} with at least one register-linked person")
@@ -55,6 +50,5 @@ def run_aggregation(docs_data_dir: Path, reverse_index: dict | None = None) -> d
         "epic_a": {"persons": epic_a["coverage"]["person_count"]},
         "epic_b": epic_b["coverage"],
         "epic_c": {"verb_forms": epic_c["coverage"]["unique_verb_forms"]},
-        "epic_d": epic_d["coverage"],
         "docs_aggregate": docs_agg,
     }

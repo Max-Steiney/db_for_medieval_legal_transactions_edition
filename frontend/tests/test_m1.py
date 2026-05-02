@@ -209,15 +209,6 @@ class TestTeiOutputPath:
 
 
 # ---------------------------------------------------------------------------
-# Top Persons (E7)
+# Top Persons (E7) — Statistics page wurde entfernt; Test wurde mitentfernt.
+# Top-Persons-Listen leben jetzt im Personenregister.
 # ---------------------------------------------------------------------------
-
-class TestTopPersons:
-
-    def test_top_persons_in_stats_json(self):
-        """Verify _build_statistics includes topPersons in the JSON."""
-        # This is a structural check — the actual content depends on pipeline data
-        # We verify the key exists by checking the stats_json construction
-        import inspect
-        source = inspect.getsource(frontend.build._build_statistics)
-        assert "topPersons" in source

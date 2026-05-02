@@ -7,27 +7,27 @@
     'use strict';
 
     function initFacsimileViewer() {
-        var urlScript = document.querySelector('.facs-urls');
-        var facsUrls = [];
+        let urlScript = document.querySelector('.facs-urls');
+        let facsUrls = [];
         if (urlScript) {
             try { facsUrls = JSON.parse(urlScript.textContent); } catch(e) { /* ignore */ }
         }
         if (!facsUrls.length) return;
 
-        var currentPage = 0;
-        var zoom = 1;
-        var imgEl = document.getElementById('facs-image');
-        var wrapEl = document.getElementById('facs-image-wrap');
-        var currentEl = document.getElementById('facs-current');
-        var prevBtn = document.querySelector('.facs-prev');
-        var nextBtn = document.querySelector('.facs-next');
-        var loaded = {};
+        let currentPage = 0;
+        let zoom = 1;
+        let imgEl = document.getElementById('facs-image');
+        let wrapEl = document.getElementById('facs-image-wrap');
+        let currentEl = document.getElementById('facs-current');
+        let prevBtn = document.querySelector('.facs-prev');
+        let nextBtn = document.querySelector('.facs-next');
+        let loaded = {};
 
         loadCurrentImage();
 
         function loadCurrentImage() {
             if (!imgEl || currentPage >= facsUrls.length) return;
-            var url = facsUrls[currentPage];
+            let url = facsUrls[currentPage];
             if (loaded[url]) { imgEl.src = url; return; }
             imgEl.classList.add('loading');
             imgEl.src = url;
@@ -49,9 +49,9 @@
             resetZoom();
         }
 
-        var zoomIn = document.querySelector('.facs-zoom-in');
-        var zoomOut = document.querySelector('.facs-zoom-out');
-        var zoomReset = document.querySelector('.facs-zoom-reset');
+        let zoomIn = document.querySelector('.facs-zoom-in');
+        let zoomOut = document.querySelector('.facs-zoom-out');
+        let zoomReset = document.querySelector('.facs-zoom-reset');
 
         if (zoomIn) zoomIn.addEventListener('click', function() { setZoom(zoom * 1.3); });
         if (zoomOut) zoomOut.addEventListener('click', function() { setZoom(zoom / 1.3); });
@@ -70,7 +70,7 @@
         if (wrapEl) {
             wrapEl.addEventListener('wheel', function(e) {
                 e.preventDefault();
-                var delta = e.deltaY > 0 ? 0.9 : 1.1;
+                let delta = e.deltaY > 0 ? 0.9 : 1.1;
                 setZoom(zoom * delta);
             }, { passive: false });
         }

@@ -8,6 +8,7 @@ from frontend.aggregator import (
     _decade,
     _load_csv,
     _parse_coord,
+    _parse_date_range,
     run_aggregation,
 )
 from pipeline.config import PIPELINE_OUTPUT, NORM_LISTS_DIR
@@ -101,7 +102,8 @@ def aggregation_results(tmp_path_factory):
     run_aggregation(data_dir)
     # Load all JSON results
     results = {}
-    for name in ["timeline", "epic_a", "epic_b", "epic_c", "epic_d"]:
+    for name in ["timeline", "epic_a", "epic_b", "epic_c",
+                 "docs_aggregate"]:
         path = data_dir / f"{name}.json"
         results[name] = json.loads(path.read_text(encoding="utf-8"))
     results["_dir"] = data_dir
@@ -110,7 +112,8 @@ def aggregation_results(tmp_path_factory):
 
 class TestMetaBlock:
     def test_all_files_have_meta(self, aggregation_results):
-        for name in ["timeline", "epic_a", "epic_b", "epic_c", "epic_d"]:
+        for name in ["timeline", "epic_a", "epic_b", "epic_c",
+                     "docs_aggregate"]:
             data = aggregation_results[name]
             assert "meta" in data, f"{name}.json missing meta block"
             meta = data["meta"]
@@ -122,7 +125,8 @@ class TestMetaBlock:
             assert "measures" in meta["structure"]
 
     def test_dimensions_have_name_and_type(self, aggregation_results):
-        for name in ["timeline", "epic_a", "epic_b", "epic_c", "epic_d"]:
+        for name in ["timeline", "epic_a", "epic_b", "epic_c",
+                     "docs_aggregate"]:
             dims = aggregation_results[name]["meta"]["structure"]["dimensions"]
             for dim in dims:
                 assert "name" in dim, f"{name}: dimension missing name"
@@ -229,37 +233,6 @@ class TestEpicCAggregation:
     def test_tx_timeline_has_not_normalised(self, aggregation_results):
         assert "_not_normalised" in \
             aggregation_results["epic_c"]["observations"]["tx_timeline"]
-
-
-class TestEpicDAggregation:
-    def test_total_places(self, aggregation_results):
-        assert aggregation_results["epic_d"]["coverage"]["total"] > 2500
-
-    def test_referenced_places(self, aggregation_results):
-        assert aggregation_results["epic_d"]["coverage"]["referenced"] > 0
-
-    def test_place_structure(self, aggregation_results):
-        p = aggregation_results["epic_d"]["places"][0]
-        assert "id" in p
-        assert "name" in p
-        assert "referenced" in p
-        assert "has_coords" in p
-        assert "has_geonames" in p
-
-    def test_coord_parse_failures_tracked(self, aggregation_results):
-        """Non-numeric coordinates should be counted as parse failures."""
-        failures = aggregation_results["epic_d"]["coverage"]["coord_parse_failures"]
-        assert isinstance(failures, int)
-
-    def test_referenced_unreferenced_sum_to_total(self, aggregation_results):
-        cov = aggregation_results["epic_d"]["coverage"]
-        assert cov["referenced"] + cov["unreferenced"] == cov["total"]
-
-    def test_comma_coords_parsed(self, aggregation_results):
-        """Comma-decimal coordinates (German locale) should be parsed."""
-        cov = aggregation_results["epic_d"]["coverage"]
-        # With comma parsing, we expect >700 (before fix: 647)
-        assert cov["with_coords"] > 700
 
 
 class TestEpicBConsistency:
@@ -372,20 +345,6 @@ class TestCrossEpicIntegrity:
             assert recipients[i]["count"] >= recipients[i + 1]["count"], \
                 f"Recipients not sorted at index {i}"
 
-    def test_epic_d_settlements_with_coords_have_file_keys(self, aggregation_results):
-        """Settlements with coords and doc_count > 0 should have file_keys."""
-        for p in aggregation_results["epic_d"]["places"]:
-            if p["type"] == "settlement" and p["has_coords"] and p["doc_count"] > 0:
-                assert "file_keys" in p, \
-                    f"Settlement {p['id']} ({p['name']}) missing file_keys"
-
-    def test_epic_d_type_counts_sum_to_total(self, aggregation_results):
-        """Sum of type_counts should equal total places."""
-        cov = aggregation_results["epic_d"]["coverage"]
-        type_sum = sum(cov["type_counts"].values())
-        assert type_sum == cov["total"], \
-            f"type_counts sum ({type_sum}) != total ({cov['total']})"
-
     def test_all_drill_down_blocks_non_empty(self, aggregation_results):
         """Each Epic's drill_down should have at least one key with file_keys."""
         # Epic A
@@ -399,3 +358,143 @@ class TestCrossEpicIntegrity:
         # Epic C
         dd_c = aggregation_results["epic_c"]["drill_down"]
         assert len(dd_c.get("tx_type_decade", {})) > 0, "Epic C has no tx_type_decade drill_down"
+
+
+# ---------------------------------------------------------------------------
+# _parse_date_range — pure unit tests
+# ---------------------------------------------------------------------------
+
+class TestParseDateRange:
+    def test_clean_iso_date(self):
+        assert _parse_date_range("1177-05-10") == ("1177-05-10", "1177-05-10", 1177)
+
+    def test_whole_year_uncertainty(self):
+        # Pipeline-Konvention fuer "Jahr unscharf"
+        assert _parse_date_range("1208-01-01 | 1208-12-31") == \
+            ("1208-01-01", "1208-12-31", 1208)
+
+    def test_multi_year_range(self):
+        assert _parse_date_range("1198-01-01 | 1230-12-31") == \
+            ("1198-01-01", "1230-12-31", 1198)
+
+    def test_empty_string(self):
+        assert _parse_date_range("") == (None, None, None)
+
+    def test_whitespace_only(self):
+        assert _parse_date_range("   ") == (None, None, None)
+
+    def test_extra_whitespace_in_range(self):
+        assert _parse_date_range("  1208-01-01   |   1208-12-31  ") == \
+            ("1208-01-01", "1208-12-31", 1208)
+
+
+# ---------------------------------------------------------------------------
+# Docs-Aggregate — Integration
+# ---------------------------------------------------------------------------
+
+def _doc_by_idno_collection(docs, idno, collection_path):
+    """Pick a record from docs_aggregate by (idno, collection_path)."""
+    for d in docs:
+        if d["idno"] == idno and d["collection_path"] == collection_path:
+            return d
+    return None
+
+
+class TestDocsAggregate:
+
+    def test_total_matches_build_count(self, aggregation_results):
+        """Aggregator-Quellenzahl entspricht freigegebenen done-Quellen."""
+        docs = aggregation_results["docs_aggregate"]["docs"]
+        assert len(docs) == 2601, \
+            f"Expected 2601 sources, got {len(docs)}"
+
+    def test_qgw_0a_against_tei_truth(self, aggregation_results):
+        """Spot-Check: 0a hat 1 maennliche Person, 1 abstract event."""
+        docs = aggregation_results["docs_aggregate"]["docs"]
+        d = _doc_by_idno_collection(docs, "0a", "QGW/Vienna_1177-1414_ready")
+        assert d is not None
+        assert d["persons"] == {"distinct": 1, "f": 0, "m": 1, "u": 0}
+        assert d["events"]["total"] == 1
+        assert d["events"]["abstract"] == 1
+        assert d["events"]["seal"] == 0
+
+    def test_qgw_10_with_wife_via_corresp(self, aggregation_results):
+        """Spot-Check: QGW 10 hat Berthold (m) + Diemut (f, via corresp)."""
+        docs = aggregation_results["docs_aggregate"]["docs"]
+        d = _doc_by_idno_collection(docs, "10", "QGW/Vienna_1177-1414_ready")
+        assert d is not None
+        assert d["persons"]["distinct"] == 2
+        assert d["persons"]["f"] == 1
+        assert d["persons"]["m"] == 1
+        assert d["events"]["abstract"] >= 1
+        assert d["events"]["seal"] >= 1
+
+    def test_stadtbuecher_10_against_tei_truth(self, aggregation_results):
+        """Spot-Check: StB 10 hat 7 Personen (1f, 6m), 1 entry event."""
+        docs = aggregation_results["docs_aggregate"]["docs"]
+        d = _doc_by_idno_collection(docs, "10", "Stadtbuecher/Band_1_1395-1400_ready")
+        assert d is not None
+        assert d["persons"] == {"distinct": 7, "f": 1, "m": 6, "u": 0}
+        assert d["events"]["entry"] == 1
+        assert d["events"]["abstract"] == 0
+
+    def test_multi_event_source_1542(self, aggregation_results):
+        """Spot-Check: QGW 1542 ist Sonderfall mit 4 Rechtsgeschaeften."""
+        docs = aggregation_results["docs_aggregate"]["docs"]
+        d = _doc_by_idno_collection(docs, "1542", "QGW/Vienna_1177-1414_ready")
+        assert d is not None
+        assert d["events"]["total"] == 4
+
+    def test_sex_breakdown_sums_to_distinct(self, aggregation_results):
+        """Pro Quelle muss f + m + u = distinct sein."""
+        for d in aggregation_results["docs_aggregate"]["docs"]:
+            p = d["persons"]
+            assert p["f"] + p["m"] + p["u"] == p["distinct"], \
+                f"Sex-Aufschluesselung kollidiert in {d['file_key']}"
+
+    def test_all_records_have_file_key(self, aggregation_results):
+        """Kein Record ohne file_key (sonst kein Frontend-Lookup moeglich)."""
+        for d in aggregation_results["docs_aggregate"]["docs"]:
+            assert d["file_key"], f"Record ohne file_key: {d}"
+            assert d["file_key"].startswith("f__"), \
+                f"file_key-Praefix-Bruch: {d['file_key']}"
+
+    def test_only_released_corpora_present(self, aggregation_results):
+        """Aggregator filtert nicht-freigegebene Korpora raus."""
+        for d in aggregation_results["docs_aggregate"]["docs"]:
+            cp = d["collection_path"]
+            assert cp.startswith("QGW/") or cp.startswith("Stadtbuecher/"), \
+                f"Unfreigegebener Korpus durchgesickert: {cp}"
+
+    def test_event_form_counts_le_total(self, aggregation_results):
+        """Jedes Form-Bucket darf nicht mehr Events als total enthalten."""
+        for d in aggregation_results["docs_aggregate"]["docs"]:
+            ev = d["events"]
+            for bucket in ("abstract", "seal", "entry", "nota", "other"):
+                assert ev[bucket] <= ev["total"], \
+                    f"{d['file_key']}: {bucket}={ev[bucket]} > total={ev['total']}"
+
+    def test_qgw_event_total_distribution(self, aggregation_results):
+        """QGW-Quellen haben fast immer genau 1 distinct event (Norm)."""
+        qgw = [d for d in aggregation_results["docs_aggregate"]["docs"]
+               if d["collection_path"].startswith("QGW/")]
+        with_one = sum(1 for d in qgw if d["events"]["total"] == 1)
+        # Empirische Norm: ueber 99 % der QGW-Quellen haben 1 distinct event
+        assert with_one / len(qgw) > 0.99, \
+            f"Nur {with_one}/{len(qgw)} QGW-Quellen mit total=1"
+
+    def test_total_with_persons_matches_summary(self, aggregation_results):
+        """Summary-Zahl (with_persons) stimmt mit gezaehlten Records ueberein."""
+        docs = aggregation_results["docs_aggregate"]["docs"]
+        with_persons = sum(1 for d in docs if d["persons"]["distinct"] > 0)
+        # Erwartung: 2586 Quellen mit mindestens einer registrierten Person
+        # (Befund vom Spot-Check; bei TEI-Aenderungen anpassen)
+        assert with_persons == 2586, \
+            f"Erwarte 2586 Quellen mit Personen, gefunden {with_persons}"
+
+    def test_dates_present_and_parseable(self, aggregation_results):
+        """Mindestens 95 % der Quellen haben ein parsables date_year."""
+        docs = aggregation_results["docs_aggregate"]["docs"]
+        with_year = sum(1 for d in docs if d.get("date_year"))
+        assert with_year / len(docs) > 0.95, \
+            f"Nur {with_year}/{len(docs)} Quellen mit Jahr"

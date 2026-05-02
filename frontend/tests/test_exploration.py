@@ -101,9 +101,6 @@ class TestExplorationHub:
     def test_page_links_to_transactions(self, html):
         assert 'exploration_transactions.html' in html
 
-    def test_page_links_to_places(self, html):
-        assert 'exploration_places.html' in html
-
     def test_page_has_transparency_bar(self, html):
         assert 'id="explore-transparency"' in html
 
@@ -151,7 +148,6 @@ class TestExplorationPlaceholderPages:
     @pytest.mark.parametrize("filename,expected_title", [
         ("exploration_networks.html", "Beziehungen"),
         ("exploration_transactions.html", "Transaktionen"),
-        ("exploration_places.html", "Orte"),
     ])
     def test_placeholder_page_exists_and_has_title(self, filename, expected_title):
         path = DOCS_DIR / filename
@@ -163,7 +159,6 @@ class TestExplorationPlaceholderPages:
     @pytest.mark.parametrize("filename", [
         "exploration_networks.html",
         "exploration_transactions.html",
-        "exploration_places.html",
     ])
     def test_placeholder_page_has_no_subnav(self, filename):
         """Subnav removed — top nav dropdown is sufficient."""
@@ -236,120 +231,6 @@ class TestEpicBData:
         dd = epic_b["drill_down"]
         assert "type_sex" in dd
         assert "label_sex" in dd
-
-
-class TestEpicDData:
-    """Verify epic_d.json has correct structure for Place Explorer."""
-
-    @pytest.fixture(scope="class")
-    def epic_d(self):
-        path = DATA_DIR / "epic_d.json"
-        if not path.exists():
-            pytest.skip("epic_d.json not found (run full build first)")
-        return json.loads(path.read_text(encoding="utf-8"))
-
-    def test_has_places(self, epic_d):
-        assert "places" in epic_d
-        assert len(epic_d["places"]) > 2000
-
-    def test_places_have_required_fields(self, epic_d):
-        for p in epic_d["places"][:20]:
-            assert "id" in p
-            assert "name" in p
-            assert "type" in p
-            assert "referenced" in p
-            assert "has_coords" in p
-            assert "doc_count" in p
-            assert "decades" in p
-            assert isinstance(p["decades"], list)
-
-    def test_settlements_with_coords_have_file_keys(self, epic_d):
-        settlements = [p for p in epic_d["places"]
-                       if p["type"] == "settlement" and p["has_coords"]
-                       and p["doc_count"] > 0]
-        assert len(settlements) > 0
-        for p in settlements[:10]:
-            assert "file_keys" in p
-            assert len(p["file_keys"]) == p["doc_count"]
-
-    def test_non_settlement_entries_may_have_file_keys(self, epic_d):
-        """All referenced places (incl. immo) carry file_keys for cross-Epic linking.
-
-        Updated 2026-04 (commit b4cba658de): aggregator now emits file_keys for
-        every referenced place, not only settlements with coords. This enables
-        bidirectional navigation from any place entry into source documents.
-        """
-        immos = [p for p in epic_d["places"] if p["type"] == "immo"]
-        # We don't enforce presence/absence — just that the schema is consistent
-        # (file_keys, where present, is a list aligned with doc_count).
-        for p in immos[:20]:
-            if "file_keys" in p:
-                assert isinstance(p["file_keys"], list)
-                assert len(p["file_keys"]) == p["doc_count"]
-
-    def test_coverage_has_type_counts(self, epic_d):
-        cov = epic_d["coverage"]
-        assert "type_counts" in cov
-        assert "settlement" in cov["type_counts"]
-        assert "immo" in cov["type_counts"]
-
-    def test_coverage_has_settlement_stats(self, epic_d):
-        cov = epic_d["coverage"]
-        assert "settlements_with_coords" in cov
-        assert cov["settlements_with_coords"] > 100
-
-    def test_coverage_has_doc_links(self, epic_d):
-        cov = epic_d["coverage"]
-        assert "total_doc_links" in cov
-        assert cov["total_doc_links"] > 0
-
-    def test_place_types_are_canonical(self, epic_d):
-        types = set(p["type"] for p in epic_d["places"])
-        assert types <= {"settlement", "immo", "street", "river", ""}
-
-
-class TestExplorationPlaces:
-    """Verify exploration_places.html is functional (not placeholder)."""
-
-    @pytest.fixture(scope="class")
-    def html(self):
-        path = DOCS_DIR / "exploration_places.html"
-        if not path.exists():
-            pytest.skip("exploration_places.html not found")
-        return path.read_text(encoding="utf-8")
-
-    def test_page_has_exploration_id(self, html):
-        assert 'id="exploration-page"' in html
-
-    def test_page_has_map_panel(self, html):
-        assert 'id="explore-panel-map"' in html
-
-    def test_page_has_places_panel(self, html):
-        assert 'id="explore-panel-places"' in html
-
-    def test_page_has_map_container(self, html):
-        assert 'id="explore-map"' in html
-
-    def test_page_has_place_search(self, html):
-        assert 'id="explore-place-search"' in html
-
-    def test_page_has_drilldown_overlay(self, html):
-        assert 'id="explore-drilldown"' in html
-
-    def test_page_has_unified_header(self, html):
-        assert 'explore-header-unified' in html
-
-    def test_page_has_time_slider(self, html):
-        assert 'id="explore-range-min"' in html
-
-    def test_page_is_not_placeholder(self, html):
-        assert 'In Entwicklung' not in html
-
-    def test_page_loads_leaflet(self, html):
-        assert 'leaflet' in html.lower()
-
-    def test_page_has_title(self, html):
-        assert 'Orte' in html
 
 
 class TestEpicCData:

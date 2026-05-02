@@ -137,6 +137,9 @@ class TestRegisterJson:
     def test_writes_json_files(self, tmp_path, monkeypatch):
         import frontend.build as build_mod
         monkeypatch.setattr(build_mod, "DOCS_DIR", tmp_path)
+        # Stub released-person filter so the synthetic test ID passes through.
+        monkeypatch.setattr(build_mod, "_released_person_keys",
+                            lambda: {"pe__hans"})
 
         reverse_index = {
             "pe__hans": [
@@ -168,6 +171,7 @@ class TestRegisterJson:
     def test_empty_entity_not_in_json(self, tmp_path, monkeypatch):
         import frontend.build as build_mod
         monkeypatch.setattr(build_mod, "DOCS_DIR", tmp_path)
+        monkeypatch.setattr(build_mod, "_released_person_keys", lambda: set())
 
         _build_register_json({"pl__wien": []})
         data = json.loads(

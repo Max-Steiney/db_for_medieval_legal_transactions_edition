@@ -3,20 +3,27 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="Content-Security-Policy" content="default-src 'self'; script-src 'self'; style-src 'self'; font-src 'self'; img-src 'self' data: https://images.monasterium.net https://www.monasterium.net; connect-src 'self'; frame-ancestors 'none'; base-uri 'self'; form-action 'self'; upgrade-insecure-requests">
+    <meta name="referrer" content="strict-origin-when-cross-origin">
+    <meta http-equiv="Permissions-Policy" content="camera=(), microphone=(), geolocation=(), interest-cohort=()">
     <title>Analyse — Datenbank</title>
-    <link rel="preconnect" href="https://fonts.googleapis.com">
-    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-    <link href="https://fonts.googleapis.com/css2?family=Crimson+Pro:ital,wght@0,300;0,400;0,500;0,600;0,700;1,300;1,400;1,500&family=Inter:wght@300;400;500;600&family=JetBrains+Mono:wght@400&display=swap" rel="stylesheet">
-    <link rel="stylesheet" href="../static/css/tokens.css">
-    <link rel="stylesheet" href="../static/css/base.css">
-    <link rel="stylesheet" href="../static/css/components.css">
-    <link rel="stylesheet" href="../static/css/responsive.css">
-    <link rel="stylesheet" href="../static/css/print.css">
-    <link rel="stylesheet" href="../static/css/provenance.css">
-    <script>window.ROOT_PATH = "..";</script>
+    <link rel="preload" as="font" type="font/woff2" crossorigin
+          href="../static/fonts/inter-400-latin.woff2">
+    <link rel="stylesheet" href="../static/css/fonts.css?v=20260502142559">
+    <link rel="stylesheet" href="../static/css/tokens.css?v=20260502142559">
+    <link rel="stylesheet" href="../static/css/base.css?v=20260502142559">
+    <link rel="stylesheet" href="../static/css/components.css?v=20260502142559">
+    <link rel="stylesheet" href="../static/css/responsive.css?v=20260502142559">
+    <link rel="stylesheet" href="../static/css/print.css?v=20260502142559">
+    <link rel="stylesheet" href="../static/css/provenance.css?v=20260502142559">
     
+
+<link rel="stylesheet" href="../static/css/analysis.css?v=20260502142610">
+
 </head>
-<body>
+<body data-root-path=".."
+      data-released-min="1177"
+      data-released-max="1414">
     <a class="skip-link" href="#main-content">Zum Inhalt springen</a>
     <nav class="site-nav">
         <div class="nav-inner">
@@ -34,8 +41,6 @@
                     <button class="nav-dropdown-trigger" aria-expanded="false" aria-haspopup="true">Register <span class="nav-dropdown-arrow">&#x25BE;</span></button>
                     <div class="nav-dropdown-menu">
                         <a href="../register/persons.html">Personen</a>
-                        <a href="../register/organisations.html" class="nav-disabled" aria-disabled="true" title="Noch nicht freigegeben">Organisationen</a>
-                        <a href="../register/places.html" class="nav-disabled" aria-disabled="true" title="Noch nicht freigegeben">Orte</a>
                     </div>
                 </div>
                 <div class="nav-dropdown">
@@ -44,7 +49,6 @@
                         <a href="../exploration/roles.html">Rollen</a>
                         <a href="../exploration/networks.html">Beziehungen</a>
                         <a href="../exploration/transactions.html">Transaktionen</a>
-                        <a href="../exploration/places.html">Orte</a>
                     </div>
                 </div>
                 <a href="../analysis/index.html">Analyse</a>
@@ -52,8 +56,6 @@
                     <button class="nav-dropdown-trigger" aria-expanded="false" aria-haspopup="true">Projekt <span class="nav-dropdown-arrow">&#x25BE;</span></button>
                     <div class="nav-dropdown-menu">
                         <a href="../project/about.html">&Uuml;ber das Projekt</a>
-                        <a href="../project/statistics.html">Statistik</a>
-                        <a href="../project/quality.html">Qualit&auml;t</a>
                         <a href="../project/edition-guidelines.html">Editionsrichtlinien</a>
                         <a href="../project/glossary.html">Glossar</a>
                         <a href="../impressum.html">Impressum</a>
@@ -65,30 +67,47 @@
 
     <main class="site-main" id="main-content">
         
-<div class="vault-page">
-    <header class="vault-header">
+<div class="analysis" id="analysis">
+
+    <header class="analysis-head">
         <h1>Analyse</h1>
-        <p class="vault-subtitle">Klassischer Abfragemodus für wiederkehrende Forschungsfragen.</p>
     </header>
 
-    <article style="max-width: 760px;">
-        <p>
-            Der Bereich <strong>Analyse</strong> stellt vordefinierte Grundabfragen bereit
-            (Kombinationen aus Bestand, Rolle, Geschlecht und Nennungsart). Er ergänzt
-            die <a href="../exploration/index.html">Exploration</a>:
-            wo dort visuell-explorativ nach Mustern gesucht wird, beantwortet die Analyse
-            gezielte, wiederkehrende Forschungsfragen.
-        </p>
+    <div class="analysis-grid">
+        <section class="composer" id="composer" aria-label="Abfrage zusammenstellen"></section>
+        <section class="result" id="result" aria-live="polite"></section>
+    </div>
 
-        <p>
-            Die konkrete Liste der Grundabfragen wird gemeinsam mit dem Fachteam erarbeitet.
-            Diese Seite ist ein Platzhalter, bis die Liste festgelegt ist.
-        </p>
+    
+<div class="explore-drilldown-overlay hidden" id="analysis-drilldown" role="dialog"
+     aria-label="Quellenliste" aria-modal="true">
+    <div class="explore-drilldown-inner explore-drilldown-inner--wide">
+        <div class="explore-drilldown-header">
+            <h3 id="analysis-drilldown-title">Quellen</h3>
+            <button class="explore-drilldown-close" id="analysis-drilldown-close"
+                    aria-label="Schließen">&times;</button>
+        </div>
+        <div class="explore-drilldown-body" id="analysis-drilldown-body">
+            <table class="explore-data-table">
+                <thead>
+                    <tr>
+                        <th>Nr.</th>
+                        <th>Datum</th>
+                        <th>Quellenkorpus</th>
+                        <th>Regest</th>
+                    </tr>
+                </thead>
+                <tbody id="analysis-drilldown-tbody"></tbody>
+            </table>
+        </div>
+        <div class="explore-drilldown-footer">
+            <span id="analysis-drilldown-count"></span>
+            <button class="explore-btn" id="analysis-drilldown-export">CSV-Export</button>
+        </div>
+    </div>
+</div>
 
-        <p style="color: var(--color-text-muted); font-style: italic;">
-            In Vorbereitung.
-        </p>
-    </article>
+
 </div>
 
     </main>
@@ -102,14 +121,19 @@
             </div>
             <div class="footer-col footer-col-right">
                 <p>Technische Umsetzung: <a href="https://dhcraft.org" class="footer-link">Digital Humanities Craft OG</a></p>
-                <p>Lizenz: <a href="../impressum.html#lizenz" class="footer-link">CC BY 4.0</a> &middot; Seite generiert am 30. April 2026</p>
+                <p>Lizenz: <a href="../impressum.html#lizenz" class="footer-link">CC BY 4.0</a> &middot; Seite generiert am 2. Mai 2026</p>
             </div>
         </div>
     </footer>
 
-    <script>window.RELEASED_PERIOD = {min: 1177, max: 1414};</script>
-    <script src="../static/js/core.js"></script>
-    <script src="../static/js/provenance.js"></script>
+    <script src="../static/js/core.js?v=20260502142559"></script>
+    <script src="../static/js/provenance.js?v=20260502142559"></script>
     
+
+<script src="../static/js/drill-down.js?v=20260502142610"></script>
+<script src="../static/js/analysis-capabilities.js?v=20260502142610"></script>
+<script src="../static/js/analysis-composer.js?v=20260502142610"></script>
+<script src="../static/js/analysis.js?v=20260502142610"></script>
+
 </body>
 </html>

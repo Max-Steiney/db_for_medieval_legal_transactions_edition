@@ -1435,7 +1435,7 @@ def _compute_release_kpis():
 
 
 def _build_exploration(all_metadata, persons, env):
-    """Build exploration hub + 4 subpages (roles, networks, transactions, places).
+    """Build exploration hub + 3 subpages (roles, networks, transactions).
 
     Header-KPIs (Personen, Events, Geschlechter, Personen mit
     Institutionsbezug) sind auf den freigegebenen Korpus eingeschr&auml;nkt
@@ -1544,25 +1544,6 @@ def _build_exploration(all_metadata, persons, env):
         net_html = env.get_template("exploration_networks.html").render(**shared_vars)
     (explore_dir / "networks.html").write_text(net_html, encoding="utf-8")
     print("  Exploration subpage: exploration/networks.html")
-
-    # 5) Ortsexplorer (Epic D)
-    epic_d_path = DATA_DIR / "epic_d.json"
-    if epic_d_path.exists():
-        epic_d = json.loads(epic_d_path.read_text(encoding="utf-8"))
-        cov_d = epic_d.get("coverage", {})
-        places_vars = dict(
-            epic_d_json=True,
-            total_places=cov_d.get("total", 0),
-            settlements_with_coords=cov_d.get("settlements_with_coords", 0),
-            referenced_places=cov_d.get("referenced", 0),
-            total_doc_links=cov_d.get("total_doc_links", 0),
-        )
-        places_html = env.get_template("exploration_places.html").render(
-            **{**shared_vars, **places_vars})
-    else:
-        places_html = env.get_template("exploration_places.html").render(**shared_vars)
-    (explore_dir / "places.html").write_text(places_html, encoding="utf-8")
-    print("  Exploration subpage: exploration/places.html")
 
 
 def _build_guidelines(env):

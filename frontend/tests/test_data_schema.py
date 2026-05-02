@@ -269,7 +269,7 @@ class TestDocsLookupJson:
 class TestSchemaVersioning:
     @pytest.mark.parametrize("filename", [
         "docs_aggregate.json", "epic_a.json", "epic_b.json", "epic_c.json",
-        "epic_d.json", "quality.json", "timeline.json",
+        "quality.json", "timeline.json",
     ])
     def test_aggregate_files_have_schema_version(self, filename):
         data = _load(DOCS_DATA / filename)
