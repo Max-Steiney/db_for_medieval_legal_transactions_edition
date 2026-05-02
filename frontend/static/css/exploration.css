@@ -414,6 +414,60 @@
     height: 14px;
     border-radius: 2px;
     flex-shrink: 0;
+    background: var(--swatch-color, var(--color-text-muted));
+}
+
+/* Heatmap cell with dynamic background opacity (var --heat-opacity) and
+   cursor (var --heat-cursor, set per cell when count > 0).
+   --inverse modifier flips text to white for dense cells. */
+.explore-heatmap-cell {
+    background: rgba(46, 90, 136, var(--heat-opacity, 0));
+    cursor: var(--heat-cursor, default);
+}
+.explore-heatmap-cell--inverse {
+    color: #fff;
+}
+
+/* Heatmap table with reduced font size for many columns. */
+.explore-heatmap-table {
+    font-size: var(--text-xs);
+}
+
+/* Vertical column header used by transaction org-type heatmap. */
+.explore-heatmap-th-vertical {
+    writing-mode: vertical-rl;
+    transform: rotate(180deg);
+    max-width: 2rem;
+}
+
+/* Wrapping element for horizontally scrollable heatmap tables. */
+.explore-heatmap-scroll {
+    overflow-x: auto;
+}
+
+/* Compact representation matrix limited to ~28rem width. */
+.explore-rep-matrix-table {
+    max-width: 28rem;
+}
+
+/* Ranking bar fill — width comes from JS via --rank-pct, color via modifier. */
+.stats-rank-bar-fill {
+    width: var(--rank-pct, 0%);
+    background: var(--color-text-muted);
+}
+.stats-rank-bar-fill--m {
+    background: var(--color-sex-m);
+}
+.stats-rank-bar-fill--f {
+    background: var(--color-sex-f);
+}
+
+/* Heading rhythm for the network top-lists (formerly inline margins). */
+.explore-rep-toplist-h3 {
+    margin: 0 0 var(--space-sm);
+}
+.explore-rep-toplist-h3--second {
+    margin-top: var(--space-md);
 }
 
 /* Tooltip — base in components.css; extras here */
@@ -998,6 +1052,18 @@
 }
 .explore-rel-badge--none {
     background: var(--color-text-light, #b0a99f);
+}
+.explore-rel-badge--kin {
+    background: var(--color-rel-kin);
+}
+.explore-rel-badge--occ {
+    background: var(--color-rel-occ);
+}
+.explore-rel-badge--rep {
+    background: var(--color-rel-rep);
+}
+.explore-rel-badge--friend {
+    background: var(--color-rel-friend);
 }
 
 /* Responsive: relationship layout */
