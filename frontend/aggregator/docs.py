@@ -189,12 +189,18 @@ def build_docs_lookup(docs_data_dir: Path, all_metadata: list[dict]) -> None:
     fnames = _cached_csv("filenames.csv")
 
     # Build (collection, subcollection, filename_stem) -> file_key
+    # filenames.csv URL-encodet Sonderzeichen ('1542 a.xml' -> '1542%20a.xml');
+    # build.py setzt meta['filename'] = filepath.stem aus dem Dateisystem,
+    # also Roh-Form mit Leerzeichen. Damit der Lookup greift, dekodieren wir
+    # hier denselben Pfad wie aggregate_docs es fuer den (collection_path,
+    # idno)-Lookup tut. Andernfalls fallen 13 Dokumente aus dem docs_lookup
+    # raus und Drill-Down-/Register-URLs sind nicht aufloesbar.
     fkey_map: dict[tuple, str] = {}
     for r in fnames:
         fk = r.get("id", "")
         coll = r.get("collection", "")
         subcoll = r.get("subcollection", "")
-        fname = r.get("file", "").replace(".xml", "")
+        fname = unquote(r.get("file", "").replace(".xml", ""))
         if fk:
             fkey_map[(coll, subcoll, fname)] = fk
 

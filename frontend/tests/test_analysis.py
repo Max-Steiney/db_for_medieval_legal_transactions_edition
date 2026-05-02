@@ -63,11 +63,12 @@ def test_categories_consistent_with_epic_a():
 @pytest.fixture
 def isolated_data_dir(tmp_path, monkeypatch):
     """Redirect DATA_DIR and DOCS_DIR to a temp location for build tests."""
+    from frontend.tests.conftest import patch_build_path
     docs = tmp_path / "docs"
     data = docs / "data"
     data.mkdir(parents=True)
-    monkeypatch.setattr(frontend.build, "DOCS_DIR", docs)
-    monkeypatch.setattr(frontend.build, "DATA_DIR", data)
+    patch_build_path(monkeypatch, "DOCS_DIR", docs)
+    patch_build_path(monkeypatch, "DATA_DIR", data)
     return data
 
 

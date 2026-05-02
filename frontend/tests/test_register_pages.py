@@ -135,10 +135,13 @@ class TestRegisterJson:
     """Test that _build_register_json writes correct JSON files."""
 
     def test_writes_json_files(self, tmp_path, monkeypatch):
-        import frontend.build as build_mod
-        monkeypatch.setattr(build_mod, "DOCS_DIR", tmp_path)
+        from frontend.tests.conftest import patch_build_path
+        import frontend.build._pages as pages_mod
+        patch_build_path(monkeypatch, "DOCS_DIR", tmp_path)
         # Stub released-person filter so the synthetic test ID passes through.
-        monkeypatch.setattr(build_mod, "_released_person_keys",
+        # _build_register_json ruft die in _pages importierte Funktion auf —
+        # daher dort patchen.
+        monkeypatch.setattr(pages_mod, "_released_person_keys",
                             lambda: {"pe__hans"})
 
         reverse_index = {
@@ -169,9 +172,10 @@ class TestRegisterJson:
         assert data["pe__hans"][0]["i"] == "100"
 
     def test_empty_entity_not_in_json(self, tmp_path, monkeypatch):
-        import frontend.build as build_mod
-        monkeypatch.setattr(build_mod, "DOCS_DIR", tmp_path)
-        monkeypatch.setattr(build_mod, "_released_person_keys", lambda: set())
+        from frontend.tests.conftest import patch_build_path
+        import frontend.build._pages as pages_mod
+        patch_build_path(monkeypatch, "DOCS_DIR", tmp_path)
+        monkeypatch.setattr(pages_mod, "_released_person_keys", lambda: set())
 
         _build_register_json({"pl__wien": []})
         data = json.loads(

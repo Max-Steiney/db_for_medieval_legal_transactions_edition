@@ -521,3 +521,7 @@ let ChartHelpers = (function() {
     };
 
 })();
+
+if (typeof module !== 'undefined' && module.exports) {
+    module.exports = { ChartHelpers };
+}

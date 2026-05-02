@@ -89,8 +89,8 @@ class TestLoadQualityIndex:
 
 class TestBuildQualityJson:
     def test_writes_quality_json(self, tmp_path, monkeypatch):
-        import frontend.build
-        monkeypatch.setattr(frontend.build, "DATA_DIR", tmp_path)
+        from frontend.tests.conftest import patch_build_path
+        patch_build_path(monkeypatch, "DATA_DIR", tmp_path)
 
         quality_index = {
             "QGW/Vienna_1177-1414_ready/done/100.xml": [
@@ -116,8 +116,8 @@ class TestBuildQualityJson:
         assert data["observations"]["byCategory"]["instant"] == 2
 
     def test_by_collection_grouping(self, tmp_path, monkeypatch):
-        import frontend.build
-        monkeypatch.setattr(frontend.build, "DATA_DIR", tmp_path)
+        from frontend.tests.conftest import patch_build_path
+        patch_build_path(monkeypatch, "DATA_DIR", tmp_path)
 
         quality_index = {
             "QGW/Vienna_1177-1414_ready/done/100.xml": [
@@ -134,8 +134,8 @@ class TestBuildQualityJson:
         assert "Gewerbuch_D/GB_D_1448-60_ready" in data["observations"]["byCollection"]
 
     def test_empty_index_writes_zeros(self, tmp_path, monkeypatch):
-        import frontend.build
-        monkeypatch.setattr(frontend.build, "DATA_DIR", tmp_path)
+        from frontend.tests.conftest import patch_build_path
+        patch_build_path(monkeypatch, "DATA_DIR", tmp_path)
 
         _build_quality_json({})
 

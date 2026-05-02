@@ -816,110 +816,11 @@
     max-width: 1000px;
 }
 
-/* ── Epic D: Place Explorer ──────────────── */
-
-/* Map-table panel layout: side by side on desktop */
-.explore-panels--map {
-    grid-template-columns: 1fr 1fr;
-}
-
-/* Map container */
-.explore-map-wrap {
-    height: 500px;
-    min-height: 400px;
-}
-
-/* Map coverage badge */
-.explore-map-coverage {
-    font-family: var(--font-sans);
-    font-size: var(--text-2xs);
-    color: var(--color-text-light);
-    font-style: italic;
-}
-
-/* Map popup styling */
-.explore-map-popup {
-    font-family: var(--font-sans);
-    font-size: var(--text-sm);
-    line-height: 1.6;
-}
-.explore-map-popup strong {
-    color: var(--color-text);
-}
-.explore-map-popup a {
-    color: var(--anno-place);
-    text-decoration: none;
-}
-.explore-map-popup a:hover {
-    text-decoration: underline;
-}
-
-/* Place type badges in table */
-.explore-place-type {
-    display: inline-block;
-    padding: 1px 8px;
-    border-radius: 10px;
-    font-size: var(--text-2xs);
-    font-family: var(--font-sans);
-    font-weight: 500;
-}
-.explore-place-type--settlement {
-    background: rgba(58, 122, 92, 0.12);
-    color: var(--anno-place);
-}
-.explore-place-type--immo {
-    background: rgba(140, 134, 128, 0.12);
-    color: var(--color-text-light);
-}
-.explore-place-type--street {
-    background: rgba(46, 90, 136, 0.08);
-    color: var(--anno-person);
-}
-.explore-place-type--river {
-    background: rgba(46, 90, 136, 0.08);
-    color: var(--anno-person);
-}
-
-/* Georef status */
-.explore-georef {
-    font-family: var(--font-sans);
-    font-size: var(--text-2xs);
-}
-.explore-georef--coords { color: var(--anno-place); }
-.explore-georef--geonames { color: var(--anno-org); }
-.explore-georef--both { color: var(--anno-place); font-weight: 600; }
-.explore-georef--none { color: var(--color-text-light); }
-
-/* Table row interactions */
-.explore-place-row {
-    cursor: default;
-    transition: background var(--transition-fast);
-}
-.explore-place-row--mappable {
-    cursor: pointer;
-}
-.explore-place-row:hover {
-    background: var(--color-bg-warm);
-}
-.explore-place-row.active {
-    background: rgba(58, 122, 92, 0.08);
-    outline: 2px solid var(--anno-place);
-    outline-offset: -2px;
-}
-
-/* Table wrap scrollable in panel */
-#explore-place-table-wrap {
-    max-height: 430px;
-    overflow-y: auto;
-}
-
 /* Responsive */
 @media (max-width: 1200px) {
     .explore-panels { grid-template-columns: 1fr; }
     .explore-panels--roles-top { grid-template-columns: 1fr; }
     .explore-panels--two-one { grid-template-columns: 1fr; }
-    .explore-panels--map { grid-template-columns: 1fr; }
-    .explore-map-wrap { height: 350px; }
 }
 @media (max-width: 768px) {
     .explore-page { padding: var(--space-md) var(--space-sm); }
@@ -931,7 +832,6 @@
     .explore-subnav { flex-direction: column; align-items: flex-start; }
     .explore-transparency { flex-direction: column; }
     .explore-trans-sep { display: none; }
-    .explore-map-wrap { height: 280px; min-height: 250px; }
     .explore-panel-controls { flex-wrap: wrap; }
 }
 

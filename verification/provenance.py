@@ -206,40 +206,44 @@ def run_provenance_checks() -> List[CheckResult]:
     results.extend(_check_file_keys("provenance.epic_c.drill_down", fkeys_c, known_fks, no_tei_fks))
 
     # --- epic_d.places[*].file_keys ---------------------------------------
-    epic_d = _load(DATA_DIR / "epic_d.json")
-    fkeys_d: List[Tuple[str, str]] = []
-    referenced_without_fks = 0
-    for p in epic_d.get("places", []):
-        if not p.get("referenced"):
-            continue
-        fks = p.get("file_keys")
-        if not fks:
-            referenced_without_fks += 1
-            continue
-        for fk in fks:
-            fkeys_d.append((f"places.{p.get('id')}", fk))
-    results.extend(_check_file_keys("provenance.epic_d.places", fkeys_d, known_fks, no_tei_fks))
+    # epic_d.json wird nicht mehr gebaut (Orte-Exploration entfernt). Falls
+    # die Datei aus einem alten Build noch da liegt, pruefen wir; sonst
+    # ueberspringen.
+    epic_d_path = DATA_DIR / "epic_d.json"
+    if epic_d_path.exists():
+        epic_d = _load(epic_d_path)
+        fkeys_d: List[Tuple[str, str]] = []
+        referenced_without_fks = 0
+        for p in epic_d.get("places", []):
+            if not p.get("referenced"):
+                continue
+            fks = p.get("file_keys")
+            if not fks:
+                referenced_without_fks += 1
+                continue
+            for fk in fks:
+                fkeys_d.append((f"places.{p.get('id')}", fk))
+        results.extend(_check_file_keys("provenance.epic_d.places", fkeys_d, known_fks, no_tei_fks))
 
-    # Additional coverage check: referenced places without any file_keys
-    if referenced_without_fks:
-        results.append(CheckResult(
-            name="provenance.epic_d.coverage",
-            tei=None,
-            json=f"{referenced_without_fks} referenced places ohne file_keys",
-            status="mismatch",
-            note="Referenzierte Orte ohne Provenienz-Verweis; aggregator.py sollte file_keys für jeden referenced Place liefern.",
-        ))
-    else:
-        results.append(CheckResult(
-            name="provenance.epic_d.coverage",
-            tei="alle referenced Places",
-            json="haben file_keys",
-            status="match",
-            note=None,
-        ))
+        if referenced_without_fks:
+            results.append(CheckResult(
+                name="provenance.epic_d.coverage",
+                tei=None,
+                json=f"{referenced_without_fks} referenced places ohne file_keys",
+                status="mismatch",
+                note="Referenzierte Orte ohne Provenienz-Verweis.",
+            ))
+        else:
+            results.append(CheckResult(
+                name="provenance.epic_d.coverage",
+                tei="alle referenced Places",
+                json="haben file_keys",
+                status="match",
+                note=None,
+            ))
 
     # --- register/persons|organisations|places.json ------------------------
-    register_dir = EDITION_ROOT / "register"
+    register_dir = EDITION_ROOT / "docs" / "register"
     for kind in ("persons", "organisations", "places"):
         path = register_dir / f"{kind}.json"
         if not path.exists():

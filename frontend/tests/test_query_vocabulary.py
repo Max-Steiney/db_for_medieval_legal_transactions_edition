@@ -138,11 +138,12 @@ def test_vocab_rel_type_values_match_epic_b_type_counts():
 
 @pytest.fixture
 def isolated_data_dir(tmp_path, monkeypatch):
+    from frontend.tests.conftest import patch_build_path
     docs = tmp_path / "docs"
     data = docs / "data"
     data.mkdir(parents=True)
-    monkeypatch.setattr(frontend.build, "DOCS_DIR", docs)
-    monkeypatch.setattr(frontend.build, "DATA_DIR", data)
+    patch_build_path(monkeypatch, "DOCS_DIR", docs)
+    patch_build_path(monkeypatch, "DATA_DIR", data)
     return data
 
 

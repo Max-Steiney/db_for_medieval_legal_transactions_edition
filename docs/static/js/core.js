@@ -162,3 +162,9 @@ let EdCore = (function() {
     };
 
 })();
+
+// CommonJS-Export fuer Vitest. Im Browser ist `module` undefiniert, der
+// Block ist daher dort wirkungslos.
+if (typeof module !== 'undefined' && module.exports) {
+    module.exports = { EdCore };
+}

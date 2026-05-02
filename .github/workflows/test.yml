@@ -27,11 +27,21 @@ jobs:
         with:
           python-version: "3.11"
 
+      - uses: actions/setup-node@v4
+        with:
+          node-version: "20"
+          cache: "npm"
+          cache-dependency-path: db_for_medieval_legal_transactions_edition/frontend/package.json
+
       - name: Install dependencies
         run: |
           pip install -r db_for_medieval_legal_transactions/requirements.txt
           pip install -r db_for_medieval_legal_transactions_edition/frontend/requirements.txt
           pip install pytest
+
+      - name: Install JS test dependencies
+        working-directory: db_for_medieval_legal_transactions_edition/frontend
+        run: npm install --no-audit --no-fund
 
       - name: Generate pipeline CSVs (frontend reads them)
         working-directory: db_for_medieval_legal_transactions
@@ -47,14 +57,17 @@ jobs:
         working-directory: db_for_medieval_legal_transactions_edition
         run: python -m pytest frontend/tests/ -v --tb=short
 
-      # Verifikations-Test-Set laeuft als nicht-blockierender Drift-Monitor.
+      - name: Run JS logic tests (Vitest)
+        working-directory: db_for_medieval_legal_transactions_edition/frontend
+        run: npm test
+
+      # Verifikations-Test-Set: blockierender Drift-Monitor.
       # Liest TEI-Quellen und Register unabhaengig von Pipeline und Aggregator
-      # ein, vergleicht mit docs/data/-JSONs. Mismatches sind aktuell als
-      # Domain-Audit-Aufgaben dokumentiert (siehe verification/README.md);
-      # sie sollen sichtbar bleiben, ohne CI rot zu schalten.
-      - name: Verification (non-blocking drift monitor)
+      # ein, vergleicht mit docs/data/-JSONs. Aktuell sind alle bekannten
+      # Differenzen als known_gap dokumentiert; ein neu auftretendes
+      # mismatch ist daher ein echter Drift und schaltet CI rot.
+      - name: Verification (drift monitor)
         id: verify
-        continue-on-error: true
         working-directory: db_for_medieval_legal_transactions_edition
         run: python -m verification.run
 

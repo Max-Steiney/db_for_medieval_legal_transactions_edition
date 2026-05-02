@@ -1,0 +1,286 @@
+{
+  "date": "2026-05-02",
+  "summary": {
+    "total": 25,
+    "match": 9,
+    "mismatch": 0,
+    "known_gap": 10,
+    "info": 6
+  },
+  "results": [
+    {
+      "name": "docs.total",
+      "tei": 2665,
+      "json": 2665,
+      "status": "known_gap",
+      "note": "Pipeline zählt zusätzlich Dokumente aus filenames.csv ohne TEI-Quelle (z. B. Vienna_1448-57_ready). Das Verifikations-Set rechnet nur auf TEI-Basis und deckt die Lücke auf."
+    },
+    {
+      "name": "docs.by_collection",
+      "tei": {
+        "QGW": 2037,
+        "Stadtbuecher": 628
+      },
+      "json": {
+        "QGW": 2037,
+        "Stadtbuecher": 628
+      },
+      "status": "known_gap",
+      "note": "Pipeline zählt zusätzlich Dokumente aus filenames.csv ohne TEI-Quelle (z. B. Vienna_1448-57_ready). Das Verifikations-Set rechnet nur auf TEI-Basis und deckt die Lücke auf."
+    },
+    {
+      "name": "docs.date_range.QGW",
+      "tei": {
+        "min_date": "1177-05-10",
+        "max_date": "1414-12-20"
+      },
+      "json": {
+        "min_date": "1177-05-10",
+        "max_date": "1414-12-20"
+      },
+      "status": "match",
+      "note": null
+    },
+    {
+      "name": "docs.date_range.Stadtbuecher",
+      "tei": {
+        "min_date": "1388-07-13",
+        "max_date": "1401-11-03"
+      },
+      "json": {
+        "min_date": "1388-07-13",
+        "max_date": "1401-11-03"
+      },
+      "status": "match",
+      "note": null
+    },
+    {
+      "name": "persons.total_individual",
+      "tei": 16084,
+      "json": 8406,
+      "status": "known_gap",
+      "note": "personList.xml enthaelt das volle editorische Register; persons_search.json ist auf den freigegebenen Subset gefiltert (siehe knowledge/decisions.md, Personenregister-Freigabe)."
+    },
+    {
+      "name": "persons.by_sex",
+      "tei": {
+        "m": 11860,
+        "f": 4224
+      },
+      "json": {
+        "m": 6082,
+        "f": 2324
+      },
+      "status": "known_gap",
+      "note": "Selbe Wurzel wie persons.total_individual: TEI zaehlt das volle Register, JSON nur den freigegebenen Subset."
+    },
+    {
+      "name": "orgs.total_individual",
+      "tei": 1078,
+      "json": null,
+      "status": "info",
+      "note": "organisations_search.json nicht gebaut (Register noch nicht freigegeben)."
+    },
+    {
+      "name": "places.total_individual",
+      "tei": 2537,
+      "json": null,
+      "status": "info",
+      "note": "places_search.json nicht gebaut (Register noch nicht freigegeben)."
+    },
+    {
+      "name": "events.total",
+      "tei": 3323,
+      "json": 4214,
+      "status": "info",
+      "note": "epic_a.coverage.total_events zählt Event-Nennungen (nicht dedupliziert); TEI-Zählung dedupliziert pro Dokument nach Event-Ref. Kein direkter Match zu erwarten."
+    },
+    {
+      "name": "roles.by_role",
+      "tei": {
+        "issuer": 4258,
+        "other": 2609,
+        "witness": 5256,
+        "recipient": 4675,
+        "none": 1454,
+        "transactiongood_I": 3
+      },
+      "json": null,
+      "status": "info",
+      "note": "Rollen-Counter aus TEI; kein direktes Pendant in JSON (nur role_by_sex)."
+    },
+    {
+      "name": "roles.by_role_sex.issuer",
+      "tei": {
+        "m": 3211,
+        "f": 1047
+      },
+      "json": {
+        "m": 2792,
+        "f": 1002
+      },
+      "status": "known_gap",
+      "note": "Verifikation zaehlt rohe rs[@type='person']/@role-Annotationen in TEI; epic_a zaehlt aus persons_in_events.csv (Pipeline-CSV mit eigenen Scoping-Regeln). Differenz ist methodisch, kein Drift."
+    },
+    {
+      "name": "roles.by_role_sex.none",
+      "tei": {
+        "m": 1123,
+        "f": 331
+      },
+      "json": {
+        "m": 1660,
+        "f": 291
+      },
+      "status": "known_gap",
+      "note": "Verifikation zaehlt rohe rs[@type='person']/@role-Annotationen in TEI; epic_a zaehlt aus persons_in_events.csv (Pipeline-CSV mit eigenen Scoping-Regeln). Differenz ist methodisch, kein Drift."
+    },
+    {
+      "name": "roles.by_role_sex.other",
+      "tei": {
+        "f": 385,
+        "m": 2224
+      },
+      "json": {
+        "f": 364,
+        "m": 2025
+      },
+      "status": "known_gap",
+      "note": "Verifikation zaehlt rohe rs[@type='person']/@role-Annotationen in TEI; epic_a zaehlt aus persons_in_events.csv (Pipeline-CSV mit eigenen Scoping-Regeln). Differenz ist methodisch, kein Drift."
+    },
+    {
+      "name": "roles.by_role_sex.recipient",
+      "tei": {
+        "m": 3234,
+        "f": 1441
+      },
+      "json": {
+        "m": 2902,
+        "f": 1395
+      },
+      "status": "known_gap",
+      "note": "Verifikation zaehlt rohe rs[@type='person']/@role-Annotationen in TEI; epic_a zaehlt aus persons_in_events.csv (Pipeline-CSV mit eigenen Scoping-Regeln). Differenz ist methodisch, kein Drift."
+    },
+    {
+      "name": "roles.by_role_sex.transactiongood_I",
+      "tei": {
+        "m": 3
+      },
+      "json": null,
+      "status": "info",
+      "note": "Pseudo-Rolle aus TEI-Annotationsfehlern; kein echter Rollen-Wert."
+    },
+    {
+      "name": "roles.by_role_sex.witness",
+      "tei": {
+        "m": 4932,
+        "f": 324
+      },
+      "json": {
+        "m": 4641,
+        "f": 298
+      },
+      "status": "known_gap",
+      "note": "Verifikation zaehlt rohe rs[@type='person']/@role-Annotationen in TEI; epic_a zaehlt aus persons_in_events.csv (Pipeline-CSV mit eigenen Scoping-Regeln). Differenz ist methodisch, kein Drift."
+    },
+    {
+      "name": "relations.by_type",
+      "tei": {
+        "occ": 5635,
+        "kin": 5914,
+        "rep": 419,
+        "friend": 86,
+        "titel_ref": 1,
+        "title": 5,
+        "topo": 21,
+        "owner": 19,
+        "prof": 15
+      },
+      "json": {
+        "kin": 5909,
+        "occ": 5624,
+        "rep": 419,
+        "friend": 86
+      },
+      "status": "known_gap",
+      "note": "Pipeline normalisiert Beziehungstypen auf kin/occ/rep/friend. TEI enthält rohe @type-Werte inklusive Typo-Varianten (titel_ref, title, buis, ...). Counts daher nicht direkt vergleichbar."
+    },
+    {
+      "name": "transactions.disp_top",
+      "tei": {
+        "verkaufen": 353,
+        "verkauft": 199,
+        "bestätigt": 154,
+        "bestätigen": 134,
+        "beurkundet": 86,
+        "gibt": 78,
+        "beurkunden": 76,
+        "stellen": 48,
+        "schafft": 33,
+        "geben": 31,
+        "geklagt habe": 30,
+        "theilt": 28,
+        "stellt": 27,
+        "verpflichten sich": 25,
+        "verleiht": 24,
+        "weist": 22,
+        "einen schuldbrief": 22,
+        "widmet": 21,
+        "macht": 20,
+        "schreibt": 20
+      },
+      "json": null,
+      "status": "info",
+      "note": "Top-20 Roh-Trigger für disp; Vergleich mit normalisierten Transaktionstypen in epic_c noch offen."
+    },
+    {
+      "name": "provenance.epic_a.role_sex",
+      "tei": "10766 file_keys geprüft",
+      "json": "alle in docs_lookup",
+      "status": "match",
+      "note": null
+    },
+    {
+      "name": "provenance.epic_b.drill_down",
+      "tei": "12123 file_keys geprüft",
+      "json": "alle in docs_lookup",
+      "status": "match",
+      "note": null
+    },
+    {
+      "name": "provenance.epic_b.persons.rels",
+      "tei": "12038 file_keys geprüft",
+      "json": "alle in docs_lookup",
+      "status": "match",
+      "note": null
+    },
+    {
+      "name": "provenance.epic_c.drill_down",
+      "tei": "1959 file_keys geprüft",
+      "json": "alle in docs_lookup",
+      "status": "match",
+      "note": null
+    },
+    {
+      "name": "provenance.register.persons",
+      "tei": "15217 Doc-URLs geprüft",
+      "json": "alle in docs_lookup",
+      "status": "match",
+      "note": null
+    },
+    {
+      "name": "provenance.register.organisations",
+      "tei": "4430 Doc-URLs geprüft",
+      "json": "alle in docs_lookup",
+      "status": "match",
+      "note": null
+    },
+    {
+      "name": "provenance.register.places",
+      "tei": "38 Doc-URLs geprüft",
+      "json": "alle in docs_lookup",
+      "status": "match",
+      "note": null
+    }
+  ]
+}
