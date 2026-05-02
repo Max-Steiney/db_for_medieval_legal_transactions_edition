@@ -360,6 +360,11 @@ def _load_quality_index():
     Returns a dict mapping normalised file paths (forward slashes, relative to
     sources/) to a list of finding dicts.  If the report file does not exist,
     returns an empty dict so the build can proceed without quality data.
+
+    Filtert Findings nicht-freigegebener Quellenkorpora aus: Pfade unter
+    sources/{collection}/{subcollection}/... werden gegen RELEASED_CORPORA
+    geprueft. Findings ueber Index-Dateien (indices/*.xml) und sonstige
+    Pfade ohne Korpus-Praefix bleiben enthalten.
     """
     if not VALIDATION_REPORT_PATH.exists():
         print("  WARN: validation_report.json not found, quality data disabled.",
@@ -368,16 +373,31 @@ def _load_quality_index():
 
     report = json.loads(VALIDATION_REPORT_PATH.read_text(encoding="utf-8"))
     index = {}  # normalised path -> [findings]
+    skipped = 0
     for finding in report.get("findings", []):
         # Normalise Windows backslashes to forward slashes
         key = finding["file"].replace("\\", "/")
+        # Filter: skip findings that belong to a non-released corpus.
+        # Detect corpus paths by the first two segments matching a known
+        # corpus shape (collection/subcollection). Index files like
+        # 'indices/orgList.xml' have their own validation scope and stay.
+        parts = key.split("/")
+        if len(parts) >= 2 and parts[0] not in ("indices",):
+            corpus_path = f"{parts[0]}/{parts[1]}"
+            if not is_released_corpus(corpus_path):
+                skipped += 1
+                continue
         index.setdefault(key, []).append({
             "severity": finding["severity"],
             "category": finding["category"],
             "detail": finding["detail"],
         })
-    print(f"  Quality index: {len(index)} files with findings "
-          f"({report.get('summary', {}).get('total_findings', 0)} total)")
+    total_kept = sum(len(v) for v in index.values())
+    msg = f"  Quality index: {len(index)} files with findings ({total_kept} kept"
+    if skipped:
+        msg += f", {skipped} aus nicht-freigegebenen Korpora ausgefiltert"
+    msg += ")"
+    print(msg)
     return index
 
 
