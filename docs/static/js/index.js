@@ -526,6 +526,31 @@
             history.replaceState(null, '', url);
         }
 
+        // Sort-Vergleich: leere Werte landen IMMER unten, unabhaengig von
+        // Sortierrichtung (Standard-Verhalten in Datentabellen). Datum-Werte
+        // koennen entweder sauberes ISO ('1177-05-10') oder Range-Form
+        // ('1198-01-01 | 1230-12-31') sein — wir vergleichen die ersten
+        // 10 Zeichen, das gibt uns ein lex-konsistentes Sortierfeld.
+        // Strings vergleichen wir locale-aware ('de'), damit Umlaute richtig
+        // einsortiert werden.
+        function _compareDocs(a, b, key, dir) {
+            let va = a[key];
+            let vb = b[key];
+            if (key === 'di') {
+                va = (typeof va === 'string') ? va.slice(0, 10) : '';
+                vb = (typeof vb === 'string') ? vb.slice(0, 10) : '';
+            }
+            let aEmpty = (va === '' || va === null || va === undefined);
+            let bEmpty = (vb === '' || vb === null || vb === undefined);
+            if (aEmpty && bEmpty) return 0;
+            if (aEmpty) return 1;
+            if (bEmpty) return -1;
+            if (typeof va === 'number' && typeof vb === 'number') {
+                return (va - vb) * dir;
+            }
+            return String(va).localeCompare(String(vb), 'de') * dir;
+        }
+
         // --- Core filter logic ---
         function applyFilters() {
             state.previewIdx = -1;
@@ -536,11 +561,7 @@
             });
 
             filteredDocs.sort(function(a, b) {
-                let va = a[state.sortKey] || '';
-                let vb = b[state.sortKey] || '';
-                if (va < vb) return -state.sortDir;
-                if (va > vb) return state.sortDir;
-                return 0;
+                return _compareDocs(a, b, state.sortKey, state.sortDir);
             });
 
             renderer.render(filteredDocs);
