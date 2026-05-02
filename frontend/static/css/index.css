@@ -753,6 +753,12 @@ a.doc-link--title:hover {
     flex-wrap: wrap;
     gap: 0.3rem;
 }
+/* [hidden]-Attribut blendet 0-Treffer-Chips aus. Default-Browserregel
+   '[hidden] { display: none }' wird sonst von '.form-filter-chip { display:
+   inline-flex }' ueberschrieben — daher explizit. */
+.form-filter-chip[hidden] {
+    display: none;
+}
 .form-filter-chip {
     display: inline-flex;
     align-items: center;

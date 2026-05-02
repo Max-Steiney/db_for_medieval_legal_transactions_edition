@@ -47,6 +47,76 @@
     pointer-events: auto;
 }
 
+/* --- edition-tooltip: globale Tooltip-Variante ----------------------------
+   Wird von tooltips.js fuer zwei Faelle benutzt:
+   1) Entity-Hover (.anno-person/.anno-org/.anno-place) im Dokumentvolltext
+      -> zeigt typeBadge + name + id
+   2) Daten-Hover ([data-tip-title]/[data-tip-body]) auf UI-Badges, Pillen,
+      Hinweisen — z.B. in der Tabelle der Quellenseite
+      -> zeigt name (=Titel) + body (=Beschreibung), kein typeBadge, keine id
+   Die '.edition-tooltip--data'-Klasse schaltet zwischen den beiden Layouts.
+   --------------------------------------------------------------------- */
+.edition-tooltip {
+    font-size: var(--text-xs);
+    line-height: 1.5;
+    padding: var(--space-sm) var(--space-md);
+    max-width: 28rem;
+    transform: translateY(4px);
+    transition: opacity var(--transition-fast), transform var(--transition-fast);
+}
+.edition-tooltip.visible {
+    transform: translateY(0);
+}
+
+.tooltip-name {
+    display: inline;
+}
+
+.tooltip-id {
+    display: block;
+    font-family: var(--font-mono);
+    font-size: var(--text-2xs);
+    opacity: 0.5;
+    margin-top: 2px;
+}
+
+.tooltip-type {
+    display: inline-block;
+    font-size: 0.625rem;
+    font-weight: 600;
+    text-transform: uppercase;
+    letter-spacing: 0.06em;
+    padding: 1px 6px;
+    border-radius: 2px;
+    margin-right: var(--space-xs);
+}
+.tooltip-type:empty { display: none; }
+
+.tooltip-type-person   { background: var(--anno-person); }
+.tooltip-type-org      { background: var(--anno-org); }
+.tooltip-type-place    { background: var(--anno-place); }
+.tooltip-type-fn       { background: var(--anno-fn-issuer); }
+
+/* Daten-Tooltip: Titel oben, optionale Beschreibung darunter. */
+.tooltip-body {
+    display: none;
+}
+.edition-tooltip--data .tooltip-name {
+    display: block;
+    font-weight: 600;
+}
+.edition-tooltip--data .tooltip-body {
+    display: block;
+    margin-top: 3px;
+    opacity: 0.78;
+    font-size: var(--text-2xs);
+    line-height: 1.45;
+}
+.edition-tooltip--data:not(:has(.tooltip-body:not(:empty))) .tooltip-body {
+    /* fallback, falls :has nicht greift: leerer Body wird vom JS leer
+       gesetzt — display:none bleibt dann durch obige Default-Regel. */
+}
+
 
 /* --- Cross-cutting JS-rendered table patterns ---
    Used by table-infra, drill-down, register, index, exploration-* and

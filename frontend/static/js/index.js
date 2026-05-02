@@ -139,38 +139,43 @@
         function renderContent(doc) {
             let parts = [];
 
+            // Tooltips nutzen das projekteinheitliche edition-tooltip-System
+            // (tooltips.js / [data-tip-title] + [data-tip-body]) \u2014 keine
+            // nativen title-Attribute mehr, damit Stil und Verhalten ueber
+            // die ganze Edition hinweg konsistent sind.
             if (doc.pcd > 0) {
                 let label = doc.pcd === 1 ? '1 Person' : doc.pcd + ' Personen';
                 let breakdown = [];
                 if (doc.pcdf) breakdown.push(doc.pcdf + ' weiblich');
                 if (doc.pcdm) breakdown.push(doc.pcdm + ' m\u00e4nnlich');
                 if (doc.pcdu) breakdown.push(doc.pcdu + ' ohne Geschlechtsangabe');
-                let title = breakdown.length
-                    ? label + '\n' + breakdown.join(', ')
-                    : label;
+                let body = breakdown.length ? breakdown.join(', ') : '';
                 parts.push(
-                    '<span class="badge badge-persons" title="' + esc(title) + '">' +
-                    esc(label) + '</span>'
+                    '<span class="badge badge-persons"' +
+                    ' data-tip-title="' + esc(label) + '"' +
+                    (body ? ' data-tip-body="' + esc(body) + '"' : '') +
+                    '>' + esc(label) + '</span>'
                 );
             }
 
             let pills = [];
-            if (doc.ecR > 0) pills.push(['r', 'Regest', 'Regest-Annotation (TEI <div type="abstract">)']);
-            if (doc.ecS > 0) pills.push(['s', 'Siegel', 'Siegelbeschreibung (TEI <div type="seal">)']);
-            if (doc.ecE > 0) pills.push(['e', 'Eintrag', 'Stadtbuch-Eintrag (TEI <div type="entry">)']);
-            if (doc.ecN > 0) pills.push(['n', 'Nota', 'Nachsatz/Notiz (TEI <div type="nota">)']);
+            if (doc.ecR > 0) pills.push(['r', 'Regest', 'Regest-Annotation in der TEI-Quelle']);
+            if (doc.ecS > 0) pills.push(['s', 'Siegel', 'Siegelbeschreibung in der TEI-Quelle']);
+            if (doc.ecE > 0) pills.push(['e', 'Eintrag', 'Stadtbuch-Eintrag in der TEI-Quelle']);
+            if (doc.ecN > 0) pills.push(['n', 'Nota', 'Nachsatz/Notiz in der TEI-Quelle']);
             if (doc.f) pills.push(['f', 'Faksimile', 'Digitalisat des Originals verlinkt']);
             // Mehrere Rechtsgeschaefte als regulaere Pille \u2014 gestapelte
-            // Rechtecke; die konkrete Anzahl steckt im Tooltip.
+            // Rechtecke; die konkrete Anzahl steckt im Tooltip-Body.
             if (doc.ec > 1) {
                 pills.push(['m', 'Mehrere Rechtsgesch\u00e4fte',
                             doc.ec + ' Rechtsgesch\u00e4fte in einer Quelle']);
             }
             if (pills.length) {
                 let html = pills.map(function(p) {
-                    return '<span class="form-pill form-pill-' + p[0] +
-                           '" title="' + esc(p[1] + ': ' + p[2]) +
-                           '" aria-label="' + esc(p[1]) + '">' +
+                    return '<span class="form-pill form-pill-' + p[0] + '"' +
+                           ' data-tip-title="' + esc(p[1]) + '"' +
+                           ' data-tip-body="' + esc(p[2]) + '"' +
+                           ' aria-label="' + esc(p[1]) + '">' +
                            FORM_ICONS[p[0]] + '</span>';
                 }).join('');
                 parts.push('<span class="form-pills">' + html + '</span>');
@@ -180,14 +185,16 @@
         }
 
         // Datum-Cell mit Range-Hint: bei Mehrjahres-Range (z.B. "1198–1230")
-        // erklaert ein title-Tooltip die Konvention "Datum unscharf,
-        // gesicherter Zeitraum...". Bei sauberem Einzeldatum kein Tooltip.
+        // erklaert ein Tooltip die Konvention "Datum unscharf, gesicherter
+        // Zeitraum...". Bei sauberem Einzeldatum kein Tooltip.
         function renderDateCell(doc) {
             let dateText = doc.dn || doc.d;
             let attr = '';
             if (dateText && dateText.indexOf('–') !== -1) {
-                attr = ' title="Datum unscharf — gesicherter Zeitraum laut TEI: ' +
-                    esc(dateText.replace('–', ' bis ')) + '"';
+                let body = 'Gesicherter Zeitraum laut TEI: ' +
+                           dateText.replace('–', ' bis ');
+                attr = ' data-tip-title="Datum unscharf"' +
+                       ' data-tip-body="' + esc(body) + '"';
             }
             return '<td class="col-date"' + attr + '>' + esc(dateText) + '</td>';
         }
@@ -421,6 +428,24 @@
                 : baseLabel;
         }
 
+        // 0-Treffer-Optionen werden ausgeblendet, damit Nutzer:innen nicht
+        // an Sackgassen-Klicks geraten ('Wien (0)' bei Stadtbuecher-Filter).
+        // Aktuell selektierte Option NICHT ausblenden — sonst keine Chance,
+        // den Filter via Dropdown wieder zu loesen (active-filter-Chip mit
+        // X bleibt zwar, aber die Konsistenz-Erwartung ist: der gewaehlte
+        // Wert ist im Dropdown sichtbar).
+        function _setOptionHidden(opt, count, isCurrent) {
+            opt.hidden = (count === 0 && !isCurrent);
+        }
+
+        function _setChipHidden(chip, count) {
+            // Chips bleiben nutzbar (zum Aufheben der Auswahl), wenn aktiv —
+            // sonst weg, sobald der Count auf 0 faellt.
+            let isActive = chip.classList.contains('is-active') ||
+                           chip.classList.contains('active');
+            chip.hidden = (count === 0 && !isActive);
+        }
+
         function updateDropdownCounts() {
             // Place
             if (filterPlace) {
@@ -434,8 +459,12 @@
                     let val = opt.value;
                     if (val === '') {
                         _setOptionLabel(opt, opt.dataset.label, null);
+                    } else if (val === '__none__') {
+                        // wird unten gesondert behandelt
                     } else {
-                        _setOptionLabel(opt, opt.dataset.label, counts[val] || 0);
+                        let c = counts[val] || 0;
+                        _setOptionLabel(opt, opt.dataset.label, c);
+                        _setOptionHidden(opt, c, state.place === val);
                     }
                 });
             }
@@ -449,9 +478,15 @@
                 });
                 filterFacs.querySelectorAll('option').forEach(function(opt) {
                     if (!opt.dataset.label) opt.dataset.label = opt.textContent.split(' (')[0];
-                    if (opt.value === '1') _setOptionLabel(opt, opt.dataset.label, withFacs);
-                    else if (opt.value === '0') _setOptionLabel(opt, opt.dataset.label, withoutFacs);
-                    else _setOptionLabel(opt, opt.dataset.label, null);
+                    if (opt.value === '1') {
+                        _setOptionLabel(opt, opt.dataset.label, withFacs);
+                        _setOptionHidden(opt, withFacs, state.facs === '1');
+                    } else if (opt.value === '0') {
+                        _setOptionLabel(opt, opt.dataset.label, withoutFacs);
+                        _setOptionHidden(opt, withoutFacs, state.facs === '0');
+                    } else {
+                        _setOptionLabel(opt, opt.dataset.label, null);
+                    }
                 });
             }
             // Geschlechter-Mix
@@ -466,8 +501,13 @@
                 });
                 filterSex.querySelectorAll('option').forEach(function(opt) {
                     if (!opt.dataset.label) opt.dataset.label = opt.textContent.split(' (')[0];
-                    if (opt.value === '') _setOptionLabel(opt, opt.dataset.label, null);
-                    else _setOptionLabel(opt, opt.dataset.label, counts[opt.value] || 0);
+                    if (opt.value === '') {
+                        _setOptionLabel(opt, opt.dataset.label, null);
+                    } else {
+                        let c = counts[opt.value] || 0;
+                        _setOptionLabel(opt, opt.dataset.label, c);
+                        _setOptionHidden(opt, c, state.sex === opt.value);
+                    }
                 });
             }
             // Erschliessungsform-Chips
@@ -483,8 +523,10 @@
                 });
                 filterFormsEl.querySelectorAll('.form-filter-chip').forEach(function(c) {
                     let f = c.getAttribute('data-form');
+                    let n = counts[f] || 0;
                     let countEl = c.querySelector('.form-filter-chip-count');
-                    if (countEl) countEl.textContent = counts[f] || 0;
+                    if (countEl) countEl.textContent = n;
+                    _setChipHidden(c, n);
                 });
             }
             // Place: ohne-Ortsangabe-Option
@@ -498,6 +540,7 @@
                 if (opt) {
                     if (!opt.dataset.label) opt.dataset.label = '(ohne Ortsangabe)';
                     _setOptionLabel(opt, opt.dataset.label, noPlaceCount);
+                    _setOptionHidden(opt, noPlaceCount, state.place === '__none__');
                 }
             }
         }

@@ -761,44 +761,10 @@ a.anno-place {
 }
 
 
-/* --- Tooltip (JS-enhanced) --- */
-/* Base in components.css; extras here */
-.edition-tooltip {
-    font-size: var(--text-xs);
-    line-height: 1.5;
-    padding: var(--space-sm) var(--space-md);
-    max-width: 28rem;
-    transform: translateY(4px);
-    transition: opacity var(--transition-fast), transform var(--transition-fast);
-}
-
-.edition-tooltip.visible {
-    transform: translateY(0);
-}
-
-.tooltip-id {
-    display: block;
-    font-family: var(--font-mono);
-    font-size: var(--text-2xs);
-    opacity: 0.5;
-    margin-top: 2px;
-}
-
-.tooltip-type {
-    display: inline-block;
-    font-size: 0.625rem;
-    font-weight: 600;
-    text-transform: uppercase;
-    letter-spacing: 0.06em;
-    padding: 1px 6px;
-    border-radius: 2px;
-    margin-right: var(--space-xs);
-}
-
-.tooltip-type-person   { background: var(--anno-person); }
-.tooltip-type-org      { background: var(--anno-org); }
-.tooltip-type-place    { background: var(--anno-place); }
-.tooltip-type-fn       { background: var(--anno-fn-issuer); }
+/* Tooltip-Styles wurden nach components.css verschoben, damit sie auf
+   allen Seiten verfuegbar sind. Tabellen-Badges (Quellenseite, Register)
+   nutzen denselben Hover-Tooltip wie Entity-Annotationen im Dokument-
+   Volltext. */
 
 
 /* --- Quality strip (M1) --- */
