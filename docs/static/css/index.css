@@ -265,23 +265,43 @@
 .active-filters:empty { margin-bottom: 0; }
 
 .filter-chip {
+    display: inline-flex;
+    align-items: center;
+    gap: 0.4rem;
     padding: 2px 0.625rem;
     background: var(--color-bg-warm);
+    border: 1px solid var(--color-border);
+    border-radius: 999px;
+    font-family: var(--font-sans);
     font-size: var(--text-xs);
     color: var(--color-text-muted);
-}
-
-.filter-chip button {
-    background: none;
-    border: none;
-    font-size: 0.9rem;
-    color: var(--color-text-light);
     cursor: pointer;
-    padding: 0;
-    line-height: 1;
+    transition: background-color var(--transition-fast),
+                border-color var(--transition-fast),
+                color var(--transition-fast);
 }
 
-.filter-chip button:hover { color: var(--color-text); }
+.filter-chip:hover {
+    background: var(--color-bg-card);
+    border-color: var(--color-border-dark);
+    color: var(--color-text);
+}
+
+.filter-chip:focus-visible {
+    outline: 2px solid var(--anno-person);
+    outline-offset: 2px;
+}
+
+.filter-chip-x {
+    color: var(--color-text-light);
+    font-size: 0.95rem;
+    line-height: 1;
+    transition: color var(--transition-fast);
+}
+
+.filter-chip:hover .filter-chip-x {
+    color: var(--anno-person);
+}
 
 
 /* --- Search and filter controls --- */
@@ -402,8 +422,31 @@
 
 .index-table th:hover { color: var(--color-text); }
 
-.index-table th.sorted-asc::after { content: ' \2191'; }
-.index-table th.sorted-desc::after { content: ' \2193'; }
+/* Sort-Affordance: jeder sortierbare Header zeigt ein neutrales
+   Doppelpfeil-Indikator-Zeichen. Bei aktiver Sortierung wird daraus
+   der konkrete Pfeil (auf/ab) im Akzentfarbton. So weiss man auf
+   einen Blick, welche Spalten sortierbar sind und in welche
+   Richtung gerade sortiert wird. */
+.index-table th[data-sort]::after {
+    content: ' \2195';  /* up-down arrow */
+    margin-left: 0.25em;
+    opacity: 0.35;
+    font-size: 0.85em;
+    transition: opacity var(--transition-fast), color var(--transition-fast);
+}
+.index-table th[data-sort]:hover::after {
+    opacity: 0.7;
+}
+.index-table th.sorted-asc::after {
+    content: ' \2191';
+    opacity: 1;
+    color: var(--anno-person);
+}
+.index-table th.sorted-desc::after {
+    content: ' \2193';
+    opacity: 1;
+    color: var(--anno-person);
+}
 
 .index-table td {
     padding: var(--space-sm) var(--space-md);
@@ -617,7 +660,7 @@
 
 @keyframes preview-open {
     from { opacity: 0; max-height: 0; }
-    to { opacity: 1; max-height: 15rem; }
+    to { opacity: 1; max-height: 30rem; }
 }
 
 .preview-text {
@@ -658,13 +701,35 @@
 .preview-quality--q2 {
     border-left-color: var(--color-quality-warning);
 }
+.preview-quality-head {
+    display: flex;
+    align-items: center;
+    gap: 0.3em;
+}
 .preview-quality .quality-dot {
     margin-left: 0;
-    margin-right: 0.4em;
 }
-.preview-quality-hint {
-    color: var(--color-text-light);
-    font-style: italic;
+.quality-cat-chips {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 0.3rem;
+    margin-top: var(--space-xs);
+}
+.quality-cat-chip {
+    display: inline-flex;
+    align-items: center;
+    gap: 0.3em;
+    padding: 1px 0.5em;
+    border-radius: 999px;
+    background: var(--color-bg-card);
+    border: 1px solid var(--color-border);
+    color: var(--color-text-muted);
+    font-size: var(--text-2xs);
+    cursor: help;
+}
+.quality-cat-count {
+    font-weight: 600;
+    color: var(--color-text);
 }
 
 .preview-meta span + span::before {

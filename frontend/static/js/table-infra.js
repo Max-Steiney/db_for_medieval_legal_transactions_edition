@@ -222,10 +222,18 @@ let TableInfra = (function() {
        ------------------------------------------------------------------ */
 
     function addFilterChip(container, label, onRemove) {
-        let chip = document.createElement('span');
+        // Klick irgendwo auf der Pille entfernt den Filter \u2014 Mund-Mimik:
+        // sieht aus wie eine entfernbare Tag, fuehlt sich auch so an.
+        // Ein dedizierter \u2715-Button bleibt fuer Screenreader und als
+        // visuelles Affordance-Signal.
+        let chip = document.createElement('button');
+        chip.type = 'button';
         chip.className = 'filter-chip';
-        chip.innerHTML = esc(label) + ' <button aria-label="Filter entfernen">\u00D7</button>';
-        chip.querySelector('button').addEventListener('click', onRemove);
+        chip.setAttribute('aria-label', label + ' entfernen');
+        chip.innerHTML =
+            '<span class="filter-chip-label">' + esc(label) + '</span>' +
+            '<span class="filter-chip-x" aria-hidden="true">\u00D7</span>';
+        chip.addEventListener('click', onRemove);
         container.appendChild(chip);
     }
 

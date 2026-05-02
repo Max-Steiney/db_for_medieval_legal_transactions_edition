@@ -8,6 +8,19 @@
 
     let esc = EdCore.esc;
 
+    // Mapping der Validierungs-Kategorien aus pipeline/validation_report.json
+    // auf lesbare deutsche Labels. Unbekannte Codes fallen auf den Code zurueck.
+    let QUALITY_CATEGORY_LABELS = {
+        'instant_attribute':    'Datierungs-Attribut',
+        'ref_null':             'leere Referenz',
+        'uri_with_whitespace':  'URI mit Whitespace',
+        'uri_invalid_netloc':   'URI ungueltig',
+        'rs_no_type':           'rs ohne @type',
+        'rs_type_noncanonical': 'rs @type unkanonisch',
+        'rs_type_empty':        'rs @type leer',
+        'triggerstring_no_n':   'triggerstring ohne @n'
+    };
+
     function initIndex() {
         let filterPlace = document.getElementById('filter-place');
         let filterFacs = document.getElementById('filter-facs');
@@ -524,23 +537,32 @@
                 thumbHtml = '<div class="preview-thumb"><img src="' + esc(doc.fu) + '" loading="lazy" alt="Faksimile"></div>';
             }
 
-            // Qualitaets-Findings: Wenn die Zeile einen Quality-Score hat,
-            // listen wir Kategorie + Zaehlung in der Vorschau auf. Der
-            // search.json-Eintrag traegt nur Score und Anzahl; eine
-            // Kategorienliste pro Quelle liegt nicht im Index. Daher zeigen
-            // wir Score-Label + Anzahl, mit Link auf den Qualitaets-Tab
-            // der Datengrundlage als Folgeschritt.
+            // Qualitaets-Findings: search.json-Eintrag traegt jetzt zusaetzlich
+            // qcat — bis zu fuenf {c, n}-Kategorien-Paare (Kategorie-Code + Anzahl).
+            // Die Codes kommen aus pipeline/output/validation_report.json; sie
+            // werden hier in lesbare Labels uebersetzt (Mapping unten).
             let qualityHtml = '';
             if (doc.q > 0) {
                 let label = doc.q === 2 ? 'Warnungen' : 'Hinweise';
                 let count = doc.qc || 0;
+                let qcat = doc.qcat || [];
+                let chips = qcat.map(function(item) {
+                    let human = QUALITY_CATEGORY_LABELS[item.c] || item.c;
+                    return '<span class="quality-cat-chip" title="' +
+                           esc(item.c) + ' (' + item.n + ')">' +
+                           esc(human) +
+                           (item.n > 1 ? ' <span class="quality-cat-count">' + item.n + '</span>' : '') +
+                           '</span>';
+                }).join('');
                 qualityHtml =
                     '<div class="preview-quality preview-quality--q' + doc.q + '">' +
+                    '<div class="preview-quality-head">' +
                     '<span class="quality-dot quality-dot--q' + doc.q + '"></span>' +
                     '<strong>' + esc(label) + ':</strong> ' +
                     count + ' Finding' + (count === 1 ? '' : 's') +
-                    ' aus der Pipeline-Validierung. ' +
-                    '<span class="preview-quality-hint">Details in der Quellansicht.</span>' +
+                    ' aus der Pipeline-Validierung' +
+                    '</div>' +
+                    (chips ? '<div class="quality-cat-chips">' + chips + '</div>' : '') +
                     '</div>';
             }
 

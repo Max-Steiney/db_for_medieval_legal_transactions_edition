@@ -46,6 +46,24 @@ def _build_index(all_metadata, env, register_counts=None):
         else:
             persons_dist = {}
             events_dist = {}
+
+        # Quality-Findings: in der Suchliste reicht eine kompakte
+        # Kategorien-Aggregation pro Quelle. Wir liefern bis zu fuenf
+        # Kategorien als {c, n}-Paare (Kategorie, Anzahl). Dadurch kann
+        # der Vorschau-Block in der Tabelle die Befund-Arten zeigen,
+        # ohne dass clientseitig validation_report.json nachgeladen
+        # werden muss.
+        qfindings = m.get("quality_findings") or []
+        qcat_counts = {}
+        for f in qfindings:
+            cat = f.get("category", "")
+            if cat:
+                qcat_counts[cat] = qcat_counts.get(cat, 0) + 1
+        qcat_list = sorted(
+            ({"c": k, "n": v} for k, v in qcat_counts.items()),
+            key=lambda x: (-x["n"], x["c"]),
+        )[:5]
+
         search_data.append({
             "t": m.get("regest", "") or m.get("title", ""),
             "tf": m.get("regest_full", "") or m.get("regest", ""),
@@ -73,6 +91,7 @@ def _build_index(all_metadata, env, register_counts=None):
             "ecN": events_dist.get("nota", 0),
             "q": m.get("quality_score", 0),
             "qc": m.get("quality_count", 0),
+            "qcat": qcat_list,
         })
 
     collections = {}
