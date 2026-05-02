@@ -544,12 +544,8 @@
     display: block;
 }
 
-/* Faksimile-Pille farblich abheben — nicht TEI-Struktur, sondern
-   Verfuegbarkeit eines Digitalisats. */
-.form-pill-f {
-    background: var(--anno-place-bg);
-    color: var(--anno-place);
-}
+/* Faksimile-Pille traegt dieselbe Farbe wie die TEI-Struktur-Pillen —
+   visuell ein konsistenter Marker-Set. */
 
 .multi-event {
     display: inline-block;
@@ -730,6 +726,60 @@
 .quality-cat-count {
     font-weight: 600;
     color: var(--color-text);
+}
+
+/* --- Form-Filter-Chips in der Sidebar (Mehrfachauswahl) ----------------- */
+.form-filter-chips {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 0.3rem;
+}
+.form-filter-chip {
+    display: inline-flex;
+    align-items: center;
+    gap: 0.35em;
+    padding: 0.2rem 0.55rem;
+    background: var(--color-bg-card);
+    border: 1px solid var(--color-border);
+    border-radius: 999px;
+    font-family: var(--font-sans);
+    font-size: var(--text-xs);
+    color: var(--color-text-muted);
+    cursor: pointer;
+    transition: background-color var(--transition-fast),
+                border-color var(--transition-fast),
+                color var(--transition-fast);
+}
+.form-filter-chip:hover {
+    border-color: var(--color-border-dark);
+    color: var(--color-text);
+}
+.form-filter-chip.is-active {
+    background: var(--anno-person-bg);
+    border-color: var(--anno-person-border);
+    color: var(--anno-person);
+}
+.form-filter-chip-count {
+    font-variant-numeric: tabular-nums;
+    color: var(--color-text-light);
+    font-size: var(--text-2xs);
+}
+.form-filter-chip.is-active .form-filter-chip-count {
+    color: var(--anno-person);
+}
+/* Icon-Marker im Chip — uebernimmt das jeweilige Icon aus FORM_ICONS via CSS-mask
+   waere aufwendig; stattdessen rendert der JS hier einfach den passenden Buchstaben
+   als Mini-Hint, falls das Icon nicht reinkommt. Effekt-arme Loesung. */
+.form-filter-chip-icon {
+    display: none;
+}
+
+.sidebar-block-hint {
+    margin: 0.4rem 0 0;
+    font-family: var(--font-sans);
+    font-size: var(--text-2xs);
+    color: var(--color-text-light);
+    line-height: 1.4;
 }
 
 .preview-meta span + span::before {

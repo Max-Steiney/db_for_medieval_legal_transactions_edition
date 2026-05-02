@@ -25,6 +25,8 @@
         let filterPlace = document.getElementById('filter-place');
         let filterFacs = document.getElementById('filter-facs');
         let filterQuality = document.getElementById('filter-quality');
+        let filterSex = document.getElementById('filter-sex');
+        let filterFormsEl = document.getElementById('filter-forms');
         let resultCount = document.getElementById('result-count');
         let activeFiltersEl = document.getElementById('active-filters');
         // Forward-Deklaration: rangeSlider, chips und urlSyncEnabled
@@ -41,15 +43,48 @@
         let state = {
             query: '',
             collection: '',
-            place: '',
+            place: '',         // Sonderwert '__none__' = "ohne Ortsangabe"
             facs: '',
             quality: '',
+            sex: '',           // '' | 'with-f' | 'only-f' | 'only-m' | 'none'
+            forms: [],         // Array aus 'R','S','E','N','none' — leer = alle
             yearMin: 0,
             yearMax: 9999,
             sortKey: 'di',
             sortDir: 1,
             previewIdx: -1
         };
+
+        // --- Form-Filter-Helfer: prueft, ob doc in den ausgewaehlten Formen
+        // liegt. ODER-Verknuepfung innerhalb der Formen, AND zu allen anderen
+        // Filtern. Leere Auswahl = alle Quellen erlaubt.
+        function docMatchesForms(doc, forms) {
+            if (!forms || forms.length === 0) return true;
+            for (let i = 0; i < forms.length; i++) {
+                let f = forms[i];
+                if (f === 'R' && doc.ecR > 0) return true;
+                if (f === 'S' && doc.ecS > 0) return true;
+                if (f === 'E' && doc.ecE > 0) return true;
+                if (f === 'N' && doc.ecN > 0) return true;
+                if (f === 'none' && !doc.ecR && !doc.ecS && !doc.ecE && !doc.ecN) return true;
+            }
+            return false;
+        }
+
+        function docMatchesSex(doc, sex) {
+            if (!sex) return true;
+            if (sex === 'with-f') return doc.pcdf > 0;
+            if (sex === 'only-f') return doc.pcdf > 0 && doc.pcdm === 0;
+            if (sex === 'only-m') return doc.pcdm > 0 && doc.pcdf === 0;
+            if (sex === 'none') return doc.pcd === 0;
+            return true;
+        }
+
+        function docMatchesPlace(doc, place) {
+            if (!place) return true;
+            if (place === '__none__') return !doc.p;
+            return doc.p === place;
+        }
 
         let collectionLabels = {};
         let filteredDocs = [];
@@ -68,11 +103,12 @@
                '<path d="M3.5 5h9M3.5 8h9M3.5 11h6" ' +
                'stroke="currentColor" stroke-width="1.4" stroke-linecap="round" fill="none"/>' +
                '</svg>',
-            // Siegel: Wachs-Siegel-Anmutung (Kreis mit Stern-Innenstruktur)
+            // Siegel: Petschaft-Anmutung – runder Siegelring mit innerem
+            // Kreis und kleinem Mittelpunkt. Kein Stern/Rad.
             s: '<svg viewBox="0 0 16 16" aria-hidden="true">' +
-               '<circle cx="8" cy="8" r="4.6" stroke="currentColor" stroke-width="1.4" fill="none"/>' +
-               '<path d="M8 4.5v7M4.5 8h7M5.5 5.5l5 5M10.5 5.5l-5 5" ' +
-               'stroke="currentColor" stroke-width="0.9" fill="none"/>' +
+               '<circle cx="8" cy="8" r="5" stroke="currentColor" stroke-width="1.4" fill="none"/>' +
+               '<circle cx="8" cy="8" r="2.2" stroke="currentColor" stroke-width="1.1" fill="none"/>' +
+               '<circle cx="8" cy="8" r="0.6" fill="currentColor"/>' +
                '</svg>',
             // Eintrag: aufgeschlagenes Buch / zwei Seiten
             e: '<svg viewBox="0 0 16 16" aria-hidden="true">' +
@@ -282,6 +318,22 @@
             state.quality = urlQuality;
             filterQuality.value = urlQuality;
         }
+        let urlSex = urlParams.get('sex');
+        if (urlSex && filterSex) {
+            state.sex = urlSex;
+            filterSex.value = urlSex;
+        }
+        let urlForms = urlParams.get('forms');
+        if (urlForms && filterFormsEl) {
+            state.forms = urlForms.split(',').filter(Boolean);
+            state.forms.forEach(function(f) {
+                let chip = filterFormsEl.querySelector('.form-filter-chip[data-form="' + f + '"]');
+                if (chip) {
+                    chip.classList.add('is-active');
+                    chip.setAttribute('aria-pressed', 'true');
+                }
+            });
+        }
         let urlCollection = urlParams.get('collection');
         if (urlCollection) {
             state.collection = urlCollection;
@@ -308,15 +360,17 @@
         // Faceted-Search Standardmuster: pro Filter-Dimension werden die
         // Counts unter Beruecksichtigung ALLER ANDEREN Filter berechnet.
         // skip ist die zu ignorierende Dimension ('collection' | 'place' |
-        // 'facs' | 'quality' | 'year' | 'query' | null).
+        // 'facs' | 'quality' | 'sex' | 'forms' | 'year' | 'query' | null).
         function matchesAllExcept(doc, skip) {
             if (skip !== 'collection' && state.collection && doc.cp !== state.collection) return false;
-            if (skip !== 'place' && state.place && doc.p !== state.place) return false;
+            if (skip !== 'place' && !docMatchesPlace(doc, state.place)) return false;
             if (skip !== 'facs') {
                 if (state.facs === '1' && !doc.f) return false;
                 if (state.facs === '0' && doc.f) return false;
             }
             if (skip !== 'quality' && state.quality !== '' && String(doc.q) !== state.quality) return false;
+            if (skip !== 'sex' && !docMatchesSex(doc, state.sex)) return false;
+            if (skip !== 'forms' && !docMatchesForms(doc, state.forms)) return false;
             if (skip !== 'year' && state.yearMin > 0 && state.yearMax < 9999) {
                 let year = parseInt(doc.di);
                 if (isNaN(year) || year < state.yearMin || year > state.yearMax) return false;
@@ -438,6 +492,52 @@
                     else _setOptionLabel(opt, opt.dataset.label, counts[opt.value] || 0);
                 });
             }
+            // Geschlechter-Mix
+            if (filterSex) {
+                let counts = {'with-f': 0, 'only-f': 0, 'only-m': 0, 'none': 0};
+                allDocs.forEach(function(doc) {
+                    if (!matchesAllExcept(doc, 'sex')) return;
+                    if (doc.pcdf > 0) counts['with-f']++;
+                    if (doc.pcdf > 0 && doc.pcdm === 0) counts['only-f']++;
+                    if (doc.pcdm > 0 && doc.pcdf === 0) counts['only-m']++;
+                    if (doc.pcd === 0) counts['none']++;
+                });
+                filterSex.querySelectorAll('option').forEach(function(opt) {
+                    if (!opt.dataset.label) opt.dataset.label = opt.textContent.split(' (')[0];
+                    if (opt.value === '') _setOptionLabel(opt, opt.dataset.label, null);
+                    else _setOptionLabel(opt, opt.dataset.label, counts[opt.value] || 0);
+                });
+            }
+            // Erschliessungsform-Chips
+            if (filterFormsEl) {
+                let counts = {R:0, S:0, E:0, N:0, none:0};
+                allDocs.forEach(function(doc) {
+                    if (!matchesAllExcept(doc, 'forms')) return;
+                    if (doc.ecR) counts.R++;
+                    if (doc.ecS) counts.S++;
+                    if (doc.ecE) counts.E++;
+                    if (doc.ecN) counts.N++;
+                    if (!doc.ecR && !doc.ecS && !doc.ecE && !doc.ecN) counts.none++;
+                });
+                filterFormsEl.querySelectorAll('.form-filter-chip').forEach(function(c) {
+                    let f = c.getAttribute('data-form');
+                    let countEl = c.querySelector('.form-filter-chip-count');
+                    if (countEl) countEl.textContent = counts[f] || 0;
+                });
+            }
+            // Place: ohne-Ortsangabe-Option
+            if (filterPlace) {
+                let noPlaceCount = 0;
+                allDocs.forEach(function(doc) {
+                    if (!matchesAllExcept(doc, 'place')) return;
+                    if (!doc.p) noPlaceCount++;
+                });
+                let opt = filterPlace.querySelector('option[value="__none__"]');
+                if (opt) {
+                    if (!opt.dataset.label) opt.dataset.label = '(ohne Ortsangabe)';
+                    _setOptionLabel(opt, opt.dataset.label, noPlaceCount);
+                }
+            }
         }
 
         // Filter-State -> URL. history.replaceState() schreibt ohne
@@ -453,6 +553,8 @@
             if (state.place) p.set('place', state.place);
             if (state.facs) p.set('facs', state.facs);
             if (state.quality !== '') p.set('quality', state.quality);
+            if (state.sex) p.set('sex', state.sex);
+            if (state.forms && state.forms.length) p.set('forms', state.forms.join(','));
             if (state.query) p.set('q', state.query);
             if (rangeSlider && rangeSlider.isFiltered && rangeSlider.isFiltered()) {
                 p.set('yearMin', state.yearMin);
@@ -497,15 +599,50 @@
                 state.place = '';
                 state.facs = '';
                 state.quality = '';
+                state.sex = '';
+                state.forms = [];
                 state.query = '';
                 chips.forEach(function(c) { c.classList.remove('active'); });
                 if (filterPlace) filterPlace.value = '';
                 if (filterFacs) filterFacs.value = '';
                 if (filterQuality) filterQuality.value = '';
+                if (filterSex) filterSex.value = '';
+                if (filterFormsEl) {
+                    filterFormsEl.querySelectorAll('.form-filter-chip').forEach(function(c) {
+                        c.classList.remove('is-active');
+                        c.setAttribute('aria-pressed', 'false');
+                    });
+                }
                 let si = document.getElementById('search-input');
                 if (si) si.value = '';
                 if (rangeSlider && rangeSlider.reset) rangeSlider.reset();
                 applyFilters();
+            });
+        }
+
+        // --- Filter-Event-Listener fuer die neuen Filter ---
+        if (filterSex) {
+            filterSex.addEventListener('change', function() {
+                state.sex = filterSex.value;
+                applyFilters();
+            });
+        }
+        if (filterFormsEl) {
+            filterFormsEl.querySelectorAll('.form-filter-chip').forEach(function(chip) {
+                chip.addEventListener('click', function() {
+                    let f = chip.getAttribute('data-form');
+                    let idx = state.forms.indexOf(f);
+                    if (idx === -1) {
+                        state.forms.push(f);
+                        chip.classList.add('is-active');
+                        chip.setAttribute('aria-pressed', 'true');
+                    } else {
+                        state.forms.splice(idx, 1);
+                        chip.classList.remove('is-active');
+                        chip.setAttribute('aria-pressed', 'false');
+                    }
+                    applyFilters();
+                });
             });
         }
 
@@ -537,34 +674,12 @@
                 thumbHtml = '<div class="preview-thumb"><img src="' + esc(doc.fu) + '" loading="lazy" alt="Faksimile"></div>';
             }
 
-            // Qualitaets-Findings: search.json-Eintrag traegt jetzt zusaetzlich
-            // qcat — bis zu fuenf {c, n}-Kategorien-Paare (Kategorie-Code + Anzahl).
-            // Die Codes kommen aus pipeline/output/validation_report.json; sie
-            // werden hier in lesbare Labels uebersetzt (Mapping unten).
+            // Qualitaets-Hinweise tauchen in der Vorschau bewusst NICHT auf:
+            // die Findings sind redaktionell-technische Annotations-Hinweise
+            // (Datierungs-Attribut, leere Referenz etc.) und gehoeren in die
+            // Quellansicht selbst, wo sie kontextuell verankert werden koennen.
+            // Das Dot-Signal in der Tabelle bleibt als 'da gibt's noch was'-Hinweis.
             let qualityHtml = '';
-            if (doc.q > 0) {
-                let label = doc.q === 2 ? 'Warnungen' : 'Hinweise';
-                let count = doc.qc || 0;
-                let qcat = doc.qcat || [];
-                let chips = qcat.map(function(item) {
-                    let human = QUALITY_CATEGORY_LABELS[item.c] || item.c;
-                    return '<span class="quality-cat-chip" title="' +
-                           esc(item.c) + ' (' + item.n + ')">' +
-                           esc(human) +
-                           (item.n > 1 ? ' <span class="quality-cat-count">' + item.n + '</span>' : '') +
-                           '</span>';
-                }).join('');
-                qualityHtml =
-                    '<div class="preview-quality preview-quality--q' + doc.q + '">' +
-                    '<div class="preview-quality-head">' +
-                    '<span class="quality-dot quality-dot--q' + doc.q + '"></span>' +
-                    '<strong>' + esc(label) + ':</strong> ' +
-                    count + ' Finding' + (count === 1 ? '' : 's') +
-                    ' aus der Pipeline-Validierung' +
-                    '</div>' +
-                    (chips ? '<div class="quality-cat-chips">' + chips + '</div>' : '') +
-                    '</div>';
-            }
 
             previewTr.innerHTML =
                 '<td colspan="5"><div class="doc-preview">' +
@@ -602,9 +717,46 @@
                 TableInfra.addFilterChip(activeFiltersEl, 'Quellenkorpus: ' + (collectionLabels[state.collection] || state.collection),
                     clearFilter('collection', function() { chips.forEach(function(c) { c.classList.remove('active'); }); }));
             }
+            if (state.query) {
+                // Konsistenz: Suche ist filterwirksam und gehoert daher in
+                // die aktive-Filter-Leiste, sonst sind die Trefferzahlen
+                // unerklaerlich.
+                TableInfra.addFilterChip(activeFiltersEl, 'Suche: ' + state.query,
+                    clearFilter('query', function() {
+                        let si = document.getElementById('search-input');
+                        if (si) si.value = '';
+                        let sc = document.getElementById('search-clear');
+                        if (sc) sc.classList.add('hidden');
+                    }));
+            }
             if (state.place) {
-                TableInfra.addFilterChip(activeFiltersEl, 'Ort: ' + state.place,
+                let placeLabel = state.place === '__none__' ? 'Ort: (ohne Ortsangabe)' : 'Ort: ' + state.place;
+                TableInfra.addFilterChip(activeFiltersEl, placeLabel,
                     clearFilter('place', function() { if (filterPlace) filterPlace.value = ''; }));
+            }
+            if (state.sex) {
+                let sexLabels = {
+                    'with-f': 'Mit Frauenbeteiligung',
+                    'only-f': 'Nur Frauen',
+                    'only-m': 'Nur Männer',
+                    'none':   'Ohne Personen'
+                };
+                TableInfra.addFilterChip(activeFiltersEl, 'Geschlecht: ' + (sexLabels[state.sex] || state.sex),
+                    clearFilter('sex', function() { if (filterSex) filterSex.value = ''; }));
+            }
+            if (state.forms && state.forms.length) {
+                let formLabels = {R: 'Regest', S: 'Siegel', E: 'Eintrag', N: 'Nota', none: 'ohne Form'};
+                let formsLabel = 'Form: ' + state.forms.map(function(f) { return formLabels[f] || f; }).join(', ');
+                TableInfra.addFilterChip(activeFiltersEl, formsLabel, function() {
+                    state.forms = [];
+                    if (filterFormsEl) {
+                        filterFormsEl.querySelectorAll('.form-filter-chip').forEach(function(c) {
+                            c.classList.remove('is-active');
+                            c.setAttribute('aria-pressed', 'false');
+                        });
+                    }
+                    applyFilters();
+                });
             }
             if (state.facs) {
                 TableInfra.addFilterChip(activeFiltersEl, state.facs === '1' ? 'Mit Faksimile' : 'Ohne Faksimile',
@@ -616,7 +768,7 @@
                     clearFilter('quality', function() { if (filterQuality) filterQuality.value = ''; }));
             }
             if (rangeSlider && rangeSlider.isFiltered()) {
-                TableInfra.addFilterChip(activeFiltersEl, 'Zeitraum: ' + state.yearMin + '\u2013' + state.yearMax,
+                TableInfra.addFilterChip(activeFiltersEl, 'Zeitraum: ' + state.yearMin + '–' + state.yearMax,
                     function() { rangeSlider.reset(); });
             }
         }

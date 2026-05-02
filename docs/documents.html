@@ -9,15 +9,15 @@
     <title>Quellen — Datenbank</title>
     <link rel="preload" as="font" type="font/woff2" crossorigin
           href="./static/fonts/inter-400-latin.woff2">
-    <link rel="stylesheet" href="./static/css/fonts.css?v=20260502155820">
-    <link rel="stylesheet" href="./static/css/tokens.css?v=20260502155820">
-    <link rel="stylesheet" href="./static/css/base.css?v=20260502155820">
-    <link rel="stylesheet" href="./static/css/components.css?v=20260502155820">
-    <link rel="stylesheet" href="./static/css/responsive.css?v=20260502155820">
-    <link rel="stylesheet" href="./static/css/print.css?v=20260502155820">
-    <link rel="stylesheet" href="./static/css/provenance.css?v=20260502155820">
+    <link rel="stylesheet" href="./static/css/fonts.css?v=20260502163001">
+    <link rel="stylesheet" href="./static/css/tokens.css?v=20260502163001">
+    <link rel="stylesheet" href="./static/css/base.css?v=20260502163001">
+    <link rel="stylesheet" href="./static/css/components.css?v=20260502163001">
+    <link rel="stylesheet" href="./static/css/responsive.css?v=20260502163001">
+    <link rel="stylesheet" href="./static/css/print.css?v=20260502163001">
+    <link rel="stylesheet" href="./static/css/provenance.css?v=20260502163001">
     
-<link rel="stylesheet" href="./static/css/index.css?v=20260502155820">
+<link rel="stylesheet" href="./static/css/index.css?v=20260502163001">
 
 </head>
 <body data-root-path="."
@@ -344,7 +344,56 @@
                     
                     <option value="Tulln">Tulln (3)</option>
                     
+                    <option value="__none__">(ohne Ortsangabe)</option>
                 </select>
+            </section>
+
+            <section class="sidebar-block">
+                <p class="sidebar-block-label">Geschlechter-Mix</p>
+                <select id="filter-sex" aria-label="Geschlechter-Mix">
+                    <option value="">alle</option>
+                    <option value="with-f">mit Frauenbeteiligung</option>
+                    <option value="only-f">nur Frauen</option>
+                    <option value="only-m">nur Männer</option>
+                    <option value="none">ohne Personen</option>
+                </select>
+            </section>
+
+            <section class="sidebar-block">
+                <p class="sidebar-block-label">Erschließungsform</p>
+                <div class="form-filter-chips" id="filter-forms" role="group"
+                     aria-label="Nach Erschließungsform filtern (Mehrfachauswahl)">
+                    <button type="button" class="form-filter-chip" data-form="R"
+                            aria-pressed="false" title="Regest-Annotation">
+                        <span class="form-filter-chip-icon" data-icon="r"></span>
+                        <span class="form-filter-chip-label">Regest</span>
+                        <span class="form-filter-chip-count"></span>
+                    </button>
+                    <button type="button" class="form-filter-chip" data-form="S"
+                            aria-pressed="false" title="Siegelbeschreibung">
+                        <span class="form-filter-chip-icon" data-icon="s"></span>
+                        <span class="form-filter-chip-label">Siegel</span>
+                        <span class="form-filter-chip-count"></span>
+                    </button>
+                    <button type="button" class="form-filter-chip" data-form="E"
+                            aria-pressed="false" title="Stadtbuch-Eintrag">
+                        <span class="form-filter-chip-icon" data-icon="e"></span>
+                        <span class="form-filter-chip-label">Eintrag</span>
+                        <span class="form-filter-chip-count"></span>
+                    </button>
+                    <button type="button" class="form-filter-chip" data-form="N"
+                            aria-pressed="false" title="Nota / Nachsatz">
+                        <span class="form-filter-chip-icon" data-icon="n"></span>
+                        <span class="form-filter-chip-label">Nota</span>
+                        <span class="form-filter-chip-count"></span>
+                    </button>
+                    <button type="button" class="form-filter-chip" data-form="none"
+                            aria-pressed="false" title="Quelle ohne erkannte Erschließungsform">
+                        <span class="form-filter-chip-label">ohne</span>
+                        <span class="form-filter-chip-count"></span>
+                    </button>
+                </div>
+                <p class="sidebar-block-hint">Mehrfachauswahl möglich (ODER-Verknüpfung)</p>
             </section>
 
             <section class="sidebar-block">
@@ -458,11 +507,11 @@
         </div>
     </footer>
 
-    <script src="./static/js/core.js?v=20260502155820"></script>
-    <script src="./static/js/provenance.js?v=20260502155820"></script>
+    <script src="./static/js/core.js?v=20260502163001"></script>
+    <script src="./static/js/provenance.js?v=20260502163001"></script>
     
-<script src="./static/js/table-infra.js?v=20260502155820"></script>
-<script src="./static/js/index.js?v=20260502155820"></script>
+<script src="./static/js/table-infra.js?v=20260502163001"></script>
+<script src="./static/js/index.js?v=20260502163001"></script>
 
 </body>
 </html>
