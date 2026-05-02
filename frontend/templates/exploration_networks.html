@@ -4,7 +4,7 @@
 {% block title %}Beziehungen — Exploration{% endblock %}
 
 {% block head %}
-<link rel="stylesheet" href="{{ root_path }}/static/css/exploration.css">
+<link rel="stylesheet" href="{{ root_path }}/static/css/exploration.css?v={{ asset_v }}">
 {% endblock %}
 
 {% block content %}
@@ -150,9 +150,9 @@
                 <div class="explore-chart-wrap" id="explore-rep-matrix"
                      role="img" aria-label="Vertretungsrichtung nach Geschlecht als Matrix"></div>
                 <div>
-                    <h3 style="margin:0 0 var(--space-sm)">Top Vertreter</h3>
+                    <h3 class="explore-rep-toplist-h3">Top Vertreter</h3>
                     <div id="explore-rep-top-reps"></div>
-                    <h3 style="margin:var(--space-md) 0 var(--space-sm)">Top Vertretene</h3>
+                    <h3 class="explore-rep-toplist-h3 explore-rep-toplist-h3--second">Top Vertretene</h3>
                     <div id="explore-rep-top-principals"></div>
                 </div>
             </div>
@@ -202,10 +202,10 @@
 {% endblock %}
 
 {% block scripts %}
-<script src="{{ root_path }}/static/js/table-infra.js"></script>
-<script src="{{ root_path }}/static/js/chart-helpers.js"></script>
-<script src="{{ root_path }}/static/js/drill-down.js"></script>
-<script src="{{ root_path }}/static/js/exploration-networks.js"></script>
+<script src="{{ root_path }}/static/js/table-infra.js?v={{ asset_v }}"></script>
+<script src="{{ root_path }}/static/js/chart-helpers.js?v={{ asset_v }}"></script>
+<script src="{{ root_path }}/static/js/drill-down.js?v={{ asset_v }}"></script>
+<script src="{{ root_path }}/static/js/exploration-networks.js?v={{ asset_v }}"></script>
 {% endblock %}
 
 {% block footer_info %}Beziehungen generiert am {{ build_date }}{% endblock %}

@@ -7,25 +7,25 @@
 (function() {
     'use strict';
 
-    var esc = EdCore.esc;
-    var fmt = ChartHelpers.fmt;
-    var TOOLTIP_CLASS = 'explore-tooltip';
+    let esc = EdCore.esc;
+    let fmt = ChartHelpers.fmt;
+    let TOOLTIP_CLASS = 'explore-tooltip';
 
     function initTransactionExplorer() {
         if (!document.getElementById('explore-panel-timeline')) return;
 
         ChartHelpers.createTooltip(TOOLTIP_CLASS);
 
-        var epicC = null;
+        let epicC = null;
 
         // Colour palette for top transaction types
-        var TX_PALETTE = [
+        let TX_PALETTE = [
             '#2e5a88', '#b85c2f', '#3a7a5c', '#7b4d8e', '#c45a5a',
             '#2e7a88', '#c4a035', '#6b6040', '#7a6b8c', '#5a7a3a'
         ];
-        var NOT_NORM_COLOR = ChartHelpers.getToken('--color-not-norm') || '#d4cfc8';
+        let NOT_NORM_COLOR = ChartHelpers.getToken('--color-not-norm') || '#d4cfc8';
 
-        var TX_LABELS = {
+        let TX_LABELS = {
             '_not_normalised': 'Nicht normalisiert',
             'Kauf': 'Kauf', 'Satz': 'Satz', 'Stiftung': 'Stiftung',
             'Uebergabe': '\u00dcbergabe', 'Erbe': 'Erbe', 'Transfer': 'Transfer',
@@ -39,7 +39,7 @@
         };
         function txLabel(key) { return TX_LABELS[key] || key.replace(/_/g, ' '); }
 
-        var ORG_TYPE_LABELS = {
+        let ORG_TYPE_LABELS = {
             'Kloster_m': 'Kloster (m.)', 'Kloster_f': 'Kloster (w.)',
             'Spital_Siechenhaus': 'Spital/Siechenhaus',
             'Kirche_Kapelle': 'Kirche/Kapelle', 'Kirche': 'Kirche',
@@ -50,8 +50,8 @@
         function orgTypeLabel(key) { return ORG_TYPE_LABELS[key] || key.replace(/_/g, ' '); }
 
         // State
-        var RP = window.RELEASED_PERIOD || {min: 1177, max: 1414};
-        var state = {
+        let RP = window.RELEASED_PERIOD || {min: 1177, max: 1414};
+        let state = {
             decadeMin: RP.min,
             decadeMax: RP.max,
             txTableView: false,
@@ -62,7 +62,7 @@
             verbSortAsc: false
         };
 
-        var drillHandle = DrillDown.bind({});
+        let drillHandle = DrillDown.bind({});
 
         // -- Shared bindings --
         ChartHelpers.bindTimeRange('explore', state, function() {
@@ -80,13 +80,13 @@
 
         // -- Compute filtered timeline data --
         function getFilteredTimeline() {
-            var txTimeline = epicC.observations.tx_timeline;
-            var result = {};
-            var grandTotal = 0;
-            for (var txType in txTimeline) {
-                var sum = 0;
-                for (var dStr in txTimeline[txType]) {
-                    var d = parseInt(dStr, 10);
+            let txTimeline = epicC.observations.tx_timeline;
+            let result = {};
+            let grandTotal = 0;
+            for (let txType in txTimeline) {
+                let sum = 0;
+                for (let dStr in txTimeline[txType]) {
+                    let d = parseInt(dStr, 10);
                     if (d < state.decadeMin || d > state.decadeMax) continue;
                     sum += txTimeline[txType][dStr];
                 }
@@ -99,8 +99,8 @@
         }
 
         function getDecadesInRange() {
-            var decades = [];
-            for (var d = state.decadeMin; d <= state.decadeMax; d += 10) {
+            let decades = [];
+            for (let d = state.decadeMin; d <= state.decadeMax; d += 10) {
                 decades.push(d);
             }
             return decades;
@@ -108,25 +108,25 @@
 
         // -- Render stacked bar chart (Panel 1) --
         function renderTxChart() {
-            var wrap = document.getElementById('explore-tx-chart');
+            let wrap = document.getElementById('explore-tx-chart');
             wrap.innerHTML = '';
-            var txTimeline = epicC.observations.tx_timeline;
+            let txTimeline = epicC.observations.tx_timeline;
 
-            var decades = getDecadesInRange();
+            let decades = getDecadesInRange();
             if (!decades.length) return;
 
-            var txTypes = [];
-            for (var txType in txTimeline) {
-                var total = 0;
-                for (var d in txTimeline[txType]) total += txTimeline[txType][d];
+            let txTypes = [];
+            for (let txType in txTimeline) {
+                let total = 0;
+                for (let d in txTimeline[txType]) total += txTimeline[txType][d];
                 txTypes.push({ key: txType, total: total });
             }
             txTypes.sort(function(a, b) { return b.total - a.total; });
 
-            var TX_COLORS = {};
-            var colIdx = 0;
-            for (var ti = 0; ti < txTypes.length; ti++) {
-                var k = txTypes[ti].key;
+            let TX_COLORS = {};
+            let colIdx = 0;
+            for (let ti = 0; ti < txTypes.length; ti++) {
+                let k = txTypes[ti].key;
                 if (k === '_not_normalised') {
                     TX_COLORS[k] = NOT_NORM_COLOR;
                 } else {
@@ -135,11 +135,11 @@
                 }
             }
 
-            var activeTypes = [];
-            for (var ati = 0; ati < txTypes.length; ati++) {
-                var atk = txTypes[ati].key;
-                var hasData = false;
-                for (var di = 0; di < decades.length; di++) {
+            let activeTypes = [];
+            for (let ati = 0; ati < txTypes.length; ati++) {
+                let atk = txTypes[ati].key;
+                let hasData = false;
+                for (let di = 0; di < decades.length; di++) {
                     if ((txTimeline[atk] || {})[String(decades[di])] > 0) {
                         hasData = true;
                         break;
@@ -148,14 +148,14 @@
                 if (hasData) activeTypes.push(atk);
             }
 
-            var decadeStacks = [];
-            var maxStack = 0;
-            for (var dsi = 0; dsi < decades.length; dsi++) {
-                var dd = decades[dsi];
-                var stack = [];
-                var stackTotal = 0;
-                for (var ai = 0; ai < activeTypes.length; ai++) {
-                    var val = (txTimeline[activeTypes[ai]] || {})[String(dd)] || 0;
+            let decadeStacks = [];
+            let maxStack = 0;
+            for (let dsi = 0; dsi < decades.length; dsi++) {
+                let dd = decades[dsi];
+                let stack = [];
+                let stackTotal = 0;
+                for (let ai = 0; ai < activeTypes.length; ai++) {
+                    let val = (txTimeline[activeTypes[ai]] || {})[String(dd)] || 0;
                     stack.push({ type: activeTypes[ai], value: val });
                     stackTotal += val;
                 }
@@ -165,22 +165,25 @@
             if (maxStack === 0) maxStack = 1;
 
             // Legend
-            var legendDiv = document.createElement('div');
+            let legendDiv = document.createElement('div');
             legendDiv.className = 'explore-legend explore-legend--wrap';
-            var legendTypes = activeTypes.slice(0, 11);
+            let legendTypes = activeTypes.slice(0, 11);
             if (activeTypes.length > 11) {
-                var nnIdx = legendTypes.indexOf('_not_normalised');
+                let nnIdx = legendTypes.indexOf('_not_normalised');
                 if (nnIdx === -1) legendTypes[10] = '_not_normalised';
             }
-            for (var li = 0; li < legendTypes.length; li++) {
-                var item = document.createElement('span');
+            for (let li = 0; li < legendTypes.length; li++) {
+                let item = document.createElement('span');
                 item.className = 'explore-legend-item';
-                item.innerHTML = '<span class="explore-legend-swatch" style="background:' +
-                    TX_COLORS[legendTypes[li]] + '"></span>' + esc(txLabel(legendTypes[li]));
+                let swatch = document.createElement('span');
+                swatch.className = 'explore-legend-swatch';
+                swatch.style.setProperty('--swatch-color', TX_COLORS[legendTypes[li]]);
+                item.appendChild(swatch);
+                item.appendChild(document.createTextNode(txLabel(legendTypes[li])));
                 legendDiv.appendChild(item);
             }
             if (activeTypes.length > legendTypes.length) {
-                var moreItem = document.createElement('span');
+                let moreItem = document.createElement('span');
                 moreItem.className = 'explore-legend-item explore-legend-more';
                 moreItem.textContent = '+ ' + (activeTypes.length - legendTypes.length) + ' weitere';
                 legendDiv.appendChild(moreItem);
@@ -188,16 +191,16 @@
             wrap.appendChild(legendDiv);
 
             // SVG chart
-            var margin = { top: 10, right: 20, bottom: 40, left: 40 };
-            var chartW = wrap.clientWidth - margin.left - margin.right;
+            let margin = { top: 10, right: 20, bottom: 40, left: 40 };
+            let chartW = wrap.clientWidth - margin.left - margin.right;
             if (chartW < 300) chartW = 300;
-            var chartH = 280;
-            var barW = Math.max(8, Math.floor((chartW - decades.length * 2) / decades.length));
-            var actualChartW = decades.length * (barW + 2);
-            var svgW = margin.left + actualChartW + margin.right;
-            var svgH = margin.top + chartH + margin.bottom;
+            let chartH = 280;
+            let barW = Math.max(8, Math.floor((chartW - decades.length * 2) / decades.length));
+            let actualChartW = decades.length * (barW + 2);
+            let svgW = margin.left + actualChartW + margin.right;
+            let svgH = margin.top + chartH + margin.bottom;
 
-            var svg = document.createElementNS(ChartHelpers.SVG_NS, 'svg');
+            let svg = document.createElementNS(ChartHelpers.SVG_NS, 'svg');
             svg.setAttribute('width', svgW);
             svg.setAttribute('height', svgH);
             svg.setAttribute('role', 'img');
@@ -206,14 +209,14 @@
             svg.style.margin = '0 auto';
 
             // Hatch pattern for transmission gap
-            var defs = document.createElementNS(ChartHelpers.SVG_NS, 'defs');
-            var pattern = document.createElementNS(ChartHelpers.SVG_NS, 'pattern');
+            let defs = document.createElementNS(ChartHelpers.SVG_NS, 'defs');
+            let pattern = document.createElementNS(ChartHelpers.SVG_NS, 'pattern');
             pattern.setAttribute('id', 'gap-hatch');
             pattern.setAttribute('patternUnits', 'userSpaceOnUse');
             pattern.setAttribute('width', '8');
             pattern.setAttribute('height', '8');
             pattern.setAttribute('patternTransform', 'rotate(45)');
-            var hatchLine = document.createElementNS(ChartHelpers.SVG_NS, 'line');
+            let hatchLine = document.createElementNS(ChartHelpers.SVG_NS, 'line');
             hatchLine.setAttribute('x1', '0'); hatchLine.setAttribute('y1', '0');
             hatchLine.setAttribute('x2', '0'); hatchLine.setAttribute('y2', '8');
             hatchLine.setAttribute('stroke', '#e0dbd4'); hatchLine.setAttribute('stroke-width', '2');
@@ -222,18 +225,18 @@
             svg.appendChild(defs);
 
             // Y-axis labels
-            var yTicks = 5;
-            for (var yt = 0; yt <= yTicks; yt++) {
-                var yVal = Math.round(maxStack / yTicks * yt);
-                var yPos = margin.top + chartH - (yVal / maxStack * chartH);
-                var yLabel = document.createElementNS(ChartHelpers.SVG_NS, 'text');
+            let yTicks = 5;
+            for (let yt = 0; yt <= yTicks; yt++) {
+                let yVal = Math.round(maxStack / yTicks * yt);
+                let yPos = margin.top + chartH - (yVal / maxStack * chartH);
+                let yLabel = document.createElementNS(ChartHelpers.SVG_NS, 'text');
                 yLabel.setAttribute('x', margin.left - 6);
                 yLabel.setAttribute('y', yPos + 4);
                 yLabel.setAttribute('text-anchor', 'end');
                 yLabel.setAttribute('class', 'explore-axis-label');
                 yLabel.textContent = yVal;
                 svg.appendChild(yLabel);
-                var gridLine = document.createElementNS(ChartHelpers.SVG_NS, 'line');
+                let gridLine = document.createElementNS(ChartHelpers.SVG_NS, 'line');
                 gridLine.setAttribute('x1', margin.left);
                 gridLine.setAttribute('y1', yPos);
                 gridLine.setAttribute('x2', margin.left + actualChartW);
@@ -243,13 +246,13 @@
             }
 
             // Stacked bars per decade
-            for (var dbi = 0; dbi < decadeStacks.length; dbi++) {
-                var ds = decadeStacks[dbi];
-                var x = margin.left + dbi * (barW + 2);
-                var isGap = ds.decade >= 1420 && ds.decade <= 1440;
+            for (let dbi = 0; dbi < decadeStacks.length; dbi++) {
+                let ds = decadeStacks[dbi];
+                let x = margin.left + dbi * (barW + 2);
+                let isGap = ds.decade >= 1420 && ds.decade <= 1440;
 
                 if (isGap && ds.total === 0) {
-                    var gapRect = document.createElementNS(ChartHelpers.SVG_NS, 'rect');
+                    let gapRect = document.createElementNS(ChartHelpers.SVG_NS, 'rect');
                     gapRect.setAttribute('x', x);
                     gapRect.setAttribute('y', margin.top);
                     gapRect.setAttribute('width', barW);
@@ -258,14 +261,14 @@
                     svg.appendChild(gapRect);
                 }
 
-                var yBottom = margin.top + chartH;
-                for (var si = ds.segments.length - 1; si >= 0; si--) {
-                    var seg = ds.segments[si];
+                let yBottom = margin.top + chartH;
+                for (let si = ds.segments.length - 1; si >= 0; si--) {
+                    let seg = ds.segments[si];
                     if (seg.value === 0) continue;
-                    var segH = (seg.value / maxStack) * chartH;
-                    var segY = yBottom - segH;
+                    let segH = (seg.value / maxStack) * chartH;
+                    let segY = yBottom - segH;
 
-                    var rect = document.createElementNS(ChartHelpers.SVG_NS, 'rect');
+                    let rect = document.createElementNS(ChartHelpers.SVG_NS, 'rect');
                     rect.setAttribute('x', x);
                     rect.setAttribute('y', segY);
                     rect.setAttribute('width', barW);
@@ -275,7 +278,7 @@
 
                     (function(type, value, decade, total) {
                         rect.addEventListener('mouseenter', function(e) {
-                            var pct = total > 0 ? Math.round(value / total * 100) : 0;
+                            let pct = total > 0 ? Math.round(value / total * 100) : 0;
                             ChartHelpers.showTooltip(TOOLTIP_CLASS,
                                 esc(txLabel(type)) + ': ' +
                                 value.toLocaleString('de-DE') + ' (' + pct + ' %) \u00B7 ' +
@@ -297,7 +300,7 @@
                 }
 
                 // Decade label
-                var dLabel = document.createElementNS(ChartHelpers.SVG_NS, 'text');
+                let dLabel = document.createElementNS(ChartHelpers.SVG_NS, 'text');
                 dLabel.setAttribute('x', x + barW / 2);
                 dLabel.setAttribute('y', margin.top + chartH + 16);
                 dLabel.setAttribute('text-anchor', 'middle');
@@ -311,10 +314,10 @@
             wrap.appendChild(svg);
 
             // Footer
-            var filtered = getFilteredTimeline();
-            var footer = document.getElementById('explore-tx-footer');
-            var normInRange = filtered.types['_not_normalised'] || 0;
-            var normPct = filtered.total > 0 ? Math.round((filtered.total - normInRange) / filtered.total * 100) : 0;
+            let filtered = getFilteredTimeline();
+            let footer = document.getElementById('explore-tx-footer');
+            let normInRange = filtered.types['_not_normalised'] || 0;
+            let normPct = filtered.total > 0 ? Math.round((filtered.total - normInRange) / filtered.total * 100) : 0;
             footer.textContent = 'Datenbasis: ' + filtered.total.toLocaleString('de-DE') +
                 ' Rechtsgesch\u00e4fte \u00B7 Normalisiert: ' + normPct + ' % \u00B7 ' +
                 state.decadeMin + '\u2013' + state.decadeMax;
@@ -322,18 +325,18 @@
 
         // -- Transaction types table --
         function renderTxTable() {
-            var filtered = getFilteredTimeline();
-            var tbody = document.getElementById('explore-tx-tbody');
+            let filtered = getFilteredTimeline();
+            let tbody = document.getElementById('explore-tx-tbody');
             tbody.innerHTML = '';
-            var sortedTypes = [];
-            for (var t in filtered.types) {
+            let sortedTypes = [];
+            for (let t in filtered.types) {
                 sortedTypes.push({ key: t, count: filtered.types[t] });
             }
             sortedTypes.sort(function(a, b) { return b.count - a.count; });
-            for (var i = 0; i < sortedTypes.length; i++) {
-                var item = sortedTypes[i];
-                var pct = filtered.total > 0 ? (item.count / filtered.total * 100).toFixed(1) : '0.0';
-                var tr = document.createElement('tr');
+            for (let i = 0; i < sortedTypes.length; i++) {
+                let item = sortedTypes[i];
+                let pct = filtered.total > 0 ? (item.count / filtered.total * 100).toFixed(1) : '0.0';
+                let tr = document.createElement('tr');
                 tr.innerHTML =
                     '<td>' + esc(txLabel(item.key)) + '</td>' +
                     '<td class="num">' + item.count.toLocaleString('de-DE') + '</td>' +
@@ -343,12 +346,12 @@
         }
 
         // -- Verb form browser (Panel 2) --
-        var verbNormFilter = document.getElementById('explore-verb-norm-filter');
+        let verbNormFilter = document.getElementById('explore-verb-norm-filter');
 
         function getFilteredVerbs() {
-            var allTriggerstrings = epicC.triggerstrings || [];
-            var search = state.verbSearch;
-            var normFilter = state.verbNormFilter;
+            let allTriggerstrings = epicC.triggerstrings || [];
+            let search = state.verbSearch;
+            let normFilter = state.verbNormFilter;
             return allTriggerstrings.filter(function(ts) {
                 if (search && ts.form.toLowerCase().indexOf(search) === -1) return false;
                 if (normFilter === 'normalised' && !ts.norm) return false;
@@ -358,10 +361,10 @@
         }
 
         function sortVerbs(verbs) {
-            var key = state.verbSortKey;
-            var asc = state.verbSortAsc;
+            let key = state.verbSortKey;
+            let asc = state.verbSortAsc;
             return verbs.slice().sort(function(a, b) {
-                var va = a[key], vb = b[key];
+                let va = a[key], vb = b[key];
                 if (typeof va === 'string') va = va.toLowerCase();
                 if (typeof vb === 'string') vb = vb.toLowerCase();
                 if (va < vb) return asc ? -1 : 1;
@@ -371,25 +374,25 @@
         }
 
         function renderVerbTable() {
-            var verbs = sortVerbs(getFilteredVerbs());
-            var tbody = document.getElementById('explore-verb-tbody');
+            let verbs = sortVerbs(getFilteredVerbs());
+            let tbody = document.getElementById('explore-verb-tbody');
             tbody.innerHTML = '';
 
-            var limit = Math.min(verbs.length, 200);
-            for (var i = 0; i < limit; i++) {
+            let limit = Math.min(verbs.length, 200);
+            for (let i = 0; i < limit; i++) {
                 appendVerbRow(tbody, verbs[i]);
             }
 
             if (verbs.length > limit) {
-                var sentinel = document.createElement('tr');
+                let sentinel = document.createElement('tr');
                 sentinel.innerHTML = '<td colspan="4" class="explore-loading-more">Lade weitere ' +
                     (verbs.length - limit) + ' Eintr\u00e4ge\u2026</td>';
                 tbody.appendChild(sentinel);
-                var observer = new IntersectionObserver(function(entries) {
+                let observer = new IntersectionObserver(function(entries) {
                     if (entries[0].isIntersecting) {
                         observer.disconnect();
                         sentinel.remove();
-                        for (var j = limit; j < verbs.length; j++) {
+                        for (let j = limit; j < verbs.length; j++) {
                             appendVerbRow(tbody, verbs[j]);
                         }
                     }
@@ -397,14 +400,14 @@
                 observer.observe(sentinel);
             }
 
-            var footer = document.getElementById('explore-verb-footer');
-            var normCount = verbs.filter(function(v) { return !!v.norm; }).length;
+            let footer = document.getElementById('explore-verb-footer');
+            let normCount = verbs.filter(function(v) { return !!v.norm; }).length;
             footer.textContent = verbs.length.toLocaleString('de-DE') + ' Verbformen angezeigt' +
                 ' \u00B7 davon normalisiert: ' + normCount.toLocaleString('de-DE');
         }
 
         function appendVerbRow(tbody, v) {
-            var tr = document.createElement('tr');
+            let tr = document.createElement('tr');
             tr.className = 'explore-verb-row';
             tr.innerHTML =
                 '<td class="explore-verb-form">' + esc(v.form) + '</td>' +
@@ -432,17 +435,17 @@
 
         // -- Recipient chart (Panel 3) --
         function renderRecipChart() {
-            var wrap = document.getElementById('explore-recip-chart');
-            var recipTypeTotals = epicC.observations.recipient_type_totals || {};
+            let wrap = document.getElementById('explore-recip-chart');
+            let recipTypeTotals = epicC.observations.recipient_type_totals || {};
 
-            var types = [];
-            for (var t in recipTypeTotals) {
+            let types = [];
+            for (let t in recipTypeTotals) {
                 types.push({ key: t, count: recipTypeTotals[t] });
             }
             types.sort(function(a, b) { return b.count - a.count; });
             if (!types.length) { wrap.innerHTML = ''; return; }
 
-            var items = types.map(function(tp) {
+            let items = types.map(function(tp) {
                 return {
                     label: orgTypeLabel(tp.key),
                     type: tp.key,
@@ -467,24 +470,24 @@
                 }
             });
 
-            var totalRecip = 0;
-            for (var ri = 0; ri < types.length; ri++) totalRecip += types[ri].count;
-            var footer = document.getElementById('explore-recip-footer');
+            let totalRecip = 0;
+            for (let ri = 0; ri < types.length; ri++) totalRecip += types[ri].count;
+            let footer = document.getElementById('explore-recip-footer');
             footer.textContent = 'Datenbasis: ' + totalRecip.toLocaleString('de-DE') +
                 ' Empf\u00e4nger-Zuweisungen \u00B7 ' + types.length + ' Organisationstypen';
         }
 
         function renderRecipTable() {
-            var tbody = document.getElementById('explore-recip-tbody');
+            let tbody = document.getElementById('explore-recip-tbody');
             tbody.innerHTML = '';
-            var recipTypeTotals = epicC.observations.recipient_type_totals || {};
-            var types = [];
-            for (var t in recipTypeTotals) {
+            let recipTypeTotals = epicC.observations.recipient_type_totals || {};
+            let types = [];
+            for (let t in recipTypeTotals) {
                 types.push({ key: t, count: recipTypeTotals[t] });
             }
             types.sort(function(a, b) { return b.count - a.count; });
-            for (var i = 0; i < types.length; i++) {
-                var tr = document.createElement('tr');
+            for (let i = 0; i < types.length; i++) {
+                let tr = document.createElement('tr');
                 tr.innerHTML =
                     '<td>' + esc(orgTypeLabel(types[i].key)) + '</td>' +
                     '<td class="num">' + types[i].count.toLocaleString('de-DE') + '</td>';
@@ -493,11 +496,11 @@
         }
 
         // -- Institution detail overlay --
-        var instOverlay = document.getElementById('explore-inst-detail');
-        var instClose = document.getElementById('explore-inst-detail-close');
-        var instTitle = document.getElementById('explore-inst-detail-title');
-        var instTbody = document.getElementById('explore-inst-detail-tbody');
-        var instCount = document.getElementById('explore-inst-detail-count');
+        let instOverlay = document.getElementById('explore-inst-detail');
+        let instClose = document.getElementById('explore-inst-detail-close');
+        let instTitle = document.getElementById('explore-inst-detail-title');
+        let instTbody = document.getElementById('explore-inst-detail-tbody');
+        let instCount = document.getElementById('explore-inst-detail-count');
 
         function closeInstDetail() {
             if (instOverlay) { instOverlay.classList.add('hidden'); document.body.style.overflow = ''; }
@@ -510,15 +513,15 @@
         }
 
         function openInstDetail(orgType) {
-            var allRecipients = epicC.recipients || [];
-            var institutions = allRecipients.filter(function(r) { return r.type === orgType; });
+            let allRecipients = epicC.recipients || [];
+            let institutions = allRecipients.filter(function(r) { return r.type === orgType; });
             institutions.sort(function(a, b) { return b.count - a.count; });
 
             instTitle.textContent = orgTypeLabel(orgType) + ' \u2014 Einzelinstitutionen';
             instTbody.innerHTML = '';
-            for (var i = 0; i < institutions.length; i++) {
-                var inst = institutions[i];
-                var tr = document.createElement('tr');
+            for (let i = 0; i < institutions.length; i++) {
+                let inst = institutions[i];
+                let tr = document.createElement('tr');
                 tr.className = 'explore-verb-row';
                 tr.innerHTML =
                     '<td>' + esc(inst.name || inst.id) + '</td>' +
@@ -545,21 +548,21 @@
 
         // -- Drill-down functions --
         function openTxDrillDown(txType, decade) {
-            var dd = epicC.drill_down || {};
-            var fkeys = ((dd.tx_type_decade || {})[txType] || {})[String(decade)] || [];
+            let dd = epicC.drill_down || {};
+            let fkeys = ((dd.tx_type_decade || {})[txType] || {})[String(decade)] || [];
             DrillDown.open(drillHandle, txLabel(txType) + ' \u00B7 ' + decade + 'er', fkeys);
         }
 
         function openVerbDrillDown(verb) {
-            var fkeys = verb.file_keys || [];
+            let fkeys = verb.file_keys || [];
             DrillDown.open(drillHandle, '\u201E' + verb.form + '\u201C' +
                 (verb.norm ? ' \u2192 ' + txLabel(verb.norm) : ''), fkeys);
         }
 
         function openSupporterDrillDown(orgId, orgName) {
-            var supporters = epicC.org_supporters[orgId] || [];
-            var fkeys = [];
-            for (var i = 0; i < supporters.length; i++) {
+            let supporters = epicC.org_supporters[orgId] || [];
+            let fkeys = [];
+            for (let i = 0; i < supporters.length; i++) {
                 if (fkeys.indexOf(supporters[i].file_key) === -1) fkeys.push(supporters[i].file_key);
             }
             DrillDown.open(drillHandle, orgName + ' \u2014 Zuwendungen', fkeys);
@@ -568,30 +571,30 @@
         // ── E4: Org Type × Transaction Type Matrix ──
 
         function renderOrgTxMatrix() {
-            var otData = epicC && epicC.org_tx;
-            var container = document.getElementById('explore-orgtx-matrix');
-            var statsEl = document.getElementById('explore-orgtx-stats');
+            let otData = epicC && epicC.org_tx;
+            let container = document.getElementById('explore-orgtx-matrix');
+            let statsEl = document.getElementById('explore-orgtx-stats');
             if (!otData || !container) return;
 
-            var cov = otData.coverage || {};
+            let cov = otData.coverage || {};
             if (statsEl) {
                 statsEl.textContent = cov.matched_with_tx_type + ' zugeordnete Empfänger-Events von ' +
                     cov.total_recipient_events + ' (' + cov.match_rate + ' %)';
             }
 
-            var cells = otData.cells || [];
+            let cells = otData.cells || [];
             if (!cells.length) {
                 container.innerHTML = '<p class="explore-hint">Keine Daten.</p>';
                 return;
             }
 
             // Build unique org types and tx types
-            var orgTypes = [];
-            var txTypes = [];
-            var orgSet = {};
-            var txSet = {};
-            var cellMap = {};
-            var maxCount = 0;
+            let orgTypes = [];
+            let txTypes = [];
+            let orgSet = {};
+            let txSet = {};
+            let cellMap = {};
+            let maxCount = 0;
             cells.forEach(function(c) {
                 if (!orgSet[c.org_type]) { orgTypes.push(c.org_type); orgSet[c.org_type] = true; }
                 if (!txSet[c.tx_type]) { txTypes.push(c.tx_type); txSet[c.tx_type] = true; }
@@ -603,33 +606,39 @@
             txTypes = txTypes.slice(0, 12);
 
             // Render as HTML table (heatmap-style with opacity encoding)
-            var html = '<div style="overflow-x:auto"><table class="explore-data-table" style="font-size:var(--text-xs)">' +
+            let html = '<div class="explore-heatmap-scroll"><table class="explore-data-table explore-heatmap-table">' +
                 '<thead><tr><th>Org-Typ</th>';
-            txTypes.forEach(function(tx) { html += '<th class="num" style="writing-mode:vertical-rl;transform:rotate(180deg);max-width:2rem">' + esc(tx) + '</th>'; });
+            txTypes.forEach(function(tx) { html += '<th class="num explore-heatmap-th-vertical">' + esc(tx) + '</th>'; });
             html += '</tr></thead><tbody>';
 
             orgTypes.forEach(function(ot) {
                 html += '<tr><td>' + esc(ot) + '</td>';
                 txTypes.forEach(function(tx) {
-                    var key = ot + '__' + tx;
-                    var count = cellMap[key] || 0;
-                    var opacity = count > 0 ? 0.15 + 0.85 * (count / maxCount) : 0;
-                    var bg = count > 0 ? 'background:rgba(46,90,136,' + opacity.toFixed(2) + ');color:' + (opacity > 0.5 ? '#fff' : 'inherit') : '';
-                    html += '<td class="num" style="' + bg + ';cursor:' + (count > 0 ? 'pointer' : 'default') + '" ' +
-                        (count > 0 ? 'data-ot="' + esc(ot) + '" data-tx="' + esc(tx) + '"' : '') + '>' +
+                    let key = ot + '__' + tx;
+                    let count = cellMap[key] || 0;
+                    let opacity = count > 0 ? 0.15 + 0.85 * (count / maxCount) : 0;
+                    let textCls = opacity > 0.5 ? ' explore-heatmap-cell--inverse' : '';
+                    html += '<td class="num explore-heatmap-cell' + textCls +
+                        '" data-heat-opacity="' + opacity.toFixed(2) + '"' +
+                        (count > 0 ? ' data-ot="' + esc(ot) + '" data-tx="' + esc(tx) + '"' : '') + '>' +
                         (count > 0 ? count : '') + '</td>';
                 });
                 html += '</tr>';
             });
             html += '</tbody></table></div>';
             container.innerHTML = html;
+            container.querySelectorAll('.explore-heatmap-cell').forEach(function(td) {
+                let op = parseFloat(td.getAttribute('data-heat-opacity')) || 0;
+                td.style.setProperty('--heat-opacity', op);
+                if (op > 0) td.style.setProperty('--heat-cursor', 'pointer');
+            });
 
             // Drill-down on cells
             container.querySelectorAll('[data-ot]').forEach(function(td) {
                 td.addEventListener('click', function() {
-                    var ot = td.getAttribute('data-ot');
-                    var tx = td.getAttribute('data-tx');
-                    var fkeys = (otData.drill_down || {})[ot + '__' + tx] || [];
+                    let ot = td.getAttribute('data-ot');
+                    let tx = td.getAttribute('data-tx');
+                    let fkeys = (otData.drill_down || {})[ot + '__' + tx] || [];
                     if (fkeys.length) {
                         DrillDown.open(drillHandle, ot + ' × ' + tx, fkeys);
                     }

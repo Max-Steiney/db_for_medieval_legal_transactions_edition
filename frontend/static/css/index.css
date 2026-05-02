@@ -61,6 +61,7 @@
     opacity: 0.35;
     border-radius: 2px 2px 0 0;
     min-height: 0;
+    height: var(--bar-height, 0%);
     transition: opacity var(--transition-fast);
 }
 
@@ -71,6 +72,25 @@
     position: relative;
     height: 1.5rem;
     margin-top: -2px;
+}
+
+/* Track-Hintergrund hinter beiden Range-Inputs. Beide Inputs ueberlappen
+   sich vollstaendig (position: absolute, width: 100%); wenn ihre Tracks
+   selbst gefaerbt waeren, wuerde der Track des spaeteren Inputs den Daumen
+   des frueheren verdecken (sichtbar als "Daumen hinter der Linie"). Daher
+   die Inputs-Tracks transparent halten und den grauen Streifen einmalig
+   hier zeichnen. */
+.range-inputs::before {
+    content: '';
+    position: absolute;
+    left: 0;
+    right: 0;
+    top: 10.5px;
+    height: 3px;
+    background: var(--color-border);
+    border-radius: 2px;
+    z-index: 0;
+    pointer-events: none;
 }
 
 .range-inputs input[type="range"] {
@@ -89,7 +109,7 @@
 
 .range-inputs input[type="range"]::-webkit-slider-runnable-track {
     height: 3px;
-    background: var(--color-border);
+    background: transparent;
     border-radius: 2px;
 }
 
@@ -113,7 +133,7 @@
 
 .range-inputs input[type="range"]::-moz-range-track {
     height: 3px;
-    background: var(--color-border);
+    background: transparent;
     border-radius: 2px;
     border: none;
 }
@@ -212,24 +232,6 @@
     color: var(--anno-person);
 }
 
-.chip-form {
-    font-size: var(--text-2xs);
-    text-transform: uppercase;
-    letter-spacing: 0.08em;
-    color: var(--color-text-muted);
-    font-weight: 500;
-    padding: 1px 6px;
-    border-radius: 3px;
-    background: var(--color-bg-warm);
-    border: 1px solid var(--color-border-light);
-}
-
-.chip.active .chip-form {
-    color: var(--anno-person);
-    background: var(--color-bg-card);
-    border-color: var(--anno-person);
-}
-
 .chip-active {
     padding: var(--space-xs) 0.75rem;
     border-color: var(--anno-person);
@@ -263,23 +265,43 @@
 .active-filters:empty { margin-bottom: 0; }
 
 .filter-chip {
+    display: inline-flex;
+    align-items: center;
+    gap: 0.4rem;
     padding: 2px 0.625rem;
     background: var(--color-bg-warm);
+    border: 1px solid var(--color-border);
+    border-radius: 999px;
+    font-family: var(--font-sans);
     font-size: var(--text-xs);
     color: var(--color-text-muted);
-}
-
-.filter-chip button {
-    background: none;
-    border: none;
-    font-size: 0.9rem;
-    color: var(--color-text-light);
     cursor: pointer;
-    padding: 0;
-    line-height: 1;
+    transition: background-color var(--transition-fast),
+                border-color var(--transition-fast),
+                color var(--transition-fast);
 }
 
-.filter-chip button:hover { color: var(--color-text); }
+.filter-chip:hover {
+    background: var(--color-bg-card);
+    border-color: var(--color-border-dark);
+    color: var(--color-text);
+}
+
+.filter-chip:focus-visible {
+    outline: 2px solid var(--anno-person);
+    outline-offset: 2px;
+}
+
+.filter-chip-x {
+    color: var(--color-text-light);
+    font-size: 0.95rem;
+    line-height: 1;
+    transition: color var(--transition-fast);
+}
+
+.filter-chip:hover .filter-chip-x {
+    color: var(--anno-person);
+}
 
 
 /* --- Search and filter controls --- */
@@ -365,11 +387,22 @@
 
 /* --- Document table --- */
 .index-table-wrap {
-    overflow: hidden;
+    /* Default: kein Overflow-Containment, damit Header-Popovers
+       (Provenienz-Tooltips) ueber den Tabellenrand hinausragen koennen.
+       Bei schmalen Viewports schaltet die Media-Query-Regel weiter unten
+       wieder auf horizontalen Scroll um — dort sind die Popovers seltener
+       relevant und werden notfalls horizontal mitgescrollt. */
+    overflow: visible;
+}
+@media (max-width: 1024px) {
+    .index-table-wrap {
+        overflow-x: auto;
+    }
 }
 
 .index-table {
     width: 100%;
+    min-width: 720px;
     border-collapse: collapse;
     font-family: var(--font-sans);
     font-size: var(--text-sm);
@@ -396,8 +429,31 @@
 
 .index-table th:hover { color: var(--color-text); }
 
-.index-table th.sorted-asc::after { content: ' \2191'; }
-.index-table th.sorted-desc::after { content: ' \2193'; }
+/* Sort-Affordance: jeder sortierbare Header zeigt ein neutrales
+   Doppelpfeil-Indikator-Zeichen. Bei aktiver Sortierung wird daraus
+   der konkrete Pfeil (auf/ab) im Akzentfarbton. So weiss man auf
+   einen Blick, welche Spalten sortierbar sind und in welche
+   Richtung gerade sortiert wird. */
+.index-table th[data-sort]::after {
+    content: ' \2195';  /* up-down arrow */
+    margin-left: 0.25em;
+    opacity: 0.35;
+    font-size: 0.85em;
+    transition: opacity var(--transition-fast), color var(--transition-fast);
+}
+.index-table th[data-sort]:hover::after {
+    opacity: 0.7;
+}
+.index-table th.sorted-asc::after {
+    content: ' \2191';
+    opacity: 1;
+    color: var(--anno-person);
+}
+.index-table th.sorted-desc::after {
+    content: ' \2193';
+    opacity: 1;
+    color: var(--anno-person);
+}
 
 .index-table td {
     padding: var(--space-sm) var(--space-md);
@@ -425,9 +481,12 @@
     border-top: none;
 }
 
-.col-idno { width: 8rem; }
-.col-date { width: 9rem; }
-.col-place { width: 7rem; }
+.col-idno    { width: 5rem;  }
+.col-date    { width: 7.5rem; }
+.col-place   { width: 8rem;  }
+.col-content { width: 16rem; }
+/* Regest-Spalte (col-title) ohne explizite Breite -> beansprucht den
+   verbleibenden Platz, weil die anderen vier Spalten fix sind. */
 
 .doc-link {
     color: var(--anno-person);
@@ -437,12 +496,16 @@
 
 .doc-link:hover { text-decoration: underline; }
 
+/* Regest-Link in der Title-Spalte: liest sich wie Fliesstext (Serif,
+   Textfarbe), wird aber beim Hover klar als Link erkennbar (Unterstreichung
+   + Farbwechsel). So ist die primaere Aktion 'Quelle anzeigen' direkt aus
+   der Tabellen-Zeile heraus verfuegbar, ohne dass die Tabelle 'spammig'
+   blau wird. */
 .cell-title {
     font-family: var(--font-serif);
     font-size: var(--text-sm);
     color: var(--color-text);
     line-height: 1.5;
-    max-width: 32rem;
     overflow: hidden;
     text-overflow: ellipsis;
     display: -webkit-box;
@@ -450,13 +513,168 @@
     -webkit-box-orient: vertical;
 }
 
-.cell-path {
+a.doc-link--title {
+    color: var(--color-text);
+    font-weight: 400;
+    text-decoration: none;
+}
+a.doc-link--title:hover {
+    color: var(--anno-person);
+    text-decoration: underline;
+    text-decoration-thickness: 1px;
+    text-underline-offset: 2px;
+}
+.doc-row:hover a.doc-link--title {
+    color: var(--anno-person);
+}
+
+/* --- Inhalt-Spalte: Personen-Badge + Form-Pills + Multi-Event ----------- */
+.col-content {
+    font-family: var(--font-sans);
+    font-size: var(--text-sm);
+    color: var(--color-text);
+    line-height: 1.4;
+}
+
+/* Badges sind einheitlich: kleines Icon + Anzahl/Text. Kein Hintergrund —
+   die dotted underline am Text-Anteil ist die einzige visuelle Tooltip-
+   Affordance. Die Klasse .badge wird sowohl als <span> (rein tooltipped,
+   z. B. Quellenseite Beteiligte) als auch als <button> (clickable, z. B.
+   Personenseite Quellen) verwendet — gleiche Optik, unterschiedliches
+   Interaktionsmodell. */
+.badge {
+    display: inline-flex;
+    align-items: center;
+    gap: 0.4em;
+    font-size: var(--text-sm);
+    color: var(--color-text);
+    cursor: help;
+    background: none;
+    border: 0;
+    padding: 0;
+    font-family: inherit;
+    line-height: inherit;
+}
+button.badge { cursor: pointer; }
+.badge-icon {
+    display: inline-flex;
+    width: 1.05em;
+    height: 1.05em;
+    color: var(--anno-person);
+    flex-shrink: 0;
+}
+.badge-icon svg {
+    width: 100%;
+    height: 100%;
     display: block;
-    font-family: var(--font-mono);
-    font-size: var(--text-2xs);
+}
+.badge-text {
+    border-bottom: 1px dotted var(--color-border-dark);
+}
+.badge:hover .badge-text { border-bottom-color: var(--anno-person); }
+.badge:hover .badge-icon { color: var(--color-text); }
+
+/* Legacy-Klasse fuer Bestandscode, der noch .badge-persons referenziert. */
+.badge-persons { /* erbt komplett von .badge — keine eigenen Regeln mehr */ }
+
+.form-pills {
+    display: inline-flex;
+    gap: 2px;
+    /* margin-left: auto schiebt die Pillen-Gruppe an die rechte Kante der
+       Zelle, sodass sie optisch wie eine eigene Sub-Spalte rechts vom
+       Personen-Badge steht. Funktional bleibt es eine Spalte (ein Sort-
+       Key). Voraussetzung: .col-content-pills ist ein Flex-Container. */
+    margin-left: auto;
+    vertical-align: baseline;
+}
+/* Form-Pillen sind reine Icon-Marker ohne Hintergrund — der Container traegt
+   nur Klickflaeche, das Icon traegt die Information. Farbe --anno-person
+   einheitlich, Differenzierung allein ueber das SVG. */
+.form-pill {
+    display: inline-flex;
+    align-items: center;
+    justify-content: center;
+    width: 1.2em;
+    height: 1.2em;
+    color: var(--anno-person);
+    cursor: help;
+    user-select: none;
+}
+
+.form-pill svg {
+    width: 1em;
+    height: 1em;
+    display: block;
+}
+
+.form-pill:hover {
+    color: var(--color-text);
+}
+
+/* Faksimile-Pille traegt dieselbe Farbe wie die TEI-Struktur-Pillen —
+   visuell ein konsistenter Marker-Set. */
+
+/* Multi-Event-Pille (.form-pill-m) erbt den Stil der anderen Form-Pillen;
+   das frueher orange-gelbe .multi-event mit Blitz und Klartext ist weg. */
+
+/* Inhalt-Spalte: Pillen links, Chevron rechts. Chevron als visuelles
+   Affordance-Signal "Klick fuer Vorschau". Rotiert um 90deg, sobald
+   die Zeile expandiert ist (.doc-row.is-open). */
+.col-content-inner {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    gap: var(--space-sm);
+}
+.col-content-pills {
+    flex: 1;
+    min-width: 0;
+    /* Flex-Container, damit .form-pills via margin-left:auto an die
+       rechte Kante geschoben werden — Sub-Spalten-Anmutung. */
+    display: flex;
+    align-items: center;
+    gap: var(--space-md);
+}
+.row-chevron {
+    flex-shrink: 0;
+    width: 1rem;
+    height: 1rem;
     color: var(--color-text-light);
-    margin-top: 2px;
-    line-height: 1.3;
+    opacity: 0.55;
+    transition: transform var(--transition-fast),
+                opacity var(--transition-fast);
+}
+.doc-row:hover .row-chevron,
+.doc-row:focus .row-chevron {
+    opacity: 1;
+    color: var(--anno-person);
+}
+.doc-row.is-open .row-chevron {
+    transform: rotate(90deg);
+    opacity: 1;
+    color: var(--anno-person);
+}
+
+/* Klickbare Zeile durchgehend signalisieren — Cursor + Hintergrund-Hover. */
+.doc-row {
+    cursor: pointer;
+    transition: background-color var(--transition-fast);
+}
+.doc-row:hover {
+    background-color: var(--color-bg-hover);
+}
+.doc-row:focus-visible {
+    outline: 2px solid var(--anno-person);
+    outline-offset: -2px;
+}
+.doc-row.is-open {
+    background-color: var(--color-bg-warm);
+}
+
+/* Links in der Zeile (Nr.-Spalte) sollen den Klick nicht als Vorschau
+   triggern — sie haben ihren eigenen Cursor und stoppen das Bubble. */
+.doc-row .doc-link {
+    cursor: pointer;
 }
 
 .no-results {
@@ -484,7 +702,7 @@
 
 @keyframes preview-open {
     from { opacity: 0; max-height: 0; }
-    to { opacity: 1; max-height: 15rem; }
+    to { opacity: 1; max-height: 30rem; }
 }
 
 .preview-text {
@@ -504,6 +722,108 @@
     font-size: var(--text-xs);
     color: var(--color-text-muted);
     margin-bottom: var(--space-sm);
+}
+
+/* --- Form-Filter-Chips in der Sidebar (Mehrfachauswahl) ----------------- */
+.form-filter-chips {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 0.3rem;
+}
+/* [hidden]-Attribut blendet 0-Treffer-Chips aus. Default-Browserregel
+   '[hidden] { display: none }' wird sonst von '.form-filter-chip { display:
+   inline-flex }' ueberschrieben — daher explizit. */
+.form-filter-chip[hidden] {
+    display: none;
+}
+.form-filter-chip {
+    display: inline-flex;
+    align-items: center;
+    gap: 0.35em;
+    padding: 0.2rem 0.55rem;
+    background: var(--color-bg-card);
+    border: 1px solid var(--color-border);
+    border-radius: 999px;
+    font-family: var(--font-sans);
+    font-size: var(--text-xs);
+    color: var(--color-text-muted);
+    cursor: pointer;
+    transition: background-color var(--transition-fast),
+                border-color var(--transition-fast),
+                color var(--transition-fast);
+}
+.form-filter-chip:hover {
+    border-color: var(--color-border-dark);
+    color: var(--color-text);
+}
+.form-filter-chip.is-active {
+    background: var(--anno-person-bg);
+    border-color: var(--anno-person-border);
+    color: var(--anno-person);
+}
+.form-filter-chip-count {
+    font-variant-numeric: tabular-nums;
+    color: var(--color-text-light);
+    font-size: var(--text-2xs);
+}
+.form-filter-chip.is-active .form-filter-chip-count {
+    color: var(--anno-person);
+}
+/* Mini-Icon vor dem Sidebar-Chip-Label.
+   Wird per JS injiziert (index.js fuer Erschliessungsform-Pillen,
+   register.js fuer Rollen-Pillen) — dieselben SVGs, die auch in den
+   Tabellen-Pillen erscheinen. Single-Source-of-Truth: das Icon-Dict im
+   jeweiligen JS-Modul. */
+.form-filter-chip-pill {
+    display: inline-flex;
+    align-items: center;
+    justify-content: center;
+    width: 1.1rem;
+    height: 1.1rem;
+    margin-right: 0.35rem;
+    color: var(--color-text-muted);
+    flex-shrink: 0;
+}
+.form-filter-chip-pill svg {
+    width: 0.9rem;
+    height: 0.9rem;
+    display: block;
+}
+.form-filter-chip.is-active .form-filter-chip-pill {
+    color: var(--anno-person);
+}
+
+/* "i"-Affordance am Sidebar-Chip — zeigt sichtbar an, dass es einen
+   Definitions-Tooltip gibt. Der Tooltip selbst haengt am Chip-Container
+   ueber data-tip-title / data-tip-body (Hover irgendwo auf den Chip
+   zeigt ihn). Das "i" ist nur Affordance-Signal, kein eigener Trigger. */
+.form-filter-chip-info {
+    display: inline-flex;
+    align-items: center;
+    justify-content: center;
+    width: 0.85rem;
+    height: 0.85rem;
+    margin-left: 0.3rem;
+    color: var(--color-text-light);
+    opacity: 0.65;
+    flex-shrink: 0;
+}
+.form-filter-chip-info svg {
+    width: 100%;
+    height: 100%;
+    display: block;
+}
+.form-filter-chip:hover .form-filter-chip-info {
+    opacity: 1;
+    color: var(--anno-person);
+}
+
+.sidebar-block-hint {
+    margin: 0.4rem 0 0;
+    font-family: var(--font-sans);
+    font-size: var(--text-2xs);
+    color: var(--color-text-light);
+    line-height: 1.4;
 }
 
 .preview-meta span + span::before {
@@ -537,4 +857,177 @@
     object-fit: cover;
 }
 
+
+/* ==========================================================================
+   Sidebar-Layout — Filter links, Tabelle rechts.
+   Aktiv ab Tablet-Breakpoint; auf Mobile gestapelt.
+   ========================================================================== */
+
+.index-layout {
+    display: grid;
+    grid-template-columns: 16rem 1fr;
+    gap: var(--space-lg);
+    align-items: start;
+}
+
+.index-sidebar {
+    position: sticky;
+    top: var(--space-md);
+    align-self: start;
+    max-height: calc(100vh - var(--space-md) * 2);
+    overflow-y: auto;
+    overflow-x: hidden;
+    padding-right: var(--space-xs);
+    /* overflow-x: hidden vermeidet die horizontale Scrollbar, falls
+       innere Komponenten (Histogramm-Slider) minimal ueberlaufen. */
+}
+
+.index-main {
+    min-width: 0;
+    /* min-width:0 verhindert, dass die Tabelle das Grid auseinanderdrueckt. */
+}
+
+.sidebar-block {
+    margin-bottom: var(--space-md);
+}
+
+.sidebar-block-label {
+    font-family: var(--font-sans);
+    font-size: var(--text-xs);
+    font-weight: 600;
+    text-transform: uppercase;
+    letter-spacing: 0.06em;
+    color: var(--color-text-light);
+    margin: 0 0 var(--space-2xs);
+}
+
+/* Sidebar-Histogramm: kompakter als die fruehere zentrierte Variante. */
+.index-sidebar .range-slider {
+    padding: 0;
+}
+.index-sidebar .range-histogram {
+    height: 3rem;
+    gap: 1px;
+    padding: 0;
+}
+.index-sidebar .range-bar {
+    border-radius: 1px 1px 0 0;
+}
+.index-sidebar .range-inputs {
+    margin-top: 0;
+}
+.index-sidebar .range-labels {
+    margin-top: var(--space-2xs);
+    display: flex;
+    justify-content: space-between;
+}
+/* In der schmalen Sidebar koennen die thumb-zentrierten Labels mit
+   translateX(-50%) am linken/rechten Rand abgeschnitten werden.
+   Hier flex statt absolut positionieren, damit "1177" und "1414"
+   immer voll sichtbar bleiben. */
+.index-sidebar .range-labels span {
+    position: static;
+    transform: none;
+    background: none;
+    padding: 0;
+}
+
+/* Korpus-Chips als vertikaler Stack im Sidebar. */
+.collection-chips--stack {
+    flex-direction: column;
+    gap: var(--space-2xs);
+    margin-bottom: 0;
+}
+.collection-chips--stack .chip {
+    width: 100%;
+    justify-content: space-between;
+    padding: var(--space-xs) var(--space-sm);
+    border-radius: 4px;
+    white-space: normal;
+}
+.collection-chips--stack .chip-label {
+    text-align: left;
+    flex: 1;
+    min-width: 0;
+}
+
+/* Sidebar-Selects: volle Breite, weniger gestaucht als Top-Toolbar. */
+.index-sidebar select {
+    width: 100%;
+    padding: var(--space-2xs) var(--space-xs);
+    font-family: var(--font-sans);
+    font-size: var(--text-sm);
+    border: 1px solid var(--color-border);
+    border-radius: 4px;
+    background: var(--color-bg-card);
+    color: var(--color-text);
+    cursor: pointer;
+}
+
+/* Sidebar-Suchbox: volle Breite. */
+.index-sidebar .search-box {
+    width: 100%;
+    margin: 0;
+}
+.index-sidebar .search-box input {
+    width: 100%;
+}
+
+/* Reset-Button. Dezent, nicht primaer. */
+.sidebar-reset {
+    display: block;
+    width: 100%;
+    margin-top: var(--space-md);
+    padding: var(--space-xs) var(--space-sm);
+    background: none;
+    border: 1px solid var(--color-border);
+    border-radius: 4px;
+    font-family: var(--font-sans);
+    font-size: var(--text-sm);
+    color: var(--color-text-muted);
+    cursor: pointer;
+    transition: color var(--transition-fast),
+                border-color var(--transition-fast);
+}
+.sidebar-reset:hover {
+    color: var(--anno-person);
+    border-color: var(--anno-person);
+}
+
+/* Hauptbereich-Toolbar: Result-Count + Active-Filter-Chips. */
+.main-toolbar {
+    display: flex;
+    align-items: center;
+    flex-wrap: wrap;
+    gap: var(--space-sm);
+    margin-bottom: var(--space-sm);
+    padding-bottom: var(--space-xs);
+    border-bottom: 1px solid var(--color-border-light);
+}
+.main-toolbar #result-count {
+    font-family: var(--font-sans);
+    font-weight: 500;
+    color: var(--color-text);
+    margin-right: 0;
+    display: inline;
+}
+
+.result-count-wrap {
+    display: inline-flex;
+    align-items: center;
+    gap: var(--space-2xs);
+    margin-right: auto;
+}
+
+/* Mobile: Sidebar ueber den Hauptbereich gestapelt, kein Sticky. */
+@media (max-width: 900px) {
+    .index-layout {
+        grid-template-columns: 1fr;
+    }
+    .index-sidebar {
+        position: static;
+        max-height: none;
+        overflow: visible;
+    }
+}
 

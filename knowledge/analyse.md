@@ -1,18 +1,16 @@
 # Analyse
 
-Wissensdokument zum Analysebereich der Edition. Der Analysebereich ist der klassische Abfragemodus, der Nutzerinnen mit einer konkreten Forschungsfrage über vordefinierte Template-Familien direkten Zugriff auf wiederkehrende Kombinationen aus Rolle, Geschlecht, Bestand und Zeitraum gibt. Er steht als zweiter Zweig neben der [[exploration]], bedient aber ein entgegengesetztes Interaktionsmuster.
+Wissensdokument zum Analysebereich der Edition. Der Analysebereich ist der klassische Abfragemodus, der Nutzerinnen mit konkreten Forschungsfragen direkten Zugriff auf wiederkehrende Kombinationen aus Rolle, Geschlecht, Organisationsbezug und Zeitraum gibt. Er steht als zweiter Zweig neben der [[exploration]] und bedient ein entgegengesetztes Interaktionsmuster: kuratierte Antworten statt offener Stöberung.
 
 Deployment als statisches Frontend auf GitHub Pages, auf Basis der vorhandenen JSON-Datengrundlage.
 
-**Stand der quantitativen Eckdaten:** Die Zahlen in diesem Dokument (Gesamtzahlen der Quellen, Personen, Events und Coverage-Werte) beziehen sich auf den Datenstand beim Schreiben der Blaupause. Sie dienen der Dimensionierung der Architektur, nicht als laufend aktualisierte Referenz. Der jeweils aktuelle Stand lebt im Footer der Edition sowie in den aggregierten JSONs unter `/data/`. Abweichung dieses Dokuments von den laufenden Zahlen ist beabsichtigt und kein Fehler.
-
 ## 1. Zielsetzung
 
-Der Analysebereich soll Nutzern erlauben, konkrete inhaltliche Fragen an die Sammlung zu stellen, ohne SQL, SPARQL oder vergleichbare Query-Sprachen lernen zu müssen. Statt beliebiger Abfragen werden vorgefertigte Fragetypen angeboten, die der Nutzer über typisierte Slots anpasst. Das konzeptionelle Vorbild ist die komponierbare Logik von Scratch, übersetzt in ein domänenspezifisches Vokabular für Urkundenforschung.
+Der Analysebereich soll Nutzerinnen erlauben, konkrete inhaltliche Fragen an den Datenbestand zu stellen, ohne SQL, SPARQL oder vergleichbare Query-Sprachen lernen zu müssen. Statt beliebiger Abfragen werden vorgefertigte Fragetypen angeboten, die über typisierte Slots angepasst werden. Das konzeptionelle Vorbild ist die komponierbare Logik von Scratch, übersetzt in ein domänenspezifisches Vokabular für Urkundenforschung.
 
 Typische Beispielfragen, die das Interface beantworten soll:
 
-- Wie viele geistliche Einrichtungen sind in der Sammlung belegt?
+- Wie viele geistliche Einrichtungen sind im Datenbestand belegt?
 - Wie verteilen sich die Beteiligten an Rechtsgeschäften nach Geschlecht?
 - Welche Rechtsgeschäftstypen treten in welchem Zeitraum auf?
 - In welchen Rollen treten Frauen in Stadtbüchern auf?
@@ -21,25 +19,15 @@ Typische Beispielfragen, die das Interface beantworten soll:
 
 Der Datenbestand liegt in Form vorkonfektionierter JSON-Dateien vor, die bereits stark auf Analyse- und Visualisierungszwecke hin normalisiert sind. Die Ebenen und Dimensionen des Modells (vgl. `data.md`) finden sich darin konkret wieder.
 
-### 2.1 Quantitative Eckdaten
+### 2.1 Datenbestand
 
-| Ebene | Anzahl | Datei |
-|---|---|---|
-| Quellendokumente (gesamt) | 2.740 | `search.json`, `docs_lookup.json` |
-| Quellendokumente QGW | 2.112 | |
-| Quellendokumente Stadtbücher | 628 | |
-| Events (Rechtsgeschäfte) | 5.002 | `epic_a.json`, `epic_c.json` |
-| Personen (konsolidierte Identitäten) | 16.084 | `persons_search.json` |
-| davon männlich / weiblich | 11.860 / 4.224 | |
-| Organisationen | 1.078 | `organisations_search.json` |
-| Orte | 2.537 | `places_search.json` |
-| Annotierte Beziehungen | 12.178 | `epic_b.json` |
+Pro Ebene liegt eine eigene JSON vor: Quellen in `search.json` und `docs_lookup.json`, Personen in `persons_search.json`, vorberechnete Aggregate in `epic_a.json` (Rollen), `epic_b.json` (Beziehungen), `epic_c.json` (Transaktionen). Organisations- und Ortsregister sind nicht freigegeben; ihre Aggregate erscheinen ausschließlich als anonymisierte Typ-Verteilungen in den `epic_*`-Dateien.
 
-Zeitraum: freigegeben 1177 bis 1412 (Ausnahmen bis 1414), mit nicht ausgewertetem Bereich 1418 bis 1447. Die Dokumentdichte ist stark ungleichverteilt: 779 Dokumente allein in den 1390er Jahren (davon 514 Stadtbücher), wenige Dutzend Dokumente in den ersten zwei Jahrhunderten.
+Zeitraum: freigegeben 1177 bis 1412 (Ausnahmen bis 1414 für QGW II/1 und II/2), mit nicht ausgewertetem Bereich 1418 bis 1447. Die Dokumentdichte ist stark ungleichverteilt — wenige Dutzend Dokumente in den ersten zwei Jahrhunderten, ein Dichte-Schwerpunkt im späten 14. Jahrhundert (insbesondere Stadtbücher). Konkrete Zahlen leben in den `coverage`-Blöcken der Aggregate und im Footer der Edition.
 
 ### 2.2 Register-Dateien
 
-Die drei Register liegen als flache Arrays mit kompakten Feldnamen vor. Beispiel `persons_search.json`:
+Das öffentlich freigegebene Personenregister liegt als flaches Array mit kompakten Feldnamen in `persons_search.json` vor. Beispiel:
 
 ```json
 {
@@ -56,7 +44,7 @@ Die drei Register liegen als flache Arrays mit kompakten Feldnamen vor. Beispiel
 
 Felder: `id` eindeutige Kennung, `n` Namensform, `fn`/`sn` Vor- und Familienname, `sex` Geschlecht, `d` Datierung, `dc` Anzahl der Quellen mit Nennung (*document count*), `qw` Qualitäts- bzw. Normalisierungsgewicht (`-1` unbekannt, `0` niedrig, `1` und `2` höhere Konfidenz).
 
-`organisations_search.json` hat das gleiche Schema plus Feld `tp` für den Organisationstyp. `places_search.json` enthält zusätzlich `lat`, `lng`. Alle drei Register sind zur Laufzeit direkt filter- und indizierbar, ohne weitere Aufbereitung.
+Organisations- und Ortsregister sind nicht freigegeben; ihre Daten erscheinen aktuell nur in den `epic_*`-Aggregaten als Typ-Verteilungen. Bei Freigabe entstünden parallele Such-JSONs mit demselben Schema (Organisationen zusätzlich `tp` für Typ, Orte zusätzlich `lat`/`lng`).
 
 ### 2.3 Vorkompilierte Aggregationen: die `epic_*`-Dateien
 
@@ -65,7 +53,6 @@ Die `epic_*.json` enthalten bereits vorberechnete Kreuztabellen mit Drill-Down-L
 - `epic_a.json` Rollen × Geschlecht × Dekade × Organisationstyp (Event-Partizipationen)
 - `epic_b.json` Beziehungen (Verwandtschaft, Beruf, Vertretung, Freundschaft), 12.178 insgesamt
 - `epic_c.json` Transaktionstypen × Dekade × Organisationstyp
-- `epic_d.json` Ortsregister mit Referenzierungs- und Georeferenzierungsstatus
 
 Die Struktur jeder Datei ist dreigeteilt:
 
@@ -80,32 +67,21 @@ Das ermöglicht ein einheitliches UI-Muster: aggregierte Zahl anzeigen, bei Klic
 
 ### 2.4 Organisationstypen als Klassifikationsbasis
 
-Das Feld `tp` im Organisationsregister enthält eine geschlossene Typologie, auf der die Kategorie *geistlich vs. weltlich* aufsetzen muss, da sie im Datenmodell nicht als eigene Eigenschaft vorliegt, sondern über eine Zuordnungstabelle erzeugt werden muss:
-
-| Kategorie | Typen | Summe der Entitäten |
-|---|---|---|
-| geistlich | Messe, Pfarre, Kirche_Kapelle, Altar, Dioezese_Erzdioezese, Kloster_m, Kloster_f, Zeche_Bruderschaft, Spital_Siechenhaus, Orden, Kirche, Kapelle | ~870 |
-| weltlich | Stadt, Gemeinde, Stadtviertel, Herzogtum, Burg, Koenigreich, Reich, Markgrafschaft | ~183 |
-| sonstige / kontextabhängig | Universitaet, OTHER | ~26 |
+Das Feld `tp` im Organisationsregister enthält eine geschlossene Typologie. Die Kategorie *geistlich vs. weltlich* liegt im Datenmodell nicht als eigene Eigenschaft vor, sondern muss über eine Zuordnungstabelle erzeugt werden. Geistliche Typen sind etwa Messe, Pfarre, Kirche_Kapelle, Altar, Dioezese_Erzdioezese, Kloster_m, Kloster_f, Zeche_Bruderschaft, Spital_Siechenhaus, Orden, Kirche, Kapelle. Weltliche Typen sind Stadt, Gemeinde, Stadtviertel, Herzogtum, Burg, Koenigreich, Reich, Markgrafschaft. Universität und OTHER bleiben kontextabhängig.
 
 Diese Zuordnung ist eine inhaltliche Modellierungsentscheidung, die im Interface dokumentiert werden muss. Zeche_Bruderschaft und Spital_Siechenhaus sind Grenzfälle und sollten als solche ausweisbar sein.
 
 ### 2.5 Datenqualität und Freigabestand
 
-Der Validierungsreport (`quality.json`) und Coverage-Angaben der `epic_*` zeigen ein differenziertes Bild:
+Der Validierungsreport (`quality.json`) und die Coverage-Blöcke der `epic_*` machen die Datenqualität sichtbar. Charakteristisch ist eine durchgängig niedrige Normalisierungsrate: nur ein kleiner Teil der dispositiven Verben ist im kontrollierten Vokabular der Transaktionstypen geführt, und nur ein Teil der Personen hat eine explizite Organisationszuordnung. Das Ortsregister ist quantitativ groß, aber nur ein Bruchteil der Einträge ist georeferenziert.
 
-- Normalisierte Transaktionen: 1.057 von 5.002 Events (~21 Prozent). 938 Events haben ein dispositives Verb, das noch nicht in das kontrollierte Vokabular normalisiert wurde.
-- Personen mit Organisationszuordnung: 3.865 von 16.084 (~24 Prozent).
-- Referenzierte Orte: 37 von 2.537. Mit Koordinaten: 717.
-- Einzigartige Verbformen: 1.082 (Normalisierungsreserve für Transaktionstypen).
-- Validierungsbefunde: 2.103 insgesamt (1.918 *info*, 185 *warning*), konzentriert auf `QGW/Vienna_1177-1414_ready`.
-- Nicht freigegebene Korpora: `QGW/Vienna_1415-1417`, `QGW/Vienna_1458-66`, `QGW/Vienna_1493-1500` erscheinen in der Validierung, sind aber im UI nicht sichtbar zu machen.
+Diese Verhältnisse sind keine nebensächliche Meta-Information, sondern konstitutiver Teil dessen, was das Interface ausweisen muss. Eine Zählung *Transaktionen vom Typ Kauf* bedeutet nicht, dass alle anderen Events keine Käufe sind, sondern dass nur ein Bruchteil überhaupt kategorisiert ist.
 
-Diese Zahlen sind keine nebensächliche Meta-Information, sondern konstitutiver Teil dessen, was das Interface ausweisen muss. Eine Zählung von *Transaktionen vom Typ Kauf* bedeutet nicht, dass alle anderen Events keine Käufe sind, sondern dass nur 21 Prozent überhaupt kategorisiert wurden.
+Nicht alle in der Validierung erscheinenden Korpora sind im UI sichtbar. Die Single-Source-of-Truth für freigegebene Korpora ist `pipeline/config.py::RELEASED_CORPORA` im Schwester-Repo.
 
 ### 2.6 Volumen und Performance
 
-Rohgrößen der Dateien: `search.json` 2,5 MB, `persons_search.json` 2,3 MB, `epic_b.json` 1,6 MB, `epic_c.json` 1,7 MB, `docs_lookup.json` 722 KB. Gzip-komprimiert (GitHub Pages liefert standardmäßig komprimiert aus) reduziert sich das erfahrungsgemäß auf 20 bis 30 Prozent. Progressives Laden (Register beim Start, `epic_*` on-demand beim Öffnen der zugehörigen Template-Familie) hält den initialen Transfer im Bereich weniger hundert KB.
+Die größeren JSON-Dateien (`search.json`, `persons_search.json`, `epic_b.json`, `epic_c.json`, `docs_lookup.json`) liegen jeweils im einstelligen MB-Bereich. GitHub Pages liefert sie gzip-komprimiert aus. Progressives Laden (Register beim Start, `epic_*` on-demand beim Öffnen der zugehörigen Template-Familie) hält den initialen Transfer klein.
 
 ## 3. Technische Architektur
 
@@ -117,7 +93,7 @@ Comunica oder Oxigraph WASM funktionieren grundsätzlich, bringen aber deutliche
 
 **Aggregations-Schicht (read-only, vorkompiliert).** Für Fragen, die sich auf die vorberechneten Kreuztabellen der `epic_*` abbilden lassen, werden die Zählungen direkt aus der passenden Datei gelesen. Antwortzeit: Einzelabfrage, O(1)-Lookup in verschachtelten Objekten.
 
-**Filter-Schicht (dynamisch, auf Register-Arrays).** Für Fragen, die die vorberechneten Dimensionen kombinieren oder feinere Filter setzen, werden die Register-Arrays zur Laufzeit gefiltert. Bei 16.000 Einträgen und einfachen Prädikaten liegt das im Millisekundenbereich.
+**Filter-Schicht (dynamisch, auf Register-Arrays).** Für Fragen, die die vorberechneten Dimensionen kombinieren oder feinere Filter setzen, werden die Register-Arrays zur Laufzeit gefiltert. Bei der Korpusgröße und einfachen Prädikaten liegt das im Millisekundenbereich.
 
 **Drill-Down-Schicht.** Jede Aggregation ist über `drill_down[key]` mit einer Liste von Dokument-IDs verknüpft, die über `docs_lookup.json` in Metadaten aufgelöst werden. Das erlaubt das Klick-zu-Quellen-Muster ohne zusätzliche Datenladung.
 
@@ -214,7 +190,7 @@ Oberhalb der Templates: Korpus (multi-select), Zeitraum (Range innerhalb der fre
 
 ### 5.1 Vier Ebenen
 
-**Datensatz-Ebene.** Herkunft der Sammlung: Edition, Projekt, beteiligte Institutionen. Zentral verlinkbar.
+**Datensatz-Ebene.** Herkunft der Quellenkorpus: Edition, Projekt, beteiligte Institutionen. Zentral verlinkbar.
 
 **Korpus- und Erschließungsform-Ebene.** Jede Aggregation ist nach Korpus und Erschließungsform aufschlüsselbar. Stadtbücher (edierter Volltext) und QGW (Regesten plus Faksimile) stützen unterschiedliche Arten von Aussagen.
 
@@ -224,16 +200,13 @@ Oberhalb der Templates: Korpus (multi-select), Zeitraum (Range innerhalb der fre
 
 ### 5.2 Ausweisung der Datenqualität
 
-Zahlen aus `quality.json` und aus den `coverage`-Blöcken der `epic_*` werden neben relevanten Counts als Kontext angezeigt. Beispiele:
+Zahlen aus `quality.json` und aus den `coverage`-Blöcken der `epic_*` werden neben relevanten Counts als Kontext angezeigt. Eine Zählung von Transaktionstypen weist beispielsweise aus, auf wie vielen normalisierten Events sie beruht und wie viele Events bislang nicht ins kontrollierte Vokabular überführt sind. Eine Zuordnung Person zu Organisation weist die Coverage-Quote der explizit angebundenen Personen aus.
 
-- *Diese Zählung von Transaktionstypen bezieht sich auf 1.057 normalisierte Events. 3.945 Events sind bisher nicht in das kontrollierte Vokabular überführt.*
-- *Diese Zuordnung Person zu Organisation basiert auf 3.865 von 16.084 Personen mit expliziter Organisationsanbindung.*
-
-Der Interface-Ton bleibt dabei beschreibend, nicht apologetisch. Die Zahlen sind Eigenschaft der Edition, nicht Makel des Interfaces.
+Der Interface-Ton bleibt beschreibend, nicht apologetisch. Die Verhältnisse sind Eigenschaft der Edition, nicht Makel des Interfaces.
 
 ### 5.3 Drill-Down-Mechanik
 
-Jede Aggregation ist interaktiv. Klick auf *192 Zeugen-Nennungen männlich* öffnet die Liste der Quelldokumente aus `drill_down.role_sex.witness.m`, aufgelöst über `docs_lookup.json` zu einer Liste mit Datum, Kurzregest und Link zur Edition. Dieser Pfad macht die aggregierte Zahl auf Einzelbelegebene nachprüfbar.
+Jede Aggregation ist interaktiv. Klick auf eine Aggregat-Zelle (etwa *Zeugen-Nennungen männlich*) öffnet die Liste der Quelldokumente aus `drill_down.role_sex.witness.m`, aufgelöst über `docs_lookup.json` zu einer Liste mit Datum, Kurzregest und Link zur Edition. Dieser Pfad macht die aggregierte Zahl auf Einzelbelegebene nachprüfbar.
 
 Theoretischer Bezug: Die Offenlegung dieser Übersetzungskette von der Urkunde über Katalogisierung, Annotation, Aggregation und Freigabe bis zur angezeigten Zahl entspricht der Sichtbarmachung von Latours *circulating reference*. Das Interface dokumentiert seine eigene epistemische Infrastruktur.
 
@@ -241,7 +214,7 @@ Theoretischer Bezug: Die Offenlegung dieser Übersetzungskette von der Urkunde �
 
 - Info-Icon neben jeder Aggregation mit Popover (Query-Definition, Zählmodus, herangezogene Felder, Korpora, Coverage-Zahlen, verwendete Zuordnungstabellen).
 - Quellenliste bei Drill-Down: Chips mit Kürzel, Datum, Erschließungsform-Markierung, verlinkt.
-- Erschließungsform-Breakdown unter jedem Count (zum Beispiel *20 (Regest 15, Volltext 5)*).
+- Erschließungsform-Breakdown unter jedem Count (Aufteilung Regest- und Volltext-Anteil).
 - Export als JSON oder CSV: Query-Spezifikation, Ergebniszahlen, beteiligte Dokument-IDs, Zeitstempel, Versionskennung der Daten.
 
 ## 6. Sonderfälle und offene Punkte

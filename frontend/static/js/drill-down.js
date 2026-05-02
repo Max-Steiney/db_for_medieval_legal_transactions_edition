@@ -3,17 +3,17 @@
    DrillDown: shared document drill-down overlay + CSV export
    ========================================================================== */
 
-var DrillDown = (function() {
+let DrillDown = (function() {
     'use strict';
 
-    var esc = EdCore.esc;
+    let esc = EdCore.esc;
 
     // Shared state
-    var docsLookup = null;
-    var docsLookupLoading = false;
-    var currentData = [];
-    var boundOverlays = {};
-    var previousFocus = null; // WCAG: restore focus on close
+    let docsLookup = null;
+    let docsLookupLoading = false;
+    let currentData = [];
+    let boundOverlays = {};
+    let previousFocus = null; // WCAG: restore focus on close
 
     /* ------------------------------------------------------------------
        Lazy-load docs_lookup.json (shared across all explorers)
@@ -23,7 +23,7 @@ var DrillDown = (function() {
         if (docsLookup) { callback(docsLookup); return; }
         if (docsLookupLoading) {
             // Queue: wait and retry
-            var check = setInterval(function() {
+            let check = setInterval(function() {
                 if (docsLookup) { clearInterval(check); callback(docsLookup); }
                 if (!docsLookupLoading && !docsLookup) { clearInterval(check); }
             }, 100);
@@ -49,17 +49,17 @@ var DrillDown = (function() {
        ------------------------------------------------------------------ */
 
     function bind(config) {
-        var overlayId = config.overlayId || 'explore-drilldown';
-        var overlay = document.getElementById(overlayId);
+        let overlayId = config.overlayId || 'explore-drilldown';
+        let overlay = document.getElementById(overlayId);
         if (!overlay) return null;
 
-        var titleEl = document.getElementById(config.titleId || 'explore-drilldown-title');
-        var tbodyEl = document.getElementById(config.tbodyId || 'explore-drilldown-tbody');
-        var countEl = document.getElementById(config.countId || 'explore-drilldown-count');
-        var closeBtn = document.getElementById(config.closeId || 'explore-drilldown-close');
-        var exportBtn = document.getElementById(config.exportId || 'explore-drilldown-export');
+        let titleEl = document.getElementById(config.titleId || 'explore-drilldown-title');
+        let tbodyEl = document.getElementById(config.tbodyId || 'explore-drilldown-tbody');
+        let countEl = document.getElementById(config.countId || 'explore-drilldown-count');
+        let closeBtn = document.getElementById(config.closeId || 'explore-drilldown-close');
+        let exportBtn = document.getElementById(config.exportId || 'explore-drilldown-export');
 
-        var handle = {
+        let handle = {
             overlay: overlay,
             titleEl: titleEl,
             tbodyEl: tbodyEl,
@@ -92,10 +92,10 @@ var DrillDown = (function() {
         // Queries focusable elements dynamically (content is populated after open)
         overlay.addEventListener('keydown', function(e) {
             if (e.key !== 'Tab' || overlay.classList.contains('hidden')) return;
-            var focusable = overlay.querySelectorAll('a[href], button:not([disabled]), input, [tabindex]:not([tabindex="-1"])');
+            let focusable = overlay.querySelectorAll('a[href], button:not([disabled]), input, [tabindex]:not([tabindex="-1"])');
             if (!focusable.length) return;
-            var first = focusable[0];
-            var last = focusable[focusable.length - 1];
+            let first = focusable[0];
+            let last = focusable[focusable.length - 1];
             if (e.shiftKey) {
                 if (document.activeElement === first) {
                     e.preventDefault();
@@ -113,14 +113,14 @@ var DrillDown = (function() {
         if (exportBtn) {
             exportBtn.addEventListener('click', function() {
                 if (!currentData.length) return;
-                var lines = ['Nr.;Datum;Sammlung;Regest'];
-                for (var i = 0; i < currentData.length; i++) {
-                    var d = currentData[i];
+                let lines = ['Nr.;Datum;Sammlung;Regest'];
+                for (let i = 0; i < currentData.length; i++) {
+                    let d = currentData[i];
                     lines.push([d.i, d.d, d.c, (d.r || '').replace(/;/g, ',')].join(';'));
                 }
-                var blob = new Blob(['\uFEFF' + lines.join('\r\n')], { type: 'text/csv;charset=utf-8' });
-                var url = URL.createObjectURL(blob);
-                var a = document.createElement('a');
+                let blob = new Blob(['\uFEFF' + lines.join('\r\n')], { type: 'text/csv;charset=utf-8' });
+                let url = URL.createObjectURL(blob);
+                let a = document.createElement('a');
                 a.href = url;
                 a.download = 'exploration_' + (titleEl ? titleEl.textContent : 'export').replace(/[^a-zA-Z0-9]/g, '_') + '.csv';
                 a.click();
@@ -143,22 +143,22 @@ var DrillDown = (function() {
         // WCAG: store trigger element for focus restoration
         previousFocus = document.activeElement;
         handle.titleEl.textContent = title;
-        handle.tbodyEl.innerHTML = '<tr><td colspan="4" style="text-align:center;color:#8c8680">Lade Quellendaten\u2026</td></tr>';
+        handle.tbodyEl.innerHTML = '<tr><td colspan="4" class="cell-placeholder">Lade Quellendaten\u2026</td></tr>';
         handle.countEl.textContent = fileKeys.length + ' Quellen';
         handle.overlay.classList.remove('hidden');
         document.body.style.overflow = 'hidden';
         // WCAG: move focus to close button
-        var closeBtn = handle.overlay.querySelector('.explore-drilldown-close');
+        let closeBtn = handle.overlay.querySelector('.explore-drilldown-close');
         if (closeBtn) closeBtn.focus();
 
         loadDocsLookup(function(lookup) {
             currentData = [];
             handle.tbodyEl.innerHTML = '';
-            for (var i = 0; i < fileKeys.length; i++) {
-                var doc = lookup[fileKeys[i]];
+            for (let i = 0; i < fileKeys.length; i++) {
+                let doc = lookup[fileKeys[i]];
                 if (!doc) continue;
                 currentData.push(doc);
-                var tr = document.createElement('tr');
+                let tr = document.createElement('tr');
                 tr.innerHTML =
                     '<td><a href="./' + doc.u + '">' + esc(doc.i) + '</a></td>' +
                     '<td>' + esc(doc.d) + '</td>' +

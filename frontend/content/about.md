@@ -1,6 +1,6 @@
 ## Projektbeschreibung
 
-Das **Wiener Urkundenbuch** ist eine digitale Edition der prosopographischen Datenbank
+**Stadt und Gemeinschaft Wien** ist eine digitale Edition der prosopographischen Datenbank
 mittelalterlicher Wiener Rechtsgesch&auml;fte (ca. 1177&ndash;1524). Die Datenbank
 dokumentiert soziale Strukturen, Netzwerke und Strategien von Individuen und Gruppen
 im sp&auml;tmittelalterlichen Wien.
@@ -28,13 +28,12 @@ Funktionen, Entit&auml;ten und Attribute/Relationen.
 
 ## Forschungsfragen
 
-Drei &uuml;bergreifende Forschungsfragen strukturieren die digitale Erschlie&szlig;ung:
+Zwei &uuml;bergreifende Forschungsfragen strukturieren die digitale Erschlie&szlig;ung:
 
 | | Forschungsfrage | Exploration |
 |---|----------------|-------------|
 | 1 | Welche sozialen, &ouml;konomischen und institutionellen Beziehungsgeflechte lassen sich aus den Wiener Rechtsgesch&auml;ften prosopographisch rekonstruieren? Wie strukturieren Verwandtschaft, Amt, Besitz und Repr&auml;sentation die st&auml;dtische Gesellschaft? | [Rollen](exploration_roles.html), [Beziehungen](exploration_networks.html) |
 | 2 | Wie ver&auml;ndern sich Transaktionspraktiken im sp&auml;tmittelalterlichen Wien &uuml;ber die Zeit, und welche institutionellen Empf&auml;ngerstrukturen lassen sich identifizieren? | [Transaktionen](exploration_transactions.html) |
-| 3 | Wie lassen sich die erfassten Personen-, Institutions- und Ortsdaten zu einer topographisch-prosopographischen Rekonstruktion verbinden? | [Orte](exploration_places.html) |
 
 ## Quellenbestand
 
@@ -113,7 +112,7 @@ Die Edition erf&uuml;llt alle kurzfristigen Anforderungen einer externen Begutac
 
 ## Zitierweise
 
-> *Wiener Urkundenbuch &mdash; Digital Edition.*
+> *Stadt und Gemeinschaft Wien &mdash; Datenbank zu mittelalterlichen Wiener Rechtsgesch&auml;ften.*
 > Universit&auml;t Wien, 2026.
 > Digitale Aufbereitung: Digital Humanities Craft OG.
 > Online: [github.com/chpollin/db\_for\_medieval\_legal\_transactions](https://github.com/chpollin/db_for_medieval_legal_transactions).

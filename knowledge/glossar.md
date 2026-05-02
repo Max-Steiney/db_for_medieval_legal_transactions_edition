@@ -2,6 +2,12 @@
 
 Kanonische Definitionen aller Fachbegriffe der Edition. Quelle für Tooltips und die Glossar-Seite im UI. Alphabetisch sortiert. Pro Eintrag Definition, Abgrenzung und, wo nötig, eine Notiz zu häufigen Verwechslungen.
 
+## Erschließungsform
+
+Die Form, in der eine Quelle in der Edition zugänglich gemacht wird: als [[#Regest]] mit [[#Faksimile]] oder als edierter [[#Volltext]]. Die Erschließungsform bestimmt, welche Art von Aussage eine Quelle stützt. Aus einem Volltext lassen sich textgenaue Belege ziehen; ein Regest stützt nur die zusammengefasste Aussage, das Faksimile dient der Verifikation am Bild.
+
+Verwendet in [[data#Erschließungsformen]].
+
 ## Event
 
 Ein konkretes Rechtsgeschäft, das in einer Quelle verzeichnet ist. Events sind die kleinste Einheit, auf die sich Rollen, Beteiligte und Transaktionsangaben beziehen.
@@ -10,11 +16,30 @@ Eine Quelle kann mehrere Events dokumentieren. Events wiederum können aufeinand
 
 Achtung: Nicht verwechseln mit einer Quelle als Ganzes. Die Unterscheidung trägt alle Zähl- und Filteroperationen. Verwendet in [[data#Hierarchie der Daten]], [[requirements]].
 
+## Faksimile
+
+Die digitale Reproduktion einer Quelle als Bild. Ein Faksimile zeigt die Quelle, wie sie überliefert ist, ohne sie zu transkribieren. Es macht die paläografische Lesart der Quelle einsehbar und erlaubt die Verifikation einer Lesung gegen das Original.
+
+In der Edition liegen Faksimiles für QGW-Bestände vor, eingebunden über die Monasterium-Plattform. Stadtbücher haben (noch) keine Faksimiles. Verwendet in [[data#Erschließungsformen]], [[#Erschließungsform]].
+
 ## Gesamtnennung
 
 Eine Beziehung zwischen einer Person, Organisation oder einem Ort und einer Quelle, in der sie genannt wird. Wer in drei Quellen vorkommt, trägt drei Gesamtnennungen bei. Eine Person, die in derselben Quelle mehrfach erwähnt wird (typisch für Zeugenreihen oder Urteilslisten), trägt für diese Quelle nur eine Gesamtnennung bei (quellenbereinigte Zählung).
 
 Gesamtnennungen sind die Zählebene für Häufigkeit gesellschaftlicher Präsenz. Sie machen Aussagen über Dichte und Funktionsträgerschaft möglich, ohne durch Mehrfachnennungen in einzelnen Urteilsformeln verzerrt zu werden.
+
+Zählregel TEI: Eine Gesamtnennung entsteht ausschließlich aus einer direkten Personen-Annotation im Quellentext (`<rs type="person">` mit `@ref` auf einen Personeneintrag). Zwei Arten von Annotationen werden zusätzlich ausgeschlossen:
+
+1. Korrespondierende Hilfsverknüpfungen (`@corresp` ohne `@type="person"`) — sie sind administrative Verknüpfungen für Beziehungen, keine Quellentext-Erwähnungen.
+2. Personen-Annotationen innerhalb verschachtelter `<rs type="event">`-Elemente (mentioned Events) — sie verweisen auf andere, früher referenzierte Geschäfte und sind keine Akteure des aktuellen Quellenereignisses.
+
+Diese doppelte Filterung folgt dem Altsystem (PHP/MariaDB-Frontend) und der editionswissenschaftlichen Konvention. Verifikations-XPath:
+
+```
+//tei:body//tei:*[@type='person']
+  [not(ancestor::tei:rs[@type='event']
+       [ancestor::tei:rs[@type='event']])]
+```
 
 Achtung: Nicht zu verwechseln mit [[#Individuelle Person]]. Beide Zählebenen sind gleichzeitig gültig, beantworten aber verschiedene Fragen. Verwendet in [[requirements#Umschaltbarkeit der Zählebenen]] und [[decisions#Quellenbereinigte Zählung]].
 
@@ -23,6 +48,18 @@ Achtung: Nicht zu verwechseln mit [[#Individuelle Person]]. Beide Zählebenen si
 Eine konsolidierte Identität im Personenregister, unabhängig von der Anzahl ihrer Nennungen. Dieselbe historische Person ist genau eine individuelle Person, auch wenn sie in fünfzig Quellen erscheint.
 
 Die Zählebene für gesellschaftliche Struktur. Sie beantwortet, wie viele unterscheidbare Akteurinnen und Akteure das Korpus enthält. Analog gelten individuelle Organisationen und individuelle Orte.
+
+Zählregel: Eine Person zählt im Frontend, sobald sie in mindestens einer freigegebenen Quelle als `<rs type="person">` annotiert ist — egal ob direkt im Top-Level-Event oder innerhalb eines verschachtelten (mentioned) rs-Events. Personen, die ausschließlich über `@corresp`-Hilfsverknüpfungen oder nur in nicht freigegebenen Korpora referenziert werden, sind im Personenregister des Frontends nicht enthalten. Die Gesamtgröße des Personenregisters in `indices/personList.xml` ist daher größer als die im Frontend ausgewiesene Anzahl individueller Personen.
+
+Asymmetrie zur Gesamtnennung: Eine Person erscheint im Distinct-Count, sobald sie irgendwo annotiert ist; ihre Nennungen werden aber nur außerhalb mentioned Events gezählt. Das ist gewollt — eine Person, die nur als Querverweis in einem mentioned Event auftritt, ist *bekannt* (gehört in das Register), aber nicht *Akteur* der aktuellen Quelle (zählt also nicht zu den Nennungen).
+
+Verifikations-XPath:
+
+```
+//tei:body//tei:*[@type='person']/@ref
+```
+
+distinct über den `@ref`-Wert (Personen-Schlüssel `pe__…`).
 
 Verwendet in [[requirements#Umschaltbarkeit der Zählebenen]], [[scholar-user-stories]].
 
@@ -50,6 +87,14 @@ Der Begriff ersetzt die frühere Bezeichnung „Sammlung". „Sammlung" ist edit
 
 Verwendet in [[data#Quellenkorpora]], [[ui-design#Bestandsfilter]], [[decisions#Begriff Quellenkorpus]].
 
+## Regest
+
+Eine redaktionelle Zusammenfassung des wesentlichen Inhalts einer Quelle. Das Regest fasst Gegenstand, Beteiligte, Datum und Ort eines [[#Rechtsgeschäft|Rechtsgeschäfts]] zusammen, ohne den Quellentext im Wortlaut wiederzugeben.
+
+Im Datenbestand der QGW-Bände ist das Regest die primäre Erschließungsform; der Quellentext wird nicht ediert, ist aber im [[#Faksimile]] einsehbar. Aussagen, die textgenaue Wortlaute brauchen, lassen sich aus einem Regest nicht ableiten — sie verlangen den [[#Volltext]] oder einen Blick ins Faksimile.
+
+Verwendet in [[data#Erschließungsformen]], [[#Erschließungsform]].
+
 ## Rechtsgeschäft
 
 Eine Transaktion mit rechtlich bindender Wirkung zwischen Akteurinnen und Akteuren, niedergelegt in einer Quelle. Typische Rechtsgeschäfte sind Kauf, Verkauf, Schenkung, Verleihung, Verpfändung und Zeugenschaft.
@@ -64,7 +109,7 @@ Die Funktion einer Person oder Organisation in einem Event. Das kontrollierte Vo
 
 Nur diese Werte sind gültig. Ein offenes Rollenvokabular wäre statistisch unbrauchbar, weil es die Aggregation über das Korpus verhinderte.
 
-Verwendet in [[requirements]], [[scholar-user-stories#Rollenbasierte Akteursanalyse]], [[ui-design#Analyse]].
+Verwendet in [[requirements]], [[scholar-user-stories#Rollenbasierte Akteursanalyse]], [[analyse]].
 
 ## Rollenkombination
 
@@ -72,7 +117,15 @@ Eine aus mehreren Rollen abgeleitete Kategorie, die das UI als Abfrage zugängli
 
 Rollenkombinationen sind keine eigene Annotationsebene im Datenmodell, sondern eine Auswertungsperspektive. Sie entstehen durch Kombination von Rollenattributen und anderen Merkmalen wie Geschlecht oder Beziehungstyp.
 
-Verwendet in [[scholar-user-stories]], [[ui-design#Analyse]].
+Verwendet in [[scholar-user-stories]], [[analyse]].
+
+## Volltext
+
+Der edierte Wortlaut einer Quelle, transkribiert und annotiert. Im Volltext sind Personen, Organisationen, Orte und Rechtsgeschäfte unmittelbar im Quellentext markiert; textgenaue Belege sind möglich.
+
+In der Edition sind die Stadtbücher als Volltext erschlossen. QGW-Bestände sind über [[#Regest]] und [[#Faksimile]] erschlossen, ohne Volltext-Edition.
+
+Verwendet in [[data#Erschließungsformen]], [[#Erschließungsform]].
 
 ## Siehe auch
 

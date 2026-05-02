@@ -108,17 +108,17 @@ def test_no_stale_file_count(built_guidelines):
     assert "3.530" not in sections_before_changelog
 
 
-def test_statistics_reference(built_guidelines):
-    """Guidelines reference the statistics page for dynamic metrics."""
+def test_datengrundlage_reference(built_guidelines):
+    """Guidelines reference the Datengrundlage page for dynamic metrics."""
     _, content = built_guidelines
-    assert "statistics.html" in content
+    assert "datengrundlage.html" in content
 
 
 def test_has_zitierhinweis_section(built_guidelines):
     """Section 8: Zitierhinweis exists with citation block."""
     _, content = built_guidelines
     assert "Zitierhinweis" in content
-    assert "Wiener Urkundenbuch" in content
+    assert "Stadt und Gemeinschaft Wien" in content
 
 
 def test_has_lizenz_section(built_guidelines):

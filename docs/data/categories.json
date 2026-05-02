@@ -1,0 +1,42 @@
+{
+  "meta": {
+    "version": "1.0",
+    "decided": "2026-05-01",
+    "note": "Klassifikation der Organisationstypen aus Sicht der Wiener Stadtgeschichtsforschung. Spitaeler waren in Wien meist Stiftungen mit kirchlicher Verwaltung; Zechen und Bruderschaften hatten religioeses Patrozinium und Stiftungspflichten — daher institutionell zur Kategorie geistlich gerechnet. Universitaet ist im Mittelalter rechtlich eigenstaendig und wird daher als sonstige gefuehrt. Die Zuordnung ist eine Modellierungsentscheidung; Grenzfaelle sind in 'borderline' explizit markiert und sollen im Interface ausweisbar bleiben.",
+    "created": "2026-05-02"
+  },
+  "categories": {
+    "geistlich": [
+      "Kloster_m",
+      "Kloster_f",
+      "Kirche_Kapelle",
+      "Kirche",
+      "Pfarre",
+      "Altar",
+      "Messe",
+      "Dioezese_Erzdioezese",
+      "Orden",
+      "Spital_Siechenhaus",
+      "Zeche_Bruderschaft"
+    ],
+    "weltlich": [
+      "Stadt",
+      "Gemeinde",
+      "Herzogtum"
+    ],
+    "sonstige": [
+      "Universitaet",
+      "OTHER"
+    ]
+  },
+  "borderline": [
+    "Spital_Siechenhaus",
+    "Zeche_Bruderschaft",
+    "Universitaet"
+  ],
+  "labels": {
+    "geistlich": "Geistliche Einrichtung",
+    "weltlich": "Weltliche Einrichtung",
+    "sonstige": "Sonstige"
+  }
+}

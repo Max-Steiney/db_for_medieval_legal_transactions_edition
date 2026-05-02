@@ -7,41 +7,41 @@
 (function() {
     'use strict';
 
-    var esc = EdCore.esc;
-    var fmt = ChartHelpers.fmt;
-    var TOOLTIP_CLASS = 'explore-tooltip';
+    let esc = EdCore.esc;
+    let fmt = ChartHelpers.fmt;
+    let TOOLTIP_CLASS = 'explore-tooltip';
 
     function initNetworkExplorer() {
         if (!document.getElementById('explore-rel-chart')) return;
 
         ChartHelpers.createTooltip(TOOLTIP_CLASS);
-        var drillHandle = DrillDown.bind({});
+        let drillHandle = DrillDown.bind({});
 
-        var epicB = null;
+        let epicB = null;
 
         // Colours
-        var REL_COLORS = {
+        let REL_COLORS = {
             kin: ChartHelpers.getToken('--color-rel-kin') || '#c45a5a',
             occ: ChartHelpers.getToken('--color-rel-occ') || '#2e5a88',
             rep: ChartHelpers.getToken('--color-rel-rep') || '#3a7a5c',
             friend: ChartHelpers.getToken('--color-rel-friend') || '#c4a035'
         };
-        var REL_LABELS = {
+        let REL_LABELS = {
             kin: 'Verwandtschaft', occ: 'Beruf',
             rep: 'Vertretung', friend: 'Freundschaft'
         };
-        var SEX_LABELS = ChartHelpers.SEX_LABELS;
-        var SEX_COLORS = {
+        let SEX_LABELS = ChartHelpers.SEX_LABELS;
+        let SEX_COLORS = {
             m: ChartHelpers.getToken('--color-sex-m') || '#2e5a88',
             f: ChartHelpers.getToken('--color-sex-f') || '#b85c2f',
             unspecified: ChartHelpers.getToken('--color-sex-none') || '#b0a99f'
         };
-        var REL_TYPES = ['kin', 'occ', 'rep', 'friend'];
-        var SEX_KEYS = ['m', 'f', 'unspecified'];
+        let REL_TYPES = ['kin', 'occ', 'rep', 'friend'];
+        let SEX_KEYS = ['m', 'f', 'unspecified'];
 
         // State
-        var RP = window.RELEASED_PERIOD || {min: 1177, max: 1414};
-        var state = {
+        let RP = window.RELEASED_PERIOD || {min: 1177, max: 1414};
+        let state = {
             decadeMin: RP.min,
             decadeMax: RP.max,
             typeFilter: 'all',
@@ -79,12 +79,12 @@
         });
 
         // -- Person search --
-        var personSearchInput = document.getElementById('explore-person-search');
-        var personSearchTimer = null;
+        let personSearchInput = document.getElementById('explore-person-search');
+        let personSearchTimer = null;
         personSearchInput.addEventListener('input', function() {
             clearTimeout(personSearchTimer);
             personSearchTimer = setTimeout(function() {
-                var q = personSearchInput.value.toLowerCase().trim();
+                let q = personSearchInput.value.toLowerCase().trim();
                 if (q.length < 2) return;
                 renderPersonSearchResults(q);
             }, 300);
@@ -92,19 +92,19 @@
 
         // ── Compute filtered overview data ──
         function getFilteredOverview() {
-            var obs = epicB.overview;
-            var tbsd = obs.type_by_sex_by_decade;
-            var types = state.typeFilter === 'all' ? REL_TYPES : [state.typeFilter];
-            var result = {};
-            for (var ti = 0; ti < types.length; ti++) {
-                var t = types[ti];
+            let obs = epicB.overview;
+            let tbsd = obs.type_by_sex_by_decade;
+            let types = state.typeFilter === 'all' ? REL_TYPES : [state.typeFilter];
+            let result = {};
+            for (let ti = 0; ti < types.length; ti++) {
+                let t = types[ti];
                 result[t] = { m: 0, f: 0, unspecified: 0, total: 0 };
-                var decadeData = tbsd[t] || {};
-                for (var dStr in decadeData) {
-                    var d = parseInt(dStr, 10);
+                let decadeData = tbsd[t] || {};
+                for (let dStr in decadeData) {
+                    let d = parseInt(dStr, 10);
                     if (d < state.decadeMin || d > state.decadeMax) continue;
-                    var sexCounts = decadeData[dStr];
-                    for (var si = 0; si < SEX_KEYS.length; si++) {
+                    let sexCounts = decadeData[dStr];
+                    for (let si = 0; si < SEX_KEYS.length; si++) {
                         result[t][SEX_KEYS[si]] += sexCounts[SEX_KEYS[si]] || 0;
                     }
                 }
@@ -115,20 +115,20 @@
 
         // ── Render overview bar chart ──
         function renderOverviewChart() {
-            var data = getFilteredOverview();
-            var wrap = document.getElementById('explore-rel-chart');
+            let data = getFilteredOverview();
+            let wrap = document.getElementById('explore-rel-chart');
 
-            var types = state.typeFilter === 'all' ? REL_TYPES : [state.typeFilter];
-            var sexes = state.sexFilter === 'all' ? SEX_KEYS : [state.sexFilter];
+            let types = state.typeFilter === 'all' ? REL_TYPES : [state.typeFilter];
+            let sexes = state.sexFilter === 'all' ? SEX_KEYS : [state.sexFilter];
 
-            var items = types.map(function(relType) {
-                var segs = sexes.map(function(sex) {
+            let items = types.map(function(relType) {
+                let segs = sexes.map(function(sex) {
                     return { key: sex, value: data[relType][sex] || 0, color: SEX_COLORS[sex] };
                 });
                 return { label: REL_LABELS[relType] || relType, relType: relType, segments: segs, total: data[relType].total };
             });
 
-            var legend = sexes.map(function(s) { return { label: esc(SEX_LABELS[s]), color: SEX_COLORS[s] }; });
+            let legend = sexes.map(function(s) { return { label: esc(SEX_LABELS[s]), color: SEX_COLORS[s] }; });
 
             ChartHelpers.renderHorizontalBars(wrap, {
                 items: items,
@@ -136,7 +136,7 @@
                 ariaLabel: 'Beziehungstypen nach Geschlecht',
                 legend: legend,
                 onTip: function(item, seg) {
-                    var pct = item.total > 0 ? Math.round(seg.value / item.total * 100) : 0;
+                    let pct = item.total > 0 ? Math.round(seg.value / item.total * 100) : 0;
                     return esc(item.label) + ' \u00B7 ' + esc(SEX_LABELS[seg.key]) +
                         ': ' + fmt(seg.value) + ' (' + pct + '\u00A0%)';
                 },
@@ -146,11 +146,11 @@
             });
 
             // Footer
-            var grandTotal = 0;
-            for (var ft = 0; ft < types.length; ft++) {
+            let grandTotal = 0;
+            for (let ft = 0; ft < types.length; ft++) {
                 grandTotal += data[types[ft]].total;
             }
-            var footer = document.getElementById('explore-overview-footer');
+            let footer = document.getElementById('explore-overview-footer');
             footer.textContent = 'Datenbasis: ' + fmt(grandTotal) +
                 ' annotierte Beziehungen \u00B7 Zeitraum ' +
                 state.decadeMin + '\u2013' + state.decadeMax;
@@ -158,14 +158,14 @@
 
         // ── Render overview table ──
         function renderOverviewTable() {
-            var data = getFilteredOverview();
-            var types = state.typeFilter === 'all' ? REL_TYPES : [state.typeFilter];
-            var tbody = document.getElementById('explore-rel-overview-tbody');
+            let data = getFilteredOverview();
+            let types = state.typeFilter === 'all' ? REL_TYPES : [state.typeFilter];
+            let tbody = document.getElementById('explore-rel-overview-tbody');
             tbody.innerHTML = '';
-            for (var ti = 0; ti < types.length; ti++) {
-                var t = types[ti];
-                var d = data[t];
-                var tr = document.createElement('tr');
+            for (let ti = 0; ti < types.length; ti++) {
+                let t = types[ti];
+                let d = data[t];
+                let tr = document.createElement('tr');
                 tr.innerHTML =
                     '<td>' + esc(REL_LABELS[t] || t) + '</td>' +
                     '<td class="num">' + fmt(d.m) + '</td>' +
@@ -178,10 +178,10 @@
 
         // ── Get filtered labels ──
         function getFilteredLabels() {
-            var labels = epicB.labels;
-            var filtered = [];
-            for (var i = 0; i < labels.length; i++) {
-                var lb = labels[i];
+            let labels = epicB.labels;
+            let filtered = [];
+            for (let i = 0; i < labels.length; i++) {
+                let lb = labels[i];
                 if (state.typeFilter !== 'all' && lb.type !== state.typeFilter) continue;
                 if (state.labelSearch && lb.label.toLowerCase().indexOf(state.labelSearch) < 0) continue;
                 filtered.push(lb);
@@ -190,27 +190,27 @@
         }
 
         // ── Heatmap pagination ──
-        var heatmapLimit = 20;
-        var HEATMAP_STEPS = [20, 60, Infinity];
+        let heatmapLimit = 20;
+        let HEATMAP_STEPS = [20, 60, Infinity];
 
         // ── Render label heatmap ──
         function renderLabelHeatmap() {
-            var wrap = document.getElementById('explore-label-heatmap');
+            let wrap = document.getElementById('explore-label-heatmap');
             wrap.innerHTML = '';
 
-            var filtered = getFilteredLabels();
-            var labels = filtered.slice(0, heatmapLimit);
+            let filtered = getFilteredLabels();
+            let labels = filtered.slice(0, heatmapLimit);
             if (labels.length === 0) {
                 wrap.innerHTML = '<p class="explore-hint">Keine Bezeichnungen gefunden.</p>';
                 return;
             }
 
-            var sexes = state.sexFilter === 'all' ? SEX_KEYS : [state.sexFilter];
+            let sexes = state.sexFilter === 'all' ? SEX_KEYS : [state.sexFilter];
 
             // Hide 'unspecified' column if all visible labels have 0
             if (sexes.length > 1) {
-                var hasUnspecified = false;
-                for (var ui = 0; ui < labels.length; ui++) {
+                let hasUnspecified = false;
+                for (let ui = 0; ui < labels.length; ui++) {
                     if ((labels[ui].unspecified || 0) > 0) { hasUnspecified = true; break; }
                 }
                 if (!hasUnspecified) {
@@ -218,24 +218,24 @@
                 }
             }
 
-            var maxCount = 1;
-            for (var mi = 0; mi < labels.length; mi++) {
-                for (var si = 0; si < sexes.length; si++) {
-                    var c = labels[mi][sexes[si]] || 0;
+            let maxCount = 1;
+            for (let mi = 0; mi < labels.length; mi++) {
+                for (let si = 0; si < sexes.length; si++) {
+                    let c = labels[mi][sexes[si]] || 0;
                     if (c > maxCount) maxCount = c;
                 }
             }
 
-            var labelW = 140;
-            var cellW = 80;
-            var cellH = 22;
-            var cellGap = 2;
-            var headerH = 28;
-            var typeColW = 20;
-            var totalW = labelW + typeColW + sexes.length * (cellW + cellGap) + 10;
-            var totalH = headerH + labels.length * (cellH + cellGap);
+            let labelW = 140;
+            let cellW = 80;
+            let cellH = 22;
+            let cellGap = 2;
+            let headerH = 28;
+            let typeColW = 20;
+            let totalW = labelW + typeColW + sexes.length * (cellW + cellGap) + 10;
+            let totalH = headerH + labels.length * (cellH + cellGap);
 
-            var svg = document.createElementNS(ChartHelpers.SVG_NS, 'svg');
+            let svg = document.createElementNS(ChartHelpers.SVG_NS, 'svg');
             svg.setAttribute('width', totalW);
             svg.setAttribute('height', totalH);
             svg.setAttribute('role', 'img');
@@ -243,8 +243,8 @@
             svg.style.display = 'block';
 
             // Column headers
-            for (var hi = 0; hi < sexes.length; hi++) {
-                var headerText = document.createElementNS(ChartHelpers.SVG_NS, 'text');
+            for (let hi = 0; hi < sexes.length; hi++) {
+                let headerText = document.createElementNS(ChartHelpers.SVG_NS, 'text');
                 headerText.setAttribute('x', labelW + typeColW + hi * (cellW + cellGap) + cellW / 2);
                 headerText.setAttribute('y', headerH - 8);
                 headerText.setAttribute('text-anchor', 'middle');
@@ -254,20 +254,20 @@
             }
 
             // Rows
-            for (var ri = 0; ri < labels.length; ri++) {
-                var lb = labels[ri];
-                var rowY = headerH + ri * (cellH + cellGap);
+            for (let ri = 0; ri < labels.length; ri++) {
+                let lb = labels[ri];
+                let rowY = headerH + ri * (cellH + cellGap);
 
-                var labelText = document.createElementNS(ChartHelpers.SVG_NS, 'text');
+                let labelText = document.createElementNS(ChartHelpers.SVG_NS, 'text');
                 labelText.setAttribute('x', labelW - 4);
                 labelText.setAttribute('y', rowY + cellH / 2 + 4);
                 labelText.setAttribute('text-anchor', 'end');
                 labelText.setAttribute('class', 'explore-heatmap-label');
-                var displayLabel = lb.label.length > 18 ? lb.label.substring(0, 16) + '\u2026' : lb.label;
+                let displayLabel = lb.label.length > 18 ? lb.label.substring(0, 16) + '\u2026' : lb.label;
                 labelText.textContent = displayLabel;
                 svg.appendChild(labelText);
 
-                var typeRect = document.createElementNS(ChartHelpers.SVG_NS, 'rect');
+                let typeRect = document.createElementNS(ChartHelpers.SVG_NS, 'rect');
                 typeRect.setAttribute('x', labelW + 2);
                 typeRect.setAttribute('y', rowY + 2);
                 typeRect.setAttribute('width', typeColW - 6);
@@ -276,13 +276,13 @@
                 typeRect.setAttribute('fill', REL_COLORS[lb.type] || '#999');
                 svg.appendChild(typeRect);
 
-                for (var ci = 0; ci < sexes.length; ci++) {
-                    var sex = sexes[ci];
-                    var count = lb[sex] || 0;
-                    var cx = labelW + typeColW + ci * (cellW + cellGap);
-                    var opacity = count > 0 ? 0.15 + 0.85 * (count / maxCount) : 0.05;
+                for (let ci = 0; ci < sexes.length; ci++) {
+                    let sex = sexes[ci];
+                    let count = lb[sex] || 0;
+                    let cx = labelW + typeColW + ci * (cellW + cellGap);
+                    let opacity = count > 0 ? 0.15 + 0.85 * (count / maxCount) : 0.05;
 
-                    var cell = document.createElementNS(ChartHelpers.SVG_NS, 'rect');
+                    let cell = document.createElementNS(ChartHelpers.SVG_NS, 'rect');
                     cell.setAttribute('x', cx);
                     cell.setAttribute('y', rowY);
                     cell.setAttribute('width', cellW);
@@ -294,8 +294,8 @@
 
                     (function(label, type, s, cnt, total, variants) {
                         cell.addEventListener('mouseenter', function(e) {
-                            var pct = total > 0 ? Math.round(cnt / total * 100) : 0;
-                            var tip = esc(label) + ' \u00B7 ' + esc(SEX_LABELS[s]) +
+                            let pct = total > 0 ? Math.round(cnt / total * 100) : 0;
+                            let tip = esc(label) + ' \u00B7 ' + esc(SEX_LABELS[s]) +
                                 ': ' + fmt(cnt) + ' (' + pct + '\u00A0%)';
                             if (variants && variants.length) {
                                 tip += '<br><small>auch: ' + esc(variants.join(', ')) + '</small>';
@@ -311,7 +311,7 @@
                     svg.appendChild(cell);
 
                     if (count > 0) {
-                        var countText = document.createElementNS(ChartHelpers.SVG_NS, 'text');
+                        let countText = document.createElementNS(ChartHelpers.SVG_NS, 'text');
                         countText.setAttribute('x', cx + cellW / 2);
                         countText.setAttribute('y', rowY + cellH / 2 + 4);
                         countText.setAttribute('text-anchor', 'middle');
@@ -326,27 +326,30 @@
             wrap.appendChild(svg);
 
             // Legend
-            var legendDiv = document.createElement('div');
+            let legendDiv = document.createElement('div');
             legendDiv.className = 'explore-legend';
-            var typesToShow = state.typeFilter === 'all' ? REL_TYPES : [state.typeFilter];
-            for (var tl = 0; tl < typesToShow.length; tl++) {
-                var tItem = document.createElement('span');
+            let typesToShow = state.typeFilter === 'all' ? REL_TYPES : [state.typeFilter];
+            for (let tl = 0; tl < typesToShow.length; tl++) {
+                let tItem = document.createElement('span');
                 tItem.className = 'explore-legend-item';
-                tItem.innerHTML = '<span class="explore-legend-swatch" style="background:' +
-                    REL_COLORS[typesToShow[tl]] + '"></span>' + esc(REL_LABELS[typesToShow[tl]]);
+                let swatch = document.createElement('span');
+                swatch.className = 'explore-legend-swatch';
+                swatch.style.setProperty('--swatch-color', REL_COLORS[typesToShow[tl]]);
+                tItem.appendChild(swatch);
+                tItem.appendChild(document.createTextNode(REL_LABELS[typesToShow[tl]]));
                 legendDiv.appendChild(tItem);
             }
             wrap.appendChild(legendDiv);
 
             // "Show more" button
             if (labels.length < filtered.length) {
-                var moreBtn = document.createElement('button');
+                let moreBtn = document.createElement('button');
                 moreBtn.className = 'explore-btn explore-btn--secondary';
-                var nextStep = Infinity;
-                for (var nsi = 0; nsi < HEATMAP_STEPS.length; nsi++) {
+                let nextStep = Infinity;
+                for (let nsi = 0; nsi < HEATMAP_STEPS.length; nsi++) {
                     if (HEATMAP_STEPS[nsi] > heatmapLimit) { nextStep = HEATMAP_STEPS[nsi]; break; }
                 }
-                var nextCount = nextStep === Infinity ? filtered.length : Math.min(nextStep, filtered.length);
+                let nextCount = nextStep === Infinity ? filtered.length : Math.min(nextStep, filtered.length);
                 moreBtn.textContent = 'Mehr anzeigen (' + nextCount + ' von ' + fmt(filtered.length) + ')';
                 moreBtn.addEventListener('click', function() {
                     heatmapLimit = nextStep;
@@ -355,9 +358,9 @@
                 wrap.appendChild(moreBtn);
             }
 
-            var footer = document.getElementById('explore-label-footer');
-            var shown = labels.length;
-            var total = filtered.length;
+            let footer = document.getElementById('explore-label-footer');
+            let shown = labels.length;
+            let total = filtered.length;
             footer.textContent = shown < total ?
                 'Zeige ' + shown + ' von ' + fmt(total) + ' Bezeichnungen' :
                 fmt(total) + ' Bezeichnungen';
@@ -365,28 +368,29 @@
 
         // ── Render label table ──
         function renderLabelTable() {
-            var filtered = getFilteredLabels();
+            let filtered = getFilteredLabels();
             filtered.sort(function(a, b) {
-                var key = state.labelSortKey;
-                var va = key === 'label' ? a.label.toLowerCase() : (key === 'type' ? a.type : (a[key] || 0));
-                var vb = key === 'label' ? b.label.toLowerCase() : (key === 'type' ? b.type : (b[key] || 0));
+                let key = state.labelSortKey;
+                let va = key === 'label' ? a.label.toLowerCase() : (key === 'type' ? a.type : (a[key] || 0));
+                let vb = key === 'label' ? b.label.toLowerCase() : (key === 'type' ? b.type : (b[key] || 0));
                 if (va < vb) return state.labelSortAsc ? -1 : 1;
                 if (va > vb) return state.labelSortAsc ? 1 : -1;
                 return 0;
             });
 
-            var tbody = document.getElementById('explore-label-tbody');
+            let tbody = document.getElementById('explore-label-tbody');
             tbody.innerHTML = '';
-            var maxRows = 200;
-            var count = Math.min(filtered.length, maxRows);
-            for (var i = 0; i < count; i++) {
-                var lb = filtered[i];
-                var tr = document.createElement('tr');
+            let maxRows = 200;
+            let count = Math.min(filtered.length, maxRows);
+            for (let i = 0; i < count; i++) {
+                let lb = filtered[i];
+                let tr = document.createElement('tr');
                 tr.className = 'explore-label-row';
+                let typeMod = REL_TYPES.indexOf(lb.type) >= 0 ? lb.type : 'none';
                 tr.innerHTML =
                     '<td>' + esc(lb.label) +
-                    ' <span class="explore-rel-badge" style="background:' +
-                    (REL_COLORS[lb.type] || '#999') + '">' + esc(REL_LABELS[lb.type] || lb.type) + '</span></td>' +
+                    ' <span class="explore-rel-badge explore-rel-badge--' + typeMod + '">' +
+                    esc(REL_LABELS[lb.type] || lb.type) + '</span></td>' +
                     '<td>' + esc(REL_LABELS[lb.type] || lb.type) + '</td>' +
                     '<td class="num">' + fmt(lb.m) + '</td>' +
                     '<td class="num">' + fmt(lb.f) + '</td>' +
@@ -402,7 +406,7 @@
             ChartHelpers.bindSortHeaders('#explore-label-table .sortable',
                 state, 'labelSortKey', 'labelSortAsc', renderLabelTable, ['label', 'type']);
 
-            var footer = document.getElementById('explore-label-footer');
+            let footer = document.getElementById('explore-label-footer');
             footer.textContent = count < filtered.length ?
                 'Zeige ' + count + ' von ' + fmt(filtered.length) + ' Bezeichnungen' :
                 fmt(filtered.length) + ' Bezeichnungen';
@@ -411,37 +415,37 @@
         // ── Show label detail in Panel 3 ──
         function showLabelDetail(label, type, sex) {
             state.selectedLabel = { label: label, type: type, sex: sex };
-            var body = document.getElementById('explore-detail-body');
-            var title = document.getElementById('explore-detail-title');
+            let body = document.getElementById('explore-detail-body');
+            let title = document.getElementById('explore-detail-title');
             body.innerHTML = '';
 
-            var heading = esc(label) + ' (' + esc(REL_LABELS[type] || type) + ')';
+            let heading = esc(label) + ' (' + esc(REL_LABELS[type] || type) + ')';
             if (sex) heading += ' \u00B7 ' + esc(SEX_LABELS[sex]);
             title.innerHTML = heading;
 
-            var labelLowerForLookup = label.toLowerCase();
-            for (var vi = 0; vi < epicB.labels.length; vi++) {
+            let labelLowerForLookup = label.toLowerCase();
+            for (let vi = 0; vi < epicB.labels.length; vi++) {
                 if (epicB.labels[vi].label.toLowerCase() === labelLowerForLookup &&
                     epicB.labels[vi].type === type) {
-                    var vars = epicB.labels[vi].variants;
+                    let vars = epicB.labels[vi].variants;
                     if (vars && vars.length) {
-                        title.innerHTML += ' <small style="color:var(--color-text-muted)">(auch: ' +
+                        title.innerHTML += ' <small class="text-muted-inline">(auch: ' +
                             esc(vars.join(', ')) + ')</small>';
                     }
                     break;
                 }
             }
 
-            var persons = epicB.persons;
-            var matches = [];
-            var labelLower = label.toLowerCase();
-            for (var i = 0; i < persons.length; i++) {
-                var p = persons[i];
+            let persons = epicB.persons;
+            let matches = [];
+            let labelLower = label.toLowerCase();
+            for (let i = 0; i < persons.length; i++) {
+                let p = persons[i];
                 if (sex && p.sex !== sex) continue;
-                var rels = p.rels;
-                var matchingFkeys = [];
-                for (var j = 0; j < rels.length; j++) {
-                    var relLabel = (rels[j].ln || rels[j].l || '').toLowerCase();
+                let rels = p.rels;
+                let matchingFkeys = [];
+                for (let j = 0; j < rels.length; j++) {
+                    let relLabel = (rels[j].ln || rels[j].l || '').toLowerCase();
                     if (rels[j].t === type && relLabel === labelLower) {
                         if (rels[j].f) matchingFkeys.push(rels[j].f);
                     }
@@ -456,14 +460,14 @@
                 return;
             }
 
-            var table = document.createElement('table');
+            let table = document.createElement('table');
             table.className = 'explore-data-table';
             table.innerHTML = '<thead><tr><th>Person</th><th>Geschlecht</th><th>Belege</th></tr></thead>';
-            var tbody = document.createElement('tbody');
+            let tbody = document.createElement('tbody');
 
-            for (var mi = 0; mi < matches.length; mi++) {
-                var m = matches[mi];
-                var tr = document.createElement('tr');
+            for (let mi = 0; mi < matches.length; mi++) {
+                let m = matches[mi];
+                let tr = document.createElement('tr');
                 tr.className = 'explore-label-row';
                 tr.innerHTML =
                     '<td>' + esc(m.name) + '</td>' +
@@ -479,10 +483,10 @@
             table.appendChild(tbody);
             body.appendChild(table);
 
-            var detailFooter = document.getElementById('explore-detail-footer');
+            let detailFooter = document.getElementById('explore-detail-footer');
             detailFooter.textContent = fmt(matches.length) + ' Personen mit dieser Bezeichnung';
 
-            var detailPanel = document.getElementById('explore-panel-detail');
+            let detailPanel = document.getElementById('explore-panel-detail');
             detailPanel.scrollIntoView({ behavior: 'smooth', block: 'start' });
             detailPanel.classList.add('explore-panel--highlight');
             setTimeout(function() {
@@ -492,14 +496,14 @@
 
         // ── Person search results ──
         function renderPersonSearchResults(query) {
-            var body = document.getElementById('explore-detail-body');
-            var title = document.getElementById('explore-detail-title');
+            let body = document.getElementById('explore-detail-body');
+            let title = document.getElementById('explore-detail-title');
             body.innerHTML = '';
             title.textContent = 'Personensuche: ' + esc(query);
 
-            var persons = epicB.persons;
-            var matches = [];
-            for (var i = 0; i < persons.length && matches.length < 50; i++) {
+            let persons = epicB.persons;
+            let matches = [];
+            for (let i = 0; i < persons.length && matches.length < 50; i++) {
                 if (persons[i].name.toLowerCase().indexOf(query) >= 0) {
                     matches.push(persons[i]);
                 }
@@ -510,29 +514,29 @@
                 return;
             }
 
-            var table = document.createElement('table');
+            let table = document.createElement('table');
             table.className = 'explore-data-table';
             table.innerHTML = '<thead><tr><th>Person</th><th>Geschlecht</th><th>Beziehungen</th></tr></thead>';
-            var tbody = document.createElement('tbody');
+            let tbody = document.createElement('tbody');
 
-            for (var mi = 0; mi < matches.length; mi++) {
-                var p = matches[mi];
-                var tr = document.createElement('tr');
+            for (let mi = 0; mi < matches.length; mi++) {
+                let p = matches[mi];
+                let tr = document.createElement('tr');
                 tr.className = 'explore-label-row';
 
-                var relSummary = {};
-                var allFkeys = [];
-                for (var ri = 0; ri < p.rels.length; ri++) {
-                    var rel = p.rels[ri];
+                let relSummary = {};
+                let allFkeys = [];
+                for (let ri = 0; ri < p.rels.length; ri++) {
+                    let rel = p.rels[ri];
                     relSummary[rel.t] = (relSummary[rel.t] || 0) + 1;
                     if (rel.f) allFkeys.push(rel.f);
                 }
-                var badges = '';
-                for (var t = 0; t < REL_TYPES.length; t++) {
-                    var rt = REL_TYPES[t];
+                let badges = '';
+                for (let t = 0; t < REL_TYPES.length; t++) {
+                    let rt = REL_TYPES[t];
                     if (relSummary[rt]) {
-                        badges += '<span class="explore-rel-badge" style="background:' +
-                            REL_COLORS[rt] + '">' + relSummary[rt] + ' ' + esc(REL_LABELS[rt]) + '</span> ';
+                        badges += '<span class="explore-rel-badge explore-rel-badge--' + rt + '">' +
+                            relSummary[rt] + ' ' + esc(REL_LABELS[rt]) + '</span> ';
                     }
                 }
 
@@ -550,17 +554,17 @@
             table.appendChild(tbody);
             body.appendChild(table);
 
-            var detailFooter = document.getElementById('explore-detail-footer');
+            let detailFooter = document.getElementById('explore-detail-footer');
             detailFooter.textContent = matches.length >= 50 ?
                 'Erste 50 Treffer angezeigt' : fmt(matches.length) + ' Treffer';
         }
 
         // ── Drill-down for type × sex bar click ──
         function openTypeSexDrillDown(type, sex) {
-            var dd = epicB.drill_down || {};
-            var ts = dd.type_sex || {};
-            var key = type + '_' + sex;
-            var fkeys = ts[key] || [];
+            let dd = epicB.drill_down || {};
+            let ts = dd.type_sex || {};
+            let key = type + '_' + sex;
+            let fkeys = ts[key] || [];
             if (!fkeys.length) return;
             DrillDown.open(drillHandle, esc(REL_LABELS[type]) + ' \u00B7 ' + esc(SEX_LABELS[sex]), fkeys);
         }
@@ -580,44 +584,51 @@
         // ── E5: Representation Direction Panel ──
 
         function renderRepDirection() {
-            var repData = epicB && epicB.rep_direction;
-            var repPanels = document.getElementById('explore-rep-panels');
+            let repData = epicB && epicB.rep_direction;
+            let repPanels = document.getElementById('explore-rep-panels');
             if (!repData || !repPanels) return;
 
-            var matrix = repData.matrix || {};
-            var total = repData.total || 0;
-            var statsEl = document.getElementById('explore-rep-stats');
+            let matrix = repData.matrix || {};
+            let total = repData.total || 0;
+            let statsEl = document.getElementById('explore-rep-stats');
             if (statsEl) statsEl.textContent = total + ' Vertretungsbeziehungen';
 
             // Render 2x2 matrix as simple HTML table
-            var matrixEl = document.getElementById('explore-rep-matrix');
+            let matrixEl = document.getElementById('explore-rep-matrix');
             if (matrixEl) {
-                var sexLabels = ChartHelpers.SEX_LABELS;
-                var sexKeys = ['m', 'f', 'unspecified'];
-                var html = '<table class="explore-data-table" style="max-width:28rem">' +
+                let sexLabels = ChartHelpers.SEX_LABELS;
+                let sexKeys = ['m', 'f', 'unspecified'];
+                let html = '<table class="explore-data-table explore-rep-matrix-table">' +
                     '<thead><tr><th>Vertreter \\ Vertretene</th>';
                 sexKeys.forEach(function(s) { html += '<th class="num">' + esc(sexLabels[s]) + '</th>'; });
                 html += '</tr></thead><tbody>';
                 sexKeys.forEach(function(repSex) {
                     html += '<tr><td><strong>' + esc(sexLabels[repSex]) + '</strong></td>';
                     sexKeys.forEach(function(prinSex) {
-                        var key = repSex + '>' + prinSex;
-                        var count = matrix[key] || 0;
-                        var bg = count > 0 ? 'background:rgba(46,90,136,' + Math.min(0.15 + count / total * 3, 0.8) + ')' : '';
-                        html += '<td class="num" style="' + bg + ';cursor:pointer" data-dir="' + key + '">' + count + '</td>';
+                        let key = repSex + '>' + prinSex;
+                        let count = matrix[key] || 0;
+                        let opacity = count > 0 ? Math.min(0.15 + count / total * 3, 0.8) : 0;
+                        html += '<td class="num explore-heatmap-cell" data-heat-opacity="' +
+                            opacity.toFixed(3) + '" data-dir="' + key + '">' + count + '</td>';
                     });
                     html += '</tr>';
                 });
                 html += '</tbody></table>';
                 matrixEl.innerHTML = html;
+                // Apply per-cell custom properties from data-heat-opacity attribute.
+                matrixEl.querySelectorAll('.explore-heatmap-cell').forEach(function(td) {
+                    let op = parseFloat(td.getAttribute('data-heat-opacity')) || 0;
+                    td.style.setProperty('--heat-opacity', op);
+                    if (op > 0) td.style.setProperty('--heat-cursor', 'pointer');
+                });
 
                 // Drill-down on matrix cells
                 matrixEl.querySelectorAll('[data-dir]').forEach(function(td) {
                     td.addEventListener('click', function() {
-                        var dirKey = td.getAttribute('data-dir');
-                        var fkeys = (repData.drill_down || {})[dirKey] || [];
+                        let dirKey = td.getAttribute('data-dir');
+                        let fkeys = (repData.drill_down || {})[dirKey] || [];
                         if (fkeys.length) {
-                            var parts = dirKey.split('>');
+                            let parts = dirKey.split('>');
                             DrillDown.open(drillHandle,
                                 'Vertretung: ' + sexLabels[parts[0]] + ' → ' + sexLabels[parts[1]],
                                 fkeys);
@@ -632,42 +643,47 @@
         }
 
         function _renderTopList(containerId, items) {
-            var container = document.getElementById(containerId);
+            let container = document.getElementById(containerId);
             if (!container) return;
             if (!items.length) { container.innerHTML = '<p class="explore-hint">Keine Daten.</p>'; return; }
-            var html = '<ol class="stats-ranking">';
-            var max = items[0].count;
+            let html = '<ol class="stats-ranking">';
+            let max = items[0].count;
             items.forEach(function(item) {
-                var pct = max > 0 ? (item.count / max * 100) : 0;
-                var sexColor = item.sex === 'f' ? ChartHelpers.getToken('--color-sex-f') : ChartHelpers.getToken('--color-sex-m');
+                let pct = max > 0 ? (item.count / max * 100) : 0;
+                let sexCls = item.sex === 'f' ? 'stats-rank-bar-fill--f' : 'stats-rank-bar-fill--m';
                 html += '<li>' +
-                    '<div class="stats-rank-bar-track"><div class="stats-rank-bar-fill" style="width:' + pct.toFixed(1) + '%;background:' + sexColor + '"></div></div>' +
+                    '<div class="stats-rank-bar-track"><div class="stats-rank-bar-fill ' +
+                    sexCls + '" data-rank-pct="' + pct.toFixed(1) + '"></div></div>' +
                     '<span class="stats-rank-name">' + esc(item.name) + '</span>' +
                     '<span class="stats-rank-count">' + item.count + '</span>' +
                     '</li>';
             });
             html += '</ol>';
             container.innerHTML = html;
+            // Bar widths from data-rank-pct attribute (avoids inline style strings).
+            container.querySelectorAll('.stats-rank-bar-fill').forEach(function(el) {
+                el.style.setProperty('--rank-pct', el.getAttribute('data-rank-pct') + '%');
+            });
         }
 
         // ── D3: Friendship Table ──
 
         function renderFriendshipTable() {
-            var friendData = epicB && epicB.friendship;
-            var friendPanels = document.getElementById('explore-friend-panels');
+            let friendData = epicB && epicB.friendship;
+            let friendPanels = document.getElementById('explore-friend-panels');
             if (!friendData || !friendPanels) return;
 
-            var statsEl = document.getElementById('explore-friend-stats');
+            let statsEl = document.getElementById('explore-friend-stats');
             if (statsEl) statsEl.textContent = friendData.total_edges + ' Beziehungen, ' + friendData.unique_persons + ' Personen';
 
-            var container = document.getElementById('explore-friend-table');
+            let container = document.getElementById('explore-friend-table');
             if (!container) return;
 
-            var edges = friendData.edges || [];
+            let edges = friendData.edges || [];
             if (!edges.length) { container.innerHTML = '<p class="explore-hint">Keine Freundschaftsbeziehungen gefunden.</p>'; return; }
 
-            var sexLabels = ChartHelpers.SEX_LABELS;
-            var html = '<table class="explore-data-table"><thead><tr>' +
+            let sexLabels = ChartHelpers.SEX_LABELS;
+            let html = '<table class="explore-data-table"><thead><tr>' +
                 '<th>Person A</th><th>Geschlecht</th><th>Person B</th><th>Geschlecht</th><th>Quelle</th>' +
                 '</tr></thead><tbody>';
             edges.forEach(function(e) {
@@ -688,7 +704,7 @@
 
         // ── E6: Handle URL parameters for cross-epic navigation ──
         function handleUrlParams() {
-            var personParam = EdCore.getParam('person');
+            let personParam = EdCore.getParam('person');
             if (personParam && personSearchInput) {
                 personSearchInput.value = personParam.replace(/^pe__/, '').replace(/_/g, ' ');
                 personSearchInput.dispatchEvent(new Event('input'));

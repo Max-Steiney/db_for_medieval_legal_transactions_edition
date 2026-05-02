@@ -1,11 +1,13 @@
 {% extends "base.html" %}
-{% from "macros.html" import search_box, result_count, active_filters, no_results, prov_stat, prov_popover %}
+{% from "macros.html" import search_box, result_count, active_filters, no_results, glossary_tip,
+                              sidebar_block, sidebar_range_slider, sidebar_chip_group,
+                              sidebar_corpus_chips, sidebar_reset_button %}
 
 {% block title %}{{ register_label }}{% endblock %}
 
 {% block head %}
-<link rel="stylesheet" href="{{ root_path }}/static/css/index.css">
-<link rel="stylesheet" href="{{ root_path }}/static/css/register.css">
+<link rel="stylesheet" href="{{ root_path }}/static/css/index.css?v={{ asset_v }}">
+<link rel="stylesheet" href="{{ root_path }}/static/css/register.css?v={{ asset_v }}">
 {% endblock %}
 
 {% block content %}
@@ -13,91 +15,110 @@
 
     <header class="index-header">
         <h1>{{ register_label }}</h1>
-        <p class="index-subtitle">
-            <span class="prov-stat-container">
-                {% call prov_stat('prov-reg-total') %}<span class="stat"><strong>{{ "{:,}".format(total_count).replace(",", ".") }}</strong></span>{% endcall %}
-                {% call prov_popover('prov-reg-total', register_label, 'Konsolidierte Identit\u00e4ten im Register') %}
-                    <p class="prov-def">Jeder Eintrag ist eine konsolidierte Identit\u00e4t, unabh\u00e4ngig von der Anzahl ihrer Nennungen in den Quellen. Die Spalte Quellen zeigt die Anzahl Quellen mit Nennung pro Eintrag (<a href="{{ root_path }}/project/glossary.html#gesamtnennung">quellenbereinigt</a>).</p>
-                    <footer class="prov-foot">
-                        <span class="prov-foot-source"><code>indices/{{ register_type }}List.xml</code></span>
-                        <a class="prov-foot-link" href="{{ root_path }}/project/glossary.html#individuelle-person">&rarr; Glossar</a>
-                    </footer>
-                {% endcall %}
-            </span>
-            Eintr&auml;ge
-        </p>
     </header>
 
-    <!-- Alphabet quick-nav -->
-    <nav class="alphabet-bar" aria-label="Alphabetische Navigation">
-        {% for letter in "ABCDEFGHIJKLMNOPQRSTUVWXYZ" %}
-        <button class="alpha-btn" data-letter="{{ letter }}">{{ letter }}</button>
-        {% endfor %}
-        <button class="alpha-btn alpha-btn-all active" data-letter="">Alle</button>
-    </nav>
+    <div class="index-layout">
 
-    <!-- Search and filter bar -->
-    <section class="index-controls">
-        {{ search_box('Suche nach Name, ID ...') }}
-        {% if filter_values %}
-        <div class="filter-group">
-            <select id="filter-type" aria-label="{{ filter_label }} filtern">
-                <option value="">Alle {{ filter_label }}</option>
-                {% for val in filter_values %}
-                <option value="{{ val }}">{{ filter_map.get(val, val) if filter_map else val }}</option>
+        <aside class="index-sidebar" aria-label="Filter">
+
+            {% if timeline_data %}
+            {% call sidebar_block('Aktivit&auml;tszeitraum', 'Erste &amp; letzte Quellennennung je Person') %}
+                {{ sidebar_range_slider(min_year, max_year, timeline_data, max_count, unit='Personen') }}
+            {% endcall %}
+            {% endif %}
+
+            {% if corpora_data %}
+            {% call sidebar_block('Quellenkorpus') %}
+                {{ sidebar_corpus_chips('filter-corpora', 'data-corpus', corpora_data) }}
+            {% endcall %}
+            {% endif %}
+
+            {% call sidebar_block('Suche') %}
+                {{ search_box('Name, ID, Jahr ...') }}
+            {% endcall %}
+
+            {% if sex_data %}
+            {% call sidebar_block('Geschlecht') %}
+                {{ sidebar_chip_group('filter-sex', 'data-sex', sex_data, aria_label='Nach Geschlecht filtern') }}
+            {% endcall %}
+            {% endif %}
+
+            {% if role_data %}
+            {% call sidebar_block('Rolle', 'Mehrfachauswahl m&ouml;glich (ODER-Verkn&uuml;pfung)') %}
+                {{ sidebar_chip_group('filter-roles', 'data-role', role_data, aria_label='Nach Rolle filtern (Mehrfachauswahl)') }}
+            {% endcall %}
+            {% endif %}
+
+            {{ sidebar_reset_button() }}
+
+        </aside>
+
+        <div class="index-main">
+
+            <!-- Alphabet quick-nav -->
+            <nav class="alphabet-bar" aria-label="Alphabetische Navigation">
+                {% for letter in "ABCDEFGHIJKLMNOPQRSTUVWXYZ" %}
+                <button class="alpha-btn" data-letter="{{ letter }}">{{ letter }}</button>
                 {% endfor %}
-            </select>
-        </div>
-        {% endif %}
-        <div class="filter-group">
-            <select id="filter-docs" aria-label="Quellenverkn&uuml;pfungen">
-                <option value="">Quellenverkn&uuml;pfungen</option>
-                <option value="1">Mit Quellen</option>
-            </select>
-        </div>
-        <div class="filter-group">
-            <select id="filter-quality" aria-label="Datenqualität">
-                <option value="">Datenqualität</option>
-                <option value="0">Fehlerfrei</option>
-                <option value="1">Hinweise</option>
-                <option value="2">Warnungen</option>
-            </select>
-        </div>
-        {{ result_count(total_count, 'Einträge') }}
-    </section>
+                <button class="alpha-btn alpha-btn-all active" data-letter="">Alle</button>
+            </nav>
 
-    {{ active_filters() }}
+            <div class="main-toolbar">
+                <span class="result-count-wrap">
+                    {{ result_count(total_count, 'Personen') }}{% call glossary_tip('gloss-person-results', 'Individuelle Person') %}
+                        <p class="prov-def">Konsolidierte Identit&auml;t. Jede Zeile ist eine eindeutige Person, unabh&auml;ngig von der Anzahl ihrer Nennungen in den Quellen.</p>
+                        <a class="prov-foot-link" href="{{ root_path }}/project/glossary.html#individuelle-person">&rarr; im Glossar</a>
+                    {% endcall %}
+                </span>
+                {{ active_filters() }}
+            </div>
 
-    <!-- Register table -->
-    <section class="index-table-wrap">
-        <table class="index-table" id="register-table" data-type="{{ register_type }}">
-            <thead>
-                <tr>
-                    <th class="col-name" data-sort="n">Name</th>
-                    {% if register_type == 'persons' %}
-                    <th class="col-sex" data-sort="sex">Geschl.</th>
-                    <th class="col-death" data-sort="d">Tod</th>
-                    {% else %}
-                    <th class="col-type" data-sort="tp">Typ</th>
-                    {% endif %}
-                    <th class="col-docs" data-sort="dc" title="Anzahl Quellen mit Nennung (quellenbereinigt)">Quellen</th>
-                    <th class="col-quality" data-sort="qw" title="Datenqualit&auml;t (schlechtester Score der verkn&uuml;pften Quellen)">Q</th>
-                    <th class="col-id" data-sort="id">ID</th>
-                </tr>
-            </thead>
-            <tbody id="register-tbody">
-            </tbody>
-        </table>
-        {{ no_results('Keine Einträge gefunden.') }}
-    </section>
+            <section class="index-table-wrap">
+                <table class="index-table" id="register-table" data-type="{{ register_type }}">
+                    <thead>
+                        <tr>
+                            <th class="col-name" data-sort="n">Name</th>
+                            <th class="col-sex" data-sort="sex">Geschl.</th>
+                            <th class="col-roles">
+                                <span class="prov-stat-container">Rollen{% call glossary_tip('col-info-roles', 'Rolle', placement='bottom') %}
+                                    <p class="prov-def">Handlungsrolle der Person in den Events ihrer Quellen. Pillen: <strong>A</strong>&nbsp;Aussteller, <strong>E</strong>&nbsp;Empf&auml;nger, <strong>Z</strong>&nbsp;Zeuge / Siegler, <strong>S</strong>&nbsp;Sonstige. Eine Person kann in unterschiedlichen Quellen unterschiedliche Rollen einnehmen.</p>
+                                    <footer class="prov-foot">
+                                        <span class="prov-foot-source">
+                                            <code>pipeline/output/persons_in_events.csv</code> Feld <code>event_role</code>
+                                        </span>
+                                    </footer>
+                                {% endcall %}</span>
+                            </th>
+                            <th class="col-docs" data-sort="dc">
+                                <span class="prov-stat-container">Quellen{% call glossary_tip('col-info-docs', 'Quellen mit Nennung', placement='bottom') %}
+                                    <p class="prov-def">Anzahl freigegebener Quellen, in denen die Person als <code>&lt;rs type="person"&gt;</code> annotiert ist. Quellenbereinigt: Mehrfachnennungen in derselben Quelle z&auml;hlen einmal.</p>
+                                    <footer class="prov-foot">
+                                        <span class="prov-foot-source">
+                                            <code>pipeline/output/persons_in_sources.csv</code> distinct <code>file_key</code>
+                                        </span>
+                                    </footer>
+                                {% endcall %}</span>
+                            </th>
+                        </tr>
+                    </thead>
+                    <tbody id="register-tbody">
+                    </tbody>
+                </table>
+                {{ no_results('Keine Eintr&auml;ge gefunden.') }}
+            </section>
+
+        </div>
+
+    </div>
 
 </div>
 
 {% endblock %}
 
 {% block scripts %}
-<script src="{{ root_path }}/static/js/table-infra.js"></script>
-<script src="{{ root_path }}/static/js/register.js"></script>
+<script src="{{ root_path }}/static/js/tooltips.js?v={{ asset_v }}"></script>
+<script src="{{ root_path }}/static/js/table-infra.js?v={{ asset_v }}"></script>
+<script src="{{ root_path }}/static/js/register.js?v={{ asset_v }}"></script>
 {% endblock %}
 
 {% block footer_info %}{{ total_count }} {{ register_label }}{% endblock %}

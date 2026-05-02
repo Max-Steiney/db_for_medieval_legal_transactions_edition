@@ -19,16 +19,32 @@ def _load(name: str):
         return json.load(f)
 
 
+def _load_optional(name: str):
+    """Wie _load, aber gibt None zurueck, wenn die Datei fehlt.
+
+    Notwendig, weil Organisationen und Orte aktuell nicht freigegeben sind
+    und entsprechend keine Such-JSONs gebaut werden. Verifikation muss
+    sauber durchlaufen, ohne darueber zu stolpern.
+    """
+    path = DATA_DIR / name
+    if not path.exists():
+        return None
+    with path.open(encoding="utf-8") as f:
+        return json.load(f)
+
+
 def persons_search_count() -> int:
     return len(_load("persons_search.json"))
 
 
 def organisations_search_count() -> int:
-    return len(_load("organisations_search.json"))
+    data = _load_optional("organisations_search.json")
+    return len(data) if data is not None else None
 
 
 def places_search_count() -> int:
-    return len(_load("places_search.json"))
+    data = _load_optional("places_search.json")
+    return len(data) if data is not None else None
 
 
 def persons_search_by_sex() -> Dict[str, int]:

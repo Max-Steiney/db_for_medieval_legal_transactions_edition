@@ -1,17 +1,35 @@
 /* ==========================================================================
    Wiener Urkundenbuch — Digital Edition
-   Core: navigation, hamburger menu, esc() utility
+   Core: navigation, hamburger menu, esc() utility, build-time globals.
    ========================================================================== */
 
-var EdCore = (function() {
+(function() {
+    'use strict';
+    // Build-time values reach the client via <body data-*> attributes
+    // (no inline <script> needed -- compatible with strict CSP).
+    let body = document.body;
+    if (body) {
+        if (body.dataset.rootPath !== undefined && window.ROOT_PATH === undefined) {
+            window.ROOT_PATH = body.dataset.rootPath;
+        }
+        if (body.dataset.releasedMin && body.dataset.releasedMax && window.RELEASED_PERIOD === undefined) {
+            window.RELEASED_PERIOD = {
+                min: parseInt(body.dataset.releasedMin, 10),
+                max: parseInt(body.dataset.releasedMax, 10)
+            };
+        }
+    }
+})();
+
+let EdCore = (function() {
     'use strict';
 
     /* ------------------------------------------------------------------
        HTML-escape utility (used by multiple modules)
        ------------------------------------------------------------------ */
 
-    var esc = (function() {
-        var d = document.createElement('div');
+    let esc = (function() {
+        let d = document.createElement('div');
         return function(s) {
             if (s === undefined || s === null || s === '') return '';
             d.textContent = String(s);
@@ -27,20 +45,20 @@ var EdCore = (function() {
     function closeAllDropdowns(dropdowns) {
         dropdowns.forEach(function(d) {
             d.classList.remove('open');
-            var t = d.querySelector('.nav-dropdown-trigger');
+            let t = d.querySelector('.nav-dropdown-trigger');
             if (t) t.setAttribute('aria-expanded', 'false');
         });
     }
 
     function initNavDropdown() {
-        var dropdowns = document.querySelectorAll('.nav-dropdown');
+        let dropdowns = document.querySelectorAll('.nav-dropdown');
         dropdowns.forEach(function(dd) {
-            var trigger = dd.querySelector('.nav-dropdown-trigger');
+            let trigger = dd.querySelector('.nav-dropdown-trigger');
             if (!trigger) return;
 
             trigger.addEventListener('click', function(e) {
                 e.stopPropagation();
-                var isOpen = dd.classList.contains('open');
+                let isOpen = dd.classList.contains('open');
                 closeAllDropdowns(dropdowns);
                 if (!isOpen) {
                     dd.classList.add('open');
@@ -66,12 +84,12 @@ var EdCore = (function() {
        ------------------------------------------------------------------ */
 
     function initNavHamburger() {
-        var btn = document.getElementById('nav-hamburger');
-        var links = document.getElementById('nav-links');
+        let btn = document.getElementById('nav-hamburger');
+        let links = document.getElementById('nav-links');
         if (!btn || !links) return;
 
         btn.addEventListener('click', function() {
-            var isOpen = links.classList.toggle('open');
+            let isOpen = links.classList.toggle('open');
             btn.setAttribute('aria-expanded', isOpen ? 'true' : 'false');
         });
 
@@ -108,12 +126,45 @@ var EdCore = (function() {
 
 
     /* ------------------------------------------------------------------
+       Search normalisation (V3 Diakritika)
+       Transformiert Umlaute nach deutscher Konvention (ö <-> oe, ü <-> ue,
+       ä <-> ae, ß <-> ss) und entfernt verbleibende kombinierende
+       Diakritika via NFD. Dadurch findet eine Suche nach "Poetel" auch
+       "Pötel", "Strauss" auch "Strauß", "Mueller" auch "Müller". Die
+       Funktion wird sowohl beim Pre-Compute der Suchstrings als auch
+       beim Tippen in der Suche verwendet — beide Seiten m&uuml;ssen
+       identisch normalisiert sein, damit die Substring-Suche greift.
+       ------------------------------------------------------------------ */
+
+    let COMBINING_MARKS_RE = new RegExp('[\\u0300-\\u036f]', 'g');
+
+    function normForSearch(s) {
+        if (s === undefined || s === null) return '';
+        return String(s)
+            .replace(/Ä/g, 'Ae').replace(/ä/g, 'ae')
+            .replace(/Ö/g, 'Oe').replace(/ö/g, 'oe')
+            .replace(/Ü/g, 'Ue').replace(/ü/g, 'ue')
+            .replace(/ß/g, 'ss')
+            .normalize('NFD')
+            .replace(COMBINING_MARKS_RE, '')
+            .toLowerCase();
+    }
+
+
+    /* ------------------------------------------------------------------
        Public API
        ------------------------------------------------------------------ */
 
     return {
         esc: esc,
-        getParam: getParam
+        getParam: getParam,
+        normForSearch: normForSearch
     };
 
 })();
+
+// CommonJS-Export fuer Vitest. Im Browser ist `module` undefiniert, der
+// Block ist daher dort wirkungslos.
+if (typeof module !== 'undefined' && module.exports) {
+    module.exports = { EdCore };
+}

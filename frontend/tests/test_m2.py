@@ -1,4 +1,4 @@
-﻿"""Tests for M2 (Quality Dashboard), E4, E5, D3, E6, and M5 deliverables."""
+﻿"""Tests for E4, E5, D3, E6, and M5 deliverables."""
 
 import inspect
 import json
@@ -8,38 +8,6 @@ import pytest
 import frontend.build
 import frontend.aggregator
 from frontend.tests.conftest import parse_html
-
-
-# ---------------------------------------------------------------------------
-# M2: Quality Dashboard
-# ---------------------------------------------------------------------------
-
-class TestQualityDashboard:
-
-    def test_build_quality_dashboard_exists(self):
-        assert hasattr(frontend.build, '_build_quality_dashboard')
-        sig = inspect.signature(frontend.build._build_quality_dashboard)
-        assert 'all_metadata' in sig.parameters
-        assert 'quality_index' in sig.parameters
-
-    def test_quality_filter_in_index_template(self):
-        from pathlib import Path
-        tpl_path = Path(frontend.build.TEMPLATES_DIR) / "index.html"
-        content = tpl_path.read_text(encoding="utf-8")
-        assert 'filter-quality' in content
-
-    def test_quality_template_exists(self):
-        env = frontend.build._init_jinja()
-        tpl = env.get_template("quality.html")
-        assert tpl is not None
-
-    def test_quality_template_has_kpis(self):
-        from pathlib import Path
-        tpl_path = Path(frontend.build.TEMPLATES_DIR) / "quality.html"
-        content = tpl_path.read_text(encoding="utf-8")
-        assert 'quality-kpis' in content
-        assert 'quality-category-chart' in content
-        assert 'quality-export' in content
 
 
 # ---------------------------------------------------------------------------
@@ -133,11 +101,10 @@ class TestImpressum:
     def test_build_impressum_function_exists(self):
         assert hasattr(frontend.build, '_build_impressum')
 
-    def test_nav_has_quality_and_impressum_links(self):
+    def test_nav_has_impressum_link(self):
         from pathlib import Path
         tpl_path = Path(frontend.build.TEMPLATES_DIR) / "base.html"
         content = tpl_path.read_text(encoding="utf-8")
-        assert 'quality.html' in content
         assert 'impressum.html' in content
 
 

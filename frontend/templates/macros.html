@@ -1,17 +1,24 @@
 {# Reusable UI components for the digital edition templates #}
 
-{# Previous/next document navigation #}
+{# Previous/next document navigation — Icon-Buttons auf Toolbar-Hoehe.
+   Nur Inline-Variante in der Toolbar-Controls-Sektion; einen unteren
+   Pager liefert das Detail-Layout nicht mehr. SVG-Icons aus dem
+   toolbar_icon-Makro. #}
 {% macro doc_nav(meta, root_path, extra_class='') %}
-<nav class="doc-paging{{ ' ' + extra_class if extra_class }}">
+<nav class="doc-paging{{ ' ' + extra_class if extra_class }}" aria-label="Quellen-Navigation">
     {% if meta.prev_url %}
-    <a href="{{ root_path }}/{{ meta.prev_url }}" class="doc-paging-prev">&larr; Nr. {{ meta.prev_id }}</a>
+    <a href="{{ root_path }}/{{ meta.prev_url }}" class="toolbar-btn doc-paging-prev"
+       aria-label="Vorherige Quelle: Nr. {{ meta.prev_id }}"
+       title="Vorherige Quelle: Nr. {{ meta.prev_id }}">{{ toolbar_icon('chevron-left') }}</a>
     {% else %}
-    <span class="doc-paging-prev"></span>
+    <span class="toolbar-btn doc-paging-prev is-disabled" aria-hidden="true">{{ toolbar_icon('chevron-left') }}</span>
     {% endif %}
     {% if meta.next_url %}
-    <a href="{{ root_path }}/{{ meta.next_url }}" class="doc-paging-next">Nr. {{ meta.next_id }} &rarr;</a>
+    <a href="{{ root_path }}/{{ meta.next_url }}" class="toolbar-btn doc-paging-next"
+       aria-label="Nächste Quelle: Nr. {{ meta.next_id }}"
+       title="Nächste Quelle: Nr. {{ meta.next_id }}">{{ toolbar_icon('chevron-right') }}</a>
     {% else %}
-    <span class="doc-paging-next"></span>
+    <span class="toolbar-btn doc-paging-next is-disabled" aria-hidden="true">{{ toolbar_icon('chevron-right') }}</span>
     {% endif %}
 </nav>
 {% endmacro %}
@@ -19,6 +26,21 @@
 {# External link SVG icon #}
 {% macro external_icon() %}
 <svg width="12" height="12" viewBox="0 0 12 12" fill="none"><path d="M3.5 1.5H2C1.72 1.5 1.5 1.72 1.5 2V10C1.5 10.28 1.72 10.5 2 10.5H10C10.28 10.5 10.5 10.28 10.5 10V8.5M7 1.5H10.5V5M10.25 1.75L5.5 6.5" stroke="currentColor" stroke-linecap="round" stroke-linejoin="round"/></svg>
+{% endmacro %}
+
+{# Toolbar action icons — 16x16 SVG, currentColor stroke/fill.
+   Single source of truth fuer Download / Zitieren / Prev / Next /
+   Faktoid-Tabelle, gerufen aus doc-toolbar-actions und doc_nav. #}
+{% macro toolbar_icon(name) %}
+{%- if name == 'download' -%}
+<svg viewBox="0 0 16 16" width="16" height="16" aria-hidden="true"><path fill="none" stroke="currentColor" stroke-width="1.4" stroke-linecap="round" stroke-linejoin="round" d="M8 2v8m0 0l-3-3m3 3l3-3M3 13h10"/></svg>
+{%- elif name == 'cite' -%}
+<svg viewBox="0 0 16 16" width="16" height="16" aria-hidden="true"><rect x="4" y="2" width="8" height="11" rx="1" fill="none" stroke="currentColor" stroke-width="1.4"/><path d="M6 1.5h4a0.5 0.5 0 0 1 0.5 0.5v1a0.5 0.5 0 0 1-0.5 0.5H6a0.5 0.5 0 0 1-0.5-0.5V2A0.5 0.5 0 0 1 6 1.5z" fill="currentColor"/><path d="M6.5 6.5h3M6.5 8.5h3M6.5 10.5h2" stroke="currentColor" stroke-width="1" stroke-linecap="round"/></svg>
+{%- elif name == 'chevron-left' -%}
+<svg viewBox="0 0 16 16" width="16" height="16" aria-hidden="true"><path fill="none" stroke="currentColor" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round" d="M10 3l-5 5 5 5"/></svg>
+{%- elif name == 'chevron-right' -%}
+<svg viewBox="0 0 16 16" width="16" height="16" aria-hidden="true"><path fill="none" stroke="currentColor" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round" d="M6 3l5 5-5 5"/></svg>
+{%- endif -%}
 {% endmacro %}
 
 {# Search box with icon and clear button #}
@@ -144,8 +166,8 @@
         data-prov-trigger="{{ popover_id }}">{{ caller() }}</button>
 {% endmacro %}
 
-{% macro prov_popover(popover_id, title, subtitle='') %}
-<aside class="prov-popover" id="{{ popover_id }}"
+{% macro prov_popover(popover_id, title, subtitle='', placement='bottom') %}
+<aside class="prov-popover{% if placement == 'top' %} prov-popover--top{% endif %}" id="{{ popover_id }}"
        role="dialog" aria-hidden="true" aria-label="Herkunft: {{ title }}">
     <header class="prov-popover-head">
         <h3 class="prov-popover-title">{{ title }}</h3>
@@ -157,6 +179,130 @@
     </div>
 </aside>
 {% endmacro %}
+
+{# Glossar-Tip: kleines i-Icon mit Begriffsdefinition.
+   Pendant zum Provenienz-Tooltip, aber begriffsorientiert statt zahlenorientiert.
+   Trigger steht NEBEN einem Begriff (z. B. Spalten-Header).
+   Verwendet die gleiche Popover-Mechanik (data-prov-trigger / .prov-popover),
+   damit die JS-Logik aus provenance.js dieselbe ist. #}
+{% macro glossary_tip(term_id, term_label, placement='bottom') %}
+<button type="button" class="prov-trigger prov-trigger--icon"
+        aria-expanded="false" aria-haspopup="dialog"
+        aria-controls="{{ term_id }}"
+        data-prov-trigger="{{ term_id }}"
+        aria-label="Definition: {{ term_label }}">
+    <svg width="13" height="13" viewBox="0 0 16 16" aria-hidden="true">
+        <circle cx="8" cy="8" r="7" stroke="currentColor" stroke-width="1.4" fill="none"/>
+        <text x="8" y="11.6" text-anchor="middle" font-size="9.5" font-weight="700"
+              fill="currentColor" font-family="Georgia, serif">i</text>
+    </svg>
+</button>
+<aside class="prov-popover prov-popover--glossary{% if placement == 'top' %} prov-popover--top{% endif %}"
+       id="{{ term_id }}" role="dialog" aria-hidden="true"
+       aria-label="Definition: {{ term_label }}">
+    <header class="prov-popover-head">
+        <h3 class="prov-popover-title">{{ term_label }}</h3>
+        <button type="button" class="prov-popover-close" aria-label="Schlie&szlig;en">&times;</button>
+    </header>
+    <div class="prov-popover-body">
+        {{ caller() }}
+    </div>
+</aside>
+{% endmacro %}
+
+{# ============================================================
+   Sidebar-Bausteine (geteilt zwischen Quellen- und Personenseite)
+   ============================================================
+   Garantieren visuell-konsistentes Markup ueber alle Filter-Sidebars.
+   Jede Seite waehlt selbst, welche Bausteine in welcher Reihenfolge
+   verwendet werden — die Filter-Dimensionen sind seitenseitig zwangs-
+   laeufig unterschiedlich, das Markup bleibt aber identisch.
+
+   Konvention der item-Felder fuer die Chip-Gruppen:
+     key    Wert fuer das data-*-Attribut (Filter-Identitaet)
+     label  angezeigter Text
+     count  optional, vorgerenderter Zaehler (sonst leer, JS fuellt)
+     title  optional, HTML title-Attribut (sonst label)
+
+   Icon-Pillen vor dem Label werden NICHT vom Macro gerendert — sie werden
+   per JS injiziert (FORM_ICONS in index.js, ROLE_ICONS in register.js),
+   damit Icons als Single-Source-of-Truth zentral leben und sowohl in
+   Tabellen-Pillen als auch in Sidebar-Chips automatisch erscheinen.
+
+   IDs sind seiten-eindeutig (nur eine Seite gleichzeitig im DOM):
+     range-slider, range-min/max, range-histogram, range-label-min/max
+     filter-reset
+   Group-IDs (filter-sex, filter-corpora etc.) kommen ueber group_id rein. #}
+
+{% macro sidebar_block(label='', hint='') %}
+<section class="sidebar-block">
+    {% if label %}<p class="sidebar-block-label">{{ label }}</p>{% endif %}
+    {{ caller() }}
+    {% if hint %}<p class="sidebar-block-hint">{{ hint }}</p>{% endif %}
+</section>
+{% endmacro %}
+
+{% macro sidebar_range_slider(min_year, max_year, timeline_data, max_count, unit='Eintr&auml;ge') %}
+<div class="range-slider" id="range-slider"
+     data-min="{{ min_year }}" data-max="{{ max_year }}">
+    <div class="range-histogram" id="range-histogram">
+        {% for d in timeline_data %}
+        <div class="range-bar"
+             data-decade="{{ d.decade }}"
+             data-count="{{ d.count }}"
+             data-height="{{ [4, (d.count / max_count * 100)|int]|max if d.count > 0 else 0 }}"
+             title="{{ d.decade }}er: {{ d.count }} {{ unit }}">
+        </div>
+        {% endfor %}
+    </div>
+    <div class="range-inputs">
+        <input type="range" id="range-min"
+               min="{{ min_year }}" max="{{ max_year }}"
+               value="{{ min_year }}" step="1"
+               aria-label="Startjahr">
+        <input type="range" id="range-max"
+               min="{{ min_year }}" max="{{ max_year }}"
+               value="{{ max_year }}" step="1"
+               aria-label="Endjahr">
+    </div>
+    <div class="range-labels">
+        <span class="range-label-min" id="range-label-min">{{ min_year }}</span>
+        <span class="range-label-max" id="range-label-max">{{ max_year }}</span>
+    </div>
+</div>
+{% endmacro %}
+
+{% macro sidebar_chip_group(group_id, attr_name, items, aria_label='') %}
+<div class="form-filter-chips" id="{{ group_id }}" role="group"
+     aria-label="{{ aria_label }}">
+    {% for it in items %}
+    <button type="button" class="form-filter-chip" {{ attr_name }}="{{ it.key }}"
+            aria-pressed="false" title="{{ it.title or it.label }}">
+        <span class="form-filter-chip-label">{{ it.label }}</span>
+        <span class="form-filter-chip-count">{% if it.count is defined and it.count is not none %}{{ it.count }}{% endif %}</span>
+    </button>
+    {% endfor %}
+</div>
+{% endmacro %}
+
+{% macro sidebar_corpus_chips(group_id, attr_name, items) %}
+<div class="collection-chips collection-chips--stack" id="{{ group_id }}">
+    {% for c in items %}
+    <button class="chip" {{ attr_name }}="{{ c.key }}">
+        <span class="chip-label">{{ c.label }}</span>
+        <span class="chip-count" data-corpus-total="{{ c.count }}">{{ c.count }}</span>
+    </button>
+    {% endfor %}
+</div>
+{% endmacro %}
+
+{% macro sidebar_reset_button(label='Filter zur&uuml;cksetzen') %}
+<button type="button" class="sidebar-reset" id="filter-reset"
+        aria-label="Alle Filter zur&uuml;cksetzen">
+    &#x21BA; {{ label }}
+</button>
+{% endmacro %}
+
 
 {# Komplettes "Teilmenge von Gesamt"-Stat mit Trigger + Popover.
    Zeigt im Popover ein prov-ratio-Verhältnis und einen Standard-Footer.

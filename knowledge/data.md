@@ -18,7 +18,7 @@ Welche Korpora im UI tatsächlich sichtbar sind, entscheidet sich am Freigabesta
 
 ## Nicht oder nur teilweise ausgewertet
 
-Der Zeitraum 1418 bis 1447 ist im UI als „noch nicht ausgewertet" gekennzeichnet. Die Überlieferung existiert, die redaktionelle Auswertung steht aus. Der frühere Begriff „Überlieferungslücke" war sachlich falsch und wird nicht mehr verwendet.
+Der Zeitraum 1418 bis 1447 ist im UI als „noch nicht ausgewertet" gekennzeichnet. Die Überlieferung existiert, die redaktionelle Auswertung steht aus.
 
 Organisationen und Orte sind als Register-Dimensionen angelegt, aber zum aktuellen Zeitpunkt nicht freigegeben. Nur das Personenregister ist öffentlich.
 
@@ -61,6 +61,14 @@ Attribute halten zusätzliche Merkmale fest, etwa Verwandtschaftsbeziehungen, Be
 ## Sonderfall Menschen-Events
 
 Im Datenbestand vorkommend. Definition in [[glossar#Menschen-Event]], UI-Behandlung in [[requirements#Menschen-Events-Behandlung]].
+
+## Aggregat-Schicht
+
+Zwischen den Pipeline-CSVs und den Frontend-Views liegt eine konsolidierte Aggregat-Schicht, die pro Quelle ein vollständiges Record führt: Datum (ISO-normalisiert mit Range-Behandlung), Personen-Counts mit Geschlechter-Aufschlüsselung, Event-Counts mit Aufschlüsselung nach `<rs type="event">`-Subtyp (abstract, seal, entry, nota) und den Korpus-Pfad.
+
+Die Aufschlüsselung nach Event-Subtyp macht die TEI-Heterogenität sichtbar: eine QGW-Quelle hat typischerweise einen Regest-Event und einen Siegel-Event, eine Stadtbücher-Quelle einen Entry-Event. Personen-Counts sind quellenbereinigt im Sinne von [[architecture#Quellenbereinigte Aggregation als Invariante]] — indirekte Erwähnungen über `kind_of_linking=corresp` teilen den `person_key` mit der genannten Person und werden nicht doppelt gezählt.
+
+Technische Umsetzung in [[architecture#Datenschichten und Aggregator]].
 
 ## Siehe auch
 

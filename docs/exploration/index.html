@@ -3,22 +3,26 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="Content-Security-Policy" content="default-src 'self'; script-src 'self'; style-src 'self'; font-src 'self'; img-src 'self' data: https://images.monasterium.net https://www.monasterium.net; connect-src 'self'; frame-ancestors 'none'; base-uri 'self'; form-action 'self'; upgrade-insecure-requests">
+    <meta name="referrer" content="strict-origin-when-cross-origin">
+    <meta http-equiv="Permissions-Policy" content="camera=(), microphone=(), geolocation=(), interest-cohort=()">
     <title>Exploration — Datenbank</title>
-    <link rel="preconnect" href="https://fonts.googleapis.com">
-    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-    <link href="https://fonts.googleapis.com/css2?family=Crimson+Pro:ital,wght@0,300;0,400;0,500;0,600;0,700;1,300;1,400;1,500&family=Inter:wght@300;400;500;600&family=JetBrains+Mono:wght@400&display=swap" rel="stylesheet">
-    <link rel="stylesheet" href="../static/css/tokens.css">
-    <link rel="stylesheet" href="../static/css/base.css">
-    <link rel="stylesheet" href="../static/css/components.css">
-    <link rel="stylesheet" href="../static/css/responsive.css">
-    <link rel="stylesheet" href="../static/css/print.css">
-    <link rel="stylesheet" href="../static/css/provenance.css">
-    <script>window.ROOT_PATH = "..";</script>
+    <link rel="preload" as="font" type="font/woff2" crossorigin
+          href="../static/fonts/inter-400-latin.woff2">
+    <link rel="stylesheet" href="../static/css/fonts.css?v=20260502215716">
+    <link rel="stylesheet" href="../static/css/tokens.css?v=20260502215716">
+    <link rel="stylesheet" href="../static/css/base.css?v=20260502215716">
+    <link rel="stylesheet" href="../static/css/components.css?v=20260502215716">
+    <link rel="stylesheet" href="../static/css/responsive.css?v=20260502215716">
+    <link rel="stylesheet" href="../static/css/print.css?v=20260502215716">
+    <link rel="stylesheet" href="../static/css/provenance.css?v=20260502215716">
     
-<link rel="stylesheet" href="../static/css/exploration.css">
+<link rel="stylesheet" href="../static/css/exploration.css?v=20260502215716">
 
 </head>
-<body>
+<body data-root-path=".."
+      data-released-min="1177"
+      data-released-max="1414">
     <a class="skip-link" href="#main-content">Zum Inhalt springen</a>
     <nav class="site-nav">
         <div class="nav-inner">
@@ -36,8 +40,6 @@
                     <button class="nav-dropdown-trigger" aria-expanded="false" aria-haspopup="true">Register <span class="nav-dropdown-arrow">&#x25BE;</span></button>
                     <div class="nav-dropdown-menu">
                         <a href="../register/persons.html">Personen</a>
-                        <a href="../register/organisations.html" class="nav-disabled" aria-disabled="true" title="Noch nicht freigegeben">Organisationen</a>
-                        <a href="../register/places.html" class="nav-disabled" aria-disabled="true" title="Noch nicht freigegeben">Orte</a>
                     </div>
                 </div>
                 <div class="nav-dropdown">
@@ -46,7 +48,6 @@
                         <a href="../exploration/roles.html">Rollen</a>
                         <a href="../exploration/networks.html">Beziehungen</a>
                         <a href="../exploration/transactions.html">Transaktionen</a>
-                        <a href="../exploration/places.html">Orte</a>
                     </div>
                 </div>
                 <a href="../analysis/index.html">Analyse</a>
@@ -54,8 +55,6 @@
                     <button class="nav-dropdown-trigger" aria-expanded="false" aria-haspopup="true">Projekt <span class="nav-dropdown-arrow">&#x25BE;</span></button>
                     <div class="nav-dropdown-menu">
                         <a href="../project/about.html">&Uuml;ber das Projekt</a>
-                        <a href="../project/statistics.html">Statistik</a>
-                        <a href="../project/quality.html">Qualit&auml;t</a>
                         <a href="../project/edition-guidelines.html">Editionsrichtlinien</a>
                         <a href="../project/glossary.html">Glossar</a>
                         <a href="../impressum.html">Impressum</a>
@@ -79,7 +78,7 @@
 <button type="button" class="prov-trigger"
         aria-expanded="false" aria-haspopup="dialog"
         aria-controls="prov-expl-persons"
-        data-prov-trigger="prov-expl-persons"><strong>16.084</strong></button>
+        data-prov-trigger="prov-expl-persons"><strong>8.406</strong></button>
 
                 
 <aside class="prov-popover" id="prov-expl-persons"
@@ -107,7 +106,7 @@
 <button type="button" class="prov-trigger"
         aria-expanded="false" aria-haspopup="dialog"
         aria-controls="prov-expl-events"
-        data-prov-trigger="prov-expl-events"><strong>4.265</strong></button>
+        data-prov-trigger="prov-expl-events"><strong>2.606</strong></button>
 
                 
 <aside class="prov-popover" id="prov-expl-events"
@@ -135,7 +134,7 @@
 <button type="button" class="prov-trigger"
         aria-expanded="false" aria-haspopup="dialog"
         aria-controls="prov-expl-docs"
-        data-prov-trigger="prov-expl-docs"><strong>2.635</strong></button>
+        data-prov-trigger="prov-expl-docs"><strong>2.601</strong></button>
 
                 
 <aside class="prov-popover" id="prov-expl-docs"
@@ -150,7 +149,7 @@
                     <p class="prov-def">Freigegebene TEI-Quellen aus allen Quellenkorpora. Der Zeitraum ist 1177–1412 (mit Ergänzungen bis 1414 für QGW II/1 und II/2).</p>
                     <footer class="prov-foot">
                         <span class="prov-foot-source"><code>sources/*/done/*.xml</code></span>
-                        <a class="prov-foot-link" href="../project/statistics.html">&rarr; Statistik</a>
+                        <a class="prov-foot-link" href="../project/datengrundlage.html">&rarr; Datengrundlage</a>
                     </footer>
                 
     </div>
@@ -196,7 +195,7 @@
                 Annotierte Beziehungen nach Verwandtschaft, Beruf, Vertretung
                 und Freundschaft &mdash; mit Geschlechter-Asymmetrie.
             </p>
-            <span class="explore-hub-card-status explore-hub-card-status--active">Verfügbar</span>
+            <span class="explore-hub-card-status explore-hub-card-status--ready">Verfügbar</span>
         </a>
 
         <a href="../exploration/transactions.html" class="explore-hub-card explore-hub-card--active">
@@ -215,41 +214,26 @@
             <span class="explore-hub-card-status explore-hub-card-status--ready">Verfügbar</span>
         </a>
 
-        <a href="../exploration/places.html" class="explore-hub-card explore-hub-card--active">
-            <div class="explore-hub-card-icon">
-                <svg width="40" height="40" viewBox="0 0 40 40" fill="none" xmlns="http://www.w3.org/2000/svg">
-                    <path d="M20 6C14.5 6 10 10.5 10 16C10 24 20 34 20 34C20 34 30 24 30 16C30 10.5 25.5 6 20 6Z" stroke="currentColor" stroke-width="1.5" fill="currentColor" fill-opacity="0.1"/>
-                    <circle cx="20" cy="16" r="4" stroke="currentColor" stroke-width="1.5"/>
-                </svg>
-            </div>
-            <h2 class="explore-hub-card-title">Orte</h2>
-            <p class="explore-hub-card-desc">
-                Einzugsgebiet der Rechtsgeschäfte: Siedlungskarte
-                und vollständiges Ortsregister mit Referenzstatus.
-            </p>
-            <span class="explore-hub-card-status explore-hub-card-status--ready">Verfügbar</span>
-        </a>
-
     </div>
 
     
     <div class="explore-transparency" id="explore-transparency">
         <span class="explore-trans-item">
-            <strong>2.635</strong> Quellen
+            <strong>2.601</strong> Quellen
         </span>
         <span class="explore-trans-sep">&middot;</span>
         <span class="explore-trans-item">
-            <strong>16.084</strong> Personen
+            <strong>8.406</strong> Personen
         </span>
         <span class="explore-trans-sep">&middot;</span>
         <span class="explore-trans-item">
-            Geschlecht: &#9794;&nbsp;<strong>11.860</strong>
-            &middot; &#9792;&nbsp;<strong>4.224</strong>
+            Geschlecht: &#9794;&nbsp;<strong>6.082</strong>
+            &middot; &#9792;&nbsp;<strong>2.324</strong>
             &middot; &mdash;&nbsp;<strong>0</strong>
         </span>
         <span class="explore-trans-sep">&middot;</span>
         <span class="explore-trans-item explore-trans-caveat">
-            Normalisierungsrate: 24.5&nbsp;%
+            Normalisierungsrate: 24.8&nbsp;%
         </span>
     </div>
 
@@ -266,14 +250,13 @@
             </div>
             <div class="footer-col footer-col-right">
                 <p>Technische Umsetzung: <a href="https://dhcraft.org" class="footer-link">Digital Humanities Craft OG</a></p>
-                <p>Lizenz: <a href="../impressum.html#lizenz" class="footer-link">CC BY 4.0</a> &middot; Exploration generiert am 30. April 2026</p>
+                <p>Lizenz: <a href="../impressum.html#lizenz" class="footer-link">CC BY 4.0</a> &middot; Exploration generiert am 2. Mai 2026</p>
             </div>
         </div>
     </footer>
 
-    <script>window.RELEASED_PERIOD = {min: 1177, max: 1414};</script>
-    <script src="../static/js/core.js"></script>
-    <script src="../static/js/provenance.js"></script>
+    <script src="../static/js/core.js?v=20260502215716"></script>
+    <script src="../static/js/provenance.js?v=20260502215716"></script>
     
 </body>
 </html>

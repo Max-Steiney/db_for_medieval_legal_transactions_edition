@@ -2,7 +2,7 @@
 
 ## Projektverantwortung
 
-**Wiener Urkundenbuch — Digitale Edition**
+**Stadt und Gemeinschaft Wien — Datenbank zu mittelalterlichen Wiener Rechtsgeschäften**
 Prosopographische Datenbank mittelalterlicher Wiener Rechtsgeschäfte (ca. 1177–1524)
 
 **Projektleitung:**
@@ -45,7 +45,7 @@ Volltext der Lizenz: [CC BY 4.0](https://creativecommons.org/licenses/by/4.0/)
 
 Bei Verwendung der digitalen Edition bitte wie folgt zitieren:
 
-> Grünwald, Korbinian: Wiener Urkundenbuch — Digitale Edition. Prosopographische Datenbank mittelalterlicher Wiener Rechtsgeschäfte. Universität Wien. URL: [Permalink]. Zugriff: [Datum].
+> Grünwald, Korbinian: Stadt und Gemeinschaft Wien — Datenbank zu mittelalterlichen Wiener Rechtsgeschäften. Universität Wien. URL: [Permalink]. Zugriff: [Datum].
 
 Einzeldokumente können über den Zitierhelfer (Anführungszeichen-Button auf jeder Dokumentseite) in Chicago- und BibTeX-Format exportiert werden.
 

@@ -15,11 +15,11 @@
 (function () {
     'use strict';
 
-    var HOVER_CLOSE_DELAY = 180;  // ms, kleine Toleranz beim Wechsel Trigger↔Popover
+    let HOVER_CLOSE_DELAY = 180;  // ms, kleine Toleranz beim Wechsel Trigger↔Popover
 
-    var currentOpen = null;       // aktuell offenes aside
-    var pinned = false;           // wurde es per Klick fixiert?
-    var hoverCloseTimer = null;
+    let currentOpen = null;       // aktuell offenes aside
+    let pinned = false;           // wurde es per Klick fixiert?
+    let hoverCloseTimer = null;
 
     function findTrigger(popoverId) {
         return document.querySelector('[data-prov-trigger="' + popoverId + '"]');
@@ -28,7 +28,7 @@
     function close(popover) {
         if (!popover) return;
         popover.setAttribute('aria-hidden', 'true');
-        var trigger = findTrigger(popover.id);
+        let trigger = findTrigger(popover.id);
         if (trigger) trigger.setAttribute('aria-expanded', 'false');
         if (currentOpen === popover) {
             currentOpen = null;
@@ -40,10 +40,35 @@
         if (!popover) return;
         if (currentOpen && currentOpen !== popover) close(currentOpen);
         popover.setAttribute('aria-hidden', 'false');
-        var trigger = findTrigger(popover.id);
+        let trigger = findTrigger(popover.id);
         if (trigger) trigger.setAttribute('aria-expanded', 'true');
         currentOpen = popover;
         if (makePinned) pinned = true;
+        // Viewport-Constraint: nach Render messen und ggf. seitlich klemmen
+        requestAnimationFrame(function () { clampToViewport(popover); });
+    }
+
+    // Verschiebt das Popover horizontal so, dass es im Viewport bleibt,
+    // und kompensiert die Pfeil-Position via CSS-Variable, damit der
+    // Pfeil weiter auf den Trigger zeigt.
+    // Nutzt documentElement.clientWidth (= sichtbarer Bereich ohne Scrollbar)
+    // statt window.innerWidth (das die Scrollbar mitzaehlt).
+    function clampToViewport(popover) {
+        popover.style.transform = '';
+        popover.style.setProperty('--prov-arrow-offset', '0px');
+        let rect = popover.getBoundingClientRect();
+        let margin = 12;
+        let vw = document.documentElement.clientWidth;
+        let shift = 0;
+        if (rect.right > vw - margin) {
+            shift = (vw - margin) - rect.right;
+        } else if (rect.left < margin) {
+            shift = margin - rect.left;
+        }
+        if (shift !== 0) {
+            popover.style.transform = 'translateX(calc(-50% + ' + shift + 'px))';
+            popover.style.setProperty('--prov-arrow-offset', (-shift) + 'px');
+        }
     }
 
     function cancelHoverClose() {
@@ -63,12 +88,12 @@
     // --- Klick: fixieren / toggle / schließen ----------------------------
 
     document.addEventListener('click', function (e) {
-        var trigger = e.target.closest('[data-prov-trigger]');
+        let trigger = e.target.closest('[data-prov-trigger]');
         if (trigger) {
             e.preventDefault();
             e.stopPropagation();
-            var id = trigger.getAttribute('data-prov-trigger');
-            var p = document.getElementById(id);
+            let id = trigger.getAttribute('data-prov-trigger');
+            let p = document.getElementById(id);
             if (!p) return;
             if (currentOpen === p && pinned) {
                 close(p);
@@ -77,7 +102,7 @@
             }
             return;
         }
-        var closeBtn = e.target.closest('.prov-popover-close');
+        let closeBtn = e.target.closest('.prov-popover-close');
         if (closeBtn) {
             e.preventDefault();
             close(closeBtn.closest('.prov-popover'));
@@ -92,43 +117,43 @@
     // --- Hover / Fokus: transient öffnen ---------------------------------
 
     document.addEventListener('mouseover', function (e) {
-        var trigger = e.target.closest('[data-prov-trigger]');
+        let trigger = e.target.closest('[data-prov-trigger]');
         if (trigger) {
             cancelHoverClose();
-            var id = trigger.getAttribute('data-prov-trigger');
-            var p = document.getElementById(id);
+            let id = trigger.getAttribute('data-prov-trigger');
+            let p = document.getElementById(id);
             if (p && currentOpen !== p) open(p, false);
             return;
         }
-        var pop = e.target.closest('.prov-popover');
+        let pop = e.target.closest('.prov-popover');
         if (pop && currentOpen === pop) {
             cancelHoverClose();
         }
     });
 
     document.addEventListener('mouseout', function (e) {
-        var trigger = e.target.closest('[data-prov-trigger]');
-        var pop = e.target.closest('.prov-popover');
+        let trigger = e.target.closest('[data-prov-trigger]');
+        let pop = e.target.closest('.prov-popover');
         if (!trigger && !pop) return;
         // Nur schließen, wenn wir den Hover-Bereich ganz verlassen.
-        var relTarget = e.relatedTarget;
-        var goingToTrigger = relTarget && relTarget.closest && relTarget.closest('[data-prov-trigger]') === findTrigger(currentOpen ? currentOpen.id : '');
-        var goingToPop = relTarget && relTarget.closest && relTarget.closest('.prov-popover') === currentOpen;
+        let relTarget = e.relatedTarget;
+        let goingToTrigger = relTarget && relTarget.closest && relTarget.closest('[data-prov-trigger]') === findTrigger(currentOpen ? currentOpen.id : '');
+        let goingToPop = relTarget && relTarget.closest && relTarget.closest('.prov-popover') === currentOpen;
         if (goingToTrigger || goingToPop) return;
         if (currentOpen && !pinned) scheduleHoverClose(currentOpen);
     });
 
     document.addEventListener('focusin', function (e) {
-        var trigger = e.target.closest('[data-prov-trigger]');
+        let trigger = e.target.closest('[data-prov-trigger]');
         if (!trigger) return;
         cancelHoverClose();
-        var id = trigger.getAttribute('data-prov-trigger');
-        var p = document.getElementById(id);
+        let id = trigger.getAttribute('data-prov-trigger');
+        let p = document.getElementById(id);
         if (p && currentOpen !== p) open(p, false);
     });
 
     document.addEventListener('focusout', function (e) {
-        var trigger = e.target.closest('[data-prov-trigger]');
+        let trigger = e.target.closest('[data-prov-trigger]');
         if (!trigger) return;
         if (currentOpen && !pinned) scheduleHoverClose(currentOpen);
     });
@@ -139,7 +164,7 @@
         if (e.key === 'Escape' && currentOpen) {
             close(currentOpen);
             // Fokus zurück auf den Trigger, für Screenreader-Flow
-            var t = findTrigger(currentOpen && currentOpen.id);
+            let t = findTrigger(currentOpen && currentOpen.id);
             if (t) t.focus();
         }
     });

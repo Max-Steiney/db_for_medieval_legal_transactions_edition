@@ -12,6 +12,60 @@ Einträge in umgekehrt chronologischer Reihenfolge, neueste oben.
 
 ---
 
+## 2026-05-02 Person-View Phase 1: Profilseiten pro Entität
+
+Bisher waren Personennamen in der Edition Sackgassen: in der Annotations-Tabelle der Quellen-Detailseite und im Volltext klickbar, aber nur als Hash-Anker auf das Listen-Register `register/persons.html#pe__id` — wo der Anker im JS-gerenderten Index nicht ankam. Beziehungs-Daten lagen im Pipeline-Output (`kin_relations_in_sources.csv`, `friend_/rep_/occ_/title-ref_relations_in_sources.csv`), waren aber nirgends UI-seitig sichtbar. Beispiel: Simon Pötel und Anna Pötlin sind im TEI als Ehepaar codiert, im Frontend war diese Verwandtschaft nicht einsehbar.
+
+Phase 1 macht jede [[glossar#Individuelle Person]] zu einer eigenen Profilseite unter `register/persons/<pe__id>.html`. Quelle der Daten ist der neue Aggregator `frontend/aggregator/person_profiles.py`: er joint Stammdaten aus `persons.csv` (Name, Geschlecht, Tod, Notiz, Wien-Wiki-Link), Quellenvorkommen aus dem bestehenden `reverse_index`, Rollen-Aggregation aus `persons_in_events.csv` und Beziehungen aus den fünf Relations-CSVs. Die Brücke zwischen `file_key` (z. B. `f__QGW_10`) und konkreter Quellen-URL läuft über `filenames.csv`, weil die Pipeline-CSVs file_key-zentriert sind und `reverse_index` idno-zentriert.
+
+Beziehungs-Modell: kin/friend/rep werden bidirektional aufgelöst (eine CSV-Zeile erscheint im Profil beider Seiten), occ und title-ref nur in der Subjekt-Sicht (das Gegenüber ist eine Organisation, die noch keine Profilseite hat). Pro Beziehungseintrag wird die Quelle als Nachweis verlinkt. Damit ist die Verwandtschafts-Lücke geschlossen: Diemut → Berthold (Gemahlin) und Berthold → Diemut (Counterpart) erscheinen jeweils im Profil der anderen Person, mit Klick-Pfad zur Quelle.
+
+Verlinkungs-Pfade: `frontend/renderer.py` zeigt `<rs type="person" ref>` jetzt auf das Profil statt auf das Listen-Register; die Annotations-Tabelle in `document.js` setzt Personennamen als Profil-Links; das Personenregister `register/persons.html` linkt die Namens-Spalte aufs Profil, der Quellen-Badge bleibt Inline-Detail-Trigger (Quellen einsehen ohne Seitenwechsel). Org/Ort-Refs sind unverändert — Phase 2 öffnet sie analog.
+
+Verworfene Alternativen: (a) ein einzelnes `person_profiles.json` mit allen Profilen — gewonnen wäre Client-Lazy-Loading-Möglichkeit, verloren wären zwei MB JSON für ein Feature, das aktuell rein server-gerendert ist; daher in-memory-Pipeline ohne JSON-Zwischenstufe. (b) Tab-Bar Lebenslauf/Beziehungen/Quellen — gegen das „maximaler Informations-Output"-Prinzip aus [[ui-design]], permanente Sichtbarkeit aller Sub-Bereiche schlägt schmaleres Tab-Switching. (c) `<rs>`-Spans im Volltext zusätzlich mit Cursor-Pointer markieren — verworfen, weil sie ohnehin schon `<a>`-Tags sind und Browser-Default-Hover ausreicht.
+
+Korpus-Lücke beim Smoke-Test: das Pötel-Paar selbst ist nur in `Vienna_1458-66` belegt, das nicht im freigegebenen Korpus liegt. Profile für beide existieren also nicht — funktional korrekt, weil das Released-Set die Profil-Menge bestimmt. Sobald QGW II/2 freigegeben wird, taucht das Paar automatisch auf. Verifiziert wurde das Feature stattdessen am Paar Diemut/Berthold (Nr. 10, 1274) und an Alexander III. (Beruf-Beziehung zur Vatikan-Org).
+
+Build-Zahlen: 8.441 Profile, Build-Zeit von ~18 s auf ~19 s. Tests: 333 grün, 32 skipped. Die Profilseite selbst ist absichtlich schlank gehalten (Toolbar mit Breadcrumb + Meta-Strip, Header mit Name + Notiz + Quellen-Titel-Chips, Beziehungs-Block, Quellen-Tabelle) und auf Vereinheitlichung mit der Quellen-Detailseite ausgelegt. Stat-Karten (Quellen-Count, Rollen-Aufschlüsselung, Beziehungs-Count) wurden nach erstem Wurf wieder entfernt — sie brachen die Konsistenz zur restlichen UI.
+
+Offen für eine eigene Session — Phase 1.5 / Phase 2:
+
+- **Profilseite reicher.** Vier Achsen, in absteigender Schmerz-Reihenfolge: (1) Header als richtige Visitenkarte (Name groß, Lebensspanne als Pille, Sex-Symbol, Wien-Wiki-Link prominent statt im Footer); (2) Beziehungs-Tabellen als Listen-/Karten-Form, weil Tabellen bei 1–3 Einträgen klobig wirken; (3) Quellen-Tabelle um Rolle-pro-Quelle, Erschließungsform-Icon und Faksimile-Indikator ergänzen, damit pro Zeile sichtbar ist, *was* die Person dort tat; (4) Mention-Kontext-Snippet, also der Satz aus dem TEI rund um den jeweiligen `<rs>`-Span — am wertvollsten, weil „wie wird die Person beschrieben" ohne Quellen-Öffnen sichtbar wäre, und am aufwendigsten.
+
+- **Org-Profile / Ort-Profile (Phase 2).** Datenmodell-seitig schon vorhanden (`organisations.csv`, `places.csv`, `orgs_in_sources.csv`, `places_in_sources.csv`, `topo_relations_in_sources.csv` für Topographie). Verworfen für Phase 1, weil die Beziehungs-Substanz bei Personen am dichtesten ist und das Pötel-Beispiel dort liegt. Bei Org-Profilen wird die occ-Beziehung dann von beiden Seiten sichtbar (Person mit Amt → Org mit ihren Amtsträger:innen).
+
+---
+
+## 2026-05-02 Tooltip-Komponenten getrennt, Toggle entfernt
+
+Die Startseiten-Card „Quellen durchsuchen" wird konzeptionell aufgeräumt. Der Toggle „Erwähnte Geschäfte einbeziehen" über der Korpus-Matrix entfällt. Begründung: Die Matrix-Werte werden nicht mehr zwischen zwei Zählebenen umgeschaltet, sondern zeigen einheitlich die quellenbereinigte Default-Variante (Personen in verschachtelten rs-Events ausgeschlossen, vgl. [[glossar#Gesamtnennung]]). Die parallele Aggregator-Schicht für die inklusive Variante (`person_mentions_with_mentioned`, `distinct_events_with_mentioned`, der zweite XPath-Loop über alle rs-Events) ist damit ohne Konsumenten und wird aus `frontend/build.py` entfernt. Für eine zukünftige Wiedereinführung als globaler Zählebenen-Umschalter (vgl. [[requirements#Umschaltbarkeit der Zählebenen]]) gibt es einen sauberen Rebuild-Pfad — der Aggregator hat keinen verkrusteten Toggle-Zustand mehr.
+
+Der Begriff **Event** bleibt im UI bewusst stehen, gegen den ersten Impuls, ihn durch „Rechtsgeschäft" zu ersetzen. Die `events_in_sources.csv` zeigt, dass die `<rs type="event">`-Annotation heterogen ist: 2.025 `abstract` (das eigentliche Regest), 1.565 `seal` (Siegelvermerke), 439 `entry` (Kanzleivermerke), 47 `nota`, plus 138 ohne Kategorie. Nur `abstract` deckt sich mit der Glossar-Definition von [[glossar#Rechtsgeschäft]]. „Rechtsgeschäft" als Spaltenlabel wäre für die Begleitelemente zu eng; „Event" ist der ehrlichere Sammelbegriff und respektiert das technische Vokabular der TEI-Annotation. Eine separate Aufschlüsselung pro `event_in`-Kategorie bleibt eine offene Designfrage für eine spätere Session.
+
+Die Tooltip-Komponente wird in zwei eigenständige Varianten zerlegt, weil sie zuvor zwei verschiedene Aufgaben in einem Popover gemischt hat. **Glossar-Tip** (Macro `glossary_tip`): kompaktes `i`-Icon neben einem Begriff, öffnet die Begriffsdefinition mit Link zum Glossar. **Provenienz-Tip** (Macros `prov_stat` + `prov_popover`): an einer Zahl, gepunktet unterstrichen, öffnet den Verifikations-XPath und einen kurzen Hinweis zur Filterung. Beide Komponenten teilen die JS-Logik aus `provenance.js` (gleiche `data-prov-trigger`-Mechanik), unterscheiden sich aber in Trigger-Form und Inhalt. Auf der Startseite folgt die Korpus-Matrix dem Schema: jeder Spalten-Header trägt einen Glossar-Tip, die Gesamt-Zahlen in der `tfoot`-Zeile tragen einen Provenienz-Tip. Die Zellen pro Korpus bleiben einfache Zahlen, weil ihre Provenienz mit der Spalten-Summe übereinstimmt. Beim Ausrollen auf weitere Seiten (Exploration-Subpages, Datenqualität, Statistik — vgl. [[journal]]-Eintrag 2026-04-17) sollte das Schema konsistent gehalten werden: Glossar an Begriffen, Provenienz an Zahlen.
+
+Begleitend wird der Provenienz-Popover-Container auf horizontale Edge-Detection erweitert. Beim Öffnen prüft `clampToViewport` in `provenance.js`, ob das Popover über `documentElement.clientWidth - margin` hinausragt, und kompensiert über `transform: translateX(...)`. Der Pfeil bleibt am ursprünglichen Trigger ausgerichtet via CSS-Variable `--prov-arrow-offset`. Ohne diesen Mechanismus war die Personenregister-Card am rechten Rand der Startseite betroffen.
+
+Drei kleinere Refactors: (1) `var` → `let` projektweit über alle JS-Files in `frontend/static/js/`. Ein TDZ-Bug in `index.js` (`rangeSlider` wurde im Init-Callback gelesen, bevor `initRangeSlider()` zurückkehrte) wurde durch eine Forward-Deklaration `let rangeSlider;` am Funktionsanfang behoben. (2) Die Korpus-Matrix in `frontend/templates/startseite.html` zieht ihre Spalten-Configs (Label, Glossar-Definition, Verifikations-XPath, Provenienz-Note) aus einer Liste `_compute_matrix_columns()` in `build.py`. Eine zusätzliche Spalte braucht jetzt nur einen weiteren Eintrag in dieser Liste, kein dupliziertes Template-Markup. (3) Spalten-Header `Quellenkorpus` ergänzt, damit die erste Spalte der Matrix nicht mehr unbeschriftet ist.
+
+---
+
+## 2026-05-01 Analyse-Seite Richtung A umgesetzt und refactored
+
+Die [[analyse|Analyse-Seite]] ist von der Slot-Workbench (Phase 1, Familien-Tab-Bar als oberste UI-Ebene) zu **Richtung A** umgebaut: kuratierte Frage-Galerie als Einstieg, einziges Result-Panel als zentrale Antwort-Bühne, Custom-Builder darunter im `<details>` für freie Slot-Kombinationen. Der Tab-Bar-Ansatz wurde verworfen, weil er Familien als oberste Mental-Model-Ebene aufzwang — die Galerie bietet stattdessen direkten Zugriff über die Forschungsfrage selbst.
+
+Architektur-Entscheidung **Frage als first-class concept**: Eine Frage ist autonom (`{ id, group, text, dataFiles, viz, answer, resolveViz, resolveComparison, resolveDrillDown, coverage }`), nicht an eine Familie gebunden. Familien bleiben für den Custom-Builder relevant. Das entkoppelt die kuratierte Schicht von der Slot-Architektur.
+
+Architektur-Entscheidung **drei Mini-Viz-Stufen**: Karten zeigen subtile 6 px Stacked-Bars, 28 px Sparklines, Top-3-Mini-Bars oder 2×2-Heatmaps; das Result-Panel zeigt vollwertige SVG-Renderings. Beide Stufen teilen sich die Renderer-Logik.
+
+Architektur-Entscheidung **Permalinks doppelt**: `#q=<id>` für Galerie, `#f=<fid>&...` für Custom-Builder. Beide bidirektional serialisiert; Custom-Permalink öffnet das `<details>` automatisch. Permalink-Copy-Button mit Clipboard-API ersetzt den vorherigen reinen Anzeige-Hint.
+
+Refactor-Pass danach: COVERAGE-Map konsolidiert vier nahezu identische Coverage-Funktionen, generischer `topN(source, n, opts)` ersetzt drei `topX`-Helfer, Label-Maps zentralisiert (Roles/Orgs/Tx), Driver in neun nummerierte Sub-Sections gegliedert, CSS auf Token-Aliases umgestellt, Mobile-Layout < 600 px ergänzt, `:focus-visible`-Outlines durchgängig. Stub-Familien 2–5 aus `analysis-families.js` entfernt (waren tot und irreführend).
+
+Bekannte Folge-Lücken: Familien 2–5 sind als Galerie-Resolver implementiert, aber noch nicht als Custom-Builder-Slots. Korpus-Filter ist weiter aufgeschoben, weil die Galerie-Antworten Korpus-übergreifend formuliert sind. `RELEASED_PERIOD` aus Event-Datum dynamisch ableiten (CS-Feedback-Punkt 1.2) wartet weiter auf eine konflikt-freie Session mit dem Pipeline-Repo. Tests: 23 grün, davon 12 Aggregat-Konsistenz-Tests pro Frage, die Pipeline-Drift erkennen, bevor Nutzer:innen falsche Zahlen sehen.
+
+---
+
 ## 2026-04-17 Terminologie-Konsolidierung, Erschließungsform, Provenienz-Ausrollung
 
 Die UI-Terminologie wird durchgehend auf die kanonischen Begriffe aus [[glossar]] und [[decisions#Begriff Quellenkorpus]] gezogen. Alle benutzerseitig sichtbaren Vorkommen von „Dokument(e)" werden zu „Quelle(n)", „Rechtsakt(e)" zu „Rechtsgeschäft(e)", eine verbliebene „Sammlung"-Spaltenkopfzeile zu „Quellenkorpus". Technische Labels auf HTML-Ebene (ARIA-Attribute, CSS-IDs) bleiben unberührt, weil sie sich auf das HTML-Dokument als Trägerformat beziehen, nicht auf die Quelle der Edition.
@@ -86,4 +140,4 @@ Verworfen wurde ein README und eine Unterordner-Gliederung. Grund ist, dass die 
 
 Für das Glossar wurde ein Kriterium festgelegt. Aufgenommen werden nur Begriffe, die im UI erscheinen und ohne Definition zu Missverständnissen führen. Selbsterklärende Alltagsbegriffe wie „Ehepaar" oder „Witwe" bleiben draußen. Aufgenommen bleibt „Rechtsgeschäft", weil es der Gegenstand der Datenbank ist und seine Abgrenzung zu [[glossar#Event]] im UI-Kontext präzise sein muss.
 
-Offen: die konkrete Liste der Grundabfragen im Bereich Analyse. Sie wird mit dem Fachteam festgelegt und lebt vermutlich als eigener Bereich unter [[ui-design#Analyse]] weiter.
+Offen: die konkrete Liste der Grundabfragen im Bereich Analyse. Sie wird mit dem Fachteam festgelegt und lebt vermutlich als eigener Bereich unter [[analyse]] weiter.

@@ -21,7 +21,7 @@ Ableitung:
 
 Ableitung:
 - Anforderung [[requirements#Bestandsfilterung als universelle Dimension]]
-- Komponente [[ui-design#Analyse]]
+- Komponente [[analyse]]
 - Begriff [[glossar#Rolle]]
 
 ### Bestandsvergleich
@@ -38,14 +38,14 @@ Ableitung:
 *Als Forscherin, die Entwicklungen über die Zeit untersucht, will ich eine Kategorie im Zeitraster sehen, damit ich Kontinuitäten und Brüche erkenne.*
 
 Ableitung:
-- Komponente [[ui-design#Zeitfilter]], [[ui-design#Exploration]]
+- Komponente [[ui-design#Zeitfilter]], [[exploration]]
 
 ### Rollenkombination abfragen
 
 *Als Forscherin, die gemeinsam handelnde Eheleute untersucht, will ich diese [[glossar#Rollenkombination]] direkt abrufen, damit ich nicht jede Abfrage manuell zusammenbaue.*
 
 Ableitung:
-- Komponente [[ui-design#Analyse]]
+- Komponente [[analyse]]
 - Begriff [[glossar#Rollenkombination]]
 
 ## Wissenschaftliche Absicherung
@@ -56,7 +56,7 @@ Ableitung:
 
 Ableitung:
 - Anforderung [[requirements#Datenrobustheit und Provenienz]]
-- Komponente [[ui-design#Provenienz-Tooltip]]
+- Komponente [[ui-design#Provenienz-Tip und Glossar-Tip]]
 
 ### Peer-Review einer Abfrage
 
@@ -79,7 +79,7 @@ Ableitung:
 
 Ableitung:
 - Anforderung [[requirements#Datenrobustheit und Provenienz]]
-- Komponente [[ui-design#Provenienz-Tooltip]]
+- Komponente [[ui-design#Provenienz-Tip und Glossar-Tip]]
 - Fundament [[architecture]]
 
 ## Begriffliche Orientierung
@@ -108,7 +108,7 @@ Ableitung:
 Die Liste der konkreten Grundabfragen wird mit dem Fachteam festgelegt. Typische Kandidaten sind Abfragen nach Rollen und Geschlecht, nach [[glossar#Rollenkombination|Rollenkombinationen]] und nach Bestandsvergleichen.
 
 Ableitung:
-- Komponente [[ui-design#Analyse]]
+- Komponente [[analyse]]
 
 ## Siehe auch
 

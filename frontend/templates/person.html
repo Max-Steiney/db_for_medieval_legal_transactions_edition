@@ -1,0 +1,173 @@
+{% extends "base.html" %}
+
+{% block title %}{{ profile.display }}{% if profile.death_display %} (&dagger; {{ profile.death_display }}){% endif %}{% endblock %}
+
+{% block head %}
+<link rel="stylesheet" href="{{ root_path }}/static/css/document.css?v={{ asset_v }}">
+<link rel="stylesheet" href="{{ root_path }}/static/css/person.css?v={{ asset_v }}">
+{% endblock %}
+
+{% set sex_label = {'m': 'männlich', 'f': 'weiblich'}.get(profile.sex, 'Geschlecht unbestimmt') %}
+
+{% set ROLE_LABEL = {'issuer': 'Aussteller*in', 'recipient': 'Empfänger*in', 'witness': 'Zeuge / Siegler*in', 'other': 'Sonstige'} %}
+{% set REL_LABEL = {'kin': 'Verwandtschaft', 'friend': 'Freundschaft', 'rep': 'Stellvertretung', 'occ': 'Beruf / Amt', 'title_ref': 'Titel'} %}
+{% set REL_HINT = {
+    'kin': 'Verwandtschaftsverhältnisse, wie sie in den Quellen explizit benannt werden.',
+    'friend': 'Quellen, in denen die Beziehung als Freundschaft markiert ist.',
+    'rep': 'Stellvertretungs-Beziehungen — z. B. handelt eine Person an Stelle einer anderen.',
+    'occ': 'Berufs- oder Amtsbezeichnung in Bezug auf eine Institution.',
+    'title_ref': 'Titel der Person in Bezug auf eine Institution oder einen Ort.'
+} %}
+
+{% block content %}
+<article class="person-profile">
+
+    <div class="person-toolbar">
+        <div class="person-toolbar-inner">
+            <nav class="person-breadcrumb" aria-label="Position">
+                <a href="{{ root_path }}/register/persons.html">Personenregister</a>
+                <span class="bc-sep">&rsaquo;</span>
+                <span class="bc-doc"><strong>{{ profile.display }}</strong></span>
+            </nav>
+            <div class="person-toolbar-meta">
+                <span class="meta-pair">
+                    <span class="meta-label">Geschlecht</span>
+                    <span class="meta-value">{{ sex_label }}</span>
+                </span>
+                {% if profile.active_min %}
+                <span class="meta-pair">
+                    <span class="meta-label">Belegt</span>
+                    <span class="meta-value">{% if profile.active_max and profile.active_max != profile.active_min %}{{ profile.active_min }}–{{ profile.active_max }}{% else %}{{ profile.active_min }}{% endif %}</span>
+                </span>
+                {% endif %}
+                {% if profile.death_display %}
+                <span class="meta-pair">
+                    <span class="meta-label">Verstorben vor</span>
+                    <span class="meta-value">{{ profile.death_display }}</span>
+                </span>
+                {% endif %}
+                <span class="meta-pair person-id-pair">
+                    <span class="meta-label">ID</span>
+                    <code class="meta-value person-id">{{ profile.id }}</code>
+                </span>
+            </div>
+        </div>
+    </div>
+
+    <header class="person-header">
+        <h1 class="person-name">
+            {% if profile.forename %}<span class="pn-fn">{{ profile.forename }}</span>{% endif %}
+            {% if profile.surname %}<span class="pn-sn">{{ profile.surname }}</span>{% endif %}
+            {% if profile.addName %}<span class="pn-an">{{ profile.addName }}</span>{% endif %}
+            {% if not profile.forename and not profile.surname and not profile.addName %}{{ profile.display }}{% endif %}
+        </h1>
+        {% if profile.note %}
+        <p class="person-note">{{ profile.note }}</p>
+        {% endif %}
+        {% if profile.source_titles %}
+        <p class="person-titles">
+            <span class="pt-label">In den Quellen genannt als</span>
+            {% for t in profile.source_titles %}<span class="pt-chip">{{ t }}</span>{% endfor %}
+        </p>
+        {% endif %}
+        {% if profile.wiki_label and profile.wiki_pageid %}
+        <p class="person-extlinks">
+            <a class="ext-link" href="https://www.wienwiki.at/?curid={{ profile.wiki_pageid }}" target="_blank" rel="noopener noreferrer">Wien-Wiki: {{ profile.wiki_label }}</a>
+        </p>
+        {% endif %}
+    </header>
+
+    {% set rel_total = profile.relations.kin|length + profile.relations.friend|length + profile.relations.rep|length + profile.relations.occ|length + profile.relations.title_ref|length %}
+
+    {# Beziehungs-Block: pro Typ ein Sub-Abschnitt, nur wenn Eintraege da sind. #}
+    {% if rel_total %}
+    <section class="person-relations" aria-label="Beziehungen">
+        <h2 class="section-head">Beziehungen</h2>
+        {% for rel_type in ['kin', 'friend', 'rep', 'occ', 'title_ref'] %}
+        {% set entries = profile.relations[rel_type] %}
+        {% if entries %}
+        <section class="rel-block rel-block-{{ rel_type }}">
+            <header class="rel-block-head">
+                <h3 class="rel-block-title">{{ REL_LABEL[rel_type] }}</h3>
+                <span class="rel-block-count">{{ entries|length }}</span>
+                <span class="rel-block-hint">{{ REL_HINT[rel_type] }}</span>
+            </header>
+            <table class="rel-table">
+                <thead>
+                    <tr>
+                        <th class="rel-col-other">{% if rel_type in ['occ', 'title_ref'] %}Institution{% else %}Person{% endif %}</th>
+                        <th class="rel-col-label">Bezeichnung</th>
+                        <th class="rel-col-perspective">Perspektive</th>
+                        <th class="rel-col-source">Quelle</th>
+                    </tr>
+                </thead>
+                <tbody>
+                {% for e in entries %}
+                    <tr>
+                        <td class="rel-col-other">
+                            {% if e.other_kind == 'person' and e.other_id and e.other_id in linked_persons %}
+                                <a class="rel-other-link" href="{{ root_path }}/register/persons/{{ e.other_id }}.html">{{ e.other_name }}</a>
+                            {% else %}
+                                <span class="rel-other-plain">{{ e.other_name }}</span>
+                            {% endif %}
+                        </td>
+                        <td class="rel-col-label"><em>{{ e.label or '—' }}</em></td>
+                        <td class="rel-col-perspective">
+                            {% if e.role == 'subject' %}
+                                {{ profile.display }} → {{ e.other_name }}
+                            {% else %}
+                                {{ e.other_name }} → {{ profile.display }}
+                            {% endif %}
+                        </td>
+                        <td class="rel-col-source">
+                            {% if e.idno and e.url %}
+                                <a class="rel-source-link" href="{{ root_path }}/{{ e.url }}">Nr. {{ e.idno }}{% if e.date_display %} ({{ e.date_display }}){% endif %}</a>
+                            {% elif e.idno %}
+                                Nr. {{ e.idno }}
+                            {% else %}
+                                —
+                            {% endif %}
+                        </td>
+                    </tr>
+                {% endfor %}
+                </tbody>
+            </table>
+        </section>
+        {% endif %}
+        {% endfor %}
+    </section>
+    {% endif %}
+
+    {# Quellen-Tabelle: alle Belege chronologisch. #}
+    <section class="person-sources" aria-label="Quellen mit Nennung">
+        <h2 class="section-head">Quellen mit Nennung</h2>
+        <table class="person-source-table">
+            <thead>
+                <tr>
+                    <th class="src-col-idno">Nr.</th>
+                    <th class="src-col-date">Datum</th>
+                    <th class="src-col-corpus">Quellenkorpus</th>
+                    <th class="src-col-regest">Regest</th>
+                </tr>
+            </thead>
+            <tbody>
+            {% for d in profile.sources %}
+                <tr>
+                    <td class="src-col-idno"><a href="{{ root_path }}/{{ d.url }}">{{ d.idno }}</a></td>
+                    <td class="src-col-date">{{ d.date_display or '—' }}</td>
+                    <td class="src-col-corpus">{{ d.collection_label }}</td>
+                    <td class="src-col-regest">{{ d.regest or '—' }}</td>
+                </tr>
+            {% endfor %}
+            </tbody>
+        </table>
+    </section>
+
+</article>
+{% endblock %}
+
+{% block scripts %}
+<script src="{{ root_path }}/static/js/tooltips.js?v={{ asset_v }}"></script>
+{% endblock %}
+
+{% block footer_info %}{{ profile.display }} &middot; {{ profile.id }}{% endblock %}

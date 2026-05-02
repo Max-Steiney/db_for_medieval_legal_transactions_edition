@@ -79,8 +79,22 @@ def _render_element(element, registers):
 # --- Element handlers ---
 
 
+_DIV_HEADINGS = {
+    "abstract": "Regest",
+    "seal": "Siegelbeschreibung",
+    "nota": "Indorsat / Nota",
+    "entry": "Eintrag",
+}
+
+
 def _render_div(element, registers):
-    """Render <div type="...">."""
+    """Render <div type="...">.
+
+    Pro `div type` injizieren wir eine kleine Mikro-Ueberschrift (s.
+    _DIV_HEADINGS), damit beim Scrollen erkennbar ist, wo Regest endet
+    und Siegelbeschreibung beginnt. Andere div-Types bleiben ohne
+    Heading; `header`/`lists` haben Spezialbehandlung.
+    """
     div_type = element.get("type", "")
 
     # Skip lists div (XInclude references)
@@ -92,7 +106,16 @@ def _render_div(element, registers):
     if div_type == "header":
         return f'<header class="{css_class}">{_render_children(element, registers)}</header>'
 
-    return f'<section class="{css_class}">{_render_children(element, registers)}</section>'
+    heading_label = _DIV_HEADINGS.get(div_type)
+    heading_html = (
+        f'<h2 class="tei-section-head">{escape(heading_label)}</h2>'
+        if heading_label else ""
+    )
+    return (
+        f'<section class="{css_class}">'
+        f'{heading_html}{_render_children(element, registers)}'
+        f'</section>'
+    )
 
 
 def _render_p(element, registers):
@@ -128,8 +151,14 @@ def _render_rs(element, registers):
         children = _render_children(element, registers)
         if ref and ref in register:
             root_path = registers[3] if len(registers) > 3 else "."
-            page = _ENTITY_PAGE[rs_type]
-            href = f"{root_path}/{page}.html#{ref}"
+            # Personen haben Profilseiten unter register/persons/<id>.html;
+            # Orgs/Orte verlinken weiterhin auf das (noch unfreigegebene)
+            # Listen-Register mit Hash-Anker.
+            if rs_type == "person":
+                href = f"{root_path}/register/persons/{ref}.html"
+            else:
+                page = _ENTITY_PAGE[rs_type]
+                href = f"{root_path}/{page}.html#{ref}"
             return (
                 f'<a class="anno-{rs_type}" data-ref="{escape(ref)}" '
                 f'title="{escape(tooltip)}" href="{escape(href)}">'

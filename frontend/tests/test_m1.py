@@ -1,4 +1,4 @@
-﻿"""Tests for M1 deliverables: Quality Strip, Annotation Toggle, TEI Download."""
+﻿"""Tests for M1 deliverables: Annotation Toggle, TEI Download."""
 
 import json
 from pathlib import Path
@@ -51,9 +51,6 @@ def _sample_meta(**overrides):
         "prev_id": None,
         "next_url": None,
         "next_id": None,
-        "quality_score": 0,
-        "quality_findings": [],
-        "quality_count": 0,
         "filename": "100",
     }
     base.update(overrides)
@@ -67,103 +64,36 @@ def jinja_env():
 
 
 # ---------------------------------------------------------------------------
-# Quality Strip
-# ---------------------------------------------------------------------------
-
-class TestQualityStrip:
-
-    def test_quality_badge_present(self, jinja_env):
-        html = _build_doc_html(_sample_meta(), "<p>Text</p>", jinja_env)
-        finder = parse_html(html)
-        badges = finder.find_by_attr("id", "quality-toggle")
-        assert len(badges) == 1
-
-    def test_quality_badge_ok_for_clean_doc(self, jinja_env):
-        meta = _sample_meta(quality_score=0, quality_count=0)
-        html = _build_doc_html(meta, "<p>Text</p>", jinja_env)
-        finder = parse_html(html)
-        badges = finder.find_by_class("toolbar-quality-ok")
-        assert len(badges) == 1
-
-    def test_quality_badge_warning_for_flagged_doc(self, jinja_env):
-        findings = [{"severity": "warning", "category": "ref_null", "detail": "ref=NULL"}]
-        meta = _sample_meta(quality_score=2, quality_count=1, quality_findings=findings)
-        html = _build_doc_html(meta, "<p>Text</p>", jinja_env)
-        finder = parse_html(html)
-        badges = finder.find_by_class("toolbar-quality-warning")
-        assert len(badges) == 1
-
-    def test_quality_panel_present(self, jinja_env):
-        html = _build_doc_html(_sample_meta(), "<p>Text</p>", jinja_env)
-        finder = parse_html(html)
-        panels = finder.find_by_attr("id", "quality-panel")
-        assert len(panels) == 1
-
-    def test_quality_panel_empty_for_clean_doc(self, jinja_env):
-        meta = _sample_meta(quality_score=0, quality_count=0)
-        html = _build_doc_html(meta, "<p>Text</p>", jinja_env)
-        assert "Keine Auff\u00e4lligkeiten" in html
-
-    def test_quality_panel_shows_findings(self, jinja_env):
-        findings = [
-            {"severity": "warning", "category": "ref_null", "detail": "ref=NULL in line 5"},
-            {"severity": "info", "category": "rs_no_type", "detail": "rs without type"},
-        ]
-        meta = _sample_meta(quality_score=2, quality_count=2, quality_findings=findings)
-        html = _build_doc_html(meta, "<p>Text</p>", jinja_env)
-        assert "ref_null" in html
-        assert "rs_no_type" in html
-        finder = parse_html(html)
-        tables = finder.find_by_class("quality-table")
-        assert len(tables) == 1
-
-    def test_quality_score_in_doc_meta_json(self, jinja_env):
-        meta = _sample_meta(quality_score=1)
-        html = _build_doc_html(meta, "<p>Text</p>", jinja_env)
-        # Extract JSON from script tag
-        import re
-        match = re.search(r'id="doc-meta"[^>]*>(.*?)</script>', html, re.DOTALL)
-        assert match
-        doc_meta = json.loads(match.group(1))
-        assert doc_meta["quality_score"] == 1
-
-
-# ---------------------------------------------------------------------------
 # Annotation Toggle
 # ---------------------------------------------------------------------------
 
 class TestAnnotationToggle:
+    """Annotation-Layer-Toggle ist die Detail-Legende selbst — kein
+    eigener Toolbar-Button und kein Dropdown-Popover mehr. Die Legende
+    haelt vier `.legend-toggle`-Buttons mit `data-layer` und
+    `aria-pressed`. JS in document.js togglet damit die `.doc-body`-
+    Klassen `hide-{entities,functions,attributes,triggers}`.
+    """
 
-    def test_toggle_button_present(self, jinja_env):
+    def test_legend_toggles_present(self, jinja_env):
         html = _build_doc_html(_sample_meta(), "<p>Text</p>", jinja_env)
         finder = parse_html(html)
-        btns = finder.find_by_attr("id", "anno-toggle")
-        assert len(btns) == 1
+        toggles = finder.find_by_attr("data-layer")
+        assert len(toggles) == 4
 
-    def test_toggle_popover_present(self, jinja_env):
+    def test_legend_toggle_layers_are_correct(self, jinja_env):
         html = _build_doc_html(_sample_meta(), "<p>Text</p>", jinja_env)
         finder = parse_html(html)
-        popovers = finder.find_by_attr("id", "anno-toggle-popover")
-        assert len(popovers) == 1
-
-    def test_four_layer_checkboxes(self, jinja_env):
-        html = _build_doc_html(_sample_meta(), "<p>Text</p>", jinja_env)
-        finder = parse_html(html)
-        checkboxes = finder.find_by_attr("data-layer")
-        assert len(checkboxes) == 4
-
-    def test_checkbox_layers_are_correct(self, jinja_env):
-        html = _build_doc_html(_sample_meta(), "<p>Text</p>", jinja_env)
-        finder = parse_html(html)
-        checkboxes = finder.find_by_attr("data-layer")
-        layers = {attrs["data-layer"] for _, attrs in checkboxes}
+        toggles = finder.find_by_attr("data-layer")
+        layers = {attrs["data-layer"] for _, attrs in toggles}
         assert layers == {"entities", "functions", "attributes", "triggers"}
 
-    def test_toggle_all_button_present(self, jinja_env):
+    def test_no_toolbar_anno_button(self, jinja_env):
         html = _build_doc_html(_sample_meta(), "<p>Text</p>", jinja_env)
-        finder = parse_html(html)
-        btns = finder.find_by_attr("id", "anno-toggle-all")
-        assert len(btns) == 1
+        # Regression-Guard: das alte Dropdown ist weg.
+        assert 'id="anno-toggle"' not in html
+        assert 'id="anno-toggle-popover"' not in html
+        assert 'id="anno-toggle-all"' not in html
 
 
 # ---------------------------------------------------------------------------
@@ -209,15 +139,6 @@ class TestTeiOutputPath:
 
 
 # ---------------------------------------------------------------------------
-# Top Persons (E7)
+# Top Persons (E7) — Statistics page wurde entfernt; Test wurde mitentfernt.
+# Top-Persons-Listen leben jetzt im Personenregister.
 # ---------------------------------------------------------------------------
-
-class TestTopPersons:
-
-    def test_top_persons_in_stats_json(self):
-        """Verify _build_statistics includes topPersons in the JSON."""
-        # This is a structural check — the actual content depends on pipeline data
-        # We verify the key exists by checking the stats_json construction
-        import inspect
-        source = inspect.getsource(frontend.build._build_statistics)
-        assert "topPersons" in source

@@ -18,10 +18,28 @@ def _reg_text(element):
     return ""
 
 
+def _format_death_german(death_iso):
+    """Format an ISO death date as German `15.07.1396` (or pass through).
+
+    Tooltip-Konvention: `† 15.07.1396`. Liefert ISO unveraendert zurueck,
+    wenn das Format nicht parsebar ist (Tolerant: nur-Jahres-Angaben,
+    Sonderzeichen, etc.).
+    """
+    if not death_iso:
+        return ""
+    parts = death_iso.split("-")
+    if len(parts) == 3 and all(p.isdigit() for p in parts):
+        y, m, d = parts
+        return f"{int(d):02d}.{int(m):02d}.{int(y):04d}"
+    if len(parts) == 1 and parts[0].isdigit():
+        return parts[0]
+    return death_iso
+
+
 def load_persons():
     """Load personList.xml into {xml_id: {forename, surname, addName, death}}.
 
-    Tooltip format: "Forename Surname (d. DeathDate) [pe__id]"
+    Tooltip format: "Forename Surname († DD.MM.YYYY) [pe__id]"
     """
     tree = load_index("personList.xml")
     persons = {}
@@ -143,7 +161,7 @@ def build_tooltip_person(person_data, xml_id):
     """Build tooltip string for a person."""
     parts = [person_data["display"]]
     if person_data["death"]:
-        parts.append(f"(d. {person_data['death']})")
+        parts.append(f"(† {_format_death_german(person_data['death'])})")
     parts.append(f"[{xml_id}]")
     return " ".join(parts)
 

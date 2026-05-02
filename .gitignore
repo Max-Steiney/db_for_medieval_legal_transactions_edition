@@ -15,3 +15,8 @@ CurrentKnowledge.md
 # Python
 __pycache__/
 *.pyc
+
+# JavaScript / Node (Vitest-Tests; produktiver Code ist toolchain-frei)
+node_modules/
+package-lock.json
+.vite/

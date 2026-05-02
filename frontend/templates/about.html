@@ -1,15 +1,15 @@
 {% extends "base.html" %}
-{% block title %}Über das Projekt{% endblock %}
+{% block title %}{{ page_title|default('Über das Projekt') }}{% endblock %}
 
 {% block head %}
-<link rel="stylesheet" href="{{ root_path }}/static/css/content.css">
+<link rel="stylesheet" href="{{ root_path }}/static/css/content.css?v={{ asset_v }}">
 {% endblock %}
 
 {% block content %}
 <article class="guidelines-page">
     <div class="guidelines-header">
-        <h1>&Uuml;ber das Projekt</h1>
-        <p class="guidelines-subtitle">Prosopographische Datenbank mittelalterlicher Wiener Rechtsgesch&auml;fte</p>
+        <h1>{{ page_title|default('Über das Projekt') }}</h1>
+        <p class="guidelines-subtitle">{{ page_subtitle|default('Prosopographische Datenbank mittelalterlicher Wiener Rechtsgeschäfte') }}</p>
     </div>
 
     <div class="guidelines-layout" id="guidelines-layout">
@@ -31,7 +31,7 @@
 {% endblock %}
 
 {% block scripts %}
-<script src="{{ root_path }}/static/js/content.js"></script>
+<script src="{{ root_path }}/static/js/content.js?v={{ asset_v }}"></script>
 {% endblock %}
 
-{% block footer_info %}&Uuml;ber das Projekt{% endblock %}
+{% block footer_info %}{{ page_title|default('Über das Projekt') }}{% endblock %}

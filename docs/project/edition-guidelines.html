@@ -3,22 +3,26 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="Content-Security-Policy" content="default-src 'self'; script-src 'self'; style-src 'self'; font-src 'self'; img-src 'self' data: https://images.monasterium.net https://www.monasterium.net; connect-src 'self'; frame-ancestors 'none'; base-uri 'self'; form-action 'self'; upgrade-insecure-requests">
+    <meta name="referrer" content="strict-origin-when-cross-origin">
+    <meta http-equiv="Permissions-Policy" content="camera=(), microphone=(), geolocation=(), interest-cohort=()">
     <title>Editionsrichtlinien — Datenbank</title>
-    <link rel="preconnect" href="https://fonts.googleapis.com">
-    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-    <link href="https://fonts.googleapis.com/css2?family=Crimson+Pro:ital,wght@0,300;0,400;0,500;0,600;0,700;1,300;1,400;1,500&family=Inter:wght@300;400;500;600&family=JetBrains+Mono:wght@400&display=swap" rel="stylesheet">
-    <link rel="stylesheet" href="../static/css/tokens.css">
-    <link rel="stylesheet" href="../static/css/base.css">
-    <link rel="stylesheet" href="../static/css/components.css">
-    <link rel="stylesheet" href="../static/css/responsive.css">
-    <link rel="stylesheet" href="../static/css/print.css">
-    <link rel="stylesheet" href="../static/css/provenance.css">
-    <script>window.ROOT_PATH = "..";</script>
+    <link rel="preload" as="font" type="font/woff2" crossorigin
+          href="../static/fonts/inter-400-latin.woff2">
+    <link rel="stylesheet" href="../static/css/fonts.css?v=20260502215716">
+    <link rel="stylesheet" href="../static/css/tokens.css?v=20260502215716">
+    <link rel="stylesheet" href="../static/css/base.css?v=20260502215716">
+    <link rel="stylesheet" href="../static/css/components.css?v=20260502215716">
+    <link rel="stylesheet" href="../static/css/responsive.css?v=20260502215716">
+    <link rel="stylesheet" href="../static/css/print.css?v=20260502215716">
+    <link rel="stylesheet" href="../static/css/provenance.css?v=20260502215716">
     
-<link rel="stylesheet" href="../static/css/content.css">
+<link rel="stylesheet" href="../static/css/content.css?v=20260502215716">
 
 </head>
-<body>
+<body data-root-path=".."
+      data-released-min="1177"
+      data-released-max="1414">
     <a class="skip-link" href="#main-content">Zum Inhalt springen</a>
     <nav class="site-nav">
         <div class="nav-inner">
@@ -36,8 +40,6 @@
                     <button class="nav-dropdown-trigger" aria-expanded="false" aria-haspopup="true">Register <span class="nav-dropdown-arrow">&#x25BE;</span></button>
                     <div class="nav-dropdown-menu">
                         <a href="../register/persons.html">Personen</a>
-                        <a href="../register/organisations.html" class="nav-disabled" aria-disabled="true" title="Noch nicht freigegeben">Organisationen</a>
-                        <a href="../register/places.html" class="nav-disabled" aria-disabled="true" title="Noch nicht freigegeben">Orte</a>
                     </div>
                 </div>
                 <div class="nav-dropdown">
@@ -46,7 +48,6 @@
                         <a href="../exploration/roles.html">Rollen</a>
                         <a href="../exploration/networks.html">Beziehungen</a>
                         <a href="../exploration/transactions.html">Transaktionen</a>
-                        <a href="../exploration/places.html">Orte</a>
                     </div>
                 </div>
                 <a href="../analysis/index.html">Analyse</a>
@@ -54,8 +55,6 @@
                     <button class="nav-dropdown-trigger" aria-expanded="false" aria-haspopup="true">Projekt <span class="nav-dropdown-arrow">&#x25BE;</span></button>
                     <div class="nav-dropdown-menu">
                         <a href="../project/about.html">&Uuml;ber das Projekt</a>
-                        <a href="../project/statistics.html">Statistik</a>
-                        <a href="../project/quality.html">Qualit&auml;t</a>
                         <a href="../project/edition-guidelines.html">Editionsrichtlinien</a>
                         <a href="../project/glossary.html">Glossar</a>
                         <a href="../impressum.html">Impressum</a>
@@ -182,7 +181,7 @@
 </tbody>
 </table>
 <p>Die im Rahmen der Dissertation <em>Im Netz der Stadt</em> erfassten Sammlungen (Gewerbuch_D, Satzbuch_CD, Copeybuch_Zeibig, Widmerliste, Genanntenlisten) sind aus dem oeffentlichen Bestand zurueckgezogen.</p>
-<p>Aktuelle Bestandszahlen sind auf der <a href="statistics.html">Statistik-Seite</a> abrufbar; die Schema-Validierung erfolgt gegen <code>sources/schema/toolbox.rng</code> (RelaxNG).</p>
+<p>Aktuelle Bestandszahlen sind auf der <a href="datengrundlage.html">Datengrundlage</a> abrufbar; die Schema-Validierung erfolgt gegen <code>sources/schema/toolbox.rng</code> (RelaxNG).</p>
 <hr />
 <h2 id="2-annotationsmodell">2. Annotationsmodell<a class="headerlink" href="#2-annotationsmodell" title="Permanent link">&para;</a></h2>
 <p>Das Annotationsmodell wird im Folgenden in vier konzeptuellen Ebenen dargestellt. Die Ebenen sind hierarchisch aufgebaut: Jede ist Teil der jeweils hoeheren, und die Verschachtelung im XML spiegelt diese Hierarchie wider.</p>
@@ -611,7 +610,7 @@
 <hr />
 <h2 id="5-normalisierung">5. Normalisierung<a class="headerlink" href="#5-normalisierung" title="Permanent link">&para;</a></h2>
 <p>Die Normalisierung von Trigger-Formeln, Funktionen und Rollennamen erfolgt ueber projekteigene Normalisierungslisten, die in <code>normalisation_lists/</code> gepflegt werden. Die Normalisierung von Vornamen wird ueber einen externen Webservice (<code>medieval-legal-transactions.univie.ac.at/norm_names/</code>) verwaltet, der mit projekteigenen Zugangsdaten zugaenglich ist. Die normalisierten Formen fliessen in die Personen-IDs und Register-Eintraege ein.</p>
-<p>Nicht alle Triggerstrings und roleName-Eintraege im Bestand sind durch die Normalisierungslisten abgedeckt; aktuelle Abdeckungsraten sind auf der <a href="statistics.html">Statistik-Seite</a> einsehbar.</p>
+<p>Nicht alle Triggerstrings und roleName-Eintraege im Bestand sind durch die Normalisierungslisten abgedeckt; aktuelle Abdeckungsraten sind auf der <a href="datengrundlage.html">Datengrundlage</a> einsehbar.</p>
 <hr />
 <h2 id="6-vokabular-und-validierung">6. Vokabular und Validierung<a class="headerlink" href="#6-vokabular-und-validierung" title="Permanent link">&para;</a></h2>
 <p>Dieser Abschnitt beschreibt die Funktion der wesentlichen Attribute. Die kanonischen Wertelisten werden hier nicht ausgezaehlt: Sie sind im RelaxNG-Schema (<code>sources/schema/toolbox.rng</code>) festgelegt und werden bei jedem Validierungslauf gegen den Bestand abgeglichen. Der Validierungsbericht (<code>pipeline/output/validation_report.md</code>) listet Abweichungen mit Datei und Zeile.</p>
@@ -632,12 +631,12 @@
 <h2 id="8-zitierhinweis">8. Zitierhinweis<a class="headerlink" href="#8-zitierhinweis" title="Permanent link">&para;</a></h2>
 <h3 id="empfohlene-zitierweise">Empfohlene Zitierweise<a class="headerlink" href="#empfohlene-zitierweise" title="Permanent link">&para;</a></h3>
 <blockquote>
-<p><em>Wiener Urkundenbuch: Digitale Edition.</em> Universitaet Wien, 2026. https://chpollin.github.io/db_for_medieval_legal_transactions/</p>
+<p><em>Stadt und Gemeinschaft Wien: Datenbank zu mittelalterlichen Wiener Rechtsgeschaeften.</em> Universitaet Wien, 2026. https://chpollin.github.io/db_for_medieval_legal_transactions/</p>
 </blockquote>
 <h3 id="bibtex">BibTeX<a class="headerlink" href="#bibtex" title="Permanent link">&para;</a></h3>
-<div class="highlight"><pre><span></span><code>@misc{wub_digital,
-  author       = {{Wiener Urkundenbuch Digital}},
-  title        = {Wiener Urkundenbuch: Digitale Edition},
+<div class="highlight"><pre><span></span><code>@misc{sugw_db,
+  author       = {{Stadt und Gemeinschaft Wien}},
+  title        = {Stadt und Gemeinschaft Wien: Datenbank zu mittelalterlichen Wiener Rechtsgeschaeften},
   year         = {2026},
   publisher    = {Universitaet Wien},
   url          = {https://chpollin.github.io/db_for_medieval_legal_transactions/}
@@ -703,7 +702,7 @@
     </div>
 
     <footer class="guidelines-footer">
-        <p>Zuletzt aktualisiert: 30. April 2026</p>
+        <p>Zuletzt aktualisiert: 2. Mai 2026</p>
     </footer>
 </article>
 
@@ -723,11 +722,10 @@
         </div>
     </footer>
 
-    <script>window.RELEASED_PERIOD = {min: 1177, max: 1414};</script>
-    <script src="../static/js/core.js"></script>
-    <script src="../static/js/provenance.js"></script>
+    <script src="../static/js/core.js?v=20260502215716"></script>
+    <script src="../static/js/provenance.js?v=20260502215716"></script>
     
-<script src="../static/js/content.js"></script>
+<script src="../static/js/content.js?v=20260502215716"></script>
 
 </body>
 </html>

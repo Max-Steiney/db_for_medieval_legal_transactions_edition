@@ -3,20 +3,24 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="Content-Security-Policy" content="default-src 'self'; script-src 'self'; style-src 'self'; font-src 'self'; img-src 'self' data: https://images.monasterium.net https://www.monasterium.net; connect-src 'self'; frame-ancestors 'none'; base-uri 'self'; form-action 'self'; upgrade-insecure-requests">
+    <meta name="referrer" content="strict-origin-when-cross-origin">
+    <meta http-equiv="Permissions-Policy" content="camera=(), microphone=(), geolocation=(), interest-cohort=()">
     <title>{% block title %}Stadt und Gemeinschaft Wien{% endblock %} — Datenbank</title>
-    <link rel="preconnect" href="https://fonts.googleapis.com">
-    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-    <link href="https://fonts.googleapis.com/css2?family=Crimson+Pro:ital,wght@0,300;0,400;0,500;0,600;0,700;1,300;1,400;1,500&family=Inter:wght@300;400;500;600&family=JetBrains+Mono:wght@400&display=swap" rel="stylesheet">
-    <link rel="stylesheet" href="{{ root_path }}/static/css/tokens.css">
-    <link rel="stylesheet" href="{{ root_path }}/static/css/base.css">
-    <link rel="stylesheet" href="{{ root_path }}/static/css/components.css">
-    <link rel="stylesheet" href="{{ root_path }}/static/css/responsive.css">
-    <link rel="stylesheet" href="{{ root_path }}/static/css/print.css">
-    <link rel="stylesheet" href="{{ root_path }}/static/css/provenance.css">
-    <script>window.ROOT_PATH = "{{ root_path }}";</script>
+    <link rel="preload" as="font" type="font/woff2" crossorigin
+          href="{{ root_path }}/static/fonts/inter-400-latin.woff2">
+    <link rel="stylesheet" href="{{ root_path }}/static/css/fonts.css?v={{ asset_v }}">
+    <link rel="stylesheet" href="{{ root_path }}/static/css/tokens.css?v={{ asset_v }}">
+    <link rel="stylesheet" href="{{ root_path }}/static/css/base.css?v={{ asset_v }}">
+    <link rel="stylesheet" href="{{ root_path }}/static/css/components.css?v={{ asset_v }}">
+    <link rel="stylesheet" href="{{ root_path }}/static/css/responsive.css?v={{ asset_v }}">
+    <link rel="stylesheet" href="{{ root_path }}/static/css/print.css?v={{ asset_v }}">
+    <link rel="stylesheet" href="{{ root_path }}/static/css/provenance.css?v={{ asset_v }}">
     {% block head %}{% endblock %}
 </head>
-<body>
+<body data-root-path="{{ root_path }}"
+      data-released-min="{{ released_period.min_year }}"
+      data-released-max="{{ released_period.max_year_with_extensions }}">
     <a class="skip-link" href="#main-content">Zum Inhalt springen</a>
     <nav class="site-nav">
         <div class="nav-inner">
@@ -34,8 +38,6 @@
                     <button class="nav-dropdown-trigger" aria-expanded="false" aria-haspopup="true">Register <span class="nav-dropdown-arrow">&#x25BE;</span></button>
                     <div class="nav-dropdown-menu">
                         <a href="{{ root_path }}/register/persons.html">Personen</a>
-                        <a href="{{ root_path }}/register/organisations.html" class="nav-disabled" aria-disabled="true" title="Noch nicht freigegeben">Organisationen</a>
-                        <a href="{{ root_path }}/register/places.html" class="nav-disabled" aria-disabled="true" title="Noch nicht freigegeben">Orte</a>
                     </div>
                 </div>
                 <div class="nav-dropdown">
@@ -44,7 +46,6 @@
                         <a href="{{ root_path }}/exploration/roles.html">Rollen</a>
                         <a href="{{ root_path }}/exploration/networks.html">Beziehungen</a>
                         <a href="{{ root_path }}/exploration/transactions.html">Transaktionen</a>
-                        <a href="{{ root_path }}/exploration/places.html">Orte</a>
                     </div>
                 </div>
                 <a href="{{ root_path }}/analysis/index.html">Analyse</a>
@@ -52,8 +53,6 @@
                     <button class="nav-dropdown-trigger" aria-expanded="false" aria-haspopup="true">Projekt <span class="nav-dropdown-arrow">&#x25BE;</span></button>
                     <div class="nav-dropdown-menu">
                         <a href="{{ root_path }}/project/about.html">&Uuml;ber das Projekt</a>
-                        <a href="{{ root_path }}/project/statistics.html">Statistik</a>
-                        <a href="{{ root_path }}/project/quality.html">Qualit&auml;t</a>
                         <a href="{{ root_path }}/project/edition-guidelines.html">Editionsrichtlinien</a>
                         <a href="{{ root_path }}/project/glossary.html">Glossar</a>
                         <a href="{{ root_path }}/impressum.html">Impressum</a>
@@ -76,14 +75,13 @@
             </div>
             <div class="footer-col footer-col-right">
                 <p>Technische Umsetzung: <a href="https://dhcraft.org" class="footer-link">Digital Humanities Craft OG</a></p>
-                <p>Lizenz: <a href="{{ root_path }}/impressum.html#lizenz" class="footer-link">CC BY 4.0</a> &middot; {% block footer_info %}{% endblock %}</p>
+                <p>Lizenz: <a href="{{ root_path }}/impressum.html#lizenz" class="footer-link">CC BY 4.0</a>{% set fi %}{% block footer_info %}{% endblock %}{% endset %}{% if fi %} &middot; {{ fi }}{% endif %}</p>
             </div>
         </div>
     </footer>
 
-    <script>window.RELEASED_PERIOD = {min: {{ released_period.min_year }}, max: {{ released_period.max_year_with_extensions }}};</script>
-    <script src="{{ root_path }}/static/js/core.js"></script>
-    <script src="{{ root_path }}/static/js/provenance.js"></script>
+    <script src="{{ root_path }}/static/js/core.js?v={{ asset_v }}"></script>
+    <script src="{{ root_path }}/static/js/provenance.js?v={{ asset_v }}"></script>
     {% block scripts %}{% endblock %}
 </body>
 </html>

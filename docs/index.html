@@ -3,23 +3,27 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="Content-Security-Policy" content="default-src 'self'; script-src 'self'; style-src 'self'; font-src 'self'; img-src 'self' data: https://images.monasterium.net https://www.monasterium.net; connect-src 'self'; frame-ancestors 'none'; base-uri 'self'; form-action 'self'; upgrade-insecure-requests">
+    <meta name="referrer" content="strict-origin-when-cross-origin">
+    <meta http-equiv="Permissions-Policy" content="camera=(), microphone=(), geolocation=(), interest-cohort=()">
     <title>Startseite — Datenbank</title>
-    <link rel="preconnect" href="https://fonts.googleapis.com">
-    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-    <link href="https://fonts.googleapis.com/css2?family=Crimson+Pro:ital,wght@0,300;0,400;0,500;0,600;0,700;1,300;1,400;1,500&family=Inter:wght@300;400;500;600&family=JetBrains+Mono:wght@400&display=swap" rel="stylesheet">
-    <link rel="stylesheet" href="./static/css/tokens.css">
-    <link rel="stylesheet" href="./static/css/base.css">
-    <link rel="stylesheet" href="./static/css/components.css">
-    <link rel="stylesheet" href="./static/css/responsive.css">
-    <link rel="stylesheet" href="./static/css/print.css">
-    <link rel="stylesheet" href="./static/css/provenance.css">
-    <script>window.ROOT_PATH = ".";</script>
+    <link rel="preload" as="font" type="font/woff2" crossorigin
+          href="./static/fonts/inter-400-latin.woff2">
+    <link rel="stylesheet" href="./static/css/fonts.css?v=20260502215716">
+    <link rel="stylesheet" href="./static/css/tokens.css?v=20260502215716">
+    <link rel="stylesheet" href="./static/css/base.css?v=20260502215716">
+    <link rel="stylesheet" href="./static/css/components.css?v=20260502215716">
+    <link rel="stylesheet" href="./static/css/responsive.css?v=20260502215716">
+    <link rel="stylesheet" href="./static/css/print.css?v=20260502215716">
+    <link rel="stylesheet" href="./static/css/provenance.css?v=20260502215716">
     
-<link rel="stylesheet" href="./static/css/exploration.css">
-<link rel="stylesheet" href="./static/css/startseite.css">
+<link rel="stylesheet" href="./static/css/exploration.css?v=20260502215716">
+<link rel="stylesheet" href="./static/css/startseite.css?v=20260502215716">
 
 </head>
-<body>
+<body data-root-path="."
+      data-released-min="1177"
+      data-released-max="1414">
     <a class="skip-link" href="#main-content">Zum Inhalt springen</a>
     <nav class="site-nav">
         <div class="nav-inner">
@@ -37,8 +41,6 @@
                     <button class="nav-dropdown-trigger" aria-expanded="false" aria-haspopup="true">Register <span class="nav-dropdown-arrow">&#x25BE;</span></button>
                     <div class="nav-dropdown-menu">
                         <a href="./register/persons.html">Personen</a>
-                        <a href="./register/organisations.html" class="nav-disabled" aria-disabled="true" title="Noch nicht freigegeben">Organisationen</a>
-                        <a href="./register/places.html" class="nav-disabled" aria-disabled="true" title="Noch nicht freigegeben">Orte</a>
                     </div>
                 </div>
                 <div class="nav-dropdown">
@@ -47,7 +49,6 @@
                         <a href="./exploration/roles.html">Rollen</a>
                         <a href="./exploration/networks.html">Beziehungen</a>
                         <a href="./exploration/transactions.html">Transaktionen</a>
-                        <a href="./exploration/places.html">Orte</a>
                     </div>
                 </div>
                 <a href="./analysis/index.html">Analyse</a>
@@ -55,8 +56,6 @@
                     <button class="nav-dropdown-trigger" aria-expanded="false" aria-haspopup="true">Projekt <span class="nav-dropdown-arrow">&#x25BE;</span></button>
                     <div class="nav-dropdown-menu">
                         <a href="./project/about.html">&Uuml;ber das Projekt</a>
-                        <a href="./project/statistics.html">Statistik</a>
-                        <a href="./project/quality.html">Qualit&auml;t</a>
                         <a href="./project/edition-guidelines.html">Editionsrichtlinien</a>
                         <a href="./project/glossary.html">Glossar</a>
                         <a href="./impressum.html">Impressum</a>
@@ -74,212 +73,334 @@
     <header class="start-hero">
         <h1>Stadt und Gemeinschaft Wien</h1>
         <p class="start-hero-desc">
-            Datenbank zu mittelalterlichen Wiener Rechtsgesch&auml;ften, 1177–1412 (mit Ergänzungen bis 1414 für QGW II/1 und II/2).
+            Datenbank zu mittelalterlichen Wiener Rechtsgesch&auml;ften.
         </p>
-        
-        
-        <div class="start-hero-stats">
-            <span class="prov-stat-container">
-                
-<button type="button" class="prov-trigger"
-        aria-expanded="false" aria-haspopup="dialog"
-        aria-controls="prov-hero-sources"
-        data-prov-trigger="prov-hero-sources"><strong>2.635</strong></button>
-
-                
-<aside class="prov-popover" id="prov-hero-sources"
-       role="dialog" aria-hidden="true" aria-label="Herkunft: Quellen">
-    <header class="prov-popover-head">
-        <h3 class="prov-popover-title">Quellen</h3>
-        <p class="prov-popover-sub">TEI-Regesten · freigegeben 1177–1412 (mit Ergänzungen bis 1414 für QGW II/1 und II/2)</p>
-        <button type="button" class="prov-popover-close" aria-label="Schließen">&times;</button>
-    </header>
-    <div class="prov-popover-body">
-        
-                    <table class="prov-breakdown">
-                        
-                        <tr>
-                            <td>QGW II/1 (1177–1414)</td>
-                            <td class="num">2.023</td>
-                        </tr>
-                        
-                        <tr>
-                            <td>Stadtbücher Bd. 1 (1395–1400)</td>
-                            <td class="num">578</td>
-                        </tr>
-                        
-                        <tr>
-                            <td>QGW II/2 (1415–1417)</td>
-                            <td class="num">34</td>
-                        </tr>
-                        
-                        <tr class="total">
-                            <td>Gesamt</td>
-                            <td class="num">2.635</td>
-                        </tr>
-                    </table>
-                    <p class="prov-note">1418–1447: noch nicht ausgewertet.</p>
-                    <footer class="prov-foot">
-                        <span class="prov-foot-source"><code>sources/*/done/*.xml</code></span>
-                        <a class="prov-foot-link" href="./project/statistics.html">&rarr; Statistik</a>
-                    </footer>
-                
-    </div>
-</aside>
-
-            </span>
-            Quellen
-            <span class="start-hero-sep">&middot;</span>
-            <span class="prov-stat-container">
-                
-<button type="button" class="prov-trigger"
-        aria-expanded="false" aria-haspopup="dialog"
-        aria-controls="prov-hero-persons"
-        data-prov-trigger="prov-hero-persons"><strong>16.084</strong></button>
-
-                
-<aside class="prov-popover" id="prov-hero-persons"
-       role="dialog" aria-hidden="true" aria-label="Herkunft: Individuelle Personen">
-    <header class="prov-popover-head">
-        <h3 class="prov-popover-title">Individuelle Personen</h3>
-        <p class="prov-popover-sub">Zählebene: eine Identität pro Person</p>
-        <button type="button" class="prov-popover-close" aria-label="Schließen">&times;</button>
-    </header>
-    <div class="prov-popover-body">
-        
-                    <p class="prov-def">Jede Person zählt <em>einmal</em>, unabhängig davon, in wie vielen Quellen sie erwähnt wird. Die alternative Zählebene <em>Gesamtnennungen</em> zählt pro Person eine Nennung je Quelle, in der sie vorkommt &mdash; Mehrfacherwähnungen innerhalb einer Quelle werden zusammengefasst (<a href="./project/glossary.html#gesamtnennung">quellenbereinigt</a>).</p>
-                    <footer class="prov-foot">
-                        <span class="prov-foot-source"><code>indices/personList.xml</code></span>
-                        <a class="prov-foot-link" href="./project/glossary.html#individuelle-person">&rarr; Glossar</a>
-                    </footer>
-                
-    </div>
-</aside>
-
-            </span>
-            individuelle Personen
-            
-            
-            
-            <span class="start-hero-stat-sub">
-                (&#9792;&thinsp;
-<span class="prov-stat-container">
-    
-<button type="button" class="prov-trigger"
-        aria-expanded="false" aria-haspopup="dialog"
-        aria-controls="prov-hero-sex-f"
-        data-prov-trigger="prov-hero-sex-f">4.224</button>
-
-    
-<aside class="prov-popover" id="prov-hero-sex-f"
-       role="dialog" aria-hidden="true" aria-label="Herkunft: Weiblich">
-    <header class="prov-popover-head">
-        <h3 class="prov-popover-title">Weiblich</h3>
-        <p class="prov-popover-sub">@sex="f" im Personenregister</p>
-        <button type="button" class="prov-popover-close" aria-label="Schließen">&times;</button>
-    </header>
-    <div class="prov-popover-body">
-        
-        <p class="prov-ratio">4.224 <span class="prov-ratio-sep">von</span> 16.084 <span class="prov-ratio-pct">&middot; 26,3&nbsp;%</span></p>
-        <footer class="prov-foot">
-            <span class="prov-foot-source"><code>indices/personList.xml</code></span>
-            <a class="prov-foot-link" href="./project/glossary.html#individuelle-person">&rarr; Glossar</a>
-        </footer>
-    
-    </div>
-</aside>
-
-</span>
-
-                &middot;
-                &#9794;&thinsp;
-<span class="prov-stat-container">
-    
-<button type="button" class="prov-trigger"
-        aria-expanded="false" aria-haspopup="dialog"
-        aria-controls="prov-hero-sex-m"
-        data-prov-trigger="prov-hero-sex-m">11.860</button>
-
-    
-<aside class="prov-popover" id="prov-hero-sex-m"
-       role="dialog" aria-hidden="true" aria-label="Herkunft: Männlich">
-    <header class="prov-popover-head">
-        <h3 class="prov-popover-title">Männlich</h3>
-        <p class="prov-popover-sub">@sex="m" im Personenregister</p>
-        <button type="button" class="prov-popover-close" aria-label="Schließen">&times;</button>
-    </header>
-    <div class="prov-popover-body">
-        
-        <p class="prov-ratio">11.860 <span class="prov-ratio-sep">von</span> 16.084 <span class="prov-ratio-pct">&middot; 73,7&nbsp;%</span></p>
-        <footer class="prov-foot">
-            <span class="prov-foot-source"><code>indices/personList.xml</code></span>
-            <a class="prov-foot-link" href="./project/glossary.html#individuelle-person">&rarr; Glossar</a>
-        </footer>
-    
-    </div>
-</aside>
-
-</span>
-)
-            </span>
-        </div>
     </header>
 
     
     <div class="start-entry-grid">
-        <a href="./documents.html" class="start-entry-card">
-            <div class="start-entry-card-icon">
-                <svg width="32" height="32" viewBox="0 0 32 32" fill="none" xmlns="http://www.w3.org/2000/svg" aria-hidden="true">
-                    <rect x="6" y="4" width="16" height="20" rx="1.5" stroke="currentColor" stroke-width="1.5" fill="currentColor" fill-opacity="0.1"/>
-                    <rect x="10" y="8" width="16" height="20" rx="1.5" stroke="currentColor" stroke-width="1.5" fill="none"/>
-                    <line x1="13" y1="14" x2="23" y2="14" stroke="currentColor" stroke-width="1.5" stroke-linecap="round"/>
-                    <line x1="13" y1="18" x2="23" y2="18" stroke="currentColor" stroke-width="1.5" stroke-linecap="round"/>
-                    <line x1="13" y1="22" x2="19" y2="22" stroke="currentColor" stroke-width="1.5" stroke-linecap="round"/>
-                </svg>
-            </div>
-            <p class="start-entry-card-title">Quellen durchsuchen</p>
-            <p class="start-entry-card-desc">
-                2.635 Quellen aus 3 Quellenkorpora
-                mit Volltextsuche, Zeitfilter und Faksimile-Ansicht.
-            </p>
-        </a>
-        <a href="./register/persons.html" class="start-entry-card">
-            <div class="start-entry-card-icon">
-                <svg width="32" height="32" viewBox="0 0 32 32" fill="none" xmlns="http://www.w3.org/2000/svg" aria-hidden="true">
-                    <circle cx="11" cy="11" r="4" stroke="currentColor" stroke-width="1.5" fill="currentColor" fill-opacity="0.15"/>
-                    <path d="M4 26 C4 21, 7 18, 11 18 C15 18, 18 21, 18 26" stroke="currentColor" stroke-width="1.5" fill="none" stroke-linecap="round"/>
-                    <circle cx="22" cy="13" r="3" stroke="currentColor" stroke-width="1.5" fill="none"/>
-                    <path d="M18 24 C18 21, 20 19, 22 19 C25 19, 28 21, 28 25" stroke="currentColor" stroke-width="1.5" fill="none" stroke-linecap="round"/>
-                </svg>
-            </div>
-            <p class="start-entry-card-title">Personenregister</p>
-            <p class="start-entry-card-desc">
-                16.084 individuelle Personen aus den Quellen.
-                Organisationen und Orte folgen, sobald freigegeben.
-            </p>
-        </a>
-        <a href="./project/about.html" class="start-entry-card">
-            <div class="start-entry-card-icon">
-                <svg width="32" height="32" viewBox="0 0 32 32" fill="none" xmlns="http://www.w3.org/2000/svg" aria-hidden="true">
-                    <circle cx="16" cy="16" r="12" stroke="currentColor" stroke-width="1.5" fill="currentColor" fill-opacity="0.1"/>
-                    <circle cx="16" cy="10.5" r="1.6" fill="currentColor"/>
-                    <line x1="16" y1="14" x2="16" y2="23" stroke="currentColor" stroke-width="1.8" stroke-linecap="round"/>
-                </svg>
-            </div>
-            <p class="start-entry-card-title">&Uuml;ber das Projekt</p>
-            <p class="start-entry-card-desc">
-                Forschungskontext, Quellenbestand, Annotationsmodell
-                und Editionsrichtlinien.
-            </p>
-        </a>
+
+        
+        <div class="start-entry-card">
+            <a href="./documents.html" class="start-entry-card-main">
+                <div class="start-entry-card-icon">
+                    <svg width="32" height="32" viewBox="0 0 32 32" fill="none" xmlns="http://www.w3.org/2000/svg" aria-hidden="true">
+                        <rect x="6" y="4" width="16" height="20" rx="1.5" stroke="currentColor" stroke-width="1.5" fill="currentColor" fill-opacity="0.1"/>
+                        <rect x="10" y="8" width="16" height="20" rx="1.5" stroke="currentColor" stroke-width="1.5" fill="none"/>
+                        <line x1="13" y1="14" x2="23" y2="14" stroke="currentColor" stroke-width="1.5" stroke-linecap="round"/>
+                        <line x1="13" y1="18" x2="23" y2="18" stroke="currentColor" stroke-width="1.5" stroke-linecap="round"/>
+                        <line x1="13" y1="22" x2="19" y2="22" stroke="currentColor" stroke-width="1.5" stroke-linecap="round"/>
+                    </svg>
+                </div>
+                <p class="start-entry-card-title">Quellen durchsuchen</p>
+            </a>
+            <table class="start-card-matrix">
+                <thead>
+                    <tr>
+                        <th scope="col">
+                            <span class="prov-stat-container">Quellenkorpus
+<button type="button" class="prov-trigger prov-trigger--icon"
+        aria-expanded="false" aria-haspopup="dialog"
+        aria-controls="gloss-quellenkorpus"
+        data-prov-trigger="gloss-quellenkorpus"
+        aria-label="Definition: Quellenkorpus">
+    <svg width="13" height="13" viewBox="0 0 16 16" aria-hidden="true">
+        <circle cx="8" cy="8" r="7" stroke="currentColor" stroke-width="1.4" fill="none"/>
+        <text x="8" y="11.6" text-anchor="middle" font-size="9.5" font-weight="700"
+              fill="currentColor" font-family="Georgia, serif">i</text>
+    </svg>
+</button>
+<aside class="prov-popover prov-popover--glossary prov-popover--top"
+       id="gloss-quellenkorpus" role="dialog" aria-hidden="true"
+       aria-label="Definition: Quellenkorpus">
+    <header class="prov-popover-head">
+        <h3 class="prov-popover-title">Quellenkorpus</h3>
+        <button type="button" class="prov-popover-close" aria-label="Schlie&szlig;en">&times;</button>
+    </header>
+    <div class="prov-popover-body">
+        
+                                <p class="prov-def">Eine thematisch und editorisch zusammengeh&ouml;rige Gruppe von Quellen, etwa die QGW-B&auml;nde oder die Stadtb&uuml;cher.</p>
+                                <a class="prov-foot-link" href="./project/glossary.html#quellenkorpus">&rarr; im Glossar</a>
+                            
+    </div>
+</aside>
+</span>
+                        </th>
+                        
+                        <th scope="col">
+                            <span class="prov-stat-container">Quellen
+<button type="button" class="prov-trigger prov-trigger--icon"
+        aria-expanded="false" aria-haspopup="dialog"
+        aria-controls="gloss-quelle"
+        data-prov-trigger="gloss-quelle"
+        aria-label="Definition: Quelle">
+    <svg width="13" height="13" viewBox="0 0 16 16" aria-hidden="true">
+        <circle cx="8" cy="8" r="7" stroke="currentColor" stroke-width="1.4" fill="none"/>
+        <text x="8" y="11.6" text-anchor="middle" font-size="9.5" font-weight="700"
+              fill="currentColor" font-family="Georgia, serif">i</text>
+    </svg>
+</button>
+<aside class="prov-popover prov-popover--glossary prov-popover--top"
+       id="gloss-quelle" role="dialog" aria-hidden="true"
+       aria-label="Definition: Quelle">
+    <header class="prov-popover-head">
+        <h3 class="prov-popover-title">Quelle</h3>
+        <button type="button" class="prov-popover-close" aria-label="Schlie&szlig;en">&times;</button>
+    </header>
+    <div class="prov-popover-body">
+        
+                                <p class="prov-def">Eine einzelne Urkunde oder ein Regest als Datensatz-Einheit. Tr&auml;ger eines oder mehrerer Events.</p>
+                                <a class="prov-foot-link" href="./project/glossary.html#quelle">&rarr; im Glossar</a>
+                            
+    </div>
+</aside>
+</span>
+                        </th>
+                        
+                        <th scope="col">
+                            <span class="prov-stat-container">Nennungen
+<button type="button" class="prov-trigger prov-trigger--icon"
+        aria-expanded="false" aria-haspopup="dialog"
+        aria-controls="gloss-nennung"
+        data-prov-trigger="gloss-nennung"
+        aria-label="Definition: Gesamtnennung">
+    <svg width="13" height="13" viewBox="0 0 16 16" aria-hidden="true">
+        <circle cx="8" cy="8" r="7" stroke="currentColor" stroke-width="1.4" fill="none"/>
+        <text x="8" y="11.6" text-anchor="middle" font-size="9.5" font-weight="700"
+              fill="currentColor" font-family="Georgia, serif">i</text>
+    </svg>
+</button>
+<aside class="prov-popover prov-popover--glossary prov-popover--top"
+       id="gloss-nennung" role="dialog" aria-hidden="true"
+       aria-label="Definition: Gesamtnennung">
+    <header class="prov-popover-head">
+        <h3 class="prov-popover-title">Gesamtnennung</h3>
+        <button type="button" class="prov-popover-close" aria-label="Schlie&szlig;en">&times;</button>
+    </header>
+    <div class="prov-popover-body">
+        
+                                <p class="prov-def">Eine Beziehung zwischen einer Person und einer Quelle, in der sie genannt wird. Quellenbereinigt: Mehrfacherw&auml;hnungen in derselben Quelle z&auml;hlen einmal.</p>
+                                <a class="prov-foot-link" href="./project/glossary.html#gesamtnennung">&rarr; im Glossar</a>
+                            
+    </div>
+</aside>
+</span>
+                        </th>
+                        
+                        <th scope="col">
+                            <span class="prov-stat-container">Events
+<button type="button" class="prov-trigger prov-trigger--icon"
+        aria-expanded="false" aria-haspopup="dialog"
+        aria-controls="gloss-event"
+        data-prov-trigger="gloss-event"
+        aria-label="Definition: Event">
+    <svg width="13" height="13" viewBox="0 0 16 16" aria-hidden="true">
+        <circle cx="8" cy="8" r="7" stroke="currentColor" stroke-width="1.4" fill="none"/>
+        <text x="8" y="11.6" text-anchor="middle" font-size="9.5" font-weight="700"
+              fill="currentColor" font-family="Georgia, serif">i</text>
+    </svg>
+</button>
+<aside class="prov-popover prov-popover--glossary prov-popover--top"
+       id="gloss-event" role="dialog" aria-hidden="true"
+       aria-label="Definition: Event">
+    <header class="prov-popover-head">
+        <h3 class="prov-popover-title">Event</h3>
+        <button type="button" class="prov-popover-close" aria-label="Schlie&szlig;en">&times;</button>
+    </header>
+    <div class="prov-popover-body">
+        
+                                <p class="prov-def">Ein konkreter Vorgang im Quellentext: Rechtsgesch&auml;ft (Kauf, Schenkung &hellip;), Siegelvermerk, Kanzleieintrag oder Notiz.</p>
+                                <a class="prov-foot-link" href="./project/glossary.html#event">&rarr; im Glossar</a>
+                            
+    </div>
+</aside>
+</span>
+                        </th>
+                        
+                    </tr>
+                </thead>
+                <tbody>
+                
+                    <tr>
+                        <th scope="row"><a class="corpus-link" href="./documents.html?collection=QGW/Vienna_1177-1414_ready">QGW II/1 (1177–1414)</a></th>
+                        
+                        <td>2.023</td>
+                        
+                        <td>12.437</td>
+                        
+                        <td>2.029</td>
+                        
+                    </tr>
+                
+                    <tr>
+                        <th scope="row"><a class="corpus-link" href="./documents.html?collection=Stadtbuecher/Band_1_1395-1400_ready">Stadtbücher Bd. 1 (1395–1400)</a></th>
+                        
+                        <td>578</td>
+                        
+                        <td>5.109</td>
+                        
+                        <td>577</td>
+                        
+                    </tr>
+                
+                </tbody>
+                <tfoot>
+                    <tr>
+                        <th scope="row">Gesamt</th>
+                        
+                        <td>
+                            <span class="prov-stat-container">
+                                
+<button type="button" class="prov-trigger"
+        aria-expanded="false" aria-haspopup="dialog"
+        aria-controls="prov-total-sources"
+        data-prov-trigger="prov-total-sources">2.601</button>
+
+                                
+<aside class="prov-popover prov-popover--top" id="prov-total-sources"
+       role="dialog" aria-hidden="true" aria-label="Herkunft: Quellen — Provenienz">
+    <header class="prov-popover-head">
+        <h3 class="prov-popover-title">Quellen — Provenienz</h3>
+        
+        <button type="button" class="prov-popover-close" aria-label="Schließen">&times;</button>
+    </header>
+    <div class="prov-popover-body">
+        
+                                    <pre class="prov-xpath"><span class="xp-axis">//</span><span class="xp-elem">tei:TEI</span></pre>
+                                    <p class="prov-note">aus <code>sources/&lt;korpus&gt;/done/</code>, eingeschr&auml;nkt auf freigegebene Korpora.</p>
+                                
+    </div>
+</aside>
+
+                            </span>
+                        </td>
+                        
+                        <td>
+                            <span class="prov-stat-container">
+                                
+<button type="button" class="prov-trigger"
+        aria-expanded="false" aria-haspopup="dialog"
+        aria-controls="prov-total-mentions"
+        data-prov-trigger="prov-total-mentions">17.546</button>
+
+                                
+<aside class="prov-popover prov-popover--top" id="prov-total-mentions"
+       role="dialog" aria-hidden="true" aria-label="Herkunft: Nennungen — Provenienz">
+    <header class="prov-popover-head">
+        <h3 class="prov-popover-title">Nennungen — Provenienz</h3>
+        
+        <button type="button" class="prov-popover-close" aria-label="Schließen">&times;</button>
+    </header>
+    <div class="prov-popover-body">
+        
+                                    <pre class="prov-xpath"><span class="xp-axis">//</span><span class="xp-elem">tei:body</span><span class="xp-axis">//</span><span class="xp-elem">tei:*</span><span class="xp-pred">[</span><span class="xp-attr">@type</span>=<span class="xp-string">'person'</span><span class="xp-pred">]</span>
+<span class="xp-pred">  [not(</span><span class="xp-axis">ancestor::</span><span class="xp-elem">tei:rs</span><span class="xp-pred">[</span><span class="xp-attr">@type</span>=<span class="xp-string">'event'</span><span class="xp-pred">]</span>
+<span class="xp-pred">       [</span><span class="xp-axis">ancestor::</span><span class="xp-elem">tei:rs</span><span class="xp-pred">[</span><span class="xp-attr">@type</span>=<span class="xp-string">'event'</span><span class="xp-pred">]])]</span></pre>
+                                    <p class="prov-note"><code>@corresp</code> und Personen in verschachtelten Events ausgeschlossen.</p>
+                                
+    </div>
+</aside>
+
+                            </span>
+                        </td>
+                        
+                        <td>
+                            <span class="prov-stat-container">
+                                
+<button type="button" class="prov-trigger"
+        aria-expanded="false" aria-haspopup="dialog"
+        aria-controls="prov-total-events"
+        data-prov-trigger="prov-total-events">2.606</button>
+
+                                
+<aside class="prov-popover prov-popover--top" id="prov-total-events"
+       role="dialog" aria-hidden="true" aria-label="Herkunft: Events — Provenienz">
+    <header class="prov-popover-head">
+        <h3 class="prov-popover-title">Events — Provenienz</h3>
+        
+        <button type="button" class="prov-popover-close" aria-label="Schließen">&times;</button>
+    </header>
+    <div class="prov-popover-body">
+        
+                                    <pre class="prov-xpath"><span class="xp-axis">//</span><span class="xp-elem">tei:body</span><span class="xp-axis">//</span><span class="xp-elem">tei:rs</span><span class="xp-pred">[</span><span class="xp-attr">@type</span>=<span class="xp-string">'event'</span><span class="xp-pred">]</span>
+<span class="xp-pred">  [not(</span><span class="xp-axis">ancestor::</span><span class="xp-elem">tei:rs</span><span class="xp-pred">[</span><span class="xp-attr">@type</span>=<span class="xp-string">'event'</span><span class="xp-pred">])]</span></pre>
+                                    <p class="prov-note">distinct &uuml;ber <code>@ref</code>; verschachtelte rs-Events ausgeschlossen.</p>
+                                
+    </div>
+</aside>
+
+                            </span>
+                        </td>
+                        
+                    </tr>
+                </tfoot>
+            </table>
+        </div>
+
+        
+        <div class="start-entry-card">
+            <a href="./register/persons.html" class="start-entry-card-main">
+                <div class="start-entry-card-icon">
+                    <svg width="32" height="32" viewBox="0 0 32 32" fill="none" xmlns="http://www.w3.org/2000/svg" aria-hidden="true">
+                        <circle cx="11" cy="11" r="4" stroke="currentColor" stroke-width="1.5" fill="currentColor" fill-opacity="0.15"/>
+                        <path d="M4 26 C4 21, 7 18, 11 18 C15 18, 18 21, 18 26" stroke="currentColor" stroke-width="1.5" fill="none" stroke-linecap="round"/>
+                        <circle cx="22" cy="13" r="3" stroke="currentColor" stroke-width="1.5" fill="none"/>
+                        <path d="M18 24 C18 21, 20 19, 22 19 C25 19, 28 21, 28 25" stroke="currentColor" stroke-width="1.5" fill="none" stroke-linecap="round"/>
+                    </svg>
+                </div>
+                <p class="start-entry-card-title">Personenregister</p>
+            </a>
+            
+            <ul class="start-card-corpora">
+                <li>
+                    <span class="start-card-corpora-label">Frauen</span>
+                    <span class="start-card-corpora-count">2.324</span>
+                </li>
+                <li>
+                    <span class="start-card-corpora-label">M&auml;nner</span>
+                    <span class="start-card-corpora-count">6.082</span>
+                </li>
+                
+                <li class="start-card-corpora-total">
+                    <span class="start-card-corpora-label">Gesamt</span>
+                    <span class="start-card-corpora-count">
+                        <span class="prov-stat-container">
+                            
+<button type="button" class="prov-trigger"
+        aria-expanded="false" aria-haspopup="dialog"
+        aria-controls="prov-card-persons"
+        data-prov-trigger="prov-card-persons"><strong>8.406</strong></button>
+
+                            
+<aside class="prov-popover" id="prov-card-persons"
+       role="dialog" aria-hidden="true" aria-label="Herkunft: Personen — Provenienz">
+    <header class="prov-popover-head">
+        <h3 class="prov-popover-title">Personen — Provenienz</h3>
+        
+        <button type="button" class="prov-popover-close" aria-label="Schließen">&times;</button>
+    </header>
+    <div class="prov-popover-body">
+        
+                                <pre class="prov-xpath"><span class="xp-axis">//</span><span class="xp-elem">tei:body</span><span class="xp-axis">//</span><span class="xp-elem">tei:*</span><span class="xp-pred">[</span><span class="xp-attr">@type</span>=<span class="xp-string">'person'</span><span class="xp-pred">]</span><span class="xp-axis">/</span><span class="xp-attr">@ref</span></pre>
+                                <p class="prov-note">distinct &uuml;ber <code>@ref</code> (<code>pe__&hellip;</code>); freigegebene Dokumente.</p>
+                            
+    </div>
+</aside>
+
+                        </span>
+                    </span>
+                </li>
+            </ul>
+        </div>
+
     </div>
 
     
     <section class="start-twoways">
 
         <div class="start-twoways-column">
-            <p class="start-twoways-eyebrow">Exploration</p>
-            <p class="start-twoways-intro">Offene, visuelle &Uuml;berblicksdarstellungen der Datenbest&auml;nde.</p>
+            <h2 class="start-twoways-heading">Exploration</h2>
+            <p class="start-twoways-intro">Visuelle &Uuml;berblicke nach Rollen, Beziehungen und Transaktionen.</p>
             <div class="start-twoways-grid">
 
                 <a href="./exploration/roles.html" class="explore-hub-card explore-hub-card--active">
@@ -322,41 +443,29 @@
                     <p class="explore-hub-card-desc">Repertoire der Rechtsgesch&auml;fte: Typen, Verbverteilung und Empf&auml;ngerstrukturen im Zeitverlauf.</p>
                 </a>
 
-                <a href="./exploration/places.html" class="explore-hub-card explore-hub-card--active">
-                    <div class="explore-hub-card-icon">
-                        <svg width="40" height="40" viewBox="0 0 40 40" fill="none" xmlns="http://www.w3.org/2000/svg">
-                            <path d="M20 6C14.5 6 10 10.5 10 16C10 24 20 34 20 34C20 34 30 24 30 16C30 10.5 25.5 6 20 6Z" stroke="currentColor" stroke-width="1.5" fill="currentColor" fill-opacity="0.1"/>
-                            <circle cx="20" cy="16" r="4" stroke="currentColor" stroke-width="1.5"/>
-                        </svg>
-                    </div>
-                    <h2 class="explore-hub-card-title">Orte</h2>
-                    <p class="explore-hub-card-desc">Einzugsgebiet der Rechtsgesch&auml;fte: Siedlungskarte und vollst&auml;ndiges Ortsregister.</p>
-                </a>
-
             </div>
         </div>
 
         <div class="start-twoways-column">
-            <p class="start-twoways-eyebrow">Analyse</p>
-            <p class="start-twoways-intro">Gezielte Abfragen mit vordefinierten Template-Familien.</p>
-            <a href="./analysis/index.html" class="explore-hub-card explore-hub-card--active">
-                <div class="explore-hub-card-icon">
-                    <svg width="40" height="40" viewBox="0 0 40 40" fill="none" xmlns="http://www.w3.org/2000/svg" aria-hidden="true">
-                        <rect x="6" y="6" width="28" height="28" rx="2" stroke="currentColor" stroke-width="1.5" fill="none"/>
-                        <line x1="6" y1="14" x2="34" y2="14" stroke="currentColor" stroke-width="1.5"/>
-                        <line x1="14" y1="14" x2="14" y2="34" stroke="currentColor" stroke-width="1.5"/>
-                        <rect x="18" y="18" width="5" height="4" fill="currentColor" fill-opacity="0.3"/>
-                        <rect x="25" y="18" width="7" height="4" fill="currentColor" fill-opacity="0.5"/>
-                        <rect x="18" y="24" width="8" height="4" fill="currentColor" fill-opacity="0.4"/>
-                        <rect x="28" y="24" width="4" height="4" fill="currentColor" fill-opacity="0.2"/>
-                    </svg>
-                </div>
-                <h2 class="explore-hub-card-title">Grundabfragen</h2>
-                <p class="explore-hub-card-desc">
-                    Template-Kombinationen aus Rolle, Geschlecht, Bestand und Zeitraum
-                    f&uuml;r wiederkehrende Forschungsfragen.
-                </p>
-            </a>
+            <h2 class="start-twoways-heading">Analyse</h2>
+            <p class="start-twoways-intro">Gezielte Filterabfragen nach Rolle, Geschlecht, Bestand und Zeitraum.</p>
+            <div class="start-twoways-grid">
+                <a href="./analysis/index.html" class="explore-hub-card explore-hub-card--active">
+                    <div class="explore-hub-card-icon">
+                        <svg width="40" height="40" viewBox="0 0 40 40" fill="none" xmlns="http://www.w3.org/2000/svg" aria-hidden="true">
+                            <rect x="6" y="6" width="28" height="28" rx="2" stroke="currentColor" stroke-width="1.5" fill="none"/>
+                            <line x1="6" y1="14" x2="34" y2="14" stroke="currentColor" stroke-width="1.5"/>
+                            <line x1="14" y1="14" x2="14" y2="34" stroke="currentColor" stroke-width="1.5"/>
+                            <rect x="18" y="18" width="5" height="4" fill="currentColor" fill-opacity="0.3"/>
+                            <rect x="25" y="18" width="7" height="4" fill="currentColor" fill-opacity="0.5"/>
+                            <rect x="18" y="24" width="8" height="4" fill="currentColor" fill-opacity="0.4"/>
+                            <rect x="28" y="24" width="4" height="4" fill="currentColor" fill-opacity="0.2"/>
+                        </svg>
+                    </div>
+                    <h2 class="explore-hub-card-title">Grundabfragen</h2>
+                    <p class="explore-hub-card-desc">Vordefinierte Template-Familien f&uuml;r wiederkehrende Forschungsfragen.</p>
+                </a>
+            </div>
         </div>
 
     </section>
@@ -375,14 +484,13 @@
             </div>
             <div class="footer-col footer-col-right">
                 <p>Technische Umsetzung: <a href="https://dhcraft.org" class="footer-link">Digital Humanities Craft OG</a></p>
-                <p>Lizenz: <a href="./impressum.html#lizenz" class="footer-link">CC BY 4.0</a> &middot; Startseite generiert am 30. April 2026</p>
+                <p>Lizenz: <a href="./impressum.html#lizenz" class="footer-link">CC BY 4.0</a> &middot; Startseite generiert am 2. Mai 2026</p>
             </div>
         </div>
     </footer>
 
-    <script>window.RELEASED_PERIOD = {min: 1177, max: 1414};</script>
-    <script src="./static/js/core.js"></script>
-    <script src="./static/js/provenance.js"></script>
+    <script src="./static/js/core.js?v=20260502215716"></script>
+    <script src="./static/js/provenance.js?v=20260502215716"></script>
     
 </body>
 </html>

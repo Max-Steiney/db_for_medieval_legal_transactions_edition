@@ -51,11 +51,49 @@ def parse_html(html_str):
     return finder
 
 
+def patch_build_path(monkeypatch, name, value):
+    """Patch a path constant across alle build-Submodule.
+
+    Ersetzt das alte Idiom ``monkeypatch.setattr(frontend.build, "DATA_DIR", x)``,
+    das nach dem Package-Split nicht mehr ausreicht: jedes Submodul (_helpers,
+    _metadata, _pages) hat seine eigene Top-Level-Importbindung von
+    DOCS_DIR/DATA_DIR. Wir setzen den Wert auf allen Stellen gleichzeitig.
+    """
+    import frontend.build as _b
+    import frontend.build._helpers as _h
+    import frontend.build._metadata as _m
+    import frontend.build._pages as _p
+    for mod in (_b, _h, _m, _p):
+        if hasattr(mod, name):
+            monkeypatch.setattr(mod, name, value, raising=False)
+
+
 @pytest.fixture(scope="module")
 def docs_dir(tmp_path_factory):
-    """Monkeypatch DOCS_DIR to a temp directory for the test module."""
+    """Monkeypatch DOCS_DIR to a temp directory for the test module.
+
+    Nach dem build-Package-Split (frontend.build/__init__.py + Submodule)
+    haben die Submodule ihre eigenen DOCS_DIR-Bindings — der einfache
+    Patch auf frontend.build.DOCS_DIR reicht nicht mehr. Wir patchen
+    daher jedes Submodul, das DOCS_DIR liest oder darauf schreibt.
+    """
+    import frontend.build._helpers as _h
+    import frontend.build._metadata as _m
+    import frontend.build._pages as _p
+
     tmp_docs = tmp_path_factory.mktemp("docs")
-    original = frontend.build.DOCS_DIR
+    originals = {
+        "build": frontend.build.DOCS_DIR,
+        "helpers": _h.DOCS_DIR,
+        "metadata": _m.DOCS_DIR,
+        "pages": _p.DOCS_DIR,
+    }
     frontend.build.DOCS_DIR = tmp_docs
+    _h.DOCS_DIR = tmp_docs
+    _m.DOCS_DIR = tmp_docs
+    _p.DOCS_DIR = tmp_docs
     yield tmp_docs
-    frontend.build.DOCS_DIR = original
+    frontend.build.DOCS_DIR = originals["build"]
+    _h.DOCS_DIR = originals["helpers"]
+    _m.DOCS_DIR = originals["metadata"]
+    _p.DOCS_DIR = originals["pages"]

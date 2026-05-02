@@ -4,7 +4,7 @@
 {% block title %}Rollen — Exploration{% endblock %}
 
 {% block head %}
-<link rel="stylesheet" href="{{ root_path }}/static/css/exploration.css">
+<link rel="stylesheet" href="{{ root_path }}/static/css/exploration.css?v={{ asset_v }}">
 {% endblock %}
 
 {% block content %}
@@ -151,10 +151,10 @@
 {% endblock %}
 
 {% block scripts %}
-<script src="{{ root_path }}/static/js/table-infra.js"></script>
-<script src="{{ root_path }}/static/js/chart-helpers.js"></script>
-<script src="{{ root_path }}/static/js/drill-down.js"></script>
-<script src="{{ root_path }}/static/js/exploration-roles.js"></script>
+<script src="{{ root_path }}/static/js/table-infra.js?v={{ asset_v }}"></script>
+<script src="{{ root_path }}/static/js/chart-helpers.js?v={{ asset_v }}"></script>
+<script src="{{ root_path }}/static/js/drill-down.js?v={{ asset_v }}"></script>
+<script src="{{ root_path }}/static/js/exploration-roles.js?v={{ asset_v }}"></script>
 {% endblock %}
 
 {% block footer_info %}Rollen generiert am {{ build_date }}{% endblock %}

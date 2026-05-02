@@ -20,8 +20,11 @@ PERSON_LIST = INDICES_DIR / "personList.xml"
 ORG_LIST = INDICES_DIR / "orgList.xml"
 PLACE_LIST = INDICES_DIR / "placeList.xml"
 
-# Test-Targets: JSONs im Edition-Repo
-DATA_DIR = EDITION_ROOT / "data"
+# Test-Targets: JSONs im Edition-Repo. Der Build schreibt nach
+# docs/data/, nicht nach data/. Frueher lag hier ein paralleler
+# data/-Snapshot — das fuehrte zu Mismatches gegen alten Stand,
+# nicht gegen echte Drift.
+DATA_DIR = EDITION_ROOT / "docs" / "data"
 
 # Report-Ausgabe
 REPORTS_DIR = TESTS_DIR / "reports"

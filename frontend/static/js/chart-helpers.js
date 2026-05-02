@@ -3,19 +3,19 @@
    ChartHelpers: shared SVG chart utilities for statistics + exploration
    ========================================================================== */
 
-var ChartHelpers = (function() {
+let ChartHelpers = (function() {
     'use strict';
 
-    var SVG_NS = 'http://www.w3.org/2000/svg';
+    let SVG_NS = 'http://www.w3.org/2000/svg';
 
     /* ------------------------------------------------------------------
        SVG element factory
        ------------------------------------------------------------------ */
 
     function svgEl(tag, attrs) {
-        var el = document.createElementNS(SVG_NS, tag);
+        let el = document.createElementNS(SVG_NS, tag);
         if (attrs) {
-            for (var k in attrs) {
+            for (let k in attrs) {
                 if (attrs.hasOwnProperty(k)) el.setAttribute(k, attrs[k]);
             }
         }
@@ -46,7 +46,7 @@ var ChartHelpers = (function() {
        Tooltip system — one tooltip per context (class name)
        ------------------------------------------------------------------ */
 
-    var tooltips = {};
+    let tooltips = {};
 
     /**
      * Create (or retrieve) a tooltip element for a given CSS class.
@@ -54,7 +54,7 @@ var ChartHelpers = (function() {
      */
     function createTooltip(className) {
         if (tooltips[className]) return tooltips[className];
-        var el = document.createElement('div');
+        let el = document.createElement('div');
         el.className = className;
         document.body.appendChild(el);
         tooltips[className] = { el: el, timer: null, hovered: false };
@@ -92,16 +92,16 @@ var ChartHelpers = (function() {
      * Repositions to avoid overflow.
      */
     function showTooltip(className, html, x, y) {
-        var t = tooltips[className];
+        let t = tooltips[className];
         if (!t) return;
-        var el = t.el;
+        let el = t.el;
         el.innerHTML = html;
         el.classList.add('visible');
 
-        var w = el.offsetWidth;
-        var h = el.offsetHeight;
-        var tx = x + 14;
-        var ty = y + 18;
+        let w = el.offsetWidth;
+        let h = el.offsetHeight;
+        let tx = x + 14;
+        let ty = y + 18;
         if (tx + w > window.innerWidth - 8) tx = x - w - 8;
         if (ty + h > window.innerHeight - 8) ty = y - h - 8;
         el.style.left = tx + 'px';
@@ -113,13 +113,13 @@ var ChartHelpers = (function() {
      * Does NOT change innerHTML — just moves the element.
      */
     function moveTooltip(className, x, y) {
-        var t = tooltips[className];
+        let t = tooltips[className];
         if (!t) return;
-        var el = t.el;
-        var w = el.offsetWidth;
-        var h = el.offsetHeight;
-        var tx = x + 14;
-        var ty = y + 18;
+        let el = t.el;
+        let w = el.offsetWidth;
+        let h = el.offsetHeight;
+        let tx = x + 14;
+        let ty = y + 18;
         if (tx + w > window.innerWidth - 8) tx = x - w - 8;
         if (ty + h > window.innerHeight - 8) ty = y - h - 8;
         el.style.left = tx + 'px';
@@ -130,7 +130,7 @@ var ChartHelpers = (function() {
      * Hide tooltip and clear any auto-dismiss timer.
      */
     function hideTooltip(className, force) {
-        var t = tooltips[className];
+        let t = tooltips[className];
         if (!t) return;
         // Don't hide while user is hovering the tooltip (unless forced)
         if (t.hovered && !force) return;
@@ -143,7 +143,7 @@ var ChartHelpers = (function() {
      */
     function touchTooltip(className, html, x, y, ms) {
         showTooltip(className, html, x, y);
-        var t = tooltips[className];
+        let t = tooltips[className];
         if (t) t.timer = setTimeout(function() { hideTooltip(className); }, ms || 3000);
     }
 
@@ -152,15 +152,15 @@ var ChartHelpers = (function() {
        Shared label & colour maps (canonical across statistics + exploration)
        ------------------------------------------------------------------ */
 
-    var ROLE_LABELS = {
+    let ROLE_LABELS = {
         issuer: 'Aussteller:innen', recipient: 'Empf\u00e4nger:innen',
         witness: 'Zeug:innen', other: 'Sonstige'
     };
-    var ROLE_ORDER = ['issuer', 'recipient', 'witness', 'other'];
+    let ROLE_ORDER = ['issuer', 'recipient', 'witness', 'other'];
 
-    var SEX_LABELS = { m: 'M\u00e4nnlich', f: 'Weiblich', unspecified: 'Keine Angabe' };
+    let SEX_LABELS = { m: 'M\u00e4nnlich', f: 'Weiblich', unspecified: 'Keine Angabe' };
 
-    var _sexColors = null;
+    let _sexColors = null;
     function sexColors() {
         if (_sexColors) return _sexColors;
         _sexColors = {
@@ -177,19 +177,19 @@ var ChartHelpers = (function() {
        ------------------------------------------------------------------ */
 
     function updateRangeFill(idPrefix) {
-        var minInput = document.getElementById(idPrefix + '-range-min');
-        var maxInput = document.getElementById(idPrefix + '-range-max');
-        var fill = document.getElementById(idPrefix + '-range-fill');
+        let minInput = document.getElementById(idPrefix + '-range-min');
+        let maxInput = document.getElementById(idPrefix + '-range-max');
+        let fill = document.getElementById(idPrefix + '-range-fill');
         if (!minInput || !maxInput || !fill) return;
-        var lo = parseFloat(minInput.value);
-        var hi = parseFloat(maxInput.value);
-        var min = parseFloat(minInput.min);
-        var max = parseFloat(minInput.max);
-        var range = max - min;
+        let lo = parseFloat(minInput.value);
+        let hi = parseFloat(maxInput.value);
+        let min = parseFloat(minInput.min);
+        let max = parseFloat(minInput.max);
+        let range = max - min;
         if (range <= 0) return;
-        if (lo > hi) { var t = lo; lo = hi; hi = t; }
-        var left = ((lo - min) / range) * 100;
-        var right = ((hi - min) / range) * 100;
+        if (lo > hi) { let t = lo; lo = hi; hi = t; }
+        let left = ((lo - min) / range) * 100;
+        let right = ((hi - min) / range) * 100;
         fill.style.left = left + '%';
         fill.style.width = (right - left) + '%';
     }
@@ -206,14 +206,14 @@ var ChartHelpers = (function() {
      * @param {function} callback - called with parsed data on success
      */
     function loadJSON(url, container, callback) {
-        var el = typeof container === 'string' ? document.getElementById(container) : container;
-        if (el) el.innerHTML = '<p style="text-align:center;padding:2rem;color:var(--color-text-muted)">Daten werden geladen\u2026</p>';
+        let el = typeof container === 'string' ? document.getElementById(container) : container;
+        if (el) el.innerHTML = '<p class="cell-placeholder">Daten werden geladen\u2026</p>';
         fetch(url)
             .then(function(r) { return r.json(); })
             .then(function(data) { callback(data); })
             .catch(function(err) {
                 console.warn('Daten konnten nicht geladen werden (' + url + '):', err);
-                if (el) el.innerHTML = '<p style="text-align:center;padding:2rem;color:var(--color-text-muted)">Daten konnten nicht geladen werden.</p>';
+                if (el) el.innerHTML = '<p class="cell-placeholder">Daten konnten nicht geladen werden.</p>';
             });
     }
 
@@ -225,16 +225,16 @@ var ChartHelpers = (function() {
      * @returns {object|null} - {rangeMin, rangeMax} elements or null
      */
     function bindTimeRange(idPrefix, state, onChange) {
-        var rangeMin = document.getElementById(idPrefix + '-range-min');
-        var rangeMax = document.getElementById(idPrefix + '-range-max');
-        var rangeDisplay = document.getElementById(idPrefix + '-range-display');
-        var gapNote = document.getElementById(idPrefix + '-gap-note');
+        let rangeMin = document.getElementById(idPrefix + '-range-min');
+        let rangeMax = document.getElementById(idPrefix + '-range-max');
+        let rangeDisplay = document.getElementById(idPrefix + '-range-display');
+        let gapNote = document.getElementById(idPrefix + '-gap-note');
         if (!rangeMin || !rangeMax) return null;
 
         function update() {
-            var lo = parseInt(rangeMin.value, 10);
-            var hi = parseInt(rangeMax.value, 10);
-            if (lo > hi) { var tmp = lo; lo = hi; hi = tmp; }
+            let lo = parseInt(rangeMin.value, 10);
+            let hi = parseInt(rangeMax.value, 10);
+            if (lo > hi) { let tmp = lo; lo = hi; hi = tmp; }
             state.decadeMin = lo;
             state.decadeMax = hi;
             if (rangeDisplay) rangeDisplay.textContent = lo + '\u2013' + hi;
@@ -263,10 +263,10 @@ var ChartHelpers = (function() {
      * @param {function} onChange - called after state update
      */
     function bindChipFilter(selector, dataAttr, state, stateKey, onChange) {
-        var chips = document.querySelectorAll(selector);
-        for (var i = 0; i < chips.length; i++) {
+        let chips = document.querySelectorAll(selector);
+        for (let i = 0; i < chips.length; i++) {
             chips[i].addEventListener('click', function() {
-                for (var j = 0; j < chips.length; j++) chips[j].classList.remove('active');
+                for (let j = 0; j < chips.length; j++) chips[j].classList.remove('active');
                 this.classList.add('active');
                 state[stateKey] = this.getAttribute(dataAttr);
                 if (onChange) onChange();
@@ -284,9 +284,9 @@ var ChartHelpers = (function() {
      * @param {function} renderTable - called when switching to table view
      */
     function bindToggle(toggleId, chartId, tableId, state, stateKey, renderTable) {
-        var toggle = document.getElementById(toggleId);
-        var chartWrap = document.getElementById(chartId);
-        var tableWrap = document.getElementById(tableId);
+        let toggle = document.getElementById(toggleId);
+        let chartWrap = document.getElementById(chartId);
+        let tableWrap = document.getElementById(tableId);
         if (!toggle || !chartWrap || !tableWrap) return;
         toggle.addEventListener('click', function() {
             state[stateKey] = !state[stateKey];
@@ -303,9 +303,9 @@ var ChartHelpers = (function() {
      * @param {number} [delay=200] - debounce delay in ms
      */
     function bindSearch(inputId, callback, delay) {
-        var input = document.getElementById(inputId);
+        let input = document.getElementById(inputId);
         if (!input) return;
-        var timer = null;
+        let timer = null;
         input.addEventListener('input', function() {
             clearTimeout(timer);
             timer = setTimeout(function() {
@@ -324,13 +324,13 @@ var ChartHelpers = (function() {
      * @param {Array} [textDefaults] - sort keys that default to ascending
      */
     function bindSortHeaders(tableSelector, state, sortKeyProp, sortAscProp, renderFn, textDefaults) {
-        var headers = document.querySelectorAll(tableSelector);
-        var textKeys = textDefaults || [];
-        for (var i = 0; i < headers.length; i++) {
+        let headers = document.querySelectorAll(tableSelector);
+        let textKeys = textDefaults || [];
+        for (let i = 0; i < headers.length; i++) {
             headers[i].style.cursor = 'pointer';
             (function(header) {
                 header.addEventListener('click', function() {
-                    var key = header.getAttribute('data-sort');
+                    let key = header.getAttribute('data-sort');
                     if (state[sortKeyProp] === key) {
                         state[sortAscProp] = !state[sortAscProp];
                     } else {
@@ -338,8 +338,8 @@ var ChartHelpers = (function() {
                         state[sortAscProp] = textKeys.indexOf(key) >= 0;
                     }
                     // Update sort arrows + aria-sort
-                    for (var j = 0; j < headers.length; j++) {
-                        var arrow = headers[j].querySelector('.sort-arrow');
+                    for (let j = 0; j < headers.length; j++) {
+                        let arrow = headers[j].querySelector('.sort-arrow');
                         if (headers[j] === header) {
                             if (arrow) arrow.textContent = state[sortAscProp] ? ' \u2191' : ' \u2193';
                             headers[j].setAttribute('aria-sort', state[sortAscProp] ? 'ascending' : 'descending');
@@ -372,21 +372,21 @@ var ChartHelpers = (function() {
      */
     function renderHorizontalBars(container, config) {
         container.innerHTML = '';
-        var items = config.items || [];
+        let items = config.items || [];
         if (!items.length) return;
 
-        var labelW = config.labelWidth || 120;
-        var barH = config.barHeight || 24;
-        var barGap = config.barGap || 2;
-        var groupGap = config.groupGap || 16;
-        var chartW = container.clientWidth - labelW - 80;
+        let labelW = config.labelWidth || 120;
+        let barH = config.barHeight || 24;
+        let barGap = config.barGap || 2;
+        let groupGap = config.groupGap || 16;
+        let chartW = container.clientWidth - labelW - 80;
         if (chartW < 150) chartW = 150;
 
         // Find max value for scaling
-        var maxVal = 0;
-        for (var mi = 0; mi < items.length; mi++) {
-            var segs = items[mi].segments;
-            for (var si = 0; si < segs.length; si++) {
+        let maxVal = 0;
+        for (let mi = 0; mi < items.length; mi++) {
+            let segs = items[mi].segments;
+            for (let si = 0; si < segs.length; si++) {
                 if (segs[si].value > maxVal) maxVal = segs[si].value;
             }
         }
@@ -394,41 +394,44 @@ var ChartHelpers = (function() {
 
         // Legend
         if (config.legend) {
-            var legendDiv = document.createElement('div');
+            let legendDiv = document.createElement('div');
             legendDiv.className = 'explore-legend';
-            for (var li = 0; li < config.legend.length; li++) {
-                var lItem = document.createElement('span');
+            for (let li = 0; li < config.legend.length; li++) {
+                let lItem = document.createElement('span');
                 lItem.className = 'explore-legend-item';
-                lItem.innerHTML = '<span class="explore-legend-swatch" style="background:' +
-                    config.legend[li].color + '"></span>' + config.legend[li].label;
+                let swatch = document.createElement('span');
+                swatch.className = 'explore-legend-swatch';
+                swatch.style.setProperty('--swatch-color', config.legend[li].color);
+                lItem.appendChild(swatch);
+                lItem.appendChild(document.createTextNode(config.legend[li].label));
                 legendDiv.appendChild(lItem);
             }
             container.appendChild(legendDiv);
         }
 
         // Compute total height
-        var totalH = 0;
-        for (var hi = 0; hi < items.length; hi++) {
+        let totalH = 0;
+        for (let hi = 0; hi < items.length; hi++) {
             totalH += items[hi].segments.length * (barH + barGap) + groupGap;
         }
 
         // Responsive label width: shrink on narrow containers
         if (container.clientWidth < 400) labelW = Math.max(80, Math.floor(container.clientWidth * 0.25));
 
-        var svg = document.createElementNS(SVG_NS, 'svg');
+        let svg = document.createElementNS(SVG_NS, 'svg');
         svg.setAttribute('width', labelW + chartW + 80);
         svg.setAttribute('height', totalH);
         svg.setAttribute('role', 'img');
         svg.setAttribute('aria-label', config.ariaLabel || 'Balkendiagramm');
         svg.style.display = 'block';
 
-        var y = 0;
-        for (var gi = 0; gi < items.length; gi++) {
-            var item = items[gi];
-            var segs = item.segments;
+        let y = 0;
+        for (let gi = 0; gi < items.length; gi++) {
+            let item = items[gi];
+            let segs = item.segments;
 
             // Group label
-            var label = document.createElementNS(SVG_NS, 'text');
+            let label = document.createElementNS(SVG_NS, 'text');
             label.setAttribute('x', labelW - 8);
             label.setAttribute('y', y + segs.length * (barH + barGap) / 2 + 5);
             label.setAttribute('text-anchor', 'end');
@@ -437,11 +440,11 @@ var ChartHelpers = (function() {
             label.textContent = item.label;
             svg.appendChild(label);
 
-            for (var bi = 0; bi < segs.length; bi++) {
-                var seg = segs[bi];
-                var barW = Math.max(2, (seg.value / maxVal) * chartW);
+            for (let bi = 0; bi < segs.length; bi++) {
+                let seg = segs[bi];
+                let barW = Math.max(2, (seg.value / maxVal) * chartW);
 
-                var rect = document.createElementNS(SVG_NS, 'rect');
+                let rect = document.createElementNS(SVG_NS, 'rect');
                 rect.setAttribute('x', labelW);
                 rect.setAttribute('y', y);
                 rect.setAttribute('width', barW);
@@ -452,7 +455,7 @@ var ChartHelpers = (function() {
 
                 // Tooltip + click via closure
                 (function(itm, sg, bw) {
-                    var tipCls = config.tooltipClass || 'explore-tooltip';
+                    let tipCls = config.tooltipClass || 'explore-tooltip';
                     if (config.onTip) {
                         rect.addEventListener('mouseenter', function(e) {
                             showTooltip(tipCls, config.onTip(itm, sg, e), e.clientX, e.clientY);
@@ -474,7 +477,7 @@ var ChartHelpers = (function() {
                 svg.appendChild(rect);
 
                 // Value label
-                var valLabel = document.createElementNS(SVG_NS, 'text');
+                let valLabel = document.createElementNS(SVG_NS, 'text');
                 valLabel.setAttribute('x', labelW + barW + 6);
                 valLabel.setAttribute('y', y + barH / 2 + 4);
                 valLabel.setAttribute('class', 'explore-bar-value');
@@ -518,3 +521,7 @@ var ChartHelpers = (function() {
     };
 
 })();
+
+if (typeof module !== 'undefined' && module.exports) {
+    module.exports = { ChartHelpers };
+}

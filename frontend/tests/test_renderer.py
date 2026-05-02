@@ -315,14 +315,14 @@ def test_rs_person_renders_as_link():
 
 
 def test_rs_person_link_href():
-    """Person link points to register page with hash fragment."""
+    """Person link points to the per-entity profile page."""
     persons = {"pe__hans": {
         "forename": "Hans", "surname": "", "addName": "",
         "death": "", "display": "Hans", "sex": "m",
     }}
     body = tei('<p><rs type="person" ref="pe__hans">Hans</rs></p>')
     html = render_document(body, (persons, {}, {}), root_path="../..")
-    assert 'href="../../register/persons.html#pe__hans"' in html
+    assert 'href="../../register/persons/pe__hans.html"' in html
 
 
 def test_rs_org_renders_as_link():
