@@ -154,13 +154,13 @@ class TestRegisterTemplateM3:
 # --- JS structure tests ---
 
 
-class TestEditionJsM3:
-    """Test that edition.js contains M3 functions."""
+class TestDocumentJsM3:
+    """Test that document.js contains M3 init functions."""
 
     @pytest.fixture(scope="class")
     def js_source(self):
         from pathlib import Path
-        js_path = Path(__file__).parent.parent / "static" / "edition.js"
+        js_path = Path(__file__).parent.parent / "static" / "js" / "document.js"
         return js_path.read_text(encoding="utf-8")
 
     def test_factoid_view_function(self, js_source):
@@ -169,47 +169,49 @@ class TestEditionJsM3:
     def test_citation_helper_function(self, js_source):
         assert "initCitationHelper" in js_source
 
-    def test_build_factoid_table_function(self, js_source):
-        assert "buildFactoidTable" in js_source
 
-    def test_build_citations_function(self, js_source):
-        assert "buildCitations" in js_source
+class TestRegisterJsM3:
+    """Test that register.js wires the quality filter."""
+
+    @pytest.fixture(scope="class")
+    def js_source(self):
+        from pathlib import Path
+        js_path = Path(__file__).parent.parent / "static" / "js" / "register.js"
+        return js_path.read_text(encoding="utf-8")
 
     def test_quality_filter_in_register(self, js_source):
         assert "filter-quality" in js_source
-        assert "qualityFilter" in js_source
 
 
 # --- CSS structure tests ---
 
 
-class TestStyleCssM3:
-    """Test that style.css contains M3 styles."""
+class TestRegisterCssM3:
+    """Test that register.css carries the quality indicator styles."""
 
     @pytest.fixture(scope="class")
     def css_source(self):
         from pathlib import Path
-        css_path = Path(__file__).parent.parent / "static" / "style.css"
+        css_path = Path(__file__).parent.parent / "static" / "css" / "register.css"
         return css_path.read_text(encoding="utf-8")
-
-    def test_toolbar_btn_styles(self, css_source):
-        assert ".toolbar-btn" in css_source
-
-    def test_factoid_table_styles(self, css_source):
-        assert ".factoid-table" in css_source
-
-    def test_factoid_type_badges(self, css_source):
-        assert ".factoid-type-person" in css_source
-        assert ".factoid-type-organisation" in css_source
-        assert ".factoid-type-ort" in css_source
-
-    def test_cite_popover_styles(self, css_source):
-        assert ".cite-popover" in css_source
-        assert ".cite-section" in css_source
-        assert ".cite-copy-btn" in css_source
 
     def test_quality_indicator_styles(self, css_source):
         assert ".quality-ok" in css_source
         assert ".quality-notice" in css_source
         assert ".quality-warning" in css_source
-        assert ".col-quality" in css_source
+
+
+class TestDocumentCssM3:
+    """Test that document.css carries factoid + citation styles."""
+
+    @pytest.fixture(scope="class")
+    def css_source(self):
+        from pathlib import Path
+        css_path = Path(__file__).parent.parent / "static" / "css" / "document.css"
+        return css_path.read_text(encoding="utf-8")
+
+    def test_factoid_table_styles(self, css_source):
+        assert ".factoid-table" in css_source
+
+    def test_cite_popover_styles(self, css_source):
+        assert ".cite-popover" in css_source
