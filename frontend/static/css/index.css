@@ -489,6 +489,11 @@
 
 .doc-link:hover { text-decoration: underline; }
 
+/* Regest-Link in der Title-Spalte: liest sich wie Fliesstext (Serif,
+   Textfarbe), wird aber beim Hover klar als Link erkennbar (Unterstreichung
+   + Farbwechsel). So ist die primaere Aktion 'Quelle anzeigen' direkt aus
+   der Tabellen-Zeile heraus verfuegbar, ohne dass die Tabelle 'spammig'
+   blau wird. */
 .cell-title {
     font-family: var(--font-serif);
     font-size: var(--text-sm);
@@ -499,6 +504,21 @@
     display: -webkit-box;
     -webkit-line-clamp: 2;
     -webkit-box-orient: vertical;
+}
+
+a.doc-link--title {
+    color: var(--color-text);
+    font-weight: 400;
+    text-decoration: none;
+}
+a.doc-link--title:hover {
+    color: var(--anno-person);
+    text-decoration: underline;
+    text-decoration-thickness: 1px;
+    text-underline-offset: 2px;
+}
+.doc-row:hover a.doc-link--title {
+    color: var(--anno-person);
 }
 
 /* --- Inhalt-Spalte: Personen-Badge + Form-Pills + Multi-Event ----------- */

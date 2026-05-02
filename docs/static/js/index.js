@@ -212,7 +212,7 @@
                     '<td class="col-idno"><a href="' + esc(doc.u) + '" class="doc-link">' + esc(doc.id) + '</a></td>' +
                     renderDateCell(doc) +
                     '<td class="col-place">' + esc(doc.p) + '</td>' +
-                    '<td class="col-title"><span class="cell-title">' + esc(doc.t) + '</span></td>' +
+                    '<td class="col-title"><a href="' + esc(doc.u) + '" class="doc-link doc-link--title cell-title">' + esc(doc.t) + '</a></td>' +
                     '<td class="col-content"><div class="col-content-inner">' +
                         '<div class="col-content-pills">' + renderContent(doc) + '</div>' +
                         CHEVRON_SVG +
@@ -649,7 +649,7 @@
                 '<span>' + esc(doc.d) + '</span>' +
                 (doc.p ? '<span>' + esc(doc.p) + '</span>' : '') +
                 '<span>' + esc(doc.cl) + '</span>' +
-                (doc.pc ? '<span>' + doc.pc + ' Personen</span>' : '') +
+                (doc.pcd ? '<span>' + doc.pcd + ' Personen</span>' : '') +
                 '</div>' +
                 '<a href="' + esc(doc.u) + '" class="preview-link">Quelle anzeigen \u2192</a>' +
                 '</div>' +
