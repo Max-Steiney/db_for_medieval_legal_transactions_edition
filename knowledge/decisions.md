@@ -26,7 +26,7 @@ Getroffene Leitentscheidungen mit Begründung. Zeitlos formuliert. Pro Eintrag E
 
 **Begründung.** Das Präfix schafft eine explizite Abgrenzung zur [[glossar#Individuelle Person]] und reduziert die Verwechslungsgefahr in publikationsrelevanten Zahlen. Die Kurzform „Nennungen" war zu nahe an der alltagssprachlichen Verwendung und lud zu Fehlinterpretationen ein.
 
-**Konsequenz.** Alle UI-Labels, Filter- und Achsenbeschriftungen verwenden „Gesamtnennungen" oder „Individuelle Personen". Siehe [[glossar#Gesamtnennung]]. Welche der beiden Zählebenen einer konkreten Zahl zugrunde liegt, muss an jeder Zahl per [[ui-design#Provenienz-Tooltip]] erkennbar sein. Ein Label, das eine Zahl fälschlich der anderen Zählebene zuordnet, ist ein Fehler im Sinne von [[requirements#Datenrobustheit und Provenienz]] und wird von [[architecture#Verifikations-Test-Set]] sichtbar gemacht.
+**Konsequenz.** Alle UI-Labels, Filter- und Achsenbeschriftungen verwenden „Gesamtnennungen" oder „Individuelle Personen". Siehe [[glossar#Gesamtnennung]]. Welche der beiden Zählebenen einer konkreten Zahl zugrunde liegt, muss an jeder Zahl per [[ui-design#Provenienz-Tip und Glossar-Tip]] erkennbar sein. Ein Label, das eine Zahl fälschlich der anderen Zählebene zuordnet, ist ein Fehler im Sinne von [[requirements#Datenrobustheit und Provenienz]] und wird von [[architecture#Verifikations-Test-Set]] sichtbar gemacht.
 
 ## Quellenbereinigte Zählung
 
@@ -34,9 +34,68 @@ Getroffene Leitentscheidungen mit Begründung. Zeitlos formuliert. Pro Eintrag E
 
 **Begründung.** Urteilslisten, Zeugenreihen und Formularwiederholungen führen dazu, dass ein und dieselbe Person innerhalb einer Urkunde zwanzigmal namentlich auftaucht. Eine Zählung pro Einzelerwähnung würde solche Formelpartien gegenüber substanziellen Einzelnennungen überproportional gewichten und Vergleiche zwischen Regesten (wenige Nennungen pro Quelle) und edierten Volltexten (viele Nennungen pro Quelle) systematisch verzerren. Die quellenbereinigte Zählung beantwortet die Forschungsfrage „in wie vielen Quellen ist Person X belegt" präzise und ist robust gegen das Erschließungsformat.
 
-**Konsequenz.** Die Definition in [[glossar#Gesamtnennung]] ist entsprechend formuliert. Der [[ui-design#Provenienz-Tooltip]] benennt diese Zählebene an jeder betroffenen Zahl explizit. Eine Umschaltung auf ungereinigte Einzelerwähnungen ist nicht vorgesehen; sie wäre statistisch missverständlich und fachlich schwer interpretierbar.
+**Konsequenz.** Die Definition in [[glossar#Gesamtnennung]] ist entsprechend formuliert. Der [[ui-design#Provenienz-Tip und Glossar-Tip]] benennt diese Zählebene an jeder betroffenen Zahl explizit. Eine Umschaltung auf ungereinigte Einzelerwähnungen ist nicht vorgesehen; sie wäre statistisch missverständlich und fachlich schwer interpretierbar.
 
 **Nicht gemeint ist**, dass das Datenmodell die Information über Mehrfachnennungen verliert. Die TEI-Quellen markieren jede Erwähnung einzeln. Die Dedupizierung greift erst in der Aggregation.
+
+## Nennungen zählen nur Personen-Annotationen außerhalb mentioned Events
+
+**Entscheidung.** Eine Personen-Nennung wird im Frontend nur dann gezählt, wenn die Person im TEI-Quellentext als `<rs type="person">` mit `@ref` auf einen `pe__`-Schlüssel annotiert ist und sich nicht innerhalb eines verschachtelten `<rs type="event">` (mentioned Event) befindet. Korrespondierende Hilfsverknüpfungen (`@corresp` ohne `@type="person"`) werden ebenfalls ausgeschlossen.
+
+**Begründung.** Das TEI-Datenmodell verwendet zwei Mechanismen, die nicht zu Nennungen zählen sollten:
+
+1. `@corresp` ist eine administrative Verknüpfung, die typischerweise eine Beziehung kodiert (etwa eine Verwandtschaftsangabe in einer Hilfsmarkierung), ohne dass der Personenname an der Stelle im Text steht.
+2. Personen-Annotationen innerhalb eines verschachtelten `<rs type="event">` referenzieren ein älteres, anderwärts erfasstes Geschäft. Sie sind Querverweise, keine Akteurinnen oder Akteure des aktuellen Quellenereignisses.
+
+Wer Nennungen für Häufigkeitsstatistiken oder Belegdichten zählt, will explizit Quellentext-Erwähnungen aktueller Geschäfte — nicht Hilfsverknüpfungen oder Querverweise. Das Altsystem (PHP/MariaDB-Frontend) zählt aus genau diesem Grund mit beiden Filtern. Eine inklusive Zählung erzeugt Diskrepanzen zu publizierten Statistiken und verzerrt die Häufigkeitsbilder einzelner Personen.
+
+**Konsequenz.** Der maßgebliche XPath ist:
+
+```
+//tei:body//tei:*[@type='person']
+  [not(ancestor::tei:rs[@type='event']
+       [ancestor::tei:rs[@type='event']])]
+```
+
+`frontend/build.py::_scan_released_tei` wertet diesen XPath direkt gegen die freigegebenen TEI-Quellen aus. CSV-Outputs der Pipeline werden für KPIs nicht mehr verwendet, sodass keine zwischenzeitliche Datentransformation die Definition ändern kann.
+
+**Nicht gemeint ist**, dass `@corresp`-Verknüpfungen oder mentioned Events aus dem Datenmodell entfernt werden. Sie bleiben in den TEI-Quellen und in den CSV-Outputs der Pipeline für Beziehungsanalysen und Querverweise verfügbar. Die Filterung greift ausschließlich bei der Frontend-Anzeige.
+
+## Asymmetrische Zählung: individuelle Personen vs. Nennungen
+
+**Entscheidung.** Die Distinct-Zählung der individuellen Personen schließt Personen-Annotationen innerhalb mentioned Events **ein**; die Zählung der Nennungen schließt sie **aus**.
+
+**Begründung.** Beide Zählebenen beantworten verschiedene Fragen. „Wie viele unterscheidbare historische Personen umfasst das publizierte Korpus?" — diese Frage zielt auf das Personenregister; eine Person ist *bekannt*, sobald sie in einer freigegebenen Quelle in irgendeiner Annotation auftritt, auch als Querverweis in einem mentioned Event. „Wie häufig wird Person X in den freigegebenen Quellentexten erwähnt?" — diese Frage zielt auf die Belegdichte als Akteurin; nur direkte Quellentext-Erwähnungen aktueller Geschäfte zählen, mentioned Events sind für diese Frage Querverweise auf andere Quellen und gehören nicht in den Zähler.
+
+Diese Asymmetrie ist im Altsystem etabliert und semantisch konsistent: Eine Person, die nur als Querverweis in einer einzigen Quelle erscheint, ist trotzdem im Register vermerkt (und damit zählbar als Individuum), aber sie hat keine *eigene* Quellenpräsenz, die in Nennungs-Statistiken aufscheinen sollte.
+
+**Konsequenz.** `frontend/build.py::_scan_released_tei` führt zwei XPath-Pässe pro Datei: `_XP_PERSONS_ALL` für Distinct-Zählung und Sex-Splitt; `_XP_PERSONS_EXCL_MENTIONED` für die Nennungszählung. Die Asymmetrie ist im Glossar-Eintrag [[glossar#Individuelle Person]] und in den Provenienz-Tooltips auf der Startseite explizit benannt.
+
+## KPIs werden direkt aus TEI via XPath gerechnet
+
+**Entscheidung.** Alle Release-KPIs der Startseite (Quellen, Quellen mit Personen, individuelle Personen, Nennungen, Rechtsgeschäfte, Korpus-Matrix) werden im Frontend-Build direkt aus den freigegebenen TEI-Quellen mit lxml und einem dokumentierten XPath gerechnet. CSV-Outputs der Pipeline werden für diese Zahlen nicht herangezogen.
+
+**Begründung.** Das Stakeholder-Leitprinzip aus Meeting 17.04. fordert: *Jede dargestellte Zahl ist nur dann wissenschaftlich verwendbar, wenn ihre Provenienz transparent, ihre Berechnungsoperation dokumentiert und ihr Ergebnis durch das Fachteam selbstständig reproduzierbar ist.* Eine zweistufige Aggregation (TEI → Pipeline-CSV → Frontend) erzeugt eine Zwischenebene, an der Definitionen subtil abweichen können (Beispiel: die Pipeline-Spalte `kind_of_linking` mappt auf TEI-Annotationen, ist aber nicht 1:1 identisch mit der semantischen Frage „erscheint Person X im Quellentext"). Direkter XPath auf TEI ist die kürzeste, prüfbarste Operation und in den Tooltips wörtlich abgedruckt — eine Verifikation reicht aus, um eine Zahl zu reproduzieren.
+
+**Konsequenz.** `frontend/build.py` definiert die XPath-Konstanten `_XP_TOP_EVENTS`, `_XP_PERSONS_ALL`, `_XP_PERSONS_EXCL_MENTIONED` und scannt einmal pro Build alle freigegebenen TEI-Quellen mit lxml. Die Funktion `_scan_released_tei` ist die alleinige Quelle der Wahrheit für `_compute_release_kpis`, `_compute_corpus_breakdown` und `_released_person_keys`. Der Scan ist kein Bottleneck.
+
+**Nicht gemeint ist**, dass die Pipeline-CSVs überflüssig werden. Sie bleiben für die Detailansichten (Personenregister, Suche, Exploration), für Verifikations-Tests (`verification/`) und für externe SQL-Importe relevant. Nur für die Hero-KPIs der Startseite gilt: TEI direkt, kein Umweg.
+
+## Rechtsgeschäfte zählen nur Top-Level-rs-Events
+
+**Entscheidung.** Die Anzahl der Rechtsgeschäfte (Events) zählt ausschließlich `<rs type="event">`-Elemente, die selbst keinen `<rs type="event">`-Vorfahren haben. Verschachtelte rs-Events innerhalb anderer rs-Events sind Querverweise auf andere Geschäfte und werden separat als `event_mentions` erfasst.
+
+**Begründung.** Im TEI-Kodierungsmodell der Edition wird ein Rechtsgeschäft als oberstes `<rs type="event">` markiert. Innerhalb seines Prosatexts können weitere Geschäfte zitiert werden — etwa eine ältere Urkunde, auf die sich das aktuelle bezieht. Diese Zitate werden ebenfalls mit `<rs type="event">` ausgezeichnet, sind aber semantisch keine eigenständigen Geschäfte des aktuellen Dokuments. Wer alle rs-Events ungefiltert zählt, summiert Geschäfte und Zitate in einen Topf und überschätzt den Umfang systematisch.
+
+**Konsequenz.** Der zentrale XPath in `pipeline/transformers/events.py` lautet:
+
+```
+//tei:body//tei:rs[@type='event'][not(ancestor::tei:rs[@type='event'])]
+```
+
+Verschachtelte rs-Events landen über `pipeline/utils/event_helpers.py::iter_top_level_events()` als `event_mentions`-Zeilen mit ihrem `outer_event_key` in `event_mentions.csv`, ohne in die Hauptzählung einzugehen. Hand-rolled `//tei:rs[@type='event']`-XPaths ohne den `not(ancestor)`-Filter sind ein Fehler.
+
+**Nicht gemeint ist**, dass die Information über mentioned Events verloren geht. Sie bleibt in `event_mentions.csv` und kann zusätzlich angezeigt werden — etwa über einen Toggle „Rechtsgeschäfte inkl. mentioned Events", wie ihn das Altsystem kennt. Dieser Toggle ist eine Anzeige-Option, nicht der Standardwert.
 
 ## Begriff Quellenkorpus
 
@@ -98,9 +157,9 @@ Getroffene Leitentscheidungen mit Begründung. Zeitlos formuliert. Pro Eintrag E
 
 **Entscheidung.** Die Provenienz einer aggregierten Zahl — also die Liste der Quelldokumente, die sie stützen — lebt als `drill_down`-Unterstruktur **innerhalb** der jeweiligen Aggregat-JSON, nicht als separate Datei.
 
-**Begründung.** Bei der Prüfung des Build-Outputs zeigte sich, dass vier der fünf aggregierten JSONs die Provenienz-Information bereits als inline Drill-down tragen (role × sex → file_keys, relation type × sex → file_keys, transaction type × decade → file_keys, place → file_keys). Eine separate Parallel-JSON-Struktur wäre Duplikation derselben Information. Die inline Form hält Aggregat und Provenienz zusammen, ohne dass ein Frontend-Reader zwei Dateien korrelieren muss.
+**Begründung.** Die meisten aggregierten JSONs tragen die Provenienz-Information bereits als inline Drill-down (role × sex → file_keys, relation type × sex → file_keys, transaction type × decade → file_keys, place → file_keys). Eine separate Parallel-JSON-Struktur wäre Duplikation derselben Information. Die inline Form hält Aggregat und Provenienz zusammen, ohne dass ein Frontend-Reader zwei Dateien korrelieren muss.
 
-**Konsequenz.** Jeder Aggregat-JSON enthält einen `drill_down`-Abschnitt mit dem gleichen Schlüsselmuster wie die Counter-Werte, aber mit sortierten Listen von `file_key`-Verweisen statt Zahlen. Das Frontend löst einen Tooltip durch Lookup im gleichen JSON auf, ohne zusätzliches Nachladen. Die Zielkonsumption für das `file_key` ist `data/docs_lookup.json`, das jeden Schlüssel auf URL, Regest und Metadaten abbildet. Siehe [[requirements#Datenrobustheit und Provenienz]] und [[ui-design#Provenienz-Tooltip]].
+**Konsequenz.** Jeder Aggregat-JSON enthält einen `drill_down`-Abschnitt mit dem gleichen Schlüsselmuster wie die Counter-Werte, aber mit sortierten Listen von `file_key`-Verweisen statt Zahlen. Das Frontend löst einen Tooltip durch Lookup im gleichen JSON auf, ohne zusätzliches Nachladen. Die Zielkonsumption für das `file_key` ist `data/docs_lookup.json`, das jeden Schlüssel auf URL, Regest und Metadaten abbildet. Siehe [[requirements#Datenrobustheit und Provenienz]] und [[ui-design#Provenienz-Tip und Glossar-Tip]].
 
 **Nicht gemeint ist**, dass Aggregat-JSONs gegenseitig referenzieren oder fachlich zirkulär werden. `drill_down` ist eine reine Quellenauflistung, keine Aggregation zweiter Ordnung.
 

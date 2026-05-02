@@ -44,13 +44,15 @@ Eine Zusammenlegung wäre unsauber, weil die jeweiligen Interaktionsmuster gegen
 
 ## Kernkomponenten
 
-### Provenienz-Tooltip
+### Provenienz-Tip und Glossar-Tip
 
-Jeder dargestellte Zahlenwert trägt eine Herkunftsanzeige. Sie nennt den zugrunde liegenden Bestand, die angewandte Zähloperation, den [[glossar#Menschen-Event]]-Status und die aktiven Filter.
+Zwei verwandte, aber funktional getrennte Tooltip-Komponenten teilen sich die Popover-Mechanik, unterscheiden sich aber im Trigger und im Inhalt.
 
-Die Anzeige ist über ein einheitliches Interaktionsmuster abrufbar (Mouseover oder Fokus). Damit wird der Unterschied zwischen oberflächlicher Ansicht und verwendbarer Zahl aufhebbar.
+Der **Provenienz-Tip** sitzt an einem dargestellten Zahlenwert (Trigger ist die Zahl, gepunktet unterstrichen) und nennt den zugrunde liegenden Bestand, die angewandte Zähloperation, den [[glossar#Menschen-Event]]-Status und die aktiven Filter. Er macht den Unterschied zwischen oberflächlicher Ansicht und verwendbarer Zahl aufhebbar.
 
-Siehe [[requirements#Datenrobustheit und Provenienz]].
+Der **Glossar-Tip** sitzt neben einem Fachbegriff (Trigger ist ein kompaktes `i`-Icon) und öffnet die Begriffsdefinition mit einem Verweis ins Glossar. Er bedient die Erstbegegnung mit einem projektspezifischen Begriff am Ort des Auftretens.
+
+Beide Komponenten sind über dasselbe Interaktionsmuster abrufbar (Hover, Fokus, Klick). Siehe [[requirements#Datenrobustheit und Provenienz]] und [[glossar]].
 
 ### Zählebenen-Umschalter
 

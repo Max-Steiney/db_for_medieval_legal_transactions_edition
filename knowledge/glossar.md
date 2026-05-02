@@ -16,6 +16,19 @@ Eine Beziehung zwischen einer Person, Organisation oder einem Ort und einer Quel
 
 Gesamtnennungen sind die Zählebene für Häufigkeit gesellschaftlicher Präsenz. Sie machen Aussagen über Dichte und Funktionsträgerschaft möglich, ohne durch Mehrfachnennungen in einzelnen Urteilsformeln verzerrt zu werden.
 
+Zählregel TEI: Eine Gesamtnennung entsteht ausschließlich aus einer direkten Personen-Annotation im Quellentext (`<rs type="person">` mit `@ref` auf einen Personeneintrag). Zwei Arten von Annotationen werden zusätzlich ausgeschlossen:
+
+1. Korrespondierende Hilfsverknüpfungen (`@corresp` ohne `@type="person"`) — sie sind administrative Verknüpfungen für Beziehungen, keine Quellentext-Erwähnungen.
+2. Personen-Annotationen innerhalb verschachtelter `<rs type="event">`-Elemente (mentioned Events) — sie verweisen auf andere, früher referenzierte Geschäfte und sind keine Akteure des aktuellen Quellenereignisses.
+
+Diese doppelte Filterung folgt dem Altsystem (PHP/MariaDB-Frontend) und der editionswissenschaftlichen Konvention. Verifikations-XPath:
+
+```
+//tei:body//tei:*[@type='person']
+  [not(ancestor::tei:rs[@type='event']
+       [ancestor::tei:rs[@type='event']])]
+```
+
 Achtung: Nicht zu verwechseln mit [[#Individuelle Person]]. Beide Zählebenen sind gleichzeitig gültig, beantworten aber verschiedene Fragen. Verwendet in [[requirements#Umschaltbarkeit der Zählebenen]] und [[decisions#Quellenbereinigte Zählung]].
 
 ## Individuelle Person
@@ -23,6 +36,18 @@ Achtung: Nicht zu verwechseln mit [[#Individuelle Person]]. Beide Zählebenen si
 Eine konsolidierte Identität im Personenregister, unabhängig von der Anzahl ihrer Nennungen. Dieselbe historische Person ist genau eine individuelle Person, auch wenn sie in fünfzig Quellen erscheint.
 
 Die Zählebene für gesellschaftliche Struktur. Sie beantwortet, wie viele unterscheidbare Akteurinnen und Akteure das Korpus enthält. Analog gelten individuelle Organisationen und individuelle Orte.
+
+Zählregel: Eine Person zählt im Frontend, sobald sie in mindestens einer freigegebenen Quelle als `<rs type="person">` annotiert ist — egal ob direkt im Top-Level-Event oder innerhalb eines verschachtelten (mentioned) rs-Events. Personen, die ausschließlich über `@corresp`-Hilfsverknüpfungen oder nur in nicht freigegebenen Korpora referenziert werden, sind im Personenregister des Frontends nicht enthalten. Die Gesamtgröße des Personenregisters in `indices/personList.xml` ist daher größer als die im Frontend ausgewiesene Anzahl individueller Personen.
+
+Asymmetrie zur Gesamtnennung: Eine Person erscheint im Distinct-Count, sobald sie irgendwo annotiert ist; ihre Nennungen werden aber nur außerhalb mentioned Events gezählt. Das ist gewollt — eine Person, die nur als Querverweis in einem mentioned Event auftritt, ist *bekannt* (gehört in das Register), aber nicht *Akteur* der aktuellen Quelle (zählt also nicht zu den Nennungen).
+
+Verifikations-XPath:
+
+```
+//tei:body//tei:*[@type='person']/@ref
+```
+
+distinct über den `@ref`-Wert (Personen-Schlüssel `pe__…`).
 
 Verwendet in [[requirements#Umschaltbarkeit der Zählebenen]], [[scholar-user-stories]].
 
@@ -64,7 +89,7 @@ Die Funktion einer Person oder Organisation in einem Event. Das kontrollierte Vo
 
 Nur diese Werte sind gültig. Ein offenes Rollenvokabular wäre statistisch unbrauchbar, weil es die Aggregation über das Korpus verhinderte.
 
-Verwendet in [[requirements]], [[scholar-user-stories#Rollenbasierte Akteursanalyse]], [[ui-design#Analyse]].
+Verwendet in [[requirements]], [[scholar-user-stories#Rollenbasierte Akteursanalyse]], [[analyse]].
 
 ## Rollenkombination
 
@@ -72,7 +97,7 @@ Eine aus mehreren Rollen abgeleitete Kategorie, die das UI als Abfrage zugängli
 
 Rollenkombinationen sind keine eigene Annotationsebene im Datenmodell, sondern eine Auswertungsperspektive. Sie entstehen durch Kombination von Rollenattributen und anderen Merkmalen wie Geschlecht oder Beziehungstyp.
 
-Verwendet in [[scholar-user-stories]], [[ui-design#Analyse]].
+Verwendet in [[scholar-user-stories]], [[analyse]].
 
 ## Siehe auch
 

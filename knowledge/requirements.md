@@ -14,7 +14,7 @@ Wissenschaftliche Verwendbarkeit hängt an Reproduzierbarkeit. Eine Zahl, die ko
 
 ### Wie
 
-An jedem Datenpunkt steht eine Herkunftsanzeige zur Verfügung, die den zugrunde liegenden Bestand, die Zähloperation, den [[glossar#Menschen-Event]]-Status und die aktiven Filter sichtbar macht. Siehe [[ui-design#Provenienz-Tooltip]]. Die Rückführung auf die Quelldokumente einer aggregierten Zahl läuft technisch über [[architecture#Provenienz-Indizes]].
+An jedem Datenpunkt steht eine Herkunftsanzeige zur Verfügung, die den zugrunde liegenden Bestand, die Zähloperation, den [[glossar#Menschen-Event]]-Status und die aktiven Filter sichtbar macht. Siehe [[ui-design#Provenienz-Tip und Glossar-Tip]]. Die Rückführung auf die Quelldokumente einer aggregierten Zahl läuft technisch über [[architecture#Provenienz-Indizes]].
 
 Zusätzlich verifiziert das [[architecture#Verifikations-Test-Set]] unabhängig von der Pipeline, dass jede im Frontend dargestellte Zahl mit den TEI-Quellen und Register-XMLs konsistent ist. Diskrepanzen deuten auf Fehler in Aggregation, Labeling oder Datenlücken hin und werden als solche sichtbar gemacht.
 

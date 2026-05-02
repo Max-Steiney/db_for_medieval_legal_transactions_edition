@@ -20,6 +20,16 @@ Die Python-Pipeline leistet Validierung, Transformation und Aggregation. Sie pr�
 
 Die Wahl von Python mit lxml folgt aus zwei Gründen. Die Werkzeugkette kommt ohne Java-Abhängigkeiten aus. Und Regressionstests sind in Python leichter zu schreiben und zu pflegen als in klassischen XSLT-Pipelines.
 
+## Datenschichten und Aggregator
+
+Zwischen TEI-Quellen und Frontend-Views liegen drei aufeinander aufbauende Schichten. Die unterste Schicht sind die Pipeline-CSVs (Schwester-Repo), die die TEI-Auszeichnung in tabellarische Form bringen. Darüber schreibt der Aggregator im Edition-Repo (`frontend/aggregator.py`) konsolidierte JSON-Dateien nach `docs/data/`. Die oberste Schicht sind die View-spezifischen JSONs, die das Frontend zur Renderzeit zusammenstellt.
+
+Der Aggregator ist die Stelle, an der Frontend-spezifische Schnitte entstehen, die nicht in die Pipeline gehören. Er joined Pipeline-CSVs (filenames, persons, persons_in_sources, events_in_sources) zu einem pro-Quelle-Record mit Counts, Geschlechter-Aufschlüsselung, Datumsnormalisierung und Annotations-Tiefe (`docs_aggregate.json`). Aus diesem Aggregat baut der Build den client-seitigen Suchindex `search.json`.
+
+Der Vorteil dieser Trennung ist Wiederverwendbarkeit. Mehrere Frontend-Views (Tabelle, Detail, Exploration) lesen denselben Aggregat-Datensatz, statt jede ihre eigene TEI-Logik mitzuführen. Begründung und Reihenfolge der Joins sind in [[data#Aggregat-Schicht]] festgehalten.
+
+Eine TEI-Änderung wirkt erst, wenn alle drei Schichten neu laufen: erst Pipeline (`python -m pipeline transform` im Schwester-Repo), dann Aggregator + Build (`python -m frontend build` hier).
+
 ## Verifikations-Test-Set
 
 Parallel zur Pipeline existiert ein unabhängiges Test-Set im Edition-Repo. Es liest die TEI-Quellen und Register-XMLs ohne Umweg über die Pipeline-Zwischenformate ein, rechnet Aggregate eigenständig nach und vergleicht sie mit den JSON-Ausgaben, die das Frontend konsumiert. Abweichungen zwischen Test-Aggregat und JSON-Aggregat sind ein Signal, das entweder auf einen Pipeline-Fehler, eine Fehl-Beschriftung in Templates oder auf eine Datenlücke hinweist.
@@ -64,7 +74,7 @@ Die statische Architektur leistet keine Echtzeit-Daten, keine persistierten Nutz
 
 Jede aggregierte Kennzahl im Frontend ist auf die Menge der zugrundeliegenden Quelldokumente rückführbar. Die Rückführung geschieht als `drill_down`-Abschnitt innerhalb der Aggregat-JSONs, der zu jedem Kreuztabellen-Feld die sortierte Liste der beitragenden `file_key`-Verweise führt. Das Frontend löst die Provenienz durch Lookup im selben JSON auf, der die Zahlen liefert; zusätzliche Metadaten zum Einzeldokument kommen aus `data/docs_lookup.json`.
 
-Konsequenz für den Build: jede Aggregations-Funktion füllt `drill_down` parallel zu den Counter-Werten. Begründung in [[decisions#Provenienz als inline Drill-down in den Aggregat-JSONs]], Umsetzung in [[ui-design#Provenienz-Tooltip]].
+Konsequenz für den Build: jede Aggregations-Funktion füllt `drill_down` parallel zu den Counter-Werten. Begründung in [[decisions#Provenienz als inline Drill-down in den Aggregat-JSONs]], Umsetzung in [[ui-design#Provenienz-Tip und Glossar-Tip]].
 
 ## Quellenbereinigte Aggregation als Invariante
 

@@ -12,7 +12,7 @@ Die Exploration erlaubt Nutzerinnen, sich einem Teilbestand anzunähern, ohne zu
 - Eine Filterung dieser Verteilung auf einen Teilbestand, einen Zeitraum oder eine Entitätsklasse.
 - Ein Drill-down auf die Quellen, die eine bestimmte Aggregat-Zelle tragen.
 
-Das Muster ist dasselbe für alle vier Sub-Seiten: aggregierte Übersicht, interaktive Filter, Drill-down auf Einzelbelegebene. Die [[ui-design#Provenienz-Tooltip]]-Komponente macht die Herkunft jeder gezeigten Zahl an Ort und Stelle einsehbar.
+Das Muster ist dasselbe für alle vier Sub-Seiten: aggregierte Übersicht, interaktive Filter, Drill-down auf Einzelbelegebene. Die [[ui-design#Provenienz-Tip und Glossar-Tip]]-Komponente macht die Herkunft jeder gezeigten Zahl an Ort und Stelle einsehbar.
 
 ## Die vier Sub-Seiten
 
@@ -46,7 +46,7 @@ Typische Fragen: „Wann setzt die Schenkungspraxis an geistliche Empfänger ein
 
 Einstieg über das Einzugsgebiet der Rechtsgeschäfte. Neben einer Siedlungskarte steht ein vollständiges Ortsregister mit Referenzierungs- und Georeferenzierungsstatus.
 
-Datenquelle: `epic_d.json` mit `places` und deren `file_keys`, sowie `places_search.json` für das tabellarische Register. Nicht alle Orte sind georeferenziert; die Sub-Seite weist beide Zahlen (referenziert und georeferenziert) separat aus.
+Datenquelle: `epic_d.json` mit `places` und deren `file_keys`. Nicht alle Orte sind georeferenziert; die Sub-Seite weist beide Zahlen (referenziert und georeferenziert) separat aus.
 
 Typische Fragen: „Welche Siedlungen außerhalb Wiens erscheinen besonders häufig?", „Welche Orte tauchen nur in den Stadtbüchern auf?", „Wo liegen die georeferenzierten Lücken?".
 
@@ -60,7 +60,7 @@ Jede Sub-Seite hält drei Ebenen:
 
 Die Drill-down-Komponente ist eine gemeinsame UI-Infrastruktur (siehe [[architecture#Provenienz-Indizes]]).
 
-## Zusammenspiel mit Phase-2-Komponenten
+## Zusammenspiel mit übergreifenden Komponenten
 
 - **[[ui-design#Zählebenen-Umschalter]]** greift in allen vier Sub-Seiten. Personenzählung wechselt zwischen [[glossar#Gesamtnennung|Gesamtnennungen]] und [[glossar#Individuelle Person|Individuellen Personen]] konsistent.
 - **[[ui-design#Menschen-Events-Toggle]]** wirkt primär auf Rollen und Beziehungen, indirekt auf Transaktionen. Der Status ist im Provenienz-Tooltip jeder Zahl sichtbar.
