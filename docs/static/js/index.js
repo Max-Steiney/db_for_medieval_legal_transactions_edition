@@ -125,6 +125,14 @@
                '<circle cx="6" cy="7" r="1.1" stroke="currentColor" stroke-width="1.1" fill="none"/>' +
                '<path d="M2.6 11.6l3-2.6l2.4 2l3-2.6l2.4 2.2" ' +
                'stroke="currentColor" stroke-width="1.2" stroke-linejoin="round" fill="none"/>' +
+               '</svg>',
+            // Mehrere Rechtsgeschaefte: zwei leicht versetzte Rechtecke,
+            // lesen sich als 'mehr als ein Vorgang in einer Quelle'.
+            m: '<svg viewBox="0 0 16 16" aria-hidden="true">' +
+               '<rect x="2.6" y="4.6" width="7.6" height="7.6" rx="1" ' +
+               'stroke="currentColor" stroke-width="1.3" fill="none"/>' +
+               '<rect x="5.8" y="2.6" width="7.6" height="7.6" rx="1" ' +
+               'stroke="currentColor" stroke-width="1.3" fill="var(--color-bg-card)"/>' +
                '</svg>'
         };
 
@@ -152,6 +160,12 @@
             if (doc.ecE > 0) pills.push(['e', 'Eintrag', 'Stadtbuch-Eintrag (TEI <div type="entry">)']);
             if (doc.ecN > 0) pills.push(['n', 'Nota', 'Nachsatz/Notiz (TEI <div type="nota">)']);
             if (doc.f) pills.push(['f', 'Faksimile', 'Digitalisat des Originals verlinkt']);
+            // Mehrere Rechtsgeschaefte als regulaere Pille \u2014 gestapelte
+            // Rechtecke; die konkrete Anzahl steckt im Tooltip.
+            if (doc.ec > 1) {
+                pills.push(['m', 'Mehrere Rechtsgesch\u00e4fte',
+                            doc.ec + ' Rechtsgesch\u00e4fte in einer Quelle']);
+            }
             if (pills.length) {
                 let html = pills.map(function(p) {
                     return '<span class="form-pill form-pill-' + p[0] +
@@ -160,13 +174,6 @@
                            FORM_ICONS[p[0]] + '</span>';
                 }).join('');
                 parts.push('<span class="form-pills">' + html + '</span>');
-            }
-
-            if (doc.ec > 1) {
-                parts.push(
-                    '<span class="multi-event" title="Mehrere Rechtsgesch\u00e4fte in einer Quelle">' +
-                    '\u26a1 ' + doc.ec + ' Rechtsgesch\u00e4fte</span>'
-                );
             }
 
             return parts.join(' ');

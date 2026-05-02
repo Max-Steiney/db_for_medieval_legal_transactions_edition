@@ -547,18 +547,8 @@
 /* Faksimile-Pille traegt dieselbe Farbe wie die TEI-Struktur-Pillen —
    visuell ein konsistenter Marker-Set. */
 
-.multi-event {
-    display: inline-block;
-    margin-left: 0.5em;
-    padding: 1px 6px;
-    border-radius: 3px;
-    background: rgba(180, 100, 30, 0.12);
-    color: rgb(150, 80, 20);
-    font-size: var(--text-xs);
-    font-weight: 500;
-    cursor: help;
-    white-space: nowrap;
-}
+/* Multi-Event-Pille (.form-pill-m) erbt den Stil der anderen Form-Pillen;
+   das frueher orange-gelbe .multi-event mit Blitz und Klartext ist weg. */
 
 /* Qualitaets-Dot pro Zeile. Anzeige nur bei doc.q > 0; Score 1 (Hinweis)
    gelblich, Score 2 (Warnung) roetlich. Klein und ruhig — soll Hinweis
