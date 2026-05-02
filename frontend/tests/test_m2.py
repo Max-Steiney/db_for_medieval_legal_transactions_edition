@@ -15,15 +15,19 @@ from frontend.tests.conftest import parse_html
 # ---------------------------------------------------------------------------
 
 class TestQualityDashboard:
-    """Quality-Dashboard wurde entfernt; die Filter im documents-Index bleiben.
-    Die fr&uuml;heren Tests &uuml;berpr&uuml;ften eine eigene quality.html-Seite,
-    die nicht mehr existiert."""
+    """Quality-Dashboard und reader-facing Quality-Filter sind entfernt.
 
-    def test_quality_filter_in_index_template(self):
+    Pipeline-Validierungs-Findings sind redaktionell-technische Hinweise und
+    fuer Lesende der Edition nicht aussagekraeftig — sie werden weder als
+    Filter noch als Marker pro Quelle angezeigt. Daten in search.json (q,
+    qc, qcat) bleiben fuer eventuelle spaetere editorinterne Tooling-Use-Cases.
+    """
+
+    def test_quality_filter_not_in_index_template(self):
         from pathlib import Path
         tpl_path = Path(frontend.build.TEMPLATES_DIR) / "index.html"
         content = tpl_path.read_text(encoding="utf-8")
-        assert 'filter-quality' in content
+        assert 'filter-quality' not in content
 
 
 # ---------------------------------------------------------------------------

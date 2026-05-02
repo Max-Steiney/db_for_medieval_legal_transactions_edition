@@ -24,7 +24,6 @@
     function initIndex() {
         let filterPlace = document.getElementById('filter-place');
         let filterFacs = document.getElementById('filter-facs');
-        let filterQuality = document.getElementById('filter-quality');
         let filterSex = document.getElementById('filter-sex');
         let filterFormsEl = document.getElementById('filter-forms');
         let resultCount = document.getElementById('result-count');
@@ -45,7 +44,6 @@
             collection: '',
             place: '',         // Sonderwert '__none__' = "ohne Ortsangabe"
             facs: '',
-            quality: '',
             sex: '',           // '' | 'with-f' | 'only-f' | 'only-m' | 'none'
             forms: [],         // Array aus 'R','S','E','N','none' — leer = alle
             yearMin: 0,
@@ -171,21 +169,6 @@
                 );
             }
 
-            // Qualitaets-Dot ganz rechts. Ausgangsbasis: validation_report.json
-            // der Pipeline; Score 0 = fehlerfrei, 1 = Hinweise (info), 2 =
-            // Warnungen (warning/error). qc traegt die Anzahl Findings.
-            if (doc.q > 0) {
-                let qLabel = doc.q === 2 ? 'Warnung' : 'Hinweis';
-                let qTitle = qLabel + (doc.qc ? ': ' + doc.qc + ' Finding' +
-                    (doc.qc === 1 ? '' : 's') : '') +
-                    '\nKlick auf die Zeile zeigt Details.';
-                parts.push(
-                    '<span class="quality-dot quality-dot--q' + doc.q +
-                    '" title="' + esc(qTitle) +
-                    '" aria-label="' + esc(qLabel) + '"></span>'
-                );
-            }
-
             return parts.join(' ');
         }
 
@@ -284,14 +267,6 @@
             });
         }
 
-        // --- Quality filter ---
-        if (filterQuality) {
-            filterQuality.addEventListener('change', function() {
-                state.quality = filterQuality.value;
-                applyFilters();
-            });
-        }
-
         // --- URL parameter restore — fuer teilbare Links und Browser-Back ---
         // Unterstuetzt: collection, place, facs, quality, q (search),
         // yearMin/yearMax. Wird einmal beim Init gelesen; spaetere
@@ -312,11 +287,6 @@
         if (urlFacs !== null && filterFacs) {
             state.facs = urlFacs;
             filterFacs.value = urlFacs;
-        }
-        let urlQuality = urlParams.get('quality');
-        if (urlQuality !== null && filterQuality) {
-            state.quality = urlQuality;
-            filterQuality.value = urlQuality;
         }
         let urlSex = urlParams.get('sex');
         if (urlSex && filterSex) {
@@ -368,7 +338,6 @@
                 if (state.facs === '1' && !doc.f) return false;
                 if (state.facs === '0' && doc.f) return false;
             }
-            if (skip !== 'quality' && state.quality !== '' && String(doc.q) !== state.quality) return false;
             if (skip !== 'sex' && !docMatchesSex(doc, state.sex)) return false;
             if (skip !== 'forms' && !docMatchesForms(doc, state.forms)) return false;
             if (skip !== 'year' && state.yearMin > 0 && state.yearMax < 9999) {
@@ -478,20 +447,6 @@
                     else _setOptionLabel(opt, opt.dataset.label, null);
                 });
             }
-            // Qualitaet
-            if (filterQuality) {
-                let counts = {0:0, 1:0, 2:0};
-                allDocs.forEach(function(doc) {
-                    if (!matchesAllExcept(doc, 'quality')) return;
-                    let q = doc.q || 0;
-                    counts[q] = (counts[q] || 0) + 1;
-                });
-                filterQuality.querySelectorAll('option').forEach(function(opt) {
-                    if (!opt.dataset.label) opt.dataset.label = opt.textContent.split(' (')[0];
-                    if (opt.value === '') _setOptionLabel(opt, opt.dataset.label, null);
-                    else _setOptionLabel(opt, opt.dataset.label, counts[opt.value] || 0);
-                });
-            }
             // Geschlechter-Mix
             if (filterSex) {
                 let counts = {'with-f': 0, 'only-f': 0, 'only-m': 0, 'none': 0};
@@ -552,7 +507,6 @@
             if (state.collection) p.set('collection', state.collection);
             if (state.place) p.set('place', state.place);
             if (state.facs) p.set('facs', state.facs);
-            if (state.quality !== '') p.set('quality', state.quality);
             if (state.sex) p.set('sex', state.sex);
             if (state.forms && state.forms.length) p.set('forms', state.forms.join(','));
             if (state.query) p.set('q', state.query);
@@ -598,14 +552,12 @@
                 state.collection = '';
                 state.place = '';
                 state.facs = '';
-                state.quality = '';
                 state.sex = '';
                 state.forms = [];
                 state.query = '';
                 chips.forEach(function(c) { c.classList.remove('active'); });
                 if (filterPlace) filterPlace.value = '';
                 if (filterFacs) filterFacs.value = '';
-                if (filterQuality) filterQuality.value = '';
                 if (filterSex) filterSex.value = '';
                 if (filterFormsEl) {
                     filterFormsEl.querySelectorAll('.form-filter-chip').forEach(function(c) {
@@ -761,11 +713,6 @@
             if (state.facs) {
                 TableInfra.addFilterChip(activeFiltersEl, state.facs === '1' ? 'Mit Faksimile' : 'Ohne Faksimile',
                     clearFilter('facs', function() { if (filterFacs) filterFacs.value = ''; }));
-            }
-            if (state.quality !== '') {
-                let qLabels = {'0': 'Fehlerfrei', '1': 'Hinweise', '2': 'Warnungen'};
-                TableInfra.addFilterChip(activeFiltersEl, 'Qualität: ' + (qLabels[state.quality] || state.quality),
-                    clearFilter('quality', function() { if (filterQuality) filterQuality.value = ''; }));
             }
             if (rangeSlider && rangeSlider.isFiltered()) {
                 TableInfra.addFilterChip(activeFiltersEl, 'Zeitraum: ' + state.yearMin + '–' + state.yearMax,
