@@ -542,7 +542,11 @@ a.doc-link--title:hover {
 .form-pills {
     display: inline-flex;
     gap: 2px;
-    margin-left: 0.4em;
+    /* margin-left: auto schiebt die Pillen-Gruppe an die rechte Kante der
+       Zelle, sodass sie optisch wie eine eigene Sub-Spalte rechts vom
+       Personen-Badge steht. Funktional bleibt es eine Spalte (ein Sort-
+       Key). Voraussetzung: .col-content-pills ist ein Flex-Container. */
+    margin-left: auto;
     vertical-align: baseline;
 }
 .form-pill {
@@ -598,6 +602,11 @@ a.doc-link--title:hover {
 .col-content-pills {
     flex: 1;
     min-width: 0;
+    /* Flex-Container, damit .form-pills via margin-left:auto an die
+       rechte Kante geschoben werden — Sub-Spalten-Anmutung. */
+    display: flex;
+    align-items: center;
+    gap: var(--space-md);
 }
 .row-chevron {
     flex-shrink: 0;
