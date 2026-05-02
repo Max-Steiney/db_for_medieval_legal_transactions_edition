@@ -1,4 +1,4 @@
-﻿"""Tests for M2 (Quality Dashboard), E4, E5, D3, E6, and M5 deliverables."""
+﻿"""Tests for E4, E5, D3, E6, and M5 deliverables."""
 
 import inspect
 import json
@@ -8,26 +8,6 @@ import pytest
 import frontend.build
 import frontend.aggregator
 from frontend.tests.conftest import parse_html
-
-
-# ---------------------------------------------------------------------------
-# M2: Quality Dashboard
-# ---------------------------------------------------------------------------
-
-class TestQualityDashboard:
-    """Quality-Dashboard und reader-facing Quality-Filter sind entfernt.
-
-    Pipeline-Validierungs-Findings sind redaktionell-technische Hinweise und
-    fuer Lesende der Edition nicht aussagekraeftig — sie werden weder als
-    Filter noch als Marker pro Quelle angezeigt. Daten in search.json (q,
-    qc, qcat) bleiben fuer eventuelle spaetere editorinterne Tooling-Use-Cases.
-    """
-
-    def test_quality_filter_not_in_index_template(self):
-        from pathlib import Path
-        tpl_path = Path(frontend.build.TEMPLATES_DIR) / "index.html"
-        content = tpl_path.read_text(encoding="utf-8")
-        assert 'filter-quality' not in content
 
 
 # ---------------------------------------------------------------------------

@@ -19,7 +19,7 @@ class TestTooltipBuilders:
         data = {"display": "Konrad Goldstein", "death": "1350-06-23",
                 "forename": "Konrad", "surname": "Goldstein", "addName": "", "sex": "m"}
         result = build_tooltip_person(data, "pe__konrad_goldstein")
-        assert result == "Konrad Goldstein (d. 1350-06-23) [pe__konrad_goldstein]"
+        assert result == "Konrad Goldstein († 23.06.1350) [pe__konrad_goldstein]"
 
     def test_person_tooltip_no_death(self):
         data = {"display": "Hans", "death": "",

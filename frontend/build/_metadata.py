@@ -20,7 +20,69 @@ from frontend.build._helpers import (
     _extract_regest, _extract_entity_refs,
     _output_path, _relative_to_root, _tei_output_path,
 )
-from frontend.build._quality import _quality_score
+
+
+def _build_citation(root):
+    """Compose a clean citation string from the TEI sourceDesc/bibl.
+
+    Two corpus shapes:
+    - QGW: a single text-only ``<bibl status='draft'>`` whose body looks like
+      ``"Quellen zur Geschichte der Stadt Wien, Bd. II/1, Nr. 1033 As
+      published in HAUrk by Wiener Stadt- und Landesarchiv"``. The
+      ``As published in …``-tail is a Monasterium auto-injected note
+      that breaks the reading flow and gets stripped.
+    - Stadtbuecher: a structured ``<bibl>`` with nested ``<title>`` (main
+      + sub), ``<author>``, ``<pubPlace>``, ``<publisher>`` children.
+      We compose ``Authors, MainTitle. SubTitle. Place: Publisher.``
+    """
+    bibl = root.xpath(
+        ".//tei:teiHeader//tei:sourceDesc/tei:bibl[@status='draft']",
+        namespaces=NS_MAP,
+    )
+    if not bibl:
+        bibl = root.xpath(
+            ".//tei:teiHeader//tei:sourceDesc/tei:bibl[not(@type='url')]",
+            namespaces=NS_MAP,
+        )
+    if not bibl:
+        return ""
+    b = bibl[0]
+
+    titles_main = [normalize_space(t.text or "") for t in
+                   b.xpath(".//tei:title[@type='main']", namespaces=NS_MAP)]
+    titles_sub = [normalize_space(t.text or "") for t in
+                  b.xpath(".//tei:title[@type='sub']", namespaces=NS_MAP)]
+    authors = [normalize_space(a.text or "") for a in
+               b.xpath("./tei:author", namespaces=NS_MAP)]
+    pub_places = [normalize_space(p.text or "") for p in
+                  b.xpath("./tei:pubPlace", namespaces=NS_MAP)]
+    publishers = [normalize_space(p.text or "") for p in
+                  b.xpath("./tei:publisher", namespaces=NS_MAP)]
+
+    if titles_main or authors or publishers:
+        parts = []
+        if authors:
+            parts.append(" / ".join(a for a in authors if a))
+        if titles_main:
+            main = " / ".join(t for t in titles_main if t)
+            if titles_sub:
+                main = main + ". " + " / ".join(t for t in titles_sub if t)
+            parts.append(main)
+        if pub_places or publishers:
+            place = "/".join(p for p in pub_places if p)
+            pub = " ".join(p for p in publishers if p)
+            tail = ": ".join(s for s in (place, pub) if s)
+            if tail:
+                parts.append(tail)
+        composed = ". ".join(p for p in parts if p)
+        return composed.rstrip(".") + "." if composed else ""
+
+    text = normalize_space("".join(b.itertext()))
+    text = _re.sub(r"\s+As published in [^.]*$", "", text, flags=_re.IGNORECASE).strip()
+    return text
+
+
+import re as _re
 
 
 def _extract_metadata(tree, filepath):
@@ -37,9 +99,7 @@ def _extract_metadata(tree, filepath):
     source_url = _xpath_text(root, ".//tei:teiHeader//tei:sourceDesc/tei:bibl[@type='url']")
     orig_date = _xpath_text(root, ".//tei:teiHeader//tei:origDate")
 
-    citation = _xpath_text(root, ".//tei:teiHeader//tei:sourceDesc/tei:bibl[@status='draft']")
-    if not citation:
-        citation = _xpath_text(root, ".//tei:teiHeader//tei:sourceDesc/tei:bibl")
+    citation = _build_citation(root)
 
     rel = filepath.relative_to(SOURCES_DIR)
     collection = rel.parts[0] if rel.parts else ""
@@ -129,7 +189,7 @@ def _extract_metadata(tree, filepath):
     }
 
 
-def _parse_file(filepath, registers, quality_index=None):
+def _parse_file(filepath, registers):
     """Parse a TEI-XML source: extract metadata + render body HTML.
 
     Returns (meta, body_html, output_path, entity_refs) or None on failure.
@@ -142,15 +202,6 @@ def _parse_file(filepath, registers, quality_index=None):
 
     root = tree.getroot()
     meta = _extract_metadata(tree, filepath)
-
-    if quality_index:
-        rel_key = str(filepath.relative_to(SOURCES_DIR)).replace("\\", "/")
-        findings = quality_index.get(rel_key, [])
-    else:
-        findings = []
-    meta["quality_score"] = _quality_score(findings)
-    meta["quality_findings"] = findings
-    meta["quality_count"] = len(findings)
 
     bodies = root.xpath(".//tei:text/tei:body", namespaces=NS_MAP)
     if not bodies:

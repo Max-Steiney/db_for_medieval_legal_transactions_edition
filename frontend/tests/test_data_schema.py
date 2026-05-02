@@ -7,7 +7,7 @@ mindestens einmal gelaufen ist (im CI: Smoke-Build vor pytest).
 Tests, die der Aggregator selbst pruefen kann (timeline, epic_*,
 docs_aggregate, docs_lookup), liegen in test_aggregator.py mit eigener
 Fixture. Diese Datei deckt das ab, was nicht durch run_aggregation
-allein abgedeckt wird: search.json, persons_search.json, quality.json,
+allein abgedeckt wird: search.json, persons_search.json,
 register/*.json, categories.json, query_vocabulary.json.
 
 Wenn docs/data/ fehlt, werden alle Tests geskippt.
@@ -47,17 +47,19 @@ class TestSearchJson:
         # Aus SCHEMA.md: alle dokumentierten Felder muessen im 1. Record sein
         required = {"id", "t", "tf", "c", "cp", "cl", "sc",
                     "d", "di", "dn", "p", "u",
-                    "f", "q", "qc",
+                    "f",
                     "pc", "pcd", "pcdf", "pcdm", "pcdu",
                     "ec", "ecR", "ecS", "ecE", "ecN"}
         sample = data[0]
         missing = required - set(sample.keys())
         assert not missing, f"search.json record missing fields: {missing}"
 
-    def test_quality_score_range(self, data):
-        # q ist 0/1/2 laut SCHEMA
-        for d in data[:100]:
-            assert d["q"] in (0, 1, 2), f"unexpected quality {d['q']} in {d['id']}"
+    def test_quality_fields_removed(self, data):
+        # Quality-Felder wurden komplett entfernt — Regression-Guard.
+        forbidden = {"q", "qc", "qcat"}
+        sample = data[0]
+        leaked = forbidden & set(sample.keys())
+        assert not leaked, f"quality fields still present in search.json: {leaked}"
 
     def test_fac_flag_boolean(self, data):
         # f ist 0 oder 1
@@ -87,7 +89,11 @@ class TestPersonsSearchJson:
         assert len(data) > 1000
 
     def test_record_has_required_fields(self, data):
-        required = {"id", "n", "fn", "sn", "sex", "d", "dc", "qw"}
+        # Felder nach Rework: id, n/fn/sn (Suchindex), sex, dc (>=1 per
+        # Konstruktion), am/ax (Aktivitaetszeitraum), co (Korpus-Liste),
+        # i0/cl0 (Anker fuer Sub-Label), rl (Rollen). d/qw entfallen.
+        required = {"id", "n", "fn", "sn", "sex",
+                    "dc", "am", "ax", "co", "i0", "cl0", "rl"}
         sample = data[0]
         missing = required - set(sample.keys())
         assert not missing, f"persons_search.json record missing: {missing}"
@@ -101,10 +107,18 @@ class TestPersonsSearchJson:
         for p in data[:100]:
             assert p["sex"] in ("m", "f", ""), f"unexpected sex {p['sex']!r}"
 
-    def test_qw_range(self, data):
-        # qw: -1 (keine Quellen), 0 (ok), 1 (Hinweise), 2 (Warnungen)
+    def test_dc_at_least_one(self, data):
+        # Per Konstruktion: nur Personen mit mindestens einer freigegebenen
+        # Quellennennung kommen ins Register.
         for p in data[:200]:
-            assert p["qw"] in (-1, 0, 1, 2), f"qw out of range: {p['qw']}"
+            assert p["dc"] >= 1, f"dc < 1 in released register: {p['id']}"
+
+    def test_roles_in_vocabulary(self, data):
+        # Rollen-Vokabular kontrolliert auf vier Werte
+        valid = {"issuer", "recipient", "witness", "other"}
+        for p in data[:200]:
+            for r in p.get("rl", []):
+                assert r in valid, f"unexpected role {r!r} in {p['id']}"
 
 
 # ---------------------------------------------------------------------------
@@ -140,47 +154,6 @@ class TestRegisterReverseJson:
         required = {"u", "i", "d", "c", "r"}
         missing = required - set(records[0].keys())
         assert not missing, f"register/{name}.json record missing: {missing}"
-
-
-# ---------------------------------------------------------------------------
-# quality.json — Validierungs-Aggregat
-# ---------------------------------------------------------------------------
-
-class TestQualityJson:
-    """quality.json: meta + observations + coverage. Filter-Disziplin."""
-
-    @pytest.fixture(scope="class")
-    def data(self):
-        return _load(DOCS_DATA / "quality.json")
-
-    def test_top_level_keys(self, data):
-        for k in ("meta", "observations", "coverage"):
-            assert k in data, f"quality.json missing {k}"
-
-    def test_observation_blocks(self, data):
-        obs = data["observations"]
-        for k in ("bySeverity", "byCategory", "byCollection"):
-            assert k in obs, f"quality.json observations missing {k}"
-
-    def test_severity_values(self, data):
-        valid = {"info", "warning", "error"}
-        invalid = set(data["observations"]["bySeverity"].keys()) - valid
-        assert not invalid, f"unexpected severity: {invalid}"
-
-    def test_no_unreleased_corpora(self, data):
-        # Filter-Disziplin: nur freigegebene Korpora und indices/-Pfade
-        from pipeline.config import is_released_corpus
-        for collection_path in data["observations"]["byCollection"]:
-            if collection_path.startswith("indices/"):
-                continue
-            assert is_released_corpus(collection_path), \
-                f"non-released corpus in quality.json: {collection_path}"
-
-    def test_coverage_totals(self, data):
-        cov = data["coverage"]
-        assert "totalFiles" in cov
-        assert "totalFindings" in cov
-        assert cov["totalFindings"] >= 0
 
 
 # ---------------------------------------------------------------------------
@@ -269,7 +242,7 @@ class TestDocsLookupJson:
 class TestSchemaVersioning:
     @pytest.mark.parametrize("filename", [
         "docs_aggregate.json", "epic_a.json", "epic_b.json", "epic_c.json",
-        "quality.json", "timeline.json",
+        "timeline.json",
     ])
     def test_aggregate_files_have_schema_version(self, filename):
         data = _load(DOCS_DATA / filename)

@@ -56,15 +56,14 @@ def patch_build_path(monkeypatch, name, value):
 
     Ersetzt das alte Idiom ``monkeypatch.setattr(frontend.build, "DATA_DIR", x)``,
     das nach dem Package-Split nicht mehr ausreicht: jedes Submodul (_helpers,
-    _metadata, _pages, _quality) hat seine eigene Top-Level-Importbindung von
+    _metadata, _pages) hat seine eigene Top-Level-Importbindung von
     DOCS_DIR/DATA_DIR. Wir setzen den Wert auf allen Stellen gleichzeitig.
     """
     import frontend.build as _b
     import frontend.build._helpers as _h
     import frontend.build._metadata as _m
     import frontend.build._pages as _p
-    import frontend.build._quality as _q
-    for mod in (_b, _h, _m, _p, _q):
+    for mod in (_b, _h, _m, _p):
         if hasattr(mod, name):
             monkeypatch.setattr(mod, name, value, raising=False)
 

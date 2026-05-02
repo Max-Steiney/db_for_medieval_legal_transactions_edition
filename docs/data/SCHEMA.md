@@ -45,8 +45,6 @@ Stand: aktueller Build. Versionierung pro Datei über `meta.schema_version` bzw.
 | `u` | URL der Detailseite, relativ zu `docs/` |
 | `f` | `1` wenn Faksimile vorhanden, sonst `0` |
 | `fu` | Faksimile-URL (erste Seite) |
-| `q` | Qualitäts-Score: 0=fehlerfrei, 1=Hinweise, 2=Warnungen |
-| `qc` | Anzahl Validierungs-Findings |
 | `pc` | Personen-Count (XPath-basiert, Mentions inklusive) |
 | `pcd` | Personen distinct (quellenbereinigt) |
 | `pcdf` / `pcdm` / `pcdu` | Distinct nach Geschlecht |
@@ -198,7 +196,6 @@ Konzeptionelle Beschreibung: [knowledge/data.md#Aggregat-Schicht](../../knowledg
 | `sex` | `m`, `f` oder leer |
 | `d` | Sterbedatum oder leer |
 | `dc` | Document Count (Anzahl Quellen mit Nennung) |
-| `qw` | Qualitäts-Worst-Score über alle verlinkten Quellen: -1 (keine Quellen), 0 (ok), 1 (Hinweise), 2 (Warnungen) |
 
 ---
 
@@ -237,25 +234,6 @@ Konzeptionelle Beschreibung: [knowledge/data.md#Aggregat-Schicht](../../knowledg
 | `placeholder_count` | Quellen mit nicht-parsbarem Datum |
 | `collections` | Pro Korpus die Anzahl Quellen |
 | `decades` | `{decade: count}` |
-
----
-
-## `quality.json`
-
-**Zweck.** Korpus-weite Aggregation der Validierungsbefunde aus `validation_report.json`.
-
-**Producer.** `frontend/build.py::_build_quality_json`. Findings nicht-freigegebener Korpora werden in `_load_quality_index` verworfen.
-**Consumer.** `frontend/templates/quality.html` (zukünftig), Statistik-Seite.
-
-**Top-Level-Blöcke.**
-
-| Feld | Bedeutung |
-|---|---|
-| `observations.bySeverity` | `{severity: count}` (`info`, `warning`, `error`) |
-| `observations.byCategory` | `{category: count}` (`rs_no_type`, `triggerstring_no_n`, …) |
-| `observations.byCollection` | `{collection_path: {severity: count}}` — nur freigegebene Korpora und `indices/*.xml` |
-| `coverage.totalFiles` | Anzahl Dateien mit mindestens einem Finding |
-| `coverage.totalFindings` | Gesamtsumme |
 
 ---
 

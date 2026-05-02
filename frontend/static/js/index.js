@@ -144,6 +144,10 @@
             // nativen title-Attribute mehr, damit Stil und Verhalten ueber
             // die ganze Edition hinweg konsistent sind.
             if (doc.pcd > 0) {
+                // Spalten-Header "Beteiligte" gibt schon den Kontext \u2014
+                // die Zelle zeigt nur die Anzahl mit dotted underline als
+                // Tooltip-Affordance. Hover zeigt "X Person/en" + Geschlechts-
+                // Aufschluesselung.
                 let label = doc.pcd === 1 ? '1 Person' : doc.pcd + ' Personen';
                 let breakdown = [];
                 if (doc.pcdf) breakdown.push(doc.pcdf + ' weiblich');
@@ -154,7 +158,9 @@
                     '<span class="badge badge-persons"' +
                     ' data-tip-title="' + esc(label) + '"' +
                     (body ? ' data-tip-body="' + esc(body) + '"' : '') +
-                    '>' + esc(label) + '</span>'
+                    '>' +
+                        '<span class="badge-text">' + doc.pcd + '</span>' +
+                    '</span>'
                 );
             }
 
@@ -244,6 +250,50 @@
         TableInfra.setupSearch(state, applyFilters);
         TableInfra.setupSortHeaders('doc-table', state, applyFilters);
 
+        // --- Erschliessungsform-Icons + Definitions-Tooltips in die Sidebar
+        // -Chips injizieren. Dieselben SVGs wie in den Tabellen-Pillen
+        // (FORM_ICONS), plus data-tip-* + "i"-Affordance fuer die
+        // Definition. Das 'none'-Chip ('ohne') hat keine Tabellen-
+        // Entsprechung — Icon entfaellt, Definition bleibt.
+        let FORM_LABELS = {R: 'Regest', S: 'Siegel', E: 'Eintrag', N: 'Nota', none: 'Ohne Erschließungsform'};
+        let FORM_DESCRIPTIONS = {
+            R: 'Inhaltszusammenfassung der Quelle, vom Editor verfasst (TEI-Element <abstract>).',
+            S: 'Beschreibung des oder der Siegel an der Urkunde (TEI-Element <seal>).',
+            E: 'Eintrag in einem Verwaltungsbuch (Stadtbuch, Grundbuch). TEI-Element <entry>.',
+            N: 'Nachsatz oder Marginalie zur Hauptquelle (TEI-Element <nota>).',
+            none: 'Quelle ohne erkannte Erschließungsform — keines der TEI-Elemente abstract/seal/entry/nota vorhanden.'
+        };
+        let INFO_ICON =
+            '<svg viewBox="0 0 16 16" aria-hidden="true">' +
+            '<circle cx="8" cy="8" r="6.5" stroke="currentColor" stroke-width="1.3" fill="none"/>' +
+            '<text x="8" y="11.5" text-anchor="middle" font-size="9" font-weight="700" ' +
+            'fill="currentColor" font-family="Georgia, serif">i</text>' +
+            '</svg>';
+        if (filterFormsEl) {
+            let iconKeyMap = {R: 'r', S: 's', E: 'e', N: 'n'};
+            filterFormsEl.querySelectorAll('.form-filter-chip').forEach(function(c) {
+                let key = c.getAttribute('data-form');
+                let iconKey = iconKeyMap[key];
+                if (iconKey && FORM_ICONS[iconKey]) {
+                    let pill = document.createElement('span');
+                    pill.className = 'form-filter-chip-pill';
+                    pill.innerHTML = FORM_ICONS[iconKey];
+                    c.insertBefore(pill, c.firstChild);
+                }
+                let label = FORM_LABELS[key] || '';
+                let desc = FORM_DESCRIPTIONS[key] || '';
+                if (label) c.setAttribute('data-tip-title', label);
+                if (desc)  c.setAttribute('data-tip-body', desc);
+                c.removeAttribute('title');
+                if (desc) {
+                    let info = document.createElement('span');
+                    info.className = 'form-filter-chip-info';
+                    info.innerHTML = INFO_ICON;
+                    c.appendChild(info);
+                }
+            });
+        }
+
         // --- Range slider ---
         _applyInitialBarHeights();
         rangeSlider = TableInfra.initRangeSlider(state, applyFilters);
@@ -282,9 +332,9 @@
         }
 
         // --- URL parameter restore — fuer teilbare Links und Browser-Back ---
-        // Unterstuetzt: collection, place, facs, quality, q (search),
-        // yearMin/yearMax. Wird einmal beim Init gelesen; spaetere
-        // Aenderungen schreibt syncUrlFromState() per replaceState().
+        // Unterstuetzt: collection, place, facs, q (search), yearMin/yearMax.
+        // Wird einmal beim Init gelesen; spaetere Aenderungen schreibt
+        // syncUrlFromState() per replaceState().
         let urlParams = new URLSearchParams(window.location.search);
         let urlQuery = urlParams.get('q');
         if (urlQuery) {
@@ -344,7 +394,7 @@
         // Faceted-Search Standardmuster: pro Filter-Dimension werden die
         // Counts unter Beruecksichtigung ALLER ANDEREN Filter berechnet.
         // skip ist die zu ignorierende Dimension ('collection' | 'place' |
-        // 'facs' | 'quality' | 'sex' | 'forms' | 'year' | 'query' | null).
+        // 'facs' | 'sex' | 'forms' | 'year' | 'query' | null).
         function matchesAllExcept(doc, skip) {
             if (skip !== 'collection' && state.collection && doc.cp !== state.collection) return false;
             if (skip !== 'place' && !docMatchesPlace(doc, state.place)) return false;
@@ -709,18 +759,10 @@
                 thumbHtml = '<div class="preview-thumb"><img src="' + esc(doc.fu) + '" loading="lazy" alt="Faksimile"></div>';
             }
 
-            // Qualitaets-Hinweise tauchen in der Vorschau bewusst NICHT auf:
-            // die Findings sind redaktionell-technische Annotations-Hinweise
-            // (Datierungs-Attribut, leere Referenz etc.) und gehoeren in die
-            // Quellansicht selbst, wo sie kontextuell verankert werden koennen.
-            // Das Dot-Signal in der Tabelle bleibt als 'da gibt's noch was'-Hinweis.
-            let qualityHtml = '';
-
             previewTr.innerHTML =
                 '<td colspan="5"><div class="doc-preview">' +
                 '<div class="preview-text">' +
                 '<p class="preview-regest">' + esc(doc.tf || doc.t) + '</p>' +
-                qualityHtml +
                 '<div class="preview-meta">' +
                 '<span>' + esc(doc.d) + '</span>' +
                 (doc.p ? '<span>' + esc(doc.p) + '</span>' : '') +

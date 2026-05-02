@@ -26,9 +26,9 @@ parent/
   sibling repo's `indices/*.xml`.
 - `aggregator.py` — derives data for the visualisation perspectives (roles,
   transactions, networks, places) from the sibling repo's `pipeline/output/`.
-- `status.py` — quality-strip data per document.
-- `config.py` — paths. `DOCS_DIR` lives in this repo (output); `SOURCES_DIR`,
-  `KNOWLEDGE_DIR`, `VALIDATION_REPORT_PATH` resolve into the sibling.
+- `status.py` — milestone + data-file overview for development context.
+- `config.py` — paths. `DOCS_DIR` lives in this repo (output); `SOURCES_DIR`
+  and `KNOWLEDGE_DIR` resolve into the sibling.
 - `templates/` — Jinja2 templates for document, register, statistics, and
   exploration pages.
 - `static/` — CSS, JavaScript, fonts, images.

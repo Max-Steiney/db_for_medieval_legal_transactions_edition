@@ -12,6 +12,30 @@ Einträge in umgekehrt chronologischer Reihenfolge, neueste oben.
 
 ---
 
+## 2026-05-02 Person-View Phase 1: Profilseiten pro Entität
+
+Bisher waren Personennamen in der Edition Sackgassen: in der Annotations-Tabelle der Quellen-Detailseite und im Volltext klickbar, aber nur als Hash-Anker auf das Listen-Register `register/persons.html#pe__id` — wo der Anker im JS-gerenderten Index nicht ankam. Beziehungs-Daten lagen im Pipeline-Output (`kin_relations_in_sources.csv`, `friend_/rep_/occ_/title-ref_relations_in_sources.csv`), waren aber nirgends UI-seitig sichtbar. Beispiel: Simon Pötel und Anna Pötlin sind im TEI als Ehepaar codiert, im Frontend war diese Verwandtschaft nicht einsehbar.
+
+Phase 1 macht jede [[glossar#Individuelle Person]] zu einer eigenen Profilseite unter `register/persons/<pe__id>.html`. Quelle der Daten ist der neue Aggregator `frontend/aggregator/person_profiles.py`: er joint Stammdaten aus `persons.csv` (Name, Geschlecht, Tod, Notiz, Wien-Wiki-Link), Quellenvorkommen aus dem bestehenden `reverse_index`, Rollen-Aggregation aus `persons_in_events.csv` und Beziehungen aus den fünf Relations-CSVs. Die Brücke zwischen `file_key` (z. B. `f__QGW_10`) und konkreter Quellen-URL läuft über `filenames.csv`, weil die Pipeline-CSVs file_key-zentriert sind und `reverse_index` idno-zentriert.
+
+Beziehungs-Modell: kin/friend/rep werden bidirektional aufgelöst (eine CSV-Zeile erscheint im Profil beider Seiten), occ und title-ref nur in der Subjekt-Sicht (das Gegenüber ist eine Organisation, die noch keine Profilseite hat). Pro Beziehungseintrag wird die Quelle als Nachweis verlinkt. Damit ist die Verwandtschafts-Lücke geschlossen: Diemut → Berthold (Gemahlin) und Berthold → Diemut (Counterpart) erscheinen jeweils im Profil der anderen Person, mit Klick-Pfad zur Quelle.
+
+Verlinkungs-Pfade: `frontend/renderer.py` zeigt `<rs type="person" ref>` jetzt auf das Profil statt auf das Listen-Register; die Annotations-Tabelle in `document.js` setzt Personennamen als Profil-Links; das Personenregister `register/persons.html` linkt die Namens-Spalte aufs Profil, der Quellen-Badge bleibt Inline-Detail-Trigger (Quellen einsehen ohne Seitenwechsel). Org/Ort-Refs sind unverändert — Phase 2 öffnet sie analog.
+
+Verworfene Alternativen: (a) ein einzelnes `person_profiles.json` mit allen Profilen — gewonnen wäre Client-Lazy-Loading-Möglichkeit, verloren wären zwei MB JSON für ein Feature, das aktuell rein server-gerendert ist; daher in-memory-Pipeline ohne JSON-Zwischenstufe. (b) Tab-Bar Lebenslauf/Beziehungen/Quellen — gegen das „maximaler Informations-Output"-Prinzip aus [[ui-design]], permanente Sichtbarkeit aller Sub-Bereiche schlägt schmaleres Tab-Switching. (c) `<rs>`-Spans im Volltext zusätzlich mit Cursor-Pointer markieren — verworfen, weil sie ohnehin schon `<a>`-Tags sind und Browser-Default-Hover ausreicht.
+
+Korpus-Lücke beim Smoke-Test: das Pötel-Paar selbst ist nur in `Vienna_1458-66` belegt, das nicht im freigegebenen Korpus liegt. Profile für beide existieren also nicht — funktional korrekt, weil das Released-Set die Profil-Menge bestimmt. Sobald QGW II/2 freigegeben wird, taucht das Paar automatisch auf. Verifiziert wurde das Feature stattdessen am Paar Diemut/Berthold (Nr. 10, 1274) und an Alexander III. (Beruf-Beziehung zur Vatikan-Org).
+
+Build-Zahlen: 8.441 Profile, Build-Zeit von ~18 s auf ~19 s. Tests: 333 grün, 32 skipped. Die Profilseite selbst ist absichtlich schlank gehalten (Toolbar mit Breadcrumb + Meta-Strip, Header mit Name + Notiz + Quellen-Titel-Chips, Beziehungs-Block, Quellen-Tabelle) und auf Vereinheitlichung mit der Quellen-Detailseite ausgelegt. Stat-Karten (Quellen-Count, Rollen-Aufschlüsselung, Beziehungs-Count) wurden nach erstem Wurf wieder entfernt — sie brachen die Konsistenz zur restlichen UI.
+
+Offen für eine eigene Session — Phase 1.5 / Phase 2:
+
+- **Profilseite reicher.** Vier Achsen, in absteigender Schmerz-Reihenfolge: (1) Header als richtige Visitenkarte (Name groß, Lebensspanne als Pille, Sex-Symbol, Wien-Wiki-Link prominent statt im Footer); (2) Beziehungs-Tabellen als Listen-/Karten-Form, weil Tabellen bei 1–3 Einträgen klobig wirken; (3) Quellen-Tabelle um Rolle-pro-Quelle, Erschließungsform-Icon und Faksimile-Indikator ergänzen, damit pro Zeile sichtbar ist, *was* die Person dort tat; (4) Mention-Kontext-Snippet, also der Satz aus dem TEI rund um den jeweiligen `<rs>`-Span — am wertvollsten, weil „wie wird die Person beschrieben" ohne Quellen-Öffnen sichtbar wäre, und am aufwendigsten.
+
+- **Org-Profile / Ort-Profile (Phase 2).** Datenmodell-seitig schon vorhanden (`organisations.csv`, `places.csv`, `orgs_in_sources.csv`, `places_in_sources.csv`, `topo_relations_in_sources.csv` für Topographie). Verworfen für Phase 1, weil die Beziehungs-Substanz bei Personen am dichtesten ist und das Pötel-Beispiel dort liegt. Bei Org-Profilen wird die occ-Beziehung dann von beiden Seiten sichtbar (Person mit Amt → Org mit ihren Amtsträger:innen).
+
+---
+
 ## 2026-05-02 Tooltip-Komponenten getrennt, Toggle entfernt
 
 Die Startseiten-Card „Quellen durchsuchen" wird konzeptionell aufgeräumt. Der Toggle „Erwähnte Geschäfte einbeziehen" über der Korpus-Matrix entfällt. Begründung: Die Matrix-Werte werden nicht mehr zwischen zwei Zählebenen umgeschaltet, sondern zeigen einheitlich die quellenbereinigte Default-Variante (Personen in verschachtelten rs-Events ausgeschlossen, vgl. [[glossar#Gesamtnennung]]). Die parallele Aggregator-Schicht für die inklusive Variante (`person_mentions_with_mentioned`, `distinct_events_with_mentioned`, der zweite XPath-Loop über alle rs-Events) ist damit ohne Konsumenten und wird aus `frontend/build.py` entfernt. Für eine zukünftige Wiedereinführung als globaler Zählebenen-Umschalter (vgl. [[requirements#Umschaltbarkeit der Zählebenen]]) gibt es einen sauberen Rebuild-Pfad — der Aggregator hat keinen verkrusteten Toggle-Zustand mehr.

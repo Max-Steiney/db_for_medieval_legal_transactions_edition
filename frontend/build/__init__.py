@@ -2,7 +2,6 @@
 
 Submodule:
 - _helpers.py    Datums-/Pfad-/Jinja-Helfer, Label-Aufloesung, Sort-Keys
-- _quality.py    quality.json + Quality-Score
 - _metadata.py   TEI-Header extrahieren, body rendern, Datei schreiben
 - _kpi.py        Korpus-weite KPIs aus TEI via XPath, Korpus-Matrix
 - _pages.py      Seiten-Builder (Startseite, Quellen, Register, Exploration,
@@ -23,7 +22,7 @@ from pipeline.utils.xml_loader import collect_source_files
 # direkt auf `frontend.build.DOCS_DIR`, `frontend.build.TEMPLATES_DIR` etc. zu.
 from frontend.config import (
     DOCS_DIR, TEMPLATES_DIR, STATIC_DIR, CONTENT_DIR, KNOWLEDGE_DIR,
-    DATA_DIR, FACSIMILE_BASE_URLS, VALIDATION_REPORT_PATH,
+    DATA_DIR, FACSIMILE_BASE_URLS,
     EDITION_GUIDELINES_PATH,
     RELEASED_PERIOD, RELEASED_CORPORA, is_released_corpus,
     released_period_label, unprocessed_gaps_label, max_year_with_extensions,
@@ -55,12 +54,6 @@ from frontend.build._helpers import (
     _copy_tei_sources,
 )
 
-from frontend.build._quality import (
-    _load_quality_index,
-    _quality_score,
-    _build_quality_json,
-)
-
 from frontend.build._metadata import (
     _extract_metadata,
     _parse_file,
@@ -83,12 +76,12 @@ from frontend.build._kpi import (
 from frontend.build._pages import (
     _build_index,
     _build_startseite,
-    _entity_quality_worst,
     _person_search_data,
     _org_search_data,
     _place_search_data,
     _build_register_list_pages,
     _build_register_json,
+    _build_person_profiles,
     _build_exploration,
     _build_guidelines,
     _build_about,
@@ -111,10 +104,9 @@ def build_single(filepath_str):
         sys.exit(1)
 
     registers = _load_registers()
-    quality_index = _load_quality_index()
 
     env = _init_jinja()
-    result = _parse_file(filepath, registers, quality_index)
+    result = _parse_file(filepath, registers)
     if result:
         meta, body_html, output, _entity_refs = result
         _write_file(meta, body_html, output, env)
@@ -134,8 +126,6 @@ def build_all():
         "places": len(places),
     }
 
-    quality_index = _load_quality_index()
-
     env = _init_jinja()
 
     all_files = collect_source_files()
@@ -145,7 +135,7 @@ def build_all():
     parsed = []
     t1 = time.time()
     for i, filepath in enumerate(done_files, 1):
-        result = _parse_file(filepath, registers, quality_index)
+        result = _parse_file(filepath, registers)
         if result:
             parsed.append(result)
         if i % 100 == 0 or i == len(done_files):
@@ -167,15 +157,12 @@ def build_all():
             "collection_label": meta["collection_label"],
             "collection_path": meta.get("collection_path", ""),
             "regest": meta["regest"],
-            "quality_score": meta.get("quality_score", 0),
         }
         for eid in entity_refs:
             reverse_index.setdefault(eid, []).append(doc_entry)
     for docs in reverse_index.values():
         docs.sort(key=lambda d: d.get("date_iso", ""))
     print(f"  Reverse index: {len(reverse_index)} entities linked to documents")
-
-    _build_quality_json(quality_index)
 
     from frontend.aggregator import run_aggregation, build_docs_lookup
     run_aggregation(DATA_DIR, reverse_index)
@@ -208,6 +195,7 @@ def build_all():
 
     _build_register_list_pages(persons, orgs, places, reverse_index, env)
     _build_register_json(reverse_index)
+    _build_person_profiles(reverse_index, env)
 
     _build_exploration(all_metadata, persons, env)
 
@@ -235,7 +223,7 @@ __all__ = [
     "build_all",
     # Constants commonly imported by tests
     "DOCS_DIR", "TEMPLATES_DIR", "STATIC_DIR", "CONTENT_DIR", "KNOWLEDGE_DIR",
-    "DATA_DIR", "FACSIMILE_BASE_URLS", "VALIDATION_REPORT_PATH",
+    "DATA_DIR", "FACSIMILE_BASE_URLS",
     "EDITION_GUIDELINES_PATH",
     "RELEASED_PERIOD", "RELEASED_CORPORA",
     "COLLECTION_LABELS",
@@ -250,8 +238,6 @@ __all__ = [
     "_sort_key_for_nav", "_compute_prev_next",
     "_format_table_date", "_load_docs_aggregate_lookup",
     "_copy_static", "_copy_tei_sources",
-    # Quality
-    "_load_quality_index", "_quality_score", "_build_quality_json",
     # Metadata
     "_extract_metadata", "_parse_file", "_write_file",
     # KPI
@@ -261,9 +247,9 @@ __all__ = [
     "_persons_with_org_released",
     # Pages
     "_build_index", "_build_startseite",
-    "_entity_quality_worst",
     "_person_search_data", "_org_search_data", "_place_search_data",
     "_build_register_list_pages", "_build_register_json",
+    "_build_person_profiles",
     "_build_exploration",
     "_build_guidelines", "_build_about", "_build_glossary", "_build_impressum",
     "_write_categories", "_write_query_vocabulary", "_build_analysis",

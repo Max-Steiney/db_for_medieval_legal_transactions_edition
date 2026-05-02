@@ -19,9 +19,6 @@ DATA_DIR = DOCS_DIR / "data"
 # Update by hand when a milestone moves between completed and pending.
 # Each entry: id, label, done (1=complete, 0=pending), blocked (count of blockers).
 _MILESTONES = [
-    ("M0", "Quality data pipeline",       1, 0),
-    ("M1", "Per-doc health",              1, 0),
-    ("M2", "Quality dashboard",           1, 0),
     ("M3", "Scholarly functions",         1, 0),
     ("V0", "Data aggregation",            1, 0),
     ("V1", "Shared UI components",        1, 0),
@@ -86,7 +83,6 @@ def _html_pages() -> list:
         "exploration/roles.html",
         "exploration/transactions.html",
         "exploration/networks.html",
-        "project/quality.html",
         "project/edition-guidelines.html",
         "project/about.html",
         "project/glossary.html",

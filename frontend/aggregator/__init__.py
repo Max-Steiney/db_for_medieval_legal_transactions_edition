@@ -33,6 +33,7 @@ from .epic_a import aggregate_epic_a
 from .epic_b import aggregate_epic_b
 from .epic_c import aggregate_epic_c
 from .docs import _parse_date_range, aggregate_docs, build_docs_lookup
+from .person_profiles import build_person_profiles
 from ._run import run_aggregation
 
 __all__ = [
@@ -53,5 +54,6 @@ __all__ = [
     "aggregate_epic_c",
     "aggregate_timeline",
     "build_docs_lookup",
+    "build_person_profiles",
     "run_aggregation",
 ]

@@ -1,5 +1,7 @@
 {% extends "base.html" %}
-{% from "macros.html" import search_box, result_count, active_filters, no_results, glossary_tip, prov_popover %}
+{% from "macros.html" import search_box, result_count, active_filters, no_results, glossary_tip, prov_popover,
+                              sidebar_block, sidebar_range_slider, sidebar_chip_group,
+                              sidebar_corpus_chips, sidebar_reset_button %}
 
 {% block title %}Quellen{% endblock %}
 
@@ -19,57 +21,20 @@
         <aside class="index-sidebar" aria-label="Filter">
 
             {% if timeline_data %}
-            <section class="sidebar-block">
-                <p class="sidebar-block-label">Zeitraum</p>
-                <div class="range-slider" id="range-slider"
-                     data-min="{{ min_year }}" data-max="{{ max_year }}">
-                    <div class="range-histogram" id="range-histogram">
-                        {% for d in timeline_data %}
-                        <div class="range-bar"
-                             data-decade="{{ d.decade }}"
-                             data-count="{{ d.count }}"
-                             data-height="{{ [4, (d.count / max_count * 100)|int]|max if d.count > 0 else 0 }}"
-                             title="{{ d.decade }}er: {{ d.count }} Dok.">
-                        </div>
-                        {% endfor %}
-                    </div>
-                    <div class="range-inputs">
-                        <input type="range" id="range-min"
-                               min="{{ min_year }}" max="{{ max_year }}"
-                               value="{{ min_year }}" step="1"
-                               aria-label="Startjahr">
-                        <input type="range" id="range-max"
-                               min="{{ min_year }}" max="{{ max_year }}"
-                               value="{{ max_year }}" step="1"
-                               aria-label="Endjahr">
-                    </div>
-                    <div class="range-labels">
-                        <span class="range-label-min" id="range-label-min">{{ min_year }}</span>
-                        <span class="range-label-max" id="range-label-max">{{ max_year }}</span>
-                    </div>
-                </div>
-            </section>
+            {% call sidebar_block('Zeitraum') %}
+                {{ sidebar_range_slider(min_year, max_year, timeline_data, max_count, unit='Quellen') }}
+            {% endcall %}
             {% endif %}
 
-            <section class="sidebar-block">
-                <p class="sidebar-block-label">Quellenkorpus</p>
-                <div class="collection-chips collection-chips--stack">
-                    {% for key, col in collections.items() %}
-                    <button class="chip" data-collection="{{ key }}">
-                        <span class="chip-label">{{ col.label }}</span>
-                        <span class="chip-count" data-corpus-total="{{ col.count }}">{{ col.count }}</span>
-                    </button>
-                    {% endfor %}
-                </div>
-            </section>
+            {% call sidebar_block('Quellenkorpus') %}
+                {{ sidebar_corpus_chips('filter-corpora', 'data-collection', collections) }}
+            {% endcall %}
 
-            <section class="sidebar-block">
-                <p class="sidebar-block-label">Suche</p>
+            {% call sidebar_block('Suche') %}
                 {{ search_box('Nr., Datum, Ort, Schlagwort …') }}
-            </section>
+            {% endcall %}
 
-            <section class="sidebar-block">
-                <p class="sidebar-block-label">Ort</p>
+            {% call sidebar_block('Ort') %}
                 <select id="filter-place" aria-label="Ort filtern">
                     <option value="">Alle Orte</option>
                     {% for place_name, place_count in top_places %}
@@ -77,10 +42,9 @@
                     {% endfor %}
                     <option value="__none__">(ohne Ortsangabe)</option>
                 </select>
-            </section>
+            {% endcall %}
 
-            <section class="sidebar-block">
-                <p class="sidebar-block-label">Geschlechter-Mix</p>
+            {% call sidebar_block('Geschlechter-Mix') %}
                 <select id="filter-sex" aria-label="Geschlechter-Mix">
                     <option value="">alle</option>
                     <option value="with-f">mit Frauenbeteiligung</option>
@@ -88,58 +52,22 @@
                     <option value="only-m">nur Männer</option>
                     <option value="none">ohne Personen</option>
                 </select>
-            </section>
+            {% endcall %}
 
-            <section class="sidebar-block">
-                <p class="sidebar-block-label">Erschließungsform</p>
-                <div class="form-filter-chips" id="filter-forms" role="group"
-                     aria-label="Nach Erschließungsform filtern (Mehrfachauswahl)">
-                    <button type="button" class="form-filter-chip" data-form="R"
-                            aria-pressed="false" title="Regest-Annotation">
-                        <span class="form-filter-chip-icon" data-icon="r"></span>
-                        <span class="form-filter-chip-label">Regest</span>
-                        <span class="form-filter-chip-count"></span>
-                    </button>
-                    <button type="button" class="form-filter-chip" data-form="S"
-                            aria-pressed="false" title="Siegelbeschreibung">
-                        <span class="form-filter-chip-icon" data-icon="s"></span>
-                        <span class="form-filter-chip-label">Siegel</span>
-                        <span class="form-filter-chip-count"></span>
-                    </button>
-                    <button type="button" class="form-filter-chip" data-form="E"
-                            aria-pressed="false" title="Stadtbuch-Eintrag">
-                        <span class="form-filter-chip-icon" data-icon="e"></span>
-                        <span class="form-filter-chip-label">Eintrag</span>
-                        <span class="form-filter-chip-count"></span>
-                    </button>
-                    <button type="button" class="form-filter-chip" data-form="N"
-                            aria-pressed="false" title="Nota / Nachsatz">
-                        <span class="form-filter-chip-icon" data-icon="n"></span>
-                        <span class="form-filter-chip-label">Nota</span>
-                        <span class="form-filter-chip-count"></span>
-                    </button>
-                    <button type="button" class="form-filter-chip" data-form="none"
-                            aria-pressed="false" title="Quelle ohne erkannte Erschließungsform">
-                        <span class="form-filter-chip-label">ohne</span>
-                        <span class="form-filter-chip-count"></span>
-                    </button>
-                </div>
-                <p class="sidebar-block-hint">Mehrfachauswahl möglich (ODER-Verknüpfung)</p>
-            </section>
+            {% call sidebar_block('Erschließungsform', 'Mehrfachauswahl möglich (ODER-Verknüpfung)') %}
+                {{ sidebar_chip_group('filter-forms', 'data-form', form_data,
+                                      aria_label='Nach Erschließungsform filtern (Mehrfachauswahl)') }}
+            {% endcall %}
 
-            <section class="sidebar-block">
-                <p class="sidebar-block-label">Faksimile</p>
+            {% call sidebar_block('Faksimile') %}
                 <select id="filter-facs" aria-label="Faksimile">
                     <option value="">alle</option>
                     <option value="1">mit Faksimile ({{ facs_count }})</option>
                     <option value="0">ohne Faksimile ({{ total_count - facs_count }})</option>
                 </select>
-            </section>
+            {% endcall %}
 
-            <button type="button" class="sidebar-reset" id="filter-reset"
-                    aria-label="Alle Filter zurücksetzen">
-                ↺ Filter zurücksetzen
-            </button>
+            {{ sidebar_reset_button() }}
 
         </aside>
 

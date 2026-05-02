@@ -1,15 +1,17 @@
 /* === Wiener Urkundenbuch — Register Pages === */
 /* ==========================================================================
    Register pages
+   Setzt auf das Sidebar-Layout aus index.css auf (.index-layout, .index-sidebar,
+   .sidebar-block, .chip, .form-filter-chip, .range-slider). Hier nur
+   register-spezifische Komponenten.
    ========================================================================== */
 
-/* Alphabet bar */
+/* Alphabet bar — bleibt ueber der Tabelle */
 .alphabet-bar {
     display: flex;
     gap: 2px;
     flex-wrap: wrap;
-    justify-content: center;
-    margin-bottom: var(--space-lg);
+    margin-bottom: var(--space-md);
 }
 
 .alpha-btn {
@@ -42,7 +44,8 @@
     padding: 0.2rem 0.75rem;
 }
 
-/* Entity type badges */
+/* Entity type badges — werden derzeit nicht in der Liste verwendet,
+   bleiben fuer kuenftige Org/Ort-Register stehen. */
 .entity-type-badge {
     display: inline-block;
     font-family: var(--font-sans);
@@ -56,135 +59,70 @@
     margin-left: var(--space-sm);
 }
 
-.entity-type-person {
-    background: var(--anno-person-bg);
+.entity-type-person { background: var(--anno-person-bg); color: var(--anno-person); }
+.entity-type-org    { background: var(--anno-org-bg);    color: var(--anno-org); }
+.entity-type-place  { background: var(--anno-place-bg);  color: var(--anno-place); }
+
+/* ==========================================================================
+   Tabellen-Spalten
+   ========================================================================== */
+
+.col-name  { width: 50%; }
+.col-sex   { width: 8%;  text-align: center; }
+.col-roles { width: 22%; }
+.col-docs  { width: 10%; text-align: right; }
+
+/* Name-Cell mit Sub-Label. Im Personenregister ist der Name ein
+   Anker auf die Profilseite, in Org/Ort-Registern (intern, nicht
+   freigegeben) bleibt es ein Toggle-Button fuer die Inline-Quelle. */
+button.register-name-linked,
+a.register-name-linked {
+    all: unset;
+    cursor: pointer;
     color: var(--anno-person);
-}
-
-.entity-type-org {
-    background: var(--anno-org-bg);
-    color: var(--anno-org);
-}
-
-.entity-type-place {
-    background: var(--anno-place-bg);
-    color: var(--anno-place);
-}
-
-/* Register detail */
-.register-detail {
-    max-width: var(--max-width);
-    margin: 0 auto;
-}
-
-.register-breadcrumb {
-    margin-bottom: var(--space-lg);
-}
-
-.register-detail-header {
-    margin-bottom: var(--space-xl);
-}
-
-.register-detail-header h1 {
-    font-family: var(--font-serif);
-    font-size: var(--text-2xl);
+    font: inherit;
     font-weight: 500;
-    line-height: var(--leading-tight);
-    color: var(--color-text);
-    display: inline;
+    display: inline-block;
 }
 
-.register-detail-meta {
-    margin-bottom: var(--space-xl);
+button.register-name-linked:hover,
+a.register-name-linked:hover {
+    text-decoration: underline;
 }
 
-.detail-dl {
-    display: grid;
-    grid-template-columns: 10rem 1fr;
-    gap: var(--space-xs) var(--space-md);
+.register-name-sub {
+    display: block;
     font-family: var(--font-sans);
-    font-size: var(--text-sm);
-}
-
-.detail-dl dt {
-    font-size: var(--text-2xs);
-    font-weight: 600;
-    text-transform: uppercase;
-    letter-spacing: 0.06em;
-    color: var(--color-text-light);
-    padding-top: 0.15rem;
-}
-
-.detail-dl dd {
-    margin: 0;
-    color: var(--color-text);
-}
-
-.detail-dl dd code {
-    font-family: var(--font-mono);
     font-size: var(--text-2xs);
     color: var(--color-text-muted);
-}
-
-.register-detail-docs {
-    margin-bottom: var(--space-xl);
-}
-
-.register-detail-docs h2 {
-    font-family: var(--font-sans);
-    font-size: var(--text-lg);
-    font-weight: 500;
-    margin-bottom: var(--space-md);
-    color: var(--color-text);
-}
-
-.section-count {
+    margin-top: 1px;
     font-weight: 400;
-    color: var(--color-text-muted);
+    line-height: 1.3;
 }
 
-.detail-doc-table {
-    font-size: var(--text-sm);
+/* Quellen-Badge in der col-docs-Zelle: rechtsbuendig im Container.
+   Stil kommt komplett von .badge / .badge-icon / .badge-text in index.css. */
+.col-docs .badge {
+    margin-left: auto;
 }
 
-.no-docs-note {
-    font-family: var(--font-sans);
-    font-size: var(--text-sm);
-    color: var(--color-text-muted);
-    font-style: italic;
-}
+/* ==========================================================================
+   Rollen-Pillen
+   Erben Form, Groesse und Farbschema komplett von .form-pill / .form-pills
+   aus index.css — einheitliches --anno-person-Blau, Differenzierung rein
+   ueber das SVG-Icon (s. ROLE_ICONS in register.js). Die role-pill-{key}-
+   Suffixe bleiben als Hook fuer Tests / spaetere Spezialisierungen, tragen
+   aber keine eigenen visuellen Regeln.
+   ========================================================================== */
 
-/* Register name (clickable for entities with documents) */
-button.register-name-linked {
-    all: unset;
-    cursor: pointer;
-    color: var(--anno-person);
-    font: inherit;
-    font-weight: 500;
-}
+/* Hinweis: .form-filter-chip-pill (Mini-Icon vor Sidebar-Chip-Label)
+   liegt in index.css, weil beide Seiten (Quellen + Personen) das Pattern
+   nutzen. Hier keine register-spezifischen Regeln noetig. */
 
-button.register-name-linked:hover {
-    text-decoration: underline;
-}
+/* ==========================================================================
+   Inline-Detail-Zeile (Click auf Name oder Quellen-Badge)
+   ========================================================================== */
 
-/* Non-linked names (0 documents) — visually muted */
-span.register-name {
-    color: var(--color-text-muted);
-}
-
-/* Clickable doc-count badge */
-button.doc-count-link {
-    all: unset;
-    cursor: pointer;
-    font: inherit;
-}
-
-button.doc-count-link:hover .doc-count-badge {
-    color: var(--anno-person);
-    text-decoration: underline;
-}
-
-/* Inline detail expansion row */
 .detail-row > td {
     padding: 0 !important;
     border-top: none !important;
@@ -205,43 +143,83 @@ tr.expanded {
     background: var(--color-bg-alt, #f9f9f9);
 }
 
-/* Register table columns */
-.col-name { width: 28%; }
-.col-sex { width: 6%; text-align: center; }
-.col-death { width: 12%; }
-.col-type { width: 15%; }
-.col-docs { width: 6%; text-align: right; }
-.col-quality { width: 4%; text-align: center; }
-.col-id { width: 18%; }
-
-/* Quality indicators on register pages */
-.quality-dot {
-    display: inline-block;
-    font-size: var(--text-sm);
-    line-height: 1;
+.detail-id-line {
+    margin: 0 0 var(--space-sm) 0;
+    font-family: var(--font-sans);
+    font-size: var(--text-xs);
+    color: var(--color-text-muted);
 }
 
-.quality-ok { color: var(--color-quality-ok); }
-.quality-notice { color: var(--color-quality-notice); }
-.quality-warning { color: var(--color-quality-warning); }
-.quality-na { color: var(--color-text-light); }
+.detail-id-label {
+    font-weight: 600;
+    text-transform: uppercase;
+    letter-spacing: 0.06em;
+    font-size: var(--text-2xs);
+    margin-right: 0.4rem;
+}
 
-.cell-id {
+code.detail-id {
+    font-family: var(--font-mono);
+    font-size: var(--text-2xs);
+    color: var(--color-text);
+    background: var(--color-bg);
+    padding: 0.1rem 0.4rem;
+    border-radius: var(--radius);
+    user-select: all;
+}
+
+.detail-doc-table {
+    font-size: var(--text-sm);
+    width: 100%;
+}
+
+.no-docs-note {
+    font-family: var(--font-sans);
+    font-size: var(--text-sm);
+    color: var(--color-text-muted);
+    font-style: italic;
+}
+
+/* Register-Detail-Seite (Einzelperson) — bleibt unveraendert */
+.register-detail { max-width: var(--max-width); margin: 0 auto; }
+.register-breadcrumb { margin-bottom: var(--space-lg); }
+.register-detail-header { margin-bottom: var(--space-xl); }
+.register-detail-header h1 {
+    font-family: var(--font-serif);
+    font-size: var(--text-2xl);
+    font-weight: 500;
+    line-height: var(--leading-tight);
+    color: var(--color-text);
+    display: inline;
+}
+.register-detail-meta { margin-bottom: var(--space-xl); }
+.detail-dl {
+    display: grid;
+    grid-template-columns: 10rem 1fr;
+    gap: var(--space-xs) var(--space-md);
+    font-family: var(--font-sans);
+    font-size: var(--text-sm);
+}
+.detail-dl dt {
+    font-size: var(--text-2xs);
+    font-weight: 600;
+    text-transform: uppercase;
+    letter-spacing: 0.06em;
+    color: var(--color-text-light);
+    padding-top: 0.15rem;
+}
+.detail-dl dd { margin: 0; color: var(--color-text); }
+.detail-dl dd code {
     font-family: var(--font-mono);
     font-size: var(--text-2xs);
     color: var(--color-text-muted);
-    word-break: break-all;
 }
-
-.doc-count-badge {
+.register-detail-docs { margin-bottom: var(--space-xl); }
+.register-detail-docs h2 {
     font-family: var(--font-sans);
-    font-size: var(--text-2xs);
-    font-weight: 600;
-    font-variant-numeric: tabular-nums;
+    font-size: var(--text-lg);
+    font-weight: 500;
+    margin-bottom: var(--space-md);
+    color: var(--color-text);
 }
-
-.doc-count-zero {
-    color: var(--color-text-light);
-}
-
-
+.section-count { font-weight: 400; color: var(--color-text-muted); }

@@ -86,26 +86,31 @@
         padding: var(--space-lg) var(--space-md);
     }
 
-    /* Toolbar: not sticky on mobile, stacked */
+    /* Toolbar: not sticky on mobile. Identity ueber Controls gestapelt,
+       statt nebeneinander. Layer-Toggles fallen auf 1 Spalte zurueck,
+       damit keine Pille abgeschnitten wird. */
     .doc-toolbar {
         position: static;
         margin: calc(-1 * var(--space-lg)) calc(-1 * var(--space-md)) 0;
-        padding: 0 var(--space-md);
+        padding: var(--space-sm) var(--space-md);
     }
 
     .doc-toolbar-inner {
-        flex-wrap: wrap;
-        min-height: auto;
-        padding: var(--space-sm) 0;
+        flex-direction: column;
+        align-items: stretch;
+        gap: var(--space-sm);
     }
 
-    .doc-toolbar-title {
+    .doc-toolbar-controls {
+        align-items: flex-start;
+    }
+
+    .doc-toolbar-legend {
+        grid-template-columns: 1fr;
+    }
+
+    .doc-breadcrumb {
         white-space: normal;
-    }
-
-    /* Inline paging hidden on mobile (bottom paging used) */
-    .doc-paging-inline {
-        display: none;
     }
 
     .legend-grid {
@@ -192,9 +197,6 @@
     .explore-panels--roles-top {
         grid-template-columns: 1fr;
     }
-
-    /* Quality dashboard: KPIs 2-col on mobile */
-    #quality-kpis { grid-template-columns: repeat(2, 1fr); }
 }
 
 @media (max-width: 480px) {

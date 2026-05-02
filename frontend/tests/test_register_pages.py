@@ -14,7 +14,24 @@ from frontend.build import (
     _place_search_data,
     _build_register_json,
 )
+from frontend.build._pages import _short_collection_label
 from frontend.register import load_persons, load_orgs, load_places
+
+
+# --- Short collection label fuer Sub-Label im Personenregister ---
+
+
+class TestShortCollectionLabel:
+    def test_strips_year_parens(self):
+        assert _short_collection_label(
+            "QGW/Vienna_1177-1414_ready"
+        ) == "QGW II/1"
+
+    def test_falls_back_to_path(self):
+        assert _short_collection_label("Unknown/Path") == "Unknown/Path"
+
+    def test_empty_input(self):
+        assert _short_collection_label("") == ""
 
 
 # --- Entity ref extraction ---
@@ -113,10 +130,72 @@ class TestSearchDataStructure:
             "forename": "Hans", "surname": "Test", "addName": "",
             "death": "", "display": "Hans Test", "sex": "m",
         }}
-        reverse = {"pe__test": [{"url": "x.html", "idno": "1"}]}
+        reverse = {"pe__test": [{
+            "url": "x.html", "idno": "1",
+            "date_iso": "1340-05-10", "date_display": "10. Mai 1340",
+            "collection_path": "QGW/Vienna_1177-1414_ready",
+            "collection_label": "QGW II/1 (1177–1414)",
+            "regest": "",
+        }]}
         data = _person_search_data(persons, reverse)
         assert data[0]["dc"] == 1
-        assert "u" not in data[0], "URL field should no longer exist"
+        # Die neuen Felder muessen alle gesetzt sein
+        assert data[0]["am"] == "1340"
+        assert data[0]["ax"] == "1340"
+        assert data[0]["i0"] == "1"
+        assert data[0]["cl0"] == "QGW II/1"
+        assert data[0]["co"] == ["QGW/Vienna_1177-1414_ready"]
+        assert data[0]["rl"] == []
+        # Entfernte Felder sollen wirklich weg sein
+        assert "u" not in data[0]
+        assert "d" not in data[0], "death field should no longer exist"
+        assert "qw" not in data[0], "quality-worst field should no longer exist"
+
+    def test_person_search_data_skips_persons_without_docs(self):
+        # Defensive: keine Quelle => Person nicht im Register
+        persons = {"pe__ghost": {
+            "forename": "", "surname": "", "addName": "",
+            "death": "", "display": "Ghost", "sex": "",
+        }}
+        data = _person_search_data(persons, {})
+        assert data == []
+
+    def test_person_search_data_aggregates_roles(self):
+        persons = {"pe__test": {
+            "forename": "Hans", "surname": "Test", "addName": "",
+            "death": "", "display": "Hans Test", "sex": "m",
+        }}
+        reverse = {"pe__test": [{
+            "url": "x.html", "idno": "1",
+            "date_iso": "1340-05-10", "date_display": "1340",
+            "collection_path": "QGW/Vienna_1177-1414_ready",
+            "collection_label": "QGW", "regest": "",
+        }]}
+        roles = {"pe__test": {"issuer", "witness"}}
+        data = _person_search_data(persons, reverse, person_roles=roles)
+        # Sortiert (issuer < witness)
+        assert data[0]["rl"] == ["issuer", "witness"]
+
+    def test_person_search_data_year_span(self):
+        persons = {"pe__test": {
+            "forename": "Hans", "surname": "Test", "addName": "",
+            "death": "", "display": "Hans Test", "sex": "m",
+        }}
+        reverse = {"pe__test": [
+            {"url": "a.html", "idno": "1",
+             "date_iso": "1287-01-01", "date_display": "1287",
+             "collection_path": "QGW/Vienna_1177-1414_ready",
+             "collection_label": "QGW", "regest": ""},
+            {"url": "b.html", "idno": "9",
+             "date_iso": "1312-06-30", "date_display": "1312",
+             "collection_path": "QGW/Vienna_1177-1414_ready",
+             "collection_label": "QGW", "regest": ""},
+        ]}
+        data = _person_search_data(persons, reverse)
+        assert data[0]["am"] == "1287"
+        assert data[0]["ax"] == "1312"
+        # i0 ist die FRUEHESTE Quelle (reverse_index ist date-sortiert)
+        assert data[0]["i0"] == "1"
 
     def test_org_search_data_has_doc_count(self):
         orgs = {"org__test": {"name": "Test Org", "type": "Kloster"}}

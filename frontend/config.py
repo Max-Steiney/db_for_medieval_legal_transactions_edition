@@ -23,15 +23,12 @@ TEMPLATES_DIR = EDITION_DIR / "templates"
 STATIC_DIR = EDITION_DIR / "static"
 CONTENT_DIR = EDITION_DIR / "content"
 
-# Sources, registers, knowledge base, the validation report and the
-# edition guidelines live in the sibling pipeline repository. The
-# guidelines are editorial documentation of the source-data annotation
-# model, not frontend content; the frontend only renders them.
+# Sources, registers, knowledge base, and the edition guidelines live in
+# the sibling pipeline repository. The guidelines are editorial
+# documentation of the source-data annotation model, not frontend content;
+# the frontend only renders them.
 SOURCES_REPO_ROOT = PIPELINE_REPO_ROOT
 KNOWLEDGE_DIR = PIPELINE_REPO_ROOT / "knowledge"
-VALIDATION_REPORT_PATH = (
-    PIPELINE_REPO_ROOT / "pipeline" / "output" / "validation_report.json"
-)
 EDITION_GUIDELINES_PATH = PIPELINE_REPO_ROOT / "edition_guidelines.md"
 
 # Backwards-compatibility alias. Some callers still import REPO_ROOT

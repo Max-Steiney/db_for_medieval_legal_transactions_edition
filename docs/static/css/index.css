@@ -536,15 +536,46 @@ a.doc-link--title:hover {
     line-height: 1.4;
 }
 
+/* Badges sind einheitlich: kleines Icon + Anzahl/Text. Kein Hintergrund —
+   die dotted underline am Text-Anteil ist die einzige visuelle Tooltip-
+   Affordance. Die Klasse .badge wird sowohl als <span> (rein tooltipped,
+   z. B. Quellenseite Beteiligte) als auch als <button> (clickable, z. B.
+   Personenseite Quellen) verwendet — gleiche Optik, unterschiedliches
+   Interaktionsmodell. */
 .badge {
-    display: inline-block;
+    display: inline-flex;
+    align-items: center;
+    gap: 0.4em;
     font-size: var(--text-sm);
     color: var(--color-text);
     cursor: help;
+    background: none;
+    border: 0;
+    padding: 0;
+    font-family: inherit;
+    line-height: inherit;
 }
-.badge-persons {
+button.badge { cursor: pointer; }
+.badge-icon {
+    display: inline-flex;
+    width: 1.05em;
+    height: 1.05em;
+    color: var(--anno-person);
+    flex-shrink: 0;
+}
+.badge-icon svg {
+    width: 100%;
+    height: 100%;
+    display: block;
+}
+.badge-text {
     border-bottom: 1px dotted var(--color-border-dark);
 }
+.badge:hover .badge-text { border-bottom-color: var(--anno-person); }
+.badge:hover .badge-icon { color: var(--color-text); }
+
+/* Legacy-Klasse fuer Bestandscode, der noch .badge-persons referenziert. */
+.badge-persons { /* erbt komplett von .badge — keine eigenen Regeln mehr */ }
 
 .form-pills {
     display: inline-flex;
@@ -556,14 +587,15 @@ a.doc-link--title:hover {
     margin-left: auto;
     vertical-align: baseline;
 }
+/* Form-Pillen sind reine Icon-Marker ohne Hintergrund — der Container traegt
+   nur Klickflaeche, das Icon traegt die Information. Farbe --anno-person
+   einheitlich, Differenzierung allein ueber das SVG. */
 .form-pill {
     display: inline-flex;
     align-items: center;
     justify-content: center;
-    width: 1.4em;
-    height: 1.4em;
-    border-radius: 3px;
-    background: var(--anno-person-bg);
+    width: 1.2em;
+    height: 1.2em;
     color: var(--anno-person);
     cursor: help;
     user-select: none;
@@ -575,27 +607,15 @@ a.doc-link--title:hover {
     display: block;
 }
 
+.form-pill:hover {
+    color: var(--color-text);
+}
+
 /* Faksimile-Pille traegt dieselbe Farbe wie die TEI-Struktur-Pillen —
    visuell ein konsistenter Marker-Set. */
 
 /* Multi-Event-Pille (.form-pill-m) erbt den Stil der anderen Form-Pillen;
    das frueher orange-gelbe .multi-event mit Blitz und Klartext ist weg. */
-
-/* Qualitaets-Dot pro Zeile. Anzeige nur bei doc.q > 0; Score 1 (Hinweis)
-   gelblich, Score 2 (Warnung) roetlich. Klein und ruhig — soll Hinweis
-   geben, nicht alarmieren. Score 0 zeigt nichts (Default = ok). */
-.quality-dot {
-    display: inline-block;
-    width: 0.5rem;
-    height: 0.5rem;
-    border-radius: 50%;
-    margin-left: 0.4em;
-    vertical-align: middle;
-    cursor: help;
-    flex-shrink: 0;
-}
-.quality-dot--q1 { background: var(--color-quality-notice); }
-.quality-dot--q2 { background: var(--color-quality-warning); }
 
 /* Inhalt-Spalte: Pillen links, Chevron rechts. Chevron als visuelles
    Affordance-Signal "Klick fuer Vorschau". Rotiert um 90deg, sobald
@@ -704,56 +724,6 @@ a.doc-link--title:hover {
     margin-bottom: var(--space-sm);
 }
 
-/* Qualitaets-Hinweis im Preview. Verwendet die gleichen Score-Farben
-   wie die Tabellen-Dots; Box dezent in der Preview-Spalte. */
-.preview-quality {
-    font-family: var(--font-sans);
-    font-size: var(--text-xs);
-    line-height: 1.5;
-    margin: 0 0 var(--space-sm);
-    padding: var(--space-xs) var(--space-sm);
-    border-radius: var(--radius);
-    border-left: 3px solid var(--color-text-light);
-    background: rgba(255, 255, 255, 0.4);
-    color: var(--color-text);
-}
-.preview-quality--q1 {
-    border-left-color: var(--color-quality-notice);
-}
-.preview-quality--q2 {
-    border-left-color: var(--color-quality-warning);
-}
-.preview-quality-head {
-    display: flex;
-    align-items: center;
-    gap: 0.3em;
-}
-.preview-quality .quality-dot {
-    margin-left: 0;
-}
-.quality-cat-chips {
-    display: flex;
-    flex-wrap: wrap;
-    gap: 0.3rem;
-    margin-top: var(--space-xs);
-}
-.quality-cat-chip {
-    display: inline-flex;
-    align-items: center;
-    gap: 0.3em;
-    padding: 1px 0.5em;
-    border-radius: 999px;
-    background: var(--color-bg-card);
-    border: 1px solid var(--color-border);
-    color: var(--color-text-muted);
-    font-size: var(--text-2xs);
-    cursor: help;
-}
-.quality-cat-count {
-    font-weight: 600;
-    color: var(--color-text);
-}
-
 /* --- Form-Filter-Chips in der Sidebar (Mehrfachauswahl) ----------------- */
 .form-filter-chips {
     display: flex;
@@ -799,11 +769,53 @@ a.doc-link--title:hover {
 .form-filter-chip.is-active .form-filter-chip-count {
     color: var(--anno-person);
 }
-/* Icon-Marker im Chip — uebernimmt das jeweilige Icon aus FORM_ICONS via CSS-mask
-   waere aufwendig; stattdessen rendert der JS hier einfach den passenden Buchstaben
-   als Mini-Hint, falls das Icon nicht reinkommt. Effekt-arme Loesung. */
-.form-filter-chip-icon {
-    display: none;
+/* Mini-Icon vor dem Sidebar-Chip-Label.
+   Wird per JS injiziert (index.js fuer Erschliessungsform-Pillen,
+   register.js fuer Rollen-Pillen) — dieselben SVGs, die auch in den
+   Tabellen-Pillen erscheinen. Single-Source-of-Truth: das Icon-Dict im
+   jeweiligen JS-Modul. */
+.form-filter-chip-pill {
+    display: inline-flex;
+    align-items: center;
+    justify-content: center;
+    width: 1.1rem;
+    height: 1.1rem;
+    margin-right: 0.35rem;
+    color: var(--color-text-muted);
+    flex-shrink: 0;
+}
+.form-filter-chip-pill svg {
+    width: 0.9rem;
+    height: 0.9rem;
+    display: block;
+}
+.form-filter-chip.is-active .form-filter-chip-pill {
+    color: var(--anno-person);
+}
+
+/* "i"-Affordance am Sidebar-Chip — zeigt sichtbar an, dass es einen
+   Definitions-Tooltip gibt. Der Tooltip selbst haengt am Chip-Container
+   ueber data-tip-title / data-tip-body (Hover irgendwo auf den Chip
+   zeigt ihn). Das "i" ist nur Affordance-Signal, kein eigener Trigger. */
+.form-filter-chip-info {
+    display: inline-flex;
+    align-items: center;
+    justify-content: center;
+    width: 0.85rem;
+    height: 0.85rem;
+    margin-left: 0.3rem;
+    color: var(--color-text-light);
+    opacity: 0.65;
+    flex-shrink: 0;
+}
+.form-filter-chip-info svg {
+    width: 100%;
+    height: 100%;
+    display: block;
+}
+.form-filter-chip:hover .form-filter-chip-info {
+    opacity: 1;
+    color: var(--anno-person);
 }
 
 .sidebar-block-hint {
