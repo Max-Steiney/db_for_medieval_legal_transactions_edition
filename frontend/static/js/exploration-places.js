@@ -7,25 +7,25 @@
 (function() {
     'use strict';
 
-    var esc = EdCore.esc;
-    var fmt = ChartHelpers.fmt;
-    var TOOLTIP_CLASS = 'explore-tooltip';
+    let esc = EdCore.esc;
+    let fmt = ChartHelpers.fmt;
+    let TOOLTIP_CLASS = 'explore-tooltip';
 
     function initPlaceExplorer() {
         if (!document.getElementById('explore-panel-map')) return;
 
         ChartHelpers.createTooltip(TOOLTIP_CLASS);
-        var drillHandle = DrillDown.bind({});
+        let drillHandle = DrillDown.bind({});
 
-        var epicD = null;
-        var map = null;
-        var markerGroup = null;
-        var markerLookup = {};
-        var selectedPlaceId = null;
+        let epicD = null;
+        let map = null;
+        let markerGroup = null;
+        let markerLookup = {};
+        let selectedPlaceId = null;
 
         // State
-        var RP = window.RELEASED_PERIOD || {min: 1177, max: 1414};
-        var state = {
+        let RP = window.RELEASED_PERIOD || {min: 1177, max: 1414};
+        let state = {
             search: '',
             typeFilter: 'all',
             refFilter: 'all',
@@ -36,16 +36,16 @@
             decadeMax: RP.max
         };
 
-        var timeActive = false;
+        let timeActive = false;
 
-        var TYPE_LABELS = {
+        let TYPE_LABELS = {
             settlement: 'Siedlung',
             immo: 'Immobilie',
             street: 'Stra\u00dfe',
             river: 'Fluss'
         };
 
-        var GEOREF_LABELS = {
+        let GEOREF_LABELS = {
             both: 'Koordinaten + GeoNames',
             coords: 'Koordinaten',
             geonames: 'GeoNames',
@@ -62,7 +62,7 @@
         function placeInTimeRange(p) {
             if (!timeActive) return true;
             if (!p.decades || p.decades.length === 0) return true;
-            for (var i = 0; i < p.decades.length; i++) {
+            for (let i = 0; i < p.decades.length; i++) {
                 if (p.decades[i] >= state.decadeMin && p.decades[i] <= state.decadeMax) return true;
             }
             return false;
@@ -102,17 +102,17 @@
             markerGroup.clearLayers();
             markerLookup = {};
 
-            var placeColor = ChartHelpers.getToken('--anno-place') || '#3a7a5c';
-            var mutedColor = ChartHelpers.getToken('--color-text-light') || '#b0a99f';
+            let placeColor = ChartHelpers.getToken('--anno-place') || '#3a7a5c';
+            let mutedColor = ChartHelpers.getToken('--color-text-light') || '#b0a99f';
 
-            var settlements = epicD.places.filter(function(p) {
+            let settlements = epicD.places.filter(function(p) {
                 return p.type === 'settlement' && p.has_coords && p.lat != null && p.lng != null
                     && placeInTimeRange(p);
             });
 
-            for (var i = 0; i < settlements.length; i++) {
-                var p = settlements[i];
-                var marker = L.circleMarker([p.lat, p.lng], {
+            for (let i = 0; i < settlements.length; i++) {
+                let p = settlements[i];
+                let marker = L.circleMarker([p.lat, p.lng], {
                     radius: Math.min(5 + Math.sqrt(p.doc_count) * 1.5, 18),
                     fillColor: p.referenced ? placeColor : mutedColor,
                     color: '#fff',
@@ -131,9 +131,9 @@
                 markerLookup[p.id] = marker;
             }
 
-            var covEl = document.getElementById('explore-map-coverage');
+            let covEl = document.getElementById('explore-map-coverage');
             if (covEl) {
-                var covText = settlements.length + ' Siedlungen';
+                let covText = settlements.length + ' Siedlungen';
                 if (timeActive) covText += ' (' + state.decadeMin + '\u2013' + state.decadeMax + ')';
                 covEl.textContent = covText;
             }
@@ -144,7 +144,7 @@
         }
 
         function buildPopup(p) {
-            var h = '<div class="explore-map-popup">';
+            let h = '<div class="explore-map-popup">';
             h += '<strong>' + esc(p.name) + '</strong>';
             h += '<br>' + esc(TYPE_LABELS[p.type] || p.type);
             h += '<br>' + (p.doc_count || 0) + ' Quellen';
@@ -158,30 +158,30 @@
 
         // Delegate popup link clicks
         document.getElementById('explore-map').addEventListener('click', function(e) {
-            var link = e.target.closest('.explore-popup-docs');
+            let link = e.target.closest('.explore-popup-docs');
             if (!link) return;
             e.preventDefault();
-            var pid = link.getAttribute('data-place-id');
-            var place = epicD.places.find(function(p) { return p.id === pid; });
+            let pid = link.getAttribute('data-place-id');
+            let place = epicD.places.find(function(p) { return p.id === pid; });
             if (place && place.file_keys) {
                 DrillDown.open(drillHandle, esc(place.name) + ' \u2014 Quellen', place.file_keys);
             }
         });
 
         // -- Render place table --
-        var tbody = document.getElementById('explore-place-tbody');
-        var footer = document.getElementById('explore-place-footer');
+        let tbody = document.getElementById('explore-place-tbody');
+        let footer = document.getElementById('explore-place-footer');
 
         function filteredPlaces() {
             return epicD.places.filter(function(p) {
                 if (state.search) {
-                    var q = state.search;
+                    let q = state.search;
                     if (p.name.toLowerCase().indexOf(q) === -1 && p.id.toLowerCase().indexOf(q) === -1) return false;
                 }
                 if (state.typeFilter !== 'all' && p.type !== state.typeFilter) return false;
                 if (state.refFilter === 'referenced' && !p.referenced) return false;
                 if (state.refFilter === 'unreferenced' && p.referenced) return false;
-                var gs = georefStatus(p);
+                let gs = georefStatus(p);
                 if (state.geoFilter === 'coords' && gs !== 'coords' && gs !== 'both') return false;
                 if (state.geoFilter === 'geonames' && gs !== 'geonames') return false;
                 if (state.geoFilter === 'none' && gs !== 'none') return false;
@@ -191,15 +191,15 @@
         }
 
         function sortPlaces(arr) {
-            var field = state.sortField;
-            var dir = state.sortDir;
+            let field = state.sortField;
+            let dir = state.sortDir;
             return arr.slice().sort(function(a, b) {
-                var va, vb;
+                let va, vb;
                 if (field === 'name') { va = a.name.toLowerCase(); vb = b.name.toLowerCase(); }
                 else if (field === 'type') { va = a.type; vb = b.type; }
                 else if (field === 'doc_count') { va = a.doc_count; vb = b.doc_count; }
                 else if (field === 'georef') {
-                    var order = { both: 3, coords: 2, geonames: 1, none: 0 };
+                    let order = { both: 3, coords: 2, geonames: 1, none: 0 };
                     va = order[georefStatus(a)]; vb = order[georefStatus(b)];
                 }
                 else { va = a.name; vb = b.name; }
@@ -209,10 +209,10 @@
             });
         }
 
-        var BATCH_SIZE = 100;
-        var renderOffset = 0;
-        var currentSorted = [];
-        var sentinelObserver = null;
+        let BATCH_SIZE = 100;
+        let renderOffset = 0;
+        let currentSorted = [];
+        let sentinelObserver = null;
 
         function renderTable() {
             currentSorted = sortPlaces(filteredPlaces());
@@ -223,19 +223,19 @@
         }
 
         function renderBatch() {
-            var end = Math.min(renderOffset + BATCH_SIZE, currentSorted.length);
-            var frag = document.createDocumentFragment();
-            for (var i = renderOffset; i < end; i++) {
+            let end = Math.min(renderOffset + BATCH_SIZE, currentSorted.length);
+            let frag = document.createDocumentFragment();
+            for (let i = renderOffset; i < end; i++) {
                 frag.appendChild(buildRow(currentSorted[i]));
             }
-            var oldSentinel = tbody.querySelector('.explore-loading-more');
+            let oldSentinel = tbody.querySelector('.explore-loading-more');
             if (oldSentinel) oldSentinel.remove();
 
             tbody.appendChild(frag);
             renderOffset = end;
 
             if (renderOffset < currentSorted.length) {
-                var sentinel = document.createElement('tr');
+                let sentinel = document.createElement('tr');
                 sentinel.className = 'explore-loading-more';
                 sentinel.innerHTML = '<td colspan="4">Weitere laden\u2026</td>';
                 tbody.appendChild(sentinel);
@@ -259,15 +259,15 @@
         }
 
         function buildRow(p) {
-            var tr = document.createElement('tr');
-            var gs = georefStatus(p);
-            var mappable = p.type === 'settlement' && p.has_coords;
+            let tr = document.createElement('tr');
+            let gs = georefStatus(p);
+            let mappable = p.type === 'settlement' && p.has_coords;
             tr.className = 'explore-place-row' + (mappable ? ' explore-place-row--mappable' : '');
             tr.setAttribute('data-place-id', p.id);
 
             if (p.id === selectedPlaceId) tr.classList.add('active');
 
-            var typeClass = 'explore-place-type explore-place-type--' + (p.type || 'immo');
+            let typeClass = 'explore-place-type explore-place-type--' + (p.type || 'immo');
             tr.innerHTML = '<td>' + esc(p.name) + '</td>'
                 + '<td><span class="' + typeClass + '">' + esc(TYPE_LABELS[p.type] || p.type || '\u2014') + '</span></td>'
                 + '<td class="num">' + (p.doc_count || 0) + '</td>'
@@ -275,11 +275,11 @@
                 + esc(GEOREF_LABELS[gs]) + '</span></td>';
 
             tr.addEventListener('click', function() {
-                var pid = this.getAttribute('data-place-id');
+                let pid = this.getAttribute('data-place-id');
                 if (mappable) {
                     centerMapOnPlace(pid);
                 }
-                var place = epicD.places.find(function(pp) { return pp.id === pid; });
+                let place = epicD.places.find(function(pp) { return pp.id === pid; });
                 if (place && place.file_keys && place.file_keys.length > 0) {
                     DrillDown.open(drillHandle, esc(place.name) + ' \u2014 Quellen', place.file_keys);
                 }
@@ -291,11 +291,11 @@
         // -- Bidirectional linking --
         function highlightTableRow(placeId) {
             selectedPlaceId = placeId;
-            var rows = tbody.querySelectorAll('.explore-place-row');
-            for (var i = 0; i < rows.length; i++) {
+            let rows = tbody.querySelectorAll('.explore-place-row');
+            for (let i = 0; i < rows.length; i++) {
                 rows[i].classList.toggle('active', rows[i].getAttribute('data-place-id') === placeId);
             }
-            var activeRow = tbody.querySelector('.explore-place-row.active');
+            let activeRow = tbody.querySelector('.explore-place-row.active');
             if (activeRow) {
                 activeRow.scrollIntoView({ block: 'nearest', behavior: 'smooth' });
             }
@@ -303,7 +303,7 @@
 
         function centerMapOnPlace(placeId) {
             selectedPlaceId = placeId;
-            var marker = markerLookup[placeId];
+            let marker = markerLookup[placeId];
             if (!marker) return;
 
             highlightTableRow(placeId);
@@ -315,9 +315,9 @@
         }
 
         // -- Filter bindings --
-        var typeFilter = document.getElementById('explore-place-type-filter');
-        var refFilter = document.getElementById('explore-place-ref-filter');
-        var geoFilter = document.getElementById('explore-place-geo-filter');
+        let typeFilter = document.getElementById('explore-place-type-filter');
+        let refFilter = document.getElementById('explore-place-ref-filter');
+        let geoFilter = document.getElementById('explore-place-geo-filter');
 
         ChartHelpers.bindSearch('explore-place-search', function(q) {
             state.search = q;
@@ -338,19 +338,19 @@
         });
 
         // Sortable headers (places uses ▲/▼ arrows instead of ↑/↓)
-        var sortHeaders = document.querySelectorAll('#explore-place-table th.sortable');
-        for (var h = 0; h < sortHeaders.length; h++) {
+        let sortHeaders = document.querySelectorAll('#explore-place-table th.sortable');
+        for (let h = 0; h < sortHeaders.length; h++) {
             sortHeaders[h].style.cursor = 'pointer';
             sortHeaders[h].addEventListener('click', function() {
-                var field = this.getAttribute('data-sort');
+                let field = this.getAttribute('data-sort');
                 if (state.sortField === field) {
                     state.sortDir *= -1;
                 } else {
                     state.sortField = field;
                     state.sortDir = field === 'name' || field === 'type' ? 1 : -1;
                 }
-                for (var j = 0; j < sortHeaders.length; j++) {
-                    var arrow = sortHeaders[j].querySelector('.sort-arrow');
+                for (let j = 0; j < sortHeaders.length; j++) {
+                    let arrow = sortHeaders[j].querySelector('.sort-arrow');
                     if (sortHeaders[j].getAttribute('data-sort') === state.sortField) {
                         arrow.textContent = state.sortDir > 0 ? '\u25b2' : '\u25bc';
                     } else {
@@ -364,11 +364,15 @@
         // -- Init: load data and render --
         initMap();
 
-        ChartHelpers.loadJSON((window.ROOT_PATH || '.') + '/data/epic_d.json', 'explore-map', function(data) {
+        // No loading indicator passed: overwriting the map container's
+        // innerHTML would destroy the Leaflet panes that initMap() just
+        // created. The table tbody is unsuitable too (invalid HTML to
+        // place <p> directly inside <tbody>).
+        ChartHelpers.loadJSON((window.ROOT_PATH || '.') + '/data/epic_d.json', null, function(data) {
             epicD = data;
             populateMap();
             renderTable();
-            var defaultArrow = document.querySelector('#explore-place-table th[data-sort="doc_count"] .sort-arrow');
+            let defaultArrow = document.querySelector('#explore-place-table th[data-sort="doc_count"] .sort-arrow');
             if (defaultArrow) defaultArrow.textContent = '\u25bc';
         });
     }

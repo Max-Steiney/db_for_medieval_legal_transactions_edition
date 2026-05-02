@@ -4,7 +4,7 @@
 {% block title %}{{ meta.idno }} ({{ meta.date_display }}){% endblock %}
 
 {% block head %}
-<link rel="stylesheet" href="{{ root_path }}/static/css/document.css">
+<link rel="stylesheet" href="{{ root_path }}/static/css/document.css?v={{ asset_v }}">
 <link rel="canonical" href="{{ meta.url }}">
 <meta name="citation_title" content="Nr. {{ meta.idno }}{% if meta.date_display %} ({{ meta.date_display }}){% endif %}">
 <meta name="citation_collection" content="{{ meta.collection_label }}">
@@ -215,9 +215,9 @@
 {% endblock %}
 
 {% block scripts %}
-<script src="{{ root_path }}/static/js/tooltips.js"></script>
-<script src="{{ root_path }}/static/js/facsimile.js"></script>
-<script src="{{ root_path }}/static/js/document.js"></script>
+<script src="{{ root_path }}/static/js/tooltips.js?v={{ asset_v }}"></script>
+<script src="{{ root_path }}/static/js/facsimile.js?v={{ asset_v }}"></script>
+<script src="{{ root_path }}/static/js/document.js?v={{ asset_v }}"></script>
 {% endblock %}
 
 {% block footer_info %}{{ meta.collection_label }} &middot; Nr. {{ meta.idno }}{% endblock %}

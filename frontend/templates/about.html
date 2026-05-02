@@ -2,7 +2,7 @@
 {% block title %}Über das Projekt{% endblock %}
 
 {% block head %}
-<link rel="stylesheet" href="{{ root_path }}/static/css/content.css">
+<link rel="stylesheet" href="{{ root_path }}/static/css/content.css?v={{ asset_v }}">
 {% endblock %}
 
 {% block content %}
@@ -31,7 +31,7 @@
 {% endblock %}
 
 {% block scripts %}
-<script src="{{ root_path }}/static/js/content.js"></script>
+<script src="{{ root_path }}/static/js/content.js?v={{ asset_v }}"></script>
 {% endblock %}
 
 {% block footer_info %}&Uuml;ber das Projekt{% endblock %}

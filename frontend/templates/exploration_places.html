@@ -4,7 +4,7 @@
 {% block title %}Orte — Exploration{% endblock %}
 
 {% block head %}
-<link rel="stylesheet" href="{{ root_path }}/static/css/exploration.css">
+<link rel="stylesheet" href="{{ root_path }}/static/css/exploration.css?v={{ asset_v }}">
 <link rel="stylesheet" href="https://unpkg.com/leaflet@1.9.4/dist/leaflet.css"
       integrity="sha256-p4NxAoJBhIIN+hmNHrzRCf9tD/miZyoHS5obTRR9BMY="
       crossorigin="anonymous">
@@ -159,10 +159,10 @@
         crossorigin="anonymous"></script>
 <script src="https://unpkg.com/leaflet.markercluster@1.5.3/dist/leaflet.markercluster.js"
         crossorigin="anonymous"></script>
-<script src="{{ root_path }}/static/js/table-infra.js"></script>
-<script src="{{ root_path }}/static/js/chart-helpers.js"></script>
-<script src="{{ root_path }}/static/js/drill-down.js"></script>
-<script src="{{ root_path }}/static/js/exploration-places.js"></script>
+<script src="{{ root_path }}/static/js/table-infra.js?v={{ asset_v }}"></script>
+<script src="{{ root_path }}/static/js/chart-helpers.js?v={{ asset_v }}"></script>
+<script src="{{ root_path }}/static/js/drill-down.js?v={{ asset_v }}"></script>
+<script src="{{ root_path }}/static/js/exploration-places.js?v={{ asset_v }}"></script>
 {% endblock %}
 
 {% block footer_info %}Orte generiert am {{ build_date }}{% endblock %}

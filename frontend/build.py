@@ -27,21 +27,6 @@ def _format_german_date(dt):
     return f"{dt.day}. {_GERMAN_MONTHS[dt.month - 1]} {dt.year}"
 
 
-def _transmission_form(collection_path):
-    """Map a collection path to a human-readable transmission/edition form.
-
-    QGW-based corpora: Regest plus Faksimile (summarised catalogue entries linked
-    to digitised images). Stadtbuecher: edierter Volltext (full edited text).
-    Unknown paths fall back to 'Regest'.
-    """
-    cp = (collection_path or "").lower()
-    if cp.startswith("stadtbuecher"):
-        return "Volltext"
-    if cp.startswith("qgw"):
-        return "Regest + Faksimile"
-    return "Regest"
-
-
 def _pipeline_repo_data_date():
     """Return the date of the last git commit in the pipeline repo as a german-formatted string.
 
@@ -175,6 +160,10 @@ def _init_jinja():
     )
     env.globals["build_date"] = _format_german_date(date.today())
     env.globals["data_date"] = _pipeline_repo_data_date()
+    # Cache buster for static assets (CSS/JS): per-build timestamp
+    # avoids stale browser caches when source files change without a
+    # filename hash. Used in templates as {{ root_path }}/static/...?v={{ asset_v }}.
+    env.globals["asset_v"] = datetime.now().strftime("%Y%m%d%H%M%S")
     rp = dict(RELEASED_PERIOD)
     rp["max_year_with_extensions"] = max_year_with_extensions()
     env.globals["released_period"] = rp
@@ -707,19 +696,92 @@ def _write_file(meta, body_html, output, env):
     output.write_text(html, encoding="utf-8")
 
 
+def _format_table_date(rec):
+    """Format docs_aggregate date fields for the documents-table display.
+
+    Pipeline-Konvention: ISO-Datum ``YYYY-MM-DD``, Unsicherheit als
+    ``YYYY-01-01 | YYYY-12-31`` (Jahr unscharf) oder
+    ``YYYYa-01-01 | YYYYb-12-31`` (Jahresbereich).
+
+    Anzeige:
+      - ``DD.MM.YYYY`` bei sauberem Einzeldatum
+      - ``MM.YYYY``     bei Jahr+Monat
+      - ``YYYY``        bei Vollwertig-Jahres-Unscharfe (1.1.-31.12. desselben Jahres)
+      - ``YYYY-YYYY``   bei Mehrjahres-Range (1.1.YYYYa - 31.12.YYYYb)
+      - ``YYYY``        Fallback aus ``date_year``
+      - ``''``          wenn keine Datumsinformation vorliegt
+    """
+    start = rec.get("date_iso_start", "") or ""
+    end = rec.get("date_iso_end", "") or ""
+    year = rec.get("date_year", "")
+    if not start:
+        return ""
+    is_full_year_range = (
+        start != end
+        and start.endswith("-01-01")
+        and end.endswith("-12-31")
+    )
+    if is_full_year_range:
+        ys, ye = start[:4], end[:4]
+        return ys if ys == ye else f"{ys}–{ye}"  # en-dash
+    # Full ISO YYYY-MM-DD
+    if len(start) >= 10 and start[4] == "-" and start[7] == "-":
+        try:
+            y, mo, d = start[:10].split("-")
+            return f"{d}.{mo}.{y}"
+        except ValueError:
+            pass
+    # Year-month YYYY-MM
+    if len(start) >= 7 and start[4] == "-":
+        try:
+            y, mo = start[:7].split("-")
+            return f"{mo}.{y}"
+        except ValueError:
+            pass
+    return str(year) if year else start
+
+
+def _load_docs_aggregate_lookup():
+    """Build (collection_path, idno) -> aggregate-record lookup.
+
+    Reads docs/data/docs_aggregate.json (written earlier by aggregator.py
+    during run_aggregation). Falls back to {} if the file is missing,
+    which keeps the build resilient during partial runs.
+    """
+    path = DATA_DIR / "docs_aggregate.json"
+    if not path.exists():
+        return {}
+    payload = json.loads(path.read_text(encoding="utf-8"))
+    return {
+        (rec.get("collection_path", ""), rec.get("idno", "")): rec
+        for rec in payload.get("docs", [])
+    }
+
+
 def _build_index(all_metadata, env, register_counts=None):
     """Build the index/browse page."""
     # Sort by date, then collection
     all_metadata.sort(key=lambda m: (m.get("date_iso", ""), m.get("collection", "")))
 
-    # Prepare JSON for client-side search
+    # Prepare JSON for client-side search.
+    # Joined with docs_aggregate.json for normalised dates, distinct-person
+    # counts (with sex breakdown), and event-form distribution.
+    agg_lookup = _load_docs_aggregate_lookup()
     search_data = []
     for m in all_metadata:
+        agg = agg_lookup.get((m.get("collection_path", ""), m.get("idno", "")))
+        if agg:
+            persons_dist = agg.get("persons", {})
+            events_dist = agg.get("events", {})
+        else:
+            persons_dist = {}
+            events_dist = {}
         search_data.append({
             "t": m.get("regest", "") or m.get("title", ""),
             "tf": m.get("regest_full", "") or m.get("regest", ""),
             "d": m.get("date_display", ""),
             "di": m.get("date_iso", ""),
+            "dn": _format_table_date(agg) if agg else "",
             "c": m.get("collection", ""),
             "sc": m.get("subcollection", ""),
             "cl": m.get("collection_label", ""),
@@ -730,6 +792,15 @@ def _build_index(all_metadata, env, register_counts=None):
             "f": 1 if m.get("has_facsimile") else 0,
             "fu": (m.get("facsimile_urls") or [""])[0],
             "pc": m.get("person_count", 0),
+            "pcd": persons_dist.get("distinct", 0),
+            "pcdf": persons_dist.get("f", 0),
+            "pcdm": persons_dist.get("m", 0),
+            "pcdu": persons_dist.get("u", 0),
+            "ec": events_dist.get("total", 0),
+            "ecR": events_dist.get("abstract", 0),
+            "ecS": events_dist.get("seal", 0),
+            "ecE": events_dist.get("entry", 0),
+            "ecN": events_dist.get("nota", 0),
             "q": m.get("quality_score", 0),
             "qc": m.get("quality_count", 0),
         })
@@ -743,7 +814,6 @@ def _build_index(all_metadata, env, register_counts=None):
                 "count": 0,
                 "label": m.get("collection_label", path_key),
                 "path": path_key,
-                "form": _transmission_form(path_key),
             }
         collections[path_key]["count"] += 1
 
@@ -1693,24 +1763,12 @@ def _persons_with_org_released(released_persons):
 
 
 def _build_analysis(env):
-    """Build analysis page (classical query mode with template families).
+    """Build analysis page (Composer-UI).
 
-    Header-KPIs werden auf den freigegebenen Korpus eingeschr&auml;nkt:
-    Personen und Events kommen aus ``_compute_release_kpis()`` (gleiche
-    XPath-Quelle wie die Startseite); ``persons_with_org`` wird aus
-    ``persons_in_events.csv`` x ``orgs_in_events.csv`` gegen die
-    Released-Personenmenge neu berechnet.
+    Minimaler Build: nur Template-Render mit Asset-Versions-String fuer
+    Cache-Busting der Composer-Skripte. Keine Header-KPIs mehr — KPIs
+    leben jetzt im Composer selbst (live aus ``epic_*.json``).
     """
-    kpis = _compute_release_kpis()
-    released_persons = _released_person_keys()
-    persons_with_org = _persons_with_org_released(released_persons)
-
-    header_stats = {
-        "total_events": kpis["distinct_events"],
-        "person_count": kpis["distinct_persons"],
-        "persons_with_org": persons_with_org,
-    }
-
     from datetime import datetime
     assets_version = datetime.now().strftime("%Y%m%d%H%M%S")
 
@@ -1718,7 +1776,6 @@ def _build_analysis(env):
     html = template.render(
         build_date=_format_german_date(date.today()),
         root_path="..",
-        header_stats=header_stats,
         assets_version=assets_version,
     )
     out = DOCS_DIR / "analysis" / "index.html"

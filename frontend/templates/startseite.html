@@ -4,8 +4,8 @@
 {% block title %}Startseite{% endblock %}
 
 {% block head %}
-<link rel="stylesheet" href="{{ root_path }}/static/css/exploration.css">
-<link rel="stylesheet" href="{{ root_path }}/static/css/startseite.css">
+<link rel="stylesheet" href="{{ root_path }}/static/css/exploration.css?v={{ asset_v }}">
+<link rel="stylesheet" href="{{ root_path }}/static/css/startseite.css?v={{ asset_v }}">
 {% endblock %}
 
 {% block content %}
@@ -58,7 +58,7 @@
                 <tbody>
                 {% for c in corpus_rows %}
                     <tr>
-                        <th scope="row">{{ c.label }}</th>
+                        <th scope="row"><a class="corpus-link" href="{{ root_path }}/documents.html?collection={{ c.path | urlencode }}">{{ c.label }}</a></th>
                         {% for col in matrix_columns %}
                         <td>{{ "{:,}".format(c[col.row_key]).replace(",", ".") }}</td>
                         {% endfor %}
@@ -134,8 +134,8 @@
     <section class="start-twoways">
 
         <div class="start-twoways-column">
-            <p class="start-twoways-eyebrow">Exploration</p>
-            <p class="start-twoways-intro">Offene, visuelle &Uuml;berblicksdarstellungen der Datenbest&auml;nde.</p>
+            <h2 class="start-twoways-heading">Exploration</h2>
+            <p class="start-twoways-intro">Visuelle &Uuml;berblicke nach Rollen, Beziehungen, Transaktionen und Orten.</p>
             <div class="start-twoways-grid">
 
                 <a href="{{ root_path }}/exploration/roles.html" class="explore-hub-card explore-hub-card--active">
@@ -193,26 +193,25 @@
         </div>
 
         <div class="start-twoways-column">
-            <p class="start-twoways-eyebrow">Analyse</p>
-            <p class="start-twoways-intro">Gezielte Abfragen mit vordefinierten Template-Familien.</p>
-            <a href="{{ root_path }}/analysis/index.html" class="explore-hub-card explore-hub-card--active">
-                <div class="explore-hub-card-icon">
-                    <svg width="40" height="40" viewBox="0 0 40 40" fill="none" xmlns="http://www.w3.org/2000/svg" aria-hidden="true">
-                        <rect x="6" y="6" width="28" height="28" rx="2" stroke="currentColor" stroke-width="1.5" fill="none"/>
-                        <line x1="6" y1="14" x2="34" y2="14" stroke="currentColor" stroke-width="1.5"/>
-                        <line x1="14" y1="14" x2="14" y2="34" stroke="currentColor" stroke-width="1.5"/>
-                        <rect x="18" y="18" width="5" height="4" fill="currentColor" fill-opacity="0.3"/>
-                        <rect x="25" y="18" width="7" height="4" fill="currentColor" fill-opacity="0.5"/>
-                        <rect x="18" y="24" width="8" height="4" fill="currentColor" fill-opacity="0.4"/>
-                        <rect x="28" y="24" width="4" height="4" fill="currentColor" fill-opacity="0.2"/>
-                    </svg>
-                </div>
-                <h2 class="explore-hub-card-title">Grundabfragen</h2>
-                <p class="explore-hub-card-desc">
-                    Template-Kombinationen aus Rolle, Geschlecht, Bestand und Zeitraum
-                    f&uuml;r wiederkehrende Forschungsfragen.
-                </p>
-            </a>
+            <h2 class="start-twoways-heading">Analyse</h2>
+            <p class="start-twoways-intro">Gezielte Filterabfragen nach Rolle, Geschlecht, Bestand und Zeitraum.</p>
+            <div class="start-twoways-grid">
+                <a href="{{ root_path }}/analysis/index.html" class="explore-hub-card explore-hub-card--active">
+                    <div class="explore-hub-card-icon">
+                        <svg width="40" height="40" viewBox="0 0 40 40" fill="none" xmlns="http://www.w3.org/2000/svg" aria-hidden="true">
+                            <rect x="6" y="6" width="28" height="28" rx="2" stroke="currentColor" stroke-width="1.5" fill="none"/>
+                            <line x1="6" y1="14" x2="34" y2="14" stroke="currentColor" stroke-width="1.5"/>
+                            <line x1="14" y1="14" x2="14" y2="34" stroke="currentColor" stroke-width="1.5"/>
+                            <rect x="18" y="18" width="5" height="4" fill="currentColor" fill-opacity="0.3"/>
+                            <rect x="25" y="18" width="7" height="4" fill="currentColor" fill-opacity="0.5"/>
+                            <rect x="18" y="24" width="8" height="4" fill="currentColor" fill-opacity="0.4"/>
+                            <rect x="28" y="24" width="4" height="4" fill="currentColor" fill-opacity="0.2"/>
+                        </svg>
+                    </div>
+                    <h2 class="explore-hub-card-title">Grundabfragen</h2>
+                    <p class="explore-hub-card-desc">Vordefinierte Template-Familien f&uuml;r wiederkehrende Forschungsfragen.</p>
+                </a>
+            </div>
         </div>
 
     </section>

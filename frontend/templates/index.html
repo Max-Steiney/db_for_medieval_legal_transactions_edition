@@ -4,7 +4,7 @@
 {% block title %}Quellen{% endblock %}
 
 {% block head %}
-<link rel="stylesheet" href="{{ root_path }}/static/css/index.css">
+<link rel="stylesheet" href="{{ root_path }}/static/css/index.css?v={{ asset_v }}">
 {% endblock %}
 
 {% block content %}
@@ -142,8 +142,8 @@
 {% endblock %}
 
 {% block scripts %}
-<script src="{{ root_path }}/static/js/table-infra.js"></script>
-<script src="{{ root_path }}/static/js/index.js"></script>
+<script src="{{ root_path }}/static/js/table-infra.js?v={{ asset_v }}"></script>
+<script src="{{ root_path }}/static/js/index.js?v={{ asset_v }}"></script>
 {% endblock %}
 
 {% block footer_info %}{% endblock %}

@@ -4,7 +4,7 @@
 {% block title %}Exploration{% endblock %}
 
 {% block head %}
-<link rel="stylesheet" href="{{ root_path }}/static/css/exploration.css">
+<link rel="stylesheet" href="{{ root_path }}/static/css/exploration.css?v={{ asset_v }}">
 {% endblock %}
 
 {% block content %}
@@ -43,7 +43,7 @@
                     <p class="prov-def">Freigegebene TEI-Quellen aus allen Quellenkorpora. Der Zeitraum ist {{ released_period_label }}.</p>
                     <footer class="prov-foot">
                         <span class="prov-foot-source"><code>sources/*/done/*.xml</code></span>
-                        <a class="prov-foot-link" href="{{ root_path }}/project/statistics.html">&rarr; Statistik</a>
+                        <a class="prov-foot-link" href="{{ root_path }}/project/datengrundlage.html">&rarr; Datengrundlage</a>
                     </footer>
                 {% endcall %}
             </span> Quellen.
