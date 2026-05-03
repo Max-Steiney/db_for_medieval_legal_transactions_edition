@@ -68,6 +68,8 @@ Zwischen den Pipeline-CSVs und den Frontend-Views liegt eine konsolidierte Aggre
 
 Die Aufschlüsselung nach Event-Subtyp macht die TEI-Heterogenität sichtbar: eine QGW-Quelle hat typischerweise einen Regest-Event und einen Siegel-Event, eine Stadtbücher-Quelle einen Entry-Event. Personen-Counts sind quellenbereinigt im Sinne von [[architecture#Quellenbereinigte Aggregation als Invariante]] — indirekte Erwähnungen über `kind_of_linking=corresp` teilen den `person_key` mit der genannten Person und werden nicht doppelt gezählt.
 
+Neben den thematischen Aggregaten (Funktionsrollen × Geschlecht × Dekade in `epic_a`, Beziehungstypen und Bezeichnungen in `epic_b`, Transaktionstypen × Dekade in `epic_c`) führt jede dieser JSON-Strukturen einen `drill_down`-Schnitt: pro Aggregat-Zelle eine Liste der beitragenden `file_key`-Verweise. Eine Quelle kann in mehreren Zellen erscheinen, der Schnitt führt sie pro Zelle nur einmal. Aufgelöst werden die `file_keys` über `data/docs_lookup.json`, das pro Schlüssel die Stammdaten Datum, Korpus-Label, Kurzregest und Quellen-URL hält. Damit ist jede aggregierte Zahl im Frontend bis zur einzelnen Quelldokument-Seite rückführbar — die Provenienz-Garantie aus [[requirements#Datenrobustheit und Provenienz]] hängt an dieser doppelten Schicht (Aggregat + Lookup).
+
 Technische Umsetzung in [[architecture#Datenschichten und Aggregator]].
 
 ## Siehe auch

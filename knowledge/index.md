@@ -18,7 +18,9 @@ Wer das Projekt zum ersten Mal liest, folgt der unten skizzierten Reihenfolge. W
 
 [[ui-design]] übersetzt die Anforderungen in Gestaltungsprinzipien, Navigationsstruktur und Kernkomponenten: Provenienz-Tip, Glossar-Tip, Zählebenen-Umschalter, Bestandsfilter, Menschen-Events-Toggle, Drill-down-Overlay, Text-Bild-Synopse, Register-Listenseiten, Druckausgabe, Farb- und Typografielogik.
 
-[[analyse]] und [[exploration]] vertiefen die beiden methodischen Zugänge der Edition. Analyse versammelt quantitative Auswertungen (Donut, Bar-Chart, Verteilungstabellen) und Template-basierte Abfragen unter `/analysis/`. Exploration ist visuell-interaktive Erkundung der Datenstruktur (Personen-Netzwerk, Karten, Timeline) unter `/exploration/` — geplant. Beide Bereiche lesen dieselben Aggregate, aber unter unterschiedlichem Interaktionsmuster. Die Trennung folgt [[decisions#Exploration und Analyse als getrennte Bereiche]].
+[[analyse]] und [[exploration]] vertiefen die beiden methodischen Zugänge der Edition. Analyse versammelt unter `/analysis/` die Auswertungen-Sub-Seite (Donut, Bar-Chart, Verteilungstabellen mit Drill-down ins Quellen-Detail) und die Abfragen-Sub-Seite (Template-Familien). Exploration trägt unter `/exploration/` den Zeitstrom (gestapelter Bar-Chart mit Brush-zu-Drill-down) und perspektivisch weitere visuell-interaktive Sub-Seiten (Personen-Netzwerk, Karten, Sankey). Beide Bereiche lesen dieselben Aggregate, aber unter unterschiedlichem Interaktionsmuster. Die Trennung folgt [[decisions#Exploration und Analyse als getrennte Bereiche]].
+
+Quer durch alle Listen und Drill-downs liegt der Wissenskorb (siehe [[ui-design#Wissenskorb]]) als sammelnde Schicht: jede Quelle bekommt einen „+"-Knopf, das Nav führt ein Korb-Icon mit Live-Badge, eine eigene Korb-Seite (`/korb.html`) erlaubt Remove, Clear und CSV-Export. Persistenz lebt clientseitig in `localStorage`.
 
 [[scholar-user-stories]] nimmt die Forscherinnen-Perspektive ein und beschreibt typische Nutzungsszenarien — vom Bestandsvergleich über die Provenienzprüfung bis zur publikationsreifen Zitation. Jede Story leitet eine Anforderung und eine Komponente ab.
 

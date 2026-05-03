@@ -20,9 +20,13 @@ Jede Sub-Seite ist eine eigenständige Visualisierung mit eigener Mechanik.
 
 Gestapelter Bar-Chart der Quellendichte pro Jahrzehnt. Die Stapel-Achse ist umschaltbar zwischen Quellenkorpus, Erschließungsform, Geschlecht der Beteiligten und Transaktionstyp; der Zeitraum-Slider in der Sidebar limitiert die sichtbaren Jahrzehnte; ein Brush per Maus-Drag über mehrere Spalten öffnet die Liste der enthaltenen Quellen direkt darunter.
 
-Datenquellen: `data/search.json` (für die ersten drei Stapel-Achsen), `data/epic_c.json::observations.tx_timeline` (für die Transaktionstyp-Stapelung). Die Drill-down-Liste verlinkt direkt in die Quellen-Detailseiten.
+Ein Klick auf ein Legend-Item fokussiert eine Stapel-Kategorie: die anderen Segmente werden in den Bars gedimmt, und der Brush-Drill filtert auf die fokussierte Kategorie. Damit wird ein unscharfer Brush („alle Quellen in 1390er") zu einer scharfen Auswahl („nur Schuldbrief/Pfand-Geschäfte in 1390er") — ohne dass die zeitliche Achse verloren geht. Stack-Switch hebt den Fokus automatisch auf, weil die Kategorien wechseln; Toggle auf dem gleichen Item hebt ihn manuell auf.
 
-Pattern, das die Sub-Seite trägt: Überblick → Brush → Quellen. Sie ergänzt die [[analyse#Auswertungen|Auswertungen]] um eine zeitlich-visuelle Erkundung — wer dort liest, dass Stiftungen ab den 1340ern zunehmen, kann hier sehen, in welchen Jahrzehnten die belegende Quellendichte trägt.
+Datenquellen: `data/search.json` (für die ersten drei Stapel-Achsen), `data/epic_c.json::observations.tx_timeline` (für die Transaktionstyp-Stapelung). Bei aktivem Tx-Fokus läuft der Drill über `epic_c.drill_down.tx_type_decade` und löst die `file_keys` über `data/docs_lookup.json` auf. Die Drill-down-Liste verlinkt direkt in die Quellen-Detailseiten und bietet pro Zeile einen „+"-Knopf für den [[ui-design#Wissenskorb]]; im Header steht der Cross-Page-Sprung in die Quellen-Liste mit übernommenem Zeitraum.
+
+Der Filter-Stand wird in die URL serialisiert (`?dec=1300-1410&stack=tx&brush=1340-1370&focus=Kauf`), siehe [[ui-design#URL-State-Sync]].
+
+Pattern, das die Sub-Seite trägt: Überblick → Brush → Quellen. Sie ergänzt die [[analyse#Zwei Sub-Seiten|Auswertungen]] um eine zeitlich-visuelle Erkundung — wer dort liest, dass Stiftungen ab den 1340ern zunehmen, kann hier sehen, in welchen Jahrzehnten die belegende Quellendichte trägt.
 
 ### Personen-Netzwerk (geplant)
 

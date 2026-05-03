@@ -6,6 +6,10 @@ Wissensdokument zum Analysebereich der Edition. Der Analysebereich versammelt al
 
 **Auswertungen** (`/analysis/auswertungen.html`) zeigt vorberechnete Verteilungen: Funktionsrollen, Beziehungstypen, Transaktionstypen, Bezeichnungen — jeweils als Donut, Bar-Chart oder Tabelle mit Mini-Bars. Filter sind Zeitraum und Geschlecht; eine Zähleinheit-Umschaltung wechselt zwischen Nennungen und Individuellen Personen. Die Seite ist filter-getrieben: Nutzerinnen ändern Achsen und sehen Verteilungen sich anpassen, ohne eine konkrete Frage formulieren zu müssen. Begründung der Verortung im Analyse-Bereich: [[decisions#Auswertungen gehört in den Analyse-Bereich]].
 
+Jede Aggregat-Zelle ist klickbar und öffnet das [[ui-design#Drill-down-Overlay]] mit den beitragenden Quellen — Donut-Arc und Legend-Item für Funktionsrollen und Beziehungstypen, Bar für Transaktionstypen, Tabellenzeile für Bezeichnungen. Filter werden in den Drill mitgenommen (sex-Suffix im Lookup-Schlüssel, Dekaden-Filter über Datums-Parsing). Im Footer steht der Cross-Page-Sprung in die Quellen-Liste mit übernommenem Zeitraum-und-Geschlecht-Filter ([[ui-design#Cross-Page-Sprung in die Quellen-Liste]]).
+
+Der Filter-Stand wird in die URL serialisiert (`?dec=1300-1380&sex=f&type=kin&q=hausfrau&mode=persons`), siehe [[ui-design#URL-State-Sync]] — damit ist jeder Forschungsstand dieser Seite zitierbar.
+
 **Abfragen** (`/analysis/index.html`) bietet vorgefertigte Fragetypen mit typisierten Slots — der Template-Abfragemodus, dessen Konzept im Folgenden ausführlich beschrieben ist. Nutzerinnen kommen mit einer konkreten Frage und füllen Slots, das Interface beantwortet die Frage als einzelne Zahl plus Drill-down auf die Quellen.
 
 Beide Sub-Seiten teilen sich dieselben Aggregate (`epic_a/b/c.json`) und dieselben Filter-Bausteine in der Sidebar. Eine Filteränderung auf der einen Seite überträgt sich aktuell nicht automatisch auf die andere; das ist eine offene Designfrage.

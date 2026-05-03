@@ -88,6 +88,30 @@ Die Fußzeile der Edition führt einen **Datenstand**, der auf den letzten Commi
 
 Getrennt davon bleibt das **Build-Datum** als Zeitstempel pro gerenderter Seite. Es markiert, wann die Einzelseite zuletzt neu gebaut wurde. Beide Angaben werden lesbar, nicht als ISO-Zeichenkette ausgegeben. Siehe [[ui-design#Datenstand und Build-Datum]].
 
+## Geteilte Visualisierungs-Schicht
+
+Die Daten-Visualisierungs-Seiten unter `/analysis/` und `/exploration/` teilen eine gemeinsame Infrastruktur, statt jede ihre eigene. Diese Schicht (`viz-core`) bündelt drei Klassen von Bausteinen: erstens die geteilten Domain-Konstanten (Rollen-, Beziehungs-, Geschlechter-Labels und ihre Farben), zweitens die geteilten Helfer (Zahlen-Formatierung, Dekaden-Filter als Closure über einen Page-State, CSP-sichere Style-Projektion über `data-*`-Attribute, Chip-Toggle), drittens die geteilten Sidebar-Bindings (Range-Slider, Reset, Active-Filter-Strip, URL-State-Sync, Drill-down-Overlay, JSON-Loader inklusive `docs_lookup` für Provenienz-Auflösung).
+
+Eine Seite wird damit zu einem dünnen Orchestrator: sie definiert ihren eigenen State, schreibt ihre page-spezifischen Aggregations- und Renderer-Funktionen, und ruft in `DOMContentLoaded` die `viz-core`-Bindings. Eine neue visuelle Sub-Seite (Personen-Netzwerk, Karten, Sankey) muss das Filter-Boilerplate nicht wiederholen.
+
+Begründung dieser Trennung ist dieselbe wie die zwischen Pipeline und Aggregator: Wiederverwendbarkeit und ein einziger Ort für jede Konvention. Eine Änderung am Active-Filter-Strip oder an der CSP-Style-Projektion greift in allen Visualisierungen gleichzeitig.
+
+## URL-State als Forschungsstand
+
+Auf den Daten-Visualisierungs-Seiten wird der Filter-Stand in die URL-Suchparameter serialisiert und beim Page-Load von dort gelesen. Damit wird ein Forschungsstand bookmark-fähig, teilbar und zitierbar (vgl. [[requirements#Zitierfähige Datenstände]]).
+
+Die Schreib-Strategie nutzt `history.replaceState`, nicht `pushState` — Filter-Mikrostände sollen nicht den Browser-Back-Stack füllen. Default-Werte werden weggelassen, damit Sharing-URLs minimal bleiben. Während des Page-Inits ist die URL-Sync deaktiviert (Guard `urlSyncActive`), damit ein initiales Apply nicht den eingehenden Filter überschreibt.
+
+Cross-Page-Sprünge transferieren das gemeinsame Subset der Filter (Zeitraum, Geschlecht) in andere Listenseiten. Das Mapping ist asymmetrisch, weil das Filter-Vokabular der Quellen-Liste (`with-f`/`only-f`/`only-m`/`none`) nicht symmetrisch zur Sex-Achse der Visualisierungen (`m`/`f`/`unspecified`) liegt; die Konvention ist in [[decisions#Cross-Page-Sprung mit Filter-Übernahme]] festgehalten. Page-spezifische Filter (Rollen, Beziehungstypen, Bezeichnungen, Transaktionstypen, Stack-Fokus) werden bewusst nicht übertragen — die Quellen-Liste kennt sie nicht. Die Lückenführung ist transparent über den Tooltip am Cross-Nav-Link.
+
+## Wissenskorb als clientseitige Persistenz
+
+Eine Sammler-Schicht über alle Quellen-Listen ermöglicht es Forschenden, ein Forschungs-Korpus über Sitzungen hinweg zusammenzustellen. Der Speicher ist `localStorage` mit einem versionierten Schlüssel; der Zustand wird über parallele Browser-Tabs synchron gehalten via `storage`-Event und ein internes Custom-Event für In-Tab-Updates.
+
+Die Architektur-Entscheidung gegen Server-Persistenz folgt aus dem Prototyp-Charakter (siehe oben) und aus [[decisions#Wissenskorb als clientseitige Sammlung]]. Eine Account-basierte Persistenz wäre ein anderer Stack mit Auth, DSGVO-Implikationen und laufenden Speicherkosten — ohne erkennbaren Mehrwert für die jetzt bedienten Forschungsszenarien. Der Bridge-Pfad in externe Werkzeuge (Zotero, BibTeX-Konverter, Excel) läuft über CSV-Export.
+
+Die Komponenten-Verteilung: `wissenskorb.js` lebt auf jeder Seite (geladen über `base.html`), liefert die State-API und einen kleinen Render-Helper für den „+"-Knopf. Die Listen-Renderer (Quellen-Tabelle, Drill-Overlay, Brush-Drill) injizieren den Knopf in ihre Zeilen-Markup. Das Nav trägt das Korb-Icon mit Live-Badge. `korb.html` ist eine eigene Seite mit Liste, Remove-, Clear- und CSV-Export-Aktionen.
+
 ## Siehe auch
 
 - [[data]] was verarbeitet wird

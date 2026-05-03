@@ -64,15 +64,31 @@ Ein Toggle mit Glossar-Verweis ist sichtbar platziert. Der aktuelle Zustand steh
 
 ### Was
 
-Bestimmte Datenstände bleiben dauerhaft referenzierbar, unabhängig vom aktuellen Stand der wachsenden Datenbank.
+Sowohl der Datenstand der Quellen als auch der Filter-Stand einer Ansicht bleiben dauerhaft referenzierbar — der eine als Stichtag der zitierten Daten, der andere als zitierter Forschungsstand.
 
 ### Warum
 
-Publikationen verweisen auf einen Stichtag, nicht auf einen bewegten Stand. Ohne eingefrorene Datenstände kann eine in einer Zeitschrift gedruckte Zahl später nicht mehr überprüft werden.
+Publikationen verweisen auf einen Stichtag, nicht auf einen bewegten Stand. Ohne eingefrorene Datenstände kann eine in einer Zeitschrift gedruckte Zahl später nicht mehr überprüft werden. Und ohne stabile Filter-Permalinks kann eine Reviewerin die Aussage nicht auf derselben Datensicht prüfen, auf der die Autorin sie formuliert hat.
 
 ### Wie
 
 Persistente Identifier oder stabile URLs zu versionierten Datenständen werden im UI ausgewiesen. Der aktuelle Datenstand ist in der Fußzeile jeder Seite sichtbar als Datum des letzten Commits im Pipeline-Repo, in lesbarer Langform. Er ist damit der Stand der Quellen, nicht der Zeitpunkt des Build-Laufs. Umsetzung in [[architecture#Datenstand aus dem Pipeline-Repo]], UI-Ausprägung in [[ui-design#Datenstand und Build-Datum]] und [[ui-design#Zitierbarkeit einzelner Ansichten]].
+
+Der Filter-Stand wird auf den Daten-Visualisierungs-Seiten in die URL-Suchparameter serialisiert; eine kopierte URL stellt den vollständigen Filter-Kontext beim Aufruf wieder her. Architektur in [[architecture#URL-State als Forschungsstand]], UI-Ausprägung in [[ui-design#URL-State-Sync]].
+
+## Wiederverwendbarkeit der Auswahl
+
+### Was
+
+Eine Forscherin kann eine über mehrere Ansichten verteilte Quellen-Auswahl sammeln, persistieren und in externe Werkzeuge exportieren.
+
+### Warum
+
+Forschungspfade sind nicht linear. Eine Auswahl entsteht häufig durch Querstreifzüge zwischen Drill-down-Overlay, Brush-Auswahl und Quellen-Liste. Ohne ein sammelndes Vehikel zerfällt die zwischenstehende Arbeit beim Tab-Wechsel, und der Übergang in eine Bibliografie- oder Tabellen-Software erzwingt manuelles Abschreiben.
+
+### Wie
+
+Ein clientseitiger Wissenskorb steht als persistierende Schicht über allen Quellen-Listen. Sammelpunkte sind in den Listen-Renderern eingebettet (Quellen-Tabelle, Drill-down-Overlay, Brush-Drill); ein Korb-Icon im Nav führt zur Korb-Seite mit Liste, Remove-Aktion und CSV-Export. Persistenz lebt in `localStorage`, Cross-Tab-Sync über das `storage`-Event. Umsetzung in [[ui-design#Wissenskorb]] und [[architecture#Wissenskorb als clientseitige Persistenz]], Begründung in [[decisions#Wissenskorb als clientseitige Sammlung]].
 
 ## Informationsdichte vor reduzierter Ästhetik
 

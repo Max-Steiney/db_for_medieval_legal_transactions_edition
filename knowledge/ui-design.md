@@ -103,7 +103,35 @@ Fachbegriffe im UI verweisen auf die Glossar-Seite ([[glossar]]). Beim ersten Au
 
 ### Drill-down-Overlay
 
-Aggregierte Zahlen sind klickbar. Der Klick öffnet ein Overlay mit der Liste der beitragenden Quellen, jeweils mit Datum, Kurzregest und Link in die Edition. Das Overlay ist sortierbar und exportierbar; es schließt über Schaltfläche, Klick außerhalb oder Escape. Dieses Muster ist über alle aggregat-tragenden Ansichten konsistent — Exploration, Analyse, Statistik — und nutzt dieselbe technische Komponente. Begründung in [[architecture#Provenienz-Indizes]].
+Aggregierte Zahlen sind klickbar. Der Klick öffnet ein Overlay mit der Liste der beitragenden Quellen, jeweils mit Nr., Datum, Quellenkorpus und Kurzregest, jede Zeile ein Link in die Quellen-Detailseite. Das Overlay schließt über Schaltfläche, Klick auf den Backdrop oder Escape. Es ist über alle Aggregations-Träger konsistent gehalten — auf der Auswertungs-Seite klicken Donut-Arc, Legend-Item, Bar oder Bezeichnungs-Zeile dasselbe Overlay auf, mit dem zusammengesetzten Schlüssel der jeweiligen Aggregat-Zelle aus den `drill_down`-Indizes (siehe [[architecture#Provenienz-Indizes]]).
+
+Filter werden in den Drill mitgenommen: ein aktiver Geschlechter-Filter wählt die sex-Variante des Lookup-Schlüssels (etwa `kin_f`, `hausfrau__f`); ein aktiver Zeitraum-Filter wirkt nativ auf decade-partitionierte Drills (Transaktionstypen) und auf andere durch Datums-Parsing aus dem `docs_lookup`. Die Liste ist auf 500 Zeilen begrenzt; bei Überschreitung erscheint die Aufforderung, enger einzugrenzen.
+
+Im Footer des Overlays steht die Cross-Page-Brücke „→ in Quellen-Liste öffnen" (siehe unten), und an jeder Zeile ein „+"-Knopf für den Wissenskorb (siehe unten).
+
+### Active-Filter-Strip
+
+Über jeder Liste oder Visualisierung mit Filtern liegt eine zentrierte Pillen-Leiste, die jeden aktiven Filter als entfernbaren Chip anzeigt („Geschlecht: ♀ weiblich ×"). Der Klick auf eine Pille löst genau diesen Filter; ein Reset-Button in der Sidebar löst alles auf einmal. Die Pillen sind die Single-Source-of-Truth für den Filter-Stand: alle Stellen, die Filter mutieren, schreiben am Ende durch denselben Render-Pfad, der die Pillen generiert.
+
+Begründung: Forschende verlieren den Überblick, welche Filter aktiv sind, sobald die Sidebar einklappt oder die Filter-Quellen heterogen sind (Sidebar-Chips, Donut-Klicks, Toggles, Slider). Die Pillen-Leiste fasst alles an einer Stelle.
+
+### URL-State-Sync
+
+Auf den Daten-Visualisierungs-Seiten landet der Filter-Stand in den URL-Suchparametern (`?dec=1300-1380&sex=f&type=kin&q=hausfrau`). Beim Page-Load wird der Stand wieder eingelesen und auf STATE plus UI gemappt. Damit ist jeder Filter-Stand bookmark-fähig, teilbar und als Permalink in einer Publikation zitierbar.
+
+Default-Werte werden weggelassen, damit Sharing-URLs minimal bleiben. Browser-Back führt nicht durch Filter-Mikrostände — die Pages nutzen `history.replaceState` statt `pushState`. Architektur in [[architecture#URL-State als Forschungsstand]].
+
+### Cross-Page-Sprung in die Quellen-Liste
+
+Drill-down-Overlay (Auswertungen) und Brush-Drill (Zeitstrom) bieten einen Footer-Link „→ in Quellen-Liste öffnen", der die übernehmbaren Filter (Zeitraum, Geschlecht) in die Quellen-Listenseite weiterreicht. Die Quellen-Liste kennt das Auswertungs-Vokabular nicht (Rolle, Beziehungstyp, Bezeichnung, Transaktionstyp, Stack-Fokus), diese Filter werden bewusst weggelassen — der Tooltip am Link macht die Lückenführung transparent.
+
+Begründung in [[decisions#Cross-Page-Sprung mit Filter-Übernahme]].
+
+### Wissenskorb
+
+Forschende sammeln Quellen über Sitzungen hinweg in einem clientseitigen Wissenskorb. Neben jedem Quellen-Eintrag in den Listen (Quellen-Tabelle, Drill-Overlay, Brush-Drill) steht ein kleiner „+"-Knopf, der die Quelle in den Korb legt; ein zweiter Klick entfernt sie wieder. Das Nav führt ein Korb-Icon mit Live-Badge (Anzahl gesammelter Einträge), klickbar zur Korb-Seite (`/korb.html`). Dort liegt die gesammelte Liste mit Datum, Korpus, Detail-Link und Remove-Aktion; ein Knopf exportiert die Auswahl als CSV (UTF-8 mit BOM, Excel-kompatibel), ein anderer leert den Korb.
+
+Persistenz lebt in `localStorage` mit versioniertem Schlüssel; parallele Browser-Tabs synchronisieren sich automatisch via `storage`-Event. Begründung in [[decisions#Wissenskorb als clientseitige Sammlung]].
 
 ### Quellen-Detailseite mit Text-Bild-Synopse
 

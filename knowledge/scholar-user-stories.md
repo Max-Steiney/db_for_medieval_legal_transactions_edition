@@ -110,6 +110,38 @@ Die Liste der konkreten Grundabfragen wird mit dem Fachteam festgelegt. Typische
 Ableitung:
 - Komponente [[analyse]]
 
+## Eintritt aus dem Aggregat in die Quelle
+
+### Vom Begriff zur Person
+
+*Als Forscherin, die wissen will, welche Personen im Korpus die Bezeichnung „wittib" tragen, will ich diese Verteilungs-Kategorie direkt anklicken und in die Liste der belegenden Quellen springen, damit ich nicht in den Pipeline-CSVs nach dem passenden Schlüssel suchen muss.*
+
+Pfad: Auswertungen-Seite → Bezeichnungs-Suche → Klick auf die Tabellenzeile öffnet das [[ui-design#Drill-down-Overlay]] mit den Quellen, die diese Bezeichnung enthalten; jede Zeile linkt in die Quellen-Detailseite. Geschlechter-Filter wird in den Drill mitgenommen.
+
+Ableitung:
+- Komponente [[ui-design#Drill-down-Overlay]]
+- Anforderung [[requirements#Datenrobustheit und Provenienz]]
+
+### Verteilungs-Pattern zeitlich verorten
+
+*Als Forscherin, die in der Auswertungstabelle sieht, dass Schuldbrief-Pfand-Geschäfte im Korpus selten sind, will ich sehen, in welchen Jahrzehnten sie sich häufen, damit ich beurteilen kann, ob es sich um eine echte zeitliche Konzentration oder einen Korpus-Artefakt handelt.*
+
+Pfad: Auswertungen → Transaktionstypen-Sektion → wechseln auf die Zeitstrom-Sub-Seite, Stack-Achse auf „Transaktionstyp" → Stapel zeigen die Verteilung über die Jahrzehnte → Klick auf die Schuldbrief-Pfand-Kategorie in der Legende fokussiert die anderen weg → Brush wählt den interessanten Zeitabschnitt → Drill-Liste zeigt nur die Quellen dieser Kategorie in dem Zeitraum.
+
+Ableitung:
+- Komponente [[exploration#Zeitstrom (vorhanden)]]
+- Anforderung [[requirements#Datenrobustheit und Provenienz]]
+
+## Sammeln über mehrere Pfade
+
+*Als Forscherin, die für einen Aufsatz Quellen aus verschiedenen Achsen zusammenträgt — einige aus einer Bezeichnungs-Suche, einige aus dem Zeitstrom-Brush, einige aus einer freien Quellen-Listen-Suche —, will ich diese Quellen-Auswahl über die Sitzungsgrenze hinweg sammeln und gemeinsam exportieren, damit die Recherche nicht in einer Browser-Tab-Sammlung verloren geht.*
+
+Pfad: An jedem Quellen-Eintrag in den Listen (Quellen-Tabelle, Drill-down-Overlay, Brush-Drill) steht ein „+"-Knopf, der die Quelle in den Wissenskorb legt; das Korb-Icon im Nav führt zur Korb-Seite mit Liste, Remove und CSV-Export. Cross-Tab-Sync hält parallel offene Tabs konsistent.
+
+Ableitung:
+- Komponente [[ui-design#Wissenskorb]]
+- Anforderung [[requirements#Wiederverwendbarkeit der Auswahl]]
+
 ## Siehe auch
 
 - [[requirements]] systematische Anforderungsableitung
