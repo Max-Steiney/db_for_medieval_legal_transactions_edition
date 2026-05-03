@@ -1349,9 +1349,23 @@
     align-items: center;
     gap: 8px;
     border-bottom: 0;
-    padding: 0;
+    padding: 4px 8px;
     font-size: var(--text-xs);
+    border-radius: 3px;
+    transition: background-color var(--transition-fast),
+                opacity var(--transition-fast);
 }
+.explore-stream-legend .legend-item--clickable { cursor: pointer; }
+.explore-stream-legend .legend-item--clickable:hover {
+    background: var(--color-bg-warm);
+}
+.explore-stream-legend .legend-item.is-focused {
+    background: var(--color-bg-warm);
+    outline: 2px solid var(--color-text-muted);
+    outline-offset: -2px;
+}
+.explore-stream-legend .legend-item.is-dimmed { opacity: 0.4; }
+.explore-stream-seg.is-dimmed { opacity: 0.25; }
 
 /* === Drill-Down: Quellen-Liste === */
 .explore-stream-drill {

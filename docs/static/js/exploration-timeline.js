@@ -79,6 +79,7 @@
     const EPIC_C = V.readJsonScript('exploration-data-epic-c', { observations: {} });
     let DOCS = [];
     let DOCS_BY_DECADE = new Map();
+    let DOCS_LOOKUP = {};   // file_key -> Doc-Stammdaten (lazy fuer tx-Drill)
 
     // ---------------------------------------------------------------------
     // Filter-State
@@ -89,6 +90,7 @@
         stack: 'collection',
         brushMin: null,
         brushMax: null,
+        stackFocus: null,   // null = alle Kategorien, sonst category-key
     };
     const decFilter = V.makeDecadeFilter(STATE);
 
@@ -217,6 +219,7 @@
         }
 
         const inactive = STATE.brushMin !== null;
+        const focus = STATE.stackFocus;
         const cols = decades.map(d => {
             const dimmed = inactive && (d < STATE.brushMin || d > STATE.brushMax);
             const segs = categories.map(c => {
@@ -224,7 +227,8 @@
                 if (v === 0) return '';
                 const hpx = Math.round((v / maxTotal) * 220);
                 if (hpx < 1) return '';
-                return `<span class="explore-stream-seg"
+                const segDim = (focus !== null && c.key !== focus) ? ' is-dimmed' : '';
+                return `<span class="explore-stream-seg${segDim}"
                               data-h="${hpx}"
                               data-bg="${c.color}"
                               title="${c.label}: ${V.fmt(v)}"></span>`;
@@ -250,10 +254,19 @@
         const el = document.getElementById('stream-legend');
         if (!el) return;
         const grand = Object.values(totals).reduce((s, c) => s + c, 0);
+        const focus = STATE.stackFocus;
         el.innerHTML = categories.map(c => {
             const sum = Object.values(values).reduce(
                 (s, dv) => s + (dv[c.key] || 0), 0);
-            return `<li class="legend-item">
+            const isFocused = (focus === c.key);
+            const isDimmed = (focus !== null && !isFocused);
+            const cls = 'legend-item legend-item--clickable'
+                + (isFocused ? ' is-focused' : '')
+                + (isDimmed  ? ' is-dimmed'  : '');
+            const ariaPressed = isFocused ? 'true' : 'false';
+            return `<li class="${cls}" data-cat="${c.key}"
+                role="button" tabindex="0" aria-pressed="${ariaPressed}"
+                title="Klick: nur ${c.label} im Brush-Drill anzeigen">
                 <span class="legend-swatch" data-bg="${c.color}"></span>
                 <span class="legend-label">${c.label}</span>
                 <span class="legend-count">${V.fmt(sum)}</span>
@@ -261,6 +274,28 @@
             </li>`;
         }).join('');
         V.applyDataStyles(el);
+    }
+
+    function bindLegendFocus() {
+        const el = document.getElementById('stream-legend');
+        if (!el) return;
+        el.addEventListener('click', (e) => {
+            const item = e.target.closest('[data-cat]');
+            if (!item) return;
+            const key = item.getAttribute('data-cat');
+            // Toggle: gleiche Kategorie nochmal -> Fokus aufheben
+            STATE.stackFocus = (STATE.stackFocus === key) ? null : key;
+            renderChart();
+            renderDrill();
+            updateActiveFilters();
+        });
+        el.addEventListener('keydown', (e) => {
+            if (e.key !== 'Enter' && e.key !== ' ') return;
+            const item = e.target.closest('[data-cat]');
+            if (!item) return;
+            e.preventDefault();
+            item.click();
+        });
     }
 
     // ---------------------------------------------------------------------
@@ -326,15 +361,27 @@
         }
 
         const lo = STATE.brushMin, hi = STATE.brushMax;
-        const docs = [];
-        for (let d = lo; d <= hi; d += 10) {
-            const decDocs = DOCS_BY_DECADE.get(d) || [];
-            docs.push(...decDocs);
+        const stackDef = effectiveStackDef();
+        const focus = STATE.stackFocus;
+        const focusedCat = focus
+            ? stackDef.categories.find(c => c.key === focus)
+            : null;
+
+        // Datenquelle waehlen:
+        // - tx-Stack mit Fokus  -> file_keys aus epic_c.tx_type_decade,
+        //   ueber docs_lookup zu Doc-Records aufgeloest
+        // - sonst (auch tx ohne Fokus, alle Stacks): aus DOCS_BY_DECADE
+        let docs;
+        if (STATE.stack === 'tx' && focus) {
+            docs = collectTxFocusedDocs(focus, lo, hi);
+        } else {
+            docs = collectStreamDocs(lo, hi, focus);
         }
-        docs.sort((a, b) => (a.di || '').localeCompare(b.di || ''));
+        docs.sort((a, b) => (a._sort || '').localeCompare(b._sort || ''));
 
         const rangeLabel = (lo === hi) ? `${lo}er` : `${lo}er–${hi}er`;
-        if (title) title.textContent = `Auswahl ${rangeLabel}`;
+        const focusLabel = focusedCat ? ` · ${focusedCat.label}` : '';
+        if (title) title.textContent = `Auswahl ${rangeLabel}${focusLabel}`;
         if (meta) meta.textContent = `${V.fmt(docs.length)} Quellen`;
 
         const ROOT = (window.ROOT_PATH || '..');
@@ -344,15 +391,76 @@
             <li class="explore-stream-doc">
                 <a href="${ROOT}/${doc.u}" class="doc-link">
                     <span class="doc-id">${doc.id}</span>
-                    <span class="doc-date">${doc.dn || doc.di || ''}</span>
-                    <span class="doc-coll">${doc.cl || doc.c || ''}</span>
-                    <span class="doc-place">${doc.p || ''}</span>
+                    <span class="doc-date">${doc.date}</span>
+                    <span class="doc-coll">${doc.coll}</span>
+                    <span class="doc-place">${doc.place}</span>
                 </a>
             </li>`).join('') + (docs.length > SHOW
             ? `<li class="explore-stream-doc-more">… und ${V.fmt(docs.length - SHOW)} weitere; bitte enger eingrenzen.</li>`
             : '');
 
         drill.hidden = false;
+    }
+
+    // Liefert Drill-Records aus DOCS_BY_DECADE (search.json-basiert).
+    // Wenn focus gesetzt ist, wird per stackDef.assign(All) gefiltert.
+    function collectStreamDocs(lo, hi, focus) {
+        const stackDef = effectiveStackDef();
+        const docs = [];
+        for (let d = lo; d <= hi; d += 10) {
+            for (const doc of (DOCS_BY_DECADE.get(d) || [])) {
+                if (focus !== null) {
+                    if (stackDef.multi) {
+                        if (!stackDef.assignAll(doc).includes(focus)) continue;
+                    } else if (stackDef.assign && stackDef.assign(doc) !== focus) {
+                        continue;
+                    }
+                }
+                docs.push({
+                    u: doc.u,
+                    id: doc.id,
+                    date: doc.dn || doc.di || '',
+                    coll: doc.cl || doc.c || '',
+                    place: doc.p || '',
+                    _sort: doc.di || '',
+                });
+            }
+        }
+        return docs;
+    }
+
+    // Liefert Drill-Records fuer einen Tx-Fokus aus epic_c.drill_down ueber
+    // docs_lookup. Triggert ggf. das Nachladen von docs_lookup.json (laeuft
+    // dann beim naechsten Render).
+    function collectTxFocusedDocs(txKey, lo, hi) {
+        const dd = ((EPIC_C.drill_down || {}).tx_type_decade || {})[txKey] || {};
+        const seen = new Set();
+        const docs = [];
+        for (let d = lo; d <= hi; d += 10) {
+            for (const fk of (dd[String(d)] || [])) {
+                if (seen.has(fk)) continue;
+                seen.add(fk);
+                const lk = DOCS_LOOKUP[fk];
+                if (!lk) continue;
+                docs.push({
+                    u: lk.u,
+                    id: lk.i,
+                    date: lk.d,
+                    coll: lk.c,
+                    place: '',
+                    _sort: lk.d || '',
+                });
+            }
+        }
+        if (!Object.keys(DOCS_LOOKUP).length) {
+            // Lazy-Load: docs_lookup ist noch nicht da. Nachladen und
+            // das Drill-Rendering wiederholen.
+            V.loadDocsLookup().then(lk => {
+                DOCS_LOOKUP = lk;
+                renderDrill();
+            }).catch(() => {});
+        }
+        return docs;
     }
 
     // ---------------------------------------------------------------------
@@ -365,6 +473,9 @@
             const btn = e.target.closest('[data-stack]');
             if (!btn) return;
             STATE.stack = btn.getAttribute('data-stack');
+            // Stack-Fokus zuruecksetzen — die Kategorien aendern sich
+            // mit der Achse, der alte Fokus-Key passt nicht mehr.
+            STATE.stackFocus = null;
             V.setActiveChip(group, STATE.stack, 'data-stack', 'is-active');
             // Brush bleibt bestehen — die Quellen-Auswahl ist
             // achsen-unabhaengig gueltig.
@@ -381,6 +492,7 @@
             STATE.stack = 'collection';
             STATE.brushMin = null;
             STATE.brushMax = null;
+            STATE.stackFocus = null;
             V.setActiveChip(document.getElementById('stream-stack-axis'),
                             'collection', 'data-stack', 'is-active');
             // Slider-Reset triggert via input-Event den onChange-Hook und
@@ -404,6 +516,13 @@
     // ---------------------------------------------------------------------
     // Active-Filter-Strip
     // ---------------------------------------------------------------------
+    function clearStackFocus() {
+        STATE.stackFocus = null;
+        renderChart();
+        renderDrill();
+        updateActiveFilters();
+    }
+
     function updateActiveFilters() {
         const filters = [];
         if (decFilter.isActive()) {
@@ -420,6 +539,11 @@
             const lo = STATE.brushMin, hi = STATE.brushMax;
             const range = (lo === hi) ? `${lo}er` : `${lo}er–${hi}er`;
             filters.push({ label: 'Auswahl: ' + range, onClear: clearBrush });
+        }
+        if (STATE.stackFocus !== null) {
+            const cat = effectiveStackDef().categories.find(c => c.key === STATE.stackFocus);
+            const label = cat ? cat.label : STATE.stackFocus;
+            filters.push({ label: 'Kategorie: ' + label, onClear: clearStackFocus });
         }
         V.renderActiveFilters('active-filters', filters);
     }
@@ -438,6 +562,7 @@
         V.bindRangeSlider({ state: STATE, onChange: onSliderChange });
         bindReset();
         bindDrillClear();
+        bindLegendFocus();
 
         V.loadSearchJson()
             .then(({ docs, byDecade }) => {
@@ -452,5 +577,8 @@
                 if (chart) chart.innerHTML =
                     '<div class="aggregat-empty">Daten konnten nicht geladen werden.</div>';
             });
+        // docs_lookup nur fuer den Tx-Fokus-Drill noetig — eager im
+        // Hintergrund vorladen, damit der erste Klick ohne Verzoegerung lebt.
+        V.loadDocsLookup().then(lk => { DOCS_LOOKUP = lk; }).catch(() => {});
     });
 })();
