@@ -18,8 +18,10 @@ docs/                     Build-Output, von GitHub Pages serviert
   /tei/                   TEI-XML-Downloads der freigegebenen Quellen
   /data/                  JSON-Indexe (search, register, epics, timeline, quality, docs_aggregate)
   /register/              Personenregister (HTML + JSON; Org/Ort vorbereitet, nicht freigegeben)
-  /exploration/           visuell-explorative Zugänge (Rollen, Beziehungen, Transaktionen, Orte)
-  /analysis/              klassischer Abfragemodus
+  /analysis/              Analyse-Bereich
+                            auswertungen.html  quantitative Verteilungen (Donut, Bar, Tabelle)
+                            index.html         Abfragen (Template-Familien)
+  /exploration/           visuell-interaktive Erkundung (Personen-Netzwerk, Karten, Timeline) — geplant
   /project/               About, Statistik, Qualität, Editionsrichtlinien, Glossar
   /static/                CSS, JS, Fonts
 knowledge/                konzeptionelle Wissensbasis (Obsidian-Markdown, Wiki-Links)

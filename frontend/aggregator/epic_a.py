@@ -1,4 +1,5 @@
-"""Epic A: Rollen x Geschlecht x Organisationen — exploration/roles.html."""
+"""Epic A: Rollen x Geschlecht x Organisationen — fuer die Rollen-Sektion
+in analysis/auswertungen.html."""
 
 from collections import Counter, defaultdict
 from pathlib import Path
@@ -46,6 +47,13 @@ def aggregate_epic_a(docs_data_dir: Path) -> dict:
     role_sex_files: dict[str, dict[str, set]] = \
         defaultdict(lambda: defaultdict(set))
 
+    # Distinct persons per role x sex (individual count, not mention count)
+    role_sex_persons: dict[str, dict[str, set]] = \
+        defaultdict(lambda: defaultdict(set))
+    # Distinct persons per role x sex x decade (for time-filtered individual counts)
+    role_sex_decade_persons: dict[str, dict[int, dict[str, set]]] = \
+        defaultdict(lambda: defaultdict(lambda: defaultdict(set)))
+
     for r in pie_rows:
         pk = r.get("person_key", "")
         role = r.get("event_role", "other")
@@ -55,12 +63,16 @@ def aggregate_epic_a(docs_data_dir: Path) -> dict:
             sex = "unspecified"
 
         role_sex[role][sex] += 1
+        if pk:
+            role_sex_persons[role][sex].add(pk)
 
         ei = event_info.get(ek, {})
         fk = ei.get("file_key", "")
         dec = _decade(ei.get("date", ""))
         if dec is not None:
             role_sex_decade[role][dec][sex] += 1
+            if pk:
+                role_sex_decade_persons[role][dec][sex].add(pk)
 
         # Collect file_keys for drill-down
         if fk:
@@ -127,6 +139,24 @@ def aggregate_epic_a(docs_data_dir: Path) -> dict:
             str(d): dict(c) for d, c in sorted(decade_data.items())
         }
 
+    # Serialise distinct-person aggregates (count, not key list — keys would
+    # bloat the JSON; client recomputes time-filtered individuals from
+    # role_sex_decade_persons_keys below).
+    role_persons_by_sex = {
+        role: {sex: len(pks) for sex, pks in sex_pks.items()}
+        for role, sex_pks in role_sex_persons.items()
+    }
+
+    # Per-decade person key lists for time-filter recomputation. Compact
+    # representation: every person_key occurs in each decade-bucket where
+    # they hold this role. JS unions the sets across the active decade range.
+    role_persons_by_decade_out = {}
+    for role, decade_data in role_sex_decade_persons.items():
+        role_persons_by_decade_out[role] = {
+            str(d): {sex: sorted(pks) for sex, pks in sex_pks.items()}
+            for d, sex_pks in sorted(decade_data.items())
+        }
+
     result = {
         "meta": _meta(
             description="Function roles by sex, with temporal and "
@@ -155,6 +185,8 @@ def aggregate_epic_a(docs_data_dir: Path) -> dict:
         "observations": {
             "role_by_sex": {role: dict(c) for role, c in role_sex.items()},
             "role_by_sex_by_decade": role_sex_decade_out,
+            "role_persons_by_sex": role_persons_by_sex,
+            "role_persons_by_decade": role_persons_by_decade_out,
             "transaction_types": dict(catchword_stats),
             "org_type_totals": org_type_totals,
             "org_type_by_decade": {

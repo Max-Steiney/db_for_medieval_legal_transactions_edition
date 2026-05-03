@@ -1,4 +1,5 @@
-"""Epic B: annotierte Beziehungen zwischen Personen — exploration/networks.html."""
+"""Epic B: annotierte Beziehungen zwischen Personen — fuer die Beziehungs-
+und Bezeichnungs-Sektionen in analysis/auswertungen.html."""
 
 from collections import Counter, defaultdict
 from pathlib import Path

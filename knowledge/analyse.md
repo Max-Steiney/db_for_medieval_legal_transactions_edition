@@ -1,6 +1,14 @@
 # Analyse
 
-Wissensdokument zum Analysebereich der Edition. Der Analysebereich ist der klassische Abfragemodus, der Nutzerinnen mit konkreten Forschungsfragen direkten Zugriff auf wiederkehrende Kombinationen aus Rolle, Geschlecht, Organisationsbezug und Zeitraum gibt. Er steht als zweiter Zweig neben der [[exploration]] und bedient ein entgegengesetztes Interaktionsmuster: kuratierte Antworten statt offener Stöberung.
+Wissensdokument zum Analysebereich der Edition. Der Analysebereich versammelt alle quantitativen Zugänge zur Datenbasis. Er besteht aus zwei Sub-Seiten unter `/analysis/` und steht als gleichberechtigter Zweig neben der [[exploration]]; das Interaktionsmuster ist strukturiert (vorgegebene Achsen, exakte Zahlen, Provenienz), die Exploration arbeitet visuell-interaktiv. Die Trennung ist in [[decisions#Exploration und Analyse als getrennte Bereiche]] begründet.
+
+## Zwei Sub-Seiten
+
+**Auswertungen** (`/analysis/auswertungen.html`) zeigt vorberechnete Verteilungen: Funktionsrollen, Beziehungstypen, Transaktionstypen, Bezeichnungen — jeweils als Donut, Bar-Chart oder Tabelle mit Mini-Bars. Filter sind Zeitraum und Geschlecht; eine Zähleinheit-Umschaltung wechselt zwischen Nennungen und Individuellen Personen. Die Seite ist filter-getrieben: Nutzerinnen ändern Achsen und sehen Verteilungen sich anpassen, ohne eine konkrete Frage formulieren zu müssen. Begründung der Verortung im Analyse-Bereich: [[decisions#Auswertungen gehört in den Analyse-Bereich]].
+
+**Abfragen** (`/analysis/index.html`) bietet vorgefertigte Fragetypen mit typisierten Slots — der Template-Abfragemodus, dessen Konzept im Folgenden ausführlich beschrieben ist. Nutzerinnen kommen mit einer konkreten Frage und füllen Slots, das Interface beantwortet die Frage als einzelne Zahl plus Drill-down auf die Quellen.
+
+Beide Sub-Seiten teilen sich dieselben Aggregate (`epic_a/b/c.json`) und dieselben Filter-Bausteine in der Sidebar. Eine Filteränderung auf der einen Seite überträgt sich aktuell nicht automatisch auf die andere; das ist eine offene Designfrage.
 
 Deployment als statisches Frontend auf GitHub Pages, auf Basis der vorhandenen JSON-Datengrundlage.
 

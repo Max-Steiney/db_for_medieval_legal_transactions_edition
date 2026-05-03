@@ -23,7 +23,7 @@
 
             {% if timeline_data %}
             {% call sidebar_block('Aktivit&auml;tszeitraum', 'Erste &amp; letzte Quellennennung je Person') %}
-                {{ sidebar_range_slider(min_year, max_year, timeline_data, max_count, unit='Personen') }}
+                {{ sidebar_range_slider(min_year, max_year, timeline_data, max_count, unit='Personen', unit_singular='Person') }}
             {% endcall %}
             {% endif %}
 

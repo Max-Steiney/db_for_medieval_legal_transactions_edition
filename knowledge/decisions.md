@@ -12,13 +12,28 @@ Getroffene Leitentscheidungen mit Begründung. Zeitlos formuliert. Pro Eintrag E
 
 ## Exploration und Analyse als getrennte Bereiche
 
-**Entscheidung.** Das UI führt zwei Navigationsbereiche nebeneinander: Exploration und Analyse.
+**Entscheidung.** Das UI führt zwei Navigationsbereiche nebeneinander: Analyse und Exploration. Die Trennung folgt dem Interaktionsmodus, nicht dem Inhalt.
 
-**Begründung.** Beide Bereiche bedienen unterschiedliche Forschungssituationen und verlangen entgegengesetzte Interaktionsmuster. Die Exploration arbeitet ergebnisoffen mit Überblicksdarstellungen. Die Analyse arbeitet gezielt mit vordefinierten Abfragekombinationen. Eine Zusammenlegung wäre für beide Seiten ein Verlust.
+- **Analyse** versammelt quantitative Auswertungen mit vorgegebener Achsensemantik: Verteilungen (Donut, Bar-Chart, Tabellen mit Prozentwerten) und Template-Abfragen mit typisierten Slots. Nutzerinnen kommen mit einer Frage und bekommen Zahlen plus Provenienz.
+- **Exploration** ist visuell-interaktive Erkundung der Datenstruktur selbst: Personen-Netzwerke, Karten, Timeline-Bänder, Sankey-Diagramme. Nutzerinnen kommen ohne klare Frage und entdecken Pattern in der Visualisierung.
 
-**Konsequenz.** Siehe [[ui-design#Navigation]] und [[ui-design#Zwei Modi nebeneinander]].
+**Begründung.** Donut, Bar-Chart und Verteilungstabellen sind nach DH-Standard analytische Visualisierung — sie zeigen vorberechnete Statistik. Force-Layouts, Karten und Sankey-Diagramme sind Information-Visualisation für offene Erkundung. Die Erwartungshaltung der Nutzerinnen unterscheidet sich entsprechend: „Auswertung" suggeriert quantitative Antwort, „Exploration" visuelles Stöbern. Die Pfade folgen dieser Semantik.
 
-**Nicht gemeint ist**, dass Exploration und Analyse streng disjunkt wären. Eine Nutzerin kann in der Exploration eine Auffälligkeit entdecken und in der Analyse gezielt weiterverfolgen.
+**Konsequenz.** Unter `/analysis/` liegen `auswertungen.html` (Statistik-Verteilungen) und `index.html` (Abfragen). `/exploration/` ist für künftige visuelle Views reserviert (Personen-Netzwerk, Karten, Timeline) und enthält aktuell keine Inhalte. Die Navigation bündelt beide Analyse-Seiten in einem Dropdown „Analyse"; Exploration erscheint dort, sobald die ersten visuellen Views fertig sind. Siehe [[ui-design#Navigation]] und [[ui-design#Zwei Modi nebeneinander]].
+
+**Nicht gemeint ist**, dass Exploration und Analyse streng disjunkt wären. Eine Nutzerin kann eine Auffälligkeit in einem Donut-Diagramm entdecken (Analyse) und sie in einer Netzwerkvisualisierung qualitativ weiterverfolgen (Exploration), oder umgekehrt. Die Bereiche teilen sich dieselben Aggregate (`epic_*.json`) und dieselben Filter-Bausteine (Sidebar, Active-Filter-Strip).
+
+## Auswertungen gehört in den Analyse-Bereich
+
+**Entscheidung.** Die Auswertungen-Seite (vier Sektionen: Funktionsrollen, Beziehungstypen, Transaktionstypen, Bezeichnungen, jeweils als Donut, Bar-Chart oder Tabelle) liegt unter `/analysis/auswertungen.html` und nicht unter `/exploration/`.
+
+**Begründung.** Die Seite zeigt vorberechnete statistische Verteilungen mit Prozentwerten und exakten Zahlen. Die Interaktion beschränkt sich auf zwei orthogonale Achsen (Zeitraum, Geschlecht) plus eine Zähleinheit-Umschaltung (Nennungen ↔ Individuelle Personen) — alles strukturierte Auswertungsachsen, keine offene Erkundung. Donut und Bar-Chart sind klassische Statistik-Displays, keine explorativen Visualisierungen. Wer auf den Eintrag „Auswertungen" klickt, erwartet quantitative Antworten; das ist Analyse-Domain.
+
+**Konsequenz.** Build-Ziel: `docs/analysis/auswertungen.html`. Template: `frontend/templates/analysis_aggregat.html`. JavaScript: `frontend/static/js/analysis-aggregat.js`. Aggregator-Source: `frontend/aggregator/epic_a.py`, `epic_b.py`, `epic_c.py`. Die Navigation führt sie als Dropdown-Eintrag unter „Analyse", neben „Abfragen" (`/analysis/index.html`).
+
+**Vorgeschichte.** Frühere Iterationen hatten vier separate Sub-Seiten unter `/exploration/` (Rollen, Beziehungen, Transaktionen, Orte), wurden zu einer zusammengelegten `exploration/auswertungen.html`-Seite gebündelt und schließlich nach `/analysis/` verschoben, sobald klar war, dass die Inhalte analytischer als explorativer Natur sind. Die Verschiebung dokumentiert sich in [[journal]].
+
+**Nicht gemeint ist**, dass die Seite niemals interaktive Exploration enthielte. Filter ziehen, Pattern entdecken — das geht hier auch. Aber das primäre Interaktionsmuster ist Verteilungs-Display, nicht visuelle Strukturerkundung.
 
 ## Begriff Gesamtnennungen
 

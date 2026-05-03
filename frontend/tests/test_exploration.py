@@ -1,4 +1,5 @@
-﻿"""Tests for exploration pages: hub, roles subpage, placeholder subpages, data files."""
+﻿"""Tests fuer die Auswertungs-Seite (analysis/auswertungen.html) und die
+zugehoerigen JSON-Aggregate epic_a/b/c."""
 
 import json
 import pytest
@@ -76,106 +77,62 @@ class TestDocsLookup:
             assert entry["u"].endswith(".html"), f"Bad url: {entry['u']}"
 
 
-class TestExplorationHub:
-    """Verify exploration.html hub page is generated with expected structure."""
+class TestAuswertungenPage:
+    """Verify the consolidated Auswertungen page (4-quadrant aggregate view)."""
 
     @pytest.fixture(scope="class")
     def html(self):
-        path = DOCS_DIR / "exploration.html"
+        path = DOCS_DIR / "analysis" / "auswertungen.html"
         if not path.exists():
-            pytest.skip("exploration.html not found (run full build first)")
+            pytest.skip("analysis/auswertungen.html not found")
         return path.read_text(encoding="utf-8")
 
-    def test_page_has_exploration_id(self, html):
-        assert 'id="exploration-page"' in html
+    def test_uses_index_layout(self, html):
+        assert 'index-layout' in html
+        assert 'index-sidebar' in html
+        assert 'index-main' in html
 
-    def test_page_has_hub_grid(self, html):
-        assert 'explore-hub-grid' in html
+    def test_has_aggregat_grid(self, html):
+        assert 'aggregat-grid' in html
 
-    def test_page_links_to_roles(self, html):
-        assert 'exploration_roles.html' in html
+    def test_has_four_sections(self, html):
+        for q in ('q-roles', 'q-relations', 'q-tx', 'q-labels'):
+            assert f'id="{q}"' in html, f'Missing section id={q}'
 
-    def test_page_links_to_networks(self, html):
-        assert 'exploration_networks.html' in html
+    def test_roles_section_has_donut_and_legend(self, html):
+        assert 'id="roles-donut"' in html
+        assert 'id="roles-legend"' in html
+        # Detail-Tabelle (aufklappbar)
+        assert 'id="roles-table"' in html
+        # Toggle Nennungen / Personen
+        assert 'data-roles-mode="mentions"' in html
+        assert 'data-roles-mode="persons"' in html
 
-    def test_page_links_to_transactions(self, html):
-        assert 'exploration_transactions.html' in html
+    def test_relations_section_has_donut_and_legend(self, html):
+        assert 'id="relations-donut"' in html
+        assert 'id="relations-legend"' in html
 
-    def test_page_has_transparency_bar(self, html):
-        assert 'id="explore-transparency"' in html
+    def test_tx_section_has_bars_container(self, html):
+        assert 'id="tx-bars"' in html
 
+    def test_labels_section_has_scrollable_table(self, html):
+        assert 'aggregat-table--labels-wrap' in html
+        assert 'id="labels-table"' in html
 
-class TestExplorationRoles:
-    """Verify exploration_roles.html subpage with Epic A content."""
+    def test_sidebar_has_required_filter_blocks(self, html):
+        # Korpus-Filter wurde bewusst entfernt (epic_a/b/c sind kollektions-
+        # aggregiert; Korpus-Filter waere clientseitig nicht umsetzbar).
+        assert 'id="filter-corpora"' not in html
+        assert 'id="filter-sex"' in html
+        assert 'id="filter-reset"' in html
 
-    @pytest.fixture(scope="class")
-    def html(self):
-        path = DOCS_DIR / "exploration_roles.html"
-        if not path.exists():
-            pytest.skip("exploration_roles.html not found (run full build first)")
-        return path.read_text(encoding="utf-8")
+    def test_loads_epic_data_via_json_blocks(self, html):
+        assert 'id="aggregat-data-epic-a"' in html
+        assert 'id="aggregat-data-epic-b"' in html
+        assert 'id="aggregat-data-epic-c"' in html
 
-    def test_page_has_exploration_id(self, html):
-        assert 'id="exploration-page"' in html
-
-    def test_page_no_longer_embeds_epic_a_data(self, html):
-        """Epic A data is now loaded from external JSON, not embedded."""
-        assert 'id="explore-epic-a-data"' not in html
-
-    def test_page_has_no_subnav(self, html):
-        """Subnav removed — top nav dropdown is sufficient."""
-        assert 'explore-subnav' not in html
-
-    def test_page_has_filter_header(self, html):
-        assert 'id="explore-filters"' in html
-
-    def test_page_has_role_chart_container(self, html):
-        assert 'id="explore-role-chart"' in html
-
-    def test_page_has_drilldown_overlay(self, html):
-        assert 'id="explore-drilldown"' in html
-
-    def test_page_has_institution_chart(self, html):
-        assert 'id="explore-inst-chart"' in html
-
-    def test_page_has_unified_header(self, html):
-        assert 'explore-header-unified' in html
-
-
-class TestExplorationPlaceholderPages:
-    """Verify placeholder subpages (networks) exist."""
-
-    @pytest.mark.parametrize("filename,expected_title", [
-        ("exploration_networks.html", "Beziehungen"),
-        ("exploration_transactions.html", "Transaktionen"),
-    ])
-    def test_placeholder_page_exists_and_has_title(self, filename, expected_title):
-        path = DOCS_DIR / filename
-        if not path.exists():
-            pytest.skip(f"{filename} not found (run full build first)")
-        html = path.read_text(encoding="utf-8")
-        assert expected_title in html
-
-    @pytest.mark.parametrize("filename", [
-        "exploration_networks.html",
-        "exploration_transactions.html",
-    ])
-    def test_placeholder_page_has_no_subnav(self, filename):
-        """Subnav removed — top nav dropdown is sufficient."""
-        path = DOCS_DIR / filename
-        if not path.exists():
-            pytest.skip(f"{filename} not found (run full build first)")
-        html = path.read_text(encoding="utf-8")
-        assert 'explore-subnav' not in html
-
-    def test_networks_page_has_relationship_panels(self):
-        path = DOCS_DIR / "exploration_networks.html"
-        if not path.exists():
-            pytest.skip("exploration_networks.html not found (run full build first)")
-        html = path.read_text(encoding="utf-8")
-        assert 'explore-rel-chart' in html
-        assert 'explore-panel-labels' in html
-        assert 'explore-panel-detail' in html
+    def test_active_filter_strip_present(self, html):
+        assert 'id="active-filters"' in html
 
 
 class TestEpicBData:
@@ -341,53 +298,37 @@ class TestEpicCData:
         assert cov["recipient_orgs"] > 10
 
 
-class TestExplorationTransactions:
-    """Verify exploration_transactions.html is functional (not placeholder)."""
+class TestEpicARolePersons:
+    """Verify epic_a.json includes the new individual-count aggregate."""
 
     @pytest.fixture(scope="class")
-    def html(self):
-        path = DOCS_DIR / "exploration_transactions.html"
+    def epic_a(self):
+        path = DATA_DIR / "epic_a.json"
         if not path.exists():
-            pytest.skip("exploration_transactions.html not found")
-        return path.read_text(encoding="utf-8")
+            pytest.skip("epic_a.json not found")
+        return json.loads(path.read_text(encoding="utf-8"))
 
-    def test_page_has_exploration_id(self, html):
-        assert 'id="exploration-page"' in html
+    def test_has_role_persons_by_sex(self, epic_a):
+        obs = epic_a["observations"]
+        assert "role_persons_by_sex" in obs
+        assert "issuer" in obs["role_persons_by_sex"]
+        assert "m" in obs["role_persons_by_sex"]["issuer"]
 
-    def test_page_no_longer_embeds_epic_c_data(self, html):
-        """Epic C data is now loaded from external JSON, not embedded."""
-        assert 'id="explore-epic-c-data"' not in html
+    def test_has_role_persons_by_decade(self, epic_a):
+        obs = epic_a["observations"]
+        assert "role_persons_by_decade" in obs
+        issuer_dec = obs["role_persons_by_decade"].get("issuer", {})
+        assert len(issuer_dec) > 0
+        for decade, sex_keys in issuer_dec.items():
+            for sex, keys in sex_keys.items():
+                assert isinstance(keys, list)
 
-    def test_page_has_no_subnav(self, html):
-        """Subnav removed — top nav dropdown is sufficient."""
-        assert 'explore-subnav' not in html
-
-    def test_page_has_filter_header(self, html):
-        assert 'id="explore-filters"' in html
-
-    def test_page_has_timeline_panel(self, html):
-        assert 'id="explore-panel-timeline"' in html
-
-    def test_page_has_verb_panel(self, html):
-        assert 'id="explore-panel-verbs"' in html
-
-    def test_page_has_recipients_panel(self, html):
-        assert 'id="explore-panel-recipients"' in html
-
-    def test_page_has_drilldown_overlay(self, html):
-        assert 'id="explore-drilldown"' in html
-
-    def test_page_has_inst_detail_overlay(self, html):
-        assert 'id="explore-inst-detail"' in html
-
-    def test_page_has_unified_header(self, html):
-        assert 'explore-header-unified' in html
-
-    def test_page_has_verb_search(self, html):
-        assert 'id="explore-verb-search"' in html
-
-    def test_page_is_not_placeholder(self, html):
-        assert 'In Entwicklung' not in html
-
-    def test_page_has_title(self, html):
-        assert 'Transaktionen' in html
+    def test_individuals_smaller_than_mentions(self, epic_a):
+        """Distinct persons must be <= mentions (sanity check)."""
+        mentions = epic_a["observations"]["role_by_sex"]
+        persons = epic_a["observations"]["role_persons_by_sex"]
+        for role in mentions:
+            for sex in ("m", "f"):
+                if sex in mentions[role] and sex in persons.get(role, {}):
+                    assert persons[role][sex] <= mentions[role][sex], \
+                        f"persons > mentions for {role}/{sex}"

@@ -1,0 +1,226 @@
+{% extends "base.html" %}
+{% from "macros.html" import search_box, glossary_tip, active_filters,
+                              sidebar_block, sidebar_range_slider,
+                              sidebar_chip_group, sidebar_corpus_chips,
+                              sidebar_reset_button %}
+
+{% block title %}Auswertungen{% endblock %}
+
+{% block head %}
+<link rel="stylesheet" href="{{ root_path }}/static/css/index.css?v={{ asset_v }}">
+<link rel="stylesheet" href="{{ root_path }}/static/css/exploration.css?v={{ asset_v }}">
+{% endblock %}
+
+{% block content %}
+<div class="index-page aggregat-page">
+
+    <header class="index-header aggregat-header">
+        <h1>Auswertungen</h1>
+        {{ active_filters() }}
+    </header>
+
+    <div class="index-layout">
+
+        <aside class="index-sidebar" aria-label="Filter">
+
+            {% if timeline_data %}
+            {% call sidebar_block('Zeitraum') %}
+                {{ sidebar_range_slider(min_year, max_year, timeline_data, max_count, unit='Quellen', unit_singular='Quelle') }}
+            {% endcall %}
+            {% endif %}
+
+            {# Korpus-Filter wirkt auf der Auswertungs-Seite noch nicht
+               (epic_a/b/c sind kollektions-aggregiert) — daher hier
+               bewusst nicht angezeigt, statt als toter Chip zu verwirren. #}
+
+            {% call sidebar_block('Geschlecht') %}
+                {{ sidebar_chip_group('filter-sex', 'data-sex', sex_data,
+                                      aria_label='Nach Geschlecht filtern') }}
+            {% endcall %}
+
+            {{ sidebar_reset_button() }}
+
+        </aside>
+
+        <div class="index-main">
+
+            <div class="aggregat-grid">
+
+                {# === Sektion 1: Funktionsrollen (Donut + Legende) ===================== #}
+                <section class="aggregat-quadrant aggregat-quadrant--roles" id="q-roles">
+                    <header class="aggregat-quadrant-head">
+                        <h2>Funktionsrollen <span class="aggregat-quadrant-h2-meta">&times; Geschlecht</span></h2>
+                        <div class="aggregat-quadrant-controls">
+                            <div class="aggregat-toggle" role="group" aria-label="Z&auml;hlebene">
+                                <button type="button" data-roles-mode="mentions" class="is-active" aria-pressed="true">Nennungen</button>
+                                <button type="button" data-roles-mode="persons" aria-pressed="false">Individuelle Personen</button>
+                            </div>
+                            <span class="aggregat-quadrant-source">
+                                <span class="prov-stat-container">
+                                    {% call glossary_tip('gloss-roles-source', 'Funktionsrollen') %}
+                                        <p class="prov-def">Handlungsrollen aus dem TEI-Attribut <code>rs/@role</code>: Aussteller (issuer), Empf&auml;nger (recipient), Zeuge oder Siegler (witness), Sonstige (other), unannotiert (keine).</p>
+                                        <footer class="prov-foot">
+                                            <span class="prov-foot-source"><code>pipeline/output/persons_in_events.csv</code> Feld <code>event_role</code></span>
+                                            <a class="prov-foot-link" href="{{ root_path }}/project/glossary.html#rolle">&rarr; Glossar</a>
+                                        </footer>
+                                    {% endcall %}
+                                </span>
+                            </span>
+                        </div>
+                    </header>
+                    <div class="aggregat-donut-block">
+                        <div class="aggregat-donut" id="roles-donut"></div>
+                        <ul class="aggregat-legend" id="roles-legend"></ul>
+                    </div>
+                    <details class="aggregat-details">
+                        <summary>Detailtabelle (% Zeile = M/W innerhalb der Rolle, % Spalte = Anteil dieser Rolle an allen M bzw. W)</summary>
+                        <table class="aggregat-table" id="roles-table">
+                            <thead>
+                                <tr>
+                                    <th class="col-label">Rolle</th>
+                                    <th class="num">Total</th>
+                                    <th class="num pct">%</th>
+                                    <th class="num sex-m">M</th>
+                                    <th class="num pct sex-m">% Zeile</th>
+                                    <th class="num pct sex-m">% Spalte</th>
+                                    <th class="num sex-f">W</th>
+                                    <th class="num pct sex-f">% Zeile</th>
+                                    <th class="num pct sex-f">% Spalte</th>
+                                </tr>
+                            </thead>
+                            <tbody></tbody>
+                        </table>
+                    </details>
+                </section>
+
+                {# === Sektion 2: Beziehungstypen (Donut + Legende) ===================== #}
+                <section class="aggregat-quadrant" id="q-relations">
+                    <header class="aggregat-quadrant-head">
+                        <h2>Beziehungstypen <span class="aggregat-quadrant-h2-meta">&times; Geschlecht</span></h2>
+                        <div class="aggregat-quadrant-controls">
+                            <span class="aggregat-quadrant-source">
+                                <span class="prov-stat-container">
+                                    {% call glossary_tip('gloss-rels-source', 'Beziehungstypen') %}
+                                        <p class="prov-def">Annotierte Beziehungen zwischen Personen aus den TEI-Quellen, gruppiert in Verwandtschaft (kin), Beruf / Stand (occ), Vertretung (rep) und Freundschaft (friend).</p>
+                                        <footer class="prov-foot">
+                                            <span class="prov-foot-source"><code>kin_relations_in_sources.csv</code> · <code>occ_relations_in_sources.csv</code> · <code>rep_relations_in_sources.csv</code> · <code>friend_relations_in_sources.csv</code></span>
+                                        </footer>
+                                    {% endcall %}
+                                </span>
+                            </span>
+                        </div>
+                    </header>
+                    <div class="aggregat-donut-block">
+                        <div class="aggregat-donut" id="relations-donut"></div>
+                        <ul class="aggregat-legend" id="relations-legend"></ul>
+                    </div>
+                    <details class="aggregat-details">
+                        <summary>Detailtabelle (Beziehungen und beteiligte Personen je Typ)</summary>
+                        <table class="aggregat-table" id="relations-table">
+                            <thead>
+                                <tr>
+                                    <th class="col-label">Typ</th>
+                                    <th class="num">Beziehungen</th>
+                                    <th class="num pct">%</th>
+                                    <th class="num sex-m">M</th>
+                                    <th class="num pct sex-m">% Zeile</th>
+                                    <th class="num sex-f">W</th>
+                                    <th class="num pct sex-f">% Zeile</th>
+                                    <th class="num">Personen</th>
+                                </tr>
+                            </thead>
+                            <tbody></tbody>
+                        </table>
+                    </details>
+                </section>
+
+                {# === Sektion 3: Transaktionstypen (horizontale Balken) ================ #}
+                <section class="aggregat-quadrant" id="q-tx">
+                    <header class="aggregat-quadrant-head">
+                        <h2>Transaktionstypen</h2>
+                        <span class="aggregat-quadrant-source">
+                            <span class="prov-stat-container">
+                                {% call glossary_tip('gloss-tx-source', 'Transaktionstypen') %}
+                                    <p class="prov-def">Normalisierte dispositive Verbkategorie pro Event (z. B. Kauf, &Uuml;bergabe, Stiftung). Events ohne normalisiertes Verb sind ausgeblendet (siehe Fu&szlig;note).</p>
+                                    <footer class="prov-foot">
+                                        <span class="prov-foot-source"><code>events_in_sources.csv</code> Feld <code>catchwords</code> &times; <code>label_norm_matching.csv</code></span>
+                                    </footer>
+                                {% endcall %}
+                            </span>
+                        </span>
+                    </header>
+                    <div class="aggregat-bars" id="tx-bars"></div>
+                    <p class="aggregat-table-foot" id="tx-foot"></p>
+                </section>
+
+                {# === Sektion 4: Top-Bezeichnungen (Tabelle mit Mini-Bars) ============= #}
+                <section class="aggregat-quadrant aggregat-quadrant--labels" id="q-labels">
+                    <header class="aggregat-quadrant-head">
+                        <h2>Bezeichnungen <span class="aggregat-quadrant-h2-meta" id="labels-count-meta"></span></h2>
+                        <span class="aggregat-quadrant-source">
+                            <span class="prov-stat-container">
+                                {% call glossary_tip('gloss-labels-source', 'Bezeichnungen') %}
+                                    <p class="prov-def">Annotierte Beziehungs-Bezeichnung (z. B. <em>Hausfrau</em>, <em>purger</em>, <em>sun</em>) mit normalisiertem Lemma und allen orthographischen Varianten zusammengef&uuml;hrt.</p>
+                                    <footer class="prov-foot">
+                                        <span class="prov-foot-source">aggregiert aus den vier Beziehungs-CSVs</span>
+                                    </footer>
+                                {% endcall %}
+                            </span>
+                        </span>
+                    </header>
+                    <div class="aggregat-labels-toolbar">
+                        <input type="search" id="labels-search" class="aggregat-search-input"
+                               placeholder="Bezeichnung suchen…" autocomplete="off"
+                               aria-label="Bezeichnung filtern">
+                        <div class="aggregat-rel-type-chips" role="group" aria-label="Beziehungstyp">
+                            <button class="form-filter-chip active" data-rel="all" aria-pressed="true">
+                                <span class="form-filter-chip-label">alle</span>
+                            </button>
+                            <button class="form-filter-chip" data-rel="kin" aria-pressed="false">
+                                <span class="form-filter-chip-label">Verwandt.</span>
+                            </button>
+                            <button class="form-filter-chip" data-rel="occ" aria-pressed="false">
+                                <span class="form-filter-chip-label">Beruf</span>
+                            </button>
+                            <button class="form-filter-chip" data-rel="rep" aria-pressed="false">
+                                <span class="form-filter-chip-label">Vertretung</span>
+                            </button>
+                            <button class="form-filter-chip" data-rel="friend" aria-pressed="false">
+                                <span class="form-filter-chip-label">Freundsch.</span>
+                            </button>
+                        </div>
+                    </div>
+                    <div class="aggregat-table--labels-wrap">
+                        <table class="aggregat-table aggregat-table--labels" id="labels-table">
+                            <thead>
+                                <tr>
+                                    <th class="col-label">Bezeichnung</th>
+                                    <th>Typ</th>
+                                    <th class="num">Personen</th>
+                                    <th class="col-sexbar">M / W</th>
+                                </tr>
+                            </thead>
+                            <tbody></tbody>
+                        </table>
+                    </div>
+                </section>
+
+            </div>
+
+        </div>
+
+    </div>
+
+</div>
+{% endblock %}
+
+{% block scripts %}
+<script src="{{ root_path }}/static/js/tooltips.js?v={{ asset_v }}"></script>
+<script src="{{ root_path }}/static/js/table-infra.js?v={{ asset_v }}"></script>
+<script id="aggregat-data-epic-a" type="application/json">{{ epic_a_json|safe }}</script>
+<script id="aggregat-data-epic-b" type="application/json">{{ epic_b_json|safe }}</script>
+<script id="aggregat-data-epic-c" type="application/json">{{ epic_c_json|safe }}</script>
+<script src="{{ root_path }}/static/js/analysis-aggregat.js?v={{ asset_v }}"></script>
+{% endblock %}
+
+{% block footer_info %}Auswertungen generiert am {{ build_date }}{% endblock %}

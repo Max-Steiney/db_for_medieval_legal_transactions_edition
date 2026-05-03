@@ -18,7 +18,7 @@ Wer das Projekt zum ersten Mal liest, folgt der unten skizzierten Reihenfolge. W
 
 [[ui-design]] übersetzt die Anforderungen in Gestaltungsprinzipien, Navigationsstruktur und Kernkomponenten: Provenienz-Tip, Glossar-Tip, Zählebenen-Umschalter, Bestandsfilter, Menschen-Events-Toggle, Drill-down-Overlay, Text-Bild-Synopse, Register-Listenseiten, Druckausgabe, Farb- und Typografielogik.
 
-[[exploration]] und [[analyse]] vertiefen die beiden methodischen Zugänge der Edition. Exploration ist visuell und ergebnisoffen; Analyse ist gezielt und template-basiert. Beide Bereiche lesen dieselben Aggregate, aber unter unterschiedlichem Interaktionsmuster.
+[[analyse]] und [[exploration]] vertiefen die beiden methodischen Zugänge der Edition. Analyse versammelt quantitative Auswertungen (Donut, Bar-Chart, Verteilungstabellen) und Template-basierte Abfragen unter `/analysis/`. Exploration ist visuell-interaktive Erkundung der Datenstruktur (Personen-Netzwerk, Karten, Timeline) unter `/exploration/` — geplant. Beide Bereiche lesen dieselben Aggregate, aber unter unterschiedlichem Interaktionsmuster. Die Trennung folgt [[decisions#Exploration und Analyse als getrennte Bereiche]].
 
 [[scholar-user-stories]] nimmt die Forscherinnen-Perspektive ein und beschreibt typische Nutzungsszenarien — vom Bestandsvergleich über die Provenienzprüfung bis zur publikationsreifen Zitation. Jede Story leitet eine Anforderung und eine Komponente ab.
 

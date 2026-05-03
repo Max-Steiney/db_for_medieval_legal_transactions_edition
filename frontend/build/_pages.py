@@ -572,20 +572,28 @@ def _build_person_profiles(reverse_index, env):
 
 
 # ---------------------------------------------------------------------------
-# Exploration-Hub und Sub-Seiten
+# Auswertungen (Statistik-Sektion unter /analysis/)
 # ---------------------------------------------------------------------------
 
 
 def _build_exploration(all_metadata, persons, env):
-    """Build exploration hub + 3 subpages (roles, networks, transactions).
+    """Build the Auswertungen page (analysis/auswertungen.html) — eine
+    Seite mit vier Aggregat-Sektionen: Funktionsrollen (Donut), Beziehungs-
+    typen (Donut), Transaktionstypen (Bar-Chart) und Bezeichnungen (Tabelle
+    mit Mini-Bars). Sidebar: Zeitraum + Geschlecht.
 
-    Header-KPIs (Personen, Events, Geschlechter, Personen mit
-    Institutionsbezug) sind auf den freigegebenen Korpus eingeschraenkt
-    und stammen aus _compute_release_kpis() + _released_person_keys().
+    Liegt unter /analysis/, weil sie quantitative Auswertungen zeigt
+    (Statistik-Verteilungen) und nicht visuelle Erkundung — siehe
+    knowledge/decisions.md "Auswertungen gehoeren in den Analyse-Bereich".
+    Frueher drei separate Sub-Seiten (roles/networks/transactions) unter
+    /exploration/, dann zusammengelegt zu /exploration/auswertungen.html,
+    schliesslich nach /analysis/ verschoben.
     """
     epic_a_path = DATA_DIR / "epic_a.json"
+    epic_b_path = DATA_DIR / "epic_b.json"
+    epic_c_path = DATA_DIR / "epic_c.json"
     if not epic_a_path.exists():
-        print("  WARN: epic_a.json not found, skipping exploration pages.",
+        print("  WARN: epic_a.json not found, skipping Auswertungen.",
               file=sys.stderr)
         return
 
@@ -595,85 +603,101 @@ def _build_exploration(all_metadata, persons, env):
     total_docs = len(all_metadata)
     total_persons = kpis["distinct_persons"]
     total_events = kpis["distinct_events"]
+    total_mentions = kpis["person_mentions"]
+
     sex_m = sum(1 for pid, p in persons.items()
                 if pid in released_persons and p.get("sex") == "m")
     sex_f = sum(1 for pid, p in persons.items()
                 if pid in released_persons and p.get("sex") == "f")
     sex_u = total_persons - sex_m - sex_f
 
-    epic_a = json.loads(epic_a_path.read_text(encoding="utf-8"))
-    epic_a_total_events = epic_a.get("coverage", {}).get("total_events", 0)
-    norm_rate = epic_a.get("coverage", {}).get("normalisation_rate", 0)
-    norm_rate_pct = (round(norm_rate / epic_a_total_events * 100, 1)
-                     if epic_a_total_events else 0)
-    persons_with_org = _persons_with_org_released(released_persons)
-    org_type_count = epic_a.get("coverage", {}).get("org_type_count", 0)
+    # --- Sidebar-Daten: Zeitraum-Slider + Korpus-Chips ----------------------
+    decade_counts = Counter()
+    all_years = []
+    for m in all_metadata:
+        year_str = (m.get("date_iso") or "")[:4]
+        if year_str.isdigit():
+            year = int(year_str)
+            all_years.append(year)
+            decade_counts[(year // 10) * 10] += 1
+    if all_years:
+        min_year = max(min(all_years), RELEASED_PERIOD["min_year"])
+        max_year = min(max(all_years), max_year_with_extensions())
+    else:
+        min_year = RELEASED_PERIOD["min_year"]
+        max_year = max_year_with_extensions()
+    if decade_counts:
+        min_dec = min(decade_counts.keys())
+        max_dec = max(decade_counts.keys())
+        timeline_data = [{"decade": d, "count": decade_counts.get(d, 0)}
+                         for d in range(min_dec, max_dec + 10, 10)]
+        max_count = max(decade_counts.values())
+    else:
+        timeline_data = []
+        max_count = 1
 
-    shared_vars = dict(
+    collections_dict = {}
+    for m in all_metadata:
+        path_key = m.get("collection_path", "")
+        if not path_key:
+            continue
+        c = collections_dict.setdefault(path_key, {
+            "count": 0,
+            "label": m.get("collection_label", path_key),
+            "path": path_key,
+        })
+        c["count"] += 1
+    collections = [
+        {"key": k, "label": col["label"], "count": col["count"]}
+        for k, col in sorted(collections_dict.items(),
+                             key=lambda kv: kv[1]["label"].lower())
+    ]
+
+    sex_data = [
+        {"key": "all", "label": "alle", "count": total_persons},
+        {"key": "m", "label": "♂ männlich", "count": sex_m},
+        {"key": "f", "label": "♀ weiblich", "count": sex_f},
+        {"key": "unspecified", "label": "ohne Angabe", "count": sex_u},
+    ]
+
+    # --- Korpus-Label fuer den Datenstand-Banner ---------------------------
+    released_corpora_label = " · ".join(
+        _short_collection_label(p) for p in collections_dict.keys()
+    ) if collections_dict else "alle Korpora"
+
+    # --- JSON-Payloads (raw text, in <script type="application/json">) ----
+    epic_a_json = epic_a_path.read_text(encoding="utf-8")
+    epic_b_json = (epic_b_path.read_text(encoding="utf-8")
+                   if epic_b_path.exists() else "{}")
+    epic_c_json = (epic_c_path.read_text(encoding="utf-8")
+                   if epic_c_path.exists() else "{}")
+
+    analysis_dir = DOCS_DIR / "analysis"
+    analysis_dir.mkdir(parents=True, exist_ok=True)
+
+    html = env.get_template("analysis_aggregat.html").render(
         build_date=_format_german_date(date.today()),
         total_docs=total_docs,
         total_persons=total_persons,
+        total_mentions=total_mentions,
         total_events=total_events,
         sex_m=sex_m,
         sex_f=sex_f,
         sex_u=sex_u,
-        norm_rate_pct=norm_rate_pct,
-        persons_with_org=persons_with_org,
-        org_type_count=org_type_count,
+        timeline_data=timeline_data,
+        max_count=max_count,
+        min_year=min_year,
+        max_year=max_year,
+        collections=collections,
+        sex_data=sex_data,
+        released_corpora_label=released_corpora_label,
+        epic_a_json=epic_a_json,
+        epic_b_json=epic_b_json,
+        epic_c_json=epic_c_json,
         root_path="..",
     )
-
-    explore_dir = DOCS_DIR / "exploration"
-    explore_dir.mkdir(parents=True, exist_ok=True)
-
-    hub_html = env.get_template("exploration.html").render(**shared_vars)
-    (explore_dir / "index.html").write_text(hub_html, encoding="utf-8")
-    print("  Exploration hub: exploration/index.html")
-
-    roles_html = env.get_template("exploration_roles.html").render(**shared_vars)
-    (explore_dir / "roles.html").write_text(roles_html, encoding="utf-8")
-    print("  Exploration subpage: exploration/roles.html")
-
-    epic_c_path = DATA_DIR / "epic_c.json"
-    if epic_c_path.exists():
-        epic_c_json = epic_c_path.read_text(encoding="utf-8")
-        epic_c = json.loads(epic_c_json)
-        cov = epic_c.get("coverage", {})
-        total_ev_c = cov.get("total_events", 0)
-        norm_ev_c = cov.get("normalised_events", 0)
-        norm_pct_c = round(norm_ev_c / total_ev_c * 100, 1) if total_ev_c else 0
-        tx_vars = dict(
-            epic_c_json=epic_c_json,
-            total_events_c=total_ev_c,
-            normalised_events=norm_ev_c,
-            unique_verb_forms=cov.get("unique_verb_forms", 0),
-            recipient_orgs=cov.get("recipient_orgs", 0),
-            norm_rate_pct=norm_pct_c,
-        )
-        tx_html = env.get_template("exploration_transactions.html").render(
-            **{**shared_vars, **tx_vars})
-        (explore_dir / "transactions.html").write_text(tx_html, encoding="utf-8")
-        print("  Exploration subpage: exploration/transactions.html")
-    else:
-        html = env.get_template("exploration_transactions.html").render(**shared_vars)
-        (explore_dir / "transactions.html").write_text(html, encoding="utf-8")
-        print("  Exploration subpage: exploration/transactions.html (placeholder)")
-
-    epic_b_path = DATA_DIR / "epic_b.json"
-    if epic_b_path.exists():
-        epic_b = json.loads(epic_b_path.read_text(encoding="utf-8"))
-        cov_b = epic_b.get("coverage", {})
-        net_vars = dict(
-            epic_b_json=True,
-            node_count=cov_b.get("node_count", 0),
-            total_annotated_relations=cov_b.get("total_annotated_relations", 0),
-        )
-        net_html = env.get_template("exploration_networks.html").render(
-            **{**shared_vars, **net_vars})
-    else:
-        net_html = env.get_template("exploration_networks.html").render(**shared_vars)
-    (explore_dir / "networks.html").write_text(net_html, encoding="utf-8")
-    print("  Exploration subpage: exploration/networks.html")
+    (analysis_dir / "auswertungen.html").write_text(html, encoding="utf-8")
+    print("  Auswertungen: analysis/auswertungen.html")
 
 
 # ---------------------------------------------------------------------------

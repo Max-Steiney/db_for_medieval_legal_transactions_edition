@@ -104,15 +104,18 @@
     /* Radii */
     --radius-sm:            4px;
 
-    /* Exploration — sex colours */
-    --color-sex-m:          #2e5a88;
-    --color-sex-f:          #b85c2f;
+    /* Geschlechter-Visualisierung — bewusst klischee-frei.
+       Tiefes Aubergine vs. tiefes Petrol; sind klar voneinander
+       unterscheidbar und kollidieren nicht mit den Rollen- oder
+       Beziehungs-Farben in den Donut-Diagrammen. */
+    --color-sex-m:          #5d3a74;
+    --color-sex-f:          #2d6650;
     --color-sex-none:       #b0a99f;
     --color-not-norm:       #d4cfc8;
 
-    /* Statistics — muted sex colours (for gender bar segments) */
-    --color-sex-m-muted:    #5a7fa0;
-    --color-sex-f-muted:    #b8696e;
+    /* Statistics — muted variants for gender bar segments */
+    --color-sex-m-muted:    #8264a0;
+    --color-sex-f-muted:    #5d8a78;
 
     /* Relationship types (Epic B) */
     --color-rel-kin:        #c45a5a;

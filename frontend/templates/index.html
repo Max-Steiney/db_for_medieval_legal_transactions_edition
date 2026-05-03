@@ -22,7 +22,7 @@
 
             {% if timeline_data %}
             {% call sidebar_block('Zeitraum') %}
-                {{ sidebar_range_slider(min_year, max_year, timeline_data, max_count, unit='Quellen') }}
+                {{ sidebar_range_slider(min_year, max_year, timeline_data, max_count, unit='Quellen', unit_singular='Quelle') }}
             {% endcall %}
             {% endif %}
 

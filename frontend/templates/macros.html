@@ -23,6 +23,40 @@
 </nav>
 {% endmacro %}
 
+{# Drill-down document overlay — wird von der Analyse-Abfragen-Seite
+   verwendet (frueher zusaetzlich auf den Exploration-Subseiten — die
+   wurden in /analysis/auswertungen.html zusammengefuehrt und brauchen
+   es nicht mehr). #}
+{% macro drill_down_overlay(id_prefix='analysis-drilldown', wide=false) %}
+<div class="explore-drilldown-overlay hidden" id="{{ id_prefix }}" role="dialog"
+     aria-label="Quellenliste" aria-modal="true">
+    <div class="explore-drilldown-inner{{ ' explore-drilldown-inner--wide' if wide }}">
+        <div class="explore-drilldown-header">
+            <h3 id="{{ id_prefix }}-title">Quellen</h3>
+            <button class="explore-drilldown-close" id="{{ id_prefix }}-close"
+                    aria-label="Schließen">&times;</button>
+        </div>
+        <div class="explore-drilldown-body" id="{{ id_prefix }}-body">
+            <table class="explore-data-table">
+                <thead>
+                    <tr>
+                        <th>Nr.</th>
+                        <th>Datum</th>
+                        <th>Quellenkorpus</th>
+                        <th>Regest</th>
+                    </tr>
+                </thead>
+                <tbody id="{{ id_prefix }}-tbody"></tbody>
+            </table>
+        </div>
+        <div class="explore-drilldown-footer">
+            <span id="{{ id_prefix }}-count"></span>
+            <button class="explore-btn" id="{{ id_prefix }}-export">CSV-Export</button>
+        </div>
+    </div>
+</div>
+{% endmacro %}
+
 {# External link SVG icon #}
 {% macro external_icon() %}
 <svg width="12" height="12" viewBox="0 0 12 12" fill="none"><path d="M3.5 1.5H2C1.72 1.5 1.5 1.72 1.5 2V10C1.5 10.28 1.72 10.5 2 10.5H10C10.28 10.5 10.5 10.28 10.5 10V8.5M7 1.5H10.5V5M10.25 1.75L5.5 6.5" stroke="currentColor" stroke-linecap="round" stroke-linejoin="round"/></svg>
@@ -96,37 +130,6 @@
     {% if released_period.unprocessed_gaps %}
     <span class="explore-gap-note hidden" id="{{ id_prefix }}-gap-note">{{ released_period.unprocessed_gaps[0]['from'] }}–{{ released_period.unprocessed_gaps[0]['to'] }}: noch nicht ausgewertet</span>
     {% endif %}
-</div>
-{% endmacro %}
-
-{# Drill-down document overlay — reusable across exploration pages #}
-{% macro drill_down_overlay(id_prefix='explore-drilldown', wide=false) %}
-<div class="explore-drilldown-overlay hidden" id="{{ id_prefix }}" role="dialog"
-     aria-label="Quellenliste" aria-modal="true">
-    <div class="explore-drilldown-inner{{ ' explore-drilldown-inner--wide' if wide }}">
-        <div class="explore-drilldown-header">
-            <h3 id="{{ id_prefix }}-title">Quellen</h3>
-            <button class="explore-drilldown-close" id="{{ id_prefix }}-close"
-                    aria-label="Schließen">&times;</button>
-        </div>
-        <div class="explore-drilldown-body" id="{{ id_prefix }}-body">
-            <table class="explore-data-table">
-                <thead>
-                    <tr>
-                        <th>Nr.</th>
-                        <th>Datum</th>
-                        <th>Quellenkorpus</th>
-                        <th>Regest</th>
-                    </tr>
-                </thead>
-                <tbody id="{{ id_prefix }}-tbody"></tbody>
-            </table>
-        </div>
-        <div class="explore-drilldown-footer">
-            <span id="{{ id_prefix }}-count"></span>
-            <button class="explore-btn" id="{{ id_prefix }}-export">CSV-Export</button>
-        </div>
-    </div>
 </div>
 {% endmacro %}
 
@@ -242,7 +245,11 @@
 </section>
 {% endmacro %}
 
-{% macro sidebar_range_slider(min_year, max_year, timeline_data, max_count, unit='Eintr&auml;ge') %}
+{% macro sidebar_range_slider(min_year, max_year, timeline_data, max_count, unit='Eintr&auml;ge', unit_singular=None) %}
+{# Wenn unit_singular nicht uebergeben: deutsche Pluralisierung ist zu
+   unregelmaessig fuer eine Heuristik (Person/Personen, Quelle/Quellen,
+   Eintrag/Eintraege). Default-Fallback nutzt einfach den Plural. #}
+{% set _unit_sg = unit_singular if unit_singular else unit %}
 <div class="range-slider" id="range-slider"
      data-min="{{ min_year }}" data-max="{{ max_year }}">
     <div class="range-histogram" id="range-histogram">
@@ -251,7 +258,7 @@
              data-decade="{{ d.decade }}"
              data-count="{{ d.count }}"
              data-height="{{ [4, (d.count / max_count * 100)|int]|max if d.count > 0 else 0 }}"
-             title="{{ d.decade }}er: {{ d.count }} {{ unit }}">
+             title="{{ d.decade }}er: {{ d.count }} {{ _unit_sg if d.count == 1 else unit }}">
         </div>
         {% endfor %}
     </div>

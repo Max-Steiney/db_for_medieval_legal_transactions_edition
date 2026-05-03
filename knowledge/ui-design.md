@@ -20,33 +20,40 @@ Siehe [[requirements#Informationsdichte vor reduzierter Ästhetik]], [[decisions
 
 ## Navigation
 
-Die Hauptnavigation gliedert sich in fünf Bereiche.
+Die Hauptnavigation gliedert sich in vier Bereiche; ein fünfter (Exploration) ist als Dropdown vorgesehen, sobald die ersten visuellen Views fertig sind.
 
-### Dokumente
+### Quellen
 
 Einstieg zur Volltextsuche und zum Durchsuchen der [[glossar#Quelle|Quellen]]. Der Bereich trägt die Grundoperationen Suchen, Filtern nach Zeitraum und Nachladen der Volltexte einzelner Quellen.
 
 ### Register
 
-Fasst Personen, Organisationen und Orte zusammen. Konsolidierte Identitäten aus den drei Registern werden hier gelistet, jeweils mit Rückverweisen in die zugehörigen Quellen.
-
-### Exploration
-
-Bietet visuell-explorative Zugänge zu den Daten. Der Bereich bedient ergebnisoffene Fragestellungen nach dem Muster Überblick, Filter, Details auf Anforderung.
+Dropdown mit Personen, Organisationen und Orten. Konsolidierte Identitäten aus den drei Registern werden hier gelistet, jeweils mit Rückverweisen in die zugehörigen Quellen. Aktuell freigegeben: Personenregister.
 
 ### Analyse
 
-Hält einen klassischen Abfragemodus bereit. Der Bereich bedient gezielte, wiederkehrende Kombinationen aus Bestand, [[glossar#Rolle]], Geschlecht und Nennungsart. Exploration und Analyse stehen nebeneinander, nicht anstelle voneinander.
+Dropdown mit zwei Sub-Seiten unter `/analysis/`:
+
+- **Auswertungen** (`auswertungen.html`) zeigt vorberechnete statistische Verteilungen als Donut, Bar-Chart und Tabelle mit Mini-Bars. Filter sind Zeitraum und Geschlecht; eine Zähleinheit-Umschaltung wechselt zwischen Nennungen und Individuellen Personen. Vier Sektionen: Funktionsrollen, Beziehungstypen, Transaktionstypen, Bezeichnungen.
+- **Abfragen** (`index.html`) ist der klassische Abfragemodus mit vorgefertigten Fragetypen über typisierte Slots. Bedient gezielte, wiederkehrende Kombinationen aus Bestand, [[glossar#Rolle]], Geschlecht und Nennungsart.
+
+Die beiden Sub-Seiten teilen sich Aggregate (`epic_*.json`), unterscheiden sich aber im Interaktionsmodus: Auswertungen filter-getrieben, Abfragen template-getrieben.
+
+### Exploration (geplant)
+
+Vorgesehen für visuell-interaktive Erkundung der Datenstruktur — Personen-Netzwerk, Karten, Timeline, Sankey-Diagramm. Aktuell nicht implementiert; siehe [[exploration]] für die Konzeption. Solange leer, erscheint der Eintrag in der Navigation nicht.
 
 ### Projekt
 
-Bündelt Metaebenen des UI. Über das Projekt, Statistik, Qualität, Editionsrichtlinien, Glossar und Impressum.
+Dropdown mit Metaebenen des UI. Über das Projekt, Editionsrichtlinien, Glossar, Impressum.
 
 ## Zwei Modi nebeneinander
 
-Exploration und Analyse bedienen unterschiedliche Forschungssituationen. Die Exploration ist für Nutzerinnen ohne vorab spezifizierte Frage, die Analyse für Nutzerinnen mit einer bestimmten Abfragekombination, die sie regelmäßig braucht.
+Analyse und Exploration bedienen unterschiedliche Forschungssituationen. Die Analyse ist für Nutzerinnen mit einer bestimmten Frage oder einem definierten Auswertungsbedarf — sie wollen Zahlen, Verteilungen, exakte Belege. Die Exploration ist für Nutzerinnen ohne vorab spezifizierte Frage, die visuell auf Pattern-Suche gehen.
 
-Eine Zusammenlegung wäre unsauber, weil die jeweiligen Interaktionsmuster gegeneinander arbeiten. Exploration verlangt offene Einstiegspunkte und schrittweise Eingrenzung. Analyse verlangt direkten Zugriff auf eine definierte Abfrage.
+Eine Zusammenlegung wäre unsauber, weil die jeweiligen Interaktionsmuster gegeneinander arbeiten. Analyse verlangt strukturierte Achsen und exakte Zahlen mit Provenienz. Exploration verlangt offene Visualisierungen, in denen die Datenstruktur selbst sichtbar wird. Innerhalb der Analyse trennen wir weiter zwischen filter-getriebenen Verteilungen (Auswertungen) und template-getriebenen Abfragen (Abfragen) — beide quantitativ, aber mit unterschiedlichem Einstiegspunkt.
+
+Siehe [[decisions#Exploration und Analyse als getrennte Bereiche]] und [[decisions#Auswertungen gehört in den Analyse-Bereich]] für die Begründung.
 
 ## Information-Seeking-Muster
 
@@ -128,7 +135,7 @@ Serifen-Typografie trägt lange Lese-Texte wie Regesten. Sans-Serif trägt UI-El
 
 ## Startseite als Zwei-Säulen-Einstieg
 
-Die Startseite führt die beiden gleichberechtigten Zugänge der Navigation — Exploration und Analyse — als nebeneinanderstehende Säulen vor. Eyebrow-Labels in Sans-Caps markieren die Bereiche, ohne sie durch schwergewichtige Trennlinien gegeneinander abzugrenzen. Die Exploration-Säule hält ein 2×2-Raster visueller Zugänge (Rollen, Beziehungen, Transaktionen, Orte). Die Analyse-Säule zeigt den Einstieg zu den Template-Familien, die in [[analyse]] konzeptionell ausgearbeitet sind.
+Die Startseite führt die beiden methodischen Zugänge — Analyse und Exploration — als nebeneinanderstehende Säulen vor. Eyebrow-Labels in Sans-Caps markieren die Bereiche, ohne sie durch schwergewichtige Trennlinien gegeneinander abzugrenzen. Die Analyse-Säule hält die beiden vorhandenen Sub-Seiten (Auswertungen, Abfragen) als verlinkte Cards. Die Exploration-Säule trägt einen Coming-soon-Platzhalter mit den drei geplanten Visualisierungen (Personen-Netzwerk, Karten, Timeline) — solange die visuellen Views noch nicht implementiert sind, ist die Säule visuell zurückgenommen (gestrichelte Karte, gedämpfte Schrift, kein Klick).
 
 Darüber liegen drei Entry-Cards (Quellen durchsuchen, Personenregister, Über das Projekt) mit Akzentfarben-Icons. Sie tragen den pragmatischen Alltag, während die Säulen darunter die beiden methodischen Zugänge verorten.
 

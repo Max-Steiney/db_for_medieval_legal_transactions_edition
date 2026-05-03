@@ -71,17 +71,10 @@ class TestCrossEpicNavigation:
         assert 'getParam' in content
         assert 'URLSearchParams' in content
 
-    def test_url_param_handling_in_networks(self):
-        from pathlib import Path
-        js_path = Path(frontend.build.STATIC_DIR) / "js" / "exploration-networks.js"
-        content = js_path.read_text(encoding="utf-8")
-        assert 'EdCore.getParam' in content
-
-    def test_url_param_handling_in_roles(self):
-        from pathlib import Path
-        js_path = Path(frontend.build.STATIC_DIR) / "js" / "exploration-roles.js"
-        content = js_path.read_text(encoding="utf-8")
-        assert 'EdCore.getParam' in content
+    # Die frueheren Subseiten exploration-networks.js / exploration-roles.js
+    # sind in analysis-aggregat.js zusammengefuehrt; URL-Param-Drill ist
+    # noch offen (V2/V3 Anschluss). Sobald implementiert, koennen hier
+    # entsprechende Asserts gegen analysis-aggregat.js wieder eingezogen werden.
 
 
 # ---------------------------------------------------------------------------

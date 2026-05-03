@@ -1,4 +1,5 @@
-"""Epic C: Transaktionstypen, Verbformen, Empfaenger — exploration/transactions.html."""
+"""Epic C: Transaktionstypen, Verbformen, Empfaenger — fuer die Transaktions-
+Sektion in analysis/auswertungen.html."""
 
 from collections import Counter, defaultdict
 from pathlib import Path
