@@ -12,6 +12,52 @@ Einträge in umgekehrt chronologischer Reihenfolge, neueste oben.
 
 ---
 
+## 2026-05-03 URL-Sync, Cross-Page-Sprung, Wissenskorb
+
+Drei verbundene Verbesserungen, die die identifizierten Workflow-Brüche zwischen den Seiten schließen.
+
+**URL-Sync** auf den Visualisierungs-Seiten: Filter-Stand (`dec`, `sex`, `type`, `q`, `mode` für Auswertungen; `dec`, `stack`, `brush`, `focus` für Zeitstrom) wird per `history.replaceState` in die URL serialisiert und beim Page-Load wieder eingelesen. Damit ist jeder Filter-Stand bookmark-fähig, teilbar, in einer Publikation zitierbar — ein Forschungsstand wird Permalink. `pushState` wäre falsch gewesen, weil Browser-Back nicht durch Filter-Mikrostände gehen soll. Default-Werte werden weggelassen, damit Sharing-URLs minimal bleiben. Eintrag in [[decisions#Forschungsstand zitierbar via URL-Parameter]].
+
+**Cross-Page-Sprung** als Footer-Link in beiden Drill-Containern (Auswertungs-Drill-Overlay, Zeitstrom-Brush-Drill): „→ in Quellen-Liste öffnen" mit übernommenem Zeitraum-und-Geschlecht-Filter. Mapping ist asymmetrisch, weil das Quellen-Filter-Vokabular nicht symmetrisch zur Sex-Achse der Visualisierungen ist (`with-f` für ♀, `only-m` für ♂; `with-m` existiert nicht). Page-spezifische Filter (Rolle, Beziehungstyp, Bezeichnung, Tx-Kategorie, Stack-Fokus) werden bewusst nicht übertragen — die Quellen-Liste kennt sie nicht. Tooltip am Link macht die Lückenführung transparent. Eintrag in [[decisions#Cross-Page-Sprung mit Filter-Übernahme]].
+
+**Wissenskorb** als clientseitige Sammler-Schicht über allen Quellen-Listen. `localStorage` mit versioniertem Schlüssel `sugw-wissenskorb-v1`, Cross-Tab-Sync via `storage`-Event, In-Tab-Updates via Custom-Event. „+"-Knopf in den Listen-Renderern (Quellen-Tabelle, Drill-Overlay, Brush-Drill); Korb-Icon mit Live-Badge im Nav (in `base.html` verankert, also auf jeder Seite); eigene Korb-Seite (`/korb.html`) mit Liste, Remove, Clear und CSV-Export (UTF-8 mit BOM, Excel-kompatibel). Eintrag in [[decisions#Wissenskorb als clientseitige Sammlung]].
+
+Verworfen: Server-persistierter Korb mit Account. Anderer Stack (Auth, DSGVO, Speicherkosten) ohne erkennbaren Mehrwert für die jetzt bedienten Forschungsszenarien — der CSV-Export ist die Bridge in externe Werkzeuge (Zotero, BibTeX-Konverter, Excel). Verworfen auch ein Personen-Sammler in dieser Iteration: Personen tauchen aktuell nicht in den Visualisierungen auf, der Mehrwert läge erst nach den geplanten Personen-Profil-Drill-Pfaden vor.
+
+## 2026-05-03 Drill-down auf der Auswertungs-Seite, Stack-Kategorie isolierbar im Zeitstrom
+
+Die Auswertungs-Seite war bis dahin eine Drill-Sackgasse: „Hausfrau · 1.153 Personen" war sichtbar, aber kein einziger dieser Personen erreichbar. Donut-Arc, Bar und Bezeichnungs-Zeile waren tooltip-only.
+
+Jetzt klickt jedes dieser Elemente das gemeinsame Drill-down-Overlay auf — Donut-Arc und Legend-Item für Funktionsrollen ([[architecture#Provenienz-Indizes|`epic_a.drill_down.role_sex`]]), dito für Beziehungstypen (`epic_b.drill_down.type_sex`), Bar für Transaktionstypen (`epic_c.drill_down.tx_type_decade`), Tabellenzeile für Bezeichnungen (`epic_b.drill_down.label_sex`). Der Geschlechter-Filter wird über sex-Suffixe im Lookup-Schlüssel mitgenommen (`kin_f`, `hausfrau__f`); der Zeitraum-Filter nativ bei decade-partitionierten Drills (Tx) und bei den anderen über Datums-Parsing aus `docs_lookup.json`. Auflösung der `file_keys` lazy beim ersten Klick, eager im Hintergrund vorgeladen. Eintrag in [[decisions#Auswertungen gehört in den Analyse-Bereich]] erweitert um die Drill-Pfade.
+
+Im Zeitstrom war der Brush bisher unscharf: „1390er" lieferte 730 Quellen aller Tx-Typen gemischt, einzelne Stapel-Kategorien waren nicht isolierbar. Jetzt fokussiert ein Klick auf ein Legend-Item eine Kategorie — die anderen Bar-Segmente dimmen, der Drill filtert auf die fokussierte Kategorie. Bei Stack=Tx läuft der gefilterte Drill über `epic_c.drill_down.tx_type_decade` und löst die `file_keys` über `docs_lookup` auf; bei den anderen Stacks (collection/form/sex) filtert der Renderer das `DOCS_BY_DECADE`-Set in-memory mit der `assign`/`assignAll`-Funktion der Stack-Definition.
+
+Verifiziert über drei Forschungsfragen: „Welche Personen heißen 'wittib'?" (Bezeichnungs-Drill, vorher Sackgasse), „Welche Schuldbrief/Pfand-Geschäfte 1390er?" (Stack-Fokus + Brush, vorher unscharf), „Welche Quellen 1390er nur weiblich?" (Cross-Nav in Quellen-Liste mit übernommenen Filtern). Pattern für die nächsten Sub-Seiten (Personen-Netzwerk, Karten): die viz-core-Drill-Funktionen sind generisch genug, dass die neuen Sub-Seiten sie wiederverwenden können.
+
+## 2026-05-03 Zeitstrom als erste Exploration-Sub-Seite, viz-core-Refactor
+
+Erste Sub-Seite unter `/exploration/`: ein gestapelter Bar-Chart der Quellendichte pro Jahrzehnt mit umschaltbarer Stapel-Achse (Quellenkorpus, Erschließungsform, Geschlecht-der-Beteiligten, Top-8-Transaktionstypen) und Brush-zu-Drill-down. Datenquellen: `data/search.json` für die ersten drei Stapel-Achsen clientseitig aggregiert, `epic_c.tx_timeline` für die Tx-Stapelung. Drill-Liste verlinkt direkt in die Quellen-Detailseiten.
+
+Vier Variationen waren skizziert (Timeline-Strom, Personen-Netzwerk Force-Layout, Ego-Netzwerk radial, Quellen-Galaxie als Scatter); Timeline gewählt, weil die Daten 100 % verfügbar sind, das Drill-down-Pattern aus den Auswertungen wiederverwendbar ist und die Sub-Seite ohne externe Lib auskommt. Personen-Netzwerk wurde für später aufgespart, weil das Knäuel-Risiko bei 8.406 Personen mit überwiegend Gewicht-1-Kanten harte Filter-Defaults zwingen würde — riskanter als erstes Stück.
+
+Im selben Zug ein zweiter Refactor-Pass nach dem ersten innerhalb der Auswertungs-Seite: die geteilte Infrastruktur wandert in `viz-core.js` (Domain-Konstanten, Number-Formatting, Dekaden-Filter, CSP-sichere Style-Projektion über `data-*`-Attribute, Chip-Toggle, Range-Slider-Binding, Active-Filter-Strip, JSON-Loader, später Drill-Overlay + URL-State + Cross-Nav-Builder). Beide Visualisierungs-Seiten nutzen das Modul; eine neue Sub-Seite muss das Filter-Boilerplate nicht wiederholen. Zeilen-Bilanz: `analysis-aggregat.js` von 832 auf ~520, `exploration-timeline.js` von ~580 auf ~376. Eintrag in [[architecture#Geteilte Visualisierungs-Schicht]].
+
+CSP-Falle unterwegs: `style-src 'self'` blockiert inline `style="…"`-Attribute, was die Bar-Fills und M/W-Mini-Bars auf 0px clampte. Lösung: Werte werden als `data-w` / `data-bg` / `data-h` codiert und nach jedem `innerHTML` über `applyDataStyles()` per JS-IDL auf die `style`-Property projiziert — CSP-konform.
+
+## 2026-05-03 Auswertungen-Seite Rework und Verschiebung in den Analyse-Bereich
+
+Die Auswertungs-Seite hatte vier dichte Aggregat-Tabellen mit `% Zeile / % Spalte` und KPI-Header. Stakeholder-Kritik: zu wenig visuell, zu viel statisch, dichte Tabellen ohne erkennbares Pattern. Rework in mehreren Iterationen.
+
+**Visualisierung:** zwei Donuts (Funktionsrollen, Beziehungstypen) mit Legende-pro-Eintrag-mit-M/W-Mini-Bar, ein horizontales Bar-Chart (Transaktionstypen mit aufklappbarer „Sonstige"-Sammelreihe), eine scrollbare Tabelle (alle 1.244 Bezeichnungen, vorher Top-15) mit Mini-Bar-Personen-Spalte und gestapelter M/W-Bar. Detail-Tabellen pro Donut bleiben als aufklappbares `<details>` für Forschende, die die ursprünglichen `% Zeile / % Spalte`-Werte brauchen.
+
+**Sprache und Farbe:** Rollen-Labels gegendert („Aussteller / Ausstellerin", „Empfänger / Empfängerin", „Siegler:in / Zeug:in", „keine Rolle"); Geschlechter-Visualisierung in Aubergine/Petrol statt Blau/Orange — bewusst klischee-frei, ohne Konflikt mit den Donut-Paletten (siehe [[ui-design#Farbkodierung und Typografie]]); „Beziehungen" statt „Kanten"; Pluralisierung im Slider-Tooltip („1 Quelle" / „N Quellen") über neuen Macro-Parameter `unit_singular`. M/W-Bar in der Legende immer sichtbar — auch wenn Geschlechter-Filter aktiv ist.
+
+**Strukturelle Verschiebung:** Die Seite lag bis dahin unter `/exploration/auswertungen.html`. Inhaltlich ist sie aber analytische Visualisierung (Donut + Bar + Verteilungstabellen, filter-getrieben), keine offene Erkundung — Donut und Bar sind nach DH-Standard analytische Display-Klasse, nicht explorative Information-Visualisation. Verschiebung nach `/analysis/auswertungen.html`; Template `analysis_aggregat.html`, JS `analysis-aggregat.js`. Nav: ein Dropdown „Analyse" mit „Auswertungen" + „Abfragen", separat von einem späteren „Exploration"-Dropdown. Begründung in [[decisions#Auswertungen gehört in den Analyse-Bereich]] und [[decisions#Exploration und Analyse als getrennte Bereiche]] (letztere neu gefasst: Trennung folgt Interaktionsmodus, nicht Inhalt).
+
+Erster Refactor-Pass am Ende: Helper extrahiert (Chip-Active-Toggle 6× dupliziert → `setActiveChip`, M/W-Bar-Markup 2× → `sexBarHTML`), toter Code raus (`bindCorpusFilter` gegen einen entfernten Block, unbenutztes `ROOT_PATH`), `bindReset` über die Helfer vereinfacht. Reduktion von 834 auf 523 Zeilen ohne Verhaltensänderung — die Vorbereitung für den `viz-core`-Refactor zwei Iterationen später.
+
+---
+
 ## 2026-05-02 Person-View Phase 1: Profilseiten pro Entität
 
 Bisher waren Personennamen in der Edition Sackgassen: in der Annotations-Tabelle der Quellen-Detailseite und im Volltext klickbar, aber nur als Hash-Anker auf das Listen-Register `register/persons.html#pe__id` — wo der Anker im JS-gerenderten Index nicht ankam. Beziehungs-Daten lagen im Pipeline-Output (`kin_relations_in_sources.csv`, `friend_/rep_/occ_/title-ref_relations_in_sources.csv`), waren aber nirgends UI-seitig sichtbar. Beispiel: Simon Pötel und Anna Pötlin sind im TEI als Ehepaar codiert, im Frontend war diese Verwandtschaft nicht einsehbar.

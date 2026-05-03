@@ -87,6 +87,8 @@ Gestaltungsprinzip: maximaler Informations-Output. Nachvollziehbarkeit vor reduz
 | Titel/Nav/Footer ändern | `frontend/templates/base.html` |
 | Startseite-Inhalt ändern | `frontend/templates/startseite.html` |
 | Quellen-Übersicht (Filter, Chips, Tabelle) | `frontend/templates/index.html`, `frontend/static/js/index.js` |
+| Auswertungen-/Zeitstrom-/neue Visualisierungs-Sub-Seite | `frontend/static/js/viz-core.js` zuerst (geteilte Helfer: Range-Slider, Active-Filter-Strip, URL-Sync, Drill-Overlay, JSON-Loader, Domain-Konstanten); page-spezifischer Renderer ruft die Bindings in `DOMContentLoaded` |
+| Wissenskorb-Anbindung (jede neue Quellen-Liste) | `Wissenskorb.buttonHTML({type:'source', id, label, url, date, coll, regest})` ins Zeilen-Markup; Click-Handling über globale Event-Delegation in `frontend/static/js/wissenskorb.js` |
 | Provenienz- oder Glossar-Tooltip einsetzen | `frontend/templates/macros.html` (`prov_stat`, `prov_popover`, `prov_ratio_stat`, `glossary_tip`) |
 | Pro-Quelle-Daten (Personen/Events/Datum) | `frontend/aggregator.py::aggregate_docs` schreibt `docs/data/docs_aggregate.json` |
 | Erschließungsform | aus `events_in_sources.csv:event_in` aggregiert (abstract / seal / entry / nota); keine Heuristik im Frontend |

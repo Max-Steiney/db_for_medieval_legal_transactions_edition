@@ -47,11 +47,26 @@ python -m pytest frontend/tests/       # Frontend-Tests
 - **Frontend:** statische HTMLs, Vanilla-JS-Module, eigenes CSS. Kein Framework, keine Serverlogik.
 - **Hosting:** GitHub Pages aus `docs/`.
 
+## UI-Bereiche
+
+Die Edition gliedert sich in vier Top-Level-Bereiche:
+
+- **Quellen** (`/documents.html`) — Listenansicht aller freigegebenen Quellen mit Filter, Suche, sortierbarer Tabelle, Volltext-/Regest-Detail.
+- **Register → Personen** (`/register/persons.html` + `/register/persons/<id>.html`) — Personenregister mit Suche, Filter, Profilseite pro individueller Person mit Beziehungen und Quellen-Vorkommen. Organisations- und Ortsregister sind angelegt, aber nicht freigegeben.
+- **Analyse** — quantitative Zugänge, zwei Sub-Seiten:
+  - `/analysis/auswertungen.html` — vorberechnete Verteilungen (Donut für Funktionsrollen + Beziehungstypen, Bar-Chart für Transaktionstypen, Tabelle mit Mini-Bars für Bezeichnungen). Drill-down ins Quellen-Detail per Klick auf jede Aggregat-Zelle. Filter-Stand in der URL.
+  - `/analysis/index.html` — Abfragen-Modus mit vorgefertigten Template-Familien.
+- **Exploration** — visuell-interaktive Erkundung der Datenstruktur:
+  - `/exploration/zeitstrom.html` — gestapelter Bar-Chart der Quellendichte pro Jahrzehnt; Stack-Achse umschaltbar (Quellenkorpus / Erschließungsform / Geschlecht / Transaktionstyp); Brush-zu-Drill-down; Stack-Kategorie isolierbar. Filter-Stand in der URL.
+  - Personen-Netzwerk, Karten, Sankey — geplant.
+
+Quer durch alle Quellen-Listen liegt der **Wissenskorb** (`/korb.html`): clientseitige Sammelmappe in `localStorage`, mit „+"-Knopf neben jedem Quellen-Eintrag, Live-Badge im Nav, CSV-Export auf der Korb-Seite.
+
 ## Konzeptionelle Dokumentation
 
 Begriffe, Datenstruktur, Architektur, Anforderungen und Gestaltungsprinzipien leben in [`knowledge/`](knowledge/) als zusammenhängende Dokumentation in deutscher Sprache, mit Wiki-Links zwischen den Dokumenten. Einstieg über [`knowledge/index.md`](knowledge/index.md).
 
-Begriffsdefinitionen (Quellenkorpus, Quelle, Event, Rechtsgeschäft, Gesamtnennung, Individuelle Person, Menschen-Event, Rolle, Regest, Faksimile, Volltext, Erschließungsform): [`knowledge/glossar.md`](knowledge/glossar.md). Leitentscheidungen: [`knowledge/decisions.md`](knowledge/decisions.md).
+Begriffsdefinitionen (Quellenkorpus, Quelle, Event, Rechtsgeschäft, Gesamtnennung, Individuelle Person, Menschen-Event, Rolle, Regest, Faksimile, Volltext, Erschließungsform): [`knowledge/glossar.md`](knowledge/glossar.md). Leitentscheidungen: [`knowledge/decisions.md`](knowledge/decisions.md). Chronologisches Arbeitstagebuch: [`knowledge/journal.md`](knowledge/journal.md).
 
 ## Lokales Preview
 
