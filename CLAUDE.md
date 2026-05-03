@@ -19,11 +19,13 @@ docs/                     Build-Output, von GitHub Pages serviert
   /data/                  JSON-Indexe (search, register, epics, timeline, quality, docs_aggregate)
   /register/              Personenregister (HTML + JSON; Org/Ort vorbereitet, nicht freigegeben)
   /analysis/              Analyse-Bereich
-                            auswertungen.html  quantitative Verteilungen (Donut, Bar, Tabelle)
+                            auswertungen.html  quantitative Verteilungen (Donut, Bar, Tabelle), Drill-down + Cross-Nav
                             index.html         Abfragen (Template-Familien)
   /exploration/           visuell-interaktive Erkundung
-                            zeitstrom.html     gestapelter Timeline-Bar-Chart mit Brush-to-Drill-down
+                            zeitstrom.html     gestapelter Timeline-Bar-Chart mit Brush-to-Drill-down,
+                                               Stack-Kategorie isolierbar
                             (Personen-Netzwerk, Karten, Sankey — geplant)
+  korb.html               Wissenskorb (clientseitig, localStorage); CSV-Export, Cross-Tab-Sync
   /project/               About, Statistik, Qualität, Editionsrichtlinien, Glossar
   /static/                CSS, JS, Fonts
 knowledge/                konzeptionelle Wissensbasis (Obsidian-Markdown, Wiki-Links)

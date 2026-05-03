@@ -1377,7 +1377,13 @@
 .explore-stream-drill .aggregat-quadrant-head {
     margin-bottom: var(--space-sm);
 }
-.explore-stream-drill-clear {
+.explore-stream-drill-actions {
+    display: flex;
+    gap: var(--space-sm);
+    align-items: center;
+}
+.explore-stream-drill-clear,
+.explore-stream-drill-crossnav {
     background: transparent;
     border: 1px solid var(--color-border);
     border-radius: 3px;
@@ -1386,12 +1392,21 @@
     font-size: var(--text-2xs);
     color: var(--color-text-muted);
     cursor: pointer;
+    text-decoration: none;
     transition: all var(--transition-fast);
 }
-.explore-stream-drill-clear:hover {
+.explore-stream-drill-clear:hover,
+.explore-stream-drill-crossnav:hover {
     background: var(--color-bg-warm);
     color: var(--color-text);
 }
+.explore-drilldown-crossnav {
+    margin-left: auto;
+    text-decoration: none;
+}
+
+/* Korb-Styles in components.css verschoben — werden ueber base.html
+   auf jeder Seite geladen und sind nicht exploration-spezifisch. */
 .explore-stream-doclist {
     list-style: none;
     margin: 0;

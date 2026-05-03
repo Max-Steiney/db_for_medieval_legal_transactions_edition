@@ -156,3 +156,122 @@
 .text-muted-inline {
     color: var(--color-text-muted);
 }
+
+
+/* ==========================================================================
+   Wissenskorb — Site-weit verwendbare Sammler-Komponente
+   Klein neben jedem Quellen-Eintrag in Listen + Drill-downs; Nav-Icon mit
+   Badge zeigt Anzahl gesammelter Eintraege; eigene Korb-Seite (korb.html).
+   ========================================================================== */
+
+.korb-btn {
+    display: inline-flex;
+    align-items: center;
+    justify-content: center;
+    width: 22px;
+    height: 22px;
+    margin-left: 6px;
+    padding: 0;
+    background: transparent;
+    border: 1px solid var(--color-border);
+    border-radius: 50%;
+    font-family: var(--font-sans);
+    font-size: 14px;
+    line-height: 1;
+    color: var(--color-text-muted);
+    cursor: pointer;
+    vertical-align: middle;
+    transition: all var(--transition-fast);
+}
+.korb-btn:hover {
+    background: var(--color-bg-warm);
+    border-color: var(--color-border-dark);
+    color: var(--color-text);
+}
+.korb-btn.is-in {
+    background: var(--anno-place, #3a7a5c);
+    border-color: var(--anno-place, #3a7a5c);
+    color: var(--color-text-inverse, #fff);
+}
+.korb-btn.is-in:hover { opacity: 0.85; }
+
+.nav-korb {
+    position: relative;
+    display: inline-flex;
+    align-items: center;
+    margin-left: var(--space-sm);
+    color: var(--color-text-inverse, #faf8f4);
+    text-decoration: none;
+    padding: 6px;
+    border-radius: 4px;
+    transition: background-color var(--transition-fast);
+}
+.nav-korb:hover { background: rgba(255, 255, 255, 0.1); }
+.nav-korb-count {
+    position: absolute;
+    top: -2px;
+    right: -2px;
+    min-width: 16px;
+    height: 16px;
+    padding: 0 4px;
+    background: var(--anno-place, #3a7a5c);
+    color: #fff;
+    font-family: var(--font-sans);
+    font-size: 10px;
+    font-weight: 600;
+    border-radius: 8px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+}
+.nav-korb-count[hidden] { display: none; }
+
+/* Korb-Seite */
+.korb-page .index-header { margin-bottom: var(--space-md); }
+.korb-toolbar {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    gap: var(--space-md);
+    margin-bottom: var(--space-md);
+    padding-bottom: var(--space-sm);
+    border-bottom: 1px solid var(--color-border-light);
+}
+.korb-count {
+    font-family: var(--font-sans);
+    font-size: var(--text-sm);
+    color: var(--color-text-muted);
+}
+.korb-actions { display: flex; gap: var(--space-sm); }
+.explore-btn--danger {
+    border-color: var(--color-border);
+    color: var(--color-text-muted);
+}
+.explore-btn--danger:hover {
+    background: rgba(184, 92, 47, 0.1);
+    color: #b85c2f;
+    border-color: #b85c2f;
+}
+.korb-table .col-actions { width: 36px; text-align: right; }
+.korb-row-remove {
+    background: transparent;
+    border: 1px solid transparent;
+    border-radius: 50%;
+    width: 22px;
+    height: 22px;
+    font-size: 16px;
+    line-height: 1;
+    cursor: pointer;
+    color: var(--color-text-light);
+    transition: all var(--transition-fast);
+}
+.korb-row-remove:hover {
+    background: rgba(184, 92, 47, 0.1);
+    color: #b85c2f;
+    border-color: #b85c2f;
+}
+.korb-table .cell-regest {
+    max-width: 480px;
+    color: var(--color-text-muted);
+    font-size: var(--text-xs);
+}

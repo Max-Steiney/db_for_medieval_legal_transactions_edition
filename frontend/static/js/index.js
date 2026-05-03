@@ -221,8 +221,16 @@
             renderRow: function(doc, i, tr) {
                 tr.classList.add('doc-row');
                 tr.setAttribute('data-idx', i);
+                let korbBtn = '';
+                if (typeof Wissenskorb !== 'undefined') {
+                    korbBtn = Wissenskorb.buttonHTML({
+                        type: 'source', id: doc.id, label: doc.id,
+                        url: doc.u, date: doc.dn || doc.d || '',
+                        coll: doc.cl || doc.c || '', regest: doc.t || '',
+                    });
+                }
                 tr.innerHTML =
-                    '<td class="col-idno"><a href="' + esc(doc.u) + '" class="doc-link">' + esc(doc.id) + '</a></td>' +
+                    '<td class="col-idno"><a href="' + esc(doc.u) + '" class="doc-link">' + esc(doc.id) + '</a>' + korbBtn + '</td>' +
                     renderDateCell(doc) +
                     '<td class="col-place">' + esc(doc.p) + '</td>' +
                     '<td class="col-title"><a href="' + esc(doc.u) + '" class="doc-link doc-link--title cell-title">' + esc(doc.t) + '</a></td>' +
@@ -237,6 +245,7 @@
                 (function(idx) {
                     tr.addEventListener('click', function(e) {
                         if (e.target.closest('a')) return;
+                        if (e.target.closest('.korb-btn')) return;
                         togglePreview(idx);
                     });
                     tr.addEventListener('keydown', function(e) {

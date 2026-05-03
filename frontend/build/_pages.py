@@ -701,6 +701,24 @@ def _build_exploration(all_metadata, persons, env):
 
 
 # ---------------------------------------------------------------------------
+# Wissenskorb-Seite (clientseitige Sammlung, persistent in localStorage)
+# ---------------------------------------------------------------------------
+
+
+def _build_korb(env):
+    """Build the Wissenskorb page (korb.html). Reines Front-Shell ohne
+    serverseitige Daten — die Sammlung lebt clientseitig in localStorage,
+    wird von wissenskorb.js verwaltet und auf der Seite ueber korb-page.js
+    gerendert."""
+    html = env.get_template("korb.html").render(
+        build_date=_format_german_date(date.today()),
+        root_path=".",
+    )
+    (DOCS_DIR / "korb.html").write_text(html, encoding="utf-8")
+    print("  Wissenskorb: korb.html")
+
+
+# ---------------------------------------------------------------------------
 # Exploration / Zeitstrom (visuell-interaktive Sub-Seite unter /exploration/)
 # ---------------------------------------------------------------------------
 
