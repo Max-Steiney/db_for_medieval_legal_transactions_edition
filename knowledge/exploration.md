@@ -2,7 +2,7 @@
 
 Wissensdokument zum Explorationsbereich der Edition. Die Exploration ist der visuell-interaktive Zweig der Oberfläche und bedient Nutzerinnen ohne vorab spezifizierte Frage. Sie steht als zweiter gleichberechtigter Zweig neben der [[analyse]] und arbeitet mit Information-Visualisation, nicht mit vorgegebenen Auswertungsachsen.
 
-Die konzeptionelle Trennung ist in [[decisions#Exploration und Analyse als getrennte Bereiche]] festgehalten. Erste implementierte Sub-Seite ist der **Zeitstrom** unter `/exploration/zeitstrom.html`; weitere visuelle Zugänge (Personen-Netzwerk, Karten, Sankey) sind konzipiert. Die quantitativen Verteilungen (frühere „Auswertungen") gehören inhaltlich zur [[analyse]] und wurden dorthin verschoben. Siehe [[decisions#Auswertungen gehört in den Analyse-Bereich]].
+Die konzeptionelle Trennung ist in [[decisions#Exploration und Analyse als getrennte Bereiche]] festgehalten. Implementierte Sub-Seiten sind der **Zeitstrom** unter `/exploration/zeitstrom.html` und das **Personennetzwerk** unter `/exploration/personennetzwerk.html`; ein Sankey-Diagramm zu Transaktionsflüssen ist konzipiert, aber noch nicht umgesetzt. Geographische Karten sind bewusst nicht vorgesehen — der Edition fehlt die für eine sinnvolle Karte erforderliche flächendeckende Georeferenzierung des Ortsregisters, und Orts-Aussagen liegen ohnehin außerhalb des Forschungsfokus. Die quantitativen Verteilungen (frühere „Auswertungen") gehören inhaltlich zur [[analyse]] und wurden dorthin verschoben. Siehe [[decisions#Auswertungen gehört in den Analyse-Bereich]].
 
 ## Zielsetzung
 
@@ -28,15 +28,17 @@ Der Filter-Stand wird in die URL serialisiert (`?dec=1300-1410&stack=tx&brush=13
 
 Pattern, das die Sub-Seite trägt: Überblick → Brush → Quellen. Sie ergänzt die [[analyse#Zwei Sub-Seiten|Auswertungen]] um eine zeitlich-visuelle Erkundung — wer dort liest, dass Stiftungen ab den 1340ern zunehmen, kann hier sehen, in welchen Jahrzehnten die belegende Quellendichte trägt.
 
-### Personen-Netzwerk (geplant)
+### Personennetzwerk (vorhanden)
 
-Force-Layout über das Co-Occurrence-Netzwerk der Personen, gefiltert nach Beziehungstyp (Verwandtschaft, Beruf, Vertretung, Freundschaft). Die zugrundeliegende **Co-Occurrence-Definition** ist enger als reines Auftreten in derselben Quelle: zwei Personen ko-okkurrieren, wenn sie im selben `<rs type="event">` annotiert sind, also Beteiligte desselben Rechtsgeschäfts. Damit zählen Zeugenreihen und Urteilslisten nicht als eine einzelne Beziehung. Die Frequenz zwischen zwei Personen ist die Anzahl der gemeinsamen Events.
+Ego-Layout um eine Person: Mittelpunkt ist eine ausgewählte Person, ihre direkten annotierten Beziehungen (Verwandtschaft, Beruf / Stand, Vertretung, Freundschaft) liegen radial drumherum. Klick auf einen Nachbar verlagert den Mittelpunkt, so wandert man durchs Netz. Sidebar-Filter: Personen-Suche (Autocomplete) und Beziehungstyp-Chips (multi-select, mindestens einer aktiv).
 
-Die Visualisierung ist auf eine händische Auswahl-Strategie angewiesen, weil die meisten Co-Occurrence-Kanten Gewicht 1 haben — ein Strukturartefakt der Urkundenform, kein analytisch belastbares Beziehungsmaß. Eine Force-Layout-Darstellung über das Gesamtkorpus würde als unleserliches „Knäuel" erscheinen. Sinnvolle Filter-Strategien: Beschränkung auf eine Personenauswahl mit gemeinsamem Bestand, Beschränkung auf Beziehungstyp, Beschränkung auf Mindestkantengewicht.
+Bewusst gegen Force-Layout: die meisten Co-Occurrence-Kanten haben Gewicht 1 — ein Strukturartefakt der Urkundenform, kein analytisch belastbares Beziehungsmaß. Ein Force-Layout über das Gesamt-Beziehungsnetz würde als unleserliches „Knäuel" erscheinen, in dem nichts erkennbar ist. Das Ego-Layout schneidet stattdessen pro Schritt einen lesbaren lokalen Ausschnitt — analog zum klassischen Genealogie-Stammbaum, nur mit Klick-Hopping als Navigation. Globale Topologie lässt sich daraus durch sequenzielles Erkunden rekonstruieren.
 
-### Karten-Visualisierung (geplant)
+Datenquelle: `epic_b.json::persons`, jede Person trägt eine `rels`-Liste mit `{type, label, label_norm, source_file_key, related_key}`. Beruflich-institutionelle Beziehungen (`occ`) zeigen Person → Organisation; sie werden als Knoten anderer Farbe dargestellt, sind aber nicht weiter klickbar (Org-Profile existieren noch nicht). Verwandtschaft, Vertretung und Freundschaft sind person-zu-person und tragen das Klick-Hopping.
 
-Geografische Verteilung der dokumentierten Orte mit Drill-down auf die zugehörigen Quellen. Voraussetzung ist die Freigabe des Ortsregisters mit Georeferenzierung. Aktuell ist nur ein Bruchteil der Orts-Einträge mit Koordinaten versehen; die Karte muss diesen Coverage-Stand sichtbar machen. Geplant ist Clustering nach Dichte, Zeitraum-Filter mit animierter Slider-Bewegung, Klick auf einen Marker führt zur Quellenliste.
+Detail-Tabelle unter dem Graphen listet alle Verbindungen der Mittelpunkt-Person mit Beziehungstyp, Bezeichnung, Beleg-Anzahl und „+"-Knopf für den [[ui-design#Wissenskorb]] (Sammlung verlinkter Personen).
+
+URL-State: `?p=pe__id&types=kin,occ` macht jeden Personen-Mittelpunkt zitierbar.
 
 ### Sankey-Diagramm der Transaktionen (geplant)
 

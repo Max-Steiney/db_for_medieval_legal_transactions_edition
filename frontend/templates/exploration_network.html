@@ -1,0 +1,127 @@
+{% extends "base.html" %}
+{% from "macros.html" import glossary_tip, active_filters,
+                              sidebar_block, sidebar_chip_group,
+                              sidebar_reset_button %}
+
+{% block title %}Personennetzwerk{% endblock %}
+
+{% block head %}
+<link rel="stylesheet" href="{{ root_path }}/static/css/index.css?v={{ asset_v }}">
+<link rel="stylesheet" href="{{ root_path }}/static/css/exploration.css?v={{ asset_v }}">
+{% endblock %}
+
+{% block content %}
+<div class="index-page exploration-network-page">
+
+    <header class="index-header aggregat-header">
+        <h1>Personennetzwerk</h1>
+        <p class="explore-page-intro">
+            Annotierte Beziehungen zwischen Personen aus den TEI-Quellen
+            (Verwandtschaft, Beruf / Stand, Vertretung, Freundschaft) als
+            Ego-Netzwerk: eine Person im Zentrum, ihre direkten Verbindungen
+            radial drumherum. Klick auf eine Nachbar-Person verlagert das
+            Zentrum &mdash; so wandert man durchs Netz.
+        </p>
+        {{ active_filters() }}
+    </header>
+
+    <div class="index-layout">
+
+        <aside class="index-sidebar" aria-label="Filter">
+
+            {% call sidebar_block('Person', 'Im Korpus suchen — Treffer erscheinen unten') %}
+                <div class="net-search-wrap">
+                    <input type="search" id="net-person-search" class="aggregat-search-input"
+                           placeholder="Name eingeben&hellip;" autocomplete="off"
+                           aria-label="Person suchen">
+                    <ul class="net-search-results" id="net-search-results" hidden></ul>
+                </div>
+            {% endcall %}
+
+            {% call sidebar_block('Beziehungstyp', 'Mehrfachauswahl m&ouml;glich') %}
+                <div class="form-filter-chips form-filter-chips--stack" id="net-type-filter"
+                     role="group" aria-label="Beziehungstyp">
+                    <button type="button" class="form-filter-chip is-active"
+                            data-net-type="kin" aria-pressed="true">
+                        <span class="form-filter-chip-label">Verwandtschaft</span>
+                    </button>
+                    <button type="button" class="form-filter-chip is-active"
+                            data-net-type="occ" aria-pressed="true">
+                        <span class="form-filter-chip-label">Beruf / Stand</span>
+                    </button>
+                    <button type="button" class="form-filter-chip is-active"
+                            data-net-type="rep" aria-pressed="true">
+                        <span class="form-filter-chip-label">Vertretung</span>
+                    </button>
+                    <button type="button" class="form-filter-chip is-active"
+                            data-net-type="friend" aria-pressed="true">
+                        <span class="form-filter-chip-label">Freundschaft</span>
+                    </button>
+                </div>
+            {% endcall %}
+
+            {{ sidebar_reset_button() }}
+
+        </aside>
+
+        <div class="index-main">
+
+            <section class="explore-network-block">
+                <header class="aggregat-quadrant-head">
+                    <h2 id="net-graph-heading">Vorschl&auml;ge</h2>
+                    <span class="aggregat-quadrant-source">
+                        <span class="prov-stat-container">
+                            {% call glossary_tip('gloss-net-source', 'Personennetzwerk') %}
+                                <p class="prov-def">Annotierte Beziehungen zwischen Personen aus den TEI-Quellen, gruppiert in Verwandtschaft (kin), Beruf / Stand (occ &mdash; Person zu Organisation), Vertretung (rep) und Freundschaft (friend). Eine Beziehung kann in mehreren Quellen belegt sein.</p>
+                                <footer class="prov-foot">
+                                    <span class="prov-foot-source"><code>data/epic_b.json::persons</code></span>
+                                </footer>
+                            {% endcall %}
+                        </span>
+                    </span>
+                </header>
+
+                <div class="explore-network-canvas" id="net-canvas"></div>
+                <p class="explore-network-hint" id="net-hint">
+                    W&auml;hle eine Person aus der Suche oder klicke auf einen Vorschlag, um ins Netz einzutreten.
+                </p>
+            </section>
+
+            <section class="explore-network-detail" id="net-detail" hidden>
+                <header class="aggregat-quadrant-head">
+                    <h2><span id="net-detail-title">Verbindungen</span>
+                        <span class="aggregat-quadrant-h2-meta" id="net-detail-meta"></span>
+                    </h2>
+                </header>
+                <div class="aggregat-table--labels-wrap">
+                    <table class="aggregat-table aggregat-table--labels" id="net-detail-table">
+                        <thead>
+                            <tr>
+                                <th class="col-label">Person</th>
+                                <th>Beziehung</th>
+                                <th>Bezeichnung</th>
+                                <th class="num">Belege</th>
+                                <th class="col-actions" aria-label="Aktionen"></th>
+                            </tr>
+                        </thead>
+                        <tbody id="net-detail-tbody"></tbody>
+                    </table>
+                </div>
+            </section>
+
+        </div>
+
+    </div>
+
+</div>
+{% endblock %}
+
+{% block scripts %}
+<script src="{{ root_path }}/static/js/tooltips.js?v={{ asset_v }}"></script>
+<script src="{{ root_path }}/static/js/table-infra.js?v={{ asset_v }}"></script>
+<script src="{{ root_path }}/static/js/viz-core.js?v={{ asset_v }}"></script>
+<script id="network-data-epic-b" type="application/json">{{ epic_b_json|safe }}</script>
+<script src="{{ root_path }}/static/js/exploration-network.js?v={{ asset_v }}"></script>
+{% endblock %}
+
+{% block footer_info %}Personennetzwerk generiert am {{ build_date }}{% endblock %}

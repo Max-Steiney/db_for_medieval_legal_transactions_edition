@@ -12,6 +12,18 @@ Einträge in umgekehrt chronologischer Reihenfolge, neueste oben.
 
 ---
 
+## 2026-05-03 Personennetzwerk als zweite Exploration-Sub-Seite, Karten-Idee verworfen
+
+Zweite visuelle Sub-Seite unter `/exploration/`: ein **Personennetzwerk** als Ego-Layout. Eine Person sitzt im Mittelpunkt, ihre direkten annotierten Beziehungen liegen radial drumherum; Klick auf einen Nachbar verlagert das Zentrum, so wandert man durchs Netz. Personen-Suche, Beziehungstyp-Chips (Verwandtschaft / Beruf-Stand / Vertretung / Freundschaft) und URL-Sync sind die Bedien-Achsen. Detail-Tabelle unter dem Graphen listet alle Verbindungen mit Beziehungstyp, Bezeichnung, Beleg-Anzahl und „+"-Knopf für den Wissenskorb (Personen-Sammlung).
+
+Bewusst gegen Force-Layout: die meisten Co-Occurrence-Kanten haben Gewicht 1 — ein Strukturartefakt der Urkundenform, kein analytisch belastbares Beziehungsmaß. Ein Force-Layout über das Gesamt-Beziehungsnetz würde als unleserliches „Knäuel" erscheinen, in dem nichts erkennbar ist. Das Ego-Layout schneidet stattdessen pro Schritt einen lesbaren lokalen Ausschnitt — analog zum klassischen Genealogie-Stammbaum, nur mit Klick-Hopping als Navigation. Globale Topologie lässt sich daraus durch sequenzielles Erkunden rekonstruieren.
+
+Datenpfad: epic_b-Aggregator wurde erweitert um das Feld `r` (related_key) in jeder rels-Eintrag, damit die Person-zu-Person-Kanten clientseitig rekonstruierbar sind. Vorher waren nur die Selbstreferenzen ohne Gegenüber im JSON. Aufwand: ein zusätzliches Feld pro rels-Eintrag, kein Schema-Bruch.
+
+`occ`-Beziehungen (Beruf / Stand) zeigen Person → Organisation; sie werden als Knoten anderer Farbe (Sand) dargestellt, sind aber nicht weiter klickbar — Org-Profile gibt es noch nicht. Die anderen drei Typen (kin/rep/friend) tragen das Klick-Hopping.
+
+**Karten-Idee verworfen.** Eine geographische Visualisierung war als dritte geplante Sub-Seite skizziert (siehe ältere Iterationen von `exploration.md`). Verworfen aus zwei Gründen: erstens fehlt die für eine sinnvolle Karte erforderliche flächendeckende Georeferenzierung des Ortsregisters (nur ein Bruchteil der Orts-Einträge hat Koordinaten), zweitens liegen Orts-Aussagen ohnehin außerhalb des Forschungsfokus der Edition. Knowledge-Dokumente sweepen-bereinigt von der Karten-Erwähnung; geplant bleibt nur noch das Sankey-Diagramm zu Transaktionsflüssen.
+
 ## 2026-05-03 URL-Sync, Cross-Page-Sprung, Wissenskorb
 
 Drei verbundene Verbesserungen, die die identifizierten Workflow-Brüche zwischen den Seiten schließen.

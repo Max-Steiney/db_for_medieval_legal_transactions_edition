@@ -9,16 +9,16 @@
     <title>Startseite — Datenbank</title>
     <link rel="preload" as="font" type="font/woff2" crossorigin
           href="./static/fonts/inter-400-latin.woff2">
-    <link rel="stylesheet" href="./static/css/fonts.css?v=20260503122306">
-    <link rel="stylesheet" href="./static/css/tokens.css?v=20260503122306">
-    <link rel="stylesheet" href="./static/css/base.css?v=20260503122306">
-    <link rel="stylesheet" href="./static/css/components.css?v=20260503122306">
-    <link rel="stylesheet" href="./static/css/responsive.css?v=20260503122306">
-    <link rel="stylesheet" href="./static/css/print.css?v=20260503122306">
-    <link rel="stylesheet" href="./static/css/provenance.css?v=20260503122306">
+    <link rel="stylesheet" href="./static/css/fonts.css?v=20260503130025">
+    <link rel="stylesheet" href="./static/css/tokens.css?v=20260503130025">
+    <link rel="stylesheet" href="./static/css/base.css?v=20260503130025">
+    <link rel="stylesheet" href="./static/css/components.css?v=20260503130025">
+    <link rel="stylesheet" href="./static/css/responsive.css?v=20260503130025">
+    <link rel="stylesheet" href="./static/css/print.css?v=20260503130025">
+    <link rel="stylesheet" href="./static/css/provenance.css?v=20260503130025">
     
-<link rel="stylesheet" href="./static/css/exploration.css?v=20260503122306">
-<link rel="stylesheet" href="./static/css/startseite.css?v=20260503122306">
+<link rel="stylesheet" href="./static/css/exploration.css?v=20260503130025">
+<link rel="stylesheet" href="./static/css/startseite.css?v=20260503130025">
 
 </head>
 <body data-root-path="."
@@ -54,6 +54,7 @@
                     <button class="nav-dropdown-trigger" aria-expanded="false" aria-haspopup="true">Exploration <span class="nav-dropdown-arrow">&#x25BE;</span></button>
                     <div class="nav-dropdown-menu">
                         <a href="./exploration/zeitstrom.html">Zeitstrom</a>
+                        <a href="./exploration/personennetzwerk.html">Personennetzwerk</a>
                     </div>
                 </div>
                 <div class="nav-dropdown">
@@ -470,12 +471,12 @@
                     <p class="explore-hub-card-desc">Quellendichte &uuml;ber die Zeit, gestapelt nach Korpus, Erschlie&szlig;ungsform, Geschlecht oder Transaktionstyp. Brush-Auswahl &ouml;ffnet die enthaltenen Quellen.</p>
                 </a>
 
-                <div class="explore-hub-card explore-hub-card--coming">
+                <a href="./exploration/personennetzwerk.html" class="explore-hub-card explore-hub-card--active">
                     <div class="explore-hub-card-icon">
                         <svg width="40" height="40" viewBox="0 0 40 40" fill="none" xmlns="http://www.w3.org/2000/svg" aria-hidden="true">
                             <circle cx="10" cy="10" r="3" stroke="currentColor" stroke-width="1.5" fill="none"/>
                             <circle cx="30" cy="10" r="3" stroke="currentColor" stroke-width="1.5" fill="none"/>
-                            <circle cx="20" cy="22" r="3" stroke="currentColor" stroke-width="1.5" fill="none"/>
+                            <circle cx="20" cy="22" r="3" stroke="currentColor" stroke-width="1.5" fill="currentColor" fill-opacity="0.2"/>
                             <circle cx="10" cy="32" r="3" stroke="currentColor" stroke-width="1.5" fill="none"/>
                             <circle cx="30" cy="32" r="3" stroke="currentColor" stroke-width="1.5" fill="none"/>
                             <line x1="12" y1="12" x2="18" y2="20" stroke="currentColor" stroke-width="1.2"/>
@@ -484,9 +485,9 @@
                             <line x1="22" y1="24" x2="28" y2="30" stroke="currentColor" stroke-width="1.2"/>
                         </svg>
                     </div>
-                    <h2 class="explore-hub-card-title">Personen-Netzwerk &middot; Karten</h2>
-                    <p class="explore-hub-card-desc">Weitere interaktive Visualisierungen &mdash; in Vorbereitung.</p>
-                </div>
+                    <h2 class="explore-hub-card-title">Personennetzwerk</h2>
+                    <p class="explore-hub-card-desc">Annotierte Beziehungen zwischen Personen (Verwandtschaft, Beruf, Vertretung, Freundschaft) als Ego-Layout: eine Person im Zentrum, Klick auf Nachbar verlagert das Zentrum.</p>
+                </a>
 
             </div>
         </div>
@@ -512,9 +513,9 @@
         </div>
     </footer>
 
-    <script src="./static/js/core.js?v=20260503122306"></script>
-    <script src="./static/js/provenance.js?v=20260503122306"></script>
-    <script src="./static/js/wissenskorb.js?v=20260503122306"></script>
+    <script src="./static/js/core.js?v=20260503130025"></script>
+    <script src="./static/js/provenance.js?v=20260503130025"></script>
+    <script src="./static/js/wissenskorb.js?v=20260503130025"></script>
     
 </body>
 </html>

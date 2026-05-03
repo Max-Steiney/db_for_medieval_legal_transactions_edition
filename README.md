@@ -58,7 +58,8 @@ Die Edition gliedert sich in vier Top-Level-Bereiche:
   - `/analysis/index.html` — Abfragen-Modus mit vorgefertigten Template-Familien.
 - **Exploration** — visuell-interaktive Erkundung der Datenstruktur:
   - `/exploration/zeitstrom.html` — gestapelter Bar-Chart der Quellendichte pro Jahrzehnt; Stack-Achse umschaltbar (Quellenkorpus / Erschließungsform / Geschlecht / Transaktionstyp); Brush-zu-Drill-down; Stack-Kategorie isolierbar. Filter-Stand in der URL.
-  - Personen-Netzwerk, Karten, Sankey — geplant.
+  - `/exploration/personennetzwerk.html` — Ego-Layout um eine Person; Klick auf Nachbar verlagert Zentrum; Beziehungstyp-Filter (Verwandtschaft / Beruf-Stand / Vertretung / Freundschaft); Personen-Suche.
+  - Sankey-Diagramm zu Transaktionsflüssen — geplant.
 
 Quer durch alle Quellen-Listen liegt der **Wissenskorb** (`/korb.html`): clientseitige Sammelmappe in `localStorage`, mit „+"-Knopf neben jedem Quellen-Eintrag, Live-Badge im Nav, CSV-Export auf der Korb-Seite.
 

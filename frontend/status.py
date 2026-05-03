@@ -81,6 +81,7 @@ def _html_pages() -> list:
         "register/places.html",
         "analysis/auswertungen.html",
         "exploration/zeitstrom.html",
+        "exploration/personennetzwerk.html",
         "korb.html",
         "project/edition-guidelines.html",
         "project/about.html",

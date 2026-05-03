@@ -197,12 +197,15 @@ def aggregate_epic_b(docs_data_dir: Path) -> dict:
                 if fk:
                     label_sex_fkeys[(label_norm, rel_name, sex)].add(fk)
 
-            # Per-person relationship entry (use normalised label for matching)
+            # Per-person relationship entry (use normalised label for matching).
+            # related_key (rk) wird mitgefuehrt, damit die Personen-Netzwerk-
+            # Visualisierung Person-zu-Person-Kanten bauen kann.
             person_rels[pk].append({
                 "t": rel_name,
                 "l": label.strip().strip("|").strip(),
                 "ln": _norm_label(label_lower) if label_lower else "",
                 "f": fk,
+                "r": r.get("related_key", "").strip(),
             })
 
     # ── Build overview ──

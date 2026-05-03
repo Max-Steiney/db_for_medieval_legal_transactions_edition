@@ -780,6 +780,28 @@ def _build_exploration_timeline(all_metadata, env):
     print("  Zeitstrom: exploration/zeitstrom.html")
 
 
+def _build_exploration_network(env):
+    """Build the Personennetzwerk page (exploration/personennetzwerk.html).
+    Ego-Layout um eine Person herum, Quelle epic_b.json::persons mit den
+    erweiterten rels (related_key). Page ist data-driven: das eingebettete
+    JSON ist die einzige Datenquelle, Personen-Nachladen entfaellt.
+    """
+    epic_b_path = DATA_DIR / "epic_b.json"
+    epic_b_json = (epic_b_path.read_text(encoding="utf-8")
+                   if epic_b_path.exists() else "{}")
+
+    explore_dir = DOCS_DIR / "exploration"
+    explore_dir.mkdir(parents=True, exist_ok=True)
+
+    html = env.get_template("exploration_network.html").render(
+        build_date=_format_german_date(date.today()),
+        epic_b_json=epic_b_json,
+        root_path="..",
+    )
+    (explore_dir / "personennetzwerk.html").write_text(html, encoding="utf-8")
+    print("  Personennetzwerk: exploration/personennetzwerk.html")
+
+
 # ---------------------------------------------------------------------------
 # Statische Markdown-Seiten (about, glossary, guidelines, impressum)
 # ---------------------------------------------------------------------------

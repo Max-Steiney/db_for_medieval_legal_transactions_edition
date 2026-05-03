@@ -22,9 +22,11 @@ docs/                     Build-Output, von GitHub Pages serviert
                             auswertungen.html  quantitative Verteilungen (Donut, Bar, Tabelle), Drill-down + Cross-Nav
                             index.html         Abfragen (Template-Familien)
   /exploration/           visuell-interaktive Erkundung
-                            zeitstrom.html     gestapelter Timeline-Bar-Chart mit Brush-to-Drill-down,
-                                               Stack-Kategorie isolierbar
-                            (Personen-Netzwerk, Karten, Sankey — geplant)
+                            zeitstrom.html         gestapelter Timeline-Bar-Chart mit Brush-to-Drill-down,
+                                                   Stack-Kategorie isolierbar
+                            personennetzwerk.html  Ego-Layout um eine Person, Klick verlagert Zentrum
+                            (Sankey — geplant; keine Karten — Ortsregister ist nicht freigegeben
+                            und Orts-Aussagen liegen außerhalb des Forschungsfokus)
   korb.html               Wissenskorb (clientseitig, localStorage); CSV-Export, Cross-Tab-Sync
   /project/               About, Statistik, Qualität, Editionsrichtlinien, Glossar
   /static/                CSS, JS, Fonts
