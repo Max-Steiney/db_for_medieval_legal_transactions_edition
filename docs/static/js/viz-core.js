@@ -165,6 +165,15 @@ let VizCore = (function () {
             .then(preprocessDocs);
     }
 
+    // docs_lookup.json: file_key (z. B. "f__QGW_0a") -> Doc-Stammdaten
+    // {u: url, i: idno, d: display-Datum, c: Korpus-Label, r: Regest}.
+    // Fuer Drill-down-Listen, die nur file_keys speichern (drill_down in
+    // epic_a/b/c).
+    function loadDocsLookup(rootPath) {
+        const root = rootPath || (window.ROOT_PATH || '..');
+        return fetch(root + '/data/docs_lookup.json').then(r => r.json());
+    }
+
     // ---------------------------------------------------------------------
     // Chip-Active-Toggle-Helper
     // Markiert in einer Chip-Gruppe die zu activeKey passende Schaltflaeche
@@ -249,6 +258,87 @@ let VizCore = (function () {
     }
 
     // ---------------------------------------------------------------------
+    // Drill-Down-Overlay
+    // Verwendet das drill_down_overlay()-Macro aus macros.html (das bereits
+    // CSS, Header, Tabelle, Footer-Count und Schliessen-Button mitbringt).
+    // openDrillOverlay({ overlayId, title, fileKeys, docsLookup,
+    //                    decadeFilter, note }) populiert die Overlay-Tabelle
+    // und macht sie sichtbar. Der Aufrufer hat den Overlay-Schliess-Handler
+    // einmal via bindDrillOverlay() initialisiert.
+    // ---------------------------------------------------------------------
+    function bindDrillOverlay(opts) {
+        const id = opts.overlayId;
+        const overlay = document.getElementById(id);
+        const closeBtn = document.getElementById(id + '-close');
+        if (!overlay || !closeBtn) return;
+        function close() { overlay.classList.add('hidden'); overlay.setAttribute('aria-hidden', 'true'); }
+        closeBtn.addEventListener('click', close);
+        overlay.addEventListener('click', (e) => {
+            if (e.target === overlay) close();   // Klick auf Backdrop
+        });
+        document.addEventListener('keydown', (e) => {
+            if (e.key === 'Escape' && !overlay.classList.contains('hidden')) close();
+        });
+    }
+
+    function openDrillOverlay(opts) {
+        const id = opts.overlayId;
+        const overlay = document.getElementById(id);
+        if (!overlay) return;
+        const titleEl = document.getElementById(id + '-title');
+        const tbody = document.getElementById(id + '-tbody');
+        const countEl = document.getElementById(id + '-count');
+        const lookup = opts.docsLookup || {};
+        const decadeFilter = opts.decadeFilter || null;
+
+        // file_keys -> Doc-Records, optional nach Dekade filtern (Datum
+        // aus dem d-Feld der Lookup-Eintraege; erste 4 Zeichen = Jahr).
+        const seen = new Set();
+        const docs = [];
+        for (const fk of (opts.fileKeys || [])) {
+            if (seen.has(fk)) continue;
+            seen.add(fk);
+            const e = lookup[fk];
+            if (!e) continue;
+            if (decadeFilter) {
+                const yearStr = (e.d || '').slice(0, 4);
+                if (/^\d{4}$/.test(yearStr)) {
+                    const dec = decadeOf(parseInt(yearStr, 10));
+                    if (!decadeFilter.contains(dec)) continue;
+                }
+            }
+            docs.push({ key: fk, ...e });
+        }
+        // Sortierung nach Datum (d ist YYYY...).
+        docs.sort((a, b) => (a.d || '').localeCompare(b.d || ''));
+
+        if (titleEl) titleEl.textContent = opts.title || 'Quellen';
+        if (countEl) {
+            const noteText = opts.note ? ' · ' + opts.note : '';
+            countEl.textContent = fmt(docs.length) + ' Quellen' + noteText;
+        }
+
+        if (tbody) {
+            const root = (window.ROOT_PATH || '..');
+            const SHOW = 500;
+            const rows = docs.slice(0, SHOW).map(d => `<tr>
+                <td><a href="${root}/${d.u}">${d.i || ''}</a></td>
+                <td>${d.d || ''}</td>
+                <td>${d.c || ''}</td>
+                <td class="cell-regest">${d.r || ''}</td>
+            </tr>`);
+            if (docs.length > SHOW) {
+                rows.push(`<tr><td colspan="4" class="aggregat-empty">… und ${fmt(docs.length - SHOW)} weitere; bitte enger eingrenzen.</td></tr>`);
+            }
+            tbody.innerHTML = rows.join('') ||
+                '<tr><td colspan="4" class="aggregat-empty">Keine Quellen gefunden.</td></tr>';
+        }
+
+        overlay.classList.remove('hidden');
+        overlay.setAttribute('aria-hidden', 'false');
+    }
+
+    // ---------------------------------------------------------------------
     // Active-Filter-Strip
     // renderActiveFilters(containerId, filters) — filters ist eine Array
     // von Objekten {label, onClear}. Pro Eintrag wird eine entfernbare
@@ -283,10 +373,14 @@ let VizCore = (function () {
         readJsonScript,
         preprocessDocs,
         loadSearchJson,
+        loadDocsLookup,
         // Sidebar
         bindRangeSlider,
         resetSliderInputs,
         // Filter-Strip
         renderActiveFilters,
+        // Drill-Down
+        bindDrillOverlay,
+        openDrillOverlay,
     };
 })();

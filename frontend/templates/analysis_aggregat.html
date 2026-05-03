@@ -2,7 +2,7 @@
 {% from "macros.html" import search_box, glossary_tip, active_filters,
                               sidebar_block, sidebar_range_slider,
                               sidebar_chip_group, sidebar_corpus_chips,
-                              sidebar_reset_button %}
+                              sidebar_reset_button, drill_down_overlay %}
 
 {% block title %}Auswertungen{% endblock %}
 
@@ -210,6 +210,8 @@
         </div>
 
     </div>
+
+    {{ drill_down_overlay('aggregat-drilldown', wide=true) }}
 
 </div>
 {% endblock %}

@@ -12,6 +12,7 @@
     const EPIC_A = V.readJsonScript('aggregat-data-epic-a', { observations: {} });
     const EPIC_B = V.readJsonScript('aggregat-data-epic-b', { overview: {}, labels: [] });
     const EPIC_C = V.readJsonScript('aggregat-data-epic-c', { observations: {} });
+    let DOCS_LOOKUP = {};   // file_key -> doc-Stammdaten, async geladen
 
     // ---------------------------------------------------------------------
     // Filter-State
@@ -345,9 +346,12 @@
         const grandTotal = sorted.reduce((s, [, c]) => s + c, 0);
         const maxVal = top.length ? top[0][1] : 1;
 
-        const barRow = (label, val, cssClass = '') => {
+        // txKey wird ans Markup gehaengt, damit der Drill-Click-Handler
+        // den Pipeline-Schluessel zur Aufloesung kennt (data-tx).
+        const barRow = (label, val, txKey, cssClass = '') => {
             const wRel = (val / maxVal * 100).toFixed(2);
-            return `<div class="aggregat-bar-row ${cssClass}">
+            const txAttr = txKey ? ` data-tx="${txKey}"` : '';
+            return `<div class="aggregat-bar-row ${cssClass}"${txAttr}>
                 <span class="aggregat-bar-label">${label}</span>
                 <div class="aggregat-bar-track">
                     <div class="aggregat-bar-fill" data-w="${wRel}"></div>
@@ -357,12 +361,12 @@
             </div>`;
         };
 
-        const rows = top.map(([k, c]) => barRow(V.labelize(k), c));
+        const rows = top.map(([k, c]) => barRow(V.labelize(k), c, k));
 
         if (rest.length) {
             // Aufklappbare Sonstige-Sammelzeile: Klick toggelt is-open auf
             // dem Wrapper, das CSS zeigt dann die versteckten rest-Bars.
-            const restRows = rest.map(([k, c]) => barRow(V.labelize(k), c, 'is-rest-item'));
+            const restRows = rest.map(([k, c]) => barRow(V.labelize(k), c, k, 'is-rest-item'));
             rows.push(`<div class="aggregat-bar-rest" data-rest-toggle>
                 <button type="button" class="aggregat-bar-row aggregat-bar-row--rest"
                         aria-expanded="false">
@@ -608,6 +612,135 @@
     }
 
     // ---------------------------------------------------------------------
+    // Drill-Down: Klick auf Donut-Arc / Bar / Bezeichnung -> Quellen-Liste.
+    // Sammelt file_keys aus den drill_down-Indices der epic_*-Aggregate
+    // und ruft V.openDrillOverlay zum Anzeigen.
+    // ---------------------------------------------------------------------
+    function drillRoleSex(roleKey) {
+        const dd = ((EPIC_A.drill_down || {}).role_sex || {})[roleKey] || {};
+        const sex = STATE.sex;
+        const keys = [];
+        if (sex === 'all' || sex === 'm') (dd.m || []).forEach(k => keys.push(k));
+        if (sex === 'all' || sex === 'f') (dd.f || []).forEach(k => keys.push(k));
+        if (sex === 'all' || sex === 'unspecified') (dd.unspecified || []).forEach(k => keys.push(k));
+        const label = V.ROLE_LABELS[roleKey] || roleKey || 'keine Rolle';
+        const sexNote = (sex !== 'all') ? ' · ' + (V.SEX_LABELS_DE[sex] || sex) : '';
+        openDrill('Funktionsrolle: ' + label + sexNote, keys);
+    }
+    function drillRelationSex(relKey) {
+        const dd = (EPIC_B.drill_down || {}).type_sex || {};
+        const sex = STATE.sex;
+        const keys = [];
+        // type_sex Keys sind composite: "kin_m", "kin_f", "occ_m", ...
+        if (sex === 'all' || sex === 'm') (dd[relKey + '_m'] || []).forEach(k => keys.push(k));
+        if (sex === 'all' || sex === 'f') (dd[relKey + '_f'] || []).forEach(k => keys.push(k));
+        const label = V.REL_LABELS[relKey] || relKey;
+        const sexNote = (sex !== 'all') ? ' · ' + (V.SEX_LABELS_DE[sex] || sex) : '';
+        openDrill('Beziehungstyp: ' + label + sexNote, keys);
+    }
+    function drillTxType(txKey) {
+        // tx_type_decade.{type}.{decade} -> [file_keys]
+        const dd = ((EPIC_C.drill_down || {}).tx_type_decade || {})[txKey] || {};
+        const keys = [];
+        for (const [d, fks] of Object.entries(dd)) {
+            if (!decFilter.contains(d)) continue;
+            fks.forEach(k => keys.push(k));
+        }
+        openDrill('Transaktionstyp: ' + V.labelize(txKey), keys);
+    }
+    function drillLabel(label) {
+        // label_sex Keys sind composite: "{lowercased_label}__{m|f}"
+        const dd = (EPIC_B.drill_down || {}).label_sex || {};
+        const sex = STATE.sex;
+        const lc = label.toLowerCase();
+        const keys = [];
+        if (sex === 'all' || sex === 'm') (dd[lc + '__m'] || []).forEach(k => keys.push(k));
+        if (sex === 'all' || sex === 'f') (dd[lc + '__f'] || []).forEach(k => keys.push(k));
+        const sexNote = (sex !== 'all') ? ' · ' + (V.SEX_LABELS_DE[sex] || sex) : '';
+        openDrill('Bezeichnung: ' + label + sexNote, keys);
+    }
+
+    function openDrill(title, fileKeys) {
+        if (!Object.keys(DOCS_LOOKUP).length) {
+            // Lookup ist async; der erste Klick faengt das ab und laedt nach.
+            V.loadDocsLookup().then(lk => {
+                DOCS_LOOKUP = lk;
+                openDrill(title, fileKeys);
+            });
+            return;
+        }
+        V.openDrillOverlay({
+            overlayId: 'aggregat-drilldown',
+            title: title,
+            fileKeys: fileKeys,
+            docsLookup: DOCS_LOOKUP,
+            decadeFilter: decFilter.isActive() ? decFilter : null,
+        });
+    }
+
+    function bindDrillClicks() {
+        // Donut-Arcs: per Event-Delegation auf den jeweiligen Donut-Container
+        const rolesDonut = document.getElementById('roles-donut');
+        if (rolesDonut) {
+            rolesDonut.addEventListener('click', (e) => {
+                const arc = e.target.closest('.donut-arc');
+                if (!arc) return;
+                drillRoleSex(arc.dataset.key || '');
+            });
+        }
+        const relsDonut = document.getElementById('relations-donut');
+        if (relsDonut) {
+            relsDonut.addEventListener('click', (e) => {
+                const arc = e.target.closest('.donut-arc');
+                if (!arc) return;
+                drillRelationSex(arc.dataset.key || '');
+            });
+        }
+        // Legend-Items oeffnen denselben Drill (besser klickbar als die
+        // schmalen SVG-Arcs)
+        const rolesLegend = document.getElementById('roles-legend');
+        if (rolesLegend) {
+            rolesLegend.addEventListener('click', (e) => {
+                const item = e.target.closest('.legend-item');
+                if (!item) return;
+                drillRoleSex(item.dataset.key || '');
+            });
+        }
+        const relsLegend = document.getElementById('relations-legend');
+        if (relsLegend) {
+            relsLegend.addEventListener('click', (e) => {
+                const item = e.target.closest('.legend-item');
+                if (!item) return;
+                drillRelationSex(item.dataset.key || '');
+            });
+        }
+        // Tx-Bars: Click auf normale Bar-Reihen, nicht auf die Sonstige-
+        // Toggle-Reihe und nicht auf die Sub-Items (deren Tx-Key haben wir
+        // im Renderer aktuell noch nicht ans data-Attribut gehaengt; die
+        // werden in einer naechsten Iteration klickbar).
+        const txBars = document.getElementById('tx-bars');
+        if (txBars) {
+            txBars.addEventListener('click', (e) => {
+                const row = e.target.closest('.aggregat-bar-row');
+                if (!row) return;
+                if (row.classList.contains('aggregat-bar-row--rest')) return;  // Toggle, kein Drill
+                const txKey = row.dataset.tx;
+                if (txKey) drillTxType(txKey);
+            });
+        }
+        // Bezeichnungs-Tabelle
+        const labelsTable = document.getElementById('labels-table');
+        if (labelsTable) {
+            labelsTable.addEventListener('click', (e) => {
+                const tr = e.target.closest('tr[data-label]');
+                if (!tr) return;
+                const label = decodeURIComponent(tr.dataset.label);
+                drillLabel(label);
+            });
+        }
+    }
+
+    // ---------------------------------------------------------------------
     // Master-Render
     // ---------------------------------------------------------------------
     function renderAll() {
@@ -624,6 +757,12 @@
         bindRolesToggle();
         bindLabelsToolbar();
         bindReset();
+        V.bindDrillOverlay({ overlayId: 'aggregat-drilldown' });
+        bindDrillClicks();
         renderAll();
+        // docs_lookup eager im Hintergrund vorladen, damit der erste
+        // Drill-Klick keine Verzoegerung hat. Der Klick-Pfad faellt sauber
+        // auf "lade nach" zurueck, falls der Fetch noch nicht fertig ist.
+        V.loadDocsLookup().then(lk => { DOCS_LOOKUP = lk; }).catch(() => {});
     });
 })();

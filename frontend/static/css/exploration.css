@@ -1049,7 +1049,7 @@
     margin: 0 auto;
 }
 .donut-svg { display: block; width: 100%; height: 100%; }
-.donut-arc { transition: stroke-width var(--transition-fast); }
+.donut-arc { transition: stroke-width var(--transition-fast); cursor: pointer; }
 .donut-arc:hover { stroke-width: 16; }
 .donut-center-value {
     font-family: var(--font-serif);
@@ -1087,9 +1087,12 @@
     gap: var(--space-sm);
     font-family: var(--font-sans);
     font-size: var(--text-xs);
-    padding: 4px 0;
+    padding: 4px 6px;
     border-bottom: 1px solid var(--color-border-light);
+    cursor: pointer;
+    transition: background-color var(--transition-fast);
 }
+.legend-item:hover { background: var(--color-bg-warm); }
 .legend-item:last-child { border-bottom: 0; }
 .legend-swatch {
     width: 12px; height: 12px;
@@ -1176,8 +1179,12 @@
     gap: var(--space-sm);
     font-family: var(--font-sans);
     font-size: var(--text-xs);
-    padding: 3px 0;
+    padding: 3px 6px;
+    border-radius: 2px;
+    transition: background-color var(--transition-fast);
 }
+.aggregat-bar-row[data-tx] { cursor: pointer; }
+.aggregat-bar-row[data-tx]:hover { background: var(--color-bg-warm); }
 .aggregat-bar-label { color: var(--color-text); }
 .aggregat-bar-row.is-rest .aggregat-bar-label {
     font-style: italic;
@@ -1499,6 +1506,11 @@
     z-index: 1;
     border-bottom: 1px solid var(--color-border);
 }
+.aggregat-table--labels tbody tr {
+    cursor: pointer;
+    transition: background-color var(--transition-fast);
+}
+.aggregat-table--labels tbody tr:hover { background: var(--color-bg-warm); }
 .aggregat-table--labels .col-persons {
     width: 200px;
     padding-right: var(--space-md);
