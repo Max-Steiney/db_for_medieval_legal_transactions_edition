@@ -83,6 +83,7 @@ from frontend.build._pages import (
     _build_register_json,
     _build_person_profiles,
     _build_exploration,
+    _build_exploration_timeline,
     _build_guidelines,
     _build_about,
     _build_glossary,
@@ -198,6 +199,7 @@ def build_all():
     _build_person_profiles(reverse_index, env)
 
     _build_exploration(all_metadata, persons, env)
+    _build_exploration_timeline(all_metadata, env)
 
     _build_guidelines(env)
     _build_about(env)
@@ -250,7 +252,7 @@ __all__ = [
     "_person_search_data", "_org_search_data", "_place_search_data",
     "_build_register_list_pages", "_build_register_json",
     "_build_person_profiles",
-    "_build_exploration",
+    "_build_exploration", "_build_exploration_timeline",
     "_build_guidelines", "_build_about", "_build_glossary", "_build_impressum",
     "_write_categories", "_write_query_vocabulary", "_build_analysis",
 ]

@@ -1214,6 +1214,217 @@
     font-style: italic;
     padding: var(--space-md) 0;
 }
+
+/* ==========================================================================
+   Exploration / Zeitstrom (exploration_timeline.html)
+   ========================================================================== */
+
+.exploration-timeline-page .index-header { margin-bottom: var(--space-md); }
+.explore-page-intro {
+    font-family: var(--font-sans);
+    font-size: var(--text-sm);
+    color: var(--color-text-muted);
+    line-height: 1.5;
+    margin: var(--space-xs) auto 0;
+    max-width: 720px;
+}
+.exploration-timeline-page .active-filters {
+    justify-content: center;
+    margin: var(--space-sm) 0 0;
+}
+
+/* Stack-Achse-Chips: vertikal in der Sidebar */
+.form-filter-chips--stack {
+    display: flex;
+    flex-direction: column;
+    gap: 4px;
+}
+.form-filter-chips--stack .form-filter-chip {
+    width: 100%;
+    justify-content: flex-start;
+}
+
+/* === Stream-Block (Bar-Chart-Container) === */
+.explore-stream-block {
+    background: var(--color-surface, #fff);
+    border: 1px solid var(--color-border, #e5e0d6);
+    border-radius: 4px;
+    padding: var(--space-sm) var(--space-md) var(--space-md);
+    margin-bottom: var(--space-md);
+}
+.explore-stream-wrap {
+    display: grid;
+    grid-template-columns: 48px 1fr;
+    gap: 8px;
+    margin-top: var(--space-sm);
+    height: 240px;
+    user-select: none;
+}
+.explore-stream-yaxis {
+    display: flex;
+    flex-direction: column;
+    justify-content: space-between;
+    align-items: flex-end;
+    font-family: var(--font-sans);
+    font-size: var(--text-2xs);
+    color: var(--color-text-muted);
+    padding-right: 4px;
+    border-right: 1px solid var(--color-border-light);
+    height: 220px;
+}
+.explore-stream-ytick {
+    line-height: 1;
+    font-variant-numeric: tabular-nums;
+}
+.explore-stream-chart {
+    display: flex;
+    align-items: flex-end;
+    gap: 2px;
+    height: 240px;
+    overflow-x: auto;
+}
+/* === Eine Spalte = ein Jahrzehnt === */
+.explore-stream-col {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    flex: 1 1 0;
+    min-width: 18px;
+    height: 240px;
+    background: transparent;
+    border: 0;
+    padding: 0;
+    cursor: pointer;
+    transition: opacity var(--transition-fast);
+}
+.explore-stream-col:hover .explore-stream-stack {
+    outline: 2px solid var(--color-text-muted);
+    outline-offset: 1px;
+}
+.explore-stream-col.is-dimmed {
+    opacity: 0.25;
+}
+.explore-stream-stack {
+    display: flex;
+    flex-direction: column-reverse;  /* erste Kategorie liegt unten */
+    width: 100%;
+    height: 220px;
+    align-items: stretch;
+    border-radius: 2px 2px 0 0;
+    overflow: hidden;
+}
+.explore-stream-seg {
+    width: 100%;
+    display: block;
+    transition: opacity var(--transition-fast);
+}
+.explore-stream-xtick {
+    font-family: var(--font-sans);
+    font-size: var(--text-2xs);
+    color: var(--color-text-muted);
+    line-height: 1;
+    padding-top: 4px;
+    font-variant-numeric: tabular-nums;
+}
+
+/* === Legende unter dem Chart (gleicher Stil wie auf Auswertungen) === */
+.explore-stream-legend {
+    list-style: none;
+    margin: var(--space-sm) 0 0;
+    padding: 0;
+    display: flex;
+    flex-wrap: wrap;
+    gap: var(--space-md);
+}
+.explore-stream-legend .legend-item {
+    display: inline-grid;
+    grid-template-columns: 14px auto 70px 60px;
+    align-items: center;
+    gap: 8px;
+    border-bottom: 0;
+    padding: 0;
+    font-size: var(--text-xs);
+}
+
+/* === Drill-Down: Quellen-Liste === */
+.explore-stream-drill {
+    background: var(--color-surface, #fff);
+    border: 1px solid var(--color-border, #e5e0d6);
+    border-radius: 4px;
+    padding: var(--space-sm) var(--space-md) var(--space-md);
+}
+.explore-stream-drill .aggregat-quadrant-head {
+    margin-bottom: var(--space-sm);
+}
+.explore-stream-drill-clear {
+    background: transparent;
+    border: 1px solid var(--color-border);
+    border-radius: 3px;
+    padding: 3px 10px;
+    font-family: var(--font-sans);
+    font-size: var(--text-2xs);
+    color: var(--color-text-muted);
+    cursor: pointer;
+    transition: all var(--transition-fast);
+}
+.explore-stream-drill-clear:hover {
+    background: var(--color-bg-warm);
+    color: var(--color-text);
+}
+.explore-stream-doclist {
+    list-style: none;
+    margin: 0;
+    padding: 0;
+    max-height: 480px;
+    overflow-y: auto;
+    border: 1px solid var(--color-border-light);
+    border-radius: 3px;
+}
+.explore-stream-doc {
+    border-bottom: 1px solid var(--color-border-light);
+}
+.explore-stream-doc:last-child { border-bottom: 0; }
+.explore-stream-doc .doc-link {
+    display: grid;
+    grid-template-columns: 80px 110px minmax(120px, 1fr) minmax(80px, 1fr);
+    gap: var(--space-sm);
+    padding: 6px var(--space-sm);
+    font-family: var(--font-sans);
+    font-size: var(--text-xs);
+    color: var(--color-text);
+    text-decoration: none;
+    transition: background-color var(--transition-fast);
+}
+.explore-stream-doc .doc-link:hover {
+    background: var(--color-bg-warm);
+}
+.explore-stream-doc .doc-id {
+    font-variant-numeric: tabular-nums;
+    color: var(--anno-person, #2e5a88);
+    font-weight: 500;
+}
+.explore-stream-doc .doc-date,
+.explore-stream-doc .doc-coll {
+    color: var(--color-text-muted);
+    font-variant-numeric: tabular-nums;
+}
+.explore-stream-doc .doc-place {
+    color: var(--color-text);
+}
+.explore-stream-doc-more {
+    padding: 8px var(--space-sm);
+    text-align: center;
+    color: var(--color-text-muted);
+    font-style: italic;
+    font-size: var(--text-xs);
+}
+
+@media (max-width: 800px) {
+    .explore-stream-doc .doc-link {
+        grid-template-columns: 60px 90px 1fr;
+    }
+    .explore-stream-doc .doc-place { display: none; }
+}
 .aggregat-foot-line {
     display: block;
     color: var(--color-text-muted);

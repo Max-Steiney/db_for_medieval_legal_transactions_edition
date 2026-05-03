@@ -21,7 +21,9 @@ docs/                     Build-Output, von GitHub Pages serviert
   /analysis/              Analyse-Bereich
                             auswertungen.html  quantitative Verteilungen (Donut, Bar, Tabelle)
                             index.html         Abfragen (Template-Familien)
-  /exploration/           visuell-interaktive Erkundung (Personen-Netzwerk, Karten, Timeline) — geplant
+  /exploration/           visuell-interaktive Erkundung
+                            zeitstrom.html     gestapelter Timeline-Bar-Chart mit Brush-to-Drill-down
+                            (Personen-Netzwerk, Karten, Sankey — geplant)
   /project/               About, Statistik, Qualität, Editionsrichtlinien, Glossar
   /static/                CSS, JS, Fonts
 knowledge/                konzeptionelle Wissensbasis (Obsidian-Markdown, Wiki-Links)

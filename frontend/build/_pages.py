@@ -701,6 +701,68 @@ def _build_exploration(all_metadata, persons, env):
 
 
 # ---------------------------------------------------------------------------
+# Exploration / Zeitstrom (visuell-interaktive Sub-Seite unter /exploration/)
+# ---------------------------------------------------------------------------
+
+
+def _build_exploration_timeline(all_metadata, env):
+    """Build the Zeitstrom page (exploration/zeitstrom.html) — gestapelter
+    Bar-Chart der Quellendichte pro Jahrzehnt mit Brush-to-Drill-down.
+    Stapel-Achse waehlbar (Korpus / Erschliessungsform / Geschlecht /
+    Transaktionstyp). Liest search.json clientseitig fuer die ersten drei
+    Achsen, epic_c.json fuer die Transaktionstyp-Stapelung.
+
+    Liegt unter /exploration/, weil sie visuell-interaktive Erkundung der
+    Datenstruktur ist (kein Verteilungs-Display) — siehe knowledge/
+    decisions.md "Exploration und Analyse als getrennte Bereiche".
+    """
+    epic_c_path = DATA_DIR / "epic_c.json"
+
+    # Sidebar-Daten: Zeitraum-Slider mit Histogramm der Quellen pro Dekade
+    decade_counts = Counter()
+    all_years = []
+    for m in all_metadata:
+        year_str = (m.get("date_iso") or "")[:4]
+        if year_str.isdigit():
+            year = int(year_str)
+            all_years.append(year)
+            decade_counts[(year // 10) * 10] += 1
+    if all_years:
+        min_year = max(min(all_years), RELEASED_PERIOD["min_year"])
+        max_year = min(max(all_years), max_year_with_extensions())
+    else:
+        min_year = RELEASED_PERIOD["min_year"]
+        max_year = max_year_with_extensions()
+    if decade_counts:
+        min_dec = min(decade_counts.keys())
+        max_dec = max(decade_counts.keys())
+        timeline_data = [{"decade": d, "count": decade_counts.get(d, 0)}
+                         for d in range(min_dec, max_dec + 10, 10)]
+        max_count = max(decade_counts.values())
+    else:
+        timeline_data = []
+        max_count = 1
+
+    epic_c_json = (epic_c_path.read_text(encoding="utf-8")
+                   if epic_c_path.exists() else "{}")
+
+    explore_dir = DOCS_DIR / "exploration"
+    explore_dir.mkdir(parents=True, exist_ok=True)
+
+    html = env.get_template("exploration_timeline.html").render(
+        build_date=_format_german_date(date.today()),
+        timeline_data=timeline_data,
+        max_count=max_count,
+        min_year=min_year,
+        max_year=max_year,
+        epic_c_json=epic_c_json,
+        root_path="..",
+    )
+    (explore_dir / "zeitstrom.html").write_text(html, encoding="utf-8")
+    print("  Zeitstrom: exploration/zeitstrom.html")
+
+
+# ---------------------------------------------------------------------------
 # Statische Markdown-Seiten (about, glossary, guidelines, impressum)
 # ---------------------------------------------------------------------------
 

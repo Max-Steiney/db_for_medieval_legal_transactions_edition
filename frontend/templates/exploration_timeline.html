@@ -1,0 +1,117 @@
+{% extends "base.html" %}
+{% from "macros.html" import glossary_tip, active_filters,
+                              sidebar_block, sidebar_range_slider,
+                              sidebar_chip_group, sidebar_reset_button %}
+
+{% block title %}Zeitstrom{% endblock %}
+
+{% block head %}
+<link rel="stylesheet" href="{{ root_path }}/static/css/index.css?v={{ asset_v }}">
+<link rel="stylesheet" href="{{ root_path }}/static/css/exploration.css?v={{ asset_v }}">
+{% endblock %}
+
+{% block content %}
+<div class="index-page exploration-timeline-page">
+
+    <header class="index-header aggregat-header">
+        <h1>Zeitstrom</h1>
+        <p class="explore-page-intro">
+            Quellendichte je Jahrzehnt, gestapelt nach Korpus, Erschlie&szlig;ungsform,
+            Geschlecht oder Transaktionstyp. Brush-Auswahl &uuml;ber den Stream
+            &ouml;ffnet die Liste der enthaltenen Quellen.
+        </p>
+        {{ active_filters() }}
+    </header>
+
+    <div class="index-layout">
+
+        <aside class="index-sidebar" aria-label="Filter">
+
+            {% if timeline_data %}
+            {% call sidebar_block('Zeitraum') %}
+                {{ sidebar_range_slider(min_year, max_year, timeline_data, max_count, unit='Quellen', unit_singular='Quelle') }}
+            {% endcall %}
+            {% endif %}
+
+            {% call sidebar_block('Stapel-Achse', 'Bestimmt die farbliche Aufschl&uuml;sselung der Balken') %}
+                <div class="form-filter-chips form-filter-chips--stack" id="stream-stack-axis"
+                     role="group" aria-label="Stapel-Achse">
+                    <button type="button" class="form-filter-chip is-active"
+                            data-stack="collection" aria-pressed="true">
+                        <span class="form-filter-chip-label">Quellenkorpus</span>
+                    </button>
+                    <button type="button" class="form-filter-chip"
+                            data-stack="form" aria-pressed="false">
+                        <span class="form-filter-chip-label">Erschlie&szlig;ungsform</span>
+                    </button>
+                    <button type="button" class="form-filter-chip"
+                            data-stack="sex" aria-pressed="false">
+                        <span class="form-filter-chip-label">Geschlecht</span>
+                    </button>
+                    <button type="button" class="form-filter-chip"
+                            data-stack="tx" aria-pressed="false">
+                        <span class="form-filter-chip-label">Transaktionstyp</span>
+                    </button>
+                </div>
+            {% endcall %}
+
+            {{ sidebar_reset_button() }}
+
+        </aside>
+
+        <div class="index-main">
+
+            <section class="explore-stream-block">
+                <header class="aggregat-quadrant-head">
+                    <h2 id="stream-axis-heading">Quellen pro Jahrzehnt</h2>
+                    <span class="aggregat-quadrant-source">
+                        <span class="prov-stat-container">
+                            {% call glossary_tip('gloss-stream-source', 'Zeitstrom') %}
+                                <p class="prov-def">Anzahl freigegebener TEI-Quellen pro Jahrzehnt, gruppiert nach der gew&auml;hlten Stapel-Achse. Ein Klick-und-Ziehen &uuml;ber den Stream w&auml;hlt einen Zeitabschnitt aus und listet die enthaltenen Quellen unten auf.</p>
+                                <footer class="prov-foot">
+                                    <span class="prov-foot-source"><code>data/search.json</code> &middot; <code>data/timeline.json</code> &middot; Transaktions-Stapelung aus <code>epic_c.json</code></span>
+                                </footer>
+                            {% endcall %}
+                        </span>
+                    </span>
+                </header>
+
+                <div class="explore-stream-wrap">
+                    <div class="explore-stream-yaxis" id="stream-yaxis"></div>
+                    <div class="explore-stream-chart" id="stream-chart"
+                         role="img" aria-label="Quellendichte pro Jahrzehnt">
+                    </div>
+                </div>
+
+                <ul class="explore-stream-legend" id="stream-legend"></ul>
+            </section>
+
+            <section class="explore-stream-drill" id="stream-drill" hidden>
+                <header class="aggregat-quadrant-head">
+                    <h2><span id="drill-title">Auswahl</span>
+                        <span class="aggregat-quadrant-h2-meta" id="drill-meta"></span>
+                    </h2>
+                    <button type="button" class="explore-stream-drill-clear"
+                            id="drill-clear" aria-label="Auswahl aufheben">
+                        Auswahl aufheben
+                    </button>
+                </header>
+                <ol class="explore-stream-doclist" id="drill-list"></ol>
+            </section>
+
+        </div>
+
+    </div>
+
+</div>
+{% endblock %}
+
+{% block scripts %}
+<script src="{{ root_path }}/static/js/tooltips.js?v={{ asset_v }}"></script>
+<script src="{{ root_path }}/static/js/table-infra.js?v={{ asset_v }}"></script>
+<script src="{{ root_path }}/static/js/viz-core.js?v={{ asset_v }}"></script>
+<script id="exploration-data-epic-c" type="application/json">{{ epic_c_json|safe }}</script>
+<script src="{{ root_path }}/static/js/exploration-timeline.js?v={{ asset_v }}"></script>
+{% endblock %}
+
+{% block footer_info %}Zeitstrom generiert am {{ build_date }}{% endblock %}
