@@ -288,6 +288,7 @@
             renderChart();
             renderDrill();
             updateActiveFilters();
+            writeUrl();
         });
         el.addEventListener('keydown', (e) => {
             if (e.key !== 'Enter' && e.key !== ' ') return;
@@ -332,6 +333,7 @@
                 brushAnchor = null;
                 renderDrill();
                 updateActiveFilters();
+                writeUrl();
             }
         });
     }
@@ -342,6 +344,7 @@
         renderChart();
         renderDrill();
         updateActiveFilters();
+        writeUrl();
     }
 
     // ---------------------------------------------------------------------
@@ -384,18 +387,37 @@
         if (title) title.textContent = `Auswahl ${rangeLabel}${focusLabel}`;
         if (meta) meta.textContent = `${V.fmt(docs.length)} Quellen`;
 
+        // Cross-Nav: Quellen-Listenseite mit dem Brush-Zeitraum (kein
+        // Geschlechter-Filter — der Zeitstrom hat keinen). Tx-/collection-
+        // /form-Fokus laesst sich nicht 1:1 auf die Quellen-Filter mappen
+        // (Quellen kennt keine Tx-/Stack-Filter), wird daher weggelassen.
+        const crossNav = document.getElementById('drill-crossnav');
+        if (crossNav) {
+            crossNav.href = V.buildDocumentsURL({
+                decadeMin: lo,
+                decadeMax: hi,
+            });
+        }
+
         const ROOT = (window.ROOT_PATH || '..');
         const SHOW = 200;
+        const hasKorb = (typeof Wissenskorb !== 'undefined');
         const shown = docs.slice(0, SHOW);
-        list.innerHTML = shown.map(doc => `
-            <li class="explore-stream-doc">
+        list.innerHTML = shown.map(doc => {
+            const korbBtn = hasKorb ? Wissenskorb.buttonHTML({
+                type: 'source', id: doc.id, label: doc.id,
+                url: doc.u, date: doc.date, coll: doc.coll, regest: '',
+            }) : '';
+            return `<li class="explore-stream-doc">
                 <a href="${ROOT}/${doc.u}" class="doc-link">
                     <span class="doc-id">${doc.id}</span>
                     <span class="doc-date">${doc.date}</span>
                     <span class="doc-coll">${doc.coll}</span>
                     <span class="doc-place">${doc.place}</span>
                 </a>
-            </li>`).join('') + (docs.length > SHOW
+                ${korbBtn}
+            </li>`;
+        }).join('') + (docs.length > SHOW
             ? `<li class="explore-stream-doc-more">… und ${V.fmt(docs.length - SHOW)} weitere; bitte enger eingrenzen.</li>`
             : '');
 
@@ -482,6 +504,7 @@
             renderChart();
             renderDrill();
             updateActiveFilters();
+            writeUrl();
         });
     }
 
@@ -521,6 +544,7 @@
         renderChart();
         renderDrill();
         updateActiveFilters();
+        writeUrl();
     }
 
     function updateActiveFilters() {
@@ -555,6 +579,61 @@
         renderChart();
         renderDrill();
         updateActiveFilters();
+        writeUrl();
+    }
+
+    // ---------------------------------------------------------------------
+    // URL-State-Sync
+    // Format: ?dec=1300-1380&stack=tx&brush=1340-1370&focus=Kauf
+    // ---------------------------------------------------------------------
+    let urlSyncActive = false;
+
+    function writeUrl() {
+        if (!urlSyncActive) return;
+        const minEl = document.getElementById('range-min');
+        const maxEl = document.getElementById('range-max');
+        const dec = decFilter.isActive() && minEl && maxEl
+            ? `${minEl.value}-${maxEl.value}` : null;
+        const brush = STATE.brushMin !== null
+            ? (STATE.brushMin === STATE.brushMax
+                ? String(STATE.brushMin)
+                : `${STATE.brushMin}-${STATE.brushMax}`)
+            : null;
+        V.writeUrlState({
+            dec:   dec,
+            stack: STATE.stack !== 'collection' ? STATE.stack : null,
+            brush: brush,
+            focus: STATE.stackFocus,
+        });
+    }
+
+    function applyUrlState() {
+        const u = V.parseUrlState();
+        if (u.stack && STACKS[u.stack]) STATE.stack = u.stack;
+        if (u.dec) {
+            const m = u.dec.match(/^(\d{4})-(\d{4})$/);
+            if (m) {
+                const lo = parseInt(m[1], 10);
+                const hi = parseInt(m[2], 10);
+                STATE.decadeMin = V.decadeOf(lo);
+                STATE.decadeMax = V.decadeOf(hi);
+                V.applySliderValues(lo, hi);
+            }
+        }
+        if (u.brush) {
+            const m = u.brush.match(/^(\d{4})(?:-(\d{4}))?$/);
+            if (m) {
+                STATE.brushMin = parseInt(m[1], 10);
+                STATE.brushMax = m[2] ? parseInt(m[2], 10) : STATE.brushMin;
+            }
+        }
+        if (u.focus) {
+            // Validitaet wird beim ersten Render geprueft (effectiveStackDef).
+            STATE.stackFocus = u.focus;
+        }
+        // UI-Sync der Stack-Chips
+        V.setActiveChip(document.getElementById('stream-stack-axis'),
+                        STATE.stack, 'data-stack', 'is-active');
     }
 
     document.addEventListener('DOMContentLoaded', () => {
@@ -563,13 +642,17 @@
         bindReset();
         bindDrillClear();
         bindLegendFocus();
+        applyUrlState();
 
         V.loadSearchJson()
             .then(({ docs, byDecade }) => {
                 DOCS = docs;
                 DOCS_BY_DECADE = byDecade;
                 renderChart();
+                renderDrill();
                 updateActiveFilters();
+                urlSyncActive = true;
+                writeUrl();
             })
             .catch(err => {
                 console.warn('search.json nicht ladbar:', err);

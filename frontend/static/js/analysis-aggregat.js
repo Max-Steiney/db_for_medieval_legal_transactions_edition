@@ -669,12 +669,18 @@
             });
             return;
         }
+        const crossNavUrl = V.buildDocumentsURL({
+            decadeMin: STATE.decadeMin,
+            decadeMax: STATE.decadeMax,
+            sex: STATE.sex !== 'all' ? STATE.sex : null,
+        });
         V.openDrillOverlay({
             overlayId: 'aggregat-drilldown',
             title: title,
             fileKeys: fileKeys,
             docsLookup: DOCS_LOOKUP,
             decadeFilter: decFilter.isActive() ? decFilter : null,
+            crossNavUrl: crossNavUrl,
         });
     }
 
@@ -741,6 +747,55 @@
     }
 
     // ---------------------------------------------------------------------
+    // URL-State-Sync — Filter-Stand wird in die Suchparameter serialisiert,
+    // damit der Forschungsstand zitierbar / bookmark-fähig ist.
+    // Format: ?dec=1300-1380&sex=f&type=kin&q=hausfrau&mode=persons
+    // ---------------------------------------------------------------------
+    let urlSyncActive = false;   // Switch, damit Apply-from-URL keine
+                                  // Re-Writes triggert.
+
+    function writeUrl() {
+        if (!urlSyncActive) return;
+        const minEl = document.getElementById('range-min');
+        const maxEl = document.getElementById('range-max');
+        const dec = decFilter.isActive() && minEl && maxEl
+            ? `${minEl.value}-${maxEl.value}` : null;
+        V.writeUrlState({
+            dec: dec,
+            sex:  STATE.sex !== 'all' ? STATE.sex : null,
+            type: STATE.labelType !== 'all' ? STATE.labelType : null,
+            q:    STATE.labelSearch.trim() || null,
+            mode: STATE.rolesMode !== 'mentions' ? STATE.rolesMode : null,
+        });
+    }
+
+    function applyUrlState() {
+        const u = V.parseUrlState();
+        if (u.sex && ['m', 'f', 'unspecified'].includes(u.sex)) STATE.sex = u.sex;
+        if (u.mode === 'persons') STATE.rolesMode = 'persons';
+        if (u.type && ['kin', 'occ', 'rep', 'friend'].includes(u.type)) STATE.labelType = u.type;
+        if (u.q) STATE.labelSearch = u.q;
+        if (u.dec) {
+            const m = u.dec.match(/^(\d{4})-(\d{4})$/);
+            if (m) {
+                const lo = parseInt(m[1], 10);
+                const hi = parseInt(m[2], 10);
+                STATE.decadeMin = V.decadeOf(lo);
+                STATE.decadeMax = V.decadeOf(hi);
+                V.applySliderValues(lo, hi);
+            }
+        }
+        // UI-Sync: Chips, Toggle, Search-Input
+        V.setActiveChip(document.getElementById('filter-sex'), STATE.sex, 'data-sex');
+        V.setActiveChip(document.querySelector('.aggregat-rel-type-chips'),
+                        STATE.labelType, 'data-rel');
+        V.setActiveChip(document.querySelector('#q-roles .aggregat-toggle'),
+                        STATE.rolesMode, 'data-roles-mode', 'is-active');
+        const searchEl = document.getElementById('labels-search');
+        if (searchEl && STATE.labelSearch) searchEl.value = STATE.labelSearch;
+    }
+
+    // ---------------------------------------------------------------------
     // Master-Render
     // ---------------------------------------------------------------------
     function renderAll() {
@@ -749,6 +804,7 @@
         renderTx();
         renderLabels();
         updateActiveFilters();
+        writeUrl();
     }
 
     document.addEventListener('DOMContentLoaded', () => {
@@ -759,7 +815,12 @@
         bindReset();
         V.bindDrillOverlay({ overlayId: 'aggregat-drilldown' });
         bindDrillClicks();
+        // URL-State zuerst lesen + auf STATE/UI mappen, dann ein einziges
+        // renderAll(); danach URL-Sync aktiv schalten.
+        applyUrlState();
         renderAll();
+        urlSyncActive = true;
+        writeUrl();
         // docs_lookup eager im Hintergrund vorladen, damit der erste
         // Drill-Klick keine Verzoegerung hat. Der Klick-Pfad faellt sauber
         // auf "lade nach" zurueck, falls der Fetch noch nicht fertig ist.

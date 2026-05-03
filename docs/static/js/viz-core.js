@@ -257,6 +257,63 @@ let VizCore = (function () {
         return true;
     }
 
+    // Slider-DOM auf Werte setzen + visuelle Updates (Histogramm-Highlights,
+    // Range-Labels). Triggert KEIN input-Event — der Aufrufer hat den
+    // State bereits selbst gesetzt und ruft anschliessend renderAll().
+    function applySliderValues(lo, hi) {
+        const minEl = document.getElementById('range-min');
+        const maxEl = document.getElementById('range-max');
+        if (!minEl || !maxEl) return;
+        if (lo != null) minEl.value = lo;
+        if (hi != null) maxEl.value = hi;
+        const labelMin = document.getElementById('range-label-min');
+        const labelMax = document.getElementById('range-label-max');
+        if (labelMin) labelMin.textContent = minEl.value;
+        if (labelMax) labelMax.textContent = maxEl.value;
+        updateRangeHistogram(parseInt(minEl.value, 10), parseInt(maxEl.value, 10));
+    }
+
+    // ---------------------------------------------------------------------
+    // URL-State-Sync
+    // parseUrlState() liest URL-Suchparameter als flaches Objekt.
+    // writeUrlState({...}) schreibt via history.replaceState — keine
+    // History-Eintraege, keine Page-Loads. Leere/null-Werte werden weggelassen.
+    // ---------------------------------------------------------------------
+    function parseUrlState() {
+        const out = {};
+        const p = new URLSearchParams(location.search);
+        for (const [k, v] of p) out[k] = v;
+        return out;
+    }
+
+    function writeUrlState(params) {
+        const p = new URLSearchParams();
+        for (const [k, v] of Object.entries(params || {})) {
+            if (v === null || v === undefined || v === '') continue;
+            p.set(k, String(v));
+        }
+        const qs = p.toString();
+        const url = location.pathname + (qs ? '?' + qs : '');
+        history.replaceState(null, '', url);
+    }
+
+    // Cross-Page-Sprung: baue eine Quellen-Listen-URL mit den uebernehmbaren
+    // Filtern (Zeitraum + Geschlechter-Mapping). Die Quellen-Seite kennt
+    // keinen Rollen-/Beziehungs-/Bezeichnungs-/Tx-Filter — solche Filter
+    // werden bewusst nicht uebertragen. Das Mapping ist asymmetrisch:
+    //   sex='f' -> 'with-f'  (Quellen mit mind. 1 Frau)
+    //   sex='m' -> 'only-m'  ('with-m' existiert in Quellen nicht)
+    function buildDocumentsURL(opts) {
+        const root = opts.root || (window.ROOT_PATH || '..');
+        const p = new URLSearchParams();
+        if (opts.decadeMin != null) p.set('yearMin', opts.decadeMin);
+        if (opts.decadeMax != null) p.set('yearMax', opts.decadeMax + 9);
+        if (opts.sex === 'f')      p.set('sex', 'with-f');
+        else if (opts.sex === 'm') p.set('sex', 'only-m');
+        const qs = p.toString();
+        return root + '/documents.html' + (qs ? '?' + qs : '');
+    }
+
     // ---------------------------------------------------------------------
     // Drill-Down-Overlay
     // Verwendet das drill_down_overlay()-Macro aus macros.html (das bereits
@@ -318,20 +375,45 @@ let VizCore = (function () {
             countEl.textContent = fmt(docs.length) + ' Quellen' + noteText;
         }
 
+        // Optionaler Cross-Nav-Link im Footer ("-> in Quellen-Liste oeffnen")
+        // Wird dynamisch in den Footer-Container injiziert; bei jedem Open
+        // ersetzt, damit die URL aktuell bleibt.
+        const footer = overlay.querySelector('.explore-drilldown-footer');
+        if (footer) {
+            const existing = footer.querySelector('.explore-drilldown-crossnav');
+            if (existing) existing.remove();
+            if (opts.crossNavUrl) {
+                const link = document.createElement('a');
+                link.className = 'explore-drilldown-crossnav explore-btn';
+                link.href = opts.crossNavUrl;
+                link.textContent = '→ in Quellen-Liste öffnen';
+                link.title = 'Filter (Zeitraum, Geschlecht) werden in die Quellen-Listenseite uebernommen.';
+                footer.appendChild(link);
+            }
+        }
+
         if (tbody) {
             const root = (window.ROOT_PATH || '..');
             const SHOW = 500;
-            const rows = docs.slice(0, SHOW).map(d => `<tr>
-                <td><a href="${root}/${d.u}">${d.i || ''}</a></td>
-                <td>${d.d || ''}</td>
-                <td>${d.c || ''}</td>
-                <td class="cell-regest">${d.r || ''}</td>
-            </tr>`);
+            const hasKorb = (typeof Wissenskorb !== 'undefined');
+            const rows = docs.slice(0, SHOW).map(d => {
+                const korbBtn = hasKorb ? Wissenskorb.buttonHTML({
+                    type: 'source', id: d.i, label: d.i,
+                    url: d.u, date: d.d, coll: d.c, regest: d.r,
+                }) : '';
+                return `<tr>
+                    <td><a href="${root}/${d.u}">${d.i || ''}</a></td>
+                    <td>${d.d || ''}</td>
+                    <td>${d.c || ''}</td>
+                    <td class="cell-regest">${d.r || ''}</td>
+                    <td class="col-actions">${korbBtn}</td>
+                </tr>`;
+            });
             if (docs.length > SHOW) {
-                rows.push(`<tr><td colspan="4" class="aggregat-empty">… und ${fmt(docs.length - SHOW)} weitere; bitte enger eingrenzen.</td></tr>`);
+                rows.push(`<tr><td colspan="5" class="aggregat-empty">… und ${fmt(docs.length - SHOW)} weitere; bitte enger eingrenzen.</td></tr>`);
             }
             tbody.innerHTML = rows.join('') ||
-                '<tr><td colspan="4" class="aggregat-empty">Keine Quellen gefunden.</td></tr>';
+                '<tr><td colspan="5" class="aggregat-empty">Keine Quellen gefunden.</td></tr>';
         }
 
         overlay.classList.remove('hidden');
@@ -377,6 +459,11 @@ let VizCore = (function () {
         // Sidebar
         bindRangeSlider,
         resetSliderInputs,
+        applySliderValues,
+        // URL-State
+        parseUrlState,
+        writeUrlState,
+        buildDocumentsURL,
         // Filter-Strip
         renderActiveFilters,
         // Drill-Down

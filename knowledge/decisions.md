@@ -2,6 +2,32 @@
 
 Getroffene Leitentscheidungen mit Begründung. Zeitlos formuliert. Pro Eintrag Entscheidung, Begründung und Konsequenz, optional eine Abgrenzung, was ausdrücklich nicht gemeint ist.
 
+## Forschungsstand zitierbar via URL-Parameter
+
+**Entscheidung.** Auf den Daten-Visualisierungs-Seiten (`/analysis/auswertungen.html`, `/exploration/zeitstrom.html`) wird der Filter-Stand in die URL-Suchparameter serialisiert und bei Page-Load von dort gelesen. Auswertungen führt `dec`, `sex`, `type`, `q`, `mode`; Zeitstrom führt `dec`, `stack`, `brush`, `focus`. Die Quellen- und Personen-Listenseiten haben das gleiche Pattern bereits.
+
+**Begründung.** Eine Forscherin will einen Filter-Stand bookmarken, in eine Mail kopieren oder in einer Publikation zitieren. Ohne URL-Sync ist der eingestellte Filter beim Reload weg. Die Konsistenz mit Quellen + Personen schließt zusätzlich eine UX-Lücke.
+
+**Konsequenz.** `history.replaceState` (kein History-Eintrag — Browser-Back soll nicht durch Filter-Mikrostände gehen). Empty-Default-Werte werden nicht in die URL geschrieben, damit Sharing-URLs minimal bleiben. URL-Sync ist während Page-Init deaktiviert (Guard `urlSyncActive`), sonst würden initiale Apply-Calls die URL leeren.
+
+## Cross-Page-Sprung mit Filter-Übernahme
+
+**Entscheidung.** Drill-down-Overlays (Auswertungen) und Brush-Drill (Zeitstrom) bieten einen „→ in Quellen-Liste öffnen"-Link. Der Link transferiert Zeitraum + Geschlechter-Filter (mappt auf das Quellen-Filter-Vokabular) in die Quellen-Listenseite. Page-spezifische Filter (Rolle, Beziehungstyp, Bezeichnung, Transaktionstyp, Stack-Fokus) werden nicht übertragen, weil die Quellen-Liste sie nicht kennt.
+
+**Begründung.** Die Visualisierung weckt das Interesse, die strukturierte Quellen-Liste vertieft. Beide Seiten teilen sich Zeitraum und Geschlechter-Achse — die Übernahme ist verlustfrei für diese, ehrlich-lückenhaft für die anderen.
+
+**Konsequenz.** `VizCore.buildDocumentsURL({decadeMin, decadeMax, sex})` baut die Cross-Nav-URL. Mapping ist asymmetrisch: `sex='f' → with-f`, `sex='m' → only-m` (Quellen kennt kein `with-m`).
+
+## Wissenskorb als clientseitige Sammlung
+
+**Entscheidung.** Forschende sammeln Quellen über Sitzungen hinweg in einem clientseitigen Wissenskorb (localStorage, Schlüssel `sugw-wissenskorb-v1`). „+"-Knöpfe stehen neben jedem Quellen-Eintrag in den Listen (Quellen-Tabelle, Auswertungs-Drill, Zeitstrom-Drill); ein Korb-Icon im Nav zeigt die Anzahl; eine eigene Korb-Seite (`/korb.html`) listet die Sammlung mit Remove- und CSV-Export-Aktion.
+
+**Begründung.** Die identifizierten Forschungspfade (siehe [[exploration]] und [[analyse]]) springen häufig zwischen Übersicht und Detail. Eine sammelnde Schicht über mehreren Seiten erlaubt es, ein Forschungs-Korpus zusammenzustellen, ohne den Browser-Tab-Wildwuchs einer manuellen Bookmark-Strategie. Cross-Tab-Sync via `storage`-Event hält parallel offene Tabs konsistent.
+
+**Konsequenz.** `wissenskorb.js` ist eine site-weite Komponente (in `base.html` geladen, Nav-Icon dort verankert). Schlüssel ist die zusammengesetzte ID `type:id` (aktuell nur `source` als Typ; Personen-Sammlung wäre eine spätere Erweiterung). Daten bleiben rein clientseitig — keine Server-Persistenz, keine Identitätspflicht; Export als CSV überträgt die Sammlung in Werkzeuge der Forschenden (Zotero, Excel, BibTeX-Konverter).
+
+**Nicht gemeint ist** ein server-persistierter Account. Das wäre ein anderer Stack (Auth, DSGVO, Speicherkosten). Der clientseitige Korb ist bewusst der niedrigschwellige Einstieg.
+
 ## Titel und Untertitel
 
 **Entscheidung.** Der Haupttitel der Edition lautet „Stadt und Gemeinschaft Wien", der Untertitel „Datenbank zu mittelalterlichen Rechtsgeschäften".
