@@ -1,3 +1,22 @@
+---
+title: UI-Design
+project:
+  name: Stadt und Gemeinschaft Wien
+  repository: https://github.com/chpollin/db_for_medieval_legal_transactions_edition
+status: active
+language: de
+version: 0.1
+created: 2026-02-19
+updated: 2026-05-09
+authors: [Christopher Pollin]
+generated-with: Claude Code
+method:
+  name: Promptotyping
+  url: https://lisa.gerda-henkel-stiftung.de/digitale_geschichte_pollin
+topics: ["[[Information Visualisation]]", "[[Scholar-Centered Design]]"]
+related: [requirements, scholar-user-stories, decisions, analyse, exploration]
+---
+
 # UI-Design
 
 Gestaltungsprinzipien, Navigationsstruktur und Kernkomponenten der Oberfläche. Konzeptionell formuliert; konkrete Klassen, Tokens und Pixelmaße leben im Code unter `frontend/static/css/` und `frontend/templates/`.

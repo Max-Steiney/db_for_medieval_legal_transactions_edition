@@ -1,6 +1,24 @@
+---
+title: Glossar
+project:
+  name: Stadt und Gemeinschaft Wien
+  repository: https://github.com/chpollin/db_for_medieval_legal_transactions_edition
+status: active
+language: de
+version: 0.1
+created: 2026-02-19
+updated: 2026-05-09
+authors: [Christopher Pollin]
+generated-with: Claude Code
+method:
+  name: Promptotyping
+  url: https://lisa.gerda-henkel-stiftung.de/digitale_geschichte_pollin
+related: [index, data, requirements, decisions]
+---
+
 # Glossar
 
-Kanonische Definitionen aller Fachbegriffe der Edition. Quelle für Tooltips und die Glossar-Seite im UI. Alphabetisch sortiert. Pro Eintrag Definition, Abgrenzung und, wo nötig, eine Notiz zu häufigen Verwechslungen.
+Kanonische Definitionen aller Fachbegriffe der Edition. Quelle für Tooltips und die Glossar-Seite im UI. Als eigenständiges Dokument geführt — die Konvention erlaubt diese Auslagerung aus dem [[index]] bei mehr als 15 Begriffen oder wenn das Glossar maschinen-konsumiert wird; hier trifft beides zu (zwölf Begriffe plus UI-Tooltip-Quelle). Alphabetisch sortiert. Pro Eintrag Definition, Abgrenzung und, wo nötig, eine Notiz zu häufigen Verwechslungen.
 
 ## Erschließungsform
 

@@ -1,3 +1,22 @@
+---
+title: Exploration
+project:
+  name: Stadt und Gemeinschaft Wien
+  repository: https://github.com/chpollin/db_for_medieval_legal_transactions_edition
+status: active
+language: de
+version: 0.1
+created: 2026-02-19
+updated: 2026-05-09
+authors: [Christopher Pollin]
+generated-with: Claude Code
+method:
+  name: Promptotyping
+  url: https://lisa.gerda-henkel-stiftung.de/digitale_geschichte_pollin
+topics: ["[[Information Visualisation]]", "[[Exploratory Search]]"]
+related: [analyse, requirements, ui-design, decisions, glossar]
+---
+
 # Exploration
 
 Wissensdokument zum Explorationsbereich der Edition. Die Exploration ist der visuell-interaktive Zweig der Oberfläche und bedient Nutzerinnen ohne vorab spezifizierte Frage. Sie steht als zweiter gleichberechtigter Zweig neben der [[analyse]] und arbeitet mit Information-Visualisation, nicht mit vorgegebenen Auswertungsachsen.

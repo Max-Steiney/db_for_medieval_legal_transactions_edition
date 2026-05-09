@@ -1,3 +1,22 @@
+---
+title: Scholar User Stories
+project:
+  name: Stadt und Gemeinschaft Wien
+  repository: https://github.com/chpollin/db_for_medieval_legal_transactions_edition
+status: active
+language: de
+version: 0.1
+created: 2026-02-19
+updated: 2026-05-09
+authors: [Christopher Pollin]
+generated-with: Claude Code
+method:
+  name: Promptotyping
+  url: https://lisa.gerda-henkel-stiftung.de/digitale_geschichte_pollin
+topics: ["[[Scholar-Centered Design]]", "[[User Stories]]"]
+related: [requirements, ui-design, glossar]
+---
+
 # Scholar User Stories
 
 Nutzungsszenarien aus Forscherinnen-Perspektive. Pro Story ein Szenario im Muster *Als Forscherin, die …, will ich …, damit …*. Darunter eine knappe Ableitung, welche Anforderung, Komponente und Begriffe das Szenario adressiert.

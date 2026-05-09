@@ -1,3 +1,22 @@
+---
+title: Anforderungen
+project:
+  name: Stadt und Gemeinschaft Wien
+  repository: https://github.com/chpollin/db_for_medieval_legal_transactions_edition
+status: active
+language: de
+version: 0.1
+created: 2026-02-19
+updated: 2026-05-09
+authors: [Christopher Pollin]
+generated-with: Claude Code
+method:
+  name: Promptotyping
+  url: https://lisa.gerda-henkel-stiftung.de/digitale_geschichte_pollin
+topics: ["[[Requirements Engineering]]"]
+related: [scholar-user-stories, decisions, ui-design, architecture]
+---
+
 # Anforderungen
 
 Funktionale und nicht-funktionale Anforderungen an das User Interface. Pro Anforderung ein Abschnitt im Muster Was, Warum, Wie.

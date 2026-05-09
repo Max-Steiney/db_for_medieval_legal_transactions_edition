@@ -1,3 +1,22 @@
+---
+title: Architektur
+project:
+  name: Stadt und Gemeinschaft Wien
+  repository: https://github.com/chpollin/db_for_medieval_legal_transactions_edition
+status: active
+language: de
+version: 0.1
+created: 2026-02-19
+updated: 2026-05-09
+authors: [Christopher Pollin]
+generated-with: Claude Code
+method:
+  name: Promptotyping
+  url: https://lisa.gerda-henkel-stiftung.de/digitale_geschichte_pollin
+topics: ["[[Static Site Architecture]]", "[[TEI]]"]
+related: [data, requirements, decisions, ui-design, journal]
+---
+
 # Architektur
 
 Bausteine der Edition und ihr Zusammenspiel. Konzeptionell, ohne Implementierungsdetails.

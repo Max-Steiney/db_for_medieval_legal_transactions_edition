@@ -1,3 +1,22 @@
+---
+title: Analyse
+project:
+  name: Stadt und Gemeinschaft Wien
+  repository: https://github.com/chpollin/db_for_medieval_legal_transactions_edition
+status: active
+language: de
+version: 0.1
+created: 2026-02-19
+updated: 2026-05-09
+authors: [Christopher Pollin]
+generated-with: Claude Code
+method:
+  name: Promptotyping
+  url: https://lisa.gerda-henkel-stiftung.de/digitale_geschichte_pollin
+topics: ["[[Information Visualisation]]", "[[Quantitative Analysis]]"]
+related: [exploration, requirements, ui-design, decisions, glossar]
+---
+
 # Analyse
 
 Wissensdokument zum Analysebereich der Edition. Der Analysebereich versammelt alle quantitativen Zugänge zur Datenbasis. Er besteht aus zwei Sub-Seiten unter `/analysis/` und steht als gleichberechtigter Zweig neben der [[exploration]]; das Interaktionsmuster ist strukturiert (vorgegebene Achsen, exakte Zahlen, Provenienz), die Exploration arbeitet visuell-interaktiv. Die Trennung ist in [[decisions#Exploration und Analyse als getrennte Bereiche]] begründet.
