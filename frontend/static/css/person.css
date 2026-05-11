@@ -232,11 +232,6 @@
     color: var(--color-text);
 }
 
-/* Org-Aliases bleiben als sichtbare Chip-Zeile im person-orig-Slot. */
-.person-orig .pt-chip {
-    padding: 0 6px;
-    font-size: var(--text-xs);
-}
 
 /* --- Sections (Beziehungen + Quellen) --------------------------------- */
 /* Erste Section nach Header (i.d.R. Quellen) hat reduzierten Top-Margin,
@@ -498,49 +493,12 @@
     .ph-meta-strip { gap: var(--space-xs) var(--space-sm); }
 }
 
-/* Place-Profil-Geo-Block: Adresse, Parzelle, Koordinaten, GeoNames als
-   schmale Definition-Liste analog zu .person-titles. Kein Karten-Widget;
-   GeoNames-Link bleibt das einzige Geo-Sprungziel.                        */
-.person-geo {
-    margin: var(--space-sm) 0 0;
-    padding: 0;
-    display: grid;
-    grid-template-columns: max-content 1fr;
-    gap: 0.25rem var(--space-md);
-    font-size: var(--text-sm);
-}
-.person-geo .geo-row { display: contents; }
-.person-geo dt {
-    color: var(--color-text-muted);
-    text-transform: uppercase;
-    letter-spacing: 0.05em;
-    font-size: var(--text-xs);
-    padding-top: 0.25rem;
-}
-.person-geo dd { margin: 0; color: var(--color-text); }
-.person-geo dd code {
-    font-family: var(--font-mono);
-    font-size: var(--text-xs);
-    color: var(--color-text-muted);
-}
-.person-geo dd a { color: var(--color-link); word-break: break-all; }
-
-/* --- Im-Quellen-Wortlaut + Aliases-Zeile ------------------------------ */
-.person-orig {
-    margin: var(--space-xs) 0 var(--space-sm);
-    font-size: var(--text-sm);
-    color: var(--color-text);
-    display: flex;
-    flex-wrap: wrap;
-    align-items: baseline;
-    gap: var(--space-xs);
-}
-.person-orig .orig-label {
+/* --- Sub-Zeile-Helfer: orig-label fuer "Im Quellen-Wortlaut" usw. ----- */
+.orig-label {
     font-size: var(--text-xs);
     color: var(--color-text-light);
     text-transform: uppercase;
     letter-spacing: 0.04em;
-    margin-right: var(--space-xs);
 }
 
 /* --- Rollen-Mikro-Strip ----------------------------------------------- */
@@ -667,22 +625,6 @@
 .table-toggle:hover { background: var(--color-bg-warm); }
 .row-hidden { display: none !important; }
 
-/* --- Source-titles Top-N + Toggle ----------------------------------- */
-.person-titles[data-collapsible] .pt-chip.is-overflow { display: none; }
-.person-titles.is-expanded[data-collapsible] .pt-chip.is-overflow { display: inline-block; }
-.person-titles .pt-toggle {
-    margin-left: var(--space-xs);
-    background: transparent;
-    border: 1px dashed var(--color-border);
-    color: var(--color-text-muted);
-    font: inherit;
-    font-size: var(--text-xs);
-    padding: 2px 8px;
-    border-radius: var(--radius);
-    cursor: pointer;
-}
-.person-titles .pt-toggle:hover { background: var(--color-bg-warm); }
-
 /* --- Role-Chips in Quellen-Tabelle ----------------------------------- */
 .role-chip {
     display: inline-block;
@@ -695,15 +637,14 @@
     color: var(--color-text);
     white-space: nowrap;
 }
-.role-chip-issuer    { border-left: 3px solid var(--anno-fn-issuer, var(--anno-person)); }
-.role-chip-recipient { border-left: 3px solid var(--anno-fn-recipient, var(--anno-org)); }
-.role-chip-witness   { border-left: 3px solid var(--anno-fn-witness, var(--color-accent)); }
-.role-chip-other     { border-left: 3px solid var(--anno-fn-other, var(--color-text-light)); }
+.role-chip-issuer    { border-left: 3px solid var(--anno-fn-issuer); }
+.role-chip-recipient { border-left: 3px solid var(--anno-fn-recipient); }
+.role-chip-witness   { border-left: 3px solid var(--anno-fn-witness); }
+.role-chip-other     { border-left: 3px solid var(--anno-fn-other); }
 
-/* Place-Profil tenant/owner-Block-Akzentfarben analog zu Person.        */
-.rel-block-owner  .rel-block-title { color: var(--anno-org); }
-.rel-block-tenant .rel-block-title { color: var(--anno-org); }
-.rel-block-topo   .rel-block-title { color: var(--anno-place, var(--color-accent)); }
+/* Owner/Tenant-Beziehungstypen referenzieren Orte, also Ort-Token. */
+.rel-block-owner  .rel-block-title { color: var(--anno-place); }
+.rel-block-tenant .rel-block-title { color: var(--anno-place); }
 
 /* Source-Tabelle: neue Spalten Bezeichnung + Rolle */
 .person-source-table .src-col-label {
