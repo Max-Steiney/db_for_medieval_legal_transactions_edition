@@ -188,11 +188,10 @@
 
         let html = '';
 
-        // Per-row provenance tooltip: each annotation gets
-        // data-tip-title + data-tip-body so tooltips.js renders the
-        // unified data tooltip. Body contains the TEI markup as a
-        // snippet plus section context, making clear which source
-        // element the row reflects.
+        // Per-row hover hint: each annotation gets data-hint (body) plus
+        // data-hint-type (small caps label). Picked up by hint.js. Body
+        // contains the TEI markup as a snippet plus section context,
+        // making clear which source element the row reflects.
         function entityTipBody(f) {
             let parts = [];
             let rsAttrs = ['type="' + f.type.toLowerCase() + '"'];
@@ -232,8 +231,8 @@
             // prematurely close the attribute.
             return esc(s).replace(/"/g, '&quot;');
         }
-        function tipAttrs(title, body) {
-            return ' data-tip-title="' + escAttr(title) + '" data-tip-body="' + escAttr(body) + '"';
+        function tipAttrs(type, body) {
+            return ' data-hint="' + escAttr(body) + '" data-hint-type="' + escAttr(type) + '"';
         }
 
         if (entities.length) {

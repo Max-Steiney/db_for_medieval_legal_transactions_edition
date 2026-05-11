@@ -1,5 +1,5 @@
 {% extends "base.html" %}
-{% from "macros.html" import prov_stat, prov_popover, prov_ratio_stat, glossary_tip %}
+{% from "macros.html" import tip_glossary, tip_data_trigger, tip_data_body %}
 
 {% block title %}Startseite{% endblock %}
 
@@ -40,17 +40,15 @@
                 <thead>
                     <tr>
                         <th scope="col">
-                            <span class="prov-stat-container">Korpus{% call glossary_tip('gloss-quellenkorpus', 'Quellenkorpus', placement='top') %}
-                                <p class="prov-def">Eine thematisch und editorisch zusammengeh&ouml;rige Gruppe von Quellen, etwa die QGW-B&auml;nde oder die Stadtb&uuml;cher.</p>
-                                <a class="prov-foot-link" href="{{ root_path }}/project/glossary.html#quellenkorpus">&rarr; im Glossar</a>
-                            {% endcall %}</span>
+                            Korpus{% call tip_glossary('gloss-quellenkorpus', 'Quellenkorpus', slug='quellenkorpus', placement='top') %}
+                                <p>Eine thematisch und editorisch zusammengeh&ouml;rige Gruppe von Quellen, etwa die QGW-B&auml;nde oder die Stadtb&uuml;cher.</p>
+                            {% endcall %}
                         </th>
                         {% for col in matrix_columns %}
                         <th scope="col">
-                            <span class="prov-stat-container">{{ col.label }}{% call glossary_tip(col.glossary_id, col.glossary_term, placement='top') %}
-                                <p class="prov-def">{{ col.glossary_def }}</p>
-                                <a class="prov-foot-link" href="{{ root_path }}/project/glossary.html#{{ col.glossary_anchor }}">&rarr; im Glossar</a>
-                            {% endcall %}</span>
+                            {{ col.label }}{% call tip_glossary(col.glossary_id, col.glossary_term, slug=col.glossary_slug, placement='top') %}
+                                <p>{{ col.glossary_def }}</p>
+                            {% endcall %}
                         </th>
                         {% endfor %}
                     </tr>
@@ -70,11 +68,11 @@
                         <th scope="row">Gesamt</th>
                         {% for col in matrix_columns %}
                         <td>
-                            <span class="prov-stat-container">
-                                {% call prov_stat(col.prov_id) %}{{ col.total | de_int }}{% endcall %}
-                                {% call prov_popover(col.prov_id, col.prov_title, placement='top') %}
-                                    <pre class="prov-xpath">{{ col.prov_xpath }}</pre>
-                                    {% if col.prov_note %}<p class="prov-note">{{ col.prov_note }}</p>{% endif %}
+                            <span class="tip-wrap">
+                                {% call tip_data_trigger(col.prov_id) %}{{ col.total | de_int }}{% endcall %}
+                                {% call tip_data_body(col.prov_id, col.prov_title, placement='top') %}
+                                    <p>{{ col.prov_description }}</p>
+                                    <p class="tip-source">{{ col.prov_source }}</p>
                                 {% endcall %}
                             </span>
                         </td>
@@ -116,11 +114,11 @@
                 <li class="start-card-corpora-total">
                     <span class="start-card-corpora-label">Gesamt</span>
                     <span class="start-card-corpora-count">
-                        <span class="prov-stat-container">
-                            {% call prov_stat('prov-card-persons') %}<strong>{{ total_persons | de_int }}</strong>{% endcall %}
-                            {% call prov_popover('prov-card-persons', 'Personen, Provenienz') %}
-                                <pre class="prov-xpath"><span class="xp-axis">//</span><span class="xp-elem">tei:body</span><span class="xp-axis">//</span><span class="xp-elem">tei:*</span><span class="xp-pred">[</span><span class="xp-attr">@type</span>=<span class="xp-string">'person'</span><span class="xp-pred">]</span><span class="xp-axis">/</span><span class="xp-attr">@ref</span></pre>
-                                <p class="prov-note">distinct &uuml;ber <code>@ref</code> (<code>pe__&hellip;</code>); freigegebene Dokumente.</p>
+                        <span class="tip-wrap">
+                            {% call tip_data_trigger('prov-card-persons') %}<strong>{{ total_persons | de_int }}</strong>{% endcall %}
+                            {% call tip_data_body('prov-card-persons', 'Individuelle Personen') %}
+                                <p>Anzahl der unterschiedlichen Personen, die in den freigegebenen Quellen identifiziert wurden. Jede Person z&auml;hlt einmal, egal wie oft sie genannt wird.</p>
+                                <p class="tip-source">Aggregiert aus den Personen-Annotationen aller freigegebenen TEI-Quellen, eindeutig nach Personen-ID.</p>
                             {% endcall %}
                         </span>
                     </span>
@@ -138,7 +136,6 @@
 
         <div class="start-twoways-column">
             <h2 class="start-twoways-heading">Analyse</h2>
-            <p class="start-twoways-intro">Quantitative Auswertungen und gezielte Filterabfragen.</p>
             <div class="start-twoways-grid">
 
                 <a href="{{ root_path }}/analysis/auswertungen.html" class="explore-hub-card explore-hub-card--active">
@@ -175,7 +172,6 @@
 
         <div class="start-twoways-column">
             <h2 class="start-twoways-heading">Exploration</h2>
-            <p class="start-twoways-intro">Visuelle, interaktive Erkundung der Datenstruktur.</p>
             <div class="start-twoways-grid">
 
                 <a href="{{ root_path }}/exploration/zeitstrom.html" class="explore-hub-card explore-hub-card--active">

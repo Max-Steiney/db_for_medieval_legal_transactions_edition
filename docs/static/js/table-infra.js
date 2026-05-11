@@ -144,7 +144,7 @@ let TableInfra = (function() {
                 // Clicks on the provenance trigger (i icon) or its popover
                 // must NOT trigger sorting — they open the source citation
                 // and are a different interaction path than column sort.
-                if (e.target.closest('.prov-trigger, .prov-popover')) return;
+                if (e.target.closest('.tip-trigger, .tip-popover')) return;
                 let key = th.getAttribute('data-sort');
                 if (state.sortKey === key) {
                     state.sortDir *= -1;

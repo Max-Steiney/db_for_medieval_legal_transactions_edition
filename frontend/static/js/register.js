@@ -77,7 +77,11 @@
         if (!table) return;
         let regType = table.dataset.type;
         let isPersons = regType === 'persons';
-        let colCount = isPersons ? 4 : 3;
+        let isOrgs = regType === 'orgs';
+        // Basket actions only for persons and orgs. Places stay without the
+        // "+" column because their detail pages are not part of the release.
+        let basketCol = (isPersons || isOrgs) ? 1 : 0;
+        let colCount = (isPersons ? 4 : 3) + basketCol;
         let entityLabel = (isPersons ? 'Personen'
                            : (regType === 'orgs' ? 'Organisationen' : 'Orte'));
         let filterSexEl = document.getElementById('filter-sex');
@@ -183,8 +187,8 @@
                 let body = ROLE_DESCRIPTIONS[r] || '';
                 if (!label || !icon) return '';
                 return '<span class="form-pill role-pill-' + r + '"' +
-                       ' data-tip-title="' + esc(label) + '"' +
-                       (body ? ' data-tip-body="' + esc(body) + '"' : '') +
+                       ' data-hint="' + esc(body || label) + '"' +
+                       (body ? ' data-hint-type="' + esc(label) + '"' : '') +
                        ' aria-label="' + esc(label) + '">' +
                        icon + '</span>';
             }).join('');
@@ -203,8 +207,8 @@
             }
             let label = entry.dc === 1 ? '1 Quelle' : entry.dc + ' Quellen';
             return '<button class="badge badge-docs doc-count-link"' +
-                   ' data-tip-title="' + esc(label) + '"' +
-                   (body ? ' data-tip-body="' + esc(body) + '"' : '') +
+                   ' data-hint="' + esc(body || label) + '"' +
+                   (body ? ' data-hint-type="' + esc(label) + '"' : '') +
                    '>' +
                        '<span class="badge-text">' + entry.dc + '</span>' +
                    '</button>';
@@ -223,22 +227,45 @@
                 // leaving the list.
                 let profileHref = (window.ROOT_PATH || '.') + '/register/'
                     + regType + '/' + encodeURIComponent(entry.id) + '.html';
+                let profileUrl = 'register/' + regType + '/' + encodeURIComponent(entry.id) + '.html';
                 let nameHtml =
                     '<a class="register-name register-name-linked" href="' + esc(profileHref) + '">' + esc(entry.n) + '</a>'
                     + (sub ? '<span class="register-name-sub">' + sub + '</span>' : '');
+                let basketCell = '';
+                if (isPersons && typeof DataBasket !== 'undefined') {
+                    basketCell = '<td class="col-actions">' + DataBasket.buttonHTML({
+                        type: 'person',
+                        id: entry.id,
+                        label: entry.n,
+                        url: profileUrl,
+                        sex: entry.sex || '',
+                        active_min: entry.am || '',
+                        active_max: entry.ax || ''
+                    }) + '</td>';
+                } else if (isOrgs && typeof DataBasket !== 'undefined') {
+                    basketCell = '<td class="col-actions">' + DataBasket.buttonHTML({
+                        type: 'org',
+                        id: entry.id,
+                        label: entry.n,
+                        url: profileUrl,
+                        type_label: entry.tp || ''
+                    }) + '</td>';
+                }
                 if (isPersons) {
                     let sexLabel = entry.sex === 'm' ? 'm' : entry.sex === 'f' ? 'w' : '–';
                     tr.innerHTML =
                         '<td class="col-name">' + nameHtml + '</td>' +
                         '<td class="col-sex">' + sexLabel + '</td>' +
                         '<td class="col-roles">' + renderRolePills(entry.rl) + '</td>' +
-                        '<td class="col-docs">' + renderDocsBadge(entry) + '</td>';
+                        '<td class="col-docs">' + renderDocsBadge(entry) + '</td>' +
+                        basketCell;
                 } else {
                     let typeLabel = entry.tp ? esc(entry.tp) : '<span class="cell-empty">&ndash;</span>';
                     tr.innerHTML =
                         '<td class="col-name">' + nameHtml + '</td>' +
                         '<td class="col-type">' + typeLabel + '</td>' +
-                        '<td class="col-docs">' + renderDocsBadge(entry) + '</td>';
+                        '<td class="col-docs">' + renderDocsBadge(entry) + '</td>' +
+                        basketCell;
                 }
             }
         });
@@ -300,9 +327,9 @@
                 }
                 let label = ROLE_LABELS[k] || '';
                 let desc = ROLE_DESCRIPTIONS[k] || '';
-                if (label) c.setAttribute('data-tip-title', label);
-                if (desc)  c.setAttribute('data-tip-body', desc);
-                // Drop the native title — the edition tooltip takes over.
+                if (desc) c.setAttribute('data-hint', desc);
+                if (label) c.setAttribute('data-hint-type', label);
+                // Drop the native title — data-hint takes over.
                 c.removeAttribute('title');
                 if (desc) {
                     let info = document.createElement('span');

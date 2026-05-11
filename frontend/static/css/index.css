@@ -794,9 +794,9 @@ button.badge { cursor: pointer; }
 }
 
 /* "i"-Affordance am Sidebar-Chip — zeigt sichtbar an, dass es einen
-   Definitions-Tooltip gibt. Der Tooltip selbst haengt am Chip-Container
-   ueber data-tip-title / data-tip-body (Hover irgendwo auf den Chip
-   zeigt ihn). Das "i" ist nur Affordance-Signal, kein eigener Trigger. */
+   Hover-Hint gibt. Der Hint selbst haengt am Chip-Container ueber
+   data-hint / data-hint-type (Hover irgendwo auf den Chip zeigt ihn).
+   Das "i" ist nur Affordance-Signal, kein eigener Trigger. */
 .form-filter-chip-info {
     display: inline-flex;
     align-items: center;

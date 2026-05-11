@@ -136,25 +136,21 @@
         function renderContent(doc) {
             let parts = [];
 
-            // Tooltips use the project-wide edition-tooltip system
-            // (tooltips.js / [data-tip-title] + [data-tip-body]) \u2014 no more
-            // native title attributes, so style and behavior stay consistent
-            // across the whole edition.
+            // Hover-hints use the project-wide [data-hint] convention,
+            // rendered by hint.js. data-hint-type sets the small caps
+            // label, data-hint the body text. No native title attributes.
             if (doc.pcd > 0) {
-                // The "Beteiligte" column header already provides context \u2014
-                // the cell only shows the count with a dotted underline as
-                // tooltip affordance. Hover reveals "X Person/en" + sex
-                // breakdown.
                 let label = doc.pcd === 1 ? '1 Person' : doc.pcd + ' Personen';
                 let breakdown = [];
                 if (doc.pcdf) breakdown.push(doc.pcdf + ' weiblich');
                 if (doc.pcdm) breakdown.push(doc.pcdm + ' m\u00e4nnlich');
                 if (doc.pcdu) breakdown.push(doc.pcdu + ' ohne Geschlechtsangabe');
-                let body = breakdown.length ? breakdown.join(', ') : '';
+                let body = breakdown.length ? breakdown.join(', ') : label;
+                let typeLabel = breakdown.length ? label : '';
                 parts.push(
                     '<span class="badge badge-persons"' +
-                    ' data-tip-title="' + esc(label) + '"' +
-                    (body ? ' data-tip-body="' + esc(body) + '"' : '') +
+                    ' data-hint="' + esc(body) + '"' +
+                    (typeLabel ? ' data-hint-type="' + esc(typeLabel) + '"' : '') +
                     '>' +
                         '<span class="badge-text">' + doc.pcd + '</span>' +
                     '</span>'
@@ -176,8 +172,8 @@
             if (pills.length) {
                 let html = pills.map(function(p) {
                     return '<span class="form-pill form-pill-' + p[0] + '"' +
-                           ' data-tip-title="' + esc(p[1]) + '"' +
-                           ' data-tip-body="' + esc(p[2]) + '"' +
+                           ' data-hint="' + esc(p[2]) + '"' +
+                           ' data-hint-type="' + esc(p[1]) + '"' +
                            ' aria-label="' + esc(p[1]) + '">' +
                            FORM_ICONS[p[0]] + '</span>';
                 }).join('');
@@ -196,8 +192,8 @@
             if (dateText && dateText.indexOf('–') !== -1) {
                 let body = 'Gesicherter Zeitraum laut TEI: ' +
                            dateText.replace('–', ' bis ');
-                attr = ' data-tip-title="Datum unscharf"' +
-                       ' data-tip-body="' + esc(body) + '"';
+                attr = ' data-hint="' + esc(body) + '"' +
+                       ' data-hint-type="Datum unscharf"';
             }
             return '<td class="col-date"' + attr + '>' + esc(dateText) + '</td>';
         }
@@ -219,9 +215,9 @@
                 tr.classList.add('doc-row');
                 tr.setAttribute('data-idx', i);
                 let korbBtn = '';
-                if (typeof Wissenskorb !== 'undefined') {
-                    korbBtn = Wissenskorb.buttonHTML({
-                        type: 'source', id: doc.id, label: doc.id,
+                if (typeof DataBasket !== 'undefined') {
+                    korbBtn = DataBasket.buttonHTML({
+                        id: doc.id, label: doc.id,
                         url: doc.u, date: doc.dn || doc.d || '',
                         coll: doc.cl || doc.c || '', regest: doc.t || '',
                     });
@@ -287,8 +283,8 @@
                 }
                 let label = FORM_LABELS[key] || '';
                 let desc = FORM_DESCRIPTIONS[key] || '';
-                if (label) c.setAttribute('data-tip-title', label);
-                if (desc)  c.setAttribute('data-tip-body', desc);
+                if (desc) c.setAttribute('data-hint', desc);
+                if (label) c.setAttribute('data-hint-type', label);
                 c.removeAttribute('title');
                 if (desc) {
                     let info = document.createElement('span');

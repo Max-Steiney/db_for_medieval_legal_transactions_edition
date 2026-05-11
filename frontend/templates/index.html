@@ -1,5 +1,5 @@
 {% extends "base.html" %}
-{% from "macros.html" import search_box, result_count, active_filters, no_results, glossary_tip, prov_popover,
+{% from "macros.html" import search_box, result_count, active_filters, no_results, tip_glossary,
                               sidebar_block, sidebar_range_slider, sidebar_chip_group,
                               sidebar_corpus_chips, sidebar_reset_button %}
 
@@ -75,9 +75,8 @@
 
             <div class="main-toolbar">
                 <span class="result-count-wrap">
-                    {{ result_count(total_count, 'Quellen') }}{% call glossary_tip('gloss-quelle-results', 'Quelle') %}
-                        <p class="prov-def">Eine einzelne &Uuml;berlieferungseinheit (Urkunde, Stadtbuch-Eintrag) mit eigenem TEI-Dokument.</p>
-                        <a class="prov-foot-link" href="{{ root_path }}/project/glossary.html#quelle">&rarr; im Glossar</a>
+                    {{ result_count(total_count, 'Quellen') }}{% call tip_glossary('gloss-quelle-results', 'Quelle', slug='quelle') %}
+                        <p>Eine einzelne &Uuml;berlieferungseinheit (Urkunde, Stadtbuch-Eintrag) mit eigenem TEI-Dokument.</p>
                     {% endcall %}
                 </span>
                 {{ active_filters() }}
@@ -89,56 +88,24 @@
                         <tr>
                             <th scope="col" class="col-idno" data-sort="id">Nr.</th>
                             <th scope="col" class="col-date" data-sort="di">
-                                <span class="prov-stat-container">Datum{% call glossary_tip('col-info-datum', 'Datum', placement='bottom') %}
-                                    <p class="prov-def">Ausstellungsdatum der Quelle, normalisiert nach ISO. Range-Datierungen wie „1198 bis 1230" entstehen aus <code>@from</code>+<code>@to</code> oder <code>@notBefore</code>+<code>@notAfter</code>; sie werden nach Startjahr sortiert.</p>
-                                    <footer class="prov-foot">
-                                        <span class="prov-foot-source">
-                                            <strong>ISO-Datum:</strong> 8-stufige Kaskade<br>
-                                            <code>tei:teiHeader//tei:date[1]/@notBefore | @from+@to | @notAfter | @when</code>,<br>
-                                            Fallback auf <code>tei:origin[1]/&hellip;</code><br>
-                                            <strong>Display:</strong> <code>tei:teiHeader//tei:profileDesc/tei:creation/tei:date</code>
-                                        </span>
-                                    </footer>
-                                {% endcall %}</span>
+                                Datum{% call tip_glossary('col-info-datum', 'Datum') %}
+                                    <p>Ausstellungsdatum der Quelle. Bei unsicherer Datierung wird eine Spanne wie „1198 bis 1230" angegeben; sortiert wird nach Startjahr.</p>
+                                {% endcall %}
                             </th>
                             <th scope="col" class="col-place" data-sort="p">
-                                <span class="prov-stat-container">Ort{% call glossary_tip('col-info-ort', 'Ort', placement='bottom') %}
-                                    <p class="prov-def">Ausstellungsort der Quelle laut TEI-Header. Klammer-Notation („[Wien]") markiert editorisch erschlossene Werte; sie werden beim Sortieren wie der Klartext eingeordnet.</p>
-                                    <footer class="prov-foot">
-                                        <span class="prov-foot-source">
-                                            <code>tei:teiHeader//tei:profileDesc/tei:creation/tei:placeName</code>
-                                        </span>
-                                    </footer>
-                                {% endcall %}</span>
+                                Ort{% call tip_glossary('col-info-ort', 'Ort') %}
+                                    <p>Ausstellungsort der Quelle. Klammer-Notation wie „[Wien]" markiert editorisch erschlossene Werte; sie werden beim Sortieren wie der Klartext eingeordnet.</p>
+                                {% endcall %}
                             </th>
                             <th scope="col" class="col-title">
-                                <span class="prov-stat-container">Regest{% call glossary_tip('col-info-regest', 'Regest', placement='bottom') %}
-                                    <p class="prov-def">Inhaltszusammenfassung der Quelle. Die Tabelle zeigt die ersten 200 Zeichen; die Vorschau und die Detailseite enthalten den vollen Regest.</p>
-                                    <footer class="prov-foot">
-                                        <span class="prov-foot-source">
-                                            <code>tei:text//tei:div[@type='abstract']</code><br>
-                                            Fallback bei reinen Stadtbuch-Eintr&auml;gen: <code>tei:div[@type='entry']</code>
-                                        </span>
-                                        <a class="prov-foot-link" href="{{ root_path }}/project/glossary.html#regest">&rarr; im Glossar</a>
-                                    </footer>
-                                {% endcall %}</span>
+                                Regest{% call tip_glossary('col-info-regest', 'Regest', slug='regest') %}
+                                    <p>Inhaltszusammenfassung der Quelle. Die Tabelle zeigt die ersten 200 Zeichen; die Vorschau und die Detailseite enthalten den vollen Regest.</p>
+                                {% endcall %}
                             </th>
                             <th scope="col" class="col-content" data-sort="pcd">
-                                <span class="prov-stat-container">Beteiligte{% call glossary_tip('col-info-beteiligte', 'Beteiligte', placement='bottom') %}
-                                    <p class="prov-def">Anzahl <em>individueller</em> Personen pro Quelle (dedupliziert). Mehrfachnennungen derselben Person z&auml;hlen einmal. Der Zahlenwert ist der Sortierschl&uuml;ssel der Spalte; die Pillen rechts daneben markieren TEI-Strukturen, Faksimile und Multi-Event.</p>
-                                    <footer class="prov-foot">
-                                        <span class="prov-foot-source">
-                                            <strong>Personenzahl:</strong> distinkte <code>person_key</code> pro <code>file_key</code><br>
-                                            <code>pipeline/output/persons_in_sources.csv</code><br>
-                                            Geschlechter-Aufschl&uuml;sselung aus <code>persons.csv</code> Feld <code>sex</code><br><br>
-                                            <strong>Pillen R/S/E/N:</strong> distinkte Events pro <code>event_in</code><br>
-                                            <code>pipeline/output/events_in_sources.csv</code> (= TEI <code>tei:div[@type='abstract'|'seal'|'entry'|'nota']</code>)<br><br>
-                                            <strong>Faksimile-Pille:</strong> <code>tei:facsimile//tei:graphic[@url]</code><br>
-                                            <strong>Multi-Event-Pille:</strong> &ge; 2 distinkte Events
-                                        </span>
-                                        <a class="prov-foot-link" href="{{ root_path }}/project/glossary.html#individuelle-person">&rarr; im Glossar</a>
-                                    </footer>
-                                {% endcall %}</span>
+                                Beteiligte{% call tip_glossary('col-info-beteiligte', 'Beteiligte', slug='individuelle-person') %}
+                                    <p>Anzahl <em>individueller</em> Personen pro Quelle. Mehrfachnennungen derselben Person z&auml;hlen einmal. Der Zahlenwert ist der Sortierschl&uuml;ssel; die Pillen rechts daneben markieren TEI-Strukturen, Faksimile und Multi-Event.</p>
+                                {% endcall %}
                             </th>
                         </tr>
                     </thead>
@@ -158,6 +125,5 @@
 
 {% block scripts %}
 <script src="{{ root_path }}/static/js/table-infra.js?v={{ asset_v }}"></script>
-<script src="{{ root_path }}/static/js/tooltips.js?v={{ asset_v }}"></script>
 <script src="{{ root_path }}/static/js/index.js?v={{ asset_v }}"></script>
 {% endblock %}

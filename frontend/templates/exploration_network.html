@@ -1,5 +1,5 @@
 {% extends "base.html" %}
-{% from "macros.html" import glossary_tip, active_filters,
+{% from "macros.html" import tip_glossary, active_filters,
                               sidebar_block, sidebar_chip_group,
                               sidebar_reset_button %}
 
@@ -70,14 +70,9 @@
                 <header class="aggregat-quadrant-head">
                     <h2 id="net-graph-heading">Vorschl&auml;ge</h2>
                     <span class="aggregat-quadrant-source">
-                        <span class="prov-stat-container">
-                            {% call glossary_tip('gloss-net-source', 'Personennetzwerk') %}
-                                <p class="prov-def">Annotierte Beziehungen zwischen Personen aus den TEI-Quellen, gruppiert in Verwandtschaft (kin), Beruf / Stand (occ, Person zu Organisation), Vertretung (rep) und Freundschaft (friend). Eine Beziehung kann in mehreren Quellen belegt sein.</p>
-                                <footer class="prov-foot">
-                                    <span class="prov-foot-source"><code>data/relations.json::persons</code></span>
-                                </footer>
-                            {% endcall %}
-                        </span>
+                        {% call tip_glossary('gloss-net-source', 'Personennetzwerk') %}
+                            <p>Annotierte Beziehungen zwischen Personen, gruppiert in Verwandtschaft, Beruf oder Stand (auch Person zu Organisation), Vertretung und Freundschaft. Eine Beziehung kann in mehreren Quellen belegt sein.</p>
+                        {% endcall %}
                     </span>
                 </header>
 
@@ -117,7 +112,6 @@
 {% endblock %}
 
 {% block scripts %}
-<script src="{{ root_path }}/static/js/tooltips.js?v={{ asset_v }}"></script>
 <script src="{{ root_path }}/static/js/table-infra.js?v={{ asset_v }}"></script>
 <script src="{{ root_path }}/static/js/viz-core.js?v={{ asset_v }}"></script>
 <script id="network-data-relations" type="application/json">{{ relations_json|safe }}</script>

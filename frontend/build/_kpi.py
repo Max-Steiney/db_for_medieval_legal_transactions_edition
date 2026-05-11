@@ -176,9 +176,9 @@ def _compute_release_kpis():
 def _compute_matrix_columns(total_docs, total_mentions, total_events):
     """Return the column configs of the corpus matrix as a data structure.
 
-    Three data columns — sources, mentions, events. Each column carries
+    Three data columns: sources, mentions, events. Each column carries
     both the glossary definition (for the i-icon tooltip on the header)
-    and the provenance XPath (for the tooltip on the total figure).
+    and the data-provenance text (for the tooltip on the total figure).
     The template iterates over this list instead of writing each block
     out individually.
     """
@@ -188,7 +188,7 @@ def _compute_matrix_columns(total_docs, total_mentions, total_events):
             "label": "Quellen",
             "glossary_id": "gloss-quelle",
             "glossary_term": "Quelle",
-            "glossary_anchor": "quelle",
+            "glossary_slug": "quelle",
             "glossary_def": Markup(
                 "Eine einzelne Urkunde oder ein Regest als Datensatz-Einheit. "
                 "Tr&auml;ger eines oder mehrerer Events."
@@ -196,14 +196,15 @@ def _compute_matrix_columns(total_docs, total_mentions, total_events):
             "total": total_docs,
             "row_key": "sources",
             "prov_id": "prov-total-sources",
-            "prov_title": "Quellen — Provenienz",
-            "prov_xpath": Markup(
-                '<span class="xp-axis">//</span>'
-                '<span class="xp-elem">tei:TEI</span>'
+            "prov_title": "Quellen",
+            "prov_description": Markup(
+                "Anzahl der freigegebenen Quellen im Editionsstand. "
+                "Eine Quelle ist eine einzelne TEI-XML-Datei mit einem "
+                "Regest und seinen Annotationen."
             ),
-            "prov_note": Markup(
-                "aus <code>sources/&lt;korpus&gt;/done/</code>, "
-                "eingeschr&auml;nkt auf freigegebene Korpora."
+            "prov_source": Markup(
+                "Direkt aus den freigegebenen TEI-Quellen, gez&auml;hlt "
+                "pro Datei."
             ),
         },
         {
@@ -211,7 +212,7 @@ def _compute_matrix_columns(total_docs, total_mentions, total_events):
             "label": "Nennungen",
             "glossary_id": "gloss-nennung",
             "glossary_term": "Gesamtnennung",
-            "glossary_anchor": "gesamtnennung",
+            "glossary_slug": "gesamtnennung",
             "glossary_def": Markup(
                 "Eine Beziehung zwischen einer Person und einer Quelle, in "
                 "der sie genannt wird. Quellenbereinigt: Mehrfacherw&auml;hnungen "
@@ -220,24 +221,16 @@ def _compute_matrix_columns(total_docs, total_mentions, total_events):
             "total": total_mentions,
             "row_key": "mentions",
             "prov_id": "prov-total-mentions",
-            "prov_title": "Nennungen — Provenienz",
-            "prov_xpath": Markup(
-                '<span class="xp-axis">//</span><span class="xp-elem">tei:body</span>'
-                '<span class="xp-axis">//</span><span class="xp-elem">tei:*</span>'
-                '<span class="xp-pred">[</span><span class="xp-attr">@type</span>='
-                '<span class="xp-string">\'person\'</span><span class="xp-pred">]</span>\n'
-                '<span class="xp-pred">  [not(</span>'
-                '<span class="xp-axis">ancestor::</span><span class="xp-elem">tei:rs</span>'
-                '<span class="xp-pred">[</span><span class="xp-attr">@type</span>='
-                '<span class="xp-string">\'event\'</span><span class="xp-pred">]</span>\n'
-                '<span class="xp-pred">       [</span>'
-                '<span class="xp-axis">ancestor::</span><span class="xp-elem">tei:rs</span>'
-                '<span class="xp-pred">[</span><span class="xp-attr">@type</span>='
-                '<span class="xp-string">\'event\'</span><span class="xp-pred">]])]</span>'
+            "prov_title": "Nennungen",
+            "prov_description": Markup(
+                "Wie oft Personen in den Quellen genannt werden. "
+                "Eine Person, die in zwei verschiedenen Quellen vorkommt, "
+                "z&auml;hlt zweimal."
             ),
-            "prov_note": Markup(
-                "<code>@corresp</code> und Personen in verschachtelten Events "
-                "ausgeschlossen."
+            "prov_source": Markup(
+                "Aus den Personen-Annotationen in den freigegebenen TEI-"
+                "Quellen. Mehrfachnennungen innerhalb derselben Quelle "
+                "z&auml;hlen einmal."
             ),
         },
         {
@@ -245,7 +238,7 @@ def _compute_matrix_columns(total_docs, total_mentions, total_events):
             "label": "Events",
             "glossary_id": "gloss-event",
             "glossary_term": "Event",
-            "glossary_anchor": "event",
+            "glossary_slug": "event",
             "glossary_def": Markup(
                 "Ein konkreter Vorgang im Quellentext: Rechtsgesch&auml;ft "
                 "(Kauf, Schenkung &hellip;), Siegelvermerk, Kanzleieintrag "
@@ -254,20 +247,15 @@ def _compute_matrix_columns(total_docs, total_mentions, total_events):
             "total": total_events,
             "row_key": "events",
             "prov_id": "prov-total-events",
-            "prov_title": "Events — Provenienz",
-            "prov_xpath": Markup(
-                '<span class="xp-axis">//</span><span class="xp-elem">tei:body</span>'
-                '<span class="xp-axis">//</span><span class="xp-elem">tei:rs</span>'
-                '<span class="xp-pred">[</span><span class="xp-attr">@type</span>='
-                '<span class="xp-string">\'event\'</span><span class="xp-pred">]</span>\n'
-                '<span class="xp-pred">  [not(</span>'
-                '<span class="xp-axis">ancestor::</span><span class="xp-elem">tei:rs</span>'
-                '<span class="xp-pred">[</span><span class="xp-attr">@type</span>='
-                '<span class="xp-string">\'event\'</span><span class="xp-pred">])]</span>'
+            "prov_title": "Events",
+            "prov_description": Markup(
+                "Anzahl der annotierten Vorg&auml;nge in den Quellen. "
+                "Ein Event ist ein konkreter Akt: Rechtsgesch&auml;ft, "
+                "Siegelvermerk, Stadtbucheintrag oder Notiz."
             ),
-            "prov_note": Markup(
-                "distinct &uuml;ber <code>@ref</code>; verschachtelte rs-Events "
-                "ausgeschlossen."
+            "prov_source": Markup(
+                "Aus den Event-Annotationen in den freigegebenen TEI-Quellen, "
+                "verschachtelte Events ausgeschlossen."
             ),
         },
     ]

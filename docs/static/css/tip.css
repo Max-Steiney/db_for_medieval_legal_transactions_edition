@@ -1,0 +1,308 @@
+/* ==========================================================================
+   Tip system — three classes, one mechanic for popovers, one for hints.
+
+   Klasse 1: tip-popover--glossary
+     Begriffsdefinitionen. Trigger ist ein kleines i-Icon neben einem
+     Fachbegriff. Klick pinnt das Popover, Hover oeffnet transient.
+     Inhalt: kurze Definition plus Link ins Glossar.
+
+   Klasse 2: tip-popover--data
+     Datenprovenienz fuer aggregierte Zahlen. Trigger ist die Zahl selbst
+     mit gepunkteter Unterstreichung. Gleiche Mechanik wie Glossar.
+     Inhalt: kurze Beschreibung woher die Zahl kommt und wie sie
+     aggregiert wurde. Kein XPath.
+
+   Klasse 3: tip-hint
+     Schneller Hover-Tooltip ohne Klick-Persistenz. Folgt der Maus.
+     Fuer UI-Orientierung (Toolbar-Actions, Navigation, Histogramm-Bars)
+     und fuer Entitaeten im Volltext (Personennamen, Annotationen).
+     Trigger: data-hint-Attribut auf beliebigem Element.
+
+   Die Popover-Familie (1+2) teilt sich Mechanik und Markup, unterscheidet
+   sich nur durch den Modifier am Container. Hint (3) ist eine eigene
+   Mechanik mit einem einzigen globalen Tooltip-Element.
+   ========================================================================== */
+
+
+/* ----- Wrapper: relative Box um Trigger + Popover ---------------------- */
+
+.tip-wrap {
+    position: relative;
+    display: inline-block;
+    white-space: nowrap;
+}
+
+
+/* ----- Trigger: Zahl mit dotted Underline, oder i-Icon ----------------- */
+
+.tip-trigger {
+    background: none;
+    border: none;
+    padding: 0;
+    margin: 0;
+    font: inherit;
+    color: inherit;
+    cursor: help;
+    text-decoration: underline dotted var(--color-accent);
+    text-decoration-thickness: 1.5px;
+    text-underline-offset: 3px;
+    transition: text-decoration-color 140ms ease, color 140ms ease;
+}
+
+.tip-trigger:hover,
+.tip-trigger:focus-visible,
+.tip-trigger[aria-expanded="true"] {
+    text-decoration-color: var(--color-accent);
+    color: var(--color-accent);
+    outline: none;
+}
+
+.tip-trigger[aria-expanded="true"] {
+    text-decoration-style: solid;
+}
+
+/* Modifier: i-Icon-Variante. Wird fuer Glossar-Begriffe verwendet,
+   steht inline neben einem Begriff statt unter einer Zahl. */
+.tip-trigger--icon {
+    display: inline-flex;
+    align-items: center;
+    justify-content: center;
+    width: 16px;
+    height: 16px;
+    margin-left: 4px;
+    padding: 0;
+    color: var(--color-text-light);
+    text-decoration: none;
+    vertical-align: -2px;
+    transition: color 140ms ease;
+}
+.tip-trigger--icon:hover,
+.tip-trigger--icon:focus-visible,
+.tip-trigger--icon[aria-expanded="true"] {
+    color: var(--color-accent);
+    text-decoration: none;
+}
+.tip-trigger--icon svg { display: block; }
+
+
+/* ----- Popover: gemeinsamer Container fuer Glossar und Daten ---------- */
+
+.tip-popover {
+    display: none;
+    position: absolute;
+    top: calc(100% + 14px);
+    left: 50%;
+    transform: translateX(-50%);
+    width: max-content;
+    min-width: 240px;
+    max-width: min(360px, calc(100vw - 32px));
+    background: var(--color-bg-card);
+    border: 1px solid var(--color-border);
+    border-radius: 4px;
+    box-shadow: 0 8px 28px rgba(44, 40, 37, 0.10), 0 1px 3px rgba(44, 40, 37, 0.06);
+    padding: 0;
+    z-index: 150;
+    font-family: var(--font-sans);
+    text-align: left;
+    white-space: normal;
+    animation: tip-fade-in 140ms ease;
+    /* Vererbung aus umschliessenden Tabellen-Headern unterbrechen. */
+    text-transform: none;
+    letter-spacing: normal;
+    font-weight: 400;
+    font-size: var(--text-sm);
+    color: var(--color-text);
+}
+
+.tip-popover[aria-hidden="false"] {
+    display: block;
+}
+
+@keyframes tip-fade-in {
+    from { opacity: 0; transform: translateX(-50%) translateY(-4px); }
+    to   { opacity: 1; transform: translateX(-50%) translateY(0); }
+}
+
+/* Pfeil nach oben zum Trigger. --tip-arrow-offset wird vom JS gesetzt,
+   wenn das Popover am Viewport-Rand horizontal verschoben werden musste. */
+.tip-popover::before {
+    content: '';
+    position: absolute;
+    top: -6px;
+    left: calc(50% + var(--tip-arrow-offset, 0px));
+    transform: translateX(-50%) rotate(45deg);
+    width: 10px;
+    height: 10px;
+    background: var(--color-bg-card);
+    border-top: 1px solid var(--color-border);
+    border-left: 1px solid var(--color-border);
+}
+
+/* Modifier: Popover klappt nach oben. Fuer Trigger nahe Seitenfuss. */
+.tip-popover--top {
+    top: auto;
+    bottom: calc(100% + 14px);
+}
+.tip-popover--top::before {
+    top: auto;
+    bottom: -6px;
+    border-top: none;
+    border-left: none;
+    border-bottom: 1px solid var(--color-border);
+    border-right: 1px solid var(--color-border);
+}
+
+
+/* ----- Inhaltliche Varianten: nur Akzentfarbe unterscheidet ---------- */
+
+/* Glossar: warmer Akzent an der Oberkante, signalisiert "Begriff". */
+.tip-popover--glossary {
+    border-top: 3px solid var(--anno-place, #3a7a5c);
+}
+
+/* Daten: kuehler Akzent, signalisiert "Datenherkunft". */
+.tip-popover--data {
+    border-top: 3px solid var(--color-accent);
+}
+
+
+/* ----- Kopf, Body, Close ---------------------------------------------- */
+
+.tip-head {
+    padding: 10px 14px 8px;
+    border-bottom: 1px solid var(--color-border-light);
+    position: relative;
+}
+
+.tip-title {
+    margin: 0;
+    font-family: var(--font-serif, var(--font-sans));
+    font-size: var(--text-base);
+    font-weight: 600;
+    color: var(--color-text);
+    line-height: 1.2;
+}
+
+.tip-close {
+    position: absolute;
+    top: 6px;
+    right: 8px;
+    background: none;
+    border: none;
+    padding: 4px 7px;
+    font-size: 16px;
+    line-height: 1;
+    color: var(--color-text-light);
+    cursor: pointer;
+    border-radius: 3px;
+    transition: color 120ms, background 120ms;
+}
+
+.tip-close:hover {
+    color: var(--color-text);
+    background: var(--color-bg-hover);
+}
+
+.tip-body {
+    padding: 10px 14px 12px;
+    font-size: var(--text-sm);
+    line-height: 1.5;
+    color: var(--color-text);
+}
+
+.tip-body > :first-child { margin-top: 0; }
+.tip-body > :last-child  { margin-bottom: 0; }
+
+.tip-body p {
+    margin: 0 0 8px;
+}
+
+/* Herkunfts-Zeile: kleiner, gedaempft. Fuer den "Aus X aggregiert"-Satz
+   in der Daten-Variante. */
+.tip-source {
+    margin: 8px 0 0;
+    font-size: var(--text-xs);
+    color: var(--color-text-muted);
+    font-style: italic;
+    line-height: 1.4;
+}
+
+/* Glossar-Link am Ende des Body. */
+.tip-link {
+    display: inline-block;
+    margin-top: 6px;
+    color: var(--color-accent);
+    text-decoration: none;
+    font-weight: 500;
+    font-size: var(--text-xs);
+}
+
+.tip-link:hover {
+    text-decoration: underline;
+}
+
+
+/* ----- Mobile: zentriert am unteren Rand statt absolute -------------- */
+
+@media (max-width: 520px) {
+    .tip-popover {
+        position: fixed;
+        top: auto;
+        bottom: 16px;
+        left: 16px;
+        right: 16px;
+        transform: none;
+        width: auto;
+        max-width: none;
+    }
+    .tip-popover[aria-hidden="false"] {
+        transform: none;
+    }
+    .tip-popover::before {
+        display: none;
+    }
+}
+
+
+/* ==========================================================================
+   Klasse 3: Hover-Hint
+   Globaler Tooltip-Container, einmal pro Seite vom JS angelegt. Folgt
+   dem Cursor bei Hover auf [data-hint]-Elementen.
+   ========================================================================== */
+
+.tip-hint {
+    position: fixed;
+    pointer-events: none;
+    z-index: 200;
+    max-width: 280px;
+    padding: 6px 10px;
+    background: var(--color-text);
+    color: var(--color-bg-card);
+    border-radius: 3px;
+    font-family: var(--font-sans);
+    font-size: var(--text-xs);
+    line-height: 1.35;
+    box-shadow: 0 2px 8px rgba(44, 40, 37, 0.18);
+    opacity: 0;
+    transition: opacity 100ms ease;
+    white-space: normal;
+}
+
+.tip-hint.is-visible {
+    opacity: 1;
+}
+
+/* Zweiteilig: kleiner Type-Vorspann (z.B. "Person") plus Hauptzeile.
+   Optional, wird nur gerendert wenn data-hint-type gesetzt ist. */
+.tip-hint-type {
+    display: block;
+    font-size: 0.85em;
+    color: var(--color-text-muted, #b0a99f);
+    text-transform: uppercase;
+    letter-spacing: 0.04em;
+    margin-bottom: 1px;
+}
+
+.tip-hint-body {
+    display: block;
+}

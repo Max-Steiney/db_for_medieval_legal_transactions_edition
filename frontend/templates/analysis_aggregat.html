@@ -1,5 +1,5 @@
 {% extends "base.html" %}
-{% from "macros.html" import search_box, glossary_tip, active_filters,
+{% from "macros.html" import search_box, tip_glossary, active_filters,
                               sidebar_block, sidebar_range_slider,
                               sidebar_chip_group, sidebar_corpus_chips,
                               sidebar_reset_button, drill_down_overlay %}
@@ -56,15 +56,9 @@
                                 <button type="button" data-roles-mode="persons" aria-pressed="false">Individuelle Personen</button>
                             </div>
                             <span class="aggregat-quadrant-source">
-                                <span class="prov-stat-container">
-                                    {% call glossary_tip('gloss-roles-source', 'Funktionsrollen') %}
-                                        <p class="prov-def">Handlungsrollen aus dem TEI-Attribut <code>rs/@role</code>: Aussteller (issuer), Empf&auml;nger (recipient), Zeuge oder Siegler (witness), Sonstige (other), unannotiert (keine).</p>
-                                        <footer class="prov-foot">
-                                            <span class="prov-foot-source"><code>pipeline/output/persons_in_events.csv</code> Feld <code>event_role</code></span>
-                                            <a class="prov-foot-link" href="{{ root_path }}/project/glossary.html#rolle">&rarr; Glossar</a>
-                                        </footer>
-                                    {% endcall %}
-                                </span>
+                                {% call tip_glossary('gloss-roles-source', 'Funktionsrollen', slug='rolle') %}
+                                    <p>Handlungsrollen, die einer Person im Event zugewiesen sind: Aussteller, Empf&auml;nger, Zeuge oder Siegler, Sonstige. Personen ohne Rollen-Annotation sind unter „keine" gruppiert.</p>
+                                {% endcall %}
                             </span>
                         </div>
                     </header>
@@ -99,14 +93,9 @@
                         <h2>Beziehungstypen <span class="aggregat-quadrant-h2-meta">&times; Geschlecht</span></h2>
                         <div class="aggregat-quadrant-controls">
                             <span class="aggregat-quadrant-source">
-                                <span class="prov-stat-container">
-                                    {% call glossary_tip('gloss-rels-source', 'Beziehungstypen') %}
-                                        <p class="prov-def">Annotierte Beziehungen zwischen Personen aus den TEI-Quellen, gruppiert in Verwandtschaft (kin), Beruf / Stand (occ), Vertretung (rep) und Freundschaft (friend).</p>
-                                        <footer class="prov-foot">
-                                            <span class="prov-foot-source"><code>kin_relations_in_sources.csv</code> · <code>occ_relations_in_sources.csv</code> · <code>rep_relations_in_sources.csv</code> · <code>friend_relations_in_sources.csv</code></span>
-                                        </footer>
-                                    {% endcall %}
-                                </span>
+                                {% call tip_glossary('gloss-rels-source', 'Beziehungstypen') %}
+                                    <p>Annotierte Beziehungen zwischen Personen, gruppiert in Verwandtschaft, Beruf oder Stand, Vertretung und Freundschaft.</p>
+                                {% endcall %}
                             </span>
                         </div>
                     </header>
@@ -139,14 +128,9 @@
                     <header class="aggregat-quadrant-head">
                         <h2>Transaktionstypen</h2>
                         <span class="aggregat-quadrant-source">
-                            <span class="prov-stat-container">
-                                {% call glossary_tip('gloss-tx-source', 'Transaktionstypen') %}
-                                    <p class="prov-def">Normalisierte dispositive Verbkategorie pro Event (z. B. Kauf, &Uuml;bergabe, Stiftung). Events ohne normalisiertes Verb sind ausgeblendet (siehe Fu&szlig;note).</p>
-                                    <footer class="prov-foot">
-                                        <span class="prov-foot-source"><code>events_in_sources.csv</code> Feld <code>catchwords</code> &times; <code>label_norm_matching.csv</code></span>
-                                    </footer>
-                                {% endcall %}
-                            </span>
+                            {% call tip_glossary('gloss-tx-source', 'Transaktionstypen') %}
+                                <p>Normalisierte Verbkategorie eines Events, etwa Kauf, &Uuml;bergabe oder Stiftung. Events ohne erkennbare Kategorie sind ausgeblendet.</p>
+                            {% endcall %}
                         </span>
                     </header>
                     <div class="aggregat-bars" id="tx-bars"></div>
@@ -158,14 +142,9 @@
                     <header class="aggregat-quadrant-head">
                         <h2>Bezeichnungen <span class="aggregat-quadrant-h2-meta" id="labels-count-meta"></span></h2>
                         <span class="aggregat-quadrant-source">
-                            <span class="prov-stat-container">
-                                {% call glossary_tip('gloss-labels-source', 'Bezeichnungen') %}
-                                    <p class="prov-def">Annotierte Beziehungs-Bezeichnung (z. B. <em>Hausfrau</em>, <em>purger</em>, <em>sun</em>) mit normalisiertem Lemma und allen orthographischen Varianten zusammengef&uuml;hrt.</p>
-                                    <footer class="prov-foot">
-                                        <span class="prov-foot-source">aggregiert aus den vier Beziehungs-CSVs</span>
-                                    </footer>
-                                {% endcall %}
-                            </span>
+                            {% call tip_glossary('gloss-labels-source', 'Bezeichnungen') %}
+                                <p>Annotierte Beziehungs-Bezeichnung wie <em>Hausfrau</em>, <em>purger</em> oder <em>sun</em>, normalisiert und mit allen Schreibvarianten zusammengefasst.</p>
+                            {% endcall %}
                         </span>
                     </header>
                     <div class="aggregat-labels-toolbar">
@@ -217,7 +196,6 @@
 {% endblock %}
 
 {% block scripts %}
-<script src="{{ root_path }}/static/js/tooltips.js?v={{ asset_v }}"></script>
 <script src="{{ root_path }}/static/js/table-infra.js?v={{ asset_v }}"></script>
 <script src="{{ root_path }}/static/js/viz-core.js?v={{ asset_v }}"></script>
 <script id="aggregat-data-roles" type="application/json">{{ roles_json|safe }}</script>

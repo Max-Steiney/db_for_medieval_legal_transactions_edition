@@ -1,5 +1,5 @@
 {% extends "base.html" %}
-{% from "macros.html" import search_box, result_count, active_filters, no_results, glossary_tip,
+{% from "macros.html" import search_box, result_count, active_filters, no_results, tip_glossary,
                               sidebar_block, sidebar_range_slider, sidebar_chip_group,
                               sidebar_corpus_chips, sidebar_reset_button %}
 
@@ -71,9 +71,8 @@
 
             <div class="main-toolbar">
                 <span class="result-count-wrap">
-                    {{ result_count(total_count, register_label) }}{% if register_type == 'persons' %}{% call glossary_tip('gloss-person-results', 'Individuelle Person') %}
-                        <p class="prov-def">Konsolidierte Identit&auml;t. Jede Zeile ist eine eindeutige Person, unabh&auml;ngig von der Anzahl ihrer Nennungen in den Quellen.</p>
-                        <a class="prov-foot-link" href="{{ root_path }}/project/glossary.html#individuelle-person">&rarr; im Glossar</a>
+                    {{ result_count(total_count, register_label) }}{% if register_type == 'persons' %}{% call tip_glossary('gloss-person-results', 'Individuelle Person', slug='individuelle-person') %}
+                        <p>Konsolidierte Identit&auml;t. Jede Zeile ist eine eindeutige Person, unabh&auml;ngig von der Anzahl ihrer Nennungen in den Quellen.</p>
                     {% endcall %}{% endif %}
                 </span>
                 {{ active_filters() }}
@@ -87,28 +86,21 @@
                             {% if register_type == 'persons' %}
                             <th scope="col" class="col-sex" data-sort="sex">Geschl.</th>
                             <th scope="col" class="col-roles">
-                                <span class="prov-stat-container">Rollen{% call glossary_tip('col-info-roles', 'Rolle', placement='bottom') %}
-                                    <p class="prov-def">Handlungsrolle der Person in den Events ihrer Quellen. Pillen: <strong>A</strong>&nbsp;Aussteller, <strong>E</strong>&nbsp;Empf&auml;nger, <strong>Z</strong>&nbsp;Zeuge / Siegler, <strong>S</strong>&nbsp;Sonstige. Eine Person kann in unterschiedlichen Quellen unterschiedliche Rollen einnehmen.</p>
-                                    <footer class="prov-foot">
-                                        <span class="prov-foot-source">
-                                            <code>pipeline/output/persons_in_events.csv</code> Feld <code>event_role</code>
-                                        </span>
-                                    </footer>
-                                {% endcall %}</span>
+                                Rollen{% call tip_glossary('col-info-roles', 'Rolle', slug='rolle') %}
+                                    <p>Handlungsrolle der Person in den Events ihrer Quellen. Die Pillen stehen f&uuml;r <strong>A</strong>&nbsp;Aussteller, <strong>E</strong>&nbsp;Empf&auml;nger, <strong>Z</strong>&nbsp;Zeuge oder Siegler, <strong>S</strong>&nbsp;Sonstige. Eine Person kann in unterschiedlichen Quellen unterschiedliche Rollen einnehmen.</p>
+                                {% endcall %}
                             </th>
                             {% else %}
                             <th scope="col" class="col-type" data-sort="tp">Typ</th>
                             {% endif %}
                             <th scope="col" class="col-docs" data-sort="dc">
-                                <span class="prov-stat-container">Quellen{% call glossary_tip('col-info-docs', 'Quellen mit Nennung', placement='bottom') %}
-                                    <p class="prov-def">Anzahl freigegebener Quellen, in denen die Entit&auml;t als <code>&lt;rs&gt;</code>-Annotation auftritt. Quellenbereinigt: Mehrfachnennungen in derselben Quelle z&auml;hlen einmal.</p>
-                                    <footer class="prov-foot">
-                                        <span class="prov-foot-source">
-                                            <code>pipeline/output/*_in_sources.csv</code> distinct <code>file_key</code>
-                                        </span>
-                                    </footer>
-                                {% endcall %}</span>
+                                Quellen{% call tip_glossary('col-info-docs', 'Quellen mit Nennung') %}
+                                    <p>Anzahl freigegebener Quellen, in denen die Entit&auml;t namentlich vorkommt. Mehrfachnennungen in derselben Quelle z&auml;hlen einmal.</p>
+                                {% endcall %}
                             </th>
+                            {% if register_type in ('persons', 'orgs') %}
+                            <th scope="col" class="col-actions" aria-label="Aktionen"></th>
+                            {% endif %}
                         </tr>
                     </thead>
                     <tbody id="register-tbody">
@@ -126,7 +118,6 @@
 {% endblock %}
 
 {% block scripts %}
-<script src="{{ root_path }}/static/js/tooltips.js?v={{ asset_v }}"></script>
 <script src="{{ root_path }}/static/js/table-infra.js?v={{ asset_v }}"></script>
 <script src="{{ root_path }}/static/js/register.js?v={{ asset_v }}"></script>
 {% endblock %}

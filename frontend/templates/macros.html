@@ -29,14 +29,14 @@
     {% if meta.prev_url %}
     <a href="{{ root_path }}/{{ meta.prev_url }}" class="toolbar-btn doc-paging-prev"
        aria-label="Vorherige Quelle: Nr. {{ meta.prev_id }}"
-       title="Vorherige Quelle: Nr. {{ meta.prev_id }}">{{ toolbar_icon('chevron-left') }}</a>
+       data-hint="Vorherige Quelle: Nr. {{ meta.prev_id }}">{{ toolbar_icon('chevron-left') }}</a>
     {% else %}
     <span class="toolbar-btn doc-paging-prev is-disabled" aria-hidden="true">{{ toolbar_icon('chevron-left') }}</span>
     {% endif %}
     {% if meta.next_url %}
     <a href="{{ root_path }}/{{ meta.next_url }}" class="toolbar-btn doc-paging-next"
        aria-label="Nächste Quelle: Nr. {{ meta.next_id }}"
-       title="Nächste Quelle: Nr. {{ meta.next_id }}">{{ toolbar_icon('chevron-right') }}</a>
+       data-hint="Nächste Quelle: Nr. {{ meta.next_id }}">{{ toolbar_icon('chevron-right') }}</a>
     {% else %}
     <span class="toolbar-btn doc-paging-next is-disabled" aria-hidden="true">{{ toolbar_icon('chevron-right') }}</span>
     {% endif %}
@@ -155,80 +155,90 @@
 {% endmacro %}
 
 {# ============================================================
-   Provenienz-Komponente (Projekt-Standard)
+   Tip-System (Tooltip-Familie, drei Klassen)
    ============================================================
-   Pattern: jede aggregierte Zahl im UI wird in einen
-   prov-stat-container gewrappt. Der Trigger ist die Zahl
-   selbst. Das Popover liegt als Sibling direkt daneben.
+   Klare Trennung nach Inhaltstyp:
 
-   Interaktion:
-   - Hover / Focus  öffnet Popover (transient)
-   - Klick          fixiert Popover (persistent)
-   - ESC / Outside  schließt
+   1. tip_glossary(id, term, slug=None, placement='bottom')
+      Begriffsdefinition. Trigger ist ein i-Icon neben einem Fachbegriff.
+      Body via caller() = kurze Definition. Wenn slug gesetzt, wird
+      automatisch ein "im Glossar"-Link angehaengt.
 
-   Verwendung:
-   <span class="prov-stat-container">
-       {{ prov_trigger('my-id') }}<strong>2.635</strong> Quellen{{ prov_trigger_end() }}
-       {% call prov_popover('my-id', 'Quellen', 'Zählebene: ...') %}
-           <p class="prov-def">Kurze Definition.</p>
-           <table class="prov-breakdown">...</table>
-           <footer class="prov-foot">
-               <span class="prov-foot-source">Quelle: <code>...</code></span>
-               <a class="prov-foot-link" href="...">→ Statistik</a>
-           </footer>
+   2. tip_data(id, title, placement='bottom')
+      Datenprovenienz fuer eine aggregierte Zahl. Trigger ist die Zahl
+      selbst (caller() liefert nur den Trigger-Inhalt). Body via
+      separates tip_data_body-Makro, damit zwei caller in einem Aufruf
+      nicht noetig sind.
+
+   Praktischere Variante: tip_data_full(id, title, value, body, source)
+      kompletter One-Liner fuer einfache Faelle.
+
+   3. Hover-Hints werden als Attribute geschrieben:
+      data-hint="..." [data-hint-type="..."]
+      Kein Makro noetig, weil das Attribut so kurz ist.
+
+   Mechanik (1+2): hover oeffnet transient, klick pinnt, ESC schliesst.
+   Gemeinsame JS-Logik in tip.js.
+   ============================================================ #}
+
+{% macro tip_glossary(id, term, slug=None, placement='bottom') %}
+<span class="tip-wrap">
+    <button type="button" class="tip-trigger tip-trigger--icon"
+            aria-expanded="false" aria-haspopup="dialog"
+            aria-controls="{{ id }}"
+            data-tip="{{ id }}"
+            aria-label="Definition: {{ term }}">
+        <svg width="13" height="13" viewBox="0 0 16 16" aria-hidden="true">
+            <circle cx="8" cy="8" r="7" stroke="currentColor" stroke-width="1.4" fill="none"/>
+            <text x="8" y="11.6" text-anchor="middle" font-size="9.5" font-weight="700"
+                  fill="currentColor" font-family="Georgia, serif">i</text>
+        </svg>
+    </button>
+    <aside class="tip-popover tip-popover--glossary{% if placement == 'top' %} tip-popover--top{% endif %}"
+           id="{{ id }}" role="dialog" aria-hidden="true"
+           aria-label="Definition: {{ term }}">
+        <header class="tip-head">
+            <h3 class="tip-title">{{ term }}</h3>
+            <button type="button" class="tip-close" aria-label="Schlie&szlig;en">&times;</button>
+        </header>
+        <div class="tip-body">
+            {{ caller() }}
+            {% if slug %}<a class="tip-link" href="{{ root_path }}/project/glossary.html#{{ slug }}">im Glossar</a>{% endif %}
+        </div>
+    </aside>
+</span>
+{% endmacro %}
+
+
+{# tip_data: zwei-Schritte-Form. Erst der Trigger, dann das Popover.
+   Caller liefert den Trigger-Inhalt (die Zahl mit eventuellem Markup);
+   das Popover wird mit tip_data_body geoeffnet.
+   Beispiel:
+     <span class="tip-wrap">
+       {% call tip_data_trigger('prov-quellen') %}<strong>2.601</strong>{% endcall %}
+       {% call tip_data_body('prov-quellen', 'Quellen') %}
+         <p>Anzahl freigegebener Quellen ...</p>
+         <p class="tip-source">Aus persons_in_sources.csv ...</p>
        {% endcall %}
-   </span>
+     </span>
+#}
 
-   Oder kompakter via prov_stat mit caller-Content für den Trigger:
-   {% call prov_stat('my-id') %}<strong>2.635</strong> Quellen{% endcall %}
-   (Popover muss direkt darunter gerendert werden.) #}
-
-{% macro prov_stat(popover_id) %}
-<button type="button" class="prov-trigger"
+{% macro tip_data_trigger(id) %}
+<button type="button" class="tip-trigger"
         aria-expanded="false" aria-haspopup="dialog"
-        aria-controls="{{ popover_id }}"
-        data-prov-trigger="{{ popover_id }}">{{ caller() }}</button>
+        aria-controls="{{ id }}"
+        data-tip="{{ id }}">{{ caller() }}</button>
 {% endmacro %}
 
-{% macro prov_popover(popover_id, title, subtitle='', placement='bottom') %}
-<aside class="prov-popover{% if placement == 'top' %} prov-popover--top{% endif %}" id="{{ popover_id }}"
-       role="dialog" aria-hidden="true" aria-label="Herkunft: {{ title }}">
-    <header class="prov-popover-head">
-        <h3 class="prov-popover-title">{{ title }}</h3>
-        {% if subtitle %}<p class="prov-popover-sub">{{ subtitle }}</p>{% endif %}
-        <button type="button" class="prov-popover-close" aria-label="Schließen">&times;</button>
+{% macro tip_data_body(id, title, placement='bottom') %}
+<aside class="tip-popover tip-popover--data{% if placement == 'top' %} tip-popover--top{% endif %}"
+       id="{{ id }}" role="dialog" aria-hidden="true"
+       aria-label="Herkunft: {{ title }}">
+    <header class="tip-head">
+        <h3 class="tip-title">{{ title }}</h3>
+        <button type="button" class="tip-close" aria-label="Schlie&szlig;en">&times;</button>
     </header>
-    <div class="prov-popover-body">
-        {{ caller() }}
-    </div>
-</aside>
-{% endmacro %}
-
-{# Glossar-Tip: kleines i-Icon mit Begriffsdefinition.
-   Pendant zum Provenienz-Tooltip, aber begriffsorientiert statt zahlenorientiert.
-   Trigger steht NEBEN einem Begriff (z. B. Spalten-Header).
-   Verwendet die gleiche Popover-Mechanik (data-prov-trigger / .prov-popover),
-   damit die JS-Logik aus provenance.js dieselbe ist. #}
-{% macro glossary_tip(term_id, term_label, placement='bottom') %}
-<button type="button" class="prov-trigger prov-trigger--icon"
-        aria-expanded="false" aria-haspopup="dialog"
-        aria-controls="{{ term_id }}"
-        data-prov-trigger="{{ term_id }}"
-        aria-label="Definition: {{ term_label }}">
-    <svg width="13" height="13" viewBox="0 0 16 16" aria-hidden="true">
-        <circle cx="8" cy="8" r="7" stroke="currentColor" stroke-width="1.4" fill="none"/>
-        <text x="8" y="11.6" text-anchor="middle" font-size="9.5" font-weight="700"
-              fill="currentColor" font-family="Georgia, serif">i</text>
-    </svg>
-</button>
-<aside class="prov-popover prov-popover--glossary{% if placement == 'top' %} prov-popover--top{% endif %}"
-       id="{{ term_id }}" role="dialog" aria-hidden="true"
-       aria-label="Definition: {{ term_label }}">
-    <header class="prov-popover-head">
-        <h3 class="prov-popover-title">{{ term_label }}</h3>
-        <button type="button" class="prov-popover-close" aria-label="Schlie&szlig;en">&times;</button>
-    </header>
-    <div class="prov-popover-body">
+    <div class="tip-body">
         {{ caller() }}
     </div>
 </aside>
@@ -279,7 +289,7 @@
              data-decade="{{ d.decade }}"
              data-count="{{ d.count }}"
              data-height="{{ [4, (d.count / max_count * 100)|int]|max if d.count > 0 else 0 }}"
-             title="{{ d.decade }}er: {{ d.count }} {{ _unit_sg if d.count == 1 else unit }}">
+             data-hint="{{ d.decade }}er: {{ d.count }} {{ _unit_sg if d.count == 1 else unit }}">
         </div>
         {% endfor %}
     </div>
@@ -305,7 +315,7 @@
      aria-label="{{ aria_label }}">
     {% for it in items %}
     <button type="button" class="form-filter-chip" {{ attr_name }}="{{ it.key }}"
-            aria-pressed="false" title="{{ it.title or it.label }}">
+            aria-pressed="false" data-hint="{{ it.title or it.label }}">
         <span class="form-filter-chip-label">{{ it.label }}</span>
         <span class="form-filter-chip-count">{% if it.count is defined and it.count is not none %}{{ it.count }}{% endif %}</span>
     </button>
@@ -332,20 +342,3 @@
 {% endmacro %}
 
 
-{# Komplettes "Teilmenge von Gesamt"-Stat mit Trigger + Popover.
-   Zeigt im Popover ein prov-ratio-Verhältnis und einen Standard-Footer.
-   Für Phase-2 wiederverwendbar, wo immer eine Untermenge ins Verhältnis
-   zu einem bekannten Gesamt gesetzt wird. #}
-{% macro prov_ratio_stat(popover_id, title, subtitle, count, of_total, pct,
-                         source, link_href, link_label) %}
-<span class="prov-stat-container">
-    {% call prov_stat(popover_id) %}{{ count }}{% endcall %}
-    {% call prov_popover(popover_id, title, subtitle) %}
-        <p class="prov-ratio">{{ count }} <span class="prov-ratio-sep">von</span> {{ of_total }} <span class="prov-ratio-pct">&middot; {{ pct }}&nbsp;%</span></p>
-        <footer class="prov-foot">
-            <span class="prov-foot-source"><code>{{ source }}</code></span>
-            <a class="prov-foot-link" href="{{ link_href }}">&rarr; {{ link_label }}</a>
-        </footer>
-    {% endcall %}
-</span>
-{% endmacro %}

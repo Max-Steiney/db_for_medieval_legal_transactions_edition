@@ -28,14 +28,14 @@
    respective CSS files.
    ------------------------------------------------------------------ */
 
-.edition-tooltip, .stats-tooltip, .explore-tooltip {
+.stats-tooltip, .explore-tooltip {
     position: fixed;
     z-index: var(--z-tooltip);
-    /* Optisch konsistent mit dem prov-popover-System (Startseite, Glossar-
-       Tips): helles Card mit Border + dezentem Schatten, Serif-Titel,
-       dunkler Text. So wirkt das Tooltip-Erlebnis ueber die ganze Seite
-       wie ein einheitliches Family — egal ob Hover-Tooltip auf Pillen
-       oder Klick-Popover auf Statistik-Zahlen. */
+    /* Visuell konsistent mit der tip-Popover-Familie: helles Card mit
+       Border und dezentem Schatten. Wird von chart-helpers.js fuer
+       Statistik-Mouseover und von Exploration-JS fuer Visualisierungs-
+       Hover gerendert. Hover-Hints fuer einfache UI-Elemente nutzen
+       stattdessen [data-hint] mit der .tip-hint-Klasse aus tip.css. */
     background: var(--color-bg-card);
     color: var(--color-text);
     border: 1px solid var(--color-border);
@@ -48,85 +48,9 @@
 }
 
 /* WCAG 1.4.13: tooltip hoverable + persistent when visible */
-.edition-tooltip.visible, .stats-tooltip.visible, .explore-tooltip.visible {
+.stats-tooltip.visible, .explore-tooltip.visible {
     opacity: 1;
     pointer-events: auto;
-}
-
-/* --- edition-tooltip: globale Tooltip-Variante ----------------------------
-   Wird von tooltips.js fuer zwei Faelle benutzt:
-   1) Entity-Hover (.anno-person/.anno-org/.anno-place) im Dokumentvolltext
-      -> zeigt typeBadge + name + id
-   2) Daten-Hover ([data-tip-title]/[data-tip-body]) auf UI-Badges, Pillen,
-      Hinweisen — z.B. in der Tabelle der Quellenseite
-      -> zeigt name (=Titel) + body (=Beschreibung), kein typeBadge, keine id
-   Die '.edition-tooltip--data'-Klasse schaltet zwischen den beiden Layouts.
-   --------------------------------------------------------------------- */
-.edition-tooltip {
-    font-size: var(--text-sm);
-    line-height: 1.5;
-    padding: 10px 14px;
-    max-width: min(360px, calc(100vw - 32px));
-    min-width: 180px;
-    transform: translateY(4px);
-    transition: opacity var(--transition-fast), transform var(--transition-fast);
-}
-.edition-tooltip.visible {
-    transform: translateY(0);
-}
-
-.tooltip-name {
-    display: inline;
-}
-
-.tooltip-id {
-    display: block;
-    font-family: var(--font-mono);
-    font-size: var(--text-2xs);
-    color: var(--color-text-muted);
-    margin-top: 4px;
-}
-
-.tooltip-type {
-    display: inline-block;
-    font-size: 0.625rem;
-    font-weight: 600;
-    text-transform: uppercase;
-    letter-spacing: 0.06em;
-    padding: 1px 6px;
-    border-radius: 2px;
-    margin-right: var(--space-xs);
-    color: #fff;
-}
-.tooltip-type:empty { display: none; }
-
-.tooltip-type-person   { background: var(--anno-person); }
-.tooltip-type-org      { background: var(--anno-org); }
-.tooltip-type-place    { background: var(--anno-place); }
-.tooltip-type-fn       { background: var(--anno-fn-issuer); }
-
-/* Daten-Tooltip: Titel oben (Serif, fett — passt zum prov-popover-Title),
-   optionale Beschreibung darunter (Sans, gedaempft). */
-.tooltip-body {
-    display: none;
-}
-.edition-tooltip--data .tooltip-name {
-    display: block;
-    font-family: var(--font-serif, var(--font-sans));
-    font-size: var(--text-base);
-    font-weight: 600;
-    line-height: 1.2;
-    color: var(--color-text);
-}
-.edition-tooltip--data .tooltip-body {
-    display: block;
-    margin-top: 6px;
-    color: var(--color-text-muted);
-    font-size: var(--text-xs);
-    line-height: 1.45;
-}
-.edition-tooltip--data .tooltip-body:empty {
-    display: none;
 }
 
 
@@ -162,7 +86,7 @@
    Knowledge basket — site-wide collector component. A small button next to
    each source row in lists and drill-downs; a nav icon with a badge shows
    the current item count; a dedicated page (korb.html) lists the contents.
-   The UI label "Wissenskorb" stays German; CSS class names use the English
+   UI label "Datenkorb" stays German; CSS class names use the English
    "basket".
    ========================================================================== */
 
@@ -235,6 +159,7 @@
     justify-content: space-between;
     align-items: center;
     gap: var(--space-md);
+    flex-wrap: wrap;
     margin-bottom: var(--space-md);
     padding-bottom: var(--space-sm);
     border-bottom: 1px solid var(--color-border-light);
@@ -244,7 +169,38 @@
     font-size: var(--text-sm);
     color: var(--color-text-muted);
 }
-.basket-actions { display: flex; gap: var(--space-sm); }
+.basket-filter {
+    display: flex;
+    gap: var(--space-xs);
+    flex-wrap: wrap;
+}
+.basket-chip {
+    font-family: var(--font-sans);
+    font-size: var(--text-sm);
+    background: transparent;
+    border: 1px solid var(--color-border);
+    border-radius: 999px;
+    padding: 2px var(--space-sm);
+    cursor: pointer;
+    color: var(--color-text);
+    transition: all var(--transition-fast);
+    display: inline-flex;
+    align-items: center;
+    gap: 6px;
+}
+.basket-chip:hover { background: var(--color-surface-alt); }
+.basket-chip.is-active {
+    background: var(--color-text);
+    color: #fff;
+    border-color: var(--color-text);
+}
+.basket-chip-count {
+    font-size: var(--text-xs);
+    opacity: 0.7;
+    font-variant-numeric: tabular-nums;
+}
+.basket-actions { display: flex; gap: var(--space-sm); flex-wrap: wrap; }
+.basket-table .col-type { width: 110px; }
 .explore-btn--danger {
     border-color: var(--color-border);
     color: var(--color-text-muted);

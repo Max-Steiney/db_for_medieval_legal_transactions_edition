@@ -9,7 +9,6 @@
     max-width: var(--max-width);
     margin: 0 auto var(--space-md);
     padding-bottom: var(--space-md);
-    border-bottom: 1px solid var(--color-border-light);
 }
 
 .start-hero h1 {
@@ -85,7 +84,7 @@
 
 /* Spalten-Header in der Korpus-Matrix sind Tooltip-Trigger; gleiche
    visuelle Sprache wie inline-Zahlen, nur konsistent zentriert/rechts. */
-.start-card-matrix thead th .prov-trigger {
+.start-card-matrix thead th .tip-trigger {
     text-transform: inherit;
     letter-spacing: inherit;
     color: inherit;
@@ -217,18 +216,10 @@
     font-size: var(--text-xl);
     font-weight: 600;
     color: var(--color-text);
-    margin: 0 0 var(--space-2xs);
+    margin: 0 0 var(--space-md);
     line-height: 1.2;
     letter-spacing: -0.01em;
-}
-
-.start-twoways-intro {
-    font-family: var(--font-sans);
-    font-size: var(--text-sm);
-    color: var(--color-text-muted);
-    margin: 0 0 var(--space-md);
-    line-height: 1.5;
-    max-width: 38rem;
+    text-align: center;
 }
 
 .start-twoways-grid {

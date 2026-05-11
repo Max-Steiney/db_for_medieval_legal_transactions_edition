@@ -24,11 +24,20 @@ _ENTITY_MAP = {
 }
 
 # rs/@type -> register detail directory (one HTML per entity inside).
-# Names mirror the build output: docs/register/<dir>/<id>.html.
+# Names mirror the build output: docs/register/<dir>/<id>.html. Places
+# have no register page; rs type="place" stays a span with the
+# register-tooltip but no href.
 _ENTITY_PAGE = {
     "person": "register/persons",
     "org": "register/orgs",
-    "place": "register/places",
+}
+
+# rs/@type -> short label rendered as type vorspann in the hover-hint.
+# Picked up by hint.js as data-hint-type attribute.
+_HINT_TYPE = {
+    "person": "Person",
+    "org": "Organisation",
+    "place": "Ort",
 }
 
 
@@ -148,20 +157,24 @@ def _render_rs(element, registers):
         register = registers[reg_index]
         tooltip = tooltip_fn(register[ref], ref) if ref in register else ref
         children = _render_children(element, registers)
-        if ref and ref in register:
+        # Hover-hint type label, shown as small caps above the tooltip body.
+        hint_type = _HINT_TYPE.get(rs_type, "")
+        # Person and org annotations link to register/<dir>/<id>.html.
+        # Place annotations stay as span when the place register has no
+        # detail page for them.
+        if ref and ref in register and rs_type in _ENTITY_PAGE:
             root_path = registers[3] if len(registers) > 3 else "."
-            # All three entity types now have detail pages under
-            # register/<dir>/<id>.html (see _ENTITY_PAGE).
             page = _ENTITY_PAGE[rs_type]
             href = f"{root_path}/{page}/{ref}.html"
             return (
                 f'<a class="anno-{rs_type}" data-ref="{escape(ref)}" '
-                f'title="{escape(tooltip)}" href="{escape(href)}">'
+                f'data-hint="{escape(tooltip)}" data-hint-type="{hint_type}" '
+                f'href="{escape(href)}">'
                 f"{children}</a>"
             )
         return (
             f'<span class="anno-{rs_type}" data-ref="{escape(ref)}" '
-            f'title="{escape(tooltip)}">'
+            f'data-hint="{escape(tooltip)}" data-hint-type="{hint_type}">'
             f"{children}</span>"
         )
 

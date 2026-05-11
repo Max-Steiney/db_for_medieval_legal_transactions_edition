@@ -1,5 +1,5 @@
 {% extends "base.html" %}
-{% from "macros.html" import glossary_tip, active_filters,
+{% from "macros.html" import tip_glossary, active_filters,
                               sidebar_block, sidebar_range_slider,
                               sidebar_chip_group, sidebar_reset_button %}
 
@@ -65,14 +65,9 @@
                 <header class="aggregat-quadrant-head">
                     <h2 id="stream-axis-heading">Quellen pro Jahrzehnt</h2>
                     <span class="aggregat-quadrant-source">
-                        <span class="prov-stat-container">
-                            {% call glossary_tip('gloss-stream-source', 'Zeitstrom') %}
-                                <p class="prov-def">Anzahl freigegebener TEI-Quellen pro Jahrzehnt, gruppiert nach der gew&auml;hlten Stapel-Achse. Ein Klick-und-Ziehen &uuml;ber den Stream w&auml;hlt einen Zeitabschnitt aus und listet die enthaltenen Quellen unten auf.</p>
-                                <footer class="prov-foot">
-                                    <span class="prov-foot-source"><code>data/search.json</code> &middot; <code>data/timeline.json</code> &middot; Transaktions-Stapelung aus <code>transactions.json</code></span>
-                                </footer>
-                            {% endcall %}
-                        </span>
+                        {% call tip_glossary('gloss-stream-source', 'Zeitstrom') %}
+                            <p>Anzahl freigegebener Quellen pro Jahrzehnt, gestapelt nach der gew&auml;hlten Kategorie. Per Klick und Ziehen &uuml;ber den Stream wird ein Zeitabschnitt ausgew&auml;hlt; die enthaltenen Quellen erscheinen darunter.</p>
+                        {% endcall %}
                     </span>
                 </header>
 
@@ -94,7 +89,7 @@
                     <div class="explore-stream-drill-actions">
                         <a class="explore-btn explore-stream-drill-crossnav"
                            id="drill-crossnav" href="#"
-                           title="Filter (Zeitraum) wird in die Quellen-Listenseite übernommen.">
+                           data-hint="Filter (Zeitraum) wird in die Quellen-Listenseite übernommen.">
                            → in Quellen-Liste öffnen
                         </a>
                         <button type="button" class="explore-stream-drill-clear"
@@ -114,7 +109,6 @@
 {% endblock %}
 
 {% block scripts %}
-<script src="{{ root_path }}/static/js/tooltips.js?v={{ asset_v }}"></script>
 <script src="{{ root_path }}/static/js/table-infra.js?v={{ asset_v }}"></script>
 <script src="{{ root_path }}/static/js/viz-core.js?v={{ asset_v }}"></script>
 <script id="exploration-data-transactions" type="application/json">{{ transactions_json|safe }}</script>
