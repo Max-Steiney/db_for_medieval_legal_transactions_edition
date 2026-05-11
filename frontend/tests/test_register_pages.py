@@ -18,7 +18,7 @@ from frontend.build._pages import _short_collection_label
 from frontend.register import load_persons, load_orgs, load_places
 
 
-# --- Short collection label fuer Sub-Label im Personenregister ---
+# --- Short collection label for sub-label in person register ---
 
 
 class TestShortCollectionLabel:
@@ -52,7 +52,6 @@ class TestExtractEntityRefs:
         assert isinstance(refs_doc_100, set)
 
     def test_finds_person_refs(self, refs_doc_100):
-        # Document 100 contains person annotations
         person_refs = [r for r in refs_doc_100 if r.startswith("pe__")]
         assert len(person_refs) > 0, "Expected person refs in document 100"
 
@@ -78,8 +77,8 @@ class TestExtractEntityRefsRoleName:
         return _extract_entity_refs(tree.getroot())
 
     def test_captures_rolename_corresp(self, refs_doc_100):
-        # Document 100 has roleName elements with corresp attributes
-        # At minimum it should have the same person refs
+        # Document 100 has roleName elements with corresp attributes;
+        # at minimum it should have the same person refs.
         assert len(refs_doc_100) > 0
 
 
@@ -139,20 +138,20 @@ class TestSearchDataStructure:
         }]}
         data = _person_search_data(persons, reverse)
         assert data[0]["dc"] == 1
-        # Die neuen Felder muessen alle gesetzt sein
+        # The new fields must all be set.
         assert data[0]["am"] == "1340"
         assert data[0]["ax"] == "1340"
         assert data[0]["i0"] == "1"
         assert data[0]["cl0"] == "QGW II/1"
         assert data[0]["co"] == ["QGW/Vienna_1177-1414_ready"]
         assert data[0]["rl"] == []
-        # Entfernte Felder sollen wirklich weg sein
+        # Removed fields must really be gone.
         assert "u" not in data[0]
         assert "d" not in data[0], "death field should no longer exist"
         assert "qw" not in data[0], "quality-worst field should no longer exist"
 
     def test_person_search_data_skips_persons_without_docs(self):
-        # Defensive: keine Quelle => Person nicht im Register
+        # Defensive: no source => person not in register.
         persons = {"pe__ghost": {
             "forename": "", "surname": "", "addName": "",
             "death": "", "display": "Ghost", "sex": "",
@@ -173,7 +172,7 @@ class TestSearchDataStructure:
         }]}
         roles = {"pe__test": {"issuer", "witness"}}
         data = _person_search_data(persons, reverse, person_roles=roles)
-        # Sortiert (issuer < witness)
+        # Sorted (issuer < witness).
         assert data[0]["rl"] == ["issuer", "witness"]
 
     def test_person_search_data_year_span(self):
@@ -194,7 +193,7 @@ class TestSearchDataStructure:
         data = _person_search_data(persons, reverse)
         assert data[0]["am"] == "1287"
         assert data[0]["ax"] == "1312"
-        # i0 ist die FRUEHESTE Quelle (reverse_index ist date-sortiert)
+        # i0 is the EARLIEST source (reverse_index is date-sorted).
         assert data[0]["i0"] == "1"
 
     def test_org_search_data_has_doc_count(self):
@@ -218,8 +217,8 @@ class TestRegisterJson:
         import frontend.build._pages as pages_mod
         patch_build_path(monkeypatch, "DOCS_DIR", tmp_path)
         # Stub released-person filter so the synthetic test ID passes through.
-        # _build_register_json ruft die in _pages importierte Funktion auf —
-        # daher dort patchen.
+        # _build_register_json calls the function imported into _pages —
+        # so patch it there.
         monkeypatch.setattr(pages_mod, "_released_person_keys",
                             lambda: {"pe__hans"})
 

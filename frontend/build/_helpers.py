@@ -1,8 +1,8 @@
-"""Geteilte Build-Hilfsfunktionen.
+"""Shared build helpers.
 
-Niedriges Level: Datums- und Markdown-Helfer, Pfad-Mapping, Jinja-Init,
-Label-Aufloesung, XPath-Snippets, Sort-Key fuer Nav, statische Asset-Kopie.
-Wird von allen anderen Build-Modulen importiert.
+Low-level: date and Markdown helpers, path mapping, Jinja init,
+label resolution, XPath snippets, sort key for nav, static asset copy.
+Imported by all other build modules.
 """
 
 import json
@@ -41,7 +41,7 @@ def _format_german_date(dt):
 
 
 def _pipeline_repo_data_date():
-    """Return the date of the last git commit in the pipeline repo as a german-formatted string.
+    """Return the date of the last git commit in the pipeline repo as a German-formatted string.
 
     Falls back to today's date if git is unavailable or the repo has no commits.
     """
@@ -209,7 +209,7 @@ def _is_done_file(filepath):
 
 
 def _is_released_file(filepath):
-    """True, wenn die Datei zu einem freigegebenen Quellenkorpus gehoert."""
+    """True if the file belongs to a released source corpus."""
     rel = filepath.relative_to(SOURCES_DIR)
     if len(rel.parts) < 2:
         return False
@@ -274,9 +274,9 @@ def _compute_prev_next(all_metadata):
 def _format_table_date(rec):
     """Format docs_aggregate date fields for the documents-table display.
 
-    Pipeline-Konvention: ISO-Datum YYYY-MM-DD, Unsicherheit als
-    YYYY-01-01 | YYYY-12-31 (Jahr unscharf) oder
-    YYYYa-01-01 | YYYYb-12-31 (Jahresbereich).
+    Pipeline convention: ISO date YYYY-MM-DD, uncertainty expressed as
+    YYYY-01-01 | YYYY-12-31 (fuzzy year) or
+    YYYYa-01-01 | YYYYb-12-31 (year range).
     """
     start = rec.get("date_iso_start", "") or ""
     end = rec.get("date_iso_end", "") or ""

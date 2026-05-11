@@ -1,4 +1,4 @@
-"""Timeline-Aggregat: Dokument-Counts pro Dekade und Korpus."""
+"""Timeline aggregate: document counts per decade and corpus."""
 
 from collections import Counter, defaultdict
 from pathlib import Path
@@ -81,9 +81,3 @@ def aggregate_timeline(docs_data_dir: Path) -> dict:
 
     _write_json(result, docs_data_dir / "timeline.json")
     return result
-
-
-# ---------------------------------------------------------------------------
-# Epic A aggregation (V0-T3): roles x sex x institutions
-# ---------------------------------------------------------------------------
-

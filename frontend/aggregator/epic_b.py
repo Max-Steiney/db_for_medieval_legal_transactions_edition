@@ -1,5 +1,5 @@
-"""Epic B: annotierte Beziehungen zwischen Personen — fuer die Beziehungs-
-und Bezeichnungs-Sektionen in analysis/auswertungen.html."""
+"""Epic B: annotated relations between persons — for the relation and label
+sections in analysis/auswertungen.html."""
 
 from collections import Counter, defaultdict
 from pathlib import Path
@@ -118,7 +118,7 @@ def aggregate_epic_b(docs_data_dir: Path) -> dict:
         ("geschefftleuten", ["geschefftleut"]),
         # rep – for
         ("zu handen", ["zu hannden"]),
-        # rep – Geschäftsvollstrecker
+        # rep – executor
         ("geschäftsvollstrecker", ["geschäftsherr", "geschäftsherren"]),
     ]
     for canonical, variants in _norm_groups:
@@ -198,8 +198,8 @@ def aggregate_epic_b(docs_data_dir: Path) -> dict:
                     label_sex_fkeys[(label_norm, rel_name, sex)].add(fk)
 
             # Per-person relationship entry (use normalised label for matching).
-            # related_key (rk) wird mitgefuehrt, damit die Personen-Netzwerk-
-            # Visualisierung Person-zu-Person-Kanten bauen kann.
+            # related_key (rk) is carried along so the person-network
+            # visualisation can build person-to-person edges.
             person_rels[pk].append({
                 "t": rel_name,
                 "l": label.strip().strip("|").strip(),
@@ -393,9 +393,3 @@ def aggregate_epic_b(docs_data_dir: Path) -> dict:
 
     _write_json(result, docs_data_dir / "epic_b.json")
     return result
-
-
-# ---------------------------------------------------------------------------
-# Epic C aggregation (V0-T5): transaction repertoire x recipients
-# ---------------------------------------------------------------------------
-

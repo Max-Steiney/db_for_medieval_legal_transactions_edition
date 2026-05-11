@@ -1,4 +1,4 @@
-"""Orchestrator: laeuft alle Aggregationen und schreibt JSONs nach docs/data/."""
+"""Orchestrator: runs all aggregations and writes JSONs to docs/data/."""
 
 from pathlib import Path
 

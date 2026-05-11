@@ -42,8 +42,8 @@ FACSIMILE_BASE_URLS = {
     "Satzbuch_CD": "https://id.acdh.oeaw.ac.at/grundbuecher-facs/",
 }
 
-# Redaktionelle Festlegungen zum Freigabestand der Edition.
-# Single Source of Truth — wird im Build an Templates durchgereicht.
+# Editorial settings defining the release state of the edition.
+# Single source of truth — propagated to templates during the build.
 RELEASED_PERIOD = {
     "min_year": 1177,
     "max_year": 1412,
@@ -72,7 +72,7 @@ def released_period_label():
 
 
 def max_year_with_extensions():
-    """Höchstes Jahr inkl. aller Extensions (z. B. 1414 für QGW II/1+II/2)."""
+    """Highest year including all extensions (e.g. 1414 for QGW II/1+II/2)."""
     rp = RELEASED_PERIOD
     candidates = [rp["max_year"]] + [e["until"] for e in rp.get("extensions", [])]
     return max(candidates)

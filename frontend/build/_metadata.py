@@ -1,7 +1,7 @@
-"""TEI-Metadaten extrahieren und Document-HTML schreiben.
+"""Extract TEI metadata and write per-document HTML.
 
-Pro-Quelle-Pipeline: TEI-XML laden, Header-Felder extrahieren, Body
-rendern, Reverse-Index-Refs sammeln, Templates rendern, Datei schreiben.
+Per-source pipeline: load TEI-XML, extract header fields, render body,
+collect reverse-index refs, render templates, write file.
 """
 
 import sys

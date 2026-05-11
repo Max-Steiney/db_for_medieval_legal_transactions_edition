@@ -64,7 +64,7 @@ def test_has_kontrolliertes_vokabular_section(built_guidelines):
     assert "Kontrolliertes Vokabular" in content
 
 
-# --- New tests for redesigned layout ---
+# --- Tests for redesigned layout ---
 
 
 def test_has_sidebar(built_guidelines):
@@ -100,10 +100,10 @@ def test_section7_removed(built_guidelines):
 def test_no_stale_file_count(built_guidelines):
     """Hardcoded corpus count '3.530' only appears in historical changelog, not in running text."""
     _, content = built_guidelines
-    # "3.530" may appear in the Versionsgeschichte changelog as a historical datum,
-    # but must not appear in the Projektkontext or Annotationsmodell sections.
+    # "3.530" may appear in the Versionsgeschichte changelog as a historical
+    # datum, but must not appear in the Projektkontext or Annotationsmodell
+    # sections.
     import re
-    # Find all occurrences and ensure they are only within the Versionsgeschichte section
     sections_before_changelog = content.split("Versionsgeschichte")[0]
     assert "3.530" not in sections_before_changelog
 

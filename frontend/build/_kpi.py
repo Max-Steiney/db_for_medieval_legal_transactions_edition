@@ -1,8 +1,8 @@
-"""KPIs des freigegebenen Korpus, direkt aus TEI via XPath.
+"""KPIs of the released corpus, sourced directly from TEI via XPath.
 
-Single-Source-of-Truth fuer die Header-Zahlen auf Startseite, Exploration
-und Analyse. Die Pipeline-CSVs werden hier nicht herangezogen — nur die
-TEI-Quellen unter sources/<korpus>/done/.
+Single source of truth for the header figures on the start page, exploration
+and analysis pages. The pipeline CSVs are not consulted here — only the
+TEI sources under sources/<corpus>/done/.
 """
 
 import csv as _csv
@@ -43,7 +43,7 @@ def _scan_released_tei():
     - ``_XP_PERSONS_EXCL_MENTIONED`` drives the mention count — a mention
       only counts if the annotation is not inside a nested rs-event.
 
-    Asymmetry is intentional and documented in
+    The asymmetry is intentional and documented in
     ``knowledge/decisions.md`` ("Asymmetrische Zaehlung: individuelle
     Personen vs. Nennungen").
 
@@ -124,8 +124,8 @@ def _scan_released_tei():
 
 def _compute_corpus_breakdown():
     """Backward-compatible wrapper around _scan_released_tei for the start
-    page Korpus-Matrix. Personen in mentioned Events sind ausgeschlossen
-    (legacy-konsistent).
+    page corpus matrix. Persons inside mentioned events are excluded
+    (legacy-consistent).
     """
     _, per_corpus = _scan_released_tei()
     return [
@@ -174,13 +174,13 @@ def _compute_release_kpis():
 
 
 def _compute_matrix_columns(total_docs, total_mentions, total_events):
-    """Liefert die Spalten-Configs der Korpus-Matrix als Datenstruktur.
+    """Return the column configs of the corpus matrix as a data structure.
 
-    Drei Datenspalten — Quellen, Nennungen, Events. Jede Spalte traegt
-    sowohl die Glossar-Definition (fuer den i-Icon-Tooltip am Header)
-    als auch den Provenienz-XPath (fuer den Tooltip an der Gesamt-Zahl).
-    Das Template iteriert ueber diese Liste, statt jeden Block einzeln
-    auszuschreiben.
+    Three data columns — sources, mentions, events. Each column carries
+    both the glossary definition (for the i-icon tooltip on the header)
+    and the provenance XPath (for the tooltip on the total figure).
+    The template iterates over this list instead of writing each block
+    out individually.
     """
     return [
         {
@@ -301,12 +301,12 @@ def _released_person_keys():
 
 
 def _persons_with_org_released(released_persons):
-    """Zaehle distinct Personen aus dem Released-Set, die in mindestens
-    einem Event mit einer Organisations-Verknuepfung beteiligt sind.
+    """Count distinct persons from the released set involved in at least
+    one event with an organisation link.
 
-    Liest persons_in_events.csv x orgs_in_events.csv und schneidet auf
-    ``released_persons``. Idempotent gegenueber Erst-Build (gibt 0
-    zurueck, wenn die Aggregator-CSVs nicht vorhanden sind).
+    Reads persons_in_events.csv x orgs_in_events.csv and intersects with
+    ``released_persons``. Idempotent against first build (returns 0 if
+    the aggregator CSVs are not present).
     """
     try:
         from frontend.aggregator import _cached_csv

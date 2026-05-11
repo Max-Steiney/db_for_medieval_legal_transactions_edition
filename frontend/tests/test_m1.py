@@ -68,11 +68,11 @@ def jinja_env():
 # ---------------------------------------------------------------------------
 
 class TestAnnotationToggle:
-    """Annotation-Layer-Toggle ist die Detail-Legende selbst — kein
-    eigener Toolbar-Button und kein Dropdown-Popover mehr. Die Legende
-    haelt vier `.legend-toggle`-Buttons mit `data-layer` und
-    `aria-pressed`. JS in document.js togglet damit die `.doc-body`-
-    Klassen `hide-{entities,functions,attributes,triggers}`.
+    """The annotation-layer toggle is the detail legend itself — no
+    separate toolbar button and no dropdown popover any more. The legend
+    holds four `.legend-toggle` buttons with `data-layer` and
+    `aria-pressed`. JS in document.js uses these to toggle the `.doc-body`
+    classes `hide-{entities,functions,attributes,triggers}`.
     """
 
     def test_legend_toggles_present(self, jinja_env):
@@ -90,7 +90,7 @@ class TestAnnotationToggle:
 
     def test_no_toolbar_anno_button(self, jinja_env):
         html = _build_doc_html(_sample_meta(), "<p>Text</p>", jinja_env)
-        # Regression-Guard: das alte Dropdown ist weg.
+        # Regression guard: the old dropdown is gone.
         assert 'id="anno-toggle"' not in html
         assert 'id="anno-toggle-popover"' not in html
         assert 'id="anno-toggle-all"' not in html
@@ -139,6 +139,6 @@ class TestTeiOutputPath:
 
 
 # ---------------------------------------------------------------------------
-# Top Persons (E7) — Statistics page wurde entfernt; Test wurde mitentfernt.
-# Top-Persons-Listen leben jetzt im Personenregister.
+# Top Persons (E7) — statistics page was removed; test was removed with it.
+# Top-persons lists now live in the person register.
 # ---------------------------------------------------------------------------

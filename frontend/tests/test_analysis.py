@@ -38,10 +38,10 @@ def test_categories_are_disjoint():
 def test_categories_consistent_with_epic_a():
     """Every org_type produced by the pipeline must be classified.
 
-    Schlaegt fehl, wenn die Pipeline neue Typen einfuehrt, ohne dass
-    `frontend/content/categories.json` mitgepflegt wurde — bzw. wenn die
-    JSON-Klassifikation Typen nennt, die nicht (mehr) in den Aggregaten
-    vorkommen.
+    Fails if the pipeline introduces new types without
+    `frontend/content/categories.json` being maintained alongside — or if
+    the JSON classification names types that no longer appear in the
+    aggregates.
     """
     epic_a_path = DATA_DIR / "epic_a.json"
     if not epic_a_path.exists():
@@ -82,14 +82,14 @@ def test_write_categories_creates_output(isolated_data_dir):
 
 
 def test_write_categories_validates_against_epic_a_when_present(isolated_data_dir, capsys):
-    """Wenn epic_a in DATA_DIR liegt, validiert der Writer und warnt bei Drift."""
+    """If epic_a lives in DATA_DIR, the writer validates and warns on drift."""
     fake_epic = {"observations": {"org_type_totals": {"Stadt": 1, "Kloster_m": 2, "NEW_TYPE_X": 1}}}
     (isolated_data_dir / "epic_a.json").write_text(
         json.dumps(fake_epic), encoding="utf-8"
     )
     _write_categories()
     captured = capsys.readouterr()
-    assert "NEW_TYPE_X" in captured.err  # missing type → warning
+    assert "NEW_TYPE_X" in captured.err
 
 
 # ---- Page render -------------------------------------------------------------
@@ -105,7 +105,7 @@ def test_build_analysis_renders(docs_dir):
 
 
 def test_build_analysis_renders_composer(docs_dir):
-    """Composer- und Result-Container sowie die Composer-Skripte sind im HTML."""
+    """Composer and result containers plus composer scripts are in the HTML."""
     env = _init_jinja()
     _build_analysis(env)
     content = (docs_dir / "analysis" / "index.html").read_text(encoding="utf-8")
@@ -115,10 +115,10 @@ def test_build_analysis_renders_composer(docs_dir):
     assert "analysis-capabilities.js" in content
     assert "analysis-composer.js" in content
     assert "analysis.js" in content
-    # Header-Stats sind weg, kein Satz-Builder mehr
-    assert "Institutionsbezug" not in content  # KPI lebt im Composer-Result
+    # Header stats are gone, no more sentence builder.
+    assert "Institutionsbezug" not in content
     assert "analysis-satzbuilder.js" not in content
-    # Galerie und Familien-Builder sind weg
+    # Gallery and family builder are gone.
     assert "analysis-gallery" not in content
     assert "analysis-questions.js" not in content
     assert "analysis-families.js" not in content

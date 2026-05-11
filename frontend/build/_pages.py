@@ -1,8 +1,8 @@
-"""Seiten-Builder: Startseite, Quellen-Index, Register, Exploration,
-Analyse, statische Markdown-Seiten und kleinere JSON-Outputs.
+"""Page builders: landing page, sources index, register, exploration,
+analysis, static Markdown pages and smaller JSON outputs.
 
-Konsumiert die KPI- und Helper-Module; ruft Jinja-Templates auf und
-schreibt HTML/JSON nach docs/.
+Consumes the KPI and helper modules; invokes Jinja templates and
+writes HTML/JSON to docs/.
 """
 
 import json
@@ -28,30 +28,30 @@ from frontend.build._kpi import (
 )
 
 
-# Kontrolliertes Rollenvokabular fuer das Personenregister.
-# Die CSV `persons_in_events.csv` liefert vier nicht-leere Werte:
-# issuer/recipient/witness/other (witness deckt 'sealer or witness' ab,
-# siehe knowledge/decisions.md). Leere/`none`-Werte werden ausgefiltert.
+# Controlled role vocabulary for the persons register.
+# The `persons_in_events.csv` CSV yields four non-empty values:
+# issuer/recipient/witness/other (witness covers 'sealer or witness',
+# see knowledge/decisions.md). Empty/`none` values are filtered out.
 PERSON_ROLES = ("issuer", "recipient", "witness", "other")
 
 
 def _short_collection_label(collection_path: str) -> str:
-    """Kompakte Label-Variante ohne Jahres-Klammer fuer Sub-Labels.
+    """Compact label variant without year parenthesis for sub-labels.
 
     `QGW/Vienna_1177-1414_ready` -> `QGW II/1`, `Stadtbuecher Bd. 1
-    (1395-1400)` -> `Stadtbuecher Bd. 1`. Faellt auf den Pfad zurueck,
-    wenn keine Mapping vorhanden.
+    (1395-1400)` -> `Stadtbuecher Bd. 1`. Falls back to the path when
+    no mapping is available.
     """
     label = COLLECTION_LABELS.get(collection_path, collection_path)
-    # Klammer-Anhang abschneiden: `Foo (1234-1456)` -> `Foo`
+    # Strip parenthesised year suffix: `Foo (1234-1456)` -> `Foo`
     cut = label.split(" (", 1)[0]
     return cut.strip()
 
 
 def _load_person_roles(released_keys):
-    """Aggregiere pro Person die Menge ihrer Rollen aus
-    persons_in_events.csv. Nur Rollen aus PERSON_ROLES, leere/`none`-Eintraege
-    werden uebersprungen. Eingeschraenkt auf das Released-Set.
+    """Aggregate the set of roles per person from persons_in_events.csv.
+    Only roles from PERSON_ROLES are kept; empty/`none` entries are skipped.
+    Restricted to the released set.
     """
     try:
         from frontend.aggregator import _cached_csv
@@ -71,7 +71,7 @@ def _load_person_roles(released_keys):
 
 
 # ---------------------------------------------------------------------------
-# Quellen-Index (documents.html)
+# Sources index (documents.html)
 # ---------------------------------------------------------------------------
 
 
@@ -127,7 +127,7 @@ def _build_index(all_metadata, env, register_counts=None):
                 "path": path_key,
             }
         collections_dict[path_key]["count"] += 1
-    # Liste fuer das sidebar_corpus_chips-Macro: {key, label, count}
+    # List for the sidebar_corpus_chips macro: {key, label, count}
     collections = [
         {"key": path_key, "label": col["label"], "count": col["count"]}
         for path_key, col in sorted(
@@ -136,10 +136,10 @@ def _build_index(all_metadata, env, register_counts=None):
         )
     ]
 
-    # --- Erschliessungsform-Chips: feste Reihenfolge R/S/E/N/none -----------
-    # Counts werden clientseitig gesetzt (faceted-search). Icons werden per
-    # JS aus FORM_ICONS injiziert (s. index.js), nicht im Markup definiert —
-    # so leben Icons als Single-Source-of-Truth zentral.
+    # --- Form-of-treatment chips: fixed order R/S/E/N/none ------------------
+    # Counts are set client-side (faceted search). Icons are injected via
+    # JS from FORM_ICONS (see index.js), not declared in the markup, so that
+    # icons live centrally as a single source of truth.
     form_data = [
         {"key": "R",    "label": "Regest",  "title": "Regest-Annotation"},
         {"key": "S",    "label": "Siegel",  "title": "Siegelbeschreibung"},
@@ -214,7 +214,7 @@ def _build_index(all_metadata, env, register_counts=None):
 
 
 # ---------------------------------------------------------------------------
-# Startseite (index.html)
+# Landing page (index.html)
 # ---------------------------------------------------------------------------
 
 
@@ -261,7 +261,7 @@ def _build_startseite(all_metadata, persons, orgs, places, collections, env):
 
 
 # ---------------------------------------------------------------------------
-# Register-Seiten (Personen)
+# Register pages (persons)
 # ---------------------------------------------------------------------------
 
 
@@ -269,21 +269,22 @@ def _person_search_data(persons, reverse_index, released_keys=None,
                         person_roles=None):
     """Build compact JSON list for the persons register page.
 
-    Wird ausschliesslich auf das Released-Set (Personen, die in mindestens
-    einer freigegebenen Quelle als rs-person auftreten) eingeschraenkt; eine
-    Person ohne Quellen taucht hier nicht auf. Felder pro Eintrag:
+    Restricted to the released set (persons appearing as rs-person in at
+    least one released source); a person without sources does not show up
+    here. Fields per entry:
 
-    - ``id`` xml:id (z. B. ``pe__katharina_QGW_II_I_66``).
-    - ``n`` / ``fn`` / ``sn``  Display-Name + Bestandteile fuer Suche.
+    - ``id`` xml:id (e.g. ``pe__katharina_QGW_II_I_66``).
+    - ``n`` / ``fn`` / ``sn``  display name + components for search.
     - ``sex``  ``m`` | ``f`` | ``""``.
-    - ``dc``  Anzahl freigegebener Quellen mit Nennung (>=1 per Konstruktion).
-    - ``am`` / ``ax``  Aktivitaetszeitraum als Jahr-Strings (z. B. ``"1340"``);
-      ``am == ax`` bei Einzeljahr-Belegung.
-    - ``co``  Liste der collection_path-Keys, in denen die Person vorkommt.
-    - ``i0`` / ``cl0``  idno und Kurz-Label der ersten (chronologisch
-      fruehesten) Quelle — Anker fuer das Sub-Label unter dem Namen.
-    - ``rl``  Sortierte Liste der event_role-Werte (issuer/recipient/
-      witness/other), nur ueberhaupt vorkommende Rollen.
+    - ``dc``  number of released sources mentioning the person (>=1 by
+      construction).
+    - ``am`` / ``ax``  activity range as year strings (e.g. ``"1340"``);
+      ``am == ax`` for a single-year occurrence.
+    - ``co``  list of collection_path keys in which the person appears.
+    - ``i0`` / ``cl0``  idno and short label of the first (chronologically
+      earliest) source — anchor for the sub-label below the name.
+    - ``rl``  sorted list of event_role values (issuer/recipient/
+      witness/other), only roles that actually occur.
     """
     data = []
     person_roles = person_roles or {}
@@ -292,9 +293,9 @@ def _person_search_data(persons, reverse_index, released_keys=None,
             continue
         docs = reverse_index.get(xml_id, [])
         if not docs:
-            # Defensive: released_keys garantiert dc>=1, aber wenn ein
-            # Eintrag im Register lebt ohne Quellenverknuepfung, lassen
-            # wir ihn raus — die UI versteht dc==0 nicht mehr.
+            # Defensive: released_keys guarantees dc>=1, but if a register
+            # entry exists without any source link we drop it — the UI no
+            # longer handles dc==0.
             continue
 
         years = []
@@ -365,13 +366,12 @@ def _place_search_data(places, reverse_index):
 def _build_register_list_pages(persons, orgs, places, reverse_index, env):
     """Build the persons register page.
 
-    Nur das Personenregister ist oeffentlich freigegeben. Organisationen und
-    Orte bleiben unfreigegeben.
+    Only the persons register is publicly released. Organisations and places
+    remain unreleased.
 
-    Liefert dem Template alle Daten, die fuer die Sidebar-Filter (Geschlecht,
-    Rolle, Aktivitaetszeitraum-Histogramm, Quellenkorpus) noetig sind. Die
-    Counts werden hier vorberechnet, damit die Tabelle ohne erste
-    JS-Aggregation rendern kann.
+    Provides the template with all data required by the sidebar filters (sex,
+    role, activity-range histogram, source corpus). Counts are pre-computed
+    here so that the table can render without an initial JS aggregation pass.
     """
     template = env.get_template("register_list.html")
     released_person_keys = _released_person_keys()
@@ -391,7 +391,7 @@ def _build_register_list_pages(persons, orgs, places, reverse_index, env):
         json.dumps(search_data, ensure_ascii=False), encoding="utf-8"
     )
 
-    # --- Geschlecht-Chips: m/f/u mit Counts ---------------------------------
+    # --- Sex chips: m/f/u with counts ---------------------------------------
     sex_counts = Counter()
     for row in search_data:
         sex_counts[row["sex"] or "u"] += 1
@@ -402,7 +402,7 @@ def _build_register_list_pages(persons, orgs, places, reverse_index, env):
     ]
     sex_data = [s for s in sex_data if s["count"] > 0]
 
-    # --- Rollen-Chips -------------------------------------------------------
+    # --- Role chips ---------------------------------------------------------
     role_counts = Counter()
     for row in search_data:
         for r in row["rl"]:
@@ -413,9 +413,9 @@ def _build_register_list_pages(persons, orgs, places, reverse_index, env):
         "witness":   "Zeuge / Siegler",
         "other":     "Sonstige",
     }
-    # Sidebar-Chips zeigen nur Label + Count — analog zu den
-    # Erschliessungsform-Chips der Quellenseite. Die Icon-Differenzierung
-    # passiert in den Tabellen-Pillen (s. register.js ROLE_ICONS).
+    # Sidebar chips show only label + count — analogous to the
+    # form-of-treatment chips on the sources page. Icon differentiation
+    # happens in the table pills (see register.js ROLE_ICONS).
     role_data = []
     for key in PERSON_ROLES:
         c = role_counts.get(key, 0)
@@ -426,7 +426,7 @@ def _build_register_list_pages(persons, orgs, places, reverse_index, env):
                 "count": c,
             })
 
-    # --- Korpus-Chips -------------------------------------------------------
+    # --- Corpus chips -------------------------------------------------------
     corpus_counts = Counter()
     for row in search_data:
         for c in row["co"]:
@@ -442,7 +442,7 @@ def _build_register_list_pages(persons, orgs, places, reverse_index, env):
             "count": count,
         })
 
-    # --- Aktivitaetszeitraum: Histogramm pro Jahrzehnt ----------------------
+    # --- Activity range: histogram per decade -------------------------------
     decade_counts = Counter()
     all_years = []
     for row in search_data:
@@ -453,10 +453,10 @@ def _build_register_list_pages(persons, orgs, places, reverse_index, env):
         ymin = int(am)
         ymax = int(ax) if ax.isdigit() else ymin
         all_years.extend([ymin, ymax])
-        # Eine Person zaehlt in jedem Jahrzehnt, das sie ueberlappt — nicht
-        # nur am_min — sonst verlieren wir Personen mit langer Spanne in
-        # spaeteren Dekaden. (Das ist die analoge Logik wie bei Quellen,
-        # nur dass dort jede Quelle ein Punktdatum hat.)
+        # A person is counted in every decade their range overlaps — not
+        # only am_min — otherwise we lose persons with a long span from
+        # later decades. (Same logic as for sources, except each source
+        # has a single point-in-time date.)
         d_min = (ymin // 10) * 10
         d_max = (ymax // 10) * 10
         for dec in range(d_min, d_max + 10, 10):
@@ -466,7 +466,7 @@ def _build_register_list_pages(persons, orgs, places, reverse_index, env):
     max_year = max(all_years) if all_years else max_year_with_extensions()
     min_year = max(min_year, RELEASED_PERIOD["min_year"])
 
-    # Decade-Liste lueckenlos zwischen min_decade und max_decade
+    # Gap-free decade list between min_decade and max_decade
     min_decade = (min_year // 10) * 10
     max_decade = (max_year // 10) * 10
     max_count = max(decade_counts.values()) if decade_counts else 1
@@ -496,11 +496,11 @@ def _build_register_list_pages(persons, orgs, places, reverse_index, env):
 def _build_register_json(reverse_index):
     """Write reverse-index data as JSON files for client-side detail views.
 
-    Personen werden auf den Released-Set aus ``_released_person_keys()``
-    eingeschraenkt: nur Personen, die mindestens einmal als
-    ``<rs type="person">`` in einer freigegebenen Quelle auftreten,
-    landen in ``register/persons.json``. Reine ``@corresp``-Hilfsverknuepfungen
-    zaehlen nicht als Erwaehnung.
+    Persons are restricted to the released set from
+    ``_released_person_keys()``: only persons appearing at least once as
+    ``<rs type="person">`` in a released source end up in
+    ``register/persons.json``. Pure ``@corresp`` auxiliary links do not
+    count as a mention.
     """
     out_dir = DOCS_DIR / "register"
     out_dir.mkdir(parents=True, exist_ok=True)
@@ -537,14 +537,14 @@ def _build_register_json(reverse_index):
 
 
 def _build_person_profiles(reverse_index, env):
-    """Render eine Profilseite pro Person in den freigegebenen Korpora.
+    """Render one profile page per person in the released corpora.
 
-    Quelle: ``frontend.aggregator.build_person_profiles`` liefert pro
-    pe__-ID das voll-aggregierte Profil (Stammdaten, Quellen, Rollen,
-    Beziehungen). Hier wird die Liste in einzelne HTML-Dateien gerendert.
+    Source: ``frontend.aggregator.build_person_profiles`` returns the
+    fully aggregated profile per pe__-id (master data, sources, roles,
+    relations). Here the list is rendered into individual HTML files.
 
-    Aufrufpfad: nach ``_build_register_json`` aus build_all() — beide
-    leben unter ``docs/register/`` und teilen sich die Verlinkungs-Konvention
+    Call path: after ``_build_register_json`` from build_all() — both
+    live under ``docs/register/`` and share the linking convention
     ``register/persons/<id>.html``.
     """
     from frontend.aggregator import build_person_profiles
@@ -572,22 +572,22 @@ def _build_person_profiles(reverse_index, env):
 
 
 # ---------------------------------------------------------------------------
-# Auswertungen (Statistik-Sektion unter /analysis/)
+# Auswertungen (statistics section under /analysis/)
 # ---------------------------------------------------------------------------
 
 
 def _build_exploration(all_metadata, persons, env):
-    """Build the Auswertungen page (analysis/auswertungen.html) — eine
-    Seite mit vier Aggregat-Sektionen: Funktionsrollen (Donut), Beziehungs-
-    typen (Donut), Transaktionstypen (Bar-Chart) und Bezeichnungen (Tabelle
-    mit Mini-Bars). Sidebar: Zeitraum + Geschlecht.
+    """Build the Auswertungen page (analysis/auswertungen.html) — one
+    page with four aggregate sections: function roles (donut), relation
+    types (donut), transaction types (bar chart) and labels (table with
+    mini bars). Sidebar: time range + sex.
 
-    Liegt unter /analysis/, weil sie quantitative Auswertungen zeigt
-    (Statistik-Verteilungen) und nicht visuelle Erkundung — siehe
+    Lives under /analysis/ because it shows quantitative analyses
+    (statistical distributions), not visual exploration — see
     knowledge/decisions.md "Auswertungen gehoeren in den Analyse-Bereich".
-    Frueher drei separate Sub-Seiten (roles/networks/transactions) unter
-    /exploration/, dann zusammengelegt zu /exploration/auswertungen.html,
-    schliesslich nach /analysis/ verschoben.
+    Previously three separate sub-pages (roles/networks/transactions)
+    under /exploration/, then merged into /exploration/auswertungen.html,
+    finally moved to /analysis/.
     """
     epic_a_path = DATA_DIR / "epic_a.json"
     epic_b_path = DATA_DIR / "epic_b.json"
@@ -611,7 +611,7 @@ def _build_exploration(all_metadata, persons, env):
                 if pid in released_persons and p.get("sex") == "f")
     sex_u = total_persons - sex_m - sex_f
 
-    # --- Sidebar-Daten: Zeitraum-Slider + Korpus-Chips ----------------------
+    # --- Sidebar data: time-range slider + corpus chips ---------------------
     decade_counts = Counter()
     all_years = []
     for m in all_metadata:
@@ -660,12 +660,12 @@ def _build_exploration(all_metadata, persons, env):
         {"key": "unspecified", "label": "ohne Angabe", "count": sex_u},
     ]
 
-    # --- Korpus-Label fuer den Datenstand-Banner ---------------------------
+    # --- Corpus label for the as-of-date banner ----------------------------
     released_corpora_label = " · ".join(
         _short_collection_label(p) for p in collections_dict.keys()
     ) if collections_dict else "alle Korpora"
 
-    # --- JSON-Payloads (raw text, in <script type="application/json">) ----
+    # --- JSON payloads (raw text, in <script type="application/json">) -----
     epic_a_json = epic_a_path.read_text(encoding="utf-8")
     epic_b_json = (epic_b_path.read_text(encoding="utf-8")
                    if epic_b_path.exists() else "{}")
@@ -701,15 +701,15 @@ def _build_exploration(all_metadata, persons, env):
 
 
 # ---------------------------------------------------------------------------
-# Wissenskorb-Seite (clientseitige Sammlung, persistent in localStorage)
+# Wissenskorb page (client-side collection, persisted in localStorage)
 # ---------------------------------------------------------------------------
 
 
 def _build_korb(env):
-    """Build the Wissenskorb page (korb.html). Reines Front-Shell ohne
-    serverseitige Daten — die Sammlung lebt clientseitig in localStorage,
-    wird von wissenskorb.js verwaltet und auf der Seite ueber korb-page.js
-    gerendert."""
+    """Build the Wissenskorb page (korb.html). Pure front-shell without
+    server-side data — the collection lives client-side in localStorage,
+    is managed by wissenskorb.js and rendered on the page via
+    korb-page.js."""
     html = env.get_template("korb.html").render(
         build_date=_format_german_date(date.today()),
         root_path=".",
@@ -719,24 +719,24 @@ def _build_korb(env):
 
 
 # ---------------------------------------------------------------------------
-# Exploration / Zeitstrom (visuell-interaktive Sub-Seite unter /exploration/)
+# Exploration / Zeitstrom (visual-interactive sub-page under /exploration/)
 # ---------------------------------------------------------------------------
 
 
 def _build_exploration_timeline(all_metadata, env):
-    """Build the Zeitstrom page (exploration/zeitstrom.html) — gestapelter
-    Bar-Chart der Quellendichte pro Jahrzehnt mit Brush-to-Drill-down.
-    Stapel-Achse waehlbar (Korpus / Erschliessungsform / Geschlecht /
-    Transaktionstyp). Liest search.json clientseitig fuer die ersten drei
-    Achsen, epic_c.json fuer die Transaktionstyp-Stapelung.
+    """Build the Zeitstrom page (exploration/zeitstrom.html) — stacked
+    bar chart of source density per decade with brush-to-drill-down.
+    Stack axis selectable (corpus / form of treatment / sex / transaction
+    type). Reads search.json client-side for the first three axes,
+    epic_c.json for the transaction-type stacking.
 
-    Liegt unter /exploration/, weil sie visuell-interaktive Erkundung der
-    Datenstruktur ist (kein Verteilungs-Display) — siehe knowledge/
+    Lives under /exploration/ because it is visual-interactive exploration
+    of the data structure (not a distribution display) — see knowledge/
     decisions.md "Exploration und Analyse als getrennte Bereiche".
     """
     epic_c_path = DATA_DIR / "epic_c.json"
 
-    # Sidebar-Daten: Zeitraum-Slider mit Histogramm der Quellen pro Dekade
+    # Sidebar data: time-range slider with histogram of sources per decade
     decade_counts = Counter()
     all_years = []
     for m in all_metadata:
@@ -782,9 +782,9 @@ def _build_exploration_timeline(all_metadata, env):
 
 def _build_exploration_network(env):
     """Build the Personennetzwerk page (exploration/personennetzwerk.html).
-    Ego-Layout um eine Person herum, Quelle epic_b.json::persons mit den
-    erweiterten rels (related_key). Page ist data-driven: das eingebettete
-    JSON ist die einzige Datenquelle, Personen-Nachladen entfaellt.
+    Ego layout around one person, source epic_b.json::persons with the
+    extended rels (related_key). Page is data-driven: the embedded JSON
+    is the sole data source, no on-demand person loading.
     """
     epic_b_path = DATA_DIR / "epic_b.json"
     epic_b_json = (epic_b_path.read_text(encoding="utf-8")
@@ -803,7 +803,7 @@ def _build_exploration_network(env):
 
 
 # ---------------------------------------------------------------------------
-# Statische Markdown-Seiten (about, glossary, guidelines, impressum)
+# Static Markdown pages (about, glossary, guidelines, impressum)
 # ---------------------------------------------------------------------------
 
 
@@ -874,12 +874,12 @@ def _build_about(env):
 def _build_glossary(env):
     """Build glossary page from knowledge/glossar.md.
 
-    Wiki-Links der Form [[#Begriff]] werden zu seiten-internen Anker-Links,
-    [[Dokument]] und [[Dokument#Anker]] werden als Klartext belassen
-    (Zielseiten liegen ausserhalb der Edition).
+    Wiki links of the form [[#term]] become page-internal anchor links;
+    [[document]] and [[document#anchor]] are kept as plain text
+    (target pages live outside the edition).
 
-    Quelle ist bevorzugt das Edition-Repo (Sibling-Pfad), sonst KNOWLEDGE_DIR
-    im Pipeline-Repo.
+    Source is preferably the edition repo (sibling path), otherwise
+    KNOWLEDGE_DIR in the pipeline repo.
     """
     from pipeline.config import REPO_ROOT
     candidates = [
@@ -962,7 +962,7 @@ def _build_impressum(env):
 
 
 # ---------------------------------------------------------------------------
-# Analyse-Seite + Vokabular- und Kategorien-JSON
+# Analysis page + vocabulary and categories JSON
 # ---------------------------------------------------------------------------
 
 
@@ -1008,8 +1008,9 @@ def _write_categories():
 def _write_query_vocabulary():
     """Copy query_vocabulary.json from content/ to docs/data/.
 
-    Vocabulary fuer den Satz-Builder der Analyse-Seite. Liefert Subjekte,
-    Filter, Werte-Listen mit Verb-Phrasen, Gruppierungen und Aggregationen.
+    Vocabulary for the sentence builder of the analysis page. Provides
+    subjects, filters, value lists with verb phrases, groupings and
+    aggregations.
     """
     src = CONTENT_DIR / "query_vocabulary.json"
     if not src.exists():
@@ -1027,11 +1028,11 @@ def _write_query_vocabulary():
 
 
 def _build_analysis(env):
-    """Build analysis page (Composer-UI).
+    """Build analysis page (Composer UI).
 
-    Minimaler Build: nur Template-Render mit Asset-Versions-String fuer
-    Cache-Busting der Composer-Skripte. Keine Header-KPIs mehr — KPIs
-    leben jetzt im Composer selbst (live aus epic_*.json).
+    Minimal build: only template render with an asset-version string for
+    cache-busting of the composer scripts. No header KPIs any more — KPIs
+    now live in the composer itself (live from epic_*.json).
     """
     assets_version = datetime.now().strftime("%Y%m%d%H%M%S")
 

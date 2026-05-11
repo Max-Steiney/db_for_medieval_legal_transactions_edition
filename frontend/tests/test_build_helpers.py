@@ -83,7 +83,7 @@ class TestExtractRegest:
             pytest.skip("Test file not available")
         tree = load_xml(filepath)
         result = _extract_regest(tree.getroot(), max_len=50)
-        assert len(result) <= 55  # max_len + word boundary + ellipsis
+        assert len(result) <= 55
 
     def test_returns_nonempty(self):
         filepath = SOURCES_DIR / "QGW" / "Vienna_1177-1414_ready" / "done" / "100.xml"

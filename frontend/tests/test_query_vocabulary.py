@@ -1,10 +1,10 @@
-"""Tests fuer das Query-Vokabular des Composers.
+"""Tests for the composer's query vocabulary.
 
-Pruefen:
-  1. Schema-Konsistenz von ``frontend/content/query_vocabulary.json``.
-  2. Drift zwischen Vokabular und tatsaechlichen Daten (sex-Werte,
-     korpus-Werte, rel_type-Werte, org_category-Werte).
-  3. Build-Output: ``docs/data/query_vocabulary.json`` wird erzeugt.
+Checks:
+  1. Schema consistency of ``frontend/content/query_vocabulary.json``.
+  2. Drift between vocabulary and actual data (sex values, korpus
+     values, rel_type values, org_category values).
+  3. Build output: ``docs/data/query_vocabulary.json`` is generated.
 """
 
 from __future__ import annotations
@@ -72,7 +72,7 @@ def test_vocab_coverage_has_entry_per_subject():
 
 
 # ---------------------------------------------------------------------------
-# Drift gegen Daten
+# Drift against data
 # ---------------------------------------------------------------------------
 
 
@@ -132,7 +132,7 @@ def test_vocab_rel_type_values_match_epic_b_type_counts():
 
 
 # ---------------------------------------------------------------------------
-# Build-Output
+# Build output
 # ---------------------------------------------------------------------------
 
 

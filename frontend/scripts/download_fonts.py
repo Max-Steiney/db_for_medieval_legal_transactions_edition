@@ -1,18 +1,18 @@
-"""Einmaliges Download-Skript fuer Self-Hosting der Schriften.
+"""One-off download script for self-hosting the fonts.
 
-Holt woff2 + Subset-Range fuer Crimson Pro, Inter, JetBrains Mono ueber
-die Google Fonts CSS2-API mit Chrome-User-Agent (sodass woff2 statt
-woff/ttf zurueckkommt). Schreibt:
+Fetches woff2 + subset range for Crimson Pro, Inter, JetBrains Mono via
+the Google Fonts CSS2 API with a Chrome user agent (so that woff2 is
+returned instead of woff/ttf). Writes:
 
   frontend/static/fonts/<family>-<weight>[-italic].woff2  (latin + latin-ext)
-  frontend/static/css/fonts.css                            (alle @font-face)
+  frontend/static/css/fonts.css                            (all @font-face)
 
-Die Skript ist nicht Teil des Builds — einmal manuell ausgefuehrt:
+The script is not part of the build — run manually once:
     python -m frontend.scripts.download_fonts
 
-Subsets latin+latin-ext sind fuer eine deutschsprachige Edition mit
-mhd. Quellen ausreichend; Cyrillic/Greek/Vietnamese werden bewusst
-weggelassen (kleinere Bundle-Groesse).
+Subsets latin+latin-ext are sufficient for a German-language edition with
+Middle High German sources; Cyrillic/Greek/Vietnamese are deliberately
+omitted (smaller bundle size).
 """
 
 import re
@@ -29,13 +29,13 @@ CSS_URL = (
     "&display=swap"
 )
 
-# Chrome-UA -> Google liefert woff2 (mit anderen UAs koennen andere Formate kommen)
+# Chrome UA -> Google returns woff2 (other UAs may yield other formats)
 USER_AGENT = (
     "Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 "
     "(KHTML, like Gecko) Chrome/120.0.0.0 Safari/537.36"
 )
 
-# Subsets, die wir behalten. Alle anderen Bloecke werden uebersprungen.
+# Subsets to keep. All other blocks are skipped.
 KEEP_SUBSETS = {"latin", "latin-ext"}
 
 ROOT = Path(__file__).resolve().parent.parent.parent
@@ -62,7 +62,7 @@ def main() -> int:
     print(f"Fetching {CSS_URL}")
     css = fetch(CSS_URL).decode("utf-8")
 
-    # CSS-Bloecke trennen: "/* subset */ @font-face { ... }"
+    # Split CSS blocks: "/* subset */ @font-face { ... }"
     # Pattern: comment with subset name, then a font-face block.
     pattern = re.compile(
         r"/\*\s*(?P<subset>[\w-]+)\s*\*/\s*"

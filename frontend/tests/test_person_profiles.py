@@ -31,8 +31,8 @@ REVERSE_INDEX_PAAR = {
 
 @pytest.fixture(autouse=True)
 def _reset_csv_cache():
-    """CSV-Cache zwischen Tests leeren — der Modul-Cache wuerde sonst
-    Filter-Ergebnisse aus vorherigen Tests verschleppen."""
+    """Clear the CSV cache between tests — the module-level cache would
+    otherwise drag filter results from earlier tests into later ones."""
     agg_shared._csv_cache.clear()
     agg_shared._released_file_keys_cache = None
     yield
@@ -71,13 +71,13 @@ class TestPersonProfileAggregator:
 
     def test_kin_relation_resolved_bidirectionally(self):
         out = build_person_profiles(REVERSE_INDEX_PAAR)
-        # Diemut sieht Berthold als Counterpart
+        # Diemut sees Berthold as counterpart.
         diemut_kin = out[PE_DIEMUT]["relations"]["kin"]
         diemut_others = {e["other_id"] for e in diemut_kin}
         assert PE_BERTHOLD in diemut_others, (
             "Diemut should have Berthold listed in kin relations"
         )
-        # Berthold sieht Diemut als Counterpart
+        # Berthold sees Diemut as counterpart.
         bert_kin = out[PE_BERTHOLD]["relations"]["kin"]
         bert_others = {e["other_id"] for e in bert_kin}
         assert PE_DIEMUT in bert_others, (
@@ -93,12 +93,12 @@ class TestPersonProfileAggregator:
                 assert "documents/QGW" in e["url"]
                 assert e["label"], "label should be non-empty"
                 return
-        pytest.fail("Berthold-Beziehung nicht gefunden")
+        pytest.fail("Berthold relation not found")
 
     def test_role_perspective_is_set(self):
         out = build_person_profiles(REVERSE_INDEX_PAAR)
         # In kin_relations.csv: person_key=Diemut, related_key=Berthold.
-        # Diemut sees herself as 'subject' (Traegerin der "Gemahlin"-Bezeichnung),
+        # Diemut sees herself as 'subject' (bearer of the "Gemahlin" label),
         # Berthold sees Diemut as 'counterpart'.
         diemut_to_berthold = next(
             e for e in out[PE_DIEMUT]["relations"]["kin"]
@@ -142,19 +142,19 @@ class TestPersonProfileBuildStep:
 
         diemut_html = (tmp_path / "register" / "persons" /
                        f"{PE_DIEMUT}.html").read_text(encoding="utf-8")
-        # Berthold-Profillink muss enthalten sein
+        # Berthold profile link must be present.
         assert f"{PE_BERTHOLD}.html" in diemut_html
-        # Quellen-Tabelle muss die Quelle 10 enthalten
+        # Source table must contain source 10.
         assert ">10<" in diemut_html or "Nr. 10" in diemut_html or "10.html" in diemut_html
-        # Beziehungs-Block existiert
+        # Relations block exists.
         assert "Verwandtschaft" in diemut_html
 
     def test_html_skips_relation_link_when_partner_missing(
         self, tmp_path, monkeypatch
     ):
-        """Wenn der Beziehungs-Partner kein eigenes Profil hat (z. B. nur
-        in nicht-freigegebenen Quellen), darf der Name angezeigt werden,
-        aber NICHT als toter Link rendern."""
+        """If the relation partner has no own profile (e.g. only present in
+        non-released sources), the name may be displayed but MUST NOT
+        render as a dead link."""
         from frontend.tests.conftest import patch_build_path
         from frontend.build._helpers import _init_jinja
         from frontend.build._pages import _build_person_profiles
@@ -165,6 +165,6 @@ class TestPersonProfileBuildStep:
 
         diemut_html = (tmp_path / "register" / "persons" /
                        f"{PE_DIEMUT}.html").read_text(encoding="utf-8")
-        # Berthold-Profil darf NICHT verlinkt werden, weil nicht in linked_persons
+        # Berthold profile must NOT be linked because not in linked_persons.
         assert f'href="{PE_BERTHOLD}.html"' not in diemut_html
         assert f'href="../../register/persons/{PE_BERTHOLD}.html"' not in diemut_html

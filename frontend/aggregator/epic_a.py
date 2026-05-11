@@ -1,5 +1,5 @@
-"""Epic A: Rollen x Geschlecht x Organisationen — fuer die Rollen-Sektion
-in analysis/auswertungen.html."""
+"""Epic A: roles x sex x organisations — for the role section in
+analysis/auswertungen.html."""
 
 from collections import Counter, defaultdict
 from pathlib import Path
@@ -217,9 +217,3 @@ def aggregate_epic_a(docs_data_dir: Path) -> dict:
 
     _write_json(result, docs_data_dir / "epic_a.json")
     return result
-
-
-# ---------------------------------------------------------------------------
-# Epic B aggregation (V0-T4): co-occurrence network
-# ---------------------------------------------------------------------------
-

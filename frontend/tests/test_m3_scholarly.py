@@ -22,13 +22,13 @@ class TestDocumentTemplateM3:
         return template_path.read_text(encoding="utf-8")
 
     def test_annotations_view_container(self, template_html):
-        # Annotationen-Section ist permanent, kein Toolbar-Toggle mehr.
-        assert 'id="factoid-view"' in template_html  # id bleibt (Anchor-Link-Stabilitaet)
+        # The annotations section is permanent, no toolbar toggle any more.
+        assert 'id="factoid-view"' in template_html  # id stays (anchor-link stability)
         assert 'class="annotations-view"' in template_html
 
     def test_no_factoid_toggle_button(self, template_html):
-        # Regression-Guard: das Toolbar-Toggle ist weg, die Aussagen-Tabelle
-        # ist permanenter dritter Bereich neben Editionstext und Faksimile.
+        # Regression guard: the toolbar toggle is gone; the assertions
+        # table is the permanent third area beside edition text and facsimile.
         assert 'id="factoid-toggle"' not in template_html
 
     def test_cite_toggle_button(self, template_html):

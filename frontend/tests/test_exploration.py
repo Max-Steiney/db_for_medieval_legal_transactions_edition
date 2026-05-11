@@ -1,5 +1,5 @@
-﻿"""Tests fuer die Auswertungs-Seite (analysis/auswertungen.html) und die
-zugehoerigen JSON-Aggregate epic_a/b/c."""
+﻿"""Tests for the analysis page (analysis/auswertungen.html) and the
+associated JSON aggregates epic_a/b/c."""
 
 import json
 import pytest
@@ -41,7 +41,7 @@ class TestEpicADrillDown:
         dd = epic_a["drill_down"]["role_sex"]
         for role, sex_map in dd.items():
             for sex, fkeys in sex_map.items():
-                for fk in fkeys[:5]:  # spot-check first 5
+                for fk in fkeys[:5]:
                     assert fk.startswith("f__"), f"Bad file_key: {fk}"
 
 
@@ -102,9 +102,9 @@ class TestAuswertungenPage:
     def test_roles_section_has_donut_and_legend(self, html):
         assert 'id="roles-donut"' in html
         assert 'id="roles-legend"' in html
-        # Detail-Tabelle (aufklappbar)
+        # Detail table (expandable).
         assert 'id="roles-table"' in html
-        # Toggle Nennungen / Personen
+        # Toggle mentions / persons.
         assert 'data-roles-mode="mentions"' in html
         assert 'data-roles-mode="persons"' in html
 
@@ -120,8 +120,8 @@ class TestAuswertungenPage:
         assert 'id="labels-table"' in html
 
     def test_sidebar_has_required_filter_blocks(self, html):
-        # Korpus-Filter wurde bewusst entfernt (epic_a/b/c sind kollektions-
-        # aggregiert; Korpus-Filter waere clientseitig nicht umsetzbar).
+        # Corpus filter was intentionally removed (epic_a/b/c are collection-
+        # aggregated; a corpus filter could not be implemented client-side).
         assert 'id="filter-corpora"' not in html
         assert 'id="filter-sex"' in html
         assert 'id="filter-reset"' in html

@@ -47,7 +47,6 @@ def render_document(body_element, registers, root_path="."):
 def _render_children(element, registers):
     """Render all children of an element, including text and tail."""
     parts = []
-    # Leading text
     if element.text:
         parts.append(escape(element.text))
     for child in element:
@@ -66,7 +65,6 @@ def _render_element(element, registers):
     if not isinstance(tag, str):
         return ""
 
-    # Strip namespace
     if tag.startswith(TEI):
         local = tag[len(TEI):]
     else:
@@ -90,10 +88,10 @@ _DIV_HEADINGS = {
 def _render_div(element, registers):
     """Render <div type="...">.
 
-    Pro `div type` injizieren wir eine kleine Mikro-Ueberschrift (s.
-    _DIV_HEADINGS), damit beim Scrollen erkennbar ist, wo Regest endet
-    und Siegelbeschreibung beginnt. Andere div-Types bleiben ohne
-    Heading; `header`/`lists` haben Spezialbehandlung.
+    For each `div type` we inject a small micro-heading (see
+    _DIV_HEADINGS) so that while scrolling it is visible where the
+    regest ends and the seal description begins. Other div types stay
+    without a heading; `header`/`lists` have special handling.
     """
     div_type = element.get("type", "")
 
@@ -151,9 +149,9 @@ def _render_rs(element, registers):
         children = _render_children(element, registers)
         if ref and ref in register:
             root_path = registers[3] if len(registers) > 3 else "."
-            # Personen haben Profilseiten unter register/persons/<id>.html;
-            # Orgs/Orte verlinken weiterhin auf das (noch unfreigegebene)
-            # Listen-Register mit Hash-Anker.
+            # Persons have profile pages under register/persons/<id>.html;
+            # orgs/places still link to the (not yet released) list register
+            # with a hash anchor.
             if rs_type == "person":
                 href = f"{root_path}/register/persons/{ref}.html"
             else:

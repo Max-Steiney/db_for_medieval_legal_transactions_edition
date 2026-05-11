@@ -1,4 +1,4 @@
-"""Pro-Quelle-Aggregat (docs_aggregate.json) und docs_lookup.json."""
+"""Per-source aggregate (docs_aggregate.json) and docs_lookup.json."""
 
 import re
 from collections import Counter, defaultdict
@@ -35,12 +35,12 @@ def _parse_date_range(date_str: str) -> tuple[str | None, str | None, int | None
 def aggregate_docs(docs_data_dir: Path) -> dict:
     """Per-source aggregate: counts, dates, event-form distribution.
 
-    Konsolidiert pro Quelle (file_key) Personen- und Event-Counts mit
-    Geschlechter- und Form-Aufschluesselung. Liest ausschliesslich
-    Pipeline-CSVs (kein TEI-Parsing). Persons distinct sind alle
-    person_keys, die in persons_in_sources mit dem file_key auftauchen
-    (kind_of_linking ref ODER corresp; Berthold's Gemahlin teilt
-    Berthold's pe__-Key, Berthold wird einmal gezaehlt).
+    Consolidates per source (file_key) person and event counts with sex
+    and form-of-treatment breakdown. Reads only pipeline CSVs (no TEI
+    parsing). Distinct persons are all person_keys appearing in
+    persons_in_sources with the file_key (kind_of_linking ref OR
+    corresp; Berthold's wife shares Berthold's pe__-key, Berthold is
+    counted once).
 
     Output: docs/data/docs_aggregate.json
     """
@@ -107,10 +107,10 @@ def aggregate_docs(docs_data_dir: Path) -> dict:
                 **{b: len(eb[b]) for b in EVENT_BUCKETS},
             }
 
-        # filenames.csv URL-encodet Sonderzeichen im Dateinamen (z.B.
-        # `1542 a.xml` -> `1542%20a.xml`). Das build.py-Metadata-Pendant
-        # ist NICHT encoded, also dekodieren, damit der (collection_path,
-        # idno)-Lookup stimmt.
+        # filenames.csv URL-encodes special characters in the filename
+        # (e.g. `1542 a.xml` -> `1542%20a.xml`). The build.py metadata
+        # counterpart is NOT encoded, so decode here so the
+        # (collection_path, idno) lookup matches.
         idno = unquote(f.get("file", "").replace(".xml", ""))
         records.append({
             "file_key": fk,
@@ -188,13 +188,13 @@ def build_docs_lookup(docs_data_dir: Path, all_metadata: list[dict]) -> None:
     """
     fnames = _cached_csv("filenames.csv")
 
-    # Build (collection, subcollection, filename_stem) -> file_key
-    # filenames.csv URL-encodet Sonderzeichen ('1542 a.xml' -> '1542%20a.xml');
-    # build.py setzt meta['filename'] = filepath.stem aus dem Dateisystem,
-    # also Roh-Form mit Leerzeichen. Damit der Lookup greift, dekodieren wir
-    # hier denselben Pfad wie aggregate_docs es fuer den (collection_path,
-    # idno)-Lookup tut. Andernfalls fallen 13 Dokumente aus dem docs_lookup
-    # raus und Drill-Down-/Register-URLs sind nicht aufloesbar.
+    # Build (collection, subcollection, filename_stem) -> file_key.
+    # filenames.csv URL-encodes special characters ('1542 a.xml' ->
+    # '1542%20a.xml'); build.py sets meta['filename'] = filepath.stem from
+    # the filesystem, i.e. raw form with spaces. For the lookup to hit, we
+    # decode here the same way aggregate_docs does for the (collection_path,
+    # idno) lookup. Otherwise 13 documents drop out of docs_lookup and
+    # drill-down/register URLs cannot be resolved.
     fkey_map: dict[tuple, str] = {}
     for r in fnames:
         fk = r.get("id", "")
@@ -221,9 +221,3 @@ def build_docs_lookup(docs_data_dir: Path, all_metadata: list[dict]) -> None:
 
     _write_json(lookup, docs_data_dir / "docs_lookup.json")
     print(f"  Docs lookup: {len(lookup)} documents mapped")
-
-
-# ---------------------------------------------------------------------------
-# Main entry point
-# ---------------------------------------------------------------------------
-

@@ -10,7 +10,6 @@ def _reg_text(element):
     regs = xpath(element, ".//tei:reg", )
     if not regs:
         return ""
-    # Use first <reg> with actual text content
     for reg in regs:
         txt = normalize_space(elem_text(reg))
         if txt:
@@ -21,9 +20,9 @@ def _reg_text(element):
 def _format_death_german(death_iso):
     """Format an ISO death date as German `15.07.1396` (or pass through).
 
-    Tooltip-Konvention: `† 15.07.1396`. Liefert ISO unveraendert zurueck,
-    wenn das Format nicht parsebar ist (Tolerant: nur-Jahres-Angaben,
-    Sonderzeichen, etc.).
+    Tooltip convention: `† 15.07.1396`. Returns the ISO value unchanged
+    if the format is not parsable (tolerant: year-only values, special
+    characters, etc.).
     """
     if not death_iso:
         return ""
@@ -49,7 +48,6 @@ def load_persons():
         if not xml_id:
             continue
 
-        # Name parts
         forename = ""
         surname = ""
         add_name = ""
@@ -69,7 +67,6 @@ def load_persons():
             if add_name:
                 break
 
-        # Death date
         death = ""
         death_elems = xpath(person, ".//tei:death")
         if death_elems:
@@ -77,7 +74,6 @@ def load_persons():
                 elem_text(death_elems[0])
             )
 
-        # Build display name
         parts = [p for p in [forename, surname, add_name] if p]
         display = " ".join(parts) if parts else xml_id
 
@@ -139,7 +135,6 @@ def load_places():
             if name:
                 break
 
-        # Coordinates
         lat, lng = "", ""
         geo_elems = xpath(place, ".//tei:geo")
         if geo_elems:

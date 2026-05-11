@@ -1,15 +1,15 @@
-"""Build-Package: orchestriert Register laden, TEI parsen, HTML/JSON schreiben.
+"""Build package: orchestrates register loading, TEI parsing, HTML/JSON writing.
 
-Submodule:
-- _helpers.py    Datums-/Pfad-/Jinja-Helfer, Label-Aufloesung, Sort-Keys
-- _metadata.py   TEI-Header extrahieren, body rendern, Datei schreiben
-- _kpi.py        Korpus-weite KPIs aus TEI via XPath, Korpus-Matrix
-- _pages.py      Seiten-Builder (Startseite, Quellen, Register, Exploration,
-                 Analyse, statische Markdown-Seiten)
+Submodules:
+- _helpers.py    Date/path/Jinja helpers, label resolution, sort keys
+- _metadata.py   Extract TEI header, render body, write file
+- _kpi.py        Corpus-wide KPIs from TEI via XPath, corpus matrix
+- _pages.py      Page builders (start page, sources, register, exploration,
+                 analysis, static Markdown pages)
 
-Public API: re-exportiert hier fuer Backwards-Compat mit `from frontend.build
-import ...` (build_single, build_all, _init_jinja, Pfad-Konstanten u.v.m.,
-ueber die existierende Tests verfuegen).
+Public API: re-exported here for backwards-compat with `from frontend.build
+import ...` (build_single, build_all, _init_jinja, path constants and more,
+which existing tests rely on).
 """
 
 import shutil
@@ -18,8 +18,8 @@ import time
 
 from pipeline.utils.xml_loader import collect_source_files
 
-# Pfad-Konstanten und Helpers re-exportieren — viele Tests greifen
-# direkt auf `frontend.build.DOCS_DIR`, `frontend.build.TEMPLATES_DIR` etc. zu.
+# Re-export path constants and helpers — many tests access
+# `frontend.build.DOCS_DIR`, `frontend.build.TEMPLATES_DIR` etc. directly.
 from frontend.config import (
     DOCS_DIR, TEMPLATES_DIR, STATIC_DIR, CONTENT_DIR, KNOWLEDGE_DIR,
     DATA_DIR, FACSIMILE_BASE_URLS,
@@ -95,7 +95,7 @@ from frontend.build._pages import (
     _build_analysis,
 )
 
-# Pipeline-Hilfen, die einige Tests via `frontend.build.<name>` ziehen
+# Pipeline helpers some tests pull via `frontend.build.<name>`
 from pipeline.config import SOURCES_DIR, NS_MAP, REPO_ROOT  # noqa: F401
 
 

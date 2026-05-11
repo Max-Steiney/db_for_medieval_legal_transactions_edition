@@ -1,16 +1,16 @@
-"""Schema-Tests fuer docs/data/ und docs/register/.
+"""Schema tests for docs/data/ and docs/register/.
 
-Prueft die in docs/data/SCHEMA.md dokumentierten Strukturen gegen den
-realen Build-Output. Setzt voraus, dass `python -m frontend build`
-mindestens einmal gelaufen ist (im CI: Smoke-Build vor pytest).
+Verifies the structures documented in docs/data/SCHEMA.md against the real
+build output. Assumes that `python -m frontend build` has run at least
+once (in CI: smoke build before pytest).
 
-Tests, die der Aggregator selbst pruefen kann (timeline, epic_*,
-docs_aggregate, docs_lookup), liegen in test_aggregator.py mit eigener
-Fixture. Diese Datei deckt das ab, was nicht durch run_aggregation
-allein abgedeckt wird: search.json, persons_search.json,
-register/*.json, categories.json, query_vocabulary.json.
+Tests that the aggregator itself can verify (timeline, epic_*,
+docs_aggregate, docs_lookup) live in test_aggregator.py with their own
+fixture. This file covers what is not covered by run_aggregation alone:
+search.json, persons_search.json, register/*.json, categories.json,
+query_vocabulary.json.
 
-Wenn docs/data/ fehlt, werden alle Tests geskippt.
+If docs/data/ is missing, all tests are skipped.
 """
 
 import json
@@ -24,16 +24,16 @@ DOCS_REGISTER = Path(__file__).parent.parent.parent / "docs" / "register"
 
 def _load(path: Path):
     if not path.exists():
-        pytest.skip(f"{path} fehlt - python -m frontend build vorher ausfuehren")
+        pytest.skip(f"{path} missing - run python -m frontend build first")
     return json.loads(path.read_text(encoding="utf-8"))
 
 
 # ---------------------------------------------------------------------------
-# search.json — Such-Index der Quellen-Uebersicht
+# search.json — search index of the source overview
 # ---------------------------------------------------------------------------
 
 class TestSearchJson:
-    """search.json: Top-Level Array, kompakte Field-Names pro Quelle."""
+    """search.json: top-level array, compact field names per source."""
 
     @pytest.fixture(scope="class")
     def data(self):
@@ -44,7 +44,7 @@ class TestSearchJson:
         assert len(data) > 1000
 
     def test_record_has_required_fields(self, data):
-        # Aus SCHEMA.md: alle dokumentierten Felder muessen im 1. Record sein
+        # From SCHEMA.md: all documented fields must be in the first record.
         required = {"id", "t", "tf", "c", "cp", "cl", "sc",
                     "d", "di", "dn", "p", "u",
                     "f",
@@ -55,30 +55,29 @@ class TestSearchJson:
         assert not missing, f"search.json record missing fields: {missing}"
 
     def test_quality_fields_removed(self, data):
-        # Quality-Felder wurden komplett entfernt — Regression-Guard.
+        # Quality fields were completely removed — regression guard.
         forbidden = {"q", "qc", "qcat"}
         sample = data[0]
         leaked = forbidden & set(sample.keys())
         assert not leaked, f"quality fields still present in search.json: {leaked}"
 
     def test_fac_flag_boolean(self, data):
-        # f ist 0 oder 1
         for d in data[:100]:
             assert d["f"] in (0, 1)
 
     def test_url_relative(self, data):
-        # u ist relativ zu docs/, beginnt nicht mit /
+        # u is relative to docs/, does not start with /
         for d in data[:100]:
             assert not d["u"].startswith("/"), f"absolute URL: {d['u']}"
             assert d["u"].endswith(".html")
 
 
 # ---------------------------------------------------------------------------
-# persons_search.json — Personenregister-Suchindex
+# persons_search.json — person register search index
 # ---------------------------------------------------------------------------
 
 class TestPersonsSearchJson:
-    """persons_search.json: Array von Personen, kompakte Felder."""
+    """persons_search.json: array of persons, compact fields."""
 
     @pytest.fixture(scope="class")
     def data(self):
@@ -89,9 +88,9 @@ class TestPersonsSearchJson:
         assert len(data) > 1000
 
     def test_record_has_required_fields(self, data):
-        # Felder nach Rework: id, n/fn/sn (Suchindex), sex, dc (>=1 per
-        # Konstruktion), am/ax (Aktivitaetszeitraum), co (Korpus-Liste),
-        # i0/cl0 (Anker fuer Sub-Label), rl (Rollen). d/qw entfallen.
+        # Fields after rework: id, n/fn/sn (search index), sex, dc (>=1 by
+        # construction), am/ax (activity period), co (corpus list),
+        # i0/cl0 (anchor for sub-label), rl (roles). d/qw are dropped.
         required = {"id", "n", "fn", "sn", "sex",
                     "dc", "am", "ax", "co", "i0", "cl0", "rl"}
         sample = data[0]
@@ -103,18 +102,18 @@ class TestPersonsSearchJson:
             assert p["id"].startswith("pe__"), f"id without pe__: {p['id']}"
 
     def test_sex_values(self, data):
-        # sex ist m/f oder leer (laut SCHEMA)
+        # sex is m/f or empty (per SCHEMA)
         for p in data[:100]:
             assert p["sex"] in ("m", "f", ""), f"unexpected sex {p['sex']!r}"
 
     def test_dc_at_least_one(self, data):
-        # Per Konstruktion: nur Personen mit mindestens einer freigegebenen
-        # Quellennennung kommen ins Register.
+        # By construction: only persons with at least one released source
+        # mention enter the register.
         for p in data[:200]:
             assert p["dc"] >= 1, f"dc < 1 in released register: {p['id']}"
 
     def test_roles_in_vocabulary(self, data):
-        # Rollen-Vokabular kontrolliert auf vier Werte
+        # Role vocabulary controlled to four values.
         valid = {"issuer", "recipient", "witness", "other"}
         for p in data[:200]:
             for r in p.get("rl", []):
@@ -122,11 +121,11 @@ class TestPersonsSearchJson:
 
 
 # ---------------------------------------------------------------------------
-# register/{persons,organisations,places}.json — Reverse-Index
+# register/{persons,organisations,places}.json — reverse index
 # ---------------------------------------------------------------------------
 
 class TestRegisterReverseJson:
-    """register/*.json: entity_id -> [doc-record], kompakte Felder."""
+    """register/*.json: entity_id -> [doc-record], compact fields."""
 
     @pytest.mark.parametrize("name,prefix", [
         ("persons", "pe__"),
@@ -157,7 +156,7 @@ class TestRegisterReverseJson:
 
 
 # ---------------------------------------------------------------------------
-# categories.json — Editorielle Org-Typ-Mappings
+# categories.json — editorial org-type mappings
 # ---------------------------------------------------------------------------
 
 class TestCategoriesJson:
@@ -181,7 +180,7 @@ class TestCategoriesJson:
 
 
 # ---------------------------------------------------------------------------
-# query_vocabulary.json — Analyse-Composer-Vokabular
+# query_vocabulary.json — analysis composer vocabulary
 # ---------------------------------------------------------------------------
 
 class TestQueryVocabularyJson:
@@ -211,7 +210,7 @@ class TestQueryVocabularyJson:
 
 
 # ---------------------------------------------------------------------------
-# docs_lookup.json — file_key -> Metadaten-Lookup
+# docs_lookup.json — file_key -> metadata lookup
 # ---------------------------------------------------------------------------
 
 class TestDocsLookupJson:
@@ -236,7 +235,7 @@ class TestDocsLookupJson:
 
 
 # ---------------------------------------------------------------------------
-# Cross-File-Konsistenz: SCHEMA.md erwaehnt versionierungs-Felder
+# Cross-file consistency: SCHEMA.md mentions versioning fields
 # ---------------------------------------------------------------------------
 
 class TestSchemaVersioning:

@@ -1,5 +1,5 @@
-"""Epic C: Transaktionstypen, Verbformen, Empfaenger — fuer die Transaktions-
-Sektion in analysis/auswertungen.html."""
+"""Epic C: transaction types, verb forms, recipients — for the transaction
+section in analysis/auswertungen.html."""
 
 from collections import Counter, defaultdict
 from pathlib import Path
@@ -212,9 +212,3 @@ def aggregate_epic_c(docs_data_dir: Path) -> dict:
 
     _write_json(result, docs_data_dir / "epic_c.json")
     return result
-
-
-# ---------------------------------------------------------------------------
-# Epic D aggregation (V0-T6): places with status
-# ---------------------------------------------------------------------------
-

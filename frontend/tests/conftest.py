@@ -22,7 +22,7 @@ class TagFinder(HTMLParser):
 
     def __init__(self):
         super().__init__()
-        self.elements = []  # list of (tag, attrs_dict)
+        self.elements = []
 
     def handle_starttag(self, tag, attrs):
         self.elements.append((tag, dict(attrs)))
@@ -52,12 +52,12 @@ def parse_html(html_str):
 
 
 def patch_build_path(monkeypatch, name, value):
-    """Patch a path constant across alle build-Submodule.
+    """Patch a path constant across all build submodules.
 
-    Ersetzt das alte Idiom ``monkeypatch.setattr(frontend.build, "DATA_DIR", x)``,
-    das nach dem Package-Split nicht mehr ausreicht: jedes Submodul (_helpers,
-    _metadata, _pages) hat seine eigene Top-Level-Importbindung von
-    DOCS_DIR/DATA_DIR. Wir setzen den Wert auf allen Stellen gleichzeitig.
+    Replaces the old idiom ``monkeypatch.setattr(frontend.build, "DATA_DIR", x)``,
+    which no longer suffices after the package split: each submodule (_helpers,
+    _metadata, _pages) has its own top-level import binding of DOCS_DIR/DATA_DIR.
+    We set the value in all locations simultaneously.
     """
     import frontend.build as _b
     import frontend.build._helpers as _h
@@ -72,10 +72,10 @@ def patch_build_path(monkeypatch, name, value):
 def docs_dir(tmp_path_factory):
     """Monkeypatch DOCS_DIR to a temp directory for the test module.
 
-    Nach dem build-Package-Split (frontend.build/__init__.py + Submodule)
-    haben die Submodule ihre eigenen DOCS_DIR-Bindings — der einfache
-    Patch auf frontend.build.DOCS_DIR reicht nicht mehr. Wir patchen
-    daher jedes Submodul, das DOCS_DIR liest oder darauf schreibt.
+    After the build-package split (frontend.build/__init__.py + submodules),
+    each submodule has its own DOCS_DIR binding — a simple patch on
+    frontend.build.DOCS_DIR no longer suffices. We therefore patch every
+    submodule that reads or writes DOCS_DIR.
     """
     import frontend.build._helpers as _h
     import frontend.build._metadata as _m

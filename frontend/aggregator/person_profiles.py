@@ -1,24 +1,24 @@
-"""Person-Profile: Stammdaten + Quellen + Rollen + Beziehungen pro Person.
+"""Person profiles: master data + sources + roles + relations per person.
 
-Aggregiert aus den Pipeline-CSVs eine Profil-Struktur pro ``pe__``-ID
-fuer das Rendering der Personen-Profilseiten unter
+Aggregates from the pipeline CSVs a profile structure per ``pe__`` ID
+for rendering the person profile pages under
 ``docs/register/persons/<id>.html``.
 
-Eingang:
-- ``reverse_index`` (gebaut in build/__init__.py): pro Entitaets-ID die
-  Liste der Quellen-Metadata-Eintraege (url, idno, date_display, ...).
-  Liefert die Quellen-Tabelle des Profils ohne Re-Derivation.
+Input:
+- ``reverse_index`` (built in build/__init__.py): per entity ID, the
+  list of source metadata entries (url, idno, date_display, ...).
+  Provides the profile's source table without re-derivation.
 
-Output: ein dict ``{pe__id: profile}`` mit fester Struktur (s. README im
-Modul). Schreibt keine Datei — die HTMLs werden direkt im Build-Schritt
-``_build_person_profiles`` gerendert.
+Output: a dict ``{pe__id: profile}`` with fixed structure (see module
+README). Writes no file — the HTMLs are rendered directly in the build
+step ``_build_person_profiles``.
 
-Beziehungstypen (5):
-- kin       (Verwandtschaft)        — person<->person, beidseitig
-- friend    (Freundschaft)          — person<->person, beidseitig
-- rep       (Stellvertretung)       — person<->person, beidseitig
-- occ       (Beruf/Amt re: Org)     — person->org, einseitig
-- title_ref (Titel re: Org)         — person->org, einseitig
+Relation types (5):
+- kin       (kinship)               — person<->person, bidirectional
+- friend    (friendship)            — person<->person, bidirectional
+- rep       (representation)        — person<->person, bidirectional
+- occ       (occupation re: org)    — person->org, unidirectional
+- title_ref (title re: org)         — person->org, unidirectional
 """
 
 from collections import Counter, defaultdict
@@ -26,14 +26,14 @@ from collections import Counter, defaultdict
 from ._shared import _cached_csv
 
 
-# Englische Rollenwerte aus persons_in_events.csv. Synchron mit
-# PERSON_ROLES in build/_pages.py — wir wiederholen die Liste hier
-# bewusst, um keine Build-Reihenfolgen-Abhaengigkeit einzufuehren.
+# English role values from persons_in_events.csv. In sync with
+# PERSON_ROLES in build/_pages.py — we repeat the list here deliberately
+# to avoid introducing a build-order dependency.
 _ROLES = ("issuer", "recipient", "witness", "other")
 
 
 def _load_person_stammdaten():
-    """Lade persons.csv -> {id: {forename, surname, addName, sex, note,
+    """Load persons.csv -> {id: {forename, surname, addName, sex, note,
     death_iso, wiki_pageid}}."""
     out = {}
     for r in _cached_csv("persons.csv"):
@@ -54,7 +54,7 @@ def _load_person_stammdaten():
 
 
 def _load_org_names():
-    """Lade organisations.csv -> {org_id: name}."""
+    """Load organisations.csv -> {org_id: name}."""
     out = {}
     for r in _cached_csv("organisations.csv"):
         oid = r.get("id", "")
@@ -77,7 +77,7 @@ def _format_death_german(death_iso):
 
 
 def _display_name(s):
-    """Kompakter Anzeigename aus Stammdaten."""
+    """Compact display name from master data."""
     parts = [s.get("forename", ""), s.get("surname", ""), s.get("addName", "")]
     return " ".join(p for p in parts if p) or ""
 
@@ -85,11 +85,11 @@ def _display_name(s):
 def _file_to_source_lookup(reverse_index):
     """Map file_key -> source-meta dict for relation-row resolution.
 
-    Pipeline-CSVs referenzieren Quellen via ``file_key`` (z. B.
-    ``f__QGW_10``). reverse_index ist idno-basiert (``10``, in
-    ``QGW/Vienna_1177-1414_ready``). Wir bauen die Bruecke ueber
-    filenames.csv (file_key -> Datei + Collection-Pfad) und matchen
-    dann gegen reverse_index per (collection_path, idno).
+    Pipeline CSVs reference sources via ``file_key`` (e.g.
+    ``f__QGW_10``). reverse_index is idno-based (``10``, in
+    ``QGW/Vienna_1177-1414_ready``). We bridge via filenames.csv
+    (file_key -> file + collection path) and then match against
+    reverse_index by (collection_path, idno).
     """
     # 1) Index reverse_index docs by (collection_path, idno) ----------
     by_cp_idno = {}
@@ -140,10 +140,9 @@ def _aggregate_roles_per_person():
 def _aggregate_source_titles():
     """persons_in_sources.csv -> {person_key: [unique source_titles + source_prof]}.
 
-    Liefert die in der Quelle stehenden Titel-/Berufsbezeichnungen,
-    sortiert nach Haeufigkeit. Beruf und Titel werden zusammengefasst,
-    weil die UI-Differenzierung kaum Mehrwert bringt — sie dienen beide
-    der Identifikation der Person.
+    Returns the title/occupation labels as they appear in the source,
+    sorted by frequency. Occupation and title are merged because the UI
+    distinction adds little value — both serve to identify the person.
     """
     counters = defaultdict(Counter)
     for r in _cached_csv("persons_in_sources.csv"):
@@ -161,25 +160,25 @@ def _aggregate_source_titles():
 
 
 def _build_relation_index(file_lookup, person_names, org_names):
-    """Lade die 5 Beziehungs-CSVs und gruppiere pro Person.
+    """Load the 5 relation CSVs and group per person.
 
-    Liefert: {person_id: {"kin":[...], "friend":[...], "rep":[...],
+    Returns: {person_id: {"kin":[...], "friend":[...], "rep":[...],
                           "occ":[...], "title_ref":[...]}}
 
-    Jeder Eintrag pro Person:
+    Each entry per person:
         {"label": str, "other_id": str, "other_name": str, "other_kind":
          "person"|"org", "other_sex": str, "role": "subject"|"counterpart",
          "file_key": str, "idno": str, "date_display": str, "url": str,
          "regest": str}
 
     role:
-        - "subject":     diese Person ist person_key (= Traegerin des Labels)
-        - "counterpart": diese Person ist related_key (Gegenpartei)
+        - "subject":     this person is person_key (= bearer of the label)
+        - "counterpart": this person is related_key (counterparty)
     """
     rel = defaultdict(lambda: {k: [] for k in
                                ("kin", "friend", "rep", "occ", "title_ref")})
 
-    # person<->person Beziehungen: beidseitig
+    # person<->person relations: bidirectional
     BIDIR = [
         ("kin_relations_in_sources.csv",    "kin",    "kin"),
         ("friend_relations_in_sources.csv", "friend", "friend"),
@@ -202,14 +201,14 @@ def _build_relation_index(file_lookup, person_names, org_names):
                 "url":        src.get("url", ""),
                 "regest":     src.get("regest", ""),
             }
-            # Subject-Sicht (person_key)
+            # subject view (person_key)
             sub = dict(base)
             sub["other_id"]   = rk
             sub["other_name"] = person_names.get(rk, rk)
             sub["other_kind"] = "person"
             sub["role"]       = "subject"
             rel[pk][group].append(sub)
-            # Counterpart-Sicht (related_key)
+            # counterpart view (related_key)
             cp = dict(base)
             cp["other_id"]   = pk
             cp["other_name"] = person_names.get(pk, pk)
@@ -217,7 +216,7 @@ def _build_relation_index(file_lookup, person_names, org_names):
             cp["role"]       = "counterpart"
             rel[rk][group].append(cp)
 
-    # person->org Beziehungen: einseitig (Org hat noch kein Profil)
+    # person->org relations: unidirectional (org has no profile yet)
     PERSON_TO_ORG = [
         ("occ_relations_in_sources.csv",       "occ",       "occ"),
         ("title-ref_relations_in_sources.csv", "title_ref", "title_ref"),
@@ -249,22 +248,22 @@ def _build_relation_index(file_lookup, person_names, org_names):
 
 
 def build_person_profiles(reverse_index):
-    """Baue dict ``{pe__id: profile}`` fuer alle Personen mit mind.
-    einer Quelle im released set.
+    """Build dict ``{pe__id: profile}`` for all persons with at least
+    one source in the released set.
 
-    Eine Person erscheint im Profil-Set genau dann, wenn sie als
-    ``rs type="person"`` in einer freigegebenen Quelle annotiert ist —
-    der reverse_index liefert dies bereits richtig.
+    A person appears in the profile set iff they are annotated as
+    ``rs type="person"`` in a released source — the reverse_index
+    already delivers this correctly.
 
-    profile-Struktur:
+    profile structure:
         {
           "id": pe__id,
-          "display": "Forename Surname AddName" oder pe__id,
+          "display": "Forename Surname AddName" or pe__id,
           "forename", "surname", "addName",
           "sex": "m"|"f"|"",
           "note": str,
-          "death_iso": str,           # rohes ISO (oder Jahr)
-          "death_display": str,       # DD.MM.YYYY oder Jahr
+          "death_iso": str,           # raw ISO (or year)
+          "death_display": str,       # DD.MM.YYYY or year
           "wiki_label", "wiki_pageid",
           "source_titles": [str, ...],
           "sources":     [doc-meta...],
@@ -281,10 +280,10 @@ def build_person_profiles(reverse_index):
     person_roles = _aggregate_roles_per_person()
     source_titles = _aggregate_source_titles()
 
-    # person_names fuer Beziehungs-Aufloesung — Display aus Stammdaten,
-    # Fallback ID. Wird auch fuer Personen genutzt, die nicht released
-    # sind (Beziehung zu einer nicht-freigegebenen Person bleibt sichtbar
-    # mit Namen, aber der Link wird im Template defensiv geprueft).
+    # person_names for relation resolution — display from master data,
+    # fallback to ID. Also used for persons not in the released set
+    # (a relation to a non-released person stays visible with the name,
+    # but the link is defensively checked in the template).
     person_names = {pid: _display_name(s) or pid for pid, s in stamm.items()}
 
     relations = _build_relation_index(file_lookup, person_names, org_names)

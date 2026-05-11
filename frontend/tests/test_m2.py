@@ -71,10 +71,10 @@ class TestCrossEpicNavigation:
         assert 'getParam' in content
         assert 'URLSearchParams' in content
 
-    # Die frueheren Subseiten exploration-networks.js / exploration-roles.js
-    # sind in analysis-aggregat.js zusammengefuehrt; URL-Param-Drill ist
-    # noch offen (V2/V3 Anschluss). Sobald implementiert, koennen hier
-    # entsprechende Asserts gegen analysis-aggregat.js wieder eingezogen werden.
+    # The former sub-pages exploration-networks.js / exploration-roles.js
+    # have been merged into analysis-aggregat.js; URL-param drill is still
+    # open (V2/V3 follow-up). Once implemented, corresponding asserts
+    # against analysis-aggregat.js can be reintroduced here.
 
 
 # ---------------------------------------------------------------------------

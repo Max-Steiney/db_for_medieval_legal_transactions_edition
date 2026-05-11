@@ -117,7 +117,6 @@ def _run_tests() -> dict | None:
             capture_output=True, text=True, cwd=str(REPO_ROOT),
             timeout=120,
         )
-        # Parse "X passed, Y failed" from last lines
         for line in reversed(out.stdout.splitlines()):
             m = re.search(r'(\d+) passed', line)
             f = re.search(r'(\d+) failed', line)
@@ -140,7 +139,6 @@ def collect_status(run_tests: bool = False) -> dict:
     for ms_id in MILESTONE_IDS:
         ms = milestones.get(ms_id, {"done": 0, "total": 0, "blocked": 0})
 
-        # Determine status symbol
         if ms["total"] > 0 and ms["done"] == ms["total"]:
             symbol = "done"
         elif ms["done"] > 0:
@@ -189,14 +187,12 @@ def print_status(status: dict) -> None:
     _out(f"\nPROJECT STATUS -- {status['date']}")
     _out(bar)
 
-    # Build artefacts
     pages = status["html_pages"]
     existing = [p["name"].replace(".html", "") for p in pages if p["exists"]]
     missing = [p["name"].replace(".html", "") for p in pages if not p["exists"]]
     _out(f"  Pages:  {len(existing)} built" +
          (f"  ({', '.join(missing)} missing)" if missing else ""))
 
-    # Data files
     df = status["data_files"]
     if df:
         parts = []
@@ -207,7 +203,6 @@ def print_status(status: dict) -> None:
     else:
         _out("  Data:   (no JSON files in docs/data/)")
 
-    # Tests
     if status.get("tests"):
         t = status["tests"]
         symbol = "OK" if t["failed"] == 0 else "FAIL"
@@ -215,7 +210,6 @@ def print_status(status: dict) -> None:
     else:
         _out("  Tests:  (run with --test)")
 
-    # Milestones
     _out(f"\nMILESTONES")
     _out(thin)
 
@@ -245,7 +239,6 @@ def print_status(status: dict) -> None:
                 parts.append(" " * 42)
         _out("".join(parts))
 
-    # Open questions
     blocking = [q for q in status["open_questions"]]
     if blocking:
         _out(f"\nBLOCKED BY OPEN QUESTIONS")
@@ -253,7 +246,6 @@ def print_status(status: dict) -> None:
         for q in blocking:
             _out(f"  {q['id']} -> {q['blocks']:<14} {q['topic']}")
 
-    # Git log
     commits = status.get("git_log", [])
     if commits:
         _out(f"\nLAST {len(commits)} COMMITS")

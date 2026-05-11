@@ -34,7 +34,6 @@ def test_html_has_date(built_doc):
 
 def test_html_has_idno(built_doc):
     _, content, _ = built_doc
-    # Document 100's idno should appear in the metadata section
     finder = TagFinder()
     finder.feed(content)
     assert "100" in content

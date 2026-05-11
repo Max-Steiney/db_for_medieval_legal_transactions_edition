@@ -54,7 +54,7 @@ class TestRegisterLoading:
     def test_load_persons_returns_dict(self):
         persons = load_persons()
         assert isinstance(persons, dict)
-        assert len(persons) > 1000  # 16,088 expected
+        assert len(persons) > 1000
 
     def test_person_has_required_keys(self):
         persons = load_persons()
@@ -70,7 +70,7 @@ class TestRegisterLoading:
     def test_load_orgs_returns_dict(self):
         orgs = load_orgs()
         assert isinstance(orgs, dict)
-        assert len(orgs) > 100  # 1,078 expected
+        assert len(orgs) > 100
 
     def test_known_org_exists(self):
         orgs = load_orgs()
@@ -79,7 +79,7 @@ class TestRegisterLoading:
     def test_load_places_returns_dict(self):
         places = load_places()
         assert isinstance(places, dict)
-        assert len(places) > 500  # 2,537 expected
+        assert len(places) > 500
 
     def test_place_has_coordinates(self):
         places = load_places()

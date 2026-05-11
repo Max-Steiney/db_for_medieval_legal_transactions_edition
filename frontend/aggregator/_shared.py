@@ -1,12 +1,12 @@
-"""Geteilte Hilfsfunktionen, CSV-Cache und RELEASED_CORPORA-Filter.
+"""Shared helpers, CSV cache and RELEASED_CORPORA filter.
 
-Wird vom gesamten aggregator-Package konsumiert. Enthaelt:
-- _load_csv / _cached_csv: CSV-Reader mit Modul-Cache
-- _is_released_row / _released_file_keys: RELEASED_CORPORA-Filter
-- _load_norm_matching: Normalisierungstabellen
-- _parse_coord / _decade: Wert-Parser
-- _meta / _write_json: Output-Helpers
-- SCHEMA_VERSION: globale Versionierungs-Konstante
+Consumed by the entire aggregator package. Contains:
+- _load_csv / _cached_csv: CSV reader with module-level cache
+- _is_released_row / _released_file_keys: RELEASED_CORPORA filter
+- _load_norm_matching: normalisation tables
+- _parse_coord / _decade: value parsers
+- _meta / _write_json: output helpers
+- SCHEMA_VERSION: global versioning constant
 """
 
 import csv
@@ -24,11 +24,11 @@ SCHEMA_VERSION = "1.0"
 
 
 def _is_released_row(row: dict) -> bool:
-    """True, wenn die CSV-Zeile zu einem freigegebenen Quellenkorpus gehört.
+    """True if the CSV row belongs to a released source corpus.
 
-    Pipeline-CSVs listen alle Bestände. Für Frontend-Aggregate zählen nur
-    freigegebene. Das beseitigt den Vienna_1448-57_ready-Gap und die
-    Zählung nicht-freigegebener QGW-Bände.
+    Pipeline CSVs list all holdings. For frontend aggregates only released
+    ones count. This removes the Vienna_1448-57_ready gap and the counting
+    of non-released QGW volumes.
     """
     coll = row.get("collection", "")
     sub = row.get("subcollection", "")
@@ -52,11 +52,10 @@ _released_file_keys_cache: set[str] | None = None
 
 
 def _released_file_keys() -> set[str]:
-    """Menge aller file_keys, die zu freigegebenen Quellenkorpora gehören.
+    """Set of all file_keys belonging to released source corpora.
 
-    Grundlage ist filenames.csv (inkl. collection/subcollection); hier wird
-    direkt gegen die CSV-Datei gelesen, damit _cached_csv nicht rekursiv
-    aufgerufen wird.
+    Backed by filenames.csv (incl. collection/subcollection); reads the
+    CSV file directly here so _cached_csv is not invoked recursively.
     """
     global _released_file_keys_cache
     if _released_file_keys_cache is None:
@@ -70,12 +69,12 @@ def _released_file_keys() -> set[str]:
 def _cached_csv(name: str, delimiter: str = ";") -> list[dict]:
     """Load a pipeline CSV once, return cached result on subsequent calls.
 
-    Filtert Zeilen nicht-freigegebener Quellenkorpora raus:
-    - CSVs mit `collection` + `subcollection` direkt per Pfad-Prüfung.
-    - CSVs mit `file_key` (und ohne collection) über die Menge der
-      freigegebenen file_keys aus filenames.csv.
-    So sickern Nennungen aus nicht-freigegebenen Bänden weder in Counts noch
-    in Drill-Downs ein.
+    Filters out rows from non-released source corpora:
+    - CSVs with `collection` + `subcollection` via direct path check.
+    - CSVs with `file_key` (and no collection) via the set of released
+      file_keys from filenames.csv.
+    This way mentions from non-released volumes leak neither into counts
+    nor into drill-downs.
     """
     if name not in _csv_cache:
         rows = _load_csv(PIPELINE_OUTPUT / name, delimiter)
