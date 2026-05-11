@@ -213,7 +213,7 @@
             <table class="rel-table sortable-table"{% if entries|length > 50 %} data-truncate-at="50"{% endif %}>
                 <thead>
                     <tr>
-                        <th scope="col" class="rel-col-other" data-sort="other">{% if rel_type in ['occ', 'title_ref'] %}Institution{% elif rel_type in ['owner', 'tenant'] %}Ort{% else %}Person{% endif %}</th>
+                        <th scope="col" class="rel-col-other" data-sort="other">{% if rel_type in ['occ', 'title_ref'] %}Bezogen auf{% elif rel_type in ['owner', 'tenant'] %}Ort{% else %}Person{% endif %}</th>
                         <th scope="col" class="rel-col-label" data-sort="label">Bezeichnung</th>
                         <th scope="col" class="rel-col-perspective">Perspektive</th>
                         <th scope="col" class="rel-col-idno" data-sort="idno">Signatur</th>

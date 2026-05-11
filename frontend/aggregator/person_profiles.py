@@ -247,12 +247,16 @@ def _build_relation_index(file_lookup, person_names, org_names, place_names):
                       other_kind="person", role="counterpart")
             rel[rk][group].append(cp)
 
-    # Person -> Org, unidirectional. Person owns the relation.
-    PERSON_TO_ORG = [
+    # Person -> {Org or Person}, unidirectional. Person owns the relation.
+    # ``related_key`` in occ_relations is mixed: ~60% org__, ~40% pe__
+    # ("Kaemmerer des Herzogs Wilhelm", "Schaffer des Niklas Wuerfel").
+    # title-ref_relations is currently org-only but we treat both columns
+    # the same way for forward compatibility.
+    PERSON_TO_REL = [
         ("occ_relations_in_sources.csv",       "occ",       "occ"),
         ("title-ref_relations_in_sources.csv", "title_ref", "title_ref"),
     ]
-    for csv_name, label_col, group in PERSON_TO_ORG:
+    for csv_name, label_col, group in PERSON_TO_REL:
         for r in _cached_csv(csv_name):
             pk = (r.get("person_key") or "").strip()
             rk = (r.get("related_key") or "").strip()
@@ -261,11 +265,23 @@ def _build_relation_index(file_lookup, person_names, org_names, place_names):
             if not pk:
                 continue
             src = file_lookup.get(fk, {})
+            # Kind from key prefix; name from the matching lookup. Falls
+            # the prefix is unknown, leave the raw key so the data leak is
+            # visible upstream instead of mislabelling it as an org.
+            if rk.startswith("pe__"):
+                other_kind = "person"
+                other_name = person_names.get(rk, rk)
+            elif rk.startswith("org__"):
+                other_kind = "org"
+                other_name = org_names.get(rk, rk)
+            else:
+                other_kind = ""
+                other_name = rk
             entry = {
                 "label":      label,
                 "other_id":   rk,
-                "other_name": org_names.get(rk, rk),
-                "other_kind": "org",
+                "other_name": other_name,
+                "other_kind": other_kind,
                 "role":       "subject",
                 "file_key":   fk,
                 "idno":       src.get("idno", ""),
