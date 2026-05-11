@@ -54,7 +54,13 @@ verification/             unabhängiges Verifikations-Test-Set (Python, lxml)
 python -m frontend build                # baut docs/ aus aktuellem Pipeline-Output
 python -m frontend build --single FILE  # einzelne Quelle
 python -m pytest frontend/tests/        # Frontend-Tests (kompakt: -q --tb=no --no-header)
+python -m verification.run              # Stufe 1: TEI -> JSON-Aggregate
+python -m verification.run --html       # Stufe 2: Pipeline-CSV -> gerendertes HTML
+python -m verification.run --tei-html   # Stufe 3: TEI direkt -> gerendertes HTML
+python -m verification.run --all        # alle drei Stufen
 ```
+
+Test-Strategie und Abgrenzung der drei Säulen (pytest, Verifikation, Sichtprüfung): [`knowledge/architecture.md`](knowledge/architecture.md) Abschnitt _Test-Strategie_.
 
 **TEI-Quellen, Register, Pipeline-Code** gehören ins Schwester-Repo. Nach Änderungen dort:
 
@@ -106,5 +112,5 @@ Gestaltungsprinzip: maximaler Informations-Output. Nachvollziehbarkeit vor reduz
 | TEI-Quellen | `../db_for_medieval_legal_transactions/sources/` |
 | Register | `../db_for_medieval_legal_transactions/indices/` |
 | Pipeline / CSV-Format | `../db_for_medieval_legal_transactions/knowledge/architecture.md` |
-| Verifikations-Test-Set | `verification/`, siehe [`knowledge/architecture.md`](knowledge/architecture.md) |
+| Verifikations-Test-Set | [`verification/README.md`](verification/README.md) (drei Coverage-Stufen, Run-Kommandos, Statuswerte) und [`verification/findings.md`](verification/findings.md) (aktive Befunde) |
 | Konzeptionelle Wissensbasis | [`knowledge/`](knowledge/) — Einstieg über `knowledge/index.md` |

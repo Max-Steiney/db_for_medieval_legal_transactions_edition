@@ -49,13 +49,23 @@ Der Vorteil dieser Trennung ist Wiederverwendbarkeit. Mehrere Frontend-Views (Ta
 
 Eine TEI-Änderung wirkt erst, wenn alle drei Schichten neu laufen: erst Pipeline (`python -m pipeline transform` im Schwester-Repo), dann Aggregator + Build (`python -m frontend build` hier).
 
-## Verifikations-Test-Set
+## Test-Strategie
 
-Parallel zur Pipeline existiert ein unabhängiges Test-Set im Edition-Repo. Es liest die TEI-Quellen und Register-XMLs ohne Umweg über die Pipeline-Zwischenformate ein, rechnet Aggregate eigenständig nach und vergleicht sie mit den JSON-Ausgaben, die das Frontend konsumiert. Abweichungen zwischen Test-Aggregat und JSON-Aggregat sind ein Signal, das entweder auf einen Pipeline-Fehler, eine Fehl-Beschriftung in Templates oder auf eine Datenlücke hinweist.
+Die Qualitätssicherung steht auf drei Säulen, die unterschiedliche Fehlerklassen abdecken und sich nicht ersetzen.
 
-Das Test-Set nutzt dieselbe Technologie wie die Pipeline (Python, lxml), ist aber bewusst ein separater Codepfad ohne geteilte Aggregations-Funktionen. Die Trennung ist die Verifikationsgarantie: Eine Zahl, die aus derselben Pipeline stammt, die sie angeblich verifiziert, verifiziert sich selbst nicht.
+**Pytest** (`frontend/tests/`) testet den Build-Code selbst: Aggregator-Funktionen, Renderer, Template-Rendering, JS-Infrastruktur. Die Suite läuft schnell (rund elf Sekunden) und gehört zu jedem Build (`python -m pytest frontend/tests/`). Sie fängt Regressionen in der Programmlogik, nicht in den Daten.
 
-Reports sind versioniert und menschen- wie maschinenlesbar. Begründung in [[decisions#Verifikations-Test-Set als eigenständige Komponente]].
+**Verifikations-Test-Set** (`verification/`) prüft die Daten-Konsistenz End-to-End: TEI-Quellen und Register-XMLs werden ohne Umweg über die Pipeline-Zwischenformate eingelesen, Aggregate eigenständig nachgerechnet und mit den vom Build erzeugten JSON-Dateien und gerenderten HTMLs verglichen. Drei Coverage-Stufen:
+
+1. **TEI zu JSON** (`python -m verification.run`): unabhängige TEI-Aggregation vs. Pipeline-Output unter `docs/data/*.json`. Findet Pipeline-Fehler in der Aggregations-Logik.
+2. **CSV zu HTML** (`python -m verification.run --html`): Pipeline-CSVs vs. gerenderte Profil- und Quellen-HTMLs. Findet Renderer-Drift, fehlende Felder im Template, Orphan-Annotationen.
+3. **TEI zu HTML** (`python -m verification.run --tei-html`): TEI-Quelldateien direkt vs. gerenderte Quellen-HTMLs. Überspringt die CSV-Pipeline-Zwischenstufe und prüft, ob jede `<rs ref="...">`-Annotation als `data-ref="..."` im HTML erscheint und umgekehrt. Findet sowohl Pipeline-Drops (TEI-Annotation, die der Aggregator entfernt hat) als auch Renderer-Halluzinationen (HTML-Refs ohne TEI-Quelle).
+
+Das Test-Set nutzt dieselbe Technologie wie die Pipeline (Python, lxml), ist aber bewusst ein separater Codepfad ohne geteilte Aggregations-Funktionen. Die Trennung ist die Verifikationsgarantie: Eine Zahl, die aus derselben Pipeline stammt, die sie angeblich verifiziert, verifiziert sich selbst nicht. Reports sind versioniert in `verification/reports/` (Markdown + JSON). Statuswerte und Befund-Register: `verification/README.md` und `verification/findings.md`. Begründung in [[decisions#Verifikations-Test-Set als eigenständige Komponente]].
+
+**Manuelle Sichtprüfung** deckt ab, was sich nicht automatisieren lässt: Layout, Tooltip-Positionierung, Druckansicht, Lesefluss. Sie ist Teil jeder größeren UI-Änderung, nicht der CI.
+
+Die Säulen sind komplementär. Pytest fängt Code-Regressionen, Verifikation fängt Daten- und Rendering-Drift, Sichtprüfung fängt visuelle Brüche. Eine Änderung an Daten oder Templates wird typischerweise von zwei der drei Säulen gesehen.
 
 ## Templates
 
