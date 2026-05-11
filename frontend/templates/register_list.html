@@ -84,9 +84,9 @@
             <!-- Alphabet quick-nav -->
             <nav class="alphabet-bar" aria-label="Alphabetische Navigation">
                 {% for letter in "ABCDEFGHIJKLMNOPQRSTUVWXYZ" %}
-                <button class="alpha-btn" data-letter="{{ letter }}">{{ letter }}</button>
+                <button type="button" class="alpha-btn" data-letter="{{ letter }}">{{ letter }}</button>
                 {% endfor %}
-                <button class="alpha-btn alpha-btn-all active" data-letter="">Alle</button>
+                <button type="button" class="alpha-btn alpha-btn-all active" data-letter="">Alle</button>
             </nav>
 
             <div class="main-toolbar">

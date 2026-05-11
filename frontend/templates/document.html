@@ -77,7 +77,7 @@
                     <a class="toolbar-btn" href="{{ root_path }}/{{ meta.tei_url }}"
                        download="{{ meta.idno }}.xml"
                        aria-label="TEI-XML herunterladen" data-hint="TEI-XML herunterladen">{{ toolbar_icon('download') }}</a>
-                    <button class="toolbar-btn" id="cite-toggle" aria-expanded="false"
+                    <button type="button" class="toolbar-btn" id="cite-toggle" aria-expanded="false"
                             aria-label="Zitation kopieren" data-hint="Zitation kopieren">{{ toolbar_icon('cite') }}</button>
                     <div class="cite-popover hidden" id="cite-popover"></div>
                     <span class="toolbar-basket-mount"
@@ -124,13 +124,13 @@
             <div class="facs-viewer">
                 <div class="facs-controls">
                     {% if meta.facsimile_urls|length > 1 %}
-                    <button class="facs-prev" aria-label="Vorherige Seite" disabled>&#8249;</button>
+                    <button type="button" class="facs-prev" aria-label="Vorherige Seite" disabled>&#8249;</button>
                     {% endif %}
                     <span class="facs-page-indicator">
                         Seite <span id="facs-current">1</span>/<span>{{ meta.facsimile_urls|length }}</span>
                     </span>
                     {% if meta.facsimile_urls|length > 1 %}
-                    <button class="facs-next" aria-label="Nächste Seite">&#8250;</button>
+                    <button type="button" class="facs-next" aria-label="Nächste Seite">&#8250;</button>
                     {% endif %}
                 </div>
                 <div class="facs-image-wrap" id="facs-image-wrap">
@@ -139,9 +139,9 @@
                          loading="lazy">
                 </div>
                 <div class="facs-zoom-controls">
-                    <button class="facs-zoom-in" aria-label="Vergrößern">+</button>
-                    <button class="facs-zoom-out" aria-label="Verkleinern">&minus;</button>
-                    <button class="facs-zoom-reset" aria-label="Zurücksetzen">1:1</button>
+                    <button type="button" class="facs-zoom-in" aria-label="Vergrößern">+</button>
+                    <button type="button" class="facs-zoom-out" aria-label="Verkleinern">&minus;</button>
+                    <button type="button" class="facs-zoom-reset" aria-label="Zurücksetzen">1:1</button>
                 </div>
             </div>
         </div>

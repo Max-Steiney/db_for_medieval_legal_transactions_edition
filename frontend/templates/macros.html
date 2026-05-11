@@ -11,7 +11,7 @@
 
 {% macro nav_dropdown(label, entries) %}
 <div class="nav-dropdown">
-    <button class="nav-item nav-dropdown-trigger" aria-expanded="false" aria-haspopup="true">{{ label }} <span class="nav-dropdown-arrow">&#x25BE;</span></button>
+    <button type="button" class="nav-item nav-dropdown-trigger" aria-expanded="false" aria-haspopup="true">{{ label }} <span class="nav-dropdown-arrow">&#x25BE;</span></button>
     <div class="nav-dropdown-menu">
         {% for it in entries %}
         <a href="{{ it.href }}">{{ it.label }}</a>
@@ -53,7 +53,7 @@
     <div class="explore-drilldown-inner{{ ' explore-drilldown-inner--wide' if wide }}">
         <div class="explore-drilldown-header">
             <h3 id="{{ id_prefix }}-title">Quellen</h3>
-            <button class="explore-drilldown-close" id="{{ id_prefix }}-close"
+            <button type="button" class="explore-drilldown-close" id="{{ id_prefix }}-close"
                     aria-label="Schließen">&times;</button>
         </div>
         <div class="explore-drilldown-body" id="{{ id_prefix }}-body">
@@ -72,7 +72,7 @@
         </div>
         <div class="explore-drilldown-footer">
             <span id="{{ id_prefix }}-count"></span>
-            <button class="explore-btn" id="{{ id_prefix }}-export">CSV-Export</button>
+            <button type="button" class="explore-btn" id="{{ id_prefix }}-export">CSV-Export</button>
         </div>
     </div>
 </div>
@@ -107,7 +107,7 @@
     </svg>
     <label for="search-input" class="sr-only">{{ placeholder }}</label>
     <input type="text" id="search-input" placeholder="{{ placeholder }}" autocomplete="off" spellcheck="false">
-    <button class="search-clear hidden" id="search-clear" aria-label="Suche löschen">&times;</button>
+    <button type="button" class="search-clear hidden" id="search-clear" aria-label="Suche löschen">&times;</button>
 </div>
 {% endmacro %}
 
@@ -127,30 +127,6 @@
 {% macro no_results(message='Keine Einträge gefunden.') %}
 <div class="no-results hidden" id="no-results">
     <p>{{ message }}</p>
-</div>
-{% endmacro %}
-
-{# Embedded JSON data for JS #}
-{% macro json_data(script_id, data_json) %}
-<script id="{{ script_id }}" type="application/json">{{ data_json }}</script>
-{% endmacro %}
-
-{# Time-range slider for exploration pages #}
-{% macro time_range_slider(id_prefix='explore', min=None, max=None, step=10) %}
-{% set _min = min if min is not none else released_period.min_year %}
-{% set _max = max if max is not none else released_period.max_year_with_extensions %}
-<div class="explore-header-time">
-    <div class="explore-range-wrap" id="{{ id_prefix }}-range-wrap">
-        <div class="explore-range-track" id="{{ id_prefix }}-range-track">
-            <div class="explore-range-fill" id="{{ id_prefix }}-range-fill"></div>
-            <input type="range" id="{{ id_prefix }}-range-min" min="{{ _min }}" max="{{ _max }}" step="{{ step }}" value="{{ _min }}" aria-label="Zeitraum von">
-            <input type="range" id="{{ id_prefix }}-range-max" min="{{ _min }}" max="{{ _max }}" step="{{ step }}" value="{{ _max }}" aria-label="Zeitraum bis">
-        </div>
-        <span class="explore-range-display" id="{{ id_prefix }}-range-display">{{ _min }} bis {{ _max }}</span>
-    </div>
-    {% if released_period.unprocessed_gaps %}
-    <span class="explore-gap-note hidden" id="{{ id_prefix }}-gap-note">{{ released_period.unprocessed_gaps[0]['from'] }} bis {{ released_period.unprocessed_gaps[0]['to'] }}: noch nicht ausgewertet</span>
-    {% endif %}
 </div>
 {% endmacro %}
 
@@ -367,7 +343,7 @@
 {% macro sidebar_corpus_chips(group_id, attr_name, items) %}
 <div class="collection-chips collection-chips--stack" id="{{ group_id }}">
     {% for c in items %}
-    <button class="chip" {{ attr_name }}="{{ c.key }}">
+    <button type="button" class="chip" {{ attr_name }}="{{ c.key }}">
         <span class="chip-label">{{ c.label }}</span>
         <span class="chip-count" data-corpus-total="{{ c.count }}">{{ c.count }}</span>
     </button>

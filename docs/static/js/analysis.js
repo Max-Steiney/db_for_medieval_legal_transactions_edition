@@ -73,19 +73,10 @@
 
     /* ----- Render ------------------------------------------------------- */
 
-    let drillHandle = null;
-
-    function bindDrillDown() {
-        if (typeof DrillDown === 'undefined') return;
-        drillHandle = DrillDown.bind({
-            overlayId: 'analysis-drilldown',
-            titleId:   'analysis-drilldown-title',
-            tbodyId:   'analysis-drilldown-tbody',
-            countId:   'analysis-drilldown-count',
-            closeId:   'analysis-drilldown-close',
-            exportId:  'analysis-drilldown-export'
-        });
-    }
+    // docsLookup wird lazy beim ersten Drill-Click geladen (analog zu
+    // analysis-aggregat.js). VizCore.bindDrillOverlay verkabelt Close/ESC
+    // einmalig, openDrillOverlay() rendert pro Click.
+    let DOCS_LOOKUP = {};
 
     function setState(newState) {
         Store.state = newState;
@@ -96,17 +87,36 @@
                 dataMap: dataMap,
                 composerRoot: document.getElementById('composer'),
                 resultPanel: document.getElementById('result'),
-                drillHandle: drillHandle,
+                openDrill: openDrill,
                 onChange: setState
             });
             writeHash(newState);
         });
     }
 
+    function openDrill(title, fileKeys) {
+        if (!window.VizCore) return;
+        if (!Object.keys(DOCS_LOOKUP).length) {
+            window.VizCore.loadDocsLookup().then(function(lk) {
+                DOCS_LOOKUP = lk;
+                openDrill(title, fileKeys);
+            });
+            return;
+        }
+        window.VizCore.openDrillOverlay({
+            overlayId: 'analysis-drilldown',
+            title: title,
+            fileKeys: fileKeys,
+            docsLookup: DOCS_LOOKUP,
+        });
+    }
+
     /* ----- Init --------------------------------------------------------- */
 
     function init() {
-        bindDrillDown();
+        if (window.VizCore) {
+            window.VizCore.bindDrillOverlay({ overlayId: 'analysis-drilldown' });
+        }
         window.AnalysisComposer.loadVocab(function() {
             let parsed = parseHash();
             let state = (parsed && window.AnalysisComposer.fromHash(parsed))

@@ -21,7 +21,11 @@
      AnalysisComposer.toHash(state)    -> string
      AnalysisComposer.requiredFiles(state) -> [string]
      AnalysisComposer.render({state, dataMap, composerRoot, resultPanel,
-                              drillHandle, onChange})
+                              openDrill, onChange})
+
+   openDrill(title, fileKeys) is a callback supplied by analysis.js that
+   wraps VizCore.openDrillOverlay. The composer just hands the file_keys
+   to it on click; lazy lookup loading lives in the caller.
    ========================================================================== */
 
 (function() {
@@ -379,7 +383,7 @@
 
     /* -------- Result (right panel) --------------------------------------- */
 
-    function renderResult(state, dataMap, panel, drillHandle) {
+    function renderResult(state, dataMap, panel, openDrill) {
         panel.innerHTML = '';
         let subj = VOCAB.subjects[state.subject];
         let hasFilters = activeFilterIds(state).length > 0;
@@ -390,7 +394,7 @@
                 panel.appendChild(el('div', 'result-blocked',
                     'Diese Filter-Kombination ist nicht aufloesbar. Bitte einen Filter entfernen.'));
             } else {
-                panel.appendChild(buildPrimaryBlock(state, r, dataMap, drillHandle));
+                panel.appendChild(buildPrimaryBlock(state, r, dataMap, openDrill));
             }
         }
 
@@ -404,7 +408,7 @@
         if (cov) panel.appendChild(el('p', 'result-coverage', esc(cov)));
     }
 
-    function buildPrimaryBlock(state, r, dataMap, drillHandle) {
+    function buildPrimaryBlock(state, r, dataMap, openDrill) {
         let wrap = el('div', 'result-primary');
         wrap.appendChild(el('div', 'result-section-title', 'Aktuelle Auswahl'));
 
@@ -430,7 +434,7 @@
             });
         }
 
-        wrap.appendChild(buildResultActions(r, state, drillHandle));
+        wrap.appendChild(buildResultActions(r, state, openDrill));
         return wrap;
     }
 
@@ -449,7 +453,7 @@
         return grid;
     }
 
-    function buildResultActions(r, state, drillHandle) {
+    function buildResultActions(r, state, openDrill) {
         let row = el('div', 'result-actions');
         let dd = r.drillDownIds || [];
         let n = dd.length;
@@ -458,9 +462,9 @@
         ddBtn.type = 'button';
         ddBtn.disabled = n === 0;
         ddBtn.textContent = n > 0 ? 'Quellen anzeigen (' + fmt(n) + ')' : 'Keine Quellenliste';
-        if (n > 0 && drillHandle && window.DrillDown) {
+        if (n > 0 && typeof openDrill === 'function') {
             ddBtn.addEventListener('click', function() {
-                window.DrillDown.open(drillHandle, r.drillDownLabel || 'Quellen', dd);
+                openDrill(r.drillDownLabel || 'Quellen', dd);
             });
         }
         row.appendChild(ddBtn);
@@ -576,7 +580,7 @@
             return;
         }
         renderComposer(opts.state, opts.dataMap, opts.composerRoot, opts.onChange);
-        renderResult(opts.state, opts.dataMap, opts.resultPanel, opts.drillHandle);
+        renderResult(opts.state, opts.dataMap, opts.resultPanel, opts.openDrill);
     }
 
     window.AnalysisComposer = {

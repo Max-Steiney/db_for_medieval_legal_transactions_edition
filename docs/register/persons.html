@@ -9,16 +9,16 @@
     <title>Personen, Datenbank</title>
     <link rel="preload" as="font" type="font/woff2" crossorigin
           href="../static/fonts/inter-400-latin.woff2">
-    <link rel="stylesheet" href="../static/css/fonts.css?v=20260511141040">
-    <link rel="stylesheet" href="../static/css/tokens.css?v=20260511141040">
-    <link rel="stylesheet" href="../static/css/base.css?v=20260511141040">
-    <link rel="stylesheet" href="../static/css/components.css?v=20260511141040">
-    <link rel="stylesheet" href="../static/css/responsive.css?v=20260511141040">
-    <link rel="stylesheet" href="../static/css/print.css?v=20260511141040">
-    <link rel="stylesheet" href="../static/css/tip.css?v=20260511141040">
+    <link rel="stylesheet" href="../static/css/fonts.css?v=20260511142709">
+    <link rel="stylesheet" href="../static/css/tokens.css?v=20260511142709">
+    <link rel="stylesheet" href="../static/css/base.css?v=20260511142709">
+    <link rel="stylesheet" href="../static/css/components.css?v=20260511142709">
+    <link rel="stylesheet" href="../static/css/responsive.css?v=20260511142709">
+    <link rel="stylesheet" href="../static/css/print.css?v=20260511142709">
+    <link rel="stylesheet" href="../static/css/tip.css?v=20260511142709">
     
-<link rel="stylesheet" href="../static/css/index.css?v=20260511141040">
-<link rel="stylesheet" href="../static/css/register.css?v=20260511141040">
+<link rel="stylesheet" href="../static/css/index.css?v=20260511142709">
+<link rel="stylesheet" href="../static/css/register.css?v=20260511142709">
 
 </head>
 <body data-root-path=".."
@@ -32,7 +32,7 @@
                 <span class="nav-brand-text">Stadt und Gemeinschaft Wien</span>
             </a>
             <span class="nav-badge">Prototyp</span>
-            <button class="nav-hamburger" id="nav-hamburger" aria-label="Menü öffnen" aria-expanded="false">
+            <button type="button" class="nav-hamburger" id="nav-hamburger" aria-label="Menü öffnen" aria-expanded="false">
                 <span></span><span></span><span></span>
             </button>
             
@@ -42,7 +42,7 @@
 <a class="nav-item" href="../documents.html">Quellen</a>
 
 <div class="nav-dropdown">
-    <button class="nav-item nav-dropdown-trigger" aria-expanded="false" aria-haspopup="true">Register <span class="nav-dropdown-arrow">&#x25BE;</span></button>
+    <button type="button" class="nav-item nav-dropdown-trigger" aria-expanded="false" aria-haspopup="true">Register <span class="nav-dropdown-arrow">&#x25BE;</span></button>
     <div class="nav-dropdown-menu">
         
         <a href="../register/persons.html">Personen</a>
@@ -53,7 +53,7 @@
 </div>
 
 <div class="nav-dropdown">
-    <button class="nav-item nav-dropdown-trigger" aria-expanded="false" aria-haspopup="true">Analyse <span class="nav-dropdown-arrow">&#x25BE;</span></button>
+    <button type="button" class="nav-item nav-dropdown-trigger" aria-expanded="false" aria-haspopup="true">Analyse <span class="nav-dropdown-arrow">&#x25BE;</span></button>
     <div class="nav-dropdown-menu">
         
         <a href="../analysis/auswertungen.html">Auswertungen</a>
@@ -64,7 +64,7 @@
 </div>
 
 <div class="nav-dropdown">
-    <button class="nav-item nav-dropdown-trigger" aria-expanded="false" aria-haspopup="true">Exploration <span class="nav-dropdown-arrow">&#x25BE;</span></button>
+    <button type="button" class="nav-item nav-dropdown-trigger" aria-expanded="false" aria-haspopup="true">Exploration <span class="nav-dropdown-arrow">&#x25BE;</span></button>
     <div class="nav-dropdown-menu">
         
         <a href="../exploration/zeitstrom.html">Zeitstrom</a>
@@ -75,7 +75,7 @@
 </div>
 
 <div class="nav-dropdown">
-    <button class="nav-item nav-dropdown-trigger" aria-expanded="false" aria-haspopup="true">Projekt <span class="nav-dropdown-arrow">&#x25BE;</span></button>
+    <button type="button" class="nav-item nav-dropdown-trigger" aria-expanded="false" aria-haspopup="true">Projekt <span class="nav-dropdown-arrow">&#x25BE;</span></button>
     <div class="nav-dropdown-menu">
         
         <a href="../project/about.html">Über das Projekt</a>
@@ -334,12 +334,12 @@
                 
 <div class="collection-chips collection-chips--stack" id="filter-corpora">
     
-    <button class="chip" data-corpus="QGW/Vienna_1177-1414_ready">
+    <button type="button" class="chip" data-corpus="QGW/Vienna_1177-1414_ready">
         <span class="chip-label">QGW II/1 (1177–1414)</span>
         <span class="chip-count" data-corpus-total="5647">5647</span>
     </button>
     
-    <button class="chip" data-corpus="Stadtbuecher/Band_1_1395-1400_ready">
+    <button type="button" class="chip" data-corpus="Stadtbuecher/Band_1_1395-1400_ready">
         <span class="chip-label">Stadtbücher Bd. 1 (1395–1400)</span>
         <span class="chip-count" data-corpus-total="3143">3143</span>
     </button>
@@ -398,7 +398,7 @@
     </svg>
     <label for="search-input" class="sr-only">Name, ID, Jahr ...</label>
     <input type="text" id="search-input" placeholder="Name, ID, Jahr ..." autocomplete="off" spellcheck="false">
-    <button class="search-clear hidden" id="search-clear" aria-label="Suche löschen">&times;</button>
+    <button type="button" class="search-clear hidden" id="search-clear" aria-label="Suche löschen">&times;</button>
 </div>
 
             </section>
@@ -489,59 +489,59 @@
             <!-- Alphabet quick-nav -->
             <nav class="alphabet-bar" aria-label="Alphabetische Navigation">
                 
-                <button class="alpha-btn" data-letter="A">A</button>
+                <button type="button" class="alpha-btn" data-letter="A">A</button>
                 
-                <button class="alpha-btn" data-letter="B">B</button>
+                <button type="button" class="alpha-btn" data-letter="B">B</button>
                 
-                <button class="alpha-btn" data-letter="C">C</button>
+                <button type="button" class="alpha-btn" data-letter="C">C</button>
                 
-                <button class="alpha-btn" data-letter="D">D</button>
+                <button type="button" class="alpha-btn" data-letter="D">D</button>
                 
-                <button class="alpha-btn" data-letter="E">E</button>
+                <button type="button" class="alpha-btn" data-letter="E">E</button>
                 
-                <button class="alpha-btn" data-letter="F">F</button>
+                <button type="button" class="alpha-btn" data-letter="F">F</button>
                 
-                <button class="alpha-btn" data-letter="G">G</button>
+                <button type="button" class="alpha-btn" data-letter="G">G</button>
                 
-                <button class="alpha-btn" data-letter="H">H</button>
+                <button type="button" class="alpha-btn" data-letter="H">H</button>
                 
-                <button class="alpha-btn" data-letter="I">I</button>
+                <button type="button" class="alpha-btn" data-letter="I">I</button>
                 
-                <button class="alpha-btn" data-letter="J">J</button>
+                <button type="button" class="alpha-btn" data-letter="J">J</button>
                 
-                <button class="alpha-btn" data-letter="K">K</button>
+                <button type="button" class="alpha-btn" data-letter="K">K</button>
                 
-                <button class="alpha-btn" data-letter="L">L</button>
+                <button type="button" class="alpha-btn" data-letter="L">L</button>
                 
-                <button class="alpha-btn" data-letter="M">M</button>
+                <button type="button" class="alpha-btn" data-letter="M">M</button>
                 
-                <button class="alpha-btn" data-letter="N">N</button>
+                <button type="button" class="alpha-btn" data-letter="N">N</button>
                 
-                <button class="alpha-btn" data-letter="O">O</button>
+                <button type="button" class="alpha-btn" data-letter="O">O</button>
                 
-                <button class="alpha-btn" data-letter="P">P</button>
+                <button type="button" class="alpha-btn" data-letter="P">P</button>
                 
-                <button class="alpha-btn" data-letter="Q">Q</button>
+                <button type="button" class="alpha-btn" data-letter="Q">Q</button>
                 
-                <button class="alpha-btn" data-letter="R">R</button>
+                <button type="button" class="alpha-btn" data-letter="R">R</button>
                 
-                <button class="alpha-btn" data-letter="S">S</button>
+                <button type="button" class="alpha-btn" data-letter="S">S</button>
                 
-                <button class="alpha-btn" data-letter="T">T</button>
+                <button type="button" class="alpha-btn" data-letter="T">T</button>
                 
-                <button class="alpha-btn" data-letter="U">U</button>
+                <button type="button" class="alpha-btn" data-letter="U">U</button>
                 
-                <button class="alpha-btn" data-letter="V">V</button>
+                <button type="button" class="alpha-btn" data-letter="V">V</button>
                 
-                <button class="alpha-btn" data-letter="W">W</button>
+                <button type="button" class="alpha-btn" data-letter="W">W</button>
                 
-                <button class="alpha-btn" data-letter="X">X</button>
+                <button type="button" class="alpha-btn" data-letter="X">X</button>
                 
-                <button class="alpha-btn" data-letter="Y">Y</button>
+                <button type="button" class="alpha-btn" data-letter="Y">Y</button>
                 
-                <button class="alpha-btn" data-letter="Z">Z</button>
+                <button type="button" class="alpha-btn" data-letter="Z">Z</button>
                 
-                <button class="alpha-btn alpha-btn-all active" data-letter="">Alle</button>
+                <button type="button" class="alpha-btn alpha-btn-all active" data-letter="">Alle</button>
             </nav>
 
             <div class="main-toolbar">
@@ -700,13 +700,13 @@
         </div>
     </footer>
 
-    <script src="../static/js/core.js?v=20260511141040"></script>
-    <script src="../static/js/tip.js?v=20260511141040"></script>
-    <script src="../static/js/hint.js?v=20260511141040"></script>
-    <script src="../static/js/basket.js?v=20260511141040"></script>
+    <script src="../static/js/core.js?v=20260511142709"></script>
+    <script src="../static/js/tip.js?v=20260511142709"></script>
+    <script src="../static/js/hint.js?v=20260511142709"></script>
+    <script src="../static/js/basket.js?v=20260511142709"></script>
     
-<script src="../static/js/table-infra.js?v=20260511141040"></script>
-<script src="../static/js/register.js?v=20260511141040"></script>
+<script src="../static/js/table-infra.js?v=20260511142709"></script>
+<script src="../static/js/register.js?v=20260511142709"></script>
 
 </body>
 </html>
