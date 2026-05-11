@@ -7,7 +7,7 @@ status: active
 language: de
 version: 0.1
 created: 2026-02-19
-updated: 2026-05-09
+updated: 2026-05-11
 authors: [Christopher Pollin]
 generated-with: Claude Code
 method:
@@ -41,11 +41,11 @@ Die Wahl von Python mit lxml folgt aus zwei Gründen. Die Werkzeugkette kommt oh
 
 ## Datenschichten und Aggregator
 
-Zwischen TEI-Quellen und Frontend-Views liegen drei aufeinander aufbauende Schichten. Die unterste Schicht sind die Pipeline-CSVs (Schwester-Repo), die die TEI-Auszeichnung in tabellarische Form bringen. Darüber schreibt der Aggregator im Edition-Repo (`frontend/aggregator.py`) konsolidierte JSON-Dateien nach `docs/data/`. Die oberste Schicht sind die View-spezifischen JSONs, die das Frontend zur Renderzeit zusammenstellt.
+Zwischen TEI-Quellen und Frontend-Views liegen drei aufeinander aufbauende Schichten. Die unterste Schicht sind die Pipeline-CSVs (Schwester-Repo), die die TEI-Auszeichnung in tabellarische Form bringen. Darüber schreibt der Aggregator im Edition-Repo (Paket `frontend/aggregator/`) konsolidierte JSON-Dateien nach `docs/data/` und rendert serverseitig die Profilseiten unter `docs/register/persons/` und `docs/register/orgs/`. Die oberste Schicht sind die View-spezifischen JSONs, die das Frontend zur Renderzeit zusammenstellt.
 
-Der Aggregator ist die Stelle, an der Frontend-spezifische Schnitte entstehen, die nicht in die Pipeline gehören. Er joined Pipeline-CSVs (filenames, persons, persons_in_sources, events_in_sources) zu einem pro-Quelle-Record mit Counts, Geschlechter-Aufschlüsselung, Datumsnormalisierung und Annotations-Tiefe (`docs_aggregate.json`). Aus diesem Aggregat baut der Build den client-seitigen Suchindex `search.json`.
+Der Aggregator ist die Stelle, an der Frontend-spezifische Schnitte entstehen, die nicht in die Pipeline gehören. Das Paket ist in Submodule mit klarer fachlicher Verantwortung gegliedert: `docs` joined Pipeline-CSVs (filenames, persons, persons_in_sources, events_in_sources) zu einem pro-Quelle-Record mit Counts, Geschlechter-Aufschlüsselung, Datumsnormalisierung und Annotations-Tiefe (`docs_aggregate.json`) und liefert nebenbei den Forward-Index `docs_entities.json` (Quelle → annotierte Personen- und Organisations-IDs); `roles`, `relations` und `transactions` schreiben die thematischen Aggregat-JSONs für Auswertungs- und Analyse-Sub-Seiten; `timeline` schreibt das Quellen-Zeitraster; `person_profiles` und `org_profiles` aggregieren pro Entität Stammdaten, Rollen, Beziehungen und Quellenverweise und rendern direkt zu HTML-Profilen.
 
-Der Vorteil dieser Trennung ist Wiederverwendbarkeit. Mehrere Frontend-Views (Tabelle, Detail, Exploration) lesen denselben Aggregat-Datensatz, statt jede ihre eigene TEI-Logik mitzuführen. Begründung und Reihenfolge der Joins sind in [[data#Aggregat-Schicht]] festgehalten.
+Der Vorteil dieser Trennung ist Wiederverwendbarkeit. Mehrere Frontend-Views (Tabelle, Detail, Profile, Auswertungen, Exploration) lesen denselben Aggregat-Datensatz, statt jede ihre eigene TEI-Logik mitzuführen. Begründung und Reihenfolge der Joins sind in [[data#Aggregat-Schicht]] festgehalten.
 
 Eine TEI-Änderung wirkt erst, wenn alle drei Schichten neu laufen: erst Pipeline (`python -m pipeline transform` im Schwester-Repo), dann Aggregator + Build (`python -m frontend build` hier).
 
@@ -125,11 +125,13 @@ Cross-Page-Sprünge transferieren das gemeinsame Subset der Filter (Zeitraum, Ge
 
 ## Datenkorb als clientseitige Persistenz
 
-Eine Sammler-Schicht über alle Quellen-Listen ermöglicht es Forschenden, ein Forschungs-Korpus über Sitzungen hinweg zusammenzustellen. Der Speicher ist `localStorage` mit einem versionierten Schlüssel; der Zustand wird über parallele Browser-Tabs synchron gehalten via `storage`-Event und ein internes Custom-Event für In-Tab-Updates.
+Eine Sammler-Schicht über alle Listen, Drill-downs, Register und Profilseiten ermöglicht es Forschenden, ein Forschungs-Korpus aus Quellen, Personen und Organisationen über Sitzungen hinweg zusammenzustellen. Der Speicher ist `localStorage` mit einem versionierten Schlüssel; der Zustand wird über parallele Browser-Tabs synchron gehalten via `storage`-Event und ein internes Custom-Event für In-Tab-Updates.
 
 Die Architektur-Entscheidung gegen Server-Persistenz folgt aus dem Prototyp-Charakter (siehe oben) und aus [[decisions#Datenkorb als clientseitige Sammlung]]. Eine Account-basierte Persistenz wäre ein anderer Stack mit Auth, DSGVO-Implikationen und laufenden Speicherkosten — ohne erkennbaren Mehrwert für die jetzt bedienten Forschungsszenarien. Der Bridge-Pfad in externe Werkzeuge (Zotero, BibTeX-Konverter, Excel) läuft über CSV-Export.
 
-Die Komponenten-Verteilung: `basket.js` lebt auf jeder Seite (geladen über `base.html`), liefert die State-API und einen kleinen Render-Helper für den „+"-Knopf. Die Listen-Renderer (Quellen-Tabelle, Drill-Overlay, Brush-Drill) injizieren den Knopf in ihre Zeilen-Markup. Das Nav trägt das Korb-Icon mit Live-Badge. `korb.html` ist eine eigene Seite mit Liste, Remove-, Clear- und CSV-Export-Aktionen.
+Der Eintrag ist über den zusammengesetzten Schlüssel `type:id` identifiziert, mit den drei Typen `source`, `person`, `org`. Jeder Eintrag trägt ein `gathered`-Flag (vom Nutzer aktiv per +-Knopf in den Korb gelegt) und eine `src`-Liste (Quellen-IDs, aus denen er als abgeleiteter Eintrag entstanden ist). Sammelt eine Forscherin eine Quelle, lädt der Korb beim ersten Bedarf den Forward-Index `docs_entities.json` (Quelle → annotierte Personen- und Organisations-IDs) und legt die zugehörigen Entitäten als abgeleitete Einträge ohne `gathered`-Flag in den Korb; ein +-Klick auf einen abgeleiteten Eintrag stuft ihn durch Setzen von `gathered=true` zur eigenständigen Sammlung hoch, sodass er nach Entfernen der Quelle erhalten bleibt. Entfernen einer Quelle räumt ihre Spur aus allen `src`-Listen; abgeleitete Einträge ohne verbleibende Quelle und ohne `gathered`-Flag fallen mit weg.
+
+Die Komponenten-Verteilung: `basket.js` lebt auf jeder Seite (geladen über `base.html`), liefert die State-API, die Render-Helfer für den „+"-Knopf in den drei Varianten (absent, gathered, derived) und die Ableitungs-Mechanik. `basket-mount.js` hydratisiert statisch eingebettete +-Knopf-Platzhalter auf Detail- und Profilseiten aus ihren `data-basket-*`-Attributen. `basket-page.js` rendert die Korb-Seite mit drei Sektionen (Quellen, Personen, Organisationen), je eigener Tabelle, eigenem CSV-Export (mit Trennung zwischen „nur gesammelte" und „auch abgeleitete") und eigener Clear-Aktion. Das Nav trägt das Korb-Icon mit Live-Badge und einer Aufschlüsselung im Hover-Tooltip.
 
 ## Siehe auch
 

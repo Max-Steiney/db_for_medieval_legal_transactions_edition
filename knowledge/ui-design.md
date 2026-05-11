@@ -7,7 +7,7 @@ status: active
 language: de
 version: 0.1
 created: 2026-02-19
-updated: 2026-05-09
+updated: 2026-05-11
 authors: [Christopher Pollin]
 generated-with: Claude Code
 method:
@@ -39,7 +39,7 @@ Siehe [[requirements#Informationsdichte vor reduzierter Ästhetik]], [[decisions
 
 ## Navigation
 
-Die Hauptnavigation gliedert sich in vier Bereiche; ein fünfter (Exploration) ist als Dropdown vorgesehen, sobald die ersten visuellen Views fertig sind.
+Die Hauptnavigation gliedert sich in fünf Bereiche.
 
 ### Quellen
 
@@ -47,20 +47,25 @@ Einstieg zur Volltextsuche und zum Durchsuchen der [[glossar#Quelle|Quellen]]. D
 
 ### Register
 
-Dropdown mit Personen, Organisationen und Orten. Konsolidierte Identitäten aus den drei Registern werden hier gelistet, jeweils mit Rückverweisen in die zugehörigen Quellen. Aktuell freigegeben: Personenregister.
+Dropdown mit Personen und Organisationen. Beide Register sind freigegeben; jede individuelle Entität trägt neben dem Listen-Eintrag eine eigene Detail-Profilseite mit Stammdaten, Beziehungen und Quellen-Tabelle. Orts-Daten leben ausschließlich als Inline-Annotation im Quellen-Volltext, ohne eigenes Register.
 
 ### Analyse
 
 Dropdown mit zwei Sub-Seiten unter `/analysis/`:
 
-- **Auswertungen** (`auswertungen.html`) zeigt vorberechnete statistische Verteilungen als Donut, Bar-Chart und Tabelle mit Mini-Bars. Filter sind Zeitraum und Geschlecht; eine Zähleinheit-Umschaltung wechselt zwischen Nennungen und Individuellen Personen. Vier Sektionen: Funktionsrollen, Beziehungstypen, Transaktionstypen, Bezeichnungen.
-- **Abfragen** (`index.html`) ist der klassische Abfragemodus mit vorgefertigten Fragetypen über typisierte Slots. Bedient gezielte, wiederkehrende Kombinationen aus Bestand, [[glossar#Rolle]], Geschlecht und Nennungsart.
+- **Auswertungen** (`auswertungen.html`) zeigt vorberechnete statistische Verteilungen als Donut, Bar-Chart und Tabelle mit Mini-Bars. Filter sind Zeitraum und Geschlecht; eine lokale Zähleinheit-Umschaltung in der Funktionsrollen-Sektion wechselt zwischen Nennungen und Individuellen Personen. Vier Sektionen: Funktionsrollen, Beziehungstypen, Transaktionstypen, Bezeichnungen.
+- **Abfragen** (`index.html`) bedient zwei Einstiegsmodi nebeneinander: eine kuratierte Frage-Galerie als oberste Ebene und einen Custom-Builder im aufklappbaren `<details>`. Konzept und Pivot-Begründung in [[analyse#4. Interface-Konzept: Frage-Galerie und Custom-Builder]] und [[decisions#Analyse-Seite mit Frage-Galerie und Custom-Builder]].
 
-Die beiden Sub-Seiten teilen sich Aggregate (`roles.json`/`relations.json`/`transactions.json`), unterscheiden sich aber im Interaktionsmodus: Auswertungen filter-getrieben, Abfragen template-getrieben.
+Die beiden Sub-Seiten teilen sich Aggregate (`roles.json`/`relations.json`/`transactions.json`), unterscheiden sich aber im Interaktionsmodus: Auswertungen filter-getrieben, Abfragen frage-getrieben.
 
-### Exploration (geplant)
+### Exploration
 
-Vorgesehen für visuell-interaktive Erkundung der Datenstruktur — Personen-Netzwerk, Karten, Timeline, Sankey-Diagramm. Aktuell nicht implementiert; siehe [[exploration]] für die Konzeption. Solange leer, erscheint der Eintrag in der Navigation nicht.
+Dropdown mit zwei Sub-Seiten unter `/exploration/`:
+
+- **Zeitstrom** (`zeitstrom.html`) als gestapelter Bar-Chart der Quellendichte pro Jahrzehnt mit umschaltbarer Stapel-Achse, Brush-zu-Drill-down und isolierbarer Stack-Kategorie.
+- **Personennetzwerk** (`personennetzwerk.html`) als Ego-Layout um eine Person mit Klick-Hopping durchs Beziehungsnetz.
+
+Ein Sankey-Diagramm zu Transaktionsflüssen ist konzipiert, aber noch nicht umgesetzt. Detailkonzept in [[exploration]].
 
 ### Projekt
 
@@ -82,35 +87,31 @@ Die Oberfläche folgt der Sequenz „Überblick zuerst, dann zoomen und filtern,
 
 ### Provenienz-Tip und Glossar-Tip
 
-Zwei verwandte, aber funktional getrennte Tooltip-Komponenten teilen sich die Popover-Mechanik, unterscheiden sich aber im Trigger und im Inhalt.
+Zwei verwandte, aber funktional getrennte Tooltip-Komponenten teilen sich die Popover-Mechanik in `tip.js` (Edge-Detection, Hover, Fokus, Klick, Escape) und unterscheiden sich in Trigger und Inhalt. Die visuellen Varianten sind als CSS-Klassen `tip-popover--data` (Provenienz) und `tip-popover--glossary` (Glossar) ausgeprägt.
 
 Der **Provenienz-Tip** sitzt an einem dargestellten Zahlenwert (Trigger ist die Zahl, gepunktet unterstrichen) und nennt den zugrunde liegenden Bestand, die angewandte Zähloperation, den [[glossar#Menschen-Event]]-Status und die aktiven Filter. Er macht den Unterschied zwischen oberflächlicher Ansicht und verwendbarer Zahl aufhebbar.
 
 Der **Glossar-Tip** sitzt neben einem Fachbegriff (Trigger ist ein kompaktes `i`-Icon) und öffnet die Begriffsdefinition mit einem Verweis ins Glossar. Er bedient die Erstbegegnung mit einem projektspezifischen Begriff am Ort des Auftretens.
 
-Beide Komponenten sind über dasselbe Interaktionsmuster abrufbar (Hover, Fokus, Klick). Siehe [[requirements#Datenrobustheit und Provenienz]] und [[glossar]].
+Daneben gibt es einen leichteren Hover-Hint (`data-hint`-Attribut) für UI-Elemente, deren Bedeutung sich aus ihrem Kontext nicht selbst erklärt, ohne dass sie eigene Provenienz oder Begriffsdefinition rechtfertigen würden (Aktions-Buttons, Statusanzeigen, abgekürzte Spaltenköpfe). Siehe [[requirements#Datenrobustheit und Provenienz]] und [[glossar]].
 
-### Zählebenen-Umschalter
+### Zählebenen-Umschalter (Phase 2, nicht umgesetzt)
 
-Ein globaler Umschalter wechselt zwischen [[glossar#Gesamtnennung]] und [[glossar#Individuelle Person]]. Die Wahl propagiert konsistent durch alle abhängigen Darstellungen.
+Konzeptionell: ein globaler Umschalter wechselt zwischen [[glossar#Gesamtnennung]] und [[glossar#Individuelle Person]] und propagiert die Wahl konsistent durch alle abhängigen Darstellungen, mit Anzeige des aktuellen Modus im Provenienz-Tooltip jeder Zahl.
 
-Der aktuelle Zustand ist in jeder Zahl-Darstellung über das Provenienz-Tooltip einsehbar.
+Status: nicht als globale Komponente umgesetzt. Lokal wirkt eine Zähleinheit-Umschaltung in der Funktionsrollen-Sektion der Auswertungs-Seite. Die universelle Propagierung ist als Phase-2-Aufgabe im [[journal]] vermerkt. Siehe [[requirements#Umschaltbarkeit der Zählebenen]].
 
-Siehe [[requirements#Umschaltbarkeit der Zählebenen]].
+### Bestandsfilter (Phase 2, nicht umgesetzt)
 
-### Bestandsfilter
+Konzeptionell: eine universelle Filterkomponente, die in allen Ansichten Mehrfachauswahl über [[glossar#Quellenkorpus|Quellenkorpora]] erlaubt und bei Navigation erhalten bleibt.
 
-Eine universelle Filterkomponente ist in allen Ansichten präsent. Sie erlaubt Mehrfachauswahl über [[glossar#Quellenkorpus|Quellenkorpora]] und bleibt bei Navigation erhalten.
+Status: derzeit wirkt der Filter nur auf der Quellen-Übersicht. Eine universelle Propagierung auf Auswertungen, Zeitstrom, Personennetzwerk und Register ist Phase-2-Aufgabe und setzt eine korpusbasierte Unterschlüsselung der Aggregat-JSONs voraus. Siehe [[requirements#Bestandsfilterung als universelle Dimension]].
 
-Siehe [[requirements#Bestandsfilterung als universelle Dimension]].
+### Menschen-Events-Toggle (Phase 2, nicht umgesetzt)
 
-### Menschen-Events-Toggle
+Konzeptionell: ein aktiv zu setzender Schalter entscheidet über die Einbeziehung oder den Ausschluss von [[glossar#Menschen-Event|Menschen-Events]] in abhängigen Zählungen, mit Glossar-Verweis am Toggle und Status-Anzeige im Provenienz-Tooltip jeder Zahl.
 
-Ein aktiv zu setzender Schalter entscheidet über die Einbeziehung oder den Ausschluss von [[glossar#Menschen-Event|Menschen-Events]]. Der Status ist im Provenienz-Tooltip jeder abhängigen Zahl sichtbar.
-
-Neben dem Toggle steht ein Verweis auf die Glossar-Definition, damit Nutzerinnen die Bedeutung an Ort und Stelle nachschlagen können.
-
-Siehe [[requirements#Menschen-Events-Behandlung]].
+Status: nicht umgesetzt. Die Default-Variante schließt Personen-Annotationen in verschachtelten Events aus der Nennungszählung aus, siehe [[decisions#Nennungen zählen nur Personen-Annotationen außerhalb mentioned Events]]. Eine umschaltbare Anzeige für die inklusive Variante ist Phase-2-Aufgabe. Siehe [[requirements#Menschen-Events-Behandlung]].
 
 ### Zeitfilter
 
@@ -148,7 +149,11 @@ Begründung in [[decisions#Cross-Page-Sprung mit Filter-Übernahme]].
 
 ### Datenkorb
 
-Forschende sammeln Quellen über Sitzungen hinweg in einem clientseitigen Datenkorb. Neben jedem Quellen-Eintrag in den Listen (Quellen-Tabelle, Drill-Overlay, Brush-Drill) steht ein kleiner „+"-Knopf, der die Quelle in den Korb legt; ein zweiter Klick entfernt sie wieder. Das Nav führt ein Korb-Icon mit Live-Badge (Anzahl gesammelter Einträge), klickbar zur Korb-Seite (`/korb.html`). Dort liegt die gesammelte Liste mit Datum, Korpus, Detail-Link und Remove-Aktion; ein Knopf exportiert die Auswahl als CSV (UTF-8 mit BOM, Excel-kompatibel), ein anderer leert den Korb.
+Forschende sammeln Quellen, Personen und Organisationen über Sitzungen hinweg in einem clientseitigen Datenkorb. Neben jedem Eintrag in den Listen (Quellen-Tabelle, Personen- und Organisations-Register, Drill-Overlay, Brush-Drill, Personennetzwerk-Detail-Tabelle) und auf jeder Detail- und Profilseite steht ein kleiner „+"-Knopf, der den Eintrag in den Korb legt. Das Nav führt ein Korb-Icon mit Live-Badge (Gesamt-Anzahl gesammelter Einträge), klickbar zur Korb-Seite; ein Hover-Tooltip am Icon liefert die Aufschlüsselung nach Typ (Quellen, Personen, Organisationen) plus die Zahl der abgeleiteten Einträge.
+
+Der Korb unterscheidet zwei Zustände pro Eintrag. **Gesammelt** sind Einträge, die die Forscherin selbst per +-Klick hinzugefügt hat (Knopf zeigt „x", farbig). **Abgeleitet** sind Einträge, die als Konsequenz aus einer gesammelten Quelle automatisch in den Korb gespiegelt wurden — beim Sammeln einer Quelle werden ihre annotierten Personen und Organisationen über den Forward-Index `docs_entities.json` als abgeleitete Einträge in den Korb gelegt (Knopf zeigt „*", gestrichelter Rahmen). Ein +-Klick auf einen abgeleiteten Eintrag stuft ihn zur gesammelten Sammlung hoch, sodass er nach Entfernen der Quelle erhalten bleibt. Entfernen einer Quelle räumt ihre Spur aus den abgeleiteten Einträgen; was nicht hochgestuft wurde und keine zweite Quelle als Bezug hat, fällt mit weg.
+
+Die Korb-Seite (`/korb.html`) zeigt drei Tabellen untereinander: Quellen, Personen, Organisationen. Jede Tabelle hat ihre eigene Spaltenstruktur (Datum, Korpus und Regest für Quellen; Name, Geschlecht, aktive Jahre und „aus Quelle" für Personen; Name, Typ und „aus Quelle" für Organisationen), eine eigene Remove-pro-Zeile-Aktion, eine eigene Clear-Aktion für den ganzen Typ und einen CSV-Export (UTF-8 mit BOM, Excel-kompatibel) mit Wahlmöglichkeit zwischen „nur gesammelte" und „auch abgeleitete". Abgeleitete Zeilen sind kursiv und gedimmt; ihre „aus Quelle"-Spalte verlinkt zurück auf die belegende Quelle, mit Hover-Tooltip über Datum und Regest-Auszug.
 
 Persistenz lebt in `localStorage` mit versioniertem Schlüssel; parallele Browser-Tabs synchronisieren sich automatisch via `storage`-Event. Begründung in [[decisions#Datenkorb als clientseitige Sammlung]].
 
@@ -158,7 +163,13 @@ Die Detailseite einer Quelle stellt edierten Text und Faksimile nebeneinander, s
 
 ### Register-Listenseite
 
-Personen- und Organisationsregister teilen sich ein einheitliches Listenseiten-Muster: Alphabet-Leiste, Suche, Filter (Geschlecht/Typ/Quellenanzahl), sortierbare Tabelle. Eine Zeile lässt sich aufklappen und zeigt alle verlinkten Quellen direkt darunter. Die Inline-Detail-Erweiterung vermeidet Seiten-Sprünge und hält den Filterkontext erhalten. Ein Ortsregister gibt es derzeit nicht; die Orts-Stammdaten sind noch nicht hinreichend konsolidiert.
+Personen- und Organisationsregister teilen sich ein einheitliches Listenseiten-Muster: Alphabet-Leiste, Suche, Filter (Geschlecht/Typ/Quellenanzahl), sortierbare Tabelle. Die Namens-Spalte verlinkt auf die Detail-Profilseite der Entität. Eine Zeile lässt sich zusätzlich aufklappen und zeigt alle belegenden Quellen inline, ohne den Filterkontext zu verlieren. Ein „+"-Knopf pro Zeile legt die Entität in den Datenkorb.
+
+### Entitäts-Profilseite
+
+Jede individuelle Person und jede individuelle Organisation trägt eine eigene Profilseite unter `register/persons/<pe__id>.html` bzw. `register/orgs/<org__id>.html`. Das Layout folgt dem Muster der Quellen-Detailseite, um Konsistenz zu wahren: eine Toolbar mit Breadcrumb und Meta-Strip (Geschlecht, aktive Jahre, Todesdatum, Quellen-Count, Wien-Wiki-Link bzw. Typ, Observanz, Hierarchie-Bezug für Organisationen), ein Header mit Name und optionaler Notiz, ein Beziehungs-Block (Verwandtschaft, Freundschaft, Vertretung, Beruf, Titelverweis), eine Quellen-Tabelle mit Rolle pro Quelle und Datenkorb-Knopf.
+
+Beziehungen sind bidirektional aufgelöst, wo es semantisch trägt: kin, friend und rep erscheinen im Profil beider Seiten mit umgekehrtem Bezug; occ und title-ref sind einseitig (das Gegenüber ist eine Organisation und erscheint als Verlinkung auf das Org-Profil). Jeder Beziehungseintrag verlinkt auf die belegende Quelle. Ein „+"-Knopf in der Toolbar legt die Entität selbst in den Datenkorb. Eine progressiv eingeblendete Quick-Filter-Funktion erlaubt das Eintippen eines Suchstrings über alle Tabellenzeilen der Seite hinweg.
 
 ## Layout-Grundsätze
 
@@ -182,9 +193,9 @@ Serifen-Typografie trägt lange Lese-Texte wie Regesten. Sans-Serif trägt UI-El
 
 ## Startseite als Zwei-Säulen-Einstieg
 
-Die Startseite führt die beiden methodischen Zugänge — Analyse und Exploration — als nebeneinanderstehende Säulen vor. Eyebrow-Labels in Sans-Caps markieren die Bereiche, ohne sie durch schwergewichtige Trennlinien gegeneinander abzugrenzen. Die Analyse-Säule hält die beiden vorhandenen Sub-Seiten (Auswertungen, Abfragen) als verlinkte Cards. Die Exploration-Säule trägt einen Coming-soon-Platzhalter mit den drei geplanten Visualisierungen (Personen-Netzwerk, Karten, Timeline) — solange die visuellen Views noch nicht implementiert sind, ist die Säule visuell zurückgenommen (gestrichelte Karte, gedämpfte Schrift, kein Klick).
+Die Startseite führt die beiden methodischen Zugänge — Analyse und Exploration — als nebeneinanderstehende Säulen vor. Eyebrow-Labels in Sans-Caps markieren die Bereiche, ohne sie durch schwergewichtige Trennlinien gegeneinander abzugrenzen. Die Analyse-Säule hält die beiden Sub-Seiten Auswertungen und Abfragen als verlinkte Cards; die Exploration-Säule hält den Zeitstrom und das Personennetzwerk und führt das geplante Sankey-Diagramm als gedämpften Coming-soon-Eintrag.
 
-Darüber liegen drei Entry-Cards (Quellen durchsuchen, Personenregister, Über das Projekt) mit Akzentfarben-Icons. Sie tragen den pragmatischen Alltag, während die Säulen darunter die beiden methodischen Zugänge verorten.
+Darüber liegen Entry-Cards (Quellen durchsuchen, Personenregister, Organisationsregister, Über das Projekt) mit Akzentfarben-Icons. Sie tragen den pragmatischen Alltag, während die Säulen darunter die beiden methodischen Zugänge verorten.
 
 ## Datenstand und Build-Datum
 

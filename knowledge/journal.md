@@ -7,7 +7,7 @@ status: active
 language: de
 version: 0.1
 created: 2026-02-19
-updated: 2026-05-09
+updated: 2026-05-11
 authors: [Christopher Pollin]
 generated-with: Claude Code
 method:
@@ -27,6 +27,52 @@ Was hier rein darf: Fortschritt der Wissensbasis, Entscheidungspfade, die in [[d
 Was nicht rein darf: Personennamen, Meeting-Protokolle, Projektmanagement-Stand, Quantitäten des Korpus.
 
 Einträge in umgekehrt chronologischer Reihenfolge, neueste oben.
+
+---
+
+## 2026-05-11 Datenkorb auf drei Typen erweitert mit Ableitungs-Mechanik
+
+Der Datenkorb sammelt jetzt nicht nur Quellen, sondern auch Personen und Organisationen. Drei Item-Typen mit kompaktem Schlüssel `type:id`, je eigener Tabelle auf der Korb-Seite (`/korb.html`), je eigener Remove- und Clear-Aktion, je eigenem CSV-Export.
+
+Architektur-Entscheidung **Ableitung als sichtbare Schicht**: legt eine Forscherin eine Quelle in den Korb, lädt `basket.js` lazy den Forward-Index `docs_entities.json` (1.9 MB, von `frontend/aggregator/docs::build_docs_entities` geschrieben — Quelle → annotierte Personen- und Organisations-IDs mit Stammdaten-Auszug) und legt die zugehörigen Entitäten als abgeleitete Einträge ohne `gathered`-Flag nach. Auf der Korb-Seite erscheinen sie kursiv und gedimmt, mit „aus Quelle"-Spalte zurück zur Quelle inklusive Datum- und Regest-Hover. Ein +-Klick auf einen abgeleiteten Eintrag setzt `gathered=true` und stuft ihn zur eigenständigen Sammlung hoch; er überlebt das Entfernen seiner Ursprungsquelle. Wer eine Quelle entfernt, räumt ihre Spur aus den `src`-Listen aller Einträge; abgeleitete ohne verbleibende Quelle fallen weg.
+
+Verworfene Alternative: ein einzelner Sammler-Typ mit Mischtabelle. Verworfen, weil die drei Typen unterschiedliche Spalten brauchen (Datum/Korpus/Regest vs. Geschlecht/aktive-Jahre vs. Typ/Hierarchie) und Forscherinnen Personen aus dem Korb für Prosopografie separat exportieren wollen, ohne Quellen-Zeilen in der CSV mit zu schleppen. Drei Tabellen, drei Exporte. Eintrag in [[decisions#Datenkorb als clientseitige Sammlung]] umgeschrieben auf den neuen Stand.
+
+Tooltip-Tickets am Rande: die abgeleitete-vs-gesammelt-Unterscheidung braucht Erklärung am Ort. Spalten-Header und Stat-Labels auf der Korb-Seite tragen `data-hint`-Tooltips; der Nav-Korb-Hover liefert die Aufschlüsselung nach Typ plus die Zahl der abgeleiteten Einträge.
+
+## 2026-05-11 Tooltip-System: drei klare Klassen mit gemeinsamer Mechanik
+
+Konsolidierung der bislang teilweise dupliziert wirkenden Tooltip-Implementierungen in eine einzige Mechanik (`tip.js`, `tip.css`) mit drei klaren visuellen Varianten: `tip-popover--data` für Provenienz an Zahlen (gepunktet unterstrichen, Inhalt: Bestand, Zähloperation, Filter), `tip-popover--glossary` für Begriffsdefinitionen (i-Icon, Inhalt: Definition plus Glossar-Verweis), und der leichte `data-hint`-Hover für UI-Elemente, deren Bedeutung sich aus dem Kontext nicht selbst erklärt (Aktions-Buttons, Statusanzeigen, Spaltenköpfe).
+
+Gemeinsame Mechanik: `data-prov-trigger`-Markup für Provenienz und Glossar, gemeinsamer Open/Close-Pfad mit Hover, Fokus, Klick und Escape; gemeinsame Edge-Detection (`clampToViewport`), die das Popover am Viewport-Rand horizontal kompensiert und den Pfeil über CSS-Variable `--prov-arrow-offset` am ursprünglichen Trigger ausgerichtet hält.
+
+Verworfen: eine vollständige Aufteilung in drei separate JS-Komponenten. Die gemeinsame Mechanik ist substantiell genug, dass eine Trennung Duplikation gebracht hätte; die Varianten leben sauber als CSS-Klassen und Trigger-Affordances.
+
+## 2026-05-11 Detail-Profile für Organisationen, Ortsregister vollständig entfernt
+
+Phase 1.5 / Phase 2 der Profilseiten-Idee aus 2026-05-02 ist abgeschlossen. Organisationen tragen jetzt eigene Detail-Profile unter `register/orgs/<org__id>.html`, gerendert vom Aggregator-Modul `org_profiles`. Datenmodell parallel zu den Personen-Profilen: Stammdaten (Name, Typ, Observanz, Hierarchie-Bezug), Beziehungen (occ rückwärts, kin in Org-zu-Org-Form selten), Quellen-Tabelle. Hierarchische Parent/Child-Relationen sind aus den Pipeline-CSVs aggregiert. Build: 607 Org-Profile, neben den 8.441 Personen-Profilen.
+
+`<rs type="org">` im Quellen-Volltext verlinkt jetzt direkt aufs Org-Profil, nicht mehr nur ins Register. Damit ist die Sackgasse für Organisationen geschlossen, analog zur Personen-Lösung aus 2026-05-02.
+
+Im selben Zug das **Ortsregister entfernt**. Es war ohnehin nie freigegeben; der Code-Pfad für Ort-Detail-Seiten (`place_profiles.py`, `place.html`-Template, `docs/register/places/`) hatte sich aus einer früheren Iteration angesammelt. Begründung der Streichung: Orts-Aussagen liegen außerhalb des Forschungsfokus der Datenbank, ein eigenes Register würde Bearbeitungstiefe vortäuschen, die die Daten nicht hergeben. `<rs type="place">` bleibt als Inline-Span im Volltext mit Tooltip, ohne Sprungziel. Eintrag in [[decisions#Register-Freigabe]] umgeschrieben, Wiederaufnahme-Klausel gestrichen.
+
+## 2026-05-11 Aggregator-Rename und englische Code-Kommentierung
+
+Drei kleine, aber durchgreifende Refactors am Aggregator-Paket. **Aggregator-Rename**: die früheren `epic_a`, `epic_b`, `epic_c`-Module — Codenamen aus einer Sprint-Logik — werden zu `roles`, `relations`, `transactions` umbenannt. Die neuen Namen entsprechen den fachlichen Domänen, die die Module bedienen, und sind für Außenstehende sofort verständlich. Alle internen Imports, Tests und Build-Referenzen sind durchgezogen.
+
+**Englische Code-Kommentierung**: Python- und JS-Code in `frontend/` durchgehend auf englische Inline-Kommentare und Docstrings gezogen. Inhaltliche Wissensdokumentation bleibt deutsch (knowledge/, content/, UI-Labels) — Code-Sprache und Inhalts-Sprache sind getrennt, die englische Konvention im Code folgt dem üblichen DH-Standard und erleichtert die Mitarbeit für nicht-deutschsprachige Tools und Reviewerinnen.
+
+**Wissenskorb-Symbol englisch**: das interne Identifier-Symbol `Wissenskorb` (deutsch) für den Korb-Client wird zu `KnowledgeBasket` englischisiert. UI-Label bleibt deutsch („Datenkorb"). Konsistent zur Code-Kommentierungs-Regel.
+
+## 2026-05-11 Top-Nav aus einer Quelle
+
+Die Hauptnavigation lebt jetzt vollständig in `base.html`, ohne Duplikate in einzelnen Seiten-Templates. Bisher waren auf einigen Sub-Seiten Nav-Fragmente angepasst worden, was zu kleinen Inkonsistenzen führte (eine Seite zeigte Exploration mit zwei, eine andere mit drei Einträgen). Die Vereinheitlichung bringt eine Single Source of Truth; eine neue Sub-Seite oder ein neuer Bereich braucht jetzt nur einen Eintrag im `base.html`-Block.
+
+Begleitend: Footer auf einheitliche Struktur gezogen, Startseite kosmetisch entrümpelt (kein toter „dritter geplanter Visualisierung"-Platzhalter mehr), `scope`-Attribute in den Tabellen-Headers für Screenreader-Konformität.
+
+## 2026-05-11 Begriff Factoid aus dem Frontend entfernt
+
+Das interne Datenmodell der Pipeline kennt den Begriff *Factoid* (Person × Rolle × Quelle als atomare Aussage). Im UI war er teilweise sichtbar, vor allem in Filter-Beschriftungen und Tooltips. Der Begriff ist außerhalb des DH-Prosopografie-Kontexts wenig etabliert und kollidierte mit der ohnehin schon dichten Begriffsfamilie (Nennung, Gesamtnennung, Individuelle Person, Event). Im Frontend ist er konsequent durch die fachlich passende kontextspezifische Formulierung ersetzt — die internen CSV- und Datenmodell-Namen bleiben unangetastet.
 
 ---
 

@@ -7,7 +7,7 @@ status: active
 language: de
 version: 0.1
 created: 2026-02-19
-updated: 2026-05-09
+updated: 2026-05-11
 authors: [Christopher Pollin]
 generated-with: Claude Code
 method:
@@ -39,13 +39,33 @@ Getroffene Leitentscheidungen mit Begründung. Zeitlos formuliert. Pro Eintrag E
 
 ## Datenkorb als clientseitige Sammlung
 
-**Entscheidung.** Forschende sammeln Quellen über Sitzungen hinweg in einem clientseitigen Datenkorb (localStorage, Schlüssel `sugw-basket-v1`). „+"-Knöpfe stehen neben jedem Quellen-Eintrag in den Listen (Quellen-Tabelle, Auswertungs-Drill, Zeitstrom-Drill); ein Korb-Icon im Nav zeigt die Anzahl; eine eigene Korb-Seite (`/korb.html`) listet die Sammlung mit Remove- und CSV-Export-Aktion.
+**Entscheidung.** Forschende sammeln Quellen, Personen und Organisationen über Sitzungen hinweg in einem clientseitigen Datenkorb (localStorage, Schlüssel `sugw-basket-v1`). „+"-Knöpfe stehen neben jedem Eintrag in den Listen (Quellen-Tabelle, Personen- und Organisations-Register, Auswertungs-Drill, Zeitstrom-Drill, Personennetzwerk-Detail-Tabelle) und auf jeder Detail- und Profilseite; ein Korb-Icon im Nav zeigt die Aufschlüsselung; eine eigene Korb-Seite (`/korb.html`) listet die Sammlung in drei Sektionen mit eigener Remove- und CSV-Export-Aktion pro Typ.
 
-**Begründung.** Die identifizierten Forschungspfade (siehe [[exploration]] und [[analyse]]) springen häufig zwischen Übersicht und Detail. Eine sammelnde Schicht über mehreren Seiten erlaubt es, ein Forschungs-Korpus zusammenzustellen, ohne den Browser-Tab-Wildwuchs einer manuellen Bookmark-Strategie. Cross-Tab-Sync via `storage`-Event hält parallel offene Tabs konsistent.
+**Begründung.** Die identifizierten Forschungspfade (siehe [[exploration]] und [[analyse]]) springen häufig zwischen Übersicht, Aggregat, Quelle, Person, Organisation. Eine sammelnde Schicht über mehreren Seiten und über drei Item-Typen erlaubt es, ein Forschungs-Korpus zusammenzustellen, ohne den Browser-Tab-Wildwuchs einer manuellen Bookmark-Strategie. Cross-Tab-Sync via `storage`-Event hält parallel offene Tabs konsistent.
 
-**Konsequenz.** `basket.js` ist eine site-weite Komponente (in `base.html` geladen, Nav-Icon dort verankert). Schlüssel ist die zusammengesetzte ID `type:id` (aktuell nur `source` als Typ; Personen-Sammlung wäre eine spätere Erweiterung). Daten bleiben rein clientseitig — keine Server-Persistenz, keine Identitätspflicht; Export als CSV überträgt die Sammlung in Werkzeuge der Forschenden (Zotero, Excel, BibTeX-Konverter).
+**Konsequenz.** `basket.js`, `basket-mount.js` und `basket-page.js` sind site-weite Komponenten (in `base.html` geladen, Nav-Icon dort verankert). Schlüssel ist die zusammengesetzte ID `type:id` mit den drei Typen `source`, `person`, `org`. Sammelt eine Forscherin eine Quelle, lädt der Korb beim ersten Bedarf den Forward-Index `docs_entities.json` und legt die annotierten Personen und Organisationen als abgeleitete Einträge ohne `gathered`-Flag in den Korb; ein +-Klick auf einen abgeleiteten Eintrag stuft ihn durch Setzen von `gathered=true` zur eigenständigen Sammlung hoch. Daten bleiben rein clientseitig — keine Server-Persistenz, keine Identitätspflicht; Export als CSV überträgt die Sammlung in Werkzeuge der Forschenden (Zotero, Excel, BibTeX-Konverter), pro Typ getrennt und mit Wahlmöglichkeit zwischen „nur gesammelte" und „auch abgeleitete".
 
 **Nicht gemeint ist** ein server-persistierter Account. Das wäre ein anderer Stack (Auth, DSGVO, Speicherkosten). Der clientseitige Korb ist bewusst der niedrigschwellige Einstieg.
+
+## Personen- und Organisationsprofile als Detailseiten
+
+**Entscheidung.** Jede individuelle Person und jede individuelle Organisation mit mindestens einer Nennung in einer freigegebenen Quelle erhält eine eigene Detail-Profilseite mit Stammdaten, Rollen-Aufschlüsselung, annotierten Beziehungen und Quellen-Tabelle. `<rs type="person">` und `<rs type="org">` im Quellen-Volltext verlinken direkt auf das Profil, nicht auf die Register-Liste.
+
+**Begründung.** Personennamen und Organisationsbezeichnungen waren bis zur Einführung der Profile Sackgassen: in der Annotations-Tabelle und im Volltext klickbar, aber nur als Hash-Anker in die Register-Liste, wo der Anker im JS-gerenderten Index nicht ankam. Beziehungs-Daten (kin, friend, rep, occ, title-ref) lagen vollständig in den Pipeline-CSVs vor, waren aber UI-seitig unsichtbar. Ein Ehepaar im TEI als kin-Beziehung kodiert blieb für die Forscherin im Frontend nicht einsehbar. Die Profile schließen diese Lücke und machen die TEI-Annotation auf Entitäts-Ebene navigierbar.
+
+**Konsequenz.** Zwei Aggregator-Module (`person_profiles`, `org_profiles`) joinen Stammdaten, Quellenvorkommen, Rollen-Aggregation und die fünf Beziehungs-CSVs zu einem Profil pro Entität und rendern direkt zu HTML unter `register/persons/<pe__id>.html` und `register/orgs/<org__id>.html`. Beziehungs-Modell: kin, friend und rep werden bidirektional aufgelöst (eine CSV-Zeile erscheint im Profil beider Seiten), occ und title-ref sind einseitig (das Gegenüber ist eine Organisation und erscheint im Personen-Profil als Verlinkung auf das Org-Profil). Pro Beziehungseintrag wird die belegende Quelle als Nachweis verlinkt.
+
+**Nicht gemeint ist**, dass jedes Profil eine vollständige Personen-Biografie liefert. Die Profile zeigen, was die TEI-Annotation hergibt — nicht mehr, nicht weniger.
+
+## Analyse-Seite mit Frage-Galerie und Custom-Builder
+
+**Entscheidung.** Die Abfragen-Sub-Seite (`/analysis/index.html`) bedient zwei Einstiegsmodi nebeneinander: eine kuratierte Galerie konkreter Forschungsfragen als oberste Ebene, ein freier Custom-Builder darunter im aufklappbaren `<details>`. Die Frage ist first-class concept und autonom (`{id, group, text, dataFiles, viz, answer, resolveViz, resolveComparison, resolveDrillDown, coverage}`), nicht an eine Familie gebunden.
+
+**Begründung.** Die frühere Slot-Workbench mit Template-Familien als oberster Mental-Model-Ebene zwang Nutzerinnen, sich erst durch eine Familien-Tab-Bar zu navigieren, bevor sie ihre Frage formulieren konnten. Forscherinnen kommen aber mit der Frage selbst, nicht mit einer Familien-Kategorie. Die Galerie bietet direkten Zugriff über den Frage-Text; der Custom-Builder bleibt für die freie Kombination von Slots verfügbar, ist aber nicht der Default-Einstieg.
+
+**Konsequenz.** Drei Mini-Viz-Stufen tragen die Galerie-Karten (subtile 6 px Stacked-Bars, 28 px Sparklines, Top-3-Mini-Bars oder 2 × 2 Heatmaps); im Result-Panel werden vollwertige SVG-Renderings gezeigt. Beide Stufen teilen sich die Renderer-Logik. Permalinks doppelt: `#q=<id>` für die Galerie, `#f=<fid>&...` für den Custom-Builder; beide bidirektional serialisiert. Eine COVERAGE-Map konsolidiert die früher vier nahezu identischen Coverage-Funktionen, ein generischer `topN(source, n, opts)` ersetzt drei vorherige `topX`-Helfer. JS-seitig getrennt in `analysis-composer.js` (UI für Galerie und Builder), `analysis-capabilities.js` (Capability-Manifest: welche Subject-Filter-Kombination braucht welche JSON-Datei) und `analysis.js` (Driver, wired composer an Hash und Loader).
+
+**Nicht gemeint ist**, dass die Galerie statisch fest steht. Frage-Resolver lassen sich ergänzen, ohne die Architektur zu ändern; Familien 2 bis 5 sind als Galerie-Resolver implementiert, aber noch nicht durchgängig als Custom-Builder-Slots ausgebaut.
 
 ## Titel und Untertitel
 
@@ -64,7 +84,7 @@ Getroffene Leitentscheidungen mit Begründung. Zeitlos formuliert. Pro Eintrag E
 
 **Begründung.** Donut, Bar-Chart und Verteilungstabellen sind nach DH-Standard analytische Visualisierung — sie zeigen vorberechnete Statistik. Force-Layouts, Karten und Sankey-Diagramme sind Information-Visualisation für offene Erkundung. Die Erwartungshaltung der Nutzerinnen unterscheidet sich entsprechend: „Auswertung" suggeriert quantitative Antwort, „Exploration" visuelles Stöbern. Die Pfade folgen dieser Semantik.
 
-**Konsequenz.** Unter `/analysis/` liegen `auswertungen.html` (Statistik-Verteilungen) und `index.html` (Abfragen). `/exploration/` ist für künftige visuelle Views reserviert (Personen-Netzwerk, Karten, Timeline) und enthält aktuell keine Inhalte. Die Navigation bündelt beide Analyse-Seiten in einem Dropdown „Analyse"; Exploration erscheint dort, sobald die ersten visuellen Views fertig sind. Siehe [[ui-design#Navigation]] und [[ui-design#Zwei Modi nebeneinander]].
+**Konsequenz.** Unter `/analysis/` liegen `auswertungen.html` (Statistik-Verteilungen) und `index.html` (Abfragen). Unter `/exploration/` liegen `zeitstrom.html` (gestapelter Bar-Chart mit Brush-zu-Drill-down) und `personennetzwerk.html` (Ego-Layout mit Klick-Hopping); ein Sankey-Diagramm zu Transaktionsflüssen ist konzipiert, aber noch nicht umgesetzt. Die Navigation bündelt beide Bereiche in eigenen Dropdowns. Siehe [[ui-design#Navigation]] und [[ui-design#Zwei Modi nebeneinander]].
 
 **Nicht gemeint ist**, dass Exploration und Analyse streng disjunkt wären. Eine Nutzerin kann eine Auffälligkeit in einem Donut-Diagramm entdecken (Analyse) und sie in einer Netzwerkvisualisierung qualitativ weiterverfolgen (Exploration), oder umgekehrt. Die Bereiche teilen sich dieselben Aggregate (`roles.json`/`relations.json`/`transactions.json`) und dieselben Filter-Bausteine (Sidebar, Active-Filter-Strip).
 
@@ -191,11 +211,11 @@ Verschachtelte rs-Events landen über `pipeline/utils/event_helpers.py::iter_top
 
 ## Register-Freigabe
 
-**Entscheidung.** Personen und Organisationen sind als öffentliche Register freigegeben. Jede Entität mit mindestens einer Nennung in einer freigegebenen Quelle erhält eine eigene Detail-Seite. Das Ortsregister bleibt vorerst zurückgehalten.
+**Entscheidung.** Die Datenbank publiziert zwei Register: Personen und Organisationen. Jede individuelle Entität mit mindestens einer Nennung in einer freigegebenen Quelle erhält eine eigene Detail-Profilseite. Orts-Daten leben ausschließlich als Inline-Annotation im Quellen-Volltext.
 
-**Begründung.** Die Pipeline liefert für Personen- und Organisations-Daten konsistente Stammdaten, Quellenverweise und Beziehungen. Die Orts-Stammdaten sind noch nicht sauber konsolidiert: Doppelungen, uneinheitliche Typisierung und unscharfe rel_place-Hierarchien würden eine öffentliche Detail-Seite zu einer falschen Sicherheitsversprechung machen. Annotationen im Quellen-Volltext (`<rs type="place">`) bleiben sichtbar, damit die Orts-Auszeichnung der TEI-Edition nicht unsichtbar wird; sie tragen aber kein Sprungziel.
+**Begründung.** Die Pipeline liefert für Personen- und Organisations-Daten konsistente Stammdaten, Quellenverweise und Beziehungen. Die Orts-Aussagen liegen außerhalb des Forschungsfokus der Datenbank, und ein eigenes Ortsregister würde Bearbeitungstiefe vortäuschen, die die Daten nicht hergeben. Die Orts-Auszeichnung der TEI-Edition bleibt im Quellen-Volltext als Markup sichtbar, damit sie nicht unsichtbar wird; sie trägt aber kein Sprungziel und führt zu keiner eigenständigen Detail-Ansicht.
 
-**Konsequenz.** Listen-Seiten liegen unter `register/persons.html` und `register/orgs.html`. Detail-Seiten unter `register/persons/<pe__id>.html` und `register/orgs/<org__id>.html`. `<rs type="org">` im Quellen-Volltext verlinkt auf die Org-Detail-Seite; `<rs type="place">` wird als `<span>` mit Tooltip ohne Sprungziel gerendert. Orts-Bezüge in Org- und Personen-Profilen (Standort, Eigentum, Pacht) erscheinen als Klartext. Eine spätere Wiederaufnahme des Ortsregisters bleibt möglich und betrifft nur die Datengrundlage, nicht die Publikationsschicht.
+**Konsequenz.** Listen-Seiten liegen unter `register/persons.html` und `register/orgs.html`. Detail-Seiten unter `register/persons/<pe__id>.html` und `register/orgs/<org__id>.html`. `<rs type="person">` und `<rs type="org">` im Quellen-Volltext verlinken jeweils auf das zugehörige Profil; `<rs type="place">` wird als `<span>` mit Tooltip ohne Sprungziel gerendert. Orts-Bezüge in Org- und Personen-Profilen (Standort, Eigentum, Pacht) erscheinen als Klartext.
 
 ## Trennung Frontend-Repo und Pipeline-Repo
 

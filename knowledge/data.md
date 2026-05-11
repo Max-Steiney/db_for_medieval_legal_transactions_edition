@@ -7,7 +7,7 @@ status: active
 language: de
 version: 0.1
 created: 2026-02-19
-updated: 2026-05-09
+updated: 2026-05-11
 authors: [Christopher Pollin]
 generated-with: Claude Code
 method:
@@ -44,7 +44,7 @@ Welche Korpora im UI tatsächlich sichtbar sind, entscheidet sich am Freigabesta
 
 Der Zeitraum 1418 bis 1447 ist im UI als „noch nicht ausgewertet" gekennzeichnet. Die Überlieferung existiert, die redaktionelle Auswertung steht aus.
 
-Personen und Organisationen sind als freigegebene Register-Dimensionen angelegt. Jede Entität mit mindestens einer Nennung in einer freigegebenen Quelle erhält eine Listen- und eine Detail-Seite. Das Ortsregister bleibt vorerst zurückgehalten, weil die Stammdaten zu Orten noch nicht hinreichend konsolidiert sind; Orts-Annotationen im Quellen-Volltext bleiben als Markup sichtbar, tragen aber kein Sprungziel.
+Personen und Organisationen sind als freigegebene Register-Dimensionen angelegt. Jede individuelle Entität mit mindestens einer Nennung in einer freigegebenen Quelle erhält eine Listen-Seite und eine eigene Detail-Profilseite mit Stammdaten, Beziehungen und Quellen-Tabelle.
 
 ## Erschließungsformen
 
@@ -66,9 +66,9 @@ Auf der Nennungsebene gilt: Mehrfacherwähnungen einer Entität innerhalb einer 
 
 ## Register
 
-Die Datenbank publiziert zwei Register: Personen und Organisationen. Jeder Eintrag ist eine konsolidierte Identität mit eindeutiger ID und verknüpft die Vorkommen in den Quellen.
+Die Datenbank publiziert zwei Register: Personen und Organisationen. Jeder Eintrag ist eine konsolidierte Identität mit eindeutiger ID, verknüpft die Vorkommen in den Quellen und trägt eine eigene Detail-Profilseite. Beziehungen zwischen Entitäten (Verwandtschaft, Freundschaft, Vertretung, Beruf, Titelverweis) sind in beiden Profilen sichtbar, wo es semantisch trägt: Verwandtschaft, Freundschaft und Vertretung sind bidirektional aufgelöst (eine CSV-Zeile erscheint im Profil beider Seiten), Beruf und Titelverweis sind einseitig (das Gegenüber ist eine Organisation).
 
-Die Register sind nicht redundant zu den Quellen, sondern deren Bezugspunkt. Ohne Register gäbe es nur Namensketten ohne Zuordnung zu individuellen Entitäten. Orts-Daten werden weiterhin in den TEI-Quellen ausgezeichnet und in der Pipeline geführt, aber nicht als eigenes öffentliches Register ausgespielt.
+Die Register sind nicht redundant zu den Quellen, sondern deren Bezugspunkt. Ohne Register gäbe es nur Namensketten ohne Zuordnung zu individuellen Entitäten. Orts-Annotationen bleiben als Inline-Markup im Quellen-Volltext sichtbar, tragen aber kein Sprungziel und kein eigenes Register.
 
 ## Annotationsebenen
 
@@ -93,6 +93,8 @@ Zwischen den Pipeline-CSVs und den Frontend-Views liegt eine konsolidierte Aggre
 Die Aufschlüsselung nach Event-Subtyp macht die TEI-Heterogenität sichtbar: eine QGW-Quelle hat typischerweise einen Regest-Event und einen Siegel-Event, eine Stadtbücher-Quelle einen Entry-Event. Personen-Counts sind quellenbereinigt im Sinne von [[architecture#Quellenbereinigte Aggregation als Invariante]] — indirekte Erwähnungen über `kind_of_linking=corresp` teilen den `person_key` mit der genannten Person und werden nicht doppelt gezählt.
 
 Neben den thematischen Aggregaten (Funktionsrollen × Geschlecht × Dekade in `roles`, Beziehungstypen und Bezeichnungen in `relations`, Transaktionstypen × Dekade in `transactions`) führt jede dieser JSON-Strukturen einen `drill_down`-Schnitt: pro Aggregat-Zelle eine Liste der beitragenden `file_key`-Verweise. Eine Quelle kann in mehreren Zellen erscheinen, der Schnitt führt sie pro Zelle nur einmal. Aufgelöst werden die `file_keys` über `data/docs_lookup.json`, das pro Schlüssel die Stammdaten Datum, Korpus-Label, Kurzregest und Quellen-URL hält. Damit ist jede aggregierte Zahl im Frontend bis zur einzelnen Quelldokument-Seite rückführbar — die Provenienz-Garantie aus [[requirements#Datenrobustheit und Provenienz]] hängt an dieser doppelten Schicht (Aggregat + Lookup).
+
+Eine zweite Aggregat-Familie bedient die Entitäts-Profile. Die Module `person_profiles` und `org_profiles` joinen Stammdaten (Name, Geschlecht, Todesdatum, Notiz, Wien-Wiki-Link bzw. Typ, Observanz, Hierarchie), Quellenvorkommen, Rollen-Aggregation pro Person und die fünf Beziehungs-CSVs (Verwandtschaft, Freundschaft, Vertretung, Beruf, Titelverweis) zu einem Profil pro Entität, das direkt server-seitig zu `register/persons/<id>.html` und `register/orgs/<id>.html` gerendert wird. Eine zusätzliche Forward-Index-JSON `docs_entities.json` ordnet jeder Quelle die Liste ihrer annotierten Personen- und Organisations-IDs zu; der Datenkorb nutzt diesen Index, um beim Sammeln einer Quelle die zugehörigen Entitäten automatisch als abgeleitete Einträge in den Korb zu legen.
 
 Technische Umsetzung in [[architecture#Datenschichten und Aggregator]].
 

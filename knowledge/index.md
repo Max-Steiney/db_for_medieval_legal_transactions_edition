@@ -7,7 +7,7 @@ status: active
 language: de
 version: 0.1
 created: 2026-02-19
-updated: 2026-05-09
+updated: 2026-05-11
 authors: [Christopher Pollin]
 generated-with: Claude Code
 method:
@@ -38,7 +38,9 @@ Die kanonischen Definitionen der Fachbegriffe (Quellenkorpus, Quelle, Event, Rec
 
 [[analyse]] und [[exploration]] vertiefen die beiden methodischen Zugänge der Edition. Analyse versammelt unter `/analysis/` die Auswertungen-Sub-Seite (Donut, Bar-Chart, Verteilungstabellen mit Drill-down ins Quellen-Detail) und die Abfragen-Sub-Seite (Template-Familien). Exploration trägt unter `/exploration/` den Zeitstrom (gestapelter Bar-Chart mit Brush-zu-Drill-down) und das Personennetzwerk (Ego-Layout um eine Person, Klick-Hopping durchs Beziehungsnetz); ein Sankey-Diagramm zu Transaktionsflüssen ist konzipiert. Beide Bereiche lesen dieselben Aggregate, aber unter unterschiedlichem Interaktionsmuster. Die Trennung folgt [[decisions#Exploration und Analyse als getrennte Bereiche]].
 
-Quer durch alle Listen und Drill-downs liegt der Datenkorb (siehe [[ui-design#Datenkorb]]) als sammelnde Schicht: jede Quelle bekommt einen „+"-Knopf, das Nav führt ein Korb-Icon mit Live-Badge, eine eigene Korb-Seite (`/korb.html`) erlaubt Remove, Clear und CSV-Export. Persistenz lebt clientseitig in `localStorage`.
+Quer durch alle Listen, Drill-downs, Register und Profilseiten liegt der Datenkorb (siehe [[ui-design#Datenkorb]]) als sammelnde Schicht. Quellen, Personen und Organisationen lassen sich per „+"-Knopf sammeln; eine in den Korb gelegte Quelle zieht ihre annotierten Personen und Organisationen automatisch als abgeleitete Einträge nach. Das Nav führt ein Korb-Icon mit Live-Badge; die Korb-Seite (`/korb.html`) zeigt drei Sektionen mit eigener Remove- und CSV-Export-Aktion. Persistenz lebt clientseitig in `localStorage`.
+
+Die Register (Personen, Organisationen) sind nicht nur Listen, sondern führen pro individueller Entität eine eigene Detail-Profilseite mit Stammdaten, Beziehungen und Quellen-Tabelle. Beziehungen zwischen Personen sind bidirektional aufgelöst: was eine kin-Zeile in einer Richtung sagt, erscheint im Profil der Gegenseite mit umgekehrtem Bezug. Über das Datenmodell siehe [[data#Register]].
 
 [[scholar-user-stories]] nimmt die Forscherinnen-Perspektive ein und beschreibt typische Nutzungsszenarien — vom Bestandsvergleich über die Provenienzprüfung bis zur publikationsreifen Zitation. Jede Story leitet eine Anforderung und eine Komponente ab.
 

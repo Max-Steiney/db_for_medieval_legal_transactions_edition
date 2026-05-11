@@ -7,7 +7,7 @@ status: active
 language: de
 version: 0.1
 created: 2026-02-19
-updated: 2026-05-09
+updated: 2026-05-11
 authors: [Christopher Pollin]
 generated-with: Claude Code
 method:
@@ -148,14 +148,14 @@ Ableitung:
 Pfad: Auswertungen → Transaktionstypen-Sektion → wechseln auf die Zeitstrom-Sub-Seite, Stack-Achse auf „Transaktionstyp" → Stapel zeigen die Verteilung über die Jahrzehnte → Klick auf die Schuldbrief-Pfand-Kategorie in der Legende fokussiert die anderen weg → Brush wählt den interessanten Zeitabschnitt → Drill-Liste zeigt nur die Quellen dieser Kategorie in dem Zeitraum.
 
 Ableitung:
-- Komponente [[exploration#Zeitstrom (vorhanden)]]
+- Komponente [[exploration#Zeitstrom]]
 - Anforderung [[requirements#Datenrobustheit und Provenienz]]
 
 ## Sammeln über mehrere Pfade
 
-*Als Forscherin, die für einen Aufsatz Quellen aus verschiedenen Achsen zusammenträgt — einige aus einer Bezeichnungs-Suche, einige aus dem Zeitstrom-Brush, einige aus einer freien Quellen-Listen-Suche —, will ich diese Quellen-Auswahl über die Sitzungsgrenze hinweg sammeln und gemeinsam exportieren, damit die Recherche nicht in einer Browser-Tab-Sammlung verloren geht.*
+*Als Forscherin, die für einen Aufsatz Quellen, Personen und Organisationen aus verschiedenen Achsen zusammenträgt — einige aus einer Bezeichnungs-Suche, einige aus dem Zeitstrom-Brush, einige aus dem Personennetzwerk, einige aus den Register-Listen —, will ich diese Auswahl über die Sitzungsgrenze hinweg sammeln und gemeinsam exportieren, damit die Recherche nicht in einer Browser-Tab-Sammlung verloren geht.*
 
-Pfad: An jedem Quellen-Eintrag in den Listen (Quellen-Tabelle, Drill-down-Overlay, Brush-Drill) steht ein „+"-Knopf, der die Quelle in den Datenkorb legt; das Korb-Icon im Nav führt zur Korb-Seite mit Liste, Remove und CSV-Export. Cross-Tab-Sync hält parallel offene Tabs konsistent.
+Pfad: An jedem Eintrag in den Listen (Quellen-Tabelle, Personen-Register, Organisations-Register, Drill-down-Overlay, Brush-Drill, Personennetzwerk-Detail-Tabelle) und an jeder Detail- und Profilseite steht ein „+"-Knopf, der den Eintrag in den Datenkorb legt; das Korb-Icon im Nav führt zur Korb-Seite mit drei Sektionen (Quellen, Personen, Organisationen), jeweils eigener Remove-Aktion und eigenem CSV-Export. Wer eine Quelle in den Korb legt, sieht ihre annotierten Personen und Organisationen automatisch als abgeleitete Einträge — ein zweiter „+"-Klick stuft sie zur eigenständigen Sammlung hoch, sodass sie nach Entfernen der Quelle erhalten bleiben. Cross-Tab-Sync hält parallel offene Tabs konsistent.
 
 Ableitung:
 - Komponente [[ui-design#Datenkorb]]

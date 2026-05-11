@@ -7,7 +7,7 @@ status: active
 language: de
 version: 0.1
 created: 2026-02-19
-updated: 2026-05-09
+updated: 2026-05-11
 authors: [Christopher Pollin]
 generated-with: Claude Code
 method:
@@ -23,13 +23,13 @@ Wissensdokument zum Analysebereich der Datenbank. Der Analysebereich versammelt 
 
 ## Zwei Sub-Seiten
 
-**Auswertungen** (`/analysis/auswertungen.html`) zeigt vorberechnete Verteilungen: Funktionsrollen, Beziehungstypen, Transaktionstypen, Bezeichnungen — jeweils als Donut, Bar-Chart oder Tabelle mit Mini-Bars. Filter sind Zeitraum und Geschlecht; eine Zähleinheit-Umschaltung wechselt zwischen Nennungen und Individuellen Personen. Die Seite ist filter-getrieben: Nutzerinnen ändern Achsen und sehen Verteilungen sich anpassen, ohne eine konkrete Frage formulieren zu müssen. Begründung der Verortung im Analyse-Bereich: [[decisions#Auswertungen gehört in den Analyse-Bereich]].
+**Auswertungen** (`/analysis/auswertungen.html`) zeigt vorberechnete Verteilungen: Funktionsrollen, Beziehungstypen, Transaktionstypen, Bezeichnungen — jeweils als Donut, Bar-Chart oder Tabelle mit Mini-Bars. Filter sind Zeitraum und Geschlecht; eine Zähleinheit-Umschaltung in der Funktionsrollen-Sektion wechselt lokal zwischen Nennungen und Individuellen Personen. Die Seite ist filter-getrieben: Nutzerinnen ändern Achsen und sehen Verteilungen sich anpassen, ohne eine konkrete Frage formulieren zu müssen. Begründung der Verortung im Analyse-Bereich: [[decisions#Auswertungen gehört in den Analyse-Bereich]].
 
 Jede Aggregat-Zelle ist klickbar und öffnet das [[ui-design#Drill-down-Overlay]] mit den beitragenden Quellen — Donut-Arc und Legend-Item für Funktionsrollen und Beziehungstypen, Bar für Transaktionstypen, Tabellenzeile für Bezeichnungen. Filter werden in den Drill mitgenommen (sex-Suffix im Lookup-Schlüssel, Dekaden-Filter über Datums-Parsing). Im Footer steht der Cross-Page-Sprung in die Quellen-Liste mit übernommenem Zeitraum-und-Geschlecht-Filter ([[ui-design#Cross-Page-Sprung in die Quellen-Liste]]).
 
 Der Filter-Stand wird in die URL serialisiert (`?dec=1300-1380&sex=f&type=kin&q=hausfrau&mode=persons`), siehe [[ui-design#URL-State-Sync]] — damit ist jeder Forschungsstand dieser Seite zitierbar.
 
-**Abfragen** (`/analysis/index.html`) bietet vorgefertigte Fragetypen mit typisierten Slots — der Template-Abfragemodus, dessen Konzept im Folgenden ausführlich beschrieben ist. Nutzerinnen kommen mit einer konkreten Frage und füllen Slots, das Interface beantwortet die Frage als einzelne Zahl plus Drill-down auf die Quellen.
+**Abfragen** (`/analysis/index.html`) bedient zwei Einstiegsmodi nebeneinander: eine kuratierte Galerie konkreter Forschungsfragen als oberste Ebene, ein freier Custom-Builder darunter im aufklappbaren `<details>`. Die Frage ist first-class concept und autonom. Nutzerinnen kommen mit ihrer Frage und finden sie in der Galerie oder bauen sie über Slots im Builder zusammen; das Result-Panel beantwortet die Frage als Visualisierung plus Drill-down auf die Quellen. Architektur und Pivot-Begründung in [[decisions#Analyse-Seite mit Frage-Galerie und Custom-Builder]].
 
 Beide Sub-Seiten teilen sich dieselben Aggregate (`roles.json`, `relations.json`, `transactions.json`) und dieselben Filter-Bausteine in der Sidebar. Eine Filteränderung auf der einen Seite überträgt sich aktuell nicht automatisch auf die andere; das ist eine offene Designfrage.
 
@@ -52,7 +52,7 @@ Der Datenbestand liegt in Form vorkonfektionierter JSON-Dateien vor, die bereits
 
 ### 2.1 Datenbestand
 
-Pro Ebene liegt eine eigene JSON vor: Quellen in `search.json` und `docs_lookup.json`, Personen in `persons_search.json`, Organisationen in `orgs_search.json`, vorberechnete Aggregate in `roles.json` (Rollen), `relations.json` (Beziehungen), `transactions.json` (Transaktionen). Detail-Profile pro Entität liegen unter `register/persons/` und `register/orgs/`. Ein Ortsregister gibt es nicht; die Orts-Stammdaten sind noch nicht hinreichend konsolidiert.
+Pro Ebene liegt eine eigene JSON vor: Quellen in `search.json` und `docs_lookup.json`, Personen in `persons_search.json`, Organisationen in `orgs_search.json`, vorberechnete Aggregate in `roles.json` (Rollen), `relations.json` (Beziehungen), `transactions.json` (Transaktionen). Detail-Profile pro Entität liegen unter `register/persons/` und `register/orgs/`.
 
 Zeitraum: freigegeben 1177 bis 1412 (Ausnahmen bis 1414 für QGW II/1 und II/2), mit nicht ausgewertetem Bereich 1418 bis 1447. Die Dokumentdichte ist stark ungleichverteilt, wenige Dutzend Dokumente in den ersten zwei Jahrhunderten, ein Dichte-Schwerpunkt im späten 14. Jahrhundert (insbesondere Stadtbücher). Konkrete Zahlen leben in den `coverage`-Blöcken der Aggregate und im Footer der Datenbank.
 
@@ -75,7 +75,7 @@ Das öffentlich freigegebene Personenregister liegt als flaches Array mit kompak
 
 Felder: `id` eindeutige Kennung, `n` Namensform, `fn`/`sn` Vor- und Familienname, `sex` Geschlecht, `d` Datierung, `dc` Anzahl der Quellen mit Nennung (*document count*), `qw` Qualitäts- bzw. Normalisierungsgewicht (`-1` unbekannt, `0` niedrig, `1` und `2` höhere Konfidenz).
 
-Das Organisationsregister liegt parallel als `orgs_search.json` vor und nutzt dasselbe Such-Schema wie das Personenregister; zusätzlich trägt jeder Eintrag ein `tp`-Feld für den Typ. Detail-Profile pro Organisation stehen unter `register/orgs/<org__id>.html`. Ein Ortsregister wird derzeit nicht ausgeliefert; Orts-Annotationen im Quellen-Volltext bleiben als Markup sichtbar, tragen aber kein Sprungziel.
+Das Organisationsregister liegt parallel als `orgs_search.json` vor und nutzt dasselbe Such-Schema wie das Personenregister; zusätzlich trägt jeder Eintrag ein `tp`-Feld für den Typ. Detail-Profile pro Organisation stehen unter `register/orgs/<org__id>.html`. Orts-Annotationen im Quellen-Volltext bleiben als Inline-Markup sichtbar, tragen aber kein Sprungziel und kein eigenes Register.
 
 ### 2.3 Vorkompilierte Aggregationen: die Aggregat-JSONs
 
@@ -104,11 +104,11 @@ Diese Zuordnung ist eine inhaltliche Modellierungsentscheidung, die im Interface
 
 ### 2.5 Datenqualität und Freigabestand
 
-Der Validierungsreport (`quality.json`) und die Coverage-Blöcke der Aggregat-JSONs machen die Datenqualität sichtbar. Charakteristisch ist eine durchgängig niedrige Normalisierungsrate: nur ein kleiner Teil der dispositiven Verben ist im kontrollierten Vokabular der Transaktionstypen geführt, und nur ein Teil der Personen hat eine explizite Organisationszuordnung. Die Orts-Stammdaten sind im Datenbestand vorhanden, aber nicht hinreichend konsolidiert; aus diesem Grund wird das Ortsregister derzeit nicht ausgeliefert.
+Der Validierungsreport (`quality.json`) und die Coverage-Blöcke der Aggregat-JSONs machen die Datenqualität sichtbar. Charakteristisch ist eine durchgängig niedrige Normalisierungsrate: nur ein kleiner Teil der dispositiven Verben ist im kontrollierten Vokabular der Transaktionstypen geführt, und nur ein Teil der Personen hat eine explizite Organisationszuordnung.
 
 Diese Verhältnisse sind keine nebensächliche Meta-Information, sondern konstitutiver Teil dessen, was das Interface ausweisen muss. Eine Zählung *Transaktionen vom Typ Kauf* bedeutet nicht, dass alle anderen Events keine Käufe sind, sondern dass nur ein Bruchteil überhaupt kategorisiert ist.
 
-Nicht alle in der Validierung erscheinenden Korpora sind im UI sichtbar. Die Single-Source-of-Truth für freigegebene Korpora ist `pipeline/config.py::RELEASED_CORPORA` im Schwester-Repo.
+Nicht alle in der Validierung erscheinenden Korpora sind im UI sichtbar. Die Single-Source-of-Truth für die freigegebenen Korpora ist `RELEASED_CORPORA` im Schwester-Repo (`pipeline/config.py`); der freigegebene Zeitraum lebt als `RELEASED_PERIOD` im Frontend-Repo (`frontend/config.py`). Hardcoded Werte in Templates gelten als Fehler.
 
 ### 2.6 Volumen und Performance
 
@@ -165,57 +165,54 @@ GitHub Action beim Deploy:
 4. `categories.json` und `release.json` werden angewendet.
 5. Dateien werden gzipkomprimiert ausgeliefert.
 
-## 4. Interface-Konzept: Query-Templates mit Slots
+## 4. Interface-Konzept: Frage-Galerie und Custom-Builder
 
 ### 4.1 Grundstruktur
 
-Ein Template ist ein Satz mit typisierten Lücken. Das generische Template lautet:
+Die Abfragen-Sub-Seite hat zwei Einstiegsmodi nebeneinander. Die kuratierte **Frage-Galerie** liegt oben und zeigt konkrete Forschungsfragen als Karten mit Frage-Text, Antwort als Mini-Visualisierung und einer Hand voll Kontext-Zahlen. Der **Custom-Builder** liegt darunter im aufklappbaren `<details>` und erlaubt das freie Zusammenstellen einer Abfrage über Subject, Filter-Set und Gruppierung. Das Result-Panel ist die zentrale Antwort-Bühne; sowohl Galerie als auch Builder schreiben dorthin.
 
-> Zeige [Zählmodus] von [Entitätstyp] mit [Eigenschaft] gleich [Wert], gruppiert nach [Dimension].
+Die Pivot-Begründung gegen den früheren Slot-Workbench-Ansatz mit Familien-Tab-Bar als oberster UI-Ebene ist in [[decisions#Analyse-Seite mit Frage-Galerie und Custom-Builder]] festgehalten.
 
-Der Nutzer füllt die Slots der Reihe nach; jede Auswahl schränkt die möglichen Folgewerte ein. Bei jeder Wahl wird live die resultierende Ergebniszahl angezeigt.
+### 4.2 Frage als first-class concept
 
-### 4.2 Slot-Typen
+Eine Frage ist eine autonome Datenstruktur:
 
-**Zählmodus-Slot.** Bestimmt die Zählebene: individuelle Identitäten, Gesamtnennungen, Events, Quellendokumente. Die Unterscheidung ist nicht kosmetisch: *Anzahl Personen mit Rolle Zeuge* (individuell) und *Anzahl Zeugen-Nennungen* (Gesamt) sind verschiedene Zahlen.
+```
+{
+  id,                  eindeutiger Schlüssel (Permalink-Anker #q=<id>)
+  group,               Gruppierung in der Galerie
+  text,                Frage-Text im UI
+  dataFiles,           welche Aggregat-JSONs sie konsumiert
+  viz,                 welche Visualisierungs-Klasse die Antwort trägt
+  answer,              Antwort als Mini-Viz für die Galerie-Karte
+  resolveViz,          Resolver für das volle SVG-Rendering im Result-Panel
+  resolveComparison,   optional, baut den Vergleichsstand auf
+  resolveDrillDown,    optional, baut den Drill-down auf
+  coverage             Coverage-Indikator für epistemische Transparenz
+}
+```
 
-**Entitätstyp-Slot.** Geschlossene Liste der im Freigabestand sichtbaren Entitäten: Personen, Organisationen, Orte, Quellen, Events. Welche tatsächlich wählbar sind, hängt am Freigabe-Filter und an der Verfügbarkeit von Aggregationen.
+Die Frage ist nicht an eine Familie gebunden. Familien bleiben für den Custom-Builder relevant, sind aber im Galerie-Modus keine Ordnungsebene.
 
-**Eigenschafts-Slot.** Dynamisch abhängig vom Entitätstyp. Für Personen: Geschlecht, Rolle im Event, Beruf, Verwandtschaftsbeziehung, Qualitätsgewicht. Für Organisationen: Typ, Kategorie (geistlich/weltlich). Für Quellen: Korpus, Jahrzehnt, Erschließungsform. Für Events: Transaktionstyp, beteiligter Organisationstyp.
+### 4.3 Drei Mini-Viz-Stufen
 
-**Wert-Slot.** Tatsächlich vorkommende Werte aus den Daten, mit Count hinter jeder Option.
+Galerie-Karten zeigen die Antwort in einer von drei subtilen Stufen, abhängig von der Frage-Form: 6 px gestapelte Bars für Verteilungs-Aufschlüsselungen, 28 px Sparklines für Zeitverläufe, Top-3-Mini-Bars oder 2 × 2 Heatmaps für Vergleiche. Im Result-Panel werden dieselben Daten als vollwertige SVG-Visualisierung wiederholt — beide Stufen teilen sich die Renderer-Logik.
 
-**Gruppierungs-Slot.** Optional. Bestimmt die Pivot-Dimension: nach Dekade, nach Korpus, nach Organisationstyp, nach Geschlecht. Gibt das Ergebnis nicht als einzelne Zahl, sondern als Tabelle oder Diagramm aus.
+### 4.4 Custom-Builder
 
-**Join-Slot.** Weil Verknüpfungen zwischen Personen und Organisationen über Events laufen, braucht es für Fragen wie *Personen in geistlichen Einrichtungen* einen Slot, der die Verknüpfungsebene explizit macht: *Personen, die an Events mit Organisationen vom Typ [Wert] beteiligt sind, in der Rolle [Wert]*.
+Im aufklappbaren `<details>` baut die Nutzerin eine eigene Abfrage aus drei Slots: Subject (Person, Organisation, Event, Quelle), Filter-Set (eine oder mehrere typisierte Filter wie Geschlecht, Rolle, Quellenkorpus, Dekade) und Gruppierung (Dekade, Korpus, Geschlecht, Organisationstyp). Die Slots greifen auf dieselben Aggregat-JSONs zu wie die Galerie-Resolver. Familien 2 bis 5 sind als Galerie-Resolver implementiert, aber im Builder noch nicht durchgängig als Slot-Kombinationen ausgebaut.
 
-### 4.3 Template-Familien (konkrete Startmenge)
+### 4.5 Capability-Manifest
 
-Aus den vorhandenen Aggregationen lassen sich unmittelbar fünf Template-Familien ableiten, die ohne zusätzliche Berechnung funktionieren:
+Die Brücke zwischen einer (Subject, Filter-Set)-Kombination und den benötigten JSON-Dateien plus Resolver-Funktion lebt in einem deklarativen Capability-Manifest (`analysis-capabilities.js`). Eine neue Frage oder eine neue Slot-Kombination wird durch einen Eintrag im Manifest verfügbar gemacht, ohne dass der Driver oder der Composer angefasst werden müssen.
 
-**Familie 1: Personenrollen nach Geschlecht.** Basis: `roles.observations.role_by_sex`. Slot-Template: *Anzahl [Nennungen|Personen] in der Rolle [Rolle] mit Geschlecht [Geschlecht]*, optional gruppiert nach Dekade.
+### 4.6 Permalinks
 
-**Familie 2: Beteiligung an Organisationstypen.** Basis: `roles.observations.org_type_by_sex` und `org_type_totals`. Slot-Template: *Anzahl [Nennungen|Personen] in Events mit Organisationen vom Typ [Typ] oder Kategorie [geistlich/weltlich], mit Geschlecht [Geschlecht]*, optional gruppiert nach Dekade.
+Permalinks sind doppelt: `#q=<id>` adressiert eine Galerie-Frage, `#f=<fid>&...` adressiert einen Custom-Builder-Stand mit allen Slot-Werten. Beide sind bidirektional serialisiert; ein Custom-Permalink öffnet das `<details>` beim Page-Load automatisch. Ein Permalink-Copy-Knopf liefert die aktuelle URL über die Clipboard-API.
 
-**Familie 3: Rechtsgeschäftstypen.** Basis: `roles.observations.transaction_types` und `transactions.observations.tx_timeline`. Slot-Template: *Anzahl Events vom Typ [Transaktionstyp]*, optional gruppiert nach Dekade oder Empfänger-Organisationstyp.
+### 4.7 Coverage-Konsolidierung
 
-**Familie 4: Beziehungsstrukturen.** Basis: `relations`. Slot-Template: *Anzahl Beziehungen vom Typ [Verwandtschaft|Beruf|Vertretung|Freundschaft] mit Label [Wert]*, optional gefiltert nach Geschlecht der beteiligten Personen.
-
-**Familie 5: Dokumentenverteilung.** Basis: `timeline.json` und `search.json`. Slot-Template: *Anzahl Quellen im Korpus [Korpus] in der Dekade [Dekade]*.
-
-Die erste konkrete Beispielabfrage aus dem Entwurfsgespräch (*Personen in geistlichen Einrichtungen nach Geschlecht*) realisiert sich als Familie 2 mit Kategorie-Filter *geistlich* und Gruppierung *Geschlecht*. Die resultierenden Zahlen lassen sich direkt aus `roles.observations.org_type_by_sex` ablesen, nach Summierung über die geistlichen Typen gemäß `categories.json`.
-
-### 4.4 Darstellung
-
-Für den ersten Prototyp sind Dropdowns oder Chip-Gruppen pragmatisch. Chips haben den Vorteil, alle Optionen gleichzeitig sichtbar zu machen, was das Datenmodell transparenter erscheinen lässt. Scratch-artige Drag-and-Drop-Blöcke bleiben als spätere Ausbaustufe möglich.
-
-### 4.5 Live-Counts
-
-Neben jeder Slot-Option steht der zugehörige Count, kontextabhängig aktualisiert bei jeder Auswahl. Das verhindert Null-Result-Queries, macht das Datenmodell transparent und gibt Exploration eine haptische Qualität. Quelle der Counts: die jeweils passende Ebene der Aggregat-JSONs.
-
-### 4.6 Globale Filter
-
-Oberhalb der Templates: Korpus (multi-select), Zeitraum (Range innerhalb der freigegebenen Grenzen), Qualitätsgewicht (Schwellenwert für `qw` bei Personen). Diese Filter wirken auf alle Templates parallel.
+Eine zentrale COVERAGE-Map konsolidiert die früher vier nahezu identischen Coverage-Funktionen pro Familie. Ein generischer `topN(source, n, opts)`-Helfer ersetzt drei vorher dupizierte `topX`-Helfer. Label-Maps für Rollen, Organisationstypen und Transaktionstypen liegen zentral, nicht pro Frage.
 
 ## 5. Provenienz und epistemische Transparenz
 
@@ -254,13 +251,12 @@ Theoretischer Bezug: Die Offenlegung dieser Übersetzungskette von der Urkunde �
 
 `data.md` verweist auf Menschen-Events, deren UI-Behandlung in separaten Dokumenten festgelegt ist. Das Template-System muss konfigurierbar bleiben, damit solche Sonderfälle als eigene Template-Familien ergänzt werden können.
 
-### 6.2 Zu klärende Punkte vor Implementierung
+### 6.2 Zu klärende Punkte vor weiterem Ausbau
 
 - Welche Zählmodi sind pro Entitätstyp semantisch zulässig? Nennungen gibt es nur für Register-Entitäten, nicht für Quellen.
 - Wie gehen wir mit dem Anteil *unspecified* beim Geschlecht um? Im Datenmodell ist *f*/*m* binär, was die historische Realität vereinfacht und als Modellierungsentscheidung ausgewiesen werden sollte.
-- Welche Granularität an Auswertungen über Organisationen und Orte ist wissenschaftlich tragbar, angesichts der unterschiedlichen Bearbeitungstiefe der drei Register? Detail-Profile sind freigegeben; Aggregationen über Organisationstypen, Ortstypen und Eigentumsbeziehungen lassen sich darauf aufbauend ergänzen.
+- Welche Granularität an Aggregationen über Organisationen ist wissenschaftlich tragbar, angesichts der unterschiedlichen Bearbeitungstiefe von Personen- und Organisationsregister? Detail-Profile sind freigegeben; Aggregationen über Organisationstypen und Eigentumsbeziehungen lassen sich darauf aufbauend ergänzen.
 - Wie soll mit der Qualität der Normalisierung umgegangen werden? Vorschlag: Default-Schwellenwert `qw >= 0` (Unbekannt ausgeschlossen), mit Toggle zum Einschluss.
-- Wie positionieren wir das Interface zwischen *Exploration* (spielerisch, niedrigschwellig) und *Analyse* (nachvollziehbar, zitierfähig)? Beides ist möglich, sollte aber nicht verwechselt werden.
 
 ### 6.3 Erweiterungspotenzial
 
@@ -273,11 +269,10 @@ Kartenvisualisierung und Netzwerkvisualisierung liegen konzeptionell im Bereich 
 
 ## Zusammenfassung
 
-Der Analysebereich lässt sich auf Basis der vorhandenen JSON-Datenbestände als statisches Frontend ohne Backend umsetzen. Die Aggregat-JSONs liefern bereits vorberechnete Aggregationen mit Drill-Down-Listen auf Dokumentenebene, sodass das zentrale UI-Muster (Zahl anzeigen, Herkunft aufschlüsseln, Quellen einsehen) direkt implementierbar ist. Die Register-Dateien erlauben dynamische Filter in Millisekunden. Die Kategorisierung *geistlich/weltlich* ist als eigene Zuordnungstabelle zu modellieren, da sie im Datenmodell nicht als Eigenschaft vorliegt. Das Interface nutzt Query-Templates mit sechs Slot-Typen (Zählmodus, Entitätstyp, Eigenschaft, Wert, Gruppierung, Join), Live-Counts aus den vorberechneten Aggregationen und Provenienzanzeige auf vier Ebenen inklusive Coverage-Kontext.
-
-Eine konkrete Startmenge von fünf Template-Familien lässt sich ohne zusätzliche Berechnung aus den vorhandenen Aggregationen realisieren: Personenrollen, Organisationsbeteiligungen, Rechtsgeschäftstypen, Beziehungsstrukturen, Dokumentenverteilung.
+Der Analysebereich liegt als statisches Frontend ohne Backend vor. Die Aggregat-JSONs liefern vorberechnete Aggregationen mit Drill-down-Listen auf Dokumentenebene, sodass das zentrale UI-Muster (Antwort anzeigen, Herkunft aufschlüsseln, Quellen einsehen) durchgängig trägt. Die Register-Dateien erlauben dynamische Filter in Millisekunden. Die Auswertungen-Sub-Seite bedient filter-getriebene Verteilungen mit Drill-down, die Abfragen-Sub-Seite bedient eine kuratierte Frage-Galerie und einen freien Custom-Builder mit Permalinks und Capability-Manifest. Die Provenienz lebt vierfach: pro Korpus und Erschließungsform, pro Entität, pro Query (Coverage-Kontext) und über das Verifikations-Test-Set.
 
 Mögliche nächste Schritte:
 
-- Die Zuordnungstabelle `categories.json` für Organisationstypen schreiben und im Team abstimmen, weil sie als Modellierungsentscheidung die späteren Zählungen prägt.
-- Einen minimalen Prototyp einer Template-Familie (Vorschlag: Familie 2, Organisationsbeteiligungen nach Geschlecht) als Proof of Concept implementieren, um Interaktionsfluss, Live-Counts und Drill-Down an realen Daten zu erproben.
+- Die Familien 2 bis 5 als Custom-Builder-Slots ausbauen; aktuell sind sie als Galerie-Resolver implementiert, aber nur Familie 1 ist auch als Slot vollständig.
+- Die Zuordnungstabelle `categories.json` für Organisationstypen geistlich/weltlich schreiben und im Team abstimmen, weil sie als Modellierungsentscheidung die späteren Zählungen prägt.
+- Korpus-Filter im Builder einführen, sobald die Aggregate eine korpusbasierte Unterschlüsselung tragen.

@@ -7,7 +7,7 @@ status: active
 language: de
 version: 0.1
 created: 2026-02-19
-updated: 2026-05-09
+updated: 2026-05-11
 authors: [Christopher Pollin]
 generated-with: Claude Code
 method:
@@ -51,6 +51,8 @@ Das rechnerische Mittel aus Nennungen und Personen täuscht eine Gleichverteilun
 
 Ein globaler Umschalter propagiert die Wahl durch alle abhängigen Darstellungen. Die aktuell gewählte Ebene ist im Provenienz-Tooltip jeder Zahl sichtbar. Siehe [[ui-design#Zählebenen-Umschalter]].
 
+Status: konzeptionell formuliert, im UI noch nicht als globale Komponente umgesetzt. Lokal wirkt eine Zähleinheit-Umschaltung in der Funktionsrollen-Sektion der Auswertungs-Seite. Die universelle Propagierung über alle Visualisierungen ist als Phase-2-Aufgabe im journal vermerkt.
+
 ## Bestandsfilterung als universelle Dimension
 
 ### Was
@@ -65,6 +67,8 @@ Forschungsfragen beziehen sich regelmäßig auf Teilbestände. Ein Filter, der n
 
 Der Bestandsfilter ist persistente Komponente im UI-Rahmen. Die Auswahl propagiert durch alle abhängigen Darstellungen und bleibt bei Navigation erhalten. Siehe [[ui-design#Bestandsfilter]].
 
+Status: derzeit wirkt der Filter nur auf der Quellen-Übersicht. Eine universelle Propagierung über Auswertungen, Zeitstrom, Personennetzwerk und Register ist als Phase-2-Aufgabe offen, weil die Aggregate dafür eine zusätzliche Unterschlüsselung nach Quellenkorpus tragen müssten.
+
 ## Menschen-Events-Behandlung
 
 ### Was
@@ -78,6 +82,8 @@ Eine asymmetrische Behandlung (Einbeziehung in einer Zahl, Ausschluss in einer a
 ### Wie
 
 Ein Toggle mit Glossar-Verweis ist sichtbar platziert. Der aktuelle Zustand steht im Provenienz-Tooltip jeder Zahl. Siehe [[ui-design#Menschen-Events-Toggle]].
+
+Status: nicht implementiert. Die Default-Variante schließt Personen-Annotationen in verschachtelten Events aus der Nennungszählung aus, siehe [[decisions#Nennungen zählen nur Personen-Annotationen außerhalb mentioned Events]]; eine umschaltbare Anzeige für die inklusive Variante ist Phase-2-Aufgabe.
 
 ## Zitierfähige Datenstände
 
@@ -99,15 +105,15 @@ Der Filter-Stand wird auf den Daten-Visualisierungs-Seiten in die URL-Suchparame
 
 ### Was
 
-Eine Forscherin kann eine über mehrere Ansichten verteilte Quellen-Auswahl sammeln, persistieren und in externe Werkzeuge exportieren.
+Eine Forscherin kann eine über mehrere Ansichten verteilte Auswahl aus Quellen, Personen und Organisationen sammeln, persistieren und in externe Werkzeuge exportieren.
 
 ### Warum
 
-Forschungspfade sind nicht linear. Eine Auswahl entsteht häufig durch Querstreifzüge zwischen Drill-down-Overlay, Brush-Auswahl und Quellen-Liste. Ohne ein sammelndes Vehikel zerfällt die zwischenstehende Arbeit beim Tab-Wechsel, und der Übergang in eine Bibliografie- oder Tabellen-Software erzwingt manuelles Abschreiben.
+Forschungspfade sind nicht linear. Eine Auswahl entsteht häufig durch Querstreifzüge zwischen Drill-down-Overlay, Brush-Auswahl, Quellen-Liste, Profilseiten und Register-Listen. Ohne ein sammelndes Vehikel zerfällt die zwischenstehende Arbeit beim Tab-Wechsel, und der Übergang in eine Bibliografie- oder Tabellen-Software erzwingt manuelles Abschreiben.
 
 ### Wie
 
-Ein clientseitiger Datenkorb steht als persistierende Schicht über allen Quellen-Listen. Sammelpunkte sind in den Listen-Renderern eingebettet (Quellen-Tabelle, Drill-down-Overlay, Brush-Drill); ein Korb-Icon im Nav führt zur Korb-Seite mit Liste, Remove-Aktion und CSV-Export. Persistenz lebt in `localStorage`, Cross-Tab-Sync über das `storage`-Event. Umsetzung in [[ui-design#Datenkorb]] und [[architecture#Datenkorb als clientseitige Persistenz]], Begründung in [[decisions#Datenkorb als clientseitige Sammlung]].
+Ein clientseitiger Datenkorb steht als persistierende Schicht über allen Quellen-, Personen- und Organisations-Listen. Sammelpunkte sind in den Listen-Renderern eingebettet (Quellen-Tabelle, Personen- und Org-Register, Profilseiten, Drill-down-Overlay, Brush-Drill, Personennetzwerk-Detail-Tabelle); ein Korb-Icon im Nav führt zur Korb-Seite mit drei Sektionen, je eigener Remove-Aktion und eigenem CSV-Export. Sammelt eine Forscherin eine Quelle, werden die in dieser Quelle annotierten Personen und Organisationen automatisch als abgeleitete Einträge in den Korb gespiegelt; ein „+"-Klick auf einen abgeleiteten Eintrag stuft ihn zur eigenständigen Sammlung hoch, sodass er nach Entfernen der Quelle erhalten bleibt. Persistenz lebt in `localStorage`, Cross-Tab-Sync über das `storage`-Event. Umsetzung in [[ui-design#Datenkorb]] und [[architecture#Datenkorb als clientseitige Persistenz]], Begründung in [[decisions#Datenkorb als clientseitige Sammlung]].
 
 ## Informationsdichte vor reduzierter Ästhetik
 
