@@ -134,3 +134,42 @@ Lauf: `python -m verification.run --html`. Eingaben:
 Bekannte Lücken (siehe `contract.py::KNOWN_GAPS`):
 - `org.place_name.is_plain_text` — Place-Profile gibt es nicht; place_name wird als Klartext im Org-Header gerendert.
 - `person.title_ref_inverse.empty_by_data` — Mirror-Schlüssel ist strukturell vorbereitet, aber im aktuellen TEI-Stand sind alle `related_key` in title-ref-Relationen org__-Keys.
+
+### Profil-Quelle-Konsistenz (Cross-Check)
+
+| Name | Erwartung | Status |
+|---|---|---|
+| html.cross.person_profile_source_missing_annotation | Profil listet Quelle X → Quelle X hat `data-ref` ODER `data-corresp` auf Profil | covered |
+| html.cross.person_doc_annotation_missing_in_profile | Quelle X annotiert Person A → Profil von A listet Quelle X | covered |
+| html.cross.org_profile_source_missing_annotation | analog fuer Organisationen | covered |
+| html.cross.org_doc_annotation_missing_in_profile | analog fuer Organisationen | covered |
+
+## Ebene 5 — TEI-Direkt-Coverage (TEI → gerendertes HTML)
+
+Lauf: `python -m verification.run --tei-html`. Eingaben:
+- TEI-Quelldateien in `../db_for_medieval_legal_transactions/sources/`
+- `docs/documents/**/*.html`
+
+Ueberspringt die CSV-Pipeline-Zwischenstufe und prueft End-to-End, ob jede
+`<rs ref="...">`-Annotation als `data-ref="..."` im HTML erscheint und umgekehrt.
+
+| Name | TEI-Quelle | HTML-Selector | Status |
+|---|---|---|---|
+| teihtml.pair_coverage.documents_paired | TEI-Dateien gesamt vs. gerenderte HTMLs | Datei-Existenz | covered |
+| teihtml.pair_coverage.tei_without_html | TEI-Dateien ohne HTML-Pendant | `filenames.csv status='in progress'` als known_gap | covered |
+| teihtml.person_refs.{missing,extra}_in_html | `<rs type="person" ref>` | `[data-ref^=pe__]` | covered |
+| teihtml.org_refs.{missing,extra}_in_html | `<rs type="org" ref>` | `[data-ref^=org__]` | covered |
+| teihtml.place_refs.{missing,extra}_in_html | `<rs type="place" ref>` | `[data-ref^=pl__]` | covered |
+| teihtml.event_refs.{missing,extra}_in_html | `<rs type="event" ref>` (ohne NULL) | `[data-ref^=ev__]` | covered |
+| teihtml.person_roles.{missing,extra}_in_html | innermost `<rs type="fn" role>` ueber `<rs type="person">` | innermost `data-role` ueber `[data-ref^=pe__]` | covered |
+| teihtml.org_roles.{missing,extra}_in_html | analog fuer Org | analog | covered |
+| teihtml.date_display_vs_tei | Text-Inhalt `<profileDesc/creation/date>` | letzte `(...)` vor `, Datenbank` im `<title>` | covered |
+| teihtml.date_display_html_missing | TEI hat Datum, HTML rendert leer | — | covered |
+
+Normalisierungen im Vergleich:
+- Aeussere runde/eckige Klammern werden gestrippt (Stadtbuecher-Konvention).
+- `X (Y)`-Pattern: das Frontend rendert nur Y, das gilt als Match.
+
+Bekannte Drift-Ergebnisse (Daten- oder Renderer-Bugs, nicht Coverage-Luecken):
+- 3 Stadtbuecher mit Klammer-Anomalien im TEI-Datums-Text.
+- 1 Stadtbuch (333) mit kaputtem Zeichen im HTML-Titel.

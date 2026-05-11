@@ -69,6 +69,44 @@ def test_place_refs_symmetry(stage3_results):
     assert r_extra.status == "match", r_extra.note
 
 
+def test_event_refs_symmetry(stage3_results):
+    """Event-Refs: NULL-Events sind herausgefiltert, alle anderen muessen
+    symmetrisch sein."""
+    r_missing = _by_name(stage3_results, "teihtml.event_refs.missing_in_html")
+    r_extra = _by_name(stage3_results, "teihtml.event_refs.extra_in_html")
+    assert r_missing.status == "match", r_missing.note
+    assert r_extra.status == "match", r_extra.note
+
+
+def test_role_symmetry(stage3_results):
+    """Rollen-Paare (ref, role) sollen vom TEI ins HTML 1:1 ankommen."""
+    r_pm = _by_name(stage3_results, "teihtml.person_roles.missing_in_html")
+    r_pe = _by_name(stage3_results, "teihtml.person_roles.extra_in_html")
+    r_om = _by_name(stage3_results, "teihtml.org_roles.missing_in_html")
+    r_oe = _by_name(stage3_results, "teihtml.org_roles.extra_in_html")
+    for r in (r_pm, r_pe, r_om, r_oe):
+        assert r.status == "match", r.note
+
+
+def test_date_normalization_helpers():
+    """Whitespace, runde und eckige Klammern werden entfernt."""
+    assert compare_tei_html._normalize_date(" (1397 Mai 7) ") == "1397 Mai 7"
+    assert compare_tei_html._normalize_date("[1399 Juli 11]") == "1399 Juli 11"
+    assert compare_tei_html._normalize_date("1327 IX 29") == "1327 IX 29"
+
+
+def test_dates_equivalent_inner_parens():
+    """Stadtbuecher 'X (Y)'-Konvention: das Frontend rendert nur Y."""
+    assert compare_tei_html._dates_equivalent(
+        "1397 Maerz 1 (1396 Maerz 18)", "1396 Maerz 18"
+    )
+    # Nicht jeder Klammer-Inhalt zaehlt als Match: identische Strings sind
+    # natuerlich match.
+    assert compare_tei_html._dates_equivalent("1327", "1327")
+    # Echte Drift: TEI hat anderen Wert als HTML
+    assert not compare_tei_html._dates_equivalent("1327", "1330")
+
+
 def test_html_path_mapping_round_trip():
     """Wenige Smoke-Faelle: TEI-Pfad QGW/.../done/100.xml -> docs/.../100.html."""
     import sys

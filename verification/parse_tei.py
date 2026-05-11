@@ -34,6 +34,9 @@ class DocRecord:
     date_iso: Optional[str] = None
     date_from: Optional[str] = None
     date_to: Optional[str] = None
+    # Menschenlesbarer Text-Inhalt des <date>-Knotens (z. B. "1327 IX 29");
+    # spiegelt, was das Frontend in den Titel/Header rendert.
+    date_display: Optional[str] = None
     decade: Optional[int] = None
     events: Set[str] = field(default_factory=set)
     person_refs: Set[str] = field(default_factory=set)
@@ -160,6 +163,10 @@ def parse_document(path: Path) -> Optional[DocRecord]:
             rec.date_to = _parse_when(to) if to else None
             if rec.date_from:
                 rec.date_iso = rec.date_from
+        # Text-Inhalt (frontend rendert das in den HTML-Titel)
+        text = " ".join(date_node.itertext()).strip()
+        if text:
+            rec.date_display = " ".join(text.split())
     rec.decade = _decade_of(rec.date_iso)
 
     # Entity-Nennungen und Rollen-Zuordnung

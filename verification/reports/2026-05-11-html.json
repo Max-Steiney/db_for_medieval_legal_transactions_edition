@@ -1,8 +1,8 @@
 {
   "date": "2026-05-11",
   "summary": {
-    "total": 18,
-    "match": 15,
+    "total": 22,
+    "match": 19,
     "mismatch": 0,
     "known_gap": 0,
     "info": 3
@@ -129,6 +129,34 @@
     },
     {
       "name": "html.documents.orphan_org_refs",
+      "tei": 0,
+      "json": 0,
+      "status": "match",
+      "note": null
+    },
+    {
+      "name": "html.cross.person_profile_source_missing_annotation",
+      "tei": 0,
+      "json": 0,
+      "status": "match",
+      "note": null
+    },
+    {
+      "name": "html.cross.person_doc_annotation_missing_in_profile",
+      "tei": 0,
+      "json": 0,
+      "status": "match",
+      "note": null
+    },
+    {
+      "name": "html.cross.org_profile_source_missing_annotation",
+      "tei": 0,
+      "json": 0,
+      "status": "match",
+      "note": null
+    },
+    {
+      "name": "html.cross.org_doc_annotation_missing_in_profile",
       "tei": 0,
       "json": 0,
       "status": "match",

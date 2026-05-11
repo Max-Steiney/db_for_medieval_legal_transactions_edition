@@ -30,6 +30,18 @@ Einträge in umgekehrt chronologischer Reihenfolge, neueste oben.
 
 ---
 
+## 2026-05-11 Stufe-3-Ausbau: Events, Rollen, Datum, Profil-Quelle-Konsistenz
+
+Stufe 3 hat jetzt 16 Pruefungen (vorher 8). Vier neue Check-Klassen:
+
+- **Event-Refs Symmetrie**: TEI `<rs type="event">` vs HTML `data-ref="ev__"`. TEI-Konvention `ref="NULL"` (Event ohne Identifier) wird im Vergleich gefiltert, sonst symmetrisch.
+- **Rollen pro Quelle**: TEI `(person_ref, role)`-Paare via innermost `<rs type="fn" role>` vs HTML `[data-ref]` innerhalb der innersten `data-role`-Klammer. Findet Rollen-Drift, die die reine Ref-Symmetrie nicht sieht. Aktuell 0 Mismatches: alle Rollen-Zuordnungen kommen exakt im HTML an.
+- **Datum TEI vs HTML**: Text-Inhalt von `<profileDesc/creation/date>` gegen letzte `(...)`-Gruppe vor `, Datenbank` im HTML-`<title>`. Normalisiert: Whitespace, aeussere Klammern (Stadtbuecher-Konvention), und das `X (Y)`-Pattern (Frontend rendert das innere Datum). Aktuell 2 echte Mismatches: 3 Stadtbuecher mit Klammer-Anomalien im TEI, 1 Stadtbuch mit kaputter UTF-Zeichenfolge im HTML-Titel.
+
+Zusaetzlich Cross-Check in Stufe 2: **Profil-Quelle-Konsistenz**. Vier neue Pruefungen vergleichen die Reverse-Index-Aussagen des Profils (Tabelle "Quellen") mit den Annotationen in den verlinkten Quellen-HTMLs. Wichtige Erkenntnis dabei: das Profil listet eine Quelle auch dann, wenn die Person nur indirekt ueber `roleName/@corresp` (Beziehungs-Annotation in der TEI) referenziert wird — nicht nur bei direkter `<rs type="person">`-Nennung. Der Cross-Check addiert deshalb `data-corresp` zu `data-ref` als legitime Erscheinungsform. Mit dieser Korrektur sind alle vier Cross-Checks symmetrisch.
+
+Gesamtbild nach `--all`: 61 Pruefungen ueber drei Stufen, 40 match, 2 mismatch (die echten Stadtbuecher-Datums-Bugs), 11 known_gap (filename.csv-Filter, Mirror-Schluessel ohne Daten, Stadtbuecher-Korpus-Aussparungen), 10 info.
+
 ## 2026-05-11 TEI-direkt-zu-HTML als dritte Verifikationsstufe
 
 Das Verifikations-Set hat jetzt drei Stufen. Neu: `python -m verification.run --tei-html` liest die TEI-Quellen direkt und vergleicht die annotierten `<rs ref="...">`-Werte mit den `data-ref="..."`-Attributen im gerenderten Quellen-HTML. Damit ist die Pipeline-Zwischenstufe nicht mehr blinder Fleck: Pipeline-Drops (TEI-Annotation, die der Aggregator wegfiltert) und Renderer-Halluzinationen (HTML-`data-ref` ohne TEI-Quelle) werden in beide Richtungen aufgedeckt.

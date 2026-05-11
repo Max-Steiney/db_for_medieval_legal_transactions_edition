@@ -668,6 +668,146 @@ def check_document_refs(sample_size: Optional[int] = None) -> List[CheckResult]:
     return results
 
 
+def check_profile_source_consistency(
+    sample_size: Optional[int] = None,
+) -> List[CheckResult]:
+    """Quervergleich: Wenn Profil A behauptet "ich erscheine in Quelle X",
+    muss Quelle X auch `data-ref="A"` enthalten. Und umgekehrt: wenn Quelle X
+    eine Person A annotiert, muss Profil A die Quelle X in seiner Tabelle
+    listen.
+
+    Findet zwei Klassen von Asymmetrien:
+    - Profil-Eintrag ohne Annotation in der Quelle (reverse_index zeigt eine
+      Quelle, die im Quellen-HTML keinen `data-ref` hat).
+    - Annotation in der Quelle ohne Profil-Eintrag (Quelle annotiert eine
+      Person, aber das Profil hat die Quelle nicht in der Tabelle).
+    """
+    results: List[CheckResult] = []
+
+    # Profile-Sicht: pe_id -> Set(source file_keys)
+    person_profile_sources: Dict[str, set] = {}
+    person_paths = parse_html.iter_person_profiles()
+    if sample_size:
+        person_paths = person_paths[:sample_size]
+    for path in person_paths:
+        p = parse_html.read_person_profile(path)
+        person_profile_sources[p.pe_id] = set(p.source_file_keys)
+
+    org_profile_sources: Dict[str, set] = {}
+    org_paths = parse_html.iter_org_profiles()
+    if sample_size:
+        org_paths = org_paths[:sample_size]
+    for path in org_paths:
+        o = parse_html.read_org_profile(path)
+        org_profile_sources[o.org_id] = set(o.source_file_keys)
+
+    # Quellen-Sicht: file_key -> Set(pe_id / org_id)
+    doc_persons: Dict[str, set] = {}
+    doc_orgs: Dict[str, set] = {}
+    doc_paths = parse_html.iter_documents()
+    if sample_size:
+        doc_paths = doc_paths[:sample_size]
+    for path in doc_paths:
+        d = parse_html.read_document(path)
+        # file_key analog zu parse_tei: <corpus>_<sub>_<stem>
+        parts = path.parts
+        try:
+            idx = parts.index("documents")
+            corpus = parts[idx + 1]
+            sub = parts[idx + 2]
+        except (ValueError, IndexError):
+            continue
+        file_key = f"{corpus}_{sub}_{path.stem}"
+        # Person/Org "erscheint in der Quelle" = direkte Nennung (data-ref)
+        # ODER indirekter Bezug (data-corresp ueber roleName). Das Profil
+        # nimmt beide ueber das reverse_index auf, also muss der Cross-
+        # Check das auch zusammenfassen.
+        doc_persons[file_key] = set(d.person_refs) | set(d.person_corresps)
+        doc_orgs[file_key] = set(d.org_refs) | set(d.org_corresps)
+
+    # Asymmetrie 1: Profil zeigt Quelle, aber Quelle hat keinen data-ref auf Profil.
+    person_profile_only: List[str] = []
+    for pe_id, source_keys in person_profile_sources.items():
+        for src_key in source_keys:
+            if pe_id not in doc_persons.get(src_key, set()):
+                person_profile_only.append(f"{pe_id} @ {src_key}")
+                if len(person_profile_only) >= 50:
+                    break
+        if len(person_profile_only) >= 50:
+            break
+
+    # Asymmetrie 2: Quelle annotiert Person, aber Profil listet die Quelle nicht.
+    doc_only_persons: List[str] = []
+    for src_key, refs in doc_persons.items():
+        for ref in refs:
+            if ref not in person_profile_sources:
+                continue  # in orphan-check abgedeckt
+            if src_key not in person_profile_sources[ref]:
+                doc_only_persons.append(f"{ref} @ {src_key}")
+                if len(doc_only_persons) >= 50:
+                    break
+        if len(doc_only_persons) >= 50:
+            break
+
+    # Selbiges fuer Orgs.
+    org_profile_only: List[str] = []
+    for org_id, source_keys in org_profile_sources.items():
+        for src_key in source_keys:
+            if org_id not in doc_orgs.get(src_key, set()):
+                org_profile_only.append(f"{org_id} @ {src_key}")
+                if len(org_profile_only) >= 50:
+                    break
+        if len(org_profile_only) >= 50:
+            break
+
+    doc_only_orgs: List[str] = []
+    for src_key, refs in doc_orgs.items():
+        for ref in refs:
+            if ref not in org_profile_sources:
+                continue
+            if src_key not in org_profile_sources[ref]:
+                doc_only_orgs.append(f"{ref} @ {src_key}")
+                if len(doc_only_orgs) >= 50:
+                    break
+        if len(doc_only_orgs) >= 50:
+            break
+
+    def _result(name: str, items: List[str], note_prefix: str) -> None:
+        if items:
+            results.append(CheckResult(
+                name=name, tei=0, json=len(items),
+                status="mismatch",
+                note=f"{note_prefix}: {', '.join(items[:5])}"
+                     + (f" (+{len(items) - 5} weitere, max 50 gesammelt)" if len(items) > 5 else ""),
+            ))
+        else:
+            results.append(CheckResult(
+                name=name, tei=0, json=0, status="match",
+            ))
+
+    _result(
+        "html.cross.person_profile_source_missing_annotation",
+        person_profile_only,
+        "Profile listen Quellen, in denen kein data-ref auf die Person steht",
+    )
+    _result(
+        "html.cross.person_doc_annotation_missing_in_profile",
+        doc_only_persons,
+        "Quellen annotieren Personen, deren Profil die Quelle nicht listet",
+    )
+    _result(
+        "html.cross.org_profile_source_missing_annotation",
+        org_profile_only,
+        "Profile listen Quellen, in denen kein data-ref auf die Org steht",
+    )
+    _result(
+        "html.cross.org_doc_annotation_missing_in_profile",
+        doc_only_orgs,
+        "Quellen annotieren Orgs, deren Profil die Quelle nicht listet",
+    )
+    return results
+
+
 def run_html_checks() -> List[CheckResult]:
     """Alle HTML-Coverage-Pruefungen in einem Lauf."""
     results: List[CheckResult] = []
@@ -677,4 +817,5 @@ def run_html_checks() -> List[CheckResult]:
     results.extend(check_org_extended_fields())
     results.extend(check_person_relation_counts())
     results.extend(check_document_refs())
+    results.extend(check_profile_source_consistency())
     return results

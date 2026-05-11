@@ -49,6 +49,9 @@ class PersonProfileHtml:
     # Quellen-Tabelle: Liste der idno-Werte (Signaturen) als Anker fuer
     # die Pruefung "alle Belege werden gerendert".
     source_idnos: List[str] = field(default_factory=list)
+    # Quellen-Tabellen-Links als file_keys (Korpus_Subkorpus_Stem) — fuer
+    # die Profil-Quelle-Quervergleich.
+    source_file_keys: List[str] = field(default_factory=list)
     # Roh-Listen fuer "Beziehungs-Partner pro Typ" — IDs aus den Links.
     relation_partner_ids: Dict[str, List[str]] = field(default_factory=dict)
 
@@ -71,6 +74,7 @@ class OrgProfileHtml:
     authority_urls: List[str] = field(default_factory=list)
     relation_counts: Dict[str, int] = field(default_factory=dict)
     source_idnos: List[str] = field(default_factory=list)
+    source_file_keys: List[str] = field(default_factory=list)
     children_ids: List[str] = field(default_factory=list)
 
 
@@ -90,6 +94,20 @@ def _href_id(href: str, prefix: str) -> Optional[str]:
     if last.startswith(prefix):
         return last
     return None
+
+
+def _source_key_from_href(href: str) -> Optional[str]:
+    """`../../documents/QGW/Vienna_1177-1414_ready/100.html` ->
+    `QGW_Vienna_1177-1414_ready_100`. None falls href nicht der erwarteten
+    Pipeline-Documents-Form entspricht."""
+    if not href or "/documents/" not in href:
+        return None
+    parts = href.split("/documents/", 1)[1].rstrip("/").split("/")
+    if len(parts) != 3 or not parts[-1].endswith(".html"):
+        return None
+    corpus, sub, fname = parts
+    stem = fname[:-5]
+    return f"{corpus}_{sub}_{stem}"
 
 
 def _meta_pair(tree, label: str) -> Optional[str]:
@@ -207,6 +225,13 @@ def read_person_profile(path: Path) -> PersonProfileHtml:
         if idno:
             p.source_idnos.append(idno)
 
+    # Source-File-Keys aus den Tabellen-Links extrahieren — Format
+    # ../../documents/<corpus>/<sub>/<stem>.html -> <corpus>_<sub>_<stem>.
+    for a in tree.cssselect(".person-source-table tbody a"):
+        key = _source_key_from_href(a.get("href", ""))
+        if key:
+            p.source_file_keys.append(key)
+
     return p
 
 
@@ -265,6 +290,11 @@ def read_org_profile(path: Path) -> OrgProfileHtml:
         if idno:
             o.source_idnos.append(idno)
 
+    for a in tree.cssselect(".person-source-table tbody a"):
+        key = _source_key_from_href(a.get("href", ""))
+        if key:
+            o.source_file_keys.append(key)
+
     # Untergeordnete Orgs.
     for a in tree.cssselect(".org-children a.child-link"):
         cid = _href_id(a.get("href", ""), "org__")
@@ -289,6 +319,15 @@ class DocumentHtml:
     org_refs: List[str] = field(default_factory=list)
     place_refs: List[str] = field(default_factory=list)
     event_refs: List[str] = field(default_factory=list)
+    # data-corresp-Werte: indirekte Bezuege via roleName/@corresp (Beziehungs-
+    # Annotation in der TEI). Personen, die nicht direkt genannt sind, aber
+    # ueber eine Beziehung referenziert werden.
+    person_corresps: List[str] = field(default_factory=list)
+    org_corresps: List[str] = field(default_factory=list)
+    # (ref, role)-Paare wie das TEI sie liefert: jede Person-/Org-Nennung
+    # mit der naechstgelegenen data-role-Klammer. None = keine Rolle.
+    person_roles: List[Tuple[str, Optional[str]]] = field(default_factory=list)
+    org_roles: List[Tuple[str, Optional[str]]] = field(default_factory=list)
 
 
 def read_document(path: Path) -> DocumentHtml:
@@ -300,15 +339,24 @@ def read_document(path: Path) -> DocumentHtml:
 
     # H1 enthaelt nur "Nr. <idno>". Der <title> im <head> hat die Form
     # "Nr. <idno> (<date_display>), Datenbank" — daraus ziehen wir das
-    # Datum.
+    # Datum. Manche Titel haben zusaetzliche Klammer-Annotationen vor
+    # dem Datum (z. B. "Nr. 1038(Privil_Nr_23) (1382 IX 29), Datenbank"),
+    # darum suchen wir die letzte parenthetische Gruppe vor ", Datenbank".
     h1 = tree.cssselect("h1")
     if h1:
         d.title = _text(h1[0])
     title_tag = tree.cssselect("head > title")
     if title_tag:
         import re
-        m = re.search(r"\(([^)]+)\)", _text(title_tag[0]))
-        if m:
+        title_text = _text(title_tag[0])
+        # Bevorzugt: letzte "(...)" Gruppe direkt vor ", Datenbank"
+        m = re.search(r"\(([^()]+)\),\s*Datenbank\b", title_text)
+        if not m:
+            # Fallback: letzte parenthetische Gruppe ueberhaupt
+            matches = re.findall(r"\(([^()]+)\)", title_text)
+            if matches:
+                d.date_display = matches[-1].strip()
+        else:
             d.date_display = m.group(1).strip()
 
     for pair in tree.cssselect(".doc-toolbar-meta .meta-pair"):
@@ -324,24 +372,51 @@ def read_document(path: Path) -> DocumentHtml:
             d.corpus_label = value
 
     # data-ref-Annotationen im Body: ein Eintrag pro Vorkommen, dann
-    # dedupliziert pro Kategorie.
+    # dedupliziert pro Kategorie. Pro Vorkommen ausserdem die naechste
+    # data-role-Klammer einsammeln (innermost gewinnt — analog zur TEI-
+    # _find_innermost_role-Logik).
     seen_p, seen_o, seen_pl, seen_e = set(), set(), set(), set()
     for el in tree.cssselect("[data-ref]"):
         ref = el.get("data-ref", "").strip()
         if not ref:
             continue
-        if ref.startswith("pe__") and ref not in seen_p:
-            seen_p.add(ref)
-            d.person_refs.append(ref)
-        elif ref.startswith("org__") and ref not in seen_o:
-            seen_o.add(ref)
-            d.org_refs.append(ref)
+        # Innermost data-role-Vorfahr: lxml iterancestors() gibt
+        # bottom-up zurueck, der erste Treffer ist also der innerste.
+        role: Optional[str] = None
+        for anc in el.iterancestors():
+            r = anc.get("data-role")
+            if r:
+                role = r.strip() or None
+                break
+        if ref.startswith("pe__"):
+            d.person_roles.append((ref, role))
+            if ref not in seen_p:
+                seen_p.add(ref)
+                d.person_refs.append(ref)
+        elif ref.startswith("org__"):
+            d.org_roles.append((ref, role))
+            if ref not in seen_o:
+                seen_o.add(ref)
+                d.org_refs.append(ref)
         elif ref.startswith("pl__") and ref not in seen_pl:
             seen_pl.add(ref)
             d.place_refs.append(ref)
         elif ref.startswith("ev__") and ref not in seen_e:
             seen_e.add(ref)
             d.event_refs.append(ref)
+
+    # data-corresp-Verbindungen (Beziehungs-Annotation via roleName/@corresp).
+    seen_pc, seen_oc = set(), set()
+    for el in tree.cssselect("[data-corresp]"):
+        ref = el.get("data-corresp", "").strip()
+        if not ref:
+            continue
+        if ref.startswith("pe__") and ref not in seen_pc:
+            seen_pc.add(ref)
+            d.person_corresps.append(ref)
+        elif ref.startswith("org__") and ref not in seen_oc:
+            seen_oc.add(ref)
+            d.org_corresps.append(ref)
     return d
 
 
