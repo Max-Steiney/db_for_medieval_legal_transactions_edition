@@ -8,7 +8,7 @@
 {% endblock %}
 
 {% block content %}
-<div class="index-page korb-page">
+<div class="index-page basket-page">
 
     <header class="index-header">
         <h1>Wissenskorb</h1>
@@ -21,20 +21,20 @@
         </p>
     </header>
 
-    <div class="korb-toolbar">
-        <span id="korb-count" class="korb-count">0 Eintr&auml;ge</span>
-        <div class="korb-actions">
-            <button type="button" id="korb-export" class="explore-btn">
+    <div class="basket-toolbar">
+        <span id="basket-count" class="basket-count">0 Eintr&auml;ge</span>
+        <div class="basket-actions">
+            <button type="button" id="basket-export" class="explore-btn">
                 CSV exportieren
             </button>
-            <button type="button" id="korb-clear" class="explore-btn explore-btn--danger">
+            <button type="button" id="basket-clear" class="explore-btn explore-btn--danger">
                 Wissenskorb leeren
             </button>
         </div>
     </div>
 
-    <div id="korb-list-wrap">
-        <table class="aggregat-table korb-table" id="korb-table">
+    <div id="basket-list-wrap">
+        <table class="aggregat-table basket-table" id="basket-table">
             <thead>
                 <tr>
                     <th class="col-idno">Nr.</th>
@@ -44,9 +44,9 @@
                     <th class="col-actions" aria-label="Aktionen"></th>
                 </tr>
             </thead>
-            <tbody id="korb-tbody"></tbody>
+            <tbody id="basket-tbody"></tbody>
         </table>
-        <p id="korb-empty" class="aggregat-empty" hidden>
+        <p id="basket-empty" class="aggregat-empty" hidden>
             Der Wissenskorb ist leer. Sammeln Sie Quellen aus den Listen
             (Quellen-Tabelle, Auswertungs-Drill-downs, Zeitstrom-Drill)
             mit dem &bdquo;+&ldquo;-Knopf neben jedem Eintrag.
@@ -57,7 +57,7 @@
 {% endblock %}
 
 {% block scripts %}
-<script src="{{ root_path }}/static/js/korb-page.js?v={{ asset_v }}"></script>
+<script src="{{ root_path }}/static/js/basket-page.js?v={{ asset_v }}"></script>
 {% endblock %}
 
 {% block footer_info %}Wissenskorb (clientseitig){% endblock %}

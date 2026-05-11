@@ -1,5 +1,7 @@
 // Knowledge basket page: renders the collected source list and provides
-// remove / clear / CSV export actions. Data comes from the Wissenskorb module.
+// remove / clear / CSV export actions. Data comes from the KnowledgeBasket
+// module. UI strings stay German; CSV download filename stays German too
+// because it is what the user sees in their file system.
 (function () {
     'use strict';
 
@@ -13,12 +15,12 @@
     }
 
     function render() {
-        const items = Wissenskorb.list();
-        const tbody = document.getElementById('korb-tbody');
-        const wrap = document.getElementById('korb-list-wrap');
-        const empty = document.getElementById('korb-empty');
-        const count = document.getElementById('korb-count');
-        const table = document.getElementById('korb-table');
+        const items = KnowledgeBasket.list();
+        const tbody = document.getElementById('basket-tbody');
+        const wrap = document.getElementById('basket-list-wrap');
+        const empty = document.getElementById('basket-empty');
+        const count = document.getElementById('basket-count');
+        const table = document.getElementById('basket-table');
         if (count) count.textContent = `${fmt(items.length)} Eintr${items.length === 1 ? 'ag' : 'äge'}`;
         if (!items.length) {
             if (table) table.hidden = true;
@@ -40,37 +42,37 @@
                 <td>${esc(it.coll || '')}</td>
                 <td class="cell-regest">${esc(it.regest || '')}</td>
                 <td class="col-actions">
-                    <button type="button" class="korb-row-remove" aria-label="Aus Wissenskorb entfernen">×</button>
+                    <button type="button" class="basket-row-remove" aria-label="Aus Wissenskorb entfernen">×</button>
                 </td>
             </tr>`;
         }).join('');
     }
 
     function bind() {
-        const tbody = document.getElementById('korb-tbody');
+        const tbody = document.getElementById('basket-tbody');
         if (tbody) {
             tbody.addEventListener('click', (e) => {
-                const btn = e.target.closest('.korb-row-remove');
+                const btn = e.target.closest('.basket-row-remove');
                 if (!btn) return;
                 const tr = btn.closest('tr[data-id]');
                 if (!tr) return;
-                Wissenskorb.remove(tr.dataset.type, tr.dataset.id);
+                KnowledgeBasket.remove(tr.dataset.type, tr.dataset.id);
                 render();
             });
         }
-        const clearBtn = document.getElementById('korb-clear');
+        const clearBtn = document.getElementById('basket-clear');
         if (clearBtn) {
             clearBtn.addEventListener('click', () => {
-                if (Wissenskorb.count() === 0) return;
+                if (KnowledgeBasket.count() === 0) return;
                 if (!confirm('Den gesamten Wissenskorb leeren?')) return;
-                Wissenskorb.clear();
+                KnowledgeBasket.clear();
                 render();
             });
         }
-        const exportBtn = document.getElementById('korb-export');
+        const exportBtn = document.getElementById('basket-export');
         if (exportBtn) {
             exportBtn.addEventListener('click', () => {
-                const items = Wissenskorb.list();
+                const items = KnowledgeBasket.list();
                 if (!items.length) return;
                 const header = ['type', 'id', 'date', 'collection', 'regest', 'url', 'addedAt'];
                 const csvRow = (vals) => vals.map(v => {
@@ -99,9 +101,9 @@
             });
         }
         // Cross-tab and same-tab updates.
-        window.addEventListener('wissenskorb-change', render);
+        window.addEventListener('basket-change', render);
         window.addEventListener('storage', (e) => {
-            if (e.key === 'sugw-wissenskorb-v1') render();
+            if (e.key === 'sugw-basket-v1') render();
         });
     }
 
