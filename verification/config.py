@@ -26,6 +26,14 @@ PLACE_LIST = INDICES_DIR / "placeList.xml"
 # nicht gegen echte Drift.
 DATA_DIR = EDITION_ROOT / "docs" / "data"
 
+# Gerenderte HTML-Outputs fuer die HTML-Coverage-Stufe (separat vom
+# JSON-Vergleich oben). Profil-HTMLs liegen unter docs/register/, Quellen
+# unter docs/documents/.
+DOCS_DIR = EDITION_ROOT / "docs"
+HTML_REGISTER_PERSONS = DOCS_DIR / "register" / "persons"
+HTML_REGISTER_ORGS = DOCS_DIR / "register" / "orgs"
+HTML_DOCUMENTS = DOCS_DIR / "documents"
+
 # Report-Ausgabe
 REPORTS_DIR = TESTS_DIR / "reports"
 

@@ -1,19 +1,31 @@
 """Einstiegspunkt für das Verifikations-Set.
 
-Usage: `python -m verification.run` aus dem Edition-Repo-Root. Liefert
-Exit-Code 0 bei Match, bekannten Lücken oder Info-Status; Exit-Code 1
-nur bei echten Mismatches.
+Usage:
+  python -m verification.run            -- TEI -> JSON-Aggregat-Vergleich
+  python -m verification.run --html     -- Pipeline-CSV -> gerendertes HTML
+  python -m verification.run --all      -- beide Pfade
+
+Liefert Exit-Code 0 bei Match, bekannten Lücken oder Info-Status; Exit-
+Code 1 nur bei echten Mismatches.
 """
 
 from __future__ import annotations
 
+import argparse
 import sys
 import time
 
-from verification import compare, parse_indices, parse_tei, provenance, report
+from verification import (
+    compare,
+    compare_html,
+    parse_indices,
+    parse_tei,
+    provenance,
+    report,
+)
 
 
-def main() -> int:
+def run_tei_checks():
     print("[verify] TEI-Quellen einlesen ...")
     t0 = time.time()
     docs = parse_tei.scan_sources()
@@ -29,18 +41,48 @@ def main() -> int:
         f"{len(places)} Orte in {time.time() - t0:.1f}s"
     )
 
-    print("[verify] Vergleichen ...")
+    print("[verify] TEI -> JSON pruefen ...")
     results = compare.run_checks(docs, persons, orgs, places)
 
     print("[verify] Provenienz-Konsistenz pruefen ...")
     results.extend(provenance.run_provenance_checks())
+    return results
+
+
+def run_html_checks():
+    print("[verify] CSV -> HTML pruefen ...")
+    t0 = time.time()
+    results = compare_html.run_html_checks()
+    print(f"[verify]   {len(results)} Pruefungen in {time.time() - t0:.1f}s")
+    return results
+
+
+def main() -> int:
+    parser = argparse.ArgumentParser(prog="verification.run")
+    parser.add_argument("--html", action="store_true",
+                        help="nur die HTML-Coverage (Pipeline-CSV -> Profil-HTML) pruefen")
+    parser.add_argument("--all", action="store_true",
+                        help="beide Pfade pruefen: TEI->JSON und CSV->HTML")
+    args = parser.parse_args()
+
+    results = []
+    if args.html and not args.all:
+        results = run_html_checks()
+        suffix = "html"
+    elif args.all:
+        results = run_tei_checks()
+        results.extend(run_html_checks())
+        suffix = "all"
+    else:
+        results = run_tei_checks()
+        suffix = None
 
     match = sum(1 for r in results if r.status == "match")
     mismatch = sum(1 for r in results if r.status == "mismatch")
     known_gap = sum(1 for r in results if r.status == "known_gap")
     info = sum(1 for r in results if r.status == "info")
 
-    md_path, json_path = report.today_paths()
+    md_path, json_path = report.today_paths(suffix=suffix)
     report.write_markdown(results, md_path)
     report.write_json(results, json_path)
     print(f"[verify] Report: {md_path}")

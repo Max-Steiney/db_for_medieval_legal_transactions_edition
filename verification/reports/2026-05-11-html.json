@@ -1,0 +1,61 @@
+{
+  "date": "2026-05-11",
+  "summary": {
+    "total": 7,
+    "match": 5,
+    "mismatch": 0,
+    "known_gap": 0,
+    "info": 2
+  },
+  "results": [
+    {
+      "name": "html.persons.profiles_checked",
+      "tei": 8441,
+      "json": 8441,
+      "status": "info",
+      "note": "0 Profile ohne CSV-Match"
+    },
+    {
+      "name": "html.persons.display_name_mismatch",
+      "tei": 0,
+      "json": 0,
+      "status": "match",
+      "note": null
+    },
+    {
+      "name": "html.persons.sex_label_mismatch",
+      "tei": 0,
+      "json": 0,
+      "status": "match",
+      "note": null
+    },
+    {
+      "name": "html.persons.source_count_vs_rows",
+      "tei": 0,
+      "json": 0,
+      "status": "match",
+      "note": null
+    },
+    {
+      "name": "html.orgs.profiles_checked",
+      "tei": 607,
+      "json": 607,
+      "status": "info",
+      "note": "0 Profile ohne CSV-Match"
+    },
+    {
+      "name": "html.orgs.name_mismatch",
+      "tei": 0,
+      "json": 0,
+      "status": "match",
+      "note": null
+    },
+    {
+      "name": "html.orgs.source_count_vs_rows",
+      "tei": 0,
+      "json": 0,
+      "status": "match",
+      "note": null
+    }
+  ]
+}

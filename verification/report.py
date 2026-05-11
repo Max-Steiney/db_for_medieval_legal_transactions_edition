@@ -108,6 +108,10 @@ def write_json(results: List[CheckResult], dest: Path) -> None:
     dest.write_text(json.dumps(payload, indent=2, ensure_ascii=False), encoding="utf-8")
 
 
-def today_paths() -> tuple[Path, Path]:
+def today_paths(suffix: str | None = None) -> tuple[Path, Path]:
+    """Dateipfade fuer den heutigen Report. ``suffix`` haengt einen Modus-
+    Tag an den Dateinamen ("2026-05-11-html.md"), damit TEI- und HTML-
+    Reports getrennt versioniert werden koennen."""
     stamp = date.today().isoformat()
-    return REPORTS_DIR / f"{stamp}.md", REPORTS_DIR / f"{stamp}.json"
+    name = f"{stamp}-{suffix}" if suffix else stamp
+    return REPORTS_DIR / f"{name}.md", REPORTS_DIR / f"{name}.json"
