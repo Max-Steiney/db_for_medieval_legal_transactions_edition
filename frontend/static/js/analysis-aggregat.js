@@ -738,6 +738,42 @@
                 drillLabel(label);
             });
         }
+        // Roles detail table: same drill as the legend; the row's data-role
+        // already carries the pipeline key. Total row has no data-role, so
+        // the [data-role] selector excludes it naturally.
+        const rolesTable = document.getElementById('roles-table');
+        if (rolesTable) {
+            rolesTable.addEventListener('click', (e) => {
+                const tr = e.target.closest('tr[data-role]');
+                if (!tr) return;
+                drillRoleSex(tr.dataset.role || '');
+            });
+        }
+        // Relations detail table: same drill as the legend; data-rel on the
+        // row, total row excluded by the [data-rel] selector.
+        const relsTable = document.getElementById('relations-table');
+        if (relsTable) {
+            relsTable.addEventListener('click', (e) => {
+                const tr = e.target.closest('tr[data-rel]');
+                if (!tr) return;
+                drillRelationSex(tr.dataset.rel || '');
+            });
+        }
+    }
+
+    // ---------------------------------------------------------------------
+    // Time-filter awareness hint.
+    // Roles + TX aggregates carry decade buckets, so the time slider works
+    // on them; Relations + Labels aggregates do not. We expose that
+    // honestly by showing a small hint in the affected quadrants whenever
+    // a non-trivial time range is active. The hint elements live in the
+    // template; this only toggles visibility.
+    // ---------------------------------------------------------------------
+    function updateTimeAwareHints() {
+        const active = decFilter.isActive();
+        document.querySelectorAll('.aggregat-quadrant-time-hint').forEach(el => {
+            el.hidden = !active;
+        });
     }
 
     // ---------------------------------------------------------------------
@@ -797,6 +833,7 @@
         renderTx();
         renderLabels();
         updateActiveFilters();
+        updateTimeAwareHints();
         writeUrl();
     }
 

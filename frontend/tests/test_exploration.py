@@ -134,6 +134,18 @@ class TestAuswertungenPage:
     def test_active_filter_strip_present(self, html):
         assert 'id="active-filters"' in html
 
+    def test_time_aware_hints_present_in_relations_and_labels(self, html):
+        """Beziehungen und Bezeichnungen kennen keine Jahrzehnt-Buckets.
+
+        Der Hint sitzt als hidden-Element im Markup; JS toggelt ihn, wenn
+        ein Zeitraum-Filter aktiv wird. Tests verifizieren das Markup, das
+        Toggle-Verhalten lebt in der JS-Schicht (analysis-aggregat.js).
+        """
+        assert html.count('aggregat-quadrant-time-hint') == 2, \
+            'Zeitfilter-Hint soll genau in den 2 nicht zeit-bucketed Quadranten stehen'
+        # Beide Hinweise stehen als hidden im Markup, JS toggelt visibility.
+        assert 'class="aggregat-quadrant-time-hint" hidden' in html
+
 
 class TestEpicBData:
     """Verify relations.json has correct structure for Relationship Explorer."""

@@ -1867,6 +1867,26 @@
 .aggregat-table .sex-f { background-color: rgba(150, 60, 90, 0.045); }
 .aggregat-table .is-dimmed { opacity: 0.32; }
 
+/* Roles / Relations Detailtabelle: gleiche Klick-Affordanz wie Labels und Donut */
+#roles-table tbody tr[data-role],
+#relations-table tbody tr[data-rel] {
+    cursor: pointer;
+    transition: background-color var(--transition-fast);
+}
+#roles-table tbody tr[data-role]:hover,
+#relations-table tbody tr[data-rel]:hover { background: var(--color-bg-warm); }
+
+/* Quadranten-Hint: dezent, erscheint nur wenn ein Zeitfilter aktiv ist */
+.aggregat-quadrant-time-hint {
+    margin: 0 0 var(--space-sm);
+    padding: 6px 10px;
+    background: var(--color-bg-warm);
+    border-left: 2px solid var(--color-border);
+    font-size: var(--text-2xs);
+    color: var(--color-text-muted);
+    font-style: italic;
+}
+
 .aggregat-row-total td {
     border-top: 1px solid var(--color-text-muted);
     border-bottom: none;
