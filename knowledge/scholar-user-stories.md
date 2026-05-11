@@ -163,6 +163,6 @@ Ableitung:
 
 ## Siehe auch
 
-- [[requirements]] systematische Anforderungsableitung
+- [[specification]] kondensierte Stories und Querschnitts-Eigenschaften
 - [[ui-design]] konkrete Umsetzung
 - [[glossar]] verwendete Fachbegriffe

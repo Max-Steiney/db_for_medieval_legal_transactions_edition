@@ -1,4 +1,114 @@
-# Current Knowledge — Refactor-Session 2026-05-11
+# Current Knowledge
+
+Snapshot zum Wiedereinstieg in die nächste Session. Kompakt, sachlich, auf den aktuellen Stand bezogen. Neuester Block oben.
+
+---
+
+# Session 2026-05-11 (abends) — Accessibility, Knowledge-Refactor, specification.md
+
+## 1. Was diese Session geschafft hat
+
+### Accessibility (Commit `e01c3316d7`)
+
+WCAG-AA-Patches an Tabellen, Modals, Live-Regions, Kontrast. Quer durch das Frontend mehrere kleine fokussierte Fixes, die zusammen den überwiegenden Teil der über alle Seiten verstreuten AA-Mängel beheben. pytest 356 passed, vitest 49 passed, Verifikation Stage 1 unverändert.
+
+- Sortable Tables `aria-sort` an allen Spalten in `document.js`, `profile.js`, `table-infra.js`
+- Live-Regions `aria-live="polite"` an `result_count`, `active_filters`, `no_results` in `macros.html`
+- Focus-Trap + Initialfokus + Return-Fokus im Drilldown-Overlay in `viz-core.js`
+- ESC schließt Hamburger-Menü in `core.js`
+- Sichtbar-für-AT-H1 (`sr-only`) auf Quellen-Detailseite in `document.html`
+- Per-Seite-Alt-Text bei mehrseitigen Faksimiles in `facsimile.js`
+- Canvas-Container im Personennetzwerk mit `role="img"` und `aria-describedby` in `exploration_network.html`
+- Kontrast-Token `--anno-fn-other` abgedunkelt von `#7a6b8c` auf `#5e5174` in `tokens.css`
+
+Code-Konvention bestätigt: neue Kommentare im Frontend englisch, sparsam, nur dort wo das Warum aus dem Code nicht hervorgeht.
+
+### Knowledge-Refactor (uncommitted)
+
+`requirements.md` wurde gelöscht und durch `specification.md` ersetzt. Begründung: das Dokument hatte sich über die Zeit von einer Soll-Spezifikation zu einem Ist-Beschreibung gewandelt, der Soll-Anspruch in den Texten passte nicht mehr zum Code. Der neue Name macht das ehrlich.
+
+Inhaltliche Änderungen gegenüber dem alten `requirements.md`:
+
+- **Gestrichen**: Anforderung „Umschaltbarkeit der Zählebenen" (global-Toggle existiert nicht und ist nicht geplant; lokaler Donut-Toggle ist UI-Detail), Anforderung „Menschen-Events-Behandlung" (Toggle existiert nicht; Default-Variante ist in `decisions.md` festgeschrieben), Halbsatz „Persistente Identifier oder stabile URLs zu versionierten Datenständen" aus „Zitierfähigkeit" (DOIs gibt es nicht, versionierte Datenstände gibt es nicht).
+- **Umformuliert**: alle Anforderungen, weg vom Was/Warum/Wie-Schema, hin zu kompakten flachen Listen pro User-Story (Variante 1).
+- **Hinzugefügt**: Querschnitt „Barrierefreiheit" (heute durch die Accessibility-Patches eingelöst), Querschnitt „Verifizierbarkeit" (war vorher nur Nebensatz in Anforderung 1).
+
+Neue Struktur: fünf User-Stories aus Historiker*innen-Perspektive plus Querschnitts-Eigenschaften. Die Stories sind:
+
+1. Eine Person über ihre Quellen und Rollen verfolgen
+2. Die Beziehungen einer Person erkunden
+3. Rechtsgeschäfte nach Geschlecht und Rolle vergleichen
+4. Organisationen und ihre Mitglieder analysieren
+5. Quellen ausschnitthaft sammeln, teilen und exportieren
+
+Querschnitts-Eigenschaften: Datenrobustheit/Provenienz, Verifizierbarkeit, Barrierefreiheit, zitierfähiger Datenstand, Informationsdichte.
+
+### Verweis-Drift behoben
+
+In `index.md`, `architecture.md`, `data.md`, `analyse.md`, `decisions.md`, `ui-design.md`, `scholar-user-stories.md` alle Wikilink-Verweise auf `[[requirements]]` und gestrichene Anchor-Targets (`Provenienz-Tip und Glossar-Tip`, `Verifikations-Test-Set`) auf die neuen Ziele umgebogen oder auf nächstliegende Ersatzanker (Glossar, decisions). Tote Anker innerhalb von `scholar-user-stories.md` und `journal.md` bleiben bestehen — beide Dokumente sollen ohnehin in einer eigenen Runde überarbeitet werden.
+
+### `ui-design.md` aufgeräumt
+
+Die drei Abschnitte „Zählebenen-Umschalter (Phase 2, nicht umgesetzt)", „Bestandsfilter (Phase 2, nicht umgesetzt)", „Menschen-Events-Toggle (Phase 2, nicht umgesetzt)" wurden zu einem einzigen Abschnitt „Bestandsfilter" zusammengezogen, der den realen Stand sachlich beschreibt. Provenienz-Tip-Beschreibung im Tip-System auf „Bestand und Zähloperation" reduziert (statt vorher zusätzlich „Menschen-Event-Status und aktive Filter", die es nie gab).
+
+## 2. Konzeptionelle Entscheidungen dieser Session
+
+- **Phase 2 als Konzept fällt weg.** Knowledge-Dokumente beschreiben den Ist-Stand, keine Wartesaal-Klauseln mehr.
+- **Lesepublikum sind Historiker*innen**, die mit den Quellen arbeiten. Sprache und Tonlage entsprechend, kein Software-Spezifikations-Jargon.
+- **Dokumente sollen umbenannt werden** in einer zukünftigen Runde: `ui-design.md` → `design.md`, `scholar-user-stories.md` → `user-stories.md`, `decisions.md` möglicherweise ganz entfernen.
+- **User-Stories als Format** für das Anforderungsdokument, flache Markdown-Listen ohne Dashes und ohne Doppelpunkte.
+- **Datenschutz, Mehrsprachigkeit, Druckbarkeit** sind keine relevanten Anforderungen für dieses Projekt und tauchen nicht im Anforderungskatalog auf.
+
+## 3. Was offen ist nach dieser Session
+
+### Sofort committen vor Schlafengehen
+
+Diese Datei plus die Knowledge-Änderungen aus dem Knowledge-Refactor sind heute Abend uncommitted. Nutzer hat explizit darum gebeten, das temporär mit zu committen.
+
+### Nächste Knowledge-Schritte
+
+Liste aus den Befunden, die ich in der Session gegen `data.md` und `specification.md` erhoben habe. Sie sind besprochen, aber noch nicht umgesetzt.
+
+**Für `data.md`** noch zu tun:
+- Annotationsebenen von vier auf fünf erweitern (Dispositivformel/Trigger als eigene Ebene ergänzen, ist in der Renderer-Legende sichtbar als eigener Layer aber im Dokument nicht erwähnt)
+- Korpus-Pfad-Struktur knapp erklären (`QGW/Vienna_1177-1414_ready` etc.)
+- `RELEASED_PERIOD`-Erweiterung „bis 1414 für QGW II/1 und II/2" und Lücke 1418-1447 mit je einem Satz ehrlich machen
+- Verweis auf `docs/data/SCHEMA.md` als technische kanonische Quelle ergänzen
+- ID-Schema (`pe__`, `org__`, `pl__`, `f__`) kurz erwähnen
+- „Erschließungsform" terminologisch klären — der Begriff steht editionstheoretisch (Regest/Volltext/Grundbücher) und TEI-strukturell (abstract/seal/entry/nota) für unterschiedliche Dinge
+- Frontmatter `version: 0.1` → `0.2` bumpen
+
+**Für `specification.md`** noch zu tun:
+- Story 1 ergänzen mit Suchfunktion auf der Quellenliste (das Suchfeld durchsucht Signatur, Datum, Ort, Korpus-Label, Regest und fehlt heute in der Story)
+- Story 3 auseinanderziehen (Auswertungs-Seite und Zeitstrom sind zwei eigenständige Werkzeuge mit unterschiedlichen Forschungs-Pfaden, heute zu eng zusammengefasst)
+- Story 4 berichtigen: Organisationen sind im Personennetzwerk *nicht* klickbar (laut `journal.md` Zeile 107), nur eingefärbt. Heute suggeriert die Story einen Sprung, der nicht existiert
+- Story 5 ehrlich machen: URL-Sync greift auf den Visualisierungs-Seiten, aber nicht auf der Quellenliste. Vorher verifizieren ob das wirklich so ist (Grep-Befund deutet darauf, nicht 100% gesichert)
+- Faksimile-Volltext-Synopse als Element in Story 1 aufnehmen (Quellen-Detailseite hat Volltext und Faksimile parallel, das ist editorisches Kernfeature)
+- Erschließungsform als Filter auf der Quellenliste in Story 5 erwähnen
+- Querschnitt „Datenrobustheit und Provenienz" um den Drill-down-Mechanismus ergänzen — Tooltip-Text ist nur eine Hälfte, die andere ist der Klick-Drill-down auf jede Aggregat-Zelle
+- Verweis auf `verification/findings.md` als bewusst nicht-UI-sichtbares Komplement
+- Korpus-Filter wird in Story 1 und 4 nicht erwähnt, obwohl er auf den Registern verfügbar ist — Konsistenz mit Story 5
+
+### Strukturelle Aufgaben (eigene Sessions)
+
+- `scholar-user-stories.md` überarbeiten: das Dokument enthält noch viele Verweise auf gestrichene Anforderungen. Soll laut Nutzer in `user-stories.md` umbenannt werden. Inhaltliche Sichtung, welche Stories noch passen und welche raus.
+- `decisions.md` möglicherweise auflösen oder kondensieren. Aktuell hat es 26 Entscheidungen, einige davon sind in `journal.md` redundant.
+- `ui-design.md` → `design.md` umbenennen (Dateirename und alle Wikilinks anpassen).
+
+## 4. Wo weitermachen
+
+Wenn die nächste Session direkt an dieser anknüpft:
+
+1. Committen was uncommitted ist (siehe Abschnitt 3.1).
+2. `data.md` und `specification.md` mit der Befundliste aus Abschnitt 3.2 überarbeiten.
+3. Verify-Lauf, dass nichts gebrochen ist.
+4. Anschließend `scholar-user-stories.md` als nächstes Refactor-Ziel.
+
+`MEMORY.md` Eintrag `tei_html_coverage_plan.md` ist nach wie vor gültig. Keine neuen Memory-Einträge in dieser Session, weil die Inhalte projekt-konzeptionell sind und in `knowledge/` gehören.
+
+---
+
+# Session 2026-05-11 (Tag) — Refactor-Session
 
 Snapshot zum Wiedereinstieg in die nächste Session. Kompakt, sachlich, auf den aktuellen Stand bezogen.
 

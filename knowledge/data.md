@@ -82,7 +82,7 @@ Attribute halten zusätzliche Merkmale fest, etwa Verwandtschaftsbeziehungen, Be
 
 ## Sonderfall Menschen-Events
 
-Im Datenbestand vorkommend. Definition in [[glossar#Menschen-Event]], UI-Behandlung in [[requirements#Menschen-Events-Behandlung]].
+Im Datenbestand vorkommend. Definition in [[glossar#Menschen-Event]]. Im UI werden Personen-Annotationen in verschachtelten Events nicht doppelt gezählt, siehe [[decisions#Nennungen zählen nur Personen-Annotationen außerhalb mentioned Events]].
 
 ## Aggregat-Schicht
 
@@ -90,7 +90,7 @@ Zwischen den Pipeline-CSVs und den Frontend-Views liegt eine konsolidierte Aggre
 
 Die Aufschlüsselung nach Event-Subtyp macht die TEI-Heterogenität sichtbar: eine QGW-Quelle hat typischerweise einen Regest-Event und einen Siegel-Event, eine Stadtbücher-Quelle einen Entry-Event. Personen-Counts sind quellenbereinigt im Sinne von [[architecture#Quellenbereinigte Aggregation als Invariante]] — indirekte Erwähnungen über `kind_of_linking=corresp` teilen den `person_key` mit der genannten Person und werden nicht doppelt gezählt.
 
-Neben den thematischen Aggregaten (Funktionsrollen × Geschlecht × Dekade in `roles`, Beziehungstypen und Bezeichnungen in `relations`, Transaktionstypen × Dekade in `transactions`) führt jede dieser JSON-Strukturen einen `drill_down`-Schnitt: pro Aggregat-Zelle eine Liste der beitragenden `file_key`-Verweise. Eine Quelle kann in mehreren Zellen erscheinen, der Schnitt führt sie pro Zelle nur einmal. Aufgelöst werden die `file_keys` über `data/docs_lookup.json`, das pro Schlüssel die Stammdaten Datum, Korpus-Label, Kurzregest und Quellen-URL hält. Damit ist jede aggregierte Zahl im Frontend bis zur einzelnen Quelldokument-Seite rückführbar — die Provenienz-Garantie aus [[requirements#Datenrobustheit und Provenienz]] hängt an dieser doppelten Schicht (Aggregat + Lookup).
+Neben den thematischen Aggregaten (Funktionsrollen × Geschlecht × Dekade in `roles`, Beziehungstypen und Bezeichnungen in `relations`, Transaktionstypen × Dekade in `transactions`) führt jede dieser JSON-Strukturen einen `drill_down`-Schnitt: pro Aggregat-Zelle eine Liste der beitragenden `file_key`-Verweise. Eine Quelle kann in mehreren Zellen erscheinen, der Schnitt führt sie pro Zelle nur einmal. Aufgelöst werden die `file_keys` über `data/docs_lookup.json`, das pro Schlüssel die Stammdaten Datum, Korpus-Label, Kurzregest und Quellen-URL hält. Damit ist jede aggregierte Zahl im Frontend bis zur einzelnen Quelldokument-Seite rückführbar — die Provenienz-Garantie aus [[specification#Datenrobustheit und Provenienz]] hängt an dieser doppelten Schicht (Aggregat + Lookup).
 
 Eine zweite Aggregat-Familie bedient die Entitäts-Profile. Die Module `person_profiles` und `org_profiles` joinen Stammdaten (Name, Geschlecht, Todesdatum, Notiz, Wien-Wiki-Link bzw. Typ, Observanz, Hierarchie), Quellenvorkommen, Rollen-Aggregation pro Person und die fünf Beziehungs-CSVs (Verwandtschaft, Freundschaft, Vertretung, Beruf, Titelverweis) zu einem Profil pro Entität, das direkt server-seitig zu `register/persons/<id>.html` und `register/orgs/<id>.html` gerendert wird. Eine zusätzliche Forward-Index-JSON `docs_entities.json` ordnet jeder Quelle die Liste ihrer annotierten Personen- und Organisations-IDs zu; der Datenkorb nutzt diesen Index, um beim Sammeln einer Quelle die zugehörigen Entitäten automatisch als abgeleitete Einträge in den Korb zu legen.
 
@@ -100,4 +100,4 @@ Technische Umsetzung in [[architecture#Datenschichten und Aggregator]].
 
 - [[glossar]] Definitionen der verwendeten Begriffe
 - [[architecture]] wie die Daten technisch verarbeitet werden
-- [[requirements]] welche Anforderungen sich aus der Datenstruktur ableiten
+- [[specification]] welche User-Stories die Datenstruktur einlöst

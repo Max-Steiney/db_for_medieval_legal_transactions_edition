@@ -26,7 +26,7 @@ Die kanonischen Definitionen der Fachbegriffe (Quellenkorpus, Quelle, Event, Rec
 
 - [[data]] — Gegenstand der Datenbank: Quellenkorpora, Erschließungsformen, Datenebenen, Annotationsebenen, Aggregat-Schicht.
 - [[architecture]] — Datenfluss von TEI bis statisches HTML, Aggregator, Verifikations-Test-Set, Provenienz-Indizes.
-- [[requirements]] — Anforderungen an das UI: Provenienz, Zählebenen, Bestandsfilter, Zitierfähigkeit, Informationsdichte.
+- [[specification]] — Was das UI heute leistet, als fünf User-Stories aus Historiker*innen-Perspektive plus Querschnitts-Eigenschaften.
 - [[decisions]] — Leitentscheidungen mit Begründung.
 - [[ui-design]] — Gestaltungsprinzipien, Navigation, Kernkomponenten, Farben, Druck.
 - [[analyse]] — quantitativer Zweig unter `/analysis/`: Auswertungen und Abfragen.

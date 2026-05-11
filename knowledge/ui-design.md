@@ -29,7 +29,7 @@ Das **Leitprinzip ist maximaler Informations-Output**: Nutzerinnen arbeiten mit 
 
 Eine zweischichtige Lesart durchzieht das UI: technische Identifikatoren (Datei-Schlüssel, Personen-IDs, TEI-Annotationen) koexistieren mit menschenlesbaren Labels. Beide Schichten sind sichtbar.
 
-Siehe [[requirements#Informationsdichte vor reduzierter Ästhetik]] und [[decisions#Maximaler Informations-Output als Gestaltungsleitlinie]].
+Siehe [[specification#Informationsdichte vor reduzierter Ästhetik]] und [[decisions#Maximaler Informations-Output als Gestaltungsleitlinie]].
 
 ## Navigation
 
@@ -79,30 +79,20 @@ Die Oberfläche folgt der Sequenz „Überblick zuerst, dann zoomen und filtern,
 
 Vier Tip-Klassen teilen sich die Popover-Mechanik in `tip.js` (Edge-Detection, Hover, Fokus, Klick, Escape) und unterscheiden sich in Trigger, Anlass und visueller Markierung.
 
-- **Provenienz-Tip** (`tip-popover--data`) sitzt an einem Zahlenwert (gepunktet unterstrichen) und nennt Bestand, Zähloperation, Menschen-Event-Status und aktive Filter.
+- **Provenienz-Tip** (`tip-popover--data`) sitzt an einem Zahlenwert (gepunktet unterstrichen) und nennt Bestand und Zähloperation.
 - **Glossar-Tip** (`tip-popover--glossary`) sitzt neben einem Fachbegriff (`i`-Icon) und öffnet die Begriffsdefinition mit Verweis ins Glossar.
 - **Help-Tip** (`tip-popover--help`) klärt UI- oder Funktions-Hilfen, deren Bedeutung über bloßes Beschriften hinaus erklärt werden muss.
 - **Hover-Hint** (`data-hint`-Attribut) ist die leichteste Variante: kein Popover-Inhalt nötig, nur ein Hover-Reizfeld für Aktions-Buttons, Statusanzeigen oder Spaltenköpfe.
 
-Siehe [[requirements#Datenrobustheit und Provenienz]] und [[glossar]].
+Siehe [[specification#Datenrobustheit und Provenienz]] und [[glossar]].
 
-### Zählebenen-Umschalter (Phase 2, nicht umgesetzt)
+### Bestandsfilter
 
-Konzeptionell: ein globaler Umschalter wechselt zwischen [[glossar#Gesamtnennung]] und [[glossar#Individuelle Person]] und propagiert die Wahl konsistent durch alle abhängigen Darstellungen, mit Anzeige des aktuellen Modus im Provenienz-Tooltip jeder Zahl.
+Auf den drei Listen-Seiten (Quellen, Personenregister, Organisationsregister) steht in der Filter-Seitenleiste eine Gruppe Chips mit den verfügbaren [[glossar#Quellenkorpus|Quellenkorpora]] und der jeweiligen Treffer-Anzahl. Mehrfachauswahl ist möglich.
 
-Status: nicht als globale Komponente umgesetzt. Lokal wirkt eine Zähleinheit-Umschaltung in der Funktionsrollen-Sektion der Auswertungs-Seite. Die universelle Propagierung ist als Phase-2-Aufgabe im [[journal]] vermerkt. Siehe [[requirements#Umschaltbarkeit der Zählebenen]].
+Auf den Visualisierungs-Seiten (Auswertungen, Zeitstrom, Personennetzwerk) wird der Filter bewusst nicht angeboten: die dort gezeigten Aggregate werden über alle Korpora gemeinsam berechnet, ein Korpus-Filter hätte keine Wirkung. Wer einen Teilbestand braucht, geht über die Quellenliste und nutzt den Cross-Page-Sprung zurück in die Visualisierung.
 
-### Bestandsfilter (Phase 2, nicht umgesetzt)
-
-Konzeptionell: eine universelle Filterkomponente, die in allen Ansichten Mehrfachauswahl über [[glossar#Quellenkorpus|Quellenkorpora]] erlaubt und bei Navigation erhalten bleibt.
-
-Status: derzeit wirkt der Filter nur auf der Quellen-Übersicht. Eine universelle Propagierung auf Auswertungen, Zeitstrom, Personennetzwerk und Register ist Phase-2-Aufgabe und setzt eine korpusbasierte Unterschlüsselung der Aggregat-JSONs voraus. Siehe [[requirements#Bestandsfilterung als universelle Dimension]].
-
-### Menschen-Events-Toggle (Phase 2, nicht umgesetzt)
-
-Konzeptionell: ein aktiv zu setzender Schalter entscheidet über die Einbeziehung oder den Ausschluss von [[glossar#Menschen-Event|Menschen-Events]] in abhängigen Zählungen, mit Glossar-Verweis am Toggle und Status-Anzeige im Provenienz-Tooltip jeder Zahl.
-
-Status: nicht umgesetzt. Die Default-Variante schließt Personen-Annotationen in verschachtelten Events aus der Nennungszählung aus, siehe [[decisions#Nennungen zählen nur Personen-Annotationen außerhalb mentioned Events]]. Eine umschaltbare Anzeige für die inklusive Variante ist Phase-2-Aufgabe. Siehe [[requirements#Menschen-Events-Behandlung]].
+Auf der Auswertungs-Seite trägt die Funktionsrollen-Sektion eine lokale Umschaltung zwischen Gesamtnennungen und Individuellen Personen. Die Unterscheidung ist nur in dieser einen Sektion fachlich tragend und wird daher nicht global propagiert.
 
 ### Zeitfilter
 
@@ -188,7 +178,7 @@ Die Fußzeile unterscheidet zwei Datumsangaben. Der **Datenstand** ist das Datum
 
 Ansichten mit gesetzten Filtern sind über ihre URL referenzierbar. Der Filterzustand lebt im URL-Fragment oder Query-String. Nutzerinnen, die eine Ansicht an Kolleginnen weitergeben, schicken damit dasselbe, was sie selbst sehen.
 
-Siehe [[requirements#Zitierfähige Datenstände]].
+Siehe [[specification#Zitierfähiger Datenstand]].
 
 ## Druckausgabe
 
@@ -196,7 +186,7 @@ Jede Detailseite hat einen sinnvollen Druck-Zustand. Navigation, Filterleisten u
 
 ## Siehe auch
 
-- [[requirements]] Anforderungen, die das Design umsetzt
+- [[specification]] User-Stories, die das Design umsetzt
 - [[scholar-user-stories]] Nutzungsszenarien, die die Komponenten motivieren
 - [[glossar]] Begriffe, die im UI erklärt werden
 - [[exploration]] Detailkonzept des visuell-explorativen Zweigs

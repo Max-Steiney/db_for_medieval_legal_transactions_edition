@@ -103,7 +103,7 @@ Begründung dieser Trennung ist dieselbe wie die zwischen Pipeline und Aggregato
 
 ## URL-State als Forschungsstand
 
-Auf den Daten-Visualisierungs-Seiten wird der Filter-Stand in die URL-Suchparameter serialisiert und beim Page-Load von dort gelesen. Damit wird ein Forschungsstand bookmark-fähig, teilbar und zitierbar (vgl. [[requirements#Zitierfähige Datenstände]]).
+Auf den Daten-Visualisierungs-Seiten wird der Filter-Stand in die URL-Suchparameter serialisiert und beim Page-Load von dort gelesen. Damit wird ein Forschungsstand bookmark-fähig, teilbar und zitierbar (vgl. [[specification#Quellen ausschnitthaft sammeln, teilen und exportieren]]).
 
 Die Schreib-Strategie nutzt `history.replaceState`, nicht `pushState` — Filter-Mikrostände sollen nicht den Browser-Back-Stack füllen. Default-Werte werden weggelassen, damit Sharing-URLs minimal bleiben. Während des Page-Inits ist die URL-Sync deaktiviert (Guard `urlSyncActive`), damit ein initiales Apply nicht den eingehenden Filter überschreibt.
 
@@ -120,5 +120,5 @@ UI-seitige Mechanik und Sichtbarkeit in [[ui-design#Datenkorb]], Begründung in 
 ## Siehe auch
 
 - [[data]] was verarbeitet wird
-- [[requirements]] welche Anforderungen die Architektur zu erfüllen hat
+- [[specification]] welche User-Stories die Architektur einlöst
 - [[ui-design]] wie die Bausteine zur Oberfläche werden
