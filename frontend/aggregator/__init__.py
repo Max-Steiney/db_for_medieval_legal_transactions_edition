@@ -34,6 +34,8 @@ from .relations import aggregate_relations
 from .transactions import aggregate_transactions
 from .docs import _parse_date_range, aggregate_docs, build_docs_lookup
 from .person_profiles import build_person_profiles
+from .org_profiles import build_org_profiles
+from .place_profiles import build_place_profiles
 from ._run import run_aggregation
 
 __all__ = [
@@ -55,5 +57,7 @@ __all__ = [
     "aggregate_transactions",
     "build_docs_lookup",
     "build_person_profiles",
+    "build_org_profiles",
+    "build_place_profiles",
     "run_aggregation",
 ]

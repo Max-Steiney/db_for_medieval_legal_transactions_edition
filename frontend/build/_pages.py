@@ -13,7 +13,7 @@ from datetime import date, datetime
 
 from frontend.config import (
     DOCS_DIR, CONTENT_DIR, KNOWLEDGE_DIR, DATA_DIR,
-    EDITION_GUIDELINES_PATH,
+    EDITION_GUIDELINES_PATH, EDITION_GUIDELINES_CANONICAL,
     RELEASED_PERIOD, max_year_with_extensions,
 )
 
@@ -333,41 +333,102 @@ def _person_search_data(persons, reverse_index, released_keys=None,
     return data
 
 
+def _entity_doc_aggregates(docs):
+    """Common per-entity aggregates for register search-data rows.
+
+    Returns (am, ax, corpora, i0, cl0) computed from the reverse-index
+    document list. Reused by orgs and places so the search rows mirror
+    the persons row shape and the JS register page can apply the same
+    timeline / corpus filters.
+    """
+    years = []
+    for d in docs:
+        di = (d.get("date_iso") or "")[:4]
+        if di.isdigit():
+            years.append(di)
+    am = min(years) if years else ""
+    ax = max(years) if years else ""
+    corpora = sorted({d.get("collection_path", "") for d in docs
+                      if d.get("collection_path")})
+    first = docs[0] if docs else {}
+    i0 = first.get("idno", "")
+    cl0 = _short_collection_label(first.get("collection_path", ""))
+    return am, ax, corpora, i0, cl0
+
+
 def _org_search_data(orgs, reverse_index):
-    """Build compact JSON list for the organisations register page."""
+    """Compact JSON list for the organisations register page.
+
+    Restricted to orgs with at least one released mention. Fields mirror
+    the person row shape so register.js can reuse search / sort / chip
+    infrastructure unchanged: ``n``, ``id``, ``tp`` (type), ``dc``,
+    ``am`` / ``ax`` (activity range), ``co`` (corpora), ``i0`` / ``cl0``.
+    """
     data = []
     for xml_id, o in orgs.items():
+        docs = reverse_index.get(xml_id, [])
+        if not docs:
+            continue
+        am, ax, corpora, i0, cl0 = _entity_doc_aggregates(docs)
         data.append({
             "id": xml_id,
-            "n": o["name"],
+            "n":  o["name"],
             "tp": o["type"],
-            "dc": len(reverse_index.get(xml_id, [])),
+            "dc": len(docs),
+            "am": am,
+            "ax": ax,
+            "co": corpora,
+            "i0": i0,
+            "cl0": cl0,
         })
     data.sort(key=lambda x: x["n"].lower())
     return data
 
 
 def _place_search_data(places, reverse_index):
-    """Build compact JSON list for the places register page."""
+    """Compact JSON list for the places register page.
+
+    Shape parallels orgs (incl. activity range and corpora); ``lat`` and
+    ``lng`` stay in the row for the optional geo-text display.
+    """
     data = []
     for xml_id, p in places.items():
+        docs = reverse_index.get(xml_id, [])
+        if not docs:
+            continue
+        am, ax, corpora, i0, cl0 = _entity_doc_aggregates(docs)
         data.append({
             "id": xml_id,
-            "n": p["name"],
+            "n":  p["name"],
             "tp": p["type"],
             "lat": p["lat"],
             "lng": p["lng"],
-            "dc": len(reverse_index.get(xml_id, [])),
+            "dc": len(docs),
+            "am": am,
+            "ax": ax,
+            "co": corpora,
+            "i0": i0,
+            "cl0": cl0,
         })
     data.sort(key=lambda x: x["n"].lower())
     return data
 
 
 def _build_register_list_pages(persons, orgs, places, reverse_index, env):
-    """Build the persons register page.
+    """Build the persons, organisations and places register pages.
 
-    Only the persons register is publicly released. Organisations and places
-    remain unreleased.
+    Each register reads from its own search-data list (persons_search.json,
+    orgs_search.json, places_search.json). All three pages share the same
+    template ``register_list.html``; sidebar facets are toggled by
+    ``register_type``.
+    """
+    _build_persons_register(persons, reverse_index, env)
+    _build_orgs_register(orgs, reverse_index, env)
+    _build_places_register(places, reverse_index, env)
+
+
+def _build_persons_register(persons, reverse_index, env):
+    """Persons register page + persons_search.json.
 
     Provides the template with all data required by the sidebar filters (sex,
     role, activity-range histogram, source corpus). Counts are pre-computed
@@ -493,6 +554,170 @@ def _build_register_list_pages(persons, orgs, places, reverse_index, env):
     print(f"  Register list: register/persons.html ({len(search_data)} entries)")
 
 
+# ---------------------------------------------------------------------------
+# Shared helpers for the orgs and places list pages
+# ---------------------------------------------------------------------------
+
+
+def _type_chip_data(search_data):
+    """Build chip data for the ``tp`` (type) facet on orgs/places.
+
+    Aggregates counts per distinct ``tp`` value. Empty values are bucketed
+    under the literal key ``""`` and rendered as "ohne Angabe".
+    """
+    counts = Counter()
+    for row in search_data:
+        counts[row.get("tp") or ""] += 1
+    out = []
+    for key, c in counts.most_common():
+        if c <= 0:
+            continue
+        out.append({
+            "key":   key,
+            "label": key or "ohne Angabe",
+            "count": c,
+        })
+    return out
+
+
+def _corpus_chip_data(search_data):
+    """Build chip data for the corpus facet (same shape as for persons)."""
+    corpus_counts = Counter()
+    for row in search_data:
+        for c in row.get("co", []):
+            corpus_counts[c] += 1
+    out = []
+    for path_key, count in sorted(
+        corpus_counts.items(),
+        key=lambda kv: COLLECTION_LABELS.get(kv[0], kv[0]).lower(),
+    ):
+        out.append({
+            "key":   path_key,
+            "label": COLLECTION_LABELS.get(path_key, path_key),
+            "count": count,
+        })
+    return out
+
+
+def _timeline_buckets(search_data):
+    """Per-decade counts for the activity-range histogram.
+
+    Returns (timeline_data, max_count, min_year, max_year). Mirrors the
+    persons-side aggregation so the slider behaves identically on all
+    three registers.
+    """
+    decade_counts = Counter()
+    all_years = []
+    for row in search_data:
+        am = row.get("am", "")
+        ax = row.get("ax", "")
+        if not am.isdigit():
+            continue
+        ymin = int(am)
+        ymax = int(ax) if ax.isdigit() else ymin
+        all_years.extend([ymin, ymax])
+        d_min = (ymin // 10) * 10
+        d_max = (ymax // 10) * 10
+        for dec in range(d_min, d_max + 10, 10):
+            decade_counts[dec] += 1
+    min_year = min(all_years) if all_years else RELEASED_PERIOD["min_year"]
+    max_year = max(all_years) if all_years else max_year_with_extensions()
+    min_year = max(min_year, RELEASED_PERIOD["min_year"])
+    min_decade = (min_year // 10) * 10
+    max_decade = (max_year // 10) * 10
+    max_count = max(decade_counts.values()) if decade_counts else 1
+    timeline_data = [
+        {"decade": d, "count": decade_counts.get(d, 0)}
+        for d in range(min_decade, max_decade + 10, 10)
+    ]
+    return timeline_data, max_count, min_year, max_year
+
+
+# ---------------------------------------------------------------------------
+# Orgs and places list pages
+# ---------------------------------------------------------------------------
+
+
+def _build_orgs_register(orgs, reverse_index, env):
+    """Organisations register page + orgs_search.json.
+
+    Sidebar facets: source corpus, activity timeline, type. No sex / no
+    role chips (persons-only). Pre-computes the counts so the table can
+    render before the JS aggregation kicks in.
+    """
+    template = env.get_template("register_list.html")
+    search_data = _org_search_data(orgs, reverse_index)
+
+    DATA_DIR.mkdir(parents=True, exist_ok=True)
+    (DATA_DIR / "orgs_search.json").write_text(
+        json.dumps(search_data, ensure_ascii=False), encoding="utf-8"
+    )
+
+    type_data = _type_chip_data(search_data)
+    corpora_data = _corpus_chip_data(search_data)
+    timeline_data, max_count, min_year, max_year = _timeline_buckets(search_data)
+
+    html = template.render(
+        register_type="orgs",
+        register_label="Organisationen",
+        total_count=len(search_data),
+        sex_data=[],
+        role_data=[],
+        type_data=type_data,
+        corpora_data=corpora_data,
+        timeline_data=timeline_data,
+        max_count=max_count,
+        min_year=min_year,
+        max_year=max_year,
+        root_path="..",
+    )
+
+    out = DOCS_DIR / "register" / "orgs.html"
+    out.parent.mkdir(parents=True, exist_ok=True)
+    out.write_text(html, encoding="utf-8")
+    print(f"  Register list: register/orgs.html ({len(search_data)} entries)")
+
+
+def _build_places_register(places, reverse_index, env):
+    """Places register page + places_search.json.
+
+    Sidebar parallels orgs (corpus, timeline, type). The ``lat`` / ``lng``
+    columns travel along in the search-data but the list page does not
+    render a map (decision: textual geo only).
+    """
+    template = env.get_template("register_list.html")
+    search_data = _place_search_data(places, reverse_index)
+
+    DATA_DIR.mkdir(parents=True, exist_ok=True)
+    (DATA_DIR / "places_search.json").write_text(
+        json.dumps(search_data, ensure_ascii=False), encoding="utf-8"
+    )
+
+    type_data = _type_chip_data(search_data)
+    corpora_data = _corpus_chip_data(search_data)
+    timeline_data, max_count, min_year, max_year = _timeline_buckets(search_data)
+
+    html = template.render(
+        register_type="places",
+        register_label="Orte",
+        total_count=len(search_data),
+        sex_data=[],
+        role_data=[],
+        type_data=type_data,
+        corpora_data=corpora_data,
+        timeline_data=timeline_data,
+        max_count=max_count,
+        min_year=min_year,
+        max_year=max_year,
+        root_path="..",
+    )
+
+    out = DOCS_DIR / "register" / "places.html"
+    out.parent.mkdir(parents=True, exist_ok=True)
+    out.write_text(html, encoding="utf-8")
+    print(f"  Register list: register/places.html ({len(search_data)} entries)")
+
+
 def _build_register_json(reverse_index):
     """Write reverse-index data as JSON files for client-side detail views.
 
@@ -536,39 +761,131 @@ def _build_register_json(reverse_index):
 # ---------------------------------------------------------------------------
 
 
-def _build_person_profiles(reverse_index, env):
+def _build_person_profiles(reverse_index, env, linked_orgs=None,
+                           linked_places=None):
     """Render one profile page per person in the released corpora.
 
     Source: ``frontend.aggregator.build_person_profiles`` returns the
     fully aggregated profile per pe__-id (master data, sources, roles,
     relations). Here the list is rendered into individual HTML files.
 
-    Call path: after ``_build_register_json`` from build_all() — both
-    live under ``docs/register/`` and share the linking convention
-    ``register/persons/<id>.html``.
+    ``linked_orgs`` and ``linked_places`` carry the IDs that have a
+    dedicated detail page so the ``occ`` / ``title_ref`` rows can link
+    to the org profile when one was built.
     """
     from frontend.aggregator import build_person_profiles
 
     profiles = build_person_profiles(reverse_index)
     if not profiles:
         print("  Person profiles: keine Personen — skip")
-        return
+        return set()
 
     template = env.get_template("person.html")
     out_dir = DOCS_DIR / "register" / "persons"
     out_dir.mkdir(parents=True, exist_ok=True)
 
     linked_persons = set(profiles.keys())
+    linked_orgs = linked_orgs or set()
+    linked_places = linked_places or set()
 
     for pid, profile in profiles.items():
         html = template.render(
             profile=profile,
             linked_persons=linked_persons,
+            linked_orgs=linked_orgs,
+            linked_places=linked_places,
             root_path="../..",
         )
         (out_dir / f"{pid}.html").write_text(html, encoding="utf-8")
 
     print(f"  Person profiles: {len(profiles)} Profile in register/persons/")
+    return linked_persons
+
+
+# ---------------------------------------------------------------------------
+# Org-Profile (docs/register/orgs/<org__id>.html)
+# ---------------------------------------------------------------------------
+
+
+def _build_org_profiles(reverse_index, env, linked_persons=None,
+                        linked_places=None):
+    """Render one profile page per organisation with a released mention.
+
+    Mirrors ``_build_person_profiles``. The aggregator
+    ``build_org_profiles`` returns the per-org dict (master data,
+    sources, event roles, person-side relations occ / title_ref).
+    Returns the set of org IDs with a profile (used by other builders
+    to gate org-links).
+    """
+    from frontend.aggregator import build_org_profiles
+
+    profiles = build_org_profiles(reverse_index)
+    if not profiles:
+        print("  Org profiles: keine Organisationen — skip")
+        return set()
+
+    template = env.get_template("org.html")
+    out_dir = DOCS_DIR / "register" / "orgs"
+    out_dir.mkdir(parents=True, exist_ok=True)
+
+    linked_orgs = set(profiles.keys())
+    linked_persons = linked_persons or set()
+    linked_places = linked_places or set()
+
+    for oid, profile in profiles.items():
+        html = template.render(
+            profile=profile,
+            linked_orgs=linked_orgs,
+            linked_persons=linked_persons,
+            linked_places=linked_places,
+            root_path="../..",
+        )
+        (out_dir / f"{oid}.html").write_text(html, encoding="utf-8")
+
+    print(f"  Org profiles: {len(profiles)} Profile in register/orgs/")
+    return linked_orgs
+
+
+# ---------------------------------------------------------------------------
+# Place-Profile (docs/register/places/<pl__id>.html)
+# ---------------------------------------------------------------------------
+
+
+def _build_place_profiles(reverse_index, env, linked_persons=None,
+                          linked_orgs=None):
+    """Render one profile page per place with a released mention.
+
+    Mirrors ``_build_person_profiles``. The aggregator
+    ``build_place_profiles`` returns the per-place dict (master data,
+    sources, topo / owner / tenant relations).
+    """
+    from frontend.aggregator import build_place_profiles
+
+    profiles = build_place_profiles(reverse_index)
+    if not profiles:
+        print("  Place profiles: keine Orte — skip")
+        return set()
+
+    template = env.get_template("place.html")
+    out_dir = DOCS_DIR / "register" / "places"
+    out_dir.mkdir(parents=True, exist_ok=True)
+
+    linked_places = set(profiles.keys())
+    linked_persons = linked_persons or set()
+    linked_orgs = linked_orgs or set()
+
+    for pid, profile in profiles.items():
+        html = template.render(
+            profile=profile,
+            linked_places=linked_places,
+            linked_persons=linked_persons,
+            linked_orgs=linked_orgs,
+            root_path="../..",
+        )
+        (out_dir / f"{pid}.html").write_text(html, encoding="utf-8")
+
+    print(f"  Place profiles: {len(profiles)} Profile in register/places/")
+    return linked_places
 
 
 # ---------------------------------------------------------------------------
@@ -807,143 +1124,186 @@ def _build_exploration_network(env):
 # ---------------------------------------------------------------------------
 
 
-def _build_guidelines(env):
-    """Build edition guidelines page from Markdown source.
+def _sync_guidelines_copy():
+    """Synchronise local guidelines copy from the canonical pipeline source.
 
-    The guidelines are editorial documentation of the annotation model
-    for the source data; they live in the pipeline repository's root
-    (`edition_guidelines.md`) rather than in the frontend's content/
-    folder, because they describe the data, not the publication.
+    Die kanonische Quelle liegt im Schwester-Repo unter
+    ``edition_guidelines.md``; die lokale Kopie unter
+    ``frontend/content/project/edition-guidelines.md`` ist die Quelle fuer den
+    Build. Diese Funktion kopiert die kanonische Quelle in die lokale Datei,
+    wenn sie neuer ist (mtime-Vergleich) oder die lokale Kopie fehlt.
+
+    Wenn die kanonische Quelle nicht erreichbar ist (Schwester-Repo nicht
+    geklont), bleibt die lokale Kopie unveraendert. Der Build laeuft dann
+    gegen den letzten gesyncten Stand.
     """
+    canonical = EDITION_GUIDELINES_CANONICAL
+    local = EDITION_GUIDELINES_PATH
+
+    if not canonical.exists():
+        if not local.exists():
+            print("  WARN: edition_guidelines.md weder kanonisch noch lokal "
+                  "vorhanden, skip guidelines sync.", file=sys.stderr)
+        return
+
+    local.parent.mkdir(parents=True, exist_ok=True)
+
+    needs_copy = (
+        not local.exists()
+        or canonical.stat().st_mtime > local.stat().st_mtime
+    )
+    if not needs_copy:
+        return
+
+    import shutil
+    shutil.copy2(canonical, local)
+    print(f"  Guidelines sync: {canonical.name} -> content/project/edition-guidelines.md")
+
+
+def _build_guidelines(env):
+    """Build annotation guidelines page from Markdown source.
+
+    Die kanonische Quelle liegt im Schwester-Repo; die lokale Kopie unter
+    ``frontend/content/project/edition-guidelines.md`` wird durch
+    ``_sync_guidelines_copy`` aktualisiert.
+    """
+    _sync_guidelines_copy()
+
     md_path = EDITION_GUIDELINES_PATH
     if not md_path.exists():
         print("  WARN: edition_guidelines.md not found, skipping guidelines page.",
               file=sys.stderr)
         return
 
-    md_source = md_path.read_text(encoding="utf-8")
-
-    md = _create_markdown_processor()
-
-    content_html = md.convert(md_source)
-    toc_html = md.toc
-
-    template = env.get_template("guidelines.html")
-    html = template.render(
-        content=content_html,
-        toc=toc_html,
-        build_date=_format_german_date(date.today()),
+    _render_content_page(
+        env,
+        md_source=md_path.read_text(encoding="utf-8"),
+        page_title="Annotationsrichtlinien",
+        page_subtitle="Annotationsmodell, Tagging-Workflow und Konventionen.",
+        out_path=DOCS_DIR / "project" / "edition-guidelines.html",
         root_path="..",
     )
-
-    out = DOCS_DIR / "project" / "edition-guidelines.html"
-    out.parent.mkdir(parents=True, exist_ok=True)
-    out.write_text(html, encoding="utf-8")
     print("  Guidelines page: project/edition-guidelines.html")
 
 
 def _build_about(env):
     """Build about page from Markdown source."""
-    md_path = CONTENT_DIR / "about.md"
+    md_path = CONTENT_DIR / "project" / "about.md"
     if not md_path.exists():
         print("  WARN: about.md not found, skipping about page.",
               file=sys.stderr)
         return
 
-    md_source = md_path.read_text(encoding="utf-8")
-
-    md = _create_markdown_processor()
-
-    content_html = md.convert(md_source)
-    toc_html = md.toc
-
-    template = env.get_template("about.html")
-    html = template.render(
-        content=content_html,
-        toc=toc_html,
-        build_date=_format_german_date(date.today()),
+    _render_content_page(
+        env,
+        md_source=md_path.read_text(encoding="utf-8"),
+        page_title="Über das Projekt",
+        page_subtitle="Prosopographische Datenbank mittelalterlicher Wiener Rechtsgeschäfte.",
+        out_path=DOCS_DIR / "project" / "about.html",
         root_path="..",
     )
-
-    out = DOCS_DIR / "project" / "about.html"
-    out.parent.mkdir(parents=True, exist_ok=True)
-    out.write_text(html, encoding="utf-8")
     print("  About page: project/about.html")
 
 
-def _build_glossary(env):
-    """Build glossary page from knowledge/glossar.md.
+def _slug_anchor(text):
+    """Slug a German term to a URL-safe anchor (used by wiki-link rewriter)."""
+    s = text.strip().lower()
+    s = s.replace("ä", "a").replace("ö", "o").replace("ü", "u").replace("ß", "ss")
+    out = []
+    for ch in s:
+        if ch.isalnum():
+            out.append(ch)
+        elif ch in (" ", "-", "_"):
+            out.append("-")
+    return "".join(out).strip("-")
 
-    Wiki links of the form [[#term]] become page-internal anchor links;
-    [[document]] and [[document#anchor]] are kept as plain text
-    (target pages live outside the edition).
 
-    Source is preferably the edition repo (sibling path), otherwise
-    KNOWLEDGE_DIR in the pipeline repo.
+def _strip_frontmatter(md_source):
+    """Entfernt YAML-Frontmatter zwischen --- ... --- (falls vorhanden)."""
+    return _re.sub(r"\A---\r?\n.*?\r?\n---\r?\n", "", md_source, count=1, flags=_re.DOTALL)
+
+
+def _strip_leading_h1(md_source):
+    """Entfernt das erste Markdown-H1, falls es ganz oben steht.
+
+    Das Page-Header-H1 wird vom Template gesetzt; ein zusaetzliches H1 in der
+    Quelle ergaebe ein doppeltes H1.
     """
-    from pipeline.config import REPO_ROOT
-    candidates = [
-        REPO_ROOT.parent / "db_for_medieval_legal_transactions_edition" / "knowledge" / "glossar.md",
-        KNOWLEDGE_DIR / "glossar.md",
-    ]
-    md_path = next((p for p in candidates if p.exists()), None)
-    if md_path is None:
-        print("  WARN: glossar.md nicht gefunden (weder Edition-Repo noch Pipeline), skip glossary.",
-              file=sys.stderr)
-        return
+    return _re.sub(r"\A\s*#\s+[^\n]+\r?\n", "", md_source, count=1)
 
-    md_source = md_path.read_text(encoding="utf-8")
 
-    # YAML-Frontmatter zwischen --- ... --- entfernen (Promptotyping-Konvention,
-    # nicht fuer Endnutzerinnen gedacht).
-    md_source = _re.sub(r"\A---\r?\n.*?\r?\n---\r?\n", "", md_source, count=1, flags=_re.DOTALL)
+def _rewrite_wiki_links(md_source):
+    """Wiki-Links in Markdown umwandeln.
 
-    # Doppeltes H1 vermeiden: das Template setzt bereits <h1>Glossar</h1>
-    # als Page-Header, daher das fuehrende Markdown-H1 verwerfen.
-    md_source = _re.sub(r"\A\s*#\s+Glossar\s*\r?\n", "", md_source, count=1)
-
-    def _slug(text):
-        s = text.strip().lower()
-        s = s.replace("ä", "a").replace("ö", "o").replace("ü", "u").replace("ß", "ss")
-        out = []
-        for ch in s:
-            if ch.isalnum():
-                out.append(ch)
-            elif ch in (" ", "-", "_"):
-                out.append("-")
-        return "".join(out).strip("-")
-
-    def _replace_wiki_link(match):
+    [[#Term]]              -> [Term](#term-slug)
+    [[#Term|Label]]        -> [Label](#term-slug)
+    [[doc#anchor]]         -> *anchor*   (Zieldokument liegt ausserhalb)
+    [[doc#anchor|Label]]   -> *Label*
+    [[doc]]                -> *doc*
+    [[doc|Label]]          -> *Label*
+    """
+    def _replace(match):
         target = match.group(1)
-        # Aliasform [[#Term|Label]] zerlegen: Label vor dem Anker.
         label_override = None
         if "|" in target:
             target, _sep, label_override = target.partition("|")
         if target.startswith("#"):
             label = label_override or target[1:]
-            return f"[{label}](#{_slug(target[1:])})"
+            return f"[{label}](#{_slug_anchor(target[1:])})"
         if "#" in target:
             doc, _sep, anchor = target.partition("#")
             text = label_override or anchor or doc
             return f"*{text}*"
         return f"*{label_override or target}*"
 
-    md_source = _re.sub(r"\[\[([^\]]+)\]\]", _replace_wiki_link, md_source)
+    return _re.sub(r"\[\[([^\]]+)\]\]", _replace, md_source)
+
+
+def _render_content_page(env, *, md_source, page_title, page_subtitle,
+                        out_path, root_path, template_name="about.html"):
+    """Render eine Inhaltsseite aus Markdown auf das about.html-Geruest.
+
+    Einheitliche Pipeline fuer Glossar, Impressum und vergleichbare Seiten:
+    Frontmatter raus, fuehrendes Markdown-H1 raus, Wiki-Links umschreiben,
+    Markdown rendern, Template einsetzen, Datei schreiben.
+    """
+    md_source = _strip_frontmatter(md_source)
+    md_source = _strip_leading_h1(md_source)
+    md_source = _rewrite_wiki_links(md_source)
 
     md = _create_markdown_processor()
     content_html = md.convert(md_source)
     toc_html = md.toc
 
-    template = env.get_template("glossary.html")
+    template = env.get_template(template_name)
     html = template.render(
         content=content_html,
         toc=toc_html,
         build_date=_format_german_date(date.today()),
+        root_path=root_path,
+        page_title=page_title,
+        page_subtitle=page_subtitle,
+    )
+    out_path.parent.mkdir(parents=True, exist_ok=True)
+    out_path.write_text(html, encoding="utf-8")
+
+
+def _build_glossary(env):
+    """Build glossary page from frontend/content/project/glossar.md."""
+    md_path = CONTENT_DIR / "project" / "glossar.md"
+    if not md_path.exists():
+        print("  WARN: glossar.md nicht gefunden, skip glossary.",
+              file=sys.stderr)
+        return
+
+    _render_content_page(
+        env,
+        md_source=md_path.read_text(encoding="utf-8"),
+        page_title="Glossar",
+        page_subtitle="Kanonische Definitionen aller Fachbegriffe der Datenbank.",
+        out_path=DOCS_DIR / "project" / "glossary.html",
         root_path="..",
     )
-    out = DOCS_DIR / "project" / "glossary.html"
-    out.parent.mkdir(parents=True, exist_ok=True)
-    out.write_text(html, encoding="utf-8")
     print("  Glossary page: project/glossary.html")
 
 
@@ -954,23 +1314,14 @@ def _build_impressum(env):
         print("  WARN: impressum.md not found, skipping.", file=sys.stderr)
         return
 
-    md_source = md_path.read_text(encoding="utf-8")
-    md = _create_markdown_processor()
-    content_html = md.convert(md_source)
-    toc_html = md.toc
-
-    template = env.get_template("about.html")  # Reuse about.html template
-    html = template.render(
-        content=content_html,
-        toc=toc_html,
-        build_date=_format_german_date(date.today()),
-        root_path=".",
+    _render_content_page(
+        env,
+        md_source=md_path.read_text(encoding="utf-8"),
         page_title="Impressum",
-        page_subtitle="Lizenz, Verantwortliche, Datenquellen, Zitierweise",
+        page_subtitle="Lizenz, Verantwortliche, Datenquellen, Zitierweise.",
+        out_path=DOCS_DIR / "impressum.html",
+        root_path=".",
     )
-
-    DOCS_DIR.mkdir(parents=True, exist_ok=True)
-    (DOCS_DIR / "impressum.html").write_text(html, encoding="utf-8")
     print("  Impressum page: impressum.html")
 
 

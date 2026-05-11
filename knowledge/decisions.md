@@ -181,13 +181,15 @@ Verschachtelte rs-Events landen über `pipeline/utils/event_helpers.py::iter_top
 
 **Konsequenz.** Der Begriff ist an allen sichtbaren Stellen konsequent zu verwenden.
 
-## Personenregister-Freigabe
+## Register-Freigabe
 
-**Entscheidung.** Aktuell ist nur das Personenregister öffentlich. Organisationen- und Ortsregister sind nicht freigegeben.
+**Entscheidung.** Alle drei Register (Personen, Organisationen, Orte) sind öffentlich. Jede Entität mit mindestens einer Nennung in einer freigegebenen Quelle erhält eine eigene Detail-Seite.
 
-**Begründung.** Der Bearbeitungsstand der drei Register unterscheidet sich. Eine Freigabe unreifer Register widerspräche dem Anspruch an Datenrobustheit.
+**Begründung.** Die Pipeline liefert für alle drei Entitätstypen konsistente Daten (Stammdaten, Quellenverweise, Beziehungen). Eine Detail-Seite pro Entität macht die Annotations-Substanz prüfbar und gibt Cross-Links zwischen Quelle, Person, Organisation und Ort eine sichtbare Heimat. Eine spätere Qualitätsverbesserung der Org- und Ortsdaten bleibt möglich und betrifft nur die Datengrundlage, nicht die Publikationsschicht.
 
-**Konsequenz.** Organisationen- und Ortsregister-Seiten zeigen Platzhalter oder sind deaktiviert, bis ihre Qualität eine Freigabe zulässt.
+**Konsequenz.** Listen-Seiten liegen unter `register/persons.html`, `register/orgs.html`, `register/places.html`. Detail-Seiten unter `register/persons/<pe__id>.html`, `register/orgs/<org__id>.html`, `register/places/<pl__id>.html`. Inline-Annotationen (`<rs type="org">`, `<rs type="place">`) im Quellen-Volltext verlinken auf die jeweilige Detail-Seite.
+
+**Geo-Information.** Orte erhalten textuelle Geo-Felder (Adresse, Parzelle, Koordinaten als Rohzahl, GeoNames-Link). Es wird kein Karten-Widget gerendert: Orts-Aussagen liegen außerhalb des Forschungsfokus, eine Karte würde eine analytische Tiefe suggerieren, die das Register nicht trägt. Der GeoNames-Link bleibt das einzige Sprungziel zur räumlichen Verortung.
 
 ## Trennung Frontend-Repo und Pipeline-Repo
 

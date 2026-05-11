@@ -36,7 +36,9 @@
             {% set nav_entries = [
                 {'kind': 'link', 'label': 'Quellen', 'href': root_path ~ '/documents.html'},
                 {'kind': 'dropdown', 'label': 'Register', 'children': [
-                    {'label': 'Personen', 'href': root_path ~ '/register/persons.html'},
+                    {'label': 'Personen',       'href': root_path ~ '/register/persons.html'},
+                    {'label': 'Organisationen', 'href': root_path ~ '/register/orgs.html'},
+                    {'label': 'Orte',           'href': root_path ~ '/register/places.html'},
                 ]},
                 {'kind': 'dropdown', 'label': 'Analyse', 'children': [
                     {'label': 'Auswertungen', 'href': root_path ~ '/analysis/auswertungen.html'},
@@ -48,7 +50,7 @@
                 ]},
                 {'kind': 'dropdown', 'label': 'Projekt', 'children': [
                     {'label': 'Über das Projekt',     'href': root_path ~ '/project/about.html'},
-                    {'label': 'Editionsrichtlinien',  'href': root_path ~ '/project/edition-guidelines.html'},
+                    {'label': 'Annotationsrichtlinien',  'href': root_path ~ '/project/edition-guidelines.html'},
                     {'label': 'Glossar',              'href': root_path ~ '/project/glossary.html'},
                     {'label': 'Impressum',            'href': root_path ~ '/impressum.html'},
                 ]},
@@ -57,7 +59,7 @@
                 {% for it in nav_entries -%}
                     {% if it.kind == 'link' %}{{ nav_link(it.label, it.href) }}{% else %}{{ nav_dropdown(it.label, it.children) }}{% endif %}
                 {%- endfor %}
-                <a href="{{ root_path }}/korb.html" class="nav-korb" aria-label="Wissenskorb">
+                <a href="{{ root_path }}/korb.html" class="nav-basket" aria-label="Wissenskorb">
                     <svg width="18" height="18" viewBox="0 0 18 18" fill="none" aria-hidden="true">
                         <path d="M3 5h12l-1.2 8.5a1 1 0 0 1-1 .85H5.2a1 1 0 0 1-1-.85L3 5z"
                               stroke="currentColor" stroke-width="1.4" fill="none"
@@ -66,7 +68,7 @@
                               stroke="currentColor" stroke-width="1.4" fill="none"
                               stroke-linecap="round"/>
                     </svg>
-                    <span class="nav-korb-count" id="nav-korb-count" hidden></span>
+                    <span class="nav-basket-count" id="nav-basket-count" hidden></span>
                 </a>
             </div>
         </div>
@@ -85,14 +87,19 @@
             </div>
             <div class="footer-col footer-col-right">
                 <p>Technische Umsetzung: <a href="https://dhcraft.org" class="footer-link">Digital Humanities Craft OG</a></p>
-                <p>Lizenz: <a href="{{ root_path }}/impressum.html#lizenz" class="footer-link">CC BY 4.0</a>{% set fi %}{% block footer_info %}{% endblock %}{% endset %}{% if fi %} &middot; {{ fi }}{% endif %}</p>
+                <p>Lizenz: CC BY 4.0{% set fi %}{% block footer_info %}{% endblock %}{% endset %}{% if fi %} &middot; {{ fi }}{% endif %}</p>
+                <p>
+                    <a href="{{ root_path }}/impressum.html" class="footer-link">Impressum</a>
+                    &middot;
+                    <a href="https://github.com/chpollin/db_for_medieval_legal_transactions_edition" class="footer-link" rel="noopener">GitHub-Repository</a>
+                </p>
             </div>
         </div>
     </footer>
 
     <script src="{{ root_path }}/static/js/core.js?v={{ asset_v }}"></script>
     <script src="{{ root_path }}/static/js/provenance.js?v={{ asset_v }}"></script>
-    <script src="{{ root_path }}/static/js/wissenskorb.js?v={{ asset_v }}"></script>
+    <script src="{{ root_path }}/static/js/basket.js?v={{ asset_v }}"></script>
     {% block scripts %}{% endblock %}
 </body>
 </html>

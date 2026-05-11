@@ -23,10 +23,11 @@ _ENTITY_MAP = {
     "place":  (2, build_tooltip_place),
 }
 
-# rs/@type -> register list page filename (without .html)
+# rs/@type -> register detail directory (one HTML per entity inside).
+# Names mirror the build output: docs/register/<dir>/<id>.html.
 _ENTITY_PAGE = {
     "person": "register/persons",
-    "org": "register/organisations",
+    "org": "register/orgs",
     "place": "register/places",
 }
 
@@ -149,14 +150,10 @@ def _render_rs(element, registers):
         children = _render_children(element, registers)
         if ref and ref in register:
             root_path = registers[3] if len(registers) > 3 else "."
-            # Persons have profile pages under register/persons/<id>.html;
-            # orgs/places still link to the (not yet released) list register
-            # with a hash anchor.
-            if rs_type == "person":
-                href = f"{root_path}/register/persons/{ref}.html"
-            else:
-                page = _ENTITY_PAGE[rs_type]
-                href = f"{root_path}/{page}.html#{ref}"
+            # All three entity types now have detail pages under
+            # register/<dir>/<id>.html (see _ENTITY_PAGE).
+            page = _ENTITY_PAGE[rs_type]
+            href = f"{root_path}/{page}/{ref}.html"
             return (
                 f'<a class="anno-{rs_type}" data-ref="{escape(ref)}" '
                 f'title="{escape(tooltip)}" href="{escape(href)}">'

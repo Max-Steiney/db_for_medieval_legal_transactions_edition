@@ -2,7 +2,7 @@
 
 ## Was ist das hier?
 
-Dieses Repo ist die **Publikations-Schicht** der digitalen Edition „Stadt und Gemeinschaft Wien — Datenbank zu mittelalterlichen Wiener Rechtsgeschäften". Hier liegen Build-Code, Templates, statische Assets und das gerenderte HTML, das GitHub Pages ausliefert.
+Dieses Repo ist die **Publikations-Schicht** der Datenbank „Stadt und Gemeinschaft Wien, Datenbank zu mittelalterlichen Wiener Rechtsgeschäften". Hier liegen Build-Code, Templates, statische Assets und das gerenderte HTML, das GitHub Pages ausliefert.
 
 Die **Datengrundlage** (TEI-Quellen, Register, Normalisierungslisten, CSV-Pipeline) liegt im Schwester-Repo `../db_for_medieval_legal_transactions`. Beide Repos müssen nebeneinander geklont sein. `frontend/__init__.py` legt das Pipeline-Repo automatisch auf `sys.path`, damit `from pipeline.config import …` ohne Install-Step funktioniert.
 
@@ -17,7 +17,12 @@ docs/                     Build-Output, von GitHub Pages serviert
   /documents/             Regesten als HTMLs, aus TEI gerendert
   /tei/                   TEI-XML-Downloads der freigegebenen Quellen
   /data/                  JSON-Indexe (search, register, epics, timeline, quality, docs_aggregate)
-  /register/              Personenregister (HTML + JSON; Org/Ort vorbereitet, nicht freigegeben)
+  /register/              Personen-, Organisations- und Ortsregister
+                            persons.html | orgs.html | places.html       Listen-Seiten
+                            persons/<id>.html | orgs/<id>.html
+                              places/<id>.html                            Detail-Profile pro Entität
+                            persons.json | organisations.json
+                              places.json                                 Reverse-Index Entität --> Quellen
   /analysis/              Analyse-Bereich
                             auswertungen.html  quantitative Verteilungen (Donut, Bar, Tabelle), Drill-down + Cross-Nav
                             index.html         Abfragen (Template-Familien)
@@ -25,10 +30,11 @@ docs/                     Build-Output, von GitHub Pages serviert
                             zeitstrom.html         gestapelter Timeline-Bar-Chart mit Brush-to-Drill-down,
                                                    Stack-Kategorie isolierbar
                             personennetzwerk.html  Ego-Layout um eine Person, Klick verlagert Zentrum
-                            (Sankey — geplant; keine Karten — Ortsregister ist nicht freigegeben
-                            und Orts-Aussagen liegen außerhalb des Forschungsfokus)
+                            (Sankey — geplant; keine Karten — Orts-Aussagen liegen außerhalb
+                            des Forschungsfokus; Geo-Information bleibt auf textuelle Felder
+                            im Ortsprofil beschränkt, inkl. GeoNames-Link)
   korb.html               Wissenskorb (clientseitig, localStorage); CSV-Export, Cross-Tab-Sync
-  /project/               About, Statistik, Qualität, Editionsrichtlinien, Glossar
+  /project/               About, Statistik, Qualität, Annotationsrichtlinien, Glossar
   /static/                CSS, JS, Fonts
 knowledge/                konzeptionelle Wissensbasis (Obsidian-Markdown, Wiki-Links)
 verification/             unabhängiges Verifikations-Test-Set (Python, lxml)
@@ -63,7 +69,7 @@ python -m frontend build         # gegen frische CSVs neu bauen
 
 ## Begriffe und Leitentscheidungen
 
-Begriffsdefinitionen leben in [`knowledge/glossar.md`](knowledge/glossar.md) (Quellenkorpus, Quelle, Event, Rechtsgeschäft, Gesamtnennung, Individuelle Person, Menschen-Event, Rolle, Regest, Faksimile, Volltext, Erschließungsform).
+Begriffsdefinitionen leben in [`frontend/content/project/glossar.md`](frontend/content/project/glossar.md) (Quellenkorpus, Quelle, Event, Rechtsgeschäft, Gesamtnennung, Individuelle Person, Menschen-Event, Rolle, Regest, Faksimile, Volltext, Erschließungsform). Dieselbe Markdown-Quelle wird zur Glossar-Seite gerendert und speist UI-Tooltips über das `glossary_tip`-Macro.
 
 Leitentscheidungen (Begründung pro Entscheidung) leben in [`knowledge/decisions.md`](knowledge/decisions.md). Kanonische Begriffshierarchie: Quellenkorpus → Quelle → Event → Gesamtnennung. Kontrolliertes Rollenvokabular: `issuer`, `recipient`, `sealer or witness`, `other`, `none`.
 
@@ -94,8 +100,9 @@ Gestaltungsprinzip: maximaler Informations-Output. Nachvollziehbarkeit vor reduz
 | Provenienz- oder Glossar-Tooltip einsetzen | `frontend/templates/macros.html` (`prov_stat`, `prov_popover`, `prov_ratio_stat`, `glossary_tip`) |
 | Pro-Quelle-Daten (Personen/Events/Datum) | `frontend/aggregator.py::aggregate_docs` schreibt `docs/data/docs_aggregate.json` |
 | Erschließungsform | aus `events_in_sources.csv:event_in` aggregiert (abstract / seal / entry / nota); keine Heuristik im Frontend |
-| Editionsrichtlinien | `../db_for_medieval_legal_transactions/edition_guidelines.md` |
-| About / Impressum / Glossar | `frontend/content/` |
+| Annotationsrichtlinien (lokale Kopie) | `frontend/content/project/edition-guidelines.md`; kanonische Quelle im Schwester-Repo (`../db_for_medieval_legal_transactions/edition_guidelines.md`), Kopie bei Bedarf synchronisieren |
+| About / Glossar / Annotationsrichtlinien | `frontend/content/project/` |
+| Impressum | `frontend/content/impressum.md` |
 | TEI-Quellen | `../db_for_medieval_legal_transactions/sources/` |
 | Register | `../db_for_medieval_legal_transactions/indices/` |
 | Pipeline / CSV-Format | `../db_for_medieval_legal_transactions/knowledge/architecture.md` |

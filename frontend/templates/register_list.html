@@ -49,6 +49,12 @@
             {% endcall %}
             {% endif %}
 
+            {% if type_data %}
+            {% call sidebar_block('Typ', 'Mehrfachauswahl m&ouml;glich (ODER-Verkn&uuml;pfung)') %}
+                {{ sidebar_chip_group('filter-types', 'data-type', type_data, aria_label='Nach Typ filtern (Mehrfachauswahl)') }}
+            {% endcall %}
+            {% endif %}
+
             {{ sidebar_reset_button() }}
 
         </aside>
@@ -65,10 +71,10 @@
 
             <div class="main-toolbar">
                 <span class="result-count-wrap">
-                    {{ result_count(total_count, 'Personen') }}{% call glossary_tip('gloss-person-results', 'Individuelle Person') %}
+                    {{ result_count(total_count, register_label) }}{% if register_type == 'persons' %}{% call glossary_tip('gloss-person-results', 'Individuelle Person') %}
                         <p class="prov-def">Konsolidierte Identit&auml;t. Jede Zeile ist eine eindeutige Person, unabh&auml;ngig von der Anzahl ihrer Nennungen in den Quellen.</p>
                         <a class="prov-foot-link" href="{{ root_path }}/project/glossary.html#individuelle-person">&rarr; im Glossar</a>
-                    {% endcall %}
+                    {% endcall %}{% endif %}
                 </span>
                 {{ active_filters() }}
             </div>
@@ -77,9 +83,10 @@
                 <table class="index-table" id="register-table" data-type="{{ register_type }}">
                     <thead>
                         <tr>
-                            <th class="col-name" data-sort="n">Name</th>
-                            <th class="col-sex" data-sort="sex">Geschl.</th>
-                            <th class="col-roles">
+                            <th scope="col" class="col-name" data-sort="n">Name</th>
+                            {% if register_type == 'persons' %}
+                            <th scope="col" class="col-sex" data-sort="sex">Geschl.</th>
+                            <th scope="col" class="col-roles">
                                 <span class="prov-stat-container">Rollen{% call glossary_tip('col-info-roles', 'Rolle', placement='bottom') %}
                                     <p class="prov-def">Handlungsrolle der Person in den Events ihrer Quellen. Pillen: <strong>A</strong>&nbsp;Aussteller, <strong>E</strong>&nbsp;Empf&auml;nger, <strong>Z</strong>&nbsp;Zeuge / Siegler, <strong>S</strong>&nbsp;Sonstige. Eine Person kann in unterschiedlichen Quellen unterschiedliche Rollen einnehmen.</p>
                                     <footer class="prov-foot">
@@ -89,12 +96,15 @@
                                     </footer>
                                 {% endcall %}</span>
                             </th>
-                            <th class="col-docs" data-sort="dc">
+                            {% else %}
+                            <th scope="col" class="col-type" data-sort="tp">Typ</th>
+                            {% endif %}
+                            <th scope="col" class="col-docs" data-sort="dc">
                                 <span class="prov-stat-container">Quellen{% call glossary_tip('col-info-docs', 'Quellen mit Nennung', placement='bottom') %}
-                                    <p class="prov-def">Anzahl freigegebener Quellen, in denen die Person als <code>&lt;rs type="person"&gt;</code> annotiert ist. Quellenbereinigt: Mehrfachnennungen in derselben Quelle z&auml;hlen einmal.</p>
+                                    <p class="prov-def">Anzahl freigegebener Quellen, in denen die Entit&auml;t als <code>&lt;rs&gt;</code>-Annotation auftritt. Quellenbereinigt: Mehrfachnennungen in derselben Quelle z&auml;hlen einmal.</p>
                                     <footer class="prov-foot">
                                         <span class="prov-foot-source">
-                                            <code>pipeline/output/persons_in_sources.csv</code> distinct <code>file_key</code>
+                                            <code>pipeline/output/*_in_sources.csv</code> distinct <code>file_key</code>
                                         </span>
                                     </footer>
                                 {% endcall %}</span>

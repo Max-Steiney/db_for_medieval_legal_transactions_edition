@@ -76,8 +76,13 @@
         let table = document.getElementById('register-table');
         if (!table) return;
         let regType = table.dataset.type;
+        let isPersons = regType === 'persons';
+        let colCount = isPersons ? 4 : 3;
+        let entityLabel = (isPersons ? 'Personen'
+                           : (regType === 'orgs' ? 'Organisationen' : 'Orte'));
         let filterSexEl = document.getElementById('filter-sex');
         let filterRolesEl = document.getElementById('filter-roles');
+        let filterTypesEl = document.getElementById('filter-types');
         let filterCorporaEl = document.getElementById('filter-corpora');
         let resultCount = document.getElementById('result-count');
         let activeFiltersEl = document.getElementById('active-filters');
@@ -91,8 +96,9 @@
         let state = {
             query: '',
             letter: '',
-            sex: [],          // m/f/u — empty = all
-            roles: [],        // issuer/recipient/witness/other — OR logic
+            sex: [],          // m/f/u — empty = all (persons only)
+            roles: [],        // issuer/recipient/witness/other — OR logic (persons only)
+            types: [],        // orgs/places type facet — OR logic
             corpora: [],      // collection_path — OR logic
             yearMin: 0,
             yearMax: 9999,
@@ -126,7 +132,7 @@
                 let detailTr = document.createElement('tr');
                 detailTr.className = 'detail-row';
                 let td = document.createElement('td');
-                td.colSpan = 4;
+                td.colSpan = colCount;
                 let head = '<div class="detail-content">'
                     + '<p class="detail-id-line">'
                     + '<span class="detail-id-label">ID</span> '
@@ -136,7 +142,7 @@
                 } else {
                     let html = head
                         + '<table class="detail-doc-table"><thead><tr>'
-                        + '<th>Nr.</th><th>Datum</th><th>Quellenkorpus</th><th>Regest</th>'
+                        + '<th scope="col">Nr.</th><th scope="col">Datum</th><th scope="col">Quellenkorpus</th><th scope="col">Regest</th>'
                         + '</tr></thead><tbody>';
                     for (let i = 0; i < docs.length; i++) {
                         let d = docs[i];
@@ -207,27 +213,33 @@
         let renderer = TableInfra.createTableRenderer({
             tbodyId: 'register-tbody',
             noResultsId: 'no-results',
-            colCount: 4,
+            colCount: colCount,
             renderRow: function(entry, i, tr) {
                 tr.dataset.entityId = entry.id;
                 let sub = renderActivity(entry);
-                // Person name links to the profile page. The linked-sources
-                // badge in the same row remains the inline-detail trigger so
-                // sources can be inspected without leaving the page.
-                let profileHref = (window.ROOT_PATH || '.') + '/register/persons/'
-                    + encodeURIComponent(entry.id) + '.html';
-                let nameHtml = (regType === 'persons')
-                    ? '<a class="register-name register-name-linked" href="' + esc(profileHref) + '">' + esc(entry.n) + '</a>'
-                      + (sub ? '<span class="register-name-sub">' + sub + '</span>' : '')
-                    : '<button class="register-name register-name-linked"'
-                      + ' data-idx="' + i + '">' + esc(entry.n) + '</button>'
-                      + (sub ? '<span class="register-name-sub">' + sub + '</span>' : '');
-                let sexLabel = entry.sex === 'm' ? 'm' : entry.sex === 'f' ? 'w' : '–';
-                tr.innerHTML =
-                    '<td class="col-name">' + nameHtml + '</td>' +
-                    '<td class="col-sex">' + sexLabel + '</td>' +
-                    '<td class="col-roles">' + renderRolePills(entry.rl) + '</td>' +
-                    '<td class="col-docs">' + renderDocsBadge(entry) + '</td>';
+                // Every register row links its name to the profile page.
+                // The linked-sources badge in the same row stays as the
+                // inline-detail trigger so sources can be inspected without
+                // leaving the list.
+                let profileHref = (window.ROOT_PATH || '.') + '/register/'
+                    + regType + '/' + encodeURIComponent(entry.id) + '.html';
+                let nameHtml =
+                    '<a class="register-name register-name-linked" href="' + esc(profileHref) + '">' + esc(entry.n) + '</a>'
+                    + (sub ? '<span class="register-name-sub">' + sub + '</span>' : '');
+                if (isPersons) {
+                    let sexLabel = entry.sex === 'm' ? 'm' : entry.sex === 'f' ? 'w' : '–';
+                    tr.innerHTML =
+                        '<td class="col-name">' + nameHtml + '</td>' +
+                        '<td class="col-sex">' + sexLabel + '</td>' +
+                        '<td class="col-roles">' + renderRolePills(entry.rl) + '</td>' +
+                        '<td class="col-docs">' + renderDocsBadge(entry) + '</td>';
+                } else {
+                    let typeLabel = entry.tp ? esc(entry.tp) : '<span class="cell-empty">&ndash;</span>';
+                    tr.innerHTML =
+                        '<td class="col-name">' + nameHtml + '</td>' +
+                        '<td class="col-type">' + typeLabel + '</td>' +
+                        '<td class="col-docs">' + renderDocsBadge(entry) + '</td>';
+                }
             }
         });
 
@@ -326,6 +338,7 @@
         }
         bindMultiChips(filterSexEl,     'sex',     'data-sex');
         bindMultiChips(filterRolesEl,   'roles',   'data-role');
+        bindMultiChips(filterTypesEl,   'types',   'data-type');
         bindMultiChips(filterCorporaEl, 'corpora', 'data-corpus');
 
         // --- URL parameter restore (takes effect before the first applyFilters) ---
@@ -357,6 +370,7 @@
         }
         _restoreMulti('sex',     'sex',     filterSexEl,     'data-sex',    'is-active');
         _restoreMulti('roles',   'roles',   filterRolesEl,   'data-role',   'is-active');
+        _restoreMulti('types',   'types',   filterTypesEl,   'data-type',   'is-active');
         _restoreMulti('corpora', 'corpora', filterCorporaEl, 'data-corpus', 'active');
         let urlYearMin = urlParams.get('yearMin');
         let urlYearMax = urlParams.get('yearMax');
@@ -392,6 +406,12 @@
                     }
                 }
                 if (!any) return false;
+            }
+            if (skip !== 'types' && state.types.length) {
+                // Empty type bucketed as "" — entries without a type land
+                // there. Active selection of "" matches those rows.
+                let tp = entry.tp || '';
+                if (state.types.indexOf(tp) === -1) return false;
             }
             if (skip !== 'corpora' && state.corpora.length) {
                 let any = false;
@@ -469,6 +489,22 @@
                     c.hidden = (n === 0 && !isActive);
                 });
             }
+            if (filterTypesEl) {
+                let counts = {};
+                allEntries.forEach(function(e) {
+                    if (!matchesAllExcept(e, 'types')) return;
+                    let tp = e.tp || '';
+                    counts[tp] = (counts[tp] || 0) + 1;
+                });
+                filterTypesEl.querySelectorAll('.form-filter-chip').forEach(function(c) {
+                    let v = c.getAttribute('data-type');
+                    let n = counts[v] || 0;
+                    let ce = c.querySelector('.form-filter-chip-count');
+                    if (ce) ce.textContent = n;
+                    let isActive = c.classList.contains('is-active');
+                    c.hidden = (n === 0 && !isActive);
+                });
+            }
         }
 
         function updateHistogram() {
@@ -495,7 +531,7 @@
                 let pct = c > 0 ? Math.max(4, Math.round(c / maxCount * 100)) : 0;
                 bar.style.setProperty('--bar-height', pct + '%');
                 bar.setAttribute('data-count', c);
-                bar.title = dec + 'er: ' + c + ' Personen';
+                bar.title = dec + 'er: ' + c + ' ' + entityLabel;
             });
         }
 
@@ -534,6 +570,7 @@
             if (state.letter)  p.set('letter', state.letter);
             if (state.sex.length)     p.set('sex', state.sex.join(','));
             if (state.roles.length)   p.set('roles', state.roles.join(','));
+            if (state.types.length)   p.set('types', state.types.join(','));
             if (state.corpora.length) p.set('corpora', state.corpora.join(','));
             if (rangeSlider && rangeSlider.isFiltered && rangeSlider.isFiltered()) {
                 p.set('yearMin', state.yearMin);
@@ -609,6 +646,17 @@
                     applyFilters();
                 });
             }
+            if (state.types.length) {
+                let label = 'Typ: ' + state.types.map(function(t) { return t || 'ohne Angabe'; }).join(', ');
+                TableInfra.addFilterChip(activeFiltersEl, label, function() {
+                    state.types = [];
+                    if (filterTypesEl) filterTypesEl.querySelectorAll('.form-filter-chip').forEach(function(c) {
+                        c.classList.remove('is-active');
+                        c.setAttribute('aria-pressed', 'false');
+                    });
+                    applyFilters();
+                });
+            }
             if (rangeSlider && rangeSlider.isFiltered()) {
                 TableInfra.addFilterChip(activeFiltersEl, 'Zeitraum: ' + state.yearMin + '–' + state.yearMax,
                     function() { rangeSlider.reset(); });
@@ -622,6 +670,7 @@
                 state.letter = '';
                 state.sex = [];
                 state.roles = [];
+                state.types = [];
                 state.corpora = [];
                 let si = document.getElementById('search-input');
                 if (si) si.value = '';
@@ -634,6 +683,10 @@
                     c.setAttribute('aria-pressed', 'false');
                 });
                 if (filterRolesEl) filterRolesEl.querySelectorAll('.form-filter-chip').forEach(function(c) {
+                    c.classList.remove('is-active');
+                    c.setAttribute('aria-pressed', 'false');
+                });
+                if (filterTypesEl) filterTypesEl.querySelectorAll('.form-filter-chip').forEach(function(c) {
                     c.classList.remove('is-active');
                     c.setAttribute('aria-pressed', 'false');
                 });
@@ -653,7 +706,7 @@
                 return _compareEntries(a, b, state.sortKey, state.sortDir);
             });
             renderer.render(filteredEntries);
-            if (resultCount) resultCount.textContent = filteredEntries.length + ' Personen';
+            if (resultCount) resultCount.textContent = filteredEntries.length + ' ' + entityLabel;
             updateActiveFilters();
             updateChipCounts();
             updateHistogram();
@@ -676,6 +729,7 @@
             state.letter = '';
             state.sex = [];
             state.roles = [];
+            state.types = [];
             state.corpora = [];
             let si = document.getElementById('search-input');
             if (si) si.value = targetId;
@@ -688,7 +742,7 @@
 
         // --- Load data ---
         let loadingTbody = document.getElementById('register-tbody');
-        loadingTbody.innerHTML = '<tr><td colspan="4" class="cell-placeholder">Daten werden geladen…</td></tr>';
+        loadingTbody.innerHTML = '<tr><td colspan="' + colCount + '" class="cell-placeholder">Daten werden geladen…</td></tr>';
 
         fetch((window.ROOT_PATH || '.') + '/data/' + regType + '_search.json')
             .then(function(r) { return r.json(); })
@@ -732,7 +786,7 @@
             })
             .catch(function(err) {
                 console.warn('Register-Daten konnten nicht geladen werden:', err);
-                loadingTbody.innerHTML = '<tr><td colspan="4" class="cell-placeholder">Daten konnten nicht geladen werden.</td></tr>';
+                loadingTbody.innerHTML = '<tr><td colspan="' + colCount + '" class="cell-placeholder">Daten konnten nicht geladen werden.</td></tr>';
             });
     }
 

@@ -52,7 +52,7 @@ Der Datenbestand liegt in Form vorkonfektionierter JSON-Dateien vor, die bereits
 
 ### 2.1 Datenbestand
 
-Pro Ebene liegt eine eigene JSON vor: Quellen in `search.json` und `docs_lookup.json`, Personen in `persons_search.json`, vorberechnete Aggregate in `roles.json` (Rollen), `relations.json` (Beziehungen), `transactions.json` (Transaktionen). Organisations- und Ortsregister sind nicht freigegeben; ihre Aggregate erscheinen ausschließlich als anonymisierte Typ-Verteilungen in den Aggregat-JSONs.
+Pro Ebene liegt eine eigene JSON vor: Quellen in `search.json` und `docs_lookup.json`, Personen in `persons_search.json`, Organisationen in `orgs_search.json`, Orte in `places_search.json`, vorberechnete Aggregate in `roles.json` (Rollen), `relations.json` (Beziehungen), `transactions.json` (Transaktionen). Detail-Profile pro Entität liegen unter `register/persons/`, `register/orgs/`, `register/places/`.
 
 Zeitraum: freigegeben 1177 bis 1412 (Ausnahmen bis 1414 für QGW II/1 und II/2), mit nicht ausgewertetem Bereich 1418 bis 1447. Die Dokumentdichte ist stark ungleichverteilt, wenige Dutzend Dokumente in den ersten zwei Jahrhunderten, ein Dichte-Schwerpunkt im späten 14. Jahrhundert (insbesondere Stadtbücher). Konkrete Zahlen leben in den `coverage`-Blöcken der Aggregate und im Footer der Datenbank.
 
@@ -75,7 +75,7 @@ Das öffentlich freigegebene Personenregister liegt als flaches Array mit kompak
 
 Felder: `id` eindeutige Kennung, `n` Namensform, `fn`/`sn` Vor- und Familienname, `sex` Geschlecht, `d` Datierung, `dc` Anzahl der Quellen mit Nennung (*document count*), `qw` Qualitäts- bzw. Normalisierungsgewicht (`-1` unbekannt, `0` niedrig, `1` und `2` höhere Konfidenz).
 
-Organisations- und Ortsregister sind nicht freigegeben; ihre Daten erscheinen aktuell nur in den Aggregat-JSONs als Typ-Verteilungen. Bei Freigabe entstünden parallele Such-JSONs mit demselben Schema (Organisationen zusätzlich `tp` für Typ, Orte zusätzlich `lat`/`lng`).
+Organisations- und Ortsregister liegen parallel als `orgs_search.json` und `places_search.json` vor und nutzen dasselbe Such-Schema wie das Personenregister. Organisationen tragen zusätzlich `tp` für den Typ; Orte zusätzlich `lat`/`lng` als Rohzahl. Detail-Profile pro Entität stehen unter `register/orgs/<org__id>.html` und `register/places/<pl__id>.html`.
 
 ### 2.3 Vorkompilierte Aggregationen: die Aggregat-JSONs
 
@@ -258,7 +258,7 @@ Theoretischer Bezug: Die Offenlegung dieser Übersetzungskette von der Urkunde �
 
 - Welche Zählmodi sind pro Entitätstyp semantisch zulässig? Nennungen gibt es nur für Register-Entitäten, nicht für Quellen.
 - Wie gehen wir mit dem Anteil *unspecified* beim Geschlecht um? Im Datenmodell ist *f*/*m* binär, was die historische Realität vereinfacht und als Modellierungsentscheidung ausgewiesen werden sollte.
-- Wie behandeln wir Organisationen-Templates, solange das Organisationsregister nicht öffentlich freigegeben ist? Vorschlag: Aggregationen über Organisationstypen sind möglich, Einzelentitäten bleiben ausgeblendet, bis die Freigabe erfolgt.
+- Welche Granularität an Auswertungen über Organisationen und Orte ist wissenschaftlich tragbar, angesichts der unterschiedlichen Bearbeitungstiefe der drei Register? Detail-Profile sind freigegeben; Aggregationen über Organisationstypen, Ortstypen und Eigentumsbeziehungen lassen sich darauf aufbauend ergänzen.
 - Wie soll mit der Qualität der Normalisierung umgegangen werden? Vorschlag: Default-Schwellenwert `qw >= 0` (Unbekannt ausgeschlossen), mit Toggle zum Einschluss.
 - Wie positionieren wir das Interface zwischen *Exploration* (spielerisch, niedrigschwellig) und *Analyse* (nachvollziehbar, zitierfähig)? Beides ist möglich, sollte aber nicht verwechselt werden.
 

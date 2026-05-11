@@ -197,15 +197,34 @@ class TestSearchDataStructure:
         assert data[0]["i0"] == "1"
 
     def test_org_search_data_has_doc_count(self):
+        # Orgs with at least one released mention enter the list. Entities
+        # without a source link are filtered out (same convention as the
+        # persons register).
         orgs = {"org__test": {"name": "Test Org", "type": "Kloster"}}
-        data = _org_search_data(orgs, {})
-        assert data[0]["dc"] == 0
+        reverse = {"org__test": [
+            {"url": "a.html", "idno": "1",
+             "date_iso": "1287-01-01", "date_display": "1287",
+             "collection_path": "QGW/Vienna_1177-1414_ready",
+             "collection_label": "QGW", "regest": ""},
+        ]}
+        data = _org_search_data(orgs, reverse)
+        assert data[0]["dc"] == 1
+        assert data[0]["tp"] == "Kloster"
         assert "u" not in data[0]
 
     def test_place_search_data_has_doc_count(self):
-        places = {"pl__test": {"name": "Wien", "type": "settlement", "lat": "", "lng": ""}}
-        data = _place_search_data(places, {})
-        assert data[0]["dc"] == 0
+        places = {"pl__test": {"name": "Wien", "type": "settlement",
+                               "lat": "48.20", "lng": "16.36"}}
+        reverse = {"pl__test": [
+            {"url": "a.html", "idno": "1",
+             "date_iso": "1287-01-01", "date_display": "1287",
+             "collection_path": "QGW/Vienna_1177-1414_ready",
+             "collection_label": "QGW", "regest": ""},
+        ]}
+        data = _place_search_data(places, reverse)
+        assert data[0]["dc"] == 1
+        assert data[0]["tp"] == "settlement"
+        assert data[0]["lat"] == "48.20"
         assert "u" not in data[0]
 
 

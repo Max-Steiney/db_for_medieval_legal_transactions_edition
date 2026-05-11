@@ -42,7 +42,7 @@ Welche Korpora im UI tatsächlich sichtbar sind, entscheidet sich am Freigabesta
 
 Der Zeitraum 1418 bis 1447 ist im UI als „noch nicht ausgewertet" gekennzeichnet. Die Überlieferung existiert, die redaktionelle Auswertung steht aus.
 
-Organisationen und Orte sind als Register-Dimensionen angelegt, aber zum aktuellen Zeitpunkt nicht freigegeben. Nur das Personenregister ist öffentlich.
+Personen, Organisationen und Orte sind als freigegebene Register-Dimensionen angelegt. Jede Entität mit mindestens einer Nennung in einer freigegebenen Quelle erhält eine Listen- und eine Detail-Seite. Die Bearbeitungstiefe der drei Register unterscheidet sich; das macht die Datenbank im Detail-Profil und im Validierungsreport ersichtlich.
 
 ## Erschließungsformen
 

@@ -326,21 +326,21 @@ def test_rs_person_link_href():
 
 
 def test_rs_org_renders_as_link():
-    """Known org ref renders as <a> tag."""
+    """Known org ref renders as <a> pointing to the org detail page."""
     orgs = {"org__kloster": {"name": "Stift", "type": "Kloster"}}
     body = tei('<p><rs type="org" ref="org__kloster">das Stift</rs></p>')
     html = render_document(body, ({}, orgs, {}), root_path=".")
     assert "<a " in html
-    assert 'href="./register/organisations.html#org__kloster"' in html
+    assert 'href="./register/orgs/org__kloster.html"' in html
 
 
 def test_rs_place_renders_as_link():
-    """Known place ref renders as <a> tag."""
+    """Known place ref renders as <a> pointing to the place detail page."""
     places = {"pl__wien": {"name": "Wien", "type": "settlement", "lat": "", "lng": ""}}
     body = tei('<p><rs type="place" ref="pl__wien">Wien</rs></p>')
     html = render_document(body, ({}, {}, places), root_path=".")
     assert "<a " in html
-    assert 'href="./register/places.html#pl__wien"' in html
+    assert 'href="./register/places/pl__wien.html"' in html
 
 
 def test_orphaned_ref_renders_as_span():
