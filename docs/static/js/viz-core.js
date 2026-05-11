@@ -321,18 +321,51 @@ let VizCore = (function () {
     // and shows it. The caller has wired up the close handler once via
     // bindDrillOverlay().
     // ---------------------------------------------------------------------
+    // Element to return focus to after the drill-down overlay closes.
+    let _drillReturnFocus = null;
+
     function bindDrillOverlay(opts) {
         const id = opts.overlayId;
         const overlay = document.getElementById(id);
         const closeBtn = document.getElementById(id + '-close');
         if (!overlay || !closeBtn) return;
-        function close() { overlay.classList.add('hidden'); overlay.setAttribute('aria-hidden', 'true'); }
+
+        function close() {
+            overlay.classList.add('hidden');
+            overlay.setAttribute('aria-hidden', 'true');
+            if (_drillReturnFocus && typeof _drillReturnFocus.focus === 'function') {
+                try { _drillReturnFocus.focus(); } catch (_) {}
+            }
+            _drillReturnFocus = null;
+        }
+
         closeBtn.addEventListener('click', close);
         overlay.addEventListener('click', (e) => {
             if (e.target === overlay) close();   // click on backdrop
         });
+
+        // Modal keyboard handling: Escape closes, Tab/Shift+Tab traps focus
+        // inside the overlay (required by aria-modal="true", WCAG 2.4.3 / 2.1.2).
         document.addEventListener('keydown', (e) => {
-            if (e.key === 'Escape' && !overlay.classList.contains('hidden')) close();
+            if (overlay.classList.contains('hidden')) return;
+            if (e.key === 'Escape') { close(); return; }
+            if (e.key !== 'Tab') return;
+
+            const focusables = overlay.querySelectorAll(
+                'a[href], button:not([disabled]), [tabindex]:not([tabindex="-1"]), ' +
+                'input:not([disabled]), select:not([disabled]), textarea:not([disabled])'
+            );
+            if (!focusables.length) return;
+            const first = focusables[0];
+            const last = focusables[focusables.length - 1];
+            const active = document.activeElement;
+            if (e.shiftKey && active === first) {
+                e.preventDefault();
+                last.focus();
+            } else if (!e.shiftKey && active === last) {
+                e.preventDefault();
+                first.focus();
+            }
         });
     }
 
@@ -414,8 +447,19 @@ let VizCore = (function () {
                 '<tr><td colspan="5" class="aggregat-empty">Keine Quellen gefunden.</td></tr>';
         }
 
+        // Remember the previously focused element (return target on close),
+        // then move focus to the close button once the overlay is visible.
+        if (overlay.classList.contains('hidden')) {
+            _drillReturnFocus = document.activeElement;
+        }
         overlay.classList.remove('hidden');
         overlay.setAttribute('aria-hidden', 'false');
+        const closeBtn = document.getElementById(id + '-close');
+        if (closeBtn && typeof closeBtn.focus === 'function') {
+            requestAnimationFrame(function () {
+                try { closeBtn.focus(); } catch (_) {}
+            });
+        }
     }
 
     // ---------------------------------------------------------------------

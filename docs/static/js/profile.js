@@ -135,12 +135,15 @@
                 }
                 sortHeaders.forEach(function (h) {
                     h.classList.remove('sorted-asc', 'sorted-desc');
+                    h.setAttribute('aria-sort', 'none');
                 });
                 if (state.key !== null) {
                     th.classList.add(state.dir === 1 ? 'sorted-asc' : 'sorted-desc');
+                    th.setAttribute('aria-sort', state.dir === 1 ? 'ascending' : 'descending');
                 }
                 applySort();
             });
+            th.setAttribute('aria-sort', 'none');
         });
     }
 

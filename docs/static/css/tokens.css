@@ -41,8 +41,8 @@
     --anno-fn-recipient-bg: rgba(46, 122, 136, 0.06);
     --anno-fn-witness:      #6b6040;
     --anno-fn-witness-bg:   rgba(107, 96, 64, 0.06);
-    --anno-fn-other:        #7a6b8c;
-    --anno-fn-other-bg:     rgba(122, 107, 140, 0.06);
+    --anno-fn-other:        #5e5174;   /* WCAG AA ≥4.5:1 on white */
+    --anno-fn-other-bg:     rgba(94, 81, 116, 0.06);
 
     --anno-trigger:         #8c5a2e;
     --anno-attr:            #6b6560;

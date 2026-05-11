@@ -179,10 +179,15 @@ let TableInfra = (function() {
                     state.sortKey = key;
                     state.sortDir = 1;
                 }
-                headers.forEach(function(h) { h.classList.remove('sorted-asc', 'sorted-desc'); });
+                headers.forEach(function(h) {
+                    h.classList.remove('sorted-asc', 'sorted-desc');
+                    h.setAttribute('aria-sort', 'none');
+                });
                 th.classList.add(state.sortDir === 1 ? 'sorted-asc' : 'sorted-desc');
+                th.setAttribute('aria-sort', state.sortDir === 1 ? 'ascending' : 'descending');
                 applyFilters();
             });
+            th.setAttribute('aria-sort', 'none');
         });
     }
 

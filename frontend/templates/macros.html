@@ -111,21 +111,21 @@
 </div>
 {% endmacro %}
 
-{# Result count display #}
+{# Result count display. aria-live announces new totals after filter/search. #}
 {% macro result_count(count, label='Quellen') %}
-<div class="result-count" id="result-count">
+<div class="result-count" id="result-count" aria-live="polite" aria-atomic="true">
     {{ count }} {{ label }}
 </div>
 {% endmacro %}
 
-{# Active filters container (JS-managed) #}
+{# Active filters container (JS-managed). aria-live announces pill changes. #}
 {% macro active_filters() %}
-<div class="active-filters" id="active-filters"></div>
+<div class="active-filters" id="active-filters" aria-live="polite" aria-label="Aktive Filter"></div>
 {% endmacro %}
 
-{# No-results message #}
+{# No-results message. role="status" makes the empty state an implicit live region. #}
 {% macro no_results(message='Keine Einträge gefunden.') %}
-<div class="no-results hidden" id="no-results">
+<div class="no-results hidden" id="no-results" role="status">
     <p>{{ message }}</p>
 </div>
 {% endmacro %}

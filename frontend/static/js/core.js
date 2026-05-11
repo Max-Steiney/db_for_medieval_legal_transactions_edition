@@ -99,6 +99,15 @@ let EdCore = (function() {
                 btn.setAttribute('aria-expanded', 'false');
             }
         });
+
+        // Escape closes the hamburger menu and returns focus to the trigger.
+        document.addEventListener('keydown', function(e) {
+            if (e.key === 'Escape' && links.classList.contains('open')) {
+                links.classList.remove('open');
+                btn.setAttribute('aria-expanded', 'false');
+                btn.focus();
+            }
+        });
     }
 
 

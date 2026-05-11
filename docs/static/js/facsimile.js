@@ -28,6 +28,18 @@
         function loadCurrentImage() {
             if (!imgEl || currentPage >= facsUrls.length) return;
             let url = facsUrls[currentPage];
+            // Per-page alt text: append page number for multi-page sources
+            // so screen readers can distinguish facsimile pages.
+            let baseAlt = imgEl.getAttribute('data-alt-base');
+            if (!baseAlt) {
+                baseAlt = imgEl.getAttribute('alt') || '';
+                imgEl.setAttribute('data-alt-base', baseAlt);
+            }
+            if (facsUrls.length > 1) {
+                imgEl.alt = baseAlt + ', Seite ' + (currentPage + 1) + ' von ' + facsUrls.length;
+            } else {
+                imgEl.alt = baseAlt;
+            }
             if (loaded[url]) { imgEl.src = url; return; }
             imgEl.classList.add('loading');
             imgEl.src = url;

@@ -13,6 +13,12 @@
 {% block content %}
 <article class="document{% if meta.facsimile_urls %} has-facsimile{% endif %}">
 
+    {# Screen-reader-only H1: toolbar breadcrumb and print H1 already carry
+       the source identity visually; this gives AT users a proper page heading. #}
+    <h1 class="sr-only">
+        Nr. {{ meta.idno }}{% if meta.date_display %}, {{ meta.date_display }}{% endif %}{% if meta.place %}, {{ meta.place }}{% endif %}
+    </h1>
+
     {#
         Sticky-Toolbar, zwei semantische Zonen:
           IDENTITY (links): Breadcrumb-Kette + Meta-Strip (Originaldatierung,
