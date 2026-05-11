@@ -1,13 +1,13 @@
 /* ==========================================================================
-   Stadt und Gemeinschaft Wien - Analyse-Seite
-   Capability-Manifest
+   Stadt und Gemeinschaft Wien — analysis page
+   Capability manifest
 
-   Beschreibt deklarativ, welche (Subjekt, Filter-Set)-Tupel ueber welche
-   vorberechnete Aggregation oder welchen Register-Filter aufloesbar sind.
+   Declarative description of which (subject, filter-set) tuples can be
+   resolved via which pre-computed aggregation or which register filter.
 
-   Eine Capability ist ein Eintrag mit:
-     filters:  Array von Filter-IDs, die in state.filters EXAKT gesetzt sein muessen
-     files:    Array von benoetigten Daten-Dateinamen (relativ zu /data/)
+   A capability is an entry with:
+     filters:  array of filter IDs that must be set EXACTLY in state.filters
+     files:    array of required data file names (relative to /data/)
      resolve:  function(filters, dataMap) -> {
                  count:          number,
                  drillDownIds?:  [file_keys],
@@ -15,8 +15,8 @@
                  caveats?:       [strings]
                }
 
-   Capabilities sind pro Subjekt von SPEZIFISCH zu GENERISCH sortiert.
-   pick() liefert den ersten Match.
+   Capabilities are ordered per subject from SPECIFIC to GENERIC.
+   pick() returns the first match.
 
    Public API:
      AnalysisCapabilities.pick(subject, filters)
@@ -62,7 +62,7 @@
 
     let CAPS = {
 
-        /* ============ PERSONEN (Nennungen, nicht Individuen) ============ */
+        /* ============ PERSONS (mentions, not individuals) ============ */
         persons: [
 
             /* sex + role -> role_by_sex */
@@ -99,7 +99,7 @@
                 }
             },
 
-            /* sex + qw -> Register */
+            /* sex + qw -> register */
             {
                 filters: ['sex', 'qw'],
                 files: ['persons_search.json'],
@@ -113,7 +113,7 @@
                 }
             },
 
-            /* role -> Summe ueber sex */
+            /* role -> sum over sex */
             {
                 filters: ['role'],
                 files: ['epic_a.json'],
@@ -143,7 +143,7 @@
                 }
             },
 
-            /* org_category -> Summe ueber zugehoerige org_types */
+            /* org_category -> sum over associated org_types */
             {
                 filters: ['org_category'],
                 files: ['epic_a.json', 'categories.json'],
@@ -165,7 +165,7 @@
                 }
             },
 
-            /* sex -> Coverage (individuelle Personen) */
+            /* sex -> coverage (individual persons) */
             {
                 filters: ['sex'],
                 files: ['epic_a.json'],
@@ -178,7 +178,7 @@
                 }
             },
 
-            /* qw -> Register */
+            /* qw -> register */
             {
                 filters: ['qw'],
                 files: ['persons_search.json'],
@@ -190,7 +190,7 @@
                 }
             },
 
-            /* leer -> person_count */
+            /* empty -> person_count */
             {
                 filters: [],
                 files: ['epic_a.json'],
@@ -200,7 +200,7 @@
             }
         ],
 
-        /* ============ QUELLEN ============ */
+        /* ============ SOURCES ============ */
         sources: [
 
             /* korpus + decade */
@@ -234,7 +234,7 @@
                 }
             },
 
-            /* leer */
+            /* empty */
             {
                 filters: [],
                 files: ['timeline.json'],
@@ -244,7 +244,7 @@
             }
         ],
 
-        /* ============ RECHTSGESCHAEFTE ============ */
+        /* ============ EVENTS (legal transactions) ============ */
         events: [
 
             /* tx_type */
@@ -270,7 +270,7 @@
                 }
             },
 
-            /* leer */
+            /* empty */
             {
                 filters: [],
                 files: ['epic_a.json'],
@@ -280,7 +280,7 @@
             }
         ],
 
-        /* ============ BEZIEHUNGEN ============ */
+        /* ============ RELATIONSHIPS ============ */
         relationships: [
 
             /* rel_type + sex */
@@ -309,7 +309,7 @@
                 }
             },
 
-            /* leer */
+            /* empty */
             {
                 filters: [],
                 files: ['epic_b.json'],

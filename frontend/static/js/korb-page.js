@@ -1,5 +1,5 @@
-// Wissenskorb-Seite: rendert die gesammelte Quellen-Liste; Remove-/Clear-/
-// CSV-Export-Aktionen. Daten kommen aus dem Wissenskorb-Modul.
+// Knowledge basket page: renders the collected source list and provides
+// remove / clear / CSV export actions. Data comes from the Wissenskorb module.
 (function () {
     'use strict';
 
@@ -29,7 +29,7 @@
         if (empty) empty.hidden = true;
 
         const ROOT = (window.ROOT_PATH || '.');
-        // Sortiert nach Datum (aufsteigend)
+        // Sort by date (ascending).
         const sorted = items.slice().sort((a, b) =>
             (a.date || '').localeCompare(b.date || ''));
         tbody.innerHTML = sorted.map(it => {
@@ -98,7 +98,7 @@
                 URL.revokeObjectURL(url);
             });
         }
-        // Cross-Tab + same-tab Updates
+        // Cross-tab and same-tab updates.
         window.addEventListener('wissenskorb-change', render);
         window.addEventListener('storage', (e) => {
             if (e.key === 'sugw-wissenskorb-v1') render();

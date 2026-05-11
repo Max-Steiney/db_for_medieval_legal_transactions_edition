@@ -10,14 +10,14 @@
 
 
     /* ------------------------------------------------------------------
-       Annotationen — alle annotierten Layer aus dem TEI als strukturierte
-       Tabellen unter Editionstext + Digitalisat. Permanenter Bereich,
-       kein Toggle. Vier Sub-Tabellen:
-         1. Personen / Organisationen / Orte (mit Rolle, Attribute, Event,
-            Abschnitt)
-         2. Ereignisse (Event-Refs + Section-Typ + Dispositiv-Verb)
-         3. Dispositivformeln (Trigger-Strings)
-         4. Editorische Ergaenzungen (.anno-add)
+       Annotations — all annotated layers from the TEI as structured
+       tables below edition text + facsimile. Permanent area, no toggle.
+       Four sub-tables:
+         1. Persons / organisations / places (with role, attributes,
+            event, section)
+         2. Events (event refs + section type + dispositive verb)
+         3. Dispositive formulas (trigger strings)
+         4. Editorial additions (.anno-add)
        ------------------------------------------------------------------ */
 
     function initAssertionsView() {
@@ -65,8 +65,8 @@
             'other': 'Sonstige'
         };
 
-        // ---- 1. Entitaeten: zuerst innerhalb von Funktionsrollen-Spans
-        //         (mit Rolle), dann standalone (ohne Rolle).
+        // ---- 1. Entities: first inside function-role spans (with role),
+        //         then standalone (without role).
         let entities = [];
         let seen = new Set();
         let fnSpans = body.querySelectorAll('.anno-fn');
@@ -120,7 +120,7 @@
             });
         }
 
-        // ---- 2. Ereignisse: pro Event-Span eine Zeile (deduped per ref).
+        // ---- 2. Events: one row per event span (deduped by ref).
         let events = [];
         let eventSeen = new Set();
         let eventSpans = body.querySelectorAll('.anno-event');
@@ -137,7 +137,7 @@
             });
         }
 
-        // ---- 3. Dispositivformeln / Trigger-Strings.
+        // ---- 3. Dispositive formulas / trigger strings.
         let triggers = [];
         let triggerSpans = body.querySelectorAll('.anno-trigger');
         for (let t = 0; t < triggerSpans.length; t++) {
@@ -154,7 +154,7 @@
             });
         }
 
-        // ---- 4. Editorische Ergaenzungen (.anno-add).
+        // ---- 4. Editorial additions (.anno-add).
         let adds = [];
         let addSpans = body.querySelectorAll('.anno-add');
         for (let a = 0; a < addSpans.length; a++) {
@@ -165,7 +165,7 @@
             });
         }
 
-        // ---- Summary in der Header-Pille.
+        // ---- Summary in the header pill.
         let summaryParts = [];
         if (entities.length) {
             summaryParts.push(entities.length + ' Entität' + (entities.length !== 1 ? 'en' : ''));
@@ -188,11 +188,11 @@
 
         let html = '';
 
-        // Provenance-Tooltip pro Zeile: jede Annotation erhaelt
-        // data-tip-title + data-tip-body, sodass tooltips.js den
-        // einheitlichen Daten-Tooltip zeigt. Body enthaelt das TEI-
-        // Markup als Schnipsel + Abschnitts-Kontext, damit klar wird,
-        // welches Quell-Element die Zeile abbildet.
+        // Per-row provenance tooltip: each annotation gets
+        // data-tip-title + data-tip-body so tooltips.js renders the
+        // unified data tooltip. Body contains the TEI markup as a
+        // snippet plus section context, making clear which source
+        // element the row reflects.
         function entityTipBody(f) {
             let parts = [];
             let rsAttrs = ['type="' + f.type.toLowerCase() + '"'];
@@ -226,10 +226,10 @@
         }
 
         function escAttr(s) {
-            // EdCore.esc liefert &lt;/&gt;/&amp;, escapt aber nicht das
-            // doppelte Anfuehrungszeichen — fuer Attribut-Werte muessen
-            // " ebenfalls escapt sein, sonst beendet das erste " im
-            // Body das Attribut vorzeitig.
+            // EdCore.esc emits &lt;/&gt;/&amp; but does not escape the
+            // double quote — for attribute values " must also be
+            // escaped, otherwise the first " in the body would
+            // prematurely close the attribute.
             return esc(s).replace(/"/g, '&quot;');
         }
         function tipAttrs(title, body) {
@@ -237,9 +237,9 @@
         }
 
         if (entities.length) {
-            // Profil-Verlinkung: Personen-Refs (pe__) bekommen einen Link
-            // auf register/persons/<id>.html. Orgs/Orte haben (noch) keine
-            // Profilseiten, deshalb hier nur der Klartext-Name.
+            // Profile linking: person refs (pe__) get a link to
+            // register/persons/<id>.html. Orgs/places have no profile
+            // pages (yet), so plain-text name only there.
             let rootPath = (document.body && document.body.dataset.rootPath) || '..';
             html += '<section class="annotation-group">'
                 + '<h3 class="annotation-group-title">Personen, Organisationen, Orte</h3>'
@@ -428,12 +428,12 @@
 
 
     /* ------------------------------------------------------------------
-       Annotation Toggle — Detail-Legende ist die Steuerung. Klick auf
-       eine Gruppe (Entitaeten/Funktionsrollen/Attribute/Dispositivformel)
-       schaltet ihre Layer-Klasse auf `.doc-body` um. Status persistiert
-       per localStorage; Klassen folgen dem alten classMap-Schema, damit
-       die existenten CSS-Selektoren (.doc-body.hide-entities .anno-...)
-       weiter greifen.
+       Annotation toggle — detail legend is the control. Clicking a
+       group (entities / function roles / attributes / dispositive
+       formula) toggles its layer class on `.doc-body`. State persists
+       via localStorage; classes follow the existing classMap scheme so
+       current CSS selectors (.doc-body.hide-entities .anno-...) keep
+       working.
        ------------------------------------------------------------------ */
 
     function initAnnotationToggle() {

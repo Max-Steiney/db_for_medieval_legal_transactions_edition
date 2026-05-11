@@ -1,9 +1,9 @@
 /* ==========================================================================
    Stadt und Gemeinschaft Wien — Datenbank
-   Personenregister: Sidebar-Filter, Sort, Sub-Label-Disambiguierung,
-   Faceted-Search-Counts. Architektur parallel zur Quellenseite (index.js):
-   gleiche Komponenten aus TableInfra (Range-Slider, Search, Sort, Renderer),
-   gleiche Tooltip-/Popover-Familie (data-tip-* + provenance.js).
+   Person register: sidebar filters, sort, sub-label disambiguation,
+   faceted-search counts. Architecture parallels the sources page (index.js):
+   same components from TableInfra (range slider, search, sort, renderer),
+   same tooltip/popover family (data-tip-* + provenance.js).
    ========================================================================== */
 
 (function() {
@@ -11,11 +11,11 @@
 
     let esc = EdCore.esc;
 
-    // Rollen-Pillen analog zu den Erschliessungsform-Pillen der Quellenseite:
-    // einheitliche Form-Pille in --anno-person-Blau, Differenzierung rein
-    // ueber das SVG-Icon. currentColor laesst die Icons die Pillen-Farbe erben.
+    // Role pills mirror the form pills on the sources page: a uniform pill
+    // in --anno-person blue, differentiated purely by SVG icon. currentColor
+    // lets the icons inherit the pill colour.
     let ROLE_ICONS = {
-        // Aussteller: Box mit Pfeil nach rechts heraus ("ausgegeben")
+        // issuer: box with arrow pointing out to the right ("issued")
         issuer:
             '<svg viewBox="0 0 16 16" aria-hidden="true">' +
             '<rect x="2" y="3.5" width="6" height="9" rx="0.5" ' +
@@ -23,7 +23,7 @@
             '<path d="M9 8h5m0 0l-2.3-2.3M14 8l-2.3 2.3" ' +
             'stroke="currentColor" stroke-width="1.3" stroke-linecap="round" stroke-linejoin="round" fill="none"/>' +
             '</svg>',
-        // Empfaenger: Pfeil von links in eine Box (gespiegelter issuer)
+        // recipient: arrow from the left into a box (mirrored issuer)
         recipient:
             '<svg viewBox="0 0 16 16" aria-hidden="true">' +
             '<rect x="8" y="3.5" width="6" height="9" rx="0.5" ' +
@@ -31,16 +31,16 @@
             '<path d="M2 8h5m0 0L4.7 5.7M7 8L4.7 10.3" ' +
             'stroke="currentColor" stroke-width="1.3" stroke-linecap="round" stroke-linejoin="round" fill="none"/>' +
             '</svg>',
-        // Zeuge / Siegler: Petschaft — identisch zum Siegel-Icon der
-        // Quellenseite (FORM_ICONS.s). Konsistente visuelle Sprache: wo
-        // ein Siegel klebt, ist auch ein Siegler.
+        // witness / sealer: signet — identical to the seal icon on the
+        // sources page (FORM_ICONS.s). Consistent visual language: where a
+        // seal hangs, there is also a sealer.
         witness:
             '<svg viewBox="0 0 16 16" aria-hidden="true">' +
             '<circle cx="8" cy="8" r="5" stroke="currentColor" stroke-width="1.4" fill="none"/>' +
             '<circle cx="8" cy="8" r="2.2" stroke="currentColor" stroke-width="1.1" fill="none"/>' +
             '<circle cx="8" cy="8" r="0.6" fill="currentColor"/>' +
             '</svg>',
-        // Sonstige: drei horizontale Punkte (neutral, nicht alarmierend)
+        // other: three horizontal dots (neutral, not alarming)
         other:
             '<svg viewBox="0 0 16 16" aria-hidden="true">' +
             '<circle cx="4" cy="8" r="1.2" fill="currentColor"/>' +
@@ -60,9 +60,9 @@
         witness:   'Person tritt als Zeuge oder Siegler in mindestens einer Quelle auf.',
         other:     'Person nimmt eine sonstige, nicht weiter klassifizierte Rolle ein.'
     };
-    // Info-"i" als Affordance an Sidebar-Chips — visuelles Signal, dass es
-    // eine Definition gibt. Hover ueber den ganzen Chip zeigt den Edition-
-    // Tooltip mit ROLE_DESCRIPTIONS.
+    // Info "i" as an affordance on sidebar chips — visual cue that a
+    // definition exists. Hovering the chip shows the edition tooltip with
+    // ROLE_DESCRIPTIONS.
     let INFO_ICON =
         '<svg viewBox="0 0 16 16" aria-hidden="true">' +
         '<circle cx="8" cy="8" r="6.5" stroke="currentColor" stroke-width="1.3" fill="none"/>' +
@@ -82,8 +82,8 @@
         let resultCount = document.getElementById('result-count');
         let activeFiltersEl = document.getElementById('active-filters');
 
-        // Forward-Deklarationen wegen Init-Reihenfolge (initRangeSlider
-        // ruft applyFilters synchron, bevor wir hier zurueckkommen).
+        // Forward declarations due to init order (initRangeSlider calls
+        // applyFilters synchronously before we return here).
         let rangeSlider;
         let urlSyncEnabled = false;
 
@@ -91,9 +91,9 @@
         let state = {
             query: '',
             letter: '',
-            sex: [],          // Array m/f/u — leer = alle
-            roles: [],        // Array issuer/recipient/witness/other — ODER-Logik
-            corpora: [],      // Array collection_path — ODER-Logik
+            sex: [],          // m/f/u — empty = all
+            roles: [],        // issuer/recipient/witness/other — OR logic
+            corpora: [],      // collection_path — OR logic
             yearMin: 0,
             yearMax: 9999,
             sortKey: 'n',
@@ -102,7 +102,7 @@
 
         let filteredEntries = [];
 
-        // --- Detail JSON cache (Inline-Detailzeile pro Person) ---
+        // --- Detail JSON cache (inline detail row per person) ---
         let detailCache = null;
         let jsonFile = (window.ROOT_PATH || '.') + '/register/' + regType + '.json';
 
@@ -154,9 +154,9 @@
             });
         }
 
-        // --- Renderer: Name-Cell mit Sub-Label, Geschl., Rollen-Pillen, Quellen ---
+        // --- Renderer: name cell with sub-label, sex, role pills, linked sources ---
         function renderActivity(entry) {
-            // Sub-Label unter dem Namen: 'belegt 1340 · QGW II/1 · Nr. 66'
+            // Sub-label beneath the name: 'belegt 1340 · QGW II/1 · Nr. 66'
             let bits = [];
             if (entry.am) {
                 let span = (entry.ax && entry.ax !== entry.am)
@@ -186,9 +186,9 @@
         }
 
         function renderDocsBadge(entry) {
-            // Spalten-Header "Quellen" gibt schon den Kontext — die Zelle
-            // zeigt nur die Anzahl mit dotted underline als Tooltip-
-            // Affordance. Hover zeigt "X Quelle/n" + Korpus-Aufschluesselung.
+            // The column header "Quellen" already gives the context — the
+            // cell shows only the count with a dotted underline as tooltip
+            // affordance. Hover reveals "X Quelle/n" plus per-corpus breakdown.
             let body = '';
             if (entry._coCount && entry._coCount.length) {
                 body = entry._coCount.map(function(c) {
@@ -211,10 +211,9 @@
             renderRow: function(entry, i, tr) {
                 tr.dataset.entityId = entry.id;
                 let sub = renderActivity(entry);
-                // Personen-Namen: Link auf Profilseite. Klick auf den
-                // Quellen-Badge in derselben Zeile bleibt der Inline-
-                // Detail-Trigger, damit man Quellen einsehen kann ohne
-                // die Seite zu verlassen.
+                // Person name links to the profile page. The linked-sources
+                // badge in the same row remains the inline-detail trigger so
+                // sources can be inspected without leaving the page.
                 let profileHref = (window.ROOT_PATH || '.') + '/register/persons/'
                     + encodeURIComponent(entry.id) + '.html';
                 let nameHtml = (regType === 'persons')
@@ -232,13 +231,13 @@
             }
         });
 
-        // --- Click-Handler fuer Name + Quellen-Badge ---
-        // Im Personenregister fuehrt der Name-Link direkt aufs Profil
-        // (kein Inline-Detail). Der Quellen-Badge bleibt der
-        // Inline-Trigger; Org/Ort behalten den Button-Toggle.
+        // --- Click handler for name + linked-sources badge ---
+        // In the person register the name link goes straight to the profile
+        // (no inline detail). The linked-sources badge stays the inline
+        // trigger; org/place keep the button toggle.
         let tbody = document.getElementById('register-tbody');
         tbody.addEventListener('click', function(e) {
-            // Anker-Tags (<a href>) niemals abfangen — Browser-Navigation.
+            // Never intercept anchor tags (<a href>) — browser navigation.
             if (e.target.closest('a')) return;
             let trigger = e.target.closest('.register-name-linked, .doc-count-link');
             if (!trigger) return;
@@ -252,13 +251,12 @@
             if (entry) renderDetailRow(entry, tr);
         });
 
-        // --- Shared Infrastructure: Suche + Sort-Header + Range-Slider ---
+        // --- Shared infrastructure: search + sort headers + range slider ---
         TableInfra.setupSearch(state, applyFilters);
         TableInfra.setupSortHeaders('register-table', state, applyFilters);
         _applyInitialBarHeights();
         rangeSlider = TableInfra.initRangeSlider(state, applyFilters);
 
-        // --- Alphabet-Bar ---
         let alphaBtns = document.querySelectorAll('.alpha-btn');
         alphaBtns.forEach(function(btn) {
             btn.addEventListener('click', function() {
@@ -274,11 +272,11 @@
             });
         });
 
-        // --- Rollen-Icons in die Sidebar-Chips injizieren (Single-Source-
-        // of-Truth: ROLE_ICONS aus dem JS, kein Duplikat im Template).
-        // Plus: data-tip-* fuer Edition-Tooltip mit Definition + "i"-
-        // Affordance. So sieht man im Filter sofort, welches Tabellen-Icon
-        // zu welcher Rolle gehoert UND was die Rolle bedeutet.
+        // Inject role icons into the sidebar chips (single source of truth:
+        // ROLE_ICONS from the JS, no duplicate in the template). Plus
+        // data-tip-* for the edition tooltip with the definition and an "i"
+        // affordance. Users immediately see which table icon belongs to
+        // which role AND what the role means.
         if (filterRolesEl) {
             filterRolesEl.querySelectorAll('.form-filter-chip').forEach(function(c) {
                 let k = c.getAttribute('data-role');
@@ -292,7 +290,7 @@
                 let desc = ROLE_DESCRIPTIONS[k] || '';
                 if (label) c.setAttribute('data-tip-title', label);
                 if (desc)  c.setAttribute('data-tip-body', desc);
-                // Native title entfernen — Edition-Tooltip uebernimmt
+                // Drop the native title — the edition tooltip takes over.
                 c.removeAttribute('title');
                 if (desc) {
                     let info = document.createElement('span');
@@ -303,7 +301,7 @@
             });
         }
 
-        // --- Multi-Select-Chip-Helper (Sex / Roles / Corpora) ---
+        // --- Multi-select chip helper (sex / roles / corpora) ---
         function bindMultiChips(container, key, attr) {
             if (!container) return;
             container.querySelectorAll('.form-filter-chip, .chip').forEach(function(chip) {
@@ -330,7 +328,7 @@
         bindMultiChips(filterRolesEl,   'roles',   'data-role');
         bindMultiChips(filterCorporaEl, 'corpora', 'data-corpus');
 
-        // --- URL-Parameter-Restore (vor erstem applyFilters wirksam) ---
+        // --- URL parameter restore (takes effect before the first applyFilters) ---
         let urlParams = new URLSearchParams(window.location.search);
         let urlQuery = urlParams.get('q');
         if (urlQuery) {
@@ -372,7 +370,7 @@
             }
         }
 
-        // --- Faceted-Search: matchesAllExcept(entry, skip) ---
+        // --- Faceted search: matchesAllExcept(entry, skip) ---
         function entryYears(entry) {
             let am = parseInt(entry.am);
             let ax = parseInt(entry.ax);
@@ -408,8 +406,8 @@
                 let yrs = entryYears(entry);
                 if (yrs[0] === null) return false;
                 let ymin = yrs[0], ymax = yrs[1] !== null ? yrs[1] : yrs[0];
-                // Person matcht, wenn ihr Aktivitaetsintervall den Slider-Bereich
-                // ueberlappt — analog zum Quellen-Histogramm (decade-overlap).
+                // Match if the person's activity interval overlaps the slider
+                // range — analogous to the sources histogram (decade overlap).
                 if (ymax < state.yearMin || ymin > state.yearMax) return false;
             }
             if (skip !== 'query' && state.query) {
@@ -421,9 +419,8 @@
             return true;
         }
 
-        // --- Live-Counts an Sidebar-Chips ---
+        // --- Live counts on sidebar chips ---
         function updateChipCounts() {
-            // Geschlecht
             if (filterSexEl) {
                 let counts = {};
                 allEntries.forEach(function(e) {
@@ -440,7 +437,6 @@
                     c.hidden = (n === 0 && !isActive);
                 });
             }
-            // Rollen
             if (filterRolesEl) {
                 let counts = {};
                 allEntries.forEach(function(e) {
@@ -457,7 +453,6 @@
                     c.hidden = (n === 0 && !isActive);
                 });
             }
-            // Korpora
             if (filterCorporaEl) {
                 let counts = {};
                 allEntries.forEach(function(e) {
@@ -511,7 +506,7 @@
             });
         }
 
-        // --- Sortier-Helfer (analog Quellenseite, Klammer-Strip + locale) ---
+        // --- Sort helpers (parallels the sources page: bracket strip + locale) ---
         function _sortKey(v) {
             return String(v)
                 .replace(/[\[\]]/g, '')
@@ -531,7 +526,7 @@
             return _sortKey(va).localeCompare(_sortKey(vb), 'de') * dir;
         }
 
-        // --- URL aus State syncen ---
+        // --- Sync URL from state ---
         function syncUrlFromState() {
             if (!urlSyncEnabled) return;
             let p = new URLSearchParams();
@@ -549,7 +544,7 @@
             history.replaceState(null, '', url);
         }
 
-        // --- Active-Filter-Pillen ---
+        // --- Active filter pills ---
         function updateActiveFilters() {
             if (!activeFiltersEl) return;
             activeFiltersEl.innerHTML = '';
@@ -620,7 +615,6 @@
             }
         }
 
-        // --- Reset ---
         let resetBtn = document.getElementById('filter-reset');
         if (resetBtn) {
             resetBtn.addEventListener('click', function() {
@@ -651,7 +645,6 @@
             });
         }
 
-        // --- Core: applyFilters ---
         function applyFilters() {
             filteredEntries = allEntries.filter(function(e) {
                 return matchesAllExcept(e, null);
@@ -667,7 +660,7 @@
             syncUrlFromState();
         }
 
-        // --- Deep-Link via Hash (#pe__id) ---
+        // --- Deep link via hash (#pe__id) ---
         function openFromHash() {
             let hash = window.location.hash;
             if (!hash || hash.length < 2) return;
@@ -677,8 +670,8 @@
                 if (allEntries[i].id === targetId) { entry = allEntries[i]; break; }
             }
             if (!entry) return;
-            // Per Suche auf die Ziel-ID einschraenken, damit die Zeile sicher
-            // im virtualisierten tbody landet.
+            // Constrain via the search to the target id so the row is
+            // guaranteed to land in the virtualised tbody.
             state.query = EdCore.normForSearch(targetId);
             state.letter = '';
             state.sex = [];
@@ -693,7 +686,7 @@
             renderDetailRow(entry, row);
         }
 
-        // --- Daten laden ---
+        // --- Load data ---
         let loadingTbody = document.getElementById('register-tbody');
         loadingTbody.innerHTML = '<tr><td colspan="4" class="cell-placeholder">Daten werden geladen…</td></tr>';
 
@@ -702,7 +695,7 @@
             .then(function(data) {
                 allEntries = data;
                 let norm = EdCore.normForSearch;
-                // Korpus-Counts pro Person fuer den Quellen-Cell-Tooltip
+                // Per-corpus counts per person for the linked-sources cell tooltip.
                 let corpusLabels = {};
                 if (filterCorporaEl) {
                     filterCorporaEl.querySelectorAll('.chip').forEach(function(c) {
@@ -712,11 +705,11 @@
                     });
                 }
                 allEntries.forEach(function(e) {
-                    // Suchindex umfasst Name/ID/Vorname/Nachname plus Aktivitaets-
-                    // Jahre und das Sub-Label (Korpus + Nr.) — damit funktioniert
-                    // '1340 Katharina' und 'Nr. 66' als Suchterms.
-                    // 'Nr. <i0>' explizit aufnehmen, damit User die Sub-Label-
-                    // Schreibweise direkt suchen koennen.
+                    // Search index covers name/ID/first name/surname plus
+                    // activity years and the sub-label (corpus + Nr.) — so
+                    // '1340 Katharina' and 'Nr. 66' work as search terms.
+                    // Add 'Nr. <i0>' explicitly so users can search the
+                    // sub-label spelling directly.
                     let parts = [
                         e.n || '', e.id || '',
                         e.fn || '', e.sn || '',
@@ -726,7 +719,7 @@
                     ];
                     e._s = norm(parts.join(' '));
                     e._fl = e.n.charAt(0).toUpperCase();
-                    // Korpus-Aufschluesselung pro Person fuer Quellen-Cell-Tooltip
+                    // Per-corpus breakdown per person for the linked-sources cell tooltip.
                     e._coCount = (e.co || []).map(function(k) {
                         return {label: corpusLabels[k] || k, n: 1};
                     });

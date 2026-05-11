@@ -1,24 +1,24 @@
 /* ==========================================================================
    Stadt und Gemeinschaft Wien — Datenbank
-   Provenienz-Popover: Projekt-Standard für aggregierte Zahlen.
+   Provenance popover: project-wide convention for aggregate numbers.
 
-   Interaktions-Modell:
-   - Hover / Focus  → öffnet transient (schließt beim Verlassen)
-   - Klick          → fixiert persistent (bleibt offen, bis explizit zu)
-   - Hover beim fixierten Popover → ignoriert (kein Wegflackern)
-   - ESC / Klick außerhalb → schließt beides
+   Interaction model:
+   - Hover / focus  -> transient open (closes on leave)
+   - Click          -> pinned (stays open until explicitly closed)
+   - Hover over a pinned popover -> ignored (prevents flicker)
+   - ESC / outside click -> closes both modes
 
-   Ein Popover ist zu jeder Zeit aktiv. Beim Öffnen eines neuen wird
-   das vorige geschlossen.
+   At most one popover is open at a time; opening a new one closes the
+   previous.
    ========================================================================== */
 
 (function () {
     'use strict';
 
-    let HOVER_CLOSE_DELAY = 180;  // ms, kleine Toleranz beim Wechsel Trigger↔Popover
+    let HOVER_CLOSE_DELAY = 180;  // ms; tolerance for trigger<->popover transit
 
-    let currentOpen = null;       // aktuell offenes aside
-    let pinned = false;           // wurde es per Klick fixiert?
+    let currentOpen = null;
+    let pinned = false;
     let hoverCloseTimer = null;
 
     function findTrigger(popoverId) {
@@ -85,7 +85,7 @@
         }, HOVER_CLOSE_DELAY);
     }
 
-    // --- Klick: fixieren / toggle / schließen ----------------------------
+    // --- Click: pin / toggle / close -----------------------------------
 
     document.addEventListener('click', function (e) {
         let trigger = e.target.closest('[data-prov-trigger]');
@@ -108,13 +108,12 @@
             close(closeBtn.closest('.prov-popover'));
             return;
         }
-        // Klick außerhalb des offenen Popovers schließt es.
         if (currentOpen && !e.target.closest('.prov-popover')) {
             close(currentOpen);
         }
     });
 
-    // --- Hover / Fokus: transient öffnen ---------------------------------
+    // --- Hover / focus: transient open ---------------------------------
 
     document.addEventListener('mouseover', function (e) {
         let trigger = e.target.closest('[data-prov-trigger]');
@@ -135,7 +134,7 @@
         let trigger = e.target.closest('[data-prov-trigger]');
         let pop = e.target.closest('.prov-popover');
         if (!trigger && !pop) return;
-        // Nur schließen, wenn wir den Hover-Bereich ganz verlassen.
+        // Only close when leaving the trigger/popover hover region entirely.
         let relTarget = e.relatedTarget;
         let goingToTrigger = relTarget && relTarget.closest && relTarget.closest('[data-prov-trigger]') === findTrigger(currentOpen ? currentOpen.id : '');
         let goingToPop = relTarget && relTarget.closest && relTarget.closest('.prov-popover') === currentOpen;
@@ -158,12 +157,12 @@
         if (currentOpen && !pinned) scheduleHoverClose(currentOpen);
     });
 
-    // --- Tastatur: ESC schließt ------------------------------------------
+    // --- Keyboard: ESC closes ------------------------------------------
 
     document.addEventListener('keydown', function (e) {
         if (e.key === 'Escape' && currentOpen) {
             close(currentOpen);
-            // Fokus zurück auf den Trigger, für Screenreader-Flow
+            // Restore focus to trigger for screen-reader flow
             let t = findTrigger(currentOpen && currentOpen.id);
             if (t) t.focus();
         }

@@ -8,8 +8,8 @@
 
     let esc = EdCore.esc;
 
-    // Mapping der Validierungs-Kategorien aus pipeline/validation_report.json
-    // auf lesbare deutsche Labels. Unbekannte Codes fallen auf den Code zurueck.
+    // Maps validation category codes from pipeline/validation_report.json to
+    // user-facing German labels. Unknown codes fall back to the raw code.
     let QUALITY_CATEGORY_LABELS = {
         'instant_attribute':    'Datierungs-Attribut',
         'ref_null':             'leere Referenz',
@@ -28,24 +28,22 @@
         let filterFormsEl = document.getElementById('filter-forms');
         let resultCount = document.getElementById('result-count');
         let activeFiltersEl = document.getElementById('active-filters');
-        // Forward-Deklaration: rangeSlider, chips und urlSyncEnabled
-        // werden in updateActiveFilters / updateCorpusCounts /
-        // syncUrlFromState referenziert, BEVOR initRangeSlider
-        // zurueckkehrt (Init-Callback ruft applyFilters synchron).
-        // Mit let waeren sie in TDZ.
+        // Forward declarations: rangeSlider, chips and urlSyncEnabled are
+        // referenced from updateActiveFilters / updateCorpusCounts /
+        // syncUrlFromState BEFORE initRangeSlider returns (its init callback
+        // calls applyFilters synchronously). With `let` they would be in TDZ.
         let rangeSlider;
         let chips;
         let urlSyncEnabled = false;
 
-        // State
         let allDocs = [];
         let state = {
             query: '',
             collection: '',
-            place: '',         // Sonderwert '__none__' = "ohne Ortsangabe"
+            place: '',         // sentinel '__none__' = "without place"
             facs: '',
             sex: '',           // '' | 'with-f' | 'only-f' | 'only-m' | 'none'
-            forms: [],         // Array aus 'R','S','E','N','none' — leer = alle
+            forms: [],         // subset of 'R','S','E','N','none' — empty = all
             yearMin: 0,
             yearMax: 9999,
             sortKey: 'di',
@@ -53,9 +51,8 @@
             previewIdx: -1
         };
 
-        // --- Form-Filter-Helfer: prueft, ob doc in den ausgewaehlten Formen
-        // liegt. ODER-Verknuepfung innerhalb der Formen, AND zu allen anderen
-        // Filtern. Leere Auswahl = alle Quellen erlaubt.
+        // Form filter: OR within the selected forms, AND against the other
+        // filters. Empty selection = all sources pass.
         function docMatchesForms(doc, forms) {
             if (!forms || forms.length === 0) return true;
             for (let i = 0; i < forms.length; i++) {
@@ -87,38 +84,38 @@
         let collectionLabels = {};
         let filteredDocs = [];
 
-        // --- Content cell renderer (Inhalt-Spalte) ---
-        // Persons-Badge mit Geschlechter-Aufschluesselung im title; danach
-        // Form-Pills R/S/E/N (TEI-Annotations-Tiefe) plus Faksimile-Pill
-        // F als kleine Strich-Icons; Multi-Event-Indikator, wenn die Quelle
-        // mehrere Rechtsgeschaefte dokumentiert.
+        // --- Content cell renderer ---
+        // Persons badge with sex breakdown in title; then form pills R/S/E/N
+        // (TEI annotation depth) plus facsimile pill F as small stroke icons;
+        // multi-event indicator when the source documents several legal
+        // transactions.
         //
-        // Icons sind currentColor-Strich-SVGs, damit sie die Pillen-Farbe
-        // (--anno-person) erben und Hover-States ohne Sonderlogik mitnehmen.
+        // Icons are currentColor stroke SVGs so they inherit the pill color
+        // (--anno-person) and pick up hover states without special handling.
         let FORM_ICONS = {
-            // Regest: drei zusammenfassende Linien (Standard-"Summary")
+            // Regest: three summary lines (standard "summary" glyph)
             r: '<svg viewBox="0 0 16 16" aria-hidden="true">' +
                '<path d="M3.5 5h9M3.5 8h9M3.5 11h6" ' +
                'stroke="currentColor" stroke-width="1.4" stroke-linecap="round" fill="none"/>' +
                '</svg>',
-            // Siegel: Petschaft-Anmutung – runder Siegelring mit innerem
-            // Kreis und kleinem Mittelpunkt. Kein Stern/Rad.
+            // Siegel: signet impression — outer seal ring with inner circle
+            // and small centerpoint. No star/wheel.
             s: '<svg viewBox="0 0 16 16" aria-hidden="true">' +
                '<circle cx="8" cy="8" r="5" stroke="currentColor" stroke-width="1.4" fill="none"/>' +
                '<circle cx="8" cy="8" r="2.2" stroke="currentColor" stroke-width="1.1" fill="none"/>' +
                '<circle cx="8" cy="8" r="0.6" fill="currentColor"/>' +
                '</svg>',
-            // Eintrag: aufgeschlagenes Buch / zwei Seiten
+            // Eintrag: open book / two pages
             e: '<svg viewBox="0 0 16 16" aria-hidden="true">' +
                '<path d="M8 4.5v8M3 4.5c1.5 0 3.4.4 5 1.2c1.6-.8 3.5-1.2 5-1.2v7c-1.5 0-3.4.4-5 1.2c-1.6-.8-3.5-1.2-5-1.2v-7z" ' +
                'stroke="currentColor" stroke-width="1.3" stroke-linejoin="round" fill="none"/>' +
                '</svg>',
-            // Nota: Lesezeichen / kleiner Notiz-Marker
+            // Nota: bookmark / small note marker
             n: '<svg viewBox="0 0 16 16" aria-hidden="true">' +
                '<path d="M5 3h6v10l-3-2.2L5 13z" ' +
                'stroke="currentColor" stroke-width="1.3" stroke-linejoin="round" fill="none"/>' +
                '</svg>',
-            // Faksimile: Bild-Rahmen mit Sonne-und-Berg-Andeutung
+            // Faksimile: picture frame with hint of sun and mountain
             f: '<svg viewBox="0 0 16 16" aria-hidden="true">' +
                '<rect x="2.4" y="3.4" width="11.2" height="9.2" rx="1" ' +
                'stroke="currentColor" stroke-width="1.3" fill="none"/>' +
@@ -126,8 +123,8 @@
                '<path d="M2.6 11.6l3-2.6l2.4 2l3-2.6l2.4 2.2" ' +
                'stroke="currentColor" stroke-width="1.2" stroke-linejoin="round" fill="none"/>' +
                '</svg>',
-            // Mehrere Rechtsgeschaefte: zwei leicht versetzte Rechtecke,
-            // lesen sich als 'mehr als ein Vorgang in einer Quelle'.
+            // Multiple legal transactions: two slightly offset rectangles,
+            // read as 'more than one transaction in one source'.
             m: '<svg viewBox="0 0 16 16" aria-hidden="true">' +
                '<rect x="2.6" y="4.6" width="7.6" height="7.6" rx="1" ' +
                'stroke="currentColor" stroke-width="1.3" fill="none"/>' +
@@ -139,15 +136,15 @@
         function renderContent(doc) {
             let parts = [];
 
-            // Tooltips nutzen das projekteinheitliche edition-tooltip-System
-            // (tooltips.js / [data-tip-title] + [data-tip-body]) \u2014 keine
-            // nativen title-Attribute mehr, damit Stil und Verhalten ueber
-            // die ganze Edition hinweg konsistent sind.
+            // Tooltips use the project-wide edition-tooltip system
+            // (tooltips.js / [data-tip-title] + [data-tip-body]) \u2014 no more
+            // native title attributes, so style and behavior stay consistent
+            // across the whole edition.
             if (doc.pcd > 0) {
-                // Spalten-Header "Beteiligte" gibt schon den Kontext \u2014
-                // die Zelle zeigt nur die Anzahl mit dotted underline als
-                // Tooltip-Affordance. Hover zeigt "X Person/en" + Geschlechts-
-                // Aufschluesselung.
+                // The "Beteiligte" column header already provides context \u2014
+                // the cell only shows the count with a dotted underline as
+                // tooltip affordance. Hover reveals "X Person/en" + sex
+                // breakdown.
                 let label = doc.pcd === 1 ? '1 Person' : doc.pcd + ' Personen';
                 let breakdown = [];
                 if (doc.pcdf) breakdown.push(doc.pcdf + ' weiblich');
@@ -170,8 +167,8 @@
             if (doc.ecE > 0) pills.push(['e', 'Eintrag', 'Stadtbuch-Eintrag in der TEI-Quelle']);
             if (doc.ecN > 0) pills.push(['n', 'Nota', 'Nachsatz/Notiz in der TEI-Quelle']);
             if (doc.f) pills.push(['f', 'Faksimile', 'Digitalisat des Originals verlinkt']);
-            // Mehrere Rechtsgeschaefte als regulaere Pille \u2014 gestapelte
-            // Rechtecke; die konkrete Anzahl steckt im Tooltip-Body.
+            // Multi-transaction marker as a regular pill \u2014 stacked rectangles;
+            // the actual count lives in the tooltip body.
             if (doc.ec > 1) {
                 pills.push(['m', 'Mehrere Rechtsgesch\u00e4fte',
                             doc.ec + ' Rechtsgesch\u00e4fte in einer Quelle']);
@@ -190,9 +187,9 @@
             return parts.join(' ');
         }
 
-        // Datum-Cell mit Range-Hint: bei Mehrjahres-Range (z.B. "1198–1230")
-        // erklaert ein Tooltip die Konvention "Datum unscharf, gesicherter
-        // Zeitraum...". Bei sauberem Einzeldatum kein Tooltip.
+        // Date cell with range hint: for multi-year ranges (e.g. "1198–1230")
+        // a tooltip explains the convention "date imprecise, secured
+        // timespan...". For clean single dates no tooltip is rendered.
         function renderDateCell(doc) {
             let dateText = doc.dn || doc.d;
             let attr = '';
@@ -205,8 +202,8 @@
             return '<td class="col-date"' + attr + '>' + esc(dateText) + '</td>';
         }
 
-        // SVG-Chevron als Ausklapp-Affordance. Wird per CSS rotiert,
-        // sobald die Zeile expandiert ist (.doc-row.is-open).
+        // SVG chevron as expand affordance. Rotated via CSS once the row is
+        // expanded (.doc-row.is-open).
         let CHEVRON_SVG =
             '<svg class="row-chevron" viewBox="0 0 16 16" aria-hidden="true">' +
             '<path d="M6 4l4 4l-4 4" stroke="currentColor" stroke-width="1.6" ' +
@@ -259,11 +256,10 @@
         TableInfra.setupSearch(state, applyFilters);
         TableInfra.setupSortHeaders('doc-table', state, applyFilters);
 
-        // --- Erschliessungsform-Icons + Definitions-Tooltips in die Sidebar
-        // -Chips injizieren. Dieselben SVGs wie in den Tabellen-Pillen
-        // (FORM_ICONS), plus data-tip-* + "i"-Affordance fuer die
-        // Definition. Das 'none'-Chip ('ohne') hat keine Tabellen-
-        // Entsprechung — Icon entfaellt, Definition bleibt.
+        // --- Inject form-of-treatment icons + definition tooltips into the
+        // sidebar chips. Same SVGs as the table pills (FORM_ICONS), plus
+        // data-tip-* and "i" affordance for the definition. The 'none' chip
+        // ('ohne') has no table counterpart — icon omitted, definition stays.
         let FORM_LABELS = {R: 'Regest', S: 'Siegel', E: 'Eintrag', N: 'Nota', none: 'Ohne Erschließungsform'};
         let FORM_DESCRIPTIONS = {
             R: 'Inhaltszusammenfassung der Quelle, vom Editor verfasst (TEI-Element <abstract>).',
@@ -340,10 +336,10 @@
             });
         }
 
-        // --- URL parameter restore — fuer teilbare Links und Browser-Back ---
-        // Unterstuetzt: collection, place, facs, q (search), yearMin/yearMax.
-        // Wird einmal beim Init gelesen; spaetere Aenderungen schreibt
-        // syncUrlFromState() per replaceState().
+        // --- URL parameter restore — for shareable links and browser back ---
+        // Supports: collection, place, facs, q (search), yearMin/yearMax.
+        // Read once at init; later changes are written by syncUrlFromState()
+        // via replaceState().
         let urlParams = new URLSearchParams(window.location.search);
         let urlQuery = urlParams.get('q');
         if (urlQuery) {
@@ -400,10 +396,10 @@
             }
         }
 
-        // Faceted-Search Standardmuster: pro Filter-Dimension werden die
-        // Counts unter Beruecksichtigung ALLER ANDEREN Filter berechnet.
-        // skip ist die zu ignorierende Dimension ('collection' | 'place' |
-        // 'facs' | 'sex' | 'forms' | 'year' | 'query' | null).
+        // Standard faceted-search pattern: per filter dimension the counts
+        // are computed taking ALL OTHER filters into account. skip is the
+        // dimension to ignore ('collection' | 'place' | 'facs' | 'sex' |
+        // 'forms' | 'year' | 'query' | null).
         function matchesAllExcept(doc, skip) {
             if (skip !== 'collection' && state.collection && doc.cp !== state.collection) return false;
             if (skip !== 'place' && !docMatchesPlace(doc, state.place)) return false;
@@ -440,10 +436,10 @@
             });
         }
 
-        // Live-Histogramm: Bar-Hoehen aus den gefilterten Quellen pro
-        // Dekade neu berechnen. Nur die Year-Range wird ignoriert,
-        // damit die Bars die GESAMTVERTEILUNG bei sonst aktiven Filtern
-        // zeigen — der Slider bleibt dadurch sinnvoll bedienbar.
+        // Live histogram: recompute bar heights from the filtered sources
+        // per decade. Only the year range is ignored, so that bars show
+        // the FULL distribution under the other active filters — this
+        // keeps the slider usable.
         function updateHistogram() {
             let bars = document.querySelectorAll('.range-bar');
             if (!bars.length) return;
@@ -468,8 +464,8 @@
             });
         }
 
-        // Initial-Hoehen aus Template-data-height auf CSS-Variable mappen.
-        // Liest die per Build berechneten Bar-Hoehen einmal beim Laden.
+        // Map initial heights from template data-height onto the CSS variable.
+        // Reads the build-time bar heights once on load.
         function _applyInitialBarHeights() {
             document.querySelectorAll('.range-bar').forEach(function(bar) {
                 let h = parseInt(bar.getAttribute('data-height')) || 0;
@@ -477,29 +473,29 @@
             });
         }
 
-        // Live-Counts auf Filter-Dropdowns. Pro Option wird die Treffer-
-        // Zahl gegen die anderen aktiven Filter berechnet — das spart
-        // dem User leere Selektionen ("Wien (0)" wenn schon ein Filter
-        // alle Wiener ausschliesst).
+        // Live counts on filter dropdowns. For each option the hit count
+        // is computed against the other active filters — this saves the
+        // user empty selections ("Wien (0)" when another filter already
+        // excludes all Vienna entries).
         function _setOptionLabel(opt, baseLabel, count) {
             opt.textContent = count !== null
                 ? baseLabel + ' (' + count + ')'
                 : baseLabel;
         }
 
-        // 0-Treffer-Optionen werden ausgeblendet, damit Nutzer:innen nicht
-        // an Sackgassen-Klicks geraten ('Wien (0)' bei Stadtbuecher-Filter).
-        // Aktuell selektierte Option NICHT ausblenden — sonst keine Chance,
-        // den Filter via Dropdown wieder zu loesen (active-filter-Chip mit
-        // X bleibt zwar, aber die Konsistenz-Erwartung ist: der gewaehlte
-        // Wert ist im Dropdown sichtbar).
+        // Zero-hit options are hidden so users do not run into dead-end
+        // clicks ('Wien (0)' under a Stadtbuecher filter). The currently
+        // selected option is NOT hidden — otherwise there is no way to
+        // clear the filter via the dropdown (the active-filter chip with
+        // X still works, but the consistency expectation is that the
+        // chosen value is visible in the dropdown).
         function _setOptionHidden(opt, count, isCurrent) {
             opt.hidden = (count === 0 && !isCurrent);
         }
 
         function _setChipHidden(chip, count) {
-            // Chips bleiben nutzbar (zum Aufheben der Auswahl), wenn aktiv —
-            // sonst weg, sobald der Count auf 0 faellt.
+            // Chips stay usable (to clear the selection) while active —
+            // otherwise removed as soon as the count drops to 0.
             let isActive = chip.classList.contains('is-active') ||
                            chip.classList.contains('active');
             chip.hidden = (count === 0 && !isActive);
@@ -519,7 +515,7 @@
                     if (val === '') {
                         _setOptionLabel(opt, opt.dataset.label, null);
                     } else if (val === '__none__') {
-                        // wird unten gesondert behandelt
+                        // handled separately below
                     } else {
                         let c = counts[val] || 0;
                         _setOptionLabel(opt, opt.dataset.label, c);
@@ -527,7 +523,7 @@
                     }
                 });
             }
-            // Faksimile
+            // Facsimile
             if (filterFacs) {
                 let withFacs = 0, withoutFacs = 0;
                 allDocs.forEach(function(doc) {
@@ -548,7 +544,7 @@
                     }
                 });
             }
-            // Geschlechter-Mix
+            // Sex mix
             if (filterSex) {
                 let counts = {'with-f': 0, 'only-f': 0, 'only-m': 0, 'none': 0};
                 allDocs.forEach(function(doc) {
@@ -569,7 +565,7 @@
                     }
                 });
             }
-            // Erschliessungsform-Chips
+            // Form-of-treatment chips
             if (filterFormsEl) {
                 let counts = {R:0, S:0, E:0, N:0, none:0};
                 allDocs.forEach(function(doc) {
@@ -588,7 +584,7 @@
                     _setChipHidden(c, n);
                 });
             }
-            // Place: ohne-Ortsangabe-Option
+            // Place: "no place given" option
             if (filterPlace) {
                 let noPlaceCount = 0;
                 allDocs.forEach(function(doc) {
@@ -604,12 +600,12 @@
             }
         }
 
-        // Filter-State -> URL. history.replaceState() schreibt ohne
-        // History-Eintrag, damit Browser-Back NICHT durch Filterstaende
-        // geht (Standard-SPA-Konvention bei Filter-UIs).
-        // urlSyncEnabled-Guard: waehrend Init laufen mehrere
-        // applyFilters-Calls bevor die URL-Parameter eingelesen sind —
-        // sie wuerden die URL leeren. Flag oben forward-deklariert.
+        // Filter state -> URL. history.replaceState() writes without adding
+        // a history entry, so browser-back does NOT step through filter
+        // states (standard SPA convention for filter UIs).
+        // urlSyncEnabled guard: during init multiple applyFilters calls run
+        // before URL params are read in — they would clear the URL. Flag
+        // forward-declared above.
         function syncUrlFromState() {
             if (!urlSyncEnabled) return;
             let p = new URLSearchParams();
@@ -628,20 +624,19 @@
             history.replaceState(null, '', url);
         }
 
-        // Sort-Vergleich: leere Werte landen IMMER unten, unabhaengig von
-        // Sortierrichtung (Standard-Verhalten in Datentabellen). Datum-Werte
-        // koennen entweder sauberes ISO ('1177-05-10') oder Range-Form
-        // ('1198-01-01 | 1230-12-31') sein — wir vergleichen die ersten
-        // 10 Zeichen, das gibt uns ein lex-konsistentes Sortierfeld.
-        // Strings vergleichen wir locale-aware ('de'), damit Umlaute richtig
-        // einsortiert werden.
+        // Sort comparator. Empty values always go to the bottom, regardless
+        // of sort direction (standard data-table behaviour). Date values are
+        // either clean ISO ('1177-05-10') or range form
+        // ('1198-01-01 | 1230-12-31') — comparing the first 10 chars gives a
+        // lexicographically consistent key. Strings are compared locale-aware
+        // ('de') so umlauts sort correctly.
         //
-        // Editorische Notation: '[Wien]' (eckige Klammern = editorisch
-        // erschlossener Ortsname) soll bei W sortieren, nicht bei '['.
-        // Analog 'Wien,' (Komma als Restzeichen aus Quelle) soll bei Wien
-        // landen. _sortKey strippt eckige Klammern global und bereinigt
-        // fuehrende/nachgestellte Interpunktion, die nur Notation ist —
-        // 'St. Pölten' bleibt unangetastet, weil Punkte intern stehen.
+        // Editorial notation: '[Wien]' (square brackets = editorially
+        // reconstructed place name) must sort under W, not under '['.
+        // Likewise 'Wien,' (a trailing comma from the source) must sort with
+        // Wien. _sortKey strips square brackets globally and trims leading/
+        // trailing punctuation that is only notation — 'St. Pölten' is left
+        // alone because its dot is internal.
         function _sortKey(v) {
             return String(v)
                 .replace(/[\[\]]/g, '')
@@ -687,7 +682,7 @@
             syncUrlFromState();
         }
 
-        // --- Reset-Button: alle Filter zuruecksetzen ---
+        // --- Reset button: clear all filters ---
         let resetBtn = document.getElementById('filter-reset');
         if (resetBtn) {
             resetBtn.addEventListener('click', function() {
@@ -714,7 +709,7 @@
             });
         }
 
-        // --- Filter-Event-Listener fuer die neuen Filter ---
+        // --- Event listeners for the additional filters ---
         if (filterSex) {
             filterSex.addEventListener('change', function() {
                 state.sex = filterSex.value;
@@ -744,7 +739,7 @@
         function togglePreview(idx) {
             let tbody = document.getElementById('doc-tbody');
             let existing = tbody.querySelector('.preview-row');
-            // Vorher offene Zeile als geschlossen markieren (Chevron dreht zurueck).
+            // Mark any previously open row as closed (chevron rotates back).
             tbody.querySelectorAll('.doc-row.is-open').forEach(function(r) {
                 r.classList.remove('is-open');
                 r.setAttribute('aria-expanded', 'false');
@@ -804,9 +799,9 @@
                     clearFilter('collection', function() { chips.forEach(function(c) { c.classList.remove('active'); }); }));
             }
             if (state.query) {
-                // Konsistenz: Suche ist filterwirksam und gehoert daher in
-                // die aktive-Filter-Leiste, sonst sind die Trefferzahlen
-                // unerklaerlich.
+                // Consistency: search acts as a filter, so it belongs in the
+                // active-filter strip — otherwise the hit counts look
+                // unexplainable.
                 TableInfra.addFilterChip(activeFiltersEl, 'Suche: ' + state.query,
                     clearFilter('query', function() {
                         let si = document.getElementById('search-input');
@@ -869,10 +864,10 @@
                     if (doc.cp && !collectionLabels[doc.cp]) collectionLabels[doc.cp] = doc.cl;
                 });
                 filteredDocs = allDocs.slice();
-                // URL-Sync ab jetzt freigeben: alle URL-Parameter sind
-                // bereits in state eingelesen, allDocs ist verfuegbar,
-                // weitere applyFilters-Calls (User-Interaktionen) sollen
-                // den Filterstand in die URL schreiben.
+                // Release URL sync from here on: all URL params are already
+                // read into state, allDocs is available, and further
+                // applyFilters calls (user interactions) should write the
+                // filter state back to the URL.
                 urlSyncEnabled = true;
                 applyFilters();
             })

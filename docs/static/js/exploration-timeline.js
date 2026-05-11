@@ -1,14 +1,14 @@
-// Exploration / Zeitstrom: gestapelter Bar-Chart der Quellendichte pro
-// Dekade, Stapel-Achse waehlbar (Korpus / Erschliessungsform / Geschlecht /
-// Transaktionstyp). Brush waehlt Dekaden-Bereich -> Drill-down-Quellenliste.
-// Geteilte Infrastruktur kommt aus VizCore (viz-core.js).
+// Exploration / Zeitstrom: stacked bar chart of source density per decade.
+// Stack axis selectable (corpus / form of treatment / sex / transaction type).
+// Brush picks a decade range -> drill-down source list.
+// Shared infrastructure comes from VizCore (viz-core.js).
 (function () {
     'use strict';
 
     const V = VizCore;
 
     // ---------------------------------------------------------------------
-    // Stapel-Definitionen
+    // Stack definitions
     // ---------------------------------------------------------------------
     const STACKS = {
         collection: {
@@ -27,8 +27,8 @@
                 { key: 'E', label: 'Eintrag', color: '#b85c2f' },
                 { key: 'N', label: 'Nota',    color: '#a08470' },
             ],
-            // Mehrere Formen pro Quelle moeglich; wir zaehlen die Quelle
-            // dann mehrfach (eine pro vorhandener Form).
+            // Multiple forms per source possible; we count the source
+            // multiple times (once per present form).
             multi: true,
             assignAll: (doc) => {
                 const out = [];
@@ -56,12 +56,11 @@
                 return 'mixed';
             },
         },
-        // Transaktionstyp braucht eigene Datenquelle (epic_c.tx_timeline);
-        // wird im Renderer gesondert behandelt und nicht aus search.json
-        // abgeleitet.
+        // Transaction type needs its own data source (epic_c.tx_timeline);
+        // handled separately in the renderer and not derived from search.json.
         tx: {
             label: 'Transaktionstyp',
-            categories: [],  // wird dynamisch befuellt
+            categories: [],  // populated dynamically
             fromEpicC: true,
         },
     };
@@ -74,15 +73,15 @@
     ];
 
     // ---------------------------------------------------------------------
-    // Daten laden
+    // Data loading
     // ---------------------------------------------------------------------
     const EPIC_C = V.readJsonScript('exploration-data-epic-c', { observations: {} });
     let DOCS = [];
     let DOCS_BY_DECADE = new Map();
-    let DOCS_LOOKUP = {};   // file_key -> Doc-Stammdaten (lazy fuer tx-Drill)
+    let DOCS_LOOKUP = {};   // file_key -> doc base record (lazy, for tx drill)
 
     // ---------------------------------------------------------------------
-    // Filter-State
+    // Filter state
     // ---------------------------------------------------------------------
     const STATE = {
         decadeMin: null,
@@ -90,7 +89,7 @@
         stack: 'collection',
         brushMin: null,
         brushMax: null,
-        stackFocus: null,   // null = alle Kategorien, sonst category-key
+        stackFocus: null,   // null = all categories, otherwise category key
     };
     const decFilter = V.makeDecadeFilter(STATE);
 
@@ -103,9 +102,9 @@
         const values = {};
         const totals = {};
 
-        // Dekaden im Filter sammeln; values/totals nur fuer diese
-        // initialisieren — out-of-range Docs werden in der Doc-Schleife
-        // unten ueber den values[dec]-Lookup gefiltert.
+        // Collect decades in filter; initialise values/totals only for those —
+        // out-of-range docs are filtered in the doc loop below via the
+        // values[dec] lookup.
         const decadesSet = new Set();
         for (const doc of DOCS) {
             const dec = doc._dec;
@@ -121,9 +120,9 @@
         }
 
         if (STATE.stack === 'tx') {
-            // Spezialfall: aus epic_c.tx_timeline aggregieren. Dekaden, die
-            // dort vorkommen aber nicht in DOCS, werden zusaetzlich
-            // nachgetragen (Tx-Daten sind unabhaengig vom Doc-Set).
+            // Special case: aggregate from epic_c.tx_timeline. Decades that
+            // appear there but not in DOCS are added on top (tx data is
+            // independent of the doc set).
             const tl = (EPIC_C.observations || {}).tx_timeline || {};
             for (const cat of categories) {
                 const byDec = tl[cat.key] || {};
@@ -169,8 +168,8 @@
         return { decades, categories, values, totals };
     }
 
-    // Liefert die effektive Stack-Definition (fuer 'tx' baut sie die
-    // Top-N Kategorien dynamisch aus epic_c).
+    // Returns the effective stack definition (for 'tx' it builds the
+    // top-N categories dynamically from epic_c).
     function effectiveStackDef() {
         const def = STACKS[STATE.stack];
         if (STATE.stack !== 'tx') return def;
@@ -283,7 +282,7 @@
             const item = e.target.closest('[data-cat]');
             if (!item) return;
             const key = item.getAttribute('data-cat');
-            // Toggle: gleiche Kategorie nochmal -> Fokus aufheben
+            // Toggle: same category again -> clear focus
             STATE.stackFocus = (STATE.stackFocus === key) ? null : key;
             renderChart();
             renderDrill();
@@ -300,7 +299,7 @@
     }
 
     // ---------------------------------------------------------------------
-    // Brush / Bar-Klick
+    // Brush / bar click
     // ---------------------------------------------------------------------
     let brushAnchor = null;
 
@@ -326,8 +325,8 @@
                 renderChart();
             });
         });
-        // Maus-Up beendet Brushing global, damit Auswahl auch bestehen
-        // bleibt, wenn der User ausserhalb des Charts loslaesst.
+        // Mouse-up ends brushing globally so the selection persists even
+        // when the user releases outside the chart.
         document.addEventListener('mouseup', () => {
             if (brushAnchor !== null) {
                 brushAnchor = null;
@@ -348,7 +347,7 @@
     }
 
     // ---------------------------------------------------------------------
-    // Drill-down: Quellen-Liste der gebrushten Dekaden
+    // Drill-down: source list for the brushed decades
     // ---------------------------------------------------------------------
     function renderDrill() {
         const drill = document.getElementById('stream-drill');
@@ -370,10 +369,10 @@
             ? stackDef.categories.find(c => c.key === focus)
             : null;
 
-        // Datenquelle waehlen:
-        // - tx-Stack mit Fokus  -> file_keys aus epic_c.tx_type_decade,
-        //   ueber docs_lookup zu Doc-Records aufgeloest
-        // - sonst (auch tx ohne Fokus, alle Stacks): aus DOCS_BY_DECADE
+        // Pick data source:
+        // - tx stack with focus -> file_keys from epic_c.tx_type_decade,
+        //   resolved to doc records via docs_lookup
+        // - otherwise (incl. tx without focus, all stacks): from DOCS_BY_DECADE
         let docs;
         if (STATE.stack === 'tx' && focus) {
             docs = collectTxFocusedDocs(focus, lo, hi);
@@ -387,10 +386,10 @@
         if (title) title.textContent = `Auswahl ${rangeLabel}${focusLabel}`;
         if (meta) meta.textContent = `${V.fmt(docs.length)} Quellen`;
 
-        // Cross-Nav: Quellen-Listenseite mit dem Brush-Zeitraum (kein
-        // Geschlechter-Filter — der Zeitstrom hat keinen). Tx-/collection-
-        // /form-Fokus laesst sich nicht 1:1 auf die Quellen-Filter mappen
-        // (Quellen kennt keine Tx-/Stack-Filter), wird daher weggelassen.
+        // Cross-nav: sources list page with the brush period (no sex filter
+        // — the timeline doesn't have one). Tx/collection/form focus cannot
+        // be mapped 1:1 onto the source filters (sources have no tx/stack
+        // filters), so it's omitted.
         const crossNav = document.getElementById('drill-crossnav');
         if (crossNav) {
             crossNav.href = V.buildDocumentsURL({
@@ -424,8 +423,8 @@
         drill.hidden = false;
     }
 
-    // Liefert Drill-Records aus DOCS_BY_DECADE (search.json-basiert).
-    // Wenn focus gesetzt ist, wird per stackDef.assign(All) gefiltert.
+    // Returns drill records from DOCS_BY_DECADE (search.json-based).
+    // If focus is set, filters via stackDef.assign(All).
     function collectStreamDocs(lo, hi, focus) {
         const stackDef = effectiveStackDef();
         const docs = [];
@@ -451,9 +450,9 @@
         return docs;
     }
 
-    // Liefert Drill-Records fuer einen Tx-Fokus aus epic_c.drill_down ueber
-    // docs_lookup. Triggert ggf. das Nachladen von docs_lookup.json (laeuft
-    // dann beim naechsten Render).
+    // Returns drill records for a tx focus from epic_c.drill_down via
+    // docs_lookup. Triggers a lazy load of docs_lookup.json if needed
+    // (the result will surface on the next render).
     function collectTxFocusedDocs(txKey, lo, hi) {
         const dd = ((EPIC_C.drill_down || {}).tx_type_decade || {})[txKey] || {};
         const seen = new Set();
@@ -475,8 +474,8 @@
             }
         }
         if (!Object.keys(DOCS_LOOKUP).length) {
-            // Lazy-Load: docs_lookup ist noch nicht da. Nachladen und
-            // das Drill-Rendering wiederholen.
+            // Lazy load: docs_lookup not yet here. Fetch and re-run
+            // the drill rendering.
             V.loadDocsLookup().then(lk => {
                 DOCS_LOOKUP = lk;
                 renderDrill();
@@ -486,7 +485,7 @@
     }
 
     // ---------------------------------------------------------------------
-    // Sidebar-Bedienung
+    // Sidebar controls
     // ---------------------------------------------------------------------
     function bindStackChips() {
         const group = document.getElementById('stream-stack-axis');
@@ -495,12 +494,12 @@
             const btn = e.target.closest('[data-stack]');
             if (!btn) return;
             STATE.stack = btn.getAttribute('data-stack');
-            // Stack-Fokus zuruecksetzen — die Kategorien aendern sich
-            // mit der Achse, der alte Fokus-Key passt nicht mehr.
+            // Reset stack focus — categories change with the axis,
+            // so the old focus key no longer applies.
             STATE.stackFocus = null;
             V.setActiveChip(group, STATE.stack, 'data-stack', 'is-active');
-            // Brush bleibt bestehen — die Quellen-Auswahl ist
-            // achsen-unabhaengig gueltig.
+            // Keep brush — the source selection is valid independently
+            // of the axis.
             renderChart();
             renderDrill();
             updateActiveFilters();
@@ -518,9 +517,9 @@
             STATE.stackFocus = null;
             V.setActiveChip(document.getElementById('stream-stack-axis'),
                             'collection', 'data-stack', 'is-active');
-            // Slider-Reset triggert via input-Event den onChange-Hook und
-            // damit renderChart()+renderDrill(). Falls Slider fehlt,
-            // einmal direkt rendern.
+            // Slider reset fires the onChange hook via the input event and
+            // therefore renderChart()+renderDrill(). If the slider is
+            // missing, render once directly.
             if (!V.resetSliderInputs()) {
                 STATE.decadeMin = null;
                 STATE.decadeMax = null;
@@ -537,7 +536,7 @@
     }
 
     // ---------------------------------------------------------------------
-    // Active-Filter-Strip
+    // Active filter strip
     // ---------------------------------------------------------------------
     function clearStackFocus() {
         STATE.stackFocus = null;
@@ -583,7 +582,7 @@
     }
 
     // ---------------------------------------------------------------------
-    // URL-State-Sync
+    // URL state sync
     // Format: ?dec=1300-1380&stack=tx&brush=1340-1370&focus=Kauf
     // ---------------------------------------------------------------------
     let urlSyncActive = false;
@@ -628,10 +627,10 @@
             }
         }
         if (u.focus) {
-            // Validitaet wird beim ersten Render geprueft (effectiveStackDef).
+            // Validity is checked at the first render (effectiveStackDef).
             STATE.stackFocus = u.focus;
         }
-        // UI-Sync der Stack-Chips
+        // UI sync for the stack chips
         V.setActiveChip(document.getElementById('stream-stack-axis'),
                         STATE.stack, 'data-stack', 'is-active');
     }
@@ -660,8 +659,8 @@
                 if (chart) chart.innerHTML =
                     '<div class="aggregat-empty">Daten konnten nicht geladen werden.</div>';
             });
-        // docs_lookup nur fuer den Tx-Fokus-Drill noetig — eager im
-        // Hintergrund vorladen, damit der erste Klick ohne Verzoegerung lebt.
+        // docs_lookup is only needed for the tx focus drill — eager-load
+        // it in the background so the first click responds without delay.
         V.loadDocsLookup().then(lk => { DOCS_LOOKUP = lk; }).catch(() => {});
     });
 })();

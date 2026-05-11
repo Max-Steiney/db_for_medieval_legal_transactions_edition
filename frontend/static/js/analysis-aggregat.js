@@ -1,22 +1,16 @@
-// Analyse / Auswertungen: vier Sektionen mit Donut, Bar-Chart und Tabelle.
-// Sidebar-Filter (Zeitraum, Geschlecht) wirken auf alle Sektionen.
-// Geteilte Infrastruktur kommt aus VizCore (viz-core.js).
+// Analysis page: four sections with donut, bar chart and table.
+// Sidebar filters (period, sex) act on all sections.
+// Shared infrastructure comes from VizCore (viz-core.js).
 (function () {
     'use strict';
 
     const V = VizCore;
 
-    // ---------------------------------------------------------------------
-    // Daten laden
-    // ---------------------------------------------------------------------
     const EPIC_A = V.readJsonScript('aggregat-data-epic-a', { observations: {} });
     const EPIC_B = V.readJsonScript('aggregat-data-epic-b', { overview: {}, labels: [] });
     const EPIC_C = V.readJsonScript('aggregat-data-epic-c', { observations: {} });
-    let DOCS_LOOKUP = {};   // file_key -> doc-Stammdaten, async geladen
+    let DOCS_LOOKUP = {};   // file_key -> doc base data, loaded async
 
-    // ---------------------------------------------------------------------
-    // Filter-State
-    // ---------------------------------------------------------------------
     const STATE = {
         sex: 'all',                  // 'all' | 'm' | 'f' | 'unspecified'
         decadeMin: null,             // numeric decade or null
@@ -28,8 +22,8 @@
     const decFilter = V.makeDecadeFilter(STATE);
 
     // ---------------------------------------------------------------------
-    // M/W-Bar + Counts; gleiche Optik in Donut-Legenden und Bezeichnungs-
-    // Tabelle. Liefert HTML-Snippet, der Aufrufer entscheidet ueber Wrapper.
+    // M/F bar + counts; same look in donut legends and the labels table.
+    // Returns an HTML snippet; the caller chooses the wrapper.
     // ---------------------------------------------------------------------
     function sexBarHTML(m, f) {
         const tot = (m || 0) + (f || 0);
@@ -49,7 +43,7 @@
     }
 
     // ---------------------------------------------------------------------
-    // Donut-Renderer (Inline-SVG, keine externe Lib).
+    // Donut renderer (inline SVG, no external lib).
     // segments: [{key, label, value, color}, ...]
     // ---------------------------------------------------------------------
     function renderDonut(container, segments, opts) {
@@ -95,7 +89,7 @@
     }
 
     // ---------------------------------------------------------------------
-    // Legende: pro Segment ein Eintrag mit Farbe, Label, Count, %, M/W-Bar
+    // Legend: one entry per segment with color, label, count, %, M/F bar.
     // ---------------------------------------------------------------------
     function renderLegend(container, entries, total) {
         if (!container) return;
@@ -116,7 +110,7 @@
     }
 
     // ---------------------------------------------------------------------
-    // Sektion 1: Funktionsrollen
+    // Section 1: function roles
     // ---------------------------------------------------------------------
     function aggregateRoles() {
         const dec = EPIC_A.observations.role_by_sex_by_decade || {};
@@ -184,9 +178,9 @@
             ariaLabel: 'Funktionsrollen-Verteilung',
         });
 
-        // M/W-Aufschluesselung in der Legende ist immer sichtbar — der
-        // Sex-Filter veraendert nur die Donut-Werte, nicht das, was wir an
-        // Zusatz-Information ueber das Geschlechterverhaeltnis zeigen.
+        // M/F breakdown in the legend stays visible regardless of the sex
+        // filter — that filter only changes donut values, not the additional
+        // information we show about the sex ratio.
         const legendEntries = segments.map(s => ({
             key: s.key,
             label: s.label,
@@ -240,7 +234,7 @@
     }
 
     // ---------------------------------------------------------------------
-    // Sektion 2: Beziehungstypen
+    // Section 2: relation types
     // ---------------------------------------------------------------------
     function renderRelations() {
         const overview = (EPIC_B.overview || {}).type_by_sex || {};
@@ -314,7 +308,7 @@
     }
 
     // ---------------------------------------------------------------------
-    // Sektion 3: Transaktionstypen — horizontale Balken
+    // Section 3: transaction types — horizontal bars
     // ---------------------------------------------------------------------
     function aggregateTxTypes() {
         const tl = (EPIC_C.observations || {}).tx_timeline || {};
@@ -346,8 +340,8 @@
         const grandTotal = sorted.reduce((s, [, c]) => s + c, 0);
         const maxVal = top.length ? top[0][1] : 1;
 
-        // txKey wird ans Markup gehaengt, damit der Drill-Click-Handler
-        // den Pipeline-Schluessel zur Aufloesung kennt (data-tx).
+        // txKey is attached to the markup (data-tx) so the drill click
+        // handler knows the pipeline key for resolution.
         const barRow = (label, val, txKey, cssClass = '') => {
             const wRel = (val / maxVal * 100).toFixed(2);
             const txAttr = txKey ? ` data-tx="${txKey}"` : '';
@@ -364,8 +358,8 @@
         const rows = top.map(([k, c]) => barRow(V.labelize(k), c, k));
 
         if (rest.length) {
-            // Aufklappbare Sonstige-Sammelzeile: Klick toggelt is-open auf
-            // dem Wrapper, das CSS zeigt dann die versteckten rest-Bars.
+            // Expandable "other" aggregate row: click toggles is-open on the
+            // wrapper; CSS then reveals the hidden rest bars.
             const restRows = rest.map(([k, c]) => barRow(V.labelize(k), c, k, 'is-rest-item'));
             rows.push(`<div class="aggregat-bar-rest" data-rest-toggle>
                 <button type="button" class="aggregat-bar-row aggregat-bar-row--rest"
@@ -415,7 +409,7 @@
     }
 
     // ---------------------------------------------------------------------
-    // Sektion 4: Bezeichnungen — Tabelle mit Mini-Bars
+    // Section 4: labels — table with mini bars
     // ---------------------------------------------------------------------
     function renderLabels() {
         const tbody = document.querySelector('#labels-table tbody');
@@ -469,14 +463,14 @@
     }
 
     // ---------------------------------------------------------------------
-    // Filter-Bedienung
+    // Filter controls
     // ---------------------------------------------------------------------
     function bindSexFilter() {
         const group = document.getElementById('filter-sex');
         if (!group) return;
 
-        // Initial-Setup: aktiver Chip optisch markieren, Chips ohne Treffer
-        // (count=0) ausblenden, damit kein toter Klick angeboten wird.
+        // Initial setup: mark the active chip; hide chips with no matches
+        // (count=0) so we do not offer a dead click.
         V.setActiveChip(group, STATE.sex, 'data-sex');
         group.querySelectorAll('[data-sex]').forEach(b => {
             const cnt = b.querySelector('.form-filter-chip-count');
@@ -545,8 +539,8 @@
 
             const search = document.getElementById('labels-search');
             if (search) search.value = '';
-            // Slider-Reset triggert via input-Event den onChange-Hook und
-            // damit renderAll(). Falls der Slider fehlt, einmal direkt rendern.
+            // Slider reset fires the onChange hook via its input event, which
+            // triggers renderAll(). If the slider is missing, render directly.
             if (!V.resetSliderInputs()) {
                 STATE.decadeMin = null;
                 STATE.decadeMax = null;
@@ -556,7 +550,7 @@
     }
 
     // ---------------------------------------------------------------------
-    // Active-Filter-Strip — Filter-Beschreibungen + Clear-Callbacks
+    // Active filter strip — filter descriptions + clear callbacks
     // ---------------------------------------------------------------------
     function clearSexFilter() {
         STATE.sex = 'all';
@@ -612,9 +606,9 @@
     }
 
     // ---------------------------------------------------------------------
-    // Drill-Down: Klick auf Donut-Arc / Bar / Bezeichnung -> Quellen-Liste.
-    // Sammelt file_keys aus den drill_down-Indices der epic_*-Aggregate
-    // und ruft V.openDrillOverlay zum Anzeigen.
+    // Drill-down: click on donut arc / bar / label -> sources list.
+    // Collects file_keys from the drill_down indices of the epic_* aggregates
+    // and calls V.openDrillOverlay to display them.
     // ---------------------------------------------------------------------
     function drillRoleSex(roleKey) {
         const dd = ((EPIC_A.drill_down || {}).role_sex || {})[roleKey] || {};
@@ -631,7 +625,7 @@
         const dd = (EPIC_B.drill_down || {}).type_sex || {};
         const sex = STATE.sex;
         const keys = [];
-        // type_sex Keys sind composite: "kin_m", "kin_f", "occ_m", ...
+        // type_sex keys are composite: "kin_m", "kin_f", "occ_m", ...
         if (sex === 'all' || sex === 'm') (dd[relKey + '_m'] || []).forEach(k => keys.push(k));
         if (sex === 'all' || sex === 'f') (dd[relKey + '_f'] || []).forEach(k => keys.push(k));
         const label = V.REL_LABELS[relKey] || relKey;
@@ -649,7 +643,7 @@
         openDrill('Transaktionstyp: ' + V.labelize(txKey), keys);
     }
     function drillLabel(label) {
-        // label_sex Keys sind composite: "{lowercased_label}__{m|f}"
+        // label_sex keys are composite: "{lowercased_label}__{m|f}"
         const dd = (EPIC_B.drill_down || {}).label_sex || {};
         const sex = STATE.sex;
         const lc = label.toLowerCase();
@@ -662,7 +656,7 @@
 
     function openDrill(title, fileKeys) {
         if (!Object.keys(DOCS_LOOKUP).length) {
-            // Lookup ist async; der erste Klick faengt das ab und laedt nach.
+            // Lookup is async; the first click catches that and loads it.
             V.loadDocsLookup().then(lk => {
                 DOCS_LOOKUP = lk;
                 openDrill(title, fileKeys);
@@ -685,7 +679,7 @@
     }
 
     function bindDrillClicks() {
-        // Donut-Arcs: per Event-Delegation auf den jeweiligen Donut-Container
+        // Donut arcs: event delegation on the respective donut container.
         const rolesDonut = document.getElementById('roles-donut');
         if (rolesDonut) {
             rolesDonut.addEventListener('click', (e) => {
@@ -702,8 +696,8 @@
                 drillRelationSex(arc.dataset.key || '');
             });
         }
-        // Legend-Items oeffnen denselben Drill (besser klickbar als die
-        // schmalen SVG-Arcs)
+        // Legend items open the same drill (easier to click than the narrow
+        // SVG arcs).
         const rolesLegend = document.getElementById('roles-legend');
         if (rolesLegend) {
             rolesLegend.addEventListener('click', (e) => {
@@ -720,21 +714,21 @@
                 drillRelationSex(item.dataset.key || '');
             });
         }
-        // Tx-Bars: Click auf normale Bar-Reihen, nicht auf die Sonstige-
-        // Toggle-Reihe und nicht auf die Sub-Items (deren Tx-Key haben wir
-        // im Renderer aktuell noch nicht ans data-Attribut gehaengt; die
-        // werden in einer naechsten Iteration klickbar).
+        // Tx bars: click on normal bar rows, not on the "other" toggle row
+        // and not on sub-items (their tx key is not yet attached to the
+        // data attribute in the renderer; those become clickable in a
+        // later iteration).
         const txBars = document.getElementById('tx-bars');
         if (txBars) {
             txBars.addEventListener('click', (e) => {
                 const row = e.target.closest('.aggregat-bar-row');
                 if (!row) return;
-                if (row.classList.contains('aggregat-bar-row--rest')) return;  // Toggle, kein Drill
+                if (row.classList.contains('aggregat-bar-row--rest')) return;  // toggle row, not a drill target
                 const txKey = row.dataset.tx;
                 if (txKey) drillTxType(txKey);
             });
         }
-        // Bezeichnungs-Tabelle
+        // Labels table
         const labelsTable = document.getElementById('labels-table');
         if (labelsTable) {
             labelsTable.addEventListener('click', (e) => {
@@ -747,12 +741,11 @@
     }
 
     // ---------------------------------------------------------------------
-    // URL-State-Sync — Filter-Stand wird in die Suchparameter serialisiert,
-    // damit der Forschungsstand zitierbar / bookmark-fähig ist.
+    // URL state sync. Filter state is serialised into the query string so
+    // the current research state is citable / bookmarkable.
     // Format: ?dec=1300-1380&sex=f&type=kin&q=hausfrau&mode=persons
     // ---------------------------------------------------------------------
-    let urlSyncActive = false;   // Switch, damit Apply-from-URL keine
-                                  // Re-Writes triggert.
+    let urlSyncActive = false;   // guard so apply-from-URL does not re-write
 
     function writeUrl() {
         if (!urlSyncActive) return;
@@ -785,7 +778,7 @@
                 V.applySliderValues(lo, hi);
             }
         }
-        // UI-Sync: Chips, Toggle, Search-Input
+        // UI sync: chips, toggle, search input.
         V.setActiveChip(document.getElementById('filter-sex'), STATE.sex, 'data-sex');
         V.setActiveChip(document.querySelector('.aggregat-rel-type-chips'),
                         STATE.labelType, 'data-rel');
@@ -796,7 +789,7 @@
     }
 
     // ---------------------------------------------------------------------
-    // Master-Render
+    // Master render
     // ---------------------------------------------------------------------
     function renderAll() {
         renderRoles();
@@ -815,15 +808,15 @@
         bindReset();
         V.bindDrillOverlay({ overlayId: 'aggregat-drilldown' });
         bindDrillClicks();
-        // URL-State zuerst lesen + auf STATE/UI mappen, dann ein einziges
-        // renderAll(); danach URL-Sync aktiv schalten.
+        // Read URL state first and map it onto STATE/UI, then run a single
+        // renderAll(); only after that switch URL sync on.
         applyUrlState();
         renderAll();
         urlSyncActive = true;
         writeUrl();
-        // docs_lookup eager im Hintergrund vorladen, damit der erste
-        // Drill-Klick keine Verzoegerung hat. Der Klick-Pfad faellt sauber
-        // auf "lade nach" zurueck, falls der Fetch noch nicht fertig ist.
+        // Eagerly preload docs_lookup in the background so the first drill
+        // click has no delay. The click path falls back cleanly to
+        // "load now" if the fetch has not finished yet.
         V.loadDocsLookup().then(lk => { DOCS_LOOKUP = lk; }).catch(() => {});
     });
 })();

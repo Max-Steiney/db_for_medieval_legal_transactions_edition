@@ -1,18 +1,17 @@
 /* ==========================================================================
    Wiener Urkundenbuch — Viz-Core
-   Geteilte Infrastruktur fuer die Daten-Visualisierungs-Seiten unter
-   /analysis/ und /exploration/. Liefert Daten-Lader, Dekaden-Helper,
-   CSP-sichere Style-Projektion, Chip-Toggle, Sidebar-Bindings und das
-   Active-Filter-Strip-Rendering. Domain-Konstanten (Rollen, Beziehungen,
-   Geschlechter-Labels) leben hier zentral, damit alle Seiten sie konsistent
-   nutzen.
+   Shared visualisation layer for the data visualisation pages under
+   /analysis/ and /exploration/. Provides data loaders, decade helpers,
+   CSP-safe style projection, chip toggling, sidebar bindings and the
+   Active-Filter-Strip rendering. Domain constants (roles, relations,
+   sex labels) live here centrally so all pages stay consistent.
    ========================================================================== */
 
 let VizCore = (function () {
     'use strict';
 
     // ---------------------------------------------------------------------
-    // Domain-Konstanten — projektweit konsistent
+    // Domain constants — kept consistent project-wide
     // ---------------------------------------------------------------------
     const ROLE_LABELS = {
         'issuer':    'Aussteller / Ausstellerin',
@@ -27,7 +26,7 @@ let VizCore = (function () {
         'recipient': '#2e7a88',  // Aqua
         'witness':   '#6b6040',  // Olive
         'other':     '#a08470',  // Sand
-        '':          '#9a9590',  // Grau (keine)
+        '':          '#9a9590',  // grey (none)
     };
 
     const REL_LABELS = {
@@ -62,9 +61,9 @@ let VizCore = (function () {
     }
 
     // ---------------------------------------------------------------------
-    // Decade helpers — Dekaden-Arithmetik und Range-Filter.
-    // makeDecadeFilter(state) bindet sich an ein Page-State-Objekt, das
-    // numerische Felder decadeMin/decadeMax fuehrt (null = kein Filter).
+    // Decade helpers — decade arithmetic and range filtering.
+    // makeDecadeFilter(state) binds to a page state object holding numeric
+    // fields decadeMin/decadeMax (null = no filter).
     // ---------------------------------------------------------------------
     function decadeOf(year) { return Math.floor(year / 10) * 10; }
 
@@ -86,9 +85,9 @@ let VizCore = (function () {
     }
 
     // ---------------------------------------------------------------------
-    // Pipeline-Underscore-Keys ("ueber_gabe") wieder lesbar machen.
-    // Umlaut-Recovery muss case-sensitive sein, sonst wird "Uebergabe" nicht
-    // zu "Übergabe".
+    // Turn pipeline underscore keys ("ueber_gabe") back into display form.
+    // Umlaut recovery must be case-sensitive — otherwise "Uebergabe" would
+    // not round-trip to "Übergabe".
     // ---------------------------------------------------------------------
     function labelize(k) {
         return k.replace(/_/g, ' ')
@@ -97,11 +96,11 @@ let VizCore = (function () {
     }
 
     // ---------------------------------------------------------------------
-    // CSP-sichere Style-Projektion
-    // CSP "style-src 'self'" blockiert inline style="..."-Attribute. Wir
-    // codieren Werte als data-Attribute und projizieren sie nach jedem
-    // innerHTML auf die Element-style-Property (CSP-konform via JS-IDL).
-    // Unterstuetzte data-Attribute:
+    // CSP-safe style projection
+    // CSP "style-src 'self'" blocks inline style="..." attributes. We
+    // encode values as data attributes and project them after each
+    // innerHTML onto the element's style property (CSP-compliant via JS IDL).
+    // Supported data attributes:
     //   data-w        -> style.width = "<v>%"
     //   data-h        -> style.height = "<v>px"
     //   data-bg       -> style.background = "<v>"
@@ -124,7 +123,7 @@ let VizCore = (function () {
     }
 
     // ---------------------------------------------------------------------
-    // JSON aus eingebettetem <script type="application/json">
+    // Read JSON from an embedded <script type="application/json">
     // ---------------------------------------------------------------------
     function readJsonScript(id, fallback) {
         const el = document.getElementById(id);
@@ -137,9 +136,9 @@ let VizCore = (function () {
     }
 
     // ---------------------------------------------------------------------
-    // Document-Preprocessing fuer search.json
-    // Annotiert jeden Doc mit _dec (parsbare Dekade aus di/d) und liefert
-    // {docs, byDecade} fuer schnellen Lookup.
+    // Document preprocessing for search.json
+    // Annotates each doc with _dec (parsable decade from di/d) and returns
+    // {docs, byDecade} for fast lookup.
     // ---------------------------------------------------------------------
     function preprocessDocs(raw) {
         const docs = [];
@@ -165,9 +164,9 @@ let VizCore = (function () {
             .then(preprocessDocs);
     }
 
-    // docs_lookup.json: file_key (z. B. "f__QGW_0a") -> Doc-Stammdaten
-    // {u: url, i: idno, d: display-Datum, c: Korpus-Label, r: Regest}.
-    // Fuer Drill-down-Listen, die nur file_keys speichern (drill_down in
+    // docs_lookup.json: file_key (e.g. "f__QGW_0a") -> doc base record
+    // {u: url, i: idno, d: display date, c: corpus label, r: regest}.
+    // Used by Drill-down lists that only store file_keys (drill_down in
     // epic_a/b/c).
     function loadDocsLookup(rootPath) {
         const root = rootPath || (window.ROOT_PATH || '..');
@@ -175,11 +174,11 @@ let VizCore = (function () {
     }
 
     // ---------------------------------------------------------------------
-    // Chip-Active-Toggle-Helper
-    // Markiert in einer Chip-Gruppe die zu activeKey passende Schaltflaeche
-    // als aktiv (CSS-Klasse + aria-pressed); alle anderen werden zurueck-
-    // gesetzt. activeClass default 'active' (Sidebar-Standard); fuer Toggle-
-    // Buttons in Quadrant-Headers wird 'is-active' uebergeben.
+    // Chip active-toggle helper
+    // Marks the button matching activeKey in a chip group as active (CSS
+    // class + aria-pressed); all others are cleared. activeClass defaults
+    // to 'active' (sidebar standard); quadrant-header toggle buttons pass
+    // 'is-active' instead.
     // ---------------------------------------------------------------------
     function setActiveChip(group, activeKey, attr, activeClass) {
         if (!group) return;
@@ -192,12 +191,11 @@ let VizCore = (function () {
     }
 
     // ---------------------------------------------------------------------
-    // Range-Slider-Binding
-    // bindRangeSlider({state, onChange}) bindet auf die per Macro
-    // generierten Inputs (#range-min, #range-max). Mutiert
-    // state.decadeMin/decadeMax (null wenn voll aufgespannt -> kein Filter).
-    // Aktualisiert range-label-min/max + Histogramm-Highlights.
-    // onChange wird nach jeder Veraenderung aufgerufen.
+    // Range-Slider binding
+    // bindRangeSlider({state, onChange}) binds to the inputs generated by
+    // the macro (#range-min, #range-max). Mutates state.decadeMin/decadeMax
+    // (null when fully expanded -> no filter). Updates range-label-min/max
+    // and histogram highlights. onChange fires after every change.
     // ---------------------------------------------------------------------
     function bindRangeSlider(opts) {
         const state = opts.state;
@@ -214,8 +212,8 @@ let VizCore = (function () {
             let lo = parseInt(minEl.value, 10);
             let hi = parseInt(maxEl.value, 10);
             if (lo > hi) { [lo, hi] = [hi, lo]; }
-            // Slider voll aufgespannt = kein Filter (sonst fallen Daten
-            // ohne parsbare Dekade aus den Aggregaten).
+            // Fully expanded slider = no filter (otherwise documents
+            // without a parsable decade would drop out of the aggregates).
             if (lo <= sliderMin && hi >= sliderMax) {
                 state.decadeMin = null;
                 state.decadeMax = null;
@@ -251,15 +249,15 @@ let VizCore = (function () {
         if (!minEl || !maxEl) return false;
         minEl.value = minEl.min;
         maxEl.value = maxEl.max;
-        // Triggert update() (das von bindRangeSlider angehaengt wurde),
-        // welches state.decadeMin/Max auf null setzt + onChange ruft.
+        // Triggers update() (attached by bindRangeSlider), which clears
+        // state.decadeMin/Max to null and calls onChange.
         minEl.dispatchEvent(new Event('input', { bubbles: true }));
         return true;
     }
 
-    // Slider-DOM auf Werte setzen + visuelle Updates (Histogramm-Highlights,
-    // Range-Labels). Triggert KEIN input-Event — der Aufrufer hat den
-    // State bereits selbst gesetzt und ruft anschliessend renderAll().
+    // Set slider DOM to values and refresh visuals (histogram highlights,
+    // Range-Slider labels). Does NOT dispatch an input event — the caller
+    // already set state itself and will call renderAll() afterwards.
     function applySliderValues(lo, hi) {
         const minEl = document.getElementById('range-min');
         const maxEl = document.getElementById('range-max');
@@ -274,10 +272,10 @@ let VizCore = (function () {
     }
 
     // ---------------------------------------------------------------------
-    // URL-State-Sync
-    // parseUrlState() liest URL-Suchparameter als flaches Objekt.
-    // writeUrlState({...}) schreibt via history.replaceState — keine
-    // History-Eintraege, keine Page-Loads. Leere/null-Werte werden weggelassen.
+    // URL state sync
+    // parseUrlState() reads URL search parameters as a flat object.
+    // writeUrlState({...}) writes via history.replaceState — no history
+    // entries, no page loads. Empty/null values are dropped.
     // ---------------------------------------------------------------------
     function parseUrlState() {
         const out = {};
@@ -297,12 +295,12 @@ let VizCore = (function () {
         history.replaceState(null, '', url);
     }
 
-    // Cross-Page-Sprung: baue eine Quellen-Listen-URL mit den uebernehmbaren
-    // Filtern (Zeitraum + Geschlechter-Mapping). Die Quellen-Seite kennt
-    // keinen Rollen-/Beziehungs-/Bezeichnungs-/Tx-Filter — solche Filter
-    // werden bewusst nicht uebertragen. Das Mapping ist asymmetrisch:
-    //   sex='f' -> 'with-f'  (Quellen mit mind. 1 Frau)
-    //   sex='m' -> 'only-m'  ('with-m' existiert in Quellen nicht)
+    // Cross-page jump: build a source list URL carrying the transferable
+    // filters (time range + sex mapping). The source list page has no
+    // role/relation/designation/tx filter — those are deliberately not
+    // forwarded. The sex mapping is asymmetric:
+    //   sex='f' -> 'with-f'  (sources containing at least one woman)
+    //   sex='m' -> 'only-m'  ('with-m' does not exist on the source page)
     function buildDocumentsURL(opts) {
         const root = opts.root || (window.ROOT_PATH || '..');
         const p = new URLSearchParams();
@@ -315,13 +313,13 @@ let VizCore = (function () {
     }
 
     // ---------------------------------------------------------------------
-    // Drill-Down-Overlay
-    // Verwendet das drill_down_overlay()-Macro aus macros.html (das bereits
-    // CSS, Header, Tabelle, Footer-Count und Schliessen-Button mitbringt).
+    // Drill-down overlay
+    // Uses the drill_down_overlay() macro from macros.html (which already
+    // ships CSS, header, table, footer count and close button).
     // openDrillOverlay({ overlayId, title, fileKeys, docsLookup,
-    //                    decadeFilter, note }) populiert die Overlay-Tabelle
-    // und macht sie sichtbar. Der Aufrufer hat den Overlay-Schliess-Handler
-    // einmal via bindDrillOverlay() initialisiert.
+    //                    decadeFilter, note }) populates the overlay table
+    // and shows it. The caller has wired up the close handler once via
+    // bindDrillOverlay().
     // ---------------------------------------------------------------------
     function bindDrillOverlay(opts) {
         const id = opts.overlayId;
@@ -331,7 +329,7 @@ let VizCore = (function () {
         function close() { overlay.classList.add('hidden'); overlay.setAttribute('aria-hidden', 'true'); }
         closeBtn.addEventListener('click', close);
         overlay.addEventListener('click', (e) => {
-            if (e.target === overlay) close();   // Klick auf Backdrop
+            if (e.target === overlay) close();   // click on backdrop
         });
         document.addEventListener('keydown', (e) => {
             if (e.key === 'Escape' && !overlay.classList.contains('hidden')) close();
@@ -348,8 +346,8 @@ let VizCore = (function () {
         const lookup = opts.docsLookup || {};
         const decadeFilter = opts.decadeFilter || null;
 
-        // file_keys -> Doc-Records, optional nach Dekade filtern (Datum
-        // aus dem d-Feld der Lookup-Eintraege; erste 4 Zeichen = Jahr).
+        // file_keys -> doc records, optionally filtered by decade (date
+        // taken from the lookup entries' d field; first 4 chars = year).
         const seen = new Set();
         const docs = [];
         for (const fk of (opts.fileKeys || [])) {
@@ -366,7 +364,7 @@ let VizCore = (function () {
             }
             docs.push({ key: fk, ...e });
         }
-        // Sortierung nach Datum (d ist YYYY...).
+        // Sort by date (d starts with YYYY).
         docs.sort((a, b) => (a.d || '').localeCompare(b.d || ''));
 
         if (titleEl) titleEl.textContent = opts.title || 'Quellen';
@@ -375,9 +373,9 @@ let VizCore = (function () {
             countEl.textContent = fmt(docs.length) + ' Quellen' + noteText;
         }
 
-        // Optionaler Cross-Nav-Link im Footer ("-> in Quellen-Liste oeffnen")
-        // Wird dynamisch in den Footer-Container injiziert; bei jedem Open
-        // ersetzt, damit die URL aktuell bleibt.
+        // Optional cross-nav link in the footer ("-> open in source list").
+        // Injected into the footer container and replaced on each open so
+        // the URL stays current.
         const footer = overlay.querySelector('.explore-drilldown-footer');
         if (footer) {
             const existing = footer.querySelector('.explore-drilldown-crossnav');
@@ -422,9 +420,9 @@ let VizCore = (function () {
 
     // ---------------------------------------------------------------------
     // Active-Filter-Strip
-    // renderActiveFilters(containerId, filters) — filters ist eine Array
-    // von Objekten {label, onClear}. Pro Eintrag wird eine entfernbare
-    // Pille gerendert; Klick ruft onClear.
+    // renderActiveFilters(containerId, filters) — filters is an array of
+    // {label, onClear} objects. Each entry renders a removable pill;
+    // clicking it calls onClear.
     // ---------------------------------------------------------------------
     function renderActiveFilters(containerId, filters) {
         const el = document.getElementById(containerId);
@@ -441,17 +439,17 @@ let VizCore = (function () {
     // Public API
     // ---------------------------------------------------------------------
     return {
-        // Konstanten
+        // Constants
         ROLE_LABELS, ROLE_ORDER, ROLE_COLORS,
         REL_LABELS, REL_ORDER, REL_COLORS,
         SEX_LABELS_DE,
-        // Format/Helper
+        // Format/helpers
         fmt, pct,
         decadeOf, makeDecadeFilter,
         labelize,
         applyDataStyles,
         setActiveChip,
-        // Daten
+        // Data
         readJsonScript,
         preprocessDocs,
         loadSearchJson,
@@ -460,13 +458,13 @@ let VizCore = (function () {
         bindRangeSlider,
         resetSliderInputs,
         applySliderValues,
-        // URL-State
+        // URL state
         parseUrlState,
         writeUrlState,
         buildDocumentsURL,
-        // Filter-Strip
+        // Filter strip
         renderActiveFilters,
-        // Drill-Down
+        // Drill-down
         bindDrillOverlay,
         openDrillOverlay,
     };

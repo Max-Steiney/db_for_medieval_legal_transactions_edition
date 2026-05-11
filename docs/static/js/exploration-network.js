@@ -1,7 +1,7 @@
-// Exploration / Personennetzwerk: Ego-Layout um eine Person.
-// Person waehlen (Suche oder Vorschlags-Klick) -> die Person sitzt im
-// Zentrum, ihre direkten Verbindungen (gefiltert nach Beziehungstyp) liegen
-// radial drumherum. Klick auf eine Nachbar-Person verlagert das Zentrum.
+// Exploration / person network: Ego-layout around a single person.
+// Pick a person (search or suggestion click) -> that person sits in the
+// center, their direct connections (filtered by relation type) are arranged
+// radially around it. Clicking a neighbor person moves the center.
 (function () {
     'use strict';
 
@@ -11,7 +11,7 @@
     const REL_COLORS = V.REL_COLORS;
     const REL_ORDER  = V.REL_ORDER;
 
-    // Geschlechter-Farben fuer Personen-Knoten (aus tokens.css).
+    // Sex colors for person nodes (from tokens.css).
     const SEX_COLORS = {
         m: '#5d3a74',
         f: '#2d6650',
@@ -19,16 +19,16 @@
     };
 
     // ---------------------------------------------------------------------
-    // Daten laden + Index aufbauen
+    // Load data + build index
     // ---------------------------------------------------------------------
     const EPIC_B = V.readJsonScript('network-data-epic-b', { persons: [] });
     let DOCS_LOOKUP = {};
 
     // PERSONS: id -> {id, name, sex, rels[]}
-    // ORGS:    id -> name (orgs erscheinen als occ-Targets, kein eigener Datensatz)
+    // ORGS:    id -> name (orgs appear as occ targets; they have no own record)
     const PERSONS = new Map();
     const ORGS = new Map();
-    // Edge-Index: pid -> [{otherKey, otherIsOrg, type, label, sourceKeys: [fk]}]
+    // Edge index: pid -> [{otherKey, otherIsOrg, type, label, sourceKeys: [fk]}]
     const EDGE_INDEX = new Map();
 
     function buildIndex() {
@@ -55,9 +55,9 @@
                 const e = edges.get(key);
                 if (r.l && !e.labels.includes(r.l)) e.labels.push(r.l);
                 if (r.f && !e.sourceKeys.includes(r.f)) e.sourceKeys.push(r.f);
-                // Org-Eintrag fuer Anzeige-Namen merken
+                // Remember org entry for display name.
                 if (isOrg && !ORGS.has(other)) {
-                    // Org-Schluessel hat Form "org__alias" — als lesbares Label nutzen
+                    // Org key has form "org__alias" — use as readable label.
                     ORGS.set(other, prettifyOrg(other));
                 }
             }
@@ -66,7 +66,6 @@
     }
 
     function prettifyOrg(orgKey) {
-        // "org__oesterreich-herzogtum" -> "österreich-herzogtum"
         return V.labelize(orgKey.replace(/^org__/, ''));
     }
 
@@ -76,10 +75,10 @@
     function getEdgeCount(pid) { return getEdges(pid).length; }
 
     // ---------------------------------------------------------------------
-    // Filter-State
+    // Filter state
     // ---------------------------------------------------------------------
     const STATE = {
-        center: null,            // pid oder null (= Vorschlags-Modus)
+        center: null,            // pid or null (= suggestion mode)
         types: new Set(REL_ORDER),
     };
 
@@ -88,7 +87,7 @@
     }
 
     // ---------------------------------------------------------------------
-    // Vorschlaege: Top-N Personen mit den meisten Verbindungen
+    // Suggestions: top-N persons with the most connections
     // ---------------------------------------------------------------------
     function topSuggestions(n) {
         const candidates = [];
@@ -101,13 +100,13 @@
     }
 
     // ---------------------------------------------------------------------
-    // SVG-Renderer (Inline, keine externe Lib)
+    // SVG renderer (inline, no external lib)
     // ---------------------------------------------------------------------
     const W = 720, H = 520, CX = W / 2, CY = H / 2;
     const RADIUS_NEIGHBOR = 200;
 
     function nodeRadius(edgeCount) {
-        // 8..22px sanft monoton mit Anzahl Beziehungen
+        // 8..22px, smoothly monotonic with number of relations.
         return Math.min(22, Math.max(8, 8 + Math.sqrt(edgeCount) * 2.5));
     }
 
@@ -136,7 +135,7 @@
         if (hint) hint.hidden = true;
         if (detail) detail.hidden = false;
 
-        // Radial-Layout: Nachbarn auf Kreis verteilen
+        // Radial layout: distribute neighbors on a circle.
         const N = edges.length;
         const positioned = edges.map((e, i) => {
             const angle = (2 * Math.PI * i / Math.max(N, 1)) - Math.PI / 2;
@@ -229,7 +228,7 @@
         if (title) title.textContent = `Verbindungen von ${center.name}`;
         if (meta)  meta.textContent  = `${V.fmt(edges.length)} Eintr${edges.length === 1 ? 'ag' : 'äge'}`;
 
-        // Sortierung: Beleg-Anzahl absteigend, dann nach Name
+        // Sort: evidence count descending, then by name.
         const sorted = edges.slice().sort((a, b) => {
             if (b.sourceKeys.length !== a.sourceKeys.length)
                 return b.sourceKeys.length - a.sourceKeys.length;
@@ -247,7 +246,7 @@
                 ? `<span class="net-detail-name net-detail-name--org">${escapeHtml(name)}</span>`
                 : `<button type="button" class="net-detail-recenter" data-pid="${escapeAttr(e.otherKey)}"
                        title="Zum Mittelpunkt machen">${escapeHtml(name)}</button>`;
-            // Wissenskorb-Button zeigt nur fuer Personen-Profile, nicht fuer Orgs
+            // Knowledge basket button shows only for person profiles, not for orgs.
             let korbBtn = '';
             if (!isOrg && other && typeof Wissenskorb !== 'undefined') {
                 const url = `register/persons/${other.id}.html`;
@@ -269,7 +268,7 @@
     }
 
     // ---------------------------------------------------------------------
-    // Suche
+    // Search
     // ---------------------------------------------------------------------
     function bindSearch() {
         const input = document.getElementById('net-person-search');
@@ -340,7 +339,7 @@
             if (!btn) return;
             const t = btn.getAttribute('data-net-type');
             if (STATE.types.has(t)) {
-                if (STATE.types.size > 1) STATE.types.delete(t);   // mind. 1 Typ aktiv halten
+                if (STATE.types.size > 1) STATE.types.delete(t);   // keep at least 1 type active
             } else {
                 STATE.types.add(t);
             }
@@ -361,7 +360,7 @@
         btn.addEventListener('click', () => {
             STATE.center = null;
             STATE.types = new Set(REL_ORDER);
-            // Type-Chips visuell sync
+            // Sync type chips visually.
             const group = document.getElementById('net-type-filter');
             if (group) {
                 for (const b of group.querySelectorAll('[data-net-type]')) {
@@ -394,7 +393,7 @@
     }
 
     // ---------------------------------------------------------------------
-    // Active-Filter-Strip
+    // Active filter strip
     // ---------------------------------------------------------------------
     function updateActiveFilters() {
         const filters = [];
@@ -424,7 +423,7 @@
     }
 
     // ---------------------------------------------------------------------
-    // URL-State-Sync
+    // URL state sync
     // ?p=pe__xxx&types=kin,occ
     // ---------------------------------------------------------------------
     let urlSyncActive = false;
@@ -445,7 +444,7 @@
             if (set.size > 0) STATE.types = set;
         }
         if (u.p && PERSONS.has(u.p)) STATE.center = u.p;
-        // Type-Chips visuell sync
+        // Sync type chips visually.
         const group = document.getElementById('net-type-filter');
         if (group) {
             for (const b of group.querySelectorAll('[data-net-type]')) {
@@ -457,7 +456,7 @@
     }
 
     // ---------------------------------------------------------------------
-    // Hilfen
+    // Helpers
     // ---------------------------------------------------------------------
     function escapeHtml(s) {
         return String(s == null ? '' : s)

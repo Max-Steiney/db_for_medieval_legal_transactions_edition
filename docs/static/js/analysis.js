@@ -1,9 +1,9 @@
 /* ==========================================================================
-   Stadt und Gemeinschaft Wien - Analyse-Seite
+   Stadt und Gemeinschaft Wien — analysis page
    Driver
 
-   Verbindet Composer mit Hash und Daten-Loader. Live-Update bei jeder
-   State-Aenderung — kein Submit-Button mehr.
+   Wires composer to hash and data loader. Live update on every state
+   change — no submit button.
    ========================================================================== */
 
 (function() {
@@ -37,7 +37,7 @@
         }
     }
 
-    /* ----- Daten-Loader ------------------------------------------------- */
+    /* ----- Data loader -------------------------------------------------- */
 
     function loadDataFiles(filenames, callback) {
         if (!filenames || filenames.length === 0) { callback({}); return; }

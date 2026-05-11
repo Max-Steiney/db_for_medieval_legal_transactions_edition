@@ -1,14 +1,14 @@
 /* ==========================================================================
-   Stadt und Gemeinschaft Wien - Analyse-Seite
-   Composer + KPI-Dashboard
+   Stadt und Gemeinschaft Wien — analysis page
+   Composer + KPI dashboard
 
-   Linkes Panel: Subjekt-Liste + Filter-Chips + "+ Filter"-Button.
-   Live-Update bei jeder State-Aenderung.
+   Left panel: subject list + filter chips + "+ Filter" button.
+   Live update on every state change.
 
-   Rechtes Panel: Subjekt-Uebersicht (immer sichtbar). Bei aktiven Filtern
-   zusaetzlich oben eine Treffer-Karte mit Anteilsangabe und Drill-Down.
+   Right panel: subject overview (always visible). When filters are active,
+   a result card with share and drill-down is shown on top.
 
-   State-Form:
+   State shape:
      { subject: 'persons'|'sources'|'events'|'relationships',
        filters: { <filterId>: <value>, ... } }
 
@@ -156,7 +156,7 @@
 
     function requiredFiles(state) {
         let files = ['query_vocabulary.json'].concat(SUBJECT_FILES[state.subject] || []);
-        // org_type-Picker fuer events laedt aus epic_a; ist schon dabei.
+        // org_type picker for events reads from epic_a; already included above.
         if (state.filters.org_category) files.push('categories.json');
         let seen = {}, out = [];
         files.forEach(function(f) { if (!seen[f]) { seen[f] = true; out.push(f); } });
@@ -247,7 +247,7 @@
 
     function escClose(ev) { if (ev.key === 'Escape') closePicker(); }
 
-    /* -------- Composer (linkes Panel) ------------------------------------ */
+    /* -------- Composer (left panel) -------------------------------------- */
 
     function renderComposer(state, dataMap, root, onChange) {
         root.innerHTML = '';
@@ -359,7 +359,7 @@
                 };
             });
             showPicker(btn, opts, function(fid) {
-                /* ersten Wert mit Count > 0 als Default setzen */
+                /* default to first value with count > 0 */
                 let values = valuesForFilter(fid, dataMap);
                 let pick = values[0];
                 for (let i = 0; i < values.length; i++) {
@@ -377,7 +377,7 @@
         return btn;
     }
 
-    /* -------- Result (rechtes Panel) ------------------------------------- */
+    /* -------- Result (right panel) --------------------------------------- */
 
     function renderResult(state, dataMap, panel, drillHandle) {
         panel.innerHTML = '';
@@ -498,7 +498,7 @@
         document.body.removeChild(ta); cb();
     }
 
-    /* -------- KPI-Datenquellen ------------------------------------------- */
+    /* -------- KPI data sources ------------------------------------------- */
 
     let OVERVIEW = {
         persons: function(d) {

@@ -1,7 +1,7 @@
 /* ==========================================================================
-   Wissenskorb — persistente Sammlung von Quellen ueber Sitzungen.
-   localStorage-basiert; ein flaches Array von Items mit type+id-Schluessel.
-   Umlauf-Updates des Nav-Badges via Custom-Event 'wissenskorb-change'.
+   Knowledge basket — persistent collection of sources across sessions.
+   localStorage-based; a flat array of items keyed by type+id.
+   Nav badge updates via custom event 'wissenskorb-change'.
    ========================================================================== */
 
 let Wissenskorb = (function () {
@@ -63,8 +63,8 @@ let Wissenskorb = (function () {
     function count() { return read().length; }
     function clear() { write([]); }
 
-    // Badge im Nav aktualisieren — wird von core.js eager beim Page-Load
-    // gerufen und reagiert dann auf Aenderungen in dieser Sitzung.
+    // Update nav badge — called eagerly by core.js on page load,
+    // then reacts to changes within the session.
     function updateBadge() {
         const badge = document.getElementById('nav-korb-count');
         if (!badge) return;
@@ -73,9 +73,9 @@ let Wissenskorb = (function () {
         badge.hidden = (c === 0);
     }
 
-    // Markup-Helper: kleiner "+"/Haken-Knopf, der das Toggle ausloest.
-    // El-Caller fuegt ihn ins Markup ein; bindKorbButtons() wartet auf
-    // Klicks via Event-Delegation am Document.
+    // Markup helper: small "+"/check button that triggers the toggle.
+    // Caller inserts it into markup; clicks are handled via document-level
+    // event delegation in bindGlobalClicks().
     function buttonHTML(item) {
         const inKorb = has(item.type, item.id);
         const label = inKorb
@@ -98,7 +98,7 @@ let Wissenskorb = (function () {
             try {
                 const item = JSON.parse(decodeURIComponent(btn.dataset.korbItem));
                 toggle(item);
-                // Visuelles Toggle: Klasse + Icon, ohne Re-Render
+                // Visual toggle: class + icon, without a re-render.
                 const inKorb = has(item.type, item.id);
                 btn.classList.toggle('is-in', inKorb);
                 btn.textContent = inKorb ? '✓' : '+';
@@ -108,8 +108,8 @@ let Wissenskorb = (function () {
             } catch (_) {}
         });
         window.addEventListener('wissenskorb-change', updateBadge);
-        // Cross-Tab-Sync: localStorage-Aenderungen aus anderen Tabs
-        // anhoeren, Badge aktualisieren.
+        // Cross-tab sync: listen for localStorage changes from other tabs
+        // and refresh the badge.
         window.addEventListener('storage', (e) => {
             if (e.key === KEY) updateBadge();
         });

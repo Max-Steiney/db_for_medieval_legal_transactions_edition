@@ -103,11 +103,10 @@ let EdCore = (function() {
 
 
     /* ------------------------------------------------------------------
-       Active-Page-Markierung in der Top-Nav
-       Markiert den passenden Top-Level-Eintrag anhand von
-       location.pathname. Top-Level-Links direkt; Dropdown-Wrapper
-       erhaelt `is-current`, wenn eine Sub-Seite die aktive ist.
-       Rein clientseitig, damit der Build-Code unveraendert bleibt.
+       Active-page marker in the top nav. Pure client-side so the build
+       output stays stateless. Top-level <a> gets aria-current="page";
+       dropdown wrappers additionally get .is-current when one of their
+       sub-links is active.
        ------------------------------------------------------------------ */
 
     function initNavActive() {
@@ -116,7 +115,6 @@ let EdCore = (function() {
 
         let items = document.querySelectorAll('.nav-links .nav-item');
         items.forEach(function(item) {
-            // Direkter Link
             if (item.tagName === 'A') {
                 let href = item.getAttribute('href') || '';
                 if (href && here.endsWith(normalizeNavHref(href))) {
@@ -124,7 +122,6 @@ let EdCore = (function() {
                 }
                 return;
             }
-            // Dropdown-Trigger: pruefe Sub-Links
             let dd = item.closest('.nav-dropdown');
             if (!dd) return;
             let subs = dd.querySelectorAll('.nav-dropdown-menu a');
@@ -140,11 +137,11 @@ let EdCore = (function() {
     }
 
     function normalizeNavHref(href) {
-        // Schneide Hash/Query, lasse Pfad enden auf .html / index.html
+        // Strip hash/query, force trailing .html, and replace any
+        // ./ or ../ prefix with /, so endsWith() compares repo-relative
+        // paths regardless of the page's depth.
         let s = href.split('#')[0].split('?')[0];
         if (s.endsWith('/')) s += 'index.html';
-        // root_path-Praefix (./, ../, ../../) abschneiden, sodass
-        // endsWith() den Repo-relativen Pfad vergleicht.
         s = s.replace(/^(\.\.\/)+/, '/').replace(/^\.\//, '/');
         return s;
     }
@@ -175,14 +172,12 @@ let EdCore = (function() {
 
 
     /* ------------------------------------------------------------------
-       Search normalisation (V3 Diakritika)
-       Transformiert Umlaute nach deutscher Konvention (ö <-> oe, ü <-> ue,
-       ä <-> ae, ß <-> ss) und entfernt verbleibende kombinierende
-       Diakritika via NFD. Dadurch findet eine Suche nach "Poetel" auch
-       "Pötel", "Strauss" auch "Strauß", "Mueller" auch "Müller". Die
-       Funktion wird sowohl beim Pre-Compute der Suchstrings als auch
-       beim Tippen in der Suche verwendet — beide Seiten m&uuml;ssen
-       identisch normalisiert sein, damit die Substring-Suche greift.
+       Search normalisation: map German umlauts to their two-letter
+       equivalents (ö <-> oe, ü <-> ue, ä <-> ae, ß <-> ss), then strip
+       remaining combining diacritics via NFD. Used on both the pre-
+       computed search strings and the live input; both sides MUST be
+       normalised identically for substring matching to work, e.g.
+       "Poetel" finds "Pötel", "Strauss" finds "Strauß".
        ------------------------------------------------------------------ */
 
     let COMBINING_MARKS_RE = new RegExp('[\\u0300-\\u036f]', 'g');
@@ -212,8 +207,8 @@ let EdCore = (function() {
 
 })();
 
-// CommonJS-Export fuer Vitest. Im Browser ist `module` undefiniert, der
-// Block ist daher dort wirkungslos.
+// CommonJS export for Vitest. `module` is undefined in the browser,
+// so this block is a no-op there.
 if (typeof module !== 'undefined' && module.exports) {
     module.exports = { EdCore };
 }

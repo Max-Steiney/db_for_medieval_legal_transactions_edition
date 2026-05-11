@@ -112,8 +112,8 @@ let TableInfra = (function() {
         let searchClear = document.getElementById('search-clear');
         if (!searchInput) return;
         let searchTimer;
-        // V3 Diakritika: Suchanfrage mit der gleichen Normalisierung
-        // versehen wie die Pre-Compute-Strings (umlaut-tolerant).
+        // V3 diacritics: apply the same normalization to the search query
+        // as to the pre-computed strings (umlaut-tolerant).
         let norm = (window.EdCore && EdCore.normForSearch) ||
                    function(s) { return (s || '').toLowerCase(); };
         searchInput.addEventListener('input', function() {
@@ -141,10 +141,9 @@ let TableInfra = (function() {
         let headers = document.querySelectorAll('#' + tableId + ' th[data-sort]');
         headers.forEach(function(th) {
             th.addEventListener('click', function(e) {
-                // Klicks auf den Provenienz-Trigger (i-Icon) oder das
-                // dazu gehoerende Popover sollen NICHT die Sortierung
-                // ausloesen — sie oeffnen die Quellenangabe und sind
-                // damit ein anderer Interaktionspfad als der Spalten-Sort.
+                // Clicks on the provenance trigger (i icon) or its popover
+                // must NOT trigger sorting — they open the source citation
+                // and are a different interaction path than column sort.
                 if (e.target.closest('.prov-trigger, .prov-popover')) return;
                 let key = th.getAttribute('data-sort');
                 if (state.sortKey === key) {
@@ -227,10 +226,9 @@ let TableInfra = (function() {
        ------------------------------------------------------------------ */
 
     function addFilterChip(container, label, onRemove) {
-        // Klick irgendwo auf der Pille entfernt den Filter \u2014 Mund-Mimik:
-        // sieht aus wie eine entfernbare Tag, fuehlt sich auch so an.
-        // Ein dedizierter \u2715-Button bleibt fuer Screenreader und als
-        // visuelles Affordance-Signal.
+        // Click anywhere on the pill removes the filter \u2014 looks like a
+        // removable tag and acts like one. A dedicated \u2715 button stays
+        // for screen readers and as a visual affordance signal.
         let chip = document.createElement('button');
         chip.type = 'button';
         chip.className = 'filter-chip';

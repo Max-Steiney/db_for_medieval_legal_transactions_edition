@@ -1,17 +1,17 @@
 /* ==========================================================================
    Wiener Urkundenbuch — Digital Edition
-   Tooltips — einheitlicher Hover-Tooltip ueber alle Seiten:
+   Tooltips — unified hover tooltip across all pages:
 
-   - Entity-Tooltip (Person/Org/Ort): triggers via .anno-person/.anno-org/
-     .anno-place, zeigt Typ-Badge + Name + ID. Wird von annotierten
-     Begriffen im Dokumenttext genutzt.
-   - Daten-Tooltip (Badges, Pillen, Hinweise): triggers via [data-tip-title],
-     zeigt Titel + optionalen Body. Wird von Tabellen-Badges, Form-Pillen,
-     Datums-Hinweisen und vergleichbaren UI-Elementen genutzt — als Ersatz
-     fuer native title-Attribute, damit Stil und Verhalten konsistent sind.
+   - Entity tooltip (Person/Org/Place): triggers via .anno-person/.anno-org/
+     .anno-place, shows type badge + name + ID. Used by annotated terms
+     within document text.
+   - Data tooltip (badges, pills, hints): triggers via [data-tip-title],
+     shows title + optional body. Used by table badges, form pills, date
+     hints and similar UI elements — replaces native title attributes so
+     styling and behavior stay consistent.
 
-   Beide Varianten teilen sich Cursor-Tracking, .visible-State und das
-   Outline-Styling (.edition-tooltip in components.css/document.css).
+   Both variants share cursor tracking, the .visible state and the
+   outline styling (.edition-tooltip in components.css/document.css).
    ========================================================================== */
 
 (function() {
