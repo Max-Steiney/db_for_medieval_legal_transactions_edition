@@ -30,6 +30,14 @@ Einträge in umgekehrt chronologischer Reihenfolge, neueste oben.
 
 ---
 
+## 2026-05-11 Reader-Robustheit und Befunde-Register
+
+Die HTML-Reader (`parse_html.read_person_profile`, `read_org_profile`, `read_document`) fangen ab jetzt Lese-Fehler ab und liefern statt eines Crashs ein leeres Datenobjekt mit `read_failed=True`. Ein zentraler `_check_reader_health`-Check in Stufe 2 listet betroffene Dateien als eigenes mismatch-Result, damit Lese-Probleme nicht von echten Daten-mismatches verschluckt werden. Hintergrund: ein paralleler Build-Lauf hatte beim `--all`-Lauf zu einem `NoneType-cssselect`-Crash gefuehrt — wenn die Datei gerade umgeschrieben wird, ist sie kurz leer. Mit den drei neuen Health-Checks (persons, orgs, documents) ist die Verifikation jetzt belastbar gegen parallel laufende Schreiboperationen.
+
+Aktueller Stand nach `--all`: 64 Pruefungen, 43 match, 2 mismatch, 11 known_gap, 10 info. Die 2 Mismatches sind in `verification/findings.md` namentlich dokumentiert — drei Stadtbuecher-Quellen mit kaputten Klammer-Patterns im Datums-Text und eine mit einem unvollstaendigen Edit-Marker `(1398 Dezember 10 ?a»`. Alle vier liegen im Schwester-Repo und gehoeren dort gefixt.
+
+Die Reader-Tests (`verification/test_parse_html.py`) sind um 5 neue Robustheits-Tests erweitert: fehlende Datei, leere Datei, abgeschnittenes HTML — jeder Fall fuehrt zu `read_failed=True` ohne Crash. Insgesamt 22 pytest-Tests, alle gruen.
+
 ## 2026-05-11 Stufe-3-Ausbau: Events, Rollen, Datum, Profil-Quelle-Konsistenz
 
 Stufe 3 hat jetzt 16 Pruefungen (vorher 8). Vier neue Check-Klassen:

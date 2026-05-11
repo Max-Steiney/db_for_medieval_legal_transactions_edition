@@ -30,6 +30,64 @@ from verification.config import PIPELINE_ROOT
 CheckResult = compare.CheckResult
 
 
+def _check_reader_health() -> List[CheckResult]:
+    """Prueft, ob alle Profil- und Quellen-HTMLs parsebar sind.
+
+    Beim Build laufen Pipeline und Renderer parallel. Ein Single-File-Crash
+    (Datei wird gerade geschrieben, ist leer oder hat ein abgeschnittenes
+    Markup) wuerde frueher den ganzen Lauf killen. Jetzt liefert
+    parse_html.read_*-Funktionen ein leeres Datenobjekt mit
+    read_failed=True; dieser Check sammelt die betroffenen IDs in einem
+    eigenen mismatch-Result, damit Lese-Probleme nicht von echten Daten-
+    mismatches verschluckt werden.
+    """
+    failed_persons: List[str] = []
+    failed_orgs: List[str] = []
+    failed_docs: List[str] = []
+
+    for path in parse_html.iter_person_profiles():
+        p = parse_html.read_person_profile(path)
+        if p.read_failed:
+            failed_persons.append(p.pe_id)
+
+    for path in parse_html.iter_org_profiles():
+        o = parse_html.read_org_profile(path)
+        if o.read_failed:
+            failed_orgs.append(o.org_id)
+
+    for path in parse_html.iter_documents():
+        d = parse_html.read_document(path)
+        if d.read_failed:
+            # Relativer Pfad fuer den Report
+            try:
+                rel = path.relative_to(path.parents[3])
+            except (ValueError, IndexError):
+                rel = path.name
+            failed_docs.append(str(rel))
+
+    results: List[CheckResult] = []
+
+    def _emit(name: str, ids: List[str]) -> None:
+        if ids:
+            sample = ", ".join(ids[:5])
+            if len(ids) > 5:
+                sample += f" (+{len(ids) - 5} weitere)"
+            results.append(CheckResult(
+                name=name, tei=0, json=len(ids), status="mismatch",
+                note=(
+                    "HTML-Dateien nicht parsebar (leer, abgeschnitten, oder "
+                    f"Schreibkollision): {sample}"
+                ),
+            ))
+        else:
+            results.append(CheckResult(name=name, tei=0, json=0, status="match"))
+
+    _emit("html.reader_health.persons", failed_persons)
+    _emit("html.reader_health.orgs", failed_orgs)
+    _emit("html.reader_health.documents", failed_docs)
+    return results
+
+
 def _load_persons_csv() -> Dict[str, Dict[str, str]]:
     """persons.csv aus pipeline/output in einen Lookup pe__id -> Row."""
     out: Dict[str, Dict[str, str]] = {}
@@ -108,6 +166,8 @@ def check_person_profiles(
 
     for path in paths:
         p = parse_html.read_person_profile(path)
+        if p.read_failed:
+            continue
         row = persons_csv.get(p.pe_id)
         if row is None:
             missing_in_csv.append(p.pe_id)
@@ -199,7 +259,7 @@ def check_person_profiles(
     count_mismatches: List[Dict[str, Any]] = []
     for path in paths:
         p = parse_html.read_person_profile(path)
-        if p.source_count_displayed is None:
+        if p.read_failed or p.source_count_displayed is None:
             continue
         if p.source_count_displayed != len(p.source_idnos):
             count_mismatches.append({
@@ -255,6 +315,8 @@ def check_org_profiles(sample_size: Optional[int] = None) -> List[CheckResult]:
 
     for path in paths:
         o = parse_html.read_org_profile(path)
+        if o.read_failed:
+            continue
         row = orgs_csv.get(o.org_id)
         if row is None:
             missing_in_csv.append(o.org_id)
@@ -395,6 +457,8 @@ def check_person_extended_fields(
 
     for path in paths:
         p = parse_html.read_person_profile(path)
+        if p.read_failed:
+            continue
         row = persons_csv.get(p.pe_id)
         if row is None:
             continue
@@ -464,6 +528,8 @@ def check_org_extended_fields(
 
     for path in paths:
         o = parse_html.read_org_profile(path)
+        if o.read_failed:
+            continue
         row = orgs_csv.get(o.org_id)
         if row is None:
             continue
@@ -548,6 +614,8 @@ def check_person_relation_counts(sample_size: Optional[int] = None) -> List[Chec
 
     for path in paths:
         p = parse_html.read_person_profile(path)
+        if p.read_failed:
+            continue
         html_occ = p.relation_counts.get("occ", 0)
         expected_occ = occ_forward.get(p.pe_id, 0)
         if html_occ != expected_occ:
@@ -609,6 +677,8 @@ def check_document_refs(sample_size: Optional[int] = None) -> List[CheckResult]:
 
     for path in paths:
         d = parse_html.read_document(path)
+        if d.read_failed:
+            continue
         local_orphan = False
         for ref in d.person_refs:
             if ref not in persons_dir_ids:
@@ -691,6 +761,8 @@ def check_profile_source_consistency(
         person_paths = person_paths[:sample_size]
     for path in person_paths:
         p = parse_html.read_person_profile(path)
+        if p.read_failed:
+            continue
         person_profile_sources[p.pe_id] = set(p.source_file_keys)
 
     org_profile_sources: Dict[str, set] = {}
@@ -699,6 +771,8 @@ def check_profile_source_consistency(
         org_paths = org_paths[:sample_size]
     for path in org_paths:
         o = parse_html.read_org_profile(path)
+        if o.read_failed:
+            continue
         org_profile_sources[o.org_id] = set(o.source_file_keys)
 
     # Quellen-Sicht: file_key -> Set(pe_id / org_id)
@@ -709,6 +783,8 @@ def check_profile_source_consistency(
         doc_paths = doc_paths[:sample_size]
     for path in doc_paths:
         d = parse_html.read_document(path)
+        if d.read_failed:
+            continue
         # file_key analog zu parse_tei: <corpus>_<sub>_<stem>
         parts = path.parts
         try:
@@ -811,6 +887,7 @@ def check_profile_source_consistency(
 def run_html_checks() -> List[CheckResult]:
     """Alle HTML-Coverage-Pruefungen in einem Lauf."""
     results: List[CheckResult] = []
+    results.extend(_check_reader_health())
     results.extend(check_person_profiles())
     results.extend(check_person_extended_fields())
     results.extend(check_org_profiles())

@@ -1,13 +1,34 @@
 {
   "date": "2026-05-11",
   "summary": {
-    "total": 22,
-    "match": 19,
+    "total": 25,
+    "match": 22,
     "mismatch": 0,
     "known_gap": 0,
     "info": 3
   },
   "results": [
+    {
+      "name": "html.reader_health.persons",
+      "tei": 0,
+      "json": 0,
+      "status": "match",
+      "note": null
+    },
+    {
+      "name": "html.reader_health.orgs",
+      "tei": 0,
+      "json": 0,
+      "status": "match",
+      "note": null
+    },
+    {
+      "name": "html.reader_health.documents",
+      "tei": 0,
+      "json": 0,
+      "status": "match",
+      "note": null
+    },
     {
       "name": "html.persons.profiles_checked",
       "tei": 8441,

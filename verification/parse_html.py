@@ -10,14 +10,22 @@ Templates konsistente Klassennamen ausspielen (.person-name, .ph-meta-
 strip, .rel-table, .person-source-table). Selektoren werden hier zentral
 gehalten, damit Layout-Refactors im Frontend nur an einer Stelle
 nachgezogen werden muessen.
+
+Robustheit: ``_safe_parse`` faengt Lesefehler ab (z. B. weil eine andere
+Komponente die Datei waehrend des Build/Read-Vorgangs umschreibt). Die
+read_*-Funktionen geben in dem Fall ein leeres Datenobjekt mit
+``read_failed=True`` zurueck — Compare-Funktionen koennen das pruefen
+und ueberspringen, ohne dass ein Single-File-Crash den gesamten Lauf
+killt.
 """
 
 from __future__ import annotations
 
 from dataclasses import dataclass, field
 from pathlib import Path
-from typing import Dict, List, Optional, Tuple
+from typing import Any, Dict, List, Optional, Tuple
 
+from lxml import etree as _etree
 from lxml import html as lxml_html
 
 from verification.config import (
@@ -33,6 +41,11 @@ class PersonProfileHtml:
 
     pe_id: str
     path: Path
+    # True, falls die Datei nicht parsebar war (Datei nicht da, leer, oder
+    # gerade von einem anderen Prozess umgeschrieben). Compare-Funktionen
+    # sollten read_failed-Eintraege uebersprigen, statt sie als "leeres
+    # Profil" zu interpretieren.
+    read_failed: bool = False
     display_name: Optional[str] = None
     name_orig: Optional[str] = None
     sex_label: Optional[str] = None
@@ -62,6 +75,7 @@ class OrgProfileHtml:
 
     org_id: str
     path: Path
+    read_failed: bool = False
     name: Optional[str] = None
     type_label: Optional[str] = None
     observance: Optional[str] = None
@@ -94,6 +108,27 @@ def _href_id(href: str, prefix: str) -> Optional[str]:
     if last.startswith(prefix):
         return last
     return None
+
+
+def _safe_parse(path: Path) -> Optional[Any]:
+    """Versucht eine HTML-Datei zu parsen. Gibt None zurueck, wenn:
+    - die Datei nicht existiert
+    - sie leer ist (short read, parallele Schreiboperation)
+    - lxml einen Fatal Error wirft (kein Root-Element)
+    - getroot() unexpected None liefert (lxml interne Inkonsistenz)
+
+    Alle Compare-Funktionen kontrollieren ``read_failed`` und ueberspringen
+    in dem Fall. So killt ein Single-File-Crash nicht den ganzen Lauf."""
+    try:
+        if not path.exists() or path.stat().st_size == 0:
+            return None
+        tree = lxml_html.parse(str(path))
+        root = tree.getroot()
+        if root is None:
+            return None
+        return root
+    except (OSError, _etree.LxmlError, ValueError):
+        return None
 
 
 def _source_key_from_href(href: str) -> Optional[str]:
@@ -152,9 +187,13 @@ def _rel_blocks(tree) -> List[Tuple[str, int, List[str]]]:
 
 def read_person_profile(path: Path) -> PersonProfileHtml:
     """Liest eine docs/register/persons/<id>.html und gibt die strukturierten
-    Felder zurueck. Erwartet das Markup aus dem aktuellen person.html-Template."""
+    Felder zurueck. Erwartet das Markup aus dem aktuellen person.html-Template.
+    Bei Parse-Fehlern wird ein leeres PersonProfileHtml mit read_failed=True
+    zurueckgegeben."""
     pe_id = path.stem
-    tree = lxml_html.parse(str(path)).getroot()
+    tree = _safe_parse(path)
+    if tree is None:
+        return PersonProfileHtml(pe_id=pe_id, path=path, read_failed=True)
     p = PersonProfileHtml(pe_id=pe_id, path=path)
 
     name_el = tree.cssselect(".person-name")
@@ -238,7 +277,9 @@ def read_person_profile(path: Path) -> PersonProfileHtml:
 def read_org_profile(path: Path) -> OrgProfileHtml:
     """Liest eine docs/register/orgs/<id>.html. Analog zu read_person_profile."""
     org_id = path.stem
-    tree = lxml_html.parse(str(path)).getroot()
+    tree = _safe_parse(path)
+    if tree is None:
+        return OrgProfileHtml(org_id=org_id, path=path, read_failed=True)
     o = OrgProfileHtml(org_id=org_id, path=path)
 
     name_el = tree.cssselect(".person-name")
@@ -310,6 +351,7 @@ class DocumentHtml:
 
     idno: str
     path: Path
+    read_failed: bool = False
     title: Optional[str] = None
     date_display: Optional[str] = None
     place_display: Optional[str] = None
@@ -334,7 +376,9 @@ def read_document(path: Path) -> DocumentHtml:
     """Liest docs/documents/<corpus>/<sub>/<idno>.html und gibt strukturierte
     Felder zurueck. idno ist der Dateiname ohne .html."""
     idno = path.stem
-    tree = lxml_html.parse(str(path)).getroot()
+    tree = _safe_parse(path)
+    if tree is None:
+        return DocumentHtml(idno=idno, path=path, read_failed=True)
     d = DocumentHtml(idno=idno, path=path)
 
     # H1 enthaelt nur "Nr. <idno>". Der <title> im <head> hat die Form

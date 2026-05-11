@@ -97,3 +97,52 @@ def test_read_org_profile_has_children(sample_org_path):
     """Klosterneuburg hat untergeordnete Orgs (Frauenaltar, Spital)."""
     o = read_org_profile(sample_org_path)
     assert isinstance(o.children_ids, list)
+
+
+# --- Reader-Robustheit -------------------------------------------------
+
+def test_read_person_missing_file_returns_failed(tmp_path):
+    """Nicht-existierende Datei -> read_failed=True, kein Crash."""
+    missing = tmp_path / "pe__nonexistent.html"
+    p = read_person_profile(missing)
+    assert p.read_failed is True
+    assert p.pe_id == "pe__nonexistent"
+    assert p.display_name is None  # leeres Datenobjekt
+
+
+def test_read_person_empty_file_returns_failed(tmp_path):
+    """Leere Datei (z. B. parallele Schreiboperation) -> read_failed."""
+    empty = tmp_path / "pe__empty.html"
+    empty.write_text("", encoding="utf-8")
+    p = read_person_profile(empty)
+    assert p.read_failed is True
+
+
+def test_read_org_empty_file_returns_failed(tmp_path):
+    """Analog fuer Org-Profile."""
+    empty = tmp_path / "org__empty.html"
+    empty.write_text("", encoding="utf-8")
+    o = read_org_profile(empty)
+    assert o.read_failed is True
+
+
+def test_read_document_empty_file_returns_failed(tmp_path):
+    """Analog fuer Quellen-HTML."""
+    from verification.parse_html import read_document
+    empty = tmp_path / "123.html"
+    empty.write_text("", encoding="utf-8")
+    d = read_document(empty)
+    assert d.read_failed is True
+
+
+def test_read_person_short_html_does_not_crash(tmp_path):
+    """Abgeschnittenes HTML (Schreibkollision waehrend Build): kein
+    Crash, sondern read_failed oder leeres Datenobjekt. Beides ist
+    akzeptabel — entscheidend ist, dass der Lauf weiterlaeuft."""
+    short = tmp_path / "pe__short.html"
+    short.write_text("<!DOCTYPE html><html><body><div class='person-name'", encoding="utf-8")
+    p = read_person_profile(short)
+    # Entweder lxml hat einen Recovery-Pfad und liefert ein leeres Dokument,
+    # oder _safe_parse hat einen Parse-Error abgefangen. In beiden Faellen
+    # darf kein AttributeError fliegen.
+    assert p.pe_id == "pe__short"

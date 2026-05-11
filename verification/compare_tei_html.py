@@ -52,7 +52,12 @@ def _html_path_for_tei(rec: parse_tei.DocRecord) -> Optional[Path]:
 def _build_pairs(docs: List[parse_tei.DocRecord]) -> Tuple[List[DocPair], List[parse_tei.DocRecord]]:
     """Paart TEI-Records mit ihren HTML-Aequivalenten. Records ohne HTML
     werden separat zurueckgegeben (typischerweise nicht-released Bandseiten
-    oder Stadtbuecher-Eintraege, die `filenames.csv` ausschliesst)."""
+    oder Stadtbuecher-Eintraege, die `filenames.csv` ausschliesst).
+
+    Bei Lese-Fehlern (parse_html.read_document liefert read_failed=True)
+    wird das Dokument auch als "orphan" gewertet — Lesefehler werden
+    separat in Stufe 2 (_check_reader_health) reported, sodass sie hier
+    nicht stillschweigend in Symmetrie-Mismatches verschwinden."""
     paired: List[DocPair] = []
     orphans: List[parse_tei.DocRecord] = []
     for rec in docs:
@@ -61,6 +66,9 @@ def _build_pairs(docs: List[parse_tei.DocRecord]) -> Tuple[List[DocPair], List[p
             orphans.append(rec)
             continue
         html_doc = parse_html.read_document(path)
+        if html_doc.read_failed:
+            orphans.append(rec)
+            continue
         paired.append(DocPair(tei=rec, html=html_doc))
     return paired, orphans
 

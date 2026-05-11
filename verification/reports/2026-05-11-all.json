@@ -1,8 +1,8 @@
 {
   "date": "2026-05-11",
   "summary": {
-    "total": 63,
-    "match": 40,
+    "total": 66,
+    "match": 43,
     "mismatch": 2,
     "known_gap": 11,
     "info": 10
@@ -279,6 +279,27 @@
       "name": "provenance.register.places",
       "tei": "38 Doc-URLs geprüft",
       "json": "alle in docs_lookup",
+      "status": "match",
+      "note": null
+    },
+    {
+      "name": "html.reader_health.persons",
+      "tei": 0,
+      "json": 0,
+      "status": "match",
+      "note": null
+    },
+    {
+      "name": "html.reader_health.orgs",
+      "tei": 0,
+      "json": 0,
+      "status": "match",
+      "note": null
+    },
+    {
+      "name": "html.reader_health.documents",
+      "tei": 0,
+      "json": 0,
       "status": "match",
       "note": null
     },
