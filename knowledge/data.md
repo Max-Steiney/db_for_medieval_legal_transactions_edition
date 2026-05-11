@@ -28,21 +28,19 @@ Was die Datenbank als Gegenstand dokumentiert und wie die Daten strukturiert sin
 
 Die Datenbank erschließt mittelalterliche Wiener Rechtsgeschäfte in schriftlicher Überlieferung. Der Fokus liegt auf Urkunden und urkundlich verfassten Einträgen in Stadtbüchern, die rechtliche Transaktionen dokumentieren.
 
-Der freigegebene Zeitraum beginnt 1177 und endet 1412, mit einer Ausnahme bis 1414 für die Quellenkorpora QGW II/1 und QGW II/2. Außerhalb dieses Rahmens liegende Zeitabschnitte werden nicht angezeigt.
+Der freigegebene Zeitraum ist in `RELEASED_PERIOD` (`frontend/config.py`) festgelegt; Zeitabschnitte außerhalb werden nicht angezeigt. Eine ausgewiesene Lücke innerhalb des Rahmens trägt das Label „noch nicht ausgewertet".
 
 ## Quellenkorpora
 
 Die Daten sind in Quellenkorpora organisiert, die sich in Zeitraum, Provenienz und Erschließungsform unterscheiden.
 
-Das QGW-Corpus bündelt die „Quellen zur Geschichte Wiens" in mehreren Bänden. Die Stadtbücher bilden eine eigenständige Quellengruppe mit abweichender Überlieferungsform. Weitere Korpora wie Gewerbücher und Grundbücher werden im Build-Prozess vorgehalten, sind aber zum aktuellen Zeitpunkt nicht freigegeben.
+Das QGW-Corpus bündelt die „Quellen zur Geschichte Wiens" in mehreren Bänden. Die Stadtbücher bilden eine eigenständige Quellengruppe mit abweichender Überlieferungsform. Weitere Korpora wie Gewerbücher und Grundbücher werden im Build-Prozess vorgehalten, sind aber nicht freigegeben.
 
-Aktuell freigegeben und im UI sichtbar sind zwei Subkorpora: `QGW/Vienna_1177-1414_ready` (Wiener Urkunden 1177–1414) und `Stadtbuecher/Band_1_1395-1400_ready` (Stadtbücher, Band 1, 1395–1400). Die Single Source of Truth ist das Tupel `RELEASED_CORPORA` im Pipeline-Repo (`pipeline/config.py`); es steuert sowohl die CSV-Erzeugung als auch die Sichtbarkeit im Frontend-Build. Subkorpora außerhalb dieses Tupels liegen für die editorische Arbeit in `sources/`, werden aber weder exportiert noch gerendert. Für interne Analysen existiert der Override `PIPELINE_INCLUDE_UNRELEASED=1`, der alle Subkorpora einbezieht; im publizierten Build wird er nicht verwendet.
-
-Welche Korpora im UI tatsächlich sichtbar sind, entscheidet sich am Freigabestand, nicht an der technischen Verfügbarkeit.
+Single Source of Truth für die freigegebenen Subkorpora ist `RELEASED_CORPORA` im Pipeline-Repo (`pipeline/config.py`). Es steuert sowohl die CSV-Erzeugung als auch die Sichtbarkeit im Frontend-Build. Nicht freigegebene Subkorpora bleiben für die editorische Arbeit in `sources/`, werden aber weder exportiert noch gerendert. Für interne Analysen existiert der Override `PIPELINE_INCLUDE_UNRELEASED=1`; im publizierten Build wird er nicht verwendet.
 
 ## Nicht oder nur teilweise ausgewertet
 
-Der Zeitraum 1418 bis 1447 ist im UI als „noch nicht ausgewertet" gekennzeichnet. Die Überlieferung existiert, die redaktionelle Auswertung steht aus.
+Innerhalb des freigegebenen Rahmens trägt die nicht ausgewertete Periode das Label „noch nicht ausgewertet" — die Überlieferung existiert, die redaktionelle Auswertung steht aus. Konkrete Grenzen siehe [[architecture#Datenstand aus dem Pipeline-Repo]] und `RELEASED_PERIOD`.
 
 Personen und Organisationen sind als freigegebene Register-Dimensionen angelegt. Jede individuelle Entität mit mindestens einer Nennung in einer freigegebenen Quelle erhält eine Listen-Seite und eine eigene Detail-Profilseite mit Stammdaten, Beziehungen und Quellen-Tabelle.
 

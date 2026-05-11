@@ -201,11 +201,11 @@ Verschachtelte rs-Events landen über `pipeline/utils/event_helpers.py::iter_top
 
 ## Formulierung „noch nicht ausgewertet"
 
-**Entscheidung.** Der Zeitraum 1418 bis 1447 wird als „noch nicht ausgewertet" bezeichnet, nicht als „Überlieferungslücke".
+**Entscheidung.** Eine nicht ausgewertete Periode innerhalb des Freigabezeitraums wird als „noch nicht ausgewertet" bezeichnet, nicht als „Überlieferungslücke".
 
-**Begründung.** Die Überlieferung existiert. Nur die redaktionelle Auswertung steht aus. Die frühere Formulierung war sachlich falsch und wäre in einer wissenschaftlich verwendbaren Datenbank nicht haltbar.
+**Begründung.** Die Überlieferung existiert; nur die redaktionelle Auswertung steht aus. Die frühere Formulierung war sachlich falsch und in einer wissenschaftlich verwendbaren Datenbank nicht haltbar.
 
-**Konsequenz.** Der Begriff ist an allen sichtbaren Stellen konsequent zu verwenden.
+**Konsequenz.** Der Begriff ist an allen sichtbaren Stellen konsequent zu verwenden. Konkrete Grenzen leben in `RELEASED_PERIOD.unprocessed_gaps`.
 
 ## Register-Freigabe
 
@@ -225,11 +225,9 @@ Verschachtelte rs-Events landen über `pipeline/utils/event_helpers.py::iter_top
 
 ## Obsidian-kompatibles Knowledge-Format
 
-**Entscheidung.** Die konzeptionelle Wissensbasis liegt als flache Markdown-Dateien mit Wiki-Links vor, ohne Unterordner und ohne Nummernpräfixe. Eine einzige Strukturdatei ([[index]]) dient als Lesepfad-Einstieg und Wegweiser; sie trägt keine inhaltliche Substanz.
+**Entscheidung.** Die Wissensbasis liegt als flache Markdown-Dateien mit Wiki-Links vor, ohne Unterordner. [[index]] dient als Lesepfad-Einstieg.
 
-**Begründung.** Die flache Struktur macht den Vault in Obsidian unmittelbar nutzbar und senkt die Einstiegshürde für Mit-Autorinnen. Ein klassisches README mit Build-Anleitungen oder Repo-Setup gehört nicht in die Wissensbasis — solche Inhalte leben in `README.md` und `CLAUDE.md` im Repo-Root. Eine Lesepfad-Datei ist demgegenüber selbst Wissensdokument: sie sagt, in welcher Reihenfolge die Konzepte aufeinander aufbauen und wo welcher Begriff kanonisch definiert ist.
-
-**Konsequenz.** Dokumente im `knowledge/`-Ordner folgen dieser Struktur. Verlinkung geschieht über Wiki-Syntax, nicht über Markdown-Referenzen.
+**Begründung.** Die flache Struktur macht den Vault in Obsidian unmittelbar nutzbar. Build-Anleitungen leben in `README.md` und `CLAUDE.md`, nicht in der Wissensbasis.
 
 ## Verifikations-Test-Set als eigenständige Komponente
 

@@ -61,45 +61,21 @@ Reports sind versioniert und menschen- wie maschinenlesbar. Begründung in [[dec
 
 Die Oberfläche ist durch Jinja2-Templates definiert. Ein Basis-Template hält Navigation und Fußzeile zentral. Detail-Templates erweitern es um den jeweiligen Inhalt. Eine Änderung am Rahmen greift in allen Seiten, eine Änderung an einer Detailseite bleibt lokal.
 
-## Statische HTML-Ausgabe
+## Statische HTML-Ausgabe und Prototyp-Charakter
 
-Die Datenbank wird als statische Website ausgeliefert. Jede Seite ist eine fertige HTML-Datei, die GitHub Pages ohne Server-Logik ausliefert. Dynamische Funktionen (Filter, Suche, Umschalter) laufen im Browser gegen vorgebaute JSON-Indexe.
+Die Datenbank ist als statische Website ausgeliefert; GitHub Pages serviert vorberechnete HTML-Dateien ohne Server-Logik. Dynamische Funktionen (Filter, Suche, Umschalter) laufen im Browser gegen JSON-Indexe. Der Vorteil ist doppelt: die Infrastruktur ist einfach, und einzelne Seiten sind zitierbar, weil ihre URLs stabil bleiben. Sehr große oder stark wechselnde Daten verlangen besondere Indexierungsstrategien auf Client-Seite.
 
-Der Vorteil ist doppelt. Die Infrastruktur ist einfach und die einzelnen Seiten sind zitierbar, weil ihre URL langfristig stabil bleibt. Die Grenze liegt darin, dass sehr große oder stark wechselnde Daten besondere Indexierungsstrategien auf Client-Seite verlangen.
+Templates und Build-Code liegen getrennt vom erzeugten Output. Inhaltliche Änderungen gehören in die Quelle, der Output wird durch einen Build-Lauf erneuert. HTML-Dateien werden nicht direkt editiert, ausgenommen Meta-Dateien wie `CLAUDE.md` und die Wissensbasis im `knowledge/`-Ordner.
 
-## Prototyp-Charakter
-
-Die Datenbank ist ein Prototyp, kein produktionsreifes System. Architekturentscheidungen sind auf Iterationsgeschwindigkeit und Nachvollziehbarkeit optimiert, nicht auf Dauerbetrieb mit vielen Nutzerinnen.
-
-Das heißt nicht, dass der Prototyp instabil wäre. Es heißt, dass Entscheidungen wie „keine Datenbank, keine Auth, keine serverseitige Logik" bewusst getroffen sind, weil sie in dieser Phase mehr Nutzen als Kosten bringen.
-
-## Trennung Quelle und Build-Output
-
-Templates und Build-Code liegen getrennt vom erzeugten Build-Output. Inhaltliche Änderungen gehören in die Quelle und werden durch einen Build-Lauf wirksam. Im Output-Ordner werden HTML-Dateien nicht direkt editiert, außer Meta-Dateien wie CLAUDE.md und der Wissensbasis im `knowledge/`-Ordner.
-
-## Clientseitige Suche und Filter
-
-Suche und Filter laufen im Browser gegen vorgebaute JSON-Indexe. Der Vorteil ist, dass keine Serverlogik betrieben werden muss und dass die Anfrage-URL zitierbar bleibt. Die Grenze liegt im Volumen. Sehr große Indexe belasten das Laden einer Seite und erfordern Teilindexe oder progressive Ladeverfahren.
-
-## Auslieferung über statisches Hosting
-
-GitHub Pages ist der Auslieferungskanal. Die Wahl ist kostenfrei, zuverlässig und versioniert. Die Unterordner-Struktur ist frei wählbar, case-sensitive und unterliegt keiner serverseitigen URL-Umschreibung.
-
-## Grenzen der Architektur
-
-Die statische Architektur leistet keine Echtzeit-Daten, keine persistierten Nutzereingaben und keine Authentifizierung. Das ist akzeptabel, weil die Datenbank Publikationsform ist, nicht kollaboratives Werkzeug. Wer an den Quelldaten arbeitet, tut das auf einer anderen Ebene als der, die die Datenbank bedient.
+Die Architektur ist ein Prototyp, kein produktionsreifes System. Entscheidungen wie „keine Datenbank, keine Auth, keine serverseitige Logik" sind bewusst getroffen — sie tauschen Echtzeit-Daten, persistierte Nutzereingaben und Authentifizierung gegen Einfachheit und Zitierbarkeit. Das ist akzeptabel, weil die Datenbank Publikationsform ist, kein kollaboratives Werkzeug.
 
 ## Provenienz-Indizes
 
-Jede aggregierte Kennzahl im Frontend ist auf die Menge der zugrundeliegenden Quelldokumente rückführbar. Die Rückführung geschieht als `drill_down`-Abschnitt innerhalb der Aggregat-JSONs, der zu jedem Kreuztabellen-Feld die sortierte Liste der beitragenden `file_key`-Verweise führt. Das Frontend löst die Provenienz durch Lookup im selben JSON auf, der die Zahlen liefert; zusätzliche Metadaten zum Einzeldokument kommen aus `data/docs_lookup.json`.
-
-Konsequenz für den Build: jede Aggregations-Funktion füllt `drill_down` parallel zu den Counter-Werten. Begründung in [[decisions#Provenienz als inline Drill-down in den Aggregat-JSONs]], Umsetzung in [[ui-design#Provenienz-Tip und Glossar-Tip]].
+Jede aggregierte Kennzahl ist auf die zugrundeliegenden Quelldokumente rückführbar: ein `drill_down`-Abschnitt innerhalb jeder Aggregat-JSON führt zu jedem Kreuztabellen-Feld die sortierte Liste der beitragenden `file_key`-Verweise. Metadaten zum Einzeldokument kommen aus `data/docs_lookup.json`. Begründung in [[decisions#Provenienz als inline Drill-down in den Aggregat-JSONs]], UI-Ausprägung in [[ui-design#Provenienz-Tip und Glossar-Tip]].
 
 ## Quellenbereinigte Aggregation als Invariante
 
-Das Zählen von Entitäten pro Quelle erfolgt mengenbasiert: die Extraktionsfunktion im Build liefert pro Quelldokument eine Menge referenzierter Entity-IDs, nicht eine Liste mit möglichen Duplikaten. Eine Person, Organisation oder ein Ort wird pro Quelle höchstens einmal gezählt, auch wenn die TEI-Auszeichnung sie im Text mehrfach markiert. Siehe [[decisions#Quellenbereinigte Zählung]] für die Begründung und [[glossar#Gesamtnennung]] für die begriffliche Konsequenz im UI.
-
-Damit ist die Aggregation robust gegen Urteilslisten, Zeugenreihen und Formelwiederholungen, die eine ungereinigte Zählung verzerren würden.
+Das Zählen von Entitäten pro Quelle erfolgt mengenbasiert: die Extraktionsfunktion im Build liefert pro Quelldokument eine Menge referenzierter Entity-IDs, nicht eine Liste mit möglichen Duplikaten. Eine Person, Organisation oder ein Ort wird pro Quelle höchstens einmal gezählt. Begründung in [[decisions#Quellenbereinigte Zählung]], begriffliche Konsequenz in [[glossar#Gesamtnennung]].
 
 ## Datenstand aus dem Pipeline-Repo
 

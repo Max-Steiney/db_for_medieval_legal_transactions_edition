@@ -23,19 +23,13 @@ Gestaltungsprinzipien, Navigationsstruktur und Kernkomponenten der Oberfläche. 
 
 ## Gestaltungshaltung
 
-Die Oberfläche folgt einer wissenschaftlichen Lese-Gravitation. Serifen-Typografie und ein warmer, pergamentnaher Hintergrund signalisieren ein Forschungswerkzeug, kein Konsumprodukt. Annotationen sind farbig, aber zurückgenommen — sie sollen sichtbar sein, ohne mit dem Quellentext zu konkurrieren. Der Entwurf zielt auf Laptop- und Tablet-Arbeitsplätze und respektiert Druckausgabe als gleichberechtigten Lesemodus. Mobile-First wäre hier dysfunktional, weil Recherche an kleinen Bildschirmen die Informationsdichte nicht trägt.
+Die Oberfläche folgt einer wissenschaftlichen Lese-Gravitation. Serifen-Typografie und ein warmer, pergamentnaher Hintergrund signalisieren ein Forschungswerkzeug, kein Konsumprodukt. Annotationen sind farbig, aber zurückgenommen. Der Entwurf zielt auf Laptop- und Tablet-Arbeitsplätze und respektiert Druckausgabe als gleichberechtigten Lesemodus.
 
-Eine zweischichtige Lesart durchzieht das UI: technische Identifikatoren (Datei-Schlüssel, Personen-IDs, TEI-Annotationen) koexistieren mit menschenlesbaren Labels. Beide Schichten sind sichtbar — die technische, weil Nachvollziehbarkeit ohne sie nicht funktioniert; die menschenlesbare, weil Bedienbarkeit ohne sie nicht funktioniert.
+Das **Leitprinzip ist maximaler Informations-Output**: Nutzerinnen arbeiten mit den Daten, sie konsumieren sie nicht. Herkunftsanzeigen, Filterzustände und die aktive Zählebene werden nicht versteckt, um die Oberfläche „sauber" wirken zu lassen — eine Reduktion, die Herkunft verschleiert, wäre fachlich dysfunktional. Dichte Darstellung und hierarchische Gliederung sind beide gefragt, nicht gegeneinander.
 
-## Leitprinzip Maximaler Informations-Output
+Eine zweischichtige Lesart durchzieht das UI: technische Identifikatoren (Datei-Schlüssel, Personen-IDs, TEI-Annotationen) koexistieren mit menschenlesbaren Labels. Beide Schichten sind sichtbar.
 
-Die Oberfläche priorisiert Nachvollziehbarkeit vor reduzierter Darstellung. Nutzerinnen des Interfaces arbeiten mit den Daten, sie konsumieren sie nicht. Für diese Arbeit ist Information nicht störend, sondern notwendig.
-
-Konkret folgt daraus, dass Herkunftsanzeigen, Filterzustände und die aktive Zählebene nicht versteckt werden, um die Oberfläche „sauber" wirken zu lassen. Eine Reduktion, die Herkunft verschleiert, wäre fachlich dysfunktional.
-
-Nicht gemeint ist Unübersichtlichkeit. Dichte Darstellung und hierarchische Gliederung widersprechen sich nicht. Der Entwurf sucht beides.
-
-Siehe [[requirements#Informationsdichte vor reduzierter Ästhetik]], [[decisions#Maximaler Informations-Output als Gestaltungsleitlinie]].
+Siehe [[requirements#Informationsdichte vor reduzierter Ästhetik]] und [[decisions#Maximaler Informations-Output als Gestaltungsleitlinie]].
 
 ## Navigation
 
@@ -73,11 +67,7 @@ Dropdown mit Metaebenen des UI. Über das Projekt, Annotationsrichtlinien, Gloss
 
 ## Zwei Modi nebeneinander
 
-Analyse und Exploration bedienen unterschiedliche Forschungssituationen. Die Analyse ist für Nutzerinnen mit einer bestimmten Frage oder einem definierten Auswertungsbedarf — sie wollen Zahlen, Verteilungen, exakte Belege. Die Exploration ist für Nutzerinnen ohne vorab spezifizierte Frage, die visuell auf Pattern-Suche gehen.
-
-Eine Zusammenlegung wäre unsauber, weil die jeweiligen Interaktionsmuster gegeneinander arbeiten. Analyse verlangt strukturierte Achsen und exakte Zahlen mit Provenienz. Exploration verlangt offene Visualisierungen, in denen die Datenstruktur selbst sichtbar wird. Innerhalb der Analyse trennen wir weiter zwischen filter-getriebenen Verteilungen (Auswertungen) und template-getriebenen Abfragen (Abfragen) — beide quantitativ, aber mit unterschiedlichem Einstiegspunkt.
-
-Siehe [[decisions#Exploration und Analyse als getrennte Bereiche]] und [[decisions#Auswertungen gehört in den Analyse-Bereich]] für die Begründung.
+Analyse bedient Nutzerinnen mit einer bestimmten Frage und liefert Zahlen, Verteilungen, exakte Belege. Exploration bedient Nutzerinnen ohne vorab spezifizierte Frage und liefert visuelle Pattern. Innerhalb der Analyse trennen sich filter-getriebene Auswertungen und frage-getriebene Abfragen. Begründung der Trennung in [[decisions#Exploration und Analyse als getrennte Bereiche]] und [[decisions#Auswertungen gehört in den Analyse-Bereich]].
 
 ## Information-Seeking-Muster
 
@@ -85,15 +75,16 @@ Die Oberfläche folgt der Sequenz „Überblick zuerst, dann zoomen und filtern,
 
 ## Kernkomponenten
 
-### Provenienz-Tip und Glossar-Tip
+### Tip-System
 
-Zwei verwandte, aber funktional getrennte Tooltip-Komponenten teilen sich die Popover-Mechanik in `tip.js` (Edge-Detection, Hover, Fokus, Klick, Escape) und unterscheiden sich in Trigger und Inhalt. Die visuellen Varianten sind als CSS-Klassen `tip-popover--data` (Provenienz) und `tip-popover--glossary` (Glossar) ausgeprägt.
+Vier Tip-Klassen teilen sich die Popover-Mechanik in `tip.js` (Edge-Detection, Hover, Fokus, Klick, Escape) und unterscheiden sich in Trigger, Anlass und visueller Markierung.
 
-Der **Provenienz-Tip** sitzt an einem dargestellten Zahlenwert (Trigger ist die Zahl, gepunktet unterstrichen) und nennt den zugrunde liegenden Bestand, die angewandte Zähloperation, den [[glossar#Menschen-Event]]-Status und die aktiven Filter. Er macht den Unterschied zwischen oberflächlicher Ansicht und verwendbarer Zahl aufhebbar.
+- **Provenienz-Tip** (`tip-popover--data`) sitzt an einem Zahlenwert (gepunktet unterstrichen) und nennt Bestand, Zähloperation, Menschen-Event-Status und aktive Filter.
+- **Glossar-Tip** (`tip-popover--glossary`) sitzt neben einem Fachbegriff (`i`-Icon) und öffnet die Begriffsdefinition mit Verweis ins Glossar.
+- **Help-Tip** (`tip-popover--help`) klärt UI- oder Funktions-Hilfen, deren Bedeutung über bloßes Beschriften hinaus erklärt werden muss.
+- **Hover-Hint** (`data-hint`-Attribut) ist die leichteste Variante: kein Popover-Inhalt nötig, nur ein Hover-Reizfeld für Aktions-Buttons, Statusanzeigen oder Spaltenköpfe.
 
-Der **Glossar-Tip** sitzt neben einem Fachbegriff (Trigger ist ein kompaktes `i`-Icon) und öffnet die Begriffsdefinition mit einem Verweis ins Glossar. Er bedient die Erstbegegnung mit einem projektspezifischen Begriff am Ort des Auftretens.
-
-Daneben gibt es einen leichteren Hover-Hint (`data-hint`-Attribut) für UI-Elemente, deren Bedeutung sich aus ihrem Kontext nicht selbst erklärt, ohne dass sie eigene Provenienz oder Begriffsdefinition rechtfertigen würden (Aktions-Buttons, Statusanzeigen, abgekürzte Spaltenköpfe). Siehe [[requirements#Datenrobustheit und Provenienz]] und [[glossar]].
+Siehe [[requirements#Datenrobustheit und Provenienz]] und [[glossar]].
 
 ### Zählebenen-Umschalter (Phase 2, nicht umgesetzt)
 
@@ -167,9 +158,7 @@ Jede individuelle Person und Organisation trägt eine Profilseite unter `registe
 
 ## Layout-Grundsätze
 
-Informationsdichte steht vor Weißraum. Filter- und Statusleisten bleiben persistent sichtbar, auch wenn Inhalte gescrollt werden. Brotkrumennavigation führt Nutzerinnen zurück zu übergeordneten Ansichten.
-
-Das Responsive-Verhalten zielt auf Laptop- und Tablet-Arbeitsplätze. Ein Mobile-First-Ansatz wäre hier dysfunktional, weil Recherche an kleinen Bildschirmen die Dichte der Darstellung nicht trägt.
+Filter- und Statusleisten bleiben persistent sichtbar, auch wenn Inhalte gescrollt werden. Brotkrumennavigation führt zurück zu übergeordneten Ansichten.
 
 ## Farbkodierung und Typografie
 

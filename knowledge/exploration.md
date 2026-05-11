@@ -43,7 +43,7 @@ Ein Klick auf ein Legend-Item fokussiert eine Stapel-Kategorie: die anderen Segm
 
 Datenquellen: `data/search.json` (für die ersten drei Stapel-Achsen), `data/transactions.json::observations.tx_timeline` (für die Transaktionstyp-Stapelung). Bei aktivem Tx-Fokus läuft der Drill über `transactions.drill_down.tx_type_decade` und löst die `file_keys` über `data/docs_lookup.json` auf. Die Drill-down-Liste verlinkt direkt in die Quellen-Detailseiten und bietet pro Zeile einen „+"-Knopf für den [[ui-design#Datenkorb]]; im Header steht der Cross-Page-Sprung in die Quellen-Liste mit übernommenem Zeitraum.
 
-Der Filter-Stand wird in die URL serialisiert (`?dec=1300-1410&stack=tx&brush=1340-1370&focus=Kauf`), siehe [[ui-design#URL-State-Sync]].
+Der Filter-Stand wird in die URL serialisiert, siehe [[ui-design#URL-State-Sync]].
 
 Pattern, das die Sub-Seite trägt: Überblick → Brush → Quellen. Sie ergänzt die [[analyse#Zwei Sub-Seiten|Auswertungen]] um eine zeitlich-visuelle Erkundung — wer dort liest, dass Stiftungen ab den 1340ern zunehmen, kann hier sehen, in welchen Jahrzehnten die belegende Quellendichte trägt.
 

@@ -48,7 +48,7 @@ Im selben Zug das **Ortsregister entfernt**. Es war ohnehin nie freigegeben; ein
 
 Mehrere kleinere, aber durchgreifende Refactors im selben Zug.
 
-- **Tooltip-System** in eine gemeinsame Mechanik (`tip.js`, `tip.css`) mit drei visuellen Varianten zusammengeführt: `tip-popover--data` für Provenienz an Zahlen, `tip-popover--glossary` für Begriffsdefinitionen, `data-hint`-Hover für selbsterklärungs-bedürftige UI-Elemente. Gemeinsamer Open/Close-Pfad (Hover, Fokus, Klick, Escape) und Edge-Detection am Viewport-Rand. Eine Aufteilung in drei JS-Komponenten wurde verworfen, weil die Mechanik substanziell gleich ist.
+- **Tooltip-System** in eine gemeinsame Mechanik (`tip.js`, `tip.css`) mit vier Varianten zusammengeführt: `tip-popover--data` für Provenienz, `tip-popover--glossary` für Begriffsdefinitionen, `tip-popover--help` für UI- und Funktions-Hilfen und `data-hint`-Hover für leichte Selbsterklärungen. Gemeinsamer Open/Close-Pfad und Edge-Detection. Eine Aufteilung in separate JS-Komponenten wurde verworfen, weil die Mechanik substanziell gleich ist.
 - **Aggregator-Module umbenannt** von `epic_a/b/c` zu `roles/relations/transactions`. Fachliche Domänen statt Sprint-Codenamen.
 - **Top-Navigation** lebt einheitlich in `base.html` ohne Duplikate auf Sub-Seiten; Footer und Startseite kosmetisch entrümpelt.
 - **Code-Kommentare** durchgängig auf Englisch (`frontend/` Python und JS). Inhaltliche Doku bleibt deutsch.
