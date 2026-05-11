@@ -1,13 +1,8 @@
 """TEI-Parser für das Verifikations-Set.
 
-Liest einzelne TEI-Dokumente aus `sources/QGW/**` und
-`sources/Stadtbuecher/**` und extrahiert die Informationen, die für
-Aggregation und Vergleich mit den Frontend-JSONs gebraucht werden.
-
-Scope: Struktur, die im Corpus tatsächlich verwendet wird (getestet an
-QGW/Vienna_1177-1414_ready und Stadtbuecher/Band_1_1395-1400_ready).
-Andere Korpora ohne TEI-Quelle im Pipeline-Repo werden nicht abgedeckt
-(siehe verification/README.md).
+Liest TEI-Dokumente aus `sources/QGW/**` und `sources/Stadtbuecher/**`
+und extrahiert genau die Felder, die der Vergleich mit den Frontend-
+JSONs braucht. Scope-Details und Korpus-Abdeckung: verification/README.md.
 """
 
 from __future__ import annotations
@@ -90,11 +85,11 @@ def _decade_of(date_iso: Optional[str]) -> Optional[int]:
 
 
 def _find_innermost_role(node) -> Optional[str]:
-    """Traverse ancestors and return the @role of the nearest <rs type='fn'>.
+    """@role des nächsten `<rs type='fn'>`-Vorfahren.
 
-    Innermost gewinnt: wenn ein `<rs type="fn" role="other">` innerhalb eines
-    `<rs type="fn" role="issuer">` liegt, haben Kinder des inneren Blocks
-    Rolle `other`.
+    Innerstes gewinnt: liegt ein `<rs type='fn' role='other'>` in einem
+    `<rs type='fn' role='issuer'>`, gilt für Kinder des inneren Blocks
+    die Rolle `other`.
     """
     current = node.getparent()
     while current is not None:

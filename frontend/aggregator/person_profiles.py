@@ -190,6 +190,24 @@ def _aggregate_source_titles():
     return {pk: [t for t, _ in c.most_common()] for pk, c in counters.items()}
 
 
+def _aggregate_dead_mentions():
+    """persons_in_sources.csv -> {person_key: count_of_dead_mentions}.
+
+    Counts rows where source_dead is non-empty (typical tokens: 'tot',
+    'dead', 'selig', 'weiland'). Used to surface the "als verstorben
+    genannt" attribute in person profiles independently of the
+    death_before date in the person register.
+    """
+    out = Counter()
+    for r in _cached_csv("persons_in_sources.csv"):
+        pk = r.get("person_key", "")
+        if not pk:
+            continue
+        if (r.get("source_dead") or "").strip():
+            out[pk] += 1
+    return out
+
+
 def _build_relation_index(file_lookup, person_names, org_names, place_names):
     """Load all relation CSVs and group per person.
 
@@ -294,11 +312,10 @@ def _build_relation_index(file_lookup, person_names, org_names, place_names):
             }
             rel[pk][group].append(entry)
 
-            # Mirror: wenn rk eine Person ist, das Profil von rk soll die
-            # andere Seite sehen. "Laurenz ist Kaemmerer des Wilhelm" -> auf
-            # Wilhelms Profil: "Laurenz hat das Amt Kaemmerer in Bezug auf
-            # mich". Inverse-Schluessel werden im Template separat
-            # gerendert (Abschnitt "Andere Personen mit Bezug auf mich").
+            # Mirror onto the other person's profile so each side sees the
+            # relation. "Laurenz ist Kaemmerer des Wilhelm" surfaces on
+            # Wilhelm's profile as the inverse-group entry. Inverse keys
+            # are rendered in a separate template section.
             if other_kind == "person":
                 inverse_group = group + "_inverse"
                 mirror = {
@@ -363,7 +380,7 @@ def build_person_profiles(reverse_index):
           "id", "display",
           "forename", "surname", "addName",
           "name_orig_display": "Anna Yrrensteig",     # NEW (or "")
-          "sex", "note", "death_iso", "death_display",
+          "sex", "note", "death_iso", "death_display", "dead_mentions",
           "authority_urls": ["https://...", ...],     # NEW (pipe-split)
           "wiki_label", "wiki_pageid",
           "source_titles": [str, ...],
@@ -382,6 +399,7 @@ def build_person_profiles(reverse_index):
     file_lookup = _file_to_source_lookup(reverse_index)
     person_roles = _aggregate_roles_per_person()
     source_titles = _aggregate_source_titles()
+    dead_mentions = _aggregate_dead_mentions()
 
     person_names = {pid: _display_name(s) or pid for pid, s in stamm.items()}
     relations = _build_relation_index(file_lookup, person_names,
@@ -423,6 +441,7 @@ def build_person_profiles(reverse_index):
             "note":     s.get("note", ""),
             "death_iso":     s.get("death_iso", ""),
             "death_display": _format_death_german(s.get("death_iso", "")),
+            "dead_mentions": dead_mentions.get(pid, 0),
             "authority_urls": split_authorities(s.get("authority", "")),
             "wiki_label":   s.get("wiki_label", ""),
             "wiki_pageid":  s.get("wiki_pageid", ""),

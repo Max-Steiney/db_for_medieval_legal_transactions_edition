@@ -1,19 +1,14 @@
 """Display helpers for entity detail profiles.
 
-Used by ``person_profiles``, ``org_profiles`` and ``place_profiles`` to
-turn raw CSV values (typ-Labels, pipe-joined names/authorities) into the
-UI-ready shape consumed by the Jinja templates.
+Used by ``person_profiles`` and ``org_profiles`` to turn raw CSV values
+into the UI shape consumed by the Jinja templates.
 
-The mappings are deliberately conservative — only the values that
-actually occur in the released ``organisations.csv`` / ``places.csv``
-get a German label. Everything else falls through unchanged so future
-type-key additions remain visible (instead of being silently mapped to
-the bucket label).
+Mappings are conservative: only values present in the released CSVs get
+a German label, unknown keys fall through unchanged so additions stay
+visible instead of being silently bucketed.
 """
 
-# Org-types from organisations.csv:type. Underscore conventions and
-# English/Latin labels get a German display form. Plural avoided since the
-# label is used for a single entity (Wiener Buergerspital -> "Spital").
+# Singular German display form (the label sits on one entity, not a class).
 TYPE_LABEL_ORG = {
     "Stadt":                  "Stadt",
     "Markt":                  "Markt",
@@ -44,44 +39,11 @@ TYPE_LABEL_ORG = {
     "Stift":                  "Stift",
 }
 
-# Place-types from places.csv:type. Raw English DB keys map to German
-# vocabulary used elsewhere in the UI (Quellenkorpus / Ortsregister).
-TYPE_LABEL_PLACE = {
-    "settlement": "Siedlung",
-    "street":     "Straße",
-    "immo":       "Immobilie",
-    "region":     "Region",
-    "river":      "Fluss",
-    "bridge":     "Brücke",
-    "gate":       "Tor",
-    "tower":      "Turm",
-    "land":       "Flur",
-    "vineyard":   "Weingarten",
-    "field":      "Feld",
-    "garden":     "Garten",
-    "mill":       "Mühle",
-    "house":      "Haus",
-    "court":      "Hof",
-    "mountain":   "Berg",
-    "valley":     "Tal",
-    "lake":       "See",
-}
-
-
 def label_org_type(value: str) -> str:
-    """Return the German display label for an org type, falling through
-    on unknown keys with underscores stripped."""
+    """German display label for an org type; unknown keys fall through."""
     if not value:
         return ""
     return TYPE_LABEL_ORG.get(value, value.replace("_", " "))
-
-
-def label_place_type(value: str) -> str:
-    """Return the German display label for a place type, falling through
-    on unknown keys lowercased + underscore-stripped."""
-    if not value:
-        return ""
-    return TYPE_LABEL_PLACE.get(value, value.replace("_", " "))
 
 
 def split_pipe_names(value: str) -> tuple[str, list[str]]:
@@ -103,11 +65,8 @@ def split_pipe_names(value: str) -> tuple[str, list[str]]:
 
 
 def split_authorities(value: str) -> list[str]:
-    """Split a pipe-joined authority field into a list of clean URLs.
-
-    Empty segments and whitespace-only entries are dropped. The order is
-    preserved so editors can control display order.
-    """
+    """Split a pipe-joined authority field into clean URLs, order preserved
+    so editors control display order."""
     if not value:
         return []
     out = []
@@ -116,16 +75,3 @@ def split_authorities(value: str) -> list[str]:
         if url:
             out.append(url)
     return out
-
-
-def geonames_id(url: str) -> str:
-    """Extract the numeric GeoNames id from a geonames.org URL.
-
-    Returns the empty string if the URL doesn't follow the
-    ``www.geonames.org/<digits>/...`` shape.
-    """
-    if not url:
-        return ""
-    import re
-    m = re.search(r"geonames\.org/(\d+)", url)
-    return m.group(1) if m else ""

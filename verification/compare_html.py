@@ -89,7 +89,8 @@ def _check_reader_health() -> List[CheckResult]:
 
 
 def _load_persons_csv() -> Dict[str, Dict[str, str]]:
-    """persons.csv aus pipeline/output in einen Lookup pe__id -> Row."""
+    """pe__id -> CSV-Row; fehlt die Datei, ist das Ergebnis leer (kein
+    Fehler, damit der Lauf auch ohne Pipeline-Output startet)."""
     out: Dict[str, Dict[str, str]] = {}
     path = PIPELINE_ROOT / "pipeline" / "output" / "persons.csv"
     if not path.exists():
@@ -104,6 +105,8 @@ def _load_persons_csv() -> Dict[str, Dict[str, str]]:
 
 
 def _load_orgs_csv() -> Dict[str, Dict[str, str]]:
+    """org__id -> CSV-Row; fehlt die Datei, ist das Ergebnis leer (kein
+    Fehler, damit der Lauf auch ohne Pipeline-Output startet)."""
     out: Dict[str, Dict[str, str]] = {}
     path = PIPELINE_ROOT / "pipeline" / "output" / "organisations.csv"
     if not path.exists():
@@ -133,13 +136,10 @@ def check_person_profiles(
 ) -> List[CheckResult]:
     """Prueft jedes gerenderte Personenprofil-HTML gegen persons.csv.
 
-    Felder, die heute gegengeprueft werden:
-    - Display-Name (forename + surname + addName aus den _reg-Spalten)
-    - sex-Label (m -> "männlich", f -> "weiblich", sonst Standardtext)
-
-    Felder, die spaeter (M6c) ergaenzt werden:
-    - Belegt-Zeitraum (aus reverse_index, schwer ohne Build-Run)
-    - death_display, authority_urls, source_titles
+    Aktuelle Felder: Display-Name (forename + surname + addName aus den
+    _reg-Spalten) und sex-Label (m -> "maennlich", f -> "weiblich",
+    sonst Standardtext). ``sample_size`` begrenzt die Anzahl der
+    geprueften Profile, vor allem fuer schnelle Iterationen.
     """
     results: List[CheckResult] = []
     persons_csv = _load_persons_csv()

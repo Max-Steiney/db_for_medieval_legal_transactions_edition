@@ -200,6 +200,11 @@ def _render_rolename(element, registers):
 
     css = f"anno-attr anno-attr-{rn_type}" if rn_type else "anno-attr"
     attrs = f' data-corresp="{escape(corresp)}"' if corresp else ""
+    # Native tooltip on the dagger glyph (CSS ::after) for type="dead",
+    # so readers see "als verstorben genannt" without consulting the
+    # annotation guidelines.
+    if rn_type == "dead":
+        attrs += ' title="Als verstorben genannt"'
 
     return f'<span class="{css}"{attrs}>{_render_children(element, registers)}</span>'
 

@@ -1,18 +1,13 @@
 /* Entity-Profil-Interaktivitaet.
  *
- * Drei progressive-enhancement-Aufgaben:
+ * Zwei progressive-enhancement-Aufgaben:
  *
  *  1. Tabellen-Truncation: rel-table und person-source-table tragen ein
  *     data-truncate-at-Attribut, wenn der Server mehr Zeilen als die
  *     Schwelle gerendert hat. Ueberzaehlige tr bekommen .is-overflow,
  *     ein Toggle-Button expandiert/zusammenfaltet die Tabelle.
  *
- *  2. Quick-Filter: ein .table-filter-input ueber einer Tabelle (rel
- *     oder src) filtert die Zeilen substringweise nach textContent. Bei
- *     aktivem Filter wird die Truncation aufgehoben, damit Matches
- *     jenseits der Schwelle nicht versteckt bleiben.
- *
- *  3. Spalten-Sortierung: Tabellen mit .sortable-table und th[data-sort]
+ *  2. Spalten-Sortierung: Tabellen mit .sortable-table und th[data-sort]
  *     reagieren auf Klicks im Header. Sortier-Werte kommen aus
  *     data-sort-value am td (ISO-Datum fuer chronologisch, sonst
  *     textContent), Default-Reihenfolge ist die serverseitige (meist
@@ -68,18 +63,6 @@
                 : 'Alle ' + rows.length + ' Zeilen anzeigen';
         });
         table.insertAdjacentElement('afterend', btn);
-    }
-
-    /* ----------------------------------------------------------------
-       Quick-Filter (delegiert an TableInfra.setupTableFilter)
-       ---------------------------------------------------------------- */
-
-    function applyQuickFilters() {
-        document.querySelectorAll('.table-filter-input').forEach(function (input) {
-            var scope = input.closest('section') || input.parentElement;
-            var table = scope ? scope.querySelector('table') : null;
-            if (table) TableInfra.setupTableFilter(input, table);
-        });
     }
 
     /* ----------------------------------------------------------------
@@ -171,7 +154,6 @@
 
     function init() {
         document.querySelectorAll('table[data-truncate-at]').forEach(applyTruncation);
-        applyQuickFilters();
         applySortableTables();
     }
 

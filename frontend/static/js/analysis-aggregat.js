@@ -11,18 +11,10 @@
     const TRANSACTIONS = V.readJsonScript('aggregat-data-transactions', { observations: {} });
     let DOCS_LOOKUP = {};   // file_key -> doc base data, loaded async
 
-    // Pre-normalised haystack per label: covers the canonical form and all
-    // variants, normalised once so the search loop stays cheap. Matches
-    // the haystack-pre-compute pattern in index.js/register.js.
-    (RELATIONS.labels || []).forEach(l => {
-        l._s = EdCore.normForSearch(l.label + ' ' + (l.variants || []).join(' '));
-    });
-
     const STATE = {
         sex: 'all',                  // 'all' | 'm' | 'f' | 'unspecified'
         decadeMin: null,             // numeric decade or null
         decadeMax: null,
-        labelSearch: '',
         labelType: 'all',
         rolesMode: 'mentions',       // 'mentions' | 'persons'
     };
@@ -424,7 +416,6 @@
         if (!tbody) return;
 
         const all = RELATIONS.labels || [];
-        const search = EdCore.normForSearch(STATE.labelSearch.trim());
         const sexFilter = STATE.sex;
         const typeFilter = STATE.labelType;
 
@@ -432,7 +423,6 @@
             if (typeFilter !== 'all' && l.type !== typeFilter) return false;
             if (sexFilter === 'm' && (l.m || 0) === 0) return false;
             if (sexFilter === 'f' && (l.f || 0) === 0) return false;
-            if (!EdCore.matchesQuery(l._s, search)) return false;
             return true;
         });
         filtered.sort((a, b) => (b.persons || 0) - (a.persons || 0));
@@ -505,14 +495,6 @@
     }
 
     function bindLabelsToolbar() {
-        const search = document.getElementById('labels-search');
-        if (search) {
-            search.addEventListener('input', (e) => {
-                STATE.labelSearch = e.target.value;
-                renderLabels();
-                updateActiveFilters();
-            });
-        }
         const chipGroup = document.querySelector('.aggregat-rel-type-chips');
         if (chipGroup) {
             chipGroup.addEventListener('click', (e) => {
@@ -531,7 +513,6 @@
         if (!btn) return;
         btn.addEventListener('click', () => {
             STATE.sex = 'all';
-            STATE.labelSearch = '';
             STATE.labelType = 'all';
             STATE.rolesMode = 'mentions';
 
@@ -541,8 +522,6 @@
             V.setActiveChip(document.querySelector('#q-roles .aggregat-toggle'),
                             'mentions', 'data-roles-mode', 'is-active');
 
-            const search = document.getElementById('labels-search');
-            if (search) search.value = '';
             // Slider reset fires the onChange hook via its input event, which
             // triggers renderAll(). If the slider is missing, render directly.
             if (!V.resetSliderInputs()) {
@@ -560,13 +539,6 @@
         STATE.sex = 'all';
         V.setActiveChip(document.getElementById('filter-sex'), 'all', 'data-sex');
         renderAll();
-    }
-    function clearLabelSearch() {
-        STATE.labelSearch = '';
-        const s = document.getElementById('labels-search');
-        if (s) s.value = '';
-        renderLabels();
-        updateActiveFilters();
     }
     function clearLabelType() {
         STATE.labelType = 'all';
@@ -598,12 +570,6 @@
             filters.push({
                 label: 'Bezeichnungs-Typ: ' + (V.REL_LABELS[STATE.labelType] || STATE.labelType),
                 onClear: clearLabelType,
-            });
-        }
-        if (STATE.labelSearch && STATE.labelSearch.trim()) {
-            filters.push({
-                label: 'Bezeichnung: ' + STATE.labelSearch.trim(),
-                onClear: clearLabelSearch,
             });
         }
         V.renderActiveFilters('active-filters', filters);
@@ -797,7 +763,6 @@
             dec: dec,
             sex:  STATE.sex !== 'all' ? STATE.sex : null,
             type: STATE.labelType !== 'all' ? STATE.labelType : null,
-            q:    STATE.labelSearch.trim() || null,
             mode: STATE.rolesMode !== 'mentions' ? STATE.rolesMode : null,
         });
     }
@@ -807,7 +772,6 @@
         if (u.sex && ['m', 'f', 'unspecified'].includes(u.sex)) STATE.sex = u.sex;
         if (u.mode === 'persons') STATE.rolesMode = 'persons';
         if (u.type && ['kin', 'occ', 'rep', 'friend'].includes(u.type)) STATE.labelType = u.type;
-        if (u.q) STATE.labelSearch = u.q;
         if (u.dec) {
             const m = u.dec.match(/^(\d{4})-(\d{4})$/);
             if (m) {
@@ -818,14 +782,12 @@
                 V.applySliderValues(lo, hi);
             }
         }
-        // UI sync: chips, toggle, search input.
+        // UI sync: chips, toggle.
         V.setActiveChip(document.getElementById('filter-sex'), STATE.sex, 'data-sex');
         V.setActiveChip(document.querySelector('.aggregat-rel-type-chips'),
                         STATE.labelType, 'data-rel');
         V.setActiveChip(document.querySelector('#q-roles .aggregat-toggle'),
                         STATE.rolesMode, 'data-roles-mode', 'is-active');
-        const searchEl = document.getElementById('labels-search');
-        if (searchEl && STATE.labelSearch) searchEl.value = STATE.labelSearch;
     }
 
     // ---------------------------------------------------------------------

@@ -31,7 +31,9 @@ CheckResult = compare.CheckResult
 
 @dataclass
 class DocPair:
-    """Ein gepaarter Eintrag: TEI-Record + zugehoeriges HTML."""
+    """Eine TEI-Quelle und die dazu gerenderte HTML-Seite, gepaart ueber
+    den Pfad-Mapping in ``_html_path_for_tei``. Grundlage fuer alle
+    Stufe-3-Pruefungen."""
 
     tei: parse_tei.DocRecord
     html: parse_html.DocumentHtml

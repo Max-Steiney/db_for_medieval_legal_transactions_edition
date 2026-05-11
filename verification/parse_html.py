@@ -37,7 +37,8 @@ from verification.config import (
 
 @dataclass
 class PersonProfileHtml:
-    """Was das gerenderte Personenprofil ueber eine Person sagt."""
+    """Aus dem gerenderten Personenprofil-HTML extrahierte Felder; jede
+    Eigenschaft entspricht einem Selektor in ``read_person_profile``."""
 
     pe_id: str
     path: Path
@@ -71,7 +72,8 @@ class PersonProfileHtml:
 
 @dataclass
 class OrgProfileHtml:
-    """Was das gerenderte Organisations-Profil ueber eine Org sagt."""
+    """Aus dem gerenderten Organisations-Profil-HTML extrahierte Felder;
+    jede Eigenschaft entspricht einem Selektor in ``read_org_profile``."""
 
     org_id: str
     path: Path

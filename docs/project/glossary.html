@@ -9,15 +9,15 @@
     <title>Glossar, Datenbank</title>
     <link rel="preload" as="font" type="font/woff2" crossorigin
           href="../static/fonts/inter-400-latin.woff2">
-    <link rel="stylesheet" href="../static/css/fonts.css?v=20260511150427">
-    <link rel="stylesheet" href="../static/css/tokens.css?v=20260511150427">
-    <link rel="stylesheet" href="../static/css/base.css?v=20260511150427">
-    <link rel="stylesheet" href="../static/css/components.css?v=20260511150427">
-    <link rel="stylesheet" href="../static/css/responsive.css?v=20260511150427">
-    <link rel="stylesheet" href="../static/css/print.css?v=20260511150427">
-    <link rel="stylesheet" href="../static/css/tip.css?v=20260511150427">
+    <link rel="stylesheet" href="../static/css/fonts.css?v=20260511171359">
+    <link rel="stylesheet" href="../static/css/tokens.css?v=20260511171359">
+    <link rel="stylesheet" href="../static/css/base.css?v=20260511171359">
+    <link rel="stylesheet" href="../static/css/components.css?v=20260511171359">
+    <link rel="stylesheet" href="../static/css/responsive.css?v=20260511171359">
+    <link rel="stylesheet" href="../static/css/print.css?v=20260511171359">
+    <link rel="stylesheet" href="../static/css/tip.css?v=20260511171359">
     
-<link rel="stylesheet" href="../static/css/content.css?v=20260511150427">
+<link rel="stylesheet" href="../static/css/content.css?v=20260511171359">
 
 </head>
 <body data-root-path=".."
@@ -117,6 +117,7 @@
                 <h2>Inhalt</h2>
                 <div class="toc">
 <ul>
+<li><a href="#als-verstorben-genannt">Als verstorben genannt</a></li>
 <li><a href="#eintrag">Eintrag</a></li>
 <li><a href="#erschlieungsform">Erschließungsform</a></li>
 <li><a href="#event">Event</a></li>
@@ -140,6 +141,12 @@
         </nav>
         <div class="guidelines-body">
             <p>Kanonische Definitionen aller Fachbegriffe der Datenbank. Quelle für Tooltips im UI und für die Glossar-Seite. Alphabetisch sortiert, pro Eintrag eine Definition, gegebenenfalls Abgrenzung und Hinweis zu häufigen Verwechslungen.</p>
+<h2 id="als-verstorben-genannt">Als verstorben genannt<a class="headerlink" href="#als-verstorben-genannt" title="Permanent link">&para;</a></h2>
+<p>Eine Person wird in einer Quelle bereits als verstorben bezeichnet, etwa durch Beiworte wie „selig", „weiland" oder „tot" neben dem Namen. Im TEI-Datenmodell wird das mit <code>&lt;roleName type="dead"&gt;</code> ausgezeichnet. Im UI erscheint die Markierung als Dolch (†) neben dem Personennamen im Quellenvolltext und als Header-Feld im Personenprofil.</p>
+<p>Die Markierung ist eine Quellenaussage, kein gesichertes Sterbedatum. Sie sagt nur, dass die Person zum Zeitpunkt der Quelle bereits verstorben war. Ein genaues Sterbedatum wird, sofern aus mehreren Quellen rekonstruierbar, separat im Personenregister als <code>&lt;death notAfter="..."&gt;</code> geführt und im Profil als „Verstorben vor" angezeigt.</p>
+<blockquote>
+<p><strong>Abgrenzung:</strong> „Als verstorben genannt" ist eine Quellen-Markierung pro Nennung. „Verstorben vor" ist eine konsolidierte Datierung im Personenregister.</p>
+</blockquote>
 <h2 id="eintrag">Eintrag<a class="headerlink" href="#eintrag" title="Permanent link">&para;</a></h2>
 <p>Ein in einem Verwaltungsbuch (Stadtbuch, Grundbuch, Gewerbuch) verzeichnetes Rechtsgeschäft. Anders als eine Urkunde steht ein Eintrag nicht für sich, sondern ist Teil einer fortlaufenden Aufzeichnung, die ein Amt oder eine Institution geführt hat. Im TEI-Datenmodell wird er als <code>&lt;entry&gt;</code> ausgezeichnet.</p>
 <p>Im Datenbestand sind die Stadtbücher als Volltext-Einträge erschlossen, mit textgenauer Wiedergabe der Wortlaute. Ein Eintrag ist eine der vier Erschließungsformen neben <a href="#regest">Regest</a>, <a href="#siegel">Siegel</a> und <a href="#nota">Nota</a>.</p>
@@ -238,12 +245,12 @@
         </div>
     </footer>
 
-    <script src="../static/js/core.js?v=20260511150427"></script>
-    <script src="../static/js/tip.js?v=20260511150427"></script>
-    <script src="../static/js/hint.js?v=20260511150427"></script>
-    <script src="../static/js/basket.js?v=20260511150427"></script>
+    <script src="../static/js/core.js?v=20260511171359"></script>
+    <script src="../static/js/tip.js?v=20260511171359"></script>
+    <script src="../static/js/hint.js?v=20260511171359"></script>
+    <script src="../static/js/basket.js?v=20260511171359"></script>
     
-<script src="../static/js/content.js?v=20260511150427"></script>
+<script src="../static/js/content.js?v=20260511171359"></script>
 
 </body>
 </html>

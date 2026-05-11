@@ -35,8 +35,12 @@
                            placeholder="Name eingeben&hellip;" autocomplete="off"
                            aria-label="Person suchen">
                     {% call tip_help('net-search-help', 'Person suchen') %}
-                        <p>Die Suche pr&uuml;ft ausschlie&szlig;lich den <strong>Personennamen</strong> der im Netzwerk vorhandenen Personen (ab 2 Zeichen, maximal 12 Treffer).</p>
-                        <p>Umlaute werden ignoriert. Mit Klick auf einen Treffer wird das Netzwerk auf die gew&auml;hlte Person zentriert.</p>
+                        <p>Sucht eine Person im Netzwerk und zentriert das Ego-Layout auf den ausgew&auml;hlten Treffer.</p>
+                        <p>Gepr&uuml;ft wird:</p>
+                        <ul>
+                            <li><strong>Personenname</strong> (ab 2 Zeichen, maximal 12 Vorschl&auml;ge)</li>
+                        </ul>
+                        <p>Umlaute werden ignoriert, mehrere W&ouml;rter mit UND verkn&uuml;pft.</p>
                     {% endcall %}
                     <ul class="net-search-results" id="net-search-results" hidden></ul>
                 </div>

@@ -119,7 +119,7 @@ Attribute und Relationen werden mit `<roleName type="..." corresp="...">` annoti
 
 Zwei Arten von `@type`-Werten sind zu unterscheiden:
 
-- **Attribute** charakterisieren die Entitaet selbst und benoetigen kein `@corresp` (z.B. ein Titel oder die Markierung "verstorben").
+- **Attribute** charakterisieren die Entitaet selbst und benoetigen kein `@corresp` (z.B. ein Titel oder die Markierung "als verstorben genannt").
 - **Relationen** verknuepfen die Entitaet ueber `@corresp` mit einem zweiten Eintrag (z.B. eine Verwandtschaftsbeziehung zu einer Person, eine Amtsfunktion in einer Organisation, eine topographische Lage in einem Ort).
 
 Die im Bestand belegten Relationstypen umfassen unter anderem Verwandtschaft, Berufs- und Amtszuordnung, Stellvertretung, Freundschaft, Topographie und Besitzverhaeltnisse. Die maßgebliche Liste der zulaessigen Werte wird im Schema gefuehrt; die Ausweisung im Bestand ist im Validierungsbericht (`pipeline/output/validation_report.md`) abgebildet.

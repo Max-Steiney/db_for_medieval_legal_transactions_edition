@@ -47,7 +47,7 @@ eindeutige Identifikatoren (`@ref`) mit den Registern verkn&uuml;pft.
 
 ### Ebene 4: Attribute und Relationen
 
-Eigenschaften (Beruf, Titel, Tod) und Beziehungen (Verwandtschaft, Amt,
+Eigenschaften (Beruf, Titel, als verstorben genannt) und Beziehungen (Verwandtschaft, Amt,
 Repr&auml;sentation, Freundschaft, Topographie) werden &uuml;ber
 `<roleName>` annotiert und mit Referenzen (`@corresp`) aufgel&ouml;st.
 

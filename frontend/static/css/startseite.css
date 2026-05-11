@@ -3,11 +3,23 @@
    Card titles → text-lg sans 600. Stats/meta → text-sm sans muted.
    Spacing: kompakt, alles auf einen Screen ohne Scroll. */
 
+/* ── Buehne ──────────────────────────────────────────────────
+   Die Startseite zentriert ihre Bloecke etwas enger als der
+   Wide-Container (90 rem), damit der Stack auf gaengigen
+   Viewports nicht randlos wirkt und mehr Atem am Seitenrand
+   bekommt. Vertikal wird der Hero von der Topbar weggerueckt,
+   so dass der Inhalt insgesamt mittiger sitzt. */
+.start-page {
+    max-width: 76rem;
+    margin: 0 auto;
+    padding-top: var(--space-xl);
+}
+
 /* ── Hero ───────────────────────────────────────────────────── */
 .start-hero {
     text-align: center;
     max-width: var(--max-width);
-    margin: 0 auto var(--space-md);
+    margin: 0 auto var(--space-lg);
     padding-bottom: var(--space-md);
 }
 
@@ -225,18 +237,19 @@
 .start-twoways-grid {
     display: grid;
     grid-template-columns: 1fr 1fr;
-    grid-auto-rows: min-content;
+    grid-auto-rows: 1fr;
     gap: var(--space-sm);
     flex: 1;
     align-content: start;
 }
 
-/* Kompaktere Explore-Hub-Cards auf der Startseite. min-height haelt
-   die Symmetrie zwischen Exploration (4 Cards) und Analyse (1 Card),
-   unabhaengig von der Beschreibungslaenge. */
+/* Kompaktere Explore-Hub-Cards auf der Startseite. grid-auto-rows: 1fr
+   zwingt alle Cards einer Zeile auf gleiche Hoehe; min-height haelt
+   die Mindest-Hoehe, falls eine Spalte fuer sich alleine steht. */
 .start-twoways-grid .explore-hub-card {
-    padding: var(--space-sm) var(--space-md);
-    min-height: 11rem;
+    padding: var(--space-md);
+    min-height: 12rem;
+    height: 100%;
 }
 .start-twoways-grid .explore-hub-card-icon { margin-bottom: var(--space-xs); }
 .start-twoways-grid .explore-hub-card-icon svg { width: 28px; height: 28px; }

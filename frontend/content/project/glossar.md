@@ -1,5 +1,13 @@
 Kanonische Definitionen aller Fachbegriffe der Datenbank. Quelle für Tooltips im UI und für die Glossar-Seite. Alphabetisch sortiert, pro Eintrag eine Definition, gegebenenfalls Abgrenzung und Hinweis zu häufigen Verwechslungen.
 
+## Als verstorben genannt
+
+Eine Person wird in einer Quelle bereits als verstorben bezeichnet, etwa durch Beiworte wie „selig", „weiland" oder „tot" neben dem Namen. Im TEI-Datenmodell wird das mit `<roleName type="dead">` ausgezeichnet. Im UI erscheint die Markierung als Dolch (†) neben dem Personennamen im Quellenvolltext und als Header-Feld im Personenprofil.
+
+Die Markierung ist eine Quellenaussage, kein gesichertes Sterbedatum. Sie sagt nur, dass die Person zum Zeitpunkt der Quelle bereits verstorben war. Ein genaues Sterbedatum wird, sofern aus mehreren Quellen rekonstruierbar, separat im Personenregister als `<death notAfter="...">` geführt und im Profil als „Verstorben vor" angezeigt.
+
+> **Abgrenzung:** „Als verstorben genannt" ist eine Quellen-Markierung pro Nennung. „Verstorben vor" ist eine konsolidierte Datierung im Personenregister.
+
 ## Eintrag
 
 Ein in einem Verwaltungsbuch (Stadtbuch, Grundbuch, Gewerbuch) verzeichnetes Rechtsgeschäft. Anders als eine Urkunde steht ein Eintrag nicht für sich, sondern ist Teil einer fortlaufenden Aufzeichnung, die ein Amt oder eine Institution geführt hat. Im TEI-Datenmodell wird er als `<entry>` ausgezeichnet.

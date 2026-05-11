@@ -1,5 +1,4 @@
 {% extends "base.html" %}
-{% from "macros.html" import tip_help %}
 
 {% block title %}{{ profile.name }}{% endblock %}
 
@@ -112,16 +111,6 @@
        zur Quellen-Uebersicht. Sortierbar via data-sort auf den th. #}
     <section class="person-sources" aria-label="Quellen mit Nennung">
         <h2 class="section-head">Quellen mit Nennung <span class="section-head-count">{{ profile.sources|length }}</span></h2>
-        {% if profile.sources|length > 25 %}
-        <div class="table-filter">
-            <input type="search" class="table-filter-input" placeholder="In den Quellen filtern&hellip;" aria-label="In den Quellen filtern">
-            <span class="table-filter-status"></span>
-            {% call tip_help('org-src-filter-help', 'Quellen filtern') %}
-                <p>Volltextfilter &uuml;ber den sichtbaren Inhalt dieser Tabelle: <strong>Signatur</strong>, <strong>Datum</strong>, <strong>Quellenkorpus</strong>, <strong>Bezeichnung</strong>, <strong>Rolle</strong> und <strong>Regest</strong>.</p>
-                <p>Umlaute werden ignoriert. Mehrere W&ouml;rter werden mit UND verkn&uuml;pft.</p>
-            {% endcall %}
-        </div>
-        {% endif %}
         <table class="person-source-table sortable-table"{% if profile.sources|length > 50 %} data-truncate-at="50"{% endif %}>
             <thead>
                 <tr>
@@ -188,16 +177,6 @@
                 {% endif %}
                 <span class="rel-block-count">{{ entries|length }}</span>
             </header>
-            {% if entries|length > 25 %}
-            <div class="table-filter">
-                <input type="search" class="table-filter-input" placeholder="In der Tabelle filtern&hellip;" aria-label="In der Tabelle filtern">
-                <span class="table-filter-status"></span>
-                {% call tip_help('org-rel-filter-help-' ~ rel_type, 'Beziehungen filtern') %}
-                    <p>Volltextfilter &uuml;ber den sichtbaren Inhalt dieser Tabelle: <strong>Person</strong>, <strong>Bezeichnung</strong>, <strong>Signatur</strong> und <strong>Datum</strong>.</p>
-                    <p>Umlaute werden ignoriert. Mehrere W&ouml;rter werden mit UND verkn&uuml;pft.</p>
-                {% endcall %}
-            </div>
-            {% endif %}
             <table class="rel-table sortable-table"{% if entries|length > 50 %} data-truncate-at="50"{% endif %}>
                 <thead>
                     <tr>

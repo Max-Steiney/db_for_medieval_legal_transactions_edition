@@ -4,15 +4,13 @@ Each profile carries a chronologically sorted ``sources`` list (built by
 ``build/__init__.py`` from ``reverse_index``). The detail-page tables
 need two more columns:
 
-* ``label`` — how the entity is named in *this particular* source
-* ``role``  — what event-role the entity plays in *this particular* source
+* ``label``: how the entity is named in *this particular* source
+* ``role``:  what event-role the entity plays in *this particular* source
 
-Both come from per-source CSVs that key by ``(entity_key, file_key)``,
-so we build that map here once per build and re-use it for all three
-entity types.
-
-The (collection_path, idno) -> file_key bridge mirrors the reverse one
-already present in each profile aggregator.
+Both come from per-source CSVs keyed by ``(entity_key, file_key)``;
+the lookup is built once per build and reused for persons and orgs.
+The (collection_path, idno) -> file_key bridge inverts the lookup each
+profile aggregator builds internally.
 """
 
 from collections import Counter, defaultdict
@@ -20,9 +18,8 @@ from collections import Counter, defaultdict
 from ._shared import _cached_csv
 
 
-# Role label maps. Persons / orgs share the same event-role vocabulary
-# (issuer / recipient / witness / other). Places use a different set of
-# event-roles (where / of / transactiongood_I / transactiongood_II).
+# Persons and orgs share one event-role vocabulary. Places have no
+# profile pages, so no place vocabulary lives here.
 ROLE_LABEL_PERSON = {
     "issuer":    "Aussteller*in",
     "recipient": "Empfänger*in",
@@ -31,13 +28,6 @@ ROLE_LABEL_PERSON = {
 }
 
 ROLE_LABEL_ORG = ROLE_LABEL_PERSON
-
-ROLE_LABEL_PLACE = {
-    "where":             "Handlungsort",
-    "of":                "Bezugsort",
-    "transactiongood_I": "Transaktionsgut",
-    "transactiongood_II": "Transaktionsgut (II)",
-}
 
 
 def file_key_lookup() -> dict[tuple[str, str], str]:
@@ -92,11 +82,6 @@ def per_doc_label_orgs() -> dict[tuple[str, str], str]:
     return _per_doc_label("orgs_in_sources.csv", "org_key", ("source_text",))
 
 
-def per_doc_label_places() -> dict[tuple[str, str], str]:
-    """Top-1 label per (place_key, file_key)."""
-    return _per_doc_label("places_in_sources.csv", "place_key", ("source_text",))
-
-
 def _per_doc_roles(csv_name: str, key_col: str) -> dict[tuple[str, str], list[str]]:
     """(entity_key, file_key) -> ordered list of distinct event_roles.
 
@@ -126,10 +111,6 @@ def per_doc_roles_persons() -> dict[tuple[str, str], list[str]]:
 
 def per_doc_roles_orgs() -> dict[tuple[str, str], list[str]]:
     return _per_doc_roles("orgs_in_events.csv", "org_key")
-
-
-def per_doc_roles_places() -> dict[tuple[str, str], list[str]]:
-    return _per_doc_roles("places_in_events.csv", "place_key")
 
 
 def enrich_sources(sources: list[dict], entity_key: str,

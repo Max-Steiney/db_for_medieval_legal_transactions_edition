@@ -46,7 +46,8 @@ def _text_of(node) -> Optional[str]:
 
 
 def load_persons() -> Dict[str, PersonRecord]:
-    """Alle <person>-Einträge aus personList.xml nach xml_id."""
+    """xml_id -> PersonRecord aus personList.xml; Einträge ohne xml:id
+    werden uebersprungen, forename/surname sind die <reg>-Form."""
     tree = etree.parse(str(PERSON_LIST))
     root = tree.getroot()
     out: Dict[str, PersonRecord] = {}
@@ -62,6 +63,8 @@ def load_persons() -> Dict[str, PersonRecord]:
 
 
 def load_orgs() -> Dict[str, OrgRecord]:
+    """xml_id -> OrgRecord aus orgList.xml; bevorzugt <orgName>/<reg>,
+    Fallback auf den unmittelbaren <orgName>-Text."""
     tree = etree.parse(str(ORG_LIST))
     root = tree.getroot()
     out: Dict[str, OrgRecord] = {}
@@ -75,6 +78,8 @@ def load_orgs() -> Dict[str, OrgRecord]:
 
 
 def load_places() -> Dict[str, PlaceRecord]:
+    """xml_id -> PlaceRecord aus placeList.xml; bevorzugt <placeName>/<reg>,
+    Fallback auf den unmittelbaren <placeName>-Text."""
     tree = etree.parse(str(PLACE_LIST))
     root = tree.getroot()
     out: Dict[str, PlaceRecord] = {}
