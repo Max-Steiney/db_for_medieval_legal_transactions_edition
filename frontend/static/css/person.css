@@ -7,14 +7,14 @@
    ========================================================================== */
 
 .person-profile {
-    max-width: var(--max-width-wide);
+    max-width: 78rem;
     margin: 0 auto;
     padding: 0;
 }
 
-/* --- Toolbar (Breadcrumb + Meta-Strip) -------------------------------- */
-/* Variation der doc-toolbar aus document.css: nur Identity-Zone, keine
-   Controls — Profil hat keine Layer-Toggles oder Pager. */
+/* --- Toolbar (nur Breadcrumb + Korb-Mount) ---------------------------- */
+/* Meta-Strip (Belegt, Geschlecht, ID, ...) ist in den Header gewandert,
+   damit die Toolbar nur eine Zeile hoch ist. */
 
 .person-toolbar {
     position: sticky;
@@ -23,15 +23,12 @@
     background: var(--color-bg);
     border-bottom: 1px solid var(--color-border);
     margin: calc(-1 * var(--space-xl)) calc(-1 * var(--space-lg)) 0;
-    padding: var(--space-md) var(--space-lg);
+    padding: var(--space-xs) var(--space-lg);
 }
 
 .person-toolbar-inner {
-    max-width: var(--max-width-wide);
+    max-width: 78rem;
     margin: 0 auto;
-    display: flex;
-    flex-direction: column;
-    gap: var(--space-sm);
 }
 
 .person-toolbar-row {
@@ -74,51 +71,90 @@
     color: var(--color-text);
 }
 
-.person-toolbar-meta {
-    display: flex;
-    flex-wrap: wrap;
-    gap: var(--space-md);
-    font-size: var(--text-sm);
-}
-
-.person-toolbar-meta .meta-pair {
-    display: inline-flex;
-    flex-direction: column;
-    gap: 2px;
-}
-
-.person-toolbar-meta .meta-label {
-    font-size: var(--text-xs);
-    color: var(--color-text-light);
-    text-transform: uppercase;
-    letter-spacing: 0.04em;
-}
-
-.person-toolbar-meta .meta-value {
-    color: var(--color-text);
-}
-
-.person-toolbar-meta .person-id {
-    font-family: var(--font-mono);
-    font-size: var(--text-xs);
-    background: var(--color-bg-warm);
-    padding: 2px 6px;
-    border-radius: var(--radius);
-}
-
 /* --- Header ------------------------------------------------------------ */
 
 .person-header {
-    margin: var(--space-xl) auto var(--space-lg);
-    max-width: var(--max-width-wide);
+    margin: var(--space-md) auto var(--space-sm);
+    max-width: 78rem;
     padding: 0 var(--space-md);
 }
+
+/* Zwei-Spalten-Layout: Identitaet links, Meta rechts. Bei schmalen
+   Viewports fallen die Spalten untereinander. */
+.person-header-grid {
+    display: grid;
+    grid-template-columns: minmax(0, 1fr) minmax(14rem, 22rem);
+    gap: var(--space-md) var(--space-xl);
+    align-items: start;
+}
+
+.ph-identity {
+    min-width: 0;
+}
+
+.ph-meta {
+    border-left: 1px solid var(--color-border);
+    padding-left: var(--space-md);
+}
+
+.ph-meta-list {
+    margin: 0;
+    display: grid;
+    grid-template-columns: max-content 1fr;
+    gap: 2px var(--space-sm);
+    font-size: var(--text-sm);
+}
+
+.ph-meta-row {
+    display: contents;
+}
+
+.ph-meta-list dt {
+    color: var(--color-text-light);
+    text-transform: uppercase;
+    letter-spacing: 0.04em;
+    font-size: var(--text-xs);
+    padding-top: 2px;
+    white-space: nowrap;
+}
+
+.ph-meta-list dd {
+    margin: 0;
+    color: var(--color-text);
+}
+
+.ph-meta-list .person-id {
+    font-family: var(--font-mono);
+    font-size: var(--text-xs);
+    background: var(--color-bg-warm);
+    padding: 1px 6px;
+    border-radius: var(--radius);
+}
+
+.ph-extlinks {
+    margin-top: var(--space-sm);
+    font-size: var(--text-sm);
+    display: flex;
+    flex-wrap: wrap;
+    gap: var(--space-xs) var(--space-sm);
+}
+
+.ph-extlinks .ext-link {
+    color: var(--anno-person);
+    text-decoration: none;
+}
+
+.ph-extlinks .ext-link:hover {
+    text-decoration: underline;
+}
+
+.org-profile .ph-extlinks .ext-link { color: var(--anno-org); }
 
 .person-name {
     font-family: var(--font-serif);
     font-size: var(--text-2xl);
     line-height: var(--leading-tight);
-    margin: 0 0 var(--space-sm);
+    margin: 0 0 var(--space-xs);
     color: var(--color-text);
 }
 
@@ -131,29 +167,62 @@
 .person-note {
     font-style: italic;
     color: var(--color-text-muted);
-    margin: var(--space-sm) 0;
+    margin: var(--space-xs) 0;
     max-width: 60rem;
 }
 
-.person-titles {
-    margin: var(--space-sm) 0;
-    display: flex;
-    flex-wrap: wrap;
-    align-items: center;
-    gap: var(--space-xs);
+/* "Genannt als"-Liste als <details>: Default kollabiert, Summary zeigt
+   nur den Count. Spart 30-60 px pro Profil, ohne Information zu verlieren. */
+.person-titles-details {
+    margin: var(--space-xs) 0 0;
+    font-size: var(--text-sm);
 }
 
-.person-titles .pt-label {
+.pt-summary {
+    cursor: pointer;
+    list-style: none;
+    display: inline-flex;
+    align-items: center;
+    gap: var(--space-xs);
+    color: var(--color-text-muted);
+    user-select: none;
+}
+
+.pt-summary::-webkit-details-marker { display: none; }
+
+.pt-summary::before {
+    content: "\25B8";
+    display: inline-block;
+    font-size: var(--text-xs);
+    color: var(--color-text-light);
+    transition: transform 0.12s;
+}
+
+.person-titles-details[open] .pt-summary::before {
+    transform: rotate(90deg);
+}
+
+.pt-summary .pt-label {
     font-size: var(--text-xs);
     color: var(--color-text-light);
     text-transform: uppercase;
     letter-spacing: 0.04em;
-    margin-right: var(--space-sm);
 }
 
-.person-titles .pt-chip {
+.pt-summary .pt-count {
+    color: var(--color-text);
+}
+
+.pt-chips {
+    margin: var(--space-xs) 0 0;
+    display: flex;
+    flex-wrap: wrap;
+    gap: var(--space-xs);
+}
+
+.pt-chip {
     display: inline-block;
-    padding: 2px 8px;
+    padding: 1px 8px;
     border: 1px solid var(--color-border);
     border-radius: var(--radius);
     background: var(--color-bg-warm);
@@ -161,58 +230,57 @@
     color: var(--color-text);
 }
 
-.person-extlinks {
-    margin-top: var(--space-sm);
-    font-size: var(--text-sm);
-}
-
-.person-extlinks .ext-link {
-    color: var(--anno-person);
-    text-decoration: none;
-}
-
-.person-extlinks .ext-link:hover {
-    text-decoration: underline;
+/* Org-Aliases bleiben als sichtbare Chip-Zeile im person-orig-Slot. */
+.person-orig .pt-chip {
+    padding: 0 6px;
+    font-size: var(--text-xs);
 }
 
 /* --- Sections (Beziehungen + Quellen) --------------------------------- */
 
 .person-relations,
 .person-sources {
-    max-width: var(--max-width-wide);
-    margin: var(--space-2xl) auto;
+    max-width: 78rem;
+    margin: var(--space-lg) auto;
     padding: 0 var(--space-md);
 }
 
 .section-head {
-    font-family: var(--font-serif);
-    font-size: var(--text-xl);
-    margin: 0 0 var(--space-md);
-    padding-bottom: var(--space-sm);
+    font-family: var(--font-sans);
+    font-size: var(--text-base);
+    font-weight: 600;
+    text-transform: uppercase;
+    letter-spacing: 0.04em;
+    margin: 0 0 var(--space-sm);
+    padding-bottom: 4px;
     border-bottom: 1px solid var(--color-border);
-    color: var(--color-text);
+    color: var(--color-text-muted);
+    display: flex;
+    align-items: baseline;
+    gap: var(--space-sm);
 }
 
 /* --- Beziehungen ------------------------------------------------------- */
 
 .rel-block {
-    margin: var(--space-lg) 0;
+    margin: var(--space-md) 0;
 }
 
 .rel-block-head {
     display: flex;
     align-items: baseline;
     gap: var(--space-sm);
-    margin-bottom: var(--space-sm);
-    flex-wrap: wrap;
+    margin-bottom: var(--space-xs);
 }
 
 .rel-block-title {
-    font-size: var(--text-lg);
+    font-size: var(--text-base);
     font-family: var(--font-sans);
     font-weight: 600;
     margin: 0;
     color: var(--color-text);
+    cursor: help;
+    border-bottom: 1px dotted var(--color-border);
 }
 
 .rel-block-count {
@@ -220,17 +288,10 @@
     background: var(--color-bg-warm);
     border: 1px solid var(--color-border);
     border-radius: var(--radius);
-    padding: 1px 8px;
+    padding: 0 6px;
     font-size: var(--text-xs);
     font-family: var(--font-mono);
     color: var(--color-text-muted);
-}
-
-.rel-block-hint {
-    font-size: var(--text-sm);
-    color: var(--color-text-light);
-    flex: 1 1 100%;
-    margin-top: 2px;
 }
 
 .rel-table,
@@ -248,7 +309,7 @@
 .rel-table td,
 .person-source-table th,
 .person-source-table td {
-    padding: var(--space-sm) var(--space-md);
+    padding: 4px var(--space-sm);
     text-align: left;
     vertical-align: top;
     border-bottom: 1px solid var(--color-border-light);
@@ -339,9 +400,22 @@
     color: var(--color-text);
 }
 
+@media (max-width: 900px) {
+    .person-header-grid {
+        grid-template-columns: 1fr;
+        gap: var(--space-sm);
+    }
+    .ph-meta {
+        border-left: 0;
+        border-top: 1px solid var(--color-border);
+        padding-left: 0;
+        padding-top: var(--space-sm);
+    }
+    .role-inline-total { margin-left: 0; }
+}
+
 @media (max-width: 768px) {
     .person-toolbar { position: static; }
-    .person-toolbar-meta { gap: var(--space-sm); }
     .rel-table,
     .person-source-table { font-size: var(--text-xs); }
     .person-source-table .src-col-corpus { display: none; }
@@ -392,81 +466,75 @@
     margin-right: var(--space-xs);
 }
 
-/* --- Rollen-Strip (Person/Org/Place) ---------------------------------- */
-.role-strip {
-    max-width: var(--max-width-wide);
-    margin: var(--space-xl) auto 0;
-    padding: var(--space-md);
-    border: 1px solid var(--color-border);
-    border-radius: var(--radius);
-    background: var(--color-bg-card);
+/* --- Rollen-Inline-Strip (Person/Org) --------------------------------- */
+/* Inline-Zeile direkt unter dem Header, keine Card, kein Title. Vier
+   Zellen + Summen-Chip rechts. Hint-Text liegt als data-hint am Total. */
+.role-inline {
+    max-width: 78rem;
+    margin: 0 auto var(--space-md);
+    padding: 0 var(--space-md);
+    display: flex;
+    flex-wrap: wrap;
+    align-items: center;
+    gap: var(--space-xs) var(--space-md);
+    font-size: var(--text-sm);
 }
-.role-strip-title {
-    margin: 0 0 var(--space-sm);
-    font-size: var(--text-base);
-    font-weight: 600;
-    color: var(--color-text-muted);
+.role-inline-label {
+    font-size: var(--text-xs);
+    color: var(--color-text-light);
     text-transform: uppercase;
     letter-spacing: 0.04em;
 }
-.role-strip-cells {
-    display: grid;
-    grid-template-columns: repeat(auto-fit, minmax(8rem, 1fr));
-    gap: var(--space-sm);
-}
-.role-cell {
-    display: flex;
-    flex-direction: column;
-    padding: var(--space-sm) var(--space-md);
+.role-inline-cell {
+    display: inline-flex;
+    align-items: baseline;
+    gap: var(--space-xs);
+    padding: 1px 8px 1px 10px;
     border-left: 3px solid var(--color-border);
     background: var(--color-bg-warm);
     border-radius: 0 var(--radius) var(--radius) 0;
 }
-.role-cell-count {
+.role-inline-cell .ri-count {
     font-family: var(--font-serif);
-    font-size: var(--text-xl);
+    font-size: var(--text-base);
     color: var(--color-text);
-    line-height: 1;
+    font-weight: 600;
 }
-.role-cell-label {
+.role-inline-cell .ri-label {
     font-size: var(--text-xs);
     color: var(--color-text-muted);
-    margin-top: 2px;
-    text-transform: uppercase;
-    letter-spacing: 0.03em;
 }
-.role-cell.is-zero {
-    opacity: 0.45;
-}
-.role-cell-issuer    { border-left-color: var(--anno-fn-issuer, var(--anno-person)); }
-.role-cell-recipient { border-left-color: var(--anno-fn-recipient, var(--anno-org)); }
-.role-cell-witness   { border-left-color: var(--anno-fn-witness, var(--color-accent)); }
-.role-cell-other     { border-left-color: var(--anno-fn-other, var(--color-text-light)); }
-.role-cell-where             { border-left-color: var(--anno-place, var(--color-accent)); }
-.role-cell-of                { border-left-color: var(--color-accent); }
-.role-cell-transactiongood_I,
-.role-cell-transactiongood_II { border-left-color: var(--anno-org, var(--color-accent)); }
-.role-strip-hint {
-    margin: var(--space-sm) 0 0;
+.role-inline-cell.is-zero { opacity: 0.4; }
+.role-inline-issuer    { border-left-color: var(--anno-fn-issuer, var(--anno-person)); }
+.role-inline-recipient { border-left-color: var(--anno-fn-recipient, var(--anno-org)); }
+.role-inline-witness   { border-left-color: var(--anno-fn-witness, var(--color-accent)); }
+.role-inline-other     { border-left-color: var(--anno-fn-other, var(--color-text-light)); }
+.role-inline-total {
+    margin-left: auto;
+    font-family: var(--font-mono);
     font-size: var(--text-xs);
-    color: var(--color-text-light);
+    color: var(--color-text-muted);
+    cursor: help;
+    border-bottom: 1px dotted var(--color-border);
 }
 
 /* --- Untergeordnete Orgs --------------------------------------------- */
 .org-children {
-    max-width: var(--max-width-wide);
-    margin: var(--space-2xl) auto;
+    max-width: 78rem;
+    margin: var(--space-lg) auto;
     padding: 0 var(--space-md);
 }
 .section-head .section-head-count {
-    margin-left: var(--space-sm);
     font-family: var(--font-mono);
-    font-size: var(--text-sm);
+    font-size: var(--text-xs);
     color: var(--color-text-muted);
     background: var(--color-bg-warm);
     border: 1px solid var(--color-border);
     border-radius: var(--radius);
-    padding: 1px 8px;
+    padding: 0 6px;
+    text-transform: none;
+    letter-spacing: 0;
+    font-weight: 400;
 }
 .child-list {
     list-style: none;

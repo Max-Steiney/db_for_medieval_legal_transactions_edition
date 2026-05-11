@@ -25,6 +25,10 @@
 {% block content %}
 <article class="person-profile">
 
+    {# Sticky Toolbar: nur noch Breadcrumb + Korb-Mount. Meta-Felder
+       (Belegt, Geschlecht, ID, Quellen) sind in den Header gewandert,
+       damit Toolbar und Header nicht mehr doppelt vertikalen Platz
+       beanspruchen. #}
     <div class="person-toolbar">
         <div class="person-toolbar-inner">
             <div class="person-toolbar-row">
@@ -44,99 +48,113 @@
                           data-basket-active-max="{{ profile.active_max or '' }}"></span>
                 </div>
             </div>
-            <div class="person-toolbar-meta">
-                <span class="meta-pair">
-                    <span class="meta-label">Geschlecht</span>
-                    <span class="meta-value">{{ sex_label }}</span>
-                </span>
-                {% if profile.active_min %}
-                <span class="meta-pair">
-                    <span class="meta-label">Belegt{% call tip_glossary('person-belegt', 'Beleg-Zeitraum') %}<p>Erste und letzte Datierung einer Quelle, in der die Person erscheint. Bei einzelnem Beleg wird nur ein Jahr angegeben.</p>{% endcall %}</span>
-                    <span class="meta-value">{% if profile.active_max and profile.active_max != profile.active_min %}{{ profile.active_min }} bis {{ profile.active_max }}{% else %}{{ profile.active_min }}{% endif %}</span>
-                </span>
-                {% endif %}
-                {% if profile.death_display %}
-                <span class="meta-pair">
-                    <span class="meta-label">Verstorben vor</span>
-                    <span class="meta-value">{{ profile.death_display }}</span>
-                </span>
-                {% endif %}
-                <span class="meta-pair">
-                    <span class="meta-label">Quellen</span>
-                    <span class="meta-value">{{ profile.source_count }}</span>
-                </span>
-                <span class="meta-pair person-id-pair">
-                    <span class="meta-label">ID</span>
-                    <code class="meta-value person-id">{{ profile.id }}</code>
-                </span>
-            </div>
         </div>
     </div>
 
-    <header class="person-header">
-        <h1 class="person-name">
-            {% if profile.forename %}<span class="pn-fn">{{ profile.forename }}</span>{% endif %}
-            {% if profile.surname %}<span class="pn-sn">{{ profile.surname }}</span>{% endif %}
-            {% if profile.addName %}<span class="pn-an">{{ profile.addName }}</span>{% endif %}
-            {% if not profile.forename and not profile.surname and not profile.addName %}{{ profile.display }}{% endif %}
-        </h1>
-        {% if profile.name_orig_display %}
-        <p class="person-orig"><span class="orig-label">Im Quellen-Wortlaut</span> {{ profile.name_orig_display }}</p>
-        {% endif %}
-        {% if profile.note %}
-        <p class="person-note">{{ profile.note }}</p>
-        {% endif %}
-        {% if profile.source_titles %}
-        <p class="person-titles" data-collapsible="22">
-            <span class="pt-label">In den Quellen genannt als</span>
-            {% for t in profile.source_titles %}<span class="pt-chip">{{ t }}</span>{% endfor %}
-        </p>
-        {% endif %}
-        {% if profile.wiki_label and profile.wiki_pageid %}
-        <p class="person-extlinks">
-            <a class="ext-link" href="https://www.wienwiki.at/?curid={{ profile.wiki_pageid }}" target="_blank" rel="noopener noreferrer">Wien-Wiki: {{ profile.wiki_label }}</a>
-        </p>
-        {% endif %}
-        {% if profile.authority_urls %}
-        <p class="person-extlinks">
-            {% for u in profile.authority_urls %}
-            <a class="ext-link" href="{{ u }}" target="_blank" rel="noopener noreferrer">Authority-Eintrag{% if profile.authority_urls|length > 1 %} {{ loop.index }}{% endif %}</a>{% if not loop.last %} &middot; {% endif %}
-            {% endfor %}
-        </p>
-        {% endif %}
+    {# Header als Zwei-Spalten-Grid: Identität links, Meta + Rollen rechts.
+       Quellen-Wortlaut bleibt als kompakter Untertitel; lange Genannt-als-
+       Listen sind hinter <details> versteckt. ext-Links liegen rechts in
+       der Meta-Spalte, damit der Header nicht in vier Zeilen zerfällt. #}
+    <header class="person-header person-header-grid">
+        <div class="ph-identity">
+            <h1 class="person-name">
+                {% if profile.forename %}<span class="pn-fn">{{ profile.forename }}</span>{% endif %}
+                {% if profile.surname %}<span class="pn-sn">{{ profile.surname }}</span>{% endif %}
+                {% if profile.addName %}<span class="pn-an">{{ profile.addName }}</span>{% endif %}
+                {% if not profile.forename and not profile.surname and not profile.addName %}{{ profile.display }}{% endif %}
+            </h1>
+            {% if profile.name_orig_display %}
+            <p class="person-orig"><span class="orig-label">Im Quellen-Wortlaut</span> {{ profile.name_orig_display }}</p>
+            {% endif %}
+            {% if profile.note %}
+            <p class="person-note">{{ profile.note }}</p>
+            {% endif %}
+            {% if profile.source_titles %}
+            <details class="person-titles-details">
+                <summary class="pt-summary">
+                    <span class="pt-label">Genannt als</span>
+                    <span class="pt-count">{{ profile.source_titles|length }} Bezeichnung{% if profile.source_titles|length != 1 %}en{% endif %}</span>
+                </summary>
+                <div class="pt-chips">
+                    {% for t in profile.source_titles %}<span class="pt-chip">{{ t }}</span>{% endfor %}
+                </div>
+            </details>
+            {% endif %}
+        </div>
+        <aside class="ph-meta">
+            <dl class="ph-meta-list">
+                <div class="ph-meta-row">
+                    <dt>Geschlecht</dt>
+                    <dd>{{ sex_label }}</dd>
+                </div>
+                {% if profile.active_min %}
+                <div class="ph-meta-row">
+                    <dt>Belegt{% call tip_glossary('person-belegt', 'Beleg-Zeitraum') %}<p>Erste und letzte Datierung einer Quelle, in der die Person erscheint. Bei einzelnem Beleg wird nur ein Jahr angegeben.</p>{% endcall %}</dt>
+                    <dd>{% if profile.active_max and profile.active_max != profile.active_min %}{{ profile.active_min }}&ndash;{{ profile.active_max }}{% else %}{{ profile.active_min }}{% endif %}</dd>
+                </div>
+                {% endif %}
+                {% if profile.death_display %}
+                <div class="ph-meta-row">
+                    <dt>Verstorben vor</dt>
+                    <dd>{{ profile.death_display }}</dd>
+                </div>
+                {% endif %}
+                <div class="ph-meta-row">
+                    <dt>Quellen</dt>
+                    <dd>{{ profile.source_count }}</dd>
+                </div>
+                <div class="ph-meta-row">
+                    <dt>ID</dt>
+                    <dd><code class="person-id">{{ profile.id }}</code></dd>
+                </div>
+            </dl>
+            {% if profile.wiki_label and profile.wiki_pageid or profile.authority_urls %}
+            <div class="ph-extlinks">
+                {% if profile.wiki_label and profile.wiki_pageid %}
+                <a class="ext-link" href="https://www.wienwiki.at/?curid={{ profile.wiki_pageid }}" target="_blank" rel="noopener noreferrer">Wien-Wiki</a>
+                {% endif %}
+                {% if profile.authority_urls %}
+                {% for u in profile.authority_urls %}
+                <a class="ext-link" href="{{ u }}" target="_blank" rel="noopener noreferrer">Authority{% if profile.authority_urls|length > 1 %} {{ loop.index }}{% endif %}</a>
+                {% endfor %}
+                {% endif %}
+            </div>
+            {% endif %}
+        </aside>
     </header>
 
+    {# Rollen-Inline-Strip: keine Card, kein Title, kein Hint. Vier
+       Zellen horizontal direkt unter dem Header, farbcodiert wie zuvor. #}
     {% if profile.role_total %}
-    <section class="role-strip" aria-label="Rollen in Rechtsgeschäften">
-        <h2 class="role-strip-title">Rollen in Rechtsgeschäften</h2>
-        <div class="role-strip-cells">
-            {% for r in ['issuer', 'recipient', 'witness', 'other'] %}
-            <div class="role-cell role-cell-{{ r }}{% if profile.roles[r] == 0 %} is-zero{% endif %}">
-                <span class="role-cell-count">{{ profile.roles[r] }}</span>
-                <span class="role-cell-label">{{ ROLE_LABEL[r] }}</span>
-            </div>
-            {% endfor %}
-        </div>
-        <p class="role-strip-hint">Summe Rollen-Belegungen: {{ profile.role_total }}. Mehrfach-Rollen pro Quelle sind möglich.</p>
-    </section>
+    <div class="role-inline" aria-label="Rollen in Rechtsgeschäften">
+        <span class="role-inline-label">Rollen</span>
+        {% for r in ['issuer', 'recipient', 'witness', 'other'] %}
+        <span class="role-inline-cell role-inline-{{ r }}{% if profile.roles[r] == 0 %} is-zero{% endif %}">
+            <span class="ri-count">{{ profile.roles[r] }}</span>
+            <span class="ri-label">{{ ROLE_LABEL[r] }}</span>
+        </span>
+        {% endfor %}
+        <span class="role-inline-total" data-hint="Summe Rollen-Belegungen. Mehrfach-Rollen pro Quelle sind möglich.">&Sigma; {{ profile.role_total }}</span>
+    </div>
     {% endif %}
 
     {% set rel_total = profile.relations.kin|length + profile.relations.friend|length + profile.relations.rep|length + profile.relations.occ|length + profile.relations.title_ref|length + profile.relations.owner|length + profile.relations.tenant|length %}
 
     {# Beziehungs-Block: pro Typ ein Sub-Abschnitt, nur wenn Eintraege da sind.
        owner/tenant referenzieren Orte; das Ortsregister ist entfernt, daher
-       erscheint der Ortsname dort als Klartext (siehe Cell-Branch unten). #}
+       erscheint der Ortsname dort als Klartext (siehe Cell-Branch unten).
+       Hint-Texte wandern in data-hint-Attribute am Title (Hover-Tooltip),
+       um die feste Hint-Zeile pro Block einzusparen. #}
     {% if rel_total %}
     <section class="person-relations" aria-label="Beziehungen">
-        <h2 class="section-head">Beziehungen</h2>
+        <h2 class="section-head">Beziehungen <span class="section-head-count">{{ rel_total }}</span></h2>
         {% for rel_type in ['kin', 'friend', 'rep', 'occ', 'title_ref', 'owner', 'tenant'] %}
         {% set entries = profile.relations[rel_type] %}
         {% if entries %}
         <section class="rel-block rel-block-{{ rel_type }}">
             <header class="rel-block-head">
-                <h3 class="rel-block-title">{{ REL_LABEL[rel_type] }}</h3>
+                <h3 class="rel-block-title" data-hint="{{ REL_HINT[rel_type] }}">{{ REL_LABEL[rel_type] }}</h3>
                 <span class="rel-block-count">{{ entries|length }}</span>
-                <span class="rel-block-hint">{{ REL_HINT[rel_type] }}</span>
             </header>
             {% if entries|length > 25 %}
             <div class="table-filter">
@@ -194,7 +212,7 @@
 
     {# Quellen-Tabelle: alle Belege chronologisch, mit Bezeichnung und Rolle pro Quelle. #}
     <section class="person-sources" aria-label="Quellen mit Nennung">
-        <h2 class="section-head">Quellen mit Nennung</h2>
+        <h2 class="section-head">Quellen mit Nennung <span class="section-head-count">{{ profile.sources|length }}</span></h2>
         {% if profile.sources|length > 25 %}
         <div class="table-filter">
             <input type="search" class="table-filter-input" data-target="src" placeholder="In den Quellen filtern&hellip;" aria-label="In den Quellen filtern">

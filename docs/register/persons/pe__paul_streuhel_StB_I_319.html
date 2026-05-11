@@ -9,16 +9,16 @@
     <title>Paul Streuhel, Datenbank</title>
     <link rel="preload" as="font" type="font/woff2" crossorigin
           href="../../static/fonts/inter-400-latin.woff2">
-    <link rel="stylesheet" href="../../static/css/fonts.css?v=20260511125458">
-    <link rel="stylesheet" href="../../static/css/tokens.css?v=20260511125458">
-    <link rel="stylesheet" href="../../static/css/base.css?v=20260511125458">
-    <link rel="stylesheet" href="../../static/css/components.css?v=20260511125458">
-    <link rel="stylesheet" href="../../static/css/responsive.css?v=20260511125458">
-    <link rel="stylesheet" href="../../static/css/print.css?v=20260511125458">
-    <link rel="stylesheet" href="../../static/css/tip.css?v=20260511125458">
+    <link rel="stylesheet" href="../../static/css/fonts.css?v=20260511132327">
+    <link rel="stylesheet" href="../../static/css/tokens.css?v=20260511132327">
+    <link rel="stylesheet" href="../../static/css/base.css?v=20260511132327">
+    <link rel="stylesheet" href="../../static/css/components.css?v=20260511132327">
+    <link rel="stylesheet" href="../../static/css/responsive.css?v=20260511132327">
+    <link rel="stylesheet" href="../../static/css/print.css?v=20260511132327">
+    <link rel="stylesheet" href="../../static/css/tip.css?v=20260511132327">
     
-<link rel="stylesheet" href="../../static/css/document.css?v=20260511125458">
-<link rel="stylesheet" href="../../static/css/person.css?v=20260511125458">
+<link rel="stylesheet" href="../../static/css/document.css?v=20260511132327">
+<link rel="stylesheet" href="../../static/css/person.css?v=20260511132327">
 
 </head>
 <body data-root-path="../.."
@@ -108,6 +108,7 @@
         
 <article class="person-profile">
 
+    
     <div class="person-toolbar">
         <div class="person-toolbar-inner">
             <div class="person-toolbar-row">
@@ -127,14 +128,33 @@
                           data-basket-active-max="1398"></span>
                 </div>
             </div>
-            <div class="person-toolbar-meta">
-                <span class="meta-pair">
-                    <span class="meta-label">Geschlecht</span>
-                    <span class="meta-value">männlich</span>
-                </span>
+        </div>
+    </div>
+
+    
+    <header class="person-header person-header-grid">
+        <div class="ph-identity">
+            <h1 class="person-name">
+                <span class="pn-fn">Paul</span>
+                <span class="pn-sn">Streuhel</span>
                 
-                <span class="meta-pair">
-                    <span class="meta-label">Belegt
+                
+            </h1>
+            
+            <p class="person-orig"><span class="orig-label">Im Quellen-Wortlaut</span> Strewchl</p>
+            
+            
+            
+        </div>
+        <aside class="ph-meta">
+            <dl class="ph-meta-list">
+                <div class="ph-meta-row">
+                    <dt>Geschlecht</dt>
+                    <dd>männlich</dd>
+                </div>
+                
+                <div class="ph-meta-row">
+                    <dt>Belegt
 <span class="tip-wrap">
     <button type="button" class="tip-trigger tip-trigger--icon"
             aria-expanded="false" aria-haspopup="dialog"
@@ -160,67 +180,51 @@
         </div>
     </aside>
 </span>
-</span>
-                    <span class="meta-value">1398</span>
-                </span>
+</dt>
+                    <dd>1398</dd>
+                </div>
                 
                 
-                <span class="meta-pair">
-                    <span class="meta-label">Quellen</span>
-                    <span class="meta-value">1</span>
-                </span>
-                <span class="meta-pair person-id-pair">
-                    <span class="meta-label">ID</span>
-                    <code class="meta-value person-id">pe__paul_streuhel_StB_I_319</code>
-                </span>
-            </div>
-        </div>
-    </div>
-
-    <header class="person-header">
-        <h1 class="person-name">
-            <span class="pn-fn">Paul</span>
-            <span class="pn-sn">Streuhel</span>
+                <div class="ph-meta-row">
+                    <dt>Quellen</dt>
+                    <dd>1</dd>
+                </div>
+                <div class="ph-meta-row">
+                    <dt>ID</dt>
+                    <dd><code class="person-id">pe__paul_streuhel_StB_I_319</code></dd>
+                </div>
+            </dl>
             
-            
-        </h1>
-        
-        <p class="person-orig"><span class="orig-label">Im Quellen-Wortlaut</span> Strewchl</p>
-        
-        
-        
-        
-        
+        </aside>
     </header>
 
     
-    <section class="role-strip" aria-label="Rollen in Rechtsgeschäften">
-        <h2 class="role-strip-title">Rollen in Rechtsgeschäften</h2>
-        <div class="role-strip-cells">
-            
-            <div class="role-cell role-cell-issuer is-zero">
-                <span class="role-cell-count">0</span>
-                <span class="role-cell-label">Aussteller*in</span>
-            </div>
-            
-            <div class="role-cell role-cell-recipient">
-                <span class="role-cell-count">1</span>
-                <span class="role-cell-label">Empfänger*in</span>
-            </div>
-            
-            <div class="role-cell role-cell-witness is-zero">
-                <span class="role-cell-count">0</span>
-                <span class="role-cell-label">Zeuge / Siegler*in</span>
-            </div>
-            
-            <div class="role-cell role-cell-other is-zero">
-                <span class="role-cell-count">0</span>
-                <span class="role-cell-label">Sonstige</span>
-            </div>
-            
-        </div>
-        <p class="role-strip-hint">Summe Rollen-Belegungen: 1. Mehrfach-Rollen pro Quelle sind möglich.</p>
-    </section>
+    
+    <div class="role-inline" aria-label="Rollen in Rechtsgeschäften">
+        <span class="role-inline-label">Rollen</span>
+        
+        <span class="role-inline-cell role-inline-issuer is-zero">
+            <span class="ri-count">0</span>
+            <span class="ri-label">Aussteller*in</span>
+        </span>
+        
+        <span class="role-inline-cell role-inline-recipient">
+            <span class="ri-count">1</span>
+            <span class="ri-label">Empfänger*in</span>
+        </span>
+        
+        <span class="role-inline-cell role-inline-witness is-zero">
+            <span class="ri-count">0</span>
+            <span class="ri-label">Zeuge / Siegler*in</span>
+        </span>
+        
+        <span class="role-inline-cell role-inline-other is-zero">
+            <span class="ri-count">0</span>
+            <span class="ri-label">Sonstige</span>
+        </span>
+        
+        <span class="role-inline-total" data-hint="Summe Rollen-Belegungen. Mehrfach-Rollen pro Quelle sind möglich.">&Sigma; 1</span>
+    </div>
     
 
     
@@ -228,15 +232,14 @@
     
     
     <section class="person-relations" aria-label="Beziehungen">
-        <h2 class="section-head">Beziehungen</h2>
+        <h2 class="section-head">Beziehungen <span class="section-head-count">2</span></h2>
         
         
         
         <section class="rel-block rel-block-kin">
             <header class="rel-block-head">
-                <h3 class="rel-block-title">Verwandtschaft</h3>
+                <h3 class="rel-block-title" data-hint="Verwandtschaftsverhältnisse, wie sie in den Quellen explizit benannt werden.">Verwandtschaft</h3>
                 <span class="rel-block-count">2</span>
-                <span class="rel-block-hint">Verwandtschaftsverhältnisse, wie sie in den Quellen explizit benannt werden.</span>
             </header>
             
             <table class="rel-table">
@@ -316,7 +319,7 @@
 
     
     <section class="person-sources" aria-label="Quellen mit Nennung">
-        <h2 class="section-head">Quellen mit Nennung</h2>
+        <h2 class="section-head">Quellen mit Nennung <span class="section-head-count">1</span></h2>
         
         <table class="person-source-table">
             <thead>
@@ -356,7 +359,7 @@
             <div class="footer-col">
                 <p class="footer-project">Stadt und Gemeinschaft Wien, Datenbank</p>
                 <p>Tr&auml;gerprojekt &raquo;Stadt und Gemeinschaft&laquo; (Universit&auml;t Wien)</p>
-                <p class="footer-meta">Datenstand: 9. Mai 2026 &middot; Seite generiert: 11. Mai 2026</p>
+                <p class="footer-meta">Datenstand: 11. Mai 2026 &middot; Seite generiert: 11. Mai 2026</p>
                 
                 <p class="footer-meta">Paul Streuhel &middot; pe__paul_streuhel_StB_I_319</p>
             </div>
@@ -372,13 +375,13 @@
         </div>
     </footer>
 
-    <script src="../../static/js/core.js?v=20260511125458"></script>
-    <script src="../../static/js/tip.js?v=20260511125458"></script>
-    <script src="../../static/js/hint.js?v=20260511125458"></script>
-    <script src="../../static/js/basket.js?v=20260511125458"></script>
+    <script src="../../static/js/core.js?v=20260511132327"></script>
+    <script src="../../static/js/tip.js?v=20260511132327"></script>
+    <script src="../../static/js/hint.js?v=20260511132327"></script>
+    <script src="../../static/js/basket.js?v=20260511132327"></script>
     
-<script src="../../static/js/profile.js?v=20260511125458"></script>
-<script src="../../static/js/basket-mount.js?v=20260511125458"></script>
+<script src="../../static/js/profile.js?v=20260511132327"></script>
+<script src="../../static/js/basket-mount.js?v=20260511132327"></script>
 
 </body>
 </html>
