@@ -11,13 +11,25 @@
 {% set sex_label = {'m': 'männlich', 'f': 'weiblich'}.get(profile.sex, 'Geschlecht unbestimmt') %}
 
 {% set ROLE_LABEL = {'issuer': 'Aussteller*in', 'recipient': 'Empfänger*in', 'witness': 'Zeuge / Siegler*in', 'other': 'Sonstige'} %}
-{% set REL_LABEL = {'kin': 'Verwandtschaft', 'friend': 'Freundschaft', 'rep': 'Stellvertretung', 'occ': 'Beruf / Amt', 'title_ref': 'Titel', 'owner': 'Eigentum (Orte)', 'tenant': 'Pacht / Inhabung (Orte)'} %}
+{% set REL_LABEL = {
+    'kin': 'Verwandtschaft',
+    'friend': 'Freundschaft',
+    'rep': 'Stellvertretung',
+    'occ': 'Beruf / Amt',
+    'title_ref': 'Titel',
+    'occ_inverse': 'Personen mit Beruf / Amt in meinem Bezug',
+    'title_ref_inverse': 'Personen mit Titel in meinem Bezug',
+    'owner': 'Eigentum (Orte)',
+    'tenant': 'Pacht / Inhabung (Orte)'
+} %}
 {% set REL_HINT = {
     'kin': 'Verwandtschaftsverhältnisse, wie sie in den Quellen explizit benannt werden.',
     'friend': 'Quellen, in denen die Beziehung als Freundschaft markiert ist.',
     'rep': 'Stellvertretungs-Beziehungen, z. B. handelt eine Person an Stelle einer anderen.',
-    'occ': 'Berufs- oder Amtsbezeichnung in Bezug auf eine Institution.',
-    'title_ref': 'Titel der Person in Bezug auf eine Institution oder einen Ort.',
+    'occ': 'Berufs- oder Amtsbezeichnung in Bezug auf eine Institution oder Person.',
+    'title_ref': 'Titel der Person in Bezug auf eine Institution oder eine Person.',
+    'occ_inverse': 'Personen, deren Beruf oder Amt sich auf diese Person bezieht (z. B. Kämmerer, Schaffer).',
+    'title_ref_inverse': 'Personen, deren Titel sich auf diese Person bezieht.',
     'owner': 'Orte, die dieser Person als Eigentum zugeschrieben sind. Ortsnamen ohne Sprungziel, da das Ortsregister derzeit nicht ausgeliefert wird.',
     'tenant': 'Orte, die diese Person innehat oder bewirtschaftet. Ortsnamen ohne Sprungziel, da das Ortsregister derzeit nicht ausgeliefert wird.'
 } %}
@@ -166,9 +178,9 @@
         </table>
     </section>
 
-    {% set rel_total = profile.relations.kin|length + profile.relations.friend|length + profile.relations.rep|length + profile.relations.occ|length + profile.relations.title_ref|length + profile.relations.owner|length + profile.relations.tenant|length %}
+    {% set rel_total = profile.relations.kin|length + profile.relations.friend|length + profile.relations.rep|length + profile.relations.occ|length + profile.relations.title_ref|length + profile.relations.occ_inverse|length + profile.relations.title_ref_inverse|length + profile.relations.owner|length + profile.relations.tenant|length %}
     {% set active_rel_types = [] %}
-    {% for rt in ['kin', 'friend', 'rep', 'occ', 'title_ref', 'owner', 'tenant'] %}{% if profile.relations[rt] %}{% set _ = active_rel_types.append(rt) %}{% endif %}{% endfor %}
+    {% for rt in ['kin', 'friend', 'rep', 'occ', 'title_ref', 'occ_inverse', 'title_ref_inverse', 'owner', 'tenant'] %}{% if profile.relations[rt] %}{% set _ = active_rel_types.append(rt) %}{% endif %}{% endfor %}
 
     {# Beziehungs-Block: pro Typ ein Sub-Abschnitt. owner/tenant referenzieren
        Orte; das Ortsregister ist entfernt, daher erscheint der Ortsname dort

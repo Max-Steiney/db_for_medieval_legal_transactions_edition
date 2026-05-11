@@ -211,6 +211,7 @@ def _build_relation_index(file_lookup, person_names, org_names, place_names):
     """
     rel = defaultdict(lambda: {k: [] for k in
                                ("kin", "friend", "rep", "occ", "title_ref",
+                                "occ_inverse", "title_ref_inverse",
                                 "owner", "tenant")})
 
     # Person <-> Person, bidirectional.
@@ -292,6 +293,29 @@ def _build_relation_index(file_lookup, person_names, org_names, place_names):
                 "regest":     src.get("regest", ""),
             }
             rel[pk][group].append(entry)
+
+            # Mirror: wenn rk eine Person ist, das Profil von rk soll die
+            # andere Seite sehen. "Laurenz ist Kaemmerer des Wilhelm" -> auf
+            # Wilhelms Profil: "Laurenz hat das Amt Kaemmerer in Bezug auf
+            # mich". Inverse-Schluessel werden im Template separat
+            # gerendert (Abschnitt "Andere Personen mit Bezug auf mich").
+            if other_kind == "person":
+                inverse_group = group + "_inverse"
+                mirror = {
+                    "label":      label,
+                    "other_id":   pk,
+                    "other_name": person_names.get(pk, pk),
+                    "other_kind": "person",
+                    "role":       "counterpart",
+                    "file_key":   fk,
+                    "idno":       src.get("idno", ""),
+                    "date_display": src.get("date_display", ""),
+                    "date_iso":   src.get("date_iso", ""),
+                    "collection_label": src.get("collection_label", ""),
+                    "url":        src.get("url", ""),
+                    "regest":     src.get("regest", ""),
+                }
+                rel[rk][inverse_group].append(mirror)
 
     # Place <- Person, unidirectional. Place owns the CSV, person is the
     # counterparty (``rel_key``). We surface it on the person side too so
@@ -381,7 +405,9 @@ def build_person_profiles(reverse_index):
         roles_dict = {r: roles.get(r, 0) for r in _ROLES}
         rels = relations.get(pid, {k: [] for k in
                                     ("kin", "friend", "rep", "occ",
-                                     "title_ref", "owner", "tenant")})
+                                     "title_ref", "occ_inverse",
+                                     "title_ref_inverse",
+                                     "owner", "tenant")})
 
         sources = enrich_sources(docs, pid, fk_lookup, label_map, role_map,
                                  ROLE_LABEL_PERSON)
