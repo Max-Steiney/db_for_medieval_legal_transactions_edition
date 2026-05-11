@@ -116,54 +116,11 @@ Die größeren JSON-Dateien (`search.json`, `persons_search.json`, `relations.js
 
 ## 3. Technische Architektur
 
-### 3.1 Verzicht auf SPARQL im Browser
+Zwei Laufzeit-Schichten tragen die Analyse-Seiten. Die **Aggregations-Schicht** liest vorberechnete Kreuztabellen aus den Aggregat-JSONs (Lookup in verschachtelten Objekten). Die **Filter-Schicht** kombiniert oder verfeinert dynamisch, indem sie die Register-Arrays zur Laufzeit filtert. Die **Drill-Down-Schicht** verknüpft jede Aggregat-Zelle mit einer Liste von Dokument-IDs, die über `docs_lookup.json` zu Metadaten aufgelöst werden — Klick-zu-Quellen ohne zusätzliches Nachladen.
 
-Comunica oder Oxigraph WASM funktionieren grundsätzlich, bringen aber deutlichen Overhead (Bundle mehrere MB, Cold Start, kleine Entwicklerbasis). Da die Aggregationen im Datenbestand bereits vorberechnet vorliegen, ist die Ausdrucksstärke einer SPARQL-Engine nicht nötig und methodisch nicht gerechtfertigt.
+Eine SPARQL-Engine im Browser (Comunica, Oxigraph WASM) wäre möglich, ist aber methodisch nicht gerechtfertigt: die Aggregationen liegen vorberechnet vor, der Engine-Overhead wäre Selbstzweck.
 
-### 3.2 Zweischichtige Laufzeitarchitektur
-
-**Aggregations-Schicht (read-only, vorkompiliert).** Für Fragen, die sich auf die vorberechneten Kreuztabellen der Aggregat-JSONs abbilden lassen, werden die Zählungen direkt aus der passenden Datei gelesen. Antwortzeit: Einzelabfrage, O(1)-Lookup in verschachtelten Objekten.
-
-**Filter-Schicht (dynamisch, auf Register-Arrays).** Für Fragen, die die vorberechneten Dimensionen kombinieren oder feinere Filter setzen, werden die Register-Arrays zur Laufzeit gefiltert. Bei der Korpusgröße und einfachen Prädikaten liegt das im Millisekundenbereich.
-
-**Drill-Down-Schicht.** Jede Aggregation ist über `drill_down[key]` mit einer Liste von Dokument-IDs verknüpft, die über `docs_lookup.json` in Metadaten aufgelöst werden. Das erlaubt das Klick-zu-Quellen-Muster ohne zusätzliche Datenladung.
-
-### 3.3 Indizierung beim Start
-
-Beim ersten Öffnen des Analysebereichs werden folgende Indizes im Speicher aufgebaut:
-
-```
-personsById         Map<id, Person>
-personsBySex        Map<"m"|"f", Person[]>
-personsByQw         Map<number, Person[]>
-orgsById            Map<id, Organisation>
-orgsByType          Map<typeName, Organisation[]>
-orgsByCategory      Map<"geistlich"|"weltlich"|"sonstige", Organisation[]>
-placesById          Map<id, Place>
-docsById            Map<id, Document>
-docsByCorpus        Map<corpusName, Document[]>
-docsByDecade        Map<decade, Document[]>
-```
-
-Diese Indizes stehen allen Query-Templates zur Verfügung und sind nach Build einmal initialisiert.
-
-### 3.4 Kategorien-Mapping als separates Artefakt
-
-Die Zuordnung `tp → category` (geistlich/weltlich/sonstige) liegt nicht in den Daten, sondern muss explizit modelliert werden. Sie gehört als eigene Konfigurationsdatei `categories.json` ins Repository, versioniert und dokumentiert. Im Interface muss die verwendete Zuordnung aufrufbar und zitierbar sein.
-
-### 3.5 Freigabe-Filter
-
-Nicht alle Korpora in der Validierung sind im UI sichtbar. Eine Konfiguration `release.json` entscheidet, welche Korpora und welche Register-Dimensionen angezeigt werden. Die Filterung erfolgt beim Build (um die ausgelieferten JSON-Dateien klein zu halten) und zusätzlich zur Laufzeit als Sicherheitsnetz.
-
-### 3.6 Build-Pipeline
-
-GitHub Action beim Deploy:
-
-1. Eingangsdaten (JSON-LD oder TEI-abgeleitet) werden normalisiert.
-2. Register werden mit kompakten Feldnamen geschrieben.
-3. Aggregat-JSONs werden neu gerechnet, inklusive `drill_down` und `coverage`.
-4. `categories.json` und `release.json` werden angewendet.
-5. Dateien werden gzipkomprimiert ausgeliefert.
+Die Zuordnung `tp → category` (geistlich/weltlich/sonstige) liegt nicht in den Daten und muss als versionierte Konfiguration (`categories.json`) explizit modelliert werden; im Interface ist die verwendete Zuordnung aufrufbar und zitierbar.
 
 ## 4. Interface-Konzept: Frage-Galerie und Custom-Builder
 
@@ -194,9 +151,9 @@ Eine Frage ist eine autonome Datenstruktur:
 
 Die Frage ist nicht an eine Familie gebunden. Familien bleiben für den Custom-Builder relevant, sind aber im Galerie-Modus keine Ordnungsebene.
 
-### 4.3 Drei Mini-Viz-Stufen
+### 4.3 Mini-Viz-Stufen
 
-Galerie-Karten zeigen die Antwort in einer von drei subtilen Stufen, abhängig von der Frage-Form: 6 px gestapelte Bars für Verteilungs-Aufschlüsselungen, 28 px Sparklines für Zeitverläufe, Top-3-Mini-Bars oder 2 × 2 Heatmaps für Vergleiche. Im Result-Panel werden dieselben Daten als vollwertige SVG-Visualisierung wiederholt — beide Stufen teilen sich die Renderer-Logik.
+Galerie-Karten zeigen die Antwort in subtilen Mini-Visualisierungen, abhängig von der Frage-Form: gestapelte Bars für Verteilungen, Sparklines für Zeitverläufe, Top-N-Mini-Bars oder kleine Heatmaps für Vergleiche. Im Result-Panel werden dieselben Daten als vollwertige SVG-Visualisierung wiederholt — beide Stufen teilen sich die Renderer-Logik.
 
 ### 4.4 Custom-Builder
 

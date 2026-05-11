@@ -37,19 +37,23 @@
                 <div class="form-filter-chips form-filter-chips--stack" id="stream-stack-axis"
                      role="group" aria-label="Stapel-Achse">
                     <button type="button" class="form-filter-chip is-active"
-                            data-stack="collection" aria-pressed="true">
+                            data-stack="collection" aria-pressed="true"
+                            title="Stapel nach Quellenkorpus (QGW, Stadtb&uuml;cher).">
                         <span class="form-filter-chip-label">Quellenkorpus</span>
                     </button>
                     <button type="button" class="form-filter-chip"
-                            data-stack="form" aria-pressed="false">
+                            data-stack="form" aria-pressed="false"
+                            title="Stapel nach Erschlie&szlig;ungsform: Regest, Siegel, Eintrag, Nota.">
                         <span class="form-filter-chip-label">Erschlie&szlig;ungsform</span>
                     </button>
                     <button type="button" class="form-filter-chip"
-                            data-stack="sex" aria-pressed="false">
+                            data-stack="sex" aria-pressed="false"
+                            title="Stapel nach Geschlecht der beteiligten Personen (nur m&auml;nnlich / nur weiblich / gemischt / ohne Personen).">
                         <span class="form-filter-chip-label">Geschlecht</span>
                     </button>
                     <button type="button" class="form-filter-chip"
-                            data-stack="tx" aria-pressed="false">
+                            data-stack="tx" aria-pressed="false"
+                            title="Stapel nach Transaktionstyp (Top 8 normalisierte Verbkategorien; aus events_in_sources.csv).">
                         <span class="form-filter-chip-label">Transaktionstyp</span>
                     </button>
                 </div>
@@ -71,6 +75,11 @@
                     </span>
                 </header>
 
+                <p class="explore-stream-hint">
+                    <strong>Tipp:</strong> &Uuml;ber die S&auml;ulen ziehen, um einen Zeitabschnitt auszuw&auml;hlen.
+                    Tastatur: S&auml;ule fokussieren und <kbd>Enter</kbd> setzt eine Decade, <kbd>Shift&nbsp;+&nbsp;&larr;/&rarr;</kbd> erweitert die Auswahl.
+                </p>
+
                 <div class="explore-stream-wrap">
                     <div class="explore-stream-yaxis" id="stream-yaxis"></div>
                     <div class="explore-stream-chart" id="stream-chart"
@@ -87,9 +96,27 @@
                         <span class="aggregat-quadrant-h2-meta" id="drill-meta"></span>
                     </h2>
                     <div class="explore-stream-drill-actions">
+                        <div class="explore-stream-drill-sort" id="drill-sort"
+                             role="group" aria-label="Sortierung">
+                            <button type="button" class="form-filter-chip is-active"
+                                    data-sort="date-asc" aria-pressed="true"
+                                    title="Sortiert nach Datum aufsteigend (alt zuerst).">
+                                <span class="form-filter-chip-label">Datum &uarr;</span>
+                            </button>
+                            <button type="button" class="form-filter-chip"
+                                    data-sort="date-desc" aria-pressed="false"
+                                    title="Sortiert nach Datum absteigend (neu zuerst).">
+                                <span class="form-filter-chip-label">Datum &darr;</span>
+                            </button>
+                            <button type="button" class="form-filter-chip"
+                                    data-sort="coll" aria-pressed="false"
+                                    title="Gruppiert nach Quellenkorpus, dann Datum aufsteigend.">
+                                <span class="form-filter-chip-label">Korpus</span>
+                            </button>
+                        </div>
                         <a class="explore-btn explore-stream-drill-crossnav"
                            id="drill-crossnav" href="#"
-                           data-hint="Filter (Zeitraum) wird in die Quellen-Listenseite übernommen.">
+                           title="Filter (Zeitraum) wird in die Quellen-Listenseite übernommen.">
                            → in Quellen-Liste öffnen
                         </a>
                         <button type="button" class="explore-stream-drill-clear"

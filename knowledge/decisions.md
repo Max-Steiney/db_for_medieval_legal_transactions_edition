@@ -23,11 +23,11 @@ Getroffene Leitentscheidungen mit Begründung. Zeitlos formuliert. Pro Eintrag E
 
 ## Forschungsstand zitierbar via URL-Parameter
 
-**Entscheidung.** Auf den Daten-Visualisierungs-Seiten (`/analysis/auswertungen.html`, `/exploration/zeitstrom.html`) wird der Filter-Stand in die URL-Suchparameter serialisiert und bei Page-Load von dort gelesen. Auswertungen führt `dec`, `sex`, `type`, `q`, `mode`; Zeitstrom führt `dec`, `stack`, `brush`, `focus`. Die Quellen- und Personen-Listenseiten haben das gleiche Pattern bereits.
+**Entscheidung.** Auf den Daten-Visualisierungs-Seiten wird der Filter-Stand in URL-Suchparameter serialisiert und bei Page-Load wieder eingelesen. Quellen- und Personen-Listenseiten haben das Pattern bereits.
 
-**Begründung.** Eine Forscherin will einen Filter-Stand bookmarken, in eine Mail kopieren oder in einer Publikation zitieren. Ohne URL-Sync ist der eingestellte Filter beim Reload weg. Die Konsistenz mit Quellen + Personen schließt zusätzlich eine UX-Lücke.
+**Begründung.** Eine Forscherin will einen Filter-Stand bookmarken, in eine Mail kopieren oder in einer Publikation zitieren. Ohne URL-Sync ist der Filter beim Reload weg.
 
-**Konsequenz.** `history.replaceState` (kein History-Eintrag — Browser-Back soll nicht durch Filter-Mikrostände gehen). Empty-Default-Werte werden nicht in die URL geschrieben, damit Sharing-URLs minimal bleiben. URL-Sync ist während Page-Init deaktiviert (Guard `urlSyncActive`), sonst würden initiale Apply-Calls die URL leeren.
+**Konsequenz.** Mechanik (Schreib-Strategie, weggelassene Defaults, Init-Guard, Cross-Page-Sprung) in [[architecture#URL-State als Forschungsstand]].
 
 ## Cross-Page-Sprung mit Filter-Übernahme
 
@@ -39,23 +39,21 @@ Getroffene Leitentscheidungen mit Begründung. Zeitlos formuliert. Pro Eintrag E
 
 ## Datenkorb als clientseitige Sammlung
 
-**Entscheidung.** Forschende sammeln Quellen, Personen und Organisationen über Sitzungen hinweg in einem clientseitigen Datenkorb (localStorage, Schlüssel `sugw-basket-v1`). „+"-Knöpfe stehen neben jedem Eintrag in den Listen (Quellen-Tabelle, Personen- und Organisations-Register, Auswertungs-Drill, Zeitstrom-Drill, Personennetzwerk-Detail-Tabelle) und auf jeder Detail- und Profilseite; ein Korb-Icon im Nav zeigt die Aufschlüsselung; eine eigene Korb-Seite (`/korb.html`) listet die Sammlung in drei Sektionen mit eigener Remove- und CSV-Export-Aktion pro Typ.
+**Entscheidung.** Forschende sammeln Quellen, Personen und Organisationen über Sitzungen hinweg in einem clientseitigen Datenkorb. Daten bleiben rein clientseitig, keine Server-Persistenz, keine Identitätspflicht.
 
-**Begründung.** Die identifizierten Forschungspfade (siehe [[exploration]] und [[analyse]]) springen häufig zwischen Übersicht, Aggregat, Quelle, Person, Organisation. Eine sammelnde Schicht über mehreren Seiten und über drei Item-Typen erlaubt es, ein Forschungs-Korpus zusammenzustellen, ohne den Browser-Tab-Wildwuchs einer manuellen Bookmark-Strategie. Cross-Tab-Sync via `storage`-Event hält parallel offene Tabs konsistent.
+**Begründung.** Forschungspfade springen häufig zwischen Übersicht, Aggregat, Quelle, Person, Organisation. Eine sammelnde Schicht über mehrere Seiten und Item-Typen erlaubt es, ein Forschungs-Korpus zusammenzustellen, ohne Browser-Tab-Wildwuchs oder manuelle Bookmark-Strategie. Eine Account-basierte Persistenz wäre ein anderer Stack mit Auth, DSGVO-Implikationen und laufenden Speicherkosten — ohne erkennbaren Mehrwert für die jetzt bedienten Forschungsszenarien.
 
-**Konsequenz.** `basket.js`, `basket-mount.js` und `basket-page.js` sind site-weite Komponenten (in `base.html` geladen, Nav-Icon dort verankert). Schlüssel ist die zusammengesetzte ID `type:id` mit den drei Typen `source`, `person`, `org`. Sammelt eine Forscherin eine Quelle, lädt der Korb beim ersten Bedarf den Forward-Index `docs_entities.json` und legt die annotierten Personen und Organisationen als abgeleitete Einträge ohne `gathered`-Flag in den Korb; ein +-Klick auf einen abgeleiteten Eintrag stuft ihn durch Setzen von `gathered=true` zur eigenständigen Sammlung hoch. Daten bleiben rein clientseitig — keine Server-Persistenz, keine Identitätspflicht; Export als CSV überträgt die Sammlung in Werkzeuge der Forschenden (Zotero, Excel, BibTeX-Konverter), pro Typ getrennt und mit Wahlmöglichkeit zwischen „nur gesammelte" und „auch abgeleitete".
-
-**Nicht gemeint ist** ein server-persistierter Account. Das wäre ein anderer Stack (Auth, DSGVO, Speicherkosten). Der clientseitige Korb ist bewusst der niedrigschwellige Einstieg.
+**Konsequenz.** UI-Mechanik (Sammeln, Ableiten, Promotion, drei Tabellen, CSV-Export) in [[ui-design#Datenkorb]], technische Persistenz und Komponenten-Verteilung in [[architecture#Datenkorb als clientseitige Persistenz]]. Der Bridge-Pfad in externe Werkzeuge (Zotero, BibTeX-Konverter, Excel) läuft über CSV-Export.
 
 ## Personen- und Organisationsprofile als Detailseiten
 
-**Entscheidung.** Jede individuelle Person und jede individuelle Organisation mit mindestens einer Nennung in einer freigegebenen Quelle erhält eine eigene Detail-Profilseite mit Stammdaten, Rollen-Aufschlüsselung, annotierten Beziehungen und Quellen-Tabelle. `<rs type="person">` und `<rs type="org">` im Quellen-Volltext verlinken direkt auf das Profil, nicht auf die Register-Liste.
+**Entscheidung.** Jede individuelle Person und jede individuelle Organisation mit Nennung in einer freigegebenen Quelle erhält eine eigene Detail-Profilseite. `<rs type="person">` und `<rs type="org">` im Quellen-Volltext verlinken direkt auf das Profil.
 
-**Begründung.** Personennamen und Organisationsbezeichnungen waren bis zur Einführung der Profile Sackgassen: in der Annotations-Tabelle und im Volltext klickbar, aber nur als Hash-Anker in die Register-Liste, wo der Anker im JS-gerenderten Index nicht ankam. Beziehungs-Daten (kin, friend, rep, occ, title-ref) lagen vollständig in den Pipeline-CSVs vor, waren aber UI-seitig unsichtbar. Ein Ehepaar im TEI als kin-Beziehung kodiert blieb für die Forscherin im Frontend nicht einsehbar. Die Profile schließen diese Lücke und machen die TEI-Annotation auf Entitäts-Ebene navigierbar.
+**Begründung.** Personennamen und Organisationsbezeichnungen waren ohne Profilseiten Sackgassen — klickbar, aber nur als Hash-Anker in die Register-Liste, wo der Anker im JS-gerenderten Index nicht ankam. Beziehungs-Daten (Verwandtschaft, Freundschaft, Vertretung, Beruf, Titelverweis) lagen vollständig in den Pipeline-CSVs vor, waren UI-seitig aber unsichtbar; ein im TEI kodiertes Ehepaar blieb für die Forscherin im Frontend nicht einsehbar. Die Profile schließen diese Lücke und machen die TEI-Annotation auf Entitäts-Ebene navigierbar.
 
-**Konsequenz.** Zwei Aggregator-Module (`person_profiles`, `org_profiles`) joinen Stammdaten, Quellenvorkommen, Rollen-Aggregation und die fünf Beziehungs-CSVs zu einem Profil pro Entität und rendern direkt zu HTML unter `register/persons/<pe__id>.html` und `register/orgs/<org__id>.html`. Beziehungs-Modell: kin, friend und rep werden bidirektional aufgelöst (eine CSV-Zeile erscheint im Profil beider Seiten), occ und title-ref sind einseitig (das Gegenüber ist eine Organisation und erscheint im Personen-Profil als Verlinkung auf das Org-Profil). Pro Beziehungseintrag wird die belegende Quelle als Nachweis verlinkt.
+**Konsequenz.** Aggregator-Module `person_profiles` und `org_profiles` rendern Profile direkt zu HTML. Layout und Bidirektionalität der Beziehungs-Auflösung sind in [[ui-design#Entitäts-Profilseite]] und [[data#Register]] beschrieben.
 
-**Nicht gemeint ist**, dass jedes Profil eine vollständige Personen-Biografie liefert. Die Profile zeigen, was die TEI-Annotation hergibt — nicht mehr, nicht weniger.
+**Nicht gemeint ist**, dass jedes Profil eine vollständige Biografie liefert. Die Profile zeigen, was die TEI-Annotation hergibt.
 
 ## Analyse-Seite mit Frage-Galerie und Custom-Builder
 
@@ -63,9 +61,9 @@ Getroffene Leitentscheidungen mit Begründung. Zeitlos formuliert. Pro Eintrag E
 
 **Begründung.** Die frühere Slot-Workbench mit Template-Familien als oberster Mental-Model-Ebene zwang Nutzerinnen, sich erst durch eine Familien-Tab-Bar zu navigieren, bevor sie ihre Frage formulieren konnten. Forscherinnen kommen aber mit der Frage selbst, nicht mit einer Familien-Kategorie. Die Galerie bietet direkten Zugriff über den Frage-Text; der Custom-Builder bleibt für die freie Kombination von Slots verfügbar, ist aber nicht der Default-Einstieg.
 
-**Konsequenz.** Drei Mini-Viz-Stufen tragen die Galerie-Karten (subtile 6 px Stacked-Bars, 28 px Sparklines, Top-3-Mini-Bars oder 2 × 2 Heatmaps); im Result-Panel werden vollwertige SVG-Renderings gezeigt. Beide Stufen teilen sich die Renderer-Logik. Permalinks doppelt: `#q=<id>` für die Galerie, `#f=<fid>&...` für den Custom-Builder; beide bidirektional serialisiert. Eine COVERAGE-Map konsolidiert die früher vier nahezu identischen Coverage-Funktionen, ein generischer `topN(source, n, opts)` ersetzt drei vorherige `topX`-Helfer. JS-seitig getrennt in `analysis-composer.js` (UI für Galerie und Builder), `analysis-capabilities.js` (Capability-Manifest: welche Subject-Filter-Kombination braucht welche JSON-Datei) und `analysis.js` (Driver, wired composer an Hash und Loader).
+**Konsequenz.** Galerie-Karten tragen subtile Mini-Visualisierungen; das Result-Panel zeigt vollwertige SVG-Renderings. Beide Stufen teilen sich die Renderer-Logik. Permalinks doppelt: `#q=<id>` für die Galerie, `#f=<fid>&...` für den Custom-Builder. JS-seitig getrennt in `analysis-composer.js` (UI), `analysis-capabilities.js` (Capability-Manifest) und `analysis.js` (Driver).
 
-**Nicht gemeint ist**, dass die Galerie statisch fest steht. Frage-Resolver lassen sich ergänzen, ohne die Architektur zu ändern; Familien 2 bis 5 sind als Galerie-Resolver implementiert, aber noch nicht durchgängig als Custom-Builder-Slots ausgebaut.
+**Nicht gemeint ist**, dass die Galerie statisch fest steht. Frage-Resolver lassen sich ergänzen, ohne die Architektur zu ändern; einige Resolver sind als Galerie-Antwort fertig, aber noch nicht als Slot-Kombination im Custom-Builder ausgebaut.
 
 ## Titel und Untertitel
 
@@ -127,7 +125,7 @@ Getroffene Leitentscheidungen mit Begründung. Zeitlos formuliert. Pro Eintrag E
 1. `@corresp` ist eine administrative Verknüpfung, die typischerweise eine Beziehung kodiert (etwa eine Verwandtschaftsangabe in einer Hilfsmarkierung), ohne dass der Personenname an der Stelle im Text steht.
 2. Personen-Annotationen innerhalb eines verschachtelten `<rs type="event">` referenzieren ein älteres, anderwärts erfasstes Geschäft. Sie sind Querverweise, keine Akteurinnen oder Akteure des aktuellen Quellenereignisses.
 
-Wer Nennungen für Häufigkeitsstatistiken oder Belegdichten zählt, will explizit Quellentext-Erwähnungen aktueller Geschäfte — nicht Hilfsverknüpfungen oder Querverweise. Das Altsystem (PHP/MariaDB-Frontend) zählt aus genau diesem Grund mit beiden Filtern. Eine inklusive Zählung erzeugt Diskrepanzen zu publizierten Statistiken und verzerrt die Häufigkeitsbilder einzelner Personen.
+Wer Nennungen für Häufigkeitsstatistiken oder Belegdichten zählt, will explizit Quellentext-Erwähnungen aktueller Geschäfte — nicht Hilfsverknüpfungen oder Querverweise. Eine inklusive Zählung erzeugt Diskrepanzen zu publizierten Statistiken und verzerrt die Häufigkeitsbilder einzelner Personen.
 
 **Konsequenz.** Der maßgebliche XPath ist:
 
@@ -147,7 +145,7 @@ Wer Nennungen für Häufigkeitsstatistiken oder Belegdichten zählt, will expliz
 
 **Begründung.** Beide Zählebenen beantworten verschiedene Fragen. „Wie viele unterscheidbare historische Personen umfasst das publizierte Korpus?" — diese Frage zielt auf das Personenregister; eine Person ist *bekannt*, sobald sie in einer freigegebenen Quelle in irgendeiner Annotation auftritt, auch als Querverweis in einem mentioned Event. „Wie häufig wird Person X in den freigegebenen Quellentexten erwähnt?" — diese Frage zielt auf die Belegdichte als Akteurin; nur direkte Quellentext-Erwähnungen aktueller Geschäfte zählen, mentioned Events sind für diese Frage Querverweise auf andere Quellen und gehören nicht in den Zähler.
 
-Diese Asymmetrie ist im Altsystem etabliert und semantisch konsistent: Eine Person, die nur als Querverweis in einer einzigen Quelle erscheint, ist trotzdem im Register vermerkt (und damit zählbar als Individuum), aber sie hat keine *eigene* Quellenpräsenz, die in Nennungs-Statistiken aufscheinen sollte.
+Die Asymmetrie ist semantisch konsistent: Eine Person, die nur als Querverweis in einer einzigen Quelle erscheint, ist trotzdem im Register vermerkt (und damit zählbar als Individuum), aber sie hat keine *eigene* Quellenpräsenz, die in Nennungs-Statistiken aufscheinen sollte.
 
 **Konsequenz.** `frontend/build.py::_scan_released_tei` führt zwei XPath-Pässe pro Datei: `_XP_PERSONS_ALL` für Distinct-Zählung und Sex-Splitt; `_XP_PERSONS_EXCL_MENTIONED` für die Nennungszählung. Die Asymmetrie ist im Glossar-Eintrag [[glossar#Individuelle Person]] und in den Provenienz-Tooltips auf der Startseite explizit benannt.
 
@@ -155,7 +153,7 @@ Diese Asymmetrie ist im Altsystem etabliert und semantisch konsistent: Eine Pers
 
 **Entscheidung.** Alle Release-KPIs der Startseite (Quellen, Quellen mit Personen, individuelle Personen, Nennungen, Rechtsgeschäfte, Korpus-Matrix) werden im Frontend-Build direkt aus den freigegebenen TEI-Quellen mit lxml und einem dokumentierten XPath gerechnet. CSV-Outputs der Pipeline werden für diese Zahlen nicht herangezogen.
 
-**Begründung.** Das Stakeholder-Leitprinzip aus Meeting 17.04. fordert: *Jede dargestellte Zahl ist nur dann wissenschaftlich verwendbar, wenn ihre Provenienz transparent, ihre Berechnungsoperation dokumentiert und ihr Ergebnis durch das Fachteam selbstständig reproduzierbar ist.* Eine zweistufige Aggregation (TEI → Pipeline-CSV → Frontend) erzeugt eine Zwischenebene, an der Definitionen subtil abweichen können (Beispiel: die Pipeline-Spalte `kind_of_linking` mappt auf TEI-Annotationen, ist aber nicht 1:1 identisch mit der semantischen Frage „erscheint Person X im Quellentext"). Direkter XPath auf TEI ist die kürzeste, prüfbarste Operation und in den Tooltips wörtlich abgedruckt — eine Verifikation reicht aus, um eine Zahl zu reproduzieren.
+**Begründung.** Eine Zahl ist nur dann wissenschaftlich verwendbar, wenn ihre Provenienz transparent, ihre Berechnungsoperation dokumentiert und ihr Ergebnis selbstständig reproduzierbar ist. Eine zweistufige Aggregation (TEI → Pipeline-CSV → Frontend) erzeugt eine Zwischenebene, an der Definitionen subtil abweichen können — die Pipeline-Spalte `kind_of_linking` etwa mappt auf TEI-Annotationen, ist aber nicht 1:1 identisch mit der semantischen Frage „erscheint Person X im Quellentext". Direkter XPath auf TEI ist die kürzeste, prüfbarste Operation und in den Tooltips wörtlich abgedruckt — eine Verifikation reicht aus, um eine Zahl zu reproduzieren.
 
 **Konsequenz.** `frontend/build.py` definiert die XPath-Konstanten `_XP_TOP_EVENTS`, `_XP_PERSONS_ALL`, `_XP_PERSONS_EXCL_MENTIONED` und scannt einmal pro Build alle freigegebenen TEI-Quellen mit lxml. Die Funktion `_scan_released_tei` ist die alleinige Quelle der Wahrheit für `_compute_release_kpis`, `_compute_corpus_breakdown` und `_released_person_keys`. Der Scan ist kein Bottleneck.
 
@@ -175,7 +173,7 @@ Diese Asymmetrie ist im Altsystem etabliert und semantisch konsistent: Eine Pers
 
 Verschachtelte rs-Events landen über `pipeline/utils/event_helpers.py::iter_top_level_events()` als `event_mentions`-Zeilen mit ihrem `outer_event_key` in `event_mentions.csv`, ohne in die Hauptzählung einzugehen. Hand-rolled `//tei:rs[@type='event']`-XPaths ohne den `not(ancestor)`-Filter sind ein Fehler.
 
-**Nicht gemeint ist**, dass die Information über mentioned Events verloren geht. Sie bleibt in `event_mentions.csv` und kann zusätzlich angezeigt werden — etwa über einen Toggle „Rechtsgeschäfte inkl. mentioned Events", wie ihn das Altsystem kennt. Dieser Toggle ist eine Anzeige-Option, nicht der Standardwert.
+**Nicht gemeint ist**, dass die Information über mentioned Events verloren geht. Sie bleibt in `event_mentions.csv` und kann zusätzlich angezeigt werden — etwa über einen Toggle „Rechtsgeschäfte inkl. mentioned Events". Dieser Toggle wäre eine Anzeige-Option, nicht der Standardwert.
 
 ## Begriff Quellenkorpus
 
@@ -187,19 +185,19 @@ Verschachtelte rs-Events landen über `pipeline/utils/event_helpers.py::iter_top
 
 ## Freigegebener Zeitraum
 
-**Entscheidung.** Das UI zeigt den Zeitraum 1177 bis 1412, mit einer Ausnahme bis 1414 für QGW II/1 und QGW II/2.
+**Entscheidung.** Das UI zeigt nur den Zeitraum, den `RELEASED_PERIOD` in `frontend/config.py` führt. Hardcoded Jahre in Templates sind ein Fehler.
 
-**Begründung.** Nur freigegebene Regesten werden im Frontend angezeigt. Andere Werte in anderen Ansichten (etwa 1524 oder 1520) waren fehlerhafte Ableitungen aus unbereinigten Quellen.
+**Begründung.** Nur freigegebene Regesten werden angezeigt. Frühere Anzeigen außerhalb des Freigabezeitraums waren fehlerhafte Ableitungen aus unbereinigten Quellen.
 
-**Konsequenz.** Zeitregler und Anzeigen verwenden diesen Bereich. Abweichungen gelten als Fehler.
+**Konsequenz.** Zeitregler und Anzeigen leiten ihre Grenzen aus der Konfiguration ab.
 
 ## Freigegebene Korpora und Aufnahme-Workflow
 
-**Entscheidung.** Die Menge der publizierten Subkorpora ist als Tupel `RELEASED_CORPORA` im Pipeline-Repo (`pipeline/config.py`) hinterlegt und gilt als Single Source of Truth für CSV-Erzeugung und Frontend-Build. Aktuell freigegeben: `QGW/Vienna_1177-1414_ready` und `Stadtbuecher/Band_1_1395-1400_ready`.
+**Entscheidung.** Die Menge der publizierten Subkorpora ist als Tupel `RELEASED_CORPORA` im Pipeline-Repo (`pipeline/config.py`) hinterlegt und gilt als Single Source of Truth für CSV-Erzeugung und Frontend-Build.
 
-**Begründung.** Eine zentrale Liste verhindert, dass an mehreren Stellen unterschiedliche Mengen entstehen (Pipeline exportiert, Frontend filtert, Tests prüfen). Sie macht die Freigabeentscheidung explizit, nachvollziehbar und rückführbar auf einen Commit. Ungeprüfte Korpora bleiben für die editorische Arbeit in `sources/` zugänglich, ohne in den publizierten Stand zu lecken.
+**Begründung.** Eine zentrale Liste verhindert, dass an mehreren Stellen unterschiedliche Mengen entstehen (Pipeline exportiert, Frontend filtert, Tests prüfen). Sie macht die Freigabeentscheidung explizit und rückführbar auf einen Commit. Ungeprüfte Korpora bleiben für die editorische Arbeit zugänglich, ohne in den publizierten Stand zu lecken.
 
-**Konsequenz.** Ein neuer Subkorpus wird in vier Schritten aufgenommen: (1) Quellen unter `sources/<Collection>/<Subcollection>_ready/` ablegen, (2) Tupel `RELEASED_CORPORA` ergänzen, (3) im Pipeline-Repo `python -m pipeline transform` ausführen, (4) im Frontend-Repo `python -m frontend build`. Liegt der neue Zeitraum außerhalb von 1177–1414, ist zusätzlich `RELEASED_PERIOD` in `frontend/config.py` anzupassen (`min_year`, `max_year`, gegebenenfalls `extensions` oder `unprocessed_gaps`). Für interne Analysen ohne Freigabe steht der Override `PIPELINE_INCLUDE_UNRELEASED=1` zur Verfügung; er wird im publizierten Build nicht eingesetzt.
+**Konsequenz.** Ein neuer Subkorpus wird in vier Schritten aufgenommen: Quellen unter `sources/<Collection>/<Subcollection>_ready/` ablegen, das Tupel `RELEASED_CORPORA` ergänzen, im Pipeline-Repo `python -m pipeline transform` ausführen, im Frontend-Repo `python -m frontend build`. Liegt der neue Zeitraum außerhalb des aktuellen Freigabezeitraums, ist zusätzlich `RELEASED_PERIOD` in `frontend/config.py` anzupassen. Für interne Analysen steht der Override `PIPELINE_INCLUDE_UNRELEASED=1` zur Verfügung; im publizierten Build wird er nicht eingesetzt.
 
 ## Formulierung „noch nicht ausgewertet"
 

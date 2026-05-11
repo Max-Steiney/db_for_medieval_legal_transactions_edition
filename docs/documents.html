@@ -9,15 +9,15 @@
     <title>Quellen, Datenbank</title>
     <link rel="preload" as="font" type="font/woff2" crossorigin
           href="./static/fonts/inter-400-latin.woff2">
-    <link rel="stylesheet" href="./static/css/fonts.css?v=20260511125458">
-    <link rel="stylesheet" href="./static/css/tokens.css?v=20260511125458">
-    <link rel="stylesheet" href="./static/css/base.css?v=20260511125458">
-    <link rel="stylesheet" href="./static/css/components.css?v=20260511125458">
-    <link rel="stylesheet" href="./static/css/responsive.css?v=20260511125458">
-    <link rel="stylesheet" href="./static/css/print.css?v=20260511125458">
-    <link rel="stylesheet" href="./static/css/tip.css?v=20260511125458">
+    <link rel="stylesheet" href="./static/css/fonts.css?v=20260511134507">
+    <link rel="stylesheet" href="./static/css/tokens.css?v=20260511134507">
+    <link rel="stylesheet" href="./static/css/base.css?v=20260511134507">
+    <link rel="stylesheet" href="./static/css/components.css?v=20260511134507">
+    <link rel="stylesheet" href="./static/css/responsive.css?v=20260511134507">
+    <link rel="stylesheet" href="./static/css/print.css?v=20260511134507">
+    <link rel="stylesheet" href="./static/css/tip.css?v=20260511134507">
     
-<link rel="stylesheet" href="./static/css/index.css?v=20260511125458">
+<link rel="stylesheet" href="./static/css/index.css?v=20260511134507">
 
 </head>
 <body data-root-path="."
@@ -350,24 +350,55 @@
 
 
             
-<section class="sidebar-block">
-    <p class="sidebar-block-label">Suche</p>
-    
+            <section class="sidebar-block">
+                <div class="sidebar-block-label">Suche
+<span class="tip-wrap">
+    <button type="button" class="tip-trigger tip-trigger--icon"
+            aria-expanded="false" aria-haspopup="dialog"
+            aria-controls="search-help"
+            data-tip="search-help"
+            aria-label="Hilfe: Suche">
+        <svg width="13" height="13" viewBox="0 0 16 16" aria-hidden="true">
+            <circle cx="8" cy="8" r="7" stroke="currentColor" stroke-width="1.4" fill="none"/>
+            <text x="8" y="11.6" text-anchor="middle" font-size="9.5" font-weight="700"
+                  fill="currentColor" font-family="Georgia, serif">i</text>
+        </svg>
+    </button>
+    <aside class="tip-popover tip-popover--help"
+           id="search-help" role="dialog" aria-hidden="true"
+           aria-label="Hilfe: Suche">
+        <header class="tip-head">
+            <h3 class="tip-title">Suche</h3>
+            <button type="button" class="tip-close" aria-label="Schlie&szlig;en">&times;</button>
+        </header>
+        <div class="tip-body">
+            
+                    <p>Die Suche pr&uuml;ft folgende Felder einer Quelle:</p>
+                    <ul>
+                        <li><strong>Signatur</strong>, z.&nbsp;B. „0a" oder „1023"</li>
+                        <li><strong>Datum</strong> in beiden Schreibweisen: TEI-Form („1177 V 10") und Anzeigeform („10.05.1177", „1198&ndash;1230")</li>
+                        <li><strong>Ort</strong> (Ausstellungsort)</li>
+                        <li><strong>Korpus-Label</strong>, z.&nbsp;B. „QGW II/1" oder „Stadtb&uuml;cher Bd. 1"</li>
+                        <li><strong>Regest</strong>, sowohl Anriss als auch Volltext</li>
+                    </ul>
+                    <p>Umlaute werden ignoriert. Mehrere W&ouml;rter werden mit UND verkn&uuml;pft. Eine echte Volltext-Suche im Quellentext der Stadtb&uuml;cher ist das (noch) nicht.</p>
+                
+        </div>
+    </aside>
+</span>
+</div>
                 
 <div class="search-box">
     <svg class="search-icon" width="18" height="18" viewBox="0 0 18 18" fill="none" aria-hidden="true">
         <circle cx="7.5" cy="7.5" r="5.5" stroke="currentColor" stroke-width="1.5"/>
         <path d="M12 12L16 16" stroke="currentColor" stroke-width="1.5" stroke-linecap="round"/>
     </svg>
-    <label for="search-input" class="sr-only">Nr., Datum, Ort, Schlagwort …</label>
-    <input type="text" id="search-input" placeholder="Nr., Datum, Ort, Schlagwort …" autocomplete="off" spellcheck="false">
+    <label for="search-input" class="sr-only">Signatur, Datum, Ort, Regest …</label>
+    <input type="text" id="search-input" placeholder="Signatur, Datum, Ort, Regest …" autocomplete="off" spellcheck="false">
     <button class="search-clear hidden" id="search-clear" aria-label="Suche löschen">&times;</button>
 </div>
 
-            
-    
-</section>
-
+            </section>
 
             
 <section class="sidebar-block">
@@ -544,7 +575,37 @@
                 <table class="index-table" id="doc-table">
                     <thead>
                         <tr>
-                            <th scope="col" class="col-idno" data-sort="id">Nr.</th>
+                            <th scope="col" class="col-idno" data-sort="id">
+                                Signatur
+<span class="tip-wrap">
+    <button type="button" class="tip-trigger tip-trigger--icon"
+            aria-expanded="false" aria-haspopup="dialog"
+            aria-controls="col-info-signatur"
+            data-tip="col-info-signatur"
+            aria-label="Definition: Signatur">
+        <svg width="13" height="13" viewBox="0 0 16 16" aria-hidden="true">
+            <circle cx="8" cy="8" r="7" stroke="currentColor" stroke-width="1.4" fill="none"/>
+            <text x="8" y="11.6" text-anchor="middle" font-size="9.5" font-weight="700"
+                  fill="currentColor" font-family="Georgia, serif">i</text>
+        </svg>
+    </button>
+    <aside class="tip-popover tip-popover--glossary"
+           id="col-info-signatur" role="dialog" aria-hidden="true"
+           aria-label="Definition: Signatur">
+        <header class="tip-head">
+            <h3 class="tip-title">Signatur</h3>
+            <button type="button" class="tip-close" aria-label="Schlie&szlig;en">&times;</button>
+        </header>
+        <div class="tip-body">
+            
+                                    <p>Eindeutige Kennung der Quelle: Korpus-K&uuml;rzel (z.&nbsp;B. QGW II/1, Stadtb&uuml;cher Bd. 1) plus die interne Quellen-Nummer aus der Edition.</p>
+                                
+            
+        </div>
+    </aside>
+</span>
+
+                            </th>
                             <th scope="col" class="col-date" data-sort="di">
                                 Datum
 <span class="tip-wrap">
@@ -669,6 +730,7 @@
 </span>
 
                             </th>
+                            <th scope="col" class="col-basket" aria-label="Datenkorb-Aktion"></th>
                         </tr>
                     </thead>
                     <tbody id="doc-tbody">
@@ -695,7 +757,7 @@
             <div class="footer-col">
                 <p class="footer-project">Stadt und Gemeinschaft Wien, Datenbank</p>
                 <p>Tr&auml;gerprojekt &raquo;Stadt und Gemeinschaft&laquo; (Universit&auml;t Wien)</p>
-                <p class="footer-meta">Datenstand: 9. Mai 2026 &middot; Seite generiert: 11. Mai 2026</p>
+                <p class="footer-meta">Datenstand: 11. Mai 2026 &middot; Seite generiert: 11. Mai 2026</p>
                 
                 
             </div>
@@ -711,13 +773,13 @@
         </div>
     </footer>
 
-    <script src="./static/js/core.js?v=20260511125458"></script>
-    <script src="./static/js/tip.js?v=20260511125458"></script>
-    <script src="./static/js/hint.js?v=20260511125458"></script>
-    <script src="./static/js/basket.js?v=20260511125458"></script>
+    <script src="./static/js/core.js?v=20260511134507"></script>
+    <script src="./static/js/tip.js?v=20260511134507"></script>
+    <script src="./static/js/hint.js?v=20260511134507"></script>
+    <script src="./static/js/basket.js?v=20260511134507"></script>
     
-<script src="./static/js/table-infra.js?v=20260511125458"></script>
-<script src="./static/js/index.js?v=20260511125458"></script>
+<script src="./static/js/table-infra.js?v=20260511134507"></script>
+<script src="./static/js/index.js?v=20260511134507"></script>
 
 </body>
 </html>

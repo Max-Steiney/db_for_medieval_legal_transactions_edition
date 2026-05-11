@@ -155,14 +155,15 @@
 {% endmacro %}
 
 {# ============================================================
-   Tip-System (Tooltip-Familie, drei Klassen)
+   Tip-System (Tooltip-Familie, vier Klassen)
    ============================================================
    Klare Trennung nach Inhaltstyp:
 
    1. tip_glossary(id, term, slug=None, placement='bottom')
       Begriffsdefinition. Trigger ist ein i-Icon neben einem Fachbegriff.
       Body via caller() = kurze Definition. Wenn slug gesetzt, wird
-      automatisch ein "im Glossar"-Link angehaengt.
+      automatisch ein "im Glossar"-Link angehaengt. Fuer Fachbegriffe
+      ("Quelle", "Event", "Regest", "Beteiligte" etc.).
 
    2. tip_data(id, title, placement='bottom')
       Datenprovenienz fuer eine aggregierte Zahl. Trigger ist die Zahl
@@ -173,11 +174,19 @@
    Praktischere Variante: tip_data_full(id, title, value, body, source)
       kompletter One-Liner fuer einfache Faelle.
 
-   3. Hover-Hints werden als Attribute geschrieben:
+   3. tip_help(id, term, placement='bottom')
+      UI-/Funktions-Hilfe. Trigger ist ein i-Icon neben einem UI-Label
+      ("Suche", "Filter", "Datenkorb"). Body via caller() = Erklaerung,
+      wie das UI-Element funktioniert (was wird durchsucht? wie filtert
+      das? was passiert bei Klick?). Abgrenzung zu tip_glossary: hier
+      geht es nicht um WAS etwas ist, sondern WIE etwas funktioniert.
+      Kein Glossar-Link.
+
+   4. Hover-Hints werden als Attribute geschrieben:
       data-hint="..." [data-hint-type="..."]
       Kein Makro noetig, weil das Attribut so kurz ist.
 
-   Mechanik (1+2): hover oeffnet transient, klick pinnt, ESC schliesst.
+   Mechanik (1+2+3): hover oeffnet transient, klick pinnt, ESC schliesst.
    Gemeinsame JS-Logik in tip.js.
    ============================================================ #}
 
@@ -204,6 +213,38 @@
         <div class="tip-body">
             {{ caller() }}
             {% if slug %}<a class="tip-link" href="{{ root_path }}/project/glossary.html#{{ slug }}">im Glossar</a>{% endif %}
+        </div>
+    </aside>
+</span>
+{% endmacro %}
+
+
+{# tip_help: UI-/Funktions-Hilfe. Gleicher Trigger wie tip_glossary
+   (i-Icon), aber semantisch trennscharf: Hier wird erklaert, wie das
+   UI-Element funktioniert, nicht was ein Fachbegriff bedeutet. Kein
+   Glossar-Link. ARIA-Label "Hilfe" statt "Definition". #}
+{% macro tip_help(id, term, placement='bottom') %}
+<span class="tip-wrap">
+    <button type="button" class="tip-trigger tip-trigger--icon"
+            aria-expanded="false" aria-haspopup="dialog"
+            aria-controls="{{ id }}"
+            data-tip="{{ id }}"
+            aria-label="Hilfe: {{ term }}">
+        <svg width="13" height="13" viewBox="0 0 16 16" aria-hidden="true">
+            <circle cx="8" cy="8" r="7" stroke="currentColor" stroke-width="1.4" fill="none"/>
+            <text x="8" y="11.6" text-anchor="middle" font-size="9.5" font-weight="700"
+                  fill="currentColor" font-family="Georgia, serif">i</text>
+        </svg>
+    </button>
+    <aside class="tip-popover tip-popover--help{% if placement == 'top' %} tip-popover--top{% endif %}"
+           id="{{ id }}" role="dialog" aria-hidden="true"
+           aria-label="Hilfe: {{ term }}">
+        <header class="tip-head">
+            <h3 class="tip-title">{{ term }}</h3>
+            <button type="button" class="tip-close" aria-label="Schlie&szlig;en">&times;</button>
+        </header>
+        <div class="tip-body">
+            {{ caller() }}
         </div>
     </aside>
 </span>

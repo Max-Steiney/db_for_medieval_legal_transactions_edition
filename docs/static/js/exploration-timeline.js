@@ -90,6 +90,7 @@
         brushMin: null,
         brushMax: null,
         stackFocus: null,   // null = all categories, otherwise category key
+        drillSort: 'date-asc',  // 'date-asc' | 'date-desc' | 'coll'
     };
     const decFilter = V.makeDecadeFilter(STATE);
 
@@ -104,7 +105,10 @@
 
         // Collect decades in filter; initialise values/totals only for those —
         // out-of-range docs are filtered in the doc loop below via the
-        // values[dec] lookup.
+        // values[dec] lookup. We then expand the decade list to be
+        // contiguous (1170, 1180, 1190, …) so empty decades show up as
+        // zero-height columns rather than being silently dropped — the
+        // time axis stays metrically meaningful.
         const decadesSet = new Set();
         for (const doc of DOCS) {
             const dec = doc._dec;
@@ -112,7 +116,21 @@
             if (!decFilter.contains(dec)) continue;
             decadesSet.add(dec);
         }
-        const decades = Array.from(decadesSet).sort((a, b) => a - b);
+        if (STATE.stack === 'tx') {
+            const tl = (TRANSACTIONS.observations || {}).tx_timeline || {};
+            for (const byDec of Object.values(tl)) {
+                for (const d of Object.keys(byDec)) {
+                    const dec = parseInt(d, 10);
+                    if (decFilter.contains(dec)) decadesSet.add(dec);
+                }
+            }
+        }
+        let decades = Array.from(decadesSet).sort((a, b) => a - b);
+        if (decades.length >= 2) {
+            const lo = decades[0], hi = decades[decades.length - 1];
+            decades = [];
+            for (let d = lo; d <= hi; d += 10) decades.push(d);
+        }
         for (const d of decades) {
             values[d] = {};
             for (const c of categories) values[d][c.key] = 0;
@@ -224,21 +242,31 @@
             const segs = categories.map(c => {
                 const v = values[d][c.key] || 0;
                 if (v === 0) return '';
-                const hpx = Math.round((v / maxTotal) * 220);
-                if (hpx < 1) return '';
+                // hpx kann sub-pixel werden (1 Doc in einem 700er-Maximum).
+                // Wir geben dem Renderer trotzdem den proportionalen Wert
+                // und lassen die CSS min-height 2px den Strich sichtbar
+                // halten — sonst gehen die Anfangsjahre des Korpus
+                // (jeweils 1 Quelle) optisch verloren.
+                const hpx = Math.max(1, Math.round((v / maxTotal) * 220));
                 const segDim = (focus !== null && c.key !== focus) ? ' is-dimmed' : '';
                 return `<span class="explore-stream-seg${segDim}"
                               data-h="${hpx}"
                               data-bg="${c.color}"
                               title="${c.label}: ${V.fmt(v)}"></span>`;
             }).join('');
+            // X-tick: full year only at century starts and every 5th decade.
+            // Other ticks show the last two digits to keep the axis compact
+            // without making "70" indistinguishable from 1170/1270/1370.
+            const isMajor = (d % 100 === 0) || (d % 50 === 0);
+            const tickLabel = isMajor ? String(d) : String(d).slice(2);
+            const tickCls = isMajor ? 'explore-stream-xtick explore-stream-xtick--major' : 'explore-stream-xtick';
             return `<button type="button"
                 class="explore-stream-col${dimmed ? ' is-dimmed' : ''}"
                 data-decade="${d}"
                 aria-label="${d}er: ${V.fmt(totals[d])}"
                 title="${d}er: ${V.fmt(totals[d])}">
                 <span class="explore-stream-stack">${segs}</span>
-                <span class="explore-stream-xtick">${String(d).slice(2)}</span>
+                <span class="${tickCls}">${tickLabel}</span>
             </button>`;
         }).join('');
 
@@ -263,13 +291,23 @@
                 + (isFocused ? ' is-focused' : '')
                 + (isDimmed  ? ' is-dimmed'  : '');
             const ariaPressed = isFocused ? 'true' : 'false';
+            // Focused item shows a × to make "click again to clear" explicit.
+            // The mark stays inside the same clickable region — same click
+            // handler clears the focus (toggle).
+            const clearMark = isFocused
+                ? '<span class="legend-clear" aria-hidden="true">&times;</span>'
+                : '';
+            const title = isFocused
+                ? 'Klick: Fokus auf ' + c.label + ' wieder aufheben'
+                : 'Klick: nur ' + c.label + ' im Brush-Drill anzeigen';
             return `<li class="${cls}" data-cat="${c.key}"
                 role="button" tabindex="0" aria-pressed="${ariaPressed}"
-                title="Klick: nur ${c.label} im Brush-Drill anzeigen">
+                title="${title}">
                 <span class="legend-swatch" data-bg="${c.color}"></span>
                 <span class="legend-label">${c.label}</span>
                 <span class="legend-count">${V.fmt(sum)}</span>
                 <span class="legend-pct">${V.pct(sum, grand)}&nbsp;%</span>
+                ${clearMark}
             </li>`;
         }).join('');
         V.applyDataStyles(el);
@@ -323,6 +361,35 @@
                 STATE.brushMin = Math.min(brushAnchor, dec);
                 STATE.brushMax = Math.max(brushAnchor, dec);
                 renderChart();
+            });
+            // Keyboard activation: Enter/Space brushes the single decade.
+            // Shift+Arrow on a focused column extends the existing brush
+            // by one decade so keyboard users can build a range.
+            col.addEventListener('keydown', (e) => {
+                const dec = parseInt(col.dataset.decade, 10);
+                if (e.key === 'Enter' || e.key === ' ') {
+                    e.preventDefault();
+                    STATE.brushMin = dec;
+                    STATE.brushMax = dec;
+                    renderChart();
+                    renderDrill();
+                    updateActiveFilters();
+                    writeUrl();
+                    return;
+                }
+                if (e.shiftKey && (e.key === 'ArrowLeft' || e.key === 'ArrowRight')) {
+                    if (STATE.brushMin === null) return;
+                    e.preventDefault();
+                    if (e.key === 'ArrowLeft') {
+                        STATE.brushMin = Math.min(STATE.brushMin, dec - 10);
+                    } else {
+                        STATE.brushMax = Math.max(STATE.brushMax, dec + 10);
+                    }
+                    renderChart();
+                    renderDrill();
+                    updateActiveFilters();
+                    writeUrl();
+                }
             });
         });
         // Mouse-up ends brushing globally so the selection persists even
@@ -379,7 +446,7 @@
         } else {
             docs = collectStreamDocs(lo, hi, focus);
         }
-        docs.sort((a, b) => (a._sort || '').localeCompare(b._sort || ''));
+        sortDrillDocs(docs);
 
         const rangeLabel = (lo === hi) ? `${lo}er` : `${lo}er–${hi}er`;
         const focusLabel = focusedCat ? ` · ${focusedCat.label}` : '';
@@ -389,13 +456,19 @@
         // Cross-nav: sources list page with the brush period (no sex filter
         // — the timeline doesn't have one). Tx/collection/form focus cannot
         // be mapped 1:1 onto the source filters (sources have no tx/stack
-        // filters), so it's omitted.
+        // filters), so it's omitted. If a focus is active we make the loss
+        // explicit in the link tooltip so the user knows the result list
+        // will be broader than what the chart shows here.
         const crossNav = document.getElementById('drill-crossnav');
         if (crossNav) {
             crossNav.href = V.buildDocumentsURL({
                 decadeMin: lo,
                 decadeMax: hi,
             });
+            const baseHint = 'Filter (Zeitraum) wird in die Quellen-Listenseite übernommen.';
+            crossNav.title = focusedCat
+                ? baseHint + ' Der Fokus "' + focusedCat.label + '" wird nicht weitergegeben.'
+                : baseHint;
         }
 
         const ROOT = (window.ROOT_PATH || '..');
@@ -421,6 +494,36 @@
             : '');
 
         drill.hidden = false;
+    }
+
+    // Sorts in place using STATE.drillSort. Sort key '_sort' carries
+    // the ISO-ish date; coll is the collection label for grouping.
+    function sortDrillDocs(docs) {
+        const mode = STATE.drillSort || 'date-asc';
+        if (mode === 'date-desc') {
+            docs.sort((a, b) => (b._sort || '').localeCompare(a._sort || ''));
+        } else if (mode === 'coll') {
+            docs.sort((a, b) => {
+                const c = (a.coll || '').localeCompare(b.coll || '');
+                if (c !== 0) return c;
+                return (a._sort || '').localeCompare(b._sort || '');
+            });
+        } else {
+            docs.sort((a, b) => (a._sort || '').localeCompare(b._sort || ''));
+        }
+    }
+
+    function bindDrillSort() {
+        const grp = document.getElementById('drill-sort');
+        if (!grp) return;
+        grp.addEventListener('click', (e) => {
+            const btn = e.target.closest('[data-sort]');
+            if (!btn) return;
+            STATE.drillSort = btn.getAttribute('data-sort');
+            V.setActiveChip(grp, STATE.drillSort, 'data-sort', 'is-active');
+            renderDrill();
+            writeUrl();
+        });
     }
 
     // Returns drill records from DOCS_BY_DECADE (search.json-based).
@@ -515,8 +618,11 @@
             STATE.brushMin = null;
             STATE.brushMax = null;
             STATE.stackFocus = null;
+            STATE.drillSort = 'date-asc';
             V.setActiveChip(document.getElementById('stream-stack-axis'),
                             'collection', 'data-stack', 'is-active');
+            V.setActiveChip(document.getElementById('drill-sort'),
+                            'date-asc', 'data-sort', 'is-active');
             // Slider reset fires the onChange hook via the input event and
             // therefore renderChart()+renderDrill(). If the slider is
             // missing, render once directly.
@@ -603,6 +709,7 @@
             stack: STATE.stack !== 'collection' ? STATE.stack : null,
             brush: brush,
             focus: STATE.stackFocus,
+            sort:  STATE.drillSort !== 'date-asc' ? STATE.drillSort : null,
         });
     }
 
@@ -630,9 +737,14 @@
             // Validity is checked at the first render (effectiveStackDef).
             STATE.stackFocus = u.focus;
         }
-        // UI sync for the stack chips
+        if (u.sort && ['date-asc', 'date-desc', 'coll'].includes(u.sort)) {
+            STATE.drillSort = u.sort;
+        }
+        // UI sync for the stack chips and sort chips
         V.setActiveChip(document.getElementById('stream-stack-axis'),
                         STATE.stack, 'data-stack', 'is-active');
+        V.setActiveChip(document.getElementById('drill-sort'),
+                        STATE.drillSort, 'data-sort', 'is-active');
     }
 
     document.addEventListener('DOMContentLoaded', () => {
@@ -640,6 +752,7 @@
         V.bindRangeSlider({ state: STATE, onChange: onSliderChange });
         bindReset();
         bindDrillClear();
+        bindDrillSort();
         bindLegendFocus();
         applyUrlState();
 

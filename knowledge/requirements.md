@@ -113,7 +113,7 @@ Forschungspfade sind nicht linear. Eine Auswahl entsteht häufig durch Querstrei
 
 ### Wie
 
-Ein clientseitiger Datenkorb steht als persistierende Schicht über allen Quellen-, Personen- und Organisations-Listen. Sammelpunkte sind in den Listen-Renderern eingebettet (Quellen-Tabelle, Personen- und Org-Register, Profilseiten, Drill-down-Overlay, Brush-Drill, Personennetzwerk-Detail-Tabelle); ein Korb-Icon im Nav führt zur Korb-Seite mit drei Sektionen, je eigener Remove-Aktion und eigenem CSV-Export. Sammelt eine Forscherin eine Quelle, werden die in dieser Quelle annotierten Personen und Organisationen automatisch als abgeleitete Einträge in den Korb gespiegelt; ein „+"-Klick auf einen abgeleiteten Eintrag stuft ihn zur eigenständigen Sammlung hoch, sodass er nach Entfernen der Quelle erhalten bleibt. Persistenz lebt in `localStorage`, Cross-Tab-Sync über das `storage`-Event. Umsetzung in [[ui-design#Datenkorb]] und [[architecture#Datenkorb als clientseitige Persistenz]], Begründung in [[decisions#Datenkorb als clientseitige Sammlung]].
+Ein clientseitiger Datenkorb sammelt Quellen, Personen und Organisationen über Sitzungen hinweg. Eine im Korb liegende Quelle zieht ihre annotierten Personen und Organisationen automatisch als abgeleitete Einträge nach. Umsetzung in [[ui-design#Datenkorb]], Architektur in [[architecture#Datenkorb als clientseitige Persistenz]], Begründung in [[decisions#Datenkorb als clientseitige Sammlung]].
 
 ## Informationsdichte vor reduzierter Ästhetik
 

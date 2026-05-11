@@ -481,12 +481,43 @@
     border-top: none;
 }
 
-.col-idno    { width: 5rem;  }
+.col-idno    { width: 11rem; }
 .col-date    { width: 7.5rem; }
 .col-place   { width: 8rem;  }
 .col-content { width: 16rem; }
+.col-basket  { width: 2.5rem; text-align: center; padding-left: 0; padding-right: var(--space-sm); }
 /* Regest-Spalte (col-title) ohne explizite Breite -> beansprucht den
-   verbleibenden Platz, weil die anderen vier Spalten fix sind. */
+   verbleibenden Platz, weil die anderen fix sind. */
+
+/* Signatur-Zelle: einzeilige Kompakt-Form 'KORPUS, ID' wie eine echte
+   Editionssignatur. Korpus-Kuerzel in gedeckter Farbe, ID in Akzent.
+   Beim Hover wird nur die ID unterstrichen, damit der Korpus-Praefix
+   nicht als eigener Link wirkt. */
+.sig-link {
+    text-decoration: none;
+    white-space: nowrap;
+    line-height: 1.4;
+}
+.sig-corpus {
+    color: var(--color-text-muted);
+    font-weight: 500;
+}
+.sig-idno {
+    color: var(--anno-person);
+    font-weight: 500;
+}
+.sig-link:hover .sig-idno { text-decoration: underline; }
+
+/* Datenkorb-Aktion: eigene Spalte ganz rechts. Button sitzt zentriert in
+   der Zelle, damit er in jeder Zeile auf derselben X-Position steht. Im
+   Header kein Label (Icon-Spalte). */
+.col-basket .basket-btn {
+    margin-left: 0;
+}
+
+/* Den Korb-Status traegt allein der Knopf in der rechten Spalte
+   (Border-Farbe + Glyphe). Ein zusaetzlicher Zeilen-Akzentbalken
+   waere doppelte Codierung; einmal kraeftig reicht. */
 
 .doc-link {
     color: var(--anno-person);
@@ -696,7 +727,11 @@ button.badge { cursor: pointer; }
     gap: var(--space-lg);
     padding: var(--space-md) var(--space-lg);
     background: var(--color-bg-warm);
-    border-left: 3px solid var(--anno-person);
+    /* Neutraler Balken links: Akzentfarben in der Tabelle bleiben fuer
+       Status (gruen = im Korb, blau = Personen-Link) reserviert. Die
+       Preview-Zeile signalisiert ihre Bindung an die geoeffnete Zeile
+       ueber die Hintergrundfarbe und den Balken in gedeckter Border. */
+    border-left: 3px solid var(--color-border-dark);
     animation: preview-open var(--transition-normal) ease-out;
 }
 
@@ -722,6 +757,13 @@ button.badge { cursor: pointer; }
     font-size: var(--text-xs);
     color: var(--color-text-muted);
     margin-bottom: var(--space-sm);
+    display: flex;
+    flex-wrap: wrap;
+    gap: var(--space-xs) var(--space-md);
+}
+.preview-meta strong {
+    color: var(--color-text);
+    font-weight: 600;
 }
 
 /* --- Form-Filter-Chips in der Sidebar (Mehrfachauswahl) ----------------- */
@@ -807,7 +849,10 @@ button.badge { cursor: pointer; }
     color: var(--color-text-light);
     opacity: 0.65;
     flex-shrink: 0;
+    text-decoration: none;
 }
+a.form-filter-chip-info { color: var(--color-text-light); cursor: help; }
+a.form-filter-chip-info:hover { color: var(--anno-person); opacity: 1; }
 .form-filter-chip-info svg {
     width: 100%;
     height: 100%;
@@ -874,12 +919,11 @@ button.badge { cursor: pointer; }
     position: sticky;
     top: var(--space-md);
     align-self: start;
-    max-height: calc(100vh - var(--space-md) * 2);
-    overflow-y: auto;
-    overflow-x: hidden;
-    padding-right: var(--space-xs);
-    /* overflow-x: hidden vermeidet die horizontale Scrollbar, falls
-       innere Komponenten (Histogramm-Slider) minimal ueberlaufen. */
+    /* Kein eigenes Scrolling. Frueher max-height + overflow-y:auto, das
+       hatte den Nebeneffekt, dass das Mausrad beim Hover ueber die
+       Sidebar nicht mehr die Seite scrollte. Bei knappem Viewport
+       scrollt die Sidebar jetzt mit der Seite, wenn ihr unteres Ende
+       erreicht ist (Standard-sticky-Verhalten, z.B. GitHub-Sidebar). */
 }
 
 .index-main {
@@ -972,6 +1016,7 @@ button.badge { cursor: pointer; }
 .index-sidebar .search-box input {
     width: 100%;
 }
+
 
 /* Reset-Button. Dezent, nicht primaer. */
 .sidebar-reset {

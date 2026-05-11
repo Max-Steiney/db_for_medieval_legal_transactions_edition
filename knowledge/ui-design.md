@@ -123,11 +123,9 @@ Fachbegriffe im UI verweisen auf die Glossar-Seite ([[glossar]]). Beim ersten Au
 
 ### Drill-down-Overlay
 
-Aggregierte Zahlen sind klickbar. Der Klick öffnet ein Overlay mit der Liste der beitragenden Quellen, jeweils mit Nr., Datum, Quellenkorpus und Kurzregest, jede Zeile ein Link in die Quellen-Detailseite. Das Overlay schließt über Schaltfläche, Klick auf den Backdrop oder Escape. Es ist über alle Aggregations-Träger konsistent gehalten — auf der Auswertungs-Seite klicken Donut-Arc, Legend-Item, Bar oder Bezeichnungs-Zeile dasselbe Overlay auf, mit dem zusammengesetzten Schlüssel der jeweiligen Aggregat-Zelle aus den `drill_down`-Indizes (siehe [[architecture#Provenienz-Indizes]]).
+Aggregierte Zahlen sind klickbar und öffnen ein Overlay mit den beitragenden Quellen (Nr., Datum, Quellenkorpus, Kurzregest, Link in die Detailseite). Schließen über Schaltfläche, Backdrop oder Escape. Das Overlay ist über alle Aggregations-Träger konsistent gehalten und greift in die `drill_down`-Indizes der Aggregat-JSONs ([[architecture#Provenienz-Indizes]]).
 
-Filter werden in den Drill mitgenommen: ein aktiver Geschlechter-Filter wählt die sex-Variante des Lookup-Schlüssels (etwa `kin_f`, `hausfrau__f`); ein aktiver Zeitraum-Filter wirkt nativ auf decade-partitionierte Drills (Transaktionstypen) und auf andere durch Datums-Parsing aus dem `docs_lookup`. Die Liste ist auf 500 Zeilen begrenzt; bei Überschreitung erscheint die Aufforderung, enger einzugrenzen.
-
-Im Footer des Overlays steht die Cross-Page-Brücke „→ in Quellen-Liste öffnen" (siehe unten), und an jeder Zeile ein „+"-Knopf für den Datenkorb (siehe unten).
+Aktive Filter werden in den Drill mitgenommen, soweit der Aggregat-Schlüssel sie trägt. Bei sehr großen Ergebnismengen wird die Liste begrenzt und auf engere Eingrenzung hingewiesen. Im Footer stehen Cross-Page-Sprung in die Quellen-Liste und Datenkorb-Knopf pro Zeile.
 
 ### Active-Filter-Strip
 
@@ -137,9 +135,7 @@ Begründung: Forschende verlieren den Überblick, welche Filter aktiv sind, soba
 
 ### URL-State-Sync
 
-Auf den Daten-Visualisierungs-Seiten landet der Filter-Stand in den URL-Suchparametern (`?dec=1300-1380&sex=f&type=kin&q=hausfrau`). Beim Page-Load wird der Stand wieder eingelesen und auf STATE plus UI gemappt. Damit ist jeder Filter-Stand bookmark-fähig, teilbar und als Permalink in einer Publikation zitierbar.
-
-Default-Werte werden weggelassen, damit Sharing-URLs minimal bleiben. Browser-Back führt nicht durch Filter-Mikrostände — die Pages nutzen `history.replaceState` statt `pushState`. Architektur in [[architecture#URL-State als Forschungsstand]].
+Auf den Daten-Visualisierungs-Seiten landet der Filter-Stand in den URL-Suchparametern und ist damit bookmark-fähig, teilbar und als Permalink in einer Publikation zitierbar. Mechanik in [[architecture#URL-State als Forschungsstand]].
 
 ### Cross-Page-Sprung in die Quellen-Liste
 
@@ -167,9 +163,7 @@ Personen- und Organisationsregister teilen sich ein einheitliches Listenseiten-M
 
 ### Entitäts-Profilseite
 
-Jede individuelle Person und jede individuelle Organisation trägt eine eigene Profilseite unter `register/persons/<pe__id>.html` bzw. `register/orgs/<org__id>.html`. Das Layout folgt dem Muster der Quellen-Detailseite, um Konsistenz zu wahren: eine Toolbar mit Breadcrumb und Meta-Strip (Geschlecht, aktive Jahre, Todesdatum, Quellen-Count, Wien-Wiki-Link bzw. Typ, Observanz, Hierarchie-Bezug für Organisationen), ein Header mit Name und optionaler Notiz, ein Beziehungs-Block (Verwandtschaft, Freundschaft, Vertretung, Beruf, Titelverweis), eine Quellen-Tabelle mit Rolle pro Quelle und Datenkorb-Knopf.
-
-Beziehungen sind bidirektional aufgelöst, wo es semantisch trägt: kin, friend und rep erscheinen im Profil beider Seiten mit umgekehrtem Bezug; occ und title-ref sind einseitig (das Gegenüber ist eine Organisation und erscheint als Verlinkung auf das Org-Profil). Jeder Beziehungseintrag verlinkt auf die belegende Quelle. Ein „+"-Knopf in der Toolbar legt die Entität selbst in den Datenkorb. Eine progressiv eingeblendete Quick-Filter-Funktion erlaubt das Eintippen eines Suchstrings über alle Tabellenzeilen der Seite hinweg.
+Jede individuelle Person und Organisation trägt eine Profilseite unter `register/persons/<id>.html` bzw. `register/orgs/<id>.html`. Layout im Muster der Quellen-Detailseite: Toolbar mit Breadcrumb und Meta-Strip, Header mit Name und Notiz, Beziehungs-Block, Quellen-Tabelle mit Rolle und Datenkorb-Knopf. Beziehungs-Auflösung in [[data#Register]]. Ein „+"-Knopf in der Toolbar legt die Entität selbst in den Datenkorb. Eine progressiv eingeblendete Quick-Filter-Funktion erlaubt das Eintippen eines Suchstrings über alle Tabellenzeilen.
 
 ## Layout-Grundsätze
 

@@ -1,6 +1,6 @@
 {% extends "base.html" %}
 {% from "macros.html" import search_box, result_count, active_filters, no_results, tip_glossary,
-                              sidebar_block, sidebar_range_slider, sidebar_chip_group,
+                              tip_help, sidebar_block, sidebar_range_slider, sidebar_chip_group,
                               sidebar_corpus_chips, sidebar_reset_button %}
 
 {% block title %}Quellen{% endblock %}
@@ -30,9 +30,27 @@
                 {{ sidebar_corpus_chips('filter-corpora', 'data-collection', collections) }}
             {% endcall %}
 
-            {% call sidebar_block('Suche') %}
-                {{ search_box('Nr., Datum, Ort, Schlagwort …') }}
-            {% endcall %}
+            {# Suche-Block: Label mit eigenem tip_help, weil die Hilfe
+               das UI-Verhalten erklaert (Klasse 3 im Tip-System), nicht
+               einen Fachbegriff (Klasse 1). Wrapper ist ein <div>, weil
+               das Popover-Markup Block-Content (<ul>, <li>) enthaelt,
+               den der Browser sonst aus einem <p> heraus parsen wuerde,
+               wodurch das Popover seinen .tip-wrap-Container verliert
+               und am unteren Viewport-Rand landet. #}
+            <section class="sidebar-block">
+                <div class="sidebar-block-label">Suche{% call tip_help('search-help', 'Suche') %}
+                    <p>Die Suche pr&uuml;ft folgende Felder einer Quelle:</p>
+                    <ul>
+                        <li><strong>Signatur</strong>, z.&nbsp;B. „0a" oder „1023"</li>
+                        <li><strong>Datum</strong> in beiden Schreibweisen: TEI-Form („1177 V 10") und Anzeigeform („10.05.1177", „1198&ndash;1230")</li>
+                        <li><strong>Ort</strong> (Ausstellungsort)</li>
+                        <li><strong>Korpus-Label</strong>, z.&nbsp;B. „QGW II/1" oder „Stadtb&uuml;cher Bd. 1"</li>
+                        <li><strong>Regest</strong>, sowohl Anriss als auch Volltext</li>
+                    </ul>
+                    <p>Umlaute werden ignoriert. Mehrere W&ouml;rter werden mit UND verkn&uuml;pft. Eine echte Volltext-Suche im Quellentext der Stadtb&uuml;cher ist das (noch) nicht.</p>
+                {% endcall %}</div>
+                {{ search_box('Signatur, Datum, Ort, Regest …') }}
+            </section>
 
             {% call sidebar_block('Ort') %}
                 <select id="filter-place" aria-label="Ort filtern">
@@ -86,7 +104,11 @@
                 <table class="index-table" id="doc-table">
                     <thead>
                         <tr>
-                            <th scope="col" class="col-idno" data-sort="id">Nr.</th>
+                            <th scope="col" class="col-idno" data-sort="id">
+                                Signatur{% call tip_glossary('col-info-signatur', 'Signatur') %}
+                                    <p>Eindeutige Kennung der Quelle: Korpus-K&uuml;rzel (z.&nbsp;B. QGW II/1, Stadtb&uuml;cher Bd. 1) plus die interne Quellen-Nummer aus der Edition.</p>
+                                {% endcall %}
+                            </th>
                             <th scope="col" class="col-date" data-sort="di">
                                 Datum{% call tip_glossary('col-info-datum', 'Datum') %}
                                     <p>Ausstellungsdatum der Quelle. Bei unsicherer Datierung wird eine Spanne wie „1198 bis 1230" angegeben; sortiert wird nach Startjahr.</p>
@@ -107,6 +129,7 @@
                                     <p>Anzahl <em>individueller</em> Personen pro Quelle. Mehrfachnennungen derselben Person z&auml;hlen einmal. Der Zahlenwert ist der Sortierschl&uuml;ssel; die Pillen rechts daneben markieren TEI-Strukturen, Faksimile und Multi-Event.</p>
                                 {% endcall %}
                             </th>
+                            <th scope="col" class="col-basket" aria-label="Datenkorb-Aktion"></th>
                         </tr>
                     </thead>
                     <tbody id="doc-tbody">

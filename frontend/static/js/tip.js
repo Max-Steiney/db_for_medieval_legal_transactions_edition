@@ -7,8 +7,8 @@
    - Hover over pinned -> ignored (prevents flicker)
    - ESC / outside     -> closes both modes
 
-   Single shared mechanic for both .tip-popover--glossary and
-   .tip-popover--data. At most one popover is open at a time.
+   Single shared mechanic for .tip-popover--glossary, --data and --help.
+   At most one popover is open at a time.
 
    Trigger contract: any element with [data-tip="popover-id"]. The popover
    element itself is .tip-popover with id="popover-id".

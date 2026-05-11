@@ -320,40 +320,77 @@ let DataBasket = (function () {
         return text;
     }
 
-    // Markup helper: small "+" / "x" / "*" button.
-    // gathered  -> "x" (remove)
-    // derived   -> "*" (promote to gathered on click)
-    // absent    -> "+" (add as gathered)
-    // Tooltip uses the shared [data-hint] hover mechanism for parity
-    // with other site controls.
+    // SVG glyphs. Same canvas (16x16), same stroke weight, so the three
+    // states swap glyph cleanly without visual jump. Stroke uses
+    // currentColor, so CSS can recolor per state (border + glyph in sync).
+    const SVG_PLUS =
+        '<svg class="basket-btn-icon" viewBox="0 0 16 16" aria-hidden="true">' +
+        '<path d="M8 4v8M4 8h8" stroke="currentColor" stroke-width="1.5" ' +
+        'stroke-linecap="round" fill="none"/></svg>';
+    const SVG_CHECK =
+        '<svg class="basket-btn-icon" viewBox="0 0 16 16" aria-hidden="true">' +
+        // "Check"-Pfad: ruhend sichtbar, beim Hover ueber CSS ausgeblendet.
+        '<path class="glyph-check" d="M3.5 8.2l3 3l6-6" ' +
+        'stroke="currentColor" stroke-width="1.6" ' +
+        'stroke-linecap="round" stroke-linejoin="round" fill="none"/>' +
+        // "Minus"-Pfad: ruhend versteckt, beim Hover ueber CSS sichtbar
+        // (Vorschau auf "Klick entfernt").
+        '<path class="glyph-minus" d="M4 8h8" stroke="currentColor" ' +
+        'stroke-width="1.6" stroke-linecap="round" fill="none"/></svg>';
+    const SVG_MINUS =
+        '<svg class="basket-btn-icon" viewBox="0 0 16 16" aria-hidden="true">' +
+        '<path d="M4 8h8" stroke="currentColor" stroke-width="1.6" ' +
+        'stroke-linecap="round" fill="none"/></svg>';
+    const SVG_DASHED_PLUS =
+        '<svg class="basket-btn-icon" viewBox="0 0 16 16" aria-hidden="true">' +
+        '<path d="M8 4v8M4 8h8" stroke="currentColor" stroke-width="1.5" ' +
+        'stroke-linecap="round" stroke-dasharray="1.5 1.5" fill="none"/></svg>';
+
+    // Visual state contract for the basket button. Three states share the
+    // same outline circle, only the glyph (and the border color via CSS)
+    // changes. The hover preview for is-in is handled in CSS via a
+    // sibling glyph swapped through ::before on hover, so we do not need
+    // to mutate the DOM on pointer move.
+    function btnVisualState(present, gathered) {
+        if (gathered) {
+            return {
+                cls:  'basket-btn is-in',
+                icon: SVG_CHECK,
+                lab:  'Aus Datenkorb entfernen',
+                hint: 'Im Datenkorb. Klick entfernt den Eintrag.'
+            };
+        }
+        if (present) {
+            return {
+                cls:  'basket-btn is-derived',
+                icon: SVG_DASHED_PLUS,
+                lab:  'In den Datenkorb uebernehmen',
+                hint: 'Abgeleitet aus einer gesammelten Quelle. Klick uebernimmt den Eintrag als eigenstaendig gesammelt.'
+            };
+        }
+        return {
+            cls:  'basket-btn',
+            icon: SVG_PLUS,
+            lab:  'Zum Datenkorb hinzufuegen',
+            hint: 'Eintrag in den Datenkorb aufnehmen.'
+        };
+    }
+
+    // Markup helper. Returns the full <button>...</button> string ready to
+    // drop into row templates.
     function buttonHTML(item) {
         const type = normType(item.type);
         const items = read();
         const idx = find(items, type, item.id);
         const present = idx >= 0;
         const gathered = present && items[idx].gathered;
-        let icon, label, hint, cls = 'basket-btn';
-        if (gathered) {
-            icon = 'x';
-            label = 'Aus Datenkorb entfernen';
-            hint = 'Bereits gesammelt. Klick entfernt den Eintrag aus dem Datenkorb.';
-            cls += ' is-in';
-        } else if (present) {
-            icon = '*';
-            label = 'In den Datenkorb uebernehmen';
-            hint = 'Abgeleitet aus einer Quelle im Datenkorb. Klick uebernimmt diesen Eintrag als gesammelt, sodass er auch nach Entfernen der Quelle bleibt.';
-            cls += ' is-derived';
-        } else {
-            icon = '+';
-            label = 'Zum Datenkorb hinzufuegen';
-            hint = 'Eintrag in den Datenkorb aufnehmen.';
-        }
+        const v = btnVisualState(present, gathered);
         const payload = Object.assign({}, item, { type: type });
         const data = encodeURIComponent(JSON.stringify(payload));
-        return `<button type="button" class="${cls}"
+        return `<button type="button" class="${v.cls}"
             data-basket-item="${data}"
-            data-hint="${hint}"
-            aria-label="${label}">${icon}</button>`;
+            data-hint="${v.hint}"
+            aria-label="${v.lab}">${v.icon}</button>`;
     }
 
     function bindGlobalClicks() {
@@ -370,25 +407,11 @@ let DataBasket = (function () {
                 const idx = find(items, item.type, item.id);
                 const present = idx >= 0;
                 const gathered = present && items[idx].gathered;
-                btn.classList.toggle('is-in', !!gathered);
-                btn.classList.toggle('is-derived', present && !gathered);
-                let icon, lab, hint;
-                if (gathered) {
-                    icon = 'x';
-                    lab = 'Aus Datenkorb entfernen';
-                    hint = 'Bereits gesammelt. Klick entfernt den Eintrag aus dem Datenkorb.';
-                } else if (present) {
-                    icon = '*';
-                    lab = 'In den Datenkorb uebernehmen';
-                    hint = 'Abgeleitet aus einer Quelle im Datenkorb. Klick uebernimmt diesen Eintrag als gesammelt, sodass er auch nach Entfernen der Quelle bleibt.';
-                } else {
-                    icon = '+';
-                    lab = 'Zum Datenkorb hinzufuegen';
-                    hint = 'Eintrag in den Datenkorb aufnehmen.';
-                }
-                btn.textContent = icon;
-                btn.setAttribute('aria-label', lab);
-                btn.setAttribute('data-hint', hint);
+                const v = btnVisualState(present, gathered);
+                btn.className = v.cls;
+                btn.innerHTML = v.icon;
+                btn.setAttribute('aria-label', v.lab);
+                btn.setAttribute('data-hint', v.hint);
                 btn.removeAttribute('title');
             } catch (_) {}
         });

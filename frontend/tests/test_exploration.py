@@ -147,6 +147,62 @@ class TestAuswertungenPage:
         assert 'class="aggregat-quadrant-time-hint" hidden' in html
 
 
+class TestZeitstromPage:
+    """Verify the Zeitstrom exploration page (gestapelter Bar-Chart, Brush)."""
+
+    @pytest.fixture(scope="class")
+    def html(self):
+        path = DOCS_DIR / "exploration" / "zeitstrom.html"
+        if not path.exists():
+            pytest.skip("exploration/zeitstrom.html not found")
+        return path.read_text(encoding="utf-8")
+
+    def test_uses_index_layout(self, html):
+        assert 'index-layout' in html
+        assert 'index-sidebar' in html
+        assert 'index-main' in html
+
+    def test_chart_and_legend_present(self, html):
+        assert 'id="stream-chart"' in html
+        assert 'id="stream-legend"' in html
+        assert 'id="stream-yaxis"' in html
+
+    def test_four_stack_axes_with_titles(self, html):
+        """Alle vier Stapel-Achsen-Chips inkl. erklaerendem title-Attribut."""
+        for stack in ('collection', 'form', 'sex', 'tx'):
+            assert f'data-stack="{stack}"' in html, f'Stack chip {stack} fehlt'
+        # Tooltips wurden im Rahmen der UX-Politur ergaenzt.
+        assert 'title="Stapel nach Quellenkorpus' in html
+        assert 'title="Stapel nach Transaktionstyp' in html
+
+    def test_brush_hint_present(self, html):
+        """Tipp-Zeile direkt unter der Chart-Ueberschrift erklaert Brush
+        und Tastatur-Bedienung."""
+        assert 'explore-stream-hint' in html
+        assert '&Uuml;ber die S&auml;ulen ziehen' in html
+        assert '<kbd>Enter</kbd>' in html
+        assert '<kbd>Shift&nbsp;+&nbsp;&larr;/&rarr;</kbd>' in html
+
+    def test_drill_section_has_sort_chips(self, html):
+        """Sortier-Toggle (Datum aufsteigend / absteigend / Korpus) im
+        Drill-Header. Default ist Datum aufsteigend."""
+        assert 'id="drill-sort"' in html
+        assert 'data-sort="date-asc"' in html
+        assert 'data-sort="date-desc"' in html
+        assert 'data-sort="coll"' in html
+
+    def test_drill_actions_complete(self, html):
+        """Cross-Nav-Link, Auswahl-aufheben-Button, Drill-Liste."""
+        assert 'id="drill-crossnav"' in html
+        assert 'id="drill-clear"' in html
+        assert 'id="drill-list"' in html
+        # Drill ist standardmaessig hidden bis ein Brush gesetzt wird.
+        assert 'id="stream-drill"' in html and 'hidden' in html
+
+    def test_active_filter_strip_present(self, html):
+        assert 'id="active-filters"' in html
+
+
 class TestEpicBData:
     """Verify relations.json has correct structure for Relationship Explorer."""
 

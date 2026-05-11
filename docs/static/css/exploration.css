@@ -1323,6 +1323,7 @@
 .explore-stream-seg {
     width: 100%;
     display: block;
+    min-height: 2px;  /* Single-Doc-Jahrzehnte bleiben sichtbar */
     transition: opacity var(--transition-fast);
 }
 .explore-stream-xtick {
@@ -1332,6 +1333,38 @@
     line-height: 1;
     padding-top: 4px;
     font-variant-numeric: tabular-nums;
+}
+/* Major ticks (Jahrhundertanfang, 50er) zeigen das volle Jahr.
+   Schmalere Schrift, vertikal gestellt, damit es nicht ueberlappt. */
+.explore-stream-xtick--major {
+    color: var(--color-text);
+    font-weight: 600;
+}
+/* Fokussiertes Jahrzehnt: ausgeblendet wirkt sonst leer */
+.explore-stream-col:focus-visible {
+    outline: none;
+}
+.explore-stream-col:focus-visible .explore-stream-stack {
+    outline: 2px solid var(--color-text);
+    outline-offset: 2px;
+}
+
+/* Tipp-Zeile direkt unter der Chart-Ueberschrift */
+.explore-stream-hint {
+    margin: 0 0 var(--space-sm);
+    padding: 6px 10px;
+    background: var(--color-bg-warm);
+    border-left: 2px solid var(--color-border);
+    font-size: var(--text-2xs);
+    color: var(--color-text-muted);
+}
+.explore-stream-hint kbd {
+    font-family: var(--font-mono, monospace);
+    font-size: 0.92em;
+    background: var(--color-surface, #fff);
+    border: 1px solid var(--color-border);
+    border-radius: 3px;
+    padding: 0 4px;
 }
 
 /* === Legende unter dem Chart (gleicher Stil wie auf Auswertungen) === */
@@ -1363,8 +1396,16 @@
     background: var(--color-bg-warm);
     outline: 2px solid var(--color-text-muted);
     outline-offset: -2px;
+    grid-template-columns: 14px auto 70px 60px 16px;  /* + Spalte fuer × */
 }
 .explore-stream-legend .legend-item.is-dimmed { opacity: 0.4; }
+.explore-stream-legend .legend-clear {
+    color: var(--color-text-muted);
+    font-size: 1.05em;
+    line-height: 1;
+    text-align: center;
+    cursor: pointer;
+}
 .explore-stream-seg.is-dimmed { opacity: 0.25; }
 
 /* === Drill-Down: Quellen-Liste === */
@@ -1403,6 +1444,17 @@
 .explore-drilldown-crossnav {
     margin-left: auto;
     text-decoration: none;
+}
+/* Sortier-Chips im Drill-Header (gleicher Stil wie Form-Filter-Chips,
+   nur kompakter, weil sie inline neben den Action-Buttons sitzen) */
+.explore-stream-drill-sort {
+    display: inline-flex;
+    gap: 4px;
+    margin-right: auto;
+}
+.explore-stream-drill-sort .form-filter-chip {
+    padding: 3px 8px;
+    font-size: var(--text-2xs);
 }
 
 /* Basket styles moved to components.css — loaded from base.html on every
@@ -1866,6 +1918,26 @@
 .aggregat-table .sex-m { background-color: rgba(40, 80, 130, 0.045); }
 .aggregat-table .sex-f { background-color: rgba(150, 60, 90, 0.045); }
 .aggregat-table .is-dimmed { opacity: 0.32; }
+
+/* Roles / Relations Detailtabelle: gleiche Klick-Affordanz wie Labels und Donut */
+#roles-table tbody tr[data-role],
+#relations-table tbody tr[data-rel] {
+    cursor: pointer;
+    transition: background-color var(--transition-fast);
+}
+#roles-table tbody tr[data-role]:hover,
+#relations-table tbody tr[data-rel]:hover { background: var(--color-bg-warm); }
+
+/* Quadranten-Hint: dezent, erscheint nur wenn ein Zeitfilter aktiv ist */
+.aggregat-quadrant-time-hint {
+    margin: 0 0 var(--space-sm);
+    padding: 6px 10px;
+    background: var(--color-bg-warm);
+    border-left: 2px solid var(--color-border);
+    font-size: var(--text-2xs);
+    color: var(--color-text-muted);
+    font-style: italic;
+}
 
 .aggregat-row-total td {
     border-top: 1px solid var(--color-text-muted);

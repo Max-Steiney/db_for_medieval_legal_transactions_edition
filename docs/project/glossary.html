@@ -9,15 +9,15 @@
     <title>Glossar, Datenbank</title>
     <link rel="preload" as="font" type="font/woff2" crossorigin
           href="../static/fonts/inter-400-latin.woff2">
-    <link rel="stylesheet" href="../static/css/fonts.css?v=20260511125458">
-    <link rel="stylesheet" href="../static/css/tokens.css?v=20260511125458">
-    <link rel="stylesheet" href="../static/css/base.css?v=20260511125458">
-    <link rel="stylesheet" href="../static/css/components.css?v=20260511125458">
-    <link rel="stylesheet" href="../static/css/responsive.css?v=20260511125458">
-    <link rel="stylesheet" href="../static/css/print.css?v=20260511125458">
-    <link rel="stylesheet" href="../static/css/tip.css?v=20260511125458">
+    <link rel="stylesheet" href="../static/css/fonts.css?v=20260511134507">
+    <link rel="stylesheet" href="../static/css/tokens.css?v=20260511134507">
+    <link rel="stylesheet" href="../static/css/base.css?v=20260511134507">
+    <link rel="stylesheet" href="../static/css/components.css?v=20260511134507">
+    <link rel="stylesheet" href="../static/css/responsive.css?v=20260511134507">
+    <link rel="stylesheet" href="../static/css/print.css?v=20260511134507">
+    <link rel="stylesheet" href="../static/css/tip.css?v=20260511134507">
     
-<link rel="stylesheet" href="../static/css/content.css?v=20260511125458">
+<link rel="stylesheet" href="../static/css/content.css?v=20260511134507">
 
 </head>
 <body data-root-path=".."
@@ -117,18 +117,21 @@
                 <h2>Inhalt</h2>
                 <div class="toc">
 <ul>
+<li><a href="#eintrag">Eintrag</a></li>
 <li><a href="#erschlieungsform">Erschließungsform</a></li>
 <li><a href="#event">Event</a></li>
 <li><a href="#faksimile">Faksimile</a></li>
 <li><a href="#gesamtnennung">Gesamtnennung</a></li>
 <li><a href="#individuelle-person">Individuelle Person</a></li>
 <li><a href="#menschen-event">Menschen-Event</a></li>
+<li><a href="#nota">Nota</a></li>
 <li><a href="#quelle">Quelle</a></li>
 <li><a href="#quellenkorpus">Quellenkorpus</a></li>
 <li><a href="#rechtsgeschaft">Rechtsgeschäft</a></li>
 <li><a href="#regest">Regest</a></li>
 <li><a href="#rolle">Rolle</a></li>
 <li><a href="#rollenkombination">Rollenkombination</a></li>
+<li><a href="#siegel">Siegel</a></li>
 <li><a href="#volltext">Volltext</a></li>
 </ul>
 </div>
@@ -137,8 +140,11 @@
         </nav>
         <div class="guidelines-body">
             <p>Kanonische Definitionen aller Fachbegriffe der Datenbank. Quelle für Tooltips im UI und für die Glossar-Seite. Alphabetisch sortiert, pro Eintrag eine Definition, gegebenenfalls Abgrenzung und Hinweis zu häufigen Verwechslungen.</p>
+<h2 id="eintrag">Eintrag<a class="headerlink" href="#eintrag" title="Permanent link">&para;</a></h2>
+<p>Ein in einem Verwaltungsbuch (Stadtbuch, Grundbuch, Gewerbuch) verzeichnetes Rechtsgeschäft. Anders als eine Urkunde steht ein Eintrag nicht für sich, sondern ist Teil einer fortlaufenden Aufzeichnung, die ein Amt oder eine Institution geführt hat. Im TEI-Datenmodell wird er als <code>&lt;entry&gt;</code> ausgezeichnet.</p>
+<p>Im Datenbestand sind die Stadtbücher als Volltext-Einträge erschlossen, mit textgenauer Wiedergabe der Wortlaute. Ein Eintrag ist eine der vier Erschließungsformen neben <a href="#regest">Regest</a>, <a href="#siegel">Siegel</a> und <a href="#nota">Nota</a>.</p>
 <h2 id="erschlieungsform">Erschließungsform<a class="headerlink" href="#erschlieungsform" title="Permanent link">&para;</a></h2>
-<p>Die Form, in der eine Quelle in der Datenbank zugänglich gemacht wird: als <a href="#regest">Regest</a> mit <a href="#faksimile">Faksimile</a> oder als ausgeschriebener <a href="#volltext">Volltext</a>. Die Erschließungsform bestimmt, welche Art von Aussage eine Quelle stützt. Aus einem Volltext lassen sich textgenaue Belege ziehen, ein Regest stützt nur die zusammengefasste Aussage, das Faksimile dient der Verifikation am Bild.</p>
+<p>Die Form, in der eine Quelle in der Datenbank zugänglich gemacht wird: als <a href="#regest">Regest</a> mit <a href="#faksimile">Faksimile</a>, als ausgeschriebener <a href="#volltext">Volltext</a>, als <a href="#eintrag">Eintrag</a> in einem Verwaltungsbuch, als <a href="#siegel">Siegelbeschreibung</a> oder als <a href="#nota">Nota</a>. Die Erschließungsform bestimmt, welche Art von Aussage eine Quelle stützt. Aus einem Volltext lassen sich textgenaue Belege ziehen, ein Regest stützt nur die zusammengefasste Aussage, das Faksimile dient der Verifikation am Bild.</p>
 <h2 id="event">Event<a class="headerlink" href="#event" title="Permanent link">&para;</a></h2>
 <p>Ein konkretes Rechtsgeschäft, das in einer Quelle verzeichnet ist. Events sind die kleinste Einheit, auf die sich Rollen, Beteiligte und Transaktionsangaben beziehen.</p>
 <p>Eine Quelle kann mehrere Events dokumentieren. Events wiederum können aufeinander verweisen, etwa wenn ein späteres Rechtsgeschäft auf ein früheres zurückbezieht.</p>
@@ -168,6 +174,9 @@
 <blockquote>
 <p><strong>Achtung:</strong> Eine stillschweigende Einbeziehung oder ein stillschweigender Ausschluss verändert Statistiken. Die asymmetrische Behandlung in verschiedenen Anzeigen macht Vergleiche ungültig.</p>
 </blockquote>
+<h2 id="nota">Nota<a class="headerlink" href="#nota" title="Permanent link">&para;</a></h2>
+<p>Ein Nachsatz oder eine Marginalie zur Hauptquelle, der nachträglich angefügt wurde, etwa um eine spätere Ergänzung, eine Korrektur oder einen Hinweis auf den weiteren Verlauf des Geschäfts festzuhalten. Im TEI-Datenmodell als <code>&lt;nota&gt;</code> ausgezeichnet.</p>
+<p>Notae sind kein eigenständiges Rechtsgeschäft, sondern Beiwerk zur Quelle, das die <a href="#erschliessungsform">Erschließungsform</a> mitbestimmt. Wer nach den Akteuren eines Rechtsgeschäfts fragt, blickt zuerst in <a href="#regest">Regest</a>, <a href="#eintrag">Eintrag</a> oder Volltext, nicht in die Nota.</p>
 <h2 id="quelle">Quelle<a class="headerlink" href="#quelle" title="Permanent link">&para;</a></h2>
 <p>Eine einzelne Urkunde oder ein einzelnes Regest als Datensatz-Einheit. Die Quelle ist der Träger eines oder mehrerer Events.</p>
 <p>Im UI konsequent „Quelle" statt „Dokument". Die alternative Bezeichnung war in früheren Oberflächen unklar, weil sie mit Dateiformaten und Digitalisaten verwechselt werden konnte.</p>
@@ -192,6 +201,9 @@
 <h2 id="rollenkombination">Rollenkombination<a class="headerlink" href="#rollenkombination" title="Permanent link">&para;</a></h2>
 <p>Eine aus mehreren Rollen abgeleitete Kategorie, die das UI als Abfrage zugänglich macht. Beispiele sind gemeinsam handelnde Eheleute oder Witwen in einer bestimmten Rolle.</p>
 <p>Rollenkombinationen sind keine eigene Annotationsebene im Datenmodell, sondern eine Auswertungsperspektive. Sie entstehen durch Kombination von Rollenattributen und anderen Merkmalen wie Geschlecht oder Beziehungstyp.</p>
+<h2 id="siegel">Siegel<a class="headerlink" href="#siegel" title="Permanent link">&para;</a></h2>
+<p>Die Beschreibung des oder der an einer Urkunde angebrachten Siegel. Das Siegel beglaubigte die Urkunde und identifizierte ihre Aussteller; seine Beschreibung in der Edition hält Form, Material, Erhaltungszustand und gegebenenfalls die siegelnde Person fest. Im TEI-Datenmodell als <code>&lt;seal&gt;</code> ausgezeichnet.</p>
+<p>Eine Siegelbeschreibung ist eine eigene <a href="#erschliessungsform">Erschließungsform</a> neben <a href="#regest">Regest</a> und <a href="#eintrag">Eintrag</a>. Sie liefert Aussagen über Authentizität, Beglaubigungspraxis und Trägerschaft eines Rechtsgeschäfts, nicht über seinen Inhalt.</p>
 <h2 id="volltext">Volltext<a class="headerlink" href="#volltext" title="Permanent link">&para;</a></h2>
 <p>Der ausgeschriebene Wortlaut einer Quelle, transkribiert und annotiert. Im Volltext sind Personen, Organisationen, Orte und Rechtsgeschäfte unmittelbar im Quellentext markiert. Textgenaue Belege sind möglich.</p>
 <p>In der Datenbank sind die Stadtbücher als Volltext erschlossen. QGW-Bestände sind über <a href="#regest">Regest</a> und <a href="#faksimile">Faksimile</a> erschlossen, ohne ausgeschriebenen Volltext.</p>
@@ -210,7 +222,7 @@
             <div class="footer-col">
                 <p class="footer-project">Stadt und Gemeinschaft Wien, Datenbank</p>
                 <p>Tr&auml;gerprojekt &raquo;Stadt und Gemeinschaft&laquo; (Universit&auml;t Wien)</p>
-                <p class="footer-meta">Datenstand: 9. Mai 2026 &middot; Seite generiert: 11. Mai 2026</p>
+                <p class="footer-meta">Datenstand: 11. Mai 2026 &middot; Seite generiert: 11. Mai 2026</p>
                 
                 <p class="footer-meta">Glossar</p>
             </div>
@@ -226,12 +238,12 @@
         </div>
     </footer>
 
-    <script src="../static/js/core.js?v=20260511125458"></script>
-    <script src="../static/js/tip.js?v=20260511125458"></script>
-    <script src="../static/js/hint.js?v=20260511125458"></script>
-    <script src="../static/js/basket.js?v=20260511125458"></script>
+    <script src="../static/js/core.js?v=20260511134507"></script>
+    <script src="../static/js/tip.js?v=20260511134507"></script>
+    <script src="../static/js/hint.js?v=20260511134507"></script>
+    <script src="../static/js/basket.js?v=20260511134507"></script>
     
-<script src="../static/js/content.js?v=20260511125458"></script>
+<script src="../static/js/content.js?v=20260511134507"></script>
 
 </body>
 </html>

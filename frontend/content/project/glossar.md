@@ -1,8 +1,14 @@
 Kanonische Definitionen aller Fachbegriffe der Datenbank. Quelle für Tooltips im UI und für die Glossar-Seite. Alphabetisch sortiert, pro Eintrag eine Definition, gegebenenfalls Abgrenzung und Hinweis zu häufigen Verwechslungen.
 
+## Eintrag
+
+Ein in einem Verwaltungsbuch (Stadtbuch, Grundbuch, Gewerbuch) verzeichnetes Rechtsgeschäft. Anders als eine Urkunde steht ein Eintrag nicht für sich, sondern ist Teil einer fortlaufenden Aufzeichnung, die ein Amt oder eine Institution geführt hat. Im TEI-Datenmodell wird er als `<entry>` ausgezeichnet.
+
+Im Datenbestand sind die Stadtbücher als Volltext-Einträge erschlossen, mit textgenauer Wiedergabe der Wortlaute. Ein Eintrag ist eine der vier Erschließungsformen neben [[#Regest]], [[#Siegel]] und [[#Nota]].
+
 ## Erschließungsform
 
-Die Form, in der eine Quelle in der Datenbank zugänglich gemacht wird: als [[#Regest]] mit [[#Faksimile]] oder als ausgeschriebener [[#Volltext]]. Die Erschließungsform bestimmt, welche Art von Aussage eine Quelle stützt. Aus einem Volltext lassen sich textgenaue Belege ziehen, ein Regest stützt nur die zusammengefasste Aussage, das Faksimile dient der Verifikation am Bild.
+Die Form, in der eine Quelle in der Datenbank zugänglich gemacht wird: als [[#Regest]] mit [[#Faksimile]], als ausgeschriebener [[#Volltext]], als [[#Eintrag]] in einem Verwaltungsbuch, als [[#Siegel|Siegelbeschreibung]] oder als [[#Nota]]. Die Erschließungsform bestimmt, welche Art von Aussage eine Quelle stützt. Aus einem Volltext lassen sich textgenaue Belege ziehen, ein Regest stützt nur die zusammengefasste Aussage, das Faksimile dient der Verifikation am Bild.
 
 ## Event
 
@@ -46,6 +52,12 @@ Der Begriff ist spezifisch für das Datenmodell dieser Datenbank und außerhalb 
 
 > **Achtung:** Eine stillschweigende Einbeziehung oder ein stillschweigender Ausschluss verändert Statistiken. Die asymmetrische Behandlung in verschiedenen Anzeigen macht Vergleiche ungültig.
 
+## Nota
+
+Ein Nachsatz oder eine Marginalie zur Hauptquelle, der nachträglich angefügt wurde, etwa um eine spätere Ergänzung, eine Korrektur oder einen Hinweis auf den weiteren Verlauf des Geschäfts festzuhalten. Im TEI-Datenmodell als `<nota>` ausgezeichnet.
+
+Notae sind kein eigenständiges Rechtsgeschäft, sondern Beiwerk zur Quelle, das die [[#Erschließungsform]] mitbestimmt. Wer nach den Akteuren eines Rechtsgeschäfts fragt, blickt zuerst in [[#Regest]], [[#Eintrag]] oder Volltext, nicht in die Nota.
+
 ## Quelle
 
 Eine einzelne Urkunde oder ein einzelnes Regest als Datensatz-Einheit. Die Quelle ist der Träger eines oder mehrerer Events.
@@ -85,6 +97,12 @@ Nur diese Werte sind gültig. Ein offenes Rollenvokabular wäre statistisch unbr
 Eine aus mehreren Rollen abgeleitete Kategorie, die das UI als Abfrage zugänglich macht. Beispiele sind gemeinsam handelnde Eheleute oder Witwen in einer bestimmten Rolle.
 
 Rollenkombinationen sind keine eigene Annotationsebene im Datenmodell, sondern eine Auswertungsperspektive. Sie entstehen durch Kombination von Rollenattributen und anderen Merkmalen wie Geschlecht oder Beziehungstyp.
+
+## Siegel
+
+Die Beschreibung des oder der an einer Urkunde angebrachten Siegel. Das Siegel beglaubigte die Urkunde und identifizierte ihre Aussteller; seine Beschreibung in der Edition hält Form, Material, Erhaltungszustand und gegebenenfalls die siegelnde Person fest. Im TEI-Datenmodell als `<seal>` ausgezeichnet.
+
+Eine Siegelbeschreibung ist eine eigene [[#Erschließungsform]] neben [[#Regest]] und [[#Eintrag]]. Sie liefert Aussagen über Authentizität, Beglaubigungspraxis und Trägerschaft eines Rechtsgeschäfts, nicht über seinen Inhalt.
 
 ## Volltext
 

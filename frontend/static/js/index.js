@@ -183,17 +183,31 @@
             return parts.join(' ');
         }
 
+        // Trim the corpus label to its core ('QGW II/1 (1177-1414)' ->
+        // 'QGW II/1', 'Stadtbuecher Bd. 1 (1395-1400)' -> 'Stadtbuecher Bd. 1').
+        // The bracketed date span is redundant in the table cell because the
+        // own date column already shows the per-source date.
+        function corpusShort(doc) {
+            let full = doc.cl || '';
+            let cut = full.indexOf('(');
+            if (cut > 0) full = full.slice(0, cut);
+            return full.trim();
+        }
+
         // Date cell with range hint: for multi-year ranges (e.g. "1198–1230")
-        // a tooltip explains the convention "date imprecise, secured
-        // timespan...". For clean single dates no tooltip is rendered.
+        // a tooltip names the TEI origin of the range (notBefore/notAfter
+        // in the source) without claiming editorial authority over the
+        // dating. Clean single dates carry no tooltip.
         function renderDateCell(doc) {
             let dateText = doc.dn || doc.d;
             let attr = '';
             if (dateText && dateText.indexOf('–') !== -1) {
-                let body = 'Gesicherter Zeitraum laut TEI: ' +
-                           dateText.replace('–', ' bis ');
+                let body = 'In der TEI-Quelle als Zeitraum notiert ' +
+                           '(notBefore/notAfter), kein exaktes Tagesdatum ' +
+                           'überliefert oder editorisch festgelegt: ' +
+                           dateText.replace('–', ' bis ') + '.';
                 attr = ' data-hint="' + esc(body) + '"' +
-                       ' data-hint-type="Datum unscharf"';
+                       ' data-hint-type="Datierung als Zeitraum"';
             }
             return '<td class="col-date"' + attr + '>' + esc(dateText) + '</td>';
         }
@@ -210,7 +224,7 @@
         let renderer = TableInfra.createTableRenderer({
             tbodyId: 'doc-tbody',
             noResultsId: 'no-results',
-            colCount: 5,
+            colCount: 6,
             renderRow: function(doc, i, tr) {
                 tr.classList.add('doc-row');
                 tr.setAttribute('data-idx', i);
@@ -223,14 +237,20 @@
                     });
                 }
                 tr.innerHTML =
-                    '<td class="col-idno"><a href="' + esc(doc.u) + '" class="doc-link">' + esc(doc.id) + '</a>' + korbBtn + '</td>' +
+                    '<td class="col-idno">' +
+                        '<a href="' + esc(doc.u) + '" class="doc-link sig-link">' +
+                            '<span class="sig-corpus">' + esc(corpusShort(doc)) + ',</span> ' +
+                            '<span class="sig-idno">' + esc(doc.id) + '</span>' +
+                        '</a>' +
+                    '</td>' +
                     renderDateCell(doc) +
                     '<td class="col-place">' + esc(doc.p) + '</td>' +
                     '<td class="col-title"><a href="' + esc(doc.u) + '" class="doc-link doc-link--title cell-title">' + esc(doc.t) + '</a></td>' +
                     '<td class="col-content"><div class="col-content-inner">' +
                         '<div class="col-content-pills">' + renderContent(doc) + '</div>' +
                         CHEVRON_SVG +
-                    '</div></td>';
+                    '</div></td>' +
+                    '<td class="col-basket">' + korbBtn + '</td>';
                 tr.tabIndex = 0;
                 tr.setAttribute('role', 'button');
                 tr.setAttribute('aria-expanded', 'false');
@@ -257,12 +277,20 @@
         // data-tip-* and "i" affordance for the definition. The 'none' chip
         // ('ohne') has no table counterpart — icon omitted, definition stays.
         let FORM_LABELS = {R: 'Regest', S: 'Siegel', E: 'Eintrag', N: 'Nota', none: 'Ohne Erschließungsform'};
+        // Tooltip-Texte spiegeln die Erstdefinition aus dem Glossar
+        // (frontend/content/project/glossar.md). Bei Aenderungen dort
+        // hier nachziehen; der "im Glossar"-Link unten fuehrt zum Vollteext.
         let FORM_DESCRIPTIONS = {
-            R: 'Inhaltszusammenfassung der Quelle, vom Editor verfasst (TEI-Element <abstract>).',
-            S: 'Beschreibung des oder der Siegel an der Urkunde (TEI-Element <seal>).',
-            E: 'Eintrag in einem Verwaltungsbuch (Stadtbuch, Grundbuch). TEI-Element <entry>.',
-            N: 'Nachsatz oder Marginalie zur Hauptquelle (TEI-Element <nota>).',
-            none: 'Quelle ohne erkannte Erschließungsform — keines der TEI-Elemente abstract/seal/entry/nota vorhanden.'
+            R: 'Redaktionelle Zusammenfassung des wesentlichen Inhalts einer Quelle, ohne den Quellentext im Wortlaut. Im TEI als <abstract>.',
+            S: 'Beschreibung des oder der an einer Urkunde angebrachten Siegel: Form, Material, Erhaltung, gegebenenfalls siegelnde Person. Im TEI als <seal>.',
+            E: 'In einem Verwaltungsbuch (Stadtbuch, Grundbuch) verzeichnetes Rechtsgeschaeft als Teil einer fortlaufenden Aufzeichnung. Im TEI als <entry>.',
+            N: 'Nachsatz oder Marginalie zur Hauptquelle, nachtraeglich angefuegt (Ergaenzung, Korrektur, Hinweis). Im TEI als <nota>.',
+            none: 'Quelle ohne erkannte Erschliessungsform — keines der TEI-Elemente abstract/seal/entry/nota vorhanden.'
+        };
+        // Glossar-Anker pro Form. Klick auf das i-Icon springt zur
+        // entsprechenden Stelle in /project/glossary.html.
+        let FORM_GLOSSARY_SLUGS = {
+            R: 'regest', S: 'siegel', E: 'eintrag', N: 'nota'
         };
         let INFO_ICON =
             '<svg viewBox="0 0 16 16" aria-hidden="true">' +
@@ -287,8 +315,25 @@
                 if (label) c.setAttribute('data-hint-type', label);
                 c.removeAttribute('title');
                 if (desc) {
-                    let info = document.createElement('span');
-                    info.className = 'form-filter-chip-info';
+                    let slug = FORM_GLOSSARY_SLUGS[key];
+                    let info;
+                    if (slug) {
+                        // i-Icon als Glossar-Link, oeffnet die Glossar-Seite
+                        // beim entsprechenden Eintrag. Klick auf das Icon
+                        // soll nicht den Chip selbst toggeln.
+                        info = document.createElement('a');
+                        info.className = 'form-filter-chip-info';
+                        info.href = (window.ROOT_PATH || '.') +
+                                    '/project/glossary.html#' + slug;
+                        info.setAttribute('aria-label',
+                                          'Im Glossar: ' + (label || key));
+                        info.addEventListener('click', function(ev) {
+                            ev.stopPropagation();
+                        });
+                    } else {
+                        info = document.createElement('span');
+                        info.className = 'form-filter-chip-info';
+                    }
                     info.innerHTML = INFO_ICON;
                     c.appendChild(info);
                 }
@@ -759,16 +804,41 @@
                 thumbHtml = '<div class="preview-thumb"><img src="' + esc(doc.fu) + '" loading="lazy" alt="Faksimile"></div>';
             }
 
+            // Felder fuer den Meta-Strip: nur was in der Tabellenzeile NICHT
+            // sichtbar ist. Datum, Ort, Korpus, Personenanzahl stehen schon
+            // in den Spalten daneben \u2014 hier kommen Geschlechter-Aufschluesselung
+            // und Erschliessungsform-Klartext rein.
+            let metaParts = [];
+            let sexParts = [];
+            if (doc.pcdf) sexParts.push(doc.pcdf + ' weiblich');
+            if (doc.pcdm) sexParts.push(doc.pcdm + ' m\u00e4nnlich');
+            if (doc.pcdu) sexParts.push(doc.pcdu + ' ohne Geschlechtsangabe');
+            if (sexParts.length > 1) {
+                metaParts.push('<span><strong>Geschlecht:</strong> ' +
+                               sexParts.join(', ') + '</span>');
+            }
+            let formParts = [];
+            if (doc.ecR) formParts.push('Regest');
+            if (doc.ecS) formParts.push('Siegel');
+            if (doc.ecE) formParts.push('Eintrag');
+            if (doc.ecN) formParts.push('Nota');
+            if (formParts.length) {
+                metaParts.push('<span><strong>Erschliessungsform:</strong> ' +
+                               formParts.join(', ') + '</span>');
+            }
+            if (doc.ec > 1) {
+                metaParts.push('<span><strong>Rechtsgesch\u00e4fte:</strong> ' +
+                               doc.ec + ' in dieser Quelle</span>');
+            }
+            let metaHtml = metaParts.length
+                ? '<div class="preview-meta">' + metaParts.join('') + '</div>'
+                : '';
+
             previewTr.innerHTML =
-                '<td colspan="5"><div class="doc-preview">' +
+                '<td colspan="6"><div class="doc-preview">' +
                 '<div class="preview-text">' +
                 '<p class="preview-regest">' + esc(doc.tf || doc.t) + '</p>' +
-                '<div class="preview-meta">' +
-                '<span>' + esc(doc.d) + '</span>' +
-                (doc.p ? '<span>' + esc(doc.p) + '</span>' : '') +
-                '<span>' + esc(doc.cl) + '</span>' +
-                (doc.pcd ? '<span>' + doc.pcd + ' Personen</span>' : '') +
-                '</div>' +
+                metaHtml +
                 '<a href="' + esc(doc.u) + '" class="preview-link">Quelle anzeigen \u2192</a>' +
                 '</div>' +
                 thumbHtml +
@@ -847,16 +917,27 @@
 
         // --- Load data from external JSON file ---
         let tbody = document.getElementById('doc-tbody');
-        tbody.innerHTML = '<tr><td colspan="5" class="cell-placeholder">Daten werden geladen\u2026</td></tr>';
+        tbody.innerHTML = '<tr><td colspan="6" class="cell-placeholder">Daten werden geladen\u2026</td></tr>';
 
         fetch((window.ROOT_PATH || '.') + '/data/search.json')
             .then(function(r) { return r.json(); })
             .then(function(data) {
                 allDocs = data;
-                // Pre-compute search strings (V3: Umlaut-tolerant via EdCore.normForSearch)
+                // Pre-compute search strings, Umlaut-tolerant ueber
+                // EdCore.normForSearch. Felder:
+                //   t   Regest-Anriss (200 Zeichen)
+                //   tf  Volltext-Regest (kann deutlich laenger sein,
+                //       insbesondere bei Stadtbuecher-Eintraegen)
+                //   d   TEI-Datum-Form (z.B. "1177 V 10")
+                //   dn  Anzeige-Datum (z.B. "10.05.1177", "1198-1230"),
+                //       damit die Tabellenform tippbar ist
+                //   p   Ort, id   Signatur, cl  Korpus-Label
                 let norm = EdCore.normForSearch;
                 allDocs.forEach(function(doc) {
-                    doc._s = norm(doc.t + ' ' + doc.d + ' ' + doc.p + ' ' + doc.id + ' ' + doc.cl);
+                    doc._s = norm([
+                        doc.t, doc.tf || '', doc.d, doc.dn || '',
+                        doc.p, doc.id, doc.cl
+                    ].join(' '));
                     if (doc.cp && !collectionLabels[doc.cp]) collectionLabels[doc.cp] = doc.cl;
                 });
                 filteredDocs = allDocs.slice();
@@ -869,7 +950,7 @@
             })
             .catch(function(err) {
                 console.warn('Suchdaten konnten nicht geladen werden:', err);
-                tbody.innerHTML = '<tr><td colspan="5" class="cell-placeholder">Daten konnten nicht geladen werden.</td></tr>';
+                tbody.innerHTML = '<tr><td colspan="6" class="cell-placeholder">Daten konnten nicht geladen werden.</td></tr>';
             });
     }
 

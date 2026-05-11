@@ -90,36 +90,59 @@
    "basket".
    ========================================================================== */
 
+/* Datenkorb-Knopf. Drei Zustaende teilen sich Form, Groesse und
+   Position; nur die Glyphe und die Akzent-Farbe wechseln. Der Knopf
+   liegt in einer eigenen schmalen Tabellenspalte (col-basket) ganz
+   rechts und springt deshalb nie. */
 .basket-btn {
     display: inline-flex;
     align-items: center;
     justify-content: center;
     width: 22px;
     height: 22px;
-    margin-left: 6px;
+    margin-left: 0;
     padding: 0;
     background: transparent;
     border: 1px solid var(--color-border);
     border-radius: 50%;
-    font-family: var(--font-sans);
-    font-size: 14px;
     line-height: 1;
     color: var(--color-text-muted);
     cursor: pointer;
     vertical-align: middle;
-    transition: all var(--transition-fast);
+    transition: border-color var(--transition-fast),
+                background-color var(--transition-fast),
+                color var(--transition-fast);
+}
+.basket-btn-icon {
+    width: 12px;
+    height: 12px;
+    display: block;
 }
 .basket-btn:hover {
-    background: var(--color-bg-warm);
-    border-color: var(--color-border-dark);
-    color: var(--color-text);
-}
-.basket-btn.is-in {
-    background: var(--anno-place, #3a7a5c);
     border-color: var(--anno-place, #3a7a5c);
-    color: var(--color-text-inverse, #fff);
+    color: var(--anno-place, #3a7a5c);
+    background: color-mix(in srgb, var(--anno-place, #3a7a5c) 8%, transparent);
 }
-.basket-btn.is-in:hover { opacity: 0.85; }
+
+/* Zustand "im Korb": gleiche Outline-Form, aber Border in Akzentfarbe
+   und ein dezenter Tint im Inneren. Glyphe wird vom Plus zum Haekchen
+   gewechselt (im JS). Kein Vollfarb-Kreis mehr - das wirkte wie ein
+   anderer UI-Typ und las sich mit dem "x" als Schliessen-Knopf. */
+.basket-btn.is-in {
+    border-color: var(--anno-place, #3a7a5c);
+    background: color-mix(in srgb, var(--anno-place, #3a7a5c) 8%, transparent);
+    color: var(--anno-place, #3a7a5c);
+}
+/* Hover-Vorschau "Klick entfernt": Haekchen wird zum Minus, Border und
+   Tint kraeftiger, damit klar ist, dass der naechste Klick etwas tut.
+   Glyphen-Umschaltung ueber zwei Pfade im SVG (siehe basket.js
+   SVG_CHECK) statt CSS "d:", weil das Safari-kompatibel ist. */
+.basket-btn.is-in:hover {
+    background: color-mix(in srgb, var(--anno-place, #3a7a5c) 14%, transparent);
+}
+.basket-btn-icon .glyph-minus { display: none; }
+.basket-btn.is-in:hover .basket-btn-icon .glyph-check { display: none; }
+.basket-btn.is-in:hover .basket-btn-icon .glyph-minus { display: inline; }
 
 .nav-basket {
     position: relative;
@@ -341,14 +364,17 @@
     max-width: 220px;
 }
 
-/* Derived-only basket button (promote on click) */
+/* Derived-only basket button: abgeleitet aus einer gesammelten Quelle,
+   nicht selbst gesammelt. Border bleibt durchgezogen, Glyphe ist ein
+   gestricheltes Plus (siehe basket.js SVG_DASHED_PLUS). Akzentfarbe
+   dezent, damit der State zwischen "absent" und "is-in" sitzt. */
 .basket-btn.is-derived {
-    border-style: dashed;
+    border-color: var(--color-border-dark);
     color: var(--color-text-muted);
     background: transparent;
 }
 .basket-btn.is-derived:hover {
-    border-color: var(--color-text);
-    color: var(--color-text);
-    border-style: solid;
+    border-color: var(--anno-place, #3a7a5c);
+    color: var(--anno-place, #3a7a5c);
+    background: color-mix(in srgb, var(--anno-place, #3a7a5c) 8%, transparent);
 }

@@ -1,5 +1,5 @@
 /* ==========================================================================
-   Tip system — three classes, one mechanic for popovers, one for hints.
+   Tip system — four classes, one mechanic for popovers, one for hints.
 
    Klasse 1: tip-popover--glossary
      Begriffsdefinitionen. Trigger ist ein kleines i-Icon neben einem
@@ -12,15 +12,22 @@
      Inhalt: kurze Beschreibung woher die Zahl kommt und wie sie
      aggregiert wurde. Kein XPath.
 
-   Klasse 3: tip-hint
+   Klasse 3: tip-popover--help
+     UI-/Funktions-Hilfe. Trigger ist ein i-Icon neben einem UI-Label
+     ("Suche", "Filter", "Datenkorb"). Gleiche Mechanik wie Glossar.
+     Inhalt: Erklaerung WIE das UI funktioniert (was wird durchsucht?
+     wie filtert das?), nicht WAS ein Begriff bedeutet. Abgrenzung zu
+     Klasse 1: Glossar erklaert Fachbegriffe, Help erklaert UI-Verhalten.
+
+   Klasse 4: tip-hint
      Schneller Hover-Tooltip ohne Klick-Persistenz. Folgt der Maus.
      Fuer UI-Orientierung (Toolbar-Actions, Navigation, Histogramm-Bars)
      und fuer Entitaeten im Volltext (Personennamen, Annotationen).
      Trigger: data-hint-Attribut auf beliebigem Element.
 
-   Die Popover-Familie (1+2) teilt sich Mechanik und Markup, unterscheidet
-   sich nur durch den Modifier am Container. Hint (3) ist eine eigene
-   Mechanik mit einem einzigen globalen Tooltip-Element.
+   Die Popover-Familie (1+2+3) teilt sich Mechanik und Markup,
+   unterscheidet sich nur durch den Modifier am Container. Hint (4) ist
+   eine eigene Mechanik mit einem einzigen globalen Tooltip-Element.
    ========================================================================== */
 
 
@@ -163,6 +170,12 @@
 /* Daten: kuehler Akzent, signalisiert "Datenherkunft". */
 .tip-popover--data {
     border-top: 3px solid var(--color-accent);
+}
+
+/* Hilfe: neutraler dunkler Akzent, signalisiert "UI-Erlaeuterung",
+   abgegrenzt von Glossar (Begriff) und Daten (Herkunft). */
+.tip-popover--help {
+    border-top: 3px solid var(--color-text-muted);
 }
 
 
