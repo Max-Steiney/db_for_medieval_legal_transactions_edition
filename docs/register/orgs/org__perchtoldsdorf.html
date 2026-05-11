@@ -9,16 +9,16 @@
     <title>Perchtoldsorf, Datenbank</title>
     <link rel="preload" as="font" type="font/woff2" crossorigin
           href="../../static/fonts/inter-400-latin.woff2">
-    <link rel="stylesheet" href="../../static/css/fonts.css?v=20260511134507">
-    <link rel="stylesheet" href="../../static/css/tokens.css?v=20260511134507">
-    <link rel="stylesheet" href="../../static/css/base.css?v=20260511134507">
-    <link rel="stylesheet" href="../../static/css/components.css?v=20260511134507">
-    <link rel="stylesheet" href="../../static/css/responsive.css?v=20260511134507">
-    <link rel="stylesheet" href="../../static/css/print.css?v=20260511134507">
-    <link rel="stylesheet" href="../../static/css/tip.css?v=20260511134507">
+    <link rel="stylesheet" href="../../static/css/fonts.css?v=20260511140120">
+    <link rel="stylesheet" href="../../static/css/tokens.css?v=20260511140120">
+    <link rel="stylesheet" href="../../static/css/base.css?v=20260511140120">
+    <link rel="stylesheet" href="../../static/css/components.css?v=20260511140120">
+    <link rel="stylesheet" href="../../static/css/responsive.css?v=20260511140120">
+    <link rel="stylesheet" href="../../static/css/print.css?v=20260511140120">
+    <link rel="stylesheet" href="../../static/css/tip.css?v=20260511140120">
     
-<link rel="stylesheet" href="../../static/css/document.css?v=20260511134507">
-<link rel="stylesheet" href="../../static/css/person.css?v=20260511134507">
+<link rel="stylesheet" href="../../static/css/document.css?v=20260511140120">
+<link rel="stylesheet" href="../../static/css/person.css?v=20260511140120">
 
 </head>
 <body data-root-path="../.."
@@ -128,9 +128,17 @@
         </div>
     </div>
 
-    <header class="person-header person-header-grid">
-        <div class="ph-identity">
-            <h1 class="person-name">Perchtoldsorf</h1>
+    <header class="person-header">
+        <div class="person-header-top">
+            <div class="ph-identity">
+                <h1 class="person-name">Perchtoldsorf</h1>
+            </div>
+            
+        </div>
+
+        
+        
+        <div class="ph-subline">
             
             
             
@@ -144,38 +152,22 @@
                 </div>
             </details>
             
-        </div>
-        <aside class="ph-meta">
-            <dl class="ph-meta-list">
-                
-                <div class="ph-meta-row">
-                    <dt>Typ</dt>
-                    <dd>Gemeinde</dd>
-                </div>
-                
-                
-                
-                <div class="ph-meta-row">
-                    <dt>Belegt</dt>
-                    <dd>1355&ndash;1409</dd>
-                </div>
-                
-                
-                
-                <div class="ph-meta-row">
-                    <dt>Quellen</dt>
-                    <dd>17</dd>
-                </div>
-                <div class="ph-meta-row">
-                    <dt>ID</dt>
-                    <dd><code class="person-id">org__perchtoldsdorf</code></dd>
-                </div>
-            </dl>
             
-        </aside>
-    </header>
+        </div>
+        
 
-    
+        <dl class="ph-meta-strip">
+            <div class="ph-meta-pair"><dt>Typ</dt><dd>Gemeinde</dd></div>
+            
+            
+            <div class="ph-meta-pair"><dt>Belegt</dt><dd>1355&ndash;1409</dd></div>
+            
+            
+            
+            <div class="ph-meta-pair"><dt>Quellen</dt><dd>17</dd></div>
+            <div class="ph-meta-pair"><dt>ID</dt><dd><code class="person-id">org__perchtoldsdorf</code></dd></div>
+        </dl>
+    </header>
 
     
     <section class="person-sources" aria-label="Quellen mit Nennung">
@@ -424,6 +416,35 @@
             <div class="table-filter">
                 <input type="search" class="table-filter-input" data-target="rel" placeholder="In der Tabelle filtern&hellip;" aria-label="In der Tabelle filtern">
                 <span class="table-filter-status"></span>
+                
+<span class="tip-wrap">
+    <button type="button" class="tip-trigger tip-trigger--icon"
+            aria-expanded="false" aria-haspopup="dialog"
+            aria-controls="org-rel-filter-help-occ"
+            data-tip="org-rel-filter-help-occ"
+            aria-label="Hilfe: Beziehungen filtern">
+        <svg width="13" height="13" viewBox="0 0 16 16" aria-hidden="true">
+            <circle cx="8" cy="8" r="7" stroke="currentColor" stroke-width="1.4" fill="none"/>
+            <text x="8" y="11.6" text-anchor="middle" font-size="9.5" font-weight="700"
+                  fill="currentColor" font-family="Georgia, serif">i</text>
+        </svg>
+    </button>
+    <aside class="tip-popover tip-popover--help"
+           id="org-rel-filter-help-occ" role="dialog" aria-hidden="true"
+           aria-label="Hilfe: Beziehungen filtern">
+        <header class="tip-head">
+            <h3 class="tip-title">Beziehungen filtern</h3>
+            <button type="button" class="tip-close" aria-label="Schlie&szlig;en">&times;</button>
+        </header>
+        <div class="tip-body">
+            
+                    <p>Volltextfilter &uuml;ber den sichtbaren Inhalt dieser Tabelle: <strong>Person</strong>, <strong>Bezeichnung</strong>, <strong>Signatur</strong> und <strong>Datum</strong>.</p>
+                    <p>Reine Substring-Suche, ohne Umlaut-Normalisierung. Mehrere W&ouml;rter werden als <em>eine</em> Zeichenkette gesucht (keine UND-Verkn&uuml;pfung).</p>
+                
+        </div>
+    </aside>
+</span>
+
             </div>
             
             <table class="rel-table sortable-table">
@@ -440,7 +461,7 @@
                     <tr>
                         <td class="rel-col-other" data-sort-value="Thomas Radendorfer">
                             
-                                <a class="rel-other-link" href="../../register/persons/pe__thomas_radendorfer_QGW_II_I_1075.html">Thomas Radendorfer</a>
+                                <a class="rel-other-link rel-other-link--person" href="../../register/persons/pe__thomas_radendorfer_QGW_II_I_1075.html">Thomas Radendorfer</a>
                             
                         </td>
                         <td class="rel-col-label"><em>puriger</em></td>
@@ -455,7 +476,7 @@
                     <tr>
                         <td class="rel-col-other" data-sort-value="Niklas Turnkchart">
                             
-                                <a class="rel-other-link" href="../../register/persons/pe__niklas_turnkchart_QGW_II_I_1075.html">Niklas Turnkchart</a>
+                                <a class="rel-other-link rel-other-link--person" href="../../register/persons/pe__niklas_turnkchart_QGW_II_I_1075.html">Niklas Turnkchart</a>
                             
                         </td>
                         <td class="rel-col-label"><em>Bürger</em></td>
@@ -470,7 +491,7 @@
                     <tr>
                         <td class="rel-col-other" data-sort-value="Thomas Radendorfer">
                             
-                                <a class="rel-other-link" href="../../register/persons/pe__thomas_radendorfer_QGW_II_I_1075.html">Thomas Radendorfer</a>
+                                <a class="rel-other-link rel-other-link--person" href="../../register/persons/pe__thomas_radendorfer_QGW_II_I_1075.html">Thomas Radendorfer</a>
                             
                         </td>
                         <td class="rel-col-label"><em>purger</em></td>
@@ -485,7 +506,7 @@
                     <tr>
                         <td class="rel-col-other" data-sort-value="Thomas Radendorfer">
                             
-                                <a class="rel-other-link" href="../../register/persons/pe__thomas_radendorfer_QGW_II_I_1075.html">Thomas Radendorfer</a>
+                                <a class="rel-other-link rel-other-link--person" href="../../register/persons/pe__thomas_radendorfer_QGW_II_I_1075.html">Thomas Radendorfer</a>
                             
                         </td>
                         <td class="rel-col-label"><em>purger</em></td>
@@ -500,7 +521,7 @@
                     <tr>
                         <td class="rel-col-other" data-sort-value="Johann">
                             
-                                <a class="rel-other-link" href="../../register/persons/pe__johann_von_perchtoldsdorf_QGW_II_I_1330.html">Johann</a>
+                                <a class="rel-other-link rel-other-link--person" href="../../register/persons/pe__johann_von_perchtoldsdorf_QGW_II_I_1330.html">Johann</a>
                             
                         </td>
                         <td class="rel-col-label"><em>marktrichter</em></td>
@@ -515,7 +536,7 @@
                     <tr>
                         <td class="rel-col-other" data-sort-value="Niklas Turnkchart">
                             
-                                <a class="rel-other-link" href="../../register/persons/pe__niklas_turnkchart_QGW_II_I_1075.html">Niklas Turnkchart</a>
+                                <a class="rel-other-link rel-other-link--person" href="../../register/persons/pe__niklas_turnkchart_QGW_II_I_1075.html">Niklas Turnkchart</a>
                             
                         </td>
                         <td class="rel-col-label"><em>purger</em></td>
@@ -530,7 +551,7 @@
                     <tr>
                         <td class="rel-col-other" data-sort-value="Johann Schaffer">
                             
-                                <a class="rel-other-link" href="../../register/persons/pe__johann_schaffer_QGW_II_I_1646.html">Johann Schaffer</a>
+                                <a class="rel-other-link rel-other-link--person" href="../../register/persons/pe__johann_schaffer_QGW_II_I_1646.html">Johann Schaffer</a>
                             
                         </td>
                         <td class="rel-col-label"><em>Marktrichters</em></td>
@@ -545,7 +566,7 @@
                     <tr>
                         <td class="rel-col-other" data-sort-value="Johann Pölzl von Perchtoldsdorf">
                             
-                                <a class="rel-other-link" href="../../register/persons/pe__johann_poelzl_QGW_II_I_1646.html">Johann Pölzl von Perchtoldsdorf</a>
+                                <a class="rel-other-link rel-other-link--person" href="../../register/persons/pe__johann_poelzl_QGW_II_I_1646.html">Johann Pölzl von Perchtoldsdorf</a>
                             
                         </td>
                         <td class="rel-col-label"><em>purger</em></td>
@@ -560,7 +581,7 @@
                     <tr>
                         <td class="rel-col-other" data-sort-value="Johann Pölzl von Perchtoldsdorf">
                             
-                                <a class="rel-other-link" href="../../register/persons/pe__johann_poelzl_QGW_II_I_1646.html">Johann Pölzl von Perchtoldsdorf</a>
+                                <a class="rel-other-link rel-other-link--person" href="../../register/persons/pe__johann_poelzl_QGW_II_I_1646.html">Johann Pölzl von Perchtoldsdorf</a>
                             
                         </td>
                         <td class="rel-col-label"><em>rates</em></td>
@@ -575,7 +596,7 @@
                     <tr>
                         <td class="rel-col-other" data-sort-value="Johann Schaffer">
                             
-                                <a class="rel-other-link" href="../../register/persons/pe__johann_schaffer_QGW_II_I_1646.html">Johann Schaffer</a>
+                                <a class="rel-other-link rel-other-link--person" href="../../register/persons/pe__johann_schaffer_QGW_II_I_1646.html">Johann Schaffer</a>
                             
                         </td>
                         <td class="rel-col-label"><em>markchrichter</em></td>
@@ -590,7 +611,7 @@
                     <tr>
                         <td class="rel-col-other" data-sort-value="Peter Stainpekch von Perchtoldsdorf">
                             
-                                <a class="rel-other-link" href="../../register/persons/pe__peter_stainpekch_QGW_II_I_1746.html">Peter Stainpekch von Perchtoldsdorf</a>
+                                <a class="rel-other-link rel-other-link--person" href="../../register/persons/pe__peter_stainpekch_QGW_II_I_1746.html">Peter Stainpekch von Perchtoldsdorf</a>
                             
                         </td>
                         <td class="rel-col-label"><em>burger</em></td>
@@ -605,7 +626,7 @@
                     <tr>
                         <td class="rel-col-other" data-sort-value="Peter Stainpekch von Perchtoldsdorf">
                             
-                                <a class="rel-other-link" href="../../register/persons/pe__peter_stainpekch_QGW_II_I_1746.html">Peter Stainpekch von Perchtoldsdorf</a>
+                                <a class="rel-other-link rel-other-link--person" href="../../register/persons/pe__peter_stainpekch_QGW_II_I_1746.html">Peter Stainpekch von Perchtoldsdorf</a>
                             
                         </td>
                         <td class="rel-col-label"><em>burger</em></td>
@@ -620,7 +641,7 @@
                     <tr>
                         <td class="rel-col-other" data-sort-value="Johann Schell">
                             
-                                <a class="rel-other-link" href="../../register/persons/pe__johann_schell_QGW_II_I_1749.html">Johann Schell</a>
+                                <a class="rel-other-link rel-other-link--person" href="../../register/persons/pe__johann_schell_QGW_II_I_1749.html">Johann Schell</a>
                             
                         </td>
                         <td class="rel-col-label"><em>richter</em></td>
@@ -635,7 +656,7 @@
                     <tr>
                         <td class="rel-col-other" data-sort-value="Johann Pölzl von Perchtoldsdorf">
                             
-                                <a class="rel-other-link" href="../../register/persons/pe__johann_poelzl_QGW_II_I_1646.html">Johann Pölzl von Perchtoldsdorf</a>
+                                <a class="rel-other-link rel-other-link--person" href="../../register/persons/pe__johann_poelzl_QGW_II_I_1646.html">Johann Pölzl von Perchtoldsdorf</a>
                             
                         </td>
                         <td class="rel-col-label"><em>rates</em></td>
@@ -650,7 +671,7 @@
                     <tr>
                         <td class="rel-col-other" data-sort-value="Bernhard Haug">
                             
-                                <a class="rel-other-link" href="../../register/persons/pe__bernhard_haug_QGW_II_I_1749.html">Bernhard Haug</a>
+                                <a class="rel-other-link rel-other-link--person" href="../../register/persons/pe__bernhard_haug_QGW_II_I_1749.html">Bernhard Haug</a>
                             
                         </td>
                         <td class="rel-col-label"><em>rates</em></td>
@@ -665,7 +686,7 @@
                     <tr>
                         <td class="rel-col-other" data-sort-value="Leb Nussdorfer von Perchtoldsdorf">
                             
-                                <a class="rel-other-link" href="../../register/persons/pe__leb_nussdorfer_QGW_II_I_1752.html">Leb Nussdorfer von Perchtoldsdorf</a>
+                                <a class="rel-other-link rel-other-link--person" href="../../register/persons/pe__leb_nussdorfer_QGW_II_I_1752.html">Leb Nussdorfer von Perchtoldsdorf</a>
                             
                         </td>
                         <td class="rel-col-label"><em>rat</em></td>
@@ -680,7 +701,7 @@
                     <tr>
                         <td class="rel-col-other" data-sort-value="Leb Nussdorfer von Perchtoldsdorf">
                             
-                                <a class="rel-other-link" href="../../register/persons/pe__leb_nussdorfer_QGW_II_I_1752.html">Leb Nussdorfer von Perchtoldsdorf</a>
+                                <a class="rel-other-link rel-other-link--person" href="../../register/persons/pe__leb_nussdorfer_QGW_II_I_1752.html">Leb Nussdorfer von Perchtoldsdorf</a>
                             
                         </td>
                         <td class="rel-col-label"><em>purger</em></td>
@@ -695,7 +716,7 @@
                     <tr>
                         <td class="rel-col-other" data-sort-value="Johann Pölzl von Perchtoldsdorf">
                             
-                                <a class="rel-other-link" href="../../register/persons/pe__johann_poelzl_QGW_II_I_1646.html">Johann Pölzl von Perchtoldsdorf</a>
+                                <a class="rel-other-link rel-other-link--person" href="../../register/persons/pe__johann_poelzl_QGW_II_I_1646.html">Johann Pölzl von Perchtoldsdorf</a>
                             
                         </td>
                         <td class="rel-col-label"><em>rat</em></td>
@@ -710,7 +731,7 @@
                     <tr>
                         <td class="rel-col-other" data-sort-value="Johann Pölzl von Perchtoldsdorf">
                             
-                                <a class="rel-other-link" href="../../register/persons/pe__johann_poelzl_QGW_II_I_1646.html">Johann Pölzl von Perchtoldsdorf</a>
+                                <a class="rel-other-link rel-other-link--person" href="../../register/persons/pe__johann_poelzl_QGW_II_I_1646.html">Johann Pölzl von Perchtoldsdorf</a>
                             
                         </td>
                         <td class="rel-col-label"><em>purger</em></td>
@@ -725,7 +746,7 @@
                     <tr>
                         <td class="rel-col-other" data-sort-value="Bernhard Haug">
                             
-                                <a class="rel-other-link" href="../../register/persons/pe__bernhard_haug_QGW_II_I_1749.html">Bernhard Haug</a>
+                                <a class="rel-other-link rel-other-link--person" href="../../register/persons/pe__bernhard_haug_QGW_II_I_1749.html">Bernhard Haug</a>
                             
                         </td>
                         <td class="rel-col-label"><em>rat</em></td>
@@ -740,7 +761,7 @@
                     <tr>
                         <td class="rel-col-other" data-sort-value="Niklas Sauberhart">
                             
-                                <a class="rel-other-link" href="../../register/persons/pe__niklas_sauberhart_QGW_II_I_1756.html">Niklas Sauberhart</a>
+                                <a class="rel-other-link rel-other-link--person" href="../../register/persons/pe__niklas_sauberhart_QGW_II_I_1756.html">Niklas Sauberhart</a>
                             
                         </td>
                         <td class="rel-col-label"><em>purger</em></td>
@@ -755,7 +776,7 @@
                     <tr>
                         <td class="rel-col-other" data-sort-value="Niklas Sauberhart">
                             
-                                <a class="rel-other-link" href="../../register/persons/pe__niklas_sauberhart_QGW_II_I_1756.html">Niklas Sauberhart</a>
+                                <a class="rel-other-link rel-other-link--person" href="../../register/persons/pe__niklas_sauberhart_QGW_II_I_1756.html">Niklas Sauberhart</a>
                             
                         </td>
                         <td class="rel-col-label"><em>rates</em></td>
@@ -770,7 +791,7 @@
                     <tr>
                         <td class="rel-col-other" data-sort-value="Johann von Wilhelmsburg">
                             
-                                <a class="rel-other-link" href="../../register/persons/pe__johann_von_wilhelmsburg_QGW_II_I_471.html">Johann von Wilhelmsburg</a>
+                                <a class="rel-other-link rel-other-link--person" href="../../register/persons/pe__johann_von_wilhelmsburg_QGW_II_I_471.html">Johann von Wilhelmsburg</a>
                             
                         </td>
                         <td class="rel-col-label"><em>richter</em></td>
@@ -785,7 +806,7 @@
                     <tr>
                         <td class="rel-col-other" data-sort-value="Heinrich Wurmprand">
                             
-                                <a class="rel-other-link" href="../../register/persons/pe__heinrich_wurmprand_QGW_II_I_698.html">Heinrich Wurmprand</a>
+                                <a class="rel-other-link rel-other-link--person" href="../../register/persons/pe__heinrich_wurmprand_QGW_II_I_698.html">Heinrich Wurmprand</a>
                             
                         </td>
                         <td class="rel-col-label"><em>pharrer</em></td>
@@ -800,7 +821,7 @@
                     <tr>
                         <td class="rel-col-other" data-sort-value="Lorenz Scharrer">
                             
-                                <a class="rel-other-link" href="../../register/persons/pe__laurenz_scharrer_QGW_II_I_769.html">Lorenz Scharrer</a>
+                                <a class="rel-other-link rel-other-link--person" href="../../register/persons/pe__laurenz_scharrer_QGW_II_I_769.html">Lorenz Scharrer</a>
                             
                         </td>
                         <td class="rel-col-label"><em>richter</em></td>
@@ -815,7 +836,7 @@
                     <tr>
                         <td class="rel-col-other" data-sort-value="Lorenz Scharrer">
                             
-                                <a class="rel-other-link" href="../../register/persons/pe__laurenz_scharrer_QGW_II_I_769.html">Lorenz Scharrer</a>
+                                <a class="rel-other-link rel-other-link--person" href="../../register/persons/pe__laurenz_scharrer_QGW_II_I_769.html">Lorenz Scharrer</a>
                             
                         </td>
                         <td class="rel-col-label"><em>marchtrichter</em></td>
@@ -830,7 +851,7 @@
                     <tr>
                         <td class="rel-col-other" data-sort-value="Ulrich von Leiss von Leiss">
                             
-                                <a class="rel-other-link" href="../../register/persons/pe__ulrich_von_leiss_QGW_II_I_907.html">Ulrich von Leiss von Leiss</a>
+                                <a class="rel-other-link rel-other-link--person" href="../../register/persons/pe__ulrich_von_leiss_QGW_II_I_907.html">Ulrich von Leiss von Leiss</a>
                             
                         </td>
                         <td class="rel-col-label"><em>markchtrichter</em></td>
@@ -845,7 +866,7 @@
                     <tr>
                         <td class="rel-col-other" data-sort-value="Ulrich von Leiss von Leiss">
                             
-                                <a class="rel-other-link" href="../../register/persons/pe__ulrich_von_leiss_QGW_II_I_907.html">Ulrich von Leiss von Leiss</a>
+                                <a class="rel-other-link rel-other-link--person" href="../../register/persons/pe__ulrich_von_leiss_QGW_II_I_907.html">Ulrich von Leiss von Leiss</a>
                             
                         </td>
                         <td class="rel-col-label"><em>richter</em></td>
@@ -860,7 +881,7 @@
                     <tr>
                         <td class="rel-col-other" data-sort-value="Thomas Radendorfer">
                             
-                                <a class="rel-other-link" href="../../register/persons/pe__thomas_radendorfer_QGW_II_I_1075.html">Thomas Radendorfer</a>
+                                <a class="rel-other-link rel-other-link--person" href="../../register/persons/pe__thomas_radendorfer_QGW_II_I_1075.html">Thomas Radendorfer</a>
                             
                         </td>
                         <td class="rel-col-label"><em>puriger</em></td>
@@ -904,13 +925,13 @@
         </div>
     </footer>
 
-    <script src="../../static/js/core.js?v=20260511134507"></script>
-    <script src="../../static/js/tip.js?v=20260511134507"></script>
-    <script src="../../static/js/hint.js?v=20260511134507"></script>
-    <script src="../../static/js/basket.js?v=20260511134507"></script>
+    <script src="../../static/js/core.js?v=20260511140120"></script>
+    <script src="../../static/js/tip.js?v=20260511140120"></script>
+    <script src="../../static/js/hint.js?v=20260511140120"></script>
+    <script src="../../static/js/basket.js?v=20260511140120"></script>
     
-<script src="../../static/js/profile.js?v=20260511134507"></script>
-<script src="../../static/js/basket-mount.js?v=20260511134507"></script>
+<script src="../../static/js/profile.js?v=20260511140120"></script>
+<script src="../../static/js/basket-mount.js?v=20260511140120"></script>
 
 </body>
 </html>

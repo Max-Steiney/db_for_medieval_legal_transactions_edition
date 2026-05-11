@@ -13,13 +13,10 @@
 }
 
 /* --- Toolbar (nur Breadcrumb + Korb-Mount) ---------------------------- */
-/* Meta-Strip (Belegt, Geschlecht, ID, ...) ist in den Header gewandert,
-   damit die Toolbar nur eine Zeile hoch ist. */
+/* Nicht sticky: scrollt mit. Das Profil ist eine Recherche-Detailseite,
+   keine App-Oberflaeche mit fortlaufenden Aktionen. */
 
 .person-toolbar {
-    position: sticky;
-    top: 3.5rem;
-    z-index: 5;
     background: var(--color-bg);
     border-bottom: 1px solid var(--color-border);
     margin: calc(-1 * var(--space-xl)) calc(-1 * var(--space-lg)) 0;
@@ -72,58 +69,63 @@
 }
 
 /* --- Header ------------------------------------------------------------ */
+/* Kompakt-Layout: H1 + Mikro-Rollen-Strip in einer Zeile, dann eine
+   Identitaets-Sub-Zeile (Wortlaut, Bezeichnungen, externe Links) und
+   eine horizontale Meta-Strip-Zeile (Geschlecht, Belegt, ID, ...).
+   Spart die Weiss-Spalte rechts ueber dem Wahrzeichen-H1. */
 
 .person-header {
-    margin: var(--space-md) auto var(--space-sm);
+    margin: var(--space-sm) auto var(--space-sm);
     max-width: 78rem;
     padding: 0 var(--space-md);
 }
 
-/* Zwei-Spalten-Layout: Identitaet links, Meta rechts. Bei schmalen
-   Viewports fallen die Spalten untereinander. */
-.person-header-grid {
-    display: grid;
-    grid-template-columns: minmax(0, 1fr) minmax(14rem, 22rem);
-    gap: var(--space-md) var(--space-xl);
-    align-items: start;
+.person-header-top {
+    display: flex;
+    align-items: baseline;
+    justify-content: space-between;
+    gap: var(--space-md);
+    flex-wrap: wrap;
 }
 
 .ph-identity {
     min-width: 0;
+    flex: 1 1 auto;
 }
 
-.ph-meta {
-    border-left: 1px solid var(--color-border);
-    padding-left: var(--space-md);
-}
-
-.ph-meta-list {
-    margin: 0;
-    display: grid;
-    grid-template-columns: max-content 1fr;
-    gap: 2px var(--space-sm);
+/* Meta-Strip: horizontale Reihe key/value-Paare. dt klein und uppercase
+   als Label, dd direkt daneben. Trennung durch dezenten Bullet. */
+.ph-meta-strip {
+    margin: var(--space-xs) 0 0;
+    display: flex;
+    flex-wrap: wrap;
+    align-items: baseline;
+    gap: var(--space-xs) var(--space-md);
     font-size: var(--text-sm);
+    padding-top: var(--space-xs);
+    border-top: 1px solid var(--color-border-light);
 }
 
-.ph-meta-row {
-    display: contents;
+.ph-meta-strip .ph-meta-pair {
+    display: inline-flex;
+    align-items: baseline;
+    gap: var(--space-xs);
 }
 
-.ph-meta-list dt {
+.ph-meta-strip dt {
     color: var(--color-text-light);
     text-transform: uppercase;
     letter-spacing: 0.04em;
     font-size: var(--text-xs);
-    padding-top: 2px;
-    white-space: nowrap;
+    margin: 0;
 }
 
-.ph-meta-list dd {
+.ph-meta-strip dd {
     margin: 0;
     color: var(--color-text);
 }
 
-.ph-meta-list .person-id {
+.ph-meta-strip .person-id {
     font-family: var(--font-mono);
     font-size: var(--text-xs);
     background: var(--color-bg-warm);
@@ -131,44 +133,44 @@
     border-radius: var(--radius);
 }
 
-.ph-extlinks {
-    margin-top: var(--space-sm);
+/* Identitaets-Sub-Zeile zwischen H1 und Meta-Strip: Quellen-Wortlaut,
+   Genannt-als, ext-Links. Eine Zeile, mit Bullets getrennt. */
+.ph-subline {
+    margin: var(--space-xs) 0 0;
     font-size: var(--text-sm);
     display: flex;
     flex-wrap: wrap;
-    gap: var(--space-xs) var(--space-sm);
+    align-items: baseline;
+    gap: var(--space-xs) var(--space-md);
+    color: var(--color-text-muted);
 }
 
-.ph-extlinks .ext-link {
+.ph-subline > * { display: inline-flex; align-items: baseline; gap: var(--space-xs); }
+
+.ph-subline .ext-link {
     color: var(--anno-person);
     text-decoration: none;
 }
-
-.ph-extlinks .ext-link:hover {
-    text-decoration: underline;
-}
-
-.org-profile .ph-extlinks .ext-link { color: var(--anno-org); }
+.ph-subline .ext-link:hover { text-decoration: underline; }
+.org-profile .ph-subline .ext-link { color: var(--anno-org); }
 
 .person-name {
     font-family: var(--font-serif);
     font-size: var(--text-2xl);
     line-height: var(--leading-tight);
-    margin: 0 0 var(--space-xs);
+    margin: 0;
     color: var(--color-text);
 }
 
 .person-name .pn-fn,
 .person-name .pn-sn,
 .person-name .pn-an {
-    margin-right: 0.4em;
+    margin-right: 0.3em;
 }
 
 .person-note {
     font-style: italic;
     color: var(--color-text-muted);
-    margin: var(--space-xs) 0;
-    max-width: 60rem;
 }
 
 /* "Genannt als"-Liste als <details>: Default kollabiert, Summary zeigt
@@ -237,12 +239,19 @@
 }
 
 /* --- Sections (Beziehungen + Quellen) --------------------------------- */
+/* Erste Section nach Header (i.d.R. Quellen) hat reduzierten Top-Margin,
+   damit die Tabelle so nah wie moeglich am Header sitzt. */
 
 .person-relations,
 .person-sources {
     max-width: 78rem;
-    margin: var(--space-lg) auto;
+    margin: var(--space-md) auto;
     padding: 0 var(--space-md);
+}
+
+.person-header + .person-sources,
+.person-header + .person-relations {
+    margin-top: var(--space-sm);
 }
 
 .section-head {
@@ -351,15 +360,17 @@
     border-bottom: 0;
 }
 
+/* Link-Farbe folgt dem ZIEL-Typ, nicht dem Profil-Kontext:
+   - Verlinkte Person -> blau (anno-person)
+   - Verlinkte Org    -> lila (anno-org)
+   So bleibt die semantische Farbe konsistent ueber alle Tabellen. */
 .rel-other-link {
-    color: var(--anno-person);
     text-decoration: none;
     font-weight: 500;
 }
-
-.rel-other-link:hover {
-    text-decoration: underline;
-}
+.rel-other-link--person { color: var(--anno-person); }
+.rel-other-link--org    { color: var(--anno-org); }
+.rel-other-link:hover { text-decoration: underline; }
 
 .rel-other-plain {
     color: var(--color-text);
@@ -445,10 +456,13 @@
     font-size: var(--text-xs);
 }
 
+/* Signatur-Link in der Quellen-Tabelle: Farbe folgt dem Profil-Kontext,
+   weil die Signatur die Quelle der aktuellen Entitaet adressiert. */
 .person-source-table .src-col-idno a {
     color: var(--anno-person);
     text-decoration: none;
 }
+.org-profile .person-source-table .src-col-idno a { color: var(--anno-org); }
 
 .person-source-table .src-col-idno a:hover {
     text-decoration: underline;
@@ -470,24 +484,18 @@
 }
 
 @media (max-width: 900px) {
-    .person-header-grid {
-        grid-template-columns: 1fr;
-        gap: var(--space-sm);
+    .person-header-top {
+        flex-direction: column;
+        align-items: stretch;
     }
-    .ph-meta {
-        border-left: 0;
-        border-top: 1px solid var(--color-border);
-        padding-left: 0;
-        padding-top: var(--space-sm);
-    }
-    .role-inline-total { margin-left: 0; }
+    .role-micro { align-self: flex-start; }
 }
 
 @media (max-width: 768px) {
-    .person-toolbar { position: static; }
     .rel-table,
     .person-source-table { font-size: var(--text-xs); }
     .person-source-table .src-col-corpus { display: none; }
+    .ph-meta-strip { gap: var(--space-xs) var(--space-sm); }
 }
 
 /* Place-Profil-Geo-Block: Adresse, Parzelle, Koordinaten, GeoNames als
@@ -535,57 +543,43 @@
     margin-right: var(--space-xs);
 }
 
-/* --- Rollen-Inline-Strip (Person/Org) --------------------------------- */
-/* Inline-Zeile direkt unter dem Header, keine Card, kein Title. Vier
-   Zellen + Summen-Chip rechts. Hint-Text liegt als data-hint am Total. */
-.role-inline {
-    max-width: 78rem;
-    margin: 0 auto var(--space-md);
-    padding: 0 var(--space-md);
-    display: flex;
+/* --- Rollen-Mikro-Strip ----------------------------------------------- */
+/* Mikro-Pillen rechts neben H1, in einer Zeile. Vier kleine Pillen,
+   jede zeigt Count + Label-Initial. Hover oder Hint zeigt vollen Label. */
+.role-micro {
+    display: inline-flex;
     flex-wrap: wrap;
-    align-items: center;
-    gap: var(--space-xs) var(--space-md);
-    font-size: var(--text-sm);
-}
-.role-inline-label {
+    align-items: baseline;
+    gap: 2px;
     font-size: var(--text-xs);
-    color: var(--color-text-light);
-    text-transform: uppercase;
-    letter-spacing: 0.04em;
+    flex: 0 0 auto;
 }
-.role-inline-cell {
+.role-micro-cell {
     display: inline-flex;
     align-items: baseline;
-    gap: var(--space-xs);
-    padding: 1px 8px 1px 10px;
-    border-left: 3px solid var(--color-border);
+    gap: 4px;
+    padding: 1px 6px;
+    border-left: 2px solid var(--color-border);
     background: var(--color-bg-warm);
     border-radius: 0 var(--radius) var(--radius) 0;
-}
-.role-inline-cell .ri-count {
-    font-family: var(--font-serif);
-    font-size: var(--text-base);
-    color: var(--color-text);
-    font-weight: 600;
-}
-.role-inline-cell .ri-label {
-    font-size: var(--text-xs);
-    color: var(--color-text-muted);
-}
-.role-inline-cell.is-zero { opacity: 0.4; }
-.role-inline-issuer    { border-left-color: var(--anno-fn-issuer, var(--anno-person)); }
-.role-inline-recipient { border-left-color: var(--anno-fn-recipient, var(--anno-org)); }
-.role-inline-witness   { border-left-color: var(--anno-fn-witness, var(--color-accent)); }
-.role-inline-other     { border-left-color: var(--anno-fn-other, var(--color-text-light)); }
-.role-inline-total {
-    margin-left: auto;
-    font-family: var(--font-mono);
-    font-size: var(--text-xs);
-    color: var(--color-text-muted);
+    line-height: 1.4;
     cursor: help;
-    border-bottom: 1px dotted var(--color-border);
 }
+.role-micro-cell .rm-count {
+    font-family: var(--font-mono);
+    font-weight: 600;
+    color: var(--color-text);
+    font-size: var(--text-xs);
+}
+.role-micro-cell .rm-label {
+    color: var(--color-text-muted);
+    font-size: var(--text-xs);
+}
+.role-micro-cell.is-zero { opacity: 0.4; }
+.role-micro-issuer    { border-left-color: var(--anno-fn-issuer); }
+.role-micro-recipient { border-left-color: var(--anno-fn-recipient); }
+.role-micro-witness   { border-left-color: var(--anno-fn-witness); }
+.role-micro-other     { border-left-color: var(--anno-fn-other); }
 
 /* --- Untergeordnete Orgs --------------------------------------------- */
 .org-children {

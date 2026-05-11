@@ -1,4 +1,5 @@
 {% extends "base.html" %}
+{% from "macros.html" import tip_help %}
 
 {% block title %}{{ profile.name }}{% endblock %}
 
@@ -41,17 +42,31 @@
         </div>
     </div>
 
-    <header class="person-header person-header-grid">
-        <div class="ph-identity">
-            <h1 class="person-name">{{ profile.name }}</h1>
-            {% if profile.name_aliases %}
-            <p class="person-orig">
-                <span class="orig-label">Auch genannt</span>
-                {% for alias in profile.name_aliases %}<span class="pt-chip">{{ alias }}</span>{% endfor %}
-            </p>
+    <header class="person-header">
+        <div class="person-header-top">
+            <div class="ph-identity">
+                <h1 class="person-name">{{ profile.name }}</h1>
+            </div>
+            {% if profile.role_total %}
+            <div class="role-micro" aria-label="Rollen in Rechtsgeschäften" data-hint="Rollen in Rechtsgeschäften.">
+                {% for r in ['issuer', 'recipient', 'witness', 'other'] %}
+                <span class="role-micro-cell role-micro-{{ r }}{% if profile.roles[r] == 0 %} is-zero{% endif %}" data-hint="{{ ROLE_LABEL[r] }}: {{ profile.roles[r] }}">
+                    <span class="rm-count">{{ profile.roles[r] }}</span>
+                    <span class="rm-label">{{ ROLE_LABEL[r] }}</span>
+                </span>
+                {% endfor %}
+            </div>
             {% endif %}
+        </div>
+
+        {% set has_subline = profile.name_aliases or (profile.name_orig and profile.name_orig != profile.name and profile.name_orig not in profile.name_aliases) or profile.source_labels or profile.authority_urls %}
+        {% if has_subline %}
+        <div class="ph-subline">
             {% if profile.name_orig and profile.name_orig != profile.name and profile.name_orig not in profile.name_aliases %}
-            <p class="person-orig"><span class="orig-label">Im Quellen-Wortlaut</span> {{ profile.name_orig }}</p>
+            <span><span class="orig-label">Im Quellen-Wortlaut:</span> <em>{{ profile.name_orig }}</em></span>
+            {% endif %}
+            {% if profile.name_aliases %}
+            <span><span class="orig-label">Auch:</span> {% for alias in profile.name_aliases %}<span class="pt-chip">{{ alias }}</span>{% endfor %}</span>
             {% endif %}
             {% if profile.source_labels %}
             <details class="person-titles-details">
@@ -64,76 +79,34 @@
                 </div>
             </details>
             {% endif %}
-        </div>
-        <aside class="ph-meta">
-            <dl class="ph-meta-list">
-                {% if profile.type_label %}
-                <div class="ph-meta-row">
-                    <dt>Typ</dt>
-                    <dd>{{ profile.type_label }}</dd>
-                </div>
-                {% endif %}
-                {% if profile.observance %}
-                <div class="ph-meta-row">
-                    <dt>Observanz</dt>
-                    <dd>{{ profile.observance }}</dd>
-                </div>
-                {% endif %}
-                {% if profile.active_min %}
-                <div class="ph-meta-row">
-                    <dt>Belegt</dt>
-                    <dd>{% if profile.active_max and profile.active_max != profile.active_min %}{{ profile.active_min }}&ndash;{{ profile.active_max }}{% else %}{{ profile.active_min }}{% endif %}</dd>
-                </div>
-                {% endif %}
-                {% if profile.place_name %}
-                <div class="ph-meta-row">
-                    <dt>Standort</dt>
-                    <dd>{{ profile.place_name }}</dd>
-                </div>
-                {% endif %}
-                {% if profile.parent_org_id %}
-                <div class="ph-meta-row">
-                    <dt>Übergeordnet</dt>
-                    <dd>
-                        {% if profile.parent_org_released %}
-                        <a href="{{ root_path }}/register/orgs/{{ profile.parent_org_id }}.html">{{ profile.parent_org_name }}</a>
-                        {% else %}
-                        {{ profile.parent_org_name or profile.parent_org_id }}
-                        {% endif %}
-                    </dd>
-                </div>
-                {% endif %}
-                <div class="ph-meta-row">
-                    <dt>Quellen</dt>
-                    <dd>{{ profile.source_count }}</dd>
-                </div>
-                <div class="ph-meta-row">
-                    <dt>ID</dt>
-                    <dd><code class="person-id">{{ profile.id }}</code></dd>
-                </div>
-            </dl>
             {% if profile.authority_urls %}
-            <div class="ph-extlinks">
-                {% for u in profile.authority_urls %}
-                <a class="ext-link" href="{{ u }}" target="_blank" rel="noopener noreferrer">Authority{% if profile.authority_urls|length > 1 %} {{ loop.index }}{% endif %}</a>
-                {% endfor %}
-            </div>
+            {% for u in profile.authority_urls %}
+            <a class="ext-link" href="{{ u }}" target="_blank" rel="noopener noreferrer">Authority{% if profile.authority_urls|length > 1 %} {{ loop.index }}{% endif %}</a>
+            {% endfor %}
             {% endif %}
-        </aside>
-    </header>
+        </div>
+        {% endif %}
 
-    {% if profile.role_total %}
-    <div class="role-inline" aria-label="Rollen in Rechtsgeschäften">
-        <span class="role-inline-label">Rollen</span>
-        {% for r in ['issuer', 'recipient', 'witness', 'other'] %}
-        <span class="role-inline-cell role-inline-{{ r }}{% if profile.roles[r] == 0 %} is-zero{% endif %}">
-            <span class="ri-count">{{ profile.roles[r] }}</span>
-            <span class="ri-label">{{ ROLE_LABEL[r] }}</span>
-        </span>
-        {% endfor %}
-        <span class="role-inline-total" data-hint="Summe Rollen-Belegungen in Rechtsgeschäften.">&Sigma; {{ profile.role_total }}</span>
-    </div>
-    {% endif %}
+        <dl class="ph-meta-strip">
+            {% if profile.type_label %}<div class="ph-meta-pair"><dt>Typ</dt><dd>{{ profile.type_label }}</dd></div>{% endif %}
+            {% if profile.observance %}<div class="ph-meta-pair"><dt>Observanz</dt><dd>{{ profile.observance }}</dd></div>{% endif %}
+            {% if profile.active_min %}
+            <div class="ph-meta-pair"><dt>Belegt</dt><dd>{% if profile.active_max and profile.active_max != profile.active_min %}{{ profile.active_min }}&ndash;{{ profile.active_max }}{% else %}{{ profile.active_min }}{% endif %}</dd></div>
+            {% endif %}
+            {% if profile.place_name %}<div class="ph-meta-pair"><dt>Standort</dt><dd>{{ profile.place_name }}</dd></div>{% endif %}
+            {% if profile.parent_org_id %}
+            <div class="ph-meta-pair"><dt>Übergeordnet</dt><dd>
+                {% if profile.parent_org_released %}
+                <a href="{{ root_path }}/register/orgs/{{ profile.parent_org_id }}.html">{{ profile.parent_org_name }}</a>
+                {% else %}
+                {{ profile.parent_org_name or profile.parent_org_id }}
+                {% endif %}
+            </dd></div>
+            {% endif %}
+            <div class="ph-meta-pair"><dt>Quellen</dt><dd>{{ profile.source_count }}</dd></div>
+            <div class="ph-meta-pair"><dt>ID</dt><dd><code class="person-id">{{ profile.id }}</code></dd></div>
+        </dl>
+    </header>
 
     {# Quellen-Tabelle: zentral fuer das Profil. Identische Spaltenstruktur
        zur Quellen-Uebersicht. Sortierbar via data-sort auf den th. #}
@@ -143,6 +116,10 @@
         <div class="table-filter">
             <input type="search" class="table-filter-input" data-target="src" placeholder="In den Quellen filtern&hellip;" aria-label="In den Quellen filtern">
             <span class="table-filter-status"></span>
+            {% call tip_help('org-src-filter-help', 'Quellen filtern') %}
+                <p>Volltextfilter &uuml;ber den sichtbaren Inhalt dieser Tabelle: <strong>Signatur</strong>, <strong>Datum</strong>, <strong>Quellenkorpus</strong>, <strong>Bezeichnung</strong>, <strong>Rolle</strong> und <strong>Regest</strong>.</p>
+                <p>Reine Substring-Suche, ohne Umlaut-Normalisierung. Mehrere W&ouml;rter werden als <em>eine</em> Zeichenkette gesucht (keine UND-Verkn&uuml;pfung).</p>
+            {% endcall %}
         </div>
         {% endif %}
         <table class="person-source-table sortable-table"{% if profile.sources|length > 50 %} data-truncate-at="50"{% endif %}>
@@ -215,6 +192,10 @@
             <div class="table-filter">
                 <input type="search" class="table-filter-input" data-target="rel" placeholder="In der Tabelle filtern&hellip;" aria-label="In der Tabelle filtern">
                 <span class="table-filter-status"></span>
+                {% call tip_help('org-rel-filter-help-' ~ rel_type, 'Beziehungen filtern') %}
+                    <p>Volltextfilter &uuml;ber den sichtbaren Inhalt dieser Tabelle: <strong>Person</strong>, <strong>Bezeichnung</strong>, <strong>Signatur</strong> und <strong>Datum</strong>.</p>
+                    <p>Reine Substring-Suche, ohne Umlaut-Normalisierung. Mehrere W&ouml;rter werden als <em>eine</em> Zeichenkette gesucht (keine UND-Verkn&uuml;pfung).</p>
+                {% endcall %}
             </div>
             {% endif %}
             <table class="rel-table sortable-table"{% if entries|length > 50 %} data-truncate-at="50"{% endif %}>
@@ -231,7 +212,7 @@
                     <tr>
                         <td class="rel-col-other" data-sort-value="{{ e.person_name }}">
                             {% if e.person_id and e.person_id in (linked_persons or []) %}
-                                <a class="rel-other-link" href="{{ root_path }}/register/persons/{{ e.person_id }}.html">{{ e.person_name }}</a>
+                                <a class="rel-other-link rel-other-link--person" href="{{ root_path }}/register/persons/{{ e.person_id }}.html">{{ e.person_name }}</a>
                             {% else %}
                                 <span class="rel-other-plain">{{ e.person_name }}</span>
                             {% endif %}

@@ -9,16 +9,16 @@
     <title>Prag, Datenbank</title>
     <link rel="preload" as="font" type="font/woff2" crossorigin
           href="../../static/fonts/inter-400-latin.woff2">
-    <link rel="stylesheet" href="../../static/css/fonts.css?v=20260511134507">
-    <link rel="stylesheet" href="../../static/css/tokens.css?v=20260511134507">
-    <link rel="stylesheet" href="../../static/css/base.css?v=20260511134507">
-    <link rel="stylesheet" href="../../static/css/components.css?v=20260511134507">
-    <link rel="stylesheet" href="../../static/css/responsive.css?v=20260511134507">
-    <link rel="stylesheet" href="../../static/css/print.css?v=20260511134507">
-    <link rel="stylesheet" href="../../static/css/tip.css?v=20260511134507">
+    <link rel="stylesheet" href="../../static/css/fonts.css?v=20260511140120">
+    <link rel="stylesheet" href="../../static/css/tokens.css?v=20260511140120">
+    <link rel="stylesheet" href="../../static/css/base.css?v=20260511140120">
+    <link rel="stylesheet" href="../../static/css/components.css?v=20260511140120">
+    <link rel="stylesheet" href="../../static/css/responsive.css?v=20260511140120">
+    <link rel="stylesheet" href="../../static/css/print.css?v=20260511140120">
+    <link rel="stylesheet" href="../../static/css/tip.css?v=20260511140120">
     
-<link rel="stylesheet" href="../../static/css/document.css?v=20260511134507">
-<link rel="stylesheet" href="../../static/css/person.css?v=20260511134507">
+<link rel="stylesheet" href="../../static/css/document.css?v=20260511140120">
+<link rel="stylesheet" href="../../static/css/person.css?v=20260511140120">
 
 </head>
 <body data-root-path="../.."
@@ -128,9 +128,41 @@
         </div>
     </div>
 
-    <header class="person-header person-header-grid">
-        <div class="ph-identity">
-            <h1 class="person-name">Prag</h1>
+    <header class="person-header">
+        <div class="person-header-top">
+            <div class="ph-identity">
+                <h1 class="person-name">Prag</h1>
+            </div>
+            
+            <div class="role-micro" aria-label="Rollen in Rechtsgeschäften" data-hint="Rollen in Rechtsgeschäften.">
+                
+                <span class="role-micro-cell role-micro-issuer" data-hint="Aussteller*in: 3">
+                    <span class="rm-count">3</span>
+                    <span class="rm-label">Aussteller*in</span>
+                </span>
+                
+                <span class="role-micro-cell role-micro-recipient is-zero" data-hint="Empfänger*in: 0">
+                    <span class="rm-count">0</span>
+                    <span class="rm-label">Empfänger*in</span>
+                </span>
+                
+                <span class="role-micro-cell role-micro-witness" data-hint="Zeuge / Siegler*in: 2">
+                    <span class="rm-count">2</span>
+                    <span class="rm-label">Zeuge / Siegler*in</span>
+                </span>
+                
+                <span class="role-micro-cell role-micro-other is-zero" data-hint="Sonstige: 0">
+                    <span class="rm-count">0</span>
+                    <span class="rm-label">Sonstige</span>
+                </span>
+                
+            </div>
+            
+        </div>
+
+        
+        
+        <div class="ph-subline">
             
             
             
@@ -144,64 +176,22 @@
                 </div>
             </details>
             
-        </div>
-        <aside class="ph-meta">
-            <dl class="ph-meta-list">
-                
-                <div class="ph-meta-row">
-                    <dt>Typ</dt>
-                    <dd>Stadt</dd>
-                </div>
-                
-                
-                
-                <div class="ph-meta-row">
-                    <dt>Belegt</dt>
-                    <dd>1389&ndash;1413</dd>
-                </div>
-                
-                
-                
-                <div class="ph-meta-row">
-                    <dt>Quellen</dt>
-                    <dd>9</dd>
-                </div>
-                <div class="ph-meta-row">
-                    <dt>ID</dt>
-                    <dd><code class="person-id">org__prag</code></dd>
-                </div>
-            </dl>
             
-        </aside>
-    </header>
+        </div>
+        
 
-    
-    <div class="role-inline" aria-label="Rollen in Rechtsgeschäften">
-        <span class="role-inline-label">Rollen</span>
-        
-        <span class="role-inline-cell role-inline-issuer">
-            <span class="ri-count">3</span>
-            <span class="ri-label">Aussteller*in</span>
-        </span>
-        
-        <span class="role-inline-cell role-inline-recipient is-zero">
-            <span class="ri-count">0</span>
-            <span class="ri-label">Empfänger*in</span>
-        </span>
-        
-        <span class="role-inline-cell role-inline-witness">
-            <span class="ri-count">2</span>
-            <span class="ri-label">Zeuge / Siegler*in</span>
-        </span>
-        
-        <span class="role-inline-cell role-inline-other is-zero">
-            <span class="ri-count">0</span>
-            <span class="ri-label">Sonstige</span>
-        </span>
-        
-        <span class="role-inline-total" data-hint="Summe Rollen-Belegungen in Rechtsgeschäften.">&Sigma; 5</span>
-    </div>
-    
+        <dl class="ph-meta-strip">
+            <div class="ph-meta-pair"><dt>Typ</dt><dd>Stadt</dd></div>
+            
+            
+            <div class="ph-meta-pair"><dt>Belegt</dt><dd>1389&ndash;1413</dd></div>
+            
+            
+            
+            <div class="ph-meta-pair"><dt>Quellen</dt><dd>9</dd></div>
+            <div class="ph-meta-pair"><dt>ID</dt><dd><code class="person-id">org__prag</code></dd></div>
+        </dl>
+    </header>
 
     
     <section class="person-sources" aria-label="Quellen mit Nennung">
@@ -354,6 +344,35 @@
             <div class="table-filter">
                 <input type="search" class="table-filter-input" data-target="rel" placeholder="In der Tabelle filtern&hellip;" aria-label="In der Tabelle filtern">
                 <span class="table-filter-status"></span>
+                
+<span class="tip-wrap">
+    <button type="button" class="tip-trigger tip-trigger--icon"
+            aria-expanded="false" aria-haspopup="dialog"
+            aria-controls="org-rel-filter-help-occ"
+            data-tip="org-rel-filter-help-occ"
+            aria-label="Hilfe: Beziehungen filtern">
+        <svg width="13" height="13" viewBox="0 0 16 16" aria-hidden="true">
+            <circle cx="8" cy="8" r="7" stroke="currentColor" stroke-width="1.4" fill="none"/>
+            <text x="8" y="11.6" text-anchor="middle" font-size="9.5" font-weight="700"
+                  fill="currentColor" font-family="Georgia, serif">i</text>
+        </svg>
+    </button>
+    <aside class="tip-popover tip-popover--help"
+           id="org-rel-filter-help-occ" role="dialog" aria-hidden="true"
+           aria-label="Hilfe: Beziehungen filtern">
+        <header class="tip-head">
+            <h3 class="tip-title">Beziehungen filtern</h3>
+            <button type="button" class="tip-close" aria-label="Schlie&szlig;en">&times;</button>
+        </header>
+        <div class="tip-body">
+            
+                    <p>Volltextfilter &uuml;ber den sichtbaren Inhalt dieser Tabelle: <strong>Person</strong>, <strong>Bezeichnung</strong>, <strong>Signatur</strong> und <strong>Datum</strong>.</p>
+                    <p>Reine Substring-Suche, ohne Umlaut-Normalisierung. Mehrere W&ouml;rter werden als <em>eine</em> Zeichenkette gesucht (keine UND-Verkn&uuml;pfung).</p>
+                
+        </div>
+    </aside>
+</span>
+
             </div>
             
             <table class="rel-table sortable-table" data-truncate-at="50">
@@ -370,7 +389,7 @@
                     <tr>
                         <td class="rel-col-other" data-sort-value="Martin Rotlew">
                             
-                                <a class="rel-other-link" href="../../register/persons/pe__martin_rotlew_QGW_II_I_1180.html">Martin Rotlew</a>
+                                <a class="rel-other-link rel-other-link--person" href="../../register/persons/pe__martin_rotlew_QGW_II_I_1180.html">Martin Rotlew</a>
                             
                         </td>
                         <td class="rel-col-label"><em>judex</em></td>
@@ -385,7 +404,7 @@
                     <tr>
                         <td class="rel-col-other" data-sort-value="Bernhard von Pieska">
                             
-                                <a class="rel-other-link" href="../../register/persons/pe__bernhard_von_pieska_QGW_II_I_1180.html">Bernhard von Pieska</a>
+                                <a class="rel-other-link rel-other-link--person" href="../../register/persons/pe__bernhard_von_pieska_QGW_II_I_1180.html">Bernhard von Pieska</a>
                             
                         </td>
                         <td class="rel-col-label"><em>consules</em></td>
@@ -400,7 +419,7 @@
                     <tr>
                         <td class="rel-col-other" data-sort-value="Johannes von Aachen">
                             
-                                <a class="rel-other-link" href="../../register/persons/pe__johann_von_aachen_QGW_II_I_1180.html">Johannes von Aachen</a>
+                                <a class="rel-other-link rel-other-link--person" href="../../register/persons/pe__johann_von_aachen_QGW_II_I_1180.html">Johannes von Aachen</a>
                             
                         </td>
                         <td class="rel-col-label"><em>iurati</em></td>
@@ -415,7 +434,7 @@
                     <tr>
                         <td class="rel-col-other" data-sort-value="Reinhard von Mühlhausen">
                             
-                                <a class="rel-other-link" href="../../register/persons/pe__reinhard_von_muehlhausen_QGW_II_I_1180.html">Reinhard von Mühlhausen</a>
+                                <a class="rel-other-link rel-other-link--person" href="../../register/persons/pe__reinhard_von_muehlhausen_QGW_II_I_1180.html">Reinhard von Mühlhausen</a>
                             
                         </td>
                         <td class="rel-col-label"><em>consules</em></td>
@@ -430,7 +449,7 @@
                     <tr>
                         <td class="rel-col-other" data-sort-value="Otto der Gewandschneider">
                             
-                                <a class="rel-other-link" href="../../register/persons/pe__otto_gewandschneider.html">Otto der Gewandschneider</a>
+                                <a class="rel-other-link rel-other-link--person" href="../../register/persons/pe__otto_gewandschneider.html">Otto der Gewandschneider</a>
                             
                         </td>
                         <td class="rel-col-label"><em>consules</em></td>
@@ -445,7 +464,7 @@
                     <tr>
                         <td class="rel-col-other" data-sort-value="Chunz der Glaser">
                             
-                                <a class="rel-other-link" href="../../register/persons/pe__konrad_glaser_QGW_II_I_1180.html">Chunz der Glaser</a>
+                                <a class="rel-other-link rel-other-link--person" href="../../register/persons/pe__konrad_glaser_QGW_II_I_1180.html">Chunz der Glaser</a>
                             
                         </td>
                         <td class="rel-col-label"><em>consules</em></td>
@@ -460,7 +479,7 @@
                     <tr>
                         <td class="rel-col-other" data-sort-value="Johannes Pleyer">
                             
-                                <a class="rel-other-link" href="../../register/persons/pe__johann_pleyer_QGW_II_I_1180.html">Johannes Pleyer</a>
+                                <a class="rel-other-link rel-other-link--person" href="../../register/persons/pe__johann_pleyer_QGW_II_I_1180.html">Johannes Pleyer</a>
                             
                         </td>
                         <td class="rel-col-label"><em>consules</em></td>
@@ -475,7 +494,7 @@
                     <tr>
                         <td class="rel-col-other" data-sort-value="Crux der Krämer">
                             
-                                <a class="rel-other-link" href="../../register/persons/pe__crux_krämer.html">Crux der Krämer</a>
+                                <a class="rel-other-link rel-other-link--person" href="../../register/persons/pe__crux_krämer.html">Crux der Krämer</a>
                             
                         </td>
                         <td class="rel-col-label"><em>consules</em></td>
@@ -490,7 +509,7 @@
                     <tr>
                         <td class="rel-col-other" data-sort-value="Franz Rokzaner">
                             
-                                <a class="rel-other-link" href="../../register/persons/pe__franz_rokzaner_QGW_II_I_1180.html">Franz Rokzaner</a>
+                                <a class="rel-other-link rel-other-link--person" href="../../register/persons/pe__franz_rokzaner_QGW_II_I_1180.html">Franz Rokzaner</a>
                             
                         </td>
                         <td class="rel-col-label"><em>consules</em></td>
@@ -505,7 +524,7 @@
                     <tr>
                         <td class="rel-col-other" data-sort-value="Johannes Rost">
                             
-                                <a class="rel-other-link" href="../../register/persons/pe__johann_rost_QGW_II_I_1180.html">Johannes Rost</a>
+                                <a class="rel-other-link rel-other-link--person" href="../../register/persons/pe__johann_rost_QGW_II_I_1180.html">Johannes Rost</a>
                             
                         </td>
                         <td class="rel-col-label"><em>consules</em></td>
@@ -520,7 +539,7 @@
                     <tr>
                         <td class="rel-col-other" data-sort-value="Wenzel Ottonis">
                             
-                                <a class="rel-other-link" href="../../register/persons/pe__wenzel_ottonis_QGW_II_I_1180.html">Wenzel Ottonis</a>
+                                <a class="rel-other-link rel-other-link--person" href="../../register/persons/pe__wenzel_ottonis_QGW_II_I_1180.html">Wenzel Ottonis</a>
                             
                         </td>
                         <td class="rel-col-label"><em>consules</em></td>
@@ -535,7 +554,7 @@
                     <tr>
                         <td class="rel-col-other" data-sort-value="Franz Steubel">
                             
-                                <a class="rel-other-link" href="../../register/persons/pe__franz_steubel_QGW_II_I_1180.html">Franz Steubel</a>
+                                <a class="rel-other-link rel-other-link--person" href="../../register/persons/pe__franz_steubel_QGW_II_I_1180.html">Franz Steubel</a>
                             
                         </td>
                         <td class="rel-col-label"><em>consules</em></td>
@@ -550,7 +569,7 @@
                     <tr>
                         <td class="rel-col-other" data-sort-value="Johannes Gosler">
                             
-                                <a class="rel-other-link" href="../../register/persons/pe__johann_gosler_QGW_II_I_1180.html">Johannes Gosler</a>
+                                <a class="rel-other-link rel-other-link--person" href="../../register/persons/pe__johann_gosler_QGW_II_I_1180.html">Johannes Gosler</a>
                             
                         </td>
                         <td class="rel-col-label"><em>consules</em></td>
@@ -565,7 +584,7 @@
                     <tr>
                         <td class="rel-col-other" data-sort-value="Hurzko von Brodetz">
                             
-                                <a class="rel-other-link" href="../../register/persons/pe__hurzko_von_brodetz_QGW_II_I_1180.html">Hurzko von Brodetz</a>
+                                <a class="rel-other-link rel-other-link--person" href="../../register/persons/pe__hurzko_von_brodetz_QGW_II_I_1180.html">Hurzko von Brodetz</a>
                             
                         </td>
                         <td class="rel-col-label"><em>consules</em></td>
@@ -580,7 +599,7 @@
                     <tr>
                         <td class="rel-col-other" data-sort-value="Konrad von Markpurg">
                             
-                                <a class="rel-other-link" href="../../register/persons/pe__konrad_von_markpurg_QGW_II_I_1180.html">Konrad von Markpurg</a>
+                                <a class="rel-other-link rel-other-link--person" href="../../register/persons/pe__konrad_von_markpurg_QGW_II_I_1180.html">Konrad von Markpurg</a>
                             
                         </td>
                         <td class="rel-col-label"><em>iurati</em></td>
@@ -595,7 +614,7 @@
                     <tr>
                         <td class="rel-col-other" data-sort-value="Christian Leitner">
                             
-                                <a class="rel-other-link" href="../../register/persons/pe__christian_leitner_QGW_II_I_1180.html">Christian Leitner</a>
+                                <a class="rel-other-link rel-other-link--person" href="../../register/persons/pe__christian_leitner_QGW_II_I_1180.html">Christian Leitner</a>
                             
                         </td>
                         <td class="rel-col-label"><em>consules</em></td>
@@ -610,7 +629,7 @@
                     <tr>
                         <td class="rel-col-other" data-sort-value="Franz Hanwer">
                             
-                                <a class="rel-other-link" href="../../register/persons/pe__franz_hanwer_QGW_II_I_1180.html">Franz Hanwer</a>
+                                <a class="rel-other-link rel-other-link--person" href="../../register/persons/pe__franz_hanwer_QGW_II_I_1180.html">Franz Hanwer</a>
                             
                         </td>
                         <td class="rel-col-label"><em>consules</em></td>
@@ -625,7 +644,7 @@
                     <tr>
                         <td class="rel-col-other" data-sort-value="Chunz Dibissn">
                             
-                                <a class="rel-other-link" href="../../register/persons/pe__konrad_dibissn_QGW_II_I_1180.html">Chunz Dibissn</a>
+                                <a class="rel-other-link rel-other-link--person" href="../../register/persons/pe__konrad_dibissn_QGW_II_I_1180.html">Chunz Dibissn</a>
                             
                         </td>
                         <td class="rel-col-label"><em>consules</em></td>
@@ -640,7 +659,7 @@
                     <tr>
                         <td class="rel-col-other" data-sort-value="Franz Hopfner">
                             
-                                <a class="rel-other-link" href="../../register/persons/pe__franz_hopfner_QGW_II_I_1180.html">Franz Hopfner</a>
+                                <a class="rel-other-link rel-other-link--person" href="../../register/persons/pe__franz_hopfner_QGW_II_I_1180.html">Franz Hopfner</a>
                             
                         </td>
                         <td class="rel-col-label"><em>consules</em></td>
@@ -655,7 +674,7 @@
                     <tr>
                         <td class="rel-col-other" data-sort-value="Emmerich Meller">
                             
-                                <a class="rel-other-link" href="../../register/persons/pe__emmerich_meller_QGW_II_I_1180.html">Emmerich Meller</a>
+                                <a class="rel-other-link rel-other-link--person" href="../../register/persons/pe__emmerich_meller_QGW_II_I_1180.html">Emmerich Meller</a>
                             
                         </td>
                         <td class="rel-col-label"><em>Mitbürger</em></td>
@@ -670,7 +689,7 @@
                     <tr>
                         <td class="rel-col-other" data-sort-value="Erhard Lobel">
                             
-                                <a class="rel-other-link" href="../../register/persons/pe__erhard_lobel_QGW_II_I_1180.html">Erhard Lobel</a>
+                                <a class="rel-other-link rel-other-link--person" href="../../register/persons/pe__erhard_lobel_QGW_II_I_1180.html">Erhard Lobel</a>
                             
                         </td>
                         <td class="rel-col-label"><em>Mitbürger</em></td>
@@ -685,7 +704,7 @@
                     <tr>
                         <td class="rel-col-other" data-sort-value="Jessko Oczass">
                             
-                                <a class="rel-other-link" href="../../register/persons/pe__jessko_oczass_QGW_II_I_1259.html">Jessko Oczass</a>
+                                <a class="rel-other-link rel-other-link--person" href="../../register/persons/pe__jessko_oczass_QGW_II_I_1259.html">Jessko Oczass</a>
                             
                         </td>
                         <td class="rel-col-label"><em>judex</em></td>
@@ -700,7 +719,7 @@
                     <tr>
                         <td class="rel-col-other" data-sort-value="Crux der Krämer">
                             
-                                <a class="rel-other-link" href="../../register/persons/pe__crux_krämer.html">Crux der Krämer</a>
+                                <a class="rel-other-link rel-other-link--person" href="../../register/persons/pe__crux_krämer.html">Crux der Krämer</a>
                             
                         </td>
                         <td class="rel-col-label"><em>consul</em></td>
@@ -715,7 +734,7 @@
                     <tr>
                         <td class="rel-col-other" data-sort-value="Petrus Smelzer">
                             
-                                <a class="rel-other-link" href="../../register/persons/pe__petrus_smelzer_QGW_II_I_1259.html">Petrus Smelzer</a>
+                                <a class="rel-other-link rel-other-link--person" href="../../register/persons/pe__petrus_smelzer_QGW_II_I_1259.html">Petrus Smelzer</a>
                             
                         </td>
                         <td class="rel-col-label"><em>consul</em></td>
@@ -730,7 +749,7 @@
                     <tr>
                         <td class="rel-col-other" data-sort-value="Niklas Vroleich">
                             
-                                <a class="rel-other-link" href="../../register/persons/pe__niklas_vroleich_QGW_II_I_1259.html">Niklas Vroleich</a>
+                                <a class="rel-other-link rel-other-link--person" href="../../register/persons/pe__niklas_vroleich_QGW_II_I_1259.html">Niklas Vroleich</a>
                             
                         </td>
                         <td class="rel-col-label"><em>consul</em></td>
@@ -745,7 +764,7 @@
                     <tr>
                         <td class="rel-col-other" data-sort-value="Frana Bischoff">
                             
-                                <a class="rel-other-link" href="../../register/persons/pe__frana_bischoff_QGW_II_I_1259.html">Frana Bischoff</a>
+                                <a class="rel-other-link rel-other-link--person" href="../../register/persons/pe__frana_bischoff_QGW_II_I_1259.html">Frana Bischoff</a>
                             
                         </td>
                         <td class="rel-col-label"><em>consul</em></td>
@@ -760,7 +779,7 @@
                     <tr>
                         <td class="rel-col-other" data-sort-value="Niklas Gosler">
                             
-                                <a class="rel-other-link" href="../../register/persons/pe__niklas_gosler_QGW_II_I_1259.html">Niklas Gosler</a>
+                                <a class="rel-other-link rel-other-link--person" href="../../register/persons/pe__niklas_gosler_QGW_II_I_1259.html">Niklas Gosler</a>
                             
                         </td>
                         <td class="rel-col-label"><em>consul</em></td>
@@ -775,7 +794,7 @@
                     <tr>
                         <td class="rel-col-other" data-sort-value="Christian Leitner">
                             
-                                <a class="rel-other-link" href="../../register/persons/pe__christian_leitner_QGW_II_I_1180.html">Christian Leitner</a>
+                                <a class="rel-other-link rel-other-link--person" href="../../register/persons/pe__christian_leitner_QGW_II_I_1180.html">Christian Leitner</a>
                             
                         </td>
                         <td class="rel-col-label"><em>consul</em></td>
@@ -790,7 +809,7 @@
                     <tr>
                         <td class="rel-col-other" data-sort-value="Johann der Apotheker">
                             
-                                <a class="rel-other-link" href="../../register/persons/pe__johann_apotheker_QGW_II_I_1259.html">Johann der Apotheker</a>
+                                <a class="rel-other-link rel-other-link--person" href="../../register/persons/pe__johann_apotheker_QGW_II_I_1259.html">Johann der Apotheker</a>
                             
                         </td>
                         <td class="rel-col-label"><em>consul</em></td>
@@ -805,7 +824,7 @@
                     <tr>
                         <td class="rel-col-other" data-sort-value="Niklas Styr de Leta Curia">
                             
-                                <a class="rel-other-link" href="../../register/persons/pe__niklas_styr_QGW_II_I_1259.html">Niklas Styr de Leta Curia</a>
+                                <a class="rel-other-link rel-other-link--person" href="../../register/persons/pe__niklas_styr_QGW_II_I_1259.html">Niklas Styr de Leta Curia</a>
                             
                         </td>
                         <td class="rel-col-label"><em>consul</em></td>
@@ -820,7 +839,7 @@
                     <tr>
                         <td class="rel-col-other" data-sort-value="Laurenz Martini">
                             
-                                <a class="rel-other-link" href="../../register/persons/pe__laurenz_martini_QGW_II_I_1259.html">Laurenz Martini</a>
+                                <a class="rel-other-link rel-other-link--person" href="../../register/persons/pe__laurenz_martini_QGW_II_I_1259.html">Laurenz Martini</a>
                             
                         </td>
                         <td class="rel-col-label"><em>consul</em></td>
@@ -835,7 +854,7 @@
                     <tr>
                         <td class="rel-col-other" data-sort-value="Christian Helm">
                             
-                                <a class="rel-other-link" href="../../register/persons/pe__christian_helm_QGW_II_I_1259.html">Christian Helm</a>
+                                <a class="rel-other-link rel-other-link--person" href="../../register/persons/pe__christian_helm_QGW_II_I_1259.html">Christian Helm</a>
                             
                         </td>
                         <td class="rel-col-label"><em>consul</em></td>
@@ -850,7 +869,7 @@
                     <tr>
                         <td class="rel-col-other" data-sort-value="Konrad von Enns">
                             
-                                <a class="rel-other-link" href="../../register/persons/pe__konrad_von_enns_QGW_II_I_1259.html">Konrad von Enns</a>
+                                <a class="rel-other-link rel-other-link--person" href="../../register/persons/pe__konrad_von_enns_QGW_II_I_1259.html">Konrad von Enns</a>
                             
                         </td>
                         <td class="rel-col-label"><em>consul</em></td>
@@ -865,7 +884,7 @@
                     <tr>
                         <td class="rel-col-other" data-sort-value="Wenzel Uluschii">
                             
-                                <a class="rel-other-link" href="../../register/persons/pe__wenzel_uluschii_QGW_II_I_1259.html">Wenzel Uluschii</a>
+                                <a class="rel-other-link rel-other-link--person" href="../../register/persons/pe__wenzel_uluschii_QGW_II_I_1259.html">Wenzel Uluschii</a>
                             
                         </td>
                         <td class="rel-col-label"><em>consul</em></td>
@@ -880,7 +899,7 @@
                     <tr>
                         <td class="rel-col-other" data-sort-value="Franz Hopfner">
                             
-                                <a class="rel-other-link" href="../../register/persons/pe__franz_hopfner_QGW_II_I_1180.html">Franz Hopfner</a>
+                                <a class="rel-other-link rel-other-link--person" href="../../register/persons/pe__franz_hopfner_QGW_II_I_1180.html">Franz Hopfner</a>
                             
                         </td>
                         <td class="rel-col-label"><em>consul</em></td>
@@ -895,7 +914,7 @@
                     <tr>
                         <td class="rel-col-other" data-sort-value="Johann Chastner">
                             
-                                <a class="rel-other-link" href="../../register/persons/pe__johann_chastner_QGW_II_I_1259.html">Johann Chastner</a>
+                                <a class="rel-other-link rel-other-link--person" href="../../register/persons/pe__johann_chastner_QGW_II_I_1259.html">Johann Chastner</a>
                             
                         </td>
                         <td class="rel-col-label"><em>consul</em></td>
@@ -910,7 +929,7 @@
                     <tr>
                         <td class="rel-col-other" data-sort-value="Albrecht Jurentem">
                             
-                                <a class="rel-other-link" href="../../register/persons/pe__albrecht_jurentem_QGW_II_I_1259.html">Albrecht Jurentem</a>
+                                <a class="rel-other-link rel-other-link--person" href="../../register/persons/pe__albrecht_jurentem_QGW_II_I_1259.html">Albrecht Jurentem</a>
                             
                         </td>
                         <td class="rel-col-label"><em>consul</em></td>
@@ -925,7 +944,7 @@
                     <tr>
                         <td class="rel-col-other" data-sort-value="Frana Hauer">
                             
-                                <a class="rel-other-link" href="../../register/persons/pe__frana_hauer_QGW_II_I_1259.html">Frana Hauer</a>
+                                <a class="rel-other-link rel-other-link--person" href="../../register/persons/pe__frana_hauer_QGW_II_I_1259.html">Frana Hauer</a>
                             
                         </td>
                         <td class="rel-col-label"><em>Mitbürger</em></td>
@@ -940,7 +959,7 @@
                     <tr>
                         <td class="rel-col-other" data-sort-value="Busko de Risenberg">
                             
-                                <a class="rel-other-link" href="../../register/persons/pe__busko_von_reisenberg_QGW_II_I_1387.html">Busko de Risenberg</a>
+                                <a class="rel-other-link rel-other-link--person" href="../../register/persons/pe__busko_von_reisenberg_QGW_II_I_1387.html">Busko de Risenberg</a>
                             
                         </td>
                         <td class="rel-col-label"><em>judex</em></td>
@@ -955,7 +974,7 @@
                     <tr>
                         <td class="rel-col-other" data-sort-value="Sulko von Babitz">
                             
-                                <a class="rel-other-link" href="../../register/persons/pe__sulko_von_babitz_QGW_II_I_1387.html">Sulko von Babitz</a>
+                                <a class="rel-other-link rel-other-link--person" href="../../register/persons/pe__sulko_von_babitz_QGW_II_I_1387.html">Sulko von Babitz</a>
                             
                         </td>
                         <td class="rel-col-label"><em>consul</em></td>
@@ -970,7 +989,7 @@
                     <tr>
                         <td class="rel-col-other" data-sort-value="Christian Helm">
                             
-                                <a class="rel-other-link" href="../../register/persons/pe__christian_helm_QGW_II_I_1259.html">Christian Helm</a>
+                                <a class="rel-other-link rel-other-link--person" href="../../register/persons/pe__christian_helm_QGW_II_I_1259.html">Christian Helm</a>
                             
                         </td>
                         <td class="rel-col-label"><em>consul</em></td>
@@ -985,7 +1004,7 @@
                     <tr>
                         <td class="rel-col-other" data-sort-value="August der Apotheker">
                             
-                                <a class="rel-other-link" href="../../register/persons/pe__august_apotheker_QGW_II_I_1387.html">August der Apotheker</a>
+                                <a class="rel-other-link rel-other-link--person" href="../../register/persons/pe__august_apotheker_QGW_II_I_1387.html">August der Apotheker</a>
                             
                         </td>
                         <td class="rel-col-label"><em>consul</em></td>
@@ -1000,7 +1019,7 @@
                     <tr>
                         <td class="rel-col-other" data-sort-value="Christoph der Goldschmied">
                             
-                                <a class="rel-other-link" href="../../register/persons/pe__christoph_goldschmied_QGW_II_I_1387.html">Christoph der Goldschmied</a>
+                                <a class="rel-other-link rel-other-link--person" href="../../register/persons/pe__christoph_goldschmied_QGW_II_I_1387.html">Christoph der Goldschmied</a>
                             
                         </td>
                         <td class="rel-col-label"><em>consul</em></td>
@@ -1015,7 +1034,7 @@
                     <tr>
                         <td class="rel-col-other" data-sort-value="Hesko von Meseritz">
                             
-                                <a class="rel-other-link" href="../../register/persons/pe__jesko_von_meseritz_QGW_II_I_1387.html">Hesko von Meseritz</a>
+                                <a class="rel-other-link rel-other-link--person" href="../../register/persons/pe__jesko_von_meseritz_QGW_II_I_1387.html">Hesko von Meseritz</a>
                             
                         </td>
                         <td class="rel-col-label"><em>consul</em></td>
@@ -1030,7 +1049,7 @@
                     <tr>
                         <td class="rel-col-other" data-sort-value="Prokop Nicolai Lang">
                             
-                                <a class="rel-other-link" href="../../register/persons/pe__prokop_nicolai_lang_QGW_II_I_1387.html">Prokop Nicolai Lang</a>
+                                <a class="rel-other-link rel-other-link--person" href="../../register/persons/pe__prokop_nicolai_lang_QGW_II_I_1387.html">Prokop Nicolai Lang</a>
                             
                         </td>
                         <td class="rel-col-label"><em>iurati</em></td>
@@ -1045,7 +1064,7 @@
                     <tr>
                         <td class="rel-col-other" data-sort-value="Welislaus Bauer">
                             
-                                <a class="rel-other-link" href="../../register/persons/pe__welislaus_bauer.html">Welislaus Bauer</a>
+                                <a class="rel-other-link rel-other-link--person" href="../../register/persons/pe__welislaus_bauer.html">Welislaus Bauer</a>
                             
                         </td>
                         <td class="rel-col-label"><em>consul</em></td>
@@ -1060,7 +1079,7 @@
                     <tr>
                         <td class="rel-col-other" data-sort-value="Jessko Kotko">
                             
-                                <a class="rel-other-link" href="../../register/persons/pe__jessko_kotko_QGW_II_I_1387.html">Jessko Kotko</a>
+                                <a class="rel-other-link rel-other-link--person" href="../../register/persons/pe__jessko_kotko_QGW_II_I_1387.html">Jessko Kotko</a>
                             
                         </td>
                         <td class="rel-col-label"><em>consul</em></td>
@@ -1075,7 +1094,7 @@
                     <tr>
                         <td class="rel-col-other" data-sort-value="Jessko Pehem">
                             
-                                <a class="rel-other-link" href="../../register/persons/pe__jessko_pehem_QGW_II_I_1387.html">Jessko Pehem</a>
+                                <a class="rel-other-link rel-other-link--person" href="../../register/persons/pe__jessko_pehem_QGW_II_I_1387.html">Jessko Pehem</a>
                             
                         </td>
                         <td class="rel-col-label"><em>consul</em></td>
@@ -1090,7 +1109,7 @@
                     <tr>
                         <td class="rel-col-other" data-sort-value="Niklas Vroleich">
                             
-                                <a class="rel-other-link" href="../../register/persons/pe__niklas_vroleich_QGW_II_I_1259.html">Niklas Vroleich</a>
+                                <a class="rel-other-link rel-other-link--person" href="../../register/persons/pe__niklas_vroleich_QGW_II_I_1259.html">Niklas Vroleich</a>
                             
                         </td>
                         <td class="rel-col-label"><em>consul</em></td>
@@ -1105,7 +1124,7 @@
                     <tr>
                         <td class="rel-col-other" data-sort-value="Pesoldus Goldschmied der Goldschmied">
                             
-                                <a class="rel-other-link" href="../../register/persons/pe__pesold_goldschmied_QGW_II_I_1387.html">Pesoldus Goldschmied der Goldschmied</a>
+                                <a class="rel-other-link rel-other-link--person" href="../../register/persons/pe__pesold_goldschmied_QGW_II_I_1387.html">Pesoldus Goldschmied der Goldschmied</a>
                             
                         </td>
                         <td class="rel-col-label"><em>consul</em></td>
@@ -1120,7 +1139,7 @@
                     <tr>
                         <td class="rel-col-other" data-sort-value="Petha der Sattler">
                             
-                                <a class="rel-other-link" href="../../register/persons/pe__petha_sattler.html">Petha der Sattler</a>
+                                <a class="rel-other-link rel-other-link--person" href="../../register/persons/pe__petha_sattler.html">Petha der Sattler</a>
                             
                         </td>
                         <td class="rel-col-label"><em>consul</em></td>
@@ -1135,7 +1154,7 @@
                     <tr>
                         <td class="rel-col-other" data-sort-value="Dobessius Rollonis">
                             
-                                <a class="rel-other-link" href="../../register/persons/pe__dobessius_rollonis_QGW_II_I_1387.html">Dobessius Rollonis</a>
+                                <a class="rel-other-link rel-other-link--person" href="../../register/persons/pe__dobessius_rollonis_QGW_II_I_1387.html">Dobessius Rollonis</a>
                             
                         </td>
                         <td class="rel-col-label"><em>judex</em></td>
@@ -1150,7 +1169,7 @@
                     <tr>
                         <td class="rel-col-other" data-sort-value="Niklas Frankonis">
                             
-                                <a class="rel-other-link" href="../../register/persons/pe__johann_von_comyn_QGW_II_I_1387.html">Niklas Frankonis</a>
+                                <a class="rel-other-link rel-other-link--person" href="../../register/persons/pe__johann_von_comyn_QGW_II_I_1387.html">Niklas Frankonis</a>
                             
                         </td>
                         <td class="rel-col-label"><em>consul</em></td>
@@ -1165,7 +1184,7 @@
                     <tr>
                         <td class="rel-col-other" data-sort-value="Johann Meissner">
                             
-                                <a class="rel-other-link" href="../../register/persons/pe__johann_meissner_QGW_II_I_1387.html">Johann Meissner</a>
+                                <a class="rel-other-link rel-other-link--person" href="../../register/persons/pe__johann_meissner_QGW_II_I_1387.html">Johann Meissner</a>
                             
                         </td>
                         <td class="rel-col-label"><em>consul</em></td>
@@ -1180,7 +1199,7 @@
                     <tr>
                         <td class="rel-col-other" data-sort-value="Marso Kozel">
                             
-                                <a class="rel-other-link" href="../../register/persons/pe__marso_kozel_QGW_II_I_1387.html">Marso Kozel</a>
+                                <a class="rel-other-link rel-other-link--person" href="../../register/persons/pe__marso_kozel_QGW_II_I_1387.html">Marso Kozel</a>
                             
                         </td>
                         <td class="rel-col-label"><em>consul</em></td>
@@ -1195,7 +1214,7 @@
                     <tr>
                         <td class="rel-col-other" data-sort-value="Henslinus Ottlinger">
                             
-                                <a class="rel-other-link" href="../../register/persons/pe__henslinus_ottlinger_QGW_II_I_1387.html">Henslinus Ottlinger</a>
+                                <a class="rel-other-link rel-other-link--person" href="../../register/persons/pe__henslinus_ottlinger_QGW_II_I_1387.html">Henslinus Ottlinger</a>
                             
                         </td>
                         <td class="rel-col-label"><em>Mitbürger</em></td>
@@ -1210,7 +1229,7 @@
                     <tr>
                         <td class="rel-col-other" data-sort-value="Petrus Smelzer">
                             
-                                <a class="rel-other-link" href="../../register/persons/pe__petrus_smelzer_QGW_II_I_1259.html">Petrus Smelzer</a>
+                                <a class="rel-other-link rel-other-link--person" href="../../register/persons/pe__petrus_smelzer_QGW_II_I_1259.html">Petrus Smelzer</a>
                             
                         </td>
                         <td class="rel-col-label"><em>Mitgeschwornen</em></td>
@@ -1225,7 +1244,7 @@
                     <tr>
                         <td class="rel-col-other" data-sort-value="Oswald Roll">
                             
-                                <a class="rel-other-link" href="../../register/persons/pe__oswald_roll_QGW_II_I_1712.html">Oswald Roll</a>
+                                <a class="rel-other-link rel-other-link--person" href="../../register/persons/pe__oswald_roll_QGW_II_I_1712.html">Oswald Roll</a>
                             
                         </td>
                         <td class="rel-col-label"><em>richter</em></td>
@@ -1240,7 +1259,7 @@
                     <tr>
                         <td class="rel-col-other" data-sort-value="Hanuschko Lang">
                             
-                                <a class="rel-other-link" href="../../register/persons/pe__hanuschko_lang_QGW_II_I_1712.html">Hanuschko Lang</a>
+                                <a class="rel-other-link rel-other-link--person" href="../../register/persons/pe__hanuschko_lang_QGW_II_I_1712.html">Hanuschko Lang</a>
                             
                         </td>
                         <td class="rel-col-label"><em>burger</em></td>
@@ -1255,7 +1274,7 @@
                     <tr>
                         <td class="rel-col-other" data-sort-value="Hanuschko Lang">
                             
-                                <a class="rel-other-link" href="../../register/persons/pe__hanuschko_lang_QGW_II_I_1712.html">Hanuschko Lang</a>
+                                <a class="rel-other-link rel-other-link--person" href="../../register/persons/pe__hanuschko_lang_QGW_II_I_1712.html">Hanuschko Lang</a>
                             
                         </td>
                         <td class="rel-col-label"><em>schepfen</em></td>
@@ -1270,7 +1289,7 @@
                     <tr>
                         <td class="rel-col-other" data-sort-value="Heinrich Sachsenfelt">
                             
-                                <a class="rel-other-link" href="../../register/persons/pe__heinrich_sachsenfelt_QGW_II_I_1712.html">Heinrich Sachsenfelt</a>
+                                <a class="rel-other-link rel-other-link--person" href="../../register/persons/pe__heinrich_sachsenfelt_QGW_II_I_1712.html">Heinrich Sachsenfelt</a>
                             
                         </td>
                         <td class="rel-col-label"><em>burgern</em></td>
@@ -1285,7 +1304,7 @@
                     <tr>
                         <td class="rel-col-other" data-sort-value="Niklas Weisswasser">
                             
-                                <a class="rel-other-link" href="../../register/persons/pe__niklas_weisswasser_QGW_II_I_1712.html">Niklas Weisswasser</a>
+                                <a class="rel-other-link rel-other-link--person" href="../../register/persons/pe__niklas_weisswasser_QGW_II_I_1712.html">Niklas Weisswasser</a>
                             
                         </td>
                         <td class="rel-col-label"><em>burgern</em></td>
@@ -1300,7 +1319,7 @@
                     <tr>
                         <td class="rel-col-other" data-sort-value="Jakob von Brunn der Schneider">
                             
-                                <a class="rel-other-link" href="../../register/persons/pe__jakob_von_brunn_QGW_II_II_3261.html">Jakob von Brunn der Schneider</a>
+                                <a class="rel-other-link rel-other-link--person" href="../../register/persons/pe__jakob_von_brunn_QGW_II_II_3261.html">Jakob von Brunn der Schneider</a>
                             
                         </td>
                         <td class="rel-col-label"><em>richter</em></td>
@@ -1315,7 +1334,7 @@
                     <tr>
                         <td class="rel-col-other" data-sort-value="Jakob von Brunn der Schneider">
                             
-                                <a class="rel-other-link" href="../../register/persons/pe__jakob_von_brunn_QGW_II_II_3261.html">Jakob von Brunn der Schneider</a>
+                                <a class="rel-other-link rel-other-link--person" href="../../register/persons/pe__jakob_von_brunn_QGW_II_II_3261.html">Jakob von Brunn der Schneider</a>
                             
                         </td>
                         <td class="rel-col-label"><em>burger</em></td>
@@ -1330,7 +1349,7 @@
                     <tr>
                         <td class="rel-col-other" data-sort-value="Jakob von Brunn der Schneider">
                             
-                                <a class="rel-other-link" href="../../register/persons/pe__jakob_von_brunn_QGW_II_II_3261.html">Jakob von Brunn der Schneider</a>
+                                <a class="rel-other-link rel-other-link--person" href="../../register/persons/pe__jakob_von_brunn_QGW_II_II_3261.html">Jakob von Brunn der Schneider</a>
                             
                         </td>
                         <td class="rel-col-label"><em>schepfen</em></td>
@@ -1345,7 +1364,7 @@
                     <tr>
                         <td class="rel-col-other" data-sort-value="Peter Habart">
                             
-                                <a class="rel-other-link" href="../../register/persons/pe__peter_habart_QGW_II_I_1763.html">Peter Habart</a>
+                                <a class="rel-other-link rel-other-link--person" href="../../register/persons/pe__peter_habart_QGW_II_I_1763.html">Peter Habart</a>
                             
                         </td>
                         <td class="rel-col-label"><em>burger</em></td>
@@ -1360,7 +1379,7 @@
                     <tr>
                         <td class="rel-col-other" data-sort-value="Peter Habart">
                             
-                                <a class="rel-other-link" href="../../register/persons/pe__peter_habart_QGW_II_I_1763.html">Peter Habart</a>
+                                <a class="rel-other-link rel-other-link--person" href="../../register/persons/pe__peter_habart_QGW_II_I_1763.html">Peter Habart</a>
                             
                         </td>
                         <td class="rel-col-label"><em>schepfen</em></td>
@@ -1375,7 +1394,7 @@
                     <tr>
                         <td class="rel-col-other" data-sort-value="Wenzel Heugel">
                             
-                                <a class="rel-other-link" href="../../register/persons/pe__wenzel_heugel_QGW_II_I_1797.html">Wenzel Heugel</a>
+                                <a class="rel-other-link rel-other-link--person" href="../../register/persons/pe__wenzel_heugel_QGW_II_I_1797.html">Wenzel Heugel</a>
                             
                         </td>
                         <td class="rel-col-label"><em>burger</em></td>
@@ -1390,7 +1409,7 @@
                     <tr>
                         <td class="rel-col-other" data-sort-value="Leopold Zwirner">
                             
-                                <a class="rel-other-link" href="../../register/persons/pe__leopold_zwirner_QGW_II_I_1797.html">Leopold Zwirner</a>
+                                <a class="rel-other-link rel-other-link--person" href="../../register/persons/pe__leopold_zwirner_QGW_II_I_1797.html">Leopold Zwirner</a>
                             
                         </td>
                         <td class="rel-col-label"><em>Bürger</em></td>
@@ -1405,7 +1424,7 @@
                     <tr>
                         <td class="rel-col-other" data-sort-value="Niklas von Saar">
                             
-                                <a class="rel-other-link" href="../../register/persons/pe__niklas_von_saar_QGW_II_I_1797.html">Niklas von Saar</a>
+                                <a class="rel-other-link rel-other-link--person" href="../../register/persons/pe__niklas_von_saar_QGW_II_I_1797.html">Niklas von Saar</a>
                             
                         </td>
                         <td class="rel-col-label"><em>bürger</em></td>
@@ -1420,7 +1439,7 @@
                     <tr>
                         <td class="rel-col-other" data-sort-value="Heinrich Kaufmann">
                             
-                                <a class="rel-other-link" href="../../register/persons/pe__heinrich_kaufmann_QGW_II_II_1973.html">Heinrich Kaufmann</a>
+                                <a class="rel-other-link rel-other-link--person" href="../../register/persons/pe__heinrich_kaufmann_QGW_II_II_1973.html">Heinrich Kaufmann</a>
                             
                         </td>
                         <td class="rel-col-label"><em>burger</em></td>
@@ -1435,7 +1454,7 @@
                     <tr>
                         <td class="rel-col-other" data-sort-value="Reichard Geisler">
                             
-                                <a class="rel-other-link" href="../../register/persons/pe__reichard_geisler_QGW_II_II_1973.html">Reichard Geisler</a>
+                                <a class="rel-other-link rel-other-link--person" href="../../register/persons/pe__reichard_geisler_QGW_II_II_1973.html">Reichard Geisler</a>
                             
                         </td>
                         <td class="rel-col-label"><em>Bürger</em></td>
@@ -1450,7 +1469,7 @@
                     <tr>
                         <td class="rel-col-other" data-sort-value="Jürgen Synye">
                             
-                                <a class="rel-other-link" href="../../register/persons/pe__juergen_synye_QGW_II_II_1973.html">Jürgen Synye</a>
+                                <a class="rel-other-link rel-other-link--person" href="../../register/persons/pe__juergen_synye_QGW_II_II_1973.html">Jürgen Synye</a>
                             
                         </td>
                         <td class="rel-col-label"><em>richter</em></td>
@@ -1465,7 +1484,7 @@
                     <tr>
                         <td class="rel-col-other" data-sort-value="Konrad Fleischhacker">
                             
-                                <a class="rel-other-link" href="../../register/persons/pe__konrad_QGW_II_II_1973.html">Konrad Fleischhacker</a>
+                                <a class="rel-other-link rel-other-link--person" href="../../register/persons/pe__konrad_QGW_II_II_1973.html">Konrad Fleischhacker</a>
                             
                         </td>
                         <td class="rel-col-label"><em>burgr</em></td>
@@ -1480,7 +1499,7 @@
                     <tr>
                         <td class="rel-col-other" data-sort-value="Konrad Fleischhacker">
                             
-                                <a class="rel-other-link" href="../../register/persons/pe__konrad_QGW_II_II_1973.html">Konrad Fleischhacker</a>
+                                <a class="rel-other-link rel-other-link--person" href="../../register/persons/pe__konrad_QGW_II_II_1973.html">Konrad Fleischhacker</a>
                             
                         </td>
                         <td class="rel-col-label"><em>schepphn</em></td>
@@ -1495,7 +1514,7 @@
                     <tr>
                         <td class="rel-col-other" data-sort-value="Martin von Aachen">
                             
-                                <a class="rel-other-link" href="../../register/persons/pe__martin_von_aachen_QGW_II_II_1973.html">Martin von Aachen</a>
+                                <a class="rel-other-link rel-other-link--person" href="../../register/persons/pe__martin_von_aachen_QGW_II_II_1973.html">Martin von Aachen</a>
                             
                         </td>
                         <td class="rel-col-label"><em>burgr</em></td>
@@ -1510,7 +1529,7 @@
                     <tr>
                         <td class="rel-col-other" data-sort-value="Martin von Aachen">
                             
-                                <a class="rel-other-link" href="../../register/persons/pe__martin_von_aachen_QGW_II_II_1973.html">Martin von Aachen</a>
+                                <a class="rel-other-link rel-other-link--person" href="../../register/persons/pe__martin_von_aachen_QGW_II_II_1973.html">Martin von Aachen</a>
                             
                         </td>
                         <td class="rel-col-label"><em>schepphn</em></td>
@@ -1525,7 +1544,7 @@
                     <tr>
                         <td class="rel-col-other" data-sort-value="Wenzel Leinwander">
                             
-                                <a class="rel-other-link" href="../../register/persons/pe__wenzel_leinwander_StB_I_56.html">Wenzel Leinwander</a>
+                                <a class="rel-other-link rel-other-link--person" href="../../register/persons/pe__wenzel_leinwander_StB_I_56.html">Wenzel Leinwander</a>
                             
                         </td>
                         <td class="rel-col-label"><em>unserm mitpurger</em></td>
@@ -1540,7 +1559,7 @@
                     <tr>
                         <td class="rel-col-other" data-sort-value="Wenzel Goldschmied">
                             
-                                <a class="rel-other-link" href="../../register/persons/pe__wenzel_goldschmied_StB_I_56.html">Wenzel Goldschmied</a>
+                                <a class="rel-other-link rel-other-link--person" href="../../register/persons/pe__wenzel_goldschmied_StB_I_56.html">Wenzel Goldschmied</a>
                             
                         </td>
                         <td class="rel-col-label"><em>unserm mitburger</em></td>
@@ -1584,13 +1603,13 @@
         </div>
     </footer>
 
-    <script src="../../static/js/core.js?v=20260511134507"></script>
-    <script src="../../static/js/tip.js?v=20260511134507"></script>
-    <script src="../../static/js/hint.js?v=20260511134507"></script>
-    <script src="../../static/js/basket.js?v=20260511134507"></script>
+    <script src="../../static/js/core.js?v=20260511140120"></script>
+    <script src="../../static/js/tip.js?v=20260511140120"></script>
+    <script src="../../static/js/hint.js?v=20260511140120"></script>
+    <script src="../../static/js/basket.js?v=20260511140120"></script>
     
-<script src="../../static/js/profile.js?v=20260511134507"></script>
-<script src="../../static/js/basket-mount.js?v=20260511134507"></script>
+<script src="../../static/js/profile.js?v=20260511140120"></script>
+<script src="../../static/js/basket-mount.js?v=20260511140120"></script>
 
 </body>
 </html>

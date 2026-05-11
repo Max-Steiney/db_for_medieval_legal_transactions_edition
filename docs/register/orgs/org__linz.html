@@ -9,16 +9,16 @@
     <title>Linz, Datenbank</title>
     <link rel="preload" as="font" type="font/woff2" crossorigin
           href="../../static/fonts/inter-400-latin.woff2">
-    <link rel="stylesheet" href="../../static/css/fonts.css?v=20260511134507">
-    <link rel="stylesheet" href="../../static/css/tokens.css?v=20260511134507">
-    <link rel="stylesheet" href="../../static/css/base.css?v=20260511134507">
-    <link rel="stylesheet" href="../../static/css/components.css?v=20260511134507">
-    <link rel="stylesheet" href="../../static/css/responsive.css?v=20260511134507">
-    <link rel="stylesheet" href="../../static/css/print.css?v=20260511134507">
-    <link rel="stylesheet" href="../../static/css/tip.css?v=20260511134507">
+    <link rel="stylesheet" href="../../static/css/fonts.css?v=20260511140120">
+    <link rel="stylesheet" href="../../static/css/tokens.css?v=20260511140120">
+    <link rel="stylesheet" href="../../static/css/base.css?v=20260511140120">
+    <link rel="stylesheet" href="../../static/css/components.css?v=20260511140120">
+    <link rel="stylesheet" href="../../static/css/responsive.css?v=20260511140120">
+    <link rel="stylesheet" href="../../static/css/print.css?v=20260511140120">
+    <link rel="stylesheet" href="../../static/css/tip.css?v=20260511140120">
     
-<link rel="stylesheet" href="../../static/css/document.css?v=20260511134507">
-<link rel="stylesheet" href="../../static/css/person.css?v=20260511134507">
+<link rel="stylesheet" href="../../static/css/document.css?v=20260511140120">
+<link rel="stylesheet" href="../../static/css/person.css?v=20260511140120">
 
 </head>
 <body data-root-path="../.."
@@ -128,9 +128,41 @@
         </div>
     </div>
 
-    <header class="person-header person-header-grid">
-        <div class="ph-identity">
-            <h1 class="person-name">Linz</h1>
+    <header class="person-header">
+        <div class="person-header-top">
+            <div class="ph-identity">
+                <h1 class="person-name">Linz</h1>
+            </div>
+            
+            <div class="role-micro" aria-label="Rollen in Rechtsgeschäften" data-hint="Rollen in Rechtsgeschäften.">
+                
+                <span class="role-micro-cell role-micro-issuer" data-hint="Aussteller*in: 2">
+                    <span class="rm-count">2</span>
+                    <span class="rm-label">Aussteller*in</span>
+                </span>
+                
+                <span class="role-micro-cell role-micro-recipient is-zero" data-hint="Empfänger*in: 0">
+                    <span class="rm-count">0</span>
+                    <span class="rm-label">Empfänger*in</span>
+                </span>
+                
+                <span class="role-micro-cell role-micro-witness" data-hint="Zeuge / Siegler*in: 1">
+                    <span class="rm-count">1</span>
+                    <span class="rm-label">Zeuge / Siegler*in</span>
+                </span>
+                
+                <span class="role-micro-cell role-micro-other is-zero" data-hint="Sonstige: 0">
+                    <span class="rm-count">0</span>
+                    <span class="rm-label">Sonstige</span>
+                </span>
+                
+            </div>
+            
+        </div>
+
+        
+        
+        <div class="ph-subline">
             
             
             
@@ -144,64 +176,22 @@
                 </div>
             </details>
             
-        </div>
-        <aside class="ph-meta">
-            <dl class="ph-meta-list">
-                
-                <div class="ph-meta-row">
-                    <dt>Typ</dt>
-                    <dd>Stadt</dd>
-                </div>
-                
-                
-                
-                <div class="ph-meta-row">
-                    <dt>Belegt</dt>
-                    <dd>1368&ndash;1412</dd>
-                </div>
-                
-                
-                
-                <div class="ph-meta-row">
-                    <dt>Quellen</dt>
-                    <dd>6</dd>
-                </div>
-                <div class="ph-meta-row">
-                    <dt>ID</dt>
-                    <dd><code class="person-id">org__linz</code></dd>
-                </div>
-            </dl>
             
-        </aside>
-    </header>
+        </div>
+        
 
-    
-    <div class="role-inline" aria-label="Rollen in Rechtsgeschäften">
-        <span class="role-inline-label">Rollen</span>
-        
-        <span class="role-inline-cell role-inline-issuer">
-            <span class="ri-count">2</span>
-            <span class="ri-label">Aussteller*in</span>
-        </span>
-        
-        <span class="role-inline-cell role-inline-recipient is-zero">
-            <span class="ri-count">0</span>
-            <span class="ri-label">Empfänger*in</span>
-        </span>
-        
-        <span class="role-inline-cell role-inline-witness">
-            <span class="ri-count">1</span>
-            <span class="ri-label">Zeuge / Siegler*in</span>
-        </span>
-        
-        <span class="role-inline-cell role-inline-other is-zero">
-            <span class="ri-count">0</span>
-            <span class="ri-label">Sonstige</span>
-        </span>
-        
-        <span class="role-inline-total" data-hint="Summe Rollen-Belegungen in Rechtsgeschäften.">&Sigma; 3</span>
-    </div>
-    
+        <dl class="ph-meta-strip">
+            <div class="ph-meta-pair"><dt>Typ</dt><dd>Stadt</dd></div>
+            
+            
+            <div class="ph-meta-pair"><dt>Belegt</dt><dd>1368&ndash;1412</dd></div>
+            
+            
+            
+            <div class="ph-meta-pair"><dt>Quellen</dt><dd>6</dd></div>
+            <div class="ph-meta-pair"><dt>ID</dt><dd><code class="person-id">org__linz</code></dd></div>
+        </dl>
+    </header>
 
     
     <section class="person-sources" aria-label="Quellen mit Nennung">
@@ -329,7 +319,7 @@
                     <tr>
                         <td class="rel-col-other" data-sort-value="Heinrich Tanperger">
                             
-                                <a class="rel-other-link" href="../../register/persons/pe__heinrich_tanperger_QGW_II_I_1189.html">Heinrich Tanperger</a>
+                                <a class="rel-other-link rel-other-link--person" href="../../register/persons/pe__heinrich_tanperger_QGW_II_I_1189.html">Heinrich Tanperger</a>
                             
                         </td>
                         <td class="rel-col-label"><em>Bürger</em></td>
@@ -344,7 +334,7 @@
                     <tr>
                         <td class="rel-col-other" data-sort-value="Konrad Tanperger">
                             
-                                <a class="rel-other-link" href="../../register/persons/pe__konrad_tanperger_QGW_II_I_1189.html">Konrad Tanperger</a>
+                                <a class="rel-other-link rel-other-link--person" href="../../register/persons/pe__konrad_tanperger_QGW_II_I_1189.html">Konrad Tanperger</a>
                             
                         </td>
                         <td class="rel-col-label"><em>Bürger</em></td>
@@ -359,7 +349,7 @@
                     <tr>
                         <td class="rel-col-other" data-sort-value="Georg Eninkchl">
                             
-                                <a class="rel-other-link" href="../../register/persons/pe__georg_eninkchl_QGW_II_I_1721.html">Georg Eninkchl</a>
+                                <a class="rel-other-link rel-other-link--person" href="../../register/persons/pe__georg_eninkchl_QGW_II_I_1721.html">Georg Eninkchl</a>
                             
                         </td>
                         <td class="rel-col-label"><em>mauter</em></td>
@@ -374,7 +364,7 @@
                     <tr>
                         <td class="rel-col-other" data-sort-value="Georg Eninkchl">
                             
-                                <a class="rel-other-link" href="../../register/persons/pe__georg_eninkchl_QGW_II_I_1721.html">Georg Eninkchl</a>
+                                <a class="rel-other-link rel-other-link--person" href="../../register/persons/pe__georg_eninkchl_QGW_II_I_1721.html">Georg Eninkchl</a>
                             
                         </td>
                         <td class="rel-col-label"><em>mauter</em></td>
@@ -389,7 +379,7 @@
                     <tr>
                         <td class="rel-col-other" data-sort-value="Johann Stainhülber">
                             
-                                <a class="rel-other-link" href="../../register/persons/pe__johann_stainhuelber_QGW_II_I_935.html">Johann Stainhülber</a>
+                                <a class="rel-other-link rel-other-link--person" href="../../register/persons/pe__johann_stainhuelber_QGW_II_I_935.html">Johann Stainhülber</a>
                             
                         </td>
                         <td class="rel-col-label"><em>mauter</em></td>
@@ -433,13 +423,13 @@
         </div>
     </footer>
 
-    <script src="../../static/js/core.js?v=20260511134507"></script>
-    <script src="../../static/js/tip.js?v=20260511134507"></script>
-    <script src="../../static/js/hint.js?v=20260511134507"></script>
-    <script src="../../static/js/basket.js?v=20260511134507"></script>
+    <script src="../../static/js/core.js?v=20260511140120"></script>
+    <script src="../../static/js/tip.js?v=20260511140120"></script>
+    <script src="../../static/js/hint.js?v=20260511140120"></script>
+    <script src="../../static/js/basket.js?v=20260511140120"></script>
     
-<script src="../../static/js/profile.js?v=20260511134507"></script>
-<script src="../../static/js/basket-mount.js?v=20260511134507"></script>
+<script src="../../static/js/profile.js?v=20260511140120"></script>
+<script src="../../static/js/basket-mount.js?v=20260511140120"></script>
 
 </body>
 </html>
