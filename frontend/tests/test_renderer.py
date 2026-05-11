@@ -146,6 +146,87 @@ def test_rolename_kin_corresp():
     assert len(spans) == 1
 
 
+# --- Whitespace patch between roleName/add and following text ---
+
+
+def test_rolename_glued_forename_gets_space():
+    """Nr. 24 pattern: <roleName>...</roleName>Forename without TEI-side
+    space. Renderer injects a single space so 'episcopusAdam' becomes
+    'episcopus Adam'."""
+    body = tei(
+        '<p><rs type="person" ref="pe__x">'
+        '<roleName type="occ"><add>episcopus</add></roleName>'
+        'Adam Marturanensis</rs></p>'
+    )
+    html = render_document(body, EMPTY_REGISTERS)
+    assert "</span> Adam" in html
+    assert "episcopusAdam" not in html
+
+
+def test_rolename_followed_by_comma_no_extra_space():
+    """Punctuation legitimately follows without whitespace -- patch must
+    not insert a space before commas/semicolons/dots."""
+    body = tei(
+        '<p><rs type="person" ref="pe__x">'
+        '<roleName type="title">frater</roleName>, X</rs></p>'
+    )
+    html = render_document(body, EMPTY_REGISTERS)
+    assert "</span>, X" in html
+    assert "</span> , X" not in html
+
+
+def test_rolename_preexisting_space_not_doubled():
+    """Tail already starts with whitespace -- patch is a no-op."""
+    body = tei(
+        '<p><rs type="person" ref="pe__x">'
+        '<roleName type="occ">archiepiscopus</roleName> Philippus</rs></p>'
+    )
+    html = render_document(body, EMPTY_REGISTERS)
+    assert "</span> Philippus" in html
+    assert "</span>  Philippus" not in html
+
+
+def test_add_glued_to_following_text():
+    """add tag with glued tail also gets the space-injection treatment."""
+    body = tei('<p><rs type="person" ref="pe__x">Hans <add>der</add>Schneider</rs></p>')
+    html = render_document(body, EMPTY_REGISTERS)
+    assert "</span> Schneider" in html
+
+
+def test_two_adjacent_rolenames_get_space():
+    """Nr. 24 pattern: <roleName>frater</roleName><roleName><add>archiepiscopus
+    </add></roleName> -- two sibling roleNames without tail text. Patch
+    must inject space between them so the plain-text reads 'frater
+    archiepiscopus' not 'fraterarchiepiscopus'."""
+    body = tei(
+        '<p><rs type="person" ref="pe__x">'
+        '<roleName type="title">frater</roleName>'
+        '<roleName type="occ"><add>archiepiscopus</add></roleName>'
+        ' Johannes Turritanus</rs></p>'
+    )
+    html = render_document(body, EMPTY_REGISTERS)
+    # Plain text content of the rendered anchor should contain
+    # "frater archiepiscopus", not "fraterarchiepiscopus".
+    import re
+    text = re.sub(r'<[^>]+>', '', html)
+    text = re.sub(r'\s+', ' ', text).strip()
+    assert "frater archiepiscopus" in text
+    assert "fraterarchiepiscopus" not in text
+
+
+def test_sibling_with_comma_text_no_space():
+    """Punctuation as leading text of the next sibling -- patch is a no-op."""
+    body = tei(
+        '<p><rs type="person" ref="pe__x">'
+        '<roleName>frater</roleName>'
+        '<add>, X</add></rs></p>'
+    )
+    html = render_document(body, EMPTY_REGISTERS)
+    assert "</span><span" in html
+    # No injected space before the comma-leading sibling
+    assert "</span> <span class=\"tei-add\">, X" not in html
+
+
 # --- Triggerstring tests ---
 
 

@@ -190,36 +190,33 @@
 
         // Per-row hover hint: each annotation gets data-hint (body) plus
         // data-hint-type (small caps label). Picked up by hint.js. Body
-        // contains the TEI markup as a snippet plus section context,
-        // making clear which source element the row reflects.
+        // is plain structured text -- no raw TEI markup leaking into
+        // the UI tooltip layer (see Block 3 of the 2026-05 plan).
         function entityTipBody(f) {
-            let parts = [];
-            let rsAttrs = ['type="' + f.type.toLowerCase() + '"'];
-            if (f.ref) rsAttrs.push('ref="#' + f.ref + '"');
-            parts.push('<rs ' + rsAttrs.join(' ') + '>' + f.name + '</rs>');
+            let parts = [f.name];
             if (f.role && f.role !== DASH) parts.push('Rolle: ' + f.role);
             if (f.attributes) parts.push('Attribute: ' + f.attributes);
-            if (f.event) parts.push('in Event: ' + f.event);
+            if (f.event) parts.push('Event: ' + f.event);
             if (f.section) parts.push('Abschnitt: ' + f.section);
             return parts.join(' · ');
         }
 
         function eventTipBody(ev) {
-            let parts = ['<rs type="event" xml:id="' + ev.ref + '">'];
+            let parts = [ev.ref];
             if (ev.trigger) parts.push('Dispositiv-Verb: ' + ev.trigger);
             if (ev.section) parts.push('Abschnitt: ' + ev.section);
             return parts.join(' · ');
         }
 
         function triggerTipBody(tr) {
-            let parts = ['<triggerstring n="' + tr.kind.toLowerCase() + '">' + tr.text + '</triggerstring>'];
-            if (tr.event) parts.push('in Event: ' + tr.event);
+            let parts = [tr.text, 'Art: ' + tr.kind];
+            if (tr.event) parts.push('Event: ' + tr.event);
             if (tr.section) parts.push('Abschnitt: ' + tr.section);
             return parts.join(' · ');
         }
 
         function addTipBody(ad) {
-            let parts = ['<add>' + ad.text + '</add>'];
+            let parts = [ad.text];
             if (ad.section) parts.push('Abschnitt: ' + ad.section);
             return parts.join(' · ');
         }
@@ -235,34 +232,68 @@
             return ' data-hint="' + escAttr(body) + '" data-hint-type="' + escAttr(type) + '"';
         }
 
+        // data-sort-value on each <td> drives the column sorter, which
+        // re-uses the .sortable-table convention from profile.js.
+        // For cells where the visible content is a link or a badge,
+        // the plain text equivalent goes into data-sort-value so that
+        // alphabetical sorting compares names, not href markup.
+        function sortAttr(value) {
+            return ' data-sort-value="' + escAttr(value) + '"';
+        }
+
+        // Type-Badge: einheitliche Pillen-Komponente, systemweit als
+        // .entity-badge verwendet (auch Register-Profile, Quellenliste).
+        // Klasse --person/--organisation/--ort uebersetzt aus dem
+        // type-Label.
+        function typeBadge(type) {
+            let mod = type === 'Person' ? 'person'
+                    : type === 'Organisation' ? 'organisation'
+                    : type === 'Ort' ? 'place' : 'other';
+            return '<span class="entity-badge entity-badge--' + mod
+                + '">' + esc(type) + '</span>';
+        }
+
         if (entities.length) {
             // Profile linking: person refs (pe__) get a link to
             // register/persons/<id>.html. Orgs/places have no profile
-            // pages (yet), so plain-text name only there.
+            // pages (yet), so plain-text name only there. The xml:id is
+            // rendered as small print under the name (instead of its
+            // own column) to reduce horizontal noise in collective-
+            // issuer sources like Nr. 24 (14 identical role columns).
             let rootPath = (document.body && document.body.dataset.rootPath) || '..';
             html += '<section class="annotation-group">'
                 + '<h3 class="annotation-group-title">Personen, Organisationen, Orte</h3>'
-                + '<table class="annotations-table"><thead><tr>'
-                + '<th scope="col">Entität</th><th scope="col">Typ</th><th scope="col">Rolle</th><th scope="col">Attribute</th><th scope="col">Abschnitt</th><th scope="col">Event</th><th scope="col">ID</th>'
+                + '<table class="annotations-table sortable-table"><thead><tr>'
+                + '<th scope="col" data-sort="name">Entität</th>'
+                + '<th scope="col" data-sort="type">Typ</th>'
+                + '<th scope="col" data-sort="role">Rolle</th>'
+                + '<th scope="col" data-sort="attributes">Attribute</th>'
+                + '<th scope="col" data-sort="section">Abschnitt</th>'
+                + '<th scope="col" data-sort="event">Event</th>'
                 + '</tr></thead><tbody>';
             for (let p = 0; p < entities.length; p++) {
                 let f = entities[p];
-                let nameCell;
+                let nameMain;
                 if (f.type === 'Person' && f.ref && f.ref.indexOf('pe__') === 0) {
-                    nameCell = '<a class="anno-table-link" href="'
+                    nameMain = '<a class="anno-table-link" href="'
                         + esc(rootPath) + '/register/persons/' + esc(f.ref) + '.html">'
                         + esc(f.name) + '</a>';
+                } else if (f.type === 'Organisation' && f.ref && f.ref.indexOf('org__') === 0) {
+                    nameMain = '<a class="anno-table-link" href="'
+                        + esc(rootPath) + '/register/orgs/' + esc(f.ref) + '.html">'
+                        + esc(f.name) + '</a>';
                 } else {
-                    nameCell = esc(f.name);
+                    nameMain = esc(f.name);
                 }
+                let nameCell = nameMain
+                    + (f.ref ? '<small class="anno-table-id">' + esc(f.ref) + '</small>' : '');
                 html += '<tr' + tipAttrs(f.type + '-Annotation', entityTipBody(f)) + '>'
-                    + '<td>' + nameCell + '</td>'
-                    + '<td><span class="annotation-type annotation-type-' + f.type.toLowerCase() + '">' + esc(f.type) + '</span></td>'
-                    + '<td>' + esc(f.role) + '</td>'
-                    + '<td>' + esc(f.attributes || DASH) + '</td>'
-                    + '<td>' + esc(f.section || DASH) + '</td>'
-                    + '<td><span class="cell-id">' + esc(f.event || DASH) + '</span></td>'
-                    + '<td><span class="cell-id">' + esc(f.ref) + '</span></td>'
+                    + '<td' + sortAttr(f.name) + '>' + nameCell + '</td>'
+                    + '<td' + sortAttr(f.type) + '>' + typeBadge(f.type) + '</td>'
+                    + '<td' + sortAttr(f.role) + '>' + esc(f.role) + '</td>'
+                    + '<td' + sortAttr(f.attributes) + '>' + esc(f.attributes || DASH) + '</td>'
+                    + '<td' + sortAttr(f.section) + '>' + esc(f.section || DASH) + '</td>'
+                    + '<td' + sortAttr(f.event) + '><span class="cell-id">' + esc(f.event || DASH) + '</span></td>'
                     + '</tr>';
             }
             html += '</tbody></table></section>';
@@ -271,15 +302,17 @@
         if (events.length) {
             html += '<section class="annotation-group">'
                 + '<h3 class="annotation-group-title">Ereignisse</h3>'
-                + '<table class="annotations-table"><thead><tr>'
-                + '<th scope="col">Abschnitt</th><th scope="col">Dispositiv-Verb</th><th scope="col">ID</th>'
+                + '<table class="annotations-table sortable-table"><thead><tr>'
+                + '<th scope="col" data-sort="section">Abschnitt</th>'
+                + '<th scope="col" data-sort="trigger">Dispositiv-Verb</th>'
+                + '<th scope="col" data-sort="ref">ID</th>'
                 + '</tr></thead><tbody>';
             for (let e2 = 0; e2 < events.length; e2++) {
                 let ev = events[e2];
                 html += '<tr' + tipAttrs('Ereignis-Annotation', eventTipBody(ev)) + '>'
-                    + '<td>' + esc(ev.section || DASH) + '</td>'
-                    + '<td>' + esc(ev.trigger || DASH) + '</td>'
-                    + '<td><span class="cell-id">' + esc(ev.ref) + '</span></td>'
+                    + '<td' + sortAttr(ev.section) + '>' + esc(ev.section || DASH) + '</td>'
+                    + '<td' + sortAttr(ev.trigger) + '>' + esc(ev.trigger || DASH) + '</td>'
+                    + '<td' + sortAttr(ev.ref) + '><span class="cell-id">' + esc(ev.ref) + '</span></td>'
                     + '</tr>';
             }
             html += '</tbody></table></section>';
@@ -288,16 +321,19 @@
         if (triggers.length) {
             html += '<section class="annotation-group">'
                 + '<h3 class="annotation-group-title">Dispositivformeln</h3>'
-                + '<table class="annotations-table"><thead><tr>'
-                + '<th scope="col">Text</th><th scope="col">Art</th><th scope="col">Abschnitt</th><th scope="col">Event</th>'
+                + '<table class="annotations-table sortable-table"><thead><tr>'
+                + '<th scope="col" data-sort="text">Text</th>'
+                + '<th scope="col" data-sort="kind">Art</th>'
+                + '<th scope="col" data-sort="section">Abschnitt</th>'
+                + '<th scope="col" data-sort="event">Event</th>'
                 + '</tr></thead><tbody>';
             for (let t2 = 0; t2 < triggers.length; t2++) {
                 let tr2 = triggers[t2];
                 html += '<tr' + tipAttrs('Dispositivformel', triggerTipBody(tr2)) + '>'
-                    + '<td>' + esc(tr2.text) + '</td>'
-                    + '<td>' + esc(tr2.kind) + '</td>'
-                    + '<td>' + esc(tr2.section || DASH) + '</td>'
-                    + '<td><span class="cell-id">' + esc(tr2.event || DASH) + '</span></td>'
+                    + '<td' + sortAttr(tr2.text) + '>' + esc(tr2.text) + '</td>'
+                    + '<td' + sortAttr(tr2.kind) + '>' + esc(tr2.kind) + '</td>'
+                    + '<td' + sortAttr(tr2.section) + '>' + esc(tr2.section || DASH) + '</td>'
+                    + '<td' + sortAttr(tr2.event) + '><span class="cell-id">' + esc(tr2.event || DASH) + '</span></td>'
                     + '</tr>';
             }
             html += '</tbody></table></section>';
@@ -306,20 +342,101 @@
         if (adds.length) {
             html += '<section class="annotation-group">'
                 + '<h3 class="annotation-group-title">Editorische Ergänzungen</h3>'
-                + '<table class="annotations-table"><thead><tr>'
-                + '<th scope="col">Text</th><th scope="col">Abschnitt</th>'
+                + '<table class="annotations-table sortable-table"><thead><tr>'
+                + '<th scope="col" data-sort="text">Text</th>'
+                + '<th scope="col" data-sort="section">Abschnitt</th>'
                 + '</tr></thead><tbody>';
             for (let a2 = 0; a2 < adds.length; a2++) {
                 let ad2 = adds[a2];
                 html += '<tr' + tipAttrs('Editorische Ergänzung', addTipBody(ad2)) + '>'
-                    + '<td>' + esc(ad2.text) + '</td>'
-                    + '<td>' + esc(ad2.section || DASH) + '</td>'
+                    + '<td' + sortAttr(ad2.text) + '>' + esc(ad2.text) + '</td>'
+                    + '<td' + sortAttr(ad2.section) + '>' + esc(ad2.section || DASH) + '</td>'
                     + '</tr>';
             }
             html += '</tbody></table></section>';
         }
 
         bodyEl.innerHTML = html;
+
+        // Attach column sorting to every freshly built table. Mechanik
+        // analog zu profile.js: data-sort-value pro td, EdCore.compareValues
+        // als Vergleichs-Primitive, dritter Klick setzt zurueck.
+        let sortTables = bodyEl.querySelectorAll('table.sortable-table');
+        for (let s = 0; s < sortTables.length; s++) {
+            _attachAnnotationSorting(sortTables[s]);
+        }
+    }
+
+    /* ------------------------------------------------------------------
+       Sortierung der Annotationen-Untertabellen.
+       Nachgebaut nach profile.js -> setupSortableTable. profile.js wird
+       auf Document-Pages nicht geladen, ausserdem laeuft seine init zu
+       frueh (DOMContentLoaded), bevor buildAnnotationsTables die
+       Tabellen erzeugt hat. Daher eigene, schlanke Variante hier.
+       ------------------------------------------------------------------ */
+    function _attachAnnotationSorting(table) {
+        let allHeaders = Array.prototype.slice.call(table.querySelectorAll('thead th'));
+        let sortHeaders = allHeaders.filter(function (h) { return h.hasAttribute('data-sort'); });
+        if (!sortHeaders.length) return;
+        let tbody = table.querySelector('tbody');
+        if (!tbody) return;
+
+        let indexByKey = {};
+        sortHeaders.forEach(function (h) {
+            indexByKey[h.getAttribute('data-sort')] = allHeaders.indexOf(h);
+        });
+
+        let originalOrder = Array.prototype.slice.call(tbody.querySelectorAll('tr'));
+        let state = { key: null, dir: 1 };
+
+        function cellValue(tr, colIndex) {
+            let td = tr.children[colIndex];
+            if (!td) return '';
+            let v = td.getAttribute('data-sort-value');
+            return v !== null ? v : td.textContent.trim();
+        }
+
+        function applySort() {
+            let rows;
+            if (state.key === null) {
+                rows = originalOrder.slice();
+            } else {
+                let colIndex = indexByKey[state.key];
+                if (colIndex === undefined || colIndex < 0) return;
+                rows = Array.prototype.slice.call(tbody.querySelectorAll('tr'));
+                rows.sort(function (a, b) {
+                    return EdCore.compareValues(
+                        cellValue(a, colIndex), cellValue(b, colIndex), state.dir);
+                });
+            }
+            let frag = document.createDocumentFragment();
+            rows.forEach(function (tr) { frag.appendChild(tr); });
+            tbody.appendChild(frag);
+        }
+
+        sortHeaders.forEach(function (th) {
+            th.addEventListener('click', function () {
+                let key = th.getAttribute('data-sort');
+                if (state.key === key) {
+                    if (state.dir === 1) {
+                        state.dir = -1;
+                    } else {
+                        state.key = null;
+                        state.dir = 1;
+                    }
+                } else {
+                    state.key = key;
+                    state.dir = 1;
+                }
+                sortHeaders.forEach(function (h) {
+                    h.classList.remove('sorted-asc', 'sorted-desc');
+                });
+                if (state.key !== null) {
+                    th.classList.add(state.dir === 1 ? 'sorted-asc' : 'sorted-desc');
+                }
+                applySort();
+            });
+        });
     }
 
 

@@ -117,12 +117,31 @@ def _extract_metadata(tree, filepath):
 
     source_path = str(filepath.relative_to(REPO_ROOT)).replace("\\", "/")
 
-    person_count = len(root.xpath(
-        ".//tei:text//tei:rs[@type='person']", namespaces=NS_MAP
-    ))
-    org_count = len(root.xpath(
-        ".//tei:text//tei:rs[@type='org']", namespaces=NS_MAP
-    ))
+    # Provenance-Anzeige "X Pers., Y Org." meint individuelle
+    # Entitaeten (Glossar: "Individuelle Person") und nicht die Summe
+    # aller Nennungen ("Gesamtnennung"). Refs deduplizieren, damit der
+    # Wert mit der Annotations-Summary-Zeile in der UI uebereinstimmt.
+    # Eintraege ohne ref (orphan spans) zaehlen je einmal pro Vorkommen.
+    person_refs = root.xpath(
+        ".//tei:text//tei:rs[@type='person']/@ref", namespaces=NS_MAP
+    )
+    person_orphans = root.xpath(
+        ".//tei:text//tei:rs[@type='person'][not(@ref)]", namespaces=NS_MAP
+    )
+    person_count = (
+        len({strip_hash(r) for r in person_refs if r and strip_hash(r) != "NULL"})
+        + len(person_orphans)
+    )
+    org_refs = root.xpath(
+        ".//tei:text//tei:rs[@type='org']/@ref", namespaces=NS_MAP
+    )
+    org_orphans = root.xpath(
+        ".//tei:text//tei:rs[@type='org'][not(@ref)]", namespaces=NS_MAP
+    )
+    org_count = (
+        len({strip_hash(r) for r in org_refs if r and strip_hash(r) != "NULL"})
+        + len(org_orphans)
+    )
 
     event_count = len(root.xpath(
         ".//tei:text//tei:rs[@type='event']"

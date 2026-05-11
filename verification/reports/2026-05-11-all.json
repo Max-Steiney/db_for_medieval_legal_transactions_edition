@@ -1,8 +1,8 @@
 {
   "date": "2026-05-11",
   "summary": {
-    "total": 66,
-    "match": 43,
+    "total": 67,
+    "match": 44,
     "mismatch": 2,
     "known_gap": 11,
     "info": 10
@@ -568,6 +568,13 @@
       "json": 1,
       "status": "mismatch",
       "note": "Quellen mit TEI-Datum, aber leerem HTML-date_display: Stadtbuecher_Band_1_1395-1400_ready_333"
+    },
+    {
+      "name": "teihtml.attr_name_glued",
+      "tei": 0,
+      "json": 0,
+      "status": "match",
+      "note": null
     }
   ]
 }

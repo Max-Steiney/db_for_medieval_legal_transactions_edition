@@ -560,6 +560,66 @@ def check_pair_coverage(
     return results
 
 
+def check_glued_attributes(pairs: List[DocPair]) -> List[CheckResult]:
+    """Renderer-seitiges Whitespace-Patch (renderer.py:_render_children)
+    verhindert das Pattern '<span class="anno-attr ...">X</span>Y', wenn
+    der TEI-Quelltext kein Leerzeichen zwischen </roleName> und dem
+    Forename setzt. Dieser Check garantiert, dass das Patch greift:
+    nach dem schliessenden </span> eines anno-attr-Spans darf kein
+    Grossbuchstabe oder Ziffer direkt folgen.
+
+    Vor dem Patch (Nr. 24, 2026-05): 5 Vorkommen pro Quelle bei
+    Bischofssammelindulgenz. Nach dem Patch: 0 Vorkommen.
+    """
+    import re as _re
+    # Ein anno-attr-Span schliesst auf 'anno-attr-XXX">…</span>' oder
+    # 'anno-attr">…</span>'. Wir suchen die abschliessenden </span> nach
+    # einem anno-attr-Span und pruefen das naechste Zeichen.
+    # Da im HTML mehrere </span> verschachtelt sind, suchen wir das
+    # spezifische Pattern direkt: </span> gefolgt von [A-Z][a-z] (Forename)
+    # innerhalb einer Zeile mit anno-attr.
+    glued_pattern = _re.compile(
+        r'<span class="anno-attr[^"]*"[^>]*>'
+        r'[^<]*(?:<[^/][^>]*>[^<]*</[^>]+>[^<]*)*'
+        r'</span>([A-Z][a-zA-ZäöüÄÖÜß]+)'
+    )
+
+    glued_per_file: Dict[str, List[str]] = {}
+    for pair in pairs:
+        try:
+            text = pair.html.path.read_text(encoding="utf-8")
+        except Exception:
+            continue
+        hits = glued_pattern.findall(text)
+        if hits:
+            # Duplikate pro Datei rausfiltern, sonst rauscht es bei Sammelausstellern.
+            glued_per_file[pair.tei.file_key] = sorted(set(hits))
+
+    results: List[CheckResult] = []
+    if glued_per_file:
+        total = sum(len(v) for v in glued_per_file.values())
+        examples = []
+        for k, names in list(glued_per_file.items())[:3]:
+            examples.append(f"{k}: {', '.join(names[:5])}")
+        results.append(CheckResult(
+            name="teihtml.attr_name_glued",
+            tei=0,
+            json=total,
+            status="mismatch",
+            note=(
+                f"{len(glued_per_file)} Quellen mit Attribut-Span direkt vor "
+                f"Grossbuchstaben (kein Whitespace). Renderer-Patch nicht "
+                f"angewendet? Beispiele: {' | '.join(examples)}"
+            ),
+        ))
+    else:
+        results.append(CheckResult(
+            name="teihtml.attr_name_glued",
+            tei=0, json=0, status="match",
+        ))
+    return results
+
+
 def run_tei_html_checks() -> List[CheckResult]:
     """Alle Stufe-3-Pruefungen in einem Lauf."""
     docs = parse_tei.scan_sources()
@@ -573,4 +633,5 @@ def run_tei_html_checks() -> List[CheckResult]:
     results.extend(check_person_roles(pairs))
     results.extend(check_org_roles(pairs))
     results.extend(check_date_display(pairs))
+    results.extend(check_glued_attributes(pairs))
     return results

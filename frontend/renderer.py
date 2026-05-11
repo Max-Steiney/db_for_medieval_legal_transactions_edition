@@ -59,12 +59,77 @@ def _render_children(element, registers):
     parts = []
     if element.text:
         parts.append(escape(element.text))
+    prev_child = None
     for child in element:
+        # Defensive whitespace patch (TEI corpus): roleName/add tags are
+        # frequently siblings without intervening whitespace. Without the
+        # patch the rendered HTML reads "fraterepiscopus" or
+        # "episcopusAdam". Two cases handled here:
+        #   1) sibling element after roleName/add (text node missing
+        #      between previous-element's closing and this element)
+        #   2) tail text after roleName/add starting with a letter/digit
+        # Punctuation and pre-existing whitespace are explicit opt-outs.
+        if prev_child is not None and _needs_space_between_siblings(prev_child, child):
+            parts.append(" ")
         parts.append(_render_element(child, registers))
-        # Tail text (text after the closing tag, belonging to parent)
-        if child.tail:
-            parts.append(escape(child.tail))
+        tail = child.tail or ""
+        if tail and _needs_space_before_tail(child, tail):
+            parts.append(" ")
+        if tail:
+            parts.append(escape(tail))
+        prev_child = child
     return "".join(parts)
+
+
+def _is_attribute_tag(child):
+    """Tag-Filter fuer das Whitespace-Patch: roleName und add sind die
+    Annotationen, die im UI als kompakte Pillen rendern und im Plain-Text
+    direkt an Folge-Token kleben, wenn der TEI-Quelltext kein Whitespace
+    setzt."""
+    tag = child.tag
+    if not isinstance(tag, str):
+        return False
+    local = tag[len(TEI):] if tag.startswith(TEI) else tag
+    return local in ("roleName", "add")
+
+
+def _needs_space_before_tail(child, tail):
+    """True iff a single space should be injected between a roleName/add
+    element and its tail text. Punctuation, brackets, dashes and any
+    leading whitespace are explicit opt-outs."""
+    if not _is_attribute_tag(child):
+        return False
+    first = tail[:1]
+    if first.isspace():
+        return False
+    if first in (",", ".", ";", ":", "!", "?", ")", "]", "}", "/", "-",
+                 "–", "—", "…"):
+        return False
+    return True
+
+
+def _needs_space_between_siblings(prev_child, current_child):
+    """True iff a single space should be injected between two adjacent
+    child elements. Fires when the previous child is a roleName/add AND
+    no tail text separated them AND no whitespace was already injected
+    on the current child's leading text."""
+    if not _is_attribute_tag(prev_child):
+        return False
+    if prev_child.tail:
+        # If there is any tail text, _needs_space_before_tail already
+        # decides whether a space is necessary; we must not double-space.
+        return False
+    # Current child has its own text? Only inject if it doesn't start
+    # with whitespace/punctuation.
+    leading = current_child.text or ""
+    if leading:
+        first = leading[:1]
+        if first.isspace():
+            return False
+        if first in (",", ".", ";", ":", "!", "?", ")", "]", "}", "/", "-",
+                     "–", "—", "…"):
+            return False
+    return True
 
 
 def _render_element(element, registers):

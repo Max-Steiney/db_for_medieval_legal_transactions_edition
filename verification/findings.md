@@ -53,6 +53,93 @@ und damit kein parenthetisches Datums-Pattern matched.
 Fix: `<date when="1398-12-10">(1398 Dezember 10)</date>` (oder mit
 explizitem Editions-Hinweis statt `?a»`). Gehört ins Schwester-Repo.
 
+### TEI-Annotation: Sigillanten-Rolle fehlt bei Bischofssammelindulgenzen
+
+Stand: 2026-05-11
+Status: offen
+Verantwortlich: Schwester-Repo `db_for_medieval_legal_transactions`,
+inhaltliche Entscheidung der Editorinnen
+
+Beispiel: QGW_II_I_24 (1298 II 20, Rom). Die `<physDesc/sealDesc>`
+beschreibt zwölf an Seidenfäden anhängende Wachssiegel plus ein
+eingeschaltetes Pergamentsiegel. Die vierzehn Bischöfe im Regest sind
+ausschließlich als `<rs type="fn" role="issuer">` annotiert, nicht
+zusätzlich als `sealer or witness`. Die Sigillanten-Eigenschaft (im
+Original durch die Wachssiegel physisch belegt) wird damit nicht
+auswertbar.
+
+Das kontrollierte Rollenvokabular der Annotationsrichtlinien
+(`issuer`, `recipient`, `sealer or witness`, `other`, `none`) erlaubt
+Mehrfach-Rollen über separate `<rs type="fn">`-Wrapper. Eine
+Nachannotation müsste das Pattern systematisch im Stand QGW II/1 und
+II/2 prüfen — nicht nur Nr. 24.
+
+Aufdecker: Sichtprüfung Nr. 24 im Rahmen der UI-Korrekturen
+2026-05-11.
+
+### TEI-Annotation: Bischof Albrecht von Passau ohne Person-Annotation
+
+Stand: 2026-05-11
+Status: offen
+Verantwortlich: Schwester-Repo `db_for_medieval_legal_transactions`
+
+In QGW_II_I_24 nennt die `<physDesc/sealDesc>`: "nach dem dritten Siegel
+ist das des Bischofs Albrecht von Passau (an Pergamentstreifen
+anhangend, ungefärbtes Wachs, Bruchstück) eingeschaltet." Diese
+fünfzehnte Person ist mit eigener physischer Beleg-Spur am Stück
+vorhanden, aber weder in `personList.xml` registriert noch im Regest
+als `<rs type="person">` annotiert. Im UI steht "14 Pers., 1 Org."
+statt der korrekten 15.
+
+Fix: neuer Personen-Eintrag `pe__albrecht_von_passau_QGW_II_I_24` (oder
+sprechender) in `personList.xml`, Annotation `<rs type="person" …>`
+mit `role="sealer or witness"` an passender Stelle der
+Siegelbeschreibung.
+
+### Register-Konvention: ID-Renaming-Pass unvollständig
+
+Stand: 2026-05-11
+Status: offen, projektweit
+Verantwortlich: Schwester-Repo `db_for_medieval_legal_transactions`
+
+In `indices/personList.xml` tragen viele Einträge XML-Kommentare mit
+einer "sprechenden" Ziel-ID, die tatsächliche `xml:id` folgt aber
+weiter dem laufnummernbasierten Schema. Beispiel QGW_II_I_24:
+
+| tatsächliche ID | gewünschte ID (Kommentar) |
+|---|---|
+| `pe__philipp_QGW_II_I_24` | `pe__philipp_von_salerno` |
+| `pe__lambert_QGW_II_I_24` | `pe__lambert_von_aquino` |
+| `pe__leonardo_patrasso_QGW_II_I_24` | `pe__leonhard_patrasso` |
+| (mindestens 8 weitere bei Nr. 24) | |
+
+Konsequenz: zwei Konventionen existieren parallel; sprechende IDs in
+den Kommentaren sind als technische Schulden lesbar. Eine Mass-
+Migration müsste alle Quellen-XMLs gleichzeitig aktualisieren
+(Stadtbücher und QGW), inklusive `ref=`-Verweise. Das ist ein
+projektweiter Auftrag, der bewusst aufgeschoben ist.
+
+### TEI-Annotation: Datierungs-Personen (Päpste, Kaiser) unklare Konvention
+
+Stand: 2026-05-11
+Status: offen, konzeptionell
+Verantwortlich: Schwester-Repo `db_for_medieval_legal_transactions`,
+Klärung in den Annotationsrichtlinien
+
+In QGW_II_I_24 steht im `<origDate>` der Wortlaut "pont. domini
+Bonifatii pape anno quarto" — Bonifaz VIII. wird als Datierungs-Anker
+genannt, aber nicht als `<rs type="person">` annotiert. Konsistente
+Konvention ist unklar:
+
+- In den meisten Quellen steht der Papst/Kaiser im `<origDate>`-Text-
+  Inhalt, kein Annotationsziel.
+- Falls eine Querverbindung gewünscht ist (Quellen, die unter Bonifaz
+  VIII. ausgestellt wurden), bräuchte es eine projektweite Regel zur
+  Datierungs-Person.
+
+Vor einer technischen Lösung muss die Editionsrichtlinie diese
+Konvention festlegen.
+
 ## Coverage-Lücken und Konventionen (kein Bug)
 
 ### TEI-Konvention: `<rs type="event" ref="NULL">`
@@ -86,4 +173,33 @@ aufgenommen.
 
 ## Gelöste Befunde
 
-(noch keine)
+### Renderer-Whitespace zwischen Attribut-Span und Forename
+
+Gelöst: 2026-05-11
+Aufdecker: Sichtprüfung Nr. 24 (Bischofssammelindulgenz, 14 Aussteller)
+
+Im TEI-Quelltext stand das Forename direkt nach `</roleName>` (oder
+nach zwei aufeinanderfolgenden `<roleName>`-Geschwistern) ohne
+trennendes Leerzeichen. Der Renderer übernahm den Whitespace 1:1, was
+zu Plain-Text-Output wie `episcopusAdam Marturanensis` und
+`fraterepiscopus Johannes Turritanus` führte. Im Regest-HTML lasen sich
+sieben Vorkommen aus Nr. 24 fehlerhaft.
+
+Fix: defensiver Whitespace-Patch in
+`frontend/renderer.py::_render_children`. Zwischen `<roleName>`/`<add>`
+und einem unmittelbar folgenden Buchstaben/Ziffer (im Tail-Text oder im
+Text des nächsten Geschwister-Elements) wird ein Leerzeichen injiziert.
+Punktuation und vorhandenes Whitespace bleiben unangetastet.
+
+Regression-Guard: `verification.compare_tei_html.check_glued_attributes`
+(`teihtml.attr_name_glued`). Sucht das Pattern
+`<span class="anno-attr…">…</span>[A-Z…]` und meldet Mismatch bei
+Vorkommen. Lauf 2026-05-11: 0 Vorkommen über alle 2601 Quellen.
+
+Tests: `frontend/tests/test_renderer.py`,
+`test_rolename_glued_forename_gets_space`,
+`test_rolename_followed_by_comma_no_extra_space`,
+`test_rolename_preexisting_space_not_doubled`,
+`test_add_glued_to_following_text`,
+`test_two_adjacent_rolenames_get_space`,
+`test_sibling_with_comma_text_no_space`.
