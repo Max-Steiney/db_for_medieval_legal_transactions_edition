@@ -333,3 +333,30 @@
     .person-source-table { font-size: var(--text-xs); }
     .person-source-table .src-col-corpus { display: none; }
 }
+
+/* Place-Profil-Geo-Block: Adresse, Parzelle, Koordinaten, GeoNames als
+   schmale Definition-Liste analog zu .person-titles. Kein Karten-Widget;
+   GeoNames-Link bleibt das einzige Geo-Sprungziel.                        */
+.person-geo {
+    margin: var(--space-sm) 0 0;
+    padding: 0;
+    display: grid;
+    grid-template-columns: max-content 1fr;
+    gap: 0.25rem var(--space-md);
+    font-size: var(--text-sm);
+}
+.person-geo .geo-row { display: contents; }
+.person-geo dt {
+    color: var(--color-text-muted);
+    text-transform: uppercase;
+    letter-spacing: 0.05em;
+    font-size: var(--text-xs);
+    padding-top: 0.25rem;
+}
+.person-geo dd { margin: 0; color: var(--color-text); }
+.person-geo dd code {
+    font-family: var(--font-mono);
+    font-size: var(--text-xs);
+    color: var(--color-text-muted);
+}
+.person-geo dd a { color: var(--color-link); word-break: break-all; }

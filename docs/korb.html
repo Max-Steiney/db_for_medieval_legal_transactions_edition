@@ -6,19 +6,19 @@
     <meta http-equiv="Content-Security-Policy" content="default-src 'self'; script-src 'self'; style-src 'self'; font-src 'self'; img-src 'self' data: https://images.monasterium.net https://www.monasterium.net; connect-src 'self'; frame-ancestors 'none'; base-uri 'self'; form-action 'self'; upgrade-insecure-requests">
     <meta name="referrer" content="strict-origin-when-cross-origin">
     <meta http-equiv="Permissions-Policy" content="camera=(), microphone=(), geolocation=(), interest-cohort=()">
-    <title>Wissenskorb — Datenbank</title>
+    <title>Wissenskorb, Datenbank</title>
     <link rel="preload" as="font" type="font/woff2" crossorigin
           href="./static/fonts/inter-400-latin.woff2">
-    <link rel="stylesheet" href="./static/css/fonts.css?v=20260511095731">
-    <link rel="stylesheet" href="./static/css/tokens.css?v=20260511095731">
-    <link rel="stylesheet" href="./static/css/base.css?v=20260511095731">
-    <link rel="stylesheet" href="./static/css/components.css?v=20260511095731">
-    <link rel="stylesheet" href="./static/css/responsive.css?v=20260511095731">
-    <link rel="stylesheet" href="./static/css/print.css?v=20260511095731">
-    <link rel="stylesheet" href="./static/css/provenance.css?v=20260511095731">
+    <link rel="stylesheet" href="./static/css/fonts.css?v=20260511112948">
+    <link rel="stylesheet" href="./static/css/tokens.css?v=20260511112948">
+    <link rel="stylesheet" href="./static/css/base.css?v=20260511112948">
+    <link rel="stylesheet" href="./static/css/components.css?v=20260511112948">
+    <link rel="stylesheet" href="./static/css/responsive.css?v=20260511112948">
+    <link rel="stylesheet" href="./static/css/print.css?v=20260511112948">
+    <link rel="stylesheet" href="./static/css/provenance.css?v=20260511112948">
     
-<link rel="stylesheet" href="./static/css/index.css?v=20260511095731">
-<link rel="stylesheet" href="./static/css/exploration.css?v=20260511095731">
+<link rel="stylesheet" href="./static/css/index.css?v=20260511112948">
+<link rel="stylesheet" href="./static/css/exploration.css?v=20260511112948">
 
 </head>
 <body data-root-path="."
@@ -46,6 +46,10 @@
     <div class="nav-dropdown-menu">
         
         <a href="./register/persons.html">Personen</a>
+        
+        <a href="./register/orgs.html">Organisationen</a>
+        
+        <a href="./register/places.html">Orte</a>
         
     </div>
 </div>
@@ -78,7 +82,7 @@
         
         <a href="./project/about.html">Über das Projekt</a>
         
-        <a href="./project/edition-guidelines.html">Editionsrichtlinien</a>
+        <a href="./project/edition-guidelines.html">Annotationsrichtlinien</a>
         
         <a href="./project/glossary.html">Glossar</a>
         
@@ -87,7 +91,7 @@
     </div>
 </div>
 
-                <a href="./korb.html" class="nav-korb" aria-label="Wissenskorb">
+                <a href="./korb.html" class="nav-basket" aria-label="Wissenskorb">
                     <svg width="18" height="18" viewBox="0 0 18 18" fill="none" aria-hidden="true">
                         <path d="M3 5h12l-1.2 8.5a1 1 0 0 1-1 .85H5.2a1 1 0 0 1-1-.85L3 5z"
                               stroke="currentColor" stroke-width="1.4" fill="none"
@@ -96,7 +100,7 @@
                               stroke="currentColor" stroke-width="1.4" fill="none"
                               stroke-linecap="round"/>
                     </svg>
-                    <span class="nav-korb-count" id="nav-korb-count" hidden></span>
+                    <span class="nav-basket-count" id="nav-basket-count" hidden></span>
                 </a>
             </div>
         </div>
@@ -104,7 +108,7 @@
 
     <main class="site-main" id="main-content">
         
-<div class="index-page korb-page">
+<div class="index-page basket-page">
 
     <header class="index-header">
         <h1>Wissenskorb</h1>
@@ -117,32 +121,32 @@
         </p>
     </header>
 
-    <div class="korb-toolbar">
-        <span id="korb-count" class="korb-count">0 Eintr&auml;ge</span>
-        <div class="korb-actions">
-            <button type="button" id="korb-export" class="explore-btn">
+    <div class="basket-toolbar">
+        <span id="basket-count" class="basket-count">0 Eintr&auml;ge</span>
+        <div class="basket-actions">
+            <button type="button" id="basket-export" class="explore-btn">
                 CSV exportieren
             </button>
-            <button type="button" id="korb-clear" class="explore-btn explore-btn--danger">
+            <button type="button" id="basket-clear" class="explore-btn explore-btn--danger">
                 Wissenskorb leeren
             </button>
         </div>
     </div>
 
-    <div id="korb-list-wrap">
-        <table class="aggregat-table korb-table" id="korb-table">
+    <div id="basket-list-wrap">
+        <table class="aggregat-table basket-table" id="basket-table">
             <thead>
                 <tr>
-                    <th class="col-idno">Nr.</th>
-                    <th class="col-date">Datum</th>
-                    <th class="col-coll">Quellenkorpus</th>
-                    <th class="col-regest">Regest</th>
-                    <th class="col-actions" aria-label="Aktionen"></th>
+                    <th scope="col" class="col-idno">Nr.</th>
+                    <th scope="col" class="col-date">Datum</th>
+                    <th scope="col" class="col-coll">Quellenkorpus</th>
+                    <th scope="col" class="col-regest">Regest</th>
+                    <th scope="col" class="col-actions" aria-label="Aktionen"></th>
                 </tr>
             </thead>
-            <tbody id="korb-tbody"></tbody>
+            <tbody id="basket-tbody"></tbody>
         </table>
-        <p id="korb-empty" class="aggregat-empty" hidden>
+        <p id="basket-empty" class="aggregat-empty" hidden>
             Der Wissenskorb ist leer. Sammeln Sie Quellen aus den Listen
             (Quellen-Tabelle, Auswertungs-Drill-downs, Zeitstrom-Drill)
             mit dem &bdquo;+&ldquo;-Knopf neben jedem Eintrag.
@@ -156,22 +160,29 @@
     <footer class="site-footer">
         <div class="footer-inner">
             <div class="footer-col">
-                <p class="footer-project">Stadt und Gemeinschaft Wien &mdash; Datenbank</p>
+                <p class="footer-project">Stadt und Gemeinschaft Wien, Datenbank</p>
                 <p>Tr&auml;gerprojekt &raquo;Stadt und Gemeinschaft&laquo; (Universit&auml;t Wien)</p>
-                <p class="footer-meta">Datenstand: 9. Mai 2026</p>
+                <p class="footer-meta">Datenstand: 9. Mai 2026 &middot; Seite generiert: 11. Mai 2026</p>
+                
+                <p class="footer-meta">Wissenskorb (clientseitig)</p>
             </div>
             <div class="footer-col footer-col-right">
                 <p>Technische Umsetzung: <a href="https://dhcraft.org" class="footer-link">Digital Humanities Craft OG</a></p>
-                <p>Lizenz: <a href="./impressum.html#lizenz" class="footer-link">CC BY 4.0</a> &middot; Wissenskorb (clientseitig)</p>
+                <p>Lizenz: CC BY 4.0</p>
+                <p>
+                    <a href="./impressum.html" class="footer-link">Impressum</a>
+                    &middot;
+                    <a href="https://github.com/chpollin/db_for_medieval_legal_transactions_edition" class="footer-link" rel="noopener">GitHub-Repository</a>
+                </p>
             </div>
         </div>
     </footer>
 
-    <script src="./static/js/core.js?v=20260511095731"></script>
-    <script src="./static/js/provenance.js?v=20260511095731"></script>
-    <script src="./static/js/wissenskorb.js?v=20260511095731"></script>
+    <script src="./static/js/core.js?v=20260511112948"></script>
+    <script src="./static/js/provenance.js?v=20260511112948"></script>
+    <script src="./static/js/basket.js?v=20260511112948"></script>
     
-<script src="./static/js/korb-page.js?v=20260511095731"></script>
+<script src="./static/js/basket-page.js?v=20260511112948"></script>
 
 </body>
 </html>

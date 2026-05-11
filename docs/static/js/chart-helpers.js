@@ -1,5 +1,5 @@
 /* ==========================================================================
-   Wiener Urkundenbuch — Digital Edition
+   Stadt und Gemeinschaft Wien — Digital Edition
    ChartHelpers: shared SVG chart utilities for statistics + exploration
    ========================================================================== */
 
@@ -201,7 +201,7 @@ let ChartHelpers = (function() {
 
     /**
      * Load a JSON file with loading/error indicator in a container.
-     * @param {string} url - fetch URL (e.g. './data/epic_a.json')
+     * @param {string} url - fetch URL (e.g. './data/roles.json')
      * @param {string|HTMLElement} container - element or ID to show loading/error
      * @param {function} callback - called with parsed data on success
      */

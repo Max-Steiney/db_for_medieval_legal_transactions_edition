@@ -68,9 +68,9 @@
             /* sex + role -> role_by_sex */
             {
                 filters: ['sex', 'role'],
-                files: ['epic_a.json'],
+                files: ['roles.json'],
                 resolve: function(f, d) {
-                    let ea = d['epic_a.json'];
+                    let ea = d['roles.json'];
                     let role = f.role, sex = f.sex;
                     let pair = (ea.observations.role_by_sex || {})[role] || {};
                     let dd = (((ea.drill_down || {}).role_sex || {})[role] || {})[sex] || [];
@@ -85,9 +85,9 @@
             /* sex + org_type -> org_type_by_sex */
             {
                 filters: ['sex', 'org_type'],
-                files: ['epic_a.json'],
+                files: ['roles.json'],
                 resolve: function(f, d) {
-                    let ea = d['epic_a.json'];
+                    let ea = d['roles.json'];
                     let pair = (ea.observations.org_type_by_sex || {})[f.org_type] || {};
                     let dd = ((ea.drill_down || {}).org_type || {})[f.org_type] || [];
                     return {
@@ -116,9 +116,9 @@
             /* role -> sum over sex */
             {
                 filters: ['role'],
-                files: ['epic_a.json'],
+                files: ['roles.json'],
                 resolve: function(f, d) {
-                    let ea = d['epic_a.json'];
+                    let ea = d['roles.json'];
                     let pair = (ea.observations.role_by_sex || {})[f.role] || {};
                     let dds = ((ea.drill_down || {}).role_sex || {})[f.role] || {};
                     return {
@@ -132,9 +132,9 @@
             /* org_type -> org_type_totals */
             {
                 filters: ['org_type'],
-                files: ['epic_a.json'],
+                files: ['roles.json'],
                 resolve: function(f, d) {
-                    let ea = d['epic_a.json'];
+                    let ea = d['roles.json'];
                     return {
                         count: (ea.observations.org_type_totals || {})[f.org_type] || 0,
                         drillDownIds: ((ea.drill_down || {}).org_type || {})[f.org_type] || [],
@@ -146,9 +146,9 @@
             /* org_category -> sum over associated org_types */
             {
                 filters: ['org_category'],
-                files: ['epic_a.json', 'categories.json'],
+                files: ['roles.json', 'categories.json'],
                 resolve: function(f, d) {
-                    let ea = d['epic_a.json'];
+                    let ea = d['roles.json'];
                     let types = categoryTypes(f.org_category, d);
                     let totals = ea.observations.org_type_totals || {};
                     let dds = (ea.drill_down || {}).org_type || {};
@@ -168,9 +168,9 @@
             /* sex -> coverage (individual persons) */
             {
                 filters: ['sex'],
-                files: ['epic_a.json'],
+                files: ['roles.json'],
                 resolve: function(f, d) {
-                    let ea = d['epic_a.json'];
+                    let ea = d['roles.json'];
                     return {
                         count: (ea.coverage.sex_distribution || {})[f.sex] || 0,
                         caveats: ['Hier zaehlen wir individuelle Personen, nicht Nennungen — auf der Subjekt-Ebene Personen entspricht das der Coverage-Zahl aus dem Personen-Register.']
@@ -193,9 +193,9 @@
             /* empty -> person_count */
             {
                 filters: [],
-                files: ['epic_a.json'],
+                files: ['roles.json'],
                 resolve: function(f, d) {
-                    return { count: d['epic_a.json'].coverage.person_count || 0 };
+                    return { count: d['roles.json'].coverage.person_count || 0 };
                 }
             }
         ],
@@ -250,10 +250,10 @@
             /* tx_type */
             {
                 filters: ['tx_type'],
-                files: ['epic_a.json'],
+                files: ['roles.json'],
                 resolve: function(f, d) {
                     return {
-                        count: (d['epic_a.json'].observations.transaction_types || {})[f.tx_type] || 0
+                        count: (d['roles.json'].observations.transaction_types || {})[f.tx_type] || 0
                     };
                 }
             },
@@ -261,10 +261,10 @@
             /* recipient_type */
             {
                 filters: ['recipient_type'],
-                files: ['epic_c.json'],
+                files: ['transactions.json'],
                 resolve: function(f, d) {
                     return {
-                        count: (d['epic_c.json'].observations.recipient_type_totals || {})[f.recipient_type] || 0,
+                        count: (d['transactions.json'].observations.recipient_type_totals || {})[f.recipient_type] || 0,
                         caveats: ['Pipeline fuehrt keinen pro-recipient_type-Drill-Down — Quellen-Liste waere breiter (Org-Typ in beliebiger Rolle).']
                     };
                 }
@@ -273,9 +273,9 @@
             /* empty */
             {
                 filters: [],
-                files: ['epic_a.json'],
+                files: ['roles.json'],
                 resolve: function(f, d) {
-                    return { count: d['epic_a.json'].coverage.total_events || 0 };
+                    return { count: d['roles.json'].coverage.total_events || 0 };
                 }
             }
         ],
@@ -286,9 +286,9 @@
             /* rel_type + sex */
             {
                 filters: ['rel_type', 'sex'],
-                files: ['epic_b.json'],
+                files: ['relations.json'],
                 resolve: function(f, d) {
-                    let eb = d['epic_b.json'];
+                    let eb = d['relations.json'];
                     let pair = ((eb.overview || {}).type_by_sex || {})[f.rel_type] || {};
                     let dd = (((eb.drill_down || {}).type_sex || {})[f.rel_type] || {})[f.sex] || [];
                     return {
@@ -302,9 +302,9 @@
             /* rel_type */
             {
                 filters: ['rel_type'],
-                files: ['epic_b.json'],
+                files: ['relations.json'],
                 resolve: function(f, d) {
-                    let c = ((d['epic_b.json'].coverage || {}).type_counts || {})[f.rel_type] || 0;
+                    let c = ((d['relations.json'].coverage || {}).type_counts || {})[f.rel_type] || 0;
                     return { count: c };
                 }
             },
@@ -312,9 +312,9 @@
             /* empty */
             {
                 filters: [],
-                files: ['epic_b.json'],
+                files: ['relations.json'],
                 resolve: function(f, d) {
-                    return { count: (d['epic_b.json'].coverage || {}).total_relations || 0 };
+                    return { count: (d['relations.json'].coverage || {}).total_relations || 0 };
                 }
             }
         ]

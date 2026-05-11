@@ -1,13 +1,32 @@
 /* ==========================================================================
    Knowledge basket — persistent collection of sources across sessions.
    localStorage-based; a flat array of items keyed by type+id.
-   Nav badge updates via custom event 'wissenskorb-change'.
+   Nav badge updates via custom event 'basket-change'.
+
+   The UI label "Wissenskorb" stays German throughout — this is content of
+   the edition. Code-side symbols use the English term "basket" so the
+   source is consistent with the rest of the codebase.
    ========================================================================== */
 
-let Wissenskorb = (function () {
+let KnowledgeBasket = (function () {
     'use strict';
 
-    const KEY = 'sugw-wissenskorb-v1';
+    const KEY = 'sugw-basket-v1';
+    const LEGACY_KEY = 'sugw-wissenskorb-v1';
+
+    // One-shot migration from the original key name. Reads any existing
+    // value under the legacy key, copies it to the new key (if the new key
+    // is still empty), and removes the legacy entry. Idempotent.
+    function migrateLegacyKey() {
+        try {
+            const legacy = localStorage.getItem(LEGACY_KEY);
+            if (legacy === null) return;
+            if (localStorage.getItem(KEY) === null) {
+                localStorage.setItem(KEY, legacy);
+            }
+            localStorage.removeItem(LEGACY_KEY);
+        } catch (_) {}
+    }
 
     function read() {
         try {
@@ -20,7 +39,7 @@ let Wissenskorb = (function () {
     function write(items) {
         try {
             localStorage.setItem(KEY, JSON.stringify(items));
-            window.dispatchEvent(new CustomEvent('wissenskorb-change', { detail: { count: items.length } }));
+            window.dispatchEvent(new CustomEvent('basket-change', { detail: { count: items.length } }));
         } catch (_) {}
     }
 
@@ -63,10 +82,10 @@ let Wissenskorb = (function () {
     function count() { return read().length; }
     function clear() { write([]); }
 
-    // Update nav badge — called eagerly by core.js on page load,
-    // then reacts to changes within the session.
+    // Update nav badge. Called eagerly by core.js on page load, then
+    // reacts to changes within the session.
     function updateBadge() {
-        const badge = document.getElementById('nav-korb-count');
+        const badge = document.getElementById('nav-basket-count');
         if (!badge) return;
         const c = count();
         badge.textContent = c > 0 ? String(c) : '';
@@ -77,37 +96,37 @@ let Wissenskorb = (function () {
     // Caller inserts it into markup; clicks are handled via document-level
     // event delegation in bindGlobalClicks().
     function buttonHTML(item) {
-        const inKorb = has(item.type, item.id);
-        const label = inKorb
+        const inBasket = has(item.type, item.id);
+        const label = inBasket
             ? 'Aus Wissenskorb entfernen'
             : 'In Wissenskorb legen';
-        const icon = inKorb ? '✓' : '+';
-        const cls  = 'korb-btn' + (inKorb ? ' is-in' : '');
+        const icon = inBasket ? '✓' : '+';
+        const cls  = 'basket-btn' + (inBasket ? ' is-in' : '');
         const data = encodeURIComponent(JSON.stringify(item));
         return `<button type="button" class="${cls}"
-            data-korb-item="${data}"
+            data-basket-item="${data}"
             aria-label="${label}" title="${label}">${icon}</button>`;
     }
 
     function bindGlobalClicks() {
         document.addEventListener('click', (e) => {
-            const btn = e.target.closest('.korb-btn');
+            const btn = e.target.closest('.basket-btn');
             if (!btn) return;
             e.preventDefault();
             e.stopPropagation();
             try {
-                const item = JSON.parse(decodeURIComponent(btn.dataset.korbItem));
+                const item = JSON.parse(decodeURIComponent(btn.dataset.basketItem));
                 toggle(item);
                 // Visual toggle: class + icon, without a re-render.
-                const inKorb = has(item.type, item.id);
-                btn.classList.toggle('is-in', inKorb);
-                btn.textContent = inKorb ? '✓' : '+';
-                const lab = inKorb ? 'Aus Wissenskorb entfernen' : 'In Wissenskorb legen';
+                const inBasket = has(item.type, item.id);
+                btn.classList.toggle('is-in', inBasket);
+                btn.textContent = inBasket ? '✓' : '+';
+                const lab = inBasket ? 'Aus Wissenskorb entfernen' : 'In Wissenskorb legen';
                 btn.setAttribute('aria-label', lab);
                 btn.setAttribute('title', lab);
             } catch (_) {}
         });
-        window.addEventListener('wissenskorb-change', updateBadge);
+        window.addEventListener('basket-change', updateBadge);
         // Cross-tab sync: listen for localStorage changes from other tabs
         // and refresh the badge.
         window.addEventListener('storage', (e) => {
@@ -116,6 +135,7 @@ let Wissenskorb = (function () {
     }
 
     function init() {
+        migrateLegacyKey();
         bindGlobalClicks();
         updateBadge();
     }

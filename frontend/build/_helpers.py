@@ -153,6 +153,18 @@ def _extract_entity_refs(root):
     return refs
 
 
+def _format_de_int(value):
+    """Format an integer with German thousand separators ('.' as group sep).
+
+    Used as the ``de_int`` Jinja filter so templates can write ``{{ n | de_int }}``
+    instead of repeating ``"{:,}".format(n).replace(",", ".")``.
+    """
+    try:
+        return "{:,}".format(int(value)).replace(",", ".")
+    except (TypeError, ValueError):
+        return str(value)
+
+
 def _init_jinja():
     """Create Jinja2 environment."""
     env = Environment(
@@ -167,6 +179,7 @@ def _init_jinja():
     env.globals["released_period"] = rp
     env.globals["released_period_label"] = released_period_label()
     env.globals["unprocessed_gaps_label"] = unprocessed_gaps_label()
+    env.filters["de_int"] = _format_de_int
     return env
 
 

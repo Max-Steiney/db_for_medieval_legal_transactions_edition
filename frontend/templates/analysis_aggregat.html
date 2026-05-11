@@ -30,7 +30,7 @@
             {% endif %}
 
             {# Korpus-Filter wirkt auf der Auswertungs-Seite noch nicht
-               (roles/relations/transactions sind kollektions-aggregiert) — daher hier
+               (roles/relations/transactions sind kollektions-aggregiert), daher hier
                bewusst nicht angezeigt, statt als toter Chip zu verwirren. #}
 
             {% call sidebar_block('Geschlecht') %}
@@ -77,15 +77,15 @@
                         <table class="aggregat-table" id="roles-table">
                             <thead>
                                 <tr>
-                                    <th class="col-label">Rolle</th>
-                                    <th class="num">Total</th>
-                                    <th class="num pct">%</th>
-                                    <th class="num sex-m">M</th>
-                                    <th class="num pct sex-m">% Zeile</th>
-                                    <th class="num pct sex-m">% Spalte</th>
-                                    <th class="num sex-f">W</th>
-                                    <th class="num pct sex-f">% Zeile</th>
-                                    <th class="num pct sex-f">% Spalte</th>
+                                    <th scope="col" class="col-label">Rolle</th>
+                                    <th scope="col" class="num">Total</th>
+                                    <th scope="col" class="num pct">%</th>
+                                    <th scope="col" class="num sex-m">M</th>
+                                    <th scope="col" class="num pct sex-m">% Zeile</th>
+                                    <th scope="col" class="num pct sex-m">% Spalte</th>
+                                    <th scope="col" class="num sex-f">W</th>
+                                    <th scope="col" class="num pct sex-f">% Zeile</th>
+                                    <th scope="col" class="num pct sex-f">% Spalte</th>
                                 </tr>
                             </thead>
                             <tbody></tbody>
@@ -119,14 +119,14 @@
                         <table class="aggregat-table" id="relations-table">
                             <thead>
                                 <tr>
-                                    <th class="col-label">Typ</th>
-                                    <th class="num">Beziehungen</th>
-                                    <th class="num pct">%</th>
-                                    <th class="num sex-m">M</th>
-                                    <th class="num pct sex-m">% Zeile</th>
-                                    <th class="num sex-f">W</th>
-                                    <th class="num pct sex-f">% Zeile</th>
-                                    <th class="num">Personen</th>
+                                    <th scope="col" class="col-label">Typ</th>
+                                    <th scope="col" class="num">Beziehungen</th>
+                                    <th scope="col" class="num pct">%</th>
+                                    <th scope="col" class="num sex-m">M</th>
+                                    <th scope="col" class="num pct sex-m">% Zeile</th>
+                                    <th scope="col" class="num sex-f">W</th>
+                                    <th scope="col" class="num pct sex-f">% Zeile</th>
+                                    <th scope="col" class="num">Personen</th>
                                 </tr>
                             </thead>
                             <tbody></tbody>
@@ -194,10 +194,10 @@
                         <table class="aggregat-table aggregat-table--labels" id="labels-table">
                             <thead>
                                 <tr>
-                                    <th class="col-label">Bezeichnung</th>
-                                    <th>Typ</th>
-                                    <th class="num">Personen</th>
-                                    <th class="col-sexbar">M / W</th>
+                                    <th scope="col" class="col-label">Bezeichnung</th>
+                                    <th scope="col">Typ</th>
+                                    <th scope="col" class="num">Personen</th>
+                                    <th scope="col" class="col-sexbar">M / W</th>
                                 </tr>
                             </thead>
                             <tbody></tbody>
@@ -225,5 +225,3 @@
 <script id="aggregat-data-transactions" type="application/json">{{ transactions_json|safe }}</script>
 <script src="{{ root_path }}/static/js/analysis-aggregat.js?v={{ asset_v }}"></script>
 {% endblock %}
-
-{% block footer_info %}Auswertungen generiert am {{ build_date }}{% endblock %}

@@ -40,7 +40,7 @@
                 <thead>
                     <tr>
                         <th scope="col">
-                            <span class="prov-stat-container">Quellenkorpus{% call glossary_tip('gloss-quellenkorpus', 'Quellenkorpus', placement='top') %}
+                            <span class="prov-stat-container">Korpus{% call glossary_tip('gloss-quellenkorpus', 'Quellenkorpus', placement='top') %}
                                 <p class="prov-def">Eine thematisch und editorisch zusammengeh&ouml;rige Gruppe von Quellen, etwa die QGW-B&auml;nde oder die Stadtb&uuml;cher.</p>
                                 <a class="prov-foot-link" href="{{ root_path }}/project/glossary.html#quellenkorpus">&rarr; im Glossar</a>
                             {% endcall %}</span>
@@ -60,7 +60,7 @@
                     <tr>
                         <th scope="row"><a class="corpus-link" href="{{ root_path }}/documents.html?collection={{ c.path | urlencode }}">{{ c.label }}</a></th>
                         {% for col in matrix_columns %}
-                        <td>{{ "{:,}".format(c[col.row_key]).replace(",", ".") }}</td>
+                        <td>{{ c[col.row_key] | de_int }}</td>
                         {% endfor %}
                     </tr>
                 {% endfor %}
@@ -71,7 +71,7 @@
                         {% for col in matrix_columns %}
                         <td>
                             <span class="prov-stat-container">
-                                {% call prov_stat(col.prov_id) %}{{ "{:,}".format(col.total).replace(",", ".") }}{% endcall %}
+                                {% call prov_stat(col.prov_id) %}{{ col.total | de_int }}{% endcall %}
                                 {% call prov_popover(col.prov_id, col.prov_title, placement='top') %}
                                     <pre class="prov-xpath">{{ col.prov_xpath }}</pre>
                                     {% if col.prov_note %}<p class="prov-note">{{ col.prov_note }}</p>{% endif %}
@@ -101,24 +101,24 @@
             <ul class="start-card-corpora">
                 <li>
                     <span class="start-card-corpora-label">Frauen</span>
-                    <span class="start-card-corpora-count">{{ "{:,}".format(sex_f).replace(",", ".") }}</span>
+                    <span class="start-card-corpora-count">{{ sex_f | de_int }}</span>
                 </li>
                 <li>
                     <span class="start-card-corpora-label">M&auml;nner</span>
-                    <span class="start-card-corpora-count">{{ "{:,}".format(sex_m).replace(",", ".") }}</span>
+                    <span class="start-card-corpora-count">{{ sex_m | de_int }}</span>
                 </li>
                 {% if sex_u %}
                 <li>
                     <span class="start-card-corpora-label">ohne Angabe</span>
-                    <span class="start-card-corpora-count">{{ "{:,}".format(sex_u).replace(",", ".") }}</span>
+                    <span class="start-card-corpora-count">{{ sex_u | de_int }}</span>
                 </li>
                 {% endif %}
                 <li class="start-card-corpora-total">
                     <span class="start-card-corpora-label">Gesamt</span>
                     <span class="start-card-corpora-count">
                         <span class="prov-stat-container">
-                            {% call prov_stat('prov-card-persons') %}<strong>{{ "{:,}".format(total_persons).replace(",", ".") }}</strong>{% endcall %}
-                            {% call prov_popover('prov-card-persons', 'Personen — Provenienz') %}
+                            {% call prov_stat('prov-card-persons') %}<strong>{{ total_persons | de_int }}</strong>{% endcall %}
+                            {% call prov_popover('prov-card-persons', 'Personen, Provenienz') %}
                                 <pre class="prov-xpath"><span class="xp-axis">//</span><span class="xp-elem">tei:body</span><span class="xp-axis">//</span><span class="xp-elem">tei:*</span><span class="xp-pred">[</span><span class="xp-attr">@type</span>=<span class="xp-string">'person'</span><span class="xp-pred">]</span><span class="xp-axis">/</span><span class="xp-attr">@ref</span></pre>
                                 <p class="prov-note">distinct &uuml;ber <code>@ref</code> (<code>pe__&hellip;</code>); freigegebene Dokumente.</p>
                             {% endcall %}
@@ -133,7 +133,7 @@
     {# == Zwei Wege: Analyse (vorhanden) und Exploration (geplant) ============
        Auswertungen und Grundabfragen liegen beide unter /analysis/, weil
        sie quantitative Auswertungen zeigen. Exploration ist visuelle
-       interaktive Erkundung (Netzwerke, Karten, Timelines) — folgt. #}
+       interaktive Erkundung (Netzwerke, Karten, Timelines), folgt. #}
     <section class="start-twoways">
 
         <div class="start-twoways-column">
@@ -151,7 +151,7 @@
                         </svg>
                     </div>
                     <h2 class="explore-hub-card-title">Auswertungen</h2>
-                    <p class="explore-hub-card-desc">Funktionsrollen, Beziehungstypen, Transaktionen und Bezeichnungen &mdash; jeweils mit Geschlechter-Aufschl&uuml;sselung und beiden Z&auml;hlebenen (Nennungen / individuelle Personen).</p>
+                    <p class="explore-hub-card-desc">Funktionsrollen, Beziehungstypen, Transaktionen und Bezeichnungen, jeweils mit Geschlechter-Aufschl&uuml;sselung und beiden Z&auml;hlebenen (Nennungen / individuelle Personen).</p>
                 </a>
 
                 <a href="{{ root_path }}/analysis/index.html" class="explore-hub-card explore-hub-card--active">
@@ -219,5 +219,3 @@
 
 </div>
 {% endblock %}
-
-{% block footer_info %}Startseite generiert am {{ build_date }}{% endblock %}

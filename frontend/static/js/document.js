@@ -244,7 +244,7 @@
             html += '<section class="annotation-group">'
                 + '<h3 class="annotation-group-title">Personen, Organisationen, Orte</h3>'
                 + '<table class="annotations-table"><thead><tr>'
-                + '<th>Entität</th><th>Typ</th><th>Rolle</th><th>Attribute</th><th>Abschnitt</th><th>Event</th><th>ID</th>'
+                + '<th scope="col">Entität</th><th scope="col">Typ</th><th scope="col">Rolle</th><th scope="col">Attribute</th><th scope="col">Abschnitt</th><th scope="col">Event</th><th scope="col">ID</th>'
                 + '</tr></thead><tbody>';
             for (let p = 0; p < entities.length; p++) {
                 let f = entities[p];
@@ -273,7 +273,7 @@
             html += '<section class="annotation-group">'
                 + '<h3 class="annotation-group-title">Ereignisse</h3>'
                 + '<table class="annotations-table"><thead><tr>'
-                + '<th>Abschnitt</th><th>Dispositiv-Verb</th><th>ID</th>'
+                + '<th scope="col">Abschnitt</th><th scope="col">Dispositiv-Verb</th><th scope="col">ID</th>'
                 + '</tr></thead><tbody>';
             for (let e2 = 0; e2 < events.length; e2++) {
                 let ev = events[e2];
@@ -290,7 +290,7 @@
             html += '<section class="annotation-group">'
                 + '<h3 class="annotation-group-title">Dispositivformeln</h3>'
                 + '<table class="annotations-table"><thead><tr>'
-                + '<th>Text</th><th>Art</th><th>Abschnitt</th><th>Event</th>'
+                + '<th scope="col">Text</th><th scope="col">Art</th><th scope="col">Abschnitt</th><th scope="col">Event</th>'
                 + '</tr></thead><tbody>';
             for (let t2 = 0; t2 < triggers.length; t2++) {
                 let tr2 = triggers[t2];
@@ -308,7 +308,7 @@
             html += '<section class="annotation-group">'
                 + '<h3 class="annotation-group-title">Editorische Ergänzungen</h3>'
                 + '<table class="annotations-table"><thead><tr>'
-                + '<th>Text</th><th>Abschnitt</th>'
+                + '<th scope="col">Text</th><th scope="col">Abschnitt</th>'
                 + '</tr></thead><tbody>';
             for (let a2 = 0; a2 < adds.length; a2++) {
                 let ad2 = adds[a2];

@@ -91,24 +91,6 @@
     color: inherit;
 }
 
-.start-entry-card-stat {
-    font-size: var(--text-sm);
-    color: var(--color-text-muted);
-    margin: var(--space-xs) 0 0;
-    line-height: 1.6;
-}
-.start-entry-card-stat strong {
-    color: var(--color-text);
-    font-weight: 600;
-}
-
-.start-entry-card-meta {
-    font-size: var(--text-sm);
-    color: var(--color-text-muted);
-    margin: var(--space-xs) 0 0;
-    line-height: 1.5;
-}
-
 /* ── Card-Listen (Korpora, Personen-Aufschlüsselung) ──────────────── */
 .start-card-corpora {
     list-style: none;
@@ -144,10 +126,6 @@
     font-weight: 600;
 }
 .start-card-corpora-total strong { font-weight: 600; }
-/* Wenn die Liste lang wird (mehr als 5 Korpora), kompaktere Schrift,
-   damit die Card nicht ausufert. */
-.start-card-corpora--dense { font-size: var(--text-xs); }
-.start-card-corpora--dense li { padding: 0.1rem 0; }
 
 /* ── Korpus-Matrix (Card 1: Quellen/Nennungen/Events pro Korpus) ───── */
 .start-card-matrix {
@@ -218,48 +196,9 @@
     padding: 0.15rem 0.3rem 0.15rem 0;
 }
 
-/* ── Card-Sub-Navigation (Card 3: Projekt) ──────────────────────────
-   Übernimmt das Layout von .start-card-corpora für visuelle Kongruenz
-   mit Card 1+2: Label links, kleiner Indikator rechts. */
-.start-card-subnav {
-    list-style: none;
-    margin: var(--space-xs) 0 0;
-    padding: 0;
-    font-family: var(--font-sans);
-    font-size: var(--text-sm);
-    color: var(--color-text-muted);
-}
-.start-card-subnav li {
-    padding: 0.2rem 0;
-    line-height: 1.3;
-}
-.start-card-subnav a {
-    display: inline-flex;
-    align-items: baseline;
-    gap: 0.4em;
-    color: inherit;
-    text-decoration: none;
-    transition: color var(--transition-fast);
-}
-.start-card-subnav a::after {
-    content: '\2192';   /* → */
-    color: var(--color-text-light);
-    font-variant-numeric: tabular-nums;
-    transition: color var(--transition-fast), transform var(--transition-fast);
-}
-.start-card-subnav a:hover,
-.start-card-subnav a:focus-visible {
-    color: var(--anno-person);
-}
-.start-card-subnav a:hover::after,
-.start-card-subnav a:focus-visible::after {
-    color: var(--anno-person);
-    transform: translateX(2px);
-}
-
-/* \u2500\u2500 Zwei Wege: Exploration und Analyse als gleichberechtigte S\u00e4ulen \u2500\u2500\u2500
-   Abstand nach oben deutlich groesser, damit die Section sich klar
-   von den Entry-Cards loest. */
+/* ── Zwei Wege: Exploration und Analyse als gleichberechtigte Säulen ───
+   Abstand nach oben deutlich grösser, damit die Section sich klar
+   von den Entry-Cards löst. */
 .start-twoways {
     display: grid;
     grid-template-columns: 1fr 1fr;
@@ -313,25 +252,6 @@
 .start-twoways-grid .explore-hub-card-title { font-size: var(--text-base); }
 .start-twoways-grid .explore-hub-card-desc { font-size: var(--text-sm); margin-bottom: var(--space-xs); }
 
-
-
-
-.start-build-info {
-    font-family: var(--font-sans);
-    font-size: var(--text-xs);
-    color: var(--color-text-light);
-    margin-top: var(--space-md);
-}
-
-.start-build-info a {
-    color: var(--anno-person);
-    text-decoration: none;
-}
-
-.start-build-info a:hover {
-    text-decoration: underline;
-}
-
 /* Responsive */
 @media (max-width: 900px) {
     .start-entry-grid { grid-template-columns: 1fr; }
@@ -340,7 +260,6 @@
 
 @media (max-width: 768px) {
     .start-entry-grid { grid-template-columns: 1fr; }
-    .start-hero-stats { flex-direction: column; gap: var(--space-xs); }
 }
 
 @media (max-width: 600px) {

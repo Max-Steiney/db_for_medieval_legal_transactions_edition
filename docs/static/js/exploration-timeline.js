@@ -56,12 +56,12 @@
                 return 'mixed';
             },
         },
-        // Transaction type needs its own data source (epic_c.tx_timeline);
+        // Transaction type needs its own data source (transactions.tx_timeline);
         // handled separately in the renderer and not derived from search.json.
         tx: {
             label: 'Transaktionstyp',
             categories: [],  // populated dynamically
-            fromEpicC: true,
+            fromTransactions: true,
         },
     };
 
@@ -75,7 +75,7 @@
     // ---------------------------------------------------------------------
     // Data loading
     // ---------------------------------------------------------------------
-    const EPIC_C = V.readJsonScript('exploration-data-epic-c', { observations: {} });
+    const TRANSACTIONS = V.readJsonScript('exploration-data-transactions', { observations: {} });
     let DOCS = [];
     let DOCS_BY_DECADE = new Map();
     let DOCS_LOOKUP = {};   // file_key -> doc base record (lazy, for tx drill)
@@ -120,10 +120,10 @@
         }
 
         if (STATE.stack === 'tx') {
-            // Special case: aggregate from epic_c.tx_timeline. Decades that
+            // Special case: aggregate from transactions.tx_timeline. Decades that
             // appear there but not in DOCS are added on top (tx data is
             // independent of the doc set).
-            const tl = (EPIC_C.observations || {}).tx_timeline || {};
+            const tl = (TRANSACTIONS.observations || {}).tx_timeline || {};
             for (const cat of categories) {
                 const byDec = tl[cat.key] || {};
                 for (const [d, c] of Object.entries(byDec)) {
@@ -169,12 +169,12 @@
     }
 
     // Returns the effective stack definition (for 'tx' it builds the
-    // top-N categories dynamically from epic_c).
+    // top-N categories dynamically from transactions).
     function effectiveStackDef() {
         const def = STACKS[STATE.stack];
         if (STATE.stack !== 'tx') return def;
 
-        const tl = (EPIC_C.observations || {}).tx_timeline || {};
+        const tl = (TRANSACTIONS.observations || {}).tx_timeline || {};
         const totals = {};
         for (const [type, byDec] of Object.entries(tl)) {
             if (type === '_not_normalised') continue;
@@ -370,7 +370,7 @@
             : null;
 
         // Pick data source:
-        // - tx stack with focus -> file_keys from epic_c.tx_type_decade,
+        // - tx stack with focus -> file_keys from transactions.tx_type_decade,
         //   resolved to doc records via docs_lookup
         // - otherwise (incl. tx without focus, all stacks): from DOCS_BY_DECADE
         let docs;
@@ -400,10 +400,10 @@
 
         const ROOT = (window.ROOT_PATH || '..');
         const SHOW = 200;
-        const hasKorb = (typeof Wissenskorb !== 'undefined');
+        const hasBasket = (typeof KnowledgeBasket !== 'undefined');
         const shown = docs.slice(0, SHOW);
         list.innerHTML = shown.map(doc => {
-            const korbBtn = hasKorb ? Wissenskorb.buttonHTML({
+            const basketBtn = hasBasket ? KnowledgeBasket.buttonHTML({
                 type: 'source', id: doc.id, label: doc.id,
                 url: doc.u, date: doc.date, coll: doc.coll, regest: '',
             }) : '';
@@ -414,7 +414,7 @@
                     <span class="doc-coll">${doc.coll}</span>
                     <span class="doc-place">${doc.place}</span>
                 </a>
-                ${korbBtn}
+                ${basketBtn}
             </li>`;
         }).join('') + (docs.length > SHOW
             ? `<li class="explore-stream-doc-more">… und ${V.fmt(docs.length - SHOW)} weitere; bitte enger eingrenzen.</li>`
@@ -450,11 +450,11 @@
         return docs;
     }
 
-    // Returns drill records for a tx focus from epic_c.drill_down via
+    // Returns drill records for a tx focus from transactions.drill_down via
     // docs_lookup. Triggers a lazy load of docs_lookup.json if needed
     // (the result will surface on the next render).
     function collectTxFocusedDocs(txKey, lo, hi) {
-        const dd = ((EPIC_C.drill_down || {}).tx_type_decade || {})[txKey] || {};
+        const dd = ((TRANSACTIONS.drill_down || {}).tx_type_decade || {})[txKey] || {};
         const seen = new Set();
         const docs = [];
         for (let d = lo; d <= hi; d += 10) {

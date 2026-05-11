@@ -44,7 +44,7 @@
                 {% if profile.active_min %}
                 <span class="meta-pair">
                     <span class="meta-label">Belegt</span>
-                    <span class="meta-value">{% if profile.active_max and profile.active_max != profile.active_min %}{{ profile.active_min }}&ndash;{{ profile.active_max }}{% else %}{{ profile.active_min }}{% endif %}</span>
+                    <span class="meta-value">{% if profile.active_max and profile.active_max != profile.active_min %}{{ profile.active_min }} bis {{ profile.active_max }}{% else %}{{ profile.active_min }}{% endif %}</span>
                 </span>
                 {% endif %}
                 <span class="meta-pair person-id-pair">
@@ -114,14 +114,14 @@
                                 <span class="rel-other-plain">{{ e.person_name }}</span>
                             {% endif %}
                         </td>
-                        <td class="rel-col-label"><em>{{ e.label or '&mdash;' }}</em></td>
+                        <td class="rel-col-label"><em>{{ e.label or '-' }}</em></td>
                         <td class="rel-col-source">
                             {% if e.idno and e.url %}
                                 <a class="rel-source-link" href="{{ root_path }}/{{ e.url }}">Nr. {{ e.idno }}{% if e.date_display %} ({{ e.date_display }}){% endif %}</a>
                             {% elif e.idno %}
                                 Nr. {{ e.idno }}
                             {% else %}
-                                &mdash;
+                                -
                             {% endif %}
                         </td>
                     </tr>
@@ -149,9 +149,9 @@
             {% for d in profile.sources %}
                 <tr>
                     <td class="src-col-idno"><a href="{{ root_path }}/{{ d.url }}">{{ d.idno }}</a></td>
-                    <td class="src-col-date">{{ d.date_display or '&mdash;' }}</td>
+                    <td class="src-col-date">{{ d.date_display or '-' }}</td>
                     <td class="src-col-corpus">{{ d.collection_label }}</td>
-                    <td class="src-col-regest">{{ d.regest or '&mdash;' }}</td>
+                    <td class="src-col-regest">{{ d.regest or '-' }}</td>
                 </tr>
             {% endfor %}
             </tbody>

@@ -1254,7 +1254,7 @@
 /* === Stream-Block (Bar-Chart-Container) === */
 .explore-stream-block {
     background: var(--color-surface, #fff);
-    border: 1px solid var(--color-border, #e5e0d6);
+    border: 1px solid var(--color-border, #e0dbd4);
     border-radius: 4px;
     padding: var(--space-sm) var(--space-md) var(--space-md);
     margin-bottom: var(--space-md);
@@ -1370,7 +1370,7 @@
 /* === Drill-Down: Quellen-Liste === */
 .explore-stream-drill {
     background: var(--color-surface, #fff);
-    border: 1px solid var(--color-border, #e5e0d6);
+    border: 1px solid var(--color-border, #e0dbd4);
     border-radius: 4px;
     padding: var(--space-sm) var(--space-md) var(--space-md);
 }
@@ -1473,7 +1473,7 @@
 
 .explore-network-block {
     background: var(--color-surface, #fff);
-    border: 1px solid var(--color-border, #e5e0d6);
+    border: 1px solid var(--color-border, #e0dbd4);
     border-radius: 4px;
     padding: var(--space-sm) var(--space-md) var(--space-md);
     margin-bottom: var(--space-md);
@@ -1609,7 +1609,7 @@
 /* Detail-Tabelle */
 .explore-network-detail {
     background: var(--color-surface, #fff);
-    border: 1px solid var(--color-border, #e5e0d6);
+    border: 1px solid var(--color-border, #e0dbd4);
     border-radius: 4px;
     padding: var(--space-sm) var(--space-md) var(--space-md);
 }
@@ -1772,7 +1772,7 @@
 
 .aggregat-quadrant {
     background: var(--color-surface, #fff);
-    border: 1px solid var(--color-border, #e5e0d6);
+    border: 1px solid var(--color-border, #e0dbd4);
     border-radius: 4px;
     padding: var(--space-sm) var(--space-md) var(--space-md);
     display: flex;
@@ -1787,7 +1787,7 @@
     align-items: baseline;
     gap: var(--space-sm);
     margin-bottom: var(--space-xs);
-    border-bottom: 1px solid var(--color-border, #e5e0d6);
+    border-bottom: 1px solid var(--color-border, #e0dbd4);
     padding-bottom: 4px;
 }
 .aggregat-quadrant-head h2 {
@@ -1837,7 +1837,7 @@
     text-align: left;
     font-weight: 600;
     color: var(--color-text-muted);
-    border-bottom: 1px solid var(--color-border, #e5e0d6);
+    border-bottom: 1px solid var(--color-border, #e0dbd4);
     padding: 4px 6px;
     background: transparent;
     white-space: nowrap;
@@ -1911,7 +1911,7 @@
     padding: 4px 8px;
     font-family: var(--font-sans);
     font-size: var(--text-xs);
-    border: 1px solid var(--color-border, #e5e0d6);
+    border: 1px solid var(--color-border, #e0dbd4);
     border-radius: 3px;
     background: #fff;
 }

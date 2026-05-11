@@ -100,8 +100,8 @@
         }
         if (f.value_kind === 'from_data') {
             let src = (f.values_source || '').split('.');
-            let fileName = src[0] === 'epic_a' ? 'epic_a.json'
-                         : src[0] === 'epic_c' ? 'epic_c.json' : null;
+            let fileName = src[0] === 'roles' ? 'roles.json'
+                         : src[0] === 'transactions' ? 'transactions.json' : null;
             let node = fileName ? dataMap[fileName] : null;
             for (let i = 1; node && i < src.length; i++) node = node[src[i]];
             if (!node) return [];
@@ -148,15 +148,15 @@
     }
 
     let SUBJECT_FILES = {
-        persons:       ['epic_a.json'],
+        persons:       ['roles.json'],
         sources:       ['timeline.json'],
-        events:        ['epic_a.json', 'epic_c.json'],
-        relationships: ['epic_b.json']
+        events:        ['roles.json', 'transactions.json'],
+        relationships: ['relations.json']
     };
 
     function requiredFiles(state) {
         let files = ['query_vocabulary.json'].concat(SUBJECT_FILES[state.subject] || []);
-        // org_type picker for events reads from epic_a; already included above.
+        // org_type picker for events reads from roles; already included above.
         if (state.filters.org_category) files.push('categories.json');
         let seen = {}, out = [];
         files.forEach(function(f) { if (!seen[f]) { seen[f] = true; out.push(f); } });
@@ -502,7 +502,7 @@
 
     let OVERVIEW = {
         persons: function(d) {
-            let c = (d['epic_a.json'] || {}).coverage || {};
+            let c = (d['roles.json'] || {}).coverage || {};
             let sd = c.sex_distribution || {};
             return [
                 { label: 'Personen gesamt',       value: c.person_count || 0 },
@@ -521,7 +521,7 @@
             ];
         },
         events: function(d) {
-            let c = (d['epic_a.json'] || {}).coverage || {};
+            let c = (d['roles.json'] || {}).coverage || {};
             return [
                 { label: 'Rechtsgeschaefte gesamt', value: c.total_events || 0 },
                 { label: 'normalisiert',            value: c.normalisation_rate || 0,
@@ -529,7 +529,7 @@
             ];
         },
         relationships: function(d) {
-            let c = (d['epic_b.json'] || {}).coverage || {};
+            let c = (d['relations.json'] || {}).coverage || {};
             let tc = c.type_counts || {};
             return [
                 { label: 'Beziehungen gesamt', value: c.total_relations || 0 },
@@ -542,10 +542,10 @@
     };
 
     let TOTAL = {
-        persons:       function(d) { return ((d['epic_a.json'] || {}).coverage || {}).person_count || 0; },
+        persons:       function(d) { return ((d['roles.json'] || {}).coverage || {}).person_count || 0; },
         sources:       function(d) { return (d['timeline.json'] || {}).total || 0; },
-        events:        function(d) { return ((d['epic_a.json'] || {}).coverage || {}).total_events || 0; },
-        relationships: function(d) { return ((d['epic_b.json'] || {}).coverage || {}).total_relations || 0; }
+        events:        function(d) { return ((d['roles.json'] || {}).coverage || {}).total_events || 0; },
+        relationships: function(d) { return ((d['relations.json'] || {}).coverage || {}).total_relations || 0; }
     };
 
     let PRIMARY_LABEL = {

@@ -6,9 +6,9 @@
 
     const V = VizCore;
 
-    const EPIC_A = V.readJsonScript('aggregat-data-epic-a', { observations: {} });
-    const EPIC_B = V.readJsonScript('aggregat-data-epic-b', { overview: {}, labels: [] });
-    const EPIC_C = V.readJsonScript('aggregat-data-epic-c', { observations: {} });
+    const ROLES = V.readJsonScript('aggregat-data-roles', { observations: {} });
+    const RELATIONS = V.readJsonScript('aggregat-data-relations', { overview: {}, labels: [] });
+    const TRANSACTIONS = V.readJsonScript('aggregat-data-transactions', { observations: {} });
     let DOCS_LOOKUP = {};   // file_key -> doc base data, loaded async
 
     const STATE = {
@@ -113,8 +113,8 @@
     // Section 1: function roles
     // ---------------------------------------------------------------------
     function aggregateRoles() {
-        const dec = EPIC_A.observations.role_by_sex_by_decade || {};
-        const persDec = EPIC_A.observations.role_persons_by_decade || {};
+        const dec = ROLES.observations.role_by_sex_by_decade || {};
+        const persDec = ROLES.observations.role_persons_by_decade || {};
         const noTime = decFilter.noFilter();
 
         const mentions = {};
@@ -122,7 +122,7 @@
             mentions[role] = { m: 0, f: 0 };
             const byDec = dec[role] || {};
             if (noTime) {
-                const full = (EPIC_A.observations.role_by_sex || {})[role] || {};
+                const full = (ROLES.observations.role_by_sex || {})[role] || {};
                 mentions[role].m = full.m || 0;
                 mentions[role].f = full.f || 0;
             } else {
@@ -237,8 +237,8 @@
     // Section 2: relation types
     // ---------------------------------------------------------------------
     function renderRelations() {
-        const overview = (EPIC_B.overview || {}).type_by_sex || {};
-        const cov = (EPIC_B.coverage || {});
+        const overview = (RELATIONS.overview || {}).type_by_sex || {};
+        const cov = (RELATIONS.coverage || {});
         const personsTotal = cov.persons_with_relations || cov.node_count || 0;
         const sex = STATE.sex;
 
@@ -311,7 +311,7 @@
     // Section 3: transaction types — horizontal bars
     // ---------------------------------------------------------------------
     function aggregateTxTypes() {
-        const tl = (EPIC_C.observations || {}).tx_timeline || {};
+        const tl = (TRANSACTIONS.observations || {}).tx_timeline || {};
         const noTime = decFilter.noFilter();
         const totals = {};
         for (const [type, byDec] of Object.entries(tl)) {
@@ -416,7 +416,7 @@
         const meta = document.getElementById('labels-count-meta');
         if (!tbody) return;
 
-        const all = EPIC_B.labels || [];
+        const all = RELATIONS.labels || [];
         const search = STATE.labelSearch.trim().toLowerCase();
         const sexFilter = STATE.sex;
         const typeFilter = STATE.labelType;
@@ -607,11 +607,11 @@
 
     // ---------------------------------------------------------------------
     // Drill-down: click on donut arc / bar / label -> sources list.
-    // Collects file_keys from the drill_down indices of the epic_* aggregates
+    // Collects file_keys from the drill_down indices of the roles/relations/transactions aggregates
     // and calls V.openDrillOverlay to display them.
     // ---------------------------------------------------------------------
     function drillRoleSex(roleKey) {
-        const dd = ((EPIC_A.drill_down || {}).role_sex || {})[roleKey] || {};
+        const dd = ((ROLES.drill_down || {}).role_sex || {})[roleKey] || {};
         const sex = STATE.sex;
         const keys = [];
         if (sex === 'all' || sex === 'm') (dd.m || []).forEach(k => keys.push(k));
@@ -622,7 +622,7 @@
         openDrill('Funktionsrolle: ' + label + sexNote, keys);
     }
     function drillRelationSex(relKey) {
-        const dd = (EPIC_B.drill_down || {}).type_sex || {};
+        const dd = (RELATIONS.drill_down || {}).type_sex || {};
         const sex = STATE.sex;
         const keys = [];
         // type_sex keys are composite: "kin_m", "kin_f", "occ_m", ...
@@ -634,7 +634,7 @@
     }
     function drillTxType(txKey) {
         // tx_type_decade.{type}.{decade} -> [file_keys]
-        const dd = ((EPIC_C.drill_down || {}).tx_type_decade || {})[txKey] || {};
+        const dd = ((TRANSACTIONS.drill_down || {}).tx_type_decade || {})[txKey] || {};
         const keys = [];
         for (const [d, fks] of Object.entries(dd)) {
             if (!decFilter.contains(d)) continue;
@@ -644,7 +644,7 @@
     }
     function drillLabel(label) {
         // label_sex keys are composite: "{lowercased_label}__{m|f}"
-        const dd = (EPIC_B.drill_down || {}).label_sex || {};
+        const dd = (RELATIONS.drill_down || {}).label_sex || {};
         const sex = STATE.sex;
         const lc = label.toLowerCase();
         const keys = [];

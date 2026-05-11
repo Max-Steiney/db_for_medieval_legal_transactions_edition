@@ -14,7 +14,7 @@
 <article class="document{% if meta.facsimile_urls %} has-facsimile{% endif %}">
 
     {#
-        Sticky-Toolbar — zwei semantische Zonen:
+        Sticky-Toolbar, zwei semantische Zonen:
           IDENTITY (links): Breadcrumb-Kette + Meta-Strip (Originaldatierung,
                             Citation). „Wer/wo bin ich, was ist das?"
           CONTROLS (rechts): Action-Buttons + Layer-Toggles als 2x2-Grid.
@@ -31,7 +31,7 @@
         <div class="doc-toolbar-inner">
 
             <div class="doc-toolbar-identity">
-                <nav class="doc-breadcrumb" aria-label="Position in der Edition">
+                <nav class="doc-breadcrumb" aria-label="Position in der Datenbank">
                     <a href="{{ root_path }}/documents.html">Quellen</a>
                     <span class="bc-sep">›</span>
                     <span>{{ meta.collection_label }}</span>
@@ -60,7 +60,7 @@
             </div>
 
             <div class="doc-toolbar-controls">
-                <div class="doc-toolbar-legend" aria-label="Annotationsebenen — klicken zum Ein-/Ausblenden">
+                <div class="doc-toolbar-legend" aria-label="Annotationsebenen, klicken zum Ein-/Ausblenden">
                     {% for layer, group_label, swatches in legend_groups %}
                     <button type="button" class="legend-toggle"
                             data-layer="{{ layer }}" aria-pressed="true"
@@ -143,8 +143,8 @@
     </div>
 
     <!-- Annotationen: dritter, permanent sichtbarer Bereich neben
-         Editionstext und Digitalisat. Aggregiert die Annotationen aus
-         dem TEI in mehreren Untertabellen — Personen/Orgs/Orte,
+         Quellentext und Digitalisat. Aggregiert die Annotationen aus
+         dem TEI in mehreren Untertabellen, Personen/Orgs/Orte,
          Ereignisse, Dispositivformeln, Editorische Ergaenzungen. Wird
          per JS aus den entsprechenden Spans im Body aufgebaut. -->
     <section class="annotations-view" id="factoid-view" aria-label="Annotationen">
@@ -176,7 +176,3 @@
 <script src="{{ root_path }}/static/js/facsimile.js?v={{ asset_v }}"></script>
 <script src="{{ root_path }}/static/js/document.js?v={{ asset_v }}"></script>
 {% endblock %}
-
-{# Detail-Footer-Info bleibt leer: Korpus + Idno stehen schon in der
-   Toolbar-Breadcrumb (vierte Stelle waere reine Wiederholung). #}
-{% block footer_info %}{% endblock %}

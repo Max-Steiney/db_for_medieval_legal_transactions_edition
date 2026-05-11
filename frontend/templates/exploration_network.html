@@ -20,7 +20,7 @@
             (Verwandtschaft, Beruf / Stand, Vertretung, Freundschaft) als
             Ego-Netzwerk: eine Person im Zentrum, ihre direkten Verbindungen
             radial drumherum. Klick auf eine Nachbar-Person verlagert das
-            Zentrum &mdash; so wandert man durchs Netz.
+            Zentrum, so wandert man durchs Netz.
         </p>
         {{ active_filters() }}
     </header>
@@ -29,7 +29,7 @@
 
         <aside class="index-sidebar" aria-label="Filter">
 
-            {% call sidebar_block('Person', 'Im Korpus suchen — Treffer erscheinen unten') %}
+            {% call sidebar_block('Person', 'Im Korpus suchen, Treffer erscheinen unten') %}
                 <div class="net-search-wrap">
                     <input type="search" id="net-person-search" class="aggregat-search-input"
                            placeholder="Name eingeben&hellip;" autocomplete="off"
@@ -72,7 +72,7 @@
                     <span class="aggregat-quadrant-source">
                         <span class="prov-stat-container">
                             {% call glossary_tip('gloss-net-source', 'Personennetzwerk') %}
-                                <p class="prov-def">Annotierte Beziehungen zwischen Personen aus den TEI-Quellen, gruppiert in Verwandtschaft (kin), Beruf / Stand (occ &mdash; Person zu Organisation), Vertretung (rep) und Freundschaft (friend). Eine Beziehung kann in mehreren Quellen belegt sein.</p>
+                                <p class="prov-def">Annotierte Beziehungen zwischen Personen aus den TEI-Quellen, gruppiert in Verwandtschaft (kin), Beruf / Stand (occ, Person zu Organisation), Vertretung (rep) und Freundschaft (friend). Eine Beziehung kann in mehreren Quellen belegt sein.</p>
                                 <footer class="prov-foot">
                                     <span class="prov-foot-source"><code>data/relations.json::persons</code></span>
                                 </footer>
@@ -97,11 +97,11 @@
                     <table class="aggregat-table aggregat-table--labels" id="net-detail-table">
                         <thead>
                             <tr>
-                                <th class="col-label">Person</th>
-                                <th>Beziehung</th>
-                                <th>Bezeichnung</th>
-                                <th class="num">Belege</th>
-                                <th class="col-actions" aria-label="Aktionen"></th>
+                                <th scope="col" class="col-label">Person</th>
+                                <th scope="col">Beziehung</th>
+                                <th scope="col">Bezeichnung</th>
+                                <th scope="col" class="num">Belege</th>
+                                <th scope="col" class="col-actions" aria-label="Aktionen"></th>
                             </tr>
                         </thead>
                         <tbody id="net-detail-tbody"></tbody>
@@ -123,5 +123,3 @@
 <script id="network-data-relations" type="application/json">{{ relations_json|safe }}</script>
 <script src="{{ root_path }}/static/js/exploration-network.js?v={{ asset_v }}"></script>
 {% endblock %}
-
-{% block footer_info %}Personennetzwerk generiert am {{ build_date }}{% endblock %}

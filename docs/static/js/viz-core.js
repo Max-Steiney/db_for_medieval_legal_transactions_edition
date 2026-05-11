@@ -1,5 +1,5 @@
 /* ==========================================================================
-   Wiener Urkundenbuch — Viz-Core
+   Stadt und Gemeinschaft Wien — Viz-Core
    Shared visualisation layer for the data visualisation pages under
    /analysis/ and /exploration/. Provides data loaders, decade helpers,
    CSP-safe style projection, chip toggling, sidebar bindings and the
@@ -167,7 +167,7 @@ let VizCore = (function () {
     // docs_lookup.json: file_key (e.g. "f__QGW_0a") -> doc base record
     // {u: url, i: idno, d: display date, c: corpus label, r: regest}.
     // Used by Drill-down lists that only store file_keys (drill_down in
-    // epic_a/b/c).
+    // roles/relations/transactions).
     function loadDocsLookup(rootPath) {
         const root = rootPath || (window.ROOT_PATH || '..');
         return fetch(root + '/data/docs_lookup.json').then(r => r.json());
@@ -393,9 +393,9 @@ let VizCore = (function () {
         if (tbody) {
             const root = (window.ROOT_PATH || '..');
             const SHOW = 500;
-            const hasKorb = (typeof Wissenskorb !== 'undefined');
+            const hasBasket = (typeof KnowledgeBasket !== 'undefined');
             const rows = docs.slice(0, SHOW).map(d => {
-                const korbBtn = hasKorb ? Wissenskorb.buttonHTML({
+                const basketBtn = hasBasket ? KnowledgeBasket.buttonHTML({
                     type: 'source', id: d.i, label: d.i,
                     url: d.u, date: d.d, coll: d.c, regest: d.r,
                 }) : '';
@@ -404,7 +404,7 @@ let VizCore = (function () {
                     <td>${d.d || ''}</td>
                     <td>${d.c || ''}</td>
                     <td class="cell-regest">${d.r || ''}</td>
-                    <td class="col-actions">${korbBtn}</td>
+                    <td class="col-actions">${basketBtn}</td>
                 </tr>`;
             });
             if (docs.length > SHOW) {

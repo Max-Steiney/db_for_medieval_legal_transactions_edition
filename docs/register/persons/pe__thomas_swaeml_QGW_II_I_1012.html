@@ -6,19 +6,19 @@
     <meta http-equiv="Content-Security-Policy" content="default-src 'self'; script-src 'self'; style-src 'self'; font-src 'self'; img-src 'self' data: https://images.monasterium.net https://www.monasterium.net; connect-src 'self'; frame-ancestors 'none'; base-uri 'self'; form-action 'self'; upgrade-insecure-requests">
     <meta name="referrer" content="strict-origin-when-cross-origin">
     <meta http-equiv="Permissions-Policy" content="camera=(), microphone=(), geolocation=(), interest-cohort=()">
-    <title>Thomas Swaeml (&dagger; 15.02.1397) — Datenbank</title>
+    <title>Thomas Swaeml (&dagger; 15.02.1397), Datenbank</title>
     <link rel="preload" as="font" type="font/woff2" crossorigin
           href="../../static/fonts/inter-400-latin.woff2">
-    <link rel="stylesheet" href="../../static/css/fonts.css?v=20260511095731">
-    <link rel="stylesheet" href="../../static/css/tokens.css?v=20260511095731">
-    <link rel="stylesheet" href="../../static/css/base.css?v=20260511095731">
-    <link rel="stylesheet" href="../../static/css/components.css?v=20260511095731">
-    <link rel="stylesheet" href="../../static/css/responsive.css?v=20260511095731">
-    <link rel="stylesheet" href="../../static/css/print.css?v=20260511095731">
-    <link rel="stylesheet" href="../../static/css/provenance.css?v=20260511095731">
+    <link rel="stylesheet" href="../../static/css/fonts.css?v=20260511112948">
+    <link rel="stylesheet" href="../../static/css/tokens.css?v=20260511112948">
+    <link rel="stylesheet" href="../../static/css/base.css?v=20260511112948">
+    <link rel="stylesheet" href="../../static/css/components.css?v=20260511112948">
+    <link rel="stylesheet" href="../../static/css/responsive.css?v=20260511112948">
+    <link rel="stylesheet" href="../../static/css/print.css?v=20260511112948">
+    <link rel="stylesheet" href="../../static/css/provenance.css?v=20260511112948">
     
-<link rel="stylesheet" href="../../static/css/document.css?v=20260511095731">
-<link rel="stylesheet" href="../../static/css/person.css?v=20260511095731">
+<link rel="stylesheet" href="../../static/css/document.css?v=20260511112948">
+<link rel="stylesheet" href="../../static/css/person.css?v=20260511112948">
 
 </head>
 <body data-root-path="../.."
@@ -46,6 +46,10 @@
     <div class="nav-dropdown-menu">
         
         <a href="../../register/persons.html">Personen</a>
+        
+        <a href="../../register/orgs.html">Organisationen</a>
+        
+        <a href="../../register/places.html">Orte</a>
         
     </div>
 </div>
@@ -78,7 +82,7 @@
         
         <a href="../../project/about.html">Über das Projekt</a>
         
-        <a href="../../project/edition-guidelines.html">Editionsrichtlinien</a>
+        <a href="../../project/edition-guidelines.html">Annotationsrichtlinien</a>
         
         <a href="../../project/glossary.html">Glossar</a>
         
@@ -87,7 +91,7 @@
     </div>
 </div>
 
-                <a href="../../korb.html" class="nav-korb" aria-label="Wissenskorb">
+                <a href="../../korb.html" class="nav-basket" aria-label="Wissenskorb">
                     <svg width="18" height="18" viewBox="0 0 18 18" fill="none" aria-hidden="true">
                         <path d="M3 5h12l-1.2 8.5a1 1 0 0 1-1 .85H5.2a1 1 0 0 1-1-.85L3 5z"
                               stroke="currentColor" stroke-width="1.4" fill="none"
@@ -96,7 +100,7 @@
                               stroke="currentColor" stroke-width="1.4" fill="none"
                               stroke-linecap="round"/>
                     </svg>
-                    <span class="nav-korb-count" id="nav-korb-count" hidden></span>
+                    <span class="nav-basket-count" id="nav-basket-count" hidden></span>
                 </a>
             </div>
         </div>
@@ -121,7 +125,7 @@
                 
                 <span class="meta-pair">
                     <span class="meta-label">Belegt</span>
-                    <span class="meta-value">1351–1399</span>
+                    <span class="meta-value">1351 bis 1399</span>
                 </span>
                 
                 
@@ -175,10 +179,10 @@
             <table class="rel-table">
                 <thead>
                     <tr>
-                        <th class="rel-col-other">Person</th>
-                        <th class="rel-col-label">Bezeichnung</th>
-                        <th class="rel-col-perspective">Perspektive</th>
-                        <th class="rel-col-source">Quelle</th>
+                        <th scope="col" class="rel-col-other">Person</th>
+                        <th scope="col" class="rel-col-label">Bezeichnung</th>
+                        <th scope="col" class="rel-col-perspective">Perspektive</th>
+                        <th scope="col" class="rel-col-source">Quelle</th>
                     </tr>
                 </thead>
                 <tbody>
@@ -376,10 +380,10 @@
             <table class="rel-table">
                 <thead>
                     <tr>
-                        <th class="rel-col-other">Institution</th>
-                        <th class="rel-col-label">Bezeichnung</th>
-                        <th class="rel-col-perspective">Perspektive</th>
-                        <th class="rel-col-source">Quelle</th>
+                        <th scope="col" class="rel-col-other">Institution</th>
+                        <th scope="col" class="rel-col-label">Bezeichnung</th>
+                        <th scope="col" class="rel-col-perspective">Perspektive</th>
+                        <th scope="col" class="rel-col-source">Quelle</th>
                     </tr>
                 </thead>
                 <tbody>
@@ -387,7 +391,7 @@
                     <tr>
                         <td class="rel-col-other">
                             
-                                <span class="rel-other-plain">Wien</span>
+                                <a class="rel-other-link" href="../../register/orgs/org__wien.html">Wien</a>
                             
                         </td>
                         <td class="rel-col-label"><em>gesworener des rats</em></td>
@@ -406,7 +410,7 @@
                     <tr>
                         <td class="rel-col-other">
                             
-                                <span class="rel-other-plain">Wien</span>
+                                <a class="rel-other-link" href="../../register/orgs/org__wien.html">Wien</a>
                             
                         </td>
                         <td class="rel-col-label"><em>rates der stat ze Wienn</em></td>
@@ -425,7 +429,7 @@
                     <tr>
                         <td class="rel-col-other">
                             
-                                <span class="rel-other-plain">Wien</span>
+                                <a class="rel-other-link" href="../../register/orgs/org__wien.html">Wien</a>
                             
                         </td>
                         <td class="rel-col-label"><em>Wiener Bürger</em></td>
@@ -444,7 +448,7 @@
                     <tr>
                         <td class="rel-col-other">
                             
-                                <span class="rel-other-plain">Wien</span>
+                                <a class="rel-other-link" href="../../register/orgs/org__wien.html">Wien</a>
                             
                         </td>
                         <td class="rel-col-label"><em>Wiener Bürger</em></td>
@@ -463,7 +467,7 @@
                     <tr>
                         <td class="rel-col-other">
                             
-                                <span class="rel-other-plain">Wien</span>
+                                <a class="rel-other-link" href="../../register/orgs/org__wien.html">Wien</a>
                             
                         </td>
                         <td class="rel-col-label"><em>purger</em></td>
@@ -482,7 +486,7 @@
                     <tr>
                         <td class="rel-col-other">
                             
-                                <span class="rel-other-plain">Wien</span>
+                                <a class="rel-other-link" href="../../register/orgs/org__wien.html">Wien</a>
                             
                         </td>
                         <td class="rel-col-label"><em>Wiener Bürger</em></td>
@@ -501,7 +505,7 @@
                     <tr>
                         <td class="rel-col-other">
                             
-                                <span class="rel-other-plain">Wien</span>
+                                <a class="rel-other-link" href="../../register/orgs/org__wien.html">Wien</a>
                             
                         </td>
                         <td class="rel-col-label"><em>Bürger</em></td>
@@ -520,7 +524,7 @@
                     <tr>
                         <td class="rel-col-other">
                             
-                                <span class="rel-other-plain">Wien</span>
+                                <a class="rel-other-link" href="../../register/orgs/org__wien.html">Wien</a>
                             
                         </td>
                         <td class="rel-col-label"><em>Bürgers</em></td>
@@ -539,7 +543,7 @@
                     <tr>
                         <td class="rel-col-other">
                             
-                                <span class="rel-other-plain">Wien</span>
+                                <a class="rel-other-link" href="../../register/orgs/org__wien.html">Wien</a>
                             
                         </td>
                         <td class="rel-col-label"><em>Bürger</em></td>
@@ -558,7 +562,7 @@
                     <tr>
                         <td class="rel-col-other">
                             
-                                <span class="rel-other-plain">Wien</span>
+                                <a class="rel-other-link" href="../../register/orgs/org__wien.html">Wien</a>
                             
                         </td>
                         <td class="rel-col-label"><em>purger</em></td>
@@ -577,7 +581,7 @@
                     <tr>
                         <td class="rel-col-other">
                             
-                                <span class="rel-other-plain">Wien</span>
+                                <a class="rel-other-link" href="../../register/orgs/org__wien.html">Wien</a>
                             
                         </td>
                         <td class="rel-col-label"><em>purger</em></td>
@@ -596,7 +600,7 @@
                     <tr>
                         <td class="rel-col-other">
                             
-                                <span class="rel-other-plain">Wien</span>
+                                <a class="rel-other-link" href="../../register/orgs/org__wien.html">Wien</a>
                             
                         </td>
                         <td class="rel-col-label"><em>Rathsherren</em></td>
@@ -615,7 +619,7 @@
                     <tr>
                         <td class="rel-col-other">
                             
-                                <span class="rel-other-plain">Wiener Bürgerspital</span>
+                                <a class="rel-other-link" href="../../register/orgs/org__wien-buergerspital.html">Wiener Bürgerspital</a>
                             
                         </td>
                         <td class="rel-col-label"><em>spitalmaister</em></td>
@@ -634,7 +638,7 @@
                     <tr>
                         <td class="rel-col-other">
                             
-                                <span class="rel-other-plain">Wien</span>
+                                <a class="rel-other-link" href="../../register/orgs/org__wien.html">Wien</a>
                             
                         </td>
                         <td class="rel-col-label"><em>purger</em></td>
@@ -653,7 +657,7 @@
                     <tr>
                         <td class="rel-col-other">
                             
-                                <span class="rel-other-plain">Wiener Bürgerspital</span>
+                                <a class="rel-other-link" href="../../register/orgs/org__wien-buergerspital.html">Wiener Bürgerspital</a>
                             
                         </td>
                         <td class="rel-col-label"><em>spitalmaister</em></td>
@@ -672,7 +676,7 @@
                     <tr>
                         <td class="rel-col-other">
                             
-                                <span class="rel-other-plain">Wiener Bürgerspital</span>
+                                <a class="rel-other-link" href="../../register/orgs/org__wien-buergerspital.html">Wiener Bürgerspital</a>
                             
                         </td>
                         <td class="rel-col-label"><em>obrister spitalmaister</em></td>
@@ -691,7 +695,7 @@
                     <tr>
                         <td class="rel-col-other">
                             
-                                <span class="rel-other-plain">Wien</span>
+                                <a class="rel-other-link" href="../../register/orgs/org__wien.html">Wien</a>
                             
                         </td>
                         <td class="rel-col-label"><em>Bürger</em></td>
@@ -710,7 +714,7 @@
                     <tr>
                         <td class="rel-col-other">
                             
-                                <span class="rel-other-plain">Wien</span>
+                                <a class="rel-other-link" href="../../register/orgs/org__wien.html">Wien</a>
                             
                         </td>
                         <td class="rel-col-label"><em>purger</em></td>
@@ -729,7 +733,7 @@
                     <tr>
                         <td class="rel-col-other">
                             
-                                <span class="rel-other-plain">Wien</span>
+                                <a class="rel-other-link" href="../../register/orgs/org__wien.html">Wien</a>
                             
                         </td>
                         <td class="rel-col-label"><em>Bürgermeisters</em></td>
@@ -748,7 +752,7 @@
                     <tr>
                         <td class="rel-col-other">
                             
-                                <span class="rel-other-plain">Wien</span>
+                                <a class="rel-other-link" href="../../register/orgs/org__wien.html">Wien</a>
                             
                         </td>
                         <td class="rel-col-label"><em>purgermaister</em></td>
@@ -767,7 +771,7 @@
                     <tr>
                         <td class="rel-col-other">
                             
-                                <span class="rel-other-plain">Wien</span>
+                                <a class="rel-other-link" href="../../register/orgs/org__wien.html">Wien</a>
                             
                         </td>
                         <td class="rel-col-label"><em>Bürgermeisters</em></td>
@@ -786,7 +790,7 @@
                     <tr>
                         <td class="rel-col-other">
                             
-                                <span class="rel-other-plain">Wien</span>
+                                <a class="rel-other-link" href="../../register/orgs/org__wien.html">Wien</a>
                             
                         </td>
                         <td class="rel-col-label"><em>Bürgermeisters</em></td>
@@ -805,7 +809,7 @@
                     <tr>
                         <td class="rel-col-other">
                             
-                                <span class="rel-other-plain">Wien</span>
+                                <a class="rel-other-link" href="../../register/orgs/org__wien.html">Wien</a>
                             
                         </td>
                         <td class="rel-col-label"><em>magistri</em></td>
@@ -824,7 +828,7 @@
                     <tr>
                         <td class="rel-col-other">
                             
-                                <span class="rel-other-plain">Wien</span>
+                                <a class="rel-other-link" href="../../register/orgs/org__wien.html">Wien</a>
                             
                         </td>
                         <td class="rel-col-label"><em>purgermaister</em></td>
@@ -843,7 +847,7 @@
                     <tr>
                         <td class="rel-col-other">
                             
-                                <span class="rel-other-plain">Wien</span>
+                                <a class="rel-other-link" href="../../register/orgs/org__wien.html">Wien</a>
                             
                         </td>
                         <td class="rel-col-label"><em>rates</em></td>
@@ -862,7 +866,7 @@
                     <tr>
                         <td class="rel-col-other">
                             
-                                <span class="rel-other-plain">Wien</span>
+                                <a class="rel-other-link" href="../../register/orgs/org__wien.html">Wien</a>
                             
                         </td>
                         <td class="rel-col-label"><em>des rats der stat ze Wienne</em></td>
@@ -881,7 +885,7 @@
                     <tr>
                         <td class="rel-col-other">
                             
-                                <span class="rel-other-plain">Wien</span>
+                                <a class="rel-other-link" href="../../register/orgs/org__wien.html">Wien</a>
                             
                         </td>
                         <td class="rel-col-label"><em>purgermaister</em></td>
@@ -900,7 +904,7 @@
                     <tr>
                         <td class="rel-col-other">
                             
-                                <span class="rel-other-plain">Wien</span>
+                                <a class="rel-other-link" href="../../register/orgs/org__wien.html">Wien</a>
                             
                         </td>
                         <td class="rel-col-label"><em>Bürgermeisters</em></td>
@@ -919,7 +923,7 @@
                     <tr>
                         <td class="rel-col-other">
                             
-                                <span class="rel-other-plain">Wien</span>
+                                <a class="rel-other-link" href="../../register/orgs/org__wien.html">Wien</a>
                             
                         </td>
                         <td class="rel-col-label"><em>Bürgermeisters</em></td>
@@ -938,7 +942,7 @@
                     <tr>
                         <td class="rel-col-other">
                             
-                                <span class="rel-other-plain">Wien</span>
+                                <a class="rel-other-link" href="../../register/orgs/org__wien.html">Wien</a>
                             
                         </td>
                         <td class="rel-col-label"><em>Bürgermeister</em></td>
@@ -957,7 +961,7 @@
                     <tr>
                         <td class="rel-col-other">
                             
-                                <span class="rel-other-plain">Reicholfsche Messstiftung</span>
+                                <a class="rel-other-link" href="../../register/orgs/org__wien-st_maria_im_rathaus-messe_reicholf.html">Reicholfsche Messstiftung</a>
                             
                         </td>
                         <td class="rel-col-label"><em>Lehensherr</em></td>
@@ -976,7 +980,7 @@
                     <tr>
                         <td class="rel-col-other">
                             
-                                <span class="rel-other-plain">Wien</span>
+                                <a class="rel-other-link" href="../../register/orgs/org__wien.html">Wien</a>
                             
                         </td>
                         <td class="rel-col-label"><em>Bürgermeisters</em></td>
@@ -995,7 +999,7 @@
                     <tr>
                         <td class="rel-col-other">
                             
-                                <span class="rel-other-plain">Wien</span>
+                                <a class="rel-other-link" href="../../register/orgs/org__wien.html">Wien</a>
                             
                         </td>
                         <td class="rel-col-label"><em>Bürgermeisters</em></td>
@@ -1014,7 +1018,7 @@
                     <tr>
                         <td class="rel-col-other">
                             
-                                <span class="rel-other-plain">Wien</span>
+                                <a class="rel-other-link" href="../../register/orgs/org__wien.html">Wien</a>
                             
                         </td>
                         <td class="rel-col-label"><em>Ratsherr</em></td>
@@ -1033,7 +1037,7 @@
                     <tr>
                         <td class="rel-col-other">
                             
-                                <span class="rel-other-plain">Wiener Bürgerspital</span>
+                                <a class="rel-other-link" href="../../register/orgs/org__wien-buergerspital.html">Wiener Bürgerspital</a>
                             
                         </td>
                         <td class="rel-col-label"><em>obrister spitalmaister</em></td>
@@ -1052,7 +1056,7 @@
                     <tr>
                         <td class="rel-col-other">
                             
-                                <span class="rel-other-plain">Wien</span>
+                                <a class="rel-other-link" href="../../register/orgs/org__wien.html">Wien</a>
                             
                         </td>
                         <td class="rel-col-label"><em>rates der stat ze Wienn</em></td>
@@ -1071,7 +1075,7 @@
                     <tr>
                         <td class="rel-col-other">
                             
-                                <span class="rel-other-plain">Wiener Bürgerspital</span>
+                                <a class="rel-other-link" href="../../register/orgs/org__wien-buergerspital.html">Wiener Bürgerspital</a>
                             
                         </td>
                         <td class="rel-col-label"><em>spitalmaister der purger Spital ze Wienn</em></td>
@@ -1090,7 +1094,7 @@
                     <tr>
                         <td class="rel-col-other">
                             
-                                <span class="rel-other-plain">Wien</span>
+                                <a class="rel-other-link" href="../../register/orgs/org__wien.html">Wien</a>
                             
                         </td>
                         <td class="rel-col-label"><em>Wiener Bürgers</em></td>
@@ -1109,7 +1113,7 @@
                     <tr>
                         <td class="rel-col-other">
                             
-                                <span class="rel-other-plain">Wien</span>
+                                <a class="rel-other-link" href="../../register/orgs/org__wien.html">Wien</a>
                             
                         </td>
                         <td class="rel-col-label"><em>rats der stat ze Wienne</em></td>
@@ -1128,7 +1132,7 @@
                     <tr>
                         <td class="rel-col-other">
                             
-                                <span class="rel-other-plain">Wien</span>
+                                <a class="rel-other-link" href="../../register/orgs/org__wien.html">Wien</a>
                             
                         </td>
                         <td class="rel-col-label"><em>Ratsherr</em></td>
@@ -1161,10 +1165,10 @@
         <table class="person-source-table">
             <thead>
                 <tr>
-                    <th class="src-col-idno">Nr.</th>
-                    <th class="src-col-date">Datum</th>
-                    <th class="src-col-corpus">Quellenkorpus</th>
-                    <th class="src-col-regest">Regest</th>
+                    <th scope="col" class="src-col-idno">Nr.</th>
+                    <th scope="col" class="src-col-date">Datum</th>
+                    <th scope="col" class="src-col-corpus">Quellenkorpus</th>
+                    <th scope="col" class="src-col-regest">Regest</th>
                 </tr>
             </thead>
             <tbody>
@@ -1495,21 +1499,21 @@
                     <td class="src-col-idno"><a href="../../documents/Stadtbuecher/Band_1_1395-1400_ready/84.html">84</a></td>
                     <td class="src-col-date">1396 September 9</td>
                     <td class="src-col-corpus">Stadtbücher Bd. 1 (1395–1400)</td>
-                    <td class="src-col-regest">—</td>
+                    <td class="src-col-regest">-</td>
                 </tr>
             
                 <tr>
                     <td class="src-col-idno"><a href="../../documents/Stadtbuecher/Band_1_1395-1400_ready/119.html">119</a></td>
                     <td class="src-col-date">1397 Februar 15</td>
                     <td class="src-col-corpus">Stadtbücher Bd. 1 (1395–1400)</td>
-                    <td class="src-col-regest">—</td>
+                    <td class="src-col-regest">-</td>
                 </tr>
             
                 <tr>
                     <td class="src-col-idno"><a href="../../documents/Stadtbuecher/Band_1_1395-1400_ready/182.html">182</a></td>
                     <td class="src-col-date">1397 Oktober 9</td>
                     <td class="src-col-corpus">Stadtbücher Bd. 1 (1395–1400)</td>
-                    <td class="src-col-regest">—</td>
+                    <td class="src-col-regest">-</td>
                 </tr>
             
                 <tr>
@@ -1544,22 +1548,29 @@
     <footer class="site-footer">
         <div class="footer-inner">
             <div class="footer-col">
-                <p class="footer-project">Stadt und Gemeinschaft Wien &mdash; Datenbank</p>
+                <p class="footer-project">Stadt und Gemeinschaft Wien, Datenbank</p>
                 <p>Tr&auml;gerprojekt &raquo;Stadt und Gemeinschaft&laquo; (Universit&auml;t Wien)</p>
-                <p class="footer-meta">Datenstand: 9. Mai 2026</p>
+                <p class="footer-meta">Datenstand: 9. Mai 2026 &middot; Seite generiert: 11. Mai 2026</p>
+                
+                <p class="footer-meta">Thomas Swaeml &middot; pe__thomas_swaeml_QGW_II_I_1012</p>
             </div>
             <div class="footer-col footer-col-right">
                 <p>Technische Umsetzung: <a href="https://dhcraft.org" class="footer-link">Digital Humanities Craft OG</a></p>
-                <p>Lizenz: <a href="../../impressum.html#lizenz" class="footer-link">CC BY 4.0</a> &middot; Thomas Swaeml &middot; pe__thomas_swaeml_QGW_II_I_1012</p>
+                <p>Lizenz: CC BY 4.0</p>
+                <p>
+                    <a href="../../impressum.html" class="footer-link">Impressum</a>
+                    &middot;
+                    <a href="https://github.com/chpollin/db_for_medieval_legal_transactions_edition" class="footer-link" rel="noopener">GitHub-Repository</a>
+                </p>
             </div>
         </div>
     </footer>
 
-    <script src="../../static/js/core.js?v=20260511095731"></script>
-    <script src="../../static/js/provenance.js?v=20260511095731"></script>
-    <script src="../../static/js/wissenskorb.js?v=20260511095731"></script>
+    <script src="../../static/js/core.js?v=20260511112948"></script>
+    <script src="../../static/js/provenance.js?v=20260511112948"></script>
+    <script src="../../static/js/basket.js?v=20260511112948"></script>
     
-<script src="../../static/js/tooltips.js?v=20260511095731"></script>
+<script src="../../static/js/tooltips.js?v=20260511112948"></script>
 
 </body>
 </html>

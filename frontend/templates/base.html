@@ -6,7 +6,7 @@
     <meta http-equiv="Content-Security-Policy" content="default-src 'self'; script-src 'self'; style-src 'self'; font-src 'self'; img-src 'self' data: https://images.monasterium.net https://www.monasterium.net; connect-src 'self'; frame-ancestors 'none'; base-uri 'self'; form-action 'self'; upgrade-insecure-requests">
     <meta name="referrer" content="strict-origin-when-cross-origin">
     <meta http-equiv="Permissions-Policy" content="camera=(), microphone=(), geolocation=(), interest-cohort=()">
-    <title>{% block title %}Stadt und Gemeinschaft Wien{% endblock %} — Datenbank</title>
+    <title>{% block title %}Stadt und Gemeinschaft Wien{% endblock %}, Datenbank</title>
     <link rel="preload" as="font" type="font/woff2" crossorigin
           href="{{ root_path }}/static/fonts/inter-400-latin.woff2">
     <link rel="stylesheet" href="{{ root_path }}/static/css/fonts.css?v={{ asset_v }}">
@@ -81,13 +81,15 @@
     <footer class="site-footer">
         <div class="footer-inner">
             <div class="footer-col">
-                <p class="footer-project">Stadt und Gemeinschaft Wien &mdash; Datenbank</p>
+                <p class="footer-project">Stadt und Gemeinschaft Wien, Datenbank</p>
                 <p>Tr&auml;gerprojekt &raquo;Stadt und Gemeinschaft&laquo; (Universit&auml;t Wien)</p>
-                <p class="footer-meta">Datenstand: {{ data_date }}</p>
+                <p class="footer-meta">Datenstand: {{ data_date }} &middot; Seite generiert: {{ build_date }}</p>
+                {% set fi %}{% block footer_info %}{% endblock %}{% endset %}
+                {% if fi %}<p class="footer-meta">{{ fi }}</p>{% endif %}
             </div>
             <div class="footer-col footer-col-right">
                 <p>Technische Umsetzung: <a href="https://dhcraft.org" class="footer-link">Digital Humanities Craft OG</a></p>
-                <p>Lizenz: CC BY 4.0{% set fi %}{% block footer_info %}{% endblock %}{% endset %}{% if fi %} &middot; {{ fi }}{% endif %}</p>
+                <p>Lizenz: CC BY 4.0</p>
                 <p>
                     <a href="{{ root_path }}/impressum.html" class="footer-link">Impressum</a>
                     &middot;

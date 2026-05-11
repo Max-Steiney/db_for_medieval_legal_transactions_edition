@@ -131,4 +131,4 @@
 <script src="{{ root_path }}/static/js/register.js?v={{ asset_v }}"></script>
 {% endblock %}
 
-{% block footer_info %}{{ total_count }} {{ register_label }}{% endblock %}
+{% block footer_info %}{{ total_count | de_int }} {{ register_label }}{% endblock %}

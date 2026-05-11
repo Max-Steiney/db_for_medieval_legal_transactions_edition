@@ -1,6 +1,6 @@
-/* === Wiener Urkundenbuch — Exploration Pages === */
+/* === Stadt und Gemeinschaft Wien — Exploration Pages === */
 /* ==========================================================================
-   Exploration page (V1 shared + V2 Epic A)
+   Exploration page (V1 shared + V2 Roles)
    ========================================================================== */
 
 .explore-page {
@@ -123,7 +123,7 @@
     cursor: not-allowed;
 }
 
-/* Epic sections */
+/* Aggregat sections */
 .explore-epic.hidden { display: none; }
 
 /* Filter header */
@@ -284,7 +284,7 @@
     grid-template-columns: 1fr 1fr 1fr;
     gap: var(--space-lg);
 }
-/* Epic A: Roles — two panels top, detail full-width below */
+/* Roles: two panels top, detail full-width below */
 .explore-panels--roles-top {
     grid-template-columns: 1fr 1fr;
 }
@@ -661,7 +661,7 @@
     font-weight: 600;
 }
 
-/* ── Placeholder pages (Epics B–D) ──────────── */
+/* ── Placeholder pages (Relations / Transactions / Places) ──────────── */
 .explore-placeholder-page {
     text-align: center;
     padding: var(--space-2xl) var(--space-lg);
@@ -713,7 +713,7 @@
     border-radius: 3px;
 }
 
-/* ── Epic C: Transaction Explorer ──────────────── */
+/* ── Transactions Explorer ──────────────── */
 
 /* Two-one panel layout: timeline wide, verb + recipients side by side */
 .explore-panels--two-one {
@@ -846,7 +846,7 @@
 }
 
 /* ==========================================================================
-   Epic B — Relationship Explorer
+   Relations — Relationship Explorer
    ========================================================================== */
 
 /* 2-column layout: overview chart | label browser */
@@ -918,7 +918,7 @@
     background: var(--color-bg-hover, #f5f3f0);
 }
 
-/* Buttons (shared across Epics) */
+/* Buttons (shared across aggregat pages) */
 .explore-btn {
     display: inline-flex;
     align-items: center;
@@ -1254,7 +1254,7 @@
 /* === Stream-Block (Bar-Chart-Container) === */
 .explore-stream-block {
     background: var(--color-surface, #fff);
-    border: 1px solid var(--color-border, #e5e0d6);
+    border: 1px solid var(--color-border, #e0dbd4);
     border-radius: 4px;
     padding: var(--space-sm) var(--space-md) var(--space-md);
     margin-bottom: var(--space-md);
@@ -1370,7 +1370,7 @@
 /* === Drill-Down: Quellen-Liste === */
 .explore-stream-drill {
     background: var(--color-surface, #fff);
-    border: 1px solid var(--color-border, #e5e0d6);
+    border: 1px solid var(--color-border, #e0dbd4);
     border-radius: 4px;
     padding: var(--space-sm) var(--space-md) var(--space-md);
 }
@@ -1405,8 +1405,8 @@
     text-decoration: none;
 }
 
-/* Korb-Styles in components.css verschoben — werden ueber base.html
-   auf jeder Seite geladen und sind nicht exploration-spezifisch. */
+/* Basket styles moved to components.css — loaded from base.html on every
+   page, not specific to exploration. */
 .explore-stream-doclist {
     list-style: none;
     margin: 0;
@@ -1473,7 +1473,7 @@
 
 .explore-network-block {
     background: var(--color-surface, #fff);
-    border: 1px solid var(--color-border, #e5e0d6);
+    border: 1px solid var(--color-border, #e0dbd4);
     border-radius: 4px;
     padding: var(--space-sm) var(--space-md) var(--space-md);
     margin-bottom: var(--space-md);
@@ -1609,7 +1609,7 @@
 /* Detail-Tabelle */
 .explore-network-detail {
     background: var(--color-surface, #fff);
-    border: 1px solid var(--color-border, #e5e0d6);
+    border: 1px solid var(--color-border, #e0dbd4);
     border-radius: 4px;
     padding: var(--space-sm) var(--space-md) var(--space-md);
 }
@@ -1772,7 +1772,7 @@
 
 .aggregat-quadrant {
     background: var(--color-surface, #fff);
-    border: 1px solid var(--color-border, #e5e0d6);
+    border: 1px solid var(--color-border, #e0dbd4);
     border-radius: 4px;
     padding: var(--space-sm) var(--space-md) var(--space-md);
     display: flex;
@@ -1787,7 +1787,7 @@
     align-items: baseline;
     gap: var(--space-sm);
     margin-bottom: var(--space-xs);
-    border-bottom: 1px solid var(--color-border, #e5e0d6);
+    border-bottom: 1px solid var(--color-border, #e0dbd4);
     padding-bottom: 4px;
 }
 .aggregat-quadrant-head h2 {
@@ -1837,7 +1837,7 @@
     text-align: left;
     font-weight: 600;
     color: var(--color-text-muted);
-    border-bottom: 1px solid var(--color-border, #e5e0d6);
+    border-bottom: 1px solid var(--color-border, #e0dbd4);
     padding: 4px 6px;
     background: transparent;
     white-space: nowrap;
@@ -1911,7 +1911,7 @@
     padding: 4px 8px;
     font-family: var(--font-sans);
     font-size: var(--text-xs);
-    border: 1px solid var(--color-border, #e5e0d6);
+    border: 1px solid var(--color-border, #e0dbd4);
     border-radius: 3px;
     background: #fff;
 }

@@ -1,6 +1,6 @@
-{# Reusable UI components for the digital edition templates #}
+{# Reusable UI components for the database templates #}
 
-{# Top-Navigation — Single Source of Truth.
+{# Top-Navigation, Single Source of Truth.
    Beide Item-Formen (Link, Dropdown) liefern dieselbe Outer-Box
    (`.nav-item`), damit die Flex-Children in `.nav-links` baseline-gleich
    sitzen. Aktive-Seite-Markierung uebernimmt core.js clientseitig anhand
@@ -20,7 +20,7 @@
 </div>
 {% endmacro %}
 
-{# Previous/next document navigation — Icon-Buttons auf Toolbar-Hoehe.
+{# Previous/next document navigation, Icon-Buttons auf Toolbar-Hoehe.
    Nur Inline-Variante in der Toolbar-Controls-Sektion; einen unteren
    Pager liefert das Detail-Layout nicht mehr. SVG-Icons aus dem
    toolbar_icon-Makro. #}
@@ -43,8 +43,8 @@
 </nav>
 {% endmacro %}
 
-{# Drill-down document overlay — wird von der Analyse-Abfragen-Seite
-   verwendet (frueher zusaetzlich auf den Exploration-Subseiten — die
+{# Drill-down document overlay, wird von der Analyse-Abfragen-Seite
+   verwendet (frueher zusaetzlich auf den Exploration-Subseiten, die
    wurden in /analysis/auswertungen.html zusammengefuehrt und brauchen
    es nicht mehr). #}
 {% macro drill_down_overlay(id_prefix='analysis-drilldown', wide=false) %}
@@ -60,11 +60,11 @@
             <table class="explore-data-table">
                 <thead>
                     <tr>
-                        <th>Nr.</th>
-                        <th>Datum</th>
-                        <th>Quellenkorpus</th>
-                        <th>Regest</th>
-                        <th aria-label="Aktionen"></th>
+                        <th scope="col">Nr.</th>
+                        <th scope="col">Datum</th>
+                        <th scope="col">Quellenkorpus</th>
+                        <th scope="col">Regest</th>
+                        <th scope="col" aria-label="Aktionen"></th>
                     </tr>
                 </thead>
                 <tbody id="{{ id_prefix }}-tbody"></tbody>
@@ -83,7 +83,7 @@
 <svg width="12" height="12" viewBox="0 0 12 12" fill="none"><path d="M3.5 1.5H2C1.72 1.5 1.5 1.72 1.5 2V10C1.5 10.28 1.72 10.5 2 10.5H10C10.28 10.5 10.5 10.28 10.5 10V8.5M7 1.5H10.5V5M10.25 1.75L5.5 6.5" stroke="currentColor" stroke-linecap="round" stroke-linejoin="round"/></svg>
 {% endmacro %}
 
-{# Toolbar action icons — 16x16 SVG, currentColor stroke/fill.
+{# Toolbar action icons, 16x16 SVG, currentColor stroke/fill.
    Single source of truth fuer Download / Zitieren / Prev / Next /
    Faktoid-Tabelle, gerufen aus doc-toolbar-actions und doc_nav. #}
 {% macro toolbar_icon(name) %}
@@ -146,10 +146,10 @@
             <input type="range" id="{{ id_prefix }}-range-min" min="{{ _min }}" max="{{ _max }}" step="{{ step }}" value="{{ _min }}" aria-label="Zeitraum von">
             <input type="range" id="{{ id_prefix }}-range-max" min="{{ _min }}" max="{{ _max }}" step="{{ step }}" value="{{ _max }}" aria-label="Zeitraum bis">
         </div>
-        <span class="explore-range-display" id="{{ id_prefix }}-range-display">{{ _min }}–{{ _max }}</span>
+        <span class="explore-range-display" id="{{ id_prefix }}-range-display">{{ _min }} bis {{ _max }}</span>
     </div>
     {% if released_period.unprocessed_gaps %}
-    <span class="explore-gap-note hidden" id="{{ id_prefix }}-gap-note">{{ released_period.unprocessed_gaps[0]['from'] }}–{{ released_period.unprocessed_gaps[0]['to'] }}: noch nicht ausgewertet</span>
+    <span class="explore-gap-note hidden" id="{{ id_prefix }}-gap-note">{{ released_period.unprocessed_gaps[0]['from'] }} bis {{ released_period.unprocessed_gaps[0]['to'] }}: noch nicht ausgewertet</span>
     {% endif %}
 </div>
 {% endmacro %}
@@ -239,7 +239,7 @@
    ============================================================
    Garantieren visuell-konsistentes Markup ueber alle Filter-Sidebars.
    Jede Seite waehlt selbst, welche Bausteine in welcher Reihenfolge
-   verwendet werden — die Filter-Dimensionen sind seitenseitig zwangs-
+   verwendet werden, die Filter-Dimensionen sind seitenseitig zwangs-
    laeufig unterschiedlich, das Markup bleibt aber identisch.
 
    Konvention der item-Felder fuer die Chip-Gruppen:
@@ -248,7 +248,7 @@
      count  optional, vorgerenderter Zaehler (sonst leer, JS fuellt)
      title  optional, HTML title-Attribut (sonst label)
 
-   Icon-Pillen vor dem Label werden NICHT vom Macro gerendert — sie werden
+   Icon-Pillen vor dem Label werden NICHT vom Macro gerendert, sie werden
    per JS injiziert (FORM_ICONS in index.js, ROLE_ICONS in register.js),
    damit Icons als Single-Source-of-Truth zentral leben und sowohl in
    Tabellen-Pillen als auch in Sidebar-Chips automatisch erscheinen.
