@@ -1,8 +1,8 @@
 {
   "date": "2026-05-11",
   "summary": {
-    "total": 12,
-    "match": 9,
+    "total": 18,
+    "match": 15,
     "mismatch": 0,
     "known_gap": 0,
     "info": 3
@@ -37,6 +37,27 @@
       "note": null
     },
     {
+      "name": "html.persons.death_display_vs_csv",
+      "tei": 0,
+      "json": 0,
+      "status": "match",
+      "note": null
+    },
+    {
+      "name": "html.persons.authority_urls_vs_csv",
+      "tei": 0,
+      "json": 0,
+      "status": "match",
+      "note": null
+    },
+    {
+      "name": "html.persons.wiki_url_vs_csv",
+      "tei": 0,
+      "json": 0,
+      "status": "match",
+      "note": null
+    },
+    {
       "name": "html.orgs.profiles_checked",
       "tei": 607,
       "json": 607,
@@ -52,6 +73,27 @@
     },
     {
       "name": "html.orgs.source_count_vs_rows",
+      "tei": 0,
+      "json": 0,
+      "status": "match",
+      "note": null
+    },
+    {
+      "name": "html.orgs.observance_vs_csv",
+      "tei": 0,
+      "json": 0,
+      "status": "match",
+      "note": null
+    },
+    {
+      "name": "html.orgs.parent_org_vs_csv",
+      "tei": 0,
+      "json": 0,
+      "status": "match",
+      "note": null
+    },
+    {
+      "name": "html.orgs.authority_urls_vs_csv",
       "tei": 0,
       "json": 0,
       "status": "match",

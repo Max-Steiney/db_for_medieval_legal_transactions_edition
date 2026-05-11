@@ -102,3 +102,35 @@ Vollständiger Katalog aller Kennzahlen, die das Frontend anzeigt, mit Herkunft 
 - **`quality.json`-Aggregate** — die Validierungslogik lebt in der Pipeline. Eine Re-Implementation hier wäre eine Parallel-Validierung, nicht eine Verifikation. Quality wird separat gegen das Pipeline-`validation_report.json` verglichen, falls nötig.
 - **`search.json`** — reiner Flachindex für Volltextsuche; Inhalt wird nicht aggregiert, Vergleich unsinnig.
 - **`docs_lookup.json`** — Mapping, kein Aggregat.
+
+## Ebene 4 — HTML-Coverage (Pipeline-CSV → gerendertes HTML)
+
+Die obigen Ebenen prüfen, ob die Pipeline-JSONs zum TEI-Stand passen.
+Die HTML-Coverage geht eine Stufe weiter und prüft, ob die struktur-
+ierten Felder, die der Aggregator aus den Pipeline-CSVs an das
+Template übergibt, im gerenderten Output sichtbar werden.
+
+Lauf: `python -m verification.run --html`. Eingaben:
+- `pipeline/output/*.csv` (persons.csv, organisations.csv, occ_relations_in_sources.csv)
+- `docs/register/persons/*.html`, `docs/register/orgs/*.html`, `docs/documents/**/*.html`
+
+| Name | Quelle (CSV) | HTML-Selector | Status |
+|---|---|---|---|
+| html.persons.display_name_mismatch | persons.csv: forename_reg, surname_reg, addname_reg | `.person-name` | covered |
+| html.persons.sex_label_mismatch | persons.csv: sex | `.ph-meta-strip dt=Geschlecht + dd` | covered |
+| html.persons.source_count_vs_rows | docs in reverse_index | `.ph-meta-strip dt=Quellen` vs `.person-source-table tbody td.src-col-idno` | covered |
+| html.persons.death_display_vs_csv | persons.csv: dead_before (ISO → DD.MM.YYYY) | `.ph-meta-strip dt=Verstorben vor + dd` | covered |
+| html.persons.authority_urls_vs_csv | persons.csv: authority (pipe-split URLs) | `.ph-subline a.ext-link[href*=authority]` | covered |
+| html.persons.wiki_url_vs_csv | persons.csv: PAGEID_WienWiki | `.ph-subline a.ext-link[href*=wienwiki]` | covered |
+| html.orgs.name_mismatch | organisations.csv: name_reg (pre-pipe) | `.person-name` | covered |
+| html.orgs.observance_vs_csv | organisations.csv: observance | `.ph-meta-strip dt=Observanz + dd` | covered |
+| html.orgs.parent_org_vs_csv | organisations.csv: org_key (released only) | `.ph-meta-strip dt=Übergeordnet + dd a` | covered |
+| html.orgs.authority_urls_vs_csv | organisations.csv: authority | `.ph-subline a.ext-link` | covered |
+| html.persons.occ_count_vs_csv | occ_relations_in_sources.csv: person_key | `.rel-block-occ tbody tr` Count | covered |
+| html.persons.occ_inverse_count_vs_csv | occ_relations_in_sources.csv: related_key (wenn pe__) | `.rel-block-occ_inverse tbody tr` Count | covered |
+| html.documents.orphan_person_refs | docs/register/persons/ Datei-Existenz | `data-ref^=pe__` in `docs/documents/**/*.html` | covered |
+| html.documents.orphan_org_refs | docs/register/orgs/ Datei-Existenz | `data-ref^=org__` in `docs/documents/**/*.html` | covered |
+
+Bekannte Lücken (siehe `contract.py::KNOWN_GAPS`):
+- `org.place_name.is_plain_text` — Place-Profile gibt es nicht; place_name wird als Klartext im Org-Header gerendert.
+- `person.title_ref_inverse.empty_by_data` — Mirror-Schlüssel ist strukturell vorbereitet, aber im aktuellen TEI-Stand sind alle `related_key` in title-ref-Relationen org__-Keys.

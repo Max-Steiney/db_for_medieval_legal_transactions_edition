@@ -16,12 +16,23 @@ Der Ordner heißt bewusst `verification/`, nicht `tests/`, um Kollisionen mit py
 Vom Edition-Repo-Root:
 
 ```
-python -m verification.run
+python -m verification.run         # TEI → JSON-Aggregate
+python -m verification.run --html  # Pipeline-CSV → gerendertes HTML
+python -m verification.run --all   # beide Pfade
 ```
 
 Exit-Code `0` solange nur `match`, `known_gap` oder `info` auftreten. Exit-Code `1` erst bei mindestens einem echten `mismatch`.
 
-Reports werden in `verification/reports/YYYY-MM-DD.md` (menschenlesbar) und `verification/reports/YYYY-MM-DD.json` (maschinenlesbar) geschrieben. Die Reports sind Teil der Versionierung — Veränderungen im Verlauf sind per `git log verification/reports/` nachvollziehbar.
+Reports werden in `verification/reports/YYYY-MM-DD.md` (menschenlesbar) und `verification/reports/YYYY-MM-DD.json` (maschinenlesbar) geschrieben. HTML-Coverage-Reports bekommen einen `-html`-Suffix (`YYYY-MM-DD-html.md`), damit beide Pfade unabhängig versioniert sind. Die Reports sind Teil der Versionierung — Veränderungen im Verlauf sind per `git log verification/reports/` nachvollziehbar.
+
+## Zwei Coverage-Stufen
+
+Das Test-Set deckt zwei Pfade ab, die zusammen die End-to-End-Verifikation ergeben:
+
+1. **TEI → JSON** (`run` ohne Argument): unabhängige TEI-Aggregation vs. Pipeline-Output unter `docs/data/*.json`. Findet Pipeline-Fehler in der Aggregations-Logik.
+2. **CSV → HTML** (`run --html`): Pipeline-CSVs (Aggregator-Input) vs. gerenderte Profil- und Quellen-HTMLs unter `docs/`. Findet Renderer-Drift, fehlende Felder im Template, Orphan-Annotationen.
+
+Beide laufen unabhängig; einzelne Felder können in einer Stufe match sein und in der anderen mismatch.
 
 ## Statuswerte
 

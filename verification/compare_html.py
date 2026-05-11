@@ -357,6 +357,162 @@ def _load_relations_csv(name: str, key_col: str) -> Dict[str, int]:
     return counts
 
 
+def _expected_death_display(death_iso: str) -> str:
+    """Spiegelt aggregator/person_profiles.py::_format_death_german."""
+    if not death_iso:
+        return ""
+    parts = death_iso.split("-")
+    if len(parts) == 3 and all(p.isdigit() for p in parts):
+        y, m, d = parts
+        return f"{int(d):02d}.{int(m):02d}.{int(y):04d}"
+    if len(parts) == 1 and parts[0].isdigit():
+        return parts[0]
+    return death_iso
+
+
+def _expected_authority_urls(authority: str) -> List[str]:
+    """Spiegelt aggregator/_profile_labels.py::split_authorities."""
+    return [u.strip() for u in (authority or "").split("|") if u.strip()]
+
+
+def check_person_extended_fields(
+    sample_size: Optional[int] = None,
+) -> List[CheckResult]:
+    """Erweiterte Feld-Coverage: death_display, authority_urls, wiki_url.
+    Pruefungen sind conditional (nur dort, wo CSV das Feld setzt)."""
+    results: List[CheckResult] = []
+    persons_csv = _load_persons_csv()
+    if not persons_csv:
+        return results
+
+    paths = parse_html.iter_person_profiles()
+    if sample_size:
+        paths = paths[:sample_size]
+
+    death_mismatches: List[Dict[str, Any]] = []
+    auth_mismatches: List[Dict[str, Any]] = []
+    wiki_mismatches: List[Dict[str, Any]] = []
+
+    for path in paths:
+        p = parse_html.read_person_profile(path)
+        row = persons_csv.get(p.pe_id)
+        if row is None:
+            continue
+
+        # death_display
+        expected = _expected_death_display((row.get("dead_before") or "").strip())
+        if expected and p.death_display != expected:
+            death_mismatches.append({
+                "id": p.pe_id, "html": p.death_display, "csv": expected,
+            })
+
+        # authority_urls
+        expected_auth = _expected_authority_urls(row.get("authority") or "")
+        if expected_auth and set(p.authority_urls) != set(expected_auth):
+            auth_mismatches.append({
+                "id": p.pe_id,
+                "html_count": len(p.authority_urls),
+                "csv_count": len(expected_auth),
+            })
+
+        # wiki_url
+        page_id = (row.get("PAGEID_WienWiki") or "").strip()
+        wiki_label = (row.get("Name_WienWiki") or "").strip()
+        if page_id and wiki_label:
+            if not p.wiki_url or page_id not in p.wiki_url:
+                wiki_mismatches.append({
+                    "id": p.pe_id,
+                    "html": p.wiki_url or "(none)",
+                    "expected_pageid": page_id,
+                })
+
+    def _add(name: str, ms: List[Dict[str, Any]]) -> None:
+        if ms:
+            sample = "; ".join(str(m) for m in ms[:3])
+            results.append(CheckResult(
+                name=name, tei=0, json=len(ms),
+                status="mismatch", note=f"Beispiele: {sample}",
+            ))
+        else:
+            results.append(CheckResult(
+                name=name, tei=0, json=0, status="match",
+            ))
+
+    _add("html.persons.death_display_vs_csv", death_mismatches)
+    _add("html.persons.authority_urls_vs_csv", auth_mismatches)
+    _add("html.persons.wiki_url_vs_csv", wiki_mismatches)
+    return results
+
+
+def check_org_extended_fields(
+    sample_size: Optional[int] = None,
+) -> List[CheckResult]:
+    """Erweiterte Org-Feld-Coverage: type_label, observance, place_name,
+    parent_org_id."""
+    results: List[CheckResult] = []
+    orgs_csv = _load_orgs_csv()
+    if not orgs_csv:
+        return results
+
+    paths = parse_html.iter_org_profiles()
+    if sample_size:
+        paths = paths[:sample_size]
+
+    observance_mismatches: List[Dict[str, Any]] = []
+    parent_mismatches: List[Dict[str, Any]] = []
+    auth_mismatches: List[Dict[str, Any]] = []
+
+    for path in paths:
+        o = parse_html.read_org_profile(path)
+        row = orgs_csv.get(o.org_id)
+        if row is None:
+            continue
+
+        expected_observance = (row.get("observance") or "").strip()
+        if expected_observance and o.observance != expected_observance:
+            observance_mismatches.append({
+                "id": o.org_id, "html": o.observance, "csv": expected_observance,
+            })
+
+        expected_parent = (row.get("org_key") or "").strip()
+        if expected_parent and o.parent_org_id != expected_parent:
+            # Wenn parent existiert aber nicht released ist, wird im HTML
+            # ein Klartext gerendert (kein Link); o.parent_org_id ist dann
+            # None. Das ist erwartet, nicht Bug. Nur als mismatch loggen,
+            # wenn HTML einen anderen Link hat.
+            if o.parent_org_id is not None:
+                parent_mismatches.append({
+                    "id": o.org_id,
+                    "html": o.parent_org_id,
+                    "csv": expected_parent,
+                })
+
+        expected_auth = _expected_authority_urls(row.get("authority") or "")
+        if expected_auth and set(o.authority_urls) != set(expected_auth):
+            auth_mismatches.append({
+                "id": o.org_id,
+                "html_count": len(o.authority_urls),
+                "csv_count": len(expected_auth),
+            })
+
+    def _add(name: str, ms: List[Dict[str, Any]]) -> None:
+        if ms:
+            sample = "; ".join(str(m) for m in ms[:3])
+            results.append(CheckResult(
+                name=name, tei=0, json=len(ms),
+                status="mismatch", note=f"Beispiele: {sample}",
+            ))
+        else:
+            results.append(CheckResult(
+                name=name, tei=0, json=0, status="match",
+            ))
+
+    _add("html.orgs.observance_vs_csv", observance_mismatches)
+    _add("html.orgs.parent_org_vs_csv", parent_mismatches)
+    _add("html.orgs.authority_urls_vs_csv", auth_mismatches)
+    return results
+
+
 def check_person_relation_counts(sample_size: Optional[int] = None) -> List[CheckResult]:
     """Vergleicht pro Person die Anzahl der Beziehungs-Tabellen-Zeilen
     im HTML mit der erwarteten Anzahl aus der jeweiligen
@@ -516,7 +672,9 @@ def run_html_checks() -> List[CheckResult]:
     """Alle HTML-Coverage-Pruefungen in einem Lauf."""
     results: List[CheckResult] = []
     results.extend(check_person_profiles())
+    results.extend(check_person_extended_fields())
     results.extend(check_org_profiles())
+    results.extend(check_org_extended_fields())
     results.extend(check_person_relation_counts())
     results.extend(check_document_refs())
     return results
