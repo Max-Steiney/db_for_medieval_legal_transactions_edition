@@ -381,6 +381,54 @@
     font-size: var(--text-xs);
 }
 
+/* Beziehungs-Tabelle: Signatur und Datum identisch zur Quellen-Tabelle
+   stylen, damit beide Listen visuell als "Belege" lesbar bleiben. */
+.rel-table .rel-col-idno {
+    width: 5rem;
+    font-family: var(--font-mono);
+    font-size: var(--text-xs);
+}
+.rel-table .rel-col-idno a {
+    color: var(--anno-person);
+    text-decoration: none;
+}
+.rel-table .rel-col-idno a:hover { text-decoration: underline; }
+.org-profile .rel-table .rel-col-idno a { color: var(--anno-org); }
+
+.rel-table .rel-col-date {
+    width: 8rem;
+    color: var(--color-text-muted);
+    white-space: nowrap;
+}
+
+/* Sort-Pfeile auf den Profil-Tabellen analog zu .index-table. */
+.sortable-table th[data-sort] {
+    cursor: pointer;
+    user-select: none;
+}
+.sortable-table th[data-sort]::after {
+    content: ' \2195';
+    margin-left: 0.25em;
+    opacity: 0.35;
+    font-size: 0.85em;
+    transition: opacity var(--transition-fast, 0.15s), color var(--transition-fast, 0.15s);
+}
+.sortable-table th[data-sort]:hover::after { opacity: 0.7; }
+.sortable-table th.sorted-asc::after {
+    content: ' \2191';
+    opacity: 1;
+    color: var(--anno-person);
+}
+.sortable-table th.sorted-desc::after {
+    content: ' \2193';
+    opacity: 1;
+    color: var(--anno-person);
+}
+.org-profile .sortable-table th.sorted-asc::after,
+.org-profile .sortable-table th.sorted-desc::after {
+    color: var(--anno-org);
+}
+
 /* Type-spezifische Akzent-Farbe links — analog zu Annotations-Farben. */
 
 .rel-block-kin       .rel-block-title { color: var(--anno-person); }

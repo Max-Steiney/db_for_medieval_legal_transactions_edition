@@ -138,15 +138,56 @@
     </div>
     {% endif %}
 
+    {# Quellen-Tabelle: zentral fuer das Profil. Spaltenstruktur identisch
+       zur Quellen-Uebersicht (index.html): Signatur, Datum, Quellenkorpus,
+       Regest, plus profil-spezifisch Bezeichnung und Rolle. Spalten sind
+       click-sortierbar (data-sort), Default-Reihenfolge bleibt
+       chronologisch wie aus dem reverse_index. #}
+    <section class="person-sources" aria-label="Quellen mit Nennung">
+        <h2 class="section-head">Quellen mit Nennung <span class="section-head-count">{{ profile.sources|length }}</span></h2>
+        {% if profile.sources|length > 25 %}
+        <div class="table-filter">
+            <input type="search" class="table-filter-input" data-target="src" placeholder="In den Quellen filtern&hellip;" aria-label="In den Quellen filtern">
+            <span class="table-filter-status"></span>
+        </div>
+        {% endif %}
+        <table class="person-source-table sortable-table"{% if profile.sources|length > 50 %} data-truncate-at="50"{% endif %}>
+            <thead>
+                <tr>
+                    <th scope="col" class="src-col-idno" data-sort="idno">Signatur</th>
+                    <th scope="col" class="src-col-date" data-sort="date">Datum</th>
+                    <th scope="col" class="src-col-corpus" data-sort="corpus">Quellenkorpus</th>
+                    <th scope="col" class="src-col-label" data-sort="label">Bezeichnung</th>
+                    <th scope="col" class="src-col-role" data-sort="role">Rolle</th>
+                    <th scope="col" class="src-col-regest">Regest</th>
+                </tr>
+            </thead>
+            <tbody>
+            {% for d in profile.sources %}
+                <tr>
+                    <td class="src-col-idno" data-sort-value="{{ d.idno }}"><a href="{{ root_path }}/{{ d.url }}">{{ d.idno }}</a></td>
+                    <td class="src-col-date" data-sort-value="{{ d.date_iso or '' }}">{{ d.date_display or '-' }}</td>
+                    <td class="src-col-corpus">{{ d.collection_label }}</td>
+                    <td class="src-col-label"><em>{{ d.label or '-' }}</em></td>
+                    <td class="src-col-role" data-sort-value="{{ d.roles[0].key if d.roles else '' }}">
+                        {% for r in d.roles %}<span class="role-chip role-chip-{{ r.key }}">{{ r.label }}</span>{% endfor %}
+                        {% if not d.roles %}-{% endif %}
+                    </td>
+                    <td class="src-col-regest">{{ d.regest or '-' }}</td>
+                </tr>
+            {% endfor %}
+            </tbody>
+        </table>
+    </section>
+
     {% set rel_total = profile.relations.kin|length + profile.relations.friend|length + profile.relations.rep|length + profile.relations.occ|length + profile.relations.title_ref|length + profile.relations.owner|length + profile.relations.tenant|length %}
     {% set active_rel_types = [] %}
     {% for rt in ['kin', 'friend', 'rep', 'occ', 'title_ref', 'owner', 'tenant'] %}{% if profile.relations[rt] %}{% set _ = active_rel_types.append(rt) %}{% endif %}{% endfor %}
 
-    {# Beziehungs-Block: pro Typ ein Sub-Abschnitt, nur wenn Eintraege da sind.
-       owner/tenant referenzieren Orte; das Ortsregister ist entfernt, daher
-       erscheint der Ortsname dort als Klartext (siehe Cell-Branch unten).
-       Wenn nur ein einziger rel-Typ vorhanden ist, faellt die uebergeordnete
-       Section-Ueberschrift weg und der Typ-Title wird zur Section-Heading. #}
+    {# Beziehungs-Block: pro Typ ein Sub-Abschnitt. owner/tenant referenzieren
+       Orte; das Ortsregister ist entfernt, daher erscheint der Ortsname dort
+       als Klartext. Spalten Signatur und Datum sind getrennt und sortierbar,
+       analog zur Quellen-Uebersicht. #}
     {% if rel_total %}
     <section class="person-relations{% if active_rel_types|length == 1 %} is-single{% endif %}" aria-label="Beziehungen">
         {% if active_rel_types|length > 1 %}
@@ -169,19 +210,20 @@
                 <span class="table-filter-status"></span>
             </div>
             {% endif %}
-            <table class="rel-table"{% if entries|length > 50 %} data-truncate-at="50"{% endif %}>
+            <table class="rel-table sortable-table"{% if entries|length > 50 %} data-truncate-at="50"{% endif %}>
                 <thead>
                     <tr>
-                        <th scope="col" class="rel-col-other">{% if rel_type in ['occ', 'title_ref'] %}Institution{% elif rel_type in ['owner', 'tenant'] %}Ort{% else %}Person{% endif %}</th>
-                        <th scope="col" class="rel-col-label">Bezeichnung</th>
+                        <th scope="col" class="rel-col-other" data-sort="other">{% if rel_type in ['occ', 'title_ref'] %}Institution{% elif rel_type in ['owner', 'tenant'] %}Ort{% else %}Person{% endif %}</th>
+                        <th scope="col" class="rel-col-label" data-sort="label">Bezeichnung</th>
                         <th scope="col" class="rel-col-perspective">Perspektive</th>
-                        <th scope="col" class="rel-col-source">Quelle</th>
+                        <th scope="col" class="rel-col-idno" data-sort="idno">Signatur</th>
+                        <th scope="col" class="rel-col-date" data-sort="date">Datum</th>
                     </tr>
                 </thead>
                 <tbody>
                 {% for e in entries %}
                     <tr>
-                        <td class="rel-col-other">
+                        <td class="rel-col-other" data-sort-value="{{ e.other_name }}">
                             {% if e.other_kind == 'person' and e.other_id and e.other_id in linked_persons %}
                                 <a class="rel-other-link" href="{{ root_path }}/register/persons/{{ e.other_id }}.html">{{ e.other_name }}</a>
                             {% elif e.other_kind == 'org' and e.other_id and e.other_id in (linked_orgs or []) %}
@@ -198,15 +240,16 @@
                                 {{ e.other_name }} &rsaquo; {{ profile.display }}
                             {% endif %}
                         </td>
-                        <td class="rel-col-source">
+                        <td class="rel-col-idno" data-sort-value="{{ e.idno }}">
                             {% if e.idno and e.url %}
-                                <a class="rel-source-link" href="{{ root_path }}/{{ e.url }}">Nr. {{ e.idno }}{% if e.date_display %} ({{ e.date_display }}){% endif %}</a>
+                                <a class="rel-source-link" href="{{ root_path }}/{{ e.url }}">{{ e.idno }}</a>
                             {% elif e.idno %}
-                                Nr. {{ e.idno }}
+                                {{ e.idno }}
                             {% else %}
                                 -
                             {% endif %}
                         </td>
+                        <td class="rel-col-date" data-sort-value="{{ e.date_iso or '' }}">{{ e.date_display or '-' }}</td>
                     </tr>
                 {% endfor %}
                 </tbody>
@@ -215,44 +258,6 @@
         {% endfor %}
     </section>
     {% endif %}
-
-    {# Quellen-Tabelle: alle Belege chronologisch, mit Bezeichnung und Rolle pro Quelle. #}
-    <section class="person-sources" aria-label="Quellen mit Nennung">
-        <h2 class="section-head">Quellen mit Nennung <span class="section-head-count">{{ profile.sources|length }}</span></h2>
-        {% if profile.sources|length > 25 %}
-        <div class="table-filter">
-            <input type="search" class="table-filter-input" data-target="src" placeholder="In den Quellen filtern&hellip;" aria-label="In den Quellen filtern">
-            <span class="table-filter-status"></span>
-        </div>
-        {% endif %}
-        <table class="person-source-table"{% if profile.sources|length > 50 %} data-truncate-at="50"{% endif %}>
-            <thead>
-                <tr>
-                    <th scope="col" class="src-col-idno">Nr.</th>
-                    <th scope="col" class="src-col-date">Datum</th>
-                    <th scope="col" class="src-col-corpus">Quellenkorpus</th>
-                    <th scope="col" class="src-col-label">Bezeichnung</th>
-                    <th scope="col" class="src-col-role">Rolle</th>
-                    <th scope="col" class="src-col-regest">Regest</th>
-                </tr>
-            </thead>
-            <tbody>
-            {% for d in profile.sources %}
-                <tr>
-                    <td class="src-col-idno"><a href="{{ root_path }}/{{ d.url }}">{{ d.idno }}</a></td>
-                    <td class="src-col-date">{{ d.date_display or '-' }}</td>
-                    <td class="src-col-corpus">{{ d.collection_label }}</td>
-                    <td class="src-col-label"><em>{{ d.label or '-' }}</em></td>
-                    <td class="src-col-role">
-                        {% for r in d.roles %}<span class="role-chip role-chip-{{ r.key }}">{{ r.label }}</span>{% endfor %}
-                        {% if not d.roles %}-{% endif %}
-                    </td>
-                    <td class="src-col-regest">{{ d.regest or '-' }}</td>
-                </tr>
-            {% endfor %}
-            </tbody>
-        </table>
-    </section>
 
 </article>
 {% endblock %}

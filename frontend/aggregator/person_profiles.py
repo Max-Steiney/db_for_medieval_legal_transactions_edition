@@ -233,6 +233,8 @@ def _build_relation_index(file_lookup, person_names, org_names, place_names):
                 "file_key":   fk,
                 "idno":       src.get("idno", ""),
                 "date_display": src.get("date_display", ""),
+                "date_iso":   src.get("date_iso", ""),
+                "collection_label": src.get("collection_label", ""),
                 "url":        src.get("url", ""),
                 "regest":     src.get("regest", ""),
             }
@@ -268,6 +270,8 @@ def _build_relation_index(file_lookup, person_names, org_names, place_names):
                 "file_key":   fk,
                 "idno":       src.get("idno", ""),
                 "date_display": src.get("date_display", ""),
+                "date_iso":   src.get("date_iso", ""),
+                "collection_label": src.get("collection_label", ""),
                 "url":        src.get("url", ""),
                 "regest":     src.get("regest", ""),
             }
@@ -300,6 +304,8 @@ def _build_relation_index(file_lookup, person_names, org_names, place_names):
                 "file_key":   fk,
                 "idno":       src.get("idno", ""),
                 "date_display": src.get("date_display", ""),
+                "date_iso":   src.get("date_iso", ""),
+                "collection_label": src.get("collection_label", ""),
                 "url":        src.get("url", ""),
                 "regest":     src.get("regest", ""),
             }

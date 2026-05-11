@@ -153,6 +153,8 @@ def _build_person_to_org_relations(file_lookup, person_names):
                 "file_key":   fk,
                 "idno":       src.get("idno", ""),
                 "date_display": src.get("date_display", ""),
+                "date_iso":   src.get("date_iso", ""),
+                "collection_label": src.get("collection_label", ""),
                 "url":        src.get("url", ""),
                 "regest":     src.get("regest", ""),
             }
