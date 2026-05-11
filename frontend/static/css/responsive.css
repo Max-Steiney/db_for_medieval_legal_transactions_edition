@@ -23,10 +23,6 @@
         max-height: none;
     }
 
-    .stats-collection-grid { grid-template-columns: repeat(2, 1fr); }
-
-    /* doc-details stacks on tablets */
-    .doc-details { grid-template-columns: 1fr; }
 }
 
 @media (max-width: 900px) {
@@ -73,14 +69,6 @@
 }
 
 @media (max-width: 768px) {
-    .stats-kpi-row { grid-template-columns: repeat(2, 1fr); }
-    .stats-two-col { grid-template-columns: 1fr; }
-    .stats-three-col { grid-template-columns: 1fr; }
-    .stats-gender-row { grid-template-columns: 6rem 1fr 5rem; }
-    .stats-collection-grid { grid-template-columns: 1fr; }
-    .stats-coverage-rings { flex-direction: column; align-items: center; gap: var(--space-lg); }
-    .stats-role-metrics { flex-direction: column; gap: var(--space-sm); }
-
     .nav-badge { display: none; }
 
     .site-main {
@@ -188,13 +176,6 @@
         justify-content: center;
     }
 
-    /* Annotation toggle popover: full width on mobile */
-    .anno-toggle-popover {
-        right: calc(-1 * var(--space-md));
-        left: calc(-1 * var(--space-md));
-        min-width: auto;
-    }
-
     /* Heatmap and matrix tables: horizontal scroll on mobile */
     .explore-chart-wrap { overflow-x: auto; }
 
@@ -205,9 +186,6 @@
 }
 
 @media (max-width: 480px) {
-    .stats-kpi-row { grid-template-columns: repeat(2, 1fr); }
-    .stats-hbar-row { grid-template-columns: 4.5rem 1fr 3rem; }
-
     .legend-grid {
         grid-template-columns: 1fr;
     }

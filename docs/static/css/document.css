@@ -427,9 +427,9 @@
     letter-spacing: 0.04em;
 }
 
-.annotation-type-person { background: #e8f0f8; color: #2e5a88; }
-.annotation-type-organisation { background: #f2eaf6; color: #7b4d8e; }
-.annotation-type-ort { background: #e6f3ed; color: #3a7a5c; }
+.annotation-type-person       { background: var(--anno-person-bg); color: var(--anno-person); }
+.annotation-type-organisation { background: var(--anno-org-bg);    color: var(--anno-org); }
+.annotation-type-ort          { background: var(--anno-place-bg);  color: var(--anno-place); }
 
 .annotations-empty {
     font-family: var(--font-sans);
@@ -616,10 +616,6 @@
     gap: var(--space-xs);
 }
 
-
-/* Document-Details (alter Bottom-Block) wurden in die Toolbar gezogen.
-   .doc-details / .details-dl / .doc-details-legend werden im Detail-
-   Layout nicht mehr verwendet. Provenance-Strip im Body bleibt. */
 
 /* Provenance list: muted text color */
 .provenance-list dd { color: var(--color-text-muted); }

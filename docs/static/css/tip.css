@@ -164,7 +164,7 @@
 
 /* Glossar: warmer Akzent an der Oberkante, signalisiert "Begriff". */
 .tip-popover--glossary {
-    border-top: 3px solid var(--anno-place, #3a7a5c);
+    border-top: 3px solid var(--anno-place);
 }
 
 /* Daten: kuehler Akzent, signalisiert "Datenherkunft". */
@@ -310,7 +310,7 @@
 .tip-hint-type {
     display: block;
     font-size: 0.85em;
-    color: var(--color-text-muted, #b0a99f);
+    color: var(--color-text-muted);
     text-transform: uppercase;
     letter-spacing: 0.04em;
     margin-bottom: 1px;

@@ -119,9 +119,9 @@
     display: block;
 }
 .basket-btn:hover {
-    border-color: var(--anno-place, #3a7a5c);
-    color: var(--anno-place, #3a7a5c);
-    background: color-mix(in srgb, var(--anno-place, #3a7a5c) 8%, transparent);
+    border-color: var(--anno-place);
+    color: var(--anno-place);
+    background: color-mix(in srgb, var(--anno-place) 8%, transparent);
 }
 
 /* Zustand "im Korb": gleiche Outline-Form, aber Border in Akzentfarbe
@@ -129,16 +129,16 @@
    gewechselt (im JS). Kein Vollfarb-Kreis mehr - das wirkte wie ein
    anderer UI-Typ und las sich mit dem "x" als Schliessen-Knopf. */
 .basket-btn.is-in {
-    border-color: var(--anno-place, #3a7a5c);
-    background: color-mix(in srgb, var(--anno-place, #3a7a5c) 8%, transparent);
-    color: var(--anno-place, #3a7a5c);
+    border-color: var(--anno-place);
+    background: color-mix(in srgb, var(--anno-place) 8%, transparent);
+    color: var(--anno-place);
 }
 /* Hover-Vorschau "Klick entfernt": Haekchen wird zum Minus, Border und
    Tint kraeftiger, damit klar ist, dass der naechste Klick etwas tut.
    Glyphen-Umschaltung ueber zwei Pfade im SVG (siehe basket.js
    SVG_CHECK) statt CSS "d:", weil das Safari-kompatibel ist. */
 .basket-btn.is-in:hover {
-    background: color-mix(in srgb, var(--anno-place, #3a7a5c) 14%, transparent);
+    background: color-mix(in srgb, var(--anno-place) 14%, transparent);
 }
 .basket-btn-icon .glyph-minus { display: none; }
 .basket-btn.is-in:hover .basket-btn-icon .glyph-check { display: none; }
@@ -149,7 +149,7 @@
     display: inline-flex;
     align-items: center;
     margin-left: var(--space-sm);
-    color: var(--color-text-inverse, #faf8f4);
+    color: var(--color-text-inverse);
     text-decoration: none;
     padding: 6px;
     border-radius: 4px;
@@ -163,7 +163,7 @@
     min-width: 16px;
     height: 16px;
     padding: 0 4px;
-    background: var(--anno-place, #3a7a5c);
+    background: var(--anno-place);
     color: #fff;
     font-family: var(--font-sans);
     font-size: 10px;
@@ -244,9 +244,9 @@
     color: var(--color-text-muted);
 }
 .explore-btn--danger:hover {
-    background: rgba(184, 92, 47, 0.1);
-    color: #b85c2f;
-    border-color: #b85c2f;
+    background: color-mix(in srgb, var(--anno-fn-issuer) 10%, transparent);
+    color: var(--anno-fn-issuer);
+    border-color: var(--anno-fn-issuer);
 }
 .basket-table .col-actions { width: 36px; text-align: right; }
 .basket-row-remove {
@@ -262,9 +262,9 @@
     transition: all var(--transition-fast);
 }
 .basket-row-remove:hover {
-    background: rgba(184, 92, 47, 0.1);
-    color: #b85c2f;
-    border-color: #b85c2f;
+    background: color-mix(in srgb, var(--anno-fn-issuer) 10%, transparent);
+    color: var(--anno-fn-issuer);
+    border-color: var(--anno-fn-issuer);
 }
 .basket-table .cell-regest {
     max-width: 480px;
@@ -374,7 +374,7 @@
     background: transparent;
 }
 .basket-btn.is-derived:hover {
-    border-color: var(--anno-place, #3a7a5c);
-    color: var(--anno-place, #3a7a5c);
-    background: color-mix(in srgb, var(--anno-place, #3a7a5c) 8%, transparent);
+    border-color: var(--anno-place);
+    color: var(--anno-place);
+    background: color-mix(in srgb, var(--anno-place) 8%, transparent);
 }
