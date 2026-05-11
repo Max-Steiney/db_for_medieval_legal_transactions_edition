@@ -3,21 +3,21 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <meta http-equiv="Content-Security-Policy" content="default-src 'self'; script-src 'self'; style-src 'self'; font-src 'self'; img-src 'self' data: https://images.monasterium.net https://www.monasterium.net; connect-src 'self'; frame-ancestors 'none'; base-uri 'self'; form-action 'self'; upgrade-insecure-requests">
+    <meta http-equiv="Content-Security-Policy" content="default-src 'self'; script-src 'self'; style-src 'self'; font-src 'self'; img-src 'self' data: https://images.monasterium.net https://www.monasterium.net; connect-src 'self'; base-uri 'self'; form-action 'self'; upgrade-insecure-requests">
     <meta name="referrer" content="strict-origin-when-cross-origin">
     <meta http-equiv="Permissions-Policy" content="camera=(), microphone=(), geolocation=(), interest-cohort=()">
     <title>Nr. 131 (1331 III 10), Datenbank</title>
     <link rel="preload" as="font" type="font/woff2" crossorigin
           href="../../../static/fonts/inter-400-latin.woff2">
-    <link rel="stylesheet" href="../../../static/css/fonts.css?v=20260511112948">
-    <link rel="stylesheet" href="../../../static/css/tokens.css?v=20260511112948">
-    <link rel="stylesheet" href="../../../static/css/base.css?v=20260511112948">
-    <link rel="stylesheet" href="../../../static/css/components.css?v=20260511112948">
-    <link rel="stylesheet" href="../../../static/css/responsive.css?v=20260511112948">
-    <link rel="stylesheet" href="../../../static/css/print.css?v=20260511112948">
-    <link rel="stylesheet" href="../../../static/css/provenance.css?v=20260511112948">
+    <link rel="stylesheet" href="../../../static/css/fonts.css?v=20260511125458">
+    <link rel="stylesheet" href="../../../static/css/tokens.css?v=20260511125458">
+    <link rel="stylesheet" href="../../../static/css/base.css?v=20260511125458">
+    <link rel="stylesheet" href="../../../static/css/components.css?v=20260511125458">
+    <link rel="stylesheet" href="../../../static/css/responsive.css?v=20260511125458">
+    <link rel="stylesheet" href="../../../static/css/print.css?v=20260511125458">
+    <link rel="stylesheet" href="../../../static/css/tip.css?v=20260511125458">
     
-<link rel="stylesheet" href="../../../static/css/document.css?v=20260511112948">
+<link rel="stylesheet" href="../../../static/css/document.css?v=20260511125458">
 <link rel="canonical" href="documents/QGW/Vienna_1177-1414_ready/131.html">
 <meta name="citation_title" content="Nr. 131 (1331 III 10)">
 <meta name="citation_collection" content="QGW II/1 (1177–1414)">
@@ -50,8 +50,6 @@
         <a href="../../../register/persons.html">Personen</a>
         
         <a href="../../../register/orgs.html">Organisationen</a>
-        
-        <a href="../../../register/places.html">Orte</a>
         
     </div>
 </div>
@@ -93,7 +91,7 @@
     </div>
 </div>
 
-                <a href="../../../korb.html" class="nav-basket" aria-label="Wissenskorb">
+                <a href="../../../korb.html" class="nav-basket" aria-label="Datenkorb">
                     <svg width="18" height="18" viewBox="0 0 18 18" fill="none" aria-hidden="true">
                         <path d="M3 5h12l-1.2 8.5a1 1 0 0 1-1 .85H5.2a1 1 0 0 1-1-.85L3 5z"
                               stroke="currentColor" stroke-width="1.4" fill="none"
@@ -140,7 +138,7 @@
                     
                     <span class="meta-pair">
                         <span class="meta-label">Quelle</span>
-                        <span class="meta-value" title="Quellen zur Geschichte der Stadt Wien, Bd. II/1, Nr. 131">Quellen zur Geschichte der Stadt Wien, Bd. II/1, Nr. 131</span>
+                        <span class="meta-value" data-hint="Quellen zur Geschichte der Stadt Wien, Bd. II/1, Nr. 131">Quellen zur Geschichte der Stadt Wien, Bd. II/1, Nr. 131</span>
                     </span>
                     
                 </div>
@@ -151,7 +149,7 @@
                     
                     <button type="button" class="legend-toggle"
                             data-layer="entities" aria-pressed="true"
-                            title="Entitäten ein-/ausblenden">
+                            data-hint="Entitäten ein-/ausblenden">
                         <span class="legend-toggle-dots">
                             <span class="legend-swatch swatch-person"></span><span class="legend-swatch swatch-org"></span><span class="legend-swatch swatch-place"></span>
                         </span>
@@ -160,7 +158,7 @@
                     
                     <button type="button" class="legend-toggle"
                             data-layer="functions" aria-pressed="true"
-                            title="Funktionsrollen ein-/ausblenden">
+                            data-hint="Funktionsrollen ein-/ausblenden">
                         <span class="legend-toggle-dots">
                             <span class="legend-swatch swatch-fn-issuer"></span><span class="legend-swatch swatch-fn-recipient"></span><span class="legend-swatch swatch-fn-witness"></span>
                         </span>
@@ -169,7 +167,7 @@
                     
                     <button type="button" class="legend-toggle"
                             data-layer="attributes" aria-pressed="true"
-                            title="Attribute ein-/ausblenden">
+                            data-hint="Attribute ein-/ausblenden">
                         <span class="legend-toggle-dots">
                             <span class="legend-swatch swatch-attr"></span><span class="legend-swatch swatch-add"></span>
                         </span>
@@ -178,7 +176,7 @@
                     
                     <button type="button" class="legend-toggle"
                             data-layer="triggers" aria-pressed="true"
-                            title="Dispositivformel ein-/ausblenden">
+                            data-hint="Dispositivformel ein-/ausblenden">
                         <span class="legend-toggle-dots">
                             <span class="legend-swatch swatch-trigger"></span>
                         </span>
@@ -190,21 +188,29 @@
                 <div class="doc-toolbar-actions">
                     <a class="toolbar-btn" href="../../../tei/QGW/Vienna_1177-1414_ready/131.xml"
                        download="131.xml"
-                       aria-label="TEI-XML herunterladen" title="TEI-XML herunterladen"><svg viewBox="0 0 16 16" width="16" height="16" aria-hidden="true"><path fill="none" stroke="currentColor" stroke-width="1.4" stroke-linecap="round" stroke-linejoin="round" d="M8 2v8m0 0l-3-3m3 3l3-3M3 13h10"/></svg></a>
+                       aria-label="TEI-XML herunterladen" data-hint="TEI-XML herunterladen"><svg viewBox="0 0 16 16" width="16" height="16" aria-hidden="true"><path fill="none" stroke="currentColor" stroke-width="1.4" stroke-linecap="round" stroke-linejoin="round" d="M8 2v8m0 0l-3-3m3 3l3-3M3 13h10"/></svg></a>
                     <button class="toolbar-btn" id="cite-toggle" aria-expanded="false"
-                            aria-label="Zitation kopieren" title="Zitation kopieren"><svg viewBox="0 0 16 16" width="16" height="16" aria-hidden="true"><rect x="4" y="2" width="8" height="11" rx="1" fill="none" stroke="currentColor" stroke-width="1.4"/><path d="M6 1.5h4a0.5 0.5 0 0 1 0.5 0.5v1a0.5 0.5 0 0 1-0.5 0.5H6a0.5 0.5 0 0 1-0.5-0.5V2A0.5 0.5 0 0 1 6 1.5z" fill="currentColor"/><path d="M6.5 6.5h3M6.5 8.5h3M6.5 10.5h2" stroke="currentColor" stroke-width="1" stroke-linecap="round"/></svg></button>
+                            aria-label="Zitation kopieren" data-hint="Zitation kopieren"><svg viewBox="0 0 16 16" width="16" height="16" aria-hidden="true"><rect x="4" y="2" width="8" height="11" rx="1" fill="none" stroke="currentColor" stroke-width="1.4"/><path d="M6 1.5h4a0.5 0.5 0 0 1 0.5 0.5v1a0.5 0.5 0 0 1-0.5 0.5H6a0.5 0.5 0 0 1-0.5-0.5V2A0.5 0.5 0 0 1 6 1.5z" fill="currentColor"/><path d="M6.5 6.5h3M6.5 8.5h3M6.5 10.5h2" stroke="currentColor" stroke-width="1" stroke-linecap="round"/></svg></button>
                     <div class="cite-popover hidden" id="cite-popover"></div>
+                    <span class="toolbar-basket-mount"
+                          data-basket-type="source"
+                          data-basket-id="131"
+                          data-basket-label="131"
+                          data-basket-url="documents/QGW/Vienna_1177-1414_ready/131.html"
+                          data-basket-date="1331-03-10"
+                          data-basket-coll="QGW II/1 (1177–1414)"
+                          data-basket-regest="Dietreich der Chrannest und Elspeth, seine Hausfrau, verkaufen ihrer rechten Gülte fünfzehenthalb lb dn. um 61 Mark Silber ihrem Bruder Otte dem Chrannest, Otte dem Chrannestder sie zu einer ewigen…"></span>
                     
 <nav class="doc-paging doc-paging-inline" aria-label="Quellen-Navigation">
     
     <a href="../../../documents/QGW/Vienna_1177-1414_ready/130.html" class="toolbar-btn doc-paging-prev"
        aria-label="Vorherige Quelle: Nr. 130"
-       title="Vorherige Quelle: Nr. 130"><svg viewBox="0 0 16 16" width="16" height="16" aria-hidden="true"><path fill="none" stroke="currentColor" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round" d="M10 3l-5 5 5 5"/></svg></a>
+       data-hint="Vorherige Quelle: Nr. 130"><svg viewBox="0 0 16 16" width="16" height="16" aria-hidden="true"><path fill="none" stroke="currentColor" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round" d="M10 3l-5 5 5 5"/></svg></a>
     
     
     <a href="../../../documents/QGW/Vienna_1177-1414_ready/132.html" class="toolbar-btn doc-paging-next"
        aria-label="Nächste Quelle: Nr. 132"
-       title="Nächste Quelle: Nr. 132"><svg viewBox="0 0 16 16" width="16" height="16" aria-hidden="true"><path fill="none" stroke="currentColor" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round" d="M6 3l5 5-5 5"/></svg></a>
+       data-hint="Nächste Quelle: Nr. 132"><svg viewBox="0 0 16 16" width="16" height="16" aria-hidden="true"><path fill="none" stroke="currentColor" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round" d="M6 3l5 5-5 5"/></svg></a>
     
 </nav>
 
@@ -219,23 +225,23 @@
         <!-- Document body (rendered TEI) -->
         <div class="doc-body">
             <section class="tei-abstract"><h2 class="tei-section-head">Regest</h2><p>
-               <span class="anno-event" data-ref="ev__QGW_II_I_131"><span class="anno-fn anno-fn-issuer" data-role="issuer"><span class="fn-label">Aussteller*in</span><a class="anno-person" data-ref="pe__dietrich_chrannest_QGW_II_I_319" title="Dietrich Chrannest [pe__dietrich_chrannest_QGW_II_I_319]" href="../../../register/persons/pe__dietrich_chrannest_QGW_II_I_319.html">Dietreich der Chrannest</a>
-                        und<a class="anno-person" data-ref="pe__elisabeth_QGW_II_I_131" title="Elisabeth Chrannestin [pe__elisabeth_QGW_II_I_131]" href="../../../register/persons/pe__elisabeth_QGW_II_I_131.html"> Elspeth, seine
+               <span class="anno-event" data-ref="ev__QGW_II_I_131"><span class="anno-fn anno-fn-issuer" data-role="issuer"><span class="fn-label">Aussteller*in</span><a class="anno-person" data-ref="pe__dietrich_chrannest_QGW_II_I_319" data-hint="Dietrich Chrannest [pe__dietrich_chrannest_QGW_II_I_319]" data-hint-type="Person" href="../../../register/persons/pe__dietrich_chrannest_QGW_II_I_319.html">Dietreich der Chrannest</a>
+                        und<a class="anno-person" data-ref="pe__elisabeth_QGW_II_I_131" data-hint="Elisabeth Chrannestin [pe__elisabeth_QGW_II_I_131]" data-hint-type="Person" href="../../../register/persons/pe__elisabeth_QGW_II_I_131.html"> Elspeth, seine
                            <span class="anno-attr anno-attr-kin" data-corresp="pe__dietrich_chrannest_QGW_II_I_319">Hausfrau</span></a></span>,<span class="anno-trigger anno-trigger-disp"> verkaufen
                   </span>ihrer rechten Gülte fünfzehenthalb lb dn. um 61 Mark Silber ihrem<span class="anno-fn anno-fn-recipient" data-role="recipient"><span class="fn-label">Empfänger*in</span>
-                     <a class="anno-person" data-ref="pe__otto_chrannest_QGW_II_I_131" title="Otto Chrannest [pe__otto_chrannest_QGW_II_I_131]" href="../../../register/persons/pe__otto_chrannest_QGW_II_I_131.html"><span class="anno-attr anno-attr-kin" data-corresp="pe__dietrich_chrannest_QGW_II_I_319">Bruder</span> Otte dem
+                     <a class="anno-person" data-ref="pe__otto_chrannest_QGW_II_I_131" data-hint="Otto Chrannest [pe__otto_chrannest_QGW_II_I_131]" data-hint-type="Person" href="../../../register/persons/pe__otto_chrannest_QGW_II_I_131.html"><span class="anno-attr anno-attr-kin" data-corresp="pe__dietrich_chrannest_QGW_II_I_319">Bruder</span> Otte dem
                         Chrannest</a></span>,</span>
                <span class="anno-event" data-ref="ev__QGW_II_I_131a">
-                  <span class="anno-fn anno-fn-issuer" data-role="issuer"><span class="fn-label">Aussteller*in</span><a class="anno-person" data-ref="pe__otto_chrannest_QGW_II_I_131" title="Otto Chrannest [pe__otto_chrannest_QGW_II_I_131]" href="../../../register/persons/pe__otto_chrannest_QGW_II_I_131.html"><span class="tei-add">Otte dem
+                  <span class="anno-fn anno-fn-issuer" data-role="issuer"><span class="fn-label">Aussteller*in</span><a class="anno-person" data-ref="pe__otto_chrannest_QGW_II_I_131" data-hint="Otto Chrannest [pe__otto_chrannest_QGW_II_I_131]" data-hint-type="Person" href="../../../register/persons/pe__otto_chrannest_QGW_II_I_131.html"><span class="tei-add">Otte dem
                      Chrannest</span></a></span>der sie <span class="anno-trigger anno-trigger-disp">zu einer ewigen
                         Messe<span class="tei-add">kauft</span></span>
-                  <span class="anno-fn anno-fn-recipient" data-role="recipient"><span class="fn-label">Empfänger*in</span><a class="anno-org" data-ref="org__wien-st_stephan-kapelle_st_erasmus_im_neuen_karner_auf_dem_st_stephansfriedhof" title="St. Erasmus im neuen Karner auf dem St. Stephansfriedhof (Kirche_Kapelle) [org__wien-st_stephan-kapelle_st_erasmus_im_neuen_karner_auf_dem_st_stephansfriedhof]" href="../../../register/orgs/org__wien-st_stephan-kapelle_st_erasmus_im_neuen_karner_auf_dem_st_stephansfriedhof.html">dem Kaplan unter dem neuen Charner zu Wien</a></span> zur Widerlegung von 16
+                  <span class="anno-fn anno-fn-recipient" data-role="recipient"><span class="fn-label">Empfänger*in</span><a class="anno-org" data-ref="org__wien-st_stephan-kapelle_st_erasmus_im_neuen_karner_auf_dem_st_stephansfriedhof" data-hint="St. Erasmus im neuen Karner auf dem St. Stephansfriedhof (Kirche_Kapelle) [org__wien-st_stephan-kapelle_st_erasmus_im_neuen_karner_auf_dem_st_stephansfriedhof]" data-hint-type="Organisation" href="../../../register/orgs/org__wien-st_stephan-kapelle_st_erasmus_im_neuen_karner_auf_dem_st_stephansfriedhof.html">dem Kaplan unter dem neuen Charner zu Wien</a></span> zur Widerlegung von 16
                   lb dn. Geldes kauft, die gelegen waren auf einem Weingarten, der da haisset der
                   Sibenstokch und leit under dem Chalnberge. Die Gülten werden von dem Aussteller
-                  verkauft nach Massgabe der letztwilligen Anordnung seines <a class="anno-person" data-ref="pe__herl_chrannest_QGW_II_I_131" title="Herl Chrannest [pe__herl_chrannest_QGW_II_I_131]" href="../../../register/persons/pe__herl_chrannest_QGW_II_I_131.html">
+                  verkauft nach Massgabe der letztwilligen Anordnung seines <a class="anno-person" data-ref="pe__herl_chrannest_QGW_II_I_131" data-hint="Herl Chrannest [pe__herl_chrannest_QGW_II_I_131]" data-hint-type="Person" href="../../../register/persons/pe__herl_chrannest_QGW_II_I_131.html">
                      <span class="anno-attr anno-attr-kin" data-corresp="pe__dietrich_chrannest_QGW_II_I_319">Bruders</span> Herl des Chrannest</a>, dessen Geschäftsbrief besiegelt
-                  war mit den Siegeln <a class="anno-person" data-ref="pe__andreas_chrannest_QGW_II_I_319" title="Andreas Chrannest [pe__andreas_chrannest_QGW_II_I_319]" href="../../../register/persons/pe__andreas_chrannest_QGW_II_I_319.html"><span class="anno-attr anno-attr-title">hern</span> Andres des Chrannestes, <span class="anno-attr anno-attr-occ" data-corresp="org__ruprechtshofen-pfarre">pharrer</span> zu
-                     Ruprechteshofen</a>, <a class="anno-person" data-ref="pe__georg_an_dem_kienmarkt_QGW_II_I_124" title="Georg an dem Kienmarkt [pe__georg_an_dem_kienmarkt_QGW_II_I_124]" href="../../../register/persons/pe__georg_an_dem_kienmarkt_QGW_II_I_124.html"><span class="anno-attr anno-attr-title">hern</span> Georgen an dem Chienmarchte</a> und <a class="anno-person" data-ref="pe__jakob_chrannest_QGW_II_I_165" title="Jakob Chrannest Pilgrim des Mundoffen Eidam [pe__jakob_chrannest_QGW_II_I_165]" href="../../../register/persons/pe__jakob_chrannest_QGW_II_I_165.html">Jacobs des Chrannestes, des Mundoffen
+                  war mit den Siegeln <a class="anno-person" data-ref="pe__andreas_chrannest_QGW_II_I_319" data-hint="Andreas Chrannest [pe__andreas_chrannest_QGW_II_I_319]" data-hint-type="Person" href="../../../register/persons/pe__andreas_chrannest_QGW_II_I_319.html"><span class="anno-attr anno-attr-title">hern</span> Andres des Chrannestes, <span class="anno-attr anno-attr-occ" data-corresp="org__ruprechtshofen-pfarre">pharrer</span> zu
+                     Ruprechteshofen</a>, <a class="anno-person" data-ref="pe__georg_an_dem_kienmarkt_QGW_II_I_124" data-hint="Georg an dem Kienmarkt [pe__georg_an_dem_kienmarkt_QGW_II_I_124]" data-hint-type="Person" href="../../../register/persons/pe__georg_an_dem_kienmarkt_QGW_II_I_124.html"><span class="anno-attr anno-attr-title">hern</span> Georgen an dem Chienmarchte</a> und <a class="anno-person" data-ref="pe__jakob_chrannest_QGW_II_I_165" data-hint="Jakob Chrannest Pilgrim des Mundoffen Eidam [pe__jakob_chrannest_QGW_II_I_165]" data-hint-type="Person" href="../../../register/persons/pe__jakob_chrannest_QGW_II_I_165.html">Jacobs des Chrannestes, des Mundoffen
                      aidem</a> . Die Gülten werden folgendermassen bezeichnet: der 2 lb 20 dn.
                   ligent pei dem Haidehoffe, davon man dient alle jar hern Hainrichen dem
                   Chez/zz/zeler under den Mittern Chramern funfthalben Schilling an dem Goldekche
@@ -256,8 +262,8 @@
                   vor Stubentor, 6 sh. dn ., dreistunt in dem jar daselbens von Ulreichs house, des
                   schuster, 60 dn., dreistunt in dem jar des summen wirt sechzehen phunt geltes
                   uber al, der get zwelf schilling dinstes herwider abe</span> . </p></section><section class="tei-seal"><h2 class="tei-section-head">Siegelbeschreibung</h2><p><span class="anno-event" data-ref="ev__QGW_II_I_131"><span class="anno-fn anno-fn-witness" data-role="witness"><span class="fn-label">Zeug*in</span>Besiegelt : 1.
-                        <a class="anno-person" data-ref="pe__dietrich_chrannest_QGW_II_I_319" title="Dietrich Chrannest [pe__dietrich_chrannest_QGW_II_I_319]" href="../../../register/persons/pe__dietrich_chrannest_QGW_II_I_319.html">von dem
-                        Aussteller</a>, 2. <a class="anno-person" data-ref="pe__georg_an_dem_kienmarkt_QGW_II_I_124" title="Georg an dem Kienmarkt [pe__georg_an_dem_kienmarkt_QGW_II_I_124]" href="../../../register/persons/pe__georg_an_dem_kienmarkt_QGW_II_I_124.html"><span class="anno-attr anno-attr-title">hern</span> Georgen an dem Chienmarchte</a>, 3. <a class="anno-person" data-ref="pe__berthold_kraemer_QGW_II_I_131" title="Berthold Krämer Krämer [pe__berthold_kraemer_QGW_II_I_131]" href="../../../register/persons/pe__berthold_kraemer_QGW_II_I_131.html"><span class="anno-attr anno-attr-title">hern</span> Perichtolden, dem chramer, <a class="anno-person" data-ref="pe__leopold_wenig_QGW_II_I_320" title="Leopold Wenig († 03.05.1369) [pe__leopold_wenig_QGW_II_I_320]" href="../../../register/persons/pe__leopold_wenig_QGW_II_I_320.html">des Wenigen Leupoldes</a>
+                        <a class="anno-person" data-ref="pe__dietrich_chrannest_QGW_II_I_319" data-hint="Dietrich Chrannest [pe__dietrich_chrannest_QGW_II_I_319]" data-hint-type="Person" href="../../../register/persons/pe__dietrich_chrannest_QGW_II_I_319.html">von dem
+                        Aussteller</a>, 2. <a class="anno-person" data-ref="pe__georg_an_dem_kienmarkt_QGW_II_I_124" data-hint="Georg an dem Kienmarkt [pe__georg_an_dem_kienmarkt_QGW_II_I_124]" data-hint-type="Person" href="../../../register/persons/pe__georg_an_dem_kienmarkt_QGW_II_I_124.html"><span class="anno-attr anno-attr-title">hern</span> Georgen an dem Chienmarchte</a>, 3. <a class="anno-person" data-ref="pe__berthold_kraemer_QGW_II_I_131" data-hint="Berthold Krämer Krämer [pe__berthold_kraemer_QGW_II_I_131]" data-hint-type="Person" href="../../../register/persons/pe__berthold_kraemer_QGW_II_I_131.html"><span class="anno-attr anno-attr-title">hern</span> Perichtolden, dem chramer, <a class="anno-person" data-ref="pe__leopold_wenig_QGW_II_I_320" data-hint="Leopold Wenig († 03.05.1369) [pe__leopold_wenig_QGW_II_I_320]" data-hint-type="Person" href="../../../register/persons/pe__leopold_wenig_QGW_II_I_320.html">des Wenigen Leupoldes</a>
                         <span class="anno-attr anno-attr-kin" data-corresp="pe__leopold_wenig_QGW_II_I_320">pruder</span></a>.</span></span>
             </p></section><section class="tei-nota"><h2 class="tei-section-head">Indorsat / Nota</h2><p>Indorsat: Krannest mess. </p></section>
 
@@ -317,7 +323,7 @@
          dem TEI in mehreren Untertabellen, Personen/Orgs/Orte,
          Ereignisse, Dispositivformeln, Editorische Ergaenzungen. Wird
          per JS aus den entsprechenden Spans im Body aufgebaut. -->
-    <section class="annotations-view" id="factoid-view" aria-label="Annotationen">
+    <section class="annotations-view" id="annotations-view" aria-label="Annotationen">
         <header class="annotations-header">
             <h2 class="annotations-title">Annotationen</h2>
             <span class="annotations-summary"></span>
@@ -363,13 +369,14 @@
         </div>
     </footer>
 
-    <script src="../../../static/js/core.js?v=20260511112948"></script>
-    <script src="../../../static/js/provenance.js?v=20260511112948"></script>
-    <script src="../../../static/js/basket.js?v=20260511112948"></script>
+    <script src="../../../static/js/core.js?v=20260511125458"></script>
+    <script src="../../../static/js/tip.js?v=20260511125458"></script>
+    <script src="../../../static/js/hint.js?v=20260511125458"></script>
+    <script src="../../../static/js/basket.js?v=20260511125458"></script>
     
-<script src="../../../static/js/tooltips.js?v=20260511112948"></script>
-<script src="../../../static/js/facsimile.js?v=20260511112948"></script>
-<script src="../../../static/js/document.js?v=20260511112948"></script>
+<script src="../../../static/js/facsimile.js?v=20260511125458"></script>
+<script src="../../../static/js/document.js?v=20260511125458"></script>
+<script src="../../../static/js/basket-mount.js?v=20260511125458"></script>
 
 </body>
 </html>

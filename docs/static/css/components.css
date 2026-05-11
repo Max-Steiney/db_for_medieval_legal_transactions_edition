@@ -153,7 +153,22 @@
 .nav-basket-count[hidden] { display: none; }
 
 /* Basket page */
-.basket-page .index-header { margin-bottom: var(--space-md); }
+.basket-page .index-header,
+.basket-page .basket-header {
+    margin-bottom: var(--space-md);
+    text-align: left;
+    border-bottom: 1px solid var(--color-border-light);
+    padding-bottom: var(--space-sm);
+}
+.basket-page .basket-header h1 {
+    margin-bottom: 4px;
+}
+.basket-page .basket-subtitle {
+    margin: 0;
+    color: var(--color-text-muted);
+    font-size: var(--text-sm);
+    max-width: 70ch;
+}
 .basket-toolbar {
     display: flex;
     justify-content: space-between;
@@ -232,4 +247,108 @@
     max-width: 480px;
     color: var(--color-text-muted);
     font-size: var(--text-xs);
+}
+
+/* Basket sections (per-type)
+   Card-Layout: weisser Hintergrund, Rahmen drum, sanfter Schatten. Der
+   Section-Container traegt die Card-Optik, damit Header und Tabelle
+   eine zusammenhaengende Flaeche bilden. */
+.basket-section {
+    margin-bottom: var(--space-xl);
+    background: #fff;
+    border: 1px solid var(--color-border);
+    border-radius: var(--radius-lg);
+    box-shadow: var(--shadow-sm);
+    overflow: hidden;
+}
+.basket-section-head {
+    display: flex;
+    justify-content: space-between;
+    align-items: flex-end;
+    gap: var(--space-md);
+    flex-wrap: wrap;
+    margin-bottom: 0;
+    padding: var(--space-sm) var(--space-md);
+    background: #fff;
+    border-bottom: 1px solid var(--color-border-light);
+}
+.basket-section-head h2 {
+    font-family: var(--font-sans);
+    font-size: var(--text-md);
+    font-weight: 600;
+    margin: 0;
+    display: flex;
+    align-items: baseline;
+    gap: var(--space-sm);
+}
+.basket-section-count {
+    font-size: var(--text-sm);
+    color: var(--color-text-muted);
+    font-weight: 400;
+}
+.basket-stat-label {
+    border-bottom: 1px dotted var(--color-text-light);
+    cursor: help;
+}
+.basket-section-derived {
+    margin-left: 6px;
+    font-style: italic;
+}
+.basket-section-actions {
+    display: flex;
+    gap: var(--space-sm);
+    flex-wrap: wrap;
+}
+.basket-section-empty {
+    color: var(--color-text-muted);
+    font-size: var(--text-sm);
+    padding: var(--space-md);
+    background: #fff;
+    margin: 0;
+}
+.basket-section .basket-table {
+    background: #fff;
+    margin-bottom: 0;
+    width: 100%;
+}
+.basket-section .basket-table thead th {
+    background: var(--color-bg-warm);
+    padding: var(--space-xs) var(--space-md);
+}
+.basket-section .basket-table tbody td {
+    background: #fff;
+    padding: var(--space-xs) var(--space-md);
+}
+.basket-section .basket-table tbody tr:hover td {
+    background: var(--color-bg-warm);
+}
+.basket-section .basket-table th[data-hint],
+.basket-section .basket-table .col-source a[data-hint] {
+    cursor: help;
+}
+
+/* Derived rows: italic and dimmed; "aus Quelle" cell smaller and muted. */
+.basket-row-derived {
+    font-style: italic;
+    color: var(--color-text-muted);
+}
+.basket-row-derived a {
+    color: inherit;
+}
+.basket-table .col-source {
+    font-size: var(--text-xs);
+    color: var(--color-text-muted);
+    max-width: 220px;
+}
+
+/* Derived-only basket button (promote on click) */
+.basket-btn.is-derived {
+    border-style: dashed;
+    color: var(--color-text-muted);
+    background: transparent;
+}
+.basket-btn.is-derived:hover {
+    border-color: var(--color-text);
+    color: var(--color-text);
+    border-style: solid;
 }

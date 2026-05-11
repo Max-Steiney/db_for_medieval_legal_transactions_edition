@@ -3,22 +3,22 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <meta http-equiv="Content-Security-Policy" content="default-src 'self'; script-src 'self'; style-src 'self'; font-src 'self'; img-src 'self' data: https://images.monasterium.net https://www.monasterium.net; connect-src 'self'; frame-ancestors 'none'; base-uri 'self'; form-action 'self'; upgrade-insecure-requests">
+    <meta http-equiv="Content-Security-Policy" content="default-src 'self'; script-src 'self'; style-src 'self'; font-src 'self'; img-src 'self' data: https://images.monasterium.net https://www.monasterium.net; connect-src 'self'; base-uri 'self'; form-action 'self'; upgrade-insecure-requests">
     <meta name="referrer" content="strict-origin-when-cross-origin">
     <meta http-equiv="Permissions-Policy" content="camera=(), microphone=(), geolocation=(), interest-cohort=()">
     <title>Niklas Würfel (&dagger; 13.05.1399), Datenbank</title>
     <link rel="preload" as="font" type="font/woff2" crossorigin
           href="../../static/fonts/inter-400-latin.woff2">
-    <link rel="stylesheet" href="../../static/css/fonts.css?v=20260511112948">
-    <link rel="stylesheet" href="../../static/css/tokens.css?v=20260511112948">
-    <link rel="stylesheet" href="../../static/css/base.css?v=20260511112948">
-    <link rel="stylesheet" href="../../static/css/components.css?v=20260511112948">
-    <link rel="stylesheet" href="../../static/css/responsive.css?v=20260511112948">
-    <link rel="stylesheet" href="../../static/css/print.css?v=20260511112948">
-    <link rel="stylesheet" href="../../static/css/provenance.css?v=20260511112948">
+    <link rel="stylesheet" href="../../static/css/fonts.css?v=20260511125458">
+    <link rel="stylesheet" href="../../static/css/tokens.css?v=20260511125458">
+    <link rel="stylesheet" href="../../static/css/base.css?v=20260511125458">
+    <link rel="stylesheet" href="../../static/css/components.css?v=20260511125458">
+    <link rel="stylesheet" href="../../static/css/responsive.css?v=20260511125458">
+    <link rel="stylesheet" href="../../static/css/print.css?v=20260511125458">
+    <link rel="stylesheet" href="../../static/css/tip.css?v=20260511125458">
     
-<link rel="stylesheet" href="../../static/css/document.css?v=20260511112948">
-<link rel="stylesheet" href="../../static/css/person.css?v=20260511112948">
+<link rel="stylesheet" href="../../static/css/document.css?v=20260511125458">
+<link rel="stylesheet" href="../../static/css/person.css?v=20260511125458">
 
 </head>
 <body data-root-path="../.."
@@ -48,8 +48,6 @@
         <a href="../../register/persons.html">Personen</a>
         
         <a href="../../register/orgs.html">Organisationen</a>
-        
-        <a href="../../register/places.html">Orte</a>
         
     </div>
 </div>
@@ -91,7 +89,7 @@
     </div>
 </div>
 
-                <a href="../../korb.html" class="nav-basket" aria-label="Wissenskorb">
+                <a href="../../korb.html" class="nav-basket" aria-label="Datenkorb">
                     <svg width="18" height="18" viewBox="0 0 18 18" fill="none" aria-hidden="true">
                         <path d="M3 5h12l-1.2 8.5a1 1 0 0 1-1 .85H5.2a1 1 0 0 1-1-.85L3 5z"
                               stroke="currentColor" stroke-width="1.4" fill="none"
@@ -112,11 +110,23 @@
 
     <div class="person-toolbar">
         <div class="person-toolbar-inner">
-            <nav class="person-breadcrumb" aria-label="Position">
-                <a href="../../register/persons.html">Personenregister</a>
-                <span class="bc-sep">&rsaquo;</span>
-                <span class="bc-doc"><strong>Niklas Würfel</strong></span>
-            </nav>
+            <div class="person-toolbar-row">
+                <nav class="person-breadcrumb" aria-label="Position">
+                    <a href="../../register/persons.html">Personenregister</a>
+                    <span class="bc-sep">&rsaquo;</span>
+                    <span class="bc-doc"><strong>Niklas Würfel</strong></span>
+                </nav>
+                <div class="person-toolbar-actions">
+                    <span class="toolbar-basket-mount"
+                          data-basket-type="person"
+                          data-basket-id="pe__niklas_wuerfel_QGW_II_I_1001"
+                          data-basket-label="Niklas Würfel"
+                          data-basket-url="register/persons/pe__niklas_wuerfel_QGW_II_I_1001.html"
+                          data-basket-sex="m"
+                          data-basket-active-min="1351"
+                          data-basket-active-max="1414"></span>
+                </div>
+            </div>
             <div class="person-toolbar-meta">
                 <span class="meta-pair">
                     <span class="meta-label">Geschlecht</span>
@@ -124,7 +134,33 @@
                 </span>
                 
                 <span class="meta-pair">
-                    <span class="meta-label">Belegt</span>
+                    <span class="meta-label">Belegt
+<span class="tip-wrap">
+    <button type="button" class="tip-trigger tip-trigger--icon"
+            aria-expanded="false" aria-haspopup="dialog"
+            aria-controls="person-belegt"
+            data-tip="person-belegt"
+            aria-label="Definition: Beleg-Zeitraum">
+        <svg width="13" height="13" viewBox="0 0 16 16" aria-hidden="true">
+            <circle cx="8" cy="8" r="7" stroke="currentColor" stroke-width="1.4" fill="none"/>
+            <text x="8" y="11.6" text-anchor="middle" font-size="9.5" font-weight="700"
+                  fill="currentColor" font-family="Georgia, serif">i</text>
+        </svg>
+    </button>
+    <aside class="tip-popover tip-popover--glossary"
+           id="person-belegt" role="dialog" aria-hidden="true"
+           aria-label="Definition: Beleg-Zeitraum">
+        <header class="tip-head">
+            <h3 class="tip-title">Beleg-Zeitraum</h3>
+            <button type="button" class="tip-close" aria-label="Schlie&szlig;en">&times;</button>
+        </header>
+        <div class="tip-body">
+            <p>Erste und letzte Datierung einer Quelle, in der die Person erscheint. Bei einzelnem Beleg wird nur ein Jahr angegeben.</p>
+            
+        </div>
+    </aside>
+</span>
+</span>
                     <span class="meta-value">1351 bis 1414</span>
                 </span>
                 
@@ -134,6 +170,10 @@
                     <span class="meta-value">13.05.1399</span>
                 </span>
                 
+                <span class="meta-pair">
+                    <span class="meta-label">Quellen</span>
+                    <span class="meta-value">97</span>
+                </span>
                 <span class="meta-pair person-id-pair">
                     <span class="meta-label">ID</span>
                     <code class="meta-value person-id">pe__niklas_wuerfel_QGW_II_I_1001</code>
@@ -150,10 +190,11 @@
             
         </h1>
         
+        
         <p class="person-note">Ritter, Richter zu Wien, Geschäftsherr, Bruder Paul der Würfel, Sohn von Heinrich Würfel</p>
         
         
-        <p class="person-titles">
+        <p class="person-titles" data-collapsible="22">
             <span class="pt-label">In den Quellen genannt als</span>
             <span class="pt-chip">hern</span><span class="pt-chip">Ritter|hern</span><span class="pt-chip">Ritters|hern</span><span class="pt-chip">her</span><span class="pt-chip">herrn</span><span class="pt-chip">erbern|vesten|ritter|hern</span><span class="pt-chip">ersamen vesten ritter</span><span class="pt-chip">Ritter|her</span><span class="pt-chip">Bergherr</span><span class="pt-chip">Grundherrn|hern</span><span class="pt-chip">Bergmeisters|hern</span><span class="pt-chip">Grundherr|Ritter|her</span>
         </p>
@@ -163,7 +204,44 @@
             <a class="ext-link" href="https://www.wienwiki.at/?curid=10976" target="_blank" rel="noopener noreferrer">Wien-Wiki: Niklas Würffel</a>
         </p>
         
+        
+        <p class="person-extlinks">
+            
+            <a class="ext-link" href="https://www.geschichtewiki.wien.gv.at/Special:URIResolver/?curid=10976" target="_blank" rel="noopener noreferrer">Authority-Eintrag</a>
+            
+        </p>
+        
     </header>
+
+    
+    <section class="role-strip" aria-label="Rollen in Rechtsgeschäften">
+        <h2 class="role-strip-title">Rollen in Rechtsgeschäften</h2>
+        <div class="role-strip-cells">
+            
+            <div class="role-cell role-cell-issuer">
+                <span class="role-cell-count">17</span>
+                <span class="role-cell-label">Aussteller*in</span>
+            </div>
+            
+            <div class="role-cell role-cell-recipient">
+                <span class="role-cell-count">42</span>
+                <span class="role-cell-label">Empfänger*in</span>
+            </div>
+            
+            <div class="role-cell role-cell-witness">
+                <span class="role-cell-count">28</span>
+                <span class="role-cell-label">Zeuge / Siegler*in</span>
+            </div>
+            
+            <div class="role-cell role-cell-other">
+                <span class="role-cell-count">15</span>
+                <span class="role-cell-label">Sonstige</span>
+            </div>
+            
+        </div>
+        <p class="role-strip-hint">Summe Rollen-Belegungen: 102. Mehrfach-Rollen pro Quelle sind möglich.</p>
+    </section>
+    
 
     
 
@@ -180,7 +258,13 @@
                 <span class="rel-block-count">55</span>
                 <span class="rel-block-hint">Verwandtschaftsverhältnisse, wie sie in den Quellen explizit benannt werden.</span>
             </header>
-            <table class="rel-table">
+            
+            <div class="table-filter">
+                <input type="search" class="table-filter-input" data-target="rel" placeholder="In der Tabelle filtern&hellip;" aria-label="In der Tabelle filtern">
+                <span class="table-filter-status"></span>
+            </div>
+            
+            <table class="rel-table" data-truncate-at="50">
                 <thead>
                     <tr>
                         <th scope="col" class="rel-col-other">Person</th>
@@ -200,7 +284,7 @@
                         <td class="rel-col-label"><em>tochter</em></td>
                         <td class="rel-col-perspective">
                             
-                                Elisabeth → Niklas Würfel
+                                Elisabeth &rsaquo; Niklas Würfel
                             
                         </td>
                         <td class="rel-col-source">
@@ -219,7 +303,7 @@
                         <td class="rel-col-label"><em>hausfrow</em></td>
                         <td class="rel-col-perspective">
                             
-                                Anna → Niklas Würfel
+                                Anna &rsaquo; Niklas Würfel
                             
                         </td>
                         <td class="rel-col-source">
@@ -238,7 +322,7 @@
                         <td class="rel-col-label"><em>sweher</em></td>
                         <td class="rel-col-perspective">
                             
-                                Niklas Würfel → Ursula
+                                Niklas Würfel &rsaquo; Ursula
                             
                         </td>
                         <td class="rel-col-source">
@@ -257,7 +341,7 @@
                         <td class="rel-col-label"><em>Bruder</em></td>
                         <td class="rel-col-perspective">
                             
-                                Paul Würfel der Ältere → Niklas Würfel
+                                Paul Würfel der Ältere &rsaquo; Niklas Würfel
                             
                         </td>
                         <td class="rel-col-source">
@@ -276,7 +360,7 @@
                         <td class="rel-col-label"><em>bruder</em></td>
                         <td class="rel-col-perspective">
                             
-                                Heinrich Würfel Würfel → Niklas Würfel
+                                Heinrich Würfel Würfel &rsaquo; Niklas Würfel
                             
                         </td>
                         <td class="rel-col-source">
@@ -295,7 +379,7 @@
                         <td class="rel-col-label"><em>pru/eder</em></td>
                         <td class="rel-col-perspective">
                             
-                                Paul Würfel der Ältere → Niklas Würfel
+                                Paul Würfel der Ältere &rsaquo; Niklas Würfel
                             
                         </td>
                         <td class="rel-col-source">
@@ -314,7 +398,7 @@
                         <td class="rel-col-label"><em>Oheims</em></td>
                         <td class="rel-col-perspective">
                             
-                                Johann auf der Säule → Niklas Würfel
+                                Johann auf der Säule &rsaquo; Niklas Würfel
                             
                         </td>
                         <td class="rel-col-source">
@@ -333,7 +417,7 @@
                         <td class="rel-col-label"><em>pruder</em></td>
                         <td class="rel-col-perspective">
                             
-                                Paul Würfel der Ältere → Niklas Würfel
+                                Paul Würfel der Ältere &rsaquo; Niklas Würfel
                             
                         </td>
                         <td class="rel-col-source">
@@ -352,7 +436,7 @@
                         <td class="rel-col-label"><em>aidem</em></td>
                         <td class="rel-col-perspective">
                             
-                                Johann Messenbacher → Niklas Würfel
+                                Johann Messenbacher &rsaquo; Niklas Würfel
                             
                         </td>
                         <td class="rel-col-source">
@@ -371,7 +455,7 @@
                         <td class="rel-col-label"><em>Eidam</em></td>
                         <td class="rel-col-perspective">
                             
-                                Johann Pellendorfer → Niklas Würfel
+                                Johann Pellendorfer &rsaquo; Niklas Würfel
                             
                         </td>
                         <td class="rel-col-source">
@@ -390,7 +474,7 @@
                         <td class="rel-col-label"><em>Bruders</em></td>
                         <td class="rel-col-perspective">
                             
-                                Paul Würfel der Ältere → Niklas Würfel
+                                Paul Würfel der Ältere &rsaquo; Niklas Würfel
                             
                         </td>
                         <td class="rel-col-source">
@@ -409,7 +493,7 @@
                         <td class="rel-col-label"><em>Eidam</em></td>
                         <td class="rel-col-perspective">
                             
-                                Johann Pellendorfer → Niklas Würfel
+                                Johann Pellendorfer &rsaquo; Niklas Würfel
                             
                         </td>
                         <td class="rel-col-source">
@@ -428,7 +512,7 @@
                         <td class="rel-col-label"><em>Eidam</em></td>
                         <td class="rel-col-perspective">
                             
-                                Johann Messenbacher → Niklas Würfel
+                                Johann Messenbacher &rsaquo; Niklas Würfel
                             
                         </td>
                         <td class="rel-col-source">
@@ -447,7 +531,7 @@
                         <td class="rel-col-label"><em>tochter</em></td>
                         <td class="rel-col-perspective">
                             
-                                Anna → Niklas Würfel
+                                Anna &rsaquo; Niklas Würfel
                             
                         </td>
                         <td class="rel-col-source">
@@ -466,7 +550,7 @@
                         <td class="rel-col-label"><em>sweher</em></td>
                         <td class="rel-col-perspective">
                             
-                                Niklas Würfel → Johann Messenbacher
+                                Niklas Würfel &rsaquo; Johann Messenbacher
                             
                         </td>
                         <td class="rel-col-source">
@@ -485,7 +569,7 @@
                         <td class="rel-col-label"><em>Vater</em></td>
                         <td class="rel-col-perspective">
                             
-                                Niklas Würfel → Anna
+                                Niklas Würfel &rsaquo; Anna
                             
                         </td>
                         <td class="rel-col-source">
@@ -504,7 +588,7 @@
                         <td class="rel-col-label"><em>Eidam</em></td>
                         <td class="rel-col-perspective">
                             
-                                Johann von Messenbach → Niklas Würfel
+                                Johann von Messenbach &rsaquo; Niklas Würfel
                             
                         </td>
                         <td class="rel-col-source">
@@ -523,7 +607,7 @@
                         <td class="rel-col-label"><em>Bruders</em></td>
                         <td class="rel-col-perspective">
                             
-                                Paul Würfel der Ältere → Niklas Würfel
+                                Paul Würfel der Ältere &rsaquo; Niklas Würfel
                             
                         </td>
                         <td class="rel-col-source">
@@ -542,7 +626,7 @@
                         <td class="rel-col-label"><em>Sohnes</em></td>
                         <td class="rel-col-perspective">
                             
-                                Niklas Würfel von Nussdorf → Niklas Würfel
+                                Niklas Würfel von Nussdorf &rsaquo; Niklas Würfel
                             
                         </td>
                         <td class="rel-col-source">
@@ -561,7 +645,7 @@
                         <td class="rel-col-label"><em>Sohnes</em></td>
                         <td class="rel-col-perspective">
                             
-                                Niklas Würfel von Nussdorf → Niklas Würfel
+                                Niklas Würfel von Nussdorf &rsaquo; Niklas Würfel
                             
                         </td>
                         <td class="rel-col-source">
@@ -580,7 +664,7 @@
                         <td class="rel-col-label"><em>Bruders</em></td>
                         <td class="rel-col-perspective">
                             
-                                Paul Würfel der Ältere → Niklas Würfel
+                                Paul Würfel der Ältere &rsaquo; Niklas Würfel
                             
                         </td>
                         <td class="rel-col-source">
@@ -599,7 +683,7 @@
                         <td class="rel-col-label"><em>Frau</em></td>
                         <td class="rel-col-perspective">
                             
-                                Anna → Niklas Würfel
+                                Anna &rsaquo; Niklas Würfel
                             
                         </td>
                         <td class="rel-col-source">
@@ -618,7 +702,7 @@
                         <td class="rel-col-label"><em>Sohne</em></td>
                         <td class="rel-col-perspective">
                             
-                                Niklas Würfel von Nussdorf → Niklas Würfel
+                                Niklas Würfel von Nussdorf &rsaquo; Niklas Würfel
                             
                         </td>
                         <td class="rel-col-source">
@@ -637,7 +721,7 @@
                         <td class="rel-col-label"><em>Sohne</em></td>
                         <td class="rel-col-perspective">
                             
-                                Johann Würfel zu Rodaun → Niklas Würfel
+                                Johann Würfel zu Rodaun &rsaquo; Niklas Würfel
                             
                         </td>
                         <td class="rel-col-source">
@@ -656,7 +740,7 @@
                         <td class="rel-col-label"><em>Sohne</em></td>
                         <td class="rel-col-perspective">
                             
-                                Ulrich Würfel → Niklas Würfel
+                                Ulrich Würfel &rsaquo; Niklas Würfel
                             
                         </td>
                         <td class="rel-col-source">
@@ -675,7 +759,7 @@
                         <td class="rel-col-label"><em>Sohne</em></td>
                         <td class="rel-col-perspective">
                             
-                                Sigmund Würfel → Niklas Würfel
+                                Sigmund Würfel &rsaquo; Niklas Würfel
                             
                         </td>
                         <td class="rel-col-source">
@@ -694,7 +778,7 @@
                         <td class="rel-col-label"><em>Bruder</em></td>
                         <td class="rel-col-perspective">
                             
-                                Paul Würfel der Ältere → Niklas Würfel
+                                Paul Würfel der Ältere &rsaquo; Niklas Würfel
                             
                         </td>
                         <td class="rel-col-source">
@@ -713,7 +797,7 @@
                         <td class="rel-col-label"><em>witib</em></td>
                         <td class="rel-col-perspective">
                             
-                                Anna → Niklas Würfel
+                                Anna &rsaquo; Niklas Würfel
                             
                         </td>
                         <td class="rel-col-source">
@@ -732,7 +816,7 @@
                         <td class="rel-col-label"><em>Sohn</em></td>
                         <td class="rel-col-perspective">
                             
-                                Johann Würfel zu Rodaun → Niklas Würfel
+                                Johann Würfel zu Rodaun &rsaquo; Niklas Würfel
                             
                         </td>
                         <td class="rel-col-source">
@@ -751,7 +835,7 @@
                         <td class="rel-col-label"><em>Sohn</em></td>
                         <td class="rel-col-perspective">
                             
-                                Niklas Würfel von Nussdorf → Niklas Würfel
+                                Niklas Würfel von Nussdorf &rsaquo; Niklas Würfel
                             
                         </td>
                         <td class="rel-col-source">
@@ -770,7 +854,7 @@
                         <td class="rel-col-label"><em>Sohn</em></td>
                         <td class="rel-col-perspective">
                             
-                                Ulrich Würfel → Niklas Würfel
+                                Ulrich Würfel &rsaquo; Niklas Würfel
                             
                         </td>
                         <td class="rel-col-source">
@@ -789,7 +873,7 @@
                         <td class="rel-col-label"><em>Sohn</em></td>
                         <td class="rel-col-perspective">
                             
-                                Sigmund Würfel → Niklas Würfel
+                                Sigmund Würfel &rsaquo; Niklas Würfel
                             
                         </td>
                         <td class="rel-col-source">
@@ -808,7 +892,7 @@
                         <td class="rel-col-label"><em>Vater</em></td>
                         <td class="rel-col-perspective">
                             
-                                Niklas Würfel → Niklas Würfel von Nussdorf
+                                Niklas Würfel &rsaquo; Niklas Würfel von Nussdorf
                             
                         </td>
                         <td class="rel-col-source">
@@ -827,7 +911,7 @@
                         <td class="rel-col-label"><em>Bruder</em></td>
                         <td class="rel-col-perspective">
                             
-                                Dietrich Urbetsch → Niklas Würfel
+                                Dietrich Urbetsch &rsaquo; Niklas Würfel
                             
                         </td>
                         <td class="rel-col-source">
@@ -846,7 +930,7 @@
                         <td class="rel-col-label"><em>prüder</em></td>
                         <td class="rel-col-perspective">
                             
-                                Sigmund Würfel → Niklas Würfel
+                                Sigmund Würfel &rsaquo; Niklas Würfel
                             
                         </td>
                         <td class="rel-col-source">
@@ -865,7 +949,7 @@
                         <td class="rel-col-label"><em>Brüdern</em></td>
                         <td class="rel-col-perspective">
                             
-                                Johann Würfel zu Rodaun → Niklas Würfel
+                                Johann Würfel zu Rodaun &rsaquo; Niklas Würfel
                             
                         </td>
                         <td class="rel-col-source">
@@ -884,7 +968,7 @@
                         <td class="rel-col-label"><em>Brüdern</em></td>
                         <td class="rel-col-perspective">
                             
-                                Ulrich Würfel → Niklas Würfel
+                                Ulrich Würfel &rsaquo; Niklas Würfel
                             
                         </td>
                         <td class="rel-col-source">
@@ -903,7 +987,7 @@
                         <td class="rel-col-label"><em>Vetters</em></td>
                         <td class="rel-col-perspective">
                             
-                                Paul Würfel der Ältere → Niklas Würfel
+                                Paul Würfel der Ältere &rsaquo; Niklas Würfel
                             
                         </td>
                         <td class="rel-col-source">
@@ -922,7 +1006,7 @@
                         <td class="rel-col-label"><em>Mannes</em></td>
                         <td class="rel-col-perspective">
                             
-                                Niklas Würfel → Anna Hirssauin
+                                Niklas Würfel &rsaquo; Anna Hirssauin
                             
                         </td>
                         <td class="rel-col-source">
@@ -941,7 +1025,7 @@
                         <td class="rel-col-label"><em>sun</em></td>
                         <td class="rel-col-perspective">
                             
-                                Niklas Würfel → Heinrich Würfel Würfel
+                                Niklas Würfel &rsaquo; Heinrich Würfel Würfel
                             
                         </td>
                         <td class="rel-col-source">
@@ -960,7 +1044,7 @@
                         <td class="rel-col-label"><em>hausvrow</em></td>
                         <td class="rel-col-perspective">
                             
-                                Anna Würfelin → Niklas Würfel
+                                Anna Würfelin &rsaquo; Niklas Würfel
                             
                         </td>
                         <td class="rel-col-source">
@@ -979,7 +1063,7 @@
                         <td class="rel-col-label"><em>Sohnes</em></td>
                         <td class="rel-col-perspective">
                             
-                                Niklas Würfel → Heinrich Würfel Würfel
+                                Niklas Würfel &rsaquo; Heinrich Würfel Würfel
                             
                         </td>
                         <td class="rel-col-source">
@@ -998,7 +1082,7 @@
                         <td class="rel-col-label"><em>Sohnes</em></td>
                         <td class="rel-col-perspective">
                             
-                                Niklas Würfel → Heinrich Würfel Würfel
+                                Niklas Würfel &rsaquo; Heinrich Würfel Würfel
                             
                         </td>
                         <td class="rel-col-source">
@@ -1017,7 +1101,7 @@
                         <td class="rel-col-label"><em>Hausfrau</em></td>
                         <td class="rel-col-perspective">
                             
-                                Anna Würfelin → Niklas Würfel
+                                Anna Würfelin &rsaquo; Niklas Würfel
                             
                         </td>
                         <td class="rel-col-source">
@@ -1036,7 +1120,7 @@
                         <td class="rel-col-label"><em>Hausfrau</em></td>
                         <td class="rel-col-perspective">
                             
-                                Anna Würfelin → Niklas Würfel
+                                Anna Würfelin &rsaquo; Niklas Würfel
                             
                         </td>
                         <td class="rel-col-source">
@@ -1055,7 +1139,7 @@
                         <td class="rel-col-label"><em>Hausfrau</em></td>
                         <td class="rel-col-perspective">
                             
-                                Margarethe Würfelin → Niklas Würfel
+                                Margarethe Würfelin &rsaquo; Niklas Würfel
                             
                         </td>
                         <td class="rel-col-source">
@@ -1074,7 +1158,7 @@
                         <td class="rel-col-label"><em>Hausfrau</em></td>
                         <td class="rel-col-perspective">
                             
-                                Margarethe Würfelin → Niklas Würfel
+                                Margarethe Würfelin &rsaquo; Niklas Würfel
                             
                         </td>
                         <td class="rel-col-source">
@@ -1093,7 +1177,7 @@
                         <td class="rel-col-label"><em>swehers</em></td>
                         <td class="rel-col-perspective">
                             
-                                Konrad Wiltwercher in dem Tuemprost(hof) → Niklas Würfel
+                                Konrad Wiltwercher in dem Tuemprost(hof) &rsaquo; Niklas Würfel
                             
                         </td>
                         <td class="rel-col-source">
@@ -1112,7 +1196,7 @@
                         <td class="rel-col-label"><em>Hausfrau</em></td>
                         <td class="rel-col-perspective">
                             
-                                Margarethe Würfelin → Niklas Würfel
+                                Margarethe Würfelin &rsaquo; Niklas Würfel
                             
                         </td>
                         <td class="rel-col-source">
@@ -1131,7 +1215,7 @@
                         <td class="rel-col-label"><em>Bruder</em></td>
                         <td class="rel-col-perspective">
                             
-                                Niklas Würfel → Heinrich Würfel Würfel
+                                Niklas Würfel &rsaquo; Heinrich Würfel Würfel
                             
                         </td>
                         <td class="rel-col-source">
@@ -1150,7 +1234,7 @@
                         <td class="rel-col-label"><em>Eltern</em></td>
                         <td class="rel-col-perspective">
                             
-                                Heinrich Würfel Würfel → Niklas Würfel
+                                Heinrich Würfel Würfel &rsaquo; Niklas Würfel
                             
                         </td>
                         <td class="rel-col-source">
@@ -1169,7 +1253,7 @@
                         <td class="rel-col-label"><em>Eltern</em></td>
                         <td class="rel-col-perspective">
                             
-                                Katharina Würfelin → Niklas Würfel
+                                Katharina Würfelin &rsaquo; Niklas Würfel
                             
                         </td>
                         <td class="rel-col-source">
@@ -1188,7 +1272,7 @@
                         <td class="rel-col-label"><em>Oheim</em></td>
                         <td class="rel-col-perspective">
                             
-                                Niklas Würfel → Peter Popphinger Popphinger
+                                Niklas Würfel &rsaquo; Peter Popphinger Popphinger
                             
                         </td>
                         <td class="rel-col-source">
@@ -1207,7 +1291,7 @@
                         <td class="rel-col-label"><em>tachter</em></td>
                         <td class="rel-col-perspective">
                             
-                                Anna → Niklas Würfel
+                                Anna &rsaquo; Niklas Würfel
                             
                         </td>
                         <td class="rel-col-source">
@@ -1226,7 +1310,7 @@
                         <td class="rel-col-label"><em>sbecher</em></td>
                         <td class="rel-col-perspective">
                             
-                                Niklas Würfel → Johann Messenbacher
+                                Niklas Würfel &rsaquo; Johann Messenbacher
                             
                         </td>
                         <td class="rel-col-source">
@@ -1252,6 +1336,7 @@
                 <span class="rel-block-count">18</span>
                 <span class="rel-block-hint">Stellvertretungs-Beziehungen, z. B. handelt eine Person an Stelle einer anderen.</span>
             </header>
+            
             <table class="rel-table">
                 <thead>
                     <tr>
@@ -1272,7 +1357,7 @@
                         <td class="rel-col-label"><em>an seines Herrn Statt</em></td>
                         <td class="rel-col-perspective">
                             
-                                Johann → Niklas Würfel
+                                Johann &rsaquo; Niklas Würfel
                             
                         </td>
                         <td class="rel-col-source">
@@ -1291,7 +1376,7 @@
                         <td class="rel-col-label"><em>Geschäftsherr</em></td>
                         <td class="rel-col-perspective">
                             
-                                Niklas Würfel → Johann auf der Säule
+                                Niklas Würfel &rsaquo; Johann auf der Säule
                             
                         </td>
                         <td class="rel-col-source">
@@ -1310,7 +1395,7 @@
                         <td class="rel-col-label"><em>ausrichter und vollfurer des geschefts</em></td>
                         <td class="rel-col-perspective">
                             
-                                Niklas Würfel → Johann auf der Säule
+                                Niklas Würfel &rsaquo; Johann auf der Säule
                             
                         </td>
                         <td class="rel-col-source">
@@ -1329,7 +1414,7 @@
                         <td class="rel-col-label"><em>Geschäftsherr</em></td>
                         <td class="rel-col-perspective">
                             
-                                Niklas Würfel → Johann auf der Säule
+                                Niklas Würfel &rsaquo; Johann auf der Säule
                             
                         </td>
                         <td class="rel-col-source">
@@ -1348,7 +1433,7 @@
                         <td class="rel-col-label"><em>Geschäftsherren</em></td>
                         <td class="rel-col-perspective">
                             
-                                Niklas Würfel → Johann auf der Säule
+                                Niklas Würfel &rsaquo; Johann auf der Säule
                             
                         </td>
                         <td class="rel-col-source">
@@ -1367,7 +1452,7 @@
                         <td class="rel-col-label"><em>statt</em></td>
                         <td class="rel-col-perspective">
                             
-                                Johann Turs → Niklas Würfel
+                                Johann Turs &rsaquo; Niklas Würfel
                             
                         </td>
                         <td class="rel-col-source">
@@ -1386,7 +1471,7 @@
                         <td class="rel-col-label"><em>Geschäftsherr</em></td>
                         <td class="rel-col-perspective">
                             
-                                Paul Würfel der Ältere → Niklas Würfel
+                                Paul Würfel der Ältere &rsaquo; Niklas Würfel
                             
                         </td>
                         <td class="rel-col-source">
@@ -1405,7 +1490,7 @@
                         <td class="rel-col-label"><em>Geschäftsherr</em></td>
                         <td class="rel-col-perspective">
                             
-                                Antonius → Niklas Würfel
+                                Antonius &rsaquo; Niklas Würfel
                             
                         </td>
                         <td class="rel-col-source">
@@ -1424,7 +1509,7 @@
                         <td class="rel-col-label"><em>Geschäftsherr</em></td>
                         <td class="rel-col-perspective">
                             
-                                Leonhard von Mödling → Niklas Würfel
+                                Leonhard von Mödling &rsaquo; Niklas Würfel
                             
                         </td>
                         <td class="rel-col-source">
@@ -1443,7 +1528,7 @@
                         <td class="rel-col-label"><em>Geschäftsherr</em></td>
                         <td class="rel-col-perspective">
                             
-                                Wolfhard → Niklas Würfel
+                                Wolfhard &rsaquo; Niklas Würfel
                             
                         </td>
                         <td class="rel-col-source">
@@ -1462,7 +1547,7 @@
                         <td class="rel-col-label"><em>Geschäftsherren</em></td>
                         <td class="rel-col-perspective">
                             
-                                Antonius → Niklas Würfel
+                                Antonius &rsaquo; Niklas Würfel
                             
                         </td>
                         <td class="rel-col-source">
@@ -1481,7 +1566,7 @@
                         <td class="rel-col-label"><em>Geschäftsherren</em></td>
                         <td class="rel-col-perspective">
                             
-                                Paul Würfel der Ältere → Niklas Würfel
+                                Paul Würfel der Ältere &rsaquo; Niklas Würfel
                             
                         </td>
                         <td class="rel-col-source">
@@ -1500,7 +1585,7 @@
                         <td class="rel-col-label"><em>Geschäftsherren</em></td>
                         <td class="rel-col-perspective">
                             
-                                Wolfhard → Niklas Würfel
+                                Wolfhard &rsaquo; Niklas Würfel
                             
                         </td>
                         <td class="rel-col-source">
@@ -1519,7 +1604,7 @@
                         <td class="rel-col-label"><em>recht poten</em></td>
                         <td class="rel-col-perspective">
                             
-                                Zechmeister → Niklas Würfel
+                                Zechmeister &rsaquo; Niklas Würfel
                             
                         </td>
                         <td class="rel-col-source">
@@ -1538,7 +1623,7 @@
                         <td class="rel-col-label"><em>recht poten</em></td>
                         <td class="rel-col-perspective">
                             
-                                Friedrich Töllrr → Niklas Würfel
+                                Friedrich Töllrr &rsaquo; Niklas Würfel
                             
                         </td>
                         <td class="rel-col-source">
@@ -1557,7 +1642,7 @@
                         <td class="rel-col-label"><em>recht poten</em></td>
                         <td class="rel-col-perspective">
                             
-                                Otto Hörner → Niklas Würfel
+                                Otto Hörner &rsaquo; Niklas Würfel
                             
                         </td>
                         <td class="rel-col-source">
@@ -1576,7 +1661,7 @@
                         <td class="rel-col-label"><em>recht poten</em></td>
                         <td class="rel-col-perspective">
                             
-                                Konrad Oedler → Niklas Würfel
+                                Konrad Oedler &rsaquo; Niklas Würfel
                             
                         </td>
                         <td class="rel-col-source">
@@ -1595,7 +1680,7 @@
                         <td class="rel-col-label"><em>an seines Herrn Statt</em></td>
                         <td class="rel-col-perspective">
                             
-                                Konrad Pernger → Niklas Würfel
+                                Konrad Pernger &rsaquo; Niklas Würfel
                             
                         </td>
                         <td class="rel-col-source">
@@ -1618,6 +1703,12 @@
                 <span class="rel-block-count">38</span>
                 <span class="rel-block-hint">Berufs- oder Amtsbezeichnung in Bezug auf eine Institution.</span>
             </header>
+            
+            <div class="table-filter">
+                <input type="search" class="table-filter-input" data-target="rel" placeholder="In der Tabelle filtern&hellip;" aria-label="In der Tabelle filtern">
+                <span class="table-filter-status"></span>
+            </div>
+            
             <table class="rel-table">
                 <thead>
                     <tr>
@@ -1638,7 +1729,7 @@
                         <td class="rel-col-label"><em>Herr</em></td>
                         <td class="rel-col-perspective">
                             
-                                Niklas Würfel → pe__dietrich_schmied_QGW_II_I_1070
+                                Niklas Würfel &rsaquo; pe__dietrich_schmied_QGW_II_I_1070
                             
                         </td>
                         <td class="rel-col-source">
@@ -1657,7 +1748,7 @@
                         <td class="rel-col-label"><em>richter</em></td>
                         <td class="rel-col-perspective">
                             
-                                Niklas Würfel → Wien
+                                Niklas Würfel &rsaquo; Wien
                             
                         </td>
                         <td class="rel-col-source">
@@ -1676,7 +1767,7 @@
                         <td class="rel-col-label"><em>richter</em></td>
                         <td class="rel-col-perspective">
                             
-                                Niklas Würfel → Wien
+                                Niklas Würfel &rsaquo; Wien
                             
                         </td>
                         <td class="rel-col-source">
@@ -1695,7 +1786,7 @@
                         <td class="rel-col-label"><em>statrichter</em></td>
                         <td class="rel-col-perspective">
                             
-                                Niklas Würfel → Wien
+                                Niklas Würfel &rsaquo; Wien
                             
                         </td>
                         <td class="rel-col-source">
@@ -1714,7 +1805,7 @@
                         <td class="rel-col-label"><em>statrichter</em></td>
                         <td class="rel-col-perspective">
                             
-                                Niklas Würfel → Wien
+                                Niklas Würfel &rsaquo; Wien
                             
                         </td>
                         <td class="rel-col-source">
@@ -1733,7 +1824,7 @@
                         <td class="rel-col-label"><em>richter</em></td>
                         <td class="rel-col-perspective">
                             
-                                Niklas Würfel → Wien
+                                Niklas Würfel &rsaquo; Wien
                             
                         </td>
                         <td class="rel-col-source">
@@ -1752,7 +1843,7 @@
                         <td class="rel-col-label"><em>purger</em></td>
                         <td class="rel-col-perspective">
                             
-                                Niklas Würfel → Wien
+                                Niklas Würfel &rsaquo; Wien
                             
                         </td>
                         <td class="rel-col-source">
@@ -1771,7 +1862,7 @@
                         <td class="rel-col-label"><em>purger</em></td>
                         <td class="rel-col-perspective">
                             
-                                Niklas Würfel → Wien
+                                Niklas Würfel &rsaquo; Wien
                             
                         </td>
                         <td class="rel-col-source">
@@ -1790,7 +1881,7 @@
                         <td class="rel-col-label"><em>richter</em></td>
                         <td class="rel-col-perspective">
                             
-                                Niklas Würfel → Wien
+                                Niklas Würfel &rsaquo; Wien
                             
                         </td>
                         <td class="rel-col-source">
@@ -1809,7 +1900,7 @@
                         <td class="rel-col-label"><em>Bürger</em></td>
                         <td class="rel-col-perspective">
                             
-                                Niklas Würfel → Wien
+                                Niklas Würfel &rsaquo; Wien
                             
                         </td>
                         <td class="rel-col-source">
@@ -1828,7 +1919,7 @@
                         <td class="rel-col-label"><em>purger</em></td>
                         <td class="rel-col-perspective">
                             
-                                Niklas Würfel → Wien
+                                Niklas Würfel &rsaquo; Wien
                             
                         </td>
                         <td class="rel-col-source">
@@ -1847,7 +1938,7 @@
                         <td class="rel-col-label"><em>purger</em></td>
                         <td class="rel-col-perspective">
                             
-                                Niklas Würfel → Wien
+                                Niklas Würfel &rsaquo; Wien
                             
                         </td>
                         <td class="rel-col-source">
@@ -1866,7 +1957,7 @@
                         <td class="rel-col-label"><em>purger</em></td>
                         <td class="rel-col-perspective">
                             
-                                Niklas Würfel → Wien
+                                Niklas Würfel &rsaquo; Wien
                             
                         </td>
                         <td class="rel-col-source">
@@ -1885,7 +1976,7 @@
                         <td class="rel-col-label"><em>Bürgermeisters</em></td>
                         <td class="rel-col-perspective">
                             
-                                Niklas Würfel → Wien
+                                Niklas Würfel &rsaquo; Wien
                             
                         </td>
                         <td class="rel-col-source">
@@ -1904,7 +1995,7 @@
                         <td class="rel-col-label"><em>Bürgermeisters</em></td>
                         <td class="rel-col-perspective">
                             
-                                Niklas Würfel → Wien
+                                Niklas Würfel &rsaquo; Wien
                             
                         </td>
                         <td class="rel-col-source">
@@ -1923,7 +2014,7 @@
                         <td class="rel-col-label"><em>rates</em></td>
                         <td class="rel-col-perspective">
                             
-                                Niklas Würfel → Wien
+                                Niklas Würfel &rsaquo; Wien
                             
                         </td>
                         <td class="rel-col-source">
@@ -1942,7 +2033,7 @@
                         <td class="rel-col-label"><em>purgermaister</em></td>
                         <td class="rel-col-perspective">
                             
-                                Niklas Würfel → Wien
+                                Niklas Würfel &rsaquo; Wien
                             
                         </td>
                         <td class="rel-col-source">
@@ -1961,7 +2052,7 @@
                         <td class="rel-col-label"><em>purgermaister</em></td>
                         <td class="rel-col-perspective">
                             
-                                Niklas Würfel → Wien
+                                Niklas Würfel &rsaquo; Wien
                             
                         </td>
                         <td class="rel-col-source">
@@ -1980,7 +2071,7 @@
                         <td class="rel-col-label"><em>Bürgermeisters</em></td>
                         <td class="rel-col-perspective">
                             
-                                Niklas Würfel → Wien
+                                Niklas Würfel &rsaquo; Wien
                             
                         </td>
                         <td class="rel-col-source">
@@ -1999,7 +2090,7 @@
                         <td class="rel-col-label"><em>Bürgermeisters</em></td>
                         <td class="rel-col-perspective">
                             
-                                Niklas Würfel → Wien
+                                Niklas Würfel &rsaquo; Wien
                             
                         </td>
                         <td class="rel-col-source">
@@ -2018,7 +2109,7 @@
                         <td class="rel-col-label"><em>Bürgermeisters</em></td>
                         <td class="rel-col-perspective">
                             
-                                Niklas Würfel → Wien
+                                Niklas Würfel &rsaquo; Wien
                             
                         </td>
                         <td class="rel-col-source">
@@ -2037,7 +2128,7 @@
                         <td class="rel-col-label"><em>Bürgermeisters</em></td>
                         <td class="rel-col-perspective">
                             
-                                Niklas Würfel → Wien
+                                Niklas Würfel &rsaquo; Wien
                             
                         </td>
                         <td class="rel-col-source">
@@ -2056,7 +2147,7 @@
                         <td class="rel-col-label"><em>Bürgermeisters</em></td>
                         <td class="rel-col-perspective">
                             
-                                Niklas Würfel → Wien
+                                Niklas Würfel &rsaquo; Wien
                             
                         </td>
                         <td class="rel-col-source">
@@ -2075,7 +2166,7 @@
                         <td class="rel-col-label"><em>purgermaister</em></td>
                         <td class="rel-col-perspective">
                             
-                                Niklas Würfel → Wien
+                                Niklas Würfel &rsaquo; Wien
                             
                         </td>
                         <td class="rel-col-source">
@@ -2094,7 +2185,7 @@
                         <td class="rel-col-label"><em>Bürgermeisters</em></td>
                         <td class="rel-col-perspective">
                             
-                                Niklas Würfel → Wien
+                                Niklas Würfel &rsaquo; Wien
                             
                         </td>
                         <td class="rel-col-source">
@@ -2113,7 +2204,7 @@
                         <td class="rel-col-label"><em>purgermaister</em></td>
                         <td class="rel-col-perspective">
                             
-                                Niklas Würfel → Wien
+                                Niklas Würfel &rsaquo; Wien
                             
                         </td>
                         <td class="rel-col-source">
@@ -2132,7 +2223,7 @@
                         <td class="rel-col-label"><em>Bürgermeisters</em></td>
                         <td class="rel-col-perspective">
                             
-                                Niklas Würfel → Wien
+                                Niklas Würfel &rsaquo; Wien
                             
                         </td>
                         <td class="rel-col-source">
@@ -2151,7 +2242,7 @@
                         <td class="rel-col-label"><em>purgermaister</em></td>
                         <td class="rel-col-perspective">
                             
-                                Niklas Würfel → Wien
+                                Niklas Würfel &rsaquo; Wien
                             
                         </td>
                         <td class="rel-col-source">
@@ -2170,7 +2261,7 @@
                         <td class="rel-col-label"><em>Bürgermeisters</em></td>
                         <td class="rel-col-perspective">
                             
-                                Niklas Würfel → Wien
+                                Niklas Würfel &rsaquo; Wien
                             
                         </td>
                         <td class="rel-col-source">
@@ -2189,7 +2280,7 @@
                         <td class="rel-col-label"><em>amptman</em></td>
                         <td class="rel-col-perspective">
                             
-                                Niklas Würfel → Augustinerchorherren Klosterneuburg
+                                Niklas Würfel &rsaquo; Augustinerchorherren Klosterneuburg
                             
                         </td>
                         <td class="rel-col-source">
@@ -2208,7 +2299,7 @@
                         <td class="rel-col-label"><em>amptman und pergmaister</em></td>
                         <td class="rel-col-perspective">
                             
-                                Niklas Würfel → Augustinerchorherren Klosterneuburg
+                                Niklas Würfel &rsaquo; Augustinerchorherren Klosterneuburg
                             
                         </td>
                         <td class="rel-col-source">
@@ -2227,7 +2318,7 @@
                         <td class="rel-col-label"><em>Wiener Bürger</em></td>
                         <td class="rel-col-perspective">
                             
-                                Niklas Würfel → Wien
+                                Niklas Würfel &rsaquo; Wien
                             
                         </td>
                         <td class="rel-col-source">
@@ -2246,7 +2337,7 @@
                         <td class="rel-col-label"><em>amptman</em></td>
                         <td class="rel-col-perspective">
                             
-                                Niklas Würfel → Augustinerchorherren Klosterneuburg
+                                Niklas Würfel &rsaquo; Augustinerchorherren Klosterneuburg
                             
                         </td>
                         <td class="rel-col-source">
@@ -2265,7 +2356,7 @@
                         <td class="rel-col-label"><em>amptman</em></td>
                         <td class="rel-col-perspective">
                             
-                                Niklas Würfel → Augustinerchorherren Klosterneuburg
+                                Niklas Würfel &rsaquo; Augustinerchorherren Klosterneuburg
                             
                         </td>
                         <td class="rel-col-source">
@@ -2284,7 +2375,7 @@
                         <td class="rel-col-label"><em>Wiener Bürger</em></td>
                         <td class="rel-col-perspective">
                             
-                                Niklas Würfel → Wien
+                                Niklas Würfel &rsaquo; Wien
                             
                         </td>
                         <td class="rel-col-source">
@@ -2303,7 +2394,7 @@
                         <td class="rel-col-label"><em>Wiener Bürger</em></td>
                         <td class="rel-col-perspective">
                             
-                                Niklas Würfel → Wien
+                                Niklas Würfel &rsaquo; Wien
                             
                         </td>
                         <td class="rel-col-source">
@@ -2322,7 +2413,7 @@
                         <td class="rel-col-label"><em>Getreuen</em></td>
                         <td class="rel-col-perspective">
                             
-                                Niklas Würfel → pe__leopold_iii_herzog_von_oesterreich_QGW_II_I_780
+                                Niklas Würfel &rsaquo; pe__leopold_iii_herzog_von_oesterreich_QGW_II_I_780
                             
                         </td>
                         <td class="rel-col-source">
@@ -2341,7 +2432,7 @@
                         <td class="rel-col-label"><em>Getreuer</em></td>
                         <td class="rel-col-perspective">
                             
-                                Niklas Würfel → pe__leopold_iii_herzog_von_oesterreich_QGW_II_I_780
+                                Niklas Würfel &rsaquo; pe__leopold_iii_herzog_von_oesterreich_QGW_II_I_780
                             
                         </td>
                         <td class="rel-col-source">
@@ -2359,18 +2450,32 @@
         
         
         
+        
+        
+        
+        
+        
+        
     </section>
     
 
     
     <section class="person-sources" aria-label="Quellen mit Nennung">
         <h2 class="section-head">Quellen mit Nennung</h2>
-        <table class="person-source-table">
+        
+        <div class="table-filter">
+            <input type="search" class="table-filter-input" data-target="src" placeholder="In den Quellen filtern&hellip;" aria-label="In den Quellen filtern">
+            <span class="table-filter-status"></span>
+        </div>
+        
+        <table class="person-source-table" data-truncate-at="50">
             <thead>
                 <tr>
                     <th scope="col" class="src-col-idno">Nr.</th>
                     <th scope="col" class="src-col-date">Datum</th>
                     <th scope="col" class="src-col-corpus">Quellenkorpus</th>
+                    <th scope="col" class="src-col-label">Bezeichnung</th>
+                    <th scope="col" class="src-col-role">Rolle</th>
                     <th scope="col" class="src-col-regest">Regest</th>
                 </tr>
             </thead>
@@ -2380,6 +2485,11 @@
                     <td class="src-col-idno"><a href="../../documents/QGW/Vienna_1177-1414_ready/371.html">371</a></td>
                     <td class="src-col-date">1351 II 28</td>
                     <td class="src-col-corpus">QGW II/1 (1177–1414)</td>
+                    <td class="src-col-label"><em>-</em></td>
+                    <td class="src-col-role">
+                        <span class="role-chip role-chip-issuer">Aussteller*in</span><span class="role-chip role-chip-witness">Zeuge / Siegler*in</span>
+                        
+                    </td>
                     <td class="src-col-regest">Niclas der Würfel, richter ze Wienne, beurkundet, dass vor ihm in der Bürgerschranne Jans der Snekkel mit Vorsprechen geklagt habe hinz Niclasen in dem Erich ze Wienne umb ein venster, das aus…</td>
                 </tr>
             
@@ -2387,6 +2497,11 @@
                     <td class="src-col-idno"><a href="../../documents/QGW/Vienna_1177-1414_ready/373.html">373</a></td>
                     <td class="src-col-date">1351 III 12</td>
                     <td class="src-col-corpus">QGW II/1 (1177–1414)</td>
+                    <td class="src-col-label"><em>-</em></td>
+                    <td class="src-col-role">
+                        <span class="role-chip role-chip-issuer">Aussteller*in</span><span class="role-chip role-chip-witness">Zeuge / Siegler*in</span>
+                        
+                    </td>
                     <td class="src-col-regest">Hainreich der Würfel, purger ze Wienne, Elspet, sein hausvrowe, und Niclas, sein sun, richter ze Wienne, Anna, sein hausvrow, und Hainreich der Würfel, des egenanten hern Hainreichs sun , verkaufen…</td>
                 </tr>
             
@@ -2394,6 +2509,11 @@
                     <td class="src-col-idno"><a href="../../documents/QGW/Vienna_1177-1414_ready/381.html">381</a></td>
                     <td class="src-col-date">1351 VI 20</td>
                     <td class="src-col-corpus">QGW II/1 (1177–1414)</td>
+                    <td class="src-col-label"><em>hern</em></td>
+                    <td class="src-col-role">
+                        <span class="role-chip role-chip-witness">Zeuge / Siegler*in</span>
+                        
+                    </td>
                     <td class="src-col-regest">Mörchel der Jude,sun Nachmans sun des Juden von Salzpurch, bestätigt verglichen habe, dass er sich mit hern Jacoben dem Pollen, chaplan der chapellen dacz hern Ottenheim in der purger Rathaus, wegen…</td>
                 </tr>
             
@@ -2401,6 +2521,11 @@
                     <td class="src-col-idno"><a href="../../documents/QGW/Vienna_1177-1414_ready/388.html">388</a></td>
                     <td class="src-col-date">1351 VII 11</td>
                     <td class="src-col-corpus">QGW II/1 (1177–1414)</td>
+                    <td class="src-col-label"><em>-</em></td>
+                    <td class="src-col-role">
+                        <span class="role-chip role-chip-issuer">Aussteller*in</span>
+                        
+                    </td>
                     <td class="src-col-regest">Niclas der Würffel, richter ze Wienne, spricht frei im Gerichte auf der Bürgerschranne Chunrat, den münzer an dem Hachenmarcht, von jeder Haftung für eine Schuld seines verstorbenen Bruders…</td>
                 </tr>
             
@@ -2408,6 +2533,11 @@
                     <td class="src-col-idno"><a href="../../documents/QGW/Vienna_1177-1414_ready/396.html">396</a></td>
                     <td class="src-col-date">1352 I 31</td>
                     <td class="src-col-corpus">QGW II/1 (1177–1414)</td>
+                    <td class="src-col-label"><em>-</em></td>
+                    <td class="src-col-role">
+                        <span class="role-chip role-chip-witness">Zeuge / Siegler*in</span>
+                        
+                    </td>
                     <td class="src-col-regest">Pertelme, der drechsel von Zelle, und Elspet, seine Hausfrau, beurkunden, dass sie von hern Perichtolten sun, hern Perichtolts sun des Pollen ze Wienne, und den drin chinden Dorothen swestern und…</td>
                 </tr>
             
@@ -2415,6 +2545,11 @@
                     <td class="src-col-idno"><a href="../../documents/QGW/Vienna_1177-1414_ready/416.html">416</a></td>
                     <td class="src-col-date">1352 IX 28</td>
                     <td class="src-col-corpus">QGW II/1 (1177–1414)</td>
+                    <td class="src-col-label"><em>-</em></td>
+                    <td class="src-col-role">
+                        <span class="role-chip role-chip-witness">Zeuge / Siegler*in</span>
+                        
+                    </td>
                     <td class="src-col-regest">Hainreich der Würffel gibt 12 sh. dn. gelts purchrechts, die er auf dem Weingarten, gelegen ze Engelschalchstorf, gehabt hat, der weiln gewesen ist Dietreichs, des pergmaister, der Schafferin sun,…</td>
                 </tr>
             
@@ -2422,6 +2557,11 @@
                     <td class="src-col-idno"><a href="../../documents/QGW/Vienna_1177-1414_ready/419.html">419</a></td>
                     <td class="src-col-date">1352 X 28</td>
                     <td class="src-col-corpus">QGW II/1 (1177–1414)</td>
+                    <td class="src-col-label"><em>her</em></td>
+                    <td class="src-col-role">
+                        <span class="role-chip role-chip-recipient">Empfänger*in</span>
+                        
+                    </td>
                     <td class="src-col-regest">Andre, schaffer des erbern hern Reinprechts von Walsse von Enns, beurkundet, dass vor ihm in offenem Gericht her Niclas der Würfel, purger ze Wienne, mit Vorsprechen auf Jacobs weingarten des…</td>
                 </tr>
             
@@ -2429,6 +2569,11 @@
                     <td class="src-col-idno"><a href="../../documents/QGW/Vienna_1177-1414_ready/425.html">425</a></td>
                     <td class="src-col-date">1353 I 25</td>
                     <td class="src-col-corpus">QGW II/1 (1177–1414)</td>
+                    <td class="src-col-label"><em>-</em></td>
+                    <td class="src-col-role">
+                        <span class="role-chip role-chip-witness">Zeuge / Siegler*in</span>
+                        
+                    </td>
                     <td class="src-col-regest">Diepolt der Sirveyer und Agnes, seine Hausfrau, verkaufen mit Handen ihres Burgherrn Jansen des Poemer acht Tagwerke Wiesen, gelegen ze Aichnowe, deu da haisset deu Richterinne, zenaehst Wolfgers des…</td>
                 </tr>
             
@@ -2436,6 +2581,11 @@
                     <td class="src-col-idno"><a href="../../documents/QGW/Vienna_1177-1414_ready/441.html">441</a></td>
                     <td class="src-col-date">1353 VII 11</td>
                     <td class="src-col-corpus">QGW II/1 (1177–1414)</td>
+                    <td class="src-col-label"><em>hern</em></td>
+                    <td class="src-col-role">
+                        <span class="role-chip role-chip-recipient">Empfänger*in</span>
+                        
+                    </td>
                     <td class="src-col-regest">Philipp der Chrannest und Elsbet, seine Hausfrau, verkaufen aus ihrem rechten Burgrechte drei Tagwerke Wiesen, gelegen ze Gundramstorf an dem Praitenfurt zenachst hern Wolfgangs wisen von Winden, von…</td>
                 </tr>
             
@@ -2443,6 +2593,11 @@
                     <td class="src-col-idno"><a href="../../documents/QGW/Vienna_1177-1414_ready/445.html">445</a></td>
                     <td class="src-col-date">1353 XII 06</td>
                     <td class="src-col-corpus">QGW II/1 (1177–1414)</td>
+                    <td class="src-col-label"><em>-</em></td>
+                    <td class="src-col-role">
+                        <span class="role-chip role-chip-recipient">Empfänger*in</span>
+                        
+                    </td>
                     <td class="src-col-regest">Graf Fridreich von Schaunberch vettern und graf Ulreich, paide vettern von Schaunberch, bestätigen, dass sie alles Gut, das Niclas der Würfel, purger ze Wienne, und seine Hausfrau Anna von ihnen zu…</td>
                 </tr>
             
@@ -2450,6 +2605,11 @@
                     <td class="src-col-idno"><a href="../../documents/QGW/Vienna_1177-1414_ready/453.html">453</a></td>
                     <td class="src-col-date">1354 IV 30</td>
                     <td class="src-col-corpus">QGW II/1 (1177–1414)</td>
+                    <td class="src-col-label"><em>-</em></td>
+                    <td class="src-col-role">
+                        <span class="role-chip role-chip-issuer">Aussteller*in</span><span class="role-chip role-chip-witness">Zeuge / Siegler*in</span>
+                        
+                    </td>
                     <td class="src-col-regest">Nichlas der Würfel, richter ze Wienne, beurkundet, dass vor ihm in der Bürgerschranne Fridreich, diener hern Jacobs diener des Pollen, chapplan der Chappellen Unser Vrown in der purger Rathaus ze…</td>
                 </tr>
             
@@ -2457,6 +2617,11 @@
                     <td class="src-col-idno"><a href="../../documents/QGW/Vienna_1177-1414_ready/474.html">474</a></td>
                     <td class="src-col-date">1355 XII 23</td>
                     <td class="src-col-corpus">QGW II/1 (1177–1414)</td>
+                    <td class="src-col-label"><em>hern</em></td>
+                    <td class="src-col-role">
+                        <span class="role-chip role-chip-witness">Zeuge / Siegler*in</span>
+                        
+                    </td>
                     <td class="src-col-regest">Walchuen von Werich, der geistleichen herren amptman von Paeuern, beurkundet, dass vor ihm in offenem Gerichte her Haunolt der Schu/echler, purger ze Wienn, mit Vorsprechen auf Simons weingarten des…</td>
                 </tr>
             
@@ -2464,6 +2629,11 @@
                     <td class="src-col-idno"><a href="../../documents/QGW/Vienna_1177-1414_ready/538.html">538</a></td>
                     <td class="src-col-date">1360 I 04</td>
                     <td class="src-col-corpus">QGW II/1 (1177–1414)</td>
+                    <td class="src-col-label"><em>-</em></td>
+                    <td class="src-col-role">
+                        <span class="role-chip role-chip-recipient">Empfänger*in</span>
+                        
+                    </td>
                     <td class="src-col-regest">Heinreich der Schaffer und Elspet, seine Hausfrau, bestätigen, dass ihre halbe Hofstatt, gelegen ze Gumpendorf zenäst Ulreichs haus des Werbarten, von der man den gestlichen vrowen dacz Sand Pernhart…</td>
                 </tr>
             
@@ -2471,6 +2641,11 @@
                     <td class="src-col-idno"><a href="../../documents/QGW/Vienna_1177-1414_ready/551.html">551</a></td>
                     <td class="src-col-date">1360 VII 08</td>
                     <td class="src-col-corpus">QGW II/1 (1177–1414)</td>
+                    <td class="src-col-label"><em>-</em></td>
+                    <td class="src-col-role">
+                        <span class="role-chip role-chip-recipient">Empfänger*in</span><span class="role-chip role-chip-witness">Zeuge / Siegler*in</span>
+                        
+                    </td>
                     <td class="src-col-regest">Jans der Engelprecht und Kathrei, seine Hausfrau, bestätigen purchrechts abgelöst habe, dass Niklas der Würfel 1 lb dn. gelts purchrechts, das Jans gehabt hat auf dem Hause, gelegen an dem…</td>
                 </tr>
             
@@ -2478,6 +2653,11 @@
                     <td class="src-col-idno"><a href="../../documents/QGW/Vienna_1177-1414_ready/558.html">558</a></td>
                     <td class="src-col-date">1360 VIII 30</td>
                     <td class="src-col-corpus">QGW II/1 (1177–1414)</td>
+                    <td class="src-col-label"><em>her</em></td>
+                    <td class="src-col-role">
+                        <span class="role-chip role-chip-other">Sonstige</span><span class="role-chip role-chip-recipient">Empfänger*in</span>
+                        
+                    </td>
                     <td class="src-col-regest">Seifrid der Rechnitzer von Gumpendorf, amptman hern Niclas des Würfels, beurkundet, dass vor ihm in offenem Gerichte sein Herr her Niclas der Würfel mit Vorsprechenauf der herren äkcher von…</td>
                 </tr>
             
@@ -2485,6 +2665,11 @@
                     <td class="src-col-idno"><a href="../../documents/QGW/Vienna_1177-1414_ready/559.html">559</a></td>
                     <td class="src-col-date">1360 IX 01</td>
                     <td class="src-col-corpus">QGW II/1 (1177–1414)</td>
+                    <td class="src-col-label"><em>-</em></td>
+                    <td class="src-col-role">
+                        <span class="role-chip role-chip-issuer">Aussteller*in</span><span class="role-chip role-chip-witness">Zeuge / Siegler*in</span>
+                        
+                    </td>
                     <td class="src-col-regest">Niclas der Würfel und Margret, seine Hausfrau, gestatten mit gesammter Hand dem Otten von Hof, die zwei Fenster, die aus ihrem kleinen Stüblein in den Hof des Hauses, das do haisst in dem Tu/ern,…</td>
                 </tr>
             
@@ -2492,6 +2677,11 @@
                     <td class="src-col-idno"><a href="../../documents/QGW/Vienna_1177-1414_ready/560.html">560</a></td>
                     <td class="src-col-date">1360 IX 04</td>
                     <td class="src-col-corpus">QGW II/1 (1177–1414)</td>
+                    <td class="src-col-label"><em>-</em></td>
+                    <td class="src-col-role">
+                        <span class="role-chip role-chip-recipient">Empfänger*in</span>
+                        
+                    </td>
                     <td class="src-col-regest">Cholman, abt des chlosters dacz dem Heiligen Chreutz, und der convent gemain daselbs geben nach dem Gebote Herzog Rudolfs IV. Niclasen dem Würfel, purger ze Wienne, 80 dn. gelts purchrechts von…</td>
                 </tr>
             
@@ -2499,6 +2689,11 @@
                     <td class="src-col-idno"><a href="../../documents/QGW/Vienna_1177-1414_ready/594.html">594</a></td>
                     <td class="src-col-date">1362 I 20</td>
                     <td class="src-col-corpus">QGW II/1 (1177–1414)</td>
+                    <td class="src-col-label"><em>hern</em></td>
+                    <td class="src-col-role">
+                        <span class="role-chip role-chip-recipient">Empfänger*in</span>
+                        
+                    </td>
                     <td class="src-col-regest">Swester Gedraut die Setzerinne von Paz/zz/zawe, abtessinne in sand Niclas chloster vor Stubentor ze Wienne, und der convent gemain daselbs geben nach dem Gebote Herzog Rudolfs IV. hern Niclasen dem…</td>
                 </tr>
             
@@ -2506,6 +2701,11 @@
                     <td class="src-col-idno"><a href="../../documents/QGW/Vienna_1177-1414_ready/616.html">616</a></td>
                     <td class="src-col-date">1363 IX 26</td>
                     <td class="src-col-corpus">QGW II/1 (1177–1414)</td>
+                    <td class="src-col-label"><em>hern</em></td>
+                    <td class="src-col-role">
+                        <span class="role-chip role-chip-recipient">Empfänger*in</span>
+                        
+                    </td>
                     <td class="src-col-regest">Swester Christein die Prunnerinne, priorin, und der convent gemain der geistleichen vrown dacz sand Larenzen ze Wienne geben nach dem Gebote Herzog Rudolfs IV. hern Niclasen dem Würfel 2 lb dn.…</td>
                 </tr>
             
@@ -2513,6 +2713,11 @@
                     <td class="src-col-idno"><a href="../../documents/QGW/Vienna_1177-1414_ready/639.html">639</a></td>
                     <td class="src-col-date">1364 XII 23</td>
                     <td class="src-col-corpus">QGW II/1 (1177–1414)</td>
+                    <td class="src-col-label"><em>-</em></td>
+                    <td class="src-col-role">
+                        <span class="role-chip role-chip-recipient">Empfänger*in</span>
+                        
+                    </td>
                     <td class="src-col-regest">Swester Chunigund von Ratpach, abtessinne, und der convent gemain der gestleichen vrowen chloster dacz sand Chlarn ze Wienne geben nach dem Gebote Herzog Rudolfs IV. Nichlasen dem Würfel und seiner…</td>
                 </tr>
             
@@ -2520,6 +2725,11 @@
                     <td class="src-col-idno"><a href="../../documents/QGW/Vienna_1177-1414_ready/640.html">640</a></td>
                     <td class="src-col-date">1365 I 13</td>
                     <td class="src-col-corpus">QGW II/1 (1177–1414)</td>
+                    <td class="src-col-label"><em>-</em></td>
+                    <td class="src-col-role">
+                        <span class="role-chip role-chip-recipient">Empfänger*in</span>
+                        
+                    </td>
                     <td class="src-col-regest">Pruder Nichlas von Wildungsmauer, maister des hauses ze Meurperg und comiteuer des hauses dacz sande Johanns in der Chernerstrasse ze Wienne , gibt nach dem Gebote Herzog Rudolfs IV. Nichlasen dem…</td>
                 </tr>
             
@@ -2527,6 +2737,11 @@
                     <td class="src-col-idno"><a href="../../documents/QGW/Vienna_1177-1414_ready/723.html">723</a></td>
                     <td class="src-col-date">1368 III 20</td>
                     <td class="src-col-corpus">QGW II/1 (1177–1414)</td>
+                    <td class="src-col-label"><em>hern</em></td>
+                    <td class="src-col-role">
+                        <span class="role-chip role-chip-other">Sonstige</span>
+                        
+                    </td>
                     <td class="src-col-regest">Kathrei,wittib Chu/onrats wittib des Chnophs, des fuetrer, verkauft mit Handen des Bürgermeisters hern Nichlas des Würfels und des rates gemain der stat ze Wienn 1 lb dn. gelts purchrechts (ablösbar)…</td>
                 </tr>
             
@@ -2534,6 +2749,11 @@
                     <td class="src-col-idno"><a href="../../documents/QGW/Vienna_1177-1414_ready/724.html">724</a></td>
                     <td class="src-col-date">1368 III 29</td>
                     <td class="src-col-corpus">QGW II/1 (1177–1414)</td>
+                    <td class="src-col-label"><em>hern</em></td>
+                    <td class="src-col-role">
+                        <span class="role-chip role-chip-other">Sonstige</span>
+                        
+                    </td>
                     <td class="src-col-regest">Chunrat der Schenttenmarcht, der fleischhakcher, und Margret, seine Hausfrau, verkaufen mit Handen hern Nichlas des Würfels, Bürgermeisters, und des rates gemain der stat ze Wienn ihre Fleischbank,…</td>
                 </tr>
             
@@ -2541,6 +2761,11 @@
                     <td class="src-col-idno"><a href="../../documents/QGW/Vienna_1177-1414_ready/730.html">730</a></td>
                     <td class="src-col-date">1368 VI 23</td>
                     <td class="src-col-corpus">QGW II/1 (1177–1414)</td>
+                    <td class="src-col-label"><em>hern</em></td>
+                    <td class="src-col-role">
+                        <span class="role-chip role-chip-recipient">Empfänger*in</span>
+                        
+                    </td>
                     <td class="src-col-regest">Hainreich der Würfel beurkundet, dass er mit seinem Bruder hern Niclasen dem Würfel, purgermaister ze Wienn, die ihnen von ihren Eltern Eltern hern Hainreichen dem Würfel und Eltern Eltern vrowen…</td>
                 </tr>
             
@@ -2548,6 +2773,11 @@
                     <td class="src-col-idno"><a href="../../documents/QGW/Vienna_1177-1414_ready/731.html">731</a></td>
                     <td class="src-col-date">1368 VI 23</td>
                     <td class="src-col-corpus">QGW II/1 (1177–1414)</td>
+                    <td class="src-col-label"><em>-</em></td>
+                    <td class="src-col-role">
+                        <span class="role-chip role-chip-issuer">Aussteller*in</span>
+                        
+                    </td>
                     <td class="src-col-regest">Nichlas der Würfel, purgermaister, und der rat gemain der stat ze Wienn, beurkunden Klage, dass vor ihnen junchvrowe Wendelmut,tochter Hainreichs tochter des Pluemen, des sneider, aus tochterseiner…</td>
                 </tr>
             
@@ -2555,6 +2785,11 @@
                     <td class="src-col-idno"><a href="../../documents/QGW/Vienna_1177-1414_ready/734.html">734 (= Privil. Nr. 16)</a></td>
                     <td class="src-col-date">1368 VIII 07</td>
                     <td class="src-col-corpus">QGW II/1 (1177–1414)</td>
+                    <td class="src-col-label"><em>-</em></td>
+                    <td class="src-col-role">
+                        
+                        -
+                    </td>
                     <td class="src-col-regest">Herzog Albrecht III. und Leopold ordnen auf die ihnen vorgebrachten Klagen des Bürgermeisters Niklas des Würfel und des Rathes der Stadt zu Wien an, dass die Zahl der Fütterer fortan nicht mehr als…</td>
                 </tr>
             
@@ -2562,6 +2797,11 @@
                     <td class="src-col-idno"><a href="../../documents/QGW/Vienna_1177-1414_ready/735.html">735</a></td>
                     <td class="src-col-date">1368 VIII 09</td>
                     <td class="src-col-corpus">QGW II/1 (1177–1414)</td>
+                    <td class="src-col-label"><em>hern</em></td>
+                    <td class="src-col-role">
+                        <span class="role-chip role-chip-other">Sonstige</span>
+                        
+                    </td>
                     <td class="src-col-regest">Leupolt von Asparn, schaffer der geistleichen vrowen dacz sand Nichlas ze Wienn, und Katrei, seine Hausfrau, verkaufen mit Handen des Bürgermeisters hern Niclas des Würfels und des rates gemain der…</td>
                 </tr>
             
@@ -2569,6 +2809,11 @@
                     <td class="src-col-idno"><a href="../../documents/QGW/Vienna_1177-1414_ready/739.html">739</a></td>
                     <td class="src-col-date">1368 XI 01</td>
                     <td class="src-col-corpus">QGW II/1 (1177–1414)</td>
+                    <td class="src-col-label"><em>hern</em></td>
+                    <td class="src-col-role">
+                        <span class="role-chip role-chip-other">Sonstige</span>
+                        
+                    </td>
                     <td class="src-col-regest">Nichlas von Ödenburch, purger ze Wienn, und Katrei, seine Hausfrau, verkaufen mit Handen des Bürgermeisters hern Niclas des Würfels und des rates der stat ze Wienn ihre Fleischbank, die dem Niklas…</td>
                 </tr>
             
@@ -2576,6 +2821,11 @@
                     <td class="src-col-idno"><a href="../../documents/QGW/Vienna_1177-1414_ready/756.html">756</a></td>
                     <td class="src-col-date">1369 VII 11</td>
                     <td class="src-col-corpus">QGW II/1 (1177–1414)</td>
+                    <td class="src-col-label"><em>hern</em></td>
+                    <td class="src-col-role">
+                        <span class="role-chip role-chip-other">Sonstige</span>
+                        
+                    </td>
                     <td class="src-col-regest">Swester Ann die Sparerinn, priorinne, und der convent gemain der geistlichen vrown ze Tuln Prediger ordens, Jans gepruder und Herwort, gepruder auf der Sauln , verkaufen mit Handen des Bürgermeisters…</td>
                 </tr>
             
@@ -2583,6 +2833,11 @@
                     <td class="src-col-idno"><a href="../../documents/QGW/Vienna_1177-1414_ready/758.html">758</a></td>
                     <td class="src-col-date">1369 VII 17</td>
                     <td class="src-col-corpus">QGW II/1 (1177–1414)</td>
+                    <td class="src-col-label"><em>hern</em></td>
+                    <td class="src-col-role">
+                        <span class="role-chip role-chip-other">Sonstige</span>
+                        
+                    </td>
                     <td class="src-col-regest">Angnes, witibe Leupolts witibe des Velmund, verkauft mit Handen des Bürgermeisters hern Niclas des Würfels und des rats gemain der stat ze Wienn ihre Fleischbank, gelegen under den neun…</td>
                 </tr>
             
@@ -2590,6 +2845,11 @@
                     <td class="src-col-idno"><a href="../../documents/QGW/Vienna_1177-1414_ready/760.html">760</a></td>
                     <td class="src-col-date">1369 VII 28</td>
                     <td class="src-col-corpus">QGW II/1 (1177–1414)</td>
+                    <td class="src-col-label"><em>-</em></td>
+                    <td class="src-col-role">
+                        <span class="role-chip role-chip-issuer">Aussteller*in</span>
+                        
+                    </td>
                     <td class="src-col-regest">Nichlas der Würfel, purgermaister, und der rate gemain der stat ze Wienne sprechen nach dem Gebote Herzog Rudolfs IV., da her Antoni, chapellan des alters sand Katrein auf der porchirchen dacz Unser…</td>
                 </tr>
             
@@ -2597,6 +2857,11 @@
                     <td class="src-col-idno"><a href="../../documents/QGW/Vienna_1177-1414_ready/763.html">763 (=Privil.Nr. 18)</a></td>
                     <td class="src-col-date">1369 IX 29</td>
                     <td class="src-col-corpus">QGW II/1 (1177–1414)</td>
+                    <td class="src-col-label"><em>-</em></td>
+                    <td class="src-col-role">
+                        
+                        -
+                    </td>
                     <td class="src-col-regest">Herzog Albrecht III. bestätigt Verbot über Bitten des Bürgermeisters Niclas des Würffels und des Rathes der Stadt zu Wien das von seinem Vater erlassene Verbot der Einfuhr und des Ausschankes von…</td>
                 </tr>
             
@@ -2604,6 +2869,11 @@
                     <td class="src-col-idno"><a href="../../documents/QGW/Vienna_1177-1414_ready/765.html">765</a></td>
                     <td class="src-col-date">1369 X 09</td>
                     <td class="src-col-corpus">QGW II/1 (1177–1414)</td>
+                    <td class="src-col-label"><em>hern</em></td>
+                    <td class="src-col-role">
+                        <span class="role-chip role-chip-witness">Zeuge / Siegler*in</span>
+                        
+                    </td>
                     <td class="src-col-regest">Jacob der Poll, capellan der capellen Unserr Vrowen in der purger Rathaus ze Wienne, hern Ottenhaimen seligen stiftunge , beurkundet die über sein fahrendes Gut getroffenen letztwilligen Verfügungen.…</td>
                 </tr>
             
@@ -2611,6 +2881,11 @@
                     <td class="src-col-idno"><a href="../../documents/QGW/Vienna_1177-1414_ready/768.html">768</a></td>
                     <td class="src-col-date">1370 I 24</td>
                     <td class="src-col-corpus">QGW II/1 (1177–1414)</td>
+                    <td class="src-col-label"><em>hern</em></td>
+                    <td class="src-col-role">
+                        <span class="role-chip role-chip-other">Sonstige</span>
+                        
+                    </td>
                     <td class="src-col-regest">Stephan der Naezeuger, purger ze Wienne, bestätigt, seiner Hausfrau Lucein 200 lb dn. zu rechter Morgengabe versprochen zu haben, und gibt ihr dafür mit Handen des Bürgermeisters hern Niclas des…</td>
                 </tr>
             
@@ -2618,6 +2893,11 @@
                     <td class="src-col-idno"><a href="../../documents/QGW/Vienna_1177-1414_ready/773.html">773</a></td>
                     <td class="src-col-date">1370 IV 25</td>
                     <td class="src-col-corpus">QGW II/1 (1177–1414)</td>
+                    <td class="src-col-label"><em>-</em></td>
+                    <td class="src-col-role">
+                        <span class="role-chip role-chip-issuer">Aussteller*in</span><span class="role-chip role-chip-witness">Zeuge / Siegler*in</span>
+                        
+                    </td>
                     <td class="src-col-regest">Nichlas der Würffel, purgermaister ze Wienne, Thoman der Swembel des rats der stat ze Wienne, Nichlas der Stainer des rats der stat ze Wienne und Chunrat der Slecht, alle des des rats der stat ze…</td>
                 </tr>
             
@@ -2625,6 +2905,11 @@
                     <td class="src-col-idno"><a href="../../documents/QGW/Vienna_1177-1414_ready/774.html">774</a></td>
                     <td class="src-col-date">1370 V 16</td>
                     <td class="src-col-corpus">QGW II/1 (1177–1414)</td>
+                    <td class="src-col-label"><em>hern</em></td>
+                    <td class="src-col-role">
+                        <span class="role-chip role-chip-other">Sonstige</span>
+                        
+                    </td>
                     <td class="src-col-regest">Pruder Hainreich von Retz, prior der geistleichen herren chloster dacz den Predigern ze Wienne, und der convent gemain daselb verkaufen mit Handen des Bürgermeisters hern Niclas des Würfels und des…</td>
                 </tr>
             
@@ -2632,6 +2917,11 @@
                     <td class="src-col-idno"><a href="../../documents/QGW/Vienna_1177-1414_ready/789.html">789</a></td>
                     <td class="src-col-date">1371 IV 13</td>
                     <td class="src-col-corpus">QGW II/1 (1177–1414)</td>
+                    <td class="src-col-label"><em>hern</em></td>
+                    <td class="src-col-role">
+                        <span class="role-chip role-chip-recipient">Empfänger*in</span>
+                        
+                    </td>
                     <td class="src-col-regest">Gedraut witib, Jannsen witib von Segenberch, verkauft aus ehafter, vor dem Rathe bewiesener Noth wegen der von ihrem Manne hinterlassenen Schulden 4 lb 64 dn. gelts gruntrechts um 32 lb dn. hern…</td>
                 </tr>
             
@@ -2639,6 +2929,11 @@
                     <td class="src-col-idno"><a href="../../documents/QGW/Vienna_1177-1414_ready/791.html">791</a></td>
                     <td class="src-col-date">1371 V 15</td>
                     <td class="src-col-corpus">QGW II/1 (1177–1414)</td>
+                    <td class="src-col-label"><em>-</em></td>
+                    <td class="src-col-role">
+                        <span class="role-chip role-chip-issuer">Aussteller*in</span><span class="role-chip role-chip-witness">Zeuge / Siegler*in</span>
+                        
+                    </td>
                     <td class="src-col-regest">Niclas der Würfel, amptman des chlosters ze Neunburch, beurkundet, dass vor ihm in offenem Gerichte der Ritter her Jans pei den Minnerprudern ze Wienn mit Vorsprechen anstatt des Ritters hern…</td>
                 </tr>
             
@@ -2646,6 +2941,11 @@
                     <td class="src-col-idno"><a href="../../documents/QGW/Vienna_1177-1414_ready/799.html">799</a></td>
                     <td class="src-col-date">1371 X 27</td>
                     <td class="src-col-corpus">QGW II/1 (1177–1414)</td>
+                    <td class="src-col-label"><em>-</em></td>
+                    <td class="src-col-role">
+                        <span class="role-chip role-chip-issuer">Aussteller*in</span><span class="role-chip role-chip-witness">Zeuge / Siegler*in</span>
+                        
+                    </td>
                     <td class="src-col-regest">Niclas der Würfel, amptman und pergmaister des chlosters ze Neunburch , beurkundet, dass vor ihm in offenem Gerichte Jacob der Phister anstatt der geistleichen vrowen von Tuln, Predigerordens ,…</td>
                 </tr>
             
@@ -2653,6 +2953,11 @@
                     <td class="src-col-idno"><a href="../../documents/QGW/Vienna_1177-1414_ready/826.html">826</a></td>
                     <td class="src-col-date">1373 IV 29</td>
                     <td class="src-col-corpus">QGW II/1 (1177–1414)</td>
+                    <td class="src-col-label"><em>-</em></td>
+                    <td class="src-col-role">
+                        <span class="role-chip role-chip-recipient">Empfänger*in</span>
+                        
+                    </td>
                     <td class="src-col-regest">Graf Hainreich von Schownberg bestätigt, dass der Wiener Bürger Niclas der Würfel alles Gut, das er als Schaumbergisches Lehen ze Aedleinstorf in dem dorfe innehat, alles Gutseinem und seiner…</td>
                 </tr>
             
@@ -2660,6 +2965,11 @@
                     <td class="src-col-idno"><a href="../../documents/QGW/Vienna_1177-1414_ready/833.html">833</a></td>
                     <td class="src-col-date">1373 IX 07</td>
                     <td class="src-col-corpus">QGW II/1 (1177–1414)</td>
+                    <td class="src-col-label"><em>-</em></td>
+                    <td class="src-col-role">
+                        
+                        -
+                    </td>
                     <td class="src-col-regest">Michel der Vierdung, statrichter ze Wienn, beurkundet, dass vor ihm in offenem Gerichte in der Bürgerschranne Chunrad Pernger, dienerhern Niclas diener des Würfels, an seines Herrn Statt mit…</td>
                 </tr>
             
@@ -2667,6 +2977,11 @@
                     <td class="src-col-idno"><a href="../../documents/QGW/Vienna_1177-1414_ready/836.html">836</a></td>
                     <td class="src-col-date">1373 XI 19</td>
                     <td class="src-col-corpus">QGW II/1 (1177–1414)</td>
+                    <td class="src-col-label"><em>Grundherrn|hern</em></td>
+                    <td class="src-col-role">
+                        <span class="role-chip role-chip-other">Sonstige</span><span class="role-chip role-chip-witness">Zeuge / Siegler*in</span>
+                        
+                    </td>
                     <td class="src-col-regest">Christan, der plattner, und Anna, seine Hausfrau , verkaufen mit Handen ihres Grundherrn hern Niclas des Würffels, amptman des chlosters ze Neunburch, ein wis, gelegen ze Ottakchring, der anderthalb…</td>
                 </tr>
             
@@ -2674,6 +2989,11 @@
                     <td class="src-col-idno"><a href="../../documents/QGW/Vienna_1177-1414_ready/841.html">841</a></td>
                     <td class="src-col-date">1374 IX 26</td>
                     <td class="src-col-corpus">QGW II/1 (1177–1414)</td>
+                    <td class="src-col-label"><em>Bergmeisters|hern</em></td>
+                    <td class="src-col-role">
+                        <span class="role-chip role-chip-other">Sonstige</span><span class="role-chip role-chip-witness">Zeuge / Siegler*in</span>
+                        
+                    </td>
                     <td class="src-col-regest">Ulreich der Ru/ed und Agnes, seine Hausfrau , theilen mit gesammter Hand und mit Handen des Bergmeisters hern Niclas des Würfels, amptman des chlosters ze Neuenburch, mit frownChristein, Michels des…</td>
                 </tr>
             
@@ -2681,6 +3001,11 @@
                     <td class="src-col-idno"><a href="../../documents/QGW/Vienna_1177-1414_ready/874.html">874</a></td>
                     <td class="src-col-date">1376 II 07</td>
                     <td class="src-col-corpus">QGW II/1 (1177–1414)</td>
+                    <td class="src-col-label"><em>hern</em></td>
+                    <td class="src-col-role">
+                        <span class="role-chip role-chip-witness">Zeuge / Siegler*in</span>
+                        
+                    </td>
                     <td class="src-col-regest">Thoman der Rdler, chirichmaister dacz Allerheiligen tu/omchirchen dacz sand Stephan ze Wienne , und Chunigund, sein hausvrow , verkaufen mit Handen des Bürgermeisters hern Jansen an dem Chienmarkcht…</td>
                 </tr>
             
@@ -2688,6 +3013,11 @@
                     <td class="src-col-idno"><a href="../../documents/QGW/Vienna_1177-1414_ready/878.html">878</a></td>
                     <td class="src-col-date">1376 IV 24</td>
                     <td class="src-col-corpus">QGW II/1 (1177–1414)</td>
+                    <td class="src-col-label"><em>-</em></td>
+                    <td class="src-col-role">
+                        <span class="role-chip role-chip-recipient">Empfänger*in</span>
+                        
+                    </td>
                     <td class="src-col-regest">Peter der Popphinger setzt als Erben ein für den Fall, als er ohne Erben stürbe oder seine Erben vor Erlangung der Mündigkeit mit Tod abgiengen, seinen Oheim Niclas den Würfel zum Erben seines…</td>
                 </tr>
             
@@ -2695,6 +3025,11 @@
                     <td class="src-col-idno"><a href="../../documents/QGW/Vienna_1177-1414_ready/881.html">881</a></td>
                     <td class="src-col-date">1376 VI 21</td>
                     <td class="src-col-corpus">QGW II/1 (1177–1414)</td>
+                    <td class="src-col-label"><em>hern</em></td>
+                    <td class="src-col-role">
+                        <span class="role-chip role-chip-recipient">Empfänger*in</span>
+                        
+                    </td>
                     <td class="src-col-regest">Herman der Schiek purger ze Wels und Katrei, seine Hausfrau, Janns der Reichlinger, paid purger ze Wels, und Katrei, seine Hausfrau, stellen einen Schuldbrief dem Wiener Bürger hern Niclasen dem…</td>
                 </tr>
             
@@ -2702,6 +3037,11 @@
                     <td class="src-col-idno"><a href="../../documents/QGW/Vienna_1177-1414_ready/909.html">909</a></td>
                     <td class="src-col-date">1377 VII 03</td>
                     <td class="src-col-corpus">QGW II/1 (1177–1414)</td>
+                    <td class="src-col-label"><em>-</em></td>
+                    <td class="src-col-role">
+                        <span class="role-chip role-chip-recipient">Empfänger*in</span>
+                        
+                    </td>
                     <td class="src-col-regest">Herzog Leopold III. genehmigt das von seinem Getreuen Niclas dem Würfel, dem eltern, beurkundete gescheft.</td>
                 </tr>
             
@@ -2709,6 +3049,11 @@
                     <td class="src-col-idno"><a href="../../documents/QGW/Vienna_1177-1414_ready/919.html">919</a></td>
                     <td class="src-col-date">1377 XI 24</td>
                     <td class="src-col-corpus">QGW II/1 (1177–1414)</td>
+                    <td class="src-col-label"><em>Ritter|hern</em></td>
+                    <td class="src-col-role">
+                        <span class="role-chip role-chip-recipient">Empfänger*in</span>
+                        
+                    </td>
                     <td class="src-col-regest">Peter der Popphinger verkauft mit Handen seines Grundherrn des Propstes Cholmann des goczhauses Unser Vraun ze Neunburkch 40 lb dn. geltes purchrechts auf folgenden Gütern: a) auf seinem Hofe,…</td>
                 </tr>
             
@@ -2716,6 +3061,11 @@
                     <td class="src-col-idno"><a href="../../documents/QGW/Vienna_1177-1414_ready/920.html">920</a></td>
                     <td class="src-col-date">1377 XI 29</td>
                     <td class="src-col-corpus">QGW II/1 (1177–1414)</td>
+                    <td class="src-col-label"><em>Ritter|hern</em></td>
+                    <td class="src-col-role">
+                        <span class="role-chip role-chip-recipient">Empfänger*in</span>
+                        
+                    </td>
                     <td class="src-col-regest">Haiman von Gerolczdorf Gerhab Gerhab Gerhab verkauft als Gerhab der unmündigen Töchter seines Oheims Hanns von Haselau, Tochter Katrei, Tochter Urseln und Tochter Annen, aus ehafter vor dem Herzoge…</td>
                 </tr>
             
@@ -2723,6 +3073,11 @@
                     <td class="src-col-idno"><a href="../../documents/QGW/Vienna_1177-1414_ready/926.html">926</a></td>
                     <td class="src-col-date">1378 II 05</td>
                     <td class="src-col-corpus">QGW II/1 (1177–1414)</td>
+                    <td class="src-col-label"><em>Ritters|hern</em></td>
+                    <td class="src-col-role">
+                        <span class="role-chip role-chip-witness">Zeuge / Siegler*in</span>
+                        
+                    </td>
                     <td class="src-col-regest">Pu/erkchart su/en, Chu/enrats su/en des Kamrer, dem got genad für, bei vrowen Elsbeten, seiner Witwe hausvrowen, die nu/e Micheln den Fu/echslein êlichen genomen hat , verkauft mit Handen des…</td>
                 </tr>
             
@@ -2730,6 +3085,11 @@
                     <td class="src-col-idno"><a href="../../documents/QGW/Vienna_1177-1414_ready/935.html">935</a></td>
                     <td class="src-col-date">1378 IV 23</td>
                     <td class="src-col-corpus">QGW II/1 (1177–1414)</td>
+                    <td class="src-col-label"><em>-</em></td>
+                    <td class="src-col-role">
+                        <span class="role-chip role-chip-recipient">Empfänger*in</span>
+                        
+                    </td>
                     <td class="src-col-regest">Herzog Leopold III. gelobt, seine Getreuen Peter von Torberg, seinen Hofmeister , Getreuer Hans von Traun, Getreuer Leupolt, pharrer ze Medlik , Getreuer Hans Kneuz/zz/zer, Getreuer Niclas Würffel,…</td>
                 </tr>
             
@@ -2737,6 +3097,11 @@
                     <td class="src-col-idno"><a href="../../documents/QGW/Vienna_1177-1414_ready/949.html">949</a></td>
                     <td class="src-col-date">1378 X 02</td>
                     <td class="src-col-corpus">QGW II/1 (1177–1414)</td>
+                    <td class="src-col-label"><em>Grundherr|Ritter|her</em></td>
+                    <td class="src-col-role">
+                        <span class="role-chip role-chip-recipient">Empfänger*in</span>
+                        
+                    </td>
                     <td class="src-col-regest">Chunrat der Leschenprant und Elsbet, seine Hausfrau , verkaufen 3 lb dn. gelts purkchrechts auf ihrem Hause und dem Baumgarten, dessen Grundherr der Ritter her Niclas der Würfel ist, zu/e Altu/enau…</td>
                 </tr>
             
@@ -2744,6 +3109,11 @@
                     <td class="src-col-idno"><a href="../../documents/QGW/Vienna_1177-1414_ready/973.html">973</a></td>
                     <td class="src-col-date">1379 XI 07</td>
                     <td class="src-col-corpus">QGW II/1 (1177–1414)</td>
+                    <td class="src-col-label"><em>-</em></td>
+                    <td class="src-col-role">
+                        <span class="role-chip role-chip-other">Sonstige</span>
+                        
+                    </td>
                     <td class="src-col-regest">Herzog Albrecht III. beurkundet, dass ihm Haidenreich von Meissow, lantmarschalich in Österreich, 1600 lb dn., Hanns von Liechtenstain von Nicolspurg, sein Hofmeister, 2009 lb dn. und Hanns von…</td>
                 </tr>
             
@@ -2751,6 +3121,11 @@
                     <td class="src-col-idno"><a href="../../documents/QGW/Vienna_1177-1414_ready/977.html">977</a></td>
                     <td class="src-col-date">1380 III 16</td>
                     <td class="src-col-corpus">QGW II/1 (1177–1414)</td>
+                    <td class="src-col-label"><em>Ritter|hern</em></td>
+                    <td class="src-col-role">
+                        <span class="role-chip role-chip-recipient">Empfänger*in</span>
+                        
+                    </td>
                     <td class="src-col-regest">Peter der Popphinger bestätigt, dass er dem Ritter hern Niclasen dem Würfel für ein Darlehen von 400 lb dn. seinen Hof ze Atakchrinn und ein Joch Weingarten, gelegen ze Grinzing am Stainperg,…</td>
                 </tr>
             
@@ -2758,6 +3133,11 @@
                     <td class="src-col-idno"><a href="../../documents/QGW/Vienna_1177-1414_ready/1001.html">1001</a></td>
                     <td class="src-col-date">1381 IV 29</td>
                     <td class="src-col-corpus">QGW II/1 (1177–1414)</td>
+                    <td class="src-col-label"><em>erbern|vesten|ritter|hern</em></td>
+                    <td class="src-col-role">
+                        
+                        -
+                    </td>
                     <td class="src-col-regest">Peter der Lenhofer, chorherr und obrister cheller des chlosters ze Neunburch , beurkundet, dass vor ihm in offenem Gerichte Janns, des erbern vesten ritter hern Niclas des Würffels schaffer, mit…</td>
                 </tr>
             
@@ -2765,6 +3145,11 @@
                     <td class="src-col-idno"><a href="../../documents/QGW/Vienna_1177-1414_ready/1007.html">1007</a></td>
                     <td class="src-col-date">1381 V 31</td>
                     <td class="src-col-corpus">QGW II/1 (1177–1414)</td>
+                    <td class="src-col-label"><em>ersamen vesten ritter</em></td>
+                    <td class="src-col-role">
+                        
+                        -
+                    </td>
                     <td class="src-col-regest">Bischof Johann von Passau beurkundet, dass Elspet, Pilgreims des Straiffing witib witibe, des ersamen vesten ritter Niclas des Würfels tochter , ihm mit einer Verbriefung Bischof Albrechts von Passau…</td>
                 </tr>
             
@@ -2772,6 +3157,11 @@
                     <td class="src-col-idno"><a href="../../documents/QGW/Vienna_1177-1414_ready/1040.html">1040</a></td>
                     <td class="src-col-date">1382 XI 19</td>
                     <td class="src-col-corpus">QGW II/1 (1177–1414)</td>
+                    <td class="src-col-label"><em>Ritter|hern</em></td>
+                    <td class="src-col-role">
+                        <span class="role-chip role-chip-recipient">Empfänger*in</span>
+                        
+                    </td>
                     <td class="src-col-regest">Niclas der Airer von Hausleiten auf dem Wogrein stellt einen Schuldbrief aus dem Ritter hern Niclasen dem Würfel einen Schuldbrief über 12 lb dn. aus.</td>
                 </tr>
             
@@ -2779,6 +3169,11 @@
                     <td class="src-col-idno"><a href="../../documents/QGW/Vienna_1177-1414_ready/1061.html">1061</a></td>
                     <td class="src-col-date">1384 II 04</td>
                     <td class="src-col-corpus">QGW II/1 (1177–1414)</td>
+                    <td class="src-col-label"><em>Ritters|hern</em></td>
+                    <td class="src-col-role">
+                        <span class="role-chip role-chip-witness">Zeuge / Siegler*in</span>
+                        
+                    </td>
                     <td class="src-col-regest">Jacob von Tachau, pu/erger ze Wienn, schafft seiner Hausfrau Annen, des Wiersings tochter, folgende Güter: sein Haus, gelegen in der Wolzeil ze Wienn zenast hern Michels haus des Geuchramer ½ Joch…</td>
                 </tr>
             
@@ -2786,6 +3181,11 @@
                     <td class="src-col-idno"><a href="../../documents/QGW/Vienna_1177-1414_ready/1067.html">1067</a></td>
                     <td class="src-col-date">1384 VI 10</td>
                     <td class="src-col-corpus">QGW II/1 (1177–1414)</td>
+                    <td class="src-col-label"><em>-</em></td>
+                    <td class="src-col-role">
+                        <span class="role-chip role-chip-recipient">Empfänger*in</span>
+                        
+                    </td>
                     <td class="src-col-regest">Herzog Albrecht III. bestätigt, Hansen von Tierna, Niclasen den Würfel und Niclasen den Stainer hinz . . . Albern von Potendorf für 5000 lb dn., die ihm dieser bis zu den nächsten Weihnachten…</td>
                 </tr>
             
@@ -2793,6 +3193,11 @@
                     <td class="src-col-idno"><a href="../../documents/QGW/Vienna_1177-1414_ready/1070.html">1070</a></td>
                     <td class="src-col-date">1384 VII 21</td>
                     <td class="src-col-corpus">QGW II/1 (1177–1414)</td>
+                    <td class="src-col-label"><em>Ritter|her</em></td>
+                    <td class="src-col-role">
+                        <span class="role-chip role-chip-recipient">Empfänger*in</span>
+                        
+                    </td>
                     <td class="src-col-regest">Dietreich, der smied von Engschalichsveld, stellt einen Urfehdebrief aus wegen der vankchnuss, die sein Herr, der Ritter her Niclas der Würffel, an ihm gethan hatte, da er sein behauster holde und…</td>
                 </tr>
             
@@ -2800,6 +3205,11 @@
                     <td class="src-col-idno"><a href="../../documents/QGW/Vienna_1177-1414_ready/1072.html">1072</a></td>
                     <td class="src-col-date">1384 VIII 22</td>
                     <td class="src-col-corpus">QGW II/1 (1177–1414)</td>
+                    <td class="src-col-label"><em>Ritter|hern</em></td>
+                    <td class="src-col-role">
+                        <span class="role-chip role-chip-recipient">Empfänger*in</span>
+                        
+                    </td>
                     <td class="src-col-regest">Ulreich von Vischamünd, pharrer ze Arbaiztal , Kaplan in der vest ze Haimburch , und Niclas, mitpurger ze Haimburch, gesessen in der Chesgassen daselbs , stellen einen Schuldbrief aus dem Ritter hern…</td>
                 </tr>
             
@@ -2807,6 +3217,11 @@
                     <td class="src-col-idno"><a href="../../documents/QGW/Vienna_1177-1414_ready/1074.html">1074</a></td>
                     <td class="src-col-date">1384 X 01</td>
                     <td class="src-col-corpus">QGW II/1 (1177–1414)</td>
+                    <td class="src-col-label"><em>her</em></td>
+                    <td class="src-col-role">
+                        <span class="role-chip role-chip-recipient">Empfänger*in</span>
+                        
+                    </td>
                     <td class="src-col-regest">Anna, hern Niclas hausfrow des Wu/erffels, und Gilig von Anveld, ihr Bruder, bestätigen, dass her Niclas seiner Frau 17 lb dn. geltes purchrechts auf seinem grossen Hause, gelegen ze Wienn gegen…</td>
                 </tr>
             
@@ -2814,6 +3229,11 @@
                     <td class="src-col-idno"><a href="../../documents/QGW/Vienna_1177-1414_ready/1138.html">1138</a></td>
                     <td class="src-col-date">1388 I 16</td>
                     <td class="src-col-corpus">QGW II/1 (1177–1414)</td>
+                    <td class="src-col-label"><em>her</em></td>
+                    <td class="src-col-role">
+                        <span class="role-chip role-chip-recipient">Empfänger*in</span>
+                        
+                    </td>
                     <td class="src-col-regest">Ursula, Niclas des Würfels hausvrawe, des jungern, beurkundet, dass ihr sweher her Niclas der Würfel, der elter, von ihr 400 lb dn., der 200 lb dn. ihr Leibgeding und 200 lb dn. ihr lediges Gut sind,…</td>
                 </tr>
             
@@ -2821,6 +3241,11 @@
                     <td class="src-col-idno"><a href="../../documents/QGW/Vienna_1177-1414_ready/1181.html">1181</a></td>
                     <td class="src-col-date">1389 XI 12</td>
                     <td class="src-col-corpus">QGW II/1 (1177–1414)</td>
+                    <td class="src-col-label"><em>Ritter|hern</em></td>
+                    <td class="src-col-role">
+                        <span class="role-chip role-chip-recipient">Empfänger*in</span>
+                        
+                    </td>
                     <td class="src-col-regest">Hans von Eberstorft, obrister chamrer in Osterreich , und Ulreich von Eberstorft, sein vetter, hern Chunrads von Eberstorft selig sun von Eberstorft selig, verleihen dem Ritter hern Niclasen dem…</td>
                 </tr>
             
@@ -2828,6 +3253,11 @@
                     <td class="src-col-idno"><a href="../../documents/QGW/Vienna_1177-1414_ready/1187.html">1187</a></td>
                     <td class="src-col-date">1390 II 23</td>
                     <td class="src-col-corpus">QGW II/1 (1177–1414)</td>
+                    <td class="src-col-label"><em>Ritter|hern</em></td>
+                    <td class="src-col-role">
+                        <span class="role-chip role-chip-recipient">Empfänger*in</span>
+                        
+                    </td>
                     <td class="src-col-regest">Niclas, chaplan sand Blasii altar, gelegen in des herzogen chapellen dacz sand Stephan ze Wienn , gibt mit Einwilligung seines Lehensherrn hern Eberharts von Neunburg, chirchmaister dacz…</td>
                 </tr>
             
@@ -2835,6 +3265,11 @@
                     <td class="src-col-idno"><a href="../../documents/QGW/Vienna_1177-1414_ready/1189.html">1189</a></td>
                     <td class="src-col-date">1390 III 15</td>
                     <td class="src-col-corpus">QGW II/1 (1177–1414)</td>
+                    <td class="src-col-label"><em>Ritter|hern</em></td>
+                    <td class="src-col-role">
+                        
+                        -
+                    </td>
                     <td class="src-col-regest">Bürger Hainreich der Tanperger und Elsbet, seine Hausfrau, Bürger Chu/enrat der Tanperger, sein Vetter, und Dorothe, dessen Hausfrau, paid purger ze Linz, stellen einen Schuldbrief aus dem Ritter…</td>
                 </tr>
             
@@ -2842,6 +3277,11 @@
                     <td class="src-col-idno"><a href="../../documents/QGW/Vienna_1177-1414_ready/1200.html">1200</a></td>
                     <td class="src-col-date">1391 II 02</td>
                     <td class="src-col-corpus">QGW II/1 (1177–1414)</td>
+                    <td class="src-col-label"><em>Ritter|hern</em></td>
+                    <td class="src-col-role">
+                        <span class="role-chip role-chip-recipient">Empfänger*in</span>
+                        
+                    </td>
                     <td class="src-col-regest">Ludweik, pharrer zu Hietzing, verpflichtet sich gegenüber dem Ritter hern Niclasen dem Würfel Geschäftsherr , dessen Bruder Pauln dem Würfel Geschäftsherr und Niclasen dem Flustharten Geschäftsherr ,…</td>
                 </tr>
             
@@ -2849,6 +3289,11 @@
                     <td class="src-col-idno"><a href="../../documents/QGW/Vienna_1177-1414_ready/1211.html">1211</a></td>
                     <td class="src-col-date">1391 VII 25</td>
                     <td class="src-col-corpus">QGW II/1 (1177–1414)</td>
+                    <td class="src-col-label"><em>Ritters|hern</em></td>
+                    <td class="src-col-role">
+                        <span class="role-chip role-chip-witness">Zeuge / Siegler*in</span>
+                        
+                    </td>
                     <td class="src-col-regest">Niclas der Flusthart, purger ze Wienn, verkauft mit Handen hern Michels des Geuchramer, purgermaister und münzmaister, und des rats gemain der stat ze Wienne ein Haus und einen Gewandkeller, was ihm…</td>
                 </tr>
             
@@ -2856,6 +3301,11 @@
                     <td class="src-col-idno"><a href="../../documents/QGW/Vienna_1177-1414_ready/1218.html">1218</a></td>
                     <td class="src-col-date">1391 IX 15</td>
                     <td class="src-col-corpus">QGW II/1 (1177–1414)</td>
+                    <td class="src-col-label"><em>Ritter|hern</em></td>
+                    <td class="src-col-role">
+                        <span class="role-chip role-chip-recipient">Empfänger*in</span>
+                        
+                    </td>
                     <td class="src-col-regest">Janns der Chlagman, purger ze Wienn, und Kathrei, seine Hausfrau, stellen einen Schuldbrief aus dem Ritter hern Niclasen dem Würfel, dem eltern, einen Schuldbrief über 25 lb dn. umb gwant aus,…</td>
                 </tr>
             
@@ -2863,6 +3313,11 @@
                     <td class="src-col-idno"><a href="../../documents/QGW/Vienna_1177-1414_ready/1219.html">1219</a></td>
                     <td class="src-col-date">1391 IX 29</td>
                     <td class="src-col-corpus">QGW II/1 (1177–1414)</td>
+                    <td class="src-col-label"><em>-</em></td>
+                    <td class="src-col-role">
+                        <span class="role-chip role-chip-issuer">Aussteller*in</span><span class="role-chip role-chip-witness">Zeuge / Siegler*in</span>
+                        
+                    </td>
                     <td class="src-col-regest">Geschäftsherr Niclas der Würffel, der elter, und Paul der Würffel, sein pru/eder, und gescheftherren ihres Oheims Oheim Hannsen auf der Se/aul, bestätigen, dass dieser 2 lb dn. geltes purkrechts,…</td>
                 </tr>
             
@@ -2870,6 +3325,11 @@
                     <td class="src-col-idno"><a href="../../documents/QGW/Vienna_1177-1414_ready/1221.html">1221</a></td>
                     <td class="src-col-date">1391 IX 29</td>
                     <td class="src-col-corpus">QGW II/1 (1177–1414)</td>
+                    <td class="src-col-label"><em>Ritter|hern</em></td>
+                    <td class="src-col-role">
+                        <span class="role-chip role-chip-recipient">Empfänger*in</span>
+                        
+                    </td>
                     <td class="src-col-regest">Pruder Niclas, cardian des convencz dacz den Minnerprüdern zu Wienn, bestätigt und verpflichtet sich, dass der Wiener Bürger Hanns auf der Seul geschafft habe dem Kloster 1 lb dn. geltes, das da leit…</td>
                 </tr>
             
@@ -2877,6 +3337,11 @@
                     <td class="src-col-idno"><a href="../../documents/QGW/Vienna_1177-1414_ready/1227.html">1227</a></td>
                     <td class="src-col-date">1392 II 01</td>
                     <td class="src-col-corpus">QGW II/1 (1177–1414)</td>
+                    <td class="src-col-label"><em>Ritter|hern</em></td>
+                    <td class="src-col-role">
+                        <span class="role-chip role-chip-recipient">Empfänger*in</span>
+                        
+                    </td>
                     <td class="src-col-regest">Proko, des Chreier wirt in seinem haus ze Prag, und Anna, seine Hausfrau, stellen schuldbrief aus dem Ritter hern Niclasen dem Würffel einen Schuldbrief über 31 lb dn. für Wein aus, rückzahlbar am…</td>
                 </tr>
             
@@ -2884,6 +3349,11 @@
                     <td class="src-col-idno"><a href="../../documents/QGW/Vienna_1177-1414_ready/1240.html">1240</a></td>
                     <td class="src-col-date">1392 X 13</td>
                     <td class="src-col-corpus">QGW II/1 (1177–1414)</td>
+                    <td class="src-col-label"><em>Ritters|hern</em></td>
+                    <td class="src-col-role">
+                        <span class="role-chip role-chip-witness">Zeuge / Siegler*in</span>
+                        
+                    </td>
                     <td class="src-col-regest">Perenolt der Peppler verzichtet zu Gunsten seines Stiefvaters Hainreichen des Scheczleins, des vischers, auf das von seiner Mutter Kathrei hinterlassene Gut gegen Erhalt von 11 lb dn., wovon er 5 lb…</td>
                 </tr>
             
@@ -2891,6 +3361,11 @@
                     <td class="src-col-idno"><a href="../../documents/QGW/Vienna_1177-1414_ready/1244.html">1244</a></td>
                     <td class="src-col-date">1392 XI 24</td>
                     <td class="src-col-corpus">QGW II/1 (1177–1414)</td>
+                    <td class="src-col-label"><em>Ritters|hern</em></td>
+                    <td class="src-col-role">
+                        <span class="role-chip role-chip-witness">Zeuge / Siegler*in</span>
+                        
+                    </td>
                     <td class="src-col-regest">Chunrat der Ze/ankkel der Räs, ein Student in geistleichen rechten, widmet zu einer ewigen Messe auf Unser Frauen altar, gelegen in der kirichen dacz sand Peter ze Wienn, seines ledigen Erbgutes:…</td>
                 </tr>
             
@@ -2898,6 +3373,11 @@
                     <td class="src-col-idno"><a href="../../documents/QGW/Vienna_1177-1414_ready/1245.html">1245</a></td>
                     <td class="src-col-date">1392 XII 06</td>
                     <td class="src-col-corpus">QGW II/1 (1177–1414)</td>
+                    <td class="src-col-label"><em>hern</em></td>
+                    <td class="src-col-role">
+                        <span class="role-chip role-chip-recipient">Empfänger*in</span>
+                        
+                    </td>
                     <td class="src-col-regest">Janns der Goldstain von Petzleinstorf, amptman und pergmaister hern Hannsen von Liechtenstain von Nicolspurch, Herzog Albrechts hofmaister, beurkundet, dass vor ihm in offenem Gerichte Hanns, hern…</td>
                 </tr>
             
@@ -2905,6 +3385,11 @@
                     <td class="src-col-idno"><a href="../../documents/QGW/Vienna_1177-1414_ready/1248.html">1248</a></td>
                     <td class="src-col-date">1393 I 08</td>
                     <td class="src-col-corpus">QGW II/1 (1177–1414)</td>
+                    <td class="src-col-label"><em>her</em></td>
+                    <td class="src-col-role">
+                        <span class="role-chip role-chip-other">Sonstige</span><span class="role-chip role-chip-recipient">Empfänger*in</span>
+                        
+                    </td>
                     <td class="src-col-regest">Alber der Ottenstainer, hofrichter in Oesterreich, beurkundet, dass vor ihm in dem hoftaiding ze Wienn her Niclas der Würffel mit vorsprechen hinz hern Albern dem Stuchsen von Trautmanstorf geklagt…</td>
                 </tr>
             
@@ -2912,6 +3397,11 @@
                     <td class="src-col-idno"><a href="../../documents/QGW/Vienna_1177-1414_ready/1250.html">1250</a></td>
                     <td class="src-col-date">1393 I 20</td>
                     <td class="src-col-corpus">QGW II/1 (1177–1414)</td>
+                    <td class="src-col-label"><em>-</em></td>
+                    <td class="src-col-role">
+                        <span class="role-chip role-chip-issuer">Aussteller*in</span><span class="role-chip role-chip-witness">Zeuge / Siegler*in</span>
+                        
+                    </td>
                     <td class="src-col-regest">Niclas der Würffel, der elter, beurkundet, dass der ausgebrochene Streit zwischen ihm Niclas der Würfel an einem Theile, seinem aidem Hannsen dem Mez/zz/zenpekchen und fraun Annen, seiner hausfraun,…</td>
                 </tr>
             
@@ -2919,6 +3409,11 @@
                     <td class="src-col-idno"><a href="../../documents/QGW/Vienna_1177-1414_ready/1251.html">1251</a></td>
                     <td class="src-col-date">1393 I 21</td>
                     <td class="src-col-corpus">QGW II/1 (1177–1414)</td>
+                    <td class="src-col-label"><em>-</em></td>
+                    <td class="src-col-role">
+                        <span class="role-chip role-chip-recipient">Empfänger*in</span>
+                        
+                    </td>
                     <td class="src-col-regest">Die in Urk. no 1250 angeführten Spruchleute fällen in dem dort bezeichneten Streite erbern herren hern Albern von Ottenstain, hofrichter in Osterreich, erbern herren hern Hainreichen von Liechtenekk,…</td>
                 </tr>
             
@@ -2926,6 +3421,11 @@
                     <td class="src-col-idno"><a href="../../documents/QGW/Vienna_1177-1414_ready/1255.html">1255</a></td>
                     <td class="src-col-date">1393 II 06</td>
                     <td class="src-col-corpus">QGW II/1 (1177–1414)</td>
+                    <td class="src-col-label"><em>Ritters|hern</em></td>
+                    <td class="src-col-role">
+                        <span class="role-chip role-chip-witness">Zeuge / Siegler*in</span>
+                        
+                    </td>
                     <td class="src-col-regest">Hainreich der Püchler, Andre der Riener und Wolfgankch der Rienher, sein sun, verkaufen mit Handen ihres Burgherrn Wilhalbem des Wulczendorfer ihren Hof, gelegen ze Neundorf zenechst Merten hof des…</td>
                 </tr>
             
@@ -2933,6 +3433,11 @@
                     <td class="src-col-idno"><a href="../../documents/QGW/Vienna_1177-1414_ready/1258.html">1258</a></td>
                     <td class="src-col-date">1393 III 10</td>
                     <td class="src-col-corpus">QGW II/1 (1177–1414)</td>
+                    <td class="src-col-label"><em>her</em></td>
+                    <td class="src-col-role">
+                        <span class="role-chip role-chip-recipient">Empfänger*in</span>
+                        
+                    </td>
                     <td class="src-col-regest">Hanns von Mez/zz/zenpach und Anna, seine Hausfrau, bestätigen, dass ihnen ihr sweher her Niclas der Wurffel, der Annen Vater, an den 1000 lb dn., die er ihnen nach Aussage des Spruchbriefes (vgl.…</td>
                 </tr>
             
@@ -2940,6 +3445,11 @@
                     <td class="src-col-idno"><a href="../../documents/QGW/Vienna_1177-1414_ready/1270.html">1270</a></td>
                     <td class="src-col-date">1393 VIII 28</td>
                     <td class="src-col-corpus">QGW II/1 (1177–1414)</td>
+                    <td class="src-col-label"><em>hern</em></td>
+                    <td class="src-col-role">
+                        <span class="role-chip role-chip-recipient">Empfänger*in</span>
+                        
+                    </td>
                     <td class="src-col-regest">Ru/odolf von Tierna und Ludweig von Tierna, sein pru/eder, stellen sich zu Bürgen hern Niclasen dem Würffel zu Bürgen gegen alle Ansprüche, die ihm etwa daraus erwachsen könnten, dass er die Urkunde,…</td>
                 </tr>
             
@@ -2947,6 +3457,11 @@
                     <td class="src-col-idno"><a href="../../documents/QGW/Vienna_1177-1414_ready/1272.html">1272</a></td>
                     <td class="src-col-date">1393 IX 27</td>
                     <td class="src-col-corpus">QGW II/1 (1177–1414)</td>
+                    <td class="src-col-label"><em>-</em></td>
+                    <td class="src-col-role">
+                        <span class="role-chip role-chip-issuer">Aussteller*in</span><span class="role-chip role-chip-witness">Zeuge / Siegler*in</span>
+                        
+                    </td>
                     <td class="src-col-regest">Niclas der Würffel, der elter, verpflichtet sich, den Restbetrag von 200 lb dn., den er seinem Eidam Hannsen von Messenpach und dessen Frau Annen an den ihnen Zugesprochenen 1000 lb dn. noch…</td>
                 </tr>
             
@@ -2954,6 +3469,11 @@
                     <td class="src-col-idno"><a href="../../documents/QGW/Vienna_1177-1414_ready/1306.html">1306</a></td>
                     <td class="src-col-date">1395 VI 23</td>
                     <td class="src-col-corpus">QGW II/1 (1177–1414)</td>
+                    <td class="src-col-label"><em>Ritter|hern</em></td>
+                    <td class="src-col-role">
+                        <span class="role-chip role-chip-recipient">Empfänger*in</span>
+                        
+                    </td>
                     <td class="src-col-regest">Michel der Hofmendel von Grispacherfeld und Gedraut, seine Hausfrau, stellen dem Ritter hern Niclasen dem Würffel einen Schuldbrief aus über 10 lb dn. aus, rückzahlbar am nächsten sand Merteins tag.</td>
                 </tr>
             
@@ -2961,6 +3481,11 @@
                     <td class="src-col-idno"><a href="../../documents/QGW/Vienna_1177-1414_ready/1310.html">1310</a></td>
                     <td class="src-col-date">1395 IX 27</td>
                     <td class="src-col-corpus">QGW II/1 (1177–1414)</td>
+                    <td class="src-col-label"><em>-</em></td>
+                    <td class="src-col-role">
+                        <span class="role-chip role-chip-issuer">Aussteller*in</span>
+                        
+                    </td>
                     <td class="src-col-regest">Niclas der Würffel schafft 14 lb dn. gelts purkrechts auf der padstuben, die da haisset die Hu/enttin vor Stubentor ze Wienn, und mit Handen seines Sohnes Niclas des Würffels, amptman des chlosters…</td>
                 </tr>
             
@@ -2968,6 +3493,11 @@
                     <td class="src-col-idno"><a href="../../documents/QGW/Vienna_1177-1414_ready/1377.html">1377</a></td>
                     <td class="src-col-date">1397 XII 20</td>
                     <td class="src-col-corpus">QGW II/1 (1177–1414)</td>
+                    <td class="src-col-label"><em>Ritter|hern</em></td>
+                    <td class="src-col-role">
+                        <span class="role-chip role-chip-recipient">Empfänger*in</span>
+                        
+                    </td>
                     <td class="src-col-regest">Jorig der Gerung von Ne/awinchel und Elsbet, seine Hausfrau, geloben, gegen den Ritter hern Niclasen den Würffel, der den Aussteller wegen der vorflucht, die Beide von ihm getan haben, im Gefängnis…</td>
                 </tr>
             
@@ -2975,6 +3505,11 @@
                     <td class="src-col-idno"><a href="../../documents/Stadtbuecher/Band_1_1395-1400_ready/220.html">219</a></td>
                     <td class="src-col-date">1398 Januar 19</td>
                     <td class="src-col-corpus">Stadtbücher Bd. 1 (1395–1400)</td>
+                    <td class="src-col-label"><em>-</em></td>
+                    <td class="src-col-role">
+                        
+                        -
+                    </td>
                     <td class="src-col-regest">-</td>
                 </tr>
             
@@ -2982,6 +3517,11 @@
                     <td class="src-col-idno"><a href="../../documents/QGW/Vienna_1177-1414_ready/1394.html">1394</a></td>
                     <td class="src-col-date">1398 V 11</td>
                     <td class="src-col-corpus">QGW II/1 (1177–1414)</td>
+                    <td class="src-col-label"><em>-</em></td>
+                    <td class="src-col-role">
+                        <span class="role-chip role-chip-other">Sonstige</span>
+                        
+                    </td>
                     <td class="src-col-regest">Wilhalm Vetter Herzog und Albrecht, vettern, herzog ze Osterreich etc., weisen an den Bürgermeister und Rath zu Wien an, das Haus under den Fleischpenkchen, welches Rudolf Bruder von Tyrna und…</td>
                 </tr>
             
@@ -2989,6 +3529,11 @@
                     <td class="src-col-idno"><a href="../../documents/QGW/Vienna_1177-1414_ready/1396.html">1396</a></td>
                     <td class="src-col-date">1398 VI 26</td>
                     <td class="src-col-corpus">QGW II/1 (1177–1414)</td>
+                    <td class="src-col-label"><em>hern</em></td>
+                    <td class="src-col-role">
+                        
+                        -
+                    </td>
                     <td class="src-col-regest">Ulreich der Rys, des rates der stat ze Wienn Stellvertreter, beurkundet als Stellvertreter Rugers des Snu/erer, statrichter ze Wienn, dass vor ihm in der Bürgerschranne Hanns Turs, hern Niclas des…</td>
                 </tr>
             
@@ -2996,6 +3541,11 @@
                     <td class="src-col-idno"><a href="../../documents/QGW/Vienna_1177-1414_ready/1404.html">1404</a></td>
                     <td class="src-col-date">1398 VII 29</td>
                     <td class="src-col-corpus">QGW II/1 (1177–1414)</td>
+                    <td class="src-col-label"><em>-</em></td>
+                    <td class="src-col-role">
+                        <span class="role-chip role-chip-issuer">Aussteller*in</span><span class="role-chip role-chip-witness">Zeuge / Siegler*in</span>
+                        
+                    </td>
                     <td class="src-col-regest">Niclas der Würffel, der elter, beurkundet seinen letzten Willen. Er schafft: 1. Bezahlung seiner Geldschulden von seiner fahrenden Habe 2. 14 lb dn. geltes, die er auf Michels haus des Furter,…</td>
                 </tr>
             
@@ -3003,6 +3553,11 @@
                     <td class="src-col-idno"><a href="../../documents/QGW/Vienna_1177-1414_ready/1407.html">1407</a></td>
                     <td class="src-col-date">1398 IX 06</td>
                     <td class="src-col-corpus">QGW II/1 (1177–1414)</td>
+                    <td class="src-col-label"><em>hern</em></td>
+                    <td class="src-col-role">
+                        
+                        -
+                    </td>
                     <td class="src-col-regest">Anna, hern Niclas des Würffels witib witib, bestätigt, dass dessen Söhne her Hanns Sohn Bruder Bruder Bruder, her Niclas SohnBruder Bruder Bruder, her Ulreich Sohn Bruder Bruder Bruder, und her…</td>
                 </tr>
             
@@ -3010,6 +3565,11 @@
                     <td class="src-col-idno"><a href="../../documents/QGW/Vienna_1177-1414_ready/1423.html">1423</a></td>
                     <td class="src-col-date">1399 V 09</td>
                     <td class="src-col-corpus">QGW II/1 (1177–1414)</td>
+                    <td class="src-col-label"><em>-</em></td>
+                    <td class="src-col-role">
+                        
+                        -
+                    </td>
                     <td class="src-col-regest">Hanns der Urbetsch verkauft mit Handen Niclas des Würffels, ambtman des chlosters ze Neunburg, drei Viertel Weingarten, die ihm in der Erbtheilung nach seinem Vater zugefallen waren, gelegen in dem…</td>
                 </tr>
             
@@ -3017,6 +3577,11 @@
                     <td class="src-col-idno"><a href="../../documents/QGW/Vienna_1177-1414_ready/1424.html">1424</a></td>
                     <td class="src-col-date">1399 V 13</td>
                     <td class="src-col-corpus">QGW II/1 (1177–1414)</td>
+                    <td class="src-col-label"><em>-</em></td>
+                    <td class="src-col-role">
+                        
+                        -
+                    </td>
                     <td class="src-col-regest">Hainreich von Wirczpurg, der zingiesser, und Luzei, seine Hausfrau, verkaufen mit Handen des Bürgermeisters hern Hannsen des Rogken und des rates gemain der stat ze Wienn 2 ½ lb dn. ablösbaren geltes…</td>
                 </tr>
             
@@ -3024,6 +3589,11 @@
                     <td class="src-col-idno"><a href="../../documents/QGW/Vienna_1177-1414_ready/1447.html">1447</a></td>
                     <td class="src-col-date">1400 I 19</td>
                     <td class="src-col-corpus">QGW II/1 (1177–1414)</td>
+                    <td class="src-col-label"><em>-</em></td>
+                    <td class="src-col-role">
+                        
+                        -
+                    </td>
                     <td class="src-col-regest">Anthoni, probst dacz sand Stephan zu Wienn Geschäftsherren, Paul der Würffel Geschäftsherren, Wolfhart, pharrer zu Mülbach Geschäftsherren, und Lienhart von Medlikch Geschäftsherren, Geschäftsherren…</td>
                 </tr>
             
@@ -3031,6 +3601,11 @@
                     <td class="src-col-idno"><a href="../../documents/Stadtbuecher/Band_1_1395-1400_ready/605.html">605</a></td>
                     <td class="src-col-date">1400 November 4</td>
                     <td class="src-col-corpus">Stadtbücher Bd. 1 (1395–1400)</td>
+                    <td class="src-col-label"><em>herrn</em></td>
+                    <td class="src-col-role">
+                        <span class="role-chip role-chip-issuer">Aussteller*in</span>
+                        
+                    </td>
                     <td class="src-col-regest">pr. sehr., Einbr. 2 Zg., Sa (Inde:z:: Itern gescheft Hansen des Messenpecken) Des nachsten phfincztags nach allerheligen tag chom fur den rat fraw Ann, Haensen seligen des Messenpechen bitib, und hat…</td>
                 </tr>
             
@@ -3038,6 +3613,11 @@
                     <td class="src-col-idno"><a href="../../documents/QGW/Vienna_1177-1414_ready/1612.html">1612</a></td>
                     <td class="src-col-date">1405 I 20</td>
                     <td class="src-col-corpus">QGW II/1 (1177–1414)</td>
+                    <td class="src-col-label"><em>Bergherr</em></td>
+                    <td class="src-col-role">
+                        <span class="role-chip role-chip-issuer">Aussteller*in</span><span class="role-chip role-chip-witness">Zeuge / Siegler*in</span>
+                        
+                    </td>
                     <td class="src-col-regest">Niclas der Würffel und Sigmund der Würffel, sein prüder, verkaufen ihren Antheil an dem Weingarten, gelegen ze Grinzing, des anderthalb jeuch ist, genant das Sumerekk, zenechst des Spitals weingarten…</td>
                 </tr>
             
@@ -3045,6 +3625,11 @@
                     <td class="src-col-idno"><a href="../../documents/QGW/Vienna_1177-1414_ready/1616.html">1616</a></td>
                     <td class="src-col-date">1405 III 27</td>
                     <td class="src-col-corpus">QGW II/1 (1177–1414)</td>
+                    <td class="src-col-label"><em>-</em></td>
+                    <td class="src-col-role">
+                        
+                        -
+                    </td>
                     <td class="src-col-regest">Niclas der Würffel ze Nusdorf verkauft 14 lb dn. geltes purkchrechts auf seinem grossen Hause, das rechts aigen ist, gelegen ze Nusdorf gegen dem urfar u/eber, zu der hochwirdigen hochzeit…</td>
                 </tr>
             
@@ -3052,6 +3637,11 @@
                     <td class="src-col-idno"><a href="../../documents/QGW/Vienna_1177-1414_ready/2002.html">2002</a></td>
                     <td class="src-col-date">1414 XII 07</td>
                     <td class="src-col-corpus">QGW II/1 (1177–1414)</td>
+                    <td class="src-col-label"><em>-</em></td>
+                    <td class="src-col-role">
+                        
+                        -
+                    </td>
                     <td class="src-col-regest">Anna, Fridreichs von Hierssau, burger ze Wienn, eleiche hausfrau, verzichtet auf die uberteurung des hofs, gelegen ze Nusdorf, [20] der ihres früheren Mannes Niclass des Würffels seligen gewesen ist.</td>
                 </tr>
             
@@ -3084,11 +3674,13 @@
         </div>
     </footer>
 
-    <script src="../../static/js/core.js?v=20260511112948"></script>
-    <script src="../../static/js/provenance.js?v=20260511112948"></script>
-    <script src="../../static/js/basket.js?v=20260511112948"></script>
+    <script src="../../static/js/core.js?v=20260511125458"></script>
+    <script src="../../static/js/tip.js?v=20260511125458"></script>
+    <script src="../../static/js/hint.js?v=20260511125458"></script>
+    <script src="../../static/js/basket.js?v=20260511125458"></script>
     
-<script src="../../static/js/tooltips.js?v=20260511112948"></script>
+<script src="../../static/js/profile.js?v=20260511125458"></script>
+<script src="../../static/js/basket-mount.js?v=20260511125458"></script>
 
 </body>
 </html>

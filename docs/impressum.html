@@ -3,21 +3,21 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <meta http-equiv="Content-Security-Policy" content="default-src 'self'; script-src 'self'; style-src 'self'; font-src 'self'; img-src 'self' data: https://images.monasterium.net https://www.monasterium.net; connect-src 'self'; frame-ancestors 'none'; base-uri 'self'; form-action 'self'; upgrade-insecure-requests">
+    <meta http-equiv="Content-Security-Policy" content="default-src 'self'; script-src 'self'; style-src 'self'; font-src 'self'; img-src 'self' data: https://images.monasterium.net https://www.monasterium.net; connect-src 'self'; base-uri 'self'; form-action 'self'; upgrade-insecure-requests">
     <meta name="referrer" content="strict-origin-when-cross-origin">
     <meta http-equiv="Permissions-Policy" content="camera=(), microphone=(), geolocation=(), interest-cohort=()">
     <title>Impressum, Datenbank</title>
     <link rel="preload" as="font" type="font/woff2" crossorigin
           href="./static/fonts/inter-400-latin.woff2">
-    <link rel="stylesheet" href="./static/css/fonts.css?v=20260511112948">
-    <link rel="stylesheet" href="./static/css/tokens.css?v=20260511112948">
-    <link rel="stylesheet" href="./static/css/base.css?v=20260511112948">
-    <link rel="stylesheet" href="./static/css/components.css?v=20260511112948">
-    <link rel="stylesheet" href="./static/css/responsive.css?v=20260511112948">
-    <link rel="stylesheet" href="./static/css/print.css?v=20260511112948">
-    <link rel="stylesheet" href="./static/css/provenance.css?v=20260511112948">
+    <link rel="stylesheet" href="./static/css/fonts.css?v=20260511125458">
+    <link rel="stylesheet" href="./static/css/tokens.css?v=20260511125458">
+    <link rel="stylesheet" href="./static/css/base.css?v=20260511125458">
+    <link rel="stylesheet" href="./static/css/components.css?v=20260511125458">
+    <link rel="stylesheet" href="./static/css/responsive.css?v=20260511125458">
+    <link rel="stylesheet" href="./static/css/print.css?v=20260511125458">
+    <link rel="stylesheet" href="./static/css/tip.css?v=20260511125458">
     
-<link rel="stylesheet" href="./static/css/content.css?v=20260511112948">
+<link rel="stylesheet" href="./static/css/content.css?v=20260511125458">
 
 </head>
 <body data-root-path="."
@@ -47,8 +47,6 @@
         <a href="./register/persons.html">Personen</a>
         
         <a href="./register/orgs.html">Organisationen</a>
-        
-        <a href="./register/places.html">Orte</a>
         
     </div>
 </div>
@@ -90,7 +88,7 @@
     </div>
 </div>
 
-                <a href="./korb.html" class="nav-basket" aria-label="Wissenskorb">
+                <a href="./korb.html" class="nav-basket" aria-label="Datenkorb">
                     <svg width="18" height="18" viewBox="0 0 18 18" fill="none" aria-hidden="true">
                         <path d="M3 5h12l-1.2 8.5a1 1 0 0 1-1 .85H5.2a1 1 0 0 1-1-.85L3 5z"
                               stroke="currentColor" stroke-width="1.4" fill="none"
@@ -136,23 +134,31 @@
 Prosopographische Datenbank mittelalterlicher Wiener Rechtsgeschäfte.</p>
 <p><strong>Projektleitung:</strong>
 Mag. Korbinian Grünwald, Universität Wien.</p>
-<p><strong>Forschungsprojekte:</strong>
-- „Im Netz der Stadt" (Dissertation, Universität Wien)
-- „Stadt und Gemeinschaft" (Universität Wien)</p>
+<p><strong>Forschungsprojekte:</strong></p>
+<ul>
+<li>„Im Netz der Stadt" (Dissertation, Universität Wien)</li>
+<li>„Stadt und Gemeinschaft" (Universität Wien)</li>
+</ul>
 <h2 id="technische-umsetzung">Technische Umsetzung<a class="headerlink" href="#technische-umsetzung" title="Permanent link">&para;</a></h2>
 <p><strong>Modernisierung und digitale Umsetzung:</strong>
 Digital Humanities Craft OG.</p>
-<p><strong>Technische Basis:</strong>
-- TEI-XML Quelldaten mit RelaxNG-Schema
-- Python/lxml Transformationspipeline
-- Statische Website (GitHub Pages) mit Jinja2-Templates</p>
+<p><strong>Technische Basis:</strong></p>
+<ul>
+<li>TEI-XML Quelldaten mit RelaxNG-Schema</li>
+<li>Python/lxml Transformationspipeline</li>
+<li>Statische Website (GitHub Pages) mit Jinja2-Templates</li>
+</ul>
 <h2 id="lizenz">Lizenz<a class="headerlink" href="#lizenz" title="Permanent link">&para;</a></h2>
 <p>Die Inhalte dieser Datenbank stehen unter der <strong>Creative Commons Attribution 4.0 International License (CC BY 4.0)</strong>.</p>
-<p>Sie dürfen:
-- <strong>Teilen</strong>: das Material in jedwedem Format oder Medium vervielfältigen und weiterverbreiten
-- <strong>Bearbeiten</strong>: das Material remixen, verändern und darauf aufbauen</p>
-<p>Unter folgenden Bedingungen:
-- <strong>Namensnennung</strong>: Sie müssen angemessene Urheber- und Rechteangaben machen</p>
+<p>Sie dürfen:</p>
+<ul>
+<li><strong>Teilen</strong>: das Material in jedwedem Format oder Medium vervielfältigen und weiterverbreiten</li>
+<li><strong>Bearbeiten</strong>: das Material remixen, verändern und darauf aufbauen</li>
+</ul>
+<p>Unter folgenden Bedingungen:</p>
+<ul>
+<li><strong>Namensnennung</strong>: Sie müssen angemessene Urheber- und Rechteangaben machen</li>
+</ul>
 <p>Volltext der Lizenz: <a href="https://creativecommons.org/licenses/by/4.0/">CC BY 4.0</a></p>
 <h2 id="datenquellen">Datenquellen<a class="headerlink" href="#datenquellen" title="Permanent link">&para;</a></h2>
 <p><strong>Faksimile-Bilder:</strong> <a href="https://www.monasterium.net/">Monasterium.net</a>, virtuelles Archiv mittelalterlicher Urkunden Europas.</p>
@@ -196,11 +202,12 @@ Digital Humanities Craft OG.</p>
         </div>
     </footer>
 
-    <script src="./static/js/core.js?v=20260511112948"></script>
-    <script src="./static/js/provenance.js?v=20260511112948"></script>
-    <script src="./static/js/basket.js?v=20260511112948"></script>
+    <script src="./static/js/core.js?v=20260511125458"></script>
+    <script src="./static/js/tip.js?v=20260511125458"></script>
+    <script src="./static/js/hint.js?v=20260511125458"></script>
+    <script src="./static/js/basket.js?v=20260511125458"></script>
     
-<script src="./static/js/content.js?v=20260511112948"></script>
+<script src="./static/js/content.js?v=20260511125458"></script>
 
 </body>
 </html>

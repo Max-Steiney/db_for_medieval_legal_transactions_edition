@@ -1,12 +1,25 @@
 # Stadt und Gemeinschaft Wien — Datenbank zu mittelalterlichen Rechtsgeschäften
 
-Digitale Edition zu mittelalterlichen Wiener Rechtsgeschäften, freigegebener Zeitraum 1177–1412 (mit Erweiterung bis 1414 für QGW II/1 und II/2). Zeitraum 1418–1447 ist noch nicht ausgewertet.
+Datenbank zu mittelalterlichen Wiener Rechtsgeschäften, freigegebener Zeitraum 1177–1412 (mit Erweiterung bis 1414 für QGW II/1 und II/2). Zeitraum 1418–1447 ist noch nicht ausgewertet.
 
-Dieses Repository ist die **Publikations-Schicht** der Edition: Build-Code, Templates, statische Assets, gerenderte Seite. Die Auslieferung läuft über GitHub Pages aus `docs/`.
+Dieses Repository ist die **Publikations-Schicht** der Datenbank: Build-Code, Templates, statische Assets, gerenderte Seite. Die Auslieferung läuft über GitHub Pages aus `docs/`.
+
+## Freigegebene Korpora
+
+Aktuell sind zwei Subkorpora freigegeben und werden gerendert:
+
+- `QGW/Vienna_1177-1414_ready` — Quellen zur Geschichte der Stadt Wien, Wiener Urkunden 1177–1414.
+- `Stadtbuecher/Band_1_1395-1400_ready` — Stadtbücher, Band 1, 1395–1400.
+
+Single Source of Truth ist das Tupel `RELEASED_CORPORA` in `../db_for_medieval_legal_transactions/pipeline/config.py`. Es steuert sowohl die CSV-Erzeugung der Pipeline als auch die Sichtbarkeit im Frontend-Build. Subkorpora außerhalb dieses Tupels liegen zwar in `sources/` für die editorische Arbeit, werden aber weder exportiert noch gerendert.
+
+Ein Override für interne Analysen existiert: `PIPELINE_INCLUDE_UNRELEASED=1 python -m pipeline transform` zieht alle Subkorpora ein, auch die ungeprüften. Nicht für den publizierten Build verwenden.
+
+Aufnahme eines weiteren Subkorpus in vier Schritten: Quelle unter `sources/<Collection>/<Subcollection>_ready/` ablegen, `RELEASED_CORPORA` ergänzen, `python -m pipeline transform`, `python -m frontend build`. Liegt der neue Korpus außerhalb von 1177–1414, zusätzlich `RELEASED_PERIOD` in [`frontend/config.py`](frontend/config.py) anpassen.
 
 ## Zwei-Repository-Setup
 
-Die Edition lebt in zwei Repositories, die nebeneinander geklont werden müssen.
+Die Datenbank lebt in zwei Repositories, die nebeneinander geklont werden müssen.
 
 - **Frontend-Repo (dieses Repo)** trägt Build-Code, Jinja2-Templates, Content, Assets, Tests und das gerenderte HTML.
 - **Pipeline-Repo `../db_for_medieval_legal_transactions`** trägt TEI-Quellen, Register, Normalisierungslisten, das RelaxNG-Schema, die Python-Pipeline (CSV-Generator) und die redaktionellen Annotationsrichtlinien.
@@ -49,7 +62,7 @@ python -m pytest frontend/tests/       # Frontend-Tests
 
 ## UI-Bereiche
 
-Die Edition gliedert sich in vier Top-Level-Bereiche:
+Die Datenbank gliedert sich in vier Top-Level-Bereiche:
 
 - **Quellen** (`/documents.html`) — Listenansicht aller freigegebenen Quellen mit Filter, Suche, sortierbarer Tabelle, Volltext-/Regest-Detail.
 - **Register → Personen** (`/register/persons.html` + `/register/persons/<id>.html`) — Personenregister mit Suche, Filter, Profilseite pro individueller Person mit Beziehungen und Quellen-Vorkommen. Organisations- und Ortsregister sind angelegt, aber nicht freigegeben.
@@ -61,13 +74,13 @@ Die Edition gliedert sich in vier Top-Level-Bereiche:
   - `/exploration/personennetzwerk.html` — Ego-Layout um eine Person; Klick auf Nachbar verlagert Zentrum; Beziehungstyp-Filter (Verwandtschaft / Beruf-Stand / Vertretung / Freundschaft); Personen-Suche.
   - Sankey-Diagramm zu Transaktionsflüssen — geplant.
 
-Quer durch alle Quellen-Listen liegt der **Wissenskorb** (`/korb.html`): clientseitige Sammelmappe in `localStorage`, mit „+"-Knopf neben jedem Quellen-Eintrag, Live-Badge im Nav, CSV-Export auf der Korb-Seite.
+Quer durch alle Quellen-Listen liegt der **Datenkorb** (`/korb.html`): clientseitige Sammelmappe in `localStorage`, mit „+"-Knopf neben jedem Quellen-Eintrag, Live-Badge im Nav, CSV-Export auf der Korb-Seite.
 
 ## Konzeptionelle Dokumentation
 
 Begriffe, Datenstruktur, Architektur, Anforderungen und Gestaltungsprinzipien leben in [`knowledge/`](knowledge/) als zusammenhängende Dokumentation in deutscher Sprache, mit Wiki-Links zwischen den Dokumenten. Einstieg über [`knowledge/index.md`](knowledge/index.md).
 
-Begriffsdefinitionen (Quellenkorpus, Quelle, Event, Rechtsgeschäft, Gesamtnennung, Individuelle Person, Menschen-Event, Rolle, Regest, Faksimile, Volltext, Erschließungsform): [`knowledge/glossar.md`](knowledge/glossar.md). Leitentscheidungen: [`knowledge/decisions.md`](knowledge/decisions.md). Chronologisches Arbeitstagebuch: [`knowledge/journal.md`](knowledge/journal.md).
+Begriffsdefinitionen (Quellenkorpus, Quelle, Event, Rechtsgeschäft, Gesamtnennung, Individuelle Person, Menschen-Event, Rolle, Regest, Faksimile, Volltext, Erschließungsform): [`frontend/content/project/glossar.md`](frontend/content/project/glossar.md). Leitentscheidungen: [`knowledge/decisions.md`](knowledge/decisions.md). Chronologisches Arbeitstagebuch: [`knowledge/journal.md`](knowledge/journal.md).
 
 ## Lokales Preview
 

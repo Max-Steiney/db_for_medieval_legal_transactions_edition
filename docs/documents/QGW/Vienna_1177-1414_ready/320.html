@@ -3,21 +3,21 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <meta http-equiv="Content-Security-Policy" content="default-src 'self'; script-src 'self'; style-src 'self'; font-src 'self'; img-src 'self' data: https://images.monasterium.net https://www.monasterium.net; connect-src 'self'; frame-ancestors 'none'; base-uri 'self'; form-action 'self'; upgrade-insecure-requests">
+    <meta http-equiv="Content-Security-Policy" content="default-src 'self'; script-src 'self'; style-src 'self'; font-src 'self'; img-src 'self' data: https://images.monasterium.net https://www.monasterium.net; connect-src 'self'; base-uri 'self'; form-action 'self'; upgrade-insecure-requests">
     <meta name="referrer" content="strict-origin-when-cross-origin">
     <meta http-equiv="Permissions-Policy" content="camera=(), microphone=(), geolocation=(), interest-cohort=()">
     <title>Nr. 320 (1348 IV 11), Datenbank</title>
     <link rel="preload" as="font" type="font/woff2" crossorigin
           href="../../../static/fonts/inter-400-latin.woff2">
-    <link rel="stylesheet" href="../../../static/css/fonts.css?v=20260511112948">
-    <link rel="stylesheet" href="../../../static/css/tokens.css?v=20260511112948">
-    <link rel="stylesheet" href="../../../static/css/base.css?v=20260511112948">
-    <link rel="stylesheet" href="../../../static/css/components.css?v=20260511112948">
-    <link rel="stylesheet" href="../../../static/css/responsive.css?v=20260511112948">
-    <link rel="stylesheet" href="../../../static/css/print.css?v=20260511112948">
-    <link rel="stylesheet" href="../../../static/css/provenance.css?v=20260511112948">
+    <link rel="stylesheet" href="../../../static/css/fonts.css?v=20260511125458">
+    <link rel="stylesheet" href="../../../static/css/tokens.css?v=20260511125458">
+    <link rel="stylesheet" href="../../../static/css/base.css?v=20260511125458">
+    <link rel="stylesheet" href="../../../static/css/components.css?v=20260511125458">
+    <link rel="stylesheet" href="../../../static/css/responsive.css?v=20260511125458">
+    <link rel="stylesheet" href="../../../static/css/print.css?v=20260511125458">
+    <link rel="stylesheet" href="../../../static/css/tip.css?v=20260511125458">
     
-<link rel="stylesheet" href="../../../static/css/document.css?v=20260511112948">
+<link rel="stylesheet" href="../../../static/css/document.css?v=20260511125458">
 <link rel="canonical" href="documents/QGW/Vienna_1177-1414_ready/320.html">
 <meta name="citation_title" content="Nr. 320 (1348 IV 11)">
 <meta name="citation_collection" content="QGW II/1 (1177–1414)">
@@ -50,8 +50,6 @@
         <a href="../../../register/persons.html">Personen</a>
         
         <a href="../../../register/orgs.html">Organisationen</a>
-        
-        <a href="../../../register/places.html">Orte</a>
         
     </div>
 </div>
@@ -93,7 +91,7 @@
     </div>
 </div>
 
-                <a href="../../../korb.html" class="nav-basket" aria-label="Wissenskorb">
+                <a href="../../../korb.html" class="nav-basket" aria-label="Datenkorb">
                     <svg width="18" height="18" viewBox="0 0 18 18" fill="none" aria-hidden="true">
                         <path d="M3 5h12l-1.2 8.5a1 1 0 0 1-1 .85H5.2a1 1 0 0 1-1-.85L3 5z"
                               stroke="currentColor" stroke-width="1.4" fill="none"
@@ -140,7 +138,7 @@
                     
                     <span class="meta-pair">
                         <span class="meta-label">Quelle</span>
-                        <span class="meta-value" title="Quellen zur Geschichte der Stadt Wien, Bd. II/1, Nr. 320">Quellen zur Geschichte der Stadt Wien, Bd. II/1, Nr. 320</span>
+                        <span class="meta-value" data-hint="Quellen zur Geschichte der Stadt Wien, Bd. II/1, Nr. 320">Quellen zur Geschichte der Stadt Wien, Bd. II/1, Nr. 320</span>
                     </span>
                     
                 </div>
@@ -151,7 +149,7 @@
                     
                     <button type="button" class="legend-toggle"
                             data-layer="entities" aria-pressed="true"
-                            title="Entitäten ein-/ausblenden">
+                            data-hint="Entitäten ein-/ausblenden">
                         <span class="legend-toggle-dots">
                             <span class="legend-swatch swatch-person"></span><span class="legend-swatch swatch-org"></span><span class="legend-swatch swatch-place"></span>
                         </span>
@@ -160,7 +158,7 @@
                     
                     <button type="button" class="legend-toggle"
                             data-layer="functions" aria-pressed="true"
-                            title="Funktionsrollen ein-/ausblenden">
+                            data-hint="Funktionsrollen ein-/ausblenden">
                         <span class="legend-toggle-dots">
                             <span class="legend-swatch swatch-fn-issuer"></span><span class="legend-swatch swatch-fn-recipient"></span><span class="legend-swatch swatch-fn-witness"></span>
                         </span>
@@ -169,7 +167,7 @@
                     
                     <button type="button" class="legend-toggle"
                             data-layer="attributes" aria-pressed="true"
-                            title="Attribute ein-/ausblenden">
+                            data-hint="Attribute ein-/ausblenden">
                         <span class="legend-toggle-dots">
                             <span class="legend-swatch swatch-attr"></span><span class="legend-swatch swatch-add"></span>
                         </span>
@@ -178,7 +176,7 @@
                     
                     <button type="button" class="legend-toggle"
                             data-layer="triggers" aria-pressed="true"
-                            title="Dispositivformel ein-/ausblenden">
+                            data-hint="Dispositivformel ein-/ausblenden">
                         <span class="legend-toggle-dots">
                             <span class="legend-swatch swatch-trigger"></span>
                         </span>
@@ -190,21 +188,29 @@
                 <div class="doc-toolbar-actions">
                     <a class="toolbar-btn" href="../../../tei/QGW/Vienna_1177-1414_ready/320.xml"
                        download="320.xml"
-                       aria-label="TEI-XML herunterladen" title="TEI-XML herunterladen"><svg viewBox="0 0 16 16" width="16" height="16" aria-hidden="true"><path fill="none" stroke="currentColor" stroke-width="1.4" stroke-linecap="round" stroke-linejoin="round" d="M8 2v8m0 0l-3-3m3 3l3-3M3 13h10"/></svg></a>
+                       aria-label="TEI-XML herunterladen" data-hint="TEI-XML herunterladen"><svg viewBox="0 0 16 16" width="16" height="16" aria-hidden="true"><path fill="none" stroke="currentColor" stroke-width="1.4" stroke-linecap="round" stroke-linejoin="round" d="M8 2v8m0 0l-3-3m3 3l3-3M3 13h10"/></svg></a>
                     <button class="toolbar-btn" id="cite-toggle" aria-expanded="false"
-                            aria-label="Zitation kopieren" title="Zitation kopieren"><svg viewBox="0 0 16 16" width="16" height="16" aria-hidden="true"><rect x="4" y="2" width="8" height="11" rx="1" fill="none" stroke="currentColor" stroke-width="1.4"/><path d="M6 1.5h4a0.5 0.5 0 0 1 0.5 0.5v1a0.5 0.5 0 0 1-0.5 0.5H6a0.5 0.5 0 0 1-0.5-0.5V2A0.5 0.5 0 0 1 6 1.5z" fill="currentColor"/><path d="M6.5 6.5h3M6.5 8.5h3M6.5 10.5h2" stroke="currentColor" stroke-width="1" stroke-linecap="round"/></svg></button>
+                            aria-label="Zitation kopieren" data-hint="Zitation kopieren"><svg viewBox="0 0 16 16" width="16" height="16" aria-hidden="true"><rect x="4" y="2" width="8" height="11" rx="1" fill="none" stroke="currentColor" stroke-width="1.4"/><path d="M6 1.5h4a0.5 0.5 0 0 1 0.5 0.5v1a0.5 0.5 0 0 1-0.5 0.5H6a0.5 0.5 0 0 1-0.5-0.5V2A0.5 0.5 0 0 1 6 1.5z" fill="currentColor"/><path d="M6.5 6.5h3M6.5 8.5h3M6.5 10.5h2" stroke="currentColor" stroke-width="1" stroke-linecap="round"/></svg></button>
                     <div class="cite-popover hidden" id="cite-popover"></div>
+                    <span class="toolbar-basket-mount"
+                          data-basket-type="source"
+                          data-basket-id="320"
+                          data-basket-label="320"
+                          data-basket-url="documents/QGW/Vienna_1177-1414_ready/320.html"
+                          data-basket-date="1348-04-11"
+                          data-basket-coll="QGW II/1 (1177–1414)"
+                          data-basket-regest="Chunigunt, wittibe hern Ru/odolfs wittibe des Grafen an dem Alten Fleischmarchte ze Wienne, stiftet eine ewige Messe, die man haben sol in der pharrchirichen datz sant Stephan ze Wienne. Sie widmet…"></span>
                     
 <nav class="doc-paging doc-paging-inline" aria-label="Quellen-Navigation">
     
     <a href="../../../documents/QGW/Vienna_1177-1414_ready/319.html" class="toolbar-btn doc-paging-prev"
        aria-label="Vorherige Quelle: Nr. 319"
-       title="Vorherige Quelle: Nr. 319"><svg viewBox="0 0 16 16" width="16" height="16" aria-hidden="true"><path fill="none" stroke="currentColor" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round" d="M10 3l-5 5 5 5"/></svg></a>
+       data-hint="Vorherige Quelle: Nr. 319"><svg viewBox="0 0 16 16" width="16" height="16" aria-hidden="true"><path fill="none" stroke="currentColor" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round" d="M10 3l-5 5 5 5"/></svg></a>
     
     
     <a href="../../../documents/QGW/Vienna_1177-1414_ready/321.html" class="toolbar-btn doc-paging-next"
        aria-label="Nächste Quelle: Nr. 321"
-       title="Nächste Quelle: Nr. 321"><svg viewBox="0 0 16 16" width="16" height="16" aria-hidden="true"><path fill="none" stroke="currentColor" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round" d="M6 3l5 5-5 5"/></svg></a>
+       data-hint="Nächste Quelle: Nr. 321"><svg viewBox="0 0 16 16" width="16" height="16" aria-hidden="true"><path fill="none" stroke="currentColor" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round" d="M6 3l5 5-5 5"/></svg></a>
     
 </nav>
 
@@ -219,20 +225,20 @@
         <!-- Document body (rendered TEI) -->
         <div class="doc-body">
             <section class="tei-abstract"><h2 class="tei-section-head">Regest</h2><p>
-               <span class="anno-event" data-ref="ev__QGW_II_I_320"><span class="anno-fn anno-fn-issuer" data-role="issuer"><span class="fn-label">Aussteller*in</span><a class="anno-person" data-ref="pe__kunigunde_QGW_320" title="Kunigunde Gräfin Gräfin [pe__kunigunde_QGW_320]" href="../../../register/persons/pe__kunigunde_QGW_320.html">Chunigunt, <span class="anno-attr anno-attr-kin" data-corresp="pe__rudolf_graf_QGW_II_I_1421"><span class="tei-add">wittibe</span></span>
-                        <a class="anno-person" data-ref="pe__rudolf_graf_QGW_II_I_1421" title="Rudolf Graf an dem alten Fleischmarkt († 11.04.1348) [pe__rudolf_graf_QGW_II_I_1421]" href="../../../register/persons/pe__rudolf_graf_QGW_II_I_1421.html"><span class="anno-attr anno-attr-title">hern</span> Ru/odolfs <span class="anno-attr anno-attr-dead">wittibe</span>
+               <span class="anno-event" data-ref="ev__QGW_II_I_320"><span class="anno-fn anno-fn-issuer" data-role="issuer"><span class="fn-label">Aussteller*in</span><a class="anno-person" data-ref="pe__kunigunde_QGW_320" data-hint="Kunigunde Gräfin Gräfin [pe__kunigunde_QGW_320]" data-hint-type="Person" href="../../../register/persons/pe__kunigunde_QGW_320.html">Chunigunt, <span class="anno-attr anno-attr-kin" data-corresp="pe__rudolf_graf_QGW_II_I_1421"><span class="tei-add">wittibe</span></span>
+                        <a class="anno-person" data-ref="pe__rudolf_graf_QGW_II_I_1421" data-hint="Rudolf Graf an dem alten Fleischmarkt († 11.04.1348) [pe__rudolf_graf_QGW_II_I_1421]" data-hint-type="Person" href="../../../register/persons/pe__rudolf_graf_QGW_II_I_1421.html"><span class="anno-attr anno-attr-title">hern</span> Ru/odolfs <span class="anno-attr anno-attr-dead">wittibe</span>
                            des Grafen an dem Alten Fleischmarchte ze Wienne</a></a></span>,
-                     <span class="anno-trigger anno-trigger-disp">stiftet</span> eine <span class="anno-fn anno-fn-recipient" data-role="recipient"><span class="fn-label">Empfänger*in</span><a class="anno-org" data-ref="org__wien-st_stephan-altar_st_ulrich-messe_graf" title="Grafenmesse (Messe) [org__wien-st_stephan-altar_st_ulrich-messe_graf]" href="../../../register/orgs/org__wien-st_stephan-altar_st_ulrich-messe_graf.html">ewige
+                     <span class="anno-trigger anno-trigger-disp">stiftet</span> eine <span class="anno-fn anno-fn-recipient" data-role="recipient"><span class="fn-label">Empfänger*in</span><a class="anno-org" data-ref="org__wien-st_stephan-altar_st_ulrich-messe_graf" data-hint="Grafenmesse (Messe) [org__wien-st_stephan-altar_st_ulrich-messe_graf]" data-hint-type="Organisation" href="../../../register/orgs/org__wien-st_stephan-altar_st_ulrich-messe_graf.html">ewige
                         Messe</a>, die man haben sol in der pharrchirichen datz sant Stephan ze
                      Wienne</span>. Sie <span class="anno-trigger anno-trigger-disp">widmet</span> zu dieser Messe 8 lb
-                  dn. <span class="anno-trigger anno-trigger-disp">geltes purchrechts</span>: a) <span class="anno-fn anno-fn-other" data-role="other"><span class="fn-label">Sonstige</span><span class="anno-trigger anno-trigger-fn">mit des gruntherren hant</span>, <a class="anno-person" data-ref="pe__pilgrim_QGW_II_I_320" title="Pilgrim [pe__pilgrim_QGW_II_I_320]" href="../../../register/persons/pe__pilgrim_QGW_II_I_320.html"><span class="anno-attr anno-attr-title">hern</span>Pilgreims<span class="anno-attr anno-attr-title"><span class="tei-add">gruntherren</span></span>, <span class="anno-attr anno-attr-occ" data-corresp="org__wien-st_niklas_dacz_den_roeren">chaplan</span> der
+                  dn. <span class="anno-trigger anno-trigger-disp">geltes purchrechts</span>: a) <span class="anno-fn anno-fn-other" data-role="other"><span class="fn-label">Sonstige</span><span class="anno-trigger anno-trigger-fn">mit des gruntherren hant</span>, <a class="anno-person" data-ref="pe__pilgrim_QGW_II_I_320" data-hint="Pilgrim [pe__pilgrim_QGW_II_I_320]" data-hint-type="Person" href="../../../register/persons/pe__pilgrim_QGW_II_I_320.html"><span class="anno-attr anno-attr-title">hern</span>Pilgreims<span class="anno-attr anno-attr-title"><span class="tei-add">gruntherren</span></span>, <span class="anno-attr anno-attr-occ" data-corresp="org__wien-st_niklas_dacz_den_roeren">chaplan</span> der
                         chapellen sande Niclas datz den Ro/eren ze Wienne</a></span>, 2 lb dn.
                   geltes, die da ligent ain phunt gelts auf einem haus, das da leit vor Stubentor,
                   das Gorigen des Paimleins gewesen ist, zenaehst Cholmanne, dem pekchen, <span class="anno-event" data-ref="ev__QGW_II_I_320_men_1">do man auch alle jar von dient der
                      chapellen sant Nichlas dacz den Ro/eren 7 dn. ze gruntrecht</span>, und das ander
                   phunt geltes leit auf einem haus bei Stubentor, haisset der Mukkerauerinne haus,
                   zenaehst Jansen haus des Phuntimaschen, <span class="anno-event" data-ref="ev__QGW_II_I_320_men_2">da man auch alle iar von dient der chapellen sande
-                     Nichlas dacz den Ro/eren 2 dn. ze gruntrecht</span>  b) <span class="anno-fn anno-fn-other" data-role="other"><span class="fn-label">Sonstige</span><span class="anno-trigger anno-trigger-fn">mit des gruntherren hant</span>, des <a class="anno-person" data-ref="pe__johann_greiffe_QGW_II_I_390" title="Johann Greiffe [pe__johann_greiffe_QGW_II_I_390]" href="../../../register/persons/pe__johann_greiffe_QGW_II_I_390.html"><span class="anno-attr anno-attr-title"><span class="tei-add">gruntherren</span></span><span class="anno-attr anno-attr-title">erbern
+                     Nichlas dacz den Ro/eren 2 dn. ze gruntrecht</span>  b) <span class="anno-fn anno-fn-other" data-role="other"><span class="fn-label">Sonstige</span><span class="anno-trigger anno-trigger-fn">mit des gruntherren hant</span>, des <a class="anno-person" data-ref="pe__johann_greiffe_QGW_II_I_390" data-hint="Johann Greiffe [pe__johann_greiffe_QGW_II_I_390]" data-hint-type="Person" href="../../../register/persons/pe__johann_greiffe_QGW_II_I_390.html"><span class="anno-attr anno-attr-title"><span class="tei-add">gruntherren</span></span><span class="anno-attr anno-attr-title">erbern
                            ritter</span>
                         <span class="anno-attr anno-attr-title">hern</span> Jansen des Greiifen</a></span> ain
                   phunt dn. geltes auf einem haus, das da leit bei dem Roten Turn und haisset in dem
@@ -240,35 +246,35 @@
                      Greiffen 12 dn. ze gruntrecht</span> und <span class="anno-event" data-ref="ev__QGW_II_I_320_men_4">in der purger Spital ½ lb dn. ze purchrecht</span>
                   und <span class="anno-event" data-ref="ev__QGW_II_I_320_men_5">hinz sant Marein Magdalen 5 dn.
                      ze selgeraet</span> c) <span class="anno-fn anno-fn-other" data-role="other"><span class="fn-label">Sonstige</span><span class="anno-trigger anno-trigger-fn">mit der
-                        perchvrowen hant</span>, der <a class="anno-person" data-ref="pe__anna_QGW_II_I_320" title="Anna [pe__anna_QGW_II_I_320]" href="../../../register/persons/pe__anna_QGW_II_I_320.html"><span class="anno-attr anno-attr-title"><span class="tei-add">perchvrowen</span></span><span class="anno-attr anno-attr-title">erbern</span>
+                        perchvrowen hant</span>, der <a class="anno-person" data-ref="pe__anna_QGW_II_I_320" data-hint="Anna [pe__anna_QGW_II_I_320]" data-hint-type="Person" href="../../../register/persons/pe__anna_QGW_II_I_320.html"><span class="anno-attr anno-attr-title"><span class="tei-add">perchvrowen</span></span><span class="anno-attr anno-attr-title">erbern</span>
                         <span class="anno-attr anno-attr-title">vrowen</span>
                         <span class="anno-attr anno-attr-title">vron</span> Annen, <span class="anno-attr anno-attr-kin" data-corresp="pe__seibot_von_missingdorf_QGW_II_I_320"><span class="tei-add">hausvrowe</span></span>
-                        <a class="anno-person" data-ref="pe__seibot_von_missingdorf_QGW_II_I_320" title="Seibot von Missingdorf von Missingdorf [pe__seibot_von_missingdorf_QGW_II_I_320]" href="../../../register/persons/pe__seibot_von_missingdorf_QGW_II_I_320.html"><span class="anno-attr anno-attr-title">hern</span> Seibots hausvrowe [Seite 75] von
+                        <a class="anno-person" data-ref="pe__seibot_von_missingdorf_QGW_II_I_320" data-hint="Seibot von Missingdorf von Missingdorf [pe__seibot_von_missingdorf_QGW_II_I_320]" data-hint-type="Person" href="../../../register/persons/pe__seibot_von_missingdorf_QGW_II_I_320.html"><span class="anno-attr anno-attr-title">hern</span> Seibots hausvrowe [Seite 75] von
                            Missingdorf</a></a></span>, 3 lb dn. geltes purchrechtes auf Arnolts
                   weingarten im Stadel, der da leit in dem Cheswassergraben und haisset der Jude,
                      <span class="anno-event" data-ref="ev__QGW_II_I_320_men_6">da man auch alle iar von dient
                      der egenanten vron Annen fu/emfthalben emmer weins ze perchrecht und
                      fu/emfthalben phennich ze voitrecht</span>  d) <span class="anno-fn anno-fn-other" data-role="other"><span class="fn-label">Sonstige</span><span class="anno-trigger anno-trigger-fn">mit des gruntherren hant</span>
-                     <a class="anno-person" data-ref="pe__michael_schoenhelfer_QGW_II_I_320" title="Michael Schönhelfer [pe__michael_schoenhelfer_QGW_II_I_320]" href="../../../register/persons/pe__michael_schoenhelfer_QGW_II_I_320.html"><span class="anno-attr anno-attr-title"><span class="tei-add">gruntherren</span></span> Michels des Schönnhelfer,
+                     <a class="anno-person" data-ref="pe__michael_schoenhelfer_QGW_II_I_320" data-hint="Michael Schönhelfer [pe__michael_schoenhelfer_QGW_II_I_320]" data-hint-type="Person" href="../../../register/persons/pe__michael_schoenhelfer_QGW_II_I_320.html"><span class="anno-attr anno-attr-title"><span class="tei-add">gruntherren</span></span> Michels des Schönnhelfer,
                            <span class="anno-attr anno-attr-occ" data-corresp="org__wien-st_johann_in_der_siechenals">maister</span> und <span class="anno-attr anno-attr-occ" data-corresp="org__wien-st_johann_in_der_siechenals">phleger</span> des
                         hauses dacz sant Johans zu/e der Siechen Alsse</a></span> 2 lb dn. geltes
                   purchrechts auf Chunrats des Swaernchophs haus und paumgarten und weingarten
                   hinden daran, das alles gelegen ist in der Siechen Alsse zenaehst Fridreichs haus
                   des Gusel (belastet mit 49 dn. Grundrecht). Als ersten Kaplan und Verweser dieser
-                  Messe <span class="anno-trigger anno-trigger-disp">bestellt</span> sie ihren <span class="anno-fn anno-fn-recipient" data-role="recipient"><span class="fn-label">Empfänger*in</span><a class="anno-person" data-ref="pe__michael_von_nikolsburg" title="Michael von Nikolsburg von Nikolsburg [pe__michael_von_nikolsburg]" href="../../../register/persons/pe__michael_von_nikolsburg.html"><span class="anno-attr anno-attr-occ" data-corresp="org__wien-st_stephan-altar_st_ulrich-messe_graf"><span class="tei-add">Kaplan</span></span>
+                  Messe <span class="anno-trigger anno-trigger-disp">bestellt</span> sie ihren <span class="anno-fn anno-fn-recipient" data-role="recipient"><span class="fn-label">Empfänger*in</span><a class="anno-person" data-ref="pe__michael_von_nikolsburg" data-hint="Michael von Nikolsburg von Nikolsburg [pe__michael_von_nikolsburg]" data-hint-type="Person" href="../../../register/persons/pe__michael_von_nikolsburg.html"><span class="anno-attr anno-attr-occ" data-corresp="org__wien-st_stephan-altar_st_ulrich-messe_graf"><span class="tei-add">Kaplan</span></span>
                         <span class="anno-attr anno-attr-occ" data-corresp="org__wien-st_stephan-altar_st_ulrich-messe_graf"><span class="tei-add">Verweser</span></span><span class="anno-attr anno-attr-occ" data-corresp="pe__kunigunde_QGW_320">Schreiber</span> Michel von
                         Nicoltspurch</a></span>. Nach ihrem Ableben geht das Recht der Verleihung an
                   ihren ältesten Erben, und sollte ein solcher nicht mehr vorhanden sein, an den
                   Rath der Stadt zu Wien über. Sollte die Messe nicht bei S. Stephan gelesen werden
                   können, so soll sie in eine andere Wiener Kirche verlegt werden.</span>
             </p></section><section class="tei-seal"><h2 class="tei-section-head">Siegelbeschreibung</h2><p><span class="anno-event" data-ref="ev__QGW_II_I_320"><span class="anno-fn anno-fn-witness" data-role="witness"><span class="fn-label">Zeug*in</span>Besiegelt mit
-                     den Siegeln: 1., 2., 3., 4. der Grundherren <a class="anno-person" data-ref="pe__pilgrim_QGW_II_I_320" title="Pilgrim [pe__pilgrim_QGW_II_I_320]" href="../../../register/persons/pe__pilgrim_QGW_II_I_320.html"><span class="tei-add">Grundherr</span></a>
-                     <a class="anno-person" data-ref="pe__johann_greiffe_QGW_II_I_390" title="Johann Greiffe [pe__johann_greiffe_QGW_II_I_390]" href="../../../register/persons/pe__johann_greiffe_QGW_II_I_390.html"><span class="tei-add">Gundherr</span></a>
-                     <a class="anno-person" data-ref="pe__michael_schoenhelfer_QGW_II_I_320" title="Michael Schönhelfer [pe__michael_schoenhelfer_QGW_II_I_320]" href="../../../register/persons/pe__michael_schoenhelfer_QGW_II_I_320.html"><span class="tei-add">Grundherr</span></a> und der <a class="anno-person" data-ref="pe__anna_QGW_II_I_320" title="Anna [pe__anna_QGW_II_I_320]" href="../../../register/persons/pe__anna_QGW_II_I_320.html">Bergfrau</a>, ferner der Schwiegersöhne der
-                     Ausstellerin, 5. <a class="anno-person" data-ref="pe__paul_poll_QGW_II_I_320" title="Paul Poll von Nürnberg [pe__paul_poll_QGW_II_I_320]" href="../../../register/persons/pe__paul_poll_QGW_II_I_320.html"><span class="anno-attr anno-attr-kin" data-corresp="pe__kunigunde_QGW_320"><span class="tei-add">Schwiegersohn</span></span> Pauln des Polln von
-                        Nu/erenberch</a>, 6. <a class="anno-person" data-ref="pe__ruediger_wenig_QGW_II_I_367" title="Rüdiger Wenig [pe__ruediger_wenig_QGW_II_I_367]" href="../../../register/persons/pe__ruediger_wenig_QGW_II_I_367.html"><span class="anno-attr anno-attr-kin" data-corresp="pe__kunigunde_QGW_320"><span class="tei-add">Schwiegersohn</span></span>
-                        Rugers, des <span class="anno-attr anno-attr-kin" data-corresp="pe__leopold_wenig_QGW_II_I_320"><span class="tei-add">sun</span></span><a class="anno-person" data-ref="pe__leopold_wenig_QGW_II_I_320" title="Leopold Wenig († 03.05.1369) [pe__leopold_wenig_QGW_II_I_320]" href="../../../register/persons/pe__leopold_wenig_QGW_II_I_320.html">Wenigen<span class="anno-attr anno-attr-title">hern</span>Leupolts</a>sun</a>, 7. <a class="anno-person" data-ref="pe__niklas_swertslaher_QGW_II_I_320" title="Niklas Swertslaher Swertslaher [pe__niklas_swertslaher_QGW_II_I_320]" href="../../../register/persons/pe__niklas_swertslaher_QGW_II_I_320.html"><span class="anno-attr anno-attr-kin" data-corresp="pe__kunigunde_QGW_320"><span class="tei-add">Schwiegersohn</span></span>
-                        Nichlas, <span class="anno-attr anno-attr-kin" data-corresp="pe__christian_swertslaher_QGW_II_I_320"><span class="tei-add">sun</span></span><a class="anno-person" data-ref="pe__christian_swertslaher_QGW_II_I_320" title="Christian Swertslaher († 18.05.1330) [pe__christian_swertslaher_QGW_II_I_320]" href="../../../register/persons/pe__christian_swertslaher_QGW_II_I_320.html"><span class="anno-attr anno-attr-title">hern</span> Christans sun, des swertslacher</a></a> , 8. <a class="anno-person" data-ref="pe__johann_mauter_von_neudorf" title="Johann Mauter von Neudorf [pe__johann_mauter_von_neudorf]" href="../../../register/persons/pe__johann_mauter_von_neudorf.html"><span class="anno-attr anno-attr-kin" data-corresp="pe__kunigunde_QGW_320"><span class="tei-add">Schwiegersohn</span></span>
+                     den Siegeln: 1., 2., 3., 4. der Grundherren <a class="anno-person" data-ref="pe__pilgrim_QGW_II_I_320" data-hint="Pilgrim [pe__pilgrim_QGW_II_I_320]" data-hint-type="Person" href="../../../register/persons/pe__pilgrim_QGW_II_I_320.html"><span class="tei-add">Grundherr</span></a>
+                     <a class="anno-person" data-ref="pe__johann_greiffe_QGW_II_I_390" data-hint="Johann Greiffe [pe__johann_greiffe_QGW_II_I_390]" data-hint-type="Person" href="../../../register/persons/pe__johann_greiffe_QGW_II_I_390.html"><span class="tei-add">Gundherr</span></a>
+                     <a class="anno-person" data-ref="pe__michael_schoenhelfer_QGW_II_I_320" data-hint="Michael Schönhelfer [pe__michael_schoenhelfer_QGW_II_I_320]" data-hint-type="Person" href="../../../register/persons/pe__michael_schoenhelfer_QGW_II_I_320.html"><span class="tei-add">Grundherr</span></a> und der <a class="anno-person" data-ref="pe__anna_QGW_II_I_320" data-hint="Anna [pe__anna_QGW_II_I_320]" data-hint-type="Person" href="../../../register/persons/pe__anna_QGW_II_I_320.html">Bergfrau</a>, ferner der Schwiegersöhne der
+                     Ausstellerin, 5. <a class="anno-person" data-ref="pe__paul_poll_QGW_II_I_320" data-hint="Paul Poll von Nürnberg [pe__paul_poll_QGW_II_I_320]" data-hint-type="Person" href="../../../register/persons/pe__paul_poll_QGW_II_I_320.html"><span class="anno-attr anno-attr-kin" data-corresp="pe__kunigunde_QGW_320"><span class="tei-add">Schwiegersohn</span></span> Pauln des Polln von
+                        Nu/erenberch</a>, 6. <a class="anno-person" data-ref="pe__ruediger_wenig_QGW_II_I_367" data-hint="Rüdiger Wenig [pe__ruediger_wenig_QGW_II_I_367]" data-hint-type="Person" href="../../../register/persons/pe__ruediger_wenig_QGW_II_I_367.html"><span class="anno-attr anno-attr-kin" data-corresp="pe__kunigunde_QGW_320"><span class="tei-add">Schwiegersohn</span></span>
+                        Rugers, des <span class="anno-attr anno-attr-kin" data-corresp="pe__leopold_wenig_QGW_II_I_320"><span class="tei-add">sun</span></span><a class="anno-person" data-ref="pe__leopold_wenig_QGW_II_I_320" data-hint="Leopold Wenig († 03.05.1369) [pe__leopold_wenig_QGW_II_I_320]" data-hint-type="Person" href="../../../register/persons/pe__leopold_wenig_QGW_II_I_320.html">Wenigen<span class="anno-attr anno-attr-title">hern</span>Leupolts</a>sun</a>, 7. <a class="anno-person" data-ref="pe__niklas_swertslaher_QGW_II_I_320" data-hint="Niklas Swertslaher Swertslaher [pe__niklas_swertslaher_QGW_II_I_320]" data-hint-type="Person" href="../../../register/persons/pe__niklas_swertslaher_QGW_II_I_320.html"><span class="anno-attr anno-attr-kin" data-corresp="pe__kunigunde_QGW_320"><span class="tei-add">Schwiegersohn</span></span>
+                        Nichlas, <span class="anno-attr anno-attr-kin" data-corresp="pe__christian_swertslaher_QGW_II_I_320"><span class="tei-add">sun</span></span><a class="anno-person" data-ref="pe__christian_swertslaher_QGW_II_I_320" data-hint="Christian Swertslaher († 18.05.1330) [pe__christian_swertslaher_QGW_II_I_320]" data-hint-type="Person" href="../../../register/persons/pe__christian_swertslaher_QGW_II_I_320.html"><span class="anno-attr anno-attr-title">hern</span> Christans sun, des swertslacher</a></a> , 8. <a class="anno-person" data-ref="pe__johann_mauter_von_neudorf" data-hint="Johann Mauter von Neudorf [pe__johann_mauter_von_neudorf]" data-hint-type="Person" href="../../../register/persons/pe__johann_mauter_von_neudorf.html"><span class="anno-attr anno-attr-kin" data-corresp="pe__kunigunde_QGW_320"><span class="tei-add">Schwiegersohn</span></span>
                         Jansen, des <span class="anno-attr anno-attr-prof">mauter</span>
                         von Neuendorf</a>.</span></span>
             </p></section>
@@ -329,7 +335,7 @@
          dem TEI in mehreren Untertabellen, Personen/Orgs/Orte,
          Ereignisse, Dispositivformeln, Editorische Ergaenzungen. Wird
          per JS aus den entsprechenden Spans im Body aufgebaut. -->
-    <section class="annotations-view" id="factoid-view" aria-label="Annotationen">
+    <section class="annotations-view" id="annotations-view" aria-label="Annotationen">
         <header class="annotations-header">
             <h2 class="annotations-title">Annotationen</h2>
             <span class="annotations-summary"></span>
@@ -375,13 +381,14 @@
         </div>
     </footer>
 
-    <script src="../../../static/js/core.js?v=20260511112948"></script>
-    <script src="../../../static/js/provenance.js?v=20260511112948"></script>
-    <script src="../../../static/js/basket.js?v=20260511112948"></script>
+    <script src="../../../static/js/core.js?v=20260511125458"></script>
+    <script src="../../../static/js/tip.js?v=20260511125458"></script>
+    <script src="../../../static/js/hint.js?v=20260511125458"></script>
+    <script src="../../../static/js/basket.js?v=20260511125458"></script>
     
-<script src="../../../static/js/tooltips.js?v=20260511112948"></script>
-<script src="../../../static/js/facsimile.js?v=20260511112948"></script>
-<script src="../../../static/js/document.js?v=20260511112948"></script>
+<script src="../../../static/js/facsimile.js?v=20260511125458"></script>
+<script src="../../../static/js/document.js?v=20260511125458"></script>
+<script src="../../../static/js/basket-mount.js?v=20260511125458"></script>
 
 </body>
 </html>

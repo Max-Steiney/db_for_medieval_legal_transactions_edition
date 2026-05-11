@@ -3,22 +3,22 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <meta http-equiv="Content-Security-Policy" content="default-src 'self'; script-src 'self'; style-src 'self'; font-src 'self'; img-src 'self' data: https://images.monasterium.net https://www.monasterium.net; connect-src 'self'; frame-ancestors 'none'; base-uri 'self'; form-action 'self'; upgrade-insecure-requests">
+    <meta http-equiv="Content-Security-Policy" content="default-src 'self'; script-src 'self'; style-src 'self'; font-src 'self'; img-src 'self' data: https://images.monasterium.net https://www.monasterium.net; connect-src 'self'; base-uri 'self'; form-action 'self'; upgrade-insecure-requests">
     <meta name="referrer" content="strict-origin-when-cross-origin">
     <meta http-equiv="Permissions-Policy" content="camera=(), microphone=(), geolocation=(), interest-cohort=()">
     <title>Rudolf von Habsburg (&dagger; 24.01.1370), Datenbank</title>
     <link rel="preload" as="font" type="font/woff2" crossorigin
           href="../../static/fonts/inter-400-latin.woff2">
-    <link rel="stylesheet" href="../../static/css/fonts.css?v=20260511112948">
-    <link rel="stylesheet" href="../../static/css/tokens.css?v=20260511112948">
-    <link rel="stylesheet" href="../../static/css/base.css?v=20260511112948">
-    <link rel="stylesheet" href="../../static/css/components.css?v=20260511112948">
-    <link rel="stylesheet" href="../../static/css/responsive.css?v=20260511112948">
-    <link rel="stylesheet" href="../../static/css/print.css?v=20260511112948">
-    <link rel="stylesheet" href="../../static/css/provenance.css?v=20260511112948">
+    <link rel="stylesheet" href="../../static/css/fonts.css?v=20260511125458">
+    <link rel="stylesheet" href="../../static/css/tokens.css?v=20260511125458">
+    <link rel="stylesheet" href="../../static/css/base.css?v=20260511125458">
+    <link rel="stylesheet" href="../../static/css/components.css?v=20260511125458">
+    <link rel="stylesheet" href="../../static/css/responsive.css?v=20260511125458">
+    <link rel="stylesheet" href="../../static/css/print.css?v=20260511125458">
+    <link rel="stylesheet" href="../../static/css/tip.css?v=20260511125458">
     
-<link rel="stylesheet" href="../../static/css/document.css?v=20260511112948">
-<link rel="stylesheet" href="../../static/css/person.css?v=20260511112948">
+<link rel="stylesheet" href="../../static/css/document.css?v=20260511125458">
+<link rel="stylesheet" href="../../static/css/person.css?v=20260511125458">
 
 </head>
 <body data-root-path="../.."
@@ -48,8 +48,6 @@
         <a href="../../register/persons.html">Personen</a>
         
         <a href="../../register/orgs.html">Organisationen</a>
-        
-        <a href="../../register/places.html">Orte</a>
         
     </div>
 </div>
@@ -91,7 +89,7 @@
     </div>
 </div>
 
-                <a href="../../korb.html" class="nav-basket" aria-label="Wissenskorb">
+                <a href="../../korb.html" class="nav-basket" aria-label="Datenkorb">
                     <svg width="18" height="18" viewBox="0 0 18 18" fill="none" aria-hidden="true">
                         <path d="M3 5h12l-1.2 8.5a1 1 0 0 1-1 .85H5.2a1 1 0 0 1-1-.85L3 5z"
                               stroke="currentColor" stroke-width="1.4" fill="none"
@@ -112,11 +110,23 @@
 
     <div class="person-toolbar">
         <div class="person-toolbar-inner">
-            <nav class="person-breadcrumb" aria-label="Position">
-                <a href="../../register/persons.html">Personenregister</a>
-                <span class="bc-sep">&rsaquo;</span>
-                <span class="bc-doc"><strong>Rudolf von Habsburg</strong></span>
-            </nav>
+            <div class="person-toolbar-row">
+                <nav class="person-breadcrumb" aria-label="Position">
+                    <a href="../../register/persons.html">Personenregister</a>
+                    <span class="bc-sep">&rsaquo;</span>
+                    <span class="bc-doc"><strong>Rudolf von Habsburg</strong></span>
+                </nav>
+                <div class="person-toolbar-actions">
+                    <span class="toolbar-basket-mount"
+                          data-basket-type="person"
+                          data-basket-id="pe__rudolf_iv_herzog_von_oesterreich_QGW_II_I_769"
+                          data-basket-label="Rudolf von Habsburg"
+                          data-basket-url="register/persons/pe__rudolf_iv_herzog_von_oesterreich_QGW_II_I_769.html"
+                          data-basket-sex="m"
+                          data-basket-active-min="1358"
+                          data-basket-active-max="1409"></span>
+                </div>
+            </div>
             <div class="person-toolbar-meta">
                 <span class="meta-pair">
                     <span class="meta-label">Geschlecht</span>
@@ -124,7 +134,33 @@
                 </span>
                 
                 <span class="meta-pair">
-                    <span class="meta-label">Belegt</span>
+                    <span class="meta-label">Belegt
+<span class="tip-wrap">
+    <button type="button" class="tip-trigger tip-trigger--icon"
+            aria-expanded="false" aria-haspopup="dialog"
+            aria-controls="person-belegt"
+            data-tip="person-belegt"
+            aria-label="Definition: Beleg-Zeitraum">
+        <svg width="13" height="13" viewBox="0 0 16 16" aria-hidden="true">
+            <circle cx="8" cy="8" r="7" stroke="currentColor" stroke-width="1.4" fill="none"/>
+            <text x="8" y="11.6" text-anchor="middle" font-size="9.5" font-weight="700"
+                  fill="currentColor" font-family="Georgia, serif">i</text>
+        </svg>
+    </button>
+    <aside class="tip-popover tip-popover--glossary"
+           id="person-belegt" role="dialog" aria-hidden="true"
+           aria-label="Definition: Beleg-Zeitraum">
+        <header class="tip-head">
+            <h3 class="tip-title">Beleg-Zeitraum</h3>
+            <button type="button" class="tip-close" aria-label="Schlie&szlig;en">&times;</button>
+        </header>
+        <div class="tip-body">
+            <p>Erste und letzte Datierung einer Quelle, in der die Person erscheint. Bei einzelnem Beleg wird nur ein Jahr angegeben.</p>
+            
+        </div>
+    </aside>
+</span>
+</span>
                     <span class="meta-value">1358 bis 1409</span>
                 </span>
                 
@@ -134,6 +170,10 @@
                     <span class="meta-value">24.01.1370</span>
                 </span>
                 
+                <span class="meta-pair">
+                    <span class="meta-label">Quellen</span>
+                    <span class="meta-value">45</span>
+                </span>
                 <span class="meta-pair person-id-pair">
                     <span class="meta-label">ID</span>
                     <code class="meta-value person-id">pe__rudolf_iv_herzog_von_oesterreich_QGW_II_I_769</code>
@@ -150,10 +190,11 @@
             
         </h1>
         
+        
         <p class="person-note">Herzog von Österreich</p>
         
         
-        <p class="person-titles">
+        <p class="person-titles" data-collapsible="22">
             <span class="pt-label">In den Quellen genannt als</span>
             <span class="pt-chip">Herzog</span><span class="pt-chip">Erzherzog</span><span class="pt-chip">Herzogs</span><span class="pt-chip">hochgeporn|fürsten</span>
         </p>
@@ -163,7 +204,44 @@
             <a class="ext-link" href="https://www.wienwiki.at/?curid=534" target="_blank" rel="noopener noreferrer">Wien-Wiki: Rudolf IV.</a>
         </p>
         
+        
+        <p class="person-extlinks">
+            
+            <a class="ext-link" href="https://www.geschichtewiki.wien.gv.at/Special:URIResolver/?curid=534" target="_blank" rel="noopener noreferrer">Authority-Eintrag</a>
+            
+        </p>
+        
     </header>
+
+    
+    <section class="role-strip" aria-label="Rollen in Rechtsgeschäften">
+        <h2 class="role-strip-title">Rollen in Rechtsgeschäften</h2>
+        <div class="role-strip-cells">
+            
+            <div class="role-cell role-cell-issuer">
+                <span class="role-cell-count">23</span>
+                <span class="role-cell-label">Aussteller*in</span>
+            </div>
+            
+            <div class="role-cell role-cell-recipient">
+                <span class="role-cell-count">1</span>
+                <span class="role-cell-label">Empfänger*in</span>
+            </div>
+            
+            <div class="role-cell role-cell-witness">
+                <span class="role-cell-count">1</span>
+                <span class="role-cell-label">Zeuge / Siegler*in</span>
+            </div>
+            
+            <div class="role-cell role-cell-other">
+                <span class="role-cell-count">11</span>
+                <span class="role-cell-label">Sonstige</span>
+            </div>
+            
+        </div>
+        <p class="role-strip-hint">Summe Rollen-Belegungen: 36. Mehrfach-Rollen pro Quelle sind möglich.</p>
+    </section>
+    
 
     
 
@@ -180,6 +258,7 @@
                 <span class="rel-block-count">3</span>
                 <span class="rel-block-hint">Verwandtschaftsverhältnisse, wie sie in den Quellen explizit benannt werden.</span>
             </header>
+            
             <table class="rel-table">
                 <thead>
                     <tr>
@@ -200,7 +279,7 @@
                         <td class="rel-col-label"><em>Oheim</em></td>
                         <td class="rel-col-perspective">
                             
-                                Albrecht von Hohenberg → Rudolf von Habsburg
+                                Albrecht von Hohenberg &rsaquo; Rudolf von Habsburg
                             
                         </td>
                         <td class="rel-col-source">
@@ -219,7 +298,7 @@
                         <td class="rel-col-label"><em>Schwester</em></td>
                         <td class="rel-col-perspective">
                             
-                                Margarethe von Brandenburg → Rudolf von Habsburg
+                                Margarethe von Brandenburg &rsaquo; Rudolf von Habsburg
                             
                         </td>
                         <td class="rel-col-source">
@@ -238,7 +317,7 @@
                         <td class="rel-col-label"><em>wittib</em></td>
                         <td class="rel-col-perspective">
                             
-                                Katharina → Rudolf von Habsburg
+                                Katharina &rsaquo; Rudolf von Habsburg
                             
                         </td>
                         <td class="rel-col-source">
@@ -267,6 +346,7 @@
                 <span class="rel-block-count">16</span>
                 <span class="rel-block-hint">Berufs- oder Amtsbezeichnung in Bezug auf eine Institution.</span>
             </header>
+            
             <table class="rel-table">
                 <thead>
                     <tr>
@@ -287,7 +367,7 @@
                         <td class="rel-col-label"><em>Herzog</em></td>
                         <td class="rel-col-perspective">
                             
-                                Rudolf von Habsburg → Herzogtum Österreich
+                                Rudolf von Habsburg &rsaquo; Herzogtum Österreich
                             
                         </td>
                         <td class="rel-col-source">
@@ -306,7 +386,7 @@
                         <td class="rel-col-label"><em>Herzog</em></td>
                         <td class="rel-col-perspective">
                             
-                                Rudolf von Habsburg → Herzogtum Österreich
+                                Rudolf von Habsburg &rsaquo; Herzogtum Österreich
                             
                         </td>
                         <td class="rel-col-source">
@@ -325,7 +405,7 @@
                         <td class="rel-col-label"><em>Herzog</em></td>
                         <td class="rel-col-perspective">
                             
-                                Rudolf von Habsburg → Herzogtum Österreich
+                                Rudolf von Habsburg &rsaquo; Herzogtum Österreich
                             
                         </td>
                         <td class="rel-col-source">
@@ -344,7 +424,7 @@
                         <td class="rel-col-label"><em>Herzog</em></td>
                         <td class="rel-col-perspective">
                             
-                                Rudolf von Habsburg → Herzogtum Österreich
+                                Rudolf von Habsburg &rsaquo; Herzogtum Österreich
                             
                         </td>
                         <td class="rel-col-source">
@@ -363,7 +443,7 @@
                         <td class="rel-col-label"><em>herzog</em></td>
                         <td class="rel-col-perspective">
                             
-                                Rudolf von Habsburg → Herzogtum Österreich
+                                Rudolf von Habsburg &rsaquo; Herzogtum Österreich
                             
                         </td>
                         <td class="rel-col-source">
@@ -382,7 +462,7 @@
                         <td class="rel-col-label"><em>erzherzog</em></td>
                         <td class="rel-col-perspective">
                             
-                                Rudolf von Habsburg → Herzogtum Österreich
+                                Rudolf von Habsburg &rsaquo; Herzogtum Österreich
                             
                         </td>
                         <td class="rel-col-source">
@@ -401,7 +481,7 @@
                         <td class="rel-col-label"><em>herzog</em></td>
                         <td class="rel-col-perspective">
                             
-                                Rudolf von Habsburg → Herzogtum Österreich
+                                Rudolf von Habsburg &rsaquo; Herzogtum Österreich
                             
                         </td>
                         <td class="rel-col-source">
@@ -420,7 +500,7 @@
                         <td class="rel-col-label"><em>Herzog</em></td>
                         <td class="rel-col-perspective">
                             
-                                Rudolf von Habsburg → Herzogtum Österreich
+                                Rudolf von Habsburg &rsaquo; Herzogtum Österreich
                             
                         </td>
                         <td class="rel-col-source">
@@ -439,7 +519,7 @@
                         <td class="rel-col-label"><em>Herzog</em></td>
                         <td class="rel-col-perspective">
                             
-                                Rudolf von Habsburg → Herzogtum Österreich
+                                Rudolf von Habsburg &rsaquo; Herzogtum Österreich
                             
                         </td>
                         <td class="rel-col-source">
@@ -458,7 +538,7 @@
                         <td class="rel-col-label"><em>Herzog</em></td>
                         <td class="rel-col-perspective">
                             
-                                Rudolf von Habsburg → Herzogtum Österreich
+                                Rudolf von Habsburg &rsaquo; Herzogtum Österreich
                             
                         </td>
                         <td class="rel-col-source">
@@ -477,7 +557,7 @@
                         <td class="rel-col-label"><em>Herzog</em></td>
                         <td class="rel-col-perspective">
                             
-                                Rudolf von Habsburg → Herzogtum Österreich
+                                Rudolf von Habsburg &rsaquo; Herzogtum Österreich
                             
                         </td>
                         <td class="rel-col-source">
@@ -496,7 +576,7 @@
                         <td class="rel-col-label"><em>Herzog</em></td>
                         <td class="rel-col-perspective">
                             
-                                Rudolf von Habsburg → Herzogtum Österreich
+                                Rudolf von Habsburg &rsaquo; Herzogtum Österreich
                             
                         </td>
                         <td class="rel-col-source">
@@ -515,7 +595,7 @@
                         <td class="rel-col-label"><em>Herzog</em></td>
                         <td class="rel-col-perspective">
                             
-                                Rudolf von Habsburg → Herzogtum Österreich
+                                Rudolf von Habsburg &rsaquo; Herzogtum Österreich
                             
                         </td>
                         <td class="rel-col-source">
@@ -534,7 +614,7 @@
                         <td class="rel-col-label"><em>Herzog</em></td>
                         <td class="rel-col-perspective">
                             
-                                Rudolf von Habsburg → Herzogtum Österreich
+                                Rudolf von Habsburg &rsaquo; Herzogtum Österreich
                             
                         </td>
                         <td class="rel-col-source">
@@ -553,7 +633,7 @@
                         <td class="rel-col-label"><em>Herzog</em></td>
                         <td class="rel-col-perspective">
                             
-                                Rudolf von Habsburg → Herzogtum Österreich
+                                Rudolf von Habsburg &rsaquo; Herzogtum Österreich
                             
                         </td>
                         <td class="rel-col-source">
@@ -572,7 +652,7 @@
                         <td class="rel-col-label"><em>Herzog</em></td>
                         <td class="rel-col-perspective">
                             
-                                Rudolf von Habsburg → Herzogtum Österreich
+                                Rudolf von Habsburg &rsaquo; Herzogtum Österreich
                             
                         </td>
                         <td class="rel-col-source">
@@ -590,18 +670,32 @@
         
         
         
+        
+        
+        
+        
+        
+        
     </section>
     
 
     
     <section class="person-sources" aria-label="Quellen mit Nennung">
         <h2 class="section-head">Quellen mit Nennung</h2>
+        
+        <div class="table-filter">
+            <input type="search" class="table-filter-input" data-target="src" placeholder="In den Quellen filtern&hellip;" aria-label="In den Quellen filtern">
+            <span class="table-filter-status"></span>
+        </div>
+        
         <table class="person-source-table">
             <thead>
                 <tr>
                     <th scope="col" class="src-col-idno">Nr.</th>
                     <th scope="col" class="src-col-date">Datum</th>
                     <th scope="col" class="src-col-corpus">Quellenkorpus</th>
+                    <th scope="col" class="src-col-label">Bezeichnung</th>
+                    <th scope="col" class="src-col-role">Rolle</th>
                     <th scope="col" class="src-col-regest">Regest</th>
                 </tr>
             </thead>
@@ -611,6 +705,11 @@
                     <td class="src-col-idno"><a href="../../documents/QGW/Vienna_1177-1414_ready/512.html">512</a></td>
                     <td class="src-col-date">1358 X 02</td>
                     <td class="src-col-corpus">QGW II/1 (1177–1414)</td>
+                    <td class="src-col-label"><em>Herzog</em></td>
+                    <td class="src-col-role">
+                        <span class="role-chip role-chip-issuer">Aussteller*in</span>
+                        
+                    </td>
                     <td class="src-col-regest">Herzog Rudolf IV. weist die Absammler seiner Bürgersteuer zu Wien an, seinem Bürgermeister Leup. dem Poltz 40 lb dn. für ein ros, das er von ihm gekauft und seinem Kammermeister Frider. von Walse von…</td>
                 </tr>
             
@@ -618,6 +717,11 @@
                     <td class="src-col-idno"><a href="../../documents/QGW/Vienna_1177-1414_ready/514.html">514 (= Privil. Nr. 9)</a></td>
                     <td class="src-col-date">1358 XI 01</td>
                     <td class="src-col-corpus">QGW II/1 (1177–1414)</td>
+                    <td class="src-col-label"><em>-</em></td>
+                    <td class="src-col-role">
+                        
+                        -
+                    </td>
                     <td class="src-col-regest">Herzog Rudolf IV. nimmt die Klagen des Bürgermeisters Leupolt des Poltz und des Rathes der Stadt zu Wien über die Belästigungen, welche die Wiener Bürger von den Leuten in den zwain dörfern ze…</td>
                 </tr>
             
@@ -625,6 +729,11 @@
                     <td class="src-col-idno"><a href="../../documents/QGW/Vienna_1177-1414_ready/515.html">515</a></td>
                     <td class="src-col-date">1358 XI 03</td>
                     <td class="src-col-corpus">QGW II/1 (1177–1414)</td>
+                    <td class="src-col-label"><em>Herzog</em></td>
+                    <td class="src-col-role">
+                        <span class="role-chip role-chip-issuer">Aussteller*in</span>
+                        
+                    </td>
                     <td class="src-col-regest">Herzog Rudolf IV. entscheidet in einem Streite zwischen den Bürgern von Neustadt und denen von Wien nach Einsichtnahme der ihm und seinen in der Burg versammelten Räthen seinem Oheim graf Albrecht…</td>
                 </tr>
             
@@ -632,6 +741,11 @@
                     <td class="src-col-idno"><a href="../../documents/QGW/Vienna_1177-1414_ready/516.html">516</a></td>
                     <td class="src-col-date">1358 XI 30</td>
                     <td class="src-col-corpus">QGW II/1 (1177–1414)</td>
+                    <td class="src-col-label"><em>-</em></td>
+                    <td class="src-col-role">
+                        <span class="role-chip role-chip-issuer">Aussteller*in</span>
+                        
+                    </td>
                     <td class="src-col-regest">Herzog Rudolf IV. befiehlt den Absammlern seiner Bürgersteuer zu Wien, seinem chamrer Enderlein 15 lb dn. für ein Haus in der Neuluken vor Widmertor zu geben, das er von ihm gekauft und dem gerenden…</td>
                 </tr>
             
@@ -639,6 +753,11 @@
                     <td class="src-col-idno"><a href="../../documents/QGW/Vienna_1177-1414_ready/517.html">517</a></td>
                     <td class="src-col-date">1358 XII 04</td>
                     <td class="src-col-corpus">QGW II/1 (1177–1414)</td>
+                    <td class="src-col-label"><em>Herzog</em></td>
+                    <td class="src-col-role">
+                        <span class="role-chip role-chip-issuer">Aussteller*in</span>
+                        
+                    </td>
                     <td class="src-col-regest">Herzog Rudolf IV. befiehlt den Absammlern seiner Bürgersteuer zu Wien, dass sie Hertlein, dem kramer, seinem Bürger zu Wien, 39 lb dn. geben, die er ihm für ein sammtenes, ein seidenes und ein…</td>
                 </tr>
             
@@ -646,6 +765,11 @@
                     <td class="src-col-idno"><a href="../../documents/QGW/Vienna_1177-1414_ready/518.html">518</a></td>
                     <td class="src-col-date">1358 XII 11</td>
                     <td class="src-col-corpus">QGW II/1 (1177–1414)</td>
+                    <td class="src-col-label"><em>-</em></td>
+                    <td class="src-col-role">
+                        <span class="role-chip role-chip-issuer">Aussteller*in</span>
+                        
+                    </td>
                     <td class="src-col-regest">Herzog Rudolf IV. befiehlt den Absammlern seiner Bürgersteuer zu Wien, dass sie Niclasen, seinem perchmaister von Gumpoltzkirichen, 10 lb dn. geben sollen für einen Stadel, den dieser in dem…</td>
                 </tr>
             
@@ -653,6 +777,11 @@
                     <td class="src-col-idno"><a href="../../documents/QGW/Vienna_1177-1414_ready/529.html">529 (= Privil. Nr. 10)</a></td>
                     <td class="src-col-date">1359 III 21</td>
                     <td class="src-col-corpus">QGW II/1 (1177–1414)</td>
+                    <td class="src-col-label"><em>-</em></td>
+                    <td class="src-col-role">
+                        
+                        -
+                    </td>
                     <td class="src-col-regest">Herzog Rudolf IV. ordnet anstatt der Münze, auf die er für dieses Jahr verzichtet, die Einhebung eines Ungeldes, und zwar des zehnten Pfennings von allem Gelde, das bei dem Ausschanke von Wein, Meth…</td>
                 </tr>
             
@@ -660,6 +789,11 @@
                     <td class="src-col-idno"><a href="../../documents/QGW/Vienna_1177-1414_ready/532.html">532</a></td>
                     <td class="src-col-date">1359 VI 19</td>
                     <td class="src-col-corpus">QGW II/1 (1177–1414)</td>
+                    <td class="src-col-label"><em>-</em></td>
+                    <td class="src-col-role">
+                        
+                        -
+                    </td>
                     <td class="src-col-regest">Herman, sun hern Hagens sun von Spilberch, dem got genad, verkauft, nachdem ihm und seinem Bruder Hagen ihr Oheim Oheim, der Wiener Bürger Dietreich der Flusthart, allen ihren Besitz übergeben hatte,…</td>
                 </tr>
             
@@ -667,6 +801,11 @@
                     <td class="src-col-idno"><a href="../../documents/QGW/Vienna_1177-1414_ready/533.html">533</a></td>
                     <td class="src-col-date">1359 VII 13</td>
                     <td class="src-col-corpus">QGW II/1 (1177–1414)</td>
+                    <td class="src-col-label"><em>Herzog</em></td>
+                    <td class="src-col-role">
+                        <span class="role-chip role-chip-issuer">Aussteller*in</span>
+                        
+                    </td>
                     <td class="src-col-regest">Herzog Rudolf IV. beurkundet, dass ihm sein Wiener Bürger Jans der Schu/echler die Güter, die er als herzogliches Lehen innehatte, mit der Bitte aufgelassen habe, sie dem Wiener Bürger Seifriden dem…</td>
                 </tr>
             
@@ -674,6 +813,11 @@
                     <td class="src-col-idno"><a href="../../documents/QGW/Vienna_1177-1414_ready/535.html">535 (= Privil. Nr. 11)</a></td>
                     <td class="src-col-date">1359 X 22</td>
                     <td class="src-col-corpus">QGW II/1 (1177–1414)</td>
+                    <td class="src-col-label"><em>-</em></td>
+                    <td class="src-col-role">
+                        
+                        -
+                    </td>
                     <td class="src-col-regest">Wien Rudolf IV., phallenz erzherzog ze Osterreich etc., verfügt in Ansehung der gepresten, welche seine Wiener Bürger wegen des Holzes und der Flösse, die man Donau abwärts (hinnaw) führt, haben,…</td>
                 </tr>
             
@@ -681,6 +825,11 @@
                     <td class="src-col-idno"><a href="../../documents/QGW/Vienna_1177-1414_ready/536.html">536</a></td>
                     <td class="src-col-date">1359 XI 02</td>
                     <td class="src-col-corpus">QGW II/1 (1177–1414)</td>
+                    <td class="src-col-label"><em>-</em></td>
+                    <td class="src-col-role">
+                        
+                        -
+                    </td>
                     <td class="src-col-regest">Kathrei, hausvrau hern Albrechts hausvrau des Schenken, chelrmaister herzog Rudolfs, vermacht ihrem Manne alle Güter, die ihr von ihrem Vater Pauln dem Vierdung von der Neunstat anerstorben, ihrer…</td>
                 </tr>
             
@@ -688,6 +837,11 @@
                     <td class="src-col-idno"><a href="../../documents/QGW/Vienna_1177-1414_ready/537.html">537</a></td>
                     <td class="src-col-date">1359 XII 14</td>
                     <td class="src-col-corpus">QGW II/1 (1177–1414)</td>
+                    <td class="src-col-label"><em>-</em></td>
+                    <td class="src-col-role">
+                        
+                        -
+                    </td>
                     <td class="src-col-regest">Bruder Pilgreim von La, prior, und aller convent gemain Prediger ordens ze Wienn bestätigen, dass ihnen her Heinreich von Oting, schreiber in der chanzlerei Herzog Rudolfs, 1 lb dn. ewiges geltes…</td>
                 </tr>
             
@@ -695,6 +849,11 @@
                     <td class="src-col-idno"><a href="../../documents/QGW/Vienna_1177-1414_ready/549.html">549 (= Privil. Nr. 12)</a></td>
                     <td class="src-col-date">1360 VI 28</td>
                     <td class="src-col-corpus">QGW II/1 (1177–1414)</td>
+                    <td class="src-col-label"><em>-</em></td>
+                    <td class="src-col-role">
+                        
+                        -
+                    </td>
                     <td class="src-col-regest">Herzog Rudolf IV. schafft in Ansehung der Nothlage, in welche die Stadt Wien gerathen ist, die Burgrechte, Ueberzinse und Dienste auf den Hofstätten und Häusern in der Stadt und den Vorstädten von…</td>
                 </tr>
             
@@ -702,6 +861,11 @@
                     <td class="src-col-idno"><a href="../../documents/QGW/Vienna_1177-1414_ready/554.html">554</a></td>
                     <td class="src-col-date">1360 VII 31</td>
                     <td class="src-col-corpus">QGW II/1 (1177–1414)</td>
+                    <td class="src-col-label"><em>-</em></td>
+                    <td class="src-col-role">
+                        
+                        -
+                    </td>
                     <td class="src-col-regest">Jans von den Minnern Pruedern zu Wienne gibt nach dem Gebote Herzog Rudolfs IV. Hainreichen dem Vaschang, purger zu Wienne, schilter Herzog Rudolfs IV., und seiner Hausfrau Katrein ½ lb dn. gelts…</td>
                 </tr>
             
@@ -709,6 +873,11 @@
                     <td class="src-col-idno"><a href="../../documents/QGW/Vienna_1177-1414_ready/555.html">555 (= Privil. Nr. 13)</a></td>
                     <td class="src-col-date">1360 VIII 02</td>
                     <td class="src-col-corpus">QGW II/1 (1177–1414)</td>
+                    <td class="src-col-label"><em>-</em></td>
+                    <td class="src-col-role">
+                        
+                        -
+                    </td>
                     <td class="src-col-regest">Herzog Rudolf IV. stellt als alleiniger her der aigenschaft und des grundes in der Stadt zu Wien und den Vorstädten den Missbrauch ab, dass Geistliche und Laien als Inhaber von Grundrechtszinsen…</td>
                 </tr>
             
@@ -716,6 +885,11 @@
                     <td class="src-col-idno"><a href="../../documents/QGW/Vienna_1177-1414_ready/557.html">557</a></td>
                     <td class="src-col-date">1360 VIII 28</td>
                     <td class="src-col-corpus">QGW II/1 (1177–1414)</td>
+                    <td class="src-col-label"><em>Herzog</em></td>
+                    <td class="src-col-role">
+                        <span class="role-chip role-chip-other">Sonstige</span>
+                        
+                    </td>
                     <td class="src-col-regest">Jans der Greif gibt gruntrecht nach dem Gebote Herzog Rudolfs IV. Merten, maister Jansen sun, puriger ze Wienne, 6 lb dn. geltes gruntrechts von dessen Hause in der Wiltwaericherstrasse ze Wienne…</td>
                 </tr>
             
@@ -723,6 +897,11 @@
                     <td class="src-col-idno"><a href="../../documents/QGW/Vienna_1177-1414_ready/565.html">565</a></td>
                     <td class="src-col-date">1360 X 21</td>
                     <td class="src-col-corpus">QGW II/1 (1177–1414)</td>
+                    <td class="src-col-label"><em>Herzogs</em></td>
+                    <td class="src-col-role">
+                        <span class="role-chip role-chip-other">Sonstige</span>
+                        
+                    </td>
                     <td class="src-col-regest">Jans prüder sun und Pertelme, die prüder,sun baide Jacobs sun, des statschreiber ze Wienne, beurkunden, dass zwischen ihnen und ihrem Vetter Vetter Herman, sun Hainreichs sun des statschreiber, ein…</td>
                 </tr>
             
@@ -730,6 +909,11 @@
                     <td class="src-col-idno"><a href="../../documents/QGW/Vienna_1177-1414_ready/585.html">585</a></td>
                     <td class="src-col-date">1361 IV 29</td>
                     <td class="src-col-corpus">QGW II/1 (1177–1414)</td>
+                    <td class="src-col-label"><em>Herzog</em></td>
+                    <td class="src-col-role">
+                        <span class="role-chip role-chip-issuer">Aussteller*in</span>
+                        
+                    </td>
                     <td class="src-col-regest">Herzog Rudolf IV. bestätigt auf Bitten Jakob des Pollen, Kaplans der. Kapelle ze Ottenhaim, gelegen ze Wienn nebent dem Rathause, die er selbst besichtigt habe, die von Bürgermeister und Rath…</td>
                 </tr>
             
@@ -737,6 +921,11 @@
                     <td class="src-col-idno"><a href="../../documents/QGW/Vienna_1177-1414_ready/590a.html">590a</a></td>
                     <td class="src-col-date">1361 IX 06</td>
                     <td class="src-col-corpus">QGW II/1 (1177–1414)</td>
+                    <td class="src-col-label"><em>-</em></td>
+                    <td class="src-col-role">
+                        <span class="role-chip role-chip-issuer">Aussteller*in</span>
+                        
+                    </td>
                     <td class="src-col-regest">Herzog Rudolf IV. verfügt, dass keiner seiner Bürger mit seiner Kaufmannschaft mehr über die Zeirikch ziehe, denn nur alain seine Bürger in den steten ob der Ens, dass kein Gast oder Bürger eine…</td>
                 </tr>
             
@@ -744,6 +933,11 @@
                     <td class="src-col-idno"><a href="../../documents/QGW/Vienna_1177-1414_ready/592a.html">592a</a></td>
                     <td class="src-col-date">1361 XII 06</td>
                     <td class="src-col-corpus">QGW II/1 (1177–1414)</td>
+                    <td class="src-col-label"><em>-</em></td>
+                    <td class="src-col-role">
+                        <span class="role-chip role-chip-issuer">Aussteller*in</span>
+                        
+                    </td>
                     <td class="src-col-regest">Herzog Rudolf IV. wiederholt zu Gunsten der Wiener Kauf leute die mit Urkunde vom 6. September 1361 (vgl. no 590 a) kundgemachten Verfügungen.</td>
                 </tr>
             
@@ -751,6 +945,11 @@
                     <td class="src-col-idno"><a href="../../documents/QGW/Vienna_1177-1414_ready/599.html">599</a></td>
                     <td class="src-col-date">1362 V 24</td>
                     <td class="src-col-corpus">QGW II/1 (1177–1414)</td>
+                    <td class="src-col-label"><em>Herzog</em></td>
+                    <td class="src-col-role">
+                        
+                        -
+                    </td>
                     <td class="src-col-regest">Swester Chunigund die Vivianzin, priorinn in sand Larenzen chloster an dem Altenfleischmarcht ze Wienne, und der convent gemain daselbs stellen ein Revers aus hern Albrechten dem Schenchen, obrister…</td>
                 </tr>
             
@@ -758,6 +957,11 @@
                     <td class="src-col-idno"><a href="../../documents/QGW/Vienna_1177-1414_ready/609.html">609</a></td>
                     <td class="src-col-date">1363 III 27</td>
                     <td class="src-col-corpus">QGW II/1 (1177–1414)</td>
+                    <td class="src-col-label"><em>Erzherzog</em></td>
+                    <td class="src-col-role">
+                        <span class="role-chip role-chip-issuer">Aussteller*in</span>
+                        
+                    </td>
                     <td class="src-col-regest">* Erzherzog Rudolf IV. schenkt der S. Stephanskirche einen Sarkophag, in welchem folgende Reliquien hinterlegt waren: 1. die Leiber des heil. Trophinus und der heil. Sophia, welche er am 18. November…</td>
                 </tr>
             
@@ -765,6 +969,11 @@
                     <td class="src-col-idno"><a href="../../documents/QGW/Vienna_1177-1414_ready/621.html">621</a></td>
                     <td class="src-col-date">1364 I 16</td>
                     <td class="src-col-corpus">QGW II/1 (1177–1414)</td>
+                    <td class="src-col-label"><em>Herzog</em></td>
+                    <td class="src-col-role">
+                        <span class="role-chip role-chip-issuer">Aussteller*in</span>
+                        
+                    </td>
                     <td class="src-col-regest">Herzog Rudolf IV. verbietet, dass ze dem Albrecht ze Vischemund oder an einem andern urfar unterhalb Wiens Waaren über die Donau geführt werdeji, und ordnet an, dass diese Waaren nach Wien gebracht…</td>
                 </tr>
             
@@ -772,6 +981,11 @@
                     <td class="src-col-idno"><a href="../../documents/QGW/Vienna_1177-1414_ready/623.html">623</a></td>
                     <td class="src-col-date">1364 II 12</td>
                     <td class="src-col-corpus">QGW II/1 (1177–1414)</td>
+                    <td class="src-col-label"><em>Herzog</em></td>
+                    <td class="src-col-role">
+                        <span class="role-chip role-chip-recipient">Empfänger*in</span>
+                        
+                    </td>
                     <td class="src-col-regest">Kaiser Karl IV., sein Sohn Wenzela, König von Böhmen, und sein Bruder Johans, Markgraf zu Mähren, beurkunden Erbvertrag, dass sie mit den Habsburgern Herzog Rudolf, Albrecht und Lupolt, sowie deren…</td>
                 </tr>
             
@@ -779,6 +993,11 @@
                     <td class="src-col-idno"><a href="../../documents/QGW/Vienna_1177-1414_ready/625.html">625 (= Privil. Nr. 14)</a></td>
                     <td class="src-col-date">1364 IV 12</td>
                     <td class="src-col-corpus">QGW II/1 (1177–1414)</td>
+                    <td class="src-col-label"><em>-</em></td>
+                    <td class="src-col-role">
+                        
+                        -
+                    </td>
                     <td class="src-col-regest">Erzherzog Rudolf IV. sichert allen vor dem Rathe abgeschlossenen Rechtsgeschäften volle und dauernde Giltigkeit zu, verspricht, Kinder und Verwandte der Wiener Bürger nie zu einer Heirat nöthigen zu…</td>
                 </tr>
             
@@ -786,6 +1005,11 @@
                     <td class="src-col-idno"><a href="../../documents/QGW/Vienna_1177-1414_ready/628.html">628</a></td>
                     <td class="src-col-date">1364 VI 04</td>
                     <td class="src-col-corpus">QGW II/1 (1177–1414)</td>
+                    <td class="src-col-label"><em>-</em></td>
+                    <td class="src-col-role">
+                        <span class="role-chip role-chip-issuer">Aussteller*in</span>
+                        
+                    </td>
                     <td class="src-col-regest">Herzog Rudolf IV. widmet maister Venden haus, gelegen an sand Michels freithof ze Wienne, das in seine Gewalt gekommen war und schon von Alters her zur Michaelskirche gehört hatte, zu einem Pfarrhofe…</td>
                 </tr>
             
@@ -793,6 +1017,11 @@
                     <td class="src-col-idno"><a href="../../documents/QGW/Vienna_1177-1414_ready/631.html">631</a></td>
                     <td class="src-col-date">1364 VIII 28</td>
                     <td class="src-col-corpus">QGW II/1 (1177–1414)</td>
+                    <td class="src-col-label"><em>Erzherzog</em></td>
+                    <td class="src-col-role">
+                        <span class="role-chip role-chip-issuer">Aussteller*in</span>
+                        
+                    </td>
                     <td class="src-col-regest">Erzherzog Rudolf IV. hebt auf über Antrag des Bürgermeisters und Rathes alle Zechen, Einungen und Gesellschaften, welche die Handwerker in Wien gehabt hatten, auf, verfügt, dass nur der Bürgermeister…</td>
                 </tr>
             
@@ -800,6 +1029,11 @@
                     <td class="src-col-idno"><a href="../../documents/QGW/Vienna_1177-1414_ready/633.html">633</a></td>
                     <td class="src-col-date">1364 IX 29</td>
                     <td class="src-col-corpus">QGW II/1 (1177–1414)</td>
+                    <td class="src-col-label"><em>Herzog</em></td>
+                    <td class="src-col-role">
+                        <span class="role-chip role-chip-issuer">Aussteller*in</span>
+                        
+                    </td>
                     <td class="src-col-regest">Herzog Rudolf IV. weist an auszubezahlenden Bürgermeister, Richter, Rath und die Bürger an, von der Bürgersteuer, die sich am Martinstage 1365 anhebt, seinem Juden Steuz/zz/zen zu Wien 2000 lb dn.…</td>
                 </tr>
             
@@ -807,6 +1041,11 @@
                     <td class="src-col-idno"><a href="../../documents/QGW/Vienna_1177-1414_ready/636.html">636</a></td>
                     <td class="src-col-date">1364 XII 04</td>
                     <td class="src-col-corpus">QGW II/1 (1177–1414)</td>
+                    <td class="src-col-label"><em>-</em></td>
+                    <td class="src-col-role">
+                        <span class="role-chip role-chip-issuer">Aussteller*in</span>
+                        
+                    </td>
                     <td class="src-col-regest">Herzog Rudolf IV. bestätigt, dass er sein Ungeld zu Krems und Stein von der nächsten Lichtmesse an auf ein Jahr Jansen dem Roten von Wienne und Jansen von Herzogenburg um 550 lb dn. überlassen habe,…</td>
                 </tr>
             
@@ -814,6 +1053,11 @@
                     <td class="src-col-idno"><a href="../../documents/QGW/Vienna_1177-1414_ready/639.html">639</a></td>
                     <td class="src-col-date">1364 XII 23</td>
                     <td class="src-col-corpus">QGW II/1 (1177–1414)</td>
+                    <td class="src-col-label"><em>Herzog</em></td>
+                    <td class="src-col-role">
+                        <span class="role-chip role-chip-other">Sonstige</span>
+                        
+                    </td>
                     <td class="src-col-regest">Swester Chunigund von Ratpach, abtessinne, und der convent gemain der gestleichen vrowen chloster dacz sand Chlarn ze Wienne geben nach dem Gebote Herzog Rudolfs IV. Nichlasen dem Würfel und seiner…</td>
                 </tr>
             
@@ -821,6 +1065,11 @@
                     <td class="src-col-idno"><a href="../../documents/QGW/Vienna_1177-1414_ready/641.html">641</a></td>
                     <td class="src-col-date">1365 I 23</td>
                     <td class="src-col-corpus">QGW II/1 (1177–1414)</td>
+                    <td class="src-col-label"><em>Herzog</em></td>
+                    <td class="src-col-role">
+                        
+                        -
+                    </td>
                     <td class="src-col-regest">Gilig, pharrer ze Gretz, caplan der capelln Allerheiligen in dem turn pei Widmertor in der Purk ze Wienne und phleger des hailigtu/oms dacz sant Stephan ze Wienne , verkauft mit Handen des…</td>
                 </tr>
             
@@ -828,6 +1077,11 @@
                     <td class="src-col-idno"><a href="../../documents/QGW/Vienna_1177-1414_ready/642.html">642</a></td>
                     <td class="src-col-date">1365 I 23</td>
                     <td class="src-col-corpus">QGW II/1 (1177–1414)</td>
+                    <td class="src-col-label"><em>-</em></td>
+                    <td class="src-col-role">
+                        <span class="role-chip role-chip-issuer">Aussteller*in</span>
+                        
+                    </td>
                     <td class="src-col-regest">Herzog Rudolf IV. genehmigt den in Urk. 641 abgeschlossenen Kauf.</td>
                 </tr>
             
@@ -835,6 +1089,11 @@
                     <td class="src-col-idno"><a href="../../documents/QGW/Vienna_1177-1414_ready/646.html">646</a></td>
                     <td class="src-col-date">1365 IV 20</td>
                     <td class="src-col-corpus">QGW II/1 (1177–1414)</td>
+                    <td class="src-col-label"><em>-</em></td>
+                    <td class="src-col-role">
+                        <span class="role-chip role-chip-issuer">Aussteller*in</span>
+                        
+                    </td>
                     <td class="src-col-regest">Herzog Rudolf IV. bestellt hinz Manharten von Parischin und hinz Leutweinn dem Usel für 350 lb dn. zu Bürgen: Reinharten den Wêhinger, Jansen von Tierna, seinen Hubmeister, Lucasen den Pophinger,…</td>
                 </tr>
             
@@ -842,6 +1101,11 @@
                     <td class="src-col-idno"><a href="../../documents/QGW/Vienna_1177-1414_ready/647.html">647</a></td>
                     <td class="src-col-date">1365 IV 30</td>
                     <td class="src-col-corpus">QGW II/1 (1177–1414)</td>
+                    <td class="src-col-label"><em>Herzog</em></td>
+                    <td class="src-col-role">
+                        <span class="role-chip role-chip-other">Sonstige</span>
+                        
+                    </td>
                     <td class="src-col-regest">Jans von Tirna, hubmaister in Österreich und münzmaister ze Wienne, gibt nach dem Gebote Herzog Rudolfs IV. Jansen dem Schüczenmaister, purger ze Wienne, 40 dn. geltes gruntrechtes und purchrechtes,…</td>
                 </tr>
             
@@ -849,6 +1113,11 @@
                     <td class="src-col-idno"><a href="../../documents/QGW/Vienna_1177-1414_ready/673.html">673</a></td>
                     <td class="src-col-date">1366 VII 07</td>
                     <td class="src-col-corpus">QGW II/1 (1177–1414)</td>
+                    <td class="src-col-label"><em>Herzog</em></td>
+                    <td class="src-col-role">
+                        <span class="role-chip role-chip-other">Sonstige</span>
+                        
+                    </td>
                     <td class="src-col-regest">Nichlas der Drotlauf, obrister spitalmaister der pürger Spital ze Wienne, gibt nach dem Gebote Herzog Rudolfs IV. Weicharten dem Enzeinstorfer von Weiz/zz/zenpach ½ lb dn. gelts gruntrechts von…</td>
                 </tr>
             
@@ -856,6 +1125,11 @@
                     <td class="src-col-idno"><a href="../../documents/QGW/Vienna_1177-1414_ready/687.html">687</a></td>
                     <td class="src-col-date">1367 I 08</td>
                     <td class="src-col-corpus">QGW II/1 (1177–1414)</td>
+                    <td class="src-col-label"><em>Herzog</em></td>
+                    <td class="src-col-role">
+                        <span class="role-chip role-chip-other">Sonstige</span>
+                        
+                    </td>
                     <td class="src-col-regest">Brueder Nichlas, maister, und der convent gemain des hauses ze dem Heiligen Geist vor Kernertor ze Wienn geben nach dem Gebote Herzog Rudolfs IV. hern Lucasen dem Popphinger, des rates der stat ze…</td>
                 </tr>
             
@@ -863,6 +1137,11 @@
                     <td class="src-col-idno"><a href="../../documents/QGW/Vienna_1177-1414_ready/691.html">691</a></td>
                     <td class="src-col-date">1367 III 20</td>
                     <td class="src-col-corpus">QGW II/1 (1177–1414)</td>
+                    <td class="src-col-label"><em>Herzog</em></td>
+                    <td class="src-col-role">
+                        <span class="role-chip role-chip-other">Sonstige</span>
+                        
+                    </td>
                     <td class="src-col-regest">Jans der Greif gibt nach dem Gebote Herzog Rudolfs IV. dem Priester hern Hainreichen dem Rüczen 3 dn. gelts gruntrechts von seinem Hause under den Hafnern ze Wienn zenast Seifrids haus des Teufels um…</td>
                 </tr>
             
@@ -870,6 +1149,11 @@
                     <td class="src-col-idno"><a href="../../documents/QGW/Vienna_1177-1414_ready/693.html">693</a></td>
                     <td class="src-col-date">1367 IV 01</td>
                     <td class="src-col-corpus">QGW II/1 (1177–1414)</td>
+                    <td class="src-col-label"><em>Herzog</em></td>
+                    <td class="src-col-role">
+                        <span class="role-chip role-chip-other">Sonstige</span>
+                        
+                    </td>
                     <td class="src-col-regest">Pruder Gilig, comiteur des hauses daz dem Dauczschenhaus ze Wienn, und der convent gemain daselbs geben nach dem Gebote Herzog Rudolfs IV. Philippen dem Reisenperger, purger ze Wienn, und seiner…</td>
                 </tr>
             
@@ -877,6 +1161,11 @@
                     <td class="src-col-idno"><a href="../../documents/QGW/Vienna_1177-1414_ready/707.html">707</a></td>
                     <td class="src-col-date">1367 IX 27</td>
                     <td class="src-col-corpus">QGW II/1 (1177–1414)</td>
+                    <td class="src-col-label"><em>Herzog</em></td>
+                    <td class="src-col-role">
+                        <span class="role-chip role-chip-other">Sonstige</span>
+                        
+                    </td>
                     <td class="src-col-regest">Eberhard der Negell, chirchmaister dacz sand Michel ze Wienne, gibt nach dem Gebote Herzog Rudolfs IV. hern Thoman dem Swêmblein, purgermaister, und dem rat gemain der stat ze Wienn 30 dn. gelts…</td>
                 </tr>
             
@@ -884,6 +1173,11 @@
                     <td class="src-col-idno"><a href="../../documents/QGW/Vienna_1177-1414_ready/751.html">751</a></td>
                     <td class="src-col-date">1369 V 09</td>
                     <td class="src-col-corpus">QGW II/1 (1177–1414)</td>
+                    <td class="src-col-label"><em>Herzog</em></td>
+                    <td class="src-col-role">
+                        <span class="role-chip role-chip-other">Sonstige</span>
+                        
+                    </td>
                     <td class="src-col-regest">Chunrat von Plumenau, chapellan sand Angnesen alter, gelegen dacz der Himelporten ze Wienn , gibt nach dem Gebote Herzog Rudolfs IV. mit Einwilligung der geistlichen Frauen swester Margreten der…</td>
                 </tr>
             
@@ -891,6 +1185,11 @@
                     <td class="src-col-idno"><a href="../../documents/QGW/Vienna_1177-1414_ready/769.html">769</a></td>
                     <td class="src-col-date">1370 I 24</td>
                     <td class="src-col-corpus">QGW II/1 (1177–1414)</td>
+                    <td class="src-col-label"><em>hochgeporn|fürsten</em></td>
+                    <td class="src-col-role">
+                        
+                        -
+                    </td>
                     <td class="src-col-regest">Stephan der Naezeuger, purger ze Wienne, bestätigt, dass ihm sein swager her Nichlas der Stainer zu seiner Frau Lucein, Steiner's Muhme, 100 lb dn. Heimsteuer gegeben habe, und setzt ihr setztdafür…</td>
                 </tr>
             
@@ -898,6 +1197,11 @@
                     <td class="src-col-idno"><a href="../../documents/QGW/Vienna_1177-1414_ready/978.html">978(_Privil_Nr_22)</a></td>
                     <td class="src-col-date">1380 IV 07</td>
                     <td class="src-col-corpus">QGW II/1 (1177–1414)</td>
+                    <td class="src-col-label"><em>-</em></td>
+                    <td class="src-col-role">
+                        
+                        -
+                    </td>
                     <td class="src-col-regest">Herzog Albrecht III. verbietet über die Klage des Rathes und der Bürger seiner stat ze Wienn den Bewohnern der Orte ze Aichau, ze Lachsendorf, ze Minchendorf, ze Hintperg und ze Eberstorf, die Wiener…</td>
                 </tr>
             
@@ -905,6 +1209,11 @@
                     <td class="src-col-idno"><a href="../../documents/Stadtbuecher/Band_1_1395-1400_ready/420.html">420</a></td>
                     <td class="src-col-date">1399 September 16</td>
                     <td class="src-col-corpus">Stadtbücher Bd. 1 (1395–1400)</td>
+                    <td class="src-col-label"><em>-</em></td>
+                    <td class="src-col-role">
+                        
+                        -
+                    </td>
                     <td class="src-col-regest">Einbr. 2 Zg. (Indez: Item frewntschaft Niclas Teiifentaler) Desselben tags kom auch fur den rat fraw Elspetwitib, Niclas seligen witib des Vischer , und hat das beweist mit den zwain erbern mannen…</td>
                 </tr>
             
@@ -912,6 +1221,11 @@
                     <td class="src-col-idno"><a href="../../documents/QGW/Vienna_1177-1414_ready/1729.html">1729</a></td>
                     <td class="src-col-date">1408 IV 23</td>
                     <td class="src-col-corpus">QGW II/1 (1177–1414)</td>
+                    <td class="src-col-label"><em>-</em></td>
+                    <td class="src-col-role">
+                        
+                        -
+                    </td>
                     <td class="src-col-regest">Hans der Streithofer, Jacobs sun des Streithofer, gibt nach dem Gebote Herzog Rudolfs IV. Jorgen dem Schreuchlein, dem waxgiesser, purger ze Wienn, 12 sh. dn. geltes purkchrechts von seinem Hause,…</td>
                 </tr>
             
@@ -919,6 +1233,11 @@
                     <td class="src-col-idno"><a href="../../documents/QGW/Vienna_1177-1414_ready/1753.html">1753</a></td>
                     <td class="src-col-date">1409 II 25</td>
                     <td class="src-col-corpus">QGW II/1 (1177–1414)</td>
+                    <td class="src-col-label"><em>-</em></td>
+                    <td class="src-col-role">
+                        <span class="role-chip role-chip-other">Sonstige</span>
+                        
+                    </td>
                     <td class="src-col-regest">Kathrei tochter, Niclass, des pergmaister seligen tochter auf der Widem vor Kernertor ze Wienn, gibt nach dem Gebote Herzog Rudolfs IV. Ulreichen dem Stiffter und seiner Hausfrau Kathrein ½ lb dn.…</td>
                 </tr>
             
@@ -951,11 +1270,13 @@
         </div>
     </footer>
 
-    <script src="../../static/js/core.js?v=20260511112948"></script>
-    <script src="../../static/js/provenance.js?v=20260511112948"></script>
-    <script src="../../static/js/basket.js?v=20260511112948"></script>
+    <script src="../../static/js/core.js?v=20260511125458"></script>
+    <script src="../../static/js/tip.js?v=20260511125458"></script>
+    <script src="../../static/js/hint.js?v=20260511125458"></script>
+    <script src="../../static/js/basket.js?v=20260511125458"></script>
     
-<script src="../../static/js/tooltips.js?v=20260511112948"></script>
+<script src="../../static/js/profile.js?v=20260511125458"></script>
+<script src="../../static/js/basket-mount.js?v=20260511125458"></script>
 
 </body>
 </html>

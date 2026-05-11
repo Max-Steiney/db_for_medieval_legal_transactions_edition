@@ -23,13 +23,17 @@ TEMPLATES_DIR = EDITION_DIR / "templates"
 STATIC_DIR = EDITION_DIR / "static"
 CONTENT_DIR = EDITION_DIR / "content"
 
-# Sources, registers, knowledge base, and the edition guidelines live in
-# the sibling pipeline repository. The guidelines are editorial
-# documentation of the source-data annotation model, not frontend content;
-# the frontend only renders them.
+# Sources, registers and knowledge base live in the sibling pipeline
+# repository.
 SOURCES_REPO_ROOT = PIPELINE_REPO_ROOT
 KNOWLEDGE_DIR = PIPELINE_REPO_ROOT / "knowledge"
-EDITION_GUIDELINES_PATH = PIPELINE_REPO_ROOT / "edition_guidelines.md"
+
+# Annotation guidelines are kept as a local copy under content/project/
+# so the build is self-contained. The canonical source lives in the
+# pipeline repo; the build syncs the local copy from it when the
+# canonical document is newer (see frontend.build._pages._build_guidelines).
+EDITION_GUIDELINES_PATH = CONTENT_DIR / "project" / "edition-guidelines.md"
+EDITION_GUIDELINES_CANONICAL = PIPELINE_REPO_ROOT / "edition_guidelines.md"
 
 # Backwards-compatibility alias. Some callers still import REPO_ROOT
 # from this module; they expect the docs/output root.

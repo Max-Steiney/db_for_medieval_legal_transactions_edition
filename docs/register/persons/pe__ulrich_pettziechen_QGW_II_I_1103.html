@@ -3,22 +3,22 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <meta http-equiv="Content-Security-Policy" content="default-src 'self'; script-src 'self'; style-src 'self'; font-src 'self'; img-src 'self' data: https://images.monasterium.net https://www.monasterium.net; connect-src 'self'; frame-ancestors 'none'; base-uri 'self'; form-action 'self'; upgrade-insecure-requests">
+    <meta http-equiv="Content-Security-Policy" content="default-src 'self'; script-src 'self'; style-src 'self'; font-src 'self'; img-src 'self' data: https://images.monasterium.net https://www.monasterium.net; connect-src 'self'; base-uri 'self'; form-action 'self'; upgrade-insecure-requests">
     <meta name="referrer" content="strict-origin-when-cross-origin">
     <meta http-equiv="Permissions-Policy" content="camera=(), microphone=(), geolocation=(), interest-cohort=()">
     <title>Ulrich Pettziechen (&dagger; 22.02.1397), Datenbank</title>
     <link rel="preload" as="font" type="font/woff2" crossorigin
           href="../../static/fonts/inter-400-latin.woff2">
-    <link rel="stylesheet" href="../../static/css/fonts.css?v=20260511112948">
-    <link rel="stylesheet" href="../../static/css/tokens.css?v=20260511112948">
-    <link rel="stylesheet" href="../../static/css/base.css?v=20260511112948">
-    <link rel="stylesheet" href="../../static/css/components.css?v=20260511112948">
-    <link rel="stylesheet" href="../../static/css/responsive.css?v=20260511112948">
-    <link rel="stylesheet" href="../../static/css/print.css?v=20260511112948">
-    <link rel="stylesheet" href="../../static/css/provenance.css?v=20260511112948">
+    <link rel="stylesheet" href="../../static/css/fonts.css?v=20260511125458">
+    <link rel="stylesheet" href="../../static/css/tokens.css?v=20260511125458">
+    <link rel="stylesheet" href="../../static/css/base.css?v=20260511125458">
+    <link rel="stylesheet" href="../../static/css/components.css?v=20260511125458">
+    <link rel="stylesheet" href="../../static/css/responsive.css?v=20260511125458">
+    <link rel="stylesheet" href="../../static/css/print.css?v=20260511125458">
+    <link rel="stylesheet" href="../../static/css/tip.css?v=20260511125458">
     
-<link rel="stylesheet" href="../../static/css/document.css?v=20260511112948">
-<link rel="stylesheet" href="../../static/css/person.css?v=20260511112948">
+<link rel="stylesheet" href="../../static/css/document.css?v=20260511125458">
+<link rel="stylesheet" href="../../static/css/person.css?v=20260511125458">
 
 </head>
 <body data-root-path="../.."
@@ -48,8 +48,6 @@
         <a href="../../register/persons.html">Personen</a>
         
         <a href="../../register/orgs.html">Organisationen</a>
-        
-        <a href="../../register/places.html">Orte</a>
         
     </div>
 </div>
@@ -91,7 +89,7 @@
     </div>
 </div>
 
-                <a href="../../korb.html" class="nav-basket" aria-label="Wissenskorb">
+                <a href="../../korb.html" class="nav-basket" aria-label="Datenkorb">
                     <svg width="18" height="18" viewBox="0 0 18 18" fill="none" aria-hidden="true">
                         <path d="M3 5h12l-1.2 8.5a1 1 0 0 1-1 .85H5.2a1 1 0 0 1-1-.85L3 5z"
                               stroke="currentColor" stroke-width="1.4" fill="none"
@@ -112,11 +110,23 @@
 
     <div class="person-toolbar">
         <div class="person-toolbar-inner">
-            <nav class="person-breadcrumb" aria-label="Position">
-                <a href="../../register/persons.html">Personenregister</a>
-                <span class="bc-sep">&rsaquo;</span>
-                <span class="bc-doc"><strong>Ulrich Pettziechen</strong></span>
-            </nav>
+            <div class="person-toolbar-row">
+                <nav class="person-breadcrumb" aria-label="Position">
+                    <a href="../../register/persons.html">Personenregister</a>
+                    <span class="bc-sep">&rsaquo;</span>
+                    <span class="bc-doc"><strong>Ulrich Pettziechen</strong></span>
+                </nav>
+                <div class="person-toolbar-actions">
+                    <span class="toolbar-basket-mount"
+                          data-basket-type="person"
+                          data-basket-id="pe__ulrich_pettziechen_QGW_II_I_1103"
+                          data-basket-label="Ulrich Pettziechen"
+                          data-basket-url="register/persons/pe__ulrich_pettziechen_QGW_II_I_1103.html"
+                          data-basket-sex="m"
+                          data-basket-active-min="1356"
+                          data-basket-active-max="1397"></span>
+                </div>
+            </div>
             <div class="person-toolbar-meta">
                 <span class="meta-pair">
                     <span class="meta-label">Geschlecht</span>
@@ -124,7 +134,33 @@
                 </span>
                 
                 <span class="meta-pair">
-                    <span class="meta-label">Belegt</span>
+                    <span class="meta-label">Belegt
+<span class="tip-wrap">
+    <button type="button" class="tip-trigger tip-trigger--icon"
+            aria-expanded="false" aria-haspopup="dialog"
+            aria-controls="person-belegt"
+            data-tip="person-belegt"
+            aria-label="Definition: Beleg-Zeitraum">
+        <svg width="13" height="13" viewBox="0 0 16 16" aria-hidden="true">
+            <circle cx="8" cy="8" r="7" stroke="currentColor" stroke-width="1.4" fill="none"/>
+            <text x="8" y="11.6" text-anchor="middle" font-size="9.5" font-weight="700"
+                  fill="currentColor" font-family="Georgia, serif">i</text>
+        </svg>
+    </button>
+    <aside class="tip-popover tip-popover--glossary"
+           id="person-belegt" role="dialog" aria-hidden="true"
+           aria-label="Definition: Beleg-Zeitraum">
+        <header class="tip-head">
+            <h3 class="tip-title">Beleg-Zeitraum</h3>
+            <button type="button" class="tip-close" aria-label="Schlie&szlig;en">&times;</button>
+        </header>
+        <div class="tip-body">
+            <p>Erste und letzte Datierung einer Quelle, in der die Person erscheint. Bei einzelnem Beleg wird nur ein Jahr angegeben.</p>
+            
+        </div>
+    </aside>
+</span>
+</span>
                     <span class="meta-value">1356 bis 1397</span>
                 </span>
                 
@@ -134,6 +170,10 @@
                     <span class="meta-value">22.02.1397</span>
                 </span>
                 
+                <span class="meta-pair">
+                    <span class="meta-label">Quellen</span>
+                    <span class="meta-value">11</span>
+                </span>
                 <span class="meta-pair person-id-pair">
                     <span class="meta-label">ID</span>
                     <code class="meta-value person-id">pe__ulrich_pettziechen_QGW_II_I_1103</code>
@@ -150,16 +190,48 @@
             
         </h1>
         
+        
         <p class="person-note">Rat Wien</p>
         
         
-        <p class="person-titles">
+        <p class="person-titles" data-collapsible="22">
             <span class="pt-label">In den Quellen genannt als</span>
             <span class="pt-chip">hern</span>
         </p>
         
         
+        
     </header>
+
+    
+    <section class="role-strip" aria-label="Rollen in Rechtsgeschäften">
+        <h2 class="role-strip-title">Rollen in Rechtsgeschäften</h2>
+        <div class="role-strip-cells">
+            
+            <div class="role-cell role-cell-issuer">
+                <span class="role-cell-count">5</span>
+                <span class="role-cell-label">Aussteller*in</span>
+            </div>
+            
+            <div class="role-cell role-cell-recipient">
+                <span class="role-cell-count">2</span>
+                <span class="role-cell-label">Empfänger*in</span>
+            </div>
+            
+            <div class="role-cell role-cell-witness">
+                <span class="role-cell-count">6</span>
+                <span class="role-cell-label">Zeuge / Siegler*in</span>
+            </div>
+            
+            <div class="role-cell role-cell-other">
+                <span class="role-cell-count">1</span>
+                <span class="role-cell-label">Sonstige</span>
+            </div>
+            
+        </div>
+        <p class="role-strip-hint">Summe Rollen-Belegungen: 14. Mehrfach-Rollen pro Quelle sind möglich.</p>
+    </section>
+    
 
     
 
@@ -176,6 +248,7 @@
                 <span class="rel-block-count">17</span>
                 <span class="rel-block-hint">Verwandtschaftsverhältnisse, wie sie in den Quellen explizit benannt werden.</span>
             </header>
+            
             <table class="rel-table">
                 <thead>
                     <tr>
@@ -196,7 +269,7 @@
                         <td class="rel-col-label"><em>Oheim</em></td>
                         <td class="rel-col-perspective">
                             
-                                Ulrich Pettziechen → Konrad Zenkl der Ras
+                                Ulrich Pettziechen &rsaquo; Konrad Zenkl der Ras
                             
                         </td>
                         <td class="rel-col-source">
@@ -215,7 +288,7 @@
                         <td class="rel-col-label"><em>Oheims</em></td>
                         <td class="rel-col-perspective">
                             
-                                Ulrich Pettziechen → Konrad Zenkl der Ras
+                                Ulrich Pettziechen &rsaquo; Konrad Zenkl der Ras
                             
                         </td>
                         <td class="rel-col-source">
@@ -234,7 +307,7 @@
                         <td class="rel-col-label"><em>Vater</em></td>
                         <td class="rel-col-perspective">
                             
-                                Ortolf Pettziechen → Ulrich Pettziechen
+                                Ortolf Pettziechen &rsaquo; Ulrich Pettziechen
                             
                         </td>
                         <td class="rel-col-source">
@@ -253,7 +326,7 @@
                         <td class="rel-col-label"><em>su/en</em></td>
                         <td class="rel-col-perspective">
                             
-                                Ulrich Pettziechen → Ortolf Pettziechen
+                                Ulrich Pettziechen &rsaquo; Ortolf Pettziechen
                             
                         </td>
                         <td class="rel-col-source">
@@ -272,7 +345,7 @@
                         <td class="rel-col-label"><em>Schwester</em></td>
                         <td class="rel-col-perspective">
                             
-                                Anna Pollin → Ulrich Pettziechen
+                                Anna Pollin &rsaquo; Ulrich Pettziechen
                             
                         </td>
                         <td class="rel-col-source">
@@ -291,7 +364,7 @@
                         <td class="rel-col-label"><em>Schwagers</em></td>
                         <td class="rel-col-perspective">
                             
-                                Thomas Swaeml → Ulrich Pettziechen
+                                Thomas Swaeml &rsaquo; Ulrich Pettziechen
                             
                         </td>
                         <td class="rel-col-source">
@@ -310,7 +383,7 @@
                         <td class="rel-col-label"><em>Hausfrau</em></td>
                         <td class="rel-col-perspective">
                             
-                                Agnes → Ulrich Pettziechen
+                                Agnes &rsaquo; Ulrich Pettziechen
                             
                         </td>
                         <td class="rel-col-source">
@@ -329,7 +402,7 @@
                         <td class="rel-col-label"><em>Vater</em></td>
                         <td class="rel-col-perspective">
                             
-                                Ortolf Pettziechen → Ulrich Pettziechen
+                                Ortolf Pettziechen &rsaquo; Ulrich Pettziechen
                             
                         </td>
                         <td class="rel-col-source">
@@ -348,7 +421,7 @@
                         <td class="rel-col-label"><em>Schwäger</em></td>
                         <td class="rel-col-perspective">
                             
-                                Thomas Swaeml → Ulrich Pettziechen
+                                Thomas Swaeml &rsaquo; Ulrich Pettziechen
                             
                         </td>
                         <td class="rel-col-source">
@@ -367,7 +440,7 @@
                         <td class="rel-col-label"><em>Schwäger</em></td>
                         <td class="rel-col-perspective">
                             
-                                Ulrich Poll → Ulrich Pettziechen
+                                Ulrich Poll &rsaquo; Ulrich Pettziechen
                             
                         </td>
                         <td class="rel-col-source">
@@ -386,7 +459,7 @@
                         <td class="rel-col-label"><em>gebrüdern</em></td>
                         <td class="rel-col-perspective">
                             
-                                Peter Pettziechen Pettziechen → Ulrich Pettziechen
+                                Peter Pettziechen Pettziechen &rsaquo; Ulrich Pettziechen
                             
                         </td>
                         <td class="rel-col-source">
@@ -405,7 +478,7 @@
                         <td class="rel-col-label"><em>Vater</em></td>
                         <td class="rel-col-perspective">
                             
-                                Ortolf Pettziechen → Ulrich Pettziechen
+                                Ortolf Pettziechen &rsaquo; Ulrich Pettziechen
                             
                         </td>
                         <td class="rel-col-source">
@@ -424,7 +497,7 @@
                         <td class="rel-col-label"><em>witib</em></td>
                         <td class="rel-col-perspective">
                             
-                                Agnes Pettziechin → Ulrich Pettziechen
+                                Agnes Pettziechin &rsaquo; Ulrich Pettziechen
                             
                         </td>
                         <td class="rel-col-source">
@@ -443,7 +516,7 @@
                         <td class="rel-col-label"><em>wirt</em></td>
                         <td class="rel-col-perspective">
                             
-                                Ulrich Pettziechen → Agnes Pettziechin
+                                Ulrich Pettziechen &rsaquo; Agnes Pettziechin
                             
                         </td>
                         <td class="rel-col-source">
@@ -462,7 +535,7 @@
                         <td class="rel-col-label"><em>sun</em></td>
                         <td class="rel-col-perspective">
                             
-                                Ortolf Pettziechen → Ulrich Pettziechen
+                                Ortolf Pettziechen &rsaquo; Ulrich Pettziechen
                             
                         </td>
                         <td class="rel-col-source">
@@ -481,7 +554,7 @@
                         <td class="rel-col-label"><em>tachter</em></td>
                         <td class="rel-col-perspective">
                             
-                                Cordula Pettziechin → Ulrich Pettziechen
+                                Cordula Pettziechin &rsaquo; Ulrich Pettziechen
                             
                         </td>
                         <td class="rel-col-source">
@@ -500,7 +573,7 @@
                         <td class="rel-col-label"><em>tachter</em></td>
                         <td class="rel-col-perspective">
                             
-                                Elisabeth → Ulrich Pettziechen
+                                Elisabeth &rsaquo; Ulrich Pettziechen
                             
                         </td>
                         <td class="rel-col-source">
@@ -526,6 +599,7 @@
                 <span class="rel-block-count">3</span>
                 <span class="rel-block-hint">Stellvertretungs-Beziehungen, z. B. handelt eine Person an Stelle einer anderen.</span>
             </header>
+            
             <table class="rel-table">
                 <thead>
                     <tr>
@@ -546,7 +620,7 @@
                         <td class="rel-col-label"><em>für</em></td>
                         <td class="rel-col-perspective">
                             
-                                Ulrich Pettziechen → Ulrich Pettziechen
+                                Ulrich Pettziechen &rsaquo; Ulrich Pettziechen
                             
                         </td>
                         <td class="rel-col-source">
@@ -565,7 +639,7 @@
                         <td class="rel-col-label"><em>für</em></td>
                         <td class="rel-col-perspective">
                             
-                                Ulrich Pettziechen → Ulrich Pettziechen
+                                Ulrich Pettziechen &rsaquo; Ulrich Pettziechen
                             
                         </td>
                         <td class="rel-col-source">
@@ -584,7 +658,7 @@
                         <td class="rel-col-label"><em>für</em></td>
                         <td class="rel-col-perspective">
                             
-                                Ulrich Pettziechen → Peter Pettziechen Pettziechen
+                                Ulrich Pettziechen &rsaquo; Peter Pettziechen Pettziechen
                             
                         </td>
                         <td class="rel-col-source">
@@ -607,6 +681,7 @@
                 <span class="rel-block-count">7</span>
                 <span class="rel-block-hint">Berufs- oder Amtsbezeichnung in Bezug auf eine Institution.</span>
             </header>
+            
             <table class="rel-table">
                 <thead>
                     <tr>
@@ -627,7 +702,7 @@
                         <td class="rel-col-label"><em>rat</em></td>
                         <td class="rel-col-perspective">
                             
-                                Ulrich Pettziechen → Wien
+                                Ulrich Pettziechen &rsaquo; Wien
                             
                         </td>
                         <td class="rel-col-source">
@@ -646,7 +721,7 @@
                         <td class="rel-col-label"><em>rats</em></td>
                         <td class="rel-col-perspective">
                             
-                                Ulrich Pettziechen → Wien
+                                Ulrich Pettziechen &rsaquo; Wien
                             
                         </td>
                         <td class="rel-col-source">
@@ -665,7 +740,7 @@
                         <td class="rel-col-label"><em>purger</em></td>
                         <td class="rel-col-perspective">
                             
-                                Ulrich Pettziechen → Wien
+                                Ulrich Pettziechen &rsaquo; Wien
                             
                         </td>
                         <td class="rel-col-source">
@@ -684,7 +759,7 @@
                         <td class="rel-col-label"><em>Lehensherr</em></td>
                         <td class="rel-col-perspective">
                             
-                                Ulrich Pettziechen → Bettziehenmesse und ewiges Licht
+                                Ulrich Pettziechen &rsaquo; Bettziehenmesse und ewiges Licht
                             
                         </td>
                         <td class="rel-col-source">
@@ -703,7 +778,7 @@
                         <td class="rel-col-label"><em>Bürgers</em></td>
                         <td class="rel-col-perspective">
                             
-                                Ulrich Pettziechen → Wien
+                                Ulrich Pettziechen &rsaquo; Wien
                             
                         </td>
                         <td class="rel-col-source">
@@ -722,7 +797,7 @@
                         <td class="rel-col-label"><em>purger ze Wienne</em></td>
                         <td class="rel-col-perspective">
                             
-                                Ulrich Pettziechen → Wien
+                                Ulrich Pettziechen &rsaquo; Wien
                             
                         </td>
                         <td class="rel-col-source">
@@ -741,7 +816,7 @@
                         <td class="rel-col-label"><em>Wiener Bürgern</em></td>
                         <td class="rel-col-perspective">
                             
-                                Ulrich Pettziechen → Wien
+                                Ulrich Pettziechen &rsaquo; Wien
                             
                         </td>
                         <td class="rel-col-source">
@@ -759,18 +834,27 @@
         
         
         
+        
+        
+        
+        
+        
+        
     </section>
     
 
     
     <section class="person-sources" aria-label="Quellen mit Nennung">
         <h2 class="section-head">Quellen mit Nennung</h2>
+        
         <table class="person-source-table">
             <thead>
                 <tr>
                     <th scope="col" class="src-col-idno">Nr.</th>
                     <th scope="col" class="src-col-date">Datum</th>
                     <th scope="col" class="src-col-corpus">Quellenkorpus</th>
+                    <th scope="col" class="src-col-label">Bezeichnung</th>
+                    <th scope="col" class="src-col-role">Rolle</th>
                     <th scope="col" class="src-col-regest">Regest</th>
                 </tr>
             </thead>
@@ -780,6 +864,11 @@
                     <td class="src-col-idno"><a href="../../documents/QGW/Vienna_1177-1414_ready/485.html">485</a></td>
                     <td class="src-col-date">1356 V 25</td>
                     <td class="src-col-corpus">QGW II/1 (1177–1414)</td>
+                    <td class="src-col-label"><em>-</em></td>
+                    <td class="src-col-role">
+                        <span class="role-chip role-chip-issuer">Aussteller*in</span><span class="role-chip role-chip-witness">Zeuge / Siegler*in</span>
+                        
+                    </td>
                     <td class="src-col-regest">Ulreich su/en und Peter, su/enhern Ortolfs su/en mit der Petesziechen, dem got genade, beurkunden die mit ihrer SchwesterSchwester Annen, hausvrowe hern Ulreichs hausvrowe des Pollen, vorgenommene…</td>
                 </tr>
             
@@ -787,6 +876,11 @@
                     <td class="src-col-idno"><a href="../../documents/QGW/Vienna_1177-1414_ready/765.html">765</a></td>
                     <td class="src-col-date">1369 X 09</td>
                     <td class="src-col-corpus">QGW II/1 (1177–1414)</td>
+                    <td class="src-col-label"><em>-</em></td>
+                    <td class="src-col-role">
+                        
+                        -
+                    </td>
                     <td class="src-col-regest">Jacob der Poll, capellan der capellen Unserr Vrowen in der purger Rathaus ze Wienne, hern Ottenhaimen seligen stiftunge , beurkundet die über sein fahrendes Gut getroffenen letztwilligen Verfügungen.…</td>
                 </tr>
             
@@ -794,6 +888,11 @@
                     <td class="src-col-idno"><a href="../../documents/QGW/Vienna_1177-1414_ready/790.html">790</a></td>
                     <td class="src-col-date">1371 V 03</td>
                     <td class="src-col-corpus">QGW II/1 (1177–1414)</td>
+                    <td class="src-col-label"><em>-</em></td>
+                    <td class="src-col-role">
+                        <span class="role-chip role-chip-issuer">Aussteller*in</span><span class="role-chip role-chip-witness">Zeuge / Siegler*in</span>
+                        
+                    </td>
                     <td class="src-col-regest">Ulreich mit der Pettziechen, purger ze Wienne , und Agnes, seine Hausfrau, bestätigen, dass Ulreichs Vater Ortolf mit der Pettziechen letztwillig 110 lb dn. für eine Messe und ein ewiges Licht…</td>
                 </tr>
             
@@ -801,6 +900,11 @@
                     <td class="src-col-idno"><a href="../../documents/QGW/Vienna_1177-1414_ready/964.html">964</a></td>
                     <td class="src-col-date">1379 VI 25</td>
                     <td class="src-col-corpus">QGW II/1 (1177–1414)</td>
+                    <td class="src-col-label"><em>-</em></td>
+                    <td class="src-col-role">
+                        <span class="role-chip role-chip-recipient">Empfänger*in</span>
+                        
+                    </td>
                     <td class="src-col-regest">Andre der Chrêphel und Elsbet, seine Hausfrau , verkaufen mit Handen ihres Grundherrn bruder Giligen, comiteur dacz dem Deutschenhaus zu Wienne , ihr Haus mit drei dazu gehörigen Bänken, da man prot…</td>
                 </tr>
             
@@ -808,6 +912,11 @@
                     <td class="src-col-idno"><a href="../../documents/QGW/Vienna_1177-1414_ready/1103.html">1103</a></td>
                     <td class="src-col-date">1386 III 06</td>
                     <td class="src-col-corpus">QGW II/1 (1177–1414)</td>
+                    <td class="src-col-label"><em>-</em></td>
+                    <td class="src-col-role">
+                        <span class="role-chip role-chip-other">Sonstige</span><span class="role-chip role-chip-recipient">Empfänger*in</span>
+                        
+                    </td>
                     <td class="src-col-regest">Chunrat der Ras der Zenkel ordnet für den Todfall die Stiftung an einer ewigen Messe auf Unser Vrown altar, gelegen in sand Peters pharchirichen ze Wienn , an und widmet dazu zwen weingarten, gelegen…</td>
                 </tr>
             
@@ -815,6 +924,11 @@
                     <td class="src-col-idno"><a href="../../documents/QGW/Vienna_1177-1414_ready/1196.html">1196</a></td>
                     <td class="src-col-date">1390 XI 18</td>
                     <td class="src-col-corpus">QGW II/1 (1177–1414)</td>
+                    <td class="src-col-label"><em>-</em></td>
+                    <td class="src-col-role">
+                        <span class="role-chip role-chip-issuer">Aussteller*in</span><span class="role-chip role-chip-witness">Zeuge / Siegler*in</span>
+                        
+                    </td>
                     <td class="src-col-regest">Janns der Jan rat, Chunrat der Rampperstorfer rat, Ulrich der Pettziech rat und Jo/erg der Neuer rat, all vier des rates der stat ze Wienn , beurkunden, dass frau Margret, Petreins des…</td>
                 </tr>
             
@@ -822,6 +936,11 @@
                     <td class="src-col-idno"><a href="../../documents/QGW/Vienna_1177-1414_ready/1241.html">1241</a></td>
                     <td class="src-col-date">1392 X 31</td>
                     <td class="src-col-corpus">QGW II/1 (1177–1414)</td>
+                    <td class="src-col-label"><em>hern</em></td>
+                    <td class="src-col-role">
+                        <span class="role-chip role-chip-witness">Zeuge / Siegler*in</span>
+                        
+                    </td>
                     <td class="src-col-regest">Hanns der Urbetsch beurkundet, dass seinem Bruder Dietreichen dem Urbetsch in der Theilung der von ihrem Vater hinterlassenen Güter der hof und der zehent ze Schonnkirichen mit allem Zubehör, ihm…</td>
                 </tr>
             
@@ -829,6 +948,11 @@
                     <td class="src-col-idno"><a href="../../documents/QGW/Vienna_1177-1414_ready/1244.html">1244</a></td>
                     <td class="src-col-date">1392 XI 24</td>
                     <td class="src-col-corpus">QGW II/1 (1177–1414)</td>
+                    <td class="src-col-label"><em>-</em></td>
+                    <td class="src-col-role">
+                        
+                        -
+                    </td>
                     <td class="src-col-regest">Chunrat der Ze/ankkel der Räs, ein Student in geistleichen rechten, widmet zu einer ewigen Messe auf Unser Frauen altar, gelegen in der kirichen dacz sand Peter ze Wienn, seines ledigen Erbgutes:…</td>
                 </tr>
             
@@ -836,6 +960,11 @@
                     <td class="src-col-idno"><a href="../../documents/QGW/Vienna_1177-1414_ready/1253.html">1253</a></td>
                     <td class="src-col-date">1393 I 28</td>
                     <td class="src-col-corpus">QGW II/1 (1177–1414)</td>
+                    <td class="src-col-label"><em>-</em></td>
+                    <td class="src-col-role">
+                        <span class="role-chip role-chip-issuer">Aussteller*in</span><span class="role-chip role-chip-witness">Zeuge / Siegler*in</span>
+                        
+                    </td>
                     <td class="src-col-regest">Ulreich der Petzich, purger ze Wienne Lehensherr, verkauft mit Handen Thomans des Schaffer, amptman und pergmaister der geistleichen herren von Mauerbach, des ordens von Carthus, 4 lb dn. geltes…</td>
                 </tr>
             
@@ -843,6 +972,11 @@
                     <td class="src-col-idno"><a href="../../documents/QGW/Vienna_1177-1414_ready/1256.html">1256</a></td>
                     <td class="src-col-date">1393 II 25</td>
                     <td class="src-col-corpus">QGW II/1 (1177–1414)</td>
+                    <td class="src-col-label"><em>-</em></td>
+                    <td class="src-col-role">
+                        <span class="role-chip role-chip-witness">Zeuge / Siegler*in</span>
+                        
+                    </td>
                     <td class="src-col-regest">Hanns der Urbe/atsch beurkundet, dass in der Theilung der zwischen ihm und seinem Bruder Dietreichen dem Urbetschen noch nicht vertheilten Weingärten Letzterem ein Weingarten, gelegen ze Gundramstorf…</td>
                 </tr>
             
@@ -850,6 +984,11 @@
                     <td class="src-col-idno"><a href="../../documents/Stadtbuecher/Band_1_1395-1400_ready/123.html">123</a></td>
                     <td class="src-col-date">1397 Februar 22</td>
                     <td class="src-col-corpus">Stadtbücher Bd. 1 (1395–1400)</td>
+                    <td class="src-col-label"><em>-</em></td>
+                    <td class="src-col-role">
+                        <span class="role-chip role-chip-issuer">Aussteller*in</span>
+                        
+                    </td>
                     <td class="src-col-regest">-</td>
                 </tr>
             
@@ -882,11 +1021,13 @@
         </div>
     </footer>
 
-    <script src="../../static/js/core.js?v=20260511112948"></script>
-    <script src="../../static/js/provenance.js?v=20260511112948"></script>
-    <script src="../../static/js/basket.js?v=20260511112948"></script>
+    <script src="../../static/js/core.js?v=20260511125458"></script>
+    <script src="../../static/js/tip.js?v=20260511125458"></script>
+    <script src="../../static/js/hint.js?v=20260511125458"></script>
+    <script src="../../static/js/basket.js?v=20260511125458"></script>
     
-<script src="../../static/js/tooltips.js?v=20260511112948"></script>
+<script src="../../static/js/profile.js?v=20260511125458"></script>
+<script src="../../static/js/basket-mount.js?v=20260511125458"></script>
 
 </body>
 </html>

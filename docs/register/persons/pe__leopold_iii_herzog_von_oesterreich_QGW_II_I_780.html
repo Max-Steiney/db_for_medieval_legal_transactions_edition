@@ -3,22 +3,22 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <meta http-equiv="Content-Security-Policy" content="default-src 'self'; script-src 'self'; style-src 'self'; font-src 'self'; img-src 'self' data: https://images.monasterium.net https://www.monasterium.net; connect-src 'self'; frame-ancestors 'none'; base-uri 'self'; form-action 'self'; upgrade-insecure-requests">
+    <meta http-equiv="Content-Security-Policy" content="default-src 'self'; script-src 'self'; style-src 'self'; font-src 'self'; img-src 'self' data: https://images.monasterium.net https://www.monasterium.net; connect-src 'self'; base-uri 'self'; form-action 'self'; upgrade-insecure-requests">
     <meta name="referrer" content="strict-origin-when-cross-origin">
     <meta http-equiv="Permissions-Policy" content="camera=(), microphone=(), geolocation=(), interest-cohort=()">
     <title>Herzog Leopold, Datenbank</title>
     <link rel="preload" as="font" type="font/woff2" crossorigin
           href="../../static/fonts/inter-400-latin.woff2">
-    <link rel="stylesheet" href="../../static/css/fonts.css?v=20260511112948">
-    <link rel="stylesheet" href="../../static/css/tokens.css?v=20260511112948">
-    <link rel="stylesheet" href="../../static/css/base.css?v=20260511112948">
-    <link rel="stylesheet" href="../../static/css/components.css?v=20260511112948">
-    <link rel="stylesheet" href="../../static/css/responsive.css?v=20260511112948">
-    <link rel="stylesheet" href="../../static/css/print.css?v=20260511112948">
-    <link rel="stylesheet" href="../../static/css/provenance.css?v=20260511112948">
+    <link rel="stylesheet" href="../../static/css/fonts.css?v=20260511125458">
+    <link rel="stylesheet" href="../../static/css/tokens.css?v=20260511125458">
+    <link rel="stylesheet" href="../../static/css/base.css?v=20260511125458">
+    <link rel="stylesheet" href="../../static/css/components.css?v=20260511125458">
+    <link rel="stylesheet" href="../../static/css/responsive.css?v=20260511125458">
+    <link rel="stylesheet" href="../../static/css/print.css?v=20260511125458">
+    <link rel="stylesheet" href="../../static/css/tip.css?v=20260511125458">
     
-<link rel="stylesheet" href="../../static/css/document.css?v=20260511112948">
-<link rel="stylesheet" href="../../static/css/person.css?v=20260511112948">
+<link rel="stylesheet" href="../../static/css/document.css?v=20260511125458">
+<link rel="stylesheet" href="../../static/css/person.css?v=20260511125458">
 
 </head>
 <body data-root-path="../.."
@@ -48,8 +48,6 @@
         <a href="../../register/persons.html">Personen</a>
         
         <a href="../../register/orgs.html">Organisationen</a>
-        
-        <a href="../../register/places.html">Orte</a>
         
     </div>
 </div>
@@ -91,7 +89,7 @@
     </div>
 </div>
 
-                <a href="../../korb.html" class="nav-basket" aria-label="Wissenskorb">
+                <a href="../../korb.html" class="nav-basket" aria-label="Datenkorb">
                     <svg width="18" height="18" viewBox="0 0 18 18" fill="none" aria-hidden="true">
                         <path d="M3 5h12l-1.2 8.5a1 1 0 0 1-1 .85H5.2a1 1 0 0 1-1-.85L3 5z"
                               stroke="currentColor" stroke-width="1.4" fill="none"
@@ -112,11 +110,23 @@
 
     <div class="person-toolbar">
         <div class="person-toolbar-inner">
-            <nav class="person-breadcrumb" aria-label="Position">
-                <a href="../../register/persons.html">Personenregister</a>
-                <span class="bc-sep">&rsaquo;</span>
-                <span class="bc-doc"><strong>Herzog Leopold</strong></span>
-            </nav>
+            <div class="person-toolbar-row">
+                <nav class="person-breadcrumb" aria-label="Position">
+                    <a href="../../register/persons.html">Personenregister</a>
+                    <span class="bc-sep">&rsaquo;</span>
+                    <span class="bc-doc"><strong>Herzog Leopold</strong></span>
+                </nav>
+                <div class="person-toolbar-actions">
+                    <span class="toolbar-basket-mount"
+                          data-basket-type="person"
+                          data-basket-id="pe__leopold_iii_herzog_von_oesterreich_QGW_II_I_780"
+                          data-basket-label="Herzog Leopold"
+                          data-basket-url="register/persons/pe__leopold_iii_herzog_von_oesterreich_QGW_II_I_780.html"
+                          data-basket-sex="m"
+                          data-basket-active-min="1364"
+                          data-basket-active-max="1385"></span>
+                </div>
+            </div>
             <div class="person-toolbar-meta">
                 <span class="meta-pair">
                     <span class="meta-label">Geschlecht</span>
@@ -124,11 +134,41 @@
                 </span>
                 
                 <span class="meta-pair">
-                    <span class="meta-label">Belegt</span>
+                    <span class="meta-label">Belegt
+<span class="tip-wrap">
+    <button type="button" class="tip-trigger tip-trigger--icon"
+            aria-expanded="false" aria-haspopup="dialog"
+            aria-controls="person-belegt"
+            data-tip="person-belegt"
+            aria-label="Definition: Beleg-Zeitraum">
+        <svg width="13" height="13" viewBox="0 0 16 16" aria-hidden="true">
+            <circle cx="8" cy="8" r="7" stroke="currentColor" stroke-width="1.4" fill="none"/>
+            <text x="8" y="11.6" text-anchor="middle" font-size="9.5" font-weight="700"
+                  fill="currentColor" font-family="Georgia, serif">i</text>
+        </svg>
+    </button>
+    <aside class="tip-popover tip-popover--glossary"
+           id="person-belegt" role="dialog" aria-hidden="true"
+           aria-label="Definition: Beleg-Zeitraum">
+        <header class="tip-head">
+            <h3 class="tip-title">Beleg-Zeitraum</h3>
+            <button type="button" class="tip-close" aria-label="Schlie&szlig;en">&times;</button>
+        </header>
+        <div class="tip-body">
+            <p>Erste und letzte Datierung einer Quelle, in der die Person erscheint. Bei einzelnem Beleg wird nur ein Jahr angegeben.</p>
+            
+        </div>
+    </aside>
+</span>
+</span>
                     <span class="meta-value">1364 bis 1385</span>
                 </span>
                 
                 
+                <span class="meta-pair">
+                    <span class="meta-label">Quellen</span>
+                    <span class="meta-value">22</span>
+                </span>
                 <span class="meta-pair person-id-pair">
                     <span class="meta-label">ID</span>
                     <code class="meta-value person-id">pe__leopold_iii_herzog_von_oesterreich_QGW_II_I_780</code>
@@ -145,10 +185,11 @@
             
         </h1>
         
+        
         <p class="person-note">Herzog von Österreich</p>
         
         
-        <p class="person-titles">
+        <p class="person-titles" data-collapsible="22">
             <span class="pt-label">In den Quellen genannt als</span>
             <span class="pt-chip">Herzog</span>
         </p>
@@ -158,7 +199,44 @@
             <a class="ext-link" href="https://www.wienwiki.at/?curid=13365" target="_blank" rel="noopener noreferrer">Wien-Wiki: Leopold III.</a>
         </p>
         
+        
+        <p class="person-extlinks">
+            
+            <a class="ext-link" href="https://www.geschichtewiki.wien.gv.at/Special:URIResolver/?curid=13365" target="_blank" rel="noopener noreferrer">Authority-Eintrag</a>
+            
+        </p>
+        
     </header>
+
+    
+    <section class="role-strip" aria-label="Rollen in Rechtsgeschäften">
+        <h2 class="role-strip-title">Rollen in Rechtsgeschäften</h2>
+        <div class="role-strip-cells">
+            
+            <div class="role-cell role-cell-issuer">
+                <span class="role-cell-count">14</span>
+                <span class="role-cell-label">Aussteller*in</span>
+            </div>
+            
+            <div class="role-cell role-cell-recipient">
+                <span class="role-cell-count">1</span>
+                <span class="role-cell-label">Empfänger*in</span>
+            </div>
+            
+            <div class="role-cell role-cell-witness is-zero">
+                <span class="role-cell-count">0</span>
+                <span class="role-cell-label">Zeuge / Siegler*in</span>
+            </div>
+            
+            <div class="role-cell role-cell-other is-zero">
+                <span class="role-cell-count">0</span>
+                <span class="role-cell-label">Sonstige</span>
+            </div>
+            
+        </div>
+        <p class="role-strip-hint">Summe Rollen-Belegungen: 15. Mehrfach-Rollen pro Quelle sind möglich.</p>
+    </section>
+    
 
     
 
@@ -175,6 +253,7 @@
                 <span class="rel-block-count">4</span>
                 <span class="rel-block-hint">Verwandtschaftsverhältnisse, wie sie in den Quellen explizit benannt werden.</span>
             </header>
+            
             <table class="rel-table">
                 <thead>
                     <tr>
@@ -195,7 +274,7 @@
                         <td class="rel-col-label"><em>Schwester</em></td>
                         <td class="rel-col-perspective">
                             
-                                Margarethe von Brandenburg → Herzog Leopold
+                                Margarethe von Brandenburg &rsaquo; Herzog Leopold
                             
                         </td>
                         <td class="rel-col-source">
@@ -214,7 +293,7 @@
                         <td class="rel-col-label"><em>Bruders</em></td>
                         <td class="rel-col-perspective">
                             
-                                Herzog Leopold → Albrecht von Habsburg
+                                Herzog Leopold &rsaquo; Albrecht von Habsburg
                             
                         </td>
                         <td class="rel-col-source">
@@ -233,7 +312,7 @@
                         <td class="rel-col-label"><em>Bruder</em></td>
                         <td class="rel-col-perspective">
                             
-                                Herzog Leopold → Albrecht von Habsburg
+                                Herzog Leopold &rsaquo; Albrecht von Habsburg
                             
                         </td>
                         <td class="rel-col-source">
@@ -252,7 +331,7 @@
                         <td class="rel-col-label"><em>Oheim</em></td>
                         <td class="rel-col-perspective">
                             
-                                Heinrich von Schaunberg von Schaunberg → Herzog Leopold
+                                Heinrich von Schaunberg von Schaunberg &rsaquo; Herzog Leopold
                             
                         </td>
                         <td class="rel-col-source">
@@ -281,6 +360,7 @@
                 <span class="rel-block-count">10</span>
                 <span class="rel-block-hint">Berufs- oder Amtsbezeichnung in Bezug auf eine Institution.</span>
             </header>
+            
             <table class="rel-table">
                 <thead>
                     <tr>
@@ -301,7 +381,7 @@
                         <td class="rel-col-label"><em>Herzog</em></td>
                         <td class="rel-col-perspective">
                             
-                                Herzog Leopold → Herzogtum Österreich
+                                Herzog Leopold &rsaquo; Herzogtum Österreich
                             
                         </td>
                         <td class="rel-col-source">
@@ -320,7 +400,7 @@
                         <td class="rel-col-label"><em>Herzog</em></td>
                         <td class="rel-col-perspective">
                             
-                                Herzog Leopold → Herzogtum Österreich
+                                Herzog Leopold &rsaquo; Herzogtum Österreich
                             
                         </td>
                         <td class="rel-col-source">
@@ -339,7 +419,7 @@
                         <td class="rel-col-label"><em>Herzog</em></td>
                         <td class="rel-col-perspective">
                             
-                                Herzog Leopold → Herzogtum Österreich
+                                Herzog Leopold &rsaquo; Herzogtum Österreich
                             
                         </td>
                         <td class="rel-col-source">
@@ -358,7 +438,7 @@
                         <td class="rel-col-label"><em>Herzog</em></td>
                         <td class="rel-col-perspective">
                             
-                                Herzog Leopold → Herzogtum Österreich
+                                Herzog Leopold &rsaquo; Herzogtum Österreich
                             
                         </td>
                         <td class="rel-col-source">
@@ -377,7 +457,7 @@
                         <td class="rel-col-label"><em>Herzog</em></td>
                         <td class="rel-col-perspective">
                             
-                                Herzog Leopold → Herzogtum Österreich
+                                Herzog Leopold &rsaquo; Herzogtum Österreich
                             
                         </td>
                         <td class="rel-col-source">
@@ -396,7 +476,7 @@
                         <td class="rel-col-label"><em>Herzog</em></td>
                         <td class="rel-col-perspective">
                             
-                                Herzog Leopold → Herzogtum Österreich
+                                Herzog Leopold &rsaquo; Herzogtum Österreich
                             
                         </td>
                         <td class="rel-col-source">
@@ -415,7 +495,7 @@
                         <td class="rel-col-label"><em>Herzog</em></td>
                         <td class="rel-col-perspective">
                             
-                                Herzog Leopold → Herzogtum Österreich
+                                Herzog Leopold &rsaquo; Herzogtum Österreich
                             
                         </td>
                         <td class="rel-col-source">
@@ -434,7 +514,7 @@
                         <td class="rel-col-label"><em>Herzog</em></td>
                         <td class="rel-col-perspective">
                             
-                                Herzog Leopold → Herzogtum Österreich
+                                Herzog Leopold &rsaquo; Herzogtum Österreich
                             
                         </td>
                         <td class="rel-col-source">
@@ -453,7 +533,7 @@
                         <td class="rel-col-label"><em>Herzog</em></td>
                         <td class="rel-col-perspective">
                             
-                                Herzog Leopold → Herzogtum Österreich
+                                Herzog Leopold &rsaquo; Herzogtum Österreich
                             
                         </td>
                         <td class="rel-col-source">
@@ -472,7 +552,7 @@
                         <td class="rel-col-label"><em>Herzog</em></td>
                         <td class="rel-col-perspective">
                             
-                                Herzog Leopold → Herzogtum Österreich
+                                Herzog Leopold &rsaquo; Herzogtum Österreich
                             
                         </td>
                         <td class="rel-col-source">
@@ -490,18 +570,27 @@
         
         
         
+        
+        
+        
+        
+        
+        
     </section>
     
 
     
     <section class="person-sources" aria-label="Quellen mit Nennung">
         <h2 class="section-head">Quellen mit Nennung</h2>
+        
         <table class="person-source-table">
             <thead>
                 <tr>
                     <th scope="col" class="src-col-idno">Nr.</th>
                     <th scope="col" class="src-col-date">Datum</th>
                     <th scope="col" class="src-col-corpus">Quellenkorpus</th>
+                    <th scope="col" class="src-col-label">Bezeichnung</th>
+                    <th scope="col" class="src-col-role">Rolle</th>
                     <th scope="col" class="src-col-regest">Regest</th>
                 </tr>
             </thead>
@@ -511,6 +600,11 @@
                     <td class="src-col-idno"><a href="../../documents/QGW/Vienna_1177-1414_ready/623.html">623</a></td>
                     <td class="src-col-date">1364 II 12</td>
                     <td class="src-col-corpus">QGW II/1 (1177–1414)</td>
+                    <td class="src-col-label"><em>-</em></td>
+                    <td class="src-col-role">
+                        <span class="role-chip role-chip-recipient">Empfänger*in</span>
+                        
+                    </td>
                     <td class="src-col-regest">Kaiser Karl IV., sein Sohn Wenzela, König von Böhmen, und sein Bruder Johans, Markgraf zu Mähren, beurkunden Erbvertrag, dass sie mit den Habsburgern Herzog Rudolf, Albrecht und Lupolt, sowie deren…</td>
                 </tr>
             
@@ -518,6 +612,11 @@
                     <td class="src-col-idno"><a href="../../documents/QGW/Vienna_1177-1414_ready/661.html">661</a></td>
                     <td class="src-col-date">1366 II 27</td>
                     <td class="src-col-corpus">QGW II/1 (1177–1414)</td>
+                    <td class="src-col-label"><em>Herzog</em></td>
+                    <td class="src-col-role">
+                        
+                        -
+                    </td>
                     <td class="src-col-regest">Herzog Albrecht III. gelobt Bürgschaft, seine Getreuen Leutolten von Stadek, seinen Landmarschall in Oesterreich, Hainreichen von Hakenberch, Stephan von Topel,Hofmeister seines Bruders Herzog…</td>
                 </tr>
             
@@ -525,6 +624,11 @@
                     <td class="src-col-idno"><a href="../../documents/QGW/Vienna_1177-1414_ready/673a.html">673a</a></td>
                     <td class="src-col-date">1366 VII 17</td>
                     <td class="src-col-corpus">QGW II/1 (1177–1414)</td>
+                    <td class="src-col-label"><em>-</em></td>
+                    <td class="src-col-role">
+                        <span class="role-chip role-chip-issuer">Aussteller*in</span>
+                        
+                    </td>
                     <td class="src-col-regest">* Herzog Albrecht III. und Leopold bestimmen, dass die Hälfte der Einkünfte der Pfarre Laa, welche jetzt Albertus Rigmistorf de Saxonia, Rector der Universität, innehat, in Hinkunft den Magistern und…</td>
                 </tr>
             
@@ -532,6 +636,11 @@
                     <td class="src-col-idno"><a href="../../documents/QGW/Vienna_1177-1414_ready/709.html">709</a></td>
                     <td class="src-col-date">1367 X 26</td>
                     <td class="src-col-corpus">QGW II/1 (1177–1414)</td>
+                    <td class="src-col-label"><em>-</em></td>
+                    <td class="src-col-role">
+                        <span class="role-chip role-chip-issuer">Aussteller*in</span>
+                        
+                    </td>
                     <td class="src-col-regest">Herzog Albrecht III. und Leopold genehmigen in Erwägung der Klagen, welche ihnen Jacob der Poll, chaplan ze Ottenhaim in Wienne, in Gegenwart des Bischofs Albrecht von Passau und anderer Herren über…</td>
                 </tr>
             
@@ -539,6 +648,11 @@
                     <td class="src-col-idno"><a href="../../documents/QGW/Vienna_1177-1414_ready/728a.html">728a</a></td>
                     <td class="src-col-date">1368 V 15</td>
                     <td class="src-col-corpus">QGW II/1 (1177–1414)</td>
+                    <td class="src-col-label"><em>-</em></td>
+                    <td class="src-col-role">
+                        <span class="role-chip role-chip-issuer">Aussteller*in</span>
+                        
+                    </td>
                     <td class="src-col-regest">Herzog Albrecht III. und Herzog Leopold III, welchen die Wiener Laubenherrn vorgebracht hatten, wie sie dadurch dass Herzog Rudolf IV. ihnen ir freiung, recht und gewonhait, die sy mit ir wandelung…</td>
                 </tr>
             
@@ -546,6 +660,11 @@
                     <td class="src-col-idno"><a href="../../documents/QGW/Vienna_1177-1414_ready/734.html">734 (= Privil. Nr. 16)</a></td>
                     <td class="src-col-date">1368 VIII 07</td>
                     <td class="src-col-corpus">QGW II/1 (1177–1414)</td>
+                    <td class="src-col-label"><em>-</em></td>
+                    <td class="src-col-role">
+                        
+                        -
+                    </td>
                     <td class="src-col-regest">Herzog Albrecht III. und Leopold ordnen auf die ihnen vorgebrachten Klagen des Bürgermeisters Niklas des Würfel und des Rathes der Stadt zu Wien an, dass die Zahl der Fütterer fortan nicht mehr als…</td>
                 </tr>
             
@@ -553,6 +672,11 @@
                     <td class="src-col-idno"><a href="../../documents/QGW/Vienna_1177-1414_ready/749.html">749 (= Privil. Nr. 17)</a></td>
                     <td class="src-col-date">1369 IV 28</td>
                     <td class="src-col-corpus">QGW II/1 (1177–1414)</td>
+                    <td class="src-col-label"><em>-</em></td>
+                    <td class="src-col-role">
+                        
+                        -
+                    </td>
                     <td class="src-col-regest">Herzog Albrecht III. und Leopold versprechen, den Beschwerden der Wiener Bürger und Kaufleute darüber, dass sie etlichen Gästen und anderen Kaufleuten die Durchfuhr ihrer Waaren auf ungewöhnlichen…</td>
                 </tr>
             
@@ -560,6 +684,11 @@
                     <td class="src-col-idno"><a href="../../documents/QGW/Vienna_1177-1414_ready/780.html">780</a></td>
                     <td class="src-col-date">1370 IX 17</td>
                     <td class="src-col-corpus">QGW II/1 (1177–1414)</td>
+                    <td class="src-col-label"><em>-</em></td>
+                    <td class="src-col-role">
+                        <span class="role-chip role-chip-issuer">Aussteller*in</span>
+                        
+                    </td>
                     <td class="src-col-regest">Herzog Albrecht III. und HerzogLeopold bestätigen das Vorrecht auf Bitten des Bürgermeisters, Richters und Rathes ihrer stat ze Wien das den Wiener Bürgern von ihrem Vater verliehene Vorrecht, ohne…</td>
                 </tr>
             
@@ -567,6 +696,11 @@
                     <td class="src-col-idno"><a href="../../documents/QGW/Vienna_1177-1414_ready/781.html">781(_Privil_Nr_19)</a></td>
                     <td class="src-col-date">1370 X 08</td>
                     <td class="src-col-corpus">QGW II/1 (1177–1414)</td>
+                    <td class="src-col-label"><em>-</em></td>
+                    <td class="src-col-role">
+                        
+                        -
+                    </td>
                     <td class="src-col-regest">Herzog Albrecht III. und HerzogLeopold gestatten eine gemaine offene tafern zu errichten in Anerkennung der treuen und mannigfaltigen Dienste der Wiener Bürger diesen, eine gemaine offene tafern zu…</td>
                 </tr>
             
@@ -574,6 +708,11 @@
                     <td class="src-col-idno"><a href="../../documents/QGW/Vienna_1177-1414_ready/783.html">783.1</a></td>
                     <td class="src-col-date">1370 XI 10</td>
                     <td class="src-col-corpus">QGW II/1 (1177–1414)</td>
+                    <td class="src-col-label"><em>-</em></td>
+                    <td class="src-col-role">
+                        
+                        -
+                    </td>
                     <td class="src-col-regest">Herzog Albrecht III. und Leopold bestätigen, dass der Bürgermeister, der Rath und die Bürger von Wien sich für sie gegenüber ihrem Oheim dem Grafen Meinharten von Görcz verpflichtet haben, diesem…</td>
                 </tr>
             
@@ -581,6 +720,11 @@
                     <td class="src-col-idno"><a href="../../documents/QGW/Vienna_1177-1414_ready/815.html">815</a></td>
                     <td class="src-col-date">1372 VIII 22</td>
                     <td class="src-col-corpus">QGW II/1 (1177–1414)</td>
+                    <td class="src-col-label"><em>-</em></td>
+                    <td class="src-col-role">
+                        
+                        -
+                    </td>
                     <td class="src-col-regest">Ulreich der Igelpekch, phleger und verbeser der gueter, di do geho/erent in den hof ze Dornpach von hern Reinharts wegen von Waeching, hofmaister herzog Leupolds , beurkundet, dass vor ihm in,…</td>
                 </tr>
             
@@ -588,6 +732,11 @@
                     <td class="src-col-idno"><a href="../../documents/QGW/Vienna_1177-1414_ready/819.html">819</a></td>
                     <td class="src-col-date">1372 XI 06</td>
                     <td class="src-col-corpus">QGW II/1 (1177–1414)</td>
+                    <td class="src-col-label"><em>-</em></td>
+                    <td class="src-col-role">
+                        
+                        -
+                    </td>
                     <td class="src-col-regest">Herzog Albrecht III. bestätigt, dass die Bürger, der Richter und der Rath der Stadt zu Wien seinen Gläubigern, dem bru/oder Ru/ed. von Honburg, Teusches ordens weilent landcomendur ze Behein,…</td>
                 </tr>
             
@@ -595,6 +744,11 @@
                     <td class="src-col-idno"><a href="../../documents/QGW/Vienna_1177-1414_ready/824.html">824</a></td>
                     <td class="src-col-date">1373 II 23</td>
                     <td class="src-col-corpus">QGW II/1 (1177–1414)</td>
+                    <td class="src-col-label"><em>-</em></td>
+                    <td class="src-col-role">
+                        
+                        -
+                    </td>
                     <td class="src-col-regest">Herzog Albrecht III. gestattet bis auf seinen und seines Bruders Herzog Leupolts Widerruf den Kaufleuten zu Wien, von jedem Wagen, der Kaufmannschaft nach oder von Venedi führt, 32 dn. und von einem…</td>
                 </tr>
             
@@ -602,6 +756,11 @@
                     <td class="src-col-idno"><a href="../../documents/QGW/Vienna_1177-1414_ready/837.html">837</a></td>
                     <td class="src-col-date">1373 XII 18</td>
                     <td class="src-col-corpus">QGW II/1 (1177–1414)</td>
+                    <td class="src-col-label"><em>-</em></td>
+                    <td class="src-col-role">
+                        
+                        -
+                    </td>
                     <td class="src-col-regest">Herzog Albrecht III. beurkundet, dass ihm seine purger ze Wienn, die besunderlich Flemming genant sind, eine Handfeste vorgelegt haben, die ihnen Herzog Leopold, der Alte, in Latein ertheilt, darnach…</td>
                 </tr>
             
@@ -609,6 +768,11 @@
                     <td class="src-col-idno"><a href="../../documents/QGW/Vienna_1177-1414_ready/883.html">883</a></td>
                     <td class="src-col-date">1376 VII 28</td>
                     <td class="src-col-corpus">QGW II/1 (1177–1414)</td>
+                    <td class="src-col-label"><em>-</em></td>
+                    <td class="src-col-role">
+                        <span class="role-chip role-chip-issuer">Aussteller*in</span>
+                        
+                    </td>
                     <td class="src-col-regest">Herzog Leopold III. bestätigt, dass ihm der Bürgermeister, der Rath und die Bürger zu Wien von der am nächsten Martinstage fälligen Steuer 680 lb dn. bezahlt haben.</td>
                 </tr>
             
@@ -616,6 +780,11 @@
                     <td class="src-col-idno"><a href="../../documents/QGW/Vienna_1177-1414_ready/908.html">908</a></td>
                     <td class="src-col-date">1377 VI 22</td>
                     <td class="src-col-corpus">QGW II/1 (1177–1414)</td>
+                    <td class="src-col-label"><em>-</em></td>
+                    <td class="src-col-role">
+                        <span class="role-chip role-chip-issuer">Aussteller*in</span>
+                        
+                    </td>
                     <td class="src-col-regest">Herzog Albrecht III. und Herzog Leopold III. geloben und versprechen, dass der Stadt zu Wien daraus, dass Bürgermeister, Richter und Rath die den Juden in Oesterreich über ihre Rechte und Freiheiten…</td>
                 </tr>
             
@@ -623,6 +792,11 @@
                     <td class="src-col-idno"><a href="../../documents/QGW/Vienna_1177-1414_ready/909.html">909</a></td>
                     <td class="src-col-date">1377 VII 03</td>
                     <td class="src-col-corpus">QGW II/1 (1177–1414)</td>
+                    <td class="src-col-label"><em>-</em></td>
+                    <td class="src-col-role">
+                        <span class="role-chip role-chip-issuer">Aussteller*in</span>
+                        
+                    </td>
                     <td class="src-col-regest">Herzog Leopold III. genehmigt das von seinem Getreuen Niclas dem Würfel, dem eltern, beurkundete gescheft.</td>
                 </tr>
             
@@ -630,6 +804,11 @@
                     <td class="src-col-idno"><a href="../../documents/QGW/Vienna_1177-1414_ready/924.html">924</a></td>
                     <td class="src-col-date">1377 XII 19</td>
                     <td class="src-col-corpus">QGW II/1 (1177–1414)</td>
+                    <td class="src-col-label"><em>-</em></td>
+                    <td class="src-col-role">
+                        <span class="role-chip role-chip-issuer">Aussteller*in</span>
+                        
+                    </td>
                     <td class="src-col-regest">Herzog Leopold III. bestätigt das Geschäft seines Wiener Bürgers Lienhart des Pollen und genehmigt die von den Geschäftsherren Jacoben Pollen, pharrer ze Ottenhaim , GeschäftsherrenPauln Holzkeuffel,…</td>
                 </tr>
             
@@ -637,6 +816,11 @@
                     <td class="src-col-idno"><a href="../../documents/QGW/Vienna_1177-1414_ready/935.html">935</a></td>
                     <td class="src-col-date">1378 IV 23</td>
                     <td class="src-col-corpus">QGW II/1 (1177–1414)</td>
+                    <td class="src-col-label"><em>-</em></td>
+                    <td class="src-col-role">
+                        <span class="role-chip role-chip-issuer">Aussteller*in</span>
+                        
+                    </td>
                     <td class="src-col-regest">Herzog Leopold III. gelobt, seine Getreuen Peter von Torberg, seinen Hofmeister , Getreuer Hans von Traun, Getreuer Leupolt, pharrer ze Medlik , Getreuer Hans Kneuz/zz/zer, Getreuer Niclas Würffel,…</td>
                 </tr>
             
@@ -644,6 +828,11 @@
                     <td class="src-col-idno"><a href="../../documents/QGW/Vienna_1177-1414_ready/974.html">974</a></td>
                     <td class="src-col-date">1379 XI 08</td>
                     <td class="src-col-corpus">QGW II/1 (1177–1414)</td>
+                    <td class="src-col-label"><em>-</em></td>
+                    <td class="src-col-role">
+                        <span class="role-chip role-chip-issuer">Aussteller*in</span>
+                        
+                    </td>
                     <td class="src-col-regest">Herzog Leopold III. bestätigt, dass ihm her Wenzlaw, römischer ku/enig und ku/enig ze Beheim, 6526 guldein, die dieser auf den nechsten kunftigen sand Marteins tag schuldig was ze geben und ze…</td>
                 </tr>
             
@@ -651,6 +840,11 @@
                     <td class="src-col-idno"><a href="../../documents/QGW/Vienna_1177-1414_ready/1091.html">1091</a></td>
                     <td class="src-col-date">1385 VI 23</td>
                     <td class="src-col-corpus">QGW II/1 (1177–1414)</td>
+                    <td class="src-col-label"><em>-</em></td>
+                    <td class="src-col-role">
+                        
+                        -
+                    </td>
                     <td class="src-col-regest">Margret hausfrau, maister Niclas hausvrow des Füchsleins, herzog Leupolts obrister choch, schafft ihrem Manne für den Fall, als sie, ohne Kinder zu hinterlassen, vor ihm stürbe, ihr Haus, gelegen in…</td>
                 </tr>
             
@@ -658,6 +852,11 @@
                     <td class="src-col-idno"><a href="../../documents/QGW/Vienna_1177-1414_ready/1095.html">1095</a></td>
                     <td class="src-col-date">1385 X 16</td>
                     <td class="src-col-corpus">QGW II/1 (1177–1414)</td>
+                    <td class="src-col-label"><em>-</em></td>
+                    <td class="src-col-role">
+                        
+                        -
+                    </td>
                     <td class="src-col-regest">Gotschalich, abt ze Melkch, leiht den Zehent ze Guenvarn, ze Haniflant und ze Hofstetten, den Leupolt der Prenner von der Neunstat zu Lehen gehabt und ihm aufgesannt hatte, dem Schwager desselben…</td>
                 </tr>
             
@@ -690,11 +889,13 @@
         </div>
     </footer>
 
-    <script src="../../static/js/core.js?v=20260511112948"></script>
-    <script src="../../static/js/provenance.js?v=20260511112948"></script>
-    <script src="../../static/js/basket.js?v=20260511112948"></script>
+    <script src="../../static/js/core.js?v=20260511125458"></script>
+    <script src="../../static/js/tip.js?v=20260511125458"></script>
+    <script src="../../static/js/hint.js?v=20260511125458"></script>
+    <script src="../../static/js/basket.js?v=20260511125458"></script>
     
-<script src="../../static/js/tooltips.js?v=20260511112948"></script>
+<script src="../../static/js/profile.js?v=20260511125458"></script>
+<script src="../../static/js/basket-mount.js?v=20260511125458"></script>
 
 </body>
 </html>

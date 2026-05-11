@@ -3,21 +3,21 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <meta http-equiv="Content-Security-Policy" content="default-src 'self'; script-src 'self'; style-src 'self'; font-src 'self'; img-src 'self' data: https://images.monasterium.net https://www.monasterium.net; connect-src 'self'; frame-ancestors 'none'; base-uri 'self'; form-action 'self'; upgrade-insecure-requests">
+    <meta http-equiv="Content-Security-Policy" content="default-src 'self'; script-src 'self'; style-src 'self'; font-src 'self'; img-src 'self' data: https://images.monasterium.net https://www.monasterium.net; connect-src 'self'; base-uri 'self'; form-action 'self'; upgrade-insecure-requests">
     <meta name="referrer" content="strict-origin-when-cross-origin">
     <meta http-equiv="Permissions-Policy" content="camera=(), microphone=(), geolocation=(), interest-cohort=()">
     <title>Nr. 387 (1351 VII 08), Datenbank</title>
     <link rel="preload" as="font" type="font/woff2" crossorigin
           href="../../../static/fonts/inter-400-latin.woff2">
-    <link rel="stylesheet" href="../../../static/css/fonts.css?v=20260511112948">
-    <link rel="stylesheet" href="../../../static/css/tokens.css?v=20260511112948">
-    <link rel="stylesheet" href="../../../static/css/base.css?v=20260511112948">
-    <link rel="stylesheet" href="../../../static/css/components.css?v=20260511112948">
-    <link rel="stylesheet" href="../../../static/css/responsive.css?v=20260511112948">
-    <link rel="stylesheet" href="../../../static/css/print.css?v=20260511112948">
-    <link rel="stylesheet" href="../../../static/css/provenance.css?v=20260511112948">
+    <link rel="stylesheet" href="../../../static/css/fonts.css?v=20260511125458">
+    <link rel="stylesheet" href="../../../static/css/tokens.css?v=20260511125458">
+    <link rel="stylesheet" href="../../../static/css/base.css?v=20260511125458">
+    <link rel="stylesheet" href="../../../static/css/components.css?v=20260511125458">
+    <link rel="stylesheet" href="../../../static/css/responsive.css?v=20260511125458">
+    <link rel="stylesheet" href="../../../static/css/print.css?v=20260511125458">
+    <link rel="stylesheet" href="../../../static/css/tip.css?v=20260511125458">
     
-<link rel="stylesheet" href="../../../static/css/document.css?v=20260511112948">
+<link rel="stylesheet" href="../../../static/css/document.css?v=20260511125458">
 <link rel="canonical" href="documents/QGW/Vienna_1177-1414_ready/387.html">
 <meta name="citation_title" content="Nr. 387 (1351 VII 08)">
 <meta name="citation_collection" content="QGW II/1 (1177–1414)">
@@ -50,8 +50,6 @@
         <a href="../../../register/persons.html">Personen</a>
         
         <a href="../../../register/orgs.html">Organisationen</a>
-        
-        <a href="../../../register/places.html">Orte</a>
         
     </div>
 </div>
@@ -93,7 +91,7 @@
     </div>
 </div>
 
-                <a href="../../../korb.html" class="nav-basket" aria-label="Wissenskorb">
+                <a href="../../../korb.html" class="nav-basket" aria-label="Datenkorb">
                     <svg width="18" height="18" viewBox="0 0 18 18" fill="none" aria-hidden="true">
                         <path d="M3 5h12l-1.2 8.5a1 1 0 0 1-1 .85H5.2a1 1 0 0 1-1-.85L3 5z"
                               stroke="currentColor" stroke-width="1.4" fill="none"
@@ -140,7 +138,7 @@
                     
                     <span class="meta-pair">
                         <span class="meta-label">Quelle</span>
-                        <span class="meta-value" title="Quellen zur Geschichte der Stadt Wien, Bd. II/1, Nr. 387">Quellen zur Geschichte der Stadt Wien, Bd. II/1, Nr. 387</span>
+                        <span class="meta-value" data-hint="Quellen zur Geschichte der Stadt Wien, Bd. II/1, Nr. 387">Quellen zur Geschichte der Stadt Wien, Bd. II/1, Nr. 387</span>
                     </span>
                     
                 </div>
@@ -151,7 +149,7 @@
                     
                     <button type="button" class="legend-toggle"
                             data-layer="entities" aria-pressed="true"
-                            title="Entitäten ein-/ausblenden">
+                            data-hint="Entitäten ein-/ausblenden">
                         <span class="legend-toggle-dots">
                             <span class="legend-swatch swatch-person"></span><span class="legend-swatch swatch-org"></span><span class="legend-swatch swatch-place"></span>
                         </span>
@@ -160,7 +158,7 @@
                     
                     <button type="button" class="legend-toggle"
                             data-layer="functions" aria-pressed="true"
-                            title="Funktionsrollen ein-/ausblenden">
+                            data-hint="Funktionsrollen ein-/ausblenden">
                         <span class="legend-toggle-dots">
                             <span class="legend-swatch swatch-fn-issuer"></span><span class="legend-swatch swatch-fn-recipient"></span><span class="legend-swatch swatch-fn-witness"></span>
                         </span>
@@ -169,7 +167,7 @@
                     
                     <button type="button" class="legend-toggle"
                             data-layer="attributes" aria-pressed="true"
-                            title="Attribute ein-/ausblenden">
+                            data-hint="Attribute ein-/ausblenden">
                         <span class="legend-toggle-dots">
                             <span class="legend-swatch swatch-attr"></span><span class="legend-swatch swatch-add"></span>
                         </span>
@@ -178,7 +176,7 @@
                     
                     <button type="button" class="legend-toggle"
                             data-layer="triggers" aria-pressed="true"
-                            title="Dispositivformel ein-/ausblenden">
+                            data-hint="Dispositivformel ein-/ausblenden">
                         <span class="legend-toggle-dots">
                             <span class="legend-swatch swatch-trigger"></span>
                         </span>
@@ -190,21 +188,29 @@
                 <div class="doc-toolbar-actions">
                     <a class="toolbar-btn" href="../../../tei/QGW/Vienna_1177-1414_ready/387.xml"
                        download="387.xml"
-                       aria-label="TEI-XML herunterladen" title="TEI-XML herunterladen"><svg viewBox="0 0 16 16" width="16" height="16" aria-hidden="true"><path fill="none" stroke="currentColor" stroke-width="1.4" stroke-linecap="round" stroke-linejoin="round" d="M8 2v8m0 0l-3-3m3 3l3-3M3 13h10"/></svg></a>
+                       aria-label="TEI-XML herunterladen" data-hint="TEI-XML herunterladen"><svg viewBox="0 0 16 16" width="16" height="16" aria-hidden="true"><path fill="none" stroke="currentColor" stroke-width="1.4" stroke-linecap="round" stroke-linejoin="round" d="M8 2v8m0 0l-3-3m3 3l3-3M3 13h10"/></svg></a>
                     <button class="toolbar-btn" id="cite-toggle" aria-expanded="false"
-                            aria-label="Zitation kopieren" title="Zitation kopieren"><svg viewBox="0 0 16 16" width="16" height="16" aria-hidden="true"><rect x="4" y="2" width="8" height="11" rx="1" fill="none" stroke="currentColor" stroke-width="1.4"/><path d="M6 1.5h4a0.5 0.5 0 0 1 0.5 0.5v1a0.5 0.5 0 0 1-0.5 0.5H6a0.5 0.5 0 0 1-0.5-0.5V2A0.5 0.5 0 0 1 6 1.5z" fill="currentColor"/><path d="M6.5 6.5h3M6.5 8.5h3M6.5 10.5h2" stroke="currentColor" stroke-width="1" stroke-linecap="round"/></svg></button>
+                            aria-label="Zitation kopieren" data-hint="Zitation kopieren"><svg viewBox="0 0 16 16" width="16" height="16" aria-hidden="true"><rect x="4" y="2" width="8" height="11" rx="1" fill="none" stroke="currentColor" stroke-width="1.4"/><path d="M6 1.5h4a0.5 0.5 0 0 1 0.5 0.5v1a0.5 0.5 0 0 1-0.5 0.5H6a0.5 0.5 0 0 1-0.5-0.5V2A0.5 0.5 0 0 1 6 1.5z" fill="currentColor"/><path d="M6.5 6.5h3M6.5 8.5h3M6.5 10.5h2" stroke="currentColor" stroke-width="1" stroke-linecap="round"/></svg></button>
                     <div class="cite-popover hidden" id="cite-popover"></div>
+                    <span class="toolbar-basket-mount"
+                          data-basket-type="source"
+                          data-basket-id="387"
+                          data-basket-label="387"
+                          data-basket-url="documents/QGW/Vienna_1177-1414_ready/387.html"
+                          data-basket-date="1351-07-08"
+                          data-basket-coll="QGW II/1 (1177–1414)"
+                          data-basket-regest="Elsbet hausvrowe, weiln Dietreichs hausvrowe des Urbätschen saelige, Chunrat der Urbaetsch, ir sun , und Chunigunt, seine Hausfrau, Pilgreim der Chitzel von der Neunstat, ir aidem, und Anne, seine…"></span>
                     
 <nav class="doc-paging doc-paging-inline" aria-label="Quellen-Navigation">
     
     <a href="../../../documents/QGW/Vienna_1177-1414_ready/386.html" class="toolbar-btn doc-paging-prev"
        aria-label="Vorherige Quelle: Nr. 386"
-       title="Vorherige Quelle: Nr. 386"><svg viewBox="0 0 16 16" width="16" height="16" aria-hidden="true"><path fill="none" stroke="currentColor" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round" d="M10 3l-5 5 5 5"/></svg></a>
+       data-hint="Vorherige Quelle: Nr. 386"><svg viewBox="0 0 16 16" width="16" height="16" aria-hidden="true"><path fill="none" stroke="currentColor" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round" d="M10 3l-5 5 5 5"/></svg></a>
     
     
     <a href="../../../documents/QGW/Vienna_1177-1414_ready/388.html" class="toolbar-btn doc-paging-next"
        aria-label="Nächste Quelle: Nr. 388"
-       title="Nächste Quelle: Nr. 388"><svg viewBox="0 0 16 16" width="16" height="16" aria-hidden="true"><path fill="none" stroke="currentColor" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round" d="M6 3l5 5-5 5"/></svg></a>
+       data-hint="Nächste Quelle: Nr. 388"><svg viewBox="0 0 16 16" width="16" height="16" aria-hidden="true"><path fill="none" stroke="currentColor" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round" d="M6 3l5 5-5 5"/></svg></a>
     
 </nav>
 
@@ -219,14 +225,14 @@
         <!-- Document body (rendered TEI) -->
         <div class="doc-body">
             <section class="tei-abstract"><h2 class="tei-section-head">Regest</h2><p>
-               <span class="anno-event" data-ref="ev__QGW_II_I_387"><span class="anno-fn anno-fn-issuer" data-role="issuer"><span class="fn-label">Aussteller*in</span><a class="anno-person" data-ref="pe__elisabeth_QGW_II_I_386" title="Elisabeth Urbetschin [pe__elisabeth_QGW_II_I_386]" href="../../../register/persons/pe__elisabeth_QGW_II_I_386.html">Elsbet <span class="anno-attr anno-attr-kin" data-corresp="pe__dietrich_urbetsch_QGW_II_I_1192"><span class="tei-add">hausvrowe</span></span>, weiln <a class="anno-person" data-ref="pe__dietrich_urbetsch_QGW_II_I_1192" title="Dietrich Urbetsch [pe__dietrich_urbetsch_QGW_II_I_1192]" href="../../../register/persons/pe__dietrich_urbetsch_QGW_II_I_1192.html">Dietreichs hausvrowe des
-                           Urbätschen <span class="anno-attr anno-attr-dead">saelige</span></a></a>, <a class="anno-person" data-ref="pe__konrad_urbetsch_QGW_II_I_950" title="Konrad Urbetsch († 10.11.1378) [pe__konrad_urbetsch_QGW_II_I_950]" href="../../../register/persons/pe__konrad_urbetsch_QGW_II_I_950.html">Chunrat der Urbaetsch,
-                        ir <span class="anno-attr anno-attr-kin" data-corresp="pe__elisabeth_QGW_II_I_386">sun</span></a> , und <a class="anno-person" data-ref="pe__kunigunde_QGW_II_I_387" title="Kunigunde Urbetschin [pe__kunigunde_QGW_II_I_387]" href="../../../register/persons/pe__kunigunde_QGW_II_I_387.html">Chunigunt, seine <span class="anno-attr anno-attr-kin" data-corresp="pe__konrad_urbetsch_QGW_II_I_950">Hausfrau</span></a>, <a class="anno-person" data-ref="pe__pilgrim_chitzel_QGW_II_I_386" title="Pilgrim Chitzel zu Wiener Neustadt [pe__pilgrim_chitzel_QGW_II_I_386]" href="../../../register/persons/pe__pilgrim_chitzel_QGW_II_I_386.html">Pilgreim der Chitzel
-                        von der Neunstat, ir <span class="anno-attr anno-attr-kin" data-corresp="pe__elisabeth_QGW_II_I_386">aidem</span></a>, und <a class="anno-person" data-ref="pe__anna_QGW_II_I_387" title="Anna Chitzelin [pe__anna_QGW_II_I_387]" href="../../../register/persons/pe__anna_QGW_II_I_387.html">Anne, seine <span class="anno-attr anno-attr-kin" data-corresp="pe__pilgrim_chitzel_QGW_II_I_386">Hausfrau</span>, ihre
-                           <span class="anno-attr anno-attr-kin" data-corresp="pe__elisabeth_QGW_II_I_386">Tochter</span></a>, <a class="anno-person" data-ref="pe__dietrich_flusthart_QGW_II_I_572" title="Dietrich Flusthart († 27.11.1360) [pe__dietrich_flusthart_QGW_II_I_572]" href="../../../register/persons/pe__dietrich_flusthart_QGW_II_I_572.html">Dietreich der Flusthart, <span class="anno-attr anno-attr-occ" data-corresp="org__wien">purgermaister</span> ze Wienn, ir
-                           <span class="anno-attr anno-attr-kin" data-corresp="pe__elisabeth_QGW_II_I_386">aidem</span></a>, und <a class="anno-person" data-ref="pe__elisabeth_QGW_II_I_519" title="Elisabeth Urbetschin [pe__elisabeth_QGW_II_I_519]" href="../../../register/persons/pe__elisabeth_QGW_II_I_519.html">Elsbet, seine <span class="anno-attr anno-attr-kin" data-corresp="pe__dietrich_flusthart_QGW_II_I_572">Hausfrau</span>, auch
+               <span class="anno-event" data-ref="ev__QGW_II_I_387"><span class="anno-fn anno-fn-issuer" data-role="issuer"><span class="fn-label">Aussteller*in</span><a class="anno-person" data-ref="pe__elisabeth_QGW_II_I_386" data-hint="Elisabeth Urbetschin [pe__elisabeth_QGW_II_I_386]" data-hint-type="Person" href="../../../register/persons/pe__elisabeth_QGW_II_I_386.html">Elsbet <span class="anno-attr anno-attr-kin" data-corresp="pe__dietrich_urbetsch_QGW_II_I_1192"><span class="tei-add">hausvrowe</span></span>, weiln <a class="anno-person" data-ref="pe__dietrich_urbetsch_QGW_II_I_1192" data-hint="Dietrich Urbetsch [pe__dietrich_urbetsch_QGW_II_I_1192]" data-hint-type="Person" href="../../../register/persons/pe__dietrich_urbetsch_QGW_II_I_1192.html">Dietreichs hausvrowe des
+                           Urbätschen <span class="anno-attr anno-attr-dead">saelige</span></a></a>, <a class="anno-person" data-ref="pe__konrad_urbetsch_QGW_II_I_950" data-hint="Konrad Urbetsch († 10.11.1378) [pe__konrad_urbetsch_QGW_II_I_950]" data-hint-type="Person" href="../../../register/persons/pe__konrad_urbetsch_QGW_II_I_950.html">Chunrat der Urbaetsch,
+                        ir <span class="anno-attr anno-attr-kin" data-corresp="pe__elisabeth_QGW_II_I_386">sun</span></a> , und <a class="anno-person" data-ref="pe__kunigunde_QGW_II_I_387" data-hint="Kunigunde Urbetschin [pe__kunigunde_QGW_II_I_387]" data-hint-type="Person" href="../../../register/persons/pe__kunigunde_QGW_II_I_387.html">Chunigunt, seine <span class="anno-attr anno-attr-kin" data-corresp="pe__konrad_urbetsch_QGW_II_I_950">Hausfrau</span></a>, <a class="anno-person" data-ref="pe__pilgrim_chitzel_QGW_II_I_386" data-hint="Pilgrim Chitzel zu Wiener Neustadt [pe__pilgrim_chitzel_QGW_II_I_386]" data-hint-type="Person" href="../../../register/persons/pe__pilgrim_chitzel_QGW_II_I_386.html">Pilgreim der Chitzel
+                        von der Neunstat, ir <span class="anno-attr anno-attr-kin" data-corresp="pe__elisabeth_QGW_II_I_386">aidem</span></a>, und <a class="anno-person" data-ref="pe__anna_QGW_II_I_387" data-hint="Anna Chitzelin [pe__anna_QGW_II_I_387]" data-hint-type="Person" href="../../../register/persons/pe__anna_QGW_II_I_387.html">Anne, seine <span class="anno-attr anno-attr-kin" data-corresp="pe__pilgrim_chitzel_QGW_II_I_386">Hausfrau</span>, ihre
+                           <span class="anno-attr anno-attr-kin" data-corresp="pe__elisabeth_QGW_II_I_386">Tochter</span></a>, <a class="anno-person" data-ref="pe__dietrich_flusthart_QGW_II_I_572" data-hint="Dietrich Flusthart († 27.11.1360) [pe__dietrich_flusthart_QGW_II_I_572]" data-hint-type="Person" href="../../../register/persons/pe__dietrich_flusthart_QGW_II_I_572.html">Dietreich der Flusthart, <span class="anno-attr anno-attr-occ" data-corresp="org__wien">purgermaister</span> ze Wienn, ir
+                           <span class="anno-attr anno-attr-kin" data-corresp="pe__elisabeth_QGW_II_I_386">aidem</span></a>, und <a class="anno-person" data-ref="pe__elisabeth_QGW_II_I_519" data-hint="Elisabeth Urbetschin [pe__elisabeth_QGW_II_I_519]" data-hint-type="Person" href="../../../register/persons/pe__elisabeth_QGW_II_I_519.html">Elsbet, seine <span class="anno-attr anno-attr-kin" data-corresp="pe__dietrich_flusthart_QGW_II_I_572">Hausfrau</span>, auch
                         ihre <span class="anno-attr anno-attr-kin" data-corresp="pe__elisabeth_QGW_II_I_386">Tochter</span></a></span>, <span class="anno-trigger anno-trigger-disp">verkaufen mit
-                     gesammter Hand</span> und <span class="anno-fn anno-fn-other" data-role="other"><span class="fn-label">Sonstige</span><span class="anno-trigger anno-trigger-fn">mit Handen</span> ihrer <a class="anno-person" data-ref="pe__kunigunde_QGW_II_I_456a" title="Kunigunde auf der Säule [pe__kunigunde_QGW_II_I_456a]" href="../../../register/persons/pe__kunigunde_QGW_II_I_456a.html"><span class="anno-attr anno-attr-title">Grundfrau</span> Chunigunde <span class="anno-attr anno-attr-kin" data-corresp="pe__herbert_auf_der_saeule_QGW_II_I_912"><span class="tei-add">wittibe</span></span>, <a class="anno-person" data-ref="pe__herbert_auf_der_saeule_QGW_II_I_912" title="Herbert auf der Säule († 08.07.1351) [pe__herbert_auf_der_saeule_QGW_II_I_912]" href="../../../register/persons/pe__herbert_auf_der_saeule_QGW_II_I_912.html"><span class="anno-attr anno-attr-title">hern</span> Herbortes <span class="anno-attr anno-attr-dead">wittibe</span>
+                     gesammter Hand</span> und <span class="anno-fn anno-fn-other" data-role="other"><span class="fn-label">Sonstige</span><span class="anno-trigger anno-trigger-fn">mit Handen</span> ihrer <a class="anno-person" data-ref="pe__kunigunde_QGW_II_I_456a" data-hint="Kunigunde auf der Säule [pe__kunigunde_QGW_II_I_456a]" data-hint-type="Person" href="../../../register/persons/pe__kunigunde_QGW_II_I_456a.html"><span class="anno-attr anno-attr-title">Grundfrau</span> Chunigunde <span class="anno-attr anno-attr-kin" data-corresp="pe__herbert_auf_der_saeule_QGW_II_I_912"><span class="tei-add">wittibe</span></span>, <a class="anno-person" data-ref="pe__herbert_auf_der_saeule_QGW_II_I_912" data-hint="Herbert auf der Säule († 08.07.1351) [pe__herbert_auf_der_saeule_QGW_II_I_912]" data-hint-type="Person" href="../../../register/persons/pe__herbert_auf_der_saeule_QGW_II_I_912.html"><span class="anno-attr anno-attr-title">hern</span> Herbortes <span class="anno-attr anno-attr-dead">wittibe</span>
                            auf der Seuln</a></a></span>, ihr Haus, gelegen hinder dem Chamerhof ze
                   Wienne, das weiln hern Hainreichs, des hansgrafen, gewesen ist, zwischen hern
                   Otten haus von Eslarn und dem haus, das des Schützenmaister chinder ist , und den
@@ -235,8 +241,8 @@
                   belastet mit 6 dn. Grundrecht und der Elsbeth in der Bürgers ehr anne für 14 lb
                   dn. versessenes Burgrecht zugesprochen), aus êhafter not, da das Haus bei der
                   vertigen grossen prunst niedergebrannt war und sie es hinwider nicht gepauen
-                  mochten, um 75 lb dn. <span class="anno-fn anno-fn-recipient" data-role="recipient"><span class="fn-label">Empfänger*in</span><a class="anno-person" data-ref="pe__leonhard_poll_QGW_II_I_1152" title="Leonhard Poll Poll († 10.11.1378) [pe__leonhard_poll_QGW_II_I_1152]" href="../../../register/persons/pe__leonhard_poll_QGW_II_I_1152.html">Lienharten dem Pollen</a> und seiner
-                        <a class="anno-person" data-ref="pe__elisabeth_QGW_II_I_387_b" title="Elisabeth Pollin [pe__elisabeth_QGW_II_I_387_b]" href="../../../register/persons/pe__elisabeth_QGW_II_I_387_b.html">Hausfrau
+                  mochten, um 75 lb dn. <span class="anno-fn anno-fn-recipient" data-role="recipient"><span class="fn-label">Empfänger*in</span><a class="anno-person" data-ref="pe__leonhard_poll_QGW_II_I_1152" data-hint="Leonhard Poll Poll († 10.11.1378) [pe__leonhard_poll_QGW_II_I_1152]" data-hint-type="Person" href="../../../register/persons/pe__leonhard_poll_QGW_II_I_1152.html">Lienharten dem Pollen</a> und seiner
+                        <a class="anno-person" data-ref="pe__elisabeth_QGW_II_I_387_b" data-hint="Elisabeth Pollin [pe__elisabeth_QGW_II_I_387_b]" data-hint-type="Person" href="../../../register/persons/pe__elisabeth_QGW_II_I_387_b.html">Hausfrau
                      Elsbeten</a></span>. Da Katrei, die Tochter der Elsbeth aus ihrer Ehe mit
                   Dietreich dem Urbaetsch, und Nichlas, ihr Enkel, der Sohn hern Stybors und ihrer
                   Tochter vron Gerwirgen, dessen beide Eltern verstorben sind, noch nicht mündig
@@ -244,9 +250,9 @@
                   Ansprache. Für den unmündigen Bruder Chunrats des Urbaetschen, Jans, setzen sich
                   aber jener und seine Frau Chunigunt zu Bürgen.</span>
             </p></section><section class="tei-seal"><h2 class="tei-section-head">Siegelbeschreibung</h2><p><span class="anno-event" data-ref="ev__QGW_II_I_387"><span class="anno-fn anno-fn-witness" data-role="witness"><span class="fn-label">Zeug*in</span>Besiegelt mit
-                     den Siegeln: 1. <a class="anno-person" data-ref="pe__elisabeth_QGW_II_I_386" title="Elisabeth Urbetschin [pe__elisabeth_QGW_II_I_386]" href="../../../register/persons/pe__elisabeth_QGW_II_I_386.html"><span class="tei-add">Ausstellerin</span></a>
-                     <a class="anno-person" data-ref="pe__konrad_urbetsch_QGW_II_I_950" title="Konrad Urbetsch († 10.11.1378) [pe__konrad_urbetsch_QGW_II_I_950]" href="../../../register/persons/pe__konrad_urbetsch_QGW_II_I_950.html"><span class="tei-add">Aussteller</span></a>
-                     <a class="anno-person" data-ref="pe__pilgrim_chitzel_QGW_II_I_386" title="Pilgrim Chitzel zu Wiener Neustadt [pe__pilgrim_chitzel_QGW_II_I_386]" href="../../../register/persons/pe__pilgrim_chitzel_QGW_II_I_386.html"><span class="tei-add">Aussteller</span></a> - 4. der <a class="anno-person" data-ref="pe__dietrich_flusthart_QGW_II_I_572" title="Dietrich Flusthart († 27.11.1360) [pe__dietrich_flusthart_QGW_II_I_572]" href="../../../register/persons/pe__dietrich_flusthart_QGW_II_I_572.html">Aussteller</a>, 5. der <a class="anno-person" data-ref="pe__kunigunde_QGW_II_I_456a" title="Kunigunde auf der Säule [pe__kunigunde_QGW_II_I_456a]" href="../../../register/persons/pe__kunigunde_QGW_II_I_456a.html"><span class="anno-attr anno-attr-title">Grundfrau</span></a></span>.</span>
+                     den Siegeln: 1. <a class="anno-person" data-ref="pe__elisabeth_QGW_II_I_386" data-hint="Elisabeth Urbetschin [pe__elisabeth_QGW_II_I_386]" data-hint-type="Person" href="../../../register/persons/pe__elisabeth_QGW_II_I_386.html"><span class="tei-add">Ausstellerin</span></a>
+                     <a class="anno-person" data-ref="pe__konrad_urbetsch_QGW_II_I_950" data-hint="Konrad Urbetsch († 10.11.1378) [pe__konrad_urbetsch_QGW_II_I_950]" data-hint-type="Person" href="../../../register/persons/pe__konrad_urbetsch_QGW_II_I_950.html"><span class="tei-add">Aussteller</span></a>
+                     <a class="anno-person" data-ref="pe__pilgrim_chitzel_QGW_II_I_386" data-hint="Pilgrim Chitzel zu Wiener Neustadt [pe__pilgrim_chitzel_QGW_II_I_386]" data-hint-type="Person" href="../../../register/persons/pe__pilgrim_chitzel_QGW_II_I_386.html"><span class="tei-add">Aussteller</span></a> - 4. der <a class="anno-person" data-ref="pe__dietrich_flusthart_QGW_II_I_572" data-hint="Dietrich Flusthart († 27.11.1360) [pe__dietrich_flusthart_QGW_II_I_572]" data-hint-type="Person" href="../../../register/persons/pe__dietrich_flusthart_QGW_II_I_572.html">Aussteller</a>, 5. der <a class="anno-person" data-ref="pe__kunigunde_QGW_II_I_456a" data-hint="Kunigunde auf der Säule [pe__kunigunde_QGW_II_I_456a]" data-hint-type="Person" href="../../../register/persons/pe__kunigunde_QGW_II_I_456a.html"><span class="anno-attr anno-attr-title">Grundfrau</span></a></span>.</span>
             </p></section>
 
             <!-- Data layer: provenance strip. Korpus + Idno stehen schon
@@ -305,7 +311,7 @@
          dem TEI in mehreren Untertabellen, Personen/Orgs/Orte,
          Ereignisse, Dispositivformeln, Editorische Ergaenzungen. Wird
          per JS aus den entsprechenden Spans im Body aufgebaut. -->
-    <section class="annotations-view" id="factoid-view" aria-label="Annotationen">
+    <section class="annotations-view" id="annotations-view" aria-label="Annotationen">
         <header class="annotations-header">
             <h2 class="annotations-title">Annotationen</h2>
             <span class="annotations-summary"></span>
@@ -351,13 +357,14 @@
         </div>
     </footer>
 
-    <script src="../../../static/js/core.js?v=20260511112948"></script>
-    <script src="../../../static/js/provenance.js?v=20260511112948"></script>
-    <script src="../../../static/js/basket.js?v=20260511112948"></script>
+    <script src="../../../static/js/core.js?v=20260511125458"></script>
+    <script src="../../../static/js/tip.js?v=20260511125458"></script>
+    <script src="../../../static/js/hint.js?v=20260511125458"></script>
+    <script src="../../../static/js/basket.js?v=20260511125458"></script>
     
-<script src="../../../static/js/tooltips.js?v=20260511112948"></script>
-<script src="../../../static/js/facsimile.js?v=20260511112948"></script>
-<script src="../../../static/js/document.js?v=20260511112948"></script>
+<script src="../../../static/js/facsimile.js?v=20260511125458"></script>
+<script src="../../../static/js/document.js?v=20260511125458"></script>
+<script src="../../../static/js/basket-mount.js?v=20260511125458"></script>
 
 </body>
 </html>

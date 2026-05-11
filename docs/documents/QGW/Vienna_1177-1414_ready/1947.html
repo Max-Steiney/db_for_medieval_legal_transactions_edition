@@ -3,21 +3,21 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <meta http-equiv="Content-Security-Policy" content="default-src 'self'; script-src 'self'; style-src 'self'; font-src 'self'; img-src 'self' data: https://images.monasterium.net https://www.monasterium.net; connect-src 'self'; frame-ancestors 'none'; base-uri 'self'; form-action 'self'; upgrade-insecure-requests">
+    <meta http-equiv="Content-Security-Policy" content="default-src 'self'; script-src 'self'; style-src 'self'; font-src 'self'; img-src 'self' data: https://images.monasterium.net https://www.monasterium.net; connect-src 'self'; base-uri 'self'; form-action 'self'; upgrade-insecure-requests">
     <meta name="referrer" content="strict-origin-when-cross-origin">
     <meta http-equiv="Permissions-Policy" content="camera=(), microphone=(), geolocation=(), interest-cohort=()">
     <title>Nr. 1947 (1413 V 12), Datenbank</title>
     <link rel="preload" as="font" type="font/woff2" crossorigin
           href="../../../static/fonts/inter-400-latin.woff2">
-    <link rel="stylesheet" href="../../../static/css/fonts.css?v=20260511112948">
-    <link rel="stylesheet" href="../../../static/css/tokens.css?v=20260511112948">
-    <link rel="stylesheet" href="../../../static/css/base.css?v=20260511112948">
-    <link rel="stylesheet" href="../../../static/css/components.css?v=20260511112948">
-    <link rel="stylesheet" href="../../../static/css/responsive.css?v=20260511112948">
-    <link rel="stylesheet" href="../../../static/css/print.css?v=20260511112948">
-    <link rel="stylesheet" href="../../../static/css/provenance.css?v=20260511112948">
+    <link rel="stylesheet" href="../../../static/css/fonts.css?v=20260511125458">
+    <link rel="stylesheet" href="../../../static/css/tokens.css?v=20260511125458">
+    <link rel="stylesheet" href="../../../static/css/base.css?v=20260511125458">
+    <link rel="stylesheet" href="../../../static/css/components.css?v=20260511125458">
+    <link rel="stylesheet" href="../../../static/css/responsive.css?v=20260511125458">
+    <link rel="stylesheet" href="../../../static/css/print.css?v=20260511125458">
+    <link rel="stylesheet" href="../../../static/css/tip.css?v=20260511125458">
     
-<link rel="stylesheet" href="../../../static/css/document.css?v=20260511112948">
+<link rel="stylesheet" href="../../../static/css/document.css?v=20260511125458">
 <link rel="canonical" href="documents/QGW/Vienna_1177-1414_ready/1947.html">
 <meta name="citation_title" content="Nr. 1947 (1413 V 12)">
 <meta name="citation_collection" content="QGW II/1 (1177–1414)">
@@ -50,8 +50,6 @@
         <a href="../../../register/persons.html">Personen</a>
         
         <a href="../../../register/orgs.html">Organisationen</a>
-        
-        <a href="../../../register/places.html">Orte</a>
         
     </div>
 </div>
@@ -93,7 +91,7 @@
     </div>
 </div>
 
-                <a href="../../../korb.html" class="nav-basket" aria-label="Wissenskorb">
+                <a href="../../../korb.html" class="nav-basket" aria-label="Datenkorb">
                     <svg width="18" height="18" viewBox="0 0 18 18" fill="none" aria-hidden="true">
                         <path d="M3 5h12l-1.2 8.5a1 1 0 0 1-1 .85H5.2a1 1 0 0 1-1-.85L3 5z"
                               stroke="currentColor" stroke-width="1.4" fill="none"
@@ -140,7 +138,7 @@
                     
                     <span class="meta-pair">
                         <span class="meta-label">Quelle</span>
-                        <span class="meta-value" title="Quellen zur Geschichte der Stadt Wien, Bd. II/2, Nr. 1947">Quellen zur Geschichte der Stadt Wien, Bd. II/2, Nr. 1947</span>
+                        <span class="meta-value" data-hint="Quellen zur Geschichte der Stadt Wien, Bd. II/2, Nr. 1947">Quellen zur Geschichte der Stadt Wien, Bd. II/2, Nr. 1947</span>
                     </span>
                     
                 </div>
@@ -151,7 +149,7 @@
                     
                     <button type="button" class="legend-toggle"
                             data-layer="entities" aria-pressed="true"
-                            title="Entitäten ein-/ausblenden">
+                            data-hint="Entitäten ein-/ausblenden">
                         <span class="legend-toggle-dots">
                             <span class="legend-swatch swatch-person"></span><span class="legend-swatch swatch-org"></span><span class="legend-swatch swatch-place"></span>
                         </span>
@@ -160,7 +158,7 @@
                     
                     <button type="button" class="legend-toggle"
                             data-layer="functions" aria-pressed="true"
-                            title="Funktionsrollen ein-/ausblenden">
+                            data-hint="Funktionsrollen ein-/ausblenden">
                         <span class="legend-toggle-dots">
                             <span class="legend-swatch swatch-fn-issuer"></span><span class="legend-swatch swatch-fn-recipient"></span><span class="legend-swatch swatch-fn-witness"></span>
                         </span>
@@ -169,7 +167,7 @@
                     
                     <button type="button" class="legend-toggle"
                             data-layer="attributes" aria-pressed="true"
-                            title="Attribute ein-/ausblenden">
+                            data-hint="Attribute ein-/ausblenden">
                         <span class="legend-toggle-dots">
                             <span class="legend-swatch swatch-attr"></span><span class="legend-swatch swatch-add"></span>
                         </span>
@@ -178,7 +176,7 @@
                     
                     <button type="button" class="legend-toggle"
                             data-layer="triggers" aria-pressed="true"
-                            title="Dispositivformel ein-/ausblenden">
+                            data-hint="Dispositivformel ein-/ausblenden">
                         <span class="legend-toggle-dots">
                             <span class="legend-swatch swatch-trigger"></span>
                         </span>
@@ -190,21 +188,29 @@
                 <div class="doc-toolbar-actions">
                     <a class="toolbar-btn" href="../../../tei/QGW/Vienna_1177-1414_ready/1947.xml"
                        download="1947.xml"
-                       aria-label="TEI-XML herunterladen" title="TEI-XML herunterladen"><svg viewBox="0 0 16 16" width="16" height="16" aria-hidden="true"><path fill="none" stroke="currentColor" stroke-width="1.4" stroke-linecap="round" stroke-linejoin="round" d="M8 2v8m0 0l-3-3m3 3l3-3M3 13h10"/></svg></a>
+                       aria-label="TEI-XML herunterladen" data-hint="TEI-XML herunterladen"><svg viewBox="0 0 16 16" width="16" height="16" aria-hidden="true"><path fill="none" stroke="currentColor" stroke-width="1.4" stroke-linecap="round" stroke-linejoin="round" d="M8 2v8m0 0l-3-3m3 3l3-3M3 13h10"/></svg></a>
                     <button class="toolbar-btn" id="cite-toggle" aria-expanded="false"
-                            aria-label="Zitation kopieren" title="Zitation kopieren"><svg viewBox="0 0 16 16" width="16" height="16" aria-hidden="true"><rect x="4" y="2" width="8" height="11" rx="1" fill="none" stroke="currentColor" stroke-width="1.4"/><path d="M6 1.5h4a0.5 0.5 0 0 1 0.5 0.5v1a0.5 0.5 0 0 1-0.5 0.5H6a0.5 0.5 0 0 1-0.5-0.5V2A0.5 0.5 0 0 1 6 1.5z" fill="currentColor"/><path d="M6.5 6.5h3M6.5 8.5h3M6.5 10.5h2" stroke="currentColor" stroke-width="1" stroke-linecap="round"/></svg></button>
+                            aria-label="Zitation kopieren" data-hint="Zitation kopieren"><svg viewBox="0 0 16 16" width="16" height="16" aria-hidden="true"><rect x="4" y="2" width="8" height="11" rx="1" fill="none" stroke="currentColor" stroke-width="1.4"/><path d="M6 1.5h4a0.5 0.5 0 0 1 0.5 0.5v1a0.5 0.5 0 0 1-0.5 0.5H6a0.5 0.5 0 0 1-0.5-0.5V2A0.5 0.5 0 0 1 6 1.5z" fill="currentColor"/><path d="M6.5 6.5h3M6.5 8.5h3M6.5 10.5h2" stroke="currentColor" stroke-width="1" stroke-linecap="round"/></svg></button>
                     <div class="cite-popover hidden" id="cite-popover"></div>
+                    <span class="toolbar-basket-mount"
+                          data-basket-type="source"
+                          data-basket-id="1947"
+                          data-basket-label="1947"
+                          data-basket-url="documents/QGW/Vienna_1177-1414_ready/1947.html"
+                          data-basket-date="1413-05-12"
+                          data-basket-coll="QGW II/1 (1177–1414)"
+                          data-basket-regest="Hanns der Mosprunner, des rates der stat ze Wienn Geschäftsvollstrecker, und Oswalt der Pauch, burger ze Wienn Geschäftsvollstrecker , stiften als Geschäftsvollstrecker nach Hanns Arnstorffer bei St.…"></span>
                     
 <nav class="doc-paging doc-paging-inline" aria-label="Quellen-Navigation">
     
     <a href="../../../documents/QGW/Vienna_1177-1414_ready/1946.html" class="toolbar-btn doc-paging-prev"
        aria-label="Vorherige Quelle: Nr. 1946"
-       title="Vorherige Quelle: Nr. 1946"><svg viewBox="0 0 16 16" width="16" height="16" aria-hidden="true"><path fill="none" stroke="currentColor" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round" d="M10 3l-5 5 5 5"/></svg></a>
+       data-hint="Vorherige Quelle: Nr. 1946"><svg viewBox="0 0 16 16" width="16" height="16" aria-hidden="true"><path fill="none" stroke="currentColor" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round" d="M10 3l-5 5 5 5"/></svg></a>
     
     
     <a href="../../../documents/QGW/Vienna_1177-1414_ready/1948.html" class="toolbar-btn doc-paging-next"
        aria-label="Nächste Quelle: Nr. 1948"
-       title="Nächste Quelle: Nr. 1948"><svg viewBox="0 0 16 16" width="16" height="16" aria-hidden="true"><path fill="none" stroke="currentColor" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round" d="M6 3l5 5-5 5"/></svg></a>
+       data-hint="Nächste Quelle: Nr. 1948"><svg viewBox="0 0 16 16" width="16" height="16" aria-hidden="true"><path fill="none" stroke="currentColor" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round" d="M6 3l5 5-5 5"/></svg></a>
     
 </nav>
 
@@ -221,13 +227,13 @@
             
          <section class="tei-abstract"><h2 class="tei-section-head">Regest</h2>
             <p>
-               <span class="anno-event" data-ref="ev__QGW_II_II_1947"><span class="anno-fn anno-fn-issuer" data-role="issuer"><span class="fn-label">Aussteller*in</span><a class="anno-person" data-ref="pe__johann_mosprunner_QGW_II_I_1096" title="Johann Mosprunner [pe__johann_mosprunner_QGW_II_I_1096]" href="../../../register/persons/pe__johann_mosprunner_QGW_II_I_1096.html">Hanns der
+               <span class="anno-event" data-ref="ev__QGW_II_II_1947"><span class="anno-fn anno-fn-issuer" data-role="issuer"><span class="fn-label">Aussteller*in</span><a class="anno-person" data-ref="pe__johann_mosprunner_QGW_II_I_1096" data-hint="Johann Mosprunner [pe__johann_mosprunner_QGW_II_I_1096]" data-hint-type="Person" href="../../../register/persons/pe__johann_mosprunner_QGW_II_I_1096.html">Hanns der
                         Mosprunner, des <span class="anno-attr anno-attr-occ" data-corresp="org__wien">rates</span>
                         der stat ze Wienn<span class="anno-attr anno-attr-rep" data-corresp="pe__johann_arnstorfer_QGW_II_I_1249"><span class="tei-add">
-                              Geschäftsvollstrecker</span></span></a>, und <a class="anno-person" data-ref="pe__oswald_pauch_QGW_II_I_1371" title="Oswald Pauch der Goldschmied [pe__oswald_pauch_QGW_II_I_1371]" href="../../../register/persons/pe__oswald_pauch_QGW_II_I_1371.html">Oswalt der Pauch, <span class="anno-attr anno-attr-occ" data-corresp="org__wien">burger</span> ze Wienn<span class="anno-attr anno-attr-rep" data-corresp="pe__johann_arnstorfer_QGW_II_I_1249"><span class="tei-add">
+                              Geschäftsvollstrecker</span></span></a>, und <a class="anno-person" data-ref="pe__oswald_pauch_QGW_II_I_1371" data-hint="Oswald Pauch der Goldschmied [pe__oswald_pauch_QGW_II_I_1371]" data-hint-type="Person" href="../../../register/persons/pe__oswald_pauch_QGW_II_I_1371.html">Oswalt der Pauch, <span class="anno-attr anno-attr-occ" data-corresp="org__wien">burger</span> ze Wienn<span class="anno-attr anno-attr-rep" data-corresp="pe__johann_arnstorfer_QGW_II_I_1249"><span class="tei-add">
                               Geschäftsvollstrecker</span></span></a></span> , <span class="anno-trigger anno-trigger-disp">stiften</span> als Geschäftsvollstrecker nach Hanns Arnstorffer
-                  bei <span class="anno-fn anno-fn-recipient" data-role="recipient"><span class="fn-label">Empfänger*in</span><a class="anno-org" data-ref="org__wien-st_stephan-messe_arnstorfer_johann" title="Arnstorfermesse (Messe) [org__wien-st_stephan-messe_arnstorfer_johann]" href="../../../register/orgs/org__wien-st_stephan-messe_arnstorfer_johann.html">St. Stephan eine ewige
-                        Messe</a></span>, <span class="anno-trigger anno-trigger-disp">verleihen</span> sie zuerst <span class="anno-fn anno-fn-recipient" data-role="recipient"><span class="fn-label">Empfänger*in</span><a class="anno-person" data-ref="pe__philipp_prantesser_QGW_II_II_1947" title="Philipp Prantesser [pe__philipp_prantesser_QGW_II_II_1947]" href="../../../register/persons/pe__philipp_prantesser_QGW_II_II_1947.html">dem <span class="anno-attr anno-attr-prof">Priester</span>
+                  bei <span class="anno-fn anno-fn-recipient" data-role="recipient"><span class="fn-label">Empfänger*in</span><a class="anno-org" data-ref="org__wien-st_stephan-messe_arnstorfer_johann" data-hint="Arnstorfermesse (Messe) [org__wien-st_stephan-messe_arnstorfer_johann]" data-hint-type="Organisation" href="../../../register/orgs/org__wien-st_stephan-messe_arnstorfer_johann.html">St. Stephan eine ewige
+                        Messe</a></span>, <span class="anno-trigger anno-trigger-disp">verleihen</span> sie zuerst <span class="anno-fn anno-fn-recipient" data-role="recipient"><span class="fn-label">Empfänger*in</span><a class="anno-person" data-ref="pe__philipp_prantesser_QGW_II_II_1947" data-hint="Philipp Prantesser [pe__philipp_prantesser_QGW_II_II_1947]" data-hint-type="Person" href="../../../register/persons/pe__philipp_prantesser_QGW_II_II_1947.html">dem <span class="anno-attr anno-attr-prof">Priester</span>
                         <span class="anno-attr anno-attr-title">hern</span> Philippen dem Prantesser</a></span>,
                      <span class="anno-trigger anno-trigger-disp">übertragen die Lehenschaft</span>
                   <span class="anno-fn anno-fn-recipient" data-role="recipient"><span class="fn-label">Empfänger*in</span>dem Rathe</span> und <span class="anno-trigger anno-trigger-disp">widmen</span> dazu folgende Güter: 1. zu einem Wohnhause des Kaplans mit
@@ -235,7 +241,7 @@
                   Vordern Peckchenstrass, das weilent Thomans seligen des Lehener gewesen ist,
                   zenechst dem haus, das weilent des Warnhofer gewesen ist 2. Weingärten a) ein
                   Joch, gelegen zu Grinzing an dem Sunnperg, genant der Kerspaum, der freis aigen
-                  ist, zenechst des pharrer weingarten von der Heiligenstat b) <span class="anno-fn anno-fn-other" data-role="other"><span class="fn-label">Sonstige</span><span class="anno-trigger anno-trigger-fn">mit Handen</span> der <a class="anno-person" data-ref="pe__johanna_stuchsin_QGW_II_II_1947" title="Johanna Stuchsin [pe__johanna_stuchsin_QGW_II_II_1947]" href="../../../register/persons/pe__johanna_stuchsin_QGW_II_II_1947.html"><span class="anno-attr anno-attr-title">Grundfrau</span>
+                  ist, zenechst des pharrer weingarten von der Heiligenstat b) <span class="anno-fn anno-fn-other" data-role="other"><span class="fn-label">Sonstige</span><span class="anno-trigger anno-trigger-fn">mit Handen</span> der <a class="anno-person" data-ref="pe__johanna_stuchsin_QGW_II_II_1947" data-hint="Johanna Stuchsin [pe__johanna_stuchsin_QGW_II_II_1947]" data-hint-type="Person" href="../../../register/persons/pe__johanna_stuchsin_QGW_II_II_1947.html"><span class="anno-attr anno-attr-title">Grundfrau</span>
                         <span class="anno-attr anno-attr-title">swester</span> Johannen der Stuchsin, <span class="anno-attr anno-attr-occ" data-corresp="org__wien-st_klara">abtessin</span> dacz sand
                         Klaren</a></span>, ½ Joch, gelegen ze Grinzing in dem Sunnperg, genannt der
                   Schekch, zenechst Stephans weingarten des Pollen , von dem man 31 dn. zu Berg- und
@@ -244,7 +250,7 @@
                   die Rabenstainerin, unter dem weingarten, genant der Rustpeck , von dem man einen
                   Eimer Wein zu Bergrecht dient d) vier Eimer Wein Bergrechts auf Weingärten daselbs
                   zu Gumpoltskirchen, 12 dn. und ain hun gelts gruntrechts auf behaustem gut daselbs
-                  e) <span class="anno-fn anno-fn-other" data-role="other"><span class="fn-label">Sonstige</span><span class="anno-trigger anno-trigger-fn">mit Handen</span> des <a class="anno-person" data-ref="pe__konrad_werfer_QGW_II_II_1947" title="Konrad Werfer [pe__konrad_werfer_QGW_II_II_1947]" href="../../../register/persons/pe__konrad_werfer_QGW_II_II_1947.html"><span class="anno-attr anno-attr-title">Bergmeisters</span> Chunrats des Werfer, <span class="anno-attr anno-attr-occ" data-corresp="org__mauerbach-kartaeuser">Amtmanns</span> des Klosters
+                  e) <span class="anno-fn anno-fn-other" data-role="other"><span class="fn-label">Sonstige</span><span class="anno-trigger anno-trigger-fn">mit Handen</span> des <a class="anno-person" data-ref="pe__konrad_werfer_QGW_II_II_1947" data-hint="Konrad Werfer [pe__konrad_werfer_QGW_II_II_1947]" data-hint-type="Person" href="../../../register/persons/pe__konrad_werfer_QGW_II_II_1947.html"><span class="anno-attr anno-attr-title">Bergmeisters</span> Chunrats des Werfer, <span class="anno-attr anno-attr-occ" data-corresp="org__mauerbach-kartaeuser">Amtmanns</span> des Klosters
                         Mauerbach</a></span>, zwei Weingärten zu Gumpoldskirchen, ainer ob der
                   kirchen und haisset der Spiegel (dient nach Mauerbach 6/4 Wein Bergrecht, in das
                   Gericht zu Gumpoldskirchen 3 dn. Voitrecht) und das Zicherl daneben (dient nach
@@ -254,9 +260,9 @@
             </p>
          </section>
          <section class="tei-seal"><h2 class="tei-section-head">Siegelbeschreibung</h2>
-            <p><span class="anno-event" data-ref="ev__QGW_II_II_1947"><span class="anno-fn anno-fn-witness" data-role="witness"><span class="fn-label">Zeug*in</span>Siegler: 1., 2. die <a class="anno-person" data-ref="pe__johann_mosprunner_QGW_II_I_1096" title="Johann Mosprunner [pe__johann_mosprunner_QGW_II_I_1096]" href="../../../register/persons/pe__johann_mosprunner_QGW_II_I_1096.html">Aussteller</a><a class="anno-person" data-ref="pe__oswald_pauch_QGW_II_I_1371" title="Oswald Pauch der Goldschmied [pe__oswald_pauch_QGW_II_I_1371]" href="../../../register/persons/pe__oswald_pauch_QGW_II_I_1371.html"><span class="tei-add">Aussteller</span></a>, 3. <a class="anno-org" data-ref="org__wien" title="Wien (Stadt) [org__wien]" href="../../../register/orgs/org__wien.html">das städtische Grundsiegel</a>, 4. die <a class="anno-person" data-ref="pe__johanna_stuchsin_QGW_II_II_1947" title="Johanna Stuchsin [pe__johanna_stuchsin_QGW_II_II_1947]" href="../../../register/persons/pe__johanna_stuchsin_QGW_II_II_1947.html">Grundfrau</a>, 5. <a class="anno-person" data-ref="pe__albrecht_QGW_II_I_1896" title="Albrecht [pe__albrecht_QGW_II_I_1896]" href="../../../register/persons/pe__albrecht_QGW_II_I_1896.html"><span class="anno-attr anno-attr-occ" data-corresp="org__heiligenkreuz-zisterzienser">Abt</span> Albrecht von
-                     Heiligenkreuz</a>, 6. <a class="anno-person" data-ref="pe__haug_QGW_II_II_1930" title="Haug [pe__haug_QGW_II_II_1930]" href="../../../register/persons/pe__haug_QGW_II_II_1930.html">Prior
-                     Haug von Mauerbach</a>, 7. <a class="anno-person" data-ref="pe__johann_fuechsel_QGW_II_I_1562" title="Johann Füchsel [pe__johann_fuechsel_QGW_II_I_1562]" href="../../../register/persons/pe__johann_fuechsel_QGW_II_I_1562.html">Hanns der Fuchsel, Wiener <span class="anno-attr anno-attr-occ" data-corresp="org__wien">Bürger</span></a>, 8. <a class="anno-person" data-ref="pe__konrad_chiemseer_StB_I_178" title="Konrad Chiemseer [pe__konrad_chiemseer_StB_I_178]" href="../../../register/persons/pe__konrad_chiemseer_StB_I_178.html">Chunrat der Kiemseer, Wiener <span class="anno-attr anno-attr-occ" data-corresp="org__wien">Bürger</span></a>.</span>
+            <p><span class="anno-event" data-ref="ev__QGW_II_II_1947"><span class="anno-fn anno-fn-witness" data-role="witness"><span class="fn-label">Zeug*in</span>Siegler: 1., 2. die <a class="anno-person" data-ref="pe__johann_mosprunner_QGW_II_I_1096" data-hint="Johann Mosprunner [pe__johann_mosprunner_QGW_II_I_1096]" data-hint-type="Person" href="../../../register/persons/pe__johann_mosprunner_QGW_II_I_1096.html">Aussteller</a><a class="anno-person" data-ref="pe__oswald_pauch_QGW_II_I_1371" data-hint="Oswald Pauch der Goldschmied [pe__oswald_pauch_QGW_II_I_1371]" data-hint-type="Person" href="../../../register/persons/pe__oswald_pauch_QGW_II_I_1371.html"><span class="tei-add">Aussteller</span></a>, 3. <a class="anno-org" data-ref="org__wien" data-hint="Wien (Stadt) [org__wien]" data-hint-type="Organisation" href="../../../register/orgs/org__wien.html">das städtische Grundsiegel</a>, 4. die <a class="anno-person" data-ref="pe__johanna_stuchsin_QGW_II_II_1947" data-hint="Johanna Stuchsin [pe__johanna_stuchsin_QGW_II_II_1947]" data-hint-type="Person" href="../../../register/persons/pe__johanna_stuchsin_QGW_II_II_1947.html">Grundfrau</a>, 5. <a class="anno-person" data-ref="pe__albrecht_QGW_II_I_1896" data-hint="Albrecht [pe__albrecht_QGW_II_I_1896]" data-hint-type="Person" href="../../../register/persons/pe__albrecht_QGW_II_I_1896.html"><span class="anno-attr anno-attr-occ" data-corresp="org__heiligenkreuz-zisterzienser">Abt</span> Albrecht von
+                     Heiligenkreuz</a>, 6. <a class="anno-person" data-ref="pe__haug_QGW_II_II_1930" data-hint="Haug [pe__haug_QGW_II_II_1930]" data-hint-type="Person" href="../../../register/persons/pe__haug_QGW_II_II_1930.html">Prior
+                     Haug von Mauerbach</a>, 7. <a class="anno-person" data-ref="pe__johann_fuechsel_QGW_II_I_1562" data-hint="Johann Füchsel [pe__johann_fuechsel_QGW_II_I_1562]" data-hint-type="Person" href="../../../register/persons/pe__johann_fuechsel_QGW_II_I_1562.html">Hanns der Fuchsel, Wiener <span class="anno-attr anno-attr-occ" data-corresp="org__wien">Bürger</span></a>, 8. <a class="anno-person" data-ref="pe__konrad_chiemseer_StB_I_178" data-hint="Konrad Chiemseer [pe__konrad_chiemseer_StB_I_178]" data-hint-type="Person" href="../../../register/persons/pe__konrad_chiemseer_StB_I_178.html">Chunrat der Kiemseer, Wiener <span class="anno-attr anno-attr-occ" data-corresp="org__wien">Bürger</span></a>.</span>
             </span></p>
          </section>
          
@@ -313,7 +319,7 @@
          dem TEI in mehreren Untertabellen, Personen/Orgs/Orte,
          Ereignisse, Dispositivformeln, Editorische Ergaenzungen. Wird
          per JS aus den entsprechenden Spans im Body aufgebaut. -->
-    <section class="annotations-view" id="factoid-view" aria-label="Annotationen">
+    <section class="annotations-view" id="annotations-view" aria-label="Annotationen">
         <header class="annotations-header">
             <h2 class="annotations-title">Annotationen</h2>
             <span class="annotations-summary"></span>
@@ -359,13 +365,14 @@
         </div>
     </footer>
 
-    <script src="../../../static/js/core.js?v=20260511112948"></script>
-    <script src="../../../static/js/provenance.js?v=20260511112948"></script>
-    <script src="../../../static/js/basket.js?v=20260511112948"></script>
+    <script src="../../../static/js/core.js?v=20260511125458"></script>
+    <script src="../../../static/js/tip.js?v=20260511125458"></script>
+    <script src="../../../static/js/hint.js?v=20260511125458"></script>
+    <script src="../../../static/js/basket.js?v=20260511125458"></script>
     
-<script src="../../../static/js/tooltips.js?v=20260511112948"></script>
-<script src="../../../static/js/facsimile.js?v=20260511112948"></script>
-<script src="../../../static/js/document.js?v=20260511112948"></script>
+<script src="../../../static/js/facsimile.js?v=20260511125458"></script>
+<script src="../../../static/js/document.js?v=20260511125458"></script>
+<script src="../../../static/js/basket-mount.js?v=20260511125458"></script>
 
 </body>
 </html>

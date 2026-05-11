@@ -180,6 +180,72 @@ def aggregate_docs(docs_data_dir: Path) -> dict:
     }
 
 
+def build_docs_entities(
+    docs_data_dir: Path,
+    forward_entities: dict[str, dict[str, list[str]]],
+) -> None:
+    """Build ``docs_entities.json`` (idno -> {p:[...], o:[...]}).
+
+    The forward index maps each source ``idno`` to the lists of person
+    and organisation IDs annotated in that source via ``rs/@ref``. To
+    keep payload small and avoid extra fetches on the client side, each
+    referenced entity is enriched here with its display fields read back
+    from the just-written register search JSONs (``persons_search.json``
+    and ``orgs_search.json``).
+
+    Output shape::
+
+        {
+          "<idno>": {
+            "p": [{"id": "pe__...", "n": "Name", "sex": "m",
+                    "am": 1340, "ax": 1366}, ...],
+            "o": [{"id": "org__...", "n": "Name", "tp": "Pfarre"}, ...]
+          }
+        }
+
+    Consumed by ``basket.js`` to attach derived person/org entries when
+    the user adds a source to the data basket. Missing referenced IDs
+    (e.g. entities filtered out of the released search data) are
+    skipped silently; the basket simply gets fewer derived entries.
+    """
+    import json
+
+    persons_search = docs_data_dir / "persons_search.json"
+    orgs_search = docs_data_dir / "orgs_search.json"
+    pmap: dict[str, dict] = {}
+    omap: dict[str, dict] = {}
+    if persons_search.exists():
+        for row in json.loads(persons_search.read_text(encoding="utf-8")):
+            pid = row.get("id", "")
+            if pid:
+                pmap[pid] = {
+                    "id":  pid,
+                    "n":   row.get("n", ""),
+                    "sex": row.get("sex", ""),
+                    "am":  row.get("am", ""),
+                    "ax":  row.get("ax", ""),
+                }
+    if orgs_search.exists():
+        for row in json.loads(orgs_search.read_text(encoding="utf-8")):
+            oid = row.get("id", "")
+            if oid:
+                omap[oid] = {
+                    "id": oid,
+                    "n":  row.get("n", ""),
+                    "tp": row.get("tp", ""),
+                }
+
+    out: dict[str, dict[str, list[dict]]] = {}
+    for idno, refs in forward_entities.items():
+        persons_resolved = [pmap[pid] for pid in refs.get("p", []) if pid in pmap]
+        orgs_resolved = [omap[oid] for oid in refs.get("o", []) if oid in omap]
+        if persons_resolved or orgs_resolved:
+            out[idno] = {"p": persons_resolved, "o": orgs_resolved}
+
+    _write_json(out, docs_data_dir / "docs_entities.json")
+    print(f"  Docs entities: {len(out)} sources with person/org references")
+
+
 def build_docs_lookup(docs_data_dir: Path, all_metadata: list[dict]) -> None:
     """Build a file_key -> document metadata JSON for exploration drill-down.
 

@@ -3,22 +3,22 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <meta http-equiv="Content-Security-Policy" content="default-src 'self'; script-src 'self'; style-src 'self'; font-src 'self'; img-src 'self' data: https://images.monasterium.net https://www.monasterium.net; connect-src 'self'; frame-ancestors 'none'; base-uri 'self'; form-action 'self'; upgrade-insecure-requests">
+    <meta http-equiv="Content-Security-Policy" content="default-src 'self'; script-src 'self'; style-src 'self'; font-src 'self'; img-src 'self' data: https://images.monasterium.net https://www.monasterium.net; connect-src 'self'; base-uri 'self'; form-action 'self'; upgrade-insecure-requests">
     <meta name="referrer" content="strict-origin-when-cross-origin">
     <meta http-equiv="Permissions-Policy" content="camera=(), microphone=(), geolocation=(), interest-cohort=()">
     <title>Lucia Naezeugerin | Geschiesserin (&dagger; 23.08.1454), Datenbank</title>
     <link rel="preload" as="font" type="font/woff2" crossorigin
           href="../../static/fonts/inter-400-latin.woff2">
-    <link rel="stylesheet" href="../../static/css/fonts.css?v=20260511112948">
-    <link rel="stylesheet" href="../../static/css/tokens.css?v=20260511112948">
-    <link rel="stylesheet" href="../../static/css/base.css?v=20260511112948">
-    <link rel="stylesheet" href="../../static/css/components.css?v=20260511112948">
-    <link rel="stylesheet" href="../../static/css/responsive.css?v=20260511112948">
-    <link rel="stylesheet" href="../../static/css/print.css?v=20260511112948">
-    <link rel="stylesheet" href="../../static/css/provenance.css?v=20260511112948">
+    <link rel="stylesheet" href="../../static/css/fonts.css?v=20260511125458">
+    <link rel="stylesheet" href="../../static/css/tokens.css?v=20260511125458">
+    <link rel="stylesheet" href="../../static/css/base.css?v=20260511125458">
+    <link rel="stylesheet" href="../../static/css/components.css?v=20260511125458">
+    <link rel="stylesheet" href="../../static/css/responsive.css?v=20260511125458">
+    <link rel="stylesheet" href="../../static/css/print.css?v=20260511125458">
+    <link rel="stylesheet" href="../../static/css/tip.css?v=20260511125458">
     
-<link rel="stylesheet" href="../../static/css/document.css?v=20260511112948">
-<link rel="stylesheet" href="../../static/css/person.css?v=20260511112948">
+<link rel="stylesheet" href="../../static/css/document.css?v=20260511125458">
+<link rel="stylesheet" href="../../static/css/person.css?v=20260511125458">
 
 </head>
 <body data-root-path="../.."
@@ -48,8 +48,6 @@
         <a href="../../register/persons.html">Personen</a>
         
         <a href="../../register/orgs.html">Organisationen</a>
-        
-        <a href="../../register/places.html">Orte</a>
         
     </div>
 </div>
@@ -91,7 +89,7 @@
     </div>
 </div>
 
-                <a href="../../korb.html" class="nav-basket" aria-label="Wissenskorb">
+                <a href="../../korb.html" class="nav-basket" aria-label="Datenkorb">
                     <svg width="18" height="18" viewBox="0 0 18 18" fill="none" aria-hidden="true">
                         <path d="M3 5h12l-1.2 8.5a1 1 0 0 1-1 .85H5.2a1 1 0 0 1-1-.85L3 5z"
                               stroke="currentColor" stroke-width="1.4" fill="none"
@@ -112,11 +110,23 @@
 
     <div class="person-toolbar">
         <div class="person-toolbar-inner">
-            <nav class="person-breadcrumb" aria-label="Position">
-                <a href="../../register/persons.html">Personenregister</a>
-                <span class="bc-sep">&rsaquo;</span>
-                <span class="bc-doc"><strong>Lucia Naezeugerin | Geschiesserin</strong></span>
-            </nav>
+            <div class="person-toolbar-row">
+                <nav class="person-breadcrumb" aria-label="Position">
+                    <a href="../../register/persons.html">Personenregister</a>
+                    <span class="bc-sep">&rsaquo;</span>
+                    <span class="bc-doc"><strong>Lucia Naezeugerin | Geschiesserin</strong></span>
+                </nav>
+                <div class="person-toolbar-actions">
+                    <span class="toolbar-basket-mount"
+                          data-basket-type="person"
+                          data-basket-id="pe__lucia_QGW_II_I_1018"
+                          data-basket-label="Lucia Naezeugerin | Geschiesserin"
+                          data-basket-url="register/persons/pe__lucia_QGW_II_I_1018.html"
+                          data-basket-sex="f"
+                          data-basket-active-min="1370"
+                          data-basket-active-max="1414"></span>
+                </div>
+            </div>
             <div class="person-toolbar-meta">
                 <span class="meta-pair">
                     <span class="meta-label">Geschlecht</span>
@@ -124,7 +134,33 @@
                 </span>
                 
                 <span class="meta-pair">
-                    <span class="meta-label">Belegt</span>
+                    <span class="meta-label">Belegt
+<span class="tip-wrap">
+    <button type="button" class="tip-trigger tip-trigger--icon"
+            aria-expanded="false" aria-haspopup="dialog"
+            aria-controls="person-belegt"
+            data-tip="person-belegt"
+            aria-label="Definition: Beleg-Zeitraum">
+        <svg width="13" height="13" viewBox="0 0 16 16" aria-hidden="true">
+            <circle cx="8" cy="8" r="7" stroke="currentColor" stroke-width="1.4" fill="none"/>
+            <text x="8" y="11.6" text-anchor="middle" font-size="9.5" font-weight="700"
+                  fill="currentColor" font-family="Georgia, serif">i</text>
+        </svg>
+    </button>
+    <aside class="tip-popover tip-popover--glossary"
+           id="person-belegt" role="dialog" aria-hidden="true"
+           aria-label="Definition: Beleg-Zeitraum">
+        <header class="tip-head">
+            <h3 class="tip-title">Beleg-Zeitraum</h3>
+            <button type="button" class="tip-close" aria-label="Schlie&szlig;en">&times;</button>
+        </header>
+        <div class="tip-body">
+            <p>Erste und letzte Datierung einer Quelle, in der die Person erscheint. Bei einzelnem Beleg wird nur ein Jahr angegeben.</p>
+            
+        </div>
+    </aside>
+</span>
+</span>
                     <span class="meta-value">1370 bis 1414</span>
                 </span>
                 
@@ -134,6 +170,10 @@
                     <span class="meta-value">23.08.1454</span>
                 </span>
                 
+                <span class="meta-pair">
+                    <span class="meta-label">Quellen</span>
+                    <span class="meta-value">22</span>
+                </span>
                 <span class="meta-pair person-id-pair">
                     <span class="meta-label">ID</span>
                     <code class="meta-value person-id">pe__lucia_QGW_II_I_1018</code>
@@ -150,16 +190,48 @@
             
         </h1>
         
+        
         <p class="person-note">1. Gem. Stephan Naezeuger, 2. Gem. Johann Geschiesser</p>
         
         
-        <p class="person-titles">
+        <p class="person-titles" data-collapsible="22">
             <span class="pt-label">In den Quellen genannt als</span>
             <span class="pt-chip">Frau</span><span class="pt-chip">fraun</span><span class="pt-chip">frau</span><span class="pt-chip">vrawe</span><span class="pt-chip">frown</span><span class="pt-chip">frawen</span><span class="pt-chip">fraw</span>
         </p>
         
         
+        
     </header>
+
+    
+    <section class="role-strip" aria-label="Rollen in Rechtsgeschäften">
+        <h2 class="role-strip-title">Rollen in Rechtsgeschäften</h2>
+        <div class="role-strip-cells">
+            
+            <div class="role-cell role-cell-issuer">
+                <span class="role-cell-count">3</span>
+                <span class="role-cell-label">Aussteller*in</span>
+            </div>
+            
+            <div class="role-cell role-cell-recipient">
+                <span class="role-cell-count">15</span>
+                <span class="role-cell-label">Empfänger*in</span>
+            </div>
+            
+            <div class="role-cell role-cell-witness">
+                <span class="role-cell-count">1</span>
+                <span class="role-cell-label">Zeuge / Siegler*in</span>
+            </div>
+            
+            <div class="role-cell role-cell-other">
+                <span class="role-cell-count">2</span>
+                <span class="role-cell-label">Sonstige</span>
+            </div>
+            
+        </div>
+        <p class="role-strip-hint">Summe Rollen-Belegungen: 21. Mehrfach-Rollen pro Quelle sind möglich.</p>
+    </section>
+    
 
     
 
@@ -176,6 +248,12 @@
                 <span class="rel-block-count">27</span>
                 <span class="rel-block-hint">Verwandtschaftsverhältnisse, wie sie in den Quellen explizit benannt werden.</span>
             </header>
+            
+            <div class="table-filter">
+                <input type="search" class="table-filter-input" data-target="rel" placeholder="In der Tabelle filtern&hellip;" aria-label="In der Tabelle filtern">
+                <span class="table-filter-status"></span>
+            </div>
+            
             <table class="rel-table">
                 <thead>
                     <tr>
@@ -196,7 +274,7 @@
                         <td class="rel-col-label"><em>hausvrawe</em></td>
                         <td class="rel-col-perspective">
                             
-                                Lucia Naezeugerin | Geschiesserin → Stephan Naezeuger Naezeuger
+                                Lucia Naezeugerin | Geschiesserin &rsaquo; Stephan Naezeuger Naezeuger
                             
                         </td>
                         <td class="rel-col-source">
@@ -215,7 +293,7 @@
                         <td class="rel-col-label"><em>Hausfrau</em></td>
                         <td class="rel-col-perspective">
                             
-                                Lucia Naezeugerin | Geschiesserin → Stephan Naezeuger Naezeuger
+                                Lucia Naezeugerin | Geschiesserin &rsaquo; Stephan Naezeuger Naezeuger
                             
                         </td>
                         <td class="rel-col-source">
@@ -234,7 +312,7 @@
                         <td class="rel-col-label"><em>witib</em></td>
                         <td class="rel-col-perspective">
                             
-                                Lucia Naezeugerin | Geschiesserin → Stephan Naezeuger Naezeuger
+                                Lucia Naezeugerin | Geschiesserin &rsaquo; Stephan Naezeuger Naezeuger
                             
                         </td>
                         <td class="rel-col-source">
@@ -253,7 +331,7 @@
                         <td class="rel-col-label"><em>witib</em></td>
                         <td class="rel-col-perspective">
                             
-                                Lucia Naezeugerin | Geschiesserin → Stephan Naezeuger Naezeuger
+                                Lucia Naezeugerin | Geschiesserin &rsaquo; Stephan Naezeuger Naezeuger
                             
                         </td>
                         <td class="rel-col-source">
@@ -272,7 +350,7 @@
                         <td class="rel-col-label"><em>Sohne</em></td>
                         <td class="rel-col-perspective">
                             
-                                Johann Naezeuger der jüngere → Lucia Naezeugerin | Geschiesserin
+                                Johann Naezeuger der jüngere &rsaquo; Lucia Naezeugerin | Geschiesserin
                             
                         </td>
                         <td class="rel-col-source">
@@ -291,7 +369,7 @@
                         <td class="rel-col-label"><em>Hausfrau</em></td>
                         <td class="rel-col-perspective">
                             
-                                Lucia Naezeugerin | Geschiesserin → Johann Geschiesser
+                                Lucia Naezeugerin | Geschiesserin &rsaquo; Johann Geschiesser
                             
                         </td>
                         <td class="rel-col-source">
@@ -310,7 +388,7 @@
                         <td class="rel-col-label"><em>witib</em></td>
                         <td class="rel-col-perspective">
                             
-                                Lucia Naezeugerin | Geschiesserin → Stephan Naezeuger Naezeuger
+                                Lucia Naezeugerin | Geschiesserin &rsaquo; Stephan Naezeuger Naezeuger
                             
                         </td>
                         <td class="rel-col-source">
@@ -329,7 +407,7 @@
                         <td class="rel-col-label"><em>Sohn</em></td>
                         <td class="rel-col-perspective">
                             
-                                Johann Naezeuger der jüngere → Lucia Naezeugerin | Geschiesserin
+                                Johann Naezeuger der jüngere &rsaquo; Lucia Naezeugerin | Geschiesserin
                             
                         </td>
                         <td class="rel-col-source">
@@ -348,7 +426,7 @@
                         <td class="rel-col-label"><em>Tochter</em></td>
                         <td class="rel-col-perspective">
                             
-                                Margarethe Jamnitzerin | Naezeugerin → Lucia Naezeugerin | Geschiesserin
+                                Margarethe Jamnitzerin | Naezeugerin &rsaquo; Lucia Naezeugerin | Geschiesserin
                             
                         </td>
                         <td class="rel-col-source">
@@ -367,7 +445,7 @@
                         <td class="rel-col-label"><em>Witwe</em></td>
                         <td class="rel-col-perspective">
                             
-                                Lucia Naezeugerin | Geschiesserin → Stephan Naezeuger Naezeuger
+                                Lucia Naezeugerin | Geschiesserin &rsaquo; Stephan Naezeuger Naezeuger
                             
                         </td>
                         <td class="rel-col-source">
@@ -386,7 +464,7 @@
                         <td class="rel-col-label"><em>Sohn</em></td>
                         <td class="rel-col-perspective">
                             
-                                Johann Naezeuger der jüngere → Lucia Naezeugerin | Geschiesserin
+                                Johann Naezeuger der jüngere &rsaquo; Lucia Naezeugerin | Geschiesserin
                             
                         </td>
                         <td class="rel-col-source">
@@ -405,7 +483,7 @@
                         <td class="rel-col-label"><em>Tochter</em></td>
                         <td class="rel-col-perspective">
                             
-                                Margarethe Jamnitzerin | Naezeugerin → Lucia Naezeugerin | Geschiesserin
+                                Margarethe Jamnitzerin | Naezeugerin &rsaquo; Lucia Naezeugerin | Geschiesserin
                             
                         </td>
                         <td class="rel-col-source">
@@ -424,7 +502,7 @@
                         <td class="rel-col-label"><em>Sohn</em></td>
                         <td class="rel-col-perspective">
                             
-                                Johann Naezeuger der jüngere → Lucia Naezeugerin | Geschiesserin
+                                Johann Naezeuger der jüngere &rsaquo; Lucia Naezeugerin | Geschiesserin
                             
                         </td>
                         <td class="rel-col-source">
@@ -443,7 +521,7 @@
                         <td class="rel-col-label"><em>wittib</em></td>
                         <td class="rel-col-perspective">
                             
-                                Lucia Naezeugerin | Geschiesserin → Stephan Naezeuger Naezeuger
+                                Lucia Naezeugerin | Geschiesserin &rsaquo; Stephan Naezeuger Naezeuger
                             
                         </td>
                         <td class="rel-col-source">
@@ -462,7 +540,7 @@
                         <td class="rel-col-label"><em>sun</em></td>
                         <td class="rel-col-perspective">
                             
-                                Johann Naezeuger der jüngere → Lucia Naezeugerin | Geschiesserin
+                                Johann Naezeuger der jüngere &rsaquo; Lucia Naezeugerin | Geschiesserin
                             
                         </td>
                         <td class="rel-col-source">
@@ -481,7 +559,7 @@
                         <td class="rel-col-label"><em>tochter</em></td>
                         <td class="rel-col-perspective">
                             
-                                Margarethe Jamnitzerin | Naezeugerin → Lucia Naezeugerin | Geschiesserin
+                                Margarethe Jamnitzerin | Naezeugerin &rsaquo; Lucia Naezeugerin | Geschiesserin
                             
                         </td>
                         <td class="rel-col-source">
@@ -500,7 +578,7 @@
                         <td class="rel-col-label"><em>witib</em></td>
                         <td class="rel-col-perspective">
                             
-                                Lucia Naezeugerin | Geschiesserin → Stephan Naezeuger Naezeuger
+                                Lucia Naezeugerin | Geschiesserin &rsaquo; Stephan Naezeuger Naezeuger
                             
                         </td>
                         <td class="rel-col-source">
@@ -519,7 +597,7 @@
                         <td class="rel-col-label"><em>steufsun</em></td>
                         <td class="rel-col-perspective">
                             
-                                Johann Naezeuger der Ältere → Lucia Naezeugerin | Geschiesserin
+                                Johann Naezeuger der Ältere &rsaquo; Lucia Naezeugerin | Geschiesserin
                             
                         </td>
                         <td class="rel-col-source">
@@ -538,7 +616,7 @@
                         <td class="rel-col-label"><em>Mutter</em></td>
                         <td class="rel-col-perspective">
                             
-                                Lucia Naezeugerin | Geschiesserin → Johann Naezeuger der jüngere
+                                Lucia Naezeugerin | Geschiesserin &rsaquo; Johann Naezeuger der jüngere
                             
                         </td>
                         <td class="rel-col-source">
@@ -557,7 +635,7 @@
                         <td class="rel-col-label"><em>muter</em></td>
                         <td class="rel-col-perspective">
                             
-                                Lucia Naezeugerin | Geschiesserin → Johann Naezeuger der jüngere
+                                Lucia Naezeugerin | Geschiesserin &rsaquo; Johann Naezeuger der jüngere
                             
                         </td>
                         <td class="rel-col-source">
@@ -576,7 +654,7 @@
                         <td class="rel-col-label"><em>muter</em></td>
                         <td class="rel-col-perspective">
                             
-                                Lucia Naezeugerin | Geschiesserin → Johann Naezeuger der jüngere
+                                Lucia Naezeugerin | Geschiesserin &rsaquo; Johann Naezeuger der jüngere
                             
                         </td>
                         <td class="rel-col-source">
@@ -595,7 +673,7 @@
                         <td class="rel-col-label"><em>Hausfrau</em></td>
                         <td class="rel-col-perspective">
                             
-                                Lucia Naezeugerin | Geschiesserin → Stephan Naezeuger Naezeuger
+                                Lucia Naezeugerin | Geschiesserin &rsaquo; Stephan Naezeuger Naezeuger
                             
                         </td>
                         <td class="rel-col-source">
@@ -614,7 +692,7 @@
                         <td class="rel-col-label"><em>Frau</em></td>
                         <td class="rel-col-perspective">
                             
-                                Lucia Naezeugerin | Geschiesserin → Stephan Naezeuger Naezeuger
+                                Lucia Naezeugerin | Geschiesserin &rsaquo; Stephan Naezeuger Naezeuger
                             
                         </td>
                         <td class="rel-col-source">
@@ -633,7 +711,7 @@
                         <td class="rel-col-label"><em>Muhme</em></td>
                         <td class="rel-col-perspective">
                             
-                                Lucia Naezeugerin | Geschiesserin → Niklas Stainer
+                                Lucia Naezeugerin | Geschiesserin &rsaquo; Niklas Stainer
                             
                         </td>
                         <td class="rel-col-source">
@@ -652,7 +730,7 @@
                         <td class="rel-col-label"><em>Hausfrau</em></td>
                         <td class="rel-col-perspective">
                             
-                                Lucia Naezeugerin | Geschiesserin → Stephan Naezeuger Naezeuger
+                                Lucia Naezeugerin | Geschiesserin &rsaquo; Stephan Naezeuger Naezeuger
                             
                         </td>
                         <td class="rel-col-source">
@@ -671,7 +749,7 @@
                         <td class="rel-col-label"><em>Hausfrau</em></td>
                         <td class="rel-col-perspective">
                             
-                                Lucia Naezeugerin | Geschiesserin → Stephan Naezeuger Naezeuger
+                                Lucia Naezeugerin | Geschiesserin &rsaquo; Stephan Naezeuger Naezeuger
                             
                         </td>
                         <td class="rel-col-source">
@@ -690,7 +768,7 @@
                         <td class="rel-col-label"><em>witiw</em></td>
                         <td class="rel-col-perspective">
                             
-                                Lucia Naezeugerin | Geschiesserin → Johann Geschiesser
+                                Lucia Naezeugerin | Geschiesserin &rsaquo; Johann Geschiesser
                             
                         </td>
                         <td class="rel-col-source">
@@ -716,6 +794,7 @@
                 <span class="rel-block-count">12</span>
                 <span class="rel-block-hint">Stellvertretungs-Beziehungen, z. B. handelt eine Person an Stelle einer anderen.</span>
             </header>
+            
             <table class="rel-table">
                 <thead>
                     <tr>
@@ -736,7 +815,7 @@
                         <td class="rel-col-label"><em>anstatt</em></td>
                         <td class="rel-col-perspective">
                             
-                                Friedrich Naezeuger → Lucia Naezeugerin | Geschiesserin
+                                Friedrich Naezeuger &rsaquo; Lucia Naezeugerin | Geschiesserin
                             
                         </td>
                         <td class="rel-col-source">
@@ -755,7 +834,7 @@
                         <td class="rel-col-label"><em>anstatt</em></td>
                         <td class="rel-col-perspective">
                             
-                                Friedrich Naezeuger → Lucia Naezeugerin | Geschiesserin
+                                Friedrich Naezeuger &rsaquo; Lucia Naezeugerin | Geschiesserin
                             
                         </td>
                         <td class="rel-col-source">
@@ -774,7 +853,7 @@
                         <td class="rel-col-label"><em>für</em></td>
                         <td class="rel-col-perspective">
                             
-                                Lucia Naezeugerin | Geschiesserin → Johann Naezeuger der jüngere
+                                Lucia Naezeugerin | Geschiesserin &rsaquo; Johann Naezeuger der jüngere
                             
                         </td>
                         <td class="rel-col-source">
@@ -793,7 +872,7 @@
                         <td class="rel-col-label"><em>geschäftherren</em></td>
                         <td class="rel-col-perspective">
                             
-                                Paul Geir → Lucia Naezeugerin | Geschiesserin
+                                Paul Geir &rsaquo; Lucia Naezeugerin | Geschiesserin
                             
                         </td>
                         <td class="rel-col-source">
@@ -812,7 +891,7 @@
                         <td class="rel-col-label"><em>geschäftherren</em></td>
                         <td class="rel-col-perspective">
                             
-                                Ulrich von Freundorf → Lucia Naezeugerin | Geschiesserin
+                                Ulrich von Freundorf &rsaquo; Lucia Naezeugerin | Geschiesserin
                             
                         </td>
                         <td class="rel-col-source">
@@ -831,7 +910,7 @@
                         <td class="rel-col-label"><em>ausrichter und volfürer</em></td>
                         <td class="rel-col-perspective">
                             
-                                Paul Geir → Lucia Naezeugerin | Geschiesserin
+                                Paul Geir &rsaquo; Lucia Naezeugerin | Geschiesserin
                             
                         </td>
                         <td class="rel-col-source">
@@ -850,7 +929,7 @@
                         <td class="rel-col-label"><em>ausrichter und volfürer</em></td>
                         <td class="rel-col-perspective">
                             
-                                Paul Geir → Lucia Naezeugerin | Geschiesserin
+                                Paul Geir &rsaquo; Lucia Naezeugerin | Geschiesserin
                             
                         </td>
                         <td class="rel-col-source">
@@ -869,7 +948,7 @@
                         <td class="rel-col-label"><em>ausrichter und volfürer</em></td>
                         <td class="rel-col-perspective">
                             
-                                Ulrich der Frauendorfer → Lucia Naezeugerin | Geschiesserin
+                                Ulrich der Frauendorfer &rsaquo; Lucia Naezeugerin | Geschiesserin
                             
                         </td>
                         <td class="rel-col-source">
@@ -888,7 +967,7 @@
                         <td class="rel-col-label"><em>gescheftherren</em></td>
                         <td class="rel-col-perspective">
                             
-                                Paul Geir → Lucia Naezeugerin | Geschiesserin
+                                Paul Geir &rsaquo; Lucia Naezeugerin | Geschiesserin
                             
                         </td>
                         <td class="rel-col-source">
@@ -907,7 +986,7 @@
                         <td class="rel-col-label"><em>gescheftherren</em></td>
                         <td class="rel-col-perspective">
                             
-                                Johann Mosprunner → Lucia Naezeugerin | Geschiesserin
+                                Johann Mosprunner &rsaquo; Lucia Naezeugerin | Geschiesserin
                             
                         </td>
                         <td class="rel-col-source">
@@ -926,7 +1005,7 @@
                         <td class="rel-col-label"><em>ausrichter</em></td>
                         <td class="rel-col-perspective">
                             
-                                Paul Geir → Lucia Naezeugerin | Geschiesserin
+                                Paul Geir &rsaquo; Lucia Naezeugerin | Geschiesserin
                             
                         </td>
                         <td class="rel-col-source">
@@ -945,7 +1024,7 @@
                         <td class="rel-col-label"><em>ausrichter</em></td>
                         <td class="rel-col-perspective">
                             
-                                Johann Mosprunner → Lucia Naezeugerin | Geschiesserin
+                                Johann Mosprunner &rsaquo; Lucia Naezeugerin | Geschiesserin
                             
                         </td>
                         <td class="rel-col-source">
@@ -968,6 +1047,7 @@
                 <span class="rel-block-count">1</span>
                 <span class="rel-block-hint">Berufs- oder Amtsbezeichnung in Bezug auf eine Institution.</span>
             </header>
+            
             <table class="rel-table">
                 <thead>
                     <tr>
@@ -988,7 +1068,7 @@
                         <td class="rel-col-label"><em>purgerin</em></td>
                         <td class="rel-col-perspective">
                             
-                                Lucia Naezeugerin | Geschiesserin → Wien
+                                Lucia Naezeugerin | Geschiesserin &rsaquo; Wien
                             
                         </td>
                         <td class="rel-col-source">
@@ -1006,18 +1086,27 @@
         
         
         
+        
+        
+        
+        
+        
+        
     </section>
     
 
     
     <section class="person-sources" aria-label="Quellen mit Nennung">
         <h2 class="section-head">Quellen mit Nennung</h2>
+        
         <table class="person-source-table">
             <thead>
                 <tr>
                     <th scope="col" class="src-col-idno">Nr.</th>
                     <th scope="col" class="src-col-date">Datum</th>
                     <th scope="col" class="src-col-corpus">Quellenkorpus</th>
+                    <th scope="col" class="src-col-label">Bezeichnung</th>
+                    <th scope="col" class="src-col-role">Rolle</th>
                     <th scope="col" class="src-col-regest">Regest</th>
                 </tr>
             </thead>
@@ -1027,6 +1116,11 @@
                     <td class="src-col-idno"><a href="../../documents/QGW/Vienna_1177-1414_ready/768.html">768</a></td>
                     <td class="src-col-date">1370 I 24</td>
                     <td class="src-col-corpus">QGW II/1 (1177–1414)</td>
+                    <td class="src-col-label"><em>-</em></td>
+                    <td class="src-col-role">
+                        <span class="role-chip role-chip-recipient">Empfänger*in</span>
+                        
+                    </td>
                     <td class="src-col-regest">Stephan der Naezeuger, purger ze Wienne, bestätigt, seiner Hausfrau Lucein 200 lb dn. zu rechter Morgengabe versprochen zu haben, und gibt ihr dafür mit Handen des Bürgermeisters hern Niclas des…</td>
                 </tr>
             
@@ -1034,6 +1128,11 @@
                     <td class="src-col-idno"><a href="../../documents/QGW/Vienna_1177-1414_ready/769.html">769</a></td>
                     <td class="src-col-date">1370 I 24</td>
                     <td class="src-col-corpus">QGW II/1 (1177–1414)</td>
+                    <td class="src-col-label"><em>-</em></td>
+                    <td class="src-col-role">
+                        <span class="role-chip role-chip-recipient">Empfänger*in</span>
+                        
+                    </td>
                     <td class="src-col-regest">Stephan der Naezeuger, purger ze Wienne, bestätigt, dass ihm sein swager her Nichlas der Stainer zu seiner Frau Lucein, Steiner's Muhme, 100 lb dn. Heimsteuer gegeben habe, und setzt ihr setztdafür…</td>
                 </tr>
             
@@ -1041,6 +1140,11 @@
                     <td class="src-col-idno"><a href="../../documents/QGW/Vienna_1177-1414_ready/844.html">844</a></td>
                     <td class="src-col-date">1375 I 03</td>
                     <td class="src-col-corpus">QGW II/1 (1177–1414)</td>
+                    <td class="src-col-label"><em>-</em></td>
+                    <td class="src-col-role">
+                        <span class="role-chip role-chip-recipient">Empfänger*in</span>
+                        
+                    </td>
                     <td class="src-col-regest">Nichlas der Stainer, des rates der stat ze Wienne, verkauft mit Handen des Bürgermeisters hern Hannsen an dem Chienmarkcht und des rates gemain der stat ze Wienne sein Haus, das er um sein fahrendes…</td>
                 </tr>
             
@@ -1048,6 +1152,11 @@
                     <td class="src-col-idno"><a href="../../documents/QGW/Vienna_1177-1414_ready/938.html">938</a></td>
                     <td class="src-col-date">1378 V 06</td>
                     <td class="src-col-corpus">QGW II/1 (1177–1414)</td>
+                    <td class="src-col-label"><em>-</em></td>
+                    <td class="src-col-role">
+                        <span class="role-chip role-chip-recipient">Empfänger*in</span>
+                        
+                    </td>
                     <td class="src-col-regest">Janns der Nezeüger, purger ze Wienn, überlässt seinem Vater, dem Wiener Bürger Stephann dem Nezeuger, und dessen Hausfrau Lucein seinen Weingarten bei seinem Hofe ze Prunn auf drei Jahre mit dem…</td>
                 </tr>
             
@@ -1055,6 +1164,11 @@
                     <td class="src-col-idno"><a href="../../documents/QGW/Vienna_1177-1414_ready/1018.html">1018</a></td>
                     <td class="src-col-date">1381 XI 14</td>
                     <td class="src-col-corpus">QGW II/1 (1177–1414)</td>
+                    <td class="src-col-label"><em>vrawe</em></td>
+                    <td class="src-col-role">
+                        <span class="role-chip role-chip-recipient">Empfänger*in</span>
+                        
+                    </td>
                     <td class="src-col-regest">Paul der Holzcha/euffel, purgermaister, und der rat gemain der stat ze Wienne beurkunden, dass vrawe Lucei, Stephans hausvrawe des Nezeuger, dem got gnade , vor ihnen mit hern Hannsen von Neunburkch,…</td>
                 </tr>
             
@@ -1062,6 +1176,11 @@
                     <td class="src-col-idno"><a href="../../documents/QGW/Vienna_1177-1414_ready/1021.html">1021</a></td>
                     <td class="src-col-date">1381 XII 13</td>
                     <td class="src-col-corpus">QGW II/1 (1177–1414)</td>
+                    <td class="src-col-label"><em>frown</em></td>
+                    <td class="src-col-role">
+                        <span class="role-chip role-chip-recipient">Empfänger*in</span>
+                        
+                    </td>
                     <td class="src-col-regest">Wolfhard der Pob, statrichter ze Wienn, beurkundet, dass vor ihm in der Bürgerschranne Fridreich der Nezeuger anstatt mit Vorsprechen anstatt frown Lucein witib, hern Stephans selig witib des…</td>
                 </tr>
             
@@ -1069,6 +1188,11 @@
                     <td class="src-col-idno"><a href="../../documents/QGW/Vienna_1177-1414_ready/1022.html">1022</a></td>
                     <td class="src-col-date">1381 XII 20</td>
                     <td class="src-col-corpus">QGW II/1 (1177–1414)</td>
+                    <td class="src-col-label"><em>frawen</em></td>
+                    <td class="src-col-role">
+                        <span class="role-chip role-chip-recipient">Empfänger*in</span>
+                        
+                    </td>
                     <td class="src-col-regest">Wolfhard der Pob, statrichter ze Wienn, beurkundet, dass vor ihm in der Bürgerschranne Fridreich der Nezeuger mit Vorsprechen anstatt frawen Lucein witib, hern Stephans witib des Nezeuger, um 12 sh.…</td>
                 </tr>
             
@@ -1076,6 +1200,11 @@
                     <td class="src-col-idno"><a href="../../documents/QGW/Vienna_1177-1414_ready/1043.html">1043</a></td>
                     <td class="src-col-date">1382 XII 16</td>
                     <td class="src-col-corpus">QGW II/1 (1177–1414)</td>
+                    <td class="src-col-label"><em>Frau</em></td>
+                    <td class="src-col-role">
+                        <span class="role-chip role-chip-recipient">Empfänger*in</span>
+                        
+                    </td>
                     <td class="src-col-regest">Andre der Höchstel, amptman ze Töblich der erbern geistleichen vrowen ze Tuln Prediger ordens , beurkundet, dass vor ihm in offenem Gerichte Frau Lucei die Nezeugerinn, purgerin ze Wienne , ihrem…</td>
                 </tr>
             
@@ -1083,6 +1212,11 @@
                     <td class="src-col-idno"><a href="../../documents/QGW/Vienna_1177-1414_ready/1123.html">1123</a></td>
                     <td class="src-col-date">1387 VI 20</td>
                     <td class="src-col-corpus">QGW II/1 (1177–1414)</td>
+                    <td class="src-col-label"><em>-</em></td>
+                    <td class="src-col-role">
+                        <span class="role-chip role-chip-recipient">Empfänger*in</span>
+                        
+                    </td>
                     <td class="src-col-regest">Hanns der Nezeuger, purger ze Wienn, und Elspet, seine Hausfrau, verkaufen ihres rechten Eigens einen Hof zu Prunn und die secz weingarten hinden daran zenachst dem Cheunspiez/z und sechsthalb…</td>
                 </tr>
             
@@ -1090,6 +1224,11 @@
                     <td class="src-col-idno"><a href="../../documents/QGW/Vienna_1177-1414_ready/1127.html">1127</a></td>
                     <td class="src-col-date">1387 VII 16</td>
                     <td class="src-col-corpus">QGW II/1 (1177–1414)</td>
+                    <td class="src-col-label"><em>-</em></td>
+                    <td class="src-col-role">
+                        <span class="role-chip role-chip-recipient">Empfänger*in</span>
+                        
+                    </td>
                     <td class="src-col-regest">Pr/eder Wernher von U/obeshaim, comenteur des hauses dacz dem Dautschenhaus ze Wienn, und der convent gemain daselbs bestätigen, dass der Wiener Bürger Hanns von Gschies und seine Hausfrau Lucei…</td>
                 </tr>
             
@@ -1097,6 +1236,11 @@
                     <td class="src-col-idno"><a href="../../documents/QGW/Vienna_1177-1414_ready/1172.html">1172</a></td>
                     <td class="src-col-date">1389 II 24</td>
                     <td class="src-col-corpus">QGW II/1 (1177–1414)</td>
+                    <td class="src-col-label"><em>Frau</em></td>
+                    <td class="src-col-role">
+                        <span class="role-chip role-chip-other">Sonstige</span><span class="role-chip role-chip-recipient">Empfänger*in</span>
+                        
+                    </td>
                     <td class="src-col-regest">Ulreich der Zink rat und Chunrat Rokk, baid rates der stat ze Wienn, beurkunden, dass Frau Lucei, Stephans witib Stephan des Nezeuger witib, für sich und ihren unmündigen Sohn Sohn Jansen an einem…</td>
                 </tr>
             
@@ -1104,6 +1248,11 @@
                     <td class="src-col-idno"><a href="../../documents/QGW/Vienna_1177-1414_ready/1216.html">1216</a></td>
                     <td class="src-col-date">1391 IX 05</td>
                     <td class="src-col-corpus">QGW II/1 (1177–1414)</td>
+                    <td class="src-col-label"><em>-</em></td>
+                    <td class="src-col-role">
+                        <span class="role-chip role-chip-issuer">Aussteller*in</span>
+                        
+                    </td>
                     <td class="src-col-regest">Lucei, Stephans Witwe Stephan des Nezeuger witwe, für sich und ihren unmündigen Sohn Hansen, und Margret, ihre Tochter, Hainreichs hausfrau Hainreich von Jempnitz, theilen mit Hannsen dem Nezeuger,…</td>
                 </tr>
             
@@ -1111,6 +1260,11 @@
                     <td class="src-col-idno"><a href="../../documents/QGW/Vienna_1177-1414_ready/1309.html">1309</a></td>
                     <td class="src-col-date">1395 IX 27</td>
                     <td class="src-col-corpus">QGW II/1 (1177–1414)</td>
+                    <td class="src-col-label"><em>-</em></td>
+                    <td class="src-col-role">
+                        <span class="role-chip role-chip-issuer">Aussteller*in</span>
+                        
+                    </td>
                     <td class="src-col-regest">Lucei, Stephans des Nezeuger witib wittib, und Jans der Nezeuger, ir sun, der seine Mündigkeit vor dem Rathe bewiesen hatte, verkaufen mit Handen hern Michels des Geuchramer, purgermaister und…</td>
                 </tr>
             
@@ -1118,6 +1272,11 @@
                     <td class="src-col-idno"><a href="../../documents/Stadtbuecher/Band_1_1395-1400_ready/25.html">25</a></td>
                     <td class="src-col-date">1396 Januar 18</td>
                     <td class="src-col-corpus">Stadtbücher Bd. 1 (1395–1400)</td>
+                    <td class="src-col-label"><em>fraw</em></td>
+                    <td class="src-col-role">
+                        <span class="role-chip role-chip-witness">Zeuge / Siegler*in</span><span class="role-chip role-chip-recipient">Empfänger*in</span>
+                        
+                    </td>
                     <td class="src-col-regest">pr. mü., Einbr. 2 Zg., Ma (Indez: Item gescheft Hansen Geschiesser) Dez selbn tags cham auch fur denn rat fraw Lucei, witiw Hannsen säligen witiw des Geschiezzer, und hat do peweist mit denn erbern…</td>
                 </tr>
             
@@ -1125,6 +1284,11 @@
                     <td class="src-col-idno"><a href="../../documents/QGW/Vienna_1177-1414_ready/1374.html">1374</a></td>
                     <td class="src-col-date">1397 XI 14</td>
                     <td class="src-col-corpus">QGW II/1 (1177–1414)</td>
+                    <td class="src-col-label"><em>fraun</em></td>
+                    <td class="src-col-role">
+                        <span class="role-chip role-chip-other">Sonstige</span>
+                        
+                    </td>
                     <td class="src-col-regest">Ru/eger der Snu/erer, statrichter ze Wienn, beurkundet, dass vor offenem Gerichte in der Bürgerschranne der Wiener Bürger Hanns der Stainer mit vorsprechen hinz fraun Luzein der Nezeugerinn geklagt…</td>
                 </tr>
             
@@ -1132,6 +1296,11 @@
                     <td class="src-col-idno"><a href="../../documents/QGW/Vienna_1177-1414_ready/1501.html">1501</a></td>
                     <td class="src-col-date">1402 I 13</td>
                     <td class="src-col-corpus">QGW II/1 (1177–1414)</td>
+                    <td class="src-col-label"><em>-</em></td>
+                    <td class="src-col-role">
+                        <span class="role-chip role-chip-issuer">Aussteller*in</span>
+                        
+                    </td>
                     <td class="src-col-regest">Lucei, Steffans des Ne/azeuger, burger zu Wienn, witib, verkauft mit Handen ihres Grundherrn des Schottenabtes hern Patricien 1 lb dn. ablösbaren Burgrechtsgeldes auf ihrem Hause, gelegen vor…</td>
                 </tr>
             
@@ -1139,6 +1308,11 @@
                     <td class="src-col-idno"><a href="../../documents/QGW/Vienna_1177-1414_ready/1760.html">1760</a></td>
                     <td class="src-col-date">1409 IV 27</td>
                     <td class="src-col-corpus">QGW II/1 (1177–1414)</td>
+                    <td class="src-col-label"><em>-</em></td>
+                    <td class="src-col-role">
+                        
+                        -
+                    </td>
                     <td class="src-col-regest">Hanns der Kaufman, kirichmaister dacz sand Stephan ze Wienn, bestätigt, dass die geschäftherren Paul der Geyr und Ulreich der Freindorfergeschäftherren ihm 2 lb dn., welche die Nezeugerin hinz sand…</td>
                 </tr>
             
@@ -1146,6 +1320,11 @@
                     <td class="src-col-idno"><a href="../../documents/QGW/Vienna_1177-1414_ready/1771.html">1771</a></td>
                     <td class="src-col-date">1409 IX 05</td>
                     <td class="src-col-corpus">QGW II/1 (1177–1414)</td>
+                    <td class="src-col-label"><em>frau</em></td>
+                    <td class="src-col-role">
+                        
+                        -
+                    </td>
                     <td class="src-col-regest">Paul der Geyr, des rats der stat ze Wienn und ausrichter und volfürer des geschefts, so frau Lucei, Hansen des Geschiesser witiben, den baiden got gnad, getan hat , stiftet nach ihrer letztwilligen…</td>
                 </tr>
             
@@ -1153,6 +1332,11 @@
                     <td class="src-col-idno"><a href="../../documents/QGW/Vienna_1177-1414_ready/1772.html">1772</a></td>
                     <td class="src-col-date">1409 IX 19</td>
                     <td class="src-col-corpus">QGW II/1 (1177–1414)</td>
+                    <td class="src-col-label"><em>frau</em></td>
+                    <td class="src-col-role">
+                        
+                        -
+                    </td>
                     <td class="src-col-regest">Hanns der Nezeuger, der junger für, bestätigt für sich und seinen unmündigen Sohn Jacobn, dass Paul der Geyr ausrichter und volfürer und Ulreich der Freindorffer, paid ausrichter und volfürer des…</td>
                 </tr>
             
@@ -1160,6 +1344,11 @@
                     <td class="src-col-idno"><a href="../../documents/QGW/Vienna_1177-1414_ready/1826.html">1826</a></td>
                     <td class="src-col-date">1410 XII 23</td>
                     <td class="src-col-corpus">QGW II/1 (1177–1414)</td>
+                    <td class="src-col-label"><em>-</em></td>
+                    <td class="src-col-role">
+                        
+                        -
+                    </td>
                     <td class="src-col-regest">Albrecht der Zetter, burgermaister, und der rat gemain der stat ze Wienn beurkunden, dass frau Margret, Hansen des Neuzeger witib, ihnen vorgebracht habe, wie derselb ir wirt ir und irm kind Barbaren…</td>
                 </tr>
             
@@ -1167,6 +1356,11 @@
                     <td class="src-col-idno"><a href="../../documents/QGW/Vienna_1177-1414_ready/1899.html">1899</a></td>
                     <td class="src-col-date">1411 VIII 19</td>
                     <td class="src-col-corpus">QGW II/1 (1177–1414)</td>
+                    <td class="src-col-label"><em>-</em></td>
+                    <td class="src-col-role">
+                        <span class="role-chip role-chip-recipient">Empfänger*in</span>
+                        
+                    </td>
                     <td class="src-col-regest">Margret, Hannsen witib des Nezeuger, bestätigt, dass sie sich gegen Empfang von 10 lb dn. mit hern Pauln dem Geyrratausrichterausrichter und hern Hannsen dem Mosprunner, paid des rates der stat ze…</td>
                 </tr>
             
@@ -1174,6 +1368,11 @@
                     <td class="src-col-idno"><a href="../../documents/QGW/Vienna_1177-1414_ready/1987.html">1987</a></td>
                     <td class="src-col-date">1414 VII 21</td>
                     <td class="src-col-corpus">QGW II/1 (1177–1414)</td>
+                    <td class="src-col-label"><em>fraun</em></td>
+                    <td class="src-col-role">
+                        
+                        -
+                    </td>
                     <td class="src-col-regest">Simon von Rukerspurg, fraun Lucein der Neczeugerin seliger gedechtnuss erster chaplan, und Thaman van Weitra, purger zu Wienn, gezeug des geschefts, so dy vorgenant frau an irn lestn zeiten getan hat…</td>
                 </tr>
             
@@ -1206,11 +1405,13 @@
         </div>
     </footer>
 
-    <script src="../../static/js/core.js?v=20260511112948"></script>
-    <script src="../../static/js/provenance.js?v=20260511112948"></script>
-    <script src="../../static/js/basket.js?v=20260511112948"></script>
+    <script src="../../static/js/core.js?v=20260511125458"></script>
+    <script src="../../static/js/tip.js?v=20260511125458"></script>
+    <script src="../../static/js/hint.js?v=20260511125458"></script>
+    <script src="../../static/js/basket.js?v=20260511125458"></script>
     
-<script src="../../static/js/tooltips.js?v=20260511112948"></script>
+<script src="../../static/js/profile.js?v=20260511125458"></script>
+<script src="../../static/js/basket-mount.js?v=20260511125458"></script>
 
 </body>
 </html>

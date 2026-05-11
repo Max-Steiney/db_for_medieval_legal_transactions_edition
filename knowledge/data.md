@@ -36,13 +36,15 @@ Die Daten sind in Quellenkorpora organisiert, die sich in Zeitraum, Provenienz u
 
 Das QGW-Corpus bündelt die „Quellen zur Geschichte Wiens" in mehreren Bänden. Die Stadtbücher bilden eine eigenständige Quellengruppe mit abweichender Überlieferungsform. Weitere Korpora wie Gewerbücher und Grundbücher werden im Build-Prozess vorgehalten, sind aber zum aktuellen Zeitpunkt nicht freigegeben.
 
+Aktuell freigegeben und im UI sichtbar sind zwei Subkorpora: `QGW/Vienna_1177-1414_ready` (Wiener Urkunden 1177–1414) und `Stadtbuecher/Band_1_1395-1400_ready` (Stadtbücher, Band 1, 1395–1400). Die Single Source of Truth ist das Tupel `RELEASED_CORPORA` im Pipeline-Repo (`pipeline/config.py`); es steuert sowohl die CSV-Erzeugung als auch die Sichtbarkeit im Frontend-Build. Subkorpora außerhalb dieses Tupels liegen für die editorische Arbeit in `sources/`, werden aber weder exportiert noch gerendert. Für interne Analysen existiert der Override `PIPELINE_INCLUDE_UNRELEASED=1`, der alle Subkorpora einbezieht; im publizierten Build wird er nicht verwendet.
+
 Welche Korpora im UI tatsächlich sichtbar sind, entscheidet sich am Freigabestand, nicht an der technischen Verfügbarkeit.
 
 ## Nicht oder nur teilweise ausgewertet
 
 Der Zeitraum 1418 bis 1447 ist im UI als „noch nicht ausgewertet" gekennzeichnet. Die Überlieferung existiert, die redaktionelle Auswertung steht aus.
 
-Personen, Organisationen und Orte sind als freigegebene Register-Dimensionen angelegt. Jede Entität mit mindestens einer Nennung in einer freigegebenen Quelle erhält eine Listen- und eine Detail-Seite. Die Bearbeitungstiefe der drei Register unterscheidet sich; das macht die Datenbank im Detail-Profil und im Validierungsreport ersichtlich.
+Personen und Organisationen sind als freigegebene Register-Dimensionen angelegt. Jede Entität mit mindestens einer Nennung in einer freigegebenen Quelle erhält eine Listen- und eine Detail-Seite. Das Ortsregister bleibt vorerst zurückgehalten, weil die Stammdaten zu Orten noch nicht hinreichend konsolidiert sind; Orts-Annotationen im Quellen-Volltext bleiben als Markup sichtbar, tragen aber kein Sprungziel.
 
 ## Erschließungsformen
 
@@ -64,9 +66,9 @@ Auf der Nennungsebene gilt: Mehrfacherwähnungen einer Entität innerhalb einer 
 
 ## Register
 
-Die Datenbank führt drei parallele Register: Personen, Organisationen, Orte. Jeder Eintrag ist eine konsolidierte Identität mit eindeutiger ID und verknüpft die Vorkommen in den Quellen.
+Die Datenbank publiziert zwei Register: Personen und Organisationen. Jeder Eintrag ist eine konsolidierte Identität mit eindeutiger ID und verknüpft die Vorkommen in den Quellen.
 
-Die Register sind nicht redundant zu den Quellen, sondern deren Bezugspunkt. Ohne Register gäbe es nur Namensketten ohne Zuordnung zu individuellen Entitäten.
+Die Register sind nicht redundant zu den Quellen, sondern deren Bezugspunkt. Ohne Register gäbe es nur Namensketten ohne Zuordnung zu individuellen Entitäten. Orts-Daten werden weiterhin in den TEI-Quellen ausgezeichnet und in der Pipeline geführt, aber nicht als eigenes öffentliches Register ausgespielt.
 
 ## Annotationsebenen
 

@@ -3,21 +3,21 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <meta http-equiv="Content-Security-Policy" content="default-src 'self'; script-src 'self'; style-src 'self'; font-src 'self'; img-src 'self' data: https://images.monasterium.net https://www.monasterium.net; connect-src 'self'; frame-ancestors 'none'; base-uri 'self'; form-action 'self'; upgrade-insecure-requests">
+    <meta http-equiv="Content-Security-Policy" content="default-src 'self'; script-src 'self'; style-src 'self'; font-src 'self'; img-src 'self' data: https://images.monasterium.net https://www.monasterium.net; connect-src 'self'; base-uri 'self'; form-action 'self'; upgrade-insecure-requests">
     <meta name="referrer" content="strict-origin-when-cross-origin">
     <meta http-equiv="Permissions-Policy" content="camera=(), microphone=(), geolocation=(), interest-cohort=()">
     <title>Nr. 1615 (1405 III 02), Datenbank</title>
     <link rel="preload" as="font" type="font/woff2" crossorigin
           href="../../../static/fonts/inter-400-latin.woff2">
-    <link rel="stylesheet" href="../../../static/css/fonts.css?v=20260511112948">
-    <link rel="stylesheet" href="../../../static/css/tokens.css?v=20260511112948">
-    <link rel="stylesheet" href="../../../static/css/base.css?v=20260511112948">
-    <link rel="stylesheet" href="../../../static/css/components.css?v=20260511112948">
-    <link rel="stylesheet" href="../../../static/css/responsive.css?v=20260511112948">
-    <link rel="stylesheet" href="../../../static/css/print.css?v=20260511112948">
-    <link rel="stylesheet" href="../../../static/css/provenance.css?v=20260511112948">
+    <link rel="stylesheet" href="../../../static/css/fonts.css?v=20260511125458">
+    <link rel="stylesheet" href="../../../static/css/tokens.css?v=20260511125458">
+    <link rel="stylesheet" href="../../../static/css/base.css?v=20260511125458">
+    <link rel="stylesheet" href="../../../static/css/components.css?v=20260511125458">
+    <link rel="stylesheet" href="../../../static/css/responsive.css?v=20260511125458">
+    <link rel="stylesheet" href="../../../static/css/print.css?v=20260511125458">
+    <link rel="stylesheet" href="../../../static/css/tip.css?v=20260511125458">
     
-<link rel="stylesheet" href="../../../static/css/document.css?v=20260511112948">
+<link rel="stylesheet" href="../../../static/css/document.css?v=20260511125458">
 <link rel="canonical" href="documents/QGW/Vienna_1177-1414_ready/1615.html">
 <meta name="citation_title" content="Nr. 1615 (1405 III 02)">
 <meta name="citation_collection" content="QGW II/1 (1177–1414)">
@@ -50,8 +50,6 @@
         <a href="../../../register/persons.html">Personen</a>
         
         <a href="../../../register/orgs.html">Organisationen</a>
-        
-        <a href="../../../register/places.html">Orte</a>
         
     </div>
 </div>
@@ -93,7 +91,7 @@
     </div>
 </div>
 
-                <a href="../../../korb.html" class="nav-basket" aria-label="Wissenskorb">
+                <a href="../../../korb.html" class="nav-basket" aria-label="Datenkorb">
                     <svg width="18" height="18" viewBox="0 0 18 18" fill="none" aria-hidden="true">
                         <path d="M3 5h12l-1.2 8.5a1 1 0 0 1-1 .85H5.2a1 1 0 0 1-1-.85L3 5z"
                               stroke="currentColor" stroke-width="1.4" fill="none"
@@ -140,7 +138,7 @@
                     
                     <span class="meta-pair">
                         <span class="meta-label">Quelle</span>
-                        <span class="meta-value" title="Quellen zur Geschichte der Stadt Wien, Bd. II/1, Nr. 1615">Quellen zur Geschichte der Stadt Wien, Bd. II/1, Nr. 1615</span>
+                        <span class="meta-value" data-hint="Quellen zur Geschichte der Stadt Wien, Bd. II/1, Nr. 1615">Quellen zur Geschichte der Stadt Wien, Bd. II/1, Nr. 1615</span>
                     </span>
                     
                 </div>
@@ -151,7 +149,7 @@
                     
                     <button type="button" class="legend-toggle"
                             data-layer="entities" aria-pressed="true"
-                            title="Entitäten ein-/ausblenden">
+                            data-hint="Entitäten ein-/ausblenden">
                         <span class="legend-toggle-dots">
                             <span class="legend-swatch swatch-person"></span><span class="legend-swatch swatch-org"></span><span class="legend-swatch swatch-place"></span>
                         </span>
@@ -160,7 +158,7 @@
                     
                     <button type="button" class="legend-toggle"
                             data-layer="functions" aria-pressed="true"
-                            title="Funktionsrollen ein-/ausblenden">
+                            data-hint="Funktionsrollen ein-/ausblenden">
                         <span class="legend-toggle-dots">
                             <span class="legend-swatch swatch-fn-issuer"></span><span class="legend-swatch swatch-fn-recipient"></span><span class="legend-swatch swatch-fn-witness"></span>
                         </span>
@@ -169,7 +167,7 @@
                     
                     <button type="button" class="legend-toggle"
                             data-layer="attributes" aria-pressed="true"
-                            title="Attribute ein-/ausblenden">
+                            data-hint="Attribute ein-/ausblenden">
                         <span class="legend-toggle-dots">
                             <span class="legend-swatch swatch-attr"></span><span class="legend-swatch swatch-add"></span>
                         </span>
@@ -178,7 +176,7 @@
                     
                     <button type="button" class="legend-toggle"
                             data-layer="triggers" aria-pressed="true"
-                            title="Dispositivformel ein-/ausblenden">
+                            data-hint="Dispositivformel ein-/ausblenden">
                         <span class="legend-toggle-dots">
                             <span class="legend-swatch swatch-trigger"></span>
                         </span>
@@ -190,21 +188,29 @@
                 <div class="doc-toolbar-actions">
                     <a class="toolbar-btn" href="../../../tei/QGW/Vienna_1177-1414_ready/1615.xml"
                        download="1615.xml"
-                       aria-label="TEI-XML herunterladen" title="TEI-XML herunterladen"><svg viewBox="0 0 16 16" width="16" height="16" aria-hidden="true"><path fill="none" stroke="currentColor" stroke-width="1.4" stroke-linecap="round" stroke-linejoin="round" d="M8 2v8m0 0l-3-3m3 3l3-3M3 13h10"/></svg></a>
+                       aria-label="TEI-XML herunterladen" data-hint="TEI-XML herunterladen"><svg viewBox="0 0 16 16" width="16" height="16" aria-hidden="true"><path fill="none" stroke="currentColor" stroke-width="1.4" stroke-linecap="round" stroke-linejoin="round" d="M8 2v8m0 0l-3-3m3 3l3-3M3 13h10"/></svg></a>
                     <button class="toolbar-btn" id="cite-toggle" aria-expanded="false"
-                            aria-label="Zitation kopieren" title="Zitation kopieren"><svg viewBox="0 0 16 16" width="16" height="16" aria-hidden="true"><rect x="4" y="2" width="8" height="11" rx="1" fill="none" stroke="currentColor" stroke-width="1.4"/><path d="M6 1.5h4a0.5 0.5 0 0 1 0.5 0.5v1a0.5 0.5 0 0 1-0.5 0.5H6a0.5 0.5 0 0 1-0.5-0.5V2A0.5 0.5 0 0 1 6 1.5z" fill="currentColor"/><path d="M6.5 6.5h3M6.5 8.5h3M6.5 10.5h2" stroke="currentColor" stroke-width="1" stroke-linecap="round"/></svg></button>
+                            aria-label="Zitation kopieren" data-hint="Zitation kopieren"><svg viewBox="0 0 16 16" width="16" height="16" aria-hidden="true"><rect x="4" y="2" width="8" height="11" rx="1" fill="none" stroke="currentColor" stroke-width="1.4"/><path d="M6 1.5h4a0.5 0.5 0 0 1 0.5 0.5v1a0.5 0.5 0 0 1-0.5 0.5H6a0.5 0.5 0 0 1-0.5-0.5V2A0.5 0.5 0 0 1 6 1.5z" fill="currentColor"/><path d="M6.5 6.5h3M6.5 8.5h3M6.5 10.5h2" stroke="currentColor" stroke-width="1" stroke-linecap="round"/></svg></button>
                     <div class="cite-popover hidden" id="cite-popover"></div>
+                    <span class="toolbar-basket-mount"
+                          data-basket-type="source"
+                          data-basket-id="1615"
+                          data-basket-label="1615"
+                          data-basket-url="documents/QGW/Vienna_1177-1414_ready/1615.html"
+                          data-basket-date="1405-03-02"
+                          data-basket-coll="QGW II/1 (1177–1414)"
+                          data-basket-regest="Hanns der Würffel beurkundet seinen letzten Willen. Er schafft: 1. der bruderschaft gemainklich hinz den Predigern und den Minnernprüdern seines rechten Eigens 3 1/2 lb dn. gelts, gelegen ze…"></span>
                     
 <nav class="doc-paging doc-paging-inline" aria-label="Quellen-Navigation">
     
     <a href="../../../documents/QGW/Vienna_1177-1414_ready/1614.html" class="toolbar-btn doc-paging-prev"
        aria-label="Vorherige Quelle: Nr. 1614"
-       title="Vorherige Quelle: Nr. 1614"><svg viewBox="0 0 16 16" width="16" height="16" aria-hidden="true"><path fill="none" stroke="currentColor" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round" d="M10 3l-5 5 5 5"/></svg></a>
+       data-hint="Vorherige Quelle: Nr. 1614"><svg viewBox="0 0 16 16" width="16" height="16" aria-hidden="true"><path fill="none" stroke="currentColor" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round" d="M10 3l-5 5 5 5"/></svg></a>
     
     
     <a href="../../../documents/QGW/Vienna_1177-1414_ready/1616.html" class="toolbar-btn doc-paging-next"
        aria-label="Nächste Quelle: Nr. 1616"
-       title="Nächste Quelle: Nr. 1616"><svg viewBox="0 0 16 16" width="16" height="16" aria-hidden="true"><path fill="none" stroke="currentColor" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round" d="M6 3l5 5-5 5"/></svg></a>
+       data-hint="Nächste Quelle: Nr. 1616"><svg viewBox="0 0 16 16" width="16" height="16" aria-hidden="true"><path fill="none" stroke="currentColor" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round" d="M6 3l5 5-5 5"/></svg></a>
     
 </nav>
 
@@ -219,60 +225,60 @@
         <!-- Document body (rendered TEI) -->
         <div class="doc-body">
             <section class="tei-abstract"><h2 class="tei-section-head">Regest</h2><p>
-               <span class="anno-event" data-ref="ev__QGW_II_I_1615"><span class="anno-fn anno-fn-issuer" data-role="issuer"><span class="fn-label">Aussteller*in</span><a class="anno-person" data-ref="pe__johann_wuerfel_QGW_II_I_1404" title="Johann Würfel zu Rodaun [pe__johann_wuerfel_QGW_II_I_1404]" href="../../../register/persons/pe__johann_wuerfel_QGW_II_I_1404.html">Hanns der
+               <span class="anno-event" data-ref="ev__QGW_II_I_1615"><span class="anno-fn anno-fn-issuer" data-role="issuer"><span class="fn-label">Aussteller*in</span><a class="anno-person" data-ref="pe__johann_wuerfel_QGW_II_I_1404" data-hint="Johann Würfel zu Rodaun [pe__johann_wuerfel_QGW_II_I_1404]" data-hint-type="Person" href="../../../register/persons/pe__johann_wuerfel_QGW_II_I_1404.html">Hanns der
                      Würffel</a></span>
                   <span class="anno-trigger anno-trigger-disp">beurkundet seinen letzten Willen</span>. Er schafft: 1.
-                     <span class="anno-fn anno-fn-recipient" data-role="recipient"><span class="fn-label">Empfänger*in</span>der bruderschaft gemainklich hinz den <a class="anno-org" data-ref="org__wien-dominikaner" title="Dominikaner (Prediger) Wien (Kloster_m) [org__wien-dominikaner]" href="../../../register/orgs/org__wien-dominikaner.html">Predigern</a> und den <a class="anno-org" data-ref="org__wien-minoriten" title="Minoriten Wien (Kloster_m) [org__wien-minoriten]" href="../../../register/orgs/org__wien-minoriten.html">Minnernprüdern</a></span> seines rechten Eigens
+                     <span class="anno-fn anno-fn-recipient" data-role="recipient"><span class="fn-label">Empfänger*in</span>der bruderschaft gemainklich hinz den <a class="anno-org" data-ref="org__wien-dominikaner" data-hint="Dominikaner (Prediger) Wien (Kloster_m) [org__wien-dominikaner]" data-hint-type="Organisation" href="../../../register/orgs/org__wien-dominikaner.html">Predigern</a> und den <a class="anno-org" data-ref="org__wien-minoriten" data-hint="Minoriten Wien (Kloster_m) [org__wien-minoriten]" data-hint-type="Organisation" href="../../../register/orgs/org__wien-minoriten.html">Minnernprüdern</a></span> seines rechten Eigens
                   3 1/2 lb dn. gelts, gelegen ze Gumpendorf auf behaustem gut und auf überlent, mit
                   der Bestimmung, dass sie jährlich an dem achten tag nach Gotesleichnams tag mit
                   irem heiligtum in der process geen und für ihn an demselben Tag einen Jahrtag
-                  begehen sollen 2. Bezahlung seiner Schulden 3. <span class="anno-fn anno-fn-recipient" data-role="recipient"><span class="fn-label">Empfänger*in</span><a class="anno-person" data-ref="pe__ulrich_wuerfel_QGW_II_I_1404" title="Ulrich Würfel († 19.08.1448) [pe__ulrich_wuerfel_QGW_II_I_1404]" href="../../../register/persons/pe__ulrich_wuerfel_QGW_II_I_1404.html">seinem <span class="anno-attr anno-attr-kin" data-corresp="pe__johann_wuerfel_QGW_II_I_1404">Bruder</span>
+                  begehen sollen 2. Bezahlung seiner Schulden 3. <span class="anno-fn anno-fn-recipient" data-role="recipient"><span class="fn-label">Empfänger*in</span><a class="anno-person" data-ref="pe__ulrich_wuerfel_QGW_II_I_1404" data-hint="Ulrich Würfel († 19.08.1448) [pe__ulrich_wuerfel_QGW_II_I_1404]" data-hint-type="Person" href="../../../register/persons/pe__ulrich_wuerfel_QGW_II_I_1404.html">seinem <span class="anno-attr anno-attr-kin" data-corresp="pe__johann_wuerfel_QGW_II_I_1404">Bruder</span>
                         Ulreichen dem Würffel</a></span>
                   <span class="anno-fn anno-fn-other" data-role="other"><span class="fn-label">Sonstige</span><span class="anno-trigger anno-trigger-fn">mit Genehmigung</span> seines
-                        <a class="anno-person" data-ref="pe__wilhelm_herzog_von_oesterreich_QGW_II_I_1313" title="Herzog Wilhelm [pe__wilhelm_herzog_von_oesterreich_QGW_II_I_1313]" href="../../../register/persons/pe__wilhelm_herzog_von_oesterreich_QGW_II_I_1313.html"><span class="anno-attr anno-attr-title">Lehensherrn</span>
+                        <a class="anno-person" data-ref="pe__wilhelm_herzog_von_oesterreich_QGW_II_I_1313" data-hint="Herzog Wilhelm [pe__wilhelm_herzog_von_oesterreich_QGW_II_I_1313]" data-hint-type="Person" href="../../../register/persons/pe__wilhelm_herzog_von_oesterreich_QGW_II_I_1313.html"><span class="anno-attr anno-attr-title">Lehensherrn</span>
                         <span class="anno-attr anno-attr-occ" data-corresp="org__oesterreich-herzogtum">herzog</span> Wilhalms</a> seine vest Radaun und das dorf und
-                     dorfgericht daselbens</span>, mit der Bestimmung, dass Ulrich <span class="anno-fn anno-fn-recipient" data-role="recipient"><span class="fn-label">Empfänger*in</span><a class="anno-person" data-ref="pe__barbara_QGW_II_I_1615" title="Barbara Würfelin [pe__barbara_QGW_II_I_1615]" href="../../../register/persons/pe__barbara_QGW_II_I_1615.html">der
+                     dorfgericht daselbens</span>, mit der Bestimmung, dass Ulrich <span class="anno-fn anno-fn-recipient" data-role="recipient"><span class="fn-label">Empfänger*in</span><a class="anno-person" data-ref="pe__barbara_QGW_II_I_1615" data-hint="Barbara Würfelin [pe__barbara_QGW_II_I_1615]" data-hint-type="Person" href="../../../register/persons/pe__barbara_QGW_II_I_1615.html">der
                            <span class="anno-attr anno-attr-kin" data-corresp="pe__johann_wuerfel_QGW_II_I_1404">Frau</span> des Erblassers Barbaren</a></span> 300 lb dn., die sie
                   als Morgengabe auf von ihm verkauften Weingärten gehabt hatte, und 200 lb dn. als
                   Heimsteuer auszahlen soll 4. seiner Frau Barbaren einen vergulten coph, den sie
                   sich aus seinem Silbergeschirr auswählen darf, die silbernen Löffel, die zwei
-                  besten Betten und die zwei besten chisten 5. <span class="anno-fn anno-fn-recipient" data-role="recipient"><span class="fn-label">Empfänger*in</span>seinen <a class="anno-person" data-ref="pe__niklas_wuerfel_von_nussdorf_QGW_II_I_1107" title="Niklas Würfel von Nussdorf († 24.12.1449) [pe__niklas_wuerfel_von_nussdorf_QGW_II_I_1107]" href="../../../register/persons/pe__niklas_wuerfel_von_nussdorf_QGW_II_I_1107.html">
-                        <span class="anno-attr anno-attr-kin" data-corresp="pe__johann_wuerfel_QGW_II_I_1404">Brüdern</span> Niclasen</a> und <a class="anno-person" data-ref="pe__sigmund_wuerfel_QGW_II_I_1404" title="Sigmund Würfel [pe__sigmund_wuerfel_QGW_II_I_1404]" href="../../../register/persons/pe__sigmund_wuerfel_QGW_II_I_1404.html"><span class="anno-attr anno-attr-kin" data-corresp="pe__johann_wuerfel_QGW_II_I_1404"><span class="tei-add">Bruder</span></span>Sigmunden</a></span> sein Dorf Entschesveld,
+                  besten Betten und die zwei besten chisten 5. <span class="anno-fn anno-fn-recipient" data-role="recipient"><span class="fn-label">Empfänger*in</span>seinen <a class="anno-person" data-ref="pe__niklas_wuerfel_von_nussdorf_QGW_II_I_1107" data-hint="Niklas Würfel von Nussdorf († 24.12.1449) [pe__niklas_wuerfel_von_nussdorf_QGW_II_I_1107]" data-hint-type="Person" href="../../../register/persons/pe__niklas_wuerfel_von_nussdorf_QGW_II_I_1107.html">
+                        <span class="anno-attr anno-attr-kin" data-corresp="pe__johann_wuerfel_QGW_II_I_1404">Brüdern</span> Niclasen</a> und <a class="anno-person" data-ref="pe__sigmund_wuerfel_QGW_II_I_1404" data-hint="Sigmund Würfel [pe__sigmund_wuerfel_QGW_II_I_1404]" data-hint-type="Person" href="../../../register/persons/pe__sigmund_wuerfel_QGW_II_I_1404.html"><span class="anno-attr anno-attr-kin" data-corresp="pe__johann_wuerfel_QGW_II_I_1404"><span class="tei-add">Bruder</span></span>Sigmunden</a></span> sein Dorf Entschesveld,
                   gelegen under dem Pu/esenperg, und den Weinzehent daselbst mit der Bestimmung,
                   dass sie seiner Frau 100 lb dn. für varund hab entrichten sollen 6. seiner Frau,
                   welche Ulreich der Würfel, so lange sie Witwe verbleibt, verpflegen soll, die
                   Hälfte der Kühe und des anderen Viehes ze Radaun 7.derselben die ma/edrein kürsen
                   und den swarzen seidel 8. einen seidel zu einem Messgewande gen Radaun 9. seinem
                   Bruder Ulreich sein Viertel des Hauses hier ze Wienn mit der Bestimmung, dass er
-                  der <span class="anno-fn anno-fn-recipient" data-role="recipient"><span class="fn-label">Empfänger*in</span><a class="anno-person" data-ref="pe__helena_QGW_II_I_1615" title="Helena [pe__helena_QGW_II_I_1615]" href="../../../register/persons/pe__helena_QGW_II_I_1615.html"><span class="anno-attr anno-attr-kin" data-corresp="pe__johann_wuerfel_QGW_II_I_1404">Tochter</span> des
+                  der <span class="anno-fn anno-fn-recipient" data-role="recipient"><span class="fn-label">Empfänger*in</span><a class="anno-person" data-ref="pe__helena_QGW_II_I_1615" data-hint="Helena [pe__helena_QGW_II_I_1615]" data-hint-type="Person" href="../../../register/persons/pe__helena_QGW_II_I_1615.html"><span class="anno-attr anno-attr-kin" data-corresp="pe__johann_wuerfel_QGW_II_I_1404">Tochter</span> des
                         Erblassers junkfraun Helenen</a></span> bei Erlangung der Mündigkeit 400 lb
-                  dn. zu einem mann und 100 lb dn. für vertigung ausrichten soll 10. <span class="anno-fn anno-fn-recipient" data-role="recipient"><span class="fn-label">Empfänger*in</span><a class="anno-person" data-ref="pe__bartholomaeus_wuerfel_QGW_II_I_1375" title="Bartholomäus Würfel [pe__bartholomaeus_wuerfel_QGW_II_I_1375]" href="../../../register/persons/pe__bartholomaeus_wuerfel_QGW_II_I_1375.html">seinem <span class="anno-attr anno-attr-kin" data-corresp="pe__johann_wuerfel_QGW_II_I_1404">Bruder</span> Pertelmen,
+                  dn. zu einem mann und 100 lb dn. für vertigung ausrichten soll 10. <span class="anno-fn anno-fn-recipient" data-role="recipient"><span class="fn-label">Empfänger*in</span><a class="anno-person" data-ref="pe__bartholomaeus_wuerfel_QGW_II_I_1375" data-hint="Bartholomäus Würfel [pe__bartholomaeus_wuerfel_QGW_II_I_1375]" data-hint-type="Person" href="../../../register/persons/pe__bartholomaeus_wuerfel_QGW_II_I_1375.html">seinem <span class="anno-attr anno-attr-kin" data-corresp="pe__johann_wuerfel_QGW_II_I_1404">Bruder</span> Pertelmen,
                            <span class="anno-attr anno-attr-occ" data-corresp="org__wien-st_maria_im_rathaus">chaplan</span> dacz hern Ottenhaim</a></span>, auf Lebenszeit 20 lb
                   dn. von den 40 lb dn. geltes, die der Erblasser auf dem urfar ze Nusdorf hat, zu
                   einem Jahrtag an seinem Todestage 11. sein Silbergeschirr zu zwei Kelchen, einen
                   gen Radaun und den andern gen Zell 12. <span class="anno-fn anno-fn-recipient" data-role="recipient"><span class="fn-label">Empfänger*in</span>
-                     <a class="anno-person" data-ref="pe__konrad_wuerfel_QGW_II_I_1615" title="Konrad Würfel [pe__konrad_wuerfel_QGW_II_I_1615]" href="../../../register/persons/pe__konrad_wuerfel_QGW_II_I_1615.html">seinem <span class="anno-attr anno-attr-kin" data-corresp="pe__johann_wuerfel_QGW_II_I_1404">Vetter</span>
+                     <a class="anno-person" data-ref="pe__konrad_wuerfel_QGW_II_I_1615" data-hint="Konrad Würfel [pe__konrad_wuerfel_QGW_II_I_1615]" data-hint-type="Person" href="../../../register/persons/pe__konrad_wuerfel_QGW_II_I_1615.html">seinem <span class="anno-attr anno-attr-kin" data-corresp="pe__johann_wuerfel_QGW_II_I_1404">Vetter</span>
                         Chunraten dem Würffel</a></span> seinen Weingarten in dem Perbestal, genant
                   der Perbestaler, seinen langen rothen seidel mit der ma/edrein chürsen, sein
                   bestes panzir und paingewant und die pesten hauben, die er unter seinem hernesch
                   hat 13. <span class="anno-fn anno-fn-recipient" data-role="recipient"><span class="fn-label">Empfänger*in</span>seinem dienenden Volk</span> 50 lb dn. 14.
-                     <span class="anno-fn anno-fn-recipient" data-role="recipient"><span class="fn-label">Empfänger*in</span><a class="anno-person" data-ref="pe__anna_mezzenbekchin_QGW_II_I_1615" title="Anna Mezzenbekchin [pe__anna_mezzenbekchin_QGW_II_I_1615]" href="../../../register/persons/pe__anna_mezzenbekchin_QGW_II_I_1615.html">seiner <span class="anno-attr anno-attr-kin" data-corresp="pe__johann_wuerfel_QGW_II_I_1404">Schwester</span> Annen der
+                     <span class="anno-fn anno-fn-recipient" data-role="recipient"><span class="fn-label">Empfänger*in</span><a class="anno-person" data-ref="pe__anna_mezzenbekchin_QGW_II_I_1615" data-hint="Anna Mezzenbekchin [pe__anna_mezzenbekchin_QGW_II_I_1615]" data-hint-type="Person" href="../../../register/persons/pe__anna_mezzenbekchin_QGW_II_I_1615.html">seiner <span class="anno-attr anno-attr-kin" data-corresp="pe__johann_wuerfel_QGW_II_I_1404">Schwester</span> Annen der
                         Messenpekchin</a></span> 200 lb dn., die er ihr schuldet, und 100 lb dn. auf
                   den Weingärten, die er und sein Bruder Ulreich mit einander gekauft haben 15.
                   dass man das Burgrecht, das er seit Langem innegehabt hat, ledig und los gebe, das
                   Burgrecht aber, das er gekauft hat, von dem haubtgut abziehe und die übermass
                   desselben haubtguts unter <span class="anno-fn anno-fn-recipient" data-role="recipient"><span class="fn-label">Empfänger*in</span>die Armen</span> vertheile
-                  16. <span class="anno-fn anno-fn-recipient" data-role="recipient"><span class="fn-label">Empfänger*in</span><a class="anno-person" data-ref="pe__niklas_stainer_QGW_II_I_1615" title="Niklas Stainer [pe__niklas_stainer_QGW_II_I_1615]" href="../../../register/persons/pe__niklas_stainer_QGW_II_I_1615.html">Niclasen dem Stainer</a></span> seinen
+                  16. <span class="anno-fn anno-fn-recipient" data-role="recipient"><span class="fn-label">Empfänger*in</span><a class="anno-person" data-ref="pe__niklas_stainer_QGW_II_I_1615" data-hint="Niklas Stainer [pe__niklas_stainer_QGW_II_I_1615]" data-hint-type="Person" href="../../../register/persons/pe__niklas_stainer_QGW_II_I_1615.html">Niclasen dem Stainer</a></span> seinen
                   vergulten silbergürtel mit den glokken 17. <span class="anno-fn anno-fn-recipient" data-role="recipient"><span class="fn-label">Empfänger*in</span>armen
                      Leuten</span> von der übermass seines hêrnesch ze Radaun 8 lb dn. 18. den
                   Ueberrest seines fahrenden und liegenden Gutes seinen Brüdern Niclasen, Ulreichen
-                  und Sigmunden. Das Geschäft <span class="anno-trigger anno-trigger-fn">empfiehlt</span> er <span class="anno-fn anno-fn-other" data-role="other"><span class="fn-label">Sonstige</span>seinen <a class="anno-person" data-ref="pe__johann_zinkk_QGW_II_I_1645" title="Johann Zinkk der Ältere [pe__johann_zinkk_QGW_II_I_1645]" href="../../../register/persons/pe__johann_zinkk_QGW_II_I_1645.html">guten <span class="anno-attr anno-attr-friend" data-corresp="pe__johann_wuerfel_QGW_II_I_1404">Freunden</span> Hannsen
-                        dem Zinkken<span class="anno-attr anno-attr-occ" data-corresp="org__wien"><span class="tei-add">purger</span></span></a>, <a class="anno-person" data-ref="pe__stephan_poll_QGW_II_I_1615" title="Stephan Poll [pe__stephan_poll_QGW_II_I_1615]" href="../../../register/persons/pe__stephan_poll_QGW_II_I_1615.html">Stephann dem Pollen <span class="anno-attr anno-attr-friend" data-corresp="pe__johann_wuerfel_QGW_II_I_1404"><span class="tei-add">Freunden</span></span><span class="anno-attr anno-attr-occ" data-corresp="org__wien"><span class="tei-add">purger</span></span></a> und <a class="anno-person" data-ref="pe__johann_mosprunner_QGW_II_I_1096" title="Johann Mosprunner [pe__johann_mosprunner_QGW_II_I_1096]" href="../../../register/persons/pe__johann_mosprunner_QGW_II_I_1096.html"><span class="anno-attr anno-attr-friend" data-corresp="pe__johann_wuerfel_QGW_II_I_1404"><span class="tei-add">Freunden</span></span>Hannsen dem Mosprunner, all drei
+                  und Sigmunden. Das Geschäft <span class="anno-trigger anno-trigger-fn">empfiehlt</span> er <span class="anno-fn anno-fn-other" data-role="other"><span class="fn-label">Sonstige</span>seinen <a class="anno-person" data-ref="pe__johann_zinkk_QGW_II_I_1645" data-hint="Johann Zinkk der Ältere [pe__johann_zinkk_QGW_II_I_1645]" data-hint-type="Person" href="../../../register/persons/pe__johann_zinkk_QGW_II_I_1645.html">guten <span class="anno-attr anno-attr-friend" data-corresp="pe__johann_wuerfel_QGW_II_I_1404">Freunden</span> Hannsen
+                        dem Zinkken<span class="anno-attr anno-attr-occ" data-corresp="org__wien"><span class="tei-add">purger</span></span></a>, <a class="anno-person" data-ref="pe__stephan_poll_QGW_II_I_1615" data-hint="Stephan Poll [pe__stephan_poll_QGW_II_I_1615]" data-hint-type="Person" href="../../../register/persons/pe__stephan_poll_QGW_II_I_1615.html">Stephann dem Pollen <span class="anno-attr anno-attr-friend" data-corresp="pe__johann_wuerfel_QGW_II_I_1404"><span class="tei-add">Freunden</span></span><span class="anno-attr anno-attr-occ" data-corresp="org__wien"><span class="tei-add">purger</span></span></a> und <a class="anno-person" data-ref="pe__johann_mosprunner_QGW_II_I_1096" data-hint="Johann Mosprunner [pe__johann_mosprunner_QGW_II_I_1096]" data-hint-type="Person" href="../../../register/persons/pe__johann_mosprunner_QGW_II_I_1096.html"><span class="anno-attr anno-attr-friend" data-corresp="pe__johann_wuerfel_QGW_II_I_1404"><span class="tei-add">Freunden</span></span>Hannsen dem Mosprunner, all drei
                            <span class="anno-attr anno-attr-occ" data-corresp="org__wien">purger</span> ze
                         Wienn</a></span> .</span>
             </p></section><section class="tei-seal"><h2 class="tei-section-head">Siegelbeschreibung</h2><p><span class="anno-event" data-ref="ev__QGW_II_I_1615"><span class="anno-fn anno-fn-witness" data-role="witness"><span class="fn-label">Zeug*in</span>Besiegelt mit
-                     den Siegeln: 1. des <a class="anno-person" data-ref="pe__johann_wuerfel_QGW_II_I_1404" title="Johann Würfel zu Rodaun [pe__johann_wuerfel_QGW_II_I_1404]" href="../../../register/persons/pe__johann_wuerfel_QGW_II_I_1404.html">Ausstellers</a>, 2. <a class="anno-person" data-ref="pe__johann_von_velben_QGW_II_I_1615" title="Johann von Velben [pe__johann_von_velben_QGW_II_I_1615]" href="../../../register/persons/pe__johann_von_velben_QGW_II_I_1615.html">seines <span class="anno-attr anno-attr-kin" data-corresp="pe__johann_wuerfel_QGW_II_I_1404">Schwagers</span> Hannsen
-                        von Velben, herzog Wilhalms <span class="anno-attr anno-attr-occ" data-corresp="pe__wilhelm_herzog_von_oesterreich_QGW_II_I_1313">anwalt</span> in dem rat der stat ze Wienn</a>, 3. <a class="anno-person" data-ref="pe__haunold_schuchler_QGW_II_I_1557" title="Haunold Schuchler der jüngere [pe__haunold_schuchler_QGW_II_I_1557]" href="../../../register/persons/pe__haunold_schuchler_QGW_II_I_1557.html">Haunolts des
+                     den Siegeln: 1. des <a class="anno-person" data-ref="pe__johann_wuerfel_QGW_II_I_1404" data-hint="Johann Würfel zu Rodaun [pe__johann_wuerfel_QGW_II_I_1404]" data-hint-type="Person" href="../../../register/persons/pe__johann_wuerfel_QGW_II_I_1404.html">Ausstellers</a>, 2. <a class="anno-person" data-ref="pe__johann_von_velben_QGW_II_I_1615" data-hint="Johann von Velben [pe__johann_von_velben_QGW_II_I_1615]" data-hint-type="Person" href="../../../register/persons/pe__johann_von_velben_QGW_II_I_1615.html">seines <span class="anno-attr anno-attr-kin" data-corresp="pe__johann_wuerfel_QGW_II_I_1404">Schwagers</span> Hannsen
+                        von Velben, herzog Wilhalms <span class="anno-attr anno-attr-occ" data-corresp="pe__wilhelm_herzog_von_oesterreich_QGW_II_I_1313">anwalt</span> in dem rat der stat ze Wienn</a>, 3. <a class="anno-person" data-ref="pe__haunold_schuchler_QGW_II_I_1557" data-hint="Haunold Schuchler der jüngere [pe__haunold_schuchler_QGW_II_I_1557]" data-hint-type="Person" href="../../../register/persons/pe__haunold_schuchler_QGW_II_I_1557.html">Haunolts des
                         Schüchler, <span class="anno-attr anno-attr-occ" data-corresp="org__wien">purger</span>
                         ze Wienn</a>.</span>
                </span></p></section>
@@ -333,7 +339,7 @@
          dem TEI in mehreren Untertabellen, Personen/Orgs/Orte,
          Ereignisse, Dispositivformeln, Editorische Ergaenzungen. Wird
          per JS aus den entsprechenden Spans im Body aufgebaut. -->
-    <section class="annotations-view" id="factoid-view" aria-label="Annotationen">
+    <section class="annotations-view" id="annotations-view" aria-label="Annotationen">
         <header class="annotations-header">
             <h2 class="annotations-title">Annotationen</h2>
             <span class="annotations-summary"></span>
@@ -379,13 +385,14 @@
         </div>
     </footer>
 
-    <script src="../../../static/js/core.js?v=20260511112948"></script>
-    <script src="../../../static/js/provenance.js?v=20260511112948"></script>
-    <script src="../../../static/js/basket.js?v=20260511112948"></script>
+    <script src="../../../static/js/core.js?v=20260511125458"></script>
+    <script src="../../../static/js/tip.js?v=20260511125458"></script>
+    <script src="../../../static/js/hint.js?v=20260511125458"></script>
+    <script src="../../../static/js/basket.js?v=20260511125458"></script>
     
-<script src="../../../static/js/tooltips.js?v=20260511112948"></script>
-<script src="../../../static/js/facsimile.js?v=20260511112948"></script>
-<script src="../../../static/js/document.js?v=20260511112948"></script>
+<script src="../../../static/js/facsimile.js?v=20260511125458"></script>
+<script src="../../../static/js/document.js?v=20260511125458"></script>
+<script src="../../../static/js/basket-mount.js?v=20260511125458"></script>
 
 </body>
 </html>

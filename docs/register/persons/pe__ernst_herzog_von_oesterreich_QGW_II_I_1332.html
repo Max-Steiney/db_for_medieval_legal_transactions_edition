@@ -3,22 +3,22 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <meta http-equiv="Content-Security-Policy" content="default-src 'self'; script-src 'self'; style-src 'self'; font-src 'self'; img-src 'self' data: https://images.monasterium.net https://www.monasterium.net; connect-src 'self'; frame-ancestors 'none'; base-uri 'self'; form-action 'self'; upgrade-insecure-requests">
+    <meta http-equiv="Content-Security-Policy" content="default-src 'self'; script-src 'self'; style-src 'self'; font-src 'self'; img-src 'self' data: https://images.monasterium.net https://www.monasterium.net; connect-src 'self'; base-uri 'self'; form-action 'self'; upgrade-insecure-requests">
     <meta name="referrer" content="strict-origin-when-cross-origin">
     <meta http-equiv="Permissions-Policy" content="camera=(), microphone=(), geolocation=(), interest-cohort=()">
     <title>Ernst von Habsburg Herzog von Österreich, Datenbank</title>
     <link rel="preload" as="font" type="font/woff2" crossorigin
           href="../../static/fonts/inter-400-latin.woff2">
-    <link rel="stylesheet" href="../../static/css/fonts.css?v=20260511112948">
-    <link rel="stylesheet" href="../../static/css/tokens.css?v=20260511112948">
-    <link rel="stylesheet" href="../../static/css/base.css?v=20260511112948">
-    <link rel="stylesheet" href="../../static/css/components.css?v=20260511112948">
-    <link rel="stylesheet" href="../../static/css/responsive.css?v=20260511112948">
-    <link rel="stylesheet" href="../../static/css/print.css?v=20260511112948">
-    <link rel="stylesheet" href="../../static/css/provenance.css?v=20260511112948">
+    <link rel="stylesheet" href="../../static/css/fonts.css?v=20260511125458">
+    <link rel="stylesheet" href="../../static/css/tokens.css?v=20260511125458">
+    <link rel="stylesheet" href="../../static/css/base.css?v=20260511125458">
+    <link rel="stylesheet" href="../../static/css/components.css?v=20260511125458">
+    <link rel="stylesheet" href="../../static/css/responsive.css?v=20260511125458">
+    <link rel="stylesheet" href="../../static/css/print.css?v=20260511125458">
+    <link rel="stylesheet" href="../../static/css/tip.css?v=20260511125458">
     
-<link rel="stylesheet" href="../../static/css/document.css?v=20260511112948">
-<link rel="stylesheet" href="../../static/css/person.css?v=20260511112948">
+<link rel="stylesheet" href="../../static/css/document.css?v=20260511125458">
+<link rel="stylesheet" href="../../static/css/person.css?v=20260511125458">
 
 </head>
 <body data-root-path="../.."
@@ -48,8 +48,6 @@
         <a href="../../register/persons.html">Personen</a>
         
         <a href="../../register/orgs.html">Organisationen</a>
-        
-        <a href="../../register/places.html">Orte</a>
         
     </div>
 </div>
@@ -91,7 +89,7 @@
     </div>
 </div>
 
-                <a href="../../korb.html" class="nav-basket" aria-label="Wissenskorb">
+                <a href="../../korb.html" class="nav-basket" aria-label="Datenkorb">
                     <svg width="18" height="18" viewBox="0 0 18 18" fill="none" aria-hidden="true">
                         <path d="M3 5h12l-1.2 8.5a1 1 0 0 1-1 .85H5.2a1 1 0 0 1-1-.85L3 5z"
                               stroke="currentColor" stroke-width="1.4" fill="none"
@@ -112,11 +110,23 @@
 
     <div class="person-toolbar">
         <div class="person-toolbar-inner">
-            <nav class="person-breadcrumb" aria-label="Position">
-                <a href="../../register/persons.html">Personenregister</a>
-                <span class="bc-sep">&rsaquo;</span>
-                <span class="bc-doc"><strong>Ernst von Habsburg Herzog von Österreich</strong></span>
-            </nav>
+            <div class="person-toolbar-row">
+                <nav class="person-breadcrumb" aria-label="Position">
+                    <a href="../../register/persons.html">Personenregister</a>
+                    <span class="bc-sep">&rsaquo;</span>
+                    <span class="bc-doc"><strong>Ernst von Habsburg Herzog von Österreich</strong></span>
+                </nav>
+                <div class="person-toolbar-actions">
+                    <span class="toolbar-basket-mount"
+                          data-basket-type="person"
+                          data-basket-id="pe__ernst_herzog_von_oesterreich_QGW_II_I_1332"
+                          data-basket-label="Ernst von Habsburg Herzog von Österreich"
+                          data-basket-url="register/persons/pe__ernst_herzog_von_oesterreich_QGW_II_I_1332.html"
+                          data-basket-sex="m"
+                          data-basket-active-min="1395"
+                          data-basket-active-max="1412"></span>
+                </div>
+            </div>
             <div class="person-toolbar-meta">
                 <span class="meta-pair">
                     <span class="meta-label">Geschlecht</span>
@@ -124,11 +134,41 @@
                 </span>
                 
                 <span class="meta-pair">
-                    <span class="meta-label">Belegt</span>
+                    <span class="meta-label">Belegt
+<span class="tip-wrap">
+    <button type="button" class="tip-trigger tip-trigger--icon"
+            aria-expanded="false" aria-haspopup="dialog"
+            aria-controls="person-belegt"
+            data-tip="person-belegt"
+            aria-label="Definition: Beleg-Zeitraum">
+        <svg width="13" height="13" viewBox="0 0 16 16" aria-hidden="true">
+            <circle cx="8" cy="8" r="7" stroke="currentColor" stroke-width="1.4" fill="none"/>
+            <text x="8" y="11.6" text-anchor="middle" font-size="9.5" font-weight="700"
+                  fill="currentColor" font-family="Georgia, serif">i</text>
+        </svg>
+    </button>
+    <aside class="tip-popover tip-popover--glossary"
+           id="person-belegt" role="dialog" aria-hidden="true"
+           aria-label="Definition: Beleg-Zeitraum">
+        <header class="tip-head">
+            <h3 class="tip-title">Beleg-Zeitraum</h3>
+            <button type="button" class="tip-close" aria-label="Schlie&szlig;en">&times;</button>
+        </header>
+        <div class="tip-body">
+            <p>Erste und letzte Datierung einer Quelle, in der die Person erscheint. Bei einzelnem Beleg wird nur ein Jahr angegeben.</p>
+            
+        </div>
+    </aside>
+</span>
+</span>
                     <span class="meta-value">1395 bis 1412</span>
                 </span>
                 
                 
+                <span class="meta-pair">
+                    <span class="meta-label">Quellen</span>
+                    <span class="meta-value">31</span>
+                </span>
                 <span class="meta-pair person-id-pair">
                     <span class="meta-label">ID</span>
                     <code class="meta-value person-id">pe__ernst_herzog_von_oesterreich_QGW_II_I_1332</code>
@@ -146,13 +186,45 @@
         </h1>
         
         
-        <p class="person-titles">
+        
+        <p class="person-titles" data-collapsible="22">
             <span class="pt-label">In den Quellen genannt als</span>
             <span class="pt-chip">herczog</span><span class="pt-chip">Herr</span><span class="pt-chip">genädigen hern</span>
         </p>
         
         
+        
     </header>
+
+    
+    <section class="role-strip" aria-label="Rollen in Rechtsgeschäften">
+        <h2 class="role-strip-title">Rollen in Rechtsgeschäften</h2>
+        <div class="role-strip-cells">
+            
+            <div class="role-cell role-cell-issuer">
+                <span class="role-cell-count">13</span>
+                <span class="role-cell-label">Aussteller*in</span>
+            </div>
+            
+            <div class="role-cell role-cell-recipient">
+                <span class="role-cell-count">3</span>
+                <span class="role-cell-label">Empfänger*in</span>
+            </div>
+            
+            <div class="role-cell role-cell-witness is-zero">
+                <span class="role-cell-count">0</span>
+                <span class="role-cell-label">Zeuge / Siegler*in</span>
+            </div>
+            
+            <div class="role-cell role-cell-other">
+                <span class="role-cell-count">1</span>
+                <span class="role-cell-label">Sonstige</span>
+            </div>
+            
+        </div>
+        <p class="role-strip-hint">Summe Rollen-Belegungen: 17. Mehrfach-Rollen pro Quelle sind möglich.</p>
+    </section>
+    
 
     
 
@@ -169,6 +241,7 @@
                 <span class="rel-block-count">1</span>
                 <span class="rel-block-hint">Verwandtschaftsverhältnisse, wie sie in den Quellen explizit benannt werden.</span>
             </header>
+            
             <table class="rel-table">
                 <thead>
                     <tr>
@@ -189,7 +262,7 @@
                         <td class="rel-col-label"><em>Bruder</em></td>
                         <td class="rel-col-perspective">
                             
-                                Ernst von Habsburg Herzog von Österreich → Leopold von Österreich
+                                Ernst von Habsburg Herzog von Österreich &rsaquo; Leopold von Österreich
                             
                         </td>
                         <td class="rel-col-source">
@@ -215,6 +288,7 @@
                 <span class="rel-block-count">1</span>
                 <span class="rel-block-hint">Stellvertretungs-Beziehungen, z. B. handelt eine Person an Stelle einer anderen.</span>
             </header>
+            
             <table class="rel-table">
                 <thead>
                     <tr>
@@ -235,7 +309,7 @@
                         <td class="rel-col-label"><em>für</em></td>
                         <td class="rel-col-perspective">
                             
-                                Ernst von Habsburg Herzog von Österreich → Albrecht
+                                Ernst von Habsburg Herzog von Österreich &rsaquo; Albrecht
                             
                         </td>
                         <td class="rel-col-source">
@@ -258,6 +332,7 @@
                 <span class="rel-block-count">10</span>
                 <span class="rel-block-hint">Berufs- oder Amtsbezeichnung in Bezug auf eine Institution.</span>
             </header>
+            
             <table class="rel-table">
                 <thead>
                     <tr>
@@ -278,7 +353,7 @@
                         <td class="rel-col-label"><em>Herzog</em></td>
                         <td class="rel-col-perspective">
                             
-                                Ernst von Habsburg Herzog von Österreich → Herzogtum Österreich
+                                Ernst von Habsburg Herzog von Österreich &rsaquo; Herzogtum Österreich
                             
                         </td>
                         <td class="rel-col-source">
@@ -297,7 +372,7 @@
                         <td class="rel-col-label"><em>Herzog</em></td>
                         <td class="rel-col-perspective">
                             
-                                Ernst von Habsburg Herzog von Österreich → Herzogtum Österreich
+                                Ernst von Habsburg Herzog von Österreich &rsaquo; Herzogtum Österreich
                             
                         </td>
                         <td class="rel-col-source">
@@ -316,7 +391,7 @@
                         <td class="rel-col-label"><em>herzog</em></td>
                         <td class="rel-col-perspective">
                             
-                                Ernst von Habsburg Herzog von Österreich → Herzogtum Österreich
+                                Ernst von Habsburg Herzog von Österreich &rsaquo; Herzogtum Österreich
                             
                         </td>
                         <td class="rel-col-source">
@@ -335,7 +410,7 @@
                         <td class="rel-col-label"><em>Herzogs</em></td>
                         <td class="rel-col-perspective">
                             
-                                Ernst von Habsburg Herzog von Österreich → Herzogtum Österreich
+                                Ernst von Habsburg Herzog von Österreich &rsaquo; Herzogtum Österreich
                             
                         </td>
                         <td class="rel-col-source">
@@ -354,7 +429,7 @@
                         <td class="rel-col-label"><em>Herzog</em></td>
                         <td class="rel-col-perspective">
                             
-                                Ernst von Habsburg Herzog von Österreich → Herzogtum Österreich
+                                Ernst von Habsburg Herzog von Österreich &rsaquo; Herzogtum Österreich
                             
                         </td>
                         <td class="rel-col-source">
@@ -373,7 +448,7 @@
                         <td class="rel-col-label"><em>Herzog</em></td>
                         <td class="rel-col-perspective">
                             
-                                Ernst von Habsburg Herzog von Österreich → Herzogtum Österreich
+                                Ernst von Habsburg Herzog von Österreich &rsaquo; Herzogtum Österreich
                             
                         </td>
                         <td class="rel-col-source">
@@ -392,7 +467,7 @@
                         <td class="rel-col-label"><em>Herzog</em></td>
                         <td class="rel-col-perspective">
                             
-                                Ernst von Habsburg Herzog von Österreich → Herzogtum Österreich
+                                Ernst von Habsburg Herzog von Österreich &rsaquo; Herzogtum Österreich
                             
                         </td>
                         <td class="rel-col-source">
@@ -411,7 +486,7 @@
                         <td class="rel-col-label"><em>herzog</em></td>
                         <td class="rel-col-perspective">
                             
-                                Ernst von Habsburg Herzog von Österreich → Herzogtum Österreich
+                                Ernst von Habsburg Herzog von Österreich &rsaquo; Herzogtum Österreich
                             
                         </td>
                         <td class="rel-col-source">
@@ -430,7 +505,7 @@
                         <td class="rel-col-label"><em>Herzog</em></td>
                         <td class="rel-col-perspective">
                             
-                                Ernst von Habsburg Herzog von Österreich → Herzogtum Österreich
+                                Ernst von Habsburg Herzog von Österreich &rsaquo; Herzogtum Österreich
                             
                         </td>
                         <td class="rel-col-source">
@@ -449,7 +524,7 @@
                         <td class="rel-col-label"><em>herczog</em></td>
                         <td class="rel-col-perspective">
                             
-                                Ernst von Habsburg Herzog von Österreich → Herzogtum Österreich
+                                Ernst von Habsburg Herzog von Österreich &rsaquo; Herzogtum Österreich
                             
                         </td>
                         <td class="rel-col-source">
@@ -467,18 +542,32 @@
         
         
         
+        
+        
+        
+        
+        
+        
     </section>
     
 
     
     <section class="person-sources" aria-label="Quellen mit Nennung">
         <h2 class="section-head">Quellen mit Nennung</h2>
+        
+        <div class="table-filter">
+            <input type="search" class="table-filter-input" data-target="src" placeholder="In den Quellen filtern&hellip;" aria-label="In den Quellen filtern">
+            <span class="table-filter-status"></span>
+        </div>
+        
         <table class="person-source-table">
             <thead>
                 <tr>
                     <th scope="col" class="src-col-idno">Nr.</th>
                     <th scope="col" class="src-col-date">Datum</th>
                     <th scope="col" class="src-col-corpus">Quellenkorpus</th>
+                    <th scope="col" class="src-col-label">Bezeichnung</th>
+                    <th scope="col" class="src-col-role">Rolle</th>
                     <th scope="col" class="src-col-regest">Regest</th>
                 </tr>
             </thead>
@@ -488,6 +577,11 @@
                     <td class="src-col-idno"><a href="../../documents/Stadtbuecher/Band_1_1395-1400_ready/587.html">587</a></td>
                     <td class="src-col-date">o. D.</td>
                     <td class="src-col-corpus">Stadtbücher Bd. 1 (1395–1400)</td>
+                    <td class="src-col-label"><em>herczog</em></td>
+                    <td class="src-col-role">
+                        
+                        -
+                    </td>
                     <td class="src-col-regest">(Indez: Item geltsehuld Hainreiehs herezog Ernsts sneyder) Hie ist vermerkcht die geltschuld, die Hainreich seliger, herczog Ernsts sneyder, schuldig beliben ist, da er ab ist gangen mit dem tod.…</td>
                 </tr>
             
@@ -495,6 +589,11 @@
                     <td class="src-col-idno"><a href="../../documents/QGW/Vienna_1177-1414_ready/1332.html">1332</a></td>
                     <td class="src-col-date">1396 IV 18</td>
                     <td class="src-col-corpus">QGW II/1 (1177–1414)</td>
+                    <td class="src-col-label"><em>Herr</em></td>
+                    <td class="src-col-role">
+                        <span class="role-chip role-chip-recipient">Empfänger*in</span>
+                        
+                    </td>
                     <td class="src-col-regest">Fridreich von Scharffenegg gelobt, wegen eines Streites und Auflaufes, der an nu dem nachstvergangenen freitag vor dem suntag, als man singet Misericordia Domini, (14. April) zwischen den Bürgern und…</td>
                 </tr>
             
@@ -502,6 +601,11 @@
                     <td class="src-col-idno"><a href="../../documents/QGW/Vienna_1177-1414_ready/1370.html">1370</a></td>
                     <td class="src-col-date">1397 VIII 14</td>
                     <td class="src-col-corpus">QGW II/1 (1177–1414)</td>
+                    <td class="src-col-label"><em>-</em></td>
+                    <td class="src-col-role">
+                        
+                        -
+                    </td>
                     <td class="src-col-regest">Herzog Leupolt IV. fordert auf die Bürger und die Gemeinde zu Wienauf, für den Fall, als sein Bruder Herzog Wilhelm, von dessen schwerer Erkrankung ihn sein Bruder, Herzog Ernst, benachrichtigt habe,…</td>
                 </tr>
             
@@ -509,6 +613,11 @@
                     <td class="src-col-idno"><a href="../../documents/Stadtbuecher/Band_1_1395-1400_ready/342.html">342</a></td>
                     <td class="src-col-date">1399 Januar 30</td>
                     <td class="src-col-corpus">Stadtbücher Bd. 1 (1395–1400)</td>
+                    <td class="src-col-label"><em>-</em></td>
+                    <td class="src-col-role">
+                        
+                        -
+                    </td>
                     <td class="src-col-regest">pr. sehr., 2 Einbr. = Zg., Mc (Index: Itern gescheft Niclas Zergadrn~r) Desselben tags kom auch fur den rat die erbern leut erbernJohannes Kelerschreiber und erbernEberhart der Kasttner und habent da…</td>
                 </tr>
             
@@ -516,6 +625,11 @@
                     <td class="src-col-idno"><a href="../../documents/Stadtbuecher/Band_1_1395-1400_ready/551.html">551</a></td>
                     <td class="src-col-date">1400 März 23</td>
                     <td class="src-col-corpus">Stadtbücher Bd. 1 (1395–1400)</td>
+                    <td class="src-col-label"><em>herczog</em></td>
+                    <td class="src-col-role">
+                        
+                        -
+                    </td>
                     <td class="src-col-regest">pr. mü., Einbr. 3 Zg., Ma (In dez: !tem gescheft Hainreich herczog Ernsts sneyder) Desselben tags kom fur den rat fraw Margret, Hainreichs seligen, herczog Ernsts sneyder, hawsfraw, und hat beweist…</td>
                 </tr>
             
@@ -523,6 +637,11 @@
                     <td class="src-col-idno"><a href="../../documents/Stadtbuecher/Band_1_1395-1400_ready/599.html">599</a></td>
                     <td class="src-col-date">1400 August 12</td>
                     <td class="src-col-corpus">Stadtbücher Bd. 1 (1395–1400)</td>
+                    <td class="src-col-label"><em>herczog</em></td>
+                    <td class="src-col-role">
+                        
+                        -
+                    </td>
                     <td class="src-col-regest">(Indez: Item frag und urtail Margreten Hainreichs hausfrawn herczog Ernsts sney- der) Des nachsten phincztags vor Unser Frawen tag ze der schiedung kom fur den rat fraw Margret, weilent Hainreichs…</td>
                 </tr>
             
@@ -530,6 +649,11 @@
                     <td class="src-col-idno"><a href="../../documents/QGW/Vienna_1177-1414_ready/1516.html">1516</a></td>
                     <td class="src-col-date">1402 VIII 29</td>
                     <td class="src-col-corpus">QGW II/1 (1177–1414)</td>
+                    <td class="src-col-label"><em>-</em></td>
+                    <td class="src-col-role">
+                        
+                        -
+                    </td>
                     <td class="src-col-regest">Fridreich der Stoll, herzog Ernsts sneider, und Margret, seine Hausfrau, verkaufen mit Handen des Bürgermeisters hern Pauln des Wurffels und des rates gemain der stat ze Wienn ihr Haus, gelegen in…</td>
                 </tr>
             
@@ -537,6 +661,11 @@
                     <td class="src-col-idno"><a href="../../documents/QGW/Vienna_1177-1414_ready/1623.html">1623</a></td>
                     <td class="src-col-date">1405 VII 04</td>
                     <td class="src-col-corpus">QGW II/1 (1177–1414)</td>
+                    <td class="src-col-label"><em>-</em></td>
+                    <td class="src-col-role">
+                        <span class="role-chip role-chip-recipient">Empfänger*in</span>
+                        
+                    </td>
                     <td class="src-col-regest">Barbara, Wolfharts hausfrau des Streithofer, verzichtet zu Gunsten des Herzogs Ernst auf die Erbgüter, welche ihm ihre Mutter geschafft hat, das ist der mu/el ze Gumpendorf und der zwaier weingerten,…</td>
                 </tr>
             
@@ -544,6 +673,11 @@
                     <td class="src-col-idno"><a href="../../documents/QGW/Vienna_1177-1414_ready/1636.html">1636</a></td>
                     <td class="src-col-date">1405 XII 02</td>
                     <td class="src-col-corpus">QGW II/1 (1177–1414)</td>
+                    <td class="src-col-label"><em>-</em></td>
+                    <td class="src-col-role">
+                        <span class="role-chip role-chip-other">Sonstige</span>
+                        
+                    </td>
                     <td class="src-col-regest">Jostl von Graben, herzog Ernsts diener, bestätigt, dass ihm der Richter und der Rath der Stadt zu Wien auf Bitten des Herzogs und mit Einwilligung der Zechmeister und der Meister der parchander hie…</td>
                 </tr>
             
@@ -551,6 +685,11 @@
                     <td class="src-col-idno"><a href="../../documents/QGW/Vienna_1177-1414_ready/1657.html">1657</a></td>
                     <td class="src-col-date">1406 V 24</td>
                     <td class="src-col-corpus">QGW II/1 (1177–1414)</td>
+                    <td class="src-col-label"><em>-</em></td>
+                    <td class="src-col-role">
+                        
+                        -
+                    </td>
                     <td class="src-col-regest">Stephan, der pechrer, purger ze Wienn, und Kunigund, seine Hausfrau, stellen Hinkken von Ottau kamrer, Jorigen dem Rintschaid, paid herzog Ernsts kamrer, und Niclasen von der Mu/el, seinem diener ,…</td>
                 </tr>
             
@@ -558,6 +697,11 @@
                     <td class="src-col-idno"><a href="../../documents/QGW/Vienna_1177-1414_ready/1665.html">1665</a></td>
                     <td class="src-col-date">1406 VIII 01</td>
                     <td class="src-col-corpus">QGW II/1 (1177–1414)</td>
+                    <td class="src-col-label"><em>-</em></td>
+                    <td class="src-col-role">
+                        <span class="role-chip role-chip-issuer">Aussteller*in</span>
+                        
+                    </td>
                     <td class="src-col-regest">Herzog Ernst schreibt seinem Bürger in der Neunstat Hainreichen dem Hekchlein, dass er die Verhandlung über dessen Streitsache mit Hannsen dem Potschacher, seinem Richter in der Neunstat, welche sein…</td>
                 </tr>
             
@@ -565,6 +709,11 @@
                     <td class="src-col-idno"><a href="../../documents/QGW/Vienna_1177-1414_ready/1667.html">1667</a></td>
                     <td class="src-col-date">1406 IX 17</td>
                     <td class="src-col-corpus">QGW II/1 (1177–1414)</td>
+                    <td class="src-col-label"><em>-</em></td>
+                    <td class="src-col-role">
+                        <span class="role-chip role-chip-issuer">Aussteller*in</span>
+                        
+                    </td>
                     <td class="src-col-regest">Herzog Leopold IV. und Ernst entscheiden in dem Streite zwischen Hannsen von Stubenberg und der Stadt: a) dass der Streit fortan aufzuhören habe, b) dass der von Stubenberg den Wiener Bürgern ihre…</td>
                 </tr>
             
@@ -572,6 +721,11 @@
                     <td class="src-col-idno"><a href="../../documents/QGW/Vienna_1177-1414_ready/1685.html">1685</a></td>
                     <td class="src-col-date">1407 IV 23</td>
                     <td class="src-col-corpus">QGW II/1 (1177–1414)</td>
+                    <td class="src-col-label"><em>-</em></td>
+                    <td class="src-col-role">
+                        
+                        -
+                    </td>
                     <td class="src-col-regest">Marchart der He/ausler von Obern- Pielach bestätigt für sich und seinen noch nicht vogtpe/aren sun Wilhalm den Heusler, dass der Wiener Bürger Fridreich der Stoll, herzog Ernsten seligen sneider, und…</td>
                 </tr>
             
@@ -579,6 +733,11 @@
                     <td class="src-col-idno"><a href="../../documents/QGW/Vienna_1177-1414_ready/1714.html">1714</a></td>
                     <td class="src-col-date">1407 IX 26</td>
                     <td class="src-col-corpus">QGW II/1 (1177–1414)</td>
+                    <td class="src-col-label"><em>-</em></td>
+                    <td class="src-col-role">
+                        
+                        -
+                    </td>
                     <td class="src-col-regest">Jorig Rintschad, Hinik von Ottau und Niclas von der Mül, genant der Preiz/zz/z, bestätigen, dass Jorig der Grunpekh purger und Paul der Geyr, paid purger ze Wienn, ihnen an dem auf 320 lb dn.…</td>
                 </tr>
             
@@ -586,6 +745,11 @@
                     <td class="src-col-idno"><a href="../../documents/QGW/Vienna_1177-1414_ready/1740.html">1740</a></td>
                     <td class="src-col-date">1408 VII 27</td>
                     <td class="src-col-corpus">QGW II/1 (1177–1414)</td>
+                    <td class="src-col-label"><em>-</em></td>
+                    <td class="src-col-role">
+                        <span class="role-chip role-chip-issuer">Aussteller*in</span>
+                        
+                    </td>
                     <td class="src-col-regest">Herzog Ernst theilt (den Erbbürgern, Hausgenossen, Laubenherren und den Handwerkern zu Wien) mit, dass ihm Bürgermeister, Richter, Rath und die gemain zu Wienn geschrieben haben, wie die he/andel,…</td>
                 </tr>
             
@@ -593,6 +757,11 @@
                     <td class="src-col-idno"><a href="../../documents/QGW/Vienna_1177-1414_ready/1741.html">1741</a></td>
                     <td class="src-col-date">1408 VII 29</td>
                     <td class="src-col-corpus">QGW II/1 (1177–1414)</td>
+                    <td class="src-col-label"><em>-</em></td>
+                    <td class="src-col-role">
+                        <span class="role-chip role-chip-issuer">Aussteller*in</span>
+                        
+                    </td>
                     <td class="src-col-regest">Herzog Ernst richtet ein Schreiben gleichen Wortlauts wie no 1740 an Bürgermeister, Richter und Rath zu Wien.</td>
                 </tr>
             
@@ -600,6 +769,11 @@
                     <td class="src-col-idno"><a href="../../documents/QGW/Vienna_1177-1414_ready/1761.html">1761</a></td>
                     <td class="src-col-date">1409 V 03</td>
                     <td class="src-col-corpus">QGW II/1 (1177–1414)</td>
+                    <td class="src-col-label"><em>-</em></td>
+                    <td class="src-col-role">
+                        
+                        -
+                    </td>
                     <td class="src-col-regest">Fridreich von Hannau und Wolfhart von Hannau, sein sun, verkaufen ihres rechten freien aigens 48 ½ und 1/8 Eimer Wein perkrechts geltes perkmass, dass jeder emmer pring fümf viertail Wienner mass,…</td>
                 </tr>
             
@@ -607,6 +781,11 @@
                     <td class="src-col-idno"><a href="../../documents/QGW/Vienna_1177-1414_ready/1764a.html">1764a</a></td>
                     <td class="src-col-date">1409 VI 14</td>
                     <td class="src-col-corpus">QGW II/1 (1177–1414)</td>
+                    <td class="src-col-label"><em>genädigen hern</em></td>
+                    <td class="src-col-role">
+                        
+                        -
+                    </td>
                     <td class="src-col-regest">Vgl. den bei Schlager, Wiener Skizzen, N. F. 3, 103 no 3 abgedruckten Schiedspruch der Herzöge vom 22. April 1409. Unter den Acten des städtischen Archivs wird ein Papierblatt mit folgendem Eintrag…</td>
                 </tr>
             
@@ -614,6 +793,11 @@
                     <td class="src-col-idno"><a href="../../documents/QGW/Vienna_1177-1414_ready/1765.html">1765</a></td>
                     <td class="src-col-date">1409 VI 18</td>
                     <td class="src-col-corpus">QGW II/1 (1177–1414)</td>
+                    <td class="src-col-label"><em>-</em></td>
+                    <td class="src-col-role">
+                        
+                        -
+                    </td>
                     <td class="src-col-regest">Hanns Laun von Gruenau schreibt seinem lieben Thoman dem Velber, der statt kamrer zu Wienn, er wünsche, dass er, seine Freunde und Gesellen mit den Briefen versarikgt werden umb deu sach und umb all…</td>
                 </tr>
             
@@ -621,6 +805,11 @@
                     <td class="src-col-idno"><a href="../../documents/QGW/Vienna_1177-1414_ready/1766.html">1766</a></td>
                     <td class="src-col-date">1409 VI 20</td>
                     <td class="src-col-corpus">QGW II/1 (1177–1414)</td>
+                    <td class="src-col-label"><em>-</em></td>
+                    <td class="src-col-role">
+                        <span class="role-chip role-chip-issuer">Aussteller*in</span>
+                        
+                    </td>
                     <td class="src-col-regest">Herzog Ernst für bekennt für sich und seinen Vetter herzog Albrechten, der zu seinen jarn noch nicht komen ist, und den er und sein Bruder herzog Leupolt innhaben, dass er zu der behabnuss, welche…</td>
                 </tr>
             
@@ -628,6 +817,11 @@
                     <td class="src-col-idno"><a href="../../documents/QGW/Vienna_1177-1414_ready/1767.html">1767</a></td>
                     <td class="src-col-date">1409 VI 22</td>
                     <td class="src-col-corpus">QGW II/1 (1177–1414)</td>
+                    <td class="src-col-label"><em>-</em></td>
+                    <td class="src-col-role">
+                        
+                        -
+                    </td>
                     <td class="src-col-regest">Herzog Leupoltfür bekennt für sich und seinen Vetter herzog Albrechten, der zu seinen jaren noch nicht komen ist, und den er und sein Bruder herzog Ernst innhaben, dass er zu der behabnuss, welche…</td>
                 </tr>
             
@@ -635,6 +829,11 @@
                     <td class="src-col-idno"><a href="../../documents/QGW/Vienna_1177-1414_ready/1783.html">1783</a></td>
                     <td class="src-col-date">1409 XII 20</td>
                     <td class="src-col-corpus">QGW II/1 (1177–1414)</td>
+                    <td class="src-col-label"><em>-</em></td>
+                    <td class="src-col-role">
+                        
+                        -
+                    </td>
                     <td class="src-col-regest">Daria, Ulreichs hausfrau des Würffel, schafft ihrem Manne auf den Todfall das ihr von ihren Eltern anerstorbene und in der Erbtheilung gegen ihrer Schwester Kinder zugefallene Gut und 400 lb dn., die…</td>
                 </tr>
             
@@ -642,6 +841,11 @@
                     <td class="src-col-idno"><a href="../../documents/QGW/Vienna_1177-1414_ready/1803.html">1803</a></td>
                     <td class="src-col-date">1410 VI 06</td>
                     <td class="src-col-corpus">QGW II/1 (1177–1414)</td>
+                    <td class="src-col-label"><em>-</em></td>
+                    <td class="src-col-role">
+                        <span class="role-chip role-chip-issuer">Aussteller*in</span>
+                        
+                    </td>
                     <td class="src-col-regest">Leupolt und Ernst, gebrüder, herzogen ze Österreich, bringen dem Bürgermeister, Rath und den Bürgern zu Wien zur Kenntnis, dass sie sich vereinigt haben, von allen preleten und pfaffhait, geistlichen…</td>
                 </tr>
             
@@ -649,6 +853,11 @@
                     <td class="src-col-idno"><a href="../../documents/QGW/Vienna_1177-1414_ready/1829.html">1829</a></td>
                     <td class="src-col-date">1411 I 13</td>
                     <td class="src-col-corpus">QGW II/1 (1177–1414)</td>
+                    <td class="src-col-label"><em>-</em></td>
+                    <td class="src-col-role">
+                        <span class="role-chip role-chip-issuer">Aussteller*in</span>
+                        
+                    </td>
                     <td class="src-col-regest">Herzog Ernst ersucht den Bürgermeister, Richter und Rath zu Wien, ihren Mitbürger Petern den Menschein zum Schaffer in ihrem Spital zu nehmen.</td>
                 </tr>
             
@@ -656,6 +865,11 @@
                     <td class="src-col-idno"><a href="../../documents/QGW/Vienna_1177-1414_ready/1843.html">1843</a></td>
                     <td class="src-col-date">1411 III 14</td>
                     <td class="src-col-corpus">QGW II/1 (1177–1414)</td>
+                    <td class="src-col-label"><em>-</em></td>
+                    <td class="src-col-role">
+                        <span class="role-chip role-chip-issuer">Aussteller*in</span>
+                        
+                    </td>
                     <td class="src-col-regest">Herzog Ernst ersucht den Bürgermeister, Richter und Rath zu Wien, mit ihrem Mitbürger Simon, cingiesser, welcher Oswalten Oberndorffer, dem Schreiber des Hubmeisters, fünf Fuder Wein, die Oswald von…</td>
                 </tr>
             
@@ -663,6 +877,11 @@
                     <td class="src-col-idno"><a href="../../documents/QGW/Vienna_1177-1414_ready/1845.html">1845</a></td>
                     <td class="src-col-date">1411 III 27</td>
                     <td class="src-col-corpus">QGW II/1 (1177–1414)</td>
+                    <td class="src-col-label"><em>-</em></td>
+                    <td class="src-col-role">
+                        <span class="role-chip role-chip-recipient">Empfänger*in</span>
+                        
+                    </td>
                     <td class="src-col-regest">Leonhart Schaur, lerer geistleicher rechten, beurkundet seinen letzten Willen. Er schafft: 1. seiner Schwester und ihren Kindern zu gleichen Theilen sein Wohnhaus, seine erb weingerten, die er…</td>
                 </tr>
             
@@ -670,6 +889,11 @@
                     <td class="src-col-idno"><a href="../../documents/QGW/Vienna_1177-1414_ready/1856.html">1856</a></td>
                     <td class="src-col-date">1411 IV 07</td>
                     <td class="src-col-corpus">QGW II/1 (1177–1414)</td>
+                    <td class="src-col-label"><em>-</em></td>
+                    <td class="src-col-role">
+                        <span class="role-chip role-chip-issuer">Aussteller*in</span>
+                        
+                    </td>
                     <td class="src-col-regest">Herzog Ernst bestätigt das Geschäft, so weilent . . Lienhart der Schaur, lerer in geistleichen rechten, . . . geschaft und geordnet hat.</td>
                 </tr>
             
@@ -677,6 +901,11 @@
                     <td class="src-col-idno"><a href="../../documents/QGW/Vienna_1177-1414_ready/1857.html">1857</a></td>
                     <td class="src-col-date">1411 IV 07</td>
                     <td class="src-col-corpus">QGW II/1 (1177–1414)</td>
+                    <td class="src-col-label"><em>-</em></td>
+                    <td class="src-col-role">
+                        <span class="role-chip role-chip-issuer">Aussteller*in</span>
+                        
+                    </td>
                     <td class="src-col-regest">Herzog Ernst bestätigt den Empfang von 100 guldein aus dem Geschäfte Lienharts des Schaurs.</td>
                 </tr>
             
@@ -684,6 +913,11 @@
                     <td class="src-col-idno"><a href="../../documents/QGW/Vienna_1177-1414_ready/1891.html">1891</a></td>
                     <td class="src-col-date">1411 VII 15</td>
                     <td class="src-col-corpus">QGW II/1 (1177–1414)</td>
+                    <td class="src-col-label"><em>-</em></td>
+                    <td class="src-col-role">
+                        <span class="role-chip role-chip-issuer">Aussteller*in</span>
+                        
+                    </td>
                     <td class="src-col-regest">Herzog Ernst beglaubigt seinen Kammerschreiber Hannsen, pfarrer zu Berchtolczdorf, als seinen Gesandten an Bürgermeister, Richter und Rath der Stadt zu Wien.</td>
                 </tr>
             
@@ -691,6 +925,11 @@
                     <td class="src-col-idno"><a href="../../documents/QGW/Vienna_1177-1414_ready/1897.html">1897</a></td>
                     <td class="src-col-date">1411 VIII 10</td>
                     <td class="src-col-corpus">QGW II/1 (1177–1414)</td>
+                    <td class="src-col-label"><em>-</em></td>
+                    <td class="src-col-role">
+                        <span class="role-chip role-chip-issuer">Aussteller*in</span>
+                        
+                    </td>
                     <td class="src-col-regest">Herzog Ernst fordert auf den Bürgermeister, Richter und Rath der Stadt zu Wien auf, 500 lb dn., die sie ihm schulden, ohne Verzug seinem Diener, . . dem Edelparcz, einzuantworten.</td>
                 </tr>
             
@@ -698,6 +937,11 @@
                     <td class="src-col-idno"><a href="../../documents/QGW/Vienna_1177-1414_ready/1925.html">1925</a></td>
                     <td class="src-col-date">1412 VII 27</td>
                     <td class="src-col-corpus">QGW II/1 (1177–1414)</td>
+                    <td class="src-col-label"><em>-</em></td>
+                    <td class="src-col-role">
+                        <span class="role-chip role-chip-issuer">Aussteller*in</span>
+                        
+                    </td>
                     <td class="src-col-regest">Herzog Ernst gibt sein Haus zu Wien in dem Kampfgesslein, das er von Hannsen von Schotten Bürger gekauft hat, seinem Bürger in der Neunstat Simon, dem zingiesser, und seiner Hausfrau Breiden.</td>
                 </tr>
             
@@ -730,11 +974,13 @@
         </div>
     </footer>
 
-    <script src="../../static/js/core.js?v=20260511112948"></script>
-    <script src="../../static/js/provenance.js?v=20260511112948"></script>
-    <script src="../../static/js/basket.js?v=20260511112948"></script>
+    <script src="../../static/js/core.js?v=20260511125458"></script>
+    <script src="../../static/js/tip.js?v=20260511125458"></script>
+    <script src="../../static/js/hint.js?v=20260511125458"></script>
+    <script src="../../static/js/basket.js?v=20260511125458"></script>
     
-<script src="../../static/js/tooltips.js?v=20260511112948"></script>
+<script src="../../static/js/profile.js?v=20260511125458"></script>
+<script src="../../static/js/basket-mount.js?v=20260511125458"></script>
 
 </body>
 </html>

@@ -3,21 +3,21 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <meta http-equiv="Content-Security-Policy" content="default-src 'self'; script-src 'self'; style-src 'self'; font-src 'self'; img-src 'self' data: https://images.monasterium.net https://www.monasterium.net; connect-src 'self'; frame-ancestors 'none'; base-uri 'self'; form-action 'self'; upgrade-insecure-requests">
+    <meta http-equiv="Content-Security-Policy" content="default-src 'self'; script-src 'self'; style-src 'self'; font-src 'self'; img-src 'self' data: https://images.monasterium.net https://www.monasterium.net; connect-src 'self'; base-uri 'self'; form-action 'self'; upgrade-insecure-requests">
     <meta name="referrer" content="strict-origin-when-cross-origin">
     <meta http-equiv="Permissions-Policy" content="camera=(), microphone=(), geolocation=(), interest-cohort=()">
     <title>Nr. 603 (1362 VIII 14), Datenbank</title>
     <link rel="preload" as="font" type="font/woff2" crossorigin
           href="../../../static/fonts/inter-400-latin.woff2">
-    <link rel="stylesheet" href="../../../static/css/fonts.css?v=20260511112948">
-    <link rel="stylesheet" href="../../../static/css/tokens.css?v=20260511112948">
-    <link rel="stylesheet" href="../../../static/css/base.css?v=20260511112948">
-    <link rel="stylesheet" href="../../../static/css/components.css?v=20260511112948">
-    <link rel="stylesheet" href="../../../static/css/responsive.css?v=20260511112948">
-    <link rel="stylesheet" href="../../../static/css/print.css?v=20260511112948">
-    <link rel="stylesheet" href="../../../static/css/provenance.css?v=20260511112948">
+    <link rel="stylesheet" href="../../../static/css/fonts.css?v=20260511125458">
+    <link rel="stylesheet" href="../../../static/css/tokens.css?v=20260511125458">
+    <link rel="stylesheet" href="../../../static/css/base.css?v=20260511125458">
+    <link rel="stylesheet" href="../../../static/css/components.css?v=20260511125458">
+    <link rel="stylesheet" href="../../../static/css/responsive.css?v=20260511125458">
+    <link rel="stylesheet" href="../../../static/css/print.css?v=20260511125458">
+    <link rel="stylesheet" href="../../../static/css/tip.css?v=20260511125458">
     
-<link rel="stylesheet" href="../../../static/css/document.css?v=20260511112948">
+<link rel="stylesheet" href="../../../static/css/document.css?v=20260511125458">
 <link rel="canonical" href="documents/QGW/Vienna_1177-1414_ready/603.html">
 <meta name="citation_title" content="Nr. 603 (1362 VIII 14)">
 <meta name="citation_collection" content="QGW II/1 (1177–1414)">
@@ -50,8 +50,6 @@
         <a href="../../../register/persons.html">Personen</a>
         
         <a href="../../../register/orgs.html">Organisationen</a>
-        
-        <a href="../../../register/places.html">Orte</a>
         
     </div>
 </div>
@@ -93,7 +91,7 @@
     </div>
 </div>
 
-                <a href="../../../korb.html" class="nav-basket" aria-label="Wissenskorb">
+                <a href="../../../korb.html" class="nav-basket" aria-label="Datenkorb">
                     <svg width="18" height="18" viewBox="0 0 18 18" fill="none" aria-hidden="true">
                         <path d="M3 5h12l-1.2 8.5a1 1 0 0 1-1 .85H5.2a1 1 0 0 1-1-.85L3 5z"
                               stroke="currentColor" stroke-width="1.4" fill="none"
@@ -140,7 +138,7 @@
                     
                     <span class="meta-pair">
                         <span class="meta-label">Quelle</span>
-                        <span class="meta-value" title="Quellen zur Geschichte der Stadt Wien, Bd. II/1, Nr. 603">Quellen zur Geschichte der Stadt Wien, Bd. II/1, Nr. 603</span>
+                        <span class="meta-value" data-hint="Quellen zur Geschichte der Stadt Wien, Bd. II/1, Nr. 603">Quellen zur Geschichte der Stadt Wien, Bd. II/1, Nr. 603</span>
                     </span>
                     
                 </div>
@@ -151,7 +149,7 @@
                     
                     <button type="button" class="legend-toggle"
                             data-layer="entities" aria-pressed="true"
-                            title="Entitäten ein-/ausblenden">
+                            data-hint="Entitäten ein-/ausblenden">
                         <span class="legend-toggle-dots">
                             <span class="legend-swatch swatch-person"></span><span class="legend-swatch swatch-org"></span><span class="legend-swatch swatch-place"></span>
                         </span>
@@ -160,7 +158,7 @@
                     
                     <button type="button" class="legend-toggle"
                             data-layer="functions" aria-pressed="true"
-                            title="Funktionsrollen ein-/ausblenden">
+                            data-hint="Funktionsrollen ein-/ausblenden">
                         <span class="legend-toggle-dots">
                             <span class="legend-swatch swatch-fn-issuer"></span><span class="legend-swatch swatch-fn-recipient"></span><span class="legend-swatch swatch-fn-witness"></span>
                         </span>
@@ -169,7 +167,7 @@
                     
                     <button type="button" class="legend-toggle"
                             data-layer="attributes" aria-pressed="true"
-                            title="Attribute ein-/ausblenden">
+                            data-hint="Attribute ein-/ausblenden">
                         <span class="legend-toggle-dots">
                             <span class="legend-swatch swatch-attr"></span><span class="legend-swatch swatch-add"></span>
                         </span>
@@ -178,7 +176,7 @@
                     
                     <button type="button" class="legend-toggle"
                             data-layer="triggers" aria-pressed="true"
-                            title="Dispositivformel ein-/ausblenden">
+                            data-hint="Dispositivformel ein-/ausblenden">
                         <span class="legend-toggle-dots">
                             <span class="legend-swatch swatch-trigger"></span>
                         </span>
@@ -190,21 +188,29 @@
                 <div class="doc-toolbar-actions">
                     <a class="toolbar-btn" href="../../../tei/QGW/Vienna_1177-1414_ready/603.xml"
                        download="603.xml"
-                       aria-label="TEI-XML herunterladen" title="TEI-XML herunterladen"><svg viewBox="0 0 16 16" width="16" height="16" aria-hidden="true"><path fill="none" stroke="currentColor" stroke-width="1.4" stroke-linecap="round" stroke-linejoin="round" d="M8 2v8m0 0l-3-3m3 3l3-3M3 13h10"/></svg></a>
+                       aria-label="TEI-XML herunterladen" data-hint="TEI-XML herunterladen"><svg viewBox="0 0 16 16" width="16" height="16" aria-hidden="true"><path fill="none" stroke="currentColor" stroke-width="1.4" stroke-linecap="round" stroke-linejoin="round" d="M8 2v8m0 0l-3-3m3 3l3-3M3 13h10"/></svg></a>
                     <button class="toolbar-btn" id="cite-toggle" aria-expanded="false"
-                            aria-label="Zitation kopieren" title="Zitation kopieren"><svg viewBox="0 0 16 16" width="16" height="16" aria-hidden="true"><rect x="4" y="2" width="8" height="11" rx="1" fill="none" stroke="currentColor" stroke-width="1.4"/><path d="M6 1.5h4a0.5 0.5 0 0 1 0.5 0.5v1a0.5 0.5 0 0 1-0.5 0.5H6a0.5 0.5 0 0 1-0.5-0.5V2A0.5 0.5 0 0 1 6 1.5z" fill="currentColor"/><path d="M6.5 6.5h3M6.5 8.5h3M6.5 10.5h2" stroke="currentColor" stroke-width="1" stroke-linecap="round"/></svg></button>
+                            aria-label="Zitation kopieren" data-hint="Zitation kopieren"><svg viewBox="0 0 16 16" width="16" height="16" aria-hidden="true"><rect x="4" y="2" width="8" height="11" rx="1" fill="none" stroke="currentColor" stroke-width="1.4"/><path d="M6 1.5h4a0.5 0.5 0 0 1 0.5 0.5v1a0.5 0.5 0 0 1-0.5 0.5H6a0.5 0.5 0 0 1-0.5-0.5V2A0.5 0.5 0 0 1 6 1.5z" fill="currentColor"/><path d="M6.5 6.5h3M6.5 8.5h3M6.5 10.5h2" stroke="currentColor" stroke-width="1" stroke-linecap="round"/></svg></button>
                     <div class="cite-popover hidden" id="cite-popover"></div>
+                    <span class="toolbar-basket-mount"
+                          data-basket-type="source"
+                          data-basket-id="603"
+                          data-basket-label="603"
+                          data-basket-url="documents/QGW/Vienna_1177-1414_ready/603.html"
+                          data-basket-date="1362-08-14"
+                          data-basket-coll="QGW II/1 (1177–1414)"
+                          data-basket-regest="Paul von Neunburch, maister des hauses dacz sand Johans auf der Siechen Alsse ze Wienne, und die sampnung gemain daselbens, Wernhart der Neusidler, verbeser des hauses dacz dem Chlagpaum, und die…"></span>
                     
 <nav class="doc-paging doc-paging-inline" aria-label="Quellen-Navigation">
     
     <a href="../../../documents/QGW/Vienna_1177-1414_ready/602.html" class="toolbar-btn doc-paging-prev"
        aria-label="Vorherige Quelle: Nr. 602"
-       title="Vorherige Quelle: Nr. 602"><svg viewBox="0 0 16 16" width="16" height="16" aria-hidden="true"><path fill="none" stroke="currentColor" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round" d="M10 3l-5 5 5 5"/></svg></a>
+       data-hint="Vorherige Quelle: Nr. 602"><svg viewBox="0 0 16 16" width="16" height="16" aria-hidden="true"><path fill="none" stroke="currentColor" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round" d="M10 3l-5 5 5 5"/></svg></a>
     
     
     <a href="../../../documents/QGW/Vienna_1177-1414_ready/604.html" class="toolbar-btn doc-paging-next"
        aria-label="Nächste Quelle: Nr. 604"
-       title="Nächste Quelle: Nr. 604"><svg viewBox="0 0 16 16" width="16" height="16" aria-hidden="true"><path fill="none" stroke="currentColor" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round" d="M6 3l5 5-5 5"/></svg></a>
+       data-hint="Nächste Quelle: Nr. 604"><svg viewBox="0 0 16 16" width="16" height="16" aria-hidden="true"><path fill="none" stroke="currentColor" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round" d="M6 3l5 5-5 5"/></svg></a>
     
 </nav>
 
@@ -219,26 +225,26 @@
         <!-- Document body (rendered TEI) -->
         <div class="doc-body">
             <section class="tei-abstract"><h2 class="tei-section-head">Regest</h2><p>
-               <span class="anno-event" data-ref="ev__QGW_II_I_603"><span class="anno-fn anno-fn-issuer" data-role="issuer"><span class="fn-label">Aussteller*in</span><a class="anno-person" data-ref="pe__paul_von_neuburg_QGW_II_I_603" title="Paul von Neuburg von Neuburg [pe__paul_von_neuburg_QGW_II_I_603]" href="../../../register/persons/pe__paul_von_neuburg_QGW_II_I_603.html">Paul von Neunburch, <span class="anno-attr anno-attr-occ" data-corresp="org__wien-st_johann_in_der_siechenals">maister</span> des hauses dacz sand Johans auf der Siechen Alsse ze
-                        Wienne</a>, und <a class="anno-org" data-ref="org__wien-st_johann_in_der_siechenals" title="St. Johannes in der Siechenals (Spital_Siechenhaus) [org__wien-st_johann_in_der_siechenals]" href="../../../register/orgs/org__wien-st_johann_in_der_siechenals.html">die sampnung gemain daselbens</a>, <a class="anno-person" data-ref="pe__bernhard_neusiedler_QGW_II_I_603" title="Wernhart Neusiedler Neusiedler [pe__bernhard_neusiedler_QGW_II_I_603]" href="../../../register/persons/pe__bernhard_neusiedler_QGW_II_I_603.html">Wernhart der Neusidler, <span class="anno-attr anno-attr-occ" data-corresp="org__wien-st_hiob_zum_klagbaum">verbeser</span>
-                        des hauses dacz dem Chlagpaum</a>, und <a class="anno-org" data-ref="org__wien-st_hiob_zum_klagbaum" title="St. Hiob (Spital_Siechenhaus) [org__wien-st_hiob_zum_klagbaum]" href="../../../register/orgs/org__wien-st_hiob_zum_klagbaum.html">die sampnung gemain daselbens</a>, <a class="anno-person" data-ref="pe__jakob_auf_dem_stab_QGW_II_I_603" title="Jakob auf dem Stab auf dem Stab [pe__jakob_auf_dem_stab_QGW_II_I_603]" href="../../../register/persons/pe__jakob_auf_dem_stab_QGW_II_I_603.html">Jacob auf dem Stab,
-                           <span class="anno-attr anno-attr-occ" data-corresp="org__wien-st_lazarus_siechenhaus">verbeser</span> des hauses dacz sand Laz/zers ze Wienne</a>, und<a class="anno-org" data-ref="org__wien-st_lazarus_siechenhaus" title="St. Lazarus (St. Marx) (Spital_Siechenhaus) [org__wien-st_lazarus_siechenhaus]" href="../../../register/orgs/org__wien-st_lazarus_siechenhaus.html"> die sampnung gemain
+               <span class="anno-event" data-ref="ev__QGW_II_I_603"><span class="anno-fn anno-fn-issuer" data-role="issuer"><span class="fn-label">Aussteller*in</span><a class="anno-person" data-ref="pe__paul_von_neuburg_QGW_II_I_603" data-hint="Paul von Neuburg von Neuburg [pe__paul_von_neuburg_QGW_II_I_603]" data-hint-type="Person" href="../../../register/persons/pe__paul_von_neuburg_QGW_II_I_603.html">Paul von Neunburch, <span class="anno-attr anno-attr-occ" data-corresp="org__wien-st_johann_in_der_siechenals">maister</span> des hauses dacz sand Johans auf der Siechen Alsse ze
+                        Wienne</a>, und <a class="anno-org" data-ref="org__wien-st_johann_in_der_siechenals" data-hint="St. Johannes in der Siechenals (Spital_Siechenhaus) [org__wien-st_johann_in_der_siechenals]" data-hint-type="Organisation" href="../../../register/orgs/org__wien-st_johann_in_der_siechenals.html">die sampnung gemain daselbens</a>, <a class="anno-person" data-ref="pe__bernhard_neusiedler_QGW_II_I_603" data-hint="Wernhart Neusiedler Neusiedler [pe__bernhard_neusiedler_QGW_II_I_603]" data-hint-type="Person" href="../../../register/persons/pe__bernhard_neusiedler_QGW_II_I_603.html">Wernhart der Neusidler, <span class="anno-attr anno-attr-occ" data-corresp="org__wien-st_hiob_zum_klagbaum">verbeser</span>
+                        des hauses dacz dem Chlagpaum</a>, und <a class="anno-org" data-ref="org__wien-st_hiob_zum_klagbaum" data-hint="St. Hiob (Spital_Siechenhaus) [org__wien-st_hiob_zum_klagbaum]" data-hint-type="Organisation" href="../../../register/orgs/org__wien-st_hiob_zum_klagbaum.html">die sampnung gemain daselbens</a>, <a class="anno-person" data-ref="pe__jakob_auf_dem_stab_QGW_II_I_603" data-hint="Jakob auf dem Stab auf dem Stab [pe__jakob_auf_dem_stab_QGW_II_I_603]" data-hint-type="Person" href="../../../register/persons/pe__jakob_auf_dem_stab_QGW_II_I_603.html">Jacob auf dem Stab,
+                           <span class="anno-attr anno-attr-occ" data-corresp="org__wien-st_lazarus_siechenhaus">verbeser</span> des hauses dacz sand Laz/zers ze Wienne</a>, und<a class="anno-org" data-ref="org__wien-st_lazarus_siechenhaus" data-hint="St. Lazarus (St. Marx) (Spital_Siechenhaus) [org__wien-st_lazarus_siechenhaus]" data-hint-type="Organisation" href="../../../register/orgs/org__wien-st_lazarus_siechenhaus.html"> die sampnung gemain
                         daselbens</a>
                   </span>, <span class="anno-trigger anno-trigger-disp">verkaufen</span>
-                  <span class="anno-fn anno-fn-other" data-role="other"><span class="fn-label">Sonstige</span><span class="anno-trigger anno-trigger-fn">mit Handen</span> ihres <a class="anno-person" data-ref="pe__konrad_QGW_II_I_603" title="Konrad [pe__konrad_QGW_II_I_603]" href="../../../register/persons/pe__konrad_QGW_II_I_603.html"><span class="anno-attr anno-attr-title">Bergherrn</span>
+                  <span class="anno-fn anno-fn-other" data-role="other"><span class="fn-label">Sonstige</span><span class="anno-trigger anno-trigger-fn">mit Handen</span> ihres <a class="anno-person" data-ref="pe__konrad_QGW_II_I_603" data-hint="Konrad [pe__konrad_QGW_II_I_603]" data-hint-type="Person" href="../../../register/persons/pe__konrad_QGW_II_I_603.html"><span class="anno-attr anno-attr-title">Bergherrn</span>
                         <span class="anno-attr anno-attr-title">hern</span> Chunrats, <span class="anno-attr anno-attr-occ" data-corresp="org__hernals-st_bartholomaeus">pharrer</span> dacz sand
                         Pertelme ze Alsse</a></span>, ein halbes Joch Weingarten hinder dem dorf ze
                   Alsse in den Langen jeuchen, zenast dem weingarten, der weiln Petreins des Cholben
                   gewesen ist, von dem man dem Pfarrer von S. Bartholomäus ze Alsse 2 dn. für
                   Bergrecht und Voitrecht, dem Kaplan der Kapelle im Rathause Jacob dem Pollen 1 lb
                   dn. zu Burgrecht dient, und der ihnen als Vermächtnis Hainreichs des Waller,
-                  statschreiber ze Wienn, zugefallen war, um 3 lb dn. <span class="anno-fn anno-fn-recipient" data-role="recipient"><span class="fn-label">Empfänger*in</span><a class="anno-person" data-ref="pe__konrad_von_gars_QGW_II_I_603" title="Konrad von Gars von Gars [pe__konrad_von_gars_QGW_II_I_603]" href="../../../register/persons/pe__konrad_von_gars_QGW_II_I_603.html"><span class="anno-attr anno-attr-title">hern</span> Chunraten von Gars, <span class="anno-attr anno-attr-occ" data-corresp="org__wien">purger</span> ze
+                  statschreiber ze Wienn, zugefallen war, um 3 lb dn. <span class="anno-fn anno-fn-recipient" data-role="recipient"><span class="fn-label">Empfänger*in</span><a class="anno-person" data-ref="pe__konrad_von_gars_QGW_II_I_603" data-hint="Konrad von Gars von Gars [pe__konrad_von_gars_QGW_II_I_603]" data-hint-type="Person" href="../../../register/persons/pe__konrad_von_gars_QGW_II_I_603.html"><span class="anno-attr anno-attr-title">hern</span> Chunraten von Gars, <span class="anno-attr anno-attr-occ" data-corresp="org__wien">purger</span> ze
                      Wienne.</a></span></span>
             </p></section><section class="tei-seal"><h2 class="tei-section-head">Siegelbeschreibung</h2><p><span class="anno-event" data-ref="ev__QGW_II_I_603"><span class="anno-fn anno-fn-witness" data-role="witness"><span class="fn-label">Zeug*in</span>Besiegelt mit
-                     den Siegeln: 1. - 3. der drei <a class="anno-org" data-ref="org__wien-st_lazarus_siechenhaus" title="St. Lazarus (St. Marx) (Spital_Siechenhaus) [org__wien-st_lazarus_siechenhaus]" href="../../../register/orgs/org__wien-st_lazarus_siechenhaus.html">Siechenhäuser</a>
-                     <a class="anno-org" data-ref="org__wien-st_hiob_zum_klagbaum" title="St. Hiob (Spital_Siechenhaus) [org__wien-st_hiob_zum_klagbaum]" href="../../../register/orgs/org__wien-st_hiob_zum_klagbaum.html"><span class="tei-add">Siechenhäuser</span>
+                     den Siegeln: 1. - 3. der drei <a class="anno-org" data-ref="org__wien-st_lazarus_siechenhaus" data-hint="St. Lazarus (St. Marx) (Spital_Siechenhaus) [org__wien-st_lazarus_siechenhaus]" data-hint-type="Organisation" href="../../../register/orgs/org__wien-st_lazarus_siechenhaus.html">Siechenhäuser</a>
+                     <a class="anno-org" data-ref="org__wien-st_hiob_zum_klagbaum" data-hint="St. Hiob (Spital_Siechenhaus) [org__wien-st_hiob_zum_klagbaum]" data-hint-type="Organisation" href="../../../register/orgs/org__wien-st_hiob_zum_klagbaum.html"><span class="tei-add">Siechenhäuser</span>
                      </a>
-                     <a class="anno-org" data-ref="org__wien-st_johann_in_der_siechenals" title="St. Johannes in der Siechenals (Spital_Siechenhaus) [org__wien-st_johann_in_der_siechenals]" href="../../../register/orgs/org__wien-st_johann_in_der_siechenals.html"><span class="tei-add">Siechenhäuser</span></a>, 4. <a class="anno-person" data-ref="pe__konrad_QGW_II_I_603" title="Konrad [pe__konrad_QGW_II_I_603]" href="../../../register/persons/pe__konrad_QGW_II_I_603.html">des Bergherrn</a>, 5. <a class="anno-person" data-ref="pe__herbert_deckenschaden_QGW_II_I_390" title="Herbert Deckenschaden Deckenschaden [pe__herbert_deckenschaden_QGW_II_I_390]" href="../../../register/persons/pe__herbert_deckenschaden_QGW_II_I_390.html"><span class="anno-attr anno-attr-title">hern</span> Herworts des Deckenschadens, <span class="anno-attr anno-attr-occ" data-corresp="org__wien">des rats der stat ze Wienne</span>, als <span class="anno-attr anno-attr-rep" data-corresp="pe__heinrich_waller_QGW_II_I_429">Geschäftsvollstreckers</span> nach <a class="anno-person" data-ref="pe__heinrich_waller_QGW_II_I_429" title="Heinrich Waller [pe__heinrich_waller_QGW_II_I_429]" href="../../../register/persons/pe__heinrich_waller_QGW_II_I_429.html">Heinrich dem
+                     <a class="anno-org" data-ref="org__wien-st_johann_in_der_siechenals" data-hint="St. Johannes in der Siechenals (Spital_Siechenhaus) [org__wien-st_johann_in_der_siechenals]" data-hint-type="Organisation" href="../../../register/orgs/org__wien-st_johann_in_der_siechenals.html"><span class="tei-add">Siechenhäuser</span></a>, 4. <a class="anno-person" data-ref="pe__konrad_QGW_II_I_603" data-hint="Konrad [pe__konrad_QGW_II_I_603]" data-hint-type="Person" href="../../../register/persons/pe__konrad_QGW_II_I_603.html">des Bergherrn</a>, 5. <a class="anno-person" data-ref="pe__herbert_deckenschaden_QGW_II_I_390" data-hint="Herbert Deckenschaden Deckenschaden [pe__herbert_deckenschaden_QGW_II_I_390]" data-hint-type="Person" href="../../../register/persons/pe__herbert_deckenschaden_QGW_II_I_390.html"><span class="anno-attr anno-attr-title">hern</span> Herworts des Deckenschadens, <span class="anno-attr anno-attr-occ" data-corresp="org__wien">des rats der stat ze Wienne</span>, als <span class="anno-attr anno-attr-rep" data-corresp="pe__heinrich_waller_QGW_II_I_429">Geschäftsvollstreckers</span> nach <a class="anno-person" data-ref="pe__heinrich_waller_QGW_II_I_429" data-hint="Heinrich Waller [pe__heinrich_waller_QGW_II_I_429]" data-hint-type="Person" href="../../../register/persons/pe__heinrich_waller_QGW_II_I_429.html">Heinrich dem
                      Waller</a></a>.</span>
                </span></p></section>
 
@@ -298,7 +304,7 @@
          dem TEI in mehreren Untertabellen, Personen/Orgs/Orte,
          Ereignisse, Dispositivformeln, Editorische Ergaenzungen. Wird
          per JS aus den entsprechenden Spans im Body aufgebaut. -->
-    <section class="annotations-view" id="factoid-view" aria-label="Annotationen">
+    <section class="annotations-view" id="annotations-view" aria-label="Annotationen">
         <header class="annotations-header">
             <h2 class="annotations-title">Annotationen</h2>
             <span class="annotations-summary"></span>
@@ -344,13 +350,14 @@
         </div>
     </footer>
 
-    <script src="../../../static/js/core.js?v=20260511112948"></script>
-    <script src="../../../static/js/provenance.js?v=20260511112948"></script>
-    <script src="../../../static/js/basket.js?v=20260511112948"></script>
+    <script src="../../../static/js/core.js?v=20260511125458"></script>
+    <script src="../../../static/js/tip.js?v=20260511125458"></script>
+    <script src="../../../static/js/hint.js?v=20260511125458"></script>
+    <script src="../../../static/js/basket.js?v=20260511125458"></script>
     
-<script src="../../../static/js/tooltips.js?v=20260511112948"></script>
-<script src="../../../static/js/facsimile.js?v=20260511112948"></script>
-<script src="../../../static/js/document.js?v=20260511112948"></script>
+<script src="../../../static/js/facsimile.js?v=20260511125458"></script>
+<script src="../../../static/js/document.js?v=20260511125458"></script>
+<script src="../../../static/js/basket-mount.js?v=20260511125458"></script>
 
 </body>
 </html>

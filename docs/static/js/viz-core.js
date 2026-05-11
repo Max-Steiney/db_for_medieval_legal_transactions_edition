@@ -393,10 +393,10 @@ let VizCore = (function () {
         if (tbody) {
             const root = (window.ROOT_PATH || '..');
             const SHOW = 500;
-            const hasBasket = (typeof KnowledgeBasket !== 'undefined');
+            const hasBasket = (typeof DataBasket !== 'undefined');
             const rows = docs.slice(0, SHOW).map(d => {
-                const basketBtn = hasBasket ? KnowledgeBasket.buttonHTML({
-                    type: 'source', id: d.i, label: d.i,
+                const basketBtn = hasBasket ? DataBasket.buttonHTML({
+                    id: d.i, label: d.i,
                     url: d.u, date: d.d, coll: d.c, regest: d.r,
                 }) : '';
                 return `<tr>

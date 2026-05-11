@@ -3,22 +3,22 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <meta http-equiv="Content-Security-Policy" content="default-src 'self'; script-src 'self'; style-src 'self'; font-src 'self'; img-src 'self' data: https://images.monasterium.net https://www.monasterium.net; connect-src 'self'; frame-ancestors 'none'; base-uri 'self'; form-action 'self'; upgrade-insecure-requests">
+    <meta http-equiv="Content-Security-Policy" content="default-src 'self'; script-src 'self'; style-src 'self'; font-src 'self'; img-src 'self' data: https://images.monasterium.net https://www.monasterium.net; connect-src 'self'; base-uri 'self'; form-action 'self'; upgrade-insecure-requests">
     <meta name="referrer" content="strict-origin-when-cross-origin">
     <meta http-equiv="Permissions-Policy" content="camera=(), microphone=(), geolocation=(), interest-cohort=()">
     <title>Gottfried von Passau von Passau, Datenbank</title>
     <link rel="preload" as="font" type="font/woff2" crossorigin
           href="../../static/fonts/inter-400-latin.woff2">
-    <link rel="stylesheet" href="../../static/css/fonts.css?v=20260511112948">
-    <link rel="stylesheet" href="../../static/css/tokens.css?v=20260511112948">
-    <link rel="stylesheet" href="../../static/css/base.css?v=20260511112948">
-    <link rel="stylesheet" href="../../static/css/components.css?v=20260511112948">
-    <link rel="stylesheet" href="../../static/css/responsive.css?v=20260511112948">
-    <link rel="stylesheet" href="../../static/css/print.css?v=20260511112948">
-    <link rel="stylesheet" href="../../static/css/provenance.css?v=20260511112948">
+    <link rel="stylesheet" href="../../static/css/fonts.css?v=20260511125458">
+    <link rel="stylesheet" href="../../static/css/tokens.css?v=20260511125458">
+    <link rel="stylesheet" href="../../static/css/base.css?v=20260511125458">
+    <link rel="stylesheet" href="../../static/css/components.css?v=20260511125458">
+    <link rel="stylesheet" href="../../static/css/responsive.css?v=20260511125458">
+    <link rel="stylesheet" href="../../static/css/print.css?v=20260511125458">
+    <link rel="stylesheet" href="../../static/css/tip.css?v=20260511125458">
     
-<link rel="stylesheet" href="../../static/css/document.css?v=20260511112948">
-<link rel="stylesheet" href="../../static/css/person.css?v=20260511112948">
+<link rel="stylesheet" href="../../static/css/document.css?v=20260511125458">
+<link rel="stylesheet" href="../../static/css/person.css?v=20260511125458">
 
 </head>
 <body data-root-path="../.."
@@ -48,8 +48,6 @@
         <a href="../../register/persons.html">Personen</a>
         
         <a href="../../register/orgs.html">Organisationen</a>
-        
-        <a href="../../register/places.html">Orte</a>
         
     </div>
 </div>
@@ -91,7 +89,7 @@
     </div>
 </div>
 
-                <a href="../../korb.html" class="nav-basket" aria-label="Wissenskorb">
+                <a href="../../korb.html" class="nav-basket" aria-label="Datenkorb">
                     <svg width="18" height="18" viewBox="0 0 18 18" fill="none" aria-hidden="true">
                         <path d="M3 5h12l-1.2 8.5a1 1 0 0 1-1 .85H5.2a1 1 0 0 1-1-.85L3 5z"
                               stroke="currentColor" stroke-width="1.4" fill="none"
@@ -112,11 +110,23 @@
 
     <div class="person-toolbar">
         <div class="person-toolbar-inner">
-            <nav class="person-breadcrumb" aria-label="Position">
-                <a href="../../register/persons.html">Personenregister</a>
-                <span class="bc-sep">&rsaquo;</span>
-                <span class="bc-doc"><strong>Gottfried von Passau von Passau</strong></span>
-            </nav>
+            <div class="person-toolbar-row">
+                <nav class="person-breadcrumb" aria-label="Position">
+                    <a href="../../register/persons.html">Personenregister</a>
+                    <span class="bc-sep">&rsaquo;</span>
+                    <span class="bc-doc"><strong>Gottfried von Passau von Passau</strong></span>
+                </nav>
+                <div class="person-toolbar-actions">
+                    <span class="toolbar-basket-mount"
+                          data-basket-type="person"
+                          data-basket-id="pe__gottfried_von_passau_QGW_II_I_333"
+                          data-basket-label="Gottfried von Passau von Passau"
+                          data-basket-url="register/persons/pe__gottfried_von_passau_QGW_II_I_333.html"
+                          data-basket-sex="m"
+                          data-basket-active-min="1349"
+                          data-basket-active-max="1362"></span>
+                </div>
+            </div>
             <div class="person-toolbar-meta">
                 <span class="meta-pair">
                     <span class="meta-label">Geschlecht</span>
@@ -124,11 +134,41 @@
                 </span>
                 
                 <span class="meta-pair">
-                    <span class="meta-label">Belegt</span>
+                    <span class="meta-label">Belegt
+<span class="tip-wrap">
+    <button type="button" class="tip-trigger tip-trigger--icon"
+            aria-expanded="false" aria-haspopup="dialog"
+            aria-controls="person-belegt"
+            data-tip="person-belegt"
+            aria-label="Definition: Beleg-Zeitraum">
+        <svg width="13" height="13" viewBox="0 0 16 16" aria-hidden="true">
+            <circle cx="8" cy="8" r="7" stroke="currentColor" stroke-width="1.4" fill="none"/>
+            <text x="8" y="11.6" text-anchor="middle" font-size="9.5" font-weight="700"
+                  fill="currentColor" font-family="Georgia, serif">i</text>
+        </svg>
+    </button>
+    <aside class="tip-popover tip-popover--glossary"
+           id="person-belegt" role="dialog" aria-hidden="true"
+           aria-label="Definition: Beleg-Zeitraum">
+        <header class="tip-head">
+            <h3 class="tip-title">Beleg-Zeitraum</h3>
+            <button type="button" class="tip-close" aria-label="Schlie&szlig;en">&times;</button>
+        </header>
+        <div class="tip-body">
+            <p>Erste und letzte Datierung einer Quelle, in der die Person erscheint. Bei einzelnem Beleg wird nur ein Jahr angegeben.</p>
+            
+        </div>
+    </aside>
+</span>
+</span>
                     <span class="meta-value">1349 bis 1362</span>
                 </span>
                 
                 
+                <span class="meta-pair">
+                    <span class="meta-label">Quellen</span>
+                    <span class="meta-value">12</span>
+                </span>
                 <span class="meta-pair person-id-pair">
                     <span class="meta-label">ID</span>
                     <code class="meta-value person-id">pe__gottfried_von_passau_QGW_II_I_333</code>
@@ -145,16 +185,48 @@
             
         </h1>
         
+        
         <p class="person-note">Gottfried (v. Weisseneck)</p>
         
         
-        <p class="person-titles">
+        <p class="person-titles" data-collapsible="22">
             <span class="pt-label">In den Quellen genannt als</span>
             <span class="pt-chip">fürsten</span><span class="pt-chip">geistleichen fürstn</span>
         </p>
         
         
+        
     </header>
+
+    
+    <section class="role-strip" aria-label="Rollen in Rechtsgeschäften">
+        <h2 class="role-strip-title">Rollen in Rechtsgeschäften</h2>
+        <div class="role-strip-cells">
+            
+            <div class="role-cell role-cell-issuer">
+                <span class="role-cell-count">8</span>
+                <span class="role-cell-label">Aussteller*in</span>
+            </div>
+            
+            <div class="role-cell role-cell-recipient is-zero">
+                <span class="role-cell-count">0</span>
+                <span class="role-cell-label">Empfänger*in</span>
+            </div>
+            
+            <div class="role-cell role-cell-witness is-zero">
+                <span class="role-cell-count">0</span>
+                <span class="role-cell-label">Zeuge / Siegler*in</span>
+            </div>
+            
+            <div class="role-cell role-cell-other is-zero">
+                <span class="role-cell-count">0</span>
+                <span class="role-cell-label">Sonstige</span>
+            </div>
+            
+        </div>
+        <p class="role-strip-hint">Summe Rollen-Belegungen: 8. Mehrfach-Rollen pro Quelle sind möglich.</p>
+    </section>
+    
 
     
 
@@ -177,6 +249,7 @@
                 <span class="rel-block-count">1</span>
                 <span class="rel-block-hint">Stellvertretungs-Beziehungen, z. B. handelt eine Person an Stelle einer anderen.</span>
             </header>
+            
             <table class="rel-table">
                 <thead>
                     <tr>
@@ -197,7 +270,7 @@
                         <td class="rel-col-label"><em>stat</em></td>
                         <td class="rel-col-perspective">
                             
-                                Niklas Marcopolis → Gottfried von Passau von Passau
+                                Niklas Marcopolis &rsaquo; Gottfried von Passau von Passau
                             
                         </td>
                         <td class="rel-col-source">
@@ -220,6 +293,7 @@
                 <span class="rel-block-count">12</span>
                 <span class="rel-block-hint">Berufs- oder Amtsbezeichnung in Bezug auf eine Institution.</span>
             </header>
+            
             <table class="rel-table">
                 <thead>
                     <tr>
@@ -240,7 +314,7 @@
                         <td class="rel-col-label"><em>Bischof</em></td>
                         <td class="rel-col-perspective">
                             
-                                Gottfried von Passau von Passau → Bistum Passau
+                                Gottfried von Passau von Passau &rsaquo; Bistum Passau
                             
                         </td>
                         <td class="rel-col-source">
@@ -259,7 +333,7 @@
                         <td class="rel-col-label"><em>Bischof</em></td>
                         <td class="rel-col-perspective">
                             
-                                Gottfried von Passau von Passau → Bistum Passau
+                                Gottfried von Passau von Passau &rsaquo; Bistum Passau
                             
                         </td>
                         <td class="rel-col-source">
@@ -278,7 +352,7 @@
                         <td class="rel-col-label"><em>Bischof</em></td>
                         <td class="rel-col-perspective">
                             
-                                Gottfried von Passau von Passau → Bistum Passau
+                                Gottfried von Passau von Passau &rsaquo; Bistum Passau
                             
                         </td>
                         <td class="rel-col-source">
@@ -297,7 +371,7 @@
                         <td class="rel-col-label"><em>pischolf</em></td>
                         <td class="rel-col-perspective">
                             
-                                Gottfried von Passau von Passau → Passau
+                                Gottfried von Passau von Passau &rsaquo; Passau
                             
                         </td>
                         <td class="rel-col-source">
@@ -316,7 +390,7 @@
                         <td class="rel-col-label"><em>Bischof</em></td>
                         <td class="rel-col-perspective">
                             
-                                Gottfried von Passau von Passau → Bistum Passau
+                                Gottfried von Passau von Passau &rsaquo; Bistum Passau
                             
                         </td>
                         <td class="rel-col-source">
@@ -335,7 +409,7 @@
                         <td class="rel-col-label"><em>Bischof</em></td>
                         <td class="rel-col-perspective">
                             
-                                Gottfried von Passau von Passau → Bistum Passau
+                                Gottfried von Passau von Passau &rsaquo; Bistum Passau
                             
                         </td>
                         <td class="rel-col-source">
@@ -354,7 +428,7 @@
                         <td class="rel-col-label"><em>pischof</em></td>
                         <td class="rel-col-perspective">
                             
-                                Gottfried von Passau von Passau → Bistum Passau
+                                Gottfried von Passau von Passau &rsaquo; Bistum Passau
                             
                         </td>
                         <td class="rel-col-source">
@@ -373,7 +447,7 @@
                         <td class="rel-col-label"><em>bischof</em></td>
                         <td class="rel-col-perspective">
                             
-                                Gottfried von Passau von Passau → Bistum Passau
+                                Gottfried von Passau von Passau &rsaquo; Bistum Passau
                             
                         </td>
                         <td class="rel-col-source">
@@ -392,7 +466,7 @@
                         <td class="rel-col-label"><em>bischof</em></td>
                         <td class="rel-col-perspective">
                             
-                                Gottfried von Passau von Passau → Passau
+                                Gottfried von Passau von Passau &rsaquo; Passau
                             
                         </td>
                         <td class="rel-col-source">
@@ -411,7 +485,7 @@
                         <td class="rel-col-label"><em>Bischof</em></td>
                         <td class="rel-col-perspective">
                             
-                                Gottfried von Passau von Passau → Bistum Passau
+                                Gottfried von Passau von Passau &rsaquo; Bistum Passau
                             
                         </td>
                         <td class="rel-col-source">
@@ -430,7 +504,7 @@
                         <td class="rel-col-label"><em>bischof</em></td>
                         <td class="rel-col-perspective">
                             
-                                Gottfried von Passau von Passau → Bistum Passau
+                                Gottfried von Passau von Passau &rsaquo; Bistum Passau
                             
                         </td>
                         <td class="rel-col-source">
@@ -449,7 +523,7 @@
                         <td class="rel-col-label"><em>Bischof</em></td>
                         <td class="rel-col-perspective">
                             
-                                Gottfried von Passau von Passau → Bistum Passau
+                                Gottfried von Passau von Passau &rsaquo; Bistum Passau
                             
                         </td>
                         <td class="rel-col-source">
@@ -467,18 +541,27 @@
         
         
         
+        
+        
+        
+        
+        
+        
     </section>
     
 
     
     <section class="person-sources" aria-label="Quellen mit Nennung">
         <h2 class="section-head">Quellen mit Nennung</h2>
+        
         <table class="person-source-table">
             <thead>
                 <tr>
                     <th scope="col" class="src-col-idno">Nr.</th>
                     <th scope="col" class="src-col-date">Datum</th>
                     <th scope="col" class="src-col-corpus">Quellenkorpus</th>
+                    <th scope="col" class="src-col-label">Bezeichnung</th>
+                    <th scope="col" class="src-col-role">Rolle</th>
                     <th scope="col" class="src-col-regest">Regest</th>
                 </tr>
             </thead>
@@ -488,6 +571,11 @@
                     <td class="src-col-idno"><a href="../../documents/QGW/Vienna_1177-1414_ready/333.html">333</a></td>
                     <td class="src-col-date">1349 V 17</td>
                     <td class="src-col-corpus">QGW II/1 (1177–1414)</td>
+                    <td class="src-col-label"><em>-</em></td>
+                    <td class="src-col-role">
+                        <span class="role-chip role-chip-issuer">Aussteller*in</span>
+                        
+                    </td>
                     <td class="src-col-regest">* Gottfried, Bischof von Passau, genehmigt die von dem Wiener Bürger Dietricus Urbaetsch letztwillig angeordnete Errichtung und Dotierung eines Altares zu Ehren der Heiligen Jodocus et Leonhardus in…</td>
                 </tr>
             
@@ -495,6 +583,11 @@
                     <td class="src-col-idno"><a href="../../documents/QGW/Vienna_1177-1414_ready/335.html">335</a></td>
                     <td class="src-col-date">1349 VI 24</td>
                     <td class="src-col-corpus">QGW II/1 (1177–1414)</td>
+                    <td class="src-col-label"><em>-</em></td>
+                    <td class="src-col-role">
+                        <span class="role-chip role-chip-issuer">Aussteller*in</span>
+                        
+                    </td>
                     <td class="src-col-regest">* Gottfried, Bischof von Passau, bestätigt die von dem Wiener Bürger Paul von Nürnberg und seiner Gemahlin Katharina in altare b. Marie virginis in nova abside cappelle sanctorum Philippi et Jacobi…</td>
                 </tr>
             
@@ -502,6 +595,11 @@
                     <td class="src-col-idno"><a href="../../documents/QGW/Vienna_1177-1414_ready/362.html">362</a></td>
                     <td class="src-col-date">1350 X 25</td>
                     <td class="src-col-corpus">QGW II/1 (1177–1414)</td>
+                    <td class="src-col-label"><em>-</em></td>
+                    <td class="src-col-role">
+                        <span class="role-chip role-chip-issuer">Aussteller*in</span>
+                        
+                    </td>
                     <td class="src-col-regest">* Gottfried, Bischof von Passau, bestätigt die Stiftung einer Messe von dem Wiener Bürger Ulricus dictus de Pukgas angeordnete Stiftung einer Messe in der Marienkapelle in domo quondam Ottonis Haimi…</td>
                 </tr>
             
@@ -509,6 +607,11 @@
                     <td class="src-col-idno"><a href="../../documents/QGW/Vienna_1177-1414_ready/479.html">479</a></td>
                     <td class="src-col-date">1356 IV 19</td>
                     <td class="src-col-corpus">QGW II/1 (1177–1414)</td>
+                    <td class="src-col-label"><em>geistleichen fürstn</em></td>
+                    <td class="src-col-role">
+                        
+                        -
+                    </td>
                     <td class="src-col-regest">Jacob der Polle, chapplan Unsern Vraun chappelln, gelegen in der purger Rathaus ze Wienne, hern Otten seligen Stiftung des Haimen , bestellt den Thoman von Senging cantor zum Cantor der Kapelle.…</td>
                 </tr>
             
@@ -516,6 +619,11 @@
                     <td class="src-col-idno"><a href="../../documents/QGW/Vienna_1177-1414_ready/492.html">492</a></td>
                     <td class="src-col-date">1357 I 24</td>
                     <td class="src-col-corpus">QGW II/1 (1177–1414)</td>
+                    <td class="src-col-label"><em>-</em></td>
+                    <td class="src-col-role">
+                        <span class="role-chip role-chip-issuer">Aussteller*in</span>
+                        
+                    </td>
                     <td class="src-col-regest">* Gottfried, Bischof von Passau, bestätigt Messe die von den Nürnberger Bürgern Waltherus dictus Saxo in Ausführung, Heinricus dictus Chraft Nürnberger Bürgernin Ausführung und den Augsburger Bürgern…</td>
                 </tr>
             
@@ -523,6 +631,11 @@
                     <td class="src-col-idno"><a href="../../documents/QGW/Vienna_1177-1414_ready/493.html">493</a></td>
                     <td class="src-col-date">1357 II 19</td>
                     <td class="src-col-corpus">QGW II/1 (1177–1414)</td>
+                    <td class="src-col-label"><em>-</em></td>
+                    <td class="src-col-role">
+                        <span class="role-chip role-chip-issuer">Aussteller*in</span>
+                        
+                    </td>
                     <td class="src-col-regest">* Gottfried, Bischof von Passau, zeigt an dem Kaplan der S. Andreas-Kapelle im Herzogshofe zu Krems an, dass er auf Vorschlag des Wiener Bürgers Chunradi dicti Urbetsch die durch Resignation des…</td>
                 </tr>
             
@@ -530,6 +643,11 @@
                     <td class="src-col-idno"><a href="../../documents/QGW/Vienna_1177-1414_ready/525.html">525</a></td>
                     <td class="src-col-date">1359 II 25</td>
                     <td class="src-col-corpus">QGW II/1 (1177–1414)</td>
+                    <td class="src-col-label"><em>fürsten</em></td>
+                    <td class="src-col-role">
+                        
+                        -
+                    </td>
                     <td class="src-col-regest">Jacob der Poll, chapellan und verbeser der chapelln Unser Vraun in der purger Rathaus ze Wienne, hern Ottenhaim selig Stiftung, stellt mit Wissen hern Friedliebs, Verweser in gestleichen sachen in…</td>
                 </tr>
             
@@ -537,6 +655,11 @@
                     <td class="src-col-idno"><a href="../../documents/QGW/Vienna_1177-1414_ready/526.html">526</a></td>
                     <td class="src-col-date">1359 II 25</td>
                     <td class="src-col-corpus">QGW II/1 (1177–1414)</td>
+                    <td class="src-col-label"><em>fürsten</em></td>
+                    <td class="src-col-role">
+                        
+                        -
+                    </td>
                     <td class="src-col-regest">Jacob der Poll, chapellan und verweser der chapelln Unser Vraun in der purger Rathaus ze Wienne, hern Ottenhaim selig Stiftung , bestätigt, dass her Ulreich der Poll in Ausführung des Geschäftes…</td>
                 </tr>
             
@@ -544,6 +667,11 @@
                     <td class="src-col-idno"><a href="../../documents/QGW/Vienna_1177-1414_ready/539.html">539</a></td>
                     <td class="src-col-date">1360 I 05</td>
                     <td class="src-col-corpus">QGW II/1 (1177–1414)</td>
+                    <td class="src-col-label"><em>-</em></td>
+                    <td class="src-col-role">
+                        
+                        -
+                    </td>
                     <td class="src-col-regest">Jacob der Polle, chaplan der chapellen Unser Vrowen in der purger Rathaus ze Wienne, hern Otten Haimen saeligen Stiftung , verkauft mit Handen des Bergherrn pruder Giligen, comiteur des hauses dacz…</td>
                 </tr>
             
@@ -551,6 +679,11 @@
                     <td class="src-col-idno"><a href="../../documents/QGW/Vienna_1177-1414_ready/566.html">566</a></td>
                     <td class="src-col-date">1360 X 24</td>
                     <td class="src-col-corpus">QGW II/1 (1177–1414)</td>
+                    <td class="src-col-label"><em>-</em></td>
+                    <td class="src-col-role">
+                        <span class="role-chip role-chip-issuer">Aussteller*in</span>
+                        
+                    </td>
                     <td class="src-col-regest">* Bischof Gottfried von Passau zeigt dem Ulricus, vicarius ecclesie Chremensis, an, dass er die nach dem Tode des Rectors Dietricus vacante Katharinenkapelle in Chremsa in Foro auf die Präsentation…</td>
                 </tr>
             
@@ -558,6 +691,11 @@
                     <td class="src-col-idno"><a href="../../documents/QGW/Vienna_1177-1414_ready/568.html">568</a></td>
                     <td class="src-col-date">1360 X 27</td>
                     <td class="src-col-corpus">QGW II/1 (1177–1414)</td>
+                    <td class="src-col-label"><em>fürsten</em></td>
+                    <td class="src-col-role">
+                        
+                        -
+                    </td>
                     <td class="src-col-regest">Jacob der Polle, chaplan der chapelln Unser Vrowen in der purger Rathaus ze Wienne, hern Ottenhaimen saeligen Stiftung , bestätigt, dass ihm sein Vetter Lienhart der Polle 50 lb dn. gegeben habe, die…</td>
                 </tr>
             
@@ -565,6 +703,11 @@
                     <td class="src-col-idno"><a href="../../documents/QGW/Vienna_1177-1414_ready/595.html">595</a></td>
                     <td class="src-col-date">1362 I 30</td>
                     <td class="src-col-corpus">QGW II/1 (1177–1414)</td>
+                    <td class="src-col-label"><em>-</em></td>
+                    <td class="src-col-role">
+                        <span class="role-chip role-chip-issuer">Aussteller*in</span>
+                        
+                    </td>
                     <td class="src-col-regest">* Bischof Gottfried von Passau genehmigt alle der neugebauten Marienkapelle in Wien iuxta domum Ottonis, militis Wiennensis bone memorie, ertheilten Ablässe, insbesondere den von dem Patriarchen…</td>
                 </tr>
             
@@ -597,11 +740,13 @@
         </div>
     </footer>
 
-    <script src="../../static/js/core.js?v=20260511112948"></script>
-    <script src="../../static/js/provenance.js?v=20260511112948"></script>
-    <script src="../../static/js/basket.js?v=20260511112948"></script>
+    <script src="../../static/js/core.js?v=20260511125458"></script>
+    <script src="../../static/js/tip.js?v=20260511125458"></script>
+    <script src="../../static/js/hint.js?v=20260511125458"></script>
+    <script src="../../static/js/basket.js?v=20260511125458"></script>
     
-<script src="../../static/js/tooltips.js?v=20260511112948"></script>
+<script src="../../static/js/profile.js?v=20260511125458"></script>
+<script src="../../static/js/basket-mount.js?v=20260511125458"></script>
 
 </body>
 </html>

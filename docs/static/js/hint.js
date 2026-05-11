@@ -59,6 +59,22 @@
             hint.style.top = y + 'px';
         }
 
+        // Position the hint near the focused element when shown via keyboard.
+        function positionAtElement(el) {
+            if (!hint.classList.contains('is-visible')) return;
+            let r = el.getBoundingClientRect();
+            let x = r.right + 8;
+            let y = r.bottom + 6;
+            let w = hint.offsetWidth;
+            let h = hint.offsetHeight;
+            if (x + w > window.innerWidth - 8) x = r.left - w - 8;
+            if (y + h > window.innerHeight - 8) y = r.top - h - 6;
+            if (x < 8) x = 8;
+            if (y < 8) y = 8;
+            hint.style.left = x + 'px';
+            hint.style.top = y + 'px';
+        }
+
         document.addEventListener('mouseover', function (e) {
             let t = e.target.closest('[data-hint]');
             if (t) show(t);
@@ -74,6 +90,19 @@
         });
 
         document.addEventListener('mousemove', position);
+
+        // Keyboard parity: show on focus, hide on blur, Escape closes.
+        document.addEventListener('focusin', function (e) {
+            let t = e.target.closest && e.target.closest('[data-hint]');
+            if (t) { show(t); positionAtElement(t); }
+        });
+        document.addEventListener('focusout', function (e) {
+            let t = e.target.closest && e.target.closest('[data-hint]');
+            if (t) hide();
+        });
+        document.addEventListener('keydown', function (e) {
+            if (e.key === 'Escape') hide();
+        });
 
         // Hide when scrolling: position becomes stale otherwise.
         document.addEventListener('scroll', hide, true);

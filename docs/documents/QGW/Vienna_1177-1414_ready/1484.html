@@ -3,21 +3,21 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <meta http-equiv="Content-Security-Policy" content="default-src 'self'; script-src 'self'; style-src 'self'; font-src 'self'; img-src 'self' data: https://images.monasterium.net https://www.monasterium.net; connect-src 'self'; frame-ancestors 'none'; base-uri 'self'; form-action 'self'; upgrade-insecure-requests">
+    <meta http-equiv="Content-Security-Policy" content="default-src 'self'; script-src 'self'; style-src 'self'; font-src 'self'; img-src 'self' data: https://images.monasterium.net https://www.monasterium.net; connect-src 'self'; base-uri 'self'; form-action 'self'; upgrade-insecure-requests">
     <meta name="referrer" content="strict-origin-when-cross-origin">
     <meta http-equiv="Permissions-Policy" content="camera=(), microphone=(), geolocation=(), interest-cohort=()">
     <title>Nr. 1484 (1401 II 17), Datenbank</title>
     <link rel="preload" as="font" type="font/woff2" crossorigin
           href="../../../static/fonts/inter-400-latin.woff2">
-    <link rel="stylesheet" href="../../../static/css/fonts.css?v=20260511112948">
-    <link rel="stylesheet" href="../../../static/css/tokens.css?v=20260511112948">
-    <link rel="stylesheet" href="../../../static/css/base.css?v=20260511112948">
-    <link rel="stylesheet" href="../../../static/css/components.css?v=20260511112948">
-    <link rel="stylesheet" href="../../../static/css/responsive.css?v=20260511112948">
-    <link rel="stylesheet" href="../../../static/css/print.css?v=20260511112948">
-    <link rel="stylesheet" href="../../../static/css/provenance.css?v=20260511112948">
+    <link rel="stylesheet" href="../../../static/css/fonts.css?v=20260511125458">
+    <link rel="stylesheet" href="../../../static/css/tokens.css?v=20260511125458">
+    <link rel="stylesheet" href="../../../static/css/base.css?v=20260511125458">
+    <link rel="stylesheet" href="../../../static/css/components.css?v=20260511125458">
+    <link rel="stylesheet" href="../../../static/css/responsive.css?v=20260511125458">
+    <link rel="stylesheet" href="../../../static/css/print.css?v=20260511125458">
+    <link rel="stylesheet" href="../../../static/css/tip.css?v=20260511125458">
     
-<link rel="stylesheet" href="../../../static/css/document.css?v=20260511112948">
+<link rel="stylesheet" href="../../../static/css/document.css?v=20260511125458">
 <link rel="canonical" href="documents/QGW/Vienna_1177-1414_ready/1484.html">
 <meta name="citation_title" content="Nr. 1484 (1401 II 17)">
 <meta name="citation_collection" content="QGW II/1 (1177–1414)">
@@ -50,8 +50,6 @@
         <a href="../../../register/persons.html">Personen</a>
         
         <a href="../../../register/orgs.html">Organisationen</a>
-        
-        <a href="../../../register/places.html">Orte</a>
         
     </div>
 </div>
@@ -93,7 +91,7 @@
     </div>
 </div>
 
-                <a href="../../../korb.html" class="nav-basket" aria-label="Wissenskorb">
+                <a href="../../../korb.html" class="nav-basket" aria-label="Datenkorb">
                     <svg width="18" height="18" viewBox="0 0 18 18" fill="none" aria-hidden="true">
                         <path d="M3 5h12l-1.2 8.5a1 1 0 0 1-1 .85H5.2a1 1 0 0 1-1-.85L3 5z"
                               stroke="currentColor" stroke-width="1.4" fill="none"
@@ -140,7 +138,7 @@
                     
                     <span class="meta-pair">
                         <span class="meta-label">Quelle</span>
-                        <span class="meta-value" title="Quellen zur Geschichte der Stadt Wien, Bd. II/1, Nr. 1484">Quellen zur Geschichte der Stadt Wien, Bd. II/1, Nr. 1484</span>
+                        <span class="meta-value" data-hint="Quellen zur Geschichte der Stadt Wien, Bd. II/1, Nr. 1484">Quellen zur Geschichte der Stadt Wien, Bd. II/1, Nr. 1484</span>
                     </span>
                     
                 </div>
@@ -151,7 +149,7 @@
                     
                     <button type="button" class="legend-toggle"
                             data-layer="entities" aria-pressed="true"
-                            title="Entitäten ein-/ausblenden">
+                            data-hint="Entitäten ein-/ausblenden">
                         <span class="legend-toggle-dots">
                             <span class="legend-swatch swatch-person"></span><span class="legend-swatch swatch-org"></span><span class="legend-swatch swatch-place"></span>
                         </span>
@@ -160,7 +158,7 @@
                     
                     <button type="button" class="legend-toggle"
                             data-layer="functions" aria-pressed="true"
-                            title="Funktionsrollen ein-/ausblenden">
+                            data-hint="Funktionsrollen ein-/ausblenden">
                         <span class="legend-toggle-dots">
                             <span class="legend-swatch swatch-fn-issuer"></span><span class="legend-swatch swatch-fn-recipient"></span><span class="legend-swatch swatch-fn-witness"></span>
                         </span>
@@ -169,7 +167,7 @@
                     
                     <button type="button" class="legend-toggle"
                             data-layer="attributes" aria-pressed="true"
-                            title="Attribute ein-/ausblenden">
+                            data-hint="Attribute ein-/ausblenden">
                         <span class="legend-toggle-dots">
                             <span class="legend-swatch swatch-attr"></span><span class="legend-swatch swatch-add"></span>
                         </span>
@@ -178,7 +176,7 @@
                     
                     <button type="button" class="legend-toggle"
                             data-layer="triggers" aria-pressed="true"
-                            title="Dispositivformel ein-/ausblenden">
+                            data-hint="Dispositivformel ein-/ausblenden">
                         <span class="legend-toggle-dots">
                             <span class="legend-swatch swatch-trigger"></span>
                         </span>
@@ -190,21 +188,29 @@
                 <div class="doc-toolbar-actions">
                     <a class="toolbar-btn" href="../../../tei/QGW/Vienna_1177-1414_ready/1484.xml"
                        download="1484.xml"
-                       aria-label="TEI-XML herunterladen" title="TEI-XML herunterladen"><svg viewBox="0 0 16 16" width="16" height="16" aria-hidden="true"><path fill="none" stroke="currentColor" stroke-width="1.4" stroke-linecap="round" stroke-linejoin="round" d="M8 2v8m0 0l-3-3m3 3l3-3M3 13h10"/></svg></a>
+                       aria-label="TEI-XML herunterladen" data-hint="TEI-XML herunterladen"><svg viewBox="0 0 16 16" width="16" height="16" aria-hidden="true"><path fill="none" stroke="currentColor" stroke-width="1.4" stroke-linecap="round" stroke-linejoin="round" d="M8 2v8m0 0l-3-3m3 3l3-3M3 13h10"/></svg></a>
                     <button class="toolbar-btn" id="cite-toggle" aria-expanded="false"
-                            aria-label="Zitation kopieren" title="Zitation kopieren"><svg viewBox="0 0 16 16" width="16" height="16" aria-hidden="true"><rect x="4" y="2" width="8" height="11" rx="1" fill="none" stroke="currentColor" stroke-width="1.4"/><path d="M6 1.5h4a0.5 0.5 0 0 1 0.5 0.5v1a0.5 0.5 0 0 1-0.5 0.5H6a0.5 0.5 0 0 1-0.5-0.5V2A0.5 0.5 0 0 1 6 1.5z" fill="currentColor"/><path d="M6.5 6.5h3M6.5 8.5h3M6.5 10.5h2" stroke="currentColor" stroke-width="1" stroke-linecap="round"/></svg></button>
+                            aria-label="Zitation kopieren" data-hint="Zitation kopieren"><svg viewBox="0 0 16 16" width="16" height="16" aria-hidden="true"><rect x="4" y="2" width="8" height="11" rx="1" fill="none" stroke="currentColor" stroke-width="1.4"/><path d="M6 1.5h4a0.5 0.5 0 0 1 0.5 0.5v1a0.5 0.5 0 0 1-0.5 0.5H6a0.5 0.5 0 0 1-0.5-0.5V2A0.5 0.5 0 0 1 6 1.5z" fill="currentColor"/><path d="M6.5 6.5h3M6.5 8.5h3M6.5 10.5h2" stroke="currentColor" stroke-width="1" stroke-linecap="round"/></svg></button>
                     <div class="cite-popover hidden" id="cite-popover"></div>
+                    <span class="toolbar-basket-mount"
+                          data-basket-type="source"
+                          data-basket-id="1484"
+                          data-basket-label="1484"
+                          data-basket-url="documents/QGW/Vienna_1177-1414_ready/1484.html"
+                          data-basket-date="1401-02-17"
+                          data-basket-coll="QGW II/1 (1177–1414)"
+                          data-basket-regest="Peter der Egelseber, der riemer, purger ze Wienn, beurkundet seinen letzten Willen. Er schafft: 1. seiner Frau Agnesen: a) alles das erib, das sie zu einander gebracht haben b) sein Wohnhaus, das ihm…"></span>
                     
 <nav class="doc-paging doc-paging-inline" aria-label="Quellen-Navigation">
     
     <a href="../../../documents/QGW/Vienna_1177-1414_ready/1483.html" class="toolbar-btn doc-paging-prev"
        aria-label="Vorherige Quelle: Nr. 1483"
-       title="Vorherige Quelle: Nr. 1483"><svg viewBox="0 0 16 16" width="16" height="16" aria-hidden="true"><path fill="none" stroke="currentColor" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round" d="M10 3l-5 5 5 5"/></svg></a>
+       data-hint="Vorherige Quelle: Nr. 1483"><svg viewBox="0 0 16 16" width="16" height="16" aria-hidden="true"><path fill="none" stroke="currentColor" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round" d="M10 3l-5 5 5 5"/></svg></a>
     
     
     <a href="../../../documents/QGW/Vienna_1177-1414_ready/1485.html" class="toolbar-btn doc-paging-next"
        aria-label="Nächste Quelle: Nr. 1485"
-       title="Nächste Quelle: Nr. 1485"><svg viewBox="0 0 16 16" width="16" height="16" aria-hidden="true"><path fill="none" stroke="currentColor" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round" d="M6 3l5 5-5 5"/></svg></a>
+       data-hint="Nächste Quelle: Nr. 1485"><svg viewBox="0 0 16 16" width="16" height="16" aria-hidden="true"><path fill="none" stroke="currentColor" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round" d="M6 3l5 5-5 5"/></svg></a>
     
 </nav>
 
@@ -221,48 +227,48 @@
             
          <section class="tei-abstract"><h2 class="tei-section-head">Regest</h2>
             <p>
-               <span class="anno-event" data-ref="ev__QGW_II_I_1484"><span class="anno-fn anno-fn-issuer" data-role="issuer"><span class="fn-label">Aussteller*in</span><a class="anno-person" data-ref="pe__peter_egelseber_QGW_II_I_1484" title="Peter Egelseber der Egelseber [pe__peter_egelseber_QGW_II_I_1484]" href="../../../register/persons/pe__peter_egelseber_QGW_II_I_1484.html">Peter der Egelseber,
+               <span class="anno-event" data-ref="ev__QGW_II_I_1484"><span class="anno-fn anno-fn-issuer" data-role="issuer"><span class="fn-label">Aussteller*in</span><a class="anno-person" data-ref="pe__peter_egelseber_QGW_II_I_1484" data-hint="Peter Egelseber der Egelseber [pe__peter_egelseber_QGW_II_I_1484]" data-hint-type="Person" href="../../../register/persons/pe__peter_egelseber_QGW_II_I_1484.html">Peter der Egelseber,
                         der <span class="anno-attr anno-attr-prof">riemer</span>, <span class="anno-attr anno-attr-title">purger
                            ze Wienn</span>,</a></span>
                   <span class="anno-trigger">beurkundet seinen letzten Willen</span>. Er schafft: 1. seiner
-                     <span class="anno-fn anno-fn-recipient" data-role="recipient"><span class="fn-label">Empfänger*in</span><a class="anno-person" data-ref="pe__agnes_QGW_II_I_1484" title="Agnes Egelseberin [pe__agnes_QGW_II_I_1484]" href="../../../register/persons/pe__agnes_QGW_II_I_1484.html"><span class="anno-attr anno-attr-kin" data-corresp="pe__peter_egelseber_QGW_II_I_1484">Frau</span> Agnesen</a></span>: a) alles das erib, das sie zu
+                     <span class="anno-fn anno-fn-recipient" data-role="recipient"><span class="fn-label">Empfänger*in</span><a class="anno-person" data-ref="pe__agnes_QGW_II_I_1484" data-hint="Agnes Egelseberin [pe__agnes_QGW_II_I_1484]" data-hint-type="Person" href="../../../register/persons/pe__agnes_QGW_II_I_1484.html"><span class="anno-attr anno-attr-kin" data-corresp="pe__peter_egelseber_QGW_II_I_1484">Frau</span> Agnesen</a></span>: a) alles das erib, das sie zu
                   einander gebracht haben b) sein Wohnhaus, <span class="anno-event" data-ref="ev__QGW_II_I_1484_men_1">das ihm von seinen Eltern anerstorben war, mit
                      der Bestimmung, dass die jeweiligen Besitzer jährlich 14 dn. ewigs gelts den
                      geistlichen Frauen bei S. Jakob zur Abhaltung eines Jahrtages an sand Pertelmes
                      abent reichen, am Allerheiligentag 30 arme mensch verköstigen und jedem 1 dn.
                      geben sollen</span> 2. zu einer <span class="anno-fn anno-fn-recipient" data-role="recipient"><span class="fn-label">Empfänger*in</span>ewigen Messe hinz
-                        <a class="anno-org" data-ref="org__wien-st_stephan" title="St. Stephan (Pfarr- und Domkirche) (Kirche_Kapelle) [org__wien-st_stephan]" href="../../../register/orgs/org__wien-st_stephan.html">sand Jacob auf Unser Vraun
+                        <a class="anno-org" data-ref="org__wien-st_stephan" data-hint="St. Stephan (Pfarr- und Domkirche) (Kirche_Kapelle) [org__wien-st_stephan]" data-hint-type="Organisation" href="../../../register/orgs/org__wien-st_stephan.html">sand Jacob auf Unser Vraun
                         altar</a></span> seinen Weingarten ze Perchtolczstorf an dem Chunigundenperig
                   und di zwo tischstet auf dem Riemhaus in dem Vischhof ze Wienn 3. dass man seinen
                   Weingarten in dem Gotzhausperig verkaufen und von dem Erlöse 9 lb dn. umb ein
                   Romfart, 6 lb dn. umb ein Achvart und den Rest <span class="anno-fn anno-fn-recipient" data-role="recipient"><span class="fn-label">Empfänger*in</span>hinz
-                     sand <a class="anno-org" data-ref="org__wien-st_stephan" title="St. Stephan (Pfarr- und Domkirche) (Kirche_Kapelle) [org__wien-st_stephan]" href="../../../register/orgs/org__wien-st_stephan.html">Stephan ze Wienne</a>, hinz <a class="anno-org" data-ref="org__wien-dominikaner" title="Dominikaner (Prediger) Wien (Kloster_m) [org__wien-dominikaner]" href="../../../register/orgs/org__wien-dominikaner.html">den Predigern</a>, hinz <a class="anno-org" data-ref="org__wien-augustiner_eremiten" title="Augustinereremiten Wien (Kloster_m) [org__wien-augustiner_eremiten]" href="../../../register/orgs/org__wien-augustiner_eremiten.html">den Augustinern</a> und hinz
-                        <a class="anno-org" data-ref="org__wien-karmeliter" title="Karmeliter (Weissenbrüder) Wien (Kloster_m) [org__wien-karmeliter]" href="../../../register/orgs/org__wien-karmeliter.html">den Weissenprüdern</a></span>,
+                     sand <a class="anno-org" data-ref="org__wien-st_stephan" data-hint="St. Stephan (Pfarr- und Domkirche) (Kirche_Kapelle) [org__wien-st_stephan]" data-hint-type="Organisation" href="../../../register/orgs/org__wien-st_stephan.html">Stephan ze Wienne</a>, hinz <a class="anno-org" data-ref="org__wien-dominikaner" data-hint="Dominikaner (Prediger) Wien (Kloster_m) [org__wien-dominikaner]" data-hint-type="Organisation" href="../../../register/orgs/org__wien-dominikaner.html">den Predigern</a>, hinz <a class="anno-org" data-ref="org__wien-augustiner_eremiten" data-hint="Augustinereremiten Wien (Kloster_m) [org__wien-augustiner_eremiten]" data-hint-type="Organisation" href="../../../register/orgs/org__wien-augustiner_eremiten.html">den Augustinern</a> und hinz
+                        <a class="anno-org" data-ref="org__wien-karmeliter" data-hint="Karmeliter (Weissenbrüder) Wien (Kloster_m) [org__wien-karmeliter]" data-hint-type="Organisation" href="../../../register/orgs/org__wien-karmeliter.html">den Weissenprüdern</a></span>,
                   alles zu dem pau , geben soll 4. dass man seinen Weingarten auf dem Jeus
-                  verkaufen, von dem Erlöse <span class="anno-fn anno-fn-recipient" data-role="recipient"><span class="fn-label">Empfänger*in</span>seinen beiden <a class="anno-person" data-ref="pe__margarethe_QGW_II_I_1484" title="Margarethe [pe__margarethe_QGW_II_I_1484]" href="../../../register/persons/pe__margarethe_QGW_II_I_1484.html"><span class="anno-attr anno-attr-kin" data-corresp="pe__peter_egelseber_QGW_II_I_1484">Muhmen</span> junkfraun
-                        Margreten</a> 6 lb dn. und irer <a class="anno-person" data-ref="pe__anna_QGW_II_I_1484" title="Anna [pe__anna_QGW_II_I_1484]" href="../../../register/persons/pe__anna_QGW_II_I_1484.html"><span class="anno-attr anno-attr-kin" data-corresp="pe__peter_egelseber_QGW_II_I_1484"><span class="tei-add">Muhme</span></span>
+                  verkaufen, von dem Erlöse <span class="anno-fn anno-fn-recipient" data-role="recipient"><span class="fn-label">Empfänger*in</span>seinen beiden <a class="anno-person" data-ref="pe__margarethe_QGW_II_I_1484" data-hint="Margarethe [pe__margarethe_QGW_II_I_1484]" data-hint-type="Person" href="../../../register/persons/pe__margarethe_QGW_II_I_1484.html"><span class="anno-attr anno-attr-kin" data-corresp="pe__peter_egelseber_QGW_II_I_1484">Muhmen</span> junkfraun
+                        Margreten</a> 6 lb dn. und irer <a class="anno-person" data-ref="pe__anna_QGW_II_I_1484" data-hint="Anna [pe__anna_QGW_II_I_1484]" data-hint-type="Person" href="../../../register/persons/pe__anna_QGW_II_I_1484.html"><span class="anno-attr anno-attr-kin" data-corresp="pe__peter_egelseber_QGW_II_I_1484"><span class="tei-add">Muhme</span></span>
                         <span class="anno-attr anno-attr-kin" data-corresp="pe__margarethe_QGW_II_I_1484">swester</span> Annen</a></span> 6 lb dn. und den Rest armen Leuten
                   geben soll 5. dass man den stadel vor Kernertor verkaufen und von dem Erlöse in
-                  die <span class="anno-fn anno-fn-recipient" data-role="recipient"><span class="fn-label">Empfänger*in</span>dreu siechheuser hinz <a class="anno-org" data-ref="org__wien-st_johann_in_der_siechenals" title="St. Johannes in der Siechenals (Spital_Siechenhaus) [org__wien-st_johann_in_der_siechenals]" href="../../../register/orgs/org__wien-st_johann_in_der_siechenals.html">sand Johanns in der Siechen
-                        Alz/zz/z</a>, hinz <a class="anno-org" data-ref="org__wien-st_lazarus_siechenhaus" title="St. Lazarus (St. Marx) (Spital_Siechenhaus) [org__wien-st_lazarus_siechenhaus]" href="../../../register/orgs/org__wien-st_lazarus_siechenhaus.html">sand Marx</a>, hinz <a class="anno-org" data-ref="org__wien-st_hiob_zum_klagbaum" title="St. Hiob (Spital_Siechenhaus) [org__wien-st_hiob_zum_klagbaum]" href="../../../register/orgs/org__wien-st_hiob_zum_klagbaum.html">dem Chlagpaum</a> und in der <a class="anno-org" data-ref="org__wien-buergerspital" title="Wiener Bürgerspital (Spital_Siechenhaus) [org__wien-buergerspital]" href="../../../register/orgs/org__wien-buergerspital.html">bürger Spital</a> den Dürftigen ein Mahl und ein Bad ausrichten</span> soll
-                  6. <span class="anno-fn anno-fn-recipient" data-role="recipient"><span class="fn-label">Empfänger*in</span>hinz <a class="anno-org" data-ref="org__wien-st_jakob_auf_der_huelben" title="St. Jakob (auf der Hülben) Wien (Kloster_f) [org__wien-st_jakob_auf_der_huelben]" href="../../../register/orgs/org__wien-st_jakob_auf_der_huelben.html">sand Jacob</a> und hinz <a class="anno-org" data-ref="org__wien-st_hieronymus" title="St. Hieronymus Wien (Kloster_f) [org__wien-st_hieronymus]" href="../../../register/orgs/org__wien-st_hieronymus.html">sand Hieronymus</a></span> je einen
+                  die <span class="anno-fn anno-fn-recipient" data-role="recipient"><span class="fn-label">Empfänger*in</span>dreu siechheuser hinz <a class="anno-org" data-ref="org__wien-st_johann_in_der_siechenals" data-hint="St. Johannes in der Siechenals (Spital_Siechenhaus) [org__wien-st_johann_in_der_siechenals]" data-hint-type="Organisation" href="../../../register/orgs/org__wien-st_johann_in_der_siechenals.html">sand Johanns in der Siechen
+                        Alz/zz/z</a>, hinz <a class="anno-org" data-ref="org__wien-st_lazarus_siechenhaus" data-hint="St. Lazarus (St. Marx) (Spital_Siechenhaus) [org__wien-st_lazarus_siechenhaus]" data-hint-type="Organisation" href="../../../register/orgs/org__wien-st_lazarus_siechenhaus.html">sand Marx</a>, hinz <a class="anno-org" data-ref="org__wien-st_hiob_zum_klagbaum" data-hint="St. Hiob (Spital_Siechenhaus) [org__wien-st_hiob_zum_klagbaum]" data-hint-type="Organisation" href="../../../register/orgs/org__wien-st_hiob_zum_klagbaum.html">dem Chlagpaum</a> und in der <a class="anno-org" data-ref="org__wien-buergerspital" data-hint="Wiener Bürgerspital (Spital_Siechenhaus) [org__wien-buergerspital]" data-hint-type="Organisation" href="../../../register/orgs/org__wien-buergerspital.html">bürger Spital</a> den Dürftigen ein Mahl und ein Bad ausrichten</span> soll
+                  6. <span class="anno-fn anno-fn-recipient" data-role="recipient"><span class="fn-label">Empfänger*in</span>hinz <a class="anno-org" data-ref="org__wien-st_jakob_auf_der_huelben" data-hint="St. Jakob (auf der Hülben) Wien (Kloster_f) [org__wien-st_jakob_auf_der_huelben]" data-hint-type="Organisation" href="../../../register/orgs/org__wien-st_jakob_auf_der_huelben.html">sand Jacob</a> und hinz <a class="anno-org" data-ref="org__wien-st_hieronymus" data-hint="St. Hieronymus Wien (Kloster_f) [org__wien-st_hieronymus]" data-hint-type="Organisation" href="../../../register/orgs/org__wien-st_hieronymus.html">sand Hieronymus</a></span> je einen
                   Dreiling Wein, armen Leuten den Erlös für den Verkauf seines langen graben seidels
                   mit dem fuchsein underzu/eg 7. dass das Geld, das sein swecher seliger bei ihm
                   hinterlegt hat, noch so lange liegen bleiben solle, bis dessen Kinder, denen es
                   gehört, vogtper werden 8. von seiner fahrenden Habe: a) 2 lb dn., dass man davon
-                  ihn und seine Mutter in das <span class="anno-fn anno-fn-recipient" data-role="recipient"><span class="fn-label">Empfänger*in</span><a class="anno-org" data-ref="org__wien-st_stephan" title="St. Stephan (Pfarr- und Domkirche) (Kirche_Kapelle) [org__wien-st_stephan]" href="../../../register/orgs/org__wien-st_stephan.html">Todtenbuch bei S. Stephan</a></span> eintragen
-                  lasse b) <span class="anno-fn anno-fn-recipient" data-role="recipient"><span class="fn-label">Empfänger*in</span><a class="anno-person" data-ref="pe__niklas_pipping_QGW_II_I_1484" title="Niklas Pipping [pe__niklas_pipping_QGW_II_I_1484]" href="../../../register/persons/pe__niklas_pipping_QGW_II_I_1484.html">Niclasen dem Pipping</a></span> 14 dn.
-                  c) den <span class="anno-fn anno-fn-recipient" data-role="recipient"><span class="fn-label">Empfänger*in</span><a class="anno-org" data-ref="org__wien-st_stephan" title="St. Stephan (Pfarr- und Domkirche) (Kirche_Kapelle) [org__wien-st_stephan]" href="../../../register/orgs/org__wien-st_stephan.html">achtherren hinz sand Stephan</a></span> 2 lb dn. d) seinem <span class="anno-fn anno-fn-recipient" data-role="recipient"><span class="fn-label">Empfänger*in</span><a class="anno-person" data-ref="pe__niklas_QGW_II_I_1484" title="Niklas des schneiders Sohn [pe__niklas_QGW_II_I_1484]" href="../../../register/persons/pe__niklas_QGW_II_I_1484.html"><span class="anno-attr anno-attr-occ" data-corresp="pe__peter_egelseber_QGW_II_I_1484">Beichtiger</span> Niclasen, des sneider sun,</a></span> 60 dn. e) für
-                  30 Messen bei <span class="anno-fn anno-fn-recipient" data-role="recipient"><span class="fn-label">Empfänger*in</span><a class="anno-org" data-ref="org__wien-st_jakob_auf_der_huelben" title="St. Jakob (auf der Hülben) Wien (Kloster_f) [org__wien-st_jakob_auf_der_huelben]" href="../../../register/orgs/org__wien-st_jakob_auf_der_huelben.html">S. Jakob</a></span> 30 sh. dn. f) 5
-                  lb dn. seinen <span class="anno-fn anno-fn-recipient" data-role="recipient"><span class="fn-label">Empfänger*in</span><a class="anno-person" data-ref="pe__niklas_weiss_QGW_II_I_1484" title="Niklas Weiss [pe__niklas_weiss_QGW_II_I_1484]" href="../../../register/persons/pe__niklas_weiss_QGW_II_I_1484.html"><span class="anno-attr anno-attr-rep" data-corresp="pe__peter_egelseber_QGW_II_I_1484">Geschäftsherren</span>,
-                        als welche er Niclasen den Weissen</a> und <a class="anno-person" data-ref="pe__konrad_hainpekch_QGW_II_I_1484" title="Konrad Hainpekch [pe__konrad_hainpekch_QGW_II_I_1484]" href="../../../register/persons/pe__konrad_hainpekch_QGW_II_I_1484.html"><span class="anno-attr anno-attr-rep" data-corresp="pe__peter_egelseber_QGW_II_I_1484"><span class="tei-add">Geschäftsherren</span></span>Chunraten den
+                  ihn und seine Mutter in das <span class="anno-fn anno-fn-recipient" data-role="recipient"><span class="fn-label">Empfänger*in</span><a class="anno-org" data-ref="org__wien-st_stephan" data-hint="St. Stephan (Pfarr- und Domkirche) (Kirche_Kapelle) [org__wien-st_stephan]" data-hint-type="Organisation" href="../../../register/orgs/org__wien-st_stephan.html">Todtenbuch bei S. Stephan</a></span> eintragen
+                  lasse b) <span class="anno-fn anno-fn-recipient" data-role="recipient"><span class="fn-label">Empfänger*in</span><a class="anno-person" data-ref="pe__niklas_pipping_QGW_II_I_1484" data-hint="Niklas Pipping [pe__niklas_pipping_QGW_II_I_1484]" data-hint-type="Person" href="../../../register/persons/pe__niklas_pipping_QGW_II_I_1484.html">Niclasen dem Pipping</a></span> 14 dn.
+                  c) den <span class="anno-fn anno-fn-recipient" data-role="recipient"><span class="fn-label">Empfänger*in</span><a class="anno-org" data-ref="org__wien-st_stephan" data-hint="St. Stephan (Pfarr- und Domkirche) (Kirche_Kapelle) [org__wien-st_stephan]" data-hint-type="Organisation" href="../../../register/orgs/org__wien-st_stephan.html">achtherren hinz sand Stephan</a></span> 2 lb dn. d) seinem <span class="anno-fn anno-fn-recipient" data-role="recipient"><span class="fn-label">Empfänger*in</span><a class="anno-person" data-ref="pe__niklas_QGW_II_I_1484" data-hint="Niklas des schneiders Sohn [pe__niklas_QGW_II_I_1484]" data-hint-type="Person" href="../../../register/persons/pe__niklas_QGW_II_I_1484.html"><span class="anno-attr anno-attr-occ" data-corresp="pe__peter_egelseber_QGW_II_I_1484">Beichtiger</span> Niclasen, des sneider sun,</a></span> 60 dn. e) für
+                  30 Messen bei <span class="anno-fn anno-fn-recipient" data-role="recipient"><span class="fn-label">Empfänger*in</span><a class="anno-org" data-ref="org__wien-st_jakob_auf_der_huelben" data-hint="St. Jakob (auf der Hülben) Wien (Kloster_f) [org__wien-st_jakob_auf_der_huelben]" data-hint-type="Organisation" href="../../../register/orgs/org__wien-st_jakob_auf_der_huelben.html">S. Jakob</a></span> 30 sh. dn. f) 5
+                  lb dn. seinen <span class="anno-fn anno-fn-recipient" data-role="recipient"><span class="fn-label">Empfänger*in</span><a class="anno-person" data-ref="pe__niklas_weiss_QGW_II_I_1484" data-hint="Niklas Weiss [pe__niklas_weiss_QGW_II_I_1484]" data-hint-type="Person" href="../../../register/persons/pe__niklas_weiss_QGW_II_I_1484.html"><span class="anno-attr anno-attr-rep" data-corresp="pe__peter_egelseber_QGW_II_I_1484">Geschäftsherren</span>,
+                        als welche er Niclasen den Weissen</a> und <a class="anno-person" data-ref="pe__konrad_hainpekch_QGW_II_I_1484" data-hint="Konrad Hainpekch [pe__konrad_hainpekch_QGW_II_I_1484]" data-hint-type="Person" href="../../../register/persons/pe__konrad_hainpekch_QGW_II_I_1484.html"><span class="anno-attr anno-attr-rep" data-corresp="pe__peter_egelseber_QGW_II_I_1484"><span class="tei-add">Geschäftsherren</span></span>Chunraten den
                      Hainspekchen</a></span> bestellt.</span>
             </p>
          </section>
          <section class="tei-seal"><h2 class="tei-section-head">Siegelbeschreibung</h2>
             <p><span class="anno-event" data-ref="ev__QGW_II_I_1484"><span class="anno-fn anno-fn-witness" data-role="witness"><span class="fn-label">Zeug*in</span>Besiegelt mit
-                     den Siegeln der <a class="anno-person" data-ref="pe__friedrich_dietram_QGW_II_I_1026" title="Friedrich Dietram [pe__friedrich_dietram_QGW_II_I_1026]" href="../../../register/persons/pe__friedrich_dietram_QGW_II_I_1026.html"><span class="anno-attr anno-attr-title">Wiener Bürger</span> Fridreichs des
-                        Dietrams</a> und <a class="anno-person" data-ref="pe__michael_menschein_QGW_II_I_1218" title="Michael Menschein [pe__michael_menschein_QGW_II_I_1218]" href="../../../register/persons/pe__michael_menschein_QGW_II_I_1218.html"><span class="anno-attr anno-attr-title"><span class="tei-add">Wiener
+                     den Siegeln der <a class="anno-person" data-ref="pe__friedrich_dietram_QGW_II_I_1026" data-hint="Friedrich Dietram [pe__friedrich_dietram_QGW_II_I_1026]" data-hint-type="Person" href="../../../register/persons/pe__friedrich_dietram_QGW_II_I_1026.html"><span class="anno-attr anno-attr-title">Wiener Bürger</span> Fridreichs des
+                        Dietrams</a> und <a class="anno-person" data-ref="pe__michael_menschein_QGW_II_I_1218" data-hint="Michael Menschein [pe__michael_menschein_QGW_II_I_1218]" data-hint-type="Person" href="../../../register/persons/pe__michael_menschein_QGW_II_I_1218.html"><span class="anno-attr anno-attr-title"><span class="tei-add">Wiener
                               Bürger</span></span> Michels des Mênscheins</a>.</span></span>
             </p>
          </section>
@@ -325,7 +331,7 @@
          dem TEI in mehreren Untertabellen, Personen/Orgs/Orte,
          Ereignisse, Dispositivformeln, Editorische Ergaenzungen. Wird
          per JS aus den entsprechenden Spans im Body aufgebaut. -->
-    <section class="annotations-view" id="factoid-view" aria-label="Annotationen">
+    <section class="annotations-view" id="annotations-view" aria-label="Annotationen">
         <header class="annotations-header">
             <h2 class="annotations-title">Annotationen</h2>
             <span class="annotations-summary"></span>
@@ -371,13 +377,14 @@
         </div>
     </footer>
 
-    <script src="../../../static/js/core.js?v=20260511112948"></script>
-    <script src="../../../static/js/provenance.js?v=20260511112948"></script>
-    <script src="../../../static/js/basket.js?v=20260511112948"></script>
+    <script src="../../../static/js/core.js?v=20260511125458"></script>
+    <script src="../../../static/js/tip.js?v=20260511125458"></script>
+    <script src="../../../static/js/hint.js?v=20260511125458"></script>
+    <script src="../../../static/js/basket.js?v=20260511125458"></script>
     
-<script src="../../../static/js/tooltips.js?v=20260511112948"></script>
-<script src="../../../static/js/facsimile.js?v=20260511112948"></script>
-<script src="../../../static/js/document.js?v=20260511112948"></script>
+<script src="../../../static/js/facsimile.js?v=20260511125458"></script>
+<script src="../../../static/js/document.js?v=20260511125458"></script>
+<script src="../../../static/js/basket-mount.js?v=20260511125458"></script>
 
 </body>
 </html>

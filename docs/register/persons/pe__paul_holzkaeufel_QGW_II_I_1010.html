@@ -3,22 +3,22 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <meta http-equiv="Content-Security-Policy" content="default-src 'self'; script-src 'self'; style-src 'self'; font-src 'self'; img-src 'self' data: https://images.monasterium.net https://www.monasterium.net; connect-src 'self'; frame-ancestors 'none'; base-uri 'self'; form-action 'self'; upgrade-insecure-requests">
+    <meta http-equiv="Content-Security-Policy" content="default-src 'self'; script-src 'self'; style-src 'self'; font-src 'self'; img-src 'self' data: https://images.monasterium.net https://www.monasterium.net; connect-src 'self'; base-uri 'self'; form-action 'self'; upgrade-insecure-requests">
     <meta name="referrer" content="strict-origin-when-cross-origin">
     <meta http-equiv="Permissions-Policy" content="camera=(), microphone=(), geolocation=(), interest-cohort=()">
     <title>Paul Holzkäufel, Datenbank</title>
     <link rel="preload" as="font" type="font/woff2" crossorigin
           href="../../static/fonts/inter-400-latin.woff2">
-    <link rel="stylesheet" href="../../static/css/fonts.css?v=20260511112948">
-    <link rel="stylesheet" href="../../static/css/tokens.css?v=20260511112948">
-    <link rel="stylesheet" href="../../static/css/base.css?v=20260511112948">
-    <link rel="stylesheet" href="../../static/css/components.css?v=20260511112948">
-    <link rel="stylesheet" href="../../static/css/responsive.css?v=20260511112948">
-    <link rel="stylesheet" href="../../static/css/print.css?v=20260511112948">
-    <link rel="stylesheet" href="../../static/css/provenance.css?v=20260511112948">
+    <link rel="stylesheet" href="../../static/css/fonts.css?v=20260511125458">
+    <link rel="stylesheet" href="../../static/css/tokens.css?v=20260511125458">
+    <link rel="stylesheet" href="../../static/css/base.css?v=20260511125458">
+    <link rel="stylesheet" href="../../static/css/components.css?v=20260511125458">
+    <link rel="stylesheet" href="../../static/css/responsive.css?v=20260511125458">
+    <link rel="stylesheet" href="../../static/css/print.css?v=20260511125458">
+    <link rel="stylesheet" href="../../static/css/tip.css?v=20260511125458">
     
-<link rel="stylesheet" href="../../static/css/document.css?v=20260511112948">
-<link rel="stylesheet" href="../../static/css/person.css?v=20260511112948">
+<link rel="stylesheet" href="../../static/css/document.css?v=20260511125458">
+<link rel="stylesheet" href="../../static/css/person.css?v=20260511125458">
 
 </head>
 <body data-root-path="../.."
@@ -48,8 +48,6 @@
         <a href="../../register/persons.html">Personen</a>
         
         <a href="../../register/orgs.html">Organisationen</a>
-        
-        <a href="../../register/places.html">Orte</a>
         
     </div>
 </div>
@@ -91,7 +89,7 @@
     </div>
 </div>
 
-                <a href="../../korb.html" class="nav-basket" aria-label="Wissenskorb">
+                <a href="../../korb.html" class="nav-basket" aria-label="Datenkorb">
                     <svg width="18" height="18" viewBox="0 0 18 18" fill="none" aria-hidden="true">
                         <path d="M3 5h12l-1.2 8.5a1 1 0 0 1-1 .85H5.2a1 1 0 0 1-1-.85L3 5z"
                               stroke="currentColor" stroke-width="1.4" fill="none"
@@ -112,11 +110,23 @@
 
     <div class="person-toolbar">
         <div class="person-toolbar-inner">
-            <nav class="person-breadcrumb" aria-label="Position">
-                <a href="../../register/persons.html">Personenregister</a>
-                <span class="bc-sep">&rsaquo;</span>
-                <span class="bc-doc"><strong>Paul Holzkäufel</strong></span>
-            </nav>
+            <div class="person-toolbar-row">
+                <nav class="person-breadcrumb" aria-label="Position">
+                    <a href="../../register/persons.html">Personenregister</a>
+                    <span class="bc-sep">&rsaquo;</span>
+                    <span class="bc-doc"><strong>Paul Holzkäufel</strong></span>
+                </nav>
+                <div class="person-toolbar-actions">
+                    <span class="toolbar-basket-mount"
+                          data-basket-type="person"
+                          data-basket-id="pe__paul_holzkaeufel_QGW_II_I_1010"
+                          data-basket-label="Paul Holzkäufel"
+                          data-basket-url="register/persons/pe__paul_holzkaeufel_QGW_II_I_1010.html"
+                          data-basket-sex="m"
+                          data-basket-active-min="1367"
+                          data-basket-active-max="1402"></span>
+                </div>
+            </div>
             <div class="person-toolbar-meta">
                 <span class="meta-pair">
                     <span class="meta-label">Geschlecht</span>
@@ -124,11 +134,41 @@
                 </span>
                 
                 <span class="meta-pair">
-                    <span class="meta-label">Belegt</span>
+                    <span class="meta-label">Belegt
+<span class="tip-wrap">
+    <button type="button" class="tip-trigger tip-trigger--icon"
+            aria-expanded="false" aria-haspopup="dialog"
+            aria-controls="person-belegt"
+            data-tip="person-belegt"
+            aria-label="Definition: Beleg-Zeitraum">
+        <svg width="13" height="13" viewBox="0 0 16 16" aria-hidden="true">
+            <circle cx="8" cy="8" r="7" stroke="currentColor" stroke-width="1.4" fill="none"/>
+            <text x="8" y="11.6" text-anchor="middle" font-size="9.5" font-weight="700"
+                  fill="currentColor" font-family="Georgia, serif">i</text>
+        </svg>
+    </button>
+    <aside class="tip-popover tip-popover--glossary"
+           id="person-belegt" role="dialog" aria-hidden="true"
+           aria-label="Definition: Beleg-Zeitraum">
+        <header class="tip-head">
+            <h3 class="tip-title">Beleg-Zeitraum</h3>
+            <button type="button" class="tip-close" aria-label="Schlie&szlig;en">&times;</button>
+        </header>
+        <div class="tip-body">
+            <p>Erste und letzte Datierung einer Quelle, in der die Person erscheint. Bei einzelnem Beleg wird nur ein Jahr angegeben.</p>
+            
+        </div>
+    </aside>
+</span>
+</span>
                     <span class="meta-value">1367 bis 1402</span>
                 </span>
                 
                 
+                <span class="meta-pair">
+                    <span class="meta-label">Quellen</span>
+                    <span class="meta-value">74</span>
+                </span>
                 <span class="meta-pair person-id-pair">
                     <span class="meta-label">ID</span>
                     <code class="meta-value person-id">pe__paul_holzkaeufel_QGW_II_I_1010</code>
@@ -145,10 +185,11 @@
             
         </h1>
         
+        
         <p class="person-note">Wiener Bürger, Judenrichter, Ratsherr und Bürgermeister, 1. Gem. Christine, weitere (letzte?) Gemahlin Elisabeth, frühere Gemahlin des Heinrich vom Steg</p>
         
         
-        <p class="person-titles">
+        <p class="person-titles" data-collapsible="22">
             <span class="pt-label">In den Quellen genannt als</span>
             <span class="pt-chip">hern</span><span class="pt-chip">her</span><span class="pt-chip">erbern|hern</span><span class="pt-chip">prouidos viros</span>
         </p>
@@ -158,7 +199,44 @@
             <a class="ext-link" href="https://www.wienwiki.at/?curid=2913" target="_blank" rel="noopener noreferrer">Wien-Wiki: Paul Holzkäuffel</a>
         </p>
         
+        
+        <p class="person-extlinks">
+            
+            <a class="ext-link" href="https://www.geschichtewiki.wien.gv.at/Special:URIResolver/?curid=2913" target="_blank" rel="noopener noreferrer">Authority-Eintrag</a>
+            
+        </p>
+        
     </header>
+
+    
+    <section class="role-strip" aria-label="Rollen in Rechtsgeschäften">
+        <h2 class="role-strip-title">Rollen in Rechtsgeschäften</h2>
+        <div class="role-strip-cells">
+            
+            <div class="role-cell role-cell-issuer">
+                <span class="role-cell-count">13</span>
+                <span class="role-cell-label">Aussteller*in</span>
+            </div>
+            
+            <div class="role-cell role-cell-recipient">
+                <span class="role-cell-count">17</span>
+                <span class="role-cell-label">Empfänger*in</span>
+            </div>
+            
+            <div class="role-cell role-cell-witness">
+                <span class="role-cell-count">12</span>
+                <span class="role-cell-label">Zeuge / Siegler*in</span>
+            </div>
+            
+            <div class="role-cell role-cell-other">
+                <span class="role-cell-count">36</span>
+                <span class="role-cell-label">Sonstige</span>
+            </div>
+            
+        </div>
+        <p class="role-strip-hint">Summe Rollen-Belegungen: 78. Mehrfach-Rollen pro Quelle sind möglich.</p>
+    </section>
+    
 
     
 
@@ -175,6 +253,7 @@
                 <span class="rel-block-count">10</span>
                 <span class="rel-block-hint">Verwandtschaftsverhältnisse, wie sie in den Quellen explizit benannt werden.</span>
             </header>
+            
             <table class="rel-table">
                 <thead>
                     <tr>
@@ -195,7 +274,7 @@
                         <td class="rel-col-label"><em>Hausfrau</em></td>
                         <td class="rel-col-perspective">
                             
-                                Christine Holzkäufelin → Paul Holzkäufel
+                                Christine Holzkäufelin &rsaquo; Paul Holzkäufel
                             
                         </td>
                         <td class="rel-col-source">
@@ -214,7 +293,7 @@
                         <td class="rel-col-label"><em>Hausfrau</em></td>
                         <td class="rel-col-perspective">
                             
-                                Christine Holzkäufelin → Paul Holzkäufel
+                                Christine Holzkäufelin &rsaquo; Paul Holzkäufel
                             
                         </td>
                         <td class="rel-col-source">
@@ -233,7 +312,7 @@
                         <td class="rel-col-label"><em>Hausfrau</em></td>
                         <td class="rel-col-perspective">
                             
-                                Christine Holzkäufelin → Paul Holzkäufel
+                                Christine Holzkäufelin &rsaquo; Paul Holzkäufel
                             
                         </td>
                         <td class="rel-col-source">
@@ -252,7 +331,7 @@
                         <td class="rel-col-label"><em>eleichen</em></td>
                         <td class="rel-col-perspective">
                             
-                                Christine Holzkäufelin → Paul Holzkäufel
+                                Christine Holzkäufelin &rsaquo; Paul Holzkäufel
                             
                         </td>
                         <td class="rel-col-source">
@@ -271,7 +350,7 @@
                         <td class="rel-col-label"><em>Hausfrau</em></td>
                         <td class="rel-col-perspective">
                             
-                                Christine Holzkäufelin → Paul Holzkäufel
+                                Christine Holzkäufelin &rsaquo; Paul Holzkäufel
                             
                         </td>
                         <td class="rel-col-source">
@@ -290,7 +369,7 @@
                         <td class="rel-col-label"><em>Hausfrau</em></td>
                         <td class="rel-col-perspective">
                             
-                                Elisabeth Holzkäufelin → Paul Holzkäufel
+                                Elisabeth Holzkäufelin &rsaquo; Paul Holzkäufel
                             
                         </td>
                         <td class="rel-col-source">
@@ -309,7 +388,7 @@
                         <td class="rel-col-label"><em>Sohne</em></td>
                         <td class="rel-col-perspective">
                             
-                                Urban Holzkäufel → Paul Holzkäufel
+                                Urban Holzkäufel &rsaquo; Paul Holzkäufel
                             
                         </td>
                         <td class="rel-col-source">
@@ -328,7 +407,7 @@
                         <td class="rel-col-label"><em>Hausfrau</em></td>
                         <td class="rel-col-perspective">
                             
-                                Elisabeth Holzkäufelin → Paul Holzkäufel
+                                Elisabeth Holzkäufelin &rsaquo; Paul Holzkäufel
                             
                         </td>
                         <td class="rel-col-source">
@@ -347,7 +426,7 @@
                         <td class="rel-col-label"><em>Schwager</em></td>
                         <td class="rel-col-perspective">
                             
-                                Paul Holzkäufel → Leonhard Poll Poll
+                                Paul Holzkäufel &rsaquo; Leonhard Poll Poll
                             
                         </td>
                         <td class="rel-col-source">
@@ -366,7 +445,7 @@
                         <td class="rel-col-label"><em>[hawsfraw]</em></td>
                         <td class="rel-col-perspective">
                             
-                                Elisabeth vom Steg → Paul Holzkäufel
+                                Elisabeth vom Steg &rsaquo; Paul Holzkäufel
                             
                         </td>
                         <td class="rel-col-source">
@@ -392,6 +471,7 @@
                 <span class="rel-block-count">10</span>
                 <span class="rel-block-hint">Stellvertretungs-Beziehungen, z. B. handelt eine Person an Stelle einer anderen.</span>
             </header>
+            
             <table class="rel-table">
                 <thead>
                     <tr>
@@ -412,7 +492,7 @@
                         <td class="rel-col-label"><em>Ausrichter</em></td>
                         <td class="rel-col-perspective">
                             
-                                Paul Holzkäufel → Leonhard Poll Poll
+                                Paul Holzkäufel &rsaquo; Leonhard Poll Poll
                             
                         </td>
                         <td class="rel-col-source">
@@ -431,7 +511,7 @@
                         <td class="rel-col-label"><em>Geschäftsvollstrecker</em></td>
                         <td class="rel-col-perspective">
                             
-                                Paul Holzkäufel → Leonhard Poll Poll
+                                Paul Holzkäufel &rsaquo; Leonhard Poll Poll
                             
                         </td>
                         <td class="rel-col-source">
@@ -450,7 +530,7 @@
                         <td class="rel-col-label"><em>ausrichter des geschefts</em></td>
                         <td class="rel-col-perspective">
                             
-                                Paul Holzkäufel → Leonhard Poll Poll
+                                Paul Holzkäufel &rsaquo; Leonhard Poll Poll
                             
                         </td>
                         <td class="rel-col-source">
@@ -469,7 +549,7 @@
                         <td class="rel-col-label"><em>Geschäftsherren</em></td>
                         <td class="rel-col-perspective">
                             
-                                Paul Holzkäufel → Leonhard Poll Poll
+                                Paul Holzkäufel &rsaquo; Leonhard Poll Poll
                             
                         </td>
                         <td class="rel-col-source">
@@ -488,7 +568,7 @@
                         <td class="rel-col-label"><em>Geschäftsvollstrecker</em></td>
                         <td class="rel-col-perspective">
                             
-                                Paul Holzkäufel → Leonhard Poll Poll
+                                Paul Holzkäufel &rsaquo; Leonhard Poll Poll
                             
                         </td>
                         <td class="rel-col-source">
@@ -507,7 +587,7 @@
                         <td class="rel-col-label"><em>Geschäftsvollstrecker</em></td>
                         <td class="rel-col-perspective">
                             
-                                Paul Holzkäufel → Leonhard Poll Poll
+                                Paul Holzkäufel &rsaquo; Leonhard Poll Poll
                             
                         </td>
                         <td class="rel-col-source">
@@ -526,7 +606,7 @@
                         <td class="rel-col-label"><em>Geschäftsvollstrecker</em></td>
                         <td class="rel-col-perspective">
                             
-                                Paul Holzkäufel → Leonhard Poll Poll
+                                Paul Holzkäufel &rsaquo; Leonhard Poll Poll
                             
                         </td>
                         <td class="rel-col-source">
@@ -545,7 +625,7 @@
                         <td class="rel-col-label"><em>Geschäftsvollstrecker</em></td>
                         <td class="rel-col-perspective">
                             
-                                Paul Holzkäufel → Leonhard Poll Poll
+                                Paul Holzkäufel &rsaquo; Leonhard Poll Poll
                             
                         </td>
                         <td class="rel-col-source">
@@ -564,7 +644,7 @@
                         <td class="rel-col-label"><em>Geschäftsvollstrecker</em></td>
                         <td class="rel-col-perspective">
                             
-                                Paul Holzkäufel → Leonhard Poll Poll
+                                Paul Holzkäufel &rsaquo; Leonhard Poll Poll
                             
                         </td>
                         <td class="rel-col-source">
@@ -583,7 +663,7 @@
                         <td class="rel-col-label"><em>executores vero et fideycommissarios</em></td>
                         <td class="rel-col-perspective">
                             
-                                Paul Holzkäufel → Peter
+                                Paul Holzkäufel &rsaquo; Peter
                             
                         </td>
                         <td class="rel-col-source">
@@ -606,7 +686,13 @@
                 <span class="rel-block-count">67</span>
                 <span class="rel-block-hint">Berufs- oder Amtsbezeichnung in Bezug auf eine Institution.</span>
             </header>
-            <table class="rel-table">
+            
+            <div class="table-filter">
+                <input type="search" class="table-filter-input" data-target="rel" placeholder="In der Tabelle filtern&hellip;" aria-label="In der Tabelle filtern">
+                <span class="table-filter-status"></span>
+            </div>
+            
+            <table class="rel-table" data-truncate-at="50">
                 <thead>
                     <tr>
                         <th scope="col" class="rel-col-other">Institution</th>
@@ -626,7 +712,7 @@
                         <td class="rel-col-label"><em>Bürgermeisters</em></td>
                         <td class="rel-col-perspective">
                             
-                                Paul Holzkäufel → Wien
+                                Paul Holzkäufel &rsaquo; Wien
                             
                         </td>
                         <td class="rel-col-source">
@@ -645,7 +731,7 @@
                         <td class="rel-col-label"><em>purgermaister</em></td>
                         <td class="rel-col-perspective">
                             
-                                Paul Holzkäufel → Wien
+                                Paul Holzkäufel &rsaquo; Wien
                             
                         </td>
                         <td class="rel-col-source">
@@ -664,7 +750,7 @@
                         <td class="rel-col-label"><em>purgermaister</em></td>
                         <td class="rel-col-perspective">
                             
-                                Paul Holzkäufel → Wien
+                                Paul Holzkäufel &rsaquo; Wien
                             
                         </td>
                         <td class="rel-col-source">
@@ -683,7 +769,7 @@
                         <td class="rel-col-label"><em>purgermaister</em></td>
                         <td class="rel-col-perspective">
                             
-                                Paul Holzkäufel → Wien
+                                Paul Holzkäufel &rsaquo; Wien
                             
                         </td>
                         <td class="rel-col-source">
@@ -702,7 +788,7 @@
                         <td class="rel-col-label"><em>purgermaister</em></td>
                         <td class="rel-col-perspective">
                             
-                                Paul Holzkäufel → Wien
+                                Paul Holzkäufel &rsaquo; Wien
                             
                         </td>
                         <td class="rel-col-source">
@@ -721,7 +807,7 @@
                         <td class="rel-col-label"><em>Bürgermeister</em></td>
                         <td class="rel-col-perspective">
                             
-                                Paul Holzkäufel → Wien
+                                Paul Holzkäufel &rsaquo; Wien
                             
                         </td>
                         <td class="rel-col-source">
@@ -740,7 +826,7 @@
                         <td class="rel-col-label"><em>purgermaister</em></td>
                         <td class="rel-col-perspective">
                             
-                                Paul Holzkäufel → Wien
+                                Paul Holzkäufel &rsaquo; Wien
                             
                         </td>
                         <td class="rel-col-source">
@@ -759,7 +845,7 @@
                         <td class="rel-col-label"><em>Bürgermeisters</em></td>
                         <td class="rel-col-perspective">
                             
-                                Paul Holzkäufel → Wien
+                                Paul Holzkäufel &rsaquo; Wien
                             
                         </td>
                         <td class="rel-col-source">
@@ -778,7 +864,7 @@
                         <td class="rel-col-label"><em>Bürgermeisters</em></td>
                         <td class="rel-col-perspective">
                             
-                                Paul Holzkäufel → Wien
+                                Paul Holzkäufel &rsaquo; Wien
                             
                         </td>
                         <td class="rel-col-source">
@@ -797,7 +883,7 @@
                         <td class="rel-col-label"><em>Bürgermeisters</em></td>
                         <td class="rel-col-perspective">
                             
-                                Paul Holzkäufel → Wien
+                                Paul Holzkäufel &rsaquo; Wien
                             
                         </td>
                         <td class="rel-col-source">
@@ -816,7 +902,7 @@
                         <td class="rel-col-label"><em>Bürgermeisters</em></td>
                         <td class="rel-col-perspective">
                             
-                                Paul Holzkäufel → Wien
+                                Paul Holzkäufel &rsaquo; Wien
                             
                         </td>
                         <td class="rel-col-source">
@@ -835,7 +921,7 @@
                         <td class="rel-col-label"><em>Bürgermeisters</em></td>
                         <td class="rel-col-perspective">
                             
-                                Paul Holzkäufel → Wien
+                                Paul Holzkäufel &rsaquo; Wien
                             
                         </td>
                         <td class="rel-col-source">
@@ -854,7 +940,7 @@
                         <td class="rel-col-label"><em>purgermaister</em></td>
                         <td class="rel-col-perspective">
                             
-                                Paul Holzkäufel → Wien
+                                Paul Holzkäufel &rsaquo; Wien
                             
                         </td>
                         <td class="rel-col-source">
@@ -873,7 +959,7 @@
                         <td class="rel-col-label"><em>Bürgermeisters</em></td>
                         <td class="rel-col-perspective">
                             
-                                Paul Holzkäufel → Wien
+                                Paul Holzkäufel &rsaquo; Wien
                             
                         </td>
                         <td class="rel-col-source">
@@ -892,7 +978,7 @@
                         <td class="rel-col-label"><em>purgermaister</em></td>
                         <td class="rel-col-perspective">
                             
-                                Paul Holzkäufel → Wien
+                                Paul Holzkäufel &rsaquo; Wien
                             
                         </td>
                         <td class="rel-col-source">
@@ -911,7 +997,7 @@
                         <td class="rel-col-label"><em>Bürgermeisters</em></td>
                         <td class="rel-col-perspective">
                             
-                                Paul Holzkäufel → Wien
+                                Paul Holzkäufel &rsaquo; Wien
                             
                         </td>
                         <td class="rel-col-source">
@@ -930,7 +1016,7 @@
                         <td class="rel-col-label"><em>Bürgermeisters</em></td>
                         <td class="rel-col-perspective">
                             
-                                Paul Holzkäufel → Wien
+                                Paul Holzkäufel &rsaquo; Wien
                             
                         </td>
                         <td class="rel-col-source">
@@ -949,7 +1035,7 @@
                         <td class="rel-col-label"><em>Bürgermeisters</em></td>
                         <td class="rel-col-perspective">
                             
-                                Paul Holzkäufel → Wien
+                                Paul Holzkäufel &rsaquo; Wien
                             
                         </td>
                         <td class="rel-col-source">
@@ -968,7 +1054,7 @@
                         <td class="rel-col-label"><em>Bürgermeisters</em></td>
                         <td class="rel-col-perspective">
                             
-                                Paul Holzkäufel → Wien
+                                Paul Holzkäufel &rsaquo; Wien
                             
                         </td>
                         <td class="rel-col-source">
@@ -987,7 +1073,7 @@
                         <td class="rel-col-label"><em>Bürgermeisters</em></td>
                         <td class="rel-col-perspective">
                             
-                                Paul Holzkäufel → Wien
+                                Paul Holzkäufel &rsaquo; Wien
                             
                         </td>
                         <td class="rel-col-source">
@@ -1006,7 +1092,7 @@
                         <td class="rel-col-label"><em>Bürgermeisters</em></td>
                         <td class="rel-col-perspective">
                             
-                                Paul Holzkäufel → Wien
+                                Paul Holzkäufel &rsaquo; Wien
                             
                         </td>
                         <td class="rel-col-source">
@@ -1025,7 +1111,7 @@
                         <td class="rel-col-label"><em>Bürgermeisters</em></td>
                         <td class="rel-col-perspective">
                             
-                                Paul Holzkäufel → Wien
+                                Paul Holzkäufel &rsaquo; Wien
                             
                         </td>
                         <td class="rel-col-source">
@@ -1044,7 +1130,7 @@
                         <td class="rel-col-label"><em>Bürgermeisters</em></td>
                         <td class="rel-col-perspective">
                             
-                                Paul Holzkäufel → Wien
+                                Paul Holzkäufel &rsaquo; Wien
                             
                         </td>
                         <td class="rel-col-source">
@@ -1063,7 +1149,7 @@
                         <td class="rel-col-label"><em>Bürgermeisters</em></td>
                         <td class="rel-col-perspective">
                             
-                                Paul Holzkäufel → Wien
+                                Paul Holzkäufel &rsaquo; Wien
                             
                         </td>
                         <td class="rel-col-source">
@@ -1082,7 +1168,7 @@
                         <td class="rel-col-label"><em>Bürgermeisters</em></td>
                         <td class="rel-col-perspective">
                             
-                                Paul Holzkäufel → Wien
+                                Paul Holzkäufel &rsaquo; Wien
                             
                         </td>
                         <td class="rel-col-source">
@@ -1101,7 +1187,7 @@
                         <td class="rel-col-label"><em>purgermaister</em></td>
                         <td class="rel-col-perspective">
                             
-                                Paul Holzkäufel → Wien
+                                Paul Holzkäufel &rsaquo; Wien
                             
                         </td>
                         <td class="rel-col-source">
@@ -1120,7 +1206,7 @@
                         <td class="rel-col-label"><em>rates</em></td>
                         <td class="rel-col-perspective">
                             
-                                Paul Holzkäufel → Wien
+                                Paul Holzkäufel &rsaquo; Wien
                             
                         </td>
                         <td class="rel-col-source">
@@ -1139,7 +1225,7 @@
                         <td class="rel-col-label"><em>rates der stat ze Wienn</em></td>
                         <td class="rel-col-perspective">
                             
-                                Paul Holzkäufel → Wien
+                                Paul Holzkäufel &rsaquo; Wien
                             
                         </td>
                         <td class="rel-col-source">
@@ -1158,7 +1244,7 @@
                         <td class="rel-col-label"><em>Bürgers</em></td>
                         <td class="rel-col-perspective">
                             
-                                Paul Holzkäufel → Wien
+                                Paul Holzkäufel &rsaquo; Wien
                             
                         </td>
                         <td class="rel-col-source">
@@ -1177,7 +1263,7 @@
                         <td class="rel-col-label"><em>Bürger</em></td>
                         <td class="rel-col-perspective">
                             
-                                Paul Holzkäufel → Wien
+                                Paul Holzkäufel &rsaquo; Wien
                             
                         </td>
                         <td class="rel-col-source">
@@ -1196,7 +1282,7 @@
                         <td class="rel-col-label"><em>Bürger</em></td>
                         <td class="rel-col-perspective">
                             
-                                Paul Holzkäufel → Wien
+                                Paul Holzkäufel &rsaquo; Wien
                             
                         </td>
                         <td class="rel-col-source">
@@ -1215,7 +1301,7 @@
                         <td class="rel-col-label"><em>Bürger</em></td>
                         <td class="rel-col-perspective">
                             
-                                Paul Holzkäufel → Wien
+                                Paul Holzkäufel &rsaquo; Wien
                             
                         </td>
                         <td class="rel-col-source">
@@ -1234,7 +1320,7 @@
                         <td class="rel-col-label"><em>purgermaister</em></td>
                         <td class="rel-col-perspective">
                             
-                                Paul Holzkäufel → Wien
+                                Paul Holzkäufel &rsaquo; Wien
                             
                         </td>
                         <td class="rel-col-source">
@@ -1253,7 +1339,7 @@
                         <td class="rel-col-label"><em>Bürgermeisters</em></td>
                         <td class="rel-col-perspective">
                             
-                                Paul Holzkäufel → Wien
+                                Paul Holzkäufel &rsaquo; Wien
                             
                         </td>
                         <td class="rel-col-source">
@@ -1272,7 +1358,7 @@
                         <td class="rel-col-label"><em>purgermaister</em></td>
                         <td class="rel-col-perspective">
                             
-                                Paul Holzkäufel → Wien
+                                Paul Holzkäufel &rsaquo; Wien
                             
                         </td>
                         <td class="rel-col-source">
@@ -1291,7 +1377,7 @@
                         <td class="rel-col-label"><em>Bürger</em></td>
                         <td class="rel-col-perspective">
                             
-                                Paul Holzkäufel → Wien
+                                Paul Holzkäufel &rsaquo; Wien
                             
                         </td>
                         <td class="rel-col-source">
@@ -1310,7 +1396,7 @@
                         <td class="rel-col-label"><em>damaligen Bürgermeisters</em></td>
                         <td class="rel-col-perspective">
                             
-                                Paul Holzkäufel → Wien
+                                Paul Holzkäufel &rsaquo; Wien
                             
                         </td>
                         <td class="rel-col-source">
@@ -1329,7 +1415,7 @@
                         <td class="rel-col-label"><em>Bürgermeisters</em></td>
                         <td class="rel-col-perspective">
                             
-                                Paul Holzkäufel → Wien
+                                Paul Holzkäufel &rsaquo; Wien
                             
                         </td>
                         <td class="rel-col-source">
@@ -1348,7 +1434,7 @@
                         <td class="rel-col-label"><em>purgermaister</em></td>
                         <td class="rel-col-perspective">
                             
-                                Paul Holzkäufel → Wien
+                                Paul Holzkäufel &rsaquo; Wien
                             
                         </td>
                         <td class="rel-col-source">
@@ -1367,7 +1453,7 @@
                         <td class="rel-col-label"><em>purger ze Wienn</em></td>
                         <td class="rel-col-perspective">
                             
-                                Paul Holzkäufel → Wien
+                                Paul Holzkäufel &rsaquo; Wien
                             
                         </td>
                         <td class="rel-col-source">
@@ -1386,7 +1472,7 @@
                         <td class="rel-col-label"><em>rats</em></td>
                         <td class="rel-col-perspective">
                             
-                                Paul Holzkäufel → Wien
+                                Paul Holzkäufel &rsaquo; Wien
                             
                         </td>
                         <td class="rel-col-source">
@@ -1405,7 +1491,7 @@
                         <td class="rel-col-label"><em>Bürgermeisters</em></td>
                         <td class="rel-col-perspective">
                             
-                                Paul Holzkäufel → Wien
+                                Paul Holzkäufel &rsaquo; Wien
                             
                         </td>
                         <td class="rel-col-source">
@@ -1424,7 +1510,7 @@
                         <td class="rel-col-label"><em>Bürgermeisters</em></td>
                         <td class="rel-col-perspective">
                             
-                                Paul Holzkäufel → Wien
+                                Paul Holzkäufel &rsaquo; Wien
                             
                         </td>
                         <td class="rel-col-source">
@@ -1443,7 +1529,7 @@
                         <td class="rel-col-label"><em>Bürgermeisters</em></td>
                         <td class="rel-col-perspective">
                             
-                                Paul Holzkäufel → Wien
+                                Paul Holzkäufel &rsaquo; Wien
                             
                         </td>
                         <td class="rel-col-source">
@@ -1462,7 +1548,7 @@
                         <td class="rel-col-label"><em>Bürgermeister</em></td>
                         <td class="rel-col-perspective">
                             
-                                Paul Holzkäufel → Wien
+                                Paul Holzkäufel &rsaquo; Wien
                             
                         </td>
                         <td class="rel-col-source">
@@ -1481,7 +1567,7 @@
                         <td class="rel-col-label"><em>Bürgermeisters</em></td>
                         <td class="rel-col-perspective">
                             
-                                Paul Holzkäufel → Wien
+                                Paul Holzkäufel &rsaquo; Wien
                             
                         </td>
                         <td class="rel-col-source">
@@ -1500,7 +1586,7 @@
                         <td class="rel-col-label"><em>purgermaister</em></td>
                         <td class="rel-col-perspective">
                             
-                                Paul Holzkäufel → Wien
+                                Paul Holzkäufel &rsaquo; Wien
                             
                         </td>
                         <td class="rel-col-source">
@@ -1519,7 +1605,7 @@
                         <td class="rel-col-label"><em>purgermaister</em></td>
                         <td class="rel-col-perspective">
                             
-                                Paul Holzkäufel → Wien
+                                Paul Holzkäufel &rsaquo; Wien
                             
                         </td>
                         <td class="rel-col-source">
@@ -1538,7 +1624,7 @@
                         <td class="rel-col-label"><em>purgermaister</em></td>
                         <td class="rel-col-perspective">
                             
-                                Paul Holzkäufel → Wien
+                                Paul Holzkäufel &rsaquo; Wien
                             
                         </td>
                         <td class="rel-col-source">
@@ -1557,7 +1643,7 @@
                         <td class="rel-col-label"><em>purgermaister</em></td>
                         <td class="rel-col-perspective">
                             
-                                Paul Holzkäufel → Wien
+                                Paul Holzkäufel &rsaquo; Wien
                             
                         </td>
                         <td class="rel-col-source">
@@ -1576,7 +1662,7 @@
                         <td class="rel-col-label"><em>purgermaister</em></td>
                         <td class="rel-col-perspective">
                             
-                                Paul Holzkäufel → Wien
+                                Paul Holzkäufel &rsaquo; Wien
                             
                         </td>
                         <td class="rel-col-source">
@@ -1595,7 +1681,7 @@
                         <td class="rel-col-label"><em>Bürgermeisters</em></td>
                         <td class="rel-col-perspective">
                             
-                                Paul Holzkäufel → Wien
+                                Paul Holzkäufel &rsaquo; Wien
                             
                         </td>
                         <td class="rel-col-source">
@@ -1614,7 +1700,7 @@
                         <td class="rel-col-label"><em>Bürgermeisters</em></td>
                         <td class="rel-col-perspective">
                             
-                                Paul Holzkäufel → Wien
+                                Paul Holzkäufel &rsaquo; Wien
                             
                         </td>
                         <td class="rel-col-source">
@@ -1633,7 +1719,7 @@
                         <td class="rel-col-label"><em>Bürgermeisters</em></td>
                         <td class="rel-col-perspective">
                             
-                                Paul Holzkäufel → Wien
+                                Paul Holzkäufel &rsaquo; Wien
                             
                         </td>
                         <td class="rel-col-source">
@@ -1652,7 +1738,7 @@
                         <td class="rel-col-label"><em>purgermaister</em></td>
                         <td class="rel-col-perspective">
                             
-                                Paul Holzkäufel → Wien
+                                Paul Holzkäufel &rsaquo; Wien
                             
                         </td>
                         <td class="rel-col-source">
@@ -1671,7 +1757,7 @@
                         <td class="rel-col-label"><em>purgermaister</em></td>
                         <td class="rel-col-perspective">
                             
-                                Paul Holzkäufel → Wien
+                                Paul Holzkäufel &rsaquo; Wien
                             
                         </td>
                         <td class="rel-col-source">
@@ -1690,7 +1776,7 @@
                         <td class="rel-col-label"><em>Bürgermeisters</em></td>
                         <td class="rel-col-perspective">
                             
-                                Paul Holzkäufel → Wien
+                                Paul Holzkäufel &rsaquo; Wien
                             
                         </td>
                         <td class="rel-col-source">
@@ -1709,7 +1795,7 @@
                         <td class="rel-col-label"><em>purgermaister</em></td>
                         <td class="rel-col-perspective">
                             
-                                Paul Holzkäufel → Wien
+                                Paul Holzkäufel &rsaquo; Wien
                             
                         </td>
                         <td class="rel-col-source">
@@ -1728,7 +1814,7 @@
                         <td class="rel-col-label"><em>Bürgermeisters</em></td>
                         <td class="rel-col-perspective">
                             
-                                Paul Holzkäufel → Wien
+                                Paul Holzkäufel &rsaquo; Wien
                             
                         </td>
                         <td class="rel-col-source">
@@ -1747,7 +1833,7 @@
                         <td class="rel-col-label"><em>purgermaister</em></td>
                         <td class="rel-col-perspective">
                             
-                                Paul Holzkäufel → Wien
+                                Paul Holzkäufel &rsaquo; Wien
                             
                         </td>
                         <td class="rel-col-source">
@@ -1766,7 +1852,7 @@
                         <td class="rel-col-label"><em>judenrichter</em></td>
                         <td class="rel-col-perspective">
                             
-                                Paul Holzkäufel → Wien
+                                Paul Holzkäufel &rsaquo; Wien
                             
                         </td>
                         <td class="rel-col-source">
@@ -1785,7 +1871,7 @@
                         <td class="rel-col-label"><em>ausrichter und verweser</em></td>
                         <td class="rel-col-perspective">
                             
-                                Paul Holzkäufel → Wien
+                                Paul Holzkäufel &rsaquo; Wien
                             
                         </td>
                         <td class="rel-col-source">
@@ -1804,7 +1890,7 @@
                         <td class="rel-col-label"><em>rats</em></td>
                         <td class="rel-col-perspective">
                             
-                                Paul Holzkäufel → Wien
+                                Paul Holzkäufel &rsaquo; Wien
                             
                         </td>
                         <td class="rel-col-source">
@@ -1823,7 +1909,7 @@
                         <td class="rel-col-label"><em>cives Wiennenses</em></td>
                         <td class="rel-col-perspective">
                             
-                                Paul Holzkäufel → St. Stephan (Pfarr- und Domkirche)
+                                Paul Holzkäufel &rsaquo; St. Stephan (Pfarr- und Domkirche)
                             
                         </td>
                         <td class="rel-col-source">
@@ -1842,7 +1928,7 @@
                         <td class="rel-col-label"><em>purgermaister</em></td>
                         <td class="rel-col-perspective">
                             
-                                Paul Holzkäufel → Wien
+                                Paul Holzkäufel &rsaquo; Wien
                             
                         </td>
                         <td class="rel-col-source">
@@ -1861,7 +1947,7 @@
                         <td class="rel-col-label"><em>purger</em></td>
                         <td class="rel-col-perspective">
                             
-                                Paul Holzkäufel → Wien
+                                Paul Holzkäufel &rsaquo; Wien
                             
                         </td>
                         <td class="rel-col-source">
@@ -1880,7 +1966,7 @@
                         <td class="rel-col-label"><em>purgermaister</em></td>
                         <td class="rel-col-perspective">
                             
-                                Paul Holzkäufel → Wien
+                                Paul Holzkäufel &rsaquo; Wien
                             
                         </td>
                         <td class="rel-col-source">
@@ -1898,18 +1984,32 @@
         
         
         
+        
+        
+        
+        
+        
+        
     </section>
     
 
     
     <section class="person-sources" aria-label="Quellen mit Nennung">
         <h2 class="section-head">Quellen mit Nennung</h2>
-        <table class="person-source-table">
+        
+        <div class="table-filter">
+            <input type="search" class="table-filter-input" data-target="src" placeholder="In den Quellen filtern&hellip;" aria-label="In den Quellen filtern">
+            <span class="table-filter-status"></span>
+        </div>
+        
+        <table class="person-source-table" data-truncate-at="50">
             <thead>
                 <tr>
                     <th scope="col" class="src-col-idno">Nr.</th>
                     <th scope="col" class="src-col-date">Datum</th>
                     <th scope="col" class="src-col-corpus">Quellenkorpus</th>
+                    <th scope="col" class="src-col-label">Bezeichnung</th>
+                    <th scope="col" class="src-col-role">Rolle</th>
                     <th scope="col" class="src-col-regest">Regest</th>
                 </tr>
             </thead>
@@ -1919,6 +2019,11 @@
                     <td class="src-col-idno"><a href="../../documents/QGW/Vienna_1177-1414_ready/694.html">694</a></td>
                     <td class="src-col-date">1367 IV 06</td>
                     <td class="src-col-corpus">QGW II/1 (1177–1414)</td>
+                    <td class="src-col-label"><em>hern</em></td>
+                    <td class="src-col-role">
+                        <span class="role-chip role-chip-witness">Zeuge / Siegler*in</span>
+                        
+                    </td>
                     <td class="src-col-regest">Pernhart, sun Fridreichs sun, des schrannschreiber sêlig, verkauft mit Handen seines Bergherrn hern Jansens von Tirna, hubmaister und münsmaister in Österreich, drei Viertel einer Hofstatt Weingarten…</td>
                 </tr>
             
@@ -1926,6 +2031,11 @@
                     <td class="src-col-idno"><a href="../../documents/QGW/Vienna_1177-1414_ready/879.html">879</a></td>
                     <td class="src-col-date">1376 V 02</td>
                     <td class="src-col-corpus">QGW II/1 (1177–1414)</td>
+                    <td class="src-col-label"><em>hern</em></td>
+                    <td class="src-col-role">
+                        <span class="role-chip role-chip-other">Sonstige</span>
+                        
+                    </td>
                     <td class="src-col-regest">Janns von der Heiligenstat, purger ze Wienne, und Anna, seine Hausfrau, verkaufen mit Handen des Bürgermeisters hern Pauln des Holzchaufel und des rates gemain der stat ze Wienn ihr Haus, welches dem…</td>
                 </tr>
             
@@ -1933,6 +2043,11 @@
                     <td class="src-col-idno"><a href="../../documents/QGW/Vienna_1177-1414_ready/880.html">880</a></td>
                     <td class="src-col-date">1376 VI 19</td>
                     <td class="src-col-corpus">QGW II/1 (1177–1414)</td>
+                    <td class="src-col-label"><em>hern</em></td>
+                    <td class="src-col-role">
+                        <span class="role-chip role-chip-other">Sonstige</span>
+                        
+                    </td>
                     <td class="src-col-regest">Janns, der weinchoster ze Wienne , und Gedraut, seine Hausfrau , verkaufen mit Handen des Bürgermeisters hern Pauln des Holzchoufleins und des rates der stat ze Wienn dritthalb lb dn. gelts…</td>
                 </tr>
             
@@ -1940,6 +2055,11 @@
                     <td class="src-col-idno"><a href="../../documents/QGW/Vienna_1177-1414_ready/886.html">886</a></td>
                     <td class="src-col-date">1376 X 04</td>
                     <td class="src-col-corpus">QGW II/1 (1177–1414)</td>
+                    <td class="src-col-label"><em>hern</em></td>
+                    <td class="src-col-role">
+                        <span class="role-chip role-chip-other">Sonstige</span>
+                        
+                    </td>
                     <td class="src-col-regest">Chunrat der Werder von Eger verkauft mit Handen des Bürgermeisters hern Pauln des Holzcheuffels und des rates gemain der stat ze Wienn seines rechten Kaufgutes ein Haus in der Wollzeil ze Wienne…</td>
                 </tr>
             
@@ -1947,6 +2067,11 @@
                     <td class="src-col-idno"><a href="../../documents/QGW/Vienna_1177-1414_ready/889.html">889</a></td>
                     <td class="src-col-date">1376 X 21</td>
                     <td class="src-col-corpus">QGW II/1 (1177–1414)</td>
+                    <td class="src-col-label"><em>hern</em></td>
+                    <td class="src-col-role">
+                        <span class="role-chip role-chip-recipient">Empfänger*in</span>
+                        
+                    </td>
                     <td class="src-col-regest">Lienhart der Poll, purger ze Wienn , beurkundet mit Zustimmung seiner Hausfrau Elspeten seinen letzten Willen. Er schafft: 1. dass man von seiner fahrenden Habe seine Gläubiger befriedigen solle 2.…</td>
                 </tr>
             
@@ -1954,6 +2079,11 @@
                     <td class="src-col-idno"><a href="../../documents/QGW/Vienna_1177-1414_ready/893.html">893</a></td>
                     <td class="src-col-date">1376 XII 18</td>
                     <td class="src-col-corpus">QGW II/1 (1177–1414)</td>
+                    <td class="src-col-label"><em>hern</em></td>
+                    <td class="src-col-role">
+                        <span class="role-chip role-chip-other">Sonstige</span>
+                        
+                    </td>
                     <td class="src-col-regest">Nichlas der Voit und Elsbet, seine Hausfrau, verkaufen mit Handen des Bürgermeisters hern Pauln des Holzcheufels und des rates gemain der stat ze Wienne 3 sh. dn. gelts purchrechts (ablösbar) auf…</td>
                 </tr>
             
@@ -1961,6 +2091,11 @@
                     <td class="src-col-idno"><a href="../../documents/QGW/Vienna_1177-1414_ready/905.html">905</a></td>
                     <td class="src-col-date">1377 IV 03</td>
                     <td class="src-col-corpus">QGW II/1 (1177–1414)</td>
+                    <td class="src-col-label"><em>-</em></td>
+                    <td class="src-col-role">
+                        <span class="role-chip role-chip-recipient">Empfänger*in</span>
+                        
+                    </td>
                     <td class="src-col-regest">Leupolt, pharrer ze Medlikch , und Janns von Tirna, huebmaister in Österreich , bestätigen, dass ihnen Paul Holzcheuffel, purgermaister ze Wienn , 18 lb dn. ausbezahlt habe von Jekleins Seidenswanz,…</td>
                 </tr>
             
@@ -1968,6 +2103,11 @@
                     <td class="src-col-idno"><a href="../../documents/QGW/Vienna_1177-1414_ready/911.html">911</a></td>
                     <td class="src-col-date">1377 VIII 14</td>
                     <td class="src-col-corpus">QGW II/1 (1177–1414)</td>
+                    <td class="src-col-label"><em>-</em></td>
+                    <td class="src-col-role">
+                        <span class="role-chip role-chip-issuer">Aussteller*in</span><span class="role-chip role-chip-witness">Zeuge / Siegler*in</span>
+                        
+                    </td>
                     <td class="src-col-regest">Jacob der Poll, chaplan Unser Vrowen chapellen, gelegen in der purger Rathaus ze Wienne, hern Ottenhaimen seligen Stiftung Geschäftsvollstrecker , Paul der Holzchouffel, purgermaister ze Wienne…</td>
                 </tr>
             
@@ -1975,6 +2115,11 @@
                     <td class="src-col-idno"><a href="../../documents/QGW/Vienna_1177-1414_ready/913.html">913</a></td>
                     <td class="src-col-date">1377 VIII 21</td>
                     <td class="src-col-corpus">QGW II/1 (1177–1414)</td>
+                    <td class="src-col-label"><em>-</em></td>
+                    <td class="src-col-role">
+                        <span class="role-chip role-chip-issuer">Aussteller*in</span><span class="role-chip role-chip-witness">Zeuge / Siegler*in</span>
+                        
+                    </td>
                     <td class="src-col-regest">Jacob der Poll, chaplan Unser Vrowen chapellen, gelegen in der purger Rathaus ze Wienn, hern Ottenhaimen seligen Stiftung , Paul der Holzchau/effel, purgermaister ze Wienn , und Niclas der…</td>
                 </tr>
             
@@ -1982,6 +2127,11 @@
                     <td class="src-col-idno"><a href="../../documents/QGW/Vienna_1177-1414_ready/916.html">916</a></td>
                     <td class="src-col-date">1377 X 13</td>
                     <td class="src-col-corpus">QGW II/1 (1177–1414)</td>
+                    <td class="src-col-label"><em>-</em></td>
+                    <td class="src-col-role">
+                        <span class="role-chip role-chip-issuer">Aussteller*in</span><span class="role-chip role-chip-witness">Zeuge / Siegler*in</span>
+                        
+                    </td>
                     <td class="src-col-regest">Jacob der Poll, caplan ausrichter des geschefts Unser Vrown chapelln, gelegen in der purger Rathaus ze Wienn, hern Ottenhaimen seligen Stiftung , Paul der Holzchäuffel, purgermaister ze Wienn…</td>
                 </tr>
             
@@ -1989,6 +2139,11 @@
                     <td class="src-col-idno"><a href="../../documents/QGW/Vienna_1177-1414_ready/924.html">924</a></td>
                     <td class="src-col-date">1377 XII 19</td>
                     <td class="src-col-corpus">QGW II/1 (1177–1414)</td>
+                    <td class="src-col-label"><em>-</em></td>
+                    <td class="src-col-role">
+                        <span class="role-chip role-chip-recipient">Empfänger*in</span>
+                        
+                    </td>
                     <td class="src-col-regest">Herzog Leopold III. bestätigt das Geschäft seines Wiener Bürgers Lienhart des Pollen und genehmigt die von den Geschäftsherren Jacoben Pollen, pharrer ze Ottenhaim , GeschäftsherrenPauln Holzkeuffel,…</td>
                 </tr>
             
@@ -1996,6 +2151,11 @@
                     <td class="src-col-idno"><a href="../../documents/QGW/Vienna_1177-1414_ready/925.html">925</a></td>
                     <td class="src-col-date">1378 I 29</td>
                     <td class="src-col-corpus">QGW II/1 (1177–1414)</td>
+                    <td class="src-col-label"><em>hern</em></td>
+                    <td class="src-col-role">
+                        <span class="role-chip role-chip-other">Sonstige</span>
+                        
+                    </td>
                     <td class="src-col-regest">Wolfhard von Amsteten, urtailschreiber ze Wienn , und Gedraud, seine Hausfrau , verkaufen mit Handen des Bürgermeisters hern Paulus des Holzchauffels und des rates gemain der stat ze Wienne ein lb…</td>
                 </tr>
             
@@ -2003,6 +2163,11 @@
                     <td class="src-col-idno"><a href="../../documents/QGW/Vienna_1177-1414_ready/926.html">926</a></td>
                     <td class="src-col-date">1378 II 05</td>
                     <td class="src-col-corpus">QGW II/1 (1177–1414)</td>
+                    <td class="src-col-label"><em>hern</em></td>
+                    <td class="src-col-role">
+                        <span class="role-chip role-chip-other">Sonstige</span>
+                        
+                    </td>
                     <td class="src-col-regest">Pu/erkchart su/en, Chu/enrats su/en des Kamrer, dem got genad für, bei vrowen Elsbeten, seiner Witwe hausvrowen, die nu/e Micheln den Fu/echslein êlichen genomen hat , verkauft mit Handen des…</td>
                 </tr>
             
@@ -2010,6 +2175,11 @@
                     <td class="src-col-idno"><a href="../../documents/QGW/Vienna_1177-1414_ready/932.html">932</a></td>
                     <td class="src-col-date">1378 III 08</td>
                     <td class="src-col-corpus">QGW II/1 (1177–1414)</td>
+                    <td class="src-col-label"><em>hern</em></td>
+                    <td class="src-col-role">
+                        <span class="role-chip role-chip-other">Sonstige</span>
+                        
+                    </td>
                     <td class="src-col-regest">Hanns von der Schêbnicz, purger ze Wienne , gibt mit Handen des Bürgermeisters hern Pauln des Holzchauffels und des rats gemain der stat ze Wienne seiner Hausfrau Margreten zu rechter Morgengabe sein…</td>
                 </tr>
             
@@ -2017,6 +2187,11 @@
                     <td class="src-col-idno"><a href="../../documents/QGW/Vienna_1177-1414_ready/940.html">940</a></td>
                     <td class="src-col-date">1378 V 19</td>
                     <td class="src-col-corpus">QGW II/1 (1177–1414)</td>
+                    <td class="src-col-label"><em>her</em></td>
+                    <td class="src-col-role">
+                        <span class="role-chip role-chip-recipient">Empfänger*in</span>
+                        
+                    </td>
                     <td class="src-col-regest">Mert vom Jaw/er, kapellan der kapellen sand Philipps und sant Jacobs, der heiligen zwelifpoten, gelegen in hern Lienharts sêligen hous des Pollen in der Hindern Pekchenstrasse ze Wienne , bestätigt,…</td>
                 </tr>
             
@@ -2024,6 +2199,11 @@
                     <td class="src-col-idno"><a href="../../documents/QGW/Vienna_1177-1414_ready/943.html">943</a></td>
                     <td class="src-col-date">1378 V 27</td>
                     <td class="src-col-corpus">QGW II/1 (1177–1414)</td>
+                    <td class="src-col-label"><em>-</em></td>
+                    <td class="src-col-role">
+                        <span class="role-chip role-chip-issuer">Aussteller*in</span>
+                        
+                    </td>
                     <td class="src-col-regest">Paul der Holzkouffel, purgermaister, und der rat gemain der stat zu Wienne stellen einen Schuldbrief aus dem erbern kriecht Chu/enraten diener, hern Hannsen diener von Tirna, einen Schuldbrief über…</td>
                 </tr>
             
@@ -2031,6 +2211,11 @@
                     <td class="src-col-idno"><a href="../../documents/QGW/Vienna_1177-1414_ready/946.html">946</a></td>
                     <td class="src-col-date">1378 IX 09</td>
                     <td class="src-col-corpus">QGW II/1 (1177–1414)</td>
+                    <td class="src-col-label"><em>hern</em></td>
+                    <td class="src-col-role">
+                        <span class="role-chip role-chip-other">Sonstige</span>
+                        
+                    </td>
                     <td class="src-col-regest">Janns der Smauz/zz/zer sun, hern Jannsen seligen sun des Smauz/zz/zer , verkauft mit Handen des Bürgermeisters hern Pauln des Holzchouffels und des mit Handen rates gemain der stat ze Wienne den ihm…</td>
                 </tr>
             
@@ -2038,6 +2223,11 @@
                     <td class="src-col-idno"><a href="../../documents/QGW/Vienna_1177-1414_ready/948.html">948</a></td>
                     <td class="src-col-date">1378 IX 27</td>
                     <td class="src-col-corpus">QGW II/1 (1177–1414)</td>
+                    <td class="src-col-label"><em>her</em></td>
+                    <td class="src-col-role">
+                        <span class="role-chip role-chip-recipient">Empfänger*in</span>
+                        
+                    </td>
                     <td class="src-col-regest">Johannes, verweser der technei , Thomans, custer , Bartholomeus, cantor , und das ganz capitel der tumchirichen dacz sand Stephan ze Wienn bestätigen, dass die Geschäftsvollstrecker des Wiener…</td>
                 </tr>
             
@@ -2045,6 +2235,11 @@
                     <td class="src-col-idno"><a href="../../documents/QGW/Vienna_1177-1414_ready/957.html">957</a></td>
                     <td class="src-col-date">1379 II 15</td>
                     <td class="src-col-corpus">QGW II/1 (1177–1414)</td>
+                    <td class="src-col-label"><em>hern</em></td>
+                    <td class="src-col-role">
+                        <span class="role-chip role-chip-other">Sonstige</span>
+                        
+                    </td>
                     <td class="src-col-regest">Janns von der Schebnicz, purger ze Wienne, und Margret, seine Hausfrau, stellen einen Schuldbrief aus Hetschlein, dem Juden von Herzogenburkch, einen Schuldbrief über 72 lb dn. aus, für die sie sich…</td>
                 </tr>
             
@@ -2052,6 +2247,11 @@
                     <td class="src-col-idno"><a href="../../documents/QGW/Vienna_1177-1414_ready/968.html">968</a></td>
                     <td class="src-col-date">1379 VIII 14</td>
                     <td class="src-col-corpus">QGW II/1 (1177–1414)</td>
+                    <td class="src-col-label"><em>her</em></td>
+                    <td class="src-col-role">
+                        <span class="role-chip role-chip-recipient">Empfänger*in</span>
+                        
+                    </td>
                     <td class="src-col-regest">Mert vom Jaur, kapellan der kapellen sand Philipps und sand Jacobs, der heiligen zwelifpoten, gelegen in hern Lienharts sêligen haus des Pollen in der Hindern Pekchenstrass zu Wienne , bestätigt,…</td>
                 </tr>
             
@@ -2059,6 +2259,11 @@
                     <td class="src-col-idno"><a href="../../documents/QGW/Vienna_1177-1414_ready/973.html">973</a></td>
                     <td class="src-col-date">1379 XI 07</td>
                     <td class="src-col-corpus">QGW II/1 (1177–1414)</td>
+                    <td class="src-col-label"><em>-</em></td>
+                    <td class="src-col-role">
+                        <span class="role-chip role-chip-other">Sonstige</span>
+                        
+                    </td>
                     <td class="src-col-regest">Herzog Albrecht III. beurkundet, dass ihm Haidenreich von Meissow, lantmarschalich in Österreich, 1600 lb dn., Hanns von Liechtenstain von Nicolspurg, sein Hofmeister, 2009 lb dn. und Hanns von…</td>
                 </tr>
             
@@ -2066,6 +2271,11 @@
                     <td class="src-col-idno"><a href="../../documents/QGW/Vienna_1177-1414_ready/982.1.html">982.1</a></td>
                     <td class="src-col-date">1380 V 24</td>
                     <td class="src-col-corpus">QGW II/1 (1177–1414)</td>
+                    <td class="src-col-label"><em>-</em></td>
+                    <td class="src-col-role">
+                        <span class="role-chip role-chip-other">Sonstige</span>
+                        
+                    </td>
                     <td class="src-col-regest">Chunrat der Leitner, purger ze Wienn , und Katrei, seine Hausfrau , verkaufen mit Handen ihres Bergherrn hern Stephans des Leitner, spitalmaister der purger Spital ze Wienn , ein Joch Weingarten,…</td>
                 </tr>
             
@@ -2073,6 +2283,11 @@
                     <td class="src-col-idno"><a href="../../documents/QGW/Vienna_1177-1414_ready/985.html">985</a></td>
                     <td class="src-col-date">1380 VI 09</td>
                     <td class="src-col-corpus">QGW II/1 (1177–1414)</td>
+                    <td class="src-col-label"><em>-</em></td>
+                    <td class="src-col-role">
+                        <span class="role-chip role-chip-other">Sonstige</span>
+                        
+                    </td>
                     <td class="src-col-regest">Fridreich von Tierna verkauft mit Handen seines Bergherrn, des Wiener Bürgers hern Niclas des Stainer , dritthalb viertail Weingarten, der do haisset der Schineweis, gelegen zwischen paiden…</td>
                 </tr>
             
@@ -2080,6 +2295,11 @@
                     <td class="src-col-idno"><a href="../../documents/QGW/Vienna_1177-1414_ready/989.html">989</a></td>
                     <td class="src-col-date">1380 VII 11</td>
                     <td class="src-col-corpus">QGW II/1 (1177–1414)</td>
+                    <td class="src-col-label"><em>hern</em></td>
+                    <td class="src-col-role">
+                        <span class="role-chip role-chip-other">Sonstige</span><span class="role-chip role-chip-witness">Zeuge / Siegler*in</span>
+                        
+                    </td>
                     <td class="src-col-regest">Anna, housvrowe Hainreichs housvrowe des Würfel, beurkundet, dass sie über die Verwaltung der Güter ihres Sohnes Jannsen des jungen Slechten in Gegenwart hern Jörgens von Nicolspurkch, des rates der…</td>
                 </tr>
             
@@ -2087,6 +2307,11 @@
                     <td class="src-col-idno"><a href="../../documents/QGW/Vienna_1177-1414_ready/992.html">992</a></td>
                     <td class="src-col-date">1380 XI 13</td>
                     <td class="src-col-corpus">QGW II/1 (1177–1414)</td>
+                    <td class="src-col-label"><em>her</em></td>
+                    <td class="src-col-role">
+                        <span class="role-chip role-chip-recipient">Empfänger*in</span>
+                        
+                    </td>
                     <td class="src-col-regest">Margret, hausvrowe Simanns hausvrowe von Chürnbach(!) Witwe, die weiln den Mu/erraten Jannsen, dem got genad, gehabt hat, und Anna, ir tochter tochter bei demselben Jannsen, des Chlainen Jekleins…</td>
                 </tr>
             
@@ -2094,6 +2319,11 @@
                     <td class="src-col-idno"><a href="../../documents/QGW/Vienna_1177-1414_ready/1010.html">1010</a></td>
                     <td class="src-col-date">1381 IX 06</td>
                     <td class="src-col-corpus">QGW II/1 (1177–1414)</td>
+                    <td class="src-col-label"><em>hern</em></td>
+                    <td class="src-col-role">
+                        <span class="role-chip role-chip-other">Sonstige</span>
+                        
+                    </td>
                     <td class="src-col-regest">Jans, Nichlas seligen, des hofvasziecher, sun, und Christan, sein Vetter, stellen einen Schuldbrief aus dem Wiener Bürger Jannsen von Harrenstain und seiner Hausfrau Christein einen Schuldbrief über…</td>
                 </tr>
             
@@ -2101,6 +2331,11 @@
                     <td class="src-col-idno"><a href="../../documents/QGW/Vienna_1177-1414_ready/1012.html">1012</a></td>
                     <td class="src-col-date">1381 IX 26</td>
                     <td class="src-col-corpus">QGW II/1 (1177–1414)</td>
+                    <td class="src-col-label"><em>-</em></td>
+                    <td class="src-col-role">
+                        <span class="role-chip role-chip-issuer">Aussteller*in</span>
+                        
+                    </td>
                     <td class="src-col-regest">Paul der Holzchauffel, purgermaister , Stephan Leitner, obrister spitalmaister, und der rat gemain der stat ze Wienne , bestätigen, dass her Thoman der Swemmel , mit ihnen gesworener des rats, ihrem…</td>
                 </tr>
             
@@ -2108,6 +2343,11 @@
                     <td class="src-col-idno"><a href="../../documents/QGW/Vienna_1177-1414_ready/1018.html">1018</a></td>
                     <td class="src-col-date">1381 XI 14</td>
                     <td class="src-col-corpus">QGW II/1 (1177–1414)</td>
+                    <td class="src-col-label"><em>-</em></td>
+                    <td class="src-col-role">
+                        <span class="role-chip role-chip-issuer">Aussteller*in</span>
+                        
+                    </td>
                     <td class="src-col-regest">Paul der Holzcha/euffel, purgermaister, und der rat gemain der stat ze Wienne beurkunden, dass vrawe Lucei, Stephans hausvrawe des Nezeuger, dem got gnade , vor ihnen mit hern Hannsen von Neunburkch,…</td>
                 </tr>
             
@@ -2115,6 +2355,11 @@
                     <td class="src-col-idno"><a href="../../documents/QGW/Vienna_1177-1414_ready/1025.html">1025</a></td>
                     <td class="src-col-date">1382 II 11</td>
                     <td class="src-col-corpus">QGW II/1 (1177–1414)</td>
+                    <td class="src-col-label"><em>hern</em></td>
+                    <td class="src-col-role">
+                        <span class="role-chip role-chip-recipient">Empfänger*in</span>
+                        
+                    </td>
                     <td class="src-col-regest">Ursula witib, hern Hannsen des Urbetschen wittib, gibt nach dem Gebote Herzog Rudolfs IV. ein ihr in der Erbtheilung mit ihren Kindern zugefallenes halbes lb dn. gelts purkrechts von dem Hause, das…</td>
                 </tr>
             
@@ -2122,6 +2367,11 @@
                     <td class="src-col-idno"><a href="../../documents/QGW/Vienna_1177-1414_ready/1027.html">1027</a></td>
                     <td class="src-col-date">1382 III 17</td>
                     <td class="src-col-corpus">QGW II/1 (1177–1414)</td>
+                    <td class="src-col-label"><em>hern</em></td>
+                    <td class="src-col-role">
+                        <span class="role-chip role-chip-recipient">Empfänger*in</span>
+                        
+                    </td>
                     <td class="src-col-regest">Pericht witib, Chunrats des Syns, des pinter, witib, verkauft mit Handen hern Wolfharts des Poben, statrichter, und des rats gemain der stat zu Wienne, ein von Grund und Burgrecht freies Haus, das…</td>
                 </tr>
             
@@ -2129,6 +2379,11 @@
                     <td class="src-col-idno"><a href="../../documents/QGW/Vienna_1177-1414_ready/1033.html">1033</a></td>
                     <td class="src-col-date">1382 VI 12</td>
                     <td class="src-col-corpus">QGW II/1 (1177–1414)</td>
+                    <td class="src-col-label"><em>her</em></td>
+                    <td class="src-col-role">
+                        <span class="role-chip role-chip-recipient">Empfänger*in</span>
+                        
+                    </td>
                     <td class="src-col-regest">Lienhart der Urbetsch Buerger und Paul der Paurberger, sein sweher, baid purger ze Wienn, bestätigen, dass ihnen der Bürgermeister her Paul der Holzchäuffel und der rat der stat ze Wienn alles das…</td>
                 </tr>
             
@@ -2136,6 +2391,11 @@
                     <td class="src-col-idno"><a href="../../documents/QGW/Vienna_1177-1414_ready/1045.html">1045</a></td>
                     <td class="src-col-date">1383 II 19</td>
                     <td class="src-col-corpus">QGW II/1 (1177–1414)</td>
+                    <td class="src-col-label"><em>-</em></td>
+                    <td class="src-col-role">
+                        <span class="role-chip role-chip-issuer">Aussteller*in</span>
+                        
+                    </td>
                     <td class="src-col-regest">Paul der Holzka/euffel, purgermaister , und der rat gemain der stat ze Wienn verleihen dem Jannsen von Egenburkch die Messe, welche Ott seliger der Mair auf dem Fronen altar dacz sand Niclas, gelegen…</td>
                 </tr>
             
@@ -2143,6 +2403,11 @@
                     <td class="src-col-idno"><a href="../../documents/QGW/Vienna_1177-1414_ready/1047.html">1047</a></td>
                     <td class="src-col-date">1383 IV 11</td>
                     <td class="src-col-corpus">QGW II/1 (1177–1414)</td>
+                    <td class="src-col-label"><em>hern</em></td>
+                    <td class="src-col-role">
+                        <span class="role-chip role-chip-other">Sonstige</span>
+                        
+                    </td>
                     <td class="src-col-regest">Hanns von Tierna, hu/ebmaister in Osterreich, verkauft mit Handen des Bürgermeisters hern Pauln des Holzcha/euffels und des rates gemain der stat ze Wienn sein Haus, das er für versessenes Burgrecht…</td>
                 </tr>
             
@@ -2150,6 +2415,11 @@
                     <td class="src-col-idno"><a href="../../documents/QGW/Vienna_1177-1414_ready/1051.html">1051</a></td>
                     <td class="src-col-date">1383 V 27</td>
                     <td class="src-col-corpus">QGW II/1 (1177–1414)</td>
+                    <td class="src-col-label"><em>hern</em></td>
+                    <td class="src-col-role">
+                        <span class="role-chip role-chip-other">Sonstige</span>
+                        
+                    </td>
                     <td class="src-col-regest">Stephan der Leitner, spitalmaister der purger Spital vor Kernertor ze Wienn , verkauft mit Handen des Bürgermeisters hern Pauln des Holzka/euffels und des rates gemain der stat ze Wienn das dem…</td>
                 </tr>
             
@@ -2157,6 +2427,11 @@
                     <td class="src-col-idno"><a href="../../documents/QGW/Vienna_1177-1414_ready/1053.html">1053</a></td>
                     <td class="src-col-date">1383 VII 22</td>
                     <td class="src-col-corpus">QGW II/1 (1177–1414)</td>
+                    <td class="src-col-label"><em>hern</em></td>
+                    <td class="src-col-role">
+                        <span class="role-chip role-chip-other">Sonstige</span>
+                        
+                    </td>
                     <td class="src-col-regest">Thoman der Schaffer von Marchekk, schaffer der sundersiechen dacz sand Marx, und die sundersiechen gemain daselbs verkaufen mit Einwilligung ihres Vogtes Michels, hern Pertelmes sun in der…</td>
                 </tr>
             
@@ -2164,6 +2439,11 @@
                     <td class="src-col-idno"><a href="../../documents/QGW/Vienna_1177-1414_ready/1066.html">1066</a></td>
                     <td class="src-col-date">1384 IV 06</td>
                     <td class="src-col-corpus">QGW II/1 (1177–1414)</td>
+                    <td class="src-col-label"><em>hern</em></td>
+                    <td class="src-col-role">
+                        <span class="role-chip role-chip-other">Sonstige</span>
+                        
+                    </td>
                     <td class="src-col-regest">Paul der Wogendru/ezzel, purger ze Wienn , und Chlar, seine Hausfrau , verkaufen mit Handen des Bürgermeisters hern Pauln des Holzcha/euffels und des rates gemain der stat ze Wienn ihre Fleischbank,…</td>
                 </tr>
             
@@ -2171,6 +2451,11 @@
                     <td class="src-col-idno"><a href="../../documents/QGW/Vienna_1177-1414_ready/1068.html">1068</a></td>
                     <td class="src-col-date">1384 VII 09</td>
                     <td class="src-col-corpus">QGW II/1 (1177–1414)</td>
+                    <td class="src-col-label"><em>hern</em></td>
+                    <td class="src-col-role">
+                        <span class="role-chip role-chip-other">Sonstige</span>
+                        
+                    </td>
                     <td class="src-col-regest">Chunigund, Niclas hausfrow des Gelbwaicz, Herzog Albrechts kamerschreiber, schafft ihrem Manne, falls sie vor ihm stürbe: 1. mit Handen des Bürgermeisters hern Pauln des Holzchäuffels und des rates…</td>
                 </tr>
             
@@ -2178,6 +2463,11 @@
                     <td class="src-col-idno"><a href="../../documents/QGW/Vienna_1177-1414_ready/1069.html">1069</a></td>
                     <td class="src-col-date">1384 VII 14</td>
                     <td class="src-col-corpus">QGW II/1 (1177–1414)</td>
+                    <td class="src-col-label"><em>-</em></td>
+                    <td class="src-col-role">
+                        
+                        -
+                    </td>
                     <td class="src-col-regest">Stephan, Seidleins sun am Hof, und Kathrei, Go/eschleins hausfrow, desselben Stephans swester , bestätigen, von dem Erlöse für das Haus, gelegen bei Stubentor ze Wienn in der Wollzeil, genant in der…</td>
                 </tr>
             
@@ -2185,6 +2475,11 @@
                     <td class="src-col-idno"><a href="../../documents/QGW/Vienna_1177-1414_ready/1071.html">1071</a></td>
                     <td class="src-col-date">1384 VIII 02</td>
                     <td class="src-col-corpus">QGW II/1 (1177–1414)</td>
+                    <td class="src-col-label"><em>hern</em></td>
+                    <td class="src-col-role">
+                        <span class="role-chip role-chip-other">Sonstige</span>
+                        
+                    </td>
                     <td class="src-col-regest">Leupolt der Prenner, purger ze der Neunstat, verkauft mit Handen des Bürgermeisters hern Pauln des Holzchäuffels und des rates gemain der stat ze Wienn sein Haus, vorders und hinders, gelegen mit dem…</td>
                 </tr>
             
@@ -2192,6 +2487,11 @@
                     <td class="src-col-idno"><a href="../../documents/QGW/Vienna_1177-1414_ready/1073.html">1073</a></td>
                     <td class="src-col-date">1384 VIII 27</td>
                     <td class="src-col-corpus">QGW II/1 (1177–1414)</td>
+                    <td class="src-col-label"><em>-</em></td>
+                    <td class="src-col-role">
+                        <span class="role-chip role-chip-issuer">Aussteller*in</span>
+                        
+                    </td>
                     <td class="src-col-regest">Paul der Holzcha/euffel, purgermaister, und der rat gemain der stat ze Wienn beurkunden, dass vor ihnen her Friedreich der Dietram, mit ihnen gesworner des rats, mit dem Priester hern Stephann auf…</td>
                 </tr>
             
@@ -2199,6 +2499,11 @@
                     <td class="src-col-idno"><a href="../../documents/QGW/Vienna_1177-1414_ready/1080.html">1080</a></td>
                     <td class="src-col-date">1384 XII 30</td>
                     <td class="src-col-corpus">QGW II/1 (1177–1414)</td>
+                    <td class="src-col-label"><em>hern</em></td>
+                    <td class="src-col-role">
+                        <span class="role-chip role-chip-other">Sonstige</span>
+                        
+                    </td>
                     <td class="src-col-regest">Hetschel, der Jud von Herzogenburkch ze Wienn, Izrahels sun von Chrems, verkauft mit Handen des Bürgermeisters hern Pauln des Holzkäuffels und des rates gemain der stat ze Wienn ein Haus, das ihm für…</td>
                 </tr>
             
@@ -2206,6 +2511,11 @@
                     <td class="src-col-idno"><a href="../../documents/QGW/Vienna_1177-1414_ready/1081.html">1081</a></td>
                     <td class="src-col-date">1385 I 09</td>
                     <td class="src-col-corpus">QGW II/1 (1177–1414)</td>
+                    <td class="src-col-label"><em>hern</em></td>
+                    <td class="src-col-role">
+                        <span class="role-chip role-chip-other">Sonstige</span>
+                        
+                    </td>
                     <td class="src-col-regest">Hainreich von Emmerstorf, purger ze Wienn , und Lucei, seine Hausfrau , verkaufen mit Handen des Bürgermeisters hern Pauln des Holzcha/euffels und des rates gemain der stat ze Wienn ihr Haus, gelegen…</td>
                 </tr>
             
@@ -2213,6 +2523,11 @@
                     <td class="src-col-idno"><a href="../../documents/QGW/Vienna_1177-1414_ready/1084.html">1084</a></td>
                     <td class="src-col-date">1385 III 17</td>
                     <td class="src-col-corpus">QGW II/1 (1177–1414)</td>
+                    <td class="src-col-label"><em>hern</em></td>
+                    <td class="src-col-role">
+                        <span class="role-chip role-chip-other">Sonstige</span>
+                        
+                    </td>
                     <td class="src-col-regest">Andre der Watman, purger ze Wienn , und Chu/enigund, seine Hausfrau , verkaufen mit Handen des Bürgermeisters hern Pauln des Holzcha/euffels und des rates gemain der stat ze Wienn 5 lb dn. geltes…</td>
                 </tr>
             
@@ -2220,6 +2535,11 @@
                     <td class="src-col-idno"><a href="../../documents/QGW/Vienna_1177-1414_ready/1085.html">1085</a></td>
                     <td class="src-col-date">1385 III 22</td>
                     <td class="src-col-corpus">QGW II/1 (1177–1414)</td>
+                    <td class="src-col-label"><em>hern</em></td>
+                    <td class="src-col-role">
+                        <span class="role-chip role-chip-other">Sonstige</span>
+                        
+                    </td>
                     <td class="src-col-regest">Janns der Jan, der goltsmid, purger ze Wienne, verkauft mit Handen des Bürgermeisters hern Pauln des Holzkäuffels und des rates gemain der stat ze Wienn ein Haus, das ihm seine frühere Hausfrau…</td>
                 </tr>
             
@@ -2227,6 +2547,11 @@
                     <td class="src-col-idno"><a href="../../documents/QGW/Vienna_1177-1414_ready/1092.html">1092</a></td>
                     <td class="src-col-date">1385 VII 17</td>
                     <td class="src-col-corpus">QGW II/1 (1177–1414)</td>
+                    <td class="src-col-label"><em>hern</em></td>
+                    <td class="src-col-role">
+                        <span class="role-chip role-chip-other">Sonstige</span>
+                        
+                    </td>
                     <td class="src-col-regest">Engelprecht, der prünner, purger ze Wienn, und Kathrei, seine Hausfrau, verkaufen mit Handen des Bürgermeisters hern Pauln des Holzkauffels und des rates gemain der stat ze Wienn ihr Haus, gelegen in…</td>
                 </tr>
             
@@ -2234,6 +2559,11 @@
                     <td class="src-col-idno"><a href="../../documents/QGW/Vienna_1177-1414_ready/1093.html">1093</a></td>
                     <td class="src-col-date">1385 VII 29</td>
                     <td class="src-col-corpus">QGW II/1 (1177–1414)</td>
+                    <td class="src-col-label"><em>hern</em></td>
+                    <td class="src-col-role">
+                        <span class="role-chip role-chip-other">Sonstige</span>
+                        
+                    </td>
                     <td class="src-col-regest">Ulreich der Wienner, purger ze Wienn , verkauft 25 lb dn. geltes purchrechtes auf zwei Erbgütern, und zwar: a) mit Handen seines Bergherrn hern Jo/ergen von Liechtenstain, probst ze Allerheiligen…</td>
                 </tr>
             
@@ -2241,6 +2571,11 @@
                     <td class="src-col-idno"><a href="../../documents/QGW/Vienna_1177-1414_ready/1097.html">1097</a></td>
                     <td class="src-col-date">1385 XI 18</td>
                     <td class="src-col-corpus">QGW II/1 (1177–1414)</td>
+                    <td class="src-col-label"><em>hern</em></td>
+                    <td class="src-col-role">
+                        <span class="role-chip role-chip-other">Sonstige</span>
+                        
+                    </td>
                     <td class="src-col-regest">Janns von dem Neunhaus verkauft mit Handen des Bürgermeisters hern Pauln des Holzkau/effels und des rates gemain der stat ze Wienn sein Haus, gelegen in dem Greutt vor Stubentor ze Wienn, zenechst…</td>
                 </tr>
             
@@ -2248,6 +2583,11 @@
                     <td class="src-col-idno"><a href="../../documents/QGW/Vienna_1177-1414_ready/1102.html">1102</a></td>
                     <td class="src-col-date">1386 II 10</td>
                     <td class="src-col-corpus">QGW II/1 (1177–1414)</td>
+                    <td class="src-col-label"><em>hern</em></td>
+                    <td class="src-col-role">
+                        <span class="role-chip role-chip-other">Sonstige</span>
+                        
+                    </td>
                     <td class="src-col-regest">Peter der Lueger verkauft mit Handen des Bürgermeisters hern Pauln des Holzkäuffels und des rates gemain der stat ze Wienn ein Haus, das er anstatt seines swehers Chunrats vom Steg, purger ze Steyr,…</td>
                 </tr>
             
@@ -2255,6 +2595,11 @@
                     <td class="src-col-idno"><a href="../../documents/QGW/Vienna_1177-1414_ready/1105.html">1105</a></td>
                     <td class="src-col-date">1386 IV 30</td>
                     <td class="src-col-corpus">QGW II/1 (1177–1414)</td>
+                    <td class="src-col-label"><em>hern</em></td>
+                    <td class="src-col-role">
+                        <span class="role-chip role-chip-other">Sonstige</span>
+                        
+                    </td>
                     <td class="src-col-regest">Ru/eger, . . des Neuz/zz/zleins sun nächste Erben, Gerung, der vischer von Swechent nächste Erben, und Kathrei witib nächste Erben, Merten seligen des Schreiber wittib, verkaufen mit Handen des…</td>
                 </tr>
             
@@ -2262,6 +2607,11 @@
                     <td class="src-col-idno"><a href="../../documents/QGW/Vienna_1177-1414_ready/1106.html">1106</a></td>
                     <td class="src-col-date">1386 VI 19</td>
                     <td class="src-col-corpus">QGW II/1 (1177–1414)</td>
+                    <td class="src-col-label"><em>-</em></td>
+                    <td class="src-col-role">
+                        <span class="role-chip role-chip-other">Sonstige</span>
+                        
+                    </td>
                     <td class="src-col-regest">Fridreich von Tierna verkauft mit Händen des Bürgermeisters Pauln des Holzkeuffels und des rates gemain der stat ze Wienn seine padstuben, genant die Perliebinne, an ainem tail gelegen an dem…</td>
                 </tr>
             
@@ -2269,6 +2619,11 @@
                     <td class="src-col-idno"><a href="../../documents/QGW/Vienna_1177-1414_ready/1108.html">1108</a></td>
                     <td class="src-col-date">1386 X 13</td>
                     <td class="src-col-corpus">QGW II/1 (1177–1414)</td>
+                    <td class="src-col-label"><em>-</em></td>
+                    <td class="src-col-role">
+                        <span class="role-chip role-chip-issuer">Aussteller*in</span>
+                        
+                    </td>
                     <td class="src-col-regest">Paul der Holzcheuffel, purgermaister, und der rat gemain der stat ze Wienn stellen einen Schuldbrief aus hern Fridreichen von Liechtenstain, marschalichen in Kernden, chamrer in Steyr, einen…</td>
                 </tr>
             
@@ -2276,6 +2631,11 @@
                     <td class="src-col-idno"><a href="../../documents/QGW/Vienna_1177-1414_ready/1152.html">1152</a></td>
                     <td class="src-col-date">1388 VI 12</td>
                     <td class="src-col-corpus">QGW II/1 (1177–1414)</td>
+                    <td class="src-col-label"><em>hern</em></td>
+                    <td class="src-col-role">
+                        <span class="role-chip role-chip-recipient">Empfänger*in</span>
+                        
+                    </td>
                     <td class="src-col-regest">Ulreich der Stuchs und Kathrei, seine Hausfrau, verkaufen mit Handen des Schönen Niclas ze Su/efring, pergmaister der erbern geistleichen herren ze Allerheiligental ze Maurbach, des Ordens von…</td>
                 </tr>
             
@@ -2283,6 +2643,11 @@
                     <td class="src-col-idno"><a href="../../documents/QGW/Vienna_1177-1414_ready/1169.html">1169</a></td>
                     <td class="src-col-date">1388 XI 05</td>
                     <td class="src-col-corpus">QGW II/1 (1177–1414)</td>
+                    <td class="src-col-label"><em>hern</em></td>
+                    <td class="src-col-role">
+                        <span class="role-chip role-chip-witness">Zeuge / Siegler*in</span>
+                        
+                    </td>
                     <td class="src-col-regest">Wernhart der Alhartinger von Passau und Dorothe, seine Hausfrau, stellen einen schuldbrief aus dem Wiener Bürger hern Pilgreimen dem Sneczel einen Schuldbrief über 30 lb dn. aus, rückzahlbar an…</td>
                 </tr>
             
@@ -2290,6 +2655,11 @@
                     <td class="src-col-idno"><a href="../../documents/QGW/Vienna_1177-1414_ready/1186.html">1186</a></td>
                     <td class="src-col-date">1390 II 03</td>
                     <td class="src-col-corpus">QGW II/1 (1177–1414)</td>
+                    <td class="src-col-label"><em>hern</em></td>
+                    <td class="src-col-role">
+                        <span class="role-chip role-chip-witness">Zeuge / Siegler*in</span>
+                        
+                    </td>
                     <td class="src-col-regest">Chunrat der Sparnranft von Engschalichstorf und Kunigunt, seine Hausfrau, verkaufen mit Handen Hannsen von Eslarn, statrichter ze Wienn und herzoglichen Bergmeisters ze Medlikch, ihres Kaufgutes…</td>
                 </tr>
             
@@ -2297,6 +2667,11 @@
                     <td class="src-col-idno"><a href="../../documents/QGW/Vienna_1177-1414_ready/1260.html">1260</a></td>
                     <td class="src-col-date">1393 III 18</td>
                     <td class="src-col-corpus">QGW II/1 (1177–1414)</td>
+                    <td class="src-col-label"><em>-</em></td>
+                    <td class="src-col-role">
+                        <span class="role-chip role-chip-recipient">Empfänger*in</span>
+                        
+                    </td>
                     <td class="src-col-regest">Fridreich von Tierna gibt nach dem Gebote Herzog Rudolfs IV. dem Wiener Bürger Pauln dem Holzcha/euffel und seiner Hausfrau Christein ein halbes viertail aus einem zentner u/enslid geltes purkrechts,…</td>
                 </tr>
             
@@ -2304,6 +2679,11 @@
                     <td class="src-col-idno"><a href="../../documents/QGW/Vienna_1177-1414_ready/1262.html">1262</a></td>
                     <td class="src-col-date">1393 IV 14</td>
                     <td class="src-col-corpus">QGW II/1 (1177–1414)</td>
+                    <td class="src-col-label"><em>hern</em></td>
+                    <td class="src-col-role">
+                        <span class="role-chip role-chip-recipient">Empfänger*in</span>
+                        
+                    </td>
                     <td class="src-col-regest">Hanns, kaplan der ewigen mess, die Marchart selig der Ansmalz gewidemt und gestift hat auf Unser Fraun altar in sand Rueprechts chapellen an dem Chienmarkcht ze Wienn, gibt nach dem Gebote Herzog…</td>
                 </tr>
             
@@ -2311,6 +2691,11 @@
                     <td class="src-col-idno"><a href="../../documents/QGW/Vienna_1177-1414_ready/1267.html">1267</a></td>
                     <td class="src-col-date">1393 VII 08</td>
                     <td class="src-col-corpus">QGW II/1 (1177–1414)</td>
+                    <td class="src-col-label"><em>-</em></td>
+                    <td class="src-col-role">
+                        <span class="role-chip role-chip-recipient">Empfänger*in</span>
+                        
+                    </td>
                     <td class="src-col-regest">Erhart der Suez/zz/z, Fridreichs seligen sun sun Friedreichs seligen des Suez/zz/z Gatte bei fraun Waltpurgen, beurkundet einen Vergleich mit fraun Kristein, weilent Perchtolts des Altenperger…</td>
                 </tr>
             
@@ -2318,6 +2703,11 @@
                     <td class="src-col-idno"><a href="../../documents/QGW/Vienna_1177-1414_ready/1300.html">1300</a></td>
                     <td class="src-col-date">1395 IV 03</td>
                     <td class="src-col-corpus">QGW II/1 (1177–1414)</td>
+                    <td class="src-col-label"><em>-</em></td>
+                    <td class="src-col-role">
+                        <span class="role-chip role-chip-recipient">Empfänger*in</span>
+                        
+                    </td>
                     <td class="src-col-regest">Niclas, abt dacz dem Heiligenchra/euz, und der convent gemain daselbns , geben nach dem Gebote Herzog Rudolfs IV. dem Wiener Bürger Pauln dem Holzkäufel und seiner Hausfrau Christein 4 lb dn. geltes…</td>
                 </tr>
             
@@ -2325,6 +2715,11 @@
                     <td class="src-col-idno"><a href="../../documents/Stadtbuecher/Band_1_1395-1400_ready/31.html">31</a></td>
                     <td class="src-col-date">(1395 April 9, Wien)</td>
                     <td class="src-col-corpus">Stadtbücher Bd. 1 (1395–1400)</td>
+                    <td class="src-col-label"><em>prouidos viros</em></td>
+                    <td class="src-col-role">
+                        <span class="role-chip role-chip-other">Sonstige</span>
+                        
+                    </td>
                     <td class="src-col-regest">Notariatsinstrument, 2 Zg., S (Indez: Item instrument des geschefts hern Petreins korhern Sanctum Stephanum) Hern Petern, korherren zu Sand Stephan, pharrer zu Burnicz, geschefft. In nomine domini.…</td>
                 </tr>
             
@@ -2332,6 +2727,11 @@
                     <td class="src-col-idno"><a href="../../documents/QGW/Vienna_1177-1414_ready/1323.html">1323</a></td>
                     <td class="src-col-date">1396 I 24</td>
                     <td class="src-col-corpus">QGW II/1 (1177–1414)</td>
+                    <td class="src-col-label"><em>hern</em></td>
+                    <td class="src-col-role">
+                        <span class="role-chip role-chip-other">Sonstige</span>
+                        
+                    </td>
                     <td class="src-col-regest">Andre an sand Peters freithof, purger ze Wienn, und ausrichter und volfürer des geschäftz, so her Hanns der Posch, weilnt des probsts chaplan, an seinen lesten Zeiten getan hat, verkauft mit Handen…</td>
                 </tr>
             
@@ -2339,6 +2739,11 @@
                     <td class="src-col-idno"><a href="../../documents/QGW/Vienna_1177-1414_ready/1337.html">1337</a></td>
                     <td class="src-col-date">1396 V 31</td>
                     <td class="src-col-corpus">QGW II/1 (1177–1414)</td>
+                    <td class="src-col-label"><em>hern</em></td>
+                    <td class="src-col-role">
+                        <span class="role-chip role-chip-other">Sonstige</span>
+                        
+                    </td>
                     <td class="src-col-regest">Michel, Ortolfs seligen sun sun, Ortolf seligen des ledrer, bei seiner hausfraun Annen, verkauft mit Handen des Bürgermeisters hern Pauln des Holzcheuffels und des rats gemain der stat ze Wienn ein…</td>
                 </tr>
             
@@ -2346,6 +2751,11 @@
                     <td class="src-col-idno"><a href="../../documents/QGW/Vienna_1177-1414_ready/1339.html">1339</a></td>
                     <td class="src-col-date">1396 VI 22</td>
                     <td class="src-col-corpus">QGW II/1 (1177–1414)</td>
+                    <td class="src-col-label"><em>-</em></td>
+                    <td class="src-col-role">
+                        <span class="role-chip role-chip-issuer">Aussteller*in</span>
+                        
+                    </td>
                     <td class="src-col-regest">Paul der Holzkeuffel, purgermaister, und der rat gemain der stat ze Wienne beurkunden, dass vor ihnen Hanns der Chettner an ainem tail die Güter, welche Jacob der Chetner, seines Bruders Chunrats des…</td>
                 </tr>
             
@@ -2353,6 +2763,11 @@
                     <td class="src-col-idno"><a href="../../documents/Stadtbuecher/Band_1_1395-1400_ready/78.html">78</a></td>
                     <td class="src-col-date">1396 August 31</td>
                     <td class="src-col-corpus">Stadtbücher Bd. 1 (1395–1400)</td>
+                    <td class="src-col-label"><em>hern</em></td>
+                    <td class="src-col-role">
+                        <span class="role-chip role-chip-witness">Zeuge / Siegler*in</span>
+                        
+                    </td>
                     <td class="src-col-regest">-</td>
                 </tr>
             
@@ -2360,6 +2775,11 @@
                     <td class="src-col-idno"><a href="../../documents/QGW/Vienna_1177-1414_ready/1350.html">1350</a></td>
                     <td class="src-col-date">1396 XI 25</td>
                     <td class="src-col-corpus">QGW II/1 (1177–1414)</td>
+                    <td class="src-col-label"><em>hern</em></td>
+                    <td class="src-col-role">
+                        <span class="role-chip role-chip-recipient">Empfänger*in</span>
+                        
+                    </td>
                     <td class="src-col-regest">Hanns, Kaplan der Kapelle sand Kathrein, gelegen in Allerheiligen tu/omkirchen dacz sand Steffan ze Wienn, und Kaplan der von hern Perichtold dem Geuchramer, guter gedechtnusse, gestifteten…</td>
                 </tr>
             
@@ -2367,6 +2787,11 @@
                     <td class="src-col-idno"><a href="../../documents/QGW/Vienna_1177-1414_ready/1367.html">1367</a></td>
                     <td class="src-col-date">1397 VI 11</td>
                     <td class="src-col-corpus">QGW II/1 (1177–1414)</td>
+                    <td class="src-col-label"><em>-</em></td>
+                    <td class="src-col-role">
+                        <span class="role-chip role-chip-issuer">Aussteller*in</span><span class="role-chip role-chip-witness">Zeuge / Siegler*in</span>
+                        
+                    </td>
                     <td class="src-col-regest">Paul der Würffel, purgermaister zu Wienn, Paul der Holzcheuffel, Chunrat der Ramperstorffer, purger ze Wienn, Ulreich der Herwart, statschreiber, beurkunden die Entscheidung in dem von den Erben…</td>
                 </tr>
             
@@ -2374,6 +2799,11 @@
                     <td class="src-col-idno"><a href="../../documents/Stadtbuecher/Band_1_1395-1400_ready/275.html">276</a></td>
                     <td class="src-col-date">(1398 Juni 7, Wien)</td>
                     <td class="src-col-corpus">Stadtbücher Bd. 1 (1395–1400)</td>
+                    <td class="src-col-label"><em>-</em></td>
+                    <td class="src-col-role">
+                        
+                        -
+                    </td>
                     <td class="src-col-regest">(Indez: Item ain verczeichbrief Michel des Kemmel) (foLI6r) Ich Michel der Kemml, sunWolffharts sun des Kemleins, dem got genad, vergich und tun chund allen den, die den brief lesent oder horent…</td>
                 </tr>
             
@@ -2381,6 +2811,11 @@
                     <td class="src-col-idno"><a href="../../documents/Stadtbuecher/Band_1_1395-1400_ready/545.html">545</a></td>
                     <td class="src-col-date">(1399 Oktober 12, Wien)</td>
                     <td class="src-col-corpus">Stadtbücher Bd. 1 (1395–1400)</td>
+                    <td class="src-col-label"><em>erbern|hern</em></td>
+                    <td class="src-col-role">
+                        <span class="role-chip role-chip-witness">Zeuge / Siegler*in</span>
+                        
+                    </td>
                     <td class="src-col-regest">pr. sehr., 2 Zg., S (Index: !tern gescheftbrief Hannsen des Prenner Mareharts sun) (fol.93v) Ich Hanns der Prenner, Marcharts sun des Prenner von Newnburch markchthalben, dem got genad, vergich und…</td>
                 </tr>
             
@@ -2388,6 +2823,11 @@
                     <td class="src-col-idno"><a href="../../documents/QGW/Vienna_1177-1414_ready/1443.html">1443</a></td>
                     <td class="src-col-date">1399 XI 03</td>
                     <td class="src-col-corpus">QGW II/1 (1177–1414)</td>
+                    <td class="src-col-label"><em>hern</em></td>
+                    <td class="src-col-role">
+                        <span class="role-chip role-chip-other">Sonstige</span>
+                        
+                    </td>
                     <td class="src-col-regest">Hanns der Spiegler, Herzog Albrechts Kellerschreiber, bestätigt, dass ihm seine swieger frau Margret, Hannsen witib Hannsen des Plesperger witib, zu irer tochter Elspeten, seiner Hausfrau der auch…</td>
                 </tr>
             
@@ -2395,6 +2835,11 @@
                     <td class="src-col-idno"><a href="../../documents/Stadtbuecher/Band_1_1395-1400_ready/475.html">475</a></td>
                     <td class="src-col-date">(1399 Dezember 8, Wien)</td>
                     <td class="src-col-corpus">Stadtbücher Bd. 1 (1395–1400)</td>
+                    <td class="src-col-label"><em>-</em></td>
+                    <td class="src-col-role">
+                        <span class="role-chip role-chip-other">Sonstige</span>
+                        
+                    </td>
                     <td class="src-col-regest">pr. mü., Einbr. 2 Zg., Ma (Inde:c: Item gescheftbrief Hansen des PI~sperrger) Ausstellung einer Ratsurkunde darüber Wir Pawl der Holczkewffel, zu den zeiten purgermaister, und der gancze rat gemain…</td>
                 </tr>
             
@@ -2402,6 +2847,11 @@
                     <td class="src-col-idno"><a href="../../documents/QGW/Vienna_1177-1414_ready/1463.html">1463</a></td>
                     <td class="src-col-date">1400 III 26</td>
                     <td class="src-col-corpus">QGW II/1 (1177–1414)</td>
+                    <td class="src-col-label"><em>hern</em></td>
+                    <td class="src-col-role">
+                        <span class="role-chip role-chip-other">Sonstige</span>
+                        
+                    </td>
                     <td class="src-col-regest">Wernhart, der slosser ze Wienn, und Angnes, seine Hausfrau, verkaufen mit Handen des Bürgermeisters hern Pauln des Holzkeuffels und des rates gemain der stat ze Wienn 3 lb 60 dn. geltes purkchrechtes…</td>
                 </tr>
             
@@ -2409,6 +2859,11 @@
                     <td class="src-col-idno"><a href="../../documents/QGW/Vienna_1177-1414_ready/1473.html">1473</a></td>
                     <td class="src-col-date">1400 IX 07</td>
                     <td class="src-col-corpus">QGW II/1 (1177–1414)</td>
+                    <td class="src-col-label"><em>-</em></td>
+                    <td class="src-col-role">
+                        <span class="role-chip role-chip-issuer">Aussteller*in</span>
+                        
+                    </td>
                     <td class="src-col-regest">Paul der Holzke/auffel, purgermaister, und der rat gemain der stat ze Wienn beurkunden, dass Bürger ausrichter und volfurer des geschefftes her Simeon, pharrer dacz sand Peter ze Wienn, Bürger…</td>
                 </tr>
             
@@ -2416,6 +2871,11 @@
                     <td class="src-col-idno"><a href="../../documents/Stadtbuecher/Band_1_1395-1400_ready/615.html">615</a></td>
                     <td class="src-col-date">1400 Dezember 2</td>
                     <td class="src-col-corpus">Stadtbücher Bd. 1 (1395–1400)</td>
+                    <td class="src-col-label"><em>hern</em></td>
+                    <td class="src-col-role">
+                        
+                        -
+                    </td>
                     <td class="src-col-regest">(Inde:z:: Item ain inantwurten Elspeten des Holczkeufleins uxor irm sun Stepfan) (fol.105v) Des nachsten phincztags vor sand Niklas tag hat der rat der stat ze Wienn mit leyb und mit gut ingeantwurt…</td>
                 </tr>
             
@@ -2423,6 +2883,11 @@
                     <td class="src-col-idno"><a href="../../documents/QGW/Vienna_1177-1414_ready/1508.html">1508</a></td>
                     <td class="src-col-date">1402 IV 25</td>
                     <td class="src-col-corpus">QGW II/1 (1177–1414)</td>
+                    <td class="src-col-label"><em>-</em></td>
+                    <td class="src-col-role">
+                        <span class="role-chip role-chip-issuer">Aussteller*in</span><span class="role-chip role-chip-witness">Zeuge / Siegler*in</span>
+                        
+                    </td>
                     <td class="src-col-regest">Paul der Holzcheuffel, purger ze Wienn, beurkundet seinen letzten Willen. Er schafft: 1. sein Wohnhaus, gelegen an dem Kienmarkcht ze Wienn zenechst dem haus, das weilent Andres seligen des…</td>
                 </tr>
             
@@ -2430,6 +2895,11 @@
                     <td class="src-col-idno"><a href="../../documents/QGW/Vienna_1177-1414_ready/1509.html">1509</a></td>
                     <td class="src-col-date">1402 IV 27</td>
                     <td class="src-col-corpus">QGW II/1 (1177–1414)</td>
+                    <td class="src-col-label"><em>-</em></td>
+                    <td class="src-col-role">
+                        <span class="role-chip role-chip-recipient">Empfänger*in</span>
+                        
+                    </td>
                     <td class="src-col-regest">Paul der Wurffel, burgermaister, und der rat gemain der stat ze Wienn verpflichten sich gegen Paul den Holzkäufel und seine Geschäftsvollstrecker zur Ausführung des in no 1508 beurkundeten…</td>
                 </tr>
             
@@ -2462,11 +2932,13 @@
         </div>
     </footer>
 
-    <script src="../../static/js/core.js?v=20260511112948"></script>
-    <script src="../../static/js/provenance.js?v=20260511112948"></script>
-    <script src="../../static/js/basket.js?v=20260511112948"></script>
+    <script src="../../static/js/core.js?v=20260511125458"></script>
+    <script src="../../static/js/tip.js?v=20260511125458"></script>
+    <script src="../../static/js/hint.js?v=20260511125458"></script>
+    <script src="../../static/js/basket.js?v=20260511125458"></script>
     
-<script src="../../static/js/tooltips.js?v=20260511112948"></script>
+<script src="../../static/js/profile.js?v=20260511125458"></script>
+<script src="../../static/js/basket-mount.js?v=20260511125458"></script>
 
 </body>
 </html>

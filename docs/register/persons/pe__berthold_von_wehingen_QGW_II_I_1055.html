@@ -3,22 +3,22 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <meta http-equiv="Content-Security-Policy" content="default-src 'self'; script-src 'self'; style-src 'self'; font-src 'self'; img-src 'self' data: https://images.monasterium.net https://www.monasterium.net; connect-src 'self'; frame-ancestors 'none'; base-uri 'self'; form-action 'self'; upgrade-insecure-requests">
+    <meta http-equiv="Content-Security-Policy" content="default-src 'self'; script-src 'self'; style-src 'self'; font-src 'self'; img-src 'self' data: https://images.monasterium.net https://www.monasterium.net; connect-src 'self'; base-uri 'self'; form-action 'self'; upgrade-insecure-requests">
     <meta name="referrer" content="strict-origin-when-cross-origin">
     <meta http-equiv="Permissions-Policy" content="camera=(), microphone=(), geolocation=(), interest-cohort=()">
     <title>Berthold von Wehingen von Freising, Datenbank</title>
     <link rel="preload" as="font" type="font/woff2" crossorigin
           href="../../static/fonts/inter-400-latin.woff2">
-    <link rel="stylesheet" href="../../static/css/fonts.css?v=20260511112948">
-    <link rel="stylesheet" href="../../static/css/tokens.css?v=20260511112948">
-    <link rel="stylesheet" href="../../static/css/base.css?v=20260511112948">
-    <link rel="stylesheet" href="../../static/css/components.css?v=20260511112948">
-    <link rel="stylesheet" href="../../static/css/responsive.css?v=20260511112948">
-    <link rel="stylesheet" href="../../static/css/print.css?v=20260511112948">
-    <link rel="stylesheet" href="../../static/css/provenance.css?v=20260511112948">
+    <link rel="stylesheet" href="../../static/css/fonts.css?v=20260511125458">
+    <link rel="stylesheet" href="../../static/css/tokens.css?v=20260511125458">
+    <link rel="stylesheet" href="../../static/css/base.css?v=20260511125458">
+    <link rel="stylesheet" href="../../static/css/components.css?v=20260511125458">
+    <link rel="stylesheet" href="../../static/css/responsive.css?v=20260511125458">
+    <link rel="stylesheet" href="../../static/css/print.css?v=20260511125458">
+    <link rel="stylesheet" href="../../static/css/tip.css?v=20260511125458">
     
-<link rel="stylesheet" href="../../static/css/document.css?v=20260511112948">
-<link rel="stylesheet" href="../../static/css/person.css?v=20260511112948">
+<link rel="stylesheet" href="../../static/css/document.css?v=20260511125458">
+<link rel="stylesheet" href="../../static/css/person.css?v=20260511125458">
 
 </head>
 <body data-root-path="../.."
@@ -48,8 +48,6 @@
         <a href="../../register/persons.html">Personen</a>
         
         <a href="../../register/orgs.html">Organisationen</a>
-        
-        <a href="../../register/places.html">Orte</a>
         
     </div>
 </div>
@@ -91,7 +89,7 @@
     </div>
 </div>
 
-                <a href="../../korb.html" class="nav-basket" aria-label="Wissenskorb">
+                <a href="../../korb.html" class="nav-basket" aria-label="Datenkorb">
                     <svg width="18" height="18" viewBox="0 0 18 18" fill="none" aria-hidden="true">
                         <path d="M3 5h12l-1.2 8.5a1 1 0 0 1-1 .85H5.2a1 1 0 0 1-1-.85L3 5z"
                               stroke="currentColor" stroke-width="1.4" fill="none"
@@ -112,11 +110,23 @@
 
     <div class="person-toolbar">
         <div class="person-toolbar-inner">
-            <nav class="person-breadcrumb" aria-label="Position">
-                <a href="../../register/persons.html">Personenregister</a>
-                <span class="bc-sep">&rsaquo;</span>
-                <span class="bc-doc"><strong>Berthold von Wehingen von Freising</strong></span>
-            </nav>
+            <div class="person-toolbar-row">
+                <nav class="person-breadcrumb" aria-label="Position">
+                    <a href="../../register/persons.html">Personenregister</a>
+                    <span class="bc-sep">&rsaquo;</span>
+                    <span class="bc-doc"><strong>Berthold von Wehingen von Freising</strong></span>
+                </nav>
+                <div class="person-toolbar-actions">
+                    <span class="toolbar-basket-mount"
+                          data-basket-type="person"
+                          data-basket-id="pe__berthold_von_wehingen_QGW_II_I_1055"
+                          data-basket-label="Berthold von Wehingen von Freising"
+                          data-basket-url="register/persons/pe__berthold_von_wehingen_QGW_II_I_1055.html"
+                          data-basket-sex="m"
+                          data-basket-active-min="1377"
+                          data-basket-active-max="1405"></span>
+                </div>
+            </div>
             <div class="person-toolbar-meta">
                 <span class="meta-pair">
                     <span class="meta-label">Geschlecht</span>
@@ -124,11 +134,41 @@
                 </span>
                 
                 <span class="meta-pair">
-                    <span class="meta-label">Belegt</span>
+                    <span class="meta-label">Belegt
+<span class="tip-wrap">
+    <button type="button" class="tip-trigger tip-trigger--icon"
+            aria-expanded="false" aria-haspopup="dialog"
+            aria-controls="person-belegt"
+            data-tip="person-belegt"
+            aria-label="Definition: Beleg-Zeitraum">
+        <svg width="13" height="13" viewBox="0 0 16 16" aria-hidden="true">
+            <circle cx="8" cy="8" r="7" stroke="currentColor" stroke-width="1.4" fill="none"/>
+            <text x="8" y="11.6" text-anchor="middle" font-size="9.5" font-weight="700"
+                  fill="currentColor" font-family="Georgia, serif">i</text>
+        </svg>
+    </button>
+    <aside class="tip-popover tip-popover--glossary"
+           id="person-belegt" role="dialog" aria-hidden="true"
+           aria-label="Definition: Beleg-Zeitraum">
+        <header class="tip-head">
+            <h3 class="tip-title">Beleg-Zeitraum</h3>
+            <button type="button" class="tip-close" aria-label="Schlie&szlig;en">&times;</button>
+        </header>
+        <div class="tip-body">
+            <p>Erste und letzte Datierung einer Quelle, in der die Person erscheint. Bei einzelnem Beleg wird nur ein Jahr angegeben.</p>
+            
+        </div>
+    </aside>
+</span>
+</span>
                     <span class="meta-value">1377 bis 1405</span>
                 </span>
                 
                 
+                <span class="meta-pair">
+                    <span class="meta-label">Quellen</span>
+                    <span class="meta-value">14</span>
+                </span>
                 <span class="meta-pair person-id-pair">
                     <span class="meta-label">ID</span>
                     <code class="meta-value person-id">pe__berthold_von_wehingen_QGW_II_I_1055</code>
@@ -145,16 +185,54 @@
             
         </h1>
         
+        
         <p class="person-note">Probst St. Stephan, Bischof von Freising, Herzöglicher Kanzler</p>
         
         
-        <p class="person-titles">
+        <p class="person-titles" data-collapsible="22">
             <span class="pt-label">In den Quellen genannt als</span>
             <span class="pt-chip">hern</span><span class="pt-chip">her</span><span class="pt-chip">Bergmeisters|hern</span>
         </p>
         
         
+        
+        <p class="person-extlinks">
+            
+            <a class="ext-link" href="https://de.wikipedia.org/wiki/Berthold_von_Wehingen" target="_blank" rel="noopener noreferrer">Authority-Eintrag</a>
+            
+        </p>
+        
     </header>
+
+    
+    <section class="role-strip" aria-label="Rollen in Rechtsgeschäften">
+        <h2 class="role-strip-title">Rollen in Rechtsgeschäften</h2>
+        <div class="role-strip-cells">
+            
+            <div class="role-cell role-cell-issuer is-zero">
+                <span class="role-cell-count">0</span>
+                <span class="role-cell-label">Aussteller*in</span>
+            </div>
+            
+            <div class="role-cell role-cell-recipient">
+                <span class="role-cell-count">2</span>
+                <span class="role-cell-label">Empfänger*in</span>
+            </div>
+            
+            <div class="role-cell role-cell-witness">
+                <span class="role-cell-count">7</span>
+                <span class="role-cell-label">Zeuge / Siegler*in</span>
+            </div>
+            
+            <div class="role-cell role-cell-other">
+                <span class="role-cell-count">2</span>
+                <span class="role-cell-label">Sonstige</span>
+            </div>
+            
+        </div>
+        <p class="role-strip-hint">Summe Rollen-Belegungen: 11. Mehrfach-Rollen pro Quelle sind möglich.</p>
+    </section>
+    
 
     
 
@@ -180,6 +258,7 @@
                 <span class="rel-block-count">13</span>
                 <span class="rel-block-hint">Berufs- oder Amtsbezeichnung in Bezug auf eine Institution.</span>
             </header>
+            
             <table class="rel-table">
                 <thead>
                     <tr>
@@ -200,7 +279,7 @@
                         <td class="rel-col-label"><em>bischof</em></td>
                         <td class="rel-col-perspective">
                             
-                                Berthold von Wehingen von Freising → Bistum Freising
+                                Berthold von Wehingen von Freising &rsaquo; Bistum Freising
                             
                         </td>
                         <td class="rel-col-source">
@@ -219,7 +298,7 @@
                         <td class="rel-col-label"><em>Fr( isingensem) ep( iscopu) m</em></td>
                         <td class="rel-col-perspective">
                             
-                                Berthold von Wehingen von Freising → Bistum Freising
+                                Berthold von Wehingen von Freising &rsaquo; Bistum Freising
                             
                         </td>
                         <td class="rel-col-source">
@@ -238,7 +317,7 @@
                         <td class="rel-col-label"><em>cancellarium</em></td>
                         <td class="rel-col-perspective">
                             
-                                Berthold von Wehingen von Freising → Herzogtum Österreich
+                                Berthold von Wehingen von Freising &rsaquo; Herzogtum Österreich
                             
                         </td>
                         <td class="rel-col-source">
@@ -257,7 +336,7 @@
                         <td class="rel-col-label"><em>Kanzler</em></td>
                         <td class="rel-col-perspective">
                             
-                                Berthold von Wehingen von Freising → pe__wilhelm_herzog_von_oesterreich_QGW_II_I_1313
+                                Berthold von Wehingen von Freising &rsaquo; pe__wilhelm_herzog_von_oesterreich_QGW_II_I_1313
                             
                         </td>
                         <td class="rel-col-source">
@@ -276,7 +355,7 @@
                         <td class="rel-col-label"><em>bischoven</em></td>
                         <td class="rel-col-perspective">
                             
-                                Berthold von Wehingen von Freising → Bistum Freising
+                                Berthold von Wehingen von Freising &rsaquo; Bistum Freising
                             
                         </td>
                         <td class="rel-col-source">
@@ -295,7 +374,7 @@
                         <td class="rel-col-label"><em>Kanzler</em></td>
                         <td class="rel-col-perspective">
                             
-                                Berthold von Wehingen von Freising → pe__wilhelm_herzog_von_oesterreich_QGW_II_I_1313
+                                Berthold von Wehingen von Freising &rsaquo; pe__wilhelm_herzog_von_oesterreich_QGW_II_I_1313
                             
                         </td>
                         <td class="rel-col-source">
@@ -314,7 +393,7 @@
                         <td class="rel-col-label"><em>Bischof</em></td>
                         <td class="rel-col-perspective">
                             
-                                Berthold von Wehingen von Freising → Bistum Freising
+                                Berthold von Wehingen von Freising &rsaquo; Bistum Freising
                             
                         </td>
                         <td class="rel-col-source">
@@ -333,7 +412,7 @@
                         <td class="rel-col-label"><em>bischof</em></td>
                         <td class="rel-col-perspective">
                             
-                                Berthold von Wehingen von Freising → Bistum Freising
+                                Berthold von Wehingen von Freising &rsaquo; Bistum Freising
                             
                         </td>
                         <td class="rel-col-source">
@@ -352,7 +431,7 @@
                         <td class="rel-col-label"><em>Erzbischof</em></td>
                         <td class="rel-col-perspective">
                             
-                                Berthold von Wehingen von Freising → Bistum Salerno
+                                Berthold von Wehingen von Freising &rsaquo; Bistum Salerno
                             
                         </td>
                         <td class="rel-col-source">
@@ -371,7 +450,7 @@
                         <td class="rel-col-label"><em>probst</em></td>
                         <td class="rel-col-perspective">
                             
-                                Berthold von Wehingen von Freising → St. Stephan (Pfarr- und Domkirche)
+                                Berthold von Wehingen von Freising &rsaquo; St. Stephan (Pfarr- und Domkirche)
                             
                         </td>
                         <td class="rel-col-source">
@@ -390,7 +469,7 @@
                         <td class="rel-col-label"><em>Propstes</em></td>
                         <td class="rel-col-perspective">
                             
-                                Berthold von Wehingen von Freising → St. Stephan (Pfarr- und Domkirche)
+                                Berthold von Wehingen von Freising &rsaquo; St. Stephan (Pfarr- und Domkirche)
                             
                         </td>
                         <td class="rel-col-source">
@@ -409,7 +488,7 @@
                         <td class="rel-col-label"><em>probst</em></td>
                         <td class="rel-col-perspective">
                             
-                                Berthold von Wehingen von Freising → St. Stephan (Pfarr- und Domkirche)
+                                Berthold von Wehingen von Freising &rsaquo; St. Stephan (Pfarr- und Domkirche)
                             
                         </td>
                         <td class="rel-col-source">
@@ -428,7 +507,7 @@
                         <td class="rel-col-label"><em>probst</em></td>
                         <td class="rel-col-perspective">
                             
-                                Berthold von Wehingen von Freising → St. Stephan (Pfarr- und Domkirche)
+                                Berthold von Wehingen von Freising &rsaquo; St. Stephan (Pfarr- und Domkirche)
                             
                         </td>
                         <td class="rel-col-source">
@@ -446,18 +525,27 @@
         
         
         
+        
+        
+        
+        
+        
+        
     </section>
     
 
     
     <section class="person-sources" aria-label="Quellen mit Nennung">
         <h2 class="section-head">Quellen mit Nennung</h2>
+        
         <table class="person-source-table">
             <thead>
                 <tr>
                     <th scope="col" class="src-col-idno">Nr.</th>
                     <th scope="col" class="src-col-date">Datum</th>
                     <th scope="col" class="src-col-corpus">Quellenkorpus</th>
+                    <th scope="col" class="src-col-label">Bezeichnung</th>
+                    <th scope="col" class="src-col-role">Rolle</th>
                     <th scope="col" class="src-col-regest">Regest</th>
                 </tr>
             </thead>
@@ -467,6 +555,11 @@
                     <td class="src-col-idno"><a href="../../documents/QGW/Vienna_1177-1414_ready/910.html">910</a></td>
                     <td class="src-col-date">1377 VII 04</td>
                     <td class="src-col-corpus">QGW II/1 (1177–1414)</td>
+                    <td class="src-col-label"><em>Bergmeisters|hern</em></td>
+                    <td class="src-col-role">
+                        <span class="role-chip role-chip-other">Sonstige</span><span class="role-chip role-chip-witness">Zeuge / Siegler*in</span>
+                        
+                    </td>
                     <td class="src-col-regest">Chlar, Witwe Chunrats witib des Nu/eczleins, verkauft mit Handen Niclas, des Richters zu Sand Veit und mit Handen von Bergmeisters hern Perichtolts, probst der tumchirichen dacz sand Stephan ze…</td>
                 </tr>
             
@@ -474,6 +567,11 @@
                     <td class="src-col-idno"><a href="../../documents/QGW/Vienna_1177-1414_ready/911.html">911</a></td>
                     <td class="src-col-date">1377 VIII 14</td>
                     <td class="src-col-corpus">QGW II/1 (1177–1414)</td>
+                    <td class="src-col-label"><em>-</em></td>
+                    <td class="src-col-role">
+                        <span class="role-chip role-chip-witness">Zeuge / Siegler*in</span>
+                        
+                    </td>
                     <td class="src-col-regest">Jacob der Poll, chaplan Unser Vrowen chapellen, gelegen in der purger Rathaus ze Wienne, hern Ottenhaimen seligen Stiftung Geschäftsvollstrecker , Paul der Holzchouffel, purgermaister ze Wienne…</td>
                 </tr>
             
@@ -481,6 +579,11 @@
                     <td class="src-col-idno"><a href="../../documents/QGW/Vienna_1177-1414_ready/913.html">913</a></td>
                     <td class="src-col-date">1377 VIII 21</td>
                     <td class="src-col-corpus">QGW II/1 (1177–1414)</td>
+                    <td class="src-col-label"><em>hern</em></td>
+                    <td class="src-col-role">
+                        <span class="role-chip role-chip-witness">Zeuge / Siegler*in</span>
+                        
+                    </td>
                     <td class="src-col-regest">Jacob der Poll, chaplan Unser Vrowen chapellen, gelegen in der purger Rathaus ze Wienn, hern Ottenhaimen seligen Stiftung , Paul der Holzchau/effel, purgermaister ze Wienn , und Niclas der…</td>
                 </tr>
             
@@ -488,6 +591,11 @@
                     <td class="src-col-idno"><a href="../../documents/QGW/Vienna_1177-1414_ready/940.html">940</a></td>
                     <td class="src-col-date">1378 V 19</td>
                     <td class="src-col-corpus">QGW II/1 (1177–1414)</td>
+                    <td class="src-col-label"><em>hern</em></td>
+                    <td class="src-col-role">
+                        <span class="role-chip role-chip-witness">Zeuge / Siegler*in</span>
+                        
+                    </td>
                     <td class="src-col-regest">Mert vom Jaw/er, kapellan der kapellen sand Philipps und sant Jacobs, der heiligen zwelifpoten, gelegen in hern Lienharts sêligen hous des Pollen in der Hindern Pekchenstrasse ze Wienne , bestätigt,…</td>
                 </tr>
             
@@ -495,6 +603,11 @@
                     <td class="src-col-idno"><a href="../../documents/QGW/Vienna_1177-1414_ready/1055.html">1055</a></td>
                     <td class="src-col-date">1383 VII 31</td>
                     <td class="src-col-corpus">QGW II/1 (1177–1414)</td>
+                    <td class="src-col-label"><em>-</em></td>
+                    <td class="src-col-role">
+                        
+                        -
+                    </td>
                     <td class="src-col-regest">* Antonius de Sulmona, decretorum doctor , canonicus Sulmonensis , domini pape ( Urbani VI.) capellanus und päpstlicher Auditor , fällt eine Entscheidung in dem Streite zwischen Petrus dictus Wiert…</td>
                 </tr>
             
@@ -502,6 +615,11 @@
                     <td class="src-col-idno"><a href="../../documents/QGW/Vienna_1177-1414_ready/1223.html">1223</a></td>
                     <td class="src-col-date">1391 XI 29</td>
                     <td class="src-col-corpus">QGW II/1 (1177–1414)</td>
+                    <td class="src-col-label"><em>-</em></td>
+                    <td class="src-col-role">
+                        <span class="role-chip role-chip-witness">Zeuge / Siegler*in</span>
+                        
+                    </td>
                     <td class="src-col-regest">Lehensherr Hanns von Liechtenstain von Nicolspurkch, Herzog Albrechts Hofmeister, widmet zu der Kapelle Unserer Fraun auf der Stetten ze Wienn, deren Lehenschaft ihm, seinen Brüdern Hertneiden…</td>
                 </tr>
             
@@ -509,6 +627,11 @@
                     <td class="src-col-idno"><a href="../../documents/QGW/Vienna_1177-1414_ready/1336.html">1336</a></td>
                     <td class="src-col-date">1396 V 28</td>
                     <td class="src-col-corpus">QGW II/1 (1177–1414)</td>
+                    <td class="src-col-label"><em>-</em></td>
+                    <td class="src-col-role">
+                        <span class="role-chip role-chip-witness">Zeuge / Siegler*in</span>
+                        
+                    </td>
                     <td class="src-col-regest">Herzog Wilhalm genehmigt, dass sein liebsten getreun kamrer Laurenz den halben Werd, hie ze Wienn bei der stat an der Tuenau gelegen, den vormals die von Tierna Hannsen von Liechtenstain von…</td>
                 </tr>
             
@@ -516,6 +639,11 @@
                     <td class="src-col-idno"><a href="../../documents/Stadtbuecher/Band_1_1395-1400_ready/170.html">170</a></td>
                     <td class="src-col-date">1397 August 30</td>
                     <td class="src-col-corpus">Stadtbücher Bd. 1 (1395–1400)</td>
+                    <td class="src-col-label"><em>-</em></td>
+                    <td class="src-col-role">
+                        
+                        -
+                    </td>
                     <td class="src-col-regest">-</td>
                 </tr>
             
@@ -523,6 +651,11 @@
                     <td class="src-col-idno"><a href="../../documents/QGW/Vienna_1177-1414_ready/1382.html">1382</a></td>
                     <td class="src-col-date">1398 II 05</td>
                     <td class="src-col-corpus">QGW II/1 (1177–1414)</td>
+                    <td class="src-col-label"><em>-</em></td>
+                    <td class="src-col-role">
+                        <span class="role-chip role-chip-witness">Zeuge / Siegler*in</span>
+                        
+                    </td>
                     <td class="src-col-regest">Wilhelm vetter Herzog und Albrecht, vettern, herzogen ze Österreich, bringen zur allgemeinen Kenntnis, dass sie am letzten sant Anthonien tag (17. Jänner) zu Leuben mit dem Erzbischof von Salzburg…</td>
                 </tr>
             
@@ -530,6 +663,11 @@
                     <td class="src-col-idno"><a href="../../documents/Stadtbuecher/Band_1_1395-1400_ready/578.html">578</a></td>
                     <td class="src-col-date">1400 Juli 3</td>
                     <td class="src-col-corpus">Stadtbücher Bd. 1 (1395–1400)</td>
+                    <td class="src-col-label"><em>-</em></td>
+                    <td class="src-col-role">
+                        
+                        -
+                    </td>
                     <td class="src-col-regest">Einbr. 2 Zg. (Inde:z:: Item frewntschaft Preiden des von Freysins diener uxor) Desselben tages kom fur den rat fraw Preyd, Chunrats des von Freysing diener, hawsfraw, und hat da beweist mit den…</td>
                 </tr>
             
@@ -537,6 +675,11 @@
                     <td class="src-col-idno"><a href="../../documents/QGW/Vienna_1177-1414_ready/1474.html">1474</a></td>
                     <td class="src-col-date">1400 IX 24</td>
                     <td class="src-col-corpus">QGW II/1 (1177–1414)</td>
+                    <td class="src-col-label"><em>hern</em></td>
+                    <td class="src-col-role">
+                        <span class="role-chip role-chip-recipient">Empfänger*in</span>
+                        
+                    </td>
                     <td class="src-col-regest">Herzog Wilhelm weist an seinen Kanzler hern Berchtolden, bischoven zu Freisingen, an, in dem Streite, der Streit zwischen seinem Münzmeister zu Wien Dietreichen dem Prenner und Jörgen dem Dienstlein…</td>
                 </tr>
             
@@ -544,6 +687,11 @@
                     <td class="src-col-idno"><a href="../../documents/QGW/Vienna_1177-1414_ready/1542 a.html">1542 a</a></td>
                     <td class="src-col-date">1403 VI 09</td>
                     <td class="src-col-corpus">QGW II/1 (1177–1414)</td>
+                    <td class="src-col-label"><em>-</em></td>
+                    <td class="src-col-role">
+                        
+                        -
+                    </td>
                     <td class="src-col-regest">Herzog Wilhelm beurkundet, dass vor seinem Kanzler Bischof Berthold von Freising, seinem Hofmeister Rudolf von Walsse, seinem Landmarschall Friedreich von Walsse, Fridreichen von Stubenberg, Herzogs…</td>
                 </tr>
             
@@ -551,6 +699,11 @@
                     <td class="src-col-idno"><a href="../../documents/QGW/Vienna_1177-1414_ready/1545.html">1545</a></td>
                     <td class="src-col-date">1403 VI 28</td>
                     <td class="src-col-corpus">QGW II/1 (1177–1414)</td>
+                    <td class="src-col-label"><em>her</em></td>
+                    <td class="src-col-role">
+                        <span class="role-chip role-chip-recipient">Empfänger*in</span>
+                        
+                    </td>
                     <td class="src-col-regest">Bruder Niclas von Neunburg, prior der geistleichen herren closter Unser Fraun bruder, des ordens von dem perg Carmelo, gelegen an der Herzogen hof ze Wienn, und der Convent bestätigen, aus der…</td>
                 </tr>
             
@@ -558,6 +711,11 @@
                     <td class="src-col-idno"><a href="../../documents/QGW/Vienna_1177-1414_ready/1611.html">1611</a></td>
                     <td class="src-col-date">1405 I 01</td>
                     <td class="src-col-corpus">QGW II/1 (1177–1414)</td>
+                    <td class="src-col-label"><em>-</em></td>
+                    <td class="src-col-role">
+                        
+                        -
+                    </td>
                     <td class="src-col-regest">* Papst Innocenz VII. ersucht den Bürgermeister, Richter, Rath und die Gemeinde der Stadt Wien, den Erzbischof Berthold von Salzburg, dem schon sein Vorgänger Bonifaz IX. die Annahme der…</td>
                 </tr>
             
@@ -590,11 +748,13 @@
         </div>
     </footer>
 
-    <script src="../../static/js/core.js?v=20260511112948"></script>
-    <script src="../../static/js/provenance.js?v=20260511112948"></script>
-    <script src="../../static/js/basket.js?v=20260511112948"></script>
+    <script src="../../static/js/core.js?v=20260511125458"></script>
+    <script src="../../static/js/tip.js?v=20260511125458"></script>
+    <script src="../../static/js/hint.js?v=20260511125458"></script>
+    <script src="../../static/js/basket.js?v=20260511125458"></script>
     
-<script src="../../static/js/tooltips.js?v=20260511112948"></script>
+<script src="../../static/js/profile.js?v=20260511125458"></script>
+<script src="../../static/js/basket-mount.js?v=20260511125458"></script>
 
 </body>
 </html>

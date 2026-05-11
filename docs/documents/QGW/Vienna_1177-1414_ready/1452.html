@@ -3,21 +3,21 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <meta http-equiv="Content-Security-Policy" content="default-src 'self'; script-src 'self'; style-src 'self'; font-src 'self'; img-src 'self' data: https://images.monasterium.net https://www.monasterium.net; connect-src 'self'; frame-ancestors 'none'; base-uri 'self'; form-action 'self'; upgrade-insecure-requests">
+    <meta http-equiv="Content-Security-Policy" content="default-src 'self'; script-src 'self'; style-src 'self'; font-src 'self'; img-src 'self' data: https://images.monasterium.net https://www.monasterium.net; connect-src 'self'; base-uri 'self'; form-action 'self'; upgrade-insecure-requests">
     <meta name="referrer" content="strict-origin-when-cross-origin">
     <meta http-equiv="Permissions-Policy" content="camera=(), microphone=(), geolocation=(), interest-cohort=()">
     <title>Nr. 1452 (1400 II 06), Datenbank</title>
     <link rel="preload" as="font" type="font/woff2" crossorigin
           href="../../../static/fonts/inter-400-latin.woff2">
-    <link rel="stylesheet" href="../../../static/css/fonts.css?v=20260511112948">
-    <link rel="stylesheet" href="../../../static/css/tokens.css?v=20260511112948">
-    <link rel="stylesheet" href="../../../static/css/base.css?v=20260511112948">
-    <link rel="stylesheet" href="../../../static/css/components.css?v=20260511112948">
-    <link rel="stylesheet" href="../../../static/css/responsive.css?v=20260511112948">
-    <link rel="stylesheet" href="../../../static/css/print.css?v=20260511112948">
-    <link rel="stylesheet" href="../../../static/css/provenance.css?v=20260511112948">
+    <link rel="stylesheet" href="../../../static/css/fonts.css?v=20260511125458">
+    <link rel="stylesheet" href="../../../static/css/tokens.css?v=20260511125458">
+    <link rel="stylesheet" href="../../../static/css/base.css?v=20260511125458">
+    <link rel="stylesheet" href="../../../static/css/components.css?v=20260511125458">
+    <link rel="stylesheet" href="../../../static/css/responsive.css?v=20260511125458">
+    <link rel="stylesheet" href="../../../static/css/print.css?v=20260511125458">
+    <link rel="stylesheet" href="../../../static/css/tip.css?v=20260511125458">
     
-<link rel="stylesheet" href="../../../static/css/document.css?v=20260511112948">
+<link rel="stylesheet" href="../../../static/css/document.css?v=20260511125458">
 <link rel="canonical" href="documents/QGW/Vienna_1177-1414_ready/1452.html">
 <meta name="citation_title" content="Nr. 1452 (1400 II 06)">
 <meta name="citation_collection" content="QGW II/1 (1177–1414)">
@@ -50,8 +50,6 @@
         <a href="../../../register/persons.html">Personen</a>
         
         <a href="../../../register/orgs.html">Organisationen</a>
-        
-        <a href="../../../register/places.html">Orte</a>
         
     </div>
 </div>
@@ -93,7 +91,7 @@
     </div>
 </div>
 
-                <a href="../../../korb.html" class="nav-basket" aria-label="Wissenskorb">
+                <a href="../../../korb.html" class="nav-basket" aria-label="Datenkorb">
                     <svg width="18" height="18" viewBox="0 0 18 18" fill="none" aria-hidden="true">
                         <path d="M3 5h12l-1.2 8.5a1 1 0 0 1-1 .85H5.2a1 1 0 0 1-1-.85L3 5z"
                               stroke="currentColor" stroke-width="1.4" fill="none"
@@ -140,7 +138,7 @@
                     
                     <span class="meta-pair">
                         <span class="meta-label">Quelle</span>
-                        <span class="meta-value" title="Quellen zur Geschichte der Stadt Wien, Bd. II/1, Nr. 1452">Quellen zur Geschichte der Stadt Wien, Bd. II/1, Nr. 1452</span>
+                        <span class="meta-value" data-hint="Quellen zur Geschichte der Stadt Wien, Bd. II/1, Nr. 1452">Quellen zur Geschichte der Stadt Wien, Bd. II/1, Nr. 1452</span>
                     </span>
                     
                 </div>
@@ -151,7 +149,7 @@
                     
                     <button type="button" class="legend-toggle"
                             data-layer="entities" aria-pressed="true"
-                            title="Entitäten ein-/ausblenden">
+                            data-hint="Entitäten ein-/ausblenden">
                         <span class="legend-toggle-dots">
                             <span class="legend-swatch swatch-person"></span><span class="legend-swatch swatch-org"></span><span class="legend-swatch swatch-place"></span>
                         </span>
@@ -160,7 +158,7 @@
                     
                     <button type="button" class="legend-toggle"
                             data-layer="functions" aria-pressed="true"
-                            title="Funktionsrollen ein-/ausblenden">
+                            data-hint="Funktionsrollen ein-/ausblenden">
                         <span class="legend-toggle-dots">
                             <span class="legend-swatch swatch-fn-issuer"></span><span class="legend-swatch swatch-fn-recipient"></span><span class="legend-swatch swatch-fn-witness"></span>
                         </span>
@@ -169,7 +167,7 @@
                     
                     <button type="button" class="legend-toggle"
                             data-layer="attributes" aria-pressed="true"
-                            title="Attribute ein-/ausblenden">
+                            data-hint="Attribute ein-/ausblenden">
                         <span class="legend-toggle-dots">
                             <span class="legend-swatch swatch-attr"></span><span class="legend-swatch swatch-add"></span>
                         </span>
@@ -178,7 +176,7 @@
                     
                     <button type="button" class="legend-toggle"
                             data-layer="triggers" aria-pressed="true"
-                            title="Dispositivformel ein-/ausblenden">
+                            data-hint="Dispositivformel ein-/ausblenden">
                         <span class="legend-toggle-dots">
                             <span class="legend-swatch swatch-trigger"></span>
                         </span>
@@ -190,21 +188,29 @@
                 <div class="doc-toolbar-actions">
                     <a class="toolbar-btn" href="../../../tei/QGW/Vienna_1177-1414_ready/1452.xml"
                        download="1452.xml"
-                       aria-label="TEI-XML herunterladen" title="TEI-XML herunterladen"><svg viewBox="0 0 16 16" width="16" height="16" aria-hidden="true"><path fill="none" stroke="currentColor" stroke-width="1.4" stroke-linecap="round" stroke-linejoin="round" d="M8 2v8m0 0l-3-3m3 3l3-3M3 13h10"/></svg></a>
+                       aria-label="TEI-XML herunterladen" data-hint="TEI-XML herunterladen"><svg viewBox="0 0 16 16" width="16" height="16" aria-hidden="true"><path fill="none" stroke="currentColor" stroke-width="1.4" stroke-linecap="round" stroke-linejoin="round" d="M8 2v8m0 0l-3-3m3 3l3-3M3 13h10"/></svg></a>
                     <button class="toolbar-btn" id="cite-toggle" aria-expanded="false"
-                            aria-label="Zitation kopieren" title="Zitation kopieren"><svg viewBox="0 0 16 16" width="16" height="16" aria-hidden="true"><rect x="4" y="2" width="8" height="11" rx="1" fill="none" stroke="currentColor" stroke-width="1.4"/><path d="M6 1.5h4a0.5 0.5 0 0 1 0.5 0.5v1a0.5 0.5 0 0 1-0.5 0.5H6a0.5 0.5 0 0 1-0.5-0.5V2A0.5 0.5 0 0 1 6 1.5z" fill="currentColor"/><path d="M6.5 6.5h3M6.5 8.5h3M6.5 10.5h2" stroke="currentColor" stroke-width="1" stroke-linecap="round"/></svg></button>
+                            aria-label="Zitation kopieren" data-hint="Zitation kopieren"><svg viewBox="0 0 16 16" width="16" height="16" aria-hidden="true"><rect x="4" y="2" width="8" height="11" rx="1" fill="none" stroke="currentColor" stroke-width="1.4"/><path d="M6 1.5h4a0.5 0.5 0 0 1 0.5 0.5v1a0.5 0.5 0 0 1-0.5 0.5H6a0.5 0.5 0 0 1-0.5-0.5V2A0.5 0.5 0 0 1 6 1.5z" fill="currentColor"/><path d="M6.5 6.5h3M6.5 8.5h3M6.5 10.5h2" stroke="currentColor" stroke-width="1" stroke-linecap="round"/></svg></button>
                     <div class="cite-popover hidden" id="cite-popover"></div>
+                    <span class="toolbar-basket-mount"
+                          data-basket-type="source"
+                          data-basket-id="1452"
+                          data-basket-label="1452"
+                          data-basket-url="documents/QGW/Vienna_1177-1414_ready/1452.html"
+                          data-basket-date="1400-02-06"
+                          data-basket-coll="QGW II/1 (1177–1414)"
+                          data-basket-regest="Liephart der Trukchensprot in dem Wird gegen dem Rotenturn über ze Wienn, und Anna, sein hausfrau, Seifrid der Glimph, der chu/ersner, und Kristein, sein hausfrau, derselben Annen swester, Niclas der…"></span>
                     
 <nav class="doc-paging doc-paging-inline" aria-label="Quellen-Navigation">
     
     <a href="../../../documents/QGW/Vienna_1177-1414_ready/1451.html" class="toolbar-btn doc-paging-prev"
        aria-label="Vorherige Quelle: Nr. 1451"
-       title="Vorherige Quelle: Nr. 1451"><svg viewBox="0 0 16 16" width="16" height="16" aria-hidden="true"><path fill="none" stroke="currentColor" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round" d="M10 3l-5 5 5 5"/></svg></a>
+       data-hint="Vorherige Quelle: Nr. 1451"><svg viewBox="0 0 16 16" width="16" height="16" aria-hidden="true"><path fill="none" stroke="currentColor" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round" d="M10 3l-5 5 5 5"/></svg></a>
     
     
     <a href="../../../documents/QGW/Vienna_1177-1414_ready/1453.html" class="toolbar-btn doc-paging-next"
        aria-label="Nächste Quelle: Nr. 1453"
-       title="Nächste Quelle: Nr. 1453"><svg viewBox="0 0 16 16" width="16" height="16" aria-hidden="true"><path fill="none" stroke="currentColor" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round" d="M6 3l5 5-5 5"/></svg></a>
+       data-hint="Nächste Quelle: Nr. 1453"><svg viewBox="0 0 16 16" width="16" height="16" aria-hidden="true"><path fill="none" stroke="currentColor" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round" d="M6 3l5 5-5 5"/></svg></a>
     
 </nav>
 
@@ -218,16 +224,16 @@
     <div class="doc-content">
         <!-- Document body (rendered TEI) -->
         <div class="doc-body">
-            <section class="tei-abstract"><h2 class="tei-section-head">Regest</h2><p><span class="anno-event" data-ref="ev__QGW_II_I_1452"><span class="anno-fn anno-fn-issuer" data-role="issuer"><span class="fn-label">Aussteller*in</span><a class="anno-person" data-ref="pe__liebhard_trukchensprot_QGW_II_I_1452" title="Liebhard Trukchensprot in dem Werd gegen den Rotenturm [pe__liebhard_trukchensprot_QGW_II_I_1452]" href="../../../register/persons/pe__liebhard_trukchensprot_QGW_II_I_1452.html">Liephart der Trukchensprot in
-                        dem Wird gegen dem Rotenturn über ze Wienn</a>, und <a class="anno-person" data-ref="pe__anna_QGW_II_I_1452" title="Anna [pe__anna_QGW_II_I_1452]" href="../../../register/persons/pe__anna_QGW_II_I_1452.html">Anna, sein <span class="anno-attr anno-attr-kin" data-corresp="pe__liebhard_trukchensprot_QGW_II_I_1452">hausfrau</span></a>, <a class="anno-person" data-ref="pe__siegfried_glimph_QGW_II_I_1452" title="Siegfried Glimph der Kürschner [pe__siegfried_glimph_QGW_II_I_1452]" href="../../../register/persons/pe__siegfried_glimph_QGW_II_I_1452.html">Seifrid der Glimph, der <span class="anno-attr anno-attr-prof">chu/ersner</span></a>, und <a class="anno-person" data-ref="pe__christine_QGW_II_I_1452" title="Christine [pe__christine_QGW_II_I_1452]" href="../../../register/persons/pe__christine_QGW_II_I_1452.html">Kristein, sein <span class="anno-attr anno-attr-kin" data-corresp="pe__siegfried_glimph_QGW_II_I_1452">hausfrau</span>, derselben Annen
-                           <span class="anno-attr anno-attr-kin" data-corresp="pe__anna_QGW_II_I_1452">swester</span></a>, <a class="anno-person" data-ref="pe__niklas_vischer_QGW_II_I_1452" title="Niklas Vischer [pe__niklas_vischer_QGW_II_I_1452]" href="../../../register/persons/pe__niklas_vischer_QGW_II_I_1452.html">Niclas
-                        der <span class="anno-attr anno-attr-prof">Vischer</span></a> und <a class="anno-person" data-ref="pe__agnes_QGW_II_I_1452" title="Agnes Vischerin [pe__agnes_QGW_II_I_1452]" href="../../../register/persons/pe__agnes_QGW_II_I_1452.html">Agnes, sein <span class="anno-attr anno-attr-kin" data-corresp="pe__niklas_vischer_QGW_II_I_1452">hausfrau</span>, der egenannten zwair
+            <section class="tei-abstract"><h2 class="tei-section-head">Regest</h2><p><span class="anno-event" data-ref="ev__QGW_II_I_1452"><span class="anno-fn anno-fn-issuer" data-role="issuer"><span class="fn-label">Aussteller*in</span><a class="anno-person" data-ref="pe__liebhard_trukchensprot_QGW_II_I_1452" data-hint="Liebhard Trukchensprot in dem Werd gegen den Rotenturm [pe__liebhard_trukchensprot_QGW_II_I_1452]" data-hint-type="Person" href="../../../register/persons/pe__liebhard_trukchensprot_QGW_II_I_1452.html">Liephart der Trukchensprot in
+                        dem Wird gegen dem Rotenturn über ze Wienn</a>, und <a class="anno-person" data-ref="pe__anna_QGW_II_I_1452" data-hint="Anna [pe__anna_QGW_II_I_1452]" data-hint-type="Person" href="../../../register/persons/pe__anna_QGW_II_I_1452.html">Anna, sein <span class="anno-attr anno-attr-kin" data-corresp="pe__liebhard_trukchensprot_QGW_II_I_1452">hausfrau</span></a>, <a class="anno-person" data-ref="pe__siegfried_glimph_QGW_II_I_1452" data-hint="Siegfried Glimph der Kürschner [pe__siegfried_glimph_QGW_II_I_1452]" data-hint-type="Person" href="../../../register/persons/pe__siegfried_glimph_QGW_II_I_1452.html">Seifrid der Glimph, der <span class="anno-attr anno-attr-prof">chu/ersner</span></a>, und <a class="anno-person" data-ref="pe__christine_QGW_II_I_1452" data-hint="Christine [pe__christine_QGW_II_I_1452]" data-hint-type="Person" href="../../../register/persons/pe__christine_QGW_II_I_1452.html">Kristein, sein <span class="anno-attr anno-attr-kin" data-corresp="pe__siegfried_glimph_QGW_II_I_1452">hausfrau</span>, derselben Annen
+                           <span class="anno-attr anno-attr-kin" data-corresp="pe__anna_QGW_II_I_1452">swester</span></a>, <a class="anno-person" data-ref="pe__niklas_vischer_QGW_II_I_1452" data-hint="Niklas Vischer [pe__niklas_vischer_QGW_II_I_1452]" data-hint-type="Person" href="../../../register/persons/pe__niklas_vischer_QGW_II_I_1452.html">Niclas
+                        der <span class="anno-attr anno-attr-prof">Vischer</span></a> und <a class="anno-person" data-ref="pe__agnes_QGW_II_I_1452" data-hint="Agnes Vischerin [pe__agnes_QGW_II_I_1452]" data-hint-type="Person" href="../../../register/persons/pe__agnes_QGW_II_I_1452.html">Agnes, sein <span class="anno-attr anno-attr-kin" data-corresp="pe__niklas_vischer_QGW_II_I_1452">hausfrau</span>, der egenannten zwair
                         swestern <span class="anno-attr anno-attr-kin" data-corresp="pe__anna_QGW_II_I_1452">swester</span>
                         <span class="anno-attr anno-attr-kin" data-corresp="pe__christine_QGW_II_I_1452"><span class="tei-add">swester</span></span></a></span>, <span class="anno-trigger anno-trigger-disp">verzichten</span> mit gesammter Hand gegen
-                  <span class="anno-fn anno-fn-recipient" data-role="recipient"><span class="fn-label">Empfänger*in</span><a class="anno-person" data-ref="pe__katharina_QGW_II_I_1452" title="Katharina bei dem Brunnen Kochin [pe__katharina_QGW_II_I_1452]" href="../../../register/persons/pe__katharina_QGW_II_I_1452.html"><span class="anno-attr anno-attr-title">Frau</span> Kathrein, <a class="anno-person" data-ref="pe__andreas_koch_QGW_II_I_1452" title="Andreas Koch [pe__andreas_koch_QGW_II_I_1452]" href="../../../register/persons/pe__andreas_koch_QGW_II_I_1452.html">Andres, des <span class="anno-attr anno-attr-prof">chochs</span></a>, <span class="anno-attr anno-attr-kin" data-corresp="pe__andreas_koch_QGW_II_I_1452">hausfraun</span></a></span>, <span class="anno-trigger anno-trigger-disp">auf alle Habe und
+                  <span class="anno-fn anno-fn-recipient" data-role="recipient"><span class="fn-label">Empfänger*in</span><a class="anno-person" data-ref="pe__katharina_QGW_II_I_1452" data-hint="Katharina bei dem Brunnen Kochin [pe__katharina_QGW_II_I_1452]" data-hint-type="Person" href="../../../register/persons/pe__katharina_QGW_II_I_1452.html"><span class="anno-attr anno-attr-title">Frau</span> Kathrein, <a class="anno-person" data-ref="pe__andreas_koch_QGW_II_I_1452" data-hint="Andreas Koch [pe__andreas_koch_QGW_II_I_1452]" data-hint-type="Person" href="../../../register/persons/pe__andreas_koch_QGW_II_I_1452.html">Andres, des <span class="anno-attr anno-attr-prof">chochs</span></a>, <span class="anno-attr anno-attr-kin" data-corresp="pe__andreas_koch_QGW_II_I_1452">hausfraun</span></a></span>, <span class="anno-trigger anno-trigger-disp">auf alle Habe und
                      Güter derselben</span>.</span></p></section><section class="tei-seal"><h2 class="tei-section-head">Siegelbeschreibung</h2><p><span class="anno-event" data-ref="ev__QGW_II_I_1452"><span class="anno-fn anno-fn-witness" data-role="witness"><span class="fn-label">Zeug*in</span>Besiegelt mit
-                     den Siegeln der <a class="anno-person" data-ref="pe__friedrich_dietram_QGW_II_I_1026" title="Friedrich Dietram [pe__friedrich_dietram_QGW_II_I_1026]" href="../../../register/persons/pe__friedrich_dietram_QGW_II_I_1026.html">Wiener <span class="anno-attr anno-attr-occ" data-corresp="org__wien">Bürger</span> Fridreichs des
-                        Dietrams</a> und <a class="anno-person" data-ref="pe__johann_ziernast_QGW_II_I_1371" title="Johann Ziernast [pe__johann_ziernast_QGW_II_I_1371]" href="../../../register/persons/pe__johann_ziernast_QGW_II_I_1371.html"><span class="anno-attr anno-attr-occ" data-corresp="org__wien"><span class="tei-add">Bürger</span></span> Hannsen
+                     den Siegeln der <a class="anno-person" data-ref="pe__friedrich_dietram_QGW_II_I_1026" data-hint="Friedrich Dietram [pe__friedrich_dietram_QGW_II_I_1026]" data-hint-type="Person" href="../../../register/persons/pe__friedrich_dietram_QGW_II_I_1026.html">Wiener <span class="anno-attr anno-attr-occ" data-corresp="org__wien">Bürger</span> Fridreichs des
+                        Dietrams</a> und <a class="anno-person" data-ref="pe__johann_ziernast_QGW_II_I_1371" data-hint="Johann Ziernast [pe__johann_ziernast_QGW_II_I_1371]" data-hint-type="Person" href="../../../register/persons/pe__johann_ziernast_QGW_II_I_1371.html"><span class="anno-attr anno-attr-occ" data-corresp="org__wien"><span class="tei-add">Bürger</span></span> Hannsen
                         des Ziernasts</a></span>.</span></p></section>
 
             <!-- Data layer: provenance strip. Korpus + Idno stehen schon
@@ -286,7 +292,7 @@
          dem TEI in mehreren Untertabellen, Personen/Orgs/Orte,
          Ereignisse, Dispositivformeln, Editorische Ergaenzungen. Wird
          per JS aus den entsprechenden Spans im Body aufgebaut. -->
-    <section class="annotations-view" id="factoid-view" aria-label="Annotationen">
+    <section class="annotations-view" id="annotations-view" aria-label="Annotationen">
         <header class="annotations-header">
             <h2 class="annotations-title">Annotationen</h2>
             <span class="annotations-summary"></span>
@@ -332,13 +338,14 @@
         </div>
     </footer>
 
-    <script src="../../../static/js/core.js?v=20260511112948"></script>
-    <script src="../../../static/js/provenance.js?v=20260511112948"></script>
-    <script src="../../../static/js/basket.js?v=20260511112948"></script>
+    <script src="../../../static/js/core.js?v=20260511125458"></script>
+    <script src="../../../static/js/tip.js?v=20260511125458"></script>
+    <script src="../../../static/js/hint.js?v=20260511125458"></script>
+    <script src="../../../static/js/basket.js?v=20260511125458"></script>
     
-<script src="../../../static/js/tooltips.js?v=20260511112948"></script>
-<script src="../../../static/js/facsimile.js?v=20260511112948"></script>
-<script src="../../../static/js/document.js?v=20260511112948"></script>
+<script src="../../../static/js/facsimile.js?v=20260511125458"></script>
+<script src="../../../static/js/document.js?v=20260511125458"></script>
+<script src="../../../static/js/basket-mount.js?v=20260511125458"></script>
 
 </body>
 </html>

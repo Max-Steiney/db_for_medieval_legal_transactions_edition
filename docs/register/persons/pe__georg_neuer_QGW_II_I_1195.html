@@ -3,22 +3,22 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <meta http-equiv="Content-Security-Policy" content="default-src 'self'; script-src 'self'; style-src 'self'; font-src 'self'; img-src 'self' data: https://images.monasterium.net https://www.monasterium.net; connect-src 'self'; frame-ancestors 'none'; base-uri 'self'; form-action 'self'; upgrade-insecure-requests">
+    <meta http-equiv="Content-Security-Policy" content="default-src 'self'; script-src 'self'; style-src 'self'; font-src 'self'; img-src 'self' data: https://images.monasterium.net https://www.monasterium.net; connect-src 'self'; base-uri 'self'; form-action 'self'; upgrade-insecure-requests">
     <meta name="referrer" content="strict-origin-when-cross-origin">
     <meta http-equiv="Permissions-Policy" content="camera=(), microphone=(), geolocation=(), interest-cohort=()">
     <title>Georg Neuer Neuer, Datenbank</title>
     <link rel="preload" as="font" type="font/woff2" crossorigin
           href="../../static/fonts/inter-400-latin.woff2">
-    <link rel="stylesheet" href="../../static/css/fonts.css?v=20260511112948">
-    <link rel="stylesheet" href="../../static/css/tokens.css?v=20260511112948">
-    <link rel="stylesheet" href="../../static/css/base.css?v=20260511112948">
-    <link rel="stylesheet" href="../../static/css/components.css?v=20260511112948">
-    <link rel="stylesheet" href="../../static/css/responsive.css?v=20260511112948">
-    <link rel="stylesheet" href="../../static/css/print.css?v=20260511112948">
-    <link rel="stylesheet" href="../../static/css/provenance.css?v=20260511112948">
+    <link rel="stylesheet" href="../../static/css/fonts.css?v=20260511125458">
+    <link rel="stylesheet" href="../../static/css/tokens.css?v=20260511125458">
+    <link rel="stylesheet" href="../../static/css/base.css?v=20260511125458">
+    <link rel="stylesheet" href="../../static/css/components.css?v=20260511125458">
+    <link rel="stylesheet" href="../../static/css/responsive.css?v=20260511125458">
+    <link rel="stylesheet" href="../../static/css/print.css?v=20260511125458">
+    <link rel="stylesheet" href="../../static/css/tip.css?v=20260511125458">
     
-<link rel="stylesheet" href="../../static/css/document.css?v=20260511112948">
-<link rel="stylesheet" href="../../static/css/person.css?v=20260511112948">
+<link rel="stylesheet" href="../../static/css/document.css?v=20260511125458">
+<link rel="stylesheet" href="../../static/css/person.css?v=20260511125458">
 
 </head>
 <body data-root-path="../.."
@@ -48,8 +48,6 @@
         <a href="../../register/persons.html">Personen</a>
         
         <a href="../../register/orgs.html">Organisationen</a>
-        
-        <a href="../../register/places.html">Orte</a>
         
     </div>
 </div>
@@ -91,7 +89,7 @@
     </div>
 </div>
 
-                <a href="../../korb.html" class="nav-basket" aria-label="Wissenskorb">
+                <a href="../../korb.html" class="nav-basket" aria-label="Datenkorb">
                     <svg width="18" height="18" viewBox="0 0 18 18" fill="none" aria-hidden="true">
                         <path d="M3 5h12l-1.2 8.5a1 1 0 0 1-1 .85H5.2a1 1 0 0 1-1-.85L3 5z"
                               stroke="currentColor" stroke-width="1.4" fill="none"
@@ -112,11 +110,23 @@
 
     <div class="person-toolbar">
         <div class="person-toolbar-inner">
-            <nav class="person-breadcrumb" aria-label="Position">
-                <a href="../../register/persons.html">Personenregister</a>
-                <span class="bc-sep">&rsaquo;</span>
-                <span class="bc-doc"><strong>Georg Neuer Neuer</strong></span>
-            </nav>
+            <div class="person-toolbar-row">
+                <nav class="person-breadcrumb" aria-label="Position">
+                    <a href="../../register/persons.html">Personenregister</a>
+                    <span class="bc-sep">&rsaquo;</span>
+                    <span class="bc-doc"><strong>Georg Neuer Neuer</strong></span>
+                </nav>
+                <div class="person-toolbar-actions">
+                    <span class="toolbar-basket-mount"
+                          data-basket-type="person"
+                          data-basket-id="pe__georg_neuer_QGW_II_I_1195"
+                          data-basket-label="Georg Neuer Neuer"
+                          data-basket-url="register/persons/pe__georg_neuer_QGW_II_I_1195.html"
+                          data-basket-sex="m"
+                          data-basket-active-min="1378"
+                          data-basket-active-max="1414"></span>
+                </div>
+            </div>
             <div class="person-toolbar-meta">
                 <span class="meta-pair">
                     <span class="meta-label">Geschlecht</span>
@@ -124,11 +134,41 @@
                 </span>
                 
                 <span class="meta-pair">
-                    <span class="meta-label">Belegt</span>
+                    <span class="meta-label">Belegt
+<span class="tip-wrap">
+    <button type="button" class="tip-trigger tip-trigger--icon"
+            aria-expanded="false" aria-haspopup="dialog"
+            aria-controls="person-belegt"
+            data-tip="person-belegt"
+            aria-label="Definition: Beleg-Zeitraum">
+        <svg width="13" height="13" viewBox="0 0 16 16" aria-hidden="true">
+            <circle cx="8" cy="8" r="7" stroke="currentColor" stroke-width="1.4" fill="none"/>
+            <text x="8" y="11.6" text-anchor="middle" font-size="9.5" font-weight="700"
+                  fill="currentColor" font-family="Georgia, serif">i</text>
+        </svg>
+    </button>
+    <aside class="tip-popover tip-popover--glossary"
+           id="person-belegt" role="dialog" aria-hidden="true"
+           aria-label="Definition: Beleg-Zeitraum">
+        <header class="tip-head">
+            <h3 class="tip-title">Beleg-Zeitraum</h3>
+            <button type="button" class="tip-close" aria-label="Schlie&szlig;en">&times;</button>
+        </header>
+        <div class="tip-body">
+            <p>Erste und letzte Datierung einer Quelle, in der die Person erscheint. Bei einzelnem Beleg wird nur ein Jahr angegeben.</p>
+            
+        </div>
+    </aside>
+</span>
+</span>
                     <span class="meta-value">1378 bis 1414</span>
                 </span>
                 
                 
+                <span class="meta-pair">
+                    <span class="meta-label">Quellen</span>
+                    <span class="meta-value">31</span>
+                </span>
                 <span class="meta-pair person-id-pair">
                     <span class="meta-label">ID</span>
                     <code class="meta-value person-id">pe__georg_neuer_QGW_II_I_1195</code>
@@ -145,16 +185,48 @@
             
         </h1>
         
+        
         <p class="person-note">Verweser St. Martin vor dem Widmertor, Bürger und Rat in Wien</p>
         
         
-        <p class="person-titles">
+        <p class="person-titles" data-collapsible="22">
             <span class="pt-label">In den Quellen genannt als</span>
             <span class="pt-chip">hern</span><span class="pt-chip">erbern</span>
         </p>
         
         
+        
     </header>
+
+    
+    <section class="role-strip" aria-label="Rollen in Rechtsgeschäften">
+        <h2 class="role-strip-title">Rollen in Rechtsgeschäften</h2>
+        <div class="role-strip-cells">
+            
+            <div class="role-cell role-cell-issuer">
+                <span class="role-cell-count">3</span>
+                <span class="role-cell-label">Aussteller*in</span>
+            </div>
+            
+            <div class="role-cell role-cell-recipient">
+                <span class="role-cell-count">3</span>
+                <span class="role-cell-label">Empfänger*in</span>
+            </div>
+            
+            <div class="role-cell role-cell-witness">
+                <span class="role-cell-count">20</span>
+                <span class="role-cell-label">Zeuge / Siegler*in</span>
+            </div>
+            
+            <div class="role-cell role-cell-other">
+                <span class="role-cell-count">8</span>
+                <span class="role-cell-label">Sonstige</span>
+            </div>
+            
+        </div>
+        <p class="role-strip-hint">Summe Rollen-Belegungen: 34. Mehrfach-Rollen pro Quelle sind möglich.</p>
+    </section>
+    
 
     
 
@@ -171,6 +243,7 @@
                 <span class="rel-block-count">2</span>
                 <span class="rel-block-hint">Verwandtschaftsverhältnisse, wie sie in den Quellen explizit benannt werden.</span>
             </header>
+            
             <table class="rel-table">
                 <thead>
                     <tr>
@@ -191,7 +264,7 @@
                         <td class="rel-col-label"><em>Vetters</em></td>
                         <td class="rel-col-perspective">
                             
-                                Georg Neuer Neuer → Katharina
+                                Georg Neuer Neuer &rsaquo; Katharina
                             
                         </td>
                         <td class="rel-col-source">
@@ -210,7 +283,7 @@
                         <td class="rel-col-label"><em>Hausfrau</em></td>
                         <td class="rel-col-perspective">
                             
-                                Elisabeth → Georg Neuer Neuer
+                                Elisabeth &rsaquo; Georg Neuer Neuer
                             
                         </td>
                         <td class="rel-col-source">
@@ -236,6 +309,7 @@
                 <span class="rel-block-count">4</span>
                 <span class="rel-block-hint">Stellvertretungs-Beziehungen, z. B. handelt eine Person an Stelle einer anderen.</span>
             </header>
+            
             <table class="rel-table">
                 <thead>
                     <tr>
@@ -256,7 +330,7 @@
                         <td class="rel-col-label"><em>an|statt</em></td>
                         <td class="rel-col-perspective">
                             
-                                Georg Neuer Neuer → Otto Murbecz
+                                Georg Neuer Neuer &rsaquo; Otto Murbecz
                             
                         </td>
                         <td class="rel-col-source">
@@ -275,7 +349,7 @@
                         <td class="rel-col-label"><em>an|statt</em></td>
                         <td class="rel-col-perspective">
                             
-                                Georg Neuer Neuer → Wilhelm Hansgraf
+                                Georg Neuer Neuer &rsaquo; Wilhelm Hansgraf
                             
                         </td>
                         <td class="rel-col-source">
@@ -294,7 +368,7 @@
                         <td class="rel-col-label"><em>anstatt</em></td>
                         <td class="rel-col-perspective">
                             
-                                Georg Neuer Neuer → Wilhelm Hansgraf
+                                Georg Neuer Neuer &rsaquo; Wilhelm Hansgraf
                             
                         </td>
                         <td class="rel-col-source">
@@ -313,7 +387,7 @@
                         <td class="rel-col-label"><em>Ausrichter</em></td>
                         <td class="rel-col-perspective">
                             
-                                Georg Neuer Neuer → Georg Nussdorfer
+                                Georg Neuer Neuer &rsaquo; Georg Nussdorfer
                             
                         </td>
                         <td class="rel-col-source">
@@ -336,6 +410,12 @@
                 <span class="rel-block-count">29</span>
                 <span class="rel-block-hint">Berufs- oder Amtsbezeichnung in Bezug auf eine Institution.</span>
             </header>
+            
+            <div class="table-filter">
+                <input type="search" class="table-filter-input" data-target="rel" placeholder="In der Tabelle filtern&hellip;" aria-label="In der Tabelle filtern">
+                <span class="table-filter-status"></span>
+            </div>
+            
             <table class="rel-table">
                 <thead>
                     <tr>
@@ -356,7 +436,7 @@
                         <td class="rel-col-label"><em>verbeser</em></td>
                         <td class="rel-col-perspective">
                             
-                                Georg Neuer Neuer → St. Martin vor dem Widmertor
+                                Georg Neuer Neuer &rsaquo; St. Martin vor dem Widmertor
                             
                         </td>
                         <td class="rel-col-source">
@@ -375,7 +455,7 @@
                         <td class="rel-col-label"><em>verweser</em></td>
                         <td class="rel-col-perspective">
                             
-                                Georg Neuer Neuer → St. Martin vor dem Widmertor
+                                Georg Neuer Neuer &rsaquo; St. Martin vor dem Widmertor
                             
                         </td>
                         <td class="rel-col-source">
@@ -394,7 +474,7 @@
                         <td class="rel-col-label"><em>verweser</em></td>
                         <td class="rel-col-perspective">
                             
-                                Georg Neuer Neuer → St. Martin vor dem Widmertor
+                                Georg Neuer Neuer &rsaquo; St. Martin vor dem Widmertor
                             
                         </td>
                         <td class="rel-col-source">
@@ -413,7 +493,7 @@
                         <td class="rel-col-label"><em>rat</em></td>
                         <td class="rel-col-perspective">
                             
-                                Georg Neuer Neuer → Wien
+                                Georg Neuer Neuer &rsaquo; Wien
                             
                         </td>
                         <td class="rel-col-source">
@@ -432,7 +512,7 @@
                         <td class="rel-col-label"><em>rates</em></td>
                         <td class="rel-col-perspective">
                             
-                                Georg Neuer Neuer → Wien
+                                Georg Neuer Neuer &rsaquo; Wien
                             
                         </td>
                         <td class="rel-col-source">
@@ -451,7 +531,7 @@
                         <td class="rel-col-label"><em>rates</em></td>
                         <td class="rel-col-perspective">
                             
-                                Georg Neuer Neuer → Wien
+                                Georg Neuer Neuer &rsaquo; Wien
                             
                         </td>
                         <td class="rel-col-source">
@@ -470,7 +550,7 @@
                         <td class="rel-col-label"><em>rats</em></td>
                         <td class="rel-col-perspective">
                             
-                                Georg Neuer Neuer → Wien
+                                Georg Neuer Neuer &rsaquo; Wien
                             
                         </td>
                         <td class="rel-col-source">
@@ -489,7 +569,7 @@
                         <td class="rel-col-label"><em>rates</em></td>
                         <td class="rel-col-perspective">
                             
-                                Georg Neuer Neuer → Wien
+                                Georg Neuer Neuer &rsaquo; Wien
                             
                         </td>
                         <td class="rel-col-source">
@@ -508,7 +588,7 @@
                         <td class="rel-col-label"><em>purger</em></td>
                         <td class="rel-col-perspective">
                             
-                                Georg Neuer Neuer → Wien
+                                Georg Neuer Neuer &rsaquo; Wien
                             
                         </td>
                         <td class="rel-col-source">
@@ -527,7 +607,7 @@
                         <td class="rel-col-label"><em>Bürgers</em></td>
                         <td class="rel-col-perspective">
                             
-                                Georg Neuer Neuer → Wien
+                                Georg Neuer Neuer &rsaquo; Wien
                             
                         </td>
                         <td class="rel-col-source">
@@ -546,7 +626,7 @@
                         <td class="rel-col-label"><em>Wiener Bürgers</em></td>
                         <td class="rel-col-perspective">
                             
-                                Georg Neuer Neuer → Wien
+                                Georg Neuer Neuer &rsaquo; Wien
                             
                         </td>
                         <td class="rel-col-source">
@@ -565,7 +645,7 @@
                         <td class="rel-col-label"><em>Bürger</em></td>
                         <td class="rel-col-perspective">
                             
-                                Georg Neuer Neuer → Wien
+                                Georg Neuer Neuer &rsaquo; Wien
                             
                         </td>
                         <td class="rel-col-source">
@@ -584,7 +664,7 @@
                         <td class="rel-col-label"><em>Bürgers</em></td>
                         <td class="rel-col-perspective">
                             
-                                Georg Neuer Neuer → Wien
+                                Georg Neuer Neuer &rsaquo; Wien
                             
                         </td>
                         <td class="rel-col-source">
@@ -603,7 +683,7 @@
                         <td class="rel-col-label"><em>Bürger</em></td>
                         <td class="rel-col-perspective">
                             
-                                Georg Neuer Neuer → Wien
+                                Georg Neuer Neuer &rsaquo; Wien
                             
                         </td>
                         <td class="rel-col-source">
@@ -622,7 +702,7 @@
                         <td class="rel-col-label"><em>ausrichter</em></td>
                         <td class="rel-col-perspective">
                             
-                                Georg Neuer Neuer → Schreiberzeche auf dem Neuen Karner
+                                Georg Neuer Neuer &rsaquo; Schreiberzeche auf dem Neuen Karner
                             
                         </td>
                         <td class="rel-col-source">
@@ -641,7 +721,7 @@
                         <td class="rel-col-label"><em>verweser</em></td>
                         <td class="rel-col-perspective">
                             
-                                Georg Neuer Neuer → Schreiberzeche auf dem Neuen Karner
+                                Georg Neuer Neuer &rsaquo; Schreiberzeche auf dem Neuen Karner
                             
                         </td>
                         <td class="rel-col-source">
@@ -660,7 +740,7 @@
                         <td class="rel-col-label"><em>Bürgers</em></td>
                         <td class="rel-col-perspective">
                             
-                                Georg Neuer Neuer → Wien
+                                Georg Neuer Neuer &rsaquo; Wien
                             
                         </td>
                         <td class="rel-col-source">
@@ -679,7 +759,7 @@
                         <td class="rel-col-label"><em>Bürger</em></td>
                         <td class="rel-col-perspective">
                             
-                                Georg Neuer Neuer → Wien
+                                Georg Neuer Neuer &rsaquo; Wien
                             
                         </td>
                         <td class="rel-col-source">
@@ -698,7 +778,7 @@
                         <td class="rel-col-label"><em>Bürger</em></td>
                         <td class="rel-col-perspective">
                             
-                                Georg Neuer Neuer → Wien
+                                Georg Neuer Neuer &rsaquo; Wien
                             
                         </td>
                         <td class="rel-col-source">
@@ -717,7 +797,7 @@
                         <td class="rel-col-label"><em>purger</em></td>
                         <td class="rel-col-perspective">
                             
-                                Georg Neuer Neuer → Wien
+                                Georg Neuer Neuer &rsaquo; Wien
                             
                         </td>
                         <td class="rel-col-source">
@@ -736,7 +816,7 @@
                         <td class="rel-col-label"><em>zechmaister</em></td>
                         <td class="rel-col-perspective">
                             
-                                Georg Neuer Neuer → Schreiberzeche auf dem Neuen Karner
+                                Georg Neuer Neuer &rsaquo; Schreiberzeche auf dem Neuen Karner
                             
                         </td>
                         <td class="rel-col-source">
@@ -755,7 +835,7 @@
                         <td class="rel-col-label"><em>purger</em></td>
                         <td class="rel-col-perspective">
                             
-                                Georg Neuer Neuer → Wien
+                                Georg Neuer Neuer &rsaquo; Wien
                             
                         </td>
                         <td class="rel-col-source">
@@ -774,7 +854,7 @@
                         <td class="rel-col-label"><em>Bürger</em></td>
                         <td class="rel-col-perspective">
                             
-                                Georg Neuer Neuer → Wien
+                                Georg Neuer Neuer &rsaquo; Wien
                             
                         </td>
                         <td class="rel-col-source">
@@ -793,7 +873,7 @@
                         <td class="rel-col-label"><em>Bürgers</em></td>
                         <td class="rel-col-perspective">
                             
-                                Georg Neuer Neuer → Wien
+                                Georg Neuer Neuer &rsaquo; Wien
                             
                         </td>
                         <td class="rel-col-source">
@@ -812,7 +892,7 @@
                         <td class="rel-col-label"><em>Mitbürger</em></td>
                         <td class="rel-col-perspective">
                             
-                                Georg Neuer Neuer → Wien
+                                Georg Neuer Neuer &rsaquo; Wien
                             
                         </td>
                         <td class="rel-col-source">
@@ -831,7 +911,7 @@
                         <td class="rel-col-label"><em>purger</em></td>
                         <td class="rel-col-perspective">
                             
-                                Georg Neuer Neuer → Wien
+                                Georg Neuer Neuer &rsaquo; Wien
                             
                         </td>
                         <td class="rel-col-source">
@@ -850,7 +930,7 @@
                         <td class="rel-col-label"><em>purger</em></td>
                         <td class="rel-col-perspective">
                             
-                                Georg Neuer Neuer → Wien
+                                Georg Neuer Neuer &rsaquo; Wien
                             
                         </td>
                         <td class="rel-col-source">
@@ -869,7 +949,7 @@
                         <td class="rel-col-label"><em>purger</em></td>
                         <td class="rel-col-perspective">
                             
-                                Georg Neuer Neuer → Wien
+                                Georg Neuer Neuer &rsaquo; Wien
                             
                         </td>
                         <td class="rel-col-source">
@@ -888,7 +968,7 @@
                         <td class="rel-col-label"><em>burger</em></td>
                         <td class="rel-col-perspective">
                             
-                                Georg Neuer Neuer → Wien
+                                Georg Neuer Neuer &rsaquo; Wien
                             
                         </td>
                         <td class="rel-col-source">
@@ -906,18 +986,32 @@
         
         
         
+        
+        
+        
+        
+        
+        
     </section>
     
 
     
     <section class="person-sources" aria-label="Quellen mit Nennung">
         <h2 class="section-head">Quellen mit Nennung</h2>
+        
+        <div class="table-filter">
+            <input type="search" class="table-filter-input" data-target="src" placeholder="In den Quellen filtern&hellip;" aria-label="In den Quellen filtern">
+            <span class="table-filter-status"></span>
+        </div>
+        
         <table class="person-source-table">
             <thead>
                 <tr>
                     <th scope="col" class="src-col-idno">Nr.</th>
                     <th scope="col" class="src-col-date">Datum</th>
                     <th scope="col" class="src-col-corpus">Quellenkorpus</th>
+                    <th scope="col" class="src-col-label">Bezeichnung</th>
+                    <th scope="col" class="src-col-role">Rolle</th>
                     <th scope="col" class="src-col-regest">Regest</th>
                 </tr>
             </thead>
@@ -927,6 +1021,11 @@
                     <td class="src-col-idno"><a href="../../documents/QGW/Vienna_1177-1414_ready/1413.html">1413</a></td>
                     <td class="src-col-date">1378 XII 13</td>
                     <td class="src-col-corpus">QGW II/1 (1177–1414)</td>
+                    <td class="src-col-label"><em>-</em></td>
+                    <td class="src-col-role">
+                        <span class="role-chip role-chip-witness">Zeuge / Siegler*in</span>
+                        
+                    </td>
                     <td class="src-col-regest">Maister Cholman der Cholb, pharrer ze Prostorf, schafft seinem besonderen Freunde Hannsen von Dietreichstokch, vorstmaister in Osterreich, sein Haus, gelegen in der Schulstrass ze Wienn, mit allem,…</td>
                 </tr>
             
@@ -934,6 +1033,11 @@
                     <td class="src-col-idno"><a href="../../documents/QGW/Vienna_1177-1414_ready/1174.html">1174</a></td>
                     <td class="src-col-date">1389 V 28</td>
                     <td class="src-col-corpus">QGW II/1 (1177–1414)</td>
+                    <td class="src-col-label"><em>-</em></td>
+                    <td class="src-col-role">
+                        <span class="role-chip role-chip-other">Sonstige</span>
+                        
+                    </td>
                     <td class="src-col-regest">Niclas der Päutler und Kathrei, seine Hausfrau , verkaufen mit Handen Jorgen des Neuer, verbeser des spitals dacz sand Merten vor Widemer tor ze Wienn , ihres rechten Kaufgutes ihr Haus in dem Werd…</td>
                 </tr>
             
@@ -941,6 +1045,11 @@
                     <td class="src-col-idno"><a href="../../documents/QGW/Vienna_1177-1414_ready/1194.html">1194</a></td>
                     <td class="src-col-date">1390 X 18</td>
                     <td class="src-col-corpus">QGW II/1 (1177–1414)</td>
+                    <td class="src-col-label"><em>hern</em></td>
+                    <td class="src-col-role">
+                        <span class="role-chip role-chip-other">Sonstige</span>
+                        
+                    </td>
                     <td class="src-col-regest">Ortolf der Swerzel und Margret, seine Hausfrau , verkaufen mit Handen hern Jorgen des Neuer, verweser des hauses dacz sand Mertten vor Widmertor ze Wienn , ihr Haus, gelegen under den Ledrern vor…</td>
                 </tr>
             
@@ -948,6 +1057,11 @@
                     <td class="src-col-idno"><a href="../../documents/QGW/Vienna_1177-1414_ready/1195.html">1195</a></td>
                     <td class="src-col-date">1390 X 18</td>
                     <td class="src-col-corpus">QGW II/1 (1177–1414)</td>
+                    <td class="src-col-label"><em>hern</em></td>
+                    <td class="src-col-role">
+                        <span class="role-chip role-chip-other">Sonstige</span>
+                        
+                    </td>
                     <td class="src-col-regest">Alber der Pauch von Chamestorf, Kaplan der ewigen Messe auf S. Peters und S. Pauls Altar in Gotzleichnamskapelln vor Werdertor ze Wienn, verkauft mit Handen hern Jorgen des Neuer, verweser des haus…</td>
                 </tr>
             
@@ -955,6 +1069,11 @@
                     <td class="src-col-idno"><a href="../../documents/QGW/Vienna_1177-1414_ready/1196.html">1196</a></td>
                     <td class="src-col-date">1390 XI 18</td>
                     <td class="src-col-corpus">QGW II/1 (1177–1414)</td>
+                    <td class="src-col-label"><em>-</em></td>
+                    <td class="src-col-role">
+                        <span class="role-chip role-chip-issuer">Aussteller*in</span><span class="role-chip role-chip-witness">Zeuge / Siegler*in</span>
+                        
+                    </td>
                     <td class="src-col-regest">Janns der Jan rat, Chunrat der Rampperstorfer rat, Ulrich der Pettziech rat und Jo/erg der Neuer rat, all vier des rates der stat ze Wienn , beurkunden, dass frau Margret, Petreins des…</td>
                 </tr>
             
@@ -962,6 +1081,11 @@
                     <td class="src-col-idno"><a href="../../documents/QGW/Vienna_1177-1414_ready/1213.html">1213</a></td>
                     <td class="src-col-date">1391 VIII 09</td>
                     <td class="src-col-corpus">QGW II/1 (1177–1414)</td>
+                    <td class="src-col-label"><em>-</em></td>
+                    <td class="src-col-role">
+                        <span class="role-chip role-chip-witness">Zeuge / Siegler*in</span>
+                        
+                    </td>
                     <td class="src-col-regest">Hanns von Zuentgraben, chorherr dacz Allerheiligen tu/emchirchen dacz sand Stephan ze Wienn und pharrer ze Ort, gibt Ulreichen dem Reindlein, dem fleischhakcher, purger ze Wienn, seiner Hausfrau…</td>
                 </tr>
             
@@ -969,6 +1093,11 @@
                     <td class="src-col-idno"><a href="../../documents/QGW/Vienna_1177-1414_ready/1281.html">1281</a></td>
                     <td class="src-col-date">1394 V 02</td>
                     <td class="src-col-corpus">QGW II/1 (1177–1414)</td>
+                    <td class="src-col-label"><em>hern</em></td>
+                    <td class="src-col-role">
+                        <span class="role-chip role-chip-witness">Zeuge / Siegler*in</span>
+                        
+                    </td>
                     <td class="src-col-regest">Hainreich der Su/oz/zz/zmu/endel und Elsbet, seine Hausfrau, Chunrat, der gu/ertler, und Kunigund, seine Hausfrau, der Elspeten Schwester, bestätigen, dass ihnen der Rath der Stadt zu Wien 4 ½ lb…</td>
                 </tr>
             
@@ -976,6 +1105,11 @@
                     <td class="src-col-idno"><a href="../../documents/QGW/Vienna_1177-1414_ready/1294.html">1294</a></td>
                     <td class="src-col-date">1394 XII 02</td>
                     <td class="src-col-corpus">QGW II/1 (1177–1414)</td>
+                    <td class="src-col-label"><em>hern</em></td>
+                    <td class="src-col-role">
+                        <span class="role-chip role-chip-witness">Zeuge / Siegler*in</span>
+                        
+                    </td>
                     <td class="src-col-regest">Kathrei, Thomans tochter Thomans des Chlainn von der Neunstat, dem got gnad, und Hannsen hausfrau des Spiegler, herzog Albrechts chellerschreiber , schafft ihrem Manne Hannsen dem Spiegler…</td>
                 </tr>
             
@@ -983,6 +1117,11 @@
                     <td class="src-col-idno"><a href="../../documents/Stadtbuecher/Band_1_1395-1400_ready/223b.html">223b</a></td>
                     <td class="src-col-date">o. D.</td>
                     <td class="src-col-corpus">Stadtbücher Bd. 1 (1395–1400)</td>
+                    <td class="src-col-label"><em>-</em></td>
+                    <td class="src-col-role">
+                        <span class="role-chip role-chip-other">Sonstige</span>
+                        
+                    </td>
                     <td class="src-col-regest">-</td>
                 </tr>
             
@@ -990,6 +1129,11 @@
                     <td class="src-col-idno"><a href="../../documents/QGW/Vienna_1177-1414_ready/1298.html">1298</a></td>
                     <td class="src-col-date">1395 IV 02</td>
                     <td class="src-col-corpus">QGW II/1 (1177–1414)</td>
+                    <td class="src-col-label"><em>-</em></td>
+                    <td class="src-col-role">
+                        <span class="role-chip role-chip-issuer">Aussteller*in</span><span class="role-chip role-chip-witness">Zeuge / Siegler*in</span>
+                        
+                    </td>
                     <td class="src-col-regest">Jorg der Neuer, des rates der stat ze Wienn, und Elspet, seine Hausfrau , verkaufen mit Handen ihres Bergherrn hern Petreins, kaplan der kapellen Unser Fraun und sand Johanns des ewangelisten,…</td>
                 </tr>
             
@@ -997,6 +1141,11 @@
                     <td class="src-col-idno"><a href="../../documents/Stadtbuecher/Band_1_1395-1400_ready/222.html">221</a></td>
                     <td class="src-col-date">(1397 Dezember 2, Kufstein)</td>
                     <td class="src-col-corpus">Stadtbücher Bd. 1 (1395–1400)</td>
+                    <td class="src-col-label"><em>-</em></td>
+                    <td class="src-col-role">
+                        
+                        -
+                    </td>
                     <td class="src-col-regest">(Inde:l:: Item in frewntschaftbrief Hansen des Scharffenberger) Wir der rat und gemainchleich die purger arm und reich der stat zu Chueffstain bechennen offennleich mit dem brief und tun chund allen…</td>
                 </tr>
             
@@ -1004,6 +1153,11 @@
                     <td class="src-col-idno"><a href="../../documents/Stadtbuecher/Band_1_1395-1400_ready/223a.html">222</a></td>
                     <td class="src-col-date">(1397 Dezember 2, Kufstein)</td>
                     <td class="src-col-corpus">Stadtbücher Bd. 1 (1395–1400)</td>
+                    <td class="src-col-label"><em>-</em></td>
+                    <td class="src-col-role">
+                        
+                        -
+                    </td>
                     <td class="src-col-regest">(Indez: Itern aber ain brief Hanssens Scharffenberger) 223a Ich Rudolf von Rosenhaim, phleger zu Chueffstain, bechenn offennieich mit dem brief, das mir chuntleich gewizzen ist, daz Hanns…</td>
                 </tr>
             
@@ -1011,6 +1165,11 @@
                     <td class="src-col-idno"><a href="../../documents/Stadtbuecher/Band_1_1395-1400_ready/225.html">225</a></td>
                     <td class="src-col-date">1398 Januar 31</td>
                     <td class="src-col-corpus">Stadtbücher Bd. 1 (1395–1400)</td>
+                    <td class="src-col-label"><em>-</em></td>
+                    <td class="src-col-role">
+                        <span class="role-chip role-chip-witness">Zeuge / Siegler*in</span><span class="role-chip role-chip-other">Sonstige</span>
+                        
+                    </td>
                     <td class="src-col-regest">pr. rnü., 3 Einbr. 2 Zg., Ma (Indez: !tern gescheft Margreten Chunrats des Selden witib) Des nachsten phincztags vor Unser Frawn tag zu der liechmezz kom fur den rät der stat zu Wienn der erber herr…</td>
                 </tr>
             
@@ -1018,6 +1177,11 @@
                     <td class="src-col-idno"><a href="../../documents/Stadtbuecher/Band_1_1395-1400_ready/334.html">334</a></td>
                     <td class="src-col-date">(1398 Juni 27, Wien)</td>
                     <td class="src-col-corpus">Stadtbücher Bd. 1 (1395–1400)</td>
+                    <td class="src-col-label"><em>erbern</em></td>
+                    <td class="src-col-role">
+                        <span class="role-chip role-chip-witness">Zeuge / Siegler*in</span>
+                        
+                    </td>
                     <td class="src-col-regest">pr. sehr., 2 Zg., S (Indez: Item gescheftbrief Hansen des Siechten) Ich Hanns der Slecht, burger ze Wienn, vergich und tun kunt offenleich mit dem brief allen den, die in lesent oder horent lesen,…</td>
                 </tr>
             
@@ -1025,6 +1189,11 @@
                     <td class="src-col-idno"><a href="../../documents/Stadtbuecher/Band_1_1395-1400_ready/394.html">394</a></td>
                     <td class="src-col-date">1399 Juni 14</td>
                     <td class="src-col-corpus">Stadtbücher Bd. 1 (1395–1400)</td>
+                    <td class="src-col-label"><em>-</em></td>
+                    <td class="src-col-role">
+                        <span class="role-chip role-chip-witness">Zeuge / Siegler*in</span><span class="role-chip role-chip-other">Sonstige</span>
+                        
+                    </td>
                     <td class="src-col-regest">pr. mü., Einbr. 2 Zg., Ma (Indez: Item gesch~ft Chunrats des Tambach) An sand Veyts abende kom fur den rat Jorg der Newer und hat da beweist mit den erbern lewten ze rechter zeit, als er ze recht…</td>
                 </tr>
             
@@ -1032,6 +1201,11 @@
                     <td class="src-col-idno"><a href="../../documents/QGW/Vienna_1177-1414_ready/1443.html">1443</a></td>
                     <td class="src-col-date">1399 XI 03</td>
                     <td class="src-col-corpus">QGW II/1 (1177–1414)</td>
+                    <td class="src-col-label"><em>-</em></td>
+                    <td class="src-col-role">
+                        <span class="role-chip role-chip-witness">Zeuge / Siegler*in</span>
+                        
+                    </td>
                     <td class="src-col-regest">Hanns der Spiegler, Herzog Albrechts Kellerschreiber, bestätigt, dass ihm seine swieger frau Margret, Hannsen witib Hannsen des Plesperger witib, zu irer tochter Elspeten, seiner Hausfrau der auch…</td>
                 </tr>
             
@@ -1039,6 +1213,11 @@
                     <td class="src-col-idno"><a href="../../documents/QGW/Vienna_1177-1414_ready/1490.html">1490</a></td>
                     <td class="src-col-date">1401 VII 09</td>
                     <td class="src-col-corpus">QGW II/1 (1177–1414)</td>
+                    <td class="src-col-label"><em>-</em></td>
+                    <td class="src-col-role">
+                        <span class="role-chip role-chip-witness">Zeuge / Siegler*in</span>
+                        
+                    </td>
                     <td class="src-col-regest">Stephan der Nusdorfer verkauft mit Handen seines Bergmeisters Leben, des preuer von der Herren Alsse, pergmaister der geistleichen frown dacz sand Niclas var Stubentar ze Wienn , ½ Joch Weingarten,…</td>
                 </tr>
             
@@ -1046,6 +1225,11 @@
                     <td class="src-col-idno"><a href="../../documents/QGW/Vienna_1177-1414_ready/1523.html">1523</a></td>
                     <td class="src-col-date">1403 I 12</td>
                     <td class="src-col-corpus">QGW II/1 (1177–1414)</td>
+                    <td class="src-col-label"><em>-</em></td>
+                    <td class="src-col-role">
+                        <span class="role-chip role-chip-other">Sonstige</span><span class="role-chip role-chip-recipient">Empfänger*in</span>
+                        
+                    </td>
                     <td class="src-col-regest">Peter der Angervelder, statrichter ze Wienn, beurkundet, dass vor ihm in der Bürgerschranne der Wiener Bürger Jo/erg der Neuer anstattanstatt mit Vorsprechen Otten des Murbeczen und Wilhalm, seines…</td>
                 </tr>
             
@@ -1053,6 +1237,11 @@
                     <td class="src-col-idno"><a href="../../documents/QGW/Vienna_1177-1414_ready/1548.html">1548</a></td>
                     <td class="src-col-date">1403 VII 05</td>
                     <td class="src-col-corpus">QGW II/1 (1177–1414)</td>
+                    <td class="src-col-label"><em>-</em></td>
+                    <td class="src-col-role">
+                        <span class="role-chip role-chip-witness">Zeuge / Siegler*in</span>
+                        
+                    </td>
                     <td class="src-col-regest">Agnes, hausfrau Niklas hausfrau des Fraunmessers und Petreins seligen des Chremser, des schuster, tochter, verkauft mit Handen des Bürgermeisters Herrn Haunolts des Schuchler und des rats gemain der…</td>
                 </tr>
             
@@ -1060,6 +1249,11 @@
                     <td class="src-col-idno"><a href="../../documents/QGW/Vienna_1177-1414_ready/1566.html">1566</a></td>
                     <td class="src-col-date">1403 XII 29</td>
                     <td class="src-col-corpus">QGW II/1 (1177–1414)</td>
+                    <td class="src-col-label"><em>-</em></td>
+                    <td class="src-col-role">
+                        <span class="role-chip role-chip-recipient">Empfänger*in</span>
+                        
+                    </td>
                     <td class="src-col-regest">Thoman Englisch, purger ze Wienn, und Kathrei, seine Hausfrau, verkaufen mit Handen Hannsen von Strenikch, pergmaister ze Medling herzog Wilhalms und herzog Albrechts, gevettern, und Niclas des…</td>
                 </tr>
             
@@ -1067,6 +1261,11 @@
                     <td class="src-col-idno"><a href="../../documents/QGW/Vienna_1177-1414_ready/1598.html">1598</a></td>
                     <td class="src-col-date">1404 X 25</td>
                     <td class="src-col-corpus">QGW II/1 (1177–1414)</td>
+                    <td class="src-col-label"><em>-</em></td>
+                    <td class="src-col-role">
+                        <span class="role-chip role-chip-witness">Zeuge / Siegler*in</span>
+                        
+                    </td>
                     <td class="src-col-regest">Seifrid der Lorber ze Wienn und Kathrei, hausfrau Hannsen hausfrau, des münsser, verkaufen mit Handen des Bürgermeisters hern Chunrats des Vorlauffs und des rats gemain der stat ze Wienn die Hälfte…</td>
                 </tr>
             
@@ -1074,6 +1273,11 @@
                     <td class="src-col-idno"><a href="../../documents/QGW/Vienna_1177-1414_ready/1618.html">1618</a></td>
                     <td class="src-col-date">1405 IV 08</td>
                     <td class="src-col-corpus">QGW II/1 (1177–1414)</td>
+                    <td class="src-col-label"><em>-</em></td>
+                    <td class="src-col-role">
+                        <span class="role-chip role-chip-other">Sonstige</span>
+                        
+                    </td>
                     <td class="src-col-regest">Albrecht der Zetter, purger ze Wienn, verkauft seines ledigen Erbgutes ein halbes Joch Weingarten, gelegen ze Nusdorf in den Honern ob des dorfs zenechst Wolfharts weingarten von Regenspurch,…</td>
                 </tr>
             
@@ -1081,6 +1285,11 @@
                     <td class="src-col-idno"><a href="../../documents/QGW/Vienna_1177-1414_ready/1680.html">1680</a></td>
                     <td class="src-col-date">1407 II 17</td>
                     <td class="src-col-corpus">QGW II/1 (1177–1414)</td>
+                    <td class="src-col-label"><em>-</em></td>
+                    <td class="src-col-role">
+                        <span class="role-chip role-chip-witness">Zeuge / Siegler*in</span>
+                        
+                    </td>
                     <td class="src-col-regest">Peter Walnberg, purger ze Wienn, stellt dem Wiener Bürger Otten dem Weissen einen Schuldbrief aus über 132 lb dn., rückzahlbar am. nächsten sand Merten tag, aus und verpfändet ihm dafür ½ Joch…</td>
                 </tr>
             
@@ -1088,6 +1297,11 @@
                     <td class="src-col-idno"><a href="../../documents/QGW/Vienna_1177-1414_ready/1753.html">1753</a></td>
                     <td class="src-col-date">1409 II 25</td>
                     <td class="src-col-corpus">QGW II/1 (1177–1414)</td>
+                    <td class="src-col-label"><em>-</em></td>
+                    <td class="src-col-role">
+                        <span class="role-chip role-chip-witness">Zeuge / Siegler*in</span>
+                        
+                    </td>
                     <td class="src-col-regest">Kathrei tochter, Niclass, des pergmaister seligen tochter auf der Widem vor Kernertor ze Wienn, gibt nach dem Gebote Herzog Rudolfs IV. Ulreichen dem Stiffter und seiner Hausfrau Kathrein ½ lb dn.…</td>
                 </tr>
             
@@ -1095,6 +1309,11 @@
                     <td class="src-col-idno"><a href="../../documents/QGW/Vienna_1177-1414_ready/1774.html">1774</a></td>
                     <td class="src-col-date">1409 IX 30</td>
                     <td class="src-col-corpus">QGW II/1 (1177–1414)</td>
+                    <td class="src-col-label"><em>-</em></td>
+                    <td class="src-col-role">
+                        <span class="role-chip role-chip-issuer">Aussteller*in</span>
+                        
+                    </td>
                     <td class="src-col-regest">Jorig der Neuer, purger ze Wienn, zechmaister der Schreiberzech auf dem neun Chorner auf sand Stephans freithof ze Wienn, und die pruederschaft gemainkleich derselben zech geben mit Handen hern…</td>
                 </tr>
             
@@ -1102,6 +1321,11 @@
                     <td class="src-col-idno"><a href="../../documents/QGW/Vienna_1177-1414_ready/1845.html">1845</a></td>
                     <td class="src-col-date">1411 III 27</td>
                     <td class="src-col-corpus">QGW II/1 (1177–1414)</td>
+                    <td class="src-col-label"><em>-</em></td>
+                    <td class="src-col-role">
+                        <span class="role-chip role-chip-witness">Zeuge / Siegler*in</span>
+                        
+                    </td>
                     <td class="src-col-regest">Leonhart Schaur, lerer geistleicher rechten, beurkundet seinen letzten Willen. Er schafft: 1. seiner Schwester und ihren Kindern zu gleichen Theilen sein Wohnhaus, seine erb weingerten, die er…</td>
                 </tr>
             
@@ -1109,6 +1333,11 @@
                     <td class="src-col-idno"><a href="../../documents/QGW/Vienna_1177-1414_ready/1864.html">1864</a></td>
                     <td class="src-col-date">1411 IV 18</td>
                     <td class="src-col-corpus">QGW II/1 (1177–1414)</td>
+                    <td class="src-col-label"><em>-</em></td>
+                    <td class="src-col-role">
+                        <span class="role-chip role-chip-witness">Zeuge / Siegler*in</span>
+                        
+                    </td>
                     <td class="src-col-regest">Wolfhard Pilich bestätigt, dass her Erhart der Schierl, chorherr ze Allerheiligen tuemkirichen dacz sand Stephan ze Wienn und pharrer ze Napperstorf, her Wolfgang der Purkcharczperger, des rats der…</td>
                 </tr>
             
@@ -1116,6 +1345,11 @@
                     <td class="src-col-idno"><a href="../../documents/QGW/Vienna_1177-1414_ready/1865.html">1865</a></td>
                     <td class="src-col-date">1411 IV 18</td>
                     <td class="src-col-corpus">QGW II/1 (1177–1414)</td>
+                    <td class="src-col-label"><em>-</em></td>
+                    <td class="src-col-role">
+                        <span class="role-chip role-chip-witness">Zeuge / Siegler*in</span>
+                        
+                    </td>
                     <td class="src-col-regest">Hanns Rötel von Alss bestätigt, dass her Erhart der Schierl, chorherr ze Allerheiligen tumkirichen dacz sand Stephan ze Wienn und pharrer ze Naperstorf, und her Wolfgang der Purkcharczperger, des…</td>
                 </tr>
             
@@ -1123,6 +1357,11 @@
                     <td class="src-col-idno"><a href="../../documents/QGW/Vienna_1177-1414_ready/1866.html">1866</a></td>
                     <td class="src-col-date">1411 IV 18</td>
                     <td class="src-col-corpus">QGW II/1 (1177–1414)</td>
+                    <td class="src-col-label"><em>-</em></td>
+                    <td class="src-col-role">
+                        <span class="role-chip role-chip-witness">Zeuge / Siegler*in</span>
+                        
+                    </td>
                     <td class="src-col-regest">Hanns Walder bestätigt, dass ihm die in no 1865 Genannten 60 lb dn, die ihm sein Herr her Leonhart der Schaur geschafft hat, entrichtet haben.</td>
                 </tr>
             
@@ -1130,6 +1369,11 @@
                     <td class="src-col-idno"><a href="../../documents/QGW/Vienna_1177-1414_ready/1907.html">1907</a></td>
                     <td class="src-col-date">1412 I 05</td>
                     <td class="src-col-corpus">QGW II/1 (1177–1414)</td>
+                    <td class="src-col-label"><em>-</em></td>
+                    <td class="src-col-role">
+                        <span class="role-chip role-chip-witness">Zeuge / Siegler*in</span>
+                        
+                    </td>
                     <td class="src-col-regest">Niclas der Nimervol, gesessen in der Lanntstrass vor Stubentor ze Wienn, und Anna, sein hausfrau, verkaufen mit Handen ihrer Grundfrau swester Annen der Heuningerinn, abbtessin der geistleichen fraun…</td>
                 </tr>
             
@@ -1137,6 +1381,11 @@
                     <td class="src-col-idno"><a href="../../documents/QGW/Vienna_1177-1414_ready/1985.html">1985</a></td>
                     <td class="src-col-date">1414 VI 04</td>
                     <td class="src-col-corpus">QGW II/1 (1177–1414)</td>
+                    <td class="src-col-label"><em>-</em></td>
+                    <td class="src-col-role">
+                        <span class="role-chip role-chip-recipient">Empfänger*in</span>
+                        
+                    </td>
                     <td class="src-col-regest">Ruedolf der Angervelder, burgermaister und münssmaister, und der rat gemain der stat zu Wienn bestätigen, dass ihnen Jorg der Neuer, ihr Mitbürger, alle zu der von Jorig dem Nusdorffer hincz…</td>
                 </tr>
             
@@ -1169,11 +1418,13 @@
         </div>
     </footer>
 
-    <script src="../../static/js/core.js?v=20260511112948"></script>
-    <script src="../../static/js/provenance.js?v=20260511112948"></script>
-    <script src="../../static/js/basket.js?v=20260511112948"></script>
+    <script src="../../static/js/core.js?v=20260511125458"></script>
+    <script src="../../static/js/tip.js?v=20260511125458"></script>
+    <script src="../../static/js/hint.js?v=20260511125458"></script>
+    <script src="../../static/js/basket.js?v=20260511125458"></script>
     
-<script src="../../static/js/tooltips.js?v=20260511112948"></script>
+<script src="../../static/js/profile.js?v=20260511125458"></script>
+<script src="../../static/js/basket-mount.js?v=20260511125458"></script>
 
 </body>
 </html>

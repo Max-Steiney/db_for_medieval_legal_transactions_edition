@@ -3,22 +3,22 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <meta http-equiv="Content-Security-Policy" content="default-src 'self'; script-src 'self'; style-src 'self'; font-src 'self'; img-src 'self' data: https://images.monasterium.net https://www.monasterium.net; connect-src 'self'; frame-ancestors 'none'; base-uri 'self'; form-action 'self'; upgrade-insecure-requests">
+    <meta http-equiv="Content-Security-Policy" content="default-src 'self'; script-src 'self'; style-src 'self'; font-src 'self'; img-src 'self' data: https://images.monasterium.net https://www.monasterium.net; connect-src 'self'; base-uri 'self'; form-action 'self'; upgrade-insecure-requests">
     <meta name="referrer" content="strict-origin-when-cross-origin">
     <meta http-equiv="Permissions-Policy" content="camera=(), microphone=(), geolocation=(), interest-cohort=()">
     <title>Dietrich Urbetsch, Datenbank</title>
     <link rel="preload" as="font" type="font/woff2" crossorigin
           href="../../static/fonts/inter-400-latin.woff2">
-    <link rel="stylesheet" href="../../static/css/fonts.css?v=20260511112948">
-    <link rel="stylesheet" href="../../static/css/tokens.css?v=20260511112948">
-    <link rel="stylesheet" href="../../static/css/base.css?v=20260511112948">
-    <link rel="stylesheet" href="../../static/css/components.css?v=20260511112948">
-    <link rel="stylesheet" href="../../static/css/responsive.css?v=20260511112948">
-    <link rel="stylesheet" href="../../static/css/print.css?v=20260511112948">
-    <link rel="stylesheet" href="../../static/css/provenance.css?v=20260511112948">
+    <link rel="stylesheet" href="../../static/css/fonts.css?v=20260511125458">
+    <link rel="stylesheet" href="../../static/css/tokens.css?v=20260511125458">
+    <link rel="stylesheet" href="../../static/css/base.css?v=20260511125458">
+    <link rel="stylesheet" href="../../static/css/components.css?v=20260511125458">
+    <link rel="stylesheet" href="../../static/css/responsive.css?v=20260511125458">
+    <link rel="stylesheet" href="../../static/css/print.css?v=20260511125458">
+    <link rel="stylesheet" href="../../static/css/tip.css?v=20260511125458">
     
-<link rel="stylesheet" href="../../static/css/document.css?v=20260511112948">
-<link rel="stylesheet" href="../../static/css/person.css?v=20260511112948">
+<link rel="stylesheet" href="../../static/css/document.css?v=20260511125458">
+<link rel="stylesheet" href="../../static/css/person.css?v=20260511125458">
 
 </head>
 <body data-root-path="../.."
@@ -48,8 +48,6 @@
         <a href="../../register/persons.html">Personen</a>
         
         <a href="../../register/orgs.html">Organisationen</a>
-        
-        <a href="../../register/places.html">Orte</a>
         
     </div>
 </div>
@@ -91,7 +89,7 @@
     </div>
 </div>
 
-                <a href="../../korb.html" class="nav-basket" aria-label="Wissenskorb">
+                <a href="../../korb.html" class="nav-basket" aria-label="Datenkorb">
                     <svg width="18" height="18" viewBox="0 0 18 18" fill="none" aria-hidden="true">
                         <path d="M3 5h12l-1.2 8.5a1 1 0 0 1-1 .85H5.2a1 1 0 0 1-1-.85L3 5z"
                               stroke="currentColor" stroke-width="1.4" fill="none"
@@ -112,11 +110,23 @@
 
     <div class="person-toolbar">
         <div class="person-toolbar-inner">
-            <nav class="person-breadcrumb" aria-label="Position">
-                <a href="../../register/persons.html">Personenregister</a>
-                <span class="bc-sep">&rsaquo;</span>
-                <span class="bc-doc"><strong>Dietrich Urbetsch</strong></span>
-            </nav>
+            <div class="person-toolbar-row">
+                <nav class="person-breadcrumb" aria-label="Position">
+                    <a href="../../register/persons.html">Personenregister</a>
+                    <span class="bc-sep">&rsaquo;</span>
+                    <span class="bc-doc"><strong>Dietrich Urbetsch</strong></span>
+                </nav>
+                <div class="person-toolbar-actions">
+                    <span class="toolbar-basket-mount"
+                          data-basket-type="person"
+                          data-basket-id="pe__dietrich_urbetsch_QGW_II_I_950"
+                          data-basket-label="Dietrich Urbetsch"
+                          data-basket-url="register/persons/pe__dietrich_urbetsch_QGW_II_I_950.html"
+                          data-basket-sex="m"
+                          data-basket-active-min="1326"
+                          data-basket-active-max="1378"></span>
+                </div>
+            </div>
             <div class="person-toolbar-meta">
                 <span class="meta-pair">
                     <span class="meta-label">Geschlecht</span>
@@ -124,11 +134,41 @@
                 </span>
                 
                 <span class="meta-pair">
-                    <span class="meta-label">Belegt</span>
+                    <span class="meta-label">Belegt
+<span class="tip-wrap">
+    <button type="button" class="tip-trigger tip-trigger--icon"
+            aria-expanded="false" aria-haspopup="dialog"
+            aria-controls="person-belegt"
+            data-tip="person-belegt"
+            aria-label="Definition: Beleg-Zeitraum">
+        <svg width="13" height="13" viewBox="0 0 16 16" aria-hidden="true">
+            <circle cx="8" cy="8" r="7" stroke="currentColor" stroke-width="1.4" fill="none"/>
+            <text x="8" y="11.6" text-anchor="middle" font-size="9.5" font-weight="700"
+                  fill="currentColor" font-family="Georgia, serif">i</text>
+        </svg>
+    </button>
+    <aside class="tip-popover tip-popover--glossary"
+           id="person-belegt" role="dialog" aria-hidden="true"
+           aria-label="Definition: Beleg-Zeitraum">
+        <header class="tip-head">
+            <h3 class="tip-title">Beleg-Zeitraum</h3>
+            <button type="button" class="tip-close" aria-label="Schlie&szlig;en">&times;</button>
+        </header>
+        <div class="tip-body">
+            <p>Erste und letzte Datierung einer Quelle, in der die Person erscheint. Bei einzelnem Beleg wird nur ein Jahr angegeben.</p>
+            
+        </div>
+    </aside>
+</span>
+</span>
                     <span class="meta-value">1326 bis 1378</span>
                 </span>
                 
                 
+                <span class="meta-pair">
+                    <span class="meta-label">Quellen</span>
+                    <span class="meta-value">33</span>
+                </span>
                 <span class="meta-pair person-id-pair">
                     <span class="meta-label">ID</span>
                     <code class="meta-value person-id">pe__dietrich_urbetsch_QGW_II_I_950</code>
@@ -145,16 +185,48 @@
             
         </h1>
         
+        
         <p class="person-note">W.B., Bergmeister, Münzmeister</p>
         
         
-        <p class="person-titles">
+        <p class="person-titles" data-collapsible="22">
             <span class="pt-label">In den Quellen genannt als</span>
             <span class="pt-chip">hern</span><span class="pt-chip">her</span><span class="pt-chip">Bergherrn|hern</span>
         </p>
         
         
+        
     </header>
+
+    
+    <section class="role-strip" aria-label="Rollen in Rechtsgeschäften">
+        <h2 class="role-strip-title">Rollen in Rechtsgeschäften</h2>
+        <div class="role-strip-cells">
+            
+            <div class="role-cell role-cell-issuer">
+                <span class="role-cell-count">4</span>
+                <span class="role-cell-label">Aussteller*in</span>
+            </div>
+            
+            <div class="role-cell role-cell-recipient">
+                <span class="role-cell-count">13</span>
+                <span class="role-cell-label">Empfänger*in</span>
+            </div>
+            
+            <div class="role-cell role-cell-witness">
+                <span class="role-cell-count">14</span>
+                <span class="role-cell-label">Zeuge / Siegler*in</span>
+            </div>
+            
+            <div class="role-cell role-cell-other">
+                <span class="role-cell-count">6</span>
+                <span class="role-cell-label">Sonstige</span>
+            </div>
+            
+        </div>
+        <p class="role-strip-hint">Summe Rollen-Belegungen: 37. Mehrfach-Rollen pro Quelle sind möglich.</p>
+    </section>
+    
 
     
 
@@ -171,6 +243,7 @@
                 <span class="rel-block-count">21</span>
                 <span class="rel-block-hint">Verwandtschaftsverhältnisse, wie sie in den Quellen explizit benannt werden.</span>
             </header>
+            
             <table class="rel-table">
                 <thead>
                     <tr>
@@ -191,7 +264,7 @@
                         <td class="rel-col-label"><em>Mutter</em></td>
                         <td class="rel-col-perspective">
                             
-                                Gerbirg → Dietrich Urbetsch
+                                Gerbirg &rsaquo; Dietrich Urbetsch
                             
                         </td>
                         <td class="rel-col-source">
@@ -210,7 +283,7 @@
                         <td class="rel-col-label"><em>Hausfrau</em></td>
                         <td class="rel-col-perspective">
                             
-                                Elisabeth Urbetschin → Dietrich Urbetsch
+                                Elisabeth Urbetschin &rsaquo; Dietrich Urbetsch
                             
                         </td>
                         <td class="rel-col-source">
@@ -229,7 +302,7 @@
                         <td class="rel-col-label"><em>Vaters</em></td>
                         <td class="rel-col-perspective">
                             
-                                Dietrich Urbetsch → Dietrich Urbetsch
+                                Dietrich Urbetsch &rsaquo; Dietrich Urbetsch
                             
                         </td>
                         <td class="rel-col-source">
@@ -248,7 +321,7 @@
                         <td class="rel-col-label"><em>Bruders</em></td>
                         <td class="rel-col-perspective">
                             
-                                Eberhard Urbetsch → Dietrich Urbetsch
+                                Eberhard Urbetsch &rsaquo; Dietrich Urbetsch
                             
                         </td>
                         <td class="rel-col-source">
@@ -267,7 +340,7 @@
                         <td class="rel-col-label"><em>swehers</em></td>
                         <td class="rel-col-perspective">
                             
-                                Leubmann Vesmann → Dietrich Urbetsch
+                                Leubmann Vesmann &rsaquo; Dietrich Urbetsch
                             
                         </td>
                         <td class="rel-col-source">
@@ -286,7 +359,7 @@
                         <td class="rel-col-label"><em>Frau</em></td>
                         <td class="rel-col-perspective">
                             
-                                Petra Urbetschin → Dietrich Urbetsch
+                                Petra Urbetschin &rsaquo; Dietrich Urbetsch
                             
                         </td>
                         <td class="rel-col-source">
@@ -305,7 +378,7 @@
                         <td class="rel-col-label"><em>Hausfrau</em></td>
                         <td class="rel-col-perspective">
                             
-                                Elisabeth Urbetschin → Dietrich Urbetsch
+                                Elisabeth Urbetschin &rsaquo; Dietrich Urbetsch
                             
                         </td>
                         <td class="rel-col-source">
@@ -324,7 +397,7 @@
                         <td class="rel-col-label"><em>Hausfrau</em></td>
                         <td class="rel-col-perspective">
                             
-                                Elisabeth Urbetschin → Dietrich Urbetsch
+                                Elisabeth Urbetschin &rsaquo; Dietrich Urbetsch
                             
                         </td>
                         <td class="rel-col-source">
@@ -343,7 +416,7 @@
                         <td class="rel-col-label"><em>Hausfrau</em></td>
                         <td class="rel-col-perspective">
                             
-                                Elisabeth Urbetschin → Dietrich Urbetsch
+                                Elisabeth Urbetschin &rsaquo; Dietrich Urbetsch
                             
                         </td>
                         <td class="rel-col-source">
@@ -362,7 +435,7 @@
                         <td class="rel-col-label"><em>Mutter</em></td>
                         <td class="rel-col-perspective">
                             
-                                Gerbirg → Dietrich Urbetsch
+                                Gerbirg &rsaquo; Dietrich Urbetsch
                             
                         </td>
                         <td class="rel-col-source">
@@ -381,7 +454,7 @@
                         <td class="rel-col-label"><em>Frau</em></td>
                         <td class="rel-col-perspective">
                             
-                                Elisabeth Urbetschin → Dietrich Urbetsch
+                                Elisabeth Urbetschin &rsaquo; Dietrich Urbetsch
                             
                         </td>
                         <td class="rel-col-source">
@@ -400,7 +473,7 @@
                         <td class="rel-col-label"><em>Oheims</em></td>
                         <td class="rel-col-perspective">
                             
-                                Wilhelm bei dem Brunnen bei dem Brunnen → Dietrich Urbetsch
+                                Wilhelm bei dem Brunnen bei dem Brunnen &rsaquo; Dietrich Urbetsch
                             
                         </td>
                         <td class="rel-col-source">
@@ -419,7 +492,7 @@
                         <td class="rel-col-label"><em>Hausfrau</em></td>
                         <td class="rel-col-perspective">
                             
-                                Elisabeth Urbetschin → Dietrich Urbetsch
+                                Elisabeth Urbetschin &rsaquo; Dietrich Urbetsch
                             
                         </td>
                         <td class="rel-col-source">
@@ -438,7 +511,7 @@
                         <td class="rel-col-label"><em>Hausfrau</em></td>
                         <td class="rel-col-perspective">
                             
-                                Petra Urbetschin → Dietrich Urbetsch
+                                Petra Urbetschin &rsaquo; Dietrich Urbetsch
                             
                         </td>
                         <td class="rel-col-source">
@@ -457,7 +530,7 @@
                         <td class="rel-col-label"><em>Oheim</em></td>
                         <td class="rel-col-perspective">
                             
-                                Wilhelm bei dem Brunnen bei dem Brunnen → Dietrich Urbetsch
+                                Wilhelm bei dem Brunnen bei dem Brunnen &rsaquo; Dietrich Urbetsch
                             
                         </td>
                         <td class="rel-col-source">
@@ -476,7 +549,7 @@
                         <td class="rel-col-label"><em>Hausfrau</em></td>
                         <td class="rel-col-perspective">
                             
-                                Elisabeth Urbetschin → Dietrich Urbetsch
+                                Elisabeth Urbetschin &rsaquo; Dietrich Urbetsch
                             
                         </td>
                         <td class="rel-col-source">
@@ -495,7 +568,7 @@
                         <td class="rel-col-label"><em>Mannes</em></td>
                         <td class="rel-col-perspective">
                             
-                                Dietrich Urbetsch → Elisabeth Urbetschin
+                                Dietrich Urbetsch &rsaquo; Elisabeth Urbetschin
                             
                         </td>
                         <td class="rel-col-source">
@@ -514,7 +587,7 @@
                         <td class="rel-col-label"><em>hausvrowe</em></td>
                         <td class="rel-col-perspective">
                             
-                                Elisabeth Urbetschin → Dietrich Urbetsch
+                                Elisabeth Urbetschin &rsaquo; Dietrich Urbetsch
                             
                         </td>
                         <td class="rel-col-source">
@@ -533,7 +606,7 @@
                         <td class="rel-col-label"><em>Hausfrau</em></td>
                         <td class="rel-col-perspective">
                             
-                                Petra Urbetschin → Dietrich Urbetsch
+                                Petra Urbetschin &rsaquo; Dietrich Urbetsch
                             
                         </td>
                         <td class="rel-col-source">
@@ -552,7 +625,7 @@
                         <td class="rel-col-label"><em>tochter</em></td>
                         <td class="rel-col-perspective">
                             
-                                Elisabeth von Ybbs → Dietrich Urbetsch
+                                Elisabeth von Ybbs &rsaquo; Dietrich Urbetsch
                             
                         </td>
                         <td class="rel-col-source">
@@ -571,7 +644,7 @@
                         <td class="rel-col-label"><em>Hausfrau</em></td>
                         <td class="rel-col-perspective">
                             
-                                Petra Urbetschin → Dietrich Urbetsch
+                                Petra Urbetschin &rsaquo; Dietrich Urbetsch
                             
                         </td>
                         <td class="rel-col-source">
@@ -597,6 +670,7 @@
                 <span class="rel-block-count">2</span>
                 <span class="rel-block-hint">Stellvertretungs-Beziehungen, z. B. handelt eine Person an Stelle einer anderen.</span>
             </header>
+            
             <table class="rel-table">
                 <thead>
                     <tr>
@@ -617,7 +691,7 @@
                         <td class="rel-col-label"><em>Vorsprech</em></td>
                         <td class="rel-col-perspective">
                             
-                                Bernhard → Dietrich Urbetsch
+                                Bernhard &rsaquo; Dietrich Urbetsch
                             
                         </td>
                         <td class="rel-col-source">
@@ -636,7 +710,7 @@
                         <td class="rel-col-label"><em>Vorsprech</em></td>
                         <td class="rel-col-perspective">
                             
-                                Philipp Halbemmer → Dietrich Urbetsch
+                                Philipp Halbemmer &rsaquo; Dietrich Urbetsch
                             
                         </td>
                         <td class="rel-col-source">
@@ -659,6 +733,7 @@
                 <span class="rel-block-count">19</span>
                 <span class="rel-block-hint">Berufs- oder Amtsbezeichnung in Bezug auf eine Institution.</span>
             </header>
+            
             <table class="rel-table">
                 <thead>
                     <tr>
@@ -679,7 +754,7 @@
                         <td class="rel-col-label"><em>purgermaister</em></td>
                         <td class="rel-col-perspective">
                             
-                                Dietrich Urbetsch → Wien
+                                Dietrich Urbetsch &rsaquo; Wien
                             
                         </td>
                         <td class="rel-col-source">
@@ -698,7 +773,7 @@
                         <td class="rel-col-label"><em>purgermaister</em></td>
                         <td class="rel-col-perspective">
                             
-                                Dietrich Urbetsch → Wien
+                                Dietrich Urbetsch &rsaquo; Wien
                             
                         </td>
                         <td class="rel-col-source">
@@ -717,7 +792,7 @@
                         <td class="rel-col-label"><em>richter</em></td>
                         <td class="rel-col-perspective">
                             
-                                Dietrich Urbetsch → Wien
+                                Dietrich Urbetsch &rsaquo; Wien
                             
                         </td>
                         <td class="rel-col-source">
@@ -736,7 +811,7 @@
                         <td class="rel-col-label"><em>richter</em></td>
                         <td class="rel-col-perspective">
                             
-                                Dietrich Urbetsch → Wien
+                                Dietrich Urbetsch &rsaquo; Wien
                             
                         </td>
                         <td class="rel-col-source">
@@ -755,7 +830,7 @@
                         <td class="rel-col-label"><em>richter</em></td>
                         <td class="rel-col-perspective">
                             
-                                Dietrich Urbetsch → Wien
+                                Dietrich Urbetsch &rsaquo; Wien
                             
                         </td>
                         <td class="rel-col-source">
@@ -774,7 +849,7 @@
                         <td class="rel-col-label"><em>purger</em></td>
                         <td class="rel-col-perspective">
                             
-                                Dietrich Urbetsch → Wien
+                                Dietrich Urbetsch &rsaquo; Wien
                             
                         </td>
                         <td class="rel-col-source">
@@ -793,7 +868,7 @@
                         <td class="rel-col-label"><em>münzmaister</em></td>
                         <td class="rel-col-perspective">
                             
-                                Dietrich Urbetsch → Wien
+                                Dietrich Urbetsch &rsaquo; Wien
                             
                         </td>
                         <td class="rel-col-source">
@@ -812,7 +887,7 @@
                         <td class="rel-col-label"><em>purger</em></td>
                         <td class="rel-col-perspective">
                             
-                                Dietrich Urbetsch → Wien
+                                Dietrich Urbetsch &rsaquo; Wien
                             
                         </td>
                         <td class="rel-col-source">
@@ -831,7 +906,7 @@
                         <td class="rel-col-label"><em>purger</em></td>
                         <td class="rel-col-perspective">
                             
-                                Dietrich Urbetsch → Wien
+                                Dietrich Urbetsch &rsaquo; Wien
                             
                         </td>
                         <td class="rel-col-source">
@@ -850,7 +925,7 @@
                         <td class="rel-col-label"><em>statrichter</em></td>
                         <td class="rel-col-perspective">
                             
-                                Dietrich Urbetsch → Wien
+                                Dietrich Urbetsch &rsaquo; Wien
                             
                         </td>
                         <td class="rel-col-source">
@@ -869,7 +944,7 @@
                         <td class="rel-col-label"><em>statrichter</em></td>
                         <td class="rel-col-perspective">
                             
-                                Dietrich Urbetsch → Wien
+                                Dietrich Urbetsch &rsaquo; Wien
                             
                         </td>
                         <td class="rel-col-source">
@@ -888,7 +963,7 @@
                         <td class="rel-col-label"><em>statrichter</em></td>
                         <td class="rel-col-perspective">
                             
-                                Dietrich Urbetsch → Wien
+                                Dietrich Urbetsch &rsaquo; Wien
                             
                         </td>
                         <td class="rel-col-source">
@@ -907,7 +982,7 @@
                         <td class="rel-col-label"><em>munzmaister</em></td>
                         <td class="rel-col-perspective">
                             
-                                Dietrich Urbetsch → Wien
+                                Dietrich Urbetsch &rsaquo; Wien
                             
                         </td>
                         <td class="rel-col-source">
@@ -926,7 +1001,7 @@
                         <td class="rel-col-label"><em>munsmaister</em></td>
                         <td class="rel-col-perspective">
                             
-                                Dietrich Urbetsch → Wien
+                                Dietrich Urbetsch &rsaquo; Wien
                             
                         </td>
                         <td class="rel-col-source">
@@ -945,7 +1020,7 @@
                         <td class="rel-col-label"><em>münzmaister</em></td>
                         <td class="rel-col-perspective">
                             
-                                Dietrich Urbetsch → Wien
+                                Dietrich Urbetsch &rsaquo; Wien
                             
                         </td>
                         <td class="rel-col-source">
@@ -964,7 +1039,7 @@
                         <td class="rel-col-label"><em>purger</em></td>
                         <td class="rel-col-perspective">
                             
-                                Dietrich Urbetsch → Wien
+                                Dietrich Urbetsch &rsaquo; Wien
                             
                         </td>
                         <td class="rel-col-source">
@@ -983,7 +1058,7 @@
                         <td class="rel-col-label"><em>Bürger</em></td>
                         <td class="rel-col-perspective">
                             
-                                Dietrich Urbetsch → Wien
+                                Dietrich Urbetsch &rsaquo; Wien
                             
                         </td>
                         <td class="rel-col-source">
@@ -1002,7 +1077,7 @@
                         <td class="rel-col-label"><em>Bürgern</em></td>
                         <td class="rel-col-perspective">
                             
-                                Dietrich Urbetsch → Wien
+                                Dietrich Urbetsch &rsaquo; Wien
                             
                         </td>
                         <td class="rel-col-source">
@@ -1021,7 +1096,7 @@
                         <td class="rel-col-label"><em>Bürger</em></td>
                         <td class="rel-col-perspective">
                             
-                                Dietrich Urbetsch → Wien
+                                Dietrich Urbetsch &rsaquo; Wien
                             
                         </td>
                         <td class="rel-col-source">
@@ -1039,18 +1114,32 @@
         
         
         
+        
+        
+        
+        
+        
+        
     </section>
     
 
     
     <section class="person-sources" aria-label="Quellen mit Nennung">
         <h2 class="section-head">Quellen mit Nennung</h2>
+        
+        <div class="table-filter">
+            <input type="search" class="table-filter-input" data-target="src" placeholder="In den Quellen filtern&hellip;" aria-label="In den Quellen filtern">
+            <span class="table-filter-status"></span>
+        </div>
+        
         <table class="person-source-table">
             <thead>
                 <tr>
                     <th scope="col" class="src-col-idno">Nr.</th>
                     <th scope="col" class="src-col-date">Datum</th>
                     <th scope="col" class="src-col-corpus">Quellenkorpus</th>
+                    <th scope="col" class="src-col-label">Bezeichnung</th>
+                    <th scope="col" class="src-col-role">Rolle</th>
                     <th scope="col" class="src-col-regest">Regest</th>
                 </tr>
             </thead>
@@ -1060,6 +1149,11 @@
                     <td class="src-col-idno"><a href="../../documents/QGW/Vienna_1177-1414_ready/97.html">97</a></td>
                     <td class="src-col-date">1326 X 08</td>
                     <td class="src-col-corpus">QGW II/1 (1177–1414)</td>
+                    <td class="src-col-label"><em>her</em></td>
+                    <td class="src-col-role">
+                        <span class="role-chip role-chip-recipient">Empfänger*in</span>
+                        
+                    </td>
                     <td class="src-col-regest">Mert, Kaplan der Kapelle daz hern Otten Haim ze Wienne, bestätigt, dass her Dietreich der Urbetsch, Bürger zu Wien, und seine Hausfrau Peterse in der Kapelle einen Altar gestiftet ob der stige zu…</td>
                 </tr>
             
@@ -1067,6 +1161,11 @@
                     <td class="src-col-idno"><a href="../../documents/QGW/Vienna_1177-1414_ready/118.html">118</a></td>
                     <td class="src-col-date">1329 IX 01</td>
                     <td class="src-col-corpus">QGW II/1 (1177–1414)</td>
+                    <td class="src-col-label"><em>hern</em></td>
+                    <td class="src-col-role">
+                        <span class="role-chip role-chip-witness">Zeuge / Siegler*in</span>
+                        
+                    </td>
                     <td class="src-col-regest">Chunrat der Nuz/zdorfer spricht zu der Frau Margret der Moganinne, die vor ihm im Bergtaiding die Klage auf drei Viertel Weingarten, der da leit ze Grinzingen und haisset der Scherge, . . . und der…</td>
                 </tr>
             
@@ -1074,6 +1173,11 @@
                     <td class="src-col-idno"><a href="../../documents/QGW/Vienna_1177-1414_ready/152.html">152</a></td>
                     <td class="src-col-date">1333 II 23</td>
                     <td class="src-col-corpus">QGW II/1 (1177–1414)</td>
+                    <td class="src-col-label"><em>hern</em></td>
+                    <td class="src-col-role">
+                        <span class="role-chip role-chip-witness">Zeuge / Siegler*in</span>
+                        
+                    </td>
                     <td class="src-col-regest">Seifrit, der fu/etraer, schafft nach dem Ableben Stephans des Chrigler drei Weingärten, der ainer leit an dem Nuz/zperge, des ein jeuch ist und haisset das Ru/eppel und leit zenaehst dem weingarten…</td>
                 </tr>
             
@@ -1081,6 +1185,11 @@
                     <td class="src-col-idno"><a href="../../documents/QGW/Vienna_1177-1414_ready/174.html">174</a></td>
                     <td class="src-col-date">1336 X 21</td>
                     <td class="src-col-corpus">QGW II/1 (1177–1414)</td>
+                    <td class="src-col-label"><em>hern</em></td>
+                    <td class="src-col-role">
+                        <span class="role-chip role-chip-witness">Zeuge / Siegler*in</span>
+                        
+                    </td>
                     <td class="src-col-regest">Peter, der slosser, gibt seiner Muhme, vron Margreten der Chuliberinne, allen seinen Besitz, es sei erbegut oder varende gut, auf, des ist ain weingarte, leit ze Ottachrinne, haisset der Slosser, und…</td>
                 </tr>
             
@@ -1088,6 +1197,11 @@
                     <td class="src-col-idno"><a href="../../documents/QGW/Vienna_1177-1414_ready/178.html">178</a></td>
                     <td class="src-col-date">1337 V 12</td>
                     <td class="src-col-corpus">QGW II/1 (1177–1414)</td>
+                    <td class="src-col-label"><em>-</em></td>
+                    <td class="src-col-role">
+                        <span class="role-chip role-chip-recipient">Empfänger*in</span>
+                        
+                    </td>
                     <td class="src-col-regest">Chunrat von Eslarn, purgermaister, und Engelbrecht, aidemdes Panchen aidem, spitalmaister, die purger und der rat von der stat ze Wienne bestätigen, dass ihnen Dietrich der Urbaetsch 40 lb dn., die…</td>
                 </tr>
             
@@ -1095,6 +1209,11 @@
                     <td class="src-col-idno"><a href="../../documents/QGW/Vienna_1177-1414_ready/186.html">186</a></td>
                     <td class="src-col-date">1338 I 25</td>
                     <td class="src-col-corpus">QGW II/1 (1177–1414)</td>
+                    <td class="src-col-label"><em>hern</em></td>
+                    <td class="src-col-role">
+                        <span class="role-chip role-chip-witness">Zeuge / Siegler*in</span>
+                        
+                    </td>
                     <td class="src-col-regest">Hainreich der Stainpeck und Chunigunt, seine Hausfrau Wilhalm von Watzmanstorf und Chlar, seine Hausfrau Praun von Steinachirichen und Jeut, seine Hausfrau Dietmar von Hadmarstorf und Margret, seine…</td>
                 </tr>
             
@@ -1102,6 +1221,11 @@
                     <td class="src-col-idno"><a href="../../documents/QGW/Vienna_1177-1414_ready/194.html">194</a></td>
                     <td class="src-col-date">1338 V 16</td>
                     <td class="src-col-corpus">QGW II/1 (1177–1414)</td>
+                    <td class="src-col-label"><em>hern</em></td>
+                    <td class="src-col-role">
+                        <span class="role-chip role-chip-witness">Zeuge / Siegler*in</span>
+                        
+                    </td>
                     <td class="src-col-regest">Katrei, tochterhern Fridreichs tochter des Pruknaer, dem got genade, verkauft mit Handen ihres Bergherrn bru/oder Ulreichs, comiteur dacz dem Tautschen haus ze Wienn, ein ihr von ihrem Vater…</td>
                 </tr>
             
@@ -1109,6 +1233,11 @@
                     <td class="src-col-idno"><a href="../../documents/QGW/Vienna_1177-1414_ready/200.html">200</a></td>
                     <td class="src-col-date">1338 VII 31</td>
                     <td class="src-col-corpus">QGW II/1 (1177–1414)</td>
+                    <td class="src-col-label"><em>-</em></td>
+                    <td class="src-col-role">
+                        <span class="role-chip role-chip-issuer">Aussteller*in</span>
+                        
+                    </td>
                     <td class="src-col-regest">Ditreich der Urbetsch, richter ze Wienne, beurkundet, dass vor ihm in der Bürgerschranne Albrecht, der Teutschen Herren schaffer, mit Vorsprechen hinzdes Vogels chrame , die da leit an dem…</td>
                 </tr>
             
@@ -1116,6 +1245,11 @@
                     <td class="src-col-idno"><a href="../../documents/QGW/Vienna_1177-1414_ready/207.html">207</a></td>
                     <td class="src-col-date">1339 III 08</td>
                     <td class="src-col-corpus">QGW II/1 (1177–1414)</td>
+                    <td class="src-col-label"><em>her</em></td>
+                    <td class="src-col-role">
+                        <span class="role-chip role-chip-other">Sonstige</span>
+                        
+                    </td>
                     <td class="src-col-regest">Nichlas der Maeserl, richter ze Wienne, in der Bürgerschranne beurkundet, dass vor ihm in der Bürgerschranne her Dietreich der Urbaetsch , purger ze Wienne, mit Vorsprechen auf vron Kathrein haus,…</td>
                 </tr>
             
@@ -1123,6 +1257,11 @@
                     <td class="src-col-idno"><a href="../../documents/QGW/Vienna_1177-1414_ready/209.html">209</a></td>
                     <td class="src-col-date">1339 III 21</td>
                     <td class="src-col-corpus">QGW II/1 (1177–1414)</td>
+                    <td class="src-col-label"><em>-</em></td>
+                    <td class="src-col-role">
+                        <span class="role-chip role-chip-issuer">Aussteller*in</span><span class="role-chip role-chip-witness">Zeuge / Siegler*in</span>
+                        
+                    </td>
                     <td class="src-col-regest">Dietreich der Urbaetsch, münzmaister ze Wienne, schafft Seelenheil mit gutem Willen und Gunst seiner Hausfrau Elspeten und seiner Erben für ihrer beider, seines Vaters hern DitreichsSeelenheil,…</td>
                 </tr>
             
@@ -1130,6 +1269,11 @@
                     <td class="src-col-idno"><a href="../../documents/QGW/Vienna_1177-1414_ready/216.html">216</a></td>
                     <td class="src-col-date">1340 III 17</td>
                     <td class="src-col-corpus">QGW II/1 (1177–1414)</td>
+                    <td class="src-col-label"><em>hern</em></td>
+                    <td class="src-col-role">
+                        <span class="role-chip role-chip-recipient">Empfänger*in</span>
+                        
+                    </td>
                     <td class="src-col-regest">Elspet, wittibe Chunrates wittibe des metsieder, verkauft nach Rath des Schottenabtes Hainreich und mit Handen ihrer Grundherren ( graf Albrechts von Hohenwerch, pharrer datz sand Stephan zu Wienne,…</td>
                 </tr>
             
@@ -1137,6 +1281,11 @@
                     <td class="src-col-idno"><a href="../../documents/QGW/Vienna_1177-1414_ready/223.html">223</a></td>
                     <td class="src-col-date">1340 VIII 17</td>
                     <td class="src-col-corpus">QGW II/1 (1177–1414)</td>
+                    <td class="src-col-label"><em>her</em></td>
+                    <td class="src-col-role">
+                        <span class="role-chip role-chip-other">Sonstige</span><span class="role-chip role-chip-recipient">Empfänger*in</span>
+                        
+                    </td>
                     <td class="src-col-regest">Otte von Wultzendorf, des Propstes Rudweins perchmaister und amptmann ze Neuenburch, beurkundet, dass vor ihn ze Otakchrinne in rechtem etaiding her Dietreich der Urbetsch, purger ze Wienne, ze…</td>
                 </tr>
             
@@ -1144,6 +1293,11 @@
                     <td class="src-col-idno"><a href="../../documents/QGW/Vienna_1177-1414_ready/232.html">232</a></td>
                     <td class="src-col-date">1341 III 21</td>
                     <td class="src-col-corpus">QGW II/1 (1177–1414)</td>
+                    <td class="src-col-label"><em>hern</em></td>
+                    <td class="src-col-role">
+                        <span class="role-chip role-chip-recipient">Empfänger*in</span>
+                        
+                    </td>
                     <td class="src-col-regest">Dietmar, probst dacz Sand Pölten, und der convent gemain doselbens bestätigen, dass sie von hern Dietreichen dem Urbetschen, statrichter ze Wienne, 5 lb dn. für einen Jahrtag erhalten haben, den sie…</td>
                 </tr>
             
@@ -1151,6 +1305,11 @@
                     <td class="src-col-idno"><a href="../../documents/QGW/Vienna_1177-1414_ready/233.html">233</a></td>
                     <td class="src-col-date">1341 III 21</td>
                     <td class="src-col-corpus">QGW II/1 (1177–1414)</td>
+                    <td class="src-col-label"><em>hern</em></td>
+                    <td class="src-col-role">
+                        <span class="role-chip role-chip-recipient">Empfänger*in</span>
+                        
+                    </td>
                     <td class="src-col-regest">Pruder Thomas, prior Prediger ordens ze Wienne, und der convent gemain doselbens bestätigen, von hern Dietreichen dem Urbetschen, statrichter ze Wienne, 5 lb dn. für einen Jahrtag erhalten zu haben,…</td>
                 </tr>
             
@@ -1158,6 +1317,11 @@
                     <td class="src-col-idno"><a href="../../documents/QGW/Vienna_1177-1414_ready/234.html">234</a></td>
                     <td class="src-col-date">1341 III 21</td>
                     <td class="src-col-corpus">QGW II/1 (1177–1414)</td>
+                    <td class="src-col-label"><em>hern</em></td>
+                    <td class="src-col-role">
+                        <span class="role-chip role-chip-recipient">Empfänger*in</span>
+                        
+                    </td>
                     <td class="src-col-regest">Pruder Fridreich der Chleber, cardian Minnerpruder ordens ze Wienne, und der convent gemain doselbens , bestätigen, von hern Dietreichen dem Urbetschen, statrichter ze Wienne, 5 lb dn. für einen…</td>
                 </tr>
             
@@ -1165,6 +1329,11 @@
                     <td class="src-col-idno"><a href="../../documents/QGW/Vienna_1177-1414_ready/247.html">247</a></td>
                     <td class="src-col-date">1342 X 31</td>
                     <td class="src-col-corpus">QGW II/1 (1177–1414)</td>
+                    <td class="src-col-label"><em>hern</em></td>
+                    <td class="src-col-role">
+                        <span class="role-chip role-chip-witness">Zeuge / Siegler*in</span>
+                        
+                    </td>
                     <td class="src-col-regest">Chunrat der Wiltwercher, purgermaister ze Wienne, beurkundet seinen letzten Willen. Er schafft: 1. seiner Hausfrau vrown Mergarten: a) einen weingarten, der da leit an dem Nussperg, haisset der…</td>
                 </tr>
             
@@ -1172,6 +1341,11 @@
                     <td class="src-col-idno"><a href="../../documents/QGW/Vienna_1177-1414_ready/253.html">253</a></td>
                     <td class="src-col-date">1342 XII 06</td>
                     <td class="src-col-corpus">QGW II/1 (1177–1414)</td>
+                    <td class="src-col-label"><em>hern</em></td>
+                    <td class="src-col-role">
+                        <span class="role-chip role-chip-witness">Zeuge / Siegler*in</span>
+                        
+                    </td>
                     <td class="src-col-regest">Fridreich, sun hern Fridreichs sun in dem Stadel, dem got genade, verkauft mit Handen seines Grundherrn des Ritters hern Jansen des Greifen seinem Schwager Arnolten und seiner Schwester Margreten,…</td>
                 </tr>
             
@@ -1179,6 +1353,11 @@
                     <td class="src-col-idno"><a href="../../documents/QGW/Vienna_1177-1414_ready/254.html">254</a></td>
                     <td class="src-col-date">1343</td>
                     <td class="src-col-corpus">QGW II/1 (1177–1414)</td>
+                    <td class="src-col-label"><em>hern</em></td>
+                    <td class="src-col-role">
+                        <span class="role-chip role-chip-recipient">Empfänger*in</span>
+                        
+                    </td>
                     <td class="src-col-regest">Fridreich von Toppel von Sand Veit und Kathrei, seine Hausfrau, verkaufen mit Einwilligung der Brüder des Ausstellers hern Ortolfes von Toppel, pharrer ze Ratze, Brüder hern Ulreiches von Toppel,…</td>
                 </tr>
             
@@ -1186,6 +1365,11 @@
                     <td class="src-col-idno"><a href="../../documents/QGW/Vienna_1177-1414_ready/255.html">255</a></td>
                     <td class="src-col-date">1343 I 21</td>
                     <td class="src-col-corpus">QGW II/1 (1177–1414)</td>
+                    <td class="src-col-label"><em>hern</em></td>
+                    <td class="src-col-role">
+                        <span class="role-chip role-chip-witness">Zeuge / Siegler*in</span>
+                        
+                    </td>
                     <td class="src-col-regest">Fridreich, sun hern Fridreichs sun in dem Stadel, dem got genade, bestätigt, von seinem Schwager Arnolt, dem sneider, und dessen Hausfrau Margret, seiner Schwester, 30 lb dn. als Ablösung für 3 lb…</td>
                 </tr>
             
@@ -1193,6 +1377,11 @@
                     <td class="src-col-idno"><a href="../../documents/QGW/Vienna_1177-1414_ready/258.html">258</a></td>
                     <td class="src-col-date">1343 III 02</td>
                     <td class="src-col-corpus">QGW II/1 (1177–1414)</td>
+                    <td class="src-col-label"><em>hern</em></td>
+                    <td class="src-col-role">
+                        <span class="role-chip role-chip-witness">Zeuge / Siegler*in</span>
+                        
+                    </td>
                     <td class="src-col-regest">Jacob der Eisenmann von Prichsen, purger ze Wienne, und Kathrei, seine Hausfrau, verkaufen mit Handen ihres Bergherrn hern Hainreichs von Hakkenberch, sun hern Leutoldes sun von Hakkenberch, ein Joch…</td>
                 </tr>
             
@@ -1200,6 +1389,11 @@
                     <td class="src-col-idno"><a href="../../documents/QGW/Vienna_1177-1414_ready/278.html">278</a></td>
                     <td class="src-col-date">1344 III 14</td>
                     <td class="src-col-corpus">QGW II/1 (1177–1414)</td>
+                    <td class="src-col-label"><em>hern</em></td>
+                    <td class="src-col-role">
+                        <span class="role-chip role-chip-recipient">Empfänger*in</span>
+                        
+                    </td>
                     <td class="src-col-regest">Seifrid der Sumhäppel von To/eblikche, Margret, seine Hausfrau, U/olreich V/eman von Nussdorf und Agnes, seine Hausfrau, bestätigen, von hern Dietreichen dem Urbaetschen und seiner Hausfrau Elspeten…</td>
                 </tr>
             
@@ -1207,6 +1401,11 @@
                     <td class="src-col-idno"><a href="../../documents/QGW/Vienna_1177-1414_ready/289.html">289</a></td>
                     <td class="src-col-date">1345 III 23</td>
                     <td class="src-col-corpus">QGW II/1 (1177–1414)</td>
+                    <td class="src-col-label"><em>-</em></td>
+                    <td class="src-col-role">
+                        <span class="role-chip role-chip-issuer">Aussteller*in</span><span class="role-chip role-chip-witness">Zeuge / Siegler*in</span>
+                        
+                    </td>
                     <td class="src-col-regest">Dietreich der Urbaetsch schafft gemäss einem Versprechen seiner verstorbenen Mutter Gerwirg gegebenen Versprechen mit Willen seiner Frau Elspet und seiner Erben, sowie mit Handen seines Grundherrn…</td>
                 </tr>
             
@@ -1214,6 +1413,11 @@
                     <td class="src-col-idno"><a href="../../documents/QGW/Vienna_1177-1414_ready/290.html">290</a></td>
                     <td class="src-col-date">1345 III 23</td>
                     <td class="src-col-corpus">QGW II/1 (1177–1414)</td>
+                    <td class="src-col-label"><em>-</em></td>
+                    <td class="src-col-role">
+                        <span class="role-chip role-chip-issuer">Aussteller*in</span><span class="role-chip role-chip-other">Sonstige</span><span class="role-chip role-chip-witness">Zeuge / Siegler*in</span>
+                        
+                    </td>
                     <td class="src-col-regest">Dietreich der Urbaetsch schafft mit seiner Hausfrau Elspet und seiner Erben Willen, sowie mit Handen seines Grundherrn des Ritters hern Jansen des Greiffen schafft zu einer ewigen Messe für sein,…</td>
                 </tr>
             
@@ -1221,6 +1425,11 @@
                     <td class="src-col-idno"><a href="../../documents/QGW/Vienna_1177-1414_ready/307.html">307</a></td>
                     <td class="src-col-date">1346 XII 13</td>
                     <td class="src-col-corpus">QGW II/1 (1177–1414)</td>
+                    <td class="src-col-label"><em>her</em></td>
+                    <td class="src-col-role">
+                        <span class="role-chip role-chip-other">Sonstige</span><span class="role-chip role-chip-witness">Zeuge / Siegler*in</span>
+                        
+                    </td>
                     <td class="src-col-regest">Nicla von Ruepprechtzdorf und seine Hausfrau Chunigunt nehmen den Schiedspruch an, den her Reinprecht der Zaunru/ede, purgermaister ze Wienne, und her Dietreich der Urbaetsch in. dem Streite mit des…</td>
                 </tr>
             
@@ -1228,6 +1437,11 @@
                     <td class="src-col-idno"><a href="../../documents/QGW/Vienna_1177-1414_ready/311.html">311</a></td>
                     <td class="src-col-date">1347 III 27</td>
                     <td class="src-col-corpus">QGW II/1 (1177–1414)</td>
+                    <td class="src-col-label"><em>hern</em></td>
+                    <td class="src-col-role">
+                        <span class="role-chip role-chip-recipient">Empfänger*in</span>
+                        
+                    </td>
                     <td class="src-col-regest">Ulreich der Genaem, der fleischacher ze Wienne, Chunigunt, seine Hausfrau, und Ulreich, sein Sohn, verkaufen mit gesammter Hand und mit Handen ihres Grundherrn Gerungs des Sleiher, maister in sand…</td>
                 </tr>
             
@@ -1235,6 +1449,11 @@
                     <td class="src-col-idno"><a href="../../documents/QGW/Vienna_1177-1414_ready/317.html">317</a></td>
                     <td class="src-col-date">1347 XII 21</td>
                     <td class="src-col-corpus">QGW II/1 (1177–1414)</td>
+                    <td class="src-col-label"><em>Bergherrn|hern</em></td>
+                    <td class="src-col-role">
+                        <span class="role-chip role-chip-other">Sonstige</span><span class="role-chip role-chip-witness">Zeuge / Siegler*in</span>
+                        
+                    </td>
                     <td class="src-col-regest">Chuen, der fuetrer, OrtolfSohn undJansSohn, seine Söhne, verkaufen mit Handen ihres Bergherrnhern Dietreiches des Urbaetschen 1 ½ Joch Weingarten an dem Altenperig zunaest der Velgraesinne…</td>
                 </tr>
             
@@ -1242,6 +1461,11 @@
                     <td class="src-col-idno"><a href="../../documents/QGW/Vienna_1177-1414_ready/325.html">325</a></td>
                     <td class="src-col-date">1348 XII 13</td>
                     <td class="src-col-corpus">QGW II/1 (1177–1414)</td>
+                    <td class="src-col-label"><em>hern</em></td>
+                    <td class="src-col-role">
+                        <span class="role-chip role-chip-recipient">Empfänger*in</span>
+                        
+                    </td>
                     <td class="src-col-regest">Pruder Hainreich, gardian der Minnerpruder ze Wienne, und alle pruder desselben convents versprechen hern Dietreich dem Urbetsch um der Liebe und Treue willen, die er ihnen bewiesen habe, und wegen…</td>
                 </tr>
             
@@ -1249,6 +1473,11 @@
                     <td class="src-col-idno"><a href="../../documents/QGW/Vienna_1177-1414_ready/328.html">328</a></td>
                     <td class="src-col-date">1349 I 06</td>
                     <td class="src-col-corpus">QGW II/1 (1177–1414)</td>
+                    <td class="src-col-label"><em>-</em></td>
+                    <td class="src-col-role">
+                        <span class="role-chip role-chip-other">Sonstige</span>
+                        
+                    </td>
                     <td class="src-col-regest">PruderDietmar, prior, und die pru/eder gemain sand Augustins orden ze Wienne bestätigen, von Frau Elspeten der Urbetzin für das Seelenheil ihres verstorbenenMannes Dietreiches des Urbetzen 10 lb dn.…</td>
                 </tr>
             
@@ -1256,6 +1485,11 @@
                     <td class="src-col-idno"><a href="../../documents/QGW/Vienna_1177-1414_ready/333.html">333</a></td>
                     <td class="src-col-date">1349 V 17</td>
                     <td class="src-col-corpus">QGW II/1 (1177–1414)</td>
+                    <td class="src-col-label"><em>-</em></td>
+                    <td class="src-col-role">
+                        <span class="role-chip role-chip-recipient">Empfänger*in</span>
+                        
+                    </td>
                     <td class="src-col-regest">* Gottfried, Bischof von Passau, genehmigt die von dem Wiener Bürger Dietricus Urbaetsch letztwillig angeordnete Errichtung und Dotierung eines Altares zu Ehren der Heiligen Jodocus et Leonhardus in…</td>
                 </tr>
             
@@ -1263,6 +1497,11 @@
                     <td class="src-col-idno"><a href="../../documents/QGW/Vienna_1177-1414_ready/386.html">386</a></td>
                     <td class="src-col-date">1351 VII 03</td>
                     <td class="src-col-corpus">QGW II/1 (1177–1414)</td>
+                    <td class="src-col-label"><em>hern</em></td>
+                    <td class="src-col-role">
+                        
+                        -
+                    </td>
                     <td class="src-col-regest">Elsbet, weiln hausvrowe hern Dietreichs hausvrowe des Urbaetschen saeligen, verkauft mit Einwilligung ihres Sohnes Chunrats des Urbaetschen und ihrer aidem hern Pilgreims des Chitzels, der gesessen…</td>
                 </tr>
             
@@ -1270,6 +1509,11 @@
                     <td class="src-col-idno"><a href="../../documents/QGW/Vienna_1177-1414_ready/479.html">479</a></td>
                     <td class="src-col-date">1356 IV 19</td>
                     <td class="src-col-corpus">QGW II/1 (1177–1414)</td>
+                    <td class="src-col-label"><em>her</em></td>
+                    <td class="src-col-role">
+                        
+                        -
+                    </td>
                     <td class="src-col-regest">Jacob der Polle, chapplan Unsern Vraun chappelln, gelegen in der purger Rathaus ze Wienne, hern Otten seligen Stiftung des Haimen , bestellt den Thoman von Senging cantor zum Cantor der Kapelle.…</td>
                 </tr>
             
@@ -1277,6 +1521,11 @@
                     <td class="src-col-idno"><a href="../../documents/QGW/Vienna_1177-1414_ready/680.html">680</a></td>
                     <td class="src-col-date">1366 XI 11</td>
                     <td class="src-col-corpus">QGW II/1 (1177–1414)</td>
+                    <td class="src-col-label"><em>-</em></td>
+                    <td class="src-col-role">
+                        <span class="role-chip role-chip-recipient">Empfänger*in</span>
+                        
+                    </td>
                     <td class="src-col-regest">* Bischof Albert von Passau bestätigt die von den Wiener Bürgern Dietrich Urbasch und Stephan Pollo Bürgern, sowie dem Kaplan der Marienkapelle in Ottenhaim vorgenommene Stiftung einer Messe auf dem…</td>
                 </tr>
             
@@ -1284,6 +1533,11 @@
                     <td class="src-col-idno"><a href="../../documents/QGW/Vienna_1177-1414_ready/950.html">950</a></td>
                     <td class="src-col-date">1378 XI 10</td>
                     <td class="src-col-corpus">QGW II/1 (1177–1414)</td>
+                    <td class="src-col-label"><em>hern</em></td>
+                    <td class="src-col-role">
+                        
+                        -
+                    </td>
                     <td class="src-col-regest">Donat, abpt des goczhauses Unser Vrauen dacz den Schotten ze Wienn , und der convent gemain daselbs bestätigen, von Frau Elsbeten, witiben tochter hern Hannsen von Ibs witiben und hern Dietreichs…</td>
                 </tr>
             
@@ -1316,11 +1570,13 @@
         </div>
     </footer>
 
-    <script src="../../static/js/core.js?v=20260511112948"></script>
-    <script src="../../static/js/provenance.js?v=20260511112948"></script>
-    <script src="../../static/js/basket.js?v=20260511112948"></script>
+    <script src="../../static/js/core.js?v=20260511125458"></script>
+    <script src="../../static/js/tip.js?v=20260511125458"></script>
+    <script src="../../static/js/hint.js?v=20260511125458"></script>
+    <script src="../../static/js/basket.js?v=20260511125458"></script>
     
-<script src="../../static/js/tooltips.js?v=20260511112948"></script>
+<script src="../../static/js/profile.js?v=20260511125458"></script>
+<script src="../../static/js/basket-mount.js?v=20260511125458"></script>
 
 </body>
 </html>

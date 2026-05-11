@@ -3,22 +3,22 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <meta http-equiv="Content-Security-Policy" content="default-src 'self'; script-src 'self'; style-src 'self'; font-src 'self'; img-src 'self' data: https://images.monasterium.net https://www.monasterium.net; connect-src 'self'; frame-ancestors 'none'; base-uri 'self'; form-action 'self'; upgrade-insecure-requests">
+    <meta http-equiv="Content-Security-Policy" content="default-src 'self'; script-src 'self'; style-src 'self'; font-src 'self'; img-src 'self' data: https://images.monasterium.net https://www.monasterium.net; connect-src 'self'; base-uri 'self'; form-action 'self'; upgrade-insecure-requests">
     <meta name="referrer" content="strict-origin-when-cross-origin">
     <meta http-equiv="Permissions-Policy" content="camera=(), microphone=(), geolocation=(), interest-cohort=()">
     <title>Beatrix von Zollern Nürnberg von Zollern Nürnberg, Datenbank</title>
     <link rel="preload" as="font" type="font/woff2" crossorigin
           href="../../static/fonts/inter-400-latin.woff2">
-    <link rel="stylesheet" href="../../static/css/fonts.css?v=20260511112948">
-    <link rel="stylesheet" href="../../static/css/tokens.css?v=20260511112948">
-    <link rel="stylesheet" href="../../static/css/base.css?v=20260511112948">
-    <link rel="stylesheet" href="../../static/css/components.css?v=20260511112948">
-    <link rel="stylesheet" href="../../static/css/responsive.css?v=20260511112948">
-    <link rel="stylesheet" href="../../static/css/print.css?v=20260511112948">
-    <link rel="stylesheet" href="../../static/css/provenance.css?v=20260511112948">
+    <link rel="stylesheet" href="../../static/css/fonts.css?v=20260511125458">
+    <link rel="stylesheet" href="../../static/css/tokens.css?v=20260511125458">
+    <link rel="stylesheet" href="../../static/css/base.css?v=20260511125458">
+    <link rel="stylesheet" href="../../static/css/components.css?v=20260511125458">
+    <link rel="stylesheet" href="../../static/css/responsive.css?v=20260511125458">
+    <link rel="stylesheet" href="../../static/css/print.css?v=20260511125458">
+    <link rel="stylesheet" href="../../static/css/tip.css?v=20260511125458">
     
-<link rel="stylesheet" href="../../static/css/document.css?v=20260511112948">
-<link rel="stylesheet" href="../../static/css/person.css?v=20260511112948">
+<link rel="stylesheet" href="../../static/css/document.css?v=20260511125458">
+<link rel="stylesheet" href="../../static/css/person.css?v=20260511125458">
 
 </head>
 <body data-root-path="../.."
@@ -48,8 +48,6 @@
         <a href="../../register/persons.html">Personen</a>
         
         <a href="../../register/orgs.html">Organisationen</a>
-        
-        <a href="../../register/places.html">Orte</a>
         
     </div>
 </div>
@@ -91,7 +89,7 @@
     </div>
 </div>
 
-                <a href="../../korb.html" class="nav-basket" aria-label="Wissenskorb">
+                <a href="../../korb.html" class="nav-basket" aria-label="Datenkorb">
                     <svg width="18" height="18" viewBox="0 0 18 18" fill="none" aria-hidden="true">
                         <path d="M3 5h12l-1.2 8.5a1 1 0 0 1-1 .85H5.2a1 1 0 0 1-1-.85L3 5z"
                               stroke="currentColor" stroke-width="1.4" fill="none"
@@ -112,11 +110,23 @@
 
     <div class="person-toolbar">
         <div class="person-toolbar-inner">
-            <nav class="person-breadcrumb" aria-label="Position">
-                <a href="../../register/persons.html">Personenregister</a>
-                <span class="bc-sep">&rsaquo;</span>
-                <span class="bc-doc"><strong>Beatrix von Zollern Nürnberg von Zollern Nürnberg</strong></span>
-            </nav>
+            <div class="person-toolbar-row">
+                <nav class="person-breadcrumb" aria-label="Position">
+                    <a href="../../register/persons.html">Personenregister</a>
+                    <span class="bc-sep">&rsaquo;</span>
+                    <span class="bc-doc"><strong>Beatrix von Zollern Nürnberg von Zollern Nürnberg</strong></span>
+                </nav>
+                <div class="person-toolbar-actions">
+                    <span class="toolbar-basket-mount"
+                          data-basket-type="person"
+                          data-basket-id="pe__beatrix_von_zollern_nuernberg_QGW_II_I_1048"
+                          data-basket-label="Beatrix von Zollern Nürnberg von Zollern Nürnberg"
+                          data-basket-url="register/persons/pe__beatrix_von_zollern_nuernberg_QGW_II_I_1048.html"
+                          data-basket-sex="f"
+                          data-basket-active-min="1377"
+                          data-basket-active-max="1412"></span>
+                </div>
+            </div>
             <div class="person-toolbar-meta">
                 <span class="meta-pair">
                     <span class="meta-label">Geschlecht</span>
@@ -124,11 +134,41 @@
                 </span>
                 
                 <span class="meta-pair">
-                    <span class="meta-label">Belegt</span>
+                    <span class="meta-label">Belegt
+<span class="tip-wrap">
+    <button type="button" class="tip-trigger tip-trigger--icon"
+            aria-expanded="false" aria-haspopup="dialog"
+            aria-controls="person-belegt"
+            data-tip="person-belegt"
+            aria-label="Definition: Beleg-Zeitraum">
+        <svg width="13" height="13" viewBox="0 0 16 16" aria-hidden="true">
+            <circle cx="8" cy="8" r="7" stroke="currentColor" stroke-width="1.4" fill="none"/>
+            <text x="8" y="11.6" text-anchor="middle" font-size="9.5" font-weight="700"
+                  fill="currentColor" font-family="Georgia, serif">i</text>
+        </svg>
+    </button>
+    <aside class="tip-popover tip-popover--glossary"
+           id="person-belegt" role="dialog" aria-hidden="true"
+           aria-label="Definition: Beleg-Zeitraum">
+        <header class="tip-head">
+            <h3 class="tip-title">Beleg-Zeitraum</h3>
+            <button type="button" class="tip-close" aria-label="Schlie&szlig;en">&times;</button>
+        </header>
+        <div class="tip-body">
+            <p>Erste und letzte Datierung einer Quelle, in der die Person erscheint. Bei einzelnem Beleg wird nur ein Jahr angegeben.</p>
+            
+        </div>
+    </aside>
+</span>
+</span>
                     <span class="meta-value">1377 bis 1412</span>
                 </span>
                 
                 
+                <span class="meta-pair">
+                    <span class="meta-label">Quellen</span>
+                    <span class="meta-value">18</span>
+                </span>
                 <span class="meta-pair person-id-pair">
                     <span class="meta-label">ID</span>
                     <code class="meta-value person-id">pe__beatrix_von_zollern_nuernberg_QGW_II_I_1048</code>
@@ -145,16 +185,48 @@
             
         </h1>
         
+        
         <p class="person-note">2. Gem. von Herzog Albrecht III. von Österreich</p>
         
         
-        <p class="person-titles">
+        <p class="person-titles" data-collapsible="22">
             <span class="pt-label">In den Quellen genannt als</span>
             <span class="pt-chip">edeln und hochgeborn fraun</span><span class="pt-chip">hochgeborn fürstinn|frown</span><span class="pt-chip">hochgeporn|fürstin|fraun</span><span class="pt-chip">edeln|hochgepornn|fürstin|fraun</span><span class="pt-chip">hochgeborn|furstin|frau</span><span class="pt-chip">Herzogin</span><span class="pt-chip">hochgeborn|frawn</span><span class="pt-chip">hochgeborn|furstinn|frawn</span><span class="pt-chip">fraw</span>
         </p>
         
         
+        
     </header>
+
+    
+    <section class="role-strip" aria-label="Rollen in Rechtsgeschäften">
+        <h2 class="role-strip-title">Rollen in Rechtsgeschäften</h2>
+        <div class="role-strip-cells">
+            
+            <div class="role-cell role-cell-issuer">
+                <span class="role-cell-count">3</span>
+                <span class="role-cell-label">Aussteller*in</span>
+            </div>
+            
+            <div class="role-cell role-cell-recipient">
+                <span class="role-cell-count">1</span>
+                <span class="role-cell-label">Empfänger*in</span>
+            </div>
+            
+            <div class="role-cell role-cell-witness">
+                <span class="role-cell-count">1</span>
+                <span class="role-cell-label">Zeuge / Siegler*in</span>
+            </div>
+            
+            <div class="role-cell role-cell-other is-zero">
+                <span class="role-cell-count">0</span>
+                <span class="role-cell-label">Sonstige</span>
+            </div>
+            
+        </div>
+        <p class="role-strip-hint">Summe Rollen-Belegungen: 5. Mehrfach-Rollen pro Quelle sind möglich.</p>
+    </section>
+    
 
     
 
@@ -171,6 +243,7 @@
                 <span class="rel-block-count">2</span>
                 <span class="rel-block-hint">Verwandtschaftsverhältnisse, wie sie in den Quellen explizit benannt werden.</span>
             </header>
+            
             <table class="rel-table">
                 <thead>
                     <tr>
@@ -191,7 +264,7 @@
                         <td class="rel-col-label"><em>witiben</em></td>
                         <td class="rel-col-perspective">
                             
-                                Beatrix von Zollern Nürnberg von Zollern Nürnberg → Albrecht von Habsburg
+                                Beatrix von Zollern Nürnberg von Zollern Nürnberg &rsaquo; Albrecht von Habsburg
                             
                         </td>
                         <td class="rel-col-source">
@@ -210,7 +283,7 @@
                         <td class="rel-col-label"><em>witiben</em></td>
                         <td class="rel-col-perspective">
                             
-                                Beatrix von Zollern Nürnberg von Zollern Nürnberg → Albrecht von Habsburg
+                                Beatrix von Zollern Nürnberg von Zollern Nürnberg &rsaquo; Albrecht von Habsburg
                             
                         </td>
                         <td class="rel-col-source">
@@ -239,6 +312,7 @@
                 <span class="rel-block-count">8</span>
                 <span class="rel-block-hint">Berufs- oder Amtsbezeichnung in Bezug auf eine Institution.</span>
             </header>
+            
             <table class="rel-table">
                 <thead>
                     <tr>
@@ -259,7 +333,7 @@
                         <td class="rel-col-label"><em>herzoginn</em></td>
                         <td class="rel-col-perspective">
                             
-                                Beatrix von Zollern Nürnberg von Zollern Nürnberg → Herzogtum Österreich
+                                Beatrix von Zollern Nürnberg von Zollern Nürnberg &rsaquo; Herzogtum Österreich
                             
                         </td>
                         <td class="rel-col-source">
@@ -278,7 +352,7 @@
                         <td class="rel-col-label"><em>herzogin</em></td>
                         <td class="rel-col-perspective">
                             
-                                Beatrix von Zollern Nürnberg von Zollern Nürnberg → Herzogtum Österreich
+                                Beatrix von Zollern Nürnberg von Zollern Nürnberg &rsaquo; Herzogtum Österreich
                             
                         </td>
                         <td class="rel-col-source">
@@ -297,7 +371,7 @@
                         <td class="rel-col-label"><em>herzogin</em></td>
                         <td class="rel-col-perspective">
                             
-                                Beatrix von Zollern Nürnberg von Zollern Nürnberg → Herzogtum Österreich
+                                Beatrix von Zollern Nürnberg von Zollern Nürnberg &rsaquo; Herzogtum Österreich
                             
                         </td>
                         <td class="rel-col-source">
@@ -316,7 +390,7 @@
                         <td class="rel-col-label"><em>herzogin ze Osterreich</em></td>
                         <td class="rel-col-perspective">
                             
-                                Beatrix von Zollern Nürnberg von Zollern Nürnberg → Herzogtum Österreich
+                                Beatrix von Zollern Nürnberg von Zollern Nürnberg &rsaquo; Herzogtum Österreich
                             
                         </td>
                         <td class="rel-col-source">
@@ -335,7 +409,7 @@
                         <td class="rel-col-label"><em>zu Lehen geht</em></td>
                         <td class="rel-col-perspective">
                             
-                                Beatrix von Zollern Nürnberg von Zollern Nürnberg → Messe Beatrix von Zollern-Nürnberg
+                                Beatrix von Zollern Nürnberg von Zollern Nürnberg &rsaquo; Messe Beatrix von Zollern-Nürnberg
                             
                         </td>
                         <td class="rel-col-source">
@@ -354,7 +428,7 @@
                         <td class="rel-col-label"><em>furstin</em></td>
                         <td class="rel-col-perspective">
                             
-                                Beatrix von Zollern Nürnberg von Zollern Nürnberg → Herzogtum Österreich
+                                Beatrix von Zollern Nürnberg von Zollern Nürnberg &rsaquo; Herzogtum Österreich
                             
                         </td>
                         <td class="rel-col-source">
@@ -373,7 +447,7 @@
                         <td class="rel-col-label"><em>herczoginn ze Osterreich</em></td>
                         <td class="rel-col-perspective">
                             
-                                Beatrix von Zollern Nürnberg von Zollern Nürnberg → Herzogtum Österreich
+                                Beatrix von Zollern Nürnberg von Zollern Nürnberg &rsaquo; Herzogtum Österreich
                             
                         </td>
                         <td class="rel-col-source">
@@ -392,7 +466,7 @@
                         <td class="rel-col-label"><em>herzogynn in Osterreich</em></td>
                         <td class="rel-col-perspective">
                             
-                                Beatrix von Zollern Nürnberg von Zollern Nürnberg → Herzogtum Österreich
+                                Beatrix von Zollern Nürnberg von Zollern Nürnberg &rsaquo; Herzogtum Österreich
                             
                         </td>
                         <td class="rel-col-source">
@@ -410,18 +484,27 @@
         
         
         
+        
+        
+        
+        
+        
+        
     </section>
     
 
     
     <section class="person-sources" aria-label="Quellen mit Nennung">
         <h2 class="section-head">Quellen mit Nennung</h2>
+        
         <table class="person-source-table">
             <thead>
                 <tr>
                     <th scope="col" class="src-col-idno">Nr.</th>
                     <th scope="col" class="src-col-date">Datum</th>
                     <th scope="col" class="src-col-corpus">Quellenkorpus</th>
+                    <th scope="col" class="src-col-label">Bezeichnung</th>
+                    <th scope="col" class="src-col-role">Rolle</th>
                     <th scope="col" class="src-col-regest">Regest</th>
                 </tr>
             </thead>
@@ -431,6 +514,11 @@
                     <td class="src-col-idno"><a href="../../documents/QGW/Vienna_1177-1414_ready/899.html">899</a></td>
                     <td class="src-col-date">1377 II 14</td>
                     <td class="src-col-corpus">QGW II/1 (1177–1414)</td>
+                    <td class="src-col-label"><em>-</em></td>
+                    <td class="src-col-role">
+                        
+                        -
+                    </td>
                     <td class="src-col-regest">Hainreich Jan, maister des hofs der sundersiechen dacz sand Markchs vor Stubentor ze Wienne , und die samnung daselbs bestätigen, dass her Pilgreim der Snêczel, des rats der stat ze Wienne, ihnen und…</td>
                 </tr>
             
@@ -438,6 +526,11 @@
                     <td class="src-col-idno"><a href="../../documents/QGW/Vienna_1177-1414_ready/994.html">994</a></td>
                     <td class="src-col-date">1380 XI 19</td>
                     <td class="src-col-corpus">QGW II/1 (1177–1414)</td>
+                    <td class="src-col-label"><em>-</em></td>
+                    <td class="src-col-role">
+                        
+                        -
+                    </td>
                     <td class="src-col-regest">Niclos der Prechtel und Eisal, seine Hausfrau , verkaufenmit Handen ihrer Grundfrau swester Chunigunden von Grinzing, priorinn in sand Angnesen chloster dacz der Himelparten ze Wienne , ½ lb dn.…</td>
                 </tr>
             
@@ -445,6 +538,11 @@
                     <td class="src-col-idno"><a href="../../documents/QGW/Vienna_1177-1414_ready/1048.html">1048</a></td>
                     <td class="src-col-date">1383 IV 12</td>
                     <td class="src-col-corpus">QGW II/1 (1177–1414)</td>
+                    <td class="src-col-label"><em>edeln und hochgeborn fraun</em></td>
+                    <td class="src-col-role">
+                        
+                        -
+                    </td>
                     <td class="src-col-regest">Michel, des Pertelmes sun, amptman in der Schefstrass der edeln und hochgeborn fraun Beatrix von Nürnberk, herzoginn ze Österreich , beurkundet, dass vor ihm in offenem Gerichte Mert der…</td>
                 </tr>
             
@@ -452,6 +550,11 @@
                     <td class="src-col-idno"><a href="../../documents/QGW/Vienna_1177-1414_ready/1053.html">1053</a></td>
                     <td class="src-col-date">1383 VII 22</td>
                     <td class="src-col-corpus">QGW II/1 (1177–1414)</td>
+                    <td class="src-col-label"><em>-</em></td>
+                    <td class="src-col-role">
+                        
+                        -
+                    </td>
                     <td class="src-col-regest">Thoman der Schaffer von Marchekk, schaffer der sundersiechen dacz sand Marx, und die sundersiechen gemain daselbs verkaufen mit Einwilligung ihres Vogtes Michels, hern Pertelmes sun in der…</td>
                 </tr>
             
@@ -459,6 +562,11 @@
                     <td class="src-col-idno"><a href="../../documents/QGW/Vienna_1177-1414_ready/1132.html">1132</a></td>
                     <td class="src-col-date">1387 IX 02</td>
                     <td class="src-col-corpus">QGW II/1 (1177–1414)</td>
+                    <td class="src-col-label"><em>hochgeborn fürstinn|frown</em></td>
+                    <td class="src-col-role">
+                        
+                        -
+                    </td>
                     <td class="src-col-regest">Michel, amptman in der Scheffstrass ze Wienn der hochgeborn fürstinn frown Beatricis von Nu/ernberch, herzogin ze Österreich etc., beurkundet, dass vor ihm in offenem Gerichte Niclas der Hold von…</td>
                 </tr>
             
@@ -466,6 +574,11 @@
                     <td class="src-col-idno"><a href="../../documents/QGW/Vienna_1177-1414_ready/1193.html">1193</a></td>
                     <td class="src-col-date">1390 VIII 05</td>
                     <td class="src-col-corpus">QGW II/1 (1177–1414)</td>
+                    <td class="src-col-label"><em>-</em></td>
+                    <td class="src-col-role">
+                        <span class="role-chip role-chip-issuer">Aussteller*in</span>
+                        
+                    </td>
                     <td class="src-col-regest">Beatrix von Nürenberg, herzogin ze Österreich etc., bestätigt den Empfang ihrem Kellerschreiber Johannes den Empfang von 220 lb dn., die er an ihrer Statt von den Städten in Oesterreich eingenommen…</td>
                 </tr>
             
@@ -473,6 +586,11 @@
                     <td class="src-col-idno"><a href="../../documents/QGW/Vienna_1177-1414_ready/1250.html">1250</a></td>
                     <td class="src-col-date">1393 I 20</td>
                     <td class="src-col-corpus">QGW II/1 (1177–1414)</td>
+                    <td class="src-col-label"><em>-</em></td>
+                    <td class="src-col-role">
+                        
+                        -
+                    </td>
                     <td class="src-col-regest">Niclas der Würffel, der elter, beurkundet, dass der ausgebrochene Streit zwischen ihm Niclas der Würfel an einem Theile, seinem aidem Hannsen dem Mez/zz/zenpekchen und fraun Annen, seiner hausfraun,…</td>
                 </tr>
             
@@ -480,6 +598,11 @@
                     <td class="src-col-idno"><a href="../../documents/QGW/Vienna_1177-1414_ready/1251.html">1251</a></td>
                     <td class="src-col-date">1393 I 21</td>
                     <td class="src-col-corpus">QGW II/1 (1177–1414)</td>
+                    <td class="src-col-label"><em>-</em></td>
+                    <td class="src-col-role">
+                        
+                        -
+                    </td>
                     <td class="src-col-regest">Die in Urk. no 1250 angeführten Spruchleute fällen in dem dort bezeichneten Streite erbern herren hern Albern von Ottenstain, hofrichter in Osterreich, erbern herren hern Hainreichen von Liechtenekk,…</td>
                 </tr>
             
@@ -487,6 +610,11 @@
                     <td class="src-col-idno"><a href="../../documents/Stadtbuecher/Band_1_1395-1400_ready/86.html">86</a></td>
                     <td class="src-col-date">1396 September 26</td>
                     <td class="src-col-corpus">Stadtbücher Bd. 1 (1395–1400)</td>
+                    <td class="src-col-label"><em>fraw</em></td>
+                    <td class="src-col-role">
+                        <span class="role-chip role-chip-issuer">Aussteller*in</span><span class="role-chip role-chip-recipient">Empfänger*in</span><span class="role-chip role-chip-witness">Zeuge / Siegler*in</span>
+                        
+                    </td>
                     <td class="src-col-regest">-</td>
                 </tr>
             
@@ -494,6 +622,11 @@
                     <td class="src-col-idno"><a href="../../documents/Stadtbuecher/Band_1_1395-1400_ready/168.html">168</a></td>
                     <td class="src-col-date">1397 Juli 31</td>
                     <td class="src-col-corpus">Stadtbücher Bd. 1 (1395–1400)</td>
+                    <td class="src-col-label"><em>hochgeborn|frawn</em></td>
+                    <td class="src-col-role">
+                        
+                        -
+                    </td>
                     <td class="src-col-regest">-</td>
                 </tr>
             
@@ -501,6 +634,11 @@
                     <td class="src-col-idno"><a href="../../documents/Stadtbuecher/Band_1_1395-1400_ready/419.html">419</a></td>
                     <td class="src-col-date">1399 September 16</td>
                     <td class="src-col-corpus">Stadtbücher Bd. 1 (1395–1400)</td>
+                    <td class="src-col-label"><em>hochgeborn|furstinn|frawn</em></td>
+                    <td class="src-col-role">
+                        
+                        -
+                    </td>
                     <td class="src-col-regest">pr. mü., Einbr. 2 Zg., Ma (Indez: Item gescheft Fridreichs Preschel) Desselben tags kom auch fur den rat fraw Ann,Fridreichs seligen des Preschleins wittib, und hat da beweist mit den zwain erbern…</td>
                 </tr>
             
@@ -508,6 +646,11 @@
                     <td class="src-col-idno"><a href="../../documents/Stadtbuecher/Band_1_1395-1400_ready/470.html">470</a></td>
                     <td class="src-col-date">1399 Dezember 2</td>
                     <td class="src-col-corpus">Stadtbücher Bd. 1 (1395–1400)</td>
+                    <td class="src-col-label"><em>-</em></td>
+                    <td class="src-col-role">
+                        
+                        -
+                    </td>
                     <td class="src-col-regest">pr. mü., Einbr. 3 Zg., Ma (Inde:x: Item geseheft Ulreiehs wirt in der herezogin haus) Des nachsten erigtags nach sand Andres tag a ) kom fur den rat fraw Hailweig, witib Ulreichs seligen witib,…</td>
                 </tr>
             
@@ -515,6 +658,11 @@
                     <td class="src-col-idno"><a href="../../documents/Stadtbuecher/Band_1_1395-1400_ready/477.html">477</a></td>
                     <td class="src-col-date">1399 Dezember 9</td>
                     <td class="src-col-corpus">Stadtbücher Bd. 1 (1395–1400)</td>
+                    <td class="src-col-label"><em>-</em></td>
+                    <td class="src-col-role">
+                        
+                        -
+                    </td>
                     <td class="src-col-regest">Einbr. 2 Zg. (Indez: Item frewntschaft Annen Thomans hausfraw des Stricz) Desselben tags kom fur den rat fraw Annhawsfraw, Thomans hawsfraw des Stricz von Sand Veyt und hat da beweist mit den erbern…</td>
                 </tr>
             
@@ -522,6 +670,11 @@
                     <td class="src-col-idno"><a href="../../documents/QGW/Vienna_1177-1414_ready/1494.html">1494</a></td>
                     <td class="src-col-date">1401 IX 06</td>
                     <td class="src-col-corpus">QGW II/1 (1177–1414)</td>
+                    <td class="src-col-label"><em>hochgeporn|fürstin|fraun</em></td>
+                    <td class="src-col-role">
+                        
+                        -
+                    </td>
                     <td class="src-col-regest">Margret, witib Andres witib des Pierbaumer, Ott der Pierbaumer, sein prueder, Stephan Seifrid von Wolmansperg, Kristan von Pierbaum, Philipp Pivang daselbens und Jacob, des Gastgeben sun von…</td>
                 </tr>
             
@@ -529,6 +682,11 @@
                     <td class="src-col-idno"><a href="../../documents/QGW/Vienna_1177-1414_ready/1542.html">1542</a></td>
                     <td class="src-col-date">1403 V 29</td>
                     <td class="src-col-corpus">QGW II/1 (1177–1414)</td>
+                    <td class="src-col-label"><em>edeln|hochgepornn|fürstin|fraun</em></td>
+                    <td class="src-col-role">
+                        
+                        -
+                    </td>
                     <td class="src-col-regest">Herman von Eselarn, purger ze Wienn, verkauft 5 lb dn. geltes purkrechts, und zwar mit Handen hern Haunolden des Schu/echler, purgermaister, und des rats gemain der stat ze Wienn 3 lb dn. gelts auf…</td>
                 </tr>
             
@@ -536,6 +694,11 @@
                     <td class="src-col-idno"><a href="../../documents/QGW/Vienna_1177-1414_ready/1554.html">1554</a></td>
                     <td class="src-col-date">1403 IX 06</td>
                     <td class="src-col-corpus">QGW II/1 (1177–1414)</td>
+                    <td class="src-col-label"><em>hochgeborn|furstin|frau</em></td>
+                    <td class="src-col-role">
+                        
+                        -
+                    </td>
                     <td class="src-col-regest">Niklas der Lerrer, purger ze Wienn, verkauft mit Handen seines Grundherrn des Schottenabtes hern Thomann 1 lb dn. geltes purkrechts (ablösbar)z auf seinem halben Joch Weingarten, gelegen aufm Jeus…</td>
                 </tr>
             
@@ -543,6 +706,11 @@
                     <td class="src-col-idno"><a href="../../documents/QGW/Vienna_1177-1414_ready/1620.html">1620</a></td>
                     <td class="src-col-date">1405 V 11</td>
                     <td class="src-col-corpus">QGW II/1 (1177–1414)</td>
+                    <td class="src-col-label"><em>-</em></td>
+                    <td class="src-col-role">
+                        
+                        -
+                    </td>
                     <td class="src-col-regest">Hanns der Zirnast, des rats der stat ze Wiennanstat, verkauft mit Handen hern Herwarts in der Scheffstrass, der hochgeborn furstin fraun Beatricis von Nurenberg, herzogin ze Österreich, amptman…</td>
                 </tr>
             
@@ -550,6 +718,11 @@
                     <td class="src-col-idno"><a href="../../documents/QGW/Vienna_1177-1414_ready/1908.html">1908</a></td>
                     <td class="src-col-date">1412 I 22</td>
                     <td class="src-col-corpus">QGW II/1 (1177–1414)</td>
+                    <td class="src-col-label"><em>Herzogin</em></td>
+                    <td class="src-col-role">
+                        <span class="role-chip role-chip-issuer">Aussteller*in</span>
+                        
+                    </td>
                     <td class="src-col-regest">Herzogin Beatrixzu Lehen geht genehmigt verkauft gekauft habe, dass Peter von Mauttarn, kaplan Unsrer Fraun mess in der Purkch ze Wienn, die von ihr zu Lehen geht, kaplanein Haus an dem Kolmarkcht…</td>
                 </tr>
             
@@ -582,11 +755,13 @@
         </div>
     </footer>
 
-    <script src="../../static/js/core.js?v=20260511112948"></script>
-    <script src="../../static/js/provenance.js?v=20260511112948"></script>
-    <script src="../../static/js/basket.js?v=20260511112948"></script>
+    <script src="../../static/js/core.js?v=20260511125458"></script>
+    <script src="../../static/js/tip.js?v=20260511125458"></script>
+    <script src="../../static/js/hint.js?v=20260511125458"></script>
+    <script src="../../static/js/basket.js?v=20260511125458"></script>
     
-<script src="../../static/js/tooltips.js?v=20260511112948"></script>
+<script src="../../static/js/profile.js?v=20260511125458"></script>
+<script src="../../static/js/basket-mount.js?v=20260511125458"></script>
 
 </body>
 </html>

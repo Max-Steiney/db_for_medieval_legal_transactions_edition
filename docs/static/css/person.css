@@ -34,6 +34,19 @@
     gap: var(--space-sm);
 }
 
+.person-toolbar-row {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    gap: var(--space-md);
+}
+
+.person-toolbar-actions {
+    display: flex;
+    align-items: center;
+    gap: var(--space-xs);
+}
+
 .person-breadcrumb {
     font-size: var(--text-sm);
     color: var(--color-text-muted);
@@ -360,3 +373,218 @@
     color: var(--color-text-muted);
 }
 .person-geo dd a { color: var(--color-link); word-break: break-all; }
+
+/* --- Im-Quellen-Wortlaut + Aliases-Zeile ------------------------------ */
+.person-orig {
+    margin: var(--space-xs) 0 var(--space-sm);
+    font-size: var(--text-sm);
+    color: var(--color-text);
+    display: flex;
+    flex-wrap: wrap;
+    align-items: baseline;
+    gap: var(--space-xs);
+}
+.person-orig .orig-label {
+    font-size: var(--text-xs);
+    color: var(--color-text-light);
+    text-transform: uppercase;
+    letter-spacing: 0.04em;
+    margin-right: var(--space-xs);
+}
+
+/* --- Rollen-Strip (Person/Org/Place) ---------------------------------- */
+.role-strip {
+    max-width: var(--max-width-wide);
+    margin: var(--space-xl) auto 0;
+    padding: var(--space-md);
+    border: 1px solid var(--color-border);
+    border-radius: var(--radius);
+    background: var(--color-bg-card);
+}
+.role-strip-title {
+    margin: 0 0 var(--space-sm);
+    font-size: var(--text-base);
+    font-weight: 600;
+    color: var(--color-text-muted);
+    text-transform: uppercase;
+    letter-spacing: 0.04em;
+}
+.role-strip-cells {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(8rem, 1fr));
+    gap: var(--space-sm);
+}
+.role-cell {
+    display: flex;
+    flex-direction: column;
+    padding: var(--space-sm) var(--space-md);
+    border-left: 3px solid var(--color-border);
+    background: var(--color-bg-warm);
+    border-radius: 0 var(--radius) var(--radius) 0;
+}
+.role-cell-count {
+    font-family: var(--font-serif);
+    font-size: var(--text-xl);
+    color: var(--color-text);
+    line-height: 1;
+}
+.role-cell-label {
+    font-size: var(--text-xs);
+    color: var(--color-text-muted);
+    margin-top: 2px;
+    text-transform: uppercase;
+    letter-spacing: 0.03em;
+}
+.role-cell.is-zero {
+    opacity: 0.45;
+}
+.role-cell-issuer    { border-left-color: var(--anno-fn-issuer, var(--anno-person)); }
+.role-cell-recipient { border-left-color: var(--anno-fn-recipient, var(--anno-org)); }
+.role-cell-witness   { border-left-color: var(--anno-fn-witness, var(--color-accent)); }
+.role-cell-other     { border-left-color: var(--anno-fn-other, var(--color-text-light)); }
+.role-cell-where             { border-left-color: var(--anno-place, var(--color-accent)); }
+.role-cell-of                { border-left-color: var(--color-accent); }
+.role-cell-transactiongood_I,
+.role-cell-transactiongood_II { border-left-color: var(--anno-org, var(--color-accent)); }
+.role-strip-hint {
+    margin: var(--space-sm) 0 0;
+    font-size: var(--text-xs);
+    color: var(--color-text-light);
+}
+
+/* --- Untergeordnete Orgs --------------------------------------------- */
+.org-children {
+    max-width: var(--max-width-wide);
+    margin: var(--space-2xl) auto;
+    padding: 0 var(--space-md);
+}
+.section-head .section-head-count {
+    margin-left: var(--space-sm);
+    font-family: var(--font-mono);
+    font-size: var(--text-sm);
+    color: var(--color-text-muted);
+    background: var(--color-bg-warm);
+    border: 1px solid var(--color-border);
+    border-radius: var(--radius);
+    padding: 1px 8px;
+}
+.child-list {
+    list-style: none;
+    margin: 0;
+    padding: 0;
+    display: grid;
+    grid-template-columns: repeat(auto-fill, minmax(16rem, 1fr));
+    gap: var(--space-xs) var(--space-md);
+}
+.child-item {
+    font-size: var(--text-sm);
+    border-left: 2px solid var(--color-border);
+    padding-left: var(--space-sm);
+}
+.child-link {
+    color: var(--anno-org);
+    text-decoration: none;
+}
+.child-link:hover { text-decoration: underline; }
+.child-plain {
+    color: var(--color-text-light);
+    cursor: help;
+}
+
+/* --- Tabellen-Filter + Truncation ------------------------------------ */
+.table-filter {
+    display: flex;
+    align-items: baseline;
+    gap: var(--space-sm);
+    margin-bottom: var(--space-sm);
+}
+.table-filter-input {
+    flex: 0 0 22rem;
+    max-width: 100%;
+    padding: 4px 8px;
+    border: 1px solid var(--color-border);
+    border-radius: var(--radius);
+    background: var(--color-bg);
+    color: var(--color-text);
+    font-size: var(--text-sm);
+}
+.table-filter-input:focus {
+    outline: 2px solid var(--color-accent);
+    outline-offset: -1px;
+}
+.table-filter-status {
+    font-size: var(--text-xs);
+    color: var(--color-text-muted);
+}
+
+/* Body-Zeilen jenseits der Truncation ausblenden, solange Tabelle nicht
+   expandiert ist. JS toggelt .is-expanded auf der Tabelle. */
+.rel-table[data-truncate-at]:not(.is-expanded):not(.is-filtering) tbody tr.is-overflow,
+.person-source-table[data-truncate-at]:not(.is-expanded):not(.is-filtering) tbody tr.is-overflow {
+    display: none;
+}
+.table-toggle {
+    margin-top: var(--space-sm);
+    background: transparent;
+    border: 1px solid var(--color-border);
+    color: var(--color-text);
+    font: inherit;
+    padding: 4px 10px;
+    border-radius: var(--radius);
+    cursor: pointer;
+}
+.table-toggle:hover { background: var(--color-bg-warm); }
+.row-hidden { display: none !important; }
+
+/* --- Source-titles Top-N + Toggle ----------------------------------- */
+.person-titles[data-collapsible] .pt-chip.is-overflow { display: none; }
+.person-titles.is-expanded[data-collapsible] .pt-chip.is-overflow { display: inline-block; }
+.person-titles .pt-toggle {
+    margin-left: var(--space-xs);
+    background: transparent;
+    border: 1px dashed var(--color-border);
+    color: var(--color-text-muted);
+    font: inherit;
+    font-size: var(--text-xs);
+    padding: 2px 8px;
+    border-radius: var(--radius);
+    cursor: pointer;
+}
+.person-titles .pt-toggle:hover { background: var(--color-bg-warm); }
+
+/* --- Role-Chips in Quellen-Tabelle ----------------------------------- */
+.role-chip {
+    display: inline-block;
+    padding: 1px 6px;
+    margin-right: 4px;
+    font-size: var(--text-xs);
+    border-radius: var(--radius);
+    background: var(--color-bg-warm);
+    border: 1px solid var(--color-border-light);
+    color: var(--color-text);
+    white-space: nowrap;
+}
+.role-chip-issuer    { border-left: 3px solid var(--anno-fn-issuer, var(--anno-person)); }
+.role-chip-recipient { border-left: 3px solid var(--anno-fn-recipient, var(--anno-org)); }
+.role-chip-witness   { border-left: 3px solid var(--anno-fn-witness, var(--color-accent)); }
+.role-chip-other     { border-left: 3px solid var(--anno-fn-other, var(--color-text-light)); }
+
+/* Place-Profil tenant/owner-Block-Akzentfarben analog zu Person.        */
+.rel-block-owner  .rel-block-title { color: var(--anno-org); }
+.rel-block-tenant .rel-block-title { color: var(--anno-org); }
+.rel-block-topo   .rel-block-title { color: var(--anno-place, var(--color-accent)); }
+
+/* Source-Tabelle: neue Spalten Bezeichnung + Rolle */
+.person-source-table .src-col-label {
+    color: var(--color-text);
+    font-size: var(--text-xs);
+}
+.person-source-table .src-col-role {
+    white-space: nowrap;
+}
+@media (max-width: 1024px) {
+    .person-source-table .src-col-label { display: none; }
+}
+@media (max-width: 768px) {
+    .person-source-table .src-col-role { display: none; }
+}

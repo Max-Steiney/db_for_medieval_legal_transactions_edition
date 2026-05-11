@@ -3,22 +3,22 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <meta http-equiv="Content-Security-Policy" content="default-src 'self'; script-src 'self'; style-src 'self'; font-src 'self'; img-src 'self' data: https://images.monasterium.net https://www.monasterium.net; connect-src 'self'; frame-ancestors 'none'; base-uri 'self'; form-action 'self'; upgrade-insecure-requests">
+    <meta http-equiv="Content-Security-Policy" content="default-src 'self'; script-src 'self'; style-src 'self'; font-src 'self'; img-src 'self' data: https://images.monasterium.net https://www.monasterium.net; connect-src 'self'; base-uri 'self'; form-action 'self'; upgrade-insecure-requests">
     <meta name="referrer" content="strict-origin-when-cross-origin">
     <meta http-equiv="Permissions-Policy" content="camera=(), microphone=(), geolocation=(), interest-cohort=()">
     <title>Niklas Würfel von Nussdorf (&dagger; 24.12.1449), Datenbank</title>
     <link rel="preload" as="font" type="font/woff2" crossorigin
           href="../../static/fonts/inter-400-latin.woff2">
-    <link rel="stylesheet" href="../../static/css/fonts.css?v=20260511112948">
-    <link rel="stylesheet" href="../../static/css/tokens.css?v=20260511112948">
-    <link rel="stylesheet" href="../../static/css/base.css?v=20260511112948">
-    <link rel="stylesheet" href="../../static/css/components.css?v=20260511112948">
-    <link rel="stylesheet" href="../../static/css/responsive.css?v=20260511112948">
-    <link rel="stylesheet" href="../../static/css/print.css?v=20260511112948">
-    <link rel="stylesheet" href="../../static/css/provenance.css?v=20260511112948">
+    <link rel="stylesheet" href="../../static/css/fonts.css?v=20260511125458">
+    <link rel="stylesheet" href="../../static/css/tokens.css?v=20260511125458">
+    <link rel="stylesheet" href="../../static/css/base.css?v=20260511125458">
+    <link rel="stylesheet" href="../../static/css/components.css?v=20260511125458">
+    <link rel="stylesheet" href="../../static/css/responsive.css?v=20260511125458">
+    <link rel="stylesheet" href="../../static/css/print.css?v=20260511125458">
+    <link rel="stylesheet" href="../../static/css/tip.css?v=20260511125458">
     
-<link rel="stylesheet" href="../../static/css/document.css?v=20260511112948">
-<link rel="stylesheet" href="../../static/css/person.css?v=20260511112948">
+<link rel="stylesheet" href="../../static/css/document.css?v=20260511125458">
+<link rel="stylesheet" href="../../static/css/person.css?v=20260511125458">
 
 </head>
 <body data-root-path="../.."
@@ -48,8 +48,6 @@
         <a href="../../register/persons.html">Personen</a>
         
         <a href="../../register/orgs.html">Organisationen</a>
-        
-        <a href="../../register/places.html">Orte</a>
         
     </div>
 </div>
@@ -91,7 +89,7 @@
     </div>
 </div>
 
-                <a href="../../korb.html" class="nav-basket" aria-label="Wissenskorb">
+                <a href="../../korb.html" class="nav-basket" aria-label="Datenkorb">
                     <svg width="18" height="18" viewBox="0 0 18 18" fill="none" aria-hidden="true">
                         <path d="M3 5h12l-1.2 8.5a1 1 0 0 1-1 .85H5.2a1 1 0 0 1-1-.85L3 5z"
                               stroke="currentColor" stroke-width="1.4" fill="none"
@@ -112,11 +110,23 @@
 
     <div class="person-toolbar">
         <div class="person-toolbar-inner">
-            <nav class="person-breadcrumb" aria-label="Position">
-                <a href="../../register/persons.html">Personenregister</a>
-                <span class="bc-sep">&rsaquo;</span>
-                <span class="bc-doc"><strong>Niklas Würfel von Nussdorf</strong></span>
-            </nav>
+            <div class="person-toolbar-row">
+                <nav class="person-breadcrumb" aria-label="Position">
+                    <a href="../../register/persons.html">Personenregister</a>
+                    <span class="bc-sep">&rsaquo;</span>
+                    <span class="bc-doc"><strong>Niklas Würfel von Nussdorf</strong></span>
+                </nav>
+                <div class="person-toolbar-actions">
+                    <span class="toolbar-basket-mount"
+                          data-basket-type="person"
+                          data-basket-id="pe__niklas_wuerfel_von_nussdorf_QGW_II_I_1107"
+                          data-basket-label="Niklas Würfel von Nussdorf"
+                          data-basket-url="register/persons/pe__niklas_wuerfel_von_nussdorf_QGW_II_I_1107.html"
+                          data-basket-sex="m"
+                          data-basket-active-min="1386"
+                          data-basket-active-max="1408"></span>
+                </div>
+            </div>
             <div class="person-toolbar-meta">
                 <span class="meta-pair">
                     <span class="meta-label">Geschlecht</span>
@@ -124,7 +134,33 @@
                 </span>
                 
                 <span class="meta-pair">
-                    <span class="meta-label">Belegt</span>
+                    <span class="meta-label">Belegt
+<span class="tip-wrap">
+    <button type="button" class="tip-trigger tip-trigger--icon"
+            aria-expanded="false" aria-haspopup="dialog"
+            aria-controls="person-belegt"
+            data-tip="person-belegt"
+            aria-label="Definition: Beleg-Zeitraum">
+        <svg width="13" height="13" viewBox="0 0 16 16" aria-hidden="true">
+            <circle cx="8" cy="8" r="7" stroke="currentColor" stroke-width="1.4" fill="none"/>
+            <text x="8" y="11.6" text-anchor="middle" font-size="9.5" font-weight="700"
+                  fill="currentColor" font-family="Georgia, serif">i</text>
+        </svg>
+    </button>
+    <aside class="tip-popover tip-popover--glossary"
+           id="person-belegt" role="dialog" aria-hidden="true"
+           aria-label="Definition: Beleg-Zeitraum">
+        <header class="tip-head">
+            <h3 class="tip-title">Beleg-Zeitraum</h3>
+            <button type="button" class="tip-close" aria-label="Schlie&szlig;en">&times;</button>
+        </header>
+        <div class="tip-body">
+            <p>Erste und letzte Datierung einer Quelle, in der die Person erscheint. Bei einzelnem Beleg wird nur ein Jahr angegeben.</p>
+            
+        </div>
+    </aside>
+</span>
+</span>
                     <span class="meta-value">1386 bis 1408</span>
                 </span>
                 
@@ -134,6 +170,10 @@
                     <span class="meta-value">24.12.1449</span>
                 </span>
                 
+                <span class="meta-pair">
+                    <span class="meta-label">Quellen</span>
+                    <span class="meta-value">21</span>
+                </span>
                 <span class="meta-pair person-id-pair">
                     <span class="meta-label">ID</span>
                     <code class="meta-value person-id">pe__niklas_wuerfel_von_nussdorf_QGW_II_I_1107</code>
@@ -150,16 +190,48 @@
             
         </h1>
         
+        
         <p class="person-note">der "jüngere" / Gem. Ursula</p>
         
         
-        <p class="person-titles">
+        <p class="person-titles" data-collapsible="22">
             <span class="pt-label">In den Quellen genannt als</span>
             <span class="pt-chip">her</span><span class="pt-chip">Bergmeisters</span><span class="pt-chip">hern|hern</span>
         </p>
         
         
+        
     </header>
+
+    
+    <section class="role-strip" aria-label="Rollen in Rechtsgeschäften">
+        <h2 class="role-strip-title">Rollen in Rechtsgeschäften</h2>
+        <div class="role-strip-cells">
+            
+            <div class="role-cell role-cell-issuer">
+                <span class="role-cell-count">3</span>
+                <span class="role-cell-label">Aussteller*in</span>
+            </div>
+            
+            <div class="role-cell role-cell-recipient">
+                <span class="role-cell-count">8</span>
+                <span class="role-cell-label">Empfänger*in</span>
+            </div>
+            
+            <div class="role-cell role-cell-witness">
+                <span class="role-cell-count">12</span>
+                <span class="role-cell-label">Zeuge / Siegler*in</span>
+            </div>
+            
+            <div class="role-cell role-cell-other">
+                <span class="role-cell-count">11</span>
+                <span class="role-cell-label">Sonstige</span>
+            </div>
+            
+        </div>
+        <p class="role-strip-hint">Summe Rollen-Belegungen: 34. Mehrfach-Rollen pro Quelle sind möglich.</p>
+    </section>
+    
 
     
 
@@ -176,6 +248,7 @@
                 <span class="rel-block-count">21</span>
                 <span class="rel-block-hint">Verwandtschaftsverhältnisse, wie sie in den Quellen explizit benannt werden.</span>
             </header>
+            
             <table class="rel-table">
                 <thead>
                     <tr>
@@ -196,7 +269,7 @@
                         <td class="rel-col-label"><em>hausvrawe</em></td>
                         <td class="rel-col-perspective">
                             
-                                Ursula → Niklas Würfel von Nussdorf
+                                Ursula &rsaquo; Niklas Würfel von Nussdorf
                             
                         </td>
                         <td class="rel-col-source">
@@ -215,7 +288,7 @@
                         <td class="rel-col-label"><em>Sohnes</em></td>
                         <td class="rel-col-perspective">
                             
-                                Niklas Würfel von Nussdorf → Niklas Würfel
+                                Niklas Würfel von Nussdorf &rsaquo; Niklas Würfel
                             
                         </td>
                         <td class="rel-col-source">
@@ -234,7 +307,7 @@
                         <td class="rel-col-label"><em>Sohnes</em></td>
                         <td class="rel-col-perspective">
                             
-                                Niklas Würfel von Nussdorf → Niklas Würfel
+                                Niklas Würfel von Nussdorf &rsaquo; Niklas Würfel
                             
                         </td>
                         <td class="rel-col-source">
@@ -253,7 +326,7 @@
                         <td class="rel-col-label"><em>Sohne</em></td>
                         <td class="rel-col-perspective">
                             
-                                Niklas Würfel von Nussdorf → Niklas Würfel
+                                Niklas Würfel von Nussdorf &rsaquo; Niklas Würfel
                             
                         </td>
                         <td class="rel-col-source">
@@ -272,7 +345,7 @@
                         <td class="rel-col-label"><em>Bruder</em></td>
                         <td class="rel-col-perspective">
                             
-                                Bartholomäus Würfel → Niklas Würfel von Nussdorf
+                                Bartholomäus Würfel &rsaquo; Niklas Würfel von Nussdorf
                             
                         </td>
                         <td class="rel-col-source">
@@ -291,7 +364,7 @@
                         <td class="rel-col-label"><em>Bruder</em></td>
                         <td class="rel-col-perspective">
                             
-                                Johann Würfel zu Rodaun → Niklas Würfel von Nussdorf
+                                Johann Würfel zu Rodaun &rsaquo; Niklas Würfel von Nussdorf
                             
                         </td>
                         <td class="rel-col-source">
@@ -310,7 +383,7 @@
                         <td class="rel-col-label"><em>Sohn</em></td>
                         <td class="rel-col-perspective">
                             
-                                Niklas Würfel von Nussdorf → Niklas Würfel
+                                Niklas Würfel von Nussdorf &rsaquo; Niklas Würfel
                             
                         </td>
                         <td class="rel-col-source">
@@ -329,7 +402,7 @@
                         <td class="rel-col-label"><em>Bruder</em></td>
                         <td class="rel-col-perspective">
                             
-                                Niklas Würfel von Nussdorf → Johann Würfel zu Rodaun
+                                Niklas Würfel von Nussdorf &rsaquo; Johann Würfel zu Rodaun
                             
                         </td>
                         <td class="rel-col-source">
@@ -348,7 +421,7 @@
                         <td class="rel-col-label"><em>Bruder</em></td>
                         <td class="rel-col-perspective">
                             
-                                Niklas Würfel von Nussdorf → Ulrich Würfel
+                                Niklas Würfel von Nussdorf &rsaquo; Ulrich Würfel
                             
                         </td>
                         <td class="rel-col-source">
@@ -367,7 +440,7 @@
                         <td class="rel-col-label"><em>Bruder</em></td>
                         <td class="rel-col-perspective">
                             
-                                Niklas Würfel von Nussdorf → Sigmund Würfel
+                                Niklas Würfel von Nussdorf &rsaquo; Sigmund Würfel
                             
                         </td>
                         <td class="rel-col-source">
@@ -386,7 +459,7 @@
                         <td class="rel-col-label"><em>Bruder</em></td>
                         <td class="rel-col-perspective">
                             
-                                Ulrich Würfel → Niklas Würfel von Nussdorf
+                                Ulrich Würfel &rsaquo; Niklas Würfel von Nussdorf
                             
                         </td>
                         <td class="rel-col-source">
@@ -405,7 +478,7 @@
                         <td class="rel-col-label"><em>Bruder</em></td>
                         <td class="rel-col-perspective">
                             
-                                Sigmund Würfel → Niklas Würfel von Nussdorf
+                                Sigmund Würfel &rsaquo; Niklas Würfel von Nussdorf
                             
                         </td>
                         <td class="rel-col-source">
@@ -424,7 +497,7 @@
                         <td class="rel-col-label"><em>Vater</em></td>
                         <td class="rel-col-perspective">
                             
-                                Niklas Würfel → Niklas Würfel von Nussdorf
+                                Niklas Würfel &rsaquo; Niklas Würfel von Nussdorf
                             
                         </td>
                         <td class="rel-col-source">
@@ -443,7 +516,7 @@
                         <td class="rel-col-label"><em>prüdern</em></td>
                         <td class="rel-col-perspective">
                             
-                                Johann Würfel zu Rodaun → Niklas Würfel von Nussdorf
+                                Johann Würfel zu Rodaun &rsaquo; Niklas Würfel von Nussdorf
                             
                         </td>
                         <td class="rel-col-source">
@@ -462,7 +535,7 @@
                         <td class="rel-col-label"><em>prüdern</em></td>
                         <td class="rel-col-perspective">
                             
-                                Ulrich Würfel → Niklas Würfel von Nussdorf
+                                Ulrich Würfel &rsaquo; Niklas Würfel von Nussdorf
                             
                         </td>
                         <td class="rel-col-source">
@@ -481,7 +554,7 @@
                         <td class="rel-col-label"><em>prüdern</em></td>
                         <td class="rel-col-perspective">
                             
-                                Sigmund Würfel → Niklas Würfel von Nussdorf
+                                Sigmund Würfel &rsaquo; Niklas Würfel von Nussdorf
                             
                         </td>
                         <td class="rel-col-source">
@@ -500,7 +573,7 @@
                         <td class="rel-col-label"><em>Bruder</em></td>
                         <td class="rel-col-perspective">
                             
-                                Bartholomäus Würfel → Niklas Würfel von Nussdorf
+                                Bartholomäus Würfel &rsaquo; Niklas Würfel von Nussdorf
                             
                         </td>
                         <td class="rel-col-source">
@@ -519,7 +592,7 @@
                         <td class="rel-col-label"><em>Brüder</em></td>
                         <td class="rel-col-perspective">
                             
-                                Niklas Würfel von Nussdorf → Johann Würfel zu Rodaun
+                                Niklas Würfel von Nussdorf &rsaquo; Johann Würfel zu Rodaun
                             
                         </td>
                         <td class="rel-col-source">
@@ -538,7 +611,7 @@
                         <td class="rel-col-label"><em>Brüdern</em></td>
                         <td class="rel-col-perspective">
                             
-                                Niklas Würfel von Nussdorf → Johann Würfel zu Rodaun
+                                Niklas Würfel von Nussdorf &rsaquo; Johann Würfel zu Rodaun
                             
                         </td>
                         <td class="rel-col-source">
@@ -557,7 +630,7 @@
                         <td class="rel-col-label"><em>Oheims</em></td>
                         <td class="rel-col-perspective">
                             
-                                Haunold Schuchler der jüngere → Niklas Würfel von Nussdorf
+                                Haunold Schuchler der jüngere &rsaquo; Niklas Würfel von Nussdorf
                             
                         </td>
                         <td class="rel-col-source">
@@ -576,7 +649,7 @@
                         <td class="rel-col-label"><em>Brüdern</em></td>
                         <td class="rel-col-perspective">
                             
-                                Niklas Würfel von Nussdorf → Sigmund Würfel
+                                Niklas Würfel von Nussdorf &rsaquo; Sigmund Würfel
                             
                         </td>
                         <td class="rel-col-source">
@@ -602,6 +675,7 @@
                 <span class="rel-block-count">1</span>
                 <span class="rel-block-hint">Stellvertretungs-Beziehungen, z. B. handelt eine Person an Stelle einer anderen.</span>
             </header>
+            
             <table class="rel-table">
                 <thead>
                     <tr>
@@ -622,7 +696,7 @@
                         <td class="rel-col-label"><em>empfiehlt</em></td>
                         <td class="rel-col-perspective">
                             
-                                Niklas Würfel von Nussdorf → Sigmund Würfel
+                                Niklas Würfel von Nussdorf &rsaquo; Sigmund Würfel
                             
                         </td>
                         <td class="rel-col-source">
@@ -645,6 +719,7 @@
                 <span class="rel-block-count">12</span>
                 <span class="rel-block-hint">Berufs- oder Amtsbezeichnung in Bezug auf eine Institution.</span>
             </header>
+            
             <table class="rel-table">
                 <thead>
                     <tr>
@@ -665,7 +740,7 @@
                         <td class="rel-col-label"><em>amptman</em></td>
                         <td class="rel-col-perspective">
                             
-                                Niklas Würfel von Nussdorf → Augustinerchorherren Klosterneuburg
+                                Niklas Würfel von Nussdorf &rsaquo; Augustinerchorherren Klosterneuburg
                             
                         </td>
                         <td class="rel-col-source">
@@ -684,7 +759,7 @@
                         <td class="rel-col-label"><em>pergmaister</em></td>
                         <td class="rel-col-perspective">
                             
-                                Niklas Würfel von Nussdorf → Augustinerchorherren Klosterneuburg
+                                Niklas Würfel von Nussdorf &rsaquo; Augustinerchorherren Klosterneuburg
                             
                         </td>
                         <td class="rel-col-source">
@@ -703,7 +778,7 @@
                         <td class="rel-col-label"><em>ambtman</em></td>
                         <td class="rel-col-perspective">
                             
-                                Niklas Würfel von Nussdorf → Augustinerchorherren Klosterneuburg
+                                Niklas Würfel von Nussdorf &rsaquo; Augustinerchorherren Klosterneuburg
                             
                         </td>
                         <td class="rel-col-source">
@@ -722,7 +797,7 @@
                         <td class="rel-col-label"><em>ambtman</em></td>
                         <td class="rel-col-perspective">
                             
-                                Niklas Würfel von Nussdorf → Augustinerchorherren Klosterneuburg
+                                Niklas Würfel von Nussdorf &rsaquo; Augustinerchorherren Klosterneuburg
                             
                         </td>
                         <td class="rel-col-source">
@@ -741,7 +816,7 @@
                         <td class="rel-col-label"><em>amptman</em></td>
                         <td class="rel-col-perspective">
                             
-                                Niklas Würfel von Nussdorf → Augustinerchorherren Klosterneuburg
+                                Niklas Würfel von Nussdorf &rsaquo; Augustinerchorherren Klosterneuburg
                             
                         </td>
                         <td class="rel-col-source">
@@ -760,7 +835,7 @@
                         <td class="rel-col-label"><em>ambtman</em></td>
                         <td class="rel-col-perspective">
                             
-                                Niklas Würfel von Nussdorf → Augustinerchorherren Klosterneuburg
+                                Niklas Würfel von Nussdorf &rsaquo; Augustinerchorherren Klosterneuburg
                             
                         </td>
                         <td class="rel-col-source">
@@ -779,7 +854,7 @@
                         <td class="rel-col-label"><em>ambtman</em></td>
                         <td class="rel-col-perspective">
                             
-                                Niklas Würfel von Nussdorf → Augustinerchorherren Klosterneuburg
+                                Niklas Würfel von Nussdorf &rsaquo; Augustinerchorherren Klosterneuburg
                             
                         </td>
                         <td class="rel-col-source">
@@ -798,7 +873,7 @@
                         <td class="rel-col-label"><em>amptman</em></td>
                         <td class="rel-col-perspective">
                             
-                                Niklas Würfel von Nussdorf → Augustinerchorherren Klosterneuburg
+                                Niklas Würfel von Nussdorf &rsaquo; Augustinerchorherren Klosterneuburg
                             
                         </td>
                         <td class="rel-col-source">
@@ -817,7 +892,7 @@
                         <td class="rel-col-label"><em>amptman</em></td>
                         <td class="rel-col-perspective">
                             
-                                Niklas Würfel von Nussdorf → Bürgermeister, Richter und Rat der Stadt Klosterneuburg
+                                Niklas Würfel von Nussdorf &rsaquo; Bürgermeister, Richter und Rat der Stadt Klosterneuburg
                             
                         </td>
                         <td class="rel-col-source">
@@ -836,7 +911,7 @@
                         <td class="rel-col-label"><em>ambtman</em></td>
                         <td class="rel-col-perspective">
                             
-                                Niklas Würfel von Nussdorf → Bürgermeister, Richter und Rat der Stadt Klosterneuburg
+                                Niklas Würfel von Nussdorf &rsaquo; Bürgermeister, Richter und Rat der Stadt Klosterneuburg
                             
                         </td>
                         <td class="rel-col-source">
@@ -855,7 +930,7 @@
                         <td class="rel-col-label"><em>amptman</em></td>
                         <td class="rel-col-perspective">
                             
-                                Niklas Würfel von Nussdorf → Bürgermeister, Richter und Rat der Stadt Klosterneuburg
+                                Niklas Würfel von Nussdorf &rsaquo; Bürgermeister, Richter und Rat der Stadt Klosterneuburg
                             
                         </td>
                         <td class="rel-col-source">
@@ -874,7 +949,7 @@
                         <td class="rel-col-label"><em>amptman</em></td>
                         <td class="rel-col-perspective">
                             
-                                Niklas Würfel von Nussdorf → Bürgermeister, Richter und Rat der Stadt Klosterneuburg
+                                Niklas Würfel von Nussdorf &rsaquo; Bürgermeister, Richter und Rat der Stadt Klosterneuburg
                             
                         </td>
                         <td class="rel-col-source">
@@ -892,18 +967,27 @@
         
         
         
+        
+        
+        
+        
+        
+        
     </section>
     
 
     
     <section class="person-sources" aria-label="Quellen mit Nennung">
         <h2 class="section-head">Quellen mit Nennung</h2>
+        
         <table class="person-source-table">
             <thead>
                 <tr>
                     <th scope="col" class="src-col-idno">Nr.</th>
                     <th scope="col" class="src-col-date">Datum</th>
                     <th scope="col" class="src-col-corpus">Quellenkorpus</th>
+                    <th scope="col" class="src-col-label">Bezeichnung</th>
+                    <th scope="col" class="src-col-role">Rolle</th>
                     <th scope="col" class="src-col-regest">Regest</th>
                 </tr>
             </thead>
@@ -913,6 +997,11 @@
                     <td class="src-col-idno"><a href="../../documents/QGW/Vienna_1177-1414_ready/1107.html">1107</a></td>
                     <td class="src-col-date">1386 VII 17</td>
                     <td class="src-col-corpus">QGW II/1 (1177–1414)</td>
+                    <td class="src-col-label"><em>-</em></td>
+                    <td class="src-col-role">
+                        <span class="role-chip role-chip-other">Sonstige</span><span class="role-chip role-chip-witness">Zeuge / Siegler*in</span>
+                        
+                    </td>
                     <td class="src-col-regest">Niclas von Re/achleinstorf, kaplan der ewigen messe, die her Seifrid seliger des Reicholf auf sand Dorothen altar in Unser Fraun kapellen, gelegen in der purger Rathaus ze Wienn, gewidemt und…</td>
                 </tr>
             
@@ -920,6 +1009,11 @@
                     <td class="src-col-idno"><a href="../../documents/QGW/Vienna_1177-1414_ready/1138.html">1138</a></td>
                     <td class="src-col-date">1388 I 16</td>
                     <td class="src-col-corpus">QGW II/1 (1177–1414)</td>
+                    <td class="src-col-label"><em>-</em></td>
+                    <td class="src-col-role">
+                        
+                        -
+                    </td>
                     <td class="src-col-regest">Ursula, Niclas des Würfels hausvrawe, des jungern, beurkundet, dass ihr sweher her Niclas der Würfel, der elter, von ihr 400 lb dn., der 200 lb dn. ihr Leibgeding und 200 lb dn. ihr lediges Gut sind,…</td>
                 </tr>
             
@@ -927,6 +1021,11 @@
                     <td class="src-col-idno"><a href="../../documents/QGW/Vienna_1177-1414_ready/1285.html">1285</a></td>
                     <td class="src-col-date">1394 VII 07</td>
                     <td class="src-col-corpus">QGW II/1 (1177–1414)</td>
+                    <td class="src-col-label"><em>-</em></td>
+                    <td class="src-col-role">
+                        <span class="role-chip role-chip-other">Sonstige</span><span class="role-chip role-chip-witness">Zeuge / Siegler*in</span>
+                        
+                    </td>
                     <td class="src-col-regest">Perichtolt der Schützenmaister, purger ze Wienn, und Kathrei, seine Hausfrau, verkaufen mit Handen Niclas des Würffels, des jungen, ambtman des klosters ze Neunburch, ihren Weingarten, des ein…</td>
                 </tr>
             
@@ -934,6 +1033,11 @@
                     <td class="src-col-idno"><a href="../../documents/QGW/Vienna_1177-1414_ready/1286.html">1286</a></td>
                     <td class="src-col-date">1394 VII 10</td>
                     <td class="src-col-corpus">QGW II/1 (1177–1414)</td>
+                    <td class="src-col-label"><em>-</em></td>
+                    <td class="src-col-role">
+                        <span class="role-chip role-chip-other">Sonstige</span><span class="role-chip role-chip-witness">Zeuge / Siegler*in</span>
+                        
+                    </td>
                     <td class="src-col-regest">Ott der Rueswurm von Nustorf und Elsbet, seine Hausfrau, verkaufen mit Handen Niclas des Wurffels, des jungen, ambtman des chlosters ze Neunburch, 2 lb dn. gelts purkrechts (ablösbar) auf ihrem Joch…</td>
                 </tr>
             
@@ -941,6 +1045,11 @@
                     <td class="src-col-idno"><a href="../../documents/QGW/Vienna_1177-1414_ready/1310.html">1310</a></td>
                     <td class="src-col-date">1395 IX 27</td>
                     <td class="src-col-corpus">QGW II/1 (1177–1414)</td>
+                    <td class="src-col-label"><em>-</em></td>
+                    <td class="src-col-role">
+                        <span class="role-chip role-chip-other">Sonstige</span>
+                        
+                    </td>
                     <td class="src-col-regest">Niclas der Würffel schafft 14 lb dn. gelts purkrechts auf der padstuben, die da haisset die Hu/enttin vor Stubentor ze Wienn, und mit Handen seines Sohnes Niclas des Würffels, amptman des chlosters…</td>
                 </tr>
             
@@ -948,6 +1057,11 @@
                     <td class="src-col-idno"><a href="../../documents/QGW/Vienna_1177-1414_ready/1404.html">1404</a></td>
                     <td class="src-col-date">1398 VII 29</td>
                     <td class="src-col-corpus">QGW II/1 (1177–1414)</td>
+                    <td class="src-col-label"><em>-</em></td>
+                    <td class="src-col-role">
+                        <span class="role-chip role-chip-recipient">Empfänger*in</span>
+                        
+                    </td>
                     <td class="src-col-regest">Niclas der Würffel, der elter, beurkundet seinen letzten Willen. Er schafft: 1. Bezahlung seiner Geldschulden von seiner fahrenden Habe 2. 14 lb dn. geltes, die er auf Michels haus des Furter,…</td>
                 </tr>
             
@@ -955,6 +1069,11 @@
                     <td class="src-col-idno"><a href="../../documents/QGW/Vienna_1177-1414_ready/1407.html">1407</a></td>
                     <td class="src-col-date">1398 IX 06</td>
                     <td class="src-col-corpus">QGW II/1 (1177–1414)</td>
+                    <td class="src-col-label"><em>her</em></td>
+                    <td class="src-col-role">
+                        <span class="role-chip role-chip-recipient">Empfänger*in</span>
+                        
+                    </td>
                     <td class="src-col-regest">Anna, hern Niclas des Würffels witib witib, bestätigt, dass dessen Söhne her Hanns Sohn Bruder Bruder Bruder, her Niclas SohnBruder Bruder Bruder, her Ulreich Sohn Bruder Bruder Bruder, und her…</td>
                 </tr>
             
@@ -962,6 +1081,11 @@
                     <td class="src-col-idno"><a href="../../documents/QGW/Vienna_1177-1414_ready/1423.html">1423</a></td>
                     <td class="src-col-date">1399 V 09</td>
                     <td class="src-col-corpus">QGW II/1 (1177–1414)</td>
+                    <td class="src-col-label"><em>-</em></td>
+                    <td class="src-col-role">
+                        <span class="role-chip role-chip-other">Sonstige</span><span class="role-chip role-chip-witness">Zeuge / Siegler*in</span>
+                        
+                    </td>
                     <td class="src-col-regest">Hanns der Urbetsch verkauft mit Handen Niclas des Würffels, ambtman des chlosters ze Neunburg, drei Viertel Weingarten, die ihm in der Erbtheilung nach seinem Vater zugefallen waren, gelegen in dem…</td>
                 </tr>
             
@@ -969,6 +1093,11 @@
                     <td class="src-col-idno"><a href="../../documents/QGW/Vienna_1177-1414_ready/1447.html">1447</a></td>
                     <td class="src-col-date">1400 I 19</td>
                     <td class="src-col-corpus">QGW II/1 (1177–1414)</td>
+                    <td class="src-col-label"><em>-</em></td>
+                    <td class="src-col-role">
+                        <span class="role-chip role-chip-other">Sonstige</span><span class="role-chip role-chip-recipient">Empfänger*in</span>
+                        
+                    </td>
                     <td class="src-col-regest">Anthoni, probst dacz sand Stephan zu Wienn Geschäftsherren, Paul der Würffel Geschäftsherren, Wolfhart, pharrer zu Mülbach Geschäftsherren, und Lienhart von Medlikch Geschäftsherren, Geschäftsherren…</td>
                 </tr>
             
@@ -976,6 +1105,11 @@
                     <td class="src-col-idno"><a href="../../documents/QGW/Vienna_1177-1414_ready/1467.html">1467</a></td>
                     <td class="src-col-date">1400 V 12</td>
                     <td class="src-col-corpus">QGW II/1 (1177–1414)</td>
+                    <td class="src-col-label"><em>-</em></td>
+                    <td class="src-col-role">
+                        <span class="role-chip role-chip-other">Sonstige</span><span class="role-chip role-chip-witness">Zeuge / Siegler*in</span>
+                        
+                    </td>
                     <td class="src-col-regest">Michel der Chelhaimer, purger ze Wienn, und Dorothe, seine Hausfrau, bestätigen, dass sie drei Viertel Weingarten, gelegen in dem Mukkental an dem Nusperig, und ein Viertel, das oben darauf stosset…</td>
                 </tr>
             
@@ -983,6 +1117,11 @@
                     <td class="src-col-idno"><a href="../../documents/QGW/Vienna_1177-1414_ready/1549.html">1549</a></td>
                     <td class="src-col-date">1403 VII 13</td>
                     <td class="src-col-corpus">QGW II/1 (1177–1414)</td>
+                    <td class="src-col-label"><em>-</em></td>
+                    <td class="src-col-role">
+                        <span class="role-chip role-chip-recipient">Empfänger*in</span>
+                        
+                    </td>
                     <td class="src-col-regest">Rudolf und Ludweig, geprüder von Tyrna, bestätigen, dass her Niclas der Würffel selig und seine Erben, welche für sie hern Ulreichen von Wolffurt Bürgschaft geleistet hatten, das ihnen dafür…</td>
                 </tr>
             
@@ -990,6 +1129,11 @@
                     <td class="src-col-idno"><a href="../../documents/QGW/Vienna_1177-1414_ready/1567.html">1567</a></td>
                     <td class="src-col-date">1404 I 05</td>
                     <td class="src-col-corpus">QGW II/1 (1177–1414)</td>
+                    <td class="src-col-label"><em>-</em></td>
+                    <td class="src-col-role">
+                        <span class="role-chip role-chip-other">Sonstige</span><span class="role-chip role-chip-witness">Zeuge / Siegler*in</span>
+                        
+                    </td>
                     <td class="src-col-regest">Stephan der Weinreich ze Nustorf verkauft mit Handen Niklas des Würffels, amptman des klosters ze Neunburkch, 2 lb dn. geltes purkrechts (ablösbar) auf seinem Viertel Weingarten, gelegen ze Nustorf…</td>
                 </tr>
             
@@ -997,6 +1141,11 @@
                     <td class="src-col-idno"><a href="../../documents/QGW/Vienna_1177-1414_ready/1589.html">1589</a></td>
                     <td class="src-col-date">1404 VII 02</td>
                     <td class="src-col-corpus">QGW II/1 (1177–1414)</td>
+                    <td class="src-col-label"><em>her</em></td>
+                    <td class="src-col-role">
+                        <span class="role-chip role-chip-recipient">Empfänger*in</span>
+                        
+                    </td>
                     <td class="src-col-regest">Haunold der Schu/echler rats der stat und Rudolf der Angerfelder, baid des rats der stat ze Wienn, beurkunden, dass her Hanns, her Niclas, her Ulman und her Sigmund, gebru/eder die Würffel, den Rath…</td>
                 </tr>
             
@@ -1004,6 +1153,11 @@
                     <td class="src-col-idno"><a href="../../documents/QGW/Vienna_1177-1414_ready/1615.html">1615</a></td>
                     <td class="src-col-date">1405 III 02</td>
                     <td class="src-col-corpus">QGW II/1 (1177–1414)</td>
+                    <td class="src-col-label"><em>-</em></td>
+                    <td class="src-col-role">
+                        <span class="role-chip role-chip-recipient">Empfänger*in</span>
+                        
+                    </td>
                     <td class="src-col-regest">Hanns der Würffel beurkundet seinen letzten Willen. Er schafft: 1. der bruderschaft gemainklich hinz den Predigern und den Minnernprüdern seines rechten Eigens 3 1/2 lb dn. gelts, gelegen ze…</td>
                 </tr>
             
@@ -1011,6 +1165,11 @@
                     <td class="src-col-idno"><a href="../../documents/QGW/Vienna_1177-1414_ready/1616.html">1616</a></td>
                     <td class="src-col-date">1405 III 27</td>
                     <td class="src-col-corpus">QGW II/1 (1177–1414)</td>
+                    <td class="src-col-label"><em>-</em></td>
+                    <td class="src-col-role">
+                        <span class="role-chip role-chip-issuer">Aussteller*in</span><span class="role-chip role-chip-witness">Zeuge / Siegler*in</span>
+                        
+                    </td>
                     <td class="src-col-regest">Niclas der Würffel ze Nusdorf verkauft 14 lb dn. geltes purkchrechts auf seinem grossen Hause, das rechts aigen ist, gelegen ze Nusdorf gegen dem urfar u/eber, zu der hochwirdigen hochzeit…</td>
                 </tr>
             
@@ -1018,6 +1177,11 @@
                     <td class="src-col-idno"><a href="../../documents/QGW/Vienna_1177-1414_ready/1627.html">1627</a></td>
                     <td class="src-col-date">1405 VIII 20</td>
                     <td class="src-col-corpus">QGW II/1 (1177–1414)</td>
+                    <td class="src-col-label"><em>Bergmeisters</em></td>
+                    <td class="src-col-role">
+                        <span class="role-chip role-chip-other">Sonstige</span><span class="role-chip role-chip-witness">Zeuge / Siegler*in</span>
+                        
+                    </td>
                     <td class="src-col-regest">Mert der Hausleitter, des rats der stat ze Wienn, und Kathrei, seine Hausfrau, verkaufen mit Handen ihres Bergherrn pruder Haugen von Wêching, comiteur des hauses dacz sand Johanns in der…</td>
                 </tr>
             
@@ -1025,6 +1189,11 @@
                     <td class="src-col-idno"><a href="../../documents/QGW/Vienna_1177-1414_ready/1726.html">1726</a></td>
                     <td class="src-col-date">1408 III 15</td>
                     <td class="src-col-corpus">QGW II/1 (1177–1414)</td>
+                    <td class="src-col-label"><em>-</em></td>
+                    <td class="src-col-role">
+                        <span class="role-chip role-chip-other">Sonstige</span><span class="role-chip role-chip-witness">Zeuge / Siegler*in</span>
+                        
+                    </td>
                     <td class="src-col-regest">Wolfgang der Würmtaler verkauft mit Handen Niclas des Würffels, ambtman des chlosters ze Neunburch, ½ Joch Weingarten, gelegen an dem Nusperig an dem undern Tennberg, und haisset der Egenperger,…</td>
                 </tr>
             
@@ -1032,6 +1201,11 @@
                     <td class="src-col-idno"><a href="../../documents/QGW/Vienna_1177-1414_ready/1727.html">1727</a></td>
                     <td class="src-col-date">1408 III 18</td>
                     <td class="src-col-corpus">QGW II/1 (1177–1414)</td>
+                    <td class="src-col-label"><em>hern|hern</em></td>
+                    <td class="src-col-role">
+                        <span class="role-chip role-chip-recipient">Empfänger*in</span>
+                        
+                    </td>
                     <td class="src-col-regest">Sigmund der Würffel beurkundet seinen letzten Willen. Er schafft: 1. Bezahlung seiner Schulden 2. dass man seiner Hausfrau Barbaren 100 lb dn. Heimsteuer, die er zu eigenem Nutzen verwendet hatte,…</td>
                 </tr>
             
@@ -1039,6 +1213,11 @@
                     <td class="src-col-idno"><a href="../../documents/QGW/Vienna_1177-1414_ready/1733.html">1733</a></td>
                     <td class="src-col-date">1408 VI 01</td>
                     <td class="src-col-corpus">QGW II/1 (1177–1414)</td>
+                    <td class="src-col-label"><em>-</em></td>
+                    <td class="src-col-role">
+                        <span class="role-chip role-chip-issuer">Aussteller*in</span><span class="role-chip role-chip-witness">Zeuge / Siegler*in</span>
+                        
+                    </td>
                     <td class="src-col-regest">Niclas der Würffel ze Nustorf, amptman des chlosters ze Neunburch, beurkundet, dass vor ihm in offenem Gerichte Hanns Steger mit vorsprechen an Otten stat des Weissen auf Petreins des Wallenberger…</td>
                 </tr>
             
@@ -1046,6 +1225,11 @@
                     <td class="src-col-idno"><a href="../../documents/QGW/Vienna_1177-1414_ready/1735.html">1735</a></td>
                     <td class="src-col-date">1408 VI 08</td>
                     <td class="src-col-corpus">QGW II/1 (1177–1414)</td>
+                    <td class="src-col-label"><em>-</em></td>
+                    <td class="src-col-role">
+                        <span class="role-chip role-chip-issuer">Aussteller*in</span><span class="role-chip role-chip-witness">Zeuge / Siegler*in</span>
+                        
+                    </td>
                     <td class="src-col-regest">Niclas der Würffel ze Nusdorf, ambtman des klosters ze Neunburch, beurkundet, dass Hanns Steger an Otten stat des Weissen die ihm in Urk. no 1733 zugesprochene Ueberteuerung Petrein dem Wallenberger…</td>
                 </tr>
             
@@ -1053,6 +1237,11 @@
                     <td class="src-col-idno"><a href="../../documents/QGW/Vienna_1177-1414_ready/1746.html">1746</a></td>
                     <td class="src-col-date">1408 XII 01</td>
                     <td class="src-col-corpus">QGW II/1 (1177–1414)</td>
+                    <td class="src-col-label"><em>-</em></td>
+                    <td class="src-col-role">
+                        <span class="role-chip role-chip-other">Sonstige</span><span class="role-chip role-chip-witness">Zeuge / Siegler*in</span>
+                        
+                    </td>
                     <td class="src-col-regest">Peter der Stainpekch, burger ze Perchtoltstorf, und Anna, sein hausfrau, verkaufen mit Handen Niclass des Würffels, amptman des chlosters ze Neunburg, aus dem väterlichen Erbgute der Anna ein…</td>
                 </tr>
             
@@ -1085,11 +1274,13 @@
         </div>
     </footer>
 
-    <script src="../../static/js/core.js?v=20260511112948"></script>
-    <script src="../../static/js/provenance.js?v=20260511112948"></script>
-    <script src="../../static/js/basket.js?v=20260511112948"></script>
+    <script src="../../static/js/core.js?v=20260511125458"></script>
+    <script src="../../static/js/tip.js?v=20260511125458"></script>
+    <script src="../../static/js/hint.js?v=20260511125458"></script>
+    <script src="../../static/js/basket.js?v=20260511125458"></script>
     
-<script src="../../static/js/tooltips.js?v=20260511112948"></script>
+<script src="../../static/js/profile.js?v=20260511125458"></script>
+<script src="../../static/js/basket-mount.js?v=20260511125458"></script>
 
 </body>
 </html>

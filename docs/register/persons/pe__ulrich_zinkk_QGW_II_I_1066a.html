@@ -3,22 +3,22 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <meta http-equiv="Content-Security-Policy" content="default-src 'self'; script-src 'self'; style-src 'self'; font-src 'self'; img-src 'self' data: https://images.monasterium.net https://www.monasterium.net; connect-src 'self'; frame-ancestors 'none'; base-uri 'self'; form-action 'self'; upgrade-insecure-requests">
+    <meta http-equiv="Content-Security-Policy" content="default-src 'self'; script-src 'self'; style-src 'self'; font-src 'self'; img-src 'self' data: https://images.monasterium.net https://www.monasterium.net; connect-src 'self'; base-uri 'self'; form-action 'self'; upgrade-insecure-requests">
     <meta name="referrer" content="strict-origin-when-cross-origin">
     <meta http-equiv="Permissions-Policy" content="camera=(), microphone=(), geolocation=(), interest-cohort=()">
     <title>Ulrich Zinkk (&dagger; 15.07.1398), Datenbank</title>
     <link rel="preload" as="font" type="font/woff2" crossorigin
           href="../../static/fonts/inter-400-latin.woff2">
-    <link rel="stylesheet" href="../../static/css/fonts.css?v=20260511112948">
-    <link rel="stylesheet" href="../../static/css/tokens.css?v=20260511112948">
-    <link rel="stylesheet" href="../../static/css/base.css?v=20260511112948">
-    <link rel="stylesheet" href="../../static/css/components.css?v=20260511112948">
-    <link rel="stylesheet" href="../../static/css/responsive.css?v=20260511112948">
-    <link rel="stylesheet" href="../../static/css/print.css?v=20260511112948">
-    <link rel="stylesheet" href="../../static/css/provenance.css?v=20260511112948">
+    <link rel="stylesheet" href="../../static/css/fonts.css?v=20260511125458">
+    <link rel="stylesheet" href="../../static/css/tokens.css?v=20260511125458">
+    <link rel="stylesheet" href="../../static/css/base.css?v=20260511125458">
+    <link rel="stylesheet" href="../../static/css/components.css?v=20260511125458">
+    <link rel="stylesheet" href="../../static/css/responsive.css?v=20260511125458">
+    <link rel="stylesheet" href="../../static/css/print.css?v=20260511125458">
+    <link rel="stylesheet" href="../../static/css/tip.css?v=20260511125458">
     
-<link rel="stylesheet" href="../../static/css/document.css?v=20260511112948">
-<link rel="stylesheet" href="../../static/css/person.css?v=20260511112948">
+<link rel="stylesheet" href="../../static/css/document.css?v=20260511125458">
+<link rel="stylesheet" href="../../static/css/person.css?v=20260511125458">
 
 </head>
 <body data-root-path="../.."
@@ -48,8 +48,6 @@
         <a href="../../register/persons.html">Personen</a>
         
         <a href="../../register/orgs.html">Organisationen</a>
-        
-        <a href="../../register/places.html">Orte</a>
         
     </div>
 </div>
@@ -91,7 +89,7 @@
     </div>
 </div>
 
-                <a href="../../korb.html" class="nav-basket" aria-label="Wissenskorb">
+                <a href="../../korb.html" class="nav-basket" aria-label="Datenkorb">
                     <svg width="18" height="18" viewBox="0 0 18 18" fill="none" aria-hidden="true">
                         <path d="M3 5h12l-1.2 8.5a1 1 0 0 1-1 .85H5.2a1 1 0 0 1-1-.85L3 5z"
                               stroke="currentColor" stroke-width="1.4" fill="none"
@@ -112,11 +110,23 @@
 
     <div class="person-toolbar">
         <div class="person-toolbar-inner">
-            <nav class="person-breadcrumb" aria-label="Position">
-                <a href="../../register/persons.html">Personenregister</a>
-                <span class="bc-sep">&rsaquo;</span>
-                <span class="bc-doc"><strong>Ulrich Zinkk</strong></span>
-            </nav>
+            <div class="person-toolbar-row">
+                <nav class="person-breadcrumb" aria-label="Position">
+                    <a href="../../register/persons.html">Personenregister</a>
+                    <span class="bc-sep">&rsaquo;</span>
+                    <span class="bc-doc"><strong>Ulrich Zinkk</strong></span>
+                </nav>
+                <div class="person-toolbar-actions">
+                    <span class="toolbar-basket-mount"
+                          data-basket-type="person"
+                          data-basket-id="pe__ulrich_zinkk_QGW_II_I_1066a"
+                          data-basket-label="Ulrich Zinkk"
+                          data-basket-url="register/persons/pe__ulrich_zinkk_QGW_II_I_1066a.html"
+                          data-basket-sex="m"
+                          data-basket-active-min="1372"
+                          data-basket-active-max="1400"></span>
+                </div>
+            </div>
             <div class="person-toolbar-meta">
                 <span class="meta-pair">
                     <span class="meta-label">Geschlecht</span>
@@ -124,7 +134,33 @@
                 </span>
                 
                 <span class="meta-pair">
-                    <span class="meta-label">Belegt</span>
+                    <span class="meta-label">Belegt
+<span class="tip-wrap">
+    <button type="button" class="tip-trigger tip-trigger--icon"
+            aria-expanded="false" aria-haspopup="dialog"
+            aria-controls="person-belegt"
+            data-tip="person-belegt"
+            aria-label="Definition: Beleg-Zeitraum">
+        <svg width="13" height="13" viewBox="0 0 16 16" aria-hidden="true">
+            <circle cx="8" cy="8" r="7" stroke="currentColor" stroke-width="1.4" fill="none"/>
+            <text x="8" y="11.6" text-anchor="middle" font-size="9.5" font-weight="700"
+                  fill="currentColor" font-family="Georgia, serif">i</text>
+        </svg>
+    </button>
+    <aside class="tip-popover tip-popover--glossary"
+           id="person-belegt" role="dialog" aria-hidden="true"
+           aria-label="Definition: Beleg-Zeitraum">
+        <header class="tip-head">
+            <h3 class="tip-title">Beleg-Zeitraum</h3>
+            <button type="button" class="tip-close" aria-label="Schlie&szlig;en">&times;</button>
+        </header>
+        <div class="tip-body">
+            <p>Erste und letzte Datierung einer Quelle, in der die Person erscheint. Bei einzelnem Beleg wird nur ein Jahr angegeben.</p>
+            
+        </div>
+    </aside>
+</span>
+</span>
                     <span class="meta-value">1372 bis 1400</span>
                 </span>
                 
@@ -134,6 +170,10 @@
                     <span class="meta-value">15.07.1398</span>
                 </span>
                 
+                <span class="meta-pair">
+                    <span class="meta-label">Quellen</span>
+                    <span class="meta-value">16</span>
+                </span>
                 <span class="meta-pair person-id-pair">
                     <span class="meta-label">ID</span>
                     <code class="meta-value person-id">pe__ulrich_zinkk_QGW_II_I_1066a</code>
@@ -150,16 +190,48 @@
             
         </h1>
         
+        
         <p class="person-note">Spitalmeister Bürgerspital, Wiener Ratsherr, Hubmeister in Österreich, Schwager des Michael Vinkch</p>
         
         
-        <p class="person-titles">
+        <p class="person-titles" data-collapsible="22">
             <span class="pt-label">In den Quellen genannt als</span>
             <span class="pt-chip">hern</span><span class="pt-chip">erbern</span>
         </p>
         
         
+        
     </header>
+
+    
+    <section class="role-strip" aria-label="Rollen in Rechtsgeschäften">
+        <h2 class="role-strip-title">Rollen in Rechtsgeschäften</h2>
+        <div class="role-strip-cells">
+            
+            <div class="role-cell role-cell-issuer">
+                <span class="role-cell-count">5</span>
+                <span class="role-cell-label">Aussteller*in</span>
+            </div>
+            
+            <div class="role-cell role-cell-recipient">
+                <span class="role-cell-count">3</span>
+                <span class="role-cell-label">Empfänger*in</span>
+            </div>
+            
+            <div class="role-cell role-cell-witness">
+                <span class="role-cell-count">3</span>
+                <span class="role-cell-label">Zeuge / Siegler*in</span>
+            </div>
+            
+            <div class="role-cell role-cell-other">
+                <span class="role-cell-count">5</span>
+                <span class="role-cell-label">Sonstige</span>
+            </div>
+            
+        </div>
+        <p class="role-strip-hint">Summe Rollen-Belegungen: 16. Mehrfach-Rollen pro Quelle sind möglich.</p>
+    </section>
+    
 
     
 
@@ -176,6 +248,7 @@
                 <span class="rel-block-count">3</span>
                 <span class="rel-block-hint">Verwandtschaftsverhältnisse, wie sie in den Quellen explizit benannt werden.</span>
             </header>
+            
             <table class="rel-table">
                 <thead>
                     <tr>
@@ -196,7 +269,7 @@
                         <td class="rel-col-label"><em>Hausfrau</em></td>
                         <td class="rel-col-perspective">
                             
-                                Katharina → Ulrich Zinkk
+                                Katharina &rsaquo; Ulrich Zinkk
                             
                         </td>
                         <td class="rel-col-source">
@@ -215,7 +288,7 @@
                         <td class="rel-col-label"><em>swager</em></td>
                         <td class="rel-col-perspective">
                             
-                                Ulrich Zinkk → Gertrud
+                                Ulrich Zinkk &rsaquo; Gertrud
                             
                         </td>
                         <td class="rel-col-source">
@@ -234,7 +307,7 @@
                         <td class="rel-col-label"><em>meinen lieben swager</em></td>
                         <td class="rel-col-perspective">
                             
-                                Ulrich Zinkk → Michael Vinkch von Nikolsburg
+                                Ulrich Zinkk &rsaquo; Michael Vinkch von Nikolsburg
                             
                         </td>
                         <td class="rel-col-source">
@@ -260,6 +333,7 @@
                 <span class="rel-block-count">2</span>
                 <span class="rel-block-hint">Stellvertretungs-Beziehungen, z. B. handelt eine Person an Stelle einer anderen.</span>
             </header>
+            
             <table class="rel-table">
                 <thead>
                     <tr>
@@ -280,7 +354,7 @@
                         <td class="rel-col-label"><em>Geschäftsvollstrecker</em></td>
                         <td class="rel-col-perspective">
                             
-                                Ulrich Zinkk → Herbert auf der Säule
+                                Ulrich Zinkk &rsaquo; Herbert auf der Säule
                             
                         </td>
                         <td class="rel-col-source">
@@ -299,7 +373,7 @@
                         <td class="rel-col-label"><em>für</em></td>
                         <td class="rel-col-perspective">
                             
-                                Ulrich Zinkk → Johann Kraft "Friderici Kraftonis"
+                                Ulrich Zinkk &rsaquo; Johann Kraft "Friderici Kraftonis"
                             
                         </td>
                         <td class="rel-col-source">
@@ -322,6 +396,7 @@
                 <span class="rel-block-count">13</span>
                 <span class="rel-block-hint">Berufs- oder Amtsbezeichnung in Bezug auf eine Institution.</span>
             </header>
+            
             <table class="rel-table">
                 <thead>
                     <tr>
@@ -342,7 +417,7 @@
                         <td class="rel-col-label"><em>rates</em></td>
                         <td class="rel-col-perspective">
                             
-                                Ulrich Zinkk → Wien
+                                Ulrich Zinkk &rsaquo; Wien
                             
                         </td>
                         <td class="rel-col-source">
@@ -361,7 +436,7 @@
                         <td class="rel-col-label"><em>obrister spitalmaister</em></td>
                         <td class="rel-col-perspective">
                             
-                                Ulrich Zinkk → Wiener Bürgerspital
+                                Ulrich Zinkk &rsaquo; Wiener Bürgerspital
                             
                         </td>
                         <td class="rel-col-source">
@@ -380,7 +455,7 @@
                         <td class="rel-col-label"><em>rates</em></td>
                         <td class="rel-col-perspective">
                             
-                                Ulrich Zinkk → Wien
+                                Ulrich Zinkk &rsaquo; Wien
                             
                         </td>
                         <td class="rel-col-source">
@@ -399,7 +474,7 @@
                         <td class="rel-col-label"><em>rat</em></td>
                         <td class="rel-col-perspective">
                             
-                                Ulrich Zinkk → Wien
+                                Ulrich Zinkk &rsaquo; Wien
                             
                         </td>
                         <td class="rel-col-source">
@@ -418,7 +493,7 @@
                         <td class="rel-col-label"><em>Verwesers</em></td>
                         <td class="rel-col-perspective">
                             
-                                Ulrich Zinkk → pe__hermann_von_eslarn_ii_QGW_II_I_1185
+                                Ulrich Zinkk &rsaquo; pe__hermann_von_eslarn_ii_QGW_II_I_1185
                             
                         </td>
                         <td class="rel-col-source">
@@ -437,7 +512,7 @@
                         <td class="rel-col-label"><em>rates</em></td>
                         <td class="rel-col-perspective">
                             
-                                Ulrich Zinkk → Wien
+                                Ulrich Zinkk &rsaquo; Wien
                             
                         </td>
                         <td class="rel-col-source">
@@ -456,7 +531,7 @@
                         <td class="rel-col-label"><em>spitalmaister</em></td>
                         <td class="rel-col-perspective">
                             
-                                Ulrich Zinkk → Wiener Bürgerspital
+                                Ulrich Zinkk &rsaquo; Wiener Bürgerspital
                             
                         </td>
                         <td class="rel-col-source">
@@ -475,7 +550,7 @@
                         <td class="rel-col-label"><em>rates</em></td>
                         <td class="rel-col-perspective">
                             
-                                Ulrich Zinkk → Wien
+                                Ulrich Zinkk &rsaquo; Wien
                             
                         </td>
                         <td class="rel-col-source">
@@ -494,7 +569,7 @@
                         <td class="rel-col-label"><em>hu/obmaister</em></td>
                         <td class="rel-col-perspective">
                             
-                                Ulrich Zinkk → Herzogtum Österreich
+                                Ulrich Zinkk &rsaquo; Herzogtum Österreich
                             
                         </td>
                         <td class="rel-col-source">
@@ -513,7 +588,7 @@
                         <td class="rel-col-label"><em>oppidanus Wiennensis</em></td>
                         <td class="rel-col-perspective">
                             
-                                Ulrich Zinkk → Wien
+                                Ulrich Zinkk &rsaquo; Wien
                             
                         </td>
                         <td class="rel-col-source">
@@ -532,7 +607,7 @@
                         <td class="rel-col-label"><em>Lehensherr</em></td>
                         <td class="rel-col-perspective">
                             
-                                Ulrich Zinkk → St. Philipp und Jakobkapelle
+                                Ulrich Zinkk &rsaquo; St. Philipp und Jakobkapelle
                             
                         </td>
                         <td class="rel-col-source">
@@ -551,7 +626,7 @@
                         <td class="rel-col-label"><em>amptman</em></td>
                         <td class="rel-col-perspective">
                             
-                                Ulrich Zinkk → pe__albrecht_herzog_von_oesterreich_QGW_II_I_1020
+                                Ulrich Zinkk &rsaquo; pe__albrecht_herzog_von_oesterreich_QGW_II_I_1020
                             
                         </td>
                         <td class="rel-col-source">
@@ -570,7 +645,7 @@
                         <td class="rel-col-label"><em>die zeit hubmaister in Osterreich</em></td>
                         <td class="rel-col-perspective">
                             
-                                Ulrich Zinkk → Herzogtum Österreich
+                                Ulrich Zinkk &rsaquo; Herzogtum Österreich
                             
                         </td>
                         <td class="rel-col-source">
@@ -588,18 +663,27 @@
         
         
         
+        
+        
+        
+        
+        
+        
     </section>
     
 
     
     <section class="person-sources" aria-label="Quellen mit Nennung">
         <h2 class="section-head">Quellen mit Nennung</h2>
+        
         <table class="person-source-table">
             <thead>
                 <tr>
                     <th scope="col" class="src-col-idno">Nr.</th>
                     <th scope="col" class="src-col-date">Datum</th>
                     <th scope="col" class="src-col-corpus">Quellenkorpus</th>
+                    <th scope="col" class="src-col-label">Bezeichnung</th>
+                    <th scope="col" class="src-col-role">Rolle</th>
                     <th scope="col" class="src-col-regest">Regest</th>
                 </tr>
             </thead>
@@ -609,6 +693,11 @@
                     <td class="src-col-idno"><a href="../../documents/QGW/Vienna_1177-1414_ready/823.html">823</a></td>
                     <td class="src-col-date">1372 XII 31</td>
                     <td class="src-col-corpus">QGW II/1 (1177–1414)</td>
+                    <td class="src-col-label"><em>-</em></td>
+                    <td class="src-col-role">
+                        
+                        -
+                    </td>
                     <td class="src-col-regest">Janns der Schützenmaister bestätigt, dass er hern Jacoben dem Pollen, chaplan der chapellen Unser Frown in dem alten Rathous ze Wienne, hern Ottenhaimen seligen Stiftung, 14 lb dn. geltes purchrechts…</td>
                 </tr>
             
@@ -616,6 +705,11 @@
                     <td class="src-col-idno"><a href="../../documents/QGW/Vienna_1177-1414_ready/830.html">830</a></td>
                     <td class="src-col-date">1373 VII 12</td>
                     <td class="src-col-corpus">QGW II/1 (1177–1414)</td>
+                    <td class="src-col-label"><em>-</em></td>
+                    <td class="src-col-role">
+                        <span class="role-chip role-chip-issuer">Aussteller*in</span><span class="role-chip role-chip-witness">Zeuge / Siegler*in</span>
+                        
+                    </td>
                     <td class="src-col-regest">Herman von Eslarn und Gedrout, seine Hausfrau, Ulreich der Zinkk, ir swager, und Katrei, der Gedrouten swester, beurkunden die Teilung des Erbes die mit Stephan dem Frownschuechlein, der beiden…</td>
                 </tr>
             
@@ -623,6 +717,11 @@
                     <td class="src-col-idno"><a href="../../documents/QGW/Vienna_1177-1414_ready/840.html">840</a></td>
                     <td class="src-col-date">1374 VIII 23</td>
                     <td class="src-col-corpus">QGW II/1 (1177–1414)</td>
+                    <td class="src-col-label"><em>-</em></td>
+                    <td class="src-col-role">
+                        <span class="role-chip role-chip-other">Sonstige</span>
+                        
+                    </td>
                     <td class="src-col-regest">Chadolt von Ekkhartsawe, der elter, Janns an dem Chienmarkcht, purgermaister ze Wienne , und der ganz rat daselbs beurkunden die von ihnen gefällte Entscheidung in folgenden Streitsachen: 1. zwischen…</td>
                 </tr>
             
@@ -630,6 +729,11 @@
                     <td class="src-col-idno"><a href="../../documents/QGW/Vienna_1177-1414_ready/1066a.html">1066a</a></td>
                     <td class="src-col-date">1384 IV 14</td>
                     <td class="src-col-corpus">QGW II/1 (1177–1414)</td>
+                    <td class="src-col-label"><em>hern</em></td>
+                    <td class="src-col-role">
+                        <span class="role-chip role-chip-recipient">Empfänger*in</span><span class="role-chip role-chip-other">Sonstige</span>
+                        
+                    </td>
                     <td class="src-col-regest">Ulreich der Schüczenmaister, purger ze Wienne , und Anna, sein hausfrau , verkaufen mit gesammter Hand und mit Handen ihres Bergherrn Hannsen des Chettner ze Wienne einen der Anna von ihrem Bruder…</td>
                 </tr>
             
@@ -637,6 +741,11 @@
                     <td class="src-col-idno"><a href="../../documents/QGW/Vienna_1177-1414_ready/1083.html">1083</a></td>
                     <td class="src-col-date">1385 III 01</td>
                     <td class="src-col-corpus">QGW II/1 (1177–1414)</td>
+                    <td class="src-col-label"><em>-</em></td>
+                    <td class="src-col-role">
+                        <span class="role-chip role-chip-issuer">Aussteller*in</span>
+                        
+                    </td>
                     <td class="src-col-regest">Ulreich der Zinkk, obrister spitalmaister der purger Spital vor Kernertor ze Wienn , bestätigt, die hernachbenannten ziegelwerichstet, gelegen vor Kernertor bei den Ziegelöfen ze Wienn, welche Frau…</td>
                 </tr>
             
@@ -644,6 +753,11 @@
                     <td class="src-col-idno"><a href="../../documents/QGW/Vienna_1177-1414_ready/1156.html">1156</a></td>
                     <td class="src-col-date">1388 VII 06</td>
                     <td class="src-col-corpus">QGW II/1 (1177–1414)</td>
+                    <td class="src-col-label"><em>-</em></td>
+                    <td class="src-col-role">
+                        
+                        -
+                    </td>
                     <td class="src-col-regest">Ruodolf von Tierna, hubmaister in Österreich, bruder Ludweig von Tierna und Paul von Tierna, sein brüder, beurkunden, dass ihr Vater Vater Vater her Hanns von Tierna, weilnt auch hubmaister in…</td>
                 </tr>
             
@@ -651,6 +765,11 @@
                     <td class="src-col-idno"><a href="../../documents/QGW/Vienna_1177-1414_ready/1172.html">1172</a></td>
                     <td class="src-col-date">1389 II 24</td>
                     <td class="src-col-corpus">QGW II/1 (1177–1414)</td>
+                    <td class="src-col-label"><em>-</em></td>
+                    <td class="src-col-role">
+                        <span class="role-chip role-chip-issuer">Aussteller*in</span><span class="role-chip role-chip-witness">Zeuge / Siegler*in</span>
+                        
+                    </td>
                     <td class="src-col-regest">Ulreich der Zink rat und Chunrat Rokk, baid rates der stat ze Wienn, beurkunden, dass Frau Lucei, Stephans witib Stephan des Nezeuger witib, für sich und ihren unmündigen Sohn Sohn Jansen an einem…</td>
                 </tr>
             
@@ -658,6 +777,11 @@
                     <td class="src-col-idno"><a href="../../documents/QGW/Vienna_1177-1414_ready/1185.html">1185</a></td>
                     <td class="src-col-date">1390 II 01</td>
                     <td class="src-col-corpus">QGW II/1 (1177–1414)</td>
+                    <td class="src-col-label"><em>hern</em></td>
+                    <td class="src-col-role">
+                        <span class="role-chip role-chip-other">Sonstige</span>
+                        
+                    </td>
                     <td class="src-col-regest">Chunrat der Schönprot und Anna, seine Hausfrau, beurkunden, dass ihnen der Wiener Bürger Herman von Eslarn für sich und für für seine unmündigen Geschwister Niclas und unmündigen Geschwister Annen…</td>
                 </tr>
             
@@ -665,6 +789,11 @@
                     <td class="src-col-idno"><a href="../../documents/QGW/Vienna_1177-1414_ready/1204.html">1204</a></td>
                     <td class="src-col-date">1391 IV 08</td>
                     <td class="src-col-corpus">QGW II/1 (1177–1414)</td>
+                    <td class="src-col-label"><em>-</em></td>
+                    <td class="src-col-role">
+                        <span class="role-chip role-chip-issuer">Aussteller*in</span>
+                        
+                    </td>
                     <td class="src-col-regest">Ulreich der Zinkk, spitalmaister der purger Spital vor Kernertor ze Wienn , gibt nach dem Gebote Herzog Rudolfs IV. Petrein dem Gunzpurger, des rates der stat ze Wienn , 5 sh. dn. geltes purchrechts,…</td>
                 </tr>
             
@@ -672,6 +801,11 @@
                     <td class="src-col-idno"><a href="../../documents/QGW/Vienna_1177-1414_ready/1211.html">1211</a></td>
                     <td class="src-col-date">1391 VII 25</td>
                     <td class="src-col-corpus">QGW II/1 (1177–1414)</td>
+                    <td class="src-col-label"><em>hern</em></td>
+                    <td class="src-col-role">
+                        <span class="role-chip role-chip-recipient">Empfänger*in</span>
+                        
+                    </td>
                     <td class="src-col-regest">Niclas der Flusthart, purger ze Wienn, verkauft mit Handen hern Michels des Geuchramer, purgermaister und münzmaister, und des rats gemain der stat ze Wienne ein Haus und einen Gewandkeller, was ihm…</td>
                 </tr>
             
@@ -679,6 +813,11 @@
                     <td class="src-col-idno"><a href="../../documents/Stadtbuecher/Band_1_1395-1400_ready/70.html">70</a></td>
                     <td class="src-col-date">(1392 August 31, Wien)</td>
                     <td class="src-col-corpus">Stadtbücher Bd. 1 (1395–1400)</td>
+                    <td class="src-col-label"><em>-</em></td>
+                    <td class="src-col-role">
+                        <span class="role-chip role-chip-other">Sonstige</span>
+                        
+                    </td>
                     <td class="src-col-regest">-</td>
                 </tr>
             
@@ -686,6 +825,11 @@
                     <td class="src-col-idno"><a href="../../documents/QGW/Vienna_1177-1414_ready/1267.html">1267</a></td>
                     <td class="src-col-date">1393 VII 08</td>
                     <td class="src-col-corpus">QGW II/1 (1177–1414)</td>
+                    <td class="src-col-label"><em>-</em></td>
+                    <td class="src-col-role">
+                        <span class="role-chip role-chip-other">Sonstige</span>
+                        
+                    </td>
                     <td class="src-col-regest">Erhart der Suez/zz/z, Fridreichs seligen sun sun Friedreichs seligen des Suez/zz/z Gatte bei fraun Waltpurgen, beurkundet einen Vergleich mit fraun Kristein, weilent Perchtolts des Altenperger…</td>
                 </tr>
             
@@ -693,6 +837,11 @@
                     <td class="src-col-idno"><a href="../../documents/QGW/Vienna_1177-1414_ready/1292.html">1292</a></td>
                     <td class="src-col-date">1394 XI 04</td>
                     <td class="src-col-corpus">QGW II/1 (1177–1414)</td>
+                    <td class="src-col-label"><em>-</em></td>
+                    <td class="src-col-role">
+                        <span class="role-chip role-chip-issuer">Aussteller*in</span>
+                        
+                    </td>
                     <td class="src-col-regest">Ulricus dictus Cinkk, oppidanus Wiennensis , zeigtan dem Bischof Georg von Passau an, dass er zum Rector der in seinem Hause, genannt Coloniensium curia, gelegenen S. Philipps- und Jakobskapelle,…</td>
                 </tr>
             
@@ -700,6 +849,11 @@
                     <td class="src-col-idno"><a href="../../documents/QGW/Vienna_1177-1414_ready/1298.html">1298</a></td>
                     <td class="src-col-date">1395 IV 02</td>
                     <td class="src-col-corpus">QGW II/1 (1177–1414)</td>
+                    <td class="src-col-label"><em>hern</em></td>
+                    <td class="src-col-role">
+                        <span class="role-chip role-chip-recipient">Empfänger*in</span>
+                        
+                    </td>
                     <td class="src-col-regest">Jorg der Neuer, des rates der stat ze Wienn, und Elspet, seine Hausfrau , verkaufen mit Handen ihres Bergherrn hern Petreins, kaplan der kapellen Unser Fraun und sand Johanns des ewangelisten,…</td>
                 </tr>
             
@@ -707,6 +861,11 @@
                     <td class="src-col-idno"><a href="../../documents/QGW/Vienna_1177-1414_ready/1400.html">1400</a></td>
                     <td class="src-col-date">1398 VII 15</td>
                     <td class="src-col-corpus">QGW II/1 (1177–1414)</td>
+                    <td class="src-col-label"><em>-</em></td>
+                    <td class="src-col-role">
+                        
+                        -
+                    </td>
                     <td class="src-col-regest">Herzog Wilhelm beurkundet, dass auf seine Anordnung der Wiener Bürger Haunolt der Schüchler Herwarts auf der Seul seligen kinder mit irer hab, die er während mehrerer Jahre von Micheln dem Geukramer…</td>
                 </tr>
             
@@ -714,6 +873,11 @@
                     <td class="src-col-idno"><a href="../../documents/Stadtbuecher/Band_1_1395-1400_ready/595.html">595</a></td>
                     <td class="src-col-date">(1400 Mai 28, Steyr)</td>
                     <td class="src-col-corpus">Stadtbücher Bd. 1 (1395–1400)</td>
+                    <td class="src-col-label"><em>erbern</em></td>
+                    <td class="src-col-role">
+                        <span class="role-chip role-chip-witness">Zeuge / Siegler*in</span>
+                        
+                    </td>
                     <td class="src-col-regest">(Indez: Item frewntsehaft Niclass von Ofen miiter und Tudeeh) Ersamen und weysen, besundern lieben herren und frewnd. Wir Richter .. rat und .. die purger ze Steyr lassen ew wissen, daz die…</td>
                 </tr>
             
@@ -746,11 +910,13 @@
         </div>
     </footer>
 
-    <script src="../../static/js/core.js?v=20260511112948"></script>
-    <script src="../../static/js/provenance.js?v=20260511112948"></script>
-    <script src="../../static/js/basket.js?v=20260511112948"></script>
+    <script src="../../static/js/core.js?v=20260511125458"></script>
+    <script src="../../static/js/tip.js?v=20260511125458"></script>
+    <script src="../../static/js/hint.js?v=20260511125458"></script>
+    <script src="../../static/js/basket.js?v=20260511125458"></script>
     
-<script src="../../static/js/tooltips.js?v=20260511112948"></script>
+<script src="../../static/js/profile.js?v=20260511125458"></script>
+<script src="../../static/js/basket-mount.js?v=20260511125458"></script>
 
 </body>
 </html>

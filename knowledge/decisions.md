@@ -37,13 +37,13 @@ Getroffene Leitentscheidungen mit Begründung. Zeitlos formuliert. Pro Eintrag E
 
 **Konsequenz.** `VizCore.buildDocumentsURL({decadeMin, decadeMax, sex})` baut die Cross-Nav-URL. Mapping ist asymmetrisch: `sex='f' → with-f`, `sex='m' → only-m` (Quellen kennt kein `with-m`).
 
-## Wissenskorb als clientseitige Sammlung
+## Datenkorb als clientseitige Sammlung
 
-**Entscheidung.** Forschende sammeln Quellen über Sitzungen hinweg in einem clientseitigen Wissenskorb (localStorage, Schlüssel `sugw-wissenskorb-v1`). „+"-Knöpfe stehen neben jedem Quellen-Eintrag in den Listen (Quellen-Tabelle, Auswertungs-Drill, Zeitstrom-Drill); ein Korb-Icon im Nav zeigt die Anzahl; eine eigene Korb-Seite (`/korb.html`) listet die Sammlung mit Remove- und CSV-Export-Aktion.
+**Entscheidung.** Forschende sammeln Quellen über Sitzungen hinweg in einem clientseitigen Datenkorb (localStorage, Schlüssel `sugw-basket-v1`). „+"-Knöpfe stehen neben jedem Quellen-Eintrag in den Listen (Quellen-Tabelle, Auswertungs-Drill, Zeitstrom-Drill); ein Korb-Icon im Nav zeigt die Anzahl; eine eigene Korb-Seite (`/korb.html`) listet die Sammlung mit Remove- und CSV-Export-Aktion.
 
 **Begründung.** Die identifizierten Forschungspfade (siehe [[exploration]] und [[analyse]]) springen häufig zwischen Übersicht und Detail. Eine sammelnde Schicht über mehreren Seiten erlaubt es, ein Forschungs-Korpus zusammenzustellen, ohne den Browser-Tab-Wildwuchs einer manuellen Bookmark-Strategie. Cross-Tab-Sync via `storage`-Event hält parallel offene Tabs konsistent.
 
-**Konsequenz.** `wissenskorb.js` ist eine site-weite Komponente (in `base.html` geladen, Nav-Icon dort verankert). Schlüssel ist die zusammengesetzte ID `type:id` (aktuell nur `source` als Typ; Personen-Sammlung wäre eine spätere Erweiterung). Daten bleiben rein clientseitig — keine Server-Persistenz, keine Identitätspflicht; Export als CSV überträgt die Sammlung in Werkzeuge der Forschenden (Zotero, Excel, BibTeX-Konverter).
+**Konsequenz.** `basket.js` ist eine site-weite Komponente (in `base.html` geladen, Nav-Icon dort verankert). Schlüssel ist die zusammengesetzte ID `type:id` (aktuell nur `source` als Typ; Personen-Sammlung wäre eine spätere Erweiterung). Daten bleiben rein clientseitig — keine Server-Persistenz, keine Identitätspflicht; Export als CSV überträgt die Sammlung in Werkzeuge der Forschenden (Zotero, Excel, BibTeX-Konverter).
 
 **Nicht gemeint ist** ein server-persistierter Account. Das wäre ein anderer Stack (Auth, DSGVO, Speicherkosten). Der clientseitige Korb ist bewusst der niedrigschwellige Einstieg.
 
@@ -173,6 +173,14 @@ Verschachtelte rs-Events landen über `pipeline/utils/event_helpers.py::iter_top
 
 **Konsequenz.** Zeitregler und Anzeigen verwenden diesen Bereich. Abweichungen gelten als Fehler.
 
+## Freigegebene Korpora und Aufnahme-Workflow
+
+**Entscheidung.** Die Menge der publizierten Subkorpora ist als Tupel `RELEASED_CORPORA` im Pipeline-Repo (`pipeline/config.py`) hinterlegt und gilt als Single Source of Truth für CSV-Erzeugung und Frontend-Build. Aktuell freigegeben: `QGW/Vienna_1177-1414_ready` und `Stadtbuecher/Band_1_1395-1400_ready`.
+
+**Begründung.** Eine zentrale Liste verhindert, dass an mehreren Stellen unterschiedliche Mengen entstehen (Pipeline exportiert, Frontend filtert, Tests prüfen). Sie macht die Freigabeentscheidung explizit, nachvollziehbar und rückführbar auf einen Commit. Ungeprüfte Korpora bleiben für die editorische Arbeit in `sources/` zugänglich, ohne in den publizierten Stand zu lecken.
+
+**Konsequenz.** Ein neuer Subkorpus wird in vier Schritten aufgenommen: (1) Quellen unter `sources/<Collection>/<Subcollection>_ready/` ablegen, (2) Tupel `RELEASED_CORPORA` ergänzen, (3) im Pipeline-Repo `python -m pipeline transform` ausführen, (4) im Frontend-Repo `python -m frontend build`. Liegt der neue Zeitraum außerhalb von 1177–1414, ist zusätzlich `RELEASED_PERIOD` in `frontend/config.py` anzupassen (`min_year`, `max_year`, gegebenenfalls `extensions` oder `unprocessed_gaps`). Für interne Analysen ohne Freigabe steht der Override `PIPELINE_INCLUDE_UNRELEASED=1` zur Verfügung; er wird im publizierten Build nicht eingesetzt.
+
 ## Formulierung „noch nicht ausgewertet"
 
 **Entscheidung.** Der Zeitraum 1418 bis 1447 wird als „noch nicht ausgewertet" bezeichnet, nicht als „Überlieferungslücke".
@@ -183,13 +191,11 @@ Verschachtelte rs-Events landen über `pipeline/utils/event_helpers.py::iter_top
 
 ## Register-Freigabe
 
-**Entscheidung.** Alle drei Register (Personen, Organisationen, Orte) sind öffentlich. Jede Entität mit mindestens einer Nennung in einer freigegebenen Quelle erhält eine eigene Detail-Seite.
+**Entscheidung.** Personen und Organisationen sind als öffentliche Register freigegeben. Jede Entität mit mindestens einer Nennung in einer freigegebenen Quelle erhält eine eigene Detail-Seite. Das Ortsregister bleibt vorerst zurückgehalten.
 
-**Begründung.** Die Pipeline liefert für alle drei Entitätstypen konsistente Daten (Stammdaten, Quellenverweise, Beziehungen). Eine Detail-Seite pro Entität macht die Annotations-Substanz prüfbar und gibt Cross-Links zwischen Quelle, Person, Organisation und Ort eine sichtbare Heimat. Eine spätere Qualitätsverbesserung der Org- und Ortsdaten bleibt möglich und betrifft nur die Datengrundlage, nicht die Publikationsschicht.
+**Begründung.** Die Pipeline liefert für Personen- und Organisations-Daten konsistente Stammdaten, Quellenverweise und Beziehungen. Die Orts-Stammdaten sind noch nicht sauber konsolidiert: Doppelungen, uneinheitliche Typisierung und unscharfe rel_place-Hierarchien würden eine öffentliche Detail-Seite zu einer falschen Sicherheitsversprechung machen. Annotationen im Quellen-Volltext (`<rs type="place">`) bleiben sichtbar, damit die Orts-Auszeichnung der TEI-Edition nicht unsichtbar wird; sie tragen aber kein Sprungziel.
 
-**Konsequenz.** Listen-Seiten liegen unter `register/persons.html`, `register/orgs.html`, `register/places.html`. Detail-Seiten unter `register/persons/<pe__id>.html`, `register/orgs/<org__id>.html`, `register/places/<pl__id>.html`. Inline-Annotationen (`<rs type="org">`, `<rs type="place">`) im Quellen-Volltext verlinken auf die jeweilige Detail-Seite.
-
-**Geo-Information.** Orte erhalten textuelle Geo-Felder (Adresse, Parzelle, Koordinaten als Rohzahl, GeoNames-Link). Es wird kein Karten-Widget gerendert: Orts-Aussagen liegen außerhalb des Forschungsfokus, eine Karte würde eine analytische Tiefe suggerieren, die das Register nicht trägt. Der GeoNames-Link bleibt das einzige Sprungziel zur räumlichen Verortung.
+**Konsequenz.** Listen-Seiten liegen unter `register/persons.html` und `register/orgs.html`. Detail-Seiten unter `register/persons/<pe__id>.html` und `register/orgs/<org__id>.html`. `<rs type="org">` im Quellen-Volltext verlinkt auf die Org-Detail-Seite; `<rs type="place">` wird als `<span>` mit Tooltip ohne Sprungziel gerendert. Orts-Bezüge in Org- und Personen-Profilen (Standort, Eigentum, Pacht) erscheinen als Klartext. Eine spätere Wiederaufnahme des Ortsregisters bleibt möglich und betrifft nur die Datengrundlage, nicht die Publikationsschicht.
 
 ## Trennung Frontend-Repo und Pipeline-Repo
 

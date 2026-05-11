@@ -3,22 +3,22 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <meta http-equiv="Content-Security-Policy" content="default-src 'self'; script-src 'self'; style-src 'self'; font-src 'self'; img-src 'self' data: https://images.monasterium.net https://www.monasterium.net; connect-src 'self'; frame-ancestors 'none'; base-uri 'self'; form-action 'self'; upgrade-insecure-requests">
+    <meta http-equiv="Content-Security-Policy" content="default-src 'self'; script-src 'self'; style-src 'self'; font-src 'self'; img-src 'self' data: https://images.monasterium.net https://www.monasterium.net; connect-src 'self'; base-uri 'self'; form-action 'self'; upgrade-insecure-requests">
     <meta name="referrer" content="strict-origin-when-cross-origin">
     <meta http-equiv="Permissions-Policy" content="camera=(), microphone=(), geolocation=(), interest-cohort=()">
     <title>Johann von Tierna (&dagger; 06.07.1388), Datenbank</title>
     <link rel="preload" as="font" type="font/woff2" crossorigin
           href="../../static/fonts/inter-400-latin.woff2">
-    <link rel="stylesheet" href="../../static/css/fonts.css?v=20260511112948">
-    <link rel="stylesheet" href="../../static/css/tokens.css?v=20260511112948">
-    <link rel="stylesheet" href="../../static/css/base.css?v=20260511112948">
-    <link rel="stylesheet" href="../../static/css/components.css?v=20260511112948">
-    <link rel="stylesheet" href="../../static/css/responsive.css?v=20260511112948">
-    <link rel="stylesheet" href="../../static/css/print.css?v=20260511112948">
-    <link rel="stylesheet" href="../../static/css/provenance.css?v=20260511112948">
+    <link rel="stylesheet" href="../../static/css/fonts.css?v=20260511125458">
+    <link rel="stylesheet" href="../../static/css/tokens.css?v=20260511125458">
+    <link rel="stylesheet" href="../../static/css/base.css?v=20260511125458">
+    <link rel="stylesheet" href="../../static/css/components.css?v=20260511125458">
+    <link rel="stylesheet" href="../../static/css/responsive.css?v=20260511125458">
+    <link rel="stylesheet" href="../../static/css/print.css?v=20260511125458">
+    <link rel="stylesheet" href="../../static/css/tip.css?v=20260511125458">
     
-<link rel="stylesheet" href="../../static/css/document.css?v=20260511112948">
-<link rel="stylesheet" href="../../static/css/person.css?v=20260511112948">
+<link rel="stylesheet" href="../../static/css/document.css?v=20260511125458">
+<link rel="stylesheet" href="../../static/css/person.css?v=20260511125458">
 
 </head>
 <body data-root-path="../.."
@@ -48,8 +48,6 @@
         <a href="../../register/persons.html">Personen</a>
         
         <a href="../../register/orgs.html">Organisationen</a>
-        
-        <a href="../../register/places.html">Orte</a>
         
     </div>
 </div>
@@ -91,7 +89,7 @@
     </div>
 </div>
 
-                <a href="../../korb.html" class="nav-basket" aria-label="Wissenskorb">
+                <a href="../../korb.html" class="nav-basket" aria-label="Datenkorb">
                     <svg width="18" height="18" viewBox="0 0 18 18" fill="none" aria-hidden="true">
                         <path d="M3 5h12l-1.2 8.5a1 1 0 0 1-1 .85H5.2a1 1 0 0 1-1-.85L3 5z"
                               stroke="currentColor" stroke-width="1.4" fill="none"
@@ -112,11 +110,23 @@
 
     <div class="person-toolbar">
         <div class="person-toolbar-inner">
-            <nav class="person-breadcrumb" aria-label="Position">
-                <a href="../../register/persons.html">Personenregister</a>
-                <span class="bc-sep">&rsaquo;</span>
-                <span class="bc-doc"><strong>Johann von Tierna</strong></span>
-            </nav>
+            <div class="person-toolbar-row">
+                <nav class="person-breadcrumb" aria-label="Position">
+                    <a href="../../register/persons.html">Personenregister</a>
+                    <span class="bc-sep">&rsaquo;</span>
+                    <span class="bc-doc"><strong>Johann von Tierna</strong></span>
+                </nav>
+                <div class="person-toolbar-actions">
+                    <span class="toolbar-basket-mount"
+                          data-basket-type="person"
+                          data-basket-id="pe__johann_von_tierna_QGW_II_I_1018"
+                          data-basket-label="Johann von Tierna"
+                          data-basket-url="register/persons/pe__johann_von_tierna_QGW_II_I_1018.html"
+                          data-basket-sex="m"
+                          data-basket-active-min="1356"
+                          data-basket-active-max="1397"></span>
+                </div>
+            </div>
             <div class="person-toolbar-meta">
                 <span class="meta-pair">
                     <span class="meta-label">Geschlecht</span>
@@ -124,7 +134,33 @@
                 </span>
                 
                 <span class="meta-pair">
-                    <span class="meta-label">Belegt</span>
+                    <span class="meta-label">Belegt
+<span class="tip-wrap">
+    <button type="button" class="tip-trigger tip-trigger--icon"
+            aria-expanded="false" aria-haspopup="dialog"
+            aria-controls="person-belegt"
+            data-tip="person-belegt"
+            aria-label="Definition: Beleg-Zeitraum">
+        <svg width="13" height="13" viewBox="0 0 16 16" aria-hidden="true">
+            <circle cx="8" cy="8" r="7" stroke="currentColor" stroke-width="1.4" fill="none"/>
+            <text x="8" y="11.6" text-anchor="middle" font-size="9.5" font-weight="700"
+                  fill="currentColor" font-family="Georgia, serif">i</text>
+        </svg>
+    </button>
+    <aside class="tip-popover tip-popover--glossary"
+           id="person-belegt" role="dialog" aria-hidden="true"
+           aria-label="Definition: Beleg-Zeitraum">
+        <header class="tip-head">
+            <h3 class="tip-title">Beleg-Zeitraum</h3>
+            <button type="button" class="tip-close" aria-label="Schlie&szlig;en">&times;</button>
+        </header>
+        <div class="tip-body">
+            <p>Erste und letzte Datierung einer Quelle, in der die Person erscheint. Bei einzelnem Beleg wird nur ein Jahr angegeben.</p>
+            
+        </div>
+    </aside>
+</span>
+</span>
                     <span class="meta-value">1356 bis 1397</span>
                 </span>
                 
@@ -134,6 +170,10 @@
                     <span class="meta-value">06.07.1388</span>
                 </span>
                 
+                <span class="meta-pair">
+                    <span class="meta-label">Quellen</span>
+                    <span class="meta-value">46</span>
+                </span>
                 <span class="meta-pair person-id-pair">
                     <span class="meta-label">ID</span>
                     <code class="meta-value person-id">pe__johann_von_tierna_QGW_II_I_1018</code>
@@ -151,13 +191,45 @@
         </h1>
         
         
-        <p class="person-titles">
+        
+        <p class="person-titles" data-collapsible="22">
             <span class="pt-label">In den Quellen genannt als</span>
             <span class="pt-chip">hern</span><span class="pt-chip">Bergherrn|hern</span><span class="pt-chip">her</span>
         </p>
         
         
+        
     </header>
+
+    
+    <section class="role-strip" aria-label="Rollen in Rechtsgeschäften">
+        <h2 class="role-strip-title">Rollen in Rechtsgeschäften</h2>
+        <div class="role-strip-cells">
+            
+            <div class="role-cell role-cell-issuer">
+                <span class="role-cell-count">8</span>
+                <span class="role-cell-label">Aussteller*in</span>
+            </div>
+            
+            <div class="role-cell role-cell-recipient">
+                <span class="role-cell-count">10</span>
+                <span class="role-cell-label">Empfänger*in</span>
+            </div>
+            
+            <div class="role-cell role-cell-witness">
+                <span class="role-cell-count">22</span>
+                <span class="role-cell-label">Zeuge / Siegler*in</span>
+            </div>
+            
+            <div class="role-cell role-cell-other">
+                <span class="role-cell-count">11</span>
+                <span class="role-cell-label">Sonstige</span>
+            </div>
+            
+        </div>
+        <p class="role-strip-hint">Summe Rollen-Belegungen: 51. Mehrfach-Rollen pro Quelle sind möglich.</p>
+    </section>
+    
 
     
 
@@ -174,6 +246,7 @@
                 <span class="rel-block-count">11</span>
                 <span class="rel-block-hint">Verwandtschaftsverhältnisse, wie sie in den Quellen explizit benannt werden.</span>
             </header>
+            
             <table class="rel-table">
                 <thead>
                     <tr>
@@ -194,7 +267,7 @@
                         <td class="rel-col-label"><em>Bruder</em></td>
                         <td class="rel-col-perspective">
                             
-                                Johann von Tierna → Friedrich von Tierna von Tierna
+                                Johann von Tierna &rsaquo; Friedrich von Tierna von Tierna
                             
                         </td>
                         <td class="rel-col-source">
@@ -213,7 +286,7 @@
                         <td class="rel-col-label"><em>Vaters</em></td>
                         <td class="rel-col-perspective">
                             
-                                Friedrich von Tierna von Tierna → Johann von Tierna
+                                Friedrich von Tierna von Tierna &rsaquo; Johann von Tierna
                             
                         </td>
                         <td class="rel-col-source">
@@ -232,7 +305,7 @@
                         <td class="rel-col-label"><em>Vater</em></td>
                         <td class="rel-col-perspective">
                             
-                                Johann von Tierna → Rudolf von Tierna
+                                Johann von Tierna &rsaquo; Rudolf von Tierna
                             
                         </td>
                         <td class="rel-col-source">
@@ -251,7 +324,7 @@
                         <td class="rel-col-label"><em>Vater</em></td>
                         <td class="rel-col-perspective">
                             
-                                Johann von Tierna → Ludwig von Tierna
+                                Johann von Tierna &rsaquo; Ludwig von Tierna
                             
                         </td>
                         <td class="rel-col-source">
@@ -270,7 +343,7 @@
                         <td class="rel-col-label"><em>Vater</em></td>
                         <td class="rel-col-perspective">
                             
-                                Johann von Tierna → Paul von Tierna
+                                Johann von Tierna &rsaquo; Paul von Tierna
                             
                         </td>
                         <td class="rel-col-source">
@@ -289,7 +362,7 @@
                         <td class="rel-col-label"><em>Vater</em></td>
                         <td class="rel-col-perspective">
                             
-                                Johann von Tierna → Rudolf von Tierna
+                                Johann von Tierna &rsaquo; Rudolf von Tierna
                             
                         </td>
                         <td class="rel-col-source">
@@ -308,7 +381,7 @@
                         <td class="rel-col-label"><em>Vater</em></td>
                         <td class="rel-col-perspective">
                             
-                                Johann von Tierna → Ludwig von Tierna
+                                Johann von Tierna &rsaquo; Ludwig von Tierna
                             
                         </td>
                         <td class="rel-col-source">
@@ -327,7 +400,7 @@
                         <td class="rel-col-label"><em>Bruder</em></td>
                         <td class="rel-col-perspective">
                             
-                                Jakob von Tierna von Tierna → Johann von Tierna
+                                Jakob von Tierna von Tierna &rsaquo; Johann von Tierna
                             
                         </td>
                         <td class="rel-col-source">
@@ -346,7 +419,7 @@
                         <td class="rel-col-label"><em>Bruders</em></td>
                         <td class="rel-col-perspective">
                             
-                                Johann von Tierna → Friedrich von Tierna von Tierna
+                                Johann von Tierna &rsaquo; Friedrich von Tierna von Tierna
                             
                         </td>
                         <td class="rel-col-source">
@@ -365,7 +438,7 @@
                         <td class="rel-col-label"><em>Bruder</em></td>
                         <td class="rel-col-perspective">
                             
-                                Johann von Tierna → Friedrich von Tierna von Tierna
+                                Johann von Tierna &rsaquo; Friedrich von Tierna von Tierna
                             
                         </td>
                         <td class="rel-col-source">
@@ -384,7 +457,7 @@
                         <td class="rel-col-label"><em>Bruders</em></td>
                         <td class="rel-col-perspective">
                             
-                                Johann von Tierna → Friedrich von Tierna von Tierna
+                                Johann von Tierna &rsaquo; Friedrich von Tierna von Tierna
                             
                         </td>
                         <td class="rel-col-source">
@@ -410,6 +483,7 @@
                 <span class="rel-block-count">3</span>
                 <span class="rel-block-hint">Stellvertretungs-Beziehungen, z. B. handelt eine Person an Stelle einer anderen.</span>
             </header>
+            
             <table class="rel-table">
                 <thead>
                     <tr>
@@ -430,7 +504,7 @@
                         <td class="rel-col-label"><em>an seines Herrn Statt</em></td>
                         <td class="rel-col-perspective">
                             
-                                Simon Vivianz → Johann von Tierna
+                                Simon Vivianz &rsaquo; Johann von Tierna
                             
                         </td>
                         <td class="rel-col-source">
@@ -449,7 +523,7 @@
                         <td class="rel-col-label"><em>Statt</em></td>
                         <td class="rel-col-perspective">
                             
-                                Johann von Tierna → org__oesterreich-herzogtum
+                                Johann von Tierna &rsaquo; org__oesterreich-herzogtum
                             
                         </td>
                         <td class="rel-col-source">
@@ -468,7 +542,7 @@
                         <td class="rel-col-label"><em>Geschäftsvollstrecker</em></td>
                         <td class="rel-col-perspective">
                             
-                                Johann von Tierna → Christoph Sirfeier Sirfeier
+                                Johann von Tierna &rsaquo; Christoph Sirfeier Sirfeier
                             
                         </td>
                         <td class="rel-col-source">
@@ -491,7 +565,13 @@
                 <span class="rel-block-count">56</span>
                 <span class="rel-block-hint">Berufs- oder Amtsbezeichnung in Bezug auf eine Institution.</span>
             </header>
-            <table class="rel-table">
+            
+            <div class="table-filter">
+                <input type="search" class="table-filter-input" data-target="rel" placeholder="In der Tabelle filtern&hellip;" aria-label="In der Tabelle filtern">
+                <span class="table-filter-status"></span>
+            </div>
+            
+            <table class="rel-table" data-truncate-at="50">
                 <thead>
                     <tr>
                         <th scope="col" class="rel-col-other">Institution</th>
@@ -511,7 +591,7 @@
                         <td class="rel-col-label"><em>huebmaister</em></td>
                         <td class="rel-col-perspective">
                             
-                                Johann von Tierna → Herzogtum Österreich
+                                Johann von Tierna &rsaquo; Herzogtum Österreich
                             
                         </td>
                         <td class="rel-col-source">
@@ -530,7 +610,7 @@
                         <td class="rel-col-label"><em>hu/ebmaister</em></td>
                         <td class="rel-col-perspective">
                             
-                                Johann von Tierna → Herzogtum Österreich
+                                Johann von Tierna &rsaquo; Herzogtum Österreich
                             
                         </td>
                         <td class="rel-col-source">
@@ -549,7 +629,7 @@
                         <td class="rel-col-label"><em>hubmaister</em></td>
                         <td class="rel-col-perspective">
                             
-                                Johann von Tierna → Herzogtum Österreich
+                                Johann von Tierna &rsaquo; Herzogtum Österreich
                             
                         </td>
                         <td class="rel-col-source">
@@ -568,7 +648,7 @@
                         <td class="rel-col-label"><em>hu/ebmaister</em></td>
                         <td class="rel-col-perspective">
                             
-                                Johann von Tierna → Herzogtum Österreich
+                                Johann von Tierna &rsaquo; Herzogtum Österreich
                             
                         </td>
                         <td class="rel-col-source">
@@ -587,7 +667,7 @@
                         <td class="rel-col-label"><em>huebmaister</em></td>
                         <td class="rel-col-perspective">
                             
-                                Johann von Tierna → Herzogtum Österreich
+                                Johann von Tierna &rsaquo; Herzogtum Österreich
                             
                         </td>
                         <td class="rel-col-source">
@@ -606,7 +686,7 @@
                         <td class="rel-col-label"><em>hubmaister</em></td>
                         <td class="rel-col-perspective">
                             
-                                Johann von Tierna → Herzogtum Österreich
+                                Johann von Tierna &rsaquo; Herzogtum Österreich
                             
                         </td>
                         <td class="rel-col-source">
@@ -625,7 +705,7 @@
                         <td class="rel-col-label"><em>hubmaister</em></td>
                         <td class="rel-col-perspective">
                             
-                                Johann von Tierna → Herzogtum Österreich
+                                Johann von Tierna &rsaquo; Herzogtum Österreich
                             
                         </td>
                         <td class="rel-col-source">
@@ -644,7 +724,7 @@
                         <td class="rel-col-label"><em>hubmaister</em></td>
                         <td class="rel-col-perspective">
                             
-                                Johann von Tierna → Herzogtum Österreich
+                                Johann von Tierna &rsaquo; Herzogtum Österreich
                             
                         </td>
                         <td class="rel-col-source">
@@ -663,7 +743,7 @@
                         <td class="rel-col-label"><em>münzmaister</em></td>
                         <td class="rel-col-perspective">
                             
-                                Johann von Tierna → Wien
+                                Johann von Tierna &rsaquo; Wien
                             
                         </td>
                         <td class="rel-col-source">
@@ -682,7 +762,7 @@
                         <td class="rel-col-label"><em>huebmaister</em></td>
                         <td class="rel-col-perspective">
                             
-                                Johann von Tierna → Herzogtum Österreich
+                                Johann von Tierna &rsaquo; Herzogtum Österreich
                             
                         </td>
                         <td class="rel-col-source">
@@ -701,7 +781,7 @@
                         <td class="rel-col-label"><em>münzmaister</em></td>
                         <td class="rel-col-perspective">
                             
-                                Johann von Tierna → Wien
+                                Johann von Tierna &rsaquo; Wien
                             
                         </td>
                         <td class="rel-col-source">
@@ -720,7 +800,7 @@
                         <td class="rel-col-label"><em>Bürgermeisters</em></td>
                         <td class="rel-col-perspective">
                             
-                                Johann von Tierna → Wien
+                                Johann von Tierna &rsaquo; Wien
                             
                         </td>
                         <td class="rel-col-source">
@@ -739,7 +819,7 @@
                         <td class="rel-col-label"><em>pu/ergermaister</em></td>
                         <td class="rel-col-perspective">
                             
-                                Johann von Tierna → Wien
+                                Johann von Tierna &rsaquo; Wien
                             
                         </td>
                         <td class="rel-col-source">
@@ -758,7 +838,7 @@
                         <td class="rel-col-label"><em>münzmaister</em></td>
                         <td class="rel-col-perspective">
                             
-                                Johann von Tierna → Wien
+                                Johann von Tierna &rsaquo; Wien
                             
                         </td>
                         <td class="rel-col-source">
@@ -777,7 +857,7 @@
                         <td class="rel-col-label"><em>purgermaister</em></td>
                         <td class="rel-col-perspective">
                             
-                                Johann von Tierna → Wien
+                                Johann von Tierna &rsaquo; Wien
                             
                         </td>
                         <td class="rel-col-source">
@@ -796,7 +876,7 @@
                         <td class="rel-col-label"><em>munsmaister</em></td>
                         <td class="rel-col-perspective">
                             
-                                Johann von Tierna → Wien
+                                Johann von Tierna &rsaquo; Wien
                             
                         </td>
                         <td class="rel-col-source">
@@ -815,7 +895,7 @@
                         <td class="rel-col-label"><em>purgermaister</em></td>
                         <td class="rel-col-perspective">
                             
-                                Johann von Tierna → Wien
+                                Johann von Tierna &rsaquo; Wien
                             
                         </td>
                         <td class="rel-col-source">
@@ -834,7 +914,7 @@
                         <td class="rel-col-label"><em>munsmaister</em></td>
                         <td class="rel-col-perspective">
                             
-                                Johann von Tierna → Wien
+                                Johann von Tierna &rsaquo; Wien
                             
                         </td>
                         <td class="rel-col-source">
@@ -853,7 +933,7 @@
                         <td class="rel-col-label"><em>des Rathes der stat ze Wienne</em></td>
                         <td class="rel-col-perspective">
                             
-                                Johann von Tierna → Wien
+                                Johann von Tierna &rsaquo; Wien
                             
                         </td>
                         <td class="rel-col-source">
@@ -872,7 +952,7 @@
                         <td class="rel-col-label"><em>purgermaister</em></td>
                         <td class="rel-col-perspective">
                             
-                                Johann von Tierna → Wien
+                                Johann von Tierna &rsaquo; Wien
                             
                         </td>
                         <td class="rel-col-source">
@@ -891,7 +971,7 @@
                         <td class="rel-col-label"><em>munsmaister</em></td>
                         <td class="rel-col-perspective">
                             
-                                Johann von Tierna → Wien
+                                Johann von Tierna &rsaquo; Wien
                             
                         </td>
                         <td class="rel-col-source">
@@ -910,7 +990,7 @@
                         <td class="rel-col-label"><em>purgermaister</em></td>
                         <td class="rel-col-perspective">
                             
-                                Johann von Tierna → Wien
+                                Johann von Tierna &rsaquo; Wien
                             
                         </td>
                         <td class="rel-col-source">
@@ -929,7 +1009,7 @@
                         <td class="rel-col-label"><em>münzmaister</em></td>
                         <td class="rel-col-perspective">
                             
-                                Johann von Tierna → Wien
+                                Johann von Tierna &rsaquo; Wien
                             
                         </td>
                         <td class="rel-col-source">
@@ -948,7 +1028,7 @@
                         <td class="rel-col-label"><em>purgermaister</em></td>
                         <td class="rel-col-perspective">
                             
-                                Johann von Tierna → Wien
+                                Johann von Tierna &rsaquo; Wien
                             
                         </td>
                         <td class="rel-col-source">
@@ -967,7 +1047,7 @@
                         <td class="rel-col-label"><em>munsmaister</em></td>
                         <td class="rel-col-perspective">
                             
-                                Johann von Tierna → Wien
+                                Johann von Tierna &rsaquo; Wien
                             
                         </td>
                         <td class="rel-col-source">
@@ -986,7 +1066,7 @@
                         <td class="rel-col-label"><em>des rates gemain der stat ze Wienne</em></td>
                         <td class="rel-col-perspective">
                             
-                                Johann von Tierna → Wien
+                                Johann von Tierna &rsaquo; Wien
                             
                         </td>
                         <td class="rel-col-source">
@@ -1005,7 +1085,7 @@
                         <td class="rel-col-label"><em>purgermaister</em></td>
                         <td class="rel-col-perspective">
                             
-                                Johann von Tierna → Wien
+                                Johann von Tierna &rsaquo; Wien
                             
                         </td>
                         <td class="rel-col-source">
@@ -1024,7 +1104,7 @@
                         <td class="rel-col-label"><em>munsmaister</em></td>
                         <td class="rel-col-perspective">
                             
-                                Johann von Tierna → Wien
+                                Johann von Tierna &rsaquo; Wien
                             
                         </td>
                         <td class="rel-col-source">
@@ -1043,7 +1123,7 @@
                         <td class="rel-col-label"><em>des rates gemain der stat ze Wienne</em></td>
                         <td class="rel-col-perspective">
                             
-                                Johann von Tierna → Wien
+                                Johann von Tierna &rsaquo; Wien
                             
                         </td>
                         <td class="rel-col-source">
@@ -1062,7 +1142,7 @@
                         <td class="rel-col-label"><em>purgermaister</em></td>
                         <td class="rel-col-perspective">
                             
-                                Johann von Tierna → Wien
+                                Johann von Tierna &rsaquo; Wien
                             
                         </td>
                         <td class="rel-col-source">
@@ -1081,7 +1161,7 @@
                         <td class="rel-col-label"><em>münzmaister</em></td>
                         <td class="rel-col-perspective">
                             
-                                Johann von Tierna → Wien
+                                Johann von Tierna &rsaquo; Wien
                             
                         </td>
                         <td class="rel-col-source">
@@ -1100,7 +1180,7 @@
                         <td class="rel-col-label"><em>Hubmeister</em></td>
                         <td class="rel-col-perspective">
                             
-                                Johann von Tierna → Herzogtum Österreich
+                                Johann von Tierna &rsaquo; Herzogtum Österreich
                             
                         </td>
                         <td class="rel-col-source">
@@ -1119,7 +1199,7 @@
                         <td class="rel-col-label"><em>hubmaister</em></td>
                         <td class="rel-col-perspective">
                             
-                                Johann von Tierna → Herzogtum Österreich
+                                Johann von Tierna &rsaquo; Herzogtum Österreich
                             
                         </td>
                         <td class="rel-col-source">
@@ -1138,7 +1218,7 @@
                         <td class="rel-col-label"><em>münzmaister</em></td>
                         <td class="rel-col-perspective">
                             
-                                Johann von Tierna → Wien
+                                Johann von Tierna &rsaquo; Wien
                             
                         </td>
                         <td class="rel-col-source">
@@ -1157,7 +1237,7 @@
                         <td class="rel-col-label"><em>Hubmeister</em></td>
                         <td class="rel-col-perspective">
                             
-                                Johann von Tierna → Herzogtum Österreich
+                                Johann von Tierna &rsaquo; Herzogtum Österreich
                             
                         </td>
                         <td class="rel-col-source">
@@ -1176,7 +1256,7 @@
                         <td class="rel-col-label"><em>hubmaister</em></td>
                         <td class="rel-col-perspective">
                             
-                                Johann von Tierna → Herzogtum Österreich
+                                Johann von Tierna &rsaquo; Herzogtum Österreich
                             
                         </td>
                         <td class="rel-col-source">
@@ -1195,7 +1275,7 @@
                         <td class="rel-col-label"><em>münsmaister</em></td>
                         <td class="rel-col-perspective">
                             
-                                Johann von Tierna → Herzogtum Österreich
+                                Johann von Tierna &rsaquo; Herzogtum Österreich
                             
                         </td>
                         <td class="rel-col-source">
@@ -1214,7 +1294,7 @@
                         <td class="rel-col-label"><em>hubmaister</em></td>
                         <td class="rel-col-perspective">
                             
-                                Johann von Tierna → Herzogtum Österreich
+                                Johann von Tierna &rsaquo; Herzogtum Österreich
                             
                         </td>
                         <td class="rel-col-source">
@@ -1233,7 +1313,7 @@
                         <td class="rel-col-label"><em>münzmaister</em></td>
                         <td class="rel-col-perspective">
                             
-                                Johann von Tierna → Wien
+                                Johann von Tierna &rsaquo; Wien
                             
                         </td>
                         <td class="rel-col-source">
@@ -1252,7 +1332,7 @@
                         <td class="rel-col-label"><em>huebmaister</em></td>
                         <td class="rel-col-perspective">
                             
-                                Johann von Tierna → Herzogtum Österreich
+                                Johann von Tierna &rsaquo; Herzogtum Österreich
                             
                         </td>
                         <td class="rel-col-source">
@@ -1271,7 +1351,7 @@
                         <td class="rel-col-label"><em>münzmaister</em></td>
                         <td class="rel-col-perspective">
                             
-                                Johann von Tierna → Wien
+                                Johann von Tierna &rsaquo; Wien
                             
                         </td>
                         <td class="rel-col-source">
@@ -1290,7 +1370,7 @@
                         <td class="rel-col-label"><em>huebmaister</em></td>
                         <td class="rel-col-perspective">
                             
-                                Johann von Tierna → Herzogtum Österreich
+                                Johann von Tierna &rsaquo; Herzogtum Österreich
                             
                         </td>
                         <td class="rel-col-source">
@@ -1309,7 +1389,7 @@
                         <td class="rel-col-label"><em>munzmaister</em></td>
                         <td class="rel-col-perspective">
                             
-                                Johann von Tierna → Wien
+                                Johann von Tierna &rsaquo; Wien
                             
                         </td>
                         <td class="rel-col-source">
@@ -1328,7 +1408,7 @@
                         <td class="rel-col-label"><em>hubmaister</em></td>
                         <td class="rel-col-perspective">
                             
-                                Johann von Tierna → Herzogtum Österreich
+                                Johann von Tierna &rsaquo; Herzogtum Österreich
                             
                         </td>
                         <td class="rel-col-source">
@@ -1347,7 +1427,7 @@
                         <td class="rel-col-label"><em>munzmaister</em></td>
                         <td class="rel-col-perspective">
                             
-                                Johann von Tierna → Wien
+                                Johann von Tierna &rsaquo; Wien
                             
                         </td>
                         <td class="rel-col-source">
@@ -1366,7 +1446,7 @@
                         <td class="rel-col-label"><em>hubmaister</em></td>
                         <td class="rel-col-perspective">
                             
-                                Johann von Tierna → Herzogtum Österreich
+                                Johann von Tierna &rsaquo; Herzogtum Österreich
                             
                         </td>
                         <td class="rel-col-source">
@@ -1385,7 +1465,7 @@
                         <td class="rel-col-label"><em>munsmaister</em></td>
                         <td class="rel-col-perspective">
                             
-                                Johann von Tierna → Wien
+                                Johann von Tierna &rsaquo; Wien
                             
                         </td>
                         <td class="rel-col-source">
@@ -1404,7 +1484,7 @@
                         <td class="rel-col-label"><em>hubmaister</em></td>
                         <td class="rel-col-perspective">
                             
-                                Johann von Tierna → Herzogtum Österreich
+                                Johann von Tierna &rsaquo; Herzogtum Österreich
                             
                         </td>
                         <td class="rel-col-source">
@@ -1423,7 +1503,7 @@
                         <td class="rel-col-label"><em>münsmaister</em></td>
                         <td class="rel-col-perspective">
                             
-                                Johann von Tierna → Wien
+                                Johann von Tierna &rsaquo; Wien
                             
                         </td>
                         <td class="rel-col-source">
@@ -1442,7 +1522,7 @@
                         <td class="rel-col-label"><em>hubmaister</em></td>
                         <td class="rel-col-perspective">
                             
-                                Johann von Tierna → Herzogtum Österreich
+                                Johann von Tierna &rsaquo; Herzogtum Österreich
                             
                         </td>
                         <td class="rel-col-source">
@@ -1461,7 +1541,7 @@
                         <td class="rel-col-label"><em>huebmaister</em></td>
                         <td class="rel-col-perspective">
                             
-                                Johann von Tierna → Herzogtum Österreich
+                                Johann von Tierna &rsaquo; Herzogtum Österreich
                             
                         </td>
                         <td class="rel-col-source">
@@ -1480,7 +1560,7 @@
                         <td class="rel-col-label"><em>huebmaister</em></td>
                         <td class="rel-col-perspective">
                             
-                                Johann von Tierna → Herzogtum Österreich
+                                Johann von Tierna &rsaquo; Herzogtum Österreich
                             
                         </td>
                         <td class="rel-col-source">
@@ -1499,7 +1579,7 @@
                         <td class="rel-col-label"><em>huebmaister</em></td>
                         <td class="rel-col-perspective">
                             
-                                Johann von Tierna → Herzogtum Österreich
+                                Johann von Tierna &rsaquo; Herzogtum Österreich
                             
                         </td>
                         <td class="rel-col-source">
@@ -1518,7 +1598,7 @@
                         <td class="rel-col-label"><em>hubmaister</em></td>
                         <td class="rel-col-perspective">
                             
-                                Johann von Tierna → Herzogtum Österreich
+                                Johann von Tierna &rsaquo; Herzogtum Österreich
                             
                         </td>
                         <td class="rel-col-source">
@@ -1537,7 +1617,7 @@
                         <td class="rel-col-label"><em>huebmaister</em></td>
                         <td class="rel-col-perspective">
                             
-                                Johann von Tierna → Herzogtum Österreich
+                                Johann von Tierna &rsaquo; Herzogtum Österreich
                             
                         </td>
                         <td class="rel-col-source">
@@ -1556,7 +1636,7 @@
                         <td class="rel-col-label"><em>huebmaister</em></td>
                         <td class="rel-col-perspective">
                             
-                                Johann von Tierna → Herzogtum Österreich
+                                Johann von Tierna &rsaquo; Herzogtum Österreich
                             
                         </td>
                         <td class="rel-col-source">
@@ -1574,18 +1654,32 @@
         
         
         
+        
+        
+        
+        
+        
+        
     </section>
     
 
     
     <section class="person-sources" aria-label="Quellen mit Nennung">
         <h2 class="section-head">Quellen mit Nennung</h2>
+        
+        <div class="table-filter">
+            <input type="search" class="table-filter-input" data-target="src" placeholder="In den Quellen filtern&hellip;" aria-label="In den Quellen filtern">
+            <span class="table-filter-status"></span>
+        </div>
+        
         <table class="person-source-table">
             <thead>
                 <tr>
                     <th scope="col" class="src-col-idno">Nr.</th>
                     <th scope="col" class="src-col-date">Datum</th>
                     <th scope="col" class="src-col-corpus">Quellenkorpus</th>
+                    <th scope="col" class="src-col-label">Bezeichnung</th>
+                    <th scope="col" class="src-col-role">Rolle</th>
                     <th scope="col" class="src-col-regest">Regest</th>
                 </tr>
             </thead>
@@ -1595,6 +1689,11 @@
                     <td class="src-col-idno"><a href="../../documents/QGW/Vienna_1177-1414_ready/478a.html">478a</a></td>
                     <td class="src-col-date">1356 IV 10</td>
                     <td class="src-col-corpus">QGW II/1 (1177–1414)</td>
+                    <td class="src-col-label"><em>-</em></td>
+                    <td class="src-col-role">
+                        <span class="role-chip role-chip-witness">Zeuge / Siegler*in</span>
+                        
+                    </td>
                     <td class="src-col-regest">Seifrit, weiln gesessen an des herzogen stat in der münz ze Wienn, und Margret, seine Hausfrau, beurkunden, dass Seifrids frühere Hausfrau Elspet, des Rotten hern Pilgreims dem got gnad tochter, den…</td>
                 </tr>
             
@@ -1602,6 +1701,11 @@
                     <td class="src-col-idno"><a href="../../documents/QGW/Vienna_1177-1414_ready/552.html">552</a></td>
                     <td class="src-col-date">1360 VII 11</td>
                     <td class="src-col-corpus">QGW II/1 (1177–1414)</td>
+                    <td class="src-col-label"><em>hern</em></td>
+                    <td class="src-col-role">
+                        <span class="role-chip role-chip-witness">Zeuge / Siegler*in</span>
+                        
+                    </td>
                     <td class="src-col-regest">Jacob der Poll, chaplan der chapellen Unser Vrawen, gelegen in der purger Rathous ze Wienne , gibt nach dem Gebote Herzog Rudolfs Niclasen dem Stainer und seiner Hausfrau Annen 4 lb dn. geltes…</td>
                 </tr>
             
@@ -1609,6 +1713,11 @@
                     <td class="src-col-idno"><a href="../../documents/QGW/Vienna_1177-1414_ready/593.html">593</a></td>
                     <td class="src-col-date">1362 99 99</td>
                     <td class="src-col-corpus">QGW II/1 (1177–1414)</td>
+                    <td class="src-col-label"><em>-</em></td>
+                    <td class="src-col-role">
+                        
+                        -
+                    </td>
                     <td class="src-col-regest">* Frater Eliesarius, prior Carthusie, ceterique diffinitores capituli generalis ibidem verleihen dem Johannes, Kaplan des Wiener Bürgermeisters Johannis de Tirnavia, in Ansehung seiner Zuneigung zu…</td>
                 </tr>
             
@@ -1616,6 +1725,11 @@
                     <td class="src-col-idno"><a href="../../documents/QGW/Vienna_1177-1414_ready/597.html">597</a></td>
                     <td class="src-col-date">1362 IV 27</td>
                     <td class="src-col-corpus">QGW II/1 (1177–1414)</td>
+                    <td class="src-col-label"><em>hern</em></td>
+                    <td class="src-col-role">
+                        <span class="role-chip role-chip-other">Sonstige</span>
+                        
+                    </td>
                     <td class="src-col-regest">Geisel,witib Jacobs witib des Fleischundchrauts, Stephan der Fleischundchraut, ir sun, und Osterhilt, seine Hausfrau, verkaufen mit gesammter Hand und mit Handen hern Jansen von Tyrna,…</td>
                 </tr>
             
@@ -1623,6 +1737,11 @@
                     <td class="src-col-idno"><a href="../../documents/QGW/Vienna_1177-1414_ready/604.html">604</a></td>
                     <td class="src-col-date">1363 I 18</td>
                     <td class="src-col-corpus">QGW II/1 (1177–1414)</td>
+                    <td class="src-col-label"><em>hern</em></td>
+                    <td class="src-col-role">
+                        <span class="role-chip role-chip-other">Sonstige</span>
+                        
+                    </td>
                     <td class="src-col-regest">Hainreich der Santwerfer und Elsbet, seine Hausfrau, verkaufen mit Handen hern Jansen von Tirnach, pürgermaisterpurgermaister und munsmaister, und des rates gemain der stat ze Wienne 1 lb dn. gelts…</td>
                 </tr>
             
@@ -1630,6 +1749,11 @@
                     <td class="src-col-idno"><a href="../../documents/QGW/Vienna_1177-1414_ready/605.html">605</a></td>
                     <td class="src-col-date">1363 II 17</td>
                     <td class="src-col-corpus">QGW II/1 (1177–1414)</td>
+                    <td class="src-col-label"><em>hern</em></td>
+                    <td class="src-col-role">
+                        <span class="role-chip role-chip-other">Sonstige</span>
+                        
+                    </td>
                     <td class="src-col-regest">Muschel, der Jud von Steyr, und Gaila, seine Hausfrau, Smoyel der Jud, [der Juden sanchmaister], und Paeczel, seine Hausfrau, verkaufen mit gesammter Hand und mit Handen hern Jansen von Tyrnach,…</td>
                 </tr>
             
@@ -1637,6 +1761,11 @@
                     <td class="src-col-idno"><a href="../../documents/QGW/Vienna_1177-1414_ready/607.html">607</a></td>
                     <td class="src-col-date">1363 II 24</td>
                     <td class="src-col-corpus">QGW II/1 (1177–1414)</td>
+                    <td class="src-col-label"><em>hern</em></td>
+                    <td class="src-col-role">
+                        <span class="role-chip role-chip-witness">Zeuge / Siegler*in</span>
+                        
+                    </td>
                     <td class="src-col-regest">Jans der Urbêtsch, purger ze Wienne, verkauft seines rechten Eigens 12 lb und an sechs dn. 5 sh. dn. gelts voitrechts, gelegen auf 24 jeuch weingarten ze Praitense in dem Altenperge , die ihm von…</td>
                 </tr>
             
@@ -1644,6 +1773,11 @@
                     <td class="src-col-idno"><a href="../../documents/QGW/Vienna_1177-1414_ready/612.html">612</a></td>
                     <td class="src-col-date">1363 VII 11</td>
                     <td class="src-col-corpus">QGW II/1 (1177–1414)</td>
+                    <td class="src-col-label"><em>hern</em></td>
+                    <td class="src-col-role">
+                        <span class="role-chip role-chip-witness">Zeuge / Siegler*in</span>
+                        
+                    </td>
                     <td class="src-col-regest">Niclas der Drotlauf, purger ze Wienne, stiftet in der chapellen Unser Vrowen auf der Stetten ze Wienn in dem chor einen alter in den ern der heiligen Aindleftausent Maide , widmet zu einer ewigen…</td>
                 </tr>
             
@@ -1651,6 +1785,11 @@
                     <td class="src-col-idno"><a href="../../documents/QGW/Vienna_1177-1414_ready/613.html">613</a></td>
                     <td class="src-col-date">1363 VIII 14</td>
                     <td class="src-col-corpus">QGW II/1 (1177–1414)</td>
+                    <td class="src-col-label"><em>hern</em></td>
+                    <td class="src-col-role">
+                        <span class="role-chip role-chip-other">Sonstige</span>
+                        
+                    </td>
                     <td class="src-col-regest">Paul der Strigel und Agnes, seine Hausfrau, verkaufen mit Handen hern Jansen von Tyrna, purgermaister und munsmaister, und des rates gemain der stat ze Wienne ihres Kaufgutes ein Haus, gelegen vor…</td>
                 </tr>
             
@@ -1658,6 +1797,11 @@
                     <td class="src-col-idno"><a href="../../documents/QGW/Vienna_1177-1414_ready/615.html">615</a></td>
                     <td class="src-col-date">1363 IX 05</td>
                     <td class="src-col-corpus">QGW II/1 (1177–1414)</td>
+                    <td class="src-col-label"><em>hern</em></td>
+                    <td class="src-col-role">
+                        <span class="role-chip role-chip-other">Sonstige</span>
+                        
+                    </td>
                     <td class="src-col-regest">Ymrich Joechtel, der floczer, und Margret, seine Hausfrau, stellen einen Schuldbrieg aus dem Chunraten von Stegen, purger ze Steyr, und seiner Hausfrau Chunigunden einen Schuldbrief über 23 lb dn.…</td>
                 </tr>
             
@@ -1665,6 +1809,11 @@
                     <td class="src-col-idno"><a href="../../documents/QGW/Vienna_1177-1414_ready/617.html">617</a></td>
                     <td class="src-col-date">1363 XI 08</td>
                     <td class="src-col-corpus">QGW II/1 (1177–1414)</td>
+                    <td class="src-col-label"><em>hern</em></td>
+                    <td class="src-col-role">
+                        <span class="role-chip role-chip-witness">Zeuge / Siegler*in</span>
+                        
+                    </td>
                     <td class="src-col-regest">Katrei,witib Jacobs witib des Ziphs, gibt für ihr und ihres Mannes Seelenheil zur Vertheilung an die Nonnen an Unser Vrown tag ze der chündung dem Convent von sand Nichlas ze Wienne 12 sh. dn. gelts…</td>
                 </tr>
             
@@ -1672,6 +1821,11 @@
                     <td class="src-col-idno"><a href="../../documents/QGW/Vienna_1177-1414_ready/646.html">646</a></td>
                     <td class="src-col-date">1365 IV 20</td>
                     <td class="src-col-corpus">QGW II/1 (1177–1414)</td>
+                    <td class="src-col-label"><em>-</em></td>
+                    <td class="src-col-role">
+                        <span class="role-chip role-chip-other">Sonstige</span>
+                        
+                    </td>
                     <td class="src-col-regest">Herzog Rudolf IV. bestellt hinz Manharten von Parischin und hinz Leutweinn dem Usel für 350 lb dn. zu Bürgen: Reinharten den Wêhinger, Jansen von Tierna, seinen Hubmeister, Lucasen den Pophinger,…</td>
                 </tr>
             
@@ -1679,6 +1833,11 @@
                     <td class="src-col-idno"><a href="../../documents/QGW/Vienna_1177-1414_ready/647.html">647</a></td>
                     <td class="src-col-date">1365 IV 30</td>
                     <td class="src-col-corpus">QGW II/1 (1177–1414)</td>
+                    <td class="src-col-label"><em>-</em></td>
+                    <td class="src-col-role">
+                        <span class="role-chip role-chip-issuer">Aussteller*in</span><span class="role-chip role-chip-witness">Zeuge / Siegler*in</span>
+                        
+                    </td>
                     <td class="src-col-regest">Jans von Tirna, hubmaister in Österreich und münzmaister ze Wienne, gibt nach dem Gebote Herzog Rudolfs IV. Jansen dem Schüczenmaister, purger ze Wienne, 40 dn. geltes gruntrechtes und purchrechtes,…</td>
                 </tr>
             
@@ -1686,6 +1845,11 @@
                     <td class="src-col-idno"><a href="../../documents/QGW/Vienna_1177-1414_ready/659.html">659</a></td>
                     <td class="src-col-date">1365 XII 06</td>
                     <td class="src-col-corpus">QGW II/1 (1177–1414)</td>
+                    <td class="src-col-label"><em>-</em></td>
+                    <td class="src-col-role">
+                        <span class="role-chip role-chip-recipient">Empfänger*in</span>
+                        
+                    </td>
                     <td class="src-col-regest">Herzog Albrecht III. gelobt Bürgschaft, seinen Oheim Graf U/olreich von Schowenberg, seine Getreuen Graf U/olrich von Cili, Leutolden von Stadekk, seinen Landmarschall in Oesterreich, Hainreich von…</td>
                 </tr>
             
@@ -1693,6 +1857,11 @@
                     <td class="src-col-idno"><a href="../../documents/QGW/Vienna_1177-1414_ready/661.html">661</a></td>
                     <td class="src-col-date">1366 II 27</td>
                     <td class="src-col-corpus">QGW II/1 (1177–1414)</td>
+                    <td class="src-col-label"><em>-</em></td>
+                    <td class="src-col-role">
+                        <span class="role-chip role-chip-recipient">Empfänger*in</span>
+                        
+                    </td>
                     <td class="src-col-regest">Herzog Albrecht III. gelobt Bürgschaft, seine Getreuen Leutolten von Stadek, seinen Landmarschall in Oesterreich, Hainreichen von Hakenberch, Stephan von Topel,Hofmeister seines Bruders Herzog…</td>
                 </tr>
             
@@ -1700,6 +1869,11 @@
                     <td class="src-col-idno"><a href="../../documents/QGW/Vienna_1177-1414_ready/694.html">694</a></td>
                     <td class="src-col-date">1367 IV 06</td>
                     <td class="src-col-corpus">QGW II/1 (1177–1414)</td>
+                    <td class="src-col-label"><em>Bergherrn|hern</em></td>
+                    <td class="src-col-role">
+                        <span class="role-chip role-chip-other">Sonstige</span><span class="role-chip role-chip-witness">Zeuge / Siegler*in</span>
+                        
+                    </td>
                     <td class="src-col-regest">Pernhart, sun Fridreichs sun, des schrannschreiber sêlig, verkauft mit Handen seines Bergherrn hern Jansens von Tirna, hubmaister und münsmaister in Österreich, drei Viertel einer Hofstatt Weingarten…</td>
                 </tr>
             
@@ -1707,6 +1881,11 @@
                     <td class="src-col-idno"><a href="../../documents/QGW/Vienna_1177-1414_ready/705.html">705</a></td>
                     <td class="src-col-date">1367 VII 24</td>
                     <td class="src-col-corpus">QGW II/1 (1177–1414)</td>
+                    <td class="src-col-label"><em>-</em></td>
+                    <td class="src-col-role">
+                        <span class="role-chip role-chip-issuer">Aussteller*in</span><span class="role-chip role-chip-witness">Zeuge / Siegler*in</span>
+                        
+                    </td>
                     <td class="src-col-regest">Jans von Tyrnach, hubmaister in Österreich und münzmaister ze Wienne, verkauft mit Handen Jacobs des Straz/zz/zer, herzoglichen Bergmeisters zu Medlikch, vier Weingärten ze Prunne, die ihm durch…</td>
                 </tr>
             
@@ -1714,6 +1893,11 @@
                     <td class="src-col-idno"><a href="../../documents/QGW/Vienna_1177-1414_ready/724.html">724</a></td>
                     <td class="src-col-date">1368 III 29</td>
                     <td class="src-col-corpus">QGW II/1 (1177–1414)</td>
+                    <td class="src-col-label"><em>hern</em></td>
+                    <td class="src-col-role">
+                        <span class="role-chip role-chip-recipient">Empfänger*in</span>
+                        
+                    </td>
                     <td class="src-col-regest">Chunrat der Schenttenmarcht, der fleischhakcher, und Margret, seine Hausfrau, verkaufen mit Handen hern Nichlas des Würfels, Bürgermeisters, und des rates gemain der stat ze Wienn ihre Fleischbank,…</td>
                 </tr>
             
@@ -1721,6 +1905,11 @@
                     <td class="src-col-idno"><a href="../../documents/QGW/Vienna_1177-1414_ready/739.html">739</a></td>
                     <td class="src-col-date">1368 XI 01</td>
                     <td class="src-col-corpus">QGW II/1 (1177–1414)</td>
+                    <td class="src-col-label"><em>hern</em></td>
+                    <td class="src-col-role">
+                        <span class="role-chip role-chip-recipient">Empfänger*in</span>
+                        
+                    </td>
                     <td class="src-col-regest">Nichlas von Ödenburch, purger ze Wienn, und Katrei, seine Hausfrau, verkaufen mit Handen des Bürgermeisters hern Niclas des Würfels und des rates der stat ze Wienn ihre Fleischbank, die dem Niklas…</td>
                 </tr>
             
@@ -1728,6 +1917,11 @@
                     <td class="src-col-idno"><a href="../../documents/QGW/Vienna_1177-1414_ready/757.html">757</a></td>
                     <td class="src-col-date">1369 VII 12</td>
                     <td class="src-col-corpus">QGW II/1 (1177–1414)</td>
+                    <td class="src-col-label"><em>-</em></td>
+                    <td class="src-col-role">
+                        <span class="role-chip role-chip-other">Sonstige</span><span class="role-chip role-chip-witness">Zeuge / Siegler*in</span>
+                        
+                    </td>
                     <td class="src-col-regest">Jacob der Gez/zz/zler ze Wienn und Elsbet, seine Hausfrau Andre der Pranger von Vesendorf und Pericht, seine Hausfrau Ulreich Terner und Engel, seine Hausfrau Hainreich der Schreiner von Moder und…</td>
                 </tr>
             
@@ -1735,6 +1929,11 @@
                     <td class="src-col-idno"><a href="../../documents/QGW/Vienna_1177-1414_ready/758.html">758</a></td>
                     <td class="src-col-date">1369 VII 17</td>
                     <td class="src-col-corpus">QGW II/1 (1177–1414)</td>
+                    <td class="src-col-label"><em>hern</em></td>
+                    <td class="src-col-role">
+                        <span class="role-chip role-chip-recipient">Empfänger*in</span>
+                        
+                    </td>
                     <td class="src-col-regest">Angnes, witibe Leupolts witibe des Velmund, verkauft mit Handen des Bürgermeisters hern Niclas des Würfels und des rats gemain der stat ze Wienn ihre Fleischbank, gelegen under den neun…</td>
                 </tr>
             
@@ -1742,6 +1941,11 @@
                     <td class="src-col-idno"><a href="../../documents/QGW/Vienna_1177-1414_ready/762.html">762</a></td>
                     <td class="src-col-date">1369 VIII 31</td>
                     <td class="src-col-corpus">QGW II/1 (1177–1414)</td>
+                    <td class="src-col-label"><em>Bergherrn|hern</em></td>
+                    <td class="src-col-role">
+                        <span class="role-chip role-chip-other">Sonstige</span><span class="role-chip role-chip-witness">Zeuge / Siegler*in</span>
+                        
+                    </td>
                     <td class="src-col-regest">Thoman der Rêdler, chirichmaister ze Allerheiligen tumchirchen ze sand Stephan ze Wienn , und Chunigund, seine Hausfrau, verkaufen mit Handen ihres Bergherrn hern Jansens von Tyrna, hubmaister in…</td>
                 </tr>
             
@@ -1749,6 +1953,11 @@
                     <td class="src-col-idno"><a href="../../documents/QGW/Vienna_1177-1414_ready/764.html">764</a></td>
                     <td class="src-col-date">1369 X 01</td>
                     <td class="src-col-corpus">QGW II/1 (1177–1414)</td>
+                    <td class="src-col-label"><em>-</em></td>
+                    <td class="src-col-role">
+                        <span class="role-chip role-chip-issuer">Aussteller*in</span><span class="role-chip role-chip-witness">Zeuge / Siegler*in</span>
+                        
+                    </td>
                     <td class="src-col-regest">Jans von Tirna, hubmaister in Österreich und münsmaister ze Wienn, entscheidet über die Klage, welche Chunigund, hausvrowe Ortolfs hausvrowe des Vierdungs, vor ihm in offenem Gerichte mit Vorsprechen…</td>
                 </tr>
             
@@ -1756,6 +1965,11 @@
                     <td class="src-col-idno"><a href="../../documents/QGW/Vienna_1177-1414_ready/806.html">806</a></td>
                     <td class="src-col-date">1372 IV 21</td>
                     <td class="src-col-corpus">QGW II/1 (1177–1414)</td>
+                    <td class="src-col-label"><em>hern</em></td>
+                    <td class="src-col-role">
+                        <span class="role-chip role-chip-recipient">Empfänger*in</span>
+                        
+                    </td>
                     <td class="src-col-regest">Swester Christein die Witzinn, abtessinn in sand Niclas chloster var Stubentor ze Wienn, und der ganz convent gemain daselbs geben nach dem Gebote Herzog Rudolfs IV. hern Johannsen von Tyrna,…</td>
                 </tr>
             
@@ -1763,6 +1977,11 @@
                     <td class="src-col-idno"><a href="../../documents/QGW/Vienna_1177-1414_ready/814.html">814</a></td>
                     <td class="src-col-date">1372 VIII 18</td>
                     <td class="src-col-corpus">QGW II/1 (1177–1414)</td>
+                    <td class="src-col-label"><em>Bergherrn|hern</em></td>
+                    <td class="src-col-role">
+                        <span class="role-chip role-chip-other">Sonstige</span><span class="role-chip role-chip-witness">Zeuge / Siegler*in</span>
+                        
+                    </td>
                     <td class="src-col-regest">Agnes die Puchserinne verkauft mit Handen ihres Bergherrn hern Jansen von Tierna, huebmaister in Oesterreich, drei Viertel Weingarten ze Chlaitzing zenechst der Dautschenherren weingarten von Wienn,…</td>
                 </tr>
             
@@ -1770,6 +1989,11 @@
                     <td class="src-col-idno"><a href="../../documents/QGW/Vienna_1177-1414_ready/819.html">819</a></td>
                     <td class="src-col-date">1372 XI 06</td>
                     <td class="src-col-corpus">QGW II/1 (1177–1414)</td>
+                    <td class="src-col-label"><em>-</em></td>
+                    <td class="src-col-role">
+                        
+                        -
+                    </td>
                     <td class="src-col-regest">Herzog Albrecht III. bestätigt, dass die Bürger, der Richter und der Rath der Stadt zu Wien seinen Gläubigern, dem bru/oder Ru/ed. von Honburg, Teusches ordens weilent landcomendur ze Behein,…</td>
                 </tr>
             
@@ -1777,6 +2001,11 @@
                     <td class="src-col-idno"><a href="../../documents/QGW/Vienna_1177-1414_ready/845.html">845</a></td>
                     <td class="src-col-date">1375 II 08</td>
                     <td class="src-col-corpus">QGW II/1 (1177–1414)</td>
+                    <td class="src-col-label"><em>hern</em></td>
+                    <td class="src-col-role">
+                        <span class="role-chip role-chip-recipient">Empfänger*in</span>
+                        
+                    </td>
                     <td class="src-col-regest">Jans an dem Chienmarcht, purgermaister ze Wienne, und Katrei, seine Hausfrau, verkaufen ihres rechten Eigens 109 Eimer Wein gelts perchrechts und 10 sh. 27 dn. gelts voitrechts, alles gelegen ouf…</td>
                 </tr>
             
@@ -1784,6 +2013,11 @@
                     <td class="src-col-idno"><a href="../../documents/QGW/Vienna_1177-1414_ready/905.html">905</a></td>
                     <td class="src-col-date">1377 IV 03</td>
                     <td class="src-col-corpus">QGW II/1 (1177–1414)</td>
+                    <td class="src-col-label"><em>-</em></td>
+                    <td class="src-col-role">
+                        <span class="role-chip role-chip-issuer">Aussteller*in</span><span class="role-chip role-chip-witness">Zeuge / Siegler*in</span>
+                        
+                    </td>
                     <td class="src-col-regest">Leupolt, pharrer ze Medlikch , und Janns von Tirna, huebmaister in Österreich , bestätigen, dass ihnen Paul Holzcheuffel, purgermaister ze Wienn , 18 lb dn. ausbezahlt habe von Jekleins Seidenswanz,…</td>
                 </tr>
             
@@ -1791,6 +2025,11 @@
                     <td class="src-col-idno"><a href="../../documents/QGW/Vienna_1177-1414_ready/908.html">908</a></td>
                     <td class="src-col-date">1377 VI 22</td>
                     <td class="src-col-corpus">QGW II/1 (1177–1414)</td>
+                    <td class="src-col-label"><em>-</em></td>
+                    <td class="src-col-role">
+                        
+                        -
+                    </td>
                     <td class="src-col-regest">Herzog Albrecht III. und Herzog Leopold III. geloben und versprechen, dass der Stadt zu Wien daraus, dass Bürgermeister, Richter und Rath die den Juden in Oesterreich über ihre Rechte und Freiheiten…</td>
                 </tr>
             
@@ -1798,6 +2037,11 @@
                     <td class="src-col-idno"><a href="../../documents/QGW/Vienna_1177-1414_ready/943.html">943</a></td>
                     <td class="src-col-date">1378 V 27</td>
                     <td class="src-col-corpus">QGW II/1 (1177–1414)</td>
+                    <td class="src-col-label"><em>hern</em></td>
+                    <td class="src-col-role">
+                        
+                        -
+                    </td>
                     <td class="src-col-regest">Paul der Holzkouffel, purgermaister, und der rat gemain der stat zu Wienne stellen einen Schuldbrief aus dem erbern kriecht Chu/enraten diener, hern Hannsen diener von Tirna, einen Schuldbrief über…</td>
                 </tr>
             
@@ -1805,6 +2049,11 @@
                     <td class="src-col-idno"><a href="../../documents/QGW/Vienna_1177-1414_ready/955.html">955</a></td>
                     <td class="src-col-date">1379 I 05</td>
                     <td class="src-col-corpus">QGW II/1 (1177–1414)</td>
+                    <td class="src-col-label"><em>-</em></td>
+                    <td class="src-col-role">
+                        <span class="role-chip role-chip-witness">Zeuge / Siegler*in</span>
+                        
+                    </td>
                     <td class="src-col-regest">Fridreich von Tirna, hubmaister in O/esterreich, gibt nach dem Gebote Herzog Rudolfs IV. dem Wiener Bürger Jannsen dem Pu/etreich ½ lb dn. geltes purchrechts von seinem Hause und Garten, gelegen vor…</td>
                 </tr>
             
@@ -1812,6 +2061,11 @@
                     <td class="src-col-idno"><a href="../../documents/QGW/Vienna_1177-1414_ready/973.html">973</a></td>
                     <td class="src-col-date">1379 XI 07</td>
                     <td class="src-col-corpus">QGW II/1 (1177–1414)</td>
+                    <td class="src-col-label"><em>-</em></td>
+                    <td class="src-col-role">
+                        <span class="role-chip role-chip-recipient">Empfänger*in</span>
+                        
+                    </td>
                     <td class="src-col-regest">Herzog Albrecht III. beurkundet, dass ihm Haidenreich von Meissow, lantmarschalich in Österreich, 1600 lb dn., Hanns von Liechtenstain von Nicolspurg, sein Hofmeister, 2009 lb dn. und Hanns von…</td>
                 </tr>
             
@@ -1819,6 +2073,11 @@
                     <td class="src-col-idno"><a href="../../documents/QGW/Vienna_1177-1414_ready/985.html">985</a></td>
                     <td class="src-col-date">1380 VI 09</td>
                     <td class="src-col-corpus">QGW II/1 (1177–1414)</td>
+                    <td class="src-col-label"><em>-</em></td>
+                    <td class="src-col-role">
+                        <span class="role-chip role-chip-witness">Zeuge / Siegler*in</span>
+                        
+                    </td>
                     <td class="src-col-regest">Fridreich von Tierna verkauft mit Handen seines Bergherrn, des Wiener Bürgers hern Niclas des Stainer , dritthalb viertail Weingarten, der do haisset der Schineweis, gelegen zwischen paiden…</td>
                 </tr>
             
@@ -1826,6 +2085,11 @@
                     <td class="src-col-idno"><a href="../../documents/QGW/Vienna_1177-1414_ready/991.html">991</a></td>
                     <td class="src-col-date">1380 VIII 09</td>
                     <td class="src-col-corpus">QGW II/1 (1177–1414)</td>
+                    <td class="src-col-label"><em>hern</em></td>
+                    <td class="src-col-role">
+                        <span class="role-chip role-chip-other">Sonstige</span><span class="role-chip role-chip-witness">Zeuge / Siegler*in</span>
+                        
+                    </td>
                     <td class="src-col-regest">Hanns der Syrfeier, purger ze Wienn, bestätigt für sich und für seinen unmündigen Bruder Pauln, dass ihr uren her Herman der Syrfeier eine Messe auf der Zwelifpoten altar dacz sand Stephan gestiftet…</td>
                 </tr>
             
@@ -1833,6 +2097,11 @@
                     <td class="src-col-idno"><a href="../../documents/QGW/Vienna_1177-1414_ready/1018.html">1018</a></td>
                     <td class="src-col-date">1381 XI 14</td>
                     <td class="src-col-corpus">QGW II/1 (1177–1414)</td>
+                    <td class="src-col-label"><em>hern</em></td>
+                    <td class="src-col-role">
+                        
+                        -
+                    </td>
                     <td class="src-col-regest">Paul der Holzcha/euffel, purgermaister, und der rat gemain der stat ze Wienne beurkunden, dass vrawe Lucei, Stephans hausvrawe des Nezeuger, dem got gnade , vor ihnen mit hern Hannsen von Neunburkch,…</td>
                 </tr>
             
@@ -1840,6 +2109,11 @@
                     <td class="src-col-idno"><a href="../../documents/QGW/Vienna_1177-1414_ready/1028.html">1028</a></td>
                     <td class="src-col-date">1382 III 17</td>
                     <td class="src-col-corpus">QGW II/1 (1177–1414)</td>
+                    <td class="src-col-label"><em>-</em></td>
+                    <td class="src-col-role">
+                        <span class="role-chip role-chip-issuer">Aussteller*in</span><span class="role-chip role-chip-witness">Zeuge / Siegler*in</span>
+                        
+                    </td>
                     <td class="src-col-regest">Chadolt von Ekkartsaue, Hanns von Tierna, huebmaister in O/esterreich, Hanns von Dietreichstokch, vorstmaister in Osterreich , fällen als vom Herzog Albrecht bestellte verhorer in dem Streit folgende…</td>
                 </tr>
             
@@ -1847,6 +2121,11 @@
                     <td class="src-col-idno"><a href="../../documents/QGW/Vienna_1177-1414_ready/1030.html">1030</a></td>
                     <td class="src-col-date">1382 IV 28</td>
                     <td class="src-col-corpus">QGW II/1 (1177–1414)</td>
+                    <td class="src-col-label"><em>hern</em></td>
+                    <td class="src-col-role">
+                        
+                        -
+                    </td>
                     <td class="src-col-regest">Wolfhard der Pob, statrichter ze Wienn, beurkundet, dass vor ihm in der Bürgerschranne Simon der Vivianz, hern Jannsen schaffer von Tierna, an seines Herrn Statt mit Vorsprechen auf das haus, das…</td>
                 </tr>
             
@@ -1854,6 +2133,11 @@
                     <td class="src-col-idno"><a href="../../documents/QGW/Vienna_1177-1414_ready/1047.html">1047</a></td>
                     <td class="src-col-date">1383 IV 11</td>
                     <td class="src-col-corpus">QGW II/1 (1177–1414)</td>
+                    <td class="src-col-label"><em>-</em></td>
+                    <td class="src-col-role">
+                        <span class="role-chip role-chip-issuer">Aussteller*in</span><span class="role-chip role-chip-witness">Zeuge / Siegler*in</span>
+                        
+                    </td>
                     <td class="src-col-regest">Hanns von Tierna, hu/ebmaister in Osterreich, verkauft mit Handen des Bürgermeisters hern Pauln des Holzcha/euffels und des rates gemain der stat ze Wienn sein Haus, das er für versessenes Burgrecht…</td>
                 </tr>
             
@@ -1861,6 +2145,11 @@
                     <td class="src-col-idno"><a href="../../documents/QGW/Vienna_1177-1414_ready/1060.html">1060</a></td>
                     <td class="src-col-date">1383 XI 27</td>
                     <td class="src-col-corpus">QGW II/1 (1177–1414)</td>
+                    <td class="src-col-label"><em>hern</em></td>
+                    <td class="src-col-role">
+                        <span class="role-chip role-chip-recipient">Empfänger*in</span>
+                        
+                    </td>
                     <td class="src-col-regest">Hanns Bürger und Herwort, gepruder auf der Se/aul, purger ze Wienne, geben nach dem Gebote Herzog Rudolfs IV. hern Hannsen von Tierna, hubmaister in Österreich, 3 dn. gelts gruntrechts von seinem…</td>
                 </tr>
             
@@ -1868,6 +2157,11 @@
                     <td class="src-col-idno"><a href="../../documents/QGW/Vienna_1177-1414_ready/1065.html">1065</a></td>
                     <td class="src-col-date">1384 III 30</td>
                     <td class="src-col-corpus">QGW II/1 (1177–1414)</td>
+                    <td class="src-col-label"><em>-</em></td>
+                    <td class="src-col-role">
+                        <span class="role-chip role-chip-issuer">Aussteller*in</span><span class="role-chip role-chip-witness">Zeuge / Siegler*in</span>
+                        
+                    </td>
                     <td class="src-col-regest">Hanns von Tierna, hu/ebmaister in Österreich an des Herzogs Statt, bestätigt, dass Purchart und Andre, geprüder von Zuentgraben, vor ihm ihren Zehent, gelegen ze Peugen in Plintendorfer velde auf…</td>
                 </tr>
             
@@ -1875,6 +2169,11 @@
                     <td class="src-col-idno"><a href="../../documents/QGW/Vienna_1177-1414_ready/1067.html">1067</a></td>
                     <td class="src-col-date">1384 VI 10</td>
                     <td class="src-col-corpus">QGW II/1 (1177–1414)</td>
+                    <td class="src-col-label"><em>-</em></td>
+                    <td class="src-col-role">
+                        <span class="role-chip role-chip-recipient">Empfänger*in</span>
+                        
+                    </td>
                     <td class="src-col-regest">Herzog Albrecht III. bestätigt, Hansen von Tierna, Niclasen den Würfel und Niclasen den Stainer hinz . . . Albern von Potendorf für 5000 lb dn., die ihm dieser bis zu den nächsten Weihnachten…</td>
                 </tr>
             
@@ -1882,6 +2181,11 @@
                     <td class="src-col-idno"><a href="../../documents/QGW/Vienna_1177-1414_ready/1081.html">1081</a></td>
                     <td class="src-col-date">1385 I 09</td>
                     <td class="src-col-corpus">QGW II/1 (1177–1414)</td>
+                    <td class="src-col-label"><em>hern</em></td>
+                    <td class="src-col-role">
+                        <span class="role-chip role-chip-witness">Zeuge / Siegler*in</span>
+                        
+                    </td>
                     <td class="src-col-regest">Hainreich von Emmerstorf, purger ze Wienn , und Lucei, seine Hausfrau , verkaufen mit Handen des Bürgermeisters hern Pauln des Holzcha/euffels und des rates gemain der stat ze Wienn ihr Haus, gelegen…</td>
                 </tr>
             
@@ -1889,6 +2193,11 @@
                     <td class="src-col-idno"><a href="../../documents/QGW/Vienna_1177-1414_ready/1106.html">1106</a></td>
                     <td class="src-col-date">1386 VI 19</td>
                     <td class="src-col-corpus">QGW II/1 (1177–1414)</td>
+                    <td class="src-col-label"><em>hern</em></td>
+                    <td class="src-col-role">
+                        <span class="role-chip role-chip-witness">Zeuge / Siegler*in</span>
+                        
+                    </td>
                     <td class="src-col-regest">Fridreich von Tierna verkauft mit Händen des Bürgermeisters Pauln des Holzkeuffels und des rates gemain der stat ze Wienn seine padstuben, genant die Perliebinne, an ainem tail gelegen an dem…</td>
                 </tr>
             
@@ -1896,6 +2205,11 @@
                     <td class="src-col-idno"><a href="../../documents/QGW/Vienna_1177-1414_ready/1116.html">1116</a></td>
                     <td class="src-col-date">1387 II 18</td>
                     <td class="src-col-corpus">QGW II/1 (1177–1414)</td>
+                    <td class="src-col-label"><em>-</em></td>
+                    <td class="src-col-role">
+                        <span class="role-chip role-chip-issuer">Aussteller*in</span><span class="role-chip role-chip-witness">Zeuge / Siegler*in</span>
+                        
+                    </td>
                     <td class="src-col-regest">Hanns von Tierna, hubmaister in Osterreich, verkauft sein Haus und seinen Garten, gelegen in dem Werd enthalben der Tuenau in der Neidekkergassen zenechst Fridreichs haus des Mairs , um 2 lb dn.…</td>
                 </tr>
             
@@ -1903,6 +2217,11 @@
                     <td class="src-col-idno"><a href="../../documents/QGW/Vienna_1177-1414_ready/1156.html">1156</a></td>
                     <td class="src-col-date">1388 VII 06</td>
                     <td class="src-col-corpus">QGW II/1 (1177–1414)</td>
+                    <td class="src-col-label"><em>her</em></td>
+                    <td class="src-col-role">
+                        
+                        -
+                    </td>
                     <td class="src-col-regest">Ruodolf von Tierna, hubmaister in Österreich, bruder Ludweig von Tierna und Paul von Tierna, sein brüder, beurkunden, dass ihr Vater Vater Vater her Hanns von Tierna, weilnt auch hubmaister in…</td>
                 </tr>
             
@@ -1910,6 +2229,11 @@
                     <td class="src-col-idno"><a href="../../documents/QGW/Vienna_1177-1414_ready/1354.html">1354</a></td>
                     <td class="src-col-date">1397 I 12</td>
                     <td class="src-col-corpus">QGW II/1 (1177–1414)</td>
+                    <td class="src-col-label"><em>her</em></td>
+                    <td class="src-col-role">
+                        
+                        -
+                    </td>
                     <td class="src-col-regest">Rudolf von Tyrna Bruderund Ludweig, gepruder von Tyrna, geben zu den vier Messen, deren zwei ihr en en her Fridreich von Tyrna selig und zwei ihre andl andl Anna selig zu stiften geschafft und ihr…</td>
                 </tr>
             
@@ -1942,11 +2266,13 @@
         </div>
     </footer>
 
-    <script src="../../static/js/core.js?v=20260511112948"></script>
-    <script src="../../static/js/provenance.js?v=20260511112948"></script>
-    <script src="../../static/js/basket.js?v=20260511112948"></script>
+    <script src="../../static/js/core.js?v=20260511125458"></script>
+    <script src="../../static/js/tip.js?v=20260511125458"></script>
+    <script src="../../static/js/hint.js?v=20260511125458"></script>
+    <script src="../../static/js/basket.js?v=20260511125458"></script>
     
-<script src="../../static/js/tooltips.js?v=20260511112948"></script>
+<script src="../../static/js/profile.js?v=20260511125458"></script>
+<script src="../../static/js/basket-mount.js?v=20260511125458"></script>
 
 </body>
 </html>

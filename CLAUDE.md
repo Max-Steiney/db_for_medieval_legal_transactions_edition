@@ -17,12 +17,13 @@ docs/                     Build-Output, von GitHub Pages serviert
   /documents/             Regesten als HTMLs, aus TEI gerendert
   /tei/                   TEI-XML-Downloads der freigegebenen Quellen
   /data/                  JSON-Indexe (search, register, epics, timeline, quality, docs_aggregate)
-  /register/              Personen-, Organisations- und Ortsregister
-                            persons.html | orgs.html | places.html       Listen-Seiten
-                            persons/<id>.html | orgs/<id>.html
-                              places/<id>.html                            Detail-Profile pro Entität
-                            persons.json | organisations.json
-                              places.json                                 Reverse-Index Entität --> Quellen
+  /register/              Personen- und Organisationsregister
+                            persons.html | orgs.html              Listen-Seiten
+                            persons/<id>.html | orgs/<id>.html    Detail-Profile pro Entität
+                            persons.json | organisations.json     Reverse-Index Entität --> Quellen
+                            (Ortsregister entfernt: Orts-Stammdaten noch nicht
+                             konsolidiert; rs type="place" bleibt als Span mit
+                             Tooltip im Quellen-Volltext, aber ohne Sprungziel)
   /analysis/              Analyse-Bereich
                             auswertungen.html  quantitative Verteilungen (Donut, Bar, Tabelle), Drill-down + Cross-Nav
                             index.html         Abfragen (Template-Familien)
@@ -30,10 +31,9 @@ docs/                     Build-Output, von GitHub Pages serviert
                             zeitstrom.html         gestapelter Timeline-Bar-Chart mit Brush-to-Drill-down,
                                                    Stack-Kategorie isolierbar
                             personennetzwerk.html  Ego-Layout um eine Person, Klick verlagert Zentrum
-                            (Sankey — geplant; keine Karten — Orts-Aussagen liegen außerhalb
-                            des Forschungsfokus; Geo-Information bleibt auf textuelle Felder
-                            im Ortsprofil beschränkt, inkl. GeoNames-Link)
-  korb.html               Wissenskorb (clientseitig, localStorage); CSV-Export, Cross-Tab-Sync
+                            (Sankey - geplant; keine Karten - Orts-Aussagen liegen
+                             ausserhalb des Forschungsfokus)
+  korb.html               Datenkorb (clientseitig, localStorage); CSV-Export, Cross-Tab-Sync
   /project/               About, Statistik, Qualität, Annotationsrichtlinien, Glossar
   /static/                CSS, JS, Fonts
 knowledge/                konzeptionelle Wissensbasis (Obsidian-Markdown, Wiki-Links)
@@ -96,7 +96,7 @@ Gestaltungsprinzip: maximaler Informations-Output. Nachvollziehbarkeit vor reduz
 | Startseite-Inhalt ändern | `frontend/templates/startseite.html` |
 | Quellen-Übersicht (Filter, Chips, Tabelle) | `frontend/templates/index.html`, `frontend/static/js/index.js` |
 | Auswertungen-/Zeitstrom-/neue Visualisierungs-Sub-Seite | `frontend/static/js/viz-core.js` zuerst (geteilte Helfer: Range-Slider, Active-Filter-Strip, URL-Sync, Drill-Overlay, JSON-Loader, Domain-Konstanten); page-spezifischer Renderer ruft die Bindings in `DOMContentLoaded` |
-| Wissenskorb-Anbindung (jede neue Quellen-Liste) | `Wissenskorb.buttonHTML({type:'source', id, label, url, date, coll, regest})` ins Zeilen-Markup; Click-Handling über globale Event-Delegation in `frontend/static/js/wissenskorb.js` |
+| Datenkorb-Anbindung (jede neue Quellen-Liste) | `DataBasket.buttonHTML({id, label, url, date, coll, regest})` ins Zeilen-Markup; Click-Handling über globale Event-Delegation in `frontend/static/js/basket.js` |
 | Provenienz- oder Glossar-Tooltip einsetzen | `frontend/templates/macros.html` (`prov_stat`, `prov_popover`, `prov_ratio_stat`, `glossary_tip`) |
 | Pro-Quelle-Daten (Personen/Events/Datum) | `frontend/aggregator.py::aggregate_docs` schreibt `docs/data/docs_aggregate.json` |
 | Erschließungsform | aus `events_in_sources.csv:event_in` aggregiert (abstract / seal / entry / nota); keine Heuristik im Frontend |

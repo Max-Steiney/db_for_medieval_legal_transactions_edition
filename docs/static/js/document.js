@@ -21,7 +21,7 @@
        ------------------------------------------------------------------ */
 
     function initAssertionsView() {
-        let container = document.getElementById('factoid-view');
+        let container = document.getElementById('annotations-view');
         if (!container) return;
         buildAnnotationsTables(container);
     }

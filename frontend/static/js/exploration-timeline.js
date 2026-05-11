@@ -400,11 +400,11 @@
 
         const ROOT = (window.ROOT_PATH || '..');
         const SHOW = 200;
-        const hasBasket = (typeof KnowledgeBasket !== 'undefined');
+        const hasBasket = (typeof DataBasket !== 'undefined');
         const shown = docs.slice(0, SHOW);
         list.innerHTML = shown.map(doc => {
-            const basketBtn = hasBasket ? KnowledgeBasket.buttonHTML({
-                type: 'source', id: doc.id, label: doc.id,
+            const basketBtn = hasBasket ? DataBasket.buttonHTML({
+                id: doc.id, label: doc.id,
                 url: doc.u, date: doc.date, coll: doc.coll, regest: '',
             }) : '';
             return `<li class="explore-stream-doc">

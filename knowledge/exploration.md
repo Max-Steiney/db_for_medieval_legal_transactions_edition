@@ -41,7 +41,7 @@ Gestapelter Bar-Chart der Quellendichte pro Jahrzehnt. Die Stapel-Achse ist umsc
 
 Ein Klick auf ein Legend-Item fokussiert eine Stapel-Kategorie: die anderen Segmente werden in den Bars gedimmt, und der Brush-Drill filtert auf die fokussierte Kategorie. Damit wird ein unscharfer Brush („alle Quellen in 1390er") zu einer scharfen Auswahl („nur Schuldbrief/Pfand-Geschäfte in 1390er") — ohne dass die zeitliche Achse verloren geht. Stack-Switch hebt den Fokus automatisch auf, weil die Kategorien wechseln; Toggle auf dem gleichen Item hebt ihn manuell auf.
 
-Datenquellen: `data/search.json` (für die ersten drei Stapel-Achsen), `data/transactions.json::observations.tx_timeline` (für die Transaktionstyp-Stapelung). Bei aktivem Tx-Fokus läuft der Drill über `transactions.drill_down.tx_type_decade` und löst die `file_keys` über `data/docs_lookup.json` auf. Die Drill-down-Liste verlinkt direkt in die Quellen-Detailseiten und bietet pro Zeile einen „+"-Knopf für den [[ui-design#Wissenskorb]]; im Header steht der Cross-Page-Sprung in die Quellen-Liste mit übernommenem Zeitraum.
+Datenquellen: `data/search.json` (für die ersten drei Stapel-Achsen), `data/transactions.json::observations.tx_timeline` (für die Transaktionstyp-Stapelung). Bei aktivem Tx-Fokus läuft der Drill über `transactions.drill_down.tx_type_decade` und löst die `file_keys` über `data/docs_lookup.json` auf. Die Drill-down-Liste verlinkt direkt in die Quellen-Detailseiten und bietet pro Zeile einen „+"-Knopf für den [[ui-design#Datenkorb]]; im Header steht der Cross-Page-Sprung in die Quellen-Liste mit übernommenem Zeitraum.
 
 Der Filter-Stand wird in die URL serialisiert (`?dec=1300-1410&stack=tx&brush=1340-1370&focus=Kauf`), siehe [[ui-design#URL-State-Sync]].
 
@@ -55,7 +55,7 @@ Bewusst gegen Force-Layout: die meisten Co-Occurrence-Kanten haben Gewicht 1 —
 
 Datenquelle: `relations.json::persons`, jede Person trägt eine `rels`-Liste mit `{type, label, label_norm, source_file_key, related_key}`. Beruflich-institutionelle Beziehungen (`occ`) zeigen Person → Organisation; sie werden als Knoten anderer Farbe dargestellt, sind aber nicht weiter klickbar (Org-Profile existieren noch nicht). Verwandtschaft, Vertretung und Freundschaft sind person-zu-person und tragen das Klick-Hopping.
 
-Detail-Tabelle unter dem Graphen listet alle Verbindungen der Mittelpunkt-Person mit Beziehungstyp, Bezeichnung, Beleg-Anzahl und „+"-Knopf für den [[ui-design#Wissenskorb]] (Sammlung verlinkter Personen).
+Detail-Tabelle unter dem Graphen listet alle Verbindungen der Mittelpunkt-Person mit Beziehungstyp, Bezeichnung, Beleg-Anzahl und „+"-Knopf für den [[ui-design#Datenkorb]] (Sammlung verlinkter Personen).
 
 URL-State: `?p=pe__id&types=kin,occ` macht jeden Personen-Mittelpunkt zitierbar.
 

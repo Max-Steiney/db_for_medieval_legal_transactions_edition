@@ -3,21 +3,21 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <meta http-equiv="Content-Security-Policy" content="default-src 'self'; script-src 'self'; style-src 'self'; font-src 'self'; img-src 'self' data: https://images.monasterium.net https://www.monasterium.net; connect-src 'self'; frame-ancestors 'none'; base-uri 'self'; form-action 'self'; upgrade-insecure-requests">
+    <meta http-equiv="Content-Security-Policy" content="default-src 'self'; script-src 'self'; style-src 'self'; font-src 'self'; img-src 'self' data: https://images.monasterium.net https://www.monasterium.net; connect-src 'self'; base-uri 'self'; form-action 'self'; upgrade-insecure-requests">
     <meta name="referrer" content="strict-origin-when-cross-origin">
     <meta http-equiv="Permissions-Policy" content="camera=(), microphone=(), geolocation=(), interest-cohort=()">
     <title>Nr. 1083 (1385 III 01), Datenbank</title>
     <link rel="preload" as="font" type="font/woff2" crossorigin
           href="../../../static/fonts/inter-400-latin.woff2">
-    <link rel="stylesheet" href="../../../static/css/fonts.css?v=20260511112948">
-    <link rel="stylesheet" href="../../../static/css/tokens.css?v=20260511112948">
-    <link rel="stylesheet" href="../../../static/css/base.css?v=20260511112948">
-    <link rel="stylesheet" href="../../../static/css/components.css?v=20260511112948">
-    <link rel="stylesheet" href="../../../static/css/responsive.css?v=20260511112948">
-    <link rel="stylesheet" href="../../../static/css/print.css?v=20260511112948">
-    <link rel="stylesheet" href="../../../static/css/provenance.css?v=20260511112948">
+    <link rel="stylesheet" href="../../../static/css/fonts.css?v=20260511125458">
+    <link rel="stylesheet" href="../../../static/css/tokens.css?v=20260511125458">
+    <link rel="stylesheet" href="../../../static/css/base.css?v=20260511125458">
+    <link rel="stylesheet" href="../../../static/css/components.css?v=20260511125458">
+    <link rel="stylesheet" href="../../../static/css/responsive.css?v=20260511125458">
+    <link rel="stylesheet" href="../../../static/css/print.css?v=20260511125458">
+    <link rel="stylesheet" href="../../../static/css/tip.css?v=20260511125458">
     
-<link rel="stylesheet" href="../../../static/css/document.css?v=20260511112948">
+<link rel="stylesheet" href="../../../static/css/document.css?v=20260511125458">
 <link rel="canonical" href="documents/QGW/Vienna_1177-1414_ready/1083.html">
 <meta name="citation_title" content="Nr. 1083 (1385 III 01)">
 <meta name="citation_collection" content="QGW II/1 (1177–1414)">
@@ -50,8 +50,6 @@
         <a href="../../../register/persons.html">Personen</a>
         
         <a href="../../../register/orgs.html">Organisationen</a>
-        
-        <a href="../../../register/places.html">Orte</a>
         
     </div>
 </div>
@@ -93,7 +91,7 @@
     </div>
 </div>
 
-                <a href="../../../korb.html" class="nav-basket" aria-label="Wissenskorb">
+                <a href="../../../korb.html" class="nav-basket" aria-label="Datenkorb">
                     <svg width="18" height="18" viewBox="0 0 18 18" fill="none" aria-hidden="true">
                         <path d="M3 5h12l-1.2 8.5a1 1 0 0 1-1 .85H5.2a1 1 0 0 1-1-.85L3 5z"
                               stroke="currentColor" stroke-width="1.4" fill="none"
@@ -140,7 +138,7 @@
                     
                     <span class="meta-pair">
                         <span class="meta-label">Quelle</span>
-                        <span class="meta-value" title="Quellen zur Geschichte der Stadt Wien, Bd. II/1, Nr. 1083">Quellen zur Geschichte der Stadt Wien, Bd. II/1, Nr. 1083</span>
+                        <span class="meta-value" data-hint="Quellen zur Geschichte der Stadt Wien, Bd. II/1, Nr. 1083">Quellen zur Geschichte der Stadt Wien, Bd. II/1, Nr. 1083</span>
                     </span>
                     
                 </div>
@@ -151,7 +149,7 @@
                     
                     <button type="button" class="legend-toggle"
                             data-layer="entities" aria-pressed="true"
-                            title="Entitäten ein-/ausblenden">
+                            data-hint="Entitäten ein-/ausblenden">
                         <span class="legend-toggle-dots">
                             <span class="legend-swatch swatch-person"></span><span class="legend-swatch swatch-org"></span><span class="legend-swatch swatch-place"></span>
                         </span>
@@ -160,7 +158,7 @@
                     
                     <button type="button" class="legend-toggle"
                             data-layer="functions" aria-pressed="true"
-                            title="Funktionsrollen ein-/ausblenden">
+                            data-hint="Funktionsrollen ein-/ausblenden">
                         <span class="legend-toggle-dots">
                             <span class="legend-swatch swatch-fn-issuer"></span><span class="legend-swatch swatch-fn-recipient"></span><span class="legend-swatch swatch-fn-witness"></span>
                         </span>
@@ -169,7 +167,7 @@
                     
                     <button type="button" class="legend-toggle"
                             data-layer="attributes" aria-pressed="true"
-                            title="Attribute ein-/ausblenden">
+                            data-hint="Attribute ein-/ausblenden">
                         <span class="legend-toggle-dots">
                             <span class="legend-swatch swatch-attr"></span><span class="legend-swatch swatch-add"></span>
                         </span>
@@ -178,7 +176,7 @@
                     
                     <button type="button" class="legend-toggle"
                             data-layer="triggers" aria-pressed="true"
-                            title="Dispositivformel ein-/ausblenden">
+                            data-hint="Dispositivformel ein-/ausblenden">
                         <span class="legend-toggle-dots">
                             <span class="legend-swatch swatch-trigger"></span>
                         </span>
@@ -190,21 +188,29 @@
                 <div class="doc-toolbar-actions">
                     <a class="toolbar-btn" href="../../../tei/QGW/Vienna_1177-1414_ready/1083.xml"
                        download="1083.xml"
-                       aria-label="TEI-XML herunterladen" title="TEI-XML herunterladen"><svg viewBox="0 0 16 16" width="16" height="16" aria-hidden="true"><path fill="none" stroke="currentColor" stroke-width="1.4" stroke-linecap="round" stroke-linejoin="round" d="M8 2v8m0 0l-3-3m3 3l3-3M3 13h10"/></svg></a>
+                       aria-label="TEI-XML herunterladen" data-hint="TEI-XML herunterladen"><svg viewBox="0 0 16 16" width="16" height="16" aria-hidden="true"><path fill="none" stroke="currentColor" stroke-width="1.4" stroke-linecap="round" stroke-linejoin="round" d="M8 2v8m0 0l-3-3m3 3l3-3M3 13h10"/></svg></a>
                     <button class="toolbar-btn" id="cite-toggle" aria-expanded="false"
-                            aria-label="Zitation kopieren" title="Zitation kopieren"><svg viewBox="0 0 16 16" width="16" height="16" aria-hidden="true"><rect x="4" y="2" width="8" height="11" rx="1" fill="none" stroke="currentColor" stroke-width="1.4"/><path d="M6 1.5h4a0.5 0.5 0 0 1 0.5 0.5v1a0.5 0.5 0 0 1-0.5 0.5H6a0.5 0.5 0 0 1-0.5-0.5V2A0.5 0.5 0 0 1 6 1.5z" fill="currentColor"/><path d="M6.5 6.5h3M6.5 8.5h3M6.5 10.5h2" stroke="currentColor" stroke-width="1" stroke-linecap="round"/></svg></button>
+                            aria-label="Zitation kopieren" data-hint="Zitation kopieren"><svg viewBox="0 0 16 16" width="16" height="16" aria-hidden="true"><rect x="4" y="2" width="8" height="11" rx="1" fill="none" stroke="currentColor" stroke-width="1.4"/><path d="M6 1.5h4a0.5 0.5 0 0 1 0.5 0.5v1a0.5 0.5 0 0 1-0.5 0.5H6a0.5 0.5 0 0 1-0.5-0.5V2A0.5 0.5 0 0 1 6 1.5z" fill="currentColor"/><path d="M6.5 6.5h3M6.5 8.5h3M6.5 10.5h2" stroke="currentColor" stroke-width="1" stroke-linecap="round"/></svg></button>
                     <div class="cite-popover hidden" id="cite-popover"></div>
+                    <span class="toolbar-basket-mount"
+                          data-basket-type="source"
+                          data-basket-id="1083"
+                          data-basket-label="1083"
+                          data-basket-url="documents/QGW/Vienna_1177-1414_ready/1083.html"
+                          data-basket-date="1385-03-01"
+                          data-basket-coll="QGW II/1 (1177–1414)"
+                          data-basket-regest="Ulreich der Zinkk, obrister spitalmaister der purger Spital vor Kernertor ze Wienn , bestätigt, die hernachbenannten ziegelwerichstet, gelegen vor Kernertor bei den Ziegelöfen ze Wienn, welche Frau…"></span>
                     
 <nav class="doc-paging doc-paging-inline" aria-label="Quellen-Navigation">
     
     <a href="../../../documents/QGW/Vienna_1177-1414_ready/1082.html" class="toolbar-btn doc-paging-prev"
        aria-label="Vorherige Quelle: Nr. 1082"
-       title="Vorherige Quelle: Nr. 1082"><svg viewBox="0 0 16 16" width="16" height="16" aria-hidden="true"><path fill="none" stroke="currentColor" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round" d="M10 3l-5 5 5 5"/></svg></a>
+       data-hint="Vorherige Quelle: Nr. 1082"><svg viewBox="0 0 16 16" width="16" height="16" aria-hidden="true"><path fill="none" stroke="currentColor" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round" d="M10 3l-5 5 5 5"/></svg></a>
     
     
     <a href="../../../documents/QGW/Vienna_1177-1414_ready/1084.html" class="toolbar-btn doc-paging-next"
        aria-label="Nächste Quelle: Nr. 1084"
-       title="Nächste Quelle: Nr. 1084"><svg viewBox="0 0 16 16" width="16" height="16" aria-hidden="true"><path fill="none" stroke="currentColor" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round" d="M6 3l5 5-5 5"/></svg></a>
+       data-hint="Nächste Quelle: Nr. 1084"><svg viewBox="0 0 16 16" width="16" height="16" aria-hidden="true"><path fill="none" stroke="currentColor" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round" d="M6 3l5 5-5 5"/></svg></a>
     
 </nav>
 
@@ -219,28 +225,28 @@
         <!-- Document body (rendered TEI) -->
         <div class="doc-body">
             <section class="tei-abstract"><h2 class="tei-section-head">Regest</h2><p>
-               <span class="anno-event" data-ref="ev__QGW_II_I_1083"><span class="anno-fn anno-fn-issuer" data-role="issuer"><span class="fn-label">Aussteller*in</span><a class="anno-person" data-ref="pe__ulrich_zinkk_QGW_II_I_1066a" title="Ulrich Zinkk († 15.07.1398) [pe__ulrich_zinkk_QGW_II_I_1066a]" href="../../../register/persons/pe__ulrich_zinkk_QGW_II_I_1066a.html">Ulreich der Zinkk, <span class="anno-attr anno-attr-occ" data-corresp="org__wien-buergerspital">obrister spitalmaister</span> der
+               <span class="anno-event" data-ref="ev__QGW_II_I_1083"><span class="anno-fn anno-fn-issuer" data-role="issuer"><span class="fn-label">Aussteller*in</span><a class="anno-person" data-ref="pe__ulrich_zinkk_QGW_II_I_1066a" data-hint="Ulrich Zinkk († 15.07.1398) [pe__ulrich_zinkk_QGW_II_I_1066a]" data-hint-type="Person" href="../../../register/persons/pe__ulrich_zinkk_QGW_II_I_1066a.html">Ulreich der Zinkk, <span class="anno-attr anno-attr-occ" data-corresp="org__wien-buergerspital">obrister spitalmaister</span> der
                         purger Spital vor Kernertor ze Wienn</a></span> , <span class="anno-trigger anno-trigger-disp">bestätigt</span>, die hernachbenannten ziegelwerichstet, gelegen vor
-                  Kernertor bei den Ziegelöfen ze Wienn, <span class="anno-event" data-ref="ev__QGW_II_I_1083_men_1">welche <a class="anno-person" data-ref="pe__kunigunde_spieglerin_QGW_II_I_1075" title="Kunigunde Spieglerin Spieglerin († 19.11.1384) [pe__kunigunde_spieglerin_QGW_II_I_1075]" href="../../../register/persons/pe__kunigunde_spieglerin_QGW_II_I_1075.html"><span class="anno-attr anno-attr-title">Frau</span> Kunigund die Spieglerinne</a> dem <a class="anno-org" data-ref="org__wien-buergerspital" title="Wiener Bürgerspital (Spital_Siechenhaus) [org__wien-buergerspital]" href="../../../register/orgs/org__wien-buergerspital.html">Spital</a> zu einem <a class="anno-org" data-ref="org__wien-buergerspital-messe_spieglerin" title="Jahrtag Kunigunde Spieglerin (Messe) [org__wien-buergerspital-messe_spieglerin]" href="../../../register/orgs/org__wien-buergerspital-messe_spieglerin.html">ewigen Jahrtage</a>
+                  Kernertor bei den Ziegelöfen ze Wienn, <span class="anno-event" data-ref="ev__QGW_II_I_1083_men_1">welche <a class="anno-person" data-ref="pe__kunigunde_spieglerin_QGW_II_I_1075" data-hint="Kunigunde Spieglerin Spieglerin († 19.11.1384) [pe__kunigunde_spieglerin_QGW_II_I_1075]" data-hint-type="Person" href="../../../register/persons/pe__kunigunde_spieglerin_QGW_II_I_1075.html"><span class="anno-attr anno-attr-title">Frau</span> Kunigund die Spieglerinne</a> dem <a class="anno-org" data-ref="org__wien-buergerspital" data-hint="Wiener Bürgerspital (Spital_Siechenhaus) [org__wien-buergerspital]" data-hint-type="Organisation" href="../../../register/orgs/org__wien-buergerspital.html">Spital</a> zu einem <a class="anno-org" data-ref="org__wien-buergerspital-messe_spieglerin" data-hint="Jahrtag Kunigunde Spieglerin (Messe) [org__wien-buergerspital-messe_spieglerin]" data-hint-type="Organisation" href="../../../register/orgs/org__wien-buergerspital-messe_spieglerin.html">ewigen Jahrtage</a>
                      geschafft hatte</span>, und zwar von erst zwo hofstet, <span class="anno-event" data-ref="ev__QGW_II_I_1083_men_2">die von maister Mertten gechauft sind</span>, und zwen ziegelöfen
                   daran zenechst dem Me/anschein und ein hofstat weingartens und zwen ziegelöfen
-                  daran, <span class="anno-event" data-ref="ev__QGW_II_I_1083_men_3">das von <a class="anno-person" data-ref="pe__niklas_poll_QGW_II_I_1083" title="Niklas Poll Poll († 01.03.1385) [pe__niklas_poll_QGW_II_I_1083]" href="../../../register/persons/pe__niklas_poll_QGW_II_I_1083.html">Niclasen <span class="anno-attr anno-attr-dead">seligen</span>
+                  daran, <span class="anno-event" data-ref="ev__QGW_II_I_1083_men_3">das von <a class="anno-person" data-ref="pe__niklas_poll_QGW_II_I_1083" data-hint="Niklas Poll Poll († 01.03.1385) [pe__niklas_poll_QGW_II_I_1083]" data-hint-type="Person" href="../../../register/persons/pe__niklas_poll_QGW_II_I_1083.html">Niclasen <span class="anno-attr anno-attr-dead">seligen</span>
                         dem Pöllein</a> gechauft ist</span>, genant die Grodlerinne, und aber ein
                   hofstat weingartens und zwen ziegelöfen daran, <span class="anno-event" data-ref="ev__QGW_II_I_1083_men_4">die von
-                     den <a class="anno-org" data-ref="org__wien-st_klara" title="St. Klara Wien (Kloster_f) [org__wien-st_klara]" href="../../../register/orgs/org__wien-st_klara.html">geistleichen fraun dacz sand Chlarn
+                     den <a class="anno-org" data-ref="org__wien-st_klara" data-hint="St. Klara Wien (Kloster_f) [org__wien-st_klara]" data-hint-type="Organisation" href="../../../register/orgs/org__wien-st_klara.html">geistleichen fraun dacz sand Chlarn
                         ze Wienn</a> gechauft sind</span>, das alles nu zu einander gefangen ist, als
-                  es weilnt <a class="anno-person" data-ref="pe__michael_rentsch_spiegler" title="Michael Rentsch der Spiegler († 01.03.1385) [pe__michael_rentsch_spiegler]" href="../../../register/persons/pe__michael_rentsch_spiegler.html">Michel
+                  es weilnt <a class="anno-person" data-ref="pe__michael_rentsch_spiegler" data-hint="Michael Rentsch der Spiegler († 01.03.1385) [pe__michael_rentsch_spiegler]" data-hint-type="Person" href="../../../register/persons/pe__michael_rentsch_spiegler.html">Michel
                         <span class="anno-attr anno-attr-dead">selig</span> der Re/antsch, der egenanten fraun
                      Kunigunden eleicher <span class="anno-attr anno-attr-kin" data-corresp="pe__kunigunde_spieglerin_QGW_II_I_1075">wirt</span></a> innegehabt hat , <span class="anno-trigger anno-trigger-disp">übernommen zu
                      haben</span>, und <span class="anno-trigger anno-trigger-disp">verpflichtet sich und seine
                      Amtsnachfolger</span>
                   <span class="anno-fn anno-fn-other" data-role="other"><span class="fn-label">Sonstige</span><span class="anno-trigger anno-trigger-fn">gegenüber <span class="tei-add">zur
                         Abhaltung</span></span>
-                     <a class="anno-person" data-ref="pe__johann_spiegler_QGW_II_I_1075" title="Johann Spiegler [pe__johann_spiegler_QGW_II_I_1075]" href="../../../register/persons/pe__johann_spiegler_QGW_II_I_1075.html">Jannsen dem Spiegler, dem <span class="anno-attr anno-attr-kin" data-corresp="pe__kunigunde_spieglerin_QGW_II_I_1075">Stiefsohne</span> der
-                        Erblasserin</a></span> , zur Abhaltung des <span class="anno-fn anno-fn-recipient" data-role="recipient"><span class="fn-label">Empfänger*in</span><a class="anno-org" data-ref="org__wien-buergerspital-messe_spieglerin" title="Jahrtag Kunigunde Spieglerin (Messe) [org__wien-buergerspital-messe_spieglerin]" href="../../../register/orgs/org__wien-buergerspital-messe_spieglerin.html">Jahrtages</a></span> an dem nächsten Sonntage vor sand Simans und sand Judas
+                     <a class="anno-person" data-ref="pe__johann_spiegler_QGW_II_I_1075" data-hint="Johann Spiegler [pe__johann_spiegler_QGW_II_I_1075]" data-hint-type="Person" href="../../../register/persons/pe__johann_spiegler_QGW_II_I_1075.html">Jannsen dem Spiegler, dem <span class="anno-attr anno-attr-kin" data-corresp="pe__kunigunde_spieglerin_QGW_II_I_1075">Stiefsohne</span> der
+                        Erblasserin</a></span> , zur Abhaltung des <span class="anno-fn anno-fn-recipient" data-role="recipient"><span class="fn-label">Empfänger*in</span><a class="anno-org" data-ref="org__wien-buergerspital-messe_spieglerin" data-hint="Jahrtag Kunigunde Spieglerin (Messe) [org__wien-buergerspital-messe_spieglerin]" data-hint-type="Organisation" href="../../../register/orgs/org__wien-buergerspital-messe_spieglerin.html">Jahrtages</a></span> an dem nächsten Sonntage vor sand Simans und sand Judas
                   tag, der heiligen zwelfpoten.</span>
             </p></section><section class="tei-seal"><h2 class="tei-section-head">Siegelbeschreibung</h2><p><span class="anno-event" data-ref="ev__QGW_II_I_1083"><span class="anno-fn anno-fn-witness" data-role="witness"><span class="fn-label">Zeug*in</span>Besiegelt mit
-                     dem <a class="anno-org" data-ref="org__wien-buergerspital" title="Wiener Bürgerspital (Spital_Siechenhaus) [org__wien-buergerspital]" href="../../../register/orgs/org__wien-buergerspital.html">Spitalssiegel</a>.</span></span></p></section><section class="tei-nota"><h2 class="tei-section-head">Indorsat / Nota</h2><p></p></section>
+                     dem <a class="anno-org" data-ref="org__wien-buergerspital" data-hint="Wiener Bürgerspital (Spital_Siechenhaus) [org__wien-buergerspital]" data-hint-type="Organisation" href="../../../register/orgs/org__wien-buergerspital.html">Spitalssiegel</a>.</span></span></p></section><section class="tei-nota"><h2 class="tei-section-head">Indorsat / Nota</h2><p></p></section>
 
             <!-- Data layer: provenance strip. Korpus + Idno stehen schon
                  in der Toolbar-Breadcrumb; hier daher NUR die technische
@@ -298,7 +304,7 @@
          dem TEI in mehreren Untertabellen, Personen/Orgs/Orte,
          Ereignisse, Dispositivformeln, Editorische Ergaenzungen. Wird
          per JS aus den entsprechenden Spans im Body aufgebaut. -->
-    <section class="annotations-view" id="factoid-view" aria-label="Annotationen">
+    <section class="annotations-view" id="annotations-view" aria-label="Annotationen">
         <header class="annotations-header">
             <h2 class="annotations-title">Annotationen</h2>
             <span class="annotations-summary"></span>
@@ -344,13 +350,14 @@
         </div>
     </footer>
 
-    <script src="../../../static/js/core.js?v=20260511112948"></script>
-    <script src="../../../static/js/provenance.js?v=20260511112948"></script>
-    <script src="../../../static/js/basket.js?v=20260511112948"></script>
+    <script src="../../../static/js/core.js?v=20260511125458"></script>
+    <script src="../../../static/js/tip.js?v=20260511125458"></script>
+    <script src="../../../static/js/hint.js?v=20260511125458"></script>
+    <script src="../../../static/js/basket.js?v=20260511125458"></script>
     
-<script src="../../../static/js/tooltips.js?v=20260511112948"></script>
-<script src="../../../static/js/facsimile.js?v=20260511112948"></script>
-<script src="../../../static/js/document.js?v=20260511112948"></script>
+<script src="../../../static/js/facsimile.js?v=20260511125458"></script>
+<script src="../../../static/js/document.js?v=20260511125458"></script>
+<script src="../../../static/js/basket-mount.js?v=20260511125458"></script>
 
 </body>
 </html>

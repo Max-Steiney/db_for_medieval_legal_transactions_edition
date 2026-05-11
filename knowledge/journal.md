@@ -32,7 +32,7 @@ Einträge in umgekehrt chronologischer Reihenfolge, neueste oben.
 
 ## 2026-05-03 Personennetzwerk als zweite Exploration-Sub-Seite, Karten-Idee verworfen
 
-Zweite visuelle Sub-Seite unter `/exploration/`: ein **Personennetzwerk** als Ego-Layout. Eine Person sitzt im Mittelpunkt, ihre direkten annotierten Beziehungen liegen radial drumherum; Klick auf einen Nachbar verlagert das Zentrum, so wandert man durchs Netz. Personen-Suche, Beziehungstyp-Chips (Verwandtschaft / Beruf-Stand / Vertretung / Freundschaft) und URL-Sync sind die Bedien-Achsen. Detail-Tabelle unter dem Graphen listet alle Verbindungen mit Beziehungstyp, Bezeichnung, Beleg-Anzahl und „+"-Knopf für den Wissenskorb (Personen-Sammlung).
+Zweite visuelle Sub-Seite unter `/exploration/`: ein **Personennetzwerk** als Ego-Layout. Eine Person sitzt im Mittelpunkt, ihre direkten annotierten Beziehungen liegen radial drumherum; Klick auf einen Nachbar verlagert das Zentrum, so wandert man durchs Netz. Personen-Suche, Beziehungstyp-Chips (Verwandtschaft / Beruf-Stand / Vertretung / Freundschaft) und URL-Sync sind die Bedien-Achsen. Detail-Tabelle unter dem Graphen listet alle Verbindungen mit Beziehungstyp, Bezeichnung, Beleg-Anzahl und „+"-Knopf für den Datenkorb (Personen-Sammlung).
 
 Bewusst gegen Force-Layout: die meisten Co-Occurrence-Kanten haben Gewicht 1 — ein Strukturartefakt der Urkundenform, kein analytisch belastbares Beziehungsmaß. Ein Force-Layout über das Gesamt-Beziehungsnetz würde als unleserliches „Knäuel" erscheinen, in dem nichts erkennbar ist. Das Ego-Layout schneidet stattdessen pro Schritt einen lesbaren lokalen Ausschnitt — analog zum klassischen Genealogie-Stammbaum, nur mit Klick-Hopping als Navigation. Globale Topologie lässt sich daraus durch sequenzielles Erkunden rekonstruieren.
 
@@ -42,7 +42,7 @@ Datenpfad: relations-Aggregator wurde erweitert um das Feld `r` (related_key) in
 
 **Karten-Idee verworfen.** Eine geographische Visualisierung war als dritte geplante Sub-Seite skizziert (siehe ältere Iterationen von `exploration.md`). Verworfen aus zwei Gründen: erstens fehlt die für eine sinnvolle Karte erforderliche flächendeckende Georeferenzierung des Ortsregisters (nur ein Bruchteil der Orts-Einträge hat Koordinaten), zweitens liegen Orts-Aussagen ohnehin außerhalb des Forschungsfokus der Datenbank. Knowledge-Dokumente sweepen-bereinigt von der Karten-Erwähnung; geplant bleibt nur noch das Sankey-Diagramm zu Transaktionsflüssen.
 
-## 2026-05-03 URL-Sync, Cross-Page-Sprung, Wissenskorb
+## 2026-05-03 URL-Sync, Cross-Page-Sprung, Datenkorb
 
 Drei verbundene Verbesserungen, die die identifizierten Workflow-Brüche zwischen den Seiten schließen.
 
@@ -50,7 +50,7 @@ Drei verbundene Verbesserungen, die die identifizierten Workflow-Brüche zwische
 
 **Cross-Page-Sprung** als Footer-Link in beiden Drill-Containern (Auswertungs-Drill-Overlay, Zeitstrom-Brush-Drill): „→ in Quellen-Liste öffnen" mit übernommenem Zeitraum-und-Geschlecht-Filter. Mapping ist asymmetrisch, weil das Quellen-Filter-Vokabular nicht symmetrisch zur Sex-Achse der Visualisierungen ist (`with-f` für ♀, `only-m` für ♂; `with-m` existiert nicht). Page-spezifische Filter (Rolle, Beziehungstyp, Bezeichnung, Tx-Kategorie, Stack-Fokus) werden bewusst nicht übertragen — die Quellen-Liste kennt sie nicht. Tooltip am Link macht die Lückenführung transparent. Eintrag in [[decisions#Cross-Page-Sprung mit Filter-Übernahme]].
 
-**Wissenskorb** als clientseitige Sammler-Schicht über allen Quellen-Listen. `localStorage` mit versioniertem Schlüssel `sugw-wissenskorb-v1`, Cross-Tab-Sync via `storage`-Event, In-Tab-Updates via Custom-Event. „+"-Knopf in den Listen-Renderern (Quellen-Tabelle, Drill-Overlay, Brush-Drill); Korb-Icon mit Live-Badge im Nav (in `base.html` verankert, also auf jeder Seite); eigene Korb-Seite (`/korb.html`) mit Liste, Remove, Clear und CSV-Export (UTF-8 mit BOM, Excel-kompatibel). Eintrag in [[decisions#Wissenskorb als clientseitige Sammlung]].
+**Datenkorb** als clientseitige Sammler-Schicht über allen Quellen-Listen. `localStorage` mit versioniertem Schlüssel `sugw-basket-v1`, Cross-Tab-Sync via `storage`-Event, In-Tab-Updates via Custom-Event. „+"-Knopf in den Listen-Renderern (Quellen-Tabelle, Drill-Overlay, Brush-Drill); Korb-Icon mit Live-Badge im Nav (in `base.html` verankert, also auf jeder Seite); eigene Korb-Seite (`/korb.html`) mit Liste, Remove, Clear und CSV-Export (UTF-8 mit BOM, Excel-kompatibel). Eintrag in [[decisions#Datenkorb als clientseitige Sammlung]].
 
 Verworfen: Server-persistierter Korb mit Account. Anderer Stack (Auth, DSGVO, Speicherkosten) ohne erkennbaren Mehrwert für die jetzt bedienten Forschungsszenarien — der CSV-Export ist die Bridge in externe Werkzeuge (Zotero, BibTeX-Konverter, Excel). Verworfen auch ein Personen-Sammler in dieser Iteration: Personen tauchen aktuell nicht in den Visualisierungen auf, der Mehrwert läge erst nach den geplanten Personen-Profil-Drill-Pfaden vor.
 

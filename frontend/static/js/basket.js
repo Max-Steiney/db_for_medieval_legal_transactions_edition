@@ -1,18 +1,38 @@
 /* ==========================================================================
-   Knowledge basket — persistent collection of sources across sessions.
-   localStorage-based; a flat array of items keyed by type+id.
-   Nav badge updates via custom event 'basket-change'.
+   Data basket, persistent collection of sources, persons, and organisations
+   across sessions. localStorage-based; a flat array of items keyed by the
+   compound key "<type>:<id>". Nav badge updates via custom event
+   'basket-change'.
 
-   The UI label "Wissenskorb" stays German throughout — this is content of
-   the edition. Code-side symbols use the English term "basket" so the
-   source is consistent with the rest of the codebase.
+   Allowed types: 'source' | 'person' | 'org'.
+   Entries lacking a type field are treated as 'source' (backwards-compat
+   with the single-type basket that shipped first).
+
+   Derived entries (Phase 2): adding a source pulls in its annotated
+   persons / orgs as 'derived' entries via a per-source lookup
+   (data/docs_entities.json). Derived entries carry the source idnos
+   in their `src` array. A separate flag `gathered: true|false` keeps
+   the user-collected entries distinct from purely derived ones.
+
+       gathered === true   : explicitly added by the user via '+'
+       gathered === false  : purely derived (src is non-empty)
+
+   A manual '+' on a derived entry sets gathered=true (promotion). The
+   entry then survives when its source(s) get removed.
+
+   UI label is German ("Datenkorb"); code-side symbols use the English
+   "basket" so the source stays consistent with the rest of the codebase.
    ========================================================================== */
 
-let KnowledgeBasket = (function () {
+let DataBasket = (function () {
     'use strict';
 
     const KEY = 'sugw-basket-v1';
     const LEGACY_KEY = 'sugw-wissenskorb-v1';
+    const ALLOWED_TYPES = ['source', 'person', 'org'];
+    // Path to docs_entities.json relative to ROOT_PATH. Loaded lazily on
+    // the first source-add and cached on the window for the session.
+    const ENTITIES_URL = 'data/docs_entities.json';
 
     // One-shot migration from the original key name. Reads any existing
     // value under the legacy key, copies it to the new key (if the new key
@@ -28,84 +48,312 @@ let KnowledgeBasket = (function () {
         } catch (_) {}
     }
 
+    function normType(t) {
+        return ALLOWED_TYPES.indexOf(t) >= 0 ? t : 'source';
+    }
+    function key(type, id) {
+        return normType(type) + ':' + id;
+    }
+    function sameItem(a, b) {
+        return key(a.type, a.id) === key(b.type, b.id);
+    }
+
     function read() {
         try {
             const raw = localStorage.getItem(KEY);
             if (!raw) return [];
             const arr = JSON.parse(raw);
-            return Array.isArray(arr) ? arr : [];
+            if (!Array.isArray(arr)) return [];
+            // Migrate legacy items: assume source and gathered.
+            return arr.map(x => Object.assign(
+                { type: 'source', gathered: true, src: [] }, x
+            ));
         } catch (_) { return []; }
     }
     function write(items) {
         try {
             localStorage.setItem(KEY, JSON.stringify(items));
-            window.dispatchEvent(new CustomEvent('basket-change', { detail: { count: items.length } }));
+            window.dispatchEvent(new CustomEvent('basket-change',
+                { detail: { count: items.length } }));
         } catch (_) {}
     }
 
-    function itemKey(item) { return (item.type || 'source') + ':' + item.id; }
+    // Build a normalised entry for storage. Unknown fields are dropped
+    // per type so the CSV columns stay predictable.
+    function normalise(item) {
+        const type = normType(item.type);
+        const base = {
+            type:     type,
+            id:       item.id,
+            label:    item.label || item.id,
+            url:      item.url   || '',
+            gathered: item.gathered !== false,
+            src:      Array.isArray(item.src) ? item.src.slice() : [],
+        };
+        if (type === 'source') {
+            base.date   = item.date   || '';
+            base.coll   = item.coll   || '';
+            base.regest = item.regest || '';
+        } else if (type === 'person') {
+            base.sex        = item.sex        || '';
+            base.active_min = item.active_min || '';
+            base.active_max = item.active_max || '';
+        } else if (type === 'org') {
+            base.type_label = item.type_label || '';
+        }
+        return base;
+    }
 
+    function find(items, type, id) {
+        const k = key(type, id);
+        for (let i = 0; i < items.length; i++) {
+            if (key(items[i].type, items[i].id) === k) return i;
+        }
+        return -1;
+    }
+
+    // Public add. For sources, also pulls in their annotated entities
+    // as derived entries (async; uses cached lookup).
     function add(item) {
         if (!item || !item.id) return false;
         const items = read();
-        const k = itemKey(item);
-        if (items.some(x => itemKey(x) === k)) return false;
-        items.push({
-            type:  item.type || 'source',
-            id:    item.id,
-            label: item.label || item.id,
-            url:   item.url   || '',
-            date:  item.date  || '',
-            coll:  item.coll  || '',
-            regest: item.regest || '',
-            addedAt: new Date().toISOString(),
-        });
+        const idx = find(items, item.type, item.id);
+        if (idx >= 0) {
+            // Promotion path: user explicitly added an entry that was
+            // present (likely as derived). Mark as gathered.
+            const cur = items[idx];
+            if (!cur.gathered) {
+                cur.gathered = true;
+                write(items);
+            }
+            // If the user re-clicks '+' on an already-gathered source,
+            // refresh derived links anyway (idempotent).
+            if (normType(item.type) === 'source') attachDerived(item);
+            return false;
+        }
+        const entry = normalise(item);
+        entry.gathered = true; // direct add is always gathered
+        items.push(entry);
         write(items);
+        if (entry.type === 'source') attachDerived(entry);
         return true;
     }
+
+    // Public remove. For sources, also detaches their derived entries.
     function remove(type, id) {
         const items = read();
-        const k = (type || 'source') + ':' + id;
-        const filtered = items.filter(x => itemKey(x) !== k);
-        if (filtered.length === items.length) return false;
-        write(filtered);
+        const idx = find(items, type, id);
+        if (idx < 0) return false;
+        items.splice(idx, 1);
+        write(items);
+        if (normType(type) === 'source') detachDerived(id);
         return true;
     }
-    function toggle(item) {
-        return has(item.type, item.id) ? remove(item.type, item.id) : add(item);
-    }
-    function has(type, id) {
-        const k = (type || 'source') + ':' + id;
-        return read().some(x => itemKey(x) === k);
-    }
-    function list() { return read(); }
-    function count() { return read().length; }
-    function clear() { write([]); }
 
-    // Update nav badge. Called eagerly by core.js on page load, then
-    // reacts to changes within the session.
+    function toggle(item) {
+        // Toggle uses gathered semantics: a derived-only entry must be
+        // promotable via '+', not removable. So toggle 'removes' only if
+        // the entry is gathered; otherwise it promotes.
+        const items = read();
+        const idx = find(items, item.type, item.id);
+        if (idx >= 0 && items[idx].gathered) return remove(item.type, item.id);
+        return add(item);
+    }
+
+    function has(type, id) {
+        const items = read();
+        return find(items, type, id) >= 0;
+    }
+    // isGathered: entry exists and is gathered (vs. purely derived).
+    function isGathered(type, id) {
+        const items = read();
+        const idx = find(items, type, id);
+        return idx >= 0 && items[idx].gathered === true;
+    }
+    function list(type) {
+        const items = read();
+        if (!type) return items;
+        const t = normType(type);
+        return items.filter(x => normType(x.type) === t);
+    }
+    function count(type) {
+        return list(type).length;
+    }
+    // Gathered count per (optional) type.
+    function countGathered(type) {
+        return list(type).filter(x => x.gathered).length;
+    }
+    // Derived-only count per (optional) type.
+    function countDerived(type) {
+        return list(type).filter(x => !x.gathered).length;
+    }
+    function clear(type) {
+        if (!type) { write([]); return; }
+        const t = normType(type);
+        write(read().filter(x => normType(x.type) !== t));
+    }
+
+    // -------------- Derived attach / detach --------------
+    // The lookup is keyed by source idno: { "<idno>": { p: [...], o: [...] } }.
+    let entitiesCache = null;
+    let entitiesPromise = null;
+    function loadEntities() {
+        if (entitiesCache) return Promise.resolve(entitiesCache);
+        if (entitiesPromise) return entitiesPromise;
+        const root = (window.ROOT_PATH || '.');
+        entitiesPromise = fetch(root + '/' + ENTITIES_URL)
+            .then(r => r.ok ? r.json() : {})
+            .then(d => { entitiesCache = d || {}; return entitiesCache; })
+            .catch(() => { entitiesCache = {}; return entitiesCache; });
+        return entitiesPromise;
+    }
+
+    // For a freshly-added source, fetch the lookup and add its annotated
+    // persons / orgs as derived basket entries (gathered=false). If an
+    // entry already exists (gathered or derived), only add the source id
+    // to its `src` array.
+    function attachDerived(sourceItem) {
+        if (!sourceItem || normType(sourceItem.type) !== 'source') return;
+        const srcId = sourceItem.id;
+        loadEntities().then(map => {
+            const bucket = map[srcId];
+            if (!bucket) return;
+            const items = read();
+            let changed = false;
+            (bucket.p || []).forEach(p => {
+                changed = upsertDerived(items, 'person', {
+                    id:         p.id,
+                    label:      p.n || p.id,
+                    url:        'register/persons/' + encodeURIComponent(p.id) + '.html',
+                    sex:        p.sex || '',
+                    active_min: p.am  || '',
+                    active_max: p.ax  || '',
+                }, srcId) || changed;
+            });
+            (bucket.o || []).forEach(o => {
+                changed = upsertDerived(items, 'org', {
+                    id:         o.id,
+                    label:      o.n || o.id,
+                    url:        'register/orgs/' + encodeURIComponent(o.id) + '.html',
+                    type_label: o.tp || '',
+                }, srcId) || changed;
+            });
+            if (changed) write(items);
+        });
+    }
+
+    // Add a derived entry or register the source on an existing entry.
+    // Returns true if items was mutated.
+    function upsertDerived(items, type, base, srcId) {
+        const idx = find(items, type, base.id);
+        if (idx >= 0) {
+            const cur = items[idx];
+            if (cur.src.indexOf(srcId) === -1) {
+                cur.src.push(srcId);
+                return true;
+            }
+            return false;
+        }
+        const entry = normalise(Object.assign({}, base, {
+            type:     type,
+            gathered: false,
+            src:      [srcId],
+        }));
+        items.push(entry);
+        return true;
+    }
+
+    // When a source is removed, strip its id from every entry's src and
+    // drop entries that have neither gathered nor any remaining source.
+    function detachDerived(srcId) {
+        const items = read();
+        let changed = false;
+        for (let i = items.length - 1; i >= 0; i--) {
+            const it = items[i];
+            if (!it.src || it.src.length === 0) continue;
+            const pos = it.src.indexOf(srcId);
+            if (pos === -1) continue;
+            it.src.splice(pos, 1);
+            changed = true;
+            if (!it.gathered && it.src.length === 0) {
+                items.splice(i, 1);
+            }
+        }
+        if (changed) write(items);
+    }
+
+    // Update nav badge and the per-type breakdown tooltip on the nav-basket
+    // anchor. Called eagerly by core.js on page load, then reacts to changes
+    // within the session. The tooltip uses the shared [data-hint] hover
+    // machinery from hint.js -- one short line, no popover.
     function updateBadge() {
         const badge = document.getElementById('nav-basket-count');
-        if (!badge) return;
+        const anchor = badge ? badge.closest('.nav-basket') : null;
         const c = count();
-        badge.textContent = c > 0 ? String(c) : '';
-        badge.hidden = (c === 0);
+        if (badge) {
+            badge.textContent = c > 0 ? String(c) : '';
+            badge.hidden = (c === 0);
+        }
+        if (anchor) {
+            anchor.setAttribute('data-hint', breakdownText());
+        }
     }
 
-    // Markup helper: small "+"/check button that triggers the toggle.
-    // Caller inserts it into markup; clicks are handled via document-level
-    // event delegation in bindGlobalClicks().
+    // Build a compact, comma-separated breakdown:
+    //   "Datenkorb: 3 Quellen, 1 Person, 2 Organisationen.
+    //    Abgeleitet 8 weitere."
+    // The second sentence is suppressed if there are no derived entries.
+    function breakdownText() {
+        const gS = countGathered('source');
+        const gP = countGathered('person');
+        const gO = countGathered('org');
+        const dAll = countDerived();
+        if (gS + gP + gO + dAll === 0) return 'Datenkorb ist leer';
+        const parts = [];
+        if (gS) parts.push(gS === 1 ? '1 Quelle'       : gS + ' Quellen');
+        if (gP) parts.push(gP === 1 ? '1 Person'       : gP + ' Personen');
+        if (gO) parts.push(gO === 1 ? '1 Organisation' : gO + ' Organisationen');
+        let text = parts.length
+            ? 'Datenkorb: ' + parts.join(', ')
+            : 'Datenkorb: nichts gesammelt';
+        if (dAll) text += '. Abgeleitet ' + dAll + ' weitere';
+        return text;
+    }
+
+    // Markup helper: small "+" / "x" / "*" button.
+    // gathered  -> "x" (remove)
+    // derived   -> "*" (promote to gathered on click)
+    // absent    -> "+" (add as gathered)
+    // Tooltip uses the shared [data-hint] hover mechanism for parity
+    // with other site controls.
     function buttonHTML(item) {
-        const inBasket = has(item.type, item.id);
-        const label = inBasket
-            ? 'Aus Wissenskorb entfernen'
-            : 'In Wissenskorb legen';
-        const icon = inBasket ? '✓' : '+';
-        const cls  = 'basket-btn' + (inBasket ? ' is-in' : '');
-        const data = encodeURIComponent(JSON.stringify(item));
+        const type = normType(item.type);
+        const items = read();
+        const idx = find(items, type, item.id);
+        const present = idx >= 0;
+        const gathered = present && items[idx].gathered;
+        let icon, label, hint, cls = 'basket-btn';
+        if (gathered) {
+            icon = 'x';
+            label = 'Aus Datenkorb entfernen';
+            hint = 'Bereits gesammelt. Klick entfernt den Eintrag aus dem Datenkorb.';
+            cls += ' is-in';
+        } else if (present) {
+            icon = '*';
+            label = 'In den Datenkorb uebernehmen';
+            hint = 'Abgeleitet aus einer Quelle im Datenkorb. Klick uebernimmt diesen Eintrag als gesammelt, sodass er auch nach Entfernen der Quelle bleibt.';
+            cls += ' is-derived';
+        } else {
+            icon = '+';
+            label = 'Zum Datenkorb hinzufuegen';
+            hint = 'Eintrag in den Datenkorb aufnehmen.';
+        }
+        const payload = Object.assign({}, item, { type: type });
+        const data = encodeURIComponent(JSON.stringify(payload));
         return `<button type="button" class="${cls}"
             data-basket-item="${data}"
-            aria-label="${label}" title="${label}">${icon}</button>`;
+            data-hint="${hint}"
+            aria-label="${label}">${icon}</button>`;
     }
 
     function bindGlobalClicks() {
@@ -117,18 +365,35 @@ let KnowledgeBasket = (function () {
             try {
                 const item = JSON.parse(decodeURIComponent(btn.dataset.basketItem));
                 toggle(item);
-                // Visual toggle: class + icon, without a re-render.
-                const inBasket = has(item.type, item.id);
-                btn.classList.toggle('is-in', inBasket);
-                btn.textContent = inBasket ? '✓' : '+';
-                const lab = inBasket ? 'Aus Wissenskorb entfernen' : 'In Wissenskorb legen';
+                // Refresh button visual state.
+                const items = read();
+                const idx = find(items, item.type, item.id);
+                const present = idx >= 0;
+                const gathered = present && items[idx].gathered;
+                btn.classList.toggle('is-in', !!gathered);
+                btn.classList.toggle('is-derived', present && !gathered);
+                let icon, lab, hint;
+                if (gathered) {
+                    icon = 'x';
+                    lab = 'Aus Datenkorb entfernen';
+                    hint = 'Bereits gesammelt. Klick entfernt den Eintrag aus dem Datenkorb.';
+                } else if (present) {
+                    icon = '*';
+                    lab = 'In den Datenkorb uebernehmen';
+                    hint = 'Abgeleitet aus einer Quelle im Datenkorb. Klick uebernimmt diesen Eintrag als gesammelt, sodass er auch nach Entfernen der Quelle bleibt.';
+                } else {
+                    icon = '+';
+                    lab = 'Zum Datenkorb hinzufuegen';
+                    hint = 'Eintrag in den Datenkorb aufnehmen.';
+                }
+                btn.textContent = icon;
                 btn.setAttribute('aria-label', lab);
-                btn.setAttribute('title', lab);
+                btn.setAttribute('data-hint', hint);
+                btn.removeAttribute('title');
             } catch (_) {}
         });
         window.addEventListener('basket-change', updateBadge);
-        // Cross-tab sync: listen for localStorage changes from other tabs
-        // and refresh the badge.
+        // Cross-tab sync.
         window.addEventListener('storage', (e) => {
             if (e.key === KEY) updateBadge();
         });
@@ -147,7 +412,8 @@ let KnowledgeBasket = (function () {
     }
 
     return {
-        add, remove, toggle, has, list, count, clear,
-        updateBadge, buttonHTML,
+        add, remove, toggle, has, isGathered,
+        list, count, countGathered, countDerived,
+        clear, updateBadge, buttonHTML,
     };
 })();

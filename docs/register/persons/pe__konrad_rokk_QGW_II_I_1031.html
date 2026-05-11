@@ -3,22 +3,22 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <meta http-equiv="Content-Security-Policy" content="default-src 'self'; script-src 'self'; style-src 'self'; font-src 'self'; img-src 'self' data: https://images.monasterium.net https://www.monasterium.net; connect-src 'self'; frame-ancestors 'none'; base-uri 'self'; form-action 'self'; upgrade-insecure-requests">
+    <meta http-equiv="Content-Security-Policy" content="default-src 'self'; script-src 'self'; style-src 'self'; font-src 'self'; img-src 'self' data: https://images.monasterium.net https://www.monasterium.net; connect-src 'self'; base-uri 'self'; form-action 'self'; upgrade-insecure-requests">
     <meta name="referrer" content="strict-origin-when-cross-origin">
     <meta http-equiv="Permissions-Policy" content="camera=(), microphone=(), geolocation=(), interest-cohort=()">
     <title>Konrad Rokk, Datenbank</title>
     <link rel="preload" as="font" type="font/woff2" crossorigin
           href="../../static/fonts/inter-400-latin.woff2">
-    <link rel="stylesheet" href="../../static/css/fonts.css?v=20260511112948">
-    <link rel="stylesheet" href="../../static/css/tokens.css?v=20260511112948">
-    <link rel="stylesheet" href="../../static/css/base.css?v=20260511112948">
-    <link rel="stylesheet" href="../../static/css/components.css?v=20260511112948">
-    <link rel="stylesheet" href="../../static/css/responsive.css?v=20260511112948">
-    <link rel="stylesheet" href="../../static/css/print.css?v=20260511112948">
-    <link rel="stylesheet" href="../../static/css/provenance.css?v=20260511112948">
+    <link rel="stylesheet" href="../../static/css/fonts.css?v=20260511125458">
+    <link rel="stylesheet" href="../../static/css/tokens.css?v=20260511125458">
+    <link rel="stylesheet" href="../../static/css/base.css?v=20260511125458">
+    <link rel="stylesheet" href="../../static/css/components.css?v=20260511125458">
+    <link rel="stylesheet" href="../../static/css/responsive.css?v=20260511125458">
+    <link rel="stylesheet" href="../../static/css/print.css?v=20260511125458">
+    <link rel="stylesheet" href="../../static/css/tip.css?v=20260511125458">
     
-<link rel="stylesheet" href="../../static/css/document.css?v=20260511112948">
-<link rel="stylesheet" href="../../static/css/person.css?v=20260511112948">
+<link rel="stylesheet" href="../../static/css/document.css?v=20260511125458">
+<link rel="stylesheet" href="../../static/css/person.css?v=20260511125458">
 
 </head>
 <body data-root-path="../.."
@@ -48,8 +48,6 @@
         <a href="../../register/persons.html">Personen</a>
         
         <a href="../../register/orgs.html">Organisationen</a>
-        
-        <a href="../../register/places.html">Orte</a>
         
     </div>
 </div>
@@ -91,7 +89,7 @@
     </div>
 </div>
 
-                <a href="../../korb.html" class="nav-basket" aria-label="Wissenskorb">
+                <a href="../../korb.html" class="nav-basket" aria-label="Datenkorb">
                     <svg width="18" height="18" viewBox="0 0 18 18" fill="none" aria-hidden="true">
                         <path d="M3 5h12l-1.2 8.5a1 1 0 0 1-1 .85H5.2a1 1 0 0 1-1-.85L3 5z"
                               stroke="currentColor" stroke-width="1.4" fill="none"
@@ -112,11 +110,23 @@
 
     <div class="person-toolbar">
         <div class="person-toolbar-inner">
-            <nav class="person-breadcrumb" aria-label="Position">
-                <a href="../../register/persons.html">Personenregister</a>
-                <span class="bc-sep">&rsaquo;</span>
-                <span class="bc-doc"><strong>Konrad Rokk</strong></span>
-            </nav>
+            <div class="person-toolbar-row">
+                <nav class="person-breadcrumb" aria-label="Position">
+                    <a href="../../register/persons.html">Personenregister</a>
+                    <span class="bc-sep">&rsaquo;</span>
+                    <span class="bc-doc"><strong>Konrad Rokk</strong></span>
+                </nav>
+                <div class="person-toolbar-actions">
+                    <span class="toolbar-basket-mount"
+                          data-basket-type="person"
+                          data-basket-id="pe__konrad_rokk_QGW_II_I_1031"
+                          data-basket-label="Konrad Rokk"
+                          data-basket-url="register/persons/pe__konrad_rokk_QGW_II_I_1031.html"
+                          data-basket-sex="m"
+                          data-basket-active-min="1379"
+                          data-basket-active-max="1413"></span>
+                </div>
+            </div>
             <div class="person-toolbar-meta">
                 <span class="meta-pair">
                     <span class="meta-label">Geschlecht</span>
@@ -124,11 +134,41 @@
                 </span>
                 
                 <span class="meta-pair">
-                    <span class="meta-label">Belegt</span>
+                    <span class="meta-label">Belegt
+<span class="tip-wrap">
+    <button type="button" class="tip-trigger tip-trigger--icon"
+            aria-expanded="false" aria-haspopup="dialog"
+            aria-controls="person-belegt"
+            data-tip="person-belegt"
+            aria-label="Definition: Beleg-Zeitraum">
+        <svg width="13" height="13" viewBox="0 0 16 16" aria-hidden="true">
+            <circle cx="8" cy="8" r="7" stroke="currentColor" stroke-width="1.4" fill="none"/>
+            <text x="8" y="11.6" text-anchor="middle" font-size="9.5" font-weight="700"
+                  fill="currentColor" font-family="Georgia, serif">i</text>
+        </svg>
+    </button>
+    <aside class="tip-popover tip-popover--glossary"
+           id="person-belegt" role="dialog" aria-hidden="true"
+           aria-label="Definition: Beleg-Zeitraum">
+        <header class="tip-head">
+            <h3 class="tip-title">Beleg-Zeitraum</h3>
+            <button type="button" class="tip-close" aria-label="Schlie&szlig;en">&times;</button>
+        </header>
+        <div class="tip-body">
+            <p>Erste und letzte Datierung einer Quelle, in der die Person erscheint. Bei einzelnem Beleg wird nur ein Jahr angegeben.</p>
+            
+        </div>
+    </aside>
+</span>
+</span>
                     <span class="meta-value">1379 bis 1413</span>
                 </span>
                 
                 
+                <span class="meta-pair">
+                    <span class="meta-label">Quellen</span>
+                    <span class="meta-value">24</span>
+                </span>
                 <span class="meta-pair person-id-pair">
                     <span class="meta-label">ID</span>
                     <code class="meta-value person-id">pe__konrad_rokk_QGW_II_I_1031</code>
@@ -145,10 +185,11 @@
             
         </h1>
         
+        
         <p class="person-note">Münzmeister zu Wien, Ratsherr</p>
         
         
-        <p class="person-titles">
+        <p class="person-titles" data-collapsible="22">
             <span class="pt-label">In den Quellen genannt als</span>
             <span class="pt-chip">hern</span><span class="pt-chip">her</span><span class="pt-chip">herrn</span><span class="pt-chip">erbern|hern</span><span class="pt-chip">erbern</span>
         </p>
@@ -158,7 +199,44 @@
             <a class="ext-link" href="https://www.wienwiki.at/?curid=36796" target="_blank" rel="noopener noreferrer">Wien-Wiki: Konrad Rock der Ältere</a>
         </p>
         
+        
+        <p class="person-extlinks">
+            
+            <a class="ext-link" href="https://www.geschichtewiki.wien.gv.at/Special:URIResolver/?curid=36796" target="_blank" rel="noopener noreferrer">Authority-Eintrag</a>
+            
+        </p>
+        
     </header>
+
+    
+    <section class="role-strip" aria-label="Rollen in Rechtsgeschäften">
+        <h2 class="role-strip-title">Rollen in Rechtsgeschäften</h2>
+        <div class="role-strip-cells">
+            
+            <div class="role-cell role-cell-issuer">
+                <span class="role-cell-count">5</span>
+                <span class="role-cell-label">Aussteller*in</span>
+            </div>
+            
+            <div class="role-cell role-cell-recipient">
+                <span class="role-cell-count">3</span>
+                <span class="role-cell-label">Empfänger*in</span>
+            </div>
+            
+            <div class="role-cell role-cell-witness">
+                <span class="role-cell-count">15</span>
+                <span class="role-cell-label">Zeuge / Siegler*in</span>
+            </div>
+            
+            <div class="role-cell role-cell-other">
+                <span class="role-cell-count">5</span>
+                <span class="role-cell-label">Sonstige</span>
+            </div>
+            
+        </div>
+        <p class="role-strip-hint">Summe Rollen-Belegungen: 28. Mehrfach-Rollen pro Quelle sind möglich.</p>
+    </section>
+    
 
     
 
@@ -175,6 +253,7 @@
                 <span class="rel-block-count">3</span>
                 <span class="rel-block-hint">Verwandtschaftsverhältnisse, wie sie in den Quellen explizit benannt werden.</span>
             </header>
+            
             <table class="rel-table">
                 <thead>
                     <tr>
@@ -195,7 +274,7 @@
                         <td class="rel-col-label"><em>Schwagers</em></td>
                         <td class="rel-col-perspective">
                             
-                                Konrad Rokk → Johann Mosprunner
+                                Konrad Rokk &rsaquo; Johann Mosprunner
                             
                         </td>
                         <td class="rel-col-source">
@@ -214,7 +293,7 @@
                         <td class="rel-col-label"><em>Sohnes</em></td>
                         <td class="rel-col-perspective">
                             
-                                Konrad Rokk → Konrad Rottenmann
+                                Konrad Rokk &rsaquo; Konrad Rottenmann
                             
                         </td>
                         <td class="rel-col-source">
@@ -233,7 +312,7 @@
                         <td class="rel-col-label"><em>bruder</em></td>
                         <td class="rel-col-perspective">
                             
-                                Konrad Rokk → Johann Rokk
+                                Konrad Rokk &rsaquo; Johann Rokk
                             
                         </td>
                         <td class="rel-col-source">
@@ -259,6 +338,7 @@
                 <span class="rel-block-count">3</span>
                 <span class="rel-block-hint">Stellvertretungs-Beziehungen, z. B. handelt eine Person an Stelle einer anderen.</span>
             </header>
+            
             <table class="rel-table">
                 <thead>
                     <tr>
@@ -279,7 +359,7 @@
                         <td class="rel-col-label"><em>Ausrichter des Geschäfts</em></td>
                         <td class="rel-col-perspective">
                             
-                                Konrad Rokk → Albrecht
+                                Konrad Rokk &rsaquo; Albrecht
                             
                         </td>
                         <td class="rel-col-source">
@@ -298,7 +378,7 @@
                         <td class="rel-col-label"><em>anstat</em></td>
                         <td class="rel-col-perspective">
                             
-                                Konrad Rokk → Georg Rottenmann
+                                Konrad Rokk &rsaquo; Georg Rottenmann
                             
                         </td>
                         <td class="rel-col-source">
@@ -317,7 +397,7 @@
                         <td class="rel-col-label"><em>Geschäftsherr</em></td>
                         <td class="rel-col-perspective">
                             
-                                Konrad Rokk → Albrecht
+                                Konrad Rokk &rsaquo; Albrecht
                             
                         </td>
                         <td class="rel-col-source">
@@ -340,6 +420,7 @@
                 <span class="rel-block-count">21</span>
                 <span class="rel-block-hint">Berufs- oder Amtsbezeichnung in Bezug auf eine Institution.</span>
             </header>
+            
             <table class="rel-table">
                 <thead>
                     <tr>
@@ -360,7 +441,7 @@
                         <td class="rel-col-label"><em>rates der stat ze Wienne</em></td>
                         <td class="rel-col-perspective">
                             
-                                Konrad Rokk → Wien
+                                Konrad Rokk &rsaquo; Wien
                             
                         </td>
                         <td class="rel-col-source">
@@ -379,7 +460,7 @@
                         <td class="rel-col-label"><em>des rates der stat ze Wienn</em></td>
                         <td class="rel-col-perspective">
                             
-                                Konrad Rokk → Wien
+                                Konrad Rokk &rsaquo; Wien
                             
                         </td>
                         <td class="rel-col-source">
@@ -398,7 +479,7 @@
                         <td class="rel-col-label"><em>rates der stat ze Wienn</em></td>
                         <td class="rel-col-perspective">
                             
-                                Konrad Rokk → Wien
+                                Konrad Rokk &rsaquo; Wien
                             
                         </td>
                         <td class="rel-col-source">
@@ -417,7 +498,7 @@
                         <td class="rel-col-label"><em>rates der stat ze Wienn</em></td>
                         <td class="rel-col-perspective">
                             
-                                Konrad Rokk → Wien
+                                Konrad Rokk &rsaquo; Wien
                             
                         </td>
                         <td class="rel-col-source">
@@ -436,7 +517,7 @@
                         <td class="rel-col-label"><em>Ratsherr</em></td>
                         <td class="rel-col-perspective">
                             
-                                Konrad Rokk → Wien
+                                Konrad Rokk &rsaquo; Wien
                             
                         </td>
                         <td class="rel-col-source">
@@ -455,7 +536,7 @@
                         <td class="rel-col-label"><em>rates</em></td>
                         <td class="rel-col-perspective">
                             
-                                Konrad Rokk → Wien
+                                Konrad Rokk &rsaquo; Wien
                             
                         </td>
                         <td class="rel-col-source">
@@ -474,7 +555,7 @@
                         <td class="rel-col-label"><em>rates</em></td>
                         <td class="rel-col-perspective">
                             
-                                Konrad Rokk → Wien
+                                Konrad Rokk &rsaquo; Wien
                             
                         </td>
                         <td class="rel-col-source">
@@ -493,7 +574,7 @@
                         <td class="rel-col-label"><em>rats</em></td>
                         <td class="rel-col-perspective">
                             
-                                Konrad Rokk → Wien
+                                Konrad Rokk &rsaquo; Wien
                             
                         </td>
                         <td class="rel-col-source">
@@ -512,7 +593,7 @@
                         <td class="rel-col-label"><em>Bürger</em></td>
                         <td class="rel-col-perspective">
                             
-                                Konrad Rokk → Wien
+                                Konrad Rokk &rsaquo; Wien
                             
                         </td>
                         <td class="rel-col-source">
@@ -531,7 +612,7 @@
                         <td class="rel-col-label"><em>rat</em></td>
                         <td class="rel-col-perspective">
                             
-                                Konrad Rokk → Wien
+                                Konrad Rokk &rsaquo; Wien
                             
                         </td>
                         <td class="rel-col-source">
@@ -550,7 +631,7 @@
                         <td class="rel-col-label"><em>münzmaister</em></td>
                         <td class="rel-col-perspective">
                             
-                                Konrad Rokk → Herzogtum Österreich
+                                Konrad Rokk &rsaquo; Herzogtum Österreich
                             
                         </td>
                         <td class="rel-col-source">
@@ -569,7 +650,7 @@
                         <td class="rel-col-label"><em>münzmaister</em></td>
                         <td class="rel-col-perspective">
                             
-                                Konrad Rokk → Herzogtum Österreich
+                                Konrad Rokk &rsaquo; Herzogtum Österreich
                             
                         </td>
                         <td class="rel-col-source">
@@ -588,7 +669,7 @@
                         <td class="rel-col-label"><em>münzmaister</em></td>
                         <td class="rel-col-perspective">
                             
-                                Konrad Rokk → Herzogtum Österreich
+                                Konrad Rokk &rsaquo; Herzogtum Österreich
                             
                         </td>
                         <td class="rel-col-source">
@@ -607,7 +688,7 @@
                         <td class="rel-col-label"><em>Bürger</em></td>
                         <td class="rel-col-perspective">
                             
-                                Konrad Rokk → Wien
+                                Konrad Rokk &rsaquo; Wien
                             
                         </td>
                         <td class="rel-col-source">
@@ -626,7 +707,7 @@
                         <td class="rel-col-label"><em>Bürger</em></td>
                         <td class="rel-col-perspective">
                             
-                                Konrad Rokk → Wien
+                                Konrad Rokk &rsaquo; Wien
                             
                         </td>
                         <td class="rel-col-source">
@@ -645,7 +726,7 @@
                         <td class="rel-col-label"><em>purger</em></td>
                         <td class="rel-col-perspective">
                             
-                                Konrad Rokk → Wien
+                                Konrad Rokk &rsaquo; Wien
                             
                         </td>
                         <td class="rel-col-source">
@@ -664,7 +745,7 @@
                         <td class="rel-col-label"><em>Bürger</em></td>
                         <td class="rel-col-perspective">
                             
-                                Konrad Rokk → Wien
+                                Konrad Rokk &rsaquo; Wien
                             
                         </td>
                         <td class="rel-col-source">
@@ -683,7 +764,7 @@
                         <td class="rel-col-label"><em>munzzmaister</em></td>
                         <td class="rel-col-perspective">
                             
-                                Konrad Rokk → Wien
+                                Konrad Rokk &rsaquo; Wien
                             
                         </td>
                         <td class="rel-col-source">
@@ -702,7 +783,7 @@
                         <td class="rel-col-label"><em>ausrichter</em></td>
                         <td class="rel-col-perspective">
                             
-                                Konrad Rokk → pe__thomas_swaeml_QGW_II_I_1012
+                                Konrad Rokk &rsaquo; pe__thomas_swaeml_QGW_II_I_1012
                             
                         </td>
                         <td class="rel-col-source">
@@ -721,7 +802,7 @@
                         <td class="rel-col-label"><em>munzzmaister</em></td>
                         <td class="rel-col-perspective">
                             
-                                Konrad Rokk → Wien
+                                Konrad Rokk &rsaquo; Wien
                             
                         </td>
                         <td class="rel-col-source">
@@ -740,7 +821,7 @@
                         <td class="rel-col-label"><em>gesworner des rats</em></td>
                         <td class="rel-col-perspective">
                             
-                                Konrad Rokk → Wien
+                                Konrad Rokk &rsaquo; Wien
                             
                         </td>
                         <td class="rel-col-source">
@@ -758,18 +839,27 @@
         
         
         
+        
+        
+        
+        
+        
+        
     </section>
     
 
     
     <section class="person-sources" aria-label="Quellen mit Nennung">
         <h2 class="section-head">Quellen mit Nennung</h2>
+        
         <table class="person-source-table">
             <thead>
                 <tr>
                     <th scope="col" class="src-col-idno">Nr.</th>
                     <th scope="col" class="src-col-date">Datum</th>
                     <th scope="col" class="src-col-corpus">Quellenkorpus</th>
+                    <th scope="col" class="src-col-label">Bezeichnung</th>
+                    <th scope="col" class="src-col-role">Rolle</th>
                     <th scope="col" class="src-col-regest">Regest</th>
                 </tr>
             </thead>
@@ -779,6 +869,11 @@
                     <td class="src-col-idno"><a href="../../documents/QGW/Vienna_1177-1414_ready/966.html">966</a></td>
                     <td class="src-col-date">1379 VII 23</td>
                     <td class="src-col-corpus">QGW II/1 (1177–1414)</td>
+                    <td class="src-col-label"><em>-</em></td>
+                    <td class="src-col-role">
+                        <span class="role-chip role-chip-recipient">Empfänger*in</span>
+                        
+                    </td>
                     <td class="src-col-regest">Hanns an dem Chienmarkcht, purgermaister, und der rat gemain der stat ze Wienn bestätigen, dass vor ihnen der Wiener Bürger Chunrat der Rokk und Bürger Mert von Waidhofen mit den Wiener Bürgern…</td>
                 </tr>
             
@@ -786,6 +881,11 @@
                     <td class="src-col-idno"><a href="../../documents/QGW/Vienna_1177-1414_ready/1031.html">1031</a></td>
                     <td class="src-col-date">1382 V 24</td>
                     <td class="src-col-corpus">QGW II/1 (1177–1414)</td>
+                    <td class="src-col-label"><em>-</em></td>
+                    <td class="src-col-role">
+                        <span class="role-chip role-chip-issuer">Aussteller*in</span>
+                        
+                    </td>
                     <td class="src-col-regest">Chunrat der Rokk, des rates der stat ze Wienne , verschreibt Niclasen von Friesach auf allen seinen Gütern 14 lb dn., die dieser so lange geniessen solle, bis Chunrat oder seine Erben eine ewige…</td>
                 </tr>
             
@@ -793,6 +893,11 @@
                     <td class="src-col-idno"><a href="../../documents/QGW/Vienna_1177-1414_ready/1066.html">1066</a></td>
                     <td class="src-col-date">1384 IV 06</td>
                     <td class="src-col-corpus">QGW II/1 (1177–1414)</td>
+                    <td class="src-col-label"><em>hern</em></td>
+                    <td class="src-col-role">
+                        <span class="role-chip role-chip-recipient">Empfänger*in</span><span class="role-chip role-chip-other">Sonstige</span>
+                        
+                    </td>
                     <td class="src-col-regest">Paul der Wogendru/ezzel, purger ze Wienn , und Chlar, seine Hausfrau , verkaufen mit Handen des Bürgermeisters hern Pauln des Holzcha/euffels und des rates gemain der stat ze Wienn ihre Fleischbank,…</td>
                 </tr>
             
@@ -800,6 +905,11 @@
                     <td class="src-col-idno"><a href="../../documents/QGW/Vienna_1177-1414_ready/1088.html">1088</a></td>
                     <td class="src-col-date">1385 V 29</td>
                     <td class="src-col-corpus">QGW II/1 (1177–1414)</td>
+                    <td class="src-col-label"><em>-</em></td>
+                    <td class="src-col-role">
+                        <span class="role-chip role-chip-issuer">Aussteller*in</span><span class="role-chip role-chip-witness">Zeuge / Siegler*in</span>
+                        
+                    </td>
                     <td class="src-col-regest">Stephan der Leitner Ratsherr und Chunrat der Rokk, baid des rates der stat ze Wienn, beurkunden , dass, dass Janns Go/ell, Ludweig Rostauscher, Ulreich Angelpekch,.. der Litschauer und Jans der…</td>
                 </tr>
             
@@ -807,6 +917,11 @@
                     <td class="src-col-idno"><a href="../../documents/QGW/Vienna_1177-1414_ready/1089.html">1089</a></td>
                     <td class="src-col-date">1385 VI 09</td>
                     <td class="src-col-corpus">QGW II/1 (1177–1414)</td>
+                    <td class="src-col-label"><em>-</em></td>
+                    <td class="src-col-role">
+                        <span class="role-chip role-chip-other">Sonstige</span><span class="role-chip role-chip-witness">Zeuge / Siegler*in</span>
+                        
+                    </td>
                     <td class="src-col-regest">Diemuet, Chunrats hausvrow, Chunrats des vechter ze Wienn , verkauft mit Handen des Ritters hern Ulreichs des Tumbriczer, amptman des klosters ze Neunburch , ihren Weingarten, den ihr frow Pericht…</td>
                 </tr>
             
@@ -814,6 +929,11 @@
                     <td class="src-col-idno"><a href="../../documents/QGW/Vienna_1177-1414_ready/1094.html">1094</a></td>
                     <td class="src-col-date">1385 VIII 05</td>
                     <td class="src-col-corpus">QGW II/1 (1177–1414)</td>
+                    <td class="src-col-label"><em>hern</em></td>
+                    <td class="src-col-role">
+                        <span class="role-chip role-chip-witness">Zeuge / Siegler*in</span>
+                        
+                    </td>
                     <td class="src-col-regest">Maister Niclas, der ziegelprenner vor Kernertor ze Wienn , und Gedraut, seine Hausfrau , verkaufen mit Handen des Ritters hern Ulreichs des Tumbraczer, amptman des chlosters ze Neunburch , ihres…</td>
                 </tr>
             
@@ -821,6 +941,11 @@
                     <td class="src-col-idno"><a href="../../documents/QGW/Vienna_1177-1414_ready/1096.html">1096</a></td>
                     <td class="src-col-date">1385 XI 04</td>
                     <td class="src-col-corpus">QGW II/1 (1177–1414)</td>
+                    <td class="src-col-label"><em>hern</em></td>
+                    <td class="src-col-role">
+                        <span class="role-chip role-chip-witness">Zeuge / Siegler*in</span>
+                        
+                    </td>
                     <td class="src-col-regest">Hanns der Mosprunner, purger ze Wienne Ausrichter des Geschäfts Geschäftsherr , beurkundet, dass er als Ausrichter des Geschäftes seiner Mutter, . . der Mosprunnerinne , seiner Schwester Kathrem,…</td>
                 </tr>
             
@@ -828,6 +953,11 @@
                     <td class="src-col-idno"><a href="../../documents/QGW/Vienna_1177-1414_ready/1142.html">1142</a></td>
                     <td class="src-col-date">1388 II 01</td>
                     <td class="src-col-corpus">QGW II/1 (1177–1414)</td>
+                    <td class="src-col-label"><em>hern</em></td>
+                    <td class="src-col-role">
+                        <span class="role-chip role-chip-recipient">Empfänger*in</span>
+                        
+                    </td>
                     <td class="src-col-regest">Jacob der Zwaiphunt, purger ze Wienn, verkauft mit Handen hern Michels des Geuchramer, purgermaister und münzmaister, und des rates gemain der stat ze Wienn eine Fleischbank, die sein Vater Jacob der…</td>
                 </tr>
             
@@ -835,6 +965,11 @@
                     <td class="src-col-idno"><a href="../../documents/QGW/Vienna_1177-1414_ready/1172.html">1172</a></td>
                     <td class="src-col-date">1389 II 24</td>
                     <td class="src-col-corpus">QGW II/1 (1177–1414)</td>
+                    <td class="src-col-label"><em>-</em></td>
+                    <td class="src-col-role">
+                        <span class="role-chip role-chip-issuer">Aussteller*in</span><span class="role-chip role-chip-witness">Zeuge / Siegler*in</span>
+                        
+                    </td>
                     <td class="src-col-regest">Ulreich der Zink rat und Chunrat Rokk, baid rates der stat ze Wienn, beurkunden, dass Frau Lucei, Stephans witib Stephan des Nezeuger witib, für sich und ihren unmündigen Sohn Sohn Jansen an einem…</td>
                 </tr>
             
@@ -842,6 +977,11 @@
                     <td class="src-col-idno"><a href="../../documents/QGW/Vienna_1177-1414_ready/1176.html">1176</a></td>
                     <td class="src-col-date">1389 VII 08</td>
                     <td class="src-col-corpus">QGW II/1 (1177–1414)</td>
+                    <td class="src-col-label"><em>hern</em></td>
+                    <td class="src-col-role">
+                        <span class="role-chip role-chip-witness">Zeuge / Siegler*in</span>
+                        
+                    </td>
                     <td class="src-col-regest">Hainreich der Huetstokch und Kathrei, seine Hausfrau, setzen sich gegenseitig zu Erben ihres eingebrachten und erarbeiteten Gutes ein.</td>
                 </tr>
             
@@ -849,6 +989,11 @@
                     <td class="src-col-idno"><a href="../../documents/QGW/Vienna_1177-1414_ready/1189.html">1189</a></td>
                     <td class="src-col-date">1390 III 15</td>
                     <td class="src-col-corpus">QGW II/1 (1177–1414)</td>
+                    <td class="src-col-label"><em>-</em></td>
+                    <td class="src-col-role">
+                        <span class="role-chip role-chip-witness">Zeuge / Siegler*in</span>
+                        
+                    </td>
                     <td class="src-col-regest">Bürger Hainreich der Tanperger und Elsbet, seine Hausfrau, Bürger Chu/enrat der Tanperger, sein Vetter, und Dorothe, dessen Hausfrau, paid purger ze Linz, stellen einen Schuldbrief aus dem Ritter…</td>
                 </tr>
             
@@ -856,6 +1001,11 @@
                     <td class="src-col-idno"><a href="../../documents/QGW/Vienna_1177-1414_ready/1308.html">1308</a></td>
                     <td class="src-col-date">1395 VII 24</td>
                     <td class="src-col-corpus">QGW II/1 (1177–1414)</td>
+                    <td class="src-col-label"><em>-</em></td>
+                    <td class="src-col-role">
+                        <span class="role-chip role-chip-issuer">Aussteller*in</span><span class="role-chip role-chip-witness">Zeuge / Siegler*in</span>
+                        
+                    </td>
                     <td class="src-col-regest">Chunrat der Rokk rat und Peter der Gunzpurger, den man nennet den Schönaicher, baid des rats der stat zu Wienn, beurkunden als vom Rathe beauftragte tailer die Gütertheilung beauftragt vom rat der…</td>
                 </tr>
             
@@ -863,6 +1013,11 @@
                     <td class="src-col-idno"><a href="../../documents/Stadtbuecher/Band_1_1395-1400_ready/84.html">84</a></td>
                     <td class="src-col-date">1396 September 9</td>
                     <td class="src-col-corpus">Stadtbücher Bd. 1 (1395–1400)</td>
+                    <td class="src-col-label"><em>her</em></td>
+                    <td class="src-col-role">
+                        <span class="role-chip role-chip-other">Sonstige</span>
+                        
+                    </td>
                     <td class="src-col-regest">-</td>
                 </tr>
             
@@ -870,6 +1025,11 @@
                     <td class="src-col-idno"><a href="../../documents/Stadtbuecher/Band_1_1395-1400_ready/119.html">119</a></td>
                     <td class="src-col-date">1397 Februar 15</td>
                     <td class="src-col-corpus">Stadtbücher Bd. 1 (1395–1400)</td>
+                    <td class="src-col-label"><em>her</em></td>
+                    <td class="src-col-role">
+                        <span class="role-chip role-chip-other">Sonstige</span>
+                        
+                    </td>
                     <td class="src-col-regest">-</td>
                 </tr>
             
@@ -877,6 +1037,11 @@
                     <td class="src-col-idno"><a href="../../documents/QGW/Vienna_1177-1414_ready/1377.html">1377</a></td>
                     <td class="src-col-date">1397 XII 20</td>
                     <td class="src-col-corpus">QGW II/1 (1177–1414)</td>
+                    <td class="src-col-label"><em>herrn</em></td>
+                    <td class="src-col-role">
+                        <span class="role-chip role-chip-witness">Zeuge / Siegler*in</span>
+                        
+                    </td>
                     <td class="src-col-regest">Jorig der Gerung von Ne/awinchel und Elsbet, seine Hausfrau, geloben, gegen den Ritter hern Niclasen den Würffel, der den Aussteller wegen der vorflucht, die Beide von ihm getan haben, im Gefängnis…</td>
                 </tr>
             
@@ -884,6 +1049,11 @@
                     <td class="src-col-idno"><a href="../../documents/QGW/Vienna_1177-1414_ready/1386.html">1386</a></td>
                     <td class="src-col-date">1398 III 07</td>
                     <td class="src-col-corpus">QGW II/1 (1177–1414)</td>
+                    <td class="src-col-label"><em>-</em></td>
+                    <td class="src-col-role">
+                        <span class="role-chip role-chip-other">Sonstige</span>
+                        
+                    </td>
                     <td class="src-col-regest">Jacob der Dorn, purgermaister, und der rat gemain der stat zu Wienn beurkunden, dass Chunrat der Rokg, münzmaister zu Wienn, anstat Jorgen, des unmündigen Sohnes Chunrats von dem Rotenman an ainem…</td>
                 </tr>
             
@@ -891,6 +1061,11 @@
                     <td class="src-col-idno"><a href="../../documents/Stadtbuecher/Band_1_1395-1400_ready/334.html">334</a></td>
                     <td class="src-col-date">(1398 Juni 27, Wien)</td>
                     <td class="src-col-corpus">Stadtbücher Bd. 1 (1395–1400)</td>
+                    <td class="src-col-label"><em>erbern|hern</em></td>
+                    <td class="src-col-role">
+                        <span class="role-chip role-chip-witness">Zeuge / Siegler*in</span>
+                        
+                    </td>
                     <td class="src-col-regest">pr. sehr., 2 Zg., S (Indez: Item gescheftbrief Hansen des Siechten) Ich Hanns der Slecht, burger ze Wienn, vergich und tun kunt offenleich mit dem brief allen den, die in lesent oder horent lesen,…</td>
                 </tr>
             
@@ -898,6 +1073,11 @@
                     <td class="src-col-idno"><a href="../../documents/QGW/Vienna_1177-1414_ready/1406.html">1406</a></td>
                     <td class="src-col-date">1398 VIII 02</td>
                     <td class="src-col-corpus">QGW II/1 (1177–1414)</td>
+                    <td class="src-col-label"><em>-</em></td>
+                    <td class="src-col-role">
+                        <span class="role-chip role-chip-issuer">Aussteller*in</span><span class="role-chip role-chip-witness">Zeuge / Siegler*in</span>
+                        
+                    </td>
                     <td class="src-col-regest">Geschäftsherr Chunrat der Rokg, münzmaister ze Wienn, stiftet als Geschäftsherr Albrechts, Petreins des Schürls von Mürczzuschlag sun, eine ewige Messe auf sand Erasms altar, gelegen in der Gruft auf…</td>
                 </tr>
             
@@ -905,6 +1085,11 @@
                     <td class="src-col-idno"><a href="../../documents/Stadtbuecher/Band_1_1395-1400_ready/512.html">512</a></td>
                     <td class="src-col-date">1400 Januar 22</td>
                     <td class="src-col-corpus">Stadtbücher Bd. 1 (1395–1400)</td>
+                    <td class="src-col-label"><em>erbern</em></td>
+                    <td class="src-col-role">
+                        <span class="role-chip role-chip-witness">Zeuge / Siegler*in</span>
+                        
+                    </td>
                     <td class="src-col-regest">Einbr. 2 Zg. (Inde:e: Item frewntschaft Hainreich des Haubn~r) (fol.86v) Des phincztags nach sand Angnesen tag kam fur den rat der erber man Niclas der Perman und hat da beweist mit den erbern…</td>
                 </tr>
             
@@ -912,6 +1097,11 @@
                     <td class="src-col-idno"><a href="../../documents/QGW/Vienna_1177-1414_ready/1558.html">1558</a></td>
                     <td class="src-col-date">1403 IX 29</td>
                     <td class="src-col-corpus">QGW II/1 (1177–1414)</td>
+                    <td class="src-col-label"><em>-</em></td>
+                    <td class="src-col-role">
+                        <span class="role-chip role-chip-witness">Zeuge / Siegler*in</span>
+                        
+                    </td>
                     <td class="src-col-regest">Anna, des Stainpekchen witib, schafft für sich, ihren Wirth Hainreich got genade, ihren Vater Sighart den Goltstain got genade und ihre Mutter Agnes, den allen got genade, zu einem Jahrtage dem abt…</td>
                 </tr>
             
@@ -919,6 +1109,11 @@
                     <td class="src-col-idno"><a href="../../documents/QGW/Vienna_1177-1414_ready/1582.html">1582</a></td>
                     <td class="src-col-date">1404 IV 23</td>
                     <td class="src-col-corpus">QGW II/1 (1177–1414)</td>
+                    <td class="src-col-label"><em>-</em></td>
+                    <td class="src-col-role">
+                        <span class="role-chip role-chip-witness">Zeuge / Siegler*in</span>
+                        
+                    </td>
                     <td class="src-col-regest">Janns der Paur verzichtet zu Gunsten der Frau Christein, witib Stephans witib, des oler, des rechten swester sun er war, auf alle Güter, welche dieser sein vetter hinterlassen hat.</td>
                 </tr>
             
@@ -926,6 +1121,11 @@
                     <td class="src-col-idno"><a href="../../documents/QGW/Vienna_1177-1414_ready/1668.html">1668</a></td>
                     <td class="src-col-date">1406 IX 18</td>
                     <td class="src-col-corpus">QGW II/1 (1177–1414)</td>
+                    <td class="src-col-label"><em>-</em></td>
+                    <td class="src-col-role">
+                        <span class="role-chip role-chip-witness">Zeuge / Siegler*in</span>
+                        
+                    </td>
                     <td class="src-col-regest">Elspet tochter, Anntochter und Chlartochter, Maricharts töchter, des iricher von Ens, bestätigen, dass ihr Schwager SchwagerSchwagerUlreich der Schabenkes, purger ze Wienn, ihnen 50 lb dn. ausbezahlt…</td>
                 </tr>
             
@@ -933,6 +1133,11 @@
                     <td class="src-col-idno"><a href="../../documents/QGW/Vienna_1177-1414_ready/1907.html">1907</a></td>
                     <td class="src-col-date">1412 I 05</td>
                     <td class="src-col-corpus">QGW II/1 (1177–1414)</td>
+                    <td class="src-col-label"><em>-</em></td>
+                    <td class="src-col-role">
+                        
+                        -
+                    </td>
                     <td class="src-col-regest">Niclas der Nimervol, gesessen in der Lanntstrass vor Stubentor ze Wienn, und Anna, sein hausfrau, verkaufen mit Handen ihrer Grundfrau swester Annen der Heuningerinn, abbtessin der geistleichen fraun…</td>
                 </tr>
             
@@ -940,6 +1145,11 @@
                     <td class="src-col-idno"><a href="../../documents/QGW/Vienna_1177-1414_ready/1966.html">1966</a></td>
                     <td class="src-col-date">1413 X 23</td>
                     <td class="src-col-corpus">QGW II/1 (1177–1414)</td>
+                    <td class="src-col-label"><em>-</em></td>
+                    <td class="src-col-role">
+                        
+                        -
+                    </td>
                     <td class="src-col-regest">Paul der Würffel, münssmaister in Österreich, beurkundet, dass vor ihm in offenem Gerichte Hocz, der Jud ze Wienn, mit Vorsprechen auf hern Hannsen des Rokken seligen halbe wechselpankch, dakegen der…</td>
                 </tr>
             
@@ -972,11 +1182,13 @@
         </div>
     </footer>
 
-    <script src="../../static/js/core.js?v=20260511112948"></script>
-    <script src="../../static/js/provenance.js?v=20260511112948"></script>
-    <script src="../../static/js/basket.js?v=20260511112948"></script>
+    <script src="../../static/js/core.js?v=20260511125458"></script>
+    <script src="../../static/js/tip.js?v=20260511125458"></script>
+    <script src="../../static/js/hint.js?v=20260511125458"></script>
+    <script src="../../static/js/basket.js?v=20260511125458"></script>
     
-<script src="../../static/js/tooltips.js?v=20260511112948"></script>
+<script src="../../static/js/profile.js?v=20260511125458"></script>
+<script src="../../static/js/basket-mount.js?v=20260511125458"></script>
 
 </body>
 </html>

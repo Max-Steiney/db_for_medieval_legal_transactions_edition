@@ -3,21 +3,21 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <meta http-equiv="Content-Security-Policy" content="default-src 'self'; script-src 'self'; style-src 'self'; font-src 'self'; img-src 'self' data: https://images.monasterium.net https://www.monasterium.net; connect-src 'self'; frame-ancestors 'none'; base-uri 'self'; form-action 'self'; upgrade-insecure-requests">
+    <meta http-equiv="Content-Security-Policy" content="default-src 'self'; script-src 'self'; style-src 'self'; font-src 'self'; img-src 'self' data: https://images.monasterium.net https://www.monasterium.net; connect-src 'self'; base-uri 'self'; form-action 'self'; upgrade-insecure-requests">
     <meta name="referrer" content="strict-origin-when-cross-origin">
     <meta http-equiv="Permissions-Policy" content="camera=(), microphone=(), geolocation=(), interest-cohort=()">
     <title>Nr. 247 (1342 X 31), Datenbank</title>
     <link rel="preload" as="font" type="font/woff2" crossorigin
           href="../../../static/fonts/inter-400-latin.woff2">
-    <link rel="stylesheet" href="../../../static/css/fonts.css?v=20260511112948">
-    <link rel="stylesheet" href="../../../static/css/tokens.css?v=20260511112948">
-    <link rel="stylesheet" href="../../../static/css/base.css?v=20260511112948">
-    <link rel="stylesheet" href="../../../static/css/components.css?v=20260511112948">
-    <link rel="stylesheet" href="../../../static/css/responsive.css?v=20260511112948">
-    <link rel="stylesheet" href="../../../static/css/print.css?v=20260511112948">
-    <link rel="stylesheet" href="../../../static/css/provenance.css?v=20260511112948">
+    <link rel="stylesheet" href="../../../static/css/fonts.css?v=20260511125458">
+    <link rel="stylesheet" href="../../../static/css/tokens.css?v=20260511125458">
+    <link rel="stylesheet" href="../../../static/css/base.css?v=20260511125458">
+    <link rel="stylesheet" href="../../../static/css/components.css?v=20260511125458">
+    <link rel="stylesheet" href="../../../static/css/responsive.css?v=20260511125458">
+    <link rel="stylesheet" href="../../../static/css/print.css?v=20260511125458">
+    <link rel="stylesheet" href="../../../static/css/tip.css?v=20260511125458">
     
-<link rel="stylesheet" href="../../../static/css/document.css?v=20260511112948">
+<link rel="stylesheet" href="../../../static/css/document.css?v=20260511125458">
 <link rel="canonical" href="documents/QGW/Vienna_1177-1414_ready/247.html">
 <meta name="citation_title" content="Nr. 247 (1342 X 31)">
 <meta name="citation_collection" content="QGW II/1 (1177–1414)">
@@ -50,8 +50,6 @@
         <a href="../../../register/persons.html">Personen</a>
         
         <a href="../../../register/orgs.html">Organisationen</a>
-        
-        <a href="../../../register/places.html">Orte</a>
         
     </div>
 </div>
@@ -93,7 +91,7 @@
     </div>
 </div>
 
-                <a href="../../../korb.html" class="nav-basket" aria-label="Wissenskorb">
+                <a href="../../../korb.html" class="nav-basket" aria-label="Datenkorb">
                     <svg width="18" height="18" viewBox="0 0 18 18" fill="none" aria-hidden="true">
                         <path d="M3 5h12l-1.2 8.5a1 1 0 0 1-1 .85H5.2a1 1 0 0 1-1-.85L3 5z"
                               stroke="currentColor" stroke-width="1.4" fill="none"
@@ -140,7 +138,7 @@
                     
                     <span class="meta-pair">
                         <span class="meta-label">Quelle</span>
-                        <span class="meta-value" title="Quellen zur Geschichte der Stadt Wien, Bd. II/1, Nr. 247">Quellen zur Geschichte der Stadt Wien, Bd. II/1, Nr. 247</span>
+                        <span class="meta-value" data-hint="Quellen zur Geschichte der Stadt Wien, Bd. II/1, Nr. 247">Quellen zur Geschichte der Stadt Wien, Bd. II/1, Nr. 247</span>
                     </span>
                     
                 </div>
@@ -151,7 +149,7 @@
                     
                     <button type="button" class="legend-toggle"
                             data-layer="entities" aria-pressed="true"
-                            title="Entitäten ein-/ausblenden">
+                            data-hint="Entitäten ein-/ausblenden">
                         <span class="legend-toggle-dots">
                             <span class="legend-swatch swatch-person"></span><span class="legend-swatch swatch-org"></span><span class="legend-swatch swatch-place"></span>
                         </span>
@@ -160,7 +158,7 @@
                     
                     <button type="button" class="legend-toggle"
                             data-layer="functions" aria-pressed="true"
-                            title="Funktionsrollen ein-/ausblenden">
+                            data-hint="Funktionsrollen ein-/ausblenden">
                         <span class="legend-toggle-dots">
                             <span class="legend-swatch swatch-fn-issuer"></span><span class="legend-swatch swatch-fn-recipient"></span><span class="legend-swatch swatch-fn-witness"></span>
                         </span>
@@ -169,7 +167,7 @@
                     
                     <button type="button" class="legend-toggle"
                             data-layer="attributes" aria-pressed="true"
-                            title="Attribute ein-/ausblenden">
+                            data-hint="Attribute ein-/ausblenden">
                         <span class="legend-toggle-dots">
                             <span class="legend-swatch swatch-attr"></span><span class="legend-swatch swatch-add"></span>
                         </span>
@@ -178,7 +176,7 @@
                     
                     <button type="button" class="legend-toggle"
                             data-layer="triggers" aria-pressed="true"
-                            title="Dispositivformel ein-/ausblenden">
+                            data-hint="Dispositivformel ein-/ausblenden">
                         <span class="legend-toggle-dots">
                             <span class="legend-swatch swatch-trigger"></span>
                         </span>
@@ -190,21 +188,29 @@
                 <div class="doc-toolbar-actions">
                     <a class="toolbar-btn" href="../../../tei/QGW/Vienna_1177-1414_ready/247.xml"
                        download="247.xml"
-                       aria-label="TEI-XML herunterladen" title="TEI-XML herunterladen"><svg viewBox="0 0 16 16" width="16" height="16" aria-hidden="true"><path fill="none" stroke="currentColor" stroke-width="1.4" stroke-linecap="round" stroke-linejoin="round" d="M8 2v8m0 0l-3-3m3 3l3-3M3 13h10"/></svg></a>
+                       aria-label="TEI-XML herunterladen" data-hint="TEI-XML herunterladen"><svg viewBox="0 0 16 16" width="16" height="16" aria-hidden="true"><path fill="none" stroke="currentColor" stroke-width="1.4" stroke-linecap="round" stroke-linejoin="round" d="M8 2v8m0 0l-3-3m3 3l3-3M3 13h10"/></svg></a>
                     <button class="toolbar-btn" id="cite-toggle" aria-expanded="false"
-                            aria-label="Zitation kopieren" title="Zitation kopieren"><svg viewBox="0 0 16 16" width="16" height="16" aria-hidden="true"><rect x="4" y="2" width="8" height="11" rx="1" fill="none" stroke="currentColor" stroke-width="1.4"/><path d="M6 1.5h4a0.5 0.5 0 0 1 0.5 0.5v1a0.5 0.5 0 0 1-0.5 0.5H6a0.5 0.5 0 0 1-0.5-0.5V2A0.5 0.5 0 0 1 6 1.5z" fill="currentColor"/><path d="M6.5 6.5h3M6.5 8.5h3M6.5 10.5h2" stroke="currentColor" stroke-width="1" stroke-linecap="round"/></svg></button>
+                            aria-label="Zitation kopieren" data-hint="Zitation kopieren"><svg viewBox="0 0 16 16" width="16" height="16" aria-hidden="true"><rect x="4" y="2" width="8" height="11" rx="1" fill="none" stroke="currentColor" stroke-width="1.4"/><path d="M6 1.5h4a0.5 0.5 0 0 1 0.5 0.5v1a0.5 0.5 0 0 1-0.5 0.5H6a0.5 0.5 0 0 1-0.5-0.5V2A0.5 0.5 0 0 1 6 1.5z" fill="currentColor"/><path d="M6.5 6.5h3M6.5 8.5h3M6.5 10.5h2" stroke="currentColor" stroke-width="1" stroke-linecap="round"/></svg></button>
                     <div class="cite-popover hidden" id="cite-popover"></div>
+                    <span class="toolbar-basket-mount"
+                          data-basket-type="source"
+                          data-basket-id="247"
+                          data-basket-label="247"
+                          data-basket-url="documents/QGW/Vienna_1177-1414_ready/247.html"
+                          data-basket-date="1342-10-31"
+                          data-basket-coll="QGW II/1 (1177–1414)"
+                          data-basket-regest="Chunrat der Wiltwercher, purgermaister ze Wienne, beurkundet seinen letzten Willen. Er schafft: 1. seiner Hausfrau vrown Mergarten: a) einen weingarten, der da leit an dem Nussperg, haisset der…"></span>
                     
 <nav class="doc-paging doc-paging-inline" aria-label="Quellen-Navigation">
     
     <a href="../../../documents/QGW/Vienna_1177-1414_ready/246.html" class="toolbar-btn doc-paging-prev"
        aria-label="Vorherige Quelle: Nr. 246"
-       title="Vorherige Quelle: Nr. 246"><svg viewBox="0 0 16 16" width="16" height="16" aria-hidden="true"><path fill="none" stroke="currentColor" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round" d="M10 3l-5 5 5 5"/></svg></a>
+       data-hint="Vorherige Quelle: Nr. 246"><svg viewBox="0 0 16 16" width="16" height="16" aria-hidden="true"><path fill="none" stroke="currentColor" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round" d="M10 3l-5 5 5 5"/></svg></a>
     
     
     <a href="../../../documents/QGW/Vienna_1177-1414_ready/248.html" class="toolbar-btn doc-paging-next"
        aria-label="Nächste Quelle: Nr. 248"
-       title="Nächste Quelle: Nr. 248"><svg viewBox="0 0 16 16" width="16" height="16" aria-hidden="true"><path fill="none" stroke="currentColor" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round" d="M6 3l5 5-5 5"/></svg></a>
+       data-hint="Nächste Quelle: Nr. 248"><svg viewBox="0 0 16 16" width="16" height="16" aria-hidden="true"><path fill="none" stroke="currentColor" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round" d="M6 3l5 5-5 5"/></svg></a>
     
 </nav>
 
@@ -219,9 +225,9 @@
         <!-- Document body (rendered TEI) -->
         <div class="doc-body">
             <section class="tei-abstract"><h2 class="tei-section-head">Regest</h2><p><span class="anno-event" data-ref="ev__QGW_II_I_247">
-                  <span class="anno-fn anno-fn-issuer" data-role="issuer"><span class="fn-label">Aussteller*in</span><a class="anno-person" data-ref="pe__konrad_wiltwercher_QGW_II_I_204" title="Konrad Wiltwercher in dem Tuemprost(hof) († 12.03.1344) [pe__konrad_wiltwercher_QGW_II_I_204]" href="../../../register/persons/pe__konrad_wiltwercher_QGW_II_I_204.html">Chunrat der Wiltwercher, <span class="anno-attr anno-attr-occ" data-corresp="org__wien">purgermaister</span> ze
+                  <span class="anno-fn anno-fn-issuer" data-role="issuer"><span class="fn-label">Aussteller*in</span><a class="anno-person" data-ref="pe__konrad_wiltwercher_QGW_II_I_204" data-hint="Konrad Wiltwercher in dem Tuemprost(hof) († 12.03.1344) [pe__konrad_wiltwercher_QGW_II_I_204]" data-hint-type="Person" href="../../../register/persons/pe__konrad_wiltwercher_QGW_II_I_204.html">Chunrat der Wiltwercher, <span class="anno-attr anno-attr-occ" data-corresp="org__wien">purgermaister</span> ze
                      Wienne</a></span>, <span class="anno-trigger anno-trigger-disp">beurkundet seinen letzten
-                     Willen</span>.<span class="anno-trigger anno-trigger-disp"> Er schafft</span>: 1. <span class="anno-fn anno-fn-recipient" data-role="recipient"><span class="fn-label">Empfänger*in</span><a class="anno-person" data-ref="pe__margarethe_QGW_II_I_204" title="Margarethe Wiltwercherin [pe__margarethe_QGW_II_I_204]" href="../../../register/persons/pe__margarethe_QGW_II_I_204.html">seiner <span class="anno-attr anno-attr-kin" data-corresp="pe__konrad_wiltwercher_QGW_II_I_204">Hausfrau</span>
+                     Willen</span>.<span class="anno-trigger anno-trigger-disp"> Er schafft</span>: 1. <span class="anno-fn anno-fn-recipient" data-role="recipient"><span class="fn-label">Empfänger*in</span><a class="anno-person" data-ref="pe__margarethe_QGW_II_I_204" data-hint="Margarethe Wiltwercherin [pe__margarethe_QGW_II_I_204]" data-hint-type="Person" href="../../../register/persons/pe__margarethe_QGW_II_I_204.html">seiner <span class="anno-attr anno-attr-kin" data-corresp="pe__konrad_wiltwercher_QGW_II_I_204">Hausfrau</span>
                         <span class="anno-attr anno-attr-title">vrown</span> Mergarten</a></span>: a) einen
                   weingarten, der da leit an dem Nussperg, haisset der Chienberger, b) einen
                   weingarten doselbs, haisset das Plehel, c) ainen paumgarten, gelegen vor Stubentor
@@ -231,33 +237,33 @@
                   der Arnoltsau f) ein halbes Joch Weingarten an der Lasterleiten g) den
                   gewantchelrer under den gewelbeten Lauben, den er von seinem Schwager Wilhalm um
                   100 lb dn. gelöst hatte 2. <span class="anno-trigger anno-trigger-disp">zu einer ewigen Messe
-                     </span>bei<span class="anno-fn anno-fn-recipient" data-role="recipient"><span class="fn-label">Empfänger*in</span><a class="anno-org" data-ref="org__wien-st_stephan" title="St. Stephan (Pfarr- und Domkirche) (Kirche_Kapelle) [org__wien-st_stephan]" href="../../../register/orgs/org__wien-st_stephan.html"> S. Stephan</a>, für die er <a class="anno-person" data-ref="pe__dietrich_QGW_II_I_247" title="Dietrich [pe__dietrich_QGW_II_I_247]" href="../../../register/persons/pe__dietrich_QGW_II_I_247.html">seinen <span class="anno-attr anno-attr-occ" data-corresp="pe__konrad_wiltwercher_QGW_II_I_204">Schreiber</span>
+                     </span>bei<span class="anno-fn anno-fn-recipient" data-role="recipient"><span class="fn-label">Empfänger*in</span><a class="anno-org" data-ref="org__wien-st_stephan" data-hint="St. Stephan (Pfarr- und Domkirche) (Kirche_Kapelle) [org__wien-st_stephan]" data-hint-type="Organisation" href="../../../register/orgs/org__wien-st_stephan.html"> S. Stephan</a>, für die er <a class="anno-person" data-ref="pe__dietrich_QGW_II_I_247" data-hint="Dietrich [pe__dietrich_QGW_II_I_247]" data-hint-type="Person" href="../../../register/persons/pe__dietrich_QGW_II_I_247.html">seinen <span class="anno-attr anno-attr-occ" data-corresp="pe__konrad_wiltwercher_QGW_II_I_204">Schreiber</span>
                         Dietreichen</a>, falls er Priester werden wolle, bestimmt</span>, 10 lb dn.
-                  geltes purchrechts, di da ligent auf des Hanikleins haus 3. <span class="anno-fn anno-fn-other" data-role="other"><span class="fn-label">Sonstige</span><span class="anno-trigger anno-trigger-fn">nach dem Wunsche</span> seiner <a class="anno-person" data-ref="pe__diemut_QGW_II_I_247" title="Diemut († 31.10.1342) [pe__diemut_QGW_II_I_247]" href="../../../register/persons/pe__diemut_QGW_II_I_247.html"><span class="anno-attr anno-attr-dead">verstorbenen</span>
-                        <span class="anno-attr anno-attr-kin" data-corresp="pe__konrad_wiltwercher_QGW_II_I_204">Töchter</span> Diemuet</a> und <a class="anno-person" data-ref="pe__kunigunde_QGW_II_I_247" title="Kunigunde († 31.10.1342) [pe__kunigunde_QGW_II_I_247]" href="../../../register/persons/pe__kunigunde_QGW_II_I_247.html">
+                  geltes purchrechts, di da ligent auf des Hanikleins haus 3. <span class="anno-fn anno-fn-other" data-role="other"><span class="fn-label">Sonstige</span><span class="anno-trigger anno-trigger-fn">nach dem Wunsche</span> seiner <a class="anno-person" data-ref="pe__diemut_QGW_II_I_247" data-hint="Diemut († 31.10.1342) [pe__diemut_QGW_II_I_247]" data-hint-type="Person" href="../../../register/persons/pe__diemut_QGW_II_I_247.html"><span class="anno-attr anno-attr-dead">verstorbenen</span>
+                        <span class="anno-attr anno-attr-kin" data-corresp="pe__konrad_wiltwercher_QGW_II_I_204">Töchter</span> Diemuet</a> und <a class="anno-person" data-ref="pe__kunigunde_QGW_II_I_247" data-hint="Kunigunde († 31.10.1342) [pe__kunigunde_QGW_II_I_247]" data-hint-type="Person" href="../../../register/persons/pe__kunigunde_QGW_II_I_247.html">
                         <span class="anno-attr anno-attr-dead"><span class="tei-add">verstorbenen</span></span>
                         <span class="anno-attr anno-attr-kin" data-corresp="pe__konrad_wiltwercher_QGW_II_I_204"><span class="tei-add">Töchter</span></span>Chunigunt</a></span>
-                  <span class="anno-trigger anno-trigger-disp">zu einer ewigen Messe</span> bei <span class="anno-fn anno-fn-recipient" data-role="recipient"><span class="fn-label">Empfänger*in</span><a class="anno-org" data-ref="org__wien-st_maria_magdalena_vor_dem_schottentor" title="St. Maria Magdalena (Augustinernonnenkloster vor dem Schottentor) Wien (Kloster_f) [org__wien-st_maria_magdalena_vor_dem_schottentor]" href="../../../register/orgs/org__wien-st_maria_magdalena_vor_dem_schottentor.html">S. Maria
+                  <span class="anno-trigger anno-trigger-disp">zu einer ewigen Messe</span> bei <span class="anno-fn anno-fn-recipient" data-role="recipient"><span class="fn-label">Empfänger*in</span><a class="anno-org" data-ref="org__wien-st_maria_magdalena_vor_dem_schottentor" data-hint="St. Maria Magdalena (Augustinernonnenkloster vor dem Schottentor) Wien (Kloster_f) [org__wien-st_maria_magdalena_vor_dem_schottentor]" data-hint-type="Organisation" href="../../../register/orgs/org__wien-st_maria_magdalena_vor_dem_schottentor.html">S. Maria
                         Magdalena</a></span> 6 lb dn. geltes purchrechtes, gelegen auf der padstuben
                   in der Schenchenstrass, 1 lb dn. geltes, gelegen ze Alss auf Praunbartes und des
                   Wiemer haus, 1 lb dn. geltes auch ze Alss auf Denchleins haus 4. <span class="anno-trigger anno-trigger-disp">zu Jahrtagen</span>, die an seinem Todestage begangen werden
-                  sollen: a) bei <span class="anno-fn anno-fn-recipient" data-role="recipient"><span class="fn-label">Empfänger*in</span><a class="anno-org" data-ref="org__wien-st_stephan" title="St. Stephan (Pfarr- und Domkirche) (Kirche_Kapelle) [org__wien-st_stephan]" href="../../../register/orgs/org__wien-st_stephan.html">S. Stephan</a></span> 5 lb dn. geltes purchrechts,
+                  sollen: a) bei <span class="anno-fn anno-fn-recipient" data-role="recipient"><span class="fn-label">Empfänger*in</span><a class="anno-org" data-ref="org__wien-st_stephan" data-hint="St. Stephan (Pfarr- und Domkirche) (Kirche_Kapelle) [org__wien-st_stephan]" data-hint-type="Organisation" href="../../../register/orgs/org__wien-st_stephan.html">S. Stephan</a></span> 5 lb dn. geltes purchrechts,
                   di da ligent auf der Schilcherin haus, b) hinz<span class="anno-fn anno-fn-recipient" data-role="recipient"><span class="fn-label">Empfänger*in</span>
-                     <a class="anno-org" data-ref="org__wien-heiligengeistspital" title="Heiligengeistspital (Spital_Siechenhaus) [org__wien-heiligengeistspital]" href="../../../register/orgs/org__wien-heiligengeistspital.html">dem Heiligen Geist</a>
+                     <a class="anno-org" data-ref="org__wien-heiligengeistspital" data-hint="Heiligengeistspital (Spital_Siechenhaus) [org__wien-heiligengeistspital]" data-hint-type="Organisation" href="../../../register/orgs/org__wien-heiligengeistspital.html">dem Heiligen Geist</a>
                   </span>enhalb der Prukke ze Wienn 3 lb dn. geltes purchrechtes, gelegen auf der
-                  Vassziecherin haus bei dem Rattprunn, c) hinz <span class="anno-fn anno-fn-recipient" data-role="recipient"><span class="fn-label">Empfänger*in</span><a class="anno-org" data-ref="org__heiligenkreuz-zisterzienser" title="Zisterzienser Heiligenkreuz (Kloster_m) [org__heiligenkreuz-zisterzienser]" href="../../../register/orgs/org__heiligenkreuz-zisterzienser.html">dem Heiligen
+                  Vassziecherin haus bei dem Rattprunn, c) hinz <span class="anno-fn anno-fn-recipient" data-role="recipient"><span class="fn-label">Empfänger*in</span><a class="anno-org" data-ref="org__heiligenkreuz-zisterzienser" data-hint="Zisterzienser Heiligenkreuz (Kloster_m) [org__heiligenkreuz-zisterzienser]" data-hint-type="Organisation" href="../../../register/orgs/org__heiligenkreuz-zisterzienser.html">dem Heiligen
                      Chreutz</a></span> an achthalben phenning 4 lb dn. geltes, gelegen auf
-                  weingarten auf der Ertpurch, d) <span class="anno-fn anno-fn-recipient" data-role="recipient"><span class="fn-label">Empfänger*in</span>hinz <a class="anno-org" data-ref="org__lilienfeld-zisterzienser" title="Zisterzienser Lilienfeld (Kloster_m) [org__lilienfeld-zisterzienser]" href="../../../register/orgs/org__lilienfeld-zisterzienser.html">Liligenveld</a>
-                  </span>3 lb dn. geltes, gelegen auf Weingärten auf der Ertpurch, e)<span class="anno-fn anno-fn-recipient" data-role="recipient"><span class="fn-label">Empfänger*in</span> hinz <a class="anno-org" data-ref="org__zwettl-zisterzienser" title="Zisterzienser Zwettl (Kloster_m) [org__zwettl-zisterzienser]" href="../../../register/orgs/org__zwettl-zisterzienser.html">Zwetel</a></span> 3 lb dn. geltes purchrechts, di da ligent auf Jacobs haus,
-                  des sneider, zenast des von Meissau haus 5. zwain junchfrowen, <span class="anno-fn anno-fn-recipient" data-role="recipient"><span class="fn-label">Empfänger*in</span><a class="anno-person" data-ref="pe__agnes_QGW_II_I_277" title="Agnes [pe__agnes_QGW_II_I_277]" href="../../../register/persons/pe__agnes_QGW_II_I_277.html">Agnes im <a class="anno-org" data-ref="org__wien-st_maria_magdalena_vor_dem_schottentor" title="St. Maria Magdalena (Augustinernonnenkloster vor dem Schottentor) Wien (Kloster_f) [org__wien-st_maria_magdalena_vor_dem_schottentor]" href="../../../register/orgs/org__wien-st_maria_magdalena_vor_dem_schottentor.html">
-                           Kloster S. Maria Magdalena</a></a></span> und <span class="anno-fn anno-fn-recipient" data-role="recipient"><span class="fn-label">Empfänger*in</span><a class="anno-person" data-ref="pe__kunigunde_QGW_II_I_277" title="Kunigunde [pe__kunigunde_QGW_II_I_277]" href="../../../register/persons/pe__kunigunde_QGW_II_I_277.html">Chunigunt</a> im <a class="anno-org" data-ref="org__wien-st_niklas_vor_dem_stubentor_zisterzienserinnen" title="St. Niklas (vor dem Stubentor) Wien (Kloster_f) [org__wien-st_niklas_vor_dem_stubentor_zisterzienserinnen]" href="../../../register/orgs/org__wien-st_niklas_vor_dem_stubentor_zisterzienserinnen.html">S.
+                  weingarten auf der Ertpurch, d) <span class="anno-fn anno-fn-recipient" data-role="recipient"><span class="fn-label">Empfänger*in</span>hinz <a class="anno-org" data-ref="org__lilienfeld-zisterzienser" data-hint="Zisterzienser Lilienfeld (Kloster_m) [org__lilienfeld-zisterzienser]" data-hint-type="Organisation" href="../../../register/orgs/org__lilienfeld-zisterzienser.html">Liligenveld</a>
+                  </span>3 lb dn. geltes, gelegen auf Weingärten auf der Ertpurch, e)<span class="anno-fn anno-fn-recipient" data-role="recipient"><span class="fn-label">Empfänger*in</span> hinz <a class="anno-org" data-ref="org__zwettl-zisterzienser" data-hint="Zisterzienser Zwettl (Kloster_m) [org__zwettl-zisterzienser]" data-hint-type="Organisation" href="../../../register/orgs/org__zwettl-zisterzienser.html">Zwetel</a></span> 3 lb dn. geltes purchrechts, di da ligent auf Jacobs haus,
+                  des sneider, zenast des von Meissau haus 5. zwain junchfrowen, <span class="anno-fn anno-fn-recipient" data-role="recipient"><span class="fn-label">Empfänger*in</span><a class="anno-person" data-ref="pe__agnes_QGW_II_I_277" data-hint="Agnes [pe__agnes_QGW_II_I_277]" data-hint-type="Person" href="../../../register/persons/pe__agnes_QGW_II_I_277.html">Agnes im <a class="anno-org" data-ref="org__wien-st_maria_magdalena_vor_dem_schottentor" data-hint="St. Maria Magdalena (Augustinernonnenkloster vor dem Schottentor) Wien (Kloster_f) [org__wien-st_maria_magdalena_vor_dem_schottentor]" data-hint-type="Organisation" href="../../../register/orgs/org__wien-st_maria_magdalena_vor_dem_schottentor.html">
+                           Kloster S. Maria Magdalena</a></a></span> und <span class="anno-fn anno-fn-recipient" data-role="recipient"><span class="fn-label">Empfänger*in</span><a class="anno-person" data-ref="pe__kunigunde_QGW_II_I_277" data-hint="Kunigunde [pe__kunigunde_QGW_II_I_277]" data-hint-type="Person" href="../../../register/persons/pe__kunigunde_QGW_II_I_277.html">Chunigunt</a> im <a class="anno-org" data-ref="org__wien-st_niklas_vor_dem_stubentor_zisterzienserinnen" data-hint="St. Niklas (vor dem Stubentor) Wien (Kloster_f) [org__wien-st_niklas_vor_dem_stubentor_zisterzienserinnen]" data-hint-type="Organisation" href="../../../register/orgs/org__wien-st_niklas_vor_dem_stubentor_zisterzienserinnen.html">S.
                         Niklaskloster</a></span>, je 12 sh. dn. geltes purchrechts, di da ligent auf
                   der Pleyerinn weingarten, der da leit ze Grinzing in dem Chirchgraben nach beider
-                  Ableben fallen je 12 sh. dn. dem entsprechenden Kloster zu 6. <span class="anno-fn anno-fn-recipient" data-role="recipient"><span class="fn-label">Empfänger*in</span><a class="anno-person" data-ref="pe__berthold_QGW_II_I_247" title="Berthold [pe__berthold_QGW_II_I_247]" href="../../../register/persons/pe__berthold_QGW_II_I_247.html">einem
+                  Ableben fallen je 12 sh. dn. dem entsprechenden Kloster zu 6. <span class="anno-fn anno-fn-recipient" data-role="recipient"><span class="fn-label">Empfänger*in</span><a class="anno-person" data-ref="pe__berthold_QGW_II_I_247" data-hint="Berthold [pe__berthold_QGW_II_I_247]" data-hint-type="Person" href="../../../register/persons/pe__berthold_QGW_II_I_247.html">einem
                            <span class="anno-attr anno-attr-occ" data-corresp="pe__konrad_wiltwercher_QGW_II_I_204">schueler</span>, haisset Perchtolt</a></span>, 2 lb dn. geltes
                   purchrechtes auf Dietreichs haus, des wagenchnechts, bei s. Petreins vreithof 7.
-                     <span class="anno-fn anno-fn-recipient" data-role="recipient"><span class="fn-label">Empfänger*in</span>seinen beiden <a class="anno-person" data-ref="pe__jakob_wiltwercher_QGW_II_I_247" title="Jakob Wiltwercher [pe__jakob_wiltwercher_QGW_II_I_247]" href="../../../register/persons/pe__jakob_wiltwercher_QGW_II_I_247.html"><span class="anno-attr anno-attr-kin" data-corresp="pe__konrad_wiltwercher_QGW_II_I_204">Kindern</span>,
-                        Jakob</a> und <a class="anno-person" data-ref="pe__anna_QGW_II_I_247" title="Anna [pe__anna_QGW_II_I_247]" href="../../../register/persons/pe__anna_QGW_II_I_247.html">
+                     <span class="anno-fn anno-fn-recipient" data-role="recipient"><span class="fn-label">Empfänger*in</span>seinen beiden <a class="anno-person" data-ref="pe__jakob_wiltwercher_QGW_II_I_247" data-hint="Jakob Wiltwercher [pe__jakob_wiltwercher_QGW_II_I_247]" data-hint-type="Person" href="../../../register/persons/pe__jakob_wiltwercher_QGW_II_I_247.html"><span class="anno-attr anno-attr-kin" data-corresp="pe__konrad_wiltwercher_QGW_II_I_204">Kindern</span>,
+                        Jakob</a> und <a class="anno-person" data-ref="pe__anna_QGW_II_I_247" data-hint="Anna [pe__anna_QGW_II_I_247]" data-hint-type="Person" href="../../../register/persons/pe__anna_QGW_II_I_247.html">
                         <span class="anno-attr anno-attr-kin" data-corresp="pe__konrad_wiltwercher_QGW_II_I_204"><span class="tei-add">Kindern</span></span>Anna</a></span>, a) alles über diese
                   Legate verbleibende Erbgut, es sei aigen oder lehen, es sei purchrecht,
                   perchrecht, es sein haeuser, weingarten, paumgarten oder wismad, wieso das genant
@@ -266,60 +272,60 @@
                   gechauft b) 2000 lb dn., di in gevallen sullen von der chlainen maut ze Stain c)
                   alle Lehen, die er von dem Herzog, dem Bischof von Passau oder dem Grafen von
                   Schaunberg hat, und die sie ungetheilt behalten sollen, bis sie selbst Erben
-                  haben 8. <span class="anno-fn anno-fn-recipient" data-role="recipient"><span class="fn-label">Empfänger*in</span><a class="anno-person" data-ref="pe__margarethe_QGW_II_I_204" title="Margarethe Wiltwercherin [pe__margarethe_QGW_II_I_204]" href="../../../register/persons/pe__margarethe_QGW_II_I_204.html">seiner <span class="anno-attr anno-attr-kin" data-corresp="pe__konrad_wiltwercher_QGW_II_I_204">Hausfrau</span>
+                  haben 8. <span class="anno-fn anno-fn-recipient" data-role="recipient"><span class="fn-label">Empfänger*in</span><a class="anno-person" data-ref="pe__margarethe_QGW_II_I_204" data-hint="Margarethe Wiltwercherin [pe__margarethe_QGW_II_I_204]" data-hint-type="Person" href="../../../register/persons/pe__margarethe_QGW_II_I_204.html">seiner <span class="anno-attr anno-attr-kin" data-corresp="pe__konrad_wiltwercher_QGW_II_I_204">Hausfrau</span>
                         Mergarten</a></span> alles andere fahrende Gut, wovon sie aber geben soll: a)
                   den Freunden seiner ersten Frau Alhait 400 lb dn. fur allen den tail, den seu
                   gehabt hieten an dem erbe, das ich gechauft han pei derselben vrown Alhaiten, b)
-                     <span class="anno-fn anno-fn-recipient" data-role="recipient"><span class="fn-label">Empfänger*in</span><a class="anno-org" data-ref="org__wien-buergerspital" title="Wiener Bürgerspital (Spital_Siechenhaus) [org__wien-buergerspital]" href="../../../register/orgs/org__wien-buergerspital.html">dem
+                     <span class="anno-fn anno-fn-recipient" data-role="recipient"><span class="fn-label">Empfänger*in</span><a class="anno-org" data-ref="org__wien-buergerspital" data-hint="Wiener Bürgerspital (Spital_Siechenhaus) [org__wien-buergerspital]" data-hint-type="Organisation" href="../../../register/orgs/org__wien-buergerspital.html">dem
                         Bürgerspital</a></span> den Zehent, den er zu Erdprust hat, c) den Dürftigen
                   im Spital vom Tage seines Ablebens an 3 Mut Weizen zu 30 Mahlen, 300 Ellen
                   Leintuch und zur Vertheilung an Arme 12 loden grabs tuechs, die man auf meiner
                   pare mit mir hinz chirchen tragen soll d) Beträge von 4 und 5 lb dn. an die
                   Chorherren von S. Stephan, in die Klöster und Spitäler e) seinen armen Freunden
-                  und Dienern: <span class="anno-fn anno-fn-recipient" data-role="recipient"><span class="fn-label">Empfänger*in</span><a class="anno-person" data-ref="pe__konrad_QGW_II_I_247" title="Konrad [pe__konrad_QGW_II_I_247]" href="../../../register/persons/pe__konrad_QGW_II_I_247.html">Chunraten, meinem <span class="anno-attr anno-attr-kin" data-corresp="pe__konrad_wiltwercher_QGW_II_I_204">sun</span><span class="anno-attr anno-attr-friend" data-corresp="pe__konrad_wiltwercher_QGW_II_I_204"><span class="tei-add">armer
+                  und Dienern: <span class="anno-fn anno-fn-recipient" data-role="recipient"><span class="fn-label">Empfänger*in</span><a class="anno-person" data-ref="pe__konrad_QGW_II_I_247" data-hint="Konrad [pe__konrad_QGW_II_I_247]" data-hint-type="Person" href="../../../register/persons/pe__konrad_QGW_II_I_247.html">Chunraten, meinem <span class="anno-attr anno-attr-kin" data-corresp="pe__konrad_wiltwercher_QGW_II_I_204">sun</span><span class="anno-attr anno-attr-friend" data-corresp="pe__konrad_wiltwercher_QGW_II_I_204"><span class="tei-add">armer
                               Freund</span></span><span class="anno-attr anno-attr-occ" data-corresp="pe__konrad_wiltwercher_QGW_II_I_204">
-                           <span class="tei-add">Diener</span></span></a></span>, 12 lb dn. <span class="anno-fn anno-fn-recipient" data-role="recipient"><span class="fn-label">Empfänger*in</span><a class="anno-person" data-ref="pe__heinrich_QGW_II_I_247" title="Heinrich Engelbrechts Bruder [pe__heinrich_QGW_II_I_247]" href="../../../register/persons/pe__heinrich_QGW_II_I_247.html">Hainreichen,<span class="anno-attr anno-attr-friend" data-corresp="pe__konrad_wiltwercher_QGW_II_I_204"><span class="tei-add">armer
+                           <span class="tei-add">Diener</span></span></a></span>, 12 lb dn. <span class="anno-fn anno-fn-recipient" data-role="recipient"><span class="fn-label">Empfänger*in</span><a class="anno-person" data-ref="pe__heinrich_QGW_II_I_247" data-hint="Heinrich Engelbrechts Bruder [pe__heinrich_QGW_II_I_247]" data-hint-type="Person" href="../../../register/persons/pe__heinrich_QGW_II_I_247.html">Hainreichen,<span class="anno-attr anno-attr-friend" data-corresp="pe__konrad_wiltwercher_QGW_II_I_204"><span class="tei-add">armer
                            Freund</span></span><span class="anno-attr anno-attr-occ" data-corresp="pe__konrad_wiltwercher_QGW_II_I_204">
                            <span class="tei-add">Diener</span></span>
-                        <a class="anno-person" data-ref="pe__engelbrecht_QGW_II_I_247" title="Engelbrecht [pe__engelbrecht_QGW_II_I_247]" href="../../../register/persons/pe__engelbrecht_QGW_II_I_247.html">Engelprechts</a>
-                        <span class="anno-attr anno-attr-kin" data-corresp="pe__engelbrecht_QGW_II_I_247">pruder</span>,</a></span> 5 lb dn. <span class="anno-fn anno-fn-recipient" data-role="recipient"><span class="fn-label">Empfänger*in</span><a class="anno-person" data-ref="pe__eberhard_QGW_II_I_247" title="Eberhard [pe__eberhard_QGW_II_I_247]" href="../../../register/persons/pe__eberhard_QGW_II_I_247.html">Eberharten <span class="anno-attr anno-attr-friend" data-corresp="pe__konrad_wiltwercher_QGW_II_I_204"><span class="tei-add">armer
+                        <a class="anno-person" data-ref="pe__engelbrecht_QGW_II_I_247" data-hint="Engelbrecht [pe__engelbrecht_QGW_II_I_247]" data-hint-type="Person" href="../../../register/persons/pe__engelbrecht_QGW_II_I_247.html">Engelprechts</a>
+                        <span class="anno-attr anno-attr-kin" data-corresp="pe__engelbrecht_QGW_II_I_247">pruder</span>,</a></span> 5 lb dn. <span class="anno-fn anno-fn-recipient" data-role="recipient"><span class="fn-label">Empfänger*in</span><a class="anno-person" data-ref="pe__eberhard_QGW_II_I_247" data-hint="Eberhard [pe__eberhard_QGW_II_I_247]" data-hint-type="Person" href="../../../register/persons/pe__eberhard_QGW_II_I_247.html">Eberharten <span class="anno-attr anno-attr-friend" data-corresp="pe__konrad_wiltwercher_QGW_II_I_204"><span class="tei-add">armer
                               Freund</span></span><span class="anno-attr anno-attr-occ" data-corresp="pe__konrad_wiltwercher_QGW_II_I_204">
-                           <span class="tei-add">Diener</span></span></a></span> 10 lb dn. <span class="anno-fn anno-fn-recipient" data-role="recipient"><span class="fn-label">Empfänger*in</span><a class="anno-person" data-ref="pe__konrad_spiegler_QGW_II_I_247" title="Konrad Spiegler [pe__konrad_spiegler_QGW_II_I_247]" href="../../../register/persons/pe__konrad_spiegler_QGW_II_I_247.html">Chunraten, dem spiegler <span class="anno-attr anno-attr-friend" data-corresp="pe__konrad_wiltwercher_QGW_II_I_204"><span class="tei-add">armer
+                           <span class="tei-add">Diener</span></span></a></span> 10 lb dn. <span class="anno-fn anno-fn-recipient" data-role="recipient"><span class="fn-label">Empfänger*in</span><a class="anno-person" data-ref="pe__konrad_spiegler_QGW_II_I_247" data-hint="Konrad Spiegler [pe__konrad_spiegler_QGW_II_I_247]" data-hint-type="Person" href="../../../register/persons/pe__konrad_spiegler_QGW_II_I_247.html">Chunraten, dem spiegler <span class="anno-attr anno-attr-friend" data-corresp="pe__konrad_wiltwercher_QGW_II_I_204"><span class="tei-add">armer
                            Freund</span></span><span class="anno-attr anno-attr-occ" data-corresp="pe__konrad_wiltwercher_QGW_II_I_204">
                            <span class="tei-add">Diener</span></span></a></span>, 10 lb dn.<span class="anno-fn anno-fn-recipient" data-role="recipient"><span class="fn-label">Empfänger*in</span>
-                     <a class="anno-person" data-ref="pe__heinrich_muelner_QGW_II_I_247" title="Heinrich Mülner [pe__heinrich_muelner_QGW_II_I_247]" href="../../../register/persons/pe__heinrich_muelner_QGW_II_I_247.html">Hainreichen, dem
+                     <a class="anno-person" data-ref="pe__heinrich_muelner_QGW_II_I_247" data-hint="Heinrich Mülner [pe__heinrich_muelner_QGW_II_I_247]" data-hint-type="Person" href="../../../register/persons/pe__heinrich_muelner_QGW_II_I_247.html">Hainreichen, dem
                            mulner<span class="anno-attr anno-attr-friend" data-corresp="pe__konrad_wiltwercher_QGW_II_I_204"><span class="tei-add">armer
                            Freund</span></span><span class="anno-attr anno-attr-occ" data-corresp="pe__konrad_wiltwercher_QGW_II_I_204">
                            <span class="tei-add">Diener</span></span>
-                     </a></span>, 5 lb dn. <span class="anno-fn anno-fn-recipient" data-role="recipient"><span class="fn-label">Empfänger*in</span><a class="anno-person" data-ref="pe__edlein_QGW_II_I_247_a" title="Edlein der pechin Tochter [pe__edlein_QGW_II_I_247_a]" href="../../../register/persons/pe__edlein_QGW_II_I_247_a.html">Edlein, der pechin tochter <span class="anno-attr anno-attr-friend" data-corresp="pe__konrad_wiltwercher_QGW_II_I_204"><span class="tei-add">armer
+                     </a></span>, 5 lb dn. <span class="anno-fn anno-fn-recipient" data-role="recipient"><span class="fn-label">Empfänger*in</span><a class="anno-person" data-ref="pe__edlein_QGW_II_I_247_a" data-hint="Edlein der pechin Tochter [pe__edlein_QGW_II_I_247_a]" data-hint-type="Person" href="../../../register/persons/pe__edlein_QGW_II_I_247_a.html">Edlein, der pechin tochter <span class="anno-attr anno-attr-friend" data-corresp="pe__konrad_wiltwercher_QGW_II_I_204"><span class="tei-add">armer
                               Freund</span></span><span class="anno-attr anno-attr-occ" data-corresp="pe__konrad_wiltwercher_QGW_II_I_204">
-                           <span class="tei-add">Diener</span></span></a></span>, 5 lb dn. <span class="anno-fn anno-fn-recipient" data-role="recipient"><span class="fn-label">Empfänger*in</span><a class="anno-person" data-ref="pe__edlein_QGW_II_I_247_b" title="Edlein Zullnerin [pe__edlein_QGW_II_I_247_b]" href="../../../register/persons/pe__edlein_QGW_II_I_247_b.html">Edlein, der
+                           <span class="tei-add">Diener</span></span></a></span>, 5 lb dn. <span class="anno-fn anno-fn-recipient" data-role="recipient"><span class="fn-label">Empfänger*in</span><a class="anno-person" data-ref="pe__edlein_QGW_II_I_247_b" data-hint="Edlein Zullnerin [pe__edlein_QGW_II_I_247_b]" data-hint-type="Person" href="../../../register/persons/pe__edlein_QGW_II_I_247_b.html">Edlein, der
                         Zullerin <span class="anno-attr anno-attr-friend" data-corresp="pe__konrad_wiltwercher_QGW_II_I_204"><span class="tei-add">armer
                            Freund</span></span><span class="anno-attr anno-attr-occ" data-corresp="pe__konrad_wiltwercher_QGW_II_I_204">
-                           <span class="tei-add">Diener</span></span></a></span>, 5 lb dn. <span class="anno-fn anno-fn-recipient" data-role="recipient"><span class="fn-label">Empfänger*in</span><a class="anno-person" data-ref="pe__edlein_QGW_II_I_247_c" title="Edlein die Friedrich mein Oheim inne hat [pe__edlein_QGW_II_I_247_c]" href="../../../register/persons/pe__edlein_QGW_II_I_247_c.html">Edlein,
+                           <span class="tei-add">Diener</span></span></a></span>, 5 lb dn. <span class="anno-fn anno-fn-recipient" data-role="recipient"><span class="fn-label">Empfänger*in</span><a class="anno-person" data-ref="pe__edlein_QGW_II_I_247_c" data-hint="Edlein die Friedrich mein Oheim inne hat [pe__edlein_QGW_II_I_247_c]" data-hint-type="Person" href="../../../register/persons/pe__edlein_QGW_II_I_247_c.html">Edlein,
                            <span class="anno-attr anno-attr-friend" data-corresp="pe__konrad_wiltwercher_QGW_II_I_204"><span class="tei-add">armer Freund</span></span><span class="anno-attr anno-attr-occ" data-corresp="pe__konrad_wiltwercher_QGW_II_I_204">
                            <span class="tei-add">Diener</span></span>
-                        <a class="anno-person" data-ref="pe__friedrich_QGW_II_I_247" title="Friedrich [pe__friedrich_QGW_II_I_247]" href="../../../register/persons/pe__friedrich_QGW_II_I_247.html">deu Fridreich mein oheim
-                           inne hat</a></a></span>, 1 lb dn. <span class="anno-fn anno-fn-recipient" data-role="recipient"><span class="fn-label">Empfänger*in</span><a class="anno-person" data-ref="pe__elisabeth_QGW_II_I_247" title="Elisabeth [pe__elisabeth_QGW_II_I_247]" href="../../../register/persons/pe__elisabeth_QGW_II_I_247.html">Elsel <span class="anno-attr anno-attr-friend" data-corresp="pe__konrad_wiltwercher_QGW_II_I_204"><span class="tei-add">armer
+                        <a class="anno-person" data-ref="pe__friedrich_QGW_II_I_247" data-hint="Friedrich [pe__friedrich_QGW_II_I_247]" data-hint-type="Person" href="../../../register/persons/pe__friedrich_QGW_II_I_247.html">deu Fridreich mein oheim
+                           inne hat</a></a></span>, 1 lb dn. <span class="anno-fn anno-fn-recipient" data-role="recipient"><span class="fn-label">Empfänger*in</span><a class="anno-person" data-ref="pe__elisabeth_QGW_II_I_247" data-hint="Elisabeth [pe__elisabeth_QGW_II_I_247]" data-hint-type="Person" href="../../../register/persons/pe__elisabeth_QGW_II_I_247.html">Elsel <span class="anno-attr anno-attr-friend" data-corresp="pe__konrad_wiltwercher_QGW_II_I_204"><span class="tei-add">armer
                            Freund</span></span><span class="anno-attr anno-attr-occ" data-corresp="pe__konrad_wiltwercher_QGW_II_I_204">
                            <span class="tei-add">Diener</span></span></a></span> 10 lb dn.<span class="anno-fn anno-fn-recipient" data-role="recipient"><span class="fn-label">Empfänger*in</span>
-                     <a class="anno-person" data-ref="pe__margarethe_QGW_II_I_247_a" title="Margarethe Pairin [pe__margarethe_QGW_II_I_247_a]" href="../../../register/persons/pe__margarethe_QGW_II_I_247_a.html">Margreten der Pairin
+                     <a class="anno-person" data-ref="pe__margarethe_QGW_II_I_247_a" data-hint="Margarethe Pairin [pe__margarethe_QGW_II_I_247_a]" data-hint-type="Person" href="../../../register/persons/pe__margarethe_QGW_II_I_247_a.html">Margreten der Pairin
                            <span class="anno-attr anno-attr-friend" data-corresp="pe__konrad_wiltwercher_QGW_II_I_204"><span class="tei-add">armer Freund</span></span><span class="anno-attr anno-attr-occ" data-corresp="pe__konrad_wiltwercher_QGW_II_I_204">
                            <span class="tei-add">Diener</span></span></a></span> 10 lb dn. <span class="anno-fn anno-fn-recipient" data-role="recipient"><span class="fn-label">Empfänger*in</span>
-                     <a class="anno-person" data-ref="pe__margarethe_QGW_II_I_247_b" title="Margarethe die Jungfrau [pe__margarethe_QGW_II_I_247_b]" href="../../../register/persons/pe__margarethe_QGW_II_I_247_b.html">Margreten, der <span class="anno-attr anno-attr-title">junchvrowen</span><span class="anno-attr anno-attr-friend" data-corresp="pe__konrad_wiltwercher_QGW_II_I_204"><span class="tei-add">armer
+                     <a class="anno-person" data-ref="pe__margarethe_QGW_II_I_247_b" data-hint="Margarethe die Jungfrau [pe__margarethe_QGW_II_I_247_b]" data-hint-type="Person" href="../../../register/persons/pe__margarethe_QGW_II_I_247_b.html">Margreten, der <span class="anno-attr anno-attr-title">junchvrowen</span><span class="anno-attr anno-attr-friend" data-corresp="pe__konrad_wiltwercher_QGW_II_I_204"><span class="tei-add">armer
                            Freund</span></span><span class="anno-attr anno-attr-occ" data-corresp="pe__konrad_wiltwercher_QGW_II_I_204">
                            <span class="tei-add">Diener</span></span>
-                     </a></span>, 5 lb dn. <span class="anno-fn anno-fn-recipient" data-role="recipient"><span class="fn-label">Empfänger*in</span><a class="anno-person" data-ref="pe__mathilde_QGW_II_I_247" title="Mathilde [pe__mathilde_QGW_II_I_247]" href="../../../register/persons/pe__mathilde_QGW_II_I_247.html">Mechtilten <span class="anno-attr anno-attr-friend" data-corresp="pe__konrad_wiltwercher_QGW_II_I_204"><span class="tei-add">armer
+                     </a></span>, 5 lb dn. <span class="anno-fn anno-fn-recipient" data-role="recipient"><span class="fn-label">Empfänger*in</span><a class="anno-person" data-ref="pe__mathilde_QGW_II_I_247" data-hint="Mathilde [pe__mathilde_QGW_II_I_247]" data-hint-type="Person" href="../../../register/persons/pe__mathilde_QGW_II_I_247.html">Mechtilten <span class="anno-attr anno-attr-friend" data-corresp="pe__konrad_wiltwercher_QGW_II_I_204"><span class="tei-add">armer
                            Freund</span></span><span class="anno-attr anno-attr-occ" data-corresp="pe__konrad_wiltwercher_QGW_II_I_204">
-                           <span class="tei-add">Diener</span></span></a></span> 5 lb dn. <span class="anno-fn anno-fn-recipient" data-role="recipient"><span class="fn-label">Empfänger*in</span><a class="anno-person" data-ref="pe__persel_QGW_II_I_247" title="Persel Erdingerin [pe__persel_QGW_II_I_247]" href="../../../register/persons/pe__persel_QGW_II_I_247.html">Perslein, der
+                           <span class="tei-add">Diener</span></span></a></span> 5 lb dn. <span class="anno-fn anno-fn-recipient" data-role="recipient"><span class="fn-label">Empfänger*in</span><a class="anno-person" data-ref="pe__persel_QGW_II_I_247" data-hint="Persel Erdingerin [pe__persel_QGW_II_I_247]" data-hint-type="Person" href="../../../register/persons/pe__persel_QGW_II_I_247.html">Perslein, der
                            Erdingerin<span class="anno-attr anno-attr-friend" data-corresp="pe__konrad_wiltwercher_QGW_II_I_204"><span class="tei-add">armer
                            Freund</span></span><span class="anno-attr anno-attr-occ" data-corresp="pe__konrad_wiltwercher_QGW_II_I_204">
                            <span class="tei-add">Diener</span></span>
                      </a></span>, 5 lb dn.</span>
             </p></section><section class="tei-seal"><h2 class="tei-section-head">Siegelbeschreibung</h2><p><span class="anno-event" data-ref="ev__QGW_II_I_247"><span class="anno-fn anno-fn-witness" data-role="witness"><span class="fn-label">Zeug*in</span>Besiegelt mit
-                     den Siegeln: 1. <a class="anno-person" data-ref="pe__konrad_wiltwercher_QGW_II_I_204" title="Konrad Wiltwercher in dem Tuemprost(hof) († 12.03.1344) [pe__konrad_wiltwercher_QGW_II_I_204]" href="../../../register/persons/pe__konrad_wiltwercher_QGW_II_I_204.html">des
-                        Ausstellers</a>, 2. <a class="anno-person" data-ref="pe__weichart_bei_den_minderbruedern_QGW_II_I_118" title="Weichart bei den Minderbrüdern bei den Minderbrüdern [pe__weichart_bei_den_minderbruedern_QGW_II_I_118]" href="../../../register/persons/pe__weichart_bei_den_minderbruedern_QGW_II_I_118.html"><span class="anno-attr anno-attr-title">hern</span> Weicharts pei den Minnern prudern</a>, 3.
-                        <a class="anno-person" data-ref="pe__dietrich_urbetsch_QGW_II_I_950" title="Dietrich Urbetsch [pe__dietrich_urbetsch_QGW_II_I_950]" href="../../../register/persons/pe__dietrich_urbetsch_QGW_II_I_950.html"><span class="anno-attr anno-attr-title">hern</span> Dietreichs des Urbetschen</a>, 4. <a class="anno-person" data-ref="pe__jakob_von_eslarn_QGW_II_I_601" title="Jakob von Eslarn von Eslarn [pe__jakob_von_eslarn_QGW_II_I_601]" href="../../../register/persons/pe__jakob_von_eslarn_QGW_II_I_601.html"><span class="anno-attr anno-attr-title">hern</span> Jacobs von Eslarn</a>.</span></span>
+                     den Siegeln: 1. <a class="anno-person" data-ref="pe__konrad_wiltwercher_QGW_II_I_204" data-hint="Konrad Wiltwercher in dem Tuemprost(hof) († 12.03.1344) [pe__konrad_wiltwercher_QGW_II_I_204]" data-hint-type="Person" href="../../../register/persons/pe__konrad_wiltwercher_QGW_II_I_204.html">des
+                        Ausstellers</a>, 2. <a class="anno-person" data-ref="pe__weichart_bei_den_minderbruedern_QGW_II_I_118" data-hint="Weichart bei den Minderbrüdern bei den Minderbrüdern [pe__weichart_bei_den_minderbruedern_QGW_II_I_118]" data-hint-type="Person" href="../../../register/persons/pe__weichart_bei_den_minderbruedern_QGW_II_I_118.html"><span class="anno-attr anno-attr-title">hern</span> Weicharts pei den Minnern prudern</a>, 3.
+                        <a class="anno-person" data-ref="pe__dietrich_urbetsch_QGW_II_I_950" data-hint="Dietrich Urbetsch [pe__dietrich_urbetsch_QGW_II_I_950]" data-hint-type="Person" href="../../../register/persons/pe__dietrich_urbetsch_QGW_II_I_950.html"><span class="anno-attr anno-attr-title">hern</span> Dietreichs des Urbetschen</a>, 4. <a class="anno-person" data-ref="pe__jakob_von_eslarn_QGW_II_I_601" data-hint="Jakob von Eslarn von Eslarn [pe__jakob_von_eslarn_QGW_II_I_601]" data-hint-type="Person" href="../../../register/persons/pe__jakob_von_eslarn_QGW_II_I_601.html"><span class="anno-attr anno-attr-title">hern</span> Jacobs von Eslarn</a>.</span></span>
             </p></section>
 
             <!-- Data layer: provenance strip. Korpus + Idno stehen schon
@@ -378,7 +384,7 @@
          dem TEI in mehreren Untertabellen, Personen/Orgs/Orte,
          Ereignisse, Dispositivformeln, Editorische Ergaenzungen. Wird
          per JS aus den entsprechenden Spans im Body aufgebaut. -->
-    <section class="annotations-view" id="factoid-view" aria-label="Annotationen">
+    <section class="annotations-view" id="annotations-view" aria-label="Annotationen">
         <header class="annotations-header">
             <h2 class="annotations-title">Annotationen</h2>
             <span class="annotations-summary"></span>
@@ -424,13 +430,14 @@
         </div>
     </footer>
 
-    <script src="../../../static/js/core.js?v=20260511112948"></script>
-    <script src="../../../static/js/provenance.js?v=20260511112948"></script>
-    <script src="../../../static/js/basket.js?v=20260511112948"></script>
+    <script src="../../../static/js/core.js?v=20260511125458"></script>
+    <script src="../../../static/js/tip.js?v=20260511125458"></script>
+    <script src="../../../static/js/hint.js?v=20260511125458"></script>
+    <script src="../../../static/js/basket.js?v=20260511125458"></script>
     
-<script src="../../../static/js/tooltips.js?v=20260511112948"></script>
-<script src="../../../static/js/facsimile.js?v=20260511112948"></script>
-<script src="../../../static/js/document.js?v=20260511112948"></script>
+<script src="../../../static/js/facsimile.js?v=20260511125458"></script>
+<script src="../../../static/js/document.js?v=20260511125458"></script>
+<script src="../../../static/js/basket-mount.js?v=20260511125458"></script>
 
 </body>
 </html>

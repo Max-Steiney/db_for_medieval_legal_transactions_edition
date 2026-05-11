@@ -3,21 +3,21 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <meta http-equiv="Content-Security-Policy" content="default-src 'self'; script-src 'self'; style-src 'self'; font-src 'self'; img-src 'self' data: https://images.monasterium.net https://www.monasterium.net; connect-src 'self'; frame-ancestors 'none'; base-uri 'self'; form-action 'self'; upgrade-insecure-requests">
+    <meta http-equiv="Content-Security-Policy" content="default-src 'self'; script-src 'self'; style-src 'self'; font-src 'self'; img-src 'self' data: https://images.monasterium.net https://www.monasterium.net; connect-src 'self'; base-uri 'self'; form-action 'self'; upgrade-insecure-requests">
     <meta name="referrer" content="strict-origin-when-cross-origin">
     <meta http-equiv="Permissions-Policy" content="camera=(), microphone=(), geolocation=(), interest-cohort=()">
     <title>Nr. 775 (1370 VI 23), Datenbank</title>
     <link rel="preload" as="font" type="font/woff2" crossorigin
           href="../../../static/fonts/inter-400-latin.woff2">
-    <link rel="stylesheet" href="../../../static/css/fonts.css?v=20260511112948">
-    <link rel="stylesheet" href="../../../static/css/tokens.css?v=20260511112948">
-    <link rel="stylesheet" href="../../../static/css/base.css?v=20260511112948">
-    <link rel="stylesheet" href="../../../static/css/components.css?v=20260511112948">
-    <link rel="stylesheet" href="../../../static/css/responsive.css?v=20260511112948">
-    <link rel="stylesheet" href="../../../static/css/print.css?v=20260511112948">
-    <link rel="stylesheet" href="../../../static/css/provenance.css?v=20260511112948">
+    <link rel="stylesheet" href="../../../static/css/fonts.css?v=20260511125458">
+    <link rel="stylesheet" href="../../../static/css/tokens.css?v=20260511125458">
+    <link rel="stylesheet" href="../../../static/css/base.css?v=20260511125458">
+    <link rel="stylesheet" href="../../../static/css/components.css?v=20260511125458">
+    <link rel="stylesheet" href="../../../static/css/responsive.css?v=20260511125458">
+    <link rel="stylesheet" href="../../../static/css/print.css?v=20260511125458">
+    <link rel="stylesheet" href="../../../static/css/tip.css?v=20260511125458">
     
-<link rel="stylesheet" href="../../../static/css/document.css?v=20260511112948">
+<link rel="stylesheet" href="../../../static/css/document.css?v=20260511125458">
 <link rel="canonical" href="documents/QGW/Vienna_1177-1414_ready/775.html">
 <meta name="citation_title" content="Nr. 775 (1370 VI 23)">
 <meta name="citation_collection" content="QGW II/1 (1177–1414)">
@@ -50,8 +50,6 @@
         <a href="../../../register/persons.html">Personen</a>
         
         <a href="../../../register/orgs.html">Organisationen</a>
-        
-        <a href="../../../register/places.html">Orte</a>
         
     </div>
 </div>
@@ -93,7 +91,7 @@
     </div>
 </div>
 
-                <a href="../../../korb.html" class="nav-basket" aria-label="Wissenskorb">
+                <a href="../../../korb.html" class="nav-basket" aria-label="Datenkorb">
                     <svg width="18" height="18" viewBox="0 0 18 18" fill="none" aria-hidden="true">
                         <path d="M3 5h12l-1.2 8.5a1 1 0 0 1-1 .85H5.2a1 1 0 0 1-1-.85L3 5z"
                               stroke="currentColor" stroke-width="1.4" fill="none"
@@ -140,7 +138,7 @@
                     
                     <span class="meta-pair">
                         <span class="meta-label">Quelle</span>
-                        <span class="meta-value" title="Quellen zur Geschichte der Stadt Wien, Bd. II/1, Nr. 775">Quellen zur Geschichte der Stadt Wien, Bd. II/1, Nr. 775</span>
+                        <span class="meta-value" data-hint="Quellen zur Geschichte der Stadt Wien, Bd. II/1, Nr. 775">Quellen zur Geschichte der Stadt Wien, Bd. II/1, Nr. 775</span>
                     </span>
                     
                 </div>
@@ -151,7 +149,7 @@
                     
                     <button type="button" class="legend-toggle"
                             data-layer="entities" aria-pressed="true"
-                            title="Entitäten ein-/ausblenden">
+                            data-hint="Entitäten ein-/ausblenden">
                         <span class="legend-toggle-dots">
                             <span class="legend-swatch swatch-person"></span><span class="legend-swatch swatch-org"></span><span class="legend-swatch swatch-place"></span>
                         </span>
@@ -160,7 +158,7 @@
                     
                     <button type="button" class="legend-toggle"
                             data-layer="functions" aria-pressed="true"
-                            title="Funktionsrollen ein-/ausblenden">
+                            data-hint="Funktionsrollen ein-/ausblenden">
                         <span class="legend-toggle-dots">
                             <span class="legend-swatch swatch-fn-issuer"></span><span class="legend-swatch swatch-fn-recipient"></span><span class="legend-swatch swatch-fn-witness"></span>
                         </span>
@@ -169,7 +167,7 @@
                     
                     <button type="button" class="legend-toggle"
                             data-layer="attributes" aria-pressed="true"
-                            title="Attribute ein-/ausblenden">
+                            data-hint="Attribute ein-/ausblenden">
                         <span class="legend-toggle-dots">
                             <span class="legend-swatch swatch-attr"></span><span class="legend-swatch swatch-add"></span>
                         </span>
@@ -178,7 +176,7 @@
                     
                     <button type="button" class="legend-toggle"
                             data-layer="triggers" aria-pressed="true"
-                            title="Dispositivformel ein-/ausblenden">
+                            data-hint="Dispositivformel ein-/ausblenden">
                         <span class="legend-toggle-dots">
                             <span class="legend-swatch swatch-trigger"></span>
                         </span>
@@ -190,21 +188,29 @@
                 <div class="doc-toolbar-actions">
                     <a class="toolbar-btn" href="../../../tei/QGW/Vienna_1177-1414_ready/775.xml"
                        download="775.xml"
-                       aria-label="TEI-XML herunterladen" title="TEI-XML herunterladen"><svg viewBox="0 0 16 16" width="16" height="16" aria-hidden="true"><path fill="none" stroke="currentColor" stroke-width="1.4" stroke-linecap="round" stroke-linejoin="round" d="M8 2v8m0 0l-3-3m3 3l3-3M3 13h10"/></svg></a>
+                       aria-label="TEI-XML herunterladen" data-hint="TEI-XML herunterladen"><svg viewBox="0 0 16 16" width="16" height="16" aria-hidden="true"><path fill="none" stroke="currentColor" stroke-width="1.4" stroke-linecap="round" stroke-linejoin="round" d="M8 2v8m0 0l-3-3m3 3l3-3M3 13h10"/></svg></a>
                     <button class="toolbar-btn" id="cite-toggle" aria-expanded="false"
-                            aria-label="Zitation kopieren" title="Zitation kopieren"><svg viewBox="0 0 16 16" width="16" height="16" aria-hidden="true"><rect x="4" y="2" width="8" height="11" rx="1" fill="none" stroke="currentColor" stroke-width="1.4"/><path d="M6 1.5h4a0.5 0.5 0 0 1 0.5 0.5v1a0.5 0.5 0 0 1-0.5 0.5H6a0.5 0.5 0 0 1-0.5-0.5V2A0.5 0.5 0 0 1 6 1.5z" fill="currentColor"/><path d="M6.5 6.5h3M6.5 8.5h3M6.5 10.5h2" stroke="currentColor" stroke-width="1" stroke-linecap="round"/></svg></button>
+                            aria-label="Zitation kopieren" data-hint="Zitation kopieren"><svg viewBox="0 0 16 16" width="16" height="16" aria-hidden="true"><rect x="4" y="2" width="8" height="11" rx="1" fill="none" stroke="currentColor" stroke-width="1.4"/><path d="M6 1.5h4a0.5 0.5 0 0 1 0.5 0.5v1a0.5 0.5 0 0 1-0.5 0.5H6a0.5 0.5 0 0 1-0.5-0.5V2A0.5 0.5 0 0 1 6 1.5z" fill="currentColor"/><path d="M6.5 6.5h3M6.5 8.5h3M6.5 10.5h2" stroke="currentColor" stroke-width="1" stroke-linecap="round"/></svg></button>
                     <div class="cite-popover hidden" id="cite-popover"></div>
+                    <span class="toolbar-basket-mount"
+                          data-basket-type="source"
+                          data-basket-id="775"
+                          data-basket-label="775"
+                          data-basket-url="documents/QGW/Vienna_1177-1414_ready/775.html"
+                          data-basket-date="1370-06-23"
+                          data-basket-coll="QGW II/1 (1177–1414)"
+                          data-basket-regest="Ru/eger brudersun und Niclas, gebru/eder von der Schaebnicz, Hainreichs Vatersu/en von der Schaebnicz, dem got genade , verkaufen ihres Erbgutes zwei Weingärten um 332 lb dn. dem Wiener Bürger…"></span>
                     
 <nav class="doc-paging doc-paging-inline" aria-label="Quellen-Navigation">
     
     <a href="../../../documents/QGW/Vienna_1177-1414_ready/774.html" class="toolbar-btn doc-paging-prev"
        aria-label="Vorherige Quelle: Nr. 774"
-       title="Vorherige Quelle: Nr. 774"><svg viewBox="0 0 16 16" width="16" height="16" aria-hidden="true"><path fill="none" stroke="currentColor" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round" d="M10 3l-5 5 5 5"/></svg></a>
+       data-hint="Vorherige Quelle: Nr. 774"><svg viewBox="0 0 16 16" width="16" height="16" aria-hidden="true"><path fill="none" stroke="currentColor" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round" d="M10 3l-5 5 5 5"/></svg></a>
     
     
     <a href="../../../documents/QGW/Vienna_1177-1414_ready/776.html" class="toolbar-btn doc-paging-next"
        aria-label="Nächste Quelle: Nr. 776"
-       title="Nächste Quelle: Nr. 776"><svg viewBox="0 0 16 16" width="16" height="16" aria-hidden="true"><path fill="none" stroke="currentColor" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round" d="M6 3l5 5-5 5"/></svg></a>
+       data-hint="Nächste Quelle: Nr. 776"><svg viewBox="0 0 16 16" width="16" height="16" aria-hidden="true"><path fill="none" stroke="currentColor" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round" d="M6 3l5 5-5 5"/></svg></a>
     
 </nav>
 
@@ -219,18 +225,18 @@
         <!-- Document body (rendered TEI) -->
         <div class="doc-body">
             <section class="tei-abstract"><h2 class="tei-section-head">Regest</h2><p>
-               <span class="anno-event" data-ref="ev__QGW_II_I_775"><span class="anno-fn anno-fn-issuer" data-role="issuer"><span class="fn-label">Aussteller*in</span><a class="anno-person" data-ref="pe__ruediger_von_der_schemnitz_III_QGW_II_I_775" title="Ruediger von der Schemnitz von der Schemnitz [pe__ruediger_von_der_schemnitz_III_QGW_II_I_775]" href="../../../register/persons/pe__ruediger_von_der_schemnitz_III_QGW_II_I_775.html">Ru/eger <span class="anno-attr anno-attr-kin" data-corresp="pe__niklas_von_der_schemnitz_iii_QGW_II_I_1371"><span class="tei-add">bruder</span></span><span class="anno-attr anno-attr-kin" data-corresp="pe__heinrich_von_der_schemnitz_QGW_II_I_775"><span class="tei-add">sun</span></span></a>
-                     und <a class="anno-person" data-ref="pe__niklas_von_der_schemnitz_iii_QGW_II_I_1371" title="Niklas von der Schemnitz [pe__niklas_von_der_schemnitz_iii_QGW_II_I_1371]" href="../../../register/persons/pe__niklas_von_der_schemnitz_iii_QGW_II_I_1371.html">Niclas, <span class="anno-attr anno-attr-kin" data-corresp="pe__ruediger_von_der_schemnitz_III_QGW_II_I_775">gebru/eder</span> von der Schaebnicz</a></span>, <a class="anno-person" data-ref="pe__heinrich_von_der_schemnitz_QGW_II_I_775" title="Heinrich von der Schemnitz († 11.07.1351) [pe__heinrich_von_der_schemnitz_QGW_II_I_775]" href="../../../register/persons/pe__heinrich_von_der_schemnitz_QGW_II_I_775.html">Hainreichs <span class="anno-attr anno-attr-kin" data-corresp="pe__niklas_von_der_schemnitz_iii_QGW_II_I_1371"><span class="tei-add">Vater</span></span>su/en
+               <span class="anno-event" data-ref="ev__QGW_II_I_775"><span class="anno-fn anno-fn-issuer" data-role="issuer"><span class="fn-label">Aussteller*in</span><a class="anno-person" data-ref="pe__ruediger_von_der_schemnitz_III_QGW_II_I_775" data-hint="Ruediger von der Schemnitz von der Schemnitz [pe__ruediger_von_der_schemnitz_III_QGW_II_I_775]" data-hint-type="Person" href="../../../register/persons/pe__ruediger_von_der_schemnitz_III_QGW_II_I_775.html">Ru/eger <span class="anno-attr anno-attr-kin" data-corresp="pe__niklas_von_der_schemnitz_iii_QGW_II_I_1371"><span class="tei-add">bruder</span></span><span class="anno-attr anno-attr-kin" data-corresp="pe__heinrich_von_der_schemnitz_QGW_II_I_775"><span class="tei-add">sun</span></span></a>
+                     und <a class="anno-person" data-ref="pe__niklas_von_der_schemnitz_iii_QGW_II_I_1371" data-hint="Niklas von der Schemnitz [pe__niklas_von_der_schemnitz_iii_QGW_II_I_1371]" data-hint-type="Person" href="../../../register/persons/pe__niklas_von_der_schemnitz_iii_QGW_II_I_1371.html">Niclas, <span class="anno-attr anno-attr-kin" data-corresp="pe__ruediger_von_der_schemnitz_III_QGW_II_I_775">gebru/eder</span> von der Schaebnicz</a></span>, <a class="anno-person" data-ref="pe__heinrich_von_der_schemnitz_QGW_II_I_775" data-hint="Heinrich von der Schemnitz († 11.07.1351) [pe__heinrich_von_der_schemnitz_QGW_II_I_775]" data-hint-type="Person" href="../../../register/persons/pe__heinrich_von_der_schemnitz_QGW_II_I_775.html">Hainreichs <span class="anno-attr anno-attr-kin" data-corresp="pe__niklas_von_der_schemnitz_iii_QGW_II_I_1371"><span class="tei-add">Vater</span></span>su/en
                      von der Schaebnicz, <span class="anno-attr anno-attr-dead">dem got genade</span>
                   </a>, <span class="anno-trigger anno-trigger-disp">verkaufen</span> ihres Erbgutes zwei Weingärten
-                  um 332 lb dn. <span class="anno-fn anno-fn-recipient" data-role="recipient"><span class="fn-label">Empfänger*in</span>dem <a class="anno-person" data-ref="pe__leonhard_poll_QGW_II_I_1152" title="Leonhard Poll Poll († 10.11.1378) [pe__leonhard_poll_QGW_II_I_1152]" href="../../../register/persons/pe__leonhard_poll_QGW_II_I_1152.html">Wiener <span class="anno-attr anno-attr-occ" data-corresp="org__wien">Bürger</span> Lienharten dem Pollen</a></span>: 1.
-                     <span class="anno-fn anno-fn-other" data-role="other"><span class="fn-label">Sonstige</span><span class="anno-trigger anno-trigger-fn">mit Handen</span> ihrer <a class="anno-person" data-ref="pe__bernhard_von_maissau_QGW_II_I_775" title="Wernhart von Maissau [pe__bernhard_von_maissau_QGW_II_I_775]" href="../../../register/persons/pe__bernhard_von_maissau_QGW_II_I_775.html"><span class="anno-attr anno-attr-title">Bergherren</span>
+                  um 332 lb dn. <span class="anno-fn anno-fn-recipient" data-role="recipient"><span class="fn-label">Empfänger*in</span>dem <a class="anno-person" data-ref="pe__leonhard_poll_QGW_II_I_1152" data-hint="Leonhard Poll Poll († 10.11.1378) [pe__leonhard_poll_QGW_II_I_1152]" data-hint-type="Person" href="../../../register/persons/pe__leonhard_poll_QGW_II_I_1152.html">Wiener <span class="anno-attr anno-attr-occ" data-corresp="org__wien">Bürger</span> Lienharten dem Pollen</a></span>: 1.
+                     <span class="anno-fn anno-fn-other" data-role="other"><span class="fn-label">Sonstige</span><span class="anno-trigger anno-trigger-fn">mit Handen</span> ihrer <a class="anno-person" data-ref="pe__bernhard_von_maissau_QGW_II_I_775" data-hint="Wernhart von Maissau [pe__bernhard_von_maissau_QGW_II_I_775]" data-hint-type="Person" href="../../../register/persons/pe__bernhard_von_maissau_QGW_II_I_775.html"><span class="anno-attr anno-attr-title">Bergherren</span>
                         <span class="anno-attr anno-attr-title">hern</span> Wernharts von Meichssow, <span class="anno-attr anno-attr-occ" data-corresp="org__oesterreich-herzogtum">oberists marschalichs in
-                           Österreich</span></a>, <a class="anno-person" data-ref="pe__peter_von_ebersdorf_QGW_II_I_775" title="Peter von Ebersdorf von Ebersdorf († 02.03.1377) [pe__peter_von_ebersdorf_QGW_II_I_775]" href="../../../register/persons/pe__peter_von_ebersdorf_QGW_II_I_775.html"><span class="anno-attr anno-attr-title"><span class="tei-add">bergherr</span></span>
+                           Österreich</span></a>, <a class="anno-person" data-ref="pe__peter_von_ebersdorf_QGW_II_I_775" data-hint="Peter von Ebersdorf von Ebersdorf († 02.03.1377) [pe__peter_von_ebersdorf_QGW_II_I_775]" data-hint-type="Person" href="../../../register/persons/pe__peter_von_ebersdorf_QGW_II_I_775.html"><span class="anno-attr anno-attr-title"><span class="tei-add">bergherr</span></span>
                         <span class="anno-attr anno-attr-title">hern</span> Petreins von Eberstorf, <span class="anno-attr anno-attr-occ" data-corresp="org__oesterreich-herzogtum">obristes chamrer in
-                           Österreich</span></a> , ihrer <a class="anno-person" data-ref="pe__elisabeth_QGW_II_I_748" title="Elisabeth von Ybbs [pe__elisabeth_QGW_II_I_748]" href="../../../register/persons/pe__elisabeth_QGW_II_I_748.html"><span class="anno-attr anno-attr-title">Bergfrau</span>
-                        <span class="anno-attr anno-attr-title">vrowen</span> Elsbeten <span class="anno-attr anno-attr-kin" data-corresp="pe__johann_von_ybbs_QGW_II_I_1033"><span class="tei-add">wittibe</span></span></a>, <a class="anno-person" data-ref="pe__johann_von_ybbs_QGW_II_I_1033" title="Johann von Ybbs († 24.04.1369) [pe__johann_von_ybbs_QGW_II_I_1033]" href="../../../register/persons/pe__johann_von_ybbs_QGW_II_I_1033.html"><span class="anno-attr anno-attr-title">hern</span> Jansen <span class="anno-attr anno-attr-dead">wittibe</span> von
-                        Ybs</a>, und ihres <a class="anno-person" data-ref="pe__peter_mannseber_QGW_II_I_1037" title="Peter Mannseber [pe__peter_mannseber_QGW_II_I_1037]" href="../../../register/persons/pe__peter_mannseber_QGW_II_I_1037.html"><span class="anno-attr anno-attr-title">Bergmeisters</span> Petreins des Mannseber, <span class="anno-attr anno-attr-occ" data-corresp="org__klosterneuburg-augustiner_chorherren">amptman
+                           Österreich</span></a> , ihrer <a class="anno-person" data-ref="pe__elisabeth_QGW_II_I_748" data-hint="Elisabeth von Ybbs [pe__elisabeth_QGW_II_I_748]" data-hint-type="Person" href="../../../register/persons/pe__elisabeth_QGW_II_I_748.html"><span class="anno-attr anno-attr-title">Bergfrau</span>
+                        <span class="anno-attr anno-attr-title">vrowen</span> Elsbeten <span class="anno-attr anno-attr-kin" data-corresp="pe__johann_von_ybbs_QGW_II_I_1033"><span class="tei-add">wittibe</span></span></a>, <a class="anno-person" data-ref="pe__johann_von_ybbs_QGW_II_I_1033" data-hint="Johann von Ybbs († 24.04.1369) [pe__johann_von_ybbs_QGW_II_I_1033]" data-hint-type="Person" href="../../../register/persons/pe__johann_von_ybbs_QGW_II_I_1033.html"><span class="anno-attr anno-attr-title">hern</span> Jansen <span class="anno-attr anno-attr-dead">wittibe</span> von
+                        Ybs</a>, und ihres <a class="anno-person" data-ref="pe__peter_mannseber_QGW_II_I_1037" data-hint="Peter Mannseber [pe__peter_mannseber_QGW_II_I_1037]" data-hint-type="Person" href="../../../register/persons/pe__peter_mannseber_QGW_II_I_1037.html"><span class="anno-attr anno-attr-title">Bergmeisters</span> Petreins des Mannseber, <span class="anno-attr anno-attr-occ" data-corresp="org__klosterneuburg-augustiner_chorherren">amptman
                            des chlosters ze Neunburch</span></a></span>, den Weingarten, gelegen
                   an dem Nuz/zperg in der mittern schosse, des ein drittail eins jeuchs ist,
                   zenechst des Stibori caplans weingarten , van dem man von der obern schosse den
@@ -238,12 +244,12 @@
                   und ain ort ze voitrecht und von der nidern schosse dem chloster ze Neunburch
                   siben stauff an ein drittail einer stauff weins ze perchrecht und ainen helblinch
                   ze voitrecht dient, 2. <span class="anno-fn anno-fn-other" data-role="other"><span class="fn-label">Sonstige</span><span class="anno-trigger anno-trigger-fn">mit
-                        Handen</span> ihres <a class="anno-person" data-ref="pe__peter_mannseber_QGW_II_I_1037" title="Peter Mannseber [pe__peter_mannseber_QGW_II_I_1037]" href="../../../register/persons/pe__peter_mannseber_QGW_II_I_1037.html"><span class="anno-attr anno-attr-title">Bergmeisters</span> Petreins des
+                        Handen</span> ihres <a class="anno-person" data-ref="pe__peter_mannseber_QGW_II_I_1037" data-hint="Peter Mannseber [pe__peter_mannseber_QGW_II_I_1037]" data-hint-type="Person" href="../../../register/persons/pe__peter_mannseber_QGW_II_I_1037.html"><span class="anno-attr anno-attr-title">Bergmeisters</span> Petreins des
                         Mannseber</a></span> ½ Joch Weingarten ebenda, und haisset der Weidervelder,
                   zenechst hern Jansen weingarten von Tyrna, von dem man dem chloster ze Neunburch
                   fümf vierttail weins zu Bergrecht und 3 Helbling zu Voitrecht dient. </span></p></section><section class="tei-seal"><h2 class="tei-section-head">Siegelbeschreibung</h2><p><span class="anno-event" data-ref="ev__QGW_II_I_775"><span class="anno-fn anno-fn-witness" data-role="witness"><span class="fn-label">Zeug*in</span>Besiegelt mit
-                     den Siegeln: 1. <a class="anno-person" data-ref="pe__ruediger_von_der_schemnitz_III_QGW_II_I_775" title="Ruediger von der Schemnitz von der Schemnitz [pe__ruediger_von_der_schemnitz_III_QGW_II_I_775]" href="../../../register/persons/pe__ruediger_von_der_schemnitz_III_QGW_II_I_775.html"><span class="tei-add">Aussteller</span></a>, 2. der <a class="anno-person" data-ref="pe__niklas_von_der_schemnitz_iii_QGW_II_I_1371" title="Niklas von der Schemnitz [pe__niklas_von_der_schemnitz_iii_QGW_II_I_1371]" href="../../../register/persons/pe__niklas_von_der_schemnitz_iii_QGW_II_I_1371.html">Aussteller</a>, 3. <a class="anno-person" data-ref="pe__bernhard_von_maissau_QGW_II_I_775" title="Wernhart von Maissau [pe__bernhard_von_maissau_QGW_II_I_775]" href="../../../register/persons/pe__bernhard_von_maissau_QGW_II_I_775.html"><span class="tei-add">Bergherr</span></a>, 4. der <a class="anno-person" data-ref="pe__peter_von_ebersdorf_QGW_II_I_775" title="Peter von Ebersdorf von Ebersdorf († 02.03.1377) [pe__peter_von_ebersdorf_QGW_II_I_775]" href="../../../register/persons/pe__peter_von_ebersdorf_QGW_II_I_775.html">Bergherren</a>, 5. der <a class="anno-person" data-ref="pe__elisabeth_QGW_II_I_748" title="Elisabeth von Ybbs [pe__elisabeth_QGW_II_I_748]" href="../../../register/persons/pe__elisabeth_QGW_II_I_748.html">Bergfrau</a>, 6. des <a class="anno-person" data-ref="pe__peter_mannseber_QGW_II_I_1037" title="Peter Mannseber [pe__peter_mannseber_QGW_II_I_1037]" href="../../../register/persons/pe__peter_mannseber_QGW_II_I_1037.html">Bergmeisters</a>, und der <a class="anno-person" data-ref="pe__stephan_poll_QGW_II_I_1138" title="Stephan Poll Poll [pe__stephan_poll_QGW_II_I_1138]" href="../../../register/persons/pe__stephan_poll_QGW_II_I_1138.html"><span class="anno-attr anno-attr-kin" data-corresp="pe__niklas_von_der_schemnitz_iii_QGW_II_I_1371">Oheime</span> des
-                        Ausstellers, 7. Stephans des Pollen,</a> 8. <a class="anno-person" data-ref="pe__johann_hirnprech_QGW_II_I_775" title="Johann Hirnprech Hirnprech [pe__johann_hirnprech_QGW_II_I_775]" href="../../../register/persons/pe__johann_hirnprech_QGW_II_I_775.html">
+                     den Siegeln: 1. <a class="anno-person" data-ref="pe__ruediger_von_der_schemnitz_III_QGW_II_I_775" data-hint="Ruediger von der Schemnitz von der Schemnitz [pe__ruediger_von_der_schemnitz_III_QGW_II_I_775]" data-hint-type="Person" href="../../../register/persons/pe__ruediger_von_der_schemnitz_III_QGW_II_I_775.html"><span class="tei-add">Aussteller</span></a>, 2. der <a class="anno-person" data-ref="pe__niklas_von_der_schemnitz_iii_QGW_II_I_1371" data-hint="Niklas von der Schemnitz [pe__niklas_von_der_schemnitz_iii_QGW_II_I_1371]" data-hint-type="Person" href="../../../register/persons/pe__niklas_von_der_schemnitz_iii_QGW_II_I_1371.html">Aussteller</a>, 3. <a class="anno-person" data-ref="pe__bernhard_von_maissau_QGW_II_I_775" data-hint="Wernhart von Maissau [pe__bernhard_von_maissau_QGW_II_I_775]" data-hint-type="Person" href="../../../register/persons/pe__bernhard_von_maissau_QGW_II_I_775.html"><span class="tei-add">Bergherr</span></a>, 4. der <a class="anno-person" data-ref="pe__peter_von_ebersdorf_QGW_II_I_775" data-hint="Peter von Ebersdorf von Ebersdorf († 02.03.1377) [pe__peter_von_ebersdorf_QGW_II_I_775]" data-hint-type="Person" href="../../../register/persons/pe__peter_von_ebersdorf_QGW_II_I_775.html">Bergherren</a>, 5. der <a class="anno-person" data-ref="pe__elisabeth_QGW_II_I_748" data-hint="Elisabeth von Ybbs [pe__elisabeth_QGW_II_I_748]" data-hint-type="Person" href="../../../register/persons/pe__elisabeth_QGW_II_I_748.html">Bergfrau</a>, 6. des <a class="anno-person" data-ref="pe__peter_mannseber_QGW_II_I_1037" data-hint="Peter Mannseber [pe__peter_mannseber_QGW_II_I_1037]" data-hint-type="Person" href="../../../register/persons/pe__peter_mannseber_QGW_II_I_1037.html">Bergmeisters</a>, und der <a class="anno-person" data-ref="pe__stephan_poll_QGW_II_I_1138" data-hint="Stephan Poll Poll [pe__stephan_poll_QGW_II_I_1138]" data-hint-type="Person" href="../../../register/persons/pe__stephan_poll_QGW_II_I_1138.html"><span class="anno-attr anno-attr-kin" data-corresp="pe__niklas_von_der_schemnitz_iii_QGW_II_I_1371">Oheime</span> des
+                        Ausstellers, 7. Stephans des Pollen,</a> 8. <a class="anno-person" data-ref="pe__johann_hirnprech_QGW_II_I_775" data-hint="Johann Hirnprech Hirnprech [pe__johann_hirnprech_QGW_II_I_775]" data-hint-type="Person" href="../../../register/persons/pe__johann_hirnprech_QGW_II_I_775.html">
                         <span class="anno-attr anno-attr-kin" data-corresp="pe__niklas_von_der_schemnitz_iii_QGW_II_I_1371"><span class="tei-add">oheim</span></span>Jansen des Hirnprechen</a>.</span></span>
             </p></section>
 
@@ -303,7 +309,7 @@
          dem TEI in mehreren Untertabellen, Personen/Orgs/Orte,
          Ereignisse, Dispositivformeln, Editorische Ergaenzungen. Wird
          per JS aus den entsprechenden Spans im Body aufgebaut. -->
-    <section class="annotations-view" id="factoid-view" aria-label="Annotationen">
+    <section class="annotations-view" id="annotations-view" aria-label="Annotationen">
         <header class="annotations-header">
             <h2 class="annotations-title">Annotationen</h2>
             <span class="annotations-summary"></span>
@@ -349,13 +355,14 @@
         </div>
     </footer>
 
-    <script src="../../../static/js/core.js?v=20260511112948"></script>
-    <script src="../../../static/js/provenance.js?v=20260511112948"></script>
-    <script src="../../../static/js/basket.js?v=20260511112948"></script>
+    <script src="../../../static/js/core.js?v=20260511125458"></script>
+    <script src="../../../static/js/tip.js?v=20260511125458"></script>
+    <script src="../../../static/js/hint.js?v=20260511125458"></script>
+    <script src="../../../static/js/basket.js?v=20260511125458"></script>
     
-<script src="../../../static/js/tooltips.js?v=20260511112948"></script>
-<script src="../../../static/js/facsimile.js?v=20260511112948"></script>
-<script src="../../../static/js/document.js?v=20260511112948"></script>
+<script src="../../../static/js/facsimile.js?v=20260511125458"></script>
+<script src="../../../static/js/document.js?v=20260511125458"></script>
+<script src="../../../static/js/basket-mount.js?v=20260511125458"></script>
 
 </body>
 </html>

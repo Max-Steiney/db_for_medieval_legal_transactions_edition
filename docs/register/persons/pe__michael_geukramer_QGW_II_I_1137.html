@@ -3,22 +3,22 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <meta http-equiv="Content-Security-Policy" content="default-src 'self'; script-src 'self'; style-src 'self'; font-src 'self'; img-src 'self' data: https://images.monasterium.net https://www.monasterium.net; connect-src 'self'; frame-ancestors 'none'; base-uri 'self'; form-action 'self'; upgrade-insecure-requests">
+    <meta http-equiv="Content-Security-Policy" content="default-src 'self'; script-src 'self'; style-src 'self'; font-src 'self'; img-src 'self' data: https://images.monasterium.net https://www.monasterium.net; connect-src 'self'; base-uri 'self'; form-action 'self'; upgrade-insecure-requests">
     <meta name="referrer" content="strict-origin-when-cross-origin">
     <meta http-equiv="Permissions-Policy" content="camera=(), microphone=(), geolocation=(), interest-cohort=()">
     <title>Michael Geukramer, Datenbank</title>
     <link rel="preload" as="font" type="font/woff2" crossorigin
           href="../../static/fonts/inter-400-latin.woff2">
-    <link rel="stylesheet" href="../../static/css/fonts.css?v=20260511112948">
-    <link rel="stylesheet" href="../../static/css/tokens.css?v=20260511112948">
-    <link rel="stylesheet" href="../../static/css/base.css?v=20260511112948">
-    <link rel="stylesheet" href="../../static/css/components.css?v=20260511112948">
-    <link rel="stylesheet" href="../../static/css/responsive.css?v=20260511112948">
-    <link rel="stylesheet" href="../../static/css/print.css?v=20260511112948">
-    <link rel="stylesheet" href="../../static/css/provenance.css?v=20260511112948">
+    <link rel="stylesheet" href="../../static/css/fonts.css?v=20260511125458">
+    <link rel="stylesheet" href="../../static/css/tokens.css?v=20260511125458">
+    <link rel="stylesheet" href="../../static/css/base.css?v=20260511125458">
+    <link rel="stylesheet" href="../../static/css/components.css?v=20260511125458">
+    <link rel="stylesheet" href="../../static/css/responsive.css?v=20260511125458">
+    <link rel="stylesheet" href="../../static/css/print.css?v=20260511125458">
+    <link rel="stylesheet" href="../../static/css/tip.css?v=20260511125458">
     
-<link rel="stylesheet" href="../../static/css/document.css?v=20260511112948">
-<link rel="stylesheet" href="../../static/css/person.css?v=20260511112948">
+<link rel="stylesheet" href="../../static/css/document.css?v=20260511125458">
+<link rel="stylesheet" href="../../static/css/person.css?v=20260511125458">
 
 </head>
 <body data-root-path="../.."
@@ -48,8 +48,6 @@
         <a href="../../register/persons.html">Personen</a>
         
         <a href="../../register/orgs.html">Organisationen</a>
-        
-        <a href="../../register/places.html">Orte</a>
         
     </div>
 </div>
@@ -91,7 +89,7 @@
     </div>
 </div>
 
-                <a href="../../korb.html" class="nav-basket" aria-label="Wissenskorb">
+                <a href="../../korb.html" class="nav-basket" aria-label="Datenkorb">
                     <svg width="18" height="18" viewBox="0 0 18 18" fill="none" aria-hidden="true">
                         <path d="M3 5h12l-1.2 8.5a1 1 0 0 1-1 .85H5.2a1 1 0 0 1-1-.85L3 5z"
                               stroke="currentColor" stroke-width="1.4" fill="none"
@@ -112,11 +110,23 @@
 
     <div class="person-toolbar">
         <div class="person-toolbar-inner">
-            <nav class="person-breadcrumb" aria-label="Position">
-                <a href="../../register/persons.html">Personenregister</a>
-                <span class="bc-sep">&rsaquo;</span>
-                <span class="bc-doc"><strong>Michael Geukramer</strong></span>
-            </nav>
+            <div class="person-toolbar-row">
+                <nav class="person-breadcrumb" aria-label="Position">
+                    <a href="../../register/persons.html">Personenregister</a>
+                    <span class="bc-sep">&rsaquo;</span>
+                    <span class="bc-doc"><strong>Michael Geukramer</strong></span>
+                </nav>
+                <div class="person-toolbar-actions">
+                    <span class="toolbar-basket-mount"
+                          data-basket-type="person"
+                          data-basket-id="pe__michael_geukramer_QGW_II_I_1137"
+                          data-basket-label="Michael Geukramer"
+                          data-basket-url="register/persons/pe__michael_geukramer_QGW_II_I_1137.html"
+                          data-basket-sex="m"
+                          data-basket-active-min="1375"
+                          data-basket-active-max="1392"></span>
+                </div>
+            </div>
             <div class="person-toolbar-meta">
                 <span class="meta-pair">
                     <span class="meta-label">Geschlecht</span>
@@ -124,11 +134,41 @@
                 </span>
                 
                 <span class="meta-pair">
-                    <span class="meta-label">Belegt</span>
+                    <span class="meta-label">Belegt
+<span class="tip-wrap">
+    <button type="button" class="tip-trigger tip-trigger--icon"
+            aria-expanded="false" aria-haspopup="dialog"
+            aria-controls="person-belegt"
+            data-tip="person-belegt"
+            aria-label="Definition: Beleg-Zeitraum">
+        <svg width="13" height="13" viewBox="0 0 16 16" aria-hidden="true">
+            <circle cx="8" cy="8" r="7" stroke="currentColor" stroke-width="1.4" fill="none"/>
+            <text x="8" y="11.6" text-anchor="middle" font-size="9.5" font-weight="700"
+                  fill="currentColor" font-family="Georgia, serif">i</text>
+        </svg>
+    </button>
+    <aside class="tip-popover tip-popover--glossary"
+           id="person-belegt" role="dialog" aria-hidden="true"
+           aria-label="Definition: Beleg-Zeitraum">
+        <header class="tip-head">
+            <h3 class="tip-title">Beleg-Zeitraum</h3>
+            <button type="button" class="tip-close" aria-label="Schlie&szlig;en">&times;</button>
+        </header>
+        <div class="tip-body">
+            <p>Erste und letzte Datierung einer Quelle, in der die Person erscheint. Bei einzelnem Beleg wird nur ein Jahr angegeben.</p>
+            
+        </div>
+    </aside>
+</span>
+</span>
                     <span class="meta-value">1375 bis 1392</span>
                 </span>
                 
                 
+                <span class="meta-pair">
+                    <span class="meta-label">Quellen</span>
+                    <span class="meta-value">32</span>
+                </span>
                 <span class="meta-pair person-id-pair">
                     <span class="meta-label">ID</span>
                     <code class="meta-value person-id">pe__michael_geukramer_QGW_II_I_1137</code>
@@ -146,13 +186,45 @@
         </h1>
         
         
-        <p class="person-titles">
+        
+        <p class="person-titles" data-collapsible="22">
             <span class="pt-label">In den Quellen genannt als</span>
             <span class="pt-chip">hern</span><span class="pt-chip">her</span>
         </p>
         
         
+        
     </header>
+
+    
+    <section class="role-strip" aria-label="Rollen in Rechtsgeschäften">
+        <h2 class="role-strip-title">Rollen in Rechtsgeschäften</h2>
+        <div class="role-strip-cells">
+            
+            <div class="role-cell role-cell-issuer">
+                <span class="role-cell-count">2</span>
+                <span class="role-cell-label">Aussteller*in</span>
+            </div>
+            
+            <div class="role-cell role-cell-recipient">
+                <span class="role-cell-count">1</span>
+                <span class="role-cell-label">Empfänger*in</span>
+            </div>
+            
+            <div class="role-cell role-cell-witness">
+                <span class="role-cell-count">2</span>
+                <span class="role-cell-label">Zeuge / Siegler*in</span>
+            </div>
+            
+            <div class="role-cell role-cell-other">
+                <span class="role-cell-count">28</span>
+                <span class="role-cell-label">Sonstige</span>
+            </div>
+            
+        </div>
+        <p class="role-strip-hint">Summe Rollen-Belegungen: 33. Mehrfach-Rollen pro Quelle sind möglich.</p>
+    </section>
+    
 
     
 
@@ -169,6 +241,7 @@
                 <span class="rel-block-count">1</span>
                 <span class="rel-block-hint">Verwandtschaftsverhältnisse, wie sie in den Quellen explizit benannt werden.</span>
             </header>
+            
             <table class="rel-table">
                 <thead>
                     <tr>
@@ -189,7 +262,7 @@
                         <td class="rel-col-label"><em>Eidams</em></td>
                         <td class="rel-col-perspective">
                             
-                                Michael Geukramer → Leopold Poltz Poltz
+                                Michael Geukramer &rsaquo; Leopold Poltz Poltz
                             
                         </td>
                         <td class="rel-col-source">
@@ -215,6 +288,7 @@
                 <span class="rel-block-count">1</span>
                 <span class="rel-block-hint">Stellvertretungs-Beziehungen, z. B. handelt eine Person an Stelle einer anderen.</span>
             </header>
+            
             <table class="rel-table">
                 <thead>
                     <tr>
@@ -235,7 +309,7 @@
                         <td class="rel-col-label"><em>Geschäftsvollstrecker</em></td>
                         <td class="rel-col-perspective">
                             
-                                Michael Geukramer → Herbert auf der Säule
+                                Michael Geukramer &rsaquo; Herbert auf der Säule
                             
                         </td>
                         <td class="rel-col-source">
@@ -258,7 +332,13 @@
                 <span class="rel-block-count">64</span>
                 <span class="rel-block-hint">Berufs- oder Amtsbezeichnung in Bezug auf eine Institution.</span>
             </header>
-            <table class="rel-table">
+            
+            <div class="table-filter">
+                <input type="search" class="table-filter-input" data-target="rel" placeholder="In der Tabelle filtern&hellip;" aria-label="In der Tabelle filtern">
+                <span class="table-filter-status"></span>
+            </div>
+            
+            <table class="rel-table" data-truncate-at="50">
                 <thead>
                     <tr>
                         <th scope="col" class="rel-col-other">Institution</th>
@@ -278,7 +358,7 @@
                         <td class="rel-col-label"><em>purgermaister</em></td>
                         <td class="rel-col-perspective">
                             
-                                Michael Geukramer → Wien
+                                Michael Geukramer &rsaquo; Wien
                             
                         </td>
                         <td class="rel-col-source">
@@ -297,7 +377,7 @@
                         <td class="rel-col-label"><em>munzmaister</em></td>
                         <td class="rel-col-perspective">
                             
-                                Michael Geukramer → Wien
+                                Michael Geukramer &rsaquo; Wien
                             
                         </td>
                         <td class="rel-col-source">
@@ -316,7 +396,7 @@
                         <td class="rel-col-label"><em>purgermaister</em></td>
                         <td class="rel-col-perspective">
                             
-                                Michael Geukramer → Wien
+                                Michael Geukramer &rsaquo; Wien
                             
                         </td>
                         <td class="rel-col-source">
@@ -335,7 +415,7 @@
                         <td class="rel-col-label"><em>munzmaister</em></td>
                         <td class="rel-col-perspective">
                             
-                                Michael Geukramer → Wien
+                                Michael Geukramer &rsaquo; Wien
                             
                         </td>
                         <td class="rel-col-source">
@@ -354,7 +434,7 @@
                         <td class="rel-col-label"><em>rates der stat ze Wienn</em></td>
                         <td class="rel-col-perspective">
                             
-                                Michael Geukramer → Wien
+                                Michael Geukramer &rsaquo; Wien
                             
                         </td>
                         <td class="rel-col-source">
@@ -373,7 +453,7 @@
                         <td class="rel-col-label"><em>purgermaister</em></td>
                         <td class="rel-col-perspective">
                             
-                                Michael Geukramer → Wien
+                                Michael Geukramer &rsaquo; Wien
                             
                         </td>
                         <td class="rel-col-source">
@@ -392,7 +472,7 @@
                         <td class="rel-col-label"><em>münzmaister</em></td>
                         <td class="rel-col-perspective">
                             
-                                Michael Geukramer → Wien
+                                Michael Geukramer &rsaquo; Wien
                             
                         </td>
                         <td class="rel-col-source">
@@ -411,7 +491,7 @@
                         <td class="rel-col-label"><em>rats gemain der stat ze Wienn</em></td>
                         <td class="rel-col-perspective">
                             
-                                Michael Geukramer → Wien
+                                Michael Geukramer &rsaquo; Wien
                             
                         </td>
                         <td class="rel-col-source">
@@ -430,7 +510,7 @@
                         <td class="rel-col-label"><em>purgermaister</em></td>
                         <td class="rel-col-perspective">
                             
-                                Michael Geukramer → Wien
+                                Michael Geukramer &rsaquo; Wien
                             
                         </td>
                         <td class="rel-col-source">
@@ -449,7 +529,7 @@
                         <td class="rel-col-label"><em>münzmaister</em></td>
                         <td class="rel-col-perspective">
                             
-                                Michael Geukramer → Wien
+                                Michael Geukramer &rsaquo; Wien
                             
                         </td>
                         <td class="rel-col-source">
@@ -468,7 +548,7 @@
                         <td class="rel-col-label"><em>purgermaister</em></td>
                         <td class="rel-col-perspective">
                             
-                                Michael Geukramer → Wien
+                                Michael Geukramer &rsaquo; Wien
                             
                         </td>
                         <td class="rel-col-source">
@@ -487,7 +567,7 @@
                         <td class="rel-col-label"><em>münzmaister</em></td>
                         <td class="rel-col-perspective">
                             
-                                Michael Geukramer → Herzogtum Österreich
+                                Michael Geukramer &rsaquo; Herzogtum Österreich
                             
                         </td>
                         <td class="rel-col-source">
@@ -506,7 +586,7 @@
                         <td class="rel-col-label"><em>purgermaister</em></td>
                         <td class="rel-col-perspective">
                             
-                                Michael Geukramer → Wien
+                                Michael Geukramer &rsaquo; Wien
                             
                         </td>
                         <td class="rel-col-source">
@@ -525,7 +605,7 @@
                         <td class="rel-col-label"><em>münzmaister</em></td>
                         <td class="rel-col-perspective">
                             
-                                Michael Geukramer → Herzogtum Österreich
+                                Michael Geukramer &rsaquo; Herzogtum Österreich
                             
                         </td>
                         <td class="rel-col-source">
@@ -544,7 +624,7 @@
                         <td class="rel-col-label"><em>purgermaister</em></td>
                         <td class="rel-col-perspective">
                             
-                                Michael Geukramer → Wien
+                                Michael Geukramer &rsaquo; Wien
                             
                         </td>
                         <td class="rel-col-source">
@@ -563,7 +643,7 @@
                         <td class="rel-col-label"><em>münzmaister</em></td>
                         <td class="rel-col-perspective">
                             
-                                Michael Geukramer → Herzogtum Österreich
+                                Michael Geukramer &rsaquo; Herzogtum Österreich
                             
                         </td>
                         <td class="rel-col-source">
@@ -582,7 +662,7 @@
                         <td class="rel-col-label"><em>purgermaister</em></td>
                         <td class="rel-col-perspective">
                             
-                                Michael Geukramer → Wien
+                                Michael Geukramer &rsaquo; Wien
                             
                         </td>
                         <td class="rel-col-source">
@@ -601,7 +681,7 @@
                         <td class="rel-col-label"><em>münzmaister</em></td>
                         <td class="rel-col-perspective">
                             
-                                Michael Geukramer → Herzogtum Österreich
+                                Michael Geukramer &rsaquo; Herzogtum Österreich
                             
                         </td>
                         <td class="rel-col-source">
@@ -620,7 +700,7 @@
                         <td class="rel-col-label"><em>purgermaister</em></td>
                         <td class="rel-col-perspective">
                             
-                                Michael Geukramer → Wien
+                                Michael Geukramer &rsaquo; Wien
                             
                         </td>
                         <td class="rel-col-source">
@@ -639,7 +719,7 @@
                         <td class="rel-col-label"><em>mu/enzmaister</em></td>
                         <td class="rel-col-perspective">
                             
-                                Michael Geukramer → Herzogtum Österreich
+                                Michael Geukramer &rsaquo; Herzogtum Österreich
                             
                         </td>
                         <td class="rel-col-source">
@@ -658,7 +738,7 @@
                         <td class="rel-col-label"><em>purgermaister</em></td>
                         <td class="rel-col-perspective">
                             
-                                Michael Geukramer → Wien
+                                Michael Geukramer &rsaquo; Wien
                             
                         </td>
                         <td class="rel-col-source">
@@ -677,7 +757,7 @@
                         <td class="rel-col-label"><em>mu/enzmaister</em></td>
                         <td class="rel-col-perspective">
                             
-                                Michael Geukramer → Herzogtum Österreich
+                                Michael Geukramer &rsaquo; Herzogtum Österreich
                             
                         </td>
                         <td class="rel-col-source">
@@ -696,7 +776,7 @@
                         <td class="rel-col-label"><em>purgermaister</em></td>
                         <td class="rel-col-perspective">
                             
-                                Michael Geukramer → Wien
+                                Michael Geukramer &rsaquo; Wien
                             
                         </td>
                         <td class="rel-col-source">
@@ -715,7 +795,7 @@
                         <td class="rel-col-label"><em>münzmaister</em></td>
                         <td class="rel-col-perspective">
                             
-                                Michael Geukramer → Herzogtum Österreich
+                                Michael Geukramer &rsaquo; Herzogtum Österreich
                             
                         </td>
                         <td class="rel-col-source">
@@ -734,7 +814,7 @@
                         <td class="rel-col-label"><em>purgermaister</em></td>
                         <td class="rel-col-perspective">
                             
-                                Michael Geukramer → Wien
+                                Michael Geukramer &rsaquo; Wien
                             
                         </td>
                         <td class="rel-col-source">
@@ -753,7 +833,7 @@
                         <td class="rel-col-label"><em>münzmaister</em></td>
                         <td class="rel-col-perspective">
                             
-                                Michael Geukramer → Herzogtum Österreich
+                                Michael Geukramer &rsaquo; Herzogtum Österreich
                             
                         </td>
                         <td class="rel-col-source">
@@ -772,7 +852,7 @@
                         <td class="rel-col-label"><em>purgermaister</em></td>
                         <td class="rel-col-perspective">
                             
-                                Michael Geukramer → Wien
+                                Michael Geukramer &rsaquo; Wien
                             
                         </td>
                         <td class="rel-col-source">
@@ -791,7 +871,7 @@
                         <td class="rel-col-label"><em>munzmaister</em></td>
                         <td class="rel-col-perspective">
                             
-                                Michael Geukramer → Herzogtum Österreich
+                                Michael Geukramer &rsaquo; Herzogtum Österreich
                             
                         </td>
                         <td class="rel-col-source">
@@ -810,7 +890,7 @@
                         <td class="rel-col-label"><em>purgermaister</em></td>
                         <td class="rel-col-perspective">
                             
-                                Michael Geukramer → Wien
+                                Michael Geukramer &rsaquo; Wien
                             
                         </td>
                         <td class="rel-col-source">
@@ -829,7 +909,7 @@
                         <td class="rel-col-label"><em>münzmaister</em></td>
                         <td class="rel-col-perspective">
                             
-                                Michael Geukramer → Herzogtum Österreich
+                                Michael Geukramer &rsaquo; Herzogtum Österreich
                             
                         </td>
                         <td class="rel-col-source">
@@ -848,7 +928,7 @@
                         <td class="rel-col-label"><em>purgermaister</em></td>
                         <td class="rel-col-perspective">
                             
-                                Michael Geukramer → Wien
+                                Michael Geukramer &rsaquo; Wien
                             
                         </td>
                         <td class="rel-col-source">
@@ -867,7 +947,7 @@
                         <td class="rel-col-label"><em>münzmaister</em></td>
                         <td class="rel-col-perspective">
                             
-                                Michael Geukramer → Herzogtum Österreich
+                                Michael Geukramer &rsaquo; Herzogtum Österreich
                             
                         </td>
                         <td class="rel-col-source">
@@ -886,7 +966,7 @@
                         <td class="rel-col-label"><em>purgermaister</em></td>
                         <td class="rel-col-perspective">
                             
-                                Michael Geukramer → Wien
+                                Michael Geukramer &rsaquo; Wien
                             
                         </td>
                         <td class="rel-col-source">
@@ -905,7 +985,7 @@
                         <td class="rel-col-label"><em>münzmaister</em></td>
                         <td class="rel-col-perspective">
                             
-                                Michael Geukramer → Herzogtum Österreich
+                                Michael Geukramer &rsaquo; Herzogtum Österreich
                             
                         </td>
                         <td class="rel-col-source">
@@ -924,7 +1004,7 @@
                         <td class="rel-col-label"><em>purgermaister</em></td>
                         <td class="rel-col-perspective">
                             
-                                Michael Geukramer → Wien
+                                Michael Geukramer &rsaquo; Wien
                             
                         </td>
                         <td class="rel-col-source">
@@ -943,7 +1023,7 @@
                         <td class="rel-col-label"><em>münzmaister</em></td>
                         <td class="rel-col-perspective">
                             
-                                Michael Geukramer → Herzogtum Österreich
+                                Michael Geukramer &rsaquo; Herzogtum Österreich
                             
                         </td>
                         <td class="rel-col-source">
@@ -962,7 +1042,7 @@
                         <td class="rel-col-label"><em>purgermaister</em></td>
                         <td class="rel-col-perspective">
                             
-                                Michael Geukramer → Wien
+                                Michael Geukramer &rsaquo; Wien
                             
                         </td>
                         <td class="rel-col-source">
@@ -981,7 +1061,7 @@
                         <td class="rel-col-label"><em>münzmeister</em></td>
                         <td class="rel-col-perspective">
                             
-                                Michael Geukramer → Herzogtum Österreich
+                                Michael Geukramer &rsaquo; Herzogtum Österreich
                             
                         </td>
                         <td class="rel-col-source">
@@ -1000,7 +1080,7 @@
                         <td class="rel-col-label"><em>purgermaister</em></td>
                         <td class="rel-col-perspective">
                             
-                                Michael Geukramer → Wien
+                                Michael Geukramer &rsaquo; Wien
                             
                         </td>
                         <td class="rel-col-source">
@@ -1019,7 +1099,7 @@
                         <td class="rel-col-label"><em>münzmaister</em></td>
                         <td class="rel-col-perspective">
                             
-                                Michael Geukramer → Herzogtum Österreich
+                                Michael Geukramer &rsaquo; Herzogtum Österreich
                             
                         </td>
                         <td class="rel-col-source">
@@ -1038,7 +1118,7 @@
                         <td class="rel-col-label"><em>purgermaister</em></td>
                         <td class="rel-col-perspective">
                             
-                                Michael Geukramer → Wien
+                                Michael Geukramer &rsaquo; Wien
                             
                         </td>
                         <td class="rel-col-source">
@@ -1057,7 +1137,7 @@
                         <td class="rel-col-label"><em>münzmaister</em></td>
                         <td class="rel-col-perspective">
                             
-                                Michael Geukramer → Herzogtum Österreich
+                                Michael Geukramer &rsaquo; Herzogtum Österreich
                             
                         </td>
                         <td class="rel-col-source">
@@ -1076,7 +1156,7 @@
                         <td class="rel-col-label"><em>purgermaister</em></td>
                         <td class="rel-col-perspective">
                             
-                                Michael Geukramer → Wien
+                                Michael Geukramer &rsaquo; Wien
                             
                         </td>
                         <td class="rel-col-source">
@@ -1095,7 +1175,7 @@
                         <td class="rel-col-label"><em>münzmaister</em></td>
                         <td class="rel-col-perspective">
                             
-                                Michael Geukramer → Herzogtum Österreich
+                                Michael Geukramer &rsaquo; Herzogtum Österreich
                             
                         </td>
                         <td class="rel-col-source">
@@ -1114,7 +1194,7 @@
                         <td class="rel-col-label"><em>purgermaister</em></td>
                         <td class="rel-col-perspective">
                             
-                                Michael Geukramer → Wien
+                                Michael Geukramer &rsaquo; Wien
                             
                         </td>
                         <td class="rel-col-source">
@@ -1133,7 +1213,7 @@
                         <td class="rel-col-label"><em>münzmaister</em></td>
                         <td class="rel-col-perspective">
                             
-                                Michael Geukramer → Herzogtum Österreich
+                                Michael Geukramer &rsaquo; Herzogtum Österreich
                             
                         </td>
                         <td class="rel-col-source">
@@ -1152,7 +1232,7 @@
                         <td class="rel-col-label"><em>purgermaister</em></td>
                         <td class="rel-col-perspective">
                             
-                                Michael Geukramer → Wien
+                                Michael Geukramer &rsaquo; Wien
                             
                         </td>
                         <td class="rel-col-source">
@@ -1171,7 +1251,7 @@
                         <td class="rel-col-label"><em>münzmaister</em></td>
                         <td class="rel-col-perspective">
                             
-                                Michael Geukramer → Herzogtum Österreich
+                                Michael Geukramer &rsaquo; Herzogtum Österreich
                             
                         </td>
                         <td class="rel-col-source">
@@ -1190,7 +1270,7 @@
                         <td class="rel-col-label"><em>purgermaister</em></td>
                         <td class="rel-col-perspective">
                             
-                                Michael Geukramer → Wien
+                                Michael Geukramer &rsaquo; Wien
                             
                         </td>
                         <td class="rel-col-source">
@@ -1209,7 +1289,7 @@
                         <td class="rel-col-label"><em>münzmaister</em></td>
                         <td class="rel-col-perspective">
                             
-                                Michael Geukramer → Herzogtum Österreich
+                                Michael Geukramer &rsaquo; Herzogtum Österreich
                             
                         </td>
                         <td class="rel-col-source">
@@ -1228,7 +1308,7 @@
                         <td class="rel-col-label"><em>purgermaister</em></td>
                         <td class="rel-col-perspective">
                             
-                                Michael Geukramer → Wien
+                                Michael Geukramer &rsaquo; Wien
                             
                         </td>
                         <td class="rel-col-source">
@@ -1247,7 +1327,7 @@
                         <td class="rel-col-label"><em>münzmeister</em></td>
                         <td class="rel-col-perspective">
                             
-                                Michael Geukramer → Herzogtum Österreich
+                                Michael Geukramer &rsaquo; Herzogtum Österreich
                             
                         </td>
                         <td class="rel-col-source">
@@ -1266,7 +1346,7 @@
                         <td class="rel-col-label"><em>purgermaister</em></td>
                         <td class="rel-col-perspective">
                             
-                                Michael Geukramer → Wien
+                                Michael Geukramer &rsaquo; Wien
                             
                         </td>
                         <td class="rel-col-source">
@@ -1285,7 +1365,7 @@
                         <td class="rel-col-label"><em>münzmaister</em></td>
                         <td class="rel-col-perspective">
                             
-                                Michael Geukramer → Herzogtum Österreich
+                                Michael Geukramer &rsaquo; Herzogtum Österreich
                             
                         </td>
                         <td class="rel-col-source">
@@ -1304,7 +1384,7 @@
                         <td class="rel-col-label"><em>purgermaister</em></td>
                         <td class="rel-col-perspective">
                             
-                                Michael Geukramer → Wien
+                                Michael Geukramer &rsaquo; Wien
                             
                         </td>
                         <td class="rel-col-source">
@@ -1323,7 +1403,7 @@
                         <td class="rel-col-label"><em>münzmaister</em></td>
                         <td class="rel-col-perspective">
                             
-                                Michael Geukramer → Herzogtum Österreich
+                                Michael Geukramer &rsaquo; Herzogtum Österreich
                             
                         </td>
                         <td class="rel-col-source">
@@ -1342,7 +1422,7 @@
                         <td class="rel-col-label"><em>purgermaister</em></td>
                         <td class="rel-col-perspective">
                             
-                                Michael Geukramer → Wien
+                                Michael Geukramer &rsaquo; Wien
                             
                         </td>
                         <td class="rel-col-source">
@@ -1361,7 +1441,7 @@
                         <td class="rel-col-label"><em>münzmaister</em></td>
                         <td class="rel-col-perspective">
                             
-                                Michael Geukramer → Herzogtum Österreich
+                                Michael Geukramer &rsaquo; Herzogtum Österreich
                             
                         </td>
                         <td class="rel-col-source">
@@ -1380,7 +1460,7 @@
                         <td class="rel-col-label"><em>purgermaister</em></td>
                         <td class="rel-col-perspective">
                             
-                                Michael Geukramer → Wien
+                                Michael Geukramer &rsaquo; Wien
                             
                         </td>
                         <td class="rel-col-source">
@@ -1399,7 +1479,7 @@
                         <td class="rel-col-label"><em>münzmaister</em></td>
                         <td class="rel-col-perspective">
                             
-                                Michael Geukramer → Herzogtum Österreich
+                                Michael Geukramer &rsaquo; Herzogtum Österreich
                             
                         </td>
                         <td class="rel-col-source">
@@ -1418,7 +1498,7 @@
                         <td class="rel-col-label"><em>purgermaister</em></td>
                         <td class="rel-col-perspective">
                             
-                                Michael Geukramer → Wien
+                                Michael Geukramer &rsaquo; Wien
                             
                         </td>
                         <td class="rel-col-source">
@@ -1437,7 +1517,7 @@
                         <td class="rel-col-label"><em>münzmaister</em></td>
                         <td class="rel-col-perspective">
                             
-                                Michael Geukramer → Herzogtum Österreich
+                                Michael Geukramer &rsaquo; Herzogtum Österreich
                             
                         </td>
                         <td class="rel-col-source">
@@ -1456,7 +1536,7 @@
                         <td class="rel-col-label"><em>rats der stat ze Wienne</em></td>
                         <td class="rel-col-perspective">
                             
-                                Michael Geukramer → Wien
+                                Michael Geukramer &rsaquo; Wien
                             
                         </td>
                         <td class="rel-col-source">
@@ -1475,7 +1555,7 @@
                         <td class="rel-col-label"><em>judenrichter ze Wienn</em></td>
                         <td class="rel-col-perspective">
                             
-                                Michael Geukramer → Wien
+                                Michael Geukramer &rsaquo; Wien
                             
                         </td>
                         <td class="rel-col-source">
@@ -1493,18 +1573,32 @@
         
         
         
+        
+        
+        
+        
+        
+        
     </section>
     
 
     
     <section class="person-sources" aria-label="Quellen mit Nennung">
         <h2 class="section-head">Quellen mit Nennung</h2>
+        
+        <div class="table-filter">
+            <input type="search" class="table-filter-input" data-target="src" placeholder="In den Quellen filtern&hellip;" aria-label="In den Quellen filtern">
+            <span class="table-filter-status"></span>
+        </div>
+        
         <table class="person-source-table">
             <thead>
                 <tr>
                     <th scope="col" class="src-col-idno">Nr.</th>
                     <th scope="col" class="src-col-date">Datum</th>
                     <th scope="col" class="src-col-corpus">Quellenkorpus</th>
+                    <th scope="col" class="src-col-label">Bezeichnung</th>
+                    <th scope="col" class="src-col-role">Rolle</th>
                     <th scope="col" class="src-col-regest">Regest</th>
                 </tr>
             </thead>
@@ -1514,6 +1608,11 @@
                     <td class="src-col-idno"><a href="../../documents/QGW/Vienna_1177-1414_ready/856.html">856</a></td>
                     <td class="src-col-date">1375 V 23</td>
                     <td class="src-col-corpus">QGW II/1 (1177–1414)</td>
+                    <td class="src-col-label"><em>-</em></td>
+                    <td class="src-col-role">
+                        <span class="role-chip role-chip-witness">Zeuge / Siegler*in</span>
+                        
+                    </td>
                     <td class="src-col-regest">Leupolt der Polcz, purger ze Wienne, und Elspet, seine Hausfrau, verkaufen mit Handen ihres Bergmeisters Petreins des Mannseber, amptman des chlosters ze Neunburch , ihren Weingarten, den Leopolds…</td>
                 </tr>
             
@@ -1521,6 +1620,11 @@
                     <td class="src-col-idno"><a href="../../documents/QGW/Vienna_1177-1414_ready/862.html">862</a></td>
                     <td class="src-col-date">1375 VII 21</td>
                     <td class="src-col-corpus">QGW II/1 (1177–1414)</td>
+                    <td class="src-col-label"><em>hern</em></td>
+                    <td class="src-col-role">
+                        <span class="role-chip role-chip-witness">Zeuge / Siegler*in</span>
+                        
+                    </td>
                     <td class="src-col-regest">Niclas der Fueders und Margret, seine Hausfrau , verkaufen mit Handen der Grundfrau swester Christein der Witzinne, abtessinne dacz sand Niclas ze Wienn , eine Hofstatt Weingarten, die ihnen Ott von…</td>
                 </tr>
             
@@ -1528,6 +1632,11 @@
                     <td class="src-col-idno"><a href="../../documents/QGW/Vienna_1177-1414_ready/1112.html">1112</a></td>
                     <td class="src-col-date">1387 I 05</td>
                     <td class="src-col-corpus">QGW II/1 (1177–1414)</td>
+                    <td class="src-col-label"><em>hern</em></td>
+                    <td class="src-col-role">
+                        <span class="role-chip role-chip-other">Sonstige</span>
+                        
+                    </td>
                     <td class="src-col-regest">Michel der Gennspaindl ze Wienn und Elsbet, seine Hausfrau, verkaufen mit Handen hern Michels des Geukramer, purgermaister und munzmaister, und des rates gemain der stat ze Wienn zu dem steg vor…</td>
                 </tr>
             
@@ -1535,6 +1644,11 @@
                     <td class="src-col-idno"><a href="../../documents/QGW/Vienna_1177-1414_ready/1113.html">1113</a></td>
                     <td class="src-col-date">1387 II 08</td>
                     <td class="src-col-corpus">QGW II/1 (1177–1414)</td>
+                    <td class="src-col-label"><em>hern</em></td>
+                    <td class="src-col-role">
+                        <span class="role-chip role-chip-other">Sonstige</span>
+                        
+                    </td>
                     <td class="src-col-regest">Niclas, der sneider von Ruspach ze Wienn, und Margret, seine Hausfrau, stellen einen Schuldbrief aus Jannsen dem Schergen und seiner Hausfrau Osannen einen Schuldbrief über 9 lb dn. aus, rückzahlbar…</td>
                 </tr>
             
@@ -1542,6 +1656,11 @@
                     <td class="src-col-idno"><a href="../../documents/QGW/Vienna_1177-1414_ready/1114.html">1114</a></td>
                     <td class="src-col-date">1387 II 09</td>
                     <td class="src-col-corpus">QGW II/1 (1177–1414)</td>
+                    <td class="src-col-label"><em>hern</em></td>
+                    <td class="src-col-role">
+                        <span class="role-chip role-chip-other">Sonstige</span>
+                        
+                    </td>
                     <td class="src-col-regest">Peter der Tuttlinger, purger ze Wienn, stellt einen Schuldbrief aus Petrein sun, Petreins seligen des Probsts sun, der noch zu seinen beschaiden jaren nicht chomen ist , einen Schuldbrief über 40 lb…</td>
                 </tr>
             
@@ -1549,6 +1668,11 @@
                     <td class="src-col-idno"><a href="../../documents/QGW/Vienna_1177-1414_ready/1118.html">1118</a></td>
                     <td class="src-col-date">1387 III 21</td>
                     <td class="src-col-corpus">QGW II/1 (1177–1414)</td>
+                    <td class="src-col-label"><em>-</em></td>
+                    <td class="src-col-role">
+                        <span class="role-chip role-chip-other">Sonstige</span>
+                        
+                    </td>
                     <td class="src-col-regest">Hanns von Re/ana bestätigt, für sich und seine Muhme Jungfrau Margrete, die Tochter seines verstorbenen Bruders Ruemharts von Re/ana, laut ausgefertigten Stadtbriefes des von Michel dem Geuchramer,…</td>
                 </tr>
             
@@ -1556,6 +1680,11 @@
                     <td class="src-col-idno"><a href="../../documents/QGW/Vienna_1177-1414_ready/1121.html">1121</a></td>
                     <td class="src-col-date">1387 V 20</td>
                     <td class="src-col-corpus">QGW II/1 (1177–1414)</td>
+                    <td class="src-col-label"><em>hern</em></td>
+                    <td class="src-col-role">
+                        <span class="role-chip role-chip-other">Sonstige</span>
+                        
+                    </td>
                     <td class="src-col-regest">Andre der Watman, der tuchberaiter, purger ze Wienn, und Kunigund, seine Hausfrau , verkaufen mit Handen hern Michels des Geuchramer, purgermaister und münzmaister, und des rates gemain der stat ze…</td>
                 </tr>
             
@@ -1563,6 +1692,11 @@
                     <td class="src-col-idno"><a href="../../documents/QGW/Vienna_1177-1414_ready/1122.html">1122</a></td>
                     <td class="src-col-date">1387 VI 12</td>
                     <td class="src-col-corpus">QGW II/1 (1177–1414)</td>
+                    <td class="src-col-label"><em>-</em></td>
+                    <td class="src-col-role">
+                        <span class="role-chip role-chip-other">Sonstige</span>
+                        
+                    </td>
                     <td class="src-col-regest">Ott der Pleintinger und Kathrei, seine Hausfrau , verkaufen mit Handen Michels des Geuchramer, purgermaister und münzmaister, und des rates gemain der stat ze Wienn ihr Haus, dessen eine Hälfte Otten…</td>
                 </tr>
             
@@ -1570,6 +1704,11 @@
                     <td class="src-col-idno"><a href="../../documents/QGW/Vienna_1177-1414_ready/1128.html">1128</a></td>
                     <td class="src-col-date">1387 VII 20</td>
                     <td class="src-col-corpus">QGW II/1 (1177–1414)</td>
+                    <td class="src-col-label"><em>hern</em></td>
+                    <td class="src-col-role">
+                        <span class="role-chip role-chip-other">Sonstige</span>
+                        
+                    </td>
                     <td class="src-col-regest">Lienhart der Swerczer, Petreins, des pinter, sun, bestätigt, dass frau Geisel, wittib Hainreichs wittib des Silberperger, swester Dorothen, conventswester dacz sand Marien Magdalenen vor Schottentor…</td>
                 </tr>
             
@@ -1577,6 +1716,11 @@
                     <td class="src-col-idno"><a href="../../documents/QGW/Vienna_1177-1414_ready/1135.html">1135</a></td>
                     <td class="src-col-date">1387 X 10</td>
                     <td class="src-col-corpus">QGW II/1 (1177–1414)</td>
+                    <td class="src-col-label"><em>hern</em></td>
+                    <td class="src-col-role">
+                        <span class="role-chip role-chip-other">Sonstige</span>
+                        
+                    </td>
                     <td class="src-col-regest">Jacobinello Zanncani von Venedii, verkauft mit Handen hern Michels des Geuchramer, purgermaister und münzmaister, und des rates gemain der stat ze Wienn sein Haus, das er um sein aigenhafts lediges…</td>
                 </tr>
             
@@ -1584,6 +1728,11 @@
                     <td class="src-col-idno"><a href="../../documents/QGW/Vienna_1177-1414_ready/1137.html">1137</a></td>
                     <td class="src-col-date">1387 XII 20</td>
                     <td class="src-col-corpus">QGW II/1 (1177–1414)</td>
+                    <td class="src-col-label"><em>hern</em></td>
+                    <td class="src-col-role">
+                        <span class="role-chip role-chip-other">Sonstige</span>
+                        
+                    </td>
                     <td class="src-col-regest">Janns, der weinchoster ze Wienn, und Margret, seine Hausfrau, verkaufen mit Handen hern Michels des Geuchramer, purgermaister und mu/enzmaister, und des rates gemain der stat ze Wienn ein chram, die…</td>
                 </tr>
             
@@ -1591,6 +1740,11 @@
                     <td class="src-col-idno"><a href="../../documents/QGW/Vienna_1177-1414_ready/1141.html">1141</a></td>
                     <td class="src-col-date">1388 I 29</td>
                     <td class="src-col-corpus">QGW II/1 (1177–1414)</td>
+                    <td class="src-col-label"><em>hern</em></td>
+                    <td class="src-col-role">
+                        <span class="role-chip role-chip-other">Sonstige</span>
+                        
+                    </td>
                     <td class="src-col-regest">Cristoffer der Vrisch von Hof enthalben der Leita verkauft mit Handen hern Michels des Geuchramer, purgermaister und mu/enzmaister, und des rates gemain der stat ze Wienn seinen viertail an dem haus,…</td>
                 </tr>
             
@@ -1598,6 +1752,11 @@
                     <td class="src-col-idno"><a href="../../documents/QGW/Vienna_1177-1414_ready/1142.html">1142</a></td>
                     <td class="src-col-date">1388 II 01</td>
                     <td class="src-col-corpus">QGW II/1 (1177–1414)</td>
+                    <td class="src-col-label"><em>hern</em></td>
+                    <td class="src-col-role">
+                        <span class="role-chip role-chip-other">Sonstige</span>
+                        
+                    </td>
                     <td class="src-col-regest">Jacob der Zwaiphunt, purger ze Wienn, verkauft mit Handen hern Michels des Geuchramer, purgermaister und münzmaister, und des rates gemain der stat ze Wienn eine Fleischbank, die sein Vater Jacob der…</td>
                 </tr>
             
@@ -1605,6 +1764,11 @@
                     <td class="src-col-idno"><a href="../../documents/QGW/Vienna_1177-1414_ready/1146.html">1146</a></td>
                     <td class="src-col-date">1388 IV 22</td>
                     <td class="src-col-corpus">QGW II/1 (1177–1414)</td>
+                    <td class="src-col-label"><em>hern</em></td>
+                    <td class="src-col-role">
+                        <span class="role-chip role-chip-other">Sonstige</span>
+                        
+                    </td>
                     <td class="src-col-regest">Ulreich der Sebekch verkauft mit Handen hern Michels des Geuchramer, purgermaister und münzmaister, und des rates gemain der stat ze Wienn sein Haus, gelegen in sand Johannsstrasse ze Wienn zenechst…</td>
                 </tr>
             
@@ -1612,6 +1776,11 @@
                     <td class="src-col-idno"><a href="../../documents/QGW/Vienna_1177-1414_ready/1147.html">1147</a></td>
                     <td class="src-col-date">1388 IV 22</td>
                     <td class="src-col-corpus">QGW II/1 (1177–1414)</td>
+                    <td class="src-col-label"><em>hern</em></td>
+                    <td class="src-col-role">
+                        <span class="role-chip role-chip-other">Sonstige</span>
+                        
+                    </td>
                     <td class="src-col-regest">Jacob, der smied von Fe/andorf, verkauft mit Handen hern Michels des Geuchramer, purgermaister und munzmaister, und des rates gemain der stat ze Wienn 10 sh. dn. ablösbaren geltes purkrechts auf…</td>
                 </tr>
             
@@ -1619,6 +1788,11 @@
                     <td class="src-col-idno"><a href="../../documents/QGW/Vienna_1177-1414_ready/1148.html">1148</a></td>
                     <td class="src-col-date">1388 V 06</td>
                     <td class="src-col-corpus">QGW II/1 (1177–1414)</td>
+                    <td class="src-col-label"><em>hern</em></td>
+                    <td class="src-col-role">
+                        <span class="role-chip role-chip-other">Sonstige</span>
+                        
+                    </td>
                     <td class="src-col-regest">Peter der Chremser, der schuster ze Wienn, und Kristein, seine Hausfrau, bestätigen, dass sie Jörgen, Fridreichs seligen des Waz/zz/zerchnechts bruder sun, der noch zu seinen beschaiden jarn nicht…</td>
                 </tr>
             
@@ -1626,6 +1800,11 @@
                     <td class="src-col-idno"><a href="../../documents/QGW/Vienna_1177-1414_ready/1153.html">1153</a></td>
                     <td class="src-col-date">1388 VI 26</td>
                     <td class="src-col-corpus">QGW II/1 (1177–1414)</td>
+                    <td class="src-col-label"><em>hern</em></td>
+                    <td class="src-col-role">
+                        <span class="role-chip role-chip-other">Sonstige</span>
+                        
+                    </td>
                     <td class="src-col-regest">Wolfhart, der chramer von Haimburg, verkauft mit Handen hern Michels des Geuchramer, purgermaister und münzmaister, und des rates gemain der stat ze Wienn den Antheil, den seine Hausfrau Elsbet und…</td>
                 </tr>
             
@@ -1633,6 +1812,11 @@
                     <td class="src-col-idno"><a href="../../documents/QGW/Vienna_1177-1414_ready/1156.html">1156</a></td>
                     <td class="src-col-date">1388 VII 06</td>
                     <td class="src-col-corpus">QGW II/1 (1177–1414)</td>
+                    <td class="src-col-label"><em>hern</em></td>
+                    <td class="src-col-role">
+                        <span class="role-chip role-chip-other">Sonstige</span>
+                        
+                    </td>
                     <td class="src-col-regest">Ruodolf von Tierna, hubmaister in Österreich, bruder Ludweig von Tierna und Paul von Tierna, sein brüder, beurkunden, dass ihr Vater Vater Vater her Hanns von Tierna, weilnt auch hubmaister in…</td>
                 </tr>
             
@@ -1640,6 +1824,11 @@
                     <td class="src-col-idno"><a href="../../documents/QGW/Vienna_1177-1414_ready/1159.html">1159</a></td>
                     <td class="src-col-date">1388 VIII 21</td>
                     <td class="src-col-corpus">QGW II/1 (1177–1414)</td>
+                    <td class="src-col-label"><em>hern</em></td>
+                    <td class="src-col-role">
+                        <span class="role-chip role-chip-other">Sonstige</span>
+                        
+                    </td>
                     <td class="src-col-regest">Eberhart von Neunburkch, kirichmaister dacz Allerheiligen tumchirchen dacz sand Stephan ze Wienn , verkauft mit Handen hern Michels des Geuchramer, purgermaister und münzmaister , und des rates…</td>
                 </tr>
             
@@ -1647,6 +1836,11 @@
                     <td class="src-col-idno"><a href="../../documents/QGW/Vienna_1177-1414_ready/1163.html">1163</a></td>
                     <td class="src-col-date">1388 IX 15</td>
                     <td class="src-col-corpus">QGW II/1 (1177–1414)</td>
+                    <td class="src-col-label"><em>hern</em></td>
+                    <td class="src-col-role">
+                        <span class="role-chip role-chip-other">Sonstige</span>
+                        
+                    </td>
                     <td class="src-col-regest">Ulreich der Tömgel, purger ze Wienn, und Lucei, seine Hausfrau, verkaufen mit Handen hern Michels des Geuchramer, purgermaister und münzmeister, und des rates gemain der stat ze Wienn ihr Zuhaus,…</td>
                 </tr>
             
@@ -1654,6 +1848,11 @@
                     <td class="src-col-idno"><a href="../../documents/QGW/Vienna_1177-1414_ready/1167.html">1167</a></td>
                     <td class="src-col-date">1388 X 31</td>
                     <td class="src-col-corpus">QGW II/1 (1177–1414)</td>
+                    <td class="src-col-label"><em>hern</em></td>
+                    <td class="src-col-role">
+                        <span class="role-chip role-chip-other">Sonstige</span>
+                        
+                    </td>
                     <td class="src-col-regest">Hanns gebrüder von Schiltarn und Jörg, gebrüder von Schiltarn, Urkunden wegen des Hauses, das weiln des Herrscheftleins gewesen ist, gelegen mit dem Vordern tail in der Kernerstrasse ze Wienn und mit…</td>
                 </tr>
             
@@ -1661,6 +1860,11 @@
                     <td class="src-col-idno"><a href="../../documents/QGW/Vienna_1177-1414_ready/1175.html">1175</a></td>
                     <td class="src-col-date">1389 VI 28</td>
                     <td class="src-col-corpus">QGW II/1 (1177–1414)</td>
+                    <td class="src-col-label"><em>hern</em></td>
+                    <td class="src-col-role">
+                        <span class="role-chip role-chip-other">Sonstige</span>
+                        
+                    </td>
                     <td class="src-col-regest">Seifrid der Paukker, verweser des hauses dacz sand Marx, das man nennet dacz sand Lasars, und die sundersiechen gemain daselbens verkaufen mit Einwilligung ihres Vogtes Herwarts in der Scheffstrasse…</td>
                 </tr>
             
@@ -1668,6 +1872,11 @@
                     <td class="src-col-idno"><a href="../../documents/QGW/Vienna_1177-1414_ready/1178.html">1178</a></td>
                     <td class="src-col-date">1389 IX 13</td>
                     <td class="src-col-corpus">QGW II/1 (1177–1414)</td>
+                    <td class="src-col-label"><em>hern</em></td>
+                    <td class="src-col-role">
+                        <span class="role-chip role-chip-other">Sonstige</span>
+                        
+                    </td>
                     <td class="src-col-regest">Jacob der Wolf von Gre/acz, purger ze Wienne, und Dorothe, seine Hausfrau, beurkunden, dass sie dem Vetter der Dorothe Hannsen, Hannsen seligen von Haslach sun von Haslach, der innerlands nicht ist,…</td>
                 </tr>
             
@@ -1675,6 +1884,11 @@
                     <td class="src-col-idno"><a href="../../documents/QGW/Vienna_1177-1414_ready/1198.html">1198</a></td>
                     <td class="src-col-date">1390 XII 13</td>
                     <td class="src-col-corpus">QGW II/1 (1177–1414)</td>
+                    <td class="src-col-label"><em>-</em></td>
+                    <td class="src-col-role">
+                        <span class="role-chip role-chip-issuer">Aussteller*in</span>
+                        
+                    </td>
                     <td class="src-col-regest">Michel der Geuchramer, purgermaister und münzmaister, und der rat gemain der stat ze Wienn beurkunden, dass vor ihnen Hanns der Spiegler, Herzog Albrechts Kellerschreiber, mit Chunraten dem Stachler,…</td>
                 </tr>
             
@@ -1682,6 +1896,11 @@
                     <td class="src-col-idno"><a href="../../documents/QGW/Vienna_1177-1414_ready/1205.html">1205</a></td>
                     <td class="src-col-date">1391 VI 01</td>
                     <td class="src-col-corpus">QGW II/1 (1177–1414)</td>
+                    <td class="src-col-label"><em>hern</em></td>
+                    <td class="src-col-role">
+                        <span class="role-chip role-chip-other">Sonstige</span>
+                        
+                    </td>
                     <td class="src-col-regest">Christan der Enikchel, purger ze Me/athausen, verkauft mit Handen hern Michels des Geuchramer, purgermaister und münzmaister, und des rats gemain der stat ze Wienn sein Haus, gelegen an dem…</td>
                 </tr>
             
@@ -1689,6 +1908,11 @@
                     <td class="src-col-idno"><a href="../../documents/QGW/Vienna_1177-1414_ready/1206.html">1206</a></td>
                     <td class="src-col-date">1391 VI 08</td>
                     <td class="src-col-corpus">QGW II/1 (1177–1414)</td>
+                    <td class="src-col-label"><em>her</em></td>
+                    <td class="src-col-role">
+                        <span class="role-chip role-chip-other">Sonstige</span>
+                        
+                    </td>
                     <td class="src-col-regest">Niclas von Weitra, Stephans seligen von Weitra sun von Weitra fürfür, verkauft für sich, für seinen Bruder Ulreich, der die zeit innerlandes nicht ist , und seine unmündige Schwester Kunigund mit…</td>
                 </tr>
             
@@ -1696,6 +1920,11 @@
                     <td class="src-col-idno"><a href="../../documents/QGW/Vienna_1177-1414_ready/1207.html">1207</a></td>
                     <td class="src-col-date">1391 VI 12</td>
                     <td class="src-col-corpus">QGW II/1 (1177–1414)</td>
+                    <td class="src-col-label"><em>-</em></td>
+                    <td class="src-col-role">
+                        <span class="role-chip role-chip-issuer">Aussteller*in</span>
+                        
+                    </td>
                     <td class="src-col-regest">Michel der Ge/auchramer, purgermaister und münzmeister, und der rat gemain der stat ze Wienn beurkunden, dass der Priester her Paul, Kaplan der von den vier Brüdern Pogenstainer auf dem Marienaltar…</td>
                 </tr>
             
@@ -1703,6 +1932,11 @@
                     <td class="src-col-idno"><a href="../../documents/QGW/Vienna_1177-1414_ready/1209.html">1209</a></td>
                     <td class="src-col-date">1391 VII 10</td>
                     <td class="src-col-corpus">QGW II/1 (1177–1414)</td>
+                    <td class="src-col-label"><em>hern</em></td>
+                    <td class="src-col-role">
+                        <span class="role-chip role-chip-other">Sonstige</span>
+                        
+                    </td>
                     <td class="src-col-regest">Hanns der HueberBruder und Andre, gebrüder die Hueber, verkaufen mit Handen hern Michels des Geuchramer, purgermaister und münzmaister , und des rats gemain der stat ze Wienn , ihren stadel, den…</td>
                 </tr>
             
@@ -1710,6 +1944,11 @@
                     <td class="src-col-idno"><a href="../../documents/QGW/Vienna_1177-1414_ready/1211.html">1211</a></td>
                     <td class="src-col-date">1391 VII 25</td>
                     <td class="src-col-corpus">QGW II/1 (1177–1414)</td>
+                    <td class="src-col-label"><em>hern</em></td>
+                    <td class="src-col-role">
+                        <span class="role-chip role-chip-other">Sonstige</span><span class="role-chip role-chip-recipient">Empfänger*in</span>
+                        
+                    </td>
                     <td class="src-col-regest">Niclas der Flusthart, purger ze Wienn, verkauft mit Handen hern Michels des Geuchramer, purgermaister und münzmaister, und des rats gemain der stat ze Wienne ein Haus und einen Gewandkeller, was ihm…</td>
                 </tr>
             
@@ -1717,6 +1956,11 @@
                     <td class="src-col-idno"><a href="../../documents/QGW/Vienna_1177-1414_ready/1214.html">1214</a></td>
                     <td class="src-col-date">1391 VIII 14</td>
                     <td class="src-col-corpus">QGW II/1 (1177–1414)</td>
+                    <td class="src-col-label"><em>hern</em></td>
+                    <td class="src-col-role">
+                        <span class="role-chip role-chip-other">Sonstige</span>
+                        
+                    </td>
                     <td class="src-col-regest">Ulreich der Reindl, der fleischhakcher, purger ze Wienne, Kathrei, seine Hausfrau, und Thoman, sein Sohn Sohn aus seiner früheren Ehe mit Chunigunden, verkaufen mit gesammter Hand und mit Handen hern…</td>
                 </tr>
             
@@ -1724,6 +1968,11 @@
                     <td class="src-col-idno"><a href="../../documents/QGW/Vienna_1177-1414_ready/1229.html">1229</a></td>
                     <td class="src-col-date">1392 IV 04</td>
                     <td class="src-col-corpus">QGW II/1 (1177–1414)</td>
+                    <td class="src-col-label"><em>hern</em></td>
+                    <td class="src-col-role">
+                        <span class="role-chip role-chip-other">Sonstige</span>
+                        
+                    </td>
                     <td class="src-col-regest">Leupolt, der prünner, purger ze Wienn, gibt mit Handen hern Michels des Geuchramer, purgermaister und münzmaister, und des rats gemein der stat ze Wienne seiner Hausfrau Elsbeten sein Haus, gelegen…</td>
                 </tr>
             
@@ -1731,6 +1980,11 @@
                     <td class="src-col-idno"><a href="../../documents/QGW/Vienna_1177-1414_ready/1230.html">1230</a></td>
                     <td class="src-col-date">1392 V 06</td>
                     <td class="src-col-corpus">QGW II/1 (1177–1414)</td>
+                    <td class="src-col-label"><em>hern</em></td>
+                    <td class="src-col-role">
+                        <span class="role-chip role-chip-other">Sonstige</span>
+                        
+                    </td>
                     <td class="src-col-regest">Graf Thoman von Sand Jorgen verkauft mit Handen hern Michels des Geuchramer, purgermaister und münzmaister, und des rats gemain der stat ze Wienne seine Brandstatt, gelegen oberthalb des hauses in…</td>
                 </tr>
             
@@ -1763,11 +2017,13 @@
         </div>
     </footer>
 
-    <script src="../../static/js/core.js?v=20260511112948"></script>
-    <script src="../../static/js/provenance.js?v=20260511112948"></script>
-    <script src="../../static/js/basket.js?v=20260511112948"></script>
+    <script src="../../static/js/core.js?v=20260511125458"></script>
+    <script src="../../static/js/tip.js?v=20260511125458"></script>
+    <script src="../../static/js/hint.js?v=20260511125458"></script>
+    <script src="../../static/js/basket.js?v=20260511125458"></script>
     
-<script src="../../static/js/tooltips.js?v=20260511112948"></script>
+<script src="../../static/js/profile.js?v=20260511125458"></script>
+<script src="../../static/js/basket-mount.js?v=20260511125458"></script>
 
 </body>
 </html>

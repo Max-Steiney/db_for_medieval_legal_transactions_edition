@@ -480,6 +480,9 @@
 .doc-body {
     padding: var(--space-xl) var(--space-2xl);
     line-height: var(--leading-body);
+    background: #fff;
+    border: 1px solid var(--color-border-light);
+    border-radius: var(--radius-lg);
 }
 
 .doc-body p {

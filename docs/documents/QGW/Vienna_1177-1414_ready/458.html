@@ -3,21 +3,21 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <meta http-equiv="Content-Security-Policy" content="default-src 'self'; script-src 'self'; style-src 'self'; font-src 'self'; img-src 'self' data: https://images.monasterium.net https://www.monasterium.net; connect-src 'self'; frame-ancestors 'none'; base-uri 'self'; form-action 'self'; upgrade-insecure-requests">
+    <meta http-equiv="Content-Security-Policy" content="default-src 'self'; script-src 'self'; style-src 'self'; font-src 'self'; img-src 'self' data: https://images.monasterium.net https://www.monasterium.net; connect-src 'self'; base-uri 'self'; form-action 'self'; upgrade-insecure-requests">
     <meta name="referrer" content="strict-origin-when-cross-origin">
     <meta http-equiv="Permissions-Policy" content="camera=(), microphone=(), geolocation=(), interest-cohort=()">
     <title>Nr. 458 (1354 X 29), Datenbank</title>
     <link rel="preload" as="font" type="font/woff2" crossorigin
           href="../../../static/fonts/inter-400-latin.woff2">
-    <link rel="stylesheet" href="../../../static/css/fonts.css?v=20260511112948">
-    <link rel="stylesheet" href="../../../static/css/tokens.css?v=20260511112948">
-    <link rel="stylesheet" href="../../../static/css/base.css?v=20260511112948">
-    <link rel="stylesheet" href="../../../static/css/components.css?v=20260511112948">
-    <link rel="stylesheet" href="../../../static/css/responsive.css?v=20260511112948">
-    <link rel="stylesheet" href="../../../static/css/print.css?v=20260511112948">
-    <link rel="stylesheet" href="../../../static/css/provenance.css?v=20260511112948">
+    <link rel="stylesheet" href="../../../static/css/fonts.css?v=20260511125458">
+    <link rel="stylesheet" href="../../../static/css/tokens.css?v=20260511125458">
+    <link rel="stylesheet" href="../../../static/css/base.css?v=20260511125458">
+    <link rel="stylesheet" href="../../../static/css/components.css?v=20260511125458">
+    <link rel="stylesheet" href="../../../static/css/responsive.css?v=20260511125458">
+    <link rel="stylesheet" href="../../../static/css/print.css?v=20260511125458">
+    <link rel="stylesheet" href="../../../static/css/tip.css?v=20260511125458">
     
-<link rel="stylesheet" href="../../../static/css/document.css?v=20260511112948">
+<link rel="stylesheet" href="../../../static/css/document.css?v=20260511125458">
 <link rel="canonical" href="documents/QGW/Vienna_1177-1414_ready/458.html">
 <meta name="citation_title" content="Nr. 458 (1354 X 29)">
 <meta name="citation_collection" content="QGW II/1 (1177–1414)">
@@ -50,8 +50,6 @@
         <a href="../../../register/persons.html">Personen</a>
         
         <a href="../../../register/orgs.html">Organisationen</a>
-        
-        <a href="../../../register/places.html">Orte</a>
         
     </div>
 </div>
@@ -93,7 +91,7 @@
     </div>
 </div>
 
-                <a href="../../../korb.html" class="nav-basket" aria-label="Wissenskorb">
+                <a href="../../../korb.html" class="nav-basket" aria-label="Datenkorb">
                     <svg width="18" height="18" viewBox="0 0 18 18" fill="none" aria-hidden="true">
                         <path d="M3 5h12l-1.2 8.5a1 1 0 0 1-1 .85H5.2a1 1 0 0 1-1-.85L3 5z"
                               stroke="currentColor" stroke-width="1.4" fill="none"
@@ -140,7 +138,7 @@
                     
                     <span class="meta-pair">
                         <span class="meta-label">Quelle</span>
-                        <span class="meta-value" title="Quellen zur Geschichte der Stadt Wien, Bd. II/1, Nr. 458">Quellen zur Geschichte der Stadt Wien, Bd. II/1, Nr. 458</span>
+                        <span class="meta-value" data-hint="Quellen zur Geschichte der Stadt Wien, Bd. II/1, Nr. 458">Quellen zur Geschichte der Stadt Wien, Bd. II/1, Nr. 458</span>
                     </span>
                     
                 </div>
@@ -151,7 +149,7 @@
                     
                     <button type="button" class="legend-toggle"
                             data-layer="entities" aria-pressed="true"
-                            title="Entitäten ein-/ausblenden">
+                            data-hint="Entitäten ein-/ausblenden">
                         <span class="legend-toggle-dots">
                             <span class="legend-swatch swatch-person"></span><span class="legend-swatch swatch-org"></span><span class="legend-swatch swatch-place"></span>
                         </span>
@@ -160,7 +158,7 @@
                     
                     <button type="button" class="legend-toggle"
                             data-layer="functions" aria-pressed="true"
-                            title="Funktionsrollen ein-/ausblenden">
+                            data-hint="Funktionsrollen ein-/ausblenden">
                         <span class="legend-toggle-dots">
                             <span class="legend-swatch swatch-fn-issuer"></span><span class="legend-swatch swatch-fn-recipient"></span><span class="legend-swatch swatch-fn-witness"></span>
                         </span>
@@ -169,7 +167,7 @@
                     
                     <button type="button" class="legend-toggle"
                             data-layer="attributes" aria-pressed="true"
-                            title="Attribute ein-/ausblenden">
+                            data-hint="Attribute ein-/ausblenden">
                         <span class="legend-toggle-dots">
                             <span class="legend-swatch swatch-attr"></span><span class="legend-swatch swatch-add"></span>
                         </span>
@@ -178,7 +176,7 @@
                     
                     <button type="button" class="legend-toggle"
                             data-layer="triggers" aria-pressed="true"
-                            title="Dispositivformel ein-/ausblenden">
+                            data-hint="Dispositivformel ein-/ausblenden">
                         <span class="legend-toggle-dots">
                             <span class="legend-swatch swatch-trigger"></span>
                         </span>
@@ -190,21 +188,29 @@
                 <div class="doc-toolbar-actions">
                     <a class="toolbar-btn" href="../../../tei/QGW/Vienna_1177-1414_ready/458.xml"
                        download="458.xml"
-                       aria-label="TEI-XML herunterladen" title="TEI-XML herunterladen"><svg viewBox="0 0 16 16" width="16" height="16" aria-hidden="true"><path fill="none" stroke="currentColor" stroke-width="1.4" stroke-linecap="round" stroke-linejoin="round" d="M8 2v8m0 0l-3-3m3 3l3-3M3 13h10"/></svg></a>
+                       aria-label="TEI-XML herunterladen" data-hint="TEI-XML herunterladen"><svg viewBox="0 0 16 16" width="16" height="16" aria-hidden="true"><path fill="none" stroke="currentColor" stroke-width="1.4" stroke-linecap="round" stroke-linejoin="round" d="M8 2v8m0 0l-3-3m3 3l3-3M3 13h10"/></svg></a>
                     <button class="toolbar-btn" id="cite-toggle" aria-expanded="false"
-                            aria-label="Zitation kopieren" title="Zitation kopieren"><svg viewBox="0 0 16 16" width="16" height="16" aria-hidden="true"><rect x="4" y="2" width="8" height="11" rx="1" fill="none" stroke="currentColor" stroke-width="1.4"/><path d="M6 1.5h4a0.5 0.5 0 0 1 0.5 0.5v1a0.5 0.5 0 0 1-0.5 0.5H6a0.5 0.5 0 0 1-0.5-0.5V2A0.5 0.5 0 0 1 6 1.5z" fill="currentColor"/><path d="M6.5 6.5h3M6.5 8.5h3M6.5 10.5h2" stroke="currentColor" stroke-width="1" stroke-linecap="round"/></svg></button>
+                            aria-label="Zitation kopieren" data-hint="Zitation kopieren"><svg viewBox="0 0 16 16" width="16" height="16" aria-hidden="true"><rect x="4" y="2" width="8" height="11" rx="1" fill="none" stroke="currentColor" stroke-width="1.4"/><path d="M6 1.5h4a0.5 0.5 0 0 1 0.5 0.5v1a0.5 0.5 0 0 1-0.5 0.5H6a0.5 0.5 0 0 1-0.5-0.5V2A0.5 0.5 0 0 1 6 1.5z" fill="currentColor"/><path d="M6.5 6.5h3M6.5 8.5h3M6.5 10.5h2" stroke="currentColor" stroke-width="1" stroke-linecap="round"/></svg></button>
                     <div class="cite-popover hidden" id="cite-popover"></div>
+                    <span class="toolbar-basket-mount"
+                          data-basket-type="source"
+                          data-basket-id="458"
+                          data-basket-label="458"
+                          data-basket-url="documents/QGW/Vienna_1177-1414_ready/458.html"
+                          data-basket-date="1354-10-29"
+                          data-basket-coll="QGW II/1 (1177–1414)"
+                          data-basket-regest="Stephan der Stro/ebein, purger ze Wienn, beurkundet seinen letzten Willen: Er schafft: 1. dass man von seinem fahrenden Gute 30 lb dn. gelts ewigs purchrechts für drei Messen kaufen solle, deren…"></span>
                     
 <nav class="doc-paging doc-paging-inline" aria-label="Quellen-Navigation">
     
     <a href="../../../documents/QGW/Vienna_1177-1414_ready/457.html" class="toolbar-btn doc-paging-prev"
        aria-label="Vorherige Quelle: Nr. 457"
-       title="Vorherige Quelle: Nr. 457"><svg viewBox="0 0 16 16" width="16" height="16" aria-hidden="true"><path fill="none" stroke="currentColor" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round" d="M10 3l-5 5 5 5"/></svg></a>
+       data-hint="Vorherige Quelle: Nr. 457"><svg viewBox="0 0 16 16" width="16" height="16" aria-hidden="true"><path fill="none" stroke="currentColor" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round" d="M10 3l-5 5 5 5"/></svg></a>
     
     
     <a href="../../../documents/QGW/Vienna_1177-1414_ready/459.html" class="toolbar-btn doc-paging-next"
        aria-label="Nächste Quelle: Nr. 459"
-       title="Nächste Quelle: Nr. 459"><svg viewBox="0 0 16 16" width="16" height="16" aria-hidden="true"><path fill="none" stroke="currentColor" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round" d="M6 3l5 5-5 5"/></svg></a>
+       data-hint="Nächste Quelle: Nr. 459"><svg viewBox="0 0 16 16" width="16" height="16" aria-hidden="true"><path fill="none" stroke="currentColor" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round" d="M6 3l5 5-5 5"/></svg></a>
     
 </nav>
 
@@ -219,47 +225,47 @@
         <!-- Document body (rendered TEI) -->
         <div class="doc-body">
             <section class="tei-abstract"><h2 class="tei-section-head">Regest</h2><p>
-                              <span class="anno-event" data-ref="ev__QGW_II_I_458"><span class="anno-fn anno-fn-issuer" data-role="issuer"><span class="fn-label">Aussteller*in</span><a class="anno-person" data-ref="pe__stephan_strobein_QGW_II_I_1086" title="Stephan Strobein Strobein († 27.04.1362) [pe__stephan_strobein_QGW_II_I_1086]" href="../../../register/persons/pe__stephan_strobein_QGW_II_I_1086.html">Stephan der
+                              <span class="anno-event" data-ref="ev__QGW_II_I_458"><span class="anno-fn anno-fn-issuer" data-role="issuer"><span class="fn-label">Aussteller*in</span><a class="anno-person" data-ref="pe__stephan_strobein_QGW_II_I_1086" data-hint="Stephan Strobein Strobein († 27.04.1362) [pe__stephan_strobein_QGW_II_I_1086]" data-hint-type="Person" href="../../../register/persons/pe__stephan_strobein_QGW_II_I_1086.html">Stephan der
                                                 Stro/ebein, <span class="anno-attr anno-attr-occ" data-corresp="org__wien">purger</span> ze
                                                 Wienn,</a></span>
                                     <span class="anno-trigger anno-trigger-disp">beurkundet</span>
                                     <span class="anno-trigger anno-trigger-disp">seinen letzten Willen</span>:
                                           <span class="anno-trigger anno-trigger-disp">Er schafft</span>: 1. dass man
                                     von seinem fahrenden Gute 30 lb dn. gelts ewigs purchrechts für
-                                    drei Messen kaufen solle, deren Bewidmung <span class="anno-fn anno-fn-recipient" data-role="recipient"><span class="fn-label">Empfänger*in</span><a class="anno-person" data-ref="pe__gundolt_strobein_QGW_II_I_795" title="Gundolt Strobein Strobein [pe__gundolt_strobein_QGW_II_I_795]" href="../../../register/persons/pe__gundolt_strobein_QGW_II_I_795.html">seinen
-                                                  <span class="anno-attr anno-attr-kin" data-corresp="pe__stephan_strobein_QGW_II_I_1086">Oheimen</span> Gundolt</a> und <a class="anno-person" data-ref="pe__ulrich_strobein_QGW_II_I_898" title="Ulrich Strobein († 01.02.1377) [pe__ulrich_strobein_QGW_II_I_898]" href="../../../register/persons/pe__ulrich_strobein_QGW_II_I_898.html">Ulreich<span class="tei-add"><span class="anno-attr anno-attr-kin" data-corresp="pe__stephan_strobein_QGW_II_I_1086">Oheimen</span></span></a></span> übertragen
+                                    drei Messen kaufen solle, deren Bewidmung <span class="anno-fn anno-fn-recipient" data-role="recipient"><span class="fn-label">Empfänger*in</span><a class="anno-person" data-ref="pe__gundolt_strobein_QGW_II_I_795" data-hint="Gundolt Strobein Strobein [pe__gundolt_strobein_QGW_II_I_795]" data-hint-type="Person" href="../../../register/persons/pe__gundolt_strobein_QGW_II_I_795.html">seinen
+                                                  <span class="anno-attr anno-attr-kin" data-corresp="pe__stephan_strobein_QGW_II_I_1086">Oheimen</span> Gundolt</a> und <a class="anno-person" data-ref="pe__ulrich_strobein_QGW_II_I_898" data-hint="Ulrich Strobein († 01.02.1377) [pe__ulrich_strobein_QGW_II_I_898]" data-hint-type="Person" href="../../../register/persons/pe__ulrich_strobein_QGW_II_I_898.html">Ulreich<span class="tei-add"><span class="anno-attr anno-attr-kin" data-corresp="pe__stephan_strobein_QGW_II_I_1086">Oheimen</span></span></a></span> übertragen
                                     wird dieser und die §§. 4 und 5 sollen auch im Falle seiner
                                     Genesung Geltung behalten 2. dass die genannten Oheime von
                                     seinem fahrenden Gute 100 lb dn. den Siechen und Dürftigen im
-                                          <span class="anno-fn anno-fn-recipient" data-role="recipient"><span class="fn-label">Empfänger*in</span><a class="anno-org" data-ref="org__wien-buergerspital" title="Wiener Bürgerspital (Spital_Siechenhaus) [org__wien-buergerspital]" href="../../../register/orgs/org__wien-buergerspital.html">Bürgerspitale</a></span> austheilen sollen 3. <span class="anno-fn anno-fn-recipient" data-role="recipient"><span class="fn-label">Empfänger*in</span>seiner <a class="anno-person" data-ref="pe__christine_QGW_II_I_458" title="Christine Strobeinin [pe__christine_QGW_II_I_458]" href="../../../register/persons/pe__christine_QGW_II_I_458.html"><span class="anno-attr anno-attr-kin" data-corresp="pe__stephan_strobein_QGW_II_I_1086">Hausfrau</span> Christein</a></span> 5 Viertel
+                                          <span class="anno-fn anno-fn-recipient" data-role="recipient"><span class="fn-label">Empfänger*in</span><a class="anno-org" data-ref="org__wien-buergerspital" data-hint="Wiener Bürgerspital (Spital_Siechenhaus) [org__wien-buergerspital]" data-hint-type="Organisation" href="../../../register/orgs/org__wien-buergerspital.html">Bürgerspitale</a></span> austheilen sollen 3. <span class="anno-fn anno-fn-recipient" data-role="recipient"><span class="fn-label">Empfänger*in</span>seiner <a class="anno-person" data-ref="pe__christine_QGW_II_I_458" data-hint="Christine Strobeinin [pe__christine_QGW_II_I_458]" data-hint-type="Person" href="../../../register/persons/pe__christine_QGW_II_I_458.html"><span class="anno-attr anno-attr-kin" data-corresp="pe__stephan_strobein_QGW_II_I_1086">Hausfrau</span> Christein</a></span> 5 Viertel
                                     Weingarten an dem Nuz/zperch, gehaissen der Chruter, 2 Fuder
                                     Wein aus diesem Weingarten und 1 Fuder Wein aus dem
                                     Rabenstainer, wogegen sie auf allen Anspruch an den Nachlass zu
-                                    verzichten hat 4. <span class="anno-fn anno-fn-recipient" data-role="recipient"><span class="fn-label">Empfänger*in</span>seinem <a class="anno-person" data-ref="pe__gundolt_strobein_QGW_II_I_795" title="Gundolt Strobein Strobein [pe__gundolt_strobein_QGW_II_I_795]" href="../../../register/persons/pe__gundolt_strobein_QGW_II_I_795.html"><span class="anno-attr anno-attr-kin" data-corresp="pe__stephan_strobein_QGW_II_I_1086">Oheim</span> Gundolten</a> und dessen <a class="anno-person" data-ref="pe__katharina_QGW_II_I_541" title="Katharina Strobeinin [pe__katharina_QGW_II_I_541]" href="../../../register/persons/pe__katharina_QGW_II_I_541.html"><span class="anno-attr anno-attr-kin" data-corresp="pe__gundolt_strobein_QGW_II_I_795">Hausfrau</span> Katrein</a></span> ein Joch
+                                    verzichten hat 4. <span class="anno-fn anno-fn-recipient" data-role="recipient"><span class="fn-label">Empfänger*in</span>seinem <a class="anno-person" data-ref="pe__gundolt_strobein_QGW_II_I_795" data-hint="Gundolt Strobein Strobein [pe__gundolt_strobein_QGW_II_I_795]" data-hint-type="Person" href="../../../register/persons/pe__gundolt_strobein_QGW_II_I_795.html"><span class="anno-attr anno-attr-kin" data-corresp="pe__stephan_strobein_QGW_II_I_1086">Oheim</span> Gundolten</a> und dessen <a class="anno-person" data-ref="pe__katharina_QGW_II_I_541" data-hint="Katharina Strobeinin [pe__katharina_QGW_II_I_541]" data-hint-type="Person" href="../../../register/persons/pe__katharina_QGW_II_I_541.html"><span class="anno-attr anno-attr-kin" data-corresp="pe__gundolt_strobein_QGW_II_I_795">Hausfrau</span> Katrein</a></span> ein Joch
                                     Weingarten ze Chlaitzing 5. seinem Oheim Ulreichen ein Joch
-                                    Weingarten ze Grintzing in der Arnoltsau 6. <span class="anno-fn anno-fn-recipient" data-role="recipient"><span class="fn-label">Empfänger*in</span><a class="anno-person" data-ref="pe__anna_QGW_II_I_541" title="Anna Chottrerin [pe__anna_QGW_II_I_541]" href="../../../register/persons/pe__anna_QGW_II_I_541.html">seiner <span class="anno-attr anno-attr-kin" data-corresp="pe__stephan_strobein_QGW_II_I_1086">Muhme</span> Annen,<span class="anno-attr anno-attr-kin" data-corresp="pe__jakob_chottrer_QGW_II_I_795"><span class="tei-add">hausfrau</span></span>
-                                                <a class="anno-person" data-ref="pe__jakob_chottrer_QGW_II_I_795" title="Jakob Chottrer († 25.08.1373) [pe__jakob_chottrer_QGW_II_I_795]" href="../../../register/persons/pe__jakob_chottrer_QGW_II_I_795.html">Jacobs
+                                    Weingarten ze Grintzing in der Arnoltsau 6. <span class="anno-fn anno-fn-recipient" data-role="recipient"><span class="fn-label">Empfänger*in</span><a class="anno-person" data-ref="pe__anna_QGW_II_I_541" data-hint="Anna Chottrerin [pe__anna_QGW_II_I_541]" data-hint-type="Person" href="../../../register/persons/pe__anna_QGW_II_I_541.html">seiner <span class="anno-attr anno-attr-kin" data-corresp="pe__stephan_strobein_QGW_II_I_1086">Muhme</span> Annen,<span class="anno-attr anno-attr-kin" data-corresp="pe__jakob_chottrer_QGW_II_I_795"><span class="tei-add">hausfrau</span></span>
+                                                <a class="anno-person" data-ref="pe__jakob_chottrer_QGW_II_I_795" data-hint="Jakob Chottrer († 25.08.1373) [pe__jakob_chottrer_QGW_II_I_795]" data-hint-type="Person" href="../../../register/persons/pe__jakob_chottrer_QGW_II_I_795.html">Jacobs
                                                   hausfrau des Chottrer,</a></a></span> 1 1/3 Joch
                                     Weingarten hinder dem Weinhaus, der ander weingart von dem
                                     Vrowengässlein, wovon sie jährlich 1 lb dn. für sein Seelenheil
-                                    verwenden soll 7.<a class="anno-person" data-ref="pe__anna_QGW_II_I_458" title="Anna die bei dem Magseits ist [pe__anna_QGW_II_I_458]" href="../../../register/persons/pe__anna_QGW_II_I_458.html">
+                                    verwenden soll 7.<a class="anno-person" data-ref="pe__anna_QGW_II_I_458" data-hint="Anna die bei dem Magseits ist [pe__anna_QGW_II_I_458]" data-hint-type="Person" href="../../../register/persons/pe__anna_QGW_II_I_458.html">
                                           seiner <span class="anno-attr anno-attr-kin" data-corresp="pe__stephan_strobein_QGW_II_I_1086">Muhme</span> Annen, die bei dem Magseit
                                           ist</a>, einen Weingarten ze Gumpoltschirchen zenaechst
-                                    dem dorf, gehaissen der Lanholcz 8. <span class="anno-fn anno-fn-recipient" data-role="recipient"><span class="fn-label">Empfänger*in</span><a class="anno-person" data-ref="pe__weigl_QGW_II_I_458" title="Weigl [pe__weigl_QGW_II_I_458]" href="../../../register/persons/pe__weigl_QGW_II_I_458.html">seinem <span class="anno-attr anno-attr-occ" data-corresp="pe__stephan_strobein_QGW_II_I_1086">Diener</span> Weiglein</a></span> ein
+                                    dem dorf, gehaissen der Lanholcz 8. <span class="anno-fn anno-fn-recipient" data-role="recipient"><span class="fn-label">Empfänger*in</span><a class="anno-person" data-ref="pe__weigl_QGW_II_I_458" data-hint="Weigl [pe__weigl_QGW_II_I_458]" data-hint-type="Person" href="../../../register/persons/pe__weigl_QGW_II_I_458.html">seinem <span class="anno-attr anno-attr-occ" data-corresp="pe__stephan_strobein_QGW_II_I_1086">Diener</span> Weiglein</a></span> ein
                                     weingärtl ze Gumpoltzchirchen, gehaissen das Gutswertel, und ein
-                                    fuder weins aus dem Rabenstainer , <span class="anno-fn anno-fn-recipient" data-role="recipient"><span class="fn-label">Empfänger*in</span><a class="anno-person" data-ref="pe__johann_QGW_II_I_458" title="Johann [pe__johann_QGW_II_I_458]" href="../../../register/persons/pe__johann_QGW_II_I_458.html">seinem <span class="anno-attr anno-attr-occ" data-corresp="pe__stephan_strobein_QGW_II_I_1086">Diener</span> Jansen</a></span> ein
+                                    fuder weins aus dem Rabenstainer , <span class="anno-fn anno-fn-recipient" data-role="recipient"><span class="fn-label">Empfänger*in</span><a class="anno-person" data-ref="pe__johann_QGW_II_I_458" data-hint="Johann [pe__johann_QGW_II_I_458]" data-hint-type="Person" href="../../../register/persons/pe__johann_QGW_II_I_458.html">seinem <span class="anno-attr anno-attr-occ" data-corresp="pe__stephan_strobein_QGW_II_I_1086">Diener</span> Jansen</a></span> ein
                                     weingärtel, genant das Stainvelder, und ein fuder weins aus dem
-                                    Rabensteiner 9. <span class="anno-fn anno-fn-recipient" data-role="recipient"><span class="fn-label">Empfänger*in</span><a class="anno-person" data-ref="pe__siegfried_vogler_QGW_II_I_458" title="Siegfried Vogler [pe__siegfried_vogler_QGW_II_I_458]" href="../../../register/persons/pe__siegfried_vogler_QGW_II_I_458.html">Seifriden
-                                                dem Vogler</a> und <a class="anno-person" data-ref="pe__adelheid_QGW_II_I_458" title="Adelheid Voglerin [pe__adelheid_QGW_II_I_458]" href="../../../register/persons/pe__adelheid_QGW_II_I_458.html">seiner <span class="anno-attr anno-attr-kin" data-corresp="pe__siegfried_vogler_QGW_II_I_458">Hausfrau</span> Alhaiten</a></span> seinen
+                                    Rabensteiner 9. <span class="anno-fn anno-fn-recipient" data-role="recipient"><span class="fn-label">Empfänger*in</span><a class="anno-person" data-ref="pe__siegfried_vogler_QGW_II_I_458" data-hint="Siegfried Vogler [pe__siegfried_vogler_QGW_II_I_458]" data-hint-type="Person" href="../../../register/persons/pe__siegfried_vogler_QGW_II_I_458.html">Seifriden
+                                                dem Vogler</a> und <a class="anno-person" data-ref="pe__adelheid_QGW_II_I_458" data-hint="Adelheid Voglerin [pe__adelheid_QGW_II_I_458]" data-hint-type="Person" href="../../../register/persons/pe__adelheid_QGW_II_I_458.html">seiner <span class="anno-attr anno-attr-kin" data-corresp="pe__siegfried_vogler_QGW_II_I_458">Hausfrau</span> Alhaiten</a></span> seinen
                                     Garten im Werd enhalb des Roten Turns ze Wienne, von dem sie
                                     jährlich armen Leuten 2 lb dn. für Brot und Wein geben sollen
                                     und der nach ihrem Tode an die genannten Oheime fallen soll 10.
-                                          <span class="anno-fn anno-fn-recipient" data-role="recipient"><span class="fn-label">Empfänger*in</span>hinz <a class="anno-org" data-ref="org__wien-st_maria_am_gestade" title="Marienkapelle am Gestade (Kirche_Kapelle) [org__wien-st_maria_am_gestade]" href="../../../register/orgs/org__wien-st_maria_am_gestade.html">Unser Vrowen auf
+                                          <span class="anno-fn anno-fn-recipient" data-role="recipient"><span class="fn-label">Empfänger*in</span>hinz <a class="anno-org" data-ref="org__wien-st_maria_am_gestade" data-hint="Marienkapelle am Gestade (Kirche_Kapelle) [org__wien-st_maria_am_gestade]" data-hint-type="Organisation" href="../../../register/orgs/org__wien-st_maria_am_gestade.html">Unser Vrowen auf
                                                 der Stetten ze Wienn zu dem pau</a></span> 10 lb dn.
                                     11. seiner Stiefschwester und ihren Kindern 48 lb dn. 12. dass
                                     seine beiden Oheime das weingärtl, genant der Chrümbel, alle
                                     Jahre bauen und den Erlös für sein Seelenheil verwenden sollen
-                                    13. dem <span class="anno-fn anno-fn-recipient" data-role="recipient"><span class="fn-label">Empfänger*in</span><a class="anno-person" data-ref="pe__gundolt_strobein_QGW_II_I_795" title="Gundolt Strobein Strobein [pe__gundolt_strobein_QGW_II_I_795]" href="../../../register/persons/pe__gundolt_strobein_QGW_II_I_795.html">Gundolten</a></span> die Weingärten den Praun und
+                                    13. dem <span class="anno-fn anno-fn-recipient" data-role="recipient"><span class="fn-label">Empfänger*in</span><a class="anno-person" data-ref="pe__gundolt_strobein_QGW_II_I_795" data-hint="Gundolt Strobein Strobein [pe__gundolt_strobein_QGW_II_I_795]" data-hint-type="Person" href="../../../register/persons/pe__gundolt_strobein_QGW_II_I_795.html">Gundolten</a></span> die Weingärten den Praun und
                                     den Garner 14. dem Ulreichen die Weingärten den Rabenstainer
                                     und den Rustpekchen 15. beiden Oheimen zu gleichen Theilen das
                                     Haus, das er selbst inne hat, gelegen in der Münzerstrasse ze
@@ -268,15 +274,15 @@
                                     Gumpoltzchirchen ob der chirchen, gehaissen der Spiegel, seinen
                                     Hof daselbst, sein Bergrecht, seine Wiesmahd und den Rest seines
                                     fahrenden Gutes.</span>
-                        </p></section><section class="tei-seal"><h2 class="tei-section-head">Siegelbeschreibung</h2><p><span class="anno-event" data-ref="ev__QGW_II_I_458"><span class="anno-fn anno-fn-witness" data-role="witness"><span class="fn-label">Zeug*in</span>Besiegelt mit den Siegeln: <a class="anno-person" data-ref="pe__stephan_strobein_QGW_II_I_1086" title="Stephan Strobein Strobein († 27.04.1362) [pe__stephan_strobein_QGW_II_I_1086]" href="../../../register/persons/pe__stephan_strobein_QGW_II_I_1086.html">1. des
-                                                Ausstellers,</a> der Bürger: 2. <a class="anno-person" data-ref="pe__leopold_poltz_QGW_II_I_776" title="Leopold Poltz Poltz († 19.02.1378) [pe__leopold_poltz_QGW_II_I_776]" href="../../../register/persons/pe__leopold_poltz_QGW_II_I_776.html"><span class="anno-attr anno-attr-title">hern</span> Leupolts des Poltzs,
+                        </p></section><section class="tei-seal"><h2 class="tei-section-head">Siegelbeschreibung</h2><p><span class="anno-event" data-ref="ev__QGW_II_I_458"><span class="anno-fn anno-fn-witness" data-role="witness"><span class="fn-label">Zeug*in</span>Besiegelt mit den Siegeln: <a class="anno-person" data-ref="pe__stephan_strobein_QGW_II_I_1086" data-hint="Stephan Strobein Strobein († 27.04.1362) [pe__stephan_strobein_QGW_II_I_1086]" data-hint-type="Person" href="../../../register/persons/pe__stephan_strobein_QGW_II_I_1086.html">1. des
+                                                Ausstellers,</a> der Bürger: 2. <a class="anno-person" data-ref="pe__leopold_poltz_QGW_II_I_776" data-hint="Leopold Poltz Poltz († 19.02.1378) [pe__leopold_poltz_QGW_II_I_776]" data-hint-type="Person" href="../../../register/persons/pe__leopold_poltz_QGW_II_I_776.html"><span class="anno-attr anno-attr-title">hern</span> Leupolts des Poltzs,
                                                   <span class="anno-attr anno-attr-occ" data-corresp="org__wien"><span class="tei-add">baid
                                                   des rats der stat ze Wienne</span></span>
-                                                <span class="anno-attr anno-attr-title"><span class="tei-add">Bürger</span></span></a> 3. <a class="anno-person" data-ref="pe__herbert_deckenschaden_QGW_II_I_390" title="Herbert Deckenschaden Deckenschaden [pe__herbert_deckenschaden_QGW_II_I_390]" href="../../../register/persons/pe__herbert_deckenschaden_QGW_II_I_390.html"><span class="anno-attr anno-attr-title">hern</span> Herborts
+                                                <span class="anno-attr anno-attr-title"><span class="tei-add">Bürger</span></span></a> 3. <a class="anno-person" data-ref="pe__herbert_deckenschaden_QGW_II_I_390" data-hint="Herbert Deckenschaden Deckenschaden [pe__herbert_deckenschaden_QGW_II_I_390]" data-hint-type="Person" href="../../../register/persons/pe__herbert_deckenschaden_QGW_II_I_390.html"><span class="anno-attr anno-attr-title">hern</span> Herborts
                                                 des Tekenschaden, <span class="anno-attr anno-attr-occ" data-corresp="org__wien">baid des rats der stat ze
                                                   Wienne</span>
-                                                <span class="anno-attr anno-attr-title"><span class="tei-add">Bürger</span></span></a>, 4. <a class="anno-person" data-ref="pe__konrad_loeffler_QGW_II_I_452" title="Konrad Löffler Löffler [pe__konrad_loeffler_QGW_II_I_452]" href="../../../register/persons/pe__konrad_loeffler_QGW_II_I_452.html"><span class="anno-attr anno-attr-title">hern</span> Chunrats
-                                                des Löffler <span class="anno-attr anno-attr-title"><span class="tei-add">Bürger</span></span></a>, 5. <a class="anno-person" data-ref="pe__heinrich_wekcherl_QGW_II_I_580" title="Heinrich Wekcherl [pe__heinrich_wekcherl_QGW_II_I_580]" href="../../../register/persons/pe__heinrich_wekcherl_QGW_II_I_580.html"><span class="anno-attr anno-attr-title">hern</span> Hainreichs des
+                                                <span class="anno-attr anno-attr-title"><span class="tei-add">Bürger</span></span></a>, 4. <a class="anno-person" data-ref="pe__konrad_loeffler_QGW_II_I_452" data-hint="Konrad Löffler Löffler [pe__konrad_loeffler_QGW_II_I_452]" data-hint-type="Person" href="../../../register/persons/pe__konrad_loeffler_QGW_II_I_452.html"><span class="anno-attr anno-attr-title">hern</span> Chunrats
+                                                des Löffler <span class="anno-attr anno-attr-title"><span class="tei-add">Bürger</span></span></a>, 5. <a class="anno-person" data-ref="pe__heinrich_wekcherl_QGW_II_I_580" data-hint="Heinrich Wekcherl [pe__heinrich_wekcherl_QGW_II_I_580]" data-hint-type="Person" href="../../../register/persons/pe__heinrich_wekcherl_QGW_II_I_580.html"><span class="anno-attr anno-attr-title">hern</span> Hainreichs des
                                                 Waekcherleins <span class="anno-attr anno-attr-title"><span class="tei-add">Bürger</span></span></a>.</span></span>
                         </p></section>
 
@@ -336,7 +342,7 @@
          dem TEI in mehreren Untertabellen, Personen/Orgs/Orte,
          Ereignisse, Dispositivformeln, Editorische Ergaenzungen. Wird
          per JS aus den entsprechenden Spans im Body aufgebaut. -->
-    <section class="annotations-view" id="factoid-view" aria-label="Annotationen">
+    <section class="annotations-view" id="annotations-view" aria-label="Annotationen">
         <header class="annotations-header">
             <h2 class="annotations-title">Annotationen</h2>
             <span class="annotations-summary"></span>
@@ -382,13 +388,14 @@
         </div>
     </footer>
 
-    <script src="../../../static/js/core.js?v=20260511112948"></script>
-    <script src="../../../static/js/provenance.js?v=20260511112948"></script>
-    <script src="../../../static/js/basket.js?v=20260511112948"></script>
+    <script src="../../../static/js/core.js?v=20260511125458"></script>
+    <script src="../../../static/js/tip.js?v=20260511125458"></script>
+    <script src="../../../static/js/hint.js?v=20260511125458"></script>
+    <script src="../../../static/js/basket.js?v=20260511125458"></script>
     
-<script src="../../../static/js/tooltips.js?v=20260511112948"></script>
-<script src="../../../static/js/facsimile.js?v=20260511112948"></script>
-<script src="../../../static/js/document.js?v=20260511112948"></script>
+<script src="../../../static/js/facsimile.js?v=20260511125458"></script>
+<script src="../../../static/js/document.js?v=20260511125458"></script>
+<script src="../../../static/js/basket-mount.js?v=20260511125458"></script>
 
 </body>
 </html>

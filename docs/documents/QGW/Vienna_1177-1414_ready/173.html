@@ -3,21 +3,21 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <meta http-equiv="Content-Security-Policy" content="default-src 'self'; script-src 'self'; style-src 'self'; font-src 'self'; img-src 'self' data: https://images.monasterium.net https://www.monasterium.net; connect-src 'self'; frame-ancestors 'none'; base-uri 'self'; form-action 'self'; upgrade-insecure-requests">
+    <meta http-equiv="Content-Security-Policy" content="default-src 'self'; script-src 'self'; style-src 'self'; font-src 'self'; img-src 'self' data: https://images.monasterium.net https://www.monasterium.net; connect-src 'self'; base-uri 'self'; form-action 'self'; upgrade-insecure-requests">
     <meta name="referrer" content="strict-origin-when-cross-origin">
     <meta http-equiv="Permissions-Policy" content="camera=(), microphone=(), geolocation=(), interest-cohort=()">
     <title>Nr. 173 (1336 VIII 11), Datenbank</title>
     <link rel="preload" as="font" type="font/woff2" crossorigin
           href="../../../static/fonts/inter-400-latin.woff2">
-    <link rel="stylesheet" href="../../../static/css/fonts.css?v=20260511112948">
-    <link rel="stylesheet" href="../../../static/css/tokens.css?v=20260511112948">
-    <link rel="stylesheet" href="../../../static/css/base.css?v=20260511112948">
-    <link rel="stylesheet" href="../../../static/css/components.css?v=20260511112948">
-    <link rel="stylesheet" href="../../../static/css/responsive.css?v=20260511112948">
-    <link rel="stylesheet" href="../../../static/css/print.css?v=20260511112948">
-    <link rel="stylesheet" href="../../../static/css/provenance.css?v=20260511112948">
+    <link rel="stylesheet" href="../../../static/css/fonts.css?v=20260511125458">
+    <link rel="stylesheet" href="../../../static/css/tokens.css?v=20260511125458">
+    <link rel="stylesheet" href="../../../static/css/base.css?v=20260511125458">
+    <link rel="stylesheet" href="../../../static/css/components.css?v=20260511125458">
+    <link rel="stylesheet" href="../../../static/css/responsive.css?v=20260511125458">
+    <link rel="stylesheet" href="../../../static/css/print.css?v=20260511125458">
+    <link rel="stylesheet" href="../../../static/css/tip.css?v=20260511125458">
     
-<link rel="stylesheet" href="../../../static/css/document.css?v=20260511112948">
+<link rel="stylesheet" href="../../../static/css/document.css?v=20260511125458">
 <link rel="canonical" href="documents/QGW/Vienna_1177-1414_ready/173.html">
 <meta name="citation_title" content="Nr. 173 (1336 VIII 11)">
 <meta name="citation_collection" content="QGW II/1 (1177–1414)">
@@ -50,8 +50,6 @@
         <a href="../../../register/persons.html">Personen</a>
         
         <a href="../../../register/orgs.html">Organisationen</a>
-        
-        <a href="../../../register/places.html">Orte</a>
         
     </div>
 </div>
@@ -93,7 +91,7 @@
     </div>
 </div>
 
-                <a href="../../../korb.html" class="nav-basket" aria-label="Wissenskorb">
+                <a href="../../../korb.html" class="nav-basket" aria-label="Datenkorb">
                     <svg width="18" height="18" viewBox="0 0 18 18" fill="none" aria-hidden="true">
                         <path d="M3 5h12l-1.2 8.5a1 1 0 0 1-1 .85H5.2a1 1 0 0 1-1-.85L3 5z"
                               stroke="currentColor" stroke-width="1.4" fill="none"
@@ -140,7 +138,7 @@
                     
                     <span class="meta-pair">
                         <span class="meta-label">Quelle</span>
-                        <span class="meta-value" title="Quellen zur Geschichte der Stadt Wien, Bd. II/1, Nr. 173">Quellen zur Geschichte der Stadt Wien, Bd. II/1, Nr. 173</span>
+                        <span class="meta-value" data-hint="Quellen zur Geschichte der Stadt Wien, Bd. II/1, Nr. 173">Quellen zur Geschichte der Stadt Wien, Bd. II/1, Nr. 173</span>
                     </span>
                     
                 </div>
@@ -151,7 +149,7 @@
                     
                     <button type="button" class="legend-toggle"
                             data-layer="entities" aria-pressed="true"
-                            title="Entitäten ein-/ausblenden">
+                            data-hint="Entitäten ein-/ausblenden">
                         <span class="legend-toggle-dots">
                             <span class="legend-swatch swatch-person"></span><span class="legend-swatch swatch-org"></span><span class="legend-swatch swatch-place"></span>
                         </span>
@@ -160,7 +158,7 @@
                     
                     <button type="button" class="legend-toggle"
                             data-layer="functions" aria-pressed="true"
-                            title="Funktionsrollen ein-/ausblenden">
+                            data-hint="Funktionsrollen ein-/ausblenden">
                         <span class="legend-toggle-dots">
                             <span class="legend-swatch swatch-fn-issuer"></span><span class="legend-swatch swatch-fn-recipient"></span><span class="legend-swatch swatch-fn-witness"></span>
                         </span>
@@ -169,7 +167,7 @@
                     
                     <button type="button" class="legend-toggle"
                             data-layer="attributes" aria-pressed="true"
-                            title="Attribute ein-/ausblenden">
+                            data-hint="Attribute ein-/ausblenden">
                         <span class="legend-toggle-dots">
                             <span class="legend-swatch swatch-attr"></span><span class="legend-swatch swatch-add"></span>
                         </span>
@@ -178,7 +176,7 @@
                     
                     <button type="button" class="legend-toggle"
                             data-layer="triggers" aria-pressed="true"
-                            title="Dispositivformel ein-/ausblenden">
+                            data-hint="Dispositivformel ein-/ausblenden">
                         <span class="legend-toggle-dots">
                             <span class="legend-swatch swatch-trigger"></span>
                         </span>
@@ -190,21 +188,29 @@
                 <div class="doc-toolbar-actions">
                     <a class="toolbar-btn" href="../../../tei/QGW/Vienna_1177-1414_ready/173.xml"
                        download="173.xml"
-                       aria-label="TEI-XML herunterladen" title="TEI-XML herunterladen"><svg viewBox="0 0 16 16" width="16" height="16" aria-hidden="true"><path fill="none" stroke="currentColor" stroke-width="1.4" stroke-linecap="round" stroke-linejoin="round" d="M8 2v8m0 0l-3-3m3 3l3-3M3 13h10"/></svg></a>
+                       aria-label="TEI-XML herunterladen" data-hint="TEI-XML herunterladen"><svg viewBox="0 0 16 16" width="16" height="16" aria-hidden="true"><path fill="none" stroke="currentColor" stroke-width="1.4" stroke-linecap="round" stroke-linejoin="round" d="M8 2v8m0 0l-3-3m3 3l3-3M3 13h10"/></svg></a>
                     <button class="toolbar-btn" id="cite-toggle" aria-expanded="false"
-                            aria-label="Zitation kopieren" title="Zitation kopieren"><svg viewBox="0 0 16 16" width="16" height="16" aria-hidden="true"><rect x="4" y="2" width="8" height="11" rx="1" fill="none" stroke="currentColor" stroke-width="1.4"/><path d="M6 1.5h4a0.5 0.5 0 0 1 0.5 0.5v1a0.5 0.5 0 0 1-0.5 0.5H6a0.5 0.5 0 0 1-0.5-0.5V2A0.5 0.5 0 0 1 6 1.5z" fill="currentColor"/><path d="M6.5 6.5h3M6.5 8.5h3M6.5 10.5h2" stroke="currentColor" stroke-width="1" stroke-linecap="round"/></svg></button>
+                            aria-label="Zitation kopieren" data-hint="Zitation kopieren"><svg viewBox="0 0 16 16" width="16" height="16" aria-hidden="true"><rect x="4" y="2" width="8" height="11" rx="1" fill="none" stroke="currentColor" stroke-width="1.4"/><path d="M6 1.5h4a0.5 0.5 0 0 1 0.5 0.5v1a0.5 0.5 0 0 1-0.5 0.5H6a0.5 0.5 0 0 1-0.5-0.5V2A0.5 0.5 0 0 1 6 1.5z" fill="currentColor"/><path d="M6.5 6.5h3M6.5 8.5h3M6.5 10.5h2" stroke="currentColor" stroke-width="1" stroke-linecap="round"/></svg></button>
                     <div class="cite-popover hidden" id="cite-popover"></div>
+                    <span class="toolbar-basket-mount"
+                          data-basket-type="source"
+                          data-basket-id="173"
+                          data-basket-label="173"
+                          data-basket-url="documents/QGW/Vienna_1177-1414_ready/173.html"
+                          data-basket-date="1336-08-11"
+                          data-basket-coll="QGW II/1 (1177–1414)"
+                          data-basket-regest="Marchart der Jan Bergherr beurkundetEntscheidung die von ihm als Bergherrn in einem rechten etaiding gefällte Entscheidung über eine Klage, welche her Reicher, chorherr ze sand Stephan ze Wienne, her…"></span>
                     
 <nav class="doc-paging doc-paging-inline" aria-label="Quellen-Navigation">
     
     <a href="../../../documents/QGW/Vienna_1177-1414_ready/172.html" class="toolbar-btn doc-paging-prev"
        aria-label="Vorherige Quelle: Nr. 172"
-       title="Vorherige Quelle: Nr. 172"><svg viewBox="0 0 16 16" width="16" height="16" aria-hidden="true"><path fill="none" stroke="currentColor" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round" d="M10 3l-5 5 5 5"/></svg></a>
+       data-hint="Vorherige Quelle: Nr. 172"><svg viewBox="0 0 16 16" width="16" height="16" aria-hidden="true"><path fill="none" stroke="currentColor" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round" d="M10 3l-5 5 5 5"/></svg></a>
     
     
     <a href="../../../documents/QGW/Vienna_1177-1414_ready/174.html" class="toolbar-btn doc-paging-next"
        aria-label="Nächste Quelle: Nr. 174"
-       title="Nächste Quelle: Nr. 174"><svg viewBox="0 0 16 16" width="16" height="16" aria-hidden="true"><path fill="none" stroke="currentColor" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round" d="M6 3l5 5-5 5"/></svg></a>
+       data-hint="Nächste Quelle: Nr. 174"><svg viewBox="0 0 16 16" width="16" height="16" aria-hidden="true"><path fill="none" stroke="currentColor" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round" d="M6 3l5 5-5 5"/></svg></a>
     
 </nav>
 
@@ -219,25 +225,25 @@
         <!-- Document body (rendered TEI) -->
         <div class="doc-body">
             <section class="tei-abstract"><h2 class="tei-section-head">Regest</h2><p>
-               <span class="anno-event" data-ref="ev__QGW_II_I_173"><span class="anno-fn anno-fn-issuer" data-role="issuer"><span class="fn-label">Aussteller*in</span><a class="anno-person" data-ref="pe__markhard_jan_QGW_II_I_856" title="Markhard Jan [pe__markhard_jan_QGW_II_I_856]" href="../../../register/persons/pe__markhard_jan_QGW_II_I_856.html">Marchart der Jan <span class="anno-attr anno-attr-title"><span class="tei-add">Bergherr</span></span></a></span>
+               <span class="anno-event" data-ref="ev__QGW_II_I_173"><span class="anno-fn anno-fn-issuer" data-role="issuer"><span class="fn-label">Aussteller*in</span><a class="anno-person" data-ref="pe__markhard_jan_QGW_II_I_856" data-hint="Markhard Jan [pe__markhard_jan_QGW_II_I_856]" data-hint-type="Person" href="../../../register/persons/pe__markhard_jan_QGW_II_I_856.html">Marchart der Jan <span class="anno-attr anno-attr-title"><span class="tei-add">Bergherr</span></span></a></span>
                   <span class="anno-trigger anno-trigger-disp">beurkundet<span class="tei-add">Entscheidung</span></span> die von ihm
                   als Bergherrn in einem rechten etaiding gefällte Entscheidung über eine<span class="anno-fn anno-fn-other" data-role="other"><span class="fn-label">Sonstige</span>
-                     <span class="anno-trigger anno-trigger-fn">Klage</span>, welche <a class="anno-person" data-ref="pe__reicher_QGW_II_I_173" title="Reicher [pe__reicher_QGW_II_I_173]" href="../../../register/persons/pe__reicher_QGW_II_I_173.html"><span class="anno-attr anno-attr-title">her</span>
-                        Reicher, <span class="anno-attr anno-attr-occ" data-corresp="org__wien-st_stephan">chorherr</span> ze sand Stephan ze Wienne</a>, <a class="anno-person" data-ref="pe__andreas_QGW_II_I_173" title="Andreas [pe__andreas_QGW_II_I_173]" href="../../../register/persons/pe__andreas_QGW_II_I_173.html"><span class="anno-attr anno-attr-title">her</span> Andre,
-                        des <a class="anno-person" data-ref="pe__heinrich_QGW_II_I_136" title="Heinrich [pe__heinrich_QGW_II_I_136]" href="../../../register/persons/pe__heinrich_QGW_II_I_136.html"><span class="anno-attr anno-attr-title">erbern</span>
+                     <span class="anno-trigger anno-trigger-fn">Klage</span>, welche <a class="anno-person" data-ref="pe__reicher_QGW_II_I_173" data-hint="Reicher [pe__reicher_QGW_II_I_173]" data-hint-type="Person" href="../../../register/persons/pe__reicher_QGW_II_I_173.html"><span class="anno-attr anno-attr-title">her</span>
+                        Reicher, <span class="anno-attr anno-attr-occ" data-corresp="org__wien-st_stephan">chorherr</span> ze sand Stephan ze Wienne</a>, <a class="anno-person" data-ref="pe__andreas_QGW_II_I_173" data-hint="Andreas [pe__andreas_QGW_II_I_173]" data-hint-type="Person" href="../../../register/persons/pe__andreas_QGW_II_I_173.html"><span class="anno-attr anno-attr-title">her</span> Andre,
+                        des <a class="anno-person" data-ref="pe__heinrich_QGW_II_I_136" data-hint="Heinrich [pe__heinrich_QGW_II_I_136]" data-hint-type="Person" href="../../../register/persons/pe__heinrich_QGW_II_I_136.html"><span class="anno-attr anno-attr-title">erbern</span>
                            <span class="anno-attr anno-attr-title">herren</span>
                            <span class="anno-attr anno-attr-title">maister</span> Hainreichs des <span class="anno-attr anno-attr-occ" data-corresp="org__wien-st_stephan">phfarrer</span></a>
                         <span class="anno-attr anno-attr-occ" data-corresp="pe__heinrich_QGW_II_I_136">schaffer</span> ze Wienne</a> , und andere Diener des Pfarrers</span>
                   <span class="anno-fn anno-fn-other" data-role="other"><span class="fn-label">Sonstige</span><span class="anno-trigger anno-trigger-fn">gegen</span>
-                     <a class="anno-person" data-ref="pe__jakob_chrannest_QGW_II_I_165" title="Jakob Chrannest Pilgrim des Mundoffen Eidam [pe__jakob_chrannest_QGW_II_I_165]" href="../../../register/persons/pe__jakob_chrannest_QGW_II_I_165.html"><span class="anno-attr anno-attr-title">hern</span> Jacob den Chrannest, des Mundoffen aidem</a></span>, vor
+                     <a class="anno-person" data-ref="pe__jakob_chrannest_QGW_II_I_165" data-hint="Jakob Chrannest Pilgrim des Mundoffen Eidam [pe__jakob_chrannest_QGW_II_I_165]" data-hint-type="Person" href="../../../register/persons/pe__jakob_chrannest_QGW_II_I_165.html"><span class="anno-attr anno-attr-title">hern</span> Jacob den Chrannest, des Mundoffen aidem</a></span>, vor
                   ihn gebracht hatten.<span class="anno-event" data-ref="ev__QGW_II_I_173_men_1"> Chrannest hatte nämlich Ansprüche
                      erhoben auf anderthalb Joch Weingarten, ligent zwischen hern Leupolts des Poltz
                      und hern Petern Wisents weingarten an dem Chaeswassergraben und haist die
-                     Santleiten</span> ,<span class="anno-event" data-ref="ev__QGW_II_I_173_men_2"> den <a class="anno-person" data-ref="pe__thilo_QGW_II_I_136" title="Tilo († 24.07.1331) [pe__thilo_QGW_II_I_136]" href="../../../register/persons/pe__thilo_QGW_II_I_136.html"><span class="anno-attr anno-attr-title">maister</span> Tyl,
-                        der puecharzt</a>, zur Stiftung einer Messe auf der <a class="anno-org" data-ref="org__wien-st_stephan-altar_zwoelfapostel" title="Zwölfbotenaltar (Altar) [org__wien-st_stephan-altar_zwoelfapostel]" href="../../../register/orgs/org__wien-st_stephan-altar_zwoelfapostel.html">heiligen Zwelfpotenaltar ze
+                     Santleiten</span> ,<span class="anno-event" data-ref="ev__QGW_II_I_173_men_2"> den <a class="anno-person" data-ref="pe__thilo_QGW_II_I_136" data-hint="Tilo († 24.07.1331) [pe__thilo_QGW_II_I_136]" data-hint-type="Person" href="../../../register/persons/pe__thilo_QGW_II_I_136.html"><span class="anno-attr anno-attr-title">maister</span> Tyl,
+                        der puecharzt</a>, zur Stiftung einer Messe auf der <a class="anno-org" data-ref="org__wien-st_stephan-altar_zwoelfapostel" data-hint="Zwölfbotenaltar (Altar) [org__wien-st_stephan-altar_zwoelfapostel]" data-hint-type="Organisation" href="../../../register/orgs/org__wien-st_stephan-altar_zwoelfapostel.html">heiligen Zwelfpotenaltar ze
                         sant Stephan</a> geschafft hatte</span>. Nach Ablauf der verschiedenen
-                  Fristen weist Marchart der Jan die ruegung Chrannests ab und <span class="anno-fn anno-fn-recipient" data-role="recipient"><span class="fn-label">Empfänger*in</span>spricht <a class="anno-org" data-ref="org__wien-st_stephan-altar_zwoelfapostel" title="Zwölfbotenaltar (Altar) [org__wien-st_stephan-altar_zwoelfapostel]" href="../../../register/orgs/org__wien-st_stephan-altar_zwoelfapostel.html">der Stiftung</a> den
-                     ungehinderten Besitz des Weingartens zu</span></span>. </p></section><section class="tei-seal"><h2 class="tei-section-head">Siegelbeschreibung</h2><p><span class="anno-event" data-ref="ev__QGW_II_I_173">Besiegelt mit den Siegeln: 1. <a class="anno-person" data-ref="pe__markhard_jan_QGW_II_I_856" title="Markhard Jan [pe__markhard_jan_QGW_II_I_856]" href="../../../register/persons/pe__markhard_jan_QGW_II_I_856.html">des Ausstellers</a>, 2. <a class="anno-person" data-ref="pe__heinrich_wuerfel_QGW_II_I_459" title="Heinrich Würfel Würfel [pe__heinrich_wuerfel_QGW_II_I_459]" href="../../../register/persons/pe__heinrich_wuerfel_QGW_II_I_459.html"><span class="anno-attr anno-attr-title">hern</span> Hainreichs des Würfel</a>, 3.<a class="anno-person" data-ref="pe__michael_wuerfel_QGW_II_I_128" title="Michael Würfel († 12.03.1351) [pe__michael_wuerfel_QGW_II_I_128]" href="../../../register/persons/pe__michael_wuerfel_QGW_II_I_128.html"> hern Michels, seines <span class="anno-attr anno-attr-kin" data-corresp="pe__heinrich_wuerfel_QGW_II_I_459">prueder</span></a>, 4. <a class="anno-person" data-ref="pe__niklas_ernst_QGW_II_I_173" title="Niklas Ernst [pe__niklas_ernst_QGW_II_I_173]" href="../../../register/persons/pe__niklas_ernst_QGW_II_I_173.html"><span class="anno-attr anno-attr-title">hern</span>
+                  Fristen weist Marchart der Jan die ruegung Chrannests ab und <span class="anno-fn anno-fn-recipient" data-role="recipient"><span class="fn-label">Empfänger*in</span>spricht <a class="anno-org" data-ref="org__wien-st_stephan-altar_zwoelfapostel" data-hint="Zwölfbotenaltar (Altar) [org__wien-st_stephan-altar_zwoelfapostel]" data-hint-type="Organisation" href="../../../register/orgs/org__wien-st_stephan-altar_zwoelfapostel.html">der Stiftung</a> den
+                     ungehinderten Besitz des Weingartens zu</span></span>. </p></section><section class="tei-seal"><h2 class="tei-section-head">Siegelbeschreibung</h2><p><span class="anno-event" data-ref="ev__QGW_II_I_173">Besiegelt mit den Siegeln: 1. <a class="anno-person" data-ref="pe__markhard_jan_QGW_II_I_856" data-hint="Markhard Jan [pe__markhard_jan_QGW_II_I_856]" data-hint-type="Person" href="../../../register/persons/pe__markhard_jan_QGW_II_I_856.html">des Ausstellers</a>, 2. <a class="anno-person" data-ref="pe__heinrich_wuerfel_QGW_II_I_459" data-hint="Heinrich Würfel Würfel [pe__heinrich_wuerfel_QGW_II_I_459]" data-hint-type="Person" href="../../../register/persons/pe__heinrich_wuerfel_QGW_II_I_459.html"><span class="anno-attr anno-attr-title">hern</span> Hainreichs des Würfel</a>, 3.<a class="anno-person" data-ref="pe__michael_wuerfel_QGW_II_I_128" data-hint="Michael Würfel († 12.03.1351) [pe__michael_wuerfel_QGW_II_I_128]" data-hint-type="Person" href="../../../register/persons/pe__michael_wuerfel_QGW_II_I_128.html"> hern Michels, seines <span class="anno-attr anno-attr-kin" data-corresp="pe__heinrich_wuerfel_QGW_II_I_459">prueder</span></a>, 4. <a class="anno-person" data-ref="pe__niklas_ernst_QGW_II_I_173" data-hint="Niklas Ernst [pe__niklas_ernst_QGW_II_I_173]" data-hint-type="Person" href="../../../register/persons/pe__niklas_ernst_QGW_II_I_173.html"><span class="anno-attr anno-attr-title">hern</span>
                      Niclas des Ernsten</a></span>. </p></section>
 
             <!-- Data layer: provenance strip. Korpus + Idno stehen schon
@@ -296,7 +302,7 @@
          dem TEI in mehreren Untertabellen, Personen/Orgs/Orte,
          Ereignisse, Dispositivformeln, Editorische Ergaenzungen. Wird
          per JS aus den entsprechenden Spans im Body aufgebaut. -->
-    <section class="annotations-view" id="factoid-view" aria-label="Annotationen">
+    <section class="annotations-view" id="annotations-view" aria-label="Annotationen">
         <header class="annotations-header">
             <h2 class="annotations-title">Annotationen</h2>
             <span class="annotations-summary"></span>
@@ -342,13 +348,14 @@
         </div>
     </footer>
 
-    <script src="../../../static/js/core.js?v=20260511112948"></script>
-    <script src="../../../static/js/provenance.js?v=20260511112948"></script>
-    <script src="../../../static/js/basket.js?v=20260511112948"></script>
+    <script src="../../../static/js/core.js?v=20260511125458"></script>
+    <script src="../../../static/js/tip.js?v=20260511125458"></script>
+    <script src="../../../static/js/hint.js?v=20260511125458"></script>
+    <script src="../../../static/js/basket.js?v=20260511125458"></script>
     
-<script src="../../../static/js/tooltips.js?v=20260511112948"></script>
-<script src="../../../static/js/facsimile.js?v=20260511112948"></script>
-<script src="../../../static/js/document.js?v=20260511112948"></script>
+<script src="../../../static/js/facsimile.js?v=20260511125458"></script>
+<script src="../../../static/js/document.js?v=20260511125458"></script>
+<script src="../../../static/js/basket-mount.js?v=20260511125458"></script>
 
 </body>
 </html>

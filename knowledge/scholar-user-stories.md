@@ -155,10 +155,10 @@ Ableitung:
 
 *Als Forscherin, die für einen Aufsatz Quellen aus verschiedenen Achsen zusammenträgt — einige aus einer Bezeichnungs-Suche, einige aus dem Zeitstrom-Brush, einige aus einer freien Quellen-Listen-Suche —, will ich diese Quellen-Auswahl über die Sitzungsgrenze hinweg sammeln und gemeinsam exportieren, damit die Recherche nicht in einer Browser-Tab-Sammlung verloren geht.*
 
-Pfad: An jedem Quellen-Eintrag in den Listen (Quellen-Tabelle, Drill-down-Overlay, Brush-Drill) steht ein „+"-Knopf, der die Quelle in den Wissenskorb legt; das Korb-Icon im Nav führt zur Korb-Seite mit Liste, Remove und CSV-Export. Cross-Tab-Sync hält parallel offene Tabs konsistent.
+Pfad: An jedem Quellen-Eintrag in den Listen (Quellen-Tabelle, Drill-down-Overlay, Brush-Drill) steht ein „+"-Knopf, der die Quelle in den Datenkorb legt; das Korb-Icon im Nav führt zur Korb-Seite mit Liste, Remove und CSV-Export. Cross-Tab-Sync hält parallel offene Tabs konsistent.
 
 Ableitung:
-- Komponente [[ui-design#Wissenskorb]]
+- Komponente [[ui-design#Datenkorb]]
 - Anforderung [[requirements#Wiederverwendbarkeit der Auswahl]]
 
 ## Siehe auch

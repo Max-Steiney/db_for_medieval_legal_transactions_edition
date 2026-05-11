@@ -3,21 +3,21 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <meta http-equiv="Content-Security-Policy" content="default-src 'self'; script-src 'self'; style-src 'self'; font-src 'self'; img-src 'self' data: https://images.monasterium.net https://www.monasterium.net; connect-src 'self'; frame-ancestors 'none'; base-uri 'self'; form-action 'self'; upgrade-insecure-requests">
+    <meta http-equiv="Content-Security-Policy" content="default-src 'self'; script-src 'self'; style-src 'self'; font-src 'self'; img-src 'self' data: https://images.monasterium.net https://www.monasterium.net; connect-src 'self'; base-uri 'self'; form-action 'self'; upgrade-insecure-requests">
     <meta name="referrer" content="strict-origin-when-cross-origin">
     <meta http-equiv="Permissions-Policy" content="camera=(), microphone=(), geolocation=(), interest-cohort=()">
     <title>Nr. 515 (1358 XI 03), Datenbank</title>
     <link rel="preload" as="font" type="font/woff2" crossorigin
           href="../../../static/fonts/inter-400-latin.woff2">
-    <link rel="stylesheet" href="../../../static/css/fonts.css?v=20260511112948">
-    <link rel="stylesheet" href="../../../static/css/tokens.css?v=20260511112948">
-    <link rel="stylesheet" href="../../../static/css/base.css?v=20260511112948">
-    <link rel="stylesheet" href="../../../static/css/components.css?v=20260511112948">
-    <link rel="stylesheet" href="../../../static/css/responsive.css?v=20260511112948">
-    <link rel="stylesheet" href="../../../static/css/print.css?v=20260511112948">
-    <link rel="stylesheet" href="../../../static/css/provenance.css?v=20260511112948">
+    <link rel="stylesheet" href="../../../static/css/fonts.css?v=20260511125458">
+    <link rel="stylesheet" href="../../../static/css/tokens.css?v=20260511125458">
+    <link rel="stylesheet" href="../../../static/css/base.css?v=20260511125458">
+    <link rel="stylesheet" href="../../../static/css/components.css?v=20260511125458">
+    <link rel="stylesheet" href="../../../static/css/responsive.css?v=20260511125458">
+    <link rel="stylesheet" href="../../../static/css/print.css?v=20260511125458">
+    <link rel="stylesheet" href="../../../static/css/tip.css?v=20260511125458">
     
-<link rel="stylesheet" href="../../../static/css/document.css?v=20260511112948">
+<link rel="stylesheet" href="../../../static/css/document.css?v=20260511125458">
 <link rel="canonical" href="documents/QGW/Vienna_1177-1414_ready/515.html">
 <meta name="citation_title" content="Nr. 515 (1358 XI 03)">
 <meta name="citation_collection" content="QGW II/1 (1177–1414)">
@@ -50,8 +50,6 @@
         <a href="../../../register/persons.html">Personen</a>
         
         <a href="../../../register/orgs.html">Organisationen</a>
-        
-        <a href="../../../register/places.html">Orte</a>
         
     </div>
 </div>
@@ -93,7 +91,7 @@
     </div>
 </div>
 
-                <a href="../../../korb.html" class="nav-basket" aria-label="Wissenskorb">
+                <a href="../../../korb.html" class="nav-basket" aria-label="Datenkorb">
                     <svg width="18" height="18" viewBox="0 0 18 18" fill="none" aria-hidden="true">
                         <path d="M3 5h12l-1.2 8.5a1 1 0 0 1-1 .85H5.2a1 1 0 0 1-1-.85L3 5z"
                               stroke="currentColor" stroke-width="1.4" fill="none"
@@ -140,7 +138,7 @@
                     
                     <span class="meta-pair">
                         <span class="meta-label">Quelle</span>
-                        <span class="meta-value" title="Quellen zur Geschichte der Stadt Wien, Bd. II/1, Nr. 515">Quellen zur Geschichte der Stadt Wien, Bd. II/1, Nr. 515</span>
+                        <span class="meta-value" data-hint="Quellen zur Geschichte der Stadt Wien, Bd. II/1, Nr. 515">Quellen zur Geschichte der Stadt Wien, Bd. II/1, Nr. 515</span>
                     </span>
                     
                 </div>
@@ -151,7 +149,7 @@
                     
                     <button type="button" class="legend-toggle"
                             data-layer="entities" aria-pressed="true"
-                            title="Entitäten ein-/ausblenden">
+                            data-hint="Entitäten ein-/ausblenden">
                         <span class="legend-toggle-dots">
                             <span class="legend-swatch swatch-person"></span><span class="legend-swatch swatch-org"></span><span class="legend-swatch swatch-place"></span>
                         </span>
@@ -160,7 +158,7 @@
                     
                     <button type="button" class="legend-toggle"
                             data-layer="functions" aria-pressed="true"
-                            title="Funktionsrollen ein-/ausblenden">
+                            data-hint="Funktionsrollen ein-/ausblenden">
                         <span class="legend-toggle-dots">
                             <span class="legend-swatch swatch-fn-issuer"></span><span class="legend-swatch swatch-fn-recipient"></span><span class="legend-swatch swatch-fn-witness"></span>
                         </span>
@@ -169,7 +167,7 @@
                     
                     <button type="button" class="legend-toggle"
                             data-layer="attributes" aria-pressed="true"
-                            title="Attribute ein-/ausblenden">
+                            data-hint="Attribute ein-/ausblenden">
                         <span class="legend-toggle-dots">
                             <span class="legend-swatch swatch-attr"></span><span class="legend-swatch swatch-add"></span>
                         </span>
@@ -178,7 +176,7 @@
                     
                     <button type="button" class="legend-toggle"
                             data-layer="triggers" aria-pressed="true"
-                            title="Dispositivformel ein-/ausblenden">
+                            data-hint="Dispositivformel ein-/ausblenden">
                         <span class="legend-toggle-dots">
                             <span class="legend-swatch swatch-trigger"></span>
                         </span>
@@ -190,21 +188,29 @@
                 <div class="doc-toolbar-actions">
                     <a class="toolbar-btn" href="../../../tei/QGW/Vienna_1177-1414_ready/515.xml"
                        download="515.xml"
-                       aria-label="TEI-XML herunterladen" title="TEI-XML herunterladen"><svg viewBox="0 0 16 16" width="16" height="16" aria-hidden="true"><path fill="none" stroke="currentColor" stroke-width="1.4" stroke-linecap="round" stroke-linejoin="round" d="M8 2v8m0 0l-3-3m3 3l3-3M3 13h10"/></svg></a>
+                       aria-label="TEI-XML herunterladen" data-hint="TEI-XML herunterladen"><svg viewBox="0 0 16 16" width="16" height="16" aria-hidden="true"><path fill="none" stroke="currentColor" stroke-width="1.4" stroke-linecap="round" stroke-linejoin="round" d="M8 2v8m0 0l-3-3m3 3l3-3M3 13h10"/></svg></a>
                     <button class="toolbar-btn" id="cite-toggle" aria-expanded="false"
-                            aria-label="Zitation kopieren" title="Zitation kopieren"><svg viewBox="0 0 16 16" width="16" height="16" aria-hidden="true"><rect x="4" y="2" width="8" height="11" rx="1" fill="none" stroke="currentColor" stroke-width="1.4"/><path d="M6 1.5h4a0.5 0.5 0 0 1 0.5 0.5v1a0.5 0.5 0 0 1-0.5 0.5H6a0.5 0.5 0 0 1-0.5-0.5V2A0.5 0.5 0 0 1 6 1.5z" fill="currentColor"/><path d="M6.5 6.5h3M6.5 8.5h3M6.5 10.5h2" stroke="currentColor" stroke-width="1" stroke-linecap="round"/></svg></button>
+                            aria-label="Zitation kopieren" data-hint="Zitation kopieren"><svg viewBox="0 0 16 16" width="16" height="16" aria-hidden="true"><rect x="4" y="2" width="8" height="11" rx="1" fill="none" stroke="currentColor" stroke-width="1.4"/><path d="M6 1.5h4a0.5 0.5 0 0 1 0.5 0.5v1a0.5 0.5 0 0 1-0.5 0.5H6a0.5 0.5 0 0 1-0.5-0.5V2A0.5 0.5 0 0 1 6 1.5z" fill="currentColor"/><path d="M6.5 6.5h3M6.5 8.5h3M6.5 10.5h2" stroke="currentColor" stroke-width="1" stroke-linecap="round"/></svg></button>
                     <div class="cite-popover hidden" id="cite-popover"></div>
+                    <span class="toolbar-basket-mount"
+                          data-basket-type="source"
+                          data-basket-id="515"
+                          data-basket-label="515"
+                          data-basket-url="documents/QGW/Vienna_1177-1414_ready/515.html"
+                          data-basket-date="1358-11-03"
+                          data-basket-coll="QGW II/1 (1177–1414)"
+                          data-basket-regest="Herzog Rudolf IV. entscheidet in einem Streite zwischen den Bürgern von Neustadt und denen von Wien nach Einsichtnahme der ihm und seinen in der Burg versammelten Räthen seinem Oheim graf Albrecht…"></span>
                     
 <nav class="doc-paging doc-paging-inline" aria-label="Quellen-Navigation">
     
     <a href="../../../documents/QGW/Vienna_1177-1414_ready/514.html" class="toolbar-btn doc-paging-prev"
        aria-label="Vorherige Quelle: Nr. 514 (= Privil. Nr. 9)"
-       title="Vorherige Quelle: Nr. 514 (= Privil. Nr. 9)"><svg viewBox="0 0 16 16" width="16" height="16" aria-hidden="true"><path fill="none" stroke="currentColor" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round" d="M10 3l-5 5 5 5"/></svg></a>
+       data-hint="Vorherige Quelle: Nr. 514 (= Privil. Nr. 9)"><svg viewBox="0 0 16 16" width="16" height="16" aria-hidden="true"><path fill="none" stroke="currentColor" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round" d="M10 3l-5 5 5 5"/></svg></a>
     
     
     <a href="../../../documents/QGW/Vienna_1177-1414_ready/516.html" class="toolbar-btn doc-paging-next"
        aria-label="Nächste Quelle: Nr. 516"
-       title="Nächste Quelle: Nr. 516"><svg viewBox="0 0 16 16" width="16" height="16" aria-hidden="true"><path fill="none" stroke="currentColor" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round" d="M6 3l5 5-5 5"/></svg></a>
+       data-hint="Nächste Quelle: Nr. 516"><svg viewBox="0 0 16 16" width="16" height="16" aria-hidden="true"><path fill="none" stroke="currentColor" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round" d="M6 3l5 5-5 5"/></svg></a>
     
 </nav>
 
@@ -218,33 +224,33 @@
     <div class="doc-content">
         <!-- Document body (rendered TEI) -->
         <div class="doc-body">
-            <section class="tei-abstract"><h2 class="tei-section-head">Regest</h2><p><span class="anno-event" data-ref="ev__QGW_II_I_515"><span class="anno-fn anno-fn-issuer" data-role="issuer"><span class="fn-label">Aussteller*in</span><a class="anno-person" data-ref="pe__rudolf_iv_herzog_von_oesterreich_QGW_II_I_769" title="Rudolf von Habsburg († 24.01.1370) [pe__rudolf_iv_herzog_von_oesterreich_QGW_II_I_769]" href="../../../register/persons/pe__rudolf_iv_herzog_von_oesterreich_QGW_II_I_769.html"><span class="anno-attr anno-attr-title">Herzog</span> Rudolf IV.</a></span>
+            <section class="tei-abstract"><h2 class="tei-section-head">Regest</h2><p><span class="anno-event" data-ref="ev__QGW_II_I_515"><span class="anno-fn anno-fn-issuer" data-role="issuer"><span class="fn-label">Aussteller*in</span><a class="anno-person" data-ref="pe__rudolf_iv_herzog_von_oesterreich_QGW_II_I_769" data-hint="Rudolf von Habsburg († 24.01.1370) [pe__rudolf_iv_herzog_von_oesterreich_QGW_II_I_769]" data-hint-type="Person" href="../../../register/persons/pe__rudolf_iv_herzog_von_oesterreich_QGW_II_I_769.html"><span class="anno-attr anno-attr-title">Herzog</span> Rudolf IV.</a></span>
                   <span class="anno-trigger anno-trigger-disp">entscheidet in einem Streite</span>
                   <span class="anno-fn anno-fn-other" data-role="other"><span class="fn-label">Sonstige</span><span class="anno-trigger anno-trigger-fn">zwischen</span>
-                     <a class="anno-org" data-ref="org__wiener_neustadt" title="Bürgermeister, Richter und Rat der Stadt Wiener Neustadt (Stadt) [org__wiener_neustadt]" href="../../../register/orgs/org__wiener_neustadt.html">den Bürgern von Neustadt</a></span>
+                     <a class="anno-org" data-ref="org__wiener_neustadt" data-hint="Bürgermeister, Richter und Rat der Stadt Wiener Neustadt (Stadt) [org__wiener_neustadt]" data-hint-type="Organisation" href="../../../register/orgs/org__wiener_neustadt.html">den Bürgern von Neustadt</a></span>
                   <span class="anno-fn anno-fn-other" data-role="other"><span class="fn-label">Sonstige</span><span class="anno-trigger anno-trigger-fn">und</span>
                      <span class="anno-fn anno-fn" data-role=""><span class="fn-label"></span>denen von Wien</span></span>
                   <span class="anno-fn anno-fn-other" data-role="other"><span class="fn-label">Sonstige</span><span class="anno-trigger anno-trigger-fn">nach Einsichtnahme</span> der
-                     ihm und seinen in der Burg versammelten Räthen<a class="anno-person" data-ref="pe__albrecht_von_hohenberg_QGW_II_I_515" title="Albrecht von Hohenberg [pe__albrecht_von_hohenberg_QGW_II_I_515]" href="../../../register/persons/pe__albrecht_von_hohenberg_QGW_II_I_515.html"> seinem <span class="anno-attr anno-attr-kin" data-corresp="pe__rudolf_iv_herzog_von_oesterreich_QGW_II_I_769">Oheim</span>
+                     ihm und seinen in der Burg versammelten Räthen<a class="anno-person" data-ref="pe__albrecht_von_hohenberg_QGW_II_I_515" data-hint="Albrecht von Hohenberg [pe__albrecht_von_hohenberg_QGW_II_I_515]" data-hint-type="Person" href="../../../register/persons/pe__albrecht_von_hohenberg_QGW_II_I_515.html"> seinem <span class="anno-attr anno-attr-kin" data-corresp="pe__rudolf_iv_herzog_von_oesterreich_QGW_II_I_769">Oheim</span>
                         <span class="anno-attr anno-attr-title">graf</span> Albrecht von Hohenberg, <span class="anno-attr anno-attr-occ" data-corresp="org__freising-dioezese">pischof</span> ze
-                        Freisingen</a> <a class="anno-person" data-ref="pe__eberhard_von_der_reichenau_QGW_II_I_515" title="Eberhard von der Reichenau [pe__eberhard_von_der_reichenau_QGW_II_I_515]" href="../../../register/persons/pe__eberhard_von_der_reichenau_QGW_II_I_515.html"><span class="anno-attr anno-attr-occ" data-corresp="org__reichenau-benediktiner">abt</span> Eberhart von der
-                        Reichenau</a><a class="anno-person" data-ref="pe__reimprecht_von_wallsee_QGW_II_I_515" title="Reimprecht von Wallsee von Wallsee [pe__reimprecht_von_wallsee_QGW_II_I_515]" href="../../../register/persons/pe__reimprecht_von_wallsee_QGW_II_I_515.html"> Reimprecht von Walsse von
-                        Ens</a> <a class="anno-person" data-ref="pe__eberhard_von_wallsee_QGW_II_I_529" title="Eberhard von Wallsee der Alte [pe__eberhard_von_wallsee_QGW_II_I_529]" href="../../../register/persons/pe__eberhard_von_wallsee_QGW_II_I_529.html">Eberhart von Walsse, <span class="anno-attr anno-attr-occ" data-corresp="org__oesterreich-herzogtum">houbtman</span> ob der
-                     Enns</a> <a class="anno-person" data-ref="pe__ulrich_von_wallsee_QGW_II_I_515" title="Ulrich von Wallsee [pe__ulrich_von_wallsee_QGW_II_I_515]" href="../../../register/persons/pe__ulrich_von_wallsee_QGW_II_I_515.html">Ulrich
+                        Freisingen</a> <a class="anno-person" data-ref="pe__eberhard_von_der_reichenau_QGW_II_I_515" data-hint="Eberhard von der Reichenau [pe__eberhard_von_der_reichenau_QGW_II_I_515]" data-hint-type="Person" href="../../../register/persons/pe__eberhard_von_der_reichenau_QGW_II_I_515.html"><span class="anno-attr anno-attr-occ" data-corresp="org__reichenau-benediktiner">abt</span> Eberhart von der
+                        Reichenau</a><a class="anno-person" data-ref="pe__reimprecht_von_wallsee_QGW_II_I_515" data-hint="Reimprecht von Wallsee von Wallsee [pe__reimprecht_von_wallsee_QGW_II_I_515]" data-hint-type="Person" href="../../../register/persons/pe__reimprecht_von_wallsee_QGW_II_I_515.html"> Reimprecht von Walsse von
+                        Ens</a> <a class="anno-person" data-ref="pe__eberhard_von_wallsee_QGW_II_I_529" data-hint="Eberhard von Wallsee der Alte [pe__eberhard_von_wallsee_QGW_II_I_529]" data-hint-type="Person" href="../../../register/persons/pe__eberhard_von_wallsee_QGW_II_I_529.html">Eberhart von Walsse, <span class="anno-attr anno-attr-occ" data-corresp="org__oesterreich-herzogtum">houbtman</span> ob der
+                     Enns</a> <a class="anno-person" data-ref="pe__ulrich_von_wallsee_QGW_II_I_515" data-hint="Ulrich von Wallsee [pe__ulrich_von_wallsee_QGW_II_I_515]" data-hint-type="Person" href="../../../register/persons/pe__ulrich_von_wallsee_QGW_II_I_515.html">Ulrich
                         von Walsse, <span class="anno-attr anno-attr-occ" data-corresp="org__steyr">houbtman</span> in
-                        Steyr</a><a class="anno-person" data-ref="pe__eberhard_von_wallsee_QGW_II_I_515" title="Eberhard von Wallsee [pe__eberhard_von_wallsee_QGW_II_I_515]" href="../../../register/persons/pe__eberhard_von_wallsee_QGW_II_I_515.html">
-                        Eberhart von Walsse , dessen <span class="anno-attr anno-attr-kin" data-corresp="pe__ulrich_von_wallsee_QGW_II_I_515">Sohn</span></a> <a class="anno-person" data-ref="pe__friedrich_von_wallsee_QGW_II_I_515_a" title="Friedrich von Wallsee [pe__friedrich_von_wallsee_QGW_II_I_515_a]" href="../../../register/persons/pe__friedrich_von_wallsee_QGW_II_I_515_a.html">Friderich von
-                        Walsse, Ulrichs <span class="anno-attr anno-attr-kin" data-corresp="pe__ulrich_von_wallsee_QGW_II_I_515">Bruder</span></a><a class="anno-person" data-ref="pe__yban_von_pernstein_QGW_II_I_655" title="Yban von Pernstein von Pernstein [pe__yban_von_pernstein_QGW_II_I_655]" href="../../../register/persons/pe__yban_von_pernstein_QGW_II_I_655.html">
-                        <span class="anno-attr anno-attr-title">graf</span> Yban von Pernstain</a> <a class="anno-person" data-ref="pe__friedrich_von_pettau_QGW_II_I_515" title="Friedrich von Pettau [pe__friedrich_von_pettau_QGW_II_I_515]" href="../../../register/persons/pe__friedrich_von_pettau_QGW_II_I_515.html">Friderich von
-                        Pettawe</a><a class="anno-person" data-ref="pe__rudolf_otto_von_lichtenstein_QGW_II_I_515" title="Rudolf Otto von Lichtenstein [pe__rudolf_otto_von_lichtenstein_QGW_II_I_515]" href="../../../register/persons/pe__rudolf_otto_von_lichtenstein_QGW_II_I_515.html"> Ru/odolf Ott von
-                        Liechtenstain</a> <a class="anno-person" data-ref="pe__burkhard_von_ellerbach_QGW_II_I_515" title="Burkhard von Ellerbach der Alte [pe__burkhard_von_ellerbach_QGW_II_I_515]" href="../../../register/persons/pe__burkhard_von_ellerbach_QGW_II_I_515.html">Purchart der alt von
-                        Elrbach</a> <a class="anno-person" data-ref="pe__hermann_von_landenberg_QGW_II_I_515" title="Hermann von Landenberg [pe__hermann_von_landenberg_QGW_II_I_515]" href="../../../register/persons/pe__hermann_von_landenberg_QGW_II_I_515.html">Herman von Landenberg,
-                           <span class="anno-attr anno-attr-occ" data-corresp="org__oesterreich-herzogtum">marschalch</span> in Österreich</a> <a class="anno-person" data-ref="pe__rudolf_von_stattegg_QGW_II_I_515" title="Rudolf von Stattegg [pe__rudolf_von_stattegg_QGW_II_I_515]" href="../../../register/persons/pe__rudolf_von_stattegg_QGW_II_I_515.html">Rudolf von Stadekk</a> <a class="anno-person" data-ref="pe__heinrich_von_hagenberg_QGW_II_I_436" title="Heinrich von Hagenberg von Hagenberg [pe__heinrich_von_hagenberg_QGW_II_I_436]" href="../../../register/persons/pe__heinrich_von_hagenberg_QGW_II_I_436.html">Hainrich von
-                        Hagkenberch, <span class="anno-attr anno-attr-occ" data-corresp="org__oesterreich-herzogtum">hofmarschalk</span></a> <a class="anno-person" data-ref="pe__johann_turs_QGW_II_I_714" title="Johann Turs von Rauheneck [pe__johann_turs_QGW_II_I_714]" href="../../../register/persons/pe__johann_turs_QGW_II_I_714.html">Johans der Turse von Rauhenekk</a> <a class="anno-person" data-ref="pe__friedrich_von_wallsee_QGW_II_I_515_b" title="Friedrich von Wallsee [pe__friedrich_von_wallsee_QGW_II_I_515_b]" href="../../../register/persons/pe__friedrich_von_wallsee_QGW_II_I_515_b.html">Friderich von
-                        Walsse, <span class="anno-attr anno-attr-occ" data-corresp="org__oesterreich-herzogtum">chamermaister</span></a> <a class="anno-person" data-ref="pe__albrecht_schenk_QGW_II_I_599" title="Albrecht der Schenk v. Ried [pe__albrecht_schenk_QGW_II_I_599]" href="../../../register/persons/pe__albrecht_schenk_QGW_II_I_599.html">Albrecht der Schenk von Ried,
-                           <span class="anno-attr anno-attr-occ" data-corresp="org__oesterreich-herzogtum">hofmeister</span></a><a class="anno-person" data-ref="pe__johann_von_platzheim_QGW_II_I_515" title="Johann von Platzheim [pe__johann_von_platzheim_QGW_II_I_515]" href="../../../register/persons/pe__johann_von_platzheim_QGW_II_I_515.html">
+                        Steyr</a><a class="anno-person" data-ref="pe__eberhard_von_wallsee_QGW_II_I_515" data-hint="Eberhard von Wallsee [pe__eberhard_von_wallsee_QGW_II_I_515]" data-hint-type="Person" href="../../../register/persons/pe__eberhard_von_wallsee_QGW_II_I_515.html">
+                        Eberhart von Walsse , dessen <span class="anno-attr anno-attr-kin" data-corresp="pe__ulrich_von_wallsee_QGW_II_I_515">Sohn</span></a> <a class="anno-person" data-ref="pe__friedrich_von_wallsee_QGW_II_I_515_a" data-hint="Friedrich von Wallsee [pe__friedrich_von_wallsee_QGW_II_I_515_a]" data-hint-type="Person" href="../../../register/persons/pe__friedrich_von_wallsee_QGW_II_I_515_a.html">Friderich von
+                        Walsse, Ulrichs <span class="anno-attr anno-attr-kin" data-corresp="pe__ulrich_von_wallsee_QGW_II_I_515">Bruder</span></a><a class="anno-person" data-ref="pe__yban_von_pernstein_QGW_II_I_655" data-hint="Yban von Pernstein von Pernstein [pe__yban_von_pernstein_QGW_II_I_655]" data-hint-type="Person" href="../../../register/persons/pe__yban_von_pernstein_QGW_II_I_655.html">
+                        <span class="anno-attr anno-attr-title">graf</span> Yban von Pernstain</a> <a class="anno-person" data-ref="pe__friedrich_von_pettau_QGW_II_I_515" data-hint="Friedrich von Pettau [pe__friedrich_von_pettau_QGW_II_I_515]" data-hint-type="Person" href="../../../register/persons/pe__friedrich_von_pettau_QGW_II_I_515.html">Friderich von
+                        Pettawe</a><a class="anno-person" data-ref="pe__rudolf_otto_von_lichtenstein_QGW_II_I_515" data-hint="Rudolf Otto von Lichtenstein [pe__rudolf_otto_von_lichtenstein_QGW_II_I_515]" data-hint-type="Person" href="../../../register/persons/pe__rudolf_otto_von_lichtenstein_QGW_II_I_515.html"> Ru/odolf Ott von
+                        Liechtenstain</a> <a class="anno-person" data-ref="pe__burkhard_von_ellerbach_QGW_II_I_515" data-hint="Burkhard von Ellerbach der Alte [pe__burkhard_von_ellerbach_QGW_II_I_515]" data-hint-type="Person" href="../../../register/persons/pe__burkhard_von_ellerbach_QGW_II_I_515.html">Purchart der alt von
+                        Elrbach</a> <a class="anno-person" data-ref="pe__hermann_von_landenberg_QGW_II_I_515" data-hint="Hermann von Landenberg [pe__hermann_von_landenberg_QGW_II_I_515]" data-hint-type="Person" href="../../../register/persons/pe__hermann_von_landenberg_QGW_II_I_515.html">Herman von Landenberg,
+                           <span class="anno-attr anno-attr-occ" data-corresp="org__oesterreich-herzogtum">marschalch</span> in Österreich</a> <a class="anno-person" data-ref="pe__rudolf_von_stattegg_QGW_II_I_515" data-hint="Rudolf von Stattegg [pe__rudolf_von_stattegg_QGW_II_I_515]" data-hint-type="Person" href="../../../register/persons/pe__rudolf_von_stattegg_QGW_II_I_515.html">Rudolf von Stadekk</a> <a class="anno-person" data-ref="pe__heinrich_von_hagenberg_QGW_II_I_436" data-hint="Heinrich von Hagenberg von Hagenberg [pe__heinrich_von_hagenberg_QGW_II_I_436]" data-hint-type="Person" href="../../../register/persons/pe__heinrich_von_hagenberg_QGW_II_I_436.html">Hainrich von
+                        Hagkenberch, <span class="anno-attr anno-attr-occ" data-corresp="org__oesterreich-herzogtum">hofmarschalk</span></a> <a class="anno-person" data-ref="pe__johann_turs_QGW_II_I_714" data-hint="Johann Turs von Rauheneck [pe__johann_turs_QGW_II_I_714]" data-hint-type="Person" href="../../../register/persons/pe__johann_turs_QGW_II_I_714.html">Johans der Turse von Rauhenekk</a> <a class="anno-person" data-ref="pe__friedrich_von_wallsee_QGW_II_I_515_b" data-hint="Friedrich von Wallsee [pe__friedrich_von_wallsee_QGW_II_I_515_b]" data-hint-type="Person" href="../../../register/persons/pe__friedrich_von_wallsee_QGW_II_I_515_b.html">Friderich von
+                        Walsse, <span class="anno-attr anno-attr-occ" data-corresp="org__oesterreich-herzogtum">chamermaister</span></a> <a class="anno-person" data-ref="pe__albrecht_schenk_QGW_II_I_599" data-hint="Albrecht der Schenk v. Ried [pe__albrecht_schenk_QGW_II_I_599]" data-hint-type="Person" href="../../../register/persons/pe__albrecht_schenk_QGW_II_I_599.html">Albrecht der Schenk von Ried,
+                           <span class="anno-attr anno-attr-occ" data-corresp="org__oesterreich-herzogtum">hofmeister</span></a><a class="anno-person" data-ref="pe__johann_von_platzheim_QGW_II_I_515" data-hint="Johann von Platzheim [pe__johann_von_platzheim_QGW_II_I_515]" data-hint-type="Person" href="../../../register/persons/pe__johann_von_platzheim_QGW_II_I_515.html">
                         <span class="anno-attr anno-attr-title">maister</span> Johans von Platzheim, <span class="anno-attr anno-attr-occ" data-corresp="org__oesterreich-herzogtum">chanzlenr</span></a>
-                  </span>vorgelegten Urkunden, dass <span class="anno-fn anno-fn-recipient" data-role="recipient"><span class="fn-label">Empfänger*in</span><a class="anno-org" data-ref="org__wiener_neustadt" title="Bürgermeister, Richter und Rat der Stadt Wiener Neustadt (Stadt) [org__wiener_neustadt]" href="../../../register/orgs/org__wiener_neustadt.html">die Neustädter</a></span> nur in der Zeit zwischen
+                  </span>vorgelegten Urkunden, dass <span class="anno-fn anno-fn-recipient" data-role="recipient"><span class="fn-label">Empfänger*in</span><a class="anno-org" data-ref="org__wiener_neustadt" data-hint="Bürgermeister, Richter und Rat der Stadt Wiener Neustadt (Stadt) [org__wiener_neustadt]" data-hint-type="Organisation" href="../../../register/orgs/org__wiener_neustadt.html">die Neustädter</a></span> nur in der Zeit zwischen
                   Michaelis und Martini auf dem Hof zu Wien Wein einführen und verkaufen dürfen wie
                   andere Landleute.</span>
             </p></section>
@@ -305,7 +311,7 @@
          dem TEI in mehreren Untertabellen, Personen/Orgs/Orte,
          Ereignisse, Dispositivformeln, Editorische Ergaenzungen. Wird
          per JS aus den entsprechenden Spans im Body aufgebaut. -->
-    <section class="annotations-view" id="factoid-view" aria-label="Annotationen">
+    <section class="annotations-view" id="annotations-view" aria-label="Annotationen">
         <header class="annotations-header">
             <h2 class="annotations-title">Annotationen</h2>
             <span class="annotations-summary"></span>
@@ -351,13 +357,14 @@
         </div>
     </footer>
 
-    <script src="../../../static/js/core.js?v=20260511112948"></script>
-    <script src="../../../static/js/provenance.js?v=20260511112948"></script>
-    <script src="../../../static/js/basket.js?v=20260511112948"></script>
+    <script src="../../../static/js/core.js?v=20260511125458"></script>
+    <script src="../../../static/js/tip.js?v=20260511125458"></script>
+    <script src="../../../static/js/hint.js?v=20260511125458"></script>
+    <script src="../../../static/js/basket.js?v=20260511125458"></script>
     
-<script src="../../../static/js/tooltips.js?v=20260511112948"></script>
-<script src="../../../static/js/facsimile.js?v=20260511112948"></script>
-<script src="../../../static/js/document.js?v=20260511112948"></script>
+<script src="../../../static/js/facsimile.js?v=20260511125458"></script>
+<script src="../../../static/js/document.js?v=20260511125458"></script>
+<script src="../../../static/js/basket-mount.js?v=20260511125458"></script>
 
 </body>
 </html>

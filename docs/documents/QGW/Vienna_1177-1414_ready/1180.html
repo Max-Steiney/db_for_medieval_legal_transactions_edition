@@ -3,21 +3,21 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <meta http-equiv="Content-Security-Policy" content="default-src 'self'; script-src 'self'; style-src 'self'; font-src 'self'; img-src 'self' data: https://images.monasterium.net https://www.monasterium.net; connect-src 'self'; frame-ancestors 'none'; base-uri 'self'; form-action 'self'; upgrade-insecure-requests">
+    <meta http-equiv="Content-Security-Policy" content="default-src 'self'; script-src 'self'; style-src 'self'; font-src 'self'; img-src 'self' data: https://images.monasterium.net https://www.monasterium.net; connect-src 'self'; base-uri 'self'; form-action 'self'; upgrade-insecure-requests">
     <meta name="referrer" content="strict-origin-when-cross-origin">
     <meta http-equiv="Permissions-Policy" content="camera=(), microphone=(), geolocation=(), interest-cohort=()">
     <title>Nr. 1180 (1389 X 19), Datenbank</title>
     <link rel="preload" as="font" type="font/woff2" crossorigin
           href="../../../static/fonts/inter-400-latin.woff2">
-    <link rel="stylesheet" href="../../../static/css/fonts.css?v=20260511112948">
-    <link rel="stylesheet" href="../../../static/css/tokens.css?v=20260511112948">
-    <link rel="stylesheet" href="../../../static/css/base.css?v=20260511112948">
-    <link rel="stylesheet" href="../../../static/css/components.css?v=20260511112948">
-    <link rel="stylesheet" href="../../../static/css/responsive.css?v=20260511112948">
-    <link rel="stylesheet" href="../../../static/css/print.css?v=20260511112948">
-    <link rel="stylesheet" href="../../../static/css/provenance.css?v=20260511112948">
+    <link rel="stylesheet" href="../../../static/css/fonts.css?v=20260511125458">
+    <link rel="stylesheet" href="../../../static/css/tokens.css?v=20260511125458">
+    <link rel="stylesheet" href="../../../static/css/base.css?v=20260511125458">
+    <link rel="stylesheet" href="../../../static/css/components.css?v=20260511125458">
+    <link rel="stylesheet" href="../../../static/css/responsive.css?v=20260511125458">
+    <link rel="stylesheet" href="../../../static/css/print.css?v=20260511125458">
+    <link rel="stylesheet" href="../../../static/css/tip.css?v=20260511125458">
     
-<link rel="stylesheet" href="../../../static/css/document.css?v=20260511112948">
+<link rel="stylesheet" href="../../../static/css/document.css?v=20260511125458">
 <link rel="canonical" href="documents/QGW/Vienna_1177-1414_ready/1180.html">
 <meta name="citation_title" content="Nr. 1180 (1389 X 19)">
 <meta name="citation_collection" content="QGW II/1 (1177–1414)">
@@ -50,8 +50,6 @@
         <a href="../../../register/persons.html">Personen</a>
         
         <a href="../../../register/orgs.html">Organisationen</a>
-        
-        <a href="../../../register/places.html">Orte</a>
         
     </div>
 </div>
@@ -93,7 +91,7 @@
     </div>
 </div>
 
-                <a href="../../../korb.html" class="nav-basket" aria-label="Wissenskorb">
+                <a href="../../../korb.html" class="nav-basket" aria-label="Datenkorb">
                     <svg width="18" height="18" viewBox="0 0 18 18" fill="none" aria-hidden="true">
                         <path d="M3 5h12l-1.2 8.5a1 1 0 0 1-1 .85H5.2a1 1 0 0 1-1-.85L3 5z"
                               stroke="currentColor" stroke-width="1.4" fill="none"
@@ -140,7 +138,7 @@
                     
                     <span class="meta-pair">
                         <span class="meta-label">Quelle</span>
-                        <span class="meta-value" title="Quellen zur Geschichte der Stadt Wien, Bd. II/1, Nr. 1180">Quellen zur Geschichte der Stadt Wien, Bd. II/1, Nr. 1180</span>
+                        <span class="meta-value" data-hint="Quellen zur Geschichte der Stadt Wien, Bd. II/1, Nr. 1180">Quellen zur Geschichte der Stadt Wien, Bd. II/1, Nr. 1180</span>
                     </span>
                     
                 </div>
@@ -151,7 +149,7 @@
                     
                     <button type="button" class="legend-toggle"
                             data-layer="entities" aria-pressed="true"
-                            title="Entitäten ein-/ausblenden">
+                            data-hint="Entitäten ein-/ausblenden">
                         <span class="legend-toggle-dots">
                             <span class="legend-swatch swatch-person"></span><span class="legend-swatch swatch-org"></span><span class="legend-swatch swatch-place"></span>
                         </span>
@@ -160,7 +158,7 @@
                     
                     <button type="button" class="legend-toggle"
                             data-layer="functions" aria-pressed="true"
-                            title="Funktionsrollen ein-/ausblenden">
+                            data-hint="Funktionsrollen ein-/ausblenden">
                         <span class="legend-toggle-dots">
                             <span class="legend-swatch swatch-fn-issuer"></span><span class="legend-swatch swatch-fn-recipient"></span><span class="legend-swatch swatch-fn-witness"></span>
                         </span>
@@ -169,7 +167,7 @@
                     
                     <button type="button" class="legend-toggle"
                             data-layer="attributes" aria-pressed="true"
-                            title="Attribute ein-/ausblenden">
+                            data-hint="Attribute ein-/ausblenden">
                         <span class="legend-toggle-dots">
                             <span class="legend-swatch swatch-attr"></span><span class="legend-swatch swatch-add"></span>
                         </span>
@@ -178,7 +176,7 @@
                     
                     <button type="button" class="legend-toggle"
                             data-layer="triggers" aria-pressed="true"
-                            title="Dispositivformel ein-/ausblenden">
+                            data-hint="Dispositivformel ein-/ausblenden">
                         <span class="legend-toggle-dots">
                             <span class="legend-swatch swatch-trigger"></span>
                         </span>
@@ -190,21 +188,29 @@
                 <div class="doc-toolbar-actions">
                     <a class="toolbar-btn" href="../../../tei/QGW/Vienna_1177-1414_ready/1180.xml"
                        download="1180.xml"
-                       aria-label="TEI-XML herunterladen" title="TEI-XML herunterladen"><svg viewBox="0 0 16 16" width="16" height="16" aria-hidden="true"><path fill="none" stroke="currentColor" stroke-width="1.4" stroke-linecap="round" stroke-linejoin="round" d="M8 2v8m0 0l-3-3m3 3l3-3M3 13h10"/></svg></a>
+                       aria-label="TEI-XML herunterladen" data-hint="TEI-XML herunterladen"><svg viewBox="0 0 16 16" width="16" height="16" aria-hidden="true"><path fill="none" stroke="currentColor" stroke-width="1.4" stroke-linecap="round" stroke-linejoin="round" d="M8 2v8m0 0l-3-3m3 3l3-3M3 13h10"/></svg></a>
                     <button class="toolbar-btn" id="cite-toggle" aria-expanded="false"
-                            aria-label="Zitation kopieren" title="Zitation kopieren"><svg viewBox="0 0 16 16" width="16" height="16" aria-hidden="true"><rect x="4" y="2" width="8" height="11" rx="1" fill="none" stroke="currentColor" stroke-width="1.4"/><path d="M6 1.5h4a0.5 0.5 0 0 1 0.5 0.5v1a0.5 0.5 0 0 1-0.5 0.5H6a0.5 0.5 0 0 1-0.5-0.5V2A0.5 0.5 0 0 1 6 1.5z" fill="currentColor"/><path d="M6.5 6.5h3M6.5 8.5h3M6.5 10.5h2" stroke="currentColor" stroke-width="1" stroke-linecap="round"/></svg></button>
+                            aria-label="Zitation kopieren" data-hint="Zitation kopieren"><svg viewBox="0 0 16 16" width="16" height="16" aria-hidden="true"><rect x="4" y="2" width="8" height="11" rx="1" fill="none" stroke="currentColor" stroke-width="1.4"/><path d="M6 1.5h4a0.5 0.5 0 0 1 0.5 0.5v1a0.5 0.5 0 0 1-0.5 0.5H6a0.5 0.5 0 0 1-0.5-0.5V2A0.5 0.5 0 0 1 6 1.5z" fill="currentColor"/><path d="M6.5 6.5h3M6.5 8.5h3M6.5 10.5h2" stroke="currentColor" stroke-width="1" stroke-linecap="round"/></svg></button>
                     <div class="cite-popover hidden" id="cite-popover"></div>
+                    <span class="toolbar-basket-mount"
+                          data-basket-type="source"
+                          data-basket-id="1180"
+                          data-basket-label="1180"
+                          data-basket-url="documents/QGW/Vienna_1177-1414_ready/1180.html"
+                          data-basket-date="1389-10-19"
+                          data-basket-coll="QGW II/1 (1177–1414)"
+                          data-basket-regest="Martinus Rotlew, judex Bernhardus de Pyeska consules Johannes de Ach iurati Reinhardus de Mulhousen consules Otlinus, pannicida consules Cunzo, glaser consules Johannes Pleyer consules Crux, institor…"></span>
                     
 <nav class="doc-paging doc-paging-inline" aria-label="Quellen-Navigation">
     
     <a href="../../../documents/QGW/Vienna_1177-1414_ready/1179.html" class="toolbar-btn doc-paging-prev"
        aria-label="Vorherige Quelle: Nr. 1179"
-       title="Vorherige Quelle: Nr. 1179"><svg viewBox="0 0 16 16" width="16" height="16" aria-hidden="true"><path fill="none" stroke="currentColor" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round" d="M10 3l-5 5 5 5"/></svg></a>
+       data-hint="Vorherige Quelle: Nr. 1179"><svg viewBox="0 0 16 16" width="16" height="16" aria-hidden="true"><path fill="none" stroke="currentColor" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round" d="M10 3l-5 5 5 5"/></svg></a>
     
     
     <a href="../../../documents/QGW/Vienna_1177-1414_ready/1181.html" class="toolbar-btn doc-paging-next"
        aria-label="Nächste Quelle: Nr. 1181"
-       title="Nächste Quelle: Nr. 1181"><svg viewBox="0 0 16 16" width="16" height="16" aria-hidden="true"><path fill="none" stroke="currentColor" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round" d="M6 3l5 5-5 5"/></svg></a>
+       data-hint="Nächste Quelle: Nr. 1181"><svg viewBox="0 0 16 16" width="16" height="16" aria-hidden="true"><path fill="none" stroke="currentColor" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round" d="M6 3l5 5-5 5"/></svg></a>
     
 </nav>
 
@@ -218,16 +224,16 @@
     <div class="doc-content">
         <!-- Document body (rendered TEI) -->
         <div class="doc-body">
-            <section class="tei-abstract"><h2 class="tei-section-head">Regest</h2><p><span class="anno-event" data-ref="ev__QGW_II_I_1180"><span class="anno-fn anno-fn-issuer" data-role="issuer"><span class="fn-label">Aussteller*in</span><a class="anno-person" data-ref="pe__martin_rotlew_QGW_II_I_1180" title="Martin Rotlew [pe__martin_rotlew_QGW_II_I_1180]" href="../../../register/persons/pe__martin_rotlew_QGW_II_I_1180.html">Martinus Rotlew, <span class="anno-attr anno-attr-occ" data-corresp="org__prag">judex</span></a> <a class="anno-person" data-ref="pe__bernhard_von_pieska_QGW_II_I_1180" title="Bernhard von Pieska [pe__bernhard_von_pieska_QGW_II_I_1180]" href="../../../register/persons/pe__bernhard_von_pieska_QGW_II_I_1180.html">Bernhardus de Pyeska <span class="anno-attr anno-attr-occ" data-corresp="org__prag"><span class="tei-add">consules</span></span></a> <a class="anno-person" data-ref="pe__johann_von_aachen_QGW_II_I_1180" title="Johannes von Aachen [pe__johann_von_aachen_QGW_II_I_1180]" href="../../../register/persons/pe__johann_von_aachen_QGW_II_I_1180.html">Johannes de Ach <span class="anno-attr anno-attr-occ" data-corresp="org__prag"><span class="tei-add">iurati</span></span></a> <a class="anno-person" data-ref="pe__reinhard_von_muehlhausen_QGW_II_I_1180" title="Reinhard von Mühlhausen [pe__reinhard_von_muehlhausen_QGW_II_I_1180]" href="../../../register/persons/pe__reinhard_von_muehlhausen_QGW_II_I_1180.html">Reinhardus de Mulhousen
-                           <span class="anno-attr anno-attr-occ" data-corresp="org__prag"><span class="tei-add">consules</span></span></a> <a class="anno-person" data-ref="pe__otto_gewandschneider" title="Otto der Gewandschneider [pe__otto_gewandschneider]" href="../../../register/persons/pe__otto_gewandschneider.html">Otlinus, <span class="anno-attr anno-attr-prof">pannicida</span>
-                        <span class="anno-attr anno-attr-occ" data-corresp="org__prag"><span class="tei-add">consules</span></span></a> <a class="anno-person" data-ref="pe__konrad_glaser_QGW_II_I_1180" title="Chunz der Glaser [pe__konrad_glaser_QGW_II_I_1180]" href="../../../register/persons/pe__konrad_glaser_QGW_II_I_1180.html">Cunzo, <span class="anno-attr anno-attr-prof">glaser</span>
-                        <span class="anno-attr anno-attr-occ" data-corresp="org__prag"><span class="tei-add">consules</span></span></a> <a class="anno-person" data-ref="pe__johann_pleyer_QGW_II_I_1180" title="Johannes Pleyer [pe__johann_pleyer_QGW_II_I_1180]" href="../../../register/persons/pe__johann_pleyer_QGW_II_I_1180.html">Johannes Pleyer <span class="anno-attr anno-attr-occ" data-corresp="org__prag"><span class="tei-add">consules</span></span></a> <a class="anno-person" data-ref="pe__crux_krämer" title="Crux der Krämer [pe__crux_krämer]" href="../../../register/persons/pe__crux_krämer.html">Crux, <span class="anno-attr anno-attr-prof">institor</span>
-                        <span class="anno-attr anno-attr-occ" data-corresp="org__prag"><span class="tei-add">consules</span></span></a> <a class="anno-person" data-ref="pe__franz_rokzaner_QGW_II_I_1180" title="Franz Rokzaner [pe__franz_rokzaner_QGW_II_I_1180]" href="../../../register/persons/pe__franz_rokzaner_QGW_II_I_1180.html">Franciscus Rokzaner <span class="anno-attr anno-attr-occ" data-corresp="org__prag"><span class="tei-add">consules</span></span></a> <a class="anno-person" data-ref="pe__johann_rost_QGW_II_I_1180" title="Johannes Rost [pe__johann_rost_QGW_II_I_1180]" href="../../../register/persons/pe__johann_rost_QGW_II_I_1180.html">Hansa Rost <span class="anno-attr anno-attr-occ" data-corresp="org__prag"><span class="tei-add">consules</span></span></a> <a class="anno-person" data-ref="pe__wenzel_ottonis_QGW_II_I_1180" title="Wenzel Ottonis [pe__wenzel_ottonis_QGW_II_I_1180]" href="../../../register/persons/pe__wenzel_ottonis_QGW_II_I_1180.html">Wenzeslaus Ottonis <span class="anno-attr anno-attr-occ" data-corresp="org__prag"><span class="tei-add">consules</span></span></a> <a class="anno-person" data-ref="pe__franz_steubel_QGW_II_I_1180" title="Franz Steubel [pe__franz_steubel_QGW_II_I_1180]" href="../../../register/persons/pe__franz_steubel_QGW_II_I_1180.html">Franciscus Steubel <span class="anno-attr anno-attr-occ" data-corresp="org__prag"><span class="tei-add">consules</span></span></a> <a class="anno-person" data-ref="pe__johann_gosler_QGW_II_I_1180" title="Johannes Gosler [pe__johann_gosler_QGW_II_I_1180]" href="../../../register/persons/pe__johann_gosler_QGW_II_I_1180.html"> Johannes Gosler <span class="anno-attr anno-attr-occ" data-corresp="org__prag"><span class="tei-add">consules</span></span></a> <a class="anno-person" data-ref="pe__hurzko_von_brodetz_QGW_II_I_1180" title="Hurzko von Brodetz [pe__hurzko_von_brodetz_QGW_II_I_1180]" href="../../../register/persons/pe__hurzko_von_brodetz_QGW_II_I_1180.html">Hürzko de Brodez <span class="anno-attr anno-attr-occ" data-corresp="org__prag"><span class="tei-add">consules</span></span></a> <a class="anno-person" data-ref="pe__konrad_von_markpurg_QGW_II_I_1180" title="Konrad von Markpurg [pe__konrad_von_markpurg_QGW_II_I_1180]" href="../../../register/persons/pe__konrad_von_markpurg_QGW_II_I_1180.html">Conradus de Markpurg <span class="anno-attr anno-attr-occ" data-corresp="org__prag"><span class="tei-add">iurati</span></span></a> <a class="anno-person" data-ref="pe__christian_leitner_QGW_II_I_1180" title="Christian Leitner [pe__christian_leitner_QGW_II_I_1180]" href="../../../register/persons/pe__christian_leitner_QGW_II_I_1180.html">Cristanus Leitner <span class="anno-attr anno-attr-occ" data-corresp="org__prag"><span class="tei-add">consules</span></span></a> <a class="anno-person" data-ref="pe__franz_hanwer_QGW_II_I_1180" title="Franz Hanwer [pe__franz_hanwer_QGW_II_I_1180]" href="../../../register/persons/pe__franz_hanwer_QGW_II_I_1180.html">Franciscus Hanwer <span class="anno-attr anno-attr-occ" data-corresp="org__prag"><span class="tei-add">consules</span></span></a> <a class="anno-person" data-ref="pe__konrad_dibissn_QGW_II_I_1180" title="Chunz Dibissn [pe__konrad_dibissn_QGW_II_I_1180]" href="../../../register/persons/pe__konrad_dibissn_QGW_II_I_1180.html">Cunzlinus Dibissn <span class="anno-attr anno-attr-occ" data-corresp="org__prag"><span class="tei-add">consules</span></span></a> et <a class="anno-person" data-ref="pe__franz_hopfner_QGW_II_I_1180" title="Franz Hopfner [pe__franz_hopfner_QGW_II_I_1180]" href="../../../register/persons/pe__franz_hopfner_QGW_II_I_1180.html">Franciscus Hopfner <span class="anno-attr anno-attr-occ" data-corresp="org__prag"><span class="tei-add">consules</span></span></a>,
-                     consules et iurati cives maioris civitatis Pragensis</span>, <span class="anno-trigger anno-trigger-disp">bestätigen</span>, dass ihr <a class="anno-person" data-ref="pe__emmerich_meller_QGW_II_I_1180" title="Emmerich Meller [pe__emmerich_meller_QGW_II_I_1180]" href="../../../register/persons/pe__emmerich_meller_QGW_II_I_1180.html"><span class="anno-attr anno-attr-occ" data-corresp="org__prag">Mitbürger</span>
+            <section class="tei-abstract"><h2 class="tei-section-head">Regest</h2><p><span class="anno-event" data-ref="ev__QGW_II_I_1180"><span class="anno-fn anno-fn-issuer" data-role="issuer"><span class="fn-label">Aussteller*in</span><a class="anno-person" data-ref="pe__martin_rotlew_QGW_II_I_1180" data-hint="Martin Rotlew [pe__martin_rotlew_QGW_II_I_1180]" data-hint-type="Person" href="../../../register/persons/pe__martin_rotlew_QGW_II_I_1180.html">Martinus Rotlew, <span class="anno-attr anno-attr-occ" data-corresp="org__prag">judex</span></a> <a class="anno-person" data-ref="pe__bernhard_von_pieska_QGW_II_I_1180" data-hint="Bernhard von Pieska [pe__bernhard_von_pieska_QGW_II_I_1180]" data-hint-type="Person" href="../../../register/persons/pe__bernhard_von_pieska_QGW_II_I_1180.html">Bernhardus de Pyeska <span class="anno-attr anno-attr-occ" data-corresp="org__prag"><span class="tei-add">consules</span></span></a> <a class="anno-person" data-ref="pe__johann_von_aachen_QGW_II_I_1180" data-hint="Johannes von Aachen [pe__johann_von_aachen_QGW_II_I_1180]" data-hint-type="Person" href="../../../register/persons/pe__johann_von_aachen_QGW_II_I_1180.html">Johannes de Ach <span class="anno-attr anno-attr-occ" data-corresp="org__prag"><span class="tei-add">iurati</span></span></a> <a class="anno-person" data-ref="pe__reinhard_von_muehlhausen_QGW_II_I_1180" data-hint="Reinhard von Mühlhausen [pe__reinhard_von_muehlhausen_QGW_II_I_1180]" data-hint-type="Person" href="../../../register/persons/pe__reinhard_von_muehlhausen_QGW_II_I_1180.html">Reinhardus de Mulhousen
+                           <span class="anno-attr anno-attr-occ" data-corresp="org__prag"><span class="tei-add">consules</span></span></a> <a class="anno-person" data-ref="pe__otto_gewandschneider" data-hint="Otto der Gewandschneider [pe__otto_gewandschneider]" data-hint-type="Person" href="../../../register/persons/pe__otto_gewandschneider.html">Otlinus, <span class="anno-attr anno-attr-prof">pannicida</span>
+                        <span class="anno-attr anno-attr-occ" data-corresp="org__prag"><span class="tei-add">consules</span></span></a> <a class="anno-person" data-ref="pe__konrad_glaser_QGW_II_I_1180" data-hint="Chunz der Glaser [pe__konrad_glaser_QGW_II_I_1180]" data-hint-type="Person" href="../../../register/persons/pe__konrad_glaser_QGW_II_I_1180.html">Cunzo, <span class="anno-attr anno-attr-prof">glaser</span>
+                        <span class="anno-attr anno-attr-occ" data-corresp="org__prag"><span class="tei-add">consules</span></span></a> <a class="anno-person" data-ref="pe__johann_pleyer_QGW_II_I_1180" data-hint="Johannes Pleyer [pe__johann_pleyer_QGW_II_I_1180]" data-hint-type="Person" href="../../../register/persons/pe__johann_pleyer_QGW_II_I_1180.html">Johannes Pleyer <span class="anno-attr anno-attr-occ" data-corresp="org__prag"><span class="tei-add">consules</span></span></a> <a class="anno-person" data-ref="pe__crux_krämer" data-hint="Crux der Krämer [pe__crux_krämer]" data-hint-type="Person" href="../../../register/persons/pe__crux_krämer.html">Crux, <span class="anno-attr anno-attr-prof">institor</span>
+                        <span class="anno-attr anno-attr-occ" data-corresp="org__prag"><span class="tei-add">consules</span></span></a> <a class="anno-person" data-ref="pe__franz_rokzaner_QGW_II_I_1180" data-hint="Franz Rokzaner [pe__franz_rokzaner_QGW_II_I_1180]" data-hint-type="Person" href="../../../register/persons/pe__franz_rokzaner_QGW_II_I_1180.html">Franciscus Rokzaner <span class="anno-attr anno-attr-occ" data-corresp="org__prag"><span class="tei-add">consules</span></span></a> <a class="anno-person" data-ref="pe__johann_rost_QGW_II_I_1180" data-hint="Johannes Rost [pe__johann_rost_QGW_II_I_1180]" data-hint-type="Person" href="../../../register/persons/pe__johann_rost_QGW_II_I_1180.html">Hansa Rost <span class="anno-attr anno-attr-occ" data-corresp="org__prag"><span class="tei-add">consules</span></span></a> <a class="anno-person" data-ref="pe__wenzel_ottonis_QGW_II_I_1180" data-hint="Wenzel Ottonis [pe__wenzel_ottonis_QGW_II_I_1180]" data-hint-type="Person" href="../../../register/persons/pe__wenzel_ottonis_QGW_II_I_1180.html">Wenzeslaus Ottonis <span class="anno-attr anno-attr-occ" data-corresp="org__prag"><span class="tei-add">consules</span></span></a> <a class="anno-person" data-ref="pe__franz_steubel_QGW_II_I_1180" data-hint="Franz Steubel [pe__franz_steubel_QGW_II_I_1180]" data-hint-type="Person" href="../../../register/persons/pe__franz_steubel_QGW_II_I_1180.html">Franciscus Steubel <span class="anno-attr anno-attr-occ" data-corresp="org__prag"><span class="tei-add">consules</span></span></a> <a class="anno-person" data-ref="pe__johann_gosler_QGW_II_I_1180" data-hint="Johannes Gosler [pe__johann_gosler_QGW_II_I_1180]" data-hint-type="Person" href="../../../register/persons/pe__johann_gosler_QGW_II_I_1180.html"> Johannes Gosler <span class="anno-attr anno-attr-occ" data-corresp="org__prag"><span class="tei-add">consules</span></span></a> <a class="anno-person" data-ref="pe__hurzko_von_brodetz_QGW_II_I_1180" data-hint="Hurzko von Brodetz [pe__hurzko_von_brodetz_QGW_II_I_1180]" data-hint-type="Person" href="../../../register/persons/pe__hurzko_von_brodetz_QGW_II_I_1180.html">Hürzko de Brodez <span class="anno-attr anno-attr-occ" data-corresp="org__prag"><span class="tei-add">consules</span></span></a> <a class="anno-person" data-ref="pe__konrad_von_markpurg_QGW_II_I_1180" data-hint="Konrad von Markpurg [pe__konrad_von_markpurg_QGW_II_I_1180]" data-hint-type="Person" href="../../../register/persons/pe__konrad_von_markpurg_QGW_II_I_1180.html">Conradus de Markpurg <span class="anno-attr anno-attr-occ" data-corresp="org__prag"><span class="tei-add">iurati</span></span></a> <a class="anno-person" data-ref="pe__christian_leitner_QGW_II_I_1180" data-hint="Christian Leitner [pe__christian_leitner_QGW_II_I_1180]" data-hint-type="Person" href="../../../register/persons/pe__christian_leitner_QGW_II_I_1180.html">Cristanus Leitner <span class="anno-attr anno-attr-occ" data-corresp="org__prag"><span class="tei-add">consules</span></span></a> <a class="anno-person" data-ref="pe__franz_hanwer_QGW_II_I_1180" data-hint="Franz Hanwer [pe__franz_hanwer_QGW_II_I_1180]" data-hint-type="Person" href="../../../register/persons/pe__franz_hanwer_QGW_II_I_1180.html">Franciscus Hanwer <span class="anno-attr anno-attr-occ" data-corresp="org__prag"><span class="tei-add">consules</span></span></a> <a class="anno-person" data-ref="pe__konrad_dibissn_QGW_II_I_1180" data-hint="Chunz Dibissn [pe__konrad_dibissn_QGW_II_I_1180]" data-hint-type="Person" href="../../../register/persons/pe__konrad_dibissn_QGW_II_I_1180.html">Cunzlinus Dibissn <span class="anno-attr anno-attr-occ" data-corresp="org__prag"><span class="tei-add">consules</span></span></a> et <a class="anno-person" data-ref="pe__franz_hopfner_QGW_II_I_1180" data-hint="Franz Hopfner [pe__franz_hopfner_QGW_II_I_1180]" data-hint-type="Person" href="../../../register/persons/pe__franz_hopfner_QGW_II_I_1180.html">Franciscus Hopfner <span class="anno-attr anno-attr-occ" data-corresp="org__prag"><span class="tei-add">consules</span></span></a>,
+                     consules et iurati cives maioris civitatis Pragensis</span>, <span class="anno-trigger anno-trigger-disp">bestätigen</span>, dass ihr <a class="anno-person" data-ref="pe__emmerich_meller_QGW_II_I_1180" data-hint="Emmerich Meller [pe__emmerich_meller_QGW_II_I_1180]" data-hint-type="Person" href="../../../register/persons/pe__emmerich_meller_QGW_II_I_1180.html"><span class="anno-attr anno-attr-occ" data-corresp="org__prag">Mitbürger</span>
                      Emmeramus Melier</a> decem sexagenas grossorum denariorum Pragensium census
                   annui et perpetui auf seinem Hause, gelegen gegenüber dem Hause des Franciscus
                   Rokzaner zwischen den Häusern Henslini, pinter, und Jasconis Dompze, für centum
-                  sexagensis grossorum ihrem <a class="anno-person" data-ref="pe__erhard_lobel_QGW_II_I_1180" title="Erhard Lobel [pe__erhard_lobel_QGW_II_I_1180]" href="../../../register/persons/pe__erhard_lobel_QGW_II_I_1180.html"><span class="anno-attr anno-attr-occ" data-corresp="org__prag">Mitbürger</span> Erhard Lobel</a>
+                  sexagensis grossorum ihrem <a class="anno-person" data-ref="pe__erhard_lobel_QGW_II_I_1180" data-hint="Erhard Lobel [pe__erhard_lobel_QGW_II_I_1180]" data-hint-type="Person" href="../../../register/persons/pe__erhard_lobel_QGW_II_I_1180.html"><span class="anno-attr anno-attr-occ" data-corresp="org__prag">Mitbürger</span> Erhard Lobel</a>
                   <span class="anno-trigger anno-trigger-disp">verkauft habe</span>.</span>
             </p></section>
 
@@ -287,7 +293,7 @@
          dem TEI in mehreren Untertabellen, Personen/Orgs/Orte,
          Ereignisse, Dispositivformeln, Editorische Ergaenzungen. Wird
          per JS aus den entsprechenden Spans im Body aufgebaut. -->
-    <section class="annotations-view" id="factoid-view" aria-label="Annotationen">
+    <section class="annotations-view" id="annotations-view" aria-label="Annotationen">
         <header class="annotations-header">
             <h2 class="annotations-title">Annotationen</h2>
             <span class="annotations-summary"></span>
@@ -333,13 +339,14 @@
         </div>
     </footer>
 
-    <script src="../../../static/js/core.js?v=20260511112948"></script>
-    <script src="../../../static/js/provenance.js?v=20260511112948"></script>
-    <script src="../../../static/js/basket.js?v=20260511112948"></script>
+    <script src="../../../static/js/core.js?v=20260511125458"></script>
+    <script src="../../../static/js/tip.js?v=20260511125458"></script>
+    <script src="../../../static/js/hint.js?v=20260511125458"></script>
+    <script src="../../../static/js/basket.js?v=20260511125458"></script>
     
-<script src="../../../static/js/tooltips.js?v=20260511112948"></script>
-<script src="../../../static/js/facsimile.js?v=20260511112948"></script>
-<script src="../../../static/js/document.js?v=20260511112948"></script>
+<script src="../../../static/js/facsimile.js?v=20260511125458"></script>
+<script src="../../../static/js/document.js?v=20260511125458"></script>
+<script src="../../../static/js/basket-mount.js?v=20260511125458"></script>
 
 </body>
 </html>

@@ -3,22 +3,22 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <meta http-equiv="Content-Security-Policy" content="default-src 'self'; script-src 'self'; style-src 'self'; font-src 'self'; img-src 'self' data: https://images.monasterium.net https://www.monasterium.net; connect-src 'self'; frame-ancestors 'none'; base-uri 'self'; form-action 'self'; upgrade-insecure-requests">
+    <meta http-equiv="Content-Security-Policy" content="default-src 'self'; script-src 'self'; style-src 'self'; font-src 'self'; img-src 'self' data: https://images.monasterium.net https://www.monasterium.net; connect-src 'self'; base-uri 'self'; form-action 'self'; upgrade-insecure-requests">
     <meta name="referrer" content="strict-origin-when-cross-origin">
     <meta http-equiv="Permissions-Policy" content="camera=(), microphone=(), geolocation=(), interest-cohort=()">
     <title>Rudolf Angerfelder, Datenbank</title>
     <link rel="preload" as="font" type="font/woff2" crossorigin
           href="../../static/fonts/inter-400-latin.woff2">
-    <link rel="stylesheet" href="../../static/css/fonts.css?v=20260511112948">
-    <link rel="stylesheet" href="../../static/css/tokens.css?v=20260511112948">
-    <link rel="stylesheet" href="../../static/css/base.css?v=20260511112948">
-    <link rel="stylesheet" href="../../static/css/components.css?v=20260511112948">
-    <link rel="stylesheet" href="../../static/css/responsive.css?v=20260511112948">
-    <link rel="stylesheet" href="../../static/css/print.css?v=20260511112948">
-    <link rel="stylesheet" href="../../static/css/provenance.css?v=20260511112948">
+    <link rel="stylesheet" href="../../static/css/fonts.css?v=20260511125458">
+    <link rel="stylesheet" href="../../static/css/tokens.css?v=20260511125458">
+    <link rel="stylesheet" href="../../static/css/base.css?v=20260511125458">
+    <link rel="stylesheet" href="../../static/css/components.css?v=20260511125458">
+    <link rel="stylesheet" href="../../static/css/responsive.css?v=20260511125458">
+    <link rel="stylesheet" href="../../static/css/print.css?v=20260511125458">
+    <link rel="stylesheet" href="../../static/css/tip.css?v=20260511125458">
     
-<link rel="stylesheet" href="../../static/css/document.css?v=20260511112948">
-<link rel="stylesheet" href="../../static/css/person.css?v=20260511112948">
+<link rel="stylesheet" href="../../static/css/document.css?v=20260511125458">
+<link rel="stylesheet" href="../../static/css/person.css?v=20260511125458">
 
 </head>
 <body data-root-path="../.."
@@ -48,8 +48,6 @@
         <a href="../../register/persons.html">Personen</a>
         
         <a href="../../register/orgs.html">Organisationen</a>
-        
-        <a href="../../register/places.html">Orte</a>
         
     </div>
 </div>
@@ -91,7 +89,7 @@
     </div>
 </div>
 
-                <a href="../../korb.html" class="nav-basket" aria-label="Wissenskorb">
+                <a href="../../korb.html" class="nav-basket" aria-label="Datenkorb">
                     <svg width="18" height="18" viewBox="0 0 18 18" fill="none" aria-hidden="true">
                         <path d="M3 5h12l-1.2 8.5a1 1 0 0 1-1 .85H5.2a1 1 0 0 1-1-.85L3 5z"
                               stroke="currentColor" stroke-width="1.4" fill="none"
@@ -112,11 +110,23 @@
 
     <div class="person-toolbar">
         <div class="person-toolbar-inner">
-            <nav class="person-breadcrumb" aria-label="Position">
-                <a href="../../register/persons.html">Personenregister</a>
-                <span class="bc-sep">&rsaquo;</span>
-                <span class="bc-doc"><strong>Rudolf Angerfelder</strong></span>
-            </nav>
+            <div class="person-toolbar-row">
+                <nav class="person-breadcrumb" aria-label="Position">
+                    <a href="../../register/persons.html">Personenregister</a>
+                    <span class="bc-sep">&rsaquo;</span>
+                    <span class="bc-doc"><strong>Rudolf Angerfelder</strong></span>
+                </nav>
+                <div class="person-toolbar-actions">
+                    <span class="toolbar-basket-mount"
+                          data-basket-type="person"
+                          data-basket-id="pe__rudolf_angerfelder_QGW_II_I_1335"
+                          data-basket-label="Rudolf Angerfelder"
+                          data-basket-url="register/persons/pe__rudolf_angerfelder_QGW_II_I_1335.html"
+                          data-basket-sex="m"
+                          data-basket-active-min="1392"
+                          data-basket-active-max="1414"></span>
+                </div>
+            </div>
             <div class="person-toolbar-meta">
                 <span class="meta-pair">
                     <span class="meta-label">Geschlecht</span>
@@ -124,11 +134,41 @@
                 </span>
                 
                 <span class="meta-pair">
-                    <span class="meta-label">Belegt</span>
+                    <span class="meta-label">Belegt
+<span class="tip-wrap">
+    <button type="button" class="tip-trigger tip-trigger--icon"
+            aria-expanded="false" aria-haspopup="dialog"
+            aria-controls="person-belegt"
+            data-tip="person-belegt"
+            aria-label="Definition: Beleg-Zeitraum">
+        <svg width="13" height="13" viewBox="0 0 16 16" aria-hidden="true">
+            <circle cx="8" cy="8" r="7" stroke="currentColor" stroke-width="1.4" fill="none"/>
+            <text x="8" y="11.6" text-anchor="middle" font-size="9.5" font-weight="700"
+                  fill="currentColor" font-family="Georgia, serif">i</text>
+        </svg>
+    </button>
+    <aside class="tip-popover tip-popover--glossary"
+           id="person-belegt" role="dialog" aria-hidden="true"
+           aria-label="Definition: Beleg-Zeitraum">
+        <header class="tip-head">
+            <h3 class="tip-title">Beleg-Zeitraum</h3>
+            <button type="button" class="tip-close" aria-label="Schlie&szlig;en">&times;</button>
+        </header>
+        <div class="tip-body">
+            <p>Erste und letzte Datierung einer Quelle, in der die Person erscheint. Bei einzelnem Beleg wird nur ein Jahr angegeben.</p>
+            
+        </div>
+    </aside>
+</span>
+</span>
                     <span class="meta-value">1392 bis 1414</span>
                 </span>
                 
                 
+                <span class="meta-pair">
+                    <span class="meta-label">Quellen</span>
+                    <span class="meta-value">46</span>
+                </span>
                 <span class="meta-pair person-id-pair">
                     <span class="meta-label">ID</span>
                     <code class="meta-value person-id">pe__rudolf_angerfelder_QGW_II_I_1335</code>
@@ -145,10 +185,11 @@
             
         </h1>
         
+        
         <p class="person-note">Wiener Ratsherr, Diener des Michael Vinkch</p>
         
         
-        <p class="person-titles">
+        <p class="person-titles" data-collapsible="22">
             <span class="pt-label">In den Quellen genannt als</span>
             <span class="pt-chip">hern</span><span class="pt-chip">her</span><span class="pt-chip">erbern</span>
         </p>
@@ -158,7 +199,44 @@
             <a class="ext-link" href="https://www.wienwiki.at/?curid=23507" target="_blank" rel="noopener noreferrer">Wien-Wiki: Rudolf Angerfelder</a>
         </p>
         
+        
+        <p class="person-extlinks">
+            
+            <a class="ext-link" href="https://www.geschichtewiki.wien.gv.at/Special:URIResolver/?curid=23507" target="_blank" rel="noopener noreferrer">Authority-Eintrag</a>
+            
+        </p>
+        
     </header>
+
+    
+    <section class="role-strip" aria-label="Rollen in Rechtsgeschäften">
+        <h2 class="role-strip-title">Rollen in Rechtsgeschäften</h2>
+        <div class="role-strip-cells">
+            
+            <div class="role-cell role-cell-issuer">
+                <span class="role-cell-count">13</span>
+                <span class="role-cell-label">Aussteller*in</span>
+            </div>
+            
+            <div class="role-cell role-cell-recipient">
+                <span class="role-cell-count">9</span>
+                <span class="role-cell-label">Empfänger*in</span>
+            </div>
+            
+            <div class="role-cell role-cell-witness">
+                <span class="role-cell-count">11</span>
+                <span class="role-cell-label">Zeuge / Siegler*in</span>
+            </div>
+            
+            <div class="role-cell role-cell-other">
+                <span class="role-cell-count">12</span>
+                <span class="role-cell-label">Sonstige</span>
+            </div>
+            
+        </div>
+        <p class="role-strip-hint">Summe Rollen-Belegungen: 45. Mehrfach-Rollen pro Quelle sind möglich.</p>
+    </section>
+    
 
     
 
@@ -175,6 +253,7 @@
                 <span class="rel-block-count">1</span>
                 <span class="rel-block-hint">Verwandtschaftsverhältnisse, wie sie in den Quellen explizit benannt werden.</span>
             </header>
+            
             <table class="rel-table">
                 <thead>
                     <tr>
@@ -195,7 +274,7 @@
                         <td class="rel-col-label"><em>Schwager</em></td>
                         <td class="rel-col-perspective">
                             
-                                Rudolf Angerfelder → Georg Eninkchl
+                                Rudolf Angerfelder &rsaquo; Georg Eninkchl
                             
                         </td>
                         <td class="rel-col-source">
@@ -221,6 +300,7 @@
                 <span class="rel-block-count">2</span>
                 <span class="rel-block-hint">Stellvertretungs-Beziehungen, z. B. handelt eine Person an Stelle einer anderen.</span>
             </header>
+            
             <table class="rel-table">
                 <thead>
                     <tr>
@@ -241,7 +321,7 @@
                         <td class="rel-col-label"><em>ausrichter der stat grundpuch</em></td>
                         <td class="rel-col-perspective">
                             
-                                Rudolf Angerfelder → org__wien
+                                Rudolf Angerfelder &rsaquo; org__wien
                             
                         </td>
                         <td class="rel-col-source">
@@ -260,7 +340,7 @@
                         <td class="rel-col-label"><em>Geschäftsvollstrecker</em></td>
                         <td class="rel-col-perspective">
                             
-                                Rudolf Angerfelder → Michael Vinkch von Nikolsburg
+                                Rudolf Angerfelder &rsaquo; Michael Vinkch von Nikolsburg
                             
                         </td>
                         <td class="rel-col-source">
@@ -283,6 +363,12 @@
                 <span class="rel-block-count">47</span>
                 <span class="rel-block-hint">Berufs- oder Amtsbezeichnung in Bezug auf eine Institution.</span>
             </header>
+            
+            <div class="table-filter">
+                <input type="search" class="table-filter-input" data-target="rel" placeholder="In der Tabelle filtern&hellip;" aria-label="In der Tabelle filtern">
+                <span class="table-filter-status"></span>
+            </div>
+            
             <table class="rel-table">
                 <thead>
                     <tr>
@@ -303,7 +389,7 @@
                         <td class="rel-col-label"><em>rat</em></td>
                         <td class="rel-col-perspective">
                             
-                                Rudolf Angerfelder → Wien
+                                Rudolf Angerfelder &rsaquo; Wien
                             
                         </td>
                         <td class="rel-col-source">
@@ -322,7 +408,7 @@
                         <td class="rel-col-label"><em>rates</em></td>
                         <td class="rel-col-perspective">
                             
-                                Rudolf Angerfelder → Wien
+                                Rudolf Angerfelder &rsaquo; Wien
                             
                         </td>
                         <td class="rel-col-source">
@@ -341,7 +427,7 @@
                         <td class="rel-col-label"><em>purger</em></td>
                         <td class="rel-col-perspective">
                             
-                                Rudolf Angerfelder → Wien
+                                Rudolf Angerfelder &rsaquo; Wien
                             
                         </td>
                         <td class="rel-col-source">
@@ -360,7 +446,7 @@
                         <td class="rel-col-label"><em>purger</em></td>
                         <td class="rel-col-perspective">
                             
-                                Rudolf Angerfelder → Wien
+                                Rudolf Angerfelder &rsaquo; Wien
                             
                         </td>
                         <td class="rel-col-source">
@@ -379,7 +465,7 @@
                         <td class="rel-col-label"><em>rats der stat</em></td>
                         <td class="rel-col-perspective">
                             
-                                Rudolf Angerfelder → Wien
+                                Rudolf Angerfelder &rsaquo; Wien
                             
                         </td>
                         <td class="rel-col-source">
@@ -398,7 +484,7 @@
                         <td class="rel-col-label"><em>rats der stat</em></td>
                         <td class="rel-col-perspective">
                             
-                                Rudolf Angerfelder → Wien
+                                Rudolf Angerfelder &rsaquo; Wien
                             
                         </td>
                         <td class="rel-col-source">
@@ -417,7 +503,7 @@
                         <td class="rel-col-label"><em>rats der stat</em></td>
                         <td class="rel-col-perspective">
                             
-                                Rudolf Angerfelder → Wien
+                                Rudolf Angerfelder &rsaquo; Wien
                             
                         </td>
                         <td class="rel-col-source">
@@ -436,7 +522,7 @@
                         <td class="rel-col-label"><em>burgermaister</em></td>
                         <td class="rel-col-perspective">
                             
-                                Rudolf Angerfelder → Wien
+                                Rudolf Angerfelder &rsaquo; Wien
                             
                         </td>
                         <td class="rel-col-source">
@@ -455,7 +541,7 @@
                         <td class="rel-col-label"><em>Bürgermeisters</em></td>
                         <td class="rel-col-perspective">
                             
-                                Rudolf Angerfelder → Wien
+                                Rudolf Angerfelder &rsaquo; Wien
                             
                         </td>
                         <td class="rel-col-source">
@@ -474,7 +560,7 @@
                         <td class="rel-col-label"><em>Bürgermeisters</em></td>
                         <td class="rel-col-perspective">
                             
-                                Rudolf Angerfelder → Wien
+                                Rudolf Angerfelder &rsaquo; Wien
                             
                         </td>
                         <td class="rel-col-source">
@@ -493,7 +579,7 @@
                         <td class="rel-col-label"><em>Bürgermeisters</em></td>
                         <td class="rel-col-perspective">
                             
-                                Rudolf Angerfelder → Wien
+                                Rudolf Angerfelder &rsaquo; Wien
                             
                         </td>
                         <td class="rel-col-source">
@@ -512,7 +598,7 @@
                         <td class="rel-col-label"><em>Bürgermeisters</em></td>
                         <td class="rel-col-perspective">
                             
-                                Rudolf Angerfelder → Wien
+                                Rudolf Angerfelder &rsaquo; Wien
                             
                         </td>
                         <td class="rel-col-source">
@@ -531,7 +617,7 @@
                         <td class="rel-col-label"><em>Bürgermeisters</em></td>
                         <td class="rel-col-perspective">
                             
-                                Rudolf Angerfelder → Wien
+                                Rudolf Angerfelder &rsaquo; Wien
                             
                         </td>
                         <td class="rel-col-source">
@@ -550,7 +636,7 @@
                         <td class="rel-col-label"><em>innern rates</em></td>
                         <td class="rel-col-perspective">
                             
-                                Rudolf Angerfelder → Wien
+                                Rudolf Angerfelder &rsaquo; Wien
                             
                         </td>
                         <td class="rel-col-source">
@@ -569,7 +655,7 @@
                         <td class="rel-col-label"><em>Bürger</em></td>
                         <td class="rel-col-perspective">
                             
-                                Rudolf Angerfelder → Wien
+                                Rudolf Angerfelder &rsaquo; Wien
                             
                         </td>
                         <td class="rel-col-source">
@@ -588,7 +674,7 @@
                         <td class="rel-col-label"><em>Mitbürgern</em></td>
                         <td class="rel-col-perspective">
                             
-                                Rudolf Angerfelder → Wien
+                                Rudolf Angerfelder &rsaquo; Wien
                             
                         </td>
                         <td class="rel-col-source">
@@ -607,7 +693,7 @@
                         <td class="rel-col-label"><em>Bürgermeisters</em></td>
                         <td class="rel-col-perspective">
                             
-                                Rudolf Angerfelder → Wien
+                                Rudolf Angerfelder &rsaquo; Wien
                             
                         </td>
                         <td class="rel-col-source">
@@ -626,7 +712,7 @@
                         <td class="rel-col-label"><em>burgermaister</em></td>
                         <td class="rel-col-perspective">
                             
-                                Rudolf Angerfelder → Wien
+                                Rudolf Angerfelder &rsaquo; Wien
                             
                         </td>
                         <td class="rel-col-source">
@@ -645,7 +731,7 @@
                         <td class="rel-col-label"><em>Bürgermeisters</em></td>
                         <td class="rel-col-perspective">
                             
-                                Rudolf Angerfelder → Wien
+                                Rudolf Angerfelder &rsaquo; Wien
                             
                         </td>
                         <td class="rel-col-source">
@@ -664,7 +750,7 @@
                         <td class="rel-col-label"><em>burgermaister</em></td>
                         <td class="rel-col-perspective">
                             
-                                Rudolf Angerfelder → Wien
+                                Rudolf Angerfelder &rsaquo; Wien
                             
                         </td>
                         <td class="rel-col-source">
@@ -683,7 +769,7 @@
                         <td class="rel-col-label"><em>burgermaister</em></td>
                         <td class="rel-col-perspective">
                             
-                                Rudolf Angerfelder → Wien
+                                Rudolf Angerfelder &rsaquo; Wien
                             
                         </td>
                         <td class="rel-col-source">
@@ -702,7 +788,7 @@
                         <td class="rel-col-label"><em>burgermaister</em></td>
                         <td class="rel-col-perspective">
                             
-                                Rudolf Angerfelder → Wien
+                                Rudolf Angerfelder &rsaquo; Wien
                             
                         </td>
                         <td class="rel-col-source">
@@ -721,7 +807,7 @@
                         <td class="rel-col-label"><em>munssmaister</em></td>
                         <td class="rel-col-perspective">
                             
-                                Rudolf Angerfelder → Herzogtum Österreich
+                                Rudolf Angerfelder &rsaquo; Herzogtum Österreich
                             
                         </td>
                         <td class="rel-col-source">
@@ -740,7 +826,7 @@
                         <td class="rel-col-label"><em>Bürgermeisters</em></td>
                         <td class="rel-col-perspective">
                             
-                                Rudolf Angerfelder → Wien
+                                Rudolf Angerfelder &rsaquo; Wien
                             
                         </td>
                         <td class="rel-col-source">
@@ -759,7 +845,7 @@
                         <td class="rel-col-label"><em>Bürgermeisters</em></td>
                         <td class="rel-col-perspective">
                             
-                                Rudolf Angerfelder → Wien
+                                Rudolf Angerfelder &rsaquo; Wien
                             
                         </td>
                         <td class="rel-col-source">
@@ -778,7 +864,7 @@
                         <td class="rel-col-label"><em>Bürgermeisters</em></td>
                         <td class="rel-col-perspective">
                             
-                                Rudolf Angerfelder → Wien
+                                Rudolf Angerfelder &rsaquo; Wien
                             
                         </td>
                         <td class="rel-col-source">
@@ -797,7 +883,7 @@
                         <td class="rel-col-label"><em>burgermaister</em></td>
                         <td class="rel-col-perspective">
                             
-                                Rudolf Angerfelder → Wien
+                                Rudolf Angerfelder &rsaquo; Wien
                             
                         </td>
                         <td class="rel-col-source">
@@ -816,7 +902,7 @@
                         <td class="rel-col-label"><em>burgermaister</em></td>
                         <td class="rel-col-perspective">
                             
-                                Rudolf Angerfelder → Wien
+                                Rudolf Angerfelder &rsaquo; Wien
                             
                         </td>
                         <td class="rel-col-source">
@@ -835,7 +921,7 @@
                         <td class="rel-col-label"><em>munssmaister</em></td>
                         <td class="rel-col-perspective">
                             
-                                Rudolf Angerfelder → Herzogtum Österreich
+                                Rudolf Angerfelder &rsaquo; Herzogtum Österreich
                             
                         </td>
                         <td class="rel-col-source">
@@ -854,7 +940,7 @@
                         <td class="rel-col-label"><em>burgermaister</em></td>
                         <td class="rel-col-perspective">
                             
-                                Rudolf Angerfelder → Wien
+                                Rudolf Angerfelder &rsaquo; Wien
                             
                         </td>
                         <td class="rel-col-source">
@@ -873,7 +959,7 @@
                         <td class="rel-col-label"><em>münssmaister</em></td>
                         <td class="rel-col-perspective">
                             
-                                Rudolf Angerfelder → Herzogtum Österreich
+                                Rudolf Angerfelder &rsaquo; Herzogtum Österreich
                             
                         </td>
                         <td class="rel-col-source">
@@ -892,7 +978,7 @@
                         <td class="rel-col-label"><em>Bürgermeisters</em></td>
                         <td class="rel-col-perspective">
                             
-                                Rudolf Angerfelder → Wien
+                                Rudolf Angerfelder &rsaquo; Wien
                             
                         </td>
                         <td class="rel-col-source">
@@ -911,7 +997,7 @@
                         <td class="rel-col-label"><em>Münzmeisters</em></td>
                         <td class="rel-col-perspective">
                             
-                                Rudolf Angerfelder → Wien
+                                Rudolf Angerfelder &rsaquo; Wien
                             
                         </td>
                         <td class="rel-col-source">
@@ -930,7 +1016,7 @@
                         <td class="rel-col-label"><em>burgermaister</em></td>
                         <td class="rel-col-perspective">
                             
-                                Rudolf Angerfelder → Wien
+                                Rudolf Angerfelder &rsaquo; Wien
                             
                         </td>
                         <td class="rel-col-source">
@@ -949,7 +1035,7 @@
                         <td class="rel-col-label"><em>münssmaister</em></td>
                         <td class="rel-col-perspective">
                             
-                                Rudolf Angerfelder → Wien
+                                Rudolf Angerfelder &rsaquo; Wien
                             
                         </td>
                         <td class="rel-col-source">
@@ -968,7 +1054,7 @@
                         <td class="rel-col-label"><em>rat</em></td>
                         <td class="rel-col-perspective">
                             
-                                Rudolf Angerfelder → Wien
+                                Rudolf Angerfelder &rsaquo; Wien
                             
                         </td>
                         <td class="rel-col-source">
@@ -987,7 +1073,7 @@
                         <td class="rel-col-label"><em>Bürgermeister</em></td>
                         <td class="rel-col-perspective">
                             
-                                Rudolf Angerfelder → Wien
+                                Rudolf Angerfelder &rsaquo; Wien
                             
                         </td>
                         <td class="rel-col-source">
@@ -1006,7 +1092,7 @@
                         <td class="rel-col-label"><em>burgermaister</em></td>
                         <td class="rel-col-perspective">
                             
-                                Rudolf Angerfelder → Wien
+                                Rudolf Angerfelder &rsaquo; Wien
                             
                         </td>
                         <td class="rel-col-source">
@@ -1025,7 +1111,7 @@
                         <td class="rel-col-label"><em>münssmaister</em></td>
                         <td class="rel-col-perspective">
                             
-                                Rudolf Angerfelder → Wien
+                                Rudolf Angerfelder &rsaquo; Wien
                             
                         </td>
                         <td class="rel-col-source">
@@ -1044,7 +1130,7 @@
                         <td class="rel-col-label"><em>Bürgermeister</em></td>
                         <td class="rel-col-perspective">
                             
-                                Rudolf Angerfelder → Wien
+                                Rudolf Angerfelder &rsaquo; Wien
                             
                         </td>
                         <td class="rel-col-source">
@@ -1063,7 +1149,7 @@
                         <td class="rel-col-label"><em>burgermaister</em></td>
                         <td class="rel-col-perspective">
                             
-                                Rudolf Angerfelder → Wien
+                                Rudolf Angerfelder &rsaquo; Wien
                             
                         </td>
                         <td class="rel-col-source">
@@ -1082,7 +1168,7 @@
                         <td class="rel-col-label"><em>münssmaister</em></td>
                         <td class="rel-col-perspective">
                             
-                                Rudolf Angerfelder → Wien
+                                Rudolf Angerfelder &rsaquo; Wien
                             
                         </td>
                         <td class="rel-col-source">
@@ -1101,7 +1187,7 @@
                         <td class="rel-col-label"><em>Bürgermeister</em></td>
                         <td class="rel-col-perspective">
                             
-                                Rudolf Angerfelder → Wien
+                                Rudolf Angerfelder &rsaquo; Wien
                             
                         </td>
                         <td class="rel-col-source">
@@ -1120,7 +1206,7 @@
                         <td class="rel-col-label"><em>burgermaister</em></td>
                         <td class="rel-col-perspective">
                             
-                                Rudolf Angerfelder → Wien
+                                Rudolf Angerfelder &rsaquo; Wien
                             
                         </td>
                         <td class="rel-col-source">
@@ -1139,7 +1225,7 @@
                         <td class="rel-col-label"><em>münssmaister</em></td>
                         <td class="rel-col-perspective">
                             
-                                Rudolf Angerfelder → Wien
+                                Rudolf Angerfelder &rsaquo; Wien
                             
                         </td>
                         <td class="rel-col-source">
@@ -1158,7 +1244,7 @@
                         <td class="rel-col-label"><em>meinem dyener</em></td>
                         <td class="rel-col-perspective">
                             
-                                Rudolf Angerfelder → pe__michael_vinkch_QGW_II_I_1082
+                                Rudolf Angerfelder &rsaquo; pe__michael_vinkch_QGW_II_I_1082
                             
                         </td>
                         <td class="rel-col-source">
@@ -1177,7 +1263,7 @@
                         <td class="rel-col-label"><em>rats</em></td>
                         <td class="rel-col-perspective">
                             
-                                Rudolf Angerfelder → Wien
+                                Rudolf Angerfelder &rsaquo; Wien
                             
                         </td>
                         <td class="rel-col-source">
@@ -1195,18 +1281,32 @@
         
         
         
+        
+        
+        
+        
+        
+        
     </section>
     
 
     
     <section class="person-sources" aria-label="Quellen mit Nennung">
         <h2 class="section-head">Quellen mit Nennung</h2>
+        
+        <div class="table-filter">
+            <input type="search" class="table-filter-input" data-target="src" placeholder="In den Quellen filtern&hellip;" aria-label="In den Quellen filtern">
+            <span class="table-filter-status"></span>
+        </div>
+        
         <table class="person-source-table">
             <thead>
                 <tr>
                     <th scope="col" class="src-col-idno">Nr.</th>
                     <th scope="col" class="src-col-date">Datum</th>
                     <th scope="col" class="src-col-corpus">Quellenkorpus</th>
+                    <th scope="col" class="src-col-label">Bezeichnung</th>
+                    <th scope="col" class="src-col-role">Rolle</th>
                     <th scope="col" class="src-col-regest">Regest</th>
                 </tr>
             </thead>
@@ -1216,6 +1316,11 @@
                     <td class="src-col-idno"><a href="../../documents/Stadtbuecher/Band_1_1395-1400_ready/70.html">70</a></td>
                     <td class="src-col-date">(1392 August 31, Wien)</td>
                     <td class="src-col-corpus">Stadtbücher Bd. 1 (1395–1400)</td>
+                    <td class="src-col-label"><em>-</em></td>
+                    <td class="src-col-role">
+                        <span class="role-chip role-chip-other">Sonstige</span>
+                        
+                    </td>
                     <td class="src-col-regest">-</td>
                 </tr>
             
@@ -1223,6 +1328,11 @@
                     <td class="src-col-idno"><a href="../../documents/QGW/Vienna_1177-1414_ready/1335.html">1335</a></td>
                     <td class="src-col-date">1396 V 03</td>
                     <td class="src-col-corpus">QGW II/1 (1177–1414)</td>
+                    <td class="src-col-label"><em>-</em></td>
+                    <td class="src-col-role">
+                        <span class="role-chip role-chip-issuer">Aussteller*in</span><span class="role-chip role-chip-witness">Zeuge / Siegler*in</span>
+                        
+                    </td>
                     <td class="src-col-regest">Ruodolf der Angerfelder rat und Paul der Wagendrüssel, baid des rats der stat ze Wienn, beurkunden die von ihnen über Ansuchen hern Hannsen des Wekkinger, pharrer ze Reinpach und hern Merten des…</td>
                 </tr>
             
@@ -1230,6 +1340,11 @@
                     <td class="src-col-idno"><a href="../../documents/QGW/Vienna_1177-1414_ready/1346.html">1346</a></td>
                     <td class="src-col-date">1396 VIII 30</td>
                     <td class="src-col-corpus">QGW II/1 (1177–1414)</td>
+                    <td class="src-col-label"><em>her</em></td>
+                    <td class="src-col-role">
+                        <span class="role-chip role-chip-recipient">Empfänger*in</span>
+                        
+                    </td>
                     <td class="src-col-regest">Hanns, Ulreichs sun Ulreich von Tulln, dem got gnad, bestätigt, dass her Rudolf der Angervelder, des rates der stat ze Wienn ausrichter der stat grundpuch, und Pilgreim der Sna/eczel, purger…</td>
                 </tr>
             
@@ -1237,6 +1352,11 @@
                     <td class="src-col-idno"><a href="../../documents/Stadtbuecher/Band_1_1395-1400_ready/84.html">84</a></td>
                     <td class="src-col-date">1396 September 9</td>
                     <td class="src-col-corpus">Stadtbücher Bd. 1 (1395–1400)</td>
+                    <td class="src-col-label"><em>-</em></td>
+                    <td class="src-col-role">
+                        <span class="role-chip role-chip-witness">Zeuge / Siegler*in</span>
+                        
+                    </td>
                     <td class="src-col-regest">-</td>
                 </tr>
             
@@ -1244,6 +1364,11 @@
                     <td class="src-col-idno"><a href="../../documents/QGW/Vienna_1177-1414_ready/1350.html">1350</a></td>
                     <td class="src-col-date">1396 XI 25</td>
                     <td class="src-col-corpus">QGW II/1 (1177–1414)</td>
+                    <td class="src-col-label"><em>-</em></td>
+                    <td class="src-col-role">
+                        <span class="role-chip role-chip-witness">Zeuge / Siegler*in</span>
+                        
+                    </td>
                     <td class="src-col-regest">Hanns, Kaplan der Kapelle sand Kathrein, gelegen in Allerheiligen tu/omkirchen dacz sand Steffan ze Wienn, und Kaplan der von hern Perichtold dem Geuchramer, guter gedechtnusse, gestifteten…</td>
                 </tr>
             
@@ -1251,6 +1376,11 @@
                     <td class="src-col-idno"><a href="../../documents/QGW/Vienna_1177-1414_ready/1404.html">1404</a></td>
                     <td class="src-col-date">1398 VII 29</td>
                     <td class="src-col-corpus">QGW II/1 (1177–1414)</td>
+                    <td class="src-col-label"><em>-</em></td>
+                    <td class="src-col-role">
+                        <span class="role-chip role-chip-witness">Zeuge / Siegler*in</span>
+                        
+                    </td>
                     <td class="src-col-regest">Niclas der Würffel, der elter, beurkundet seinen letzten Willen. Er schafft: 1. Bezahlung seiner Geldschulden von seiner fahrenden Habe 2. 14 lb dn. geltes, die er auf Michels haus des Furter,…</td>
                 </tr>
             
@@ -1258,6 +1388,11 @@
                     <td class="src-col-idno"><a href="../../documents/Stadtbuecher/Band_1_1395-1400_ready/361.html">361</a></td>
                     <td class="src-col-date">1399 April 10</td>
                     <td class="src-col-corpus">Stadtbücher Bd. 1 (1395–1400)</td>
+                    <td class="src-col-label"><em>-</em></td>
+                    <td class="src-col-role">
+                        <span class="role-chip role-chip-recipient">Empfänger*in</span>
+                        
+                    </td>
                     <td class="src-col-regest">pr. mü., 2 Einbr. 2 Zg., Ma (Inde(1!: Item gescheft Bertholds des Apoteker) Des nachsten phincztags nach Quasimodogeniti komen fur den rat der stat ze Wienn die erbern lewte Paul der Geyr rats und…</td>
                 </tr>
             
@@ -1265,6 +1400,11 @@
                     <td class="src-col-idno"><a href="../../documents/QGW/Vienna_1177-1414_ready/1422.html">1422</a></td>
                     <td class="src-col-date">1399 V 06</td>
                     <td class="src-col-corpus">QGW II/1 (1177–1414)</td>
+                    <td class="src-col-label"><em>-</em></td>
+                    <td class="src-col-role">
+                        
+                        -
+                    </td>
                     <td class="src-col-regest">Puotha iunior de Skalla, residens in Rabij ( Pott der junger von Skall, gesessen zu dem Raben, B) gibt zu wissen, dass der Truksacz von Kruob ( Grueb, B) Güter mit gewaltsamer Hand genommen seine…</td>
                 </tr>
             
@@ -1272,6 +1412,11 @@
                     <td class="src-col-idno"><a href="../../documents/Stadtbuecher/Band_1_1395-1400_ready/392.html">392</a></td>
                     <td class="src-col-date">1399 Juni 14</td>
                     <td class="src-col-corpus">Stadtbücher Bd. 1 (1395–1400)</td>
+                    <td class="src-col-label"><em>erbern</em></td>
+                    <td class="src-col-role">
+                        <span class="role-chip role-chip-witness">Zeuge / Siegler*in</span>
+                        
+                    </td>
                     <td class="src-col-regest">pr.mü., Einbr. 2 Zg., Ma (In dez: Item gescheft Annen der Kramerin) (fol. 66r) Desselben tags kom fur den rat Albrecht der Zetter und hat da beweist mit den erbern mannen zu rechter zeit, als er ze…</td>
                 </tr>
             
@@ -1279,6 +1424,11 @@
                     <td class="src-col-idno"><a href="../../documents/QGW/Vienna_1177-1414_ready/1589.html">1589</a></td>
                     <td class="src-col-date">1404 VII 02</td>
                     <td class="src-col-corpus">QGW II/1 (1177–1414)</td>
+                    <td class="src-col-label"><em>-</em></td>
+                    <td class="src-col-role">
+                        <span class="role-chip role-chip-recipient">Empfänger*in</span><span class="role-chip role-chip-witness">Zeuge / Siegler*in</span>
+                        
+                    </td>
                     <td class="src-col-regest">Haunold der Schu/echler rats der stat und Rudolf der Angerfelder, baid des rats der stat ze Wienn, beurkunden, dass her Hanns, her Niclas, her Ulman und her Sigmund, gebru/eder die Würffel, den Rath…</td>
                 </tr>
             
@@ -1286,6 +1436,11 @@
                     <td class="src-col-idno"><a href="../../documents/QGW/Vienna_1177-1414_ready/1595.html">1595</a></td>
                     <td class="src-col-date">1404 X 13</td>
                     <td class="src-col-corpus">QGW II/1 (1177–1414)</td>
+                    <td class="src-col-label"><em>-</em></td>
+                    <td class="src-col-role">
+                        <span class="role-chip role-chip-issuer">Aussteller*in</span><span class="role-chip role-chip-witness">Zeuge / Siegler*in</span>
+                        
+                    </td>
                     <td class="src-col-regest">Hanns von Velben, herzog Wilhalms anwalt in dem rat ze Wienn, Chunrat Vorlauf, purgermaister daselbs, Haunolt Schu/echler, des rats der stat daselbs, Andre an sand Peters freithof, chelermaister in…</td>
                 </tr>
             
@@ -1293,6 +1448,11 @@
                     <td class="src-col-idno"><a href="../../documents/QGW/Vienna_1177-1414_ready/1596.html">1596</a></td>
                     <td class="src-col-date">1404 X 14</td>
                     <td class="src-col-corpus">QGW II/1 (1177–1414)</td>
+                    <td class="src-col-label"><em>-</em></td>
+                    <td class="src-col-role">
+                        <span class="role-chip role-chip-recipient">Empfänger*in</span>
+                        
+                    </td>
                     <td class="src-col-regest">Peter der Angerfelder, statrichter, und baid rêt, der inner und der ausser, und die ganz gemain der stat zu Wienn verpflichten sich, die in Urk. no 1595 Genannten Hanns von Velben, herzog Wilhalms…</td>
                 </tr>
             
@@ -1300,6 +1460,11 @@
                     <td class="src-col-idno"><a href="../../documents/QGW/Vienna_1177-1414_ready/1635.html">1635</a></td>
                     <td class="src-col-date">1405 XI 23</td>
                     <td class="src-col-corpus">QGW II/1 (1177–1414)</td>
+                    <td class="src-col-label"><em>-</em></td>
+                    <td class="src-col-role">
+                        <span class="role-chip role-chip-issuer">Aussteller*in</span>
+                        
+                    </td>
                     <td class="src-col-regest">Rudolf der Angerfelder, burgermaister, und der rat gemain der stat ze Wienn beurkunden, dass sie Hannsen den Staindlein, herzog Leupolts klainen schenkch, in nuz und in gewer des Zuhauses, das ihm…</td>
                 </tr>
             
@@ -1307,6 +1472,11 @@
                     <td class="src-col-idno"><a href="../../documents/QGW/Vienna_1177-1414_ready/1647.html">1647</a></td>
                     <td class="src-col-date">1406 III 02</td>
                     <td class="src-col-corpus">QGW II/1 (1177–1414)</td>
+                    <td class="src-col-label"><em>hern</em></td>
+                    <td class="src-col-role">
+                        <span class="role-chip role-chip-witness">Zeuge / Siegler*in</span>
+                        
+                    </td>
                     <td class="src-col-regest">Barbara witibeleichen, maister Niklas von Nicolspurg, des pogner, witib, die nu Erharten den Sulzpekchen eleichen genomen hat, bestätigt, dass Ulreich von Nicolspurg, des aussern rats der stat ze…</td>
                 </tr>
             
@@ -1314,6 +1484,11 @@
                     <td class="src-col-idno"><a href="../../documents/QGW/Vienna_1177-1414_ready/1651.html">1651</a></td>
                     <td class="src-col-date">1406 III 15</td>
                     <td class="src-col-corpus">QGW II/1 (1177–1414)</td>
+                    <td class="src-col-label"><em>hern</em></td>
+                    <td class="src-col-role">
+                        <span class="role-chip role-chip-other">Sonstige</span>
+                        
+                    </td>
                     <td class="src-col-regest">Michel, der ziegelknecht ze Wienn, und Magdalen, seine Hausfrau, verkaufen mit Handen des Bürgermeisters hern Rudolfs des Angerfelder und des rats gemain der stat ze Wienn 7 sh. dn. geltes…</td>
                 </tr>
             
@@ -1321,6 +1496,11 @@
                     <td class="src-col-idno"><a href="../../documents/QGW/Vienna_1177-1414_ready/1656.html">1656</a></td>
                     <td class="src-col-date">1406 V 05</td>
                     <td class="src-col-corpus">QGW II/1 (1177–1414)</td>
+                    <td class="src-col-label"><em>-</em></td>
+                    <td class="src-col-role">
+                        <span class="role-chip role-chip-other">Sonstige</span>
+                        
+                    </td>
                     <td class="src-col-regest">Kathrei witib, maister Petreins, des satler von Salzburg, witib, verkauft mit Handen des Bürgermeisters hern Rudolfs des Angerfelder und des rats gemain der stat ze Wienn 3 ½ lb dn. geltes purkrechts…</td>
                 </tr>
             
@@ -1328,6 +1508,11 @@
                     <td class="src-col-idno"><a href="../../documents/QGW/Vienna_1177-1414_ready/1663.html">1663</a></td>
                     <td class="src-col-date">1406 VII 13</td>
                     <td class="src-col-corpus">QGW II/1 (1177–1414)</td>
+                    <td class="src-col-label"><em>hern</em></td>
+                    <td class="src-col-role">
+                        <span class="role-chip role-chip-other">Sonstige</span>
+                        
+                    </td>
                     <td class="src-col-regest">Jörig der Pogl, purger ze Wienn, und Elsbet, sein hausfrau, stellen Niklasen dem Liepharten, der zu den Zeiten innerlandes nicht ist, einen Schuldbrief über 48 lb dn. aus, die herrühren von einer…</td>
                 </tr>
             
@@ -1335,6 +1520,11 @@
                     <td class="src-col-idno"><a href="../../documents/QGW/Vienna_1177-1414_ready/1666.html">1666</a></td>
                     <td class="src-col-date">1406 IX 10</td>
                     <td class="src-col-corpus">QGW II/1 (1177–1414)</td>
+                    <td class="src-col-label"><em>hern</em></td>
+                    <td class="src-col-role">
+                        <span class="role-chip role-chip-other">Sonstige</span>
+                        
+                    </td>
                     <td class="src-col-regest">Peter der Waicz, purger ze Wienn, verkauft mit Handen des Bürgermeisters hern Rudolfs des Angerfelder und des rats gemain der stat ze Wienn ein Haus, das er Jacoben, dem wachsgiesser, vor offem…</td>
                 </tr>
             
@@ -1342,6 +1532,11 @@
                     <td class="src-col-idno"><a href="../../documents/QGW/Vienna_1177-1414_ready/1701.html">1701</a></td>
                     <td class="src-col-date">1407 V 31</td>
                     <td class="src-col-corpus">QGW II/1 (1177–1414)</td>
+                    <td class="src-col-label"><em>-</em></td>
+                    <td class="src-col-role">
+                        <span class="role-chip role-chip-witness">Zeuge / Siegler*in</span>
+                        
+                    </td>
                     <td class="src-col-regest">Pe/artelme, kaplan der ewigen mess, so Wilhalm auf dem Steig, dem got genad, geschafft hat auf sand Kathrein altar dacz sand Stephan ze Wienn , bestätigt, dass Hanns der Zyrnastausrichter und Hanns…</td>
                 </tr>
             
@@ -1349,6 +1544,11 @@
                     <td class="src-col-idno"><a href="../../documents/QGW/Vienna_1177-1414_ready/1768.html">1768</a></td>
                     <td class="src-col-date">um 1408/1409</td>
                     <td class="src-col-corpus">QGW II/1 (1177–1414)</td>
+                    <td class="src-col-label"><em>-</em></td>
+                    <td class="src-col-role">
+                        <span class="role-chip role-chip-recipient">Empfänger*in</span>
+                        
+                    </td>
                     <td class="src-col-regest">Bürgermeister, Richter, der innere und der äussere Rath und die ganz gemain, reich und arm, der stat zu Wienn erklären, dass sie sich umb die vanknuss, niederlegung, farwerden und beschaezung, so…</td>
                 </tr>
             
@@ -1356,6 +1556,11 @@
                     <td class="src-col-idno"><a href="../../documents/QGW/Vienna_1177-1414_ready/1736.html">1736</a></td>
                     <td class="src-col-date">1408 VI 16</td>
                     <td class="src-col-corpus">QGW II/1 (1177–1414)</td>
+                    <td class="src-col-label"><em>-</em></td>
+                    <td class="src-col-role">
+                        <span class="role-chip role-chip-recipient">Empfänger*in</span>
+                        
+                    </td>
                     <td class="src-col-regest">Hanns Laun von Grünnau sagt für sich und den edeln hern Purkcharten den Druchseczen die Wiener Bürger Chunraden den Vorlauf, Rudolfen den AngervelderBürger, Hannsen den Rokken, Stephan den…</td>
                 </tr>
             
@@ -1363,6 +1568,11 @@
                     <td class="src-col-idno"><a href="../../documents/QGW/Vienna_1177-1414_ready/1749.html">1749</a></td>
                     <td class="src-col-date">1408 XII 18</td>
                     <td class="src-col-corpus">QGW II/1 (1177–1414)</td>
+                    <td class="src-col-label"><em>-</em></td>
+                    <td class="src-col-role">
+                        
+                        -
+                    </td>
                     <td class="src-col-regest">Agnes, Ulreichs witib des Reschen von Perichtoldstorf, Mathes der Chorner, ir vater, und Hanns der Chorner, ir prueder , die sich um sie genzleich angenomen haben, Jorig der Resch, des egenanten…</td>
                 </tr>
             
@@ -1370,6 +1580,11 @@
                     <td class="src-col-idno"><a href="../../documents/QGW/Vienna_1177-1414_ready/1901.html">1901</a></td>
                     <td class="src-col-date">1411 X 29</td>
                     <td class="src-col-corpus">QGW II/1 (1177–1414)</td>
+                    <td class="src-col-label"><em>hern</em></td>
+                    <td class="src-col-role">
+                        <span class="role-chip role-chip-other">Sonstige</span>
+                        
+                    </td>
                     <td class="src-col-regest">Stephan von Teben, burger zu Wienn, und Kunigund, sein hausfrau, verkaufen mit Handen des Bürgermeisters hern Rudolfs des Angervelder und des rats gemain der stat zu Wienn 5 lb dn. gelts purkchrechts…</td>
                 </tr>
             
@@ -1377,6 +1592,11 @@
                     <td class="src-col-idno"><a href="../../documents/QGW/Vienna_1177-1414_ready/1921.html">1921</a></td>
                     <td class="src-col-date">1412 VI 04</td>
                     <td class="src-col-corpus">QGW II/1 (1177–1414)</td>
+                    <td class="src-col-label"><em>-</em></td>
+                    <td class="src-col-role">
+                        <span class="role-chip role-chip-issuer">Aussteller*in</span>
+                        
+                    </td>
                     <td class="src-col-regest">Ruedolf der Angervelder, burgermaister, und der rat gemain der stat ze Wienn, beurkunden, dass die Wiener Bürger Chonrat, [ 4] der riemer, und Jorg der Kottrer, sein aidem, ihnen eine besiegelte…</td>
                 </tr>
             
@@ -1384,6 +1604,11 @@
                     <td class="src-col-idno"><a href="../../documents/QGW/Vienna_1177-1414_ready/1926.html">1926</a></td>
                     <td class="src-col-date">1412 VIII 09</td>
                     <td class="src-col-corpus">QGW II/1 (1177–1414)</td>
+                    <td class="src-col-label"><em>-</em></td>
+                    <td class="src-col-role">
+                        <span class="role-chip role-chip-recipient">Empfänger*in</span>
+                        
+                    </td>
                     <td class="src-col-regest">Gorg der Enenkchl, mauter ze Lincz, übersendet seinem Schwager Ruedolfen dem Angerfelder den Kaufbrief über sein Haus zu Wien, gelegen in dem chlainn gesslein pei sand Stephan, das er der Frau Annen,…</td>
                 </tr>
             
@@ -1391,6 +1616,11 @@
                     <td class="src-col-idno"><a href="../../documents/QGW/Vienna_1177-1414_ready/1928.html">1928</a></td>
                     <td class="src-col-date">1412 IX 09</td>
                     <td class="src-col-corpus">QGW II/1 (1177–1414)</td>
+                    <td class="src-col-label"><em>hern</em></td>
+                    <td class="src-col-role">
+                        <span class="role-chip role-chip-other">Sonstige</span>
+                        
+                    </td>
                     <td class="src-col-regest">Kathrei, Michels des Kinds witib von Praunstorf,witib und Margrecht die Stainaprunerin, ir swester , verzichten mit Handen des Bürgermeisters hern Rudolfs des Angervelder und des Rathes gegen Empfang…</td>
                 </tr>
             
@@ -1398,6 +1628,11 @@
                     <td class="src-col-idno"><a href="../../documents/QGW/Vienna_1177-1414_ready/1940.html">1940</a></td>
                     <td class="src-col-date">1413 II 01</td>
                     <td class="src-col-corpus">QGW II/1 (1177–1414)</td>
+                    <td class="src-col-label"><em>-</em></td>
+                    <td class="src-col-role">
+                        <span class="role-chip role-chip-other">Sonstige</span>
+                        
+                    </td>
                     <td class="src-col-regest">Erhart der Schierl, tumbherr ze Freising und tumbherr dacz sand Stepfan ze Wienn und pfarrer ze Naperstorf, Geschäftsvollstrecker Wolfgang der Purkhartsperger, statrichter ze…</td>
                 </tr>
             
@@ -1405,6 +1640,11 @@
                     <td class="src-col-idno"><a href="../../documents/QGW/Vienna_1177-1414_ready/1946.html">1946</a></td>
                     <td class="src-col-date">1413 IV 21</td>
                     <td class="src-col-corpus">QGW II/1 (1177–1414)</td>
+                    <td class="src-col-label"><em>hern</em></td>
+                    <td class="src-col-role">
+                        
+                        -
+                    </td>
                     <td class="src-col-regest">Conrad Ernst an Anwalt, Bürgermeister, Richter und Rath der Stadt zu Wien. Er habe ihnen seinerzeit von seiner und ihrer notdurft und gebrechen wegen geschrieben, da aber damals dhain rat nicht…</td>
                 </tr>
             
@@ -1412,6 +1652,11 @@
                     <td class="src-col-idno"><a href="../../documents/QGW/Vienna_1177-1414_ready/1954.html">1954</a></td>
                     <td class="src-col-date">1413 VIII 08</td>
                     <td class="src-col-corpus">QGW II/1 (1177–1414)</td>
+                    <td class="src-col-label"><em>-</em></td>
+                    <td class="src-col-role">
+                        <span class="role-chip role-chip-issuer">Aussteller*in</span>
+                        
+                    </td>
                     <td class="src-col-regest">Rudolf der Angervelder, burgermaister, und der rat gemain der stat ze Wienn bestätigen, dass her Erhart der Schierl, tumbherrtumbherr ze Freising und dacz sand Stepfan ze [ 11] Wienn und pfarrer ze…</td>
                 </tr>
             
@@ -1419,6 +1664,11 @@
                     <td class="src-col-idno"><a href="../../documents/QGW/Vienna_1177-1414_ready/1955.html">1955</a></td>
                     <td class="src-col-date">1413 VIII 23</td>
                     <td class="src-col-corpus">QGW II/1 (1177–1414)</td>
+                    <td class="src-col-label"><em>-</em></td>
+                    <td class="src-col-role">
+                        <span class="role-chip role-chip-issuer">Aussteller*in</span>
+                        
+                    </td>
                     <td class="src-col-regest">Rudolf der Angervelder, burgermaister, und der rat gemain der stat ze Wienn transsumieren den Stiftbrief über die von frau Dorothe, hern Jorgen des Pollnhaimerwitib witib, auf Unser Fraun altar,…</td>
                 </tr>
             
@@ -1426,6 +1676,11 @@
                     <td class="src-col-idno"><a href="../../documents/QGW/Vienna_1177-1414_ready/1956.html">1956</a></td>
                     <td class="src-col-date">1413 VIII 28</td>
                     <td class="src-col-corpus">QGW II/1 (1177–1414)</td>
+                    <td class="src-col-label"><em>-</em></td>
+                    <td class="src-col-role">
+                        <span class="role-chip role-chip-issuer">Aussteller*in</span><span class="role-chip role-chip-witness">Zeuge / Siegler*in</span>
+                        
+                    </td>
                     <td class="src-col-regest">Rudolf der Angervelder, burgermaister ze Wienn und munssmaister in OsterreichGeschäftsvollstrecker, Hanns der MosprunnerratesGeschäftsvollstrecker und Stephan der Poll, baid des…</td>
                 </tr>
             
@@ -1433,6 +1688,11 @@
                     <td class="src-col-idno"><a href="../../documents/QGW/Vienna_1177-1414_ready/1958.html">1958</a></td>
                     <td class="src-col-date">1413 IX 11</td>
                     <td class="src-col-corpus">QGW II/1 (1177–1414)</td>
+                    <td class="src-col-label"><em>-</em></td>
+                    <td class="src-col-role">
+                        <span class="role-chip role-chip-other">Sonstige</span>
+                        
+                    </td>
                     <td class="src-col-regest">Hainreich Wurmb, der sneider, burger ze Wienn, und Margrecht, sein hausfrau, verkaufen mit Handen des Bürgermeisters Rudolfs des Angervelder und des Rathes 12½ lb dn. gelts purckrechts (ablösbar) auf…</td>
                 </tr>
             
@@ -1440,6 +1700,11 @@
                     <td class="src-col-idno"><a href="../../documents/QGW/Vienna_1177-1414_ready/1959.html">1959</a></td>
                     <td class="src-col-date">1413 IX 11</td>
                     <td class="src-col-corpus">QGW II/1 (1177–1414)</td>
+                    <td class="src-col-label"><em>-</em></td>
+                    <td class="src-col-role">
+                        <span class="role-chip role-chip-other">Sonstige</span>
+                        
+                    </td>
                     <td class="src-col-regest">Maister Peter der Wildsankch und Klar, sein hausfrau, verkaufen mit Handen des Bürgermeisters Ruedolfs des Angervelder und des Rathes 1 lb dn. gelts purkrechts (ablösbar) auf ihrem Hause und dem…</td>
                 </tr>
             
@@ -1447,6 +1712,11 @@
                     <td class="src-col-idno"><a href="../../documents/QGW/Vienna_1177-1414_ready/1960.html">1960</a></td>
                     <td class="src-col-date">1413 IX 23</td>
                     <td class="src-col-corpus">QGW II/1 (1177–1414)</td>
+                    <td class="src-col-label"><em>-</em></td>
+                    <td class="src-col-role">
+                        <span class="role-chip role-chip-other">Sonstige</span>
+                        
+                    </td>
                     <td class="src-col-regest">Hans auf der Seul, burger ze Wienn, verkauft mit Handen des Bürgermeisters Rudolfs des Angervelder und des Rathes einen Gewandkeller, gelegen under den langen Tuchlauben ze Wienn zenechst Hermans von…</td>
                 </tr>
             
@@ -1454,6 +1724,11 @@
                     <td class="src-col-idno"><a href="../../documents/QGW/Vienna_1177-1414_ready/1961.html">1961</a></td>
                     <td class="src-col-date">1413 X 05</td>
                     <td class="src-col-corpus">QGW II/1 (1177–1414)</td>
+                    <td class="src-col-label"><em>-</em></td>
+                    <td class="src-col-role">
+                        <span class="role-chip role-chip-issuer">Aussteller*in</span>
+                        
+                    </td>
                     <td class="src-col-regest">Rudolf der Angervelder, burgermaister, und der rat gemain der stat ze Wienn beurkunden, dass ihr mitgesworner Jorg der Grünpeck ihnen vorgebracht habe, wie er als Gerhab des Gerhab Peter Rigelpeck…</td>
                 </tr>
             
@@ -1461,6 +1736,11 @@
                     <td class="src-col-idno"><a href="../../documents/QGW/Vienna_1177-1414_ready/1962.html">1962</a></td>
                     <td class="src-col-date">1413 X 11</td>
                     <td class="src-col-corpus">QGW II/1 (1177–1414)</td>
+                    <td class="src-col-label"><em>-</em></td>
+                    <td class="src-col-role">
+                        <span class="role-chip role-chip-recipient">Empfänger*in</span>
+                        
+                    </td>
                     <td class="src-col-regest">>Chunrat Ernst schreibt an den Bürgermeister Rudolf den Angerfelder in Angelegenheit des von ihm erbetenen Geleites.</td>
                 </tr>
             
@@ -1468,6 +1748,11 @@
                     <td class="src-col-idno"><a href="../../documents/QGW/Vienna_1177-1414_ready/1971.html">1971</a></td>
                     <td class="src-col-date">1413 XII 04</td>
                     <td class="src-col-corpus">QGW II/1 (1177–1414)</td>
+                    <td class="src-col-label"><em>-</em></td>
+                    <td class="src-col-role">
+                        <span class="role-chip role-chip-issuer">Aussteller*in</span>
+                        
+                    </td>
                     <td class="src-col-regest">Rudolf der Angervelder, burgermaister ze Wienn und munssmaister in Österreich, beurkundet, dass vor ihm in offenem Gerichte Hocz, der Jud ze Wienn, mit Vorsprechen ausgesagt habe, dass er die in Urk.…</td>
                 </tr>
             
@@ -1475,6 +1760,11 @@
                     <td class="src-col-idno"><a href="../../documents/QGW/Vienna_1177-1414_ready/1976.html">1976</a></td>
                     <td class="src-col-date">1414 I 04</td>
                     <td class="src-col-corpus">QGW II/1 (1177–1414)</td>
+                    <td class="src-col-label"><em>hern</em></td>
+                    <td class="src-col-role">
+                        <span class="role-chip role-chip-witness">Zeuge / Siegler*in</span>
+                        
+                    </td>
                     <td class="src-col-regest">Hocz, der Jud ze Wienn, verkauft die in Urk. n° 1966 und 1971 bezeichnete halbe Wechselbank Hannsen des Rokgen um 20 lb dn. und umb ainen guldein dem Wiener Bürger Hannsen dem Aczinger.</td>
                 </tr>
             
@@ -1482,6 +1772,11 @@
                     <td class="src-col-idno"><a href="../../documents/QGW/Vienna_1177-1414_ready/1981.html">1981</a></td>
                     <td class="src-col-date">1414 III 12</td>
                     <td class="src-col-corpus">QGW II/1 (1177–1414)</td>
+                    <td class="src-col-label"><em>-</em></td>
+                    <td class="src-col-role">
+                        <span class="role-chip role-chip-other">Sonstige</span>
+                        
+                    </td>
                     <td class="src-col-regest">Niclas der Fürstenkind, burger zu Wienn, stellt Petreinsun und Hannsen, Petreins seligen des goldsmids sun, einen Schuldbrief aus über 60 lb dn. für zwei Jahre aus und verpfändet ihnen dafür mit…</td>
                 </tr>
             
@@ -1489,6 +1784,11 @@
                     <td class="src-col-idno"><a href="../../documents/QGW/Vienna_1177-1414_ready/1985.html">1985</a></td>
                     <td class="src-col-date">1414 VI 04</td>
                     <td class="src-col-corpus">QGW II/1 (1177–1414)</td>
+                    <td class="src-col-label"><em>-</em></td>
+                    <td class="src-col-role">
+                        <span class="role-chip role-chip-issuer">Aussteller*in</span>
+                        
+                    </td>
                     <td class="src-col-regest">Ruedolf der Angervelder, burgermaister und münssmaister, und der rat gemain der stat zu Wienn bestätigen, dass ihnen Jorg der Neuer, ihr Mitbürger, alle zu der von Jorig dem Nusdorffer hincz…</td>
                 </tr>
             
@@ -1496,6 +1796,11 @@
                     <td class="src-col-idno"><a href="../../documents/QGW/Vienna_1177-1414_ready/1986.html">1986</a></td>
                     <td class="src-col-date">1414 VI 04</td>
                     <td class="src-col-corpus">QGW II/1 (1177–1414)</td>
+                    <td class="src-col-label"><em>-</em></td>
+                    <td class="src-col-role">
+                        
+                        -
+                    </td>
                     <td class="src-col-regest">Sigmund Maurbekch überschickt dem Bürgermeister Rudolffen dem Angerfelder einen Kaufbrief über das Haus auf der Hochstrass, das er hern Pilgreim und hern Hansen von Puchaim verkauft hat, mit der…</td>
                 </tr>
             
@@ -1503,6 +1808,11 @@
                     <td class="src-col-idno"><a href="../../documents/QGW/Vienna_1177-1414_ready/1993.html">1993</a></td>
                     <td class="src-col-date">1414 VIII 25</td>
                     <td class="src-col-corpus">QGW II/1 (1177–1414)</td>
+                    <td class="src-col-label"><em>-</em></td>
+                    <td class="src-col-role">
+                        <span class="role-chip role-chip-issuer">Aussteller*in</span>
+                        
+                    </td>
                     <td class="src-col-regest">Rudolf der Angerfelder, burgermaister und münssmaister, und der rat gemain der stat ze Wienn bestätigen, von Erhart dem Schierl, tumbherrn ze Freising und tumbherrn dacz sand Stepfan ze Wienn und…</td>
                 </tr>
             
@@ -1510,6 +1820,11 @@
                     <td class="src-col-idno"><a href="../../documents/QGW/Vienna_1177-1414_ready/1998.html">1998</a></td>
                     <td class="src-col-date">1414 X 01</td>
                     <td class="src-col-corpus">QGW II/1 (1177–1414)</td>
+                    <td class="src-col-label"><em>-</em></td>
+                    <td class="src-col-role">
+                        <span class="role-chip role-chip-recipient">Empfänger*in</span>
+                        
+                    </td>
                     <td class="src-col-regest">Chunrat Ernst beklagt sich gegen den Bürgermeister Ruedolf Angerfelder über die ungerechte Behandlung, die ihm von Seite desselben zu Theil wurde, namentlich über die Hinterziehung des herzoglichen…</td>
                 </tr>
             
@@ -1517,6 +1832,11 @@
                     <td class="src-col-idno"><a href="../../documents/QGW/Vienna_1177-1414_ready/1999.html">1999</a></td>
                     <td class="src-col-date">1414 X 02</td>
                     <td class="src-col-corpus">QGW II/1 (1177–1414)</td>
+                    <td class="src-col-label"><em>-</em></td>
+                    <td class="src-col-role">
+                        <span class="role-chip role-chip-issuer">Aussteller*in</span>
+                        
+                    </td>
                     <td class="src-col-regest">Rudolf der Angerfelder, burgermaister und münssmaister, und der rat gemain der stat ze Wienn transsumieren die ihnen von Frau Ann, weilent Jacobs seligen des Stichels witib, die darnach Hannsen den…</td>
                 </tr>
             
@@ -1524,6 +1844,11 @@
                     <td class="src-col-idno"><a href="../../documents/QGW/Vienna_1177-1414_ready/2001.html">2001</a></td>
                     <td class="src-col-date">1414 XI 10</td>
                     <td class="src-col-corpus">QGW II/1 (1177–1414)</td>
+                    <td class="src-col-label"><em>-</em></td>
+                    <td class="src-col-role">
+                        
+                        -
+                    </td>
                     <td class="src-col-regest">Conrad Ernst erneuert in einem Schreiben an Herzog Albrecht V. seine Klagen über die Verweigerung des Geleites und über die Feindseligkeiten, die er insbesondere von dem Wiener Bürgermeister Rudolfen…</td>
                 </tr>
             
@@ -1531,6 +1856,11 @@
                     <td class="src-col-idno"><a href="../../documents/QGW/Vienna_1177-1414_ready/2004.html">2004</a></td>
                     <td class="src-col-date">1414 XII 20</td>
                     <td class="src-col-corpus">QGW II/1 (1177–1414)</td>
+                    <td class="src-col-label"><em>-</em></td>
+                    <td class="src-col-role">
+                        <span class="role-chip role-chip-issuer">Aussteller*in</span>
+                        
+                    </td>
                     <td class="src-col-regest">Rudolf der Angervelder, burgermaister und münssmaister, und der rat gemain der stat ze Wienn beurkunden, dass frau Elspet, Merten des Eisnein witib, ihnen vorgebracht habe, wie ihr Mannwitib sich,…</td>
                 </tr>
             
@@ -1563,11 +1893,13 @@
         </div>
     </footer>
 
-    <script src="../../static/js/core.js?v=20260511112948"></script>
-    <script src="../../static/js/provenance.js?v=20260511112948"></script>
-    <script src="../../static/js/basket.js?v=20260511112948"></script>
+    <script src="../../static/js/core.js?v=20260511125458"></script>
+    <script src="../../static/js/tip.js?v=20260511125458"></script>
+    <script src="../../static/js/hint.js?v=20260511125458"></script>
+    <script src="../../static/js/basket.js?v=20260511125458"></script>
     
-<script src="../../static/js/tooltips.js?v=20260511112948"></script>
+<script src="../../static/js/profile.js?v=20260511125458"></script>
+<script src="../../static/js/basket-mount.js?v=20260511125458"></script>
 
 </body>
 </html>

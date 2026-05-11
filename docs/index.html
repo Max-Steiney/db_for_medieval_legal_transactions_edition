@@ -3,22 +3,22 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <meta http-equiv="Content-Security-Policy" content="default-src 'self'; script-src 'self'; style-src 'self'; font-src 'self'; img-src 'self' data: https://images.monasterium.net https://www.monasterium.net; connect-src 'self'; frame-ancestors 'none'; base-uri 'self'; form-action 'self'; upgrade-insecure-requests">
+    <meta http-equiv="Content-Security-Policy" content="default-src 'self'; script-src 'self'; style-src 'self'; font-src 'self'; img-src 'self' data: https://images.monasterium.net https://www.monasterium.net; connect-src 'self'; base-uri 'self'; form-action 'self'; upgrade-insecure-requests">
     <meta name="referrer" content="strict-origin-when-cross-origin">
     <meta http-equiv="Permissions-Policy" content="camera=(), microphone=(), geolocation=(), interest-cohort=()">
     <title>Startseite, Datenbank</title>
     <link rel="preload" as="font" type="font/woff2" crossorigin
           href="./static/fonts/inter-400-latin.woff2">
-    <link rel="stylesheet" href="./static/css/fonts.css?v=20260511112948">
-    <link rel="stylesheet" href="./static/css/tokens.css?v=20260511112948">
-    <link rel="stylesheet" href="./static/css/base.css?v=20260511112948">
-    <link rel="stylesheet" href="./static/css/components.css?v=20260511112948">
-    <link rel="stylesheet" href="./static/css/responsive.css?v=20260511112948">
-    <link rel="stylesheet" href="./static/css/print.css?v=20260511112948">
-    <link rel="stylesheet" href="./static/css/provenance.css?v=20260511112948">
+    <link rel="stylesheet" href="./static/css/fonts.css?v=20260511125458">
+    <link rel="stylesheet" href="./static/css/tokens.css?v=20260511125458">
+    <link rel="stylesheet" href="./static/css/base.css?v=20260511125458">
+    <link rel="stylesheet" href="./static/css/components.css?v=20260511125458">
+    <link rel="stylesheet" href="./static/css/responsive.css?v=20260511125458">
+    <link rel="stylesheet" href="./static/css/print.css?v=20260511125458">
+    <link rel="stylesheet" href="./static/css/tip.css?v=20260511125458">
     
-<link rel="stylesheet" href="./static/css/exploration.css?v=20260511112948">
-<link rel="stylesheet" href="./static/css/startseite.css?v=20260511112948">
+<link rel="stylesheet" href="./static/css/exploration.css?v=20260511125458">
+<link rel="stylesheet" href="./static/css/startseite.css?v=20260511125458">
 
 </head>
 <body data-root-path="."
@@ -48,8 +48,6 @@
         <a href="./register/persons.html">Personen</a>
         
         <a href="./register/orgs.html">Organisationen</a>
-        
-        <a href="./register/places.html">Orte</a>
         
     </div>
 </div>
@@ -91,7 +89,7 @@
     </div>
 </div>
 
-                <a href="./korb.html" class="nav-basket" aria-label="Wissenskorb">
+                <a href="./korb.html" class="nav-basket" aria-label="Datenkorb">
                     <svg width="18" height="18" viewBox="0 0 18 18" fill="none" aria-hidden="true">
                         <path d="M3 5h12l-1.2 8.5a1 1 0 0 1-1 .85H5.2a1 1 0 0 1-1-.85L3 5z"
                               stroke="currentColor" stroke-width="1.4" fill="none"
@@ -139,123 +137,131 @@
                 <thead>
                     <tr>
                         <th scope="col">
-                            <span class="prov-stat-container">Korpus
-<button type="button" class="prov-trigger prov-trigger--icon"
-        aria-expanded="false" aria-haspopup="dialog"
-        aria-controls="gloss-quellenkorpus"
-        data-prov-trigger="gloss-quellenkorpus"
-        aria-label="Definition: Quellenkorpus">
-    <svg width="13" height="13" viewBox="0 0 16 16" aria-hidden="true">
-        <circle cx="8" cy="8" r="7" stroke="currentColor" stroke-width="1.4" fill="none"/>
-        <text x="8" y="11.6" text-anchor="middle" font-size="9.5" font-weight="700"
-              fill="currentColor" font-family="Georgia, serif">i</text>
-    </svg>
-</button>
-<aside class="prov-popover prov-popover--glossary prov-popover--top"
-       id="gloss-quellenkorpus" role="dialog" aria-hidden="true"
-       aria-label="Definition: Quellenkorpus">
-    <header class="prov-popover-head">
-        <h3 class="prov-popover-title">Quellenkorpus</h3>
-        <button type="button" class="prov-popover-close" aria-label="Schlie&szlig;en">&times;</button>
-    </header>
-    <div class="prov-popover-body">
-        
-                                <p class="prov-def">Eine thematisch und editorisch zusammengeh&ouml;rige Gruppe von Quellen, etwa die QGW-B&auml;nde oder die Stadtb&uuml;cher.</p>
-                                <a class="prov-foot-link" href="./project/glossary.html#quellenkorpus">&rarr; im Glossar</a>
+                            Korpus
+<span class="tip-wrap">
+    <button type="button" class="tip-trigger tip-trigger--icon"
+            aria-expanded="false" aria-haspopup="dialog"
+            aria-controls="gloss-quellenkorpus"
+            data-tip="gloss-quellenkorpus"
+            aria-label="Definition: Quellenkorpus">
+        <svg width="13" height="13" viewBox="0 0 16 16" aria-hidden="true">
+            <circle cx="8" cy="8" r="7" stroke="currentColor" stroke-width="1.4" fill="none"/>
+            <text x="8" y="11.6" text-anchor="middle" font-size="9.5" font-weight="700"
+                  fill="currentColor" font-family="Georgia, serif">i</text>
+        </svg>
+    </button>
+    <aside class="tip-popover tip-popover--glossary tip-popover--top"
+           id="gloss-quellenkorpus" role="dialog" aria-hidden="true"
+           aria-label="Definition: Quellenkorpus">
+        <header class="tip-head">
+            <h3 class="tip-title">Quellenkorpus</h3>
+            <button type="button" class="tip-close" aria-label="Schlie&szlig;en">&times;</button>
+        </header>
+        <div class="tip-body">
+            
+                                <p>Eine thematisch und editorisch zusammengeh&ouml;rige Gruppe von Quellen, etwa die QGW-B&auml;nde oder die Stadtb&uuml;cher.</p>
                             
-    </div>
-</aside>
+            <a class="tip-link" href="/project/glossary.html#quellenkorpus">im Glossar</a>
+        </div>
+    </aside>
 </span>
+
                         </th>
                         
                         <th scope="col">
-                            <span class="prov-stat-container">Quellen
-<button type="button" class="prov-trigger prov-trigger--icon"
-        aria-expanded="false" aria-haspopup="dialog"
-        aria-controls="gloss-quelle"
-        data-prov-trigger="gloss-quelle"
-        aria-label="Definition: Quelle">
-    <svg width="13" height="13" viewBox="0 0 16 16" aria-hidden="true">
-        <circle cx="8" cy="8" r="7" stroke="currentColor" stroke-width="1.4" fill="none"/>
-        <text x="8" y="11.6" text-anchor="middle" font-size="9.5" font-weight="700"
-              fill="currentColor" font-family="Georgia, serif">i</text>
-    </svg>
-</button>
-<aside class="prov-popover prov-popover--glossary prov-popover--top"
-       id="gloss-quelle" role="dialog" aria-hidden="true"
-       aria-label="Definition: Quelle">
-    <header class="prov-popover-head">
-        <h3 class="prov-popover-title">Quelle</h3>
-        <button type="button" class="prov-popover-close" aria-label="Schlie&szlig;en">&times;</button>
-    </header>
-    <div class="prov-popover-body">
-        
-                                <p class="prov-def">Eine einzelne Urkunde oder ein Regest als Datensatz-Einheit. Tr&auml;ger eines oder mehrerer Events.</p>
-                                <a class="prov-foot-link" href="./project/glossary.html#quelle">&rarr; im Glossar</a>
+                            Quellen
+<span class="tip-wrap">
+    <button type="button" class="tip-trigger tip-trigger--icon"
+            aria-expanded="false" aria-haspopup="dialog"
+            aria-controls="gloss-quelle"
+            data-tip="gloss-quelle"
+            aria-label="Definition: Quelle">
+        <svg width="13" height="13" viewBox="0 0 16 16" aria-hidden="true">
+            <circle cx="8" cy="8" r="7" stroke="currentColor" stroke-width="1.4" fill="none"/>
+            <text x="8" y="11.6" text-anchor="middle" font-size="9.5" font-weight="700"
+                  fill="currentColor" font-family="Georgia, serif">i</text>
+        </svg>
+    </button>
+    <aside class="tip-popover tip-popover--glossary tip-popover--top"
+           id="gloss-quelle" role="dialog" aria-hidden="true"
+           aria-label="Definition: Quelle">
+        <header class="tip-head">
+            <h3 class="tip-title">Quelle</h3>
+            <button type="button" class="tip-close" aria-label="Schlie&szlig;en">&times;</button>
+        </header>
+        <div class="tip-body">
+            
+                                <p>Eine einzelne Urkunde oder ein Regest als Datensatz-Einheit. Tr&auml;ger eines oder mehrerer Events.</p>
                             
-    </div>
-</aside>
+            <a class="tip-link" href="/project/glossary.html#quelle">im Glossar</a>
+        </div>
+    </aside>
 </span>
+
                         </th>
                         
                         <th scope="col">
-                            <span class="prov-stat-container">Nennungen
-<button type="button" class="prov-trigger prov-trigger--icon"
-        aria-expanded="false" aria-haspopup="dialog"
-        aria-controls="gloss-nennung"
-        data-prov-trigger="gloss-nennung"
-        aria-label="Definition: Gesamtnennung">
-    <svg width="13" height="13" viewBox="0 0 16 16" aria-hidden="true">
-        <circle cx="8" cy="8" r="7" stroke="currentColor" stroke-width="1.4" fill="none"/>
-        <text x="8" y="11.6" text-anchor="middle" font-size="9.5" font-weight="700"
-              fill="currentColor" font-family="Georgia, serif">i</text>
-    </svg>
-</button>
-<aside class="prov-popover prov-popover--glossary prov-popover--top"
-       id="gloss-nennung" role="dialog" aria-hidden="true"
-       aria-label="Definition: Gesamtnennung">
-    <header class="prov-popover-head">
-        <h3 class="prov-popover-title">Gesamtnennung</h3>
-        <button type="button" class="prov-popover-close" aria-label="Schlie&szlig;en">&times;</button>
-    </header>
-    <div class="prov-popover-body">
-        
-                                <p class="prov-def">Eine Beziehung zwischen einer Person und einer Quelle, in der sie genannt wird. Quellenbereinigt: Mehrfacherw&auml;hnungen in derselben Quelle z&auml;hlen einmal.</p>
-                                <a class="prov-foot-link" href="./project/glossary.html#gesamtnennung">&rarr; im Glossar</a>
+                            Nennungen
+<span class="tip-wrap">
+    <button type="button" class="tip-trigger tip-trigger--icon"
+            aria-expanded="false" aria-haspopup="dialog"
+            aria-controls="gloss-nennung"
+            data-tip="gloss-nennung"
+            aria-label="Definition: Gesamtnennung">
+        <svg width="13" height="13" viewBox="0 0 16 16" aria-hidden="true">
+            <circle cx="8" cy="8" r="7" stroke="currentColor" stroke-width="1.4" fill="none"/>
+            <text x="8" y="11.6" text-anchor="middle" font-size="9.5" font-weight="700"
+                  fill="currentColor" font-family="Georgia, serif">i</text>
+        </svg>
+    </button>
+    <aside class="tip-popover tip-popover--glossary tip-popover--top"
+           id="gloss-nennung" role="dialog" aria-hidden="true"
+           aria-label="Definition: Gesamtnennung">
+        <header class="tip-head">
+            <h3 class="tip-title">Gesamtnennung</h3>
+            <button type="button" class="tip-close" aria-label="Schlie&szlig;en">&times;</button>
+        </header>
+        <div class="tip-body">
+            
+                                <p>Eine Beziehung zwischen einer Person und einer Quelle, in der sie genannt wird. Quellenbereinigt: Mehrfacherw&auml;hnungen in derselben Quelle z&auml;hlen einmal.</p>
                             
-    </div>
-</aside>
+            <a class="tip-link" href="/project/glossary.html#gesamtnennung">im Glossar</a>
+        </div>
+    </aside>
 </span>
+
                         </th>
                         
                         <th scope="col">
-                            <span class="prov-stat-container">Events
-<button type="button" class="prov-trigger prov-trigger--icon"
-        aria-expanded="false" aria-haspopup="dialog"
-        aria-controls="gloss-event"
-        data-prov-trigger="gloss-event"
-        aria-label="Definition: Event">
-    <svg width="13" height="13" viewBox="0 0 16 16" aria-hidden="true">
-        <circle cx="8" cy="8" r="7" stroke="currentColor" stroke-width="1.4" fill="none"/>
-        <text x="8" y="11.6" text-anchor="middle" font-size="9.5" font-weight="700"
-              fill="currentColor" font-family="Georgia, serif">i</text>
-    </svg>
-</button>
-<aside class="prov-popover prov-popover--glossary prov-popover--top"
-       id="gloss-event" role="dialog" aria-hidden="true"
-       aria-label="Definition: Event">
-    <header class="prov-popover-head">
-        <h3 class="prov-popover-title">Event</h3>
-        <button type="button" class="prov-popover-close" aria-label="Schlie&szlig;en">&times;</button>
-    </header>
-    <div class="prov-popover-body">
-        
-                                <p class="prov-def">Ein konkreter Vorgang im Quellentext: Rechtsgesch&auml;ft (Kauf, Schenkung &hellip;), Siegelvermerk, Kanzleieintrag oder Notiz.</p>
-                                <a class="prov-foot-link" href="./project/glossary.html#event">&rarr; im Glossar</a>
+                            Events
+<span class="tip-wrap">
+    <button type="button" class="tip-trigger tip-trigger--icon"
+            aria-expanded="false" aria-haspopup="dialog"
+            aria-controls="gloss-event"
+            data-tip="gloss-event"
+            aria-label="Definition: Event">
+        <svg width="13" height="13" viewBox="0 0 16 16" aria-hidden="true">
+            <circle cx="8" cy="8" r="7" stroke="currentColor" stroke-width="1.4" fill="none"/>
+            <text x="8" y="11.6" text-anchor="middle" font-size="9.5" font-weight="700"
+                  fill="currentColor" font-family="Georgia, serif">i</text>
+        </svg>
+    </button>
+    <aside class="tip-popover tip-popover--glossary tip-popover--top"
+           id="gloss-event" role="dialog" aria-hidden="true"
+           aria-label="Definition: Event">
+        <header class="tip-head">
+            <h3 class="tip-title">Event</h3>
+            <button type="button" class="tip-close" aria-label="Schlie&szlig;en">&times;</button>
+        </header>
+        <div class="tip-body">
+            
+                                <p>Ein konkreter Vorgang im Quellentext: Rechtsgesch&auml;ft (Kauf, Schenkung &hellip;), Siegelvermerk, Kanzleieintrag oder Notiz.</p>
                             
-    </div>
-</aside>
+            <a class="tip-link" href="/project/glossary.html#event">im Glossar</a>
+        </div>
+    </aside>
 </span>
+
                         </th>
                         
                     </tr>
@@ -290,25 +296,25 @@
                         <th scope="row">Gesamt</th>
                         
                         <td>
-                            <span class="prov-stat-container">
+                            <span class="tip-wrap">
                                 
-<button type="button" class="prov-trigger"
+<button type="button" class="tip-trigger"
         aria-expanded="false" aria-haspopup="dialog"
         aria-controls="prov-total-sources"
-        data-prov-trigger="prov-total-sources">2.601</button>
+        data-tip="prov-total-sources">2.601</button>
 
                                 
-<aside class="prov-popover prov-popover--top" id="prov-total-sources"
-       role="dialog" aria-hidden="true" aria-label="Herkunft: Quellen — Provenienz">
-    <header class="prov-popover-head">
-        <h3 class="prov-popover-title">Quellen — Provenienz</h3>
-        
-        <button type="button" class="prov-popover-close" aria-label="Schließen">&times;</button>
+<aside class="tip-popover tip-popover--data tip-popover--top"
+       id="prov-total-sources" role="dialog" aria-hidden="true"
+       aria-label="Herkunft: Quellen">
+    <header class="tip-head">
+        <h3 class="tip-title">Quellen</h3>
+        <button type="button" class="tip-close" aria-label="Schlie&szlig;en">&times;</button>
     </header>
-    <div class="prov-popover-body">
+    <div class="tip-body">
         
-                                    <pre class="prov-xpath"><span class="xp-axis">//</span><span class="xp-elem">tei:TEI</span></pre>
-                                    <p class="prov-note">aus <code>sources/&lt;korpus&gt;/done/</code>, eingeschr&auml;nkt auf freigegebene Korpora.</p>
+                                    <p>Anzahl der freigegebenen Quellen im Editionsstand. Eine Quelle ist eine einzelne TEI-XML-Datei mit einem Regest und seinen Annotationen.</p>
+                                    <p class="tip-source">Direkt aus den freigegebenen TEI-Quellen, gez&auml;hlt pro Datei.</p>
                                 
     </div>
 </aside>
@@ -317,27 +323,25 @@
                         </td>
                         
                         <td>
-                            <span class="prov-stat-container">
+                            <span class="tip-wrap">
                                 
-<button type="button" class="prov-trigger"
+<button type="button" class="tip-trigger"
         aria-expanded="false" aria-haspopup="dialog"
         aria-controls="prov-total-mentions"
-        data-prov-trigger="prov-total-mentions">17.546</button>
+        data-tip="prov-total-mentions">17.546</button>
 
                                 
-<aside class="prov-popover prov-popover--top" id="prov-total-mentions"
-       role="dialog" aria-hidden="true" aria-label="Herkunft: Nennungen — Provenienz">
-    <header class="prov-popover-head">
-        <h3 class="prov-popover-title">Nennungen — Provenienz</h3>
-        
-        <button type="button" class="prov-popover-close" aria-label="Schließen">&times;</button>
+<aside class="tip-popover tip-popover--data tip-popover--top"
+       id="prov-total-mentions" role="dialog" aria-hidden="true"
+       aria-label="Herkunft: Nennungen">
+    <header class="tip-head">
+        <h3 class="tip-title">Nennungen</h3>
+        <button type="button" class="tip-close" aria-label="Schlie&szlig;en">&times;</button>
     </header>
-    <div class="prov-popover-body">
+    <div class="tip-body">
         
-                                    <pre class="prov-xpath"><span class="xp-axis">//</span><span class="xp-elem">tei:body</span><span class="xp-axis">//</span><span class="xp-elem">tei:*</span><span class="xp-pred">[</span><span class="xp-attr">@type</span>=<span class="xp-string">'person'</span><span class="xp-pred">]</span>
-<span class="xp-pred">  [not(</span><span class="xp-axis">ancestor::</span><span class="xp-elem">tei:rs</span><span class="xp-pred">[</span><span class="xp-attr">@type</span>=<span class="xp-string">'event'</span><span class="xp-pred">]</span>
-<span class="xp-pred">       [</span><span class="xp-axis">ancestor::</span><span class="xp-elem">tei:rs</span><span class="xp-pred">[</span><span class="xp-attr">@type</span>=<span class="xp-string">'event'</span><span class="xp-pred">]])]</span></pre>
-                                    <p class="prov-note"><code>@corresp</code> und Personen in verschachtelten Events ausgeschlossen.</p>
+                                    <p>Wie oft Personen in den Quellen genannt werden. Eine Person, die in zwei verschiedenen Quellen vorkommt, z&auml;hlt zweimal.</p>
+                                    <p class="tip-source">Aus den Personen-Annotationen in den freigegebenen TEI-Quellen. Mehrfachnennungen innerhalb derselben Quelle z&auml;hlen einmal.</p>
                                 
     </div>
 </aside>
@@ -346,26 +350,25 @@
                         </td>
                         
                         <td>
-                            <span class="prov-stat-container">
+                            <span class="tip-wrap">
                                 
-<button type="button" class="prov-trigger"
+<button type="button" class="tip-trigger"
         aria-expanded="false" aria-haspopup="dialog"
         aria-controls="prov-total-events"
-        data-prov-trigger="prov-total-events">2.606</button>
+        data-tip="prov-total-events">2.606</button>
 
                                 
-<aside class="prov-popover prov-popover--top" id="prov-total-events"
-       role="dialog" aria-hidden="true" aria-label="Herkunft: Events — Provenienz">
-    <header class="prov-popover-head">
-        <h3 class="prov-popover-title">Events — Provenienz</h3>
-        
-        <button type="button" class="prov-popover-close" aria-label="Schließen">&times;</button>
+<aside class="tip-popover tip-popover--data tip-popover--top"
+       id="prov-total-events" role="dialog" aria-hidden="true"
+       aria-label="Herkunft: Events">
+    <header class="tip-head">
+        <h3 class="tip-title">Events</h3>
+        <button type="button" class="tip-close" aria-label="Schlie&szlig;en">&times;</button>
     </header>
-    <div class="prov-popover-body">
+    <div class="tip-body">
         
-                                    <pre class="prov-xpath"><span class="xp-axis">//</span><span class="xp-elem">tei:body</span><span class="xp-axis">//</span><span class="xp-elem">tei:rs</span><span class="xp-pred">[</span><span class="xp-attr">@type</span>=<span class="xp-string">'event'</span><span class="xp-pred">]</span>
-<span class="xp-pred">  [not(</span><span class="xp-axis">ancestor::</span><span class="xp-elem">tei:rs</span><span class="xp-pred">[</span><span class="xp-attr">@type</span>=<span class="xp-string">'event'</span><span class="xp-pred">])]</span></pre>
-                                    <p class="prov-note">distinct &uuml;ber <code>@ref</code>; verschachtelte rs-Events ausgeschlossen.</p>
+                                    <p>Anzahl der annotierten Vorg&auml;nge in den Quellen. Ein Event ist ein konkreter Akt: Rechtsgesch&auml;ft, Siegelvermerk, Stadtbucheintrag oder Notiz.</p>
+                                    <p class="tip-source">Aus den Event-Annotationen in den freigegebenen TEI-Quellen, verschachtelte Events ausgeschlossen.</p>
                                 
     </div>
 </aside>
@@ -405,25 +408,25 @@
                 <li class="start-card-corpora-total">
                     <span class="start-card-corpora-label">Gesamt</span>
                     <span class="start-card-corpora-count">
-                        <span class="prov-stat-container">
+                        <span class="tip-wrap">
                             
-<button type="button" class="prov-trigger"
+<button type="button" class="tip-trigger"
         aria-expanded="false" aria-haspopup="dialog"
         aria-controls="prov-card-persons"
-        data-prov-trigger="prov-card-persons"><strong>8.406</strong></button>
+        data-tip="prov-card-persons"><strong>8.406</strong></button>
 
                             
-<aside class="prov-popover" id="prov-card-persons"
-       role="dialog" aria-hidden="true" aria-label="Herkunft: Personen, Provenienz">
-    <header class="prov-popover-head">
-        <h3 class="prov-popover-title">Personen, Provenienz</h3>
-        
-        <button type="button" class="prov-popover-close" aria-label="Schließen">&times;</button>
+<aside class="tip-popover tip-popover--data"
+       id="prov-card-persons" role="dialog" aria-hidden="true"
+       aria-label="Herkunft: Individuelle Personen">
+    <header class="tip-head">
+        <h3 class="tip-title">Individuelle Personen</h3>
+        <button type="button" class="tip-close" aria-label="Schlie&szlig;en">&times;</button>
     </header>
-    <div class="prov-popover-body">
+    <div class="tip-body">
         
-                                <pre class="prov-xpath"><span class="xp-axis">//</span><span class="xp-elem">tei:body</span><span class="xp-axis">//</span><span class="xp-elem">tei:*</span><span class="xp-pred">[</span><span class="xp-attr">@type</span>=<span class="xp-string">'person'</span><span class="xp-pred">]</span><span class="xp-axis">/</span><span class="xp-attr">@ref</span></pre>
-                                <p class="prov-note">distinct &uuml;ber <code>@ref</code> (<code>pe__&hellip;</code>); freigegebene Dokumente.</p>
+                                <p>Anzahl der unterschiedlichen Personen, die in den freigegebenen Quellen identifiziert wurden. Jede Person z&auml;hlt einmal, egal wie oft sie genannt wird.</p>
+                                <p class="tip-source">Aggregiert aus den Personen-Annotationen aller freigegebenen TEI-Quellen, eindeutig nach Personen-ID.</p>
                             
     </div>
 </aside>
@@ -441,7 +444,6 @@
 
         <div class="start-twoways-column">
             <h2 class="start-twoways-heading">Analyse</h2>
-            <p class="start-twoways-intro">Quantitative Auswertungen und gezielte Filterabfragen.</p>
             <div class="start-twoways-grid">
 
                 <a href="./analysis/auswertungen.html" class="explore-hub-card explore-hub-card--active">
@@ -478,7 +480,6 @@
 
         <div class="start-twoways-column">
             <h2 class="start-twoways-heading">Exploration</h2>
-            <p class="start-twoways-intro">Visuelle, interaktive Erkundung der Datenstruktur.</p>
             <div class="start-twoways-grid">
 
                 <a href="./exploration/zeitstrom.html" class="explore-hub-card explore-hub-card--active">
@@ -545,9 +546,10 @@
         </div>
     </footer>
 
-    <script src="./static/js/core.js?v=20260511112948"></script>
-    <script src="./static/js/provenance.js?v=20260511112948"></script>
-    <script src="./static/js/basket.js?v=20260511112948"></script>
+    <script src="./static/js/core.js?v=20260511125458"></script>
+    <script src="./static/js/tip.js?v=20260511125458"></script>
+    <script src="./static/js/hint.js?v=20260511125458"></script>
+    <script src="./static/js/basket.js?v=20260511125458"></script>
     
 </body>
 </html>

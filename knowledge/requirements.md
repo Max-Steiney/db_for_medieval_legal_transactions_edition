@@ -107,7 +107,7 @@ Forschungspfade sind nicht linear. Eine Auswahl entsteht häufig durch Querstrei
 
 ### Wie
 
-Ein clientseitiger Wissenskorb steht als persistierende Schicht über allen Quellen-Listen. Sammelpunkte sind in den Listen-Renderern eingebettet (Quellen-Tabelle, Drill-down-Overlay, Brush-Drill); ein Korb-Icon im Nav führt zur Korb-Seite mit Liste, Remove-Aktion und CSV-Export. Persistenz lebt in `localStorage`, Cross-Tab-Sync über das `storage`-Event. Umsetzung in [[ui-design#Wissenskorb]] und [[architecture#Wissenskorb als clientseitige Persistenz]], Begründung in [[decisions#Wissenskorb als clientseitige Sammlung]].
+Ein clientseitiger Datenkorb steht als persistierende Schicht über allen Quellen-Listen. Sammelpunkte sind in den Listen-Renderern eingebettet (Quellen-Tabelle, Drill-down-Overlay, Brush-Drill); ein Korb-Icon im Nav führt zur Korb-Seite mit Liste, Remove-Aktion und CSV-Export. Persistenz lebt in `localStorage`, Cross-Tab-Sync über das `storage`-Event. Umsetzung in [[ui-design#Datenkorb]] und [[architecture#Datenkorb als clientseitige Persistenz]], Begründung in [[decisions#Datenkorb als clientseitige Sammlung]].
 
 ## Informationsdichte vor reduzierter Ästhetik
 

@@ -3,21 +3,21 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <meta http-equiv="Content-Security-Policy" content="default-src 'self'; script-src 'self'; style-src 'self'; font-src 'self'; img-src 'self' data: https://images.monasterium.net https://www.monasterium.net; connect-src 'self'; frame-ancestors 'none'; base-uri 'self'; form-action 'self'; upgrade-insecure-requests">
+    <meta http-equiv="Content-Security-Policy" content="default-src 'self'; script-src 'self'; style-src 'self'; font-src 'self'; img-src 'self' data: https://images.monasterium.net https://www.monasterium.net; connect-src 'self'; base-uri 'self'; form-action 'self'; upgrade-insecure-requests">
     <meta name="referrer" content="strict-origin-when-cross-origin">
     <meta http-equiv="Permissions-Policy" content="camera=(), microphone=(), geolocation=(), interest-cohort=()">
     <title>Nr. 24 (1298 II 20), Datenbank</title>
     <link rel="preload" as="font" type="font/woff2" crossorigin
           href="../../../static/fonts/inter-400-latin.woff2">
-    <link rel="stylesheet" href="../../../static/css/fonts.css?v=20260511112948">
-    <link rel="stylesheet" href="../../../static/css/tokens.css?v=20260511112948">
-    <link rel="stylesheet" href="../../../static/css/base.css?v=20260511112948">
-    <link rel="stylesheet" href="../../../static/css/components.css?v=20260511112948">
-    <link rel="stylesheet" href="../../../static/css/responsive.css?v=20260511112948">
-    <link rel="stylesheet" href="../../../static/css/print.css?v=20260511112948">
-    <link rel="stylesheet" href="../../../static/css/provenance.css?v=20260511112948">
+    <link rel="stylesheet" href="../../../static/css/fonts.css?v=20260511125458">
+    <link rel="stylesheet" href="../../../static/css/tokens.css?v=20260511125458">
+    <link rel="stylesheet" href="../../../static/css/base.css?v=20260511125458">
+    <link rel="stylesheet" href="../../../static/css/components.css?v=20260511125458">
+    <link rel="stylesheet" href="../../../static/css/responsive.css?v=20260511125458">
+    <link rel="stylesheet" href="../../../static/css/print.css?v=20260511125458">
+    <link rel="stylesheet" href="../../../static/css/tip.css?v=20260511125458">
     
-<link rel="stylesheet" href="../../../static/css/document.css?v=20260511112948">
+<link rel="stylesheet" href="../../../static/css/document.css?v=20260511125458">
 <link rel="canonical" href="documents/QGW/Vienna_1177-1414_ready/24.html">
 <meta name="citation_title" content="Nr. 24 (1298 II 20)">
 <meta name="citation_collection" content="QGW II/1 (1177–1414)">
@@ -50,8 +50,6 @@
         <a href="../../../register/persons.html">Personen</a>
         
         <a href="../../../register/orgs.html">Organisationen</a>
-        
-        <a href="../../../register/places.html">Orte</a>
         
     </div>
 </div>
@@ -93,7 +91,7 @@
     </div>
 </div>
 
-                <a href="../../../korb.html" class="nav-basket" aria-label="Wissenskorb">
+                <a href="../../../korb.html" class="nav-basket" aria-label="Datenkorb">
                     <svg width="18" height="18" viewBox="0 0 18 18" fill="none" aria-hidden="true">
                         <path d="M3 5h12l-1.2 8.5a1 1 0 0 1-1 .85H5.2a1 1 0 0 1-1-.85L3 5z"
                               stroke="currentColor" stroke-width="1.4" fill="none"
@@ -140,7 +138,7 @@
                     
                     <span class="meta-pair">
                         <span class="meta-label">Quelle</span>
-                        <span class="meta-value" title="Quellen zur Geschichte der Stadt Wien, Bd. II/1, Nr. 24">Quellen zur Geschichte der Stadt Wien, Bd. II/1, Nr. 24</span>
+                        <span class="meta-value" data-hint="Quellen zur Geschichte der Stadt Wien, Bd. II/1, Nr. 24">Quellen zur Geschichte der Stadt Wien, Bd. II/1, Nr. 24</span>
                     </span>
                     
                 </div>
@@ -151,7 +149,7 @@
                     
                     <button type="button" class="legend-toggle"
                             data-layer="entities" aria-pressed="true"
-                            title="Entitäten ein-/ausblenden">
+                            data-hint="Entitäten ein-/ausblenden">
                         <span class="legend-toggle-dots">
                             <span class="legend-swatch swatch-person"></span><span class="legend-swatch swatch-org"></span><span class="legend-swatch swatch-place"></span>
                         </span>
@@ -160,7 +158,7 @@
                     
                     <button type="button" class="legend-toggle"
                             data-layer="functions" aria-pressed="true"
-                            title="Funktionsrollen ein-/ausblenden">
+                            data-hint="Funktionsrollen ein-/ausblenden">
                         <span class="legend-toggle-dots">
                             <span class="legend-swatch swatch-fn-issuer"></span><span class="legend-swatch swatch-fn-recipient"></span><span class="legend-swatch swatch-fn-witness"></span>
                         </span>
@@ -169,7 +167,7 @@
                     
                     <button type="button" class="legend-toggle"
                             data-layer="attributes" aria-pressed="true"
-                            title="Attribute ein-/ausblenden">
+                            data-hint="Attribute ein-/ausblenden">
                         <span class="legend-toggle-dots">
                             <span class="legend-swatch swatch-attr"></span><span class="legend-swatch swatch-add"></span>
                         </span>
@@ -178,7 +176,7 @@
                     
                     <button type="button" class="legend-toggle"
                             data-layer="triggers" aria-pressed="true"
-                            title="Dispositivformel ein-/ausblenden">
+                            data-hint="Dispositivformel ein-/ausblenden">
                         <span class="legend-toggle-dots">
                             <span class="legend-swatch swatch-trigger"></span>
                         </span>
@@ -190,21 +188,29 @@
                 <div class="doc-toolbar-actions">
                     <a class="toolbar-btn" href="../../../tei/QGW/Vienna_1177-1414_ready/24.xml"
                        download="24.xml"
-                       aria-label="TEI-XML herunterladen" title="TEI-XML herunterladen"><svg viewBox="0 0 16 16" width="16" height="16" aria-hidden="true"><path fill="none" stroke="currentColor" stroke-width="1.4" stroke-linecap="round" stroke-linejoin="round" d="M8 2v8m0 0l-3-3m3 3l3-3M3 13h10"/></svg></a>
+                       aria-label="TEI-XML herunterladen" data-hint="TEI-XML herunterladen"><svg viewBox="0 0 16 16" width="16" height="16" aria-hidden="true"><path fill="none" stroke="currentColor" stroke-width="1.4" stroke-linecap="round" stroke-linejoin="round" d="M8 2v8m0 0l-3-3m3 3l3-3M3 13h10"/></svg></a>
                     <button class="toolbar-btn" id="cite-toggle" aria-expanded="false"
-                            aria-label="Zitation kopieren" title="Zitation kopieren"><svg viewBox="0 0 16 16" width="16" height="16" aria-hidden="true"><rect x="4" y="2" width="8" height="11" rx="1" fill="none" stroke="currentColor" stroke-width="1.4"/><path d="M6 1.5h4a0.5 0.5 0 0 1 0.5 0.5v1a0.5 0.5 0 0 1-0.5 0.5H6a0.5 0.5 0 0 1-0.5-0.5V2A0.5 0.5 0 0 1 6 1.5z" fill="currentColor"/><path d="M6.5 6.5h3M6.5 8.5h3M6.5 10.5h2" stroke="currentColor" stroke-width="1" stroke-linecap="round"/></svg></button>
+                            aria-label="Zitation kopieren" data-hint="Zitation kopieren"><svg viewBox="0 0 16 16" width="16" height="16" aria-hidden="true"><rect x="4" y="2" width="8" height="11" rx="1" fill="none" stroke="currentColor" stroke-width="1.4"/><path d="M6 1.5h4a0.5 0.5 0 0 1 0.5 0.5v1a0.5 0.5 0 0 1-0.5 0.5H6a0.5 0.5 0 0 1-0.5-0.5V2A0.5 0.5 0 0 1 6 1.5z" fill="currentColor"/><path d="M6.5 6.5h3M6.5 8.5h3M6.5 10.5h2" stroke="currentColor" stroke-width="1" stroke-linecap="round"/></svg></button>
                     <div class="cite-popover hidden" id="cite-popover"></div>
+                    <span class="toolbar-basket-mount"
+                          data-basket-type="source"
+                          data-basket-id="24"
+                          data-basket-label="24"
+                          data-basket-url="documents/QGW/Vienna_1177-1414_ready/24.html"
+                          data-basket-date="1298-02-20"
+                          data-basket-coll="QGW II/1 (1177–1414)"
+                          data-basket-regest="Bischofssammelindulgenz: * archiepiscopus Philippus Salernitanus, fraterarchiepiscopus Johannes Turritanus, fraterarchiepiscopus Basilius Jerosolimitanus Armenorum, archiepiscopi fraterepiscopus…"></span>
                     
 <nav class="doc-paging doc-paging-inline" aria-label="Quellen-Navigation">
     
     <a href="../../../documents/QGW/Vienna_1177-1414_ready/23.html" class="toolbar-btn doc-paging-prev"
        aria-label="Vorherige Quelle: Nr. 23"
-       title="Vorherige Quelle: Nr. 23"><svg viewBox="0 0 16 16" width="16" height="16" aria-hidden="true"><path fill="none" stroke="currentColor" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round" d="M10 3l-5 5 5 5"/></svg></a>
+       data-hint="Vorherige Quelle: Nr. 23"><svg viewBox="0 0 16 16" width="16" height="16" aria-hidden="true"><path fill="none" stroke="currentColor" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round" d="M10 3l-5 5 5 5"/></svg></a>
     
     
     <a href="../../../documents/QGW/Vienna_1177-1414_ready/25.html" class="toolbar-btn doc-paging-next"
        aria-label="Nächste Quelle: Nr. 25"
-       title="Nächste Quelle: Nr. 25"><svg viewBox="0 0 16 16" width="16" height="16" aria-hidden="true"><path fill="none" stroke="currentColor" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round" d="M6 3l5 5-5 5"/></svg></a>
+       data-hint="Nächste Quelle: Nr. 25"><svg viewBox="0 0 16 16" width="16" height="16" aria-hidden="true"><path fill="none" stroke="currentColor" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round" d="M6 3l5 5-5 5"/></svg></a>
     
 </nav>
 
@@ -218,14 +224,14 @@
     <div class="doc-content">
         <!-- Document body (rendered TEI) -->
         <div class="doc-body">
-            <section class="tei-abstract"><h2 class="tei-section-head">Regest</h2><p>Bischofssammelindulgenz: * <span class="anno-event" data-ref="ev__QGW_II_I_24"><span class="anno-fn anno-fn-issuer" data-role="issuer"><span class="fn-label">Aussteller*in</span><a class="anno-person" data-ref="pe__philipp_QGW_II_I_24" title="Philipp Capuanus [pe__philipp_QGW_II_I_24]" href="../../../register/persons/pe__philipp_QGW_II_I_24.html"><span class="anno-attr anno-attr-occ" data-corresp="org__salerno-erzdioezese">archiepiscopus</span>
-                        Philippus Salernitanus</a>, <a class="anno-person" data-ref="pe__johann_QGW_II_I_24" title="Johannes [pe__johann_QGW_II_I_24]" href="../../../register/persons/pe__johann_QGW_II_I_24.html"><span class="anno-attr anno-attr-title">frater</span><span class="anno-attr anno-attr-occ" data-corresp="org__sassari-erzdioezese"><span class="tei-add">archiepiscopus</span></span> Johannes Turritanus</a>, <a class="anno-person" data-ref="pe__basilius_QGW_II_I_24" title="Basilius [pe__basilius_QGW_II_I_24]" href="../../../register/persons/pe__basilius_QGW_II_I_24.html"><span class="anno-attr anno-attr-title">frater</span><span class="anno-attr anno-attr-occ" data-corresp="org__jerusalem-erzdioezese"><span class="tei-add">archiepiscopus</span></span>
-                        Basilius Jerosolimitanus Armenorum</a>, archiepiscopi <a class="anno-person" data-ref="pe__matthias_QGW_II_I_24" title="Matthias von Krk [pe__matthias_QGW_II_I_24]" href="../../../register/persons/pe__matthias_QGW_II_I_24.html"><span class="anno-attr anno-attr-title">frater</span><span class="anno-attr anno-attr-occ" data-corresp="org__krk-dioezese"><span class="tei-add">episcopus</span></span> Mathäus Vegliensis</a>, <a class="anno-person" data-ref="pe__andreas_QGW_II_I_24" title="Andreas [pe__andreas_QGW_II_I_24]" href="../../../register/persons/pe__andreas_QGW_II_I_24.html"><span class="anno-attr anno-attr-occ" data-corresp="org__venafro-dioezese"><span class="tei-add">episcopus</span></span> Andreas
-                        Venafranus</a>, <a class="anno-person" data-ref="pe__adam_QGW_II_I_24" title="Adam [pe__adam_QGW_II_I_24]" href="../../../register/persons/pe__adam_QGW_II_I_24.html"><span class="anno-attr anno-attr-occ" data-corresp="org__martirano-dioezese"><span class="tei-add">episcopus</span></span>Adam Marturanensis</a>, <a class="anno-person" data-ref="pe__stephan_von_oppido_mamertina_QGW_II_I_24_a" title="Stephan [pe__stephan_von_oppido_mamertina_QGW_II_I_24_a]" href="../../../register/persons/pe__stephan_von_oppido_mamertina_QGW_II_I_24_a.html"><span class="anno-attr anno-attr-occ" data-corresp="org__oppido_mamertina-dioezese"><span class="tei-add">episcopus</span></span>Stephanus Oppidensis</a>, <a class="anno-person" data-ref="pe__ildebrandino_guidi_QGW_II_I_24" title="Ildebrandino Guidi [pe__ildebrandino_guidi_QGW_II_I_24]" href="../../../register/persons/pe__ildebrandino_guidi_QGW_II_I_24.html"><span class="anno-attr anno-attr-occ" data-corresp="org__arezzo-dioezese"><span class="tei-add">episcopus</span></span>Ildebrandinus Aretinus</a>, <a class="anno-person" data-ref="pe__lambert_QGW_II_I_24" title="Lambert [pe__lambert_QGW_II_I_24]" href="../../../register/persons/pe__lambert_QGW_II_I_24.html"><span class="anno-attr anno-attr-title">frater</span><span class="anno-attr anno-attr-occ" data-corresp="org__aquino-dioezese"><span class="tei-add">episcopus</span></span> Lambertus Aquinas</a>, <a class="anno-person" data-ref="pe__stephan_QGW_II_I_24_b" title="Stephan [pe__stephan_QGW_II_I_24_b]" href="../../../register/persons/pe__stephan_QGW_II_I_24_b.html"><span class="anno-attr anno-attr-title">frater</span><span class="anno-attr anno-attr-occ" data-corresp="org__bagnoregio-dioezese"><span class="tei-add">episcopus</span></span> Stephanus Balneoregensis</a>, <a class="anno-person" data-ref="pe__leonardo_patrasso_QGW_II_I_24" title="Leonardo Patrasso [pe__leonardo_patrasso_QGW_II_I_24]" href="../../../register/persons/pe__leonardo_patrasso_QGW_II_I_24.html"><span class="anno-attr anno-attr-occ" data-corresp="org__aversa-dioezese"><span class="tei-add">episcopus</span></span>Leonardus
-                        Aversanus</a>, <a class="anno-person" data-ref="pe__zyprian_QGW_II_I_24" title="Zyprian [pe__zyprian_QGW_II_I_24]" href="../../../register/persons/pe__zyprian_QGW_II_I_24.html"><span class="anno-attr anno-attr-title">frater</span><span class="anno-attr anno-attr-occ" data-corresp="org__bova-dioezese"><span class="tei-add">episcopus</span></span> Ciprianus
-                        Bovensis</a>, <a class="anno-person" data-ref="pe__romanus_QGW_II_I_24" title="Romanus [pe__romanus_QGW_II_I_24]" href="../../../register/persons/pe__romanus_QGW_II_I_24.html"><span class="anno-attr anno-attr-title">frater</span><span class="anno-attr anno-attr-occ" data-corresp="org__croja-dioezese"><span class="tei-add">episcopus</span></span> Romanus
-                        Croensis</a> et <a class="anno-person" data-ref="pe__lando_QGW_II_I_24" title="Lando [pe__lando_QGW_II_I_24]" href="../../../register/persons/pe__lando_QGW_II_I_24.html"><span class="anno-attr anno-attr-occ" data-corresp="org__soana-dioezese"><span class="tei-add">episcopus</span></span>Lando Suanensis</a>, episcopi</span>,
-                  verleihen für die <span class="anno-fn anno-fn-recipient" data-role="recipient"><span class="fn-label">Empfänger*in</span><a class="anno-org" data-ref="org__wien-st_maria_im_rathaus" title="St. Mariakapelle im Rathaus (Kirche_Kapelle) [org__wien-st_maria_im_rathaus]" href="../../../register/orgs/org__wien-st_maria_im_rathaus.html">Kapelle der h. Maria in Wien</a></span>
+            <section class="tei-abstract"><h2 class="tei-section-head">Regest</h2><p>Bischofssammelindulgenz: * <span class="anno-event" data-ref="ev__QGW_II_I_24"><span class="anno-fn anno-fn-issuer" data-role="issuer"><span class="fn-label">Aussteller*in</span><a class="anno-person" data-ref="pe__philipp_QGW_II_I_24" data-hint="Philipp Capuanus [pe__philipp_QGW_II_I_24]" data-hint-type="Person" href="../../../register/persons/pe__philipp_QGW_II_I_24.html"><span class="anno-attr anno-attr-occ" data-corresp="org__salerno-erzdioezese">archiepiscopus</span>
+                        Philippus Salernitanus</a>, <a class="anno-person" data-ref="pe__johann_QGW_II_I_24" data-hint="Johannes [pe__johann_QGW_II_I_24]" data-hint-type="Person" href="../../../register/persons/pe__johann_QGW_II_I_24.html"><span class="anno-attr anno-attr-title">frater</span><span class="anno-attr anno-attr-occ" data-corresp="org__sassari-erzdioezese"><span class="tei-add">archiepiscopus</span></span> Johannes Turritanus</a>, <a class="anno-person" data-ref="pe__basilius_QGW_II_I_24" data-hint="Basilius [pe__basilius_QGW_II_I_24]" data-hint-type="Person" href="../../../register/persons/pe__basilius_QGW_II_I_24.html"><span class="anno-attr anno-attr-title">frater</span><span class="anno-attr anno-attr-occ" data-corresp="org__jerusalem-erzdioezese"><span class="tei-add">archiepiscopus</span></span>
+                        Basilius Jerosolimitanus Armenorum</a>, archiepiscopi <a class="anno-person" data-ref="pe__matthias_QGW_II_I_24" data-hint="Matthias von Krk [pe__matthias_QGW_II_I_24]" data-hint-type="Person" href="../../../register/persons/pe__matthias_QGW_II_I_24.html"><span class="anno-attr anno-attr-title">frater</span><span class="anno-attr anno-attr-occ" data-corresp="org__krk-dioezese"><span class="tei-add">episcopus</span></span> Mathäus Vegliensis</a>, <a class="anno-person" data-ref="pe__andreas_QGW_II_I_24" data-hint="Andreas [pe__andreas_QGW_II_I_24]" data-hint-type="Person" href="../../../register/persons/pe__andreas_QGW_II_I_24.html"><span class="anno-attr anno-attr-occ" data-corresp="org__venafro-dioezese"><span class="tei-add">episcopus</span></span> Andreas
+                        Venafranus</a>, <a class="anno-person" data-ref="pe__adam_QGW_II_I_24" data-hint="Adam [pe__adam_QGW_II_I_24]" data-hint-type="Person" href="../../../register/persons/pe__adam_QGW_II_I_24.html"><span class="anno-attr anno-attr-occ" data-corresp="org__martirano-dioezese"><span class="tei-add">episcopus</span></span>Adam Marturanensis</a>, <a class="anno-person" data-ref="pe__stephan_von_oppido_mamertina_QGW_II_I_24_a" data-hint="Stephan [pe__stephan_von_oppido_mamertina_QGW_II_I_24_a]" data-hint-type="Person" href="../../../register/persons/pe__stephan_von_oppido_mamertina_QGW_II_I_24_a.html"><span class="anno-attr anno-attr-occ" data-corresp="org__oppido_mamertina-dioezese"><span class="tei-add">episcopus</span></span>Stephanus Oppidensis</a>, <a class="anno-person" data-ref="pe__ildebrandino_guidi_QGW_II_I_24" data-hint="Ildebrandino Guidi [pe__ildebrandino_guidi_QGW_II_I_24]" data-hint-type="Person" href="../../../register/persons/pe__ildebrandino_guidi_QGW_II_I_24.html"><span class="anno-attr anno-attr-occ" data-corresp="org__arezzo-dioezese"><span class="tei-add">episcopus</span></span>Ildebrandinus Aretinus</a>, <a class="anno-person" data-ref="pe__lambert_QGW_II_I_24" data-hint="Lambert [pe__lambert_QGW_II_I_24]" data-hint-type="Person" href="../../../register/persons/pe__lambert_QGW_II_I_24.html"><span class="anno-attr anno-attr-title">frater</span><span class="anno-attr anno-attr-occ" data-corresp="org__aquino-dioezese"><span class="tei-add">episcopus</span></span> Lambertus Aquinas</a>, <a class="anno-person" data-ref="pe__stephan_QGW_II_I_24_b" data-hint="Stephan [pe__stephan_QGW_II_I_24_b]" data-hint-type="Person" href="../../../register/persons/pe__stephan_QGW_II_I_24_b.html"><span class="anno-attr anno-attr-title">frater</span><span class="anno-attr anno-attr-occ" data-corresp="org__bagnoregio-dioezese"><span class="tei-add">episcopus</span></span> Stephanus Balneoregensis</a>, <a class="anno-person" data-ref="pe__leonardo_patrasso_QGW_II_I_24" data-hint="Leonardo Patrasso [pe__leonardo_patrasso_QGW_II_I_24]" data-hint-type="Person" href="../../../register/persons/pe__leonardo_patrasso_QGW_II_I_24.html"><span class="anno-attr anno-attr-occ" data-corresp="org__aversa-dioezese"><span class="tei-add">episcopus</span></span>Leonardus
+                        Aversanus</a>, <a class="anno-person" data-ref="pe__zyprian_QGW_II_I_24" data-hint="Zyprian [pe__zyprian_QGW_II_I_24]" data-hint-type="Person" href="../../../register/persons/pe__zyprian_QGW_II_I_24.html"><span class="anno-attr anno-attr-title">frater</span><span class="anno-attr anno-attr-occ" data-corresp="org__bova-dioezese"><span class="tei-add">episcopus</span></span> Ciprianus
+                        Bovensis</a>, <a class="anno-person" data-ref="pe__romanus_QGW_II_I_24" data-hint="Romanus [pe__romanus_QGW_II_I_24]" data-hint-type="Person" href="../../../register/persons/pe__romanus_QGW_II_I_24.html"><span class="anno-attr anno-attr-title">frater</span><span class="anno-attr anno-attr-occ" data-corresp="org__croja-dioezese"><span class="tei-add">episcopus</span></span> Romanus
+                        Croensis</a> et <a class="anno-person" data-ref="pe__lando_QGW_II_I_24" data-hint="Lando [pe__lando_QGW_II_I_24]" data-hint-type="Person" href="../../../register/persons/pe__lando_QGW_II_I_24.html"><span class="anno-attr anno-attr-occ" data-corresp="org__soana-dioezese"><span class="tei-add">episcopus</span></span>Lando Suanensis</a>, episcopi</span>,
+                  verleihen für die <span class="anno-fn anno-fn-recipient" data-role="recipient"><span class="fn-label">Empfänger*in</span><a class="anno-org" data-ref="org__wien-st_maria_im_rathaus" data-hint="St. Mariakapelle im Rathaus (Kirche_Kapelle) [org__wien-st_maria_im_rathaus]" data-hint-type="Organisation" href="../../../register/orgs/org__wien-st_maria_im_rathaus.html">Kapelle der h. Maria in Wien</a></span>
                   einen vierzigtägigen Ablass.</span></p></section>
 
             <!-- Data layer: provenance strip. Korpus + Idno stehen schon
@@ -284,7 +290,7 @@
          dem TEI in mehreren Untertabellen, Personen/Orgs/Orte,
          Ereignisse, Dispositivformeln, Editorische Ergaenzungen. Wird
          per JS aus den entsprechenden Spans im Body aufgebaut. -->
-    <section class="annotations-view" id="factoid-view" aria-label="Annotationen">
+    <section class="annotations-view" id="annotations-view" aria-label="Annotationen">
         <header class="annotations-header">
             <h2 class="annotations-title">Annotationen</h2>
             <span class="annotations-summary"></span>
@@ -330,13 +336,14 @@
         </div>
     </footer>
 
-    <script src="../../../static/js/core.js?v=20260511112948"></script>
-    <script src="../../../static/js/provenance.js?v=20260511112948"></script>
-    <script src="../../../static/js/basket.js?v=20260511112948"></script>
+    <script src="../../../static/js/core.js?v=20260511125458"></script>
+    <script src="../../../static/js/tip.js?v=20260511125458"></script>
+    <script src="../../../static/js/hint.js?v=20260511125458"></script>
+    <script src="../../../static/js/basket.js?v=20260511125458"></script>
     
-<script src="../../../static/js/tooltips.js?v=20260511112948"></script>
-<script src="../../../static/js/facsimile.js?v=20260511112948"></script>
-<script src="../../../static/js/document.js?v=20260511112948"></script>
+<script src="../../../static/js/facsimile.js?v=20260511125458"></script>
+<script src="../../../static/js/document.js?v=20260511125458"></script>
+<script src="../../../static/js/basket-mount.js?v=20260511125458"></script>
 
 </body>
 </html>

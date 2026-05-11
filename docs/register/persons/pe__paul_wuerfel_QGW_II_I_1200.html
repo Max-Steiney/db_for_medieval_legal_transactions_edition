@@ -3,22 +3,22 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <meta http-equiv="Content-Security-Policy" content="default-src 'self'; script-src 'self'; style-src 'self'; font-src 'self'; img-src 'self' data: https://images.monasterium.net https://www.monasterium.net; connect-src 'self'; frame-ancestors 'none'; base-uri 'self'; form-action 'self'; upgrade-insecure-requests">
+    <meta http-equiv="Content-Security-Policy" content="default-src 'self'; script-src 'self'; style-src 'self'; font-src 'self'; img-src 'self' data: https://images.monasterium.net https://www.monasterium.net; connect-src 'self'; base-uri 'self'; form-action 'self'; upgrade-insecure-requests">
     <meta name="referrer" content="strict-origin-when-cross-origin">
     <meta http-equiv="Permissions-Policy" content="camera=(), microphone=(), geolocation=(), interest-cohort=()">
     <title>Paul Würfel der Ältere, Datenbank</title>
     <link rel="preload" as="font" type="font/woff2" crossorigin
           href="../../static/fonts/inter-400-latin.woff2">
-    <link rel="stylesheet" href="../../static/css/fonts.css?v=20260511112948">
-    <link rel="stylesheet" href="../../static/css/tokens.css?v=20260511112948">
-    <link rel="stylesheet" href="../../static/css/base.css?v=20260511112948">
-    <link rel="stylesheet" href="../../static/css/components.css?v=20260511112948">
-    <link rel="stylesheet" href="../../static/css/responsive.css?v=20260511112948">
-    <link rel="stylesheet" href="../../static/css/print.css?v=20260511112948">
-    <link rel="stylesheet" href="../../static/css/provenance.css?v=20260511112948">
+    <link rel="stylesheet" href="../../static/css/fonts.css?v=20260511125458">
+    <link rel="stylesheet" href="../../static/css/tokens.css?v=20260511125458">
+    <link rel="stylesheet" href="../../static/css/base.css?v=20260511125458">
+    <link rel="stylesheet" href="../../static/css/components.css?v=20260511125458">
+    <link rel="stylesheet" href="../../static/css/responsive.css?v=20260511125458">
+    <link rel="stylesheet" href="../../static/css/print.css?v=20260511125458">
+    <link rel="stylesheet" href="../../static/css/tip.css?v=20260511125458">
     
-<link rel="stylesheet" href="../../static/css/document.css?v=20260511112948">
-<link rel="stylesheet" href="../../static/css/person.css?v=20260511112948">
+<link rel="stylesheet" href="../../static/css/document.css?v=20260511125458">
+<link rel="stylesheet" href="../../static/css/person.css?v=20260511125458">
 
 </head>
 <body data-root-path="../.."
@@ -48,8 +48,6 @@
         <a href="../../register/persons.html">Personen</a>
         
         <a href="../../register/orgs.html">Organisationen</a>
-        
-        <a href="../../register/places.html">Orte</a>
         
     </div>
 </div>
@@ -91,7 +89,7 @@
     </div>
 </div>
 
-                <a href="../../korb.html" class="nav-basket" aria-label="Wissenskorb">
+                <a href="../../korb.html" class="nav-basket" aria-label="Datenkorb">
                     <svg width="18" height="18" viewBox="0 0 18 18" fill="none" aria-hidden="true">
                         <path d="M3 5h12l-1.2 8.5a1 1 0 0 1-1 .85H5.2a1 1 0 0 1-1-.85L3 5z"
                               stroke="currentColor" stroke-width="1.4" fill="none"
@@ -112,11 +110,23 @@
 
     <div class="person-toolbar">
         <div class="person-toolbar-inner">
-            <nav class="person-breadcrumb" aria-label="Position">
-                <a href="../../register/persons.html">Personenregister</a>
-                <span class="bc-sep">&rsaquo;</span>
-                <span class="bc-doc"><strong>Paul Würfel der Ältere</strong></span>
-            </nav>
+            <div class="person-toolbar-row">
+                <nav class="person-breadcrumb" aria-label="Position">
+                    <a href="../../register/persons.html">Personenregister</a>
+                    <span class="bc-sep">&rsaquo;</span>
+                    <span class="bc-doc"><strong>Paul Würfel der Ältere</strong></span>
+                </nav>
+                <div class="person-toolbar-actions">
+                    <span class="toolbar-basket-mount"
+                          data-basket-type="person"
+                          data-basket-id="pe__paul_wuerfel_QGW_II_I_1200"
+                          data-basket-label="Paul Würfel der Ältere"
+                          data-basket-url="register/persons/pe__paul_wuerfel_QGW_II_I_1200.html"
+                          data-basket-sex="m"
+                          data-basket-active-min="1391"
+                          data-basket-active-max="1411"></span>
+                </div>
+            </div>
             <div class="person-toolbar-meta">
                 <span class="meta-pair">
                     <span class="meta-label">Geschlecht</span>
@@ -124,11 +134,41 @@
                 </span>
                 
                 <span class="meta-pair">
-                    <span class="meta-label">Belegt</span>
+                    <span class="meta-label">Belegt
+<span class="tip-wrap">
+    <button type="button" class="tip-trigger tip-trigger--icon"
+            aria-expanded="false" aria-haspopup="dialog"
+            aria-controls="person-belegt"
+            data-tip="person-belegt"
+            aria-label="Definition: Beleg-Zeitraum">
+        <svg width="13" height="13" viewBox="0 0 16 16" aria-hidden="true">
+            <circle cx="8" cy="8" r="7" stroke="currentColor" stroke-width="1.4" fill="none"/>
+            <text x="8" y="11.6" text-anchor="middle" font-size="9.5" font-weight="700"
+                  fill="currentColor" font-family="Georgia, serif">i</text>
+        </svg>
+    </button>
+    <aside class="tip-popover tip-popover--glossary"
+           id="person-belegt" role="dialog" aria-hidden="true"
+           aria-label="Definition: Beleg-Zeitraum">
+        <header class="tip-head">
+            <h3 class="tip-title">Beleg-Zeitraum</h3>
+            <button type="button" class="tip-close" aria-label="Schlie&szlig;en">&times;</button>
+        </header>
+        <div class="tip-body">
+            <p>Erste und letzte Datierung einer Quelle, in der die Person erscheint. Bei einzelnem Beleg wird nur ein Jahr angegeben.</p>
+            
+        </div>
+    </aside>
+</span>
+</span>
                     <span class="meta-value">1391 bis 1411</span>
                 </span>
                 
                 
+                <span class="meta-pair">
+                    <span class="meta-label">Quellen</span>
+                    <span class="meta-value">46</span>
+                </span>
                 <span class="meta-pair person-id-pair">
                     <span class="meta-label">ID</span>
                     <code class="meta-value person-id">pe__paul_wuerfel_QGW_II_I_1200</code>
@@ -145,10 +185,11 @@
             
         </h1>
         
+        
         <p class="person-note">Wiener Stadtrichter und Bürgermeister, Bruder Niklas der Würfel</p>
         
         
-        <p class="person-titles">
+        <p class="person-titles" data-collapsible="22">
             <span class="pt-label">In den Quellen genannt als</span>
             <span class="pt-chip">hern</span>
         </p>
@@ -158,7 +199,44 @@
             <a class="ext-link" href="https://www.wienwiki.at/?curid=10980" target="_blank" rel="noopener noreferrer">Wien-Wiki: Paul Würffel der Ältere</a>
         </p>
         
+        
+        <p class="person-extlinks">
+            
+            <a class="ext-link" href="https://www.geschichtewiki.wien.gv.at/Special:URIResolver/?curid=10980" target="_blank" rel="noopener noreferrer">Authority-Eintrag</a>
+            
+        </p>
+        
     </header>
+
+    
+    <section class="role-strip" aria-label="Rollen in Rechtsgeschäften">
+        <h2 class="role-strip-title">Rollen in Rechtsgeschäften</h2>
+        <div class="role-strip-cells">
+            
+            <div class="role-cell role-cell-issuer">
+                <span class="role-cell-count">6</span>
+                <span class="role-cell-label">Aussteller*in</span>
+            </div>
+            
+            <div class="role-cell role-cell-recipient">
+                <span class="role-cell-count">4</span>
+                <span class="role-cell-label">Empfänger*in</span>
+            </div>
+            
+            <div class="role-cell role-cell-witness">
+                <span class="role-cell-count">21</span>
+                <span class="role-cell-label">Zeuge / Siegler*in</span>
+            </div>
+            
+            <div class="role-cell role-cell-other">
+                <span class="role-cell-count">18</span>
+                <span class="role-cell-label">Sonstige</span>
+            </div>
+            
+        </div>
+        <p class="role-strip-hint">Summe Rollen-Belegungen: 49. Mehrfach-Rollen pro Quelle sind möglich.</p>
+    </section>
+    
 
     
 
@@ -175,6 +253,7 @@
                 <span class="rel-block-count">13</span>
                 <span class="rel-block-hint">Verwandtschaftsverhältnisse, wie sie in den Quellen explizit benannt werden.</span>
             </header>
+            
             <table class="rel-table">
                 <thead>
                     <tr>
@@ -195,7 +274,7 @@
                         <td class="rel-col-label"><em>Bruder</em></td>
                         <td class="rel-col-perspective">
                             
-                                Paul Würfel der Ältere → Niklas Würfel
+                                Paul Würfel der Ältere &rsaquo; Niklas Würfel
                             
                         </td>
                         <td class="rel-col-source">
@@ -214,7 +293,7 @@
                         <td class="rel-col-label"><em>bruders</em></td>
                         <td class="rel-col-perspective">
                             
-                                Heinrich Würfel Würfel → Paul Würfel der Ältere
+                                Heinrich Würfel Würfel &rsaquo; Paul Würfel der Ältere
                             
                         </td>
                         <td class="rel-col-source">
@@ -233,7 +312,7 @@
                         <td class="rel-col-label"><em>pru/eder</em></td>
                         <td class="rel-col-perspective">
                             
-                                Paul Würfel der Ältere → Niklas Würfel
+                                Paul Würfel der Ältere &rsaquo; Niklas Würfel
                             
                         </td>
                         <td class="rel-col-source">
@@ -252,7 +331,7 @@
                         <td class="rel-col-label"><em>Oheim</em></td>
                         <td class="rel-col-perspective">
                             
-                                Johann auf der Säule → Paul Würfel der Ältere
+                                Johann auf der Säule &rsaquo; Paul Würfel der Ältere
                             
                         </td>
                         <td class="rel-col-source">
@@ -271,7 +350,7 @@
                         <td class="rel-col-label"><em>pruder</em></td>
                         <td class="rel-col-perspective">
                             
-                                Paul Würfel der Ältere → Niklas Würfel
+                                Paul Würfel der Ältere &rsaquo; Niklas Würfel
                             
                         </td>
                         <td class="rel-col-source">
@@ -290,7 +369,7 @@
                         <td class="rel-col-label"><em>Bruders</em></td>
                         <td class="rel-col-perspective">
                             
-                                Paul Würfel der Ältere → Niklas Würfel
+                                Paul Würfel der Ältere &rsaquo; Niklas Würfel
                             
                         </td>
                         <td class="rel-col-source">
@@ -309,7 +388,7 @@
                         <td class="rel-col-label"><em>Bruders</em></td>
                         <td class="rel-col-perspective">
                             
-                                Paul Würfel der Ältere → Niklas Würfel
+                                Paul Würfel der Ältere &rsaquo; Niklas Würfel
                             
                         </td>
                         <td class="rel-col-source">
@@ -328,7 +407,7 @@
                         <td class="rel-col-label"><em>Bruders</em></td>
                         <td class="rel-col-perspective">
                             
-                                Paul Würfel der Ältere → Niklas Würfel
+                                Paul Würfel der Ältere &rsaquo; Niklas Würfel
                             
                         </td>
                         <td class="rel-col-source">
@@ -347,7 +426,7 @@
                         <td class="rel-col-label"><em>Bruder</em></td>
                         <td class="rel-col-perspective">
                             
-                                Paul Würfel der Ältere → Niklas Würfel
+                                Paul Würfel der Ältere &rsaquo; Niklas Würfel
                             
                         </td>
                         <td class="rel-col-source">
@@ -366,7 +445,7 @@
                         <td class="rel-col-label"><em>Vetters</em></td>
                         <td class="rel-col-perspective">
                             
-                                Paul Würfel der Ältere → Niklas Würfel
+                                Paul Würfel der Ältere &rsaquo; Niklas Würfel
                             
                         </td>
                         <td class="rel-col-source">
@@ -385,7 +464,7 @@
                         <td class="rel-col-label"><em>Vetter</em></td>
                         <td class="rel-col-perspective">
                             
-                                Paul Würfel der Ältere → Sigmund Würfel
+                                Paul Würfel der Ältere &rsaquo; Sigmund Würfel
                             
                         </td>
                         <td class="rel-col-source">
@@ -404,7 +483,7 @@
                         <td class="rel-col-label"><em>swager</em></td>
                         <td class="rel-col-perspective">
                             
-                                Paul Würfel der Ältere → Johann Messenbacher
+                                Paul Würfel der Ältere &rsaquo; Johann Messenbacher
                             
                         </td>
                         <td class="rel-col-source">
@@ -423,7 +502,7 @@
                         <td class="rel-col-label"><em>swager</em></td>
                         <td class="rel-col-perspective">
                             
-                                Paul Würfel der Ältere → Johann Messenbacher
+                                Paul Würfel der Ältere &rsaquo; Johann Messenbacher
                             
                         </td>
                         <td class="rel-col-source">
@@ -449,6 +528,7 @@
                 <span class="rel-block-count">7</span>
                 <span class="rel-block-hint">Stellvertretungs-Beziehungen, z. B. handelt eine Person an Stelle einer anderen.</span>
             </header>
+            
             <table class="rel-table">
                 <thead>
                     <tr>
@@ -469,7 +549,7 @@
                         <td class="rel-col-label"><em>Geschäftsherr</em></td>
                         <td class="rel-col-perspective">
                             
-                                Paul Würfel der Ältere → Johann auf der Säule
+                                Paul Würfel der Ältere &rsaquo; Johann auf der Säule
                             
                         </td>
                         <td class="rel-col-source">
@@ -488,7 +568,7 @@
                         <td class="rel-col-label"><em>ausrichter und vollfurer des geschefts</em></td>
                         <td class="rel-col-perspective">
                             
-                                Paul Würfel der Ältere → Johann auf der Säule
+                                Paul Würfel der Ältere &rsaquo; Johann auf der Säule
                             
                         </td>
                         <td class="rel-col-source">
@@ -507,7 +587,7 @@
                         <td class="rel-col-label"><em>gescheftherren</em></td>
                         <td class="rel-col-perspective">
                             
-                                Paul Würfel der Ältere → Johann auf der Säule
+                                Paul Würfel der Ältere &rsaquo; Johann auf der Säule
                             
                         </td>
                         <td class="rel-col-source">
@@ -526,7 +606,7 @@
                         <td class="rel-col-label"><em>Geschäftsherren</em></td>
                         <td class="rel-col-perspective">
                             
-                                Paul Würfel der Ältere → Johann auf der Säule
+                                Paul Würfel der Ältere &rsaquo; Johann auf der Säule
                             
                         </td>
                         <td class="rel-col-source">
@@ -545,7 +625,7 @@
                         <td class="rel-col-label"><em>Geschäftsherr</em></td>
                         <td class="rel-col-perspective">
                             
-                                Paul Würfel der Ältere → Niklas Würfel
+                                Paul Würfel der Ältere &rsaquo; Niklas Würfel
                             
                         </td>
                         <td class="rel-col-source">
@@ -564,7 +644,7 @@
                         <td class="rel-col-label"><em>Geschäftsherren</em></td>
                         <td class="rel-col-perspective">
                             
-                                Paul Würfel der Ältere → Niklas Würfel
+                                Paul Würfel der Ältere &rsaquo; Niklas Würfel
                             
                         </td>
                         <td class="rel-col-source">
@@ -583,7 +663,7 @@
                         <td class="rel-col-label"><em>empfiehlt</em></td>
                         <td class="rel-col-perspective">
                             
-                                Paul Würfel der Ältere → Sigmund Würfel
+                                Paul Würfel der Ältere &rsaquo; Sigmund Würfel
                             
                         </td>
                         <td class="rel-col-source">
@@ -606,6 +686,12 @@
                 <span class="rel-block-count">37</span>
                 <span class="rel-block-hint">Berufs- oder Amtsbezeichnung in Bezug auf eine Institution.</span>
             </header>
+            
+            <div class="table-filter">
+                <input type="search" class="table-filter-input" data-target="rel" placeholder="In der Tabelle filtern&hellip;" aria-label="In der Tabelle filtern">
+                <span class="table-filter-status"></span>
+            </div>
+            
             <table class="rel-table">
                 <thead>
                     <tr>
@@ -626,7 +712,7 @@
                         <td class="rel-col-label"><em>statrichter</em></td>
                         <td class="rel-col-perspective">
                             
-                                Paul Würfel der Ältere → Wien
+                                Paul Würfel der Ältere &rsaquo; Wien
                             
                         </td>
                         <td class="rel-col-source">
@@ -645,7 +731,7 @@
                         <td class="rel-col-label"><em>Stadtrichters</em></td>
                         <td class="rel-col-perspective">
                             
-                                Paul Würfel der Ältere → Wien
+                                Paul Würfel der Ältere &rsaquo; Wien
                             
                         </td>
                         <td class="rel-col-source">
@@ -664,7 +750,7 @@
                         <td class="rel-col-label"><em>statrichter</em></td>
                         <td class="rel-col-perspective">
                             
-                                Paul Würfel der Ältere → Wien
+                                Paul Würfel der Ältere &rsaquo; Wien
                             
                         </td>
                         <td class="rel-col-source">
@@ -683,7 +769,7 @@
                         <td class="rel-col-label"><em>statrichter</em></td>
                         <td class="rel-col-perspective">
                             
-                                Paul Würfel der Ältere → Wien
+                                Paul Würfel der Ältere &rsaquo; Wien
                             
                         </td>
                         <td class="rel-col-source">
@@ -702,7 +788,7 @@
                         <td class="rel-col-label"><em>des herzogen anbalt in der münz ze Wienn</em></td>
                         <td class="rel-col-perspective">
                             
-                                Paul Würfel der Ältere → Herzogtum Österreich
+                                Paul Würfel der Ältere &rsaquo; Herzogtum Österreich
                             
                         </td>
                         <td class="rel-col-source">
@@ -721,7 +807,7 @@
                         <td class="rel-col-label"><em>Bürgermeisters</em></td>
                         <td class="rel-col-perspective">
                             
-                                Paul Würfel der Ältere → Wien
+                                Paul Würfel der Ältere &rsaquo; Wien
                             
                         </td>
                         <td class="rel-col-source">
@@ -740,7 +826,7 @@
                         <td class="rel-col-label"><em>Bürgermeisters</em></td>
                         <td class="rel-col-perspective">
                             
-                                Paul Würfel der Ältere → Wien
+                                Paul Würfel der Ältere &rsaquo; Wien
                             
                         </td>
                         <td class="rel-col-source">
@@ -759,7 +845,7 @@
                         <td class="rel-col-label"><em>purgermaister</em></td>
                         <td class="rel-col-perspective">
                             
-                                Paul Würfel der Ältere → Wien
+                                Paul Würfel der Ältere &rsaquo; Wien
                             
                         </td>
                         <td class="rel-col-source">
@@ -778,7 +864,7 @@
                         <td class="rel-col-label"><em>purgermaister</em></td>
                         <td class="rel-col-perspective">
                             
-                                Paul Würfel der Ältere → Wien
+                                Paul Würfel der Ältere &rsaquo; Wien
                             
                         </td>
                         <td class="rel-col-source">
@@ -797,7 +883,7 @@
                         <td class="rel-col-label"><em>Bürgermeisters</em></td>
                         <td class="rel-col-perspective">
                             
-                                Paul Würfel der Ältere → Wien
+                                Paul Würfel der Ältere &rsaquo; Wien
                             
                         </td>
                         <td class="rel-col-source">
@@ -816,7 +902,7 @@
                         <td class="rel-col-label"><em>Bürgermeisters</em></td>
                         <td class="rel-col-perspective">
                             
-                                Paul Würfel der Ältere → Wien
+                                Paul Würfel der Ältere &rsaquo; Wien
                             
                         </td>
                         <td class="rel-col-source">
@@ -835,7 +921,7 @@
                         <td class="rel-col-label"><em>Bürgermeisters</em></td>
                         <td class="rel-col-perspective">
                             
-                                Paul Würfel der Ältere → Wien
+                                Paul Würfel der Ältere &rsaquo; Wien
                             
                         </td>
                         <td class="rel-col-source">
@@ -854,7 +940,7 @@
                         <td class="rel-col-label"><em>Bürgermeisters</em></td>
                         <td class="rel-col-perspective">
                             
-                                Paul Würfel der Ältere → Wien
+                                Paul Würfel der Ältere &rsaquo; Wien
                             
                         </td>
                         <td class="rel-col-source">
@@ -873,7 +959,7 @@
                         <td class="rel-col-label"><em>purgermaister</em></td>
                         <td class="rel-col-perspective">
                             
-                                Paul Würfel der Ältere → Wien
+                                Paul Würfel der Ältere &rsaquo; Wien
                             
                         </td>
                         <td class="rel-col-source">
@@ -892,7 +978,7 @@
                         <td class="rel-col-label"><em>obrister amptman</em></td>
                         <td class="rel-col-perspective">
                             
-                                Paul Würfel der Ältere → pe__wilhelm_herzog_von_oesterreich_QGW_II_I_1313
+                                Paul Würfel der Ältere &rsaquo; pe__wilhelm_herzog_von_oesterreich_QGW_II_I_1313
                             
                         </td>
                         <td class="rel-col-source">
@@ -911,7 +997,7 @@
                         <td class="rel-col-label"><em>Bürger</em></td>
                         <td class="rel-col-perspective">
                             
-                                Paul Würfel der Ältere → Wien
+                                Paul Würfel der Ältere &rsaquo; Wien
                             
                         </td>
                         <td class="rel-col-source">
@@ -930,7 +1016,7 @@
                         <td class="rel-col-label"><em>Bürgermeisters</em></td>
                         <td class="rel-col-perspective">
                             
-                                Paul Würfel der Ältere → Wien
+                                Paul Würfel der Ältere &rsaquo; Wien
                             
                         </td>
                         <td class="rel-col-source">
@@ -949,7 +1035,7 @@
                         <td class="rel-col-label"><em>purgermaister</em></td>
                         <td class="rel-col-perspective">
                             
-                                Paul Würfel der Ältere → Wien
+                                Paul Würfel der Ältere &rsaquo; Wien
                             
                         </td>
                         <td class="rel-col-source">
@@ -968,7 +1054,7 @@
                         <td class="rel-col-label"><em>burgermaister</em></td>
                         <td class="rel-col-perspective">
                             
-                                Paul Würfel der Ältere → Wien
+                                Paul Würfel der Ältere &rsaquo; Wien
                             
                         </td>
                         <td class="rel-col-source">
@@ -987,7 +1073,7 @@
                         <td class="rel-col-label"><em>burgermaister</em></td>
                         <td class="rel-col-perspective">
                             
-                                Paul Würfel der Ältere → Wien
+                                Paul Würfel der Ältere &rsaquo; Wien
                             
                         </td>
                         <td class="rel-col-source">
@@ -1006,7 +1092,7 @@
                         <td class="rel-col-label"><em>Bürgermeisters</em></td>
                         <td class="rel-col-perspective">
                             
-                                Paul Würfel der Ältere → Wien
+                                Paul Würfel der Ältere &rsaquo; Wien
                             
                         </td>
                         <td class="rel-col-source">
@@ -1025,7 +1111,7 @@
                         <td class="rel-col-label"><em>Bürgermeisters</em></td>
                         <td class="rel-col-perspective">
                             
-                                Paul Würfel der Ältere → Wien
+                                Paul Würfel der Ältere &rsaquo; Wien
                             
                         </td>
                         <td class="rel-col-source">
@@ -1044,7 +1130,7 @@
                         <td class="rel-col-label"><em>Bürger</em></td>
                         <td class="rel-col-perspective">
                             
-                                Paul Würfel der Ältere → Wien
+                                Paul Würfel der Ältere &rsaquo; Wien
                             
                         </td>
                         <td class="rel-col-source">
@@ -1063,7 +1149,7 @@
                         <td class="rel-col-label"><em>Bürger</em></td>
                         <td class="rel-col-perspective">
                             
-                                Paul Würfel der Ältere → Wien
+                                Paul Würfel der Ältere &rsaquo; Wien
                             
                         </td>
                         <td class="rel-col-source">
@@ -1082,7 +1168,7 @@
                         <td class="rel-col-label"><em>Bürger</em></td>
                         <td class="rel-col-perspective">
                             
-                                Paul Würfel der Ältere → Wien
+                                Paul Würfel der Ältere &rsaquo; Wien
                             
                         </td>
                         <td class="rel-col-source">
@@ -1101,7 +1187,7 @@
                         <td class="rel-col-label"><em>Bürgers</em></td>
                         <td class="rel-col-perspective">
                             
-                                Paul Würfel der Ältere → Wien
+                                Paul Würfel der Ältere &rsaquo; Wien
                             
                         </td>
                         <td class="rel-col-source">
@@ -1120,7 +1206,7 @@
                         <td class="rel-col-label"><em>Bürgermeisters</em></td>
                         <td class="rel-col-perspective">
                             
-                                Paul Würfel der Ältere → Wien
+                                Paul Würfel der Ältere &rsaquo; Wien
                             
                         </td>
                         <td class="rel-col-source">
@@ -1139,7 +1225,7 @@
                         <td class="rel-col-label"><em>purgermaister</em></td>
                         <td class="rel-col-perspective">
                             
-                                Paul Würfel der Ältere → Wien
+                                Paul Würfel der Ältere &rsaquo; Wien
                             
                         </td>
                         <td class="rel-col-source">
@@ -1158,7 +1244,7 @@
                         <td class="rel-col-label"><em>purgermaister</em></td>
                         <td class="rel-col-perspective">
                             
-                                Paul Würfel der Ältere → Wien
+                                Paul Würfel der Ältere &rsaquo; Wien
                             
                         </td>
                         <td class="rel-col-source">
@@ -1177,7 +1263,7 @@
                         <td class="rel-col-label"><em>Bürgermeisters</em></td>
                         <td class="rel-col-perspective">
                             
-                                Paul Würfel der Ältere → Wien
+                                Paul Würfel der Ältere &rsaquo; Wien
                             
                         </td>
                         <td class="rel-col-source">
@@ -1196,7 +1282,7 @@
                         <td class="rel-col-label"><em>Bürgermeisters</em></td>
                         <td class="rel-col-perspective">
                             
-                                Paul Würfel der Ältere → Wien
+                                Paul Würfel der Ältere &rsaquo; Wien
                             
                         </td>
                         <td class="rel-col-source">
@@ -1215,7 +1301,7 @@
                         <td class="rel-col-label"><em>Bürger</em></td>
                         <td class="rel-col-perspective">
                             
-                                Paul Würfel der Ältere → Wien
+                                Paul Würfel der Ältere &rsaquo; Wien
                             
                         </td>
                         <td class="rel-col-source">
@@ -1234,7 +1320,7 @@
                         <td class="rel-col-label"><em>munsmaister</em></td>
                         <td class="rel-col-perspective">
                             
-                                Paul Würfel der Ältere → Herzogtum Österreich
+                                Paul Würfel der Ältere &rsaquo; Herzogtum Österreich
                             
                         </td>
                         <td class="rel-col-source">
@@ -1253,7 +1339,7 @@
                         <td class="rel-col-label"><em>münssmaister</em></td>
                         <td class="rel-col-perspective">
                             
-                                Paul Würfel der Ältere → Herzogtum Österreich
+                                Paul Würfel der Ältere &rsaquo; Herzogtum Österreich
                             
                         </td>
                         <td class="rel-col-source">
@@ -1272,7 +1358,7 @@
                         <td class="rel-col-label"><em>münssmaister</em></td>
                         <td class="rel-col-perspective">
                             
-                                Paul Würfel der Ältere → Herzogtum Österreich
+                                Paul Würfel der Ältere &rsaquo; Herzogtum Österreich
                             
                         </td>
                         <td class="rel-col-source">
@@ -1291,7 +1377,7 @@
                         <td class="rel-col-label"><em>purgermaister</em></td>
                         <td class="rel-col-perspective">
                             
-                                Paul Würfel der Ältere → Wien
+                                Paul Würfel der Ältere &rsaquo; Wien
                             
                         </td>
                         <td class="rel-col-source">
@@ -1310,7 +1396,7 @@
                         <td class="rel-col-label"><em>purgermaister</em></td>
                         <td class="rel-col-perspective">
                             
-                                Paul Würfel der Ältere → Wien
+                                Paul Würfel der Ältere &rsaquo; Wien
                             
                         </td>
                         <td class="rel-col-source">
@@ -1328,18 +1414,32 @@
         
         
         
+        
+        
+        
+        
+        
+        
     </section>
     
 
     
     <section class="person-sources" aria-label="Quellen mit Nennung">
         <h2 class="section-head">Quellen mit Nennung</h2>
+        
+        <div class="table-filter">
+            <input type="search" class="table-filter-input" data-target="src" placeholder="In den Quellen filtern&hellip;" aria-label="In den Quellen filtern">
+            <span class="table-filter-status"></span>
+        </div>
+        
         <table class="person-source-table">
             <thead>
                 <tr>
                     <th scope="col" class="src-col-idno">Nr.</th>
                     <th scope="col" class="src-col-date">Datum</th>
                     <th scope="col" class="src-col-corpus">Quellenkorpus</th>
+                    <th scope="col" class="src-col-label">Bezeichnung</th>
+                    <th scope="col" class="src-col-role">Rolle</th>
                     <th scope="col" class="src-col-regest">Regest</th>
                 </tr>
             </thead>
@@ -1349,6 +1449,11 @@
                     <td class="src-col-idno"><a href="../../documents/QGW/Vienna_1177-1414_ready/1200.html">1200</a></td>
                     <td class="src-col-date">1391 II 02</td>
                     <td class="src-col-corpus">QGW II/1 (1177–1414)</td>
+                    <td class="src-col-label"><em>-</em></td>
+                    <td class="src-col-role">
+                        <span class="role-chip role-chip-recipient">Empfänger*in</span>
+                        
+                    </td>
                     <td class="src-col-regest">Ludweik, pharrer zu Hietzing, verpflichtet sich gegenüber dem Ritter hern Niclasen dem Würfel Geschäftsherr , dessen Bruder Pauln dem Würfel Geschäftsherr und Niclasen dem Flustharten Geschäftsherr ,…</td>
                 </tr>
             
@@ -1356,6 +1461,11 @@
                     <td class="src-col-idno"><a href="../../documents/QGW/Vienna_1177-1414_ready/1211.html">1211</a></td>
                     <td class="src-col-date">1391 VII 25</td>
                     <td class="src-col-corpus">QGW II/1 (1177–1414)</td>
+                    <td class="src-col-label"><em>-</em></td>
+                    <td class="src-col-role">
+                        <span class="role-chip role-chip-witness">Zeuge / Siegler*in</span>
+                        
+                    </td>
                     <td class="src-col-regest">Niclas der Flusthart, purger ze Wienn, verkauft mit Handen hern Michels des Geuchramer, purgermaister und münzmaister, und des rats gemain der stat ze Wienne ein Haus und einen Gewandkeller, was ihm…</td>
                 </tr>
             
@@ -1363,6 +1473,11 @@
                     <td class="src-col-idno"><a href="../../documents/QGW/Vienna_1177-1414_ready/1219.html">1219</a></td>
                     <td class="src-col-date">1391 IX 29</td>
                     <td class="src-col-corpus">QGW II/1 (1177–1414)</td>
+                    <td class="src-col-label"><em>-</em></td>
+                    <td class="src-col-role">
+                        <span class="role-chip role-chip-issuer">Aussteller*in</span><span class="role-chip role-chip-witness">Zeuge / Siegler*in</span>
+                        
+                    </td>
                     <td class="src-col-regest">Geschäftsherr Niclas der Würffel, der elter, und Paul der Würffel, sein pru/eder, und gescheftherren ihres Oheims Oheim Hannsen auf der Se/aul, bestätigen, dass dieser 2 lb dn. geltes purkrechts,…</td>
                 </tr>
             
@@ -1370,6 +1485,11 @@
                     <td class="src-col-idno"><a href="../../documents/QGW/Vienna_1177-1414_ready/1221.html">1221</a></td>
                     <td class="src-col-date">1391 IX 29</td>
                     <td class="src-col-corpus">QGW II/1 (1177–1414)</td>
+                    <td class="src-col-label"><em>-</em></td>
+                    <td class="src-col-role">
+                        <span class="role-chip role-chip-recipient">Empfänger*in</span>
+                        
+                    </td>
                     <td class="src-col-regest">Pruder Niclas, cardian des convencz dacz den Minnerprüdern zu Wienn, bestätigt und verpflichtet sich, dass der Wiener Bürger Hanns auf der Seul geschafft habe dem Kloster 1 lb dn. geltes, das da leit…</td>
                 </tr>
             
@@ -1377,6 +1497,11 @@
                     <td class="src-col-idno"><a href="../../documents/QGW/Vienna_1177-1414_ready/1225.html">1225</a></td>
                     <td class="src-col-date">1392 I 24</td>
                     <td class="src-col-corpus">QGW II/1 (1177–1414)</td>
+                    <td class="src-col-label"><em>hern</em></td>
+                    <td class="src-col-role">
+                        <span class="role-chip role-chip-other">Sonstige</span>
+                        
+                    </td>
                     <td class="src-col-regest">Anna, Erasems witib des Erasems Payrs, des messrer witib fürfür , verkauft mit Handen des Stadtrichters hern Pauls des Würffels für ihre beiden unmündigen Kinder Andre und unmündigen Kinder Augustin…</td>
                 </tr>
             
@@ -1384,6 +1509,11 @@
                     <td class="src-col-idno"><a href="../../documents/QGW/Vienna_1177-1414_ready/1250.html">1250</a></td>
                     <td class="src-col-date">1393 I 20</td>
                     <td class="src-col-corpus">QGW II/1 (1177–1414)</td>
+                    <td class="src-col-label"><em>-</em></td>
+                    <td class="src-col-role">
+                        <span class="role-chip role-chip-witness">Zeuge / Siegler*in</span>
+                        
+                    </td>
                     <td class="src-col-regest">Niclas der Würffel, der elter, beurkundet, dass der ausgebrochene Streit zwischen ihm Niclas der Würfel an einem Theile, seinem aidem Hannsen dem Mez/zz/zenpekchen und fraun Annen, seiner hausfraun,…</td>
                 </tr>
             
@@ -1391,6 +1521,11 @@
                     <td class="src-col-idno"><a href="../../documents/QGW/Vienna_1177-1414_ready/1272.html">1272</a></td>
                     <td class="src-col-date">1393 IX 27</td>
                     <td class="src-col-corpus">QGW II/1 (1177–1414)</td>
+                    <td class="src-col-label"><em>-</em></td>
+                    <td class="src-col-role">
+                        <span class="role-chip role-chip-witness">Zeuge / Siegler*in</span>
+                        
+                    </td>
                     <td class="src-col-regest">Niclas der Würffel, der elter, verpflichtet sich, den Restbetrag von 200 lb dn., den er seinem Eidam Hannsen von Messenpach und dessen Frau Annen an den ihnen Zugesprochenen 1000 lb dn. noch…</td>
                 </tr>
             
@@ -1398,6 +1533,11 @@
                     <td class="src-col-idno"><a href="../../documents/QGW/Vienna_1177-1414_ready/1310.html">1310</a></td>
                     <td class="src-col-date">1395 IX 27</td>
                     <td class="src-col-corpus">QGW II/1 (1177–1414)</td>
+                    <td class="src-col-label"><em>-</em></td>
+                    <td class="src-col-role">
+                        
+                        -
+                    </td>
                     <td class="src-col-regest">Niclas der Würffel schafft 14 lb dn. gelts purkrechts auf der padstuben, die da haisset die Hu/enttin vor Stubentor ze Wienn, und mit Handen seines Sohnes Niclas des Würffels, amptman des chlosters…</td>
                 </tr>
             
@@ -1405,6 +1545,11 @@
                     <td class="src-col-idno"><a href="../../documents/QGW/Vienna_1177-1414_ready/1337.html">1337</a></td>
                     <td class="src-col-date">1396 V 31</td>
                     <td class="src-col-corpus">QGW II/1 (1177–1414)</td>
+                    <td class="src-col-label"><em>hern</em></td>
+                    <td class="src-col-role">
+                        <span class="role-chip role-chip-witness">Zeuge / Siegler*in</span>
+                        
+                    </td>
                     <td class="src-col-regest">Michel, Ortolfs seligen sun sun, Ortolf seligen des ledrer, bei seiner hausfraun Annen, verkauft mit Handen des Bürgermeisters hern Pauln des Holzcheuffels und des rats gemain der stat ze Wienn ein…</td>
                 </tr>
             
@@ -1412,6 +1557,11 @@
                     <td class="src-col-idno"><a href="../../documents/QGW/Vienna_1177-1414_ready/1348.html">1348</a></td>
                     <td class="src-col-date">1396 XI 06</td>
                     <td class="src-col-corpus">QGW II/1 (1177–1414)</td>
+                    <td class="src-col-label"><em>hern</em></td>
+                    <td class="src-col-role">
+                        <span class="role-chip role-chip-other">Sonstige</span>
+                        
+                    </td>
                     <td class="src-col-regest">Hanns Plantus, Kaplan der von Ulreich dem Kurzman auf sand Kathrein altar in Allerheiligen tu/emkirichen dacz sand Stephan zu Wienn gestifteten Messe, verkauft mit Handen des Bürgermeisters hern…</td>
                 </tr>
             
@@ -1419,6 +1569,11 @@
                     <td class="src-col-idno"><a href="../../documents/QGW/Vienna_1177-1414_ready/1359.html">1359</a></td>
                     <td class="src-col-date">1397 II 05</td>
                     <td class="src-col-corpus">QGW II/1 (1177–1414)</td>
+                    <td class="src-col-label"><em>hern</em></td>
+                    <td class="src-col-role">
+                        <span class="role-chip role-chip-other">Sonstige</span>
+                        
+                    </td>
                     <td class="src-col-regest">Steffan der Heumader, purger ze Wienne, verkauft mit Handen des Bürgermeisters hern Pauln des Würffels und des rates gemain der stat ze Wienne sein Haus, gelegen bei den Predigern ze Wienn an ainem…</td>
                 </tr>
             
@@ -1426,6 +1581,11 @@
                     <td class="src-col-idno"><a href="../../documents/Stadtbuecher/Band_1_1395-1400_ready/119.html">119</a></td>
                     <td class="src-col-date">1397 Februar 15</td>
                     <td class="src-col-corpus">Stadtbücher Bd. 1 (1395–1400)</td>
+                    <td class="src-col-label"><em>-</em></td>
+                    <td class="src-col-role">
+                        <span class="role-chip role-chip-witness">Zeuge / Siegler*in</span>
+                        
+                    </td>
                     <td class="src-col-regest">-</td>
                 </tr>
             
@@ -1433,6 +1593,11 @@
                     <td class="src-col-idno"><a href="../../documents/QGW/Vienna_1177-1414_ready/1362.html">1362</a></td>
                     <td class="src-col-date">1397 IV 14</td>
                     <td class="src-col-corpus">QGW II/1 (1177–1414)</td>
+                    <td class="src-col-label"><em>-</em></td>
+                    <td class="src-col-role">
+                        <span class="role-chip role-chip-issuer">Aussteller*in</span>
+                        
+                    </td>
                     <td class="src-col-regest">Paul der Würffel, purgermaister, und der rat gemain der stat ze Wienn beurkunden, dass ihnen frau Ann witib, Jacobs witib des Maler sun, Hermanns des Maler sun, Hermanns des goltsmits Mutter für…</td>
                 </tr>
             
@@ -1440,6 +1605,11 @@
                     <td class="src-col-idno"><a href="../../documents/QGW/Vienna_1177-1414_ready/1367.html">1367</a></td>
                     <td class="src-col-date">1397 VI 11</td>
                     <td class="src-col-corpus">QGW II/1 (1177–1414)</td>
+                    <td class="src-col-label"><em>-</em></td>
+                    <td class="src-col-role">
+                        <span class="role-chip role-chip-issuer">Aussteller*in</span><span class="role-chip role-chip-witness">Zeuge / Siegler*in</span>
+                        
+                    </td>
                     <td class="src-col-regest">Paul der Würffel, purgermaister zu Wienn, Paul der Holzcheuffel, Chunrat der Ramperstorffer, purger ze Wienn, Ulreich der Herwart, statschreiber, beurkunden die Entscheidung in dem von den Erben…</td>
                 </tr>
             
@@ -1447,6 +1617,11 @@
                     <td class="src-col-idno"><a href="../../documents/QGW/Vienna_1177-1414_ready/1368.html">1368</a></td>
                     <td class="src-col-date">1397 VI 26</td>
                     <td class="src-col-corpus">QGW II/1 (1177–1414)</td>
+                    <td class="src-col-label"><em>hern</em></td>
+                    <td class="src-col-role">
+                        <span class="role-chip role-chip-other">Sonstige</span>
+                        
+                    </td>
                     <td class="src-col-regest">Leo, herzog Wilhalms valkner, und Kathrei, seine Hausfrau, verkaufen mit Handen des Bürgermeisters hern Pauln des Würffels und des rats gemain der stat zu Wienn ihr Haus und ihren Stadel, dessen eine…</td>
                 </tr>
             
@@ -1454,6 +1629,11 @@
                     <td class="src-col-idno"><a href="../../documents/QGW/Vienna_1177-1414_ready/1369.html">1369</a></td>
                     <td class="src-col-date">1397 VII 23</td>
                     <td class="src-col-corpus">QGW II/1 (1177–1414)</td>
+                    <td class="src-col-label"><em>-</em></td>
+                    <td class="src-col-role">
+                        <span class="role-chip role-chip-other">Sonstige</span>
+                        
+                    </td>
                     <td class="src-col-regest">Jorg der Koblinger, herzog Wilhalms kamrer, und Alber der Hadmansdorfer, herzog Albrechts kamrer, verkaufen mit Handen des Bürgermeisters Pauln des Würffels und des rats gemain der stat zu Wienn ein…</td>
                 </tr>
             
@@ -1461,6 +1641,11 @@
                     <td class="src-col-idno"><a href="../../documents/Stadtbuecher/Band_1_1395-1400_ready/175.html">175</a></td>
                     <td class="src-col-date">1397 September 4</td>
                     <td class="src-col-corpus">Stadtbücher Bd. 1 (1395–1400)</td>
+                    <td class="src-col-label"><em>-</em></td>
+                    <td class="src-col-role">
+                        <span class="role-chip role-chip-witness">Zeuge / Siegler*in</span>
+                        
+                    </td>
                     <td class="src-col-regest">-</td>
                 </tr>
             
@@ -1468,6 +1653,11 @@
                     <td class="src-col-idno"><a href="../../documents/QGW/Vienna_1177-1414_ready/1372.html">1372</a></td>
                     <td class="src-col-date">1397 X 05</td>
                     <td class="src-col-corpus">QGW II/1 (1177–1414)</td>
+                    <td class="src-col-label"><em>-</em></td>
+                    <td class="src-col-role">
+                        <span class="role-chip role-chip-other">Sonstige</span>
+                        
+                    </td>
                     <td class="src-col-regest">Johannes von Kranperg, techent, und das capitl gemain des tums dacz Allerheiligen tumchirchen dacz sand Stephan zu Wienn beurkunden, dass sie 40 lb dn., für welche zu maister Fridreichs seligen…</td>
                 </tr>
             
@@ -1475,6 +1665,11 @@
                     <td class="src-col-idno"><a href="../../documents/QGW/Vienna_1177-1414_ready/1373.html">1373</a></td>
                     <td class="src-col-date">1397 X 15</td>
                     <td class="src-col-corpus">QGW II/1 (1177–1414)</td>
+                    <td class="src-col-label"><em>hern</em></td>
+                    <td class="src-col-role">
+                        <span class="role-chip role-chip-other">Sonstige</span>
+                        
+                    </td>
                     <td class="src-col-regest">Jacob der Scherl, purger ze Wienn, und Wendel, seine Hausfrau, verkaufen mit Handen des Bürgermeisters hern Pauln des Würffels und des rats gemain der stat zu Wienn 2½ lb dn. geltes purkrechts auf…</td>
                 </tr>
             
@@ -1482,6 +1677,11 @@
                     <td class="src-col-idno"><a href="../../documents/QGW/Vienna_1177-1414_ready/1378.html">1378</a></td>
                     <td class="src-col-date">1398 I 12</td>
                     <td class="src-col-corpus">QGW II/1 (1177–1414)</td>
+                    <td class="src-col-label"><em>-</em></td>
+                    <td class="src-col-role">
+                        <span class="role-chip role-chip-other">Sonstige</span>
+                        
+                    </td>
                     <td class="src-col-regest">Rudolf von Tyrna Bruder und Ludweig, geprüder von Tyrna, beurkunden, dass sie in Folge der grossen Geldschulden, in die sie seit dem Tode ihres Vaters gerathen waren, ihr grosses Haus mit den…</td>
                 </tr>
             
@@ -1489,6 +1689,11 @@
                     <td class="src-col-idno"><a href="../../documents/Stadtbuecher/Band_1_1395-1400_ready/220.html">219</a></td>
                     <td class="src-col-date">1398 Januar 19</td>
                     <td class="src-col-corpus">Stadtbücher Bd. 1 (1395–1400)</td>
+                    <td class="src-col-label"><em>-</em></td>
+                    <td class="src-col-role">
+                        
+                        -
+                    </td>
                     <td class="src-col-regest">-</td>
                 </tr>
             
@@ -1496,6 +1701,11 @@
                     <td class="src-col-idno"><a href="../../documents/QGW/Vienna_1177-1414_ready/1404.html">1404</a></td>
                     <td class="src-col-date">1398 VII 29</td>
                     <td class="src-col-corpus">QGW II/1 (1177–1414)</td>
+                    <td class="src-col-label"><em>hern</em></td>
+                    <td class="src-col-role">
+                        <span class="role-chip role-chip-other">Sonstige</span>
+                        
+                    </td>
                     <td class="src-col-regest">Niclas der Würffel, der elter, beurkundet seinen letzten Willen. Er schafft: 1. Bezahlung seiner Geldschulden von seiner fahrenden Habe 2. 14 lb dn. geltes, die er auf Michels haus des Furter,…</td>
                 </tr>
             
@@ -1503,6 +1713,11 @@
                     <td class="src-col-idno"><a href="../../documents/QGW/Vienna_1177-1414_ready/1407.html">1407</a></td>
                     <td class="src-col-date">1398 IX 06</td>
                     <td class="src-col-corpus">QGW II/1 (1177–1414)</td>
+                    <td class="src-col-label"><em>-</em></td>
+                    <td class="src-col-role">
+                        <span class="role-chip role-chip-witness">Zeuge / Siegler*in</span>
+                        
+                    </td>
                     <td class="src-col-regest">Anna, hern Niclas des Würffels witib witib, bestätigt, dass dessen Söhne her Hanns Sohn Bruder Bruder Bruder, her Niclas SohnBruder Bruder Bruder, her Ulreich Sohn Bruder Bruder Bruder, und her…</td>
                 </tr>
             
@@ -1510,6 +1725,11 @@
                     <td class="src-col-idno"><a href="../../documents/QGW/Vienna_1177-1414_ready/1427.html">1427</a></td>
                     <td class="src-col-date">1399 V 17</td>
                     <td class="src-col-corpus">QGW II/1 (1177–1414)</td>
+                    <td class="src-col-label"><em>hern</em></td>
+                    <td class="src-col-role">
+                        <span class="role-chip role-chip-witness">Zeuge / Siegler*in</span>
+                        
+                    </td>
                     <td class="src-col-regest">Hainreich, der zingiesser von Wiertspurg, und Luzei, seine Hausfrau, stellen einen Revers aus über das von ihnen mit Urk. no 1424 verkaufte Burgrechtsgeld einen Revers aus.</td>
                 </tr>
             
@@ -1517,6 +1737,11 @@
                     <td class="src-col-idno"><a href="../../documents/QGW/Vienna_1177-1414_ready/1447.html">1447</a></td>
                     <td class="src-col-date">1400 I 19</td>
                     <td class="src-col-corpus">QGW II/1 (1177–1414)</td>
+                    <td class="src-col-label"><em>-</em></td>
+                    <td class="src-col-role">
+                        <span class="role-chip role-chip-issuer">Aussteller*in</span><span class="role-chip role-chip-recipient">Empfänger*in</span>
+                        
+                    </td>
                     <td class="src-col-regest">Anthoni, probst dacz sand Stephan zu Wienn Geschäftsherren, Paul der Würffel Geschäftsherren, Wolfhart, pharrer zu Mülbach Geschäftsherren, und Lienhart von Medlikch Geschäftsherren, Geschäftsherren…</td>
                 </tr>
             
@@ -1524,6 +1749,11 @@
                     <td class="src-col-idno"><a href="../../documents/Stadtbuecher/Band_1_1395-1400_ready/605.html">605</a></td>
                     <td class="src-col-date">1400 November 4</td>
                     <td class="src-col-corpus">Stadtbücher Bd. 1 (1395–1400)</td>
+                    <td class="src-col-label"><em>-</em></td>
+                    <td class="src-col-role">
+                        <span class="role-chip role-chip-other">Sonstige</span>
+                        
+                    </td>
                     <td class="src-col-regest">pr. sehr., Einbr. 2 Zg., Sa (Inde:z:: Itern gescheft Hansen des Messenpecken) Des nachsten phfincztags nach allerheligen tag chom fur den rat fraw Ann, Haensen seligen des Messenpechen bitib, und hat…</td>
                 </tr>
             
@@ -1531,6 +1761,11 @@
                     <td class="src-col-idno"><a href="../../documents/QGW/Vienna_1177-1414_ready/1497.html">1497</a></td>
                     <td class="src-col-date">1401 XI 15</td>
                     <td class="src-col-corpus">QGW II/1 (1177–1414)</td>
+                    <td class="src-col-label"><em>hern</em></td>
+                    <td class="src-col-role">
+                        <span class="role-chip role-chip-other">Sonstige</span>
+                        
+                    </td>
                     <td class="src-col-regest">Kunigunt, witib Albrechts witib, des smits, und Peter, ir sun sun bei demselbn irm wirt, verkaufen mit Handen des Bürgermeisters hern Pauln des Würffels und des rats gemain der stat ze Wienn 1 lb dn.…</td>
                 </tr>
             
@@ -1538,6 +1773,11 @@
                     <td class="src-col-idno"><a href="../../documents/QGW/Vienna_1177-1414_ready/1502.html">1502</a></td>
                     <td class="src-col-date">1402 I 17</td>
                     <td class="src-col-corpus">QGW II/1 (1177–1414)</td>
+                    <td class="src-col-label"><em>hern</em></td>
+                    <td class="src-col-role">
+                        <span class="role-chip role-chip-other">Sonstige</span>
+                        
+                    </td>
                     <td class="src-col-regest">Hartman, der gürtler, purger ze Wienn, und Kunigund, sein hausfrau, verkaufen mit Handen hern Pauln des Würffels, purgermaister, und des rats gemain der stat ze Wienn ihr Haus, das weilent zwai…</td>
                 </tr>
             
@@ -1545,6 +1785,11 @@
                     <td class="src-col-idno"><a href="../../documents/QGW/Vienna_1177-1414_ready/1509.html">1509</a></td>
                     <td class="src-col-date">1402 IV 27</td>
                     <td class="src-col-corpus">QGW II/1 (1177–1414)</td>
+                    <td class="src-col-label"><em>-</em></td>
+                    <td class="src-col-role">
+                        <span class="role-chip role-chip-issuer">Aussteller*in</span>
+                        
+                    </td>
                     <td class="src-col-regest">Paul der Wurffel, burgermaister, und der rat gemain der stat ze Wienn verpflichten sich gegen Paul den Holzkäufel und seine Geschäftsvollstrecker zur Ausführung des in no 1508 beurkundeten…</td>
                 </tr>
             
@@ -1552,6 +1797,11 @@
                     <td class="src-col-idno"><a href="../../documents/QGW/Vienna_1177-1414_ready/1513.html">1513</a></td>
                     <td class="src-col-date">1402 VII 27</td>
                     <td class="src-col-corpus">QGW II/1 (1177–1414)</td>
+                    <td class="src-col-label"><em>-</em></td>
+                    <td class="src-col-role">
+                        <span class="role-chip role-chip-issuer">Aussteller*in</span>
+                        
+                    </td>
                     <td class="src-col-regest">Paul der Würffel, burgermaister, Andre Vischl, obrister spitalmaister, und der rat gemain der stat ze Wienn verkaufen wegen der notgu/elt, in welche das Spital gerathen ist, da es Andren dem…</td>
                 </tr>
             
@@ -1559,6 +1809,11 @@
                     <td class="src-col-idno"><a href="../../documents/QGW/Vienna_1177-1414_ready/1516.html">1516</a></td>
                     <td class="src-col-date">1402 VIII 29</td>
                     <td class="src-col-corpus">QGW II/1 (1177–1414)</td>
+                    <td class="src-col-label"><em>hern</em></td>
+                    <td class="src-col-role">
+                        <span class="role-chip role-chip-other">Sonstige</span>
+                        
+                    </td>
                     <td class="src-col-regest">Fridreich der Stoll, herzog Ernsts sneider, und Margret, seine Hausfrau, verkaufen mit Handen des Bürgermeisters hern Pauln des Wurffels und des rates gemain der stat ze Wienn ihr Haus, gelegen in…</td>
                 </tr>
             
@@ -1566,6 +1821,11 @@
                     <td class="src-col-idno"><a href="../../documents/QGW/Vienna_1177-1414_ready/1529.html">1529</a></td>
                     <td class="src-col-date">1403 III 13</td>
                     <td class="src-col-corpus">QGW II/1 (1177–1414)</td>
+                    <td class="src-col-label"><em>hern</em></td>
+                    <td class="src-col-role">
+                        <span class="role-chip role-chip-other">Sonstige</span>
+                        
+                    </td>
                     <td class="src-col-regest">Tiem, der sneider, purger ze Wienn, und Elspet, seine Hausfrau, verkaufen mit Handen des Bürgermeisters hern Pauln des Würffels und des rats gemain der stat ze Wienn ihr Haus, gelegen vor Kernertor…</td>
                 </tr>
             
@@ -1573,6 +1833,11 @@
                     <td class="src-col-idno"><a href="../../documents/QGW/Vienna_1177-1414_ready/1534.html">1534</a></td>
                     <td class="src-col-date">1403 IV 18</td>
                     <td class="src-col-corpus">QGW II/1 (1177–1414)</td>
+                    <td class="src-col-label"><em>-</em></td>
+                    <td class="src-col-role">
+                        <span class="role-chip role-chip-witness">Zeuge / Siegler*in</span>
+                        
+                    </td>
                     <td class="src-col-regest">Margret, witib Philips witib des Chranvogel, gibt ihrem Sohne Jacoben dem Chranvogel für seinen vaeterleichen und müterleichen erbtail die nachbenannten Güter: von erst das haus, gelegen in der…</td>
                 </tr>
             
@@ -1580,6 +1845,11 @@
                     <td class="src-col-idno"><a href="../../documents/QGW/Vienna_1177-1414_ready/1556.html">1556</a></td>
                     <td class="src-col-date">1403 IX 13</td>
                     <td class="src-col-corpus">QGW II/1 (1177–1414)</td>
+                    <td class="src-col-label"><em>hern</em></td>
+                    <td class="src-col-role">
+                        <span class="role-chip role-chip-witness">Zeuge / Siegler*in</span>
+                        
+                    </td>
                     <td class="src-col-regest">Margret, Perchtolts des Lanngen witib witib, die nu Hannsen den Gerolcztenner eleichen genomen hat, stellt ihrem Manne einen Schuldbrief über 600 lb dn. aus, die den geltern gevallen sind an der…</td>
                 </tr>
             
@@ -1587,6 +1857,11 @@
                     <td class="src-col-idno"><a href="../../documents/QGW/Vienna_1177-1414_ready/1565.html">1565</a></td>
                     <td class="src-col-date">1403 XI 27</td>
                     <td class="src-col-corpus">QGW II/1 (1177–1414)</td>
+                    <td class="src-col-label"><em>-</em></td>
+                    <td class="src-col-role">
+                        <span class="role-chip role-chip-witness">Zeuge / Siegler*in</span>
+                        
+                    </td>
                     <td class="src-col-regest">Rudolf und Ludweig, gebrüder von Tyrna, beurkunden, dass sie sich mit dem Wiener Bürger Niclasen dem Rorkolb wegen 1 ½ Joch Weingarten, gelegen dacz Sand Veit an dem Miessenkogel und haisset der…</td>
                 </tr>
             
@@ -1594,6 +1869,11 @@
                     <td class="src-col-idno"><a href="../../documents/QGW/Vienna_1177-1414_ready/1569.html">1569</a></td>
                     <td class="src-col-date">1404 I 17</td>
                     <td class="src-col-corpus">QGW II/1 (1177–1414)</td>
+                    <td class="src-col-label"><em>-</em></td>
+                    <td class="src-col-role">
+                        <span class="role-chip role-chip-witness">Zeuge / Siegler*in</span>
+                        
+                    </td>
                     <td class="src-col-regest">Niclas der Rorkolb, purger ze Wienn, gibt mit Handen des Bergherrn hern Michels des Frankchen, chaplan Unser Vraun und sand Johanns chapellen, gelegen in der herzogen Purkch ze Wienn, zu sand Morando…</td>
                 </tr>
             
@@ -1601,6 +1881,11 @@
                     <td class="src-col-idno"><a href="../../documents/QGW/Vienna_1177-1414_ready/1606.html">1606</a></td>
                     <td class="src-col-date">1404 XII 11</td>
                     <td class="src-col-corpus">QGW II/1 (1177–1414)</td>
+                    <td class="src-col-label"><em>hern</em></td>
+                    <td class="src-col-role">
+                        <span class="role-chip role-chip-other">Sonstige</span>
+                        
+                    </td>
                     <td class="src-col-regest">Salman, der Jud, sun maister Mairs sun, des Juden ze Wienn, verkauft mit Handen des Bürgermeisters hern Pauln des Würffels und des rats gemain der stat ze Wienn ein Haus, das er Hannsen dem…</td>
                 </tr>
             
@@ -1608,6 +1893,11 @@
                     <td class="src-col-idno"><a href="../../documents/QGW/Vienna_1177-1414_ready/1609.html">1609</a></td>
                     <td class="src-col-date">1404 XII 16</td>
                     <td class="src-col-corpus">QGW II/1 (1177–1414)</td>
+                    <td class="src-col-label"><em>hern</em></td>
+                    <td class="src-col-role">
+                        <span class="role-chip role-chip-witness">Zeuge / Siegler*in</span>
+                        
+                    </td>
                     <td class="src-col-regest">Fridreich Perolt, genant Fricz Paternostrer, purger ze Wienn, ains tails, Kathrei, wittib Fridreichs, des tischer, wittib, den man genant hat Fricz Tischer anstatt anstatt, und Els, dessen Schwester…</td>
                 </tr>
             
@@ -1615,6 +1905,11 @@
                     <td class="src-col-idno"><a href="../../documents/QGW/Vienna_1177-1414_ready/1612.html">1612</a></td>
                     <td class="src-col-date">1405 I 20</td>
                     <td class="src-col-corpus">QGW II/1 (1177–1414)</td>
+                    <td class="src-col-label"><em>-</em></td>
+                    <td class="src-col-role">
+                        <span class="role-chip role-chip-witness">Zeuge / Siegler*in</span>
+                        
+                    </td>
                     <td class="src-col-regest">Niclas der Würffel und Sigmund der Würffel, sein prüder, verkaufen ihren Antheil an dem Weingarten, gelegen ze Grinzing, des anderthalb jeuch ist, genant das Sumerekk, zenechst des Spitals weingarten…</td>
                 </tr>
             
@@ -1622,6 +1917,11 @@
                     <td class="src-col-idno"><a href="../../documents/QGW/Vienna_1177-1414_ready/1624.html">1624</a></td>
                     <td class="src-col-date">1405 VIII 11</td>
                     <td class="src-col-corpus">QGW II/1 (1177–1414)</td>
+                    <td class="src-col-label"><em>hern</em></td>
+                    <td class="src-col-role">
+                        <span class="role-chip role-chip-other">Sonstige</span>
+                        
+                    </td>
                     <td class="src-col-regest">Chunrat vom Rêdusch, burger ze Wienn, verkauft mit Handen des Bürgermeisters hern Pauln des Würffels und des rats gemain der stat ze Wien anstatt seines unmündigen Sohnes Sohn Chunrats aus seiner Ehe…</td>
                 </tr>
             
@@ -1629,6 +1929,11 @@
                     <td class="src-col-idno"><a href="../../documents/QGW/Vienna_1177-1414_ready/1628.html">1628</a></td>
                     <td class="src-col-date">1405 VIII 20</td>
                     <td class="src-col-corpus">QGW II/1 (1177–1414)</td>
+                    <td class="src-col-label"><em>hern</em></td>
+                    <td class="src-col-role">
+                        <span class="role-chip role-chip-other">Sonstige</span>
+                        
+                    </td>
                     <td class="src-col-regest">Simon, der zingiesser purger, Hanns der Lechner purger, Chunrat der Spêt purger und Hanns der Nimervol, all vier purger ze Wienn, entscheiden nach dem Rathe des Bürgermeisters hern Pauln des Würffels…</td>
                 </tr>
             
@@ -1636,6 +1941,11 @@
                     <td class="src-col-idno"><a href="../../documents/QGW/Vienna_1177-1414_ready/1636.html">1636</a></td>
                     <td class="src-col-date">1405 XII 02</td>
                     <td class="src-col-corpus">QGW II/1 (1177–1414)</td>
+                    <td class="src-col-label"><em>-</em></td>
+                    <td class="src-col-role">
+                        <span class="role-chip role-chip-witness">Zeuge / Siegler*in</span>
+                        
+                    </td>
                     <td class="src-col-regest">Jostl von Graben, herzog Ernsts diener, bestätigt, dass ihm der Richter und der Rath der Stadt zu Wien auf Bitten des Herzogs und mit Einwilligung der Zechmeister und der Meister der parchander hie…</td>
                 </tr>
             
@@ -1643,6 +1953,11 @@
                     <td class="src-col-idno"><a href="../../documents/QGW/Vienna_1177-1414_ready/1727.html">1727</a></td>
                     <td class="src-col-date">1408 III 18</td>
                     <td class="src-col-corpus">QGW II/1 (1177–1414)</td>
+                    <td class="src-col-label"><em>-</em></td>
+                    <td class="src-col-role">
+                        <span class="role-chip role-chip-recipient">Empfänger*in</span>
+                        
+                    </td>
                     <td class="src-col-regest">Sigmund der Würffel beurkundet seinen letzten Willen. Er schafft: 1. Bezahlung seiner Schulden 2. dass man seiner Hausfrau Barbaren 100 lb dn. Heimsteuer, die er zu eigenem Nutzen verwendet hatte,…</td>
                 </tr>
             
@@ -1650,6 +1965,11 @@
                     <td class="src-col-idno"><a href="../../documents/QGW/Vienna_1177-1414_ready/1780.html">1780</a></td>
                     <td class="src-col-date">1409 XII 04</td>
                     <td class="src-col-corpus">QGW II/1 (1177–1414)</td>
+                    <td class="src-col-label"><em>-</em></td>
+                    <td class="src-col-role">
+                        <span class="role-chip role-chip-witness">Zeuge / Siegler*in</span>
+                        
+                    </td>
                     <td class="src-col-regest">Hans der Perman, burger ze Wienn, bestätigt, dass seine Mutter frau Margrecht witib, seines Vaters Niclass des Permans witib, ihm 359 lb 6 sh. 20 dn., die sie ihm an seinem väterlichen Erbtheil…</td>
                 </tr>
             
@@ -1657,6 +1977,11 @@
                     <td class="src-col-idno"><a href="../../documents/QGW/Vienna_1177-1414_ready/1870.html">1870</a></td>
                     <td class="src-col-date">1411 IV 29</td>
                     <td class="src-col-corpus">QGW II/1 (1177–1414)</td>
+                    <td class="src-col-label"><em>hern</em></td>
+                    <td class="src-col-role">
+                        <span class="role-chip role-chip-witness">Zeuge / Siegler*in</span>
+                        
+                    </td>
                     <td class="src-col-regest">Dorothe witibfürfür, Hannsen witiben des Wiczinger, Hannssun und Lucas, ir su/en, beurkunden für sich und für die noch nicht vogtbare junkfraun Barbaren, ihre Tochter, beziehungsweise…</td>
                 </tr>
             
@@ -1664,6 +1989,11 @@
                     <td class="src-col-idno"><a href="../../documents/QGW/Vienna_1177-1414_ready/1901.html">1901</a></td>
                     <td class="src-col-date">1411 X 29</td>
                     <td class="src-col-corpus">QGW II/1 (1177–1414)</td>
+                    <td class="src-col-label"><em>hern</em></td>
+                    <td class="src-col-role">
+                        <span class="role-chip role-chip-witness">Zeuge / Siegler*in</span>
+                        
+                    </td>
                     <td class="src-col-regest">Stephan von Teben, burger zu Wienn, und Kunigund, sein hausfrau, verkaufen mit Handen des Bürgermeisters hern Rudolfs des Angervelder und des rats gemain der stat zu Wienn 5 lb dn. gelts purkchrechts…</td>
                 </tr>
             
@@ -1696,11 +2026,13 @@
         </div>
     </footer>
 
-    <script src="../../static/js/core.js?v=20260511112948"></script>
-    <script src="../../static/js/provenance.js?v=20260511112948"></script>
-    <script src="../../static/js/basket.js?v=20260511112948"></script>
+    <script src="../../static/js/core.js?v=20260511125458"></script>
+    <script src="../../static/js/tip.js?v=20260511125458"></script>
+    <script src="../../static/js/hint.js?v=20260511125458"></script>
+    <script src="../../static/js/basket.js?v=20260511125458"></script>
     
-<script src="../../static/js/tooltips.js?v=20260511112948"></script>
+<script src="../../static/js/profile.js?v=20260511125458"></script>
+<script src="../../static/js/basket-mount.js?v=20260511125458"></script>
 
 </body>
 </html>

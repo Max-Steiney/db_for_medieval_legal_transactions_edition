@@ -3,22 +3,22 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <meta http-equiv="Content-Security-Policy" content="default-src 'self'; script-src 'self'; style-src 'self'; font-src 'self'; img-src 'self' data: https://images.monasterium.net https://www.monasterium.net; connect-src 'self'; frame-ancestors 'none'; base-uri 'self'; form-action 'self'; upgrade-insecure-requests">
+    <meta http-equiv="Content-Security-Policy" content="default-src 'self'; script-src 'self'; style-src 'self'; font-src 'self'; img-src 'self' data: https://images.monasterium.net https://www.monasterium.net; connect-src 'self'; base-uri 'self'; form-action 'self'; upgrade-insecure-requests">
     <meta name="referrer" content="strict-origin-when-cross-origin">
     <meta http-equiv="Permissions-Policy" content="camera=(), microphone=(), geolocation=(), interest-cohort=()">
     <title>Johann an dem Kienmarkt an dem Kienmarkt (&dagger; 23.09.1381), Datenbank</title>
     <link rel="preload" as="font" type="font/woff2" crossorigin
           href="../../static/fonts/inter-400-latin.woff2">
-    <link rel="stylesheet" href="../../static/css/fonts.css?v=20260511112948">
-    <link rel="stylesheet" href="../../static/css/tokens.css?v=20260511112948">
-    <link rel="stylesheet" href="../../static/css/base.css?v=20260511112948">
-    <link rel="stylesheet" href="../../static/css/components.css?v=20260511112948">
-    <link rel="stylesheet" href="../../static/css/responsive.css?v=20260511112948">
-    <link rel="stylesheet" href="../../static/css/print.css?v=20260511112948">
-    <link rel="stylesheet" href="../../static/css/provenance.css?v=20260511112948">
+    <link rel="stylesheet" href="../../static/css/fonts.css?v=20260511125458">
+    <link rel="stylesheet" href="../../static/css/tokens.css?v=20260511125458">
+    <link rel="stylesheet" href="../../static/css/base.css?v=20260511125458">
+    <link rel="stylesheet" href="../../static/css/components.css?v=20260511125458">
+    <link rel="stylesheet" href="../../static/css/responsive.css?v=20260511125458">
+    <link rel="stylesheet" href="../../static/css/print.css?v=20260511125458">
+    <link rel="stylesheet" href="../../static/css/tip.css?v=20260511125458">
     
-<link rel="stylesheet" href="../../static/css/document.css?v=20260511112948">
-<link rel="stylesheet" href="../../static/css/person.css?v=20260511112948">
+<link rel="stylesheet" href="../../static/css/document.css?v=20260511125458">
+<link rel="stylesheet" href="../../static/css/person.css?v=20260511125458">
 
 </head>
 <body data-root-path="../.."
@@ -48,8 +48,6 @@
         <a href="../../register/persons.html">Personen</a>
         
         <a href="../../register/orgs.html">Organisationen</a>
-        
-        <a href="../../register/places.html">Orte</a>
         
     </div>
 </div>
@@ -91,7 +89,7 @@
     </div>
 </div>
 
-                <a href="../../korb.html" class="nav-basket" aria-label="Wissenskorb">
+                <a href="../../korb.html" class="nav-basket" aria-label="Datenkorb">
                     <svg width="18" height="18" viewBox="0 0 18 18" fill="none" aria-hidden="true">
                         <path d="M3 5h12l-1.2 8.5a1 1 0 0 1-1 .85H5.2a1 1 0 0 1-1-.85L3 5z"
                               stroke="currentColor" stroke-width="1.4" fill="none"
@@ -112,11 +110,23 @@
 
     <div class="person-toolbar">
         <div class="person-toolbar-inner">
-            <nav class="person-breadcrumb" aria-label="Position">
-                <a href="../../register/persons.html">Personenregister</a>
-                <span class="bc-sep">&rsaquo;</span>
-                <span class="bc-doc"><strong>Johann an dem Kienmarkt an dem Kienmarkt</strong></span>
-            </nav>
+            <div class="person-toolbar-row">
+                <nav class="person-breadcrumb" aria-label="Position">
+                    <a href="../../register/persons.html">Personenregister</a>
+                    <span class="bc-sep">&rsaquo;</span>
+                    <span class="bc-doc"><strong>Johann an dem Kienmarkt an dem Kienmarkt</strong></span>
+                </nav>
+                <div class="person-toolbar-actions">
+                    <span class="toolbar-basket-mount"
+                          data-basket-type="person"
+                          data-basket-id="pe__johann_an_dem_kienmarkt_QGW_II_I_1009"
+                          data-basket-label="Johann an dem Kienmarkt an dem Kienmarkt"
+                          data-basket-url="register/persons/pe__johann_an_dem_kienmarkt_QGW_II_I_1009.html"
+                          data-basket-sex="m"
+                          data-basket-active-min="1352"
+                          data-basket-active-max="1381"></span>
+                </div>
+            </div>
             <div class="person-toolbar-meta">
                 <span class="meta-pair">
                     <span class="meta-label">Geschlecht</span>
@@ -124,7 +134,33 @@
                 </span>
                 
                 <span class="meta-pair">
-                    <span class="meta-label">Belegt</span>
+                    <span class="meta-label">Belegt
+<span class="tip-wrap">
+    <button type="button" class="tip-trigger tip-trigger--icon"
+            aria-expanded="false" aria-haspopup="dialog"
+            aria-controls="person-belegt"
+            data-tip="person-belegt"
+            aria-label="Definition: Beleg-Zeitraum">
+        <svg width="13" height="13" viewBox="0 0 16 16" aria-hidden="true">
+            <circle cx="8" cy="8" r="7" stroke="currentColor" stroke-width="1.4" fill="none"/>
+            <text x="8" y="11.6" text-anchor="middle" font-size="9.5" font-weight="700"
+                  fill="currentColor" font-family="Georgia, serif">i</text>
+        </svg>
+    </button>
+    <aside class="tip-popover tip-popover--glossary"
+           id="person-belegt" role="dialog" aria-hidden="true"
+           aria-label="Definition: Beleg-Zeitraum">
+        <header class="tip-head">
+            <h3 class="tip-title">Beleg-Zeitraum</h3>
+            <button type="button" class="tip-close" aria-label="Schlie&szlig;en">&times;</button>
+        </header>
+        <div class="tip-body">
+            <p>Erste und letzte Datierung einer Quelle, in der die Person erscheint. Bei einzelnem Beleg wird nur ein Jahr angegeben.</p>
+            
+        </div>
+    </aside>
+</span>
+</span>
                     <span class="meta-value">1352 bis 1381</span>
                 </span>
                 
@@ -134,6 +170,10 @@
                     <span class="meta-value">23.09.1381</span>
                 </span>
                 
+                <span class="meta-pair">
+                    <span class="meta-label">Quellen</span>
+                    <span class="meta-value">30</span>
+                </span>
                 <span class="meta-pair person-id-pair">
                     <span class="meta-label">ID</span>
                     <code class="meta-value person-id">pe__johann_an_dem_kienmarkt_QGW_II_I_1009</code>
@@ -151,13 +191,45 @@
         </h1>
         
         
-        <p class="person-titles">
+        
+        <p class="person-titles" data-collapsible="22">
             <span class="pt-label">In den Quellen genannt als</span>
             <span class="pt-chip">hern</span><span class="pt-chip">her</span><span class="pt-chip">Bergherrn|hern</span>
         </p>
         
         
+        
     </header>
+
+    
+    <section class="role-strip" aria-label="Rollen in Rechtsgeschäften">
+        <h2 class="role-strip-title">Rollen in Rechtsgeschäften</h2>
+        <div class="role-strip-cells">
+            
+            <div class="role-cell role-cell-issuer">
+                <span class="role-cell-count">4</span>
+                <span class="role-cell-label">Aussteller*in</span>
+            </div>
+            
+            <div class="role-cell role-cell-recipient is-zero">
+                <span class="role-cell-count">0</span>
+                <span class="role-cell-label">Empfänger*in</span>
+            </div>
+            
+            <div class="role-cell role-cell-witness">
+                <span class="role-cell-count">9</span>
+                <span class="role-cell-label">Zeuge / Siegler*in</span>
+            </div>
+            
+            <div class="role-cell role-cell-other">
+                <span class="role-cell-count">18</span>
+                <span class="role-cell-label">Sonstige</span>
+            </div>
+            
+        </div>
+        <p class="role-strip-hint">Summe Rollen-Belegungen: 31. Mehrfach-Rollen pro Quelle sind möglich.</p>
+    </section>
+    
 
     
 
@@ -174,6 +246,7 @@
                 <span class="rel-block-count">6</span>
                 <span class="rel-block-hint">Verwandtschaftsverhältnisse, wie sie in den Quellen explizit benannt werden.</span>
             </header>
+            
             <table class="rel-table">
                 <thead>
                     <tr>
@@ -194,7 +267,7 @@
                         <td class="rel-col-label"><em>Oheims</em></td>
                         <td class="rel-col-perspective">
                             
-                                Johann an dem Kienmarkt an dem Kienmarkt → Lambert Strohof
+                                Johann an dem Kienmarkt an dem Kienmarkt &rsaquo; Lambert Strohof
                             
                         </td>
                         <td class="rel-col-source">
@@ -213,7 +286,7 @@
                         <td class="rel-col-label"><em>Oheims</em></td>
                         <td class="rel-col-perspective">
                             
-                                Johann an dem Kienmarkt an dem Kienmarkt → Ursula von Neuburg
+                                Johann an dem Kienmarkt an dem Kienmarkt &rsaquo; Ursula von Neuburg
                             
                         </td>
                         <td class="rel-col-source">
@@ -232,7 +305,7 @@
                         <td class="rel-col-label"><em>Hausfrau</em></td>
                         <td class="rel-col-perspective">
                             
-                                Katharina an dem Kienmarkt → Johann an dem Kienmarkt an dem Kienmarkt
+                                Katharina an dem Kienmarkt &rsaquo; Johann an dem Kienmarkt an dem Kienmarkt
                             
                         </td>
                         <td class="rel-col-source">
@@ -251,7 +324,7 @@
                         <td class="rel-col-label"><em>Oheime</em></td>
                         <td class="rel-col-perspective">
                             
-                                Martin Schilling → Johann an dem Kienmarkt an dem Kienmarkt
+                                Martin Schilling &rsaquo; Johann an dem Kienmarkt an dem Kienmarkt
                             
                         </td>
                         <td class="rel-col-source">
@@ -270,7 +343,7 @@
                         <td class="rel-col-label"><em>Oheim</em></td>
                         <td class="rel-col-perspective">
                             
-                                Friedrich von Tierna von Tierna → Johann an dem Kienmarkt an dem Kienmarkt
+                                Friedrich von Tierna von Tierna &rsaquo; Johann an dem Kienmarkt an dem Kienmarkt
                             
                         </td>
                         <td class="rel-col-source">
@@ -289,7 +362,7 @@
                         <td class="rel-col-label"><em>Oheim</em></td>
                         <td class="rel-col-perspective">
                             
-                                Michael Vinkch von Nikolsburg → Johann an dem Kienmarkt an dem Kienmarkt
+                                Michael Vinkch von Nikolsburg &rsaquo; Johann an dem Kienmarkt an dem Kienmarkt
                             
                         </td>
                         <td class="rel-col-source">
@@ -318,6 +391,12 @@
                 <span class="rel-block-count">28</span>
                 <span class="rel-block-hint">Berufs- oder Amtsbezeichnung in Bezug auf eine Institution.</span>
             </header>
+            
+            <div class="table-filter">
+                <input type="search" class="table-filter-input" data-target="rel" placeholder="In der Tabelle filtern&hellip;" aria-label="In der Tabelle filtern">
+                <span class="table-filter-status"></span>
+            </div>
+            
             <table class="rel-table">
                 <thead>
                     <tr>
@@ -338,7 +417,7 @@
                         <td class="rel-col-label"><em>Bürgermeisters</em></td>
                         <td class="rel-col-perspective">
                             
-                                Johann an dem Kienmarkt an dem Kienmarkt → Wien
+                                Johann an dem Kienmarkt an dem Kienmarkt &rsaquo; Wien
                             
                         </td>
                         <td class="rel-col-source">
@@ -357,7 +436,7 @@
                         <td class="rel-col-label"><em>Münzmeisters</em></td>
                         <td class="rel-col-perspective">
                             
-                                Johann an dem Kienmarkt an dem Kienmarkt → Wien
+                                Johann an dem Kienmarkt an dem Kienmarkt &rsaquo; Wien
                             
                         </td>
                         <td class="rel-col-source">
@@ -376,7 +455,7 @@
                         <td class="rel-col-label"><em>purger</em></td>
                         <td class="rel-col-perspective">
                             
-                                Johann an dem Kienmarkt an dem Kienmarkt → Wien
+                                Johann an dem Kienmarkt an dem Kienmarkt &rsaquo; Wien
                             
                         </td>
                         <td class="rel-col-source">
@@ -395,7 +474,7 @@
                         <td class="rel-col-label"><em>rates</em></td>
                         <td class="rel-col-perspective">
                             
-                                Johann an dem Kienmarkt an dem Kienmarkt → Wien
+                                Johann an dem Kienmarkt an dem Kienmarkt &rsaquo; Wien
                             
                         </td>
                         <td class="rel-col-source">
@@ -414,7 +493,7 @@
                         <td class="rel-col-label"><em>rates der stat ze Wienn</em></td>
                         <td class="rel-col-perspective">
                             
-                                Johann an dem Kienmarkt an dem Kienmarkt → Wien
+                                Johann an dem Kienmarkt an dem Kienmarkt &rsaquo; Wien
                             
                         </td>
                         <td class="rel-col-source">
@@ -433,7 +512,7 @@
                         <td class="rel-col-label"><em>des rates der stat ze Wienn</em></td>
                         <td class="rel-col-perspective">
                             
-                                Johann an dem Kienmarkt an dem Kienmarkt → Wien
+                                Johann an dem Kienmarkt an dem Kienmarkt &rsaquo; Wien
                             
                         </td>
                         <td class="rel-col-source">
@@ -452,7 +531,7 @@
                         <td class="rel-col-label"><em>purgermaister ze Wienne</em></td>
                         <td class="rel-col-perspective">
                             
-                                Johann an dem Kienmarkt an dem Kienmarkt → Wien
+                                Johann an dem Kienmarkt an dem Kienmarkt &rsaquo; Wien
                             
                         </td>
                         <td class="rel-col-source">
@@ -471,7 +550,7 @@
                         <td class="rel-col-label"><em>Bürgermeisters</em></td>
                         <td class="rel-col-perspective">
                             
-                                Johann an dem Kienmarkt an dem Kienmarkt → Wien
+                                Johann an dem Kienmarkt an dem Kienmarkt &rsaquo; Wien
                             
                         </td>
                         <td class="rel-col-source">
@@ -490,7 +569,7 @@
                         <td class="rel-col-label"><em>Bürgermeisters</em></td>
                         <td class="rel-col-perspective">
                             
-                                Johann an dem Kienmarkt an dem Kienmarkt → Wien
+                                Johann an dem Kienmarkt an dem Kienmarkt &rsaquo; Wien
                             
                         </td>
                         <td class="rel-col-source">
@@ -509,7 +588,7 @@
                         <td class="rel-col-label"><em>purgermaister ze Wienne</em></td>
                         <td class="rel-col-perspective">
                             
-                                Johann an dem Kienmarkt an dem Kienmarkt → Wien
+                                Johann an dem Kienmarkt an dem Kienmarkt &rsaquo; Wien
                             
                         </td>
                         <td class="rel-col-source">
@@ -528,7 +607,7 @@
                         <td class="rel-col-label"><em>Bürgermeisters</em></td>
                         <td class="rel-col-perspective">
                             
-                                Johann an dem Kienmarkt an dem Kienmarkt → Wien
+                                Johann an dem Kienmarkt an dem Kienmarkt &rsaquo; Wien
                             
                         </td>
                         <td class="rel-col-source">
@@ -547,7 +626,7 @@
                         <td class="rel-col-label"><em>Bürgermeisters</em></td>
                         <td class="rel-col-perspective">
                             
-                                Johann an dem Kienmarkt an dem Kienmarkt → Wien
+                                Johann an dem Kienmarkt an dem Kienmarkt &rsaquo; Wien
                             
                         </td>
                         <td class="rel-col-source">
@@ -566,7 +645,7 @@
                         <td class="rel-col-label"><em>Bürgermeisters</em></td>
                         <td class="rel-col-perspective">
                             
-                                Johann an dem Kienmarkt an dem Kienmarkt → Wien
+                                Johann an dem Kienmarkt an dem Kienmarkt &rsaquo; Wien
                             
                         </td>
                         <td class="rel-col-source">
@@ -585,7 +664,7 @@
                         <td class="rel-col-label"><em>Bürgermeisters</em></td>
                         <td class="rel-col-perspective">
                             
-                                Johann an dem Kienmarkt an dem Kienmarkt → Wien
+                                Johann an dem Kienmarkt an dem Kienmarkt &rsaquo; Wien
                             
                         </td>
                         <td class="rel-col-source">
@@ -604,7 +683,7 @@
                         <td class="rel-col-label"><em>Bürgermeisters</em></td>
                         <td class="rel-col-perspective">
                             
-                                Johann an dem Kienmarkt an dem Kienmarkt → Wien
+                                Johann an dem Kienmarkt an dem Kienmarkt &rsaquo; Wien
                             
                         </td>
                         <td class="rel-col-source">
@@ -623,7 +702,7 @@
                         <td class="rel-col-label"><em>Bürgermeisters</em></td>
                         <td class="rel-col-perspective">
                             
-                                Johann an dem Kienmarkt an dem Kienmarkt → Wien
+                                Johann an dem Kienmarkt an dem Kienmarkt &rsaquo; Wien
                             
                         </td>
                         <td class="rel-col-source">
@@ -642,7 +721,7 @@
                         <td class="rel-col-label"><em>Bürgermeisters</em></td>
                         <td class="rel-col-perspective">
                             
-                                Johann an dem Kienmarkt an dem Kienmarkt → Wien
+                                Johann an dem Kienmarkt an dem Kienmarkt &rsaquo; Wien
                             
                         </td>
                         <td class="rel-col-source">
@@ -661,7 +740,7 @@
                         <td class="rel-col-label"><em>Bürgermeisters</em></td>
                         <td class="rel-col-perspective">
                             
-                                Johann an dem Kienmarkt an dem Kienmarkt → Wien
+                                Johann an dem Kienmarkt an dem Kienmarkt &rsaquo; Wien
                             
                         </td>
                         <td class="rel-col-source">
@@ -680,7 +759,7 @@
                         <td class="rel-col-label"><em>purgermaister</em></td>
                         <td class="rel-col-perspective">
                             
-                                Johann an dem Kienmarkt an dem Kienmarkt → Wien
+                                Johann an dem Kienmarkt an dem Kienmarkt &rsaquo; Wien
                             
                         </td>
                         <td class="rel-col-source">
@@ -699,7 +778,7 @@
                         <td class="rel-col-label"><em>rats gemain der stat ze Wienn</em></td>
                         <td class="rel-col-perspective">
                             
-                                Johann an dem Kienmarkt an dem Kienmarkt → Wien
+                                Johann an dem Kienmarkt an dem Kienmarkt &rsaquo; Wien
                             
                         </td>
                         <td class="rel-col-source">
@@ -718,7 +797,7 @@
                         <td class="rel-col-label"><em>Bürgermeisters</em></td>
                         <td class="rel-col-perspective">
                             
-                                Johann an dem Kienmarkt an dem Kienmarkt → Wien
+                                Johann an dem Kienmarkt an dem Kienmarkt &rsaquo; Wien
                             
                         </td>
                         <td class="rel-col-source">
@@ -737,7 +816,7 @@
                         <td class="rel-col-label"><em>purgermaister</em></td>
                         <td class="rel-col-perspective">
                             
-                                Johann an dem Kienmarkt an dem Kienmarkt → Wien
+                                Johann an dem Kienmarkt an dem Kienmarkt &rsaquo; Wien
                             
                         </td>
                         <td class="rel-col-source">
@@ -756,7 +835,7 @@
                         <td class="rel-col-label"><em>purgermaister</em></td>
                         <td class="rel-col-perspective">
                             
-                                Johann an dem Kienmarkt an dem Kienmarkt → Wien
+                                Johann an dem Kienmarkt an dem Kienmarkt &rsaquo; Wien
                             
                         </td>
                         <td class="rel-col-source">
@@ -775,7 +854,7 @@
                         <td class="rel-col-label"><em>Bürgermeisters</em></td>
                         <td class="rel-col-perspective">
                             
-                                Johann an dem Kienmarkt an dem Kienmarkt → Wien
+                                Johann an dem Kienmarkt an dem Kienmarkt &rsaquo; Wien
                             
                         </td>
                         <td class="rel-col-source">
@@ -794,7 +873,7 @@
                         <td class="rel-col-label"><em>purgermaister</em></td>
                         <td class="rel-col-perspective">
                             
-                                Johann an dem Kienmarkt an dem Kienmarkt → Wien
+                                Johann an dem Kienmarkt an dem Kienmarkt &rsaquo; Wien
                             
                         </td>
                         <td class="rel-col-source">
@@ -813,7 +892,7 @@
                         <td class="rel-col-label"><em>münzmaister</em></td>
                         <td class="rel-col-perspective">
                             
-                                Johann an dem Kienmarkt an dem Kienmarkt → Wien
+                                Johann an dem Kienmarkt an dem Kienmarkt &rsaquo; Wien
                             
                         </td>
                         <td class="rel-col-source">
@@ -832,7 +911,7 @@
                         <td class="rel-col-label"><em>hannsgraf</em></td>
                         <td class="rel-col-perspective">
                             
-                                Johann an dem Kienmarkt an dem Kienmarkt → Herzogtum Österreich
+                                Johann an dem Kienmarkt an dem Kienmarkt &rsaquo; Herzogtum Österreich
                             
                         </td>
                         <td class="rel-col-source">
@@ -851,7 +930,7 @@
                         <td class="rel-col-label"><em>purgermaister</em></td>
                         <td class="rel-col-perspective">
                             
-                                Johann an dem Kienmarkt an dem Kienmarkt → Wien
+                                Johann an dem Kienmarkt an dem Kienmarkt &rsaquo; Wien
                             
                         </td>
                         <td class="rel-col-source">
@@ -869,18 +948,32 @@
         
         
         
+        
+        
+        
+        
+        
+        
     </section>
     
 
     
     <section class="person-sources" aria-label="Quellen mit Nennung">
         <h2 class="section-head">Quellen mit Nennung</h2>
+        
+        <div class="table-filter">
+            <input type="search" class="table-filter-input" data-target="src" placeholder="In den Quellen filtern&hellip;" aria-label="In den Quellen filtern">
+            <span class="table-filter-status"></span>
+        </div>
+        
         <table class="person-source-table">
             <thead>
                 <tr>
                     <th scope="col" class="src-col-idno">Nr.</th>
                     <th scope="col" class="src-col-date">Datum</th>
                     <th scope="col" class="src-col-corpus">Quellenkorpus</th>
+                    <th scope="col" class="src-col-label">Bezeichnung</th>
+                    <th scope="col" class="src-col-role">Rolle</th>
                     <th scope="col" class="src-col-regest">Regest</th>
                 </tr>
             </thead>
@@ -890,6 +983,11 @@
                     <td class="src-col-idno"><a href="../../documents/QGW/Vienna_1177-1414_ready/422.html">422</a></td>
                     <td class="src-col-date">1352 XII 13</td>
                     <td class="src-col-corpus">QGW II/1 (1177–1414)</td>
+                    <td class="src-col-label"><em>-</em></td>
+                    <td class="src-col-role">
+                        <span class="role-chip role-chip-witness">Zeuge / Siegler*in</span>
+                        
+                    </td>
                     <td class="src-col-regest">Lamber in dem Strohof und Anne, seine Hausfrau, stellen einen Revers aus über das Gut, das Stephan, sun Stephans sun des glaser, ihres seligen Schwagers Schwagers, besitzt und das ihnen mit diesem…</td>
                 </tr>
             
@@ -897,6 +995,11 @@
                     <td class="src-col-idno"><a href="../../documents/QGW/Vienna_1177-1414_ready/664.html">664</a></td>
                     <td class="src-col-date">1366 IV 01</td>
                     <td class="src-col-corpus">QGW II/1 (1177–1414)</td>
+                    <td class="src-col-label"><em>hern</em></td>
+                    <td class="src-col-role">
+                        <span class="role-chip role-chip-witness">Zeuge / Siegler*in</span>
+                        
+                    </td>
                     <td class="src-col-regest">Jans der Hirnprech verkauft mit Handen des Bürgermeisters hern Lucas des Popphinger und des Rathes der Stadt zu Wien zwo chraem under den Wentchraemen ze Wienne an ainem tail zenêchst Jacobs chram…</td>
                 </tr>
             
@@ -904,6 +1007,11 @@
                     <td class="src-col-idno"><a href="../../documents/QGW/Vienna_1177-1414_ready/674.html">674</a></td>
                     <td class="src-col-date">1366 VII 21</td>
                     <td class="src-col-corpus">QGW II/1 (1177–1414)</td>
+                    <td class="src-col-label"><em>hern</em></td>
+                    <td class="src-col-role">
+                        <span class="role-chip role-chip-witness">Zeuge / Siegler*in</span>
+                        
+                    </td>
                     <td class="src-col-regest">Ursula, hausvrowe hern Chunrats hausvrowe von Neunburch, gibt nach dem Gebote Herzog Rudolfs IV. dem Wiener Bürger Otten von Ottental ½ lb dn. gelts gruntrechts von seinem Hause am Salzgriez/zz/ze ze…</td>
                 </tr>
             
@@ -911,6 +1019,11 @@
                     <td class="src-col-idno"><a href="../../documents/QGW/Vienna_1177-1414_ready/690.html">690</a></td>
                     <td class="src-col-date">1367 III 17</td>
                     <td class="src-col-corpus">QGW II/1 (1177–1414)</td>
+                    <td class="src-col-label"><em>Bergherrn|hern</em></td>
+                    <td class="src-col-role">
+                        <span class="role-chip role-chip-other">Sonstige</span><span class="role-chip role-chip-witness">Zeuge / Siegler*in</span>
+                        
+                    </td>
                     <td class="src-col-regest">Jans der Hêmmler, purger ze Wienne, und Torathe, seine Hausfrau, verkaufen mit Handen ihres Bergherrn hern Jansen an dem Chienmarcht ze Wienne 6 sh. dn. gelts ewiges purchrechts, die sie gehabt haben…</td>
                 </tr>
             
@@ -918,6 +1031,11 @@
                     <td class="src-col-idno"><a href="../../documents/QGW/Vienna_1177-1414_ready/705.html">705</a></td>
                     <td class="src-col-date">1367 VII 24</td>
                     <td class="src-col-corpus">QGW II/1 (1177–1414)</td>
+                    <td class="src-col-label"><em>-</em></td>
+                    <td class="src-col-role">
+                        <span class="role-chip role-chip-witness">Zeuge / Siegler*in</span>
+                        
+                    </td>
                     <td class="src-col-regest">Jans von Tyrnach, hubmaister in Österreich und münzmaister ze Wienne, verkauft mit Handen Jacobs des Straz/zz/zer, herzoglichen Bergmeisters zu Medlikch, vier Weingärten ze Prunne, die ihm durch…</td>
                 </tr>
             
@@ -925,6 +1043,11 @@
                     <td class="src-col-idno"><a href="../../documents/QGW/Vienna_1177-1414_ready/802.html">802</a></td>
                     <td class="src-col-date">1372 II 16</td>
                     <td class="src-col-corpus">QGW II/1 (1177–1414)</td>
+                    <td class="src-col-label"><em>hern</em></td>
+                    <td class="src-col-role">
+                        
+                        -
+                    </td>
                     <td class="src-col-regest">Chunrat der Chienaestel, Bergmeister hern Jannsen pergmaister an dem Chienmarcht ze Wienne , beurkundet, dass vor ihm in offenem Gerichte her Jacob der Polle , Kaplan der Kapelle Unser Vrowen in der…</td>
                 </tr>
             
@@ -932,6 +1055,11 @@
                     <td class="src-col-idno"><a href="../../documents/QGW/Vienna_1177-1414_ready/808.html">808</a></td>
                     <td class="src-col-date">1372 V 04</td>
                     <td class="src-col-corpus">QGW II/1 (1177–1414)</td>
+                    <td class="src-col-label"><em>Bergherrn|hern</em></td>
+                    <td class="src-col-role">
+                        <span class="role-chip role-chip-other">Sonstige</span><span class="role-chip role-chip-witness">Zeuge / Siegler*in</span>
+                        
+                    </td>
                     <td class="src-col-regest">Christein Stieftochter, Hainreichs steuftochter des Grêz/zz/zleins, dem got genad, verkauft mit Handen ihres Bergherrn hern Jannsen an dem Chienmarcht, des rates der stat ze Wienn, ihren Weingarten,…</td>
                 </tr>
             
@@ -939,6 +1067,11 @@
                     <td class="src-col-idno"><a href="../../documents/QGW/Vienna_1177-1414_ready/840.html">840</a></td>
                     <td class="src-col-date">1374 VIII 23</td>
                     <td class="src-col-corpus">QGW II/1 (1177–1414)</td>
+                    <td class="src-col-label"><em>-</em></td>
+                    <td class="src-col-role">
+                        <span class="role-chip role-chip-issuer">Aussteller*in</span>
+                        
+                    </td>
                     <td class="src-col-regest">Chadolt von Ekkhartsawe, der elter, Janns an dem Chienmarkcht, purgermaister ze Wienne , und der ganz rat daselbs beurkunden die von ihnen gefällte Entscheidung in folgenden Streitsachen: 1. zwischen…</td>
                 </tr>
             
@@ -946,6 +1079,11 @@
                     <td class="src-col-idno"><a href="../../documents/QGW/Vienna_1177-1414_ready/843.html">843</a></td>
                     <td class="src-col-date">1374 XI 24</td>
                     <td class="src-col-corpus">QGW II/1 (1177–1414)</td>
+                    <td class="src-col-label"><em>hern</em></td>
+                    <td class="src-col-role">
+                        <span class="role-chip role-chip-other">Sonstige</span>
+                        
+                    </td>
                     <td class="src-col-regest">Simon der Zerrer, Stephans sêlig des Zerrer sun, bestätigt, dass während seiner und seiner Geschwister verstorben Kathrein und Bruderverstorben Herrants Unmündigkeit ihr Haus, gelegen an dem…</td>
                 </tr>
             
@@ -953,6 +1091,11 @@
                     <td class="src-col-idno"><a href="../../documents/QGW/Vienna_1177-1414_ready/844.html">844</a></td>
                     <td class="src-col-date">1375 I 03</td>
                     <td class="src-col-corpus">QGW II/1 (1177–1414)</td>
+                    <td class="src-col-label"><em>hern</em></td>
+                    <td class="src-col-role">
+                        <span class="role-chip role-chip-other">Sonstige</span>
+                        
+                    </td>
                     <td class="src-col-regest">Nichlas der Stainer, des rates der stat ze Wienne, verkauft mit Handen des Bürgermeisters hern Hannsen an dem Chienmarkcht und des rates gemain der stat ze Wienne sein Haus, das er um sein fahrendes…</td>
                 </tr>
             
@@ -960,6 +1103,11 @@
                     <td class="src-col-idno"><a href="../../documents/QGW/Vienna_1177-1414_ready/845.html">845</a></td>
                     <td class="src-col-date">1375 II 08</td>
                     <td class="src-col-corpus">QGW II/1 (1177–1414)</td>
+                    <td class="src-col-label"><em>-</em></td>
+                    <td class="src-col-role">
+                        <span class="role-chip role-chip-issuer">Aussteller*in</span><span class="role-chip role-chip-witness">Zeuge / Siegler*in</span>
+                        
+                    </td>
                     <td class="src-col-regest">Jans an dem Chienmarcht, purgermaister ze Wienne, und Katrei, seine Hausfrau, verkaufen ihres rechten Eigens 109 Eimer Wein gelts perchrechts und 10 sh. 27 dn. gelts voitrechts, alles gelegen ouf…</td>
                 </tr>
             
@@ -967,6 +1115,11 @@
                     <td class="src-col-idno"><a href="../../documents/QGW/Vienna_1177-1414_ready/846.html">846</a></td>
                     <td class="src-col-date">1375 II 08</td>
                     <td class="src-col-corpus">QGW II/1 (1177–1414)</td>
+                    <td class="src-col-label"><em>hern</em></td>
+                    <td class="src-col-role">
+                        <span class="role-chip role-chip-other">Sonstige</span>
+                        
+                    </td>
                     <td class="src-col-regest">Chunrat, aidemPetreins aidem des Ellents, und Elsbet, seine Hausfrau, verkaufen mit Handen des Bürgermeisters hern Jansen an dem Chienmarkcht und des rates gemain der stat ze Wienne ihres rechten…</td>
                 </tr>
             
@@ -974,6 +1127,11 @@
                     <td class="src-col-idno"><a href="../../documents/QGW/Vienna_1177-1414_ready/847.html">847</a></td>
                     <td class="src-col-date">1375 III 12</td>
                     <td class="src-col-corpus">QGW II/1 (1177–1414)</td>
+                    <td class="src-col-label"><em>hern</em></td>
+                    <td class="src-col-role">
+                        <span class="role-chip role-chip-other">Sonstige</span>
+                        
+                    </td>
                     <td class="src-col-regest">Simon, der pinter ze Wienne, und Gedraut, seine Hausfrautochter, Nichlas seligen tochter, des pinter des Pehems bei seiner erern hausvrown Gedrauten Mutter, auch guter gedechtnusse, Chunrat, der…</td>
                 </tr>
             
@@ -981,6 +1139,11 @@
                     <td class="src-col-idno"><a href="../../documents/QGW/Vienna_1177-1414_ready/855.html">855</a></td>
                     <td class="src-col-date">1375 V 17</td>
                     <td class="src-col-corpus">QGW II/1 (1177–1414)</td>
+                    <td class="src-col-label"><em>hern</em></td>
+                    <td class="src-col-role">
+                        <span class="role-chip role-chip-other">Sonstige</span>
+                        
+                    </td>
                     <td class="src-col-regest">Albrecht, der pinter, und Gerdraut, seine Hausfrau, verkaufen mit Handen des Bürgermeisters hern Jannsen an dem Chienmarkcht und des rates gemain der stat ze Wienne ihre Brandstatt, die sie…</td>
                 </tr>
             
@@ -988,6 +1151,11 @@
                     <td class="src-col-idno"><a href="../../documents/QGW/Vienna_1177-1414_ready/863.html">863</a></td>
                     <td class="src-col-date">1375 VIII 02</td>
                     <td class="src-col-corpus">QGW II/1 (1177–1414)</td>
+                    <td class="src-col-label"><em>hern</em></td>
+                    <td class="src-col-role">
+                        <span class="role-chip role-chip-other">Sonstige</span>
+                        
+                    </td>
                     <td class="src-col-regest">Thoman der Swemmbel, obrister spitalmaister der purger Spital ze Wienne, verkauft mit Handen des Bürgermeisters hern Jannsen an dem Chienmarkcht und des rates der stat ze Wienne ein prantstat einer…</td>
                 </tr>
             
@@ -995,6 +1163,11 @@
                     <td class="src-col-idno"><a href="../../documents/QGW/Vienna_1177-1414_ready/864.html">864</a></td>
                     <td class="src-col-date">1375 IX 27</td>
                     <td class="src-col-corpus">QGW II/1 (1177–1414)</td>
+                    <td class="src-col-label"><em>hern</em></td>
+                    <td class="src-col-role">
+                        <span class="role-chip role-chip-other">Sonstige</span>
+                        
+                    </td>
                     <td class="src-col-regest">Ulreich, der smerber sun, Gozzleins sun, des slosser got genad, bei vrowen Mutter Margreten, seiner hausvrowen, den paiden got genad, verkauft mit Handen des Bürgermeisters hern Jannsen an dem…</td>
                 </tr>
             
@@ -1002,6 +1175,11 @@
                     <td class="src-col-idno"><a href="../../documents/QGW/Vienna_1177-1414_ready/865.html">865</a></td>
                     <td class="src-col-date">1375 XI 07</td>
                     <td class="src-col-corpus">QGW II/1 (1177–1414)</td>
+                    <td class="src-col-label"><em>hern</em></td>
+                    <td class="src-col-role">
+                        <span class="role-chip role-chip-other">Sonstige</span>
+                        
+                    </td>
                     <td class="src-col-regest">Wien Liephart von Linz, purger ze Wienne, und Anna, seine Hausfrau, verkaufen mit Handen des Bürgermeisters hern Jannsen an dem Chienmarkcht und des rates gemain der stat ze Wienn ihr Haus, das der…</td>
                 </tr>
             
@@ -1009,6 +1187,11 @@
                     <td class="src-col-idno"><a href="../../documents/QGW/Vienna_1177-1414_ready/873.html">873</a></td>
                     <td class="src-col-date">1376 I 31</td>
                     <td class="src-col-corpus">QGW II/1 (1177–1414)</td>
+                    <td class="src-col-label"><em>hern</em></td>
+                    <td class="src-col-role">
+                        <span class="role-chip role-chip-other">Sonstige</span>
+                        
+                    </td>
                     <td class="src-col-regest">Swester Margret die Vierdunginne, priorinne der geistleichen vrowen chloster dacz der Himelporten ze Wienne , und der convent gemain daselbs , Nichlas, Kaplan der von hern Seifrid dem Reicholf…</td>
                 </tr>
             
@@ -1016,6 +1199,11 @@
                     <td class="src-col-idno"><a href="../../documents/QGW/Vienna_1177-1414_ready/874.html">874</a></td>
                     <td class="src-col-date">1376 II 07</td>
                     <td class="src-col-corpus">QGW II/1 (1177–1414)</td>
+                    <td class="src-col-label"><em>hern</em></td>
+                    <td class="src-col-role">
+                        <span class="role-chip role-chip-other">Sonstige</span>
+                        
+                    </td>
                     <td class="src-col-regest">Thoman der Rdler, chirichmaister dacz Allerheiligen tu/omchirchen dacz sand Stephan ze Wienne , und Chunigund, sein hausvrow , verkaufen mit Handen des Bürgermeisters hern Jansen an dem Chienmarkcht…</td>
                 </tr>
             
@@ -1023,6 +1211,11 @@
                     <td class="src-col-idno"><a href="../../documents/QGW/Vienna_1177-1414_ready/876.html">876</a></td>
                     <td class="src-col-date">1376 III 24</td>
                     <td class="src-col-corpus">QGW II/1 (1177–1414)</td>
+                    <td class="src-col-label"><em>hern</em></td>
+                    <td class="src-col-role">
+                        <span class="role-chip role-chip-other">Sonstige</span>
+                        
+                    </td>
                     <td class="src-col-regest">Peter der Weischoph, purger ze Wienne, und Kathrei, seine Hausfrau, verkaufen mit Handen hern Jannsen an dem Chienmarkcht, purgermaister, und des rats gemain der stat ze Wienn ihr Haus, das sie…</td>
                 </tr>
             
@@ -1030,6 +1223,11 @@
                     <td class="src-col-idno"><a href="../../documents/QGW/Vienna_1177-1414_ready/961.html">961</a></td>
                     <td class="src-col-date">1379 V 17</td>
                     <td class="src-col-corpus">QGW II/1 (1177–1414)</td>
+                    <td class="src-col-label"><em>hern</em></td>
+                    <td class="src-col-role">
+                        <span class="role-chip role-chip-other">Sonstige</span>
+                        
+                    </td>
                     <td class="src-col-regest">Dankchart, der ledrer zu Wienne, verschreibt mit Handen des Bürgermeisters hern Hannsen an dem Chienmarkcht und des rates gemain der stat zu Wienn seinem Sohne Jakob der sich dem Priesterstand widmet…</td>
                 </tr>
             
@@ -1037,6 +1235,11 @@
                     <td class="src-col-idno"><a href="../../documents/QGW/Vienna_1177-1414_ready/966.html">966</a></td>
                     <td class="src-col-date">1379 VII 23</td>
                     <td class="src-col-corpus">QGW II/1 (1177–1414)</td>
+                    <td class="src-col-label"><em>-</em></td>
+                    <td class="src-col-role">
+                        <span class="role-chip role-chip-issuer">Aussteller*in</span>
+                        
+                    </td>
                     <td class="src-col-regest">Hanns an dem Chienmarkcht, purgermaister, und der rat gemain der stat ze Wienn bestätigen, dass vor ihnen der Wiener Bürger Chunrat der Rokk und Bürger Mert von Waidhofen mit den Wiener Bürgern…</td>
                 </tr>
             
@@ -1044,6 +1247,11 @@
                     <td class="src-col-idno"><a href="../../documents/QGW/Vienna_1177-1414_ready/973.html">973</a></td>
                     <td class="src-col-date">1379 XI 07</td>
                     <td class="src-col-corpus">QGW II/1 (1177–1414)</td>
+                    <td class="src-col-label"><em>-</em></td>
+                    <td class="src-col-role">
+                        <span class="role-chip role-chip-other">Sonstige</span>
+                        
+                    </td>
                     <td class="src-col-regest">Herzog Albrecht III. beurkundet, dass ihm Haidenreich von Meissow, lantmarschalich in Österreich, 1600 lb dn., Hanns von Liechtenstain von Nicolspurg, sein Hofmeister, 2009 lb dn. und Hanns von…</td>
                 </tr>
             
@@ -1051,6 +1259,11 @@
                     <td class="src-col-idno"><a href="../../documents/QGW/Vienna_1177-1414_ready/981.html">981</a></td>
                     <td class="src-col-date">1380 V 19</td>
                     <td class="src-col-corpus">QGW II/1 (1177–1414)</td>
+                    <td class="src-col-label"><em>hern</em></td>
+                    <td class="src-col-role">
+                        <span class="role-chip role-chip-other">Sonstige</span>
+                        
+                    </td>
                     <td class="src-col-regest">Janns von der Heiligenstatt, purger ze Wienne , stiftet und dotiert eine ewige Messe auf sand Andres und sand Maria Magdalenen altar in der chapellen Unser Vrowen auf der Stetten , deren Stiftung…</td>
                 </tr>
             
@@ -1058,6 +1271,11 @@
                     <td class="src-col-idno"><a href="../../documents/QGW/Vienna_1177-1414_ready/987.html">987</a></td>
                     <td class="src-col-date">1380 VI 19</td>
                     <td class="src-col-corpus">QGW II/1 (1177–1414)</td>
+                    <td class="src-col-label"><em>hern</em></td>
+                    <td class="src-col-role">
+                        <span class="role-chip role-chip-witness">Zeuge / Siegler*in</span>
+                        
+                    </td>
                     <td class="src-col-regest">Michel der Geukramer, des rates der stat zu/e Wienne und kirchmeister Allerheiligen tumchirchen dacz sant Stephan zu Wienn , stellt einen Revers über die Abhaltung des ewigen Jahrtages aus, den her…</td>
                 </tr>
             
@@ -1065,6 +1283,11 @@
                     <td class="src-col-idno"><a href="../../documents/QGW/Vienna_1177-1414_ready/997.html">997</a></td>
                     <td class="src-col-date">1381 I 18</td>
                     <td class="src-col-corpus">QGW II/1 (1177–1414)</td>
+                    <td class="src-col-label"><em>-</em></td>
+                    <td class="src-col-role">
+                        <span class="role-chip role-chip-issuer">Aussteller*in</span><span class="role-chip role-chip-witness">Zeuge / Siegler*in</span>
+                        
+                    </td>
                     <td class="src-col-regest">Jans an dem Chienmarch, purgermaister ze Wienn, Wernhard der Sleicher, Thoman der Redler und der Schön Peter, purger daselbs ze Wienn , treffen in dem Streite zwischen Ulreichen dem Ru/eden und…</td>
                 </tr>
             
@@ -1072,6 +1295,11 @@
                     <td class="src-col-idno"><a href="../../documents/QGW/Vienna_1177-1414_ready/1009.html">1009</a></td>
                     <td class="src-col-date">1381 VII 13</td>
                     <td class="src-col-corpus">QGW II/1 (1177–1414)</td>
+                    <td class="src-col-label"><em>hern</em></td>
+                    <td class="src-col-role">
+                        <span class="role-chip role-chip-other">Sonstige</span>
+                        
+                    </td>
                     <td class="src-col-regest">Janns von Ofen und Kathrei, seine Hausfrau, verkaufen mit Handen des Bürgermeisters und Münzmeisters hern Hannsen an dem Chienmarkcht und des rats gemain der stat ze Wienne ihr von ihnen erkauftes…</td>
                 </tr>
             
@@ -1079,6 +1307,11 @@
                     <td class="src-col-idno"><a href="../../documents/QGW/Vienna_1177-1414_ready/1011.html">1011</a></td>
                     <td class="src-col-date">1381 IX 23</td>
                     <td class="src-col-corpus">QGW II/1 (1177–1414)</td>
+                    <td class="src-col-label"><em>her</em></td>
+                    <td class="src-col-role">
+                        
+                        -
+                    </td>
                     <td class="src-col-regest">Wolfhard der Pob, statrichter ze Wienn, beurkundet, dass vor ihm in der Bürgerschranne Stephan der Nezeuger mit Vorsprechen geklagt habe, dass er nach der Stadt Recht gegen den jetzt verstorbenen…</td>
                 </tr>
             
@@ -1086,6 +1319,11 @@
                     <td class="src-col-idno"><a href="../../documents/QGW/Vienna_1177-1414_ready/1021.html">1021</a></td>
                     <td class="src-col-date">1381 XII 13</td>
                     <td class="src-col-corpus">QGW II/1 (1177–1414)</td>
+                    <td class="src-col-label"><em>her</em></td>
+                    <td class="src-col-role">
+                        
+                        -
+                    </td>
                     <td class="src-col-regest">Wolfhard der Pob, statrichter ze Wienn, beurkundet, dass vor ihm in der Bürgerschranne Fridreich der Nezeuger anstatt mit Vorsprechen anstatt frown Lucein witib, hern Stephans selig witib des…</td>
                 </tr>
             
@@ -1093,6 +1331,11 @@
                     <td class="src-col-idno"><a href="../../documents/QGW/Vienna_1177-1414_ready/1022.html">1022</a></td>
                     <td class="src-col-date">1381 XII 20</td>
                     <td class="src-col-corpus">QGW II/1 (1177–1414)</td>
+                    <td class="src-col-label"><em>her</em></td>
+                    <td class="src-col-role">
+                        <span class="role-chip role-chip-other">Sonstige</span>
+                        
+                    </td>
                     <td class="src-col-regest">Wolfhard der Pob, statrichter ze Wienn, beurkundet, dass vor ihm in der Bürgerschranne Fridreich der Nezeuger mit Vorsprechen anstatt frawen Lucein witib, hern Stephans witib des Nezeuger, um 12 sh.…</td>
                 </tr>
             
@@ -1125,11 +1368,13 @@
         </div>
     </footer>
 
-    <script src="../../static/js/core.js?v=20260511112948"></script>
-    <script src="../../static/js/provenance.js?v=20260511112948"></script>
-    <script src="../../static/js/basket.js?v=20260511112948"></script>
+    <script src="../../static/js/core.js?v=20260511125458"></script>
+    <script src="../../static/js/tip.js?v=20260511125458"></script>
+    <script src="../../static/js/hint.js?v=20260511125458"></script>
+    <script src="../../static/js/basket.js?v=20260511125458"></script>
     
-<script src="../../static/js/tooltips.js?v=20260511112948"></script>
+<script src="../../static/js/profile.js?v=20260511125458"></script>
+<script src="../../static/js/basket-mount.js?v=20260511125458"></script>
 
 </body>
 </html>

@@ -3,22 +3,22 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <meta http-equiv="Content-Security-Policy" content="default-src 'self'; script-src 'self'; style-src 'self'; font-src 'self'; img-src 'self' data: https://images.monasterium.net https://www.monasterium.net; connect-src 'self'; frame-ancestors 'none'; base-uri 'self'; form-action 'self'; upgrade-insecure-requests">
+    <meta http-equiv="Content-Security-Policy" content="default-src 'self'; script-src 'self'; style-src 'self'; font-src 'self'; img-src 'self' data: https://images.monasterium.net https://www.monasterium.net; connect-src 'self'; base-uri 'self'; form-action 'self'; upgrade-insecure-requests">
     <meta name="referrer" content="strict-origin-when-cross-origin">
     <meta http-equiv="Permissions-Policy" content="camera=(), microphone=(), geolocation=(), interest-cohort=()">
     <title>Jakob Echrer, Datenbank</title>
     <link rel="preload" as="font" type="font/woff2" crossorigin
           href="../../static/fonts/inter-400-latin.woff2">
-    <link rel="stylesheet" href="../../static/css/fonts.css?v=20260511112948">
-    <link rel="stylesheet" href="../../static/css/tokens.css?v=20260511112948">
-    <link rel="stylesheet" href="../../static/css/base.css?v=20260511112948">
-    <link rel="stylesheet" href="../../static/css/components.css?v=20260511112948">
-    <link rel="stylesheet" href="../../static/css/responsive.css?v=20260511112948">
-    <link rel="stylesheet" href="../../static/css/print.css?v=20260511112948">
-    <link rel="stylesheet" href="../../static/css/provenance.css?v=20260511112948">
+    <link rel="stylesheet" href="../../static/css/fonts.css?v=20260511125458">
+    <link rel="stylesheet" href="../../static/css/tokens.css?v=20260511125458">
+    <link rel="stylesheet" href="../../static/css/base.css?v=20260511125458">
+    <link rel="stylesheet" href="../../static/css/components.css?v=20260511125458">
+    <link rel="stylesheet" href="../../static/css/responsive.css?v=20260511125458">
+    <link rel="stylesheet" href="../../static/css/print.css?v=20260511125458">
+    <link rel="stylesheet" href="../../static/css/tip.css?v=20260511125458">
     
-<link rel="stylesheet" href="../../static/css/document.css?v=20260511112948">
-<link rel="stylesheet" href="../../static/css/person.css?v=20260511112948">
+<link rel="stylesheet" href="../../static/css/document.css?v=20260511125458">
+<link rel="stylesheet" href="../../static/css/person.css?v=20260511125458">
 
 </head>
 <body data-root-path="../.."
@@ -48,8 +48,6 @@
         <a href="../../register/persons.html">Personen</a>
         
         <a href="../../register/orgs.html">Organisationen</a>
-        
-        <a href="../../register/places.html">Orte</a>
         
     </div>
 </div>
@@ -91,7 +89,7 @@
     </div>
 </div>
 
-                <a href="../../korb.html" class="nav-basket" aria-label="Wissenskorb">
+                <a href="../../korb.html" class="nav-basket" aria-label="Datenkorb">
                     <svg width="18" height="18" viewBox="0 0 18 18" fill="none" aria-hidden="true">
                         <path d="M3 5h12l-1.2 8.5a1 1 0 0 1-1 .85H5.2a1 1 0 0 1-1-.85L3 5z"
                               stroke="currentColor" stroke-width="1.4" fill="none"
@@ -112,11 +110,23 @@
 
     <div class="person-toolbar">
         <div class="person-toolbar-inner">
-            <nav class="person-breadcrumb" aria-label="Position">
-                <a href="../../register/persons.html">Personenregister</a>
-                <span class="bc-sep">&rsaquo;</span>
-                <span class="bc-doc"><strong>Jakob Echrer</strong></span>
-            </nav>
+            <div class="person-toolbar-row">
+                <nav class="person-breadcrumb" aria-label="Position">
+                    <a href="../../register/persons.html">Personenregister</a>
+                    <span class="bc-sep">&rsaquo;</span>
+                    <span class="bc-doc"><strong>Jakob Echrer</strong></span>
+                </nav>
+                <div class="person-toolbar-actions">
+                    <span class="toolbar-basket-mount"
+                          data-basket-type="person"
+                          data-basket-id="pe__jakob_echrer_QGW_II_I_1228"
+                          data-basket-label="Jakob Echrer"
+                          data-basket-url="register/persons/pe__jakob_echrer_QGW_II_I_1228.html"
+                          data-basket-sex="m"
+                          data-basket-active-min="1376"
+                          data-basket-active-max="1400"></span>
+                </div>
+            </div>
             <div class="person-toolbar-meta">
                 <span class="meta-pair">
                     <span class="meta-label">Geschlecht</span>
@@ -124,11 +134,41 @@
                 </span>
                 
                 <span class="meta-pair">
-                    <span class="meta-label">Belegt</span>
+                    <span class="meta-label">Belegt
+<span class="tip-wrap">
+    <button type="button" class="tip-trigger tip-trigger--icon"
+            aria-expanded="false" aria-haspopup="dialog"
+            aria-controls="person-belegt"
+            data-tip="person-belegt"
+            aria-label="Definition: Beleg-Zeitraum">
+        <svg width="13" height="13" viewBox="0 0 16 16" aria-hidden="true">
+            <circle cx="8" cy="8" r="7" stroke="currentColor" stroke-width="1.4" fill="none"/>
+            <text x="8" y="11.6" text-anchor="middle" font-size="9.5" font-weight="700"
+                  fill="currentColor" font-family="Georgia, serif">i</text>
+        </svg>
+    </button>
+    <aside class="tip-popover tip-popover--glossary"
+           id="person-belegt" role="dialog" aria-hidden="true"
+           aria-label="Definition: Beleg-Zeitraum">
+        <header class="tip-head">
+            <h3 class="tip-title">Beleg-Zeitraum</h3>
+            <button type="button" class="tip-close" aria-label="Schlie&szlig;en">&times;</button>
+        </header>
+        <div class="tip-body">
+            <p>Erste und letzte Datierung einer Quelle, in der die Person erscheint. Bei einzelnem Beleg wird nur ein Jahr angegeben.</p>
+            
+        </div>
+    </aside>
+</span>
+</span>
                     <span class="meta-value">1376 bis 1400</span>
                 </span>
                 
                 
+                <span class="meta-pair">
+                    <span class="meta-label">Quellen</span>
+                    <span class="meta-value">10</span>
+                </span>
                 <span class="meta-pair person-id-pair">
                     <span class="meta-label">ID</span>
                     <code class="meta-value person-id">pe__jakob_echrer_QGW_II_I_1228</code>
@@ -145,16 +185,48 @@
             
         </h1>
         
+        
         <p class="person-note">Wiener Bürger und Ratsherr, Kirchmeister von St. Stephan</p>
         
         
-        <p class="person-titles">
+        <p class="person-titles" data-collapsible="22">
             <span class="pt-label">In den Quellen genannt als</span>
             <span class="pt-chip">her|rechter perchherr</span><span class="pt-chip">herrn</span><span class="pt-chip">hern</span>
         </p>
         
         
+        
     </header>
+
+    
+    <section class="role-strip" aria-label="Rollen in Rechtsgeschäften">
+        <h2 class="role-strip-title">Rollen in Rechtsgeschäften</h2>
+        <div class="role-strip-cells">
+            
+            <div class="role-cell role-cell-issuer">
+                <span class="role-cell-count">3</span>
+                <span class="role-cell-label">Aussteller*in</span>
+            </div>
+            
+            <div class="role-cell role-cell-recipient">
+                <span class="role-cell-count">4</span>
+                <span class="role-cell-label">Empfänger*in</span>
+            </div>
+            
+            <div class="role-cell role-cell-witness">
+                <span class="role-cell-count">5</span>
+                <span class="role-cell-label">Zeuge / Siegler*in</span>
+            </div>
+            
+            <div class="role-cell role-cell-other is-zero">
+                <span class="role-cell-count">0</span>
+                <span class="role-cell-label">Sonstige</span>
+            </div>
+            
+        </div>
+        <p class="role-strip-hint">Summe Rollen-Belegungen: 12. Mehrfach-Rollen pro Quelle sind möglich.</p>
+    </section>
+    
 
     
 
@@ -171,6 +243,7 @@
                 <span class="rel-block-count">4</span>
                 <span class="rel-block-hint">Verwandtschaftsverhältnisse, wie sie in den Quellen explizit benannt werden.</span>
             </header>
+            
             <table class="rel-table">
                 <thead>
                     <tr>
@@ -191,7 +264,7 @@
                         <td class="rel-col-label"><em>rechtew geswistreyd eninkchel</em></td>
                         <td class="rel-col-perspective">
                             
-                                Johann Pölzl von Perchtoldsdorf → Jakob Echrer
+                                Johann Pölzl von Perchtoldsdorf &rsaquo; Jakob Echrer
                             
                         </td>
                         <td class="rel-col-source">
@@ -210,7 +283,7 @@
                         <td class="rel-col-label"><em>rechtew geswistreyd eninkchel</em></td>
                         <td class="rel-col-perspective">
                             
-                                Niklas Wolfram von Ebersdorf → Jakob Echrer
+                                Niklas Wolfram von Ebersdorf &rsaquo; Jakob Echrer
                             
                         </td>
                         <td class="rel-col-source">
@@ -229,7 +302,7 @@
                         <td class="rel-col-label"><em>rechtew geswistreyd eninkchel</em></td>
                         <td class="rel-col-perspective">
                             
-                                Jakob Echrer → Johann Pölzl von Perchtoldsdorf
+                                Jakob Echrer &rsaquo; Johann Pölzl von Perchtoldsdorf
                             
                         </td>
                         <td class="rel-col-source">
@@ -248,7 +321,7 @@
                         <td class="rel-col-label"><em>rechtew geswistreyd eninkchel</em></td>
                         <td class="rel-col-perspective">
                             
-                                Jakob Echrer → Niklas Wolfram von Ebersdorf
+                                Jakob Echrer &rsaquo; Niklas Wolfram von Ebersdorf
                             
                         </td>
                         <td class="rel-col-source">
@@ -277,6 +350,7 @@
                 <span class="rel-block-count">15</span>
                 <span class="rel-block-hint">Berufs- oder Amtsbezeichnung in Bezug auf eine Institution.</span>
             </header>
+            
             <table class="rel-table">
                 <thead>
                     <tr>
@@ -297,7 +371,7 @@
                         <td class="rel-col-label"><em>anwalt</em></td>
                         <td class="rel-col-perspective">
                             
-                                Jakob Echrer → Herzogtum Österreich
+                                Jakob Echrer &rsaquo; Herzogtum Österreich
                             
                         </td>
                         <td class="rel-col-source">
@@ -316,7 +390,7 @@
                         <td class="rel-col-label"><em>anwalt indes herzogen münze ze Wienn</em></td>
                         <td class="rel-col-perspective">
                             
-                                Jakob Echrer → Herzogtum Österreich
+                                Jakob Echrer &rsaquo; Herzogtum Österreich
                             
                         </td>
                         <td class="rel-col-source">
@@ -335,7 +409,7 @@
                         <td class="rel-col-label"><em>anwalt</em></td>
                         <td class="rel-col-perspective">
                             
-                                Jakob Echrer → Herzogtum Österreich
+                                Jakob Echrer &rsaquo; Herzogtum Österreich
                             
                         </td>
                         <td class="rel-col-source">
@@ -354,7 +428,7 @@
                         <td class="rel-col-label"><em>chirichmaister</em></td>
                         <td class="rel-col-perspective">
                             
-                                Jakob Echrer → St. Stephan (Pfarr- und Domkirche)
+                                Jakob Echrer &rsaquo; St. Stephan (Pfarr- und Domkirche)
                             
                         </td>
                         <td class="rel-col-source">
@@ -373,7 +447,7 @@
                         <td class="rel-col-label"><em>rates</em></td>
                         <td class="rel-col-perspective">
                             
-                                Jakob Echrer → Wien
+                                Jakob Echrer &rsaquo; Wien
                             
                         </td>
                         <td class="rel-col-source">
@@ -392,7 +466,7 @@
                         <td class="rel-col-label"><em>Lehensherr</em></td>
                         <td class="rel-col-perspective">
                             
-                                Jakob Echrer → Jahrtag Johann auf der Säule
+                                Jakob Echrer &rsaquo; Jahrtag Johann auf der Säule
                             
                         </td>
                         <td class="rel-col-source">
@@ -411,7 +485,7 @@
                         <td class="rel-col-label"><em>purger</em></td>
                         <td class="rel-col-perspective">
                             
-                                Jakob Echrer → Wien
+                                Jakob Echrer &rsaquo; Wien
                             
                         </td>
                         <td class="rel-col-source">
@@ -430,7 +504,7 @@
                         <td class="rel-col-label"><em>chirchmaister</em></td>
                         <td class="rel-col-perspective">
                             
-                                Jakob Echrer → St. Stephan (Pfarr- und Domkirche)
+                                Jakob Echrer &rsaquo; St. Stephan (Pfarr- und Domkirche)
                             
                         </td>
                         <td class="rel-col-source">
@@ -449,7 +523,7 @@
                         <td class="rel-col-label"><em>rates</em></td>
                         <td class="rel-col-perspective">
                             
-                                Jakob Echrer → Wien
+                                Jakob Echrer &rsaquo; Wien
                             
                         </td>
                         <td class="rel-col-source">
@@ -468,7 +542,7 @@
                         <td class="rel-col-label"><em>des herzogen anbalt in der müniz ze Wienn</em></td>
                         <td class="rel-col-perspective">
                             
-                                Jakob Echrer → Herzogtum Österreich
+                                Jakob Echrer &rsaquo; Herzogtum Österreich
                             
                         </td>
                         <td class="rel-col-source">
@@ -487,7 +561,7 @@
                         <td class="rel-col-label"><em>rats</em></td>
                         <td class="rel-col-perspective">
                             
-                                Jakob Echrer → Wien
+                                Jakob Echrer &rsaquo; Wien
                             
                         </td>
                         <td class="rel-col-source">
@@ -506,7 +580,7 @@
                         <td class="rel-col-label"><em>Wiener Bürger</em></td>
                         <td class="rel-col-perspective">
                             
-                                Jakob Echrer → Wien
+                                Jakob Echrer &rsaquo; Wien
                             
                         </td>
                         <td class="rel-col-source">
@@ -525,7 +599,7 @@
                         <td class="rel-col-label"><em>Wiener Bürger</em></td>
                         <td class="rel-col-perspective">
                             
-                                Jakob Echrer → Wien
+                                Jakob Echrer &rsaquo; Wien
                             
                         </td>
                         <td class="rel-col-source">
@@ -544,7 +618,7 @@
                         <td class="rel-col-label"><em>Zechmeister</em></td>
                         <td class="rel-col-perspective">
                             
-                                Jakob Echrer → Schreiberzeche auf dem Neuen Karner
+                                Jakob Echrer &rsaquo; Schreiberzeche auf dem Neuen Karner
                             
                         </td>
                         <td class="rel-col-source">
@@ -563,7 +637,7 @@
                         <td class="rel-col-label"><em>Bürger</em></td>
                         <td class="rel-col-perspective">
                             
-                                Jakob Echrer → Wien
+                                Jakob Echrer &rsaquo; Wien
                             
                         </td>
                         <td class="rel-col-source">
@@ -581,18 +655,27 @@
         
         
         
+        
+        
+        
+        
+        
+        
     </section>
     
 
     
     <section class="person-sources" aria-label="Quellen mit Nennung">
         <h2 class="section-head">Quellen mit Nennung</h2>
+        
         <table class="person-source-table">
             <thead>
                 <tr>
                     <th scope="col" class="src-col-idno">Nr.</th>
                     <th scope="col" class="src-col-date">Datum</th>
                     <th scope="col" class="src-col-corpus">Quellenkorpus</th>
+                    <th scope="col" class="src-col-label">Bezeichnung</th>
+                    <th scope="col" class="src-col-role">Rolle</th>
                     <th scope="col" class="src-col-regest">Regest</th>
                 </tr>
             </thead>
@@ -602,6 +685,11 @@
                     <td class="src-col-idno"><a href="../../documents/QGW/Vienna_1177-1414_ready/887.html">887</a></td>
                     <td class="src-col-date">1376 X 09</td>
                     <td class="src-col-corpus">QGW II/1 (1177–1414)</td>
+                    <td class="src-col-label"><em>-</em></td>
+                    <td class="src-col-role">
+                        <span class="role-chip role-chip-recipient">Empfänger*in</span>
+                        
+                    </td>
                     <td class="src-col-regest">Du/ering von Seveld und Anna, seine Hausfrau, verkaufen mit Handen des Bergmeisters Giligen von Nuz/zdorf, amptman des erbern herren graf Ulreichs von Pernstain, ihres rechten Kauf gutes einen…</td>
                 </tr>
             
@@ -609,6 +697,11 @@
                     <td class="src-col-idno"><a href="../../documents/QGW/Vienna_1177-1414_ready/888.html">888</a></td>
                     <td class="src-col-date">1376 X 13</td>
                     <td class="src-col-corpus">QGW II/1 (1177–1414)</td>
+                    <td class="src-col-label"><em>-</em></td>
+                    <td class="src-col-role">
+                        <span class="role-chip role-chip-recipient">Empfänger*in</span>
+                        
+                    </td>
                     <td class="src-col-regest">Janns von der Heiligenstat, purger ze Wienne, und Anna, seine Hausfrau, verkaufen mit Handen Giligen von Nuz/zdorf, amptman des erbern herrn graf Ulreichs von Pernstain, ihren Weingarten, welcher der…</td>
                 </tr>
             
@@ -616,6 +709,11 @@
                     <td class="src-col-idno"><a href="../../documents/QGW/Vienna_1177-1414_ready/939.html">939</a></td>
                     <td class="src-col-date">1378 V 10</td>
                     <td class="src-col-corpus">QGW II/1 (1177–1414)</td>
+                    <td class="src-col-label"><em>-</em></td>
+                    <td class="src-col-role">
+                        <span class="role-chip role-chip-issuer">Aussteller*in</span><span class="role-chip role-chip-witness">Zeuge / Siegler*in</span>
+                        
+                    </td>
                     <td class="src-col-regest">Jacob der Echrer Zechmeister und Fridreich, der wiert in der Chotbeiger hof ze Wienne, paid zechmaister in der Schreiberzeche auf dem neuen Charner dacz sand Stephan ze Wienne , beurkunden…</td>
                 </tr>
             
@@ -623,6 +721,11 @@
                     <td class="src-col-idno"><a href="../../documents/QGW/Vienna_1177-1414_ready/980.html">980</a></td>
                     <td class="src-col-date">1380 V 18</td>
                     <td class="src-col-corpus">QGW II/1 (1177–1414)</td>
+                    <td class="src-col-label"><em>-</em></td>
+                    <td class="src-col-role">
+                        <span class="role-chip role-chip-witness">Zeuge / Siegler*in</span>
+                        
+                    </td>
                     <td class="src-col-regest">Elsbet witib, Chuen witib, des fu/etrer , beurkundet ihren letzten Willen. Sie schafft: 1. ihrem Vetter Alramen dem Wisent auf Lebzeiten einen Weingarten, gelegen ze Gumpolczkirichen und haisset der…</td>
                 </tr>
             
@@ -630,6 +733,11 @@
                     <td class="src-col-idno"><a href="../../documents/QGW/Vienna_1177-1414_ready/1062.html">1062</a></td>
                     <td class="src-col-date">1384 II 11</td>
                     <td class="src-col-corpus">QGW II/1 (1177–1414)</td>
+                    <td class="src-col-label"><em>-</em></td>
+                    <td class="src-col-role">
+                        <span class="role-chip role-chip-witness">Zeuge / Siegler*in</span>
+                        
+                    </td>
                     <td class="src-col-regest">Peter der Velmund Bürger Ausrichter des Geschäfts und Niclas, der ratsmid Ausrichter des Geschäfts, baid purger ze Wienne , verkaufen als Ausrichter des Geschäftes Chu/enrats seligen, des bader,…</td>
                 </tr>
             
@@ -637,6 +745,11 @@
                     <td class="src-col-idno"><a href="../../documents/QGW/Vienna_1177-1414_ready/1166.html">1166</a></td>
                     <td class="src-col-date">1388 X 06</td>
                     <td class="src-col-corpus">QGW II/1 (1177–1414)</td>
+                    <td class="src-col-label"><em>her|rechter perchherr</em></td>
+                    <td class="src-col-role">
+                        <span class="role-chip role-chip-recipient">Empfänger*in</span>
+                        
+                    </td>
                     <td class="src-col-regest">Chunigund, Gerungs witib des Gerung des Ammans witib,verkauft ihres rechten Kaufgutes einen Weingarten, des her Jacob der Echrer, anwalt indes herzogen münze ze Wienn, rechter perchherr ist, der do…</td>
                 </tr>
             
@@ -644,6 +757,11 @@
                     <td class="src-col-idno"><a href="../../documents/QGW/Vienna_1177-1414_ready/1219.html">1219</a></td>
                     <td class="src-col-date">1391 IX 29</td>
                     <td class="src-col-corpus">QGW II/1 (1177–1414)</td>
+                    <td class="src-col-label"><em>-</em></td>
+                    <td class="src-col-role">
+                        <span class="role-chip role-chip-recipient">Empfänger*in</span>
+                        
+                    </td>
                     <td class="src-col-regest">Geschäftsherr Niclas der Würffel, der elter, und Paul der Würffel, sein pru/eder, und gescheftherren ihres Oheims Oheim Hannsen auf der Se/aul, bestätigen, dass dieser 2 lb dn. geltes purkrechts,…</td>
                 </tr>
             
@@ -651,6 +769,11 @@
                     <td class="src-col-idno"><a href="../../documents/QGW/Vienna_1177-1414_ready/1220.html">1220</a></td>
                     <td class="src-col-date">1391 IX 29</td>
                     <td class="src-col-corpus">QGW II/1 (1177–1414)</td>
+                    <td class="src-col-label"><em>-</em></td>
+                    <td class="src-col-role">
+                        <span class="role-chip role-chip-issuer">Aussteller*in</span><span class="role-chip role-chip-witness">Zeuge / Siegler*in</span>
+                        
+                    </td>
                     <td class="src-col-regest">Jacob der Echrer, purger zu Wienn und chirchmaister und des rates zu Wienn, stellt einen Revers aus über die in Urk. no 1219 beurkundete Stiftung einen Revers aus.</td>
                 </tr>
             
@@ -658,6 +781,11 @@
                     <td class="src-col-idno"><a href="../../documents/QGW/Vienna_1177-1414_ready/1228.html">1228</a></td>
                     <td class="src-col-date">1392 III 05</td>
                     <td class="src-col-corpus">QGW II/1 (1177–1414)</td>
+                    <td class="src-col-label"><em>hern</em></td>
+                    <td class="src-col-role">
+                        <span class="role-chip role-chip-witness">Zeuge / Siegler*in</span>
+                        
+                    </td>
                     <td class="src-col-regest">Jorig der Nustorfer, purger ze Wienn, beurkundet mit Gunst und Willen seiner Hausfrau Gedrauten unter Aufrechthaltung seines alten geschefts (vgl. Urk. no 1210) seinen letzten Willen. Er schafft: 1.…</td>
                 </tr>
             
@@ -665,6 +793,11 @@
                     <td class="src-col-idno"><a href="../../documents/Stadtbuecher/Band_1_1395-1400_ready/572.html">572</a></td>
                     <td class="src-col-date">1400 Juni 3</td>
                     <td class="src-col-corpus">Stadtbücher Bd. 1 (1395–1400)</td>
+                    <td class="src-col-label"><em>-</em></td>
+                    <td class="src-col-role">
+                        <span class="role-chip role-chip-issuer">Aussteller*in</span>
+                        
+                    </td>
                     <td class="src-col-regest">Einbr. 3 Zg. (Inde:ll: Item frewntschaft Hansen des Polczel von Perchtolstorff) Des negsten phincztags vor dem heyligen phingsttag kom fur den rat Hanns der Polczl von Perchtoltstorff und Niclas…</td>
                 </tr>
             
@@ -697,11 +830,13 @@
         </div>
     </footer>
 
-    <script src="../../static/js/core.js?v=20260511112948"></script>
-    <script src="../../static/js/provenance.js?v=20260511112948"></script>
-    <script src="../../static/js/basket.js?v=20260511112948"></script>
+    <script src="../../static/js/core.js?v=20260511125458"></script>
+    <script src="../../static/js/tip.js?v=20260511125458"></script>
+    <script src="../../static/js/hint.js?v=20260511125458"></script>
+    <script src="../../static/js/basket.js?v=20260511125458"></script>
     
-<script src="../../static/js/tooltips.js?v=20260511112948"></script>
+<script src="../../static/js/profile.js?v=20260511125458"></script>
+<script src="../../static/js/basket-mount.js?v=20260511125458"></script>
 
 </body>
 </html>

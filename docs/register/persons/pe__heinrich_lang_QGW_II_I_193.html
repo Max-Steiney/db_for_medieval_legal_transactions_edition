@@ -3,22 +3,22 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <meta http-equiv="Content-Security-Policy" content="default-src 'self'; script-src 'self'; style-src 'self'; font-src 'self'; img-src 'self' data: https://images.monasterium.net https://www.monasterium.net; connect-src 'self'; frame-ancestors 'none'; base-uri 'self'; form-action 'self'; upgrade-insecure-requests">
+    <meta http-equiv="Content-Security-Policy" content="default-src 'self'; script-src 'self'; style-src 'self'; font-src 'self'; img-src 'self' data: https://images.monasterium.net https://www.monasterium.net; connect-src 'self'; base-uri 'self'; form-action 'self'; upgrade-insecure-requests">
     <meta name="referrer" content="strict-origin-when-cross-origin">
     <meta http-equiv="Permissions-Policy" content="camera=(), microphone=(), geolocation=(), interest-cohort=()">
     <title>Heinrich Lang Lang (&dagger; 24.07.1367), Datenbank</title>
     <link rel="preload" as="font" type="font/woff2" crossorigin
           href="../../static/fonts/inter-400-latin.woff2">
-    <link rel="stylesheet" href="../../static/css/fonts.css?v=20260511112948">
-    <link rel="stylesheet" href="../../static/css/tokens.css?v=20260511112948">
-    <link rel="stylesheet" href="../../static/css/base.css?v=20260511112948">
-    <link rel="stylesheet" href="../../static/css/components.css?v=20260511112948">
-    <link rel="stylesheet" href="../../static/css/responsive.css?v=20260511112948">
-    <link rel="stylesheet" href="../../static/css/print.css?v=20260511112948">
-    <link rel="stylesheet" href="../../static/css/provenance.css?v=20260511112948">
+    <link rel="stylesheet" href="../../static/css/fonts.css?v=20260511125458">
+    <link rel="stylesheet" href="../../static/css/tokens.css?v=20260511125458">
+    <link rel="stylesheet" href="../../static/css/base.css?v=20260511125458">
+    <link rel="stylesheet" href="../../static/css/components.css?v=20260511125458">
+    <link rel="stylesheet" href="../../static/css/responsive.css?v=20260511125458">
+    <link rel="stylesheet" href="../../static/css/print.css?v=20260511125458">
+    <link rel="stylesheet" href="../../static/css/tip.css?v=20260511125458">
     
-<link rel="stylesheet" href="../../static/css/document.css?v=20260511112948">
-<link rel="stylesheet" href="../../static/css/person.css?v=20260511112948">
+<link rel="stylesheet" href="../../static/css/document.css?v=20260511125458">
+<link rel="stylesheet" href="../../static/css/person.css?v=20260511125458">
 
 </head>
 <body data-root-path="../.."
@@ -48,8 +48,6 @@
         <a href="../../register/persons.html">Personen</a>
         
         <a href="../../register/orgs.html">Organisationen</a>
-        
-        <a href="../../register/places.html">Orte</a>
         
     </div>
 </div>
@@ -91,7 +89,7 @@
     </div>
 </div>
 
-                <a href="../../korb.html" class="nav-basket" aria-label="Wissenskorb">
+                <a href="../../korb.html" class="nav-basket" aria-label="Datenkorb">
                     <svg width="18" height="18" viewBox="0 0 18 18" fill="none" aria-hidden="true">
                         <path d="M3 5h12l-1.2 8.5a1 1 0 0 1-1 .85H5.2a1 1 0 0 1-1-.85L3 5z"
                               stroke="currentColor" stroke-width="1.4" fill="none"
@@ -112,11 +110,23 @@
 
     <div class="person-toolbar">
         <div class="person-toolbar-inner">
-            <nav class="person-breadcrumb" aria-label="Position">
-                <a href="../../register/persons.html">Personenregister</a>
-                <span class="bc-sep">&rsaquo;</span>
-                <span class="bc-doc"><strong>Heinrich Lang Lang</strong></span>
-            </nav>
+            <div class="person-toolbar-row">
+                <nav class="person-breadcrumb" aria-label="Position">
+                    <a href="../../register/persons.html">Personenregister</a>
+                    <span class="bc-sep">&rsaquo;</span>
+                    <span class="bc-doc"><strong>Heinrich Lang Lang</strong></span>
+                </nav>
+                <div class="person-toolbar-actions">
+                    <span class="toolbar-basket-mount"
+                          data-basket-type="person"
+                          data-basket-id="pe__heinrich_lang_QGW_II_I_193"
+                          data-basket-label="Heinrich Lang Lang"
+                          data-basket-url="register/persons/pe__heinrich_lang_QGW_II_I_193.html"
+                          data-basket-sex="m"
+                          data-basket-active-min="1323"
+                          data-basket-active-max="1367"></span>
+                </div>
+            </div>
             <div class="person-toolbar-meta">
                 <span class="meta-pair">
                     <span class="meta-label">Geschlecht</span>
@@ -124,7 +134,33 @@
                 </span>
                 
                 <span class="meta-pair">
-                    <span class="meta-label">Belegt</span>
+                    <span class="meta-label">Belegt
+<span class="tip-wrap">
+    <button type="button" class="tip-trigger tip-trigger--icon"
+            aria-expanded="false" aria-haspopup="dialog"
+            aria-controls="person-belegt"
+            data-tip="person-belegt"
+            aria-label="Definition: Beleg-Zeitraum">
+        <svg width="13" height="13" viewBox="0 0 16 16" aria-hidden="true">
+            <circle cx="8" cy="8" r="7" stroke="currentColor" stroke-width="1.4" fill="none"/>
+            <text x="8" y="11.6" text-anchor="middle" font-size="9.5" font-weight="700"
+                  fill="currentColor" font-family="Georgia, serif">i</text>
+        </svg>
+    </button>
+    <aside class="tip-popover tip-popover--glossary"
+           id="person-belegt" role="dialog" aria-hidden="true"
+           aria-label="Definition: Beleg-Zeitraum">
+        <header class="tip-head">
+            <h3 class="tip-title">Beleg-Zeitraum</h3>
+            <button type="button" class="tip-close" aria-label="Schlie&szlig;en">&times;</button>
+        </header>
+        <div class="tip-body">
+            <p>Erste und letzte Datierung einer Quelle, in der die Person erscheint. Bei einzelnem Beleg wird nur ein Jahr angegeben.</p>
+            
+        </div>
+    </aside>
+</span>
+</span>
                     <span class="meta-value">1323 bis 1367</span>
                 </span>
                 
@@ -134,6 +170,10 @@
                     <span class="meta-value">24.07.1367</span>
                 </span>
                 
+                <span class="meta-pair">
+                    <span class="meta-label">Quellen</span>
+                    <span class="meta-value">11</span>
+                </span>
                 <span class="meta-pair person-id-pair">
                     <span class="meta-label">ID</span>
                     <code class="meta-value person-id">pe__heinrich_lang_QGW_II_I_193</code>
@@ -151,13 +191,45 @@
         </h1>
         
         
-        <p class="person-titles">
+        
+        <p class="person-titles" data-collapsible="22">
             <span class="pt-label">In den Quellen genannt als</span>
             <span class="pt-chip">hern</span><span class="pt-chip">Herr</span><span class="pt-chip">Grundherrn|hern</span>
         </p>
         
         
+        
     </header>
+
+    
+    <section class="role-strip" aria-label="Rollen in Rechtsgeschäften">
+        <h2 class="role-strip-title">Rollen in Rechtsgeschäften</h2>
+        <div class="role-strip-cells">
+            
+            <div class="role-cell role-cell-issuer is-zero">
+                <span class="role-cell-count">0</span>
+                <span class="role-cell-label">Aussteller*in</span>
+            </div>
+            
+            <div class="role-cell role-cell-recipient is-zero">
+                <span class="role-cell-count">0</span>
+                <span class="role-cell-label">Empfänger*in</span>
+            </div>
+            
+            <div class="role-cell role-cell-witness">
+                <span class="role-cell-count">9</span>
+                <span class="role-cell-label">Zeuge / Siegler*in</span>
+            </div>
+            
+            <div class="role-cell role-cell-other">
+                <span class="role-cell-count">2</span>
+                <span class="role-cell-label">Sonstige</span>
+            </div>
+            
+        </div>
+        <p class="role-strip-hint">Summe Rollen-Belegungen: 11. Mehrfach-Rollen pro Quelle sind möglich.</p>
+    </section>
+    
 
     
 
@@ -174,6 +246,7 @@
                 <span class="rel-block-count">5</span>
                 <span class="rel-block-hint">Verwandtschaftsverhältnisse, wie sie in den Quellen explizit benannt werden.</span>
             </header>
+            
             <table class="rel-table">
                 <thead>
                     <tr>
@@ -194,7 +267,7 @@
                         <td class="rel-col-label"><em>Vaters</em></td>
                         <td class="rel-col-perspective">
                             
-                                Heinrich Lang Lang → Anna Janin
+                                Heinrich Lang Lang &rsaquo; Anna Janin
                             
                         </td>
                         <td class="rel-col-source">
@@ -213,7 +286,7 @@
                         <td class="rel-col-label"><em>Vaters</em></td>
                         <td class="rel-col-perspective">
                             
-                                Heinrich Lang Lang → Anna Janin
+                                Heinrich Lang Lang &rsaquo; Anna Janin
                             
                         </td>
                         <td class="rel-col-source">
@@ -232,7 +305,7 @@
                         <td class="rel-col-label"><em>sun</em></td>
                         <td class="rel-col-perspective">
                             
-                                Jakob Lang → Heinrich Lang Lang
+                                Jakob Lang &rsaquo; Heinrich Lang Lang
                             
                         </td>
                         <td class="rel-col-source">
@@ -251,7 +324,7 @@
                         <td class="rel-col-label"><em>sun</em></td>
                         <td class="rel-col-perspective">
                             
-                                Jakob Lang → Heinrich Lang Lang
+                                Jakob Lang &rsaquo; Heinrich Lang Lang
                             
                         </td>
                         <td class="rel-col-source">
@@ -270,7 +343,7 @@
                         <td class="rel-col-label"><em>sun</em></td>
                         <td class="rel-col-perspective">
                             
-                                Jakob Lang → Heinrich Lang Lang
+                                Jakob Lang &rsaquo; Heinrich Lang Lang
                             
                         </td>
                         <td class="rel-col-source">
@@ -299,6 +372,7 @@
                 <span class="rel-block-count">1</span>
                 <span class="rel-block-hint">Berufs- oder Amtsbezeichnung in Bezug auf eine Institution.</span>
             </header>
+            
             <table class="rel-table">
                 <thead>
                     <tr>
@@ -319,7 +393,7 @@
                         <td class="rel-col-label"><em>Bürgermeister</em></td>
                         <td class="rel-col-perspective">
                             
-                                Heinrich Lang Lang → Wien
+                                Heinrich Lang Lang &rsaquo; Wien
                             
                         </td>
                         <td class="rel-col-source">
@@ -337,18 +411,27 @@
         
         
         
+        
+        
+        
+        
+        
+        
     </section>
     
 
     
     <section class="person-sources" aria-label="Quellen mit Nennung">
         <h2 class="section-head">Quellen mit Nennung</h2>
+        
         <table class="person-source-table">
             <thead>
                 <tr>
                     <th scope="col" class="src-col-idno">Nr.</th>
                     <th scope="col" class="src-col-date">Datum</th>
                     <th scope="col" class="src-col-corpus">Quellenkorpus</th>
+                    <th scope="col" class="src-col-label">Bezeichnung</th>
+                    <th scope="col" class="src-col-role">Rolle</th>
                     <th scope="col" class="src-col-regest">Regest</th>
                 </tr>
             </thead>
@@ -358,6 +441,11 @@
                     <td class="src-col-idno"><a href="../../documents/QGW/Vienna_1177-1414_ready/88.html">88</a></td>
                     <td class="src-col-date">1323 III 13</td>
                     <td class="src-col-corpus">QGW II/1 (1177–1414)</td>
+                    <td class="src-col-label"><em>-</em></td>
+                    <td class="src-col-role">
+                        <span class="role-chip role-chip-witness">Zeuge / Siegler*in</span>
+                        
+                    </td>
                     <td class="src-col-regest">Wolfhart von der Igla und Pericht, seine Hausfrau, verkaufen ihres rechten Eigens ein Joch Weingarten, der da leit ze Grinzingen und haiset der Cherspaem und lait zenaehist des pharrer Weingarten von…</td>
                 </tr>
             
@@ -365,6 +453,11 @@
                     <td class="src-col-idno"><a href="../../documents/QGW/Vienna_1177-1414_ready/107.html">107</a></td>
                     <td class="src-col-date">1328 III 06</td>
                     <td class="src-col-corpus">QGW II/1 (1177–1414)</td>
+                    <td class="src-col-label"><em>hern</em></td>
+                    <td class="src-col-role">
+                        <span class="role-chip role-chip-witness">Zeuge / Siegler*in</span>
+                        
+                    </td>
                     <td class="src-col-regest">Agnes,housvrowe hern Chu/onrades des Wiltwercher housvrowe, purger ze Wienne, erklärt sich mit allen Rechtshandlungen ihres Gemahles ihres Mannes, mit allen Käufen und Verkäufen desselben,…</td>
                 </tr>
             
@@ -372,6 +465,11 @@
                     <td class="src-col-idno"><a href="../../documents/QGW/Vienna_1177-1414_ready/124.html">124</a></td>
                     <td class="src-col-date">1330 V 12</td>
                     <td class="src-col-corpus">QGW II/1 (1177–1414)</td>
+                    <td class="src-col-label"><em>Herr</em></td>
+                    <td class="src-col-role">
+                        <span class="role-chip role-chip-witness">Zeuge / Siegler*in</span>
+                        
+                    </td>
                     <td class="src-col-regest">Rudger in dem Ampthofe, Alhait, sein hausvrowe Seifriet, amman von Obern- Su/efringen Wolfger, von Niedern Sufringe amman Gerung, der amman von Niedern- Sufringe Wilhalm, der amman von Salmansdorf…</td>
                 </tr>
             
@@ -379,6 +477,11 @@
                     <td class="src-col-idno"><a href="../../documents/QGW/Vienna_1177-1414_ready/152.html">152</a></td>
                     <td class="src-col-date">1333 II 23</td>
                     <td class="src-col-corpus">QGW II/1 (1177–1414)</td>
+                    <td class="src-col-label"><em>hern</em></td>
+                    <td class="src-col-role">
+                        <span class="role-chip role-chip-witness">Zeuge / Siegler*in</span>
+                        
+                    </td>
                     <td class="src-col-regest">Seifrit, der fu/etraer, schafft nach dem Ableben Stephans des Chrigler drei Weingärten, der ainer leit an dem Nuz/zperge, des ein jeuch ist und haisset das Ru/eppel und leit zenaehst dem weingarten…</td>
                 </tr>
             
@@ -386,6 +489,11 @@
                     <td class="src-col-idno"><a href="../../documents/QGW/Vienna_1177-1414_ready/193.html">193</a></td>
                     <td class="src-col-date">1338 V 12</td>
                     <td class="src-col-corpus">QGW II/1 (1177–1414)</td>
+                    <td class="src-col-label"><em>hern</em></td>
+                    <td class="src-col-role">
+                        <span class="role-chip role-chip-other">Sonstige</span><span class="role-chip role-chip-witness">Zeuge / Siegler*in</span>
+                        
+                    </td>
                     <td class="src-col-regest">Anne, hern Marcharts witibe des Janes, bestätigt,dass sie und ihr Kind von ihrem Manne ein paumgaertel geerbt haben, das da leit zenaehste des erbern herren paumgarten hern Hermannes, canceler und…</td>
                 </tr>
             
@@ -393,6 +501,11 @@
                     <td class="src-col-idno"><a href="../../documents/QGW/Vienna_1177-1414_ready/195.html">195</a></td>
                     <td class="src-col-date">1338 VI 15</td>
                     <td class="src-col-corpus">QGW II/1 (1177–1414)</td>
+                    <td class="src-col-label"><em>hern</em></td>
+                    <td class="src-col-role">
+                        <span class="role-chip role-chip-witness">Zeuge / Siegler*in</span>
+                        
+                    </td>
                     <td class="src-col-regest">Ulreich auf Tunawe, purger ze Regenspurch, und Elsepeth, seine Hausfrau, verkaufen mit Handen ihres Bergherrn des erbern gaistlichen mannes pruder Ulreichs von Zyrberch, hauscomenteuer datz dem…</td>
                 </tr>
             
@@ -400,6 +513,11 @@
                     <td class="src-col-idno"><a href="../../documents/QGW/Vienna_1177-1414_ready/215.html">215</a></td>
                     <td class="src-col-date">1340 II 24</td>
                     <td class="src-col-corpus">QGW II/1 (1177–1414)</td>
+                    <td class="src-col-label"><em>-</em></td>
+                    <td class="src-col-role">
+                        <span class="role-chip role-chip-witness">Zeuge / Siegler*in</span>
+                        
+                    </td>
                     <td class="src-col-regest">Nichlas, der Simaeninne sun, und Chunigunt, seine Hausfrau, verkaufen mit Handen ihres Grundherrn des Ritters hern Jansen des Greifen ihr Haus, das da leit zwischen des Schaeuchen padstub und hern…</td>
                 </tr>
             
@@ -407,6 +525,11 @@
                     <td class="src-col-idno"><a href="../../documents/QGW/Vienna_1177-1414_ready/266.html">266</a></td>
                     <td class="src-col-date">1343 VIII 10</td>
                     <td class="src-col-corpus">QGW II/1 (1177–1414)</td>
+                    <td class="src-col-label"><em>hern</em></td>
+                    <td class="src-col-role">
+                        <span class="role-chip role-chip-witness">Zeuge / Siegler*in</span>
+                        
+                    </td>
                     <td class="src-col-regest">Jans der Rogner vergleicht sich mit seinem Schwager hern Chunraden dem Wiltwaericher, purgermaister ze Wienne, und dessen Hausfrau Mergarten über das Gut, das ihm nach Konrads Ableben als Nachlass…</td>
                 </tr>
             
@@ -414,6 +537,11 @@
                     <td class="src-col-idno"><a href="../../documents/QGW/Vienna_1177-1414_ready/297.html">297</a></td>
                     <td class="src-col-date">1345 XII 24</td>
                     <td class="src-col-corpus">QGW II/1 (1177–1414)</td>
+                    <td class="src-col-label"><em>Grundherrn|hern</em></td>
+                    <td class="src-col-role">
+                        <span class="role-chip role-chip-other">Sonstige</span><span class="role-chip role-chip-witness">Zeuge / Siegler*in</span>
+                        
+                    </td>
                     <td class="src-col-regest">Walther der Do/ener verkauft mit Handen seines Grundherrn hern Hainreichs des Langen sein Haus, das da leit in dem Geraeut zenaehst Gilgen, des ledrer, haus, von dem man 14 dn. zu Grundrecht und ½ lb…</td>
                 </tr>
             
@@ -421,6 +549,11 @@
                     <td class="src-col-idno"><a href="../../documents/QGW/Vienna_1177-1414_ready/624.html">624</a></td>
                     <td class="src-col-date">1364 II 12</td>
                     <td class="src-col-corpus">QGW II/1 (1177–1414)</td>
+                    <td class="src-col-label"><em>hern</em></td>
+                    <td class="src-col-role">
+                        
+                        -
+                    </td>
                     <td class="src-col-regest">Peter von der Igla,sun Gebharts sun von der Igla, dem got genade, beurkundet seinen letzten Willen. Er ordnet an, dass her Niclas der Polle zur Bezahlung eines Darlehens von 60 lb dn. einen…</td>
                 </tr>
             
@@ -428,6 +561,11 @@
                     <td class="src-col-idno"><a href="../../documents/QGW/Vienna_1177-1414_ready/705.html">705</a></td>
                     <td class="src-col-date">1367 VII 24</td>
                     <td class="src-col-corpus">QGW II/1 (1177–1414)</td>
+                    <td class="src-col-label"><em>-</em></td>
+                    <td class="src-col-role">
+                        
+                        -
+                    </td>
                     <td class="src-col-regest">Jans von Tyrnach, hubmaister in Österreich und münzmaister ze Wienne, verkauft mit Handen Jacobs des Straz/zz/zer, herzoglichen Bergmeisters zu Medlikch, vier Weingärten ze Prunne, die ihm durch…</td>
                 </tr>
             
@@ -460,11 +598,13 @@
         </div>
     </footer>
 
-    <script src="../../static/js/core.js?v=20260511112948"></script>
-    <script src="../../static/js/provenance.js?v=20260511112948"></script>
-    <script src="../../static/js/basket.js?v=20260511112948"></script>
+    <script src="../../static/js/core.js?v=20260511125458"></script>
+    <script src="../../static/js/tip.js?v=20260511125458"></script>
+    <script src="../../static/js/hint.js?v=20260511125458"></script>
+    <script src="../../static/js/basket.js?v=20260511125458"></script>
     
-<script src="../../static/js/tooltips.js?v=20260511112948"></script>
+<script src="../../static/js/profile.js?v=20260511125458"></script>
+<script src="../../static/js/basket-mount.js?v=20260511125458"></script>
 
 </body>
 </html>

@@ -3,22 +3,22 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <meta http-equiv="Content-Security-Policy" content="default-src 'self'; script-src 'self'; style-src 'self'; font-src 'self'; img-src 'self' data: https://images.monasterium.net https://www.monasterium.net; connect-src 'self'; frame-ancestors 'none'; base-uri 'self'; form-action 'self'; upgrade-insecure-requests">
+    <meta http-equiv="Content-Security-Policy" content="default-src 'self'; script-src 'self'; style-src 'self'; font-src 'self'; img-src 'self' data: https://images.monasterium.net https://www.monasterium.net; connect-src 'self'; base-uri 'self'; form-action 'self'; upgrade-insecure-requests">
     <meta name="referrer" content="strict-origin-when-cross-origin">
     <meta http-equiv="Permissions-Policy" content="camera=(), microphone=(), geolocation=(), interest-cohort=()">
     <title>Dietrich Flusthart (&dagger; 27.11.1360), Datenbank</title>
     <link rel="preload" as="font" type="font/woff2" crossorigin
           href="../../static/fonts/inter-400-latin.woff2">
-    <link rel="stylesheet" href="../../static/css/fonts.css?v=20260511112948">
-    <link rel="stylesheet" href="../../static/css/tokens.css?v=20260511112948">
-    <link rel="stylesheet" href="../../static/css/base.css?v=20260511112948">
-    <link rel="stylesheet" href="../../static/css/components.css?v=20260511112948">
-    <link rel="stylesheet" href="../../static/css/responsive.css?v=20260511112948">
-    <link rel="stylesheet" href="../../static/css/print.css?v=20260511112948">
-    <link rel="stylesheet" href="../../static/css/provenance.css?v=20260511112948">
+    <link rel="stylesheet" href="../../static/css/fonts.css?v=20260511125458">
+    <link rel="stylesheet" href="../../static/css/tokens.css?v=20260511125458">
+    <link rel="stylesheet" href="../../static/css/base.css?v=20260511125458">
+    <link rel="stylesheet" href="../../static/css/components.css?v=20260511125458">
+    <link rel="stylesheet" href="../../static/css/responsive.css?v=20260511125458">
+    <link rel="stylesheet" href="../../static/css/print.css?v=20260511125458">
+    <link rel="stylesheet" href="../../static/css/tip.css?v=20260511125458">
     
-<link rel="stylesheet" href="../../static/css/document.css?v=20260511112948">
-<link rel="stylesheet" href="../../static/css/person.css?v=20260511112948">
+<link rel="stylesheet" href="../../static/css/document.css?v=20260511125458">
+<link rel="stylesheet" href="../../static/css/person.css?v=20260511125458">
 
 </head>
 <body data-root-path="../.."
@@ -48,8 +48,6 @@
         <a href="../../register/persons.html">Personen</a>
         
         <a href="../../register/orgs.html">Organisationen</a>
-        
-        <a href="../../register/places.html">Orte</a>
         
     </div>
 </div>
@@ -91,7 +89,7 @@
     </div>
 </div>
 
-                <a href="../../korb.html" class="nav-basket" aria-label="Wissenskorb">
+                <a href="../../korb.html" class="nav-basket" aria-label="Datenkorb">
                     <svg width="18" height="18" viewBox="0 0 18 18" fill="none" aria-hidden="true">
                         <path d="M3 5h12l-1.2 8.5a1 1 0 0 1-1 .85H5.2a1 1 0 0 1-1-.85L3 5z"
                               stroke="currentColor" stroke-width="1.4" fill="none"
@@ -112,11 +110,23 @@
 
     <div class="person-toolbar">
         <div class="person-toolbar-inner">
-            <nav class="person-breadcrumb" aria-label="Position">
-                <a href="../../register/persons.html">Personenregister</a>
-                <span class="bc-sep">&rsaquo;</span>
-                <span class="bc-doc"><strong>Dietrich Flusthart</strong></span>
-            </nav>
+            <div class="person-toolbar-row">
+                <nav class="person-breadcrumb" aria-label="Position">
+                    <a href="../../register/persons.html">Personenregister</a>
+                    <span class="bc-sep">&rsaquo;</span>
+                    <span class="bc-doc"><strong>Dietrich Flusthart</strong></span>
+                </nav>
+                <div class="person-toolbar-actions">
+                    <span class="toolbar-basket-mount"
+                          data-basket-type="person"
+                          data-basket-id="pe__dietrich_flusthart_QGW_II_I_572"
+                          data-basket-label="Dietrich Flusthart"
+                          data-basket-url="register/persons/pe__dietrich_flusthart_QGW_II_I_572.html"
+                          data-basket-sex="m"
+                          data-basket-active-min="1344"
+                          data-basket-active-max="1360"></span>
+                </div>
+            </div>
             <div class="person-toolbar-meta">
                 <span class="meta-pair">
                     <span class="meta-label">Geschlecht</span>
@@ -124,7 +134,33 @@
                 </span>
                 
                 <span class="meta-pair">
-                    <span class="meta-label">Belegt</span>
+                    <span class="meta-label">Belegt
+<span class="tip-wrap">
+    <button type="button" class="tip-trigger tip-trigger--icon"
+            aria-expanded="false" aria-haspopup="dialog"
+            aria-controls="person-belegt"
+            data-tip="person-belegt"
+            aria-label="Definition: Beleg-Zeitraum">
+        <svg width="13" height="13" viewBox="0 0 16 16" aria-hidden="true">
+            <circle cx="8" cy="8" r="7" stroke="currentColor" stroke-width="1.4" fill="none"/>
+            <text x="8" y="11.6" text-anchor="middle" font-size="9.5" font-weight="700"
+                  fill="currentColor" font-family="Georgia, serif">i</text>
+        </svg>
+    </button>
+    <aside class="tip-popover tip-popover--glossary"
+           id="person-belegt" role="dialog" aria-hidden="true"
+           aria-label="Definition: Beleg-Zeitraum">
+        <header class="tip-head">
+            <h3 class="tip-title">Beleg-Zeitraum</h3>
+            <button type="button" class="tip-close" aria-label="Schlie&szlig;en">&times;</button>
+        </header>
+        <div class="tip-body">
+            <p>Erste und letzte Datierung einer Quelle, in der die Person erscheint. Bei einzelnem Beleg wird nur ein Jahr angegeben.</p>
+            
+        </div>
+    </aside>
+</span>
+</span>
                     <span class="meta-value">1344 bis 1360</span>
                 </span>
                 
@@ -134,6 +170,10 @@
                     <span class="meta-value">27.11.1360</span>
                 </span>
                 
+                <span class="meta-pair">
+                    <span class="meta-label">Quellen</span>
+                    <span class="meta-value">24</span>
+                </span>
                 <span class="meta-pair person-id-pair">
                     <span class="meta-label">ID</span>
                     <code class="meta-value person-id">pe__dietrich_flusthart_QGW_II_I_572</code>
@@ -151,13 +191,45 @@
         </h1>
         
         
-        <p class="person-titles">
+        
+        <p class="person-titles" data-collapsible="22">
             <span class="pt-label">In den Quellen genannt als</span>
             <span class="pt-chip">hern</span>
         </p>
         
         
+        
     </header>
+
+    
+    <section class="role-strip" aria-label="Rollen in Rechtsgeschäften">
+        <h2 class="role-strip-title">Rollen in Rechtsgeschäften</h2>
+        <div class="role-strip-cells">
+            
+            <div class="role-cell role-cell-issuer">
+                <span class="role-cell-count">8</span>
+                <span class="role-cell-label">Aussteller*in</span>
+            </div>
+            
+            <div class="role-cell role-cell-recipient">
+                <span class="role-cell-count">1</span>
+                <span class="role-cell-label">Empfänger*in</span>
+            </div>
+            
+            <div class="role-cell role-cell-witness">
+                <span class="role-cell-count">18</span>
+                <span class="role-cell-label">Zeuge / Siegler*in</span>
+            </div>
+            
+            <div class="role-cell role-cell-other">
+                <span class="role-cell-count">2</span>
+                <span class="role-cell-label">Sonstige</span>
+            </div>
+            
+        </div>
+        <p class="role-strip-hint">Summe Rollen-Belegungen: 29. Mehrfach-Rollen pro Quelle sind möglich.</p>
+    </section>
+    
 
     
 
@@ -174,6 +246,7 @@
                 <span class="rel-block-count">14</span>
                 <span class="rel-block-hint">Verwandtschaftsverhältnisse, wie sie in den Quellen explizit benannt werden.</span>
             </header>
+            
             <table class="rel-table">
                 <thead>
                     <tr>
@@ -194,7 +267,7 @@
                         <td class="rel-col-label"><em>Hausfrau</em></td>
                         <td class="rel-col-perspective">
                             
-                                Elisabeth Urbetschin | Flusthartin → Dietrich Flusthart
+                                Elisabeth Urbetschin | Flusthartin &rsaquo; Dietrich Flusthart
                             
                         </td>
                         <td class="rel-col-source">
@@ -213,7 +286,7 @@
                         <td class="rel-col-label"><em>aidem</em></td>
                         <td class="rel-col-perspective">
                             
-                                Dietrich Flusthart → Elisabeth Urbetschin
+                                Dietrich Flusthart &rsaquo; Elisabeth Urbetschin
                             
                         </td>
                         <td class="rel-col-source">
@@ -232,7 +305,7 @@
                         <td class="rel-col-label"><em>aidem</em></td>
                         <td class="rel-col-perspective">
                             
-                                Dietrich Flusthart → Elisabeth Urbetschin
+                                Dietrich Flusthart &rsaquo; Elisabeth Urbetschin
                             
                         </td>
                         <td class="rel-col-source">
@@ -251,7 +324,7 @@
                         <td class="rel-col-label"><em>Hausfrau</em></td>
                         <td class="rel-col-perspective">
                             
-                                Elisabeth Urbetschin | Flusthartin → Dietrich Flusthart
+                                Elisabeth Urbetschin | Flusthartin &rsaquo; Dietrich Flusthart
                             
                         </td>
                         <td class="rel-col-source">
@@ -270,7 +343,7 @@
                         <td class="rel-col-label"><em>Schwagers</em></td>
                         <td class="rel-col-perspective">
                             
-                                Dietrich Flusthart → Lambert Strohof
+                                Dietrich Flusthart &rsaquo; Lambert Strohof
                             
                         </td>
                         <td class="rel-col-source">
@@ -289,7 +362,7 @@
                         <td class="rel-col-label"><em>Frau</em></td>
                         <td class="rel-col-perspective">
                             
-                                Margarethe Flusthartin → Dietrich Flusthart
+                                Margarethe Flusthartin &rsaquo; Dietrich Flusthart
                             
                         </td>
                         <td class="rel-col-source">
@@ -308,7 +381,7 @@
                         <td class="rel-col-label"><em>Hausfrau</em></td>
                         <td class="rel-col-perspective">
                             
-                                Elisabeth Urbetschin | Flusthartin → Dietrich Flusthart
+                                Elisabeth Urbetschin | Flusthartin &rsaquo; Dietrich Flusthart
                             
                         </td>
                         <td class="rel-col-source">
@@ -327,7 +400,7 @@
                         <td class="rel-col-label"><em>Oheims</em></td>
                         <td class="rel-col-perspective">
                             
-                                Niklas Flusthart → Dietrich Flusthart
+                                Niklas Flusthart &rsaquo; Dietrich Flusthart
                             
                         </td>
                         <td class="rel-col-source">
@@ -346,7 +419,7 @@
                         <td class="rel-col-label"><em>Oheim</em></td>
                         <td class="rel-col-perspective">
                             
-                                Ludwig von Grub → Dietrich Flusthart
+                                Ludwig von Grub &rsaquo; Dietrich Flusthart
                             
                         </td>
                         <td class="rel-col-source">
@@ -365,7 +438,7 @@
                         <td class="rel-col-label"><em>Schwager</em></td>
                         <td class="rel-col-perspective">
                             
-                                Lambert Strohof → Dietrich Flusthart
+                                Lambert Strohof &rsaquo; Dietrich Flusthart
                             
                         </td>
                         <td class="rel-col-source">
@@ -384,7 +457,7 @@
                         <td class="rel-col-label"><em>Oheim</em></td>
                         <td class="rel-col-perspective">
                             
-                                Dietrich Flusthart → Hagen
+                                Dietrich Flusthart &rsaquo; Hagen
                             
                         </td>
                         <td class="rel-col-source">
@@ -403,7 +476,7 @@
                         <td class="rel-col-label"><em>Oheim</em></td>
                         <td class="rel-col-perspective">
                             
-                                Dietrich Flusthart → Hermann
+                                Dietrich Flusthart &rsaquo; Hermann
                             
                         </td>
                         <td class="rel-col-source">
@@ -422,7 +495,7 @@
                         <td class="rel-col-label"><em>Oheim</em></td>
                         <td class="rel-col-perspective">
                             
-                                Dietrich Flusthart → Hermann
+                                Dietrich Flusthart &rsaquo; Hermann
                             
                         </td>
                         <td class="rel-col-source">
@@ -441,7 +514,7 @@
                         <td class="rel-col-label"><em>witib</em></td>
                         <td class="rel-col-perspective">
                             
-                                Elisabeth Urbetschin | Flusthartin → Dietrich Flusthart
+                                Elisabeth Urbetschin | Flusthartin &rsaquo; Dietrich Flusthart
                             
                         </td>
                         <td class="rel-col-source">
@@ -464,6 +537,7 @@
                 <span class="rel-block-count">3</span>
                 <span class="rel-block-hint">Quellen, in denen die Beziehung als Freundschaft markiert ist.</span>
             </header>
+            
             <table class="rel-table">
                 <thead>
                     <tr>
@@ -484,7 +558,7 @@
                         <td class="rel-col-label"><em>Freunde</em></td>
                         <td class="rel-col-perspective">
                             
-                                Friedrich Rueschel → Dietrich Flusthart
+                                Friedrich Rueschel &rsaquo; Dietrich Flusthart
                             
                         </td>
                         <td class="rel-col-source">
@@ -503,7 +577,7 @@
                         <td class="rel-col-label"><em>besondere Freunde</em></td>
                         <td class="rel-col-perspective">
                             
-                                Johann Poll → Dietrich Flusthart
+                                Johann Poll &rsaquo; Dietrich Flusthart
                             
                         </td>
                         <td class="rel-col-source">
@@ -522,7 +596,7 @@
                         <td class="rel-col-label"><em>besondere Freunde</em></td>
                         <td class="rel-col-perspective">
                             
-                                Johann von Segenberg von Segenberg → Dietrich Flusthart
+                                Johann von Segenberg von Segenberg &rsaquo; Dietrich Flusthart
                             
                         </td>
                         <td class="rel-col-source">
@@ -548,6 +622,7 @@
                 <span class="rel-block-count">18</span>
                 <span class="rel-block-hint">Berufs- oder Amtsbezeichnung in Bezug auf eine Institution.</span>
             </header>
+            
             <table class="rel-table">
                 <thead>
                     <tr>
@@ -568,7 +643,7 @@
                         <td class="rel-col-label"><em>richter</em></td>
                         <td class="rel-col-perspective">
                             
-                                Dietrich Flusthart → Wien
+                                Dietrich Flusthart &rsaquo; Wien
                             
                         </td>
                         <td class="rel-col-source">
@@ -587,7 +662,7 @@
                         <td class="rel-col-label"><em>richter</em></td>
                         <td class="rel-col-perspective">
                             
-                                Dietrich Flusthart → Wien
+                                Dietrich Flusthart &rsaquo; Wien
                             
                         </td>
                         <td class="rel-col-source">
@@ -606,7 +681,7 @@
                         <td class="rel-col-label"><em>richter</em></td>
                         <td class="rel-col-perspective">
                             
-                                Dietrich Flusthart → Wien
+                                Dietrich Flusthart &rsaquo; Wien
                             
                         </td>
                         <td class="rel-col-source">
@@ -625,7 +700,7 @@
                         <td class="rel-col-label"><em>purgermaister</em></td>
                         <td class="rel-col-perspective">
                             
-                                Dietrich Flusthart → Wien
+                                Dietrich Flusthart &rsaquo; Wien
                             
                         </td>
                         <td class="rel-col-source">
@@ -644,7 +719,7 @@
                         <td class="rel-col-label"><em>purgermaister</em></td>
                         <td class="rel-col-perspective">
                             
-                                Dietrich Flusthart → Wien
+                                Dietrich Flusthart &rsaquo; Wien
                             
                         </td>
                         <td class="rel-col-source">
@@ -663,7 +738,7 @@
                         <td class="rel-col-label"><em>rates</em></td>
                         <td class="rel-col-perspective">
                             
-                                Dietrich Flusthart → Wien
+                                Dietrich Flusthart &rsaquo; Wien
                             
                         </td>
                         <td class="rel-col-source">
@@ -682,7 +757,7 @@
                         <td class="rel-col-label"><em>purgermaister</em></td>
                         <td class="rel-col-perspective">
                             
-                                Dietrich Flusthart → Wien
+                                Dietrich Flusthart &rsaquo; Wien
                             
                         </td>
                         <td class="rel-col-source">
@@ -701,7 +776,7 @@
                         <td class="rel-col-label"><em>purgermaister</em></td>
                         <td class="rel-col-perspective">
                             
-                                Dietrich Flusthart → Wien
+                                Dietrich Flusthart &rsaquo; Wien
                             
                         </td>
                         <td class="rel-col-source">
@@ -720,7 +795,7 @@
                         <td class="rel-col-label"><em>purgermaister</em></td>
                         <td class="rel-col-perspective">
                             
-                                Dietrich Flusthart → Wien
+                                Dietrich Flusthart &rsaquo; Wien
                             
                         </td>
                         <td class="rel-col-source">
@@ -739,7 +814,7 @@
                         <td class="rel-col-label"><em>purgermaister</em></td>
                         <td class="rel-col-perspective">
                             
-                                Dietrich Flusthart → Wien
+                                Dietrich Flusthart &rsaquo; Wien
                             
                         </td>
                         <td class="rel-col-source">
@@ -758,7 +833,7 @@
                         <td class="rel-col-label"><em>purgermaister</em></td>
                         <td class="rel-col-perspective">
                             
-                                Dietrich Flusthart → Wien
+                                Dietrich Flusthart &rsaquo; Wien
                             
                         </td>
                         <td class="rel-col-source">
@@ -777,7 +852,7 @@
                         <td class="rel-col-label"><em>münsmaister</em></td>
                         <td class="rel-col-perspective">
                             
-                                Dietrich Flusthart → Wien
+                                Dietrich Flusthart &rsaquo; Wien
                             
                         </td>
                         <td class="rel-col-source">
@@ -796,7 +871,7 @@
                         <td class="rel-col-label"><em>mu/enssmaister</em></td>
                         <td class="rel-col-perspective">
                             
-                                Dietrich Flusthart → Wien
+                                Dietrich Flusthart &rsaquo; Wien
                             
                         </td>
                         <td class="rel-col-source">
@@ -815,7 +890,7 @@
                         <td class="rel-col-label"><em>pu/ergermaister</em></td>
                         <td class="rel-col-perspective">
                             
-                                Dietrich Flusthart → Wien
+                                Dietrich Flusthart &rsaquo; Wien
                             
                         </td>
                         <td class="rel-col-source">
@@ -834,7 +909,7 @@
                         <td class="rel-col-label"><em>purigermaister</em></td>
                         <td class="rel-col-perspective">
                             
-                                Dietrich Flusthart → Wien
+                                Dietrich Flusthart &rsaquo; Wien
                             
                         </td>
                         <td class="rel-col-source">
@@ -853,7 +928,7 @@
                         <td class="rel-col-label"><em>Bürgers</em></td>
                         <td class="rel-col-perspective">
                             
-                                Dietrich Flusthart → Wien
+                                Dietrich Flusthart &rsaquo; Wien
                             
                         </td>
                         <td class="rel-col-source">
@@ -872,7 +947,7 @@
                         <td class="rel-col-label"><em>purger</em></td>
                         <td class="rel-col-perspective">
                             
-                                Dietrich Flusthart → Wien
+                                Dietrich Flusthart &rsaquo; Wien
                             
                         </td>
                         <td class="rel-col-source">
@@ -891,7 +966,7 @@
                         <td class="rel-col-label"><em>Bürger</em></td>
                         <td class="rel-col-perspective">
                             
-                                Dietrich Flusthart → Wien
+                                Dietrich Flusthart &rsaquo; Wien
                             
                         </td>
                         <td class="rel-col-source">
@@ -909,18 +984,27 @@
         
         
         
+        
+        
+        
+        
+        
+        
     </section>
     
 
     
     <section class="person-sources" aria-label="Quellen mit Nennung">
         <h2 class="section-head">Quellen mit Nennung</h2>
+        
         <table class="person-source-table">
             <thead>
                 <tr>
                     <th scope="col" class="src-col-idno">Nr.</th>
                     <th scope="col" class="src-col-date">Datum</th>
                     <th scope="col" class="src-col-corpus">Quellenkorpus</th>
+                    <th scope="col" class="src-col-label">Bezeichnung</th>
+                    <th scope="col" class="src-col-role">Rolle</th>
                     <th scope="col" class="src-col-regest">Regest</th>
                 </tr>
             </thead>
@@ -930,6 +1014,11 @@
                     <td class="src-col-idno"><a href="../../documents/QGW/Vienna_1177-1414_ready/274.html">274</a></td>
                     <td class="src-col-date">1344 I 28</td>
                     <td class="src-col-corpus">QGW II/1 (1177–1414)</td>
+                    <td class="src-col-label"><em>-</em></td>
+                    <td class="src-col-role">
+                        <span class="role-chip role-chip-issuer">Aussteller*in</span>
+                        
+                    </td>
                     <td class="src-col-regest">Dietreich der Flusthart, richter ze Wienne, beurkundet, dass vor ihm in der Bürgerschranne her Ulreich, hern Andres des Chrannestes chaplan, pharrer zu Ruprechtshoven, diener, an seines Herrn Statt…</td>
                 </tr>
             
@@ -937,6 +1026,11 @@
                     <td class="src-col-idno"><a href="../../documents/QGW/Vienna_1177-1414_ready/296.html">296</a></td>
                     <td class="src-col-date">1345 XII 19</td>
                     <td class="src-col-corpus">QGW II/1 (1177–1414)</td>
+                    <td class="src-col-label"><em>-</em></td>
+                    <td class="src-col-role">
+                        <span class="role-chip role-chip-issuer">Aussteller*in</span><span class="role-chip role-chip-witness">Zeuge / Siegler*in</span>
+                        
+                    </td>
                     <td class="src-col-regest">Dietreich der Flusthart, richter ze Wienne, beurkundet, dass vor ihm in der Bürgerschranne her Perichtolt der Geuchramer, der erber priester, chirichmaister dacz sand Stephan, mit Vorsprechen geklagt…</td>
                 </tr>
             
@@ -944,6 +1038,11 @@
                     <td class="src-col-idno"><a href="../../documents/QGW/Vienna_1177-1414_ready/298.html">298</a></td>
                     <td class="src-col-date">1346 I 06</td>
                     <td class="src-col-corpus">QGW II/1 (1177–1414)</td>
+                    <td class="src-col-label"><em>hern</em></td>
+                    <td class="src-col-role">
+                        <span class="role-chip role-chip-witness">Zeuge / Siegler*in</span>
+                        
+                    </td>
                     <td class="src-col-regest">Jans der Paur von Grinzinge und Katrei, seine Hausfrau, Otte der Chaeser und Margret, seine Hausfrau, Merbot der Schreiber und Katrei, seine Hausfrau, verkaufen mit gesammter Hand und mit Handen…</td>
                 </tr>
             
@@ -951,6 +1050,11 @@
                     <td class="src-col-idno"><a href="../../documents/QGW/Vienna_1177-1414_ready/317.html">317</a></td>
                     <td class="src-col-date">1347 XII 21</td>
                     <td class="src-col-corpus">QGW II/1 (1177–1414)</td>
+                    <td class="src-col-label"><em>hern</em></td>
+                    <td class="src-col-role">
+                        <span class="role-chip role-chip-witness">Zeuge / Siegler*in</span>
+                        
+                    </td>
                     <td class="src-col-regest">Chuen, der fuetrer, OrtolfSohn undJansSohn, seine Söhne, verkaufen mit Handen ihres Bergherrnhern Dietreiches des Urbaetschen 1 ½ Joch Weingarten an dem Altenperig zunaest der Velgraesinne…</td>
                 </tr>
             
@@ -958,6 +1062,11 @@
                     <td class="src-col-idno"><a href="../../documents/QGW/Vienna_1177-1414_ready/345.html">345</a></td>
                     <td class="src-col-date">1349 IX 28</td>
                     <td class="src-col-corpus">QGW II/1 (1177–1414)</td>
+                    <td class="src-col-label"><em>hern</em></td>
+                    <td class="src-col-role">
+                        <span class="role-chip role-chip-witness">Zeuge / Siegler*in</span>
+                        
+                    </td>
                     <td class="src-col-regest">Fridreich von Raechleinsdorf beurkundet seinen letzten Willen. Er schafft: 1. seinem Bruder Nichlasen drei Weingärten ze Grinzing und haisset der Graefel, an der Roten Erde und am Sunnperg, die ihm…</td>
                 </tr>
             
@@ -965,6 +1074,11 @@
                     <td class="src-col-idno"><a href="../../documents/QGW/Vienna_1177-1414_ready/349.html">349</a></td>
                     <td class="src-col-date">1350 II 28</td>
                     <td class="src-col-corpus">QGW II/1 (1177–1414)</td>
+                    <td class="src-col-label"><em>hern</em></td>
+                    <td class="src-col-role">
+                        <span class="role-chip role-chip-witness">Zeuge / Siegler*in</span>
+                        
+                    </td>
                     <td class="src-col-regest">Lienhart der Hirz/zz/ze und Anne, seine Hausfrau, bestätigen, dass sie mit Erbgut getheilt haben vrowen Margreten,hausvrove Jansen hausvrove, des pogner,enichel und Seifrits eninchel, des bru/enner,…</td>
                 </tr>
             
@@ -972,6 +1086,11 @@
                     <td class="src-col-idno"><a href="../../documents/QGW/Vienna_1177-1414_ready/364.html">364</a></td>
                     <td class="src-col-date">1350 XII 07</td>
                     <td class="src-col-corpus">QGW II/1 (1177–1414)</td>
+                    <td class="src-col-label"><em>hern</em></td>
+                    <td class="src-col-role">
+                        <span class="role-chip role-chip-witness">Zeuge / Siegler*in</span>
+                        
+                    </td>
                     <td class="src-col-regest">Nichlas von Raechleinstorf beurkundet, dass er von den drei Weingärten, welche Frau Christein, die Witwe Witwe hern Leupolts des Puchser, seinem Bruder Friedrich und dieser zu einer ewigen Messe in…</td>
                 </tr>
             
@@ -979,6 +1098,11 @@
                     <td class="src-col-idno"><a href="../../documents/QGW/Vienna_1177-1414_ready/365.html">365</a></td>
                     <td class="src-col-date">1350 XII 09</td>
                     <td class="src-col-corpus">QGW II/1 (1177–1414)</td>
+                    <td class="src-col-label"><em>-</em></td>
+                    <td class="src-col-role">
+                        <span class="role-chip role-chip-issuer">Aussteller*in</span>
+                        
+                    </td>
                     <td class="src-col-regest">Dietreich der Flusthart, purgermaister, und der rate gemaine der stat ze Wienne verkaufen für 120 lb dn. von den 400 lb 3 sh. 20 dn., die der Spitalmeister Hainreich der Oeler dem Spitale in rechten…</td>
                 </tr>
             
@@ -986,6 +1110,11 @@
                     <td class="src-col-idno"><a href="../../documents/QGW/Vienna_1177-1414_ready/368.html">368</a></td>
                     <td class="src-col-date">1351 I 21</td>
                     <td class="src-col-corpus">QGW II/1 (1177–1414)</td>
+                    <td class="src-col-label"><em>-</em></td>
+                    <td class="src-col-role">
+                        <span class="role-chip role-chip-issuer">Aussteller*in</span>
+                        
+                    </td>
                     <td class="src-col-regest">Dietreich der Flusthart, purgermaister, und der rat gemain der stat ze Wienne, bestätigen, dass sie dem Nichlas von Raechleinstorf 3 sh. dn. geltes purchrechtes auf seinem Achtel Weingarten, der da…</td>
                 </tr>
             
@@ -993,6 +1122,11 @@
                     <td class="src-col-idno"><a href="../../documents/QGW/Vienna_1177-1414_ready/383.html">383</a></td>
                     <td class="src-col-date">1351 VI 24</td>
                     <td class="src-col-corpus">QGW II/1 (1177–1414)</td>
+                    <td class="src-col-label"><em>-</em></td>
+                    <td class="src-col-role">
+                        <span class="role-chip role-chip-issuer">Aussteller*in</span><span class="role-chip role-chip-witness">Zeuge / Siegler*in</span>
+                        
+                    </td>
                     <td class="src-col-regest">Dietreich der Flusthart, purgermaister ze Wienne, und Elsbet, seine Hausfrau, beurkunden, dass ihnen Leb der Nuz/zdorfer, dem got genade, widerrechtlich 4 lb dn. geltes purchrechtes auf der…</td>
                 </tr>
             
@@ -1000,6 +1134,11 @@
                     <td class="src-col-idno"><a href="../../documents/QGW/Vienna_1177-1414_ready/386.html">386</a></td>
                     <td class="src-col-date">1351 VII 03</td>
                     <td class="src-col-corpus">QGW II/1 (1177–1414)</td>
+                    <td class="src-col-label"><em>hern</em></td>
+                    <td class="src-col-role">
+                        <span class="role-chip role-chip-other">Sonstige</span><span class="role-chip role-chip-witness">Zeuge / Siegler*in</span>
+                        
+                    </td>
                     <td class="src-col-regest">Elsbet, weiln hausvrowe hern Dietreichs hausvrowe des Urbaetschen saeligen, verkauft mit Einwilligung ihres Sohnes Chunrats des Urbaetschen und ihrer aidem hern Pilgreims des Chitzels, der gesessen…</td>
                 </tr>
             
@@ -1007,6 +1146,11 @@
                     <td class="src-col-idno"><a href="../../documents/QGW/Vienna_1177-1414_ready/387.html">387</a></td>
                     <td class="src-col-date">1351 VII 08</td>
                     <td class="src-col-corpus">QGW II/1 (1177–1414)</td>
+                    <td class="src-col-label"><em>-</em></td>
+                    <td class="src-col-role">
+                        <span class="role-chip role-chip-issuer">Aussteller*in</span><span class="role-chip role-chip-witness">Zeuge / Siegler*in</span>
+                        
+                    </td>
                     <td class="src-col-regest">Elsbet hausvrowe, weiln Dietreichs hausvrowe des Urbätschen saelige, Chunrat der Urbaetsch, ir sun , und Chunigunt, seine Hausfrau, Pilgreim der Chitzel von der Neunstat, ir aidem, und Anne, seine…</td>
                 </tr>
             
@@ -1014,6 +1158,11 @@
                     <td class="src-col-idno"><a href="../../documents/QGW/Vienna_1177-1414_ready/422.html">422</a></td>
                     <td class="src-col-date">1352 XII 13</td>
                     <td class="src-col-corpus">QGW II/1 (1177–1414)</td>
+                    <td class="src-col-label"><em>hern</em></td>
+                    <td class="src-col-role">
+                        <span class="role-chip role-chip-witness">Zeuge / Siegler*in</span>
+                        
+                    </td>
                     <td class="src-col-regest">Lamber in dem Strohof und Anne, seine Hausfrau, stellen einen Revers aus über das Gut, das Stephan, sun Stephans sun des glaser, ihres seligen Schwagers Schwagers, besitzt und das ihnen mit diesem…</td>
                 </tr>
             
@@ -1021,6 +1170,11 @@
                     <td class="src-col-idno"><a href="../../documents/QGW/Vienna_1177-1414_ready/431.html">431</a></td>
                     <td class="src-col-date">1353 IV 08</td>
                     <td class="src-col-corpus">QGW II/1 (1177–1414)</td>
+                    <td class="src-col-label"><em>hern</em></td>
+                    <td class="src-col-role">
+                        <span class="role-chip role-chip-witness">Zeuge / Siegler*in</span>
+                        
+                    </td>
                     <td class="src-col-regest">Jacob auf dem Neusidel dacz sand Partelme zu der Herren Alz/zz/ze, amptman hern Jacoben von Segenberch, purger ze Wienne , beurkundet, dass sein Herr auf seinem Grunde vor ihm geklagt habe mit…</td>
                 </tr>
             
@@ -1028,6 +1182,11 @@
                     <td class="src-col-idno"><a href="../../documents/QGW/Vienna_1177-1414_ready/447.html">447</a></td>
                     <td class="src-col-date">1354 II 06</td>
                     <td class="src-col-corpus">QGW II/1 (1177–1414)</td>
+                    <td class="src-col-label"><em>hern</em></td>
+                    <td class="src-col-role">
+                        <span class="role-chip role-chip-witness">Zeuge / Siegler*in</span>
+                        
+                    </td>
                     <td class="src-col-regest">Ulreich der Payr und Katrei, seine Hausfrau, Hainreich der Lueger und Katrei, seine Hausfrau, Peter der Graew/el, alle gesessen ze Engelschalchstorf, und Margret, seine Hausfrau, Jans von Medlich und…</td>
                 </tr>
             
@@ -1035,6 +1194,11 @@
                     <td class="src-col-idno"><a href="../../documents/QGW/Vienna_1177-1414_ready/456a.html">456a</a></td>
                     <td class="src-col-date">1354 VIII 02</td>
                     <td class="src-col-corpus">QGW II/1 (1177–1414)</td>
+                    <td class="src-col-label"><em>hern</em></td>
+                    <td class="src-col-role">
+                        <span class="role-chip role-chip-witness">Zeuge / Siegler*in</span>
+                        
+                    </td>
                     <td class="src-col-regest">Jans, sun Niclos sun des smits in dem Vischhof ze Wienne saelig, und Katrei, seine Hausfrau, verkaufen mit Handen ihrer Grundfrau vraun Chunigunden, wittibe hern Herborts wittibe auf der Saeuln, 14…</td>
                 </tr>
             
@@ -1042,6 +1206,11 @@
                     <td class="src-col-idno"><a href="../../documents/QGW/Vienna_1177-1414_ready/467.html">467</a></td>
                     <td class="src-col-date">1355 VII 24</td>
                     <td class="src-col-corpus">QGW II/1 (1177–1414)</td>
+                    <td class="src-col-label"><em>hern</em></td>
+                    <td class="src-col-role">
+                        <span class="role-chip role-chip-witness">Zeuge / Siegler*in</span>
+                        
+                    </td>
                     <td class="src-col-regest">Dorothe hausvrowetochter, Otten hausvrowe von Ottental, purger ze Wienn, und hern Ulreichs tochter des Chu/orczmans, dem got genad ,setzt ihren Mann und ihre Kinder, im Falle aber als solche bei…</td>
                 </tr>
             
@@ -1049,6 +1218,11 @@
                     <td class="src-col-idno"><a href="../../documents/QGW/Vienna_1177-1414_ready/485.html">485</a></td>
                     <td class="src-col-date">1356 V 25</td>
                     <td class="src-col-corpus">QGW II/1 (1177–1414)</td>
+                    <td class="src-col-label"><em>hern</em></td>
+                    <td class="src-col-role">
+                        <span class="role-chip role-chip-witness">Zeuge / Siegler*in</span>
+                        
+                    </td>
                     <td class="src-col-regest">Ulreich su/en und Peter, su/enhern Ortolfs su/en mit der Petesziechen, dem got genade, beurkunden die mit ihrer SchwesterSchwester Annen, hausvrowe hern Ulreichs hausvrowe des Pollen, vorgenommene…</td>
                 </tr>
             
@@ -1056,6 +1230,11 @@
                     <td class="src-col-idno"><a href="../../documents/QGW/Vienna_1177-1414_ready/486.html">486</a></td>
                     <td class="src-col-date">1356 VIII 23</td>
                     <td class="src-col-corpus">QGW II/1 (1177–1414)</td>
+                    <td class="src-col-label"><em>-</em></td>
+                    <td class="src-col-role">
+                        <span class="role-chip role-chip-issuer">Aussteller*in</span><span class="role-chip role-chip-other">Sonstige</span><span class="role-chip role-chip-witness">Zeuge / Siegler*in</span>
+                        
+                    </td>
                     <td class="src-col-regest">Dietreich der Flusthart widmet für Seelenheil sein und seiner verstorbenen Frau Mergarten Seelenheil 10 lb dn. gelts ewigs purchrechts auf der patstuben, gelegen hinder den Phailsniczern ze Wienne…</td>
                 </tr>
             
@@ -1063,6 +1242,11 @@
                     <td class="src-col-idno"><a href="../../documents/QGW/Vienna_1177-1414_ready/506.html">506</a></td>
                     <td class="src-col-date">1358 I 23</td>
                     <td class="src-col-corpus">QGW II/1 (1177–1414)</td>
+                    <td class="src-col-label"><em>-</em></td>
+                    <td class="src-col-role">
+                        
+                        -
+                    </td>
                     <td class="src-col-regest">* Fridlibus, officialis curie Pataviensis et eiusdem ecclesie canonicus, erklärt den Jakob Poll, Kaplan der Marienkapelle in Ottenhaim, frei von jedem Ansprüche, den Nicolaus, der Kaplan des Wiener…</td>
                 </tr>
             
@@ -1070,6 +1254,11 @@
                     <td class="src-col-idno"><a href="../../documents/QGW/Vienna_1177-1414_ready/509.html">509</a></td>
                     <td class="src-col-date">1358 IV 05</td>
                     <td class="src-col-corpus">QGW II/1 (1177–1414)</td>
+                    <td class="src-col-label"><em>hern</em></td>
+                    <td class="src-col-role">
+                        <span class="role-chip role-chip-witness">Zeuge / Siegler*in</span>
+                        
+                    </td>
                     <td class="src-col-regest">Hainreich der Maeusel und Gedraut, seine Hausfrau, verkaufen mit Handen ihrer Bergfrau vrauen Annen,hausvrau hern Seibots hausvrau von Missingdorf, ein Joch Weingarten, gelegen niderhalbe Sufringen…</td>
                 </tr>
             
@@ -1077,6 +1266,11 @@
                     <td class="src-col-idno"><a href="../../documents/QGW/Vienna_1177-1414_ready/519.html">519</a></td>
                     <td class="src-col-date">1359 II 06</td>
                     <td class="src-col-corpus">QGW II/1 (1177–1414)</td>
+                    <td class="src-col-label"><em>-</em></td>
+                    <td class="src-col-role">
+                        <span class="role-chip role-chip-issuer">Aussteller*in</span><span class="role-chip role-chip-witness">Zeuge / Siegler*in</span>
+                        
+                    </td>
                     <td class="src-col-regest">Dietreich der Flusthart beurkundet seinen letzten Willen. Er schliesst allen Besitz seiner Frau Elspet, hern Dietreichs tochter des Urbetzschen, von vorneherein aus und verfügt nur über seinen, sowie…</td>
                 </tr>
             
@@ -1084,6 +1278,11 @@
                     <td class="src-col-idno"><a href="../../documents/QGW/Vienna_1177-1414_ready/532.html">532</a></td>
                     <td class="src-col-date">1359 VI 19</td>
                     <td class="src-col-corpus">QGW II/1 (1177–1414)</td>
+                    <td class="src-col-label"><em>hern</em></td>
+                    <td class="src-col-role">
+                        <span class="role-chip role-chip-recipient">Empfänger*in</span>
+                        
+                    </td>
                     <td class="src-col-regest">Herman, sun hern Hagens sun von Spilberch, dem got genad, verkauft, nachdem ihm und seinem Bruder Hagen ihr Oheim Oheim, der Wiener Bürger Dietreich der Flusthart, allen ihren Besitz übergeben hatte,…</td>
                 </tr>
             
@@ -1091,6 +1290,11 @@
                     <td class="src-col-idno"><a href="../../documents/QGW/Vienna_1177-1414_ready/572.html">572</a></td>
                     <td class="src-col-date">1360 XI 27</td>
                     <td class="src-col-corpus">QGW II/1 (1177–1414)</td>
+                    <td class="src-col-label"><em>hern</em></td>
+                    <td class="src-col-role">
+                        
+                        -
+                    </td>
                     <td class="src-col-regest">Elspet, witib hern Dietreichs witib des Flustharts, verleiht die Messe, welche ihr Mann mit 10 lb dn. gelts purchrechts, gelegen auf Fridreichs haus von Gundreinsdorf, genant in dem Türndlein, das…</td>
                 </tr>
             
@@ -1123,11 +1327,13 @@
         </div>
     </footer>
 
-    <script src="../../static/js/core.js?v=20260511112948"></script>
-    <script src="../../static/js/provenance.js?v=20260511112948"></script>
-    <script src="../../static/js/basket.js?v=20260511112948"></script>
+    <script src="../../static/js/core.js?v=20260511125458"></script>
+    <script src="../../static/js/tip.js?v=20260511125458"></script>
+    <script src="../../static/js/hint.js?v=20260511125458"></script>
+    <script src="../../static/js/basket.js?v=20260511125458"></script>
     
-<script src="../../static/js/tooltips.js?v=20260511112948"></script>
+<script src="../../static/js/profile.js?v=20260511125458"></script>
+<script src="../../static/js/basket-mount.js?v=20260511125458"></script>
 
 </body>
 </html>

@@ -126,7 +126,7 @@ Aggregierte Zahlen sind klickbar. Der Klick öffnet ein Overlay mit der Liste de
 
 Filter werden in den Drill mitgenommen: ein aktiver Geschlechter-Filter wählt die sex-Variante des Lookup-Schlüssels (etwa `kin_f`, `hausfrau__f`); ein aktiver Zeitraum-Filter wirkt nativ auf decade-partitionierte Drills (Transaktionstypen) und auf andere durch Datums-Parsing aus dem `docs_lookup`. Die Liste ist auf 500 Zeilen begrenzt; bei Überschreitung erscheint die Aufforderung, enger einzugrenzen.
 
-Im Footer des Overlays steht die Cross-Page-Brücke „→ in Quellen-Liste öffnen" (siehe unten), und an jeder Zeile ein „+"-Knopf für den Wissenskorb (siehe unten).
+Im Footer des Overlays steht die Cross-Page-Brücke „→ in Quellen-Liste öffnen" (siehe unten), und an jeder Zeile ein „+"-Knopf für den Datenkorb (siehe unten).
 
 ### Active-Filter-Strip
 
@@ -146,11 +146,11 @@ Drill-down-Overlay (Auswertungen) und Brush-Drill (Zeitstrom) bieten einen Foote
 
 Begründung in [[decisions#Cross-Page-Sprung mit Filter-Übernahme]].
 
-### Wissenskorb
+### Datenkorb
 
-Forschende sammeln Quellen über Sitzungen hinweg in einem clientseitigen Wissenskorb. Neben jedem Quellen-Eintrag in den Listen (Quellen-Tabelle, Drill-Overlay, Brush-Drill) steht ein kleiner „+"-Knopf, der die Quelle in den Korb legt; ein zweiter Klick entfernt sie wieder. Das Nav führt ein Korb-Icon mit Live-Badge (Anzahl gesammelter Einträge), klickbar zur Korb-Seite (`/korb.html`). Dort liegt die gesammelte Liste mit Datum, Korpus, Detail-Link und Remove-Aktion; ein Knopf exportiert die Auswahl als CSV (UTF-8 mit BOM, Excel-kompatibel), ein anderer leert den Korb.
+Forschende sammeln Quellen über Sitzungen hinweg in einem clientseitigen Datenkorb. Neben jedem Quellen-Eintrag in den Listen (Quellen-Tabelle, Drill-Overlay, Brush-Drill) steht ein kleiner „+"-Knopf, der die Quelle in den Korb legt; ein zweiter Klick entfernt sie wieder. Das Nav führt ein Korb-Icon mit Live-Badge (Anzahl gesammelter Einträge), klickbar zur Korb-Seite (`/korb.html`). Dort liegt die gesammelte Liste mit Datum, Korpus, Detail-Link und Remove-Aktion; ein Knopf exportiert die Auswahl als CSV (UTF-8 mit BOM, Excel-kompatibel), ein anderer leert den Korb.
 
-Persistenz lebt in `localStorage` mit versioniertem Schlüssel; parallele Browser-Tabs synchronisieren sich automatisch via `storage`-Event. Begründung in [[decisions#Wissenskorb als clientseitige Sammlung]].
+Persistenz lebt in `localStorage` mit versioniertem Schlüssel; parallele Browser-Tabs synchronisieren sich automatisch via `storage`-Event. Begründung in [[decisions#Datenkorb als clientseitige Sammlung]].
 
 ### Quellen-Detailseite mit Text-Bild-Synopse
 
@@ -158,7 +158,7 @@ Die Detailseite einer Quelle stellt edierten Text und Faksimile nebeneinander, s
 
 ### Register-Listenseite
 
-Personen-, Organisations- und Ortsregister teilen sich ein einheitliches Listenseiten-Muster: Alphabet-Leiste, Suche, Filter (Geschlecht/Typ/Quellenanzahl), sortierbare Tabelle. Eine Zeile lässt sich aufklappen und zeigt alle verlinkten Quellen direkt darunter. Die Inline-Detail-Erweiterung vermeidet Seiten-Sprünge und hält den Filterkontext erhalten.
+Personen- und Organisationsregister teilen sich ein einheitliches Listenseiten-Muster: Alphabet-Leiste, Suche, Filter (Geschlecht/Typ/Quellenanzahl), sortierbare Tabelle. Eine Zeile lässt sich aufklappen und zeigt alle verlinkten Quellen direkt darunter. Die Inline-Detail-Erweiterung vermeidet Seiten-Sprünge und hält den Filterkontext erhalten. Ein Ortsregister gibt es derzeit nicht; die Orts-Stammdaten sind noch nicht hinreichend konsolidiert.
 
 ## Layout-Grundsätze
 

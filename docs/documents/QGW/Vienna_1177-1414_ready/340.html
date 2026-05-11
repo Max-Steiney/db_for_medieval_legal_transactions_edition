@@ -3,21 +3,21 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <meta http-equiv="Content-Security-Policy" content="default-src 'self'; script-src 'self'; style-src 'self'; font-src 'self'; img-src 'self' data: https://images.monasterium.net https://www.monasterium.net; connect-src 'self'; frame-ancestors 'none'; base-uri 'self'; form-action 'self'; upgrade-insecure-requests">
+    <meta http-equiv="Content-Security-Policy" content="default-src 'self'; script-src 'self'; style-src 'self'; font-src 'self'; img-src 'self' data: https://images.monasterium.net https://www.monasterium.net; connect-src 'self'; base-uri 'self'; form-action 'self'; upgrade-insecure-requests">
     <meta name="referrer" content="strict-origin-when-cross-origin">
     <meta http-equiv="Permissions-Policy" content="camera=(), microphone=(), geolocation=(), interest-cohort=()">
     <title>Nr. 340 (1349 VIII 10), Datenbank</title>
     <link rel="preload" as="font" type="font/woff2" crossorigin
           href="../../../static/fonts/inter-400-latin.woff2">
-    <link rel="stylesheet" href="../../../static/css/fonts.css?v=20260511112948">
-    <link rel="stylesheet" href="../../../static/css/tokens.css?v=20260511112948">
-    <link rel="stylesheet" href="../../../static/css/base.css?v=20260511112948">
-    <link rel="stylesheet" href="../../../static/css/components.css?v=20260511112948">
-    <link rel="stylesheet" href="../../../static/css/responsive.css?v=20260511112948">
-    <link rel="stylesheet" href="../../../static/css/print.css?v=20260511112948">
-    <link rel="stylesheet" href="../../../static/css/provenance.css?v=20260511112948">
+    <link rel="stylesheet" href="../../../static/css/fonts.css?v=20260511125458">
+    <link rel="stylesheet" href="../../../static/css/tokens.css?v=20260511125458">
+    <link rel="stylesheet" href="../../../static/css/base.css?v=20260511125458">
+    <link rel="stylesheet" href="../../../static/css/components.css?v=20260511125458">
+    <link rel="stylesheet" href="../../../static/css/responsive.css?v=20260511125458">
+    <link rel="stylesheet" href="../../../static/css/print.css?v=20260511125458">
+    <link rel="stylesheet" href="../../../static/css/tip.css?v=20260511125458">
     
-<link rel="stylesheet" href="../../../static/css/document.css?v=20260511112948">
+<link rel="stylesheet" href="../../../static/css/document.css?v=20260511125458">
 <link rel="canonical" href="documents/QGW/Vienna_1177-1414_ready/340.html">
 <meta name="citation_title" content="Nr. 340 (1349 VIII 10)">
 <meta name="citation_collection" content="QGW II/1 (1177–1414)">
@@ -50,8 +50,6 @@
         <a href="../../../register/persons.html">Personen</a>
         
         <a href="../../../register/orgs.html">Organisationen</a>
-        
-        <a href="../../../register/places.html">Orte</a>
         
     </div>
 </div>
@@ -93,7 +91,7 @@
     </div>
 </div>
 
-                <a href="../../../korb.html" class="nav-basket" aria-label="Wissenskorb">
+                <a href="../../../korb.html" class="nav-basket" aria-label="Datenkorb">
                     <svg width="18" height="18" viewBox="0 0 18 18" fill="none" aria-hidden="true">
                         <path d="M3 5h12l-1.2 8.5a1 1 0 0 1-1 .85H5.2a1 1 0 0 1-1-.85L3 5z"
                               stroke="currentColor" stroke-width="1.4" fill="none"
@@ -140,7 +138,7 @@
                     
                     <span class="meta-pair">
                         <span class="meta-label">Quelle</span>
-                        <span class="meta-value" title="Quellen zur Geschichte der Stadt Wien, Bd. II/1, Nr. 340">Quellen zur Geschichte der Stadt Wien, Bd. II/1, Nr. 340</span>
+                        <span class="meta-value" data-hint="Quellen zur Geschichte der Stadt Wien, Bd. II/1, Nr. 340">Quellen zur Geschichte der Stadt Wien, Bd. II/1, Nr. 340</span>
                     </span>
                     
                 </div>
@@ -151,7 +149,7 @@
                     
                     <button type="button" class="legend-toggle"
                             data-layer="entities" aria-pressed="true"
-                            title="Entitäten ein-/ausblenden">
+                            data-hint="Entitäten ein-/ausblenden">
                         <span class="legend-toggle-dots">
                             <span class="legend-swatch swatch-person"></span><span class="legend-swatch swatch-org"></span><span class="legend-swatch swatch-place"></span>
                         </span>
@@ -160,7 +158,7 @@
                     
                     <button type="button" class="legend-toggle"
                             data-layer="functions" aria-pressed="true"
-                            title="Funktionsrollen ein-/ausblenden">
+                            data-hint="Funktionsrollen ein-/ausblenden">
                         <span class="legend-toggle-dots">
                             <span class="legend-swatch swatch-fn-issuer"></span><span class="legend-swatch swatch-fn-recipient"></span><span class="legend-swatch swatch-fn-witness"></span>
                         </span>
@@ -169,7 +167,7 @@
                     
                     <button type="button" class="legend-toggle"
                             data-layer="attributes" aria-pressed="true"
-                            title="Attribute ein-/ausblenden">
+                            data-hint="Attribute ein-/ausblenden">
                         <span class="legend-toggle-dots">
                             <span class="legend-swatch swatch-attr"></span><span class="legend-swatch swatch-add"></span>
                         </span>
@@ -178,7 +176,7 @@
                     
                     <button type="button" class="legend-toggle"
                             data-layer="triggers" aria-pressed="true"
-                            title="Dispositivformel ein-/ausblenden">
+                            data-hint="Dispositivformel ein-/ausblenden">
                         <span class="legend-toggle-dots">
                             <span class="legend-swatch swatch-trigger"></span>
                         </span>
@@ -190,21 +188,29 @@
                 <div class="doc-toolbar-actions">
                     <a class="toolbar-btn" href="../../../tei/QGW/Vienna_1177-1414_ready/340.xml"
                        download="340.xml"
-                       aria-label="TEI-XML herunterladen" title="TEI-XML herunterladen"><svg viewBox="0 0 16 16" width="16" height="16" aria-hidden="true"><path fill="none" stroke="currentColor" stroke-width="1.4" stroke-linecap="round" stroke-linejoin="round" d="M8 2v8m0 0l-3-3m3 3l3-3M3 13h10"/></svg></a>
+                       aria-label="TEI-XML herunterladen" data-hint="TEI-XML herunterladen"><svg viewBox="0 0 16 16" width="16" height="16" aria-hidden="true"><path fill="none" stroke="currentColor" stroke-width="1.4" stroke-linecap="round" stroke-linejoin="round" d="M8 2v8m0 0l-3-3m3 3l3-3M3 13h10"/></svg></a>
                     <button class="toolbar-btn" id="cite-toggle" aria-expanded="false"
-                            aria-label="Zitation kopieren" title="Zitation kopieren"><svg viewBox="0 0 16 16" width="16" height="16" aria-hidden="true"><rect x="4" y="2" width="8" height="11" rx="1" fill="none" stroke="currentColor" stroke-width="1.4"/><path d="M6 1.5h4a0.5 0.5 0 0 1 0.5 0.5v1a0.5 0.5 0 0 1-0.5 0.5H6a0.5 0.5 0 0 1-0.5-0.5V2A0.5 0.5 0 0 1 6 1.5z" fill="currentColor"/><path d="M6.5 6.5h3M6.5 8.5h3M6.5 10.5h2" stroke="currentColor" stroke-width="1" stroke-linecap="round"/></svg></button>
+                            aria-label="Zitation kopieren" data-hint="Zitation kopieren"><svg viewBox="0 0 16 16" width="16" height="16" aria-hidden="true"><rect x="4" y="2" width="8" height="11" rx="1" fill="none" stroke="currentColor" stroke-width="1.4"/><path d="M6 1.5h4a0.5 0.5 0 0 1 0.5 0.5v1a0.5 0.5 0 0 1-0.5 0.5H6a0.5 0.5 0 0 1-0.5-0.5V2A0.5 0.5 0 0 1 6 1.5z" fill="currentColor"/><path d="M6.5 6.5h3M6.5 8.5h3M6.5 10.5h2" stroke="currentColor" stroke-width="1" stroke-linecap="round"/></svg></button>
                     <div class="cite-popover hidden" id="cite-popover"></div>
+                    <span class="toolbar-basket-mount"
+                          data-basket-type="source"
+                          data-basket-id="340"
+                          data-basket-label="340"
+                          data-basket-url="documents/QGW/Vienna_1177-1414_ready/340.html"
+                          data-basket-date="1349-08-10"
+                          data-basket-coll="QGW II/1 (1177–1414)"
+                          data-basket-regest="Haug, weiln chamrer chu/onich Fridreichs von Rom saelig, und Jeut, seine Hausfrau, beurkunden ihren letzten Willen. Zu dem Erben ihres gesammten Gutes setzen sie den Oheim der Jeut Lucasen den…"></span>
                     
 <nav class="doc-paging doc-paging-inline" aria-label="Quellen-Navigation">
     
     <a href="../../../documents/QGW/Vienna_1177-1414_ready/339.html" class="toolbar-btn doc-paging-prev"
        aria-label="Vorherige Quelle: Nr. 339"
-       title="Vorherige Quelle: Nr. 339"><svg viewBox="0 0 16 16" width="16" height="16" aria-hidden="true"><path fill="none" stroke="currentColor" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round" d="M10 3l-5 5 5 5"/></svg></a>
+       data-hint="Vorherige Quelle: Nr. 339"><svg viewBox="0 0 16 16" width="16" height="16" aria-hidden="true"><path fill="none" stroke="currentColor" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round" d="M10 3l-5 5 5 5"/></svg></a>
     
     
     <a href="../../../documents/QGW/Vienna_1177-1414_ready/341.html" class="toolbar-btn doc-paging-next"
        aria-label="Nächste Quelle: Nr. 341"
-       title="Nächste Quelle: Nr. 341"><svg viewBox="0 0 16 16" width="16" height="16" aria-hidden="true"><path fill="none" stroke="currentColor" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round" d="M6 3l5 5-5 5"/></svg></a>
+       data-hint="Nächste Quelle: Nr. 341"><svg viewBox="0 0 16 16" width="16" height="16" aria-hidden="true"><path fill="none" stroke="currentColor" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round" d="M6 3l5 5-5 5"/></svg></a>
     
 </nav>
 
@@ -219,21 +225,21 @@
         <!-- Document body (rendered TEI) -->
         <div class="doc-body">
             <section class="tei-abstract"><h2 class="tei-section-head">Regest</h2><p>
-               <span class="anno-event" data-ref="ev__QGW_II_I_340"><span class="anno-fn anno-fn-issuer" data-role="issuer"><span class="fn-label">Aussteller*in</span><a class="anno-person" data-ref="pe__hugo_kaemmerer_QGW_II_I_340" title="Hugo der Kämmerer († 05.04.1355) [pe__hugo_kaemmerer_QGW_II_I_340]" href="../../../register/persons/pe__hugo_kaemmerer_QGW_II_I_340.html">Haug, weiln <span class="anno-attr anno-attr-occ" data-corresp="pe__friedrich_iii_herzog_von_oesterreich_QGW_II_I_853">chamrer</span>
-                        <a class="anno-person" data-ref="pe__friedrich_iii_herzog_von_oesterreich_QGW_II_I_853" title="Friedrich († 24.03.1363) [pe__friedrich_iii_herzog_von_oesterreich_QGW_II_I_853]" href="../../../register/persons/pe__friedrich_iii_herzog_von_oesterreich_QGW_II_I_853.html"><span class="anno-attr anno-attr-title">chu/onich</span> Fridreichs von Rom saelig</a></a>,
-                     und <a class="anno-person" data-ref="pe__jutta_QGW_II_I_340" title="Jutta [pe__jutta_QGW_II_I_340]" href="../../../register/persons/pe__jutta_QGW_II_I_340.html">Jeut, seine <span class="anno-attr anno-attr-kin" data-corresp="pe__hugo_kaemmerer_QGW_II_I_340">Hausfrau</span></a></span>, <span class="anno-trigger anno-trigger-disp">beurkunden ihren
+               <span class="anno-event" data-ref="ev__QGW_II_I_340"><span class="anno-fn anno-fn-issuer" data-role="issuer"><span class="fn-label">Aussteller*in</span><a class="anno-person" data-ref="pe__hugo_kaemmerer_QGW_II_I_340" data-hint="Hugo der Kämmerer († 05.04.1355) [pe__hugo_kaemmerer_QGW_II_I_340]" data-hint-type="Person" href="../../../register/persons/pe__hugo_kaemmerer_QGW_II_I_340.html">Haug, weiln <span class="anno-attr anno-attr-occ" data-corresp="pe__friedrich_iii_herzog_von_oesterreich_QGW_II_I_853">chamrer</span>
+                        <a class="anno-person" data-ref="pe__friedrich_iii_herzog_von_oesterreich_QGW_II_I_853" data-hint="Friedrich († 24.03.1363) [pe__friedrich_iii_herzog_von_oesterreich_QGW_II_I_853]" data-hint-type="Person" href="../../../register/persons/pe__friedrich_iii_herzog_von_oesterreich_QGW_II_I_853.html"><span class="anno-attr anno-attr-title">chu/onich</span> Fridreichs von Rom saelig</a></a>,
+                     und <a class="anno-person" data-ref="pe__jutta_QGW_II_I_340" data-hint="Jutta [pe__jutta_QGW_II_I_340]" data-hint-type="Person" href="../../../register/persons/pe__jutta_QGW_II_I_340.html">Jeut, seine <span class="anno-attr anno-attr-kin" data-corresp="pe__hugo_kaemmerer_QGW_II_I_340">Hausfrau</span></a></span>, <span class="anno-trigger anno-trigger-disp">beurkunden ihren
                      letzten Willen</span>. Zu dem Erben ihres gesammten Gutes setzen sie den
-                     <span class="anno-fn anno-fn-recipient" data-role="recipient"><span class="fn-label">Empfänger*in</span><a class="anno-person" data-ref="pe__lukas_popphinger_QGW_II_I_776" title="Lukas Popphinger Popphinger († 26.07.1370) [pe__lukas_popphinger_QGW_II_I_776]" href="../../../register/persons/pe__lukas_popphinger_QGW_II_I_776.html"><span class="anno-attr anno-attr-kin" data-corresp="pe__jutta_QGW_II_I_340">Oheim</span> der Jeut Lucasen den
+                     <span class="anno-fn anno-fn-recipient" data-role="recipient"><span class="fn-label">Empfänger*in</span><a class="anno-person" data-ref="pe__lukas_popphinger_QGW_II_I_776" data-hint="Lukas Popphinger Popphinger († 26.07.1370) [pe__lukas_popphinger_QGW_II_I_776]" data-hint-type="Person" href="../../../register/persons/pe__lukas_popphinger_QGW_II_I_776.html"><span class="anno-attr anno-attr-kin" data-corresp="pe__jutta_QGW_II_I_340">Oheim</span> der Jeut Lucasen den
                         Popphinger</a></span> ein dieser soll die von den Erblassern besonders
                   beurkundete Messstiftung nach ihrem Ableben ausführen, ferner von dem Weingarten,
-                  gelegen ze Su/efring und haisset der Ger, jährlich 9 lb 72 dn. an das <span class="anno-fn anno-fn-recipient" data-role="recipient"><span class="fn-label">Empfänger*in</span><a class="anno-org" data-ref="org__lilienfeld-zisterzienser" title="Zisterzienser Lilienfeld (Kloster_m) [org__lilienfeld-zisterzienser]" href="../../../register/orgs/org__lilienfeld-zisterzienser.html">Kloster Lilienfeld</a></span> zur Abhaltung einer ewigen täglichen Messe
-                  reichen, den übrig bleibenden Nutzen soll er mit seinen <span class="anno-fn anno-fn-recipient" data-role="recipient"><span class="fn-label">Empfänger*in</span><a class="anno-person" data-ref="pe__stephan_popphinger_QGW_II_I_776" title="Stephan Popphinger Popphinger [pe__stephan_popphinger_QGW_II_I_776]" href="../../../register/persons/pe__stephan_popphinger_QGW_II_I_776.html"><span class="anno-attr anno-attr-kin" data-corresp="pe__lukas_popphinger_QGW_II_I_776">Geschwistern</span> Stephan</a> und <a class="anno-person" data-ref="pe__margarethe_QGW_II_I_417_b" title="Margarethe Popphingerin Reicholf [pe__margarethe_QGW_II_I_417_b]" href="../../../register/persons/pe__margarethe_QGW_II_I_417_b.html"><span class="anno-attr anno-attr-kin" data-corresp="pe__lukas_popphinger_QGW_II_I_776"><span class="tei-add">Geschwistern</span></span> Margret</a>, sowie seinem <a class="anno-person" data-ref="pe__johann_hesner_QGW_II_I_452" title="Johann Hesner Hesner [pe__johann_hesner_QGW_II_I_452]" href="../../../register/persons/pe__johann_hesner_QGW_II_I_452.html"><span class="anno-attr anno-attr-kin" data-corresp="pe__lukas_popphinger_QGW_II_I_776">Oheim</span> Jansen dem
+                  gelegen ze Su/efring und haisset der Ger, jährlich 9 lb 72 dn. an das <span class="anno-fn anno-fn-recipient" data-role="recipient"><span class="fn-label">Empfänger*in</span><a class="anno-org" data-ref="org__lilienfeld-zisterzienser" data-hint="Zisterzienser Lilienfeld (Kloster_m) [org__lilienfeld-zisterzienser]" data-hint-type="Organisation" href="../../../register/orgs/org__lilienfeld-zisterzienser.html">Kloster Lilienfeld</a></span> zur Abhaltung einer ewigen täglichen Messe
+                  reichen, den übrig bleibenden Nutzen soll er mit seinen <span class="anno-fn anno-fn-recipient" data-role="recipient"><span class="fn-label">Empfänger*in</span><a class="anno-person" data-ref="pe__stephan_popphinger_QGW_II_I_776" data-hint="Stephan Popphinger Popphinger [pe__stephan_popphinger_QGW_II_I_776]" data-hint-type="Person" href="../../../register/persons/pe__stephan_popphinger_QGW_II_I_776.html"><span class="anno-attr anno-attr-kin" data-corresp="pe__lukas_popphinger_QGW_II_I_776">Geschwistern</span> Stephan</a> und <a class="anno-person" data-ref="pe__margarethe_QGW_II_I_417_b" data-hint="Margarethe Popphingerin Reicholf [pe__margarethe_QGW_II_I_417_b]" data-hint-type="Person" href="../../../register/persons/pe__margarethe_QGW_II_I_417_b.html"><span class="anno-attr anno-attr-kin" data-corresp="pe__lukas_popphinger_QGW_II_I_776"><span class="tei-add">Geschwistern</span></span> Margret</a>, sowie seinem <a class="anno-person" data-ref="pe__johann_hesner_QGW_II_I_452" data-hint="Johann Hesner Hesner [pe__johann_hesner_QGW_II_I_452]" data-hint-type="Person" href="../../../register/persons/pe__johann_hesner_QGW_II_I_452.html"><span class="anno-attr anno-attr-kin" data-corresp="pe__lukas_popphinger_QGW_II_I_776">Oheim</span> Jansen dem
                         Hesner</a></span> theilen. Doch sollen diese mit der Verwaltung und
                   Verwendung des Erbes ebensowenig zu schaffen haben als die Enkelin der
                   Erblasserin, Anne, die sie bestatt und gegeben haben in das vrowen chloster hincz
                   der Himelporten ze Wienne.</span>
-            </p></section><section class="tei-seal"><h2 class="tei-section-head">Siegelbeschreibung</h2><p><span class="anno-event" data-ref="ev__QGW_II_I_340">Besiegelt mit den Siegeln: <a class="anno-person" data-ref="pe__hugo_kaemmerer_QGW_II_I_340" title="Hugo der Kämmerer († 05.04.1355) [pe__hugo_kaemmerer_QGW_II_I_340]" href="../../../register/persons/pe__hugo_kaemmerer_QGW_II_I_340.html">1. des Ausstellers</a>, <a class="anno-person" data-ref="pe__heinrich_oeler_QGW_II_I_771" title="Heinrich Öler Öler [pe__heinrich_oeler_QGW_II_I_771]" href="../../../register/persons/pe__heinrich_oeler_QGW_II_I_771.html">2. <span class="anno-attr anno-attr-title">hern</span> Hainreichs des Oeler</a>, <a class="anno-person" data-ref="pe__ulrich_machtfrit_QGW_II_I_340" title="Ulrich Machtfrit [pe__ulrich_machtfrit_QGW_II_I_340]" href="../../../register/persons/pe__ulrich_machtfrit_QGW_II_I_340.html">3. <span class="anno-attr anno-attr-title">hern</span> Ulreichs des Ma/echtfrits</a>, <a class="anno-person" data-ref="pe__jakob_hansgraf_QGW_II_I_589" title="Jakob der Hansgraf [pe__jakob_hansgraf_QGW_II_I_589]" href="../../../register/persons/pe__jakob_hansgraf_QGW_II_I_589.html">4. <span class="anno-attr anno-attr-title">hern</span>
-                     Jacobs, des hansgrafen</a>, <a class="anno-person" data-ref="pe__ulrich_guenzburger_QGW_II_I_841" title="Ulrich Günzburger Günzburger [pe__ulrich_guenzburger_QGW_II_I_841]" href="../../../register/persons/pe__ulrich_guenzburger_QGW_II_I_841.html">5. <span class="anno-attr anno-attr-title">hern</span> Ulreichs des Gu/enzpurger, des <span class="anno-attr anno-attr-prof">Schreiber</span></a>.</span>
+            </p></section><section class="tei-seal"><h2 class="tei-section-head">Siegelbeschreibung</h2><p><span class="anno-event" data-ref="ev__QGW_II_I_340">Besiegelt mit den Siegeln: <a class="anno-person" data-ref="pe__hugo_kaemmerer_QGW_II_I_340" data-hint="Hugo der Kämmerer († 05.04.1355) [pe__hugo_kaemmerer_QGW_II_I_340]" data-hint-type="Person" href="../../../register/persons/pe__hugo_kaemmerer_QGW_II_I_340.html">1. des Ausstellers</a>, <a class="anno-person" data-ref="pe__heinrich_oeler_QGW_II_I_771" data-hint="Heinrich Öler Öler [pe__heinrich_oeler_QGW_II_I_771]" data-hint-type="Person" href="../../../register/persons/pe__heinrich_oeler_QGW_II_I_771.html">2. <span class="anno-attr anno-attr-title">hern</span> Hainreichs des Oeler</a>, <a class="anno-person" data-ref="pe__ulrich_machtfrit_QGW_II_I_340" data-hint="Ulrich Machtfrit [pe__ulrich_machtfrit_QGW_II_I_340]" data-hint-type="Person" href="../../../register/persons/pe__ulrich_machtfrit_QGW_II_I_340.html">3. <span class="anno-attr anno-attr-title">hern</span> Ulreichs des Ma/echtfrits</a>, <a class="anno-person" data-ref="pe__jakob_hansgraf_QGW_II_I_589" data-hint="Jakob der Hansgraf [pe__jakob_hansgraf_QGW_II_I_589]" data-hint-type="Person" href="../../../register/persons/pe__jakob_hansgraf_QGW_II_I_589.html">4. <span class="anno-attr anno-attr-title">hern</span>
+                     Jacobs, des hansgrafen</a>, <a class="anno-person" data-ref="pe__ulrich_guenzburger_QGW_II_I_841" data-hint="Ulrich Günzburger Günzburger [pe__ulrich_guenzburger_QGW_II_I_841]" data-hint-type="Person" href="../../../register/persons/pe__ulrich_guenzburger_QGW_II_I_841.html">5. <span class="anno-attr anno-attr-title">hern</span> Ulreichs des Gu/enzpurger, des <span class="anno-attr anno-attr-prof">Schreiber</span></a>.</span>
             </p></section>
 
             <!-- Data layer: provenance strip. Korpus + Idno stehen schon
@@ -292,7 +298,7 @@
          dem TEI in mehreren Untertabellen, Personen/Orgs/Orte,
          Ereignisse, Dispositivformeln, Editorische Ergaenzungen. Wird
          per JS aus den entsprechenden Spans im Body aufgebaut. -->
-    <section class="annotations-view" id="factoid-view" aria-label="Annotationen">
+    <section class="annotations-view" id="annotations-view" aria-label="Annotationen">
         <header class="annotations-header">
             <h2 class="annotations-title">Annotationen</h2>
             <span class="annotations-summary"></span>
@@ -338,13 +344,14 @@
         </div>
     </footer>
 
-    <script src="../../../static/js/core.js?v=20260511112948"></script>
-    <script src="../../../static/js/provenance.js?v=20260511112948"></script>
-    <script src="../../../static/js/basket.js?v=20260511112948"></script>
+    <script src="../../../static/js/core.js?v=20260511125458"></script>
+    <script src="../../../static/js/tip.js?v=20260511125458"></script>
+    <script src="../../../static/js/hint.js?v=20260511125458"></script>
+    <script src="../../../static/js/basket.js?v=20260511125458"></script>
     
-<script src="../../../static/js/tooltips.js?v=20260511112948"></script>
-<script src="../../../static/js/facsimile.js?v=20260511112948"></script>
-<script src="../../../static/js/document.js?v=20260511112948"></script>
+<script src="../../../static/js/facsimile.js?v=20260511125458"></script>
+<script src="../../../static/js/document.js?v=20260511125458"></script>
+<script src="../../../static/js/basket-mount.js?v=20260511125458"></script>
 
 </body>
 </html>

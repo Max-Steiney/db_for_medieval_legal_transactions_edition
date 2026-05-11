@@ -3,22 +3,22 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <meta http-equiv="Content-Security-Policy" content="default-src 'self'; script-src 'self'; style-src 'self'; font-src 'self'; img-src 'self' data: https://images.monasterium.net https://www.monasterium.net; connect-src 'self'; frame-ancestors 'none'; base-uri 'self'; form-action 'self'; upgrade-insecure-requests">
+    <meta http-equiv="Content-Security-Policy" content="default-src 'self'; script-src 'self'; style-src 'self'; font-src 'self'; img-src 'self' data: https://images.monasterium.net https://www.monasterium.net; connect-src 'self'; base-uri 'self'; form-action 'self'; upgrade-insecure-requests">
     <meta name="referrer" content="strict-origin-when-cross-origin">
     <meta http-equiv="Permissions-Policy" content="camera=(), microphone=(), geolocation=(), interest-cohort=()">
     <title>Stephan Leitner, Datenbank</title>
     <link rel="preload" as="font" type="font/woff2" crossorigin
           href="../../static/fonts/inter-400-latin.woff2">
-    <link rel="stylesheet" href="../../static/css/fonts.css?v=20260511112948">
-    <link rel="stylesheet" href="../../static/css/tokens.css?v=20260511112948">
-    <link rel="stylesheet" href="../../static/css/base.css?v=20260511112948">
-    <link rel="stylesheet" href="../../static/css/components.css?v=20260511112948">
-    <link rel="stylesheet" href="../../static/css/responsive.css?v=20260511112948">
-    <link rel="stylesheet" href="../../static/css/print.css?v=20260511112948">
-    <link rel="stylesheet" href="../../static/css/provenance.css?v=20260511112948">
+    <link rel="stylesheet" href="../../static/css/fonts.css?v=20260511125458">
+    <link rel="stylesheet" href="../../static/css/tokens.css?v=20260511125458">
+    <link rel="stylesheet" href="../../static/css/base.css?v=20260511125458">
+    <link rel="stylesheet" href="../../static/css/components.css?v=20260511125458">
+    <link rel="stylesheet" href="../../static/css/responsive.css?v=20260511125458">
+    <link rel="stylesheet" href="../../static/css/print.css?v=20260511125458">
+    <link rel="stylesheet" href="../../static/css/tip.css?v=20260511125458">
     
-<link rel="stylesheet" href="../../static/css/document.css?v=20260511112948">
-<link rel="stylesheet" href="../../static/css/person.css?v=20260511112948">
+<link rel="stylesheet" href="../../static/css/document.css?v=20260511125458">
+<link rel="stylesheet" href="../../static/css/person.css?v=20260511125458">
 
 </head>
 <body data-root-path="../.."
@@ -48,8 +48,6 @@
         <a href="../../register/persons.html">Personen</a>
         
         <a href="../../register/orgs.html">Organisationen</a>
-        
-        <a href="../../register/places.html">Orte</a>
         
     </div>
 </div>
@@ -91,7 +89,7 @@
     </div>
 </div>
 
-                <a href="../../korb.html" class="nav-basket" aria-label="Wissenskorb">
+                <a href="../../korb.html" class="nav-basket" aria-label="Datenkorb">
                     <svg width="18" height="18" viewBox="0 0 18 18" fill="none" aria-hidden="true">
                         <path d="M3 5h12l-1.2 8.5a1 1 0 0 1-1 .85H5.2a1 1 0 0 1-1-.85L3 5z"
                               stroke="currentColor" stroke-width="1.4" fill="none"
@@ -112,11 +110,23 @@
 
     <div class="person-toolbar">
         <div class="person-toolbar-inner">
-            <nav class="person-breadcrumb" aria-label="Position">
-                <a href="../../register/persons.html">Personenregister</a>
-                <span class="bc-sep">&rsaquo;</span>
-                <span class="bc-doc"><strong>Stephan Leitner</strong></span>
-            </nav>
+            <div class="person-toolbar-row">
+                <nav class="person-breadcrumb" aria-label="Position">
+                    <a href="../../register/persons.html">Personenregister</a>
+                    <span class="bc-sep">&rsaquo;</span>
+                    <span class="bc-doc"><strong>Stephan Leitner</strong></span>
+                </nav>
+                <div class="person-toolbar-actions">
+                    <span class="toolbar-basket-mount"
+                          data-basket-type="person"
+                          data-basket-id="pe__stephan_leitner_QGW_II_I_1012"
+                          data-basket-label="Stephan Leitner"
+                          data-basket-url="register/persons/pe__stephan_leitner_QGW_II_I_1012.html"
+                          data-basket-sex="m"
+                          data-basket-active-min="1361"
+                          data-basket-active-max="1403"></span>
+                </div>
+            </div>
             <div class="person-toolbar-meta">
                 <span class="meta-pair">
                     <span class="meta-label">Geschlecht</span>
@@ -124,11 +134,41 @@
                 </span>
                 
                 <span class="meta-pair">
-                    <span class="meta-label">Belegt</span>
+                    <span class="meta-label">Belegt
+<span class="tip-wrap">
+    <button type="button" class="tip-trigger tip-trigger--icon"
+            aria-expanded="false" aria-haspopup="dialog"
+            aria-controls="person-belegt"
+            data-tip="person-belegt"
+            aria-label="Definition: Beleg-Zeitraum">
+        <svg width="13" height="13" viewBox="0 0 16 16" aria-hidden="true">
+            <circle cx="8" cy="8" r="7" stroke="currentColor" stroke-width="1.4" fill="none"/>
+            <text x="8" y="11.6" text-anchor="middle" font-size="9.5" font-weight="700"
+                  fill="currentColor" font-family="Georgia, serif">i</text>
+        </svg>
+    </button>
+    <aside class="tip-popover tip-popover--glossary"
+           id="person-belegt" role="dialog" aria-hidden="true"
+           aria-label="Definition: Beleg-Zeitraum">
+        <header class="tip-head">
+            <h3 class="tip-title">Beleg-Zeitraum</h3>
+            <button type="button" class="tip-close" aria-label="Schlie&szlig;en">&times;</button>
+        </header>
+        <div class="tip-body">
+            <p>Erste und letzte Datierung einer Quelle, in der die Person erscheint. Bei einzelnem Beleg wird nur ein Jahr angegeben.</p>
+            
+        </div>
+    </aside>
+</span>
+</span>
                     <span class="meta-value">1361 bis 1403</span>
                 </span>
                 
                 
+                <span class="meta-pair">
+                    <span class="meta-label">Quellen</span>
+                    <span class="meta-value">59</span>
+                </span>
                 <span class="meta-pair person-id-pair">
                     <span class="meta-label">ID</span>
                     <code class="meta-value person-id">pe__stephan_leitner_QGW_II_I_1012</code>
@@ -145,16 +185,48 @@
             
         </h1>
         
+        
         <p class="person-note">Wiener Bürger, Ratsherr, Bürgerspitalmeister</p>
         
         
-        <p class="person-titles">
+        <p class="person-titles" data-collapsible="22">
             <span class="pt-label">In den Quellen genannt als</span>
             <span class="pt-chip">hern</span><span class="pt-chip">erbern|hern</span><span class="pt-chip">Bergherrn|hern</span><span class="pt-chip">erbern</span><span class="pt-chip">hern|erbern lewten</span>
         </p>
         
         
+        
     </header>
+
+    
+    <section class="role-strip" aria-label="Rollen in Rechtsgeschäften">
+        <h2 class="role-strip-title">Rollen in Rechtsgeschäften</h2>
+        <div class="role-strip-cells">
+            
+            <div class="role-cell role-cell-issuer">
+                <span class="role-cell-count">4</span>
+                <span class="role-cell-label">Aussteller*in</span>
+            </div>
+            
+            <div class="role-cell role-cell-recipient">
+                <span class="role-cell-count">8</span>
+                <span class="role-cell-label">Empfänger*in</span>
+            </div>
+            
+            <div class="role-cell role-cell-witness">
+                <span class="role-cell-count">45</span>
+                <span class="role-cell-label">Zeuge / Siegler*in</span>
+            </div>
+            
+            <div class="role-cell role-cell-other">
+                <span class="role-cell-count">4</span>
+                <span class="role-cell-label">Sonstige</span>
+            </div>
+            
+        </div>
+        <p class="role-strip-hint">Summe Rollen-Belegungen: 61. Mehrfach-Rollen pro Quelle sind möglich.</p>
+    </section>
+    
 
     
 
@@ -171,6 +243,7 @@
                 <span class="rel-block-count">18</span>
                 <span class="rel-block-hint">Verwandtschaftsverhältnisse, wie sie in den Quellen explizit benannt werden.</span>
             </header>
+            
             <table class="rel-table">
                 <thead>
                     <tr>
@@ -191,7 +264,7 @@
                         <td class="rel-col-label"><em>tochter</em></td>
                         <td class="rel-col-perspective">
                             
-                                Anna → Stephan Leitner
+                                Anna &rsaquo; Stephan Leitner
                             
                         </td>
                         <td class="rel-col-source">
@@ -210,7 +283,7 @@
                         <td class="rel-col-label"><em>Oheim</em></td>
                         <td class="rel-col-perspective">
                             
-                                Wolfgang Purkchartsperger → Stephan Leitner
+                                Wolfgang Purkchartsperger &rsaquo; Stephan Leitner
                             
                         </td>
                         <td class="rel-col-source">
@@ -229,7 +302,7 @@
                         <td class="rel-col-label"><em>Frau</em></td>
                         <td class="rel-col-perspective">
                             
-                                Katharina → Stephan Leitner
+                                Katharina &rsaquo; Stephan Leitner
                             
                         </td>
                         <td class="rel-col-source">
@@ -248,7 +321,7 @@
                         <td class="rel-col-label"><em>Muhme</em></td>
                         <td class="rel-col-perspective">
                             
-                                Anna → Stephan Leitner
+                                Anna &rsaquo; Stephan Leitner
                             
                         </td>
                         <td class="rel-col-source">
@@ -267,7 +340,7 @@
                         <td class="rel-col-label"><em>endlein</em></td>
                         <td class="rel-col-perspective">
                             
-                                Katharina von Eslarn → Stephan Leitner
+                                Katharina von Eslarn &rsaquo; Stephan Leitner
                             
                         </td>
                         <td class="rel-col-source">
@@ -286,7 +359,7 @@
                         <td class="rel-col-label"><em>endlein</em></td>
                         <td class="rel-col-perspective">
                             
-                                Magdalena von der Schemnitz → Stephan Leitner
+                                Magdalena von der Schemnitz &rsaquo; Stephan Leitner
                             
                         </td>
                         <td class="rel-col-source">
@@ -305,7 +378,7 @@
                         <td class="rel-col-label"><em>urenenklein</em></td>
                         <td class="rel-col-perspective">
                             
-                                Stephan Swaeml → Stephan Leitner
+                                Stephan Swaeml &rsaquo; Stephan Leitner
                             
                         </td>
                         <td class="rel-col-source">
@@ -324,7 +397,7 @@
                         <td class="rel-col-label"><em>urenenklein</em></td>
                         <td class="rel-col-perspective">
                             
-                                Klara Swaemlin → Stephan Leitner
+                                Klara Swaemlin &rsaquo; Stephan Leitner
                             
                         </td>
                         <td class="rel-col-source">
@@ -343,7 +416,7 @@
                         <td class="rel-col-label"><em>Schwester Sohn</em></td>
                         <td class="rel-col-perspective">
                             
-                                Ulrich Dorn → Stephan Leitner
+                                Ulrich Dorn &rsaquo; Stephan Leitner
                             
                         </td>
                         <td class="rel-col-source">
@@ -362,7 +435,7 @@
                         <td class="rel-col-label"><em>Schwager</em></td>
                         <td class="rel-col-perspective">
                             
-                                Paul Geir → Stephan Leitner
+                                Paul Geir &rsaquo; Stephan Leitner
                             
                         </td>
                         <td class="rel-col-source">
@@ -381,7 +454,7 @@
                         <td class="rel-col-label"><em>hausvrow</em></td>
                         <td class="rel-col-perspective">
                             
-                                Engel → Stephan Leitner
+                                Engel &rsaquo; Stephan Leitner
                             
                         </td>
                         <td class="rel-col-source">
@@ -400,7 +473,7 @@
                         <td class="rel-col-label"><em>Tochter</em></td>
                         <td class="rel-col-perspective">
                             
-                                Anna → Stephan Leitner
+                                Anna &rsaquo; Stephan Leitner
                             
                         </td>
                         <td class="rel-col-source">
@@ -419,7 +492,7 @@
                         <td class="rel-col-label"><em>Schwagers</em></td>
                         <td class="rel-col-perspective">
                             
-                                Stephan Leitner → Johann Stoll
+                                Stephan Leitner &rsaquo; Johann Stoll
                             
                         </td>
                         <td class="rel-col-source">
@@ -438,7 +511,7 @@
                         <td class="rel-col-label"><em>Gemahlin</em></td>
                         <td class="rel-col-perspective">
                             
-                                Engel → Stephan Leitner
+                                Engel &rsaquo; Stephan Leitner
                             
                         </td>
                         <td class="rel-col-source">
@@ -457,7 +530,7 @@
                         <td class="rel-col-label"><em>Vetters</em></td>
                         <td class="rel-col-perspective">
                             
-                                Stephan Leitner → Konrad Leitner
+                                Stephan Leitner &rsaquo; Konrad Leitner
                             
                         </td>
                         <td class="rel-col-source">
@@ -476,7 +549,7 @@
                         <td class="rel-col-label"><em>hawsfraw</em></td>
                         <td class="rel-col-perspective">
                             
-                                Magdalena Leitnerin → Stephan Leitner
+                                Magdalena Leitnerin &rsaquo; Stephan Leitner
                             
                         </td>
                         <td class="rel-col-source">
@@ -495,7 +568,7 @@
                         <td class="rel-col-label"><em>vettern</em></td>
                         <td class="rel-col-perspective">
                             
-                                Stephan Leitner → Jakob Dorn
+                                Stephan Leitner &rsaquo; Jakob Dorn
                             
                         </td>
                         <td class="rel-col-source">
@@ -514,7 +587,7 @@
                         <td class="rel-col-label"><em>hawsfraw</em></td>
                         <td class="rel-col-perspective">
                             
-                                Magdalena Leitnerin → Stephan Leitner
+                                Magdalena Leitnerin &rsaquo; Stephan Leitner
                             
                         </td>
                         <td class="rel-col-source">
@@ -537,6 +610,7 @@
                 <span class="rel-block-count">1</span>
                 <span class="rel-block-hint">Quellen, in denen die Beziehung als Freundschaft markiert ist.</span>
             </header>
+            
             <table class="rel-table">
                 <thead>
                     <tr>
@@ -557,7 +631,7 @@
                         <td class="rel-col-label"><em>Freunden</em></td>
                         <td class="rel-col-perspective">
                             
-                                Wolfgang Purkchartsperger → Stephan Leitner
+                                Wolfgang Purkchartsperger &rsaquo; Stephan Leitner
                             
                         </td>
                         <td class="rel-col-source">
@@ -580,6 +654,7 @@
                 <span class="rel-block-count">2</span>
                 <span class="rel-block-hint">Stellvertretungs-Beziehungen, z. B. handelt eine Person an Stelle einer anderen.</span>
             </header>
+            
             <table class="rel-table">
                 <thead>
                     <tr>
@@ -600,7 +675,7 @@
                         <td class="rel-col-label"><em>von des Spitals wegen</em></td>
                         <td class="rel-col-perspective">
                             
-                                Stephan Leitner → org__wien-buergerspital
+                                Stephan Leitner &rsaquo; org__wien-buergerspital
                             
                         </td>
                         <td class="rel-col-source">
@@ -619,7 +694,7 @@
                         <td class="rel-col-label"><em>Geschäftsvollstrecker</em></td>
                         <td class="rel-col-perspective">
                             
-                                Stephan Leitner → Herbert auf der Säule
+                                Stephan Leitner &rsaquo; Herbert auf der Säule
                             
                         </td>
                         <td class="rel-col-source">
@@ -642,7 +717,13 @@
                 <span class="rel-block-count">55</span>
                 <span class="rel-block-hint">Berufs- oder Amtsbezeichnung in Bezug auf eine Institution.</span>
             </header>
-            <table class="rel-table">
+            
+            <div class="table-filter">
+                <input type="search" class="table-filter-input" data-target="rel" placeholder="In der Tabelle filtern&hellip;" aria-label="In der Tabelle filtern">
+                <span class="table-filter-status"></span>
+            </div>
+            
+            <table class="rel-table" data-truncate-at="50">
                 <thead>
                     <tr>
                         <th scope="col" class="rel-col-other">Institution</th>
@@ -662,7 +743,7 @@
                         <td class="rel-col-label"><em>obrister spitalmaister</em></td>
                         <td class="rel-col-perspective">
                             
-                                Stephan Leitner → Wiener Bürgerspital
+                                Stephan Leitner &rsaquo; Wiener Bürgerspital
                             
                         </td>
                         <td class="rel-col-source">
@@ -681,7 +762,7 @@
                         <td class="rel-col-label"><em>purger</em></td>
                         <td class="rel-col-perspective">
                             
-                                Stephan Leitner → Wien
+                                Stephan Leitner &rsaquo; Wien
                             
                         </td>
                         <td class="rel-col-source">
@@ -700,7 +781,7 @@
                         <td class="rel-col-label"><em>spitalmaister</em></td>
                         <td class="rel-col-perspective">
                             
-                                Stephan Leitner → Wiener Bürgerspital
+                                Stephan Leitner &rsaquo; Wiener Bürgerspital
                             
                         </td>
                         <td class="rel-col-source">
@@ -719,7 +800,7 @@
                         <td class="rel-col-label"><em>Spitalmeister</em></td>
                         <td class="rel-col-perspective">
                             
-                                Stephan Leitner → Wiener Bürgerspital
+                                Stephan Leitner &rsaquo; Wiener Bürgerspital
                             
                         </td>
                         <td class="rel-col-source">
@@ -738,7 +819,7 @@
                         <td class="rel-col-label"><em>spitalmaister</em></td>
                         <td class="rel-col-perspective">
                             
-                                Stephan Leitner → Wiener Bürgerspital
+                                Stephan Leitner &rsaquo; Wiener Bürgerspital
                             
                         </td>
                         <td class="rel-col-source">
@@ -757,7 +838,7 @@
                         <td class="rel-col-label"><em>rats der stat ze Wienn</em></td>
                         <td class="rel-col-perspective">
                             
-                                Stephan Leitner → Wien
+                                Stephan Leitner &rsaquo; Wien
                             
                         </td>
                         <td class="rel-col-source">
@@ -776,7 +857,7 @@
                         <td class="rel-col-label"><em>Ratsherr</em></td>
                         <td class="rel-col-perspective">
                             
-                                Stephan Leitner → Wien
+                                Stephan Leitner &rsaquo; Wien
                             
                         </td>
                         <td class="rel-col-source">
@@ -795,7 +876,7 @@
                         <td class="rel-col-label"><em>rats der stat ze Wienn</em></td>
                         <td class="rel-col-perspective">
                             
-                                Stephan Leitner → Wien
+                                Stephan Leitner &rsaquo; Wien
                             
                         </td>
                         <td class="rel-col-source">
@@ -814,7 +895,7 @@
                         <td class="rel-col-label"><em>Bürgers</em></td>
                         <td class="rel-col-perspective">
                             
-                                Stephan Leitner → Wien
+                                Stephan Leitner &rsaquo; Wien
                             
                         </td>
                         <td class="rel-col-source">
@@ -833,7 +914,7 @@
                         <td class="rel-col-label"><em>Wiener Bürgers</em></td>
                         <td class="rel-col-perspective">
                             
-                                Stephan Leitner → Wien
+                                Stephan Leitner &rsaquo; Wien
                             
                         </td>
                         <td class="rel-col-source">
@@ -852,7 +933,7 @@
                         <td class="rel-col-label"><em>Wiener Bürger</em></td>
                         <td class="rel-col-perspective">
                             
-                                Stephan Leitner → Wien
+                                Stephan Leitner &rsaquo; Wien
                             
                         </td>
                         <td class="rel-col-source">
@@ -871,7 +952,7 @@
                         <td class="rel-col-label"><em>Bürgers</em></td>
                         <td class="rel-col-perspective">
                             
-                                Stephan Leitner → Wien
+                                Stephan Leitner &rsaquo; Wien
                             
                         </td>
                         <td class="rel-col-source">
@@ -890,7 +971,7 @@
                         <td class="rel-col-label"><em>Bürgers</em></td>
                         <td class="rel-col-perspective">
                             
-                                Stephan Leitner → Wien
+                                Stephan Leitner &rsaquo; Wien
                             
                         </td>
                         <td class="rel-col-source">
@@ -909,7 +990,7 @@
                         <td class="rel-col-label"><em>Bürgers</em></td>
                         <td class="rel-col-perspective">
                             
-                                Stephan Leitner → Wien
+                                Stephan Leitner &rsaquo; Wien
                             
                         </td>
                         <td class="rel-col-source">
@@ -928,7 +1009,7 @@
                         <td class="rel-col-label"><em>Bürgers</em></td>
                         <td class="rel-col-perspective">
                             
-                                Stephan Leitner → Wien
+                                Stephan Leitner &rsaquo; Wien
                             
                         </td>
                         <td class="rel-col-source">
@@ -947,7 +1028,7 @@
                         <td class="rel-col-label"><em>Bürgers</em></td>
                         <td class="rel-col-perspective">
                             
-                                Stephan Leitner → Wien
+                                Stephan Leitner &rsaquo; Wien
                             
                         </td>
                         <td class="rel-col-source">
@@ -966,7 +1047,7 @@
                         <td class="rel-col-label"><em>Bürger</em></td>
                         <td class="rel-col-perspective">
                             
-                                Stephan Leitner → Wien
+                                Stephan Leitner &rsaquo; Wien
                             
                         </td>
                         <td class="rel-col-source">
@@ -985,7 +1066,7 @@
                         <td class="rel-col-label"><em>Bürgers</em></td>
                         <td class="rel-col-perspective">
                             
-                                Stephan Leitner → Wien
+                                Stephan Leitner &rsaquo; Wien
                             
                         </td>
                         <td class="rel-col-source">
@@ -1004,7 +1085,7 @@
                         <td class="rel-col-label"><em>Bürgers</em></td>
                         <td class="rel-col-perspective">
                             
-                                Stephan Leitner → Wien
+                                Stephan Leitner &rsaquo; Wien
                             
                         </td>
                         <td class="rel-col-source">
@@ -1023,7 +1104,7 @@
                         <td class="rel-col-label"><em>Bürger</em></td>
                         <td class="rel-col-perspective">
                             
-                                Stephan Leitner → Wien
+                                Stephan Leitner &rsaquo; Wien
                             
                         </td>
                         <td class="rel-col-source">
@@ -1042,7 +1123,7 @@
                         <td class="rel-col-label"><em>Bürger</em></td>
                         <td class="rel-col-perspective">
                             
-                                Stephan Leitner → Wien
+                                Stephan Leitner &rsaquo; Wien
                             
                         </td>
                         <td class="rel-col-source">
@@ -1061,7 +1142,7 @@
                         <td class="rel-col-label"><em>Bürger</em></td>
                         <td class="rel-col-perspective">
                             
-                                Stephan Leitner → Wien
+                                Stephan Leitner &rsaquo; Wien
                             
                         </td>
                         <td class="rel-col-source">
@@ -1080,7 +1161,7 @@
                         <td class="rel-col-label"><em>Bürgers</em></td>
                         <td class="rel-col-perspective">
                             
-                                Stephan Leitner → Wien
+                                Stephan Leitner &rsaquo; Wien
                             
                         </td>
                         <td class="rel-col-source">
@@ -1099,7 +1180,7 @@
                         <td class="rel-col-label"><em>Bürgers</em></td>
                         <td class="rel-col-perspective">
                             
-                                Stephan Leitner → Wien
+                                Stephan Leitner &rsaquo; Wien
                             
                         </td>
                         <td class="rel-col-source">
@@ -1118,7 +1199,7 @@
                         <td class="rel-col-label"><em>rates</em></td>
                         <td class="rel-col-perspective">
                             
-                                Stephan Leitner → Wien
+                                Stephan Leitner &rsaquo; Wien
                             
                         </td>
                         <td class="rel-col-source">
@@ -1137,7 +1218,7 @@
                         <td class="rel-col-label"><em>rats</em></td>
                         <td class="rel-col-perspective">
                             
-                                Stephan Leitner → Wien
+                                Stephan Leitner &rsaquo; Wien
                             
                         </td>
                         <td class="rel-col-source">
@@ -1156,7 +1237,7 @@
                         <td class="rel-col-label"><em>Bürgers</em></td>
                         <td class="rel-col-perspective">
                             
-                                Stephan Leitner → Wien
+                                Stephan Leitner &rsaquo; Wien
                             
                         </td>
                         <td class="rel-col-source">
@@ -1175,7 +1256,7 @@
                         <td class="rel-col-label"><em>Bürgers</em></td>
                         <td class="rel-col-perspective">
                             
-                                Stephan Leitner → Wien
+                                Stephan Leitner &rsaquo; Wien
                             
                         </td>
                         <td class="rel-col-source">
@@ -1194,7 +1275,7 @@
                         <td class="rel-col-label"><em>Bürgers</em></td>
                         <td class="rel-col-perspective">
                             
-                                Stephan Leitner → Wien
+                                Stephan Leitner &rsaquo; Wien
                             
                         </td>
                         <td class="rel-col-source">
@@ -1213,7 +1294,7 @@
                         <td class="rel-col-label"><em>Wiener Bürger</em></td>
                         <td class="rel-col-perspective">
                             
-                                Stephan Leitner → Wien
+                                Stephan Leitner &rsaquo; Wien
                             
                         </td>
                         <td class="rel-col-source">
@@ -1232,7 +1313,7 @@
                         <td class="rel-col-label"><em>Bürgers</em></td>
                         <td class="rel-col-perspective">
                             
-                                Stephan Leitner → Wien
+                                Stephan Leitner &rsaquo; Wien
                             
                         </td>
                         <td class="rel-col-source">
@@ -1251,7 +1332,7 @@
                         <td class="rel-col-label"><em>purger ze Wienn</em></td>
                         <td class="rel-col-perspective">
                             
-                                Stephan Leitner → Wien
+                                Stephan Leitner &rsaquo; Wien
                             
                         </td>
                         <td class="rel-col-source">
@@ -1270,7 +1351,7 @@
                         <td class="rel-col-label"><em>purger</em></td>
                         <td class="rel-col-perspective">
                             
-                                Stephan Leitner → Wien
+                                Stephan Leitner &rsaquo; Wien
                             
                         </td>
                         <td class="rel-col-source">
@@ -1289,7 +1370,7 @@
                         <td class="rel-col-label"><em>purger</em></td>
                         <td class="rel-col-perspective">
                             
-                                Stephan Leitner → Wien
+                                Stephan Leitner &rsaquo; Wien
                             
                         </td>
                         <td class="rel-col-source">
@@ -1308,7 +1389,7 @@
                         <td class="rel-col-label"><em>rates</em></td>
                         <td class="rel-col-perspective">
                             
-                                Stephan Leitner → Wien
+                                Stephan Leitner &rsaquo; Wien
                             
                         </td>
                         <td class="rel-col-source">
@@ -1327,7 +1408,7 @@
                         <td class="rel-col-label"><em>Bürgers</em></td>
                         <td class="rel-col-perspective">
                             
-                                Stephan Leitner → Wien
+                                Stephan Leitner &rsaquo; Wien
                             
                         </td>
                         <td class="rel-col-source">
@@ -1346,7 +1427,7 @@
                         <td class="rel-col-label"><em>spitalmaister</em></td>
                         <td class="rel-col-perspective">
                             
-                                Stephan Leitner → Wiener Bürgerspital
+                                Stephan Leitner &rsaquo; Wiener Bürgerspital
                             
                         </td>
                         <td class="rel-col-source">
@@ -1365,7 +1446,7 @@
                         <td class="rel-col-label"><em>des rates der stat ze Wienne</em></td>
                         <td class="rel-col-perspective">
                             
-                                Stephan Leitner → Wien
+                                Stephan Leitner &rsaquo; Wien
                             
                         </td>
                         <td class="rel-col-source">
@@ -1384,7 +1465,7 @@
                         <td class="rel-col-label"><em>rates der stat ze Wienne</em></td>
                         <td class="rel-col-perspective">
                             
-                                Stephan Leitner → Wien
+                                Stephan Leitner &rsaquo; Wien
                             
                         </td>
                         <td class="rel-col-source">
@@ -1403,7 +1484,7 @@
                         <td class="rel-col-label"><em>rates der stat ze Wienne</em></td>
                         <td class="rel-col-perspective">
                             
-                                Stephan Leitner → Wien
+                                Stephan Leitner &rsaquo; Wien
                             
                         </td>
                         <td class="rel-col-source">
@@ -1422,7 +1503,7 @@
                         <td class="rel-col-label"><em>spitalmaister</em></td>
                         <td class="rel-col-perspective">
                             
-                                Stephan Leitner → Wiener Bürgerspital
+                                Stephan Leitner &rsaquo; Wiener Bürgerspital
                             
                         </td>
                         <td class="rel-col-source">
@@ -1441,7 +1522,7 @@
                         <td class="rel-col-label"><em>purger ze Wienn</em></td>
                         <td class="rel-col-perspective">
                             
-                                Stephan Leitner → Wien
+                                Stephan Leitner &rsaquo; Wien
                             
                         </td>
                         <td class="rel-col-source">
@@ -1460,7 +1541,7 @@
                         <td class="rel-col-label"><em>rates der stat ze Wienne</em></td>
                         <td class="rel-col-perspective">
                             
-                                Stephan Leitner → Wien
+                                Stephan Leitner &rsaquo; Wien
                             
                         </td>
                         <td class="rel-col-source">
@@ -1479,7 +1560,7 @@
                         <td class="rel-col-label"><em>spitalmaister</em></td>
                         <td class="rel-col-perspective">
                             
-                                Stephan Leitner → Wiener Bürgerspital
+                                Stephan Leitner &rsaquo; Wiener Bürgerspital
                             
                         </td>
                         <td class="rel-col-source">
@@ -1498,7 +1579,7 @@
                         <td class="rel-col-label"><em>Bürgers</em></td>
                         <td class="rel-col-perspective">
                             
-                                Stephan Leitner → Wien
+                                Stephan Leitner &rsaquo; Wien
                             
                         </td>
                         <td class="rel-col-source">
@@ -1517,7 +1598,7 @@
                         <td class="rel-col-label"><em>Wiener Bürger</em></td>
                         <td class="rel-col-perspective">
                             
-                                Stephan Leitner → Wien
+                                Stephan Leitner &rsaquo; Wien
                             
                         </td>
                         <td class="rel-col-source">
@@ -1536,7 +1617,7 @@
                         <td class="rel-col-label"><em>Ratsherr</em></td>
                         <td class="rel-col-perspective">
                             
-                                Stephan Leitner → Wien
+                                Stephan Leitner &rsaquo; Wien
                             
                         </td>
                         <td class="rel-col-source">
@@ -1555,7 +1636,7 @@
                         <td class="rel-col-label"><em>spitalmaister</em></td>
                         <td class="rel-col-perspective">
                             
-                                Stephan Leitner → Wiener Bürgerspital
+                                Stephan Leitner &rsaquo; Wiener Bürgerspital
                             
                         </td>
                         <td class="rel-col-source">
@@ -1574,7 +1655,7 @@
                         <td class="rel-col-label"><em>Ratsherr</em></td>
                         <td class="rel-col-perspective">
                             
-                                Stephan Leitner → Wien
+                                Stephan Leitner &rsaquo; Wien
                             
                         </td>
                         <td class="rel-col-source">
@@ -1593,7 +1674,7 @@
                         <td class="rel-col-label"><em>rats der stat ze Wienn</em></td>
                         <td class="rel-col-perspective">
                             
-                                Stephan Leitner → Wien
+                                Stephan Leitner &rsaquo; Wien
                             
                         </td>
                         <td class="rel-col-source">
@@ -1612,7 +1693,7 @@
                         <td class="rel-col-label"><em>purger</em></td>
                         <td class="rel-col-perspective">
                             
-                                Stephan Leitner → Wien
+                                Stephan Leitner &rsaquo; Wien
                             
                         </td>
                         <td class="rel-col-source">
@@ -1631,7 +1712,7 @@
                         <td class="rel-col-label"><em>herren</em></td>
                         <td class="rel-col-perspective">
                             
-                                Stephan Leitner → pe__jakob_dorn_QGW_II_I_1378
+                                Stephan Leitner &rsaquo; pe__jakob_dorn_QGW_II_I_1378
                             
                         </td>
                         <td class="rel-col-source">
@@ -1650,7 +1731,7 @@
                         <td class="rel-col-label"><em>herren</em></td>
                         <td class="rel-col-perspective">
                             
-                                Stephan Leitner → pe__jakob_dorn_QGW_II_I_1378
+                                Stephan Leitner &rsaquo; pe__jakob_dorn_QGW_II_I_1378
                             
                         </td>
                         <td class="rel-col-source">
@@ -1669,7 +1750,7 @@
                         <td class="rel-col-label"><em>rats</em></td>
                         <td class="rel-col-perspective">
                             
-                                Stephan Leitner → Wien
+                                Stephan Leitner &rsaquo; Wien
                             
                         </td>
                         <td class="rel-col-source">
@@ -1688,7 +1769,7 @@
                         <td class="rel-col-label"><em>purger ze Wienn</em></td>
                         <td class="rel-col-perspective">
                             
-                                Stephan Leitner → Wien
+                                Stephan Leitner &rsaquo; Wien
                             
                         </td>
                         <td class="rel-col-source">
@@ -1706,18 +1787,32 @@
         
         
         
+        
+        
+        
+        
+        
+        
     </section>
     
 
     
     <section class="person-sources" aria-label="Quellen mit Nennung">
         <h2 class="section-head">Quellen mit Nennung</h2>
-        <table class="person-source-table">
+        
+        <div class="table-filter">
+            <input type="search" class="table-filter-input" data-target="src" placeholder="In den Quellen filtern&hellip;" aria-label="In den Quellen filtern">
+            <span class="table-filter-status"></span>
+        </div>
+        
+        <table class="person-source-table" data-truncate-at="50">
             <thead>
                 <tr>
                     <th scope="col" class="src-col-idno">Nr.</th>
                     <th scope="col" class="src-col-date">Datum</th>
                     <th scope="col" class="src-col-corpus">Quellenkorpus</th>
+                    <th scope="col" class="src-col-label">Bezeichnung</th>
+                    <th scope="col" class="src-col-role">Rolle</th>
                     <th scope="col" class="src-col-regest">Regest</th>
                 </tr>
             </thead>
@@ -1727,6 +1822,11 @@
                     <td class="src-col-idno"><a href="../../documents/QGW/Vienna_1177-1414_ready/584.html">584</a></td>
                     <td class="src-col-date">1361 IV 15</td>
                     <td class="src-col-corpus">QGW II/1 (1177–1414)</td>
+                    <td class="src-col-label"><em>-</em></td>
+                    <td class="src-col-role">
+                        <span class="role-chip role-chip-witness">Zeuge / Siegler*in</span>
+                        
+                    </td>
                     <td class="src-col-regest">Agnes, wittibe Hainreichs wittibe mit den Vassen von Grinzing, Durinch von Velabrunne, Haim von Velabrunne, Gerunch der List von Pru/ederndorf Vettern, Hartman der Gutman daselbens ze Pruderndorf ,…</td>
                 </tr>
             
@@ -1734,6 +1834,11 @@
                     <td class="src-col-idno"><a href="../../documents/QGW/Vienna_1177-1414_ready/655.html">655</a></td>
                     <td class="src-col-date">1365 X 21</td>
                     <td class="src-col-corpus">QGW II/1 (1177–1414)</td>
+                    <td class="src-col-label"><em>-</em></td>
+                    <td class="src-col-role">
+                        <span class="role-chip role-chip-witness">Zeuge / Siegler*in</span>
+                        
+                    </td>
                     <td class="src-col-regest">Engel, hausvrow Stephans hausvrow des Leitner, purger ze Wienne, stiftet Messe die von ihrem früheren Manne Ortolf mit der Gevatterin letztwillig angeordnete Messe in der Kapelle Unser Vrowen in der…</td>
                 </tr>
             
@@ -1741,6 +1846,11 @@
                     <td class="src-col-idno"><a href="../../documents/QGW/Vienna_1177-1414_ready/668.html">668</a></td>
                     <td class="src-col-date">1366 VI 08</td>
                     <td class="src-col-corpus">QGW II/1 (1177–1414)</td>
+                    <td class="src-col-label"><em>hern</em></td>
+                    <td class="src-col-role">
+                        <span class="role-chip role-chip-witness">Zeuge / Siegler*in</span>
+                        
+                    </td>
                     <td class="src-col-regest">Hainreich der Polcz gibt nach dem Gebote Herzog Rudolfs IV. Niclasen von Oedenburch, purger ze Wienne, und seiner Hausfrau Katrein einen Pfenning Grundrechts von ihrer Fleischbank, gelegen under den…</td>
                 </tr>
             
@@ -1748,6 +1858,11 @@
                     <td class="src-col-idno"><a href="../../documents/QGW/Vienna_1177-1414_ready/703.html">703</a></td>
                     <td class="src-col-date">1367 VII 11</td>
                     <td class="src-col-corpus">QGW II/1 (1177–1414)</td>
+                    <td class="src-col-label"><em>-</em></td>
+                    <td class="src-col-role">
+                        <span class="role-chip role-chip-witness">Zeuge / Siegler*in</span>
+                        
+                    </td>
                     <td class="src-col-regest">Jörig der Mair, der riemer, pürger ze Wienne, und Jeut, seine Hausfrau, verkaufen mit Handen des Bürgermeisters hern Thomans des Swembleins und des Rathes der Stadt zu Wien ihr Haus, gelegen bei sand…</td>
                 </tr>
             
@@ -1755,6 +1870,11 @@
                     <td class="src-col-idno"><a href="../../documents/QGW/Vienna_1177-1414_ready/726.html">726</a></td>
                     <td class="src-col-date">1368 IV 21</td>
                     <td class="src-col-corpus">QGW II/1 (1177–1414)</td>
+                    <td class="src-col-label"><em>hern</em></td>
+                    <td class="src-col-role">
+                        <span class="role-chip role-chip-witness">Zeuge / Siegler*in</span>
+                        
+                    </td>
                     <td class="src-col-regest">Brueder Gilig, hauscomiteier, und die pruederschaft gemain dacz dem Daütschen haus ze Wienn geben nach dem Gebote Herzog Rudolfs IV. hern Jacoben dem Chettner, des rates der stat ze Wienn, und seiner…</td>
                 </tr>
             
@@ -1762,6 +1882,11 @@
                     <td class="src-col-idno"><a href="../../documents/QGW/Vienna_1177-1414_ready/765.html">765</a></td>
                     <td class="src-col-date">1369 X 09</td>
                     <td class="src-col-corpus">QGW II/1 (1177–1414)</td>
+                    <td class="src-col-label"><em>-</em></td>
+                    <td class="src-col-role">
+                        
+                        -
+                    </td>
                     <td class="src-col-regest">Jacob der Poll, capellan der capellen Unserr Vrowen in der purger Rathaus ze Wienne, hern Ottenhaimen seligen stiftunge , beurkundet die über sein fahrendes Gut getroffenen letztwilligen Verfügungen.…</td>
                 </tr>
             
@@ -1769,6 +1894,11 @@
                     <td class="src-col-idno"><a href="../../documents/QGW/Vienna_1177-1414_ready/788.html">788</a></td>
                     <td class="src-col-date">1371 III 13</td>
                     <td class="src-col-corpus">QGW II/1 (1177–1414)</td>
+                    <td class="src-col-label"><em>hern</em></td>
+                    <td class="src-col-role">
+                        <span class="role-chip role-chip-witness">Zeuge / Siegler*in</span>
+                        
+                    </td>
                     <td class="src-col-regest">Michel der Gniez/z und Elsbet, seine Hausfrau, verkaufen mit Handen ihres Grundherrn herrn Jansen von Eslaren 2 lb dn. gelts purchrechts, die sie gehabt haben auf der Trautmanninne, der ledrerinne,…</td>
                 </tr>
             
@@ -1776,6 +1906,11 @@
                     <td class="src-col-idno"><a href="../../documents/QGW/Vienna_1177-1414_ready/875.html">875</a></td>
                     <td class="src-col-date">1376 II 09</td>
                     <td class="src-col-corpus">QGW II/1 (1177–1414)</td>
+                    <td class="src-col-label"><em>hern</em></td>
+                    <td class="src-col-role">
+                        <span class="role-chip role-chip-witness">Zeuge / Siegler*in</span>
+                        
+                    </td>
                     <td class="src-col-regest">Chunrat der Posch, purger ze Wienne, und Dorothe, seine Hausfrau, hern Haunolts seligen eninkchel des Schu/echlereninkchel , und Margret, hausvrowe Jannsen hausvrowe des Polcz, des egenanten hern…</td>
                 </tr>
             
@@ -1783,6 +1918,11 @@
                     <td class="src-col-idno"><a href="../../documents/QGW/Vienna_1177-1414_ready/895.html">895</a></td>
                     <td class="src-col-date">1376 XII 18</td>
                     <td class="src-col-corpus">QGW II/1 (1177–1414)</td>
+                    <td class="src-col-label"><em>hern</em></td>
+                    <td class="src-col-role">
+                        <span class="role-chip role-chip-witness">Zeuge / Siegler*in</span>
+                        
+                    </td>
                     <td class="src-col-regest">Jans der Jan, der goldsmit, purger ze Wienn , und Dorothe, seine Hausfrau , geben für 6 lb dn. geltes purchrechts, welche zu der Messe, die Herman, Hainreichs sun, des statschreiber, dem got genad,…</td>
                 </tr>
             
@@ -1790,6 +1930,11 @@
                     <td class="src-col-idno"><a href="../../documents/QGW/Vienna_1177-1414_ready/898.html">898</a></td>
                     <td class="src-col-date">1377 II 01</td>
                     <td class="src-col-corpus">QGW II/1 (1177–1414)</td>
+                    <td class="src-col-label"><em>-</em></td>
+                    <td class="src-col-role">
+                        <span class="role-chip role-chip-recipient">Empfänger*in</span>
+                        
+                    </td>
                     <td class="src-col-regest">Hanns der Pu/osenchofer und Margret, seine Hausfrau , verkaufen mit gesammter Hand: A. aus dem der Margret von ihrem Vater Ulreichen dem Strobein anerstorbenen Gute: 1. mit Handen ihres Bergmeisters…</td>
                 </tr>
             
@@ -1797,6 +1942,11 @@
                     <td class="src-col-idno"><a href="../../documents/QGW/Vienna_1177-1414_ready/928.html">928</a></td>
                     <td class="src-col-date">1378 II 19</td>
                     <td class="src-col-corpus">QGW II/1 (1177–1414)</td>
+                    <td class="src-col-label"><em>hern</em></td>
+                    <td class="src-col-role">
+                        <span class="role-chip role-chip-witness">Zeuge / Siegler*in</span>
+                        
+                    </td>
                     <td class="src-col-regest">Hanns der Stoll und Anna, seine Hausfrau , verkaufen mit Handen ihres Bergherrn pru/eder Giligen, comoteur des hauses dacz dem Deutschenhaus ze Wienn , ihres ledigen Gutes fu/omf viertail Weingarten,…</td>
                 </tr>
             
@@ -1804,6 +1954,11 @@
                     <td class="src-col-idno"><a href="../../documents/QGW/Vienna_1177-1414_ready/946.html">946</a></td>
                     <td class="src-col-date">1378 IX 09</td>
                     <td class="src-col-corpus">QGW II/1 (1177–1414)</td>
+                    <td class="src-col-label"><em>-</em></td>
+                    <td class="src-col-role">
+                        <span class="role-chip role-chip-recipient">Empfänger*in</span>
+                        
+                    </td>
                     <td class="src-col-regest">Janns der Smauz/zz/zer sun, hern Jannsen seligen sun des Smauz/zz/zer , verkauft mit Handen des Bürgermeisters hern Pauln des Holzchouffels und des mit Handen rates gemain der stat ze Wienne den ihm…</td>
                 </tr>
             
@@ -1811,6 +1966,11 @@
                     <td class="src-col-idno"><a href="../../documents/QGW/Vienna_1177-1414_ready/954.html">954</a></td>
                     <td class="src-col-date">1378 XI 13</td>
                     <td class="src-col-corpus">QGW II/1 (1177–1414)</td>
+                    <td class="src-col-label"><em>-</em></td>
+                    <td class="src-col-role">
+                        <span class="role-chip role-chip-recipient">Empfänger*in</span>
+                        
+                    </td>
                     <td class="src-col-regest">* Bischof Albert von Passau genehmigt die von der Gemahlin des Wiener Bürgers Stephan des Leitner , Engela , auf Grund einer letztwilligen Verfügung ihres ersten Mannes Ortolfi, dicti Mit der…</td>
                 </tr>
             
@@ -1818,6 +1978,11 @@
                     <td class="src-col-idno"><a href="../../documents/QGW/Vienna_1177-1414_ready/962.html">962</a></td>
                     <td class="src-col-date">1379 V 28</td>
                     <td class="src-col-corpus">QGW II/1 (1177–1414)</td>
+                    <td class="src-col-label"><em>hern</em></td>
+                    <td class="src-col-role">
+                        <span class="role-chip role-chip-witness">Zeuge / Siegler*in</span>
+                        
+                    </td>
                     <td class="src-col-regest">Hainreich, der messrer, purger ze Wienn , und Anna, seine Hausfrau , verkaufen ihres freien Eigens ein Joch Weingarten, haisset der Raber, gelegen ze Chlaitzing an ainem tail zenechst ainem…</td>
                 </tr>
             
@@ -1825,6 +1990,11 @@
                     <td class="src-col-idno"><a href="../../documents/QGW/Vienna_1177-1414_ready/982.1.html">982.1</a></td>
                     <td class="src-col-date">1380 V 24</td>
                     <td class="src-col-corpus">QGW II/1 (1177–1414)</td>
+                    <td class="src-col-label"><em>Bergherrn|hern</em></td>
+                    <td class="src-col-role">
+                        <span class="role-chip role-chip-other">Sonstige</span><span class="role-chip role-chip-witness">Zeuge / Siegler*in</span>
+                        
+                    </td>
                     <td class="src-col-regest">Chunrat der Leitner, purger ze Wienn , und Katrei, seine Hausfrau , verkaufen mit Handen ihres Bergherrn hern Stephans des Leitner, spitalmaister der purger Spital ze Wienn , ein Joch Weingarten,…</td>
                 </tr>
             
@@ -1832,6 +2002,11 @@
                     <td class="src-col-idno"><a href="../../documents/QGW/Vienna_1177-1414_ready/984.html">984</a></td>
                     <td class="src-col-date">1380 V 31</td>
                     <td class="src-col-corpus">QGW II/1 (1177–1414)</td>
+                    <td class="src-col-label"><em>hern</em></td>
+                    <td class="src-col-role">
+                        <span class="role-chip role-chip-witness">Zeuge / Siegler*in</span>
+                        
+                    </td>
                     <td class="src-col-regest">Mathias der Fo/ercher verschreibt seiner Frau Anna tochter, Hannsen tochter sêlig des Plako/eunleins, zu Morgengabe 32 lb dn. auf seinen zwei Weingärten ze Neundorf, der ainer gelegen ist in dem…</td>
                 </tr>
             
@@ -1839,6 +2014,11 @@
                     <td class="src-col-idno"><a href="../../documents/QGW/Vienna_1177-1414_ready/996.html">996</a></td>
                     <td class="src-col-date">1381 I 11</td>
                     <td class="src-col-corpus">QGW II/1 (1177–1414)</td>
+                    <td class="src-col-label"><em>-</em></td>
+                    <td class="src-col-role">
+                        <span class="role-chip role-chip-witness">Zeuge / Siegler*in</span>
+                        
+                    </td>
                     <td class="src-col-regest">Janns und Albrecht, gepru/eder der Chirichhaimer, bestätigen, von frowe Chunigund witib, Petreins witib des Eisner, ihres lieben Freund lieben Freundes, 60 lb dn., die ihnen dieser vermacht hatte,…</td>
                 </tr>
             
@@ -1846,6 +2026,11 @@
                     <td class="src-col-idno"><a href="../../documents/QGW/Vienna_1177-1414_ready/1012.html">1012</a></td>
                     <td class="src-col-date">1381 IX 26</td>
                     <td class="src-col-corpus">QGW II/1 (1177–1414)</td>
+                    <td class="src-col-label"><em>-</em></td>
+                    <td class="src-col-role">
+                        <span class="role-chip role-chip-issuer">Aussteller*in</span>
+                        
+                    </td>
                     <td class="src-col-regest">Paul der Holzchauffel, purgermaister , Stephan Leitner, obrister spitalmaister, und der rat gemain der stat ze Wienne , bestätigen, dass her Thoman der Swemmel , mit ihnen gesworener des rats, ihrem…</td>
                 </tr>
             
@@ -1853,6 +2038,11 @@
                     <td class="src-col-idno"><a href="../../documents/QGW/Vienna_1177-1414_ready/1032.html">1032</a></td>
                     <td class="src-col-date">1382 VI 04</td>
                     <td class="src-col-corpus">QGW II/1 (1177–1414)</td>
+                    <td class="src-col-label"><em>-</em></td>
+                    <td class="src-col-role">
+                        <span class="role-chip role-chip-other">Sonstige</span>
+                        
+                    </td>
                     <td class="src-col-regest">Marchart von Tirnstain, hofrichter in Osterreich , beurkundet, dass vor ihm in dem hoftaiding ze Wienn Stephan der Leitner, purger ze Wienn und spitalmaister daselbs von des Spitals wegen , mit…</td>
                 </tr>
             
@@ -1860,6 +2050,11 @@
                     <td class="src-col-idno"><a href="../../documents/QGW/Vienna_1177-1414_ready/1035.html">1035</a></td>
                     <td class="src-col-date">1382 VI 30</td>
                     <td class="src-col-corpus">QGW II/1 (1177–1414)</td>
+                    <td class="src-col-label"><em>-</em></td>
+                    <td class="src-col-role">
+                        
+                        -
+                    </td>
                     <td class="src-col-regest">Herzog Albrecht III. stellt einen Schirmbrief aus dem Bürgerspital auf Grund des von dem Landrichter ausgestellten behabbriefs einen Schirmbrief über die Vogtei ze Weigleinstorf aus, welche Chu/onrat…</td>
                 </tr>
             
@@ -1867,6 +2062,11 @@
                     <td class="src-col-idno"><a href="../../documents/QGW/Vienna_1177-1414_ready/1051.html">1051</a></td>
                     <td class="src-col-date">1383 V 27</td>
                     <td class="src-col-corpus">QGW II/1 (1177–1414)</td>
+                    <td class="src-col-label"><em>-</em></td>
+                    <td class="src-col-role">
+                        <span class="role-chip role-chip-issuer">Aussteller*in</span>
+                        
+                    </td>
                     <td class="src-col-regest">Stephan der Leitner, spitalmaister der purger Spital vor Kernertor ze Wienn , verkauft mit Handen des Bürgermeisters hern Pauln des Holzka/euffels und des rates gemain der stat ze Wienn das dem…</td>
                 </tr>
             
@@ -1874,6 +2074,11 @@
                     <td class="src-col-idno"><a href="../../documents/QGW/Vienna_1177-1414_ready/1061.html">1061</a></td>
                     <td class="src-col-date">1384 II 04</td>
                     <td class="src-col-corpus">QGW II/1 (1177–1414)</td>
+                    <td class="src-col-label"><em>hern</em></td>
+                    <td class="src-col-role">
+                        <span class="role-chip role-chip-witness">Zeuge / Siegler*in</span>
+                        
+                    </td>
                     <td class="src-col-regest">Jacob von Tachau, pu/erger ze Wienn, schafft seiner Hausfrau Annen, des Wiersings tochter, folgende Güter: sein Haus, gelegen in der Wolzeil ze Wienn zenast hern Michels haus des Geuchramer ½ Joch…</td>
                 </tr>
             
@@ -1881,6 +2086,11 @@
                     <td class="src-col-idno"><a href="../../documents/QGW/Vienna_1177-1414_ready/1063.html">1063</a></td>
                     <td class="src-col-date">1384 II 22</td>
                     <td class="src-col-corpus">QGW II/1 (1177–1414)</td>
+                    <td class="src-col-label"><em>hern</em></td>
+                    <td class="src-col-role">
+                        <span class="role-chip role-chip-witness">Zeuge / Siegler*in</span>
+                        
+                    </td>
                     <td class="src-col-regest">Peter sun sun, Jannsen seligen, des sneider, sun bei fraun Annen, seiner hausfrawen, die nu Hainreichen den Hu/etstokch hausfrau eleichen genomen hat , verzichtet zu Gunsten seines Stiefvaters auf…</td>
                 </tr>
             
@@ -1888,6 +2098,11 @@
                     <td class="src-col-idno"><a href="../../documents/QGW/Vienna_1177-1414_ready/1088.html">1088</a></td>
                     <td class="src-col-date">1385 V 29</td>
                     <td class="src-col-corpus">QGW II/1 (1177–1414)</td>
+                    <td class="src-col-label"><em>-</em></td>
+                    <td class="src-col-role">
+                        <span class="role-chip role-chip-issuer">Aussteller*in</span><span class="role-chip role-chip-witness">Zeuge / Siegler*in</span>
+                        
+                    </td>
                     <td class="src-col-regest">Stephan der Leitner Ratsherr und Chunrat der Rokk, baid des rates der stat ze Wienn, beurkunden , dass, dass Janns Go/ell, Ludweig Rostauscher, Ulreich Angelpekch,.. der Litschauer und Jans der…</td>
                 </tr>
             
@@ -1895,6 +2110,11 @@
                     <td class="src-col-idno"><a href="../../documents/QGW/Vienna_1177-1414_ready/1089.html">1089</a></td>
                     <td class="src-col-date">1385 VI 09</td>
                     <td class="src-col-corpus">QGW II/1 (1177–1414)</td>
+                    <td class="src-col-label"><em>-</em></td>
+                    <td class="src-col-role">
+                        <span class="role-chip role-chip-other">Sonstige</span><span class="role-chip role-chip-witness">Zeuge / Siegler*in</span>
+                        
+                    </td>
                     <td class="src-col-regest">Diemuet, Chunrats hausvrow, Chunrats des vechter ze Wienn , verkauft mit Handen des Ritters hern Ulreichs des Tumbriczer, amptman des klosters ze Neunburch , ihren Weingarten, den ihr frow Pericht…</td>
                 </tr>
             
@@ -1902,6 +2122,11 @@
                     <td class="src-col-idno"><a href="../../documents/QGW/Vienna_1177-1414_ready/1104.html">1104</a></td>
                     <td class="src-col-date">1386 IV 02</td>
                     <td class="src-col-corpus">QGW II/1 (1177–1414)</td>
+                    <td class="src-col-label"><em>hern</em></td>
+                    <td class="src-col-role">
+                        <span class="role-chip role-chip-witness">Zeuge / Siegler*in</span>
+                        
+                    </td>
                     <td class="src-col-regest">Jacob der Chetner, purger ze Wienn, setzt zur Erbin seines gesammten Besitzes ein seine Hausfrau Agnes zur Erbin seines gesammten Besitzes ein, mit der Bestimmung, dass sie die von ihm…</td>
                 </tr>
             
@@ -1909,6 +2134,11 @@
                     <td class="src-col-idno"><a href="../../documents/QGW/Vienna_1177-1414_ready/1110.html">1110</a></td>
                     <td class="src-col-date">1386 XII 20</td>
                     <td class="src-col-corpus">QGW II/1 (1177–1414)</td>
+                    <td class="src-col-label"><em>hern</em></td>
+                    <td class="src-col-role">
+                        <span class="role-chip role-chip-witness">Zeuge / Siegler*in</span>
+                        
+                    </td>
                     <td class="src-col-regest">Fridreich der Dietram purger und Paul der Peurberger, paid purger ze Wienn, überlassen Otten, dem pader, seiner Hausfrau Alhaiten und ihren Erben die Badstube, genant die Perliebinn, gelegen an ainem…</td>
                 </tr>
             
@@ -1916,6 +2146,11 @@
                     <td class="src-col-idno"><a href="../../documents/QGW/Vienna_1177-1414_ready/1111.html">1111</a></td>
                     <td class="src-col-date">1386 XII 24</td>
                     <td class="src-col-corpus">QGW II/1 (1177–1414)</td>
+                    <td class="src-col-label"><em>hern</em></td>
+                    <td class="src-col-role">
+                        <span class="role-chip role-chip-witness">Zeuge / Siegler*in</span>
+                        
+                    </td>
                     <td class="src-col-regest">Ott, der pader ze Wienn , und Alhait, seine Hausfrau , stellen einen Revers aus über die Leistung des Hofzinses für die Badstube in Urk. no 1110 angeführte Badstube einen Revers aus und setzen zu…</td>
                 </tr>
             
@@ -1923,6 +2158,11 @@
                     <td class="src-col-idno"><a href="../../documents/QGW/Vienna_1177-1414_ready/1123.html">1123</a></td>
                     <td class="src-col-date">1387 VI 20</td>
                     <td class="src-col-corpus">QGW II/1 (1177–1414)</td>
+                    <td class="src-col-label"><em>hern</em></td>
+                    <td class="src-col-role">
+                        <span class="role-chip role-chip-witness">Zeuge / Siegler*in</span>
+                        
+                    </td>
                     <td class="src-col-regest">Hanns der Nezeuger, purger ze Wienn, und Elspet, seine Hausfrau, verkaufen ihres rechten Eigens einen Hof zu Prunn und die secz weingarten hinden daran zenachst dem Cheunspiez/z und sechsthalb…</td>
                 </tr>
             
@@ -1930,6 +2170,11 @@
                     <td class="src-col-idno"><a href="../../documents/QGW/Vienna_1177-1414_ready/1143.html">1143</a></td>
                     <td class="src-col-date">1388 III 09</td>
                     <td class="src-col-corpus">QGW II/1 (1177–1414)</td>
+                    <td class="src-col-label"><em>-</em></td>
+                    <td class="src-col-role">
+                        <span class="role-chip role-chip-witness">Zeuge / Siegler*in</span>
+                        
+                    </td>
                     <td class="src-col-regest">Jans der Tröppl und Pericht, seine Hausfrau , verkaufen mit Handen des Ritters hern Ulreichs des Tumbriczer, amptman des klosters ze Neunburk , ihren Weingarten, gelegen ze Meurling in Neun…</td>
                 </tr>
             
@@ -1937,6 +2182,11 @@
                     <td class="src-col-idno"><a href="../../documents/QGW/Vienna_1177-1414_ready/1153.html">1153</a></td>
                     <td class="src-col-date">1388 VI 26</td>
                     <td class="src-col-corpus">QGW II/1 (1177–1414)</td>
+                    <td class="src-col-label"><em>-</em></td>
+                    <td class="src-col-role">
+                        <span class="role-chip role-chip-witness">Zeuge / Siegler*in</span>
+                        
+                    </td>
                     <td class="src-col-regest">Wolfhart, der chramer von Haimburg, verkauft mit Handen hern Michels des Geuchramer, purgermaister und münzmaister, und des rates gemain der stat ze Wienn den Antheil, den seine Hausfrau Elsbet und…</td>
                 </tr>
             
@@ -1944,6 +2194,11 @@
                     <td class="src-col-idno"><a href="../../documents/QGW/Vienna_1177-1414_ready/1154.html">1154</a></td>
                     <td class="src-col-date">1388 VI 26</td>
                     <td class="src-col-corpus">QGW II/1 (1177–1414)</td>
+                    <td class="src-col-label"><em>-</em></td>
+                    <td class="src-col-role">
+                        <span class="role-chip role-chip-witness">Zeuge / Siegler*in</span>
+                        
+                    </td>
                     <td class="src-col-regest">Wolfhart, der chramer von Haimburg, verkauft mit Handen Hainreichs des Diez/zz/zer, verweser von des edeln herren wegen hern Hannsen von Lichtenstain von Nicolspurg, des hochgeborn fürsten herzog…</td>
                 </tr>
             
@@ -1951,6 +2206,11 @@
                     <td class="src-col-idno"><a href="../../documents/QGW/Vienna_1177-1414_ready/1175.html">1175</a></td>
                     <td class="src-col-date">1389 VI 28</td>
                     <td class="src-col-corpus">QGW II/1 (1177–1414)</td>
+                    <td class="src-col-label"><em>-</em></td>
+                    <td class="src-col-role">
+                        <span class="role-chip role-chip-witness">Zeuge / Siegler*in</span>
+                        
+                    </td>
                     <td class="src-col-regest">Seifrid der Paukker, verweser des hauses dacz sand Marx, das man nennet dacz sand Lasars, und die sundersiechen gemain daselbens verkaufen mit Einwilligung ihres Vogtes Herwarts in der Scheffstrasse…</td>
                 </tr>
             
@@ -1958,6 +2218,11 @@
                     <td class="src-col-idno"><a href="../../documents/QGW/Vienna_1177-1414_ready/1202.html">1202</a></td>
                     <td class="src-col-date">1391 II 27</td>
                     <td class="src-col-corpus">QGW II/1 (1177–1414)</td>
+                    <td class="src-col-label"><em>-</em></td>
+                    <td class="src-col-role">
+                        <span class="role-chip role-chip-witness">Zeuge / Siegler*in</span>
+                        
+                    </td>
                     <td class="src-col-regest">Janns von Strasburg verkauft den ihm von seinem Vetter Otten dem Stullacher anerstorbenen Antheil an dem Hause, gelegen in der Weichenpurkch zenechst Hannsen haus des Spindler, um 10 lb dn. dem…</td>
                 </tr>
             
@@ -1965,6 +2230,11 @@
                     <td class="src-col-idno"><a href="../../documents/QGW/Vienna_1177-1414_ready/1211.html">1211</a></td>
                     <td class="src-col-date">1391 VII 25</td>
                     <td class="src-col-corpus">QGW II/1 (1177–1414)</td>
+                    <td class="src-col-label"><em>-</em></td>
+                    <td class="src-col-role">
+                        <span class="role-chip role-chip-recipient">Empfänger*in</span>
+                        
+                    </td>
                     <td class="src-col-regest">Niclas der Flusthart, purger ze Wienn, verkauft mit Handen hern Michels des Geuchramer, purgermaister und münzmaister, und des rats gemain der stat ze Wienne ein Haus und einen Gewandkeller, was ihm…</td>
                 </tr>
             
@@ -1972,6 +2242,11 @@
                     <td class="src-col-idno"><a href="../../documents/QGW/Vienna_1177-1414_ready/1214.html">1214</a></td>
                     <td class="src-col-date">1391 VIII 14</td>
                     <td class="src-col-corpus">QGW II/1 (1177–1414)</td>
+                    <td class="src-col-label"><em>hern</em></td>
+                    <td class="src-col-role">
+                        <span class="role-chip role-chip-witness">Zeuge / Siegler*in</span>
+                        
+                    </td>
                     <td class="src-col-regest">Ulreich der Reindl, der fleischhakcher, purger ze Wienne, Kathrei, seine Hausfrau, und Thoman, sein Sohn Sohn aus seiner früheren Ehe mit Chunigunden, verkaufen mit gesammter Hand und mit Handen hern…</td>
                 </tr>
             
@@ -1979,6 +2254,11 @@
                     <td class="src-col-idno"><a href="../../documents/QGW/Vienna_1177-1414_ready/1237.html">1237</a></td>
                     <td class="src-col-date">1392 VII 18</td>
                     <td class="src-col-corpus">QGW II/1 (1177–1414)</td>
+                    <td class="src-col-label"><em>hern</em></td>
+                    <td class="src-col-role">
+                        <span class="role-chip role-chip-witness">Zeuge / Siegler*in</span>
+                        
+                    </td>
                     <td class="src-col-regest">Ott der pinter, purger ze Wienne, und Elsbet, seine Hausfrau, verkaufen mit Handen hern Michels des Geuchramer, purgermaister und münzmaister, und des rats gemain der stat ze Wienn 12 sh. dn. geltes…</td>
                 </tr>
             
@@ -1986,6 +2266,11 @@
                     <td class="src-col-idno"><a href="../../documents/QGW/Vienna_1177-1414_ready/1261.html">1261</a></td>
                     <td class="src-col-date">1393 IV 11</td>
                     <td class="src-col-corpus">QGW II/1 (1177–1414)</td>
+                    <td class="src-col-label"><em>-</em></td>
+                    <td class="src-col-role">
+                        <span class="role-chip role-chip-witness">Zeuge / Siegler*in</span>
+                        
+                    </td>
                     <td class="src-col-regest">Paul der Grill von Grinzing bestätigt, dass ihm sein sweher Thoman der Schöndel zu seiner Tochter Hausfrau Elspeten 26 lb dn. Heimsteuer gegeben habe, und verpflichtet sich, diesen Betrag nach…</td>
                 </tr>
             
@@ -1993,6 +2278,11 @@
                     <td class="src-col-idno"><a href="../../documents/QGW/Vienna_1177-1414_ready/1273.html">1273</a></td>
                     <td class="src-col-date">1393 X 08</td>
                     <td class="src-col-corpus">QGW II/1 (1177–1414)</td>
+                    <td class="src-col-label"><em>-</em></td>
+                    <td class="src-col-role">
+                        
+                        -
+                    </td>
                     <td class="src-col-regest">Leupolt der Prenner, Pawel der Virdung, sein swager, anstatt seiner unmündigen Kinder aus seiner Ehe mit fraun Elspeten, Leupolts swester, der got gnad Kathrei, Pauls Tochter Tochter aus derselben…</td>
                 </tr>
             
@@ -2000,6 +2290,11 @@
                     <td class="src-col-idno"><a href="../../documents/QGW/Vienna_1177-1414_ready/1283.html">1283</a></td>
                     <td class="src-col-date">1394 VI 05</td>
                     <td class="src-col-corpus">QGW II/1 (1177–1414)</td>
+                    <td class="src-col-label"><em>-</em></td>
+                    <td class="src-col-role">
+                        <span class="role-chip role-chip-witness">Zeuge / Siegler*in</span>
+                        
+                    </td>
                     <td class="src-col-regest">Jacob der Meusel, purger ze Wienn, und Kathrei, seine Hausfrau, verkaufen mit Handen ihres Bergherrn hern Rudolfs von Tirna ihres rechten Kaufgutes ½ Joch Weingarten, gelegen ze Tobling in dem…</td>
                 </tr>
             
@@ -2007,6 +2302,11 @@
                     <td class="src-col-idno"><a href="../../documents/QGW/Vienna_1177-1414_ready/1287.html">1287</a></td>
                     <td class="src-col-date">1394 VII 17</td>
                     <td class="src-col-corpus">QGW II/1 (1177–1414)</td>
+                    <td class="src-col-label"><em>hern</em></td>
+                    <td class="src-col-role">
+                        <span class="role-chip role-chip-witness">Zeuge / Siegler*in</span>
+                        
+                    </td>
                     <td class="src-col-regest">Maister Thoman, der smid, purger ze Wienn, und Agnes, seine Hausfrau, verkaufen mit Handen hern Michels des Geuchramer, purgermaister und mu/enssmaister, und des rats gemain der stat ze Wienn 2 lb…</td>
                 </tr>
             
@@ -2014,6 +2314,11 @@
                     <td class="src-col-idno"><a href="../../documents/QGW/Vienna_1177-1414_ready/1310.html">1310</a></td>
                     <td class="src-col-date">1395 IX 27</td>
                     <td class="src-col-corpus">QGW II/1 (1177–1414)</td>
+                    <td class="src-col-label"><em>-</em></td>
+                    <td class="src-col-role">
+                        
+                        -
+                    </td>
                     <td class="src-col-regest">Niclas der Würffel schafft 14 lb dn. gelts purkrechts auf der padstuben, die da haisset die Hu/enttin vor Stubentor ze Wienn, und mit Handen seines Sohnes Niclas des Würffels, amptman des chlosters…</td>
                 </tr>
             
@@ -2021,6 +2326,11 @@
                     <td class="src-col-idno"><a href="../../documents/Stadtbuecher/Band_1_1395-1400_ready/54.html">54</a></td>
                     <td class="src-col-date">1396 April 29</td>
                     <td class="src-col-corpus">Stadtbücher Bd. 1 (1395–1400)</td>
+                    <td class="src-col-label"><em>hern|erbern lewten</em></td>
+                    <td class="src-col-role">
+                        <span class="role-chip role-chip-witness">Zeuge / Siegler*in</span>
+                        
+                    </td>
                     <td class="src-col-regest">-</td>
                 </tr>
             
@@ -2028,6 +2338,11 @@
                     <td class="src-col-idno"><a href="../../documents/QGW/Vienna_1177-1414_ready/1341.html">1341</a></td>
                     <td class="src-col-date">1396 VII 22</td>
                     <td class="src-col-corpus">QGW II/1 (1177–1414)</td>
+                    <td class="src-col-label"><em>hern</em></td>
+                    <td class="src-col-role">
+                        <span class="role-chip role-chip-witness">Zeuge / Siegler*in</span>
+                        
+                    </td>
                     <td class="src-col-regest">Fridreich der Dietram, des rates der stat ze Wienn, verkauft mit Handen seines Bergherrn Giligen des Chersperger, Herzog Albrechts türhütter, ¾ Weingarten, gelegen in der Waligris zenechst des…</td>
                 </tr>
             
@@ -2035,6 +2350,11 @@
                     <td class="src-col-idno"><a href="../../documents/QGW/Vienna_1177-1414_ready/1343.html">1343</a></td>
                     <td class="src-col-date">1396 VIII 09</td>
                     <td class="src-col-corpus">QGW II/1 (1177–1414)</td>
+                    <td class="src-col-label"><em>-</em></td>
+                    <td class="src-col-role">
+                        <span class="role-chip role-chip-witness">Zeuge / Siegler*in</span>
+                        
+                    </td>
                     <td class="src-col-regest">Fridreich der Straubinger von Passau verkauft mit Handen Hannsen des Sternekker, herzog Wilhalms und herzog Albrechts amtraan amtraan, seinen Weingarten, gelegen ze Entschestorf und haisset der…</td>
                 </tr>
             
@@ -2042,6 +2362,11 @@
                     <td class="src-col-idno"><a href="../../documents/Stadtbuecher/Band_1_1395-1400_ready/78.html">78</a></td>
                     <td class="src-col-date">1396 August 31</td>
                     <td class="src-col-corpus">Stadtbücher Bd. 1 (1395–1400)</td>
+                    <td class="src-col-label"><em>-</em></td>
+                    <td class="src-col-role">
+                        <span class="role-chip role-chip-witness">Zeuge / Siegler*in</span>
+                        
+                    </td>
                     <td class="src-col-regest">-</td>
                 </tr>
             
@@ -2049,6 +2374,11 @@
                     <td class="src-col-idno"><a href="../../documents/Stadtbuecher/Band_1_1395-1400_ready/95.html">95</a></td>
                     <td class="src-col-date">1396 Dezember 2</td>
                     <td class="src-col-corpus">Stadtbücher Bd. 1 (1395–1400)</td>
+                    <td class="src-col-label"><em>erbern|hern</em></td>
+                    <td class="src-col-role">
+                        <span class="role-chip role-chip-witness">Zeuge / Siegler*in</span>
+                        
+                    </td>
                     <td class="src-col-regest">-</td>
                 </tr>
             
@@ -2056,6 +2386,11 @@
                     <td class="src-col-idno"><a href="../../documents/QGW/Vienna_1177-1414_ready/1359.html">1359</a></td>
                     <td class="src-col-date">1397 II 05</td>
                     <td class="src-col-corpus">QGW II/1 (1177–1414)</td>
+                    <td class="src-col-label"><em>hern</em></td>
+                    <td class="src-col-role">
+                        <span class="role-chip role-chip-witness">Zeuge / Siegler*in</span>
+                        
+                    </td>
                     <td class="src-col-regest">Steffan der Heumader, purger ze Wienne, verkauft mit Handen des Bürgermeisters hern Pauln des Würffels und des rates gemain der stat ze Wienne sein Haus, gelegen bei den Predigern ze Wienn an ainem…</td>
                 </tr>
             
@@ -2063,6 +2398,11 @@
                     <td class="src-col-idno"><a href="../../documents/QGW/Vienna_1177-1414_ready/1364.html">1364</a></td>
                     <td class="src-col-date">1397 IV 28</td>
                     <td class="src-col-corpus">QGW II/1 (1177–1414)</td>
+                    <td class="src-col-label"><em>hern</em></td>
+                    <td class="src-col-role">
+                        <span class="role-chip role-chip-witness">Zeuge / Siegler*in</span>
+                        
+                    </td>
                     <td class="src-col-regest">Jacob, der drechsel, und Anna, seine Hausfrau, verkaufen mit Handen Chunrats des Ramperstorfer, amptman des chlosters ze Neunburg, ½ Joch Weingarten, gelegen in dem Starichantsaigen zenechst der…</td>
                 </tr>
             
@@ -2070,6 +2410,11 @@
                     <td class="src-col-idno"><a href="../../documents/Stadtbuecher/Band_1_1395-1400_ready/207.html">206</a></td>
                     <td class="src-col-date">1397 November 22</td>
                     <td class="src-col-corpus">Stadtbücher Bd. 1 (1395–1400)</td>
+                    <td class="src-col-label"><em>-</em></td>
+                    <td class="src-col-role">
+                        
+                        -
+                    </td>
                     <td class="src-col-regest">pr. mü., Einbr. 2 Zg., Ma (In dez: Item gescheft Hansen des Gastgeben am Steig) Item an phincztag vor sand Kathrein tag kom auch fur den rat fraw Margret, wittibHannsen seligen wittib des Gastgeben…</td>
                 </tr>
             
@@ -2077,6 +2422,11 @@
                     <td class="src-col-idno"><a href="../../documents/Stadtbuecher/Band_1_1395-1400_ready/275.html">276</a></td>
                     <td class="src-col-date">(1398 Juni 7, Wien)</td>
                     <td class="src-col-corpus">Stadtbücher Bd. 1 (1395–1400)</td>
+                    <td class="src-col-label"><em>-</em></td>
+                    <td class="src-col-role">
+                        
+                        -
+                    </td>
                     <td class="src-col-regest">(Indez: Item ain verczeichbrief Michel des Kemmel) (foLI6r) Ich Michel der Kemml, sunWolffharts sun des Kemleins, dem got genad, vergich und tun chund allen den, die den brief lesent oder horent…</td>
                 </tr>
             
@@ -2084,6 +2434,11 @@
                     <td class="src-col-idno"><a href="../../documents/Stadtbuecher/Band_1_1395-1400_ready/306.html">306</a></td>
                     <td class="src-col-date">1398 Oktober 29</td>
                     <td class="src-col-corpus">Stadtbücher Bd. 1 (1395–1400)</td>
+                    <td class="src-col-label"><em>-</em></td>
+                    <td class="src-col-role">
+                        <span class="role-chip role-chip-recipient">Empfänger*in</span>
+                        
+                    </td>
                     <td class="src-col-regest">Einbr. 3 Zg. (Indez: Item notgult Erasm von Mullndorff) (fol.51v) Des nachsten erigtags nach sand Symans und sand Judas tag der zwelfpoten kom fur den rat fraw Angnes, wittibErasms seleigen wittib…</td>
                 </tr>
             
@@ -2091,6 +2446,11 @@
                     <td class="src-col-idno"><a href="../../documents/QGW/Vienna_1177-1414_ready/1424.html">1424</a></td>
                     <td class="src-col-date">1399 V 13</td>
                     <td class="src-col-corpus">QGW II/1 (1177–1414)</td>
+                    <td class="src-col-label"><em>hern</em></td>
+                    <td class="src-col-role">
+                        <span class="role-chip role-chip-witness">Zeuge / Siegler*in</span>
+                        
+                    </td>
                     <td class="src-col-regest">Hainreich von Wirczpurg, der zingiesser, und Luzei, seine Hausfrau, verkaufen mit Handen des Bürgermeisters hern Hannsen des Rogken und des rates gemain der stat ze Wienn 2 ½ lb dn. ablösbaren geltes…</td>
                 </tr>
             
@@ -2098,6 +2458,11 @@
                     <td class="src-col-idno"><a href="../../documents/Stadtbuecher/Band_1_1395-1400_ready/450.html">450</a></td>
                     <td class="src-col-date">1399 November 15</td>
                     <td class="src-col-corpus">Stadtbücher Bd. 1 (1395–1400)</td>
+                    <td class="src-col-label"><em>-</em></td>
+                    <td class="src-col-role">
+                        <span class="role-chip role-chip-witness">Zeuge / Siegler*in</span>
+                        
+                    </td>
                     <td class="src-col-regest">2 Einbr. 2 Zg. (Indez: Item frewntschaft Hansen von Eslarn und des Schuchler) (/01.74 v) Item des nachsten sambcztags nach sand Mertten tag komen fur den ratHanns von Eselarnund Hainreich der…</td>
                 </tr>
             
@@ -2105,6 +2470,11 @@
                     <td class="src-col-idno"><a href="../../documents/Stadtbuecher/Band_1_1395-1400_ready/451.html">451</a></td>
                     <td class="src-col-date">1399 November 15</td>
                     <td class="src-col-corpus">Stadtbücher Bd. 1 (1395–1400)</td>
+                    <td class="src-col-label"><em>-</em></td>
+                    <td class="src-col-role">
+                        <span class="role-chip role-chip-recipient">Empfänger*in</span><span class="role-chip role-chip-other">Sonstige</span>
+                        
+                    </td>
                     <td class="src-col-regest">pr. mü., Einbr. 2 Zg., Ma (Indez: Item gescheft Jacobs des Dorn) Desselben tags kom fur den ratHanns der Kettner und hat da beweist mit den zwayn erbern mannen zu rechter zeit, als er ze recht solt,…</td>
                 </tr>
             
@@ -2112,6 +2482,11 @@
                     <td class="src-col-idno"><a href="../../documents/Stadtbuecher/Band_1_1395-1400_ready/509.html">509</a></td>
                     <td class="src-col-date">1400 Januar 17</td>
                     <td class="src-col-corpus">Stadtbücher Bd. 1 (1395–1400)</td>
+                    <td class="src-col-label"><em>erbern</em></td>
+                    <td class="src-col-role">
+                        <span class="role-chip role-chip-witness">Zeuge / Siegler*in</span>
+                        
+                    </td>
                     <td class="src-col-regest">Einbr. 2 Zg. (Inde:l!: Item frewntschaft Niclass von Eslarn) An sand Anthony tag kam fur den rat Niclas von Eslarn und beweist und pracht mit erbern lewten, als er ze recht seholt, mit erbernStephann…</td>
                 </tr>
             
@@ -2119,6 +2494,11 @@
                     <td class="src-col-idno"><a href="../../documents/QGW/Vienna_1177-1414_ready/1503.html">1503</a></td>
                     <td class="src-col-date">1402 I 20</td>
                     <td class="src-col-corpus">QGW II/1 (1177–1414)</td>
+                    <td class="src-col-label"><em>-</em></td>
+                    <td class="src-col-role">
+                        <span class="role-chip role-chip-witness">Zeuge / Siegler*in</span>
+                        
+                    </td>
                     <td class="src-col-regest">Margret die Polanerin übergibt die Lehenschaft der von ihren Vettern, den vier Brüdern Pogenstainer, hinz sand Marien Magdalen auf sand Marthen altar gestifteten Messe dem Bürgermeister, Richter und…</td>
                 </tr>
             
@@ -2126,6 +2506,11 @@
                     <td class="src-col-idno"><a href="../../documents/QGW/Vienna_1177-1414_ready/1535.html">1535</a></td>
                     <td class="src-col-date">1403 IV 23</td>
                     <td class="src-col-corpus">QGW II/1 (1177–1414)</td>
+                    <td class="src-col-label"><em>hern</em></td>
+                    <td class="src-col-role">
+                        <span class="role-chip role-chip-witness">Zeuge / Siegler*in</span>
+                        
+                    </td>
                     <td class="src-col-regest">Dorothe, hausfrau Niklas hausfrau des Wasservogls, und maister Mair, der Jud ze Wienn, verkaufen mit Handen des Bürgermeisters hern Haunolts des Schu/echler und des rats gemain der stat ze Wienn ein…</td>
                 </tr>
             
@@ -2133,6 +2518,11 @@
                     <td class="src-col-idno"><a href="../../documents/QGW/Vienna_1177-1414_ready/1560.html">1560</a></td>
                     <td class="src-col-date">1403 X 05</td>
                     <td class="src-col-corpus">QGW II/1 (1177–1414)</td>
+                    <td class="src-col-label"><em>-</em></td>
+                    <td class="src-col-role">
+                        <span class="role-chip role-chip-issuer">Aussteller*in</span><span class="role-chip role-chip-witness">Zeuge / Siegler*in</span>
+                        
+                    </td>
                     <td class="src-col-regest">Stephan der Leitner, purger ze Wienn, beurkundet seinen letzten Willen. Er schafft: 1. Bezahlung seiner Schulden 2. rücksichtsvolle Behandlung seiner Schuldner 3. für sein Seelenheil: a) den…</td>
                 </tr>
             
@@ -2165,11 +2555,13 @@
         </div>
     </footer>
 
-    <script src="../../static/js/core.js?v=20260511112948"></script>
-    <script src="../../static/js/provenance.js?v=20260511112948"></script>
-    <script src="../../static/js/basket.js?v=20260511112948"></script>
+    <script src="../../static/js/core.js?v=20260511125458"></script>
+    <script src="../../static/js/tip.js?v=20260511125458"></script>
+    <script src="../../static/js/hint.js?v=20260511125458"></script>
+    <script src="../../static/js/basket.js?v=20260511125458"></script>
     
-<script src="../../static/js/tooltips.js?v=20260511112948"></script>
+<script src="../../static/js/profile.js?v=20260511125458"></script>
+<script src="../../static/js/basket-mount.js?v=20260511125458"></script>
 
 </body>
 </html>

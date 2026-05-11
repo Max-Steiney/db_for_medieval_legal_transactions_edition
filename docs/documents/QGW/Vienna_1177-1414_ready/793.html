@@ -3,21 +3,21 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <meta http-equiv="Content-Security-Policy" content="default-src 'self'; script-src 'self'; style-src 'self'; font-src 'self'; img-src 'self' data: https://images.monasterium.net https://www.monasterium.net; connect-src 'self'; frame-ancestors 'none'; base-uri 'self'; form-action 'self'; upgrade-insecure-requests">
+    <meta http-equiv="Content-Security-Policy" content="default-src 'self'; script-src 'self'; style-src 'self'; font-src 'self'; img-src 'self' data: https://images.monasterium.net https://www.monasterium.net; connect-src 'self'; base-uri 'self'; form-action 'self'; upgrade-insecure-requests">
     <meta name="referrer" content="strict-origin-when-cross-origin">
     <meta http-equiv="Permissions-Policy" content="camera=(), microphone=(), geolocation=(), interest-cohort=()">
     <title>Nr. 793 (1371 VII 08), Datenbank</title>
     <link rel="preload" as="font" type="font/woff2" crossorigin
           href="../../../static/fonts/inter-400-latin.woff2">
-    <link rel="stylesheet" href="../../../static/css/fonts.css?v=20260511112948">
-    <link rel="stylesheet" href="../../../static/css/tokens.css?v=20260511112948">
-    <link rel="stylesheet" href="../../../static/css/base.css?v=20260511112948">
-    <link rel="stylesheet" href="../../../static/css/components.css?v=20260511112948">
-    <link rel="stylesheet" href="../../../static/css/responsive.css?v=20260511112948">
-    <link rel="stylesheet" href="../../../static/css/print.css?v=20260511112948">
-    <link rel="stylesheet" href="../../../static/css/provenance.css?v=20260511112948">
+    <link rel="stylesheet" href="../../../static/css/fonts.css?v=20260511125458">
+    <link rel="stylesheet" href="../../../static/css/tokens.css?v=20260511125458">
+    <link rel="stylesheet" href="../../../static/css/base.css?v=20260511125458">
+    <link rel="stylesheet" href="../../../static/css/components.css?v=20260511125458">
+    <link rel="stylesheet" href="../../../static/css/responsive.css?v=20260511125458">
+    <link rel="stylesheet" href="../../../static/css/print.css?v=20260511125458">
+    <link rel="stylesheet" href="../../../static/css/tip.css?v=20260511125458">
     
-<link rel="stylesheet" href="../../../static/css/document.css?v=20260511112948">
+<link rel="stylesheet" href="../../../static/css/document.css?v=20260511125458">
 <link rel="canonical" href="documents/QGW/Vienna_1177-1414_ready/793.html">
 <meta name="citation_title" content="Nr. 793 (1371 VII 08)">
 <meta name="citation_collection" content="QGW II/1 (1177–1414)">
@@ -50,8 +50,6 @@
         <a href="../../../register/persons.html">Personen</a>
         
         <a href="../../../register/orgs.html">Organisationen</a>
-        
-        <a href="../../../register/places.html">Orte</a>
         
     </div>
 </div>
@@ -93,7 +91,7 @@
     </div>
 </div>
 
-                <a href="../../../korb.html" class="nav-basket" aria-label="Wissenskorb">
+                <a href="../../../korb.html" class="nav-basket" aria-label="Datenkorb">
                     <svg width="18" height="18" viewBox="0 0 18 18" fill="none" aria-hidden="true">
                         <path d="M3 5h12l-1.2 8.5a1 1 0 0 1-1 .85H5.2a1 1 0 0 1-1-.85L3 5z"
                               stroke="currentColor" stroke-width="1.4" fill="none"
@@ -140,7 +138,7 @@
                     
                     <span class="meta-pair">
                         <span class="meta-label">Quelle</span>
-                        <span class="meta-value" title="Quellen zur Geschichte der Stadt Wien, Bd. II/1, Nr. 793">Quellen zur Geschichte der Stadt Wien, Bd. II/1, Nr. 793</span>
+                        <span class="meta-value" data-hint="Quellen zur Geschichte der Stadt Wien, Bd. II/1, Nr. 793">Quellen zur Geschichte der Stadt Wien, Bd. II/1, Nr. 793</span>
                     </span>
                     
                 </div>
@@ -151,7 +149,7 @@
                     
                     <button type="button" class="legend-toggle"
                             data-layer="entities" aria-pressed="true"
-                            title="Entitäten ein-/ausblenden">
+                            data-hint="Entitäten ein-/ausblenden">
                         <span class="legend-toggle-dots">
                             <span class="legend-swatch swatch-person"></span><span class="legend-swatch swatch-org"></span><span class="legend-swatch swatch-place"></span>
                         </span>
@@ -160,7 +158,7 @@
                     
                     <button type="button" class="legend-toggle"
                             data-layer="functions" aria-pressed="true"
-                            title="Funktionsrollen ein-/ausblenden">
+                            data-hint="Funktionsrollen ein-/ausblenden">
                         <span class="legend-toggle-dots">
                             <span class="legend-swatch swatch-fn-issuer"></span><span class="legend-swatch swatch-fn-recipient"></span><span class="legend-swatch swatch-fn-witness"></span>
                         </span>
@@ -169,7 +167,7 @@
                     
                     <button type="button" class="legend-toggle"
                             data-layer="attributes" aria-pressed="true"
-                            title="Attribute ein-/ausblenden">
+                            data-hint="Attribute ein-/ausblenden">
                         <span class="legend-toggle-dots">
                             <span class="legend-swatch swatch-attr"></span><span class="legend-swatch swatch-add"></span>
                         </span>
@@ -178,7 +176,7 @@
                     
                     <button type="button" class="legend-toggle"
                             data-layer="triggers" aria-pressed="true"
-                            title="Dispositivformel ein-/ausblenden">
+                            data-hint="Dispositivformel ein-/ausblenden">
                         <span class="legend-toggle-dots">
                             <span class="legend-swatch swatch-trigger"></span>
                         </span>
@@ -190,21 +188,29 @@
                 <div class="doc-toolbar-actions">
                     <a class="toolbar-btn" href="../../../tei/QGW/Vienna_1177-1414_ready/793.xml"
                        download="793.xml"
-                       aria-label="TEI-XML herunterladen" title="TEI-XML herunterladen"><svg viewBox="0 0 16 16" width="16" height="16" aria-hidden="true"><path fill="none" stroke="currentColor" stroke-width="1.4" stroke-linecap="round" stroke-linejoin="round" d="M8 2v8m0 0l-3-3m3 3l3-3M3 13h10"/></svg></a>
+                       aria-label="TEI-XML herunterladen" data-hint="TEI-XML herunterladen"><svg viewBox="0 0 16 16" width="16" height="16" aria-hidden="true"><path fill="none" stroke="currentColor" stroke-width="1.4" stroke-linecap="round" stroke-linejoin="round" d="M8 2v8m0 0l-3-3m3 3l3-3M3 13h10"/></svg></a>
                     <button class="toolbar-btn" id="cite-toggle" aria-expanded="false"
-                            aria-label="Zitation kopieren" title="Zitation kopieren"><svg viewBox="0 0 16 16" width="16" height="16" aria-hidden="true"><rect x="4" y="2" width="8" height="11" rx="1" fill="none" stroke="currentColor" stroke-width="1.4"/><path d="M6 1.5h4a0.5 0.5 0 0 1 0.5 0.5v1a0.5 0.5 0 0 1-0.5 0.5H6a0.5 0.5 0 0 1-0.5-0.5V2A0.5 0.5 0 0 1 6 1.5z" fill="currentColor"/><path d="M6.5 6.5h3M6.5 8.5h3M6.5 10.5h2" stroke="currentColor" stroke-width="1" stroke-linecap="round"/></svg></button>
+                            aria-label="Zitation kopieren" data-hint="Zitation kopieren"><svg viewBox="0 0 16 16" width="16" height="16" aria-hidden="true"><rect x="4" y="2" width="8" height="11" rx="1" fill="none" stroke="currentColor" stroke-width="1.4"/><path d="M6 1.5h4a0.5 0.5 0 0 1 0.5 0.5v1a0.5 0.5 0 0 1-0.5 0.5H6a0.5 0.5 0 0 1-0.5-0.5V2A0.5 0.5 0 0 1 6 1.5z" fill="currentColor"/><path d="M6.5 6.5h3M6.5 8.5h3M6.5 10.5h2" stroke="currentColor" stroke-width="1" stroke-linecap="round"/></svg></button>
                     <div class="cite-popover hidden" id="cite-popover"></div>
+                    <span class="toolbar-basket-mount"
+                          data-basket-type="source"
+                          data-basket-id="793"
+                          data-basket-label="793"
+                          data-basket-url="documents/QGW/Vienna_1177-1414_ready/793.html"
+                          data-basket-date="1371-07-08"
+                          data-basket-coll="QGW II/1 (1177–1414)"
+                          data-basket-regest=""Nichlas von Raehleinstorf, ein priester , beurkundet, dass er für das Geld, welches er durch den Verkauf dreier von seinem Bruder Fridreich zu einer ewigen Messe in Unser Vrowen chapellen, gelegen…"></span>
                     
 <nav class="doc-paging doc-paging-inline" aria-label="Quellen-Navigation">
     
     <a href="../../../documents/QGW/Vienna_1177-1414_ready/792.html" class="toolbar-btn doc-paging-prev"
        aria-label="Vorherige Quelle: Nr. 792"
-       title="Vorherige Quelle: Nr. 792"><svg viewBox="0 0 16 16" width="16" height="16" aria-hidden="true"><path fill="none" stroke="currentColor" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round" d="M10 3l-5 5 5 5"/></svg></a>
+       data-hint="Vorherige Quelle: Nr. 792"><svg viewBox="0 0 16 16" width="16" height="16" aria-hidden="true"><path fill="none" stroke="currentColor" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round" d="M10 3l-5 5 5 5"/></svg></a>
     
     
     <a href="../../../documents/QGW/Vienna_1177-1414_ready/794.html" class="toolbar-btn doc-paging-next"
        aria-label="Nächste Quelle: Nr. 794"
-       title="Nächste Quelle: Nr. 794"><svg viewBox="0 0 16 16" width="16" height="16" aria-hidden="true"><path fill="none" stroke="currentColor" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round" d="M6 3l5 5-5 5"/></svg></a>
+       data-hint="Nächste Quelle: Nr. 794"><svg viewBox="0 0 16 16" width="16" height="16" aria-hidden="true"><path fill="none" stroke="currentColor" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round" d="M6 3l5 5-5 5"/></svg></a>
     
 </nav>
 
@@ -219,9 +225,9 @@
         <!-- Document body (rendered TEI) -->
         <div class="doc-body">
             <section class="tei-abstract"><h2 class="tei-section-head">Regest</h2><p>
-               <span class="anno-event" data-ref="ev__QGW_II_I_793"><span class="anno-fn anno-fn-issuer" data-role="issuer"><span class="fn-label">Aussteller*in</span>"<a class="anno-person" data-ref="pe__niklas_von_ragelsdorf_QGW_II_I_1107" title="Niklas von Ragelsdorf [pe__niklas_von_ragelsdorf_QGW_II_I_1107]" href="../../../register/persons/pe__niklas_von_ragelsdorf_QGW_II_I_1107.html">Nichlas von Raehleinstorf, ein
-                           <span class="anno-attr anno-attr-prof">priester</span></a></span> , <span class="anno-trigger anno-trigger-disp">beurkundet</span>, dass er für das Geld, <span class="anno-event" data-ref="ev__QGW_II_I_793_men_1">welches er durch den Verkauf dreier von seinem <a class="anno-person" data-ref="pe__friedrich_von_ragelsdorf_QGW_II_I_793" title="Friedrich von Ragelsdorf von Ragelsdorf († 21.01.1351) [pe__friedrich_von_ragelsdorf_QGW_II_I_793]" href="../../../register/persons/pe__friedrich_von_ragelsdorf_QGW_II_I_793.html"><span class="anno-attr anno-attr-kin" data-corresp="pe__niklas_von_ragelsdorf_QGW_II_I_1107">Bruder</span> Fridreich</a> zu
-                     einer ewigen <a class="anno-org" data-ref="org__wien-st_maria_im_rathaus-messe_friedrich_von_ragelsdorf" title="Messe Friedrich von Ragelsdorf (Messe) [org__wien-st_maria_im_rathaus-messe_friedrich_von_ragelsdorf]" href="../../../register/orgs/org__wien-st_maria_im_rathaus-messe_friedrich_von_ragelsdorf.html">Messe in Unser Vrowen chapellen, gelegen in der purger Rathaus ze
+               <span class="anno-event" data-ref="ev__QGW_II_I_793"><span class="anno-fn anno-fn-issuer" data-role="issuer"><span class="fn-label">Aussteller*in</span>"<a class="anno-person" data-ref="pe__niklas_von_ragelsdorf_QGW_II_I_1107" data-hint="Niklas von Ragelsdorf [pe__niklas_von_ragelsdorf_QGW_II_I_1107]" data-hint-type="Person" href="../../../register/persons/pe__niklas_von_ragelsdorf_QGW_II_I_1107.html">Nichlas von Raehleinstorf, ein
+                           <span class="anno-attr anno-attr-prof">priester</span></a></span> , <span class="anno-trigger anno-trigger-disp">beurkundet</span>, dass er für das Geld, <span class="anno-event" data-ref="ev__QGW_II_I_793_men_1">welches er durch den Verkauf dreier von seinem <a class="anno-person" data-ref="pe__friedrich_von_ragelsdorf_QGW_II_I_793" data-hint="Friedrich von Ragelsdorf von Ragelsdorf († 21.01.1351) [pe__friedrich_von_ragelsdorf_QGW_II_I_793]" data-hint-type="Person" href="../../../register/persons/pe__friedrich_von_ragelsdorf_QGW_II_I_793.html"><span class="anno-attr anno-attr-kin" data-corresp="pe__niklas_von_ragelsdorf_QGW_II_I_1107">Bruder</span> Fridreich</a> zu
+                     einer ewigen <a class="anno-org" data-ref="org__wien-st_maria_im_rathaus-messe_friedrich_von_ragelsdorf" data-hint="Messe Friedrich von Ragelsdorf (Messe) [org__wien-st_maria_im_rathaus-messe_friedrich_von_ragelsdorf]" data-hint-type="Organisation" href="../../../register/orgs/org__wien-st_maria_im_rathaus-messe_friedrich_von_ragelsdorf.html">Messe in Unser Vrowen chapellen, gelegen in der purger Rathaus ze
                         Wienne, hern Otten Haimen sêligen Stiftung</a>, geschafften Weingärten erhalten
                      hatte</span>, folgendes Gut <span class="anno-trigger anno-trigger-disp">angekauft habe</span>: a)
                      <span class="anno-event" data-ref="ev__QGW_II_I_793_men_2">sibenthalb lb dn. geltes purchrechts, wovon 5 lb
@@ -234,18 +240,18 @@
                      Otakchrinne ouf der Chalichgrueb, zenêchst Dietreichs weingarten des
                      Notchaufs.</span> Für dieses Gut habe er bislang die Messe gelesen da es aber
                   für die Bestellung eines eigenen Kaplans nicht ausreiche, so habe er es <span class="anno-fn anno-fn-other" data-role="other"><span class="fn-label">Sonstige</span><span class="anno-trigger anno-trigger-fn">nach Rath</span>
-                     <a class="anno-person" data-ref="pe__niklas_stainer_QGW_II_I_1014" title="Niklas Stainer († 14.11.1397) [pe__niklas_stainer_QGW_II_I_1014]" href="../../../register/persons/pe__niklas_stainer_QGW_II_I_1014.html"><span class="anno-attr anno-attr-title">hern</span> Niclas des Stainer, bischof Albrechts von Paz/zz/zowe
+                     <a class="anno-person" data-ref="pe__niklas_stainer_QGW_II_I_1014" data-hint="Niklas Stainer († 14.11.1397) [pe__niklas_stainer_QGW_II_I_1014]" data-hint-type="Person" href="../../../register/persons/pe__niklas_stainer_QGW_II_I_1014.html"><span class="anno-attr anno-attr-title">hern</span> Niclas des Stainer, bischof Albrechts von Paz/zz/zowe
                            <span class="anno-attr anno-attr-occ" data-corresp="pe__albrecht_bischof_von_passau_QGW_II_I_1007">official</span> in geistleichen sachen in Österreich</a></span>, <span class="anno-fn anno-fn-other" data-role="other"><span class="fn-label">Sonstige</span>
-                     <span class="tei-add">nach Rath</span> des <a class="anno-person" data-ref="pe__jakob_poll_QGW_II_I_770" title="Jakob Poll [pe__jakob_poll_QGW_II_I_770]" href="../../../register/persons/pe__jakob_poll_QGW_II_I_770.html">
+                     <span class="tei-add">nach Rath</span> des <a class="anno-person" data-ref="pe__jakob_poll_QGW_II_I_770" data-hint="Jakob Poll [pe__jakob_poll_QGW_II_I_770]" data-hint-type="Person" href="../../../register/persons/pe__jakob_poll_QGW_II_I_770.html">
                            <span class="anno-attr anno-attr-occ" data-corresp="org__wien-st_maria_im_rathaus">obersten Kaplans</span>
                         <span class="anno-attr anno-attr-title">hern</span> Jacobs des Pollen</a></span> und <span class="anno-fn anno-fn-other" data-role="other"><span class="fn-label">Sonstige</span><span class="anno-trigger anno-trigger-fn">im Einverständnisse</span> mit
-                     dem <a class="anno-person" data-ref="pe__thomas_swaeml_QGW_II_I_1012" title="Thomas Swaeml († 15.02.1397) [pe__thomas_swaeml_QGW_II_I_1012]" href="../../../register/persons/pe__thomas_swaeml_QGW_II_I_1012.html"><span class="anno-attr anno-attr-occ" data-corresp="org__wien">Bürgermeister</span>
+                     dem <a class="anno-person" data-ref="pe__thomas_swaeml_QGW_II_I_1012" data-hint="Thomas Swaeml († 15.02.1397) [pe__thomas_swaeml_QGW_II_I_1012]" data-hint-type="Person" href="../../../register/persons/pe__thomas_swaeml_QGW_II_I_1012.html"><span class="anno-attr anno-attr-occ" data-corresp="org__wien">Bürgermeister</span>
                         <span class="anno-attr anno-attr-title">hern</span> Thoman dem Swêmmlein <span class="tei-add">als
-                              <span class="anno-attr anno-attr-occ" data-corresp="org__wien-st_maria_im_rathaus-messe_reicholf">Lehensherr</span></span></a></span> und <span class="anno-fn anno-fn-other" data-role="other"><span class="fn-label">Sonstige</span><span class="anno-trigger anno-trigger-fn"><span class="tei-add">im Einverständnisse</span></span> dem <a class="anno-org" data-ref="org__wien" title="Wien (Stadt) [org__wien]" href="../../../register/orgs/org__wien.html"> Rathe als Lehensherren</a> der
+                              <span class="anno-attr anno-attr-occ" data-corresp="org__wien-st_maria_im_rathaus-messe_reicholf">Lehensherr</span></span></a></span> und <span class="anno-fn anno-fn-other" data-role="other"><span class="fn-label">Sonstige</span><span class="anno-trigger anno-trigger-fn"><span class="tei-add">im Einverständnisse</span></span> dem <a class="anno-org" data-ref="org__wien" data-hint="Wien (Stadt) [org__wien]" data-hint-type="Organisation" href="../../../register/orgs/org__wien.html"> Rathe als Lehensherren</a> der
                      Messe</span>
-                  <span class="anno-fn anno-fn-recipient" data-role="recipient"><span class="fn-label">Empfänger*in</span>zu der gleichfalls nicht genügend dotierten <a class="anno-org" data-ref="org__wien-st_maria_im_rathaus-messe_reicholf" title="Reicholfsche Messstiftung (Messe) [org__wien-st_maria_im_rathaus-messe_reicholf]" href="../../../register/orgs/org__wien-st_maria_im_rathaus-messe_reicholf.html">Messe</a></span>
+                  <span class="anno-fn anno-fn-recipient" data-role="recipient"><span class="fn-label">Empfänger*in</span>zu der gleichfalls nicht genügend dotierten <a class="anno-org" data-ref="org__wien-st_maria_im_rathaus-messe_reicholf" data-hint="Reicholfsche Messstiftung (Messe) [org__wien-st_maria_im_rathaus-messe_reicholf]" data-hint-type="Organisation" href="../../../register/orgs/org__wien-st_maria_im_rathaus-messe_reicholf.html">Messe</a></span>
                   <span class="anno-trigger anno-trigger-disp">gegeben</span>, <span class="anno-event" data-ref="ev__QGW_II_I_793_men_3">die sein
-                        <a class="anno-person" data-ref="pe__siegfried_reicholf_QGW_II_I_1242" title="Siegfried Reicholf in der Schlagstube († 03.11.1376) [pe__siegfried_reicholf_QGW_II_I_1242]" href="../../../register/persons/pe__siegfried_reicholf_QGW_II_I_1242.html"><span class="anno-attr anno-attr-kin" data-corresp="pe__niklas_von_ragelsdorf_QGW_II_I_1107">Oheim</span>
+                        <a class="anno-person" data-ref="pe__siegfried_reicholf_QGW_II_I_1242" data-hint="Siegfried Reicholf in der Schlagstube († 03.11.1376) [pe__siegfried_reicholf_QGW_II_I_1242]" data-hint-type="Person" href="../../../register/persons/pe__siegfried_reicholf_QGW_II_I_1242.html"><span class="anno-attr anno-attr-kin" data-corresp="pe__niklas_von_ragelsdorf_QGW_II_I_1107">Oheim</span>
                         <span class="anno-attr anno-attr-title">her</span> Seifrit der Reicholf <span class="anno-attr anno-attr-dead">sêliger</span></a> in dieselbe Kapelle gestiftet hat.
                      Herr Seifried habe dazu 10 lb dn. geltes purchrechts gewidmet, von denen 5 lb
                      dn. auf seiner Kinder Haus, das da leit an dem Chienmarkcht ze Wienne zenêchst
@@ -253,8 +259,8 @@
                      Hauses liegen, das des Roten Piligreims gewesen ist, gelegen in der Hindern (!)
                      Pekchenstrasse zenechst hern Michels haus des Vierdungs</span>.</span>
             </p></section><section class="tei-seal"><h2 class="tei-section-head">Siegelbeschreibung</h2><p><span class="anno-event" data-ref="ev__QGW_II_I_793"><span class="anno-fn anno-fn-witness" data-role="witness"><span class="fn-label">Zeug*in</span>Besiegelt mit
-                     den Siegeln: 1. des <a class="anno-person" data-ref="pe__niklas_stainer_QGW_II_I_1014" title="Niklas Stainer († 14.11.1397) [pe__niklas_stainer_QGW_II_I_1014]" href="../../../register/persons/pe__niklas_stainer_QGW_II_I_1014.html">officialampts</a>, 2. <a class="anno-person" data-ref="pe__jakob_poll_QGW_II_I_770" title="Jakob Poll [pe__jakob_poll_QGW_II_I_770]" href="../../../register/persons/pe__jakob_poll_QGW_II_I_770.html"><span class="anno-attr anno-attr-title">hern</span> Jacobs des Pollen</a>, 3. <a class="anno-person" data-ref="pe__thomas_swaeml_QGW_II_I_1012" title="Thomas Swaeml († 15.02.1397) [pe__thomas_swaeml_QGW_II_I_1012]" href="../../../register/persons/pe__thomas_swaeml_QGW_II_I_1012.html"><span class="anno-attr anno-attr-title">hern</span> Thomans des
-                        Swêmmleins</a>, 4. <a class="anno-person" data-ref="pe__ulrich_poll_QGW_II_I_1167" title="Ulrich Poll [pe__ulrich_poll_QGW_II_I_1167]" href="../../../register/persons/pe__ulrich_poll_QGW_II_I_1167.html"><span class="anno-attr anno-attr-title">hern</span> Ulreichs des Pollen,<span class="anno-attr anno-attr-occ" data-corresp="org__wien"> des rats der stat ze
+                     den Siegeln: 1. des <a class="anno-person" data-ref="pe__niklas_stainer_QGW_II_I_1014" data-hint="Niklas Stainer († 14.11.1397) [pe__niklas_stainer_QGW_II_I_1014]" data-hint-type="Person" href="../../../register/persons/pe__niklas_stainer_QGW_II_I_1014.html">officialampts</a>, 2. <a class="anno-person" data-ref="pe__jakob_poll_QGW_II_I_770" data-hint="Jakob Poll [pe__jakob_poll_QGW_II_I_770]" data-hint-type="Person" href="../../../register/persons/pe__jakob_poll_QGW_II_I_770.html"><span class="anno-attr anno-attr-title">hern</span> Jacobs des Pollen</a>, 3. <a class="anno-person" data-ref="pe__thomas_swaeml_QGW_II_I_1012" data-hint="Thomas Swaeml († 15.02.1397) [pe__thomas_swaeml_QGW_II_I_1012]" data-hint-type="Person" href="../../../register/persons/pe__thomas_swaeml_QGW_II_I_1012.html"><span class="anno-attr anno-attr-title">hern</span> Thomans des
+                        Swêmmleins</a>, 4. <a class="anno-person" data-ref="pe__ulrich_poll_QGW_II_I_1167" data-hint="Ulrich Poll [pe__ulrich_poll_QGW_II_I_1167]" data-hint-type="Person" href="../../../register/persons/pe__ulrich_poll_QGW_II_I_1167.html"><span class="anno-attr anno-attr-title">hern</span> Ulreichs des Pollen,<span class="anno-attr anno-attr-occ" data-corresp="org__wien"> des rats der stat ze
                   Wienne</span></a>.</span></span>
             </p></section><section class="tei-nota"><h2 class="tei-section-head">Indorsat / Nota</h2><p></p></section>
 
@@ -314,7 +320,7 @@
          dem TEI in mehreren Untertabellen, Personen/Orgs/Orte,
          Ereignisse, Dispositivformeln, Editorische Ergaenzungen. Wird
          per JS aus den entsprechenden Spans im Body aufgebaut. -->
-    <section class="annotations-view" id="factoid-view" aria-label="Annotationen">
+    <section class="annotations-view" id="annotations-view" aria-label="Annotationen">
         <header class="annotations-header">
             <h2 class="annotations-title">Annotationen</h2>
             <span class="annotations-summary"></span>
@@ -360,13 +366,14 @@
         </div>
     </footer>
 
-    <script src="../../../static/js/core.js?v=20260511112948"></script>
-    <script src="../../../static/js/provenance.js?v=20260511112948"></script>
-    <script src="../../../static/js/basket.js?v=20260511112948"></script>
+    <script src="../../../static/js/core.js?v=20260511125458"></script>
+    <script src="../../../static/js/tip.js?v=20260511125458"></script>
+    <script src="../../../static/js/hint.js?v=20260511125458"></script>
+    <script src="../../../static/js/basket.js?v=20260511125458"></script>
     
-<script src="../../../static/js/tooltips.js?v=20260511112948"></script>
-<script src="../../../static/js/facsimile.js?v=20260511112948"></script>
-<script src="../../../static/js/document.js?v=20260511112948"></script>
+<script src="../../../static/js/facsimile.js?v=20260511125458"></script>
+<script src="../../../static/js/document.js?v=20260511125458"></script>
+<script src="../../../static/js/basket-mount.js?v=20260511125458"></script>
 
 </body>
 </html>

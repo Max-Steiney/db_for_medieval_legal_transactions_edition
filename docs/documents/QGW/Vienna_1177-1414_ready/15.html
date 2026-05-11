@@ -3,21 +3,21 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <meta http-equiv="Content-Security-Policy" content="default-src 'self'; script-src 'self'; style-src 'self'; font-src 'self'; img-src 'self' data: https://images.monasterium.net https://www.monasterium.net; connect-src 'self'; frame-ancestors 'none'; base-uri 'self'; form-action 'self'; upgrade-insecure-requests">
+    <meta http-equiv="Content-Security-Policy" content="default-src 'self'; script-src 'self'; style-src 'self'; font-src 'self'; img-src 'self' data: https://images.monasterium.net https://www.monasterium.net; connect-src 'self'; base-uri 'self'; form-action 'self'; upgrade-insecure-requests">
     <meta name="referrer" content="strict-origin-when-cross-origin">
     <meta http-equiv="Permissions-Policy" content="camera=(), microphone=(), geolocation=(), interest-cohort=()">
     <title>Nr. 15 (= Privil. Nr. 1) (1281 VII 24), Datenbank</title>
     <link rel="preload" as="font" type="font/woff2" crossorigin
           href="../../../static/fonts/inter-400-latin.woff2">
-    <link rel="stylesheet" href="../../../static/css/fonts.css?v=20260511112948">
-    <link rel="stylesheet" href="../../../static/css/tokens.css?v=20260511112948">
-    <link rel="stylesheet" href="../../../static/css/base.css?v=20260511112948">
-    <link rel="stylesheet" href="../../../static/css/components.css?v=20260511112948">
-    <link rel="stylesheet" href="../../../static/css/responsive.css?v=20260511112948">
-    <link rel="stylesheet" href="../../../static/css/print.css?v=20260511112948">
-    <link rel="stylesheet" href="../../../static/css/provenance.css?v=20260511112948">
+    <link rel="stylesheet" href="../../../static/css/fonts.css?v=20260511125458">
+    <link rel="stylesheet" href="../../../static/css/tokens.css?v=20260511125458">
+    <link rel="stylesheet" href="../../../static/css/base.css?v=20260511125458">
+    <link rel="stylesheet" href="../../../static/css/components.css?v=20260511125458">
+    <link rel="stylesheet" href="../../../static/css/responsive.css?v=20260511125458">
+    <link rel="stylesheet" href="../../../static/css/print.css?v=20260511125458">
+    <link rel="stylesheet" href="../../../static/css/tip.css?v=20260511125458">
     
-<link rel="stylesheet" href="../../../static/css/document.css?v=20260511112948">
+<link rel="stylesheet" href="../../../static/css/document.css?v=20260511125458">
 <link rel="canonical" href="documents/QGW/Vienna_1177-1414_ready/15.html">
 <meta name="citation_title" content="Nr. 15 (= Privil. Nr. 1) (1281 VII 24)">
 <meta name="citation_collection" content="QGW II/1 (1177–1414)">
@@ -50,8 +50,6 @@
         <a href="../../../register/persons.html">Personen</a>
         
         <a href="../../../register/orgs.html">Organisationen</a>
-        
-        <a href="../../../register/places.html">Orte</a>
         
     </div>
 </div>
@@ -93,7 +91,7 @@
     </div>
 </div>
 
-                <a href="../../../korb.html" class="nav-basket" aria-label="Wissenskorb">
+                <a href="../../../korb.html" class="nav-basket" aria-label="Datenkorb">
                     <svg width="18" height="18" viewBox="0 0 18 18" fill="none" aria-hidden="true">
                         <path d="M3 5h12l-1.2 8.5a1 1 0 0 1-1 .85H5.2a1 1 0 0 1-1-.85L3 5z"
                               stroke="currentColor" stroke-width="1.4" fill="none"
@@ -140,7 +138,7 @@
                     
                     <span class="meta-pair">
                         <span class="meta-label">Quelle</span>
-                        <span class="meta-value" title="Quellen zur Geschichte der Stadt Wien, Bd. II/1, Nr. 15 (= Privil. Nr. 1)">Quellen zur Geschichte der Stadt Wien, Bd. II/1, Nr. 15 (= Privil. Nr. 1)</span>
+                        <span class="meta-value" data-hint="Quellen zur Geschichte der Stadt Wien, Bd. II/1, Nr. 15 (= Privil. Nr. 1)">Quellen zur Geschichte der Stadt Wien, Bd. II/1, Nr. 15 (= Privil. Nr. 1)</span>
                     </span>
                     
                 </div>
@@ -151,7 +149,7 @@
                     
                     <button type="button" class="legend-toggle"
                             data-layer="entities" aria-pressed="true"
-                            title="Entitäten ein-/ausblenden">
+                            data-hint="Entitäten ein-/ausblenden">
                         <span class="legend-toggle-dots">
                             <span class="legend-swatch swatch-person"></span><span class="legend-swatch swatch-org"></span><span class="legend-swatch swatch-place"></span>
                         </span>
@@ -160,7 +158,7 @@
                     
                     <button type="button" class="legend-toggle"
                             data-layer="functions" aria-pressed="true"
-                            title="Funktionsrollen ein-/ausblenden">
+                            data-hint="Funktionsrollen ein-/ausblenden">
                         <span class="legend-toggle-dots">
                             <span class="legend-swatch swatch-fn-issuer"></span><span class="legend-swatch swatch-fn-recipient"></span><span class="legend-swatch swatch-fn-witness"></span>
                         </span>
@@ -169,7 +167,7 @@
                     
                     <button type="button" class="legend-toggle"
                             data-layer="attributes" aria-pressed="true"
-                            title="Attribute ein-/ausblenden">
+                            data-hint="Attribute ein-/ausblenden">
                         <span class="legend-toggle-dots">
                             <span class="legend-swatch swatch-attr"></span><span class="legend-swatch swatch-add"></span>
                         </span>
@@ -178,7 +176,7 @@
                     
                     <button type="button" class="legend-toggle"
                             data-layer="triggers" aria-pressed="true"
-                            title="Dispositivformel ein-/ausblenden">
+                            data-hint="Dispositivformel ein-/ausblenden">
                         <span class="legend-toggle-dots">
                             <span class="legend-swatch swatch-trigger"></span>
                         </span>
@@ -190,21 +188,29 @@
                 <div class="doc-toolbar-actions">
                     <a class="toolbar-btn" href="../../../tei/QGW/Vienna_1177-1414_ready/15.xml"
                        download="15 (= Privil. Nr. 1).xml"
-                       aria-label="TEI-XML herunterladen" title="TEI-XML herunterladen"><svg viewBox="0 0 16 16" width="16" height="16" aria-hidden="true"><path fill="none" stroke="currentColor" stroke-width="1.4" stroke-linecap="round" stroke-linejoin="round" d="M8 2v8m0 0l-3-3m3 3l3-3M3 13h10"/></svg></a>
+                       aria-label="TEI-XML herunterladen" data-hint="TEI-XML herunterladen"><svg viewBox="0 0 16 16" width="16" height="16" aria-hidden="true"><path fill="none" stroke="currentColor" stroke-width="1.4" stroke-linecap="round" stroke-linejoin="round" d="M8 2v8m0 0l-3-3m3 3l3-3M3 13h10"/></svg></a>
                     <button class="toolbar-btn" id="cite-toggle" aria-expanded="false"
-                            aria-label="Zitation kopieren" title="Zitation kopieren"><svg viewBox="0 0 16 16" width="16" height="16" aria-hidden="true"><rect x="4" y="2" width="8" height="11" rx="1" fill="none" stroke="currentColor" stroke-width="1.4"/><path d="M6 1.5h4a0.5 0.5 0 0 1 0.5 0.5v1a0.5 0.5 0 0 1-0.5 0.5H6a0.5 0.5 0 0 1-0.5-0.5V2A0.5 0.5 0 0 1 6 1.5z" fill="currentColor"/><path d="M6.5 6.5h3M6.5 8.5h3M6.5 10.5h2" stroke="currentColor" stroke-width="1" stroke-linecap="round"/></svg></button>
+                            aria-label="Zitation kopieren" data-hint="Zitation kopieren"><svg viewBox="0 0 16 16" width="16" height="16" aria-hidden="true"><rect x="4" y="2" width="8" height="11" rx="1" fill="none" stroke="currentColor" stroke-width="1.4"/><path d="M6 1.5h4a0.5 0.5 0 0 1 0.5 0.5v1a0.5 0.5 0 0 1-0.5 0.5H6a0.5 0.5 0 0 1-0.5-0.5V2A0.5 0.5 0 0 1 6 1.5z" fill="currentColor"/><path d="M6.5 6.5h3M6.5 8.5h3M6.5 10.5h2" stroke="currentColor" stroke-width="1" stroke-linecap="round"/></svg></button>
                     <div class="cite-popover hidden" id="cite-popover"></div>
+                    <span class="toolbar-basket-mount"
+                          data-basket-type="source"
+                          data-basket-id="15 (= Privil. Nr. 1)"
+                          data-basket-label="15 (= Privil. Nr. 1)"
+                          data-basket-url="documents/QGW/Vienna_1177-1414_ready/15.html"
+                          data-basket-date="1281-07-24"
+                          data-basket-coll="QGW II/1 (1177–1414)"
+                          data-basket-regest="Albrecht, Graf von Habsburg und Kyburg, Landgraf von Elsass, gewaltiger und gemeiner Verweser über Oesterreich und Steyr, beurkundet, dass er nach der Abreise seines Vaters, des römischen Königs…"></span>
                     
 <nav class="doc-paging doc-paging-inline" aria-label="Quellen-Navigation">
     
     <a href="../../../documents/QGW/Vienna_1177-1414_ready/14.html" class="toolbar-btn doc-paging-prev"
        aria-label="Vorherige Quelle: Nr. 14"
-       title="Vorherige Quelle: Nr. 14"><svg viewBox="0 0 16 16" width="16" height="16" aria-hidden="true"><path fill="none" stroke="currentColor" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round" d="M10 3l-5 5 5 5"/></svg></a>
+       data-hint="Vorherige Quelle: Nr. 14"><svg viewBox="0 0 16 16" width="16" height="16" aria-hidden="true"><path fill="none" stroke="currentColor" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round" d="M10 3l-5 5 5 5"/></svg></a>
     
     
     <a href="../../../documents/QGW/Vienna_1177-1414_ready/16.html" class="toolbar-btn doc-paging-next"
        aria-label="Nächste Quelle: Nr. 16"
-       title="Nächste Quelle: Nr. 16"><svg viewBox="0 0 16 16" width="16" height="16" aria-hidden="true"><path fill="none" stroke="currentColor" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round" d="M6 3l5 5-5 5"/></svg></a>
+       data-hint="Nächste Quelle: Nr. 16"><svg viewBox="0 0 16 16" width="16" height="16" aria-hidden="true"><path fill="none" stroke="currentColor" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round" d="M6 3l5 5-5 5"/></svg></a>
     
 </nav>
 
@@ -220,38 +226,38 @@
         <div class="doc-body">
             
          <section class="tei-abstract"><h2 class="tei-section-head">Regest</h2>
-            <p><span class="anno-event" data-ref="ev__QGW_II_I_15"><span class="anno-fn anno-fn-issuer" data-role="issuer"><span class="fn-label">Aussteller*in</span><a class="anno-person" data-ref="pe__albrecht_i_QGW_II_I_16b" title="Albrecht [pe__albrecht_i_QGW_II_I_16b]" href="../../../register/persons/pe__albrecht_i_QGW_II_I_16b.html">Albrecht, <span class="anno-attr anno-attr-title">Graf</span> von Habsburg und Kyburg, <span class="anno-attr anno-attr-title">Landgraf</span> von Elsass, gewaltiger und gemeiner <span class="anno-attr anno-attr-occ" data-corresp="org__oesterreich-herzogtum">Verweser</span> über
+            <p><span class="anno-event" data-ref="ev__QGW_II_I_15"><span class="anno-fn anno-fn-issuer" data-role="issuer"><span class="fn-label">Aussteller*in</span><a class="anno-person" data-ref="pe__albrecht_i_QGW_II_I_16b" data-hint="Albrecht [pe__albrecht_i_QGW_II_I_16b]" data-hint-type="Person" href="../../../register/persons/pe__albrecht_i_QGW_II_I_16b.html">Albrecht, <span class="anno-attr anno-attr-title">Graf</span> von Habsburg und Kyburg, <span class="anno-attr anno-attr-title">Landgraf</span> von Elsass, gewaltiger und gemeiner <span class="anno-attr anno-attr-occ" data-corresp="org__oesterreich-herzogtum">Verweser</span> über
                         Oesterreich und Steyr</a></span>, <span class="anno-trigger anno-trigger-disp">beurkundet</span>, dass er nach der Abreise seines Vaters, des römischen
                   Königs Rudolf, der ihm volle Gewalt und Stellvertretung über Oesterreich und Steyr
                   übergeben hatte, <span class="anno-fn anno-fn-other" data-role="other"><span class="fn-label">Sonstige</span>mit seinem geschworenen Rathe, den
-                     Landherren: <a class="anno-person" data-ref="pe__bernhard_von_schaumberg_QGW_II_I_15" title="Bernhard von Schaumberg [pe__bernhard_von_schaumberg_QGW_II_I_15]" href="../../../register/persons/pe__bernhard_von_schaumberg_QGW_II_I_15.html">Wernhart von Schowenberch</a>
-                     <a class="anno-person" data-ref="pe__berthold_von_hardegg_QGW_II_I_15" title="Berthold von Hardegg [pe__berthold_von_hardegg_QGW_II_I_15]" href="../../../register/persons/pe__berthold_von_hardegg_QGW_II_I_15.html"><span class="anno-attr anno-attr-title">Graf</span> Perichtolt von Hardekke</a>
-                     <a class="anno-person" data-ref="pe__otto_von_haslau_QGW_II_I_8" title="Otto von Haslau [pe__otto_von_haslau_QGW_II_I_8]" href="../../../register/persons/pe__otto_von_haslau_QGW_II_I_8.html">Ott von Haslow,
+                     Landherren: <a class="anno-person" data-ref="pe__bernhard_von_schaumberg_QGW_II_I_15" data-hint="Bernhard von Schaumberg [pe__bernhard_von_schaumberg_QGW_II_I_15]" data-hint-type="Person" href="../../../register/persons/pe__bernhard_von_schaumberg_QGW_II_I_15.html">Wernhart von Schowenberch</a>
+                     <a class="anno-person" data-ref="pe__berthold_von_hardegg_QGW_II_I_15" data-hint="Berthold von Hardegg [pe__berthold_von_hardegg_QGW_II_I_15]" data-hint-type="Person" href="../../../register/persons/pe__berthold_von_hardegg_QGW_II_I_15.html"><span class="anno-attr anno-attr-title">Graf</span> Perichtolt von Hardekke</a>
+                     <a class="anno-person" data-ref="pe__otto_von_haslau_QGW_II_I_8" data-hint="Otto von Haslau [pe__otto_von_haslau_QGW_II_I_8]" data-hint-type="Person" href="../../../register/persons/pe__otto_von_haslau_QGW_II_I_8.html">Ott von Haslow,
                            <span class="anno-attr anno-attr-occ" data-corresp="org__oesterreich-herzogtum">Landrichter</span> in Oesterreich</a>
-                     <a class="anno-person" data-ref="pe__otto_von_perchtoldsdorf_QGW_II_I_8" title="Otto von Perchtoldsdorf [pe__otto_von_perchtoldsdorf_QGW_II_I_8]" href="../../../register/persons/pe__otto_von_perchtoldsdorf_QGW_II_I_8.html">Ott von
+                     <a class="anno-person" data-ref="pe__otto_von_perchtoldsdorf_QGW_II_I_8" data-hint="Otto von Perchtoldsdorf [pe__otto_von_perchtoldsdorf_QGW_II_I_8]" data-hint-type="Person" href="../../../register/persons/pe__otto_von_perchtoldsdorf_QGW_II_I_8.html">Ott von
                         Perichtoltsdorf, <span class="anno-attr anno-attr-occ" data-corresp="org__oesterreich-herzogtum">Kämmerer</span></a>
-                     <a class="anno-person" data-ref="pe__stephan_von_maissau_FRA_II_1303_V_01" title="Stephan von Maissau [pe__stephan_von_maissau_FRA_II_1303_V_01]" href="../../../register/persons/pe__stephan_von_maissau_FRA_II_1303_V_01.html">Stephan von
+                     <a class="anno-person" data-ref="pe__stephan_von_maissau_FRA_II_1303_V_01" data-hint="Stephan von Maissau [pe__stephan_von_maissau_FRA_II_1303_V_01]" data-hint-type="Person" href="../../../register/persons/pe__stephan_von_maissau_FRA_II_1303_V_01.html">Stephan von
                         Meissow, <span class="anno-attr anno-attr-occ" data-corresp="org__oesterreich-herzogtum">Marschall</span></a>
-                     <a class="anno-person" data-ref="pe__leopold_von_kuehnring_QGW_II_I_15" title="Leopold von Kühnring [pe__leopold_von_kuehnring_QGW_II_I_15]" href="../../../register/persons/pe__leopold_von_kuehnring_QGW_II_I_15.html">Leutolt von
+                     <a class="anno-person" data-ref="pe__leopold_von_kuehnring_QGW_II_I_15" data-hint="Leopold von Kühnring [pe__leopold_von_kuehnring_QGW_II_I_15]" data-hint-type="Person" href="../../../register/persons/pe__leopold_von_kuehnring_QGW_II_I_15.html">Leutolt von
                         Chunring, <span class="anno-attr anno-attr-prof">Schenk</span></a>
-                     <a class="anno-person" data-ref="pe__heinrich_von_kuehnring_QGW_II_I_15" title="Heinrich von Kühnring [pe__heinrich_von_kuehnring_QGW_II_I_15]" href="../../../register/persons/pe__heinrich_von_kuehnring_QGW_II_I_15.html">Heinrich, dessen
+                     <a class="anno-person" data-ref="pe__heinrich_von_kuehnring_QGW_II_I_15" data-hint="Heinrich von Kühnring [pe__heinrich_von_kuehnring_QGW_II_I_15]" data-hint-type="Person" href="../../../register/persons/pe__heinrich_von_kuehnring_QGW_II_I_15.html">Heinrich, dessen
                            <span class="anno-attr anno-attr-kin" data-corresp="pe__leopold_von_kuehnring_QGW_II_I_15">Bruder</span></a>
-                     <a class="anno-person" data-ref="pe__erschenger_von_landesere_QGW_II_I_15" title="Erschenger von Landesere [pe__erschenger_von_landesere_QGW_II_I_15]" href="../../../register/persons/pe__erschenger_von_landesere_QGW_II_I_15.html">Erchenger von
+                     <a class="anno-person" data-ref="pe__erschenger_von_landesere_QGW_II_I_15" data-hint="Erschenger von Landesere [pe__erschenger_von_landesere_QGW_II_I_15]" data-hint-type="Person" href="../../../register/persons/pe__erschenger_von_landesere_QGW_II_I_15.html">Erchenger von
                         Landesere</a>
-                     <a class="anno-person" data-ref="pe__friedrich_von_lengbach_QGW_II_I_15" title="Friedrich Truchsess von Lengbach [pe__friedrich_von_lengbach_QGW_II_I_15]" href="../../../register/persons/pe__friedrich_von_lengbach_QGW_II_I_15.html">Friderich,
+                     <a class="anno-person" data-ref="pe__friedrich_von_lengbach_QGW_II_I_15" data-hint="Friedrich Truchsess von Lengbach [pe__friedrich_von_lengbach_QGW_II_I_15]" data-hint-type="Person" href="../../../register/persons/pe__friedrich_von_lengbach_QGW_II_I_15.html">Friderich,
                         truchsess von Lengebach</a>
-                     <a class="anno-person" data-ref="pe__konrad_von_pillichsdorf_QGW_II_I_15" title="Konrad von Pillichsdorf [pe__konrad_von_pillichsdorf_QGW_II_I_15]" href="../../../register/persons/pe__konrad_von_pillichsdorf_QGW_II_I_15.html">Chunrat von
+                     <a class="anno-person" data-ref="pe__konrad_von_pillichsdorf_QGW_II_I_15" data-hint="Konrad von Pillichsdorf [pe__konrad_von_pillichsdorf_QGW_II_I_15]" data-hint-type="Person" href="../../../register/persons/pe__konrad_von_pillichsdorf_QGW_II_I_15.html">Chunrat von
                         Pilichdorf</a>
-                     <a class="anno-person" data-ref="pe__ulrich_von_kapellen_QGW_II_I_15" title="Ulrich von Kapellen [pe__ulrich_von_kapellen_QGW_II_I_15]" href="../../../register/persons/pe__ulrich_von_kapellen_QGW_II_I_15.html">Ulrich von
+                     <a class="anno-person" data-ref="pe__ulrich_von_kapellen_QGW_II_I_15" data-hint="Ulrich von Kapellen [pe__ulrich_von_kapellen_QGW_II_I_15]" data-hint-type="Person" href="../../../register/persons/pe__ulrich_von_kapellen_QGW_II_I_15.html">Ulrich von
                         Chappelle , <span class="anno-attr anno-attr-occ" data-corresp="org__oesterreich-herzogtum">Landrichter</span> ob der Enns</a>
-                     <a class="anno-person" data-ref="pe__konrad_von_sommerau_QGW_II_I_15" title="Konrad von Sommerau [pe__konrad_von_sommerau_QGW_II_I_15]" href="../../../register/persons/pe__konrad_von_sommerau_QGW_II_I_15.html">Chunrat von
-                        Sumerow</a><a class="anno-person" data-ref="pe__hadmar_von_sonnberg_QGW_II_I_15" title="Hadmar von Sonnberg [pe__hadmar_von_sonnberg_QGW_II_I_15]" href="../../../register/persons/pe__hadmar_von_sonnberg_QGW_II_I_15.html">
+                     <a class="anno-person" data-ref="pe__konrad_von_sommerau_QGW_II_I_15" data-hint="Konrad von Sommerau [pe__konrad_von_sommerau_QGW_II_I_15]" data-hint-type="Person" href="../../../register/persons/pe__konrad_von_sommerau_QGW_II_I_15.html">Chunrat von
+                        Sumerow</a><a class="anno-person" data-ref="pe__hadmar_von_sonnberg_QGW_II_I_15" data-hint="Hadmar von Sonnberg [pe__hadmar_von_sonnberg_QGW_II_I_15]" data-hint-type="Person" href="../../../register/persons/pe__hadmar_von_sonnberg_QGW_II_I_15.html">
                         Hadmar von Sunnberch</a>
-                     <a class="anno-person" data-ref="pe__konrad_von_pottendorf_QGW_II_I_15" title="Konrad von Pottendorf [pe__konrad_von_pottendorf_QGW_II_I_15]" href="../../../register/persons/pe__konrad_von_pottendorf_QGW_II_I_15.html">Chunrat von
+                     <a class="anno-person" data-ref="pe__konrad_von_pottendorf_QGW_II_I_15" data-hint="Konrad von Pottendorf [pe__konrad_von_pottendorf_QGW_II_I_15]" data-hint-type="Person" href="../../../register/persons/pe__konrad_von_pottendorf_QGW_II_I_15.html">Chunrat von
                         Potendorf</a>
-                     <a class="anno-person" data-ref="pe__reimprecht_von_ebersdorf_QGW_II_I_15" title="Reimprecht von Ebersdorf [pe__reimprecht_von_ebersdorf_QGW_II_I_15]" href="../../../register/persons/pe__reimprecht_von_ebersdorf_QGW_II_I_15.html">Reimprecht
+                     <a class="anno-person" data-ref="pe__reimprecht_von_ebersdorf_QGW_II_I_15" data-hint="Reimprecht von Ebersdorf [pe__reimprecht_von_ebersdorf_QGW_II_I_15]" data-hint-type="Person" href="../../../register/persons/pe__reimprecht_von_ebersdorf_QGW_II_I_15.html">Reimprecht
                            <span class="tei-add">den <span class="anno-attr anno-attr-kin" data-corresp="pe__chalhoh_von_ebersdorf_QGW_II_I_15">Brüdern</span> von
-                           Ebersdorf</span></a> und <a class="anno-person" data-ref="pe__chalhoh_von_ebersdorf_QGW_II_I_15" title="Chalhoh von Ebersdorf [pe__chalhoh_von_ebersdorf_QGW_II_I_15]" href="../../../register/persons/pe__chalhoh_von_ebersdorf_QGW_II_I_15.html">Chalhoch, den <span class="anno-attr anno-attr-kin" data-corresp="pe__reimprecht_von_ebersdorf_QGW_II_I_15">Brüdern</span> von Ebersdorf,</a><span class="anno-trigger anno-trigger-fn"> über die
+                           Ebersdorf</span></a> und <a class="anno-person" data-ref="pe__chalhoh_von_ebersdorf_QGW_II_I_15" data-hint="Chalhoh von Ebersdorf [pe__chalhoh_von_ebersdorf_QGW_II_I_15]" data-hint-type="Person" href="../../../register/persons/pe__chalhoh_von_ebersdorf_QGW_II_I_15.html">Chalhoch, den <span class="anno-attr anno-attr-kin" data-corresp="pe__reimprecht_von_ebersdorf_QGW_II_I_15">Brüdern</span> von Ebersdorf,</a><span class="anno-trigger anno-trigger-fn"> über die
                         Verwaltung des Landes verhandelt</span></span> und die Errichtung einer
                   Niederlage in Wien, als des Reiches Hauptstadt in Oesterreich, vereinbart habe.
                   Die zu dem Rathe eingeladenen Abgeordneten der Stadt Wien beriefen sich auf
@@ -259,46 +265,46 @@
                   schon besitzen, und die ihnen König Rudolf bestätigt hat, aus denen die
                   betreffenden Artikel wörtlich aufgenommen werden. Da diese Ordnung für die fremden
                   Kaufleute zu strenge war, beschloss Albrecht mit dem Rathe eine Abänderung
-                  derselben und eine neue Satzung für die Niederlage, deren Bestimmungen <span class="anno-fn anno-fn-other" data-role="other"><span class="fn-label">Sonstige</span>dem <a class="anno-person" data-ref="pe__rudolf_i_QGW_II_I_15" title="Rudolf [pe__rudolf_i_QGW_II_I_15]" href="../../../register/persons/pe__rudolf_i_QGW_II_I_15.html"><span class="anno-attr anno-attr-title">Könige</span> Rudolf</a> zugesandt und
+                  derselben und eine neue Satzung für die Niederlage, deren Bestimmungen <span class="anno-fn anno-fn-other" data-role="other"><span class="fn-label">Sonstige</span>dem <a class="anno-person" data-ref="pe__rudolf_i_QGW_II_I_15" data-hint="Rudolf [pe__rudolf_i_QGW_II_I_15]" data-hint-type="Person" href="../../../register/persons/pe__rudolf_i_QGW_II_I_15.html"><span class="anno-attr anno-attr-title">Könige</span> Rudolf</a> zugesandt und
                         <span class="anno-trigger anno-trigger-fn">von ihm genehmigt worden seien</span></span>, mit
                   Vorbehalt der noch einzuholenden<span class="anno-fn anno-fn-other" data-role="other"><span class="fn-label">Sonstige</span>
                      <span class="anno-trigger anno-trigger-fn">Zustimmung</span>
-                     <a class="anno-org" data-ref="org__wien-dominikaner" title="Dominikaner (Prediger) Wien (Kloster_m) [org__wien-dominikaner]" href="../../../register/orgs/org__wien-dominikaner.html">der Prediger</a> und <a class="anno-org" data-ref="org__wien-minoriten" title="Minoriten Wien (Kloster_m) [org__wien-minoriten]" href="../../../register/orgs/org__wien-minoriten.html">Minderbrüder</a></span>, die nachträglich erfolgt
+                     <a class="anno-org" data-ref="org__wien-dominikaner" data-hint="Dominikaner (Prediger) Wien (Kloster_m) [org__wien-dominikaner]" data-hint-type="Organisation" href="../../../register/orgs/org__wien-dominikaner.html">der Prediger</a> und <a class="anno-org" data-ref="org__wien-minoriten" data-hint="Minoriten Wien (Kloster_m) [org__wien-minoriten]" data-hint-type="Organisation" href="../../../register/orgs/org__wien-minoriten.html">Minderbrüder</a></span>, die nachträglich erfolgt
                   sei.</span>
             </p>
          </section>
          <section class="tei-seal"><h2 class="tei-section-head">Siegelbeschreibung</h2>
             <p><span class="anno-event" data-ref="ev__QGW_II_I_15"><span class="anno-fn anno-fn-witness" data-role="witness"><span class="fn-label">Zeug*in</span>Besiegelt mit den
-                     Siegeln <a class="anno-person" data-ref="pe__albrecht_i_QGW_II_I_16b" title="Albrecht [pe__albrecht_i_QGW_II_I_16b]" href="../../../register/persons/pe__albrecht_i_QGW_II_I_16b.html">des Grafen
-                        Albrecht</a>, seines rates der lantherren <a class="anno-person" data-ref="pe__bernhard_von_schaumberg_QGW_II_I_15" title="Bernhard von Schaumberg [pe__bernhard_von_schaumberg_QGW_II_I_15]" href="../../../register/persons/pe__bernhard_von_schaumberg_QGW_II_I_15.html">Wernhart von Schowenberch</a>
-                     <a class="anno-person" data-ref="pe__berthold_von_hardegg_QGW_II_I_15" title="Berthold von Hardegg [pe__berthold_von_hardegg_QGW_II_I_15]" href="../../../register/persons/pe__berthold_von_hardegg_QGW_II_I_15.html"><span class="anno-attr anno-attr-title">Graf</span> Perichtolt von Hardekke</a>
-                     <a class="anno-person" data-ref="pe__otto_von_haslau_QGW_II_I_8" title="Otto von Haslau [pe__otto_von_haslau_QGW_II_I_8]" href="../../../register/persons/pe__otto_von_haslau_QGW_II_I_8.html">Ott von Haslow,
+                     Siegeln <a class="anno-person" data-ref="pe__albrecht_i_QGW_II_I_16b" data-hint="Albrecht [pe__albrecht_i_QGW_II_I_16b]" data-hint-type="Person" href="../../../register/persons/pe__albrecht_i_QGW_II_I_16b.html">des Grafen
+                        Albrecht</a>, seines rates der lantherren <a class="anno-person" data-ref="pe__bernhard_von_schaumberg_QGW_II_I_15" data-hint="Bernhard von Schaumberg [pe__bernhard_von_schaumberg_QGW_II_I_15]" data-hint-type="Person" href="../../../register/persons/pe__bernhard_von_schaumberg_QGW_II_I_15.html">Wernhart von Schowenberch</a>
+                     <a class="anno-person" data-ref="pe__berthold_von_hardegg_QGW_II_I_15" data-hint="Berthold von Hardegg [pe__berthold_von_hardegg_QGW_II_I_15]" data-hint-type="Person" href="../../../register/persons/pe__berthold_von_hardegg_QGW_II_I_15.html"><span class="anno-attr anno-attr-title">Graf</span> Perichtolt von Hardekke</a>
+                     <a class="anno-person" data-ref="pe__otto_von_haslau_QGW_II_I_8" data-hint="Otto von Haslau [pe__otto_von_haslau_QGW_II_I_8]" data-hint-type="Person" href="../../../register/persons/pe__otto_von_haslau_QGW_II_I_8.html">Ott von Haslow,
                            <span class="anno-attr anno-attr-occ" data-corresp="org__oesterreich-herzogtum">Landrichter</span> in Oesterreich</a>
-                     <a class="anno-person" data-ref="pe__otto_von_perchtoldsdorf_QGW_II_I_8" title="Otto von Perchtoldsdorf [pe__otto_von_perchtoldsdorf_QGW_II_I_8]" href="../../../register/persons/pe__otto_von_perchtoldsdorf_QGW_II_I_8.html">Ott von
+                     <a class="anno-person" data-ref="pe__otto_von_perchtoldsdorf_QGW_II_I_8" data-hint="Otto von Perchtoldsdorf [pe__otto_von_perchtoldsdorf_QGW_II_I_8]" data-hint-type="Person" href="../../../register/persons/pe__otto_von_perchtoldsdorf_QGW_II_I_8.html">Ott von
                         Perichtoltsdorf, <span class="anno-attr anno-attr-occ" data-corresp="org__oesterreich-herzogtum">Kämmerer</span></a>
-                     <a class="anno-person" data-ref="pe__stephan_von_maissau_FRA_II_1303_V_01" title="Stephan von Maissau [pe__stephan_von_maissau_FRA_II_1303_V_01]" href="../../../register/persons/pe__stephan_von_maissau_FRA_II_1303_V_01.html">Stephan von
+                     <a class="anno-person" data-ref="pe__stephan_von_maissau_FRA_II_1303_V_01" data-hint="Stephan von Maissau [pe__stephan_von_maissau_FRA_II_1303_V_01]" data-hint-type="Person" href="../../../register/persons/pe__stephan_von_maissau_FRA_II_1303_V_01.html">Stephan von
                         Meissow, <span class="anno-attr anno-attr-occ" data-corresp="org__oesterreich-herzogtum">Marschall</span></a>
-                     <a class="anno-person" data-ref="pe__leopold_von_kuehnring_QGW_II_I_15" title="Leopold von Kühnring [pe__leopold_von_kuehnring_QGW_II_I_15]" href="../../../register/persons/pe__leopold_von_kuehnring_QGW_II_I_15.html">Leutolt von
+                     <a class="anno-person" data-ref="pe__leopold_von_kuehnring_QGW_II_I_15" data-hint="Leopold von Kühnring [pe__leopold_von_kuehnring_QGW_II_I_15]" data-hint-type="Person" href="../../../register/persons/pe__leopold_von_kuehnring_QGW_II_I_15.html">Leutolt von
                         Chunring, <span class="anno-attr anno-attr-prof">Schenk</span></a>
-                     <a class="anno-person" data-ref="pe__heinrich_von_kuehnring_QGW_II_I_15" title="Heinrich von Kühnring [pe__heinrich_von_kuehnring_QGW_II_I_15]" href="../../../register/persons/pe__heinrich_von_kuehnring_QGW_II_I_15.html">Heinrich, dessen
+                     <a class="anno-person" data-ref="pe__heinrich_von_kuehnring_QGW_II_I_15" data-hint="Heinrich von Kühnring [pe__heinrich_von_kuehnring_QGW_II_I_15]" data-hint-type="Person" href="../../../register/persons/pe__heinrich_von_kuehnring_QGW_II_I_15.html">Heinrich, dessen
                            <span class="anno-attr anno-attr-kin" data-corresp="pe__leopold_von_kuehnring_QGW_II_I_15">Bruder</span></a>
-                     <a class="anno-person" data-ref="pe__erschenger_von_landesere_QGW_II_I_15" title="Erschenger von Landesere [pe__erschenger_von_landesere_QGW_II_I_15]" href="../../../register/persons/pe__erschenger_von_landesere_QGW_II_I_15.html">Erchenger von
+                     <a class="anno-person" data-ref="pe__erschenger_von_landesere_QGW_II_I_15" data-hint="Erschenger von Landesere [pe__erschenger_von_landesere_QGW_II_I_15]" data-hint-type="Person" href="../../../register/persons/pe__erschenger_von_landesere_QGW_II_I_15.html">Erchenger von
                         Landesere</a>
-                     <a class="anno-person" data-ref="pe__friedrich_von_lengbach_QGW_II_I_15" title="Friedrich Truchsess von Lengbach [pe__friedrich_von_lengbach_QGW_II_I_15]" href="../../../register/persons/pe__friedrich_von_lengbach_QGW_II_I_15.html">Friderich,
+                     <a class="anno-person" data-ref="pe__friedrich_von_lengbach_QGW_II_I_15" data-hint="Friedrich Truchsess von Lengbach [pe__friedrich_von_lengbach_QGW_II_I_15]" data-hint-type="Person" href="../../../register/persons/pe__friedrich_von_lengbach_QGW_II_I_15.html">Friderich,
                         truchsess von Lengebach</a>
-                     <a class="anno-person" data-ref="pe__konrad_von_pillichsdorf_QGW_II_I_15" title="Konrad von Pillichsdorf [pe__konrad_von_pillichsdorf_QGW_II_I_15]" href="../../../register/persons/pe__konrad_von_pillichsdorf_QGW_II_I_15.html">Chunrat von
+                     <a class="anno-person" data-ref="pe__konrad_von_pillichsdorf_QGW_II_I_15" data-hint="Konrad von Pillichsdorf [pe__konrad_von_pillichsdorf_QGW_II_I_15]" data-hint-type="Person" href="../../../register/persons/pe__konrad_von_pillichsdorf_QGW_II_I_15.html">Chunrat von
                         Pilichdorf</a>
-                     <a class="anno-person" data-ref="pe__ulrich_von_kapellen_QGW_II_I_15" title="Ulrich von Kapellen [pe__ulrich_von_kapellen_QGW_II_I_15]" href="../../../register/persons/pe__ulrich_von_kapellen_QGW_II_I_15.html">Ulrich von
+                     <a class="anno-person" data-ref="pe__ulrich_von_kapellen_QGW_II_I_15" data-hint="Ulrich von Kapellen [pe__ulrich_von_kapellen_QGW_II_I_15]" data-hint-type="Person" href="../../../register/persons/pe__ulrich_von_kapellen_QGW_II_I_15.html">Ulrich von
                         Chappelle , <span class="anno-attr anno-attr-occ" data-corresp="org__oesterreich-herzogtum">Landrichter</span> ob der Enns</a>
-                     <a class="anno-person" data-ref="pe__konrad_von_sommerau_QGW_II_I_15" title="Konrad von Sommerau [pe__konrad_von_sommerau_QGW_II_I_15]" href="../../../register/persons/pe__konrad_von_sommerau_QGW_II_I_15.html">Chunrat von
-                        Sumerow</a><a class="anno-person" data-ref="pe__hadmar_von_sonnberg_QGW_II_I_15" title="Hadmar von Sonnberg [pe__hadmar_von_sonnberg_QGW_II_I_15]" href="../../../register/persons/pe__hadmar_von_sonnberg_QGW_II_I_15.html">
+                     <a class="anno-person" data-ref="pe__konrad_von_sommerau_QGW_II_I_15" data-hint="Konrad von Sommerau [pe__konrad_von_sommerau_QGW_II_I_15]" data-hint-type="Person" href="../../../register/persons/pe__konrad_von_sommerau_QGW_II_I_15.html">Chunrat von
+                        Sumerow</a><a class="anno-person" data-ref="pe__hadmar_von_sonnberg_QGW_II_I_15" data-hint="Hadmar von Sonnberg [pe__hadmar_von_sonnberg_QGW_II_I_15]" data-hint-type="Person" href="../../../register/persons/pe__hadmar_von_sonnberg_QGW_II_I_15.html">
                         Hadmar von Sunnberch</a>
-                     <a class="anno-person" data-ref="pe__konrad_von_pottendorf_QGW_II_I_15" title="Konrad von Pottendorf [pe__konrad_von_pottendorf_QGW_II_I_15]" href="../../../register/persons/pe__konrad_von_pottendorf_QGW_II_I_15.html">Chunrat von
+                     <a class="anno-person" data-ref="pe__konrad_von_pottendorf_QGW_II_I_15" data-hint="Konrad von Pottendorf [pe__konrad_von_pottendorf_QGW_II_I_15]" data-hint-type="Person" href="../../../register/persons/pe__konrad_von_pottendorf_QGW_II_I_15.html">Chunrat von
                         Potendorf</a>
-                     <a class="anno-person" data-ref="pe__reimprecht_von_ebersdorf_QGW_II_I_15" title="Reimprecht von Ebersdorf [pe__reimprecht_von_ebersdorf_QGW_II_I_15]" href="../../../register/persons/pe__reimprecht_von_ebersdorf_QGW_II_I_15.html">Reimprecht
+                     <a class="anno-person" data-ref="pe__reimprecht_von_ebersdorf_QGW_II_I_15" data-hint="Reimprecht von Ebersdorf [pe__reimprecht_von_ebersdorf_QGW_II_I_15]" data-hint-type="Person" href="../../../register/persons/pe__reimprecht_von_ebersdorf_QGW_II_I_15.html">Reimprecht
                            <span class="tei-add">den <span class="anno-attr anno-attr-kin" data-corresp="pe__chalhoh_von_ebersdorf_QGW_II_I_15">Brüdern</span> von
-                           Ebersdorf</span></a> und <a class="anno-person" data-ref="pe__chalhoh_von_ebersdorf_QGW_II_I_15" title="Chalhoh von Ebersdorf [pe__chalhoh_von_ebersdorf_QGW_II_I_15]" href="../../../register/persons/pe__chalhoh_von_ebersdorf_QGW_II_I_15.html">Chalhoch, den <span class="anno-attr anno-attr-kin" data-corresp="pe__reimprecht_von_ebersdorf_QGW_II_I_15">Brüdern</span> von Ebersdorf,</a>, der besten von Osterrich und mit
-                     der <a class="anno-org" data-ref="org__wien" title="Wien (Stadt) [org__wien]" href="../../../register/orgs/org__wien.html">stat insigel von Wienne</a>.</span></span>
+                           Ebersdorf</span></a> und <a class="anno-person" data-ref="pe__chalhoh_von_ebersdorf_QGW_II_I_15" data-hint="Chalhoh von Ebersdorf [pe__chalhoh_von_ebersdorf_QGW_II_I_15]" data-hint-type="Person" href="../../../register/persons/pe__chalhoh_von_ebersdorf_QGW_II_I_15.html">Chalhoch, den <span class="anno-attr anno-attr-kin" data-corresp="pe__reimprecht_von_ebersdorf_QGW_II_I_15">Brüdern</span> von Ebersdorf,</a>, der besten von Osterrich und mit
+                     der <a class="anno-org" data-ref="org__wien" data-hint="Wien (Stadt) [org__wien]" data-hint-type="Organisation" href="../../../register/orgs/org__wien.html">stat insigel von Wienne</a>.</span></span>
             </p>
          </section>
          
@@ -360,7 +366,7 @@
          dem TEI in mehreren Untertabellen, Personen/Orgs/Orte,
          Ereignisse, Dispositivformeln, Editorische Ergaenzungen. Wird
          per JS aus den entsprechenden Spans im Body aufgebaut. -->
-    <section class="annotations-view" id="factoid-view" aria-label="Annotationen">
+    <section class="annotations-view" id="annotations-view" aria-label="Annotationen">
         <header class="annotations-header">
             <h2 class="annotations-title">Annotationen</h2>
             <span class="annotations-summary"></span>
@@ -406,13 +412,14 @@
         </div>
     </footer>
 
-    <script src="../../../static/js/core.js?v=20260511112948"></script>
-    <script src="../../../static/js/provenance.js?v=20260511112948"></script>
-    <script src="../../../static/js/basket.js?v=20260511112948"></script>
+    <script src="../../../static/js/core.js?v=20260511125458"></script>
+    <script src="../../../static/js/tip.js?v=20260511125458"></script>
+    <script src="../../../static/js/hint.js?v=20260511125458"></script>
+    <script src="../../../static/js/basket.js?v=20260511125458"></script>
     
-<script src="../../../static/js/tooltips.js?v=20260511112948"></script>
-<script src="../../../static/js/facsimile.js?v=20260511112948"></script>
-<script src="../../../static/js/document.js?v=20260511112948"></script>
+<script src="../../../static/js/facsimile.js?v=20260511125458"></script>
+<script src="../../../static/js/document.js?v=20260511125458"></script>
+<script src="../../../static/js/basket-mount.js?v=20260511125458"></script>
 
 </body>
 </html>

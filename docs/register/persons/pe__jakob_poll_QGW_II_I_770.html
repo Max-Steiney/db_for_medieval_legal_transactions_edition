@@ -3,22 +3,22 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <meta http-equiv="Content-Security-Policy" content="default-src 'self'; script-src 'self'; style-src 'self'; font-src 'self'; img-src 'self' data: https://images.monasterium.net https://www.monasterium.net; connect-src 'self'; frame-ancestors 'none'; base-uri 'self'; form-action 'self'; upgrade-insecure-requests">
+    <meta http-equiv="Content-Security-Policy" content="default-src 'self'; script-src 'self'; style-src 'self'; font-src 'self'; img-src 'self' data: https://images.monasterium.net https://www.monasterium.net; connect-src 'self'; base-uri 'self'; form-action 'self'; upgrade-insecure-requests">
     <meta name="referrer" content="strict-origin-when-cross-origin">
     <meta http-equiv="Permissions-Policy" content="camera=(), microphone=(), geolocation=(), interest-cohort=()">
     <title>Jakob Poll, Datenbank</title>
     <link rel="preload" as="font" type="font/woff2" crossorigin
           href="../../static/fonts/inter-400-latin.woff2">
-    <link rel="stylesheet" href="../../static/css/fonts.css?v=20260511112948">
-    <link rel="stylesheet" href="../../static/css/tokens.css?v=20260511112948">
-    <link rel="stylesheet" href="../../static/css/base.css?v=20260511112948">
-    <link rel="stylesheet" href="../../static/css/components.css?v=20260511112948">
-    <link rel="stylesheet" href="../../static/css/responsive.css?v=20260511112948">
-    <link rel="stylesheet" href="../../static/css/print.css?v=20260511112948">
-    <link rel="stylesheet" href="../../static/css/provenance.css?v=20260511112948">
+    <link rel="stylesheet" href="../../static/css/fonts.css?v=20260511125458">
+    <link rel="stylesheet" href="../../static/css/tokens.css?v=20260511125458">
+    <link rel="stylesheet" href="../../static/css/base.css?v=20260511125458">
+    <link rel="stylesheet" href="../../static/css/components.css?v=20260511125458">
+    <link rel="stylesheet" href="../../static/css/responsive.css?v=20260511125458">
+    <link rel="stylesheet" href="../../static/css/print.css?v=20260511125458">
+    <link rel="stylesheet" href="../../static/css/tip.css?v=20260511125458">
     
-<link rel="stylesheet" href="../../static/css/document.css?v=20260511112948">
-<link rel="stylesheet" href="../../static/css/person.css?v=20260511112948">
+<link rel="stylesheet" href="../../static/css/document.css?v=20260511125458">
+<link rel="stylesheet" href="../../static/css/person.css?v=20260511125458">
 
 </head>
 <body data-root-path="../.."
@@ -48,8 +48,6 @@
         <a href="../../register/persons.html">Personen</a>
         
         <a href="../../register/orgs.html">Organisationen</a>
-        
-        <a href="../../register/places.html">Orte</a>
         
     </div>
 </div>
@@ -91,7 +89,7 @@
     </div>
 </div>
 
-                <a href="../../korb.html" class="nav-basket" aria-label="Wissenskorb">
+                <a href="../../korb.html" class="nav-basket" aria-label="Datenkorb">
                     <svg width="18" height="18" viewBox="0 0 18 18" fill="none" aria-hidden="true">
                         <path d="M3 5h12l-1.2 8.5a1 1 0 0 1-1 .85H5.2a1 1 0 0 1-1-.85L3 5z"
                               stroke="currentColor" stroke-width="1.4" fill="none"
@@ -112,11 +110,23 @@
 
     <div class="person-toolbar">
         <div class="person-toolbar-inner">
-            <nav class="person-breadcrumb" aria-label="Position">
-                <a href="../../register/persons.html">Personenregister</a>
-                <span class="bc-sep">&rsaquo;</span>
-                <span class="bc-doc"><strong>Jakob Poll</strong></span>
-            </nav>
+            <div class="person-toolbar-row">
+                <nav class="person-breadcrumb" aria-label="Position">
+                    <a href="../../register/persons.html">Personenregister</a>
+                    <span class="bc-sep">&rsaquo;</span>
+                    <span class="bc-doc"><strong>Jakob Poll</strong></span>
+                </nav>
+                <div class="person-toolbar-actions">
+                    <span class="toolbar-basket-mount"
+                          data-basket-type="person"
+                          data-basket-id="pe__jakob_poll_QGW_II_I_770"
+                          data-basket-label="Jakob Poll"
+                          data-basket-url="register/persons/pe__jakob_poll_QGW_II_I_770.html"
+                          data-basket-sex="m"
+                          data-basket-active-min="1343"
+                          data-basket-active-max="1380"></span>
+                </div>
+            </div>
             <div class="person-toolbar-meta">
                 <span class="meta-pair">
                     <span class="meta-label">Geschlecht</span>
@@ -124,11 +134,41 @@
                 </span>
                 
                 <span class="meta-pair">
-                    <span class="meta-label">Belegt</span>
+                    <span class="meta-label">Belegt
+<span class="tip-wrap">
+    <button type="button" class="tip-trigger tip-trigger--icon"
+            aria-expanded="false" aria-haspopup="dialog"
+            aria-controls="person-belegt"
+            data-tip="person-belegt"
+            aria-label="Definition: Beleg-Zeitraum">
+        <svg width="13" height="13" viewBox="0 0 16 16" aria-hidden="true">
+            <circle cx="8" cy="8" r="7" stroke="currentColor" stroke-width="1.4" fill="none"/>
+            <text x="8" y="11.6" text-anchor="middle" font-size="9.5" font-weight="700"
+                  fill="currentColor" font-family="Georgia, serif">i</text>
+        </svg>
+    </button>
+    <aside class="tip-popover tip-popover--glossary"
+           id="person-belegt" role="dialog" aria-hidden="true"
+           aria-label="Definition: Beleg-Zeitraum">
+        <header class="tip-head">
+            <h3 class="tip-title">Beleg-Zeitraum</h3>
+            <button type="button" class="tip-close" aria-label="Schlie&szlig;en">&times;</button>
+        </header>
+        <div class="tip-body">
+            <p>Erste und letzte Datierung einer Quelle, in der die Person erscheint. Bei einzelnem Beleg wird nur ein Jahr angegeben.</p>
+            
+        </div>
+    </aside>
+</span>
+</span>
                     <span class="meta-value">1343 bis 1380</span>
                 </span>
                 
                 
+                <span class="meta-pair">
+                    <span class="meta-label">Quellen</span>
+                    <span class="meta-value">89</span>
+                </span>
                 <span class="meta-pair person-id-pair">
                     <span class="meta-label">ID</span>
                     <code class="meta-value person-id">pe__jakob_poll_QGW_II_I_770</code>
@@ -146,13 +186,45 @@
         </h1>
         
         
-        <p class="person-titles">
+        
+        <p class="person-titles" data-collapsible="22">
             <span class="pt-label">In den Quellen genannt als</span>
             <span class="pt-chip">hern</span><span class="pt-chip">her</span><span class="pt-chip">Grundherrn|hern</span><span class="pt-chip">Herr</span><span class="pt-chip">Herrn</span>
         </p>
         
         
+        
     </header>
+
+    
+    <section class="role-strip" aria-label="Rollen in Rechtsgeschäften">
+        <h2 class="role-strip-title">Rollen in Rechtsgeschäften</h2>
+        <div class="role-strip-cells">
+            
+            <div class="role-cell role-cell-issuer">
+                <span class="role-cell-count">24</span>
+                <span class="role-cell-label">Aussteller*in</span>
+            </div>
+            
+            <div class="role-cell role-cell-recipient">
+                <span class="role-cell-count">40</span>
+                <span class="role-cell-label">Empfänger*in</span>
+            </div>
+            
+            <div class="role-cell role-cell-witness">
+                <span class="role-cell-count">31</span>
+                <span class="role-cell-label">Zeuge / Siegler*in</span>
+            </div>
+            
+            <div class="role-cell role-cell-other">
+                <span class="role-cell-count">16</span>
+                <span class="role-cell-label">Sonstige</span>
+            </div>
+            
+        </div>
+        <p class="role-strip-hint">Summe Rollen-Belegungen: 111. Mehrfach-Rollen pro Quelle sind möglich.</p>
+    </section>
+    
 
     
 
@@ -169,6 +241,12 @@
                 <span class="rel-block-count">32</span>
                 <span class="rel-block-hint">Verwandtschaftsverhältnisse, wie sie in den Quellen explizit benannt werden.</span>
             </header>
+            
+            <div class="table-filter">
+                <input type="search" class="table-filter-input" data-target="rel" placeholder="In der Tabelle filtern&hellip;" aria-label="In der Tabelle filtern">
+                <span class="table-filter-status"></span>
+            </div>
+            
             <table class="rel-table">
                 <thead>
                     <tr>
@@ -189,7 +267,7 @@
                         <td class="rel-col-label"><em>Oheim</em></td>
                         <td class="rel-col-perspective">
                             
-                                Jakob Poll → Johann Nagel
+                                Jakob Poll &rsaquo; Johann Nagel
                             
                         </td>
                         <td class="rel-col-source">
@@ -208,7 +286,7 @@
                         <td class="rel-col-label"><em>Oheime</em></td>
                         <td class="rel-col-perspective">
                             
-                                Jakob Poll → Johann Nagel
+                                Jakob Poll &rsaquo; Johann Nagel
                             
                         </td>
                         <td class="rel-col-source">
@@ -227,7 +305,7 @@
                         <td class="rel-col-label"><em>Bruder</em></td>
                         <td class="rel-col-perspective">
                             
-                                Ulrich Poll → Jakob Poll
+                                Ulrich Poll &rsaquo; Jakob Poll
                             
                         </td>
                         <td class="rel-col-source">
@@ -246,7 +324,7 @@
                         <td class="rel-col-label"><em>Brüder</em></td>
                         <td class="rel-col-perspective">
                             
-                                Stephan Poll Poll → Jakob Poll
+                                Stephan Poll Poll &rsaquo; Jakob Poll
                             
                         </td>
                         <td class="rel-col-source">
@@ -265,7 +343,7 @@
                         <td class="rel-col-label"><em>Vetters</em></td>
                         <td class="rel-col-perspective">
                             
-                                Berthold Poll → Jakob Poll
+                                Berthold Poll &rsaquo; Jakob Poll
                             
                         </td>
                         <td class="rel-col-source">
@@ -284,7 +362,7 @@
                         <td class="rel-col-label"><em>Bruder</em></td>
                         <td class="rel-col-perspective">
                             
-                                Ulrich Poll → Jakob Poll
+                                Ulrich Poll &rsaquo; Jakob Poll
                             
                         </td>
                         <td class="rel-col-source">
@@ -303,7 +381,7 @@
                         <td class="rel-col-label"><em>Bruder</em></td>
                         <td class="rel-col-perspective">
                             
-                                Ulrich Poll → Jakob Poll
+                                Ulrich Poll &rsaquo; Jakob Poll
                             
                         </td>
                         <td class="rel-col-source">
@@ -322,7 +400,7 @@
                         <td class="rel-col-label"><em>Bruder</em></td>
                         <td class="rel-col-perspective">
                             
-                                Ulrich Poll → Jakob Poll
+                                Ulrich Poll &rsaquo; Jakob Poll
                             
                         </td>
                         <td class="rel-col-source">
@@ -341,7 +419,7 @@
                         <td class="rel-col-label"><em>Bruder</em></td>
                         <td class="rel-col-perspective">
                             
-                                Stephan Poll Poll → Jakob Poll
+                                Stephan Poll Poll &rsaquo; Jakob Poll
                             
                         </td>
                         <td class="rel-col-source">
@@ -360,7 +438,7 @@
                         <td class="rel-col-label"><em>Bruders</em></td>
                         <td class="rel-col-perspective">
                             
-                                Michael Poll → Jakob Poll
+                                Michael Poll &rsaquo; Jakob Poll
                             
                         </td>
                         <td class="rel-col-source">
@@ -379,7 +457,7 @@
                         <td class="rel-col-label"><em>Bruders</em></td>
                         <td class="rel-col-perspective">
                             
-                                Ulrich Poll → Jakob Poll
+                                Ulrich Poll &rsaquo; Jakob Poll
                             
                         </td>
                         <td class="rel-col-source">
@@ -398,7 +476,7 @@
                         <td class="rel-col-label"><em>Bruder</em></td>
                         <td class="rel-col-perspective">
                             
-                                Stephan Poll Poll → Jakob Poll
+                                Stephan Poll Poll &rsaquo; Jakob Poll
                             
                         </td>
                         <td class="rel-col-source">
@@ -417,7 +495,7 @@
                         <td class="rel-col-label"><em>Brüdern</em></td>
                         <td class="rel-col-perspective">
                             
-                                Ulrich Poll → Jakob Poll
+                                Ulrich Poll &rsaquo; Jakob Poll
                             
                         </td>
                         <td class="rel-col-source">
@@ -436,7 +514,7 @@
                         <td class="rel-col-label"><em>Brüdern</em></td>
                         <td class="rel-col-perspective">
                             
-                                Stephan Poll Poll → Jakob Poll
+                                Stephan Poll Poll &rsaquo; Jakob Poll
                             
                         </td>
                         <td class="rel-col-source">
@@ -455,7 +533,7 @@
                         <td class="rel-col-label"><em>Brüdern</em></td>
                         <td class="rel-col-perspective">
                             
-                                Ulrich Poll → Jakob Poll
+                                Ulrich Poll &rsaquo; Jakob Poll
                             
                         </td>
                         <td class="rel-col-source">
@@ -474,7 +552,7 @@
                         <td class="rel-col-label"><em>Brüdern</em></td>
                         <td class="rel-col-perspective">
                             
-                                Stephan Poll Poll → Jakob Poll
+                                Stephan Poll Poll &rsaquo; Jakob Poll
                             
                         </td>
                         <td class="rel-col-source">
@@ -493,7 +571,7 @@
                         <td class="rel-col-label"><em>Brüdern</em></td>
                         <td class="rel-col-perspective">
                             
-                                Ulrich Poll → Jakob Poll
+                                Ulrich Poll &rsaquo; Jakob Poll
                             
                         </td>
                         <td class="rel-col-source">
@@ -512,7 +590,7 @@
                         <td class="rel-col-label"><em>Brüdern</em></td>
                         <td class="rel-col-perspective">
                             
-                                Stephan Poll Poll → Jakob Poll
+                                Stephan Poll Poll &rsaquo; Jakob Poll
                             
                         </td>
                         <td class="rel-col-source">
@@ -531,7 +609,7 @@
                         <td class="rel-col-label"><em>Brüdern</em></td>
                         <td class="rel-col-perspective">
                             
-                                Ulrich Poll → Jakob Poll
+                                Ulrich Poll &rsaquo; Jakob Poll
                             
                         </td>
                         <td class="rel-col-source">
@@ -550,7 +628,7 @@
                         <td class="rel-col-label"><em>Brüdern</em></td>
                         <td class="rel-col-perspective">
                             
-                                Stephan Poll Poll → Jakob Poll
+                                Stephan Poll Poll &rsaquo; Jakob Poll
                             
                         </td>
                         <td class="rel-col-source">
@@ -569,7 +647,7 @@
                         <td class="rel-col-label"><em>Brüdern</em></td>
                         <td class="rel-col-perspective">
                             
-                                Ulrich Poll → Jakob Poll
+                                Ulrich Poll &rsaquo; Jakob Poll
                             
                         </td>
                         <td class="rel-col-source">
@@ -588,7 +666,7 @@
                         <td class="rel-col-label"><em>Brüdern</em></td>
                         <td class="rel-col-perspective">
                             
-                                Stephan Poll Poll → Jakob Poll
+                                Stephan Poll Poll &rsaquo; Jakob Poll
                             
                         </td>
                         <td class="rel-col-source">
@@ -607,7 +685,7 @@
                         <td class="rel-col-label"><em>Bruder</em></td>
                         <td class="rel-col-perspective">
                             
-                                Jakob Poll → Ulrich Poll
+                                Jakob Poll &rsaquo; Ulrich Poll
                             
                         </td>
                         <td class="rel-col-source">
@@ -626,7 +704,7 @@
                         <td class="rel-col-label"><em>Vetter</em></td>
                         <td class="rel-col-perspective">
                             
-                                Leonhard Poll Poll → Jakob Poll
+                                Leonhard Poll Poll &rsaquo; Jakob Poll
                             
                         </td>
                         <td class="rel-col-source">
@@ -645,7 +723,7 @@
                         <td class="rel-col-label"><em>Bruder</em></td>
                         <td class="rel-col-perspective">
                             
-                                Jakob Poll → Ulrich Poll
+                                Jakob Poll &rsaquo; Ulrich Poll
                             
                         </td>
                         <td class="rel-col-source">
@@ -664,7 +742,7 @@
                         <td class="rel-col-label"><em>Muhme</em></td>
                         <td class="rel-col-perspective">
                             
-                                Ursula von Haslau → Jakob Poll
+                                Ursula von Haslau &rsaquo; Jakob Poll
                             
                         </td>
                         <td class="rel-col-source">
@@ -683,7 +761,7 @@
                         <td class="rel-col-label"><em>Bruders</em></td>
                         <td class="rel-col-perspective">
                             
-                                Ulrich Poll → Jakob Poll
+                                Ulrich Poll &rsaquo; Jakob Poll
                             
                         </td>
                         <td class="rel-col-source">
@@ -702,7 +780,7 @@
                         <td class="rel-col-label"><em>Schwagers</em></td>
                         <td class="rel-col-perspective">
                             
-                                Johann Hemler Hernler → Jakob Poll
+                                Johann Hemler Hernler &rsaquo; Jakob Poll
                             
                         </td>
                         <td class="rel-col-source">
@@ -721,7 +799,7 @@
                         <td class="rel-col-label"><em>Oheim</em></td>
                         <td class="rel-col-perspective">
                             
-                                Johann Perger → Jakob Poll
+                                Johann Perger &rsaquo; Jakob Poll
                             
                         </td>
                         <td class="rel-col-source">
@@ -740,7 +818,7 @@
                         <td class="rel-col-label"><em>Oheim</em></td>
                         <td class="rel-col-perspective">
                             
-                                Johann Perger → Jakob Poll
+                                Johann Perger &rsaquo; Jakob Poll
                             
                         </td>
                         <td class="rel-col-source">
@@ -759,7 +837,7 @@
                         <td class="rel-col-label"><em>Oheims</em></td>
                         <td class="rel-col-perspective">
                             
-                                Jakob Poll → Leonhard Poll Poll
+                                Jakob Poll &rsaquo; Leonhard Poll Poll
                             
                         </td>
                         <td class="rel-col-source">
@@ -778,7 +856,7 @@
                         <td class="rel-col-label"><em>Vetter</em></td>
                         <td class="rel-col-perspective">
                             
-                                Jakob Poll → Leonhard Poll Poll
+                                Jakob Poll &rsaquo; Leonhard Poll Poll
                             
                         </td>
                         <td class="rel-col-source">
@@ -804,6 +882,7 @@
                 <span class="rel-block-count">9</span>
                 <span class="rel-block-hint">Stellvertretungs-Beziehungen, z. B. handelt eine Person an Stelle einer anderen.</span>
             </header>
+            
             <table class="rel-table">
                 <thead>
                     <tr>
@@ -824,7 +903,7 @@
                         <td class="rel-col-label"><em>an seines Herrn Statt</em></td>
                         <td class="rel-col-perspective">
                             
-                                Friedrich → Jakob Poll
+                                Friedrich &rsaquo; Jakob Poll
                             
                         </td>
                         <td class="rel-col-source">
@@ -843,7 +922,7 @@
                         <td class="rel-col-label"><em>Geschäftsvollstrecker</em></td>
                         <td class="rel-col-perspective">
                             
-                                Jakob Poll → Leonhard Poll Poll
+                                Jakob Poll &rsaquo; Leonhard Poll Poll
                             
                         </td>
                         <td class="rel-col-source">
@@ -862,7 +941,7 @@
                         <td class="rel-col-label"><em>ausrichter des geschefts</em></td>
                         <td class="rel-col-perspective">
                             
-                                Jakob Poll → Leonhard Poll Poll
+                                Jakob Poll &rsaquo; Leonhard Poll Poll
                             
                         </td>
                         <td class="rel-col-source">
@@ -881,7 +960,7 @@
                         <td class="rel-col-label"><em>Geschäftsherren</em></td>
                         <td class="rel-col-perspective">
                             
-                                Jakob Poll → Leonhard Poll Poll
+                                Jakob Poll &rsaquo; Leonhard Poll Poll
                             
                         </td>
                         <td class="rel-col-source">
@@ -900,7 +979,7 @@
                         <td class="rel-col-label"><em>Geschäftsvollstrecker</em></td>
                         <td class="rel-col-perspective">
                             
-                                Jakob Poll → Leonhard Poll Poll
+                                Jakob Poll &rsaquo; Leonhard Poll Poll
                             
                         </td>
                         <td class="rel-col-source">
@@ -919,7 +998,7 @@
                         <td class="rel-col-label"><em>Geschäftsvollstrecker</em></td>
                         <td class="rel-col-perspective">
                             
-                                Jakob Poll → Leonhard Poll Poll
+                                Jakob Poll &rsaquo; Leonhard Poll Poll
                             
                         </td>
                         <td class="rel-col-source">
@@ -938,7 +1017,7 @@
                         <td class="rel-col-label"><em>Geschäftsvollstrecker</em></td>
                         <td class="rel-col-perspective">
                             
-                                Jakob Poll → Leonhard Poll Poll
+                                Jakob Poll &rsaquo; Leonhard Poll Poll
                             
                         </td>
                         <td class="rel-col-source">
@@ -957,7 +1036,7 @@
                         <td class="rel-col-label"><em>Geschäftsvollstrecker</em></td>
                         <td class="rel-col-perspective">
                             
-                                Jakob Poll → Leonhard Poll Poll
+                                Jakob Poll &rsaquo; Leonhard Poll Poll
                             
                         </td>
                         <td class="rel-col-source">
@@ -976,7 +1055,7 @@
                         <td class="rel-col-label"><em>Geschäftsvollstrecker</em></td>
                         <td class="rel-col-perspective">
                             
-                                Jakob Poll → Leonhard Poll Poll
+                                Jakob Poll &rsaquo; Leonhard Poll Poll
                             
                         </td>
                         <td class="rel-col-source">
@@ -999,7 +1078,13 @@
                 <span class="rel-block-count">95</span>
                 <span class="rel-block-hint">Berufs- oder Amtsbezeichnung in Bezug auf eine Institution.</span>
             </header>
-            <table class="rel-table">
+            
+            <div class="table-filter">
+                <input type="search" class="table-filter-input" data-target="rel" placeholder="In der Tabelle filtern&hellip;" aria-label="In der Tabelle filtern">
+                <span class="table-filter-status"></span>
+            </div>
+            
+            <table class="rel-table" data-truncate-at="50">
                 <thead>
                     <tr>
                         <th scope="col" class="rel-col-other">Institution</th>
@@ -1019,7 +1104,7 @@
                         <td class="rel-col-label"><em>chapplan</em></td>
                         <td class="rel-col-perspective">
                             
-                                Jakob Poll → St. Mariakapelle im Rathaus
+                                Jakob Poll &rsaquo; St. Mariakapelle im Rathaus
                             
                         </td>
                         <td class="rel-col-source">
@@ -1038,7 +1123,7 @@
                         <td class="rel-col-label"><em>chapplan</em></td>
                         <td class="rel-col-perspective">
                             
-                                Jakob Poll → St. Mariakapelle im Rathaus
+                                Jakob Poll &rsaquo; St. Mariakapelle im Rathaus
                             
                         </td>
                         <td class="rel-col-source">
@@ -1057,7 +1142,7 @@
                         <td class="rel-col-label"><em>verweser</em></td>
                         <td class="rel-col-perspective">
                             
-                                Jakob Poll → St. Mariakapelle im Rathaus
+                                Jakob Poll &rsaquo; St. Mariakapelle im Rathaus
                             
                         </td>
                         <td class="rel-col-source">
@@ -1076,7 +1161,7 @@
                         <td class="rel-col-label"><em>chapplan</em></td>
                         <td class="rel-col-perspective">
                             
-                                Jakob Poll → St. Mariakapelle im Rathaus
+                                Jakob Poll &rsaquo; St. Mariakapelle im Rathaus
                             
                         </td>
                         <td class="rel-col-source">
@@ -1095,7 +1180,7 @@
                         <td class="rel-col-label"><em>chapplan</em></td>
                         <td class="rel-col-perspective">
                             
-                                Jakob Poll → St. Mariakapelle im Rathaus
+                                Jakob Poll &rsaquo; St. Mariakapelle im Rathaus
                             
                         </td>
                         <td class="rel-col-source">
@@ -1114,7 +1199,7 @@
                         <td class="rel-col-label"><em>chaplan</em></td>
                         <td class="rel-col-perspective">
                             
-                                Jakob Poll → St. Mariakapelle im Rathaus
+                                Jakob Poll &rsaquo; St. Mariakapelle im Rathaus
                             
                         </td>
                         <td class="rel-col-source">
@@ -1133,7 +1218,7 @@
                         <td class="rel-col-label"><em>Kaplan</em></td>
                         <td class="rel-col-perspective">
                             
-                                Jakob Poll → St. Mariakapelle im Rathaus
+                                Jakob Poll &rsaquo; St. Mariakapelle im Rathaus
                             
                         </td>
                         <td class="rel-col-source">
@@ -1152,7 +1237,7 @@
                         <td class="rel-col-label"><em>Verweser</em></td>
                         <td class="rel-col-perspective">
                             
-                                Jakob Poll → St. Mariakapelle im Rathaus
+                                Jakob Poll &rsaquo; St. Mariakapelle im Rathaus
                             
                         </td>
                         <td class="rel-col-source">
@@ -1171,7 +1256,7 @@
                         <td class="rel-col-label"><em>chaplan</em></td>
                         <td class="rel-col-perspective">
                             
-                                Jakob Poll → St. Mariakapelle im Rathaus
+                                Jakob Poll &rsaquo; St. Mariakapelle im Rathaus
                             
                         </td>
                         <td class="rel-col-source">
@@ -1190,7 +1275,7 @@
                         <td class="rel-col-label"><em>chaplan</em></td>
                         <td class="rel-col-perspective">
                             
-                                Jakob Poll → St. Mariakapelle im Rathaus
+                                Jakob Poll &rsaquo; St. Mariakapelle im Rathaus
                             
                         </td>
                         <td class="rel-col-source">
@@ -1209,7 +1294,7 @@
                         <td class="rel-col-label"><em>verweser</em></td>
                         <td class="rel-col-perspective">
                             
-                                Jakob Poll → St. Mariakapelle im Rathaus
+                                Jakob Poll &rsaquo; St. Mariakapelle im Rathaus
                             
                         </td>
                         <td class="rel-col-source">
@@ -1228,7 +1313,7 @@
                         <td class="rel-col-label"><em>Kaplan</em></td>
                         <td class="rel-col-perspective">
                             
-                                Jakob Poll → St. Mariakapelle im Rathaus
+                                Jakob Poll &rsaquo; St. Mariakapelle im Rathaus
                             
                         </td>
                         <td class="rel-col-source">
@@ -1247,7 +1332,7 @@
                         <td class="rel-col-label"><em>Verweser</em></td>
                         <td class="rel-col-perspective">
                             
-                                Jakob Poll → St. Mariakapelle im Rathaus
+                                Jakob Poll &rsaquo; St. Mariakapelle im Rathaus
                             
                         </td>
                         <td class="rel-col-source">
@@ -1266,7 +1351,7 @@
                         <td class="rel-col-label"><em>chaplan</em></td>
                         <td class="rel-col-perspective">
                             
-                                Jakob Poll → St. Mariakapelle im Rathaus
+                                Jakob Poll &rsaquo; St. Mariakapelle im Rathaus
                             
                         </td>
                         <td class="rel-col-source">
@@ -1285,7 +1370,7 @@
                         <td class="rel-col-label"><em>chaplan</em></td>
                         <td class="rel-col-perspective">
                             
-                                Jakob Poll → St. Mariakapelle im Rathaus
+                                Jakob Poll &rsaquo; St. Mariakapelle im Rathaus
                             
                         </td>
                         <td class="rel-col-source">
@@ -1304,7 +1389,7 @@
                         <td class="rel-col-label"><em>chaplan</em></td>
                         <td class="rel-col-perspective">
                             
-                                Jakob Poll → St. Mariakapelle im Rathaus
+                                Jakob Poll &rsaquo; St. Mariakapelle im Rathaus
                             
                         </td>
                         <td class="rel-col-source">
@@ -1323,7 +1408,7 @@
                         <td class="rel-col-label"><em>chaplan</em></td>
                         <td class="rel-col-perspective">
                             
-                                Jakob Poll → St. Mariakapelle im Rathaus
+                                Jakob Poll &rsaquo; St. Mariakapelle im Rathaus
                             
                         </td>
                         <td class="rel-col-source">
@@ -1342,7 +1427,7 @@
                         <td class="rel-col-label"><em>chaplan</em></td>
                         <td class="rel-col-perspective">
                             
-                                Jakob Poll → St. Mariakapelle im Rathaus
+                                Jakob Poll &rsaquo; St. Mariakapelle im Rathaus
                             
                         </td>
                         <td class="rel-col-source">
@@ -1361,7 +1446,7 @@
                         <td class="rel-col-label"><em>Kaplan</em></td>
                         <td class="rel-col-perspective">
                             
-                                Jakob Poll → St. Mariakapelle im Rathaus
+                                Jakob Poll &rsaquo; St. Mariakapelle im Rathaus
                             
                         </td>
                         <td class="rel-col-source">
@@ -1380,7 +1465,7 @@
                         <td class="rel-col-label"><em>Kaplan</em></td>
                         <td class="rel-col-perspective">
                             
-                                Jakob Poll → St. Mariakapelle im Rathaus
+                                Jakob Poll &rsaquo; St. Mariakapelle im Rathaus
                             
                         </td>
                         <td class="rel-col-source">
@@ -1399,7 +1484,7 @@
                         <td class="rel-col-label"><em>chaplan</em></td>
                         <td class="rel-col-perspective">
                             
-                                Jakob Poll → St. Mariakapelle im Rathaus
+                                Jakob Poll &rsaquo; St. Mariakapelle im Rathaus
                             
                         </td>
                         <td class="rel-col-source">
@@ -1418,7 +1503,7 @@
                         <td class="rel-col-label"><em>chapplan</em></td>
                         <td class="rel-col-perspective">
                             
-                                Jakob Poll → St. Mariakapelle im Rathaus
+                                Jakob Poll &rsaquo; St. Mariakapelle im Rathaus
                             
                         </td>
                         <td class="rel-col-source">
@@ -1437,7 +1522,7 @@
                         <td class="rel-col-label"><em>Kaplan</em></td>
                         <td class="rel-col-perspective">
                             
-                                Jakob Poll → St. Mariakapelle im Rathaus
+                                Jakob Poll &rsaquo; St. Mariakapelle im Rathaus
                             
                         </td>
                         <td class="rel-col-source">
@@ -1456,7 +1541,7 @@
                         <td class="rel-col-label"><em>chapellan</em></td>
                         <td class="rel-col-perspective">
                             
-                                Jakob Poll → St. Mariakapelle im Rathaus
+                                Jakob Poll &rsaquo; St. Mariakapelle im Rathaus
                             
                         </td>
                         <td class="rel-col-source">
@@ -1475,7 +1560,7 @@
                         <td class="rel-col-label"><em>chapplan</em></td>
                         <td class="rel-col-perspective">
                             
-                                Jakob Poll → St. Mariakapelle im Rathaus
+                                Jakob Poll &rsaquo; St. Mariakapelle im Rathaus
                             
                         </td>
                         <td class="rel-col-source">
@@ -1494,7 +1579,7 @@
                         <td class="rel-col-label"><em>chapplan</em></td>
                         <td class="rel-col-perspective">
                             
-                                Jakob Poll → St. Mariakapelle im Rathaus
+                                Jakob Poll &rsaquo; St. Mariakapelle im Rathaus
                             
                         </td>
                         <td class="rel-col-source">
@@ -1513,7 +1598,7 @@
                         <td class="rel-col-label"><em>chapellan</em></td>
                         <td class="rel-col-perspective">
                             
-                                Jakob Poll → St. Mariakapelle im Rathaus
+                                Jakob Poll &rsaquo; St. Mariakapelle im Rathaus
                             
                         </td>
                         <td class="rel-col-source">
@@ -1532,7 +1617,7 @@
                         <td class="rel-col-label"><em>chapplan</em></td>
                         <td class="rel-col-perspective">
                             
-                                Jakob Poll → St. Mariakapelle im Rathaus
+                                Jakob Poll &rsaquo; St. Mariakapelle im Rathaus
                             
                         </td>
                         <td class="rel-col-source">
@@ -1551,7 +1636,7 @@
                         <td class="rel-col-label"><em>chaplan</em></td>
                         <td class="rel-col-perspective">
                             
-                                Jakob Poll → St. Mariakapelle im Rathaus
+                                Jakob Poll &rsaquo; St. Mariakapelle im Rathaus
                             
                         </td>
                         <td class="rel-col-source">
@@ -1570,7 +1655,7 @@
                         <td class="rel-col-label"><em>chaplan</em></td>
                         <td class="rel-col-perspective">
                             
-                                Jakob Poll → St. Mariakapelle im Rathaus
+                                Jakob Poll &rsaquo; St. Mariakapelle im Rathaus
                             
                         </td>
                         <td class="rel-col-source">
@@ -1589,7 +1674,7 @@
                         <td class="rel-col-label"><em>Kaplan</em></td>
                         <td class="rel-col-perspective">
                             
-                                Jakob Poll → St. Mariakapelle im Rathaus
+                                Jakob Poll &rsaquo; St. Mariakapelle im Rathaus
                             
                         </td>
                         <td class="rel-col-source">
@@ -1608,7 +1693,7 @@
                         <td class="rel-col-label"><em>chaplan</em></td>
                         <td class="rel-col-perspective">
                             
-                                Jakob Poll → St. Mariakapelle im Rathaus
+                                Jakob Poll &rsaquo; St. Mariakapelle im Rathaus
                             
                         </td>
                         <td class="rel-col-source">
@@ -1627,7 +1712,7 @@
                         <td class="rel-col-label"><em>verweser</em></td>
                         <td class="rel-col-perspective">
                             
-                                Jakob Poll → St. Mariakapelle im Rathaus
+                                Jakob Poll &rsaquo; St. Mariakapelle im Rathaus
                             
                         </td>
                         <td class="rel-col-source">
@@ -1646,7 +1731,7 @@
                         <td class="rel-col-label"><em>chaplan</em></td>
                         <td class="rel-col-perspective">
                             
-                                Jakob Poll → St. Mariakapelle im Rathaus
+                                Jakob Poll &rsaquo; St. Mariakapelle im Rathaus
                             
                         </td>
                         <td class="rel-col-source">
@@ -1665,7 +1750,7 @@
                         <td class="rel-col-label"><em>chaplan</em></td>
                         <td class="rel-col-perspective">
                             
-                                Jakob Poll → St. Mariakapelle im Rathaus
+                                Jakob Poll &rsaquo; St. Mariakapelle im Rathaus
                             
                         </td>
                         <td class="rel-col-source">
@@ -1684,7 +1769,7 @@
                         <td class="rel-col-label"><em>verbesser</em></td>
                         <td class="rel-col-perspective">
                             
-                                Jakob Poll → St. Mariakapelle im Rathaus
+                                Jakob Poll &rsaquo; St. Mariakapelle im Rathaus
                             
                         </td>
                         <td class="rel-col-source">
@@ -1703,7 +1788,7 @@
                         <td class="rel-col-label"><em>chapellan</em></td>
                         <td class="rel-col-perspective">
                             
-                                Jakob Poll → St. Mariakapelle im Rathaus
+                                Jakob Poll &rsaquo; St. Mariakapelle im Rathaus
                             
                         </td>
                         <td class="rel-col-source">
@@ -1722,7 +1807,7 @@
                         <td class="rel-col-label"><em>verbesser</em></td>
                         <td class="rel-col-perspective">
                             
-                                Jakob Poll → St. Mariakapelle im Rathaus
+                                Jakob Poll &rsaquo; St. Mariakapelle im Rathaus
                             
                         </td>
                         <td class="rel-col-source">
@@ -1741,7 +1826,7 @@
                         <td class="rel-col-label"><em>chapellan</em></td>
                         <td class="rel-col-perspective">
                             
-                                Jakob Poll → St. Mariakapelle im Rathaus
+                                Jakob Poll &rsaquo; St. Mariakapelle im Rathaus
                             
                         </td>
                         <td class="rel-col-source">
@@ -1760,7 +1845,7 @@
                         <td class="rel-col-label"><em>verbeser</em></td>
                         <td class="rel-col-perspective">
                             
-                                Jakob Poll → St. Mariakapelle im Rathaus
+                                Jakob Poll &rsaquo; St. Mariakapelle im Rathaus
                             
                         </td>
                         <td class="rel-col-source">
@@ -1779,7 +1864,7 @@
                         <td class="rel-col-label"><em>chapellan</em></td>
                         <td class="rel-col-perspective">
                             
-                                Jakob Poll → St. Mariakapelle im Rathaus
+                                Jakob Poll &rsaquo; St. Mariakapelle im Rathaus
                             
                         </td>
                         <td class="rel-col-source">
@@ -1798,7 +1883,7 @@
                         <td class="rel-col-label"><em>verbeser</em></td>
                         <td class="rel-col-perspective">
                             
-                                Jakob Poll → St. Mariakapelle im Rathaus
+                                Jakob Poll &rsaquo; St. Mariakapelle im Rathaus
                             
                         </td>
                         <td class="rel-col-source">
@@ -1817,7 +1902,7 @@
                         <td class="rel-col-label"><em>chapellan</em></td>
                         <td class="rel-col-perspective">
                             
-                                Jakob Poll → St. Mariakapelle im Rathaus
+                                Jakob Poll &rsaquo; St. Mariakapelle im Rathaus
                             
                         </td>
                         <td class="rel-col-source">
@@ -1836,7 +1921,7 @@
                         <td class="rel-col-label"><em>verbeser</em></td>
                         <td class="rel-col-perspective">
                             
-                                Jakob Poll → St. Mariakapelle im Rathaus
+                                Jakob Poll &rsaquo; St. Mariakapelle im Rathaus
                             
                         </td>
                         <td class="rel-col-source">
@@ -1855,7 +1940,7 @@
                         <td class="rel-col-label"><em>chapellan</em></td>
                         <td class="rel-col-perspective">
                             
-                                Jakob Poll → St. Mariakapelle im Rathaus
+                                Jakob Poll &rsaquo; St. Mariakapelle im Rathaus
                             
                         </td>
                         <td class="rel-col-source">
@@ -1874,7 +1959,7 @@
                         <td class="rel-col-label"><em>verweser</em></td>
                         <td class="rel-col-perspective">
                             
-                                Jakob Poll → St. Mariakapelle im Rathaus
+                                Jakob Poll &rsaquo; St. Mariakapelle im Rathaus
                             
                         </td>
                         <td class="rel-col-source">
@@ -1893,7 +1978,7 @@
                         <td class="rel-col-label"><em>Kaplans</em></td>
                         <td class="rel-col-perspective">
                             
-                                Jakob Poll → St. Mariakapelle im Rathaus
+                                Jakob Poll &rsaquo; St. Mariakapelle im Rathaus
                             
                         </td>
                         <td class="rel-col-source">
@@ -1912,7 +1997,7 @@
                         <td class="rel-col-label"><em>chaplan</em></td>
                         <td class="rel-col-perspective">
                             
-                                Jakob Poll → St. Mariakapelle im Rathaus
+                                Jakob Poll &rsaquo; St. Mariakapelle im Rathaus
                             
                         </td>
                         <td class="rel-col-source">
@@ -1931,7 +2016,7 @@
                         <td class="rel-col-label"><em>chaplan</em></td>
                         <td class="rel-col-perspective">
                             
-                                Jakob Poll → St. Mariakapelle im Rathaus
+                                Jakob Poll &rsaquo; St. Mariakapelle im Rathaus
                             
                         </td>
                         <td class="rel-col-source">
@@ -1950,7 +2035,7 @@
                         <td class="rel-col-label"><em>chaplan</em></td>
                         <td class="rel-col-perspective">
                             
-                                Jakob Poll → St. Mariakapelle im Rathaus
+                                Jakob Poll &rsaquo; St. Mariakapelle im Rathaus
                             
                         </td>
                         <td class="rel-col-source">
@@ -1969,7 +2054,7 @@
                         <td class="rel-col-label"><em>chaplan</em></td>
                         <td class="rel-col-perspective">
                             
-                                Jakob Poll → St. Mariakapelle im Rathaus
+                                Jakob Poll &rsaquo; St. Mariakapelle im Rathaus
                             
                         </td>
                         <td class="rel-col-source">
@@ -1988,7 +2073,7 @@
                         <td class="rel-col-label"><em>chaplan</em></td>
                         <td class="rel-col-perspective">
                             
-                                Jakob Poll → St. Mariakapelle im Rathaus
+                                Jakob Poll &rsaquo; St. Mariakapelle im Rathaus
                             
                         </td>
                         <td class="rel-col-source">
@@ -2007,7 +2092,7 @@
                         <td class="rel-col-label"><em>chaplan</em></td>
                         <td class="rel-col-perspective">
                             
-                                Jakob Poll → St. Mariakapelle im Rathaus
+                                Jakob Poll &rsaquo; St. Mariakapelle im Rathaus
                             
                         </td>
                         <td class="rel-col-source">
@@ -2026,7 +2111,7 @@
                         <td class="rel-col-label"><em>chaplan</em></td>
                         <td class="rel-col-perspective">
                             
-                                Jakob Poll → St. Mariakapelle im Rathaus
+                                Jakob Poll &rsaquo; St. Mariakapelle im Rathaus
                             
                         </td>
                         <td class="rel-col-source">
@@ -2045,7 +2130,7 @@
                         <td class="rel-col-label"><em>Kaplan</em></td>
                         <td class="rel-col-perspective">
                             
-                                Jakob Poll → St. Mariakapelle im Rathaus
+                                Jakob Poll &rsaquo; St. Mariakapelle im Rathaus
                             
                         </td>
                         <td class="rel-col-source">
@@ -2064,7 +2149,7 @@
                         <td class="rel-col-label"><em>Kaplans</em></td>
                         <td class="rel-col-perspective">
                             
-                                Jakob Poll → St. Mariakapelle im Rathaus
+                                Jakob Poll &rsaquo; St. Mariakapelle im Rathaus
                             
                         </td>
                         <td class="rel-col-source">
@@ -2083,7 +2168,7 @@
                         <td class="rel-col-label"><em>chaplan</em></td>
                         <td class="rel-col-perspective">
                             
-                                Jakob Poll → St. Mariakapelle im Rathaus
+                                Jakob Poll &rsaquo; St. Mariakapelle im Rathaus
                             
                         </td>
                         <td class="rel-col-source">
@@ -2102,7 +2187,7 @@
                         <td class="rel-col-label"><em>chaplan</em></td>
                         <td class="rel-col-perspective">
                             
-                                Jakob Poll → St. Mariakapelle im Rathaus
+                                Jakob Poll &rsaquo; St. Mariakapelle im Rathaus
                             
                         </td>
                         <td class="rel-col-source">
@@ -2121,7 +2206,7 @@
                         <td class="rel-col-label"><em>kaplan</em></td>
                         <td class="rel-col-perspective">
                             
-                                Jakob Poll → St. Mariakapelle im Rathaus
+                                Jakob Poll &rsaquo; St. Mariakapelle im Rathaus
                             
                         </td>
                         <td class="rel-col-source">
@@ -2140,7 +2225,7 @@
                         <td class="rel-col-label"><em>Kaplan</em></td>
                         <td class="rel-col-perspective">
                             
-                                Jakob Poll → St. Mariakapelle im Rathaus
+                                Jakob Poll &rsaquo; St. Mariakapelle im Rathaus
                             
                         </td>
                         <td class="rel-col-source">
@@ -2159,7 +2244,7 @@
                         <td class="rel-col-label"><em>Kaplan</em></td>
                         <td class="rel-col-perspective">
                             
-                                Jakob Poll → St. Mariakapelle im Rathaus
+                                Jakob Poll &rsaquo; St. Mariakapelle im Rathaus
                             
                         </td>
                         <td class="rel-col-source">
@@ -2178,7 +2263,7 @@
                         <td class="rel-col-label"><em>capellanus</em></td>
                         <td class="rel-col-perspective">
                             
-                                Jakob Poll → St. Mariakapelle im Rathaus
+                                Jakob Poll &rsaquo; St. Mariakapelle im Rathaus
                             
                         </td>
                         <td class="rel-col-source">
@@ -2197,7 +2282,7 @@
                         <td class="rel-col-label"><em>chaplan</em></td>
                         <td class="rel-col-perspective">
                             
-                                Jakob Poll → St. Mariakapelle im Rathaus
+                                Jakob Poll &rsaquo; St. Mariakapelle im Rathaus
                             
                         </td>
                         <td class="rel-col-source">
@@ -2216,7 +2301,7 @@
                         <td class="rel-col-label"><em>capellan</em></td>
                         <td class="rel-col-perspective">
                             
-                                Jakob Poll → St. Mariakapelle im Rathaus
+                                Jakob Poll &rsaquo; St. Mariakapelle im Rathaus
                             
                         </td>
                         <td class="rel-col-source">
@@ -2235,7 +2320,7 @@
                         <td class="rel-col-label"><em>pharrer</em></td>
                         <td class="rel-col-perspective">
                             
-                                Jakob Poll → St. Mariakapelle im Rathaus
+                                Jakob Poll &rsaquo; St. Mariakapelle im Rathaus
                             
                         </td>
                         <td class="rel-col-source">
@@ -2254,7 +2339,7 @@
                         <td class="rel-col-label"><em>Kaplan</em></td>
                         <td class="rel-col-perspective">
                             
-                                Jakob Poll → St. Mariakapelle im Rathaus
+                                Jakob Poll &rsaquo; St. Mariakapelle im Rathaus
                             
                         </td>
                         <td class="rel-col-source">
@@ -2273,7 +2358,7 @@
                         <td class="rel-col-label"><em>Verweser</em></td>
                         <td class="rel-col-perspective">
                             
-                                Jakob Poll → St. Mariakapelle im Rathaus
+                                Jakob Poll &rsaquo; St. Mariakapelle im Rathaus
                             
                         </td>
                         <td class="rel-col-source">
@@ -2292,7 +2377,7 @@
                         <td class="rel-col-label"><em>Kaplans</em></td>
                         <td class="rel-col-perspective">
                             
-                                Jakob Poll → St. Mariakapelle im Rathaus
+                                Jakob Poll &rsaquo; St. Mariakapelle im Rathaus
                             
                         </td>
                         <td class="rel-col-source">
@@ -2311,7 +2396,7 @@
                         <td class="rel-col-label"><em>capellan</em></td>
                         <td class="rel-col-perspective">
                             
-                                Jakob Poll → St. Mariakapelle im Rathaus
+                                Jakob Poll &rsaquo; St. Mariakapelle im Rathaus
                             
                         </td>
                         <td class="rel-col-source">
@@ -2330,7 +2415,7 @@
                         <td class="rel-col-label"><em>Kaplans</em></td>
                         <td class="rel-col-perspective">
                             
-                                Jakob Poll → St. Mariakapelle im Rathaus
+                                Jakob Poll &rsaquo; St. Mariakapelle im Rathaus
                             
                         </td>
                         <td class="rel-col-source">
@@ -2349,7 +2434,7 @@
                         <td class="rel-col-label"><em>obersten Kaplans</em></td>
                         <td class="rel-col-perspective">
                             
-                                Jakob Poll → St. Mariakapelle im Rathaus
+                                Jakob Poll &rsaquo; St. Mariakapelle im Rathaus
                             
                         </td>
                         <td class="rel-col-source">
@@ -2368,7 +2453,7 @@
                         <td class="rel-col-label"><em>Kaplans</em></td>
                         <td class="rel-col-perspective">
                             
-                                Jakob Poll → St. Mariakapelle im Rathaus
+                                Jakob Poll &rsaquo; St. Mariakapelle im Rathaus
                             
                         </td>
                         <td class="rel-col-source">
@@ -2387,7 +2472,7 @@
                         <td class="rel-col-label"><em>Kaplan</em></td>
                         <td class="rel-col-perspective">
                             
-                                Jakob Poll → St. Mariakapelle im Rathaus
+                                Jakob Poll &rsaquo; St. Mariakapelle im Rathaus
                             
                         </td>
                         <td class="rel-col-source">
@@ -2406,7 +2491,7 @@
                         <td class="rel-col-label"><em>chaplan</em></td>
                         <td class="rel-col-perspective">
                             
-                                Jakob Poll → St. Mariakapelle im Rathaus
+                                Jakob Poll &rsaquo; St. Mariakapelle im Rathaus
                             
                         </td>
                         <td class="rel-col-source">
@@ -2425,7 +2510,7 @@
                         <td class="rel-col-label"><em>chaplan</em></td>
                         <td class="rel-col-perspective">
                             
-                                Jakob Poll → St. Mariakapelle im Rathaus
+                                Jakob Poll &rsaquo; St. Mariakapelle im Rathaus
                             
                         </td>
                         <td class="rel-col-source">
@@ -2444,7 +2529,7 @@
                         <td class="rel-col-label"><em>chapellan</em></td>
                         <td class="rel-col-perspective">
                             
-                                Jakob Poll → St. Mariakapelle im Rathaus
+                                Jakob Poll &rsaquo; St. Mariakapelle im Rathaus
                             
                         </td>
                         <td class="rel-col-source">
@@ -2463,7 +2548,7 @@
                         <td class="rel-col-label"><em>chapellan</em></td>
                         <td class="rel-col-perspective">
                             
-                                Jakob Poll → St. Mariakapelle im Rathaus
+                                Jakob Poll &rsaquo; St. Mariakapelle im Rathaus
                             
                         </td>
                         <td class="rel-col-source">
@@ -2482,7 +2567,7 @@
                         <td class="rel-col-label"><em>chapellan</em></td>
                         <td class="rel-col-perspective">
                             
-                                Jakob Poll → St. Mariakapelle im Rathaus
+                                Jakob Poll &rsaquo; St. Mariakapelle im Rathaus
                             
                         </td>
                         <td class="rel-col-source">
@@ -2501,7 +2586,7 @@
                         <td class="rel-col-label"><em>Kaplan</em></td>
                         <td class="rel-col-perspective">
                             
-                                Jakob Poll → St. Mariakapelle im Rathaus
+                                Jakob Poll &rsaquo; St. Mariakapelle im Rathaus
                             
                         </td>
                         <td class="rel-col-source">
@@ -2520,7 +2605,7 @@
                         <td class="rel-col-label"><em>Kaplan</em></td>
                         <td class="rel-col-perspective">
                             
-                                Jakob Poll → St. Mariakapelle im Rathaus
+                                Jakob Poll &rsaquo; St. Mariakapelle im Rathaus
                             
                         </td>
                         <td class="rel-col-source">
@@ -2539,7 +2624,7 @@
                         <td class="rel-col-label"><em>Kaplan</em></td>
                         <td class="rel-col-perspective">
                             
-                                Jakob Poll → St. Mariakapelle im Rathaus
+                                Jakob Poll &rsaquo; St. Mariakapelle im Rathaus
                             
                         </td>
                         <td class="rel-col-source">
@@ -2558,7 +2643,7 @@
                         <td class="rel-col-label"><em>caplan</em></td>
                         <td class="rel-col-perspective">
                             
-                                Jakob Poll → St. Mariakapelle im Rathaus
+                                Jakob Poll &rsaquo; St. Mariakapelle im Rathaus
                             
                         </td>
                         <td class="rel-col-source">
@@ -2577,7 +2662,7 @@
                         <td class="rel-col-label"><em>caplan</em></td>
                         <td class="rel-col-perspective">
                             
-                                Jakob Poll → St. Mariakapelle im Rathaus
+                                Jakob Poll &rsaquo; St. Mariakapelle im Rathaus
                             
                         </td>
                         <td class="rel-col-source">
@@ -2596,7 +2681,7 @@
                         <td class="rel-col-label"><em>chaplan</em></td>
                         <td class="rel-col-perspective">
                             
-                                Jakob Poll → St. Mariakapelle im Rathaus
+                                Jakob Poll &rsaquo; St. Mariakapelle im Rathaus
                             
                         </td>
                         <td class="rel-col-source">
@@ -2615,7 +2700,7 @@
                         <td class="rel-col-label"><em>chaplan</em></td>
                         <td class="rel-col-perspective">
                             
-                                Jakob Poll → St. Mariakapelle im Rathaus
+                                Jakob Poll &rsaquo; St. Mariakapelle im Rathaus
                             
                         </td>
                         <td class="rel-col-source">
@@ -2634,7 +2719,7 @@
                         <td class="rel-col-label"><em>caplan</em></td>
                         <td class="rel-col-perspective">
                             
-                                Jakob Poll → St. Mariakapelle im Rathaus
+                                Jakob Poll &rsaquo; St. Mariakapelle im Rathaus
                             
                         </td>
                         <td class="rel-col-source">
@@ -2653,7 +2738,7 @@
                         <td class="rel-col-label"><em>pharrer</em></td>
                         <td class="rel-col-perspective">
                             
-                                Jakob Poll → St. Mariakapelle im Rathaus
+                                Jakob Poll &rsaquo; St. Mariakapelle im Rathaus
                             
                         </td>
                         <td class="rel-col-source">
@@ -2672,7 +2757,7 @@
                         <td class="rel-col-label"><em>kapellan</em></td>
                         <td class="rel-col-perspective">
                             
-                                Jakob Poll → St. Mariakapelle im Rathaus
+                                Jakob Poll &rsaquo; St. Mariakapelle im Rathaus
                             
                         </td>
                         <td class="rel-col-source">
@@ -2691,7 +2776,7 @@
                         <td class="rel-col-label"><em>chaplan</em></td>
                         <td class="rel-col-perspective">
                             
-                                Jakob Poll → St. Mariakapelle im Rathaus
+                                Jakob Poll &rsaquo; St. Mariakapelle im Rathaus
                             
                         </td>
                         <td class="rel-col-source">
@@ -2710,7 +2795,7 @@
                         <td class="rel-col-label"><em>rectoris</em></td>
                         <td class="rel-col-perspective">
                             
-                                Jakob Poll → St. Mariakapelle im Rathaus
+                                Jakob Poll &rsaquo; St. Mariakapelle im Rathaus
                             
                         </td>
                         <td class="rel-col-source">
@@ -2729,7 +2814,7 @@
                         <td class="rel-col-label"><em>Kaplan</em></td>
                         <td class="rel-col-perspective">
                             
-                                Jakob Poll → St. Mariakapelle im Rathaus
+                                Jakob Poll &rsaquo; St. Mariakapelle im Rathaus
                             
                         </td>
                         <td class="rel-col-source">
@@ -2748,7 +2833,7 @@
                         <td class="rel-col-label"><em>oberste Kaplan</em></td>
                         <td class="rel-col-perspective">
                             
-                                Jakob Poll → St. Mariakapelle im Rathaus
+                                Jakob Poll &rsaquo; St. Mariakapelle im Rathaus
                             
                         </td>
                         <td class="rel-col-source">
@@ -2767,7 +2852,7 @@
                         <td class="rel-col-label"><em>kapellan</em></td>
                         <td class="rel-col-perspective">
                             
-                                Jakob Poll → St. Mariakapelle im Rathaus
+                                Jakob Poll &rsaquo; St. Mariakapelle im Rathaus
                             
                         </td>
                         <td class="rel-col-source">
@@ -2786,7 +2871,7 @@
                         <td class="rel-col-label"><em>Kaplans</em></td>
                         <td class="rel-col-perspective">
                             
-                                Jakob Poll → St. Mariakapelle im Rathaus
+                                Jakob Poll &rsaquo; St. Mariakapelle im Rathaus
                             
                         </td>
                         <td class="rel-col-source">
@@ -2805,7 +2890,7 @@
                         <td class="rel-col-label"><em>Kaplans</em></td>
                         <td class="rel-col-perspective">
                             
-                                Jakob Poll → St. Mariakapelle im Rathaus
+                                Jakob Poll &rsaquo; St. Mariakapelle im Rathaus
                             
                         </td>
                         <td class="rel-col-source">
@@ -2823,18 +2908,32 @@
         
         
         
+        
+        
+        
+        
+        
+        
     </section>
     
 
     
     <section class="person-sources" aria-label="Quellen mit Nennung">
         <h2 class="section-head">Quellen mit Nennung</h2>
-        <table class="person-source-table">
+        
+        <div class="table-filter">
+            <input type="search" class="table-filter-input" data-target="src" placeholder="In den Quellen filtern&hellip;" aria-label="In den Quellen filtern">
+            <span class="table-filter-status"></span>
+        </div>
+        
+        <table class="person-source-table" data-truncate-at="50">
             <thead>
                 <tr>
                     <th scope="col" class="src-col-idno">Nr.</th>
                     <th scope="col" class="src-col-date">Datum</th>
                     <th scope="col" class="src-col-corpus">Quellenkorpus</th>
+                    <th scope="col" class="src-col-label">Bezeichnung</th>
+                    <th scope="col" class="src-col-role">Rolle</th>
                     <th scope="col" class="src-col-regest">Regest</th>
                 </tr>
             </thead>
@@ -2844,6 +2943,11 @@
                     <td class="src-col-idno"><a href="../../documents/QGW/Vienna_1177-1414_ready/257.html">257</a></td>
                     <td class="src-col-date">1343 II 23</td>
                     <td class="src-col-corpus">QGW II/1 (1177–1414)</td>
+                    <td class="src-col-label"><em>Grundherrn|hern</em></td>
+                    <td class="src-col-role">
+                        <span class="role-chip role-chip-other">Sonstige</span><span class="role-chip role-chip-witness">Zeuge / Siegler*in</span>
+                        
+                    </td>
                     <td class="src-col-regest">Ulreich Moyker von Huntzhaim und Diemut, seine Hausfrau, verkaufen mit Handen ihres Grundherrn hern Jacoben des Pollen, Unser Vrowen chapplan in der chappeln ze hern Otten Haimen ze Wienne, 28 ½…</td>
                 </tr>
             
@@ -2851,6 +2955,11 @@
                     <td class="src-col-idno"><a href="../../documents/QGW/Vienna_1177-1414_ready/260.html">260</a></td>
                     <td class="src-col-date">1343 III 27</td>
                     <td class="src-col-corpus">QGW II/1 (1177–1414)</td>
+                    <td class="src-col-label"><em>hern</em></td>
+                    <td class="src-col-role">
+                        <span class="role-chip role-chip-recipient">Empfänger*in</span>
+                        
+                    </td>
                     <td class="src-col-regest">Chunrat der Wiltwercher, purgermaister, und der rat gemain van der stat ze Wienn bestätigen, dass vor ihnen vro Chunigunt, witib hern Walchuenes witib, des statschreiber, mit ihrem Sohne Walchuenen…</td>
                 </tr>
             
@@ -2858,6 +2967,11 @@
                     <td class="src-col-idno"><a href="../../documents/QGW/Vienna_1177-1414_ready/262.html">262</a></td>
                     <td class="src-col-date">1343 IV 06</td>
                     <td class="src-col-corpus">QGW II/1 (1177–1414)</td>
+                    <td class="src-col-label"><em>hern</em></td>
+                    <td class="src-col-role">
+                        <span class="role-chip role-chip-recipient">Empfänger*in</span>
+                        
+                    </td>
                     <td class="src-col-regest">Chunigunt, wittibe hern Walchons wittibe, des statschreiber, verkauft mit Handen ihres Grundherrn des Ritters hern Jansen des Greiffen aus êhafter not 4 lb dn. geltes purchrechtes auf ihrem Hause,…</td>
                 </tr>
             
@@ -2865,6 +2979,11 @@
                     <td class="src-col-idno"><a href="../../documents/QGW/Vienna_1177-1414_ready/264.html">264</a></td>
                     <td class="src-col-date">1343 VII 12</td>
                     <td class="src-col-corpus">QGW II/1 (1177–1414)</td>
+                    <td class="src-col-label"><em>-</em></td>
+                    <td class="src-col-role">
+                        <span class="role-chip role-chip-issuer">Aussteller*in</span><span class="role-chip role-chip-witness">Zeuge / Siegler*in</span>
+                        
+                    </td>
                     <td class="src-col-regest">Jacob, chapplan der chapellen Unser Vrowen, hern Otten Haimen stiftunge, Ulreich chinder, Michel chinder, Stephan chinder, Nichlas chinder, Chlar chinder und Margret, chinder hern Stephans chinder…</td>
                 </tr>
             
@@ -2872,6 +2991,11 @@
                     <td class="src-col-idno"><a href="../../documents/QGW/Vienna_1177-1414_ready/305.html">305</a></td>
                     <td class="src-col-date">1346 X 16</td>
                     <td class="src-col-corpus">QGW II/1 (1177–1414)</td>
+                    <td class="src-col-label"><em>hern</em></td>
+                    <td class="src-col-role">
+                        <span class="role-chip role-chip-recipient">Empfänger*in</span>
+                        
+                    </td>
                     <td class="src-col-regest">Rudolf,sun Albrechts sun von Sant Pölten, und Praeunhilt, seine Hausfrau, verkaufen mit Handen ihres Bergherrn hern Stephans, pharrer dacz sant Paertelme zu der Herren Alsse, 1 lb dn. geltes…</td>
                 </tr>
             
@@ -2879,6 +3003,11 @@
                     <td class="src-col-idno"><a href="../../documents/QGW/Vienna_1177-1414_ready/339.html">339</a></td>
                     <td class="src-col-date">1349 VII 29</td>
                     <td class="src-col-corpus">QGW II/1 (1177–1414)</td>
+                    <td class="src-col-label"><em>hern</em></td>
+                    <td class="src-col-role">
+                        <span class="role-chip role-chip-other">Sonstige</span>
+                        
+                    </td>
                     <td class="src-col-regest">Jans,sun Ulreichs sun des Nagels, dem got genade, beurkundet seinen letzten Willen. Er verfügt über zwei Weingärten, die er von seinem Vater geerbt hatte, die baide ligent an dem Nussperg, der ainer…</td>
                 </tr>
             
@@ -2886,6 +3015,11 @@
                     <td class="src-col-idno"><a href="../../documents/QGW/Vienna_1177-1414_ready/344.html">344</a></td>
                     <td class="src-col-date">1349 IX 22</td>
                     <td class="src-col-corpus">QGW II/1 (1177–1414)</td>
+                    <td class="src-col-label"><em>her</em></td>
+                    <td class="src-col-role">
+                        <span class="role-chip role-chip-recipient">Empfänger*in</span>
+                        
+                    </td>
                     <td class="src-col-regest">Fridreich von Tirna, purgermaister, und der rat gemain von der stat ze Wienne beurkunden, dass vor ihnen her Jacob der Polle, chaplan Unser Vrown chapelln dacz hern Otten dem Haimen, mit Frau…</td>
                 </tr>
             
@@ -2893,6 +3027,11 @@
                     <td class="src-col-idno"><a href="../../documents/QGW/Vienna_1177-1414_ready/385.html">385</a></td>
                     <td class="src-col-date">1350</td>
                     <td class="src-col-corpus">QGW II/1 (1177–1414)</td>
+                    <td class="src-col-label"><em>-</em></td>
+                    <td class="src-col-role">
+                        <span class="role-chip role-chip-issuer">Aussteller*in</span><span class="role-chip role-chip-witness">Zeuge / Siegler*in</span>
+                        
+                    </td>
                     <td class="src-col-regest">Jacob der Polle, chaplan der chapellen Unser Vrowen in der purger Rathaus ze Wien, hern Otten Haime Stiftung saeliger, verkauft mit Einwilligung der Geschäftsvollstrecker seines Vetters hern…</td>
                 </tr>
             
@@ -2900,6 +3039,11 @@
                     <td class="src-col-idno"><a href="../../documents/QGW/Vienna_1177-1414_ready/361.html">361</a></td>
                     <td class="src-col-date">1350 IX 07</td>
                     <td class="src-col-corpus">QGW II/1 (1177–1414)</td>
+                    <td class="src-col-label"><em>hern</em></td>
+                    <td class="src-col-role">
+                        <span class="role-chip role-chip-recipient">Empfänger*in</span>
+                        
+                    </td>
                     <td class="src-col-regest">Pilgreim der Cho/echel bestätigt, dass er das Pfund Geldes Burgrechts, das sein verstorbener Vater her Otte der Chöchel geschaft hat in Unser Vrowen chapellen, die da stêt in der purger Rathaus ze…</td>
                 </tr>
             
@@ -2907,6 +3051,11 @@
                     <td class="src-col-idno"><a href="../../documents/QGW/Vienna_1177-1414_ready/364.html">364</a></td>
                     <td class="src-col-date">1350 XII 07</td>
                     <td class="src-col-corpus">QGW II/1 (1177–1414)</td>
+                    <td class="src-col-label"><em>hern</em></td>
+                    <td class="src-col-role">
+                        <span class="role-chip role-chip-recipient">Empfänger*in</span>
+                        
+                    </td>
                     <td class="src-col-regest">Nichlas von Raechleinstorf beurkundet, dass er von den drei Weingärten, welche Frau Christein, die Witwe Witwe hern Leupolts des Puchser, seinem Bruder Friedrich und dieser zu einer ewigen Messe in…</td>
                 </tr>
             
@@ -2914,6 +3063,11 @@
                     <td class="src-col-idno"><a href="../../documents/QGW/Vienna_1177-1414_ready/381.html">381</a></td>
                     <td class="src-col-date">1351 VI 20</td>
                     <td class="src-col-corpus">QGW II/1 (1177–1414)</td>
+                    <td class="src-col-label"><em>hern</em></td>
+                    <td class="src-col-role">
+                        <span class="role-chip role-chip-recipient">Empfänger*in</span>
+                        
+                    </td>
                     <td class="src-col-regest">Mörchel der Jude,sun Nachmans sun des Juden von Salzpurch, bestätigt verglichen habe, dass er sich mit hern Jacoben dem Pollen, chaplan der chapellen dacz hern Ottenheim in der purger Rathaus, wegen…</td>
                 </tr>
             
@@ -2921,6 +3075,11 @@
                     <td class="src-col-idno"><a href="../../documents/QGW/Vienna_1177-1414_ready/400.html">400</a></td>
                     <td class="src-col-date">1352 II 18</td>
                     <td class="src-col-corpus">QGW II/1 (1177–1414)</td>
+                    <td class="src-col-label"><em>Grundherrn|hern</em></td>
+                    <td class="src-col-role">
+                        <span class="role-chip role-chip-other">Sonstige</span><span class="role-chip role-chip-witness">Zeuge / Siegler*in</span>
+                        
+                    </td>
                     <td class="src-col-regest">Wernhart, des Ziphs aidem scharfer und phleger, und Philipp, sein aidem, baide scharfer und phleger der Siechen gu/ot datz dem Chlagpaum, beurkunden, dass die Siechen mit Handen des Grundherrn hern…</td>
                 </tr>
             
@@ -2928,6 +3087,11 @@
                     <td class="src-col-idno"><a href="../../documents/QGW/Vienna_1177-1414_ready/407.html">407</a></td>
                     <td class="src-col-date">1352 VII 21</td>
                     <td class="src-col-corpus">QGW II/1 (1177–1414)</td>
+                    <td class="src-col-label"><em>-</em></td>
+                    <td class="src-col-role">
+                        <span class="role-chip role-chip-issuer">Aussteller*in</span><span class="role-chip role-chip-witness">Zeuge / Siegler*in</span>
+                        
+                    </td>
                     <td class="src-col-regest">Jacob der Poll, chaplan der chapelln Unser Vrown in der purger Rathaus ze Wienn, hern Otten Haim Stiftung saelig , beurkundet, dass er das Haus, gelegen in sant Johans strass ze Wienn zenaechst der…</td>
                 </tr>
             
@@ -2935,6 +3099,11 @@
                     <td class="src-col-idno"><a href="../../documents/QGW/Vienna_1177-1414_ready/411.html">411</a></td>
                     <td class="src-col-date">1352 VIII 09</td>
                     <td class="src-col-corpus">QGW II/1 (1177–1414)</td>
+                    <td class="src-col-label"><em>-</em></td>
+                    <td class="src-col-role">
+                        <span class="role-chip role-chip-issuer">Aussteller*in</span><span class="role-chip role-chip-witness">Zeuge / Siegler*in</span>
+                        
+                    </td>
                     <td class="src-col-regest">Jacob der Poll, chaplan der chapellen Unser Vrowen in der purger Rathaus ze Wienn, hern Otten Haimen Stiftung sälig , urkundetüber die Anlage der von seinem Bruder Stephan dem Pollen zur Kapelle…</td>
                 </tr>
             
@@ -2942,6 +3111,11 @@
                     <td class="src-col-idno"><a href="../../documents/QGW/Vienna_1177-1414_ready/412.html">412</a></td>
                     <td class="src-col-date">1352 VIII 31</td>
                     <td class="src-col-corpus">QGW II/1 (1177–1414)</td>
+                    <td class="src-col-label"><em>Herr</em></td>
+                    <td class="src-col-role">
+                        <span class="role-chip role-chip-recipient">Empfänger*in</span>
+                        
+                    </td>
                     <td class="src-col-regest">Andre, pharrer datz sant Baertelme ze der Herren Alsse, beurkundet, dass vor ihm in offenem Gerichte auf seiner Pfarrkirche Grund Herr Jakob der Polle, Kaplan der Kapelle Unserer Frau in der Bürger…</td>
                 </tr>
             
@@ -2949,6 +3123,11 @@
                     <td class="src-col-idno"><a href="../../documents/QGW/Vienna_1177-1414_ready/418.html">418</a></td>
                     <td class="src-col-date">1352 X 13</td>
                     <td class="src-col-corpus">QGW II/1 (1177–1414)</td>
+                    <td class="src-col-label"><em>-</em></td>
+                    <td class="src-col-role">
+                        <span class="role-chip role-chip-recipient">Empfänger*in</span>
+                        
+                    </td>
                     <td class="src-col-regest">Jans der Vogel, purger ze Wienne, und Elsbet, seine Hausfrau, verpflichten sich gegen Jacob den Pollen, Kaplan der Kapelle Unserer Frau in der Bürger Rathaus zu Wien, Herrn Otten Haim Stiftung, ihm…</td>
                 </tr>
             
@@ -2956,6 +3135,11 @@
                     <td class="src-col-idno"><a href="../../documents/QGW/Vienna_1177-1414_ready/427.html">427</a></td>
                     <td class="src-col-date">1353 I 28</td>
                     <td class="src-col-corpus">QGW II/1 (1177–1414)</td>
+                    <td class="src-col-label"><em>hern</em></td>
+                    <td class="src-col-role">
+                        
+                        -
+                    </td>
                     <td class="src-col-regest">Leupolt der Poltz, richter ze Wienn, beurkundet, dass vor ihm in der Bürgerschranne mit Vorsprechen Fridreich, diener hern Jacobs diener des Pollen, chaplan Unser Vrown chappellen, gelegen in der…</td>
                 </tr>
             
@@ -2963,6 +3147,11 @@
                     <td class="src-col-idno"><a href="../../documents/QGW/Vienna_1177-1414_ready/429.html">429</a></td>
                     <td class="src-col-date">1353 III 03</td>
                     <td class="src-col-corpus">QGW II/1 (1177–1414)</td>
+                    <td class="src-col-label"><em>-</em></td>
+                    <td class="src-col-role">
+                        <span class="role-chip role-chip-issuer">Aussteller*in</span><span class="role-chip role-chip-witness">Zeuge / Siegler*in</span>
+                        
+                    </td>
                     <td class="src-col-regest">Jacob der Poll, chapplan der chappellen Unser Vrowen in der purger Rathaus ze Wienne, Otten Haim Stiftung saelig , verkauft ein halbes Joch Weingarten, gelegen datz sant Paertelme ze der Herren Alsse…</td>
                 </tr>
             
@@ -2970,6 +3159,11 @@
                     <td class="src-col-idno"><a href="../../documents/QGW/Vienna_1177-1414_ready/430.html">430</a></td>
                     <td class="src-col-date">1353 III 29</td>
                     <td class="src-col-corpus">QGW II/1 (1177–1414)</td>
+                    <td class="src-col-label"><em>-</em></td>
+                    <td class="src-col-role">
+                        <span class="role-chip role-chip-recipient">Empfänger*in</span>
+                        
+                    </td>
                     <td class="src-col-regest">Hainreich der Waller, statschreiber ze Wienn, und Agnes, seine Hausfrau, stellen dem Kaplan der Marienkapelle im Rathause Jakob dem Pollen einen Revers aus über die Leistung des Pfundes Geldes…</td>
                 </tr>
             
@@ -2977,6 +3171,11 @@
                     <td class="src-col-idno"><a href="../../documents/QGW/Vienna_1177-1414_ready/436.html">436</a></td>
                     <td class="src-col-date">1353 VI 06</td>
                     <td class="src-col-corpus">QGW II/1 (1177–1414)</td>
+                    <td class="src-col-label"><em>hern</em></td>
+                    <td class="src-col-role">
+                        <span class="role-chip role-chip-recipient">Empfänger*in</span>
+                        
+                    </td>
                     <td class="src-col-regest">Maister Süz/zz/zel, der Jud ze Wienne, verkauft mit Handen des Bergherrn pru/eder Ernsteins des Ochsen, comiteur des hauses datz dem Taeutschen haus ze Wienne, ein Joch Weingarten in dem…</td>
                 </tr>
             
@@ -2984,6 +3183,11 @@
                     <td class="src-col-idno"><a href="../../documents/QGW/Vienna_1177-1414_ready/444.html">444</a></td>
                     <td class="src-col-date">1353 XI 12</td>
                     <td class="src-col-corpus">QGW II/1 (1177–1414)</td>
+                    <td class="src-col-label"><em>her</em></td>
+                    <td class="src-col-role">
+                        <span class="role-chip role-chip-recipient">Empfänger*in</span>
+                        
+                    </td>
                     <td class="src-col-regest">Hainreich der Würfel, purgermaister, und der rat gemain der stat ze Wienne bestätigen, dass ihnen her Jacob der Polle, chapplan der chappellen Unser Vrowen in ihrem Rathaus, hern Ottenhaim Stiftung,…</td>
                 </tr>
             
@@ -2991,6 +3195,11 @@
                     <td class="src-col-idno"><a href="../../documents/QGW/Vienna_1177-1414_ready/453.html">453</a></td>
                     <td class="src-col-date">1354 IV 30</td>
                     <td class="src-col-corpus">QGW II/1 (1177–1414)</td>
+                    <td class="src-col-label"><em>hern</em></td>
+                    <td class="src-col-role">
+                        
+                        -
+                    </td>
                     <td class="src-col-regest">Nichlas der Würfel, richter ze Wienne, beurkundet, dass vor ihm in der Bürgerschranne Fridreich, diener hern Jacobs diener des Pollen, chapplan der Chappellen Unser Vrown in der purger Rathaus ze…</td>
                 </tr>
             
@@ -2998,6 +3207,11 @@
                     <td class="src-col-idno"><a href="../../documents/QGW/Vienna_1177-1414_ready/454.html">454</a></td>
                     <td class="src-col-date">1354 IV 30</td>
                     <td class="src-col-corpus">QGW II/1 (1177–1414)</td>
+                    <td class="src-col-label"><em>hern</em></td>
+                    <td class="src-col-role">
+                        <span class="role-chip role-chip-recipient">Empfänger*in</span>
+                        
+                    </td>
                     <td class="src-col-regest">Hainreich der Straiher, judenrichter ze Wienne, bestätigt den als Urk. 453 angeführten Gerichtsbrief und setzt hern Jacoben den Pollen an Nutzen und Gewere des eingeklagten Hauses.</td>
                 </tr>
             
@@ -3005,6 +3219,11 @@
                     <td class="src-col-idno"><a href="../../documents/QGW/Vienna_1177-1414_ready/456a.html">456a</a></td>
                     <td class="src-col-date">1354 VIII 02</td>
                     <td class="src-col-corpus">QGW II/1 (1177–1414)</td>
+                    <td class="src-col-label"><em>hern</em></td>
+                    <td class="src-col-role">
+                        <span class="role-chip role-chip-recipient">Empfänger*in</span>
+                        
+                    </td>
                     <td class="src-col-regest">Jans, sun Niclos sun des smits in dem Vischhof ze Wienne saelig, und Katrei, seine Hausfrau, verkaufen mit Handen ihrer Grundfrau vraun Chunigunden, wittibe hern Herborts wittibe auf der Saeuln, 14…</td>
                 </tr>
             
@@ -3012,6 +3231,11 @@
                     <td class="src-col-idno"><a href="../../documents/QGW/Vienna_1177-1414_ready/479.html">479</a></td>
                     <td class="src-col-date">1356 IV 19</td>
                     <td class="src-col-corpus">QGW II/1 (1177–1414)</td>
+                    <td class="src-col-label"><em>-</em></td>
+                    <td class="src-col-role">
+                        <span class="role-chip role-chip-issuer">Aussteller*in</span><span class="role-chip role-chip-witness">Zeuge / Siegler*in</span>
+                        
+                    </td>
                     <td class="src-col-regest">Jacob der Polle, chapplan Unsern Vraun chappelln, gelegen in der purger Rathaus ze Wienne, hern Otten seligen Stiftung des Haimen , bestellt den Thoman von Senging cantor zum Cantor der Kapelle.…</td>
                 </tr>
             
@@ -3019,6 +3243,11 @@
                     <td class="src-col-idno"><a href="../../documents/QGW/Vienna_1177-1414_ready/481.html">481</a></td>
                     <td class="src-col-date">1356 V 12</td>
                     <td class="src-col-corpus">QGW II/1 (1177–1414)</td>
+                    <td class="src-col-label"><em>-</em></td>
+                    <td class="src-col-role">
+                        <span class="role-chip role-chip-issuer">Aussteller*in</span><span class="role-chip role-chip-witness">Zeuge / Siegler*in</span>
+                        
+                    </td>
                     <td class="src-col-regest">Jacob der Polle, chaplan Unser Vrowen chapellen, hern Otten Haimen seligen Stiftung, gelegen in der purger Rathaus ze Wienne , beurkundet, dass Pilgreim der Chochel der Kapelle ein Pfund Pfenninge…</td>
                 </tr>
             
@@ -3026,6 +3255,11 @@
                     <td class="src-col-idno"><a href="../../documents/QGW/Vienna_1177-1414_ready/482.html">482</a></td>
                     <td class="src-col-date">1356 V 14</td>
                     <td class="src-col-corpus">QGW II/1 (1177–1414)</td>
+                    <td class="src-col-label"><em>-</em></td>
+                    <td class="src-col-role">
+                        <span class="role-chip role-chip-recipient">Empfänger*in</span>
+                        
+                    </td>
                     <td class="src-col-regest">Eberhart von Osterhofen und Wendelmu/ot, seine Hausfrau, verkaufen mit Handen ihres Bergherrn hern Hainreichs des Straiher, purgermaister ze Wienne und hofmaister ze Dornpach, 12 sh. dn. gelts…</td>
                 </tr>
             
@@ -3033,6 +3267,11 @@
                     <td class="src-col-idno"><a href="../../documents/QGW/Vienna_1177-1414_ready/506.html">506</a></td>
                     <td class="src-col-date">1358 I 23</td>
                     <td class="src-col-corpus">QGW II/1 (1177–1414)</td>
+                    <td class="src-col-label"><em>-</em></td>
+                    <td class="src-col-role">
+                        <span class="role-chip role-chip-recipient">Empfänger*in</span>
+                        
+                    </td>
                     <td class="src-col-regest">* Fridlibus, officialis curie Pataviensis et eiusdem ecclesie canonicus, erklärt den Jakob Poll, Kaplan der Marienkapelle in Ottenhaim, frei von jedem Ansprüche, den Nicolaus, der Kaplan des Wiener…</td>
                 </tr>
             
@@ -3040,6 +3279,11 @@
                     <td class="src-col-idno"><a href="../../documents/QGW/Vienna_1177-1414_ready/511.html">511</a></td>
                     <td class="src-col-date">1358 IX 21</td>
                     <td class="src-col-corpus">QGW II/1 (1177–1414)</td>
+                    <td class="src-col-label"><em>hern</em></td>
+                    <td class="src-col-role">
+                        <span class="role-chip role-chip-witness">Zeuge / Siegler*in</span>
+                        
+                    </td>
                     <td class="src-col-regest">Jacob der Poll, purger ze Wienn, verzichtet auf alle Güter die ihnen anerstorben sind gegen seine Kinder aus seiner früheren Ehe mit Frau Engeln, der got genad,kind kind Niclasen, vrauen Engeln,kind…</td>
                 </tr>
             
@@ -3047,6 +3291,11 @@
                     <td class="src-col-idno"><a href="../../documents/QGW/Vienna_1177-1414_ready/513.html">513</a></td>
                     <td class="src-col-date">1358 X 13</td>
                     <td class="src-col-corpus">QGW II/1 (1177–1414)</td>
+                    <td class="src-col-label"><em>hern</em></td>
+                    <td class="src-col-role">
+                        <span class="role-chip role-chip-other">Sonstige</span><span class="role-chip role-chip-recipient">Empfänger*in</span>
+                        
+                    </td>
                     <td class="src-col-regest">Swester Gedraut die Setzerinne, abtessinne, und der convent gemain der gaestleichen vrowenchloster dacz sant Nichlas vor Stubentor ze Wienne , beurkunden ein abgeschlossenes Tauschgeschäft ein mit…</td>
                 </tr>
             
@@ -3054,6 +3303,11 @@
                     <td class="src-col-idno"><a href="../../documents/QGW/Vienna_1177-1414_ready/521.html">521</a></td>
                     <td class="src-col-date">1359 II 24</td>
                     <td class="src-col-corpus">QGW II/1 (1177–1414)</td>
+                    <td class="src-col-label"><em>-</em></td>
+                    <td class="src-col-role">
+                        <span class="role-chip role-chip-issuer">Aussteller*in</span><span class="role-chip role-chip-witness">Zeuge / Siegler*in</span>
+                        
+                    </td>
                     <td class="src-col-regest">Jacob der Poll, chaplan und verbesser Unser Vraun chapelln, hern Ottenhaim Stiftung salig, gelegen in dem Rathaus ze Wienn , gibt seinen Brüdern Ulreichen und Brüdern Stephan den Pollen eine…</td>
                 </tr>
             
@@ -3061,6 +3315,11 @@
                     <td class="src-col-idno"><a href="../../documents/QGW/Vienna_1177-1414_ready/522.html">522</a></td>
                     <td class="src-col-date">1359 II 24</td>
                     <td class="src-col-corpus">QGW II/1 (1177–1414)</td>
+                    <td class="src-col-label"><em>-</em></td>
+                    <td class="src-col-role">
+                        <span class="role-chip role-chip-issuer">Aussteller*in</span><span class="role-chip role-chip-witness">Zeuge / Siegler*in</span>
+                        
+                    </td>
                     <td class="src-col-regest">Jacob der Poll, chapellan und verbesser Unser Vraun chapelln, hern Ottenhaim Stiftung saelig, gelegen in dem Rathaus ze Wienn , gibt seinen Brüdern Ulreichen und Brüdern Stephan den Pollen eine…</td>
                 </tr>
             
@@ -3068,6 +3327,11 @@
                     <td class="src-col-idno"><a href="../../documents/QGW/Vienna_1177-1414_ready/523.html">523</a></td>
                     <td class="src-col-date">1359 II 24</td>
                     <td class="src-col-corpus">QGW II/1 (1177–1414)</td>
+                    <td class="src-col-label"><em>-</em></td>
+                    <td class="src-col-role">
+                        <span class="role-chip role-chip-issuer">Aussteller*in</span><span class="role-chip role-chip-witness">Zeuge / Siegler*in</span>
+                        
+                    </td>
                     <td class="src-col-regest">Jacob der Poll, chapellan, und verbeser Unser Vraun chapellen, hern Ottenhaim saelig Stiftung, gelegen in dem Rathaus ze Wienn , gibt seinen Brüdern Ulreichen und BrüdernStephan den Polln eine…</td>
                 </tr>
             
@@ -3075,6 +3339,11 @@
                     <td class="src-col-idno"><a href="../../documents/QGW/Vienna_1177-1414_ready/524.html">524</a></td>
                     <td class="src-col-date">1359 II 24</td>
                     <td class="src-col-corpus">QGW II/1 (1177–1414)</td>
+                    <td class="src-col-label"><em>-</em></td>
+                    <td class="src-col-role">
+                        <span class="role-chip role-chip-issuer">Aussteller*in</span><span class="role-chip role-chip-witness">Zeuge / Siegler*in</span>
+                        
+                    </td>
                     <td class="src-col-regest">Jacob der Poll, chapellan und verbeser Unser Vrauen chapelln , hern Ottenhaim Stiftung saelig, gelegen in dem Rathaus ze Wienn, gibt seinen Brüdern Ulreichen und Brüdern Stephan den Pollen eine…</td>
                 </tr>
             
@@ -3082,6 +3351,11 @@
                     <td class="src-col-idno"><a href="../../documents/QGW/Vienna_1177-1414_ready/525.html">525</a></td>
                     <td class="src-col-date">1359 II 25</td>
                     <td class="src-col-corpus">QGW II/1 (1177–1414)</td>
+                    <td class="src-col-label"><em>-</em></td>
+                    <td class="src-col-role">
+                        <span class="role-chip role-chip-issuer">Aussteller*in</span>
+                        
+                    </td>
                     <td class="src-col-regest">Jacob der Poll, chapellan und verbeser der chapelln Unser Vraun in der purger Rathaus ze Wienne, hern Ottenhaim selig Stiftung, stellt mit Wissen hern Friedliebs, Verweser in gestleichen sachen in…</td>
                 </tr>
             
@@ -3089,6 +3363,11 @@
                     <td class="src-col-idno"><a href="../../documents/QGW/Vienna_1177-1414_ready/526.html">526</a></td>
                     <td class="src-col-date">1359 II 25</td>
                     <td class="src-col-corpus">QGW II/1 (1177–1414)</td>
+                    <td class="src-col-label"><em>-</em></td>
+                    <td class="src-col-role">
+                        <span class="role-chip role-chip-issuer">Aussteller*in</span><span class="role-chip role-chip-witness">Zeuge / Siegler*in</span>
+                        
+                    </td>
                     <td class="src-col-regest">Jacob der Poll, chapellan und verweser der chapelln Unser Vraun in der purger Rathaus ze Wienne, hern Ottenhaim selig Stiftung , bestätigt, dass her Ulreich der Poll in Ausführung des Geschäftes…</td>
                 </tr>
             
@@ -3096,6 +3375,11 @@
                     <td class="src-col-idno"><a href="../../documents/QGW/Vienna_1177-1414_ready/527.html">527</a></td>
                     <td class="src-col-date">1359 II 25</td>
                     <td class="src-col-corpus">QGW II/1 (1177–1414)</td>
+                    <td class="src-col-label"><em>hern</em></td>
+                    <td class="src-col-role">
+                        <span class="role-chip role-chip-witness">Zeuge / Siegler*in</span>
+                        
+                    </td>
                     <td class="src-col-regest">Niclas chind, Elspet, hausvrau hern Hainreichs hausvrau des Schüchler chind , und Engel,hausvrau hern Ulreichs hausvrau des Pollen,chind hern Jacobs chind des Pollen, beurkunden die von ihnen…</td>
                 </tr>
             
@@ -3103,6 +3387,11 @@
                     <td class="src-col-idno"><a href="../../documents/QGW/Vienna_1177-1414_ready/534.html">534</a></td>
                     <td class="src-col-date">1359 X 21</td>
                     <td class="src-col-corpus">QGW II/1 (1177–1414)</td>
+                    <td class="src-col-label"><em>hern</em></td>
+                    <td class="src-col-role">
+                        <span class="role-chip role-chip-recipient">Empfänger*in</span>
+                        
+                    </td>
                     <td class="src-col-regest">Ulreich der Polle, purger ze Wienne, und Engel, seine Hausfrau, verkaufen mit Handen ihres Bergherrn Jacobs des Löffler 12 sh. dn. gelts purchrechts auf Andres haus des Vreunts (22 dn. Grundrecht),…</td>
                 </tr>
             
@@ -3110,6 +3399,11 @@
                     <td class="src-col-idno"><a href="../../documents/QGW/Vienna_1177-1414_ready/539.html">539</a></td>
                     <td class="src-col-date">1360 I 05</td>
                     <td class="src-col-corpus">QGW II/1 (1177–1414)</td>
+                    <td class="src-col-label"><em>-</em></td>
+                    <td class="src-col-role">
+                        <span class="role-chip role-chip-issuer">Aussteller*in</span><span class="role-chip role-chip-witness">Zeuge / Siegler*in</span>
+                        
+                    </td>
                     <td class="src-col-regest">Jacob der Polle, chaplan der chapellen Unser Vrowen in der purger Rathaus ze Wienne, hern Otten Haimen saeligen Stiftung , verkauft mit Handen des Bergherrn pruder Giligen, comiteur des hauses dacz…</td>
                 </tr>
             
@@ -3117,6 +3411,11 @@
                     <td class="src-col-idno"><a href="../../documents/QGW/Vienna_1177-1414_ready/540.html">540</a></td>
                     <td class="src-col-date">1360 I 11</td>
                     <td class="src-col-corpus">QGW II/1 (1177–1414)</td>
+                    <td class="src-col-label"><em>hern</em></td>
+                    <td class="src-col-role">
+                        <span class="role-chip role-chip-recipient">Empfänger*in</span>
+                        
+                    </td>
                     <td class="src-col-regest">Simon der Vivianz, purger ze Wienne, und Katrei, seine Hausfrau, verkaufen mit Handen ihres Bergherrn pruder Giligen, comiteur des hauses dacz dem Taeutschen haus ze Wienne, ihres Kauf gutes ½ Joch…</td>
                 </tr>
             
@@ -3124,6 +3423,11 @@
                     <td class="src-col-idno"><a href="../../documents/QGW/Vienna_1177-1414_ready/552.html">552</a></td>
                     <td class="src-col-date">1360 VII 11</td>
                     <td class="src-col-corpus">QGW II/1 (1177–1414)</td>
+                    <td class="src-col-label"><em>-</em></td>
+                    <td class="src-col-role">
+                        <span class="role-chip role-chip-issuer">Aussteller*in</span><span class="role-chip role-chip-witness">Zeuge / Siegler*in</span>
+                        
+                    </td>
                     <td class="src-col-regest">Jacob der Poll, chaplan der chapellen Unser Vrawen, gelegen in der purger Rathous ze Wienne , gibt nach dem Gebote Herzog Rudolfs Niclasen dem Stainer und seiner Hausfrau Annen 4 lb dn. geltes…</td>
                 </tr>
             
@@ -3131,6 +3435,11 @@
                     <td class="src-col-idno"><a href="../../documents/QGW/Vienna_1177-1414_ready/561.html">561</a></td>
                     <td class="src-col-date">1360 IX 07</td>
                     <td class="src-col-corpus">QGW II/1 (1177–1414)</td>
+                    <td class="src-col-label"><em>hern</em></td>
+                    <td class="src-col-role">
+                        <span class="role-chip role-chip-recipient">Empfänger*in</span>
+                        
+                    </td>
                     <td class="src-col-regest">Hainreich der Ledrer, amptman ze Obern Sufring hern Jacobs des Löffler, purger ze Wienne, Gedraut , seine Hausfrau, Jans, sein aidem, und Elsbet, seine Hausfrau, Heinrichs Tochter, verkaufen mit…</td>
                 </tr>
             
@@ -3138,6 +3447,11 @@
                     <td class="src-col-idno"><a href="../../documents/QGW/Vienna_1177-1414_ready/568.html">568</a></td>
                     <td class="src-col-date">1360 X 27</td>
                     <td class="src-col-corpus">QGW II/1 (1177–1414)</td>
+                    <td class="src-col-label"><em>-</em></td>
+                    <td class="src-col-role">
+                        <span class="role-chip role-chip-issuer">Aussteller*in</span><span class="role-chip role-chip-witness">Zeuge / Siegler*in</span>
+                        
+                    </td>
                     <td class="src-col-regest">Jacob der Polle, chaplan der chapelln Unser Vrowen in der purger Rathaus ze Wienne, hern Ottenhaimen saeligen Stiftung , bestätigt, dass ihm sein Vetter Lienhart der Polle 50 lb dn. gegeben habe, die…</td>
                 </tr>
             
@@ -3145,6 +3459,11 @@
                     <td class="src-col-idno"><a href="../../documents/QGW/Vienna_1177-1414_ready/571.html">571</a></td>
                     <td class="src-col-date">1360 XI 13</td>
                     <td class="src-col-corpus">QGW II/1 (1177–1414)</td>
+                    <td class="src-col-label"><em>hern</em></td>
+                    <td class="src-col-role">
+                        <span class="role-chip role-chip-recipient">Empfänger*in</span>
+                        
+                    </td>
                     <td class="src-col-regest">Mert,sun maister Jansen sun von Schêffhausen, dem got genad, und Margret, seine Hausfrau, verkaufen mit Handen des Bürgermeisters hern Haunolts des Schuchler und des Rathes der Stadt zu Wien ihr…</td>
                 </tr>
             
@@ -3152,6 +3471,11 @@
                     <td class="src-col-idno"><a href="../../documents/QGW/Vienna_1177-1414_ready/575.html">575</a></td>
                     <td class="src-col-date">1360 XII 19</td>
                     <td class="src-col-corpus">QGW II/1 (1177–1414)</td>
+                    <td class="src-col-label"><em>-</em></td>
+                    <td class="src-col-role">
+                        <span class="role-chip role-chip-recipient">Empfänger*in</span>
+                        
+                    </td>
                     <td class="src-col-regest">Haunolt der Schüchler, purgermaister, und der rat gemain der stat ze Wienne bestätigen, dass ihr Kaplan her Jacob der Poll nach dem Gebote Herzog Rudolfs IV. 12 . lb dn. an 20 dn. gelts purchrechts…</td>
                 </tr>
             
@@ -3159,6 +3483,11 @@
                     <td class="src-col-idno"><a href="../../documents/QGW/Vienna_1177-1414_ready/582.html">582</a></td>
                     <td class="src-col-date">1361 IV 04</td>
                     <td class="src-col-corpus">QGW II/1 (1177–1414)</td>
+                    <td class="src-col-label"><em>hern</em></td>
+                    <td class="src-col-role">
+                        <span class="role-chip role-chip-recipient">Empfänger*in</span>
+                        
+                    </td>
                     <td class="src-col-regest">Ulreich der Poll, purger ze Wienne, und Engel, seine Hausfrau, verkaufen mit Handen des Bürgermeisters hern Haunolts des Schüchler und des Rathes der Stadt zu Wien von ihrem Hause, gelegen zenast der…</td>
                 </tr>
             
@@ -3166,6 +3495,11 @@
                     <td class="src-col-idno"><a href="../../documents/QGW/Vienna_1177-1414_ready/583.html">583</a></td>
                     <td class="src-col-date">1361 IV 07</td>
                     <td class="src-col-corpus">QGW II/1 (1177–1414)</td>
+                    <td class="src-col-label"><em>Herrn</em></td>
+                    <td class="src-col-role">
+                        
+                        -
+                    </td>
                     <td class="src-col-regest">Pertelme,pru/eder sun Jansen pru/eder, sun baide Jacobs sun, weiln statschreiber ze Wienne sêlig, bestätigt, 7 lb dn., welche, während er nicht inner landes gewesen war, als sein Antheil an dem…</td>
                 </tr>
             
@@ -3173,6 +3507,11 @@
                     <td class="src-col-idno"><a href="../../documents/QGW/Vienna_1177-1414_ready/585.html">585</a></td>
                     <td class="src-col-date">1361 IV 29</td>
                     <td class="src-col-corpus">QGW II/1 (1177–1414)</td>
+                    <td class="src-col-label"><em>-</em></td>
+                    <td class="src-col-role">
+                        <span class="role-chip role-chip-other">Sonstige</span>
+                        
+                    </td>
                     <td class="src-col-regest">Herzog Rudolf IV. bestätigt auf Bitten Jakob des Pollen, Kaplans der. Kapelle ze Ottenhaim, gelegen ze Wienn nebent dem Rathause, die er selbst besichtigt habe, die von Bürgermeister und Rath…</td>
                 </tr>
             
@@ -3180,6 +3519,11 @@
                     <td class="src-col-idno"><a href="../../documents/QGW/Vienna_1177-1414_ready/586.html">586</a></td>
                     <td class="src-col-date">1361 V 01</td>
                     <td class="src-col-corpus">QGW II/1 (1177–1414)</td>
+                    <td class="src-col-label"><em>-</em></td>
+                    <td class="src-col-role">
+                        <span class="role-chip role-chip-issuer">Aussteller*in</span>
+                        
+                    </td>
                     <td class="src-col-regest">Jacob der Poll, chaplan der chapellen ze Ottenhaim in der stat ze Wienne, verpflichtet sich und seine Nachfolger, wenn in der S. Stephanskirche pivil oder jartag Herzog Rudolfs, der Herzogin Katrein,…</td>
                 </tr>
             
@@ -3187,6 +3531,11 @@
                     <td class="src-col-idno"><a href="../../documents/QGW/Vienna_1177-1414_ready/629.html">629</a></td>
                     <td class="src-col-date">1364 VIII 02</td>
                     <td class="src-col-corpus">QGW II/1 (1177–1414)</td>
+                    <td class="src-col-label"><em>hern</em></td>
+                    <td class="src-col-role">
+                        <span class="role-chip role-chip-recipient">Empfänger*in</span>
+                        
+                    </td>
                     <td class="src-col-regest">Fridreich der Ruschel, purgermaister, und der rat gemain der stat ze Wienne bestätigen, dass ihnen ein Satzbrief vorgelegt worden sei, in dem her Chunrat von Hokenberch den allen got genad und seine…</td>
                 </tr>
             
@@ -3194,6 +3543,11 @@
                     <td class="src-col-idno"><a href="../../documents/QGW/Vienna_1177-1414_ready/667.html">667</a></td>
                     <td class="src-col-date">1366 V 22</td>
                     <td class="src-col-corpus">QGW II/1 (1177–1414)</td>
+                    <td class="src-col-label"><em>hern</em></td>
+                    <td class="src-col-role">
+                        <span class="role-chip role-chip-witness">Zeuge / Siegler*in</span>
+                        
+                    </td>
                     <td class="src-col-regest">Lienhart der Löffler und Kathrei, seine Hausfrau, verkaufen mit Handen ihres Bergherrn hern Chunrats, pharrer dacz sant Pêrtelme ze Alsse, einen Weingarten, welcher der Kathrei für den Anspruch, den…</td>
                 </tr>
             
@@ -3201,6 +3555,11 @@
                     <td class="src-col-idno"><a href="../../documents/QGW/Vienna_1177-1414_ready/680.html">680</a></td>
                     <td class="src-col-date">1366 XI 11</td>
                     <td class="src-col-corpus">QGW II/1 (1177–1414)</td>
+                    <td class="src-col-label"><em>-</em></td>
+                    <td class="src-col-role">
+                        <span class="role-chip role-chip-recipient">Empfänger*in</span>
+                        
+                    </td>
                     <td class="src-col-regest">* Bischof Albert von Passau bestätigt die von den Wiener Bürgern Dietrich Urbasch und Stephan Pollo Bürgern, sowie dem Kaplan der Marienkapelle in Ottenhaim vorgenommene Stiftung einer Messe auf dem…</td>
                 </tr>
             
@@ -3208,6 +3567,11 @@
                     <td class="src-col-idno"><a href="../../documents/QGW/Vienna_1177-1414_ready/690.html">690</a></td>
                     <td class="src-col-date">1367 III 17</td>
                     <td class="src-col-corpus">QGW II/1 (1177–1414)</td>
+                    <td class="src-col-label"><em>hern</em></td>
+                    <td class="src-col-role">
+                        <span class="role-chip role-chip-recipient">Empfänger*in</span>
+                        
+                    </td>
                     <td class="src-col-regest">Jans der Hêmmler, purger ze Wienne, und Torathe, seine Hausfrau, verkaufen mit Handen ihres Bergherrn hern Jansen an dem Chienmarcht ze Wienne 6 sh. dn. gelts ewiges purchrechts, die sie gehabt haben…</td>
                 </tr>
             
@@ -3215,6 +3579,11 @@
                     <td class="src-col-idno"><a href="../../documents/QGW/Vienna_1177-1414_ready/706.html">706</a></td>
                     <td class="src-col-date">1367 IX 27</td>
                     <td class="src-col-corpus">QGW II/1 (1177–1414)</td>
+                    <td class="src-col-label"><em>-</em></td>
+                    <td class="src-col-role">
+                        <span class="role-chip role-chip-issuer">Aussteller*in</span><span class="role-chip role-chip-witness">Zeuge / Siegler*in</span>
+                        
+                    </td>
                     <td class="src-col-regest">* Jacobus Pollo, capellanus capelle s. Marie virginis, Ottenhaim nuncupate, intra muros civitatis Wiennensis , beurkundet das Verzeichnis des gesammten Besitzes seiner Kapelle: A. Redditus: 1.…</td>
                 </tr>
             
@@ -3222,6 +3591,11 @@
                     <td class="src-col-idno"><a href="../../documents/QGW/Vienna_1177-1414_ready/709.html">709</a></td>
                     <td class="src-col-date">1367 X 26</td>
                     <td class="src-col-corpus">QGW II/1 (1177–1414)</td>
+                    <td class="src-col-label"><em>-</em></td>
+                    <td class="src-col-role">
+                        <span class="role-chip role-chip-issuer">Aussteller*in</span>
+                        
+                    </td>
                     <td class="src-col-regest">Herzog Albrecht III. und Leopold genehmigen in Erwägung der Klagen, welche ihnen Jacob der Poll, chaplan ze Ottenhaim in Wienne, in Gegenwart des Bischofs Albrecht von Passau und anderer Herren über…</td>
                 </tr>
             
@@ -3229,6 +3603,11 @@
                     <td class="src-col-idno"><a href="../../documents/QGW/Vienna_1177-1414_ready/719.html">719</a></td>
                     <td class="src-col-date">1368 I 24</td>
                     <td class="src-col-corpus">QGW II/1 (1177–1414)</td>
+                    <td class="src-col-label"><em>-</em></td>
+                    <td class="src-col-role">
+                        <span class="role-chip role-chip-recipient">Empfänger*in</span>
+                        
+                    </td>
                     <td class="src-col-regest">Jans von Haselawe und Ursula, seine Hausfrau, bestätigen, dass sie siben mutte waitzs geltes, gelegen ze Herzogenpirbaum ouf behaustem guet, di her Perichtolt der Polle sêlig , der Ursula Vater, zur…</td>
                 </tr>
             
@@ -3236,6 +3615,11 @@
                     <td class="src-col-idno"><a href="../../documents/QGW/Vienna_1177-1414_ready/730.html">730</a></td>
                     <td class="src-col-date">1368 VI 23</td>
                     <td class="src-col-corpus">QGW II/1 (1177–1414)</td>
+                    <td class="src-col-label"><em>-</em></td>
+                    <td class="src-col-role">
+                        <span class="role-chip role-chip-witness">Zeuge / Siegler*in</span>
+                        
+                    </td>
                     <td class="src-col-regest">Hainreich der Würfel beurkundet, dass er mit seinem Bruder hern Niclasen dem Würfel, purgermaister ze Wienn, die ihnen von ihren Eltern Eltern hern Hainreichen dem Würfel und Eltern Eltern vrowen…</td>
                 </tr>
             
@@ -3243,6 +3627,11 @@
                     <td class="src-col-idno"><a href="../../documents/QGW/Vienna_1177-1414_ready/738.html">738</a></td>
                     <td class="src-col-date">1368 IX 25</td>
                     <td class="src-col-corpus">QGW II/1 (1177–1414)</td>
+                    <td class="src-col-label"><em>her</em></td>
+                    <td class="src-col-role">
+                        <span class="role-chip role-chip-other">Sonstige</span><span class="role-chip role-chip-recipient">Empfänger*in</span>
+                        
+                    </td>
                     <td class="src-col-regest">Perchtolt von Pergau, hofrichter in Österreich, beurkundet, dass in dem hoftaiding ze Wienn her Jacob, pharrer zu hern Ottenhaim, mit Vorsprechen hinz Hainreichen von Neuenhaus um 36 lb dn.…</td>
                 </tr>
             
@@ -3250,6 +3639,11 @@
                     <td class="src-col-idno"><a href="../../documents/QGW/Vienna_1177-1414_ready/741.html">741</a></td>
                     <td class="src-col-date">1368 XI 19</td>
                     <td class="src-col-corpus">QGW II/1 (1177–1414)</td>
+                    <td class="src-col-label"><em>-</em></td>
+                    <td class="src-col-role">
+                        <span class="role-chip role-chip-issuer">Aussteller*in</span><span class="role-chip role-chip-witness">Zeuge / Siegler*in</span>
+                        
+                    </td>
                     <td class="src-col-regest">Jakob der Polle, Kaplan und Verweser der Kapelle Unser Vrowen, gelegen in der purger Rathaus ze Wienne, hern Ottenhaimen seligen Stiftung, bestätigt, dass der Ritter her Jans von Haselau und seine…</td>
                 </tr>
             
@@ -3257,6 +3651,11 @@
                     <td class="src-col-idno"><a href="../../documents/QGW/Vienna_1177-1414_ready/759.html">759</a></td>
                     <td class="src-col-date">1369 VII 21</td>
                     <td class="src-col-corpus">QGW II/1 (1177–1414)</td>
+                    <td class="src-col-label"><em>-</em></td>
+                    <td class="src-col-role">
+                        <span class="role-chip role-chip-witness">Zeuge / Siegler*in</span>
+                        
+                    </td>
                     <td class="src-col-regest">Jans der Porssenprunner und Margret, seine Hausfrau, Jacob der Vierdung, ir swager Schwager, und Anna, seine Hausfrau, der Margret Schwester, verkaufen mit gesammter Hand ihres freien Eigens ein Joch…</td>
                 </tr>
             
@@ -3264,6 +3663,11 @@
                     <td class="src-col-idno"><a href="../../documents/QGW/Vienna_1177-1414_ready/765.html">765</a></td>
                     <td class="src-col-date">1369 X 09</td>
                     <td class="src-col-corpus">QGW II/1 (1177–1414)</td>
+                    <td class="src-col-label"><em>-</em></td>
+                    <td class="src-col-role">
+                        <span class="role-chip role-chip-issuer">Aussteller*in</span><span class="role-chip role-chip-witness">Zeuge / Siegler*in</span>
+                        
+                    </td>
                     <td class="src-col-regest">Jacob der Poll, capellan der capellen Unserr Vrowen in der purger Rathaus ze Wienne, hern Ottenhaimen seligen stiftunge , beurkundet die über sein fahrendes Gut getroffenen letztwilligen Verfügungen.…</td>
                 </tr>
             
@@ -3271,6 +3675,11 @@
                     <td class="src-col-idno"><a href="../../documents/QGW/Vienna_1177-1414_ready/770.html">770</a></td>
                     <td class="src-col-date">1370 III 12</td>
                     <td class="src-col-corpus">QGW II/1 (1177–1414)</td>
+                    <td class="src-col-label"><em>hern</em></td>
+                    <td class="src-col-role">
+                        <span class="role-chip role-chip-other">Sonstige</span>
+                        
+                    </td>
                     <td class="src-col-regest">Janns der Minngankch, purger ze Wienne , bestätigt Jahrtage gewidmet hatte, dass 2 lb dn. gelts purchrechts, welche er in die Kapelle Unser Vrowen dacz hern Ottenheim in dem Rathaus ze Wienne zu…</td>
                 </tr>
             
@@ -3278,6 +3687,11 @@
                     <td class="src-col-idno"><a href="../../documents/QGW/Vienna_1177-1414_ready/793.html">793</a></td>
                     <td class="src-col-date">1371 VII 08</td>
                     <td class="src-col-corpus">QGW II/1 (1177–1414)</td>
+                    <td class="src-col-label"><em>hern</em></td>
+                    <td class="src-col-role">
+                        <span class="role-chip role-chip-other">Sonstige</span><span class="role-chip role-chip-witness">Zeuge / Siegler*in</span>
+                        
+                    </td>
                     <td class="src-col-regest">"Nichlas von Raehleinstorf, ein priester , beurkundet, dass er für das Geld, welches er durch den Verkauf dreier von seinem Bruder Fridreich zu einer ewigen Messe in Unser Vrowen chapellen, gelegen…</td>
                 </tr>
             
@@ -3285,6 +3699,11 @@
                     <td class="src-col-idno"><a href="../../documents/QGW/Vienna_1177-1414_ready/798.html">798</a></td>
                     <td class="src-col-date">1371 X 21</td>
                     <td class="src-col-corpus">QGW II/1 (1177–1414)</td>
+                    <td class="src-col-label"><em>hern</em></td>
+                    <td class="src-col-role">
+                        <span class="role-chip role-chip-witness">Zeuge / Siegler*in</span>
+                        
+                    </td>
                     <td class="src-col-regest">Lienhart der Poll, purger ze Wienne , und Elsbet, seine Hausfrau, stiften nach dem Rathe des Priesters hern Hannsen von Waidhofen, Kaplans ihrer Kapelle sand Philipps und sand Jacobs, der…</td>
                 </tr>
             
@@ -3292,6 +3711,11 @@
                     <td class="src-col-idno"><a href="../../documents/QGW/Vienna_1177-1414_ready/802.html">802</a></td>
                     <td class="src-col-date">1372 II 16</td>
                     <td class="src-col-corpus">QGW II/1 (1177–1414)</td>
+                    <td class="src-col-label"><em>her</em></td>
+                    <td class="src-col-role">
+                        <span class="role-chip role-chip-other">Sonstige</span>
+                        
+                    </td>
                     <td class="src-col-regest">Chunrat der Chienaestel, Bergmeister hern Jannsen pergmaister an dem Chienmarcht ze Wienne , beurkundet, dass vor ihm in offenem Gerichte her Jacob der Polle , Kaplan der Kapelle Unser Vrowen in der…</td>
                 </tr>
             
@@ -3299,6 +3723,11 @@
                     <td class="src-col-idno"><a href="../../documents/QGW/Vienna_1177-1414_ready/823.html">823</a></td>
                     <td class="src-col-date">1372 XII 31</td>
                     <td class="src-col-corpus">QGW II/1 (1177–1414)</td>
+                    <td class="src-col-label"><em>hern</em></td>
+                    <td class="src-col-role">
+                        <span class="role-chip role-chip-recipient">Empfänger*in</span>
+                        
+                    </td>
                     <td class="src-col-regest">Janns der Schützenmaister bestätigt, dass er hern Jacoben dem Pollen, chaplan der chapellen Unser Frown in dem alten Rathous ze Wienne, hern Ottenhaimen seligen Stiftung, 14 lb dn. geltes purchrechts…</td>
                 </tr>
             
@@ -3306,6 +3735,11 @@
                     <td class="src-col-idno"><a href="../../documents/QGW/Vienna_1177-1414_ready/825.html">825</a></td>
                     <td class="src-col-date">1373 IV 28</td>
                     <td class="src-col-corpus">QGW II/1 (1177–1414)</td>
+                    <td class="src-col-label"><em>her</em></td>
+                    <td class="src-col-role">
+                        <span class="role-chip role-chip-other">Sonstige</span>
+                        
+                    </td>
                     <td class="src-col-regest">Jacob von Tierna, chellermaister in Oesterreich und münzmaister ze Wienne an des Herzogs Statt, beurkundet, dass vor ihm in rechtem perchtaiding ze Gumpoltschirihen, als er an des Herzogs Statt in…</td>
                 </tr>
             
@@ -3313,6 +3747,11 @@
                     <td class="src-col-idno"><a href="../../documents/QGW/Vienna_1177-1414_ready/827.html">827</a></td>
                     <td class="src-col-date">1373 IV 30</td>
                     <td class="src-col-corpus">QGW II/1 (1177–1414)</td>
+                    <td class="src-col-label"><em>hern</em></td>
+                    <td class="src-col-role">
+                        <span class="role-chip role-chip-recipient">Empfänger*in</span>
+                        
+                    </td>
                     <td class="src-col-regest">Janns der Polcz, richter ze Fu/ert , und Margret, seine Hausfrau , verkaufen mit Handen ihres Grundherrn des Abtes Donat von den Schotten 2 lb dn. gelts purchrechts, welche der Margret von ihrem…</td>
                 </tr>
             
@@ -3320,6 +3759,11 @@
                     <td class="src-col-idno"><a href="../../documents/QGW/Vienna_1177-1414_ready/831.html">831</a></td>
                     <td class="src-col-date">1373 VIII 23</td>
                     <td class="src-col-corpus">QGW II/1 (1177–1414)</td>
+                    <td class="src-col-label"><em>her</em></td>
+                    <td class="src-col-role">
+                        <span class="role-chip role-chip-other">Sonstige</span>
+                        
+                    </td>
                     <td class="src-col-regest">Thoman der Swemmbel Ratsherr und Jorig von Nicolspurkch, paid des rates der stat ze Wienne , beurkunden, dass her Jacob, chapellan der chapellen Unser Vrowen, gelegen in der purger weilnt altem…</td>
                 </tr>
             
@@ -3327,6 +3771,11 @@
                     <td class="src-col-idno"><a href="../../documents/QGW/Vienna_1177-1414_ready/840.html">840</a></td>
                     <td class="src-col-date">1374 VIII 23</td>
                     <td class="src-col-corpus">QGW II/1 (1177–1414)</td>
+                    <td class="src-col-label"><em>-</em></td>
+                    <td class="src-col-role">
+                        <span class="role-chip role-chip-other">Sonstige</span>
+                        
+                    </td>
                     <td class="src-col-regest">Chadolt von Ekkhartsawe, der elter, Janns an dem Chienmarkcht, purgermaister ze Wienne , und der ganz rat daselbs beurkunden die von ihnen gefällte Entscheidung in folgenden Streitsachen: 1. zwischen…</td>
                 </tr>
             
@@ -3334,6 +3783,11 @@
                     <td class="src-col-idno"><a href="../../documents/QGW/Vienna_1177-1414_ready/889.html">889</a></td>
                     <td class="src-col-date">1376 X 21</td>
                     <td class="src-col-corpus">QGW II/1 (1177–1414)</td>
+                    <td class="src-col-label"><em>hern</em></td>
+                    <td class="src-col-role">
+                        <span class="role-chip role-chip-recipient">Empfänger*in</span>
+                        
+                    </td>
                     <td class="src-col-regest">Lienhart der Poll, purger ze Wienn , beurkundet mit Zustimmung seiner Hausfrau Elspeten seinen letzten Willen. Er schafft: 1. dass man von seiner fahrenden Habe seine Gläubiger befriedigen solle 2.…</td>
                 </tr>
             
@@ -3341,6 +3795,11 @@
                     <td class="src-col-idno"><a href="../../documents/QGW/Vienna_1177-1414_ready/891.html">891</a></td>
                     <td class="src-col-date">1376 XI 30</td>
                     <td class="src-col-corpus">QGW II/1 (1177–1414)</td>
+                    <td class="src-col-label"><em>her</em></td>
+                    <td class="src-col-role">
+                        <span class="role-chip role-chip-recipient">Empfänger*in</span>
+                        
+                    </td>
                     <td class="src-col-regest">Wernhart von Meissau, obrister marschalch und lantmarschalich in Österreich , bestätigt, dass her Jacob der Poll , Kaplan Unser Vrauen chapellen, gelegen in dem alten Rathaus ze Wienne, hern…</td>
                 </tr>
             
@@ -3348,6 +3807,11 @@
                     <td class="src-col-idno"><a href="../../documents/QGW/Vienna_1177-1414_ready/892.html">892</a></td>
                     <td class="src-col-date">1376 XII 02</td>
                     <td class="src-col-corpus">QGW II/1 (1177–1414)</td>
+                    <td class="src-col-label"><em>-</em></td>
+                    <td class="src-col-role">
+                        <span class="role-chip role-chip-recipient">Empfänger*in</span>
+                        
+                    </td>
                     <td class="src-col-regest">Peter der Mannseber, amptman des chlosters ze Neunburch , setzt, soweit das Kloster berechtigt ist, den Kaplan der Kapelle Unser Vrown, gelegen in dem alten Rathaus ze Wienne, hern Ottenhaimen…</td>
                 </tr>
             
@@ -3355,6 +3819,11 @@
                     <td class="src-col-idno"><a href="../../documents/QGW/Vienna_1177-1414_ready/894.html">894</a></td>
                     <td class="src-col-date">1376 XII 18</td>
                     <td class="src-col-corpus">QGW II/1 (1177–1414)</td>
+                    <td class="src-col-label"><em>hern</em></td>
+                    <td class="src-col-role">
+                        <span class="role-chip role-chip-recipient">Empfänger*in</span>
+                        
+                    </td>
                     <td class="src-col-regest">Christan der Scharndorfer, schaffer und verweser der siechen gu/et dacz dem Chlagpaum ze Wienne, und die samnung gemain der siechen desselben hauses geben nach dem Gebote Herzog Rudolfs IV. hern…</td>
                 </tr>
             
@@ -3362,6 +3831,11 @@
                     <td class="src-col-idno"><a href="../../documents/QGW/Vienna_1177-1414_ready/900.html">900</a></td>
                     <td class="src-col-date">1377 III 02</td>
                     <td class="src-col-corpus">QGW II/1 (1177–1414)</td>
+                    <td class="src-col-label"><em>hern</em></td>
+                    <td class="src-col-role">
+                        <span class="role-chip role-chip-recipient">Empfänger*in</span>
+                        
+                    </td>
                     <td class="src-col-regest">Pernhart von Hauspach setzt hern Jacoben den Poll, caplan Unser Vrowen capellen, gelegen in dem alten Rathaus ze Wienn, hern Ottenhaimen Stiftung , an die Gewere eines Weingartens, den Lienhart der…</td>
                 </tr>
             
@@ -3369,6 +3843,11 @@
                     <td class="src-col-idno"><a href="../../documents/QGW/Vienna_1177-1414_ready/911.html">911</a></td>
                     <td class="src-col-date">1377 VIII 14</td>
                     <td class="src-col-corpus">QGW II/1 (1177–1414)</td>
+                    <td class="src-col-label"><em>-</em></td>
+                    <td class="src-col-role">
+                        <span class="role-chip role-chip-issuer">Aussteller*in</span><span class="role-chip role-chip-witness">Zeuge / Siegler*in</span>
+                        
+                    </td>
                     <td class="src-col-regest">Jacob der Poll, chaplan Unser Vrowen chapellen, gelegen in der purger Rathaus ze Wienne, hern Ottenhaimen seligen Stiftung Geschäftsvollstrecker , Paul der Holzchouffel, purgermaister ze Wienne…</td>
                 </tr>
             
@@ -3376,6 +3855,11 @@
                     <td class="src-col-idno"><a href="../../documents/QGW/Vienna_1177-1414_ready/913.html">913</a></td>
                     <td class="src-col-date">1377 VIII 21</td>
                     <td class="src-col-corpus">QGW II/1 (1177–1414)</td>
+                    <td class="src-col-label"><em>-</em></td>
+                    <td class="src-col-role">
+                        <span class="role-chip role-chip-issuer">Aussteller*in</span><span class="role-chip role-chip-witness">Zeuge / Siegler*in</span>
+                        
+                    </td>
                     <td class="src-col-regest">Jacob der Poll, chaplan Unser Vrowen chapellen, gelegen in der purger Rathaus ze Wienn, hern Ottenhaimen seligen Stiftung , Paul der Holzchau/effel, purgermaister ze Wienn , und Niclas der…</td>
                 </tr>
             
@@ -3383,6 +3867,11 @@
                     <td class="src-col-idno"><a href="../../documents/QGW/Vienna_1177-1414_ready/916.html">916</a></td>
                     <td class="src-col-date">1377 X 13</td>
                     <td class="src-col-corpus">QGW II/1 (1177–1414)</td>
+                    <td class="src-col-label"><em>-</em></td>
+                    <td class="src-col-role">
+                        <span class="role-chip role-chip-issuer">Aussteller*in</span><span class="role-chip role-chip-witness">Zeuge / Siegler*in</span>
+                        
+                    </td>
                     <td class="src-col-regest">Jacob der Poll, caplan ausrichter des geschefts Unser Vrown chapelln, gelegen in der purger Rathaus ze Wienn, hern Ottenhaimen seligen Stiftung , Paul der Holzchäuffel, purgermaister ze Wienn…</td>
                 </tr>
             
@@ -3390,6 +3879,11 @@
                     <td class="src-col-idno"><a href="../../documents/QGW/Vienna_1177-1414_ready/920.html">920</a></td>
                     <td class="src-col-date">1377 XI 29</td>
                     <td class="src-col-corpus">QGW II/1 (1177–1414)</td>
+                    <td class="src-col-label"><em>-</em></td>
+                    <td class="src-col-role">
+                        <span class="role-chip role-chip-witness">Zeuge / Siegler*in</span>
+                        
+                    </td>
                     <td class="src-col-regest">Haiman von Gerolczdorf Gerhab Gerhab Gerhab verkauft als Gerhab der unmündigen Töchter seines Oheims Hanns von Haselau, Tochter Katrei, Tochter Urseln und Tochter Annen, aus ehafter vor dem Herzoge…</td>
                 </tr>
             
@@ -3397,6 +3891,11 @@
                     <td class="src-col-idno"><a href="../../documents/QGW/Vienna_1177-1414_ready/924.html">924</a></td>
                     <td class="src-col-date">1377 XII 19</td>
                     <td class="src-col-corpus">QGW II/1 (1177–1414)</td>
+                    <td class="src-col-label"><em>-</em></td>
+                    <td class="src-col-role">
+                        <span class="role-chip role-chip-recipient">Empfänger*in</span>
+                        
+                    </td>
                     <td class="src-col-regest">Herzog Leopold III. bestätigt das Geschäft seines Wiener Bürgers Lienhart des Pollen und genehmigt die von den Geschäftsherren Jacoben Pollen, pharrer ze Ottenhaim , GeschäftsherrenPauln Holzkeuffel,…</td>
                 </tr>
             
@@ -3404,6 +3903,11 @@
                     <td class="src-col-idno"><a href="../../documents/QGW/Vienna_1177-1414_ready/940.html">940</a></td>
                     <td class="src-col-date">1378 V 19</td>
                     <td class="src-col-corpus">QGW II/1 (1177–1414)</td>
+                    <td class="src-col-label"><em>her</em></td>
+                    <td class="src-col-role">
+                        <span class="role-chip role-chip-recipient">Empfänger*in</span>
+                        
+                    </td>
                     <td class="src-col-regest">Mert vom Jaw/er, kapellan der kapellen sand Philipps und sant Jacobs, der heiligen zwelifpoten, gelegen in hern Lienharts sêligen hous des Pollen in der Hindern Pekchenstrasse ze Wienne , bestätigt,…</td>
                 </tr>
             
@@ -3411,6 +3915,11 @@
                     <td class="src-col-idno"><a href="../../documents/QGW/Vienna_1177-1414_ready/948.html">948</a></td>
                     <td class="src-col-date">1378 IX 27</td>
                     <td class="src-col-corpus">QGW II/1 (1177–1414)</td>
+                    <td class="src-col-label"><em>her</em></td>
+                    <td class="src-col-role">
+                        <span class="role-chip role-chip-recipient">Empfänger*in</span>
+                        
+                    </td>
                     <td class="src-col-regest">Johannes, verweser der technei , Thomans, custer , Bartholomeus, cantor , und das ganz capitel der tumchirichen dacz sand Stephan ze Wienn bestätigen, dass die Geschäftsvollstrecker des Wiener…</td>
                 </tr>
             
@@ -3418,6 +3927,11 @@
                     <td class="src-col-idno"><a href="../../documents/QGW/Vienna_1177-1414_ready/951.html">951</a></td>
                     <td class="src-col-date">1378 XI 10</td>
                     <td class="src-col-corpus">QGW II/1 (1177–1414)</td>
+                    <td class="src-col-label"><em>-</em></td>
+                    <td class="src-col-role">
+                        <span class="role-chip role-chip-other">Sonstige</span>
+                        
+                    </td>
                     <td class="src-col-regest">* Bischof Albert von Passau genehmigt auf Bitten Jacobi dicti Poll, rectoris capelle beate Marie virginis in Ottenhaim Wienne , die Testamente, durch welche dead Ulricus de Pukgas seinen Weingarten…</td>
                 </tr>
             
@@ -3425,6 +3939,11 @@
                     <td class="src-col-idno"><a href="../../documents/QGW/Vienna_1177-1414_ready/959.html">959</a></td>
                     <td class="src-col-date">1379 II 19</td>
                     <td class="src-col-corpus">QGW II/1 (1177–1414)</td>
+                    <td class="src-col-label"><em>-</em></td>
+                    <td class="src-col-role">
+                        <span class="role-chip role-chip-other">Sonstige</span>
+                        
+                    </td>
                     <td class="src-col-regest">* Pileus, tituli sancte Praxedis presbyter cardinalis ad infrascripta apostolica auctoritate suffultus , stellt einen Ablassbrief aus über Bitten des Jacobus Polio, rector capelle s. Marie in domo…</td>
                 </tr>
             
@@ -3432,6 +3951,11 @@
                     <td class="src-col-idno"><a href="../../documents/QGW/Vienna_1177-1414_ready/962.html">962</a></td>
                     <td class="src-col-date">1379 V 28</td>
                     <td class="src-col-corpus">QGW II/1 (1177–1414)</td>
+                    <td class="src-col-label"><em>hern</em></td>
+                    <td class="src-col-role">
+                        <span class="role-chip role-chip-recipient">Empfänger*in</span>
+                        
+                    </td>
                     <td class="src-col-regest">Hainreich, der messrer, purger ze Wienn , und Anna, seine Hausfrau , verkaufen ihres freien Eigens ein Joch Weingarten, haisset der Raber, gelegen ze Chlaitzing an ainem tail zenechst ainem…</td>
                 </tr>
             
@@ -3439,6 +3963,11 @@
                     <td class="src-col-idno"><a href="../../documents/QGW/Vienna_1177-1414_ready/964.html">964</a></td>
                     <td class="src-col-date">1379 VI 25</td>
                     <td class="src-col-corpus">QGW II/1 (1177–1414)</td>
+                    <td class="src-col-label"><em>her</em></td>
+                    <td class="src-col-role">
+                        
+                        -
+                    </td>
                     <td class="src-col-regest">Andre der Chrêphel und Elsbet, seine Hausfrau , verkaufen mit Handen ihres Grundherrn bruder Giligen, comiteur dacz dem Deutschenhaus zu Wienne , ihr Haus mit drei dazu gehörigen Bänken, da man prot…</td>
                 </tr>
             
@@ -3446,6 +3975,11 @@
                     <td class="src-col-idno"><a href="../../documents/QGW/Vienna_1177-1414_ready/968.html">968</a></td>
                     <td class="src-col-date">1379 VIII 14</td>
                     <td class="src-col-corpus">QGW II/1 (1177–1414)</td>
+                    <td class="src-col-label"><em>hern</em></td>
+                    <td class="src-col-role">
+                        <span class="role-chip role-chip-recipient">Empfänger*in</span>
+                        
+                    </td>
                     <td class="src-col-regest">Mert vom Jaur, kapellan der kapellen sand Philipps und sand Jacobs, der heiligen zwelifpoten, gelegen in hern Lienharts sêligen haus des Pollen in der Hindern Pekchenstrass zu Wienne , bestätigt,…</td>
                 </tr>
             
@@ -3453,6 +3987,11 @@
                     <td class="src-col-idno"><a href="../../documents/QGW/Vienna_1177-1414_ready/982.1.html">982.1</a></td>
                     <td class="src-col-date">1380 V 24</td>
                     <td class="src-col-corpus">QGW II/1 (1177–1414)</td>
+                    <td class="src-col-label"><em>-</em></td>
+                    <td class="src-col-role">
+                        <span class="role-chip role-chip-other">Sonstige</span>
+                        
+                    </td>
                     <td class="src-col-regest">Chunrat der Leitner, purger ze Wienn , und Katrei, seine Hausfrau , verkaufen mit Handen ihres Bergherrn hern Stephans des Leitner, spitalmaister der purger Spital ze Wienn , ein Joch Weingarten,…</td>
                 </tr>
             
@@ -3460,6 +3999,11 @@
                     <td class="src-col-idno"><a href="../../documents/QGW/Vienna_1177-1414_ready/985.html">985</a></td>
                     <td class="src-col-date">1380 VI 09</td>
                     <td class="src-col-corpus">QGW II/1 (1177–1414)</td>
+                    <td class="src-col-label"><em>-</em></td>
+                    <td class="src-col-role">
+                        <span class="role-chip role-chip-other">Sonstige</span>
+                        
+                    </td>
                     <td class="src-col-regest">Fridreich von Tierna verkauft mit Handen seines Bergherrn, des Wiener Bürgers hern Niclas des Stainer , dritthalb viertail Weingarten, der do haisset der Schineweis, gelegen zwischen paiden…</td>
                 </tr>
             
@@ -3492,11 +4036,13 @@
         </div>
     </footer>
 
-    <script src="../../static/js/core.js?v=20260511112948"></script>
-    <script src="../../static/js/provenance.js?v=20260511112948"></script>
-    <script src="../../static/js/basket.js?v=20260511112948"></script>
+    <script src="../../static/js/core.js?v=20260511125458"></script>
+    <script src="../../static/js/tip.js?v=20260511125458"></script>
+    <script src="../../static/js/hint.js?v=20260511125458"></script>
+    <script src="../../static/js/basket.js?v=20260511125458"></script>
     
-<script src="../../static/js/tooltips.js?v=20260511112948"></script>
+<script src="../../static/js/profile.js?v=20260511125458"></script>
+<script src="../../static/js/basket-mount.js?v=20260511125458"></script>
 
 </body>
 </html>

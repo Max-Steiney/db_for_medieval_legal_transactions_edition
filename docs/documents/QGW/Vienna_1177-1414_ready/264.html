@@ -3,21 +3,21 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <meta http-equiv="Content-Security-Policy" content="default-src 'self'; script-src 'self'; style-src 'self'; font-src 'self'; img-src 'self' data: https://images.monasterium.net https://www.monasterium.net; connect-src 'self'; frame-ancestors 'none'; base-uri 'self'; form-action 'self'; upgrade-insecure-requests">
+    <meta http-equiv="Content-Security-Policy" content="default-src 'self'; script-src 'self'; style-src 'self'; font-src 'self'; img-src 'self' data: https://images.monasterium.net https://www.monasterium.net; connect-src 'self'; base-uri 'self'; form-action 'self'; upgrade-insecure-requests">
     <meta name="referrer" content="strict-origin-when-cross-origin">
     <meta http-equiv="Permissions-Policy" content="camera=(), microphone=(), geolocation=(), interest-cohort=()">
     <title>Nr. 264 (1343 VII 12), Datenbank</title>
     <link rel="preload" as="font" type="font/woff2" crossorigin
           href="../../../static/fonts/inter-400-latin.woff2">
-    <link rel="stylesheet" href="../../../static/css/fonts.css?v=20260511112948">
-    <link rel="stylesheet" href="../../../static/css/tokens.css?v=20260511112948">
-    <link rel="stylesheet" href="../../../static/css/base.css?v=20260511112948">
-    <link rel="stylesheet" href="../../../static/css/components.css?v=20260511112948">
-    <link rel="stylesheet" href="../../../static/css/responsive.css?v=20260511112948">
-    <link rel="stylesheet" href="../../../static/css/print.css?v=20260511112948">
-    <link rel="stylesheet" href="../../../static/css/provenance.css?v=20260511112948">
+    <link rel="stylesheet" href="../../../static/css/fonts.css?v=20260511125458">
+    <link rel="stylesheet" href="../../../static/css/tokens.css?v=20260511125458">
+    <link rel="stylesheet" href="../../../static/css/base.css?v=20260511125458">
+    <link rel="stylesheet" href="../../../static/css/components.css?v=20260511125458">
+    <link rel="stylesheet" href="../../../static/css/responsive.css?v=20260511125458">
+    <link rel="stylesheet" href="../../../static/css/print.css?v=20260511125458">
+    <link rel="stylesheet" href="../../../static/css/tip.css?v=20260511125458">
     
-<link rel="stylesheet" href="../../../static/css/document.css?v=20260511112948">
+<link rel="stylesheet" href="../../../static/css/document.css?v=20260511125458">
 <link rel="canonical" href="documents/QGW/Vienna_1177-1414_ready/264.html">
 <meta name="citation_title" content="Nr. 264 (1343 VII 12)">
 <meta name="citation_collection" content="QGW II/1 (1177–1414)">
@@ -50,8 +50,6 @@
         <a href="../../../register/persons.html">Personen</a>
         
         <a href="../../../register/orgs.html">Organisationen</a>
-        
-        <a href="../../../register/places.html">Orte</a>
         
     </div>
 </div>
@@ -93,7 +91,7 @@
     </div>
 </div>
 
-                <a href="../../../korb.html" class="nav-basket" aria-label="Wissenskorb">
+                <a href="../../../korb.html" class="nav-basket" aria-label="Datenkorb">
                     <svg width="18" height="18" viewBox="0 0 18 18" fill="none" aria-hidden="true">
                         <path d="M3 5h12l-1.2 8.5a1 1 0 0 1-1 .85H5.2a1 1 0 0 1-1-.85L3 5z"
                               stroke="currentColor" stroke-width="1.4" fill="none"
@@ -140,7 +138,7 @@
                     
                     <span class="meta-pair">
                         <span class="meta-label">Quelle</span>
-                        <span class="meta-value" title="Quellen zur Geschichte der Stadt Wien, Bd. II/1, Nr. 264">Quellen zur Geschichte der Stadt Wien, Bd. II/1, Nr. 264</span>
+                        <span class="meta-value" data-hint="Quellen zur Geschichte der Stadt Wien, Bd. II/1, Nr. 264">Quellen zur Geschichte der Stadt Wien, Bd. II/1, Nr. 264</span>
                     </span>
                     
                 </div>
@@ -151,7 +149,7 @@
                     
                     <button type="button" class="legend-toggle"
                             data-layer="entities" aria-pressed="true"
-                            title="Entitäten ein-/ausblenden">
+                            data-hint="Entitäten ein-/ausblenden">
                         <span class="legend-toggle-dots">
                             <span class="legend-swatch swatch-person"></span><span class="legend-swatch swatch-org"></span><span class="legend-swatch swatch-place"></span>
                         </span>
@@ -160,7 +158,7 @@
                     
                     <button type="button" class="legend-toggle"
                             data-layer="functions" aria-pressed="true"
-                            title="Funktionsrollen ein-/ausblenden">
+                            data-hint="Funktionsrollen ein-/ausblenden">
                         <span class="legend-toggle-dots">
                             <span class="legend-swatch swatch-fn-issuer"></span><span class="legend-swatch swatch-fn-recipient"></span><span class="legend-swatch swatch-fn-witness"></span>
                         </span>
@@ -169,7 +167,7 @@
                     
                     <button type="button" class="legend-toggle"
                             data-layer="attributes" aria-pressed="true"
-                            title="Attribute ein-/ausblenden">
+                            data-hint="Attribute ein-/ausblenden">
                         <span class="legend-toggle-dots">
                             <span class="legend-swatch swatch-attr"></span><span class="legend-swatch swatch-add"></span>
                         </span>
@@ -178,7 +176,7 @@
                     
                     <button type="button" class="legend-toggle"
                             data-layer="triggers" aria-pressed="true"
-                            title="Dispositivformel ein-/ausblenden">
+                            data-hint="Dispositivformel ein-/ausblenden">
                         <span class="legend-toggle-dots">
                             <span class="legend-swatch swatch-trigger"></span>
                         </span>
@@ -190,21 +188,29 @@
                 <div class="doc-toolbar-actions">
                     <a class="toolbar-btn" href="../../../tei/QGW/Vienna_1177-1414_ready/264.xml"
                        download="264.xml"
-                       aria-label="TEI-XML herunterladen" title="TEI-XML herunterladen"><svg viewBox="0 0 16 16" width="16" height="16" aria-hidden="true"><path fill="none" stroke="currentColor" stroke-width="1.4" stroke-linecap="round" stroke-linejoin="round" d="M8 2v8m0 0l-3-3m3 3l3-3M3 13h10"/></svg></a>
+                       aria-label="TEI-XML herunterladen" data-hint="TEI-XML herunterladen"><svg viewBox="0 0 16 16" width="16" height="16" aria-hidden="true"><path fill="none" stroke="currentColor" stroke-width="1.4" stroke-linecap="round" stroke-linejoin="round" d="M8 2v8m0 0l-3-3m3 3l3-3M3 13h10"/></svg></a>
                     <button class="toolbar-btn" id="cite-toggle" aria-expanded="false"
-                            aria-label="Zitation kopieren" title="Zitation kopieren"><svg viewBox="0 0 16 16" width="16" height="16" aria-hidden="true"><rect x="4" y="2" width="8" height="11" rx="1" fill="none" stroke="currentColor" stroke-width="1.4"/><path d="M6 1.5h4a0.5 0.5 0 0 1 0.5 0.5v1a0.5 0.5 0 0 1-0.5 0.5H6a0.5 0.5 0 0 1-0.5-0.5V2A0.5 0.5 0 0 1 6 1.5z" fill="currentColor"/><path d="M6.5 6.5h3M6.5 8.5h3M6.5 10.5h2" stroke="currentColor" stroke-width="1" stroke-linecap="round"/></svg></button>
+                            aria-label="Zitation kopieren" data-hint="Zitation kopieren"><svg viewBox="0 0 16 16" width="16" height="16" aria-hidden="true"><rect x="4" y="2" width="8" height="11" rx="1" fill="none" stroke="currentColor" stroke-width="1.4"/><path d="M6 1.5h4a0.5 0.5 0 0 1 0.5 0.5v1a0.5 0.5 0 0 1-0.5 0.5H6a0.5 0.5 0 0 1-0.5-0.5V2A0.5 0.5 0 0 1 6 1.5z" fill="currentColor"/><path d="M6.5 6.5h3M6.5 8.5h3M6.5 10.5h2" stroke="currentColor" stroke-width="1" stroke-linecap="round"/></svg></button>
                     <div class="cite-popover hidden" id="cite-popover"></div>
+                    <span class="toolbar-basket-mount"
+                          data-basket-type="source"
+                          data-basket-id="264"
+                          data-basket-label="264"
+                          data-basket-url="documents/QGW/Vienna_1177-1414_ready/264.html"
+                          data-basket-date="1343-07-12"
+                          data-basket-coll="QGW II/1 (1177–1414)"
+                          data-basket-regest="Jacob, chapplan der chapellen Unser Vrowen, hern Otten Haimen stiftunge, Ulreich chinder, Michel chinder, Stephan chinder, Nichlas chinder, Chlar chinder und Margret, chinder hern Stephans chinder…"></span>
                     
 <nav class="doc-paging doc-paging-inline" aria-label="Quellen-Navigation">
     
     <a href="../../../documents/QGW/Vienna_1177-1414_ready/263.html" class="toolbar-btn doc-paging-prev"
        aria-label="Vorherige Quelle: Nr. 263"
-       title="Vorherige Quelle: Nr. 263"><svg viewBox="0 0 16 16" width="16" height="16" aria-hidden="true"><path fill="none" stroke="currentColor" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round" d="M10 3l-5 5 5 5"/></svg></a>
+       data-hint="Vorherige Quelle: Nr. 263"><svg viewBox="0 0 16 16" width="16" height="16" aria-hidden="true"><path fill="none" stroke="currentColor" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round" d="M10 3l-5 5 5 5"/></svg></a>
     
     
     <a href="../../../documents/QGW/Vienna_1177-1414_ready/265.html" class="toolbar-btn doc-paging-next"
        aria-label="Nächste Quelle: Nr. 265"
-       title="Nächste Quelle: Nr. 265"><svg viewBox="0 0 16 16" width="16" height="16" aria-hidden="true"><path fill="none" stroke="currentColor" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round" d="M6 3l5 5-5 5"/></svg></a>
+       data-hint="Nächste Quelle: Nr. 265"><svg viewBox="0 0 16 16" width="16" height="16" aria-hidden="true"><path fill="none" stroke="currentColor" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round" d="M6 3l5 5-5 5"/></svg></a>
     
 </nav>
 
@@ -219,41 +225,41 @@
         <!-- Document body (rendered TEI) -->
         <div class="doc-body">
             <section class="tei-abstract"><h2 class="tei-section-head">Regest</h2><p>
-                              <span class="anno-event" data-ref="ev__QGW_II_I_264"><span class="anno-fn anno-fn-issuer" data-role="issuer"><span class="fn-label">Aussteller*in</span><a class="anno-person" data-ref="pe__jakob_poll_QGW_II_I_770" title="Jakob Poll [pe__jakob_poll_QGW_II_I_770]" href="../../../register/persons/pe__jakob_poll_QGW_II_I_770.html">Jacob, <span class="anno-attr anno-attr-occ" data-corresp="org__wien-st_maria_im_rathaus">chapplan</span> der chapellen Unser Vrowen,
-                                                hern Otten Haimen stiftunge</a>, <a class="anno-person" data-ref="pe__ulrich_poll_QGW_II_I_1167" title="Ulrich Poll [pe__ulrich_poll_QGW_II_I_1167]" href="../../../register/persons/pe__ulrich_poll_QGW_II_I_1167.html">Ulreich
-                                                  <span class="anno-attr anno-attr-kin" data-corresp="pe__stephan_poll_FRA_II_1315_III_26"><span class="tei-add">chinder</span></span></a>, <a class="anno-person" data-ref="pe__michael_poll_QGW_II_I_440" title="Michael Poll [pe__michael_poll_QGW_II_I_440]" href="../../../register/persons/pe__michael_poll_QGW_II_I_440.html">Michel <span class="anno-attr anno-attr-kin" data-corresp="pe__stephan_poll_FRA_II_1315_III_26"><span class="tei-add">chinder</span></span></a>, <a class="anno-person" data-ref="pe__stephan_poll_QGW_II_I_1138" title="Stephan Poll Poll [pe__stephan_poll_QGW_II_I_1138]" href="../../../register/persons/pe__stephan_poll_QGW_II_I_1138.html">Stephan <span class="anno-attr anno-attr-kin" data-corresp="pe__stephan_poll_FRA_II_1315_III_26"><span class="tei-add">chinder</span></span></a>, <a class="anno-person" data-ref="pe__niklas_poll_QGW_II_I_264" title="Niklas Poll († 27.10.1360) [pe__niklas_poll_QGW_II_I_264]" href="../../../register/persons/pe__niklas_poll_QGW_II_I_264.html">Nichlas <span class="anno-attr anno-attr-kin" data-corresp="pe__stephan_poll_FRA_II_1315_III_26"><span class="tei-add">chinder</span></span></a>, <a class="anno-person" data-ref="pe__klara_QGW_II_I_264" title="Klara Pollin [pe__klara_QGW_II_I_264]" href="../../../register/persons/pe__klara_QGW_II_I_264.html">Chlar
-                                                  <span class="anno-attr anno-attr-kin" data-corresp="pe__stephan_poll_FRA_II_1315_III_26"><span class="tei-add">chinder</span></span></a> und <a class="anno-person" data-ref="pe__margarethe_QGW_II_I_265" title="Margarethe [pe__margarethe_QGW_II_I_265]" href="../../../register/persons/pe__margarethe_QGW_II_I_265.html">Margret, <span class="anno-attr anno-attr-kin" data-corresp="pe__stephan_poll_FRA_II_1315_III_26"><span class="tei-add">chinder</span></span>
-                                                <a class="anno-person" data-ref="pe__stephan_poll_FRA_II_1315_III_26" title="Stephan Poll [pe__stephan_poll_FRA_II_1315_III_26]" href="../../../register/persons/pe__stephan_poll_FRA_II_1315_III_26.html"><span class="anno-attr anno-attr-title">hern</span> Stephans
-                                                  chinder des Pollen</a></a>, <a class="anno-person" data-ref="pe__johann_minnganch_QGW_II_I_770" title="Johann Minnganch [pe__johann_minnganch_QGW_II_I_770]" href="../../../register/persons/pe__johann_minnganch_QGW_II_I_770.html">Jans
+                              <span class="anno-event" data-ref="ev__QGW_II_I_264"><span class="anno-fn anno-fn-issuer" data-role="issuer"><span class="fn-label">Aussteller*in</span><a class="anno-person" data-ref="pe__jakob_poll_QGW_II_I_770" data-hint="Jakob Poll [pe__jakob_poll_QGW_II_I_770]" data-hint-type="Person" href="../../../register/persons/pe__jakob_poll_QGW_II_I_770.html">Jacob, <span class="anno-attr anno-attr-occ" data-corresp="org__wien-st_maria_im_rathaus">chapplan</span> der chapellen Unser Vrowen,
+                                                hern Otten Haimen stiftunge</a>, <a class="anno-person" data-ref="pe__ulrich_poll_QGW_II_I_1167" data-hint="Ulrich Poll [pe__ulrich_poll_QGW_II_I_1167]" data-hint-type="Person" href="../../../register/persons/pe__ulrich_poll_QGW_II_I_1167.html">Ulreich
+                                                  <span class="anno-attr anno-attr-kin" data-corresp="pe__stephan_poll_FRA_II_1315_III_26"><span class="tei-add">chinder</span></span></a>, <a class="anno-person" data-ref="pe__michael_poll_QGW_II_I_440" data-hint="Michael Poll [pe__michael_poll_QGW_II_I_440]" data-hint-type="Person" href="../../../register/persons/pe__michael_poll_QGW_II_I_440.html">Michel <span class="anno-attr anno-attr-kin" data-corresp="pe__stephan_poll_FRA_II_1315_III_26"><span class="tei-add">chinder</span></span></a>, <a class="anno-person" data-ref="pe__stephan_poll_QGW_II_I_1138" data-hint="Stephan Poll Poll [pe__stephan_poll_QGW_II_I_1138]" data-hint-type="Person" href="../../../register/persons/pe__stephan_poll_QGW_II_I_1138.html">Stephan <span class="anno-attr anno-attr-kin" data-corresp="pe__stephan_poll_FRA_II_1315_III_26"><span class="tei-add">chinder</span></span></a>, <a class="anno-person" data-ref="pe__niklas_poll_QGW_II_I_264" data-hint="Niklas Poll († 27.10.1360) [pe__niklas_poll_QGW_II_I_264]" data-hint-type="Person" href="../../../register/persons/pe__niklas_poll_QGW_II_I_264.html">Nichlas <span class="anno-attr anno-attr-kin" data-corresp="pe__stephan_poll_FRA_II_1315_III_26"><span class="tei-add">chinder</span></span></a>, <a class="anno-person" data-ref="pe__klara_QGW_II_I_264" data-hint="Klara Pollin [pe__klara_QGW_II_I_264]" data-hint-type="Person" href="../../../register/persons/pe__klara_QGW_II_I_264.html">Chlar
+                                                  <span class="anno-attr anno-attr-kin" data-corresp="pe__stephan_poll_FRA_II_1315_III_26"><span class="tei-add">chinder</span></span></a> und <a class="anno-person" data-ref="pe__margarethe_QGW_II_I_265" data-hint="Margarethe [pe__margarethe_QGW_II_I_265]" data-hint-type="Person" href="../../../register/persons/pe__margarethe_QGW_II_I_265.html">Margret, <span class="anno-attr anno-attr-kin" data-corresp="pe__stephan_poll_FRA_II_1315_III_26"><span class="tei-add">chinder</span></span>
+                                                <a class="anno-person" data-ref="pe__stephan_poll_FRA_II_1315_III_26" data-hint="Stephan Poll [pe__stephan_poll_FRA_II_1315_III_26]" data-hint-type="Person" href="../../../register/persons/pe__stephan_poll_FRA_II_1315_III_26.html"><span class="anno-attr anno-attr-title">hern</span> Stephans
+                                                  chinder des Pollen</a></a>, <a class="anno-person" data-ref="pe__johann_minnganch_QGW_II_I_770" data-hint="Johann Minnganch [pe__johann_minnganch_QGW_II_I_770]" data-hint-type="Person" href="../../../register/persons/pe__johann_minnganch_QGW_II_I_770.html">Jans
                                                   <span class="anno-attr anno-attr-kin" data-corresp="pe__stephan_poll_FRA_II_1315_III_26"><span class="tei-add">eninchel</span></span>
-                                                <span class="anno-attr anno-attr-kin" data-corresp="pe__siegfried_minnganch_QGW_II_I_192"><span class="tei-add">chinder</span></span></a> und <a class="anno-person" data-ref="pe__niklas_minnganch_QGW_II_I_440" title="Niklas Minnganch [pe__niklas_minnganch_QGW_II_I_440]" href="../../../register/persons/pe__niklas_minnganch_QGW_II_I_440.html">Nichlas,
+                                                <span class="anno-attr anno-attr-kin" data-corresp="pe__siegfried_minnganch_QGW_II_I_192"><span class="tei-add">chinder</span></span></a> und <a class="anno-person" data-ref="pe__niklas_minnganch_QGW_II_I_440" data-hint="Niklas Minnganch [pe__niklas_minnganch_QGW_II_I_440]" data-hint-type="Person" href="../../../register/persons/pe__niklas_minnganch_QGW_II_I_440.html">Nichlas,
                                                   <span class="anno-attr anno-attr-kin" data-corresp="pe__stephan_poll_FRA_II_1315_III_26"><span class="tei-add">eninchel</span></span>
                                                 <span class="anno-attr anno-attr-kin" data-corresp="pe__siegfried_minnganch_QGW_II_I_192"><span class="tei-add">chinder</span></span>
-                                                <a class="anno-person" data-ref="pe__siegfried_minnganch_QGW_II_I_192" title="Siegfried Minnganch [pe__siegfried_minnganch_QGW_II_I_192]" href="../../../register/persons/pe__siegfried_minnganch_QGW_II_I_192.html"><span class="anno-attr anno-attr-title">hern</span> Seifrits
-                                                  chinder des Minngangs</a> und <a class="anno-person" data-ref="pe__stephan_poll_FRA_II_1315_III_26" title="Stephan Poll [pe__stephan_poll_FRA_II_1315_III_26]" href="../../../register/persons/pe__stephan_poll_FRA_II_1315_III_26.html"><span class="anno-attr anno-attr-title">hern</span> Stephans
+                                                <a class="anno-person" data-ref="pe__siegfried_minnganch_QGW_II_I_192" data-hint="Siegfried Minnganch [pe__siegfried_minnganch_QGW_II_I_192]" data-hint-type="Person" href="../../../register/persons/pe__siegfried_minnganch_QGW_II_I_192.html"><span class="anno-attr anno-attr-title">hern</span> Seifrits
+                                                  chinder des Minngangs</a> und <a class="anno-person" data-ref="pe__stephan_poll_FRA_II_1315_III_26" data-hint="Stephan Poll [pe__stephan_poll_FRA_II_1315_III_26]" data-hint-type="Person" href="../../../register/persons/pe__stephan_poll_FRA_II_1315_III_26.html"><span class="anno-attr anno-attr-title">hern</span> Stephans
                                                   eninchel des Pollen</a></a></span> , <span class="anno-trigger anno-trigger-disp">verkaufen</span>
                                     <span class="anno-fn anno-fn-other" data-role="other"><span class="fn-label">Sonstige</span><span class="anno-trigger anno-trigger-fn">mit
-                                                Handen</span> ihres <a class="anno-person" data-ref="pe__herbert_auf_der_saeule_QGW_II_I_184" title="Herbert auf der Säule auf der Säule († 02.08.1354) [pe__herbert_auf_der_saeule_QGW_II_I_184]" href="../../../register/persons/pe__herbert_auf_der_saeule_QGW_II_I_184.html"><span class="anno-attr anno-attr-title">Grundherrn</span>
+                                                Handen</span> ihres <a class="anno-person" data-ref="pe__herbert_auf_der_saeule_QGW_II_I_184" data-hint="Herbert auf der Säule auf der Säule († 02.08.1354) [pe__herbert_auf_der_saeule_QGW_II_I_184]" data-hint-type="Person" href="../../../register/persons/pe__herbert_auf_der_saeule_QGW_II_I_184.html"><span class="anno-attr anno-attr-title">Grundherrn</span>
                                                 <span class="anno-attr anno-attr-title">hern</span> Herbortes auf
                                                 der Seul</a></span> ihr Haus, das da leit in der
                                     Münzerstrasse ze Wienn zenaehst ihres Vetters haus hern
                                     Perichtolts des Pollen, da man von dem egenanten haus alle iar
                                     dient hern Herborten auf der Seul 12 dn. ze gruntrecht und hinz
-                                    dem Teutschen haus ze Wienne dritthalb lb dn. ze purchrecht, <span class="anno-fn anno-fn-recipient" data-role="recipient"><span class="fn-label">Empfänger*in</span><a class="anno-person" data-ref="pe__berthold_poll_QGW_II_I_121" title="Berthold Poll († 24.01.1368) [pe__berthold_poll_QGW_II_I_121]" href="../../../register/persons/pe__berthold_poll_QGW_II_I_121.html"><span class="anno-attr anno-attr-title">hern</span> Perichtolten dem
+                                    dem Teutschen haus ze Wienne dritthalb lb dn. ze purchrecht, <span class="anno-fn anno-fn-recipient" data-role="recipient"><span class="fn-label">Empfänger*in</span><a class="anno-person" data-ref="pe__berthold_poll_QGW_II_I_121" data-hint="Berthold Poll († 24.01.1368) [pe__berthold_poll_QGW_II_I_121]" data-hint-type="Person" href="../../../register/persons/pe__berthold_poll_QGW_II_I_121.html"><span class="anno-attr anno-attr-title">hern</span> Perichtolten dem
                                                 Pollen</a></span> um 12 lb dn. geltes purchrechtes,
                                     die jährlich hern Stephan dem Pollen, nach dessen Ableben aber
                                     den Ausstellern geleistet werden sollen.</span>
-                        </p></section><section class="tei-seal"><h2 class="tei-section-head">Siegelbeschreibung</h2><p><span class="anno-event" data-ref="ev__QGW_II_I_264"><span class="anno-fn anno-fn-witness" data-role="witness"><span class="fn-label">Zeug*in</span>Besiegelt mit den Siegeln: <a class="anno-person" data-ref="pe__jakob_poll_QGW_II_I_770" title="Jakob Poll [pe__jakob_poll_QGW_II_I_770]" href="../../../register/persons/pe__jakob_poll_QGW_II_I_770.html">1. Jacobs, des
-                                                chapplan</a>, <a class="anno-person" data-ref="pe__ulrich_poll_QGW_II_I_1167" title="Ulrich Poll [pe__ulrich_poll_QGW_II_I_1167]" href="../../../register/persons/pe__ulrich_poll_QGW_II_I_1167.html">2.
-                                          Ulreichs</a>, <a class="anno-person" data-ref="pe__michael_poll_QGW_II_I_440" title="Michael Poll [pe__michael_poll_QGW_II_I_440]" href="../../../register/persons/pe__michael_poll_QGW_II_I_440.html">3. Michels</a>,
-                                                <a class="anno-person" data-ref="pe__stephan_poll_QGW_II_I_1138" title="Stephan Poll Poll [pe__stephan_poll_QGW_II_I_1138]" href="../../../register/persons/pe__stephan_poll_QGW_II_I_1138.html">4.
-                                                Stephans</a>, <a class="anno-person" data-ref="pe__niklas_poll_QGW_II_I_264" title="Niklas Poll († 27.10.1360) [pe__niklas_poll_QGW_II_I_264]" href="../../../register/persons/pe__niklas_poll_QGW_II_I_264.html">5. Nichlas, hern
-                                                Stephans su/ene des Pollen</a>, <a class="anno-person" data-ref="pe__siegfried_minnganch_QGW_II_I_192" title="Siegfried Minnganch [pe__siegfried_minnganch_QGW_II_I_192]" href="../../../register/persons/pe__siegfried_minnganch_QGW_II_I_192.html">6. ihres
+                        </p></section><section class="tei-seal"><h2 class="tei-section-head">Siegelbeschreibung</h2><p><span class="anno-event" data-ref="ev__QGW_II_I_264"><span class="anno-fn anno-fn-witness" data-role="witness"><span class="fn-label">Zeug*in</span>Besiegelt mit den Siegeln: <a class="anno-person" data-ref="pe__jakob_poll_QGW_II_I_770" data-hint="Jakob Poll [pe__jakob_poll_QGW_II_I_770]" data-hint-type="Person" href="../../../register/persons/pe__jakob_poll_QGW_II_I_770.html">1. Jacobs, des
+                                                chapplan</a>, <a class="anno-person" data-ref="pe__ulrich_poll_QGW_II_I_1167" data-hint="Ulrich Poll [pe__ulrich_poll_QGW_II_I_1167]" data-hint-type="Person" href="../../../register/persons/pe__ulrich_poll_QGW_II_I_1167.html">2.
+                                          Ulreichs</a>, <a class="anno-person" data-ref="pe__michael_poll_QGW_II_I_440" data-hint="Michael Poll [pe__michael_poll_QGW_II_I_440]" data-hint-type="Person" href="../../../register/persons/pe__michael_poll_QGW_II_I_440.html">3. Michels</a>,
+                                                <a class="anno-person" data-ref="pe__stephan_poll_QGW_II_I_1138" data-hint="Stephan Poll Poll [pe__stephan_poll_QGW_II_I_1138]" data-hint-type="Person" href="../../../register/persons/pe__stephan_poll_QGW_II_I_1138.html">4.
+                                                Stephans</a>, <a class="anno-person" data-ref="pe__niklas_poll_QGW_II_I_264" data-hint="Niklas Poll († 27.10.1360) [pe__niklas_poll_QGW_II_I_264]" data-hint-type="Person" href="../../../register/persons/pe__niklas_poll_QGW_II_I_264.html">5. Nichlas, hern
+                                                Stephans su/ene des Pollen</a>, <a class="anno-person" data-ref="pe__siegfried_minnganch_QGW_II_I_192" data-hint="Siegfried Minnganch [pe__siegfried_minnganch_QGW_II_I_192]" data-hint-type="Person" href="../../../register/persons/pe__siegfried_minnganch_QGW_II_I_192.html">6. ihres
                                                   <span class="anno-attr anno-attr-kin" data-corresp="pe__ulrich_poll_QGW_II_I_1167">Schwagers</span>
                                                 <span class="anno-attr anno-attr-kin" data-corresp="pe__michael_poll_QGW_II_I_440"><span class="tei-add">Schwagers</span></span>
                                                 <span class="anno-attr anno-attr-kin" data-corresp="pe__stephan_poll_QGW_II_I_1138"><span class="tei-add">Schwagers</span></span>
                                                 <span class="anno-attr anno-attr-kin" data-corresp="pe__niklas_poll_QGW_II_I_264"><span class="tei-add">Schwagers</span></span> Seifrit des
-                                                Minnganch</a>, <a class="anno-person" data-ref="pe__herbert_auf_der_saeule_QGW_II_I_184" title="Herbert auf der Säule auf der Säule († 02.08.1354) [pe__herbert_auf_der_saeule_QGW_II_I_184]" href="../../../register/persons/pe__herbert_auf_der_saeule_QGW_II_I_184.html">7. des
+                                                Minnganch</a>, <a class="anno-person" data-ref="pe__herbert_auf_der_saeule_QGW_II_I_184" data-hint="Herbert auf der Säule auf der Säule († 02.08.1354) [pe__herbert_auf_der_saeule_QGW_II_I_184]" data-hint-type="Person" href="../../../register/persons/pe__herbert_auf_der_saeule_QGW_II_I_184.html">7. des
                                                 Grundherrn</a>.</span></span>
                         </p></section><section class="tei-nota"><h2 class="tei-section-head">Indorsat / Nota</h2><p>Indorsat: gleichzeitig, von der chappellen von hern Ottenhaim. </p></section>
 
@@ -313,7 +319,7 @@
          dem TEI in mehreren Untertabellen, Personen/Orgs/Orte,
          Ereignisse, Dispositivformeln, Editorische Ergaenzungen. Wird
          per JS aus den entsprechenden Spans im Body aufgebaut. -->
-    <section class="annotations-view" id="factoid-view" aria-label="Annotationen">
+    <section class="annotations-view" id="annotations-view" aria-label="Annotationen">
         <header class="annotations-header">
             <h2 class="annotations-title">Annotationen</h2>
             <span class="annotations-summary"></span>
@@ -359,13 +365,14 @@
         </div>
     </footer>
 
-    <script src="../../../static/js/core.js?v=20260511112948"></script>
-    <script src="../../../static/js/provenance.js?v=20260511112948"></script>
-    <script src="../../../static/js/basket.js?v=20260511112948"></script>
+    <script src="../../../static/js/core.js?v=20260511125458"></script>
+    <script src="../../../static/js/tip.js?v=20260511125458"></script>
+    <script src="../../../static/js/hint.js?v=20260511125458"></script>
+    <script src="../../../static/js/basket.js?v=20260511125458"></script>
     
-<script src="../../../static/js/tooltips.js?v=20260511112948"></script>
-<script src="../../../static/js/facsimile.js?v=20260511112948"></script>
-<script src="../../../static/js/document.js?v=20260511112948"></script>
+<script src="../../../static/js/facsimile.js?v=20260511125458"></script>
+<script src="../../../static/js/document.js?v=20260511125458"></script>
+<script src="../../../static/js/basket-mount.js?v=20260511125458"></script>
 
 </body>
 </html>

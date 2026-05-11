@@ -3,21 +3,21 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <meta http-equiv="Content-Security-Policy" content="default-src 'self'; script-src 'self'; style-src 'self'; font-src 'self'; img-src 'self' data: https://images.monasterium.net https://www.monasterium.net; connect-src 'self'; frame-ancestors 'none'; base-uri 'self'; form-action 'self'; upgrade-insecure-requests">
+    <meta http-equiv="Content-Security-Policy" content="default-src 'self'; script-src 'self'; style-src 'self'; font-src 'self'; img-src 'self' data: https://images.monasterium.net https://www.monasterium.net; connect-src 'self'; base-uri 'self'; form-action 'self'; upgrade-insecure-requests">
     <meta name="referrer" content="strict-origin-when-cross-origin">
     <meta http-equiv="Permissions-Policy" content="camera=(), microphone=(), geolocation=(), interest-cohort=()">
     <title>Nr. 386 (1399 Mai 27), Datenbank</title>
     <link rel="preload" as="font" type="font/woff2" crossorigin
           href="../../../static/fonts/inter-400-latin.woff2">
-    <link rel="stylesheet" href="../../../static/css/fonts.css?v=20260511112948">
-    <link rel="stylesheet" href="../../../static/css/tokens.css?v=20260511112948">
-    <link rel="stylesheet" href="../../../static/css/base.css?v=20260511112948">
-    <link rel="stylesheet" href="../../../static/css/components.css?v=20260511112948">
-    <link rel="stylesheet" href="../../../static/css/responsive.css?v=20260511112948">
-    <link rel="stylesheet" href="../../../static/css/print.css?v=20260511112948">
-    <link rel="stylesheet" href="../../../static/css/provenance.css?v=20260511112948">
+    <link rel="stylesheet" href="../../../static/css/fonts.css?v=20260511125458">
+    <link rel="stylesheet" href="../../../static/css/tokens.css?v=20260511125458">
+    <link rel="stylesheet" href="../../../static/css/base.css?v=20260511125458">
+    <link rel="stylesheet" href="../../../static/css/components.css?v=20260511125458">
+    <link rel="stylesheet" href="../../../static/css/responsive.css?v=20260511125458">
+    <link rel="stylesheet" href="../../../static/css/print.css?v=20260511125458">
+    <link rel="stylesheet" href="../../../static/css/tip.css?v=20260511125458">
     
-<link rel="stylesheet" href="../../../static/css/document.css?v=20260511112948">
+<link rel="stylesheet" href="../../../static/css/document.css?v=20260511125458">
 <link rel="canonical" href="documents/Stadtbuecher/Band_1_1395-1400_ready/386.html">
 <meta name="citation_title" content="Nr. 386 (1399 Mai 27)">
 <meta name="citation_collection" content="Stadtbücher Bd. 1 (1395–1400)">
@@ -50,8 +50,6 @@
         <a href="../../../register/persons.html">Personen</a>
         
         <a href="../../../register/orgs.html">Organisationen</a>
-        
-        <a href="../../../register/places.html">Orte</a>
         
     </div>
 </div>
@@ -93,7 +91,7 @@
     </div>
 </div>
 
-                <a href="../../../korb.html" class="nav-basket" aria-label="Wissenskorb">
+                <a href="../../../korb.html" class="nav-basket" aria-label="Datenkorb">
                     <svg width="18" height="18" viewBox="0 0 18 18" fill="none" aria-hidden="true">
                         <path d="M3 5h12l-1.2 8.5a1 1 0 0 1-1 .85H5.2a1 1 0 0 1-1-.85L3 5z"
                               stroke="currentColor" stroke-width="1.4" fill="none"
@@ -135,7 +133,7 @@
                     
                     <span class="meta-pair">
                         <span class="meta-label">Quelle</span>
-                        <span class="meta-value" title="Wilhelm Brauneder / Gerhard Jaritz. Die Wiener Stadtbücher 1395 - 1430. Teil 1: 1395 - 1400. Wien/Köln: Böhlau Verlag.">Wilhelm Brauneder / Gerhard Jaritz. Die Wiener Stadtbücher 1395 - 1430. Teil 1: 1395 - 1400. Wien/Köln: Böhlau Verlag.</span>
+                        <span class="meta-value" data-hint="Wilhelm Brauneder / Gerhard Jaritz. Die Wiener Stadtbücher 1395 - 1430. Teil 1: 1395 - 1400. Wien/Köln: Böhlau Verlag.">Wilhelm Brauneder / Gerhard Jaritz. Die Wiener Stadtbücher 1395 - 1430. Teil 1: 1395 - 1400. Wien/Köln: Böhlau Verlag.</span>
                     </span>
                     
                 </div>
@@ -146,7 +144,7 @@
                     
                     <button type="button" class="legend-toggle"
                             data-layer="entities" aria-pressed="true"
-                            title="Entitäten ein-/ausblenden">
+                            data-hint="Entitäten ein-/ausblenden">
                         <span class="legend-toggle-dots">
                             <span class="legend-swatch swatch-person"></span><span class="legend-swatch swatch-org"></span><span class="legend-swatch swatch-place"></span>
                         </span>
@@ -155,7 +153,7 @@
                     
                     <button type="button" class="legend-toggle"
                             data-layer="functions" aria-pressed="true"
-                            title="Funktionsrollen ein-/ausblenden">
+                            data-hint="Funktionsrollen ein-/ausblenden">
                         <span class="legend-toggle-dots">
                             <span class="legend-swatch swatch-fn-issuer"></span><span class="legend-swatch swatch-fn-recipient"></span><span class="legend-swatch swatch-fn-witness"></span>
                         </span>
@@ -164,7 +162,7 @@
                     
                     <button type="button" class="legend-toggle"
                             data-layer="attributes" aria-pressed="true"
-                            title="Attribute ein-/ausblenden">
+                            data-hint="Attribute ein-/ausblenden">
                         <span class="legend-toggle-dots">
                             <span class="legend-swatch swatch-attr"></span><span class="legend-swatch swatch-add"></span>
                         </span>
@@ -173,7 +171,7 @@
                     
                     <button type="button" class="legend-toggle"
                             data-layer="triggers" aria-pressed="true"
-                            title="Dispositivformel ein-/ausblenden">
+                            data-hint="Dispositivformel ein-/ausblenden">
                         <span class="legend-toggle-dots">
                             <span class="legend-swatch swatch-trigger"></span>
                         </span>
@@ -185,21 +183,29 @@
                 <div class="doc-toolbar-actions">
                     <a class="toolbar-btn" href="../../../tei/Stadtbuecher/Band_1_1395-1400_ready/386.xml"
                        download="386.xml"
-                       aria-label="TEI-XML herunterladen" title="TEI-XML herunterladen"><svg viewBox="0 0 16 16" width="16" height="16" aria-hidden="true"><path fill="none" stroke="currentColor" stroke-width="1.4" stroke-linecap="round" stroke-linejoin="round" d="M8 2v8m0 0l-3-3m3 3l3-3M3 13h10"/></svg></a>
+                       aria-label="TEI-XML herunterladen" data-hint="TEI-XML herunterladen"><svg viewBox="0 0 16 16" width="16" height="16" aria-hidden="true"><path fill="none" stroke="currentColor" stroke-width="1.4" stroke-linecap="round" stroke-linejoin="round" d="M8 2v8m0 0l-3-3m3 3l3-3M3 13h10"/></svg></a>
                     <button class="toolbar-btn" id="cite-toggle" aria-expanded="false"
-                            aria-label="Zitation kopieren" title="Zitation kopieren"><svg viewBox="0 0 16 16" width="16" height="16" aria-hidden="true"><rect x="4" y="2" width="8" height="11" rx="1" fill="none" stroke="currentColor" stroke-width="1.4"/><path d="M6 1.5h4a0.5 0.5 0 0 1 0.5 0.5v1a0.5 0.5 0 0 1-0.5 0.5H6a0.5 0.5 0 0 1-0.5-0.5V2A0.5 0.5 0 0 1 6 1.5z" fill="currentColor"/><path d="M6.5 6.5h3M6.5 8.5h3M6.5 10.5h2" stroke="currentColor" stroke-width="1" stroke-linecap="round"/></svg></button>
+                            aria-label="Zitation kopieren" data-hint="Zitation kopieren"><svg viewBox="0 0 16 16" width="16" height="16" aria-hidden="true"><rect x="4" y="2" width="8" height="11" rx="1" fill="none" stroke="currentColor" stroke-width="1.4"/><path d="M6 1.5h4a0.5 0.5 0 0 1 0.5 0.5v1a0.5 0.5 0 0 1-0.5 0.5H6a0.5 0.5 0 0 1-0.5-0.5V2A0.5 0.5 0 0 1 6 1.5z" fill="currentColor"/><path d="M6.5 6.5h3M6.5 8.5h3M6.5 10.5h2" stroke="currentColor" stroke-width="1" stroke-linecap="round"/></svg></button>
                     <div class="cite-popover hidden" id="cite-popover"></div>
+                    <span class="toolbar-basket-mount"
+                          data-basket-type="source"
+                          data-basket-id="386"
+                          data-basket-label="386"
+                          data-basket-url="documents/Stadtbuecher/Band_1_1395-1400_ready/386.html"
+                          data-basket-date="1399-05-27"
+                          data-basket-coll="Stadtbücher Bd. 1 (1395–1400)"
+                          data-basket-regest="pr. mü., Einbr. 2 Zg., Ma (Inde:l:: Item gescheft Hainreich von LennweT.chk) Desselben tags kom auch fur den rat fraw Kathrei, wittibHainreichs seligen wittib von Lennberkch, und hat da beweist mit…"></span>
                     
 <nav class="doc-paging doc-paging-inline" aria-label="Quellen-Navigation">
     
     <a href="../../../documents/Stadtbuecher/Band_1_1395-1400_ready/385.html" class="toolbar-btn doc-paging-prev"
        aria-label="Vorherige Quelle: Nr. 385"
-       title="Vorherige Quelle: Nr. 385"><svg viewBox="0 0 16 16" width="16" height="16" aria-hidden="true"><path fill="none" stroke="currentColor" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round" d="M10 3l-5 5 5 5"/></svg></a>
+       data-hint="Vorherige Quelle: Nr. 385"><svg viewBox="0 0 16 16" width="16" height="16" aria-hidden="true"><path fill="none" stroke="currentColor" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round" d="M10 3l-5 5 5 5"/></svg></a>
     
     
     <a href="../../../documents/Stadtbuecher/Band_1_1395-1400_ready/387.html" class="toolbar-btn doc-paging-next"
        aria-label="Nächste Quelle: Nr. 387"
-       title="Nächste Quelle: Nr. 387"><svg viewBox="0 0 16 16" width="16" height="16" aria-hidden="true"><path fill="none" stroke="currentColor" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round" d="M6 3l5 5-5 5"/></svg></a>
+       data-hint="Nächste Quelle: Nr. 387"><svg viewBox="0 0 16 16" width="16" height="16" aria-hidden="true"><path fill="none" stroke="currentColor" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round" d="M6 3l5 5-5 5"/></svg></a>
     
 </nav>
 
@@ -218,11 +224,11 @@
             <p>Geschäft des Heinrich von Lennberkch</p>
          </header>                   <section class="tei-entry"><h2 class="tei-section-head">Eintrag</h2>
             <p> pr. mü., Einbr. 2 Zg., Ma (Inde:l:: Item gescheft Hainreich von LennweT.chk) <span class="anno-event" data-ref="ev__StB_I_386">Desselben tags <span class="anno-fn anno-fn-witness" data-role="witness"><span class="fn-label">Zeug*in</span>kom
-                     auch fur den rat <a class="anno-person" data-ref="pe__katharina_StB_I_386" title="Katharina von Lemberg [pe__katharina_StB_I_386]" href="../../../register/persons/pe__katharina_StB_I_386.html"><span class="anno-attr anno-attr-title">fraw</span> Kathrei, <span class="anno-attr anno-attr-kin" data-corresp="pe__heinrich_von_lemberg_StB_I_386"><span class="tei-add">wittib</span></span><a class="anno-person" data-ref="pe__heinrich_von_lemberg_StB_I_386" title="Heinrich von Lemberg [pe__heinrich_von_lemberg_StB_I_386]" href="../../../register/persons/pe__heinrich_von_lemberg_StB_I_386.html">Hainreichs <span class="anno-attr anno-attr-dead">seligen</span> wittib von Lennberkch</a></a>, und hat da
-                     beweist mit den erbern mannen zu rechter zeit, als si ze recht solt, mit <a class="anno-person" data-ref="pe__niklas_perman_QGW_II_I_1209" title="Niklas Perman [pe__niklas_perman_QGW_II_I_1209]" href="../../../register/persons/pe__niklas_perman_QGW_II_I_1209.html"><span class="anno-attr anno-attr-title"><span class="tei-add">erbern</span></span><span class="anno-attr anno-attr-title">hern</span>
-                        Niclasen dem Permann, die zeit mit uns <span class="anno-attr anno-attr-occ" data-corresp="org__wien">gesworner</span> des rat</a>, und mit <a class="anno-person" data-ref="pe__andreas_vischl_QGW_II_I_1089" title="Andreas Vischl der Silberbrenner [pe__andreas_vischl_QGW_II_I_1089]" href="../../../register/persons/pe__andreas_vischl_QGW_II_I_1089.html"><span class="anno-attr anno-attr-title"><span class="tei-add">erbern</span></span>Andren dem Vischlein</a></span>, <span class="anno-fn anno-fn-issuer" data-role="issuer"><span class="fn-label">Aussteller*in</span>daz geschefft, so <a class="anno-person" data-ref="pe__heinrich_von_lemberg_StB_I_386" title="Heinrich von Lemberg [pe__heinrich_von_lemberg_StB_I_386]" href="../../../register/persons/pe__heinrich_von_lemberg_StB_I_386.html">der vorgenant ir <span class="anno-attr anno-attr-kin" data-corresp="pe__katharina_StB_I_386">wirt</span>
+                     auch fur den rat <a class="anno-person" data-ref="pe__katharina_StB_I_386" data-hint="Katharina von Lemberg [pe__katharina_StB_I_386]" data-hint-type="Person" href="../../../register/persons/pe__katharina_StB_I_386.html"><span class="anno-attr anno-attr-title">fraw</span> Kathrei, <span class="anno-attr anno-attr-kin" data-corresp="pe__heinrich_von_lemberg_StB_I_386"><span class="tei-add">wittib</span></span><a class="anno-person" data-ref="pe__heinrich_von_lemberg_StB_I_386" data-hint="Heinrich von Lemberg [pe__heinrich_von_lemberg_StB_I_386]" data-hint-type="Person" href="../../../register/persons/pe__heinrich_von_lemberg_StB_I_386.html">Hainreichs <span class="anno-attr anno-attr-dead">seligen</span> wittib von Lennberkch</a></a>, und hat da
+                     beweist mit den erbern mannen zu rechter zeit, als si ze recht solt, mit <a class="anno-person" data-ref="pe__niklas_perman_QGW_II_I_1209" data-hint="Niklas Perman [pe__niklas_perman_QGW_II_I_1209]" data-hint-type="Person" href="../../../register/persons/pe__niklas_perman_QGW_II_I_1209.html"><span class="anno-attr anno-attr-title"><span class="tei-add">erbern</span></span><span class="anno-attr anno-attr-title">hern</span>
+                        Niclasen dem Permann, die zeit mit uns <span class="anno-attr anno-attr-occ" data-corresp="org__wien">gesworner</span> des rat</a>, und mit <a class="anno-person" data-ref="pe__andreas_vischl_QGW_II_I_1089" data-hint="Andreas Vischl der Silberbrenner [pe__andreas_vischl_QGW_II_I_1089]" data-hint-type="Person" href="../../../register/persons/pe__andreas_vischl_QGW_II_I_1089.html"><span class="anno-attr anno-attr-title"><span class="tei-add">erbern</span></span>Andren dem Vischlein</a></span>, <span class="anno-fn anno-fn-issuer" data-role="issuer"><span class="fn-label">Aussteller*in</span>daz geschefft, so <a class="anno-person" data-ref="pe__heinrich_von_lemberg_StB_I_386" data-hint="Heinrich von Lemberg [pe__heinrich_von_lemberg_StB_I_386]" data-hint-type="Person" href="../../../register/persons/pe__heinrich_von_lemberg_StB_I_386.html">der vorgenant ir <span class="anno-attr anno-attr-kin" data-corresp="pe__katharina_StB_I_386">wirt</span>
                         Hainreich</a> an seinen lesten zeiten getan hat.</span>
-                  <span class="anno-fn anno-fn-recipient" data-role="recipient"><span class="fn-label">Empfänger*in</span>Also das er geschafft hat von erst <a class="anno-person" data-ref="pe__katharina_StB_I_386" title="Katharina von Lemberg [pe__katharina_StB_I_386]" href="../../../register/persons/pe__katharina_StB_I_386.html">derselben Kathrein, seiner
+                  <span class="anno-fn anno-fn-recipient" data-role="recipient"><span class="fn-label">Empfänger*in</span>Also das er geschafft hat von erst <a class="anno-person" data-ref="pe__katharina_StB_I_386" data-hint="Katharina von Lemberg [pe__katharina_StB_I_386]" data-hint-type="Person" href="../../../register/persons/pe__katharina_StB_I_386.html">derselben Kathrein, seiner
                         hawsfrawn</a>, einen weingarten, den si miteinander mit gesambter hant
                      gechaufft habent, gelegen ze Dornpach in den Schenkchen, des ein halbs jeuch
                      ist, ze nechst Mertten weingarten des Pergmaisters, ledichleich ze haben vor
@@ -230,7 +236,7 @@
                      sein haws gelegen in der Kernerstrazz ze Wienn ze nechst Fridreichs haws des
                      Sneyder, also das si dasselb haws sol ynnehaben und niezzen und nuczen
                      unverchumbert und ungeergert uncz an irn tod. Und denn nach irm tod sol dasselb
-                     haws ledichleich gevallen <a class="anno-org" data-ref="org__wien-st_agnes_auf_der_himmelpforte-messe_von_lemberg_heinrich" title="Jahrtag Heinrich von Lemberg (Messe) [org__wien-st_agnes_auf_der_himmelpforte-messe_von_lemberg_heinrich]" href="../../../register/orgs/org__wien-st_agnes_auf_der_himmelpforte-messe_von_lemberg_heinrich.html">den
+                     haws ledichleich gevallen <a class="anno-org" data-ref="org__wien-st_agnes_auf_der_himmelpforte-messe_von_lemberg_heinrich" data-hint="Jahrtag Heinrich von Lemberg (Messe) [org__wien-st_agnes_auf_der_himmelpforte-messe_von_lemberg_heinrich]" data-hint-type="Organisation" href="../../../register/orgs/org__wien-st_agnes_auf_der_himmelpforte-messe_von_lemberg_heinrich.html">den
                         geistleichen frawn dacz der Hymelporten ze Wienn, also das man alleiar
                         jerleichen einen ewigen jartag begen sol an dem tag und er sein ableib
                         genomen hat, des nachtes mit einer gesungen vigilien und des morgens mit
@@ -266,7 +272,7 @@
          dem TEI in mehreren Untertabellen, Personen/Orgs/Orte,
          Ereignisse, Dispositivformeln, Editorische Ergaenzungen. Wird
          per JS aus den entsprechenden Spans im Body aufgebaut. -->
-    <section class="annotations-view" id="factoid-view" aria-label="Annotationen">
+    <section class="annotations-view" id="annotations-view" aria-label="Annotationen">
         <header class="annotations-header">
             <h2 class="annotations-title">Annotationen</h2>
             <span class="annotations-summary"></span>
@@ -312,13 +318,14 @@
         </div>
     </footer>
 
-    <script src="../../../static/js/core.js?v=20260511112948"></script>
-    <script src="../../../static/js/provenance.js?v=20260511112948"></script>
-    <script src="../../../static/js/basket.js?v=20260511112948"></script>
+    <script src="../../../static/js/core.js?v=20260511125458"></script>
+    <script src="../../../static/js/tip.js?v=20260511125458"></script>
+    <script src="../../../static/js/hint.js?v=20260511125458"></script>
+    <script src="../../../static/js/basket.js?v=20260511125458"></script>
     
-<script src="../../../static/js/tooltips.js?v=20260511112948"></script>
-<script src="../../../static/js/facsimile.js?v=20260511112948"></script>
-<script src="../../../static/js/document.js?v=20260511112948"></script>
+<script src="../../../static/js/facsimile.js?v=20260511125458"></script>
+<script src="../../../static/js/document.js?v=20260511125458"></script>
+<script src="../../../static/js/basket-mount.js?v=20260511125458"></script>
 
 </body>
 </html>

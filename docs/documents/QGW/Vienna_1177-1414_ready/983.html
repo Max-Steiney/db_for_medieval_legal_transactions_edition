@@ -3,21 +3,21 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <meta http-equiv="Content-Security-Policy" content="default-src 'self'; script-src 'self'; style-src 'self'; font-src 'self'; img-src 'self' data: https://images.monasterium.net https://www.monasterium.net; connect-src 'self'; frame-ancestors 'none'; base-uri 'self'; form-action 'self'; upgrade-insecure-requests">
+    <meta http-equiv="Content-Security-Policy" content="default-src 'self'; script-src 'self'; style-src 'self'; font-src 'self'; img-src 'self' data: https://images.monasterium.net https://www.monasterium.net; connect-src 'self'; base-uri 'self'; form-action 'self'; upgrade-insecure-requests">
     <meta name="referrer" content="strict-origin-when-cross-origin">
     <meta http-equiv="Permissions-Policy" content="camera=(), microphone=(), geolocation=(), interest-cohort=()">
     <title>Nr. 983 (1380 V 25), Datenbank</title>
     <link rel="preload" as="font" type="font/woff2" crossorigin
           href="../../../static/fonts/inter-400-latin.woff2">
-    <link rel="stylesheet" href="../../../static/css/fonts.css?v=20260511112948">
-    <link rel="stylesheet" href="../../../static/css/tokens.css?v=20260511112948">
-    <link rel="stylesheet" href="../../../static/css/base.css?v=20260511112948">
-    <link rel="stylesheet" href="../../../static/css/components.css?v=20260511112948">
-    <link rel="stylesheet" href="../../../static/css/responsive.css?v=20260511112948">
-    <link rel="stylesheet" href="../../../static/css/print.css?v=20260511112948">
-    <link rel="stylesheet" href="../../../static/css/provenance.css?v=20260511112948">
+    <link rel="stylesheet" href="../../../static/css/fonts.css?v=20260511125458">
+    <link rel="stylesheet" href="../../../static/css/tokens.css?v=20260511125458">
+    <link rel="stylesheet" href="../../../static/css/base.css?v=20260511125458">
+    <link rel="stylesheet" href="../../../static/css/components.css?v=20260511125458">
+    <link rel="stylesheet" href="../../../static/css/responsive.css?v=20260511125458">
+    <link rel="stylesheet" href="../../../static/css/print.css?v=20260511125458">
+    <link rel="stylesheet" href="../../../static/css/tip.css?v=20260511125458">
     
-<link rel="stylesheet" href="../../../static/css/document.css?v=20260511112948">
+<link rel="stylesheet" href="../../../static/css/document.css?v=20260511125458">
 <link rel="canonical" href="documents/QGW/Vienna_1177-1414_ready/983.html">
 <meta name="citation_title" content="Nr. 983 (1380 V 25)">
 <meta name="citation_collection" content="QGW II/1 (1177–1414)">
@@ -50,8 +50,6 @@
         <a href="../../../register/persons.html">Personen</a>
         
         <a href="../../../register/orgs.html">Organisationen</a>
-        
-        <a href="../../../register/places.html">Orte</a>
         
     </div>
 </div>
@@ -93,7 +91,7 @@
     </div>
 </div>
 
-                <a href="../../../korb.html" class="nav-basket" aria-label="Wissenskorb">
+                <a href="../../../korb.html" class="nav-basket" aria-label="Datenkorb">
                     <svg width="18" height="18" viewBox="0 0 18 18" fill="none" aria-hidden="true">
                         <path d="M3 5h12l-1.2 8.5a1 1 0 0 1-1 .85H5.2a1 1 0 0 1-1-.85L3 5z"
                               stroke="currentColor" stroke-width="1.4" fill="none"
@@ -140,7 +138,7 @@
                     
                     <span class="meta-pair">
                         <span class="meta-label">Quelle</span>
-                        <span class="meta-value" title="Quellen zur Geschichte der Stadt Wien, Bd. II/1, Nr. 983">Quellen zur Geschichte der Stadt Wien, Bd. II/1, Nr. 983</span>
+                        <span class="meta-value" data-hint="Quellen zur Geschichte der Stadt Wien, Bd. II/1, Nr. 983">Quellen zur Geschichte der Stadt Wien, Bd. II/1, Nr. 983</span>
                     </span>
                     
                 </div>
@@ -151,7 +149,7 @@
                     
                     <button type="button" class="legend-toggle"
                             data-layer="entities" aria-pressed="true"
-                            title="Entitäten ein-/ausblenden">
+                            data-hint="Entitäten ein-/ausblenden">
                         <span class="legend-toggle-dots">
                             <span class="legend-swatch swatch-person"></span><span class="legend-swatch swatch-org"></span><span class="legend-swatch swatch-place"></span>
                         </span>
@@ -160,7 +158,7 @@
                     
                     <button type="button" class="legend-toggle"
                             data-layer="functions" aria-pressed="true"
-                            title="Funktionsrollen ein-/ausblenden">
+                            data-hint="Funktionsrollen ein-/ausblenden">
                         <span class="legend-toggle-dots">
                             <span class="legend-swatch swatch-fn-issuer"></span><span class="legend-swatch swatch-fn-recipient"></span><span class="legend-swatch swatch-fn-witness"></span>
                         </span>
@@ -169,7 +167,7 @@
                     
                     <button type="button" class="legend-toggle"
                             data-layer="attributes" aria-pressed="true"
-                            title="Attribute ein-/ausblenden">
+                            data-hint="Attribute ein-/ausblenden">
                         <span class="legend-toggle-dots">
                             <span class="legend-swatch swatch-attr"></span><span class="legend-swatch swatch-add"></span>
                         </span>
@@ -178,7 +176,7 @@
                     
                     <button type="button" class="legend-toggle"
                             data-layer="triggers" aria-pressed="true"
-                            title="Dispositivformel ein-/ausblenden">
+                            data-hint="Dispositivformel ein-/ausblenden">
                         <span class="legend-toggle-dots">
                             <span class="legend-swatch swatch-trigger"></span>
                         </span>
@@ -190,21 +188,29 @@
                 <div class="doc-toolbar-actions">
                     <a class="toolbar-btn" href="../../../tei/QGW/Vienna_1177-1414_ready/983.xml"
                        download="983.xml"
-                       aria-label="TEI-XML herunterladen" title="TEI-XML herunterladen"><svg viewBox="0 0 16 16" width="16" height="16" aria-hidden="true"><path fill="none" stroke="currentColor" stroke-width="1.4" stroke-linecap="round" stroke-linejoin="round" d="M8 2v8m0 0l-3-3m3 3l3-3M3 13h10"/></svg></a>
+                       aria-label="TEI-XML herunterladen" data-hint="TEI-XML herunterladen"><svg viewBox="0 0 16 16" width="16" height="16" aria-hidden="true"><path fill="none" stroke="currentColor" stroke-width="1.4" stroke-linecap="round" stroke-linejoin="round" d="M8 2v8m0 0l-3-3m3 3l3-3M3 13h10"/></svg></a>
                     <button class="toolbar-btn" id="cite-toggle" aria-expanded="false"
-                            aria-label="Zitation kopieren" title="Zitation kopieren"><svg viewBox="0 0 16 16" width="16" height="16" aria-hidden="true"><rect x="4" y="2" width="8" height="11" rx="1" fill="none" stroke="currentColor" stroke-width="1.4"/><path d="M6 1.5h4a0.5 0.5 0 0 1 0.5 0.5v1a0.5 0.5 0 0 1-0.5 0.5H6a0.5 0.5 0 0 1-0.5-0.5V2A0.5 0.5 0 0 1 6 1.5z" fill="currentColor"/><path d="M6.5 6.5h3M6.5 8.5h3M6.5 10.5h2" stroke="currentColor" stroke-width="1" stroke-linecap="round"/></svg></button>
+                            aria-label="Zitation kopieren" data-hint="Zitation kopieren"><svg viewBox="0 0 16 16" width="16" height="16" aria-hidden="true"><rect x="4" y="2" width="8" height="11" rx="1" fill="none" stroke="currentColor" stroke-width="1.4"/><path d="M6 1.5h4a0.5 0.5 0 0 1 0.5 0.5v1a0.5 0.5 0 0 1-0.5 0.5H6a0.5 0.5 0 0 1-0.5-0.5V2A0.5 0.5 0 0 1 6 1.5z" fill="currentColor"/><path d="M6.5 6.5h3M6.5 8.5h3M6.5 10.5h2" stroke="currentColor" stroke-width="1" stroke-linecap="round"/></svg></button>
                     <div class="cite-popover hidden" id="cite-popover"></div>
+                    <span class="toolbar-basket-mount"
+                          data-basket-type="source"
+                          data-basket-id="983"
+                          data-basket-label="983"
+                          data-basket-url="documents/QGW/Vienna_1177-1414_ready/983.html"
+                          data-basket-date="1380-05-25"
+                          data-basket-coll="QGW II/1 (1177–1414)"
+                          data-basket-regest="Ulreich der Ebner, purger ze Wienn , beurkundet seinen letzten Willen mit Zustimmung seiner Frau Chlarn seinen letzten Willen. Er schafft: 1. in der purger Spital ze Wienn in die chindstuben 100 lb…"></span>
                     
 <nav class="doc-paging doc-paging-inline" aria-label="Quellen-Navigation">
     
     <a href="../../../documents/QGW/Vienna_1177-1414_ready/981.html" class="toolbar-btn doc-paging-prev"
        aria-label="Vorherige Quelle: Nr. 981"
-       title="Vorherige Quelle: Nr. 981"><svg viewBox="0 0 16 16" width="16" height="16" aria-hidden="true"><path fill="none" stroke="currentColor" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round" d="M10 3l-5 5 5 5"/></svg></a>
+       data-hint="Vorherige Quelle: Nr. 981"><svg viewBox="0 0 16 16" width="16" height="16" aria-hidden="true"><path fill="none" stroke="currentColor" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round" d="M10 3l-5 5 5 5"/></svg></a>
     
     
     <a href="../../../documents/QGW/Vienna_1177-1414_ready/984.html" class="toolbar-btn doc-paging-next"
        aria-label="Nächste Quelle: Nr. 984"
-       title="Nächste Quelle: Nr. 984"><svg viewBox="0 0 16 16" width="16" height="16" aria-hidden="true"><path fill="none" stroke="currentColor" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round" d="M6 3l5 5-5 5"/></svg></a>
+       data-hint="Nächste Quelle: Nr. 984"><svg viewBox="0 0 16 16" width="16" height="16" aria-hidden="true"><path fill="none" stroke="currentColor" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round" d="M6 3l5 5-5 5"/></svg></a>
     
 </nav>
 
@@ -219,51 +225,51 @@
         <!-- Document body (rendered TEI) -->
         <div class="doc-body">
             <section class="tei-abstract"><h2 class="tei-section-head">Regest</h2><p><span class="anno-event" data-ref="ev__QGW_II_I_983">
-                  <span class="anno-fn anno-fn-issuer" data-role="issuer"><span class="fn-label">Aussteller*in</span><a class="anno-person" data-ref="pe__ulrich_ebner_QGW_II_I_836" title="Ulrich Ebner Ebner [pe__ulrich_ebner_QGW_II_I_836]" href="../../../register/persons/pe__ulrich_ebner_QGW_II_I_836.html">Ulreich der
+                  <span class="anno-fn anno-fn-issuer" data-role="issuer"><span class="fn-label">Aussteller*in</span><a class="anno-person" data-ref="pe__ulrich_ebner_QGW_II_I_836" data-hint="Ulrich Ebner Ebner [pe__ulrich_ebner_QGW_II_I_836]" data-hint-type="Person" href="../../../register/persons/pe__ulrich_ebner_QGW_II_I_836.html">Ulreich der
                         Ebner, <span class="anno-attr anno-attr-occ" data-corresp="org__wien">purger</span> ze
                         Wienn</a></span> ,
                   <span class="anno-trigger anno-trigger-disp">beurkundet <span class="tei-add">seinen letzten Willen</span></span>
                   <span class="anno-fn anno-fn-other" data-role="other"><span class="fn-label">Sonstige</span><span class="anno-trigger anno-trigger-fn">mit Zustimmung</span> seiner
-                        <a class="anno-person" data-ref="pe__klara_QGW_II_I_852" title="Klara [pe__klara_QGW_II_I_852]" href="../../../register/persons/pe__klara_QGW_II_I_852.html"><span class="anno-attr anno-attr-kin" data-corresp="pe__ulrich_ebner_QGW_II_I_836">Frau</span> Chlarn</a></span> seinen
-                  letzten Willen. Er <span class="anno-trigger anno-trigger-disp">schafft</span>: 1. in der <span class="anno-fn anno-fn-recipient" data-role="recipient"><span class="fn-label">Empfänger*in</span><a class="anno-org" data-ref="org__wien-buergerspital" title="Wiener Bürgerspital (Spital_Siechenhaus) [org__wien-buergerspital]" href="../../../register/orgs/org__wien-buergerspital.html">purger
+                        <a class="anno-person" data-ref="pe__klara_QGW_II_I_852" data-hint="Klara [pe__klara_QGW_II_I_852]" data-hint-type="Person" href="../../../register/persons/pe__klara_QGW_II_I_852.html"><span class="anno-attr anno-attr-kin" data-corresp="pe__ulrich_ebner_QGW_II_I_836">Frau</span> Chlarn</a></span> seinen
+                  letzten Willen. Er <span class="anno-trigger anno-trigger-disp">schafft</span>: 1. in der <span class="anno-fn anno-fn-recipient" data-role="recipient"><span class="fn-label">Empfänger*in</span><a class="anno-org" data-ref="org__wien-buergerspital" data-hint="Wiener Bürgerspital (Spital_Siechenhaus) [org__wien-buergerspital]" data-hint-type="Organisation" href="../../../register/orgs/org__wien-buergerspital.html">purger
                         Spital ze Wienn</a></span> in die chindstuben 100 lb dn. zur Kleidung der
                   Kinder, 12 lb dn. zu einem <span class="anno-fn anno-fn-recipient" data-role="recipient"><span class="fn-label">Empfänger*in</span>ewigen Lichte</span> 2.
-                  den vier orden hinz den <span class="anno-fn anno-fn-recipient" data-role="recipient"><span class="fn-label">Empfänger*in</span><a class="anno-org" data-ref="org__wien-dominikaner" title="Dominikaner (Prediger) Wien (Kloster_m) [org__wien-dominikaner]" href="../../../register/orgs/org__wien-dominikaner.html">Predigern</a></span> , hinz den <span class="anno-fn anno-fn-recipient" data-role="recipient"><span class="fn-label">Empfänger*in</span><a class="anno-org" data-ref="org__wien-augustiner_eremiten" title="Augustinereremiten Wien (Kloster_m) [org__wien-augustiner_eremiten]" href="../../../register/orgs/org__wien-augustiner_eremiten.html">Augustinern</a></span> , hinz den <span class="anno-fn anno-fn-recipient" data-role="recipient"><span class="fn-label">Empfänger*in</span><a class="anno-org" data-ref="org__wien-minoriten" title="Minoriten Wien (Kloster_m) [org__wien-minoriten]" href="../../../register/orgs/org__wien-minoriten.html">Minnernprüdern</a></span> und hinz den <span class="anno-fn anno-fn-recipient" data-role="recipient"><span class="fn-label">Empfänger*in</span><a class="anno-org" data-ref="org__wien-karmeliter" title="Karmeliter (Weissenbrüder) Wien (Kloster_m) [org__wien-karmeliter]" href="../../../register/orgs/org__wien-karmeliter.html">Weissenprüdern</a></span>
-                  zu igleichem chloster zu dem pau 5 lb dn. und zu dem pau hinz <span class="anno-fn anno-fn-recipient" data-role="recipient"><span class="fn-label">Empfänger*in</span><a class="anno-org" data-ref="org__wien-st_stephan" title="St. Stephan (Pfarr- und Domkirche) (Kirche_Kapelle) [org__wien-st_stephan]" href="../../../register/orgs/org__wien-st_stephan.html">sant Stephan</a></span>
+                  den vier orden hinz den <span class="anno-fn anno-fn-recipient" data-role="recipient"><span class="fn-label">Empfänger*in</span><a class="anno-org" data-ref="org__wien-dominikaner" data-hint="Dominikaner (Prediger) Wien (Kloster_m) [org__wien-dominikaner]" data-hint-type="Organisation" href="../../../register/orgs/org__wien-dominikaner.html">Predigern</a></span> , hinz den <span class="anno-fn anno-fn-recipient" data-role="recipient"><span class="fn-label">Empfänger*in</span><a class="anno-org" data-ref="org__wien-augustiner_eremiten" data-hint="Augustinereremiten Wien (Kloster_m) [org__wien-augustiner_eremiten]" data-hint-type="Organisation" href="../../../register/orgs/org__wien-augustiner_eremiten.html">Augustinern</a></span> , hinz den <span class="anno-fn anno-fn-recipient" data-role="recipient"><span class="fn-label">Empfänger*in</span><a class="anno-org" data-ref="org__wien-minoriten" data-hint="Minoriten Wien (Kloster_m) [org__wien-minoriten]" data-hint-type="Organisation" href="../../../register/orgs/org__wien-minoriten.html">Minnernprüdern</a></span> und hinz den <span class="anno-fn anno-fn-recipient" data-role="recipient"><span class="fn-label">Empfänger*in</span><a class="anno-org" data-ref="org__wien-karmeliter" data-hint="Karmeliter (Weissenbrüder) Wien (Kloster_m) [org__wien-karmeliter]" data-hint-type="Organisation" href="../../../register/orgs/org__wien-karmeliter.html">Weissenprüdern</a></span>
+                  zu igleichem chloster zu dem pau 5 lb dn. und zu dem pau hinz <span class="anno-fn anno-fn-recipient" data-role="recipient"><span class="fn-label">Empfänger*in</span><a class="anno-org" data-ref="org__wien-st_stephan" data-hint="St. Stephan (Pfarr- und Domkirche) (Kirche_Kapelle) [org__wien-st_stephan]" data-hint-type="Organisation" href="../../../register/orgs/org__wien-st_stephan.html">sant Stephan</a></span>
                   auch 5 lb dn. 3. der <span class="anno-fn anno-fn-recipient" data-role="recipient"><span class="fn-label">Empfänger*in</span>
                      Schwester seiner Hausfrau, Hannsen hausvrown des Holn</span>,
-                  20 lb dn. 4. der <span class="anno-fn anno-fn-recipient" data-role="recipient"><span class="fn-label">Empfänger*in</span><a class="anno-person" data-ref="pe__anna_QGW_II_I_983_a" title="Anna [pe__anna_QGW_II_I_983_a]" href="../../../register/persons/pe__anna_QGW_II_I_983_a.html"><span class="anno-attr anno-attr-kin" data-corresp="pe__klara_QGW_II_I_852">Schwester</span> seiner Hausfrau,
-                        Annen</a></span>, 20 lb dn. 5. <span class="anno-fn anno-fn-recipient" data-role="recipient"><span class="fn-label">Empfänger*in</span><a class="anno-person" data-ref="pe__bernhard_tuchberaiter_QGW_II_I_1601" title="Bernhard der Tuchberaiter [pe__bernhard_tuchberaiter_QGW_II_I_1601]" href="../../../register/persons/pe__bernhard_tuchberaiter_QGW_II_I_1601.html">Wernharten,
-                        dem <span class="anno-attr anno-attr-prof">tuchberaiter</span>, seiner Hausfrau <span class="anno-attr anno-attr-kin" data-corresp="pe__klara_QGW_II_I_852">Schwestersohn</span></a></span>, 20 lb dn. 6. den <span class="anno-fn anno-fn-recipient" data-role="recipient"><span class="fn-label">Empfänger*in</span>Kindern</span> seines <a class="anno-person" data-ref="pe__peter_QGW_II_I_983" title="Peter [pe__peter_QGW_II_I_983]" href="../../../register/persons/pe__peter_QGW_II_I_983.html"><span class="anno-attr anno-attr-kin" data-corresp="pe__ulrich_ebner_QGW_II_I_836">Bruders</span> Petrein</a> 40 lb dn. 7. <span class="anno-fn anno-fn-recipient" data-role="recipient"><span class="fn-label">Empfänger*in</span><a class="anno-person" data-ref="pe__michael_QGW_II_I_983" title="Michael [pe__michael_QGW_II_I_983]" href="../../../register/persons/pe__michael_QGW_II_I_983.html">dem <span class="anno-attr anno-attr-kin" data-corresp="pe__peter_QGW_II_I_983">Sohne</span> desselben,
+                  20 lb dn. 4. der <span class="anno-fn anno-fn-recipient" data-role="recipient"><span class="fn-label">Empfänger*in</span><a class="anno-person" data-ref="pe__anna_QGW_II_I_983_a" data-hint="Anna [pe__anna_QGW_II_I_983_a]" data-hint-type="Person" href="../../../register/persons/pe__anna_QGW_II_I_983_a.html"><span class="anno-attr anno-attr-kin" data-corresp="pe__klara_QGW_II_I_852">Schwester</span> seiner Hausfrau,
+                        Annen</a></span>, 20 lb dn. 5. <span class="anno-fn anno-fn-recipient" data-role="recipient"><span class="fn-label">Empfänger*in</span><a class="anno-person" data-ref="pe__bernhard_tuchberaiter_QGW_II_I_1601" data-hint="Bernhard der Tuchberaiter [pe__bernhard_tuchberaiter_QGW_II_I_1601]" data-hint-type="Person" href="../../../register/persons/pe__bernhard_tuchberaiter_QGW_II_I_1601.html">Wernharten,
+                        dem <span class="anno-attr anno-attr-prof">tuchberaiter</span>, seiner Hausfrau <span class="anno-attr anno-attr-kin" data-corresp="pe__klara_QGW_II_I_852">Schwestersohn</span></a></span>, 20 lb dn. 6. den <span class="anno-fn anno-fn-recipient" data-role="recipient"><span class="fn-label">Empfänger*in</span>Kindern</span> seines <a class="anno-person" data-ref="pe__peter_QGW_II_I_983" data-hint="Peter [pe__peter_QGW_II_I_983]" data-hint-type="Person" href="../../../register/persons/pe__peter_QGW_II_I_983.html"><span class="anno-attr anno-attr-kin" data-corresp="pe__ulrich_ebner_QGW_II_I_836">Bruders</span> Petrein</a> 40 lb dn. 7. <span class="anno-fn anno-fn-recipient" data-role="recipient"><span class="fn-label">Empfänger*in</span><a class="anno-person" data-ref="pe__michael_QGW_II_I_983" data-hint="Michael [pe__michael_QGW_II_I_983]" data-hint-type="Person" href="../../../register/persons/pe__michael_QGW_II_I_983.html">dem <span class="anno-attr anno-attr-kin" data-corresp="pe__peter_QGW_II_I_983">Sohne</span> desselben,
                         Micheln</a></span>, bei seiner Verheiratung 10 lb dn., welche, im Falle als
-                  er unverheiratet stürbe, seinen Geschwistern zufallen sollen 8. seiner <span class="anno-fn anno-fn-recipient" data-role="recipient"><span class="fn-label">Empfänger*in</span><a class="anno-person" data-ref="pe__agnes_graefenauerin_QGW_II_I_983" title="Agnes Graefenauerin [pe__agnes_graefenauerin_QGW_II_I_983]" href="../../../register/persons/pe__agnes_graefenauerin_QGW_II_I_983.html"><span class="anno-attr anno-attr-kin" data-corresp="pe__ulrich_ebner_QGW_II_I_836">Muhme</span> Agnesen der
-                        Gre/afenauerinn</a> und ihren Kindern</span> 15 lb dn. 9. <span class="anno-fn anno-fn-recipient" data-role="recipient"><span class="fn-label">Empfänger*in</span><a class="anno-person" data-ref="pe__katharina_QGW_II_I_983_a" title="Katharina [pe__katharina_QGW_II_I_983_a]" href="../../../register/persons/pe__katharina_QGW_II_I_983_a.html">Katrein,
+                  er unverheiratet stürbe, seinen Geschwistern zufallen sollen 8. seiner <span class="anno-fn anno-fn-recipient" data-role="recipient"><span class="fn-label">Empfänger*in</span><a class="anno-person" data-ref="pe__agnes_graefenauerin_QGW_II_I_983" data-hint="Agnes Graefenauerin [pe__agnes_graefenauerin_QGW_II_I_983]" data-hint-type="Person" href="../../../register/persons/pe__agnes_graefenauerin_QGW_II_I_983.html"><span class="anno-attr anno-attr-kin" data-corresp="pe__ulrich_ebner_QGW_II_I_836">Muhme</span> Agnesen der
+                        Gre/afenauerinn</a> und ihren Kindern</span> 15 lb dn. 9. <span class="anno-fn anno-fn-recipient" data-role="recipient"><span class="fn-label">Empfänger*in</span><a class="anno-person" data-ref="pe__katharina_QGW_II_I_983_a" data-hint="Katharina [pe__katharina_QGW_II_I_983_a]" data-hint-type="Person" href="../../../register/persons/pe__katharina_QGW_II_I_983_a.html">Katrein,
                         seiner <span class="anno-attr anno-attr-kin" data-corresp="pe__ulrich_ebner_QGW_II_I_836">Schwester</span>
-                        zu Simoning</a></span>, 20 lb dn. 10. der <span class="anno-fn anno-fn-recipient" data-role="recipient"><span class="fn-label">Empfänger*in</span><a class="anno-person" data-ref="pe__anna_QGW_II_I_983_b" title="Anna [pe__anna_QGW_II_I_983_b]" href="../../../register/persons/pe__anna_QGW_II_I_983_b.html"><span class="anno-attr anno-attr-kin" data-corresp="pe__katharina_QGW_II_I_983_a">Tochter</span> derselben,
-                        Annen, und ihren Kindern</a></span> 10 lb dn. 11. der <span class="anno-fn anno-fn-recipient" data-role="recipient"><span class="fn-label">Empfänger*in</span><a class="anno-person" data-ref="pe__elisabeth_QGW_II_I_983" title="Elisabeth [pe__elisabeth_QGW_II_I_983]" href="../../../register/persons/pe__elisabeth_QGW_II_I_983.html"><span class="anno-attr anno-attr-kin" data-corresp="pe__katharina_QGW_II_I_983_a">Enkelin</span> der
+                        zu Simoning</a></span>, 20 lb dn. 10. der <span class="anno-fn anno-fn-recipient" data-role="recipient"><span class="fn-label">Empfänger*in</span><a class="anno-person" data-ref="pe__anna_QGW_II_I_983_b" data-hint="Anna [pe__anna_QGW_II_I_983_b]" data-hint-type="Person" href="../../../register/persons/pe__anna_QGW_II_I_983_b.html"><span class="anno-attr anno-attr-kin" data-corresp="pe__katharina_QGW_II_I_983_a">Tochter</span> derselben,
+                        Annen, und ihren Kindern</a></span> 10 lb dn. 11. der <span class="anno-fn anno-fn-recipient" data-role="recipient"><span class="fn-label">Empfänger*in</span><a class="anno-person" data-ref="pe__elisabeth_QGW_II_I_983" data-hint="Elisabeth [pe__elisabeth_QGW_II_I_983]" data-hint-type="Person" href="../../../register/persons/pe__elisabeth_QGW_II_I_983.html"><span class="anno-attr anno-attr-kin" data-corresp="pe__katharina_QGW_II_I_983_a">Enkelin</span> der
                         Katrein, <span class="anno-attr anno-attr-title">junkchvrown</span> Elsbeten</a></span>,
                   10 lb dn. mit dem Heimfalle an Katrein, wenn Elsbet vor ihrer Verheiratung stürbe
-                  12. seinem <span class="anno-fn anno-fn-recipient" data-role="recipient"><span class="fn-label">Empfänger*in</span><a class="anno-person" data-ref="pe__ulrich_von_retzbach_QGW_II_I_983" title="Ulrich von Retzbach von Retzbach [pe__ulrich_von_retzbach_QGW_II_I_983]" href="../../../register/persons/pe__ulrich_von_retzbach_QGW_II_I_983.html"><span class="anno-attr anno-attr-kin" data-corresp="pe__ulrich_ebner_QGW_II_I_836">Vetter</span> Ulreichen von
+                  12. seinem <span class="anno-fn anno-fn-recipient" data-role="recipient"><span class="fn-label">Empfänger*in</span><a class="anno-person" data-ref="pe__ulrich_von_retzbach_QGW_II_I_983" data-hint="Ulrich von Retzbach von Retzbach [pe__ulrich_von_retzbach_QGW_II_I_983]" data-hint-type="Person" href="../../../register/persons/pe__ulrich_von_retzbach_QGW_II_I_983.html"><span class="anno-attr anno-attr-kin" data-corresp="pe__ulrich_ebner_QGW_II_I_836">Vetter</span> Ulreichen von
                      Reczpach</a></span> 5 lb 60 dn. zu den 5 lb minner 60 dn., die dieser ihm
-                  schuldet 13. seiner <span class="anno-fn anno-fn-recipient" data-role="recipient"><span class="fn-label">Empfänger*in</span><a class="anno-person" data-ref="pe__gisela_QGW_II_I_983" title="Gisela [pe__gisela_QGW_II_I_983]" href="../../../register/persons/pe__gisela_QGW_II_I_983.html"><span class="anno-attr anno-attr-kin" data-corresp="pe__ulrich_ebner_QGW_II_I_836">Muhme</span> Geislein</a></span> 5 lb dn.
-                     14.<span class="anno-fn anno-fn-recipient" data-role="recipient"><span class="fn-label">Empfänger*in</span> seinen armen Freunden</span> 20 lb dn. 15.<span class="anno-fn anno-fn-recipient" data-role="recipient"><span class="fn-label">Empfänger*in</span><a class="anno-person" data-ref="pe__ulrich_bierbrauer_QGW_II_I_983" title="Ulrich der Bierbrauer von Ebersdorf [pe__ulrich_bierbrauer_QGW_II_I_983]" href="../../../register/persons/pe__ulrich_bierbrauer_QGW_II_I_983.html"> Ulreichen, dem <span class="anno-attr anno-attr-prof">pierpreuer</span> von Eberstorf</a></span>, 5 lb dn. zu
+                  schuldet 13. seiner <span class="anno-fn anno-fn-recipient" data-role="recipient"><span class="fn-label">Empfänger*in</span><a class="anno-person" data-ref="pe__gisela_QGW_II_I_983" data-hint="Gisela [pe__gisela_QGW_II_I_983]" data-hint-type="Person" href="../../../register/persons/pe__gisela_QGW_II_I_983.html"><span class="anno-attr anno-attr-kin" data-corresp="pe__ulrich_ebner_QGW_II_I_836">Muhme</span> Geislein</a></span> 5 lb dn.
+                     14.<span class="anno-fn anno-fn-recipient" data-role="recipient"><span class="fn-label">Empfänger*in</span> seinen armen Freunden</span> 20 lb dn. 15.<span class="anno-fn anno-fn-recipient" data-role="recipient"><span class="fn-label">Empfänger*in</span><a class="anno-person" data-ref="pe__ulrich_bierbrauer_QGW_II_I_983" data-hint="Ulrich der Bierbrauer von Ebersdorf [pe__ulrich_bierbrauer_QGW_II_I_983]" data-hint-type="Person" href="../../../register/persons/pe__ulrich_bierbrauer_QGW_II_I_983.html"> Ulreichen, dem <span class="anno-attr anno-attr-prof">pierpreuer</span> von Eberstorf</a></span>, 5 lb dn. zu
                   dem Gelde, das dieser ihm schuldet 16. der <span class="anno-fn anno-fn-recipient" data-role="recipient"><span class="fn-label">Empfänger*in</span>Muhme
                      seines Schwagers Seifried, die ze Plaeusing geheiratt hat, 12 lb dn., die ihr
                      derselbe Seifried geschafft hatte</span>, und 14. sh. 20 dn., die sie ihm
-                  schuldet 17. <span class="anno-fn anno-fn-recipient" data-role="recipient"><span class="fn-label">Empfänger*in</span><a class="anno-person" data-ref="pe__klara_QGW_II_I_983_b" title="Klara der Scherrublin Tochter [pe__klara_QGW_II_I_983_b]" href="../../../register/persons/pe__klara_QGW_II_I_983_b.html"><span class="anno-attr anno-attr-title">junkfraun</span>
+                  schuldet 17. <span class="anno-fn anno-fn-recipient" data-role="recipient"><span class="fn-label">Empfänger*in</span><a class="anno-person" data-ref="pe__klara_QGW_II_I_983_b" data-hint="Klara der Scherrublin Tochter [pe__klara_QGW_II_I_983_b]" data-hint-type="Person" href="../../../register/persons/pe__klara_QGW_II_I_983_b.html"><span class="anno-attr anno-attr-title">junkfraun</span>
                         Chlarn, der Scherru/eblinn <span class="anno-attr anno-attr-kin" data-corresp="pe__scherrublin_QGW_II_I_983">tochter</span>, die pei der
-                        Chelhaimerinn ist</a></span>, 10 lb dn. und <span class="anno-fn anno-fn-recipient" data-role="recipient"><span class="fn-label">Empfänger*in</span><a class="anno-person" data-ref="pe__scherrublin_QGW_II_I_983" title="Scherrublin [pe__scherrublin_QGW_II_I_983]" href="../../../register/persons/pe__scherrublin_QGW_II_I_983.html">ihrer Mutter</a></span>
-                  2 lb dn. 18. seiner<span class="anno-fn anno-fn-recipient" data-role="recipient"><span class="fn-label">Empfänger*in</span><a class="anno-person" data-ref="pe__klara_QGW_II_I_852" title="Klara [pe__klara_QGW_II_I_852]" href="../../../register/persons/pe__klara_QGW_II_I_852.html">
+                        Chelhaimerinn ist</a></span>, 10 lb dn. und <span class="anno-fn anno-fn-recipient" data-role="recipient"><span class="fn-label">Empfänger*in</span><a class="anno-person" data-ref="pe__scherrublin_QGW_II_I_983" data-hint="Scherrublin [pe__scherrublin_QGW_II_I_983]" data-hint-type="Person" href="../../../register/persons/pe__scherrublin_QGW_II_I_983.html">ihrer Mutter</a></span>
+                  2 lb dn. 18. seiner<span class="anno-fn anno-fn-recipient" data-role="recipient"><span class="fn-label">Empfänger*in</span><a class="anno-person" data-ref="pe__klara_QGW_II_I_852" data-hint="Klara [pe__klara_QGW_II_I_852]" data-hint-type="Person" href="../../../register/persons/pe__klara_QGW_II_I_852.html">
                         <span class="anno-attr anno-attr-kin" data-corresp="pe__ulrich_ebner_QGW_II_I_836">Hausfrau</span>
-                        Chlarn</a> und ihrer beider <a class="anno-person" data-ref="pe__katharina_QGW_II_I_983_b" title="Katharinain [pe__katharina_QGW_II_I_983_b]" href="../../../register/persons/pe__katharina_QGW_II_I_983_b.html"><span class="anno-attr anno-attr-kin" data-corresp="pe__ulrich_ebner_QGW_II_I_836">Tochter</span>
+                        Chlarn</a> und ihrer beider <a class="anno-person" data-ref="pe__katharina_QGW_II_I_983_b" data-hint="Katharinain [pe__katharina_QGW_II_I_983_b]" data-hint-type="Person" href="../../../register/persons/pe__katharina_QGW_II_I_983_b.html"><span class="anno-attr anno-attr-kin" data-corresp="pe__ulrich_ebner_QGW_II_I_836">Tochter</span>
                         <span class="anno-attr anno-attr-kin" data-corresp="pe__klara_QGW_II_I_852"><span class="tei-add">Tochter</span></span> Katrei</a></span> seinen gesammten anderen
                   Besitz.</span>
             </p></section><section class="tei-seal"><h2 class="tei-section-head">Siegelbeschreibung</h2><p><span class="anno-event" data-ref="ev__QGW_II_I_983"><span class="anno-fn anno-fn-witness" data-role="witness"><span class="fn-label">Zeug*in</span>Besiegelt mit
-                     den Siegeln: 1. des <a class="anno-person" data-ref="pe__ulrich_ebner_QGW_II_I_836" title="Ulrich Ebner Ebner [pe__ulrich_ebner_QGW_II_I_836]" href="../../../register/persons/pe__ulrich_ebner_QGW_II_I_836.html">Ausstellers</a>,
-                        2.<a class="anno-person" data-ref="pe__andreas_schuetzenmeister_QGW_II_I_836" title="Andreas Schützenmeister Schützenmeister [pe__andreas_schuetzenmeister_QGW_II_I_836]" href="../../../register/persons/pe__andreas_schuetzenmeister_QGW_II_I_836.html">
+                     den Siegeln: 1. des <a class="anno-person" data-ref="pe__ulrich_ebner_QGW_II_I_836" data-hint="Ulrich Ebner Ebner [pe__ulrich_ebner_QGW_II_I_836]" data-hint-type="Person" href="../../../register/persons/pe__ulrich_ebner_QGW_II_I_836.html">Ausstellers</a>,
+                        2.<a class="anno-person" data-ref="pe__andreas_schuetzenmeister_QGW_II_I_836" data-hint="Andreas Schützenmeister Schützenmeister [pe__andreas_schuetzenmeister_QGW_II_I_836]" data-hint-type="Person" href="../../../register/persons/pe__andreas_schuetzenmeister_QGW_II_I_836.html">
                         <span class="anno-attr anno-attr-title">hern</span> Andres des Schützenmaister, des
                            <span class="anno-attr anno-attr-occ" data-corresp="org__wien">rates der stat ze
-                           Wienn</span></a>, 3. <a class="anno-person" data-ref="pe__friedrich_dietram_QGW_II_I_1026" title="Friedrich Dietram [pe__friedrich_dietram_QGW_II_I_1026]" href="../../../register/persons/pe__friedrich_dietram_QGW_II_I_1026.html">Fridreichs des Dietrams, <span class="anno-attr anno-attr-occ" data-corresp="org__wien">purger</span> daselbs</a>.</span></span>
+                           Wienn</span></a>, 3. <a class="anno-person" data-ref="pe__friedrich_dietram_QGW_II_I_1026" data-hint="Friedrich Dietram [pe__friedrich_dietram_QGW_II_I_1026]" data-hint-type="Person" href="../../../register/persons/pe__friedrich_dietram_QGW_II_I_1026.html">Fridreichs des Dietrams, <span class="anno-attr anno-attr-occ" data-corresp="org__wien">purger</span> daselbs</a>.</span></span>
             </p></section><section class="tei-nota"><h2 class="tei-section-head">Indorsat / Nota</h2><p></p></section>
 
             <!-- Data layer: provenance strip. Korpus + Idno stehen schon
@@ -322,7 +328,7 @@
          dem TEI in mehreren Untertabellen, Personen/Orgs/Orte,
          Ereignisse, Dispositivformeln, Editorische Ergaenzungen. Wird
          per JS aus den entsprechenden Spans im Body aufgebaut. -->
-    <section class="annotations-view" id="factoid-view" aria-label="Annotationen">
+    <section class="annotations-view" id="annotations-view" aria-label="Annotationen">
         <header class="annotations-header">
             <h2 class="annotations-title">Annotationen</h2>
             <span class="annotations-summary"></span>
@@ -368,13 +374,14 @@
         </div>
     </footer>
 
-    <script src="../../../static/js/core.js?v=20260511112948"></script>
-    <script src="../../../static/js/provenance.js?v=20260511112948"></script>
-    <script src="../../../static/js/basket.js?v=20260511112948"></script>
+    <script src="../../../static/js/core.js?v=20260511125458"></script>
+    <script src="../../../static/js/tip.js?v=20260511125458"></script>
+    <script src="../../../static/js/hint.js?v=20260511125458"></script>
+    <script src="../../../static/js/basket.js?v=20260511125458"></script>
     
-<script src="../../../static/js/tooltips.js?v=20260511112948"></script>
-<script src="../../../static/js/facsimile.js?v=20260511112948"></script>
-<script src="../../../static/js/document.js?v=20260511112948"></script>
+<script src="../../../static/js/facsimile.js?v=20260511125458"></script>
+<script src="../../../static/js/document.js?v=20260511125458"></script>
+<script src="../../../static/js/basket-mount.js?v=20260511125458"></script>
 
 </body>
 </html>

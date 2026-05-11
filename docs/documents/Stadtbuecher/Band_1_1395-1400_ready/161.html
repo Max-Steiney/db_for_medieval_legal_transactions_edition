@@ -3,21 +3,21 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <meta http-equiv="Content-Security-Policy" content="default-src 'self'; script-src 'self'; style-src 'self'; font-src 'self'; img-src 'self' data: https://images.monasterium.net https://www.monasterium.net; connect-src 'self'; frame-ancestors 'none'; base-uri 'self'; form-action 'self'; upgrade-insecure-requests">
+    <meta http-equiv="Content-Security-Policy" content="default-src 'self'; script-src 'self'; style-src 'self'; font-src 'self'; img-src 'self' data: https://images.monasterium.net https://www.monasterium.net; connect-src 'self'; base-uri 'self'; form-action 'self'; upgrade-insecure-requests">
     <meta name="referrer" content="strict-origin-when-cross-origin">
     <meta http-equiv="Permissions-Policy" content="camera=(), microphone=(), geolocation=(), interest-cohort=()">
     <title>Nr. 161 (1397 März 12, Regensburg), Datenbank</title>
     <link rel="preload" as="font" type="font/woff2" crossorigin
           href="../../../static/fonts/inter-400-latin.woff2">
-    <link rel="stylesheet" href="../../../static/css/fonts.css?v=20260511112948">
-    <link rel="stylesheet" href="../../../static/css/tokens.css?v=20260511112948">
-    <link rel="stylesheet" href="../../../static/css/base.css?v=20260511112948">
-    <link rel="stylesheet" href="../../../static/css/components.css?v=20260511112948">
-    <link rel="stylesheet" href="../../../static/css/responsive.css?v=20260511112948">
-    <link rel="stylesheet" href="../../../static/css/print.css?v=20260511112948">
-    <link rel="stylesheet" href="../../../static/css/provenance.css?v=20260511112948">
+    <link rel="stylesheet" href="../../../static/css/fonts.css?v=20260511125458">
+    <link rel="stylesheet" href="../../../static/css/tokens.css?v=20260511125458">
+    <link rel="stylesheet" href="../../../static/css/base.css?v=20260511125458">
+    <link rel="stylesheet" href="../../../static/css/components.css?v=20260511125458">
+    <link rel="stylesheet" href="../../../static/css/responsive.css?v=20260511125458">
+    <link rel="stylesheet" href="../../../static/css/print.css?v=20260511125458">
+    <link rel="stylesheet" href="../../../static/css/tip.css?v=20260511125458">
     
-<link rel="stylesheet" href="../../../static/css/document.css?v=20260511112948">
+<link rel="stylesheet" href="../../../static/css/document.css?v=20260511125458">
 <link rel="canonical" href="documents/Stadtbuecher/Band_1_1395-1400_ready/161.html">
 <meta name="citation_title" content="Nr. 161 ((1397 März 12, Regensburg))">
 <meta name="citation_collection" content="Stadtbücher Bd. 1 (1395–1400)">
@@ -50,8 +50,6 @@
         <a href="../../../register/persons.html">Personen</a>
         
         <a href="../../../register/orgs.html">Organisationen</a>
-        
-        <a href="../../../register/places.html">Orte</a>
         
     </div>
 </div>
@@ -93,7 +91,7 @@
     </div>
 </div>
 
-                <a href="../../../korb.html" class="nav-basket" aria-label="Wissenskorb">
+                <a href="../../../korb.html" class="nav-basket" aria-label="Datenkorb">
                     <svg width="18" height="18" viewBox="0 0 18 18" fill="none" aria-hidden="true">
                         <path d="M3 5h12l-1.2 8.5a1 1 0 0 1-1 .85H5.2a1 1 0 0 1-1-.85L3 5z"
                               stroke="currentColor" stroke-width="1.4" fill="none"
@@ -135,7 +133,7 @@
                     
                     <span class="meta-pair">
                         <span class="meta-label">Quelle</span>
-                        <span class="meta-value" title="Wilhelm Brauneder / Gerhard Jaritz. Die Wiener Stadtbücher 1395 - 1430. Teil 1: 1395 - 1400. Wien/Köln: Böhlau Verlag.">Wilhelm Brauneder / Gerhard Jaritz. Die Wiener Stadtbücher 1395 - 1430. Teil 1: 1395 - 1400. Wien/Köln: Böhlau Verlag.</span>
+                        <span class="meta-value" data-hint="Wilhelm Brauneder / Gerhard Jaritz. Die Wiener Stadtbücher 1395 - 1430. Teil 1: 1395 - 1400. Wien/Köln: Böhlau Verlag.">Wilhelm Brauneder / Gerhard Jaritz. Die Wiener Stadtbücher 1395 - 1430. Teil 1: 1395 - 1400. Wien/Köln: Böhlau Verlag.</span>
                     </span>
                     
                 </div>
@@ -146,7 +144,7 @@
                     
                     <button type="button" class="legend-toggle"
                             data-layer="entities" aria-pressed="true"
-                            title="Entitäten ein-/ausblenden">
+                            data-hint="Entitäten ein-/ausblenden">
                         <span class="legend-toggle-dots">
                             <span class="legend-swatch swatch-person"></span><span class="legend-swatch swatch-org"></span><span class="legend-swatch swatch-place"></span>
                         </span>
@@ -155,7 +153,7 @@
                     
                     <button type="button" class="legend-toggle"
                             data-layer="functions" aria-pressed="true"
-                            title="Funktionsrollen ein-/ausblenden">
+                            data-hint="Funktionsrollen ein-/ausblenden">
                         <span class="legend-toggle-dots">
                             <span class="legend-swatch swatch-fn-issuer"></span><span class="legend-swatch swatch-fn-recipient"></span><span class="legend-swatch swatch-fn-witness"></span>
                         </span>
@@ -164,7 +162,7 @@
                     
                     <button type="button" class="legend-toggle"
                             data-layer="attributes" aria-pressed="true"
-                            title="Attribute ein-/ausblenden">
+                            data-hint="Attribute ein-/ausblenden">
                         <span class="legend-toggle-dots">
                             <span class="legend-swatch swatch-attr"></span><span class="legend-swatch swatch-add"></span>
                         </span>
@@ -173,7 +171,7 @@
                     
                     <button type="button" class="legend-toggle"
                             data-layer="triggers" aria-pressed="true"
-                            title="Dispositivformel ein-/ausblenden">
+                            data-hint="Dispositivformel ein-/ausblenden">
                         <span class="legend-toggle-dots">
                             <span class="legend-swatch swatch-trigger"></span>
                         </span>
@@ -185,21 +183,29 @@
                 <div class="doc-toolbar-actions">
                     <a class="toolbar-btn" href="../../../tei/Stadtbuecher/Band_1_1395-1400_ready/161.xml"
                        download="161.xml"
-                       aria-label="TEI-XML herunterladen" title="TEI-XML herunterladen"><svg viewBox="0 0 16 16" width="16" height="16" aria-hidden="true"><path fill="none" stroke="currentColor" stroke-width="1.4" stroke-linecap="round" stroke-linejoin="round" d="M8 2v8m0 0l-3-3m3 3l3-3M3 13h10"/></svg></a>
+                       aria-label="TEI-XML herunterladen" data-hint="TEI-XML herunterladen"><svg viewBox="0 0 16 16" width="16" height="16" aria-hidden="true"><path fill="none" stroke="currentColor" stroke-width="1.4" stroke-linecap="round" stroke-linejoin="round" d="M8 2v8m0 0l-3-3m3 3l3-3M3 13h10"/></svg></a>
                     <button class="toolbar-btn" id="cite-toggle" aria-expanded="false"
-                            aria-label="Zitation kopieren" title="Zitation kopieren"><svg viewBox="0 0 16 16" width="16" height="16" aria-hidden="true"><rect x="4" y="2" width="8" height="11" rx="1" fill="none" stroke="currentColor" stroke-width="1.4"/><path d="M6 1.5h4a0.5 0.5 0 0 1 0.5 0.5v1a0.5 0.5 0 0 1-0.5 0.5H6a0.5 0.5 0 0 1-0.5-0.5V2A0.5 0.5 0 0 1 6 1.5z" fill="currentColor"/><path d="M6.5 6.5h3M6.5 8.5h3M6.5 10.5h2" stroke="currentColor" stroke-width="1" stroke-linecap="round"/></svg></button>
+                            aria-label="Zitation kopieren" data-hint="Zitation kopieren"><svg viewBox="0 0 16 16" width="16" height="16" aria-hidden="true"><rect x="4" y="2" width="8" height="11" rx="1" fill="none" stroke="currentColor" stroke-width="1.4"/><path d="M6 1.5h4a0.5 0.5 0 0 1 0.5 0.5v1a0.5 0.5 0 0 1-0.5 0.5H6a0.5 0.5 0 0 1-0.5-0.5V2A0.5 0.5 0 0 1 6 1.5z" fill="currentColor"/><path d="M6.5 6.5h3M6.5 8.5h3M6.5 10.5h2" stroke="currentColor" stroke-width="1" stroke-linecap="round"/></svg></button>
                     <div class="cite-popover hidden" id="cite-popover"></div>
+                    <span class="toolbar-basket-mount"
+                          data-basket-type="source"
+                          data-basket-id="161"
+                          data-basket-label="161"
+                          data-basket-url="documents/Stadtbuecher/Band_1_1395-1400_ready/161.html"
+                          data-basket-date="1397-03-12"
+                          data-basket-coll="Stadtbücher Bd. 1 (1395–1400)"
+                          data-basket-regest="(Inde:z:: Item ain frewntschaftbrief von der Mawshaymer wegen) (fol.27r) Den erasamen [!l und weisen herrn dem purgermaister und dem rat der erbergen stat zu Wienn enbieten wir, ich Gebhart der…"></span>
                     
 <nav class="doc-paging doc-paging-inline" aria-label="Quellen-Navigation">
     
     <a href="../../../documents/Stadtbuecher/Band_1_1395-1400_ready/160.html" class="toolbar-btn doc-paging-prev"
        aria-label="Vorherige Quelle: Nr. 160"
-       title="Vorherige Quelle: Nr. 160"><svg viewBox="0 0 16 16" width="16" height="16" aria-hidden="true"><path fill="none" stroke="currentColor" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round" d="M10 3l-5 5 5 5"/></svg></a>
+       data-hint="Vorherige Quelle: Nr. 160"><svg viewBox="0 0 16 16" width="16" height="16" aria-hidden="true"><path fill="none" stroke="currentColor" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round" d="M10 3l-5 5 5 5"/></svg></a>
     
     
     <a href="../../../documents/Stadtbuecher/Band_1_1395-1400_ready/163.html" class="toolbar-btn doc-paging-next"
        aria-label="Nächste Quelle: Nr. 163"
-       title="Nächste Quelle: Nr. 163"><svg viewBox="0 0 16 16" width="16" height="16" aria-hidden="true"><path fill="none" stroke="currentColor" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round" d="M6 3l5 5-5 5"/></svg></a>
+       data-hint="Nächste Quelle: Nr. 163"><svg viewBox="0 0 16 16" width="16" height="16" aria-hidden="true"><path fill="none" stroke="currentColor" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round" d="M6 3l5 5-5 5"/></svg></a>
     
 </nav>
 
@@ -219,21 +225,21 @@
                     Mawshaimer</p>
             </header>                   <section class="tei-entry"><h2 class="tei-section-head">Eintrag</h2>
                 <p> (Inde:z:: Item ain frewntschaftbrief von der Mawshaymer wegen) (fol.27r) <span class="anno-event" data-ref="ev__StB_I_161">Den erasamen [!l und weisen herrn dem
-                        purgermaister und dem rat der erbergen stat zu Wienn enbieten <span class="anno-fn anno-fn-witness" data-role="witness"><span class="fn-label">Zeug*in</span>wir, ich <a class="anno-person" data-ref="pe__gebhard_pauchheimer_StB_I_161" title="Gebhard Pauchheimer von Dünzling [pe__gebhard_pauchheimer_StB_I_161]" href="../../../register/persons/pe__gebhard_pauchheimer_StB_I_161.html">Gebhart der Pawchchaimer von
-                                Tunczling</a> und ich <a class="anno-person" data-ref="pe__friedrich_teufbrunner_StB_I_161" title="Friedrich Teufbrunner von Abbach [pe__friedrich_teufbrunner_StB_I_161]" href="../../../register/persons/pe__friedrich_teufbrunner_StB_I_161.html">Fridreich der Tewfprunner
+                        purgermaister und dem rat der erbergen stat zu Wienn enbieten <span class="anno-fn anno-fn-witness" data-role="witness"><span class="fn-label">Zeug*in</span>wir, ich <a class="anno-person" data-ref="pe__gebhard_pauchheimer_StB_I_161" data-hint="Gebhard Pauchheimer von Dünzling [pe__gebhard_pauchheimer_StB_I_161]" data-hint-type="Person" href="../../../register/persons/pe__gebhard_pauchheimer_StB_I_161.html">Gebhart der Pawchchaimer von
+                                Tunczling</a> und ich <a class="anno-person" data-ref="pe__friedrich_teufbrunner_StB_I_161" data-hint="Friedrich Teufbrunner von Abbach [pe__friedrich_teufbrunner_StB_I_161]" data-hint-type="Person" href="../../../register/persons/pe__friedrich_teufbrunner_StB_I_161.html">Fridreich der Tewfprunner
                                 von Abach</a>, unsern willigen dinst alczeit vor</span>. Es chumbt zu
-                        ewrer weishait <span class="anno-fn anno-fn-recipient" data-role="recipient"><span class="fn-label">Empfänger*in</span><a class="anno-person" data-ref="pe__johann_maushaimer_StB_I_161_b" title="Johann Maushaimer der Junge [pe__johann_maushaimer_StB_I_161_b]" href="../../../register/persons/pe__johann_maushaimer_StB_I_161_b.html">Hanns der jung Mawshaimer,
+                        ewrer weishait <span class="anno-fn anno-fn-recipient" data-role="recipient"><span class="fn-label">Empfänger*in</span><a class="anno-person" data-ref="pe__johann_maushaimer_StB_I_161_b" data-hint="Johann Maushaimer der Junge [pe__johann_maushaimer_StB_I_161_b]" data-hint-type="Person" href="../../../register/persons/pe__johann_maushaimer_StB_I_161_b.html">Hanns der jung Mawshaimer,
                                     <span class="anno-attr anno-attr-kin" data-corresp="pe__johann_maushaimer_StB_I_161_a"><span class="tei-add">sun</span></span>
-                                <span class="anno-attr anno-attr-kin" data-corresp="pe__konrad_maushaimer_QGW_II_I_1208"><span class="tei-add">zwair rechten pruder chind</span></span><a class="anno-person" data-ref="pe__johann_maushaimer_StB_I_161_a" title="Johann Maushaimer von Abbach († 12.03.1397) [pe__johann_maushaimer_StB_I_161_a]" href="../../../register/persons/pe__johann_maushaimer_StB_I_161_a.html">Hannsen
+                                <span class="anno-attr anno-attr-kin" data-corresp="pe__konrad_maushaimer_QGW_II_I_1208"><span class="tei-add">zwair rechten pruder chind</span></span><a class="anno-person" data-ref="pe__johann_maushaimer_StB_I_161_a" data-hint="Johann Maushaimer von Abbach († 12.03.1397) [pe__johann_maushaimer_StB_I_161_a]" data-hint-type="Person" href="../../../register/persons/pe__johann_maushaimer_StB_I_161_a.html">Hannsen
                                     des Mawshaimer <span class="anno-attr anno-attr-dead">seligen</span> sun von
                                     Abach</a>, der bei seinem <span class="anno-attr anno-attr-kin" data-corresp="pe__konrad_maushaimer_QGW_II_I_1208">vettern</span>
-                                <a class="anno-person" data-ref="pe__konrad_maushaimer_QGW_II_I_1208" title="Konrad Maushaimer († 12.03.1397) [pe__konrad_maushaimer_QGW_II_I_1208]" href="../../../register/persons/pe__konrad_maushaimer_QGW_II_I_1208.html">Chunrat
+                                <a class="anno-person" data-ref="pe__konrad_maushaimer_QGW_II_I_1208" data-hint="Konrad Maushaimer († 12.03.1397) [pe__konrad_maushaimer_QGW_II_I_1208]" data-hint-type="Person" href="../../../register/persons/pe__konrad_maushaimer_QGW_II_I_1208.html">Chunrat
                                     dem Mawshaimer <span class="anno-attr anno-attr-dead">saligen</span></a>
                                 gewesen ist, und der egenant Chunrat der Mawshaimer des hochgeborn
                                 fürsten in Osterreich etc. <span class="anno-attr anno-attr-occ" data-corresp="org__steyr">amptman</span>
                                 <span class="anno-attr anno-attr-occ" data-corresp="org__oesterreich-herzogtum"><span class="tei-add">amptman</span></span> ze Steyr gewesen ist und der
                                 da von todes wegen abgangen ist, als ewr weishait wol
-                        waiz</a></span>. Lassen wir ewr eberchait wissen, das der egenant <span class="anno-fn anno-fn-issuer" data-role="issuer"><span class="fn-label">Aussteller*in</span><a class="anno-person" data-ref="pe__konrad_maushaimer_QGW_II_I_1208" title="Konrad Maushaimer († 12.03.1397) [pe__konrad_maushaimer_QGW_II_I_1208]" href="../../../register/persons/pe__konrad_maushaimer_QGW_II_I_1208.html">Chunrat der Mawshaimer
+                        waiz</a></span>. Lassen wir ewr eberchait wissen, das der egenant <span class="anno-fn anno-fn-issuer" data-role="issuer"><span class="fn-label">Aussteller*in</span><a class="anno-person" data-ref="pe__konrad_maushaimer_QGW_II_I_1208" data-hint="Konrad Maushaimer († 12.03.1397) [pe__konrad_maushaimer_QGW_II_I_1208]" data-hint-type="Person" href="../../../register/persons/pe__konrad_maushaimer_QGW_II_I_1208.html">Chunrat der Mawshaimer
                                 saliger <span class="anno-attr anno-attr-kin" data-corresp="pe__johann_maushaimer_StB_I_161_b"><span class="tei-add">zwair rechten
                                         pruder chind</span></span></a> noch dem vorgenanten
                             Hannsen dem jungen Mawshaimer schiket, das der hinab zu im chom, und dem
@@ -275,7 +281,7 @@
          dem TEI in mehreren Untertabellen, Personen/Orgs/Orte,
          Ereignisse, Dispositivformeln, Editorische Ergaenzungen. Wird
          per JS aus den entsprechenden Spans im Body aufgebaut. -->
-    <section class="annotations-view" id="factoid-view" aria-label="Annotationen">
+    <section class="annotations-view" id="annotations-view" aria-label="Annotationen">
         <header class="annotations-header">
             <h2 class="annotations-title">Annotationen</h2>
             <span class="annotations-summary"></span>
@@ -321,13 +327,14 @@
         </div>
     </footer>
 
-    <script src="../../../static/js/core.js?v=20260511112948"></script>
-    <script src="../../../static/js/provenance.js?v=20260511112948"></script>
-    <script src="../../../static/js/basket.js?v=20260511112948"></script>
+    <script src="../../../static/js/core.js?v=20260511125458"></script>
+    <script src="../../../static/js/tip.js?v=20260511125458"></script>
+    <script src="../../../static/js/hint.js?v=20260511125458"></script>
+    <script src="../../../static/js/basket.js?v=20260511125458"></script>
     
-<script src="../../../static/js/tooltips.js?v=20260511112948"></script>
-<script src="../../../static/js/facsimile.js?v=20260511112948"></script>
-<script src="../../../static/js/document.js?v=20260511112948"></script>
+<script src="../../../static/js/facsimile.js?v=20260511125458"></script>
+<script src="../../../static/js/document.js?v=20260511125458"></script>
+<script src="../../../static/js/basket-mount.js?v=20260511125458"></script>
 
 </body>
 </html>

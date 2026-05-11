@@ -3,21 +3,21 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <meta http-equiv="Content-Security-Policy" content="default-src 'self'; script-src 'self'; style-src 'self'; font-src 'self'; img-src 'self' data: https://images.monasterium.net https://www.monasterium.net; connect-src 'self'; frame-ancestors 'none'; base-uri 'self'; form-action 'self'; upgrade-insecure-requests">
+    <meta http-equiv="Content-Security-Policy" content="default-src 'self'; script-src 'self'; style-src 'self'; font-src 'self'; img-src 'self' data: https://images.monasterium.net https://www.monasterium.net; connect-src 'self'; base-uri 'self'; form-action 'self'; upgrade-insecure-requests">
     <meta name="referrer" content="strict-origin-when-cross-origin">
     <meta http-equiv="Permissions-Policy" content="camera=(), microphone=(), geolocation=(), interest-cohort=()">
     <title>Nr. 408 (1399 Juli 3), Datenbank</title>
     <link rel="preload" as="font" type="font/woff2" crossorigin
           href="../../../static/fonts/inter-400-latin.woff2">
-    <link rel="stylesheet" href="../../../static/css/fonts.css?v=20260511112948">
-    <link rel="stylesheet" href="../../../static/css/tokens.css?v=20260511112948">
-    <link rel="stylesheet" href="../../../static/css/base.css?v=20260511112948">
-    <link rel="stylesheet" href="../../../static/css/components.css?v=20260511112948">
-    <link rel="stylesheet" href="../../../static/css/responsive.css?v=20260511112948">
-    <link rel="stylesheet" href="../../../static/css/print.css?v=20260511112948">
-    <link rel="stylesheet" href="../../../static/css/provenance.css?v=20260511112948">
+    <link rel="stylesheet" href="../../../static/css/fonts.css?v=20260511125458">
+    <link rel="stylesheet" href="../../../static/css/tokens.css?v=20260511125458">
+    <link rel="stylesheet" href="../../../static/css/base.css?v=20260511125458">
+    <link rel="stylesheet" href="../../../static/css/components.css?v=20260511125458">
+    <link rel="stylesheet" href="../../../static/css/responsive.css?v=20260511125458">
+    <link rel="stylesheet" href="../../../static/css/print.css?v=20260511125458">
+    <link rel="stylesheet" href="../../../static/css/tip.css?v=20260511125458">
     
-<link rel="stylesheet" href="../../../static/css/document.css?v=20260511112948">
+<link rel="stylesheet" href="../../../static/css/document.css?v=20260511125458">
 <link rel="canonical" href="documents/Stadtbuecher/Band_1_1395-1400_ready/408.html">
 <meta name="citation_title" content="Nr. 408 (1399 Juli 3)">
 <meta name="citation_collection" content="Stadtbücher Bd. 1 (1395–1400)">
@@ -50,8 +50,6 @@
         <a href="../../../register/persons.html">Personen</a>
         
         <a href="../../../register/orgs.html">Organisationen</a>
-        
-        <a href="../../../register/places.html">Orte</a>
         
     </div>
 </div>
@@ -93,7 +91,7 @@
     </div>
 </div>
 
-                <a href="../../../korb.html" class="nav-basket" aria-label="Wissenskorb">
+                <a href="../../../korb.html" class="nav-basket" aria-label="Datenkorb">
                     <svg width="18" height="18" viewBox="0 0 18 18" fill="none" aria-hidden="true">
                         <path d="M3 5h12l-1.2 8.5a1 1 0 0 1-1 .85H5.2a1 1 0 0 1-1-.85L3 5z"
                               stroke="currentColor" stroke-width="1.4" fill="none"
@@ -135,7 +133,7 @@
                     
                     <span class="meta-pair">
                         <span class="meta-label">Quelle</span>
-                        <span class="meta-value" title="Wilhelm Brauneder / Gerhard Jaritz. Die Wiener Stadtbücher 1395 - 1430. Teil 1: 1395 - 1400. Wien/Köln: Böhlau Verlag.">Wilhelm Brauneder / Gerhard Jaritz. Die Wiener Stadtbücher 1395 - 1430. Teil 1: 1395 - 1400. Wien/Köln: Böhlau Verlag.</span>
+                        <span class="meta-value" data-hint="Wilhelm Brauneder / Gerhard Jaritz. Die Wiener Stadtbücher 1395 - 1430. Teil 1: 1395 - 1400. Wien/Köln: Böhlau Verlag.">Wilhelm Brauneder / Gerhard Jaritz. Die Wiener Stadtbücher 1395 - 1430. Teil 1: 1395 - 1400. Wien/Köln: Böhlau Verlag.</span>
                     </span>
                     
                 </div>
@@ -146,7 +144,7 @@
                     
                     <button type="button" class="legend-toggle"
                             data-layer="entities" aria-pressed="true"
-                            title="Entitäten ein-/ausblenden">
+                            data-hint="Entitäten ein-/ausblenden">
                         <span class="legend-toggle-dots">
                             <span class="legend-swatch swatch-person"></span><span class="legend-swatch swatch-org"></span><span class="legend-swatch swatch-place"></span>
                         </span>
@@ -155,7 +153,7 @@
                     
                     <button type="button" class="legend-toggle"
                             data-layer="functions" aria-pressed="true"
-                            title="Funktionsrollen ein-/ausblenden">
+                            data-hint="Funktionsrollen ein-/ausblenden">
                         <span class="legend-toggle-dots">
                             <span class="legend-swatch swatch-fn-issuer"></span><span class="legend-swatch swatch-fn-recipient"></span><span class="legend-swatch swatch-fn-witness"></span>
                         </span>
@@ -164,7 +162,7 @@
                     
                     <button type="button" class="legend-toggle"
                             data-layer="attributes" aria-pressed="true"
-                            title="Attribute ein-/ausblenden">
+                            data-hint="Attribute ein-/ausblenden">
                         <span class="legend-toggle-dots">
                             <span class="legend-swatch swatch-attr"></span><span class="legend-swatch swatch-add"></span>
                         </span>
@@ -173,7 +171,7 @@
                     
                     <button type="button" class="legend-toggle"
                             data-layer="triggers" aria-pressed="true"
-                            title="Dispositivformel ein-/ausblenden">
+                            data-hint="Dispositivformel ein-/ausblenden">
                         <span class="legend-toggle-dots">
                             <span class="legend-swatch swatch-trigger"></span>
                         </span>
@@ -185,21 +183,29 @@
                 <div class="doc-toolbar-actions">
                     <a class="toolbar-btn" href="../../../tei/Stadtbuecher/Band_1_1395-1400_ready/408.xml"
                        download="408.xml"
-                       aria-label="TEI-XML herunterladen" title="TEI-XML herunterladen"><svg viewBox="0 0 16 16" width="16" height="16" aria-hidden="true"><path fill="none" stroke="currentColor" stroke-width="1.4" stroke-linecap="round" stroke-linejoin="round" d="M8 2v8m0 0l-3-3m3 3l3-3M3 13h10"/></svg></a>
+                       aria-label="TEI-XML herunterladen" data-hint="TEI-XML herunterladen"><svg viewBox="0 0 16 16" width="16" height="16" aria-hidden="true"><path fill="none" stroke="currentColor" stroke-width="1.4" stroke-linecap="round" stroke-linejoin="round" d="M8 2v8m0 0l-3-3m3 3l3-3M3 13h10"/></svg></a>
                     <button class="toolbar-btn" id="cite-toggle" aria-expanded="false"
-                            aria-label="Zitation kopieren" title="Zitation kopieren"><svg viewBox="0 0 16 16" width="16" height="16" aria-hidden="true"><rect x="4" y="2" width="8" height="11" rx="1" fill="none" stroke="currentColor" stroke-width="1.4"/><path d="M6 1.5h4a0.5 0.5 0 0 1 0.5 0.5v1a0.5 0.5 0 0 1-0.5 0.5H6a0.5 0.5 0 0 1-0.5-0.5V2A0.5 0.5 0 0 1 6 1.5z" fill="currentColor"/><path d="M6.5 6.5h3M6.5 8.5h3M6.5 10.5h2" stroke="currentColor" stroke-width="1" stroke-linecap="round"/></svg></button>
+                            aria-label="Zitation kopieren" data-hint="Zitation kopieren"><svg viewBox="0 0 16 16" width="16" height="16" aria-hidden="true"><rect x="4" y="2" width="8" height="11" rx="1" fill="none" stroke="currentColor" stroke-width="1.4"/><path d="M6 1.5h4a0.5 0.5 0 0 1 0.5 0.5v1a0.5 0.5 0 0 1-0.5 0.5H6a0.5 0.5 0 0 1-0.5-0.5V2A0.5 0.5 0 0 1 6 1.5z" fill="currentColor"/><path d="M6.5 6.5h3M6.5 8.5h3M6.5 10.5h2" stroke="currentColor" stroke-width="1" stroke-linecap="round"/></svg></button>
                     <div class="cite-popover hidden" id="cite-popover"></div>
+                    <span class="toolbar-basket-mount"
+                          data-basket-type="source"
+                          data-basket-id="408"
+                          data-basket-label="408"
+                          data-basket-url="documents/Stadtbuecher/Band_1_1395-1400_ready/408.html"
+                          data-basket-date="1399-07-03"
+                          data-basket-coll="Stadtbücher Bd. 1 (1395–1400)"
+                          data-basket-regest="pr. mü., 2 Einbr. 2 Zg., Ma (Index: Item geseheft hern Niclass des Lang zu den zeiten achter ad Sancturn Stephanum) (fol.68v) An sand Ulreichs abend chömen fur den rat Jacob der Pawngartner purgerund…"></span>
                     
 <nav class="doc-paging doc-paging-inline" aria-label="Quellen-Navigation">
     
     <a href="../../../documents/Stadtbuecher/Band_1_1395-1400_ready/407.html" class="toolbar-btn doc-paging-prev"
        aria-label="Vorherige Quelle: Nr. 407"
-       title="Vorherige Quelle: Nr. 407"><svg viewBox="0 0 16 16" width="16" height="16" aria-hidden="true"><path fill="none" stroke="currentColor" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round" d="M10 3l-5 5 5 5"/></svg></a>
+       data-hint="Vorherige Quelle: Nr. 407"><svg viewBox="0 0 16 16" width="16" height="16" aria-hidden="true"><path fill="none" stroke="currentColor" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round" d="M10 3l-5 5 5 5"/></svg></a>
     
     
     <a href="../../../documents/Stadtbuecher/Band_1_1395-1400_ready/409.html" class="toolbar-btn doc-paging-next"
        aria-label="Nächste Quelle: Nr. 409"
-       title="Nächste Quelle: Nr. 409"><svg viewBox="0 0 16 16" width="16" height="16" aria-hidden="true"><path fill="none" stroke="currentColor" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round" d="M6 3l5 5-5 5"/></svg></a>
+       data-hint="Nächste Quelle: Nr. 409"><svg viewBox="0 0 16 16" width="16" height="16" aria-hidden="true"><path fill="none" stroke="currentColor" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round" d="M6 3l5 5-5 5"/></svg></a>
     
 </nav>
 
@@ -218,20 +224,20 @@
             <p>Geschäft des Nikolaus Lang, Ächter zu St. Stephan</p>
          </header>                   <section class="tei-entry"><h2 class="tei-section-head">Eintrag</h2>
             <p> pr. mü., 2 Einbr. 2 Zg., Ma (Index: Item geseheft hern Niclass des Lang zu den
-               zeiten achter ad Sancturn Stephanum) (fol.68v) <span class="anno-event" data-ref="ev__StB_I_408">An sand Ulreichs abend chömen fur den rat <span class="anno-fn anno-fn-witness" data-role="witness"><span class="fn-label">Zeug*in</span><a class="anno-person" data-ref="pe__jakob_paumgartner_QGW_II_I_1182" title="Jakob Paumgartner [pe__jakob_paumgartner_QGW_II_I_1182]" href="../../../register/persons/pe__jakob_paumgartner_QGW_II_I_1182.html">Jacob der <span class="anno-attr anno-attr-prof"> Pawngartner</span>
-                        <span class="anno-attr anno-attr-occ" data-corresp="org__wien"><span class="tei-add">purger</span></span></a>und <a class="anno-person" data-ref="pe__heinrich_smid_StB_I_408" title="Heinrich Smid bei dem Spital [pe__heinrich_smid_StB_I_408]" href="../../../register/persons/pe__heinrich_smid_StB_I_408.html">Hainreich der <span class="anno-attr anno-attr-prof">Smid</span> bey dem Spital, paid <span class="anno-attr anno-attr-occ" data-corresp="org__wien">purger</span> zu Wien</a>, und
-                     habent da weweist <a class="anno-person" data-ref="pe__stephan_von_asbach_QGW_II_I_1437" title="Stephan von Asbach [pe__stephan_von_asbach_QGW_II_I_1437]" href="../../../register/persons/pe__stephan_von_asbach_QGW_II_I_1437.html">mit den <span class="anno-attr anno-attr-title">erbern</span> herren <span class="anno-attr anno-attr-title">hern</span> Stephann von Aschpach, die zeit <span class="anno-attr anno-attr-occ" data-corresp="org__wien-st_stephan">echter</span> dacz Sand
-                        Stephan</a>, und <a class="anno-person" data-ref="pe__georg_haugenrauter_StB_I_408" title="Georg Haugenrauter [pe__georg_haugenrauter_StB_I_408]" href="../../../register/persons/pe__georg_haugenrauter_StB_I_408.html"><span class="anno-attr anno-attr-title"><span class="tei-add">erbern</span></span>
+               zeiten achter ad Sancturn Stephanum) (fol.68v) <span class="anno-event" data-ref="ev__StB_I_408">An sand Ulreichs abend chömen fur den rat <span class="anno-fn anno-fn-witness" data-role="witness"><span class="fn-label">Zeug*in</span><a class="anno-person" data-ref="pe__jakob_paumgartner_QGW_II_I_1182" data-hint="Jakob Paumgartner [pe__jakob_paumgartner_QGW_II_I_1182]" data-hint-type="Person" href="../../../register/persons/pe__jakob_paumgartner_QGW_II_I_1182.html">Jacob der <span class="anno-attr anno-attr-prof"> Pawngartner</span>
+                        <span class="anno-attr anno-attr-occ" data-corresp="org__wien"><span class="tei-add">purger</span></span></a>und <a class="anno-person" data-ref="pe__heinrich_smid_StB_I_408" data-hint="Heinrich Smid bei dem Spital [pe__heinrich_smid_StB_I_408]" data-hint-type="Person" href="../../../register/persons/pe__heinrich_smid_StB_I_408.html">Hainreich der <span class="anno-attr anno-attr-prof">Smid</span> bey dem Spital, paid <span class="anno-attr anno-attr-occ" data-corresp="org__wien">purger</span> zu Wien</a>, und
+                     habent da weweist <a class="anno-person" data-ref="pe__stephan_von_asbach_QGW_II_I_1437" data-hint="Stephan von Asbach [pe__stephan_von_asbach_QGW_II_I_1437]" data-hint-type="Person" href="../../../register/persons/pe__stephan_von_asbach_QGW_II_I_1437.html">mit den <span class="anno-attr anno-attr-title">erbern</span> herren <span class="anno-attr anno-attr-title">hern</span> Stephann von Aschpach, die zeit <span class="anno-attr anno-attr-occ" data-corresp="org__wien-st_stephan">echter</span> dacz Sand
+                        Stephan</a>, und <a class="anno-person" data-ref="pe__georg_haugenrauter_StB_I_408" data-hint="Georg Haugenrauter [pe__georg_haugenrauter_StB_I_408]" data-hint-type="Person" href="../../../register/persons/pe__georg_haugenrauter_StB_I_408.html"><span class="anno-attr anno-attr-title"><span class="tei-add">erbern</span></span>
                         <span class="anno-attr anno-attr-title">hern</span> Jörigen Hawgenrawtter, die zeit
                            <span class="anno-attr anno-attr-occ" data-corresp="org__wien-st_stephan">vicary</span>
-                        daselbens</a></span>, <span class="anno-fn anno-fn-issuer" data-role="issuer"><span class="fn-label">Aussteller*in</span>das geschefft, so <a class="anno-person" data-ref="pe__niklas_lang_StB_I_253" title="Niklas Lang [pe__niklas_lang_StB_I_253]" href="../../../register/persons/pe__niklas_lang_StB_I_253.html"><span class="anno-attr anno-attr-title">her</span> Niclas der Lanng, weilent <span class="anno-attr anno-attr-occ" data-corresp="org__wien-st_stephan">echter</span> dacz Sand Stephan ze
+                        daselbens</a></span>, <span class="anno-fn anno-fn-issuer" data-role="issuer"><span class="fn-label">Aussteller*in</span>das geschefft, so <a class="anno-person" data-ref="pe__niklas_lang_StB_I_253" data-hint="Niklas Lang [pe__niklas_lang_StB_I_253]" data-hint-type="Person" href="../../../register/persons/pe__niklas_lang_StB_I_253.html"><span class="anno-attr anno-attr-title">her</span> Niclas der Lanng, weilent <span class="anno-attr anno-attr-occ" data-corresp="org__wien-st_stephan">echter</span> dacz Sand Stephan ze
                         Wienn</a>, an seinen lesten zeiten getan hat.</span>
-                  <span class="anno-fn anno-fn-recipient" data-role="recipient"><span class="fn-label">Empfänger*in</span>Von erst hat er geschafft <a class="anno-org" data-ref="org__wien-st_stephan-messe_lang_niklas_StB_I_408" title="Jahrtagsstiftung des Niklas Lang, Achter zu St. Stephan in Wien (Messe) [org__wien-st_stephan-messe_lang_niklas_StB_I_408]" href="../../../register/orgs/org__wien-st_stephan-messe_lang_niklas_StB_I_408.html">sein gut mettenpuch
+                  <span class="anno-fn anno-fn-recipient" data-role="recipient"><span class="fn-label">Empfänger*in</span>Von erst hat er geschafft <a class="anno-org" data-ref="org__wien-st_stephan-messe_lang_niklas_StB_I_408" data-hint="Jahrtagsstiftung des Niklas Lang, Achter zu St. Stephan in Wien (Messe) [org__wien-st_stephan-messe_lang_niklas_StB_I_408]" data-hint-type="Organisation" href="../../../register/orgs/org__wien-st_stephan-messe_lang_niklas_StB_I_408.html">sein gut mettenpuch
                         zu einem ewigen jartag hincz Sand Stephan, als daselbs der chirichen sit und
                         gewonhait ist.</a> Und dasselb puch sol man fur ander lewt ze chawffen
-                     geben <a class="anno-person" data-ref="pe__eberhard_StB_I_408" title="Eberhard [pe__eberhard_StB_I_408]" href="../../../register/persons/pe__eberhard_StB_I_408.html"><span class="anno-attr anno-attr-title">hern</span> Eberharten, <span class="anno-attr anno-attr-occ" data-corresp="org__moosbrunn-pfarre">pharrer</span> ze Mosprunn</a>. Item
+                     geben <a class="anno-person" data-ref="pe__eberhard_StB_I_408" data-hint="Eberhard [pe__eberhard_StB_I_408]" data-hint-type="Person" href="../../../register/persons/pe__eberhard_StB_I_408.html"><span class="anno-attr anno-attr-title">hern</span> Eberharten, <span class="anno-attr anno-attr-occ" data-corresp="org__moosbrunn-pfarre">pharrer</span> ze Mosprunn</a>. Item
                      das ander mettenpuch schafft er seinem diener. Item seinen Albertum hat er
-                     geschafft in dy zedel und in das totenpuch und <a class="anno-person" data-ref="pe__stephan_lang_QGW_II_I_1646" title="Stephan Lang [pe__stephan_lang_QGW_II_I_1646]" href="../../../register/persons/pe__stephan_lang_QGW_II_I_1646.html"><span class="anno-attr anno-attr-title">hern</span>
+                     geschafft in dy zedel und in das totenpuch und <a class="anno-person" data-ref="pe__stephan_lang_QGW_II_I_1646" data-hint="Stephan Lang [pe__stephan_lang_QGW_II_I_1646]" data-hint-type="Person" href="../../../register/persons/pe__stephan_lang_QGW_II_I_1646.html"><span class="anno-attr anno-attr-title">hern</span>
                         Stephann dem Langen</a> sol man es fur ander lewt geben ze verchawffen umb
                      3 lb. d. Und andrew meine pucher alle sol man verchawffen und dasselb gelt sol
                      man tailen armen priestern und under ander arm lewt. Item sein pettgewant und
@@ -239,15 +245,15 @@
                      almar, kisten, chandeln und assach, wie das genant ist, mit aller ander
                      varunden hab nichts ausgenomen, das sol man alles verchawffen und das gelt
                      tailen under arm lewt. Darnach hater gemeldet die gelt schuld, die er schuldig
-                     beleibt. <a class="anno-org" data-ref="org__wien-deutsche_herren" title="Deutsche Herren Wien (Kloster_m) [org__wien-deutsche_herren]" href="../../../register/orgs/org__wien-deutsche_herren.html">Item dem comentewr in
-                        dem Dawtschenhaws</a> 10 lb. und zwen ler dreiling. Item <a class="anno-person" data-ref="pe__margarethe_StB_I_408" title="Margarethe [pe__margarethe_StB_I_408]" href="../../../register/persons/pe__margarethe_StB_I_408.html">Margreta</a> 3 lb. Item dem <a class="anno-person" data-ref="pe__wenzel_schmied_StB_I_408" title="Wenzel Schmied [pe__wenzel_schmied_StB_I_408]" href="../../../register/persons/pe__wenzel_schmied_StB_I_408.html">Wenczel <span class="anno-attr anno-attr-prof">Smid</span></a> 2 Ib. d. Item <a class="anno-person" data-ref="pe__georg_bei_dem_weispacher_StB_I_408" title="Georg bei dem Weispacher [pe__georg_bei_dem_weispacher_StB_I_408]" href="../../../register/persons/pe__georg_bei_dem_weispacher_StB_I_408.html">Georio bey dem
-                        Weispacher</a> 2Ib. Item <a class="anno-person" data-ref="pe__johann_bei_st_michael_StB_I_408" title="Johann bei St. Michael [pe__johann_bei_st_michael_StB_I_408]" href="../../../register/persons/pe__johann_bei_st_michael_StB_I_408.html">Johanni ad Sanctum Michahelem</a>
-                     2 Ib. Item dem <a class="anno-person" data-ref="pe__niklas_am_lichtensteg_StB_I_408" title="Niklas am Lichtensteg [pe__niklas_am_lichtensteg_StB_I_408]" href="../../../register/persons/pe__niklas_am_lichtensteg_StB_I_408.html">Nicolae am Liechtensteg</a> 1 Ib. d.</span>
+                     beleibt. <a class="anno-org" data-ref="org__wien-deutsche_herren" data-hint="Deutsche Herren Wien (Kloster_m) [org__wien-deutsche_herren]" data-hint-type="Organisation" href="../../../register/orgs/org__wien-deutsche_herren.html">Item dem comentewr in
+                        dem Dawtschenhaws</a> 10 lb. und zwen ler dreiling. Item <a class="anno-person" data-ref="pe__margarethe_StB_I_408" data-hint="Margarethe [pe__margarethe_StB_I_408]" data-hint-type="Person" href="../../../register/persons/pe__margarethe_StB_I_408.html">Margreta</a> 3 lb. Item dem <a class="anno-person" data-ref="pe__wenzel_schmied_StB_I_408" data-hint="Wenzel Schmied [pe__wenzel_schmied_StB_I_408]" data-hint-type="Person" href="../../../register/persons/pe__wenzel_schmied_StB_I_408.html">Wenczel <span class="anno-attr anno-attr-prof">Smid</span></a> 2 Ib. d. Item <a class="anno-person" data-ref="pe__georg_bei_dem_weispacher_StB_I_408" data-hint="Georg bei dem Weispacher [pe__georg_bei_dem_weispacher_StB_I_408]" data-hint-type="Person" href="../../../register/persons/pe__georg_bei_dem_weispacher_StB_I_408.html">Georio bey dem
+                        Weispacher</a> 2Ib. Item <a class="anno-person" data-ref="pe__johann_bei_st_michael_StB_I_408" data-hint="Johann bei St. Michael [pe__johann_bei_st_michael_StB_I_408]" data-hint-type="Person" href="../../../register/persons/pe__johann_bei_st_michael_StB_I_408.html">Johanni ad Sanctum Michahelem</a>
+                     2 Ib. Item dem <a class="anno-person" data-ref="pe__niklas_am_lichtensteg_StB_I_408" data-hint="Niklas am Lichtensteg [pe__niklas_am_lichtensteg_StB_I_408]" data-hint-type="Person" href="../../../register/persons/pe__niklas_am_lichtensteg_StB_I_408.html">Nicolae am Liechtensteg</a> 1 Ib. d.</span>
                   <span class="anno-fn anno-fn-other" data-role="other"><span class="fn-label">Sonstige</span>Darnach hat er gemeldet die geltschuld, die man im
-                        <span class="anno-trigger anno-trigger-fn">schuldig</span> beleibt. Item <a class="anno-person" data-ref="pe__stephan_landschreiber_StB_I_99" title="Stephan Landschreiber [pe__stephan_landschreiber_StB_I_99]" href="../../../register/persons/pe__stephan_landschreiber_StB_I_99.html">Stephan <span class="anno-attr anno-attr-prof">Lanntschreiber</span></a> 2 lb. Item <a class="anno-person" data-ref="pe__oswald_bei_st_maria_magdalena_StB_I_408" title="Oswald bei St. Maria Magdalena [pe__oswald_bei_st_maria_magdalena_StB_I_408]" href="../../../register/persons/pe__oswald_bei_st_maria_magdalena_StB_I_408.html">Ösel bey
-                        Sand Magdalen</a> 9 ß. d. Item <a class="anno-person" data-ref="pe__peter_StB_I_408" title="Peter in Wiener Neustadt [pe__peter_StB_I_408]" href="../../../register/persons/pe__peter_StB_I_408.html"><span class="anno-attr anno-attr-title">dominus</span> Petrus in Novo Ciuitate</a> 2
-                     lb. Item <a class="anno-person" data-ref="pe__georg_StB_I_408" title="Georg [pe__georg_StB_I_408]" href="../../../register/persons/pe__georg_StB_I_408.html"><span class="anno-trigger anno-trigger-fn">dominus</span> Georius</a> 14 ß. d. Item <a class="anno-person" data-ref="pe__glaser_StB_I_408" title="Glaser [pe__glaser_StB_I_408]" href="../../../register/persons/pe__glaser_StB_I_408.html">der <span class="anno-attr anno-attr-prof">Glaser</span></a> 6 ß. 10 d. Item <a class="anno-person" data-ref="pe__ulrichin_StB_I_408" title="Ulrichin am Hof [pe__ulrichin_StB_I_408]" href="../../../register/persons/pe__ulrichin_StB_I_408.html">die Ulreichinn am Hof, die <span class="anno-attr anno-attr-prof">Gloetmacherinn</span></a>, 1/2 lb. Item <a class="anno-person" data-ref="pe__michael_rotschmied_StB_I_408" title="Michael Rotschmied [pe__michael_rotschmied_StB_I_408]" href="../../../register/persons/pe__michael_rotschmied_StB_I_408.html">Michel <span class="anno-attr anno-attr-prof">Rotsmid</span></a> 10 ß. dn. Item 6 fuder
-                     wein gelegen dacz <a class="anno-person" data-ref="pe__leonhard_sneider_StB_I_146" title="Leonhard Sneider am Graben [pe__leonhard_sneider_StB_I_146]" href="../../../register/persons/pe__leonhard_sneider_StB_I_146.html">Lienharten dem <span class="anno-attr anno-attr-prof">Sneyder</span> am
+                        <span class="anno-trigger anno-trigger-fn">schuldig</span> beleibt. Item <a class="anno-person" data-ref="pe__stephan_landschreiber_StB_I_99" data-hint="Stephan Landschreiber [pe__stephan_landschreiber_StB_I_99]" data-hint-type="Person" href="../../../register/persons/pe__stephan_landschreiber_StB_I_99.html">Stephan <span class="anno-attr anno-attr-prof">Lanntschreiber</span></a> 2 lb. Item <a class="anno-person" data-ref="pe__oswald_bei_st_maria_magdalena_StB_I_408" data-hint="Oswald bei St. Maria Magdalena [pe__oswald_bei_st_maria_magdalena_StB_I_408]" data-hint-type="Person" href="../../../register/persons/pe__oswald_bei_st_maria_magdalena_StB_I_408.html">Ösel bey
+                        Sand Magdalen</a> 9 ß. d. Item <a class="anno-person" data-ref="pe__peter_StB_I_408" data-hint="Peter in Wiener Neustadt [pe__peter_StB_I_408]" data-hint-type="Person" href="../../../register/persons/pe__peter_StB_I_408.html"><span class="anno-attr anno-attr-title">dominus</span> Petrus in Novo Ciuitate</a> 2
+                     lb. Item <a class="anno-person" data-ref="pe__georg_StB_I_408" data-hint="Georg [pe__georg_StB_I_408]" data-hint-type="Person" href="../../../register/persons/pe__georg_StB_I_408.html"><span class="anno-trigger anno-trigger-fn">dominus</span> Georius</a> 14 ß. d. Item <a class="anno-person" data-ref="pe__glaser_StB_I_408" data-hint="Glaser [pe__glaser_StB_I_408]" data-hint-type="Person" href="../../../register/persons/pe__glaser_StB_I_408.html">der <span class="anno-attr anno-attr-prof">Glaser</span></a> 6 ß. 10 d. Item <a class="anno-person" data-ref="pe__ulrichin_StB_I_408" data-hint="Ulrichin am Hof [pe__ulrichin_StB_I_408]" data-hint-type="Person" href="../../../register/persons/pe__ulrichin_StB_I_408.html">die Ulreichinn am Hof, die <span class="anno-attr anno-attr-prof">Gloetmacherinn</span></a>, 1/2 lb. Item <a class="anno-person" data-ref="pe__michael_rotschmied_StB_I_408" data-hint="Michael Rotschmied [pe__michael_rotschmied_StB_I_408]" data-hint-type="Person" href="../../../register/persons/pe__michael_rotschmied_StB_I_408.html">Michel <span class="anno-attr anno-attr-prof">Rotsmid</span></a> 10 ß. dn. Item 6 fuder
+                     wein gelegen dacz <a class="anno-person" data-ref="pe__leonhard_sneider_StB_I_146" data-hint="Leonhard Sneider am Graben [pe__leonhard_sneider_StB_I_146]" data-hint-type="Person" href="../../../register/persons/pe__leonhard_sneider_StB_I_146.html">Lienharten dem <span class="anno-attr anno-attr-prof">Sneyder</span> am
                         Graben</a>. Davon sol man seinen geltern auch gelten.</span> Als darum die
                   erbern herren bey ierer gewissen vor unser in offem rat habent gesagt, als si ze
                   recht solten.</span>
@@ -275,7 +281,7 @@
          dem TEI in mehreren Untertabellen, Personen/Orgs/Orte,
          Ereignisse, Dispositivformeln, Editorische Ergaenzungen. Wird
          per JS aus den entsprechenden Spans im Body aufgebaut. -->
-    <section class="annotations-view" id="factoid-view" aria-label="Annotationen">
+    <section class="annotations-view" id="annotations-view" aria-label="Annotationen">
         <header class="annotations-header">
             <h2 class="annotations-title">Annotationen</h2>
             <span class="annotations-summary"></span>
@@ -321,13 +327,14 @@
         </div>
     </footer>
 
-    <script src="../../../static/js/core.js?v=20260511112948"></script>
-    <script src="../../../static/js/provenance.js?v=20260511112948"></script>
-    <script src="../../../static/js/basket.js?v=20260511112948"></script>
+    <script src="../../../static/js/core.js?v=20260511125458"></script>
+    <script src="../../../static/js/tip.js?v=20260511125458"></script>
+    <script src="../../../static/js/hint.js?v=20260511125458"></script>
+    <script src="../../../static/js/basket.js?v=20260511125458"></script>
     
-<script src="../../../static/js/tooltips.js?v=20260511112948"></script>
-<script src="../../../static/js/facsimile.js?v=20260511112948"></script>
-<script src="../../../static/js/document.js?v=20260511112948"></script>
+<script src="../../../static/js/facsimile.js?v=20260511125458"></script>
+<script src="../../../static/js/document.js?v=20260511125458"></script>
+<script src="../../../static/js/basket-mount.js?v=20260511125458"></script>
 
 </body>
 </html>

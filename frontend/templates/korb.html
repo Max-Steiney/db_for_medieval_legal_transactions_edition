@@ -1,6 +1,6 @@
 {% extends "base.html" %}
 
-{% block title %}Wissenskorb{% endblock %}
+{% block title %}Datenkorb{% endblock %}
 
 {% block head %}
 <link rel="stylesheet" href="{{ root_path }}/static/css/index.css?v={{ asset_v }}">
@@ -10,48 +10,162 @@
 {% block content %}
 <div class="index-page basket-page">
 
-    <header class="index-header">
-        <h1>Wissenskorb</h1>
-        <p class="explore-page-intro">
-            Persistente Sammlung Ihrer Quellen-Auswahl &uuml;ber Sitzungen
-            (lokal im Browser gespeichert). Sammeln Sie Quellen aus den
-            Listen und Drill-down-Overlays mit dem &bdquo;+&ldquo;-Knopf;
-            hier sehen Sie die Sammlung, k&ouml;nnen Eintr&auml;ge entfernen
-            und als CSV exportieren.
+    <header class="index-header basket-header">
+        <h1>Datenkorb</h1>
+        <p class="basket-subtitle">
+            Lokale Sammlung im Browser. Eintr&auml;ge mit dem
+            &bdquo;+&ldquo;-Knopf hinzuf&uuml;gen, hier verwalten und
+            als CSV exportieren.
         </p>
     </header>
 
-    <div class="basket-toolbar">
-        <span id="basket-count" class="basket-count">0 Eintr&auml;ge</span>
-        <div class="basket-actions">
-            <button type="button" id="basket-export" class="explore-btn">
-                CSV exportieren
-            </button>
-            <button type="button" id="basket-clear" class="explore-btn explore-btn--danger">
-                Wissenskorb leeren
-            </button>
-        </div>
-    </div>
+    <p id="basket-empty-all" class="aggregat-empty" hidden>
+        Der Datenkorb ist leer. Eintr&auml;ge aus den Listen oder
+        Detailseiten mit dem &bdquo;+&ldquo;-Knopf hinzuf&uuml;gen.
+    </p>
 
-    <div id="basket-list-wrap">
-        <table class="aggregat-table basket-table" id="basket-table">
+    {# Quellen-Sektion #}
+    <section class="basket-section" data-section="source">
+        <header class="basket-section-head">
+            <h2>Quellen
+                <span class="basket-section-count">
+                    <span data-stat="gathered">0</span>
+                    <span class="basket-stat-label"
+                          data-hint="Vom Nutzer per +-Knopf in den Datenkorb aufgenommen.">gesammelt</span>
+                </span>
+            </h2>
+            <div class="basket-section-actions">
+                <button type="button" class="explore-btn"
+                        data-action="export-gathered" data-type="source"
+                        data-hint="CSV mit allen gesammelten Quellen: id, date, collection, regest, url.">
+                    Gesammelte exportieren
+                </button>
+                <button type="button" class="explore-btn explore-btn--danger"
+                        data-action="clear" data-type="source"
+                        data-hint="Alle Quellen aus dem Datenkorb entfernen. Davon abgeleitete Personen und Organisationen verschwinden mit, sofern sie nicht promotet wurden.">
+                    Quellen leeren
+                </button>
+            </div>
+        </header>
+        <table class="aggregat-table basket-table" data-type-table="source">
             <thead>
                 <tr>
-                    <th scope="col" class="col-idno">Nr.</th>
+                    <th scope="col" class="col-idno"
+                        data-hint="Quellen-Identifikator (idno) innerhalb des Korpus.">Nr.</th>
                     <th scope="col" class="col-date">Datum</th>
                     <th scope="col" class="col-coll">Quellenkorpus</th>
-                    <th scope="col" class="col-regest">Regest</th>
+                    <th scope="col" class="col-regest"
+                        data-hint="Inhaltszusammenfassung der Quelle. Hier verkuerzt; vollstaendig in der Quellen-Detailseite.">Regest</th>
                     <th scope="col" class="col-actions" aria-label="Aktionen"></th>
                 </tr>
             </thead>
-            <tbody id="basket-tbody"></tbody>
+            <tbody></tbody>
         </table>
-        <p id="basket-empty" class="aggregat-empty" hidden>
-            Der Wissenskorb ist leer. Sammeln Sie Quellen aus den Listen
-            (Quellen-Tabelle, Auswertungs-Drill-downs, Zeitstrom-Drill)
-            mit dem &bdquo;+&ldquo;-Knopf neben jedem Eintrag.
+        <p class="basket-section-empty aggregat-empty" hidden>
+            Keine Quellen im Datenkorb.
         </p>
-    </div>
+    </section>
+
+    {# Personen-Sektion #}
+    <section class="basket-section" data-section="person">
+        <header class="basket-section-head">
+            <h2>Personen
+                <span class="basket-section-count">
+                    <span data-stat="gathered">0</span>
+                    <span class="basket-stat-label"
+                          data-hint="Vom Nutzer per +-Knopf in den Datenkorb aufgenommen.">gesammelt</span>
+                    <span class="basket-section-derived">
+                        + <span data-stat="derived">0</span>
+                        <span class="basket-stat-label"
+                              data-hint="Automatisch eingespielt, weil eine im Korb liegende Quelle diese Person annotiert. Verschwindet, wenn die Quelle wieder entfernt wird. Klick auf den *-Knopf uebernimmt die Person als gesammelten Eintrag.">abgeleitet</span>
+                    </span>
+                </span>
+            </h2>
+            <div class="basket-section-actions">
+                <button type="button" class="explore-btn"
+                        data-action="export-gathered" data-type="person"
+                        data-hint="CSV mit den gesammelten Personen: id, label, sex, active_min, active_max, url.">
+                    Gesammelte exportieren
+                </button>
+                <button type="button" class="explore-btn"
+                        data-action="export-all" data-type="person"
+                        data-hint="CSV mit gesammelten und abgeleiteten Personen plus Spalte aus_quelle.">
+                    Alles exportieren
+                </button>
+                <button type="button" class="explore-btn explore-btn--danger"
+                        data-action="clear" data-type="person"
+                        data-hint="Alle Personen aus dem Datenkorb entfernen. Quellen bleiben.">
+                    Personen leeren
+                </button>
+            </div>
+        </header>
+        <table class="aggregat-table basket-table" data-type-table="person">
+            <thead>
+                <tr>
+                    <th scope="col" class="col-name">Name</th>
+                    <th scope="col" class="col-sex">Geschlecht</th>
+                    <th scope="col" class="col-active">Aktiv</th>
+                    <th scope="col" class="col-source"
+                        data-hint="Quelle, ueber die diese Person automatisch eingespielt wurde. Nur bei abgeleiteten Eintraegen belegt.">aus Quelle</th>
+                    <th scope="col" class="col-actions" aria-label="Aktionen"></th>
+                </tr>
+            </thead>
+            <tbody></tbody>
+        </table>
+        <p class="basket-section-empty aggregat-empty" hidden>
+            Keine Personen im Datenkorb.
+        </p>
+    </section>
+
+    {# Organisationen-Sektion #}
+    <section class="basket-section" data-section="org">
+        <header class="basket-section-head">
+            <h2>Organisationen
+                <span class="basket-section-count">
+                    <span data-stat="gathered">0</span>
+                    <span class="basket-stat-label"
+                          data-hint="Vom Nutzer per +-Knopf in den Datenkorb aufgenommen.">gesammelt</span>
+                    <span class="basket-section-derived">
+                        + <span data-stat="derived">0</span>
+                        <span class="basket-stat-label"
+                              data-hint="Automatisch eingespielt, weil eine im Korb liegende Quelle diese Organisation annotiert. Verschwindet, wenn die Quelle wieder entfernt wird. Klick auf den *-Knopf uebernimmt sie als gesammelten Eintrag.">abgeleitet</span>
+                    </span>
+                </span>
+            </h2>
+            <div class="basket-section-actions">
+                <button type="button" class="explore-btn"
+                        data-action="export-gathered" data-type="org"
+                        data-hint="CSV mit den gesammelten Organisationen: id, label, type, url.">
+                    Gesammelte exportieren
+                </button>
+                <button type="button" class="explore-btn"
+                        data-action="export-all" data-type="org"
+                        data-hint="CSV mit gesammelten und abgeleiteten Organisationen plus Spalte aus_quelle.">
+                    Alles exportieren
+                </button>
+                <button type="button" class="explore-btn explore-btn--danger"
+                        data-action="clear" data-type="org"
+                        data-hint="Alle Organisationen aus dem Datenkorb entfernen. Quellen bleiben.">
+                    Organisationen leeren
+                </button>
+            </div>
+        </header>
+        <table class="aggregat-table basket-table" data-type-table="org">
+            <thead>
+                <tr>
+                    <th scope="col" class="col-name">Name</th>
+                    <th scope="col" class="col-type">Typ</th>
+                    <th scope="col" class="col-source"
+                        data-hint="Quelle, ueber die diese Organisation automatisch eingespielt wurde. Nur bei abgeleiteten Eintraegen belegt.">aus Quelle</th>
+                    <th scope="col" class="col-actions" aria-label="Aktionen"></th>
+                </tr>
+            </thead>
+            <tbody></tbody>
+        </table>
+        <p class="basket-section-empty aggregat-empty" hidden>
+            Keine Organisationen im Datenkorb.
+        </p>
+    </section>
 
 </div>
 {% endblock %}
@@ -60,4 +174,4 @@
 <script src="{{ root_path }}/static/js/basket-page.js?v={{ asset_v }}"></script>
 {% endblock %}
 
-{% block footer_info %}Wissenskorb (clientseitig){% endblock %}
+{% block footer_info %}Datenkorb (lokal im Browser){% endblock %}

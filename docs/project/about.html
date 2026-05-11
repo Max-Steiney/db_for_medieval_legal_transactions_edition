@@ -3,21 +3,21 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <meta http-equiv="Content-Security-Policy" content="default-src 'self'; script-src 'self'; style-src 'self'; font-src 'self'; img-src 'self' data: https://images.monasterium.net https://www.monasterium.net; connect-src 'self'; frame-ancestors 'none'; base-uri 'self'; form-action 'self'; upgrade-insecure-requests">
+    <meta http-equiv="Content-Security-Policy" content="default-src 'self'; script-src 'self'; style-src 'self'; font-src 'self'; img-src 'self' data: https://images.monasterium.net https://www.monasterium.net; connect-src 'self'; base-uri 'self'; form-action 'self'; upgrade-insecure-requests">
     <meta name="referrer" content="strict-origin-when-cross-origin">
     <meta http-equiv="Permissions-Policy" content="camera=(), microphone=(), geolocation=(), interest-cohort=()">
     <title>Über das Projekt, Datenbank</title>
     <link rel="preload" as="font" type="font/woff2" crossorigin
           href="../static/fonts/inter-400-latin.woff2">
-    <link rel="stylesheet" href="../static/css/fonts.css?v=20260511112948">
-    <link rel="stylesheet" href="../static/css/tokens.css?v=20260511112948">
-    <link rel="stylesheet" href="../static/css/base.css?v=20260511112948">
-    <link rel="stylesheet" href="../static/css/components.css?v=20260511112948">
-    <link rel="stylesheet" href="../static/css/responsive.css?v=20260511112948">
-    <link rel="stylesheet" href="../static/css/print.css?v=20260511112948">
-    <link rel="stylesheet" href="../static/css/provenance.css?v=20260511112948">
+    <link rel="stylesheet" href="../static/css/fonts.css?v=20260511125458">
+    <link rel="stylesheet" href="../static/css/tokens.css?v=20260511125458">
+    <link rel="stylesheet" href="../static/css/base.css?v=20260511125458">
+    <link rel="stylesheet" href="../static/css/components.css?v=20260511125458">
+    <link rel="stylesheet" href="../static/css/responsive.css?v=20260511125458">
+    <link rel="stylesheet" href="../static/css/print.css?v=20260511125458">
+    <link rel="stylesheet" href="../static/css/tip.css?v=20260511125458">
     
-<link rel="stylesheet" href="../static/css/content.css?v=20260511112948">
+<link rel="stylesheet" href="../static/css/content.css?v=20260511125458">
 
 </head>
 <body data-root-path=".."
@@ -47,8 +47,6 @@
         <a href="../register/persons.html">Personen</a>
         
         <a href="../register/orgs.html">Organisationen</a>
-        
-        <a href="../register/places.html">Orte</a>
         
     </div>
 </div>
@@ -90,7 +88,7 @@
     </div>
 </div>
 
-                <a href="../korb.html" class="nav-basket" aria-label="Wissenskorb">
+                <a href="../korb.html" class="nav-basket" aria-label="Datenkorb">
                     <svg width="18" height="18" viewBox="0 0 18 18" fill="none" aria-hidden="true">
                         <path d="M3 5h12l-1.2 8.5a1 1 0 0 1-1 .85H5.2a1 1 0 0 1-1-.85L3 5z"
                               stroke="currentColor" stroke-width="1.4" fill="none"
@@ -146,9 +144,9 @@ in einem vierstufigen Annotationsmodell und macht sie durch interaktive Visualis
 zug&auml;nglich. Den Freigabestand der Quellen zeigt die <a href="../documents.html">Quellenliste</a>;
 Verantwortliche, Lizenz und Zitierweise stehen im <a href="../impressum.html">Impressum</a>.</p>
 <h2 id="forschungskontext">Forschungskontext<a class="headerlink" href="#forschungskontext" title="Permanent link">&para;</a></h2>
-<p>Methodisch folgt das Projekt dem <strong>Factoid-Ansatz</strong> der digitalen Prosopographie
-(King&rsquo;s College London). Jede Quelle wird auf vier Ebenen annotiert: Ereignisse,
-Funktionen, Entit&auml;ten und Attribute/Relationen.</p>
+<p>Methodisch folgt das Projekt dem Ansatz der digitalen Prosopographie.
+Jede Quelle wird auf vier Ebenen annotiert: Ereignisse, Funktionen,
+Entit&auml;ten und Attribute/Relationen.</p>
 <h2 id="forschungsfragen">Forschungsfragen<a class="headerlink" href="#forschungsfragen" title="Permanent link">&para;</a></h2>
 <p>Zwei &uuml;bergreifende Forschungsfragen strukturieren die digitale Erschlie&szlig;ung:</p>
 <table>
@@ -278,11 +276,12 @@ Publikationsschicht in
         </div>
     </footer>
 
-    <script src="../static/js/core.js?v=20260511112948"></script>
-    <script src="../static/js/provenance.js?v=20260511112948"></script>
-    <script src="../static/js/basket.js?v=20260511112948"></script>
+    <script src="../static/js/core.js?v=20260511125458"></script>
+    <script src="../static/js/tip.js?v=20260511125458"></script>
+    <script src="../static/js/hint.js?v=20260511125458"></script>
+    <script src="../static/js/basket.js?v=20260511125458"></script>
     
-<script src="../static/js/content.js?v=20260511112948"></script>
+<script src="../static/js/content.js?v=20260511125458"></script>
 
 </body>
 </html>

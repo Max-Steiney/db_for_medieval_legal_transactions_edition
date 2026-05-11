@@ -3,21 +3,21 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <meta http-equiv="Content-Security-Policy" content="default-src 'self'; script-src 'self'; style-src 'self'; font-src 'self'; img-src 'self' data: https://images.monasterium.net https://www.monasterium.net; connect-src 'self'; frame-ancestors 'none'; base-uri 'self'; form-action 'self'; upgrade-insecure-requests">
+    <meta http-equiv="Content-Security-Policy" content="default-src 'self'; script-src 'self'; style-src 'self'; font-src 'self'; img-src 'self' data: https://images.monasterium.net https://www.monasterium.net; connect-src 'self'; base-uri 'self'; form-action 'self'; upgrade-insecure-requests">
     <meta name="referrer" content="strict-origin-when-cross-origin">
     <meta http-equiv="Permissions-Policy" content="camera=(), microphone=(), geolocation=(), interest-cohort=()">
     <title>Nr. 1845 (1411 III 27), Datenbank</title>
     <link rel="preload" as="font" type="font/woff2" crossorigin
           href="../../../static/fonts/inter-400-latin.woff2">
-    <link rel="stylesheet" href="../../../static/css/fonts.css?v=20260511112948">
-    <link rel="stylesheet" href="../../../static/css/tokens.css?v=20260511112948">
-    <link rel="stylesheet" href="../../../static/css/base.css?v=20260511112948">
-    <link rel="stylesheet" href="../../../static/css/components.css?v=20260511112948">
-    <link rel="stylesheet" href="../../../static/css/responsive.css?v=20260511112948">
-    <link rel="stylesheet" href="../../../static/css/print.css?v=20260511112948">
-    <link rel="stylesheet" href="../../../static/css/provenance.css?v=20260511112948">
+    <link rel="stylesheet" href="../../../static/css/fonts.css?v=20260511125458">
+    <link rel="stylesheet" href="../../../static/css/tokens.css?v=20260511125458">
+    <link rel="stylesheet" href="../../../static/css/base.css?v=20260511125458">
+    <link rel="stylesheet" href="../../../static/css/components.css?v=20260511125458">
+    <link rel="stylesheet" href="../../../static/css/responsive.css?v=20260511125458">
+    <link rel="stylesheet" href="../../../static/css/print.css?v=20260511125458">
+    <link rel="stylesheet" href="../../../static/css/tip.css?v=20260511125458">
     
-<link rel="stylesheet" href="../../../static/css/document.css?v=20260511112948">
+<link rel="stylesheet" href="../../../static/css/document.css?v=20260511125458">
 <link rel="canonical" href="documents/QGW/Vienna_1177-1414_ready/1845.html">
 <meta name="citation_title" content="Nr. 1845 (1411 III 27)">
 <meta name="citation_collection" content="QGW II/1 (1177–1414)">
@@ -50,8 +50,6 @@
         <a href="../../../register/persons.html">Personen</a>
         
         <a href="../../../register/orgs.html">Organisationen</a>
-        
-        <a href="../../../register/places.html">Orte</a>
         
     </div>
 </div>
@@ -93,7 +91,7 @@
     </div>
 </div>
 
-                <a href="../../../korb.html" class="nav-basket" aria-label="Wissenskorb">
+                <a href="../../../korb.html" class="nav-basket" aria-label="Datenkorb">
                     <svg width="18" height="18" viewBox="0 0 18 18" fill="none" aria-hidden="true">
                         <path d="M3 5h12l-1.2 8.5a1 1 0 0 1-1 .85H5.2a1 1 0 0 1-1-.85L3 5z"
                               stroke="currentColor" stroke-width="1.4" fill="none"
@@ -140,7 +138,7 @@
                     
                     <span class="meta-pair">
                         <span class="meta-label">Quelle</span>
-                        <span class="meta-value" title="Quellen zur Geschichte der Stadt Wien, Bd. II/1, Nr. 1845">Quellen zur Geschichte der Stadt Wien, Bd. II/1, Nr. 1845</span>
+                        <span class="meta-value" data-hint="Quellen zur Geschichte der Stadt Wien, Bd. II/1, Nr. 1845">Quellen zur Geschichte der Stadt Wien, Bd. II/1, Nr. 1845</span>
                     </span>
                     
                 </div>
@@ -151,7 +149,7 @@
                     
                     <button type="button" class="legend-toggle"
                             data-layer="entities" aria-pressed="true"
-                            title="Entitäten ein-/ausblenden">
+                            data-hint="Entitäten ein-/ausblenden">
                         <span class="legend-toggle-dots">
                             <span class="legend-swatch swatch-person"></span><span class="legend-swatch swatch-org"></span><span class="legend-swatch swatch-place"></span>
                         </span>
@@ -160,7 +158,7 @@
                     
                     <button type="button" class="legend-toggle"
                             data-layer="functions" aria-pressed="true"
-                            title="Funktionsrollen ein-/ausblenden">
+                            data-hint="Funktionsrollen ein-/ausblenden">
                         <span class="legend-toggle-dots">
                             <span class="legend-swatch swatch-fn-issuer"></span><span class="legend-swatch swatch-fn-recipient"></span><span class="legend-swatch swatch-fn-witness"></span>
                         </span>
@@ -169,7 +167,7 @@
                     
                     <button type="button" class="legend-toggle"
                             data-layer="attributes" aria-pressed="true"
-                            title="Attribute ein-/ausblenden">
+                            data-hint="Attribute ein-/ausblenden">
                         <span class="legend-toggle-dots">
                             <span class="legend-swatch swatch-attr"></span><span class="legend-swatch swatch-add"></span>
                         </span>
@@ -178,7 +176,7 @@
                     
                     <button type="button" class="legend-toggle"
                             data-layer="triggers" aria-pressed="true"
-                            title="Dispositivformel ein-/ausblenden">
+                            data-hint="Dispositivformel ein-/ausblenden">
                         <span class="legend-toggle-dots">
                             <span class="legend-swatch swatch-trigger"></span>
                         </span>
@@ -190,21 +188,29 @@
                 <div class="doc-toolbar-actions">
                     <a class="toolbar-btn" href="../../../tei/QGW/Vienna_1177-1414_ready/1845.xml"
                        download="1845.xml"
-                       aria-label="TEI-XML herunterladen" title="TEI-XML herunterladen"><svg viewBox="0 0 16 16" width="16" height="16" aria-hidden="true"><path fill="none" stroke="currentColor" stroke-width="1.4" stroke-linecap="round" stroke-linejoin="round" d="M8 2v8m0 0l-3-3m3 3l3-3M3 13h10"/></svg></a>
+                       aria-label="TEI-XML herunterladen" data-hint="TEI-XML herunterladen"><svg viewBox="0 0 16 16" width="16" height="16" aria-hidden="true"><path fill="none" stroke="currentColor" stroke-width="1.4" stroke-linecap="round" stroke-linejoin="round" d="M8 2v8m0 0l-3-3m3 3l3-3M3 13h10"/></svg></a>
                     <button class="toolbar-btn" id="cite-toggle" aria-expanded="false"
-                            aria-label="Zitation kopieren" title="Zitation kopieren"><svg viewBox="0 0 16 16" width="16" height="16" aria-hidden="true"><rect x="4" y="2" width="8" height="11" rx="1" fill="none" stroke="currentColor" stroke-width="1.4"/><path d="M6 1.5h4a0.5 0.5 0 0 1 0.5 0.5v1a0.5 0.5 0 0 1-0.5 0.5H6a0.5 0.5 0 0 1-0.5-0.5V2A0.5 0.5 0 0 1 6 1.5z" fill="currentColor"/><path d="M6.5 6.5h3M6.5 8.5h3M6.5 10.5h2" stroke="currentColor" stroke-width="1" stroke-linecap="round"/></svg></button>
+                            aria-label="Zitation kopieren" data-hint="Zitation kopieren"><svg viewBox="0 0 16 16" width="16" height="16" aria-hidden="true"><rect x="4" y="2" width="8" height="11" rx="1" fill="none" stroke="currentColor" stroke-width="1.4"/><path d="M6 1.5h4a0.5 0.5 0 0 1 0.5 0.5v1a0.5 0.5 0 0 1-0.5 0.5H6a0.5 0.5 0 0 1-0.5-0.5V2A0.5 0.5 0 0 1 6 1.5z" fill="currentColor"/><path d="M6.5 6.5h3M6.5 8.5h3M6.5 10.5h2" stroke="currentColor" stroke-width="1" stroke-linecap="round"/></svg></button>
                     <div class="cite-popover hidden" id="cite-popover"></div>
+                    <span class="toolbar-basket-mount"
+                          data-basket-type="source"
+                          data-basket-id="1845"
+                          data-basket-label="1845"
+                          data-basket-url="documents/QGW/Vienna_1177-1414_ready/1845.html"
+                          data-basket-date="1411-03-27"
+                          data-basket-coll="QGW II/1 (1177–1414)"
+                          data-basket-regest="Leonhart Schaur, lerer geistleicher rechten, beurkundet seinen letzten Willen. Er schafft: 1. seiner Schwester und ihren Kindern zu gleichen Theilen sein Wohnhaus, seine erb weingerten, die er…"></span>
                     
 <nav class="doc-paging doc-paging-inline" aria-label="Quellen-Navigation">
     
     <a href="../../../documents/QGW/Vienna_1177-1414_ready/1844.html" class="toolbar-btn doc-paging-prev"
        aria-label="Vorherige Quelle: Nr. 1844"
-       title="Vorherige Quelle: Nr. 1844"><svg viewBox="0 0 16 16" width="16" height="16" aria-hidden="true"><path fill="none" stroke="currentColor" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round" d="M10 3l-5 5 5 5"/></svg></a>
+       data-hint="Vorherige Quelle: Nr. 1844"><svg viewBox="0 0 16 16" width="16" height="16" aria-hidden="true"><path fill="none" stroke="currentColor" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round" d="M10 3l-5 5 5 5"/></svg></a>
     
     
     <a href="../../../documents/QGW/Vienna_1177-1414_ready/1846.html" class="toolbar-btn doc-paging-next"
        aria-label="Nächste Quelle: Nr. 1846"
-       title="Nächste Quelle: Nr. 1846"><svg viewBox="0 0 16 16" width="16" height="16" aria-hidden="true"><path fill="none" stroke="currentColor" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round" d="M6 3l5 5-5 5"/></svg></a>
+       data-hint="Nächste Quelle: Nr. 1846"><svg viewBox="0 0 16 16" width="16" height="16" aria-hidden="true"><path fill="none" stroke="currentColor" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round" d="M6 3l5 5-5 5"/></svg></a>
     
 </nav>
 
@@ -219,56 +225,56 @@
         <!-- Document body (rendered TEI) -->
         <div class="doc-body">
             <section class="tei-abstract"><h2 class="tei-section-head">Regest</h2><p>
-               <span class="anno-event" data-ref="ev__QGW_II_I_1845"><span class="anno-fn anno-fn-issuer" data-role="issuer"><span class="fn-label">Aussteller*in</span><a class="anno-person" data-ref="pe__leonhard_schaur_QGW_II_I_1242" title="Leonhard Schaur († 08.06.1450) [pe__leonhard_schaur_QGW_II_I_1242]" href="../../../register/persons/pe__leonhard_schaur_QGW_II_I_1242.html">Leonhart
+               <span class="anno-event" data-ref="ev__QGW_II_I_1845"><span class="anno-fn anno-fn-issuer" data-role="issuer"><span class="fn-label">Aussteller*in</span><a class="anno-person" data-ref="pe__leonhard_schaur_QGW_II_I_1242" data-hint="Leonhard Schaur († 08.06.1450) [pe__leonhard_schaur_QGW_II_I_1242]" data-hint-type="Person" href="../../../register/persons/pe__leonhard_schaur_QGW_II_I_1242.html">Leonhart
                            Schaur,<span class="anno-attr anno-attr-prof"> lerer geistleicher
                      rechten</span></a>,</span>
                   <span class="anno-trigger anno-trigger-disp">beurkundet seinen letzten Willen</span>. Er <span class="anno-trigger anno-trigger-disp">schafft</span>: 1. <span class="anno-fn anno-fn-recipient" data-role="recipient"><span class="fn-label">Empfänger*in</span>seiner
                      Schwester und ihren Kindern zu gleichen Theilen sein Wohnhaus, seine erb
                      weingerten, die er gekauft hatte, 600 guldein, sein Bettgewand und Hausgeräthe
-                     2. a) gen <a class="anno-org" data-ref="org__mauerbach-kartaeuser" title="Kartäuser Mauerbach (Kloster_m) [org__mauerbach-kartaeuser]" href="../../../register/orgs/org__mauerbach-kartaeuser.html">Maurbach in das
+                     2. a) gen <a class="anno-org" data-ref="org__mauerbach-kartaeuser" data-hint="Kartäuser Mauerbach (Kloster_m) [org__mauerbach-kartaeuser]" data-hint-type="Organisation" href="../../../register/orgs/org__mauerbach-kartaeuser.html">Maurbach in das
                         chloster</a>, wo er begraben werden will, 200 lb dn. zu einem ewigen
-                     Jahrtage b) <a class="anno-org" data-ref="org__wien-st_maria_am_gestade" title="Marienkapelle am Gestade (Kirche_Kapelle) [org__wien-st_maria_am_gestade]" href="../../../register/orgs/org__wien-st_maria_am_gestade.html">hinz Unser
+                     Jahrtage b) <a class="anno-org" data-ref="org__wien-st_maria_am_gestade" data-hint="Marienkapelle am Gestade (Kirche_Kapelle) [org__wien-st_maria_am_gestade]" data-hint-type="Organisation" href="../../../register/orgs/org__wien-st_maria_am_gestade.html">hinz Unser
                         Fraun capellen auf der Stetten ze Wienn bei dem Turn</a> 60 lb dn.,<span class="anno-event" data-ref="NULL"> als er das mit Ulreichen, dem maurer, verlassen
-                        hat</span> c) ebendahin 300 lb zu einer von dem Rathe zu verleihenden <a class="anno-org" data-ref="org__wien-st_maria_am_gestade-altar_st_leonhard-messe_schauer_leonhard" title="Schauermesse (Messe) [org__wien-st_maria_am_gestade-altar_st_leonhard-messe_schauer_leonhard]" href="../../../register/orgs/org__wien-st_maria_am_gestade-altar_st_leonhard-messe_schauer_leonhard.html">Messe</a> d) seine Bücher, ausgenomen das Decret mit den spangen, welche
+                        hat</span> c) ebendahin 300 lb zu einer von dem Rathe zu verleihenden <a class="anno-org" data-ref="org__wien-st_maria_am_gestade-altar_st_leonhard-messe_schauer_leonhard" data-hint="Schauermesse (Messe) [org__wien-st_maria_am_gestade-altar_st_leonhard-messe_schauer_leonhard]" data-hint-type="Organisation" href="../../../register/orgs/org__wien-st_maria_am_gestade-altar_st_leonhard-messe_schauer_leonhard.html">Messe</a> d) seine Bücher, ausgenomen das Decret mit den spangen, welche
                      um 300 lb dn. verkauft werden sollen, zu einer gleichfalls vom Rathe zu
                      verleihenden Messe gegen der vorgenanten capellen über hinz Unser Fraun e) den
-                     êchtern dacz <a class="anno-org" data-ref="org__wien-st_stephan" title="St. Stephan (Pfarr- und Domkirche) (Kirche_Kapelle) [org__wien-st_stephan]" href="../../../register/orgs/org__wien-st_stephan.html">sand Stephan ze
+                     êchtern dacz <a class="anno-org" data-ref="org__wien-st_stephan" data-hint="St. Stephan (Pfarr- und Domkirche) (Kirche_Kapelle) [org__wien-st_stephan]" data-hint-type="Organisation" href="../../../register/orgs/org__wien-st_stephan.html">sand Stephan ze
                         Wienn</a> 40 lb dn. für einen Jahrtag und jedem Orden 4 lb dn. zur
                      Abhaltung einer Leichenfeier bei S. Stephan f) in jedes Frauenkloster 4 lb
-                     dn. g) gen <a class="anno-org" data-ref="org__melk-benediktiner" title="Benediktiner Melk (Kloster_m) [org__melk-benediktiner]" href="../../../register/orgs/org__melk-benediktiner.html">Melkch</a> 50 lb dn.,
-                     die ihm das Kloster schuldet, zu einem Jahrtage h) den <a class="anno-org" data-ref="org__heiligenkreuz-zisterzienser" title="Zisterzienser Heiligenkreuz (Kloster_m) [org__heiligenkreuz-zisterzienser]" href="../../../register/orgs/org__heiligenkreuz-zisterzienser.html">herren dacz dem Heiligenkreuz</a> 50
+                     dn. g) gen <a class="anno-org" data-ref="org__melk-benediktiner" data-hint="Benediktiner Melk (Kloster_m) [org__melk-benediktiner]" data-hint-type="Organisation" href="../../../register/orgs/org__melk-benediktiner.html">Melkch</a> 50 lb dn.,
+                     die ihm das Kloster schuldet, zu einem Jahrtage h) den <a class="anno-org" data-ref="org__heiligenkreuz-zisterzienser" data-hint="Zisterzienser Heiligenkreuz (Kloster_m) [org__heiligenkreuz-zisterzienser]" data-hint-type="Organisation" href="../../../register/orgs/org__heiligenkreuz-zisterzienser.html">herren dacz dem Heiligenkreuz</a> 50
                      lb dn., die sie ihm schulden, zu einem Jahrtage i) zur Vertheilung an die
-                     armen dürftigen in der <a class="anno-org" data-ref="org__wien-buergerspital" title="Wiener Bürgerspital (Spital_Siechenhaus) [org__wien-buergerspital]" href="../../../register/orgs/org__wien-buergerspital.html">purger
+                     armen dürftigen in der <a class="anno-org" data-ref="org__wien-buergerspital" data-hint="Wiener Bürgerspital (Spital_Siechenhaus) [org__wien-buergerspital]" data-hint-type="Organisation" href="../../../register/orgs/org__wien-buergerspital.html">purger
                         Spital</a> ze Wienn 100 lb dn. 3. sein Messbuch, seinen Kelch und sein
-                     blaues sammtenes Messgewand zu seiner <a class="anno-org" data-ref="org__laa-pfarre" title="Pfarre Laa (Pfarre) [org__laa-pfarre]" href="../../../register/orgs/org__laa-pfarre.html">Kirche nach Laa</a> 4. zu dem Baue eines Spitals daselbst 200 lb dn. 5.
+                     blaues sammtenes Messgewand zu seiner <a class="anno-org" data-ref="org__laa-pfarre" data-hint="Pfarre Laa (Pfarre) [org__laa-pfarre]" data-hint-type="Organisation" href="../../../register/orgs/org__laa-pfarre.html">Kirche nach Laa</a> 4. zu dem Baue eines Spitals daselbst 200 lb dn. 5.
                      zu dem Baue gen Passau 200 lb dn., welche die Bürger daselbst und nicht der
-                     Baumeister ausgeben sollen 6. dem <a class="anno-org" data-ref="org__passau-dioezese" title="Bistum Passau (Dioezese_Erzdioezese) [org__passau-dioezese]" href="../../../register/orgs/org__passau-dioezese.html">Bischof von Passau</a> 100 guldein, das vorgenant Decrett mit den spangen
+                     Baumeister ausgeben sollen 6. dem <a class="anno-org" data-ref="org__passau-dioezese" data-hint="Bistum Passau (Dioezese_Erzdioezese) [org__passau-dioezese]" data-hint-type="Organisation" href="../../../register/orgs/org__passau-dioezese.html">Bischof von Passau</a> 100 guldein, das vorgenant Decrett mit den spangen
                      und ein hoche silbreine chandel und ein silbrein stukch, darauf man confekchte
-                     tre/at  7. den <a class="anno-person" data-ref="pe__leopold_iv_herzog_von_oesterreich_QGW_II_I_1676" title="Leopold von Österreich [pe__leopold_iv_herzog_von_oesterreich_QGW_II_I_1676]" href="../../../register/persons/pe__leopold_iv_herzog_von_oesterreich_QGW_II_I_1676.html">Herzögen
-                        Leupolten</a>, <a class="anno-person" data-ref="pe__ernst_herzog_von_oesterreich_QGW_II_I_1332" title="Ernst von Habsburg Herzog von Österreich [pe__ernst_herzog_von_oesterreich_QGW_II_I_1332]" href="../../../register/persons/pe__ernst_herzog_von_oesterreich_QGW_II_I_1332.html">Ernsten</a> und <a class="anno-person" data-ref="pe__albrecht_iv_herzog_von_oesterreich_QGW_II_I_1332" title="Herzog Albrecht [pe__albrecht_iv_herzog_von_oesterreich_QGW_II_I_1332]" href="../../../register/persons/pe__albrecht_iv_herzog_von_oesterreich_QGW_II_I_1332.html">Albrechten</a> je 100 guldein 8. gen <a class="anno-org" data-ref="org__eggenburg-pfarre" title="Pfarre Eggenburg (Pfarre) [org__eggenburg-pfarre]" href="../../../register/orgs/org__eggenburg-pfarre.html">Egemburg zu der pharrkirchen</a> 36 lb dn. für
+                     tre/at  7. den <a class="anno-person" data-ref="pe__leopold_iv_herzog_von_oesterreich_QGW_II_I_1676" data-hint="Leopold von Österreich [pe__leopold_iv_herzog_von_oesterreich_QGW_II_I_1676]" data-hint-type="Person" href="../../../register/persons/pe__leopold_iv_herzog_von_oesterreich_QGW_II_I_1676.html">Herzögen
+                        Leupolten</a>, <a class="anno-person" data-ref="pe__ernst_herzog_von_oesterreich_QGW_II_I_1332" data-hint="Ernst von Habsburg Herzog von Österreich [pe__ernst_herzog_von_oesterreich_QGW_II_I_1332]" data-hint-type="Person" href="../../../register/persons/pe__ernst_herzog_von_oesterreich_QGW_II_I_1332.html">Ernsten</a> und <a class="anno-person" data-ref="pe__albrecht_iv_herzog_von_oesterreich_QGW_II_I_1332" data-hint="Herzog Albrecht [pe__albrecht_iv_herzog_von_oesterreich_QGW_II_I_1332]" data-hint-type="Person" href="../../../register/persons/pe__albrecht_iv_herzog_von_oesterreich_QGW_II_I_1332.html">Albrechten</a> je 100 guldein 8. gen <a class="anno-org" data-ref="org__eggenburg-pfarre" data-hint="Pfarre Eggenburg (Pfarre) [org__eggenburg-pfarre]" data-hint-type="Organisation" href="../../../register/orgs/org__eggenburg-pfarre.html">Egemburg zu der pharrkirchen</a> 36 lb dn. für
                      einen Jahrtag 9. dass seine Geschäftsherren den Betrag, den ihm die herren von
                      Zwetel schulden, nach der getroffenen Verabredung einnehmen sollen 10. a) dem
-                        <a class="anno-person" data-ref="pe__johann_roetl_QGW_II_I_1845" title="Johann Rötl von Als [pe__johann_roetl_QGW_II_I_1845]" href="../../../register/persons/pe__johann_roetl_QGW_II_I_1845.html">Hennslein, <span class="anno-attr anno-attr-prof">zingiesserknecht</span>,</a> 4 lb dn. b) seinem kamrer
-                     4 lb dn. c) seinem <a class="anno-person" data-ref="pe__johann_walder_QGW_II_I_1845" title="Johann Walder [pe__johann_walder_QGW_II_I_1845]" href="../../../register/persons/pe__johann_walder_QGW_II_I_1845.html"><span class="anno-attr anno-attr-occ" data-corresp="pe__leonhard_schaur_QGW_II_I_1242">Diener</span> Hennslein</a> 60 lb dn. d) dem <a class="anno-person" data-ref="pe__wolfhard_pilich_QGW_II_I_1845" title="Wolfhard Pilich [pe__wolfhard_pilich_QGW_II_I_1845]" href="../../../register/persons/pe__wolfhard_pilich_QGW_II_I_1845.html">Wölflein</a> 20 lb dn. e) seinem
-                        <a class="anno-person" data-ref="pe__michael_QGW_II_I_1845" title="Michael von Hainburg [pe__michael_QGW_II_I_1845]" href="../../../register/persons/pe__michael_QGW_II_I_1845.html"><span class="anno-attr anno-attr-prof">notarii</span> Micheln</a> 10 lb dn. f) seinem <a class="anno-person" data-ref="pe__martin_QGW_II_I_1845" title="Martin von Passau [pe__martin_QGW_II_I_1845]" href="../../../register/persons/pe__martin_QGW_II_I_1845.html">Kaplan Merten </a>10 lb dn. 11. zu dem Baue
-                     von <a class="anno-org" data-ref="org__wien-st_stephan" title="St. Stephan (Pfarr- und Domkirche) (Kirche_Kapelle) [org__wien-st_stephan]" href="../../../register/orgs/org__wien-st_stephan.html">S. Stephan </a>10 lb dn. 12. a)
-                        <a class="anno-person" data-ref="pe__erhard_schierl_QGW_II_I_1845" title="Erhard Schierl [pe__erhard_schierl_QGW_II_I_1845]" href="../../../register/persons/pe__erhard_schierl_QGW_II_I_1845.html">hern Erharten
+                        <a class="anno-person" data-ref="pe__johann_roetl_QGW_II_I_1845" data-hint="Johann Rötl von Als [pe__johann_roetl_QGW_II_I_1845]" data-hint-type="Person" href="../../../register/persons/pe__johann_roetl_QGW_II_I_1845.html">Hennslein, <span class="anno-attr anno-attr-prof">zingiesserknecht</span>,</a> 4 lb dn. b) seinem kamrer
+                     4 lb dn. c) seinem <a class="anno-person" data-ref="pe__johann_walder_QGW_II_I_1845" data-hint="Johann Walder [pe__johann_walder_QGW_II_I_1845]" data-hint-type="Person" href="../../../register/persons/pe__johann_walder_QGW_II_I_1845.html"><span class="anno-attr anno-attr-occ" data-corresp="pe__leonhard_schaur_QGW_II_I_1242">Diener</span> Hennslein</a> 60 lb dn. d) dem <a class="anno-person" data-ref="pe__wolfhard_pilich_QGW_II_I_1845" data-hint="Wolfhard Pilich [pe__wolfhard_pilich_QGW_II_I_1845]" data-hint-type="Person" href="../../../register/persons/pe__wolfhard_pilich_QGW_II_I_1845.html">Wölflein</a> 20 lb dn. e) seinem
+                        <a class="anno-person" data-ref="pe__michael_QGW_II_I_1845" data-hint="Michael von Hainburg [pe__michael_QGW_II_I_1845]" data-hint-type="Person" href="../../../register/persons/pe__michael_QGW_II_I_1845.html"><span class="anno-attr anno-attr-prof">notarii</span> Micheln</a> 10 lb dn. f) seinem <a class="anno-person" data-ref="pe__martin_QGW_II_I_1845" data-hint="Martin von Passau [pe__martin_QGW_II_I_1845]" data-hint-type="Person" href="../../../register/persons/pe__martin_QGW_II_I_1845.html">Kaplan Merten </a>10 lb dn. 11. zu dem Baue
+                     von <a class="anno-org" data-ref="org__wien-st_stephan" data-hint="St. Stephan (Pfarr- und Domkirche) (Kirche_Kapelle) [org__wien-st_stephan]" data-hint-type="Organisation" href="../../../register/orgs/org__wien-st_stephan.html">S. Stephan </a>10 lb dn. 12. a)
+                        <a class="anno-person" data-ref="pe__erhard_schierl_QGW_II_I_1845" data-hint="Erhard Schierl [pe__erhard_schierl_QGW_II_I_1845]" data-hint-type="Person" href="../../../register/persons/pe__erhard_schierl_QGW_II_I_1845.html">hern Erharten
                         Schierl, <span class="anno-attr anno-attr-occ" data-corresp="org__wien-st_stephan">korherren</span> ze sand Stephan und <span class="anno-attr anno-attr-occ" data-corresp="org__nappersdorf-pfarre">pharrer</span> ze Naperstorf</a>,
-                     60 guldein b) seinem Freunde <a class="anno-person" data-ref="pe__heinrich_starkch_StB_I_62" title="Heinrich Starkch von Sparbach [pe__heinrich_starkch_StB_I_62]" href="../../../register/persons/pe__heinrich_starkch_StB_I_62.html">Hainreichen dem Starkchen</a> 60
-                     guldein c) <a class="anno-person" data-ref="pe__paul_geir_QGW_II_I_1406" title="Paul Geir [pe__paul_geir_QGW_II_I_1406]" href="../../../register/persons/pe__paul_geir_QGW_II_I_1406.html">Pauln dem
-                        Geyr</a> 60 guldein d) <a class="anno-person" data-ref="pe__wolfgang_purkchartsperger_QGW_II_I_1560" title="Wolfgang Purkchartsperger [pe__wolfgang_purkchartsperger_QGW_II_I_1560]" href="../../../register/persons/pe__wolfgang_purkchartsperger_QGW_II_I_1560.html">Wolfgangen dem
+                     60 guldein b) seinem Freunde <a class="anno-person" data-ref="pe__heinrich_starkch_StB_I_62" data-hint="Heinrich Starkch von Sparbach [pe__heinrich_starkch_StB_I_62]" data-hint-type="Person" href="../../../register/persons/pe__heinrich_starkch_StB_I_62.html">Hainreichen dem Starkchen</a> 60
+                     guldein c) <a class="anno-person" data-ref="pe__paul_geir_QGW_II_I_1406" data-hint="Paul Geir [pe__paul_geir_QGW_II_I_1406]" data-hint-type="Person" href="../../../register/persons/pe__paul_geir_QGW_II_I_1406.html">Pauln dem
+                        Geyr</a> 60 guldein d) <a class="anno-person" data-ref="pe__wolfgang_purkchartsperger_QGW_II_I_1560" data-hint="Wolfgang Purkchartsperger [pe__wolfgang_purkchartsperger_QGW_II_I_1560]" data-hint-type="Person" href="../../../register/persons/pe__wolfgang_purkchartsperger_QGW_II_I_1560.html">Wolfgangen dem
                         Purkchartsperger</a> 60 lb dn. 13. zur Vertheilung an hausarme leute in
                      Wien 14. dass seine Geschäftsherren, was noch übrig bleibt, an das pau hinz
                      Unser Fraun auf der Stetten ze Wienne legen sollen.</span> Das Geschäft
                      <span class="anno-trigger anno-trigger-disp">empfiehlt</span>
-                  <span class="anno-fn anno-fn-recipient" data-role="recipient"><span class="fn-label">Empfänger*in</span>er <a class="anno-person" data-ref="pe__erhard_schierl_QGW_II_I_1845" title="Erhard Schierl [pe__erhard_schierl_QGW_II_I_1845]" href="../../../register/persons/pe__erhard_schierl_QGW_II_I_1845.html"><span class="anno-attr anno-attr-title">hern</span> Erharten dem Schierl, <span class="anno-attr anno-attr-rep" data-corresp="pe__leonhard_schaur_QGW_II_I_1242"><span class="tei-add">Geschäftsherr</span></span></a>
-                     <a class="anno-person" data-ref="pe__paul_geir_QGW_II_I_1406" title="Paul Geir [pe__paul_geir_QGW_II_I_1406]" href="../../../register/persons/pe__paul_geir_QGW_II_I_1406.html">Pauln dem Geyr <span class="anno-attr anno-attr-occ" data-corresp="org__wien"><span class="tei-add">rats</span></span>,<span class="anno-attr anno-attr-rep" data-corresp="pe__leonhard_schaur_QGW_II_I_1242"><span class="tei-add">Geschäftsherr</span></span></a>
-                     <a class="anno-person" data-ref="pe__wolfgang_purkchartsperger_QGW_II_I_1560" title="Wolfgang Purkchartsperger [pe__wolfgang_purkchartsperger_QGW_II_I_1560]" href="../../../register/persons/pe__wolfgang_purkchartsperger_QGW_II_I_1560.html">Wolfgangen
-                        dem Purkcharczperger, baid des<span class="anno-attr anno-attr-rep" data-corresp="pe__leonhard_schaur_QGW_II_I_1242"><span class="tei-add">Geschäftsherr</span></span> <span class="anno-attr anno-attr-occ" data-corresp="org__wien">rats</span> der stat ze Wienn,</a> und <a class="anno-person" data-ref="pe__heinrich_starkch_StB_I_62" title="Heinrich Starkch von Sparbach [pe__heinrich_starkch_StB_I_62]" href="../../../register/persons/pe__heinrich_starkch_StB_I_62.html">Hainreichen dem Starkchen<span class="anno-attr anno-attr-rep" data-corresp="pe__leonhard_schaur_QGW_II_I_1242"><span class="tei-add">Geschäftsherr</span></span></a></span>
+                  <span class="anno-fn anno-fn-recipient" data-role="recipient"><span class="fn-label">Empfänger*in</span>er <a class="anno-person" data-ref="pe__erhard_schierl_QGW_II_I_1845" data-hint="Erhard Schierl [pe__erhard_schierl_QGW_II_I_1845]" data-hint-type="Person" href="../../../register/persons/pe__erhard_schierl_QGW_II_I_1845.html"><span class="anno-attr anno-attr-title">hern</span> Erharten dem Schierl, <span class="anno-attr anno-attr-rep" data-corresp="pe__leonhard_schaur_QGW_II_I_1242"><span class="tei-add">Geschäftsherr</span></span></a>
+                     <a class="anno-person" data-ref="pe__paul_geir_QGW_II_I_1406" data-hint="Paul Geir [pe__paul_geir_QGW_II_I_1406]" data-hint-type="Person" href="../../../register/persons/pe__paul_geir_QGW_II_I_1406.html">Pauln dem Geyr <span class="anno-attr anno-attr-occ" data-corresp="org__wien"><span class="tei-add">rats</span></span>,<span class="anno-attr anno-attr-rep" data-corresp="pe__leonhard_schaur_QGW_II_I_1242"><span class="tei-add">Geschäftsherr</span></span></a>
+                     <a class="anno-person" data-ref="pe__wolfgang_purkchartsperger_QGW_II_I_1560" data-hint="Wolfgang Purkchartsperger [pe__wolfgang_purkchartsperger_QGW_II_I_1560]" data-hint-type="Person" href="../../../register/persons/pe__wolfgang_purkchartsperger_QGW_II_I_1560.html">Wolfgangen
+                        dem Purkcharczperger, baid des<span class="anno-attr anno-attr-rep" data-corresp="pe__leonhard_schaur_QGW_II_I_1242"><span class="tei-add">Geschäftsherr</span></span> <span class="anno-attr anno-attr-occ" data-corresp="org__wien">rats</span> der stat ze Wienn,</a> und <a class="anno-person" data-ref="pe__heinrich_starkch_StB_I_62" data-hint="Heinrich Starkch von Sparbach [pe__heinrich_starkch_StB_I_62]" data-hint-type="Person" href="../../../register/persons/pe__heinrich_starkch_StB_I_62.html">Hainreichen dem Starkchen<span class="anno-attr anno-attr-rep" data-corresp="pe__leonhard_schaur_QGW_II_I_1242"><span class="tei-add">Geschäftsherr</span></span></a></span>
                   .</span>
             </p></section><section class="tei-seal"><h2 class="tei-section-head">Siegelbeschreibung</h2><p><span class="anno-event" data-ref="ev__QGW_II_I_1845"><span class="anno-fn anno-fn-witness" data-role="witness"><span class="fn-label">Zeug*in</span>Besiegelt mit
-                     den Siegeln: 1. des <a class="anno-person" data-ref="pe__leonhard_schaur_QGW_II_I_1242" title="Leonhard Schaur († 08.06.1450) [pe__leonhard_schaur_QGW_II_I_1242]" href="../../../register/persons/pe__leonhard_schaur_QGW_II_I_1242.html">Ausstellers</a>, 2. <a class="anno-person" data-ref="pe__johann_kaufmann_QGW_II_I_1760" title="Johann Kaufmann [pe__johann_kaufmann_QGW_II_I_1760]" href="../../../register/persons/pe__johann_kaufmann_QGW_II_I_1760.html">Hannsen des Chaufman, <span class="anno-attr anno-attr-occ" data-corresp="org__wien-st_stephan">kirchmaister</span>
-                        dacz sand Stephan ze Wienn und auch des <span class="anno-attr anno-attr-occ" data-corresp="org__wien">rats</span> daselbs</a>, 3. <a class="anno-person" data-ref="pe__georg_neuer_QGW_II_I_1195" title="Georg Neuer Neuer [pe__georg_neuer_QGW_II_I_1195]" href="../../../register/persons/pe__georg_neuer_QGW_II_I_1195.html">Jorgen des Neuer, <span class="anno-attr anno-attr-occ" data-corresp="org__wien">purger</span>
+                     den Siegeln: 1. des <a class="anno-person" data-ref="pe__leonhard_schaur_QGW_II_I_1242" data-hint="Leonhard Schaur († 08.06.1450) [pe__leonhard_schaur_QGW_II_I_1242]" data-hint-type="Person" href="../../../register/persons/pe__leonhard_schaur_QGW_II_I_1242.html">Ausstellers</a>, 2. <a class="anno-person" data-ref="pe__johann_kaufmann_QGW_II_I_1760" data-hint="Johann Kaufmann [pe__johann_kaufmann_QGW_II_I_1760]" data-hint-type="Person" href="../../../register/persons/pe__johann_kaufmann_QGW_II_I_1760.html">Hannsen des Chaufman, <span class="anno-attr anno-attr-occ" data-corresp="org__wien-st_stephan">kirchmaister</span>
+                        dacz sand Stephan ze Wienn und auch des <span class="anno-attr anno-attr-occ" data-corresp="org__wien">rats</span> daselbs</a>, 3. <a class="anno-person" data-ref="pe__georg_neuer_QGW_II_I_1195" data-hint="Georg Neuer Neuer [pe__georg_neuer_QGW_II_I_1195]" data-hint-type="Person" href="../../../register/persons/pe__georg_neuer_QGW_II_I_1195.html">Jorgen des Neuer, <span class="anno-attr anno-attr-occ" data-corresp="org__wien">purger</span>
                         ze Wienn</a>.</span></span>
             </p></section><section class="tei-nota"><h2 class="tei-section-head">Indorsat / Nota</h2><p>Indorsat: Aufschrift vom Jahre 1415 (vgl. Jahrbuch der kais. Kunstsamml. 16b, no
                13235).</p></section>
@@ -329,7 +335,7 @@
          dem TEI in mehreren Untertabellen, Personen/Orgs/Orte,
          Ereignisse, Dispositivformeln, Editorische Ergaenzungen. Wird
          per JS aus den entsprechenden Spans im Body aufgebaut. -->
-    <section class="annotations-view" id="factoid-view" aria-label="Annotationen">
+    <section class="annotations-view" id="annotations-view" aria-label="Annotationen">
         <header class="annotations-header">
             <h2 class="annotations-title">Annotationen</h2>
             <span class="annotations-summary"></span>
@@ -375,13 +381,14 @@
         </div>
     </footer>
 
-    <script src="../../../static/js/core.js?v=20260511112948"></script>
-    <script src="../../../static/js/provenance.js?v=20260511112948"></script>
-    <script src="../../../static/js/basket.js?v=20260511112948"></script>
+    <script src="../../../static/js/core.js?v=20260511125458"></script>
+    <script src="../../../static/js/tip.js?v=20260511125458"></script>
+    <script src="../../../static/js/hint.js?v=20260511125458"></script>
+    <script src="../../../static/js/basket.js?v=20260511125458"></script>
     
-<script src="../../../static/js/tooltips.js?v=20260511112948"></script>
-<script src="../../../static/js/facsimile.js?v=20260511112948"></script>
-<script src="../../../static/js/document.js?v=20260511112948"></script>
+<script src="../../../static/js/facsimile.js?v=20260511125458"></script>
+<script src="../../../static/js/document.js?v=20260511125458"></script>
+<script src="../../../static/js/basket-mount.js?v=20260511125458"></script>
 
 </body>
 </html>

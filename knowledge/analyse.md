@@ -52,7 +52,7 @@ Der Datenbestand liegt in Form vorkonfektionierter JSON-Dateien vor, die bereits
 
 ### 2.1 Datenbestand
 
-Pro Ebene liegt eine eigene JSON vor: Quellen in `search.json` und `docs_lookup.json`, Personen in `persons_search.json`, Organisationen in `orgs_search.json`, Orte in `places_search.json`, vorberechnete Aggregate in `roles.json` (Rollen), `relations.json` (Beziehungen), `transactions.json` (Transaktionen). Detail-Profile pro Entität liegen unter `register/persons/`, `register/orgs/`, `register/places/`.
+Pro Ebene liegt eine eigene JSON vor: Quellen in `search.json` und `docs_lookup.json`, Personen in `persons_search.json`, Organisationen in `orgs_search.json`, vorberechnete Aggregate in `roles.json` (Rollen), `relations.json` (Beziehungen), `transactions.json` (Transaktionen). Detail-Profile pro Entität liegen unter `register/persons/` und `register/orgs/`. Ein Ortsregister gibt es nicht; die Orts-Stammdaten sind noch nicht hinreichend konsolidiert.
 
 Zeitraum: freigegeben 1177 bis 1412 (Ausnahmen bis 1414 für QGW II/1 und II/2), mit nicht ausgewertetem Bereich 1418 bis 1447. Die Dokumentdichte ist stark ungleichverteilt, wenige Dutzend Dokumente in den ersten zwei Jahrhunderten, ein Dichte-Schwerpunkt im späten 14. Jahrhundert (insbesondere Stadtbücher). Konkrete Zahlen leben in den `coverage`-Blöcken der Aggregate und im Footer der Datenbank.
 
@@ -75,7 +75,7 @@ Das öffentlich freigegebene Personenregister liegt als flaches Array mit kompak
 
 Felder: `id` eindeutige Kennung, `n` Namensform, `fn`/`sn` Vor- und Familienname, `sex` Geschlecht, `d` Datierung, `dc` Anzahl der Quellen mit Nennung (*document count*), `qw` Qualitäts- bzw. Normalisierungsgewicht (`-1` unbekannt, `0` niedrig, `1` und `2` höhere Konfidenz).
 
-Organisations- und Ortsregister liegen parallel als `orgs_search.json` und `places_search.json` vor und nutzen dasselbe Such-Schema wie das Personenregister. Organisationen tragen zusätzlich `tp` für den Typ; Orte zusätzlich `lat`/`lng` als Rohzahl. Detail-Profile pro Entität stehen unter `register/orgs/<org__id>.html` und `register/places/<pl__id>.html`.
+Das Organisationsregister liegt parallel als `orgs_search.json` vor und nutzt dasselbe Such-Schema wie das Personenregister; zusätzlich trägt jeder Eintrag ein `tp`-Feld für den Typ. Detail-Profile pro Organisation stehen unter `register/orgs/<org__id>.html`. Ein Ortsregister wird derzeit nicht ausgeliefert; Orts-Annotationen im Quellen-Volltext bleiben als Markup sichtbar, tragen aber kein Sprungziel.
 
 ### 2.3 Vorkompilierte Aggregationen: die Aggregat-JSONs
 
@@ -104,7 +104,7 @@ Diese Zuordnung ist eine inhaltliche Modellierungsentscheidung, die im Interface
 
 ### 2.5 Datenqualität und Freigabestand
 
-Der Validierungsreport (`quality.json`) und die Coverage-Blöcke der Aggregat-JSONs machen die Datenqualität sichtbar. Charakteristisch ist eine durchgängig niedrige Normalisierungsrate: nur ein kleiner Teil der dispositiven Verben ist im kontrollierten Vokabular der Transaktionstypen geführt, und nur ein Teil der Personen hat eine explizite Organisationszuordnung. Das Ortsregister ist quantitativ groß, aber nur ein Bruchteil der Einträge ist georeferenziert.
+Der Validierungsreport (`quality.json`) und die Coverage-Blöcke der Aggregat-JSONs machen die Datenqualität sichtbar. Charakteristisch ist eine durchgängig niedrige Normalisierungsrate: nur ein kleiner Teil der dispositiven Verben ist im kontrollierten Vokabular der Transaktionstypen geführt, und nur ein Teil der Personen hat eine explizite Organisationszuordnung. Die Orts-Stammdaten sind im Datenbestand vorhanden, aber nicht hinreichend konsolidiert; aus diesem Grund wird das Ortsregister derzeit nicht ausgeliefert.
 
 Diese Verhältnisse sind keine nebensächliche Meta-Information, sondern konstitutiver Teil dessen, was das Interface ausweisen muss. Eine Zählung *Transaktionen vom Typ Kauf* bedeutet nicht, dass alle anderen Events keine Käufe sind, sondern dass nur ein Bruchteil überhaupt kategorisiert ist.
 

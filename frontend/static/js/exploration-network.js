@@ -246,15 +246,9 @@
                 ? `<span class="net-detail-name net-detail-name--org">${escapeHtml(name)}</span>`
                 : `<button type="button" class="net-detail-recenter" data-pid="${escapeAttr(e.otherKey)}"
                        title="Zum Mittelpunkt machen">${escapeHtml(name)}</button>`;
-            // Knowledge basket button shows only for person profiles, not for orgs.
+            // Personen sind nicht im Datenkorb sammelbar; der Korb fasst nur
+            // Quellen. Hier daher kein Korb-Knopf.
             let basketBtn = '';
-            if (!isOrg && other && typeof KnowledgeBasket !== 'undefined') {
-                const url = `register/persons/${other.id}.html`;
-                basketBtn = KnowledgeBasket.buttonHTML({
-                    type: 'person', id: other.id, label: other.name, url: url,
-                    date: '', coll: 'Personenregister', regest: '',
-                });
-            }
             return `<tr>
                 <td class="col-label">${nameCell}</td>
                 <td>${escapeHtml(REL_LABELS[e.type] || e.type)}${isOrg ? ' (Org)' : ''}</td>

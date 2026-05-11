@@ -3,21 +3,21 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <meta http-equiv="Content-Security-Policy" content="default-src 'self'; script-src 'self'; style-src 'self'; font-src 'self'; img-src 'self' data: https://images.monasterium.net https://www.monasterium.net; connect-src 'self'; frame-ancestors 'none'; base-uri 'self'; form-action 'self'; upgrade-insecure-requests">
+    <meta http-equiv="Content-Security-Policy" content="default-src 'self'; script-src 'self'; style-src 'self'; font-src 'self'; img-src 'self' data: https://images.monasterium.net https://www.monasterium.net; connect-src 'self'; base-uri 'self'; form-action 'self'; upgrade-insecure-requests">
     <meta name="referrer" content="strict-origin-when-cross-origin">
     <meta http-equiv="Permissions-Policy" content="camera=(), microphone=(), geolocation=(), interest-cohort=()">
     <title>Nr. 928 (1378 II 19), Datenbank</title>
     <link rel="preload" as="font" type="font/woff2" crossorigin
           href="../../../static/fonts/inter-400-latin.woff2">
-    <link rel="stylesheet" href="../../../static/css/fonts.css?v=20260511112948">
-    <link rel="stylesheet" href="../../../static/css/tokens.css?v=20260511112948">
-    <link rel="stylesheet" href="../../../static/css/base.css?v=20260511112948">
-    <link rel="stylesheet" href="../../../static/css/components.css?v=20260511112948">
-    <link rel="stylesheet" href="../../../static/css/responsive.css?v=20260511112948">
-    <link rel="stylesheet" href="../../../static/css/print.css?v=20260511112948">
-    <link rel="stylesheet" href="../../../static/css/provenance.css?v=20260511112948">
+    <link rel="stylesheet" href="../../../static/css/fonts.css?v=20260511125458">
+    <link rel="stylesheet" href="../../../static/css/tokens.css?v=20260511125458">
+    <link rel="stylesheet" href="../../../static/css/base.css?v=20260511125458">
+    <link rel="stylesheet" href="../../../static/css/components.css?v=20260511125458">
+    <link rel="stylesheet" href="../../../static/css/responsive.css?v=20260511125458">
+    <link rel="stylesheet" href="../../../static/css/print.css?v=20260511125458">
+    <link rel="stylesheet" href="../../../static/css/tip.css?v=20260511125458">
     
-<link rel="stylesheet" href="../../../static/css/document.css?v=20260511112948">
+<link rel="stylesheet" href="../../../static/css/document.css?v=20260511125458">
 <link rel="canonical" href="documents/QGW/Vienna_1177-1414_ready/928.html">
 <meta name="citation_title" content="Nr. 928 (1378 II 19)">
 <meta name="citation_collection" content="QGW II/1 (1177–1414)">
@@ -50,8 +50,6 @@
         <a href="../../../register/persons.html">Personen</a>
         
         <a href="../../../register/orgs.html">Organisationen</a>
-        
-        <a href="../../../register/places.html">Orte</a>
         
     </div>
 </div>
@@ -93,7 +91,7 @@
     </div>
 </div>
 
-                <a href="../../../korb.html" class="nav-basket" aria-label="Wissenskorb">
+                <a href="../../../korb.html" class="nav-basket" aria-label="Datenkorb">
                     <svg width="18" height="18" viewBox="0 0 18 18" fill="none" aria-hidden="true">
                         <path d="M3 5h12l-1.2 8.5a1 1 0 0 1-1 .85H5.2a1 1 0 0 1-1-.85L3 5z"
                               stroke="currentColor" stroke-width="1.4" fill="none"
@@ -140,7 +138,7 @@
                     
                     <span class="meta-pair">
                         <span class="meta-label">Quelle</span>
-                        <span class="meta-value" title="Quellen zur Geschichte der Stadt Wien, Bd. II/1, Nr. 928">Quellen zur Geschichte der Stadt Wien, Bd. II/1, Nr. 928</span>
+                        <span class="meta-value" data-hint="Quellen zur Geschichte der Stadt Wien, Bd. II/1, Nr. 928">Quellen zur Geschichte der Stadt Wien, Bd. II/1, Nr. 928</span>
                     </span>
                     
                 </div>
@@ -151,7 +149,7 @@
                     
                     <button type="button" class="legend-toggle"
                             data-layer="entities" aria-pressed="true"
-                            title="Entitäten ein-/ausblenden">
+                            data-hint="Entitäten ein-/ausblenden">
                         <span class="legend-toggle-dots">
                             <span class="legend-swatch swatch-person"></span><span class="legend-swatch swatch-org"></span><span class="legend-swatch swatch-place"></span>
                         </span>
@@ -160,7 +158,7 @@
                     
                     <button type="button" class="legend-toggle"
                             data-layer="functions" aria-pressed="true"
-                            title="Funktionsrollen ein-/ausblenden">
+                            data-hint="Funktionsrollen ein-/ausblenden">
                         <span class="legend-toggle-dots">
                             <span class="legend-swatch swatch-fn-issuer"></span><span class="legend-swatch swatch-fn-recipient"></span><span class="legend-swatch swatch-fn-witness"></span>
                         </span>
@@ -169,7 +167,7 @@
                     
                     <button type="button" class="legend-toggle"
                             data-layer="attributes" aria-pressed="true"
-                            title="Attribute ein-/ausblenden">
+                            data-hint="Attribute ein-/ausblenden">
                         <span class="legend-toggle-dots">
                             <span class="legend-swatch swatch-attr"></span><span class="legend-swatch swatch-add"></span>
                         </span>
@@ -178,7 +176,7 @@
                     
                     <button type="button" class="legend-toggle"
                             data-layer="triggers" aria-pressed="true"
-                            title="Dispositivformel ein-/ausblenden">
+                            data-hint="Dispositivformel ein-/ausblenden">
                         <span class="legend-toggle-dots">
                             <span class="legend-swatch swatch-trigger"></span>
                         </span>
@@ -190,21 +188,29 @@
                 <div class="doc-toolbar-actions">
                     <a class="toolbar-btn" href="../../../tei/QGW/Vienna_1177-1414_ready/928.xml"
                        download="928.xml"
-                       aria-label="TEI-XML herunterladen" title="TEI-XML herunterladen"><svg viewBox="0 0 16 16" width="16" height="16" aria-hidden="true"><path fill="none" stroke="currentColor" stroke-width="1.4" stroke-linecap="round" stroke-linejoin="round" d="M8 2v8m0 0l-3-3m3 3l3-3M3 13h10"/></svg></a>
+                       aria-label="TEI-XML herunterladen" data-hint="TEI-XML herunterladen"><svg viewBox="0 0 16 16" width="16" height="16" aria-hidden="true"><path fill="none" stroke="currentColor" stroke-width="1.4" stroke-linecap="round" stroke-linejoin="round" d="M8 2v8m0 0l-3-3m3 3l3-3M3 13h10"/></svg></a>
                     <button class="toolbar-btn" id="cite-toggle" aria-expanded="false"
-                            aria-label="Zitation kopieren" title="Zitation kopieren"><svg viewBox="0 0 16 16" width="16" height="16" aria-hidden="true"><rect x="4" y="2" width="8" height="11" rx="1" fill="none" stroke="currentColor" stroke-width="1.4"/><path d="M6 1.5h4a0.5 0.5 0 0 1 0.5 0.5v1a0.5 0.5 0 0 1-0.5 0.5H6a0.5 0.5 0 0 1-0.5-0.5V2A0.5 0.5 0 0 1 6 1.5z" fill="currentColor"/><path d="M6.5 6.5h3M6.5 8.5h3M6.5 10.5h2" stroke="currentColor" stroke-width="1" stroke-linecap="round"/></svg></button>
+                            aria-label="Zitation kopieren" data-hint="Zitation kopieren"><svg viewBox="0 0 16 16" width="16" height="16" aria-hidden="true"><rect x="4" y="2" width="8" height="11" rx="1" fill="none" stroke="currentColor" stroke-width="1.4"/><path d="M6 1.5h4a0.5 0.5 0 0 1 0.5 0.5v1a0.5 0.5 0 0 1-0.5 0.5H6a0.5 0.5 0 0 1-0.5-0.5V2A0.5 0.5 0 0 1 6 1.5z" fill="currentColor"/><path d="M6.5 6.5h3M6.5 8.5h3M6.5 10.5h2" stroke="currentColor" stroke-width="1" stroke-linecap="round"/></svg></button>
                     <div class="cite-popover hidden" id="cite-popover"></div>
+                    <span class="toolbar-basket-mount"
+                          data-basket-type="source"
+                          data-basket-id="928"
+                          data-basket-label="928"
+                          data-basket-url="documents/QGW/Vienna_1177-1414_ready/928.html"
+                          data-basket-date="1378-02-19"
+                          data-basket-coll="QGW II/1 (1177–1414)"
+                          data-basket-regest="Hanns der Stoll und Anna, seine Hausfrau , verkaufen mit Handen ihres Bergherrn pru/eder Giligen, comoteur des hauses dacz dem Deutschenhaus ze Wienn , ihres ledigen Gutes fu/omf viertail Weingarten,…"></span>
                     
 <nav class="doc-paging doc-paging-inline" aria-label="Quellen-Navigation">
     
     <a href="../../../documents/QGW/Vienna_1177-1414_ready/927.html" class="toolbar-btn doc-paging-prev"
        aria-label="Vorherige Quelle: Nr. 927"
-       title="Vorherige Quelle: Nr. 927"><svg viewBox="0 0 16 16" width="16" height="16" aria-hidden="true"><path fill="none" stroke="currentColor" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round" d="M10 3l-5 5 5 5"/></svg></a>
+       data-hint="Vorherige Quelle: Nr. 927"><svg viewBox="0 0 16 16" width="16" height="16" aria-hidden="true"><path fill="none" stroke="currentColor" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round" d="M10 3l-5 5 5 5"/></svg></a>
     
     
     <a href="../../../documents/QGW/Vienna_1177-1414_ready/929.html" class="toolbar-btn doc-paging-next"
        aria-label="Nächste Quelle: Nr. 929"
-       title="Nächste Quelle: Nr. 929"><svg viewBox="0 0 16 16" width="16" height="16" aria-hidden="true"><path fill="none" stroke="currentColor" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round" d="M6 3l5 5-5 5"/></svg></a>
+       data-hint="Nächste Quelle: Nr. 929"><svg viewBox="0 0 16 16" width="16" height="16" aria-hidden="true"><path fill="none" stroke="currentColor" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round" d="M6 3l5 5-5 5"/></svg></a>
     
 </nav>
 
@@ -219,8 +225,8 @@
         <!-- Document body (rendered TEI) -->
         <div class="doc-body">
             <section class="tei-abstract"><h2 class="tei-section-head">Regest</h2><p>
-               <span class="anno-event" data-ref="ev__QGW_II_I_928"><span class="anno-fn anno-fn-issuer" data-role="issuer"><span class="fn-label">Aussteller*in</span><a class="anno-person" data-ref="pe__johann_stoll_QGW_II_I_928" title="Johann Stoll [pe__johann_stoll_QGW_II_I_928]" href="../../../register/persons/pe__johann_stoll_QGW_II_I_928.html">Hanns der Stoll</a> und <a class="anno-person" data-ref="pe__anna_QGW_II_I_928" title="Anna [pe__anna_QGW_II_I_928]" href="../../../register/persons/pe__anna_QGW_II_I_928.html">Anna, seine <span class="anno-attr anno-attr-kin" data-corresp="pe__johann_stoll_QGW_II_I_928">Hausfrau</span></a></span> , <span class="anno-trigger anno-trigger-disp">verkaufen</span>
-                  <span class="anno-fn anno-fn-other" data-role="other"><span class="fn-label">Sonstige</span><span class="anno-trigger anno-trigger-fn">mit Handen</span> ihres <a class="anno-person" data-ref="pe__gilg_QGW_II_I_483" title="Gilig Komtur deutsche Herren [pe__gilg_QGW_II_I_483]" href="../../../register/persons/pe__gilg_QGW_II_I_483.html">
+               <span class="anno-event" data-ref="ev__QGW_II_I_928"><span class="anno-fn anno-fn-issuer" data-role="issuer"><span class="fn-label">Aussteller*in</span><a class="anno-person" data-ref="pe__johann_stoll_QGW_II_I_928" data-hint="Johann Stoll [pe__johann_stoll_QGW_II_I_928]" data-hint-type="Person" href="../../../register/persons/pe__johann_stoll_QGW_II_I_928.html">Hanns der Stoll</a> und <a class="anno-person" data-ref="pe__anna_QGW_II_I_928" data-hint="Anna [pe__anna_QGW_II_I_928]" data-hint-type="Person" href="../../../register/persons/pe__anna_QGW_II_I_928.html">Anna, seine <span class="anno-attr anno-attr-kin" data-corresp="pe__johann_stoll_QGW_II_I_928">Hausfrau</span></a></span> , <span class="anno-trigger anno-trigger-disp">verkaufen</span>
+                  <span class="anno-fn anno-fn-other" data-role="other"><span class="fn-label">Sonstige</span><span class="anno-trigger anno-trigger-fn">mit Handen</span> ihres <a class="anno-person" data-ref="pe__gilg_QGW_II_I_483" data-hint="Gilig Komtur deutsche Herren [pe__gilg_QGW_II_I_483]" data-hint-type="Person" href="../../../register/persons/pe__gilg_QGW_II_I_483.html">
                         <span class="anno-attr anno-attr-title">Bergherrn</span>
                         <span class="anno-attr anno-attr-title">pru/eder</span> Giligen, <span class="anno-attr anno-attr-occ" data-corresp="org__wien-deutsche_herren">comoteur</span> des hauses dacz
                         dem Deutschenhaus ze Wienn</a></span> , ihres ledigen Gutes fu/omf viertail
@@ -228,17 +234,17 @@
                   des Holzcheuffels an ainem tail und zenechst Ulreichs weingarten von Tulln an dem
                   andern tail , von dem man den Deutschen Herren zwei Eimer Wein zu Bergrecht und 2
                   dn. zu Voitrecht und den geistlichen Herren ze Maurbach 32 dn. ze rechtem dienst
-                  dient, um 100 lb dn. <span class="anno-fn anno-fn-recipient" data-role="recipient"><span class="fn-label">Empfänger*in</span><a class="anno-person" data-ref="pe__elisabeth_QGW_II_I_856" title="Elisabeth († 23.05.1375) [pe__elisabeth_QGW_II_I_856]" href="../../../register/persons/pe__elisabeth_QGW_II_I_856.html"><span class="anno-attr anno-attr-title">vrowen</span>
-                        Elsbeten, <a class="anno-person" data-ref="pe__leopold_poltz_QGW_II_I_776" title="Leopold Poltz Poltz († 19.02.1378) [pe__leopold_poltz_QGW_II_I_776]" href="../../../register/persons/pe__leopold_poltz_QGW_II_I_776.html"><span class="anno-attr anno-attr-title">hern</span> Leupolts <span class="anno-attr anno-attr-dead">seligen</span> des Polczs</a>
+                  dient, um 100 lb dn. <span class="anno-fn anno-fn-recipient" data-role="recipient"><span class="fn-label">Empfänger*in</span><a class="anno-person" data-ref="pe__elisabeth_QGW_II_I_856" data-hint="Elisabeth († 23.05.1375) [pe__elisabeth_QGW_II_I_856]" data-hint-type="Person" href="../../../register/persons/pe__elisabeth_QGW_II_I_856.html"><span class="anno-attr anno-attr-title">vrowen</span>
+                        Elsbeten, <a class="anno-person" data-ref="pe__leopold_poltz_QGW_II_I_776" data-hint="Leopold Poltz Poltz († 19.02.1378) [pe__leopold_poltz_QGW_II_I_776]" data-hint-type="Person" href="../../../register/persons/pe__leopold_poltz_QGW_II_I_776.html"><span class="anno-attr anno-attr-title">hern</span> Leupolts <span class="anno-attr anno-attr-dead">seligen</span> des Polczs</a>
                         <span class="anno-attr anno-attr-kin" data-corresp="pe__leopold_poltz_QGW_II_I_776">witiben</span></a>
-                     , <a class="anno-person" data-ref="pe__johann_poltz_QGW_II_I_827" title="Johann Poltz Poltz [pe__johann_poltz_QGW_II_I_827]" href="../../../register/persons/pe__johann_poltz_QGW_II_I_827.html">Hannsen dem Polcz, irem <span class="anno-attr anno-attr-kin" data-corresp="pe__elisabeth_QGW_II_I_856">sun</span></a> , und
-                        <a class="anno-person" data-ref="pe__katharina_QGW_II_I_928" title="Katharina [pe__katharina_QGW_II_I_928]" href="../../../register/persons/pe__katharina_QGW_II_I_928.html">Katrein <span class="anno-attr anno-attr-kin" data-corresp="pe__elisabeth_QGW_II_I_856"><span class="tei-add">tochter</span></span></a> und <a class="anno-person" data-ref="pe__elisabeth_QGW_II_I_928" title="Elisabeth Poltzin [pe__elisabeth_QGW_II_I_928]" href="../../../register/persons/pe__elisabeth_QGW_II_I_928.html">Elsbeten, iren <span class="anno-attr anno-attr-kin" data-corresp="pe__elisabeth_QGW_II_I_856">töchtern</span></a></span> .</span>
+                     , <a class="anno-person" data-ref="pe__johann_poltz_QGW_II_I_827" data-hint="Johann Poltz Poltz [pe__johann_poltz_QGW_II_I_827]" data-hint-type="Person" href="../../../register/persons/pe__johann_poltz_QGW_II_I_827.html">Hannsen dem Polcz, irem <span class="anno-attr anno-attr-kin" data-corresp="pe__elisabeth_QGW_II_I_856">sun</span></a> , und
+                        <a class="anno-person" data-ref="pe__katharina_QGW_II_I_928" data-hint="Katharina [pe__katharina_QGW_II_I_928]" data-hint-type="Person" href="../../../register/persons/pe__katharina_QGW_II_I_928.html">Katrein <span class="anno-attr anno-attr-kin" data-corresp="pe__elisabeth_QGW_II_I_856"><span class="tei-add">tochter</span></span></a> und <a class="anno-person" data-ref="pe__elisabeth_QGW_II_I_928" data-hint="Elisabeth Poltzin [pe__elisabeth_QGW_II_I_928]" data-hint-type="Person" href="../../../register/persons/pe__elisabeth_QGW_II_I_928.html">Elsbeten, iren <span class="anno-attr anno-attr-kin" data-corresp="pe__elisabeth_QGW_II_I_856">töchtern</span></a></span> .</span>
             </p></section><section class="tei-seal"><h2 class="tei-section-head">Siegelbeschreibung</h2><p><span class="anno-event" data-ref="ev__QGW_II_I_928"><span class="anno-fn anno-fn-witness" data-role="witness"><span class="fn-label">Zeug*in</span>Besiegelt mit
-                     den Siegeln: 1. des <a class="anno-org" data-ref="org__wien-deutsche_herren" title="Deutsche Herren Wien (Kloster_m) [org__wien-deutsche_herren]" href="../../../register/orgs/org__wien-deutsche_herren.html">Deutschen
-                        Hauses</a>, 2. des <a class="anno-person" data-ref="pe__stephan_leitner_QGW_II_I_1012" title="Stephan Leitner [pe__stephan_leitner_QGW_II_I_1012]" href="../../../register/persons/pe__stephan_leitner_QGW_II_I_1012.html"><span class="anno-attr anno-attr-kin" data-corresp="pe__johann_stoll_QGW_II_I_928">Schwagers</span> des
+                     den Siegeln: 1. des <a class="anno-org" data-ref="org__wien-deutsche_herren" data-hint="Deutsche Herren Wien (Kloster_m) [org__wien-deutsche_herren]" data-hint-type="Organisation" href="../../../register/orgs/org__wien-deutsche_herren.html">Deutschen
+                        Hauses</a>, 2. des <a class="anno-person" data-ref="pe__stephan_leitner_QGW_II_I_1012" data-hint="Stephan Leitner [pe__stephan_leitner_QGW_II_I_1012]" data-hint-type="Person" href="../../../register/persons/pe__stephan_leitner_QGW_II_I_1012.html"><span class="anno-attr anno-attr-kin" data-corresp="pe__johann_stoll_QGW_II_I_928">Schwagers</span> des
                         Ausstellers <span class="anno-attr anno-attr-title">hern</span> Stephans des Leitner, des
                            <span class="anno-attr anno-attr-occ" data-corresp="org__wien">rates der stat ze
-                           Wienne</span></a>, 3. des <a class="anno-person" data-ref="pe__herbert_auf_der_saeule_QGW_II_I_912" title="Herbert auf der Säule († 08.07.1351) [pe__herbert_auf_der_saeule_QGW_II_I_912]" href="../../../register/persons/pe__herbert_auf_der_saeule_QGW_II_I_912.html"><span class="anno-attr anno-attr-kin" data-corresp="pe__anna_QGW_II_I_928">Oheims</span> der Anna Herworts auf
+                           Wienne</span></a>, 3. des <a class="anno-person" data-ref="pe__herbert_auf_der_saeule_QGW_II_I_912" data-hint="Herbert auf der Säule († 08.07.1351) [pe__herbert_auf_der_saeule_QGW_II_I_912]" data-hint-type="Person" href="../../../register/persons/pe__herbert_auf_der_saeule_QGW_II_I_912.html"><span class="anno-attr anno-attr-kin" data-corresp="pe__anna_QGW_II_I_928">Oheims</span> der Anna Herworts auf
                         der Seul, <span class="anno-attr anno-attr-occ" data-corresp="org__wien">purger ze
                            Wienn</span></a>.</span></span>
             </p></section><section class="tei-nota"><h2 class="tei-section-head">Indorsat / Nota</h2><p></p></section>
@@ -299,7 +305,7 @@
          dem TEI in mehreren Untertabellen, Personen/Orgs/Orte,
          Ereignisse, Dispositivformeln, Editorische Ergaenzungen. Wird
          per JS aus den entsprechenden Spans im Body aufgebaut. -->
-    <section class="annotations-view" id="factoid-view" aria-label="Annotationen">
+    <section class="annotations-view" id="annotations-view" aria-label="Annotationen">
         <header class="annotations-header">
             <h2 class="annotations-title">Annotationen</h2>
             <span class="annotations-summary"></span>
@@ -345,13 +351,14 @@
         </div>
     </footer>
 
-    <script src="../../../static/js/core.js?v=20260511112948"></script>
-    <script src="../../../static/js/provenance.js?v=20260511112948"></script>
-    <script src="../../../static/js/basket.js?v=20260511112948"></script>
+    <script src="../../../static/js/core.js?v=20260511125458"></script>
+    <script src="../../../static/js/tip.js?v=20260511125458"></script>
+    <script src="../../../static/js/hint.js?v=20260511125458"></script>
+    <script src="../../../static/js/basket.js?v=20260511125458"></script>
     
-<script src="../../../static/js/tooltips.js?v=20260511112948"></script>
-<script src="../../../static/js/facsimile.js?v=20260511112948"></script>
-<script src="../../../static/js/document.js?v=20260511112948"></script>
+<script src="../../../static/js/facsimile.js?v=20260511125458"></script>
+<script src="../../../static/js/document.js?v=20260511125458"></script>
+<script src="../../../static/js/basket-mount.js?v=20260511125458"></script>
 
 </body>
 </html>

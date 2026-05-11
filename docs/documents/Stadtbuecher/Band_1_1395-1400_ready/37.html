@@ -3,21 +3,21 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <meta http-equiv="Content-Security-Policy" content="default-src 'self'; script-src 'self'; style-src 'self'; font-src 'self'; img-src 'self' data: https://images.monasterium.net https://www.monasterium.net; connect-src 'self'; frame-ancestors 'none'; base-uri 'self'; form-action 'self'; upgrade-insecure-requests">
+    <meta http-equiv="Content-Security-Policy" content="default-src 'self'; script-src 'self'; style-src 'self'; font-src 'self'; img-src 'self' data: https://images.monasterium.net https://www.monasterium.net; connect-src 'self'; base-uri 'self'; form-action 'self'; upgrade-insecure-requests">
     <meta name="referrer" content="strict-origin-when-cross-origin">
     <meta http-equiv="Permissions-Policy" content="camera=(), microphone=(), geolocation=(), interest-cohort=()">
     <title>Nr. 37 (1396 Februar 26), Datenbank</title>
     <link rel="preload" as="font" type="font/woff2" crossorigin
           href="../../../static/fonts/inter-400-latin.woff2">
-    <link rel="stylesheet" href="../../../static/css/fonts.css?v=20260511112948">
-    <link rel="stylesheet" href="../../../static/css/tokens.css?v=20260511112948">
-    <link rel="stylesheet" href="../../../static/css/base.css?v=20260511112948">
-    <link rel="stylesheet" href="../../../static/css/components.css?v=20260511112948">
-    <link rel="stylesheet" href="../../../static/css/responsive.css?v=20260511112948">
-    <link rel="stylesheet" href="../../../static/css/print.css?v=20260511112948">
-    <link rel="stylesheet" href="../../../static/css/provenance.css?v=20260511112948">
+    <link rel="stylesheet" href="../../../static/css/fonts.css?v=20260511125458">
+    <link rel="stylesheet" href="../../../static/css/tokens.css?v=20260511125458">
+    <link rel="stylesheet" href="../../../static/css/base.css?v=20260511125458">
+    <link rel="stylesheet" href="../../../static/css/components.css?v=20260511125458">
+    <link rel="stylesheet" href="../../../static/css/responsive.css?v=20260511125458">
+    <link rel="stylesheet" href="../../../static/css/print.css?v=20260511125458">
+    <link rel="stylesheet" href="../../../static/css/tip.css?v=20260511125458">
     
-<link rel="stylesheet" href="../../../static/css/document.css?v=20260511112948">
+<link rel="stylesheet" href="../../../static/css/document.css?v=20260511125458">
 <link rel="canonical" href="documents/Stadtbuecher/Band_1_1395-1400_ready/37.html">
 <meta name="citation_title" content="Nr. 37 (1396 Februar 26)">
 <meta name="citation_collection" content="Stadtbücher Bd. 1 (1395–1400)">
@@ -50,8 +50,6 @@
         <a href="../../../register/persons.html">Personen</a>
         
         <a href="../../../register/orgs.html">Organisationen</a>
-        
-        <a href="../../../register/places.html">Orte</a>
         
     </div>
 </div>
@@ -93,7 +91,7 @@
     </div>
 </div>
 
-                <a href="../../../korb.html" class="nav-basket" aria-label="Wissenskorb">
+                <a href="../../../korb.html" class="nav-basket" aria-label="Datenkorb">
                     <svg width="18" height="18" viewBox="0 0 18 18" fill="none" aria-hidden="true">
                         <path d="M3 5h12l-1.2 8.5a1 1 0 0 1-1 .85H5.2a1 1 0 0 1-1-.85L3 5z"
                               stroke="currentColor" stroke-width="1.4" fill="none"
@@ -135,7 +133,7 @@
                     
                     <span class="meta-pair">
                         <span class="meta-label">Quelle</span>
-                        <span class="meta-value" title="Wilhelm Brauneder / Gerhard Jaritz. Die Wiener Stadtbücher 1395 - 1430. Teil 1: 1395 - 1400. Wien/Köln: Böhlau Verlag.">Wilhelm Brauneder / Gerhard Jaritz. Die Wiener Stadtbücher 1395 - 1430. Teil 1: 1395 - 1400. Wien/Köln: Böhlau Verlag.</span>
+                        <span class="meta-value" data-hint="Wilhelm Brauneder / Gerhard Jaritz. Die Wiener Stadtbücher 1395 - 1430. Teil 1: 1395 - 1400. Wien/Köln: Böhlau Verlag.">Wilhelm Brauneder / Gerhard Jaritz. Die Wiener Stadtbücher 1395 - 1430. Teil 1: 1395 - 1400. Wien/Köln: Böhlau Verlag.</span>
                     </span>
                     
                 </div>
@@ -146,7 +144,7 @@
                     
                     <button type="button" class="legend-toggle"
                             data-layer="entities" aria-pressed="true"
-                            title="Entitäten ein-/ausblenden">
+                            data-hint="Entitäten ein-/ausblenden">
                         <span class="legend-toggle-dots">
                             <span class="legend-swatch swatch-person"></span><span class="legend-swatch swatch-org"></span><span class="legend-swatch swatch-place"></span>
                         </span>
@@ -155,7 +153,7 @@
                     
                     <button type="button" class="legend-toggle"
                             data-layer="functions" aria-pressed="true"
-                            title="Funktionsrollen ein-/ausblenden">
+                            data-hint="Funktionsrollen ein-/ausblenden">
                         <span class="legend-toggle-dots">
                             <span class="legend-swatch swatch-fn-issuer"></span><span class="legend-swatch swatch-fn-recipient"></span><span class="legend-swatch swatch-fn-witness"></span>
                         </span>
@@ -164,7 +162,7 @@
                     
                     <button type="button" class="legend-toggle"
                             data-layer="attributes" aria-pressed="true"
-                            title="Attribute ein-/ausblenden">
+                            data-hint="Attribute ein-/ausblenden">
                         <span class="legend-toggle-dots">
                             <span class="legend-swatch swatch-attr"></span><span class="legend-swatch swatch-add"></span>
                         </span>
@@ -173,7 +171,7 @@
                     
                     <button type="button" class="legend-toggle"
                             data-layer="triggers" aria-pressed="true"
-                            title="Dispositivformel ein-/ausblenden">
+                            data-hint="Dispositivformel ein-/ausblenden">
                         <span class="legend-toggle-dots">
                             <span class="legend-swatch swatch-trigger"></span>
                         </span>
@@ -185,21 +183,29 @@
                 <div class="doc-toolbar-actions">
                     <a class="toolbar-btn" href="../../../tei/Stadtbuecher/Band_1_1395-1400_ready/37.xml"
                        download="37.xml"
-                       aria-label="TEI-XML herunterladen" title="TEI-XML herunterladen"><svg viewBox="0 0 16 16" width="16" height="16" aria-hidden="true"><path fill="none" stroke="currentColor" stroke-width="1.4" stroke-linecap="round" stroke-linejoin="round" d="M8 2v8m0 0l-3-3m3 3l3-3M3 13h10"/></svg></a>
+                       aria-label="TEI-XML herunterladen" data-hint="TEI-XML herunterladen"><svg viewBox="0 0 16 16" width="16" height="16" aria-hidden="true"><path fill="none" stroke="currentColor" stroke-width="1.4" stroke-linecap="round" stroke-linejoin="round" d="M8 2v8m0 0l-3-3m3 3l3-3M3 13h10"/></svg></a>
                     <button class="toolbar-btn" id="cite-toggle" aria-expanded="false"
-                            aria-label="Zitation kopieren" title="Zitation kopieren"><svg viewBox="0 0 16 16" width="16" height="16" aria-hidden="true"><rect x="4" y="2" width="8" height="11" rx="1" fill="none" stroke="currentColor" stroke-width="1.4"/><path d="M6 1.5h4a0.5 0.5 0 0 1 0.5 0.5v1a0.5 0.5 0 0 1-0.5 0.5H6a0.5 0.5 0 0 1-0.5-0.5V2A0.5 0.5 0 0 1 6 1.5z" fill="currentColor"/><path d="M6.5 6.5h3M6.5 8.5h3M6.5 10.5h2" stroke="currentColor" stroke-width="1" stroke-linecap="round"/></svg></button>
+                            aria-label="Zitation kopieren" data-hint="Zitation kopieren"><svg viewBox="0 0 16 16" width="16" height="16" aria-hidden="true"><rect x="4" y="2" width="8" height="11" rx="1" fill="none" stroke="currentColor" stroke-width="1.4"/><path d="M6 1.5h4a0.5 0.5 0 0 1 0.5 0.5v1a0.5 0.5 0 0 1-0.5 0.5H6a0.5 0.5 0 0 1-0.5-0.5V2A0.5 0.5 0 0 1 6 1.5z" fill="currentColor"/><path d="M6.5 6.5h3M6.5 8.5h3M6.5 10.5h2" stroke="currentColor" stroke-width="1" stroke-linecap="round"/></svg></button>
                     <div class="cite-popover hidden" id="cite-popover"></div>
+                    <span class="toolbar-basket-mount"
+                          data-basket-type="source"
+                          data-basket-id="37"
+                          data-basket-label="37"
+                          data-basket-url="documents/Stadtbuecher/Band_1_1395-1400_ready/37.html"
+                          data-basket-date="1396-02-26"
+                          data-basket-coll="Stadtbücher Bd. 1 (1395–1400)"
+                          data-basket-regest="pr. mü., Einbr. 4 Zg., Ma (Indez: Item gescheft Micheln des Hollen des fleischhacker) Desselben tags kom fur den rat Niclas der Fleyschhokcher, Michels des Höllen, weylnt richter vor Widmertor ze…"></span>
                     
 <nav class="doc-paging doc-paging-inline" aria-label="Quellen-Navigation">
     
     <a href="../../../documents/Stadtbuecher/Band_1_1395-1400_ready/36.html" class="toolbar-btn doc-paging-prev"
        aria-label="Vorherige Quelle: Nr. 36"
-       title="Vorherige Quelle: Nr. 36"><svg viewBox="0 0 16 16" width="16" height="16" aria-hidden="true"><path fill="none" stroke="currentColor" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round" d="M10 3l-5 5 5 5"/></svg></a>
+       data-hint="Vorherige Quelle: Nr. 36"><svg viewBox="0 0 16 16" width="16" height="16" aria-hidden="true"><path fill="none" stroke="currentColor" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round" d="M10 3l-5 5 5 5"/></svg></a>
     
     
     <a href="../../../documents/Stadtbuecher/Band_1_1395-1400_ready/38.html" class="toolbar-btn doc-paging-next"
        aria-label="Nächste Quelle: Nr. 38"
-       title="Nächste Quelle: Nr. 38"><svg viewBox="0 0 16 16" width="16" height="16" aria-hidden="true"><path fill="none" stroke="currentColor" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round" d="M6 3l5 5-5 5"/></svg></a>
+       data-hint="Nächste Quelle: Nr. 38"><svg viewBox="0 0 16 16" width="16" height="16" aria-hidden="true"><path fill="none" stroke="currentColor" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round" d="M6 3l5 5-5 5"/></svg></a>
     
 </nav>
 
@@ -219,22 +225,22 @@
          </header>                   <section class="tei-entry"><h2 class="tei-section-head">Eintrag</h2>
             <p>
                <span class="anno-event" data-ref="ev__StB_I_37">pr. mü., Einbr. 4 Zg., Ma (Indez: Item gescheft
-                  Micheln des Hollen des fleischhacker) Desselben tags kom fur den rat <span class="anno-fn anno-fn-witness" data-role="witness"><span class="fn-label">Zeug*in</span><a class="anno-person" data-ref="pe__niklas_fleischhacker_StB_I_37" title="Niklas Fleischhacker [pe__niklas_fleischhacker_StB_I_37]" href="../../../register/persons/pe__niklas_fleischhacker_StB_I_37.html">Niclas
-                        der <span class="anno-attr anno-attr-prof">Fleyschhokcher</span>, <a class="anno-person" data-ref="pe__michael_hoell_StB_I_37" title="Michael Höll [pe__michael_hoell_StB_I_37]" href="../../../register/persons/pe__michael_hoell_StB_I_37.html">Michels des Höllen, weylnt
+                  Micheln des Hollen des fleischhacker) Desselben tags kom fur den rat <span class="anno-fn anno-fn-witness" data-role="witness"><span class="fn-label">Zeug*in</span><a class="anno-person" data-ref="pe__niklas_fleischhacker_StB_I_37" data-hint="Niklas Fleischhacker [pe__niklas_fleischhacker_StB_I_37]" data-hint-type="Person" href="../../../register/persons/pe__niklas_fleischhacker_StB_I_37.html">Niclas
+                        der <span class="anno-attr anno-attr-prof">Fleyschhokcher</span>, <a class="anno-person" data-ref="pe__michael_hoell_StB_I_37" data-hint="Michael Höll [pe__michael_hoell_StB_I_37]" data-hint-type="Person" href="../../../register/persons/pe__michael_hoell_StB_I_37.html">Michels des Höllen, weylnt
                               <span class="anno-attr anno-attr-occ" data-corresp="org__wien">richter vor Widmertor ze Wienn</span>,</a>
                         <span class="anno-attr anno-attr-kin" data-corresp="pe__michael_hoell_StB_I_37">pruder</span>,
-                     </a> und beweist und pracht mit erbern lewten, als er ze recht solt, mit <a class="anno-person" data-ref="pe__andreas_jagermaister_StB_I_37" title="Johann Jagermaister [pe__andreas_jagermaister_StB_I_37]" href="../../../register/persons/pe__andreas_jagermaister_StB_I_37.html"><span class="anno-attr anno-attr-title">maister</span> Andrein dem <span class="anno-attr anno-attr-prof">Jagermaister</span>
-                        <span class="anno-attr anno-attr-title"><span class="tei-add">erbern</span></span></a>, <a class="anno-person" data-ref="pe__johann_reich_StB_I_37" title="Johann Reich [pe__johann_reich_StB_I_37]" href="../../../register/persons/pe__johann_reich_StB_I_37.html">Jannsen dem Reychen<span class="anno-attr anno-attr-title"><span class="tei-add">erbern</span></span></a>, <a class="anno-person" data-ref="pe__konrad_schmied_StB_I_37" title="Konrad Schmied in der Laimgrube zu Wien [pe__konrad_schmied_StB_I_37]" href="../../../register/persons/pe__konrad_schmied_StB_I_37.html">Chunraten dem <span class="anno-attr anno-attr-prof">Smyd</span>
-                        <span class="anno-attr anno-attr-title"><span class="tei-add">erbern</span></span></a>, mit dem <a class="anno-person" data-ref="pe__heinrich_duernpeckch_StB_I_37" title="Heinrich Duernpeckch [pe__heinrich_duernpeckch_StB_I_37]" href="../../../register/persons/pe__heinrich_duernpeckch_StB_I_37.html">Durrenpekchen Hainrechen, dem
-                           <span class="anno-attr anno-attr-occ" data-corresp="org__wien-st_martin_vor_dem_widmertor">schafffer</span> von Sand Merten <span class="anno-attr anno-attr-title"><span class="tei-add">erbern</span></span></a></span>, das geschefft, so der <span class="anno-fn anno-fn-issuer" data-role="issuer"><span class="fn-label">Aussteller*in</span><a class="anno-person" data-ref="pe__michael_hoell_StB_I_37" title="Michael Höll [pe__michael_hoell_StB_I_37]" href="../../../register/persons/pe__michael_hoell_StB_I_37.html">vorgenant sein pruder Michel</a> und desselben Michels hawsfraw</span>
+                     </a> und beweist und pracht mit erbern lewten, als er ze recht solt, mit <a class="anno-person" data-ref="pe__andreas_jagermaister_StB_I_37" data-hint="Johann Jagermaister [pe__andreas_jagermaister_StB_I_37]" data-hint-type="Person" href="../../../register/persons/pe__andreas_jagermaister_StB_I_37.html"><span class="anno-attr anno-attr-title">maister</span> Andrein dem <span class="anno-attr anno-attr-prof">Jagermaister</span>
+                        <span class="anno-attr anno-attr-title"><span class="tei-add">erbern</span></span></a>, <a class="anno-person" data-ref="pe__johann_reich_StB_I_37" data-hint="Johann Reich [pe__johann_reich_StB_I_37]" data-hint-type="Person" href="../../../register/persons/pe__johann_reich_StB_I_37.html">Jannsen dem Reychen<span class="anno-attr anno-attr-title"><span class="tei-add">erbern</span></span></a>, <a class="anno-person" data-ref="pe__konrad_schmied_StB_I_37" data-hint="Konrad Schmied in der Laimgrube zu Wien [pe__konrad_schmied_StB_I_37]" data-hint-type="Person" href="../../../register/persons/pe__konrad_schmied_StB_I_37.html">Chunraten dem <span class="anno-attr anno-attr-prof">Smyd</span>
+                        <span class="anno-attr anno-attr-title"><span class="tei-add">erbern</span></span></a>, mit dem <a class="anno-person" data-ref="pe__heinrich_duernpeckch_StB_I_37" data-hint="Heinrich Duernpeckch [pe__heinrich_duernpeckch_StB_I_37]" data-hint-type="Person" href="../../../register/persons/pe__heinrich_duernpeckch_StB_I_37.html">Durrenpekchen Hainrechen, dem
+                           <span class="anno-attr anno-attr-occ" data-corresp="org__wien-st_martin_vor_dem_widmertor">schafffer</span> von Sand Merten <span class="anno-attr anno-attr-title"><span class="tei-add">erbern</span></span></a></span>, das geschefft, so der <span class="anno-fn anno-fn-issuer" data-role="issuer"><span class="fn-label">Aussteller*in</span><a class="anno-person" data-ref="pe__michael_hoell_StB_I_37" data-hint="Michael Höll [pe__michael_hoell_StB_I_37]" data-hint-type="Person" href="../../../register/persons/pe__michael_hoell_StB_I_37.html">vorgenant sein pruder Michel</a> und desselben Michels hawsfraw</span>
                   geschafft habent. Von erst habent si geschafft zwo Romfert und sechzehen phunt
                   Wienner phenning und umb ein fart hincz dem Heiligen Plüt sechs phunt phenning und
                   umb ein fart gen Zell, gen Sand Erhart, gen Sand Wolfgang zway phunt phenning. Und
-                  darnach habent si geschafft ayn phunt phenning hincz <span class="anno-fn anno-fn-recipient" data-role="recipient"><span class="fn-label">Empfänger*in</span><a class="anno-org" data-ref="org__wien-st_michael" title="St. Michael (Kirche_Kapelle) [org__wien-st_michael]" href="../../../register/orgs/org__wien-st_michael.html">Sand Michel</a>,
+                  darnach habent si geschafft ayn phunt phenning hincz <span class="anno-fn anno-fn-recipient" data-role="recipient"><span class="fn-label">Empfänger*in</span><a class="anno-org" data-ref="org__wien-st_michael" data-hint="St. Michael (Kirche_Kapelle) [org__wien-st_michael]" data-hint-type="Organisation" href="../../../register/orgs/org__wien-st_michael.html">Sand Michel</a>,
                      das man si in das totenpuch schreib, und umb seimesse</span> drew phunt phenning
-                  und zu <span class="anno-fn anno-fn-recipient" data-role="recipient"><span class="fn-label">Empfänger*in</span><a class="anno-org" data-ref="org__wien-st_michael-zeche_gottesleichnam" title="Gottesleichnamszeche (Zeche_Bruderschaft) [org__wien-st_michael-zeche_gottesleichnam]" href="../../../register/orgs/org__wien-st_michael-zeche_gottesleichnam.html">goczleichnams zech hincz
+                  und zu <span class="anno-fn anno-fn-recipient" data-role="recipient"><span class="fn-label">Empfänger*in</span><a class="anno-org" data-ref="org__wien-st_michael-zeche_gottesleichnam" data-hint="Gottesleichnamszeche (Zeche_Bruderschaft) [org__wien-st_michael-zeche_gottesleichnam]" data-hint-type="Organisation" href="../../../register/orgs/org__wien-st_michael-zeche_gottesleichnam.html">goczleichnams zech hincz
                         Sand Michel</a></span> ayn phunt phenning und hincz Sand Michel daseibens ayn
-                  phunt phenning und <span class="anno-fn anno-fn-recipient" data-role="recipient"><span class="fn-label">Empfänger*in</span><a class="anno-org" data-ref="org__wien-minoriten" title="Minoriten Wien (Kloster_m) [org__wien-minoriten]" href="../../../register/orgs/org__wien-minoriten.html">hincz den Minnern brudern</a></span> ayn phunt und
+                  phunt phenning und <span class="anno-fn anno-fn-recipient" data-role="recipient"><span class="fn-label">Empfänger*in</span><a class="anno-org" data-ref="org__wien-minoriten" data-hint="Minoriten Wien (Kloster_m) [org__wien-minoriten]" data-hint-type="Organisation" href="../../../register/orgs/org__wien-minoriten.html">hincz den Minnern brudern</a></span> ayn phunt und
                      <span class="anno-fn anno-fn-recipient" data-role="recipient"><span class="fn-label">Empfänger*in</span>irer mumen</span> vir phunt auf einem weingarten.
                   Als umb dasselb geschefft die obgenanten erbern leut habent gesagt, als si ze
                   recht solten.</span>
@@ -262,7 +268,7 @@
          dem TEI in mehreren Untertabellen, Personen/Orgs/Orte,
          Ereignisse, Dispositivformeln, Editorische Ergaenzungen. Wird
          per JS aus den entsprechenden Spans im Body aufgebaut. -->
-    <section class="annotations-view" id="factoid-view" aria-label="Annotationen">
+    <section class="annotations-view" id="annotations-view" aria-label="Annotationen">
         <header class="annotations-header">
             <h2 class="annotations-title">Annotationen</h2>
             <span class="annotations-summary"></span>
@@ -308,13 +314,14 @@
         </div>
     </footer>
 
-    <script src="../../../static/js/core.js?v=20260511112948"></script>
-    <script src="../../../static/js/provenance.js?v=20260511112948"></script>
-    <script src="../../../static/js/basket.js?v=20260511112948"></script>
+    <script src="../../../static/js/core.js?v=20260511125458"></script>
+    <script src="../../../static/js/tip.js?v=20260511125458"></script>
+    <script src="../../../static/js/hint.js?v=20260511125458"></script>
+    <script src="../../../static/js/basket.js?v=20260511125458"></script>
     
-<script src="../../../static/js/tooltips.js?v=20260511112948"></script>
-<script src="../../../static/js/facsimile.js?v=20260511112948"></script>
-<script src="../../../static/js/document.js?v=20260511112948"></script>
+<script src="../../../static/js/facsimile.js?v=20260511125458"></script>
+<script src="../../../static/js/document.js?v=20260511125458"></script>
+<script src="../../../static/js/basket-mount.js?v=20260511125458"></script>
 
 </body>
 </html>

@@ -3,21 +3,21 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <meta http-equiv="Content-Security-Policy" content="default-src 'self'; script-src 'self'; style-src 'self'; font-src 'self'; img-src 'self' data: https://images.monasterium.net https://www.monasterium.net; connect-src 'self'; frame-ancestors 'none'; base-uri 'self'; form-action 'self'; upgrade-insecure-requests">
+    <meta http-equiv="Content-Security-Policy" content="default-src 'self'; script-src 'self'; style-src 'self'; font-src 'self'; img-src 'self' data: https://images.monasterium.net https://www.monasterium.net; connect-src 'self'; base-uri 'self'; form-action 'self'; upgrade-insecure-requests">
     <meta name="referrer" content="strict-origin-when-cross-origin">
     <meta http-equiv="Permissions-Policy" content="camera=(), microphone=(), geolocation=(), interest-cohort=()">
     <title>Nr. 1447 (1400 I 19), Datenbank</title>
     <link rel="preload" as="font" type="font/woff2" crossorigin
           href="../../../static/fonts/inter-400-latin.woff2">
-    <link rel="stylesheet" href="../../../static/css/fonts.css?v=20260511112948">
-    <link rel="stylesheet" href="../../../static/css/tokens.css?v=20260511112948">
-    <link rel="stylesheet" href="../../../static/css/base.css?v=20260511112948">
-    <link rel="stylesheet" href="../../../static/css/components.css?v=20260511112948">
-    <link rel="stylesheet" href="../../../static/css/responsive.css?v=20260511112948">
-    <link rel="stylesheet" href="../../../static/css/print.css?v=20260511112948">
-    <link rel="stylesheet" href="../../../static/css/provenance.css?v=20260511112948">
+    <link rel="stylesheet" href="../../../static/css/fonts.css?v=20260511125458">
+    <link rel="stylesheet" href="../../../static/css/tokens.css?v=20260511125458">
+    <link rel="stylesheet" href="../../../static/css/base.css?v=20260511125458">
+    <link rel="stylesheet" href="../../../static/css/components.css?v=20260511125458">
+    <link rel="stylesheet" href="../../../static/css/responsive.css?v=20260511125458">
+    <link rel="stylesheet" href="../../../static/css/print.css?v=20260511125458">
+    <link rel="stylesheet" href="../../../static/css/tip.css?v=20260511125458">
     
-<link rel="stylesheet" href="../../../static/css/document.css?v=20260511112948">
+<link rel="stylesheet" href="../../../static/css/document.css?v=20260511125458">
 <link rel="canonical" href="documents/QGW/Vienna_1177-1414_ready/1447.html">
 <meta name="citation_title" content="Nr. 1447 (1400 I 19)">
 <meta name="citation_collection" content="QGW II/1 (1177–1414)">
@@ -50,8 +50,6 @@
         <a href="../../../register/persons.html">Personen</a>
         
         <a href="../../../register/orgs.html">Organisationen</a>
-        
-        <a href="../../../register/places.html">Orte</a>
         
     </div>
 </div>
@@ -93,7 +91,7 @@
     </div>
 </div>
 
-                <a href="../../../korb.html" class="nav-basket" aria-label="Wissenskorb">
+                <a href="../../../korb.html" class="nav-basket" aria-label="Datenkorb">
                     <svg width="18" height="18" viewBox="0 0 18 18" fill="none" aria-hidden="true">
                         <path d="M3 5h12l-1.2 8.5a1 1 0 0 1-1 .85H5.2a1 1 0 0 1-1-.85L3 5z"
                               stroke="currentColor" stroke-width="1.4" fill="none"
@@ -140,7 +138,7 @@
                     
                     <span class="meta-pair">
                         <span class="meta-label">Quelle</span>
-                        <span class="meta-value" title="Quellen zur Geschichte der Stadt Wien, Bd. II/1, Nr. 1447">Quellen zur Geschichte der Stadt Wien, Bd. II/1, Nr. 1447</span>
+                        <span class="meta-value" data-hint="Quellen zur Geschichte der Stadt Wien, Bd. II/1, Nr. 1447">Quellen zur Geschichte der Stadt Wien, Bd. II/1, Nr. 1447</span>
                     </span>
                     
                 </div>
@@ -151,7 +149,7 @@
                     
                     <button type="button" class="legend-toggle"
                             data-layer="entities" aria-pressed="true"
-                            title="Entitäten ein-/ausblenden">
+                            data-hint="Entitäten ein-/ausblenden">
                         <span class="legend-toggle-dots">
                             <span class="legend-swatch swatch-person"></span><span class="legend-swatch swatch-org"></span><span class="legend-swatch swatch-place"></span>
                         </span>
@@ -160,7 +158,7 @@
                     
                     <button type="button" class="legend-toggle"
                             data-layer="functions" aria-pressed="true"
-                            title="Funktionsrollen ein-/ausblenden">
+                            data-hint="Funktionsrollen ein-/ausblenden">
                         <span class="legend-toggle-dots">
                             <span class="legend-swatch swatch-fn-issuer"></span><span class="legend-swatch swatch-fn-recipient"></span><span class="legend-swatch swatch-fn-witness"></span>
                         </span>
@@ -169,7 +167,7 @@
                     
                     <button type="button" class="legend-toggle"
                             data-layer="attributes" aria-pressed="true"
-                            title="Attribute ein-/ausblenden">
+                            data-hint="Attribute ein-/ausblenden">
                         <span class="legend-toggle-dots">
                             <span class="legend-swatch swatch-attr"></span><span class="legend-swatch swatch-add"></span>
                         </span>
@@ -178,7 +176,7 @@
                     
                     <button type="button" class="legend-toggle"
                             data-layer="triggers" aria-pressed="true"
-                            title="Dispositivformel ein-/ausblenden">
+                            data-hint="Dispositivformel ein-/ausblenden">
                         <span class="legend-toggle-dots">
                             <span class="legend-swatch swatch-trigger"></span>
                         </span>
@@ -190,21 +188,29 @@
                 <div class="doc-toolbar-actions">
                     <a class="toolbar-btn" href="../../../tei/QGW/Vienna_1177-1414_ready/1447.xml"
                        download="1447.xml"
-                       aria-label="TEI-XML herunterladen" title="TEI-XML herunterladen"><svg viewBox="0 0 16 16" width="16" height="16" aria-hidden="true"><path fill="none" stroke="currentColor" stroke-width="1.4" stroke-linecap="round" stroke-linejoin="round" d="M8 2v8m0 0l-3-3m3 3l3-3M3 13h10"/></svg></a>
+                       aria-label="TEI-XML herunterladen" data-hint="TEI-XML herunterladen"><svg viewBox="0 0 16 16" width="16" height="16" aria-hidden="true"><path fill="none" stroke="currentColor" stroke-width="1.4" stroke-linecap="round" stroke-linejoin="round" d="M8 2v8m0 0l-3-3m3 3l3-3M3 13h10"/></svg></a>
                     <button class="toolbar-btn" id="cite-toggle" aria-expanded="false"
-                            aria-label="Zitation kopieren" title="Zitation kopieren"><svg viewBox="0 0 16 16" width="16" height="16" aria-hidden="true"><rect x="4" y="2" width="8" height="11" rx="1" fill="none" stroke="currentColor" stroke-width="1.4"/><path d="M6 1.5h4a0.5 0.5 0 0 1 0.5 0.5v1a0.5 0.5 0 0 1-0.5 0.5H6a0.5 0.5 0 0 1-0.5-0.5V2A0.5 0.5 0 0 1 6 1.5z" fill="currentColor"/><path d="M6.5 6.5h3M6.5 8.5h3M6.5 10.5h2" stroke="currentColor" stroke-width="1" stroke-linecap="round"/></svg></button>
+                            aria-label="Zitation kopieren" data-hint="Zitation kopieren"><svg viewBox="0 0 16 16" width="16" height="16" aria-hidden="true"><rect x="4" y="2" width="8" height="11" rx="1" fill="none" stroke="currentColor" stroke-width="1.4"/><path d="M6 1.5h4a0.5 0.5 0 0 1 0.5 0.5v1a0.5 0.5 0 0 1-0.5 0.5H6a0.5 0.5 0 0 1-0.5-0.5V2A0.5 0.5 0 0 1 6 1.5z" fill="currentColor"/><path d="M6.5 6.5h3M6.5 8.5h3M6.5 10.5h2" stroke="currentColor" stroke-width="1" stroke-linecap="round"/></svg></button>
                     <div class="cite-popover hidden" id="cite-popover"></div>
+                    <span class="toolbar-basket-mount"
+                          data-basket-type="source"
+                          data-basket-id="1447"
+                          data-basket-label="1447"
+                          data-basket-url="documents/QGW/Vienna_1177-1414_ready/1447.html"
+                          data-basket-date="1400-01-19"
+                          data-basket-coll="QGW II/1 (1177–1414)"
+                          data-basket-regest="Anthoni, probst dacz sand Stephan zu Wienn Geschäftsherren, Paul der Würffel Geschäftsherren, Wolfhart, pharrer zu Mülbach Geschäftsherren, und Lienhart von Medlikch Geschäftsherren, Geschäftsherren…"></span>
                     
 <nav class="doc-paging doc-paging-inline" aria-label="Quellen-Navigation">
     
     <a href="../../../documents/QGW/Vienna_1177-1414_ready/1446.html" class="toolbar-btn doc-paging-prev"
        aria-label="Vorherige Quelle: Nr. 1446"
-       title="Vorherige Quelle: Nr. 1446"><svg viewBox="0 0 16 16" width="16" height="16" aria-hidden="true"><path fill="none" stroke="currentColor" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round" d="M10 3l-5 5 5 5"/></svg></a>
+       data-hint="Vorherige Quelle: Nr. 1446"><svg viewBox="0 0 16 16" width="16" height="16" aria-hidden="true"><path fill="none" stroke="currentColor" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round" d="M10 3l-5 5 5 5"/></svg></a>
     
     
     <a href="../../../documents/QGW/Vienna_1177-1414_ready/1448.html" class="toolbar-btn doc-paging-next"
        aria-label="Nächste Quelle: Nr. 1448"
-       title="Nächste Quelle: Nr. 1448"><svg viewBox="0 0 16 16" width="16" height="16" aria-hidden="true"><path fill="none" stroke="currentColor" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round" d="M6 3l5 5-5 5"/></svg></a>
+       data-hint="Nächste Quelle: Nr. 1448"><svg viewBox="0 0 16 16" width="16" height="16" aria-hidden="true"><path fill="none" stroke="currentColor" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round" d="M6 3l5 5-5 5"/></svg></a>
     
 </nav>
 
@@ -221,35 +227,35 @@
             
          <section class="tei-abstract"><h2 class="tei-section-head">Regest</h2>
             <p>
-               <span class="anno-event" data-ref="ev__QGW_II_I_1447"><span class="anno-fn anno-fn-issuer" data-role="issuer"><span class="fn-label">Aussteller*in</span><a class="anno-person" data-ref="pe__anton_QGW_II_I_1223" title="Antonius [pe__anton_QGW_II_I_1223]" href="../../../register/persons/pe__anton_QGW_II_I_1223.html">Anthoni, <span class="anno-attr anno-attr-occ" data-corresp="org__wien-st_stephan">probst</span> dacz sand Stephan zu
-                        Wienn <span class="anno-attr anno-attr-rep" data-corresp="pe__niklas_wuerfel_QGW_II_I_1001"><span class="tei-add">Geschäftsherren</span></span></a>, <a class="anno-person" data-ref="pe__paul_wuerfel_QGW_II_I_1200" title="Paul Würfel der Ältere [pe__paul_wuerfel_QGW_II_I_1200]" href="../../../register/persons/pe__paul_wuerfel_QGW_II_I_1200.html">Paul der Würffel <span class="anno-attr anno-attr-rep" data-corresp="pe__niklas_wuerfel_QGW_II_I_1001"><span class="tei-add">Geschäftsherren</span></span></a>, <a class="anno-person" data-ref="pe__wolfhard_QGW_II_I_1447" title="Wolfhard [pe__wolfhard_QGW_II_I_1447]" href="../../../register/persons/pe__wolfhard_QGW_II_I_1447.html">Wolfhart, <span class="anno-attr anno-attr-occ" data-corresp="org__moedling-pfarre">pharrer</span> zu Mülbach <span class="anno-attr anno-attr-rep" data-corresp="pe__niklas_wuerfel_QGW_II_I_1001"><span class="tei-add">Geschäftsherren</span></span></a>, und <a class="anno-person" data-ref="pe__leonhard_von_moedling_QGW_II_I_1328" title="Leonhard von Mödling [pe__leonhard_von_moedling_QGW_II_I_1328]" href="../../../register/persons/pe__leonhard_von_moedling_QGW_II_I_1328.html">Lienhart von Medlikch
+               <span class="anno-event" data-ref="ev__QGW_II_I_1447"><span class="anno-fn anno-fn-issuer" data-role="issuer"><span class="fn-label">Aussteller*in</span><a class="anno-person" data-ref="pe__anton_QGW_II_I_1223" data-hint="Antonius [pe__anton_QGW_II_I_1223]" data-hint-type="Person" href="../../../register/persons/pe__anton_QGW_II_I_1223.html">Anthoni, <span class="anno-attr anno-attr-occ" data-corresp="org__wien-st_stephan">probst</span> dacz sand Stephan zu
+                        Wienn <span class="anno-attr anno-attr-rep" data-corresp="pe__niklas_wuerfel_QGW_II_I_1001"><span class="tei-add">Geschäftsherren</span></span></a>, <a class="anno-person" data-ref="pe__paul_wuerfel_QGW_II_I_1200" data-hint="Paul Würfel der Ältere [pe__paul_wuerfel_QGW_II_I_1200]" data-hint-type="Person" href="../../../register/persons/pe__paul_wuerfel_QGW_II_I_1200.html">Paul der Würffel <span class="anno-attr anno-attr-rep" data-corresp="pe__niklas_wuerfel_QGW_II_I_1001"><span class="tei-add">Geschäftsherren</span></span></a>, <a class="anno-person" data-ref="pe__wolfhard_QGW_II_I_1447" data-hint="Wolfhard [pe__wolfhard_QGW_II_I_1447]" data-hint-type="Person" href="../../../register/persons/pe__wolfhard_QGW_II_I_1447.html">Wolfhart, <span class="anno-attr anno-attr-occ" data-corresp="org__moedling-pfarre">pharrer</span> zu Mülbach <span class="anno-attr anno-attr-rep" data-corresp="pe__niklas_wuerfel_QGW_II_I_1001"><span class="tei-add">Geschäftsherren</span></span></a>, und <a class="anno-person" data-ref="pe__leonhard_von_moedling_QGW_II_I_1328" data-hint="Leonhard von Mödling [pe__leonhard_von_moedling_QGW_II_I_1328]" data-hint-type="Person" href="../../../register/persons/pe__leonhard_von_moedling_QGW_II_I_1328.html">Lienhart von Medlikch
                            <span class="anno-attr anno-attr-occ" data-corresp="pe__niklas_wuerfel_QGW_II_I_1001"><span class="tei-add">Geschäftsherren</span></span></a>, Geschäftsherren nach
-                     Niklas dem Würfel, <a class="anno-person" data-ref="pe__johann_ziernast_QGW_II_I_1371" title="Johann Ziernast [pe__johann_ziernast_QGW_II_I_1371]" href="../../../register/persons/pe__johann_ziernast_QGW_II_I_1371.html">Hanns der Ziernast</a>, <a class="anno-person" data-ref="pe__michael_menschein_QGW_II_I_1218" title="Michael Menschein [pe__michael_menschein_QGW_II_I_1218]" href="../../../register/persons/pe__michael_menschein_QGW_II_I_1218.html">Michel der Mênschein</a>, <a class="anno-person" data-ref="pe__martin_hausleitter_QGW_II_I_1234" title="Martin Hausleitter [pe__martin_hausleitter_QGW_II_I_1234]" href="../../../register/persons/pe__martin_hausleitter_QGW_II_I_1234.html">Mert der
-                        Hausleiter</a>, <a class="anno-person" data-ref="pe__bernhard_hauenstainer_QGW_II_I_1404" title="Bernhard Hauenstainer [pe__bernhard_hauenstainer_QGW_II_I_1404]" href="../../../register/persons/pe__bernhard_hauenstainer_QGW_II_I_1404.html">Pernhart von Haunstain</a>
-                     und <a class="anno-person" data-ref="pe__ulrich_herwart_QGW_II_I_1098" title="Ulrich Herwart [pe__ulrich_herwart_QGW_II_I_1098]" href="../../../register/persons/pe__ulrich_herwart_QGW_II_I_1098.html">Ulreich der
+                     Niklas dem Würfel, <a class="anno-person" data-ref="pe__johann_ziernast_QGW_II_I_1371" data-hint="Johann Ziernast [pe__johann_ziernast_QGW_II_I_1371]" data-hint-type="Person" href="../../../register/persons/pe__johann_ziernast_QGW_II_I_1371.html">Hanns der Ziernast</a>, <a class="anno-person" data-ref="pe__michael_menschein_QGW_II_I_1218" data-hint="Michael Menschein [pe__michael_menschein_QGW_II_I_1218]" data-hint-type="Person" href="../../../register/persons/pe__michael_menschein_QGW_II_I_1218.html">Michel der Mênschein</a>, <a class="anno-person" data-ref="pe__martin_hausleitter_QGW_II_I_1234" data-hint="Martin Hausleitter [pe__martin_hausleitter_QGW_II_I_1234]" data-hint-type="Person" href="../../../register/persons/pe__martin_hausleitter_QGW_II_I_1234.html">Mert der
+                        Hausleiter</a>, <a class="anno-person" data-ref="pe__bernhard_hauenstainer_QGW_II_I_1404" data-hint="Bernhard Hauenstainer [pe__bernhard_hauenstainer_QGW_II_I_1404]" data-hint-type="Person" href="../../../register/persons/pe__bernhard_hauenstainer_QGW_II_I_1404.html">Pernhart von Haunstain</a>
+                     und <a class="anno-person" data-ref="pe__ulrich_herwart_QGW_II_I_1098" data-hint="Ulrich Herwart [pe__ulrich_herwart_QGW_II_I_1098]" data-hint-type="Person" href="../../../register/persons/pe__ulrich_herwart_QGW_II_I_1098.html">Ulreich der
                         Herwart, <span class="anno-attr anno-attr-occ" data-corresp="org__wien">statschreiber</span>
                         ze Wienn</a></span>, <span class="anno-trigger anno-trigger-disp">entscheiden in dem
                      Streite</span>
                   <span class="anno-fn anno-fn-other" data-role="other"><span class="fn-label">Sonstige</span>
                      <span class="anno-trigger anno-trigger-fn">zwischen</span>
-                     <a class="anno-person" data-ref="pe__niklas_wuerfel_von_nussdorf_QGW_II_I_1107" title="Niklas Würfel von Nussdorf († 24.12.1449) [pe__niklas_wuerfel_von_nussdorf_QGW_II_I_1107]" href="../../../register/persons/pe__niklas_wuerfel_von_nussdorf_QGW_II_I_1107.html">Niklasen
-                        dem Würffel</a> einerseits, <a class="anno-person" data-ref="pe__johann_wuerfel_QGW_II_I_1404" title="Johann Würfel zu Rodaun [pe__johann_wuerfel_QGW_II_I_1404]" href="../../../register/persons/pe__johann_wuerfel_QGW_II_I_1404.html"><span class="anno-attr anno-attr-title">hern</span> Hannsen <span class="anno-attr anno-attr-kin" data-corresp="pe__niklas_wuerfel_von_nussdorf_QGW_II_I_1107"><span class="tei-add">prüdern</span></span></a>, <a class="anno-person" data-ref="pe__ulrich_wuerfel_QGW_II_I_1404" title="Ulrich Würfel († 19.08.1448) [pe__ulrich_wuerfel_QGW_II_I_1404]" href="../../../register/persons/pe__ulrich_wuerfel_QGW_II_I_1404.html"><span class="anno-attr anno-attr-title">hern</span> Ulreichen <span class="anno-attr anno-attr-kin" data-corresp="pe__niklas_wuerfel_von_nussdorf_QGW_II_I_1107"><span class="tei-add">prüdern</span></span></a> und <a class="anno-person" data-ref="pe__sigmund_wuerfel_QGW_II_I_1404" title="Sigmund Würfel [pe__sigmund_wuerfel_QGW_II_I_1404]" href="../../../register/persons/pe__sigmund_wuerfel_QGW_II_I_1404.html">
+                     <a class="anno-person" data-ref="pe__niklas_wuerfel_von_nussdorf_QGW_II_I_1107" data-hint="Niklas Würfel von Nussdorf († 24.12.1449) [pe__niklas_wuerfel_von_nussdorf_QGW_II_I_1107]" data-hint-type="Person" href="../../../register/persons/pe__niklas_wuerfel_von_nussdorf_QGW_II_I_1107.html">Niklasen
+                        dem Würffel</a> einerseits, <a class="anno-person" data-ref="pe__johann_wuerfel_QGW_II_I_1404" data-hint="Johann Würfel zu Rodaun [pe__johann_wuerfel_QGW_II_I_1404]" data-hint-type="Person" href="../../../register/persons/pe__johann_wuerfel_QGW_II_I_1404.html"><span class="anno-attr anno-attr-title">hern</span> Hannsen <span class="anno-attr anno-attr-kin" data-corresp="pe__niklas_wuerfel_von_nussdorf_QGW_II_I_1107"><span class="tei-add">prüdern</span></span></a>, <a class="anno-person" data-ref="pe__ulrich_wuerfel_QGW_II_I_1404" data-hint="Ulrich Würfel († 19.08.1448) [pe__ulrich_wuerfel_QGW_II_I_1404]" data-hint-type="Person" href="../../../register/persons/pe__ulrich_wuerfel_QGW_II_I_1404.html"><span class="anno-attr anno-attr-title">hern</span> Ulreichen <span class="anno-attr anno-attr-kin" data-corresp="pe__niklas_wuerfel_von_nussdorf_QGW_II_I_1107"><span class="tei-add">prüdern</span></span></a> und <a class="anno-person" data-ref="pe__sigmund_wuerfel_QGW_II_I_1404" data-hint="Sigmund Würfel [pe__sigmund_wuerfel_QGW_II_I_1404]" data-hint-type="Person" href="../../../register/persons/pe__sigmund_wuerfel_QGW_II_I_1404.html">
                         <span class="anno-attr anno-attr-title">hern</span> Sigmunden, seinen <span class="anno-attr anno-attr-kin" data-corresp="pe__niklas_wuerfel_von_nussdorf_QGW_II_I_1107">prüdern</span>, den Würffeln</a>, anderseits</span>
-                  <span class="anno-trigger anno-trigger-disp">über die Erbtheilung</span> nach ihrem <a class="anno-person" data-ref="pe__niklas_wuerfel_QGW_II_I_1001" title="Niklas Würfel († 13.05.1399) [pe__niklas_wuerfel_QGW_II_I_1001]" href="../../../register/persons/pe__niklas_wuerfel_QGW_II_I_1001.html">Vater</a>. Sie
+                  <span class="anno-trigger anno-trigger-disp">über die Erbtheilung</span> nach ihrem <a class="anno-person" data-ref="pe__niklas_wuerfel_QGW_II_I_1001" data-hint="Niklas Würfel († 13.05.1399) [pe__niklas_wuerfel_QGW_II_I_1001]" data-hint-type="Person" href="../../../register/persons/pe__niklas_wuerfel_QGW_II_I_1001.html">Vater</a>. Sie
                      <span class="anno-trigger anno-trigger-disp">ordnen <span class="tei-add">an</span></span> im Wesentlichen die
                   Ausführung des <span class="anno-event" data-ref="ev__QGW_II_I_1404">von Letzterem beurkundeten
                      Testamentes (vgl. no 1404)</span> bis zu den nächsten Mittvasten an und
                      <span class="anno-trigger anno-trigger-disp">bestimmen</span> insbesondere, dass die Münichbisen
-                  und der Weingarten, genant das Perbestal, <span class="anno-fn anno-fn-recipient" data-role="recipient"><span class="fn-label">Empfänger*in</span><a class="anno-person" data-ref="pe__johann_wuerfel_QGW_II_I_1404" title="Johann Würfel zu Rodaun [pe__johann_wuerfel_QGW_II_I_1404]" href="../../../register/persons/pe__johann_wuerfel_QGW_II_I_1404.html"><span class="anno-attr anno-attr-title">hern</span> Hannsen</a></span>, das Joch Weingarten in den Scheukchen
-                     <span class="anno-fn anno-fn-recipient" data-role="recipient"><span class="fn-label">Empfänger*in</span><a class="anno-person" data-ref="pe__niklas_wuerfel_von_nussdorf_QGW_II_I_1107" title="Niklas Würfel von Nussdorf († 24.12.1449) [pe__niklas_wuerfel_von_nussdorf_QGW_II_I_1107]" href="../../../register/persons/pe__niklas_wuerfel_von_nussdorf_QGW_II_I_1107.html">Niclasen</a></span>
+                  und der Weingarten, genant das Perbestal, <span class="anno-fn anno-fn-recipient" data-role="recipient"><span class="fn-label">Empfänger*in</span><a class="anno-person" data-ref="pe__johann_wuerfel_QGW_II_I_1404" data-hint="Johann Würfel zu Rodaun [pe__johann_wuerfel_QGW_II_I_1404]" data-hint-type="Person" href="../../../register/persons/pe__johann_wuerfel_QGW_II_I_1404.html"><span class="anno-attr anno-attr-title">hern</span> Hannsen</a></span>, das Joch Weingarten in den Scheukchen
+                     <span class="anno-fn anno-fn-recipient" data-role="recipient"><span class="fn-label">Empfänger*in</span><a class="anno-person" data-ref="pe__niklas_wuerfel_von_nussdorf_QGW_II_I_1107" data-hint="Niklas Würfel von Nussdorf († 24.12.1449) [pe__niklas_wuerfel_von_nussdorf_QGW_II_I_1107]" data-hint-type="Person" href="../../../register/persons/pe__niklas_wuerfel_von_nussdorf_QGW_II_I_1107.html">Niclasen</a></span>
                   <span class="anno-trigger anno-trigger-disp">verbleiben sollen</span>, dass die vier Brüder ihrem
-                     <span class="anno-fn anno-fn-recipient" data-role="recipient"><span class="fn-label">Empfänger*in</span><a class="anno-person" data-ref="pe__bartholomaeus_wuerfel_QGW_II_I_1375" title="Bartholomäus Würfel [pe__bartholomaeus_wuerfel_QGW_II_I_1375]" href="../../../register/persons/pe__bartholomaeus_wuerfel_QGW_II_I_1375.html"><span class="anno-attr anno-attr-kin" data-corresp="pe__niklas_wuerfel_von_nussdorf_QGW_II_I_1107">Bruder</span>
+                     <span class="anno-fn anno-fn-recipient" data-role="recipient"><span class="fn-label">Empfänger*in</span><a class="anno-person" data-ref="pe__bartholomaeus_wuerfel_QGW_II_I_1375" data-hint="Bartholomäus Würfel [pe__bartholomaeus_wuerfel_QGW_II_I_1375]" data-hint-type="Person" href="../../../register/persons/pe__bartholomaeus_wuerfel_QGW_II_I_1375.html"><span class="anno-attr anno-attr-kin" data-corresp="pe__niklas_wuerfel_von_nussdorf_QGW_II_I_1107">Bruder</span>
                         <span class="anno-attr anno-attr-kin" data-corresp="pe__sigmund_wuerfel_QGW_II_I_1404"><span class="tei-add">Bruder</span></span>
                         <span class="anno-attr anno-attr-kin" data-corresp="pe__ulrich_wuerfel_QGW_II_I_1404"><span class="tei-add">Bruder</span></span>
                         <span class="anno-attr anno-attr-kin" data-corresp="pe__johann_wuerfel_QGW_II_I_1404"><span class="tei-add">Bruder</span></span> Wartholome</a></span> über die 40 lb dn.,
                      <span class="anno-event" data-ref="ev__QGW_II_I_1447_men_2">welche ihm ihr Vater von dem
                      Urfahr zu Nussdorf geschafft hatte</span>, eine Urkunde ausstellen und für die
-                  Instandhaltung des von dem Vater <a class="anno-org" data-ref="org__wien-st_stephan-kapelle_st_sigmund_und_st_wolfgang-messe_wuerfel" title="Würfelmesse (Messe) [org__wien-st_stephan-kapelle_st_sigmund_und_st_wolfgang-messe_wuerfel]" href="../../../register/orgs/org__wien-st_stephan-kapelle_st_sigmund_und_st_wolfgang-messe_wuerfel.html">gestifteten ewigen Lichtes in der kapelln dacz sand Stephan</a> Sorge tragen
+                  Instandhaltung des von dem Vater <a class="anno-org" data-ref="org__wien-st_stephan-kapelle_st_sigmund_und_st_wolfgang-messe_wuerfel" data-hint="Würfelmesse (Messe) [org__wien-st_stephan-kapelle_st_sigmund_und_st_wolfgang-messe_wuerfel]" data-hint-type="Organisation" href="../../../register/orgs/org__wien-st_stephan-kapelle_st_sigmund_und_st_wolfgang-messe_wuerfel.html">gestifteten ewigen Lichtes in der kapelln dacz sand Stephan</a> Sorge tragen
                   sollen. Wer den Spruch nicht hält, soll seines Rechtes verlustig gehen, jedem der
                   Herzöge 200 lb dn., der Stadt zu Wien 100 lb dn. und zu dem Baue von S. Stephan
                   100 lb dn. zahlen.</span>
@@ -257,7 +263,7 @@
          </section>
          <section class="tei-seal"><h2 class="tei-section-head">Siegelbeschreibung</h2>
             <p><span class="anno-event" data-ref="ev__QGW_II_I_1447"><span class="anno-fn anno-fn-recipient" data-role="recipient"><span class="fn-label">Empfänger*in</span>Besiegelt von
-                     den <a class="anno-person" data-ref="pe__anton_QGW_II_I_1223" title="Antonius [pe__anton_QGW_II_I_1223]" href="../../../register/persons/pe__anton_QGW_II_I_1223.html"><span class="tei-add">Aussteller</span></a><a class="anno-person" data-ref="pe__paul_wuerfel_QGW_II_I_1200" title="Paul Würfel der Ältere [pe__paul_wuerfel_QGW_II_I_1200]" href="../../../register/persons/pe__paul_wuerfel_QGW_II_I_1200.html"><span class="tei-add">Aussteller</span></a><a class="anno-person" data-ref="pe__wolfhard_QGW_II_I_1447" title="Wolfhard [pe__wolfhard_QGW_II_I_1447]" href="../../../register/persons/pe__wolfhard_QGW_II_I_1447.html"><span class="tei-add">Aussteller</span></a><a class="anno-person" data-ref="pe__leonhard_von_moedling_QGW_II_I_1328" title="Leonhard von Mödling [pe__leonhard_von_moedling_QGW_II_I_1328]" href="../../../register/persons/pe__leonhard_von_moedling_QGW_II_I_1328.html"><span class="tei-add">Aussteller</span></a><a class="anno-person" data-ref="pe__johann_ziernast_QGW_II_I_1371" title="Johann Ziernast [pe__johann_ziernast_QGW_II_I_1371]" href="../../../register/persons/pe__johann_ziernast_QGW_II_I_1371.html"><span class="tei-add">Aussteller</span></a><a class="anno-person" data-ref="pe__michael_menschein_QGW_II_I_1218" title="Michael Menschein [pe__michael_menschein_QGW_II_I_1218]" href="../../../register/persons/pe__michael_menschein_QGW_II_I_1218.html"><span class="tei-add">Aussteller</span></a><a class="anno-person" data-ref="pe__martin_hausleitter_QGW_II_I_1234" title="Martin Hausleitter [pe__martin_hausleitter_QGW_II_I_1234]" href="../../../register/persons/pe__martin_hausleitter_QGW_II_I_1234.html"><span class="tei-add">Aussteller</span></a><a class="anno-person" data-ref="pe__bernhard_hauenstainer_QGW_II_I_1404" title="Bernhard Hauenstainer [pe__bernhard_hauenstainer_QGW_II_I_1404]" href="../../../register/persons/pe__bernhard_hauenstainer_QGW_II_I_1404.html"><span class="tei-add">Aussteller</span></a><a class="anno-person" data-ref="pe__ulrich_herwart_QGW_II_I_1098" title="Ulrich Herwart [pe__ulrich_herwart_QGW_II_I_1098]" href="../../../register/persons/pe__ulrich_herwart_QGW_II_I_1098.html">Ausstellern</a>.</span></span>
+                     den <a class="anno-person" data-ref="pe__anton_QGW_II_I_1223" data-hint="Antonius [pe__anton_QGW_II_I_1223]" data-hint-type="Person" href="../../../register/persons/pe__anton_QGW_II_I_1223.html"><span class="tei-add">Aussteller</span></a><a class="anno-person" data-ref="pe__paul_wuerfel_QGW_II_I_1200" data-hint="Paul Würfel der Ältere [pe__paul_wuerfel_QGW_II_I_1200]" data-hint-type="Person" href="../../../register/persons/pe__paul_wuerfel_QGW_II_I_1200.html"><span class="tei-add">Aussteller</span></a><a class="anno-person" data-ref="pe__wolfhard_QGW_II_I_1447" data-hint="Wolfhard [pe__wolfhard_QGW_II_I_1447]" data-hint-type="Person" href="../../../register/persons/pe__wolfhard_QGW_II_I_1447.html"><span class="tei-add">Aussteller</span></a><a class="anno-person" data-ref="pe__leonhard_von_moedling_QGW_II_I_1328" data-hint="Leonhard von Mödling [pe__leonhard_von_moedling_QGW_II_I_1328]" data-hint-type="Person" href="../../../register/persons/pe__leonhard_von_moedling_QGW_II_I_1328.html"><span class="tei-add">Aussteller</span></a><a class="anno-person" data-ref="pe__johann_ziernast_QGW_II_I_1371" data-hint="Johann Ziernast [pe__johann_ziernast_QGW_II_I_1371]" data-hint-type="Person" href="../../../register/persons/pe__johann_ziernast_QGW_II_I_1371.html"><span class="tei-add">Aussteller</span></a><a class="anno-person" data-ref="pe__michael_menschein_QGW_II_I_1218" data-hint="Michael Menschein [pe__michael_menschein_QGW_II_I_1218]" data-hint-type="Person" href="../../../register/persons/pe__michael_menschein_QGW_II_I_1218.html"><span class="tei-add">Aussteller</span></a><a class="anno-person" data-ref="pe__martin_hausleitter_QGW_II_I_1234" data-hint="Martin Hausleitter [pe__martin_hausleitter_QGW_II_I_1234]" data-hint-type="Person" href="../../../register/persons/pe__martin_hausleitter_QGW_II_I_1234.html"><span class="tei-add">Aussteller</span></a><a class="anno-person" data-ref="pe__bernhard_hauenstainer_QGW_II_I_1404" data-hint="Bernhard Hauenstainer [pe__bernhard_hauenstainer_QGW_II_I_1404]" data-hint-type="Person" href="../../../register/persons/pe__bernhard_hauenstainer_QGW_II_I_1404.html"><span class="tei-add">Aussteller</span></a><a class="anno-person" data-ref="pe__ulrich_herwart_QGW_II_I_1098" data-hint="Ulrich Herwart [pe__ulrich_herwart_QGW_II_I_1098]" data-hint-type="Person" href="../../../register/persons/pe__ulrich_herwart_QGW_II_I_1098.html">Ausstellern</a>.</span></span>
             </p>
          </section>
          <section class="tei-nota"><h2 class="tei-section-head">Indorsat / Nota</h2>
@@ -322,7 +328,7 @@
          dem TEI in mehreren Untertabellen, Personen/Orgs/Orte,
          Ereignisse, Dispositivformeln, Editorische Ergaenzungen. Wird
          per JS aus den entsprechenden Spans im Body aufgebaut. -->
-    <section class="annotations-view" id="factoid-view" aria-label="Annotationen">
+    <section class="annotations-view" id="annotations-view" aria-label="Annotationen">
         <header class="annotations-header">
             <h2 class="annotations-title">Annotationen</h2>
             <span class="annotations-summary"></span>
@@ -368,13 +374,14 @@
         </div>
     </footer>
 
-    <script src="../../../static/js/core.js?v=20260511112948"></script>
-    <script src="../../../static/js/provenance.js?v=20260511112948"></script>
-    <script src="../../../static/js/basket.js?v=20260511112948"></script>
+    <script src="../../../static/js/core.js?v=20260511125458"></script>
+    <script src="../../../static/js/tip.js?v=20260511125458"></script>
+    <script src="../../../static/js/hint.js?v=20260511125458"></script>
+    <script src="../../../static/js/basket.js?v=20260511125458"></script>
     
-<script src="../../../static/js/tooltips.js?v=20260511112948"></script>
-<script src="../../../static/js/facsimile.js?v=20260511112948"></script>
-<script src="../../../static/js/document.js?v=20260511112948"></script>
+<script src="../../../static/js/facsimile.js?v=20260511125458"></script>
+<script src="../../../static/js/document.js?v=20260511125458"></script>
+<script src="../../../static/js/basket-mount.js?v=20260511125458"></script>
 
 </body>
 </html>

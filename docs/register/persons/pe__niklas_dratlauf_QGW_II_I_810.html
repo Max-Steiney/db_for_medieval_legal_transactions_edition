@@ -3,22 +3,22 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <meta http-equiv="Content-Security-Policy" content="default-src 'self'; script-src 'self'; style-src 'self'; font-src 'self'; img-src 'self' data: https://images.monasterium.net https://www.monasterium.net; connect-src 'self'; frame-ancestors 'none'; base-uri 'self'; form-action 'self'; upgrade-insecure-requests">
+    <meta http-equiv="Content-Security-Policy" content="default-src 'self'; script-src 'self'; style-src 'self'; font-src 'self'; img-src 'self' data: https://images.monasterium.net https://www.monasterium.net; connect-src 'self'; base-uri 'self'; form-action 'self'; upgrade-insecure-requests">
     <meta name="referrer" content="strict-origin-when-cross-origin">
     <meta http-equiv="Permissions-Policy" content="camera=(), microphone=(), geolocation=(), interest-cohort=()">
     <title>Niklas Dratlauf (&dagger; 16.10.1397), Datenbank</title>
     <link rel="preload" as="font" type="font/woff2" crossorigin
           href="../../static/fonts/inter-400-latin.woff2">
-    <link rel="stylesheet" href="../../static/css/fonts.css?v=20260511112948">
-    <link rel="stylesheet" href="../../static/css/tokens.css?v=20260511112948">
-    <link rel="stylesheet" href="../../static/css/base.css?v=20260511112948">
-    <link rel="stylesheet" href="../../static/css/components.css?v=20260511112948">
-    <link rel="stylesheet" href="../../static/css/responsive.css?v=20260511112948">
-    <link rel="stylesheet" href="../../static/css/print.css?v=20260511112948">
-    <link rel="stylesheet" href="../../static/css/provenance.css?v=20260511112948">
+    <link rel="stylesheet" href="../../static/css/fonts.css?v=20260511125458">
+    <link rel="stylesheet" href="../../static/css/tokens.css?v=20260511125458">
+    <link rel="stylesheet" href="../../static/css/base.css?v=20260511125458">
+    <link rel="stylesheet" href="../../static/css/components.css?v=20260511125458">
+    <link rel="stylesheet" href="../../static/css/responsive.css?v=20260511125458">
+    <link rel="stylesheet" href="../../static/css/print.css?v=20260511125458">
+    <link rel="stylesheet" href="../../static/css/tip.css?v=20260511125458">
     
-<link rel="stylesheet" href="../../static/css/document.css?v=20260511112948">
-<link rel="stylesheet" href="../../static/css/person.css?v=20260511112948">
+<link rel="stylesheet" href="../../static/css/document.css?v=20260511125458">
+<link rel="stylesheet" href="../../static/css/person.css?v=20260511125458">
 
 </head>
 <body data-root-path="../.."
@@ -48,8 +48,6 @@
         <a href="../../register/persons.html">Personen</a>
         
         <a href="../../register/orgs.html">Organisationen</a>
-        
-        <a href="../../register/places.html">Orte</a>
         
     </div>
 </div>
@@ -91,7 +89,7 @@
     </div>
 </div>
 
-                <a href="../../korb.html" class="nav-basket" aria-label="Wissenskorb">
+                <a href="../../korb.html" class="nav-basket" aria-label="Datenkorb">
                     <svg width="18" height="18" viewBox="0 0 18 18" fill="none" aria-hidden="true">
                         <path d="M3 5h12l-1.2 8.5a1 1 0 0 1-1 .85H5.2a1 1 0 0 1-1-.85L3 5z"
                               stroke="currentColor" stroke-width="1.4" fill="none"
@@ -112,11 +110,23 @@
 
     <div class="person-toolbar">
         <div class="person-toolbar-inner">
-            <nav class="person-breadcrumb" aria-label="Position">
-                <a href="../../register/persons.html">Personenregister</a>
-                <span class="bc-sep">&rsaquo;</span>
-                <span class="bc-doc"><strong>Niklas Dratlauf</strong></span>
-            </nav>
+            <div class="person-toolbar-row">
+                <nav class="person-breadcrumb" aria-label="Position">
+                    <a href="../../register/persons.html">Personenregister</a>
+                    <span class="bc-sep">&rsaquo;</span>
+                    <span class="bc-doc"><strong>Niklas Dratlauf</strong></span>
+                </nav>
+                <div class="person-toolbar-actions">
+                    <span class="toolbar-basket-mount"
+                          data-basket-type="person"
+                          data-basket-id="pe__niklas_dratlauf_QGW_II_I_810"
+                          data-basket-label="Niklas Dratlauf"
+                          data-basket-url="register/persons/pe__niklas_dratlauf_QGW_II_I_810.html"
+                          data-basket-sex="m"
+                          data-basket-active-min="1360"
+                          data-basket-active-max="1397"></span>
+                </div>
+            </div>
             <div class="person-toolbar-meta">
                 <span class="meta-pair">
                     <span class="meta-label">Geschlecht</span>
@@ -124,7 +134,33 @@
                 </span>
                 
                 <span class="meta-pair">
-                    <span class="meta-label">Belegt</span>
+                    <span class="meta-label">Belegt
+<span class="tip-wrap">
+    <button type="button" class="tip-trigger tip-trigger--icon"
+            aria-expanded="false" aria-haspopup="dialog"
+            aria-controls="person-belegt"
+            data-tip="person-belegt"
+            aria-label="Definition: Beleg-Zeitraum">
+        <svg width="13" height="13" viewBox="0 0 16 16" aria-hidden="true">
+            <circle cx="8" cy="8" r="7" stroke="currentColor" stroke-width="1.4" fill="none"/>
+            <text x="8" y="11.6" text-anchor="middle" font-size="9.5" font-weight="700"
+                  fill="currentColor" font-family="Georgia, serif">i</text>
+        </svg>
+    </button>
+    <aside class="tip-popover tip-popover--glossary"
+           id="person-belegt" role="dialog" aria-hidden="true"
+           aria-label="Definition: Beleg-Zeitraum">
+        <header class="tip-head">
+            <h3 class="tip-title">Beleg-Zeitraum</h3>
+            <button type="button" class="tip-close" aria-label="Schlie&szlig;en">&times;</button>
+        </header>
+        <div class="tip-body">
+            <p>Erste und letzte Datierung einer Quelle, in der die Person erscheint. Bei einzelnem Beleg wird nur ein Jahr angegeben.</p>
+            
+        </div>
+    </aside>
+</span>
+</span>
                     <span class="meta-value">1360 bis 1397</span>
                 </span>
                 
@@ -134,6 +170,10 @@
                     <span class="meta-value">16.10.1397</span>
                 </span>
                 
+                <span class="meta-pair">
+                    <span class="meta-label">Quellen</span>
+                    <span class="meta-value">17</span>
+                </span>
                 <span class="meta-pair person-id-pair">
                     <span class="meta-label">ID</span>
                     <code class="meta-value person-id">pe__niklas_dratlauf_QGW_II_I_810</code>
@@ -150,16 +190,48 @@
             
         </h1>
         
+        
         <p class="person-note">Oberster Bürgerspitalmeister</p>
         
         
-        <p class="person-titles">
+        <p class="person-titles" data-collapsible="22">
             <span class="pt-label">In den Quellen genannt als</span>
             <span class="pt-chip">hern</span>
         </p>
         
         
+        
     </header>
+
+    
+    <section class="role-strip" aria-label="Rollen in Rechtsgeschäften">
+        <h2 class="role-strip-title">Rollen in Rechtsgeschäften</h2>
+        <div class="role-strip-cells">
+            
+            <div class="role-cell role-cell-issuer">
+                <span class="role-cell-count">5</span>
+                <span class="role-cell-label">Aussteller*in</span>
+            </div>
+            
+            <div class="role-cell role-cell-recipient">
+                <span class="role-cell-count">5</span>
+                <span class="role-cell-label">Empfänger*in</span>
+            </div>
+            
+            <div class="role-cell role-cell-witness">
+                <span class="role-cell-count">9</span>
+                <span class="role-cell-label">Zeuge / Siegler*in</span>
+            </div>
+            
+            <div class="role-cell role-cell-other is-zero">
+                <span class="role-cell-count">0</span>
+                <span class="role-cell-label">Sonstige</span>
+            </div>
+            
+        </div>
+        <p class="role-strip-hint">Summe Rollen-Belegungen: 19. Mehrfach-Rollen pro Quelle sind möglich.</p>
+    </section>
+    
 
     
 
@@ -176,6 +248,7 @@
                 <span class="rel-block-count">2</span>
                 <span class="rel-block-hint">Verwandtschaftsverhältnisse, wie sie in den Quellen explizit benannt werden.</span>
             </header>
+            
             <table class="rel-table">
                 <thead>
                     <tr>
@@ -196,7 +269,7 @@
                         <td class="rel-col-label"><em>swehers</em></td>
                         <td class="rel-col-perspective">
                             
-                                Johann Phuntimaschen → Niklas Dratlauf
+                                Johann Phuntimaschen &rsaquo; Niklas Dratlauf
                             
                         </td>
                         <td class="rel-col-source">
@@ -215,7 +288,7 @@
                         <td class="rel-col-label"><em>Hausfrau</em></td>
                         <td class="rel-col-perspective">
                             
-                                Margarethe → Niklas Dratlauf
+                                Margarethe &rsaquo; Niklas Dratlauf
                             
                         </td>
                         <td class="rel-col-source">
@@ -241,6 +314,7 @@
                 <span class="rel-block-count">1</span>
                 <span class="rel-block-hint">Stellvertretungs-Beziehungen, z. B. handelt eine Person an Stelle einer anderen.</span>
             </header>
+            
             <table class="rel-table">
                 <thead>
                     <tr>
@@ -261,7 +335,7 @@
                         <td class="rel-col-label"><em>Vollmachtträger</em></td>
                         <td class="rel-col-perspective">
                             
-                                Johann → Niklas Dratlauf
+                                Johann &rsaquo; Niklas Dratlauf
                             
                         </td>
                         <td class="rel-col-source">
@@ -284,6 +358,7 @@
                 <span class="rel-block-count">15</span>
                 <span class="rel-block-hint">Berufs- oder Amtsbezeichnung in Bezug auf eine Institution.</span>
             </header>
+            
             <table class="rel-table">
                 <thead>
                     <tr>
@@ -304,7 +379,7 @@
                         <td class="rel-col-label"><em>baide des rats der stat ze Wienne</em></td>
                         <td class="rel-col-perspective">
                             
-                                Niklas Dratlauf → Wien
+                                Niklas Dratlauf &rsaquo; Wien
                             
                         </td>
                         <td class="rel-col-source">
@@ -323,7 +398,7 @@
                         <td class="rel-col-label"><em>paid des rats der stat ze Wienne</em></td>
                         <td class="rel-col-perspective">
                             
-                                Niklas Dratlauf → Wien
+                                Niklas Dratlauf &rsaquo; Wien
                             
                         </td>
                         <td class="rel-col-source">
@@ -342,7 +417,7 @@
                         <td class="rel-col-label"><em>des rats der stat ze Wienn</em></td>
                         <td class="rel-col-perspective">
                             
-                                Niklas Dratlauf → Wien
+                                Niklas Dratlauf &rsaquo; Wien
                             
                         </td>
                         <td class="rel-col-source">
@@ -361,7 +436,7 @@
                         <td class="rel-col-label"><em>purger</em></td>
                         <td class="rel-col-perspective">
                             
-                                Niklas Dratlauf → Wien
+                                Niklas Dratlauf &rsaquo; Wien
                             
                         </td>
                         <td class="rel-col-source">
@@ -380,7 +455,7 @@
                         <td class="rel-col-label"><em>purger</em></td>
                         <td class="rel-col-perspective">
                             
-                                Niklas Dratlauf → Wien
+                                Niklas Dratlauf &rsaquo; Wien
                             
                         </td>
                         <td class="rel-col-source">
@@ -399,7 +474,7 @@
                         <td class="rel-col-label"><em>obrister spitalmaister</em></td>
                         <td class="rel-col-perspective">
                             
-                                Niklas Dratlauf → Wiener Bürgerspital
+                                Niklas Dratlauf &rsaquo; Wiener Bürgerspital
                             
                         </td>
                         <td class="rel-col-source">
@@ -418,7 +493,7 @@
                         <td class="rel-col-label"><em>obersten Bürgerspitalmeisters</em></td>
                         <td class="rel-col-perspective">
                             
-                                Niklas Dratlauf → Wiener Bürgerspital
+                                Niklas Dratlauf &rsaquo; Wiener Bürgerspital
                             
                         </td>
                         <td class="rel-col-source">
@@ -437,7 +512,7 @@
                         <td class="rel-col-label"><em>Bürger</em></td>
                         <td class="rel-col-perspective">
                             
-                                Niklas Dratlauf → Wien
+                                Niklas Dratlauf &rsaquo; Wien
                             
                         </td>
                         <td class="rel-col-source">
@@ -456,7 +531,7 @@
                         <td class="rel-col-label"><em>Wiener Bürger</em></td>
                         <td class="rel-col-perspective">
                             
-                                Niklas Dratlauf → Wien
+                                Niklas Dratlauf &rsaquo; Wien
                             
                         </td>
                         <td class="rel-col-source">
@@ -475,7 +550,7 @@
                         <td class="rel-col-label"><em>rates der stat ze Wienne</em></td>
                         <td class="rel-col-perspective">
                             
-                                Niklas Dratlauf → Wien
+                                Niklas Dratlauf &rsaquo; Wien
                             
                         </td>
                         <td class="rel-col-source">
@@ -494,7 +569,7 @@
                         <td class="rel-col-label"><em>des rates der stat ze Wienne</em></td>
                         <td class="rel-col-perspective">
                             
-                                Niklas Dratlauf → Wien
+                                Niklas Dratlauf &rsaquo; Wien
                             
                         </td>
                         <td class="rel-col-source">
@@ -513,7 +588,7 @@
                         <td class="rel-col-label"><em>des rats der stat ze Wienn</em></td>
                         <td class="rel-col-perspective">
                             
-                                Niklas Dratlauf → Wien
+                                Niklas Dratlauf &rsaquo; Wien
                             
                         </td>
                         <td class="rel-col-source">
@@ -532,7 +607,7 @@
                         <td class="rel-col-label"><em>des rates der stat ze Wienne</em></td>
                         <td class="rel-col-perspective">
                             
-                                Niklas Dratlauf → Wien
+                                Niklas Dratlauf &rsaquo; Wien
                             
                         </td>
                         <td class="rel-col-source">
@@ -551,7 +626,7 @@
                         <td class="rel-col-label"><em>Ratsherr</em></td>
                         <td class="rel-col-perspective">
                             
-                                Niklas Dratlauf → Wien
+                                Niklas Dratlauf &rsaquo; Wien
                             
                         </td>
                         <td class="rel-col-source">
@@ -570,7 +645,7 @@
                         <td class="rel-col-label"><em>rats der stat ze Wienn</em></td>
                         <td class="rel-col-perspective">
                             
-                                Niklas Dratlauf → Wien
+                                Niklas Dratlauf &rsaquo; Wien
                             
                         </td>
                         <td class="rel-col-source">
@@ -588,18 +663,27 @@
         
         
         
+        
+        
+        
+        
+        
+        
     </section>
     
 
     
     <section class="person-sources" aria-label="Quellen mit Nennung">
         <h2 class="section-head">Quellen mit Nennung</h2>
+        
         <table class="person-source-table">
             <thead>
                 <tr>
                     <th scope="col" class="src-col-idno">Nr.</th>
                     <th scope="col" class="src-col-date">Datum</th>
                     <th scope="col" class="src-col-corpus">Quellenkorpus</th>
+                    <th scope="col" class="src-col-label">Bezeichnung</th>
+                    <th scope="col" class="src-col-role">Rolle</th>
                     <th scope="col" class="src-col-regest">Regest</th>
                 </tr>
             </thead>
@@ -609,6 +693,11 @@
                     <td class="src-col-idno"><a href="../../documents/QGW/Vienna_1177-1414_ready/561.html">561</a></td>
                     <td class="src-col-date">1360 IX 07</td>
                     <td class="src-col-corpus">QGW II/1 (1177–1414)</td>
+                    <td class="src-col-label"><em>hern</em></td>
+                    <td class="src-col-role">
+                        <span class="role-chip role-chip-witness">Zeuge / Siegler*in</span>
+                        
+                    </td>
                     <td class="src-col-regest">Hainreich der Ledrer, amptman ze Obern Sufring hern Jacobs des Löffler, purger ze Wienne, Gedraut , seine Hausfrau, Jans, sein aidem, und Elsbet, seine Hausfrau, Heinrichs Tochter, verkaufen mit…</td>
                 </tr>
             
@@ -616,6 +705,11 @@
                     <td class="src-col-idno"><a href="../../documents/QGW/Vienna_1177-1414_ready/571.html">571</a></td>
                     <td class="src-col-date">1360 XI 13</td>
                     <td class="src-col-corpus">QGW II/1 (1177–1414)</td>
+                    <td class="src-col-label"><em>hern</em></td>
+                    <td class="src-col-role">
+                        <span class="role-chip role-chip-witness">Zeuge / Siegler*in</span>
+                        
+                    </td>
                     <td class="src-col-regest">Mert,sun maister Jansen sun von Schêffhausen, dem got genad, und Margret, seine Hausfrau, verkaufen mit Handen des Bürgermeisters hern Haunolts des Schuchler und des Rathes der Stadt zu Wien ihr…</td>
                 </tr>
             
@@ -623,6 +717,11 @@
                     <td class="src-col-idno"><a href="../../documents/QGW/Vienna_1177-1414_ready/577.html">577</a></td>
                     <td class="src-col-date">1361 I 12</td>
                     <td class="src-col-corpus">QGW II/1 (1177–1414)</td>
+                    <td class="src-col-label"><em>hern</em></td>
+                    <td class="src-col-role">
+                        <span class="role-chip role-chip-witness">Zeuge / Siegler*in</span>
+                        
+                    </td>
                     <td class="src-col-regest">Jans der Mauerperger, Ulreich der Venediger und Agnes, seine Hausfrau Schwester, Chunrat der Rabenstainer und Anna, seine Hausfrau Schwester, welche beiden Frauen Jans des Mauerpergers Schwestern…</td>
                 </tr>
             
@@ -630,6 +729,11 @@
                     <td class="src-col-idno"><a href="../../documents/QGW/Vienna_1177-1414_ready/607.html">607</a></td>
                     <td class="src-col-date">1363 II 24</td>
                     <td class="src-col-corpus">QGW II/1 (1177–1414)</td>
+                    <td class="src-col-label"><em>-</em></td>
+                    <td class="src-col-role">
+                        <span class="role-chip role-chip-recipient">Empfänger*in</span>
+                        
+                    </td>
                     <td class="src-col-regest">Jans der Urbêtsch, purger ze Wienne, verkauft seines rechten Eigens 12 lb und an sechs dn. 5 sh. dn. gelts voitrechts, gelegen auf 24 jeuch weingarten ze Praitense in dem Altenperge , die ihm von…</td>
                 </tr>
             
@@ -637,6 +741,11 @@
                     <td class="src-col-idno"><a href="../../documents/QGW/Vienna_1177-1414_ready/612.html">612</a></td>
                     <td class="src-col-date">1363 VII 11</td>
                     <td class="src-col-corpus">QGW II/1 (1177–1414)</td>
+                    <td class="src-col-label"><em>-</em></td>
+                    <td class="src-col-role">
+                        <span class="role-chip role-chip-issuer">Aussteller*in</span><span class="role-chip role-chip-witness">Zeuge / Siegler*in</span>
+                        
+                    </td>
                     <td class="src-col-regest">Niclas der Drotlauf, purger ze Wienne, stiftet in der chapellen Unser Vrowen auf der Stetten ze Wienn in dem chor einen alter in den ern der heiligen Aindleftausent Maide , widmet zu einer ewigen…</td>
                 </tr>
             
@@ -644,6 +753,11 @@
                     <td class="src-col-idno"><a href="../../documents/QGW/Vienna_1177-1414_ready/673.html">673</a></td>
                     <td class="src-col-date">1366 VII 07</td>
                     <td class="src-col-corpus">QGW II/1 (1177–1414)</td>
+                    <td class="src-col-label"><em>-</em></td>
+                    <td class="src-col-role">
+                        <span class="role-chip role-chip-issuer">Aussteller*in</span>
+                        
+                    </td>
                     <td class="src-col-regest">Nichlas der Drotlauf, obrister spitalmaister der pürger Spital ze Wienne, gibt nach dem Gebote Herzog Rudolfs IV. Weicharten dem Enzeinstorfer von Weiz/zz/zenpach ½ lb dn. gelts gruntrechts von…</td>
                 </tr>
             
@@ -651,6 +765,11 @@
                     <td class="src-col-idno"><a href="../../documents/QGW/Vienna_1177-1414_ready/676.html">676</a></td>
                     <td class="src-col-date">1366 VIII 09</td>
                     <td class="src-col-corpus">QGW II/1 (1177–1414)</td>
+                    <td class="src-col-label"><em>hern</em></td>
+                    <td class="src-col-role">
+                        <span class="role-chip role-chip-witness">Zeuge / Siegler*in</span>
+                        
+                    </td>
                     <td class="src-col-regest">Weikchart der Enzestorfer von Weiz/zz/zenpach verkauft mit Handen des Bürgermeisters hern Thomans des Swaembleins und des Rathes der Stadt zu Wien sein Haus in dem Lederhof ze Wienn zenast Fridreichs…</td>
                 </tr>
             
@@ -658,6 +777,11 @@
                     <td class="src-col-idno"><a href="../../documents/QGW/Vienna_1177-1414_ready/696.html">696</a></td>
                     <td class="src-col-date">1367 V 22</td>
                     <td class="src-col-corpus">QGW II/1 (1177–1414)</td>
+                    <td class="src-col-label"><em>-</em></td>
+                    <td class="src-col-role">
+                        <span class="role-chip role-chip-recipient">Empfänger*in</span>
+                        
+                    </td>
                     <td class="src-col-regest">Bischof Albert von Passau bestätigt, die von dem Wiener Bürger Niclas dem Dratlouf in dem chore der capellen Unser Vrowen ouf der Stetten ze Wienne in der heiligen Ainleftausent Maide eren gestiftete…</td>
                 </tr>
             
@@ -665,6 +789,11 @@
                     <td class="src-col-idno"><a href="../../documents/QGW/Vienna_1177-1414_ready/767.html">767</a></td>
                     <td class="src-col-date">1369 XI 19</td>
                     <td class="src-col-corpus">QGW II/1 (1177–1414)</td>
+                    <td class="src-col-label"><em>-</em></td>
+                    <td class="src-col-role">
+                        
+                        -
+                    </td>
                     <td class="src-col-regest">Stephan,Schreiber hern Jacobs Schreiber des Chetner, des rates der stat ze Wienn, beurkundet seinen letzten Willen. Er schafft: 1. seinem Herrn Jacoben dem Chetner seinen Weingarten in dem…</td>
                 </tr>
             
@@ -672,6 +801,11 @@
                     <td class="src-col-idno"><a href="../../documents/QGW/Vienna_1177-1414_ready/810.html">810</a></td>
                     <td class="src-col-date">1372 V 22</td>
                     <td class="src-col-corpus">QGW II/1 (1177–1414)</td>
+                    <td class="src-col-label"><em>hern</em></td>
+                    <td class="src-col-role">
+                        <span class="role-chip role-chip-recipient">Empfänger*in</span>
+                        
+                    </td>
                     <td class="src-col-regest">Mert der Reisenperger und maister Mert, der pogner von Gundramstorf , stellen eine Urkunde aus über die Vollziehung des Geschäfts des ihnen empfohlenen Geschäftes des hern Jacob des Reisenperger, das…</td>
                 </tr>
             
@@ -679,6 +813,11 @@
                     <td class="src-col-idno"><a href="../../documents/QGW/Vienna_1177-1414_ready/889.html">889</a></td>
                     <td class="src-col-date">1376 X 21</td>
                     <td class="src-col-corpus">QGW II/1 (1177–1414)</td>
+                    <td class="src-col-label"><em>hern</em></td>
+                    <td class="src-col-role">
+                        <span class="role-chip role-chip-witness">Zeuge / Siegler*in</span>
+                        
+                    </td>
                     <td class="src-col-regest">Lienhart der Poll, purger ze Wienn , beurkundet mit Zustimmung seiner Hausfrau Elspeten seinen letzten Willen. Er schafft: 1. dass man von seiner fahrenden Habe seine Gläubiger befriedigen solle 2.…</td>
                 </tr>
             
@@ -686,6 +825,11 @@
                     <td class="src-col-idno"><a href="../../documents/QGW/Vienna_1177-1414_ready/896.html">896</a></td>
                     <td class="src-col-date">1376 XII 20</td>
                     <td class="src-col-corpus">QGW II/1 (1177–1414)</td>
+                    <td class="src-col-label"><em>hern</em></td>
+                    <td class="src-col-role">
+                        <span class="role-chip role-chip-witness">Zeuge / Siegler*in</span>
+                        
+                    </td>
                     <td class="src-col-regest">Leupolt, der pru/enner, und Elspet, seine Hausfrau, verzichten auf ihren Antheil gegen, Sigharten den Goltstein und seine Hausfrau vrowe Angnesen, der Elspet Schwester, für eine Summe von 45 lb dn.…</td>
                 </tr>
             
@@ -693,6 +837,11 @@
                     <td class="src-col-idno"><a href="../../documents/QGW/Vienna_1177-1414_ready/904.html">904</a></td>
                     <td class="src-col-date">1377 III 11</td>
                     <td class="src-col-corpus">QGW II/1 (1177–1414)</td>
+                    <td class="src-col-label"><em>-</em></td>
+                    <td class="src-col-role">
+                        <span class="role-chip role-chip-recipient">Empfänger*in</span>
+                        
+                    </td>
                     <td class="src-col-regest">Simon von Chuernberkch und Christein, seine Hausfrau, stellen einen Schuldbrief Niclasen dem Dratlauf, des rats der stat ze Wienn, und seiner Hausfrau Margreten einen Schuldbrief über 33 lb dn. aus…</td>
                 </tr>
             
@@ -700,6 +849,11 @@
                     <td class="src-col-idno"><a href="../../documents/QGW/Vienna_1177-1414_ready/918.html">918</a></td>
                     <td class="src-col-date">1377 XI 07</td>
                     <td class="src-col-corpus">QGW II/1 (1177–1414)</td>
+                    <td class="src-col-label"><em>-</em></td>
+                    <td class="src-col-role">
+                        <span class="role-chip role-chip-issuer">Aussteller*in</span><span class="role-chip role-chip-witness">Zeuge / Siegler*in</span>
+                        
+                    </td>
                     <td class="src-col-regest">Niclas der Dro/etlauf des rates der stat ze Wienne und Pilgreim der Snêczel, baide des rates der stat ze Wienne, beurkunden, dass Elsbet, weiln Chunrats selig witib des Chamrer housvrowe und nu…</td>
                 </tr>
             
@@ -707,6 +861,11 @@
                     <td class="src-col-idno"><a href="../../documents/QGW/Vienna_1177-1414_ready/923.html">923</a></td>
                     <td class="src-col-date">1377 XII 12</td>
                     <td class="src-col-corpus">QGW II/1 (1177–1414)</td>
+                    <td class="src-col-label"><em>-</em></td>
+                    <td class="src-col-role">
+                        <span class="role-chip role-chip-issuer">Aussteller*in</span><span class="role-chip role-chip-witness">Zeuge / Siegler*in</span>
+                        
+                    </td>
                     <td class="src-col-regest">Nichlas der Dratlauf Ratsherr und Fridreich der Dietram, baide des rats der stat ze Wienne, Fridreich von Gundramstorf und Erhart der Meller fällen als Spruchleute zwischen Wernhart dem Scheczlein…</td>
                 </tr>
             
@@ -714,6 +873,11 @@
                     <td class="src-col-idno"><a href="../../documents/QGW/Vienna_1177-1414_ready/927.html">927</a></td>
                     <td class="src-col-date">1378 II 10</td>
                     <td class="src-col-corpus">QGW II/1 (1177–1414)</td>
+                    <td class="src-col-label"><em>hern</em></td>
+                    <td class="src-col-role">
+                        <span class="role-chip role-chip-recipient">Empfänger*in</span>
+                        
+                    </td>
                     <td class="src-col-regest">Herman Mu/ellndorf, statrichter ze Wienn , beurkundet, dass vor ihm in der Bürgerschranne zu Wien Janns, der geistlichen vrawen schaffer dacz sand Niclas var Stubentar ze Wienne , als Vollmachtträger…</td>
                 </tr>
             
@@ -721,6 +885,11 @@
                     <td class="src-col-idno"><a href="../../documents/Stadtbuecher/Band_1_1395-1400_ready/191.html">190</a></td>
                     <td class="src-col-date">1397 Oktober 16</td>
                     <td class="src-col-corpus">Stadtbücher Bd. 1 (1395–1400)</td>
+                    <td class="src-col-label"><em>-</em></td>
+                    <td class="src-col-role">
+                        
+                        -
+                    </td>
                     <td class="src-col-regest">-</td>
                 </tr>
             
@@ -753,11 +922,13 @@
         </div>
     </footer>
 
-    <script src="../../static/js/core.js?v=20260511112948"></script>
-    <script src="../../static/js/provenance.js?v=20260511112948"></script>
-    <script src="../../static/js/basket.js?v=20260511112948"></script>
+    <script src="../../static/js/core.js?v=20260511125458"></script>
+    <script src="../../static/js/tip.js?v=20260511125458"></script>
+    <script src="../../static/js/hint.js?v=20260511125458"></script>
+    <script src="../../static/js/basket.js?v=20260511125458"></script>
     
-<script src="../../static/js/tooltips.js?v=20260511112948"></script>
+<script src="../../static/js/profile.js?v=20260511125458"></script>
+<script src="../../static/js/basket-mount.js?v=20260511125458"></script>
 
 </body>
 </html>

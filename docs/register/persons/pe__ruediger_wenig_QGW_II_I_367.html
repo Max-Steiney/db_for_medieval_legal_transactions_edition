@@ -3,22 +3,22 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <meta http-equiv="Content-Security-Policy" content="default-src 'self'; script-src 'self'; style-src 'self'; font-src 'self'; img-src 'self' data: https://images.monasterium.net https://www.monasterium.net; connect-src 'self'; frame-ancestors 'none'; base-uri 'self'; form-action 'self'; upgrade-insecure-requests">
+    <meta http-equiv="Content-Security-Policy" content="default-src 'self'; script-src 'self'; style-src 'self'; font-src 'self'; img-src 'self' data: https://images.monasterium.net https://www.monasterium.net; connect-src 'self'; base-uri 'self'; form-action 'self'; upgrade-insecure-requests">
     <meta name="referrer" content="strict-origin-when-cross-origin">
     <meta http-equiv="Permissions-Policy" content="camera=(), microphone=(), geolocation=(), interest-cohort=()">
     <title>Rüdiger Wenig, Datenbank</title>
     <link rel="preload" as="font" type="font/woff2" crossorigin
           href="../../static/fonts/inter-400-latin.woff2">
-    <link rel="stylesheet" href="../../static/css/fonts.css?v=20260511112948">
-    <link rel="stylesheet" href="../../static/css/tokens.css?v=20260511112948">
-    <link rel="stylesheet" href="../../static/css/base.css?v=20260511112948">
-    <link rel="stylesheet" href="../../static/css/components.css?v=20260511112948">
-    <link rel="stylesheet" href="../../static/css/responsive.css?v=20260511112948">
-    <link rel="stylesheet" href="../../static/css/print.css?v=20260511112948">
-    <link rel="stylesheet" href="../../static/css/provenance.css?v=20260511112948">
+    <link rel="stylesheet" href="../../static/css/fonts.css?v=20260511125458">
+    <link rel="stylesheet" href="../../static/css/tokens.css?v=20260511125458">
+    <link rel="stylesheet" href="../../static/css/base.css?v=20260511125458">
+    <link rel="stylesheet" href="../../static/css/components.css?v=20260511125458">
+    <link rel="stylesheet" href="../../static/css/responsive.css?v=20260511125458">
+    <link rel="stylesheet" href="../../static/css/print.css?v=20260511125458">
+    <link rel="stylesheet" href="../../static/css/tip.css?v=20260511125458">
     
-<link rel="stylesheet" href="../../static/css/document.css?v=20260511112948">
-<link rel="stylesheet" href="../../static/css/person.css?v=20260511112948">
+<link rel="stylesheet" href="../../static/css/document.css?v=20260511125458">
+<link rel="stylesheet" href="../../static/css/person.css?v=20260511125458">
 
 </head>
 <body data-root-path="../.."
@@ -48,8 +48,6 @@
         <a href="../../register/persons.html">Personen</a>
         
         <a href="../../register/orgs.html">Organisationen</a>
-        
-        <a href="../../register/places.html">Orte</a>
         
     </div>
 </div>
@@ -91,7 +89,7 @@
     </div>
 </div>
 
-                <a href="../../korb.html" class="nav-basket" aria-label="Wissenskorb">
+                <a href="../../korb.html" class="nav-basket" aria-label="Datenkorb">
                     <svg width="18" height="18" viewBox="0 0 18 18" fill="none" aria-hidden="true">
                         <path d="M3 5h12l-1.2 8.5a1 1 0 0 1-1 .85H5.2a1 1 0 0 1-1-.85L3 5z"
                               stroke="currentColor" stroke-width="1.4" fill="none"
@@ -112,11 +110,23 @@
 
     <div class="person-toolbar">
         <div class="person-toolbar-inner">
-            <nav class="person-breadcrumb" aria-label="Position">
-                <a href="../../register/persons.html">Personenregister</a>
-                <span class="bc-sep">&rsaquo;</span>
-                <span class="bc-doc"><strong>Rüdiger Wenig</strong></span>
-            </nav>
+            <div class="person-toolbar-row">
+                <nav class="person-breadcrumb" aria-label="Position">
+                    <a href="../../register/persons.html">Personenregister</a>
+                    <span class="bc-sep">&rsaquo;</span>
+                    <span class="bc-doc"><strong>Rüdiger Wenig</strong></span>
+                </nav>
+                <div class="person-toolbar-actions">
+                    <span class="toolbar-basket-mount"
+                          data-basket-type="person"
+                          data-basket-id="pe__ruediger_wenig_QGW_II_I_367"
+                          data-basket-label="Rüdiger Wenig"
+                          data-basket-url="register/persons/pe__ruediger_wenig_QGW_II_I_367.html"
+                          data-basket-sex="m"
+                          data-basket-active-min="1337"
+                          data-basket-active-max="1391"></span>
+                </div>
+            </div>
             <div class="person-toolbar-meta">
                 <span class="meta-pair">
                     <span class="meta-label">Geschlecht</span>
@@ -124,11 +134,41 @@
                 </span>
                 
                 <span class="meta-pair">
-                    <span class="meta-label">Belegt</span>
+                    <span class="meta-label">Belegt
+<span class="tip-wrap">
+    <button type="button" class="tip-trigger tip-trigger--icon"
+            aria-expanded="false" aria-haspopup="dialog"
+            aria-controls="person-belegt"
+            data-tip="person-belegt"
+            aria-label="Definition: Beleg-Zeitraum">
+        <svg width="13" height="13" viewBox="0 0 16 16" aria-hidden="true">
+            <circle cx="8" cy="8" r="7" stroke="currentColor" stroke-width="1.4" fill="none"/>
+            <text x="8" y="11.6" text-anchor="middle" font-size="9.5" font-weight="700"
+                  fill="currentColor" font-family="Georgia, serif">i</text>
+        </svg>
+    </button>
+    <aside class="tip-popover tip-popover--glossary"
+           id="person-belegt" role="dialog" aria-hidden="true"
+           aria-label="Definition: Beleg-Zeitraum">
+        <header class="tip-head">
+            <h3 class="tip-title">Beleg-Zeitraum</h3>
+            <button type="button" class="tip-close" aria-label="Schlie&szlig;en">&times;</button>
+        </header>
+        <div class="tip-body">
+            <p>Erste und letzte Datierung einer Quelle, in der die Person erscheint. Bei einzelnem Beleg wird nur ein Jahr angegeben.</p>
+            
+        </div>
+    </aside>
+</span>
+</span>
                     <span class="meta-value">1337 bis 1391</span>
                 </span>
                 
                 
+                <span class="meta-pair">
+                    <span class="meta-label">Quellen</span>
+                    <span class="meta-value">10</span>
+                </span>
                 <span class="meta-pair person-id-pair">
                     <span class="meta-label">ID</span>
                     <code class="meta-value person-id">pe__ruediger_wenig_QGW_II_I_367</code>
@@ -145,16 +185,48 @@
             
         </h1>
         
+        
         <p class="person-note">W.B., So. v. Leopold Wenig</p>
         
         
-        <p class="person-titles">
+        <p class="person-titles" data-collapsible="22">
             <span class="pt-label">In den Quellen genannt als</span>
             <span class="pt-chip">hern</span><span class="pt-chip">Grundherrn|hern</span><span class="pt-chip">Bruder</span>
         </p>
         
         
+        
     </header>
+
+    
+    <section class="role-strip" aria-label="Rollen in Rechtsgeschäften">
+        <h2 class="role-strip-title">Rollen in Rechtsgeschäften</h2>
+        <div class="role-strip-cells">
+            
+            <div class="role-cell role-cell-issuer">
+                <span class="role-cell-count">2</span>
+                <span class="role-cell-label">Aussteller*in</span>
+            </div>
+            
+            <div class="role-cell role-cell-recipient">
+                <span class="role-cell-count">1</span>
+                <span class="role-cell-label">Empfänger*in</span>
+            </div>
+            
+            <div class="role-cell role-cell-witness">
+                <span class="role-cell-count">7</span>
+                <span class="role-cell-label">Zeuge / Siegler*in</span>
+            </div>
+            
+            <div class="role-cell role-cell-other">
+                <span class="role-cell-count">1</span>
+                <span class="role-cell-label">Sonstige</span>
+            </div>
+            
+        </div>
+        <p class="role-strip-hint">Summe Rollen-Belegungen: 11. Mehrfach-Rollen pro Quelle sind möglich.</p>
+    </section>
+    
 
     
 
@@ -171,6 +243,7 @@
                 <span class="rel-block-count">16</span>
                 <span class="rel-block-hint">Verwandtschaftsverhältnisse, wie sie in den Quellen explizit benannt werden.</span>
             </header>
+            
             <table class="rel-table">
                 <thead>
                     <tr>
@@ -191,7 +264,7 @@
                         <td class="rel-col-label"><em>tochter</em></td>
                         <td class="rel-col-perspective">
                             
-                                Wendelmut → Rüdiger Wenig
+                                Wendelmut &rsaquo; Rüdiger Wenig
                             
                         </td>
                         <td class="rel-col-source">
@@ -210,7 +283,7 @@
                         <td class="rel-col-label"><em>tochter</em></td>
                         <td class="rel-col-perspective">
                             
-                                Kunigunde → Rüdiger Wenig
+                                Kunigunde &rsaquo; Rüdiger Wenig
                             
                         </td>
                         <td class="rel-col-source">
@@ -229,7 +302,7 @@
                         <td class="rel-col-label"><em>sun</em></td>
                         <td class="rel-col-perspective">
                             
-                                Rüdiger Wenig → Leopold Wenig
+                                Rüdiger Wenig &rsaquo; Leopold Wenig
                             
                         </td>
                         <td class="rel-col-source">
@@ -248,7 +321,7 @@
                         <td class="rel-col-label"><em>sun</em></td>
                         <td class="rel-col-perspective">
                             
-                                Rüdiger Wenig → Leopold Wenig
+                                Rüdiger Wenig &rsaquo; Leopold Wenig
                             
                         </td>
                         <td class="rel-col-source">
@@ -267,7 +340,7 @@
                         <td class="rel-col-label"><em>Schwiegersohn</em></td>
                         <td class="rel-col-perspective">
                             
-                                Rüdiger Wenig → Kunigunde Gräfin Gräfin
+                                Rüdiger Wenig &rsaquo; Kunigunde Gräfin Gräfin
                             
                         </td>
                         <td class="rel-col-source">
@@ -286,7 +359,7 @@
                         <td class="rel-col-label"><em>sun</em></td>
                         <td class="rel-col-perspective">
                             
-                                Rüdiger Wenig → Leopold Wenig
+                                Rüdiger Wenig &rsaquo; Leopold Wenig
                             
                         </td>
                         <td class="rel-col-source">
@@ -305,7 +378,7 @@
                         <td class="rel-col-label"><em>Oheims</em></td>
                         <td class="rel-col-perspective">
                             
-                                Rüdiger Wenig → Heinrich von Puchs
+                                Rüdiger Wenig &rsaquo; Heinrich von Puchs
                             
                         </td>
                         <td class="rel-col-source">
@@ -324,7 +397,7 @@
                         <td class="rel-col-label"><em>Oheim</em></td>
                         <td class="rel-col-perspective">
                             
-                                Rüdiger Wenig → Leopold von Puchs
+                                Rüdiger Wenig &rsaquo; Leopold von Puchs
                             
                         </td>
                         <td class="rel-col-source">
@@ -343,7 +416,7 @@
                         <td class="rel-col-label"><em>Oheim</em></td>
                         <td class="rel-col-perspective">
                             
-                                Rüdiger Wenig → Ulrich von Puchs von Puchs
+                                Rüdiger Wenig &rsaquo; Ulrich von Puchs von Puchs
                             
                         </td>
                         <td class="rel-col-source">
@@ -362,7 +435,7 @@
                         <td class="rel-col-label"><em>sun</em></td>
                         <td class="rel-col-perspective">
                             
-                                Rüdiger Wenig → Leopold Wenig
+                                Rüdiger Wenig &rsaquo; Leopold Wenig
                             
                         </td>
                         <td class="rel-col-source">
@@ -381,7 +454,7 @@
                         <td class="rel-col-label"><em>sun</em></td>
                         <td class="rel-col-perspective">
                             
-                                Rüdiger Wenig → Leopold Wenig
+                                Rüdiger Wenig &rsaquo; Leopold Wenig
                             
                         </td>
                         <td class="rel-col-source">
@@ -400,7 +473,7 @@
                         <td class="rel-col-label"><em>Vetters</em></td>
                         <td class="rel-col-perspective">
                             
-                                Rüdiger Wenig → Sieghard Brunner
+                                Rüdiger Wenig &rsaquo; Sieghard Brunner
                             
                         </td>
                         <td class="rel-col-source">
@@ -419,7 +492,7 @@
                         <td class="rel-col-label"><em>sun</em></td>
                         <td class="rel-col-perspective">
                             
-                                Rüdiger Wenig → Leopold Wenig
+                                Rüdiger Wenig &rsaquo; Leopold Wenig
                             
                         </td>
                         <td class="rel-col-source">
@@ -438,7 +511,7 @@
                         <td class="rel-col-label"><em>sun</em></td>
                         <td class="rel-col-perspective">
                             
-                                Rüdiger Wenig → Leopold Wenig
+                                Rüdiger Wenig &rsaquo; Leopold Wenig
                             
                         </td>
                         <td class="rel-col-source">
@@ -457,7 +530,7 @@
                         <td class="rel-col-label"><em>sun</em></td>
                         <td class="rel-col-perspective">
                             
-                                Rüdiger Wenig → Leopold Wenig
+                                Rüdiger Wenig &rsaquo; Leopold Wenig
                             
                         </td>
                         <td class="rel-col-source">
@@ -476,7 +549,7 @@
                         <td class="rel-col-label"><em>tochter</em></td>
                         <td class="rel-col-perspective">
                             
-                                Elisabeth Wenigin → Rüdiger Wenig
+                                Elisabeth Wenigin &rsaquo; Rüdiger Wenig
                             
                         </td>
                         <td class="rel-col-source">
@@ -505,6 +578,7 @@
                 <span class="rel-block-count">1</span>
                 <span class="rel-block-hint">Berufs- oder Amtsbezeichnung in Bezug auf eine Institution.</span>
             </header>
+            
             <table class="rel-table">
                 <thead>
                     <tr>
@@ -525,7 +599,7 @@
                         <td class="rel-col-label"><em>purger</em></td>
                         <td class="rel-col-perspective">
                             
-                                Rüdiger Wenig → Wien
+                                Rüdiger Wenig &rsaquo; Wien
                             
                         </td>
                         <td class="rel-col-source">
@@ -543,18 +617,27 @@
         
         
         
+        
+        
+        
+        
+        
+        
     </section>
     
 
     
     <section class="person-sources" aria-label="Quellen mit Nennung">
         <h2 class="section-head">Quellen mit Nennung</h2>
+        
         <table class="person-source-table">
             <thead>
                 <tr>
                     <th scope="col" class="src-col-idno">Nr.</th>
                     <th scope="col" class="src-col-date">Datum</th>
                     <th scope="col" class="src-col-corpus">Quellenkorpus</th>
+                    <th scope="col" class="src-col-label">Bezeichnung</th>
+                    <th scope="col" class="src-col-role">Rolle</th>
                     <th scope="col" class="src-col-regest">Regest</th>
                 </tr>
             </thead>
@@ -564,6 +647,11 @@
                     <td class="src-col-idno"><a href="../../documents/QGW/Vienna_1177-1414_ready/181.html">181</a></td>
                     <td class="src-col-date">1337 X 01</td>
                     <td class="src-col-corpus">QGW II/1 (1177–1414)</td>
+                    <td class="src-col-label"><em>hern</em></td>
+                    <td class="src-col-role">
+                        <span class="role-chip role-chip-witness">Zeuge / Siegler*in</span>
+                        
+                    </td>
                     <td class="src-col-regest">Jans von der Ygla, purger ze Wienne, und Margret, seine Hausfrau, stellen hern Johansen dem Taeusmer und hern Hainreichen, seinem pru/eder, purger ze Auspurch, einen Schuldbrief über 60 Mark Silber,…</td>
                 </tr>
             
@@ -571,6 +659,11 @@
                     <td class="src-col-idno"><a href="../../documents/QGW/Vienna_1177-1414_ready/190.html">190</a></td>
                     <td class="src-col-date">1338 IV 18</td>
                     <td class="src-col-corpus">QGW II/1 (1177–1414)</td>
+                    <td class="src-col-label"><em>Grundherrn|hern</em></td>
+                    <td class="src-col-role">
+                        <span class="role-chip role-chip-other">Sonstige</span><span class="role-chip role-chip-witness">Zeuge / Siegler*in</span>
+                        
+                    </td>
                     <td class="src-col-regest">Ott bei dem Prunne und Elsbet, seine Hausfrau ,verkaufen mit Handen ihres Grundherrn hern Rugers, des Wenigen Leupolts sun, 10 sh. dn. Geldes Burgrechts, die sie gehabt haben auf Fridreichs haus, des…</td>
                 </tr>
             
@@ -578,6 +671,11 @@
                     <td class="src-col-idno"><a href="../../documents/QGW/Vienna_1177-1414_ready/320.html">320</a></td>
                     <td class="src-col-date">1348 IV 11</td>
                     <td class="src-col-corpus">QGW II/1 (1177–1414)</td>
+                    <td class="src-col-label"><em>-</em></td>
+                    <td class="src-col-role">
+                        <span class="role-chip role-chip-witness">Zeuge / Siegler*in</span>
+                        
+                    </td>
                     <td class="src-col-regest">Chunigunt, wittibe hern Ru/odolfs wittibe des Grafen an dem Alten Fleischmarchte ze Wienne, stiftet eine ewige Messe, die man haben sol in der pharrchirichen datz sant Stephan ze Wienne. Sie widmet…</td>
                 </tr>
             
@@ -585,6 +683,11 @@
                     <td class="src-col-idno"><a href="../../documents/QGW/Vienna_1177-1414_ready/327.html">327</a></td>
                     <td class="src-col-date">1349 I 01</td>
                     <td class="src-col-corpus">QGW II/1 (1177–1414)</td>
+                    <td class="src-col-label"><em>-</em></td>
+                    <td class="src-col-role">
+                        <span class="role-chip role-chip-witness">Zeuge / Siegler*in</span>
+                        
+                    </td>
                     <td class="src-col-regest">Sohn Hainreich, Sohn Leupolt, Sohn Ulreich, Sohn Jans und chinderMargret, hernLeupolts chinder von Puchs, dem got genade, theilenim Vereine mit ihrer MutterMutterMutterMutterMutter vrowen Christein…</td>
                 </tr>
             
@@ -592,6 +695,11 @@
                     <td class="src-col-idno"><a href="../../documents/QGW/Vienna_1177-1414_ready/341.html">341</a></td>
                     <td class="src-col-date">1349 VIII 12</td>
                     <td class="src-col-corpus">QGW II/1 (1177–1414)</td>
+                    <td class="src-col-label"><em>Bruder</em></td>
+                    <td class="src-col-role">
+                        <span class="role-chip role-chip-recipient">Empfänger*in</span><span class="role-chip role-chip-witness">Zeuge / Siegler*in</span>
+                        
+                    </td>
                     <td class="src-col-regest">Christein,wittibe Leupolts witibe von Puchs, beurkundet ihren letzten Willen. Sie schafft ihrem Schwager Jansen von Prukke einen ihr bei der Erbtheilung nach ihrem Manne zugefallenen Weingarten,…</td>
                 </tr>
             
@@ -599,6 +707,11 @@
                     <td class="src-col-idno"><a href="../../documents/QGW/Vienna_1177-1414_ready/348.html">348</a></td>
                     <td class="src-col-date">1349 XII 24</td>
                     <td class="src-col-corpus">QGW II/1 (1177–1414)</td>
+                    <td class="src-col-label"><em>-</em></td>
+                    <td class="src-col-role">
+                        <span class="role-chip role-chip-witness">Zeuge / Siegler*in</span>
+                        
+                    </td>
                     <td class="src-col-regest">Sighart der Prunner, purger ze Wienne, und Pericht, seine Hausfrau, bestätigen, dass ihnen her Seifrit, gesessen an des herzogen stat in der Slagstuben ze Wienne, als Stellvertreter des Nichlas, sun…</td>
                 </tr>
             
@@ -606,6 +719,11 @@
                     <td class="src-col-idno"><a href="../../documents/QGW/Vienna_1177-1414_ready/367.html">367</a></td>
                     <td class="src-col-date">1351 I 13</td>
                     <td class="src-col-corpus">QGW II/1 (1177–1414)</td>
+                    <td class="src-col-label"><em>hern</em></td>
+                    <td class="src-col-role">
+                        <span class="role-chip role-chip-issuer">Aussteller*in</span><span class="role-chip role-chip-witness">Zeuge / Siegler*in</span>
+                        
+                    </td>
                     <td class="src-col-regest">Pruder Ulreich von Enzeinstorf, prior in der Prediger chloster ze Wienne, und der convent gemain in demselben chloster und swester Alhait die Lengpekchinne, priorinne in sande Larenzen chloster ze…</td>
                 </tr>
             
@@ -613,6 +731,11 @@
                     <td class="src-col-idno"><a href="../../documents/QGW/Vienna_1177-1414_ready/750.html">750</a></td>
                     <td class="src-col-date">1369 V 03</td>
                     <td class="src-col-corpus">QGW II/1 (1177–1414)</td>
+                    <td class="src-col-label"><em>-</em></td>
+                    <td class="src-col-role">
+                        <span class="role-chip role-chip-issuer">Aussteller*in</span>
+                        
+                    </td>
                     <td class="src-col-regest">Ruger, sun des Wenigen hern Leupolts sun, dem got genade, schafft zu der Kapelle Unser Vrowen, gelegen in dem Rathaus ze Wienne, hern Otten Haimen seligen Stiftung, 1 lb dn. geltes ewiges purchrechts…</td>
                 </tr>
             
@@ -620,6 +743,11 @@
                     <td class="src-col-idno"><a href="../../documents/QGW/Vienna_1177-1414_ready/1075.html">1075</a></td>
                     <td class="src-col-date">1384 XI 19</td>
                     <td class="src-col-corpus">QGW II/1 (1177–1414)</td>
+                    <td class="src-col-label"><em>-</em></td>
+                    <td class="src-col-role">
+                        
+                        -
+                    </td>
                     <td class="src-col-regest">Wêndelmu/et, des Wênigen tochter Ru/edleins tochter ze Perchtolczdorf, Peter sun und Jans, ir su/en, Kathrei tochter, Anna tochter und Angnes, ir tôchter, frow Chunigunde, auch desselben Ru/edleins…</td>
                 </tr>
             
@@ -627,6 +755,11 @@
                     <td class="src-col-idno"><a href="../../documents/Stadtbuecher/Band_1_1395-1400_ready/613.html">613</a></td>
                     <td class="src-col-date">(1391 August 8, Wien)</td>
                     <td class="src-col-corpus">Stadtbücher Bd. 1 (1395–1400)</td>
+                    <td class="src-col-label"><em>-</em></td>
+                    <td class="src-col-role">
+                        
+                        -
+                    </td>
                     <td class="src-col-regest">pr. mü., Einbr. 2 Zg., Ma (Index: Item gescheft Hainreichs vom Steg) (fol.104v) Wir Michel der Gewchramer, zu den zeyten purgermaister und munzmaister, und der rat gemain der stat ze Wienn vergehen…</td>
                 </tr>
             
@@ -659,11 +792,13 @@
         </div>
     </footer>
 
-    <script src="../../static/js/core.js?v=20260511112948"></script>
-    <script src="../../static/js/provenance.js?v=20260511112948"></script>
-    <script src="../../static/js/basket.js?v=20260511112948"></script>
+    <script src="../../static/js/core.js?v=20260511125458"></script>
+    <script src="../../static/js/tip.js?v=20260511125458"></script>
+    <script src="../../static/js/hint.js?v=20260511125458"></script>
+    <script src="../../static/js/basket.js?v=20260511125458"></script>
     
-<script src="../../static/js/tooltips.js?v=20260511112948"></script>
+<script src="../../static/js/profile.js?v=20260511125458"></script>
+<script src="../../static/js/basket-mount.js?v=20260511125458"></script>
 
 </body>
 </html>

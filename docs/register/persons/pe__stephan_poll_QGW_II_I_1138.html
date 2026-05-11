@@ -3,22 +3,22 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <meta http-equiv="Content-Security-Policy" content="default-src 'self'; script-src 'self'; style-src 'self'; font-src 'self'; img-src 'self' data: https://images.monasterium.net https://www.monasterium.net; connect-src 'self'; frame-ancestors 'none'; base-uri 'self'; form-action 'self'; upgrade-insecure-requests">
+    <meta http-equiv="Content-Security-Policy" content="default-src 'self'; script-src 'self'; style-src 'self'; font-src 'self'; img-src 'self' data: https://images.monasterium.net https://www.monasterium.net; connect-src 'self'; base-uri 'self'; form-action 'self'; upgrade-insecure-requests">
     <meta name="referrer" content="strict-origin-when-cross-origin">
     <meta http-equiv="Permissions-Policy" content="camera=(), microphone=(), geolocation=(), interest-cohort=()">
     <title>Stephan Poll Poll, Datenbank</title>
     <link rel="preload" as="font" type="font/woff2" crossorigin
           href="../../static/fonts/inter-400-latin.woff2">
-    <link rel="stylesheet" href="../../static/css/fonts.css?v=20260511112948">
-    <link rel="stylesheet" href="../../static/css/tokens.css?v=20260511112948">
-    <link rel="stylesheet" href="../../static/css/base.css?v=20260511112948">
-    <link rel="stylesheet" href="../../static/css/components.css?v=20260511112948">
-    <link rel="stylesheet" href="../../static/css/responsive.css?v=20260511112948">
-    <link rel="stylesheet" href="../../static/css/print.css?v=20260511112948">
-    <link rel="stylesheet" href="../../static/css/provenance.css?v=20260511112948">
+    <link rel="stylesheet" href="../../static/css/fonts.css?v=20260511125458">
+    <link rel="stylesheet" href="../../static/css/tokens.css?v=20260511125458">
+    <link rel="stylesheet" href="../../static/css/base.css?v=20260511125458">
+    <link rel="stylesheet" href="../../static/css/components.css?v=20260511125458">
+    <link rel="stylesheet" href="../../static/css/responsive.css?v=20260511125458">
+    <link rel="stylesheet" href="../../static/css/print.css?v=20260511125458">
+    <link rel="stylesheet" href="../../static/css/tip.css?v=20260511125458">
     
-<link rel="stylesheet" href="../../static/css/document.css?v=20260511112948">
-<link rel="stylesheet" href="../../static/css/person.css?v=20260511112948">
+<link rel="stylesheet" href="../../static/css/document.css?v=20260511125458">
+<link rel="stylesheet" href="../../static/css/person.css?v=20260511125458">
 
 </head>
 <body data-root-path="../.."
@@ -48,8 +48,6 @@
         <a href="../../register/persons.html">Personen</a>
         
         <a href="../../register/orgs.html">Organisationen</a>
-        
-        <a href="../../register/places.html">Orte</a>
         
     </div>
 </div>
@@ -91,7 +89,7 @@
     </div>
 </div>
 
-                <a href="../../korb.html" class="nav-basket" aria-label="Wissenskorb">
+                <a href="../../korb.html" class="nav-basket" aria-label="Datenkorb">
                     <svg width="18" height="18" viewBox="0 0 18 18" fill="none" aria-hidden="true">
                         <path d="M3 5h12l-1.2 8.5a1 1 0 0 1-1 .85H5.2a1 1 0 0 1-1-.85L3 5z"
                               stroke="currentColor" stroke-width="1.4" fill="none"
@@ -112,11 +110,23 @@
 
     <div class="person-toolbar">
         <div class="person-toolbar-inner">
-            <nav class="person-breadcrumb" aria-label="Position">
-                <a href="../../register/persons.html">Personenregister</a>
-                <span class="bc-sep">&rsaquo;</span>
-                <span class="bc-doc"><strong>Stephan Poll Poll</strong></span>
-            </nav>
+            <div class="person-toolbar-row">
+                <nav class="person-breadcrumb" aria-label="Position">
+                    <a href="../../register/persons.html">Personenregister</a>
+                    <span class="bc-sep">&rsaquo;</span>
+                    <span class="bc-doc"><strong>Stephan Poll Poll</strong></span>
+                </nav>
+                <div class="person-toolbar-actions">
+                    <span class="toolbar-basket-mount"
+                          data-basket-type="person"
+                          data-basket-id="pe__stephan_poll_QGW_II_I_1138"
+                          data-basket-label="Stephan Poll Poll"
+                          data-basket-url="register/persons/pe__stephan_poll_QGW_II_I_1138.html"
+                          data-basket-sex="m"
+                          data-basket-active-min="1343"
+                          data-basket-active-max="1388"></span>
+                </div>
+            </div>
             <div class="person-toolbar-meta">
                 <span class="meta-pair">
                     <span class="meta-label">Geschlecht</span>
@@ -124,11 +134,41 @@
                 </span>
                 
                 <span class="meta-pair">
-                    <span class="meta-label">Belegt</span>
+                    <span class="meta-label">Belegt
+<span class="tip-wrap">
+    <button type="button" class="tip-trigger tip-trigger--icon"
+            aria-expanded="false" aria-haspopup="dialog"
+            aria-controls="person-belegt"
+            data-tip="person-belegt"
+            aria-label="Definition: Beleg-Zeitraum">
+        <svg width="13" height="13" viewBox="0 0 16 16" aria-hidden="true">
+            <circle cx="8" cy="8" r="7" stroke="currentColor" stroke-width="1.4" fill="none"/>
+            <text x="8" y="11.6" text-anchor="middle" font-size="9.5" font-weight="700"
+                  fill="currentColor" font-family="Georgia, serif">i</text>
+        </svg>
+    </button>
+    <aside class="tip-popover tip-popover--glossary"
+           id="person-belegt" role="dialog" aria-hidden="true"
+           aria-label="Definition: Beleg-Zeitraum">
+        <header class="tip-head">
+            <h3 class="tip-title">Beleg-Zeitraum</h3>
+            <button type="button" class="tip-close" aria-label="Schlie&szlig;en">&times;</button>
+        </header>
+        <div class="tip-body">
+            <p>Erste und letzte Datierung einer Quelle, in der die Person erscheint. Bei einzelnem Beleg wird nur ein Jahr angegeben.</p>
+            
+        </div>
+    </aside>
+</span>
+</span>
                     <span class="meta-value">1343 bis 1388</span>
                 </span>
                 
                 
+                <span class="meta-pair">
+                    <span class="meta-label">Quellen</span>
+                    <span class="meta-value">22</span>
+                </span>
                 <span class="meta-pair person-id-pair">
                     <span class="meta-label">ID</span>
                     <code class="meta-value person-id">pe__stephan_poll_QGW_II_I_1138</code>
@@ -145,16 +185,48 @@
             
         </h1>
         
+        
         <p class="person-note">Stephan (II.) Poll</p>
         
         
-        <p class="person-titles">
+        <p class="person-titles" data-collapsible="22">
             <span class="pt-label">In den Quellen genannt als</span>
             <span class="pt-chip">hern</span>
         </p>
         
         
+        
     </header>
+
+    
+    <section class="role-strip" aria-label="Rollen in Rechtsgeschäften">
+        <h2 class="role-strip-title">Rollen in Rechtsgeschäften</h2>
+        <div class="role-strip-cells">
+            
+            <div class="role-cell role-cell-issuer">
+                <span class="role-cell-count">1</span>
+                <span class="role-cell-label">Aussteller*in</span>
+            </div>
+            
+            <div class="role-cell role-cell-recipient">
+                <span class="role-cell-count">9</span>
+                <span class="role-cell-label">Empfänger*in</span>
+            </div>
+            
+            <div class="role-cell role-cell-witness">
+                <span class="role-cell-count">9</span>
+                <span class="role-cell-label">Zeuge / Siegler*in</span>
+            </div>
+            
+            <div class="role-cell role-cell-other">
+                <span class="role-cell-count">1</span>
+                <span class="role-cell-label">Sonstige</span>
+            </div>
+            
+        </div>
+        <p class="role-strip-hint">Summe Rollen-Belegungen: 20. Mehrfach-Rollen pro Quelle sind möglich.</p>
+    </section>
+    
 
     
 
@@ -171,6 +243,7 @@
                 <span class="rel-block-count">20</span>
                 <span class="rel-block-hint">Verwandtschaftsverhältnisse, wie sie in den Quellen explizit benannt werden.</span>
             </header>
+            
             <table class="rel-table">
                 <thead>
                     <tr>
@@ -191,7 +264,7 @@
                         <td class="rel-col-label"><em>Vettern</em></td>
                         <td class="rel-col-perspective">
                             
-                                Stephan Poll Poll → Ursula von Haslau
+                                Stephan Poll Poll &rsaquo; Ursula von Haslau
                             
                         </td>
                         <td class="rel-col-source">
@@ -210,7 +283,7 @@
                         <td class="rel-col-label"><em>chinder</em></td>
                         <td class="rel-col-perspective">
                             
-                                Stephan Poll Poll → Stephan Poll
+                                Stephan Poll Poll &rsaquo; Stephan Poll
                             
                         </td>
                         <td class="rel-col-source">
@@ -229,7 +302,7 @@
                         <td class="rel-col-label"><em>Schwagers</em></td>
                         <td class="rel-col-perspective">
                             
-                                Siegfried Minnganch → Stephan Poll Poll
+                                Siegfried Minnganch &rsaquo; Stephan Poll Poll
                             
                         </td>
                         <td class="rel-col-source">
@@ -248,7 +321,7 @@
                         <td class="rel-col-label"><em>Oheim</em></td>
                         <td class="rel-col-perspective">
                             
-                                Stephan Poll Poll → Johann Nagel
+                                Stephan Poll Poll &rsaquo; Johann Nagel
                             
                         </td>
                         <td class="rel-col-source">
@@ -267,7 +340,7 @@
                         <td class="rel-col-label"><em>Brüder</em></td>
                         <td class="rel-col-perspective">
                             
-                                Stephan Poll Poll → Jakob Poll
+                                Stephan Poll Poll &rsaquo; Jakob Poll
                             
                         </td>
                         <td class="rel-col-source">
@@ -286,7 +359,7 @@
                         <td class="rel-col-label"><em>Bruder</em></td>
                         <td class="rel-col-perspective">
                             
-                                Stephan Poll Poll → Jakob Poll
+                                Stephan Poll Poll &rsaquo; Jakob Poll
                             
                         </td>
                         <td class="rel-col-source">
@@ -305,7 +378,7 @@
                         <td class="rel-col-label"><em>Bruder</em></td>
                         <td class="rel-col-perspective">
                             
-                                Stephan Poll Poll → Jakob Poll
+                                Stephan Poll Poll &rsaquo; Jakob Poll
                             
                         </td>
                         <td class="rel-col-source">
@@ -324,7 +397,7 @@
                         <td class="rel-col-label"><em>Brüdern</em></td>
                         <td class="rel-col-perspective">
                             
-                                Stephan Poll Poll → Jakob Poll
+                                Stephan Poll Poll &rsaquo; Jakob Poll
                             
                         </td>
                         <td class="rel-col-source">
@@ -343,7 +416,7 @@
                         <td class="rel-col-label"><em>Brüdern</em></td>
                         <td class="rel-col-perspective">
                             
-                                Stephan Poll Poll → Jakob Poll
+                                Stephan Poll Poll &rsaquo; Jakob Poll
                             
                         </td>
                         <td class="rel-col-source">
@@ -362,7 +435,7 @@
                         <td class="rel-col-label"><em>Brüdern</em></td>
                         <td class="rel-col-perspective">
                             
-                                Stephan Poll Poll → Jakob Poll
+                                Stephan Poll Poll &rsaquo; Jakob Poll
                             
                         </td>
                         <td class="rel-col-source">
@@ -381,7 +454,7 @@
                         <td class="rel-col-label"><em>Brüdern</em></td>
                         <td class="rel-col-perspective">
                             
-                                Stephan Poll Poll → Jakob Poll
+                                Stephan Poll Poll &rsaquo; Jakob Poll
                             
                         </td>
                         <td class="rel-col-source">
@@ -400,7 +473,7 @@
                         <td class="rel-col-label"><em>Brüdern</em></td>
                         <td class="rel-col-perspective">
                             
-                                Stephan Poll Poll → Jakob Poll
+                                Stephan Poll Poll &rsaquo; Jakob Poll
                             
                         </td>
                         <td class="rel-col-source">
@@ -419,7 +492,7 @@
                         <td class="rel-col-label"><em>Oheime</em></td>
                         <td class="rel-col-perspective">
                             
-                                Stephan Poll Poll → Niklas von der Schemnitz
+                                Stephan Poll Poll &rsaquo; Niklas von der Schemnitz
                             
                         </td>
                         <td class="rel-col-source">
@@ -438,7 +511,7 @@
                         <td class="rel-col-label"><em>Hausfrau</em></td>
                         <td class="rel-col-perspective">
                             
-                                Anna → Stephan Poll Poll
+                                Anna &rsaquo; Stephan Poll Poll
                             
                         </td>
                         <td class="rel-col-source">
@@ -457,7 +530,7 @@
                         <td class="rel-col-label"><em>swehers</em></td>
                         <td class="rel-col-perspective">
                             
-                                Stephan Poll Poll → Hermann bei dem Brunnen bei dem Brunnen
+                                Stephan Poll Poll &rsaquo; Hermann bei dem Brunnen bei dem Brunnen
                             
                         </td>
                         <td class="rel-col-source">
@@ -476,7 +549,7 @@
                         <td class="rel-col-label"><em>Oheims</em></td>
                         <td class="rel-col-perspective">
                             
-                                Stephan Poll Poll → Katharina
+                                Stephan Poll Poll &rsaquo; Katharina
                             
                         </td>
                         <td class="rel-col-source">
@@ -495,7 +568,7 @@
                         <td class="rel-col-label"><em>Oheims</em></td>
                         <td class="rel-col-perspective">
                             
-                                Stephan Poll Poll → Gertrud
+                                Stephan Poll Poll &rsaquo; Gertrud
                             
                         </td>
                         <td class="rel-col-source">
@@ -514,7 +587,7 @@
                         <td class="rel-col-label"><em>Oheims</em></td>
                         <td class="rel-col-perspective">
                             
-                                Stephan Poll Poll → Stephan Fraunschuechl
+                                Stephan Poll Poll &rsaquo; Stephan Fraunschuechl
                             
                         </td>
                         <td class="rel-col-source">
@@ -533,7 +606,7 @@
                         <td class="rel-col-label"><em>Vetter</em></td>
                         <td class="rel-col-perspective">
                             
-                                Stephan Poll Poll → Leonhard Poll Poll
+                                Stephan Poll Poll &rsaquo; Leonhard Poll Poll
                             
                         </td>
                         <td class="rel-col-source">
@@ -552,7 +625,7 @@
                         <td class="rel-col-label"><em>geprüder</em></td>
                         <td class="rel-col-perspective">
                             
-                                Stephan Poll Poll → Ulrich Poll
+                                Stephan Poll Poll &rsaquo; Ulrich Poll
                             
                         </td>
                         <td class="rel-col-source">
@@ -581,6 +654,7 @@
                 <span class="rel-block-count">8</span>
                 <span class="rel-block-hint">Berufs- oder Amtsbezeichnung in Bezug auf eine Institution.</span>
             </header>
+            
             <table class="rel-table">
                 <thead>
                     <tr>
@@ -601,7 +675,7 @@
                         <td class="rel-col-label"><em>rates</em></td>
                         <td class="rel-col-perspective">
                             
-                                Stephan Poll Poll → Wien
+                                Stephan Poll Poll &rsaquo; Wien
                             
                         </td>
                         <td class="rel-col-source">
@@ -620,7 +694,7 @@
                         <td class="rel-col-label"><em>purger</em></td>
                         <td class="rel-col-perspective">
                             
-                                Stephan Poll Poll → Wien
+                                Stephan Poll Poll &rsaquo; Wien
                             
                         </td>
                         <td class="rel-col-source">
@@ -639,7 +713,7 @@
                         <td class="rel-col-label"><em>Bürgern</em></td>
                         <td class="rel-col-perspective">
                             
-                                Stephan Poll Poll → Wien
+                                Stephan Poll Poll &rsaquo; Wien
                             
                         </td>
                         <td class="rel-col-source">
@@ -658,7 +732,7 @@
                         <td class="rel-col-label"><em>purger</em></td>
                         <td class="rel-col-perspective">
                             
-                                Stephan Poll Poll → Wien
+                                Stephan Poll Poll &rsaquo; Wien
                             
                         </td>
                         <td class="rel-col-source">
@@ -677,7 +751,7 @@
                         <td class="rel-col-label"><em>des rates der stat ze Wienne</em></td>
                         <td class="rel-col-perspective">
                             
-                                Stephan Poll Poll → Wien
+                                Stephan Poll Poll &rsaquo; Wien
                             
                         </td>
                         <td class="rel-col-source">
@@ -696,7 +770,7 @@
                         <td class="rel-col-label"><em>rates der stat ze Wienn</em></td>
                         <td class="rel-col-perspective">
                             
-                                Stephan Poll Poll → Wien
+                                Stephan Poll Poll &rsaquo; Wien
                             
                         </td>
                         <td class="rel-col-source">
@@ -715,7 +789,7 @@
                         <td class="rel-col-label"><em>Wiener Bürger</em></td>
                         <td class="rel-col-perspective">
                             
-                                Stephan Poll Poll → Wien
+                                Stephan Poll Poll &rsaquo; Wien
                             
                         </td>
                         <td class="rel-col-source">
@@ -734,7 +808,7 @@
                         <td class="rel-col-label"><em>purger daselbs</em></td>
                         <td class="rel-col-perspective">
                             
-                                Stephan Poll Poll → Wien
+                                Stephan Poll Poll &rsaquo; Wien
                             
                         </td>
                         <td class="rel-col-source">
@@ -752,18 +826,27 @@
         
         
         
+        
+        
+        
+        
+        
+        
     </section>
     
 
     
     <section class="person-sources" aria-label="Quellen mit Nennung">
         <h2 class="section-head">Quellen mit Nennung</h2>
+        
         <table class="person-source-table">
             <thead>
                 <tr>
                     <th scope="col" class="src-col-idno">Nr.</th>
                     <th scope="col" class="src-col-date">Datum</th>
                     <th scope="col" class="src-col-corpus">Quellenkorpus</th>
+                    <th scope="col" class="src-col-label">Bezeichnung</th>
+                    <th scope="col" class="src-col-role">Rolle</th>
                     <th scope="col" class="src-col-regest">Regest</th>
                 </tr>
             </thead>
@@ -773,6 +856,11 @@
                     <td class="src-col-idno"><a href="../../documents/QGW/Vienna_1177-1414_ready/264.html">264</a></td>
                     <td class="src-col-date">1343 VII 12</td>
                     <td class="src-col-corpus">QGW II/1 (1177–1414)</td>
+                    <td class="src-col-label"><em>-</em></td>
+                    <td class="src-col-role">
+                        <span class="role-chip role-chip-issuer">Aussteller*in</span><span class="role-chip role-chip-witness">Zeuge / Siegler*in</span>
+                        
+                    </td>
                     <td class="src-col-regest">Jacob, chapplan der chapellen Unser Vrowen, hern Otten Haimen stiftunge, Ulreich chinder, Michel chinder, Stephan chinder, Nichlas chinder, Chlar chinder und Margret, chinder hern Stephans chinder…</td>
                 </tr>
             
@@ -780,6 +868,11 @@
                     <td class="src-col-idno"><a href="../../documents/QGW/Vienna_1177-1414_ready/339.html">339</a></td>
                     <td class="src-col-date">1349 VII 29</td>
                     <td class="src-col-corpus">QGW II/1 (1177–1414)</td>
+                    <td class="src-col-label"><em>-</em></td>
+                    <td class="src-col-role">
+                        <span class="role-chip role-chip-other">Sonstige</span>
+                        
+                    </td>
                     <td class="src-col-regest">Jans,sun Ulreichs sun des Nagels, dem got genade, beurkundet seinen letzten Willen. Er verfügt über zwei Weingärten, die er von seinem Vater geerbt hatte, die baide ligent an dem Nussperg, der ainer…</td>
                 </tr>
             
@@ -787,6 +880,11 @@
                     <td class="src-col-idno"><a href="../../documents/QGW/Vienna_1177-1414_ready/411.html">411</a></td>
                     <td class="src-col-date">1352 VIII 09</td>
                     <td class="src-col-corpus">QGW II/1 (1177–1414)</td>
+                    <td class="src-col-label"><em>-</em></td>
+                    <td class="src-col-role">
+                        
+                        -
+                    </td>
                     <td class="src-col-regest">Jacob der Poll, chaplan der chapellen Unser Vrowen in der purger Rathaus ze Wienn, hern Otten Haimen Stiftung sälig , urkundetüber die Anlage der von seinem Bruder Stephan dem Pollen zur Kapelle…</td>
                 </tr>
             
@@ -794,6 +892,11 @@
                     <td class="src-col-idno"><a href="../../documents/QGW/Vienna_1177-1414_ready/433.html">433</a></td>
                     <td class="src-col-date">1353 V 11</td>
                     <td class="src-col-corpus">QGW II/1 (1177–1414)</td>
+                    <td class="src-col-label"><em>hern</em></td>
+                    <td class="src-col-role">
+                        <span class="role-chip role-chip-witness">Zeuge / Siegler*in</span>
+                        
+                    </td>
                     <td class="src-col-regest">Seifrit, vicari dacz sant Stephan ze Wienne, eninchel hern Hainreichs eninchel, des alten schrannschreiber, verkauft seines rechten Eigens an zehen phenninge siben Schillinge Wienner phenninge geltes…</td>
                 </tr>
             
@@ -801,6 +904,11 @@
                     <td class="src-col-idno"><a href="../../documents/QGW/Vienna_1177-1414_ready/479.html">479</a></td>
                     <td class="src-col-date">1356 IV 19</td>
                     <td class="src-col-corpus">QGW II/1 (1177–1414)</td>
+                    <td class="src-col-label"><em>-</em></td>
+                    <td class="src-col-role">
+                        
+                        -
+                    </td>
                     <td class="src-col-regest">Jacob der Polle, chapplan Unsern Vraun chappelln, gelegen in der purger Rathaus ze Wienne, hern Otten seligen Stiftung des Haimen , bestellt den Thoman von Senging cantor zum Cantor der Kapelle.…</td>
                 </tr>
             
@@ -808,6 +916,11 @@
                     <td class="src-col-idno"><a href="../../documents/QGW/Vienna_1177-1414_ready/521.html">521</a></td>
                     <td class="src-col-date">1359 II 24</td>
                     <td class="src-col-corpus">QGW II/1 (1177–1414)</td>
+                    <td class="src-col-label"><em>-</em></td>
+                    <td class="src-col-role">
+                        <span class="role-chip role-chip-recipient">Empfänger*in</span>
+                        
+                    </td>
                     <td class="src-col-regest">Jacob der Poll, chaplan und verbesser Unser Vraun chapelln, hern Ottenhaim Stiftung salig, gelegen in dem Rathaus ze Wienn , gibt seinen Brüdern Ulreichen und Brüdern Stephan den Pollen eine…</td>
                 </tr>
             
@@ -815,6 +928,11 @@
                     <td class="src-col-idno"><a href="../../documents/QGW/Vienna_1177-1414_ready/522.html">522</a></td>
                     <td class="src-col-date">1359 II 24</td>
                     <td class="src-col-corpus">QGW II/1 (1177–1414)</td>
+                    <td class="src-col-label"><em>-</em></td>
+                    <td class="src-col-role">
+                        <span class="role-chip role-chip-recipient">Empfänger*in</span>
+                        
+                    </td>
                     <td class="src-col-regest">Jacob der Poll, chapellan und verbesser Unser Vraun chapelln, hern Ottenhaim Stiftung saelig, gelegen in dem Rathaus ze Wienn , gibt seinen Brüdern Ulreichen und Brüdern Stephan den Pollen eine…</td>
                 </tr>
             
@@ -822,6 +940,11 @@
                     <td class="src-col-idno"><a href="../../documents/QGW/Vienna_1177-1414_ready/523.html">523</a></td>
                     <td class="src-col-date">1359 II 24</td>
                     <td class="src-col-corpus">QGW II/1 (1177–1414)</td>
+                    <td class="src-col-label"><em>-</em></td>
+                    <td class="src-col-role">
+                        <span class="role-chip role-chip-recipient">Empfänger*in</span>
+                        
+                    </td>
                     <td class="src-col-regest">Jacob der Poll, chapellan, und verbeser Unser Vraun chapellen, hern Ottenhaim saelig Stiftung, gelegen in dem Rathaus ze Wienn , gibt seinen Brüdern Ulreichen und BrüdernStephan den Polln eine…</td>
                 </tr>
             
@@ -829,6 +952,11 @@
                     <td class="src-col-idno"><a href="../../documents/QGW/Vienna_1177-1414_ready/524.html">524</a></td>
                     <td class="src-col-date">1359 II 24</td>
                     <td class="src-col-corpus">QGW II/1 (1177–1414)</td>
+                    <td class="src-col-label"><em>-</em></td>
+                    <td class="src-col-role">
+                        <span class="role-chip role-chip-recipient">Empfänger*in</span>
+                        
+                    </td>
                     <td class="src-col-regest">Jacob der Poll, chapellan und verbeser Unser Vrauen chapelln , hern Ottenhaim Stiftung saelig, gelegen in dem Rathaus ze Wienn, gibt seinen Brüdern Ulreichen und Brüdern Stephan den Pollen eine…</td>
                 </tr>
             
@@ -836,6 +964,11 @@
                     <td class="src-col-idno"><a href="../../documents/QGW/Vienna_1177-1414_ready/525.html">525</a></td>
                     <td class="src-col-date">1359 II 25</td>
                     <td class="src-col-corpus">QGW II/1 (1177–1414)</td>
+                    <td class="src-col-label"><em>-</em></td>
+                    <td class="src-col-role">
+                        <span class="role-chip role-chip-recipient">Empfänger*in</span>
+                        
+                    </td>
                     <td class="src-col-regest">Jacob der Poll, chapellan und verbeser der chapelln Unser Vraun in der purger Rathaus ze Wienne, hern Ottenhaim selig Stiftung, stellt mit Wissen hern Friedliebs, Verweser in gestleichen sachen in…</td>
                 </tr>
             
@@ -843,6 +976,11 @@
                     <td class="src-col-idno"><a href="../../documents/QGW/Vienna_1177-1414_ready/542.html">542</a></td>
                     <td class="src-col-date">1360 II 20</td>
                     <td class="src-col-corpus">QGW II/1 (1177–1414)</td>
+                    <td class="src-col-label"><em>hern</em></td>
+                    <td class="src-col-role">
+                        <span class="role-chip role-chip-recipient">Empfänger*in</span>
+                        
+                    </td>
                     <td class="src-col-regest">Christan Gall, der vischer, und Elspet, seine Hausfrau, verkaufen mit Handen hern Eberharts, des beraiter von Tulln, schaffer der geistlihen vrowen ze Tulln Predigerorden eine halbe Hofstatt…</td>
                 </tr>
             
@@ -850,6 +988,11 @@
                     <td class="src-col-idno"><a href="../../documents/QGW/Vienna_1177-1414_ready/680.html">680</a></td>
                     <td class="src-col-date">1366 XI 11</td>
                     <td class="src-col-corpus">QGW II/1 (1177–1414)</td>
+                    <td class="src-col-label"><em>-</em></td>
+                    <td class="src-col-role">
+                        <span class="role-chip role-chip-recipient">Empfänger*in</span>
+                        
+                    </td>
                     <td class="src-col-regest">* Bischof Albert von Passau bestätigt die von den Wiener Bürgern Dietrich Urbasch und Stephan Pollo Bürgern, sowie dem Kaplan der Marienkapelle in Ottenhaim vorgenommene Stiftung einer Messe auf dem…</td>
                 </tr>
             
@@ -857,6 +1000,11 @@
                     <td class="src-col-idno"><a href="../../documents/QGW/Vienna_1177-1414_ready/690.html">690</a></td>
                     <td class="src-col-date">1367 III 17</td>
                     <td class="src-col-corpus">QGW II/1 (1177–1414)</td>
+                    <td class="src-col-label"><em>hern</em></td>
+                    <td class="src-col-role">
+                        <span class="role-chip role-chip-witness">Zeuge / Siegler*in</span>
+                        
+                    </td>
                     <td class="src-col-regest">Jans der Hêmmler, purger ze Wienne, und Torathe, seine Hausfrau, verkaufen mit Handen ihres Bergherrn hern Jansen an dem Chienmarcht ze Wienne 6 sh. dn. gelts ewiges purchrechts, die sie gehabt haben…</td>
                 </tr>
             
@@ -864,6 +1012,11 @@
                     <td class="src-col-idno"><a href="../../documents/QGW/Vienna_1177-1414_ready/775.html">775</a></td>
                     <td class="src-col-date">1370 VI 23</td>
                     <td class="src-col-corpus">QGW II/1 (1177–1414)</td>
+                    <td class="src-col-label"><em>-</em></td>
+                    <td class="src-col-role">
+                        <span class="role-chip role-chip-witness">Zeuge / Siegler*in</span>
+                        
+                    </td>
                     <td class="src-col-regest">Ru/eger brudersun und Niclas, gebru/eder von der Schaebnicz, Hainreichs Vatersu/en von der Schaebnicz, dem got genade , verkaufen ihres Erbgutes zwei Weingärten um 332 lb dn. dem Wiener Bürger…</td>
                 </tr>
             
@@ -871,6 +1024,11 @@
                     <td class="src-col-idno"><a href="../../documents/QGW/Vienna_1177-1414_ready/805.html">805</a></td>
                     <td class="src-col-date">1372 III 05</td>
                     <td class="src-col-corpus">QGW II/1 (1177–1414)</td>
+                    <td class="src-col-label"><em>hern</em></td>
+                    <td class="src-col-role">
+                        
+                        -
+                    </td>
                     <td class="src-col-regest">Hermann bei dem Prunne verkauft seines rechten Eigens 6 sh. dn., 27 Metzen habern, 9 Hühner, der iegleichs 4 dn. wert sei, 9 chaes, der iegleicher dreier phening wert sei, 3 gens, der igleicheu 5 dn.…</td>
                 </tr>
             
@@ -878,6 +1036,11 @@
                     <td class="src-col-idno"><a href="../../documents/QGW/Vienna_1177-1414_ready/827.html">827</a></td>
                     <td class="src-col-date">1373 IV 30</td>
                     <td class="src-col-corpus">QGW II/1 (1177–1414)</td>
+                    <td class="src-col-label"><em>-</em></td>
+                    <td class="src-col-role">
+                        <span class="role-chip role-chip-witness">Zeuge / Siegler*in</span>
+                        
+                    </td>
                     <td class="src-col-regest">Janns der Polcz, richter ze Fu/ert , und Margret, seine Hausfrau , verkaufen mit Handen ihres Grundherrn des Abtes Donat von den Schotten 2 lb dn. gelts purchrechts, welche der Margret von ihrem…</td>
                 </tr>
             
@@ -885,6 +1048,11 @@
                     <td class="src-col-idno"><a href="../../documents/QGW/Vienna_1177-1414_ready/830.html">830</a></td>
                     <td class="src-col-date">1373 VII 12</td>
                     <td class="src-col-corpus">QGW II/1 (1177–1414)</td>
+                    <td class="src-col-label"><em>hern</em></td>
+                    <td class="src-col-role">
+                        <span class="role-chip role-chip-witness">Zeuge / Siegler*in</span>
+                        
+                    </td>
                     <td class="src-col-regest">Herman von Eslarn und Gedrout, seine Hausfrau, Ulreich der Zinkk, ir swager, und Katrei, der Gedrouten swester, beurkunden die Teilung des Erbes die mit Stephan dem Frownschuechlein, der beiden…</td>
                 </tr>
             
@@ -892,6 +1060,11 @@
                     <td class="src-col-idno"><a href="../../documents/QGW/Vienna_1177-1414_ready/872.html">872</a></td>
                     <td class="src-col-date">1376 I 16</td>
                     <td class="src-col-corpus">QGW II/1 (1177–1414)</td>
+                    <td class="src-col-label"><em>hern</em></td>
+                    <td class="src-col-role">
+                        <span class="role-chip role-chip-witness">Zeuge / Siegler*in</span>
+                        
+                    </td>
                     <td class="src-col-regest">Mert der Straiher, pharrer ze Dobresperg schwager , Niclas der Straiher, sein pruder schwager , Niclas der Poekchel, ir swager, und Katrei, seine Hausfrau , verkaufen mit gesammter Hand Eigengüter,…</td>
                 </tr>
             
@@ -899,6 +1072,11 @@
                     <td class="src-col-idno"><a href="../../documents/QGW/Vienna_1177-1414_ready/889.html">889</a></td>
                     <td class="src-col-date">1376 X 21</td>
                     <td class="src-col-corpus">QGW II/1 (1177–1414)</td>
+                    <td class="src-col-label"><em>-</em></td>
+                    <td class="src-col-role">
+                        <span class="role-chip role-chip-recipient">Empfänger*in</span>
+                        
+                    </td>
                     <td class="src-col-regest">Lienhart der Poll, purger ze Wienn , beurkundet mit Zustimmung seiner Hausfrau Elspeten seinen letzten Willen. Er schafft: 1. dass man von seiner fahrenden Habe seine Gläubiger befriedigen solle 2.…</td>
                 </tr>
             
@@ -906,6 +1084,11 @@
                     <td class="src-col-idno"><a href="../../documents/QGW/Vienna_1177-1414_ready/903.html">903</a></td>
                     <td class="src-col-date">1377 III 07</td>
                     <td class="src-col-corpus">QGW II/1 (1177–1414)</td>
+                    <td class="src-col-label"><em>-</em></td>
+                    <td class="src-col-role">
+                        <span class="role-chip role-chip-recipient">Empfänger*in</span>
+                        
+                    </td>
                     <td class="src-col-regest">* Bischof Albert von Passau genehmigt die Stiftung und Dotation einer Messe in der Marienkapelle in Ottenhaim ibidem Wienne durch den Wiener Bürger Stephan Poll .</td>
                 </tr>
             
@@ -913,6 +1096,11 @@
                     <td class="src-col-idno"><a href="../../documents/QGW/Vienna_1177-1414_ready/920.html">920</a></td>
                     <td class="src-col-date">1377 XI 29</td>
                     <td class="src-col-corpus">QGW II/1 (1177–1414)</td>
+                    <td class="src-col-label"><em>-</em></td>
+                    <td class="src-col-role">
+                        <span class="role-chip role-chip-witness">Zeuge / Siegler*in</span>
+                        
+                    </td>
                     <td class="src-col-regest">Haiman von Gerolczdorf Gerhab Gerhab Gerhab verkauft als Gerhab der unmündigen Töchter seines Oheims Hanns von Haselau, Tochter Katrei, Tochter Urseln und Tochter Annen, aus ehafter vor dem Herzoge…</td>
                 </tr>
             
@@ -920,6 +1108,11 @@
                     <td class="src-col-idno"><a href="../../documents/QGW/Vienna_1177-1414_ready/1138.html">1138</a></td>
                     <td class="src-col-date">1388 I 16</td>
                     <td class="src-col-corpus">QGW II/1 (1177–1414)</td>
+                    <td class="src-col-label"><em>hern</em></td>
+                    <td class="src-col-role">
+                        <span class="role-chip role-chip-witness">Zeuge / Siegler*in</span>
+                        
+                    </td>
                     <td class="src-col-regest">Ursula, Niclas des Würfels hausvrawe, des jungern, beurkundet, dass ihr sweher her Niclas der Würfel, der elter, von ihr 400 lb dn., der 200 lb dn. ihr Leibgeding und 200 lb dn. ihr lediges Gut sind,…</td>
                 </tr>
             
@@ -952,11 +1145,13 @@
         </div>
     </footer>
 
-    <script src="../../static/js/core.js?v=20260511112948"></script>
-    <script src="../../static/js/provenance.js?v=20260511112948"></script>
-    <script src="../../static/js/basket.js?v=20260511112948"></script>
+    <script src="../../static/js/core.js?v=20260511125458"></script>
+    <script src="../../static/js/tip.js?v=20260511125458"></script>
+    <script src="../../static/js/hint.js?v=20260511125458"></script>
+    <script src="../../static/js/basket.js?v=20260511125458"></script>
     
-<script src="../../static/js/tooltips.js?v=20260511112948"></script>
+<script src="../../static/js/profile.js?v=20260511125458"></script>
+<script src="../../static/js/basket-mount.js?v=20260511125458"></script>
 
 </body>
 </html>

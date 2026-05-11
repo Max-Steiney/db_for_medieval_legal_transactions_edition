@@ -3,21 +3,21 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <meta http-equiv="Content-Security-Policy" content="default-src 'self'; script-src 'self'; style-src 'self'; font-src 'self'; img-src 'self' data: https://images.monasterium.net https://www.monasterium.net; connect-src 'self'; frame-ancestors 'none'; base-uri 'self'; form-action 'self'; upgrade-insecure-requests">
+    <meta http-equiv="Content-Security-Policy" content="default-src 'self'; script-src 'self'; style-src 'self'; font-src 'self'; img-src 'self' data: https://images.monasterium.net https://www.monasterium.net; connect-src 'self'; base-uri 'self'; form-action 'self'; upgrade-insecure-requests">
     <meta name="referrer" content="strict-origin-when-cross-origin">
     <meta http-equiv="Permissions-Policy" content="camera=(), microphone=(), geolocation=(), interest-cohort=()">
     <title>Nr. 459 (1354 XI 24), Datenbank</title>
     <link rel="preload" as="font" type="font/woff2" crossorigin
           href="../../../static/fonts/inter-400-latin.woff2">
-    <link rel="stylesheet" href="../../../static/css/fonts.css?v=20260511112948">
-    <link rel="stylesheet" href="../../../static/css/tokens.css?v=20260511112948">
-    <link rel="stylesheet" href="../../../static/css/base.css?v=20260511112948">
-    <link rel="stylesheet" href="../../../static/css/components.css?v=20260511112948">
-    <link rel="stylesheet" href="../../../static/css/responsive.css?v=20260511112948">
-    <link rel="stylesheet" href="../../../static/css/print.css?v=20260511112948">
-    <link rel="stylesheet" href="../../../static/css/provenance.css?v=20260511112948">
+    <link rel="stylesheet" href="../../../static/css/fonts.css?v=20260511125458">
+    <link rel="stylesheet" href="../../../static/css/tokens.css?v=20260511125458">
+    <link rel="stylesheet" href="../../../static/css/base.css?v=20260511125458">
+    <link rel="stylesheet" href="../../../static/css/components.css?v=20260511125458">
+    <link rel="stylesheet" href="../../../static/css/responsive.css?v=20260511125458">
+    <link rel="stylesheet" href="../../../static/css/print.css?v=20260511125458">
+    <link rel="stylesheet" href="../../../static/css/tip.css?v=20260511125458">
     
-<link rel="stylesheet" href="../../../static/css/document.css?v=20260511112948">
+<link rel="stylesheet" href="../../../static/css/document.css?v=20260511125458">
 <link rel="canonical" href="documents/QGW/Vienna_1177-1414_ready/459.html">
 <meta name="citation_title" content="Nr. 459 (1354 XI 24)">
 <meta name="citation_collection" content="QGW II/1 (1177–1414)">
@@ -50,8 +50,6 @@
         <a href="../../../register/persons.html">Personen</a>
         
         <a href="../../../register/orgs.html">Organisationen</a>
-        
-        <a href="../../../register/places.html">Orte</a>
         
     </div>
 </div>
@@ -93,7 +91,7 @@
     </div>
 </div>
 
-                <a href="../../../korb.html" class="nav-basket" aria-label="Wissenskorb">
+                <a href="../../../korb.html" class="nav-basket" aria-label="Datenkorb">
                     <svg width="18" height="18" viewBox="0 0 18 18" fill="none" aria-hidden="true">
                         <path d="M3 5h12l-1.2 8.5a1 1 0 0 1-1 .85H5.2a1 1 0 0 1-1-.85L3 5z"
                               stroke="currentColor" stroke-width="1.4" fill="none"
@@ -140,7 +138,7 @@
                     
                     <span class="meta-pair">
                         <span class="meta-label">Quelle</span>
-                        <span class="meta-value" title="Quellen zur Geschichte der Stadt Wien, Bd. II/1, Nr. 459">Quellen zur Geschichte der Stadt Wien, Bd. II/1, Nr. 459</span>
+                        <span class="meta-value" data-hint="Quellen zur Geschichte der Stadt Wien, Bd. II/1, Nr. 459">Quellen zur Geschichte der Stadt Wien, Bd. II/1, Nr. 459</span>
                     </span>
                     
                 </div>
@@ -151,7 +149,7 @@
                     
                     <button type="button" class="legend-toggle"
                             data-layer="entities" aria-pressed="true"
-                            title="Entitäten ein-/ausblenden">
+                            data-hint="Entitäten ein-/ausblenden">
                         <span class="legend-toggle-dots">
                             <span class="legend-swatch swatch-person"></span><span class="legend-swatch swatch-org"></span><span class="legend-swatch swatch-place"></span>
                         </span>
@@ -160,7 +158,7 @@
                     
                     <button type="button" class="legend-toggle"
                             data-layer="functions" aria-pressed="true"
-                            title="Funktionsrollen ein-/ausblenden">
+                            data-hint="Funktionsrollen ein-/ausblenden">
                         <span class="legend-toggle-dots">
                             <span class="legend-swatch swatch-fn-issuer"></span><span class="legend-swatch swatch-fn-recipient"></span><span class="legend-swatch swatch-fn-witness"></span>
                         </span>
@@ -169,7 +167,7 @@
                     
                     <button type="button" class="legend-toggle"
                             data-layer="attributes" aria-pressed="true"
-                            title="Attribute ein-/ausblenden">
+                            data-hint="Attribute ein-/ausblenden">
                         <span class="legend-toggle-dots">
                             <span class="legend-swatch swatch-attr"></span><span class="legend-swatch swatch-add"></span>
                         </span>
@@ -178,7 +176,7 @@
                     
                     <button type="button" class="legend-toggle"
                             data-layer="triggers" aria-pressed="true"
-                            title="Dispositivformel ein-/ausblenden">
+                            data-hint="Dispositivformel ein-/ausblenden">
                         <span class="legend-toggle-dots">
                             <span class="legend-swatch swatch-trigger"></span>
                         </span>
@@ -190,21 +188,29 @@
                 <div class="doc-toolbar-actions">
                     <a class="toolbar-btn" href="../../../tei/QGW/Vienna_1177-1414_ready/459.xml"
                        download="459.xml"
-                       aria-label="TEI-XML herunterladen" title="TEI-XML herunterladen"><svg viewBox="0 0 16 16" width="16" height="16" aria-hidden="true"><path fill="none" stroke="currentColor" stroke-width="1.4" stroke-linecap="round" stroke-linejoin="round" d="M8 2v8m0 0l-3-3m3 3l3-3M3 13h10"/></svg></a>
+                       aria-label="TEI-XML herunterladen" data-hint="TEI-XML herunterladen"><svg viewBox="0 0 16 16" width="16" height="16" aria-hidden="true"><path fill="none" stroke="currentColor" stroke-width="1.4" stroke-linecap="round" stroke-linejoin="round" d="M8 2v8m0 0l-3-3m3 3l3-3M3 13h10"/></svg></a>
                     <button class="toolbar-btn" id="cite-toggle" aria-expanded="false"
-                            aria-label="Zitation kopieren" title="Zitation kopieren"><svg viewBox="0 0 16 16" width="16" height="16" aria-hidden="true"><rect x="4" y="2" width="8" height="11" rx="1" fill="none" stroke="currentColor" stroke-width="1.4"/><path d="M6 1.5h4a0.5 0.5 0 0 1 0.5 0.5v1a0.5 0.5 0 0 1-0.5 0.5H6a0.5 0.5 0 0 1-0.5-0.5V2A0.5 0.5 0 0 1 6 1.5z" fill="currentColor"/><path d="M6.5 6.5h3M6.5 8.5h3M6.5 10.5h2" stroke="currentColor" stroke-width="1" stroke-linecap="round"/></svg></button>
+                            aria-label="Zitation kopieren" data-hint="Zitation kopieren"><svg viewBox="0 0 16 16" width="16" height="16" aria-hidden="true"><rect x="4" y="2" width="8" height="11" rx="1" fill="none" stroke="currentColor" stroke-width="1.4"/><path d="M6 1.5h4a0.5 0.5 0 0 1 0.5 0.5v1a0.5 0.5 0 0 1-0.5 0.5H6a0.5 0.5 0 0 1-0.5-0.5V2A0.5 0.5 0 0 1 6 1.5z" fill="currentColor"/><path d="M6.5 6.5h3M6.5 8.5h3M6.5 10.5h2" stroke="currentColor" stroke-width="1" stroke-linecap="round"/></svg></button>
                     <div class="cite-popover hidden" id="cite-popover"></div>
+                    <span class="toolbar-basket-mount"
+                          data-basket-type="source"
+                          data-basket-id="459"
+                          data-basket-label="459"
+                          data-basket-url="documents/QGW/Vienna_1177-1414_ready/459.html"
+                          data-basket-date="1354-11-24"
+                          data-basket-coll="QGW II/1 (1177–1414)"
+                          data-basket-regest="Ulreich bei den Minnern Pru/edern rates der stat ze Wienne, Hainreich der Würffel rates der stat ze Wienne, Chunrat der Schönnaicherrates der stat ze Wienne und Hainreich von der Neiz/zz/zarates der…"></span>
                     
 <nav class="doc-paging doc-paging-inline" aria-label="Quellen-Navigation">
     
     <a href="../../../documents/QGW/Vienna_1177-1414_ready/458.html" class="toolbar-btn doc-paging-prev"
        aria-label="Vorherige Quelle: Nr. 458"
-       title="Vorherige Quelle: Nr. 458"><svg viewBox="0 0 16 16" width="16" height="16" aria-hidden="true"><path fill="none" stroke="currentColor" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round" d="M10 3l-5 5 5 5"/></svg></a>
+       data-hint="Vorherige Quelle: Nr. 458"><svg viewBox="0 0 16 16" width="16" height="16" aria-hidden="true"><path fill="none" stroke="currentColor" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round" d="M10 3l-5 5 5 5"/></svg></a>
     
     
     <a href="../../../documents/QGW/Vienna_1177-1414_ready/460.html" class="toolbar-btn doc-paging-next"
        aria-label="Nächste Quelle: Nr. 460"
-       title="Nächste Quelle: Nr. 460"><svg viewBox="0 0 16 16" width="16" height="16" aria-hidden="true"><path fill="none" stroke="currentColor" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round" d="M6 3l5 5-5 5"/></svg></a>
+       data-hint="Nächste Quelle: Nr. 460"><svg viewBox="0 0 16 16" width="16" height="16" aria-hidden="true"><path fill="none" stroke="currentColor" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round" d="M6 3l5 5-5 5"/></svg></a>
     
 </nav>
 
@@ -219,34 +225,34 @@
         <!-- Document body (rendered TEI) -->
         <div class="doc-body">
             <section class="tei-abstract"><h2 class="tei-section-head">Regest</h2><p>
-               <span class="anno-event" data-ref="ev__QGW_II_I_459"><span class="anno-fn anno-fn-issuer" data-role="issuer"><span class="fn-label">Aussteller*in</span><a class="anno-person" data-ref="pe__ulrich_bei_den_minderbruedern_FRA_II_1316_II_02.1" title="Ulrich bei den Minderbrüdern [pe__ulrich_bei_den_minderbruedern_FRA_II_1316_II_02.1]" href="../../../register/persons/pe__ulrich_bei_den_minderbruedern_FRA_II_1316_II_02.1.html">Ulreich bei den
+               <span class="anno-event" data-ref="ev__QGW_II_I_459"><span class="anno-fn anno-fn-issuer" data-role="issuer"><span class="fn-label">Aussteller*in</span><a class="anno-person" data-ref="pe__ulrich_bei_den_minderbruedern_FRA_II_1316_II_02.1" data-hint="Ulrich bei den Minderbrüdern [pe__ulrich_bei_den_minderbruedern_FRA_II_1316_II_02.1]" data-hint-type="Person" href="../../../register/persons/pe__ulrich_bei_den_minderbruedern_FRA_II_1316_II_02.1.html">Ulreich bei den
                         Minnern Pru/edern <span class="anno-attr anno-attr-occ" data-corresp="org__wien"><span class="tei-add">rates der
-                              stat ze Wienne</span></span></a>, <a class="anno-person" data-ref="pe__heinrich_wuerfel_QGW_II_I_459" title="Heinrich Würfel Würfel [pe__heinrich_wuerfel_QGW_II_I_459]" href="../../../register/persons/pe__heinrich_wuerfel_QGW_II_I_459.html">Hainreich der Würffel <span class="anno-attr anno-attr-occ" data-corresp="org__wien"><span class="tei-add">rates der stat ze
-                           Wienne</span></span></a>, <a class="anno-person" data-ref="pe__konrad_schoenaicher_QGW_II_I_459" title="Konrad Schönaicher [pe__konrad_schoenaicher_QGW_II_I_459]" href="../../../register/persons/pe__konrad_schoenaicher_QGW_II_I_459.html">Chunrat der Schönnaicher<span class="anno-attr anno-attr-occ" data-corresp="org__wien"><span class="tei-add">rates der stat ze
+                              stat ze Wienne</span></span></a>, <a class="anno-person" data-ref="pe__heinrich_wuerfel_QGW_II_I_459" data-hint="Heinrich Würfel Würfel [pe__heinrich_wuerfel_QGW_II_I_459]" data-hint-type="Person" href="../../../register/persons/pe__heinrich_wuerfel_QGW_II_I_459.html">Hainreich der Würffel <span class="anno-attr anno-attr-occ" data-corresp="org__wien"><span class="tei-add">rates der stat ze
+                           Wienne</span></span></a>, <a class="anno-person" data-ref="pe__konrad_schoenaicher_QGW_II_I_459" data-hint="Konrad Schönaicher [pe__konrad_schoenaicher_QGW_II_I_459]" data-hint-type="Person" href="../../../register/persons/pe__konrad_schoenaicher_QGW_II_I_459.html">Chunrat der Schönnaicher<span class="anno-attr anno-attr-occ" data-corresp="org__wien"><span class="tei-add">rates der stat ze
                            Wienne</span></span>
-                     </a> und <a class="anno-person" data-ref="pe__heinrich_von_der_neisse_QGW_II_I_459" title="Heinrich von der Neisse [pe__heinrich_von_der_neisse_QGW_II_I_459]" href="../../../register/persons/pe__heinrich_von_der_neisse_QGW_II_I_459.html">
+                     </a> und <a class="anno-person" data-ref="pe__heinrich_von_der_neisse_QGW_II_I_459" data-hint="Heinrich von der Neisse [pe__heinrich_von_der_neisse_QGW_II_I_459]" data-hint-type="Person" href="../../../register/persons/pe__heinrich_von_der_neisse_QGW_II_I_459.html">
                         Hainreich von der Neiz/zz/za<span class="anno-attr anno-attr-occ" data-corresp="org__wien"><span class="tei-add">rates der stat ze Wienne</span></span>
                      </a>, alle vier des rates der stat ze Wienne </span>, <span class="anno-trigger anno-trigger-disp">beurkunden <span class="tei-add">Schiedspruch</span></span> den von ihnen im Auftrage des
-                  Rathes gefällten Schiedspruch in dem Streite zwischen <span class="anno-fn anno-fn-other" data-role="other"><span class="fn-label">Sonstige</span><a class="anno-person" data-ref="pe__bartholomaeus_treter_QGW_II_I_459" title="Bartholomäus der Treter [pe__bartholomaeus_treter_QGW_II_I_459]" href="../../../register/persons/pe__bartholomaeus_treter_QGW_II_I_459.html">Partelme dem
+                  Rathes gefällten Schiedspruch in dem Streite zwischen <span class="anno-fn anno-fn-other" data-role="other"><span class="fn-label">Sonstige</span><a class="anno-person" data-ref="pe__bartholomaeus_treter_QGW_II_I_459" data-hint="Bartholomäus der Treter [pe__bartholomaeus_treter_QGW_II_I_459]" data-hint-type="Person" href="../../../register/persons/pe__bartholomaeus_treter_QGW_II_I_459.html">Partelme dem
                         Treter</a>
                      <span class="anno-trigger anno-trigger-fn">einerseits</span></span>, <span class="anno-fn anno-fn-other" data-role="other"><span class="fn-label">Sonstige</span>
-                     <a class="anno-person" data-ref="pe__friedrich_schrannschreiber_StB_I_225" title="Friedrich Schrannschreiber [pe__friedrich_schrannschreiber_StB_I_225]" href="../../../register/persons/pe__friedrich_schrannschreiber_StB_I_225.html">Fridreich, dem
-                        schrannschreiber <span class="anno-attr anno-attr-rep" data-corresp="pe__herbert_QGW_II_I_459"><span class="tei-add">an Stelle</span></span></a>, <a class="anno-person" data-ref="pe__michael_poll_QGW_II_I_440" title="Michael Poll [pe__michael_poll_QGW_II_I_440]" href="../../../register/persons/pe__michael_poll_QGW_II_I_440.html">Michel dem Pollen<span class="anno-attr anno-attr-rep" data-corresp="pe__herbert_QGW_II_I_459"><span class="tei-add">an Stelle</span></span>
-                     </a>, <a class="anno-person" data-ref="pe__johann_pleyein_QGW_II_I_459" title="Johann Pleyein [pe__johann_pleyein_QGW_II_I_459]" href="../../../register/persons/pe__johann_pleyein_QGW_II_I_459.html">Jans dem
+                     <a class="anno-person" data-ref="pe__friedrich_schrannschreiber_StB_I_225" data-hint="Friedrich Schrannschreiber [pe__friedrich_schrannschreiber_StB_I_225]" data-hint-type="Person" href="../../../register/persons/pe__friedrich_schrannschreiber_StB_I_225.html">Fridreich, dem
+                        schrannschreiber <span class="anno-attr anno-attr-rep" data-corresp="pe__herbert_QGW_II_I_459"><span class="tei-add">an Stelle</span></span></a>, <a class="anno-person" data-ref="pe__michael_poll_QGW_II_I_440" data-hint="Michael Poll [pe__michael_poll_QGW_II_I_440]" data-hint-type="Person" href="../../../register/persons/pe__michael_poll_QGW_II_I_440.html">Michel dem Pollen<span class="anno-attr anno-attr-rep" data-corresp="pe__herbert_QGW_II_I_459"><span class="tei-add">an Stelle</span></span>
+                     </a>, <a class="anno-person" data-ref="pe__johann_pleyein_QGW_II_I_459" data-hint="Johann Pleyein [pe__johann_pleyein_QGW_II_I_459]" data-hint-type="Person" href="../../../register/persons/pe__johann_pleyein_QGW_II_I_459.html">Jans dem
                            Pleiein<span class="anno-attr anno-attr-rep" data-corresp="pe__herbert_QGW_II_I_459"><span class="tei-add">an
                               Stelle</span></span>
-                     </a>, an Stelle des <a class="anno-person" data-ref="pe__herbert_QGW_II_I_459" title="Herbert [pe__herbert_QGW_II_I_459]" href="../../../register/persons/pe__herbert_QGW_II_I_459.html">unmündigen<span class="anno-attr anno-attr-kin" data-corresp="pe__johann_QGW_II_I_459"><span class="tei-add">Sohnes</span></span> Herbort, Sohnes des <a class="anno-person" data-ref="pe__johann_QGW_II_I_459" title="Johann († 24.11.1354) [pe__johann_QGW_II_I_459]" href="../../../register/persons/pe__johann_QGW_II_I_459.html"><span class="anno-attr anno-attr-dead">verstorbenen</span>
-                           <span class="anno-attr anno-attr-kin" data-corresp="pe__friedrich_schrannschreiber_StB_I_225">Bruders</span> Friedrichs Jansen</a> aus dessen <a class="anno-person" data-ref="pe__katharina_QGW_II_I_459_a" title="Katharina Progantinne († 24.11.1354) [pe__katharina_QGW_II_I_459_a]" href="../../../register/persons/pe__katharina_QGW_II_I_459_a.html"><span class="anno-attr anno-attr-kin" data-corresp="pe__johann_QGW_II_I_459">Ehe</span> mit Katrein <span class="anno-attr anno-attr-dead">selig</span>, weiln genant die Progantinne</a></a>,
-                        <span class="anno-trigger anno-trigger-fn">ander seits</span></span> über <span class="anno-event" data-ref="ev__QGW_II_I_459_men_1">das Geschäft der <a class="anno-person" data-ref="pe__katharina_QGW_II_I_459_b" title="Katharina Treterin († 24.11.1354) [pe__katharina_QGW_II_I_459_b]" href="../../../register/persons/pe__katharina_QGW_II_I_459_b.html"> Katrei, der <span class="anno-attr anno-attr-dead">ver
+                     </a>, an Stelle des <a class="anno-person" data-ref="pe__herbert_QGW_II_I_459" data-hint="Herbert [pe__herbert_QGW_II_I_459]" data-hint-type="Person" href="../../../register/persons/pe__herbert_QGW_II_I_459.html">unmündigen<span class="anno-attr anno-attr-kin" data-corresp="pe__johann_QGW_II_I_459"><span class="tei-add">Sohnes</span></span> Herbort, Sohnes des <a class="anno-person" data-ref="pe__johann_QGW_II_I_459" data-hint="Johann († 24.11.1354) [pe__johann_QGW_II_I_459]" data-hint-type="Person" href="../../../register/persons/pe__johann_QGW_II_I_459.html"><span class="anno-attr anno-attr-dead">verstorbenen</span>
+                           <span class="anno-attr anno-attr-kin" data-corresp="pe__friedrich_schrannschreiber_StB_I_225">Bruders</span> Friedrichs Jansen</a> aus dessen <a class="anno-person" data-ref="pe__katharina_QGW_II_I_459_a" data-hint="Katharina Progantinne († 24.11.1354) [pe__katharina_QGW_II_I_459_a]" data-hint-type="Person" href="../../../register/persons/pe__katharina_QGW_II_I_459_a.html"><span class="anno-attr anno-attr-kin" data-corresp="pe__johann_QGW_II_I_459">Ehe</span> mit Katrein <span class="anno-attr anno-attr-dead">selig</span>, weiln genant die Progantinne</a></a>,
+                        <span class="anno-trigger anno-trigger-fn">ander seits</span></span> über <span class="anno-event" data-ref="ev__QGW_II_I_459_men_1">das Geschäft der <a class="anno-person" data-ref="pe__katharina_QGW_II_I_459_b" data-hint="Katharina Treterin († 24.11.1354) [pe__katharina_QGW_II_I_459_b]" data-hint-type="Person" href="../../../register/persons/pe__katharina_QGW_II_I_459_b.html"> Katrei, der <span class="anno-attr anno-attr-dead">ver
                            storbenen</span>
-                        <span class="anno-attr anno-attr-kin" data-corresp="pe__bartholomaeus_treter_QGW_II_I_459">Gemahlin</span><a class="anno-person" data-ref="pe__bartholomaeus_treter_QGW_II_I_459" title="Bartholomäus der Treter [pe__bartholomaeus_treter_QGW_II_I_459]" href="../../../register/persons/pe__bartholomaeus_treter_QGW_II_I_459.html"> Partelmes des Treter</a>
+                        <span class="anno-attr anno-attr-kin" data-corresp="pe__bartholomaeus_treter_QGW_II_I_459">Gemahlin</span><a class="anno-person" data-ref="pe__bartholomaeus_treter_QGW_II_I_459" data-hint="Bartholomäus der Treter [pe__bartholomaeus_treter_QGW_II_I_459]" data-hint-type="Person" href="../../../register/persons/pe__bartholomaeus_treter_QGW_II_I_459.html"> Partelmes des Treter</a>
                         und <span class="anno-attr anno-attr-kin" data-corresp="pe__herbert_QGW_II_I_459">Schwester</span>
-                        <a class="anno-person" data-ref="pe__herbert_QGW_II_I_459" title="Herbert [pe__herbert_QGW_II_I_459]" href="../../../register/persons/pe__herbert_QGW_II_I_459.html"> Herborts</a></a></span>.
+                        <a class="anno-person" data-ref="pe__herbert_QGW_II_I_459" data-hint="Herbert [pe__herbert_QGW_II_I_459]" data-hint-type="Person" href="../../../register/persons/pe__herbert_QGW_II_I_459.html"> Herborts</a></a></span>.
                   Sie bestimmen, dass <span class="anno-fn anno-fn-recipient" data-role="recipient"><span class="fn-label">Empfänger*in</span>
-                     <a class="anno-person" data-ref="pe__herbert_QGW_II_I_459" title="Herbert [pe__herbert_QGW_II_I_459]" href="../../../register/persons/pe__herbert_QGW_II_I_459.html">Herbort</a></span> 14 Fuder
+                     <a class="anno-person" data-ref="pe__herbert_QGW_II_I_459" data-hint="Herbert [pe__herbert_QGW_II_I_459]" data-hint-type="Person" href="../../../register/persons/pe__herbert_QGW_II_I_459.html">Herbort</a></span> 14 Fuder
                   Wein und 65 lb dn., wovon ihm Partelme der Treter bereits 7 Fuder heurigen Weines
                   und 8 lb dn. gegeben habe, erhalten solle, <span class="anno-fn anno-fn-recipient" data-role="recipient"><span class="fn-label">Empfänger*in</span>dagegen
-                     sprechen sie <a class="anno-person" data-ref="pe__bartholomaeus_treter_QGW_II_I_459" title="Bartholomäus der Treter [pe__bartholomaeus_treter_QGW_II_I_459]" href="../../../register/persons/pe__bartholomaeus_treter_QGW_II_I_459.html">dem
+                     sprechen sie <a class="anno-person" data-ref="pe__bartholomaeus_treter_QGW_II_I_459" data-hint="Bartholomäus der Treter [pe__bartholomaeus_treter_QGW_II_I_459]" data-hint-type="Person" href="../../../register/persons/pe__bartholomaeus_treter_QGW_II_I_459.html">dem
                         Letzteren</a> zu</span> ein halbes Joch Weingarten, gelegen ze Alsse zwischen
                   den Wegen, haisset der Schilter, und achthalb phunt gelts purchrechts ,<span class="anno-event" data-ref="ev__QGW_II_I_459_men_2"> welche Katrei für 75 lb dn. gehabt
                      hatte auf dem haus, gelegen an dem Neunmarcht, das weiln der vorgenanten ir
@@ -254,8 +260,8 @@
                      türchamrer </span>. Wer den Spruch nicht hält, zahlt dem Herzog 100 lb dn., dem
                   Rathe der Stadt zu Wien 50 lb dn. und dem Bürgerspital 50 lb dn.</span>
             </p></section><section class="tei-seal"><h2 class="tei-section-head">Siegelbeschreibung</h2><p><span class="anno-event" data-ref="ev__QGW_II_I_459"><span class="anno-fn anno-fn-witness" data-role="witness"><span class="fn-label">Zeug*in</span>Besiegelt von
-                     den <a class="anno-person" data-ref="pe__ulrich_bei_den_minderbruedern_FRA_II_1316_II_02.1" title="Ulrich bei den Minderbrüdern [pe__ulrich_bei_den_minderbruedern_FRA_II_1316_II_02.1]" href="../../../register/persons/pe__ulrich_bei_den_minderbruedern_FRA_II_1316_II_02.1.html">Ausstellern</a>
-                     <a class="anno-person" data-ref="pe__heinrich_wuerfel_QGW_II_I_459" title="Heinrich Würfel Würfel [pe__heinrich_wuerfel_QGW_II_I_459]" href="../../../register/persons/pe__heinrich_wuerfel_QGW_II_I_459.html"><span class="tei-add">Ausstellern</span></a><a class="anno-person" data-ref="pe__konrad_schoenaicher_QGW_II_I_459" title="Konrad Schönaicher [pe__konrad_schoenaicher_QGW_II_I_459]" href="../../../register/persons/pe__konrad_schoenaicher_QGW_II_I_459.html"><span class="tei-add">Ausstellern</span></a><a class="anno-person" data-ref="pe__heinrich_von_der_neisse_QGW_II_I_459" title="Heinrich von der Neisse [pe__heinrich_von_der_neisse_QGW_II_I_459]" href="../../../register/persons/pe__heinrich_von_der_neisse_QGW_II_I_459.html"><span class="tei-add">Ausstellern</span></a>.</span></span></p></section>
+                     den <a class="anno-person" data-ref="pe__ulrich_bei_den_minderbruedern_FRA_II_1316_II_02.1" data-hint="Ulrich bei den Minderbrüdern [pe__ulrich_bei_den_minderbruedern_FRA_II_1316_II_02.1]" data-hint-type="Person" href="../../../register/persons/pe__ulrich_bei_den_minderbruedern_FRA_II_1316_II_02.1.html">Ausstellern</a>
+                     <a class="anno-person" data-ref="pe__heinrich_wuerfel_QGW_II_I_459" data-hint="Heinrich Würfel Würfel [pe__heinrich_wuerfel_QGW_II_I_459]" data-hint-type="Person" href="../../../register/persons/pe__heinrich_wuerfel_QGW_II_I_459.html"><span class="tei-add">Ausstellern</span></a><a class="anno-person" data-ref="pe__konrad_schoenaicher_QGW_II_I_459" data-hint="Konrad Schönaicher [pe__konrad_schoenaicher_QGW_II_I_459]" data-hint-type="Person" href="../../../register/persons/pe__konrad_schoenaicher_QGW_II_I_459.html"><span class="tei-add">Ausstellern</span></a><a class="anno-person" data-ref="pe__heinrich_von_der_neisse_QGW_II_I_459" data-hint="Heinrich von der Neisse [pe__heinrich_von_der_neisse_QGW_II_I_459]" data-hint-type="Person" href="../../../register/persons/pe__heinrich_von_der_neisse_QGW_II_I_459.html"><span class="tei-add">Ausstellern</span></a>.</span></span></p></section>
 
             <!-- Data layer: provenance strip. Korpus + Idno stehen schon
                  in der Toolbar-Breadcrumb; hier daher NUR die technische
@@ -313,7 +319,7 @@
          dem TEI in mehreren Untertabellen, Personen/Orgs/Orte,
          Ereignisse, Dispositivformeln, Editorische Ergaenzungen. Wird
          per JS aus den entsprechenden Spans im Body aufgebaut. -->
-    <section class="annotations-view" id="factoid-view" aria-label="Annotationen">
+    <section class="annotations-view" id="annotations-view" aria-label="Annotationen">
         <header class="annotations-header">
             <h2 class="annotations-title">Annotationen</h2>
             <span class="annotations-summary"></span>
@@ -359,13 +365,14 @@
         </div>
     </footer>
 
-    <script src="../../../static/js/core.js?v=20260511112948"></script>
-    <script src="../../../static/js/provenance.js?v=20260511112948"></script>
-    <script src="../../../static/js/basket.js?v=20260511112948"></script>
+    <script src="../../../static/js/core.js?v=20260511125458"></script>
+    <script src="../../../static/js/tip.js?v=20260511125458"></script>
+    <script src="../../../static/js/hint.js?v=20260511125458"></script>
+    <script src="../../../static/js/basket.js?v=20260511125458"></script>
     
-<script src="../../../static/js/tooltips.js?v=20260511112948"></script>
-<script src="../../../static/js/facsimile.js?v=20260511112948"></script>
-<script src="../../../static/js/document.js?v=20260511112948"></script>
+<script src="../../../static/js/facsimile.js?v=20260511125458"></script>
+<script src="../../../static/js/document.js?v=20260511125458"></script>
+<script src="../../../static/js/basket-mount.js?v=20260511125458"></script>
 
 </body>
 </html>

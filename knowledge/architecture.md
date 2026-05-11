@@ -19,7 +19,7 @@ related: [data, requirements, decisions, ui-design, journal]
 
 # Architektur
 
-Bausteine der Edition und ihr Zusammenspiel. Konzeptionell, ohne Implementierungsdetails.
+Bausteine der Datenbank und ihr Zusammenspiel. Konzeptionell, ohne Implementierungsdetails.
 
 ## Datenfluss
 
@@ -29,9 +29,9 @@ Jede Stufe ist für sich nachvollziehbar. Wer eine Aussage der Oberfläche anzwe
 
 ## TEI als Quelle
 
-Die Quelldaten liegen in TEI-XML vor, dem etablierten Standard für die digitale Edition historischer Texte. Die Wahl ist nicht konjunkturell, sondern langfristig gedacht. TEI dokumentiert Text und Annotation in einem einzigen Dokument und bleibt auch nach dem Ende dieser Edition lesbar.
+Die Quelldaten liegen in TEI-XML vor, dem etablierten Standard für die digitale Erschließung historischer Texte. Die Wahl ist nicht konjunkturell, sondern langfristig gedacht. TEI dokumentiert Text und Annotation in einem einzigen Dokument und bleibt auch nach dem Ende dieser Datenbank lesbar.
 
-Die Annotationsebenen der Edition sind in [[data#Annotationsebenen]] beschrieben.
+Die Annotationsebenen sind in [[data#Annotationsebenen]] beschrieben.
 
 ## Pipeline
 
@@ -63,13 +63,13 @@ Die Oberfläche ist durch Jinja2-Templates definiert. Ein Basis-Template hält N
 
 ## Statische HTML-Ausgabe
 
-Die Edition wird als statische Website ausgeliefert. Jede Seite ist eine fertige HTML-Datei, die GitHub Pages ohne Server-Logik ausliefert. Dynamische Funktionen (Filter, Suche, Umschalter) laufen im Browser gegen vorgebaute JSON-Indexe.
+Die Datenbank wird als statische Website ausgeliefert. Jede Seite ist eine fertige HTML-Datei, die GitHub Pages ohne Server-Logik ausliefert. Dynamische Funktionen (Filter, Suche, Umschalter) laufen im Browser gegen vorgebaute JSON-Indexe.
 
 Der Vorteil ist doppelt. Die Infrastruktur ist einfach und die einzelnen Seiten sind zitierbar, weil ihre URL langfristig stabil bleibt. Die Grenze liegt darin, dass sehr große oder stark wechselnde Daten besondere Indexierungsstrategien auf Client-Seite verlangen.
 
 ## Prototyp-Charakter
 
-Die Edition ist ein Prototyp, kein produktionsreifes System. Architekturentscheidungen sind auf Iterationsgeschwindigkeit und Nachvollziehbarkeit optimiert, nicht auf Dauerbetrieb mit vielen Nutzerinnen.
+Die Datenbank ist ein Prototyp, kein produktionsreifes System. Architekturentscheidungen sind auf Iterationsgeschwindigkeit und Nachvollziehbarkeit optimiert, nicht auf Dauerbetrieb mit vielen Nutzerinnen.
 
 Das heißt nicht, dass der Prototyp instabil wäre. Es heißt, dass Entscheidungen wie „keine Datenbank, keine Auth, keine serverseitige Logik" bewusst getroffen sind, weil sie in dieser Phase mehr Nutzen als Kosten bringen.
 
@@ -87,7 +87,7 @@ GitHub Pages ist der Auslieferungskanal. Die Wahl ist kostenfrei, zuverlässig u
 
 ## Grenzen der Architektur
 
-Die statische Architektur leistet keine Echtzeit-Daten, keine persistierten Nutzereingaben und keine Authentifizierung. Das ist akzeptabel, weil die Edition Publikationsform ist, nicht kollaboratives Werkzeug. Wer an den Quelldaten arbeitet, tut das auf einer anderen Ebene als der, die die Edition bedient.
+Die statische Architektur leistet keine Echtzeit-Daten, keine persistierten Nutzereingaben und keine Authentifizierung. Das ist akzeptabel, weil die Datenbank Publikationsform ist, nicht kollaboratives Werkzeug. Wer an den Quelldaten arbeitet, tut das auf einer anderen Ebene als der, die die Datenbank bedient.
 
 ## Provenienz-Indizes
 
@@ -103,7 +103,7 @@ Damit ist die Aggregation robust gegen Urteilslisten, Zeugenreihen und Formelwie
 
 ## Datenstand aus dem Pipeline-Repo
 
-Die Fußzeile der Edition führt einen **Datenstand**, der auf den letzten Commit des Pipeline-Repos verweist. Technisch ermittelt der Build das Commit-Datum per `git log -1 --format=%cI` im Pipeline-Repo-Root und formatiert es in lesbarer deutscher Langform. Der Datenstand ist damit nicht das Tagesdatum des Build-Laufs, sondern der Stand der Quellen, auf denen der Build beruht.
+Die Fußzeile führt einen **Datenstand**, der auf den letzten Commit des Pipeline-Repos verweist. Technisch ermittelt der Build das Commit-Datum per `git log -1 --format=%cI` im Pipeline-Repo-Root und formatiert es in lesbarer deutscher Langform. Der Datenstand ist damit nicht das Tagesdatum des Build-Laufs, sondern der Stand der Quellen, auf denen der Build beruht.
 
 Getrennt davon bleibt das **Build-Datum** als Zeitstempel pro gerenderter Seite. Es markiert, wann die Einzelseite zuletzt neu gebaut wurde. Beide Angaben werden lesbar, nicht als ISO-Zeichenkette ausgegeben. Siehe [[ui-design#Datenstand und Build-Datum]].
 
@@ -123,13 +123,13 @@ Die Schreib-Strategie nutzt `history.replaceState`, nicht `pushState` — Filter
 
 Cross-Page-Sprünge transferieren das gemeinsame Subset der Filter (Zeitraum, Geschlecht) in andere Listenseiten. Das Mapping ist asymmetrisch, weil das Filter-Vokabular der Quellen-Liste (`with-f`/`only-f`/`only-m`/`none`) nicht symmetrisch zur Sex-Achse der Visualisierungen (`m`/`f`/`unspecified`) liegt; die Konvention ist in [[decisions#Cross-Page-Sprung mit Filter-Übernahme]] festgehalten. Page-spezifische Filter (Rollen, Beziehungstypen, Bezeichnungen, Transaktionstypen, Stack-Fokus) werden bewusst nicht übertragen — die Quellen-Liste kennt sie nicht. Die Lückenführung ist transparent über den Tooltip am Cross-Nav-Link.
 
-## Wissenskorb als clientseitige Persistenz
+## Datenkorb als clientseitige Persistenz
 
 Eine Sammler-Schicht über alle Quellen-Listen ermöglicht es Forschenden, ein Forschungs-Korpus über Sitzungen hinweg zusammenzustellen. Der Speicher ist `localStorage` mit einem versionierten Schlüssel; der Zustand wird über parallele Browser-Tabs synchron gehalten via `storage`-Event und ein internes Custom-Event für In-Tab-Updates.
 
-Die Architektur-Entscheidung gegen Server-Persistenz folgt aus dem Prototyp-Charakter (siehe oben) und aus [[decisions#Wissenskorb als clientseitige Sammlung]]. Eine Account-basierte Persistenz wäre ein anderer Stack mit Auth, DSGVO-Implikationen und laufenden Speicherkosten — ohne erkennbaren Mehrwert für die jetzt bedienten Forschungsszenarien. Der Bridge-Pfad in externe Werkzeuge (Zotero, BibTeX-Konverter, Excel) läuft über CSV-Export.
+Die Architektur-Entscheidung gegen Server-Persistenz folgt aus dem Prototyp-Charakter (siehe oben) und aus [[decisions#Datenkorb als clientseitige Sammlung]]. Eine Account-basierte Persistenz wäre ein anderer Stack mit Auth, DSGVO-Implikationen und laufenden Speicherkosten — ohne erkennbaren Mehrwert für die jetzt bedienten Forschungsszenarien. Der Bridge-Pfad in externe Werkzeuge (Zotero, BibTeX-Konverter, Excel) läuft über CSV-Export.
 
-Die Komponenten-Verteilung: `wissenskorb.js` lebt auf jeder Seite (geladen über `base.html`), liefert die State-API und einen kleinen Render-Helper für den „+"-Knopf. Die Listen-Renderer (Quellen-Tabelle, Drill-Overlay, Brush-Drill) injizieren den Knopf in ihre Zeilen-Markup. Das Nav trägt das Korb-Icon mit Live-Badge. `korb.html` ist eine eigene Seite mit Liste, Remove-, Clear- und CSV-Export-Aktionen.
+Die Komponenten-Verteilung: `basket.js` lebt auf jeder Seite (geladen über `base.html`), liefert die State-API und einen kleinen Render-Helper für den „+"-Knopf. Die Listen-Renderer (Quellen-Tabelle, Drill-Overlay, Brush-Drill) injizieren den Knopf in ihre Zeilen-Markup. Das Nav trägt das Korb-Icon mit Live-Badge. `korb.html` ist eine eigene Seite mit Liste, Remove-, Clear- und CSV-Export-Aktionen.
 
 ## Siehe auch
 

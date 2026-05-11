@@ -3,22 +3,22 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <meta http-equiv="Content-Security-Policy" content="default-src 'self'; script-src 'self'; style-src 'self'; font-src 'self'; img-src 'self' data: https://images.monasterium.net https://www.monasterium.net; connect-src 'self'; frame-ancestors 'none'; base-uri 'self'; form-action 'self'; upgrade-insecure-requests">
+    <meta http-equiv="Content-Security-Policy" content="default-src 'self'; script-src 'self'; style-src 'self'; font-src 'self'; img-src 'self' data: https://images.monasterium.net https://www.monasterium.net; connect-src 'self'; base-uri 'self'; form-action 'self'; upgrade-insecure-requests">
     <meta name="referrer" content="strict-origin-when-cross-origin">
     <meta http-equiv="Permissions-Policy" content="camera=(), microphone=(), geolocation=(), interest-cohort=()">
     <title>Herbert auf der Säule (&dagger; 08.07.1351), Datenbank</title>
     <link rel="preload" as="font" type="font/woff2" crossorigin
           href="../../static/fonts/inter-400-latin.woff2">
-    <link rel="stylesheet" href="../../static/css/fonts.css?v=20260511112948">
-    <link rel="stylesheet" href="../../static/css/tokens.css?v=20260511112948">
-    <link rel="stylesheet" href="../../static/css/base.css?v=20260511112948">
-    <link rel="stylesheet" href="../../static/css/components.css?v=20260511112948">
-    <link rel="stylesheet" href="../../static/css/responsive.css?v=20260511112948">
-    <link rel="stylesheet" href="../../static/css/print.css?v=20260511112948">
-    <link rel="stylesheet" href="../../static/css/provenance.css?v=20260511112948">
+    <link rel="stylesheet" href="../../static/css/fonts.css?v=20260511125458">
+    <link rel="stylesheet" href="../../static/css/tokens.css?v=20260511125458">
+    <link rel="stylesheet" href="../../static/css/base.css?v=20260511125458">
+    <link rel="stylesheet" href="../../static/css/components.css?v=20260511125458">
+    <link rel="stylesheet" href="../../static/css/responsive.css?v=20260511125458">
+    <link rel="stylesheet" href="../../static/css/print.css?v=20260511125458">
+    <link rel="stylesheet" href="../../static/css/tip.css?v=20260511125458">
     
-<link rel="stylesheet" href="../../static/css/document.css?v=20260511112948">
-<link rel="stylesheet" href="../../static/css/person.css?v=20260511112948">
+<link rel="stylesheet" href="../../static/css/document.css?v=20260511125458">
+<link rel="stylesheet" href="../../static/css/person.css?v=20260511125458">
 
 </head>
 <body data-root-path="../.."
@@ -48,8 +48,6 @@
         <a href="../../register/persons.html">Personen</a>
         
         <a href="../../register/orgs.html">Organisationen</a>
-        
-        <a href="../../register/places.html">Orte</a>
         
     </div>
 </div>
@@ -91,7 +89,7 @@
     </div>
 </div>
 
-                <a href="../../korb.html" class="nav-basket" aria-label="Wissenskorb">
+                <a href="../../korb.html" class="nav-basket" aria-label="Datenkorb">
                     <svg width="18" height="18" viewBox="0 0 18 18" fill="none" aria-hidden="true">
                         <path d="M3 5h12l-1.2 8.5a1 1 0 0 1-1 .85H5.2a1 1 0 0 1-1-.85L3 5z"
                               stroke="currentColor" stroke-width="1.4" fill="none"
@@ -112,11 +110,23 @@
 
     <div class="person-toolbar">
         <div class="person-toolbar-inner">
-            <nav class="person-breadcrumb" aria-label="Position">
-                <a href="../../register/persons.html">Personenregister</a>
-                <span class="bc-sep">&rsaquo;</span>
-                <span class="bc-doc"><strong>Herbert auf der Säule</strong></span>
-            </nav>
+            <div class="person-toolbar-row">
+                <nav class="person-breadcrumb" aria-label="Position">
+                    <a href="../../register/persons.html">Personenregister</a>
+                    <span class="bc-sep">&rsaquo;</span>
+                    <span class="bc-doc"><strong>Herbert auf der Säule</strong></span>
+                </nav>
+                <div class="person-toolbar-actions">
+                    <span class="toolbar-basket-mount"
+                          data-basket-type="person"
+                          data-basket-id="pe__herbert_auf_der_saeule_QGW_II_I_912"
+                          data-basket-label="Herbert auf der Säule"
+                          data-basket-url="register/persons/pe__herbert_auf_der_saeule_QGW_II_I_912.html"
+                          data-basket-sex="m"
+                          data-basket-active-min="1330"
+                          data-basket-active-max="1398"></span>
+                </div>
+            </div>
             <div class="person-toolbar-meta">
                 <span class="meta-pair">
                     <span class="meta-label">Geschlecht</span>
@@ -124,7 +134,33 @@
                 </span>
                 
                 <span class="meta-pair">
-                    <span class="meta-label">Belegt</span>
+                    <span class="meta-label">Belegt
+<span class="tip-wrap">
+    <button type="button" class="tip-trigger tip-trigger--icon"
+            aria-expanded="false" aria-haspopup="dialog"
+            aria-controls="person-belegt"
+            data-tip="person-belegt"
+            aria-label="Definition: Beleg-Zeitraum">
+        <svg width="13" height="13" viewBox="0 0 16 16" aria-hidden="true">
+            <circle cx="8" cy="8" r="7" stroke="currentColor" stroke-width="1.4" fill="none"/>
+            <text x="8" y="11.6" text-anchor="middle" font-size="9.5" font-weight="700"
+                  fill="currentColor" font-family="Georgia, serif">i</text>
+        </svg>
+    </button>
+    <aside class="tip-popover tip-popover--glossary"
+           id="person-belegt" role="dialog" aria-hidden="true"
+           aria-label="Definition: Beleg-Zeitraum">
+        <header class="tip-head">
+            <h3 class="tip-title">Beleg-Zeitraum</h3>
+            <button type="button" class="tip-close" aria-label="Schlie&szlig;en">&times;</button>
+        </header>
+        <div class="tip-body">
+            <p>Erste und letzte Datierung einer Quelle, in der die Person erscheint. Bei einzelnem Beleg wird nur ein Jahr angegeben.</p>
+            
+        </div>
+    </aside>
+</span>
+</span>
                     <span class="meta-value">1330 bis 1398</span>
                 </span>
                 
@@ -134,6 +170,10 @@
                     <span class="meta-value">08.07.1351</span>
                 </span>
                 
+                <span class="meta-pair">
+                    <span class="meta-label">Quellen</span>
+                    <span class="meta-value">13</span>
+                </span>
                 <span class="meta-pair person-id-pair">
                     <span class="meta-label">ID</span>
                     <code class="meta-value person-id">pe__herbert_auf_der_saeule_QGW_II_I_912</code>
@@ -150,16 +190,48 @@
             
         </h1>
         
+        
         <p class="person-note">Gem. Helena die in 2. Ehe Gem. Haunold der Schuchler II., Bruder Jans/Johann, Nichte Anna</p>
         
         
-        <p class="person-titles">
+        <p class="person-titles" data-collapsible="22">
             <span class="pt-label">In den Quellen genannt als</span>
             <span class="pt-chip">hern</span><span class="pt-chip">Grundherrn</span>
         </p>
         
         
+        
     </header>
+
+    
+    <section class="role-strip" aria-label="Rollen in Rechtsgeschäften">
+        <h2 class="role-strip-title">Rollen in Rechtsgeschäften</h2>
+        <div class="role-strip-cells">
+            
+            <div class="role-cell role-cell-issuer">
+                <span class="role-cell-count">4</span>
+                <span class="role-cell-label">Aussteller*in</span>
+            </div>
+            
+            <div class="role-cell role-cell-recipient">
+                <span class="role-cell-count">1</span>
+                <span class="role-cell-label">Empfänger*in</span>
+            </div>
+            
+            <div class="role-cell role-cell-witness">
+                <span class="role-cell-count">5</span>
+                <span class="role-cell-label">Zeuge / Siegler*in</span>
+            </div>
+            
+            <div class="role-cell role-cell-other">
+                <span class="role-cell-count">1</span>
+                <span class="role-cell-label">Sonstige</span>
+            </div>
+            
+        </div>
+        <p class="role-strip-hint">Summe Rollen-Belegungen: 11. Mehrfach-Rollen pro Quelle sind möglich.</p>
+    </section>
+    
 
     
 
@@ -176,6 +248,7 @@
                 <span class="rel-block-count">9</span>
                 <span class="rel-block-hint">Verwandtschaftsverhältnisse, wie sie in den Quellen explizit benannt werden.</span>
             </header>
+            
             <table class="rel-table">
                 <thead>
                     <tr>
@@ -196,7 +269,7 @@
                         <td class="rel-col-label"><em>gepruder</em></td>
                         <td class="rel-col-perspective">
                             
-                                Herbert auf der Säule → Johann auf der Säule
+                                Herbert auf der Säule &rsaquo; Johann auf der Säule
                             
                         </td>
                         <td class="rel-col-source">
@@ -215,7 +288,7 @@
                         <td class="rel-col-label"><em>Witwe</em></td>
                         <td class="rel-col-perspective">
                             
-                                Helena → Herbert auf der Säule
+                                Helena &rsaquo; Herbert auf der Säule
                             
                         </td>
                         <td class="rel-col-source">
@@ -234,7 +307,7 @@
                         <td class="rel-col-label"><em>wittibe</em></td>
                         <td class="rel-col-perspective">
                             
-                                Kunigunde auf der Säule → Herbert auf der Säule
+                                Kunigunde auf der Säule &rsaquo; Herbert auf der Säule
                             
                         </td>
                         <td class="rel-col-source">
@@ -253,7 +326,7 @@
                         <td class="rel-col-label"><em>wittibe</em></td>
                         <td class="rel-col-perspective">
                             
-                                Kunigunde auf der Säule → Herbert auf der Säule
+                                Kunigunde auf der Säule &rsaquo; Herbert auf der Säule
                             
                         </td>
                         <td class="rel-col-source">
@@ -272,7 +345,7 @@
                         <td class="rel-col-label"><em>gepruder</em></td>
                         <td class="rel-col-perspective">
                             
-                                Johann auf der Säule → Herbert auf der Säule
+                                Johann auf der Säule &rsaquo; Herbert auf der Säule
                             
                         </td>
                         <td class="rel-col-source">
@@ -291,7 +364,7 @@
                         <td class="rel-col-label"><em>gepruder</em></td>
                         <td class="rel-col-perspective">
                             
-                                Herbert auf der Säule → Johann auf der Säule
+                                Herbert auf der Säule &rsaquo; Johann auf der Säule
                             
                         </td>
                         <td class="rel-col-source">
@@ -310,7 +383,7 @@
                         <td class="rel-col-label"><em>geprüder</em></td>
                         <td class="rel-col-perspective">
                             
-                                Herbert auf der Säule → Johann auf der Säule
+                                Herbert auf der Säule &rsaquo; Johann auf der Säule
                             
                         </td>
                         <td class="rel-col-source">
@@ -329,7 +402,7 @@
                         <td class="rel-col-label"><em>Oheims</em></td>
                         <td class="rel-col-perspective">
                             
-                                Herbert auf der Säule → Anna
+                                Herbert auf der Säule &rsaquo; Anna
                             
                         </td>
                         <td class="rel-col-source">
@@ -348,7 +421,7 @@
                         <td class="rel-col-label"><em>wirt</em></td>
                         <td class="rel-col-perspective">
                             
-                                Herbert auf der Säule → Helena
+                                Herbert auf der Säule &rsaquo; Helena
                             
                         </td>
                         <td class="rel-col-source">
@@ -374,6 +447,7 @@
                 <span class="rel-block-count">3</span>
                 <span class="rel-block-hint">Stellvertretungs-Beziehungen, z. B. handelt eine Person an Stelle einer anderen.</span>
             </header>
+            
             <table class="rel-table">
                 <thead>
                     <tr>
@@ -394,7 +468,7 @@
                         <td class="rel-col-label"><em>Geschäftsvollstrecker</em></td>
                         <td class="rel-col-perspective">
                             
-                                Michael Geukramer → Herbert auf der Säule
+                                Michael Geukramer &rsaquo; Herbert auf der Säule
                             
                         </td>
                         <td class="rel-col-source">
@@ -413,7 +487,7 @@
                         <td class="rel-col-label"><em>Geschäftsvollstrecker</em></td>
                         <td class="rel-col-perspective">
                             
-                                Ulrich Zinkk → Herbert auf der Säule
+                                Ulrich Zinkk &rsaquo; Herbert auf der Säule
                             
                         </td>
                         <td class="rel-col-source">
@@ -432,7 +506,7 @@
                         <td class="rel-col-label"><em>Geschäftsvollstrecker</em></td>
                         <td class="rel-col-perspective">
                             
-                                Stephan Leitner → Herbert auf der Säule
+                                Stephan Leitner &rsaquo; Herbert auf der Säule
                             
                         </td>
                         <td class="rel-col-source">
@@ -455,6 +529,7 @@
                 <span class="rel-block-count">4</span>
                 <span class="rel-block-hint">Berufs- oder Amtsbezeichnung in Bezug auf eine Institution.</span>
             </header>
+            
             <table class="rel-table">
                 <thead>
                     <tr>
@@ -475,7 +550,7 @@
                         <td class="rel-col-label"><em>purger</em></td>
                         <td class="rel-col-perspective">
                             
-                                Herbert auf der Säule → Wien
+                                Herbert auf der Säule &rsaquo; Wien
                             
                         </td>
                         <td class="rel-col-source">
@@ -494,7 +569,7 @@
                         <td class="rel-col-label"><em>purger ze Wienne</em></td>
                         <td class="rel-col-perspective">
                             
-                                Herbert auf der Säule → Wien
+                                Herbert auf der Säule &rsaquo; Wien
                             
                         </td>
                         <td class="rel-col-source">
@@ -513,7 +588,7 @@
                         <td class="rel-col-label"><em>purger ze Wienn</em></td>
                         <td class="rel-col-perspective">
                             
-                                Herbert auf der Säule → Wien
+                                Herbert auf der Säule &rsaquo; Wien
                             
                         </td>
                         <td class="rel-col-source">
@@ -532,7 +607,7 @@
                         <td class="rel-col-label"><em>Bürgers</em></td>
                         <td class="rel-col-perspective">
                             
-                                Herbert auf der Säule → Wien
+                                Herbert auf der Säule &rsaquo; Wien
                             
                         </td>
                         <td class="rel-col-source">
@@ -550,18 +625,27 @@
         
         
         
+        
+        
+        
+        
+        
+        
     </section>
     
 
     
     <section class="person-sources" aria-label="Quellen mit Nennung">
         <h2 class="section-head">Quellen mit Nennung</h2>
+        
         <table class="person-source-table">
             <thead>
                 <tr>
                     <th scope="col" class="src-col-idno">Nr.</th>
                     <th scope="col" class="src-col-date">Datum</th>
                     <th scope="col" class="src-col-corpus">Quellenkorpus</th>
+                    <th scope="col" class="src-col-label">Bezeichnung</th>
+                    <th scope="col" class="src-col-role">Rolle</th>
                     <th scope="col" class="src-col-regest">Regest</th>
                 </tr>
             </thead>
@@ -571,6 +655,11 @@
                     <td class="src-col-idno"><a href="../../documents/QGW/Vienna_1177-1414_ready/129.html">129</a></td>
                     <td class="src-col-date">1330 XII 05</td>
                     <td class="src-col-corpus">QGW II/1 (1177–1414)</td>
+                    <td class="src-col-label"><em>Grundherrn</em></td>
+                    <td class="src-col-role">
+                        <span class="role-chip role-chip-other">Sonstige</span><span class="role-chip role-chip-witness">Zeuge / Siegler*in</span>
+                        
+                    </td>
                     <td class="src-col-regest">Volchmar auf der Seule und Kathrei, sein hausvrowe, verkaufen mit Handen des Grundherrn Herborts auf der Seule ihrer rechten gulte 2 lb dn. Geldes Burgrechts auf hern Chunrades haus des Veltzer von…</td>
                 </tr>
             
@@ -578,6 +667,11 @@
                     <td class="src-col-idno"><a href="../../documents/QGW/Vienna_1177-1414_ready/386.html">386</a></td>
                     <td class="src-col-date">1351 VII 03</td>
                     <td class="src-col-corpus">QGW II/1 (1177–1414)</td>
+                    <td class="src-col-label"><em>hern</em></td>
+                    <td class="src-col-role">
+                        
+                        -
+                    </td>
                     <td class="src-col-regest">Elsbet, weiln hausvrowe hern Dietreichs hausvrowe des Urbaetschen saeligen, verkauft mit Einwilligung ihres Sohnes Chunrats des Urbaetschen und ihrer aidem hern Pilgreims des Chitzels, der gesessen…</td>
                 </tr>
             
@@ -585,6 +679,11 @@
                     <td class="src-col-idno"><a href="../../documents/QGW/Vienna_1177-1414_ready/387.html">387</a></td>
                     <td class="src-col-date">1351 VII 08</td>
                     <td class="src-col-corpus">QGW II/1 (1177–1414)</td>
+                    <td class="src-col-label"><em>hern</em></td>
+                    <td class="src-col-role">
+                        
+                        -
+                    </td>
                     <td class="src-col-regest">Elsbet hausvrowe, weiln Dietreichs hausvrowe des Urbätschen saelige, Chunrat der Urbaetsch, ir sun , und Chunigunt, seine Hausfrau, Pilgreim der Chitzel von der Neunstat, ir aidem, und Anne, seine…</td>
                 </tr>
             
@@ -592,6 +691,11 @@
                     <td class="src-col-idno"><a href="../../documents/QGW/Vienna_1177-1414_ready/392.html">392</a></td>
                     <td class="src-col-date">1351 X 18</td>
                     <td class="src-col-corpus">QGW II/1 (1177–1414)</td>
+                    <td class="src-col-label"><em>hern</em></td>
+                    <td class="src-col-role">
+                        
+                        -
+                    </td>
                     <td class="src-col-regest">Albrecht der Prankker, Engelprecht der Groz/zz/ze, sein aidem, Anna, dessen Hausfrau, Ulreich, des vorgenanten herrn Albrechts sun, Margret Töchter und Diemut, seine Töchter (die letzten drei noch…</td>
                 </tr>
             
@@ -599,6 +703,11 @@
                     <td class="src-col-idno"><a href="../../documents/QGW/Vienna_1177-1414_ready/756.html">756</a></td>
                     <td class="src-col-date">1369 VII 11</td>
                     <td class="src-col-corpus">QGW II/1 (1177–1414)</td>
+                    <td class="src-col-label"><em>-</em></td>
+                    <td class="src-col-role">
+                        <span class="role-chip role-chip-issuer">Aussteller*in</span>
+                        
+                    </td>
                     <td class="src-col-regest">Swester Ann die Sparerinn, priorinne, und der convent gemain der geistlichen vrown ze Tuln Prediger ordens, Jans gepruder und Herwort, gepruder auf der Sauln , verkaufen mit Handen des Bürgermeisters…</td>
                 </tr>
             
@@ -606,6 +715,11 @@
                     <td class="src-col-idno"><a href="../../documents/QGW/Vienna_1177-1414_ready/912.html">912</a></td>
                     <td class="src-col-date">1377 VIII 20</td>
                     <td class="src-col-corpus">QGW II/1 (1177–1414)</td>
+                    <td class="src-col-label"><em>-</em></td>
+                    <td class="src-col-role">
+                        <span class="role-chip role-chip-issuer">Aussteller*in</span><span class="role-chip role-chip-witness">Zeuge / Siegler*in</span>
+                        
+                    </td>
                     <td class="src-col-regest">Janns purger ze Wienne und Herwort, geprüder auf der Sauln, purger ze Wienne, geben nach dem Gebote Herzog Rudolfs IV. vrown Elsbeten der Velczpergerinne 3 dn. gelts gruntrechts von ihrem Hause,…</td>
                 </tr>
             
@@ -613,6 +727,11 @@
                     <td class="src-col-idno"><a href="../../documents/QGW/Vienna_1177-1414_ready/928.html">928</a></td>
                     <td class="src-col-date">1378 II 19</td>
                     <td class="src-col-corpus">QGW II/1 (1177–1414)</td>
+                    <td class="src-col-label"><em>-</em></td>
+                    <td class="src-col-role">
+                        <span class="role-chip role-chip-witness">Zeuge / Siegler*in</span>
+                        
+                    </td>
                     <td class="src-col-regest">Hanns der Stoll und Anna, seine Hausfrau , verkaufen mit Handen ihres Bergherrn pru/eder Giligen, comoteur des hauses dacz dem Deutschenhaus ze Wienn , ihres ledigen Gutes fu/omf viertail Weingarten,…</td>
                 </tr>
             
@@ -620,6 +739,11 @@
                     <td class="src-col-idno"><a href="../../documents/QGW/Vienna_1177-1414_ready/946.html">946</a></td>
                     <td class="src-col-date">1378 IX 09</td>
                     <td class="src-col-corpus">QGW II/1 (1177–1414)</td>
+                    <td class="src-col-label"><em>-</em></td>
+                    <td class="src-col-role">
+                        <span class="role-chip role-chip-witness">Zeuge / Siegler*in</span>
+                        
+                    </td>
                     <td class="src-col-regest">Janns der Smauz/zz/zer sun, hern Jannsen seligen sun des Smauz/zz/zer , verkauft mit Handen des Bürgermeisters hern Pauln des Holzchouffels und des mit Handen rates gemain der stat ze Wienne den ihm…</td>
                 </tr>
             
@@ -627,6 +751,11 @@
                     <td class="src-col-idno"><a href="../../documents/QGW/Vienna_1177-1414_ready/1060.html">1060</a></td>
                     <td class="src-col-date">1383 XI 27</td>
                     <td class="src-col-corpus">QGW II/1 (1177–1414)</td>
+                    <td class="src-col-label"><em>-</em></td>
+                    <td class="src-col-role">
+                        <span class="role-chip role-chip-issuer">Aussteller*in</span><span class="role-chip role-chip-witness">Zeuge / Siegler*in</span>
+                        
+                    </td>
                     <td class="src-col-regest">Hanns Bürger und Herwort, gepruder auf der Se/aul, purger ze Wienne, geben nach dem Gebote Herzog Rudolfs IV. hern Hannsen von Tierna, hubmaister in Österreich, 3 dn. gelts gruntrechts von seinem…</td>
                 </tr>
             
@@ -634,6 +763,11 @@
                     <td class="src-col-idno"><a href="../../documents/QGW/Vienna_1177-1414_ready/1211.html">1211</a></td>
                     <td class="src-col-date">1391 VII 25</td>
                     <td class="src-col-corpus">QGW II/1 (1177–1414)</td>
+                    <td class="src-col-label"><em>-</em></td>
+                    <td class="src-col-role">
+                        <span class="role-chip role-chip-recipient">Empfänger*in</span>
+                        
+                    </td>
                     <td class="src-col-regest">Niclas der Flusthart, purger ze Wienn, verkauft mit Handen hern Michels des Geuchramer, purgermaister und münzmaister, und des rats gemain der stat ze Wienne ein Haus und einen Gewandkeller, was ihm…</td>
                 </tr>
             
@@ -641,6 +775,11 @@
                     <td class="src-col-idno"><a href="../../documents/QGW/Vienna_1177-1414_ready/1298.html">1298</a></td>
                     <td class="src-col-date">1395 IV 02</td>
                     <td class="src-col-corpus">QGW II/1 (1177–1414)</td>
+                    <td class="src-col-label"><em>-</em></td>
+                    <td class="src-col-role">
+                        
+                        -
+                    </td>
                     <td class="src-col-regest">Jorg der Neuer, des rates der stat ze Wienn, und Elspet, seine Hausfrau , verkaufen mit Handen ihres Bergherrn hern Petreins, kaplan der kapellen Unser Fraun und sand Johanns des ewangelisten,…</td>
                 </tr>
             
@@ -648,6 +787,11 @@
                     <td class="src-col-idno"><a href="../../documents/Stadtbuecher/Band_1_1395-1400_ready/273.html">274</a></td>
                     <td class="src-col-date">1398 Juli 11</td>
                     <td class="src-col-corpus">Stadtbücher Bd. 1 (1395–1400)</td>
+                    <td class="src-col-label"><em>-</em></td>
+                    <td class="src-col-role">
+                        
+                        -
+                    </td>
                     <td class="src-col-regest">pr. mü., Einbr. 2 Zg., Ma (Indez: Item gescheft Elenen Hawnolts des Schuchler hausfraw) Elena Hawnolten Schuehler uxoris geschefft. Item an sand Margreten abennd der heiligen junkchfrawn kom auch fur…</td>
                 </tr>
             
@@ -655,6 +799,11 @@
                     <td class="src-col-idno"><a href="../../documents/QGW/Vienna_1177-1414_ready/1400.html">1400</a></td>
                     <td class="src-col-date">1398 VII 15</td>
                     <td class="src-col-corpus">QGW II/1 (1177–1414)</td>
+                    <td class="src-col-label"><em>-</em></td>
+                    <td class="src-col-role">
+                        
+                        -
+                    </td>
                     <td class="src-col-regest">Herzog Wilhelm beurkundet, dass auf seine Anordnung der Wiener Bürger Haunolt der Schüchler Herwarts auf der Seul seligen kinder mit irer hab, die er während mehrerer Jahre von Micheln dem Geukramer…</td>
                 </tr>
             
@@ -687,11 +836,13 @@
         </div>
     </footer>
 
-    <script src="../../static/js/core.js?v=20260511112948"></script>
-    <script src="../../static/js/provenance.js?v=20260511112948"></script>
-    <script src="../../static/js/basket.js?v=20260511112948"></script>
+    <script src="../../static/js/core.js?v=20260511125458"></script>
+    <script src="../../static/js/tip.js?v=20260511125458"></script>
+    <script src="../../static/js/hint.js?v=20260511125458"></script>
+    <script src="../../static/js/basket.js?v=20260511125458"></script>
     
-<script src="../../static/js/tooltips.js?v=20260511112948"></script>
+<script src="../../static/js/profile.js?v=20260511125458"></script>
+<script src="../../static/js/basket-mount.js?v=20260511125458"></script>
 
 </body>
 </html>

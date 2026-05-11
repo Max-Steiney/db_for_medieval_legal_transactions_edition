@@ -3,21 +3,21 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <meta http-equiv="Content-Security-Policy" content="default-src 'self'; script-src 'self'; style-src 'self'; font-src 'self'; img-src 'self' data: https://images.monasterium.net https://www.monasterium.net; connect-src 'self'; frame-ancestors 'none'; base-uri 'self'; form-action 'self'; upgrade-insecure-requests">
+    <meta http-equiv="Content-Security-Policy" content="default-src 'self'; script-src 'self'; style-src 'self'; font-src 'self'; img-src 'self' data: https://images.monasterium.net https://www.monasterium.net; connect-src 'self'; base-uri 'self'; form-action 'self'; upgrade-insecure-requests">
     <meta name="referrer" content="strict-origin-when-cross-origin">
     <meta http-equiv="Permissions-Policy" content="camera=(), microphone=(), geolocation=(), interest-cohort=()">
     <title>Nr. 995 (1380 XII 12), Datenbank</title>
     <link rel="preload" as="font" type="font/woff2" crossorigin
           href="../../../static/fonts/inter-400-latin.woff2">
-    <link rel="stylesheet" href="../../../static/css/fonts.css?v=20260511112948">
-    <link rel="stylesheet" href="../../../static/css/tokens.css?v=20260511112948">
-    <link rel="stylesheet" href="../../../static/css/base.css?v=20260511112948">
-    <link rel="stylesheet" href="../../../static/css/components.css?v=20260511112948">
-    <link rel="stylesheet" href="../../../static/css/responsive.css?v=20260511112948">
-    <link rel="stylesheet" href="../../../static/css/print.css?v=20260511112948">
-    <link rel="stylesheet" href="../../../static/css/provenance.css?v=20260511112948">
+    <link rel="stylesheet" href="../../../static/css/fonts.css?v=20260511125458">
+    <link rel="stylesheet" href="../../../static/css/tokens.css?v=20260511125458">
+    <link rel="stylesheet" href="../../../static/css/base.css?v=20260511125458">
+    <link rel="stylesheet" href="../../../static/css/components.css?v=20260511125458">
+    <link rel="stylesheet" href="../../../static/css/responsive.css?v=20260511125458">
+    <link rel="stylesheet" href="../../../static/css/print.css?v=20260511125458">
+    <link rel="stylesheet" href="../../../static/css/tip.css?v=20260511125458">
     
-<link rel="stylesheet" href="../../../static/css/document.css?v=20260511112948">
+<link rel="stylesheet" href="../../../static/css/document.css?v=20260511125458">
 <link rel="canonical" href="documents/QGW/Vienna_1177-1414_ready/995.html">
 <meta name="citation_title" content="Nr. 995 (1380 XII 12)">
 <meta name="citation_collection" content="QGW II/1 (1177–1414)">
@@ -50,8 +50,6 @@
         <a href="../../../register/persons.html">Personen</a>
         
         <a href="../../../register/orgs.html">Organisationen</a>
-        
-        <a href="../../../register/places.html">Orte</a>
         
     </div>
 </div>
@@ -93,7 +91,7 @@
     </div>
 </div>
 
-                <a href="../../../korb.html" class="nav-basket" aria-label="Wissenskorb">
+                <a href="../../../korb.html" class="nav-basket" aria-label="Datenkorb">
                     <svg width="18" height="18" viewBox="0 0 18 18" fill="none" aria-hidden="true">
                         <path d="M3 5h12l-1.2 8.5a1 1 0 0 1-1 .85H5.2a1 1 0 0 1-1-.85L3 5z"
                               stroke="currentColor" stroke-width="1.4" fill="none"
@@ -140,7 +138,7 @@
                     
                     <span class="meta-pair">
                         <span class="meta-label">Quelle</span>
-                        <span class="meta-value" title="Quellen zur Geschichte der Stadt Wien, Bd. II/1, Nr. 995">Quellen zur Geschichte der Stadt Wien, Bd. II/1, Nr. 995</span>
+                        <span class="meta-value" data-hint="Quellen zur Geschichte der Stadt Wien, Bd. II/1, Nr. 995">Quellen zur Geschichte der Stadt Wien, Bd. II/1, Nr. 995</span>
                     </span>
                     
                 </div>
@@ -151,7 +149,7 @@
                     
                     <button type="button" class="legend-toggle"
                             data-layer="entities" aria-pressed="true"
-                            title="Entitäten ein-/ausblenden">
+                            data-hint="Entitäten ein-/ausblenden">
                         <span class="legend-toggle-dots">
                             <span class="legend-swatch swatch-person"></span><span class="legend-swatch swatch-org"></span><span class="legend-swatch swatch-place"></span>
                         </span>
@@ -160,7 +158,7 @@
                     
                     <button type="button" class="legend-toggle"
                             data-layer="functions" aria-pressed="true"
-                            title="Funktionsrollen ein-/ausblenden">
+                            data-hint="Funktionsrollen ein-/ausblenden">
                         <span class="legend-toggle-dots">
                             <span class="legend-swatch swatch-fn-issuer"></span><span class="legend-swatch swatch-fn-recipient"></span><span class="legend-swatch swatch-fn-witness"></span>
                         </span>
@@ -169,7 +167,7 @@
                     
                     <button type="button" class="legend-toggle"
                             data-layer="attributes" aria-pressed="true"
-                            title="Attribute ein-/ausblenden">
+                            data-hint="Attribute ein-/ausblenden">
                         <span class="legend-toggle-dots">
                             <span class="legend-swatch swatch-attr"></span><span class="legend-swatch swatch-add"></span>
                         </span>
@@ -178,7 +176,7 @@
                     
                     <button type="button" class="legend-toggle"
                             data-layer="triggers" aria-pressed="true"
-                            title="Dispositivformel ein-/ausblenden">
+                            data-hint="Dispositivformel ein-/ausblenden">
                         <span class="legend-toggle-dots">
                             <span class="legend-swatch swatch-trigger"></span>
                         </span>
@@ -190,21 +188,29 @@
                 <div class="doc-toolbar-actions">
                     <a class="toolbar-btn" href="../../../tei/QGW/Vienna_1177-1414_ready/995.xml"
                        download="995.xml"
-                       aria-label="TEI-XML herunterladen" title="TEI-XML herunterladen"><svg viewBox="0 0 16 16" width="16" height="16" aria-hidden="true"><path fill="none" stroke="currentColor" stroke-width="1.4" stroke-linecap="round" stroke-linejoin="round" d="M8 2v8m0 0l-3-3m3 3l3-3M3 13h10"/></svg></a>
+                       aria-label="TEI-XML herunterladen" data-hint="TEI-XML herunterladen"><svg viewBox="0 0 16 16" width="16" height="16" aria-hidden="true"><path fill="none" stroke="currentColor" stroke-width="1.4" stroke-linecap="round" stroke-linejoin="round" d="M8 2v8m0 0l-3-3m3 3l3-3M3 13h10"/></svg></a>
                     <button class="toolbar-btn" id="cite-toggle" aria-expanded="false"
-                            aria-label="Zitation kopieren" title="Zitation kopieren"><svg viewBox="0 0 16 16" width="16" height="16" aria-hidden="true"><rect x="4" y="2" width="8" height="11" rx="1" fill="none" stroke="currentColor" stroke-width="1.4"/><path d="M6 1.5h4a0.5 0.5 0 0 1 0.5 0.5v1a0.5 0.5 0 0 1-0.5 0.5H6a0.5 0.5 0 0 1-0.5-0.5V2A0.5 0.5 0 0 1 6 1.5z" fill="currentColor"/><path d="M6.5 6.5h3M6.5 8.5h3M6.5 10.5h2" stroke="currentColor" stroke-width="1" stroke-linecap="round"/></svg></button>
+                            aria-label="Zitation kopieren" data-hint="Zitation kopieren"><svg viewBox="0 0 16 16" width="16" height="16" aria-hidden="true"><rect x="4" y="2" width="8" height="11" rx="1" fill="none" stroke="currentColor" stroke-width="1.4"/><path d="M6 1.5h4a0.5 0.5 0 0 1 0.5 0.5v1a0.5 0.5 0 0 1-0.5 0.5H6a0.5 0.5 0 0 1-0.5-0.5V2A0.5 0.5 0 0 1 6 1.5z" fill="currentColor"/><path d="M6.5 6.5h3M6.5 8.5h3M6.5 10.5h2" stroke="currentColor" stroke-width="1" stroke-linecap="round"/></svg></button>
                     <div class="cite-popover hidden" id="cite-popover"></div>
+                    <span class="toolbar-basket-mount"
+                          data-basket-type="source"
+                          data-basket-id="995"
+                          data-basket-label="995"
+                          data-basket-url="documents/QGW/Vienna_1177-1414_ready/995.html"
+                          data-basket-date="1380-12-12"
+                          data-basket-coll="QGW II/1 (1177–1414)"
+                          data-basket-regest="Thoman der Redler purger, Janns von Sand Lienhart purger, Jacob von Leiz/zz/ze purger und Eberhart von Neunburkch, alle purger ze Wienne , fällen in dem Streite zwischen dem Wiener Bürger Stephann…"></span>
                     
 <nav class="doc-paging doc-paging-inline" aria-label="Quellen-Navigation">
     
     <a href="../../../documents/QGW/Vienna_1177-1414_ready/994.html" class="toolbar-btn doc-paging-prev"
        aria-label="Vorherige Quelle: Nr. 994"
-       title="Vorherige Quelle: Nr. 994"><svg viewBox="0 0 16 16" width="16" height="16" aria-hidden="true"><path fill="none" stroke="currentColor" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round" d="M10 3l-5 5 5 5"/></svg></a>
+       data-hint="Vorherige Quelle: Nr. 994"><svg viewBox="0 0 16 16" width="16" height="16" aria-hidden="true"><path fill="none" stroke="currentColor" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round" d="M10 3l-5 5 5 5"/></svg></a>
     
     
     <a href="../../../documents/QGW/Vienna_1177-1414_ready/996.html" class="toolbar-btn doc-paging-next"
        aria-label="Nächste Quelle: Nr. 996"
-       title="Nächste Quelle: Nr. 996"><svg viewBox="0 0 16 16" width="16" height="16" aria-hidden="true"><path fill="none" stroke="currentColor" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round" d="M6 3l5 5-5 5"/></svg></a>
+       data-hint="Nächste Quelle: Nr. 996"><svg viewBox="0 0 16 16" width="16" height="16" aria-hidden="true"><path fill="none" stroke="currentColor" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round" d="M6 3l5 5-5 5"/></svg></a>
     
 </nav>
 
@@ -219,33 +225,33 @@
         <!-- Document body (rendered TEI) -->
         <div class="doc-body">
             <section class="tei-abstract"><h2 class="tei-section-head">Regest</h2><p>
-               <span class="anno-event" data-ref="ev__QGW_II_I_995"><span class="anno-fn anno-fn-issuer" data-role="issuer"><span class="fn-label">Aussteller*in</span><a class="anno-person" data-ref="pe__thomas_raedler_QGW_II_I_1014" title="Thomas Raedler [pe__thomas_raedler_QGW_II_I_1014]" href="../../../register/persons/pe__thomas_raedler_QGW_II_I_1014.html">Thoman der Redler <span class="anno-attr anno-attr-occ" data-corresp="org__wien"><span class="tei-add">purger</span></span></a>, <a class="anno-person" data-ref="pe__johann_von_st_leonhard_QGW_II_I_995" title="Johann von St Leonhard [pe__johann_von_st_leonhard_QGW_II_I_995]" href="../../../register/persons/pe__johann_von_st_leonhard_QGW_II_I_995.html">Janns von Sand Lienhart <span class="anno-attr anno-attr-occ" data-corresp="org__wien"><span class="tei-add">purger</span></span></a>,
-                        <a class="anno-person" data-ref="pe__jakob_von_leiss_QGW_II_I_966" title="Jakob von Leiss von Leiss [pe__jakob_von_leiss_QGW_II_I_966]" href="../../../register/persons/pe__jakob_von_leiss_QGW_II_I_966.html">Jacob von Leiz/zz/ze <span class="anno-attr anno-attr-occ" data-corresp="org__wien"><span class="tei-add">purger</span></span></a>
-                     und <a class="anno-person" data-ref="pe__eberhard_von_neuburg_QGW_II_I_1018" title="Eberhard von Neuburg von Neuburg [pe__eberhard_von_neuburg_QGW_II_I_1018]" href="../../../register/persons/pe__eberhard_von_neuburg_QGW_II_I_1018.html">Eberhart von Neunburkch,
+               <span class="anno-event" data-ref="ev__QGW_II_I_995"><span class="anno-fn anno-fn-issuer" data-role="issuer"><span class="fn-label">Aussteller*in</span><a class="anno-person" data-ref="pe__thomas_raedler_QGW_II_I_1014" data-hint="Thomas Raedler [pe__thomas_raedler_QGW_II_I_1014]" data-hint-type="Person" href="../../../register/persons/pe__thomas_raedler_QGW_II_I_1014.html">Thoman der Redler <span class="anno-attr anno-attr-occ" data-corresp="org__wien"><span class="tei-add">purger</span></span></a>, <a class="anno-person" data-ref="pe__johann_von_st_leonhard_QGW_II_I_995" data-hint="Johann von St Leonhard [pe__johann_von_st_leonhard_QGW_II_I_995]" data-hint-type="Person" href="../../../register/persons/pe__johann_von_st_leonhard_QGW_II_I_995.html">Janns von Sand Lienhart <span class="anno-attr anno-attr-occ" data-corresp="org__wien"><span class="tei-add">purger</span></span></a>,
+                        <a class="anno-person" data-ref="pe__jakob_von_leiss_QGW_II_I_966" data-hint="Jakob von Leiss von Leiss [pe__jakob_von_leiss_QGW_II_I_966]" data-hint-type="Person" href="../../../register/persons/pe__jakob_von_leiss_QGW_II_I_966.html">Jacob von Leiz/zz/ze <span class="anno-attr anno-attr-occ" data-corresp="org__wien"><span class="tei-add">purger</span></span></a>
+                     und <a class="anno-person" data-ref="pe__eberhard_von_neuburg_QGW_II_I_1018" data-hint="Eberhard von Neuburg von Neuburg [pe__eberhard_von_neuburg_QGW_II_I_1018]" data-hint-type="Person" href="../../../register/persons/pe__eberhard_von_neuburg_QGW_II_I_1018.html">Eberhart von Neunburkch,
                         alle <span class="anno-attr anno-attr-occ" data-corresp="org__wien">purger ze
                            Wienne</span></a></span> , <span class="anno-trigger anno-trigger-disp">fällen in dem
                      Streite</span>
                   <span class="anno-fn anno-fn-other" data-role="other"><span class="fn-label">Sonstige</span>
-                     <span class="anno-trigger anno-trigger-fn">zwischen</span> dem <a class="anno-person" data-ref="pe__stephan_naezeuger_QGW_II_I_1011" title="Stephan Naezeuger Naezeuger († 14.11.1381) [pe__stephan_naezeuger_QGW_II_I_1011]" href="../../../register/persons/pe__stephan_naezeuger_QGW_II_I_1011.html"><span class="anno-attr anno-attr-occ" data-corresp="org__wien">Wiener Bürger</span> Stephann dem Nezeuger</a></span> und <span class="anno-fn anno-fn-other" data-role="other"><span class="fn-label">Sonstige</span><span class="anno-trigger anno-trigger-fn"><span class="tei-add">zwischen</span></span>
-                     seiner <a class="anno-person" data-ref="pe__anna_QGW_II_I_995" title="Anna [pe__anna_QGW_II_I_995]" href="../../../register/persons/pe__anna_QGW_II_I_995.html"><span class="anno-attr anno-attr-kin" data-corresp="pe__stephan_naezeuger_QGW_II_I_1011">swiger vrown</span> Annen<span class="anno-attr anno-attr-kin" data-corresp="pe__ulrich_helbling_QGW_II_I_773"><span class="tei-add">wittibe</span></span></a></span>, <a class="anno-person" data-ref="pe__ulrich_helbling_QGW_II_I_773" title="Ulrich Helbling († 12.12.1380) [pe__ulrich_helbling_QGW_II_I_773]" href="../../../register/persons/pe__ulrich_helbling_QGW_II_I_773.html"><span class="anno-attr anno-attr-dead">wittibe</span> Ulreichs des
+                     <span class="anno-trigger anno-trigger-fn">zwischen</span> dem <a class="anno-person" data-ref="pe__stephan_naezeuger_QGW_II_I_1011" data-hint="Stephan Naezeuger Naezeuger († 14.11.1381) [pe__stephan_naezeuger_QGW_II_I_1011]" data-hint-type="Person" href="../../../register/persons/pe__stephan_naezeuger_QGW_II_I_1011.html"><span class="anno-attr anno-attr-occ" data-corresp="org__wien">Wiener Bürger</span> Stephann dem Nezeuger</a></span> und <span class="anno-fn anno-fn-other" data-role="other"><span class="fn-label">Sonstige</span><span class="anno-trigger anno-trigger-fn"><span class="tei-add">zwischen</span></span>
+                     seiner <a class="anno-person" data-ref="pe__anna_QGW_II_I_995" data-hint="Anna [pe__anna_QGW_II_I_995]" data-hint-type="Person" href="../../../register/persons/pe__anna_QGW_II_I_995.html"><span class="anno-attr anno-attr-kin" data-corresp="pe__stephan_naezeuger_QGW_II_I_1011">swiger vrown</span> Annen<span class="anno-attr anno-attr-kin" data-corresp="pe__ulrich_helbling_QGW_II_I_773"><span class="tei-add">wittibe</span></span></a></span>, <a class="anno-person" data-ref="pe__ulrich_helbling_QGW_II_I_773" data-hint="Ulrich Helbling († 12.12.1380) [pe__ulrich_helbling_QGW_II_I_773]" data-hint-type="Person" href="../../../register/persons/pe__ulrich_helbling_QGW_II_I_773.html"><span class="anno-attr anno-attr-dead">wittibe</span> Ulreichs des
                      Helblings</a> , wegen der 56 lb dn., <span class="anno-event" data-ref="ev__QGW_II_I_995_men_1">für welche
                      Anna ihrem Eidam ihren Anspruch und ihr Warterecht an den zwei Weingärten
                      verkauft hatte</span>, ainer gelegen zu Grinzing, genant der Gern, des ein halbs
                   jeuch ist zenest des pharrer weingarten von Ottenhaim, der da haisset der Scherg,
                   so leit der ander weingarten in dem Mukkental, des anderthalb virtail ist,
                   zenechst Jacobs weingarten des Chettner , <span class="anno-trigger anno-trigger-disp">folgende
-                     Entscheidung</span>: <span class="anno-fn anno-fn-recipient" data-role="recipient"><span class="fn-label">Empfänger*in</span><a class="anno-person" data-ref="pe__anna_QGW_II_I_995" title="Anna [pe__anna_QGW_II_I_995]" href="../../../register/persons/pe__anna_QGW_II_I_995.html">Anna</a></span>, welche den Kauf nicht
+                     Entscheidung</span>: <span class="anno-fn anno-fn-recipient" data-role="recipient"><span class="fn-label">Empfänger*in</span><a class="anno-person" data-ref="pe__anna_QGW_II_I_995" data-hint="Anna [pe__anna_QGW_II_I_995]" data-hint-type="Person" href="../../../register/persons/pe__anna_QGW_II_I_995.html">Anna</a></span>, welche den Kauf nicht
                   anerkennen, aber auch die 56 lb dn. nicht zurückgeben will, soll ihren Eidam für
                   die 56 lb dn. <span class="anno-trigger anno-trigger-disp">schadlos halten</span> mit 14 Fuder und 2
                   Dreiling Wein, <span class="anno-event" data-ref="ev__QGW_II_I_995_men_2">die ihr der Rath zu einem Pfande
-                     gespent hatte</span>, <span class="anno-fn anno-fn-recipient" data-role="recipient"><span class="fn-label">Empfänger*in</span><a class="anno-person" data-ref="pe__stephan_naezeuger_QGW_II_I_1011" title="Stephan Naezeuger Naezeuger († 14.11.1381) [pe__stephan_naezeuger_QGW_II_I_1011]" href="../../../register/persons/pe__stephan_naezeuger_QGW_II_I_1011.html">Stephan</a></span> aber <span class="anno-trigger anno-trigger-disp">die
+                     gespent hatte</span>, <span class="anno-fn anno-fn-recipient" data-role="recipient"><span class="fn-label">Empfänger*in</span><a class="anno-person" data-ref="pe__stephan_naezeuger_QGW_II_I_1011" data-hint="Stephan Naezeuger Naezeuger († 14.11.1381) [pe__stephan_naezeuger_QGW_II_I_1011]" data-hint-type="Person" href="../../../register/persons/pe__stephan_naezeuger_QGW_II_I_1011.html">Stephan</a></span> aber <span class="anno-trigger anno-trigger-disp">die
                      beiden Weingärten zu Leibgeding innehaben</span>. Nach seinem Tode sollen
                   die Weingärten dahin fallen, wohin sie gehören. Wer den Spruch nicht hält, soll,
                   zum Bau der prukke vor Kernertor 50 lb dn. und jedem der Spruchleute 10 lb dn.
                   zahlen.</span>
             </p></section><section class="tei-seal"><h2 class="tei-section-head">Siegelbeschreibung</h2><p><span class="anno-event" data-ref="ev__QGW_II_I_995"><span class="anno-fn anno-fn-witness" data-role="witness"><span class="fn-label">Zeug*in</span>Besiegelt mit
-                     den Siegeln <a class="anno-person" data-ref="pe__thomas_raedler_QGW_II_I_1014" title="Thomas Raedler [pe__thomas_raedler_QGW_II_I_1014]" href="../../../register/persons/pe__thomas_raedler_QGW_II_I_1014.html">Thomans des Redler</a>
-                     und <a class="anno-person" data-ref="pe__johann_von_st_leonhard_QGW_II_I_995" title="Johann von St Leonhard [pe__johann_von_st_leonhard_QGW_II_I_995]" href="../../../register/persons/pe__johann_von_st_leonhard_QGW_II_I_995.html">Hannsens von Sant
+                     den Siegeln <a class="anno-person" data-ref="pe__thomas_raedler_QGW_II_I_1014" data-hint="Thomas Raedler [pe__thomas_raedler_QGW_II_I_1014]" data-hint-type="Person" href="../../../register/persons/pe__thomas_raedler_QGW_II_I_1014.html">Thomans des Redler</a>
+                     und <a class="anno-person" data-ref="pe__johann_von_st_leonhard_QGW_II_I_995" data-hint="Johann von St Leonhard [pe__johann_von_st_leonhard_QGW_II_I_995]" data-hint-type="Person" href="../../../register/persons/pe__johann_von_st_leonhard_QGW_II_I_995.html">Hannsens von Sant
                         Lienhart</a></span>. </span></p></section>
 
             <!-- Data layer: provenance strip. Korpus + Idno stehen schon
@@ -304,7 +310,7 @@
          dem TEI in mehreren Untertabellen, Personen/Orgs/Orte,
          Ereignisse, Dispositivformeln, Editorische Ergaenzungen. Wird
          per JS aus den entsprechenden Spans im Body aufgebaut. -->
-    <section class="annotations-view" id="factoid-view" aria-label="Annotationen">
+    <section class="annotations-view" id="annotations-view" aria-label="Annotationen">
         <header class="annotations-header">
             <h2 class="annotations-title">Annotationen</h2>
             <span class="annotations-summary"></span>
@@ -350,13 +356,14 @@
         </div>
     </footer>
 
-    <script src="../../../static/js/core.js?v=20260511112948"></script>
-    <script src="../../../static/js/provenance.js?v=20260511112948"></script>
-    <script src="../../../static/js/basket.js?v=20260511112948"></script>
+    <script src="../../../static/js/core.js?v=20260511125458"></script>
+    <script src="../../../static/js/tip.js?v=20260511125458"></script>
+    <script src="../../../static/js/hint.js?v=20260511125458"></script>
+    <script src="../../../static/js/basket.js?v=20260511125458"></script>
     
-<script src="../../../static/js/tooltips.js?v=20260511112948"></script>
-<script src="../../../static/js/facsimile.js?v=20260511112948"></script>
-<script src="../../../static/js/document.js?v=20260511112948"></script>
+<script src="../../../static/js/facsimile.js?v=20260511125458"></script>
+<script src="../../../static/js/document.js?v=20260511125458"></script>
+<script src="../../../static/js/basket-mount.js?v=20260511125458"></script>
 
 </body>
 </html>

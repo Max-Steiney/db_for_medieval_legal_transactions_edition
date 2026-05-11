@@ -3,22 +3,22 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <meta http-equiv="Content-Security-Policy" content="default-src 'self'; script-src 'self'; style-src 'self'; font-src 'self'; img-src 'self' data: https://images.monasterium.net https://www.monasterium.net; connect-src 'self'; frame-ancestors 'none'; base-uri 'self'; form-action 'self'; upgrade-insecure-requests">
+    <meta http-equiv="Content-Security-Policy" content="default-src 'self'; script-src 'self'; style-src 'self'; font-src 'self'; img-src 'self' data: https://images.monasterium.net https://www.monasterium.net; connect-src 'self'; base-uri 'self'; form-action 'self'; upgrade-insecure-requests">
     <meta name="referrer" content="strict-origin-when-cross-origin">
     <meta http-equiv="Permissions-Policy" content="camera=(), microphone=(), geolocation=(), interest-cohort=()">
     <title>Leonhard Schaur (&dagger; 08.06.1450), Datenbank</title>
     <link rel="preload" as="font" type="font/woff2" crossorigin
           href="../../static/fonts/inter-400-latin.woff2">
-    <link rel="stylesheet" href="../../static/css/fonts.css?v=20260511112948">
-    <link rel="stylesheet" href="../../static/css/tokens.css?v=20260511112948">
-    <link rel="stylesheet" href="../../static/css/base.css?v=20260511112948">
-    <link rel="stylesheet" href="../../static/css/components.css?v=20260511112948">
-    <link rel="stylesheet" href="../../static/css/responsive.css?v=20260511112948">
-    <link rel="stylesheet" href="../../static/css/print.css?v=20260511112948">
-    <link rel="stylesheet" href="../../static/css/provenance.css?v=20260511112948">
+    <link rel="stylesheet" href="../../static/css/fonts.css?v=20260511125458">
+    <link rel="stylesheet" href="../../static/css/tokens.css?v=20260511125458">
+    <link rel="stylesheet" href="../../static/css/base.css?v=20260511125458">
+    <link rel="stylesheet" href="../../static/css/components.css?v=20260511125458">
+    <link rel="stylesheet" href="../../static/css/responsive.css?v=20260511125458">
+    <link rel="stylesheet" href="../../static/css/print.css?v=20260511125458">
+    <link rel="stylesheet" href="../../static/css/tip.css?v=20260511125458">
     
-<link rel="stylesheet" href="../../static/css/document.css?v=20260511112948">
-<link rel="stylesheet" href="../../static/css/person.css?v=20260511112948">
+<link rel="stylesheet" href="../../static/css/document.css?v=20260511125458">
+<link rel="stylesheet" href="../../static/css/person.css?v=20260511125458">
 
 </head>
 <body data-root-path="../.."
@@ -48,8 +48,6 @@
         <a href="../../register/persons.html">Personen</a>
         
         <a href="../../register/orgs.html">Organisationen</a>
-        
-        <a href="../../register/places.html">Orte</a>
         
     </div>
 </div>
@@ -91,7 +89,7 @@
     </div>
 </div>
 
-                <a href="../../korb.html" class="nav-basket" aria-label="Wissenskorb">
+                <a href="../../korb.html" class="nav-basket" aria-label="Datenkorb">
                     <svg width="18" height="18" viewBox="0 0 18 18" fill="none" aria-hidden="true">
                         <path d="M3 5h12l-1.2 8.5a1 1 0 0 1-1 .85H5.2a1 1 0 0 1-1-.85L3 5z"
                               stroke="currentColor" stroke-width="1.4" fill="none"
@@ -112,11 +110,23 @@
 
     <div class="person-toolbar">
         <div class="person-toolbar-inner">
-            <nav class="person-breadcrumb" aria-label="Position">
-                <a href="../../register/persons.html">Personenregister</a>
-                <span class="bc-sep">&rsaquo;</span>
-                <span class="bc-doc"><strong>Leonhard Schaur</strong></span>
-            </nav>
+            <div class="person-toolbar-row">
+                <nav class="person-breadcrumb" aria-label="Position">
+                    <a href="../../register/persons.html">Personenregister</a>
+                    <span class="bc-sep">&rsaquo;</span>
+                    <span class="bc-doc"><strong>Leonhard Schaur</strong></span>
+                </nav>
+                <div class="person-toolbar-actions">
+                    <span class="toolbar-basket-mount"
+                          data-basket-type="person"
+                          data-basket-id="pe__leonhard_schaur_QGW_II_I_1242"
+                          data-basket-label="Leonhard Schaur"
+                          data-basket-url="register/persons/pe__leonhard_schaur_QGW_II_I_1242.html"
+                          data-basket-sex="m"
+                          data-basket-active-min="1392"
+                          data-basket-active-max="1414"></span>
+                </div>
+            </div>
             <div class="person-toolbar-meta">
                 <span class="meta-pair">
                     <span class="meta-label">Geschlecht</span>
@@ -124,7 +134,33 @@
                 </span>
                 
                 <span class="meta-pair">
-                    <span class="meta-label">Belegt</span>
+                    <span class="meta-label">Belegt
+<span class="tip-wrap">
+    <button type="button" class="tip-trigger tip-trigger--icon"
+            aria-expanded="false" aria-haspopup="dialog"
+            aria-controls="person-belegt"
+            data-tip="person-belegt"
+            aria-label="Definition: Beleg-Zeitraum">
+        <svg width="13" height="13" viewBox="0 0 16 16" aria-hidden="true">
+            <circle cx="8" cy="8" r="7" stroke="currentColor" stroke-width="1.4" fill="none"/>
+            <text x="8" y="11.6" text-anchor="middle" font-size="9.5" font-weight="700"
+                  fill="currentColor" font-family="Georgia, serif">i</text>
+        </svg>
+    </button>
+    <aside class="tip-popover tip-popover--glossary"
+           id="person-belegt" role="dialog" aria-hidden="true"
+           aria-label="Definition: Beleg-Zeitraum">
+        <header class="tip-head">
+            <h3 class="tip-title">Beleg-Zeitraum</h3>
+            <button type="button" class="tip-close" aria-label="Schlie&szlig;en">&times;</button>
+        </header>
+        <div class="tip-body">
+            <p>Erste und letzte Datierung einer Quelle, in der die Person erscheint. Bei einzelnem Beleg wird nur ein Jahr angegeben.</p>
+            
+        </div>
+    </aside>
+</span>
+</span>
                     <span class="meta-value">1392 bis 1414</span>
                 </span>
                 
@@ -134,6 +170,10 @@
                     <span class="meta-value">08.06.1450</span>
                 </span>
                 
+                <span class="meta-pair">
+                    <span class="meta-label">Quellen</span>
+                    <span class="meta-value">28</span>
+                </span>
                 <span class="meta-pair person-id-pair">
                     <span class="meta-label">ID</span>
                     <code class="meta-value person-id">pe__leonhard_schaur_QGW_II_I_1242</code>
@@ -150,16 +190,48 @@
             
         </h1>
         
+        
         <p class="person-note">Chorherr von Passau, Regensburg und Brixen, Lizentiat</p>
         
         
-        <p class="person-titles">
+        <p class="person-titles" data-collapsible="22">
             <span class="pt-label">In den Quellen genannt als</span>
             <span class="pt-chip">hern</span><span class="pt-chip">lerer geistleicher rechten</span><span class="pt-chip">her</span><span class="pt-chip">licenciatus in Decretis|ecclesiarum canonicus</span><span class="pt-chip">Bruder in Gott|Meister</span><span class="pt-chip">Decretorum doctor</span><span class="pt-chip">lerer in geistleichen rechten</span>
         </p>
         
         
+        
     </header>
+
+    
+    <section class="role-strip" aria-label="Rollen in Rechtsgeschäften">
+        <h2 class="role-strip-title">Rollen in Rechtsgeschäften</h2>
+        <div class="role-strip-cells">
+            
+            <div class="role-cell role-cell-issuer">
+                <span class="role-cell-count">1</span>
+                <span class="role-cell-label">Aussteller*in</span>
+            </div>
+            
+            <div class="role-cell role-cell-recipient">
+                <span class="role-cell-count">10</span>
+                <span class="role-cell-label">Empfänger*in</span>
+            </div>
+            
+            <div class="role-cell role-cell-witness">
+                <span class="role-cell-count">3</span>
+                <span class="role-cell-label">Zeuge / Siegler*in</span>
+            </div>
+            
+            <div class="role-cell role-cell-other">
+                <span class="role-cell-count">1</span>
+                <span class="role-cell-label">Sonstige</span>
+            </div>
+            
+        </div>
+        <p class="role-strip-hint">Summe Rollen-Belegungen: 15. Mehrfach-Rollen pro Quelle sind möglich.</p>
+    </section>
+    
 
     
 
@@ -176,6 +248,7 @@
                 <span class="rel-block-count">1</span>
                 <span class="rel-block-hint">Verwandtschaftsverhältnisse, wie sie in den Quellen explizit benannt werden.</span>
             </header>
+            
             <table class="rel-table">
                 <thead>
                     <tr>
@@ -196,7 +269,7 @@
                         <td class="rel-col-label"><em>Bruders</em></td>
                         <td class="rel-col-perspective">
                             
-                                Leonhard Schaur → Dorothea Wiczingerin
+                                Leonhard Schaur &rsaquo; Dorothea Wiczingerin
                             
                         </td>
                         <td class="rel-col-source">
@@ -222,6 +295,7 @@
                 <span class="rel-block-count">19</span>
                 <span class="rel-block-hint">Stellvertretungs-Beziehungen, z. B. handelt eine Person an Stelle einer anderen.</span>
             </header>
+            
             <table class="rel-table">
                 <thead>
                     <tr>
@@ -242,7 +316,7 @@
                         <td class="rel-col-label"><em>Geschäftsherr</em></td>
                         <td class="rel-col-perspective">
                             
-                                Erhard Schierl → Leonhard Schaur
+                                Erhard Schierl &rsaquo; Leonhard Schaur
                             
                         </td>
                         <td class="rel-col-source">
@@ -261,7 +335,7 @@
                         <td class="rel-col-label"><em>Geschäftsherr</em></td>
                         <td class="rel-col-perspective">
                             
-                                Paul Geir → Leonhard Schaur
+                                Paul Geir &rsaquo; Leonhard Schaur
                             
                         </td>
                         <td class="rel-col-source">
@@ -280,7 +354,7 @@
                         <td class="rel-col-label"><em>Geschäftsherr</em></td>
                         <td class="rel-col-perspective">
                             
-                                Wolfgang Purkchartsperger → Leonhard Schaur
+                                Wolfgang Purkchartsperger &rsaquo; Leonhard Schaur
                             
                         </td>
                         <td class="rel-col-source">
@@ -299,7 +373,7 @@
                         <td class="rel-col-label"><em>Geschäftsherr</em></td>
                         <td class="rel-col-perspective">
                             
-                                Heinrich Starkch von Sparbach → Leonhard Schaur
+                                Heinrich Starkch von Sparbach &rsaquo; Leonhard Schaur
                             
                         </td>
                         <td class="rel-col-source">
@@ -318,7 +392,7 @@
                         <td class="rel-col-label"><em>Geschäftsherr</em></td>
                         <td class="rel-col-perspective">
                             
-                                Paul Geir → Leonhard Schaur
+                                Paul Geir &rsaquo; Leonhard Schaur
                             
                         </td>
                         <td class="rel-col-source">
@@ -337,7 +411,7 @@
                         <td class="rel-col-label"><em>Geschäftsherr</em></td>
                         <td class="rel-col-perspective">
                             
-                                Wolfgang Purkchartsperger → Leonhard Schaur
+                                Wolfgang Purkchartsperger &rsaquo; Leonhard Schaur
                             
                         </td>
                         <td class="rel-col-source">
@@ -356,7 +430,7 @@
                         <td class="rel-col-label"><em>Geschäftsherr</em></td>
                         <td class="rel-col-perspective">
                             
-                                Heinrich Starkch von Sparbach → Leonhard Schaur
+                                Heinrich Starkch von Sparbach &rsaquo; Leonhard Schaur
                             
                         </td>
                         <td class="rel-col-source">
@@ -375,7 +449,7 @@
                         <td class="rel-col-label"><em>geschefftherren</em></td>
                         <td class="rel-col-perspective">
                             
-                                Erhard Schierl → Leonhard Schaur
+                                Erhard Schierl &rsaquo; Leonhard Schaur
                             
                         </td>
                         <td class="rel-col-source">
@@ -394,7 +468,7 @@
                         <td class="rel-col-label"><em>geschefftherren</em></td>
                         <td class="rel-col-perspective">
                             
-                                Paul Geir → Leonhard Schaur
+                                Paul Geir &rsaquo; Leonhard Schaur
                             
                         </td>
                         <td class="rel-col-source">
@@ -413,7 +487,7 @@
                         <td class="rel-col-label"><em>geschefftherren</em></td>
                         <td class="rel-col-perspective">
                             
-                                Wolfgang Purkchartsperger → Leonhard Schaur
+                                Wolfgang Purkchartsperger &rsaquo; Leonhard Schaur
                             
                         </td>
                         <td class="rel-col-source">
@@ -432,7 +506,7 @@
                         <td class="rel-col-label"><em>geschefftherren</em></td>
                         <td class="rel-col-perspective">
                             
-                                Heinrich Starkch von Sparbach → Leonhard Schaur
+                                Heinrich Starkch von Sparbach &rsaquo; Leonhard Schaur
                             
                         </td>
                         <td class="rel-col-source">
@@ -451,7 +525,7 @@
                         <td class="rel-col-label"><em>Geschäftsvollstrecker</em></td>
                         <td class="rel-col-perspective">
                             
-                                Erhard Schierl → Leonhard Schaur
+                                Erhard Schierl &rsaquo; Leonhard Schaur
                             
                         </td>
                         <td class="rel-col-source">
@@ -470,7 +544,7 @@
                         <td class="rel-col-label"><em>Geschäftsvollstrecker</em></td>
                         <td class="rel-col-perspective">
                             
-                                Wolfgang Purkchartsperger → Leonhard Schaur
+                                Wolfgang Purkchartsperger &rsaquo; Leonhard Schaur
                             
                         </td>
                         <td class="rel-col-source">
@@ -489,7 +563,7 @@
                         <td class="rel-col-label"><em>Geschäftsvollstrecker</em></td>
                         <td class="rel-col-perspective">
                             
-                                Paul Geir → Leonhard Schaur
+                                Paul Geir &rsaquo; Leonhard Schaur
                             
                         </td>
                         <td class="rel-col-source">
@@ -508,7 +582,7 @@
                         <td class="rel-col-label"><em>Geschäftsvollstrecker</em></td>
                         <td class="rel-col-perspective">
                             
-                                Heinrich Starkch von Sparbach → Leonhard Schaur
+                                Heinrich Starkch von Sparbach &rsaquo; Leonhard Schaur
                             
                         </td>
                         <td class="rel-col-source">
@@ -527,7 +601,7 @@
                         <td class="rel-col-label"><em>Geschäftsherrn</em></td>
                         <td class="rel-col-perspective">
                             
-                                Erhard Schierl → Leonhard Schaur
+                                Erhard Schierl &rsaquo; Leonhard Schaur
                             
                         </td>
                         <td class="rel-col-source">
@@ -546,7 +620,7 @@
                         <td class="rel-col-label"><em>Geschäftsherrn</em></td>
                         <td class="rel-col-perspective">
                             
-                                Wolfgang Purkchartsperger → Leonhard Schaur
+                                Wolfgang Purkchartsperger &rsaquo; Leonhard Schaur
                             
                         </td>
                         <td class="rel-col-source">
@@ -565,7 +639,7 @@
                         <td class="rel-col-label"><em>Geschäftsherrn</em></td>
                         <td class="rel-col-perspective">
                             
-                                Heinrich Starkch von Sparbach → Leonhard Schaur
+                                Heinrich Starkch von Sparbach &rsaquo; Leonhard Schaur
                             
                         </td>
                         <td class="rel-col-source">
@@ -584,7 +658,7 @@
                         <td class="rel-col-label"><em>Geschäftsherrn</em></td>
                         <td class="rel-col-perspective">
                             
-                                Michael Purkchartsperger → Leonhard Schaur
+                                Michael Purkchartsperger &rsaquo; Leonhard Schaur
                             
                         </td>
                         <td class="rel-col-source">
@@ -607,6 +681,7 @@
                 <span class="rel-block-count">9</span>
                 <span class="rel-block-hint">Berufs- oder Amtsbezeichnung in Bezug auf eine Institution.</span>
             </header>
+            
             <table class="rel-table">
                 <thead>
                     <tr>
@@ -627,7 +702,7 @@
                         <td class="rel-col-label"><em>officialis curie</em></td>
                         <td class="rel-col-perspective">
                             
-                                Leonhard Schaur → Domkapitel Passau
+                                Leonhard Schaur &rsaquo; Domkapitel Passau
                             
                         </td>
                         <td class="rel-col-source">
@@ -646,7 +721,7 @@
                         <td class="rel-col-label"><em>chorherr</em></td>
                         <td class="rel-col-perspective">
                             
-                                Leonhard Schaur → Bistum Passau
+                                Leonhard Schaur &rsaquo; Bistum Passau
                             
                         </td>
                         <td class="rel-col-source">
@@ -665,7 +740,7 @@
                         <td class="rel-col-label"><em>offizial in geistleichen Sachen in Österreich</em></td>
                         <td class="rel-col-perspective">
                             
-                                Leonhard Schaur → Herzogtum Österreich
+                                Leonhard Schaur &rsaquo; Herzogtum Österreich
                             
                         </td>
                         <td class="rel-col-source">
@@ -684,7 +759,7 @@
                         <td class="rel-col-label"><em>korherr</em></td>
                         <td class="rel-col-perspective">
                             
-                                Leonhard Schaur → Bistum Passau
+                                Leonhard Schaur &rsaquo; Bistum Passau
                             
                         </td>
                         <td class="rel-col-source">
@@ -703,7 +778,7 @@
                         <td class="rel-col-label"><em>official</em></td>
                         <td class="rel-col-perspective">
                             
-                                Leonhard Schaur → Bistum Passau
+                                Leonhard Schaur &rsaquo; Bistum Passau
                             
                         </td>
                         <td class="rel-col-source">
@@ -722,7 +797,7 @@
                         <td class="rel-col-label"><em>canonicus</em></td>
                         <td class="rel-col-perspective">
                             
-                                Leonhard Schaur → Bistum Brixen
+                                Leonhard Schaur &rsaquo; Bistum Brixen
                             
                         </td>
                         <td class="rel-col-source">
@@ -741,7 +816,7 @@
                         <td class="rel-col-label"><em>canonicus</em></td>
                         <td class="rel-col-perspective">
                             
-                                Leonhard Schaur → Bistum Passau
+                                Leonhard Schaur &rsaquo; Bistum Passau
                             
                         </td>
                         <td class="rel-col-source">
@@ -760,7 +835,7 @@
                         <td class="rel-col-label"><em>canonicus</em></td>
                         <td class="rel-col-perspective">
                             
-                                Leonhard Schaur → Bistum Regensburg
+                                Leonhard Schaur &rsaquo; Bistum Regensburg
                             
                         </td>
                         <td class="rel-col-source">
@@ -779,7 +854,7 @@
                         <td class="rel-col-label"><em>officialis</em></td>
                         <td class="rel-col-perspective">
                             
-                                Leonhard Schaur → Bistum Passau
+                                Leonhard Schaur &rsaquo; Bistum Passau
                             
                         </td>
                         <td class="rel-col-source">
@@ -797,18 +872,32 @@
         
         
         
+        
+        
+        
+        
+        
+        
     </section>
     
 
     
     <section class="person-sources" aria-label="Quellen mit Nennung">
         <h2 class="section-head">Quellen mit Nennung</h2>
+        
+        <div class="table-filter">
+            <input type="search" class="table-filter-input" data-target="src" placeholder="In den Quellen filtern&hellip;" aria-label="In den Quellen filtern">
+            <span class="table-filter-status"></span>
+        </div>
+        
         <table class="person-source-table">
             <thead>
                 <tr>
                     <th scope="col" class="src-col-idno">Nr.</th>
                     <th scope="col" class="src-col-date">Datum</th>
                     <th scope="col" class="src-col-corpus">Quellenkorpus</th>
+                    <th scope="col" class="src-col-label">Bezeichnung</th>
+                    <th scope="col" class="src-col-role">Rolle</th>
                     <th scope="col" class="src-col-regest">Regest</th>
                 </tr>
             </thead>
@@ -818,6 +907,11 @@
                     <td class="src-col-idno"><a href="../../documents/QGW/Vienna_1177-1414_ready/1242.html">1242</a></td>
                     <td class="src-col-date">1392 XI 06</td>
                     <td class="src-col-corpus">QGW II/1 (1177–1414)</td>
+                    <td class="src-col-label"><em>licenciatus in Decretis|ecclesiarum canonicus</em></td>
+                    <td class="src-col-role">
+                        <span class="role-chip role-chip-witness">Zeuge / Siegler*in</span>
+                        
+                    </td>
                     <td class="src-col-regest">Anno domini millesimo trecentesimo nonagesimo secundo, die vero sexta mensis novembris, hora nonarum vel quasi, indiccione quintadecima, pontificatus sanctissimi in Christo patris et domini nostri…</td>
                 </tr>
             
@@ -825,6 +919,11 @@
                     <td class="src-col-idno"><a href="../../documents/QGW/Vienna_1177-1414_ready/1244.html">1244</a></td>
                     <td class="src-col-date">1392 XI 24</td>
                     <td class="src-col-corpus">QGW II/1 (1177–1414)</td>
+                    <td class="src-col-label"><em>hern</em></td>
+                    <td class="src-col-role">
+                        <span class="role-chip role-chip-witness">Zeuge / Siegler*in</span>
+                        
+                    </td>
                     <td class="src-col-regest">Chunrat der Ze/ankkel der Räs, ein Student in geistleichen rechten, widmet zu einer ewigen Messe auf Unser Frauen altar, gelegen in der kirichen dacz sand Peter ze Wienn, seines ledigen Erbgutes:…</td>
                 </tr>
             
@@ -832,6 +931,11 @@
                     <td class="src-col-idno"><a href="../../documents/QGW/Vienna_1177-1414_ready/1338.html">1338</a></td>
                     <td class="src-col-date">1396 VI 19</td>
                     <td class="src-col-corpus">QGW II/1 (1177–1414)</td>
+                    <td class="src-col-label"><em>Bruder in Gott|Meister</em></td>
+                    <td class="src-col-role">
+                        <span class="role-chip role-chip-recipient">Empfänger*in</span>
+                        
+                    </td>
                     <td class="src-col-regest">Bischof Georg von Passau sichert seinem Bruder in Gott, Meister Leonart dem Schaur, lerer geistleicher rechten, korherr und official ze Passau, freies Verfügungsrecht über seinen gesammten Besitz zu…</td>
                 </tr>
             
@@ -839,6 +943,11 @@
                     <td class="src-col-idno"><a href="../../documents/QGW/Vienna_1177-1414_ready/1641.html">1641</a></td>
                     <td class="src-col-date">1406 I 18</td>
                     <td class="src-col-corpus">QGW II/1 (1177–1414)</td>
+                    <td class="src-col-label"><em>Decretorum doctor</em></td>
+                    <td class="src-col-role">
+                        <span class="role-chip role-chip-other">Sonstige</span>
+                        
+                    </td>
                     <td class="src-col-regest">* Anno nativitatis ( domini) millesimo quadringentesimo sexto, indiccione quarta decima, die vero decimo octavo mensis januarii, hora vesperorum vel quasi, pontificatus sanctissimi in Cristo patris…</td>
                 </tr>
             
@@ -846,6 +955,11 @@
                     <td class="src-col-idno"><a href="../../documents/QGW/Vienna_1177-1414_ready/1845.html">1845</a></td>
                     <td class="src-col-date">1411 III 27</td>
                     <td class="src-col-corpus">QGW II/1 (1177–1414)</td>
+                    <td class="src-col-label"><em>lerer geistleicher rechten</em></td>
+                    <td class="src-col-role">
+                        <span class="role-chip role-chip-issuer">Aussteller*in</span><span class="role-chip role-chip-witness">Zeuge / Siegler*in</span>
+                        
+                    </td>
                     <td class="src-col-regest">Leonhart Schaur, lerer geistleicher rechten, beurkundet seinen letzten Willen. Er schafft: 1. seiner Schwester und ihren Kindern zu gleichen Theilen sein Wohnhaus, seine erb weingerten, die er…</td>
                 </tr>
             
@@ -853,6 +967,11 @@
                     <td class="src-col-idno"><a href="../../documents/QGW/Vienna_1177-1414_ready/1846.html">1846</a></td>
                     <td class="src-col-date">1411 IV 01</td>
                     <td class="src-col-corpus">QGW II/1 (1177–1414)</td>
+                    <td class="src-col-label"><em>-</em></td>
+                    <td class="src-col-role">
+                        <span class="role-chip role-chip-recipient">Empfänger*in</span>
+                        
+                    </td>
                     <td class="src-col-regest">Herzog Leopold IV. bestätigt das Geschäft, so weilent . . Lienhart der Schaur, lerer in geistleichen rechten,.. . geordnet und geschafft hat.</td>
                 </tr>
             
@@ -860,6 +979,11 @@
                     <td class="src-col-idno"><a href="../../documents/QGW/Vienna_1177-1414_ready/1849.html">1849</a></td>
                     <td class="src-col-date">1411 IV 03</td>
                     <td class="src-col-corpus">QGW II/1 (1177–1414)</td>
+                    <td class="src-col-label"><em>-</em></td>
+                    <td class="src-col-role">
+                        <span class="role-chip role-chip-recipient">Empfänger*in</span>
+                        
+                    </td>
                     <td class="src-col-regest">Bruder Wolfhart von Wienn, prior des klosters Unser Frauen brüder von dem perg Carmelo zu Wienn , bestätigt den Empfang von 4 lb dn. aus dem Geschäfte hern Leonarts des Schaur.</td>
                 </tr>
             
@@ -867,6 +991,11 @@
                     <td class="src-col-idno"><a href="../../documents/QGW/Vienna_1177-1414_ready/1851.html">1851</a></td>
                     <td class="src-col-date">1411 IV 03</td>
                     <td class="src-col-corpus">QGW II/1 (1177–1414)</td>
+                    <td class="src-col-label"><em>-</em></td>
+                    <td class="src-col-role">
+                        <span class="role-chip role-chip-recipient">Empfänger*in</span>
+                        
+                    </td>
                     <td class="src-col-regest">Laurencius, prior, und der ganz convent dacz den Schotten ze Wienne bestätigen den Empfang von 4 lb dn. aus dem Geschäfte hern Lienharts des Schaur.</td>
                 </tr>
             
@@ -874,6 +1003,11 @@
                     <td class="src-col-idno"><a href="../../documents/QGW/Vienna_1177-1414_ready/1852.html">1852</a></td>
                     <td class="src-col-date">1411 IV 04</td>
                     <td class="src-col-corpus">QGW II/1 (1177–1414)</td>
+                    <td class="src-col-label"><em>-</em></td>
+                    <td class="src-col-role">
+                        <span class="role-chip role-chip-recipient">Empfänger*in</span>
+                        
+                    </td>
                     <td class="src-col-regest">Agnes die Schekchin, maistrin dacz sand Jacob ze Wienn, bestätigt den Empfang von 4 lb dn. aus dem Geschäfte hern Leonarts des Schauer.</td>
                 </tr>
             
@@ -881,6 +1015,11 @@
                     <td class="src-col-idno"><a href="../../documents/QGW/Vienna_1177-1414_ready/1853.html">1853</a></td>
                     <td class="src-col-date">1411 IV 04</td>
                     <td class="src-col-corpus">QGW II/1 (1177–1414)</td>
+                    <td class="src-col-label"><em>hern</em></td>
+                    <td class="src-col-role">
+                        
+                        -
+                    </td>
                     <td class="src-col-regest">Anna Smidacherin, priorin dacz sand Laurenzen, bestätigt den Empfang von 4 lb dn. aus dem Geschäfte hern Leonarts des Schaur.</td>
                 </tr>
             
@@ -888,6 +1027,11 @@
                     <td class="src-col-idno"><a href="../../documents/QGW/Vienna_1177-1414_ready/1854.html">1854</a></td>
                     <td class="src-col-date">1411 IV 04</td>
                     <td class="src-col-corpus">QGW II/1 (1177–1414)</td>
+                    <td class="src-col-label"><em>-</em></td>
+                    <td class="src-col-role">
+                        
+                        -
+                    </td>
                     <td class="src-col-regest">Swester Erntraut, priorin dacz sand Maria Magdalen vor Schottentor ze Wienn, bestätigt den Empfang von 4 lb dn. aus dem Geschäfte hern Leonarts des Schaur.</td>
                 </tr>
             
@@ -895,6 +1039,11 @@
                     <td class="src-col-idno"><a href="../../documents/QGW/Vienna_1177-1414_ready/1855.html">1855</a></td>
                     <td class="src-col-date">1411 IV 04</td>
                     <td class="src-col-corpus">QGW II/1 (1177–1414)</td>
+                    <td class="src-col-label"><em>-</em></td>
+                    <td class="src-col-role">
+                        
+                        -
+                    </td>
                     <td class="src-col-regest">Swester Anna die Heunigerin, abtesin daczt sant Niclas ze Wienn, bestätigt den Empfang von 4 lb dn. aus dem Geschäfte hern Lienharts des Schaur.</td>
                 </tr>
             
@@ -902,6 +1051,11 @@
                     <td class="src-col-idno"><a href="../../documents/QGW/Vienna_1177-1414_ready/1856.html">1856</a></td>
                     <td class="src-col-date">1411 IV 07</td>
                     <td class="src-col-corpus">QGW II/1 (1177–1414)</td>
+                    <td class="src-col-label"><em>lerer in geistleichen rechten</em></td>
+                    <td class="src-col-role">
+                        <span class="role-chip role-chip-recipient">Empfänger*in</span>
+                        
+                    </td>
                     <td class="src-col-regest">Herzog Ernst bestätigt das Geschäft, so weilent . . Lienhart der Schaur, lerer in geistleichen rechten, . . . geschaft und geordnet hat.</td>
                 </tr>
             
@@ -909,6 +1063,11 @@
                     <td class="src-col-idno"><a href="../../documents/QGW/Vienna_1177-1414_ready/1857.html">1857</a></td>
                     <td class="src-col-date">1411 IV 07</td>
                     <td class="src-col-corpus">QGW II/1 (1177–1414)</td>
+                    <td class="src-col-label"><em>-</em></td>
+                    <td class="src-col-role">
+                        
+                        -
+                    </td>
                     <td class="src-col-regest">Herzog Ernst bestätigt den Empfang von 100 guldein aus dem Geschäfte Lienharts des Schaurs.</td>
                 </tr>
             
@@ -916,6 +1075,11 @@
                     <td class="src-col-idno"><a href="../../documents/QGW/Vienna_1177-1414_ready/1859.html">1859</a></td>
                     <td class="src-col-date">1411 IV 12</td>
                     <td class="src-col-corpus">QGW II/1 (1177–1414)</td>
+                    <td class="src-col-label"><em>-</em></td>
+                    <td class="src-col-role">
+                        
+                        -
+                    </td>
                     <td class="src-col-regest">Bischof Jorg ze Passau schreibt den Gechäftherren seines Chorherrn und Officials Lienhart SchauerPauln dem Geyr rats,Geschäftsherr Wolfgangen dem Purkcharczperger, baid desGeschäftsherr rats der stat…</td>
                 </tr>
             
@@ -923,6 +1087,11 @@
                     <td class="src-col-idno"><a href="../../documents/QGW/Vienna_1177-1414_ready/1860.html">1860</a></td>
                     <td class="src-col-date">1411 IV 14</td>
                     <td class="src-col-corpus">QGW II/1 (1177–1414)</td>
+                    <td class="src-col-label"><em>-</em></td>
+                    <td class="src-col-role">
+                        
+                        -
+                    </td>
                     <td class="src-col-regest">Leupolt von Ekcharzau, hofmaister, und Hanns von Neidegg, camermaister anstatt, bestätigen anstatt Herzog Albrechts, von hern Erharten, korherrn dacz sand Steffan ze Wienn, 100 guldein, welche her…</td>
                 </tr>
             
@@ -930,6 +1099,11 @@
                     <td class="src-col-idno"><a href="../../documents/QGW/Vienna_1177-1414_ready/1862.html">1862</a></td>
                     <td class="src-col-date">1411 IV 17</td>
                     <td class="src-col-corpus">QGW II/1 (1177–1414)</td>
+                    <td class="src-col-label"><em>-</em></td>
+                    <td class="src-col-role">
+                        <span class="role-chip role-chip-recipient">Empfänger*in</span>
+                        
+                    </td>
                     <td class="src-col-regest">Hanns der Chaufman, des rats der stat ze Wienn und kirichmaister ze sand Stephan, bestätigt, 10 lb dn., welche her Lienhart der Schaur zu dem pau gen sand Stephan geschaft hat, erhalten zu haben.</td>
                 </tr>
             
@@ -937,6 +1111,11 @@
                     <td class="src-col-idno"><a href="../../documents/QGW/Vienna_1177-1414_ready/1863.html">1863</a></td>
                     <td class="src-col-date">1411 IV 18</td>
                     <td class="src-col-corpus">QGW II/1 (1177–1414)</td>
+                    <td class="src-col-label"><em>her</em></td>
+                    <td class="src-col-role">
+                        
+                        -
+                    </td>
                     <td class="src-col-regest">Bru/eder Dietreich von Steteldorf, prior, und der convent gemain dacz den Predigern ze Wienn bestätigen, dass her Erhart der Schierl, korherr zu sand Stephan ze Wienn und pharrer ze…</td>
                 </tr>
             
@@ -944,6 +1123,11 @@
                     <td class="src-col-idno"><a href="../../documents/QGW/Vienna_1177-1414_ready/1864.html">1864</a></td>
                     <td class="src-col-date">1411 IV 18</td>
                     <td class="src-col-corpus">QGW II/1 (1177–1414)</td>
+                    <td class="src-col-label"><em>her</em></td>
+                    <td class="src-col-role">
+                        
+                        -
+                    </td>
                     <td class="src-col-regest">Wolfhard Pilich bestätigt, dass her Erhart der Schierl, chorherr ze Allerheiligen tuemkirichen dacz sand Stephan ze Wienn und pharrer ze Napperstorf, her Wolfgang der Purkcharczperger, des rats der…</td>
                 </tr>
             
@@ -951,6 +1135,11 @@
                     <td class="src-col-idno"><a href="../../documents/QGW/Vienna_1177-1414_ready/1865.html">1865</a></td>
                     <td class="src-col-date">1411 IV 18</td>
                     <td class="src-col-corpus">QGW II/1 (1177–1414)</td>
+                    <td class="src-col-label"><em>-</em></td>
+                    <td class="src-col-role">
+                        
+                        -
+                    </td>
                     <td class="src-col-regest">Hanns Rötel von Alss bestätigt, dass her Erhart der Schierl, chorherr ze Allerheiligen tumkirichen dacz sand Stephan ze Wienn und pharrer ze Naperstorf, und her Wolfgang der Purkcharczperger, des…</td>
                 </tr>
             
@@ -958,6 +1147,11 @@
                     <td class="src-col-idno"><a href="../../documents/QGW/Vienna_1177-1414_ready/1866.html">1866</a></td>
                     <td class="src-col-date">1411 IV 18</td>
                     <td class="src-col-corpus">QGW II/1 (1177–1414)</td>
+                    <td class="src-col-label"><em>-</em></td>
+                    <td class="src-col-role">
+                        
+                        -
+                    </td>
                     <td class="src-col-regest">Hanns Walder bestätigt, dass ihm die in no 1865 Genannten 60 lb dn, die ihm sein Herr her Leonhart der Schaur geschafft hat, entrichtet haben.</td>
                 </tr>
             
@@ -965,6 +1159,11 @@
                     <td class="src-col-idno"><a href="../../documents/QGW/Vienna_1177-1414_ready/1867.html">1867</a></td>
                     <td class="src-col-date">1411 IV 22</td>
                     <td class="src-col-corpus">QGW II/1 (1177–1414)</td>
+                    <td class="src-col-label"><em>-</em></td>
+                    <td class="src-col-role">
+                        <span class="role-chip role-chip-recipient">Empfänger*in</span>
+                        
+                    </td>
                     <td class="src-col-regest">Mert, kapplan der kapellen zu sand Marchs vor Stubentor ze Wienn, bestätigt den Empfang von 10 lb dn. aus dem Geschäfte seines Herrn hern Leonarts des Schaur.</td>
                 </tr>
             
@@ -972,6 +1171,11 @@
                     <td class="src-col-idno"><a href="../../documents/QGW/Vienna_1177-1414_ready/1870.html">1870</a></td>
                     <td class="src-col-date">1411 IV 29</td>
                     <td class="src-col-corpus">QGW II/1 (1177–1414)</td>
+                    <td class="src-col-label"><em>hern</em></td>
+                    <td class="src-col-role">
+                        
+                        -
+                    </td>
                     <td class="src-col-regest">Dorothe witibfürfür, Hannsen witiben des Wiczinger, Hannssun und Lucas, ir su/en, beurkunden für sich und für die noch nicht vogtbare junkfraun Barbaren, ihre Tochter, beziehungsweise…</td>
                 </tr>
             
@@ -979,6 +1183,11 @@
                     <td class="src-col-idno"><a href="../../documents/QGW/Vienna_1177-1414_ready/1874.html">1874</a></td>
                     <td class="src-col-date">1411 V 06</td>
                     <td class="src-col-corpus">QGW II/1 (1177–1414)</td>
+                    <td class="src-col-label"><em>-</em></td>
+                    <td class="src-col-role">
+                        <span class="role-chip role-chip-recipient">Empfänger*in</span>
+                        
+                    </td>
                     <td class="src-col-regest">Michael, kaplan sand Oswalds alter ze Hainburg, bestätigt den Empfang von 10 lb dn. aus dem Geschäfte hern Leonarts Schaur.</td>
                 </tr>
             
@@ -986,6 +1195,11 @@
                     <td class="src-col-idno"><a href="../../documents/QGW/Vienna_1177-1414_ready/1879.html">1879</a></td>
                     <td class="src-col-date">1411 V 26</td>
                     <td class="src-col-corpus">QGW II/1 (1177–1414)</td>
+                    <td class="src-col-label"><em>-</em></td>
+                    <td class="src-col-role">
+                        <span class="role-chip role-chip-recipient">Empfänger*in</span>
+                        
+                    </td>
                     <td class="src-col-regest">Hanns der Velber, burger ze Passau, bestätigt den Empfang von 200 lb dn., welche her Lienhart der Schaur zu dem pau gen Passau geschafft hat.</td>
                 </tr>
             
@@ -993,6 +1207,11 @@
                     <td class="src-col-idno"><a href="../../documents/QGW/Vienna_1177-1414_ready/1900.html">1900</a></td>
                     <td class="src-col-date">1411 VIII 19</td>
                     <td class="src-col-corpus">QGW II/1 (1177–1414)</td>
+                    <td class="src-col-label"><em>hern</em></td>
+                    <td class="src-col-role">
+                        
+                        -
+                    </td>
                     <td class="src-col-regest">Ott Weiss, burger ze Wienn, , dass her Erhart, chorherr zu sand Stephan, ihm für hern Lienharten den Schaur, seliger gedechtnuss, 7 ½ lb dn., welche dieser in seines Herrn des Zingken gwantgwelb…</td>
                 </tr>
             
@@ -1000,6 +1219,11 @@
                     <td class="src-col-idno"><a href="../../documents/QGW/Vienna_1177-1414_ready/1940.html">1940</a></td>
                     <td class="src-col-date">1413 II 01</td>
                     <td class="src-col-corpus">QGW II/1 (1177–1414)</td>
+                    <td class="src-col-label"><em>-</em></td>
+                    <td class="src-col-role">
+                        
+                        -
+                    </td>
                     <td class="src-col-regest">Erhart der Schierl, tumbherr ze Freising und tumbherr dacz sand Stepfan ze Wienn und pfarrer ze Naperstorf, Geschäftsvollstrecker Wolfgang der Purkhartsperger, statrichter ze…</td>
                 </tr>
             
@@ -1007,6 +1231,11 @@
                     <td class="src-col-idno"><a href="../../documents/QGW/Vienna_1177-1414_ready/1993.html">1993</a></td>
                     <td class="src-col-date">1414 VIII 25</td>
                     <td class="src-col-corpus">QGW II/1 (1177–1414)</td>
+                    <td class="src-col-label"><em>-</em></td>
+                    <td class="src-col-role">
+                        
+                        -
+                    </td>
                     <td class="src-col-regest">Rudolf der Angerfelder, burgermaister und münssmaister, und der rat gemain der stat ze Wienn bestätigen, von Erhart dem Schierl, tumbherrn ze Freising und tumbherrn dacz sand Stepfan ze Wienn und…</td>
                 </tr>
             
@@ -1039,11 +1268,13 @@
         </div>
     </footer>
 
-    <script src="../../static/js/core.js?v=20260511112948"></script>
-    <script src="../../static/js/provenance.js?v=20260511112948"></script>
-    <script src="../../static/js/basket.js?v=20260511112948"></script>
+    <script src="../../static/js/core.js?v=20260511125458"></script>
+    <script src="../../static/js/tip.js?v=20260511125458"></script>
+    <script src="../../static/js/hint.js?v=20260511125458"></script>
+    <script src="../../static/js/basket.js?v=20260511125458"></script>
     
-<script src="../../static/js/tooltips.js?v=20260511112948"></script>
+<script src="../../static/js/profile.js?v=20260511125458"></script>
+<script src="../../static/js/basket-mount.js?v=20260511125458"></script>
 
 </body>
 </html>
