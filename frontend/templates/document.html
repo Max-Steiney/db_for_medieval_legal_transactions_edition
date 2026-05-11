@@ -53,7 +53,7 @@
                     {% if meta.citation %}
                     <span class="meta-pair">
                         <span class="meta-label">Quelle</span>
-                        <span class="meta-value" title="{{ meta.citation }}">{{ meta.citation }}</span>
+                        <span class="meta-value" data-hint="{{ meta.citation }}">{{ meta.citation }}</span>
                     </span>
                     {% endif %}
                 </div>
@@ -64,7 +64,7 @@
                     {% for layer, group_label, swatches in legend_groups %}
                     <button type="button" class="legend-toggle"
                             data-layer="{{ layer }}" aria-pressed="true"
-                            title="{{ group_label }} ein-/ausblenden">
+                            data-hint="{{ group_label }} ein-/ausblenden">
                         <span class="legend-toggle-dots">
                             {% for cls in swatches %}<span class="legend-swatch swatch-{{ cls }}"></span>{% endfor %}
                         </span>
@@ -76,10 +76,18 @@
                 <div class="doc-toolbar-actions">
                     <a class="toolbar-btn" href="{{ root_path }}/{{ meta.tei_url }}"
                        download="{{ meta.idno }}.xml"
-                       aria-label="TEI-XML herunterladen" title="TEI-XML herunterladen">{{ toolbar_icon('download') }}</a>
+                       aria-label="TEI-XML herunterladen" data-hint="TEI-XML herunterladen">{{ toolbar_icon('download') }}</a>
                     <button class="toolbar-btn" id="cite-toggle" aria-expanded="false"
-                            aria-label="Zitation kopieren" title="Zitation kopieren">{{ toolbar_icon('cite') }}</button>
+                            aria-label="Zitation kopieren" data-hint="Zitation kopieren">{{ toolbar_icon('cite') }}</button>
                     <div class="cite-popover hidden" id="cite-popover"></div>
+                    <span class="toolbar-basket-mount"
+                          data-basket-type="source"
+                          data-basket-id="{{ meta.idno }}"
+                          data-basket-label="{{ meta.idno }}"
+                          data-basket-url="{{ meta.url }}"
+                          data-basket-date="{{ meta.date_iso or meta.date_display or '' }}"
+                          data-basket-coll="{{ meta.collection_label }}"
+                          data-basket-regest="{{ meta.regest }}"></span>
                     {{ doc_nav(meta, root_path, 'doc-paging-inline') }}
                 </div>
             </div>
@@ -147,7 +155,7 @@
          dem TEI in mehreren Untertabellen, Personen/Orgs/Orte,
          Ereignisse, Dispositivformeln, Editorische Ergaenzungen. Wird
          per JS aus den entsprechenden Spans im Body aufgebaut. -->
-    <section class="annotations-view" id="factoid-view" aria-label="Annotationen">
+    <section class="annotations-view" id="annotations-view" aria-label="Annotationen">
         <header class="annotations-header">
             <h2 class="annotations-title">Annotationen</h2>
             <span class="annotations-summary"></span>
@@ -172,7 +180,7 @@
 {% endblock %}
 
 {% block scripts %}
-<script src="{{ root_path }}/static/js/tooltips.js?v={{ asset_v }}"></script>
 <script src="{{ root_path }}/static/js/facsimile.js?v={{ asset_v }}"></script>
 <script src="{{ root_path }}/static/js/document.js?v={{ asset_v }}"></script>
+<script src="{{ root_path }}/static/js/basket-mount.js?v={{ asset_v }}"></script>
 {% endblock %}

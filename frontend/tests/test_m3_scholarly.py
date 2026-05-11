@@ -1,7 +1,7 @@
 """Tests for M3: Scholarly Functions.
 
 Tests cover:
-- Factoid view HTML structure (toggle button, container)
+- Annotations view HTML structure (toggle button, container)
 - Citation helper HTML structure (toggle button, popover, doc-meta JSON)
 - Regression guards: quality-related UI is gone
 """
@@ -23,13 +23,15 @@ class TestDocumentTemplateM3:
 
     def test_annotations_view_container(self, template_html):
         # The annotations section is permanent, no toolbar toggle any more.
-        assert 'id="factoid-view"' in template_html  # id stays (anchor-link stability)
+        assert 'id="annotations-view"' in template_html
         assert 'class="annotations-view"' in template_html
 
-    def test_no_factoid_toggle_button(self, template_html):
+    def test_no_annotations_toggle_button(self, template_html):
         # Regression guard: the toolbar toggle is gone; the assertions
         # table is the permanent third area beside edition text and facsimile.
+        assert 'id="annotations-toggle"' not in template_html
         assert 'id="factoid-toggle"' not in template_html
+        assert 'id="factoid-view"' not in template_html
 
     def test_cite_toggle_button(self, template_html):
         assert 'id="cite-toggle"' in template_html
