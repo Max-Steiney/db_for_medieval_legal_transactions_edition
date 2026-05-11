@@ -589,11 +589,11 @@ def _build_exploration(all_metadata, persons, env):
     under /exploration/, then merged into /exploration/auswertungen.html,
     finally moved to /analysis/.
     """
-    epic_a_path = DATA_DIR / "epic_a.json"
-    epic_b_path = DATA_DIR / "epic_b.json"
-    epic_c_path = DATA_DIR / "epic_c.json"
-    if not epic_a_path.exists():
-        print("  WARN: epic_a.json not found, skipping Auswertungen.",
+    roles_path = DATA_DIR / "roles.json"
+    relations_path = DATA_DIR / "relations.json"
+    transactions_path = DATA_DIR / "transactions.json"
+    if not roles_path.exists():
+        print("  WARN: roles.json not found, skipping Auswertungen.",
               file=sys.stderr)
         return
 
@@ -666,11 +666,11 @@ def _build_exploration(all_metadata, persons, env):
     ) if collections_dict else "alle Korpora"
 
     # --- JSON payloads (raw text, in <script type="application/json">) -----
-    epic_a_json = epic_a_path.read_text(encoding="utf-8")
-    epic_b_json = (epic_b_path.read_text(encoding="utf-8")
-                   if epic_b_path.exists() else "{}")
-    epic_c_json = (epic_c_path.read_text(encoding="utf-8")
-                   if epic_c_path.exists() else "{}")
+    roles_json = roles_path.read_text(encoding="utf-8")
+    relations_json = (relations_path.read_text(encoding="utf-8")
+                   if relations_path.exists() else "{}")
+    transactions_json = (transactions_path.read_text(encoding="utf-8")
+                   if transactions_path.exists() else "{}")
 
     analysis_dir = DOCS_DIR / "analysis"
     analysis_dir.mkdir(parents=True, exist_ok=True)
@@ -691,9 +691,9 @@ def _build_exploration(all_metadata, persons, env):
         collections=collections,
         sex_data=sex_data,
         released_corpora_label=released_corpora_label,
-        epic_a_json=epic_a_json,
-        epic_b_json=epic_b_json,
-        epic_c_json=epic_c_json,
+        roles_json=roles_json,
+        relations_json=relations_json,
+        transactions_json=transactions_json,
         root_path="..",
     )
     (analysis_dir / "auswertungen.html").write_text(html, encoding="utf-8")
@@ -701,21 +701,21 @@ def _build_exploration(all_metadata, persons, env):
 
 
 # ---------------------------------------------------------------------------
-# Wissenskorb page (client-side collection, persisted in localStorage)
+# Knowledge basket page (client-side collection, persisted in localStorage).
+# The UI label "Wissenskorb" stays German; only code-side symbols use English.
 # ---------------------------------------------------------------------------
 
 
-def _build_korb(env):
-    """Build the Wissenskorb page (korb.html). Pure front-shell without
+def _build_basket(env):
+    """Build the basket page (korb.html). Pure front-shell without any
     server-side data — the collection lives client-side in localStorage,
-    is managed by wissenskorb.js and rendered on the page via
-    korb-page.js."""
+    is managed by basket.js and rendered on the page via basket-page.js."""
     html = env.get_template("korb.html").render(
         build_date=_format_german_date(date.today()),
         root_path=".",
     )
     (DOCS_DIR / "korb.html").write_text(html, encoding="utf-8")
-    print("  Wissenskorb: korb.html")
+    print("  Basket: korb.html")
 
 
 # ---------------------------------------------------------------------------
@@ -728,13 +728,13 @@ def _build_exploration_timeline(all_metadata, env):
     bar chart of source density per decade with brush-to-drill-down.
     Stack axis selectable (corpus / form of treatment / sex / transaction
     type). Reads search.json client-side for the first three axes,
-    epic_c.json for the transaction-type stacking.
+    transactions.json for the transaction-type stacking.
 
     Lives under /exploration/ because it is visual-interactive exploration
     of the data structure (not a distribution display) — see knowledge/
     decisions.md "Exploration und Analyse als getrennte Bereiche".
     """
-    epic_c_path = DATA_DIR / "epic_c.json"
+    transactions_path = DATA_DIR / "transactions.json"
 
     # Sidebar data: time-range slider with histogram of sources per decade
     decade_counts = Counter()
@@ -761,8 +761,8 @@ def _build_exploration_timeline(all_metadata, env):
         timeline_data = []
         max_count = 1
 
-    epic_c_json = (epic_c_path.read_text(encoding="utf-8")
-                   if epic_c_path.exists() else "{}")
+    transactions_json = (transactions_path.read_text(encoding="utf-8")
+                   if transactions_path.exists() else "{}")
 
     explore_dir = DOCS_DIR / "exploration"
     explore_dir.mkdir(parents=True, exist_ok=True)
@@ -773,7 +773,7 @@ def _build_exploration_timeline(all_metadata, env):
         max_count=max_count,
         min_year=min_year,
         max_year=max_year,
-        epic_c_json=epic_c_json,
+        transactions_json=transactions_json,
         root_path="..",
     )
     (explore_dir / "zeitstrom.html").write_text(html, encoding="utf-8")
@@ -782,20 +782,20 @@ def _build_exploration_timeline(all_metadata, env):
 
 def _build_exploration_network(env):
     """Build the Personennetzwerk page (exploration/personennetzwerk.html).
-    Ego layout around one person, source epic_b.json::persons with the
+    Ego layout around one person, source relations.json::persons with the
     extended rels (related_key). Page is data-driven: the embedded JSON
     is the sole data source, no on-demand person loading.
     """
-    epic_b_path = DATA_DIR / "epic_b.json"
-    epic_b_json = (epic_b_path.read_text(encoding="utf-8")
-                   if epic_b_path.exists() else "{}")
+    relations_path = DATA_DIR / "relations.json"
+    relations_json = (relations_path.read_text(encoding="utf-8")
+                   if relations_path.exists() else "{}")
 
     explore_dir = DOCS_DIR / "exploration"
     explore_dir.mkdir(parents=True, exist_ok=True)
 
     html = env.get_template("exploration_network.html").render(
         build_date=_format_german_date(date.today()),
-        epic_b_json=epic_b_json,
+        relations_json=relations_json,
         root_path="..",
     )
     (explore_dir / "personennetzwerk.html").write_text(html, encoding="utf-8")
@@ -894,6 +894,14 @@ def _build_glossary(env):
 
     md_source = md_path.read_text(encoding="utf-8")
 
+    # YAML-Frontmatter zwischen --- ... --- entfernen (Promptotyping-Konvention,
+    # nicht fuer Endnutzerinnen gedacht).
+    md_source = _re.sub(r"\A---\r?\n.*?\r?\n---\r?\n", "", md_source, count=1, flags=_re.DOTALL)
+
+    # Doppeltes H1 vermeiden: das Template setzt bereits <h1>Glossar</h1>
+    # als Page-Header, daher das fuehrende Markdown-H1 verwerfen.
+    md_source = _re.sub(r"\A\s*#\s+Glossar\s*\r?\n", "", md_source, count=1)
+
     def _slug(text):
         s = text.strip().lower()
         s = s.replace("ä", "a").replace("ö", "o").replace("ü", "u").replace("ß", "ss")
@@ -907,13 +915,18 @@ def _build_glossary(env):
 
     def _replace_wiki_link(match):
         target = match.group(1)
+        # Aliasform [[#Term|Label]] zerlegen: Label vor dem Anker.
+        label_override = None
+        if "|" in target:
+            target, _sep, label_override = target.partition("|")
         if target.startswith("#"):
-            label = target[1:]
-            return f"[{label}](#{_slug(label)})"
+            label = label_override or target[1:]
+            return f"[{label}](#{_slug(target[1:])})"
         if "#" in target:
             doc, _sep, anchor = target.partition("#")
-            return anchor or doc
-        return target
+            text = label_override or anchor or doc
+            return f"*{text}*"
+        return f"*{label_override or target}*"
 
     md_source = _re.sub(r"\[\[([^\]]+)\]\]", _replace_wiki_link, md_source)
 
@@ -971,7 +984,7 @@ def _write_categories():
 
     The source file lives in `frontend/content/categories.json` and is the
     versioned editorial mapping `org_type -> category` (geistlich/weltlich/
-    sonstige). It is validated against the org-type list in epic_a.json so
+    sonstige). It is validated against the org-type list in roles.json so
     that the pipeline cannot silently introduce types that the editorial
     classification does not yet cover.
     """
@@ -983,18 +996,18 @@ def _write_categories():
     data = json.loads(src.read_text(encoding="utf-8"))
     data.setdefault("meta", {})["created"] = date.today().isoformat()
 
-    epic_a_path = DATA_DIR / "epic_a.json"
-    if epic_a_path.exists():
+    roles_path = DATA_DIR / "roles.json"
+    if roles_path.exists():
         try:
-            epic_a = json.loads(epic_a_path.read_text(encoding="utf-8"))
-            real_types = set(epic_a.get("observations", {}).get("org_type_totals", {}).keys())
+            roles = json.loads(roles_path.read_text(encoding="utf-8"))
+            real_types = set(roles.get("observations", {}).get("org_type_totals", {}).keys())
             mapped_types = {t for ts in data.get("categories", {}).values() for t in ts}
             missing = real_types - mapped_types
             extra = mapped_types - real_types
             if missing:
-                print(f"  WARN: org types in epic_a not classified: {sorted(missing)}", file=sys.stderr)
+                print(f"  WARN: org types in roles.json not classified: {sorted(missing)}", file=sys.stderr)
             if extra:
-                print(f"  WARN: classified types not in epic_a: {sorted(extra)}", file=sys.stderr)
+                print(f"  WARN: classified types not in roles.json: {sorted(extra)}", file=sys.stderr)
         except (json.JSONDecodeError, OSError):
             pass
 
@@ -1032,7 +1045,7 @@ def _build_analysis(env):
 
     Minimal build: only template render with an asset-version string for
     cache-busting of the composer scripts. No header KPIs any more — KPIs
-    now live in the composer itself (live from epic_*.json).
+    now live in the composer itself (live from roles.json/relations.json/transactions.json).
     """
     assets_version = datetime.now().strftime("%Y%m%d%H%M%S")
 

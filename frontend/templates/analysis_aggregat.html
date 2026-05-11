@@ -30,7 +30,7 @@
             {% endif %}
 
             {# Korpus-Filter wirkt auf der Auswertungs-Seite noch nicht
-               (epic_a/b/c sind kollektions-aggregiert) — daher hier
+               (roles/relations/transactions sind kollektions-aggregiert) — daher hier
                bewusst nicht angezeigt, statt als toter Chip zu verwirren. #}
 
             {% call sidebar_block('Geschlecht') %}
@@ -220,9 +220,9 @@
 <script src="{{ root_path }}/static/js/tooltips.js?v={{ asset_v }}"></script>
 <script src="{{ root_path }}/static/js/table-infra.js?v={{ asset_v }}"></script>
 <script src="{{ root_path }}/static/js/viz-core.js?v={{ asset_v }}"></script>
-<script id="aggregat-data-epic-a" type="application/json">{{ epic_a_json|safe }}</script>
-<script id="aggregat-data-epic-b" type="application/json">{{ epic_b_json|safe }}</script>
-<script id="aggregat-data-epic-c" type="application/json">{{ epic_c_json|safe }}</script>
+<script id="aggregat-data-roles" type="application/json">{{ roles_json|safe }}</script>
+<script id="aggregat-data-relations" type="application/json">{{ relations_json|safe }}</script>
+<script id="aggregat-data-transactions" type="application/json">{{ transactions_json|safe }}</script>
 <script src="{{ root_path }}/static/js/analysis-aggregat.js?v={{ asset_v }}"></script>
 {% endblock %}
 

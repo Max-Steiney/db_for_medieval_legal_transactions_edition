@@ -76,28 +76,28 @@ describe('AnalysisComposer.requiredFiles', () => {
         expect(files).toContain('query_vocabulary.json');
     });
 
-    test('persons subject pulls epic_a', () => {
+    test('persons subject pulls roles', () => {
         const files = AnalysisComposer.requiredFiles({
             subject: 'persons', filters: {},
         });
-        expect(files).toContain('epic_a.json');
-        expect(files).not.toContain('epic_b.json');
-        expect(files).not.toContain('epic_c.json');
+        expect(files).toContain('roles.json');
+        expect(files).not.toContain('relations.json');
+        expect(files).not.toContain('transactions.json');
     });
 
-    test('events subject pulls epic_a + epic_c', () => {
+    test('events subject pulls roles + transactions', () => {
         const files = AnalysisComposer.requiredFiles({
             subject: 'events', filters: {},
         });
-        expect(files).toContain('epic_a.json');
-        expect(files).toContain('epic_c.json');
+        expect(files).toContain('roles.json');
+        expect(files).toContain('transactions.json');
     });
 
-    test('relationships subject pulls epic_b', () => {
+    test('relationships subject pulls relations', () => {
         const files = AnalysisComposer.requiredFiles({
             subject: 'relationships', filters: {},
         });
-        expect(files).toContain('epic_b.json');
+        expect(files).toContain('relations.json');
     });
 
     test('sources subject pulls timeline.json', () => {

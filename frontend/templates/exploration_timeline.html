@@ -69,7 +69,7 @@
                             {% call glossary_tip('gloss-stream-source', 'Zeitstrom') %}
                                 <p class="prov-def">Anzahl freigegebener TEI-Quellen pro Jahrzehnt, gruppiert nach der gew&auml;hlten Stapel-Achse. Ein Klick-und-Ziehen &uuml;ber den Stream w&auml;hlt einen Zeitabschnitt aus und listet die enthaltenen Quellen unten auf.</p>
                                 <footer class="prov-foot">
-                                    <span class="prov-foot-source"><code>data/search.json</code> &middot; <code>data/timeline.json</code> &middot; Transaktions-Stapelung aus <code>epic_c.json</code></span>
+                                    <span class="prov-foot-source"><code>data/search.json</code> &middot; <code>data/timeline.json</code> &middot; Transaktions-Stapelung aus <code>transactions.json</code></span>
                                 </footer>
                             {% endcall %}
                         </span>
@@ -117,7 +117,7 @@
 <script src="{{ root_path }}/static/js/tooltips.js?v={{ asset_v }}"></script>
 <script src="{{ root_path }}/static/js/table-infra.js?v={{ asset_v }}"></script>
 <script src="{{ root_path }}/static/js/viz-core.js?v={{ asset_v }}"></script>
-<script id="exploration-data-epic-c" type="application/json">{{ epic_c_json|safe }}</script>
+<script id="exploration-data-transactions" type="application/json">{{ transactions_json|safe }}</script>
 <script src="{{ root_path }}/static/js/exploration-timeline.js?v={{ asset_v }}"></script>
 {% endblock %}
 

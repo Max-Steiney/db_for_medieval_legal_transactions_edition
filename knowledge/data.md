@@ -22,11 +22,11 @@ related: [architecture, requirements, decisions, glossar]
 
 # Datenbasis
 
-Was die Edition als Gegenstand dokumentiert und wie die Daten strukturiert sind. Fachbegriffe werden verwendet, nicht definiert. Definitionen in [[glossar]].
+Was die Datenbank als Gegenstand dokumentiert und wie die Daten strukturiert sind. Fachbegriffe werden verwendet, nicht definiert. Definitionen in [[glossar]].
 
 ## Gegenstand
 
-Die Edition erschließt mittelalterliche Wiener Rechtsgeschäfte in schriftlicher Überlieferung. Der Fokus liegt auf Urkunden und urkundlich verfassten Einträgen in Stadtbüchern, die rechtliche Transaktionen dokumentieren.
+Die Datenbank erschließt mittelalterliche Wiener Rechtsgeschäfte in schriftlicher Überlieferung. Der Fokus liegt auf Urkunden und urkundlich verfassten Einträgen in Stadtbüchern, die rechtliche Transaktionen dokumentieren.
 
 Der freigegebene Zeitraum beginnt 1177 und endet 1412, mit einer Ausnahme bis 1414 für die Quellenkorpora QGW II/1 und QGW II/2. Außerhalb dieses Rahmens liegende Zeitabschnitte werden nicht angezeigt.
 
@@ -50,7 +50,7 @@ Die Quellenkorpora unterscheiden sich in der Form ihrer Erschließung. Die Unter
 
 Monasterium-Quellen liegen als digitalisierte Faksimiles mit zugeordneten Regesten vor. Ein Regest ist eine redaktionelle Zusammenfassung; der zugrunde liegende Text ist nicht vollständig ediert, aber im Digitalisat einsehbar.
 
-Die Stadtbücher sind als edierter Volltext erschlossen. Textgenaue Belege sind hier möglich, weil die Edition die Wortlaute wiedergibt.
+Die Stadtbücher sind als ausgeschriebener Volltext erschlossen. Textgenaue Belege sind hier möglich, weil die Datenbank die Wortlaute wiedergibt.
 
 Grundbücher und verwandte Bestände befinden sich auf unterschiedlichen Stufen der Erschließung. Der Status wird pro Bestand ausgewiesen.
 
@@ -64,7 +64,7 @@ Auf der Nennungsebene gilt: Mehrfacherwähnungen einer Entität innerhalb einer 
 
 ## Register
 
-Die Edition führt drei parallele Register: Personen, Organisationen, Orte. Jeder Eintrag ist eine konsolidierte Identität mit eindeutiger ID und verknüpft die Vorkommen in den Quellen.
+Die Datenbank führt drei parallele Register: Personen, Organisationen, Orte. Jeder Eintrag ist eine konsolidierte Identität mit eindeutiger ID und verknüpft die Vorkommen in den Quellen.
 
 Die Register sind nicht redundant zu den Quellen, sondern deren Bezugspunkt. Ohne Register gäbe es nur Namensketten ohne Zuordnung zu individuellen Entitäten.
 
@@ -90,7 +90,7 @@ Zwischen den Pipeline-CSVs und den Frontend-Views liegt eine konsolidierte Aggre
 
 Die Aufschlüsselung nach Event-Subtyp macht die TEI-Heterogenität sichtbar: eine QGW-Quelle hat typischerweise einen Regest-Event und einen Siegel-Event, eine Stadtbücher-Quelle einen Entry-Event. Personen-Counts sind quellenbereinigt im Sinne von [[architecture#Quellenbereinigte Aggregation als Invariante]] — indirekte Erwähnungen über `kind_of_linking=corresp` teilen den `person_key` mit der genannten Person und werden nicht doppelt gezählt.
 
-Neben den thematischen Aggregaten (Funktionsrollen × Geschlecht × Dekade in `epic_a`, Beziehungstypen und Bezeichnungen in `epic_b`, Transaktionstypen × Dekade in `epic_c`) führt jede dieser JSON-Strukturen einen `drill_down`-Schnitt: pro Aggregat-Zelle eine Liste der beitragenden `file_key`-Verweise. Eine Quelle kann in mehreren Zellen erscheinen, der Schnitt führt sie pro Zelle nur einmal. Aufgelöst werden die `file_keys` über `data/docs_lookup.json`, das pro Schlüssel die Stammdaten Datum, Korpus-Label, Kurzregest und Quellen-URL hält. Damit ist jede aggregierte Zahl im Frontend bis zur einzelnen Quelldokument-Seite rückführbar — die Provenienz-Garantie aus [[requirements#Datenrobustheit und Provenienz]] hängt an dieser doppelten Schicht (Aggregat + Lookup).
+Neben den thematischen Aggregaten (Funktionsrollen × Geschlecht × Dekade in `roles`, Beziehungstypen und Bezeichnungen in `relations`, Transaktionstypen × Dekade in `transactions`) führt jede dieser JSON-Strukturen einen `drill_down`-Schnitt: pro Aggregat-Zelle eine Liste der beitragenden `file_key`-Verweise. Eine Quelle kann in mehreren Zellen erscheinen, der Schnitt führt sie pro Zelle nur einmal. Aufgelöst werden die `file_keys` über `data/docs_lookup.json`, das pro Schlüssel die Stammdaten Datum, Korpus-Label, Kurzregest und Quellen-URL hält. Damit ist jede aggregierte Zahl im Frontend bis zur einzelnen Quelldokument-Seite rückführbar — die Provenienz-Garantie aus [[requirements#Datenrobustheit und Provenienz]] hängt an dieser doppelten Schicht (Aggregat + Lookup).
 
 Technische Umsetzung in [[architecture#Datenschichten und Aggregator]].
 

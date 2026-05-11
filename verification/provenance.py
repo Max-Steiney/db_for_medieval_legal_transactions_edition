@@ -172,22 +172,22 @@ def run_provenance_checks() -> List[CheckResult]:
     no_tei_fks = _no_tei_file_keys()
     known_urls = _known_doc_urls()
 
-    # --- epic_a.drill_down.role_sex ---------------------------------------
-    epic_a = _load(DATA_DIR / "epic_a.json")
+    # --- roles.drill_down.role_sex ---------------------------------------
+    roles = _load(DATA_DIR / "roles.json")
     fkeys_a = list(_iter_file_keys_from_dict(
-        epic_a.get("drill_down", {}).get("role_sex", {}), "role_sex"
+        roles.get("drill_down", {}).get("role_sex", {}), "role_sex"
     ))
-    results.extend(_check_file_keys("provenance.epic_a.role_sex", fkeys_a, known_fks, no_tei_fks))
+    results.extend(_check_file_keys("provenance.roles.role_sex", fkeys_a, known_fks, no_tei_fks))
 
-    # --- epic_b.drill_down -------------------------------------------------
-    epic_b = _load(DATA_DIR / "epic_b.json")
+    # --- relations.drill_down -------------------------------------------------
+    relations = _load(DATA_DIR / "relations.json")
     fkeys_b = list(_iter_file_keys_from_dict(
-        epic_b.get("drill_down", {}), "drill_down"
+        relations.get("drill_down", {}), "drill_down"
     ))
-    results.extend(_check_file_keys("provenance.epic_b.drill_down", fkeys_b, known_fks, no_tei_fks))
+    results.extend(_check_file_keys("provenance.relations.drill_down", fkeys_b, known_fks, no_tei_fks))
 
-    # epic_b.persons: list of entities with rels[].f -> file_key
-    persons_b = epic_b.get("persons", [])
+    # relations.persons: list of entities with rels[].f -> file_key
+    persons_b = relations.get("persons", [])
     person_rel_fks: List[Tuple[str, str]] = []
     for entry in persons_b:
         for rel in entry.get("rels", []):
@@ -195,15 +195,15 @@ def run_provenance_checks() -> List[CheckResult]:
             if fk:
                 person_rel_fks.append(("persons.rels", fk))
     results.extend(
-        _check_file_keys("provenance.epic_b.persons.rels", person_rel_fks, known_fks, no_tei_fks)
+        _check_file_keys("provenance.relations.persons.rels", person_rel_fks, known_fks, no_tei_fks)
     )
 
-    # --- epic_c.drill_down.tx_type_decade ---------------------------------
-    epic_c = _load(DATA_DIR / "epic_c.json")
+    # --- transactions.drill_down.tx_type_decade ---------------------------------
+    transactions = _load(DATA_DIR / "transactions.json")
     fkeys_c = list(_iter_file_keys_from_dict(
-        epic_c.get("drill_down", {}), "drill_down"
+        transactions.get("drill_down", {}), "drill_down"
     ))
-    results.extend(_check_file_keys("provenance.epic_c.drill_down", fkeys_c, known_fks, no_tei_fks))
+    results.extend(_check_file_keys("provenance.transactions.drill_down", fkeys_c, known_fks, no_tei_fks))
 
     # --- epic_d.places[*].file_keys ---------------------------------------
     # epic_d.json wird nicht mehr gebaut (Orte-Exploration entfernt). Falls

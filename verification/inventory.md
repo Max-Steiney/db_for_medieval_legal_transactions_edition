@@ -48,8 +48,8 @@ Vollständiger Katalog aller Kennzahlen, die das Frontend anzeigt, mit Herkunft 
 
 | Name | JSON-Pfad | TEI-Regel | Status |
 |---|---|---|---|
-| events.total | abgeleitet aus `epic_a.json#coverage.total_events` | Anzahl `//tei:rs[@type='event']` über alle TEI-Dateien | planned |
-| events.by_decade | `epic_c.json#tx_timeline.*.*` (Summe) | Events gruppiert nach Dekade des enthaltenden Dokuments | planned |
+| events.total | abgeleitet aus `roles.json#coverage.total_events` | Anzahl `//tei:rs[@type='event']` über alle TEI-Dateien | planned |
+| events.by_decade | `transactions.json#tx_timeline.*.*` (Summe) | Events gruppiert nach Dekade des enthaltenden Dokuments | planned |
 
 ### Qualität
 
@@ -64,22 +64,22 @@ Vollständiger Katalog aller Kennzahlen, die das Frontend anzeigt, mit Herkunft 
 | Name | JSON-Pfad | TEI-Regel | Status |
 |---|---|---|---|
 | roles.by_role | abgeleitet | Counter über `@role` von `//tei:rs[@type='fn']` | planned |
-| roles.by_role_sex | `epic_a.json#observations.role_by_sex` | Personen pro Rolle × Geschlecht: `//tei:rs[@type='fn'][@role=$r]//tei:rs[@type='person']/@ref` ∩ `personList[@sex=$s]` | planned |
-| roles.by_role_sex_decade | `epic_a.json#observations.role_by_sex_by_decade` | wie oben, zusätzlich nach Dekade des Dokuments gruppiert | planned |
+| roles.by_role_sex | `roles.json#observations.role_by_sex` | Personen pro Rolle × Geschlecht: `//tei:rs[@type='fn'][@role=$r]//tei:rs[@type='person']/@ref` ∩ `personList[@sex=$s]` | planned |
+| roles.by_role_sex_decade | `roles.json#observations.role_by_sex_by_decade` | wie oben, zusätzlich nach Dekade des Dokuments gruppiert | planned |
 
 ### Beziehungen
 
 | Name | JSON-Pfad | TEI-Regel | Status |
 |---|---|---|---|
-| relations.by_type | `epic_b.json#overview.by_type` | Counter über `//tei:roleName[@type][@corresp]` mit Typ-Normalisierung | planned |
-| relations.by_type_decade | `epic_b.json#overview.by_decade` | wie oben, zusätzlich nach Dekade | planned |
+| relations.by_type | `relations.json#overview.by_type` | Counter über `//tei:roleName[@type][@corresp]` mit Typ-Normalisierung | planned |
+| relations.by_type_decade | `relations.json#overview.by_decade` | wie oben, zusätzlich nach Dekade | planned |
 
 ### Transaktionsverben
 
 | Name | JSON-Pfad | TEI-Regel | Status |
 |---|---|---|---|
-| transactions.by_verb_decade | `epic_c.json#tx_timeline` | Text von `//tei:rs[@type='event']/tei:triggerstring[@n='disp']`, normalisiert zu Catchwords (Normalisierung aus Pipeline übernehmen oder mindestens Rohtext vergleichen) | planned |
-| transactions.recipients | `epic_c.json#recipients` | Organisationen in `<rs type="fn" role="recipient">` innerhalb eines Events | planned |
+| transactions.by_verb_decade | `transactions.json#tx_timeline` | Text von `//tei:rs[@type='event']/tei:triggerstring[@n='disp']`, normalisiert zu Catchwords (Normalisierung aus Pipeline übernehmen oder mindestens Rohtext vergleichen) | planned |
+| transactions.recipients | `transactions.json#recipients` | Organisationen in `<rs type="fn" role="recipient">` innerhalb eines Events | planned |
 
 ### Orte mit Dokumentbezug
 

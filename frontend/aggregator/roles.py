@@ -1,4 +1,4 @@
-"""Epic A: roles x sex x organisations — for the role section in
+"""Roles aggregation: function roles x sex x organisations — for the role section in
 analysis/auswertungen.html."""
 
 from collections import Counter, defaultdict
@@ -7,7 +7,7 @@ from pathlib import Path
 from ._shared import _cached_csv, _load_norm_matching, _meta, _decade, _write_json
 
 
-def aggregate_epic_a(docs_data_dir: Path) -> dict:
+def aggregate_roles(docs_data_dir: Path) -> dict:
     """Aggregate role distribution by sex, time series, and institution links."""
     persons_rows = _cached_csv("persons.csv")
     pie_rows = _cached_csv("persons_in_events.csv")
@@ -215,5 +215,5 @@ def aggregate_epic_a(docs_data_dir: Path) -> dict:
         },
     }
 
-    _write_json(result, docs_data_dir / "epic_a.json")
+    _write_json(result, docs_data_dir / "roles.json")
     return result

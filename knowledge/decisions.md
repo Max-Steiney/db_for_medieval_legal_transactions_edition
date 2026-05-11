@@ -49,7 +49,7 @@ Getroffene Leitentscheidungen mit Begründung. Zeitlos formuliert. Pro Eintrag E
 
 ## Titel und Untertitel
 
-**Entscheidung.** Der Haupttitel der Edition lautet „Stadt und Gemeinschaft Wien", der Untertitel „Datenbank zu mittelalterlichen Rechtsgeschäften".
+**Entscheidung.** Der Haupttitel der Datenbank lautet „Stadt und Gemeinschaft Wien", der Untertitel „Datenbank zu mittelalterlichen Rechtsgeschäften".
 
 **Begründung.** Der Haupttitel ist in den Projektpublikationen etabliert. Eine abweichende Neubenennung würde Kontinuität mit bereits gedruckten Texten brechen. Der Untertitel ist deutsch, damit das UI sprachlich durchgängig bleibt und nicht ohne Anlass zwischen Deutsch und Englisch wechselt.
 
@@ -66,7 +66,7 @@ Getroffene Leitentscheidungen mit Begründung. Zeitlos formuliert. Pro Eintrag E
 
 **Konsequenz.** Unter `/analysis/` liegen `auswertungen.html` (Statistik-Verteilungen) und `index.html` (Abfragen). `/exploration/` ist für künftige visuelle Views reserviert (Personen-Netzwerk, Karten, Timeline) und enthält aktuell keine Inhalte. Die Navigation bündelt beide Analyse-Seiten in einem Dropdown „Analyse"; Exploration erscheint dort, sobald die ersten visuellen Views fertig sind. Siehe [[ui-design#Navigation]] und [[ui-design#Zwei Modi nebeneinander]].
 
-**Nicht gemeint ist**, dass Exploration und Analyse streng disjunkt wären. Eine Nutzerin kann eine Auffälligkeit in einem Donut-Diagramm entdecken (Analyse) und sie in einer Netzwerkvisualisierung qualitativ weiterverfolgen (Exploration), oder umgekehrt. Die Bereiche teilen sich dieselben Aggregate (`epic_*.json`) und dieselben Filter-Bausteine (Sidebar, Active-Filter-Strip).
+**Nicht gemeint ist**, dass Exploration und Analyse streng disjunkt wären. Eine Nutzerin kann eine Auffälligkeit in einem Donut-Diagramm entdecken (Analyse) und sie in einer Netzwerkvisualisierung qualitativ weiterverfolgen (Exploration), oder umgekehrt. Die Bereiche teilen sich dieselben Aggregate (`roles.json`/`relations.json`/`transactions.json`) und dieselben Filter-Bausteine (Sidebar, Active-Filter-Strip).
 
 ## Auswertungen gehört in den Analyse-Bereich
 
@@ -74,7 +74,7 @@ Getroffene Leitentscheidungen mit Begründung. Zeitlos formuliert. Pro Eintrag E
 
 **Begründung.** Die Seite zeigt vorberechnete statistische Verteilungen mit Prozentwerten und exakten Zahlen. Die Interaktion beschränkt sich auf zwei orthogonale Achsen (Zeitraum, Geschlecht) plus eine Zähleinheit-Umschaltung (Nennungen ↔ Individuelle Personen) — alles strukturierte Auswertungsachsen, keine offene Erkundung. Donut und Bar-Chart sind klassische Statistik-Displays, keine explorativen Visualisierungen. Wer auf den Eintrag „Auswertungen" klickt, erwartet quantitative Antworten; das ist Analyse-Domain.
 
-**Konsequenz.** Build-Ziel: `docs/analysis/auswertungen.html`. Template: `frontend/templates/analysis_aggregat.html`. JavaScript: `frontend/static/js/analysis-aggregat.js`. Aggregator-Source: `frontend/aggregator/epic_a.py`, `epic_b.py`, `epic_c.py`. Die Navigation führt sie als Dropdown-Eintrag unter „Analyse", neben „Abfragen" (`/analysis/index.html`).
+**Konsequenz.** Build-Ziel: `docs/analysis/auswertungen.html`. Template: `frontend/templates/analysis_aggregat.html`. JavaScript: `frontend/static/js/analysis-aggregat.js`. Aggregator-Source: `frontend/aggregator/roles.py`, `relations.py`, `transactions.py`. Die Navigation führt sie als Dropdown-Eintrag unter „Analyse", neben „Abfragen" (`/analysis/index.html`).
 
 **Vorgeschichte.** Frühere Iterationen hatten vier separate Sub-Seiten unter `/exploration/` (Rollen, Beziehungen, Transaktionen, Orte), wurden zu einer zusammengelegten `exploration/auswertungen.html`-Seite gebündelt und schließlich nach `/analysis/` verschoben, sobald klar war, dass die Inhalte analytischer als explorativer Natur sind. Die Verschiebung dokumentiert sich in [[journal]].
 
@@ -145,7 +145,7 @@ Diese Asymmetrie ist im Altsystem etabliert und semantisch konsistent: Eine Pers
 
 **Entscheidung.** Die Anzahl der Rechtsgeschäfte (Events) zählt ausschließlich `<rs type="event">`-Elemente, die selbst keinen `<rs type="event">`-Vorfahren haben. Verschachtelte rs-Events innerhalb anderer rs-Events sind Querverweise auf andere Geschäfte und werden separat als `event_mentions` erfasst.
 
-**Begründung.** Im TEI-Kodierungsmodell der Edition wird ein Rechtsgeschäft als oberstes `<rs type="event">` markiert. Innerhalb seines Prosatexts können weitere Geschäfte zitiert werden — etwa eine ältere Urkunde, auf die sich das aktuelle bezieht. Diese Zitate werden ebenfalls mit `<rs type="event">` ausgezeichnet, sind aber semantisch keine eigenständigen Geschäfte des aktuellen Dokuments. Wer alle rs-Events ungefiltert zählt, summiert Geschäfte und Zitate in einen Topf und überschätzt den Umfang systematisch.
+**Begründung.** Im TEI-Kodierungsmodell der Datenbank wird ein Rechtsgeschäft als oberstes `<rs type="event">` markiert. Innerhalb seines Prosatexts können weitere Geschäfte zitiert werden, etwa eine ältere Urkunde, auf die sich das aktuelle bezieht. Diese Zitate werden ebenfalls mit `<rs type="event">` ausgezeichnet, sind aber semantisch keine eigenständigen Geschäfte des aktuellen Dokuments. Wer alle rs-Events ungefiltert zählt, summiert Geschäfte und Zitate in einen Topf und überschätzt den Umfang systematisch.
 
 **Konsequenz.** Der zentrale XPath in `pipeline/transformers/events.py` lautet:
 
@@ -177,7 +177,7 @@ Verschachtelte rs-Events landen über `pipeline/utils/event_helpers.py::iter_top
 
 **Entscheidung.** Der Zeitraum 1418 bis 1447 wird als „noch nicht ausgewertet" bezeichnet, nicht als „Überlieferungslücke".
 
-**Begründung.** Die Überlieferung existiert. Nur die redaktionelle Auswertung steht aus. Die frühere Formulierung war sachlich falsch und wäre in einer wissenschaftlich verwendbaren Edition nicht haltbar.
+**Begründung.** Die Überlieferung existiert. Nur die redaktionelle Auswertung steht aus. Die frühere Formulierung war sachlich falsch und wäre in einer wissenschaftlich verwendbaren Datenbank nicht haltbar.
 
 **Konsequenz.** Der Begriff ist an allen sichtbaren Stellen konsequent zu verwenden.
 
@@ -189,7 +189,7 @@ Verschachtelte rs-Events landen über `pipeline/utils/event_helpers.py::iter_top
 
 **Konsequenz.** Organisationen- und Ortsregister-Seiten zeigen Platzhalter oder sind deaktiviert, bis ihre Qualität eine Freigabe zulässt.
 
-## Trennung Edition-Repo und Pipeline-Repo
+## Trennung Frontend-Repo und Pipeline-Repo
 
 **Entscheidung.** Build-Output liegt in einem eigenen Repository, getrennt vom Pipeline- und Template-Quellcode.
 

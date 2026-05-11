@@ -1,6 +1,6 @@
-/* === Wiener Urkundenbuch — Exploration Pages === */
+/* === Stadt und Gemeinschaft Wien — Exploration Pages === */
 /* ==========================================================================
-   Exploration page (V1 shared + V2 Epic A)
+   Exploration page (V1 shared + V2 Roles)
    ========================================================================== */
 
 .explore-page {
@@ -123,7 +123,7 @@
     cursor: not-allowed;
 }
 
-/* Epic sections */
+/* Aggregat sections */
 .explore-epic.hidden { display: none; }
 
 /* Filter header */
@@ -284,7 +284,7 @@
     grid-template-columns: 1fr 1fr 1fr;
     gap: var(--space-lg);
 }
-/* Epic A: Roles — two panels top, detail full-width below */
+/* Roles: two panels top, detail full-width below */
 .explore-panels--roles-top {
     grid-template-columns: 1fr 1fr;
 }
@@ -661,7 +661,7 @@
     font-weight: 600;
 }
 
-/* ── Placeholder pages (Epics B–D) ──────────── */
+/* ── Placeholder pages (Relations / Transactions / Places) ──────────── */
 .explore-placeholder-page {
     text-align: center;
     padding: var(--space-2xl) var(--space-lg);
@@ -713,7 +713,7 @@
     border-radius: 3px;
 }
 
-/* ── Epic C: Transaction Explorer ──────────────── */
+/* ── Transactions Explorer ──────────────── */
 
 /* Two-one panel layout: timeline wide, verb + recipients side by side */
 .explore-panels--two-one {
@@ -846,7 +846,7 @@
 }
 
 /* ==========================================================================
-   Epic B — Relationship Explorer
+   Relations — Relationship Explorer
    ========================================================================== */
 
 /* 2-column layout: overview chart | label browser */
@@ -918,7 +918,7 @@
     background: var(--color-bg-hover, #f5f3f0);
 }
 
-/* Buttons (shared across Epics) */
+/* Buttons (shared across aggregat pages) */
 .explore-btn {
     display: inline-flex;
     align-items: center;
@@ -1405,8 +1405,8 @@
     text-decoration: none;
 }
 
-/* Korb-Styles in components.css verschoben — werden ueber base.html
-   auf jeder Seite geladen und sind nicht exploration-spezifisch. */
+/* Basket styles moved to components.css — loaded from base.html on every
+   page, not specific to exploration. */
 .explore-stream-doclist {
     list-style: none;
     margin: 0;

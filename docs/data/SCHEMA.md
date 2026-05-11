@@ -16,7 +16,7 @@ Stand: aktueller Build. Versionierung pro Datei über `meta.schema_version` bzw.
 
 **Kompakt-Felder in Massendaten.** `search.json`, `persons_search.json` und die `register/*.json` verwenden 1–3-Buchstaben-Keys für Bandbreiten-Reduktion. Die Mappings sind unten dokumentiert.
 
-**Aggregat-Konvention (`epic_*.json`).** Vier Top-Level-Blöcke sind Standard: `meta`, `observations` (Kreuztabellen als verschachtelte Objekte), `drill_down` (Listen von `file_key`-Verweisen pro Aggregat-Zelle), `coverage` (Datenqualitäts-Indikatoren). Siehe [knowledge/architecture.md](../../knowledge/architecture.md) und [decisions.md](../../knowledge/decisions.md) für Begründung.
+**Aggregat-Konvention (`roles.json` / `relations.json` / `transactions.json`).** Vier Top-Level-Blöcke sind Standard: `meta`, `observations` (Kreuztabellen als verschachtelte Objekte), `drill_down` (Listen von `file_key`-Verweisen pro Aggregat-Zelle), `coverage` (Datenqualitäts-Indikatoren). Siehe [knowledge/architecture.md](../../knowledge/architecture.md) und [decisions.md](../../knowledge/decisions.md) für Begründung.
 
 ---
 
@@ -104,11 +104,11 @@ Konzeptionelle Beschreibung: [knowledge/data.md#Aggregat-Schicht](../../knowledg
 
 ---
 
-## `epic_a.json` — Rollen × Geschlecht × Dekade × Organisationstyp
+## `roles.json` — Rollen × Geschlecht × Dekade × Organisationstyp
 
 **Zweck.** Datenbasis der Sub-Seite [Rollen](../exploration/roles.html). Kreuztabellen über Personen-Event-Beteiligungen.
 
-**Producer.** `frontend/aggregator.py::aggregate_epic_a`.
+**Producer.** `frontend/aggregator/roles.py::aggregate_roles`.
 **Consumer.** `frontend/static/js/exploration-roles.js`.
 
 **Top-Level-Blöcke.**
@@ -129,11 +129,11 @@ Konzeptionelle Beschreibung: [knowledge/data.md#Aggregat-Schicht](../../knowledg
 
 ---
 
-## `epic_b.json` — Beziehungen
+## `relations.json` — Beziehungen
 
 **Zweck.** Datenbasis der Sub-Seite [Beziehungen](../exploration/networks.html). Annotierte Verbindungen zwischen Personen, klassifiziert nach Typ.
 
-**Producer.** `frontend/aggregator.py::aggregate_epic_b`.
+**Producer.** `frontend/aggregator/relations.py::aggregate_relations`.
 **Consumer.** `frontend/static/js/exploration-networks.js`.
 
 **Top-Level-Blöcke.**
@@ -154,11 +154,11 @@ Konzeptionelle Beschreibung: [knowledge/data.md#Aggregat-Schicht](../../knowledg
 
 ---
 
-## `epic_c.json` — Transaktionen
+## `transactions.json` — Transaktionen
 
 **Zweck.** Datenbasis der Sub-Seite [Transaktionen](../exploration/transactions.html). Repertoire der Rechtsgeschäfte über die Zeit.
 
-**Producer.** `frontend/aggregator.py::aggregate_epic_c`.
+**Producer.** `frontend/aggregator/transactions.py::aggregate_transactions`.
 **Consumer.** `frontend/static/js/exploration-transactions.js`.
 
 **Top-Level-Blöcke.**
@@ -271,7 +271,7 @@ Konzeptionelle Beschreibung: [knowledge/data.md#Aggregat-Schicht](../../knowledg
 | `coverage` | Pro Subjekt ein Coverage-Hinweistext |
 | `constraints.max_active_filters` | Hartes Limit (3) |
 
-Schema-Drift gegen die `epic_*.json`-Werte wird im Test `frontend/tests/test_query_vocabulary.py` geprüft.
+Schema-Drift gegen die `roles.json` / `relations.json` / `transactions.json`-Werte wird im Test `frontend/tests/test_query_vocabulary.py` geprüft.
 
 ---
 

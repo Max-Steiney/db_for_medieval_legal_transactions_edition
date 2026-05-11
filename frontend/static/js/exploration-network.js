@@ -21,7 +21,7 @@
     // ---------------------------------------------------------------------
     // Load data + build index
     // ---------------------------------------------------------------------
-    const EPIC_B = V.readJsonScript('network-data-epic-b', { persons: [] });
+    const RELATIONS = V.readJsonScript('network-data-relations', { persons: [] });
     let DOCS_LOOKUP = {};
 
     // PERSONS: id -> {id, name, sex, rels[]}
@@ -32,10 +32,10 @@
     const EDGE_INDEX = new Map();
 
     function buildIndex() {
-        for (const p of EPIC_B.persons || []) {
+        for (const p of RELATIONS.persons || []) {
             PERSONS.set(p.id, p);
         }
-        for (const p of EPIC_B.persons || []) {
+        for (const p of RELATIONS.persons || []) {
             const edges = new Map();    // (other|type) -> {otherKey, type, labels[], sourceKeys[]}
             for (const r of p.rels || []) {
                 const t = r.t;
@@ -247,10 +247,10 @@
                 : `<button type="button" class="net-detail-recenter" data-pid="${escapeAttr(e.otherKey)}"
                        title="Zum Mittelpunkt machen">${escapeHtml(name)}</button>`;
             // Knowledge basket button shows only for person profiles, not for orgs.
-            let korbBtn = '';
-            if (!isOrg && other && typeof Wissenskorb !== 'undefined') {
+            let basketBtn = '';
+            if (!isOrg && other && typeof KnowledgeBasket !== 'undefined') {
                 const url = `register/persons/${other.id}.html`;
-                korbBtn = Wissenskorb.buttonHTML({
+                basketBtn = KnowledgeBasket.buttonHTML({
                     type: 'person', id: other.id, label: other.name, url: url,
                     date: '', coll: 'Personenregister', regest: '',
                 });
@@ -260,7 +260,7 @@
                 <td>${escapeHtml(REL_LABELS[e.type] || e.type)}${isOrg ? ' (Org)' : ''}</td>
                 <td>${labels}</td>
                 <td class="num">${V.fmt(e.sourceKeys.length)}</td>
-                <td class="col-actions">${korbBtn}</td>
+                <td class="col-actions">${basketBtn}</td>
             </tr>`;
         });
         tbody.innerHTML = rows.join('') ||

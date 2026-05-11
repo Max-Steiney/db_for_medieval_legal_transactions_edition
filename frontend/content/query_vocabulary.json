@@ -64,7 +64,7 @@
     "org_type": {
       "label": "Organisationstyp",
       "value_kind": "from_data",
-      "values_source": "epic_a.observations.org_type_totals",
+      "values_source": "roles.observations.org_type_totals",
       "value_labels": {
         "Messe": "Messe/Stiftung",
         "Pfarre": "Pfarre",
@@ -95,7 +95,7 @@
     "tx_type": {
       "label": "Transaktionstyp",
       "value_kind": "from_data",
-      "values_source": "epic_a.observations.transaction_types",
+      "values_source": "roles.observations.transaction_types",
       "value_labels": {
         "_not_normalised": "noch nicht normalisiert",
         "Kauf": "Kauf",
@@ -118,7 +118,7 @@
     "recipient_type": {
       "label": "Empfaenger-Typ",
       "value_kind": "from_data",
-      "values_source": "epic_c.observations.recipient_type_totals",
+      "values_source": "transactions.observations.recipient_type_totals",
       "value_labels_ref": "org_type"
     },
     "rel_type": {

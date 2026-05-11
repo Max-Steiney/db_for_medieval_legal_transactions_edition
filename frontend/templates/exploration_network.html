@@ -74,7 +74,7 @@
                             {% call glossary_tip('gloss-net-source', 'Personennetzwerk') %}
                                 <p class="prov-def">Annotierte Beziehungen zwischen Personen aus den TEI-Quellen, gruppiert in Verwandtschaft (kin), Beruf / Stand (occ &mdash; Person zu Organisation), Vertretung (rep) und Freundschaft (friend). Eine Beziehung kann in mehreren Quellen belegt sein.</p>
                                 <footer class="prov-foot">
-                                    <span class="prov-foot-source"><code>data/epic_b.json::persons</code></span>
+                                    <span class="prov-foot-source"><code>data/relations.json::persons</code></span>
                                 </footer>
                             {% endcall %}
                         </span>
@@ -120,7 +120,7 @@
 <script src="{{ root_path }}/static/js/tooltips.js?v={{ asset_v }}"></script>
 <script src="{{ root_path }}/static/js/table-infra.js?v={{ asset_v }}"></script>
 <script src="{{ root_path }}/static/js/viz-core.js?v={{ asset_v }}"></script>
-<script id="network-data-epic-b" type="application/json">{{ epic_b_json|safe }}</script>
+<script id="network-data-relations" type="application/json">{{ relations_json|safe }}</script>
 <script src="{{ root_path }}/static/js/exploration-network.js?v={{ asset_v }}"></script>
 {% endblock %}
 

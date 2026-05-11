@@ -4,7 +4,7 @@ Verifies the structures documented in docs/data/SCHEMA.md against the real
 build output. Assumes that `python -m frontend build` has run at least
 once (in CI: smoke build before pytest).
 
-Tests that the aggregator itself can verify (timeline, epic_*,
+Tests that the aggregator itself can verify (timeline, roles/relations/transactions,
 docs_aggregate, docs_lookup) live in test_aggregator.py with their own
 fixture. This file covers what is not covered by run_aggregation alone:
 search.json, persons_search.json, register/*.json, categories.json,
@@ -240,7 +240,7 @@ class TestDocsLookupJson:
 
 class TestSchemaVersioning:
     @pytest.mark.parametrize("filename", [
-        "docs_aggregate.json", "epic_a.json", "epic_b.json", "epic_c.json",
+        "docs_aggregate.json", "roles.json", "relations.json", "transactions.json",
         "timeline.json",
     ])
     def test_aggregate_files_have_schema_version(self, filename):

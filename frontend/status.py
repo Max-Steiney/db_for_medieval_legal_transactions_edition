@@ -22,10 +22,10 @@ _MILESTONES = [
     ("M3", "Scholarly functions",         1, 0),
     ("V0", "Data aggregation",            1, 0),
     ("V1", "Shared UI components",        1, 0),
-    ("V2", "Epic A: Role Explorer",       1, 0),  # partial — A.3 deferred
-    ("V3", "Epic C: Transaction Explorer", 1, 0), # T5 deferred (Q2)
-    ("V4", "Epic B: Network Explorer",    1, 0),
-    ("V5", "Epic D: Place Explorer",      1, 0),
+    ("V2", "Roles Explorer",       1, 0),  # partial — A.3 deferred
+    ("V3", "Transactions Explorer", 1, 0), # T5 deferred (Q2)
+    ("V4", "Relations / Network Explorer",    1, 0),
+    ("V5", "Places Explorer",      1, 0),
     ("M5", "Performance + accessibility", 1, 0),
     ("M6", "E2E tests + documentation",   0, 0),
 ]

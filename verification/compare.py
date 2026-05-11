@@ -172,9 +172,9 @@ def run_checks(
         CheckResult(
             name="events.total",
             tei=aggregate.events_total(docs),
-            json=parse_json.epic_a_total_events(),
+            json=parse_json.roles_total_events(),
             status="info",
-            note="epic_a.coverage.total_events zählt Event-Nennungen (nicht dedupliziert); TEI-Zählung dedupliziert pro Dokument nach Event-Ref. Kein direkter Match zu erwarten.",
+            note="roles.coverage.total_events zählt Event-Nennungen (nicht dedupliziert); TEI-Zählung dedupliziert pro Dokument nach Event-Ref. Kein direkter Match zu erwarten.",
         )
     )
 
@@ -190,7 +190,7 @@ def run_checks(
     )
 
     tei_role_sex = aggregate.roles_by_role_sex(docs, persons)
-    json_role_sex = parse_json.epic_a_role_by_sex()
+    json_role_sex = parse_json.roles_role_by_sex()
     # Role-Keys normalisieren: JSON '' entspricht TEI 'none'.
     # Pseudo-Rollen aus TEI-Annotationsfehlern (transactiongood_*) als 'info' markieren.
     normalized_json = {}
@@ -200,14 +200,14 @@ def run_checks(
 
     all_roles = sorted(set(tei_role_sex.keys()) | set(normalized_json.keys()))
     # Bekannte Differenz im Scoping: das Verifikations-Aggregat zaehlt jede
-    # Person/Rolle-Annotation in jeder freigegebenen TEI-Quelle. epic_a
+    # Person/Rolle-Annotation in jeder freigegebenen TEI-Quelle. roles
     # zaehlt aus persons_in_events.csv, was die Pipeline mit eigenen
     # Scoping-Regeln (nur Top-Level-Events, dedupliziert) erzeugt. Die
     # Counts liegen systematisch um 5–15% auseinander, ohne dass es ein
     # Pipeline-Bug waere. Daher known_gap statt mismatch.
     role_scope_note = (
         "Verifikation zaehlt rohe rs[@type='person']/@role-Annotationen in "
-        "TEI; epic_a zaehlt aus persons_in_events.csv (Pipeline-CSV mit "
+        "TEI; roles zaehlt aus persons_in_events.csv (Pipeline-CSV mit "
         "eigenen Scoping-Regeln). Differenz ist methodisch, kein Drift."
     )
     for role in all_roles:
@@ -238,7 +238,7 @@ def run_checks(
         _known_gap(
             "relations.by_type",
             aggregate.relations_by_type(docs),
-            parse_json.epic_b_type_totals(),
+            parse_json.relations_type_totals(),
             note=(
                 "Pipeline normalisiert Beziehungstypen auf kin/occ/rep/friend. "
                 "TEI enthält rohe @type-Werte inklusive Typo-Varianten "
@@ -256,7 +256,7 @@ def run_checks(
             tei=dict(sorted(tei_disp.items(), key=lambda kv: -kv[1])[:20]),
             json=None,
             status="info",
-            note="Top-20 Roh-Trigger für disp; Vergleich mit normalisierten Transaktionstypen in epic_c noch offen.",
+            note="Top-20 Roh-Trigger für disp; Vergleich mit normalisierten Transaktionstypen in transactions noch offen.",
         )
     )
 

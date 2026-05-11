@@ -101,7 +101,7 @@ def aggregation_results(tmp_path_factory):
     data_dir = tmp_path_factory.mktemp("data")
     run_aggregation(data_dir)
     results = {}
-    for name in ["timeline", "epic_a", "epic_b", "epic_c",
+    for name in ["timeline", "roles", "relations", "transactions",
                  "docs_aggregate"]:
         path = data_dir / f"{name}.json"
         results[name] = json.loads(path.read_text(encoding="utf-8"))
@@ -111,7 +111,7 @@ def aggregation_results(tmp_path_factory):
 
 class TestMetaBlock:
     def test_all_files_have_meta(self, aggregation_results):
-        for name in ["timeline", "epic_a", "epic_b", "epic_c",
+        for name in ["timeline", "roles", "relations", "transactions",
                      "docs_aggregate"]:
             data = aggregation_results[name]
             assert "meta" in data, f"{name}.json missing meta block"
@@ -124,7 +124,7 @@ class TestMetaBlock:
             assert "measures" in meta["structure"]
 
     def test_dimensions_have_name_and_type(self, aggregation_results):
-        for name in ["timeline", "epic_a", "epic_b", "epic_c",
+        for name in ["timeline", "roles", "relations", "transactions",
                      "docs_aggregate"]:
             dims = aggregation_results[name]["meta"]["structure"]["dimensions"]
             for dim in dims:
@@ -160,36 +160,36 @@ class TestTimelineAggregation:
 
 class TestEpicAAggregation:
     def test_role_sex_totals(self, aggregation_results):
-        role_sex = aggregation_results["epic_a"]["observations"]["role_by_sex"]
+        role_sex = aggregation_results["roles"]["observations"]["role_by_sex"]
         assert len(role_sex) > 0
         for role, sex_counts in role_sex.items():
             total = sum(sex_counts.values())
             assert total > 0, f"Role {role} has zero entries"
 
     def test_sex_categories(self, aggregation_results):
-        role_sex = aggregation_results["epic_a"]["observations"]["role_by_sex"]
+        role_sex = aggregation_results["roles"]["observations"]["role_by_sex"]
         for role, sex_counts in role_sex.items():
             for sex in sex_counts:
                 assert sex in ("m", "f", "unspecified"), \
                     f"Unexpected sex '{sex}' in role '{role}'"
 
     def test_person_count(self, aggregation_results):
-        assert aggregation_results["epic_a"]["coverage"]["person_count"] > 1000
+        assert aggregation_results["roles"]["coverage"]["person_count"] > 1000
 
     def test_total_events(self, aggregation_results):
-        assert aggregation_results["epic_a"]["coverage"]["total_events"] > 1000
+        assert aggregation_results["roles"]["coverage"]["total_events"] > 1000
 
 
 class TestEpicBAggregation:
     def test_overview_has_type_by_sex(self, aggregation_results):
-        tbs = aggregation_results["epic_b"]["overview"]["type_by_sex"]
+        tbs = aggregation_results["relations"]["overview"]["type_by_sex"]
         for t in ["kin", "occ", "rep", "friend"]:
             assert t in tbs
             for s in ["m", "f", "unspecified"]:
                 assert s in tbs[t]
 
     def test_labels_non_empty(self, aggregation_results):
-        labels = aggregation_results["epic_b"]["labels"]
+        labels = aggregation_results["relations"]["labels"]
         assert len(labels) > 100
         top = labels[0]
         assert "label" in top
@@ -197,7 +197,7 @@ class TestEpicBAggregation:
         assert top["total"] > 0
 
     def test_persons_have_required_fields(self, aggregation_results):
-        for p in aggregation_results["epic_b"]["persons"][:10]:
+        for p in aggregation_results["relations"]["persons"][:10]:
             assert "id" in p
             assert "sex" in p
             assert p["sex"] in ("m", "f", "unspecified")
@@ -205,51 +205,51 @@ class TestEpicBAggregation:
             assert len(p["rels"]) > 0
 
     def test_coverage_has_totals(self, aggregation_results):
-        cov = aggregation_results["epic_b"]["coverage"]
+        cov = aggregation_results["relations"]["coverage"]
         assert cov["total_relations"] > 1000
         assert cov["persons_with_relations"] > 500
 
 
 class TestEpicCAggregation:
     def test_normalisation_rate(self, aggregation_results):
-        cov = aggregation_results["epic_c"]["coverage"]
+        cov = aggregation_results["transactions"]["coverage"]
         pct = cov["normalised_events"] / cov["total_events"] * 100
         assert 5 < pct < 50, f"Normalisation rate {pct:.1f}% outside expected range"
 
     def test_triggerstrings_present(self, aggregation_results):
-        assert len(aggregation_results["epic_c"]["triggerstrings"]) > 100
+        assert len(aggregation_results["transactions"]["triggerstrings"]) > 100
 
     def test_triggerstring_structure(self, aggregation_results):
-        ts = aggregation_results["epic_c"]["triggerstrings"][0]
+        ts = aggregation_results["transactions"]["triggerstrings"][0]
         assert "form" in ts
         assert "freq" in ts
         assert "norm" in ts
         assert "doc_count" in ts
 
     def test_recipients_present(self, aggregation_results):
-        assert len(aggregation_results["epic_c"]["recipients"]) > 0
+        assert len(aggregation_results["transactions"]["recipients"]) > 0
 
     def test_tx_timeline_has_not_normalised(self, aggregation_results):
         assert "_not_normalised" in \
-            aggregation_results["epic_c"]["observations"]["tx_timeline"]
+            aggregation_results["transactions"]["observations"]["tx_timeline"]
 
 
 class TestEpicBConsistency:
     def test_label_totals_match_sex_sums(self, aggregation_results):
         """Each label's total must equal m + f + unspecified."""
-        for lb in aggregation_results["epic_b"]["labels"][:50]:
+        for lb in aggregation_results["relations"]["labels"][:50]:
             assert lb["total"] == lb["m"] + lb["f"] + lb["unspecified"], \
                 f"Label {lb['label']}: total mismatch"
 
     def test_drill_down_type_sex_keys(self, aggregation_results):
-        dd = aggregation_results["epic_b"]["drill_down"]["type_sex"]
+        dd = aggregation_results["relations"]["drill_down"]["type_sex"]
         for t in ["kin", "occ", "rep", "friend"]:
             for s in ["m", "f"]:
                 key = f"{t}_{s}"
                 assert key in dd, f"Missing drill_down key: {key}"
 
     def test_persons_have_valid_rels(self, aggregation_results):
-        for p in aggregation_results["epic_b"]["persons"][:20]:
+        for p in aggregation_results["relations"]["persons"][:20]:
             for rel in p["rels"]:
                 assert rel["t"] in ("kin", "occ", "rep", "friend"), \
                     f"Invalid rel type: {rel['t']}"
@@ -263,97 +263,97 @@ class TestEpicBConsistency:
 class TestCrossEpicIntegrity:
     """Verify referential integrity across all Epic JSON files."""
 
-    def test_epic_a_drill_down_fkeys_have_f_prefix(self, aggregation_results):
-        """All file_keys in Epic A drill_down use the canonical f__ prefix."""
-        dd = aggregation_results["epic_a"]["drill_down"]
+    def test_roles_drill_down_fkeys_have_f_prefix(self, aggregation_results):
+        """All file_keys in Roles-Aggregation drill_down use the canonical f__ prefix."""
+        dd = aggregation_results["roles"]["drill_down"]
         for role, sex_fkeys in dd.get("role_sex", {}).items():
             for sex, fkeys in sex_fkeys.items():
                 for fk in fkeys[:5]:
                     assert fk.startswith("f__"), \
-                        f"Epic A role_sex drill_down has non-f__ key: {fk}"
+                        f"Roles-Aggregation role_sex drill_down has non-f__ key: {fk}"
         for ot, fkeys in dd.get("org_type", {}).items():
             for fk in fkeys[:5]:
                 assert fk.startswith("f__"), \
-                    f"Epic A org_type drill_down has non-f__ key: {fk}"
+                    f"Roles-Aggregation org_type drill_down has non-f__ key: {fk}"
 
-    def test_epic_b_drill_down_fkeys_have_f_prefix(self, aggregation_results):
-        dd = aggregation_results["epic_b"]["drill_down"]
+    def test_relations_drill_down_fkeys_have_f_prefix(self, aggregation_results):
+        dd = aggregation_results["relations"]["drill_down"]
         for key, fkeys in dd.get("type_sex", {}).items():
             for fk in fkeys[:5]:
                 assert fk.startswith("f__"), \
-                    f"Epic B type_sex drill_down has non-f__ key: {fk}"
+                    f"Relations-Aggregation type_sex drill_down has non-f__ key: {fk}"
 
-    def test_epic_c_drill_down_fkeys_have_f_prefix(self, aggregation_results):
-        dd = aggregation_results["epic_c"]["drill_down"]
+    def test_transactions_drill_down_fkeys_have_f_prefix(self, aggregation_results):
+        dd = aggregation_results["transactions"]["drill_down"]
         for tx_type, decades in dd.get("tx_type_decade", {}).items():
             for decade, fkeys in decades.items():
                 for fk in fkeys[:3]:
                     assert fk.startswith("f__"), \
-                        f"Epic C drill_down has non-f__ key: {fk}"
+                        f"Transactions-Aggregation drill_down has non-f__ key: {fk}"
 
-    def test_epic_a_empty_role_key_exists(self, aggregation_results):
+    def test_roles_empty_role_key_exists(self, aggregation_results):
         """Aggregator produces '' (empty) role key that JS merges into 'other'."""
-        obs = aggregation_results["epic_a"]["observations"]
+        obs = aggregation_results["roles"]["observations"]
         role_sex = obs["role_by_sex"]
         # The '' key should exist if there are unspecified-role person-events.
         # This is data-dependent; just verify the canonical roles exist.
         for role in ["issuer", "recipient", "witness", "other"]:
             assert role in role_sex, f"Missing canonical role: {role}"
 
-    def test_epic_a_coverage_consistency(self, aggregation_results):
+    def test_roles_coverage_consistency(self, aggregation_results):
         """Coverage stats should be internally consistent."""
-        cov = aggregation_results["epic_a"]["coverage"]
+        cov = aggregation_results["roles"]["coverage"]
         assert cov["person_count"] > 0
         assert cov["total_events"] > 0
         assert cov["normalisation_rate"] <= cov["total_events"]
         assert cov["org_type_count"] > 0
 
-    def test_epic_b_person_ids_use_entity_prefix(self, aggregation_results):
-        """All entries in Epic B persons should have canonical entity IDs.
+    def test_relations_person_ids_use_entity_prefix(self, aggregation_results):
+        """All entries in Relations-Aggregation persons should have canonical entity IDs.
 
         Most are pe__ (persons), but some relationship annotations reference
         organisations (org__) — this is valid source data, not a bug.
         """
         valid_prefixes = ("pe__", "org__")
-        for p in aggregation_results["epic_b"]["persons"][:50]:
+        for p in aggregation_results["relations"]["persons"][:50]:
             assert any(p["id"].startswith(pre) for pre in valid_prefixes), \
-                f"Epic B person has unexpected ID prefix: {p['id']}"
+                f"Relations-Aggregation person has unexpected ID prefix: {p['id']}"
 
-    def test_epic_b_coverage_internal_consistency(self, aggregation_results):
+    def test_relations_coverage_internal_consistency(self, aggregation_results):
         """Coverage totals should match type_counts sum."""
-        cov = aggregation_results["epic_b"]["coverage"]
+        cov = aggregation_results["relations"]["coverage"]
         type_sum = sum(cov["type_counts"].values())
         assert cov["total_relations"] == type_sum, \
             f"total_relations ({cov['total_relations']}) != sum of type_counts ({type_sum})"
 
-    def test_epic_c_normalised_lte_total(self, aggregation_results):
+    def test_transactions_normalised_lte_total(self, aggregation_results):
         """Normalised event count must not exceed total events."""
-        cov = aggregation_results["epic_c"]["coverage"]
+        cov = aggregation_results["transactions"]["coverage"]
         assert cov["normalised_events"] <= cov["total_events"]
 
-    def test_epic_c_triggerstring_doc_count_lte_freq(self, aggregation_results):
+    def test_transactions_triggerstring_doc_count_lte_freq(self, aggregation_results):
         """Each triggerstring's doc_count should not exceed its freq."""
-        for ts in aggregation_results["epic_c"]["triggerstrings"][:50]:
+        for ts in aggregation_results["transactions"]["triggerstrings"][:50]:
             assert ts["doc_count"] <= ts["freq"], \
                 f"Triggerstring '{ts['form']}': doc_count ({ts['doc_count']}) > freq ({ts['freq']})"
 
-    def test_epic_c_recipients_sorted_descending(self, aggregation_results):
+    def test_transactions_recipients_sorted_descending(self, aggregation_results):
         """Recipients list should be sorted by count descending."""
-        recipients = aggregation_results["epic_c"]["recipients"]
+        recipients = aggregation_results["transactions"]["recipients"]
         for i in range(len(recipients) - 1):
             assert recipients[i]["count"] >= recipients[i + 1]["count"], \
                 f"Recipients not sorted at index {i}"
 
     def test_all_drill_down_blocks_non_empty(self, aggregation_results):
         """Each Epic's drill_down should have at least one key with file_keys."""
-        dd_a = aggregation_results["epic_a"]["drill_down"]
-        assert len(dd_a.get("role_sex", {})) > 0, "Epic A has no role_sex drill_down"
+        dd_a = aggregation_results["roles"]["drill_down"]
+        assert len(dd_a.get("role_sex", {})) > 0, "Roles-Aggregation has no role_sex drill_down"
 
-        dd_b = aggregation_results["epic_b"]["drill_down"]
-        assert len(dd_b.get("type_sex", {})) > 0, "Epic B has no type_sex drill_down"
+        dd_b = aggregation_results["relations"]["drill_down"]
+        assert len(dd_b.get("type_sex", {})) > 0, "Relations-Aggregation has no type_sex drill_down"
 
-        dd_c = aggregation_results["epic_c"]["drill_down"]
-        assert len(dd_c.get("tx_type_decade", {})) > 0, "Epic C has no tx_type_decade drill_down"
+        dd_c = aggregation_results["transactions"]["drill_down"]
+        assert len(dd_c.get("tx_type_decade", {})) > 0, "Transactions-Aggregation has no tx_type_decade drill_down"
 
 
 # ---------------------------------------------------------------------------

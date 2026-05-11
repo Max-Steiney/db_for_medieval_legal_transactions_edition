@@ -35,7 +35,7 @@ def test_categories_are_disjoint():
     assert len(seen) == len(set(seen)), "an org_type appears in more than one category"
 
 
-def test_categories_consistent_with_epic_a():
+def test_categories_consistent_with_roles():
     """Every org_type produced by the pipeline must be classified.
 
     Fails if the pipeline introduces new types without
@@ -43,19 +43,19 @@ def test_categories_consistent_with_epic_a():
     the JSON classification names types that no longer appear in the
     aggregates.
     """
-    epic_a_path = DATA_DIR / "epic_a.json"
-    if not epic_a_path.exists():
-        pytest.skip("docs/data/epic_a.json not built yet")
+    roles_path = DATA_DIR / "roles.json"
+    if not roles_path.exists():
+        pytest.skip("docs/data/roles.json not built yet")
 
-    epic_a = json.loads(epic_a_path.read_text(encoding="utf-8"))
-    real_types = set(epic_a.get("observations", {}).get("org_type_totals", {}).keys())
+    roles = json.loads(roles_path.read_text(encoding="utf-8"))
+    real_types = set(roles.get("observations", {}).get("org_type_totals", {}).keys())
     cats = _load_source_categories()["categories"]
     mapped = {t for ts in cats.values() for t in ts}
 
     missing = real_types - mapped
     extra = mapped - real_types
     assert not missing, f"unclassified org_types: {sorted(missing)}"
-    assert not extra, f"classified types not present in epic_a: {sorted(extra)}"
+    assert not extra, f"classified types not present in roles: {sorted(extra)}"
 
 
 # ---- Build-time output (docs/data/categories.json) ---------------------------
@@ -81,10 +81,10 @@ def test_write_categories_creates_output(isolated_data_dir):
     assert "created" in written.get("meta", {}), "build must inject meta.created"
 
 
-def test_write_categories_validates_against_epic_a_when_present(isolated_data_dir, capsys):
-    """If epic_a lives in DATA_DIR, the writer validates and warns on drift."""
+def test_write_categories_validates_against_roles_when_present(isolated_data_dir, capsys):
+    """If roles lives in DATA_DIR, the writer validates and warns on drift."""
     fake_epic = {"observations": {"org_type_totals": {"Stadt": 1, "Kloster_m": 2, "NEW_TYPE_X": 1}}}
-    (isolated_data_dir / "epic_a.json").write_text(
+    (isolated_data_dir / "roles.json").write_text(
         json.dumps(fake_epic), encoding="utf-8"
     )
     _write_categories()

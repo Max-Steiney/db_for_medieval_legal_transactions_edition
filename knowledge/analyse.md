@@ -19,7 +19,7 @@ related: [exploration, requirements, ui-design, decisions, glossar]
 
 # Analyse
 
-Wissensdokument zum Analysebereich der Edition. Der Analysebereich versammelt alle quantitativen Zugänge zur Datenbasis. Er besteht aus zwei Sub-Seiten unter `/analysis/` und steht als gleichberechtigter Zweig neben der [[exploration]]; das Interaktionsmuster ist strukturiert (vorgegebene Achsen, exakte Zahlen, Provenienz), die Exploration arbeitet visuell-interaktiv. Die Trennung ist in [[decisions#Exploration und Analyse als getrennte Bereiche]] begründet.
+Wissensdokument zum Analysebereich der Datenbank. Der Analysebereich versammelt alle quantitativen Zugänge zur Datenbasis. Er besteht aus zwei Sub-Seiten unter `/analysis/` und steht als gleichberechtigter Zweig neben der [[exploration]]; das Interaktionsmuster ist strukturiert (vorgegebene Achsen, exakte Zahlen, Provenienz), die Exploration arbeitet visuell-interaktiv. Die Trennung ist in [[decisions#Exploration und Analyse als getrennte Bereiche]] begründet.
 
 ## Zwei Sub-Seiten
 
@@ -31,7 +31,7 @@ Der Filter-Stand wird in die URL serialisiert (`?dec=1300-1380&sex=f&type=kin&q=
 
 **Abfragen** (`/analysis/index.html`) bietet vorgefertigte Fragetypen mit typisierten Slots — der Template-Abfragemodus, dessen Konzept im Folgenden ausführlich beschrieben ist. Nutzerinnen kommen mit einer konkreten Frage und füllen Slots, das Interface beantwortet die Frage als einzelne Zahl plus Drill-down auf die Quellen.
 
-Beide Sub-Seiten teilen sich dieselben Aggregate (`epic_a/b/c.json`) und dieselben Filter-Bausteine in der Sidebar. Eine Filteränderung auf der einen Seite überträgt sich aktuell nicht automatisch auf die andere; das ist eine offene Designfrage.
+Beide Sub-Seiten teilen sich dieselben Aggregate (`roles.json`, `relations.json`, `transactions.json`) und dieselben Filter-Bausteine in der Sidebar. Eine Filteränderung auf der einen Seite überträgt sich aktuell nicht automatisch auf die andere; das ist eine offene Designfrage.
 
 Deployment als statisches Frontend auf GitHub Pages, auf Basis der vorhandenen JSON-Datengrundlage.
 
@@ -52,9 +52,9 @@ Der Datenbestand liegt in Form vorkonfektionierter JSON-Dateien vor, die bereits
 
 ### 2.1 Datenbestand
 
-Pro Ebene liegt eine eigene JSON vor: Quellen in `search.json` und `docs_lookup.json`, Personen in `persons_search.json`, vorberechnete Aggregate in `epic_a.json` (Rollen), `epic_b.json` (Beziehungen), `epic_c.json` (Transaktionen). Organisations- und Ortsregister sind nicht freigegeben; ihre Aggregate erscheinen ausschließlich als anonymisierte Typ-Verteilungen in den `epic_*`-Dateien.
+Pro Ebene liegt eine eigene JSON vor: Quellen in `search.json` und `docs_lookup.json`, Personen in `persons_search.json`, vorberechnete Aggregate in `roles.json` (Rollen), `relations.json` (Beziehungen), `transactions.json` (Transaktionen). Organisations- und Ortsregister sind nicht freigegeben; ihre Aggregate erscheinen ausschließlich als anonymisierte Typ-Verteilungen in den Aggregat-JSONs.
 
-Zeitraum: freigegeben 1177 bis 1412 (Ausnahmen bis 1414 für QGW II/1 und II/2), mit nicht ausgewertetem Bereich 1418 bis 1447. Die Dokumentdichte ist stark ungleichverteilt — wenige Dutzend Dokumente in den ersten zwei Jahrhunderten, ein Dichte-Schwerpunkt im späten 14. Jahrhundert (insbesondere Stadtbücher). Konkrete Zahlen leben in den `coverage`-Blöcken der Aggregate und im Footer der Edition.
+Zeitraum: freigegeben 1177 bis 1412 (Ausnahmen bis 1414 für QGW II/1 und II/2), mit nicht ausgewertetem Bereich 1418 bis 1447. Die Dokumentdichte ist stark ungleichverteilt, wenige Dutzend Dokumente in den ersten zwei Jahrhunderten, ein Dichte-Schwerpunkt im späten 14. Jahrhundert (insbesondere Stadtbücher). Konkrete Zahlen leben in den `coverage`-Blöcken der Aggregate und im Footer der Datenbank.
 
 ### 2.2 Register-Dateien
 
@@ -75,15 +75,15 @@ Das öffentlich freigegebene Personenregister liegt als flaches Array mit kompak
 
 Felder: `id` eindeutige Kennung, `n` Namensform, `fn`/`sn` Vor- und Familienname, `sex` Geschlecht, `d` Datierung, `dc` Anzahl der Quellen mit Nennung (*document count*), `qw` Qualitäts- bzw. Normalisierungsgewicht (`-1` unbekannt, `0` niedrig, `1` und `2` höhere Konfidenz).
 
-Organisations- und Ortsregister sind nicht freigegeben; ihre Daten erscheinen aktuell nur in den `epic_*`-Aggregaten als Typ-Verteilungen. Bei Freigabe entstünden parallele Such-JSONs mit demselben Schema (Organisationen zusätzlich `tp` für Typ, Orte zusätzlich `lat`/`lng`).
+Organisations- und Ortsregister sind nicht freigegeben; ihre Daten erscheinen aktuell nur in den Aggregat-JSONs als Typ-Verteilungen. Bei Freigabe entstünden parallele Such-JSONs mit demselben Schema (Organisationen zusätzlich `tp` für Typ, Orte zusätzlich `lat`/`lng`).
 
-### 2.3 Vorkompilierte Aggregationen: die `epic_*`-Dateien
+### 2.3 Vorkompilierte Aggregationen: die Aggregat-JSONs
 
-Die `epic_*.json` enthalten bereits vorberechnete Kreuztabellen mit Drill-Down-Listen auf Dokumentenebene. Sie entsprechen exakt dem in früheren Iterationen theoretisch angenommenen Konzept der *vorberechneten Aggregationen*.
+Die `roles.json`/`relations.json`/`transactions.json` enthalten bereits vorberechnete Kreuztabellen mit Drill-Down-Listen auf Dokumentenebene. Sie entsprechen exakt dem in früheren Iterationen theoretisch angenommenen Konzept der *vorberechneten Aggregationen*.
 
-- `epic_a.json` Rollen × Geschlecht × Dekade × Organisationstyp (Event-Partizipationen)
-- `epic_b.json` Beziehungen (Verwandtschaft, Beruf, Vertretung, Freundschaft), 12.178 insgesamt
-- `epic_c.json` Transaktionstypen × Dekade × Organisationstyp
+- `roles.json` Rollen × Geschlecht × Dekade × Organisationstyp (Event-Partizipationen)
+- `relations.json` Beziehungen (Verwandtschaft, Beruf, Vertretung, Freundschaft), 12.178 insgesamt
+- `transactions.json` Transaktionstypen × Dekade × Organisationstyp
 
 Die Struktur jeder Datei ist dreigeteilt:
 
@@ -104,7 +104,7 @@ Diese Zuordnung ist eine inhaltliche Modellierungsentscheidung, die im Interface
 
 ### 2.5 Datenqualität und Freigabestand
 
-Der Validierungsreport (`quality.json`) und die Coverage-Blöcke der `epic_*` machen die Datenqualität sichtbar. Charakteristisch ist eine durchgängig niedrige Normalisierungsrate: nur ein kleiner Teil der dispositiven Verben ist im kontrollierten Vokabular der Transaktionstypen geführt, und nur ein Teil der Personen hat eine explizite Organisationszuordnung. Das Ortsregister ist quantitativ groß, aber nur ein Bruchteil der Einträge ist georeferenziert.
+Der Validierungsreport (`quality.json`) und die Coverage-Blöcke der Aggregat-JSONs machen die Datenqualität sichtbar. Charakteristisch ist eine durchgängig niedrige Normalisierungsrate: nur ein kleiner Teil der dispositiven Verben ist im kontrollierten Vokabular der Transaktionstypen geführt, und nur ein Teil der Personen hat eine explizite Organisationszuordnung. Das Ortsregister ist quantitativ groß, aber nur ein Bruchteil der Einträge ist georeferenziert.
 
 Diese Verhältnisse sind keine nebensächliche Meta-Information, sondern konstitutiver Teil dessen, was das Interface ausweisen muss. Eine Zählung *Transaktionen vom Typ Kauf* bedeutet nicht, dass alle anderen Events keine Käufe sind, sondern dass nur ein Bruchteil überhaupt kategorisiert ist.
 
@@ -112,7 +112,7 @@ Nicht alle in der Validierung erscheinenden Korpora sind im UI sichtbar. Die Sin
 
 ### 2.6 Volumen und Performance
 
-Die größeren JSON-Dateien (`search.json`, `persons_search.json`, `epic_b.json`, `epic_c.json`, `docs_lookup.json`) liegen jeweils im einstelligen MB-Bereich. GitHub Pages liefert sie gzip-komprimiert aus. Progressives Laden (Register beim Start, `epic_*` on-demand beim Öffnen der zugehörigen Template-Familie) hält den initialen Transfer klein.
+Die größeren JSON-Dateien (`search.json`, `persons_search.json`, `relations.json`, `transactions.json`, `docs_lookup.json`) liegen jeweils im einstelligen MB-Bereich. GitHub Pages liefert sie gzip-komprimiert aus. Progressives Laden (Register beim Start, Aggregat-JSONs on-demand beim Öffnen der zugehörigen Template-Familie) hält den initialen Transfer klein.
 
 ## 3. Technische Architektur
 
@@ -122,7 +122,7 @@ Comunica oder Oxigraph WASM funktionieren grundsätzlich, bringen aber deutliche
 
 ### 3.2 Zweischichtige Laufzeitarchitektur
 
-**Aggregations-Schicht (read-only, vorkompiliert).** Für Fragen, die sich auf die vorberechneten Kreuztabellen der `epic_*` abbilden lassen, werden die Zählungen direkt aus der passenden Datei gelesen. Antwortzeit: Einzelabfrage, O(1)-Lookup in verschachtelten Objekten.
+**Aggregations-Schicht (read-only, vorkompiliert).** Für Fragen, die sich auf die vorberechneten Kreuztabellen der Aggregat-JSONs abbilden lassen, werden die Zählungen direkt aus der passenden Datei gelesen. Antwortzeit: Einzelabfrage, O(1)-Lookup in verschachtelten Objekten.
 
 **Filter-Schicht (dynamisch, auf Register-Arrays).** Für Fragen, die die vorberechneten Dimensionen kombinieren oder feinere Filter setzen, werden die Register-Arrays zur Laufzeit gefiltert. Bei der Korpusgröße und einfachen Prädikaten liegt das im Millisekundenbereich.
 
@@ -161,7 +161,7 @@ GitHub Action beim Deploy:
 
 1. Eingangsdaten (JSON-LD oder TEI-abgeleitet) werden normalisiert.
 2. Register werden mit kompakten Feldnamen geschrieben.
-3. Aggregationen (`epic_*`) werden neu gerechnet, inklusive `drill_down` und `coverage`.
+3. Aggregat-JSONs werden neu gerechnet, inklusive `drill_down` und `coverage`.
 4. `categories.json` und `release.json` werden angewendet.
 5. Dateien werden gzipkomprimiert ausgeliefert.
 
@@ -193,17 +193,17 @@ Der Nutzer füllt die Slots der Reihe nach; jede Auswahl schränkt die mögliche
 
 Aus den vorhandenen Aggregationen lassen sich unmittelbar fünf Template-Familien ableiten, die ohne zusätzliche Berechnung funktionieren:
 
-**Familie 1: Personenrollen nach Geschlecht.** Basis: `epic_a.observations.role_by_sex`. Slot-Template: *Anzahl [Nennungen|Personen] in der Rolle [Rolle] mit Geschlecht [Geschlecht]*, optional gruppiert nach Dekade.
+**Familie 1: Personenrollen nach Geschlecht.** Basis: `roles.observations.role_by_sex`. Slot-Template: *Anzahl [Nennungen|Personen] in der Rolle [Rolle] mit Geschlecht [Geschlecht]*, optional gruppiert nach Dekade.
 
-**Familie 2: Beteiligung an Organisationstypen.** Basis: `epic_a.observations.org_type_by_sex` und `org_type_totals`. Slot-Template: *Anzahl [Nennungen|Personen] in Events mit Organisationen vom Typ [Typ] oder Kategorie [geistlich/weltlich], mit Geschlecht [Geschlecht]*, optional gruppiert nach Dekade.
+**Familie 2: Beteiligung an Organisationstypen.** Basis: `roles.observations.org_type_by_sex` und `org_type_totals`. Slot-Template: *Anzahl [Nennungen|Personen] in Events mit Organisationen vom Typ [Typ] oder Kategorie [geistlich/weltlich], mit Geschlecht [Geschlecht]*, optional gruppiert nach Dekade.
 
-**Familie 3: Rechtsgeschäftstypen.** Basis: `epic_a.observations.transaction_types` und `epic_c.observations.tx_timeline`. Slot-Template: *Anzahl Events vom Typ [Transaktionstyp]*, optional gruppiert nach Dekade oder Empfänger-Organisationstyp.
+**Familie 3: Rechtsgeschäftstypen.** Basis: `roles.observations.transaction_types` und `transactions.observations.tx_timeline`. Slot-Template: *Anzahl Events vom Typ [Transaktionstyp]*, optional gruppiert nach Dekade oder Empfänger-Organisationstyp.
 
-**Familie 4: Beziehungsstrukturen.** Basis: `epic_b`. Slot-Template: *Anzahl Beziehungen vom Typ [Verwandtschaft|Beruf|Vertretung|Freundschaft] mit Label [Wert]*, optional gefiltert nach Geschlecht der beteiligten Personen.
+**Familie 4: Beziehungsstrukturen.** Basis: `relations`. Slot-Template: *Anzahl Beziehungen vom Typ [Verwandtschaft|Beruf|Vertretung|Freundschaft] mit Label [Wert]*, optional gefiltert nach Geschlecht der beteiligten Personen.
 
 **Familie 5: Dokumentenverteilung.** Basis: `timeline.json` und `search.json`. Slot-Template: *Anzahl Quellen im Korpus [Korpus] in der Dekade [Dekade]*.
 
-Die erste konkrete Beispielabfrage aus dem Entwurfsgespräch (*Personen in geistlichen Einrichtungen nach Geschlecht*) realisiert sich als Familie 2 mit Kategorie-Filter *geistlich* und Gruppierung *Geschlecht*. Die resultierenden Zahlen lassen sich direkt aus `epic_a.observations.org_type_by_sex` ablesen, nach Summierung über die geistlichen Typen gemäß `categories.json`.
+Die erste konkrete Beispielabfrage aus dem Entwurfsgespräch (*Personen in geistlichen Einrichtungen nach Geschlecht*) realisiert sich als Familie 2 mit Kategorie-Filter *geistlich* und Gruppierung *Geschlecht*. Die resultierenden Zahlen lassen sich direkt aus `roles.observations.org_type_by_sex` ablesen, nach Summierung über die geistlichen Typen gemäß `categories.json`.
 
 ### 4.4 Darstellung
 
@@ -211,7 +211,7 @@ Für den ersten Prototyp sind Dropdowns oder Chip-Gruppen pragmatisch. Chips hab
 
 ### 4.5 Live-Counts
 
-Neben jeder Slot-Option steht der zugehörige Count, kontextabhängig aktualisiert bei jeder Auswahl. Das verhindert Null-Result-Queries, macht das Datenmodell transparent und gibt Exploration eine haptische Qualität. Quelle der Counts: die jeweils passende Ebene der `epic_*`-Struktur.
+Neben jeder Slot-Option steht der zugehörige Count, kontextabhängig aktualisiert bei jeder Auswahl. Das verhindert Null-Result-Queries, macht das Datenmodell transparent und gibt Exploration eine haptische Qualität. Quelle der Counts: die jeweils passende Ebene der Aggregat-JSONs.
 
 ### 4.6 Globale Filter
 
@@ -221,23 +221,23 @@ Oberhalb der Templates: Korpus (multi-select), Zeitraum (Range innerhalb der fre
 
 ### 5.1 Vier Ebenen
 
-**Datensatz-Ebene.** Herkunft der Quellenkorpus: Edition, Projekt, beteiligte Institutionen. Zentral verlinkbar.
+**Datensatz-Ebene.** Herkunft der Quellenkorpus: Datenbank, Projekt, beteiligte Institutionen. Zentral verlinkbar.
 
-**Korpus- und Erschließungsform-Ebene.** Jede Aggregation ist nach Korpus und Erschließungsform aufschlüsselbar. Stadtbücher (edierter Volltext) und QGW (Regesten plus Faksimile) stützen unterschiedliche Arten von Aussagen.
+**Korpus- und Erschließungsform-Ebene.** Jede Aggregation ist nach Korpus und Erschließungsform aufschlüsselbar. Stadtbücher (ausgeschriebener Volltext) und QGW (Regesten plus Faksimile) stützen unterschiedliche Arten von Aussagen.
 
-**Entitäts-Ebene.** Jede Person, Organisation, Ort oder Quelle trägt über die `id` eine eindeutige Identität und ist über `docs_lookup.json` mit den Originalquellen verknüpft (Monasterium-URL, Editionsstelle).
+**Entitäts-Ebene.** Jede Person, Organisation, Ort oder Quelle trägt über die `id` eine eindeutige Identität und ist über `docs_lookup.json` mit den Originalquellen verknüpft (Monasterium-URL, Quellenstelle).
 
 **Query-Ebene.** Unter jedem Ergebnis steht ein kompakter Auszug: verwendete Felder, Zählmodus, zugrunde gelegte Zuordnungstabellen (etwa `categories.json`), herangezogene Korpora.
 
 ### 5.2 Ausweisung der Datenqualität
 
-Zahlen aus `quality.json` und aus den `coverage`-Blöcken der `epic_*` werden neben relevanten Counts als Kontext angezeigt. Eine Zählung von Transaktionstypen weist beispielsweise aus, auf wie vielen normalisierten Events sie beruht und wie viele Events bislang nicht ins kontrollierte Vokabular überführt sind. Eine Zuordnung Person zu Organisation weist die Coverage-Quote der explizit angebundenen Personen aus.
+Zahlen aus `quality.json` und aus den `coverage`-Blöcken der Aggregat-JSONs werden neben relevanten Counts als Kontext angezeigt. Eine Zählung von Transaktionstypen weist beispielsweise aus, auf wie vielen normalisierten Events sie beruht und wie viele Events bislang nicht ins kontrollierte Vokabular überführt sind. Eine Zuordnung Person zu Organisation weist die Coverage-Quote der explizit angebundenen Personen aus.
 
-Der Interface-Ton bleibt beschreibend, nicht apologetisch. Die Verhältnisse sind Eigenschaft der Edition, nicht Makel des Interfaces.
+Der Interface-Ton bleibt beschreibend, nicht apologetisch. Die Verhältnisse sind Eigenschaft der Datenbank, nicht Makel des Interfaces.
 
 ### 5.3 Drill-Down-Mechanik
 
-Jede Aggregation ist interaktiv. Klick auf eine Aggregat-Zelle (etwa *Zeugen-Nennungen männlich*) öffnet die Liste der Quelldokumente aus `drill_down.role_sex.witness.m`, aufgelöst über `docs_lookup.json` zu einer Liste mit Datum, Kurzregest und Link zur Edition. Dieser Pfad macht die aggregierte Zahl auf Einzelbelegebene nachprüfbar.
+Jede Aggregation ist interaktiv. Klick auf eine Aggregat-Zelle (etwa *Zeugen-Nennungen männlich*) öffnet die Liste der Quelldokumente aus `drill_down.role_sex.witness.m`, aufgelöst über `docs_lookup.json` zu einer Liste mit Datum, Kurzregest und Link zur Quelle. Dieser Pfad macht die aggregierte Zahl auf Einzelbelegebene nachprüfbar.
 
 Theoretischer Bezug: Die Offenlegung dieser Übersetzungskette von der Urkunde über Katalogisierung, Annotation, Aggregation und Freigabe bis zur angezeigten Zahl entspricht der Sichtbarmachung von Latours *circulating reference*. Das Interface dokumentiert seine eigene epistemische Infrastruktur.
 
@@ -273,7 +273,7 @@ Kartenvisualisierung und Netzwerkvisualisierung liegen konzeptionell im Bereich 
 
 ## Zusammenfassung
 
-Der Analysebereich lässt sich auf Basis der vorhandenen JSON-Datenbestände als statisches Frontend ohne Backend umsetzen. Die `epic_*`-Dateien liefern bereits vorberechnete Aggregationen mit Drill-Down-Listen auf Dokumentenebene, sodass das zentrale UI-Muster (Zahl anzeigen, Herkunft aufschlüsseln, Quellen einsehen) direkt implementierbar ist. Die Register-Dateien erlauben dynamische Filter in Millisekunden. Die Kategorisierung *geistlich/weltlich* ist als eigene Zuordnungstabelle zu modellieren, da sie im Datenmodell nicht als Eigenschaft vorliegt. Das Interface nutzt Query-Templates mit sechs Slot-Typen (Zählmodus, Entitätstyp, Eigenschaft, Wert, Gruppierung, Join), Live-Counts aus den vorberechneten Aggregationen und Provenienzanzeige auf vier Ebenen inklusive Coverage-Kontext.
+Der Analysebereich lässt sich auf Basis der vorhandenen JSON-Datenbestände als statisches Frontend ohne Backend umsetzen. Die Aggregat-JSONs liefern bereits vorberechnete Aggregationen mit Drill-Down-Listen auf Dokumentenebene, sodass das zentrale UI-Muster (Zahl anzeigen, Herkunft aufschlüsseln, Quellen einsehen) direkt implementierbar ist. Die Register-Dateien erlauben dynamische Filter in Millisekunden. Die Kategorisierung *geistlich/weltlich* ist als eigene Zuordnungstabelle zu modellieren, da sie im Datenmodell nicht als Eigenschaft vorliegt. Das Interface nutzt Query-Templates mit sechs Slot-Typen (Zählmodus, Entitätstyp, Eigenschaft, Wert, Gruppierung, Join), Live-Counts aus den vorberechneten Aggregationen und Provenienzanzeige auf vier Ebenen inklusive Coverage-Kontext.
 
 Eine konkrete Startmenge von fünf Template-Familien lässt sich ohne zusätzliche Berechnung aus den vorhandenen Aggregationen realisieren: Personenrollen, Organisationsbeteiligungen, Rechtsgeschäftstypen, Beziehungsstrukturen, Dokumentenverteilung.
 

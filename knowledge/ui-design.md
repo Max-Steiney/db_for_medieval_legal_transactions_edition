@@ -56,7 +56,7 @@ Dropdown mit zwei Sub-Seiten unter `/analysis/`:
 - **Auswertungen** (`auswertungen.html`) zeigt vorberechnete statistische Verteilungen als Donut, Bar-Chart und Tabelle mit Mini-Bars. Filter sind Zeitraum und Geschlecht; eine Zähleinheit-Umschaltung wechselt zwischen Nennungen und Individuellen Personen. Vier Sektionen: Funktionsrollen, Beziehungstypen, Transaktionstypen, Bezeichnungen.
 - **Abfragen** (`index.html`) ist der klassische Abfragemodus mit vorgefertigten Fragetypen über typisierte Slots. Bedient gezielte, wiederkehrende Kombinationen aus Bestand, [[glossar#Rolle]], Geschlecht und Nennungsart.
 
-Die beiden Sub-Seiten teilen sich Aggregate (`epic_*.json`), unterscheiden sich aber im Interaktionsmodus: Auswertungen filter-getrieben, Abfragen template-getrieben.
+Die beiden Sub-Seiten teilen sich Aggregate (`roles.json`/`relations.json`/`transactions.json`), unterscheiden sich aber im Interaktionsmodus: Auswertungen filter-getrieben, Abfragen template-getrieben.
 
 ### Exploration (geplant)
 
@@ -64,7 +64,7 @@ Vorgesehen für visuell-interaktive Erkundung der Datenstruktur — Personen-Net
 
 ### Projekt
 
-Dropdown mit Metaebenen des UI. Über das Projekt, Editionsrichtlinien, Glossar, Impressum.
+Dropdown mit Metaebenen des UI. Über das Projekt, Annotationsrichtlinien, Glossar, Impressum.
 
 ## Zwei Modi nebeneinander
 
@@ -114,7 +114,7 @@ Siehe [[requirements#Menschen-Events-Behandlung]].
 
 ### Zeitfilter
 
-Ein Zeitregler mit flankierenden Eingabefeldern schränkt die Anzeige auf einen Zeitraum ein. Der Regler respektiert den Freigabezeitraum der Edition (siehe [[data#Gegenstand]]).
+Ein Zeitregler mit flankierenden Eingabefeldern schränkt die Anzeige auf einen Zeitraum ein. Der Regler respektiert den Freigabezeitraum der Datenbank (siehe [[data#Gegenstand]]).
 
 ### Glossar-Integration
 

@@ -114,7 +114,7 @@ def relations_by_type(docs: List[DocRecord]) -> Dict[str, int]:
 
 
 def disp_triggers(docs: List[DocRecord]) -> Dict[str, int]:
-    """Zählt Roh-Text der disp-Trigger ohne Normalisierung. Für epic_c-Vergleich."""
+    """Zählt Roh-Text der disp-Trigger ohne Normalisierung. Für transactions-Vergleich."""
     c: Counter = Counter()
     for d in docs:
         for text in d.disp_triggers:

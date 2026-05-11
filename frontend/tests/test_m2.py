@@ -16,13 +16,13 @@ from frontend.tests.conftest import parse_html
 
 class TestRepDirection:
 
-    def test_rep_direction_in_epic_b_output(self):
-        """Epic B aggregation includes rep_direction data."""
-        source = inspect.getsource(frontend.aggregator.aggregate_epic_b)
+    def test_rep_direction_in_relations_output(self):
+        """Relations-Aggregation aggregation includes rep_direction data."""
+        source = inspect.getsource(frontend.aggregator.aggregate_relations)
         assert 'rep_direction' in source
 
     def test_rep_direction_structure(self):
-        source = inspect.getsource(frontend.aggregator.aggregate_epic_b)
+        source = inspect.getsource(frontend.aggregator.aggregate_relations)
         assert 'top_representatives' in source
         assert 'top_principals' in source
         assert 'matrix' in source
@@ -34,14 +34,14 @@ class TestRepDirection:
 
 class TestOrgTxMatrix:
 
-    def test_org_tx_in_epic_c_output(self):
-        """Epic C aggregation includes org_tx cross-tabulation."""
-        source = inspect.getsource(frontend.aggregator.aggregate_epic_c)
+    def test_org_tx_in_transactions_output(self):
+        """Transactions-Aggregation aggregation includes org_tx cross-tabulation."""
+        source = inspect.getsource(frontend.aggregator.aggregate_transactions)
         assert 'org_tx' in source
         assert 'org_tx_matrix' in source
 
     def test_org_tx_coverage_tracked(self):
-        source = inspect.getsource(frontend.aggregator.aggregate_epic_c)
+        source = inspect.getsource(frontend.aggregator.aggregate_transactions)
         assert 'match_rate' in source
 
 
@@ -51,9 +51,9 @@ class TestOrgTxMatrix:
 
 class TestFriendship:
 
-    def test_friendship_in_epic_b_output(self):
-        """Epic B aggregation includes friendship edge data."""
-        source = inspect.getsource(frontend.aggregator.aggregate_epic_b)
+    def test_friendship_in_relations_output(self):
+        """Relations-Aggregation aggregation includes friendship edge data."""
+        source = inspect.getsource(frontend.aggregator.aggregate_relations)
         assert 'friendship' in source
         assert 'friend_edges' in source
 

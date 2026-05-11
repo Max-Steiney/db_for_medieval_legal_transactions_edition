@@ -83,23 +83,23 @@ def _load_data(name: str) -> dict | None:
     return json.loads(p.read_text(encoding="utf-8"))
 
 
-def test_vocab_sex_values_match_epic_a_coverage():
-    epic_a = _load_data("epic_a.json")
-    if epic_a is None:
-        pytest.skip("docs/data/epic_a.json not built yet")
+def test_vocab_sex_values_match_roles_coverage():
+    roles = _load_data("roles.json")
+    if roles is None:
+        pytest.skip("docs/data/roles.json not built yet")
     vocab_sex = {o["value"] for o in _vocab()["filters"]["sex"]["values"]}
-    real = set(epic_a["coverage"]["sex_distribution"].keys())
+    real = set(roles["coverage"]["sex_distribution"].keys())
     assert vocab_sex == real - {"unspecified"}, (
         f"sex drift: vocab={vocab_sex}, data={real}"
     )
 
 
-def test_vocab_role_values_match_epic_a_role_by_sex():
-    epic_a = _load_data("epic_a.json")
-    if epic_a is None:
-        pytest.skip("docs/data/epic_a.json not built yet")
+def test_vocab_role_values_match_roles_role_by_sex():
+    roles = _load_data("roles.json")
+    if roles is None:
+        pytest.skip("docs/data/roles.json not built yet")
     vocab_roles = {o["value"] for o in _vocab()["filters"]["role"]["values"]}
-    real = set(epic_a["observations"]["role_by_sex"].keys()) - {""}
+    real = set(roles["observations"]["role_by_sex"].keys()) - {""}
     assert vocab_roles <= real, f"vocab roles not in data: {vocab_roles - real}"
 
 
@@ -122,12 +122,12 @@ def test_vocab_org_category_values_match_categories_json():
     assert vocab_cat == real
 
 
-def test_vocab_rel_type_values_match_epic_b_type_counts():
-    epic_b = _load_data("epic_b.json")
-    if epic_b is None:
-        pytest.skip("docs/data/epic_b.json not built yet")
+def test_vocab_rel_type_values_match_relations_type_counts():
+    relations = _load_data("relations.json")
+    if relations is None:
+        pytest.skip("docs/data/relations.json not built yet")
     vocab_t = {o["value"] for o in _vocab()["filters"]["rel_type"]["values"]}
-    real = set(epic_b["coverage"]["type_counts"].keys())
+    real = set(relations["coverage"]["type_counts"].keys())
     assert vocab_t == real, f"rel_type drift: vocab={vocab_t}, data={real}"
 
 

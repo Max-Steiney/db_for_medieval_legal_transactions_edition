@@ -92,25 +92,25 @@ def timeline_by_decade() -> Dict[int, int]:
     return out
 
 
-def epic_a_role_by_sex() -> Dict[str, Dict[str, int]]:
-    data = _load("epic_a.json")
+def roles_role_by_sex() -> Dict[str, Dict[str, int]]:
+    data = _load("roles.json")
     obs = data.get("observations", {})
     rbs = obs.get("role_by_sex", {})
     return {role: {sex: int(n) for sex, n in sexd.items()} for role, sexd in rbs.items()}
 
 
-def epic_a_total_events() -> int:
-    data = _load("epic_a.json")
+def roles_total_events() -> int:
+    data = _load("roles.json")
     return int(data.get("coverage", {}).get("total_events", 0))
 
 
-def epic_b_by_type() -> Dict[str, Dict[str, int]]:
-    """Beziehungen pro Typ × Geschlecht aus epic_b.json#overview.type_by_sex."""
-    data = _load("epic_b.json")
+def relations_by_type() -> Dict[str, Dict[str, int]]:
+    """Beziehungen pro Typ × Geschlecht aus relations.json#overview.type_by_sex."""
+    data = _load("relations.json")
     bt = data.get("overview", {}).get("type_by_sex", {})
     return {t: {sex: int(n) for sex, n in sexd.items()} for t, sexd in bt.items()}
 
 
-def epic_b_type_totals() -> Dict[str, int]:
+def relations_type_totals() -> Dict[str, int]:
     """Beziehungen pro Typ, summiert über Geschlechter."""
-    return {t: sum(sexd.values()) for t, sexd in epic_b_by_type().items()}
+    return {t: sum(sexd.values()) for t, sexd in relations_by_type().items()}

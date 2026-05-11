@@ -19,9 +19,9 @@ related: [analyse, requirements, ui-design, decisions, glossar]
 
 # Exploration
 
-Wissensdokument zum Explorationsbereich der Edition. Die Exploration ist der visuell-interaktive Zweig der Oberfläche und bedient Nutzerinnen ohne vorab spezifizierte Frage. Sie steht als zweiter gleichberechtigter Zweig neben der [[analyse]] und arbeitet mit Information-Visualisation, nicht mit vorgegebenen Auswertungsachsen.
+Wissensdokument zum Explorationsbereich der Datenbank. Die Exploration ist der visuell-interaktive Zweig der Oberfläche und bedient Nutzerinnen ohne vorab spezifizierte Frage. Sie steht als zweiter gleichberechtigter Zweig neben der [[analyse]] und arbeitet mit Information-Visualisation, nicht mit vorgegebenen Auswertungsachsen.
 
-Die konzeptionelle Trennung ist in [[decisions#Exploration und Analyse als getrennte Bereiche]] festgehalten. Implementierte Sub-Seiten sind der **Zeitstrom** unter `/exploration/zeitstrom.html` und das **Personennetzwerk** unter `/exploration/personennetzwerk.html`; ein Sankey-Diagramm zu Transaktionsflüssen ist konzipiert, aber noch nicht umgesetzt. Geographische Karten sind bewusst nicht vorgesehen — der Edition fehlt die für eine sinnvolle Karte erforderliche flächendeckende Georeferenzierung des Ortsregisters, und Orts-Aussagen liegen ohnehin außerhalb des Forschungsfokus. Die quantitativen Verteilungen (frühere „Auswertungen") gehören inhaltlich zur [[analyse]] und wurden dorthin verschoben. Siehe [[decisions#Auswertungen gehört in den Analyse-Bereich]].
+Die konzeptionelle Trennung ist in [[decisions#Exploration und Analyse als getrennte Bereiche]] festgehalten. Implementierte Sub-Seiten sind der **Zeitstrom** unter `/exploration/zeitstrom.html` und das **Personennetzwerk** unter `/exploration/personennetzwerk.html`; ein Sankey-Diagramm zu Transaktionsflüssen ist konzipiert, aber noch nicht umgesetzt. Geographische Karten sind bewusst nicht vorgesehen, der Datenbank fehlt die für eine sinnvolle Karte erforderliche flächendeckende Georeferenzierung des Ortsregisters, und Orts-Aussagen liegen ohnehin außerhalb des Forschungsfokus. Die quantitativen Verteilungen (frühere „Auswertungen") gehören inhaltlich zur [[analyse]] und wurden dorthin verschoben. Siehe [[decisions#Auswertungen gehört in den Analyse-Bereich]].
 
 ## Zielsetzung
 
@@ -29,7 +29,7 @@ Die Exploration erlaubt Nutzerinnen, sich der Datenstruktur visuell anzunähern,
 
 ## Abgrenzung zur Analyse
 
-Während die [[analyse]] vorgegebene Achsen bedient (Zeitraum, Geschlecht, Rolle, Transaktionstyp) und Verteilungen entlang dieser Achsen zeigt, lässt die Exploration die Nutzerin frei navigieren. Sie tauscht strukturierte Lesbarkeit gegen offene Sichtbarkeit. Beide Bereiche teilen sich dieselben Aggregate (`epic_*.json`) und dieselben Filter-Bausteine, unterscheiden sich aber radikal im Interaktionsmodus: Analyse arbeitet mit Filtern und liest aus Tabellen ab, Exploration arbeitet mit Hovern, Zoomen, Selektieren auf einer interaktiven Visualisierung.
+Während die [[analyse]] vorgegebene Achsen bedient (Zeitraum, Geschlecht, Rolle, Transaktionstyp) und Verteilungen entlang dieser Achsen zeigt, lässt die Exploration die Nutzerin frei navigieren. Sie tauscht strukturierte Lesbarkeit gegen offene Sichtbarkeit. Beide Bereiche teilen sich dieselben Aggregate (`roles.json`/`relations.json`/`transactions.json`) und dieselben Filter-Bausteine, unterscheiden sich aber radikal im Interaktionsmodus: Analyse arbeitet mit Filtern und liest aus Tabellen ab, Exploration arbeitet mit Hovern, Zoomen, Selektieren auf einer interaktiven Visualisierung.
 
 ## Sub-Seiten
 
@@ -41,7 +41,7 @@ Gestapelter Bar-Chart der Quellendichte pro Jahrzehnt. Die Stapel-Achse ist umsc
 
 Ein Klick auf ein Legend-Item fokussiert eine Stapel-Kategorie: die anderen Segmente werden in den Bars gedimmt, und der Brush-Drill filtert auf die fokussierte Kategorie. Damit wird ein unscharfer Brush („alle Quellen in 1390er") zu einer scharfen Auswahl („nur Schuldbrief/Pfand-Geschäfte in 1390er") — ohne dass die zeitliche Achse verloren geht. Stack-Switch hebt den Fokus automatisch auf, weil die Kategorien wechseln; Toggle auf dem gleichen Item hebt ihn manuell auf.
 
-Datenquellen: `data/search.json` (für die ersten drei Stapel-Achsen), `data/epic_c.json::observations.tx_timeline` (für die Transaktionstyp-Stapelung). Bei aktivem Tx-Fokus läuft der Drill über `epic_c.drill_down.tx_type_decade` und löst die `file_keys` über `data/docs_lookup.json` auf. Die Drill-down-Liste verlinkt direkt in die Quellen-Detailseiten und bietet pro Zeile einen „+"-Knopf für den [[ui-design#Wissenskorb]]; im Header steht der Cross-Page-Sprung in die Quellen-Liste mit übernommenem Zeitraum.
+Datenquellen: `data/search.json` (für die ersten drei Stapel-Achsen), `data/transactions.json::observations.tx_timeline` (für die Transaktionstyp-Stapelung). Bei aktivem Tx-Fokus läuft der Drill über `transactions.drill_down.tx_type_decade` und löst die `file_keys` über `data/docs_lookup.json` auf. Die Drill-down-Liste verlinkt direkt in die Quellen-Detailseiten und bietet pro Zeile einen „+"-Knopf für den [[ui-design#Wissenskorb]]; im Header steht der Cross-Page-Sprung in die Quellen-Liste mit übernommenem Zeitraum.
 
 Der Filter-Stand wird in die URL serialisiert (`?dec=1300-1410&stack=tx&brush=1340-1370&focus=Kauf`), siehe [[ui-design#URL-State-Sync]].
 
@@ -53,7 +53,7 @@ Ego-Layout um eine Person: Mittelpunkt ist eine ausgewählte Person, ihre direkt
 
 Bewusst gegen Force-Layout: die meisten Co-Occurrence-Kanten haben Gewicht 1 — ein Strukturartefakt der Urkundenform, kein analytisch belastbares Beziehungsmaß. Ein Force-Layout über das Gesamt-Beziehungsnetz würde als unleserliches „Knäuel" erscheinen, in dem nichts erkennbar ist. Das Ego-Layout schneidet stattdessen pro Schritt einen lesbaren lokalen Ausschnitt — analog zum klassischen Genealogie-Stammbaum, nur mit Klick-Hopping als Navigation. Globale Topologie lässt sich daraus durch sequenzielles Erkunden rekonstruieren.
 
-Datenquelle: `epic_b.json::persons`, jede Person trägt eine `rels`-Liste mit `{type, label, label_norm, source_file_key, related_key}`. Beruflich-institutionelle Beziehungen (`occ`) zeigen Person → Organisation; sie werden als Knoten anderer Farbe dargestellt, sind aber nicht weiter klickbar (Org-Profile existieren noch nicht). Verwandtschaft, Vertretung und Freundschaft sind person-zu-person und tragen das Klick-Hopping.
+Datenquelle: `relations.json::persons`, jede Person trägt eine `rels`-Liste mit `{type, label, label_norm, source_file_key, related_key}`. Beruflich-institutionelle Beziehungen (`occ`) zeigen Person → Organisation; sie werden als Knoten anderer Farbe dargestellt, sind aber nicht weiter klickbar (Org-Profile existieren noch nicht). Verwandtschaft, Vertretung und Freundschaft sind person-zu-person und tragen das Klick-Hopping.
 
 Detail-Tabelle unter dem Graphen listet alle Verbindungen der Mittelpunkt-Person mit Beziehungstyp, Bezeichnung, Beleg-Anzahl und „+"-Knopf für den [[ui-design#Wissenskorb]] (Sammlung verlinkter Personen).
 
@@ -86,7 +86,7 @@ Die Übergänge zur [[analyse]] sind möglich, wo die Daten sie tragen. Aus dem 
 ## Zusammenspiel mit übergreifenden Komponenten
 
 - **[[ui-design#Zählebenen-Umschalter]]** wird auch hier wirken, sobald Visualisierungen Personenzählungen anzeigen. Personenzählung wechselt zwischen [[glossar#Gesamtnennung|Gesamtnennungen]] und [[glossar#Individuelle Person|Individuellen Personen]] konsistent.
-- **[[ui-design#Bestandsfilter]]** ist universell und gilt auch hier. Die Aggregate in den `epic_*`-Dateien müssen zur Unterschlüsselung nach Quellenkorpus vorbereitet sein, damit clientseitige Filterung auf Teilbestände funktioniert.
+- **[[ui-design#Bestandsfilter]]** ist universell und gilt auch hier. Die Aggregate in den Aggregat-JSONs müssen zur Unterschlüsselung nach Quellenkorpus vorbereitet sein, damit clientseitige Filterung auf Teilbestände funktioniert.
 - **[[ui-design#Provenienz-Tip und Glossar-Tip]]** macht die Herkunft jeder visualisierten Größe an Ort und Stelle einsehbar.
 
 ## Siehe auch

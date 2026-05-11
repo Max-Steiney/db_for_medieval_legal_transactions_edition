@@ -1,4 +1,4 @@
-"""Epic B: annotated relations between persons — for the relation and label
+"""Relations aggregation: annotated relations between persons — for the relation and label
 sections in analysis/auswertungen.html."""
 
 from collections import Counter, defaultdict
@@ -7,7 +7,7 @@ from pathlib import Path
 from ._shared import _cached_csv, _meta, _decade, _write_json
 
 
-def aggregate_epic_b(docs_data_dir: Path) -> dict:
+def aggregate_relations(docs_data_dir: Path) -> dict:
     """Build relationship-focused aggregation for the Beziehungsexplorer.
 
     Aggregates annotated relationships (kin, occ, rep, friend) by type,
@@ -391,5 +391,5 @@ def aggregate_epic_b(docs_data_dir: Path) -> dict:
         "coverage": coverage,
     }
 
-    _write_json(result, docs_data_dir / "epic_b.json")
+    _write_json(result, docs_data_dir / "relations.json")
     return result

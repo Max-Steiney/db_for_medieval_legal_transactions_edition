@@ -1,4 +1,4 @@
-"""Epic C: transaction types, verb forms, recipients — for the transaction
+"""Transactions aggregation: transaction types, verb forms, recipients — for the transaction
 section in analysis/auswertungen.html."""
 
 from collections import Counter, defaultdict
@@ -7,7 +7,7 @@ from pathlib import Path
 from ._shared import _cached_csv, _load_norm_matching, _meta, _decade, _write_json
 
 
-def aggregate_epic_c(docs_data_dir: Path) -> dict:
+def aggregate_transactions(docs_data_dir: Path) -> dict:
     """Aggregate transaction types and institutional recipients."""
     eis_rows = _cached_csv("events_in_sources.csv")
     oie_rows = _cached_csv("orgs_in_events.csv")
@@ -210,5 +210,5 @@ def aggregate_epic_c(docs_data_dir: Path) -> dict:
         },
     }
 
-    _write_json(result, docs_data_dir / "epic_c.json")
+    _write_json(result, docs_data_dir / "transactions.json")
     return result
