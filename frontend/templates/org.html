@@ -153,16 +153,23 @@
     {% endif %}
 
     {% set rel_total = profile.relations.occ|length + profile.relations.title_ref|length %}
+    {% set active_rel_types = [] %}
+    {% for rt in ['occ', 'title_ref'] %}{% if profile.relations[rt] %}{% set _ = active_rel_types.append(rt) %}{% endif %}{% endfor %}
 
     {% if rel_total %}
-    <section class="person-relations" aria-label="Personen mit Beziehung zu dieser Organisation">
+    <section class="person-relations{% if active_rel_types|length == 1 %} is-single{% endif %}" aria-label="Personen mit Beziehung zu dieser Organisation">
+        {% if active_rel_types|length > 1 %}
         <h2 class="section-head">Personen mit Beziehung <span class="section-head-count">{{ rel_total }}</span></h2>
-        {% for rel_type in ['occ', 'title_ref'] %}
+        {% endif %}
+        {% for rel_type in active_rel_types %}
         {% set entries = profile.relations[rel_type] %}
-        {% if entries %}
         <section class="rel-block rel-block-{{ rel_type }}">
             <header class="rel-block-head">
+                {% if active_rel_types|length == 1 %}
+                <h2 class="rel-block-title rel-block-title-solo" data-hint="{{ REL_HINT[rel_type] }}">{{ REL_LABEL[rel_type] }}</h2>
+                {% else %}
                 <h3 class="rel-block-title" data-hint="{{ REL_HINT[rel_type] }}">{{ REL_LABEL[rel_type] }}</h3>
+                {% endif %}
                 <span class="rel-block-count">{{ entries|length }}</span>
             </header>
             {% if entries|length > 25 %}
@@ -204,7 +211,6 @@
                 </tbody>
             </table>
         </section>
-        {% endif %}
         {% endfor %}
     </section>
     {% endif %}

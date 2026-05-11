@@ -139,21 +139,28 @@
     {% endif %}
 
     {% set rel_total = profile.relations.kin|length + profile.relations.friend|length + profile.relations.rep|length + profile.relations.occ|length + profile.relations.title_ref|length + profile.relations.owner|length + profile.relations.tenant|length %}
+    {% set active_rel_types = [] %}
+    {% for rt in ['kin', 'friend', 'rep', 'occ', 'title_ref', 'owner', 'tenant'] %}{% if profile.relations[rt] %}{% set _ = active_rel_types.append(rt) %}{% endif %}{% endfor %}
 
     {# Beziehungs-Block: pro Typ ein Sub-Abschnitt, nur wenn Eintraege da sind.
        owner/tenant referenzieren Orte; das Ortsregister ist entfernt, daher
        erscheint der Ortsname dort als Klartext (siehe Cell-Branch unten).
-       Hint-Texte wandern in data-hint-Attribute am Title (Hover-Tooltip),
-       um die feste Hint-Zeile pro Block einzusparen. #}
+       Wenn nur ein einziger rel-Typ vorhanden ist, faellt die uebergeordnete
+       Section-Ueberschrift weg und der Typ-Title wird zur Section-Heading. #}
     {% if rel_total %}
-    <section class="person-relations" aria-label="Beziehungen">
+    <section class="person-relations{% if active_rel_types|length == 1 %} is-single{% endif %}" aria-label="Beziehungen">
+        {% if active_rel_types|length > 1 %}
         <h2 class="section-head">Beziehungen <span class="section-head-count">{{ rel_total }}</span></h2>
-        {% for rel_type in ['kin', 'friend', 'rep', 'occ', 'title_ref', 'owner', 'tenant'] %}
+        {% endif %}
+        {% for rel_type in active_rel_types %}
         {% set entries = profile.relations[rel_type] %}
-        {% if entries %}
         <section class="rel-block rel-block-{{ rel_type }}">
             <header class="rel-block-head">
+                {% if active_rel_types|length == 1 %}
+                <h2 class="rel-block-title rel-block-title-solo" data-hint="{{ REL_HINT[rel_type] }}">{{ REL_LABEL[rel_type] }}</h2>
+                {% else %}
                 <h3 class="rel-block-title" data-hint="{{ REL_HINT[rel_type] }}">{{ REL_LABEL[rel_type] }}</h3>
+                {% endif %}
                 <span class="rel-block-count">{{ entries|length }}</span>
             </header>
             {% if entries|length > 25 %}
@@ -205,7 +212,6 @@
                 </tbody>
             </table>
         </section>
-        {% endif %}
         {% endfor %}
     </section>
     {% endif %}

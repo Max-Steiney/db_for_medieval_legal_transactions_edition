@@ -252,12 +252,33 @@
     text-transform: uppercase;
     letter-spacing: 0.04em;
     margin: 0 0 var(--space-sm);
-    padding-bottom: 4px;
-    border-bottom: 1px solid var(--color-border);
+    padding: 0;
     color: var(--color-text-muted);
     display: flex;
     align-items: baseline;
     gap: var(--space-sm);
+}
+
+/* Solo-Variante: einzige rel-Gruppe vorhanden, daher uebernimmt der
+   rel-block-title die Section-Heading-Funktion. Optisch identisch zum
+   section-head, damit Beziehungen und Quellen visuell auf derselben
+   Ebene stehen. */
+.rel-block-title-solo {
+    font-family: var(--font-sans);
+    font-size: var(--text-base);
+    font-weight: 600;
+    text-transform: uppercase;
+    letter-spacing: 0.04em;
+    color: var(--color-text-muted);
+    border-bottom: 0;
+    cursor: help;
+    margin: 0;
+}
+
+/* Wenn die Section nur eine Gruppe enthaelt, faellt der zusaetzliche
+   rel-block-head-Margin weg, weil er die ehemalige section-head ersetzt. */
+.person-relations.is-single .rel-block {
+    margin: 0;
 }
 
 /* --- Beziehungen ------------------------------------------------------- */
