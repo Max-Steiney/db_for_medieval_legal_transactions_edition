@@ -1,0 +1,68 @@
+{
+  "date": "2026-05-11",
+  "summary": {
+    "total": 8,
+    "match": 6,
+    "mismatch": 0,
+    "known_gap": 1,
+    "info": 1
+  },
+  "results": [
+    {
+      "name": "teihtml.pair_coverage.documents_paired",
+      "tei": 2665,
+      "json": 2601,
+      "status": "info",
+      "note": "64 TEI-Quellen ohne HTML-Pendant"
+    },
+    {
+      "name": "teihtml.pair_coverage.tei_without_html",
+      "tei": 64,
+      "json": 0,
+      "status": "known_gap",
+      "note": "Pipeline-Filterung filenames.csv status='in progress' (noch nicht freigegeben). QGW_Vienna_1177-1414_ready_1432, QGW_Vienna_1177-1414_ready_1438, QGW_Vienna_1177-1414_ready_1493 (+61 weitere)"
+    },
+    {
+      "name": "teihtml.person_refs.missing_in_html",
+      "tei": 0,
+      "json": 0,
+      "status": "match",
+      "note": null
+    },
+    {
+      "name": "teihtml.person_refs.extra_in_html",
+      "tei": 0,
+      "json": 0,
+      "status": "match",
+      "note": null
+    },
+    {
+      "name": "teihtml.org_refs.missing_in_html",
+      "tei": 0,
+      "json": 0,
+      "status": "match",
+      "note": null
+    },
+    {
+      "name": "teihtml.org_refs.extra_in_html",
+      "tei": 0,
+      "json": 0,
+      "status": "match",
+      "note": null
+    },
+    {
+      "name": "teihtml.place_refs.missing_in_html",
+      "tei": 0,
+      "json": 0,
+      "status": "match",
+      "note": null
+    },
+    {
+      "name": "teihtml.place_refs.extra_in_html",
+      "tei": 0,
+      "json": 0,
+      "status": "match",
+      "note": null
+    }
+  ]
+}

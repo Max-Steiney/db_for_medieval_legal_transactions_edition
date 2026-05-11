@@ -1,9 +1,10 @@
 """Einstiegspunkt für das Verifikations-Set.
 
 Usage:
-  python -m verification.run            -- TEI -> JSON-Aggregat-Vergleich
-  python -m verification.run --html     -- Pipeline-CSV -> gerendertes HTML
-  python -m verification.run --all      -- beide Pfade
+  python -m verification.run               -- TEI -> JSON-Aggregat-Vergleich
+  python -m verification.run --html        -- Pipeline-CSV -> gerendertes HTML
+  python -m verification.run --tei-html    -- TEI direkt -> gerendertes HTML
+  python -m verification.run --all         -- alle drei Pfade
 
 Liefert Exit-Code 0 bei Match, bekannten Lücken oder Info-Status; Exit-
 Code 1 nur bei echten Mismatches.
@@ -18,6 +19,7 @@ import time
 from verification import (
     compare,
     compare_html,
+    compare_tei_html,
     parse_indices,
     parse_tei,
     provenance,
@@ -57,22 +59,36 @@ def run_html_checks():
     return results
 
 
+def run_tei_html_checks():
+    print("[verify] TEI direkt -> HTML pruefen ...")
+    t0 = time.time()
+    results = compare_tei_html.run_tei_html_checks()
+    print(f"[verify]   {len(results)} Pruefungen in {time.time() - t0:.1f}s")
+    return results
+
+
 def main() -> int:
     parser = argparse.ArgumentParser(prog="verification.run")
     parser.add_argument("--html", action="store_true",
                         help="nur die HTML-Coverage (Pipeline-CSV -> Profil-HTML) pruefen")
+    parser.add_argument("--tei-html", action="store_true",
+                        help="nur die TEI-direkt-zu-HTML-Coverage pruefen")
     parser.add_argument("--all", action="store_true",
-                        help="beide Pfade pruefen: TEI->JSON und CSV->HTML")
+                        help="alle drei Pfade pruefen: TEI->JSON, CSV->HTML, TEI->HTML")
     args = parser.parse_args()
 
     results = []
-    if args.html and not args.all:
-        results = run_html_checks()
-        suffix = "html"
-    elif args.all:
+    if args.all:
         results = run_tei_checks()
         results.extend(run_html_checks())
+        results.extend(run_tei_html_checks())
         suffix = "all"
+    elif args.html:
+        results = run_html_checks()
+        suffix = "html"
+    elif args.tei_html:
+        results = run_tei_html_checks()
+        suffix = "tei-html"
     else:
         results = run_tei_checks()
         suffix = None

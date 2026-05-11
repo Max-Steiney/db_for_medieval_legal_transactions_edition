@@ -30,6 +30,14 @@ Einträge in umgekehrt chronologischer Reihenfolge, neueste oben.
 
 ---
 
+## 2026-05-11 TEI-direkt-zu-HTML als dritte Verifikationsstufe
+
+Das Verifikations-Set hat jetzt drei Stufen. Neu: `python -m verification.run --tei-html` liest die TEI-Quellen direkt und vergleicht die annotierten `<rs ref="...">`-Werte mit den `data-ref="..."`-Attributen im gerenderten Quellen-HTML. Damit ist die Pipeline-Zwischenstufe nicht mehr blinder Fleck: Pipeline-Drops (TEI-Annotation, die der Aggregator wegfiltert) und Renderer-Halluzinationen (HTML-`data-ref` ohne TEI-Quelle) werden in beide Richtungen aufgedeckt.
+
+Aktueller Stand: 8 Pruefungen, alle gepaarten 2601 Quellen sind person-, org- und place-symmetrisch zwischen TEI und HTML. 64 TEI-Quellen ohne HTML-Pendant sind erklaerte `known_gap`-Faelle (`status: 'in progress'` in `filenames.csv`). Laufzeit der Stufe: 3 Sekunden, deutlich billiger als Stufe 2.
+
+Reader und Cross-Check in `verification/compare_tei_html.py`. README und Inventory entsprechend ergaenzt. `--all` laeuft jetzt alle drei Stufen in einem Lauf.
+
 ## 2026-05-11 TEI-zu-HTML-Coverage als zweite Verifikationsstufe
 
 Das Verifikations-Set hat jetzt zwei Pfade. `python -m verification.run` vergleicht weiter TEI gegen die Pipeline-JSONs. Neu: `python -m verification.run --html` vergleicht die Pipeline-CSVs (Aggregator-Input) gegen die gerenderten Profil- und Quellen-Seiten unter `docs/`. Damit ist die End-to-End-Kette TEI → JSON → CSV → HTML maschinell prüfbar.
