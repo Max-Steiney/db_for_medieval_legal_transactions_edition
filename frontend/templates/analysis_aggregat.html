@@ -1,5 +1,5 @@
 {% extends "base.html" %}
-{% from "macros.html" import search_box, tip_glossary, active_filters,
+{% from "macros.html" import search_box, tip_glossary, tip_help, active_filters,
                               sidebar_block, sidebar_range_slider,
                               sidebar_chip_group, sidebar_corpus_chips,
                               sidebar_reset_button, drill_down_overlay %}
@@ -157,6 +157,14 @@
                         <input type="search" id="labels-search" class="aggregat-search-input"
                                placeholder="Bezeichnung suchen…" autocomplete="off"
                                aria-label="Bezeichnung filtern">
+                        {% call tip_help('aggregat-labels-search-help', 'Bezeichnung suchen') %}
+                            <p>Die Suche pr&uuml;ft folgende Felder einer Bezeichnung:</p>
+                            <ul>
+                                <li><strong>Normalisierte Bezeichnung</strong> (z.&nbsp;B. „Hausfrau")</li>
+                                <li><strong>Schreibvarianten</strong>, die unter dieser Bezeichnung zusammengefasst sind (z.&nbsp;B. „hausvraw", „hawsvraw")</li>
+                            </ul>
+                            <p>Umlaute werden ignoriert. Mehrere W&ouml;rter werden mit UND verkn&uuml;pft.</p>
+                        {% endcall %}
                         <div class="aggregat-rel-type-chips" role="group" aria-label="Beziehungstyp">
                             <button class="form-filter-chip active" data-rel="all" aria-pressed="true">
                                 <span class="form-filter-chip-label">alle</span>

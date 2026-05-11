@@ -1,5 +1,5 @@
 {% extends "base.html" %}
-{% from "macros.html" import tip_glossary, active_filters,
+{% from "macros.html" import tip_glossary, tip_help, active_filters,
                               sidebar_block, sidebar_chip_group,
                               sidebar_reset_button %}
 
@@ -34,6 +34,10 @@
                     <input type="search" id="net-person-search" class="aggregat-search-input"
                            placeholder="Name eingeben&hellip;" autocomplete="off"
                            aria-label="Person suchen">
+                    {% call tip_help('net-search-help', 'Person suchen') %}
+                        <p>Die Suche pr&uuml;ft ausschlie&szlig;lich den <strong>Personennamen</strong> der im Netzwerk vorhandenen Personen (ab 2 Zeichen, maximal 12 Treffer).</p>
+                        <p>Umlaute werden ignoriert. Mit Klick auf einen Treffer wird das Netzwerk auf die gew&auml;hlte Person zentriert.</p>
+                    {% endcall %}
                     <ul class="net-search-results" id="net-search-results" hidden></ul>
                 </div>
             {% endcall %}

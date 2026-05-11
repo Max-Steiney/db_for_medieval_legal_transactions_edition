@@ -11,6 +11,13 @@
     const TRANSACTIONS = V.readJsonScript('aggregat-data-transactions', { observations: {} });
     let DOCS_LOOKUP = {};   // file_key -> doc base data, loaded async
 
+    // Pre-normalised haystack per label: covers the canonical form and all
+    // variants, normalised once so the search loop stays cheap. Matches
+    // the haystack-pre-compute pattern in index.js/register.js.
+    (RELATIONS.labels || []).forEach(l => {
+        l._s = EdCore.normForSearch(l.label + ' ' + (l.variants || []).join(' '));
+    });
+
     const STATE = {
         sex: 'all',                  // 'all' | 'm' | 'f' | 'unspecified'
         decadeMin: null,             // numeric decade or null
@@ -417,7 +424,7 @@
         if (!tbody) return;
 
         const all = RELATIONS.labels || [];
-        const search = STATE.labelSearch.trim().toLowerCase();
+        const search = EdCore.normForSearch(STATE.labelSearch.trim());
         const sexFilter = STATE.sex;
         const typeFilter = STATE.labelType;
 
@@ -425,10 +432,7 @@
             if (typeFilter !== 'all' && l.type !== typeFilter) return false;
             if (sexFilter === 'm' && (l.m || 0) === 0) return false;
             if (sexFilter === 'f' && (l.f || 0) === 0) return false;
-            if (search) {
-                const hay = (l.label + ' ' + (l.variants || []).join(' ')).toLowerCase();
-                if (!hay.includes(search)) return false;
-            }
+            if (!EdCore.matchesQuery(l._s, search)) return false;
             return true;
         });
         filtered.sort((a, b) => (b.persons || 0) - (a.persons || 0));

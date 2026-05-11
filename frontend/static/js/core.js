@@ -196,13 +196,33 @@ let EdCore = (function() {
 
 
     /* ------------------------------------------------------------------
+       Word-AND match against an already-normalised haystack.
+
+       Both arguments must be pre-normalised via normForSearch() — this
+       keeps the hot path (one call per row per keystroke) free of
+       string allocations. Whitespace-split, empty query returns true.
+       ------------------------------------------------------------------ */
+
+    function matchesQuery(haystack, normQuery) {
+        if (!normQuery) return true;
+        if (!haystack) return false;
+        let words = normQuery.split(/\s+/);
+        for (let i = 0; i < words.length; i++) {
+            if (words[i] && haystack.indexOf(words[i]) === -1) return false;
+        }
+        return true;
+    }
+
+
+    /* ------------------------------------------------------------------
        Public API
        ------------------------------------------------------------------ */
 
     return {
         esc: esc,
         getParam: getParam,
-        normForSearch: normForSearch
+        normForSearch: normForSearch,
+        matchesQuery: matchesQuery
     };
 
 })();

@@ -110,26 +110,53 @@ let TableInfra = (function() {
     function setupSearch(state, applyFilters) {
         let searchInput = document.getElementById('search-input');
         let searchClear = document.getElementById('search-clear');
-        if (!searchInput) return;
+        if (!searchInput) return null;
         let searchTimer;
         // V3 diacritics: apply the same normalization to the search query
         // as to the pre-computed strings (umlaut-tolerant).
         let norm = (window.EdCore && EdCore.normForSearch) ||
                    function(s) { return (s || '').toLowerCase(); };
+        function setClearVisible(visible) {
+            if (searchClear) searchClear.classList.toggle('hidden', !visible);
+        }
         searchInput.addEventListener('input', function() {
             clearTimeout(searchTimer);
             searchTimer = setTimeout(function() {
                 state.query = norm(searchInput.value.trim());
-                searchClear.classList.toggle('hidden', !state.query);
+                setClearVisible(!!state.query);
                 applyFilters();
             }, 200);
         });
-        searchClear.addEventListener('click', function() {
-            searchInput.value = '';
-            state.query = '';
-            searchClear.classList.add('hidden');
-            applyFilters();
-        });
+        if (searchClear) {
+            searchClear.addEventListener('click', function() {
+                searchInput.value = '';
+                state.query = '';
+                setClearVisible(false);
+                applyFilters();
+            });
+        }
+        // Returns a handle analogous to initRangeSlider so callers can
+        // reset the input from elsewhere (global reset button) without
+        // duplicating the DOM lookups and visibility toggle.
+        return {
+            reset: function() {
+                clearTimeout(searchTimer);
+                searchInput.value = '';
+                state.query = '';
+                setClearVisible(false);
+            },
+            // Programmatic set: used when another control (e.g. the
+            // hash-jump on register pages) wants to constrain the table
+            // via the search field. Displays the unnormalised text in
+            // the input, but writes the normalised form into state.
+            set: function(rawValue) {
+                clearTimeout(searchTimer);
+                let raw = rawValue == null ? '' : String(rawValue);
+                searchInput.value = raw;
+                state.query = norm(raw.trim());
+                setClearVisible(!!state.query);
+            }
+        };
     }
 
 

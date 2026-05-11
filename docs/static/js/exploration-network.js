@@ -33,6 +33,8 @@
 
     function buildIndex() {
         for (const p of RELATIONS.persons || []) {
+            // Pre-normalise once for bindSearch (umlaut-tolerant, word-AND).
+            p._s = EdCore.normForSearch(p.name || '');
             PERSONS.set(p.id, p);
         }
         for (const p of RELATIONS.persons || []) {
@@ -269,11 +271,11 @@
         const results = document.getElementById('net-search-results');
         if (!input || !results) return;
         input.addEventListener('input', () => {
-            const q = input.value.trim().toLowerCase();
+            const q = EdCore.normForSearch(input.value.trim());
             if (q.length < 2) { results.innerHTML = ''; results.hidden = true; return; }
             const matches = [];
             for (const p of PERSONS.values()) {
-                if (p.name.toLowerCase().includes(q)) {
+                if (EdCore.matchesQuery(p._s, q)) {
                     matches.push(p);
                     if (matches.length >= 12) break;
                 }

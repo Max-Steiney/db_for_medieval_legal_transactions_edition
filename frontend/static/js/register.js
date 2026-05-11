@@ -291,7 +291,7 @@
         });
 
         // --- Shared infrastructure: search + sort headers + range slider ---
-        TableInfra.setupSearch(state, applyFilters);
+        let searchControl = TableInfra.setupSearch(state, applyFilters);
         TableInfra.setupSortHeaders('register-table', state, applyFilters);
         _applyInitialBarHeights();
         rangeSlider = TableInfra.initRangeSlider(state, applyFilters);
@@ -371,10 +371,8 @@
         // --- URL parameter restore (takes effect before the first applyFilters) ---
         let urlParams = new URLSearchParams(window.location.search);
         let urlQuery = urlParams.get('q');
-        if (urlQuery) {
-            state.query = EdCore.normForSearch(urlQuery);
-            let si = document.getElementById('search-input');
-            if (si) si.value = urlQuery;
+        if (urlQuery && searchControl) {
+            searchControl.set(urlQuery);
         }
         let urlLetter = urlParams.get('letter');
         if (urlLetter) {
@@ -457,12 +455,7 @@
                 // range — analogous to the sources histogram (decade overlap).
                 if (ymax < state.yearMin || ymin > state.yearMax) return false;
             }
-            if (skip !== 'query' && state.query) {
-                let words = state.query.split(/\s+/);
-                for (let i = 0; i < words.length; i++) {
-                    if (entry._s.indexOf(words[i]) === -1) return false;
-                }
-            }
+            if (skip !== 'query' && !EdCore.matchesQuery(entry._s, state.query)) return false;
             return true;
         }
 
@@ -614,11 +607,7 @@
             activeFiltersEl.innerHTML = '';
             if (state.query) {
                 TableInfra.addFilterChip(activeFiltersEl, 'Suche: ' + state.query, function() {
-                    state.query = '';
-                    let si = document.getElementById('search-input');
-                    if (si) si.value = '';
-                    let sc = document.getElementById('search-clear');
-                    if (sc) sc.classList.add('hidden');
+                    if (searchControl) searchControl.reset();
                     applyFilters();
                 });
             }
@@ -693,16 +682,12 @@
         let resetBtn = document.getElementById('filter-reset');
         if (resetBtn) {
             resetBtn.addEventListener('click', function() {
-                state.query = '';
                 state.letter = '';
                 state.sex = [];
                 state.roles = [];
                 state.types = [];
                 state.corpora = [];
-                let si = document.getElementById('search-input');
-                if (si) si.value = '';
-                let sc = document.getElementById('search-clear');
-                if (sc) sc.classList.add('hidden');
+                if (searchControl) searchControl.reset();
                 alphaBtns.forEach(function(b) { b.classList.remove('active'); });
                 document.querySelector('.alpha-btn-all').classList.add('active');
                 if (filterSexEl) filterSexEl.querySelectorAll('.form-filter-chip').forEach(function(c) {
@@ -752,14 +737,12 @@
             if (!entry) return;
             // Constrain via the search to the target id so the row is
             // guaranteed to land in the virtualised tbody.
-            state.query = EdCore.normForSearch(targetId);
+            if (searchControl) searchControl.set(targetId);
             state.letter = '';
             state.sex = [];
             state.roles = [];
             state.types = [];
             state.corpora = [];
-            let si = document.getElementById('search-input');
-            if (si) si.value = targetId;
             applyFilters();
             let row = tbody.querySelector('tr[data-entity-id="' + CSS.escape(targetId) + '"]');
             if (!row) return;

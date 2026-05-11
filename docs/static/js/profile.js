@@ -82,29 +82,38 @@
     }
 
     function applyQuickFilters() {
+        // Behavioural parity with the main searches (index.js, register.js):
+        // - umlaut/diacritics-tolerant via EdCore.normForSearch
+        // - whitespace-split word-AND via EdCore.matchesQuery
+        // Per-row haystack is cached once, so retyping does not re-normalise.
+        var norm = (window.EdCore && EdCore.normForSearch)
+                   || function (s) { return (s || '').toLowerCase(); };
+        var match = (window.EdCore && EdCore.matchesQuery)
+                   || function (h, q) { return !q || (h || '').indexOf(q) !== -1; };
+
         document.querySelectorAll('.table-filter-input').forEach(function (input) {
             var table = findNearestTable(input);
             if (!table) return;
             var status = input.parentElement.querySelector('.table-filter-status');
             var rows = Array.prototype.slice.call(table.querySelectorAll('tbody > tr'));
             var total = rows.length;
+            rows.forEach(function (r) { r.__filterHay = norm(r.textContent || ''); });
 
             function update() {
-                var q = (input.value || '').trim().toLowerCase();
+                var q = norm((input.value || '').trim());
                 var matched = 0;
-                if (q.length === 0) {
+                if (!q) {
                     rows.forEach(function (r) { r.classList.remove('row-hidden'); });
                     table.classList.remove('is-filtering');
                     matched = total;
                 } else {
                     table.classList.add('is-filtering');
                     rows.forEach(function (r) {
-                        var hay = (r.textContent || '').toLowerCase();
-                        if (hay.indexOf(q) === -1) {
-                            r.classList.add('row-hidden');
-                        } else {
+                        if (match(r.__filterHay, q)) {
                             r.classList.remove('row-hidden');
                             matched += 1;
+                        } else {
+                            r.classList.add('row-hidden');
                         }
                     });
                 }

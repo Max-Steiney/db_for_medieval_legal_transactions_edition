@@ -1,6 +1,6 @@
 {% extends "base.html" %}
 {% from "macros.html" import search_box, result_count, active_filters, no_results, tip_glossary,
-                              sidebar_block, sidebar_range_slider, sidebar_chip_group,
+                              tip_help, sidebar_block, sidebar_range_slider, sidebar_chip_group,
                               sidebar_corpus_chips, sidebar_reset_button %}
 
 {% block title %}{{ register_label }}{% endblock %}
@@ -33,9 +33,29 @@
             {% endcall %}
             {% endif %}
 
-            {% call sidebar_block('Suche') %}
+            <section class="sidebar-block">
+                <div class="sidebar-block-label">Suche{% call tip_help('register-search-help', 'Suche') %}
+                    {% if register_type == 'persons' %}
+                    <p>Die Suche pr&uuml;ft folgende Felder einer Person:</p>
+                    <ul>
+                        <li><strong>Name</strong>, inkl. <strong>Vorname</strong> und <strong>Familienname</strong> separat</li>
+                        <li><strong>ID</strong> der konsolidierten Person</li>
+                        <li><strong>Aktivit&auml;tszeitraum</strong>, also die Jahre der ersten und letzten Quellennennung (z.&nbsp;B. „1340")</li>
+                        <li><strong>Sub-Label</strong> der Erstnennung, also Korpus-K&uuml;rzel und laufende Nummer (z.&nbsp;B. „QGW Nr. 66")</li>
+                    </ul>
+                    {% else %}
+                    <p>Die Suche pr&uuml;ft folgende Felder einer Organisation:</p>
+                    <ul>
+                        <li><strong>Name</strong> der Organisation</li>
+                        <li><strong>ID</strong> der konsolidierten Organisation</li>
+                        <li><strong>Aktivit&auml;tszeitraum</strong>, also die Jahre der ersten und letzten Quellennennung (z.&nbsp;B. „1340")</li>
+                        <li><strong>Sub-Label</strong> der Erstnennung, also Korpus-K&uuml;rzel und laufende Nummer (z.&nbsp;B. „QGW Nr. 66")</li>
+                    </ul>
+                    {% endif %}
+                    <p>Umlaute werden ignoriert. Mehrere W&ouml;rter werden mit UND verkn&uuml;pft.</p>
+                {% endcall %}</div>
                 {{ search_box('Name, ID, Jahr ...') }}
-            {% endcall %}
+            </section>
 
             {% if sex_data %}
             {% call sidebar_block('Geschlecht') %}
@@ -84,7 +104,7 @@
                         <tr>
                             <th scope="col" class="col-name" data-sort="n">Name</th>
                             {% if register_type == 'persons' %}
-                            <th scope="col" class="col-sex" data-sort="sex">Geschl.</th>
+                            <th scope="col" class="col-sex" data-sort="sex">Geschlecht</th>
                             <th scope="col" class="col-roles">
                                 Rollen{% call tip_glossary('col-info-roles', 'Rolle', slug='rolle') %}
                                     <p>Handlungsrolle der Person in den Events ihrer Quellen. Die Pillen stehen f&uuml;r <strong>A</strong>&nbsp;Aussteller, <strong>E</strong>&nbsp;Empf&auml;nger, <strong>Z</strong>&nbsp;Zeuge oder Siegler, <strong>S</strong>&nbsp;Sonstige. Eine Person kann in unterschiedlichen Quellen unterschiedliche Rollen einnehmen.</p>

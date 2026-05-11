@@ -269,7 +269,7 @@
         });
 
         // --- Shared infrastructure ---
-        TableInfra.setupSearch(state, applyFilters);
+        let searchControl = TableInfra.setupSearch(state, applyFilters);
         TableInfra.setupSortHeaders('doc-table', state, applyFilters);
 
         // --- Inject form-of-treatment icons + definition tooltips into the
@@ -383,10 +383,11 @@
         // via replaceState().
         let urlParams = new URLSearchParams(window.location.search);
         let urlQuery = urlParams.get('q');
-        if (urlQuery) {
-            state.query = urlQuery;
-            let si = document.getElementById('search-input');
-            if (si) si.value = urlQuery;
+        if (urlQuery && searchControl) {
+            // set() normalises the same way the live input does
+            // (umlaut/diacritics-tolerant), so ?q=Poetel and ?q=Pötel
+            // both match doc._s 'poetel'. Also toggles the clear button.
+            searchControl.set(urlQuery);
         }
         let urlPlace = urlParams.get('place');
         if (urlPlace && filterPlace) {
@@ -454,12 +455,7 @@
                 let year = parseInt(doc.di);
                 if (isNaN(year) || year < state.yearMin || year > state.yearMax) return false;
             }
-            if (skip !== 'query' && state.query) {
-                let words = state.query.split(/\s+/);
-                for (let i = 0; i < words.length; i++) {
-                    if (doc._s.indexOf(words[i]) === -1) return false;
-                }
-            }
+            if (skip !== 'query' && !EdCore.matchesQuery(doc._s, state.query)) return false;
             return true;
         }
 
@@ -705,9 +701,10 @@
         function applyFilters() {
             state.previewIdx = -1;
 
+            // matchesAllExcept(doc, null) considers every dimension,
+            // including collection — there is no need to check it twice.
             filteredDocs = allDocs.filter(function(doc) {
-                if (state.collection && doc.cp !== state.collection) return false;
-                return matchesAllExcept(doc, 'collection');
+                return matchesAllExcept(doc, null);
             });
 
             filteredDocs.sort(function(a, b) {
@@ -732,7 +729,6 @@
                 state.facs = '';
                 state.sex = '';
                 state.forms = [];
-                state.query = '';
                 chips.forEach(function(c) { c.classList.remove('active'); });
                 if (filterPlace) filterPlace.value = '';
                 if (filterFacs) filterFacs.value = '';
@@ -743,8 +739,7 @@
                         c.setAttribute('aria-pressed', 'false');
                     });
                 }
-                let si = document.getElementById('search-input');
-                if (si) si.value = '';
+                if (searchControl) searchControl.reset();
                 if (rangeSlider && rangeSlider.reset) rangeSlider.reset();
                 applyFilters();
             });
@@ -870,10 +865,7 @@
                 // unexplainable.
                 TableInfra.addFilterChip(activeFiltersEl, 'Suche: ' + state.query,
                     clearFilter('query', function() {
-                        let si = document.getElementById('search-input');
-                        if (si) si.value = '';
-                        let sc = document.getElementById('search-clear');
-                        if (sc) sc.classList.add('hidden');
+                        if (searchControl) searchControl.reset();
                     }));
             }
             if (state.place) {

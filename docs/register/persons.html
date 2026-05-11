@@ -9,16 +9,16 @@
     <title>Personen, Datenbank</title>
     <link rel="preload" as="font" type="font/woff2" crossorigin
           href="../static/fonts/inter-400-latin.woff2">
-    <link rel="stylesheet" href="../static/css/fonts.css?v=20260511134507">
-    <link rel="stylesheet" href="../static/css/tokens.css?v=20260511134507">
-    <link rel="stylesheet" href="../static/css/base.css?v=20260511134507">
-    <link rel="stylesheet" href="../static/css/components.css?v=20260511134507">
-    <link rel="stylesheet" href="../static/css/responsive.css?v=20260511134507">
-    <link rel="stylesheet" href="../static/css/print.css?v=20260511134507">
-    <link rel="stylesheet" href="../static/css/tip.css?v=20260511134507">
+    <link rel="stylesheet" href="../static/css/fonts.css?v=20260511141040">
+    <link rel="stylesheet" href="../static/css/tokens.css?v=20260511141040">
+    <link rel="stylesheet" href="../static/css/base.css?v=20260511141040">
+    <link rel="stylesheet" href="../static/css/components.css?v=20260511141040">
+    <link rel="stylesheet" href="../static/css/responsive.css?v=20260511141040">
+    <link rel="stylesheet" href="../static/css/print.css?v=20260511141040">
+    <link rel="stylesheet" href="../static/css/tip.css?v=20260511141040">
     
-<link rel="stylesheet" href="../static/css/index.css?v=20260511134507">
-<link rel="stylesheet" href="../static/css/register.css?v=20260511134507">
+<link rel="stylesheet" href="../static/css/index.css?v=20260511141040">
+<link rel="stylesheet" href="../static/css/register.css?v=20260511141040">
 
 </head>
 <body data-root-path=".."
@@ -352,10 +352,44 @@
 
             
 
+            <section class="sidebar-block">
+                <div class="sidebar-block-label">Suche
+<span class="tip-wrap">
+    <button type="button" class="tip-trigger tip-trigger--icon"
+            aria-expanded="false" aria-haspopup="dialog"
+            aria-controls="register-search-help"
+            data-tip="register-search-help"
+            aria-label="Hilfe: Suche">
+        <svg width="13" height="13" viewBox="0 0 16 16" aria-hidden="true">
+            <circle cx="8" cy="8" r="7" stroke="currentColor" stroke-width="1.4" fill="none"/>
+            <text x="8" y="11.6" text-anchor="middle" font-size="9.5" font-weight="700"
+                  fill="currentColor" font-family="Georgia, serif">i</text>
+        </svg>
+    </button>
+    <aside class="tip-popover tip-popover--help"
+           id="register-search-help" role="dialog" aria-hidden="true"
+           aria-label="Hilfe: Suche">
+        <header class="tip-head">
+            <h3 class="tip-title">Suche</h3>
+            <button type="button" class="tip-close" aria-label="Schlie&szlig;en">&times;</button>
+        </header>
+        <div class="tip-body">
             
-<section class="sidebar-block">
-    <p class="sidebar-block-label">Suche</p>
-    
+                    
+                    <p>Die Suche pr&uuml;ft folgende Felder einer Person:</p>
+                    <ul>
+                        <li><strong>Name</strong>, inkl. <strong>Vorname</strong> und <strong>Familienname</strong> separat</li>
+                        <li><strong>ID</strong> der konsolidierten Person</li>
+                        <li><strong>Aktivit&auml;tszeitraum</strong>, also die Jahre der ersten und letzten Quellennennung (z.&nbsp;B. „1340")</li>
+                        <li><strong>Sub-Label</strong> der Erstnennung, also Korpus-K&uuml;rzel und laufende Nummer (z.&nbsp;B. „QGW Nr. 66")</li>
+                    </ul>
+                    
+                    <p>Umlaute werden ignoriert. Mehrere W&ouml;rter werden mit UND verkn&uuml;pft.</p>
+                
+        </div>
+    </aside>
+</span>
+</div>
                 
 <div class="search-box">
     <svg class="search-icon" width="18" height="18" viewBox="0 0 18 18" fill="none" aria-hidden="true">
@@ -367,10 +401,7 @@
     <button class="search-clear hidden" id="search-clear" aria-label="Suche löschen">&times;</button>
 </div>
 
-            
-    
-</section>
-
+            </section>
 
             
             
@@ -560,7 +591,7 @@
                         <tr>
                             <th scope="col" class="col-name" data-sort="n">Name</th>
                             
-                            <th scope="col" class="col-sex" data-sort="sex">Geschl.</th>
+                            <th scope="col" class="col-sex" data-sort="sex">Geschlecht</th>
                             <th scope="col" class="col-roles">
                                 Rollen
 <span class="tip-wrap">
@@ -669,13 +700,13 @@
         </div>
     </footer>
 
-    <script src="../static/js/core.js?v=20260511134507"></script>
-    <script src="../static/js/tip.js?v=20260511134507"></script>
-    <script src="../static/js/hint.js?v=20260511134507"></script>
-    <script src="../static/js/basket.js?v=20260511134507"></script>
+    <script src="../static/js/core.js?v=20260511141040"></script>
+    <script src="../static/js/tip.js?v=20260511141040"></script>
+    <script src="../static/js/hint.js?v=20260511141040"></script>
+    <script src="../static/js/basket.js?v=20260511141040"></script>
     
-<script src="../static/js/table-infra.js?v=20260511134507"></script>
-<script src="../static/js/register.js?v=20260511134507"></script>
+<script src="../static/js/table-infra.js?v=20260511141040"></script>
+<script src="../static/js/register.js?v=20260511141040"></script>
 
 </body>
 </html>
