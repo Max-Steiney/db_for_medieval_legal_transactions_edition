@@ -30,6 +30,18 @@ Einträge in umgekehrt chronologischer Reihenfolge, neueste oben.
 
 ---
 
+## 2026-05-11 TEI-zu-HTML-Coverage als zweite Verifikationsstufe
+
+Das Verifikations-Set hat jetzt zwei Pfade. `python -m verification.run` vergleicht weiter TEI gegen die Pipeline-JSONs. Neu: `python -m verification.run --html` vergleicht die Pipeline-CSVs (Aggregator-Input) gegen die gerenderten Profil- und Quellen-Seiten unter `docs/`. Damit ist die End-to-End-Kette TEI → JSON → CSV → HTML maschinell prüfbar.
+
+Geprüft wird auf der HTML-Stufe: Stammdaten der Personen- und Organisations-Profile, Sterbedatum, Authority- und Wien-Wiki-Links, Quellen-Counts gegen Tabellen-Zeilen, Anzahl der Beziehungs-Eintrage pro Typ inklusive der neu eingefuehrten Mirror-Beziehungen, und ob jedes `data-ref` im Quellen-Body auf ein real existierendes Profil zeigt. Reader und Cross-Check liegen in `verification/parse_html.py` und `verification/compare_html.py`; ein Vertrag in `verification/contract.py` deklariert pro Feld required/conditional/filter und bekannte Lücken. Inventory in [[verification/inventory.md|inventory]] um Ebene 4 ergänzt.
+
+Verworfen: pytest-Integration. Der vollständige HTML-Coverage-Lauf dauert in der Größenordnung von zwei Minuten, das ist für einen normalen Test-Run zu lang. Separater Runner wie das bestehende `verification/`-Muster bleibt schlanker.
+
+Begleitend in derselben Session **Mirror-Beziehungen** auf Personenprofilen ergänzt: wenn eine Person als `related_key` in `occ_relations_in_sources.csv` auftaucht und der `person_key` ebenfalls eine Person ist, erscheint auf dem Bezugs-Profil eine neue Sektion „Personen mit Beruf / Amt in meinem Bezug". Schließt eine Asymmetrie, die der vorherige Stand systematisch nur einseitig zeigte. Auf einem Hochadel-Profil wie dem von Herzog Wilhelm wird damit die Hofstruktur erstmals sichtbar.
+
+Weiter konsolidiert: `EdCore.sortKey` und `EdCore.compareValues` aus drei nahezu identischen Implementierungen (in [[../frontend/static/js/index.js|index.js]], [[../frontend/static/js/profile.js|profile.js]], [[../frontend/static/js/register.js|register.js]]); `TableInfra.setupTableFilter` aus zwei Implementierungen. Production-Bug auf der Analyse-Seite behoben: das Template lud die längst gelöschte `drill-down.js`, defensive `typeof DrillDown === 'undefined'`-Checks hatten den Bug stumm versteckt. Migration auf die bestehende `VizCore.openDrillOverlay`-API.
+
 ## 2026-05-11 Datenkorb auf drei Typen erweitert mit Ableitungs-Mechanik
 
 Der Datenkorb sammelt jetzt nicht nur Quellen, sondern auch Personen und Organisationen. Drei Item-Typen mit kompaktem Schlüssel `type:id`, je eigener Tabelle auf der Korb-Seite, je eigener Remove- und Clear-Aktion, je eigenem CSV-Export.
