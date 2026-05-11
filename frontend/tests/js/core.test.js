@@ -79,3 +79,87 @@ describe('EdCore.getParam', () => {
         window.history.replaceState({}, '', '/');
     });
 });
+
+describe('EdCore.sortKey', () => {
+    test('strips square brackets globally', () => {
+        // Editorial markup like "[Wien]" must sort under W, not under [.
+        expect(EdCore.sortKey('[Wien]')).toBe('wien');
+        expect(EdCore.sortKey('[Wien')).toBe('wien');
+        expect(EdCore.sortKey('Wien]')).toBe('wien');
+    });
+
+    test('trims leading/trailing punctuation but keeps internal dots', () => {
+        // "Wien," sorts with "Wien"; "St. Poelten" is left alone because
+        // its dot is internal.
+        expect(EdCore.sortKey('Wien,')).toBe('wien');
+        expect(EdCore.sortKey(',Wien')).toBe('wien');
+        expect(EdCore.sortKey('  Wien  ')).toBe('wien');
+        expect(EdCore.sortKey('St. Poelten')).toBe('st. poelten');
+    });
+
+    test('lowercases', () => {
+        expect(EdCore.sortKey('ABC')).toBe('abc');
+        expect(EdCore.sortKey('Wien')).toBe('wien');
+    });
+
+    test('handles null/undefined/empty', () => {
+        expect(EdCore.sortKey(null)).toBe('');
+        expect(EdCore.sortKey(undefined)).toBe('');
+        expect(EdCore.sortKey('')).toBe('');
+    });
+
+    test('coerces numbers to strings', () => {
+        expect(EdCore.sortKey(42)).toBe('42');
+        expect(EdCore.sortKey(0)).toBe('0');
+    });
+});
+
+describe('EdCore.compareValues', () => {
+    test('empty values sort to the end (ascending)', () => {
+        expect(EdCore.compareValues('Wien', '', 1)).toBe(-1);
+        expect(EdCore.compareValues('', 'Wien', 1)).toBe(1);
+        expect(EdCore.compareValues('', '', 1)).toBe(0);
+    });
+
+    test('null/undefined/dash count as empty', () => {
+        expect(EdCore.compareValues(null, 'X', 1)).toBe(1);
+        expect(EdCore.compareValues(undefined, 'X', 1)).toBe(1);
+        expect(EdCore.compareValues('-', 'X', 1)).toBe(1);
+    });
+
+    test('numeric strings compare numerically, not lexicographically', () => {
+        // Without numeric detection, "1599" would sort before "49".
+        expect(EdCore.compareValues('49', '1599', 1)).toBeLessThan(0);
+        expect(EdCore.compareValues('1599', '49', 1)).toBeGreaterThan(0);
+        expect(EdCore.compareValues('100', '100', 1)).toBe(0);
+    });
+
+    test('genuine numbers compare numerically', () => {
+        expect(EdCore.compareValues(5, 10, 1)).toBeLessThan(0);
+        expect(EdCore.compareValues(10, 5, 1)).toBeGreaterThan(0);
+    });
+
+    test('text falls back to locale-aware compare with sortKey', () => {
+        // Bracket-stripped, punctuation-trimmed, then localeCompare('de').
+        expect(EdCore.compareValues('Wien', '[Wien]', 1)).toBe(0);
+        expect(EdCore.compareValues('Wien,', 'Wien', 1)).toBe(0);
+        expect(EdCore.compareValues('Aachen', 'Wien', 1)).toBeLessThan(0);
+    });
+
+    test('umlauts sort with their base letter in de-locale', () => {
+        // localeCompare('de'): "Pötel" sorts near "Poe…" / "Pot…"
+        const aFirst = EdCore.compareValues('Pötel', 'Quedlinburg', 1);
+        const oFirst = EdCore.compareValues('Pötel', 'Aachen', 1);
+        expect(aFirst).toBeLessThan(0);
+        expect(oFirst).toBeGreaterThan(0);
+    });
+
+    test('descending direction flips the result', () => {
+        expect(EdCore.compareValues('A', 'B', -1)).toBeGreaterThan(0);
+        expect(EdCore.compareValues('B', 'A', -1)).toBeLessThan(0);
+    });
+
+    test('default direction is ascending', () => {
+        expect(EdCore.compareValues('A', 'B')).toBeLessThan(0);
+    });
+});

@@ -668,17 +668,12 @@
         // lexicographically consistent key. Strings are compared locale-aware
         // ('de') so umlauts sort correctly.
         //
-        // Editorial notation: '[Wien]' (square brackets = editorially
-        // reconstructed place name) must sort under W, not under '['.
-        // Likewise 'Wien,' (a trailing comma from the source) must sort with
-        // Wien. _sortKey strips square brackets globally and trims leading/
-        // trailing punctuation that is only notation — 'St. Pölten' is left
-        // alone because its dot is internal.
-        function _sortKey(v) {
-            return String(v)
-                .replace(/[\[\]]/g, '')
-                .replace(/^[\s,;:]+|[\s,;:]+$/g, '');
-        }
+        // _compareDocs adapts the EdCore.compareValues primitive to the
+        // document-row shape: a, b are doc records, key is the column
+        // key ('id', 'di', 'p', 'pcd'). The date column ('di') has a
+        // special pre-slice because its raw value can be a range form
+        // ('1198-01-01 | 1230-12-31'); only the first 10 chars matter
+        // for chronological order.
         function _compareDocs(a, b, key, dir) {
             let va = a[key];
             let vb = b[key];
@@ -686,15 +681,7 @@
                 va = (typeof va === 'string') ? va.slice(0, 10) : '';
                 vb = (typeof vb === 'string') ? vb.slice(0, 10) : '';
             }
-            let aEmpty = (va === '' || va === null || va === undefined);
-            let bEmpty = (vb === '' || vb === null || vb === undefined);
-            if (aEmpty && bEmpty) return 0;
-            if (aEmpty) return 1;
-            if (bEmpty) return -1;
-            if (typeof va === 'number' && typeof vb === 'number') {
-                return (va - vb) * dir;
-            }
-            return _sortKey(va).localeCompare(_sortKey(vb), 'de') * dir;
+            return EdCore.compareValues(va, vb, dir);
         }
 
         // --- Core filter logic ---

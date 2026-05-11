@@ -562,24 +562,9 @@
             });
         }
 
-        // --- Sort helpers (parallels the sources page: bracket strip + locale) ---
-        function _sortKey(v) {
-            return String(v)
-                .replace(/[\[\]]/g, '')
-                .replace(/^[\s,;:]+|[\s,;:]+$/g, '');
-        }
+        // --- Sort helper: thin wrapper around EdCore.compareValues ---
         function _compareEntries(a, b, key, dir) {
-            let va = a[key];
-            let vb = b[key];
-            let aEmpty = (va === '' || va === null || va === undefined);
-            let bEmpty = (vb === '' || vb === null || vb === undefined);
-            if (aEmpty && bEmpty) return 0;
-            if (aEmpty) return 1;
-            if (bEmpty) return -1;
-            if (typeof va === 'number' && typeof vb === 'number') {
-                return (va - vb) * dir;
-            }
-            return _sortKey(va).localeCompare(_sortKey(vb), 'de') * dir;
+            return EdCore.compareValues(a[key], b[key], dir);
         }
 
         // --- Sync URL from state ---

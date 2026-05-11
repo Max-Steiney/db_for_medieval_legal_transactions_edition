@@ -71,94 +71,29 @@
     }
 
     /* ----------------------------------------------------------------
-       Quick-Filter
+       Quick-Filter (delegiert an TableInfra.setupTableFilter)
        ---------------------------------------------------------------- */
 
-    function findNearestTable(input) {
-        // Jede Filter-Section enthaelt genau eine Tabelle (rel-table oder
-        // person-source-table). querySelector('table') reicht.
-        var scope = input.closest('section') || input.parentElement;
-        return scope ? scope.querySelector('table') : null;
-    }
-
     function applyQuickFilters() {
-        // Behavioural parity with the main searches (index.js, register.js):
-        // - umlaut/diacritics-tolerant via EdCore.normForSearch
-        // - whitespace-split word-AND via EdCore.matchesQuery
-        // Per-row haystack is cached once, so retyping does not re-normalise.
-        var norm = (window.EdCore && EdCore.normForSearch)
-                   || function (s) { return (s || '').toLowerCase(); };
-        var match = (window.EdCore && EdCore.matchesQuery)
-                   || function (h, q) { return !q || (h || '').indexOf(q) !== -1; };
-
         document.querySelectorAll('.table-filter-input').forEach(function (input) {
-            var table = findNearestTable(input);
-            if (!table) return;
-            var status = input.parentElement.querySelector('.table-filter-status');
-            var rows = Array.prototype.slice.call(table.querySelectorAll('tbody > tr'));
-            var total = rows.length;
-            rows.forEach(function (r) { r.__filterHay = norm(r.textContent || ''); });
-
-            function update() {
-                var q = norm((input.value || '').trim());
-                var matched = 0;
-                if (!q) {
-                    rows.forEach(function (r) { r.classList.remove('row-hidden'); });
-                    table.classList.remove('is-filtering');
-                    matched = total;
-                } else {
-                    table.classList.add('is-filtering');
-                    rows.forEach(function (r) {
-                        if (match(r.__filterHay, q)) {
-                            r.classList.remove('row-hidden');
-                            matched += 1;
-                        } else {
-                            r.classList.add('row-hidden');
-                        }
-                    });
-                }
-                if (status) {
-                    status.textContent = q
-                        ? matched + ' von ' + total + ' Zeilen'
-                        : '';
-                }
-            }
-            input.addEventListener('input', update);
+            var scope = input.closest('section') || input.parentElement;
+            var table = scope ? scope.querySelector('table') : null;
+            if (table) TableInfra.setupTableFilter(input, table);
         });
     }
 
     /* ----------------------------------------------------------------
        Spalten-Sortierung
-       ---------------------------------------------------------------- */
-
-    function sortKey(s) {
-        return String(s || '')
-            .replace(/[\[\]]/g, '')
-            .replace(/^[\s,;:]+|[\s,;:]+$/g, '')
-            .toLowerCase();
-    }
+       ----------------------------------------------------------------
+       Vergleichs-Primitive (sortKey, compareValues) liegen in EdCore.
+       Hier nur der DOM-Teil: data-sort-value pro td auslesen, tr-Sortier
+       und Truncate-Re-Mark. */
 
     function cellValue(tr, colIndex) {
         var td = tr.children[colIndex];
         if (!td) return '';
         var v = td.getAttribute('data-sort-value');
         return v !== null ? v : td.textContent.trim();
-    }
-
-    var NUM_RE = /^-?\d+(\.\d+)?$/;
-
-    function compareCells(va, vb, dir) {
-        var aEmpty = (va === '' || va === '-');
-        var bEmpty = (vb === '' || vb === '-');
-        if (aEmpty && bEmpty) return 0;
-        if (aEmpty) return 1;
-        if (bEmpty) return -1;
-        // Numerisch vergleichen, wenn beide Werte reine Zahlen sind
-        // (Signatur-Nummern wie 49, 185, 1599).
-        if (NUM_RE.test(va) && NUM_RE.test(vb)) {
-            return (Number(va) - Number(vb)) * dir;
-        }
-        return sortKey(va).localeCompare(sortKey(vb), 'de') * dir;
     }
 
     function setupSortableTable(table) {
@@ -188,7 +123,7 @@
                 if (colIndex < 0 || colIndex === undefined) return;
                 rows = Array.prototype.slice.call(tbody.querySelectorAll('tr'));
                 rows.sort(function (a, b) {
-                    return compareCells(cellValue(a, colIndex), cellValue(b, colIndex), state.dir);
+                    return EdCore.compareValues(cellValue(a, colIndex), cellValue(b, colIndex), state.dir);
                 });
             }
             var frag = document.createDocumentFragment();

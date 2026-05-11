@@ -249,6 +249,59 @@ let TableInfra = (function() {
 
 
     /* ------------------------------------------------------------------
+       Server-rendered table filter (used on profile pages)
+
+       Filters server-rendered <tr>-Zeilen einer Tabelle, im Gegensatz zu
+       setupSearch (das den State eines JS-Daten-Arrays filtert). Nutzt
+       EdCore.normForSearch und EdCore.matchesQuery fuer Umlaut-Toleranz
+       und Wort-AND-Verknuepfung. Cached pro Zeile den normalisierten
+       Volltext, damit beim Tippen nur die Query neu normiert wird.
+
+       Erwartet ein <input class="table-filter-input"> mit Status-Span
+       gleicher Ebene. table ist die Ziel-Tabelle; ihr wird .is-filtering
+       gesetzt, solange eine Query aktiv ist. Zeilen ohne Treffer
+       bekommen .row-hidden.
+       ------------------------------------------------------------------ */
+
+    function setupTableFilter(input, table) {
+        if (!input || !table) return;
+        let status = input.parentElement
+            ? input.parentElement.querySelector('.table-filter-status')
+            : null;
+        let rows = Array.prototype.slice.call(table.querySelectorAll('tbody > tr'));
+        let total = rows.length;
+        rows.forEach(function (r) { r.__filterHay = EdCore.normForSearch(r.textContent || ''); });
+
+        function update() {
+            let q = EdCore.normForSearch((input.value || '').trim());
+            let matched = 0;
+            if (!q) {
+                rows.forEach(function (r) { r.classList.remove('row-hidden'); });
+                table.classList.remove('is-filtering');
+                matched = total;
+            } else {
+                table.classList.add('is-filtering');
+                rows.forEach(function (r) {
+                    if (EdCore.matchesQuery(r.__filterHay, q)) {
+                        r.classList.remove('row-hidden');
+                        matched += 1;
+                    } else {
+                        r.classList.add('row-hidden');
+                    }
+                });
+            }
+            if (status) {
+                status.textContent = q
+                    ? matched + ' von ' + total + ' Zeilen'
+                    : '';
+            }
+        }
+        input.addEventListener('input', update);
+        return { update: update, rows: rows };
+    }
+
+
+    /* ------------------------------------------------------------------
        Filter chip
        ------------------------------------------------------------------ */
 
@@ -277,7 +330,13 @@ let TableInfra = (function() {
         setupSearch: setupSearch,
         setupSortHeaders: setupSortHeaders,
         createTableRenderer: createTableRenderer,
-        addFilterChip: addFilterChip
+        addFilterChip: addFilterChip,
+        setupTableFilter: setupTableFilter
     };
 
 })();
+
+// CommonJS export for Vitest.
+if (typeof module !== 'undefined' && module.exports) {
+    module.exports = { TableInfra };
+}

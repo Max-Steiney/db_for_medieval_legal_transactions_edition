@@ -215,6 +215,60 @@ let EdCore = (function() {
 
 
     /* ------------------------------------------------------------------
+       Sort utilities (shared by index.js, profile.js, register.js)
+
+       sortKey() normalises a value for lexicographic comparison:
+       - strips square brackets (editorial markup like "[Wien]" sorts
+         under W, not under [)
+       - trims leading/trailing punctuation (",", ";", ":", whitespace);
+         "Wien," sorts with "Wien", "St. Poelten" is left alone because
+         its dot is internal
+       - lowercases (defensive; localeCompare 'de' would handle case but
+         we want a deterministic comparable form)
+
+       compareValues() is the generic cell-vs-cell comparator:
+       - empty values (undefined/null/""/"-") sort to the end
+       - both values numeric -> numeric compare
+       - otherwise -> sortKey + localeCompare('de')
+       - dir = +1 ascending, -1 descending
+       ------------------------------------------------------------------ */
+
+    let NUM_RE = /^-?\d+(\.\d+)?$/;
+
+    function sortKey(v) {
+        return String(v == null ? '' : v)
+            .replace(/[\[\]]/g, '')
+            .replace(/^[\s,;:]+|[\s,;:]+$/g, '')
+            .toLowerCase();
+    }
+
+    function isEmptyForSort(v) {
+        return v === undefined || v === null || v === '' || v === '-';
+    }
+
+    function compareValues(a, b, dir) {
+        dir = dir || 1;
+        let aE = isEmptyForSort(a);
+        let bE = isEmptyForSort(b);
+        if (aE && bE) return 0;
+        if (aE) return 1;
+        if (bE) return -1;
+        // Pure numbers on both sides -> numeric compare. typeof handles
+        // the case where the caller already parsed them; strings that
+        // happen to be all digits (like signature numbers) are matched
+        // via NUM_RE.
+        if (typeof a === 'number' && typeof b === 'number') {
+            return (a - b) * dir;
+        }
+        let sa = String(a), sb = String(b);
+        if (NUM_RE.test(sa) && NUM_RE.test(sb)) {
+            return (Number(sa) - Number(sb)) * dir;
+        }
+        return sortKey(sa).localeCompare(sortKey(sb), 'de') * dir;
+    }
+
+
+    /* ------------------------------------------------------------------
        Public API
        ------------------------------------------------------------------ */
 
@@ -222,7 +276,9 @@ let EdCore = (function() {
         esc: esc,
         getParam: getParam,
         normForSearch: normForSearch,
-        matchesQuery: matchesQuery
+        matchesQuery: matchesQuery,
+        sortKey: sortKey,
+        compareValues: compareValues
     };
 
 })();
