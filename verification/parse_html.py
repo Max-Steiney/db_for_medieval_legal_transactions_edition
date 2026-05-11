@@ -274,6 +274,77 @@ def read_org_profile(path: Path) -> OrgProfileHtml:
     return o
 
 
+@dataclass
+class DocumentHtml:
+    """Was die gerenderte Quellen-Detailseite ueber ein Dokument sagt."""
+
+    idno: str
+    path: Path
+    title: Optional[str] = None
+    date_display: Optional[str] = None
+    place_display: Optional[str] = None
+    corpus_label: Optional[str] = None
+    # data-ref-Werte aller annotierten Elemente im Body, deduped.
+    person_refs: List[str] = field(default_factory=list)
+    org_refs: List[str] = field(default_factory=list)
+    place_refs: List[str] = field(default_factory=list)
+    event_refs: List[str] = field(default_factory=list)
+
+
+def read_document(path: Path) -> DocumentHtml:
+    """Liest docs/documents/<corpus>/<sub>/<idno>.html und gibt strukturierte
+    Felder zurueck. idno ist der Dateiname ohne .html."""
+    idno = path.stem
+    tree = lxml_html.parse(str(path)).getroot()
+    d = DocumentHtml(idno=idno, path=path)
+
+    # H1 enthaelt nur "Nr. <idno>". Der <title> im <head> hat die Form
+    # "Nr. <idno> (<date_display>), Datenbank" — daraus ziehen wir das
+    # Datum.
+    h1 = tree.cssselect("h1")
+    if h1:
+        d.title = _text(h1[0])
+    title_tag = tree.cssselect("head > title")
+    if title_tag:
+        import re
+        m = re.search(r"\(([^)]+)\)", _text(title_tag[0]))
+        if m:
+            d.date_display = m.group(1).strip()
+
+    for pair in tree.cssselect(".doc-toolbar-meta .meta-pair"):
+        label_el = pair.cssselect(".meta-label")
+        value_el = pair.cssselect(".meta-value")
+        if not label_el or not value_el:
+            continue
+        label = _text(label_el[0])
+        value = _text(value_el[0])
+        if label == "Originaldatierung":
+            d.place_display = value  # tatsaechlich enthaelt das oft Ort+Datum
+        elif label == "Quelle":
+            d.corpus_label = value
+
+    # data-ref-Annotationen im Body: ein Eintrag pro Vorkommen, dann
+    # dedupliziert pro Kategorie.
+    seen_p, seen_o, seen_pl, seen_e = set(), set(), set(), set()
+    for el in tree.cssselect("[data-ref]"):
+        ref = el.get("data-ref", "").strip()
+        if not ref:
+            continue
+        if ref.startswith("pe__") and ref not in seen_p:
+            seen_p.add(ref)
+            d.person_refs.append(ref)
+        elif ref.startswith("org__") and ref not in seen_o:
+            seen_o.add(ref)
+            d.org_refs.append(ref)
+        elif ref.startswith("pl__") and ref not in seen_pl:
+            seen_pl.add(ref)
+            d.place_refs.append(ref)
+        elif ref.startswith("ev__") and ref not in seen_e:
+            seen_e.add(ref)
+            d.event_refs.append(ref)
+    return d
+
+
 def iter_person_profiles() -> List[Path]:
     """Alle Personen-Profil-HTMLs im docs/-Output."""
     if not HTML_REGISTER_PERSONS.exists():
@@ -285,3 +356,18 @@ def iter_org_profiles() -> List[Path]:
     if not HTML_REGISTER_ORGS.exists():
         return []
     return sorted(HTML_REGISTER_ORGS.glob("org__*.html"))
+
+
+def iter_documents() -> List[Path]:
+    """Alle Quellen-HTMLs unter docs/documents/<corpus>/<sub>/*.html."""
+    if not HTML_DOCUMENTS.exists():
+        return []
+    paths: List[Path] = []
+    for corpus_dir in HTML_DOCUMENTS.iterdir():
+        if not corpus_dir.is_dir():
+            continue
+        for sub_dir in corpus_dir.iterdir():
+            if not sub_dir.is_dir():
+                continue
+            paths.extend(sub_dir.glob("*.html"))
+    return sorted(paths)

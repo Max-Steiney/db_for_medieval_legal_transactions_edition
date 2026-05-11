@@ -339,9 +339,184 @@ def check_org_profiles(sample_size: Optional[int] = None) -> List[CheckResult]:
     return results
 
 
+def _load_relations_csv(name: str, key_col: str) -> Dict[str, int]:
+    """Aggregiert ein relations-CSV nach key_col -> count. Wird genutzt
+    fuer die Pruefung "Anzahl Eintraege im HTML stimmt mit der Anzahl
+    in der CSV ueberein", z.B. wieviele occ_inverse-Eintraege Wilhelm
+    haben sollte."""
+    counts: Dict[str, int] = {}
+    path = PIPELINE_ROOT / "pipeline" / "output" / name
+    if not path.exists():
+        return counts
+    with path.open(encoding="utf-8") as f:
+        reader = csv.DictReader(f, delimiter=";")
+        for r in reader:
+            key = (r.get(key_col) or "").strip()
+            if key:
+                counts[key] = counts.get(key, 0) + 1
+    return counts
+
+
+def check_person_relation_counts(sample_size: Optional[int] = None) -> List[CheckResult]:
+    """Vergleicht pro Person die Anzahl der Beziehungs-Tabellen-Zeilen
+    im HTML mit der erwarteten Anzahl aus der jeweiligen
+    relations-CSV.
+
+    occ_inverse / title_ref_inverse sind die Mirror-Zaehler aus Commit
+    24d5f4ad41: Person X ist related_key in occ-Relationen wo person_key
+    eine andere Person ist."""
+    results: List[CheckResult] = []
+
+    # Counts der occ-relations gruppiert nach person_key (Vorwaertsrelation)
+    occ_forward = _load_relations_csv(
+        "occ_relations_in_sources.csv", "person_key"
+    )
+    # Mirror: occ_inverse zaehlt Eintraege, wo related_key == pe__X UND
+    # person_key auch pe__... ist (Person->Person).
+    occ_mirror: Dict[str, int] = {}
+    path = PIPELINE_ROOT / "pipeline" / "output" / "occ_relations_in_sources.csv"
+    if path.exists():
+        with path.open(encoding="utf-8") as f:
+            for r in csv.DictReader(f, delimiter=";"):
+                pk = (r.get("person_key") or "").strip()
+                rk = (r.get("related_key") or "").strip()
+                if pk.startswith("pe__") and rk.startswith("pe__"):
+                    occ_mirror[rk] = occ_mirror.get(rk, 0) + 1
+
+    paths = parse_html.iter_person_profiles()
+    if sample_size:
+        paths = paths[:sample_size]
+
+    occ_mismatches: List[Dict[str, Any]] = []
+    occ_inverse_mismatches: List[Dict[str, Any]] = []
+
+    for path in paths:
+        p = parse_html.read_person_profile(path)
+        html_occ = p.relation_counts.get("occ", 0)
+        expected_occ = occ_forward.get(p.pe_id, 0)
+        if html_occ != expected_occ:
+            occ_mismatches.append({
+                "id": p.pe_id, "html": html_occ, "csv": expected_occ,
+            })
+
+        html_inverse = p.relation_counts.get("occ_inverse", 0)
+        expected_inverse = occ_mirror.get(p.pe_id, 0)
+        if html_inverse != expected_inverse:
+            occ_inverse_mismatches.append({
+                "id": p.pe_id,
+                "html": html_inverse,
+                "csv": expected_inverse,
+            })
+
+    def _add_mismatch_result(name: str, ms: List[Dict[str, Any]]) -> None:
+        if ms:
+            sample = "; ".join(
+                f"{m['id']}: HTML={m['html']} CSV={m['csv']}" for m in ms[:3]
+            )
+            results.append(CheckResult(
+                name=name,
+                tei=sum(m["csv"] for m in ms),
+                json=sum(m["html"] for m in ms),
+                status="mismatch",
+                note=f"Beispiele: {sample}",
+            ))
+        else:
+            results.append(CheckResult(
+                name=name, tei=0, json=0, status="match",
+            ))
+
+    _add_mismatch_result("html.persons.occ_count_vs_csv", occ_mismatches)
+    _add_mismatch_result("html.persons.occ_inverse_count_vs_csv", occ_inverse_mismatches)
+
+    return results
+
+
+def check_document_refs(sample_size: Optional[int] = None) -> List[CheckResult]:
+    """Sicherstellt, dass jeder data-ref in einer Quellen-HTML-Datei auf
+    eine real existierende Entitaet zeigt (Profil-HTML vorhanden) oder
+    bekannt unrendered ist.
+
+    Findet Renderer-Bugs wie 'Person X wird im Quellen-Body annotiert,
+    hat aber kein Profil' (was bei einem korrekten reverse_index-Gate
+    nicht passieren darf)."""
+    results: List[CheckResult] = []
+    paths = parse_html.iter_documents()
+    if sample_size:
+        paths = paths[:sample_size]
+
+    persons_dir_ids = {p.stem for p in parse_html.iter_person_profiles()}
+    orgs_dir_ids = {p.stem for p in parse_html.iter_org_profiles()}
+
+    orphan_persons: Dict[str, int] = {}
+    orphan_orgs: Dict[str, int] = {}
+    docs_with_orphans: int = 0
+
+    for path in paths:
+        d = parse_html.read_document(path)
+        local_orphan = False
+        for ref in d.person_refs:
+            if ref not in persons_dir_ids:
+                orphan_persons[ref] = orphan_persons.get(ref, 0) + 1
+                local_orphan = True
+        for ref in d.org_refs:
+            if ref not in orgs_dir_ids:
+                orphan_orgs[ref] = orphan_orgs.get(ref, 0) + 1
+                local_orphan = True
+        if local_orphan:
+            docs_with_orphans += 1
+
+    results.append(CheckResult(
+        name="html.documents.scanned",
+        tei=len(paths),
+        json=docs_with_orphans,
+        status="info",
+        note=f"{docs_with_orphans} Quellen mit mindestens einer Orphan-Annotation",
+    ))
+
+    if orphan_persons:
+        sample = ", ".join(list(orphan_persons.keys())[:5])
+        results.append(CheckResult(
+            name="html.documents.orphan_person_refs",
+            tei=0,
+            json=sum(orphan_persons.values()),
+            status="mismatch",
+            note=(
+                f"{len(orphan_persons)} eindeutige IDs ohne Profil-Datei. "
+                f"Beispiele: {sample}"
+            ),
+        ))
+    else:
+        results.append(CheckResult(
+            name="html.documents.orphan_person_refs",
+            tei=0, json=0, status="match",
+        ))
+
+    if orphan_orgs:
+        sample = ", ".join(list(orphan_orgs.keys())[:5])
+        results.append(CheckResult(
+            name="html.documents.orphan_org_refs",
+            tei=0,
+            json=sum(orphan_orgs.values()),
+            status="mismatch",
+            note=(
+                f"{len(orphan_orgs)} eindeutige IDs ohne Profil-Datei. "
+                f"Beispiele: {sample}"
+            ),
+        ))
+    else:
+        results.append(CheckResult(
+            name="html.documents.orphan_org_refs",
+            tei=0, json=0, status="match",
+        ))
+
+    return results
+
+
 def run_html_checks() -> List[CheckResult]:
     """Alle HTML-Coverage-Pruefungen in einem Lauf."""
     results: List[CheckResult] = []
     results.extend(check_person_profiles())
     results.extend(check_org_profiles())
+    results.extend(check_person_relation_counts())
+    results.extend(check_document_refs())
     return results

@@ -1,11 +1,11 @@
 {
   "date": "2026-05-11",
   "summary": {
-    "total": 7,
-    "match": 5,
+    "total": 12,
+    "match": 9,
     "mismatch": 0,
     "known_gap": 0,
-    "info": 2
+    "info": 3
   },
   "results": [
     {
@@ -52,6 +52,41 @@
     },
     {
       "name": "html.orgs.source_count_vs_rows",
+      "tei": 0,
+      "json": 0,
+      "status": "match",
+      "note": null
+    },
+    {
+      "name": "html.persons.occ_count_vs_csv",
+      "tei": 0,
+      "json": 0,
+      "status": "match",
+      "note": null
+    },
+    {
+      "name": "html.persons.occ_inverse_count_vs_csv",
+      "tei": 0,
+      "json": 0,
+      "status": "match",
+      "note": null
+    },
+    {
+      "name": "html.documents.scanned",
+      "tei": 2601,
+      "json": 0,
+      "status": "info",
+      "note": "0 Quellen mit mindestens einer Orphan-Annotation"
+    },
+    {
+      "name": "html.documents.orphan_person_refs",
+      "tei": 0,
+      "json": 0,
+      "status": "match",
+      "note": null
+    },
+    {
+      "name": "html.documents.orphan_org_refs",
       "tei": 0,
       "json": 0,
       "status": "match",
