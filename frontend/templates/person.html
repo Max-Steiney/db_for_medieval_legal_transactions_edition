@@ -1,4 +1,5 @@
 {% extends "base.html" %}
+{% from "macros.html" import tip_glossary %}
 
 {% block title %}{{ profile.display }}{% if profile.death_display %} (&dagger; {{ profile.death_display }}){% endif %}{% endblock %}
 
@@ -10,13 +11,15 @@
 {% set sex_label = {'m': 'männlich', 'f': 'weiblich'}.get(profile.sex, 'Geschlecht unbestimmt') %}
 
 {% set ROLE_LABEL = {'issuer': 'Aussteller*in', 'recipient': 'Empfänger*in', 'witness': 'Zeuge / Siegler*in', 'other': 'Sonstige'} %}
-{% set REL_LABEL = {'kin': 'Verwandtschaft', 'friend': 'Freundschaft', 'rep': 'Stellvertretung', 'occ': 'Beruf / Amt', 'title_ref': 'Titel'} %}
+{% set REL_LABEL = {'kin': 'Verwandtschaft', 'friend': 'Freundschaft', 'rep': 'Stellvertretung', 'occ': 'Beruf / Amt', 'title_ref': 'Titel', 'owner': 'Eigentum (Orte)', 'tenant': 'Pacht / Inhabung (Orte)'} %}
 {% set REL_HINT = {
     'kin': 'Verwandtschaftsverhältnisse, wie sie in den Quellen explizit benannt werden.',
     'friend': 'Quellen, in denen die Beziehung als Freundschaft markiert ist.',
     'rep': 'Stellvertretungs-Beziehungen, z. B. handelt eine Person an Stelle einer anderen.',
     'occ': 'Berufs- oder Amtsbezeichnung in Bezug auf eine Institution.',
-    'title_ref': 'Titel der Person in Bezug auf eine Institution oder einen Ort.'
+    'title_ref': 'Titel der Person in Bezug auf eine Institution oder einen Ort.',
+    'owner': 'Orte, die dieser Person als Eigentum zugeschrieben sind. Ortsnamen ohne Sprungziel, da das Ortsregister derzeit nicht ausgeliefert wird.',
+    'tenant': 'Orte, die diese Person innehat oder bewirtschaftet. Ortsnamen ohne Sprungziel, da das Ortsregister derzeit nicht ausgeliefert wird.'
 } %}
 
 {% block content %}
@@ -24,11 +27,23 @@
 
     <div class="person-toolbar">
         <div class="person-toolbar-inner">
-            <nav class="person-breadcrumb" aria-label="Position">
-                <a href="{{ root_path }}/register/persons.html">Personenregister</a>
-                <span class="bc-sep">&rsaquo;</span>
-                <span class="bc-doc"><strong>{{ profile.display }}</strong></span>
-            </nav>
+            <div class="person-toolbar-row">
+                <nav class="person-breadcrumb" aria-label="Position">
+                    <a href="{{ root_path }}/register/persons.html">Personenregister</a>
+                    <span class="bc-sep">&rsaquo;</span>
+                    <span class="bc-doc"><strong>{{ profile.display }}</strong></span>
+                </nav>
+                <div class="person-toolbar-actions">
+                    <span class="toolbar-basket-mount"
+                          data-basket-type="person"
+                          data-basket-id="{{ profile.id }}"
+                          data-basket-label="{{ profile.display }}"
+                          data-basket-url="register/persons/{{ profile.id }}.html"
+                          data-basket-sex="{{ profile.sex or '' }}"
+                          data-basket-active-min="{{ profile.active_min or '' }}"
+                          data-basket-active-max="{{ profile.active_max or '' }}"></span>
+                </div>
+            </div>
             <div class="person-toolbar-meta">
                 <span class="meta-pair">
                     <span class="meta-label">Geschlecht</span>
@@ -36,7 +51,7 @@
                 </span>
                 {% if profile.active_min %}
                 <span class="meta-pair">
-                    <span class="meta-label">Belegt</span>
+                    <span class="meta-label">Belegt{% call tip_glossary('person-belegt', 'Beleg-Zeitraum') %}<p>Erste und letzte Datierung einer Quelle, in der die Person erscheint. Bei einzelnem Beleg wird nur ein Jahr angegeben.</p>{% endcall %}</span>
                     <span class="meta-value">{% if profile.active_max and profile.active_max != profile.active_min %}{{ profile.active_min }} bis {{ profile.active_max }}{% else %}{{ profile.active_min }}{% endif %}</span>
                 </span>
                 {% endif %}
@@ -46,6 +61,10 @@
                     <span class="meta-value">{{ profile.death_display }}</span>
                 </span>
                 {% endif %}
+                <span class="meta-pair">
+                    <span class="meta-label">Quellen</span>
+                    <span class="meta-value">{{ profile.source_count }}</span>
+                </span>
                 <span class="meta-pair person-id-pair">
                     <span class="meta-label">ID</span>
                     <code class="meta-value person-id">{{ profile.id }}</code>
@@ -61,11 +80,14 @@
             {% if profile.addName %}<span class="pn-an">{{ profile.addName }}</span>{% endif %}
             {% if not profile.forename and not profile.surname and not profile.addName %}{{ profile.display }}{% endif %}
         </h1>
+        {% if profile.name_orig_display %}
+        <p class="person-orig"><span class="orig-label">Im Quellen-Wortlaut</span> {{ profile.name_orig_display }}</p>
+        {% endif %}
         {% if profile.note %}
         <p class="person-note">{{ profile.note }}</p>
         {% endif %}
         {% if profile.source_titles %}
-        <p class="person-titles">
+        <p class="person-titles" data-collapsible="22">
             <span class="pt-label">In den Quellen genannt als</span>
             {% for t in profile.source_titles %}<span class="pt-chip">{{ t }}</span>{% endfor %}
         </p>
@@ -75,15 +97,39 @@
             <a class="ext-link" href="https://www.wienwiki.at/?curid={{ profile.wiki_pageid }}" target="_blank" rel="noopener noreferrer">Wien-Wiki: {{ profile.wiki_label }}</a>
         </p>
         {% endif %}
+        {% if profile.authority_urls %}
+        <p class="person-extlinks">
+            {% for u in profile.authority_urls %}
+            <a class="ext-link" href="{{ u }}" target="_blank" rel="noopener noreferrer">Authority-Eintrag{% if profile.authority_urls|length > 1 %} {{ loop.index }}{% endif %}</a>{% if not loop.last %} &middot; {% endif %}
+            {% endfor %}
+        </p>
+        {% endif %}
     </header>
 
-    {% set rel_total = profile.relations.kin|length + profile.relations.friend|length + profile.relations.rep|length + profile.relations.occ|length + profile.relations.title_ref|length %}
+    {% if profile.role_total %}
+    <section class="role-strip" aria-label="Rollen in Rechtsgeschäften">
+        <h2 class="role-strip-title">Rollen in Rechtsgeschäften</h2>
+        <div class="role-strip-cells">
+            {% for r in ['issuer', 'recipient', 'witness', 'other'] %}
+            <div class="role-cell role-cell-{{ r }}{% if profile.roles[r] == 0 %} is-zero{% endif %}">
+                <span class="role-cell-count">{{ profile.roles[r] }}</span>
+                <span class="role-cell-label">{{ ROLE_LABEL[r] }}</span>
+            </div>
+            {% endfor %}
+        </div>
+        <p class="role-strip-hint">Summe Rollen-Belegungen: {{ profile.role_total }}. Mehrfach-Rollen pro Quelle sind möglich.</p>
+    </section>
+    {% endif %}
 
-    {# Beziehungs-Block: pro Typ ein Sub-Abschnitt, nur wenn Eintraege da sind. #}
+    {% set rel_total = profile.relations.kin|length + profile.relations.friend|length + profile.relations.rep|length + profile.relations.occ|length + profile.relations.title_ref|length + profile.relations.owner|length + profile.relations.tenant|length %}
+
+    {# Beziehungs-Block: pro Typ ein Sub-Abschnitt, nur wenn Eintraege da sind.
+       owner/tenant referenzieren Orte; das Ortsregister ist entfernt, daher
+       erscheint der Ortsname dort als Klartext (siehe Cell-Branch unten). #}
     {% if rel_total %}
     <section class="person-relations" aria-label="Beziehungen">
         <h2 class="section-head">Beziehungen</h2>
-        {% for rel_type in ['kin', 'friend', 'rep', 'occ', 'title_ref'] %}
+        {% for rel_type in ['kin', 'friend', 'rep', 'occ', 'title_ref', 'owner', 'tenant'] %}
         {% set entries = profile.relations[rel_type] %}
         {% if entries %}
         <section class="rel-block rel-block-{{ rel_type }}">
@@ -92,10 +138,16 @@
                 <span class="rel-block-count">{{ entries|length }}</span>
                 <span class="rel-block-hint">{{ REL_HINT[rel_type] }}</span>
             </header>
-            <table class="rel-table">
+            {% if entries|length > 25 %}
+            <div class="table-filter">
+                <input type="search" class="table-filter-input" data-target="rel" placeholder="In der Tabelle filtern&hellip;" aria-label="In der Tabelle filtern">
+                <span class="table-filter-status"></span>
+            </div>
+            {% endif %}
+            <table class="rel-table"{% if entries|length > 50 %} data-truncate-at="50"{% endif %}>
                 <thead>
                     <tr>
-                        <th scope="col" class="rel-col-other">{% if rel_type in ['occ', 'title_ref'] %}Institution{% else %}Person{% endif %}</th>
+                        <th scope="col" class="rel-col-other">{% if rel_type in ['occ', 'title_ref'] %}Institution{% elif rel_type in ['owner', 'tenant'] %}Ort{% else %}Person{% endif %}</th>
                         <th scope="col" class="rel-col-label">Bezeichnung</th>
                         <th scope="col" class="rel-col-perspective">Perspektive</th>
                         <th scope="col" class="rel-col-source">Quelle</th>
@@ -116,9 +168,9 @@
                         <td class="rel-col-label"><em>{{ e.label or '-' }}</em></td>
                         <td class="rel-col-perspective">
                             {% if e.role == 'subject' %}
-                                {{ profile.display }} → {{ e.other_name }}
+                                {{ profile.display }} &rsaquo; {{ e.other_name }}
                             {% else %}
-                                {{ e.other_name }} → {{ profile.display }}
+                                {{ e.other_name }} &rsaquo; {{ profile.display }}
                             {% endif %}
                         </td>
                         <td class="rel-col-source">
@@ -140,15 +192,23 @@
     </section>
     {% endif %}
 
-    {# Quellen-Tabelle: alle Belege chronologisch. #}
+    {# Quellen-Tabelle: alle Belege chronologisch, mit Bezeichnung und Rolle pro Quelle. #}
     <section class="person-sources" aria-label="Quellen mit Nennung">
         <h2 class="section-head">Quellen mit Nennung</h2>
-        <table class="person-source-table">
+        {% if profile.sources|length > 25 %}
+        <div class="table-filter">
+            <input type="search" class="table-filter-input" data-target="src" placeholder="In den Quellen filtern&hellip;" aria-label="In den Quellen filtern">
+            <span class="table-filter-status"></span>
+        </div>
+        {% endif %}
+        <table class="person-source-table"{% if profile.sources|length > 50 %} data-truncate-at="50"{% endif %}>
             <thead>
                 <tr>
                     <th scope="col" class="src-col-idno">Nr.</th>
                     <th scope="col" class="src-col-date">Datum</th>
                     <th scope="col" class="src-col-corpus">Quellenkorpus</th>
+                    <th scope="col" class="src-col-label">Bezeichnung</th>
+                    <th scope="col" class="src-col-role">Rolle</th>
                     <th scope="col" class="src-col-regest">Regest</th>
                 </tr>
             </thead>
@@ -158,6 +218,11 @@
                     <td class="src-col-idno"><a href="{{ root_path }}/{{ d.url }}">{{ d.idno }}</a></td>
                     <td class="src-col-date">{{ d.date_display or '-' }}</td>
                     <td class="src-col-corpus">{{ d.collection_label }}</td>
+                    <td class="src-col-label"><em>{{ d.label or '-' }}</em></td>
+                    <td class="src-col-role">
+                        {% for r in d.roles %}<span class="role-chip role-chip-{{ r.key }}">{{ r.label }}</span>{% endfor %}
+                        {% if not d.roles %}-{% endif %}
+                    </td>
                     <td class="src-col-regest">{{ d.regest or '-' }}</td>
                 </tr>
             {% endfor %}
@@ -169,7 +234,8 @@
 {% endblock %}
 
 {% block scripts %}
-<script src="{{ root_path }}/static/js/tooltips.js?v={{ asset_v }}"></script>
+<script src="{{ root_path }}/static/js/profile.js?v={{ asset_v }}"></script>
+<script src="{{ root_path }}/static/js/basket-mount.js?v={{ asset_v }}"></script>
 {% endblock %}
 
 {% block footer_info %}{{ profile.display }} &middot; {{ profile.id }}{% endblock %}

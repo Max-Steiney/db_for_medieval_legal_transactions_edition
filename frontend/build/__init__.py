@@ -78,12 +78,10 @@ from frontend.build._pages import (
     _build_startseite,
     _person_search_data,
     _org_search_data,
-    _place_search_data,
     _build_register_list_pages,
     _build_register_json,
     _build_person_profiles,
     _build_org_profiles,
-    _build_place_profiles,
     _build_exploration,
     _build_exploration_timeline,
     _build_exploration_network,
@@ -153,6 +151,12 @@ def build_all():
 
     print("Building reverse index...")
     reverse_index = {}
+    # Forward index: idno -> {'p': [pe__id, ...], 'o': [org__id, ...]}.
+    # Built alongside the reverse index. Consumed by build_docs_entities()
+    # below to write data/docs_entities.json for the client-side basket
+    # derivation step (a source carries its annotated persons/orgs as
+    # 'derived' basket entries).
+    forward_entities: dict[str, dict[str, list[str]]] = {}
     for meta, _body, _out, entity_refs in parsed:
         doc_entry = {
             "url": meta["url"],
@@ -165,6 +169,14 @@ def build_all():
         }
         for eid in entity_refs:
             reverse_index.setdefault(eid, []).append(doc_entry)
+        idno = meta.get("idno", "")
+        if idno:
+            bucket = forward_entities.setdefault(idno, {"p": [], "o": []})
+            for eid in entity_refs:
+                if eid.startswith("pe__") and eid not in bucket["p"]:
+                    bucket["p"].append(eid)
+                elif eid.startswith("org__") and eid not in bucket["o"]:
+                    bucket["o"].append(eid)
     for docs in reverse_index.values():
         docs.sort(key=lambda d: d.get("date_iso", ""))
     print(f"  Reverse index: {len(reverse_index)} entities linked to documents")
@@ -200,16 +212,22 @@ def build_all():
 
     _build_register_list_pages(persons, orgs, places, reverse_index, env)
     _build_register_json(reverse_index)
+    # docs_entities.json: idno -> annotated persons/orgs. Must run AFTER
+    # the register list pages because it reads persons_search.json /
+    # orgs_search.json for the display fields.
+    from frontend.aggregator import build_docs_entities
+    build_docs_entities(DATA_DIR, forward_entities)
 
-    # Profile pages: build orgs and places first so the linked-* sets can
-    # gate cross-links in the person profiles (occ / title_ref point at
-    # org detail pages only when those exist).
-    linked_orgs = _build_org_profiles(reverse_index, env)
-    linked_places = _build_place_profiles(reverse_index, env,
-                                          linked_orgs=linked_orgs)
+    # Profile pages for persons and orgs. Places have no detail page —
+    # the underlying Place-master data is not yet consolidated, so the
+    # place register and its detail views are deliberately omitted. The
+    # linked-* sets gate cross-entity links from each profile.
+    linked_persons = {k for k in reverse_index if k.startswith("pe__")}
+    linked_orgs    = {k for k in reverse_index if k.startswith("org__")}
+    _build_org_profiles(reverse_index, env,
+                        linked_persons=linked_persons)
     _build_person_profiles(reverse_index, env,
-                           linked_orgs=linked_orgs,
-                           linked_places=linked_places)
+                           linked_orgs=linked_orgs)
 
     _build_exploration(all_metadata, persons, env)
     _build_exploration_timeline(all_metadata, env)
@@ -264,10 +282,10 @@ __all__ = [
     "_persons_with_org_released",
     # Pages
     "_build_index", "_build_startseite",
-    "_person_search_data", "_org_search_data", "_place_search_data",
+    "_person_search_data", "_org_search_data",
     "_build_register_list_pages", "_build_register_json",
     "_build_person_profiles",
-    "_build_org_profiles", "_build_place_profiles",
+    "_build_org_profiles",
     "_build_exploration", "_build_exploration_timeline",
     "_build_exploration_network", "_build_basket",
     "_build_guidelines", "_build_about", "_build_glossary", "_build_impressum",

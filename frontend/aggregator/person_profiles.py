@@ -13,42 +13,57 @@ Output: a dict ``{pe__id: profile}`` with fixed structure (see module
 README). Writes no file — the HTMLs are rendered directly in the build
 step ``_build_person_profiles``.
 
-Relation types (5):
+Relation types per person:
 - kin       (kinship)               — person<->person, bidirectional
 - friend    (friendship)            — person<->person, bidirectional
 - rep       (representation)        — person<->person, bidirectional
 - occ       (occupation re: org)    — person->org, unidirectional
 - title_ref (title re: org)         — person->org, unidirectional
+- owner     (place ownership)       — person<-place, place-side relation
+- tenant    (place tenancy)         — person<-place, place-side relation
 """
 
 from collections import Counter, defaultdict
 
 from ._shared import _cached_csv
+from ._profile_labels import split_authorities
+from ._profile_enrichment import (
+    file_key_lookup,
+    per_doc_label_persons,
+    per_doc_roles_persons,
+    enrich_sources,
+    ROLE_LABEL_PERSON,
+)
 
 
-# English role values from persons_in_events.csv. In sync with
-# PERSON_ROLES in build/_pages.py — we repeat the list here deliberately
-# to avoid introducing a build-order dependency.
 _ROLES = ("issuer", "recipient", "witness", "other")
 
 
 def _load_person_stammdaten():
-    """Load persons.csv -> {id: {forename, surname, addName, sex, note,
-    death_iso, wiki_pageid}}."""
+    """Load persons.csv -> per-id master-data dict.
+
+    Includes the *_orig forms (forename / surname / addname) so the
+    profile header can show how the name appears in the source where
+    they differ from the regularised form.
+    """
     out = {}
     for r in _cached_csv("persons.csv"):
         pid = r.get("id", "")
         if not pid:
             continue
         out[pid] = {
-            "forename": (r.get("forename_reg") or "").strip(),
-            "surname":  (r.get("surname_reg") or "").strip(),
-            "addName":  (r.get("addname_reg") or "").strip(),
-            "sex":      (r.get("sex") or "").strip(),
-            "note":     (r.get("note") or "").strip(),
-            "death_iso": (r.get("dead_before") or "").strip(),
-            "wiki_pageid": (r.get("PAGEID_WienWiki") or "").strip(),
-            "wiki_label":  (r.get("Name_WienWiki") or "").strip(),
+            "forename":      (r.get("forename_reg") or "").strip(),
+            "surname":       (r.get("surname_reg") or "").strip(),
+            "addName":       (r.get("addname_reg") or "").strip(),
+            "forename_orig": (r.get("forename_orig") or "").strip(),
+            "surname_orig":  (r.get("surname_orig") or "").strip(),
+            "addname_orig":  (r.get("addname_orig") or "").strip(),
+            "sex":           (r.get("sex") or "").strip(),
+            "note":          (r.get("note") or "").strip(),
+            "death_iso":     (r.get("dead_before") or "").strip(),
+            "authority":     (r.get("authority") or "").strip(),
+            "wiki_pageid":   (r.get("PAGEID_WienWiki") or "").strip(),
+            "wiki_label":    (r.get("Name_WienWiki") or "").strip(),
         }
     return out
 
@@ -60,7 +75,19 @@ def _load_org_names():
         oid = r.get("id", "")
         name = (r.get("name_reg") or r.get("name_orig") or oid).strip()
         if oid:
-            out[oid] = name or oid
+            # only keep the main name (pre-pipe) for label use
+            out[oid] = name.split("|", 1)[0].strip() or oid
+    return out
+
+
+def _load_place_names():
+    """Load places.csv -> {pl__id: name}."""
+    out = {}
+    for r in _cached_csv("places.csv"):
+        pid = r.get("id", "")
+        name = (r.get("name_reg") or r.get("name_orig") or pid).strip()
+        if pid:
+            out[pid] = name.split("|", 1)[0].strip() or pid
     return out
 
 
@@ -77,21 +104,31 @@ def _format_death_german(death_iso):
 
 
 def _display_name(s):
-    """Compact display name from master data."""
+    """Compact display name from regularised master data."""
     parts = [s.get("forename", ""), s.get("surname", ""), s.get("addName", "")]
     return " ".join(p for p in parts if p) or ""
 
 
-def _file_to_source_lookup(reverse_index):
-    """Map file_key -> source-meta dict for relation-row resolution.
+def _orig_display(s):
+    """Compact original-form display name; empty if no _orig form differs.
 
-    Pipeline CSVs reference sources via ``file_key`` (e.g.
-    ``f__QGW_10``). reverse_index is idno-based (``10``, in
-    ``QGW/Vienna_1177-1414_ready``). We bridge via filenames.csv
-    (file_key -> file + collection path) and then match against
-    reverse_index by (collection_path, idno).
+    Concatenates the *_orig values when at least one of them is set and
+    differs from the regularised form. Used by the template to surface
+    the source spelling alongside the regularised header.
     """
-    # 1) Index reverse_index docs by (collection_path, idno) ----------
+    fo = s.get("forename_orig", "")
+    so = s.get("surname_orig", "")
+    ao = s.get("addname_orig", "")
+    parts = [p for p in (fo, so, ao) if p]
+    if not parts:
+        return ""
+    reg = _display_name(s)
+    candidate = " ".join(parts)
+    return candidate if candidate != reg else ""
+
+
+def _file_to_source_lookup(reverse_index):
+    """Map file_key -> source-meta dict (kept for relation rows)."""
     by_cp_idno = {}
     for docs in reverse_index.values():
         for d in docs:
@@ -100,7 +137,6 @@ def _file_to_source_lookup(reverse_index):
             if cp and idno:
                 by_cp_idno[(cp, idno)] = d
 
-    # 2) Walk filenames.csv (released-only via _cached_csv) -----------
     out = {}
     for r in _cached_csv("filenames.csv"):
         fk = r.get("id", "")
@@ -140,9 +176,7 @@ def _aggregate_roles_per_person():
 def _aggregate_source_titles():
     """persons_in_sources.csv -> {person_key: [unique source_titles + source_prof]}.
 
-    Returns the title/occupation labels as they appear in the source,
-    sorted by frequency. Occupation and title are merged because the UI
-    distinction adds little value — both serve to identify the person.
+    Combined title/occupation list, sorted by frequency.
     """
     counters = defaultdict(Counter)
     for r in _cached_csv("persons_in_sources.csv"):
@@ -153,32 +187,33 @@ def _aggregate_source_titles():
             v = (r.get(col) or "").strip()
             if v:
                 counters[pk][v] += 1
-    out = {}
-    for pk, c in counters.items():
-        out[pk] = [t for t, _ in c.most_common()]
-    return out
+    return {pk: [t for t, _ in c.most_common()] for pk, c in counters.items()}
 
 
-def _build_relation_index(file_lookup, person_names, org_names):
-    """Load the 5 relation CSVs and group per person.
+def _build_relation_index(file_lookup, person_names, org_names, place_names):
+    """Load all relation CSVs and group per person.
 
-    Returns: {person_id: {"kin":[...], "friend":[...], "rep":[...],
-                          "occ":[...], "title_ref":[...]}}
+    Returns: ``{person_id: {kin, friend, rep, occ, title_ref, owner,
+    tenant}}`` with each entry of the shape::
 
-    Each entry per person:
-        {"label": str, "other_id": str, "other_name": str, "other_kind":
-         "person"|"org", "other_sex": str, "role": "subject"|"counterpart",
+        {"label": str, "other_id": str, "other_name": str,
+         "other_kind": "person"|"org"|"place",
+         "role": "subject"|"counterpart",
          "file_key": str, "idno": str, "date_display": str, "url": str,
          "regest": str}
 
     role:
-        - "subject":     this person is person_key (= bearer of the label)
-        - "counterpart": this person is related_key (counterparty)
+        - "subject":     this person is the bearer of the label
+                         (person_key in the CSV, or the implicit
+                         owner/tenant of the place row)
+        - "counterpart": this person is the counterparty
+                         (related_key in a person-person CSV)
     """
     rel = defaultdict(lambda: {k: [] for k in
-                               ("kin", "friend", "rep", "occ", "title_ref")})
+                               ("kin", "friend", "rep", "occ", "title_ref",
+                                "owner", "tenant")})
 
-    # person<->person relations: bidirectional
+    # Person <-> Person, bidirectional.
     BIDIR = [
         ("kin_relations_in_sources.csv",    "kin",    "kin"),
         ("friend_relations_in_sources.csv", "friend", "friend"),
@@ -201,22 +236,16 @@ def _build_relation_index(file_lookup, person_names, org_names):
                 "url":        src.get("url", ""),
                 "regest":     src.get("regest", ""),
             }
-            # subject view (person_key)
-            sub = dict(base)
-            sub["other_id"]   = rk
-            sub["other_name"] = person_names.get(rk, rk)
-            sub["other_kind"] = "person"
-            sub["role"]       = "subject"
+            sub = dict(base, other_id=rk,
+                       other_name=person_names.get(rk, rk),
+                       other_kind="person", role="subject")
             rel[pk][group].append(sub)
-            # counterpart view (related_key)
-            cp = dict(base)
-            cp["other_id"]   = pk
-            cp["other_name"] = person_names.get(pk, pk)
-            cp["other_kind"] = "person"
-            cp["role"]       = "counterpart"
+            cp = dict(base, other_id=pk,
+                      other_name=person_names.get(pk, pk),
+                      other_kind="person", role="counterpart")
             rel[rk][group].append(cp)
 
-    # person->org relations: unidirectional (org has no profile yet)
+    # Person -> Org, unidirectional. Person owns the relation.
     PERSON_TO_ORG = [
         ("occ_relations_in_sources.csv",       "occ",       "occ"),
         ("title-ref_relations_in_sources.csv", "title_ref", "title_ref"),
@@ -244,49 +273,78 @@ def _build_relation_index(file_lookup, person_names, org_names):
             }
             rel[pk][group].append(entry)
 
+    # Place <- Person, unidirectional. Place owns the CSV, person is the
+    # counterparty (``rel_key``). We surface it on the person side too so
+    # the profile shows both sides of the same relation.
+    PLACE_RELS = [
+        ("owner_relations_in_sources.csv",  "owner",  "owner"),
+        ("tenant_relations_in_sources.csv", "tenant", "tenant"),
+    ]
+    for csv_name, label_col, group in PLACE_RELS:
+        for r in _cached_csv(csv_name):
+            place_id = (r.get("place_key") or "").strip()
+            rk = (r.get("rel_key") or "").strip()
+            label = (r.get(label_col) or "").strip().strip("|").strip()
+            fk = (r.get("xml_key") or r.get("file_key") or "").strip()
+            if not place_id or not rk or not rk.startswith("pe__"):
+                # Only the person-side relations land here; org-tenant
+                # rows are still kept on the place profile.
+                continue
+            src = file_lookup.get(fk, {})
+            entry = {
+                "label":      label,
+                "other_id":   place_id,
+                "other_name": place_names.get(place_id, place_id),
+                "other_kind": "place",
+                "role":       "subject",
+                "file_key":   fk,
+                "idno":       src.get("idno", ""),
+                "date_display": src.get("date_display", ""),
+                "url":        src.get("url", ""),
+                "regest":     src.get("regest", ""),
+            }
+            rel[rk][group].append(entry)
+
     return rel
 
 
 def build_person_profiles(reverse_index):
-    """Build dict ``{pe__id: profile}`` for all persons with at least
-    one source in the released set.
+    """Build ``{pe__id: profile}`` for all persons with at least one
+    released mention.
 
-    A person appears in the profile set iff they are annotated as
-    ``rs type="person"`` in a released source — the reverse_index
-    already delivers this correctly.
-
-    profile structure:
+    profile structure (additions over the previous shape are noted):
         {
-          "id": pe__id,
-          "display": "Forename Surname AddName" or pe__id,
+          "id", "display",
           "forename", "surname", "addName",
-          "sex": "m"|"f"|"",
-          "note": str,
-          "death_iso": str,           # raw ISO (or year)
-          "death_display": str,       # DD.MM.YYYY or year
+          "name_orig_display": "Anna Yrrensteig",     # NEW (or "")
+          "sex", "note", "death_iso", "death_display",
+          "authority_urls": ["https://...", ...],     # NEW (pipe-split)
           "wiki_label", "wiki_pageid",
           "source_titles": [str, ...],
-          "sources":     [doc-meta...],
+          "sources":      [doc-meta + label + roles],  # ENRICHED
           "source_count": int,
           "active_min", "active_max": "YYYY",
-          "roles": {issuer, recipient, witness, other},
+          "roles":      {issuer, recipient, witness, other},
           "role_total": int,
-          "relations": {kin, friend, rep, occ, title_ref}
+          "role_labels": {key: german label},          # NEW
+          "relations":  {kin, friend, rep, occ, title_ref, owner, tenant},
         }
     """
     stamm = _load_person_stammdaten()
     org_names = _load_org_names()
+    place_names = _load_place_names()
     file_lookup = _file_to_source_lookup(reverse_index)
     person_roles = _aggregate_roles_per_person()
     source_titles = _aggregate_source_titles()
 
-    # person_names for relation resolution — display from master data,
-    # fallback to ID. Also used for persons not in the released set
-    # (a relation to a non-released person stays visible with the name,
-    # but the link is defensively checked in the template).
     person_names = {pid: _display_name(s) or pid for pid, s in stamm.items()}
+    relations = _build_relation_index(file_lookup, person_names,
+                                      org_names, place_names)
 
-    relations = _build_relation_index(file_lookup, person_names, org_names)
+    # Per-doc enrichment for the sources table.
+    fk_lookup = file_key_lookup()
+    label_map = per_doc_label_persons()
+    role_map = per_doc_roles_persons()
 
     profiles = {}
     for pid, docs in reverse_index.items():
@@ -300,7 +358,11 @@ def build_person_profiles(reverse_index):
         roles = person_roles.get(pid, Counter())
         roles_dict = {r: roles.get(r, 0) for r in _ROLES}
         rels = relations.get(pid, {k: [] for k in
-                                    ("kin", "friend", "rep", "occ", "title_ref")})
+                                    ("kin", "friend", "rep", "occ",
+                                     "title_ref", "owner", "tenant")})
+
+        sources = enrich_sources(docs, pid, fk_lookup, label_map, role_map,
+                                 ROLE_LABEL_PERSON)
 
         profiles[pid] = {
             "id": pid,
@@ -308,20 +370,23 @@ def build_person_profiles(reverse_index):
             "forename": s.get("forename", ""),
             "surname":  s.get("surname", ""),
             "addName":  s.get("addName", ""),
+            "name_orig_display": _orig_display(s),
             "sex":      s.get("sex", ""),
             "note":     s.get("note", ""),
             "death_iso":     s.get("death_iso", ""),
             "death_display": _format_death_german(s.get("death_iso", "")),
+            "authority_urls": split_authorities(s.get("authority", "")),
             "wiki_label":   s.get("wiki_label", ""),
             "wiki_pageid":  s.get("wiki_pageid", ""),
             "source_titles": source_titles.get(pid, []),
-            "sources":      docs,
-            "source_count": len(docs),
-            "active_min":   min(years) if years else "",
-            "active_max":   max(years) if years else "",
-            "roles":        roles_dict,
-            "role_total":   sum(roles_dict.values()),
-            "relations":    rels,
+            "sources":       sources,
+            "source_count":  len(docs),
+            "active_min":    min(years) if years else "",
+            "active_max":    max(years) if years else "",
+            "roles":         roles_dict,
+            "role_total":    sum(roles_dict.values()),
+            "role_labels":   ROLE_LABEL_PERSON,
+            "relations":     rels,
         }
 
     return profiles

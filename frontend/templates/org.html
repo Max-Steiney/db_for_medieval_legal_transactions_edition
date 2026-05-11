@@ -23,16 +23,26 @@
 
     <div class="person-toolbar">
         <div class="person-toolbar-inner">
-            <nav class="person-breadcrumb" aria-label="Position">
-                <a href="{{ root_path }}/register/orgs.html">Organisationsregister</a>
-                <span class="bc-sep">&rsaquo;</span>
-                <span class="bc-doc"><strong>{{ profile.name }}</strong></span>
-            </nav>
+            <div class="person-toolbar-row">
+                <nav class="person-breadcrumb" aria-label="Position">
+                    <a href="{{ root_path }}/register/orgs.html">Organisationsregister</a>
+                    <span class="bc-sep">&rsaquo;</span>
+                    <span class="bc-doc"><strong>{{ profile.name }}</strong></span>
+                </nav>
+                <div class="person-toolbar-actions">
+                    <span class="toolbar-basket-mount"
+                          data-basket-type="org"
+                          data-basket-id="{{ profile.id }}"
+                          data-basket-label="{{ profile.name }}"
+                          data-basket-url="register/orgs/{{ profile.id }}.html"
+                          data-basket-type-label="{{ profile.type_label or '' }}"></span>
+                </div>
+            </div>
             <div class="person-toolbar-meta">
-                {% if profile.type %}
+                {% if profile.type_label %}
                 <span class="meta-pair">
                     <span class="meta-label">Typ</span>
-                    <span class="meta-value">{{ profile.type }}</span>
+                    <span class="meta-value">{{ profile.type_label }}</span>
                 </span>
                 {% endif %}
                 {% if profile.observance %}
@@ -47,6 +57,10 @@
                     <span class="meta-value">{% if profile.active_max and profile.active_max != profile.active_min %}{{ profile.active_min }} bis {{ profile.active_max }}{% else %}{{ profile.active_min }}{% endif %}</span>
                 </span>
                 {% endif %}
+                <span class="meta-pair">
+                    <span class="meta-label">Quellen</span>
+                    <span class="meta-value">{{ profile.source_count }}</span>
+                </span>
                 <span class="meta-pair person-id-pair">
                     <span class="meta-label">ID</span>
                     <code class="meta-value person-id">{{ profile.id }}</code>
@@ -57,30 +71,78 @@
 
     <header class="person-header">
         <h1 class="person-name">{{ profile.name }}</h1>
-        {% if profile.name_orig and profile.name_orig != profile.name %}
-        <p class="person-note">Quelle: {{ profile.name_orig }}</p>
+        {% if profile.name_aliases %}
+        <p class="person-orig">
+            <span class="orig-label">Auch genannt</span>
+            {% for alias in profile.name_aliases %}<span class="pt-chip">{{ alias }}</span>{% endfor %}
+        </p>
+        {% endif %}
+        {% if profile.name_orig and profile.name_orig != profile.name and profile.name_orig not in profile.name_aliases %}
+        <p class="person-note">Im Quellen-Wortlaut: {{ profile.name_orig }}</p>
         {% endif %}
         {% if profile.source_labels %}
-        <p class="person-titles">
+        <p class="person-titles" data-collapsible="22">
             <span class="pt-label">In den Quellen genannt als</span>
             {% for t in profile.source_labels %}<span class="pt-chip">{{ t }}</span>{% endfor %}
         </p>
         {% endif %}
-        {% if profile.place_key and profile.place_name and profile.place_key in linked_places %}
-        <p class="person-extlinks">
-            <a class="ext-link" href="{{ root_path }}/register/places/{{ profile.place_key }}.html">Standort: {{ profile.place_name }}</a>
-        </p>
-        {% elif profile.place_name %}
+        {# Place register has been removed; Standort renders as plain text. #}
+        {% if profile.place_name %}
         <p class="person-extlinks">
             <span class="ext-link">Standort: {{ profile.place_name }}</span>
         </p>
         {% endif %}
-        {% if profile.authority %}
+        {% if profile.parent_org_id %}
         <p class="person-extlinks">
-            <a class="ext-link" href="{{ profile.authority }}" target="_blank" rel="noopener noreferrer">Authority-Eintrag</a>
+            {% if profile.parent_org_released %}
+            <a class="ext-link" href="{{ root_path }}/register/orgs/{{ profile.parent_org_id }}.html">Übergeordnete Organisation: {{ profile.parent_org_name }}</a>
+            {% else %}
+            <span class="ext-link">Übergeordnete Organisation: {{ profile.parent_org_name or profile.parent_org_id }}</span>
+            {% endif %}
+        </p>
+        {% endif %}
+        {% if profile.authority_urls %}
+        <p class="person-extlinks">
+            {% for u in profile.authority_urls %}
+            <a class="ext-link" href="{{ u }}" target="_blank" rel="noopener noreferrer">Authority-Eintrag{% if profile.authority_urls|length > 1 %} {{ loop.index }}{% endif %}</a>{% if not loop.last %} &middot; {% endif %}
+            {% endfor %}
         </p>
         {% endif %}
     </header>
+
+    {% if profile.role_total %}
+    <section class="role-strip" aria-label="Rollen in Rechtsgeschäften">
+        <h2 class="role-strip-title">Rollen in Rechtsgeschäften</h2>
+        <div class="role-strip-cells">
+            {% for r in ['issuer', 'recipient', 'witness', 'other'] %}
+            <div class="role-cell role-cell-{{ r }}{% if profile.roles[r] == 0 %} is-zero{% endif %}">
+                <span class="role-cell-count">{{ profile.roles[r] }}</span>
+                <span class="role-cell-label">{{ ROLE_LABEL[r] }}</span>
+            </div>
+            {% endfor %}
+        </div>
+        <p class="role-strip-hint">Summe Rollen-Belegungen: {{ profile.role_total }}.</p>
+    </section>
+    {% endif %}
+
+    {% if profile.children %}
+    <section class="org-children" aria-label="Untergeordnete Organisationen">
+        <h2 class="section-head">Untergeordnete Organisationen
+            <span class="section-head-count">{{ profile.children|length }}</span>
+        </h2>
+        <ul class="child-list">
+            {% for c in profile.children %}
+            <li class="child-item">
+                {% if c.released %}
+                <a class="child-link" href="{{ root_path }}/register/orgs/{{ c.id }}.html">{{ c.name }}</a>
+                {% else %}
+                <span class="child-plain" data-hint="Nicht im freigegebenen Korpus belegt">{{ c.name }}</span>
+                {% endif %}
+            </li>
+            {% endfor %}
+        </ul>
+    </section>
+    {% endif %}
 
     {% set rel_total = profile.relations.occ|length + profile.relations.title_ref|length %}
 
@@ -96,7 +158,13 @@
                 <span class="rel-block-count">{{ entries|length }}</span>
                 <span class="rel-block-hint">{{ REL_HINT[rel_type] }}</span>
             </header>
-            <table class="rel-table">
+            {% if entries|length > 25 %}
+            <div class="table-filter">
+                <input type="search" class="table-filter-input" data-target="rel" placeholder="In der Tabelle filtern&hellip;" aria-label="In der Tabelle filtern">
+                <span class="table-filter-status"></span>
+            </div>
+            {% endif %}
+            <table class="rel-table"{% if entries|length > 50 %} data-truncate-at="50"{% endif %}>
                 <thead>
                     <tr>
                         <th scope="col" class="rel-col-other">Person</th>
@@ -108,7 +176,7 @@
                 {% for e in entries %}
                     <tr>
                         <td class="rel-col-other">
-                            {% if e.person_id and e.person_id in linked_persons %}
+                            {% if e.person_id and e.person_id in (linked_persons or []) %}
                                 <a class="rel-other-link" href="{{ root_path }}/register/persons/{{ e.person_id }}.html">{{ e.person_name }}</a>
                             {% else %}
                                 <span class="rel-other-plain">{{ e.person_name }}</span>
@@ -136,12 +204,20 @@
 
     <section class="person-sources" aria-label="Quellen mit Nennung">
         <h2 class="section-head">Quellen mit Nennung</h2>
-        <table class="person-source-table">
+        {% if profile.sources|length > 25 %}
+        <div class="table-filter">
+            <input type="search" class="table-filter-input" data-target="src" placeholder="In den Quellen filtern&hellip;" aria-label="In den Quellen filtern">
+            <span class="table-filter-status"></span>
+        </div>
+        {% endif %}
+        <table class="person-source-table"{% if profile.sources|length > 50 %} data-truncate-at="50"{% endif %}>
             <thead>
                 <tr>
                     <th scope="col" class="src-col-idno">Nr.</th>
                     <th scope="col" class="src-col-date">Datum</th>
                     <th scope="col" class="src-col-corpus">Quellenkorpus</th>
+                    <th scope="col" class="src-col-label">Bezeichnung</th>
+                    <th scope="col" class="src-col-role">Rolle</th>
                     <th scope="col" class="src-col-regest">Regest</th>
                 </tr>
             </thead>
@@ -151,6 +227,11 @@
                     <td class="src-col-idno"><a href="{{ root_path }}/{{ d.url }}">{{ d.idno }}</a></td>
                     <td class="src-col-date">{{ d.date_display or '-' }}</td>
                     <td class="src-col-corpus">{{ d.collection_label }}</td>
+                    <td class="src-col-label"><em>{{ d.label or '-' }}</em></td>
+                    <td class="src-col-role">
+                        {% for r in d.roles %}<span class="role-chip role-chip-{{ r.key }}">{{ r.label }}</span>{% endfor %}
+                        {% if not d.roles %}-{% endif %}
+                    </td>
                     <td class="src-col-regest">{{ d.regest or '-' }}</td>
                 </tr>
             {% endfor %}
@@ -162,7 +243,8 @@
 {% endblock %}
 
 {% block scripts %}
-<script src="{{ root_path }}/static/js/tooltips.js?v={{ asset_v }}"></script>
+<script src="{{ root_path }}/static/js/profile.js?v={{ asset_v }}"></script>
+<script src="{{ root_path }}/static/js/basket-mount.js?v={{ asset_v }}"></script>
 {% endblock %}
 
 {% block footer_info %}{{ profile.name }} &middot; {{ profile.id }}{% endblock %}

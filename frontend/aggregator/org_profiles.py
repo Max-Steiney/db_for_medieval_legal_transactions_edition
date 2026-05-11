@@ -1,53 +1,50 @@
-"""Organisation profiles: master data + sources + roles + relations per org.
+"""Organisation profiles: master data + sources + roles + relations.
 
-Counterpart to ``person_profiles.py`` for ``org__`` entities. Built from the
-same released-only CSV subset.
-
-Input:
-- ``reverse_index`` (built in build/__init__.py): per entity ID, the
-  released source list (url, idno, date_display, ...).
-
-Output: a dict ``{org__id: profile}`` for orgs with at least one released
-mention. The HTMLs are rendered directly in the build step
-``_build_org_profiles``.
-
-Relations involving the org:
-- occ        (person->org, occupation)     — inverse of person profile
-- title_ref  (person->org, title)          — inverse of person profile
-- events     (org as recipient/issuer/...) from orgs_in_events.csv
+Counterpart to ``person_profiles.py`` for ``org__`` entities. Adds the
+hierarchical parent/child relation derived from ``organisations.csv``'s
+``org_key`` column (404 children grouped under 137 parents in the
+released set).
 """
 
 from collections import Counter, defaultdict
 
 from ._shared import _cached_csv
+from ._profile_labels import (
+    split_pipe_names, split_authorities, label_org_type,
+)
+from ._profile_enrichment import (
+    file_key_lookup,
+    per_doc_label_orgs,
+    per_doc_roles_orgs,
+    enrich_sources,
+    ROLE_LABEL_ORG,
+)
 
 
-# Event roles for orgs mirror the person side. orgs_in_events.csv yields
-# the same `event_role` vocabulary.
 _ROLES = ("issuer", "recipient", "witness", "other")
 
 
 def _load_org_stammdaten():
-    """Load organisations.csv -> {id: master-data fields}."""
+    """Load organisations.csv -> {id: master-data}."""
     out = {}
     for r in _cached_csv("organisations.csv"):
         oid = r.get("id", "")
         if not oid:
             continue
         out[oid] = {
-            "name":       (r.get("name_reg") or r.get("name_orig") or oid).strip(),
+            "name_raw":   (r.get("name_reg") or r.get("name_orig") or oid).strip(),
             "name_orig":  (r.get("name_orig") or "").strip(),
             "type":       (r.get("type") or "").strip(),
             "observance": (r.get("observance") or "").strip(),
             "authority":  (r.get("authority") or "").strip(),
             "sub":        (r.get("sub") or "").strip(),
             "place_key":  (r.get("place_key") or "").strip(),
+            "org_key":    (r.get("org_key") or "").strip(),
         }
     return out
 
 
 def _load_person_names():
-    """Load persons.csv -> {pe__id: display name}."""
     out = {}
     for r in _cached_csv("persons.csv"):
         pid = r.get("id", "")
@@ -61,21 +58,22 @@ def _load_person_names():
 
 
 def _load_place_names():
-    """Load places.csv -> {pl__id: display name}."""
     out = {}
     for r in _cached_csv("places.csv"):
         pid = r.get("id", "")
         name = (r.get("name_reg") or r.get("name_orig") or pid).strip()
         if pid:
-            out[pid] = name or pid
+            out[pid] = name.split("|", 1)[0].strip() or pid
     return out
 
 
-def _file_to_source_lookup(reverse_index):
-    """file_key -> source-meta dict via filenames.csv + reverse_index.
+def _org_display_name(stamm_row):
+    """Pre-pipe main name. Falls back to the raw value when no pipe is set."""
+    main, _ = split_pipe_names(stamm_row.get("name_raw", ""))
+    return main or stamm_row.get("name_raw", "")
 
-    Same bridge as person_profiles._file_to_source_lookup.
-    """
+
+def _file_to_source_lookup(reverse_index):
     by_cp_idno = {}
     for docs in reverse_index.values():
         for d in docs:
@@ -110,7 +108,6 @@ def _file_to_source_lookup(reverse_index):
 
 
 def _aggregate_event_roles_per_org():
-    """orgs_in_events.csv -> {org_key: {issuer:n, recipient:n, ...}}."""
     out = defaultdict(lambda: Counter())
     for r in _cached_csv("orgs_in_events.csv"):
         ok = r.get("org_key", "")
@@ -121,12 +118,6 @@ def _aggregate_event_roles_per_org():
 
 
 def _aggregate_source_labels_per_org():
-    """orgs_in_sources.csv -> {org_key: [unique source_text labels]}.
-
-    The pipeline records the form of the org mention in
-    ``source_text`` (e.g. an inline form like ‚Bürgerschaft zu Wien‘),
-    grouped by frequency.
-    """
     counters = defaultdict(Counter)
     for r in _cached_csv("orgs_in_sources.csv"):
         ok = r.get("org_key", "")
@@ -135,19 +126,11 @@ def _aggregate_source_labels_per_org():
         v = (r.get("source_text") or "").strip()
         if v:
             counters[ok][v] += 1
-    out = {}
-    for ok, c in counters.items():
-        out[ok] = [t for t, _ in c.most_common()]
-    return out
+    return {ok: [t for t, _ in c.most_common()] for ok, c in counters.items()}
 
 
 def _build_person_to_org_relations(file_lookup, person_names):
-    """Load occ/title_ref CSVs and group by *org*.
-
-    Each entry per org:
-        {"label": str, "person_id": str, "person_name": str,
-         "file_key", "idno", "date_display", "url", "regest"}
-    """
+    """Load occ/title_ref CSVs and group by *org*."""
     rel = defaultdict(lambda: {"occ": [], "title_ref": []})
 
     PERSON_TO_ORG = [
@@ -178,22 +161,41 @@ def _build_person_to_org_relations(file_lookup, person_names):
     return rel
 
 
+def _build_children_index(stamm, released_org_ids):
+    """{parent_org_id: [{id, name, released}]} sorted by display name.
+
+    The full hierarchy from ``organisations.csv`` is materialised so a
+    profile can list its sub-orgs even when none of them ended up in
+    the released set. The ``released`` flag drives whether the template
+    renders a link or plain text.
+    """
+    children = defaultdict(list)
+    for oid, s in stamm.items():
+        parent = s.get("org_key", "")
+        if not parent:
+            continue
+        children[parent].append({
+            "id": oid,
+            "name": _org_display_name(s),
+            "released": oid in released_org_ids,
+        })
+    for parent in children:
+        children[parent].sort(key=lambda c: (c["name"] or "").lower())
+    return children
+
+
 def build_org_profiles(reverse_index):
     """Build ``{org__id: profile}`` for orgs with at least one released
     mention.
 
-    profile structure:
-        {
-          "id", "name", "name_orig", "type", "observance",
-          "authority", "sub", "place_key", "place_name",
-          "source_labels": [str, ...],
-          "sources":      [doc-meta...],
-          "source_count": int,
-          "active_min", "active_max": "YYYY",
-          "roles": {issuer, recipient, witness, other},
-          "role_total": int,
-          "relations": {occ: [...], title_ref: [...]},
-        }
+    profile structure additions:
+        - "name", "name_aliases"  (NEW; pipe-split from name_reg)
+        - "type_label"            (NEW; German display label)
+        - "authority_urls"        (NEW; pipe-split list of URLs)
+        - "parent_org_id" / "parent_org_name" / "parent_org_released"
+        - "children": [{id, name, released}]
+        - "role_labels", "role_total"
+        - "sources" entries enriched with "label" and "roles"
     """
     stamm = _load_org_stammdaten()
     person_names = _load_person_names()
@@ -203,6 +205,14 @@ def build_org_profiles(reverse_index):
     source_labels = _aggregate_source_labels_per_org()
     relations = _build_person_to_org_relations(file_lookup, person_names)
 
+    released_org_ids = {oid for oid, docs in reverse_index.items()
+                        if oid.startswith("org__") and docs}
+    children_index = _build_children_index(stamm, released_org_ids)
+
+    fk_lookup = file_key_lookup()
+    label_map = per_doc_label_orgs()
+    role_map = per_doc_roles_orgs()
+
     profiles = {}
     for oid, docs in reverse_index.items():
         if not oid.startswith("org__"):
@@ -210,30 +220,50 @@ def build_org_profiles(reverse_index):
         if not docs:
             continue
         s = stamm.get(oid, {})
+        name_main, name_aliases = split_pipe_names(s.get("name_raw", ""))
         years = [d.get("date_iso", "")[:4] for d in docs
                  if d.get("date_iso", "")[:4].isdigit()]
         roles = org_roles.get(oid, Counter())
         roles_dict = {r: roles.get(r, 0) for r in _ROLES}
         rels = relations.get(oid, {"occ": [], "title_ref": []})
 
+        parent_id = s.get("org_key", "")
+        parent_name = ""
+        parent_released = False
+        if parent_id:
+            parent_stamm = stamm.get(parent_id, {})
+            parent_name = (_org_display_name(parent_stamm)
+                           if parent_stamm else parent_id)
+            parent_released = parent_id in released_org_ids
+
+        sources = enrich_sources(docs, oid, fk_lookup, label_map, role_map,
+                                 ROLE_LABEL_ORG)
+
         profiles[oid] = {
             "id": oid,
-            "name":       s.get("name", oid),
-            "name_orig":  s.get("name_orig", ""),
-            "type":       s.get("type", ""),
-            "observance": s.get("observance", ""),
-            "authority":  s.get("authority", ""),
-            "sub":        s.get("sub", ""),
-            "place_key":  s.get("place_key", ""),
-            "place_name": place_names.get(s.get("place_key", ""), ""),
+            "name":         name_main or s.get("name_raw", oid),
+            "name_aliases": name_aliases,
+            "name_orig":    s.get("name_orig", ""),
+            "type":         s.get("type", ""),
+            "type_label":   label_org_type(s.get("type", "")),
+            "observance":   s.get("observance", ""),
+            "authority_urls": split_authorities(s.get("authority", "")),
+            "sub":          s.get("sub", ""),
+            "place_key":    s.get("place_key", ""),
+            "place_name":   place_names.get(s.get("place_key", ""), ""),
+            "parent_org_id":       parent_id,
+            "parent_org_name":     parent_name,
+            "parent_org_released": parent_released,
+            "children":     children_index.get(oid, []),
             "source_labels": source_labels.get(oid, []),
-            "sources":      docs,
-            "source_count": len(docs),
-            "active_min":   min(years) if years else "",
-            "active_max":   max(years) if years else "",
-            "roles":        roles_dict,
-            "role_total":   sum(roles_dict.values()),
-            "relations":    rels,
+            "sources":       sources,
+            "source_count":  len(docs),
+            "active_min":    min(years) if years else "",
+            "active_max":    max(years) if years else "",
+            "roles":         roles_dict,
+            "role_total":    sum(roles_dict.values()),
+            "role_labels":   ROLE_LABEL_ORG,
+            "relations":     rels,
         }
 
     return profiles

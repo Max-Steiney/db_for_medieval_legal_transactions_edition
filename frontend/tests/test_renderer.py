@@ -76,7 +76,7 @@ def test_rs_person_orphaned_ref():
     body = tei('<p><rs type="person" ref="pe__unknown">Jemand</rs></p>')
     html = render_document(body, EMPTY_REGISTERS)
     finder = parse_html(html)
-    spans = finder.find_by_attr("title", "pe__unknown")
+    spans = finder.find_by_attr("data-hint", "pe__unknown")
     assert len(spans) == 1
 
 
@@ -334,13 +334,16 @@ def test_rs_org_renders_as_link():
     assert 'href="./register/orgs/org__kloster.html"' in html
 
 
-def test_rs_place_renders_as_link():
-    """Known place ref renders as <a> pointing to the place detail page."""
+def test_rs_place_renders_as_span():
+    """Known place ref renders as <span> (no register/detail page for
+    places; annotation kept but not linked)."""
     places = {"pl__wien": {"name": "Wien", "type": "settlement", "lat": "", "lng": ""}}
     body = tei('<p><rs type="place" ref="pl__wien">Wien</rs></p>')
     html = render_document(body, ({}, {}, places), root_path=".")
-    assert "<a " in html
-    assert 'href="./register/places/pl__wien.html"' in html
+    assert "<span " in html
+    assert "<a " not in html
+    assert 'register/places' not in html
+    assert 'data-ref="pl__wien"' in html
 
 
 def test_orphaned_ref_renders_as_span():

@@ -11,7 +11,6 @@ from frontend.build import (
     _extract_entity_refs,
     _person_search_data,
     _org_search_data,
-    _place_search_data,
     _build_register_json,
 )
 from frontend.build._pages import _short_collection_label
@@ -212,22 +211,6 @@ class TestSearchDataStructure:
         assert data[0]["tp"] == "Kloster"
         assert "u" not in data[0]
 
-    def test_place_search_data_has_doc_count(self):
-        places = {"pl__test": {"name": "Wien", "type": "settlement",
-                               "lat": "48.20", "lng": "16.36"}}
-        reverse = {"pl__test": [
-            {"url": "a.html", "idno": "1",
-             "date_iso": "1287-01-01", "date_display": "1287",
-             "collection_path": "QGW/Vienna_1177-1414_ready",
-             "collection_label": "QGW", "regest": ""},
-        ]}
-        data = _place_search_data(places, reverse)
-        assert data[0]["dc"] == 1
-        assert data[0]["tp"] == "settlement"
-        assert data[0]["lat"] == "48.20"
-        assert "u" not in data[0]
-
-
 class TestRegisterJson:
     """Test that _build_register_json writes correct JSON files."""
 
@@ -252,7 +235,12 @@ class TestRegisterJson:
                  "date_display": "1301", "collection_label": "QGW",
                  "regest": "Org regest"},
             ],
-            "pl__wien": [],
+            # pl__ keys are ignored — places have no register JSON.
+            "pl__wien": [
+                {"url": "documents/200.html", "idno": "200",
+                 "date_display": "1301", "collection_label": "QGW",
+                 "regest": ""},
+            ],
         }
         _build_register_json(reverse_index)
 
@@ -262,22 +250,8 @@ class TestRegisterJson:
 
         assert persons_json.exists()
         assert orgs_json.exists()
-        assert places_json.exists()
+        assert not places_json.exists()
 
         data = json.loads(persons_json.read_text(encoding="utf-8"))
         assert "pe__hans" in data
         assert data["pe__hans"][0]["i"] == "100"
-
-    def test_empty_entity_not_in_json(self, tmp_path, monkeypatch):
-        from frontend.tests.conftest import patch_build_path
-        import frontend.build._pages as pages_mod
-        patch_build_path(monkeypatch, "DOCS_DIR", tmp_path)
-        monkeypatch.setattr(pages_mod, "_released_person_keys", lambda: set())
-
-        _build_register_json({"pl__wien": []})
-        data = json.loads(
-            (tmp_path / "register" / "places.json").read_text(encoding="utf-8")
-        )
-        # Empty doc list still gets written (0 docs)
-        assert "pl__wien" in data
-        assert data["pl__wien"] == []

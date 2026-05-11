@@ -385,46 +385,19 @@ def _org_search_data(orgs, reverse_index):
     return data
 
 
-def _place_search_data(places, reverse_index):
-    """Compact JSON list for the places register page.
-
-    Shape parallels orgs (incl. activity range and corpora); ``lat`` and
-    ``lng`` stay in the row for the optional geo-text display.
-    """
-    data = []
-    for xml_id, p in places.items():
-        docs = reverse_index.get(xml_id, [])
-        if not docs:
-            continue
-        am, ax, corpora, i0, cl0 = _entity_doc_aggregates(docs)
-        data.append({
-            "id": xml_id,
-            "n":  p["name"],
-            "tp": p["type"],
-            "lat": p["lat"],
-            "lng": p["lng"],
-            "dc": len(docs),
-            "am": am,
-            "ax": ax,
-            "co": corpora,
-            "i0": i0,
-            "cl0": cl0,
-        })
-    data.sort(key=lambda x: x["n"].lower())
-    return data
-
-
 def _build_register_list_pages(persons, orgs, places, reverse_index, env):
-    """Build the persons, organisations and places register pages.
+    """Build the persons and organisations register pages.
 
     Each register reads from its own search-data list (persons_search.json,
-    orgs_search.json, places_search.json). All three pages share the same
-    template ``register_list.html``; sidebar facets are toggled by
-    ``register_type``.
+    orgs_search.json). Both pages share the same template
+    ``register_list.html``; sidebar facets are toggled by
+    ``register_type``. Places are no register page — the underlying
+    master data is not yet consolidated. ``places`` is kept in the
+    signature so callers stay stable; the dict is not consumed here.
     """
+    del places  # places register intentionally omitted
     _build_persons_register(persons, reverse_index, env)
     _build_orgs_register(orgs, reverse_index, env)
-    _build_places_register(places, reverse_index, env)
 
 
 def _build_persons_register(persons, reverse_index, env):
@@ -678,46 +651,6 @@ def _build_orgs_register(orgs, reverse_index, env):
     print(f"  Register list: register/orgs.html ({len(search_data)} entries)")
 
 
-def _build_places_register(places, reverse_index, env):
-    """Places register page + places_search.json.
-
-    Sidebar parallels orgs (corpus, timeline, type). The ``lat`` / ``lng``
-    columns travel along in the search-data but the list page does not
-    render a map (decision: textual geo only).
-    """
-    template = env.get_template("register_list.html")
-    search_data = _place_search_data(places, reverse_index)
-
-    DATA_DIR.mkdir(parents=True, exist_ok=True)
-    (DATA_DIR / "places_search.json").write_text(
-        json.dumps(search_data, ensure_ascii=False), encoding="utf-8"
-    )
-
-    type_data = _type_chip_data(search_data)
-    corpora_data = _corpus_chip_data(search_data)
-    timeline_data, max_count, min_year, max_year = _timeline_buckets(search_data)
-
-    html = template.render(
-        register_type="places",
-        register_label="Orte",
-        total_count=len(search_data),
-        sex_data=[],
-        role_data=[],
-        type_data=type_data,
-        corpora_data=corpora_data,
-        timeline_data=timeline_data,
-        max_count=max_count,
-        min_year=min_year,
-        max_year=max_year,
-        root_path="..",
-    )
-
-    out = DOCS_DIR / "register" / "places.html"
-    out.parent.mkdir(parents=True, exist_ok=True)
-    out.write_text(html, encoding="utf-8")
-    print(f"  Register list: register/places.html ({len(search_data)} entries)")
-
-
 def _build_register_json(reverse_index):
     """Write reverse-index data as JSON files for client-side detail views.
 
@@ -732,7 +665,7 @@ def _build_register_json(reverse_index):
 
     released_persons = _released_person_keys()
 
-    buckets = {"persons": {}, "organisations": {}, "places": {}}
+    buckets = {"persons": {}, "organisations": {}}
     for eid, docs in reverse_index.items():
         if eid.startswith("pe__"):
             if eid not in released_persons:
@@ -740,9 +673,9 @@ def _build_register_json(reverse_index):
             bucket = "persons"
         elif eid.startswith("org__"):
             bucket = "organisations"
-        elif eid.startswith("pl__"):
-            bucket = "places"
         else:
+            # pl__ and anything else: no register JSON; place register
+            # has been removed.
             continue
         buckets[bucket][eid] = [
             {"u": d["url"], "i": d["idno"], "d": d["date_display"],
@@ -761,17 +694,17 @@ def _build_register_json(reverse_index):
 # ---------------------------------------------------------------------------
 
 
-def _build_person_profiles(reverse_index, env, linked_orgs=None,
-                           linked_places=None):
+def _build_person_profiles(reverse_index, env, linked_orgs=None):
     """Render one profile page per person in the released corpora.
 
     Source: ``frontend.aggregator.build_person_profiles`` returns the
     fully aggregated profile per pe__-id (master data, sources, roles,
     relations). Here the list is rendered into individual HTML files.
 
-    ``linked_orgs`` and ``linked_places`` carry the IDs that have a
-    dedicated detail page so the ``occ`` / ``title_ref`` rows can link
-    to the org profile when one was built.
+    ``linked_orgs`` carries the IDs that have a dedicated detail page so
+    the ``occ`` / ``title_ref`` rows can link to the org profile when
+    one was built. Places have no detail page; place references in
+    owner/tenant rows render as plain text.
     """
     from frontend.aggregator import build_person_profiles
 
@@ -786,14 +719,12 @@ def _build_person_profiles(reverse_index, env, linked_orgs=None,
 
     linked_persons = set(profiles.keys())
     linked_orgs = linked_orgs or set()
-    linked_places = linked_places or set()
 
     for pid, profile in profiles.items():
         html = template.render(
             profile=profile,
             linked_persons=linked_persons,
             linked_orgs=linked_orgs,
-            linked_places=linked_places,
             root_path="../..",
         )
         (out_dir / f"{pid}.html").write_text(html, encoding="utf-8")
@@ -807,15 +738,15 @@ def _build_person_profiles(reverse_index, env, linked_orgs=None,
 # ---------------------------------------------------------------------------
 
 
-def _build_org_profiles(reverse_index, env, linked_persons=None,
-                        linked_places=None):
+def _build_org_profiles(reverse_index, env, linked_persons=None):
     """Render one profile page per organisation with a released mention.
 
     Mirrors ``_build_person_profiles``. The aggregator
     ``build_org_profiles`` returns the per-org dict (master data,
     sources, event roles, person-side relations occ / title_ref).
     Returns the set of org IDs with a profile (used by other builders
-    to gate org-links).
+    to gate org-links). Places have no detail page; the ``Standort``
+    label on the org profile renders as plain text.
     """
     from frontend.aggregator import build_org_profiles
 
@@ -830,62 +761,18 @@ def _build_org_profiles(reverse_index, env, linked_persons=None,
 
     linked_orgs = set(profiles.keys())
     linked_persons = linked_persons or set()
-    linked_places = linked_places or set()
 
     for oid, profile in profiles.items():
         html = template.render(
             profile=profile,
             linked_orgs=linked_orgs,
             linked_persons=linked_persons,
-            linked_places=linked_places,
             root_path="../..",
         )
         (out_dir / f"{oid}.html").write_text(html, encoding="utf-8")
 
     print(f"  Org profiles: {len(profiles)} Profile in register/orgs/")
     return linked_orgs
-
-
-# ---------------------------------------------------------------------------
-# Place-Profile (docs/register/places/<pl__id>.html)
-# ---------------------------------------------------------------------------
-
-
-def _build_place_profiles(reverse_index, env, linked_persons=None,
-                          linked_orgs=None):
-    """Render one profile page per place with a released mention.
-
-    Mirrors ``_build_person_profiles``. The aggregator
-    ``build_place_profiles`` returns the per-place dict (master data,
-    sources, topo / owner / tenant relations).
-    """
-    from frontend.aggregator import build_place_profiles
-
-    profiles = build_place_profiles(reverse_index)
-    if not profiles:
-        print("  Place profiles: keine Orte — skip")
-        return set()
-
-    template = env.get_template("place.html")
-    out_dir = DOCS_DIR / "register" / "places"
-    out_dir.mkdir(parents=True, exist_ok=True)
-
-    linked_places = set(profiles.keys())
-    linked_persons = linked_persons or set()
-    linked_orgs = linked_orgs or set()
-
-    for pid, profile in profiles.items():
-        html = template.render(
-            profile=profile,
-            linked_places=linked_places,
-            linked_persons=linked_persons,
-            linked_orgs=linked_orgs,
-            root_path="../..",
-        )
-        (out_dir / f"{pid}.html").write_text(html, encoding="utf-8")
-
-    print(f"  Place profiles: {len(profiles)} Profile in register/places/")
-    return linked_places
 
 
 # ---------------------------------------------------------------------------
@@ -1019,7 +906,7 @@ def _build_exploration(all_metadata, persons, env):
 
 # ---------------------------------------------------------------------------
 # Knowledge basket page (client-side collection, persisted in localStorage).
-# The UI label "Wissenskorb" stays German; only code-side symbols use English.
+# UI label "Datenkorb" stays German; code-side symbols use English ("basket").
 # ---------------------------------------------------------------------------
 
 
