@@ -53,11 +53,16 @@
         display: flex;
     }
 
-    .nav-links a,
-    .nav-links .nav-dropdown-trigger {
+    .nav-links .nav-item {
         padding: var(--space-sm) var(--space-lg);
         width: 100%;
+        justify-content: flex-start;
         text-align: left;
+    }
+
+    .nav-links .nav-dropdown {
+        display: block;
+        width: 100%;
     }
 
     .nav-inner {

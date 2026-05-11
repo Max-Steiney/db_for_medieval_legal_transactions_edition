@@ -9,15 +9,15 @@
     <title>Glossar — Datenbank</title>
     <link rel="preload" as="font" type="font/woff2" crossorigin
           href="../static/fonts/inter-400-latin.woff2">
-    <link rel="stylesheet" href="../static/css/fonts.css?v=20260503130025">
-    <link rel="stylesheet" href="../static/css/tokens.css?v=20260503130025">
-    <link rel="stylesheet" href="../static/css/base.css?v=20260503130025">
-    <link rel="stylesheet" href="../static/css/components.css?v=20260503130025">
-    <link rel="stylesheet" href="../static/css/responsive.css?v=20260503130025">
-    <link rel="stylesheet" href="../static/css/print.css?v=20260503130025">
-    <link rel="stylesheet" href="../static/css/provenance.css?v=20260503130025">
+    <link rel="stylesheet" href="../static/css/fonts.css?v=20260511092300">
+    <link rel="stylesheet" href="../static/css/tokens.css?v=20260511092300">
+    <link rel="stylesheet" href="../static/css/base.css?v=20260511092300">
+    <link rel="stylesheet" href="../static/css/components.css?v=20260511092300">
+    <link rel="stylesheet" href="../static/css/responsive.css?v=20260511092300">
+    <link rel="stylesheet" href="../static/css/print.css?v=20260511092300">
+    <link rel="stylesheet" href="../static/css/provenance.css?v=20260511092300">
     
-<link rel="stylesheet" href="../static/css/content.css?v=20260503130025">
+<link rel="stylesheet" href="../static/css/content.css?v=20260511092300">
 
 </head>
 <body data-root-path=".."
@@ -34,37 +34,58 @@
             <button class="nav-hamburger" id="nav-hamburger" aria-label="Menü öffnen" aria-expanded="false">
                 <span></span><span></span><span></span>
             </button>
+            
+            
             <div class="nav-links" id="nav-links">
-                <a href="../documents.html">Quellen</a>
-                <div class="nav-dropdown">
-                    <button class="nav-dropdown-trigger" aria-expanded="false" aria-haspopup="true">Register <span class="nav-dropdown-arrow">&#x25BE;</span></button>
-                    <div class="nav-dropdown-menu">
-                        <a href="../register/persons.html">Personen</a>
-                    </div>
-                </div>
-                <div class="nav-dropdown">
-                    <button class="nav-dropdown-trigger" aria-expanded="false" aria-haspopup="true">Analyse <span class="nav-dropdown-arrow">&#x25BE;</span></button>
-                    <div class="nav-dropdown-menu">
-                        <a href="../analysis/auswertungen.html">Auswertungen</a>
-                        <a href="../analysis/index.html">Abfragen</a>
-                    </div>
-                </div>
-                <div class="nav-dropdown">
-                    <button class="nav-dropdown-trigger" aria-expanded="false" aria-haspopup="true">Exploration <span class="nav-dropdown-arrow">&#x25BE;</span></button>
-                    <div class="nav-dropdown-menu">
-                        <a href="../exploration/zeitstrom.html">Zeitstrom</a>
-                        <a href="../exploration/personennetzwerk.html">Personennetzwerk</a>
-                    </div>
-                </div>
-                <div class="nav-dropdown">
-                    <button class="nav-dropdown-trigger" aria-expanded="false" aria-haspopup="true">Projekt <span class="nav-dropdown-arrow">&#x25BE;</span></button>
-                    <div class="nav-dropdown-menu">
-                        <a href="../project/about.html">&Uuml;ber das Projekt</a>
-                        <a href="../project/edition-guidelines.html">Editionsrichtlinien</a>
-                        <a href="../project/glossary.html">Glossar</a>
-                        <a href="../impressum.html">Impressum</a>
-                    </div>
-                </div>
+                
+<a class="nav-item" href="../documents.html">Quellen</a>
+
+<div class="nav-dropdown">
+    <button class="nav-item nav-dropdown-trigger" aria-expanded="false" aria-haspopup="true">Register <span class="nav-dropdown-arrow">&#x25BE;</span></button>
+    <div class="nav-dropdown-menu">
+        
+        <a href="../register/persons.html">Personen</a>
+        
+    </div>
+</div>
+
+<div class="nav-dropdown">
+    <button class="nav-item nav-dropdown-trigger" aria-expanded="false" aria-haspopup="true">Analyse <span class="nav-dropdown-arrow">&#x25BE;</span></button>
+    <div class="nav-dropdown-menu">
+        
+        <a href="../analysis/auswertungen.html">Auswertungen</a>
+        
+        <a href="../analysis/index.html">Abfragen</a>
+        
+    </div>
+</div>
+
+<div class="nav-dropdown">
+    <button class="nav-item nav-dropdown-trigger" aria-expanded="false" aria-haspopup="true">Exploration <span class="nav-dropdown-arrow">&#x25BE;</span></button>
+    <div class="nav-dropdown-menu">
+        
+        <a href="../exploration/zeitstrom.html">Zeitstrom</a>
+        
+        <a href="../exploration/personennetzwerk.html">Personennetzwerk</a>
+        
+    </div>
+</div>
+
+<div class="nav-dropdown">
+    <button class="nav-item nav-dropdown-trigger" aria-expanded="false" aria-haspopup="true">Projekt <span class="nav-dropdown-arrow">&#x25BE;</span></button>
+    <div class="nav-dropdown-menu">
+        
+        <a href="../project/about.html">Über das Projekt</a>
+        
+        <a href="../project/edition-guidelines.html">Editionsrichtlinien</a>
+        
+        <a href="../project/glossary.html">Glossar</a>
+        
+        <a href="../impressum.html">Impressum</a>
+        
+    </div>
+</div>
+
                 <a href="../korb.html" class="nav-korb" aria-label="Wissenskorb">
                     <svg width="18" height="18" viewBox="0 0 18 18" fill="none" aria-hidden="true">
                         <path d="M3 5h12l-1.2 8.5a1 1 0 0 1-1 .85H5.2a1 1 0 0 1-1-.85L3 5z"
@@ -114,8 +135,25 @@
             </div>
         </nav>
         <div class="guidelines-body">
-            <h1 id="glossar">Glossar<a class="headerlink" href="#glossar" title="Permanent link">&para;</a></h1>
-<p>Kanonische Definitionen aller Fachbegriffe der Edition. Quelle für Tooltips und die Glossar-Seite im UI. Alphabetisch sortiert. Pro Eintrag Definition, Abgrenzung und, wo nötig, eine Notiz zu häufigen Verwechslungen.</p>
+            <hr />
+<p>title: Glossar
+project:
+  name: Stadt und Gemeinschaft Wien
+  repository: https://github.com/chpollin/db_for_medieval_legal_transactions_edition
+status: active
+language: de
+version: 0.1
+created: 2026-02-19
+updated: 2026-05-09
+authors: [Christopher Pollin]
+generated-with: Claude Code
+method:
+  name: Promptotyping
+  url: https://lisa.gerda-henkel-stiftung.de/digitale_geschichte_pollin
+related: [index, data, requirements, decisions]</p>
+<hr />
+<h1 id="glossar">Glossar<a class="headerlink" href="#glossar" title="Permanent link">&para;</a></h1>
+<p>Kanonische Definitionen aller Fachbegriffe der Edition. Quelle für Tooltips und die Glossar-Seite im UI. Als eigenständiges Dokument geführt — die Konvention erlaubt diese Auslagerung aus dem index bei mehr als 15 Begriffen oder wenn das Glossar maschinen-konsumiert wird; hier trifft beides zu (zwölf Begriffe plus UI-Tooltip-Quelle). Alphabetisch sortiert. Pro Eintrag Definition, Abgrenzung und, wo nötig, eine Notiz zu häufigen Verwechslungen.</p>
 <h2 id="erschlieungsform">Erschließungsform<a class="headerlink" href="#erschlieungsform" title="Permanent link">&para;</a></h2>
 <p>Die Form, in der eine Quelle in der Edition zugänglich gemacht wird: als <a href="#regest">Regest</a> mit <a href="#faksimile">Faksimile</a> oder als edierter <a href="#volltext">Volltext</a>. Die Erschließungsform bestimmt, welche Art von Aussage eine Quelle stützt. Aus einem Volltext lassen sich textgenaue Belege ziehen; ein Regest stützt nur die zusammengefasste Aussage, das Faksimile dient der Verifikation am Bild.</p>
 <p>Verwendet in Erschließungsformen.</p>
@@ -194,7 +232,7 @@
     </div>
 
     <footer class="guidelines-footer">
-        <p>Zuletzt aktualisiert: 3. Mai 2026</p>
+        <p>Zuletzt aktualisiert: 11. Mai 2026</p>
     </footer>
 </article>
 
@@ -205,7 +243,7 @@
             <div class="footer-col">
                 <p class="footer-project">Stadt und Gemeinschaft Wien &mdash; Datenbank</p>
                 <p>Tr&auml;gerprojekt &raquo;Stadt und Gemeinschaft&laquo; (Universit&auml;t Wien)</p>
-                <p class="footer-meta">Datenstand: 30. April 2026</p>
+                <p class="footer-meta">Datenstand: 9. Mai 2026</p>
             </div>
             <div class="footer-col footer-col-right">
                 <p>Technische Umsetzung: <a href="https://dhcraft.org" class="footer-link">Digital Humanities Craft OG</a></p>
@@ -214,11 +252,11 @@
         </div>
     </footer>
 
-    <script src="../static/js/core.js?v=20260503130025"></script>
-    <script src="../static/js/provenance.js?v=20260503130025"></script>
-    <script src="../static/js/wissenskorb.js?v=20260503130025"></script>
+    <script src="../static/js/core.js?v=20260511092300"></script>
+    <script src="../static/js/provenance.js?v=20260511092300"></script>
+    <script src="../static/js/wissenskorb.js?v=20260511092300"></script>
     
-<script src="../static/js/content.js?v=20260503130025"></script>
+<script src="../static/js/content.js?v=20260511092300"></script>
 
 </body>
 </html>

@@ -1,5 +1,25 @@
 {# Reusable UI components for the digital edition templates #}
 
+{# Top-Navigation — Single Source of Truth.
+   Beide Item-Formen (Link, Dropdown) liefern dieselbe Outer-Box
+   (`.nav-item`), damit die Flex-Children in `.nav-links` baseline-gleich
+   sitzen. Aktive-Seite-Markierung uebernimmt core.js clientseitig anhand
+   von location.pathname (siehe initNavActive). #}
+{% macro nav_link(label, href) %}
+<a class="nav-item" href="{{ href }}">{{ label }}</a>
+{% endmacro %}
+
+{% macro nav_dropdown(label, entries) %}
+<div class="nav-dropdown">
+    <button class="nav-item nav-dropdown-trigger" aria-expanded="false" aria-haspopup="true">{{ label }} <span class="nav-dropdown-arrow">&#x25BE;</span></button>
+    <div class="nav-dropdown-menu">
+        {% for it in entries %}
+        <a href="{{ it.href }}">{{ it.label }}</a>
+        {% endfor %}
+    </div>
+</div>
+{% endmacro %}
+
 {# Previous/next document navigation — Icon-Buttons auf Toolbar-Hoehe.
    Nur Inline-Variante in der Toolbar-Controls-Sektion; einen unteren
    Pager liefert das Detail-Layout nicht mehr. SVG-Icons aus dem

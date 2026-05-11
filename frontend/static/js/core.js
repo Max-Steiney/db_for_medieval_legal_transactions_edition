@@ -103,12 +103,61 @@ let EdCore = (function() {
 
 
     /* ------------------------------------------------------------------
+       Active-Page-Markierung in der Top-Nav
+       Markiert den passenden Top-Level-Eintrag anhand von
+       location.pathname. Top-Level-Links direkt; Dropdown-Wrapper
+       erhaelt `is-current`, wenn eine Sub-Seite die aktive ist.
+       Rein clientseitig, damit der Build-Code unveraendert bleibt.
+       ------------------------------------------------------------------ */
+
+    function initNavActive() {
+        let here = (window.location.pathname || '').replace(/\/+$/, '/index.html');
+        if (here.endsWith('/')) here += 'index.html';
+
+        let items = document.querySelectorAll('.nav-links .nav-item');
+        items.forEach(function(item) {
+            // Direkter Link
+            if (item.tagName === 'A') {
+                let href = item.getAttribute('href') || '';
+                if (href && here.endsWith(normalizeNavHref(href))) {
+                    item.setAttribute('aria-current', 'page');
+                }
+                return;
+            }
+            // Dropdown-Trigger: pruefe Sub-Links
+            let dd = item.closest('.nav-dropdown');
+            if (!dd) return;
+            let subs = dd.querySelectorAll('.nav-dropdown-menu a');
+            for (let i = 0; i < subs.length; i++) {
+                let h = subs[i].getAttribute('href') || '';
+                if (h && here.endsWith(normalizeNavHref(h))) {
+                    dd.classList.add('is-current');
+                    subs[i].setAttribute('aria-current', 'page');
+                    break;
+                }
+            }
+        });
+    }
+
+    function normalizeNavHref(href) {
+        // Schneide Hash/Query, lasse Pfad enden auf .html / index.html
+        let s = href.split('#')[0].split('?')[0];
+        if (s.endsWith('/')) s += 'index.html';
+        // root_path-Praefix (./, ../, ../../) abschneiden, sodass
+        // endsWith() den Repo-relativen Pfad vergleicht.
+        s = s.replace(/^(\.\.\/)+/, '/').replace(/^\.\//, '/');
+        return s;
+    }
+
+
+    /* ------------------------------------------------------------------
        Initialise on every page
        ------------------------------------------------------------------ */
 
     document.addEventListener('DOMContentLoaded', function() {
         initNavDropdown();
         initNavHamburger();
+        initNavActive();
     });
 
 
