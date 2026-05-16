@@ -20,6 +20,7 @@ from verification import (
     compare,
     compare_html,
     compare_tei_html,
+    inventory,
     parse_indices,
     parse_tei,
     provenance,
@@ -75,7 +76,14 @@ def main() -> int:
                         help="nur die TEI-direkt-zu-HTML-Coverage pruefen")
     parser.add_argument("--all", action="store_true",
                         help="alle drei Pfade pruefen: TEI->JSON, CSV->HTML, TEI->HTML")
+    parser.add_argument("--inventory", action="store_true",
+                        help="TEI-Inventar pro Subkorpus erzeugen (kein Vergleich,"
+                             " sondern Element-Counts mit Attribut-Werten)")
     args = parser.parse_args()
+
+    if args.inventory:
+        inventory.run_inventory()
+        return 0
 
     results = []
     if args.all:
