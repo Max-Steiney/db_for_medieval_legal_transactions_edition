@@ -5,9 +5,9 @@ project:
   repository: https://github.com/chpollin/db_for_medieval_legal_transactions_edition
 status: active
 language: de
-version: 0.3
+version: 0.5
 created: 2026-02-19
-updated: 2026-05-11
+updated: 2026-05-16
 authors: [Christopher Pollin]
 generated-with: Claude Code
 method:
@@ -20,7 +20,7 @@ related: [scholar-user-stories, decisions, ui-design, architecture]
 # Spezifikation
 
 Was das User Interface heute leistet, formuliert aus der Perspektive von
-Historiker*innen, die mit dem Quellenkorpus arbeiten. Fünf
+Historiker*innen, die mit dem Quellenkorpus arbeiten. Sieben
 zusammengefasste User-Stories tragen das Dokument, eine Sektion am Ende
 hält die Querschnitts-Eigenschaften des Werkzeugs fest. Geplante
 Erweiterungen stehen im [[journal]], nicht hier.
@@ -65,6 +65,29 @@ Erweiterungen stehen im [[journal]], nicht hier.
 * Eingelöst durch Verlinkung der Personen aus der Organisations-Seite in deren Personenprofile und zurück
 * Eingelöst durch Personennetzwerk-Darstellung der Berufs-Stand-Beziehungen als Knoten anderer Farbe
 
+## Personenkonstellationen über kombinierte Bedingungen abfragen
+
+* Rolle Prosopografin, Sozialhistorikerin oder Rechtshistoriker
+* Wunsch alle Rechtsgeschäfte finden, in denen eine spezifische Konstellation aus mehreren Personen mit jeweils eigenen Rollen und Merkmalen gleichzeitig auftritt, etwa männliche Aussteller in einer bestimmten Berufsgruppe zusammen mit weiblichen Empfängerinnen einer anderen
+* Zweck typische Akteurskonstellationen identifizieren, Hypothesen über soziale Verflechtungen prüfen, einen kuratierten Quellen-Ausschnitt für die Detailauswertung erzeugen
+* Eingelöst durch Abfrage-Sub-Seite mit beliebig vielen nummerierten Personen-Bedingungen, je mit Rolle (Aussteller, Empfänger, Zeuge oder Siegler, sonstige) und optional Geschlecht und Beruf/Tätigkeit/Amt
+* Eingelöst durch Beruf-Bedingung als Freitext mit Operator „enthält" auf der Originalschreibung des Quellenwortes, mit smarten Vorschlägen aus den häufigsten Originalvarianten samt Belegzahl
+* Eingelöst durch globale Filter Zeitraum, Quellenkorpus und Verknüpfungs-Modus, der wählt, ob alle Bedingungen im selben Rechtsgeschäft oder in derselben Quelle erfüllt sein müssen
+* Eingelöst durch live aktualisierte Treffer-Tabelle mit Datum, Quelle, Korpus, einer Pille je Personenblock und Rechtsgeschäfts-Typ; leerer Anfangszustand, solange keine Bedingung gesetzt ist
+* Eingelöst durch zitierfähigem Permalink, der die gesamte Abfrage in der URL serialisiert
+* Eingelöst durch CSV-Export der angezeigten Tabelle für die Weiterverarbeitung in externen Werkzeugen
+* Eingelöst durch Datenkorb-Anbindung pro Zeile, damit Treffer in das übergreifende Forschungskorbsystem fließen
+
+## Forschungsfragen aus der editorischen Praxis beantworten
+
+* Rolle Stadt- oder Sozialhistorikerin mit konkretem Erkenntnisinteresse
+* Wunsch eine prosopografische oder netzwerkbezogene Frage stellen und die Antwort als Zahlen plus Quellenliste bekommen, ohne SQL oder externe Tools
+* Zweck typische Forschungsfragen wie „Welche Personen einer Berufsgruppe sind untereinander verheiratet", „Welche Personen sind durch Tätigkeit an eine Institution gebunden plus deren Verwandte", „Wer steht in einem Stifter-Empfänger-Verhältnis zu einer bestimmten Organisation" direkt im UI durchspielen
+* Eingelöst durch Galerie konkreter Forschungsfragen unter `/analysis/index.html` mit Frage-Text, Antwort als Visualisierung und Provenienz
+* Eingelöst durch Sektionen auf dem Organisationsprofil, die das Stiftungsnetzwerk und die Tätigkeitsverbindungen aus dem heutigen Aggregat ableiten
+* Eingelöst durch Uhlirz-Berufsklassifikation aus `normalisation_lists/roleName_norm_matching.csv` (Spalte `Gewerbe_nach_Uhlirz_GstW`) als Filter- und Gruppierungs-Achse
+* Eingelöst durch Heirats-Begriffs-Match auf den freien Verwandtschafts-Bezeichnungen in `kin_relations_in_sources.csv`
+
 ## Quellen ausschnitthaft sammeln, teilen und exportieren
 
 * Rolle Editionsbearbeiterin oder Forscherin auf einem konkreten Projekt
@@ -78,8 +101,16 @@ Erweiterungen stehen im [[journal]], nicht hier.
 
 ## Querschnitts-Eigenschaften
 
-Eigenschaften, die für alle fünf User-Stories gleichermaßen
+Eigenschaften, die für alle sieben User-Stories gleichermaßen
 gelten und nicht einer einzelnen zugeordnet werden können.
+
+### Zitierbares Build-Profil
+
+Jede aggregierte Zahl im Frontend ist Aussage unter einer bestimmten Stufe. Vier benannte Stufen bündeln Korpus-Auswahl und Annotationsebenen als zitierbares Profil: Publikation (Stufe 1), Vergleich mit mentioned events (Stufe 2), voller `_ready`-Bestand (Stufe 3), Maximalversion (Stufe 4). Konzept in [[decisions#Stufenmodell für Korpus-Auswahl und Annotationsebenen]], CLI-Mechanik in `frontend/stages.py`.
+
+### Datenpfad-Ehrlichkeit
+
+Filterbedingungen und Achsenwerte im UI werden nur angeboten, wenn sie in den Daten tatsächlich existieren und das TEI-Annotationsmodell sie trennscharf führt. Ein Filter „Titel ist Herr" wird beispielsweise auf der Abfragen-Sub-Seite nicht angeboten, weil die TEI-Edition Honorifics und Berufe in einer einzigen Annotation zusammenführt. Eine derartige Bedingung müsste zuerst im Schwester-Repo als eigene Spalte angelegt werden. Bedingungen mit nur einer Schreibweise im Datenbestand (Originalform) werden explizit als solche gekennzeichnet, damit Forscherinnen das Trefferbild korrekt einordnen.
 
 ### Datenrobustheit und Provenienz
 
@@ -129,6 +160,6 @@ Entscheidungshintergrund in
 ## Siehe auch
 
 * [[ui-design]] wie die User-Stories gestalterisch umgesetzt sind
-* [[scholar-user-stories]] ausführliche Forschungsszenarien hinter den fünf Stories
+* [[scholar-user-stories]] ausführliche Forschungsszenarien hinter den sieben Stories
 * [[glossar]] verwendete Begriffe
 * [[journal]] chronologische Notizen zu Umsetzung und geplanten Erweiterungen

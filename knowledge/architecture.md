@@ -5,16 +5,16 @@ project:
   repository: https://github.com/chpollin/db_for_medieval_legal_transactions_edition
 status: active
 language: de
-version: 0.1
+version: 0.2
 created: 2026-02-19
-updated: 2026-05-11
+updated: 2026-05-16
 authors: [Christopher Pollin]
 generated-with: Claude Code
 method:
   name: Promptotyping
   url: https://lisa.gerda-henkel-stiftung.de/digitale_geschichte_pollin
 topics: ["[[Static Site Architecture]]", "[[TEI]]"]
-related: [data, requirements, decisions, ui-design, journal]
+related: [data, specification, decisions, ui-design, journal]
 ---
 
 # Architektur
@@ -49,6 +49,10 @@ Der Vorteil dieser Trennung ist Wiederverwendbarkeit. Mehrere Frontend-Views (Ta
 
 Eine TEI-Änderung wirkt erst, wenn alle drei Schichten neu laufen: erst Pipeline (`python -m pipeline transform` im Schwester-Repo), dann Aggregator + Build (`python -m frontend build` hier).
 
+## Stufenmodell als Build-Profil
+
+Der Frontend-Build kennt vier benannte Stufen, die Korpus-Auswahl und Annotationsebenen als zitierbares Profil bündeln (`frontend/stages.py`). CLI-Auslöser ist `--stage N` (1 bis 4); `--include-mentioned` bleibt als Alias auf Stufe 2 erhalten. Jede Stufe schreibt in ein eigenes Output-Verzeichnis (`docs/`, `docs-with-mentioned/`, `docs-full/`, `docs-max/`) und setzt davon abgeleitete Env-Vars für die Pipeline-Transformer. Konzept und vollständige Tabelle in [[decisions#Stufenmodell für Korpus-Auswahl und Annotationsebenen]]; Mapping auf den Datenbestand in [[data#Stufenmodell für Korpus-Auswahl]].
+
 ## Test-Strategie
 
 Die Qualitätssicherung steht auf drei Säulen, die unterschiedliche Fehlerklassen abdecken und sich nicht ersetzen.
@@ -60,6 +64,7 @@ Die Qualitätssicherung steht auf drei Säulen, die unterschiedliche Fehlerklass
 1. **TEI zu JSON** (`python -m verification.run`): unabhängige TEI-Aggregation vs. Pipeline-Output unter `docs/data/*.json`. Findet Pipeline-Fehler in der Aggregations-Logik.
 2. **CSV zu HTML** (`python -m verification.run --html`): Pipeline-CSVs vs. gerenderte Profil- und Quellen-HTMLs. Findet Renderer-Drift, fehlende Felder im Template, Orphan-Annotationen.
 3. **TEI zu HTML** (`python -m verification.run --tei-html`): TEI-Quelldateien direkt vs. gerenderte Quellen-HTMLs. Überspringt die CSV-Pipeline-Zwischenstufe und prüft, ob jede `<rs ref="...">`-Annotation als `data-ref="..."` im HTML erscheint und umgekehrt. Findet sowohl Pipeline-Drops (TEI-Annotation, die der Aggregator entfernt hat) als auch Renderer-Halluzinationen (HTML-Refs ohne TEI-Quelle).
+4. **TEI-Inventar** (`python -m verification.run --inventory`): pro Subkorpus eine Liste aller verwendeten TEI-Elemente mit Datei-Anzahl, Attributen und distinct Attribut-Werten. Kein Vergleich, sondern Sichtbarkeit der Annotations-Realität — Grundlage für Freigabe-Entscheidungen und Forschungsfragen, die auf bestimmte Annotation angewiesen sind.
 
 Das Test-Set nutzt dieselbe Technologie wie die Pipeline (Python, lxml), ist aber bewusst ein separater Codepfad ohne geteilte Aggregations-Funktionen. Die Trennung ist die Verifikationsgarantie: Eine Zahl, die aus derselben Pipeline stammt, die sie angeblich verifiziert, verifiziert sich selbst nicht. Reports sind versioniert in `verification/reports/` (Markdown + JSON). Statuswerte und Befund-Register: `verification/README.md` und `verification/findings.md`. Begründung in [[decisions#Verifikations-Test-Set als eigenständige Komponente]].
 

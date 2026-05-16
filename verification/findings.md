@@ -162,6 +162,26 @@ Stadtbuecher-TEI hat Pattern `Eintragsdatum (Originaldatum)` —
 das Frontend rendert nur das Originaldatum. Die Vergleichs-Funktion
 `compare_tei_html._dates_equivalent` akzeptiert das.
 
+### Heirat: Begriff nicht typisiert, Substring-Match provisorisch
+
+Die freien Verwandtschaftsbezeichnungen in `kin_relations_in_sources.csv`
+(Spalte `kin`) führen Heirats-Verhältnisse als deutsche Begriffe
+(`gemahl`, `gemahlin`, `gatte`, `hausfrau`, `ehefrau` und Schreibvarianten),
+ohne typisierende Spalte. `verification/research_questions.py` und
+`frontend/aggregator/research_questions.py` markieren ein kin-Verhältnis
+als Heirat per Substring-Match auf einer im Code stehenden Begriffs-Liste.
+
+Die beiden Aggregat-Implementierungen kommen auf unterschiedliche Zahlen
+für Uhlirz-IV-Heiratspaare (9 vs. 12), weil sie zwei unterschiedliche
+Match-Verfahren nutzen (Token-Split gegen freies Substring). Beides ist
+provisorisch.
+
+Methodisch saubere Auflösung: eine Klassifikations-Spalte `is_marriage`
+in `normalisation_lists/kin_norm_matching.csv` im Pipeline-Repo (analog
+zu `Gewerbe_nach_Uhlirz_GstW` in `roleName_norm_matching.csv`). Bis
+dahin zählt jeder im Frontend ausgewiesene Heirats-Befund als
+„provisorisch, Substring-basiert".
+
 ### Filenames-Filter: `status="in progress"`
 
 64 TEI-Quellen (14 QGW, 50 Stadtbuecher) haben in

@@ -5,15 +5,15 @@ project:
   repository: https://github.com/chpollin/db_for_medieval_legal_transactions_edition
 status: active
 language: de
-version: 0.1
+version: 0.2
 created: 2026-02-19
-updated: 2026-05-11
+updated: 2026-05-16
 authors: [Christopher Pollin]
 generated-with: Claude Code
 method:
   name: Promptotyping
   url: https://lisa.gerda-henkel-stiftung.de/digitale_geschichte_pollin
-related: [glossar, data, architecture, requirements, decisions, ui-design, analyse, exploration, scholar-user-stories, journal]
+related: [glossar, data, architecture, specification, decisions, ui-design, analyse, exploration, scholar-user-stories, journal]
 ---
 
 # Wissensbasis

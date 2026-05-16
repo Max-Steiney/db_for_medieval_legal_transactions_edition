@@ -362,4 +362,4 @@ def _copy_tei_sources():
         shutil.copy2(str(filepath), str(dest))
         copied += 1
 
-    print(f"  TEI sources: {copied} files copied to docs/tei/")
+    print(f"  TEI sources: {copied} files copied to {DOCS_DIR.name}/tei/")

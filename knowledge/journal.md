@@ -5,15 +5,15 @@ project:
   repository: https://github.com/chpollin/db_for_medieval_legal_transactions_edition
 status: active
 language: de
-version: 0.1
+version: 0.2
 created: 2026-02-19
-updated: 2026-05-11
+updated: 2026-05-16
 authors: [Christopher Pollin]
 generated-with: Claude Code
 method:
   name: Promptotyping
   url: https://lisa.gerda-henkel-stiftung.de/digitale_geschichte_pollin
-related: [decisions, requirements, architecture]
+related: [decisions, specification, architecture]
 ---
 
 # Journal
@@ -29,6 +29,38 @@ Was nicht rein darf: Personennamen, Meeting-Protokolle, Projektmanagement-Stand,
 Einträge in umgekehrt chronologischer Reihenfolge, neueste oben.
 
 ---
+
+## 2026-05-16 Konstellations-Abfrage mit Beispiel-Einstieg
+
+Die Abfragen-Sub-Seite (`/analysis/index.html`) wird von der bisherigen Galerie-Wireframe auf eine **strukturierte Konstellations-Abfrage** umgestellt. Forscherinnen legen N nummerierte Personenblöcke an, je mit Rolle und optional Geschlecht und Beruf-Substring. Globale Filter (Zeitraum, Korpus, Verknüpfungs-Modus „im selben Rechtsgeschäft" gegen „in derselben Quelle") schränken die Suche ein. Permalink, CSV-Export, Datenkorb-Anbindung pro Trefferzeile.
+
+Aggregator `frontend/aggregator/role_constellation.py` liefert ein Per-Event-Aggregat `docs/data/role_constellation.json` (2577 Events mit Participants). Resolver `frontend/static/js/analysis-resolver.js` matcht Konstellationen clientseitig. Die alten Galerie-JS-Module (`analysis.js`, `analysis-composer.js`, `analysis-capabilities.js`, ca. 1100 LOC) sind gelöscht.
+
+Onboarding ergänzt den ansonsten leeren Anfangszustand. Vier Beispiel-Chips im Empty-State setzen typische Konstellationen vor (Ausstellerin weiblich, Ausstellerin-Empfänger-Paar weiblich-männlich, Beruf enthält `urger`, Beruf enthält `pfarr`). Die Chip-Labels machen die Mechanik (Substring auf Originalannotation) sichtbar, damit klar ist: Beispiele demonstrieren das Werkzeug, sie sind keine kanonischen Klassifikationen. Alle Felder bleiben editierbar.
+
+Konzeptioneller Leitsatz: was im Frontend als Beispiel sichtbar ist, darf Substring-getrieben sein, weil die Forscherin den Mechanismus im Personenblock sieht und korrigieren kann. Was im Aggregator versteckt eine Zahl produziert, darf das nicht. Daraus folgt der Befund im findings-Register: die Heirats-Substring-Liste in `research_questions.py` (Frontend und Verifikation) ist provisorisch und gehört als typisierende Spalte `is_marriage` in `normalisation_lists/kin_norm_matching.csv` ins Pipeline-Repo, analog zu `Gewerbe_nach_Uhlirz_GstW`.
+
+Knowledge: `decisions.md` Eintrag „Abfragen-Sub-Seite als Konstellations-Abfrage" ersetzt den alten Galerie/Custom-Builder-Eintrag. `analyse.md` Sektion „Konstellations-Abfrage" neu strukturiert. `specification.md` neue User-Story „Personenkonstellationen über kombinierte Bedingungen abfragen" plus Querschnitts-Eigenschaft „Datenpfad-Ehrlichkeit"; Version 0.5. Tests aktualisiert (Konstellations-Hooks statt Galerie-IDs), 356 grün.
+
+Co-Authored-By der ursprünglichen Commits c0c534533f (feat) und d5f97fe83d (refactor) aus den `worktree-agent-*`-Branches; diese werden im selben Schritt verworfen, weil ihre Inhalte hier auf `main` landen.
+
+## 2026-05-16 Wissensbasis-Konsolidierung nach Stufenmodell und Forschungsfragen
+
+Konsolidierung aller Markdown-Dokumente unter `knowledge/` auf den heutigen Stand. Auslöser ist die Mail von Korbinian mit den vier Forschungsfragen plus dem Stufenmodell-Branch. Zwei Klassen von Befunden, beide chirurgisch gefixt, ohne grosse Umschreibungen.
+
+Strukturelle Brueche: das frueher geloeschte `requirements.md` lebte noch als Wiki-Link in `specification.md`, `scholar-user-stories.md`, `data.md`, `architecture.md`, `ui-design.md`, `analyse.md`, `exploration.md`, `decisions.md`, `journal.md` und im jeweiligen `related:`-Frontmatter. Alle Vorkommen auf `specification` umgelegt.
+
+Inhaltliche Fortschreibung: vier konkrete Forschungsfragen aus der Mail als User-Stories in `scholar-user-stories.md` plus als Galerie-Achse in `analyse.md`. Eine neue Decision „Forschungsfragen als Implementierungs-Achse" haelt den Grundsatz fest, dass die Galerie und die Organisations-Profilseiten primaer durch konkrete Fragen wachsen, nicht durch abstrakte Slot-Kombinationen. Uhlirz-Berufsklassifikation (Spalte `Gewerbe_nach_Uhlirz_GstW` in `roleName_norm_matching.csv`) als Forschungs-Achse in `data.md` dokumentiert. `exploration.md` korrigiert die fruehere Aussage „Karten sind bewusst nicht vorgesehen": Karte ist im Stufenmodell als Eigenschaft von Stufe 4 angelegt, datenseitig an die Koordinaten-Abdeckung gebunden (heute 29 Prozent), bis dahin rendern Forschungsfragen ihre Orts-Antwort als Tabelle. Verifikations-Modus Inventar als vierter Modus in `architecture.md` ergaenzt.
+
+Datenseitige Inventur als Voraussetzung: Koordinaten in `placeList.xml` (728 von 2537 Orten, 29 Prozent), Heirat als freier Begriff in `kin_relations_in_sources.csv` (nicht typisiert, String-Match-Liste reicht), St. Agnes auf der Himmelpforte als `org__wien-st_agnes_auf_der_himmelpforte` vorhanden, 280 occ-Verknuepfungen zu St. Stephan, 22 distinkte Uhlirz-IV-Berufe (19 Personen in 44 Quellen), 67 distinkte Uhlirz-VI-Berufe (100 Personen in 107 Quellen). Damit sind alle vier Mail-Fragen datenseitig beantwortbar; Frage 2 nur eingeschraenkt wegen Koordinaten-Luecke.
+
+## 2026-05-16 Stufenmodell fuer Korpus-Auswahl und Annotationsebenen
+
+Branch `corpus-and-data-layers`. Neues Modul `frontend/stages.py` mit vier benannten Stufen als Dict, plus Hilfsfunktionen `active_stage()` und `set_stage_env()`. CLI-Flag `--stage N` in `frontend/__main__.py`; `--include-mentioned` bleibt als Alias auf Stufe 2 erhalten. `frontend/config.py` und `pipeline/config.py` lesen `FRONTEND_STAGE` als zweite Aktivierungsquelle neben den direkten Env-Vars, sodass Ad-hoc-Pipeline-Laeufe unveraendert funktionieren.
+
+Hintergrund: die Mail von Korbinian vom 16. Mai bringt drei Achsen ueber den heutigen Mentioned-Toggle hinaus, naemlich neue Subkorpora mit konsequenter Orts-Annotation, vier Forschungsfragen mit unterschiedlichen Datenstand-Anforderungen und einen geplanten Karten-Layer. Statt fuer jede Anforderung einen weiteren Boolean-Schalter einzufuehren, buendelt das Stufenmodell Korpus-Auswahl und Annotationsebenen als zitierbares Profil. Stufen 1 und 2 sind heute funktional aktiv und byte-identisch zum vorigen Zwei-Schalter-Stand, Stufen 3 und 4 bauen, liefern aber zunaechst denselben Daten-Output, bis die zugehoerigen Subkorpora und Features datenseitig aktiviert sind.
+
+Konsequenz: jede Aussage des Frontends ist interpretierbar als Aussage unter einer bestimmten Stufe. Decision in [[decisions#Stufenmodell fuer Korpus-Auswahl und Annotationsebenen]]. Reports, Provenienz-Tooltips und Diskussionen koennen die Stufe ab jetzt benennen.
 
 ## 2026-05-16 TEI-Inventar als vierter Verifikationsmodus
 
@@ -198,7 +230,7 @@ Offen für eine eigene Session — Phase 1.5 / Phase 2:
 
 ## 2026-05-02 Tooltip-Komponenten getrennt, Toggle entfernt
 
-Die Startseiten-Card „Quellen durchsuchen" wird konzeptionell aufgeräumt. Der Toggle „Erwähnte Geschäfte einbeziehen" über der Korpus-Matrix entfällt. Begründung: Die Matrix-Werte werden nicht mehr zwischen zwei Zählebenen umgeschaltet, sondern zeigen einheitlich die quellenbereinigte Default-Variante (Personen in verschachtelten rs-Events ausgeschlossen, vgl. [[glossar#Gesamtnennung]]). Die parallele Aggregator-Schicht für die inklusive Variante (`person_mentions_with_mentioned`, `distinct_events_with_mentioned`, der zweite XPath-Loop über alle rs-Events) ist damit ohne Konsumenten und wird aus `frontend/build.py` entfernt. Für eine zukünftige Wiedereinführung als globaler Zählebenen-Umschalter (vgl. [[requirements#Umschaltbarkeit der Zählebenen]]) gibt es einen sauberen Rebuild-Pfad — der Aggregator hat keinen verkrusteten Toggle-Zustand mehr.
+Die Startseiten-Card „Quellen durchsuchen" wird konzeptionell aufgeräumt. Der Toggle „Erwähnte Geschäfte einbeziehen" über der Korpus-Matrix entfällt. Begründung: Die Matrix-Werte werden nicht mehr zwischen zwei Zählebenen umgeschaltet, sondern zeigen einheitlich die quellenbereinigte Default-Variante (Personen in verschachtelten rs-Events ausgeschlossen, vgl. [[glossar#Gesamtnennung]]). Die parallele Aggregator-Schicht für die inklusive Variante (`person_mentions_with_mentioned`, `distinct_events_with_mentioned`, der zweite XPath-Loop über alle rs-Events) ist damit ohne Konsumenten und wird aus `frontend/build.py` entfernt. Für eine zukünftige Wiedereinführung als globaler Zählebenen-Umschalter (vgl. fruehere `requirements#Umschaltbarkeit der Zählebenen`, heute aufgegangen in [[specification]]) gibt es einen sauberen Rebuild-Pfad — der Aggregator hat keinen verkrusteten Toggle-Zustand mehr.
 
 Der Begriff **Event** bleibt im UI bewusst stehen, gegen den ersten Impuls, ihn durch „Rechtsgeschäft" zu ersetzen. Die `events_in_sources.csv` zeigt, dass die `<rs type="event">`-Annotation heterogen ist: 2.025 `abstract` (das eigentliche Regest), 1.565 `seal` (Siegelvermerke), 439 `entry` (Kanzleivermerke), 47 `nota`, plus 138 ohne Kategorie. Nur `abstract` deckt sich mit der Glossar-Definition von [[glossar#Rechtsgeschäft]]. „Rechtsgeschäft" als Spaltenlabel wäre für die Begleitelemente zu eng; „Event" ist der ehrlichere Sammelbegriff und respektiert das technische Vokabular der TEI-Annotation. Eine separate Aufschlüsselung pro `event_in`-Kategorie bleibt eine offene Designfrage für eine spätere Session.
 
@@ -236,7 +268,7 @@ Die Provenienz-Tooltip-Komponente wird von den Startseiten-KPIs auf weitere Seit
 
 Offen für eigene Sessions:
 
-- **Zählebenen-Umschalter [[requirements#Umschaltbarkeit der Zählebenen]].** Implementierungspfad: globaler Schalter in der Navbar oder Filter-Leiste, persistierter Zustand im `localStorage`, propagiert via `window.COUNT_MODE` an die Exploration-Skripte. Jeder Counter muss pro Zahl wissen, welche der beiden Ebenen er anzeigen kann; für die Mehrzahl der Exploration-Seiten bedeutet das eine parallele JSON-Struktur (oder zusätzliche Felder in den bestehenden Aggregat-JSONs), die beide Ebenen vorhalten. Der Provenienz-Tooltip zeigt in jedem Popover den gewählten Modus.
+- **Zählebenen-Umschalter** (fruehere requirements-Anforderung, heute aufgegangen in [[specification]]). Implementierungspfad: globaler Schalter in der Navbar oder Filter-Leiste, persistierter Zustand im `localStorage`, propagiert via `window.COUNT_MODE` an die Exploration-Skripte. Jeder Counter muss pro Zahl wissen, welche der beiden Ebenen er anzeigen kann; für die Mehrzahl der Exploration-Seiten bedeutet das eine parallele JSON-Struktur (oder zusätzliche Felder in den bestehenden Aggregat-JSONs), die beide Ebenen vorhalten. Der Provenienz-Tooltip zeigt in jedem Popover den gewählten Modus.
 
 - **Menschen-Events-Toggle [[ui-design#Menschen-Events-Toggle]].** Implementierungspfad analog: `window.INCLUDE_HUMAN_EVENTS`, persistiert, propagiert. Datenmodell-Seite: die Aggregatoren müssen Nennungen trennen, je nachdem ob sie aus einem primären Event stammen oder als Verweis auf ein früheres Event vorliegen. Voraussetzung ist eine belastbare Markierung im TEI-Datenstrom. Bei fehlender Markierung zeigt das UI den aktuellen stillschweigenden Zustand (Einschluss) offen, statt ihn zu verschleiern.
 
@@ -262,10 +294,10 @@ Der Footer trennt Datenstand und Build-Datum. Bis zuletzt zeigte „Datenstand" 
 
 Offen bleibt aus der Phase-2-Liste des CS-Feedbacks:
 
-- **Zählebenen-Umschalter** zwischen Gesamtnennungen und Individuellen Personen in allen betroffenen Visualisierungen ([[requirements#Umschaltbarkeit der Zählebenen]]). Ohne diese Umschaltung zeigen Rollen- und Beziehungs-Ansichten nur eine Zählebene.
+- **Zählebenen-Umschalter** zwischen Gesamtnennungen und Individuellen Personen in allen betroffenen Visualisierungen (fruehere requirements-Anforderung, heute aufgegangen in [[specification]]). Ohne diese Umschaltung zeigen Rollen- und Beziehungs-Ansichten nur eine Zählebene.
 - **Menschen-Events-Toggle** ([[glossar#Menschen-Event]]): aktiv ein- und ausschließbar, konsistent durch alle abhängigen Darstellungen. Ohne Toggle ist der aktuelle Zustand stillschweigend ein Ausschluss, was Vergleiche über Visualisierungen erschwert.
 - **Bestandsfilter universell** in allen Visualisierungen, nicht nur in den Quellen-Suchseiten. Sinnvoll, sobald Organisationen und Orte freigegeben sind.
-- **Persistente Referenzierbarkeit / PID**: beschlossen, aber technische Ausprägung (w3id, ARK, Handle) braucht Stakeholder-Entscheidung. Siehe [[requirements#Zitierfähige Datenstände]].
+- **Persistente Referenzierbarkeit / PID**: beschlossen, aber technische Ausprägung (w3id, ARK, Handle) braucht Stakeholder-Entscheidung. Siehe [[specification#Zitierfähiger Datenstand]].
 - **Provenienz-Tooltip-Ausrollung** auf Register- und Exploration-Seiten. Die Komponente ist etabliert, der Einsatzort bisher auf Startseiten-KPIs beschränkt.
 
 Außerhalb der Phase 2 stehen vereinzelte Daten-Anomalien im TEI-Bestand: Pseudo-Rollen außerhalb des kontrollierten Vokabulars, Sonderzeichen-URLs in docs_lookup.json, eine Witness-Anomalie in ausgewählten Quellen. Die Bereinigung läuft auf Seite der TEI-Annotation. Das Verifikations-Test-Set macht sie als `known_gap` sichtbar.
@@ -280,7 +312,7 @@ Erstens: Register-Totals und Datum-Ranges stimmen exakt. Der Test bestätigt die
 
 Zweitens: Der Zahlenwert, der im UI als „Gesamtnennungen Personen" beschriftet war, ist tatsächlich die Anzahl individueller Personen, nicht die der Nennungen. Das Label war falsch und wurde korrigiert zu „individuelle Personen". Siehe [[decisions#Begriff Gesamtnennungen]] und [[glossar#Individuelle Person]].
 
-Drittens: Ein Quellenkorpus-Teilbestand erscheint in den Aggregaten des Frontends, hat aber keine TEI-Quelle im Pipeline-Repo. Die Zahlen im Frontend beruhen für diesen Teilbestand nur auf einer CSV-Zwischenstufe. Die Offenlegung ist eine Konsequenz aus [[requirements#Datenrobustheit und Provenienz]]. Die Entscheidung, wie mit dieser Lücke umgegangen wird (Datenergänzung, Sichtbarmachung als eingeschränkte Provenienz oder Ausblendung), steht aus.
+Drittens: Ein Quellenkorpus-Teilbestand erscheint in den Aggregaten des Frontends, hat aber keine TEI-Quelle im Pipeline-Repo. Die Zahlen im Frontend beruhen für diesen Teilbestand nur auf einer CSV-Zwischenstufe. Die Offenlegung ist eine Konsequenz aus [[specification#Datenrobustheit und Provenienz]]. Die Entscheidung, wie mit dieser Lücke umgegangen wird (Datenergänzung, Sichtbarmachung als eingeschränkte Provenienz oder Ausblendung), steht aus.
 
 Parallel werden im TEI Pseudo-Rollen sichtbar, die weder im kontrollierten Rollenvokabular vorgesehen sind noch interpretativ Bedeutung haben. Sie entstehen aus Annotationsfehlern und werden im Test-Report als solche markiert. Die Bereinigung läuft auf Seite der TEI-Annotation, nicht in der Pipeline.
 

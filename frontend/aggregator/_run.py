@@ -8,6 +8,7 @@ from .roles import aggregate_roles
 from .relations import aggregate_relations
 from .transactions import aggregate_transactions
 from .docs import aggregate_docs
+from .role_constellation import aggregate_role_constellation
 
 
 def run_aggregation(docs_data_dir: Path, reverse_index: dict | None = None) -> dict:
@@ -44,6 +45,11 @@ def run_aggregation(docs_data_dir: Path, reverse_index: dict | None = None) -> d
     docs_agg = aggregate_docs(docs_data_dir)
     print(f"  Docs aggregate: {docs_agg['total']} sources, "
           f"{docs_agg['with_persons']} with at least one register-linked person")
+
+    constellation = aggregate_role_constellation(docs_data_dir)
+    print(f"  Role constellation: {constellation['coverage']['total_events']} events, "
+          f"{constellation['coverage']['total_persons']} persons, "
+          f"{constellation['coverage']['total_participations']} participations")
 
     return {
         "timeline": {"total": timeline["total"]},

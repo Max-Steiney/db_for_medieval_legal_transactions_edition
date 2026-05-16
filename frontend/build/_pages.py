@@ -1279,19 +1279,69 @@ def _write_query_vocabulary():
 
 
 def _build_analysis(env):
-    """Build analysis page (Composer UI).
-
-    Minimal build: only template render with an asset-version string for
-    cache-busting of the composer scripts. No header KPIs any more — KPIs
-    now live in the composer itself (live from roles.json/relations.json/transactions.json).
+    """Build analysis/index.html. Pulls totals + vocab from role_constellation.json.
+    Syncs analysis.css so single-page rebuilds don't leave an outdated CSS in docs/.
     """
     assets_version = datetime.now().strftime("%Y%m%d%H%M%S")
+
+    import shutil
+    from frontend.config import STATIC_DIR
+    src_css = STATIC_DIR / "css" / "analysis.css"
+    dst_css = DOCS_DIR / "static" / "css" / "analysis.css"
+    if src_css.exists():
+        dst_css.parent.mkdir(parents=True, exist_ok=True)
+        shutil.copy2(src_css, dst_css)
+
+    rc_path = DATA_DIR / "role_constellation.json"
+    if rc_path.exists():
+        with open(rc_path, encoding="utf-8") as f:
+            rc = json.load(f)
+        rc_coverage = rc.get("coverage", {})
+        rc_vocab = rc.get("vocab", {})
+    else:
+        print("  WARN: role_constellation.json not found, using zero placeholders.",
+              file=sys.stderr)
+        rc_coverage, rc_vocab = {}, {}
+
+    # Histogram + corpus counts come from the constellation aggregate, so
+    # the slider and the corpus chips reflect the actual data the page
+    # queries against — no hardcoded mocks in the template.
+    decade_histogram = rc_coverage.get("decade_histogram", [])
+    if decade_histogram:
+        max_count = max(b["count"] for b in decade_histogram) or 1
+        min_year = decade_histogram[0]["decade"]
+        # Last decade's range covers up to released max_year (e.g. 1410 -> 1414).
+        max_year = max(b["decade"] for b in decade_histogram) + 9
+        # Clamp to the released period bounds.
+        min_year = max(min_year, RELEASED_PERIOD["min_year"])
+        max_year = min(max_year, max_year_with_extensions())
+    else:
+        max_count = 1
+        min_year = RELEASED_PERIOD["min_year"]
+        max_year = max_year_with_extensions()
+
+    # Corpus event counts: aggregator emits a short label ("QGW II/1",
+    # "Stadtbuecher Bd. 1"); the chips show those literally — the
+    # released-period suffix lives in the KPI strip instead.
+    collections = [
+        {"key": c["key"], "label": c["key"], "count": c["count"]}
+        for c in rc_coverage.get("corpus_event_counts", [])
+    ]
 
     template = env.get_template("analysis.html")
     html = template.render(
         build_date=_format_german_date(date.today()),
         root_path="..",
         assets_version=assets_version,
+        total_sources=rc_coverage.get("total_sources", 0),
+        total_events=rc_coverage.get("total_events", 0),
+        total_persons=rc_coverage.get("total_persons", 0),
+        occupation_vocab=rc_vocab.get("occupation", []),
+        timeline_data=decade_histogram,
+        max_count=max_count,
+        min_year=min_year,
+        max_year=max_year,
+        collections=collections,
     )
     out = DOCS_DIR / "analysis" / "index.html"
     out.parent.mkdir(parents=True, exist_ok=True)

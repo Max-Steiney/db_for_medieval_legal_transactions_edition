@@ -104,21 +104,23 @@ def test_build_analysis_renders(docs_dir):
     assert "Analyse" in content
 
 
-def test_build_analysis_renders_composer(docs_dir):
-    """Composer and result containers plus composer scripts are in the HTML."""
+def test_build_analysis_renders_constellation(docs_dir):
+    """Constellation query containers plus resolver script are in the HTML."""
     env = _init_jinja()
     _build_analysis(env)
     content = (docs_dir / "analysis" / "index.html").read_text(encoding="utf-8")
-    assert 'id="composer"' in content
-    assert 'id="result"' in content
-    assert 'id="analysis-drilldown"' in content
-    assert "analysis-capabilities.js" in content
-    assert "analysis-composer.js" in content
-    assert "analysis.js" in content
-    # Header stats are gone, no more sentence builder.
-    assert "Institutionsbezug" not in content
-    assert "analysis-satzbuilder.js" not in content
-    # Gallery and family builder are gone.
+    assert 'id="qb-persons-table"' in content
+    assert 'id="qb-persons-tbody"' in content
+    assert 'id="hits-table"' in content
+    assert 'id="hits-tbody"' in content
+    assert 'id="active-filters"' in content
+    assert "analysis-resolver.js" in content
+    assert "role-constellation-data" in content
+    # Old galerie/composer artefacts are gone.
+    assert 'id="composer"' not in content
+    assert "analysis-capabilities.js" not in content
+    assert "analysis-composer.js" not in content
     assert "analysis-gallery" not in content
     assert "analysis-questions.js" not in content
     assert "analysis-families.js" not in content
+    assert "analysis-satzbuilder.js" not in content

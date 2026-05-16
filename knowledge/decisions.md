@@ -5,16 +5,16 @@ project:
   repository: https://github.com/chpollin/db_for_medieval_legal_transactions_edition
 status: active
 language: de
-version: 0.1
+version: 0.2
 created: 2026-02-19
-updated: 2026-05-11
+updated: 2026-05-16
 authors: [Christopher Pollin]
 generated-with: Claude Code
 method:
   name: Promptotyping
   url: https://lisa.gerda-henkel-stiftung.de/digitale_geschichte_pollin
 topics: ["[[Decision Records]]", "[[Architecture Decision Records]]"]
-related: [requirements, architecture, ui-design, analyse, exploration]
+related: [specification, architecture, ui-design, analyse, exploration]
 ---
 
 # Entscheidungen
@@ -55,15 +55,17 @@ Getroffene Leitentscheidungen mit Begründung. Zeitlos formuliert. Pro Eintrag E
 
 **Nicht gemeint ist**, dass jedes Profil eine vollständige Biografie liefert. Die Profile zeigen, was die TEI-Annotation hergibt.
 
-## Analyse-Seite mit Frage-Galerie und Custom-Builder
+## Abfragen-Sub-Seite als Konstellations-Abfrage
 
-**Entscheidung.** Die Abfragen-Sub-Seite (`/analysis/index.html`) bedient zwei Einstiegsmodi nebeneinander: eine kuratierte Galerie konkreter Forschungsfragen als oberste Ebene, ein freier Custom-Builder darunter im aufklappbaren `<details>`. Die Frage ist first-class concept und autonom (`{id, group, text, dataFiles, viz, answer, resolveViz, resolveComparison, resolveDrillDown, coverage}`), nicht an eine Familie gebunden.
+**Entscheidung.** Die Abfragen-Sub-Seite (`/analysis/index.html`) ist eine strukturierte Datenbank-Abfrage über Rollen-Konstellationen, kein Such-UI und keine Frage-Galerie. Eine Forscherin legt N nummerierte Personen-Bedingungen an, je mit Rolle und optionalen Filtern (Geschlecht, Beruf/Tätigkeit/Amt als Substring-Match auf der Originalschreibung). Alle Bedingungen müssen gemeinsam in demselben Rechtsgeschäft (eng, Default) oder in derselben Quelle (weit) erfüllt sein. Globale Filter: Zeitraum, Quellenkorpus. Anfangszustand: keine Personen-Bedingung, leere Trefferliste. Live-Update bei jeder Änderung.
 
-**Begründung.** Die frühere Slot-Workbench mit Template-Familien als oberster Mental-Model-Ebene zwang Nutzerinnen, sich erst durch eine Familien-Tab-Bar zu navigieren, bevor sie ihre Frage formulieren konnten. Forscherinnen kommen aber mit der Frage selbst, nicht mit einer Familien-Kategorie. Die Galerie bietet direkten Zugriff über den Frage-Text; der Custom-Builder bleibt für die freie Kombination von Slots verfügbar, ist aber nicht der Default-Einstieg.
+**Begründung.** Forscherinnen kommen mit konkreten Konstellationsfragen („männliche Aussteller mit Tätigkeit X, weibliche Empfängerinnen mit Beruf Y") an die Datenbank, nicht mit abstrakten Slot-Subjects. Die strukturierte Abfrage über Bedingungen, die parallel erfüllt sein müssen, bildet das Forschungsinteresse direkter ab als eine Frage-Galerie mit vorgefertigten Resolvern. Sie ist auch näher am Sprachgefühl der Vorgänger-Datenbank, die als „Standardsuche" mit kombinierbaren Bedingungen funktioniert hat.
 
-**Konsequenz.** Galerie-Karten tragen subtile Mini-Visualisierungen; das Result-Panel zeigt vollwertige SVG-Renderings. Beide Stufen teilen sich die Renderer-Logik. Permalinks doppelt: `#q=<id>` für die Galerie, `#f=<fid>&...` für den Custom-Builder. JS-seitig getrennt in `analysis-composer.js` (UI), `analysis-capabilities.js` (Capability-Manifest) und `analysis.js` (Driver).
+**Konsequenz.** Eine einzelne JS-Datei `analysis-resolver.js` lädt `docs/data/role_constellation.json` lazy, hält den Zustand im DOM und in der URL, matcht Konstellationen clientseitig gegen `events[]`. Die alten Module `analysis.js`, `analysis-composer.js`, `analysis-capabilities.js` (Frage-Galerie-Implementierung) sind entfernt. Permalinks serialisieren die ganze Abfrage: `#p1=r=issuer,s=m,o=snyder&p2=r=recipient,s=f&y=1340-1410&c=QGW`. CSV-Export gibt genau die Bildschirmspalten heraus.
 
-**Nicht gemeint ist**, dass die Galerie statisch fest steht. Frage-Resolver lassen sich ergänzen, ohne die Architektur zu ändern; einige Resolver sind als Galerie-Antwort fertig, aber noch nicht als Slot-Kombination im Custom-Builder ausgebaut.
+**Nicht gemeint ist**, dass das UI alle früheren Frage-Galerie-Achsen abdeckt. Beziehungstypen, Transaktionstypen, Aggregat-Donuts liegen auf der Auswertungs-Sub-Seite, nicht hier.
+
+**Datenpfad-Vorbehalte.** Geschlecht und Rolle funktionieren vollständig. Beruf/Tätigkeit/Amt liegt nur als Originalschreibung vor (`snyder`, `purger`, `Bürger` nebeneinander), das UI bietet ein Freitext-Feld mit Operator „enthält" und smarten Vorschlägen aus den Top-Schreibvarianten. Eine Bedingung „Titel = Herr / Bischof" wird nicht angeboten, weil das TEI-Modell Honorifics und Berufe in einer einzigen Annotation (`<occupation>`) zusammenführt; eine separate Titel-Achse erfordert eine Anpassung im Schwester-Repo (Pipeline-Spalte plus TEI-Annotation), nicht im Frontend.
 
 ## Titel und Untertitel
 
@@ -186,6 +188,33 @@ Verschachtelte rs-Events landen über `pipeline/utils/event_helpers.py::iter_top
 **Beobachtung am Stand 2026-05-16.** Die Differenz wird vollständig vom QGW-Korpus getragen (+727 Events), Stadtbücher trägt zwei. Roles-Coverage: 4214 → 4943 Events (+17 %), Transactions identisch, Person-Count unverändert (Distinct-Personen sind ohnehin asymmetrisch gezählt), Persons-with-Org +47.
 
 **Nicht gemeint ist**, dass `docs-with-mentioned/` öffentlich publiziert wird. Der Stand ist ein editorisches Vergleichswerkzeug. GitHub Pages serviert weiterhin nur `docs/`.
+
+## Stufenmodell für Korpus-Auswahl und Annotationsebenen
+
+**Entscheidung.** Der Build kennt vier benannte Stufen, die Korpus-Auswahl und Annotationsebenen als zitierbares Profil bündeln. Aktiviert über `python -m frontend build --stage N` (N in 1 bis 4); `--include-mentioned` bleibt als Alias auf Stufe 2 erhalten.
+
+| Stufe | Subkorpora | Mentioned | Orts-Sichtbarkeit | Anzeige-Filter | Output |
+|---|---|---|---|---|---|
+| 1 Publikation | nur freigegebene `_ready` | aus | nur Inline-Markup | fest auf freigegeben | `docs/` |
+| 2 Vergleich | wie Stufe 1 | ein | wie Stufe 1 | wie Stufe 1 | `docs-with-mentioned/` |
+| 3 Voller `_ready`-Bestand | alle `_ready` | aus | Ortsregister | Freigabe-Badge umschaltbar | `docs-full/` |
+| 4 Maximalversion | alle mit TEI | ein | Register plus Karte | wie Stufe 3 | `docs-max/` |
+
+**Begründung.** Zuvor steuerten zwei voneinander unabhängige Schalter den Build, `RELEASED_CORPORA` als Build-Zeit-Filter und `PIPELINE_INCLUDE_MENTIONED_EVENTS` als Env-Var. Mit den von Korbinian neu eingespielten Subkorpora (QGW 1448–57, Satzbuch CD 1448–60) und den vier Forschungsfragen aus der Mail vom 16. Mai werden mehr Achsen relevant: Orts-Annotation, Freigabe-Status pro Subkorpus, Mentioned-Events. Jeder neue Boolean-Schalter würde die Aufruflogik vergrößern, ohne die Stände interpretierbar zu machen. Das Stufenmodell macht jeden Build-Stand zu einer benannten, zitierbaren Konfiguration, die in Provenienz-Tooltips, Reports und Diskussionen referenziert werden kann.
+
+**Konsequenz.** `frontend/stages.py` definiert die Stufen als Dict mit den Achsen `corpora_scope`, `include_mentioned`, `place_visibility`, `display_filter`, `output_dir`. `set_stage_env()` setzt `FRONTEND_STAGE` und davon abgeleitete Env-Vars. `frontend/config.py` und `pipeline/config.py` lesen `FRONTEND_STAGE` als zweite Aktivierungsquelle neben den direkten Env-Vars; Ad-hoc-Pipeline-Läufe (`PIPELINE_INCLUDE_MENTIONED_EVENTS=1 python -m pipeline transform`) funktionieren unverändert. Stufen 1 und 2 sind heute funktional aktiv und byte-identisch zum vorigen Zwei-Schalter-Stand; Stufen 3 und 4 bauen, liefern aber zunächst denselben Daten-Output, bis die zugehörigen Subkorpora und Features (Ortsregister, Karte, Freigabe-Filter) datenseitig aktiviert sind.
+
+**Nicht gemeint ist**, dass eine Stufe öffentlich publiziert wird außer Stufe 1. Stufen 2 bis 4 sind editorische Werkzeuge; `.gitignore` hält `docs-with-mentioned/`, `docs-full/` und `docs-max/` aus dem Repo. GitHub Pages serviert weiterhin nur `docs/`.
+
+## Forschungsfragen als Implementierungs-Achse
+
+**Entscheidung.** Konkrete Forschungsfragen aus der editorischen Praxis ([[scholar-user-stories#Konkrete Forschungsfragen aus der editorischen Praxis]]) sind die Achse, an der neue Aggregator-Bausteine und Galerie-Einträge gebaut werden. Implementiert wird primär durch Erweiterung bestehender Komponenten (Galerie-Frage in `/analysis/index.html`, Sektion auf der Organisations-Profilseite), nicht durch neue Views. Eine neue Sub-Seite oder Library wird nur eingeführt, wenn keine bestehende Komponente die Antwort tragen kann.
+
+**Begründung.** Vier konkrete Fragen schlagen zehn abstrakte Slot-Kombinationen. Forscherinnen kommen mit Fragen, nicht mit Achsen; die Galerie braucht eine kritische Masse konkreter Einträge, damit Nutzerinnen das Muster erkennen und auf eigene Fragen übertragen. Jede Frage etabliert einen wiederverwendbaren Aggregator-Baustein (Uhlirz-Kategorie-Join, Heirats-Begriffs-Match, Org-Hierarchie-Traversal, Cross-Role-Query), der für viele weitere Fragen verfügbar ist; der Aufwand pro Frage zahlt vierfach ein. Frühere Architektur-Entscheidungen (Org-Profilseiten, Galerie-Composer, Drill-Down-Indizes) tragen die Antwort bereits, sodass massive neue Views Overengineering wären.
+
+**Konsequenz.** Neue Aggregator-Funktionen in den bestehenden Modulen `org_profiles` und `aggregator/analysis` (für die Galerie). Neue normierte Listen (Uhlirz-Kategorien aus `roleName_norm_matching.csv`, Heirats-Begriffe als Konstante im Pipeline-Code) als kleine Code-Bausteine. Verifikation als vierte Säule in `verification/research_questions.py`, die pro Frage eine erwartete Zahlen-Antwort aus den TEI- oder CSV-Daten ableitet und gegen das Frontend-Resultat vergleicht.
+
+**Nicht gemeint ist**, dass jede denkbare Frage einen Galerie-Eintrag bekommt. Die Galerie wächst mit der editorischen Praxis und mit den fachlich tragenden Forschungsfragen, nicht beliebig.
 
 ## Begriff Quellenkorpus
 

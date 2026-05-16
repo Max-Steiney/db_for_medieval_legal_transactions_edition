@@ -5,9 +5,9 @@ project:
   repository: https://github.com/chpollin/db_for_medieval_legal_transactions_edition
 status: active
 language: de
-version: 0.1
+version: 0.2
 created: 2026-02-19
-updated: 2026-05-11
+updated: 2026-05-16
 authors: [Christopher Pollin]
 generated-with: Claude Code
 method:
@@ -17,7 +17,7 @@ topics: ["[[TEI]]", "[[Prosopography]]", "[[Data Modelling]]"]
 knowledge-sources:
   standards:
     TEI P5: https://tei-c.org/release/doc/tei-p5-doc/en/html/
-related: [architecture, requirements, decisions, glossar]
+related: [architecture, specification, decisions, glossar]
 ---
 
 # Datenbasis
@@ -37,6 +37,17 @@ Die Daten sind in Quellenkorpora organisiert, die sich in Zeitraum, Provenienz u
 Das QGW-Corpus bündelt die „Quellen zur Geschichte Wiens" in mehreren Bänden. Die Stadtbücher bilden eine eigenständige Quellengruppe mit abweichender Überlieferungsform. Weitere Korpora wie Gewerbücher und Grundbücher werden im Build-Prozess vorgehalten, sind aber nicht freigegeben.
 
 Single Source of Truth für die freigegebenen Subkorpora ist `RELEASED_CORPORA` im Pipeline-Repo (`pipeline/config.py`). Es steuert sowohl die CSV-Erzeugung als auch die Sichtbarkeit im Frontend-Build. Nicht freigegebene Subkorpora bleiben für die editorische Arbeit in `sources/`, werden aber weder exportiert noch gerendert. Für interne Analysen existiert der Override `PIPELINE_INCLUDE_UNRELEASED=1`; im publizierten Build wird er nicht verwendet.
+
+## Stufenmodell für Korpus-Auswahl
+
+Über den freigegebenen Bestand hinaus definiert das Frontend vier benannte Stufen (siehe `frontend/stages.py` und [[decisions#Stufenmodell für Korpus-Auswahl und Annotationsebenen]]):
+
+- **Stufe 1 Publikation** bedient den freigegebenen Bestand und entspricht der Single Source of Truth in `RELEASED_CORPORA`.
+- **Stufe 2 Vergleich** ist Stufe 1 plus mentioned events als volle Events.
+- **Stufe 3 voller `_ready`-Bestand** ergänzt alle Subkorpora mit `_ready`-Suffix, die heute zusätzlich `QGW/Vienna_1448-57_ready` und `Satzbuch_CD/SB_CD_1448-60_ready` umfassen.
+- **Stufe 4 Maximalversion** zieht alle Subkorpora mit TEI-Annotation ein, auch solche ohne `_ready`-Suffix; sie dient dem Schema-Stresstest, nicht der Publikation.
+
+Stufen 3 und 4 sind heute strukturell vorhanden und baubar, datenseitig aber an die jeweilige Korpus-Erweiterung gebunden. Aussagen unter höheren Stufen sind methodisch breiter, aber editorisch weniger geprüft.
 
 ## Nicht oder nur teilweise ausgewertet
 
@@ -79,6 +90,8 @@ Funktionen und Rollen spezifizieren, in welcher Eigenschaft eine Person oder Org
 Entitäten referenzieren die Register-Einträge für Personen, Organisationen und Orte.
 
 Attribute halten zusätzliche Merkmale fest, etwa Verwandtschaftsbeziehungen, Berufe oder topographische Zuordnungen.
+
+Berufe sind im Quellen-Text in der Original-Schreibweise belegt und werden über `normalisation_lists/roleName_norm_matching.csv` normalisiert. Die Spalte `Gewerbe_nach_Uhlirz_GstW` ordnet jedem normalisierten Beruf eine Uhlirz-Kategorie zu (römische Ziffer plus Klartext, von „I Landwirtschaft" bis „XVIII Verwaltung"). Diese Klassifikation ist die Grundlage für berufsgruppen-orientierte Forschungsfragen ([[scholar-user-stories#Endogamie in einer Berufsgruppe]]). Verwandtschaftsbezeichnungen liegen in `kin_relations_in_sources.csv` als freier deutscher Begriff vor („Gemahlin", „Hausfrau", „Gatte"); ein typisierter Heirats-Tag existiert nicht, ein String-Match auf eine Heirats-Begriffsliste löst den Anwendungsfall.
 
 ## Sonderfall Menschen-Events
 

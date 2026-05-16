@@ -12,6 +12,7 @@ Consumed by the entire aggregator package. Contains:
 import csv
 import json
 import re
+import sys
 from collections import Counter, defaultdict
 from datetime import date
 from pathlib import Path
@@ -21,6 +22,9 @@ from frontend.config import is_released_corpus
 
 # Schema version — increment when output structure changes
 SCHEMA_VERSION = "1.0"
+
+# Lift csv field-size limit; events_in_sources.csv has long `text` cells.
+csv.field_size_limit(10_000_000)
 
 
 def _is_released_row(row: dict) -> bool:
