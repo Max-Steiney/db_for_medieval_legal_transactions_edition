@@ -6,12 +6,11 @@ to suppress logging.
 """
 
 import argparse
-import os
 import sys
 
 
 def _dispatch(args, parser):
-    # Deferred imports: --include-mentioned must set the env var before
+    # Deferred imports: the stage env vars must be set before
     # frontend.config picks the output directory.
     from frontend.build import build_single, build_all
     if args.command == "build":
@@ -47,13 +46,22 @@ def main():
         help="Build a single file (relative path from repo root)",
     )
     build_cmd.add_argument(
+        "--stage",
+        type=int,
+        choices=[1, 2, 3, 4],
+        default=None,
+        help=(
+            "Build-Stufe (siehe frontend/stages.py): 1=Publikation, "
+            "2=Vergleich mit mentioned events, 3=voller _ready-Bestand, "
+            "4=Maximalversion. Default 1."
+        ),
+    )
+    build_cmd.add_argument(
         "--include-mentioned",
         action="store_true",
         help=(
-            "Comparison build that counts mentioned (nested rs-event) "
-            "annotations as full events and person mentions. Writes to "
-            "docs-with-mentioned/ instead of docs/. The default build is "
-            "untouched."
+            "Kurzform fuer --stage 2. Schreibt nach docs-with-mentioned/ "
+            "und zaehlt verschachtelte rs-events als volle Events."
         ),
     )
 
@@ -69,11 +77,18 @@ def main():
 
     args = parser.parse_args()
 
-    # Apply the override before any pipeline/frontend module imports
-    # snapshot it. frontend.config and pipeline transformers both read the
-    # env var at import time and route the output to docs-with-mentioned/.
-    if getattr(args, "include_mentioned", False):
-        os.environ["PIPELINE_INCLUDE_MENTIONED_EVENTS"] = "1"
+    # Stufe vor jedem Modulimport setzen: frontend.config und die
+    # Pipeline-Transformer lesen die abgeleiteten Env-Vars beim Import und
+    # leiten Output-Verzeichnis sowie Mentioned-Toggle daraus ab. Ohne
+    # explizite Wahl bleibt Stufe 1 (Publikation).
+    if args.command == "build":
+        from frontend import stages
+        stage_id = getattr(args, "stage", None)
+        if stage_id is None and getattr(args, "include_mentioned", False):
+            stage_id = 2
+        if stage_id is None:
+            stage_id = stages.DEFAULT_STAGE_ID
+        stages.set_stage_env(stage_id)
 
     from pipeline.utils.run_log import run_logged
 

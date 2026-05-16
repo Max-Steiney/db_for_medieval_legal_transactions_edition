@@ -30,6 +30,14 @@ Einträge in umgekehrt chronologischer Reihenfolge, neueste oben.
 
 ---
 
+## 2026-05-16 Stufenmodell fuer Korpus-Auswahl und Annotationsebenen
+
+Branch `corpus-and-data-layers`. Neues Modul `frontend/stages.py` mit vier benannten Stufen als Dict, plus Hilfsfunktionen `active_stage()` und `set_stage_env()`. CLI-Flag `--stage N` in `frontend/__main__.py`; `--include-mentioned` bleibt als Alias auf Stufe 2 erhalten. `frontend/config.py` und `pipeline/config.py` lesen `FRONTEND_STAGE` als zweite Aktivierungsquelle neben den direkten Env-Vars, sodass Ad-hoc-Pipeline-Laeufe unveraendert funktionieren.
+
+Hintergrund: die Mail von Korbinian vom 16. Mai bringt drei Achsen ueber den heutigen Mentioned-Toggle hinaus, naemlich neue Subkorpora mit konsequenter Orts-Annotation, vier Forschungsfragen mit unterschiedlichen Datenstand-Anforderungen und einen geplanten Karten-Layer. Statt fuer jede Anforderung einen weiteren Boolean-Schalter einzufuehren, buendelt das Stufenmodell Korpus-Auswahl und Annotationsebenen als zitierbares Profil. Stufen 1 und 2 sind heute funktional aktiv und byte-identisch zum vorigen Zwei-Schalter-Stand, Stufen 3 und 4 bauen, liefern aber zunaechst denselben Daten-Output, bis die zugehoerigen Subkorpora und Features datenseitig aktiviert sind.
+
+Konsequenz: jede Aussage des Frontends ist interpretierbar als Aussage unter einer bestimmten Stufe. Decision in [[decisions#Stufenmodell fuer Korpus-Auswahl und Annotationsebenen]]. Reports, Provenienz-Tooltips und Diskussionen koennen die Stufe ab jetzt benennen.
+
 ## 2026-05-16 TEI-Inventar als vierter Verifikationsmodus
 
 Neues Modul `verification/inventory.py` und CLI-Modus `python -m verification.run --inventory`. Scannt das aktive `sources/`-Verzeichnis pro Subkorpus und zaehlt jedes Element mit Datei-Anzahl und allen vorkommenden Attributen samt Top-Werten. Ueber die Env-Var `VERIFY_SOURCES_DIR` laesst sich der Scan gegen ein alternatives Repo-Clone richten, ohne das Hauptsetup zu beruehren.

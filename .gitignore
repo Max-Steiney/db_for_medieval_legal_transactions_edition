@@ -18,6 +18,10 @@ node_modules/
 package-lock.json
 .vite/
 
-# Vergleichsbuild-Output mit eingeschlossenen mentioned events.
-# Wird per `python -m frontend build --include-mentioned` erzeugt und nicht publiziert.
+# Stufenmodell-Builds, siehe frontend/stages.py.
+# docs-with-mentioned/ ist Stufe 2 (Vergleich mit mentioned events).
+# docs-full/ ist Stufe 3 (voller _ready-Bestand).
+# docs-max/ ist Stufe 4 (Maximalversion). Keiner dieser Builds wird publiziert.
 docs-with-mentioned/
+docs-full/
+docs-max/

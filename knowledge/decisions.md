@@ -187,6 +187,23 @@ Verschachtelte rs-Events landen über `pipeline/utils/event_helpers.py::iter_top
 
 **Nicht gemeint ist**, dass `docs-with-mentioned/` öffentlich publiziert wird. Der Stand ist ein editorisches Vergleichswerkzeug. GitHub Pages serviert weiterhin nur `docs/`.
 
+## Stufenmodell für Korpus-Auswahl und Annotationsebenen
+
+**Entscheidung.** Der Build kennt vier benannte Stufen, die Korpus-Auswahl und Annotationsebenen als zitierbares Profil bündeln. Aktiviert über `python -m frontend build --stage N` (N in 1 bis 4); `--include-mentioned` bleibt als Alias auf Stufe 2 erhalten.
+
+| Stufe | Subkorpora | Mentioned | Orts-Sichtbarkeit | Anzeige-Filter | Output |
+|---|---|---|---|---|---|
+| 1 Publikation | nur freigegebene `_ready` | aus | nur Inline-Markup | fest auf freigegeben | `docs/` |
+| 2 Vergleich | wie Stufe 1 | ein | wie Stufe 1 | wie Stufe 1 | `docs-with-mentioned/` |
+| 3 Voller `_ready`-Bestand | alle `_ready` | aus | Ortsregister | Freigabe-Badge umschaltbar | `docs-full/` |
+| 4 Maximalversion | alle mit TEI | ein | Register plus Karte | wie Stufe 3 | `docs-max/` |
+
+**Begründung.** Zuvor steuerten zwei voneinander unabhängige Schalter den Build, `RELEASED_CORPORA` als Build-Zeit-Filter und `PIPELINE_INCLUDE_MENTIONED_EVENTS` als Env-Var. Mit den von Korbinian neu eingespielten Subkorpora (QGW 1448–57, Satzbuch CD 1448–60) und den vier Forschungsfragen aus der Mail vom 16. Mai werden mehr Achsen relevant: Orts-Annotation, Freigabe-Status pro Subkorpus, Mentioned-Events. Jeder neue Boolean-Schalter würde die Aufruflogik vergrößern, ohne die Stände interpretierbar zu machen. Das Stufenmodell macht jeden Build-Stand zu einer benannten, zitierbaren Konfiguration, die in Provenienz-Tooltips, Reports und Diskussionen referenziert werden kann.
+
+**Konsequenz.** `frontend/stages.py` definiert die Stufen als Dict mit den Achsen `corpora_scope`, `include_mentioned`, `place_visibility`, `display_filter`, `output_dir`. `set_stage_env()` setzt `FRONTEND_STAGE` und davon abgeleitete Env-Vars. `frontend/config.py` und `pipeline/config.py` lesen `FRONTEND_STAGE` als zweite Aktivierungsquelle neben den direkten Env-Vars; Ad-hoc-Pipeline-Läufe (`PIPELINE_INCLUDE_MENTIONED_EVENTS=1 python -m pipeline transform`) funktionieren unverändert. Stufen 1 und 2 sind heute funktional aktiv und byte-identisch zum vorigen Zwei-Schalter-Stand; Stufen 3 und 4 bauen, liefern aber zunächst denselben Daten-Output, bis die zugehörigen Subkorpora und Features (Ortsregister, Karte, Freigabe-Filter) datenseitig aktiviert sind.
+
+**Nicht gemeint ist**, dass eine Stufe öffentlich publiziert wird außer Stufe 1. Stufen 2 bis 4 sind editorische Werkzeuge; `.gitignore` hält `docs-with-mentioned/`, `docs-full/` und `docs-max/` aus dem Repo. GitHub Pages serviert weiterhin nur `docs/`.
+
 ## Begriff Quellenkorpus
 
 **Entscheidung.** Die oberste Gruppierungsebene der Datenbasis heißt „Quellenkorpus", nicht „Sammlung".
