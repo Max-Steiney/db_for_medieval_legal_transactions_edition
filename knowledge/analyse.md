@@ -27,7 +27,7 @@ Der Analysebereich versammelt die quantitativen Zugänge zur Datenbasis. Er steh
 
 Jede Aggregat-Zelle ist klickbar und öffnet das [[ui-design#Drill-down-Overlay]] mit den beitragenden Quellen — Donut-Arc und Legend-Item für Funktionsrollen und Beziehungstypen, Bar für Transaktionstypen, Tabellenzeile für Bezeichnungen. Im Footer steht der Cross-Page-Sprung in die Quellen-Liste mit übernommenem Zeitraum-und-Geschlecht-Filter ([[ui-design#Cross-Page-Sprung in die Quellen-Liste]]). Der Filter-Stand wird in die URL serialisiert, damit jeder Forschungsstand zitierbar ist ([[ui-design#URL-State-Sync]]).
 
-**Abfragen** (`/analysis/index.html`) bedient zwei Einstiegsmodi nebeneinander: eine kuratierte Galerie konkreter Forschungsfragen als oberste Ebene, ein freier Custom-Builder darunter im aufklappbaren `<details>`. Architektur und Pivot-Begründung in [[decisions#Analyse-Seite mit Frage-Galerie und Custom-Builder]].
+**Abfragen** (`/analysis/index.html`) ist eine strukturierte Konstellations-Abfrage: Forscherinnen legen beliebig viele nummerierte Personen-Bedingungen an, je mit Rolle und optionalen Filtern (Geschlecht, Beruf/Tätigkeit/Amt), und sehen alle Rechtsgeschäfte, in denen diese Konstellation gemeinsam erfüllt ist. Globale Filter: Zeitraum, Korpus, Verknüpfungs-Modus (Rechtsgeschäft eng vs. Quelle weit). Live-Update, kein Submit. Architektur und Begründung in [[decisions#Abfragen-Sub-Seite als Konstellations-Abfrage]].
 
 Beide Sub-Seiten teilen sich dieselben Aggregate (`roles.json`, `relations.json`, `transactions.json`) und dieselben Filter-Bausteine in der Sidebar. Eine Filteränderung auf der einen Seite überträgt sich nicht automatisch auf die andere; das ist eine offene Designfrage.
 
@@ -75,29 +75,29 @@ Zwei Laufzeit-Schichten tragen die Analyse-Seiten. Die **Aggregations-Schicht** 
 
 Eine SPARQL-Engine im Browser (Comunica, Oxigraph WASM) wäre möglich, ist aber methodisch nicht gerechtfertigt: die Aggregationen liegen vorberechnet vor, der Engine-Overhead wäre Selbstzweck.
 
-## Frage-Galerie und Custom-Builder
+## Konstellations-Abfrage
 
-Die Abfragen-Sub-Seite hat zwei Einstiegsmodi nebeneinander. Die kuratierte **Frage-Galerie** liegt oben und zeigt konkrete Forschungsfragen als Karten mit Frage-Text, Antwort als Mini-Visualisierung und Kontext-Zahlen. Der **Custom-Builder** liegt darunter im aufklappbaren `<details>` und erlaubt das freie Zusammenstellen einer Abfrage über Subject, Filter-Set und Gruppierung. Das Result-Panel ist die zentrale Antwort-Bühne; sowohl Galerie als auch Builder schreiben dorthin.
+Die Abfragen-Sub-Seite ist eine strukturierte Datenbank-Abfrage über Rollen-Konstellationen. Eine Forscherin stellt sie aus drei Schichten zusammen:
 
-### Frage als first-class concept
+1. **Personen-Bedingungen.** Beliebig viele nummerierte Boxen, je mit einer Rolle (Aussteller, Empfänger, Zeuge oder Siegler, sonstige Beteiligung) und optionalen Filtern für Geschlecht und Beruf/Tätigkeit/Amt. Die Box ist visuell selbsterklärend; sie braucht kein Etikett. Im UI heißt sie an den wenigen sichtbaren Stellen schlicht „Personenblock" oder wird nur über ihre Nummer adressiert.
+2. **Verknüpfungs-Modus.** „Im selben Rechtsgeschäft" (eng, Default) oder „in derselben Quelle" (weit). Im weiten Modus werden alle Personen einer Urkunde oder eines Stadtbuch-Eintrags zusammen ausgewertet, im engen nur die eines einzelnen Geschäfts.
+3. **Globale Filter.** Zeitraum (Range-Slider), Quellenkorpus (Mehrfachauswahl), Reset.
 
-Eine Frage ist eine autonome Datenstruktur mit Frage-Text, benötigten Datenquellen, Visualisierungs-Klasse, einer Mini-Viz für die Galerie-Karte, einem Resolver für das volle SVG-Rendering und einem Coverage-Indikator für epistemische Transparenz. Die Frage ist nicht an eine Familie gebunden; Familien bleiben für den Custom-Builder relevant.
+### Datenbasis und Matching
 
-### Mini-Viz-Stufen
+Datenquelle ist `docs/data/role_constellation.json`, ein Per-Event-Aggregat aus `frontend/aggregator/role_constellation.py`. Jedes Event trägt seine Participants mit `{p, n, r, s, t, o}` (Personen-ID, Name, Rolle, Geschlecht, Titel-Marker, Berufsliste). Das Matching läuft clientseitig in `frontend/static/js/analysis-resolver.js`: pro Treffer ordnet ein Greedy-Pass jedem aktiven Block einen Participant zu, ohne eine Person doppelt zu belegen. Ergebnis ist eine Trefferliste, die nach Datum und Quelle stabil sortiert wird.
 
-Galerie-Karten zeigen die Antwort in subtilen Mini-Visualisierungen, abhängig von der Frage-Form: gestapelte Bars für Verteilungen, Sparklines für Zeitverläufe, Top-N-Mini-Bars oder kleine Heatmaps für Vergleiche. Im Result-Panel werden dieselben Daten als vollwertige SVG-Visualisierung wiederholt — beide Stufen teilen sich die Renderer-Logik.
+### Eingabeformen der Bedingungen
 
-### Custom-Builder
+Geschlecht und Rolle nutzen kontrollierte Vokabulare und werden als Dropdown angeboten. Beruf, Tätigkeit oder Amt wird als Freitext-Feld mit Operator „enthält" und smarten Vorschlägen (HTML-`<datalist>`) aus den Top-Originalvarianten samt Belegzahl angeboten. Eine Bedingung „Titel" gibt es nicht — die TEI-Edition trennt Honorifics nicht von Berufen, beide stehen gemeinsam in `<occupation>`. Eine eigene Titel-Achse wäre eine Pipeline-Erweiterung im Schwester-Repo, nicht eine UI-Frage.
 
-Im aufklappbaren `<details>` baut die Nutzerin eine eigene Abfrage aus drei Slots: Subject (Person, Organisation, Event, Quelle), Filter-Set (typisierte Filter wie Geschlecht, Rolle, Quellenkorpus, Dekade) und Gruppierung (Dekade, Korpus, Geschlecht, Organisationstyp). Einige Resolver sind als Galerie-Antwort fertig, aber noch nicht als Slot-Kombination im Builder ausgebaut.
+### Anfangszustand und Empty-States
 
-### Capability-Manifest
+Beim Öffnen der Seite ist die Trefferliste leer und kein Personenblock angelegt. Der Empty-State sagt deutlich, was zu tun ist. Sobald mindestens ein Block eine Rolle gesetzt hat, läuft die Abfrage automatisch und zeigt die Treffer-Counts in der Toolbar. Werden alle Bedingungen aufgelockert, kommt die Tabelle wieder in den Empty-State zurück.
 
-Die Brücke zwischen einer (Subject, Filter-Set)-Kombination und den benötigten JSON-Dateien plus Resolver-Funktion lebt in einem deklarativen Capability-Manifest (`analysis-capabilities.js`). Eine neue Frage oder Slot-Kombination wird durch einen Eintrag im Manifest verfügbar, ohne dass der Driver oder der Composer angefasst werden müssen.
+### Permalink und Export
 
-### Permalinks
-
-Permalinks sind doppelt: `#q=<id>` adressiert eine Galerie-Frage, `#f=<fid>&...` adressiert einen Custom-Builder-Stand mit allen Slot-Werten. Beide sind bidirektional serialisiert; ein Custom-Permalink öffnet das `<details>` beim Page-Load automatisch.
+Der gesamte Abfrage-Stand wird als URL-Fragment serialisiert (`#p1=r=issuer,s=m,o=snyder&p2=r=recipient,s=f&y=1340-1410&c=QGW&scope=event`) und beim Reload reproduziert. Der CSV-Export der angezeigten Tabelle nutzt die UI-Spalten: Datum, Quelle, Korpus, je Personenblock eine Spalte mit dem Personennamen, Rechtsgeschäfts-Typ. Dateiname `abfrage_YYYY-MM-DD.csv`, UTF-8 mit BOM (Excel-kompatibel). Wer eine Trefferzeile in den Datenkorb legt, hält den Quellenbezug über Sitzungen hinweg.
 
 ## Provenienz und epistemische Transparenz
 

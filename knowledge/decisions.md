@@ -55,15 +55,17 @@ Getroffene Leitentscheidungen mit Begründung. Zeitlos formuliert. Pro Eintrag E
 
 **Nicht gemeint ist**, dass jedes Profil eine vollständige Biografie liefert. Die Profile zeigen, was die TEI-Annotation hergibt.
 
-## Analyse-Seite mit Frage-Galerie und Custom-Builder
+## Abfragen-Sub-Seite als Konstellations-Abfrage
 
-**Entscheidung.** Die Abfragen-Sub-Seite (`/analysis/index.html`) bedient zwei Einstiegsmodi nebeneinander: eine kuratierte Galerie konkreter Forschungsfragen als oberste Ebene, ein freier Custom-Builder darunter im aufklappbaren `<details>`. Die Frage ist first-class concept und autonom (`{id, group, text, dataFiles, viz, answer, resolveViz, resolveComparison, resolveDrillDown, coverage}`), nicht an eine Familie gebunden.
+**Entscheidung.** Die Abfragen-Sub-Seite (`/analysis/index.html`) ist eine strukturierte Datenbank-Abfrage über Rollen-Konstellationen, kein Such-UI und keine Frage-Galerie. Eine Forscherin legt N nummerierte Personen-Bedingungen an, je mit Rolle und optionalen Filtern (Geschlecht, Beruf/Tätigkeit/Amt als Substring-Match auf der Originalschreibung). Alle Bedingungen müssen gemeinsam in demselben Rechtsgeschäft (eng, Default) oder in derselben Quelle (weit) erfüllt sein. Globale Filter: Zeitraum, Quellenkorpus. Anfangszustand: keine Personen-Bedingung, leere Trefferliste. Live-Update bei jeder Änderung.
 
-**Begründung.** Die frühere Slot-Workbench mit Template-Familien als oberster Mental-Model-Ebene zwang Nutzerinnen, sich erst durch eine Familien-Tab-Bar zu navigieren, bevor sie ihre Frage formulieren konnten. Forscherinnen kommen aber mit der Frage selbst, nicht mit einer Familien-Kategorie. Die Galerie bietet direkten Zugriff über den Frage-Text; der Custom-Builder bleibt für die freie Kombination von Slots verfügbar, ist aber nicht der Default-Einstieg.
+**Begründung.** Forscherinnen kommen mit konkreten Konstellationsfragen („männliche Aussteller mit Tätigkeit X, weibliche Empfängerinnen mit Beruf Y") an die Datenbank, nicht mit abstrakten Slot-Subjects. Die strukturierte Abfrage über Bedingungen, die parallel erfüllt sein müssen, bildet das Forschungsinteresse direkter ab als eine Frage-Galerie mit vorgefertigten Resolvern. Sie ist auch näher am Sprachgefühl der Vorgänger-Datenbank, die als „Standardsuche" mit kombinierbaren Bedingungen funktioniert hat.
 
-**Konsequenz.** Galerie-Karten tragen subtile Mini-Visualisierungen; das Result-Panel zeigt vollwertige SVG-Renderings. Beide Stufen teilen sich die Renderer-Logik. Permalinks doppelt: `#q=<id>` für die Galerie, `#f=<fid>&...` für den Custom-Builder. JS-seitig getrennt in `analysis-composer.js` (UI), `analysis-capabilities.js` (Capability-Manifest) und `analysis.js` (Driver).
+**Konsequenz.** Eine einzelne JS-Datei `analysis-resolver.js` lädt `docs/data/role_constellation.json` lazy, hält den Zustand im DOM und in der URL, matcht Konstellationen clientseitig gegen `events[]`. Die alten Module `analysis.js`, `analysis-composer.js`, `analysis-capabilities.js` (Frage-Galerie-Implementierung) sind entfernt. Permalinks serialisieren die ganze Abfrage: `#p1=r=issuer,s=m,o=snyder&p2=r=recipient,s=f&y=1340-1410&c=QGW`. CSV-Export gibt genau die Bildschirmspalten heraus.
 
-**Nicht gemeint ist**, dass die Galerie statisch fest steht. Frage-Resolver lassen sich ergänzen, ohne die Architektur zu ändern; einige Resolver sind als Galerie-Antwort fertig, aber noch nicht als Slot-Kombination im Custom-Builder ausgebaut.
+**Nicht gemeint ist**, dass das UI alle früheren Frage-Galerie-Achsen abdeckt. Beziehungstypen, Transaktionstypen, Aggregat-Donuts liegen auf der Auswertungs-Sub-Seite, nicht hier.
+
+**Datenpfad-Vorbehalte.** Geschlecht und Rolle funktionieren vollständig. Beruf/Tätigkeit/Amt liegt nur als Originalschreibung vor (`snyder`, `purger`, `Bürger` nebeneinander), das UI bietet ein Freitext-Feld mit Operator „enthält" und smarten Vorschlägen aus den Top-Schreibvarianten. Eine Bedingung „Titel = Herr / Bischof" wird nicht angeboten, weil das TEI-Modell Honorifics und Berufe in einer einzigen Annotation (`<occupation>`) zusammenführt; eine separate Titel-Achse erfordert eine Anpassung im Schwester-Repo (Pipeline-Spalte plus TEI-Annotation), nicht im Frontend.
 
 ## Titel und Untertitel
 

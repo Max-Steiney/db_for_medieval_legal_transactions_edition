@@ -1,436 +1,371 @@
 /* ==========================================================================
-   Analyse-Seite — Composer + KPI-Dashboard
+   Abfragen-Seite (/analysis/index.html) — Datenbank-Konstellations-Abfrage.
+
+   Layout-Idee:
+     - Header mit H1 + kompaktem KPI-Strip (Korpus-Kontextzahlen).
+     - Filterleiste einzeilig: Gemeinsam-in | Zeitraum | Korpus | Reset.
+     - Personen-Bedingungen als nummerierte Box-Reihe (1, 2, 3 …).
+     - Treffer-Toolbar mit Counts + Active-Filter-Chips + CSV-Download.
+     - Tabelle "above the fold" beim Laden, Empty-State solange leer.
+
+   Werte ausschliesslich aus tokens.css.
    ========================================================================== */
 
-.analysis {
-    --c-accent: var(--anno-person, #1f5fa3);
-    --c-border: #d8d2c2;
-    --c-border-soft: #e8e3d6;
-    --c-text: #2c2620;
-    --c-text-muted: #6b665e;
-    --c-text-dim: #9a948a;
-    --c-surface: #faf8f3;
-
-    max-width: 1280px;
-    margin: 0 auto;
-    padding: 2rem 2.5rem;
-    color: var(--c-text);
-}
-
-.analysis-head {
-    margin: 0 0 1.5rem 0;
-}
-
-.analysis-head h1 {
-    margin: 0;
-    font-family: var(--font-serif, 'Crimson Pro', Georgia, serif);
-    font-size: 2rem;
-    font-weight: 500;
-}
-
-.analysis-grid {
-    display: grid;
-    grid-template-columns: 320px 1fr;
-    gap: 1.5rem;
-    align-items: start;
-}
-
-/* -------- Composer ---------------------------------------------------- */
-
-.composer {
-    background: white;
-    border: 1px solid var(--c-border);
-    border-radius: 6px;
-    padding: 1.25rem 1.5rem 1.5rem 1.5rem;
-    position: sticky;
-    top: 1rem;
-    display: flex;
-    flex-direction: column;
-    gap: 1.25rem;
-}
-
-.composer-loading {
-    color: var(--c-text-muted);
-    font-style: italic;
-    margin: 0;
-}
-
-.composer-group {
-    display: flex;
-    flex-direction: column;
-    gap: 0.5rem;
-}
-
-.composer-group-label {
-    font-family: var(--font-ui, Inter, sans-serif);
-    font-size: 0.75rem;
-    text-transform: uppercase;
-    letter-spacing: 0.06em;
-    color: var(--c-text-muted);
-}
-
-.composer-subjects {
-    display: flex;
-    flex-direction: column;
-    gap: 0.1rem;
-}
-
-.composer-subject {
-    display: flex;
-    align-items: center;
-    gap: 0.6rem;
-    background: transparent;
-    border: none;
-    padding: 0.45rem 0.5rem;
-    cursor: pointer;
-    border-radius: 3px;
-    text-align: left;
-    color: var(--c-text);
-    font-family: var(--font-ui, Inter, sans-serif);
-    font-size: 0.95rem;
-    transition: background-color 0.15s ease;
-}
-
-.composer-subject:hover { background: var(--c-surface); }
-
-.composer-subject-marker {
-    display: inline-block;
-    width: 12px;
-    height: 12px;
-    border-radius: 50%;
-    border: 1.5px solid var(--c-text-dim);
-    flex-shrink: 0;
-    transition: border-color 0.15s ease, background-color 0.15s ease;
-}
-
-.composer-subject.is-active {
-    color: var(--c-accent);
-    font-weight: 600;
-}
-
-.composer-subject.is-active .composer-subject-marker {
-    border-color: var(--c-accent);
-    background: var(--c-accent);
-    box-shadow: inset 0 0 0 2.5px white;
-}
-
-/* Filter-Chips */
-
-.composer-chips {
+/* ---------- KPI-Strip unter H1 ------------------------------------------- */
+.analysis-query .index-header {
     display: flex;
     flex-wrap: wrap;
-    gap: 0.35rem;
-    align-items: center;
+    align-items: baseline;
+    gap: var(--space-md);
+    margin-bottom: var(--space-sm);
 }
-
-.composer-empty-hint {
-    color: var(--c-text-dim);
-    font-family: var(--font-ui, Inter, sans-serif);
-    font-size: 0.82rem;
-    font-style: italic;
+.analysis-query .kpi-strip {
+    margin: 0;
+    font-size: var(--text-sm);
+    color: var(--color-text-light);
 }
-
-.composer-chip {
-    display: inline-flex;
-    align-items: stretch;
-    border: 1px solid var(--c-accent);
-    border-radius: 4px;
-    overflow: hidden;
-    background: rgba(31, 95, 163, 0.04);
-}
-
-.composer-chip-body {
-    background: transparent;
-    border: none;
-    padding: 0.35rem 0.6rem;
-    font-family: var(--font-ui, Inter, sans-serif);
-    font-size: 0.9rem;
-    color: var(--c-text);
-    cursor: pointer;
-    display: inline-flex;
-    align-items: center;
-    gap: 0.4rem;
-}
-
-.composer-chip-body:hover { background: rgba(31, 95, 163, 0.1); }
-
-.composer-chip-label {
-    color: var(--c-text-muted);
-    font-size: 0.85rem;
-}
-
-.composer-chip-value {
+.analysis-query .kpi-strip strong {
+    color: var(--color-text);
     font-weight: 600;
-    color: var(--c-accent);
+}
+.analysis-query .kpi-sep { color: var(--color-text-muted); margin: 0 var(--space-2xs); }
+
+/* ---------- Abfrage-Container -------------------------------------------- */
+.analysis-query .qb {
+    background: var(--color-bg-card);
+    border: 1px solid var(--color-border);
+    border-radius: var(--radius-lg);
+    margin-bottom: var(--space-md);
+}
+.analysis-query .qb-body {
+    padding: var(--space-sm) var(--space-md);
 }
 
-.composer-chip-caret {
-    color: var(--c-text-dim);
-    font-size: 0.7rem;
+/* ---------- Control-Labels (klein, dezent) ------------------------------ */
+.analysis-query .qb-control-label,
+.analysis-query .qb-section-label {
+    display: block;
+    font-family: var(--font-sans);
+    font-size: var(--text-xs);
+    font-weight: 600;
+    text-transform: uppercase;
+    letter-spacing: 0.06em;
+    color: var(--color-text-light);
+    margin: 0 0 var(--space-2xs);
 }
 
-.composer-chip-remove {
-    background: transparent;
-    border: none;
-    border-left: 1px solid rgba(31, 95, 163, 0.3);
-    color: var(--c-text-muted);
-    padding: 0 0.5rem;
-    font-size: 1rem;
-    line-height: 1;
-    cursor: pointer;
-    transition: background-color 0.12s ease, color 0.12s ease;
+/* ---------- Filterleiste einzeilig --------------------------------------- */
+.analysis-query .qb-filters-row {
+    display: grid;
+    grid-template-columns: auto minmax(0, 1fr) auto auto;
+    gap: var(--space-md);
+    align-items: end;
+    margin-bottom: var(--space-md);
+    padding-bottom: var(--space-sm);
+    border-bottom: 1px solid var(--color-border-light);
+}
+.analysis-query .qb-filter-block { min-width: 0; }
+.analysis-query .qb-filter-block .form-filter-chips {
+    display: flex;
+    flex-wrap: wrap;
+    gap: var(--space-2xs);
 }
 
-.composer-chip-remove:hover,
-.composer-chip-remove:focus-visible {
-    background: rgba(176, 69, 69, 0.1);
-    color: #b04545;
-    outline: none;
+/* Zeitraum-Slider: Histogramm-Bars optisch deaktivieren (Macro-Grundgeruest
+   bleibt unveraendert, damit die anderen Listen-Seiten weiter funktionieren). */
+.analysis-query .range-slider { padding-top: 0; }
+.analysis-query .range-histogram { display: none; }
+.analysis-query .range-inputs { margin-top: 0; }
+.analysis-query .range-labels {
+    font-size: var(--text-xs);
+    color: var(--color-text-light);
 }
 
-.composer-chip-add {
-    background: transparent;
-    border: 1px dashed var(--c-border);
-    border-radius: 4px;
-    color: var(--c-text-muted);
-    font-family: var(--font-ui, Inter, sans-serif);
-    font-size: 0.85rem;
-    padding: 0.35rem 0.7rem;
-    cursor: pointer;
-    transition: border-color 0.15s ease, color 0.15s ease, background-color 0.15s ease;
+/* Korpus-Chips: horizontale Zeile statt gestapelt. */
+.analysis-query .collection-chips {
+    display: flex;
+    flex-direction: row;
+    flex-wrap: wrap;
+    gap: var(--space-2xs);
 }
 
-.composer-chip-add:hover:not(.is-disabled) {
-    border-color: var(--c-accent);
-    color: var(--c-accent);
-    background: rgba(31, 95, 163, 0.04);
+/* Reset-Block in der Filterleiste: kein Label, Button rechts buendig. */
+.analysis-query .qb-filter-block--reset { align-self: end; }
+.analysis-query .qb-filter-block--reset .sidebar-reset {
+    width: auto;
+    margin: 0;
 }
 
-.composer-chip-add.is-disabled {
-    cursor: not-allowed;
-    color: var(--c-text-dim);
+/* ---------- Personen-Sektion --------------------------------------------- */
+.analysis-query .qb-persons { margin-bottom: var(--space-md); }
+
+/* ---------- Personen-Tabelle (Bedingungs-Zeilen) ------------------------- */
+.analysis-query .qb-persons-table {
+    width: 100%;
+    border-collapse: collapse;
+    font-size: var(--text-sm);
+    margin-bottom: var(--space-xs);
 }
-
-/* -------- Picker (Popover) ------------------------------------------- */
-
-.composer-picker {
-    background: white;
-    border: 1px solid var(--c-border);
-    border-radius: 6px;
-    box-shadow: 0 8px 24px rgba(0, 0, 0, 0.12);
-    padding: 0.35rem;
-    z-index: 1000;
-    min-width: 200px;
-    max-width: 360px;
-    max-height: 60vh;
-    overflow-y: auto;
-}
-
-.composer-picker-title {
-    font-family: var(--font-ui, Inter, sans-serif);
-    font-size: 0.7rem;
+.analysis-query .qb-persons-table thead th {
+    text-align: left;
+    font-family: var(--font-sans);
+    font-size: var(--text-xs);
+    font-weight: 600;
     text-transform: uppercase;
     letter-spacing: 0.05em;
-    color: var(--c-text-muted);
-    padding: 0.4rem 0.6rem;
-    border-bottom: 1px solid var(--c-border-soft);
-    margin-bottom: 0.25rem;
+    color: var(--color-text-light);
+    padding: var(--space-2xs) var(--space-xs);
+    border-bottom: 1px solid var(--color-border);
+    white-space: nowrap;
 }
+.analysis-query .qb-col-hint {
+    font-weight: 400;
+    text-transform: none;
+    letter-spacing: 0;
+    color: var(--color-text-muted);
+    margin-left: var(--space-2xs);
+    font-size: var(--text-2xs);
+}
+.analysis-query .qb-persons-table tbody td {
+    padding: var(--space-2xs) var(--space-xs);
+    border-bottom: 1px solid var(--color-border-light);
+    vertical-align: middle;
+}
+.analysis-query .qb-persons-table.is-empty thead { display: none; }
+.analysis-query .qb-persons-table tbody:empty + .btn-add { margin-top: 0; }
 
-.composer-picker-option {
-    display: flex;
-    width: 100%;
-    background: transparent;
-    border: none;
-    text-align: left;
-    padding: 0.45rem 0.6rem;
-    font-family: var(--font-ui, Inter, sans-serif);
-    font-size: 0.9rem;
-    color: var(--c-text);
-    cursor: pointer;
-    border-radius: 3px;
+/* Spaltenbreiten — kompakt und gleichmaessig. */
+.analysis-query .qb-col-num  { width: 2.5rem; }
+.analysis-query .qb-col-role { width: 12rem; }
+.analysis-query .qb-col-sex  { width: 10rem; }
+.analysis-query .qb-col-occ  { width: auto; min-width: 14rem; }
+.analysis-query .qb-col-rm   { width: 2rem; }
+
+/* Nummern-Pill in der ersten Spalte. */
+.analysis-query .qb-person-num {
+    background: var(--anno-person);
+    color: var(--color-text-inverse);
+    border-radius: 999px;
+    width: 1.25rem;
+    height: 1.25rem;
+    display: inline-flex;
     align-items: center;
-    justify-content: space-between;
-    gap: 0.6rem;
+    justify-content: center;
+    font-size: var(--text-2xs);
+    font-weight: 700;
+    line-height: 1;
 }
 
-.composer-picker-option:hover:not(.is-disabled) { background: var(--c-surface); }
-
-.composer-picker-option.is-active {
-    background: rgba(31, 95, 163, 0.08);
+/* Form-Controls in den Zeilen. */
+.analysis-query .qb-persons-table select,
+.analysis-query .qb-persons-table input {
+    width: 100%;
+    padding: 2px var(--space-2xs);
+    font-family: var(--font-sans);
+    font-size: var(--text-sm);
+    border: 1px solid var(--color-border);
+    border-radius: var(--radius);
+    background: var(--color-bg-card);
+    color: var(--color-text);
+}
+.analysis-query .qb-person-role {
     font-weight: 600;
+    cursor: pointer;
 }
 
-.composer-picker-option.is-disabled {
-    color: var(--c-text-dim);
+/* Entfernen-Button. */
+.analysis-query .qb-person-remove {
+    border: none;
+    background: transparent;
+    color: var(--color-text-light);
+    cursor: pointer;
+    font-size: var(--text-lg);
+    line-height: 1;
+    padding: 0 var(--space-2xs);
+}
+.analysis-query .qb-person-remove:hover { color: var(--anno-person); }
+
+/* ---------- Add-Buttons (gestrichelt, dezent) --------------------------- */
+.analysis-query .btn-add {
+    background: none;
+    border: 1px dashed var(--color-border);
+    color: var(--color-text-light);
+    padding: var(--space-2xs) var(--space-sm);
+    border-radius: var(--radius);
+    font-family: var(--font-sans);
+    font-size: var(--text-xs);
+    cursor: pointer;
+    text-align: center;
+    margin-top: var(--space-2xs);
+    line-height: 1.4;
+}
+.analysis-query .btn-add:hover {
+    border-color: var(--anno-person);
+    color: var(--anno-person);
+}
+.analysis-query .person-card .btn-add { width: 100%; }
+.analysis-query .btn-add--primary {
+    border-style: solid;
+    border-color: var(--anno-person);
+    color: var(--anno-person);
+    background: var(--anno-person-bg);
+    font-weight: 500;
+    margin-top: var(--space-xs);
+    width: auto;
+    padding: var(--space-2xs) var(--space-md);
+}
+
+/* ---------- Ergebnis-Toolbar --------------------------------------------- */
+.analysis-query .main-toolbar {
+    display: flex;
+    align-items: baseline;
+    gap: var(--space-sm);
+    flex-wrap: wrap;
+    margin-bottom: var(--space-2xs);
+}
+.analysis-query .main-toolbar .result-count {
+    display: inline;
+    margin: 0;
+    font-size: var(--text-base);
+    font-weight: 600;
+    color: var(--color-text);
+}
+.analysis-query .result-count-sep {
+    color: var(--color-text-muted);
+    margin: 0 var(--space-2xs);
+}
+
+/* ---------- Aktion-Buttons ueber der Tabelle ---------------------------- */
+.analysis-query .results-actions {
+    display: flex;
+    gap: var(--space-xs);
+    margin-bottom: var(--space-sm);
+    flex-wrap: wrap;
+    align-items: center;
+}
+.analysis-query .results-actions-spacer { flex: 1; }
+.analysis-query .toolbar-btn {
+    background: var(--color-bg-card);
+    border: 1px solid var(--color-border);
+    color: var(--color-text);
+    padding: var(--space-2xs) var(--space-sm);
+    border-radius: var(--radius);
+    font-family: var(--font-sans);
+    font-size: var(--text-sm);
+    cursor: pointer;
+    line-height: 1.4;
+    display: inline-flex;
+    align-items: center;
+    gap: var(--space-2xs);
+}
+.analysis-query .toolbar-btn:hover:not([disabled]) {
+    border-color: var(--anno-person);
+    color: var(--anno-person);
+}
+.analysis-query .toolbar-btn[disabled] {
+    opacity: 0.55;
     cursor: not-allowed;
 }
 
-.composer-picker-option.is-zero .composer-picker-option-count {
-    color: var(--c-text-dim);
+/* ---------- Tabellenspalten-Breiten ------------------------------------- */
+.analysis-query .col-corpus  { width: 7rem; }
+.analysis-query .col-persons { min-width: 18rem; }
+.analysis-query .col-tx      { width: 9rem; }
+
+/* Pro-Person-Pill in der Personen-Spalte: kompakt nebeneinander. */
+.analysis-query .person-pill {
+    display: inline-flex;
+    align-items: center;
+    gap: var(--space-2xs);
+    margin: 0 var(--space-2xs) var(--space-2xs) 0;
+    padding: 2px var(--space-2xs);
+    border: 1px solid var(--color-border-light);
+    border-radius: var(--radius);
+    font-size: var(--text-xs);
+    line-height: 1.3;
+    background: var(--color-bg-card);
 }
-
-.composer-picker-option-label { flex: 1; }
-
-.composer-picker-option-count {
-    font-variant-numeric: tabular-nums;
-    color: var(--c-text-muted);
-    font-size: 0.82rem;
+.analysis-query .person-pill-num {
+    background: var(--anno-person);
+    color: var(--color-text-inverse);
+    border-radius: 999px;
+    width: 1rem;
+    height: 1rem;
+    display: inline-flex;
+    align-items: center;
+    justify-content: center;
+    font-size: 0.65rem;
+    font-weight: 700;
 }
+.analysis-query .person-pill a { color: var(--color-text); }
 
-/* -------- Result ------------------------------------------------------ */
-
-.result {
-    background: white;
-    border: 1px solid var(--c-border);
-    border-radius: 6px;
-    padding: 1.75rem 2rem;
-    min-height: 16rem;
+/* ---------- Onboarding-Block im Empty-State ----------------------------- */
+.analysis-query .qb-onboarding {
+    margin-top: var(--space-md);
+    padding-top: var(--space-md);
+    border-top: 1px solid var(--color-border);
+    text-align: left;
 }
-
-.result-section-title {
-    font-family: var(--font-ui, Inter, sans-serif);
-    font-size: 0.78rem;
-    text-transform: uppercase;
-    letter-spacing: 0.06em;
-    color: var(--c-text-muted);
-    margin: 0 0 0.85rem 0;
+.analysis-query .qb-onboarding-intro {
+    margin: 0 0 var(--space-sm) 0;
+    font-size: var(--text-sm);
+    color: var(--color-text);
 }
-
-.result-primary {
-    margin-bottom: 1.75rem;
-    padding-bottom: 1.5rem;
-    border-bottom: 1px solid var(--c-border-soft);
+.analysis-query .qb-onboarding-hint {
+    margin: var(--space-sm) 0 0 0;
+    font-size: var(--text-xs);
+    color: var(--color-text-light);
 }
-
-.result-kpis {
+.analysis-query .qb-examples {
     display: grid;
-    grid-template-columns: repeat(auto-fit, minmax(170px, 1fr));
-    gap: 1.25rem 1.75rem;
-    margin-bottom: 0.5rem;
+    grid-template-columns: repeat(auto-fit, minmax(16rem, 1fr));
+    gap: var(--space-xs);
 }
-
-.result-kpi {
+.analysis-query .qb-example {
     display: flex;
     flex-direction: column;
-    gap: 0.2rem;
-}
-
-.result-kpi-value {
-    font-family: var(--font-serif, 'Crimson Pro', Georgia, serif);
-    font-size: 1.9rem;
-    font-weight: 500;
-    color: var(--c-text);
-    font-variant-numeric: tabular-nums;
-    line-height: 1.1;
-}
-
-.result-kpi.is-primary .result-kpi-value {
-    font-size: 2.8rem;
-    color: var(--c-accent);
-}
-
-.result-kpi-suffix {
-    font-family: var(--font-ui, Inter, sans-serif);
-    font-size: 0.85rem;
-    font-weight: 400;
-    color: var(--c-text-muted);
-    margin-left: 0.4rem;
-    white-space: pre;
-}
-
-.result-kpi.is-primary .result-kpi-suffix { font-size: 1rem; }
-
-.result-kpi-label {
-    color: var(--c-text-muted);
-    font-family: var(--font-ui, Inter, sans-serif);
-    font-size: 0.85rem;
-}
-
-.result-kpi-hint {
-    color: var(--c-text-dim);
-    font-family: var(--font-ui, Inter, sans-serif);
-    font-size: 0.75rem;
-    font-style: italic;
-}
-
-.result-blocked {
-    background: rgba(176, 69, 69, 0.05);
-    border: 1px solid rgba(176, 69, 69, 0.18);
-    border-radius: 4px;
-    color: #8c4a4a;
-    font-family: var(--font-ui, Inter, sans-serif);
-    font-size: 0.95rem;
-    padding: 0.75rem 1rem;
-    margin-bottom: 1.5rem;
-}
-
-.result-caveat {
-    color: var(--c-text-muted);
-    font-family: var(--font-ui, Inter, sans-serif);
-    font-size: 0.85rem;
-    margin: 0.85rem 0 0 0;
-    font-style: italic;
-}
-
-.result-actions {
-    display: flex;
-    gap: 0.5rem;
-    margin: 1rem 0 0 0;
-    flex-wrap: wrap;
-}
-
-.result-action-btn {
-    background: transparent;
-    border: 1px solid var(--c-border);
-    border-radius: 4px;
-    color: var(--c-text);
-    font-family: var(--font-ui, Inter, sans-serif);
-    font-size: 0.85rem;
-    padding: 0.4rem 0.85rem;
+    gap: var(--space-3xs);
+    text-align: left;
+    padding: var(--space-xs) var(--space-sm);
+    background: var(--color-surface);
+    border: 1px solid var(--color-border);
+    border-radius: var(--radius);
+    color: var(--color-text);
     cursor: pointer;
-    transition: background-color 0.15s ease, border-color 0.15s ease;
+    font-family: var(--font-sans);
+    line-height: 1.35;
+    transition: border-color 0.15s, background 0.15s;
+}
+.analysis-query .qb-example:hover,
+.analysis-query .qb-example:focus-visible {
+    border-color: var(--anno-person);
+    background: var(--color-surface-alt, var(--color-surface));
+    outline: none;
+}
+.analysis-query .qb-example-title {
+    font-size: var(--text-sm);
+    font-weight: 600;
+}
+.analysis-query .qb-example-desc {
+    font-size: var(--text-xs);
+    color: var(--color-text-light);
+}
+.analysis-query .qb-example code {
+    font-family: var(--font-mono, monospace);
+    font-size: 0.92em;
+    background: var(--color-bg, #fff);
+    padding: 0 0.18em;
+    border-radius: 2px;
 }
 
-.result-action-btn:hover:not(:disabled) {
-    background: var(--c-surface);
-    border-color: var(--c-accent);
-}
-
-.result-action-btn:disabled {
-    color: var(--c-text-dim);
-    cursor: not-allowed;
-}
-
-.result-action-btn-permalink { margin-left: auto; }
-
-.result-action-btn.is-ok {
-    color: #2c8a4e;
-    border-color: #2c8a4e;
-}
-
-.result-coverage {
-    color: var(--c-text-muted);
-    font-family: var(--font-ui, Inter, sans-serif);
-    font-size: 0.82rem;
-    margin: 1.25rem 0 0 0;
-    padding-top: 0.75rem;
-    border-top: 1px solid var(--c-border-soft);
-    line-height: 1.5;
-}
-
-/* -------- Responsive -------------------------------------------------- */
-
-@media (max-width: 980px) {
-    .analysis-grid { grid-template-columns: 1fr; }
-    .composer { position: static; }
-}
-
-@media (max-width: 720px) {
-    .analysis { padding: 1.25rem 1rem; }
-    .analysis-head h1 { font-size: 1.5rem; }
-    .composer { padding: 1rem 1.25rem; }
-    .result { padding: 1.25rem; }
-    .result-kpi.is-primary .result-kpi-value { font-size: 2rem; }
-    .result-action-btn-permalink { margin-left: 0; }
+/* ---------- Responsive --------------------------------------------------- */
+@media (max-width: 900px) {
+    .analysis-query .qb-filters-row {
+        grid-template-columns: 1fr;
+        gap: var(--space-sm);
+    }
+    /* Personen-Tabelle: bei schmaler Viewport horizontal scrollbar machen
+       statt umzubrechen, damit die Spalten-Logik klar bleibt. */
+    .analysis-query .qb-persons { overflow-x: auto; }
+    .analysis-query .qb-persons-table { min-width: 40rem; }
 }

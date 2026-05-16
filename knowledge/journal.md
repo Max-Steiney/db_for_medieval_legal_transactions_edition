@@ -30,6 +30,20 @@ Einträge in umgekehrt chronologischer Reihenfolge, neueste oben.
 
 ---
 
+## 2026-05-16 Konstellations-Abfrage mit Beispiel-Einstieg
+
+Die Abfragen-Sub-Seite (`/analysis/index.html`) wird von der bisherigen Galerie-Wireframe auf eine **strukturierte Konstellations-Abfrage** umgestellt. Forscherinnen legen N nummerierte Personenblöcke an, je mit Rolle und optional Geschlecht und Beruf-Substring. Globale Filter (Zeitraum, Korpus, Verknüpfungs-Modus „im selben Rechtsgeschäft" gegen „in derselben Quelle") schränken die Suche ein. Permalink, CSV-Export, Datenkorb-Anbindung pro Trefferzeile.
+
+Aggregator `frontend/aggregator/role_constellation.py` liefert ein Per-Event-Aggregat `docs/data/role_constellation.json` (2577 Events mit Participants). Resolver `frontend/static/js/analysis-resolver.js` matcht Konstellationen clientseitig. Die alten Galerie-JS-Module (`analysis.js`, `analysis-composer.js`, `analysis-capabilities.js`, ca. 1100 LOC) sind gelöscht.
+
+Onboarding ergänzt den ansonsten leeren Anfangszustand. Vier Beispiel-Chips im Empty-State setzen typische Konstellationen vor (Ausstellerin weiblich, Ausstellerin-Empfänger-Paar weiblich-männlich, Beruf enthält `urger`, Beruf enthält `pfarr`). Die Chip-Labels machen die Mechanik (Substring auf Originalannotation) sichtbar, damit klar ist: Beispiele demonstrieren das Werkzeug, sie sind keine kanonischen Klassifikationen. Alle Felder bleiben editierbar.
+
+Konzeptioneller Leitsatz: was im Frontend als Beispiel sichtbar ist, darf Substring-getrieben sein, weil die Forscherin den Mechanismus im Personenblock sieht und korrigieren kann. Was im Aggregator versteckt eine Zahl produziert, darf das nicht. Daraus folgt der Befund im findings-Register: die Heirats-Substring-Liste in `research_questions.py` (Frontend und Verifikation) ist provisorisch und gehört als typisierende Spalte `is_marriage` in `normalisation_lists/kin_norm_matching.csv` ins Pipeline-Repo, analog zu `Gewerbe_nach_Uhlirz_GstW`.
+
+Knowledge: `decisions.md` Eintrag „Abfragen-Sub-Seite als Konstellations-Abfrage" ersetzt den alten Galerie/Custom-Builder-Eintrag. `analyse.md` Sektion „Konstellations-Abfrage" neu strukturiert. `specification.md` neue User-Story „Personenkonstellationen über kombinierte Bedingungen abfragen" plus Querschnitts-Eigenschaft „Datenpfad-Ehrlichkeit"; Version 0.5. Tests aktualisiert (Konstellations-Hooks statt Galerie-IDs), 356 grün.
+
+Co-Authored-By der ursprünglichen Commits c0c534533f (feat) und d5f97fe83d (refactor) aus den `worktree-agent-*`-Branches; diese werden im selben Schritt verworfen, weil ihre Inhalte hier auf `main` landen.
+
 ## 2026-05-16 Wissensbasis-Konsolidierung nach Stufenmodell und Forschungsfragen
 
 Konsolidierung aller Markdown-Dokumente unter `knowledge/` auf den heutigen Stand. Auslöser ist die Mail von Korbinian mit den vier Forschungsfragen plus dem Stufenmodell-Branch. Zwei Klassen von Befunden, beide chirurgisch gefixt, ohne grosse Umschreibungen.

@@ -6,19 +6,20 @@
     <meta http-equiv="Content-Security-Policy" content="default-src 'self'; script-src 'self'; style-src 'self'; font-src 'self'; img-src 'self' data: https://images.monasterium.net https://www.monasterium.net; connect-src 'self'; base-uri 'self'; form-action 'self'; upgrade-insecure-requests">
     <meta name="referrer" content="strict-origin-when-cross-origin">
     <meta http-equiv="Permissions-Policy" content="camera=(), microphone=(), geolocation=(), interest-cohort=()">
-    <title>Analyse, Datenbank</title>
+    <title>Abfragen, Datenbank</title>
     <link rel="preload" as="font" type="font/woff2" crossorigin
           href="../static/fonts/inter-400-latin.woff2">
-    <link rel="stylesheet" href="../static/css/fonts.css?v=20260516202943">
-    <link rel="stylesheet" href="../static/css/tokens.css?v=20260516202943">
-    <link rel="stylesheet" href="../static/css/base.css?v=20260516202943">
-    <link rel="stylesheet" href="../static/css/components.css?v=20260516202943">
-    <link rel="stylesheet" href="../static/css/responsive.css?v=20260516202943">
-    <link rel="stylesheet" href="../static/css/print.css?v=20260516202943">
-    <link rel="stylesheet" href="../static/css/tip.css?v=20260516202943">
+    <link rel="stylesheet" href="../static/css/fonts.css?v=20260516222241">
+    <link rel="stylesheet" href="../static/css/tokens.css?v=20260516222241">
+    <link rel="stylesheet" href="../static/css/base.css?v=20260516222241">
+    <link rel="stylesheet" href="../static/css/components.css?v=20260516222241">
+    <link rel="stylesheet" href="../static/css/responsive.css?v=20260516222241">
+    <link rel="stylesheet" href="../static/css/print.css?v=20260516222241">
+    <link rel="stylesheet" href="../static/css/tip.css?v=20260516222241">
     
 
-<link rel="stylesheet" href="../static/css/analysis.css?v=20260516203001">
+<link rel="stylesheet" href="../static/css/index.css?v=20260516222257">
+<link rel="stylesheet" href="../static/css/analysis.css?v=20260516222257">
 
 </head>
 <body data-root-path=".."
@@ -106,49 +107,607 @@
 
     <main class="site-main" id="main-content">
         
-<div class="analysis" id="analysis">
+<div class="index-page analysis-query">
 
-    <header class="analysis-head">
-        <h1>Analyse</h1>
+    <header class="index-header">
+        <h1>Abfragen</h1>
+        <p class="kpi-strip">
+            Korpus:
+            <strong>2.570</strong>&nbsp;Quellen
+            <span class="kpi-sep">&middot;</span>
+            <strong>2.577</strong>&nbsp;Rechtsgeschäfte
+            <span class="kpi-sep">&middot;</span>
+            <strong>8.076</strong>&nbsp;Personen
+        </p>
     </header>
 
-    <div class="analysis-grid">
-        <section class="composer" id="composer" aria-label="Abfrage zusammenstellen"></section>
-        <section class="result" id="result" aria-live="polite"></section>
+    
+    <section class="qb" aria-label="Abfrage zusammenstellen">
+
+        <div class="qb-body">
+
+            <div class="qb-filters-row">
+
+                <div class="qb-filter-block">
+                    <span class="qb-control-label">Gemeinsam in
+<span class="tip-wrap">
+    <button type="button" class="tip-trigger tip-trigger--icon"
+            aria-expanded="false" aria-haspopup="dialog"
+            aria-controls="help-link"
+            data-tip="help-link"
+            aria-label="Hilfe: Gemeinsam in">
+        <svg width="13" height="13" viewBox="0 0 16 16" aria-hidden="true">
+            <circle cx="8" cy="8" r="7" stroke="currentColor" stroke-width="1.4" fill="none"/>
+            <text x="8" y="11.6" text-anchor="middle" font-size="9.5" font-weight="700"
+                  fill="currentColor" font-family="Georgia, serif">i</text>
+        </svg>
+    </button>
+    <aside class="tip-popover tip-popover--help"
+           id="help-link" role="dialog" aria-hidden="true"
+           aria-label="Hilfe: Gemeinsam in">
+        <header class="tip-head">
+            <h3 class="tip-title">Gemeinsam in</h3>
+            <button type="button" class="tip-close" aria-label="Schlie&szlig;en">&times;</button>
+        </header>
+        <div class="tip-body">
+            
+                        <p>Was als <em>gemeinsamer Kontext</em> zaehlt, in dem alle Personen
+                            gleichzeitig erfuellt sein muessen.</p>
+                        <ul>
+                            <li><strong>Quelle</strong> &mdash; weiter: alle Personen in derselben Urkunde / im selben Stadtbuch-Eintrag.</li>
+                            <li><strong>Rechtsgeschaeft</strong> &mdash; enger: alle Personen am selben Akt beteiligt.</li>
+                        </ul>
+                    
+        </div>
+    </aside>
+</span>
+</span>
+                    <div class="form-filter-chips" role="group" aria-label="Verknüpfung der Personen"
+                         data-filter="scope">
+                        <button type="button" class="form-filter-chip" aria-pressed="false"
+                                data-scope="source">
+                            <span class="form-filter-chip-label">derselben Quelle</span>
+                        </button>
+                        <button type="button" class="form-filter-chip is-active" aria-pressed="true"
+                                data-scope="event">
+                            <span class="form-filter-chip-label">demselben Rechtsgeschäft</span>
+                        </button>
+                    </div>
+                </div>
+
+                <div class="qb-filter-block qb-filter-block--time">
+                    <span class="qb-control-label">Zeitraum</span>
+                    
+
+
+<div class="range-slider" id="range-slider"
+     data-min="1177" data-max="1414">
+    <div class="range-histogram" id="range-histogram">
+        
+        <div class="range-bar"
+             data-decade="1170"
+             data-count="1"
+             data-height="4"
+             data-hint="1170er: 1 Rechtsgeschäft">
+        </div>
+        
+        <div class="range-bar"
+             data-decade="1180"
+             data-count="0"
+             data-height="0"
+             data-hint="1180er: 0 Rechtsgeschäfte">
+        </div>
+        
+        <div class="range-bar"
+             data-decade="1190"
+             data-count="1"
+             data-height="4"
+             data-hint="1190er: 1 Rechtsgeschäft">
+        </div>
+        
+        <div class="range-bar"
+             data-decade="1200"
+             data-count="1"
+             data-height="4"
+             data-hint="1200er: 1 Rechtsgeschäft">
+        </div>
+        
+        <div class="range-bar"
+             data-decade="1210"
+             data-count="0"
+             data-height="0"
+             data-hint="1210er: 0 Rechtsgeschäfte">
+        </div>
+        
+        <div class="range-bar"
+             data-decade="1220"
+             data-count="1"
+             data-height="4"
+             data-hint="1220er: 1 Rechtsgeschäft">
+        </div>
+        
+        <div class="range-bar"
+             data-decade="1230"
+             data-count="1"
+             data-height="4"
+             data-hint="1230er: 1 Rechtsgeschäft">
+        </div>
+        
+        <div class="range-bar"
+             data-decade="1240"
+             data-count="0"
+             data-height="0"
+             data-hint="1240er: 0 Rechtsgeschäfte">
+        </div>
+        
+        <div class="range-bar"
+             data-decade="1250"
+             data-count="1"
+             data-height="4"
+             data-hint="1250er: 1 Rechtsgeschäft">
+        </div>
+        
+        <div class="range-bar"
+             data-decade="1260"
+             data-count="3"
+             data-height="4"
+             data-hint="1260er: 3 Rechtsgeschäfte">
+        </div>
+        
+        <div class="range-bar"
+             data-decade="1270"
+             data-count="8"
+             data-height="4"
+             data-hint="1270er: 8 Rechtsgeschäfte">
+        </div>
+        
+        <div class="range-bar"
+             data-decade="1280"
+             data-count="6"
+             data-height="4"
+             data-hint="1280er: 6 Rechtsgeschäfte">
+        </div>
+        
+        <div class="range-bar"
+             data-decade="1290"
+             data-count="7"
+             data-height="4"
+             data-hint="1290er: 7 Rechtsgeschäfte">
+        </div>
+        
+        <div class="range-bar"
+             data-decade="1300"
+             data-count="24"
+             data-height="4"
+             data-hint="1300er: 24 Rechtsgeschäfte">
+        </div>
+        
+        <div class="range-bar"
+             data-decade="1310"
+             data-count="29"
+             data-height="4"
+             data-hint="1310er: 29 Rechtsgeschäfte">
+        </div>
+        
+        <div class="range-bar"
+             data-decade="1320"
+             data-count="45"
+             data-height="7"
+             data-hint="1320er: 45 Rechtsgeschäfte">
+        </div>
+        
+        <div class="range-bar"
+             data-decade="1330"
+             data-count="94"
+             data-height="15"
+             data-hint="1330er: 94 Rechtsgeschäfte">
+        </div>
+        
+        <div class="range-bar"
+             data-decade="1340"
+             data-count="135"
+             data-height="22"
+             data-hint="1340er: 135 Rechtsgeschäfte">
+        </div>
+        
+        <div class="range-bar"
+             data-decade="1350"
+             data-count="191"
+             data-height="32"
+             data-hint="1350er: 191 Rechtsgeschäfte">
+        </div>
+        
+        <div class="range-bar"
+             data-decade="1360"
+             data-count="239"
+             data-height="40"
+             data-hint="1360er: 239 Rechtsgeschäfte">
+        </div>
+        
+        <div class="range-bar"
+             data-decade="1370"
+             data-count="210"
+             data-height="35"
+             data-hint="1370er: 210 Rechtsgeschäfte">
+        </div>
+        
+        <div class="range-bar"
+             data-decade="1380"
+             data-count="215"
+             data-height="36"
+             data-hint="1380er: 215 Rechtsgeschäfte">
+        </div>
+        
+        <div class="range-bar"
+             data-decade="1390"
+             data-count="592"
+             data-height="100"
+             data-hint="1390er: 592 Rechtsgeschäfte">
+        </div>
+        
+        <div class="range-bar"
+             data-decade="1400"
+             data-count="436"
+             data-height="73"
+             data-hint="1400er: 436 Rechtsgeschäfte">
+        </div>
+        
+        <div class="range-bar"
+             data-decade="1410"
+             data-count="199"
+             data-height="33"
+             data-hint="1410er: 199 Rechtsgeschäfte">
+        </div>
+        
     </div>
+    <div class="range-inputs">
+        <input type="range" id="range-min"
+               min="1177" max="1414"
+               value="1177" step="1"
+               aria-label="Startjahr">
+        <input type="range" id="range-max"
+               min="1177" max="1414"
+               value="1414" step="1"
+               aria-label="Endjahr">
+    </div>
+    <div class="range-labels">
+        <span class="range-label-min" id="range-label-min">1177</span>
+        <span class="range-label-max" id="range-label-max">1414</span>
+    </div>
+</div>
+
+                </div>
+
+                <div class="qb-filter-block">
+                    <span class="qb-control-label">Korpus</span>
+                    
+<div class="collection-chips collection-chips--stack" id="filter-corpora">
+    
+    <button type="button" class="chip" data-corpus="QGW II/1">
+        <span class="chip-label">QGW II/1</span>
+        <span class="chip-count" data-corpus-total="2000">2000</span>
+    </button>
+    
+    <button type="button" class="chip" data-corpus="Stadtbücher Bd. 1">
+        <span class="chip-label">Stadtbücher Bd. 1</span>
+        <span class="chip-count" data-corpus-total="577">577</span>
+    </button>
+    
+</div>
+
+                </div>
+
+                <div class="qb-filter-block qb-filter-block--reset">
+                    <button type="button" class="sidebar-reset" id="filter-reset"
+                            aria-label="Alle Filter zurücksetzen">
+                        &#x21BA; Zurücksetzen
+                    </button>
+                </div>
+
+            </div>
+
+            <div class="qb-persons">
+                <p class="qb-section-label">Personen-Bedingungen
+<span class="tip-wrap">
+    <button type="button" class="tip-trigger tip-trigger--icon"
+            aria-expanded="false" aria-haspopup="dialog"
+            aria-controls="help-persons"
+            data-tip="help-persons"
+            aria-label="Hilfe: Personen-Bedingungen">
+        <svg width="13" height="13" viewBox="0 0 16 16" aria-hidden="true">
+            <circle cx="8" cy="8" r="7" stroke="currentColor" stroke-width="1.4" fill="none"/>
+            <text x="8" y="11.6" text-anchor="middle" font-size="9.5" font-weight="700"
+                  fill="currentColor" font-family="Georgia, serif">i</text>
+        </svg>
+    </button>
+    <aside class="tip-popover tip-popover--help"
+           id="help-persons" role="dialog" aria-hidden="true"
+           aria-label="Hilfe: Personen-Bedingungen">
+        <header class="tip-head">
+            <h3 class="tip-title">Personen-Bedingungen</h3>
+            <button type="button" class="tip-close" aria-label="Schlie&szlig;en">&times;</button>
+        </header>
+        <div class="tip-body">
+            
+                    <p>Pro gesuchter Person eine Zeile in der Tabelle. Rolle ist Pflicht,
+                        Geschlecht und Beruf/Taetigkeit/Amt sind optional.</p>
+                    <p>Alle Zeilen muessen gemeinsam erfuellt sein. Ohne mindestens eine
+                        Zeile mit gesetzter Rolle bleibt die Trefferliste leer.</p>
+                
+        </div>
+    </aside>
+</span>
+</p>
+
+                <table class="qb-persons-table" id="qb-persons-table"
+                       data-occupation-vocab='[{"count": 741, "value": "purger"}, {"count": 302, "value": "B\u00fcrger"}, {"count": 211, "value": "purgermaister"}, {"count": 195, "value": "amptman"}, {"count": 183, "value": "pharrer"}, {"count": 170, "value": "Herzog"}, {"count": 160, "value": "rats"}, {"count": 158, "value": "B\u00fcrgers"}, {"count": 131, "value": "B\u00fcrgermeisters"}, {"count": 109, "value": "statrichter"}, {"count": 107, "value": "rates"}, {"count": 97, "value": "chaplan"}, {"count": 94, "value": "Kaplan"}, {"count": 92, "value": "burger"}, {"count": 85, "value": "Bergmeisters"}, {"count": 82, "value": "richter"}, {"count": 71, "value": "prior"}, {"count": 53, "value": "diener"}, {"count": 52, "value": "schaffer"}, {"count": 52, "value": "m\u00fcnzmaister"}, {"count": 49, "value": "Bischof"}, {"count": 49, "value": "Wiener B\u00fcrger"}, {"count": 46, "value": "pergmaister"}, {"count": 44, "value": "hofmaister"}, {"count": 43, "value": "rat"}, {"count": 42, "value": "Diener"}, {"count": 41, "value": "verweser"}, {"count": 40, "value": "judenrichter"}, {"count": 40, "value": "statschreiber"}, {"count": 39, "value": "rats der stat"}, {"count": 38, "value": "chorherr"}, {"count": 37, "value": "herzog"}, {"count": 37, "value": "phleger"}, {"count": 33, "value": "spitalmaister"}, {"count": 33, "value": "kaplan"}, {"count": 33, "value": "burgermaister"}, {"count": 32, "value": "Schafferin"}, {"count": 32, "value": "ambtman"}, {"count": 32, "value": "purger ze Wienne"}, {"count": 31, "value": "chapplan"}, {"count": 30, "value": "chapellan"}, {"count": 30, "value": "abt"}, {"count": 30, "value": "maister"}, {"count": 30, "value": "comiteur"}, {"count": 29, "value": "consul"}, {"count": 28, "value": "Wiener B\u00fcrgers"}, {"count": 28, "value": "purger ze Wienn"}, {"count": 26, "value": "rates der stat ze Wienne"}, {"count": 26, "value": "huebmaister"}, {"count": 26, "value": "mitpurger"}]'>
+                    <thead>
+                        <tr>
+                            <th scope="col" class="qb-col-num">Nr.</th>
+                            <th scope="col" class="qb-col-role">Rolle</th>
+                            <th scope="col" class="qb-col-sex">Geschlecht</th>
+                            <th scope="col" class="qb-col-occ">Beruf, Tätigkeit oder Amt
+                                <span class="qb-col-hint">(wie ediert, enthält)</span></th>
+                            <th scope="col" class="qb-col-rm" aria-label="Entfernen"></th>
+                        </tr>
+                    </thead>
+                    <tbody id="qb-persons-tbody">
+                        
+                    </tbody>
+                </table>
+
+                <button type="button" class="btn-add btn-add--primary" id="qb-add-person">
+                    + Person hinzufügen
+                </button>
+            </div>
+
+        </div>
+    </section>
 
     
-<div class="explore-drilldown-overlay hidden" id="analysis-drilldown" role="dialog"
-     aria-label="Quellenliste" aria-modal="true">
-    <div class="explore-drilldown-inner explore-drilldown-inner--wide">
-        <div class="explore-drilldown-header">
-            <h3 id="analysis-drilldown-title">Quellen</h3>
-            <button type="button" class="explore-drilldown-close" id="analysis-drilldown-close"
-                    aria-label="Schließen">&times;</button>
-        </div>
-        <div class="explore-drilldown-body" id="analysis-drilldown-body">
-            <table class="explore-data-table">
-                <thead>
-                    <tr>
-                        <th scope="col">Nr.</th>
-                        <th scope="col">Datum</th>
-                        <th scope="col">Quellenkorpus</th>
-                        <th scope="col">Regest</th>
-                        <th scope="col" aria-label="Aktionen"></th>
-                    </tr>
-                </thead>
-                <tbody id="analysis-drilldown-tbody"></tbody>
-            </table>
-        </div>
-        <div class="explore-drilldown-footer">
-            <span id="analysis-drilldown-count"></span>
-            <button type="button" class="explore-btn" id="analysis-drilldown-export">CSV-Export</button>
-        </div>
+
+    <div class="main-toolbar">
+        <span class="result-count-wrap">
+            <span class="result-count" id="hits-sources">0&nbsp;Quellen</span>
+            <span class="result-count-sep">&middot;</span>
+            <span class="result-count" id="hits-events">0&nbsp;Rechtsgeschäfte</span>
+        </span>
+        <div class="active-filters" id="active-filters"
+             aria-live="polite" aria-label="Aktive Filter"></div>
     </div>
+
+    <div class="results-actions">
+        <span class="results-actions-spacer"></span>
+        <button type="button" class="toolbar-btn" id="csv-download" disabled
+                aria-label="Aktuelle Trefferliste als CSV herunterladen">
+            <svg width="14" height="14" viewBox="0 0 16 16" aria-hidden="true">
+                <path d="M8 2v9m0 0l-3.5-3.5M8 11l3.5-3.5M2.5 13.5h11"
+                      stroke="currentColor" stroke-width="1.4"
+                      stroke-linecap="round" stroke-linejoin="round" fill="none"/>
+            </svg>
+            Tabelle als CSV herunterladen
+        </button>
+    </div>
+
+    <section class="index-table-wrap">
+        <table class="index-table" id="hits-table">
+            <thead>
+                <tr>
+                    <th scope="col" class="col-date" data-sort="date">Datum
+<span class="tip-wrap">
+    <button type="button" class="tip-trigger tip-trigger--icon"
+            aria-expanded="false" aria-haspopup="dialog"
+            aria-controls="col-info-datum"
+            data-tip="col-info-datum"
+            aria-label="Definition: Datum">
+        <svg width="13" height="13" viewBox="0 0 16 16" aria-hidden="true">
+            <circle cx="8" cy="8" r="7" stroke="currentColor" stroke-width="1.4" fill="none"/>
+            <text x="8" y="11.6" text-anchor="middle" font-size="9.5" font-weight="700"
+                  fill="currentColor" font-family="Georgia, serif">i</text>
+        </svg>
+    </button>
+    <aside class="tip-popover tip-popover--glossary"
+           id="col-info-datum" role="dialog" aria-hidden="true"
+           aria-label="Definition: Datum">
+        <header class="tip-head">
+            <h3 class="tip-title">Datum</h3>
+            <button type="button" class="tip-close" aria-label="Schlie&szlig;en">&times;</button>
+        </header>
+        <div class="tip-body">
+            
+                        <p>Ausstellungsdatum des Rechtsgeschaefts. Sortiert wird nach Startjahr.</p>
+                    
+            
+        </div>
+    </aside>
+</span>
+</th>
+                    <th scope="col" class="col-idno" data-sort="source">Quelle
+<span class="tip-wrap">
+    <button type="button" class="tip-trigger tip-trigger--icon"
+            aria-expanded="false" aria-haspopup="dialog"
+            aria-controls="col-info-quelle"
+            data-tip="col-info-quelle"
+            aria-label="Definition: Quelle">
+        <svg width="13" height="13" viewBox="0 0 16 16" aria-hidden="true">
+            <circle cx="8" cy="8" r="7" stroke="currentColor" stroke-width="1.4" fill="none"/>
+            <text x="8" y="11.6" text-anchor="middle" font-size="9.5" font-weight="700"
+                  fill="currentColor" font-family="Georgia, serif">i</text>
+        </svg>
+    </button>
+    <aside class="tip-popover tip-popover--glossary"
+           id="col-info-quelle" role="dialog" aria-hidden="true"
+           aria-label="Definition: Quelle">
+        <header class="tip-head">
+            <h3 class="tip-title">Quelle</h3>
+            <button type="button" class="tip-close" aria-label="Schlie&szlig;en">&times;</button>
+        </header>
+        <div class="tip-body">
+            
+                        <p>Signatur der Treffer-Quelle, klickbar zur Detail-Seite mit Regest, Volltext und Faksimile.</p>
+                    
+            <a class="tip-link" href="/project/glossary.html#quelle">im Glossar</a>
+        </div>
+    </aside>
+</span>
+</th>
+                    <th scope="col" class="col-corpus" data-sort="corpus">Korpus
+<span class="tip-wrap">
+    <button type="button" class="tip-trigger tip-trigger--icon"
+            aria-expanded="false" aria-haspopup="dialog"
+            aria-controls="col-info-korpus"
+            data-tip="col-info-korpus"
+            aria-label="Definition: Korpus">
+        <svg width="13" height="13" viewBox="0 0 16 16" aria-hidden="true">
+            <circle cx="8" cy="8" r="7" stroke="currentColor" stroke-width="1.4" fill="none"/>
+            <text x="8" y="11.6" text-anchor="middle" font-size="9.5" font-weight="700"
+                  fill="currentColor" font-family="Georgia, serif">i</text>
+        </svg>
+    </button>
+    <aside class="tip-popover tip-popover--glossary"
+           id="col-info-korpus" role="dialog" aria-hidden="true"
+           aria-label="Definition: Korpus">
+        <header class="tip-head">
+            <h3 class="tip-title">Korpus</h3>
+            <button type="button" class="tip-close" aria-label="Schlie&szlig;en">&times;</button>
+        </header>
+        <div class="tip-body">
+            
+                        <p>Editionskorpus, aus dem die Quelle stammt (QGW II/1 oder Stadtbücher Bd. 1).</p>
+                    
+            
+        </div>
+    </aside>
+</span>
+</th>
+                    <th scope="col" class="col-persons">Beteiligte Personen
+<span class="tip-wrap">
+    <button type="button" class="tip-trigger tip-trigger--icon"
+            aria-expanded="false" aria-haspopup="dialog"
+            aria-controls="col-info-persons"
+            data-tip="col-info-persons"
+            aria-label="Definition: Beteiligte Personen">
+        <svg width="13" height="13" viewBox="0 0 16 16" aria-hidden="true">
+            <circle cx="8" cy="8" r="7" stroke="currentColor" stroke-width="1.4" fill="none"/>
+            <text x="8" y="11.6" text-anchor="middle" font-size="9.5" font-weight="700"
+                  fill="currentColor" font-family="Georgia, serif">i</text>
+        </svg>
+    </button>
+    <aside class="tip-popover tip-popover--glossary"
+           id="col-info-persons" role="dialog" aria-hidden="true"
+           aria-label="Definition: Beteiligte Personen">
+        <header class="tip-head">
+            <h3 class="tip-title">Beteiligte Personen</h3>
+            <button type="button" class="tip-close" aria-label="Schlie&szlig;en">&times;</button>
+        </header>
+        <div class="tip-body">
+            
+                        <p>Die Personen aus dem Treffer, die die Personenbloecke der Abfrage erfuellen — eine je nummeriertem Block, in der angefragten Rolle.</p>
+                    
+            
+        </div>
+    </aside>
+</span>
+</th>
+                    <th scope="col" class="col-tx" data-sort="tx">Rechtsgeschäft
+<span class="tip-wrap">
+    <button type="button" class="tip-trigger tip-trigger--icon"
+            aria-expanded="false" aria-haspopup="dialog"
+            aria-controls="col-info-tx"
+            data-tip="col-info-tx"
+            aria-label="Definition: Rechtsgeschäft">
+        <svg width="13" height="13" viewBox="0 0 16 16" aria-hidden="true">
+            <circle cx="8" cy="8" r="7" stroke="currentColor" stroke-width="1.4" fill="none"/>
+            <text x="8" y="11.6" text-anchor="middle" font-size="9.5" font-weight="700"
+                  fill="currentColor" font-family="Georgia, serif">i</text>
+        </svg>
+    </button>
+    <aside class="tip-popover tip-popover--glossary"
+           id="col-info-tx" role="dialog" aria-hidden="true"
+           aria-label="Definition: Rechtsgeschäft">
+        <header class="tip-head">
+            <h3 class="tip-title">Rechtsgeschäft</h3>
+            <button type="button" class="tip-close" aria-label="Schlie&szlig;en">&times;</button>
+        </header>
+        <div class="tip-body">
+            
+                        <p>Normalisierter Transaktionstyp des Rechtsgeschäfts, in dem die Konstellation auftritt.</p>
+                    
+            <a class="tip-link" href="/project/glossary.html#rechtsgeschaeft">im Glossar</a>
+        </div>
+    </aside>
+</span>
+</th>
+                    <th scope="col" class="col-basket" aria-label="Datenkorb-Aktion"></th>
+                </tr>
+            </thead>
+            <tbody id="hits-tbody">
+                
+            </tbody>
+        </table>
+
+        <div class="no-results" id="hits-empty" role="status">
+            <p id="hits-empty-msg">Noch keine Abfrage zusammengestellt.
+                Einen Personenblock mit Rolle hinzufügen, dann erscheinen Treffer.</p>
+
+            <div class="qb-onboarding" id="qb-onboarding">
+                <p class="qb-onboarding-intro">
+                    Diese Seite findet Rechtsgeschäfte, in denen mehrere Personen
+                    gleichzeitig vorkommen — je mit gewählter Rolle, Geschlecht oder
+                    Beruf. Zum Einstieg ein Beispiel anklicken:
+                </p>
+                <div class="qb-examples" role="list" aria-label="Beispiel-Abfragen">
+                    <button type="button" class="qb-example" role="listitem"
+                            data-example="women-issuers">
+                        <span class="qb-example-title">Eine Personenblock,
+                            Rolle Aussteller, Geschlecht weiblich</span>
+                        <span class="qb-example-desc">Alle Rechtsgeschäfte mit
+                            einer Frau als Ausstellerin</span>
+                    </button>
+                    <button type="button" class="qb-example" role="listitem"
+                            data-example="women-issuers-men-recipients">
+                        <span class="qb-example-title">Zwei Personenblöcke:
+                            Ausstellerin weiblich, Empfänger männlich</span>
+                        <span class="qb-example-desc">Konstellation aus weiblicher
+                            Ausstellerin und männlichem Empfänger im selben
+                            Geschäft</span>
+                    </button>
+                    <button type="button" class="qb-example" role="listitem"
+                            data-example="burger-recipients">
+                        <span class="qb-example-title">Rolle Empfänger, Beruf
+                            enthält <code>urger</code></span>
+                        <span class="qb-example-desc">Substring-Match auf der
+                            Original-Annotation (fängt <code>purger</code>,
+                            <code>Bürger</code>, <code>burger</code> und
+                            Schreibvarianten ein)</span>
+                    </button>
+                    <button type="button" class="qb-example" role="listitem"
+                            data-example="clergy-pair">
+                        <span class="qb-example-title">Zwei Personenblöcke,
+                            Beruf jeweils enthält <code>pfarr</code></span>
+                        <span class="qb-example-desc">Substring-Match auf
+                            <code>pfarrer</code>, <code>pharrer</code> und
+                            Schreibvarianten in Aussteller- und
+                            Empfänger-Rolle</span>
+                    </button>
+                </div>
+                <p class="qb-onboarding-hint">
+                    Beispiele setzen Rolle, Geschlecht oder Beruf-Substring vor,
+                    alle Felder bleiben editierbar. Oder oben über
+                    „+ Person hinzufügen" eine eigene Konstellation zusammenstellen.
+                </p>
+            </div>
+        </div>
+    </section>
+
 </div>
 
+<script id="role-constellation-data" type="application/json">
 
-</div>
+{ "url": "../data/role_constellation.json" }
+</script>
+<script src="../static/js/analysis-resolver.js?v=20260516222257"></script>
+
 
     </main>
 
@@ -173,16 +732,10 @@
         </div>
     </footer>
 
-    <script src="../static/js/core.js?v=20260516202943"></script>
-    <script src="../static/js/tip.js?v=20260516202943"></script>
-    <script src="../static/js/hint.js?v=20260516202943"></script>
-    <script src="../static/js/basket.js?v=20260516202943"></script>
+    <script src="../static/js/core.js?v=20260516222241"></script>
+    <script src="../static/js/tip.js?v=20260516222241"></script>
+    <script src="../static/js/hint.js?v=20260516222241"></script>
+    <script src="../static/js/basket.js?v=20260516222241"></script>
     
-
-<script src="../static/js/viz-core.js?v=20260516203001"></script>
-<script src="../static/js/analysis-capabilities.js?v=20260516203001"></script>
-<script src="../static/js/analysis-composer.js?v=20260516203001"></script>
-<script src="../static/js/analysis.js?v=20260516203001"></script>
-
 </body>
 </html>
