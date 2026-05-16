@@ -53,12 +53,15 @@ verification/             unabhängiges Verifikations-Test-Set (Python, lxml)
 ```
 python -m frontend build                # baut docs/ aus aktuellem Pipeline-Output
 python -m frontend build --single FILE  # einzelne Quelle
+python -m frontend build --include-mentioned   # Vergleichsstand mit mentioned events nach docs-with-mentioned/
 python -m pytest frontend/tests/        # Frontend-Tests (kompakt: -q --tb=no --no-header)
 python -m verification.run              # Stufe 1: TEI -> JSON-Aggregate
 python -m verification.run --html       # Stufe 2: Pipeline-CSV -> gerendertes HTML
 python -m verification.run --tei-html   # Stufe 3: TEI direkt -> gerendertes HTML
 python -m verification.run --all        # alle drei Stufen
 ```
+
+`--include-mentioned` setzt `PIPELINE_INCLUDE_MENTIONED_EVENTS=1`. Vor dem Frontend-Build muss die Pipeline einmal mit derselben Env-Var laufen, damit auch die CSVs verschachtelte Events als volle Events fuehren: `PIPELINE_INCLUDE_MENTIONED_EVENTS=1 python -m pipeline transform`. Default-Build und Vergleichsbuild liegen in getrennten Verzeichnissen (`docs/` und `docs-with-mentioned/`), das `docs/` aus dem Default wird durch den Vergleichsbuild nicht ueberschrieben.
 
 Test-Strategie und Abgrenzung der drei Säulen (pytest, Verifikation, Sichtprüfung): [`knowledge/architecture.md`](knowledge/architecture.md) Abschnitt _Test-Strategie_.
 

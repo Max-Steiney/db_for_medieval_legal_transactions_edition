@@ -20,11 +20,24 @@ python -m verification.run              # TEI → JSON-Aggregate
 python -m verification.run --html       # Pipeline-CSV → gerendertes HTML
 python -m verification.run --tei-html   # TEI direkt → gerendertes HTML
 python -m verification.run --all        # alle drei Pfade
+python -m verification.run --inventory  # TEI-Element-Inventar pro Subkorpus
 ```
 
-Exit-Code `0` solange nur `match`, `known_gap` oder `info` auftreten. Exit-Code `1` erst bei mindestens einem echten `mismatch`.
+Exit-Code `0` solange nur `match`, `known_gap` oder `info` auftreten. Exit-Code `1` erst bei mindestens einem echten `mismatch`. Der Inventar-Modus liefert keine Vergleichs-Resultate und gibt immer Exit-Code 0.
 
-Reports werden in `verification/reports/YYYY-MM-DD.md` (menschenlesbar) und `verification/reports/YYYY-MM-DD.json` (maschinenlesbar) geschrieben. Stufen-Suffixe: `-html` für CSV→HTML, `-tei-html` für TEI→HTML, `-all` für alle drei. Die Reports sind Teil der Versionierung — Veränderungen im Verlauf sind per `git log verification/reports/` nachvollziehbar.
+Reports werden in `verification/reports/YYYY-MM-DD.md` (menschenlesbar) und `verification/reports/YYYY-MM-DD.json` (maschinenlesbar) geschrieben. Stufen-Suffixe: `-html` für CSV→HTML, `-tei-html` für TEI→HTML, `-all` für alle drei, `inventory-` für das Inventar. Die Reports sind Teil der Versionierung — Veränderungen im Verlauf sind per `git log verification/reports/` nachvollziehbar.
+
+### Inventar-Modus
+
+`python -m verification.run --inventory` scannt das aktive `sources/`-Verzeichnis und erzeugt pro Subkorpus eine Liste aller verwendeten TEI-Elemente mit Datei-Anzahl, Attributen und distinct Attribut-Werten. Output: `inventory-YYYY-MM-DD.md` (lesbar mit Querschnitts-Tabelle und Detail-Tabellen pro Subkorpus) plus `inventory-YYYY-MM-DD.json` (maschinenlesbar als Grundlage fuer kuenftige Coverage-Checks).
+
+Zweck: sichtbar machen, welche Annotation in welchem Subkorpus wirklich vorliegt, bevor Frontend-Features oder Freigabe-Entscheidungen darauf aufbauen. Headline-Zahlen pro Korpus: rs gesamt, rs/event, rs/person, rs/org, rs/place, ref-Quote.
+
+Per Default scannt der Modus das im Pipeline-Repo konfigurierte `sources/`-Verzeichnis. Fuer einen Ad-hoc-Lauf gegen ein anderes Repo-Clone laesst sich der Pfad ueberschreiben:
+
+```
+VERIFY_SOURCES_DIR=/pfad/zu/alternativem/sources python -m verification.run --inventory
+```
 
 ## Drei Coverage-Stufen
 

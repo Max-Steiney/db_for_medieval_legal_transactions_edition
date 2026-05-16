@@ -6,6 +6,7 @@ in the sibling repo `db_for_medieval_legal_transactions`. Path
 constants below distinguish carefully between the two roots.
 """
 
+import os
 from pathlib import Path
 
 from pipeline.config import REPO_ROOT as PIPELINE_REPO_ROOT
@@ -15,7 +16,18 @@ EDITION_DIR = Path(__file__).resolve().parent
 FRONTEND_REPO_ROOT = EDITION_DIR.parent
 
 # Build output stays in this repo so GitHub Pages can serve from `/docs`.
-DOCS_DIR = FRONTEND_REPO_ROOT / "docs"
+# The output directory switches to `docs-with-mentioned/` when the
+# PIPELINE_INCLUDE_MENTIONED_EVENTS override is active, so the canonical
+# default build is never overwritten by a comparison run. The frontend
+# CLI flag --include-mentioned sets the env var for the current process.
+_DOCS_DIR_DEFAULT_NAME = "docs"
+_DOCS_DIR_MENTIONED_NAME = "docs-with-mentioned"
+_DOCS_DIR_NAME = (
+    _DOCS_DIR_MENTIONED_NAME
+    if os.environ.get("PIPELINE_INCLUDE_MENTIONED_EVENTS", "") == "1"
+    else _DOCS_DIR_DEFAULT_NAME
+)
+DOCS_DIR = FRONTEND_REPO_ROOT / _DOCS_DIR_NAME
 DATA_DIR = DOCS_DIR / "data"
 
 # Templates, static assets, and content travel with the build code.

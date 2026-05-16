@@ -30,6 +30,24 @@ Einträge in umgekehrt chronologischer Reihenfolge, neueste oben.
 
 ---
 
+## 2026-05-16 TEI-Inventar als vierter Verifikationsmodus
+
+Neues Modul `verification/inventory.py` und CLI-Modus `python -m verification.run --inventory`. Scannt das aktive `sources/`-Verzeichnis pro Subkorpus und zaehlt jedes Element mit Datei-Anzahl und allen vorkommenden Attributen samt Top-Werten. Ueber die Env-Var `VERIFY_SOURCES_DIR` laesst sich der Scan gegen ein alternatives Repo-Clone richten, ohne das Hauptsetup zu beruehren.
+
+Anlass war eine konkrete Frage: wie hat sich die Datenbasis veraendert, seit Beate die neuen Quellen aus QGW und Satzbuch CD eingespielt hat. Der Lauf gegen einen alternativen Clone des Schwester-Repos hat drei Befunde geliefert. Erstens, die Orts-Annotation in den neuen Subkorpora Satzbuch CD 1448-60 und QGW 1448-57 ist substantiell und konsequent mit `@ref` versehen, also methodisch tragfaehig fuer ein kuenftiges Ortsregister. Zweitens, die ref-Quote ueber alle aktiven Subkorpora liegt gleichmaessig zwischen 64 und 78 Prozent, keine Ausreisser nach unten. Drittens, QGW Vienna 1524 enthaelt 73 Dateien ohne `rs`-Annotation, also reine Abstracts; bei einer Freigabe-Entscheidung darf dieser Subkorpus nicht in `RELEASED_CORPORA` aufgenommen werden.
+
+Konsequenz: die Begruendung des Ortsregister-Verzichts in [[decisions#Register-Freigabe]] ist um die Datenabhaengigkeit ergaenzt. Die Entscheidung steht heute weiter, ist aber explizit datenabhaengig formuliert. Der Inventar-Lauf liefert die Pruefbasis fuer kuenftige Neubewertungen. Reports liegen unter `verification/reports/inventory-YYYY-MM-DD.{md,json}`.
+
+## 2026-05-16 Mentioned-Event-Vergleichsstand als Build-Flag
+
+Beate hat in der editorischen Mail darum gebeten, den Frontend-Output einmal mit und einmal ohne den Filter „verschachtelte rs-Events ignorieren" erzeugen zu koennen. Der Default-Stand zaehlt nur Top-Level-Events; der Vergleichsstand zaehlt verschachtelte Events als volle Events mit.
+
+Realisiert als Build-Flag, nicht als UI-Toggle. Begruendung in [[decisions#Mentioned-Event-Vergleichsstand als Build-Flag]]. Pipeline-Konfiguration `pipeline.config.include_mentioned_events()` schaltet die XPath-Selektoren in `pipeline/utils/event_helpers.py` zentral um, sodass alle Transformatoren (Events, Personen-in-Events, Orgs-in-Events, Rollen, Transaktionen) konsistent ziehen. `event_mentions.csv` bleibt im Vergleichsbuild leer, damit Doppelzaehlungen ausgeschlossen sind. Frontend-seitig setzt `frontend/__main__.py` die Env-Var vor dem Import von `frontend.config`, und `DOCS_DIR` waehlt das Output-Verzeichnis (`docs-with-mentioned/` statt `docs/`). `_kpi.py` schaltet den XPath fuer die Hero-KPIs konsistent um.
+
+Verworfene Alternativen: UI-Toggle (zu viel Code fuer die Frequenz, mit der der Vergleich gemacht wird) und nur-KPI-Toggle (inkonsistent, weil Auswertungen und Netzwerk unveraendert blieben).
+
+Zahlen aus den Roles-Coverage-Bloecken nach Build: 4214 → 4943 Events, +17 %, vollstaendig QGW-getrieben (+727), Stadtbuecher +2. Person-Distinct unveraendert, Persons-with-Org +47. Das passt zu den direkt aus TEI gezogenen Stichproben.
+
 ## 2026-05-11 Reader-Robustheit und Befunde-Register
 
 Die HTML-Reader (`parse_html.read_person_profile`, `read_org_profile`, `read_document`) fangen ab jetzt Lese-Fehler ab und liefern statt eines Crashs ein leeres Datenobjekt mit `read_failed=True`. Ein zentraler `_check_reader_health`-Check in Stufe 2 listet betroffene Dateien als eigenes mismatch-Result, damit Lese-Probleme nicht von echten Daten-mismatches verschluckt werden. Hintergrund: ein paralleler Build-Lauf hatte beim `--all`-Lauf zu einem `NoneType-cssselect`-Crash gefuehrt — wenn die Datei gerade umgeschrieben wird, ist sie kurz leer. Mit den drei neuen Health-Checks (persons, orgs, documents) ist die Verifikation jetzt belastbar gegen parallel laufende Schreiboperationen.

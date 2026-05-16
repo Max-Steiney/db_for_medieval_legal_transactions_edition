@@ -175,6 +175,18 @@ Verschachtelte rs-Events landen über `pipeline/utils/event_helpers.py::iter_top
 
 **Nicht gemeint ist**, dass die Information über mentioned Events verloren geht. Sie bleibt in `event_mentions.csv` und kann zusätzlich angezeigt werden — etwa über einen Toggle „Rechtsgeschäfte inkl. mentioned Events". Dieser Toggle wäre eine Anzeige-Option, nicht der Standardwert.
 
+## Mentioned-Event-Vergleichsstand als Build-Flag
+
+**Entscheidung.** Der Vergleichsstand „Rechtsgeschäfte inklusive mentioned Events" wird als Build-Flag realisiert, nicht als UI-Toggle. Aktiviert wird er über die Umgebungsvariable `PIPELINE_INCLUDE_MENTIONED_EVENTS=1` (Pipeline-Repo) bzw. das CLI-Flag `python -m frontend build --include-mentioned` (Frontend-Repo). Der Default-Build bleibt unverändert und schreibt nach `docs/`; der Vergleichsbuild landet in `docs-with-mentioned/`.
+
+**Begründung.** Die Anforderung kommt aus der editorischen Arbeit: ein Vergleichsstand soll zeigen, wie sich Häufigkeiten, Rollen und Beziehungstypen verändern, wenn verschachtelte rs-Events als vollwertige Events gezählt werden. Ein UI-Toggle wäre methodisch attraktiver (Live-Vergleich im Browser, beide Stände in einem Permalink), würde aber alle Aggregat-JSONs verdoppeln, jede Visualisierung umschalten und die URL-Logik quer durch den Frontend-Code verändern. Der Aufwand passt nicht zur Frequenz, mit der der Vergleich tatsächlich gemacht wird. Ein Build-Flag liefert denselben Erkenntnisgewinn als zwei statische Stände, die parallel servierbar sind.
+
+**Konsequenz.** Pipeline-seitig schaltet `pipeline.config.include_mentioned_events()` die Filter in `pipeline/utils/event_helpers.py` zentral um; `event_mentions.csv` bleibt im Vergleichsbuild leer, damit verschachtelte Events nicht doppelt gezählt werden. Frontend-seitig setzt `frontend/__main__.py` die Env-Var vor dem Import von `frontend.config`; `DOCS_DIR` wählt dann das Output-Verzeichnis. `_kpi.py` schaltet die XPath-Selektoren um, sodass die Hero-KPIs der Startseite konsistent mit dem CSV-Stand laufen. Aufrufkette: `PIPELINE_INCLUDE_MENTIONED_EVENTS=1 python -m pipeline transform` im Pipeline-Repo, dann `python -m frontend build --include-mentioned` im Frontend-Repo.
+
+**Beobachtung am Stand 2026-05-16.** Die Differenz wird vollständig vom QGW-Korpus getragen (+727 Events), Stadtbücher trägt zwei. Roles-Coverage: 4214 → 4943 Events (+17 %), Transactions identisch, Person-Count unverändert (Distinct-Personen sind ohnehin asymmetrisch gezählt), Persons-with-Org +47.
+
+**Nicht gemeint ist**, dass `docs-with-mentioned/` öffentlich publiziert wird. Der Stand ist ein editorisches Vergleichswerkzeug. GitHub Pages serviert weiterhin nur `docs/`.
+
 ## Begriff Quellenkorpus
 
 **Entscheidung.** Die oberste Gruppierungsebene der Datenbasis heißt „Quellenkorpus", nicht „Sammlung".
@@ -211,9 +223,11 @@ Verschachtelte rs-Events landen über `pipeline/utils/event_helpers.py::iter_top
 
 **Entscheidung.** Die Datenbank publiziert zwei Register: Personen und Organisationen. Jede individuelle Entität mit mindestens einer Nennung in einer freigegebenen Quelle erhält eine eigene Detail-Profilseite. Orts-Daten leben ausschließlich als Inline-Annotation im Quellen-Volltext.
 
-**Begründung.** Die Pipeline liefert für Personen- und Organisations-Daten konsistente Stammdaten, Quellenverweise und Beziehungen. Die Orts-Aussagen liegen außerhalb des Forschungsfokus der Datenbank, und ein eigenes Ortsregister würde Bearbeitungstiefe vortäuschen, die die Daten nicht hergeben. Die Orts-Auszeichnung der TEI-Edition bleibt im Quellen-Volltext als Markup sichtbar, damit sie nicht unsichtbar wird; sie trägt aber kein Sprungziel und führt zu keiner eigenständigen Detail-Ansicht.
+**Begründung.** Die Pipeline liefert für Personen- und Organisations-Daten konsistente Stammdaten, Quellenverweise und Beziehungen. Für Orte fehlt diese Konsolidierung im aktuellen Freigabestand: die beiden freigegebenen Subkorpora QGW Vienna 1177-1414 und Stadtbücher Band 1 tragen zusammen 37 Orts-Annotationen, verteilt auf 11 von 2601 Dateien. Ein Ortsregister auf dieser Basis würde Bearbeitungstiefe vortäuschen, die die freigegebenen Daten nicht hergeben. Die Orts-Auszeichnung der TEI-Edition bleibt im Quellen-Volltext als Markup sichtbar, damit sie nicht unsichtbar wird; sie trägt aber kein Sprungziel und führt zu keiner eigenständigen Detail-Ansicht.
 
 **Konsequenz.** Listen-Seiten liegen unter `register/persons.html` und `register/orgs.html`. Detail-Seiten unter `register/persons/<pe__id>.html` und `register/orgs/<org__id>.html`. `<rs type="person">` und `<rs type="org">` im Quellen-Volltext verlinken jeweils auf das zugehörige Profil; `<rs type="place">` wird als `<span>` mit Tooltip ohne Sprungziel gerendert. Orts-Bezüge in Org- und Personen-Profilen (Standort, Eigentum, Pacht) erscheinen als Klartext.
+
+**Nicht gemeint ist**, dass das Ortsregister dauerhaft ausgeschlossen ist. Die Entscheidung ist datenabhängig. Sobald weitere Subkorpora freigegeben werden, in denen `<rs type="place">` mit `@ref` konsequent ausgezeichnet ist und die Orts-Stammdaten in `indices/placeList.xml` konsolidiert sind, ist sie neu zu treffen. Ein Inventar-Lauf via `python -m verification.run --inventory` macht die Annotationsdichte pro Subkorpus sichtbar und liefert die Datengrundlage für die Neubewertung.
 
 ## Trennung Frontend-Repo und Pipeline-Repo
 

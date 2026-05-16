@@ -17,3 +17,7 @@ __pycache__/
 node_modules/
 package-lock.json
 .vite/
+
+# Vergleichsbuild-Output mit eingeschlossenen mentioned events.
+# Wird per `python -m frontend build --include-mentioned` erzeugt und nicht publiziert.
+docs-with-mentioned/

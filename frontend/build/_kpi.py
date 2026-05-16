@@ -23,12 +23,28 @@ _XP_TOP_EVENTS = (
     "//tei:body//tei:rs[@type='event']"
     "[not(ancestor::tei:rs[@type='event'])]"
 )
+# With the mentioned-events override every annotated rs-event counts.
+_XP_ALL_EVENTS = "//tei:body//tei:rs[@type='event']"
 _XP_PERSONS_EXCL_MENTIONED = (
     "//tei:body//tei:*[@type='person']"
     "[not(ancestor::tei:rs[@type='event']"
     "     [ancestor::tei:rs[@type='event']])]"
 )
 _XP_PERSONS_ALL = "//tei:body//tei:*[@type='person']"
+
+
+def _active_event_xpath():
+    """Active event selector for KPIs. Switches to _XP_ALL_EVENTS when the
+    PIPELINE_INCLUDE_MENTIONED_EVENTS override is set."""
+    from pipeline.config import include_mentioned_events
+    return _XP_ALL_EVENTS if include_mentioned_events() else _XP_TOP_EVENTS
+
+
+def _active_person_mention_xpath():
+    """Active person-mention selector for KPIs. With the override active,
+    person annotations inside nested events count as mentions too."""
+    from pipeline.config import include_mentioned_events
+    return _XP_PERSONS_ALL if include_mentioned_events() else _XP_PERSONS_EXCL_MENTIONED
 
 
 def _scan_released_tei():
@@ -65,6 +81,8 @@ def _scan_released_tei():
 
     totals = _new_bucket()
     per_corpus = {c: _new_bucket() for c in RELEASED_CORPORA}
+    event_xp = _active_event_xpath()
+    person_mention_xp = _active_person_mention_xpath()
 
     for path_key in RELEASED_CORPORA:
         coll, sub = path_key.split("/", 1)
@@ -80,13 +98,13 @@ def _scan_released_tei():
             cb["sources"] += 1
             totals["sources"] += 1
 
-            for ev in tree.xpath(_XP_TOP_EVENTS, namespaces=_TEI_NS):
+            for ev in tree.xpath(event_xp, namespaces=_TEI_NS):
                 ref = (ev.get("ref") or "").strip().lstrip("#")
                 if ref:
                     cb["distinct_events"].add(ref)
                     totals["distinct_events"].add(ref)
 
-            for el in tree.xpath(_XP_PERSONS_EXCL_MENTIONED, namespaces=_TEI_NS):
+            for el in tree.xpath(person_mention_xp, namespaces=_TEI_NS):
                 ref = (el.get("ref") or "").strip().lstrip("#")
                 if not ref.startswith("pe__"):
                     continue
