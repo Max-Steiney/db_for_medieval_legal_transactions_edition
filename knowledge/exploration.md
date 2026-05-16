@@ -5,23 +5,23 @@ project:
   repository: https://github.com/chpollin/db_for_medieval_legal_transactions_edition
 status: active
 language: de
-version: 0.1
+version: 0.2
 created: 2026-02-19
-updated: 2026-05-11
+updated: 2026-05-16
 authors: [Christopher Pollin]
 generated-with: Claude Code
 method:
   name: Promptotyping
   url: https://lisa.gerda-henkel-stiftung.de/digitale_geschichte_pollin
 topics: ["[[Information Visualisation]]", "[[Exploratory Search]]"]
-related: [analyse, requirements, ui-design, decisions, glossar]
+related: [analyse, specification, ui-design, decisions, glossar]
 ---
 
 # Exploration
 
 Wissensdokument zum Explorationsbereich der Datenbank. Die Exploration ist der visuell-interaktive Zweig der Oberfläche und bedient Nutzerinnen ohne vorab spezifizierte Frage. Sie steht als zweiter gleichberechtigter Zweig neben der [[analyse]] und arbeitet mit Information-Visualisation, nicht mit vorgegebenen Auswertungsachsen.
 
-Die konzeptionelle Trennung ist in [[decisions#Exploration und Analyse als getrennte Bereiche]] festgehalten. Implementierte Sub-Seiten sind der **Zeitstrom** unter `/exploration/zeitstrom.html` und das **Personennetzwerk** unter `/exploration/personennetzwerk.html`; ein Sankey-Diagramm zu Transaktionsflüssen ist konzipiert, aber noch nicht umgesetzt. Geographische Karten sind bewusst nicht vorgesehen, weil Orts-Aussagen außerhalb des Forschungsfokus der Datenbank liegen. Die quantitativen Verteilungen (frühere „Auswertungen") gehören inhaltlich zur [[analyse]] und wurden dorthin verschoben. Siehe [[decisions#Auswertungen gehört in den Analyse-Bereich]].
+Die konzeptionelle Trennung ist in [[decisions#Exploration und Analyse als getrennte Bereiche]] festgehalten. Implementierte Sub-Seiten sind der **Zeitstrom** unter `/exploration/zeitstrom.html` und das **Personennetzwerk** unter `/exploration/personennetzwerk.html`; ein Sankey-Diagramm zu Transaktionsflüssen ist konzipiert, aber noch nicht umgesetzt. Eine Karten-Visualisierung ist im Stufenmodell als Eigenschaft von Stufe 4 vorgesehen, datenseitig aber an die Koordinaten-Abdeckung in `placeList.xml` gebunden (heute rund 29 Prozent der Orte); bis dahin rendern Forschungsfragen mit Orts-Bezug ihre Antwort als Tabelle mit Lat/Lon-Spalte. Die quantitativen Verteilungen (frühere „Auswertungen") gehören inhaltlich zur [[analyse]] und wurden dorthin verschoben. Siehe [[decisions#Auswertungen gehört in den Analyse-Bereich]] und [[decisions#Stufenmodell für Korpus-Auswahl und Annotationsebenen]].
 
 ## Zielsetzung
 

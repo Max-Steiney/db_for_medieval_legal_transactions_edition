@@ -5,16 +5,16 @@ project:
   repository: https://github.com/chpollin/db_for_medieval_legal_transactions_edition
 status: active
 language: de
-version: 0.1
+version: 0.2
 created: 2026-02-19
-updated: 2026-05-11
+updated: 2026-05-16
 authors: [Christopher Pollin]
 generated-with: Claude Code
 method:
   name: Promptotyping
   url: https://lisa.gerda-henkel-stiftung.de/digitale_geschichte_pollin
 topics: ["[[Decision Records]]", "[[Architecture Decision Records]]"]
-related: [requirements, architecture, ui-design, analyse, exploration]
+related: [specification, architecture, ui-design, analyse, exploration]
 ---
 
 # Entscheidungen
@@ -203,6 +203,16 @@ Verschachtelte rs-Events landen über `pipeline/utils/event_helpers.py::iter_top
 **Konsequenz.** `frontend/stages.py` definiert die Stufen als Dict mit den Achsen `corpora_scope`, `include_mentioned`, `place_visibility`, `display_filter`, `output_dir`. `set_stage_env()` setzt `FRONTEND_STAGE` und davon abgeleitete Env-Vars. `frontend/config.py` und `pipeline/config.py` lesen `FRONTEND_STAGE` als zweite Aktivierungsquelle neben den direkten Env-Vars; Ad-hoc-Pipeline-Läufe (`PIPELINE_INCLUDE_MENTIONED_EVENTS=1 python -m pipeline transform`) funktionieren unverändert. Stufen 1 und 2 sind heute funktional aktiv und byte-identisch zum vorigen Zwei-Schalter-Stand; Stufen 3 und 4 bauen, liefern aber zunächst denselben Daten-Output, bis die zugehörigen Subkorpora und Features (Ortsregister, Karte, Freigabe-Filter) datenseitig aktiviert sind.
 
 **Nicht gemeint ist**, dass eine Stufe öffentlich publiziert wird außer Stufe 1. Stufen 2 bis 4 sind editorische Werkzeuge; `.gitignore` hält `docs-with-mentioned/`, `docs-full/` und `docs-max/` aus dem Repo. GitHub Pages serviert weiterhin nur `docs/`.
+
+## Forschungsfragen als Implementierungs-Achse
+
+**Entscheidung.** Konkrete Forschungsfragen aus der editorischen Praxis ([[scholar-user-stories#Konkrete Forschungsfragen aus der editorischen Praxis]]) sind die Achse, an der neue Aggregator-Bausteine und Galerie-Einträge gebaut werden. Implementiert wird primär durch Erweiterung bestehender Komponenten (Galerie-Frage in `/analysis/index.html`, Sektion auf der Organisations-Profilseite), nicht durch neue Views. Eine neue Sub-Seite oder Library wird nur eingeführt, wenn keine bestehende Komponente die Antwort tragen kann.
+
+**Begründung.** Vier konkrete Fragen schlagen zehn abstrakte Slot-Kombinationen. Forscherinnen kommen mit Fragen, nicht mit Achsen; die Galerie braucht eine kritische Masse konkreter Einträge, damit Nutzerinnen das Muster erkennen und auf eigene Fragen übertragen. Jede Frage etabliert einen wiederverwendbaren Aggregator-Baustein (Uhlirz-Kategorie-Join, Heirats-Begriffs-Match, Org-Hierarchie-Traversal, Cross-Role-Query), der für viele weitere Fragen verfügbar ist; der Aufwand pro Frage zahlt vierfach ein. Frühere Architektur-Entscheidungen (Org-Profilseiten, Galerie-Composer, Drill-Down-Indizes) tragen die Antwort bereits, sodass massive neue Views Overengineering wären.
+
+**Konsequenz.** Neue Aggregator-Funktionen in den bestehenden Modulen `org_profiles` und `aggregator/analysis` (für die Galerie). Neue normierte Listen (Uhlirz-Kategorien aus `roleName_norm_matching.csv`, Heirats-Begriffe als Konstante im Pipeline-Code) als kleine Code-Bausteine. Verifikation als vierte Säule in `verification/research_questions.py`, die pro Frage eine erwartete Zahlen-Antwort aus den TEI- oder CSV-Daten ableitet und gegen das Frontend-Resultat vergleicht.
+
+**Nicht gemeint ist**, dass jede denkbare Frage einen Galerie-Eintrag bekommt. Die Galerie wächst mit der editorischen Praxis und mit den fachlich tragenden Forschungsfragen, nicht beliebig.
 
 ## Begriff Quellenkorpus
 

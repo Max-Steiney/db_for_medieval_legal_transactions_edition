@@ -5,9 +5,9 @@ project:
   repository: https://github.com/chpollin/db_for_medieval_legal_transactions_edition
 status: active
 language: de
-version: 0.3
+version: 0.4
 created: 2026-02-19
-updated: 2026-05-11
+updated: 2026-05-16
 authors: [Christopher Pollin]
 generated-with: Claude Code
 method:
@@ -65,6 +65,16 @@ Erweiterungen stehen im [[journal]], nicht hier.
 * Eingelöst durch Verlinkung der Personen aus der Organisations-Seite in deren Personenprofile und zurück
 * Eingelöst durch Personennetzwerk-Darstellung der Berufs-Stand-Beziehungen als Knoten anderer Farbe
 
+## Forschungsfragen aus der editorischen Praxis beantworten
+
+* Rolle Stadt- oder Sozialhistorikerin mit konkretem Erkenntnisinteresse
+* Wunsch eine prosopografische oder netzwerkbezogene Frage stellen und die Antwort als Zahlen plus Quellenliste bekommen, ohne SQL oder externe Tools
+* Zweck typische Forschungsfragen wie „Welche Personen einer Berufsgruppe sind untereinander verheiratet", „Welche Personen sind durch Tätigkeit an eine Institution gebunden plus deren Verwandte", „Wer steht in einem Stifter-Empfänger-Verhältnis zu einer bestimmten Organisation" direkt im UI durchspielen
+* Eingelöst durch Galerie konkreter Forschungsfragen unter `/analysis/index.html` mit Frage-Text, Antwort als Visualisierung und Provenienz
+* Eingelöst durch Sektionen auf dem Organisationsprofil, die das Stiftungsnetzwerk und die Tätigkeitsverbindungen aus dem heutigen Aggregat ableiten
+* Eingelöst durch Uhlirz-Berufsklassifikation aus `normalisation_lists/roleName_norm_matching.csv` (Spalte `Gewerbe_nach_Uhlirz_GstW`) als Filter- und Gruppierungs-Achse
+* Eingelöst durch Heirats-Begriffs-Match auf den freien Verwandtschafts-Bezeichnungen in `kin_relations_in_sources.csv`
+
 ## Quellen ausschnitthaft sammeln, teilen und exportieren
 
 * Rolle Editionsbearbeiterin oder Forscherin auf einem konkreten Projekt
@@ -80,6 +90,10 @@ Erweiterungen stehen im [[journal]], nicht hier.
 
 Eigenschaften, die für alle fünf User-Stories gleichermaßen
 gelten und nicht einer einzelnen zugeordnet werden können.
+
+### Zitierbares Build-Profil
+
+Jede aggregierte Zahl im Frontend ist Aussage unter einer bestimmten Stufe. Vier benannte Stufen bündeln Korpus-Auswahl und Annotationsebenen als zitierbares Profil: Publikation (Stufe 1), Vergleich mit mentioned events (Stufe 2), voller `_ready`-Bestand (Stufe 3), Maximalversion (Stufe 4). Konzept in [[decisions#Stufenmodell für Korpus-Auswahl und Annotationsebenen]], CLI-Mechanik in `frontend/stages.py`.
 
 ### Datenrobustheit und Provenienz
 

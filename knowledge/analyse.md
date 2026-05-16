@@ -5,16 +5,16 @@ project:
   repository: https://github.com/chpollin/db_for_medieval_legal_transactions_edition
 status: active
 language: de
-version: 0.1
+version: 0.2
 created: 2026-02-19
-updated: 2026-05-11
+updated: 2026-05-16
 authors: [Christopher Pollin]
 generated-with: Claude Code
 method:
   name: Promptotyping
   url: https://lisa.gerda-henkel-stiftung.de/digitale_geschichte_pollin
 topics: ["[[Information Visualisation]]", "[[Quantitative Analysis]]"]
-related: [exploration, requirements, ui-design, decisions, glossar]
+related: [exploration, specification, ui-design, decisions, glossar]
 ---
 
 # Analyse
@@ -41,6 +41,15 @@ Typische Beispielfragen:
 - Wie verteilen sich die Beteiligten an Rechtsgeschäften nach Geschlecht?
 - Welche Rechtsgeschäftstypen treten in welchem Zeitraum auf?
 - In welchen Rollen treten Frauen in Stadtbüchern auf?
+
+Vier konkrete Forschungsfragen aus der editorischen Praxis prägen die Galerie ([[scholar-user-stories#Konkrete Forschungsfragen aus der editorischen Praxis]]):
+
+- Welche Personen in Uhlirz-Berufskategorie IV sind untereinander verheiratet?
+- Welche Personen in Uhlirz-Berufskategorie VI haben Hausbesitz an welchen Orten?
+- Welche Personen sind durch eine Tätigkeit (`occ`) an St. Stephan gebunden, und wer sind ihre Verwandten?
+- Welche Personen oder Organisationen stehen in einem Issuer-Recipient-Verhältnis zu St. Agnes auf der Himmelpforte?
+
+Diese vier Fragen sind nicht Beispielsammlung, sondern Implementierungs-Achse für die Galerie und die Sektionen der Organisationsprofile; jede Frage etabliert einen wiederverwendbaren Aggregator-Baustein (Uhlirz-Kategorie-Join, Heirats-Begriffs-Match, Org-Hierarchie-Traversal, Cross-Role-Query), der danach für ähnliche Fragen verfügbar ist.
 
 ## Datenbestand
 

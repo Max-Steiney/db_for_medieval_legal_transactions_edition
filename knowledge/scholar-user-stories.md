@@ -5,16 +5,16 @@ project:
   repository: https://github.com/chpollin/db_for_medieval_legal_transactions_edition
 status: active
 language: de
-version: 0.1
+version: 0.2
 created: 2026-02-19
-updated: 2026-05-11
+updated: 2026-05-16
 authors: [Christopher Pollin]
 generated-with: Claude Code
 method:
   name: Promptotyping
   url: https://lisa.gerda-henkel-stiftung.de/digitale_geschichte_pollin
 topics: ["[[Scholar-Centered Design]]", "[[User Stories]]"]
-related: [requirements, ui-design, glossar]
+related: [specification, ui-design, glossar]
 ---
 
 # Scholar User Stories
@@ -30,7 +30,7 @@ Die Stories sind nach drei Gruppen sortiert: zentrale Forschungsoperationen, wis
 *Als Forscherin, die Häufigkeitsstrukturen in einer Kategorie untersucht, will ich jederzeit zwischen [[glossar#Gesamtnennung]] und [[glossar#Individuelle Person]] umschalten, damit ich Frequenz und Breite sauber voneinander trennen kann.*
 
 Ableitung:
-- Anforderung [[requirements#Umschaltbarkeit der Zählebenen]]
+- Anforderung [[specification#Umschaltbarkeit der Zählebenen]]
 - Komponente [[ui-design#Zählebenen-Umschalter]]
 - Begriffe [[glossar#Gesamtnennung]], [[glossar#Individuelle Person]]
 
@@ -39,7 +39,7 @@ Ableitung:
 *Als Forscherin, die Geschlechteranteile in einer bestimmten [[glossar#Rolle]] untersucht, will ich nach Rolle und Geschlecht gleichzeitig filtern, damit ich die Verteilung unmittelbar ablesen kann.*
 
 Ableitung:
-- Anforderung [[requirements#Bestandsfilterung als universelle Dimension]]
+- Anforderung [[specification#Bestandsfilterung als universelle Dimension]]
 - Komponente [[analyse]]
 - Begriff [[glossar#Rolle]]
 
@@ -48,7 +48,7 @@ Ableitung:
 *Als Forscherin, die einen Teilbestand gegen den Gesamtbestand kontrastiert, will ich die gleiche Kategorie auf beide Bestände anwenden, damit ich Auffälligkeiten des Teilbestands erkenne.*
 
 Ableitung:
-- Anforderung [[requirements#Bestandsfilterung als universelle Dimension]]
+- Anforderung [[specification#Bestandsfilterung als universelle Dimension]]
 - Komponente [[ui-design#Bestandsfilter]]
 - Begriff [[glossar#Quellenkorpus]]
 
@@ -74,7 +74,7 @@ Ableitung:
 *Als Forscherin, die eine Zahl in einer Publikation verwenden will, will ich an Ort und Stelle sehen, welcher Bestand und welche Operation der Zahl zugrunde liegen, damit ich sie gegenüber Reviewerinnen vertreten kann.*
 
 Ableitung:
-- Anforderung [[requirements#Datenrobustheit und Provenienz]]
+- Anforderung [[specification#Datenrobustheit und Provenienz]]
 - Komponente [[ui-design#Provenienz-Tip und Glossar-Tip]]
 
 ### Peer-Review einer Abfrage
@@ -82,7 +82,7 @@ Ableitung:
 *Als Forscherin, die eine Auswertung einer Kollegin prüft, will ich dieselbe Filterkombination aufrufen können wie sie, damit wir auf derselben Datensicht diskutieren.*
 
 Ableitung:
-- Anforderung [[requirements#Zitierfähige Datenstände]]
+- Anforderung [[specification#Zitierfähige Datenstände]]
 - Komponente [[ui-design#Zitierbarkeit einzelner Ansichten]]
 
 ### Publikationsreife Zitation
@@ -90,14 +90,14 @@ Ableitung:
 *Als Forscherin, die Zahlen in einer Veröffentlichung zitiert, will ich einen eingefrorenen Datenstand zum Stichtag der Einreichung referenzieren, damit meine Aussagen langfristig überprüfbar bleiben.*
 
 Ableitung:
-- Anforderung [[requirements#Zitierfähige Datenstände]]
+- Anforderung [[specification#Zitierfähige Datenstände]]
 
 ### Fehlerverdacht lokalisieren
 
 *Als Forscherin, die eine unplausible Zahl sieht, will ich erkennen können, ob der Grund in den Quelldaten, in der Transformation oder in der Darstellung liegt, damit ich den Fehler präzise benennen kann.*
 
 Ableitung:
-- Anforderung [[requirements#Datenrobustheit und Provenienz]]
+- Anforderung [[specification#Datenrobustheit und Provenienz]]
 - Komponente [[ui-design#Provenienz-Tip und Glossar-Tip]]
 - Fundament [[architecture]]
 
@@ -116,9 +116,49 @@ Ableitung:
 *Als Forscherin, die exakte Statistiken zu Personen in einem Rechtsgeschäft aufstellt, will ich [[glossar#Menschen-Event|Menschen-Events]] aktiv ein- oder ausschließen, damit referenzierte Personen aus früheren Geschäften meine Zahlen nicht verzerren.*
 
 Ableitung:
-- Anforderung [[requirements#Menschen-Events-Behandlung]]
+- Anforderung [[specification#Menschen-Events-Behandlung]]
 - Komponente [[ui-design#Menschen-Events-Toggle]]
 - Begriff [[glossar#Menschen-Event]]
+
+## Konkrete Forschungsfragen aus der editorischen Praxis
+
+Vier Fragen, die das Fachteam an die Datenbasis stellt. Sie sind prototypisch für eine ganze Klasse ähnlicher Fragen und prägen die Galerie unter `/analysis/index.html` plus die Sektionen der Organisationsprofile.
+
+### Endogamie in einer Berufsgruppe
+
+*Als Forscherin, die Heiratsstrategien innerhalb von Handwerkergruppen untersuche, will ich alle Personen erkennen, die einer bestimmten Uhlirz-Berufskategorie zugeordnet sind und untereinander durch Heirat verbunden sind, damit ich Endogamie-Muster im spätmittelalterlichen Wiener Gewerbe rekonstruieren kann.*
+
+Ableitung:
+- Daten Uhlirz-Spalte `Gewerbe_nach_Uhlirz_GstW` in `roleName_norm_matching.csv`, Verwandtschaft in `kin_relations_in_sources.csv` mit freier deutscher Bezeichnung („Gemahlin", „Hausfrau", „Gatte"), Match-Liste für Heirat
+- Komponente Galerie-Frage in [[analyse]]
+- Beispiel Uhlirz IV (Erzeugung und Vertrieb von Leuchtstoffen, Fetten, Ölen) plus Heirats-Beziehung
+
+### Berufsgruppe und Hausbesitz
+
+*Als Forscherin, die die topographische Verteilung eines Gewerbes untersuche, will ich alle Personen einer Berufskategorie auflisten und ihre Hausbesitz-Orte als Tabelle mit Datum und Quelle einsehen, damit ich räumliche Verdichtungen erkenne.*
+
+Ableitung:
+- Daten Uhlirz-Spalte plus `owner_relations_in_sources.csv` plus `placeList.xml` (Koordinaten teilweise vorhanden)
+- Komponente Galerie-Frage in [[analyse]] als Tabelle
+- Beispiel Uhlirz VI (Lederindustrie) plus Hausbesitz; Kartendarstellung deferred, Tabelle zeigt Lat/Lon-Spalte
+
+### Tätigkeitsverbindung zu einer Institution plus Verwandte
+
+*Als Forscherin, die das soziale Umfeld einer geistlichen Institution untersuche, will ich auf dem Organisationsprofil alle Personen sehen, die als Kaplan, Chorherr, Verweser oder in vergleichbarer Funktion an die Institution gebunden sind, mit Link auf das Personenprofil, wo ich ihre Verwandten finde, damit ich die klerikal-soziale Verflechtung rekonstruiere.*
+
+Ableitung:
+- Daten `occ_relations_in_sources.csv` (Person → Org mit Tätigkeitsbegriff), `kin_relations_in_sources.csv`
+- Komponente Sektion „Personen mit Tätigkeitsverbindung" auf jeder Organisations-Profilseite ([[ui-design#Entitäts-Profilseite]])
+- Beispiel St. Stephan in Wien plus alle Sub-Orgs (Altäre, Messen, Zechen, Kapellen)
+
+### Stifter-Empfänger-Netzwerk einer Organisation
+
+*Als Klosterforscherin, die das Stifternetzwerk einer Klosterkirche rekonstruiere, will ich auf dem Organisationsprofil alle Personen und Organisationen sehen, die in einem Issuer-Recipient-Verhältnis zu dieser Institution stehen, damit ich nachvollziehe, wer ihr Stiftungen zugewendet hat.*
+
+Ableitung:
+- Daten `persons_in_events.csv` und `orgs_in_events.csv` mit Rolle Issuer/Recipient, Org-Hierarchie in `orgList.xml`
+- Komponente Sektion „Stiftungsnetzwerk" auf jeder Organisations-Profilseite ([[ui-design#Entitäts-Profilseite]])
+- Beispiel St. Agnes auf der Himmelpforte (Wien, Augustinerinnen)
 
 ## Wiederkehrende Grundabfragen
 
@@ -139,7 +179,7 @@ Pfad: Auswertungen-Seite → Bezeichnungs-Suche → Klick auf die Tabellenzeile 
 
 Ableitung:
 - Komponente [[ui-design#Drill-down-Overlay]]
-- Anforderung [[requirements#Datenrobustheit und Provenienz]]
+- Anforderung [[specification#Datenrobustheit und Provenienz]]
 
 ### Verteilungs-Pattern zeitlich verorten
 
@@ -149,7 +189,7 @@ Pfad: Auswertungen → Transaktionstypen-Sektion → wechseln auf die Zeitstrom-
 
 Ableitung:
 - Komponente [[exploration#Zeitstrom]]
-- Anforderung [[requirements#Datenrobustheit und Provenienz]]
+- Anforderung [[specification#Datenrobustheit und Provenienz]]
 
 ## Sammeln über mehrere Pfade
 
@@ -159,7 +199,7 @@ Pfad: An jedem Eintrag in den Listen (Quellen-Tabelle, Personen-Register, Organi
 
 Ableitung:
 - Komponente [[ui-design#Datenkorb]]
-- Anforderung [[requirements#Wiederverwendbarkeit der Auswahl]]
+- Anforderung [[specification#Wiederverwendbarkeit der Auswahl]]
 
 ## Siehe auch
 
