@@ -118,6 +118,48 @@
 </div>
 {% endmacro %}
 
+{# Stiftungsnetzwerk-Sub-Tabelle. entity_kind='person' -> Link auf
+   ../persons/<id>.html, 'org' -> ./<id>.html. Belegfiles werden als
+   Title-Tooltip (data-hint) auf die Belege-Zahl gepackt: jede Zeile
+   "<Idno> (<Datum>) - <Regest>". Klick fuehrt auf die jeweils erste
+   Belegquelle, falls vorhanden. #}
+{% macro funding_table(title, rows, root_path) %}
+<section class="rel-block">
+    <header class="rel-block-head">
+        <h3 class="rel-block-title">{{ title }}</h3>
+        <span class="rel-block-count">{{ rows|length }}</span>
+    </header>
+    <table class="rel-table sortable-table"{% if rows|length > 50 %} data-truncate-at="50"{% endif %}>
+        <thead>
+            <tr>
+                <th scope="col" class="rel-col-other" data-sort="other">Name</th>
+                <th scope="col" class="rel-col-count" data-sort="count">Belege</th>
+            </tr>
+        </thead>
+        <tbody>
+        {% for row in rows %}
+            {% set rel_href = root_path + '/register/persons/' + row.entity_id + '.html' if row.entity_kind == 'person' else './' + row.entity_id + '.html' %}
+            {% set files = row.files or [] %}
+            {% set tip_lines = [] %}
+            {% for f in files %}{% set _ = tip_lines.append((f.idno or '?') + (' (' + f.date_display + ')' if f.date_display else '') + (' - ' + f.regest if f.regest else '')) %}{% endfor %}
+            <tr>
+                <td class="rel-col-other" data-sort-value="{{ row.name }}">
+                    <a class="rel-other-link rel-other-link--{{ row.entity_kind }}" href="{{ rel_href }}">{{ row.name }}</a>
+                </td>
+                <td class="rel-col-count" data-sort-value="{{ row.file_count or files|length }}">
+                    {% if files and files[0].url %}
+                    <a class="rel-source-link" href="{{ root_path }}/{{ files[0].url }}" data-hint="{{ tip_lines|join('\n') }}">{{ row.file_count or files|length }}</a>
+                    {% else %}
+                    <span data-hint="{{ tip_lines|join('\n') }}">{{ row.file_count or files|length }}</span>
+                    {% endif %}
+                </td>
+            </tr>
+        {% endfor %}
+        </tbody>
+    </table>
+</section>
+{% endmacro %}
+
 {# Active filters container (JS-managed). aria-live announces pill changes. #}
 {% macro active_filters() %}
 <div class="active-filters" id="active-filters" aria-live="polite" aria-label="Aktive Filter"></div>

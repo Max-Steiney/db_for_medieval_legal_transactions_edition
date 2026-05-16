@@ -1,0 +1,41 @@
+{
+  "generated": "2026-05-16",
+  "pipeline_output": "C:\\Users\\Chrisi\\Documents\\GitHub\\DHCraft\\sugw\\db_for_medieval_legal_transactions\\pipeline\\output",
+  "indices_dir": "C:\\Users\\Chrisi\\Documents\\GitHub\\DHCraft\\sugw\\db_for_medieval_legal_transactions\\indices",
+  "norm_lists_dir": "C:\\Users\\Chrisi\\Documents\\GitHub\\DHCraft\\sugw\\db_for_medieval_legal_transactions\\normalisation_lists",
+  "questions": [
+    {
+      "question_id": "uhlirz_iv_marriages",
+      "category": "IV Erzeugung und Vertrieb von Leuchtstoffen Fetten und Oelen",
+      "persons_in_category": 19,
+      "marriage_pairs_in_category": 12,
+      "source_files_involved": 13
+    },
+    {
+      "question_id": "uhlirz_vi_ownership",
+      "category": "VI Lederindustrie",
+      "persons_in_category": 100,
+      "persons_with_ownership": 0,
+      "ownership_places": 0,
+      "places_with_coordinates": 0
+    },
+    {
+      "question_id": "occ_st_stephan",
+      "target_org": "org__wien-st_stephan",
+      "occ_records_main_only": 192,
+      "occ_records_including_suborgs": 263,
+      "distinct_persons": 149,
+      "persons_with_kin_relations": 28
+    },
+    {
+      "question_id": "funding_st_agnes",
+      "target_org": "org__wien-st_agnes_auf_der_himmelpforte",
+      "events_as_issuer": 10,
+      "events_as_recipient": 10,
+      "issuer_persons_for_recipient_events": 13,
+      "issuer_orgs_for_recipient_events": 1,
+      "recipient_persons_for_issuer_events": 14,
+      "recipient_orgs_for_issuer_events": 0
+    }
+  ]
+}

@@ -117,6 +117,191 @@ def _aggregate_event_roles_per_org():
     return out
 
 
+def _build_funding_network(file_lookup, person_names, org_display_names):
+    """Pro Org: Stiftungsnetzwerk aus Issuer-Recipient-Beziehungen.
+
+    Forschungsfrage 4 aus der Mail vom 16. Mai 2026: wer steht in einem
+    Issuer-Recipient-Verhaeltnis zur betrachteten Organisation. Logik:
+    fuer jede Org X sammle Events, in denen X als Issuer oder Recipient
+    auftritt; ermittle die jeweiligen Gegenparts (Personen plus Orgs) in
+    der komplementaeren Rolle.
+
+    Returns: {org_id: {"issued_by_persons": [...], "issued_by_orgs": [...],
+                       "received_by_persons": [...], "received_by_orgs": [...]}}
+    Jeder Eintrag traegt die Belege als file_key-Liste plus Datum, sodass
+    das Template Quellen verlinken kann.
+    """
+    # Schritt 1: Pro Org die Events bestimmen
+    org_events_issuer = defaultdict(set)
+    org_events_recipient = defaultdict(set)
+    for r in _cached_csv("orgs_in_events.csv"):
+        ok = r.get("org_key", "")
+        role = (r.get("event_role") or "").strip()
+        ek = r.get("event_key", "")
+        if not ok or not ek:
+            continue
+        if role == "issuer":
+            org_events_issuer[ok].add(ek)
+        elif role == "recipient":
+            org_events_recipient[ok].add(ek)
+
+    # Schritt 2: pro Event die Gegenparts indexieren
+    persons_by_event_role = defaultdict(lambda: defaultdict(list))
+    for r in _cached_csv("persons_in_events.csv"):
+        ek = r.get("event_key", "")
+        role = (r.get("event_role") or "").strip()
+        pk = r.get("person_key", "")
+        fk = r.get("file_key", "")
+        if ek and role and pk:
+            persons_by_event_role[ek][role].append((pk, fk))
+
+    orgs_by_event_role = defaultdict(lambda: defaultdict(list))
+    for r in _cached_csv("orgs_in_events.csv"):
+        ek = r.get("event_key", "")
+        role = (r.get("event_role") or "").strip()
+        ok = r.get("org_key", "")
+        fk = r.get("file_key", "")
+        if ek and role and ok:
+            orgs_by_event_role[ek][role].append((ok, fk))
+
+    # Schritt 3: Pro Org Gegenpart-Liste bauen, eindeutig pro Entity mit Beleg-Quellen
+    out = {}
+    for oid in set(org_events_issuer) | set(org_events_recipient):
+        # X ist Issuer, Gegenpart ist Recipient
+        rec_pers = defaultdict(list)
+        rec_orgs = defaultdict(list)
+        for ek in org_events_issuer.get(oid, set()):
+            for pk, fk in persons_by_event_role[ek].get("recipient", []):
+                rec_pers[pk].append(fk)
+            for ok2, fk in orgs_by_event_role[ek].get("recipient", []):
+                if ok2 != oid:
+                    rec_orgs[ok2].append(fk)
+        # X ist Recipient, Gegenpart ist Issuer
+        iss_pers = defaultdict(list)
+        iss_orgs = defaultdict(list)
+        for ek in org_events_recipient.get(oid, set()):
+            for pk, fk in persons_by_event_role[ek].get("issuer", []):
+                iss_pers[pk].append(fk)
+            for ok2, fk in orgs_by_event_role[ek].get("issuer", []):
+                if ok2 != oid:
+                    iss_orgs[ok2].append(fk)
+
+        def entries(d, name_lookup, kind):
+            rows = []
+            for entity_id, fks in d.items():
+                files = []
+                for fk in fks:
+                    src = file_lookup.get(fk, {})
+                    if not src:
+                        continue
+                    files.append({
+                        "file_key": fk,
+                        "idno": src.get("idno", ""),
+                        "date_display": src.get("date_display", ""),
+                        "date_iso": src.get("date_iso", ""),
+                        "url": src.get("url", ""),
+                        "regest": src.get("regest", ""),
+                        "collection_label": src.get("collection_label", ""),
+                    })
+                files.sort(key=lambda x: x.get("date_iso") or "")
+                rows.append({
+                    "entity_id": entity_id,
+                    "entity_kind": kind,
+                    "name": name_lookup.get(entity_id, entity_id),
+                    "files": files,
+                    "file_count": len(files),
+                })
+            rows.sort(key=lambda r: (-r["file_count"], r["name"].lower()))
+            return rows
+
+        funding = {
+            "received_by_persons": entries(iss_pers, person_names, "person"),
+            "received_by_orgs":    entries(iss_orgs, org_display_names, "org"),
+            "issued_by_persons":   entries(rec_pers, person_names, "person"),
+            "issued_by_orgs":      entries(rec_orgs, org_display_names, "org"),
+        }
+        # Nur aufnehmen wenn mindestens eine Liste nicht leer ist
+        if any(v for v in funding.values()):
+            funding["total"] = sum(len(v) for v in funding.values())
+            out[oid] = funding
+    return out
+
+
+def _build_occ_network(file_lookup, person_names):
+    """Pro Org: Personen, die ueber occ (Taetigkeit) angebunden sind.
+
+    Forschungsfrage 3 aus der Mail vom 16. Mai 2026: Personen mit occ-
+    Verbindung zur betrachteten Org, plus Hinweis auf Verwandte (kin_count
+    als 1-Hop-Mass). Logik:
+
+      1. Pro Org alle Personen mit occ-Eintrag sammeln, occ-Begriffe und
+         Beleg-Files deduplizieren.
+      2. Pro Person kin-Eintraege im Quellenkorpus zaehlen (1-Hop).
+      3. Liefere {"occ_persons": [...], "total": n}; nur Orgs mit
+         occ_persons aufnehmen.
+    """
+    # Schritt 1: pro Org Personen mit occ-Begriffen und Belegen sammeln
+    org_to_persons = defaultdict(lambda: defaultdict(lambda: {
+        "occ_terms": set(),
+        "files": set(),
+    }))
+    for r in _cached_csv("occ_relations_in_sources.csv"):
+        pk = (r.get("person_key") or "").strip()
+        rk = (r.get("related_key") or "").strip()
+        occ = (r.get("occ") or "").strip().strip("|").strip()
+        fk = (r.get("file_key") or "").strip()
+        if not pk or not rk:
+            continue
+        bucket = org_to_persons[rk][pk]
+        if occ:
+            bucket["occ_terms"].add(occ)
+        if fk:
+            bucket["files"].add(fk)
+
+    # Schritt 2: kin_count pro Person (1-Hop)
+    kin_counts = Counter()
+    for r in _cached_csv("kin_relations_in_sources.csv"):
+        pk = (r.get("person_key") or "").strip()
+        if pk:
+            kin_counts[pk] += 1
+
+    # Schritt 3: Ausgabe pro Org bauen
+    out = {}
+    for oid, persons in org_to_persons.items():
+        rows = []
+        for pk, info in persons.items():
+            files = []
+            for fk in info["files"]:
+                src = file_lookup.get(fk, {})
+                if not src:
+                    continue
+                files.append({
+                    "file_key": fk,
+                    "idno": src.get("idno", ""),
+                    "date_display": src.get("date_display", ""),
+                    "date_iso": src.get("date_iso", ""),
+                    "url": src.get("url", ""),
+                    "regest": src.get("regest", ""),
+                    "collection_label": src.get("collection_label", ""),
+                })
+            files.sort(key=lambda x: x.get("date_iso") or "")
+            rows.append({
+                "entity_id": pk,
+                "name": person_names.get(pk, pk),
+                "occ_terms": sorted(info["occ_terms"]),
+                "files": files,
+                "kin_count": kin_counts.get(pk, 0),
+            })
+        if not rows:
+            continue
+        rows.sort(key=lambda r: (-r["kin_count"], r["name"].lower()))
+        out[oid] = {
+            "occ_persons": rows,
+            "total": len(rows),
+        }
+    return out
+
+
 def _aggregate_source_labels_per_org():
     counters = defaultdict(Counter)
     for r in _cached_csv("orgs_in_sources.csv"):
@@ -206,6 +391,10 @@ def build_org_profiles(reverse_index):
     org_roles = _aggregate_event_roles_per_org()
     source_labels = _aggregate_source_labels_per_org()
     relations = _build_person_to_org_relations(file_lookup, person_names)
+    org_display_names = {oid: _org_display_name(s) for oid, s in stamm.items()}
+    funding_network = _build_funding_network(file_lookup, person_names,
+                                              org_display_names)
+    occ_network = _build_occ_network(file_lookup, person_names)
 
     released_org_ids = {oid for oid, docs in reverse_index.items()
                         if oid.startswith("org__") and docs}
@@ -266,6 +455,8 @@ def build_org_profiles(reverse_index):
             "role_total":    sum(roles_dict.values()),
             "role_labels":   ROLE_LABEL_ORG,
             "relations":     rels,
+            "funding":       funding_network.get(oid, {}),
+            "occ_network":   occ_network.get(oid, {}),
         }
 
     return profiles

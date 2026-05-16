@@ -25,6 +25,7 @@ from verification import (
     parse_tei,
     provenance,
     report,
+    research_questions,
 )
 
 
@@ -79,10 +80,17 @@ def main() -> int:
     parser.add_argument("--inventory", action="store_true",
                         help="TEI-Inventar pro Subkorpus erzeugen (kein Vergleich,"
                              " sondern Element-Counts mit Attribut-Werten)")
+    parser.add_argument("--research-questions", action="store_true",
+                        help="Forschungsfragen aus TEI/CSV neu rechnen (Stufe 4,"
+                             " noch ohne Frontend-Vergleich)")
     args = parser.parse_args()
 
     if args.inventory:
         inventory.run_inventory()
+        return 0
+
+    if args.research_questions:
+        research_questions.run_research_questions()
         return 0
 
     results = []
