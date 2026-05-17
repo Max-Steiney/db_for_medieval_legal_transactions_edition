@@ -153,7 +153,7 @@ UI-Ausprägung in [[ui-design#Datenstand und Build-Datum]].
 ### Informationsdichte vor reduzierter Ästhetik
 
 Leitprinzip des Designs. Ausführung in
-[[ui-design#Leitprinzip Maximaler Informations-Output]],
+[[ui-design#Gestaltungshaltung]],
 Entscheidungshintergrund in
 [[decisions#Maximaler Informations-Output als Gestaltungsleitlinie]].
 

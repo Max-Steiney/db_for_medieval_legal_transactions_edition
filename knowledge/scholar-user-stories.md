@@ -82,7 +82,7 @@ Ableitung:
 *Als Forscherin, die eine Auswertung einer Kollegin prüft, will ich dieselbe Filterkombination aufrufen können wie sie, damit wir auf derselben Datensicht diskutieren.*
 
 Ableitung:
-- Anforderung [[specification#Zitierfähige Datenstände]]
+- Anforderung [[specification#Zitierfähiger Datenstand]]
 - Komponente [[ui-design#Zitierbarkeit einzelner Ansichten]]
 
 ### Publikationsreife Zitation
@@ -90,7 +90,7 @@ Ableitung:
 *Als Forscherin, die Zahlen in einer Veröffentlichung zitiert, will ich einen eingefrorenen Datenstand zum Stichtag der Einreichung referenzieren, damit meine Aussagen langfristig überprüfbar bleiben.*
 
 Ableitung:
-- Anforderung [[specification#Zitierfähige Datenstände]]
+- Anforderung [[specification#Zitierfähiger Datenstand]]
 
 ### Fehlerverdacht lokalisieren
 
@@ -116,8 +116,8 @@ Ableitung:
 *Als Forscherin, die exakte Statistiken zu Personen in einem Rechtsgeschäft aufstellt, will ich [[glossar#Menschen-Event|Menschen-Events]] aktiv ein- oder ausschließen, damit referenzierte Personen aus früheren Geschäften meine Zahlen nicht verzerren.*
 
 Ableitung:
-- Anforderung [[specification#Menschen-Events-Behandlung]]
-- Komponente [[ui-design#Menschen-Events-Toggle]]
+- Anforderung [[specification#Datenrobustheit und Provenienz]]
+- Begründung in [[decisions#Nennungen zählen nur Personen-Annotationen außerhalb mentioned Events]]; ein UI-Toggle ist nicht implementiert, der Default-Stand schliesst mentioned Events aus.
 - Begriff [[glossar#Menschen-Event]]
 
 ## Konkrete Forschungsfragen aus der editorischen Praxis
@@ -188,7 +188,7 @@ Ableitung:
 Pfad: Auswertungen → Transaktionstypen-Sektion → wechseln auf die Zeitstrom-Sub-Seite, Stack-Achse auf „Transaktionstyp" → Stapel zeigen die Verteilung über die Jahrzehnte → Klick auf die Schuldbrief-Pfand-Kategorie in der Legende fokussiert die anderen weg → Brush wählt den interessanten Zeitabschnitt → Drill-Liste zeigt nur die Quellen dieser Kategorie in dem Zeitraum.
 
 Ableitung:
-- Komponente [[exploration#Zeitstrom]]
+- Komponente [[exploration#Zeitstrom (vorhanden)]]
 - Anforderung [[specification#Datenrobustheit und Provenienz]]
 
 ## Sammeln über mehrere Pfade
@@ -199,7 +199,7 @@ Pfad: An jedem Eintrag in den Listen (Quellen-Tabelle, Personen-Register, Organi
 
 Ableitung:
 - Komponente [[ui-design#Datenkorb]]
-- Anforderung [[specification#Wiederverwendbarkeit der Auswahl]]
+- Anforderung [[specification#Quellen ausschnitthaft sammeln, teilen und exportieren]]
 
 ## Siehe auch
 

@@ -262,7 +262,7 @@ Verschachtelte rs-Events landen über `pipeline/utils/event_helpers.py::iter_top
 
 **Entscheidung.** Build-Output liegt in einem eigenen Repository, getrennt vom Pipeline- und Template-Quellcode.
 
-**Begründung.** Siehe [[architecture#Trennung Quelle und Build-Output]]. Die Trennung hält die Historie der Inhaltsänderungen übersichtlich und reduziert das Risiko, dass Output-Artefakte mit Quelländerungen verwechselt werden.
+**Begründung.** Siehe [[architecture#Statische HTML-Ausgabe und Prototyp-Charakter]]. Die Trennung hält die Historie der Inhaltsänderungen übersichtlich und reduziert das Risiko, dass Output-Artefakte mit Quelländerungen verwechselt werden.
 
 **Konsequenz.** HTMLs werden nicht direkt editiert. Änderungen gehen durch Rebuild.
 
@@ -278,7 +278,7 @@ Verschachtelte rs-Events landen über `pipeline/utils/event_helpers.py::iter_top
 
 **Begründung.** Eine Zahl, die aus derselben Pipeline stammt, die sie angeblich verifiziert, verifiziert sich selbst nicht. Die Frage, ob ein Label an einer Zahl semantisch korrekt ist, lässt sich nur beantworten, wenn eine zweite, unabhängige Rechnung sie bestätigt. Die Implementierung in Python mit `lxml` vermeidet CSV-Zwischenstufen und trifft auf die Quelle direkt.
 
-**Konsequenz.** Das Test-Set läuft auf Abruf und schreibt versionierte Reports. Diskrepanzen führen zu Korrekturen in Templates, Aggregations-Logik oder Quell-Daten. Gleichzeitig dient dieselbe Aggregations-Logik als Fundament für die [[#Provenienz als inline Drill-down in den Aggregat-JSONs]], weil beide dieselben Zählungen auf derselben Quellebene nachvollziehen. Siehe [[architecture#Verifikations-Test-Set]].
+**Konsequenz.** Das Test-Set läuft auf Abruf und schreibt versionierte Reports. Diskrepanzen führen zu Korrekturen in Templates, Aggregations-Logik oder Quell-Daten. Gleichzeitig dient dieselbe Aggregations-Logik als Fundament für die [[#Provenienz als inline Drill-down in den Aggregat-JSONs]], weil beide dieselben Zählungen auf derselben Quellebene nachvollziehen. Siehe [[architecture#Test-Strategie]].
 
 ## Provenienz als inline Drill-down in den Aggregat-JSONs
 
@@ -304,7 +304,7 @@ Verschachtelte rs-Events landen über `pipeline/utils/event_helpers.py::iter_top
 
 **Begründung.** Fachnutzerinnen brauchen Herkunftsanzeigen an jeder Zahl. Eine Reduktion, die Herkunft verschleiert, ist für die wissenschaftliche Verwendung dysfunktional.
 
-**Konsequenz.** Tooltips, Filterstatus und Zählebenen-Anzeige sind dauerhaft sichtbar. Ausführung in [[ui-design#Leitprinzip Maximaler Informations-Output]].
+**Konsequenz.** Tooltips, Filterstatus und Zählebenen-Anzeige sind dauerhaft sichtbar. Ausführung in [[ui-design#Gestaltungshaltung]].
 
 **Nicht gemeint ist**, dass Dichte Unübersichtlichkeit bedeutet. Die Oberfläche strebt hohe Informationsdichte mit klarer hierarchischer Gliederung an, nicht visuelles Rauschen.
 
