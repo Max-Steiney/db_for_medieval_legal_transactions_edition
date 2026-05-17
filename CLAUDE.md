@@ -98,6 +98,7 @@ Gestaltungsprinzip: maximaler Informations-Output. Nachvollziehbarkeit vor reduz
 - **Minimale Lösungen:** pragmatisch vor ausgebaut. Copy-Paste-Snippets statt neuer UI-Seiten, wenn möglich.
 - **Keine Annahmen:** Wenn Kontext fehlt, recherchieren oder rückfragen — nicht raten.
 - **Vor Änderungen:** prüfen, ob Frontend (hier) oder Datengrundlage (Schwester-Repo) betroffen ist. `docs/` nicht direkt editieren.
+- **Subagents auf Windows:** Worktrees brauchen `git config --global core.longpaths true`. Sonst scheitern Subagents am 260-Zeichen-Limit, weil die langen Org-Profil-Dateinamen (`org__wien-st_stephan-kapelle_...`) plus `.claude/worktrees/agent-<id>/`-Pfade die Grenze sprengen.
 
 ## Vor-Start-Checkliste
 

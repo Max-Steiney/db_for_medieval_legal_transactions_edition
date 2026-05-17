@@ -5,7 +5,7 @@ project:
   repository: https://github.com/chpollin/db_for_medieval_legal_transactions_edition
 status: active
 language: de
-version: 0.2
+version: 0.3
 created: 2026-02-19
 updated: 2026-05-16
 authors: [Christopher Pollin]
@@ -20,9 +20,7 @@ related: [decisions, specification, architecture]
 
 Arbeitstagebuch. Einziges chronologisches Dokument der Wissensbasis.
 
-Format pro Eintrag: Überschrift mit Datum und Kurztitel, darunter eine knappe Notiz zum Fortschritt, zu Entscheidungspfaden, zu verworfenen Alternativen oder zu offenen Fragen. Verlinkt werden die Zieldokumente, nicht Personen oder Meetings.
-
-Was hier rein darf: Fortschritt der Wissensbasis, Entscheidungspfade, die in [[decisions]] münden, verworfene Alternativen mit Begründung, offene Fragen, die beim Arbeiten auftauchen.
+Format pro Eintrag: Datum, Kurztitel, ein bis drei Absätze. Was umgesetzt wurde, warum (oft mit verworfener Alternative), wo das Detail zeitlos abgelegt ist (Verweis auf [[decisions]], [[architecture]], [[analyse]], [[exploration]], [[specification]]). Build- und Test-Zahlen bleiben draußen, sie veralten sofort.
 
 Was nicht rein darf: Personennamen, Meeting-Protokolle, Projektmanagement-Stand, Quantitäten des Korpus.
 
@@ -32,304 +30,102 @@ Einträge in umgekehrt chronologischer Reihenfolge, neueste oben.
 
 ## 2026-05-16 Konstellations-Abfrage mit Beispiel-Einstieg
 
-Die Abfragen-Sub-Seite (`/analysis/index.html`) wird von der bisherigen Galerie-Wireframe auf eine **strukturierte Konstellations-Abfrage** umgestellt. Forscherinnen legen N nummerierte Personenblöcke an, je mit Rolle und optional Geschlecht und Beruf-Substring. Globale Filter (Zeitraum, Korpus, Verknüpfungs-Modus „im selben Rechtsgeschäft" gegen „in derselben Quelle") schränken die Suche ein. Permalink, CSV-Export, Datenkorb-Anbindung pro Trefferzeile.
+Die Abfragen-Sub-Seite (`/analysis/index.html`) wird von der Galerie-Wireframe auf eine strukturierte Konstellations-Abfrage umgestellt. N nummerierte Personenblöcke mit Rolle und optional Geschlecht und Beruf-Substring; globale Filter Zeitraum, Korpus und Verknüpfungs-Modus „im selben Rechtsgeschäft" gegen „in derselben Quelle"; Permalink, CSV-Export, Datenkorb pro Trefferzeile. Aggregator `frontend/aggregator/role_constellation.py`, Resolver `frontend/static/js/analysis-resolver.js`. Die alten Galerie-Module sind gelöscht. Detail in [[decisions#Abfragen-Sub-Seite als Konstellations-Abfrage]] und [[analyse#Konstellations-Abfrage]].
 
-Aggregator `frontend/aggregator/role_constellation.py` liefert ein Per-Event-Aggregat `docs/data/role_constellation.json` (2577 Events mit Participants). Resolver `frontend/static/js/analysis-resolver.js` matcht Konstellationen clientseitig. Die alten Galerie-JS-Module (`analysis.js`, `analysis-composer.js`, `analysis-capabilities.js`, ca. 1100 LOC) sind gelöscht.
+Onboarding ergänzt den leeren Anfangszustand. Vier Beispiel-Chips im Empty-State setzen typische Konstellationen vor; die Chip-Labels machen die Mechanik (Substring auf Originalannotation) sichtbar, damit klar ist, dass Beispiele das Werkzeug demonstrieren, keine kanonischen Klassifikationen. Alle Felder bleiben editierbar. Leitsatz: was im Frontend als Beispiel sichtbar ist, darf Substring-getrieben sein, weil die Forscherin den Mechanismus im Personenblock sieht und korrigieren kann. Was im Aggregator versteckt eine Zahl produziert, darf das nicht. Daraus folgt der findings-Eintrag: die Heirats-Substring-Liste in `research_questions.py` ist provisorisch und gehört als typisierende Spalte `is_marriage` in `kin_norm_matching.csv` ins Pipeline-Repo.
 
-Onboarding ergänzt den ansonsten leeren Anfangszustand. Vier Beispiel-Chips im Empty-State setzen typische Konstellationen vor (Ausstellerin weiblich, Ausstellerin-Empfänger-Paar weiblich-männlich, Beruf enthält `urger`, Beruf enthält `pfarr`). Die Chip-Labels machen die Mechanik (Substring auf Originalannotation) sichtbar, damit klar ist: Beispiele demonstrieren das Werkzeug, sie sind keine kanonischen Klassifikationen. Alle Felder bleiben editierbar.
+## 2026-05-16 Stufenmodell, Inventar, Mentioned-Toggle und Wissensbasis-Konsolidierung
 
-Konzeptioneller Leitsatz: was im Frontend als Beispiel sichtbar ist, darf Substring-getrieben sein, weil die Forscherin den Mechanismus im Personenblock sieht und korrigieren kann. Was im Aggregator versteckt eine Zahl produziert, darf das nicht. Daraus folgt der Befund im findings-Register: die Heirats-Substring-Liste in `research_questions.py` (Frontend und Verifikation) ist provisorisch und gehört als typisierende Spalte `is_marriage` in `normalisation_lists/kin_norm_matching.csv` ins Pipeline-Repo, analog zu `Gewerbe_nach_Uhlirz_GstW`.
+Vier zusammenhängende Arbeitsblöcke aus derselben Welle, ausgelöst durch eine editorische Mail mit vier Forschungsfragen und neuen Subkorpora.
 
-Knowledge: `decisions.md` Eintrag „Abfragen-Sub-Seite als Konstellations-Abfrage" ersetzt den alten Galerie/Custom-Builder-Eintrag. `analyse.md` Sektion „Konstellations-Abfrage" neu strukturiert. `specification.md` neue User-Story „Personenkonstellationen über kombinierte Bedingungen abfragen" plus Querschnitts-Eigenschaft „Datenpfad-Ehrlichkeit"; Version 0.5. Tests aktualisiert (Konstellations-Hooks statt Galerie-IDs), 356 grün.
+Das **Stufenmodell** in `frontend/stages.py` bündelt Korpus-Auswahl und Annotationsebenen als zitierbares Profil; vier benannte Stufen, CLI-Flag `--stage N`. Statt für jede Anforderung einen weiteren Boolean-Schalter einzuführen, ist jede Aussage des Frontends jetzt interpretierbar als Aussage unter einer bestimmten Stufe. Detail in [[decisions#Stufenmodell für Korpus-Auswahl und Annotationsebenen]].
 
-Co-Authored-By der ursprünglichen Commits c0c534533f (feat) und d5f97fe83d (refactor) aus den `worktree-agent-*`-Branches; diese werden im selben Schritt verworfen, weil ihre Inhalte hier auf `main` landen.
+Der **Mentioned-Event-Vergleichsstand** ist als Build-Flag realisiert, nicht als UI-Toggle. `--include-mentioned` ist Alias auf Stufe 2 und schreibt nach `docs-with-mentioned/`. Verworfen: UI-Toggle (zu viel Code für die Frequenz, in der der Vergleich gemacht wird) und nur-KPI-Toggle (inkonsistent, weil Auswertungen und Netzwerk unverändert blieben). Detail in [[decisions#Mentioned-Event-Vergleichsstand als Build-Flag]].
 
-## 2026-05-16 Wissensbasis-Konsolidierung nach Stufenmodell und Forschungsfragen
+Das **TEI-Inventar** als vierter Verifikationsmodus (`verification/inventory.py`) scannt pro Subkorpus jedes Element samt Attributen und Top-Werten. Env-Var `VERIFY_SOURCES_DIR` erlaubt Scan gegen alternative Clones, ohne das Hauptsetup zu berühren. Der Lauf war die Vorprüfung für die neuen Subkorpora aus QGW und Satzbuch CD; Ortsregister-Verzicht in [[decisions#Register-Freigabe]] ist um die Datenabhängigkeit ergänzt. Detail in [[architecture#Test-Strategie]].
 
-Konsolidierung aller Markdown-Dokumente unter `knowledge/` auf den heutigen Stand. Auslöser ist die Mail von Korbinian mit den vier Forschungsfragen plus dem Stufenmodell-Branch. Zwei Klassen von Befunden, beide chirurgisch gefixt, ohne grosse Umschreibungen.
+Die **Wissensbasis-Konsolidierung** löst zwei Klassen von Befunden chirurgisch auf. Strukturell: alle `[[requirements#...]]`-Wiki-Links sind auf `[[specification#...]]` umgelegt (Datei war früher umbenannt). Inhaltlich: die vier Forschungsfragen aus der Mail leben jetzt als User-Stories in [[scholar-user-stories]] und als Implementierungs-Achse in [[decisions#Forschungsfragen als Implementierungs-Achse]], die Uhlirz-Berufsklassifikation als Forschungs-Achse in [[data]], Karten-Idee in [[exploration]] umformuliert von „bewusst nicht vorgesehen" auf „in Stufe 4 angelegt, datenseitig deferred bis 29 Prozent Koordinaten-Abdeckung wachsen".
 
-Strukturelle Brueche: das frueher geloeschte `requirements.md` lebte noch als Wiki-Link in `specification.md`, `scholar-user-stories.md`, `data.md`, `architecture.md`, `ui-design.md`, `analyse.md`, `exploration.md`, `decisions.md`, `journal.md` und im jeweiligen `related:`-Frontmatter. Alle Vorkommen auf `specification` umgelegt.
+Im selben Zug umgesetzt: Stiftungsnetzwerk-Sektion auf den Org-Profilseiten (`org_profiles._build_funding_network`, Template-Sektion plus `funding_table`-Macro), occ-Netzwerk-Aggregator (`_build_occ_network`, Template-Sektion noch offen), Galerie-Resolver für Uhlirz IV und VI (`frontend/aggregator/research_questions.py`, UI-Anbindung steht noch aus). Verifikations-Säule 4 (`verification/research_questions.py`) leitet pro Mail-Frage die erwartete Zahlen-Antwort aus TEI plus CSV ab. Die Verifikation vergleicht zunächst nicht gegen das Frontend-Resultat, sondern liefert die Referenzzahlen.
 
-Inhaltliche Fortschreibung: vier konkrete Forschungsfragen aus der Mail als User-Stories in `scholar-user-stories.md` plus als Galerie-Achse in `analyse.md`. Eine neue Decision „Forschungsfragen als Implementierungs-Achse" haelt den Grundsatz fest, dass die Galerie und die Organisations-Profilseiten primaer durch konkrete Fragen wachsen, nicht durch abstrakte Slot-Kombinationen. Uhlirz-Berufsklassifikation (Spalte `Gewerbe_nach_Uhlirz_GstW` in `roleName_norm_matching.csv`) als Forschungs-Achse in `data.md` dokumentiert. `exploration.md` korrigiert die fruehere Aussage „Karten sind bewusst nicht vorgesehen": Karte ist im Stufenmodell als Eigenschaft von Stufe 4 angelegt, datenseitig an die Koordinaten-Abdeckung gebunden (heute 29 Prozent), bis dahin rendern Forschungsfragen ihre Orts-Antwort als Tabelle. Verifikations-Modus Inventar als vierter Modus in `architecture.md` ergaenzt.
+## 2026-05-11 Verifikations-Säulen ausgebaut, Reader-Robustheit, Befunde-Register
 
-Datenseitige Inventur als Voraussetzung: Koordinaten in `placeList.xml` (728 von 2537 Orten, 29 Prozent), Heirat als freier Begriff in `kin_relations_in_sources.csv` (nicht typisiert, String-Match-Liste reicht), St. Agnes auf der Himmelpforte als `org__wien-st_agnes_auf_der_himmelpforte` vorhanden, 280 occ-Verknuepfungen zu St. Stephan, 22 distinkte Uhlirz-IV-Berufe (19 Personen in 44 Quellen), 67 distinkte Uhlirz-VI-Berufe (100 Personen in 107 Quellen). Damit sind alle vier Mail-Fragen datenseitig beantwortbar; Frage 2 nur eingeschraenkt wegen Koordinaten-Luecke.
+Das Verifikations-Set hat jetzt drei Säulen plus Inventar (vorher zwei): TEI zu JSON, Pipeline-CSV zu HTML, TEI direkt zu HTML. Die dritte Säule (`--tei-html`) liest TEI-Quellen direkt und vergleicht `<rs ref="…">` mit `data-ref="…"` im gerenderten HTML, sodass Pipeline-Drops und Renderer-Halluzinationen in beide Richtungen aufgedeckt werden. Stufe 2 ist um vier Profil-Quelle-Cross-Checks und Stufe 3 um vier neue Check-Klassen (Event-Refs, Rollen pro Quelle, Datum TEI-vs-HTML, Mirror) erweitert. Wichtige Erkenntnis: das Profil listet eine Quelle auch dann, wenn die Person nur indirekt über `roleName/@corresp` referenziert wird; der Cross-Check addiert `data-corresp` zu `data-ref`. Detail in [[architecture#Test-Strategie]].
 
-## 2026-05-16 Stufenmodell fuer Korpus-Auswahl und Annotationsebenen
+Die HTML-Reader fangen Lese-Fehler ab und liefern statt eines Crashs ein leeres Datenobjekt mit `read_failed=True`. Ein `_check_reader_health`-Check in Stufe 2 listet betroffene Dateien als eigenes mismatch-Result. Hintergrund war ein paralleler Build-Lauf, der einen `NoneType-cssselect`-Crash auslöste. Belastbare Mismatches landen namentlich in [`verification/findings.md`](../verification/findings.md).
 
-Branch `corpus-and-data-layers`. Neues Modul `frontend/stages.py` mit vier benannten Stufen als Dict, plus Hilfsfunktionen `active_stage()` und `set_stage_env()`. CLI-Flag `--stage N` in `frontend/__main__.py`; `--include-mentioned` bleibt als Alias auf Stufe 2 erhalten. `frontend/config.py` und `pipeline/config.py` lesen `FRONTEND_STAGE` als zweite Aktivierungsquelle neben den direkten Env-Vars, sodass Ad-hoc-Pipeline-Laeufe unveraendert funktionieren.
+Verworfen: pytest-Integration der Säulen 2 und 3. Vollständige Läufe dauern mehrere Minuten, das ist für normale Test-Runs zu lang. Separater Runner bleibt schlanker.
 
-Hintergrund: die Mail von Korbinian vom 16. Mai bringt drei Achsen ueber den heutigen Mentioned-Toggle hinaus, naemlich neue Subkorpora mit konsequenter Orts-Annotation, vier Forschungsfragen mit unterschiedlichen Datenstand-Anforderungen und einen geplanten Karten-Layer. Statt fuer jede Anforderung einen weiteren Boolean-Schalter einzufuehren, buendelt das Stufenmodell Korpus-Auswahl und Annotationsebenen als zitierbares Profil. Stufen 1 und 2 sind heute funktional aktiv und byte-identisch zum vorigen Zwei-Schalter-Stand, Stufen 3 und 4 bauen, liefern aber zunaechst denselben Daten-Output, bis die zugehoerigen Subkorpora und Features datenseitig aktiviert sind.
+## 2026-05-11 Org-Detail-Profile, Datenkorb auf drei Typen, Ortsregister entfernt
 
-Konsequenz: jede Aussage des Frontends ist interpretierbar als Aussage unter einer bestimmten Stufe. Decision in [[decisions#Stufenmodell fuer Korpus-Auswahl und Annotationsebenen]]. Reports, Provenienz-Tooltips und Diskussionen koennen die Stufe ab jetzt benennen.
+Organisationen tragen jetzt eigene Detail-Profile parallel zu den Personen-Profilen (`frontend/aggregator/org_profiles.py`); `<rs type="org">` verlinkt direkt aufs Profil, die Sackgasse ist geschlossen. Mirror-Beziehungen auf Personenprofilen ergänzt: wenn jemand als `related_key` in `occ_relations_in_sources.csv` auftaucht, erscheint auf dem Bezugs-Profil eine Sektion „Personen mit Beruf in meinem Bezug". Schließt eine vorher systematisch einseitige Asymmetrie.
 
-## 2026-05-16 TEI-Inventar als vierter Verifikationsmodus
+Der Datenkorb sammelt jetzt drei Item-Typen (Quellen, Personen, Organisationen) mit je eigener Tabelle, Remove- und CSV-Aktion. Kern-Mechanik: Ableitung als sichtbare Schicht. Legt jemand eine Quelle in den Korb, lädt `basket.js` lazy `docs_entities.json` und legt die zugehörigen Entitäten als abgeleitete Einträge ohne `gathered`-Flag nach; sie erscheinen kursiv und gedimmt, ein +-Klick stuft sie zur eigenständigen Sammlung hoch. Detail in [[decisions#Datenkorb als clientseitige Sammlung]].
 
-Neues Modul `verification/inventory.py` und CLI-Modus `python -m verification.run --inventory`. Scannt das aktive `sources/`-Verzeichnis pro Subkorpus und zaehlt jedes Element mit Datei-Anzahl und allen vorkommenden Attributen samt Top-Werten. Ueber die Env-Var `VERIFY_SOURCES_DIR` laesst sich der Scan gegen ein alternatives Repo-Clone richten, ohne das Hauptsetup zu beruehren.
-
-Anlass war eine konkrete Frage: wie hat sich die Datenbasis veraendert, seit Beate die neuen Quellen aus QGW und Satzbuch CD eingespielt hat. Der Lauf gegen einen alternativen Clone des Schwester-Repos hat drei Befunde geliefert. Erstens, die Orts-Annotation in den neuen Subkorpora Satzbuch CD 1448-60 und QGW 1448-57 ist substantiell und konsequent mit `@ref` versehen, also methodisch tragfaehig fuer ein kuenftiges Ortsregister. Zweitens, die ref-Quote ueber alle aktiven Subkorpora liegt gleichmaessig zwischen 64 und 78 Prozent, keine Ausreisser nach unten. Drittens, QGW Vienna 1524 enthaelt 73 Dateien ohne `rs`-Annotation, also reine Abstracts; bei einer Freigabe-Entscheidung darf dieser Subkorpus nicht in `RELEASED_CORPORA` aufgenommen werden.
-
-Konsequenz: die Begruendung des Ortsregister-Verzichts in [[decisions#Register-Freigabe]] ist um die Datenabhaengigkeit ergaenzt. Die Entscheidung steht heute weiter, ist aber explizit datenabhaengig formuliert. Der Inventar-Lauf liefert die Pruefbasis fuer kuenftige Neubewertungen. Reports liegen unter `verification/reports/inventory-YYYY-MM-DD.{md,json}`.
-
-## 2026-05-16 Mentioned-Event-Vergleichsstand als Build-Flag
-
-Beate hat in der editorischen Mail darum gebeten, den Frontend-Output einmal mit und einmal ohne den Filter „verschachtelte rs-Events ignorieren" erzeugen zu koennen. Der Default-Stand zaehlt nur Top-Level-Events; der Vergleichsstand zaehlt verschachtelte Events als volle Events mit.
-
-Realisiert als Build-Flag, nicht als UI-Toggle. Begruendung in [[decisions#Mentioned-Event-Vergleichsstand als Build-Flag]]. Pipeline-Konfiguration `pipeline.config.include_mentioned_events()` schaltet die XPath-Selektoren in `pipeline/utils/event_helpers.py` zentral um, sodass alle Transformatoren (Events, Personen-in-Events, Orgs-in-Events, Rollen, Transaktionen) konsistent ziehen. `event_mentions.csv` bleibt im Vergleichsbuild leer, damit Doppelzaehlungen ausgeschlossen sind. Frontend-seitig setzt `frontend/__main__.py` die Env-Var vor dem Import von `frontend.config`, und `DOCS_DIR` waehlt das Output-Verzeichnis (`docs-with-mentioned/` statt `docs/`). `_kpi.py` schaltet den XPath fuer die Hero-KPIs konsistent um.
-
-Verworfene Alternativen: UI-Toggle (zu viel Code fuer die Frequenz, mit der der Vergleich gemacht wird) und nur-KPI-Toggle (inkonsistent, weil Auswertungen und Netzwerk unveraendert blieben).
-
-Zahlen aus den Roles-Coverage-Bloecken nach Build: 4214 → 4943 Events, +17 %, vollstaendig QGW-getrieben (+727), Stadtbuecher +2. Person-Distinct unveraendert, Persons-with-Org +47. Das passt zu den direkt aus TEI gezogenen Stichproben.
-
-## 2026-05-11 Reader-Robustheit und Befunde-Register
-
-Die HTML-Reader (`parse_html.read_person_profile`, `read_org_profile`, `read_document`) fangen ab jetzt Lese-Fehler ab und liefern statt eines Crashs ein leeres Datenobjekt mit `read_failed=True`. Ein zentraler `_check_reader_health`-Check in Stufe 2 listet betroffene Dateien als eigenes mismatch-Result, damit Lese-Probleme nicht von echten Daten-mismatches verschluckt werden. Hintergrund: ein paralleler Build-Lauf hatte beim `--all`-Lauf zu einem `NoneType-cssselect`-Crash gefuehrt — wenn die Datei gerade umgeschrieben wird, ist sie kurz leer. Mit den drei neuen Health-Checks (persons, orgs, documents) ist die Verifikation jetzt belastbar gegen parallel laufende Schreiboperationen.
-
-Aktueller Stand nach `--all`: 64 Pruefungen, 43 match, 2 mismatch, 11 known_gap, 10 info. Die 2 Mismatches sind in `verification/findings.md` namentlich dokumentiert — drei Stadtbuecher-Quellen mit kaputten Klammer-Patterns im Datums-Text und eine mit einem unvollstaendigen Edit-Marker `(1398 Dezember 10 ?a»`. Alle vier liegen im Schwester-Repo und gehoeren dort gefixt.
-
-Die Reader-Tests (`verification/test_parse_html.py`) sind um 5 neue Robustheits-Tests erweitert: fehlende Datei, leere Datei, abgeschnittenes HTML — jeder Fall fuehrt zu `read_failed=True` ohne Crash. Insgesamt 22 pytest-Tests, alle gruen.
-
-## 2026-05-11 Stufe-3-Ausbau: Events, Rollen, Datum, Profil-Quelle-Konsistenz
-
-Stufe 3 hat jetzt 16 Pruefungen (vorher 8). Vier neue Check-Klassen:
-
-- **Event-Refs Symmetrie**: TEI `<rs type="event">` vs HTML `data-ref="ev__"`. TEI-Konvention `ref="NULL"` (Event ohne Identifier) wird im Vergleich gefiltert, sonst symmetrisch.
-- **Rollen pro Quelle**: TEI `(person_ref, role)`-Paare via innermost `<rs type="fn" role>` vs HTML `[data-ref]` innerhalb der innersten `data-role`-Klammer. Findet Rollen-Drift, die die reine Ref-Symmetrie nicht sieht. Aktuell 0 Mismatches: alle Rollen-Zuordnungen kommen exakt im HTML an.
-- **Datum TEI vs HTML**: Text-Inhalt von `<profileDesc/creation/date>` gegen letzte `(...)`-Gruppe vor `, Datenbank` im HTML-`<title>`. Normalisiert: Whitespace, aeussere Klammern (Stadtbuecher-Konvention), und das `X (Y)`-Pattern (Frontend rendert das innere Datum). Aktuell 2 echte Mismatches: 3 Stadtbuecher mit Klammer-Anomalien im TEI, 1 Stadtbuch mit kaputter UTF-Zeichenfolge im HTML-Titel.
-
-Zusaetzlich Cross-Check in Stufe 2: **Profil-Quelle-Konsistenz**. Vier neue Pruefungen vergleichen die Reverse-Index-Aussagen des Profils (Tabelle "Quellen") mit den Annotationen in den verlinkten Quellen-HTMLs. Wichtige Erkenntnis dabei: das Profil listet eine Quelle auch dann, wenn die Person nur indirekt ueber `roleName/@corresp` (Beziehungs-Annotation in der TEI) referenziert wird — nicht nur bei direkter `<rs type="person">`-Nennung. Der Cross-Check addiert deshalb `data-corresp` zu `data-ref` als legitime Erscheinungsform. Mit dieser Korrektur sind alle vier Cross-Checks symmetrisch.
-
-Gesamtbild nach `--all`: 61 Pruefungen ueber drei Stufen, 40 match, 2 mismatch (die echten Stadtbuecher-Datums-Bugs), 11 known_gap (filename.csv-Filter, Mirror-Schluessel ohne Daten, Stadtbuecher-Korpus-Aussparungen), 10 info.
-
-## 2026-05-11 TEI-direkt-zu-HTML als dritte Verifikationsstufe
-
-Das Verifikations-Set hat jetzt drei Stufen. Neu: `python -m verification.run --tei-html` liest die TEI-Quellen direkt und vergleicht die annotierten `<rs ref="...">`-Werte mit den `data-ref="..."`-Attributen im gerenderten Quellen-HTML. Damit ist die Pipeline-Zwischenstufe nicht mehr blinder Fleck: Pipeline-Drops (TEI-Annotation, die der Aggregator wegfiltert) und Renderer-Halluzinationen (HTML-`data-ref` ohne TEI-Quelle) werden in beide Richtungen aufgedeckt.
-
-Aktueller Stand: 8 Pruefungen, alle gepaarten 2601 Quellen sind person-, org- und place-symmetrisch zwischen TEI und HTML. 64 TEI-Quellen ohne HTML-Pendant sind erklaerte `known_gap`-Faelle (`status: 'in progress'` in `filenames.csv`). Laufzeit der Stufe: 3 Sekunden, deutlich billiger als Stufe 2.
-
-Reader und Cross-Check in `verification/compare_tei_html.py`. README und Inventory entsprechend ergaenzt. `--all` laeuft jetzt alle drei Stufen in einem Lauf.
-
-## 2026-05-11 TEI-zu-HTML-Coverage als zweite Verifikationsstufe
-
-Das Verifikations-Set hat jetzt zwei Pfade. `python -m verification.run` vergleicht weiter TEI gegen die Pipeline-JSONs. Neu: `python -m verification.run --html` vergleicht die Pipeline-CSVs (Aggregator-Input) gegen die gerenderten Profil- und Quellen-Seiten unter `docs/`. Damit ist die End-to-End-Kette TEI → JSON → CSV → HTML maschinell prüfbar.
-
-Geprüft wird auf der HTML-Stufe: Stammdaten der Personen- und Organisations-Profile, Sterbedatum, Authority- und Wien-Wiki-Links, Quellen-Counts gegen Tabellen-Zeilen, Anzahl der Beziehungs-Eintrage pro Typ inklusive der neu eingefuehrten Mirror-Beziehungen, und ob jedes `data-ref` im Quellen-Body auf ein real existierendes Profil zeigt. Reader und Cross-Check liegen in `verification/parse_html.py` und `verification/compare_html.py`; ein Vertrag in `verification/contract.py` deklariert pro Feld required/conditional/filter und bekannte Lücken. Inventory in [[verification/inventory.md|inventory]] um Ebene 4 ergänzt.
-
-Verworfen: pytest-Integration. Der vollständige HTML-Coverage-Lauf dauert in der Größenordnung von zwei Minuten, das ist für einen normalen Test-Run zu lang. Separater Runner wie das bestehende `verification/`-Muster bleibt schlanker.
-
-Begleitend in derselben Session **Mirror-Beziehungen** auf Personenprofilen ergänzt: wenn eine Person als `related_key` in `occ_relations_in_sources.csv` auftaucht und der `person_key` ebenfalls eine Person ist, erscheint auf dem Bezugs-Profil eine neue Sektion „Personen mit Beruf / Amt in meinem Bezug". Schließt eine Asymmetrie, die der vorherige Stand systematisch nur einseitig zeigte. Auf einem Hochadel-Profil wie dem von Herzog Wilhelm wird damit die Hofstruktur erstmals sichtbar.
-
-Weiter konsolidiert: `EdCore.sortKey` und `EdCore.compareValues` aus drei nahezu identischen Implementierungen (in [[../frontend/static/js/index.js|index.js]], [[../frontend/static/js/profile.js|profile.js]], [[../frontend/static/js/register.js|register.js]]); `TableInfra.setupTableFilter` aus zwei Implementierungen. Production-Bug auf der Analyse-Seite behoben: das Template lud die längst gelöschte `drill-down.js`, defensive `typeof DrillDown === 'undefined'`-Checks hatten den Bug stumm versteckt. Migration auf die bestehende `VizCore.openDrillOverlay`-API.
-
-## 2026-05-11 Datenkorb auf drei Typen erweitert mit Ableitungs-Mechanik
-
-Der Datenkorb sammelt jetzt nicht nur Quellen, sondern auch Personen und Organisationen. Drei Item-Typen mit kompaktem Schlüssel `type:id`, je eigener Tabelle auf der Korb-Seite, je eigener Remove- und Clear-Aktion, je eigenem CSV-Export.
-
-Kern-Entscheidung **Ableitung als sichtbare Schicht**: legt eine Forscherin eine Quelle in den Korb, lädt `basket.js` lazy den Forward-Index `docs_entities.json` (Quelle → annotierte Entity-IDs, von `frontend/aggregator/docs` geschrieben) und legt die zugehörigen Entitäten als abgeleitete Einträge ohne `gathered`-Flag nach. Auf der Korb-Seite erscheinen sie kursiv und gedimmt mit „aus Quelle"-Rückverweis. Ein +-Klick stuft einen abgeleiteten Eintrag zur eigenständigen Sammlung hoch und macht ihn unabhängig von der Ursprungsquelle.
-
-Verworfen: ein einzelner Sammler-Typ mit Mischtabelle. Die drei Typen brauchen unterschiedliche Spalten, und Forscherinnen wollen Personen aus dem Korb für Prosopografie separat exportieren, ohne Quellen-Zeilen mit zu schleppen.
-
-## 2026-05-11 Detail-Profile für Organisationen, Ortsregister entfernt
-
-Phase 1.5 / Phase 2 der Profilseiten-Idee aus 2026-05-02 abgeschlossen. Organisationen tragen jetzt eigene Detail-Profile, gerendert vom Aggregator-Modul `org_profiles`, parallel zu den Personen-Profilen. `<rs type="org">` im Quellen-Volltext verlinkt direkt aufs Org-Profil; die Sackgasse für Organisationen ist analog zur Personen-Lösung aus 2026-05-02 geschlossen.
-
-Im selben Zug das **Ortsregister entfernt**. Es war ohnehin nie freigegeben; ein Code-Pfad für Ort-Detail-Seiten hatte sich aus einer früheren Iteration angesammelt. Begründung der Streichung: Orts-Aussagen liegen außerhalb des Forschungsfokus, ein eigenes Register würde Bearbeitungstiefe vortäuschen, die die Daten nicht hergeben. `<rs type="place">` bleibt als Inline-Span im Volltext mit Tooltip, ohne Sprungziel. Eintrag in [[decisions#Register-Freigabe]] umgeschrieben, Wiederaufnahme-Klausel gestrichen.
+Im selben Zug das Ortsregister entfernt. Es war nie freigegeben; Orts-Aussagen liegen außerhalb des Forschungsfokus, ein eigenes Register würde Bearbeitungstiefe vortäuschen. `<rs type="place">` bleibt als Inline-Span im Volltext mit Tooltip, ohne Sprungziel. Detail in [[decisions#Register-Freigabe]].
 
 ## 2026-05-11 Konsolidierungs-Welle
 
-Mehrere kleinere, aber durchgreifende Refactors im selben Zug.
+Mehrere durchgreifende Refactors im selben Zug. Tooltip-System in eine gemeinsame Mechanik mit vier Varianten zusammengeführt (Provenienz, Glossar, UI-Hilfe, Hover-Hint). Aggregator-Module umbenannt von `epic_a/b/c` zu `roles/relations/transactions`, fachliche Domänen statt Sprint-Codenamen. Top-Navigation einheitlich in `base.html` ohne Duplikate. Begriff „Factoid" aus dem Frontend entfernt, im DH-Kontext etabliert, hier redundant zur dichten Begriffsfamilie (Nennung, Gesamtnennung, Individuelle Person, Event).
 
-- **Tooltip-System** in eine gemeinsame Mechanik (`tip.js`, `tip.css`) mit vier Varianten zusammengeführt: `tip-popover--data` für Provenienz, `tip-popover--glossary` für Begriffsdefinitionen, `tip-popover--help` für UI- und Funktions-Hilfen und `data-hint`-Hover für leichte Selbsterklärungen. Gemeinsamer Open/Close-Pfad und Edge-Detection. Eine Aufteilung in separate JS-Komponenten wurde verworfen, weil die Mechanik substanziell gleich ist.
-- **Aggregator-Module umbenannt** von `epic_a/b/c` zu `roles/relations/transactions`. Fachliche Domänen statt Sprint-Codenamen.
-- **Top-Navigation** lebt einheitlich in `base.html` ohne Duplikate auf Sub-Seiten; Footer und Startseite kosmetisch entrümpelt.
-- **Code-Kommentare** durchgängig auf Englisch (`frontend/` Python und JS). Inhaltliche Doku bleibt deutsch.
-- **Begriff Factoid** aus dem Frontend entfernt. Im DH-Kontext etabliert, im hiesigen UI aber redundant zur bereits dichten Begriffsfamilie (Nennung, Gesamtnennung, Individuelle Person, Event). Interne Datenmodell-Namen bleiben unangetastet.
+## 2026-05-03 Exploration-Sub-Seiten Zeitstrom und Personennetzwerk, Karten-Idee verworfen
 
----
+Zwei Sub-Seiten unter `/exploration/` plus geteilte Visualisierungs-Schicht. **Zeitstrom** als gestapelter Bar-Chart pro Jahrzehnt mit umschaltbarer Stapel-Achse (Korpus, Erschließungsform, Geschlecht, Top-Transaktionstypen) und Brush-zu-Drill-down. **Personennetzwerk** als Ego-Layout, Klick auf einen Nachbar verlagert das Zentrum. Detail in [[exploration]].
 
-## 2026-05-03 Personennetzwerk als zweite Exploration-Sub-Seite, Karten-Idee verworfen
+Bewusst gegen Force-Layout: die meisten Co-Occurrence-Kanten haben Gewicht 1, ein Strukturartefakt der Urkundenform. Ein globales Force-Layout würde als unleserliches Knäuel erscheinen. Das Ego-Layout schneidet stattdessen pro Schritt einen lesbaren Ausschnitt, analog zum klassischen Genealogie-Stammbaum.
 
-Zweite visuelle Sub-Seite unter `/exploration/`: ein **Personennetzwerk** als Ego-Layout. Eine Person sitzt im Mittelpunkt, ihre direkten annotierten Beziehungen liegen radial drumherum; Klick auf einen Nachbar verlagert das Zentrum, so wandert man durchs Netz. Personen-Suche, Beziehungstyp-Chips (Verwandtschaft / Beruf-Stand / Vertretung / Freundschaft) und URL-Sync sind die Bedien-Achsen. Detail-Tabelle unter dem Graphen listet alle Verbindungen mit Beziehungstyp, Bezeichnung, Beleg-Anzahl und „+"-Knopf für den Datenkorb (Personen-Sammlung).
+**Karten-Idee verworfen** (in dieser Iteration; in der späteren Stufenmodell-Welle als Stufe-4-Eigenschaft wieder aufgenommen, siehe [[exploration]]). Gründe damals: fehlende flächendeckende Georeferenzierung und Orts-Aussagen außerhalb des Forschungsfokus.
 
-Bewusst gegen Force-Layout: die meisten Co-Occurrence-Kanten haben Gewicht 1 — ein Strukturartefakt der Urkundenform, kein analytisch belastbares Beziehungsmaß. Ein Force-Layout über das Gesamt-Beziehungsnetz würde als unleserliches „Knäuel" erscheinen, in dem nichts erkennbar ist. Das Ego-Layout schneidet stattdessen pro Schritt einen lesbaren lokalen Ausschnitt — analog zum klassischen Genealogie-Stammbaum, nur mit Klick-Hopping als Navigation. Globale Topologie lässt sich daraus durch sequenzielles Erkunden rekonstruieren.
+Im selben Zug die geteilte Visualisierungs-Schicht in `viz-core.js` extrahiert: Domain-Konstanten, Range-Slider, Active-Filter-Strip, URL-Sync, Drill-Overlay, JSON-Loader, CSP-sichere Style-Projektion über `data-*`-Attribute. Eine neue Sub-Seite muss das Filter-Boilerplate nicht wiederholen. Detail in [[architecture#Geteilte Visualisierungs-Schicht]].
 
-Datenpfad: relations-Aggregator wurde erweitert um das Feld `r` (related_key) in jeder rels-Eintrag, damit die Person-zu-Person-Kanten clientseitig rekonstruierbar sind. Vorher waren nur die Selbstreferenzen ohne Gegenüber im JSON. Aufwand: ein zusätzliches Feld pro rels-Eintrag, kein Schema-Bruch.
+## 2026-05-03 URL-Sync, Cross-Page-Sprung, Drill-down
 
-`occ`-Beziehungen (Beruf / Stand) zeigen Person → Organisation; sie werden als Knoten anderer Farbe (Sand) dargestellt, sind aber nicht weiter klickbar — Org-Profile gibt es noch nicht. Die anderen drei Typen (kin/rep/friend) tragen das Klick-Hopping.
+Drei verbundene Verbesserungen schließen die Workflow-Brüche zwischen den Seiten. **URL-Sync** serialisiert den Filter-Stand per `history.replaceState` in die URL und liest ihn beim Page-Load wieder ein; jeder Forschungsstand wird Permalink. `pushState` wäre falsch, weil Browser-Back nicht durch Filter-Mikrostände gehen soll. **Cross-Page-Sprung** als Footer-Link in den Drill-Containern öffnet die Quellen-Liste mit übernommenem Zeitraum-und-Geschlecht-Filter; Mapping ist asymmetrisch, weil das Quellen-Filter-Vokabular nicht symmetrisch zur Sex-Achse ist. **Drill-down** macht jede Donut-Arc, Bar und Bezeichnungs-Zeile klickbar; das gemeinsame Drill-Overlay zeigt die beitragenden Quellen. Detail in [[decisions#Forschungsstand zitierbar via URL-Parameter]] und [[decisions#Cross-Page-Sprung mit Filter-Übernahme]].
 
-**Karten-Idee verworfen.** Eine geographische Visualisierung war als dritte geplante Sub-Seite skizziert (siehe ältere Iterationen von `exploration.md`). Verworfen aus zwei Gründen: erstens fehlt die für eine sinnvolle Karte erforderliche flächendeckende Georeferenzierung des Ortsregisters (nur ein Bruchteil der Orts-Einträge hat Koordinaten), zweitens liegen Orts-Aussagen ohnehin außerhalb des Forschungsfokus der Datenbank. Knowledge-Dokumente sweepen-bereinigt von der Karten-Erwähnung; geplant bleibt nur noch das Sankey-Diagramm zu Transaktionsflüssen.
+## 2026-05-03 Auswertungs-Seite Rework und Verschiebung in den Analyse-Bereich
 
-## 2026-05-03 URL-Sync, Cross-Page-Sprung, Datenkorb
+Die Auswertungs-Seite hatte vier dichte Aggregat-Tabellen mit Zeilen- und Spalten-Prozenten. Stakeholder-Kritik: zu wenig visuell, zu viel statisch. Rework in mehreren Iterationen zu zwei Donuts (Funktionsrollen, Beziehungstypen), einem horizontalen Bar-Chart (Transaktionstypen mit aufklappbarer „Sonstige"-Sammelreihe) und einer scrollbaren Bezeichnungs-Tabelle mit Mini-Bars. Detail-Tabellen pro Donut bleiben als aufklappbares `<details>`.
 
-Drei verbundene Verbesserungen, die die identifizierten Workflow-Brüche zwischen den Seiten schließen.
+**Strukturelle Verschiebung:** Die Seite lag bis dahin unter `/exploration/auswertungen.html`. Inhaltlich ist sie analytische Visualisierung (filter-getrieben, vorgegebene Achsen), keine offene Erkundung. Verschiebung nach `/analysis/auswertungen.html`. Nav: ein Dropdown „Analyse" mit „Auswertungen" und „Abfragen". Detail in [[decisions#Auswertungen gehört in den Analyse-Bereich]] und [[decisions#Exploration und Analyse als getrennte Bereiche]].
 
-**URL-Sync** auf den Visualisierungs-Seiten: Filter-Stand (`dec`, `sex`, `type`, `q`, `mode` für Auswertungen; `dec`, `stack`, `brush`, `focus` für Zeitstrom) wird per `history.replaceState` in die URL serialisiert und beim Page-Load wieder eingelesen. Damit ist jeder Filter-Stand bookmark-fähig, teilbar, in einer Publikation zitierbar — ein Forschungsstand wird Permalink. `pushState` wäre falsch gewesen, weil Browser-Back nicht durch Filter-Mikrostände gehen soll. Default-Werte werden weggelassen, damit Sharing-URLs minimal bleiben. Eintrag in [[decisions#Forschungsstand zitierbar via URL-Parameter]].
+## 2026-05-02 Personen-Profilseiten und Tooltip-Trennung
 
-**Cross-Page-Sprung** als Footer-Link in beiden Drill-Containern (Auswertungs-Drill-Overlay, Zeitstrom-Brush-Drill): „→ in Quellen-Liste öffnen" mit übernommenem Zeitraum-und-Geschlecht-Filter. Mapping ist asymmetrisch, weil das Quellen-Filter-Vokabular nicht symmetrisch zur Sex-Achse der Visualisierungen ist (`with-f` für ♀, `only-m` für ♂; `with-m` existiert nicht). Page-spezifische Filter (Rolle, Beziehungstyp, Bezeichnung, Tx-Kategorie, Stack-Fokus) werden bewusst nicht übertragen — die Quellen-Liste kennt sie nicht. Tooltip am Link macht die Lückenführung transparent. Eintrag in [[decisions#Cross-Page-Sprung mit Filter-Übernahme]].
+Personennamen waren bisher Sackgassen (Hash-Anker auf das JS-gerenderte Register, wo der Anker nicht ankam). Jede individuelle Person bekommt jetzt eine eigene Profilseite unter `register/persons/<pe__id>.html`, gespeist aus `frontend/aggregator/person_profiles.py`. Joint Stammdaten, Quellenvorkommen, Rollen-Aggregation und fünf Beziehungs-CSVs. kin/friend/rep werden bidirektional aufgelöst; die Verwandtschafts-Lücke (eine Person sieht nur eine Seite einer kodierten Ehe) ist geschlossen.
 
-**Datenkorb** als clientseitige Sammler-Schicht über allen Quellen-Listen. `localStorage` mit versioniertem Schlüssel `sugw-basket-v1`, Cross-Tab-Sync via `storage`-Event, In-Tab-Updates via Custom-Event. „+"-Knopf in den Listen-Renderern (Quellen-Tabelle, Drill-Overlay, Brush-Drill); Korb-Icon mit Live-Badge im Nav (in `base.html` verankert, also auf jeder Seite); eigene Korb-Seite (`/korb.html`) mit Liste, Remove, Clear und CSV-Export (UTF-8 mit BOM, Excel-kompatibel). Eintrag in [[decisions#Datenkorb als clientseitige Sammlung]].
+Verworfen: einzelne `person_profiles.json`-Datei mit allen Profilen (zwei MB JSON für ein server-gerendertes Feature), Tab-Bar Lebenslauf/Beziehungen/Quellen (gegen das Maximaler-Informations-Output-Prinzip aus [[ui-design]]). Detail in [[decisions#Personen- und Organisationsprofile als Detailseiten]].
 
-Verworfen: Server-persistierter Korb mit Account. Anderer Stack (Auth, DSGVO, Speicherkosten) ohne erkennbaren Mehrwert für die jetzt bedienten Forschungsszenarien — der CSV-Export ist die Bridge in externe Werkzeuge (Zotero, BibTeX-Konverter, Excel). Verworfen auch ein Personen-Sammler in dieser Iteration: Personen tauchen aktuell nicht in den Visualisierungen auf, der Mehrwert läge erst nach den geplanten Personen-Profil-Drill-Pfaden vor.
+Die Tooltip-Komponente wird in zwei eigenständige Varianten zerlegt: **Glossar-Tip** an Begriffen (kompaktes `i`-Icon), **Provenienz-Tip** an Zahlen (gepunktet unterstrichen, öffnet XPath und Filter-Hinweis). Schema beim Ausrollen auf weitere Seiten konsistent: Glossar an Begriffen, Provenienz an Zahlen. Detail in [[ui-design#Tip-System]].
 
-## 2026-05-03 Drill-down auf der Auswertungs-Seite, Stack-Kategorie isolierbar im Zeitstrom
+## 2026-05-01 Analyse-Seite Richtung A umgesetzt
 
-Die Auswertungs-Seite war bis dahin eine Drill-Sackgasse: „Hausfrau · 1.153 Personen" war sichtbar, aber kein einziger dieser Personen erreichbar. Donut-Arc, Bar und Bezeichnungs-Zeile waren tooltip-only.
+Die Analyse-Seite war kurz als Slot-Workbench mit Familien-Tab-Bar als oberster UI-Ebene gebaut und auf eine kuratierte Frage-Galerie mit Result-Panel und Custom-Builder umgebaut. Frage als first-class concept, nicht an eine Familie gebunden. Permalinks doppelt: `#q=<id>` für die Galerie, `#f=<fid>&…` für den Custom-Builder.
 
-Jetzt klickt jedes dieser Elemente das gemeinsame Drill-down-Overlay auf — Donut-Arc und Legend-Item für Funktionsrollen ([[architecture#Provenienz-Indizes|`roles.drill_down.role_sex`]]), dito für Beziehungstypen (`relations.drill_down.type_sex`), Bar für Transaktionstypen (`transactions.drill_down.tx_type_decade`), Tabellenzeile für Bezeichnungen (`relations.drill_down.label_sex`). Der Geschlechter-Filter wird über sex-Suffixe im Lookup-Schlüssel mitgenommen (`kin_f`, `hausfrau__f`); der Zeitraum-Filter nativ bei decade-partitionierten Drills (Tx) und bei den anderen über Datums-Parsing aus `docs_lookup.json`. Auflösung der `file_keys` lazy beim ersten Klick, eager im Hintergrund vorgeladen. Eintrag in [[decisions#Auswertungen gehört in den Analyse-Bereich]] erweitert um die Drill-Pfade.
-
-Im Zeitstrom war der Brush bisher unscharf: „1390er" lieferte 730 Quellen aller Tx-Typen gemischt, einzelne Stapel-Kategorien waren nicht isolierbar. Jetzt fokussiert ein Klick auf ein Legend-Item eine Kategorie — die anderen Bar-Segmente dimmen, der Drill filtert auf die fokussierte Kategorie. Bei Stack=Tx läuft der gefilterte Drill über `transactions.drill_down.tx_type_decade` und löst die `file_keys` über `docs_lookup` auf; bei den anderen Stacks (collection/form/sex) filtert der Renderer das `DOCS_BY_DECADE`-Set in-memory mit der `assign`/`assignAll`-Funktion der Stack-Definition.
-
-Verifiziert über drei Forschungsfragen: „Welche Personen heißen 'wittib'?" (Bezeichnungs-Drill, vorher Sackgasse), „Welche Schuldbrief/Pfand-Geschäfte 1390er?" (Stack-Fokus + Brush, vorher unscharf), „Welche Quellen 1390er nur weiblich?" (Cross-Nav in Quellen-Liste mit übernommenen Filtern). Pattern für die nächsten Sub-Seiten (Personen-Netzwerk, Karten): die viz-core-Drill-Funktionen sind generisch genug, dass die neuen Sub-Seiten sie wiederverwenden können.
-
-## 2026-05-03 Zeitstrom als erste Exploration-Sub-Seite, viz-core-Refactor
-
-Erste Sub-Seite unter `/exploration/`: ein gestapelter Bar-Chart der Quellendichte pro Jahrzehnt mit umschaltbarer Stapel-Achse (Quellenkorpus, Erschließungsform, Geschlecht-der-Beteiligten, Top-8-Transaktionstypen) und Brush-zu-Drill-down. Datenquellen: `data/search.json` für die ersten drei Stapel-Achsen clientseitig aggregiert, `transactions.tx_timeline` für die Tx-Stapelung. Drill-Liste verlinkt direkt in die Quellen-Detailseiten.
-
-Vier Variationen waren skizziert (Timeline-Strom, Personen-Netzwerk Force-Layout, Ego-Netzwerk radial, Quellen-Galaxie als Scatter); Timeline gewählt, weil die Daten 100 % verfügbar sind, das Drill-down-Pattern aus den Auswertungen wiederverwendbar ist und die Sub-Seite ohne externe Lib auskommt. Personen-Netzwerk wurde für später aufgespart, weil das Knäuel-Risiko bei 8.406 Personen mit überwiegend Gewicht-1-Kanten harte Filter-Defaults zwingen würde — riskanter als erstes Stück.
-
-Im selben Zug ein zweiter Refactor-Pass nach dem ersten innerhalb der Auswertungs-Seite: die geteilte Infrastruktur wandert in `viz-core.js` (Domain-Konstanten, Number-Formatting, Dekaden-Filter, CSP-sichere Style-Projektion über `data-*`-Attribute, Chip-Toggle, Range-Slider-Binding, Active-Filter-Strip, JSON-Loader, später Drill-Overlay + URL-State + Cross-Nav-Builder). Beide Visualisierungs-Seiten nutzen das Modul; eine neue Sub-Seite muss das Filter-Boilerplate nicht wiederholen. Zeilen-Bilanz: `analysis-aggregat.js` von 832 auf ~520, `exploration-timeline.js` von ~580 auf ~376. Eintrag in [[architecture#Geteilte Visualisierungs-Schicht]].
-
-CSP-Falle unterwegs: `style-src 'self'` blockiert inline `style="…"`-Attribute, was die Bar-Fills und M/W-Mini-Bars auf 0px clampte. Lösung: Werte werden als `data-w` / `data-bg` / `data-h` codiert und nach jedem `innerHTML` über `applyDataStyles()` per JS-IDL auf die `style`-Property projiziert — CSP-konform.
-
-## 2026-05-03 Auswertungen-Seite Rework und Verschiebung in den Analyse-Bereich
-
-Die Auswertungs-Seite hatte vier dichte Aggregat-Tabellen mit `% Zeile / % Spalte` und KPI-Header. Stakeholder-Kritik: zu wenig visuell, zu viel statisch, dichte Tabellen ohne erkennbares Pattern. Rework in mehreren Iterationen.
-
-**Visualisierung:** zwei Donuts (Funktionsrollen, Beziehungstypen) mit Legende-pro-Eintrag-mit-M/W-Mini-Bar, ein horizontales Bar-Chart (Transaktionstypen mit aufklappbarer „Sonstige"-Sammelreihe), eine scrollbare Tabelle (alle 1.244 Bezeichnungen, vorher Top-15) mit Mini-Bar-Personen-Spalte und gestapelter M/W-Bar. Detail-Tabellen pro Donut bleiben als aufklappbares `<details>` für Forschende, die die ursprünglichen `% Zeile / % Spalte`-Werte brauchen.
-
-**Sprache und Farbe:** Rollen-Labels gegendert („Aussteller / Ausstellerin", „Empfänger / Empfängerin", „Siegler:in / Zeug:in", „keine Rolle"); Geschlechter-Visualisierung in Aubergine/Petrol statt Blau/Orange — bewusst klischee-frei, ohne Konflikt mit den Donut-Paletten (siehe [[ui-design#Farbkodierung und Typografie]]); „Beziehungen" statt „Kanten"; Pluralisierung im Slider-Tooltip („1 Quelle" / „N Quellen") über neuen Macro-Parameter `unit_singular`. M/W-Bar in der Legende immer sichtbar — auch wenn Geschlechter-Filter aktiv ist.
-
-**Strukturelle Verschiebung:** Die Seite lag bis dahin unter `/exploration/auswertungen.html`. Inhaltlich ist sie aber analytische Visualisierung (Donut + Bar + Verteilungstabellen, filter-getrieben), keine offene Erkundung — Donut und Bar sind nach DH-Standard analytische Display-Klasse, nicht explorative Information-Visualisation. Verschiebung nach `/analysis/auswertungen.html`; Template `analysis_aggregat.html`, JS `analysis-aggregat.js`. Nav: ein Dropdown „Analyse" mit „Auswertungen" + „Abfragen", separat von einem späteren „Exploration"-Dropdown. Begründung in [[decisions#Auswertungen gehört in den Analyse-Bereich]] und [[decisions#Exploration und Analyse als getrennte Bereiche]] (letztere neu gefasst: Trennung folgt Interaktionsmodus, nicht Inhalt).
-
-Erster Refactor-Pass am Ende: Helper extrahiert (Chip-Active-Toggle 6× dupliziert → `setActiveChip`, M/W-Bar-Markup 2× → `sexBarHTML`), toter Code raus (`bindCorpusFilter` gegen einen entfernten Block, unbenutztes `ROOT_PATH`), `bindReset` über die Helfer vereinfacht. Reduktion von 834 auf 523 Zeilen ohne Verhaltensänderung — die Vorbereitung für den `viz-core`-Refactor zwei Iterationen später.
-
----
-
-## 2026-05-02 Person-View Phase 1: Profilseiten pro Entität
-
-Bisher waren Personennamen in der Datenbank Sackgassen: in der Annotations-Tabelle der Quellen-Detailseite und im Volltext klickbar, aber nur als Hash-Anker auf das Listen-Register `register/persons.html#pe__id`, wo der Anker im JS-gerenderten Index nicht ankam. Beziehungs-Daten lagen im Pipeline-Output (`kin_relations_in_sources.csv`, `friend_/rep_/occ_/title-ref_relations_in_sources.csv`), waren aber nirgends UI-seitig sichtbar. Beispiel: Simon Pötel und Anna Pötlin sind im TEI als Ehepaar codiert, im Frontend war diese Verwandtschaft nicht einsehbar.
-
-Phase 1 macht jede [[glossar#Individuelle Person]] zu einer eigenen Profilseite unter `register/persons/<pe__id>.html`. Quelle der Daten ist der neue Aggregator `frontend/aggregator/person_profiles.py`: er joint Stammdaten aus `persons.csv` (Name, Geschlecht, Tod, Notiz, Wien-Wiki-Link), Quellenvorkommen aus dem bestehenden `reverse_index`, Rollen-Aggregation aus `persons_in_events.csv` und Beziehungen aus den fünf Relations-CSVs. Die Brücke zwischen `file_key` (z. B. `f__QGW_10`) und konkreter Quellen-URL läuft über `filenames.csv`, weil die Pipeline-CSVs file_key-zentriert sind und `reverse_index` idno-zentriert.
-
-Beziehungs-Modell: kin/friend/rep werden bidirektional aufgelöst (eine CSV-Zeile erscheint im Profil beider Seiten), occ und title-ref nur in der Subjekt-Sicht (das Gegenüber ist eine Organisation, die noch keine Profilseite hat). Pro Beziehungseintrag wird die Quelle als Nachweis verlinkt. Damit ist die Verwandtschafts-Lücke geschlossen: Diemut → Berthold (Gemahlin) und Berthold → Diemut (Counterpart) erscheinen jeweils im Profil der anderen Person, mit Klick-Pfad zur Quelle.
-
-Verlinkungs-Pfade: `frontend/renderer.py` zeigt `<rs type="person" ref>` jetzt auf das Profil statt auf das Listen-Register; die Annotations-Tabelle in `document.js` setzt Personennamen als Profil-Links; das Personenregister `register/persons.html` linkt die Namens-Spalte aufs Profil, der Quellen-Badge bleibt Inline-Detail-Trigger (Quellen einsehen ohne Seitenwechsel). Org/Ort-Refs sind unverändert — Phase 2 öffnet sie analog.
-
-Verworfene Alternativen: (a) ein einzelnes `person_profiles.json` mit allen Profilen — gewonnen wäre Client-Lazy-Loading-Möglichkeit, verloren wären zwei MB JSON für ein Feature, das aktuell rein server-gerendert ist; daher in-memory-Pipeline ohne JSON-Zwischenstufe. (b) Tab-Bar Lebenslauf/Beziehungen/Quellen — gegen das „maximaler Informations-Output"-Prinzip aus [[ui-design]], permanente Sichtbarkeit aller Sub-Bereiche schlägt schmaleres Tab-Switching. (c) `<rs>`-Spans im Volltext zusätzlich mit Cursor-Pointer markieren — verworfen, weil sie ohnehin schon `<a>`-Tags sind und Browser-Default-Hover ausreicht.
-
-Korpus-Lücke beim Smoke-Test: das Pötel-Paar selbst ist nur in `Vienna_1458-66` belegt, das nicht im freigegebenen Korpus liegt. Profile für beide existieren also nicht — funktional korrekt, weil das Released-Set die Profil-Menge bestimmt. Sobald QGW II/2 freigegeben wird, taucht das Paar automatisch auf. Verifiziert wurde das Feature stattdessen am Paar Diemut/Berthold (Nr. 10, 1274) und an Alexander III. (Beruf-Beziehung zur Vatikan-Org).
-
-Build-Zahlen: 8.441 Profile, Build-Zeit von ~18 s auf ~19 s. Tests: 333 grün, 32 skipped. Die Profilseite selbst ist absichtlich schlank gehalten (Toolbar mit Breadcrumb + Meta-Strip, Header mit Name + Notiz + Quellen-Titel-Chips, Beziehungs-Block, Quellen-Tabelle) und auf Vereinheitlichung mit der Quellen-Detailseite ausgelegt. Stat-Karten (Quellen-Count, Rollen-Aufschlüsselung, Beziehungs-Count) wurden nach erstem Wurf wieder entfernt — sie brachen die Konsistenz zur restlichen UI.
-
-Offen für eine eigene Session — Phase 1.5 / Phase 2:
-
-- **Profilseite reicher.** Vier Achsen, in absteigender Schmerz-Reihenfolge: (1) Header als richtige Visitenkarte (Name groß, Lebensspanne als Pille, Sex-Symbol, Wien-Wiki-Link prominent statt im Footer); (2) Beziehungs-Tabellen als Listen-/Karten-Form, weil Tabellen bei 1–3 Einträgen klobig wirken; (3) Quellen-Tabelle um Rolle-pro-Quelle, Erschließungsform-Icon und Faksimile-Indikator ergänzen, damit pro Zeile sichtbar ist, *was* die Person dort tat; (4) Mention-Kontext-Snippet, also der Satz aus dem TEI rund um den jeweiligen `<rs>`-Span — am wertvollsten, weil „wie wird die Person beschrieben" ohne Quellen-Öffnen sichtbar wäre, und am aufwendigsten.
-
-- **Org-Profile / Ort-Profile (Phase 2).** Datenmodell-seitig schon vorhanden (`organisations.csv`, `places.csv`, `orgs_in_sources.csv`, `places_in_sources.csv`, `topo_relations_in_sources.csv` für Topographie). Verworfen für Phase 1, weil die Beziehungs-Substanz bei Personen am dichtesten ist und das Pötel-Beispiel dort liegt. Bei Org-Profilen wird die occ-Beziehung dann von beiden Seiten sichtbar (Person mit Amt → Org mit ihren Amtsträger:innen).
-
----
-
-## 2026-05-02 Tooltip-Komponenten getrennt, Toggle entfernt
-
-Die Startseiten-Card „Quellen durchsuchen" wird konzeptionell aufgeräumt. Der Toggle „Erwähnte Geschäfte einbeziehen" über der Korpus-Matrix entfällt. Begründung: Die Matrix-Werte werden nicht mehr zwischen zwei Zählebenen umgeschaltet, sondern zeigen einheitlich die quellenbereinigte Default-Variante (Personen in verschachtelten rs-Events ausgeschlossen, vgl. [[glossar#Gesamtnennung]]). Die parallele Aggregator-Schicht für die inklusive Variante (`person_mentions_with_mentioned`, `distinct_events_with_mentioned`, der zweite XPath-Loop über alle rs-Events) ist damit ohne Konsumenten und wird aus `frontend/build.py` entfernt. Für eine zukünftige Wiedereinführung als globaler Zählebenen-Umschalter (vgl. fruehere `requirements#Umschaltbarkeit der Zählebenen`, heute aufgegangen in [[specification]]) gibt es einen sauberen Rebuild-Pfad — der Aggregator hat keinen verkrusteten Toggle-Zustand mehr.
-
-Der Begriff **Event** bleibt im UI bewusst stehen, gegen den ersten Impuls, ihn durch „Rechtsgeschäft" zu ersetzen. Die `events_in_sources.csv` zeigt, dass die `<rs type="event">`-Annotation heterogen ist: 2.025 `abstract` (das eigentliche Regest), 1.565 `seal` (Siegelvermerke), 439 `entry` (Kanzleivermerke), 47 `nota`, plus 138 ohne Kategorie. Nur `abstract` deckt sich mit der Glossar-Definition von [[glossar#Rechtsgeschäft]]. „Rechtsgeschäft" als Spaltenlabel wäre für die Begleitelemente zu eng; „Event" ist der ehrlichere Sammelbegriff und respektiert das technische Vokabular der TEI-Annotation. Eine separate Aufschlüsselung pro `event_in`-Kategorie bleibt eine offene Designfrage für eine spätere Session.
-
-Die Tooltip-Komponente wird in zwei eigenständige Varianten zerlegt, weil sie zuvor zwei verschiedene Aufgaben in einem Popover gemischt hat. **Glossar-Tip** (Macro `glossary_tip`): kompaktes `i`-Icon neben einem Begriff, öffnet die Begriffsdefinition mit Link zum Glossar. **Provenienz-Tip** (Macros `prov_stat` + `prov_popover`): an einer Zahl, gepunktet unterstrichen, öffnet den Verifikations-XPath und einen kurzen Hinweis zur Filterung. Beide Komponenten teilen die JS-Logik aus `provenance.js` (gleiche `data-prov-trigger`-Mechanik), unterscheiden sich aber in Trigger-Form und Inhalt. Auf der Startseite folgt die Korpus-Matrix dem Schema: jeder Spalten-Header trägt einen Glossar-Tip, die Gesamt-Zahlen in der `tfoot`-Zeile tragen einen Provenienz-Tip. Die Zellen pro Korpus bleiben einfache Zahlen, weil ihre Provenienz mit der Spalten-Summe übereinstimmt. Beim Ausrollen auf weitere Seiten (Exploration-Subpages, Datenqualität, Statistik — vgl. [[journal]]-Eintrag 2026-04-17) sollte das Schema konsistent gehalten werden: Glossar an Begriffen, Provenienz an Zahlen.
-
-Begleitend wird der Provenienz-Popover-Container auf horizontale Edge-Detection erweitert. Beim Öffnen prüft `clampToViewport` in `provenance.js`, ob das Popover über `documentElement.clientWidth - margin` hinausragt, und kompensiert über `transform: translateX(...)`. Der Pfeil bleibt am ursprünglichen Trigger ausgerichtet via CSS-Variable `--prov-arrow-offset`. Ohne diesen Mechanismus war die Personenregister-Card am rechten Rand der Startseite betroffen.
-
-Drei kleinere Refactors: (1) `var` → `let` projektweit über alle JS-Files in `frontend/static/js/`. Ein TDZ-Bug in `index.js` (`rangeSlider` wurde im Init-Callback gelesen, bevor `initRangeSlider()` zurückkehrte) wurde durch eine Forward-Deklaration `let rangeSlider;` am Funktionsanfang behoben. (2) Die Korpus-Matrix in `frontend/templates/startseite.html` zieht ihre Spalten-Configs (Label, Glossar-Definition, Verifikations-XPath, Provenienz-Note) aus einer Liste `_compute_matrix_columns()` in `build.py`. Eine zusätzliche Spalte braucht jetzt nur einen weiteren Eintrag in dieser Liste, kein dupliziertes Template-Markup. (3) Spalten-Header `Quellenkorpus` ergänzt, damit die erste Spalte der Matrix nicht mehr unbeschriftet ist.
-
----
-
-## 2026-05-01 Analyse-Seite Richtung A umgesetzt und refactored
-
-Die [[analyse|Analyse-Seite]] ist von der Slot-Workbench (Phase 1, Familien-Tab-Bar als oberste UI-Ebene) zu **Richtung A** umgebaut: kuratierte Frage-Galerie als Einstieg, einziges Result-Panel als zentrale Antwort-Bühne, Custom-Builder darunter im `<details>` für freie Slot-Kombinationen. Der Tab-Bar-Ansatz wurde verworfen, weil er Familien als oberste Mental-Model-Ebene aufzwang — die Galerie bietet stattdessen direkten Zugriff über die Forschungsfrage selbst.
-
-Architektur-Entscheidung **Frage als first-class concept**: Eine Frage ist autonom (`{ id, group, text, dataFiles, viz, answer, resolveViz, resolveComparison, resolveDrillDown, coverage }`), nicht an eine Familie gebunden. Familien bleiben für den Custom-Builder relevant. Das entkoppelt die kuratierte Schicht von der Slot-Architektur.
-
-Architektur-Entscheidung **drei Mini-Viz-Stufen**: Karten zeigen subtile 6 px Stacked-Bars, 28 px Sparklines, Top-3-Mini-Bars oder 2×2-Heatmaps; das Result-Panel zeigt vollwertige SVG-Renderings. Beide Stufen teilen sich die Renderer-Logik.
-
-Architektur-Entscheidung **Permalinks doppelt**: `#q=<id>` für Galerie, `#f=<fid>&...` für Custom-Builder. Beide bidirektional serialisiert; Custom-Permalink öffnet das `<details>` automatisch. Permalink-Copy-Button mit Clipboard-API ersetzt den vorherigen reinen Anzeige-Hint.
-
-Refactor-Pass danach: COVERAGE-Map konsolidiert vier nahezu identische Coverage-Funktionen, generischer `topN(source, n, opts)` ersetzt drei `topX`-Helfer, Label-Maps zentralisiert (Roles/Orgs/Tx), Driver in neun nummerierte Sub-Sections gegliedert, CSS auf Token-Aliases umgestellt, Mobile-Layout < 600 px ergänzt, `:focus-visible`-Outlines durchgängig. Stub-Familien 2–5 aus `analysis-families.js` entfernt (waren tot und irreführend).
-
-Bekannte Folge-Lücken: Familien 2–5 sind als Galerie-Resolver implementiert, aber noch nicht als Custom-Builder-Slots. Korpus-Filter ist weiter aufgeschoben, weil die Galerie-Antworten Korpus-übergreifend formuliert sind. `RELEASED_PERIOD` aus Event-Datum dynamisch ableiten (CS-Feedback-Punkt 1.2) wartet weiter auf eine konflikt-freie Session mit dem Pipeline-Repo. Tests: 23 grün, davon 12 Aggregat-Konsistenz-Tests pro Frage, die Pipeline-Drift erkennen, bevor Nutzer:innen falsche Zahlen sehen.
+Dieser Stand wurde in der späteren Welle vom 16. Mai durch die Konstellations-Abfrage ersetzt, weil Forschende mit konkreten Konstellationsfragen kommen, nicht mit abstrakten Slot-Subjects. Die Galerie-Module sind gelöscht. Detail in [[decisions#Abfragen-Sub-Seite als Konstellations-Abfrage]].
 
 ---
 
 ## 2026-04-17 Terminologie-Konsolidierung, Erschließungsform, Provenienz-Ausrollung
 
-Die UI-Terminologie wird durchgehend auf die kanonischen Begriffe aus [[glossar]] und [[decisions#Begriff Quellenkorpus]] gezogen. Alle benutzerseitig sichtbaren Vorkommen von „Dokument(e)" werden zu „Quelle(n)", „Rechtsakt(e)" zu „Rechtsgeschäft(e)", eine verbliebene „Sammlung"-Spaltenkopfzeile zu „Quellenkorpus". Technische Labels auf HTML-Ebene (ARIA-Attribute, CSS-IDs) bleiben unberührt, weil sie sich auf das HTML-Dokument als Trägerformat beziehen, nicht auf die Quelle der Datenbank.
+UI-Terminologie durchgehend auf die kanonischen Begriffe aus [[glossar]] und [[decisions#Begriff Quellenkorpus]] gezogen. „Dokument(e)" zu „Quelle(n)", „Rechtsakt(e)" zu „Rechtsgeschäft(e)", verbliebene „Sammlung"-Spaltenkopfzeile zu „Quellenkorpus". Technische Labels auf HTML-Ebene (ARIA, CSS-IDs) bleiben unberührt. Die Erschließungsform eines Quellenkorpus ist an den Korpus-Chips sichtbar (QGW: „Regest + Faksimile", Stadtbücher: „Volltext"). Provenienz-Tooltip von den Startseiten-KPIs auf weitere Seiten ausgerollt.
 
-Die [[data#Erschließungsformen|Erschließungsform]] eines Quellenkorpus ist im UI an den Quellenkorpus-Chips der Dokumenten-Übersicht sichtbar. QGW-Bestände tragen das Label „Regest + Faksimile", Stadtbücher tragen „Volltext". Die Zuordnung liegt als Build-Konstante `_transmission_form` vor und fliesst in die `collections`-Datenstruktur mit ein.
+## 2026-04-17 Startseiten-Layout, Datenstand-Korrektur
 
-Die Provenienz-Tooltip-Komponente wird von den Startseiten-KPIs auf weitere Seiten ausgerollt: Exploration-Hub (Personen, Rechtsgeschäfte, Quellen), Personenregister (Gesamt-Einträge mit Hinweis auf quellenbereinigte Zählung pro Eintrag), Datenqualität (Quellen gesamt). Das Muster ist dasselbe wie auf der Startseite; die Popover-Inhalte verweisen jeweils auf die relevanten Glossar-Einträge und Dateipfade.
+Startseite konzeptionell neu geordnet: zwei gleichberechtigte Säulen Exploration und Analyse nebeneinander, statt einer einzelnen Exploration-Sektion mit Trennstrich. Eyebrow-Labels in Sans-Caps markieren die Bereiche. Footer trennt Datenstand und Build-Datum. Bis zuletzt zeigte „Datenstand" das Build-Tagesdatum, was inhaltlich falsch ist. Datenstand ist jetzt das Datum des letzten Commits im Pipeline-Repo, ermittelt über `git log -1 --format=%cI`. Hilfsfunktionen in `frontend.build._pipeline_repo_data_date()`.
 
-Offen für eigene Sessions:
+Begleitend [[glossar#Gesamtnennung]] präzisiert: die Zählebene ist quellenbereinigt, Mehrfacherwähnungen einer Person in derselben Quelle werden zu einer Nennung zusammengefasst. Detail in [[decisions#Quellenbereinigte Zählung]].
 
-- **Zählebenen-Umschalter** (fruehere requirements-Anforderung, heute aufgegangen in [[specification]]). Implementierungspfad: globaler Schalter in der Navbar oder Filter-Leiste, persistierter Zustand im `localStorage`, propagiert via `window.COUNT_MODE` an die Exploration-Skripte. Jeder Counter muss pro Zahl wissen, welche der beiden Ebenen er anzeigen kann; für die Mehrzahl der Exploration-Seiten bedeutet das eine parallele JSON-Struktur (oder zusätzliche Felder in den bestehenden Aggregat-JSONs), die beide Ebenen vorhalten. Der Provenienz-Tooltip zeigt in jedem Popover den gewählten Modus.
+## 2026-04-17 Verifikations-Test-Set entsteht
 
-- **Menschen-Events-Toggle [[ui-design#Menschen-Events-Toggle]].** Implementierungspfad analog: `window.INCLUDE_HUMAN_EVENTS`, persistiert, propagiert. Datenmodell-Seite: die Aggregatoren müssen Nennungen trennen, je nachdem ob sie aus einem primären Event stammen oder als Verweis auf ein früheres Event vorliegen. Voraussetzung ist eine belastbare Markierung im TEI-Datenstrom. Bei fehlender Markierung zeigt das UI den aktuellen stillschweigenden Zustand (Einschluss) offen, statt ihn zu verschleiern.
+Im Edition-Repo entsteht ein eigenständiges Verifikations-Test-Set in Python mit lxml. Liest TEI-Quellen und Register-XMLs unabhängig ein, rechnet Aggregate nach und vergleicht mit den JSON-Ausgaben unter `/data/`. Detail in [[decisions#Verifikations-Test-Set als eigenständige Komponente]] und [[architecture#Test-Strategie]].
 
-- **Bestandsfilter universell [[ui-design#Bestandsfilter]].** Derzeit wirkt der Filter nur auf der Quellen-Übersicht. Implementierungspfad: eine gemeinsame Filter-Komponente mit `window.CORPUS_FILTER` als Zustand, die alle Seiten beim Laden konsultieren. Die Seiten selbst müssen ihre Aggregate so aufbauen, dass sie auf beliebige Teilmengen der Korpora herunter-rechenbar sind. Für die Exploration-Skripte heisst das, dass die Aggregat-JSONs zusätzlich eine korpusbasierte Unterschlüsselung tragen.
-
-- **Analyse-Seite mit Template-Familien.** Blaupause in [[analyse]]. Umsetzung erfordert Fachteam-Entscheidung über die initiale Familienmenge. Technischer Pfad: clientseitige Template-Engine mit Slot-Parametern, Live-Counts aus den Aggregat-JSONs, Drill-down über das bestehende `docs_lookup.json`.
-
-Kleinere UX-Punkte, die ohne Phase-2-Abhängigkeit umgesetzt werden können:
-
-- Multi-Select-Chips für den Quellenkorpus-Filter (mehrere Korpora gleichzeitig).
-- Tag-Farbdifferenzierung für Rollen in der Einzelquellen-Ansicht.
-- Mouse-over-Legenden in den Exploration-Visualisierungen, mit kurzen Erklärungen der Achsen und Kodierungen.
-- F-Faktoid-Legende (Markierung weiblicher Faktoid-Gruppen in den Rollen-Ansichten).
-- Archivinfos auf der Einzelquellen-Ansicht (Signatur, Bestand, Faszikel, sofern aus TEI-Header extrahierbar).
-
-## 2026-04-17 Startseiten-Layout, Datenstand und offene Phase-2-Punkte
-
-Die Startseite wird konzeptionell neu geordnet. Statt einer einzelnen Exploration-Sektion mit Trennstrich stehen zwei gleichberechtigte Säulen nebeneinander: Exploration (vier visuelle Zugänge) und Analyse (Einstieg zur Grundabfragen-Seite im Template-Familien-Stil von [[analyse]]). Eyebrow-Labels in Sans-Caps markieren die Bereiche ohne optischen Schwergewichte wie border-bottom. Die Entry-Cards (Quellen, Personenregister, Über das Projekt) tragen Icons in der Akzentfarbe. Die Farblogik stabilisiert sich: blau für Akzente (Icons, Labels, interaktive Elemente), schwarz für Inhaltstitel, gedämpftes Grau für Beschreibungstexte.
-
-Der Footer trennt Datenstand und Build-Datum. Bis zuletzt zeigte „Datenstand" das Tagesdatum des Builds, was inhaltlich falsch ist. Der Datenstand ist nun das Datum des letzten Commits im Pipeline-Repo, ermittelt über `git log -1 --format=%cI` und in deutscher Langform ausgegeben. Die Hilfsfunktionen `_format_german_date` und `_pipeline_repo_data_date` liegen in `edition/build.py`. Die Dissertations-Zeile im Footer entfällt; sie war Projekthistorie, nicht Datenbank-Kontext.
-
-[[glossar#Gesamtnennung]] wird präzisiert: die Zählebene ist quellenbereinigt, Mehrfacherwähnungen einer Person in derselben Quelle werden zu einer Nennung zusammengefasst. Die entsprechende Leitentscheidung liegt als [[decisions#Quellenbereinigte Zählung]] vor. Der Provenienz-Tooltip zur individuellen Person nimmt diese Schärfung auf.
-
-Offen bleibt aus der Phase-2-Liste des CS-Feedbacks:
-
-- **Zählebenen-Umschalter** zwischen Gesamtnennungen und Individuellen Personen in allen betroffenen Visualisierungen (fruehere requirements-Anforderung, heute aufgegangen in [[specification]]). Ohne diese Umschaltung zeigen Rollen- und Beziehungs-Ansichten nur eine Zählebene.
-- **Menschen-Events-Toggle** ([[glossar#Menschen-Event]]): aktiv ein- und ausschließbar, konsistent durch alle abhängigen Darstellungen. Ohne Toggle ist der aktuelle Zustand stillschweigend ein Ausschluss, was Vergleiche über Visualisierungen erschwert.
-- **Bestandsfilter universell** in allen Visualisierungen, nicht nur in den Quellen-Suchseiten. Sinnvoll, sobald Organisationen und Orte freigegeben sind.
-- **Persistente Referenzierbarkeit / PID**: beschlossen, aber technische Ausprägung (w3id, ARK, Handle) braucht Stakeholder-Entscheidung. Siehe [[specification#Zitierfähiger Datenstand]].
-- **Provenienz-Tooltip-Ausrollung** auf Register- und Exploration-Seiten. Die Komponente ist etabliert, der Einsatzort bisher auf Startseiten-KPIs beschränkt.
-
-Außerhalb der Phase 2 stehen vereinzelte Daten-Anomalien im TEI-Bestand: Pseudo-Rollen außerhalb des kontrollierten Vokabulars, Sonderzeichen-URLs in docs_lookup.json, eine Witness-Anomalie in ausgewählten Quellen. Die Bereinigung läuft auf Seite der TEI-Annotation. Das Verifikations-Test-Set macht sie als `known_gap` sichtbar.
-
-## 2026-04-17 Test-Set, Label-Korrektur und offengelegte Datenlücken
-
-Im Edition-Repo entsteht ein eigenständiges Verifikations-Test-Set (Python, `lxml`). Es liest die TEI-Quellen und Register-XMLs des Pipeline-Repos unabhängig ein, rechnet Aggregate nach und vergleicht sie mit den JSON-Ausgaben unter `/data/`. Die Entscheidung dazu steht in [[decisions#Verifikations-Test-Set als eigenständige Komponente]].
-
-Der Erstlauf liefert drei belastbare Befunde.
-
-Erstens: Register-Totals und Datum-Ranges stimmen exakt. Der Test bestätigt die Identität individueller Personen aus dem Register mit dem Count der Personen-Such-JSON.
-
-Zweitens: Der Zahlenwert, der im UI als „Gesamtnennungen Personen" beschriftet war, ist tatsächlich die Anzahl individueller Personen, nicht die der Nennungen. Das Label war falsch und wurde korrigiert zu „individuelle Personen". Siehe [[decisions#Begriff Gesamtnennungen]] und [[glossar#Individuelle Person]].
-
-Drittens: Ein Quellenkorpus-Teilbestand erscheint in den Aggregaten des Frontends, hat aber keine TEI-Quelle im Pipeline-Repo. Die Zahlen im Frontend beruhen für diesen Teilbestand nur auf einer CSV-Zwischenstufe. Die Offenlegung ist eine Konsequenz aus [[specification#Datenrobustheit und Provenienz]]. Die Entscheidung, wie mit dieser Lücke umgegangen wird (Datenergänzung, Sichtbarmachung als eingeschränkte Provenienz oder Ausblendung), steht aus.
-
-Parallel werden im TEI Pseudo-Rollen sichtbar, die weder im kontrollierten Rollenvokabular vorgesehen sind noch interpretativ Bedeutung haben. Sie entstehen aus Annotationsfehlern und werden im Test-Report als solche markiert. Die Bereinigung läuft auf Seite der TEI-Annotation, nicht in der Pipeline.
+Drei Befunde im Erstlauf: Register-Totals und Datum-Ranges stimmen exakt; der UI-Wert „Gesamtnennungen Personen" war tatsächlich die Anzahl individueller Personen, Label korrigiert; ein Quellenkorpus-Teilbestand erscheint in den Aggregaten, hat aber keine TEI-Quelle im Pipeline-Repo (Frontend-Zahlen für diesen Teilbestand beruhen nur auf einer CSV-Zwischenstufe).
 
 ## 2026-04-17 URL-Refactor und deutsche UI
 
-Die flache Root-Struktur des Frontend-Repos wird auf semantische Unterordner umgebaut: `register/`, `exploration/`, `analysis/`, `project/`. Die Umstellung betrifft Navigation, Build-Output und JavaScript-Lader, die die JSON-Indexe künftig über ein zentral gesetztes `window.ROOT_PATH` adressieren. Damit funktioniert die Auslieferung auch aus Unterordner-Tiefe heraus, ohne dass Pfade zu absoluten Web-Pfaden mutieren.
-
-Die UI-Oberfläche wird durchgängig auf Deutsch gezogen. Englisch bleibt in Pfaden und im Code. Der Untertitel lautet jetzt „Datenbank zu mittelalterlichen Rechtsgeschäften". Siehe [[decisions#Titel und Untertitel]].
-
-Quantitätsbezogene Angaben (Zeiträume, unausgewertete Perioden, Korpus-Zählwerte) werden aus Templates entfernt und an eine zentrale Konfigurationsdatei im Pipeline-Repo gebunden. Hardcoded Zahlen in Templates gelten ab jetzt als Fehler.
+Die flache Root-Struktur wird auf semantische Unterordner umgebaut: `register/`, `exploration/`, `analysis/`, `project/`. JavaScript adressiert die JSON-Indexe über `window.ROOT_PATH`, damit die Auslieferung auch aus Unterordner-Tiefe funktioniert. UI durchgängig auf Deutsch, Englisch bleibt in Pfaden und im Code. Quantitäten aus Templates entfernt, an die Pipeline-Repo-Konfiguration gebunden. Hardcoded Zahlen gelten ab jetzt als Fehler. Detail in [[decisions#Titel und Untertitel]].
 
 ## 2026-04-17 Entstehung der Wissensbasis
 
-Anlass war die Einarbeitung von Feedback zum Frontend. In der ersten Iteration wurde die Wissensbasis als Obsidian-kompatibler Markdown-Ordner angelegt. Pro Dokument gilt zeitlose Formulierung ohne Projektmanagement-Artefakte und ohne Quantitäten des Korpus. Siehe [[decisions#Zeitlose Formulierung der Wissensbasis]].
+Anlass war die Einarbeitung von Feedback zum Frontend. Die Wissensbasis ist als Obsidian-kompatibler Markdown-Ordner angelegt. Pro Dokument gilt zeitlose Formulierung ohne Projektmanagement-Artefakte und ohne Quantitäten des Korpus. Verworfen: README und Unterordner-Gliederung, weil die flache Struktur den Vault in Obsidian unmittelbar nutzbar macht. Detail in [[decisions#Zeitlose Formulierung der Wissensbasis]] und [[decisions#Obsidian-kompatibles Knowledge-Format]].
 
-Verworfen wurde ein README und eine Unterordner-Gliederung. Grund ist, dass die flache Struktur den Vault in Obsidian unmittelbar nutzbar macht und die Einstiegshürde senkt.
-
-Für das Glossar wurde ein Kriterium festgelegt. Aufgenommen werden nur Begriffe, die im UI erscheinen und ohne Definition zu Missverständnissen führen. Selbsterklärende Alltagsbegriffe wie „Ehepaar" oder „Witwe" bleiben draußen. Aufgenommen bleibt „Rechtsgeschäft", weil es der Gegenstand der Datenbank ist und seine Abgrenzung zu [[glossar#Event]] im UI-Kontext präzise sein muss.
-
-Offen: die konkrete Liste der Grundabfragen im Bereich Analyse. Sie wird mit dem Fachteam festgelegt und lebt vermutlich als eigener Bereich unter [[analyse]] weiter.
+Für das Glossar wurde ein Kriterium festgelegt: aufgenommen werden nur Begriffe, die im UI erscheinen und ohne Definition zu Missverständnissen führen. Selbsterklärende Alltagsbegriffe bleiben draußen. Aufgenommen bleibt „Rechtsgeschäft", weil seine Abgrenzung zu [[glossar#Event]] im UI-Kontext präzise sein muss.
