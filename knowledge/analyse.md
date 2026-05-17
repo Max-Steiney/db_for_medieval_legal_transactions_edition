@@ -79,7 +79,7 @@ Eine SPARQL-Engine im Browser (Comunica, Oxigraph WASM) wäre möglich, ist aber
 
 Die Abfragen-Sub-Seite ist eine strukturierte Datenbank-Abfrage über Rollen-Konstellationen. Eine Forscherin stellt sie aus drei Schichten zusammen:
 
-1. **Personen-Bedingungen.** Beliebig viele nummerierte Boxen, je mit einer Rolle (Aussteller, Empfänger, Zeuge oder Siegler, sonstige Beteiligung) und optionalen Filtern für Geschlecht und Beruf/Tätigkeit/Amt. Die Box ist visuell selbsterklärend; sie braucht kein Etikett. Im UI heißt sie an den wenigen sichtbaren Stellen schlicht „Personenblock" oder wird nur über ihre Nummer adressiert.
+1. **Personen-Bedingungen.** Beliebig viele nummerierte Tabellenzeilen, je mit einer Rolle (Aussteller, Empfänger, Zeuge oder Siegler, sonstige Beteiligung) und optionalen Filtern für Geschlecht und Beruf/Tätigkeit/Amt. Die Zeile ist visuell selbsterklärend; sie braucht kein Etikett und wird im UI nur über ihre Nummer adressiert („Person 1", „Person 2"). Der Begriff „Personenblock" aus der frühen Iteration ist Entwickler-Sprache und wird im UI nicht verwendet.
 2. **Verknüpfungs-Modus.** „Im selben Rechtsgeschäft" (eng, Default) oder „in derselben Quelle" (weit). Im weiten Modus werden alle Personen einer Urkunde oder eines Stadtbuch-Eintrags zusammen ausgewertet, im engen nur die eines einzelnen Geschäfts.
 3. **Globale Filter.** Zeitraum (Range-Slider), Quellenkorpus (Mehrfachauswahl), Reset.
 
@@ -93,11 +93,11 @@ Geschlecht und Rolle nutzen kontrollierte Vokabulare und werden als Dropdown ang
 
 ### Anfangszustand und Empty-States
 
-Beim Öffnen der Seite ist die Trefferliste leer und kein Personenblock angelegt. Der Empty-State sagt deutlich, was zu tun ist. Sobald mindestens ein Block eine Rolle gesetzt hat, läuft die Abfrage automatisch und zeigt die Treffer-Counts in der Toolbar. Werden alle Bedingungen aufgelockert, kommt die Tabelle wieder in den Empty-State zurück.
+Beim Öffnen der Seite ist die Trefferliste leer und keine Personen-Zeile angelegt. Der Empty-State sagt deutlich, was zu tun ist, und bietet vier Beispiel-Konstellationen als Einstieg an. Sobald mindestens eine Zeile eine Rolle gesetzt hat, läuft die Abfrage automatisch und zeigt die Treffer-Counts in der Toolbar. Werden alle Bedingungen aufgelockert, kommt die Tabelle wieder in den Empty-State zurück.
 
 ### Permalink und Export
 
-Der gesamte Abfrage-Stand wird als URL-Fragment serialisiert (`#p1=r=issuer,s=m,o=snyder&p2=r=recipient,s=f&y=1340-1410&c=QGW&scope=event`) und beim Reload reproduziert. Der CSV-Export der angezeigten Tabelle nutzt die UI-Spalten: Datum, Quelle, Korpus, je Personenblock eine Spalte mit dem Personennamen, Rechtsgeschäfts-Typ. Dateiname `abfrage_YYYY-MM-DD.csv`, UTF-8 mit BOM (Excel-kompatibel). Wer eine Trefferzeile in den Datenkorb legt, hält den Quellenbezug über Sitzungen hinweg.
+Der gesamte Abfrage-Stand wird als URL-Fragment serialisiert (`#p1=r=issuer,s=m,o=snyder&p2=r=recipient,s=f&y=1340-1410&c=QGW&scope=event`) und beim Reload reproduziert. Der CSV-Export der angezeigten Tabelle nutzt die UI-Spalten: Datum, Quelle, Korpus, je Personen-Zeile eine Spalte mit dem Personennamen, Rechtsgeschäfts-Typ. Dateiname `abfrage_YYYY-MM-DD.csv`, UTF-8 mit BOM (Excel-kompatibel). Wer eine Trefferzeile in den Datenkorb legt, hält den Quellenbezug über Sitzungen hinweg.
 
 ## Provenienz und epistemische Transparenz
 

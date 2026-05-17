@@ -154,7 +154,7 @@
                         <p>Editionskorpus, aus dem die Quelle stammt (QGW II/1 oder Stadtbücher Bd. 1).</p>
                     {% endcall %}</th>
                     <th scope="col" class="col-persons">Beteiligte Personen{% call tip_glossary('col-info-persons', 'Beteiligte Personen') %}
-                        <p>Die Personen aus dem Treffer, die die Personenbloecke der Abfrage erfuellen — eine je nummeriertem Block, in der angefragten Rolle.</p>
+                        <p>Die Personen aus dem Treffer, die die Bedingungen der Abfrage erfuellen — eine je nummerierter Zeile, in der angefragten Rolle.</p>
                     {% endcall %}</th>
                     <th scope="col" class="col-tx" data-sort="tx">Rechtsgeschäft{% call tip_glossary('col-info-tx', 'Rechtsgeschäft', slug='rechtsgeschaeft') %}
                         <p>Normalisierter Transaktionstyp des Rechtsgeschäfts, in dem die Konstellation auftritt.</p>
@@ -170,7 +170,7 @@
 
         <div class="no-results" id="hits-empty" role="status">
             <p id="hits-empty-msg">Noch keine Abfrage zusammengestellt.
-                Einen Personenblock mit Rolle hinzufügen, dann erscheinen Treffer.</p>
+                Eine Person mit Rolle hinzufügen, dann erscheinen Treffer.</p>
 
             <div class="qb-onboarding" id="qb-onboarding">
                 <p class="qb-onboarding-intro">
@@ -181,14 +181,14 @@
                 <div class="qb-examples" role="list" aria-label="Beispiel-Abfragen">
                     <button type="button" class="qb-example" role="listitem"
                             data-example="women-issuers">
-                        <span class="qb-example-title">Eine Personenblock,
+                        <span class="qb-example-title">Eine Person,
                             Rolle Aussteller, Geschlecht weiblich</span>
                         <span class="qb-example-desc">Alle Rechtsgeschäfte mit
                             einer Frau als Ausstellerin</span>
                     </button>
                     <button type="button" class="qb-example" role="listitem"
                             data-example="women-issuers-men-recipients">
-                        <span class="qb-example-title">Zwei Personenblöcke:
+                        <span class="qb-example-title">Zwei Personen:
                             Ausstellerin weiblich, Empfänger männlich</span>
                         <span class="qb-example-desc">Konstellation aus weiblicher
                             Ausstellerin und männlichem Empfänger im selben
@@ -205,7 +205,7 @@
                     </button>
                     <button type="button" class="qb-example" role="listitem"
                             data-example="clergy-pair">
-                        <span class="qb-example-title">Zwei Personenblöcke,
+                        <span class="qb-example-title">Zwei Personen,
                             Beruf jeweils enthält <code>pfarr</code></span>
                         <span class="qb-example-desc">Substring-Match auf
                             <code>pfarrer</code>, <code>pharrer</code> und

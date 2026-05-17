@@ -402,8 +402,8 @@
         if (!cards.length) {
             emptyBox.classList.remove('hidden');
             emptyMsg.textContent =
-                'Noch keine Abfrage zusammengestellt. Einen Personenblock mit ' +
-                'Rolle anlegen oder ein Beispiel unten anklicken.';
+                'Noch keine Abfrage zusammengestellt. Eine Person mit ' +
+                'Rolle hinzufuegen oder ein Beispiel unten anklicken.';
             if (onboarding) onboarding.classList.remove('hidden');
             hitsSrc.textContent = '0 Quellen';
             hitsEv.textContent = '0 Rechtsgeschäfte';
@@ -413,7 +413,7 @@
         if (!hits.length) {
             emptyBox.classList.remove('hidden');
             emptyMsg.textContent =
-                'Keine Treffer. Eine Bedingung lockern, einen Personenblock ' +
+                'Keine Treffer. Eine Bedingung lockern, eine Person ' +
                 'entfernen oder den Zeitraum erweitern.';
             if (onboarding) onboarding.classList.add('hidden');
             hitsSrc.textContent = '0 Quellen';
@@ -433,6 +433,13 @@
         hitsSrc.textContent = fmt(sourceKeys.size) + ' Quellen';
         hitsEv.textContent  = fmt(eventKeys.size)  + ' Rechtsgeschäfte';
         csvBtn.removeAttribute('disabled');
+        if (hits.length > 500) {
+            csvBtn.setAttribute('title',
+                'Tabelle zeigt 500 von ' + fmt(hits.length) + ' Treffern. ' +
+                'CSV enthaelt alle.');
+        } else {
+            csvBtn.removeAttribute('title');
+        }
 
         // Stabil: sortiere nach Datum, dann nach Quelle.
         // Leere Datümer (Stadtbuch-Einträge ohne Einzeldatierung) ans Ende.
@@ -481,7 +488,9 @@
 
         td(tr, ev.c, 'col-corpus');
 
-        // Beteiligte Personen als Pills, eine pro Block.
+        // Beteiligte Personen als Pills, eine pro Bedingungs-Zeile. Pille
+        // zeigt Nummer + Name + Rolle + Geschlecht, damit das Trefferbild
+        // ohne Profil-Klick lesbar ist.
         const personsTd = document.createElement('td');
         personsTd.className = 'col-persons';
         hit.persons.forEach((p, idx) => {
@@ -495,6 +504,23 @@
             a.textContent = p.n || p.p;
             pill.appendChild(num);
             pill.appendChild(a);
+            // Rolle als kurze Pille hinter dem Namen (issuer -> Aussteller).
+            const role = (p.r && ROLE_LABELS[p.r]) || '';
+            if (role) {
+                const r = document.createElement('span');
+                r.className = 'person-pill-role';
+                r.textContent = role;
+                pill.appendChild(r);
+            }
+            // Geschlecht als kleines Suffix (m/f). 'u' und '' werden
+            // weggelassen, damit nur tatsaechlich belegte Werte sichtbar
+            // sind.
+            if (p.s === 'm' || p.s === 'f') {
+                const s = document.createElement('span');
+                s.className = 'person-pill-sex person-pill-sex--' + p.s;
+                s.textContent = p.s === 'f' ? 'weiblich' : 'maennlich';
+                pill.appendChild(s);
+            }
             personsTd.appendChild(pill);
         });
         tr.appendChild(personsTd);
@@ -759,6 +785,49 @@
             renderHits(compute());
         }).catch(() => {/* loadData hat schon Fehlertext gesetzt */});
     }
+
+    /* ---------- State-Reset auf URL-Hash --------------------------------- */
+    // Setzt den gesamten Abfrage-Stand auf den Default zurueck und liest
+    // dann den aktuellen URL-Hash ein. Wird beim initialen Boot und bei
+    // jeder hashchange-Aenderung gerufen, damit Permalinks immer einen
+    // sauberen Zustand erzeugen, statt Reste aus vorigen Hash-Zustaenden
+    // mitzuschleppen.
+    function resetStateFromUrl() {
+        state.persons = [];
+        state.scope = 'event';
+        state.yearMin = RELEASED_MIN;
+        state.yearMax = RELEASED_MAX;
+        state.corpora.clear();
+        if (rangeMin) rangeMin.value = RELEASED_MIN;
+        if (rangeMax) rangeMax.value = RELEASED_MAX;
+        updateRangeLabels();
+        scopeChips.forEach(c => {
+            const isDefault = c.dataset.scope === 'event';
+            c.classList.toggle('is-active', isDefault);
+            c.setAttribute('aria-pressed', isDefault ? 'true' : 'false');
+        });
+        if (corpusChipsRoot) {
+            corpusChipsRoot.querySelectorAll('.chip').forEach(c => {
+                c.classList.remove('is-active');
+                c.setAttribute('aria-pressed', 'false');
+            });
+        }
+        readUrl();
+        renderPersonsTable();
+        updateRangeLabels();
+    }
+
+    window.addEventListener('hashchange', () => {
+        resetStateFromUrl();
+        if (state.persons.length || state.corpora.size ||
+            state.yearMin !== RELEASED_MIN || state.yearMax !== RELEASED_MAX ||
+            state.scope !== 'event') {
+            sync();
+        } else {
+            renderActiveFilters();
+            renderHits({ hits: [], cards: [] });
+        }
+    });
 
     /* ---------- Boot ---------------------------------------------------- */
     readUrl();
