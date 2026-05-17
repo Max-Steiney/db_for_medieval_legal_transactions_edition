@@ -182,6 +182,22 @@ zu `Gewerbe_nach_Uhlirz_GstW` in `roleName_norm_matching.csv`). Bis
 dahin zählt jeder im Frontend ausgewiesene Heirats-Befund als
 „provisorisch, Substring-basiert".
 
+### Wachsgießer-Heirats-Frage: Datengrundlage in allen Stufen knapp
+
+Stand: 2026-05-17
+Status: offen, langfristig
+
+Auch in Stufe 4 (alle TEI-Subkorpora) trägt die Uhlirz-Kategorie IV
+(Erzeugung und Vertrieb von Leuchtstoffen, Fetten und Ölen) im Aggregat
+nur eine Person. Das `roleName_norm_matching.csv` hat das Mapping
+(`kerzenmacher`, `cherczenmacher`, `öler` etc.), aber die TEI-Quellen
+tragen diese Berufsbezeichnungen kaum in `<occupation>`-Elementen.
+Konsequenz: Mail-Frage 1 (Heirats-Konstellationen unter Wachsgießern)
+lässt sich nicht aus dem aktuell annotierten Bestand beantworten,
+unabhängig vom Aggregator-Pfad. Die Beantwortung wartet auf weiteres
+TEI-Material oder auf editorische Nachannotation in den bestehenden
+Quellen.
+
 ### Filenames-Filter: `status="in progress"`
 
 64 TEI-Quellen (14 QGW, 50 Stadtbuecher) haben in

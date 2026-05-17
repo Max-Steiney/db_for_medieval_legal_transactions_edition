@@ -35,13 +35,13 @@ def test_categories_are_disjoint():
     assert len(seen) == len(set(seen)), "an org_type appears in more than one category"
 
 
-def test_categories_consistent_with_roles():
-    """Every org_type produced by the pipeline must be classified.
+def test_categories_cover_roles_org_types():
+    """Jeder im Pipeline-Output vorkommende org_type ist klassifiziert.
 
-    Fails if the pipeline introduces new types without
-    `frontend/content/categories.json` being maintained alongside — or if
-    the JSON classification names types that no longer appear in the
-    aggregates.
+    Asymmetrische Pruefung: categories.json darf Typen vorrasten, die in
+    der aktuellen Stufe noch nicht aktiv sind (z. B. Koenigreich erst in
+    Stage 4). Pflicht ist nur, dass kein im Pipeline-Output erscheinender
+    Typ unklassifiziert bleibt.
     """
     roles_path = DATA_DIR / "roles.json"
     if not roles_path.exists():
@@ -53,9 +53,7 @@ def test_categories_consistent_with_roles():
     mapped = {t for ts in cats.values() for t in ts}
 
     missing = real_types - mapped
-    extra = mapped - real_types
     assert not missing, f"unclassified org_types: {sorted(missing)}"
-    assert not extra, f"classified types not present in roles: {sorted(extra)}"
 
 
 # ---- Build-time output (docs/data/categories.json) ---------------------------

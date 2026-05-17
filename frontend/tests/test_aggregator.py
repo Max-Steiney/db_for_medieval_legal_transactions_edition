@@ -407,8 +407,11 @@ class TestDocsAggregate:
         Obergrenze vor durchgesickerten Nicht-released-Subkorpora.
         """
         docs = aggregation_results["docs_aggregate"]["docs"]
-        assert 2500 <= len(docs) <= 2700, \
-            f"Source count {len(docs)} ausserhalb plausibler Spanne 2500-2700"
+        # Untergrenze schuetzt vor Datenverlust (Stufe 1: ca. 2600 Quellen),
+        # Obergrenze erfasst auch Stufe 4 mit allen TEI-Subkorpora
+        # (heute ca. 3100 Quellen). Beide Werte sind absichtlich grob.
+        assert 2500 <= len(docs) <= 3500, \
+            f"Source count {len(docs)} ausserhalb plausibler Spanne 2500-3500"
 
     def test_qgw_0a_against_tei_truth(self, aggregation_results):
         """Spot check: 0a has 1 male person, 1 abstract event."""
@@ -461,12 +464,20 @@ class TestDocsAggregate:
             assert d["file_key"].startswith("f__"), \
                 f"file_key prefix broken: {d['file_key']}"
 
-    def test_only_released_corpora_present(self, aggregation_results):
-        """Aggregator filters out non-released corpora."""
+    def test_only_active_stage_corpora_present(self, aggregation_results):
+        """Aggregator filters auf die in der aktiven Stufe freigegebenen Korpora.
+
+        Stage-aware statt hardcoded Praefixe: der erlaubte Set kommt direkt
+        aus pipeline.config.active_corpora(), das die FRONTEND_STAGE-Env-Var
+        beruecksichtigt. Pruefung: jeder collection_path muss in der Liste
+        stehen, kein nicht-freigegebener Pfad leakt durch.
+        """
+        from pipeline.config import active_corpora
+        allowed = set(active_corpora())
         for d in aggregation_results["docs_aggregate"]["docs"]:
             cp = d["collection_path"]
-            assert cp.startswith("QGW/") or cp.startswith("Stadtbuecher/"), \
-                f"Non-released corpus leaked through: {cp}"
+            assert cp in allowed, \
+                f"Korpus ausserhalb der aktiven Stufe geleakt: {cp}"
 
     def test_event_form_counts_le_total(self, aggregation_results):
         """Each form bucket must not contain more events than total."""
@@ -476,14 +487,27 @@ class TestDocsAggregate:
                 assert ev[bucket] <= ev["total"], \
                     f"{d['file_key']}: {bucket}={ev[bucket]} > total={ev['total']}"
 
-    def test_qgw_event_total_distribution(self, aggregation_results):
-        """QGW sources almost always have exactly 1 distinct event (norm)."""
-        qgw = [d for d in aggregation_results["docs_aggregate"]["docs"]
-               if d["collection_path"].startswith("QGW/")]
-        with_one = sum(1 for d in qgw if d["events"]["total"] == 1)
-        # Empirical norm: over 99% of QGW sources have 1 distinct event
-        assert with_one / len(qgw) > 0.99, \
-            f"Only {with_one}/{len(qgw)} QGW sources with total=1"
+    def test_qgw_ready_event_total_distribution(self, aggregation_results):
+        """QGW-_ready-Quellen tragen fast immer genau ein Event (Norm).
+
+        Nur auf die kuratierten _ready-Subkorpora beschraenkt: nicht-_ready-
+        Subkorpora (Stufe 4) sind editorial unfertig und tragen haeufig
+        Quellen ohne Event-Annotation.
+
+        Nur in Stufen ohne Mentioned-Events sinnvoll: wenn
+        PIPELINE_INCLUDE_MENTIONED_EVENTS aktiv ist (Stufen 2 und 4),
+        zaehlen verschachtelte Events als eigene, womit die Ein-Event-Norm
+        per Konstruktion verletzt wird.
+        """
+        from pipeline.config import include_mentioned_events
+        if include_mentioned_events():
+            pytest.skip("Stage zaehlt mentioned events als eigene; Norm gilt nicht")
+        qgw_ready = [d for d in aggregation_results["docs_aggregate"]["docs"]
+                     if d["collection_path"].startswith("QGW/")
+                     and d["collection_path"].endswith("_ready")]
+        with_one = sum(1 for d in qgw_ready if d["events"]["total"] == 1)
+        assert with_one / len(qgw_ready) > 0.99, \
+            f"Only {with_one}/{len(qgw_ready)} QGW _ready sources with total=1"
 
     def test_with_persons_ratio_is_dominant(self, aggregation_results):
         """Anteil der Quellen mit mindestens einer Register-Person ist dominant.

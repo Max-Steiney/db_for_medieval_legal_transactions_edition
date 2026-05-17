@@ -103,13 +103,21 @@ def test_vocab_role_values_match_roles_role_by_sex():
     assert vocab_roles <= real, f"vocab roles not in data: {vocab_roles - real}"
 
 
-def test_vocab_korpus_values_match_timeline_collections():
+def test_vocab_korpus_covers_timeline_collections():
+    """Vokabular muss alle in der Timeline vorkommenden Korpora benennen.
+
+    Asymmetrische Beziehung: das Vokabular darf mehr Werte listen
+    (z. B. fuer hoehere Stufen vorbereitete Korpora, die in Stufe 1
+    noch leer sind). Es darf aber keine Korpora ohne Vokabular-Eintrag
+    geben, sonst hat das Korpus-Chip im UI keine Beschriftung.
+    """
     timeline = _load_data("timeline.json")
     if timeline is None:
         pytest.skip("docs/data/timeline.json not built yet")
     vocab_k = {o["value"] for o in _vocab()["filters"]["korpus"]["values"]}
     real = set(timeline["collections"].keys())
-    assert vocab_k == real, f"korpus drift: vocab={vocab_k}, data={real}"
+    missing = real - vocab_k
+    assert not missing, f"Korpora ohne Vokabular-Eintrag: {missing}"
 
 
 def test_vocab_org_category_values_match_categories_json():

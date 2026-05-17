@@ -7,7 +7,7 @@ status: active
 language: de
 version: 0.3
 created: 2026-02-19
-updated: 2026-05-16
+updated: 2026-05-17
 authors: [Christopher Pollin]
 generated-with: Claude Code
 method:
@@ -27,6 +27,14 @@ Was nicht rein darf: Personennamen, Meeting-Protokolle, Projektmanagement-Stand,
 Einträge in umgekehrt chronologischer Reihenfolge, neueste oben.
 
 ---
+
+## 2026-05-17 Stufen 3 und 4 datenseitig aktiviert
+
+Das gestern als reines CLI-Gerüst eingeführte [[decisions#Stufenmodell für Korpus-Auswahl und Annotationsebenen|Stufenmodell]] wird datenseitig wirksam. Pipeline-Repo: zwei neue `_ready`-Subkorpora committet (`QGW/Vienna_1448-57_ready`, `Satzbuch_CD/SB_CD_1448-60_ready`) und die `pipeline/config.py`-Korpus-Konstanten so geordnet, dass `RELEASED_CORPORA` (Stufe 1) unverändert bleibt, `ALL_READY_CORPORA` (Stufe 3) die kuratierten _ready-Subkorpora addiert, `ALL_TEI_CORPORA` (Stufe 4) zusätzlich die nicht-_ready-Subkorpora aus QGW (1458-66, 1493-1500, 1524). `active_corpora()` liest `FRONTEND_STAGE` und liefert die passende Liste.
+
+Beobachtung zur Heirats-Frage 1 (Wachsgießer-Familien, Uhlirz-Kategorie IV): selbst Stufe 4 zeigt nur eine Person in dieser Kategorie. Das `roleName_norm_matching.csv` hat das Mapping (kerzenmacher, öler etc.), aber die TEI-Quellen tragen die entsprechenden Berufsbezeichnungen in den vorhandenen Subkorpora schlicht selten. Die Frage ist datenseitig also durch die editorische Lage der `occupation`-Annotation begrenzt, nicht durch den Aggregator.
+
+Test-Härtung als Nebeneffekt: vier Aggregator- und Vokabular-Tests waren auf hardcoded Stage-1-Zahlen oder hardcoded Korpus-Präfixe verdrahtet. Umgestellt auf Range-Checks, asymmetrische Inklusion (Vokabular darf mehr listen als die Stufe gerade zeigt) und `pipeline.config.active_corpora()` als SSoT für erlaubte Korpus-Pfade. Eine Norm-Aussage über QGW-Quellen mit einem Event wird explizit gegen `include_mentioned_events()` abgeschirmt, weil sie nur in nicht-Mentioned-Stufen gilt.
 
 ## 2026-05-16 Konstellations-Abfrage mit Beispiel-Einstieg
 
