@@ -48,9 +48,9 @@ Dropdown mit Personen und Organisationen. Beide Register sind freigegeben; jede 
 Dropdown mit zwei Sub-Seiten unter `/analysis/`:
 
 - **Auswertungen** (`auswertungen.html`) zeigt vorberechnete statistische Verteilungen als Donut, Bar-Chart und Tabelle mit Mini-Bars. Filter sind Zeitraum und Geschlecht; eine lokale Zähleinheit-Umschaltung in der Funktionsrollen-Sektion wechselt zwischen Nennungen und Individuellen Personen. Vier Sektionen: Funktionsrollen, Beziehungstypen, Transaktionstypen, Bezeichnungen.
-- **Abfragen** (`index.html`) bedient zwei Einstiegsmodi nebeneinander: eine kuratierte Frage-Galerie als oberste Ebene und einen Custom-Builder im aufklappbaren `<details>`. Konzept und Pivot-Begründung in [[analyse#4. Interface-Konzept: Frage-Galerie und Custom-Builder]] und [[decisions#Analyse-Seite mit Frage-Galerie und Custom-Builder]].
+- **Abfragen** (`index.html`) ist eine strukturierte Konstellations-Abfrage über Rollen-Konstellationen. Forscherinnen legen N nummerierte Personen-Bedingungen an, je mit Rolle und optional Geschlecht und Beruf-Substring, und sehen alle Rechtsgeschäfte, in denen diese Konstellation gemeinsam erfüllt ist. Globale Filter: Zeitraum, Korpus, Verknüpfungs-Modus „im selben Rechtsgeschäft" gegen „in derselben Quelle". Konzept und Begründung in [[analyse#Konstellations-Abfrage]] und [[decisions#Abfragen-Sub-Seite als Konstellations-Abfrage]].
 
-Die beiden Sub-Seiten teilen sich Aggregate (`roles.json`/`relations.json`/`transactions.json`), unterscheiden sich aber im Interaktionsmodus: Auswertungen filter-getrieben, Abfragen frage-getrieben.
+Die beiden Sub-Seiten teilen sich Aggregate (`roles.json`/`relations.json`/`transactions.json` plus `role_constellation.json`), unterscheiden sich aber im Interaktionsmodus: Auswertungen filter-getrieben, Abfragen konstellations-getrieben.
 
 ### Exploration
 

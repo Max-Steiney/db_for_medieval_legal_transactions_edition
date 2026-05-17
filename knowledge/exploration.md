@@ -85,9 +85,8 @@ Die Übergänge zur [[analyse]] sind möglich, wo die Daten sie tragen. Aus dem 
 
 ## Zusammenspiel mit übergreifenden Komponenten
 
-- **[[ui-design#Zählebenen-Umschalter]]** ist derzeit nicht als globale Komponente implementiert; sobald er kommt, soll er konsistent zwischen [[glossar#Gesamtnennung|Gesamtnennungen]] und [[glossar#Individuelle Person|Individuellen Personen]] umschalten. Phase-2-Aufgabe.
-- **[[ui-design#Bestandsfilter]]** wirkt derzeit nur auf der Quellen-Übersicht; die universelle Propagierung auf Zeitstrom und Personennetzwerk ist Phase-2-Aufgabe und setzt eine korpusbasierte Unterschlüsselung der Aggregat-JSONs voraus.
-- **[[ui-design#Provenienz-Tip und Glossar-Tip]]** macht die Herkunft jeder visualisierten Größe an Ort und Stelle einsehbar und ist auf beiden vorhandenen Sub-Seiten aktiv.
+- **[[ui-design#Bestandsfilter]]** wirkt auf den Listen-Seiten (Quellen, Personenregister, Organisationsregister), nicht auf den Visualisierungs-Sub-Seiten. Wer einen Korpus-Teilbestand visuell betrachten möchte, geht über die Quellenliste und nutzt den Cross-Page-Sprung in die Visualisierung.
+- **[[ui-design#Tip-System]]** macht die Herkunft jeder visualisierten Größe an Ort und Stelle einsehbar und ist auf beiden vorhandenen Sub-Seiten aktiv.
 
 ## Siehe auch
 

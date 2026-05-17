@@ -86,7 +86,7 @@ Die Architektur ist ein Prototyp, kein produktionsreifes System. Entscheidungen 
 
 ## Provenienz-Indizes
 
-Jede aggregierte Kennzahl ist auf die zugrundeliegenden Quelldokumente rückführbar: ein `drill_down`-Abschnitt innerhalb jeder Aggregat-JSON führt zu jedem Kreuztabellen-Feld die sortierte Liste der beitragenden `file_key`-Verweise. Metadaten zum Einzeldokument kommen aus `data/docs_lookup.json`. Begründung in [[decisions#Provenienz als inline Drill-down in den Aggregat-JSONs]], UI-Ausprägung in [[ui-design#Provenienz-Tip und Glossar-Tip]].
+Jede aggregierte Kennzahl ist auf die zugrundeliegenden Quelldokumente rückführbar: ein `drill_down`-Abschnitt innerhalb jeder Aggregat-JSON führt zu jedem Kreuztabellen-Feld die sortierte Liste der beitragenden `file_key`-Verweise. Metadaten zum Einzeldokument kommen aus `data/docs_lookup.json`. Begründung in [[decisions#Provenienz als inline Drill-down in den Aggregat-JSONs]], UI-Ausprägung in [[ui-design#Tip-System]].
 
 ## Quellenbereinigte Aggregation als Invariante
 

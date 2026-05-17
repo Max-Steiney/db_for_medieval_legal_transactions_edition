@@ -30,8 +30,8 @@ Die Stories sind nach drei Gruppen sortiert: zentrale Forschungsoperationen, wis
 *Als Forscherin, die Häufigkeitsstrukturen in einer Kategorie untersucht, will ich jederzeit zwischen [[glossar#Gesamtnennung]] und [[glossar#Individuelle Person]] umschalten, damit ich Frequenz und Breite sauber voneinander trennen kann.*
 
 Ableitung:
-- Anforderung [[specification#Umschaltbarkeit der Zählebenen]]
-- Komponente [[ui-design#Zählebenen-Umschalter]]
+- Anforderung [[specification#Datenrobustheit und Provenienz]]
+- Komponente lokale Zähleinheit-Umschaltung auf der [[analyse#Zwei Sub-Seiten|Auswertungs-Sub-Seite]] (Sektion Funktionsrollen); eine globale Umschaltung ist nicht implementiert, fachlich nur in dieser Sektion tragend
 - Begriffe [[glossar#Gesamtnennung]], [[glossar#Individuelle Person]]
 
 ### Rollenbasierte Akteursanalyse
@@ -39,7 +39,7 @@ Ableitung:
 *Als Forscherin, die Geschlechteranteile in einer bestimmten [[glossar#Rolle]] untersucht, will ich nach Rolle und Geschlecht gleichzeitig filtern, damit ich die Verteilung unmittelbar ablesen kann.*
 
 Ableitung:
-- Anforderung [[specification#Bestandsfilterung als universelle Dimension]]
+- Anforderung [[specification#Datenrobustheit und Provenienz]]
 - Komponente [[analyse]]
 - Begriff [[glossar#Rolle]]
 
@@ -48,7 +48,7 @@ Ableitung:
 *Als Forscherin, die einen Teilbestand gegen den Gesamtbestand kontrastiert, will ich die gleiche Kategorie auf beide Bestände anwenden, damit ich Auffälligkeiten des Teilbestands erkenne.*
 
 Ableitung:
-- Anforderung [[specification#Bestandsfilterung als universelle Dimension]]
+- Anforderung [[specification#Datenrobustheit und Provenienz]]
 - Komponente [[ui-design#Bestandsfilter]]
 - Begriff [[glossar#Quellenkorpus]]
 
@@ -75,7 +75,7 @@ Ableitung:
 
 Ableitung:
 - Anforderung [[specification#Datenrobustheit und Provenienz]]
-- Komponente [[ui-design#Provenienz-Tip und Glossar-Tip]]
+- Komponente [[ui-design#Tip-System]]
 
 ### Peer-Review einer Abfrage
 
@@ -98,7 +98,7 @@ Ableitung:
 
 Ableitung:
 - Anforderung [[specification#Datenrobustheit und Provenienz]]
-- Komponente [[ui-design#Provenienz-Tip und Glossar-Tip]]
+- Komponente [[ui-design#Tip-System]]
 - Fundament [[architecture]]
 
 ## Begriffliche Orientierung

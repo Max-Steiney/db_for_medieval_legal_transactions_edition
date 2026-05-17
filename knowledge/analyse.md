@@ -108,7 +108,7 @@ Die Provenienz lebt auf vier Ebenen:
 - **Entitäts-Ebene.** Jede Person, Organisation oder Quelle trägt eine eindeutige `id` und ist über `docs_lookup.json` mit den Originalquellen verknüpft.
 - **Query-Ebene.** Unter jedem Ergebnis steht der verwendete Zählmodus, die herangezogenen Felder und Korpora sowie die zugrunde gelegten Zuordnungstabellen.
 
-Drill-down-Mechanik und Provenienz-Indizierung in [[architecture#Provenienz-Indizes]], UI-Ausprägung in [[ui-design#Provenienz-Tip und Glossar-Tip]] und [[ui-design#Drill-down-Overlay]]. Die Coverage-Blöcke machen Datenqualität sichtbar, ohne apologetisch zu werden — die Verhältnisse sind Eigenschaft der Datenbank, nicht Makel des Interfaces. Theoretischer Bezug: die Offenlegung der Übersetzungskette von der Urkunde bis zur angezeigten Zahl entspricht der Sichtbarmachung von Latours *circulating reference*.
+Drill-down-Mechanik und Provenienz-Indizierung in [[architecture#Provenienz-Indizes]], UI-Ausprägung in [[ui-design#Tip-System]] und [[ui-design#Drill-down-Overlay]]. Die Coverage-Blöcke machen Datenqualität sichtbar, ohne apologetisch zu werden — die Verhältnisse sind Eigenschaft der Datenbank, nicht Makel des Interfaces. Theoretischer Bezug: die Offenlegung der Übersetzungskette von der Urkunde bis zur angezeigten Zahl entspricht der Sichtbarmachung von Latours *circulating reference*.
 
 ## Offene Punkte
 
