@@ -34,7 +34,7 @@ Auf Bitte der Editorin werden die heute eingespielten `_ready`-Subkorpora (QGW V
 
 Technisch: `RELEASED_CORPORA` im Pipeline-Repo um die beiden Subkorpora erweitert. `ALL_READY_CORPORA` (Stufe 3) wird damit deckungsgleich mit Stufe 1; die Konstante bleibt als Anschluss für künftige nicht-released `_ready`-Subkorpora. Stufe 4 wächst entsprechend mit. KPIs Stufe 1: 2.654 Quellen, 2.661 Rechtsgeschäfte, 8.368 Personen. Tests 377 grün, ohne Anpassung, weil die gestern eingeführten Range-Checks und asymmetrischen Inklusionen die Erweiterung tragen.
 
-Beobachtung zu den Mail-Fragen 1 und 2: Uhlirz-Kategorien IV (Wachsgießer) und VI (Lederindustrie) liegen weiterhin bei einer Person — die neuen Subkorpora liefern viele Personen mit verwaltungs- und schreibnahen Berufen, aber wenige mit ausgezeichneter Handwerker-Berufsbezeichnung in genau diesen beiden Kategorien. Befund in [[findings|verification/findings]] aktualisiert.
+Beobachtung zu den Mail-Fragen 1 und 2: Uhlirz-Kategorien IV (Wachsgießer) und VI (Lederindustrie) liegen weiterhin bei einer Person — die neuen Subkorpora liefern viele Personen mit verwaltungs- und schreibnahen Berufen, aber wenige mit ausgezeichneter Handwerker-Berufsbezeichnung in genau diesen beiden Kategorien. Befund in [verification/findings.md](../verification/findings.md) aktualisiert.
 
 ## 2026-05-17 Stufen 3 und 4 datenseitig aktiviert
 

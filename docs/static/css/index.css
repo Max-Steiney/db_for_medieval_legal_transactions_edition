@@ -188,10 +188,8 @@
     margin-bottom: var(--space-lg);
 }
 
-/* Chip base (shared by collection chips and filter chips) */
 .chip,
-.chip-active,
-.filter-chip {
+.chip-active {
     display: inline-flex;
     align-items: center;
     gap: var(--space-xs);

@@ -618,43 +618,41 @@
     }
 
     /* ---------- Aktive-Filter-Chips ------------------------------------- */
+    // Korpus-Pills werden bewusst nicht in den Active-Filter-Strip gezogen,
+    // weil der aktive Korpus-Chip in der Filterleiste oben dieselbe
+    // Information mit Klick-zum-Deaktivieren-Affordance traegt; Duplikation
+    // vermeiden.
     function renderActiveFilters() {
-        if (!activeStrip) return;
-        activeStrip.innerHTML = '';
+        if (!activeStrip || !window.VizCore) return;
         const pieces = [];
         if (state.yearMin !== RELEASED_MIN || state.yearMax !== RELEASED_MAX) {
-            pieces.push({ kind: 'time',
-                label: state.yearMin + '–' + state.yearMax,
-                on: () => { state.yearMin = RELEASED_MIN; state.yearMax = RELEASED_MAX;
-                            rangeMin.value = RELEASED_MIN; rangeMax.value = RELEASED_MAX;
-                            updateRangeLabels(); }});
+            pieces.push({
+                label: 'Zeitraum: ' + state.yearMin + '–' + state.yearMax,
+                onClear: () => {
+                    state.yearMin = RELEASED_MIN;
+                    state.yearMax = RELEASED_MAX;
+                    rangeMin.value = RELEASED_MIN;
+                    rangeMax.value = RELEASED_MAX;
+                    updateRangeLabels();
+                    sync();
+                },
+            });
         }
-        // Korpus-Pills werden nicht in den Active-Filter-Strip gezogen,
-        // weil der aktive Korpus-Chip in der Filterleiste oben dieselbe
-        // Information mit Klick-zum-Deaktivieren-Affordance traegt.
-        // Duplikation vermeiden.
         if (state.scope !== 'event') {
-            pieces.push({ kind: 'scope',
+            pieces.push({
                 label: 'gemeinsam in: ' + (state.scope === 'source' ? 'Quelle' : 'Rechtsgeschäft'),
-                on: () => {
+                onClear: () => {
                     state.scope = 'event';
                     scopeChips.forEach(c => {
                         const isDefault = c.dataset.scope === 'event';
                         c.classList.toggle('is-active', isDefault);
                         c.setAttribute('aria-pressed', isDefault ? 'true' : 'false');
                     });
-                }});
+                    sync();
+                },
+            });
         }
-        if (!pieces.length) return;
-        pieces.forEach(p => {
-            const b = document.createElement('button');
-            b.type = 'button';
-            b.className = 'active-filter-chip';
-            b.innerHTML = p.label + ' <span aria-hidden="true">&times;</span>';
-            b.setAttribute('aria-label', p.label + ' entfernen');
-            b.addEventListener('click', () => { p.on(); sync(); });
-            activeStrip.appendChild(b);
-        });
+        window.VizCore.renderActiveFilters(activeStrip.id, pieces);
     }
 
     /* ---------- URL-State ----------------------------------------------- */
