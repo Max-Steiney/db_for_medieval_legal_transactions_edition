@@ -40,7 +40,7 @@ Single Source of Truth für die freigegebenen Subkorpora ist `RELEASED_CORPORA` 
 
 ## Stufenmodell für Korpus-Auswahl
 
-Über den freigegebenen Bestand hinaus definiert das Frontend vier benannte Stufen (siehe `frontend/stages.py` und [[decisions#Stufenmodell für Korpus-Auswahl und Annotationsebenen]]):
+Über den freigegebenen Bestand hinaus definiert das Frontend vier benannte Stufen (siehe `frontend/stages.py` und [[specification#Stufenmodell für Korpus-Auswahl und Annotationsebenen]]):
 
 - **Stufe 1 Publikation** bedient den freigegebenen Bestand und entspricht der Single Source of Truth in `RELEASED_CORPORA`.
 - **Stufe 2 Vergleich** ist Stufe 1 plus mentioned events als volle Events.
@@ -71,7 +71,7 @@ Die Daten sind in vier Ebenen organisiert. [[glossar#Quellenkorpus]] ist die obe
 
 Jede Ebene hat ihre eigene Zählung. Wer nach Urkunden zählt, bleibt auf Quellenebene. Wer nach Rechtsgeschäften zählt, steigt auf Event-Ebene ab. Wer nach Personen zählt, wählt zwischen [[glossar#Gesamtnennung]] und [[glossar#Individuelle Person]].
 
-Auf der Nennungsebene gilt: Mehrfacherwähnungen einer Entität innerhalb einer Quelle werden bei der Aggregation zu einer Nennung zusammengefasst. Die Zählebene [[glossar#Gesamtnennung]] ist damit quellenbereinigt. Die Entscheidung und ihr Hintergrund stehen in [[decisions#Quellenbereinigte Zählung]], die technische Umsetzung in [[architecture#Quellenbereinigte Aggregation als Invariante]].
+Auf der Nennungsebene gilt: Mehrfacherwähnungen einer Entität innerhalb einer Quelle werden bei der Aggregation zu einer Nennung zusammengefasst. Die Zählebene [[glossar#Gesamtnennung]] ist damit quellenbereinigt. Die Entscheidung und ihr Hintergrund stehen in [[specification#Quellenbereinigte Zählung]], die technische Umsetzung in [[architecture#Quellenbereinigte Aggregation als Invariante]].
 
 ## Register
 
@@ -91,11 +91,11 @@ Entitäten referenzieren die Register-Einträge für Personen, Organisationen un
 
 Attribute halten zusätzliche Merkmale fest, etwa Verwandtschaftsbeziehungen, Berufe oder topographische Zuordnungen.
 
-Berufe sind im Quellen-Text in der Original-Schreibweise belegt und werden über `normalisation_lists/roleName_norm_matching.csv` normalisiert. Die Spalte `Gewerbe_nach_Uhlirz_GstW` ordnet jedem normalisierten Beruf eine Uhlirz-Kategorie zu (römische Ziffer plus Klartext, von „I Landwirtschaft" bis „XVIII Verwaltung"). Diese Klassifikation ist die Grundlage für berufsgruppen-orientierte Forschungsfragen ([[scholar-user-stories#Endogamie in einer Berufsgruppe]]). Verwandtschaftsbezeichnungen liegen in `kin_relations_in_sources.csv` als freier deutscher Begriff vor („Gemahlin", „Hausfrau", „Gatte"); ein typisierter Heirats-Tag existiert nicht, ein String-Match auf eine Heirats-Begriffsliste löst den Anwendungsfall.
+Berufe sind im Quellen-Text in der Original-Schreibweise belegt und werden über `normalisation_lists/roleName_norm_matching.csv` normalisiert. Die Spalte `Gewerbe_nach_Uhlirz_GstW` ordnet jedem normalisierten Beruf eine Uhlirz-Kategorie zu (römische Ziffer plus Klartext, von „I Landwirtschaft" bis „XVIII Verwaltung"). Diese Klassifikation ist die Grundlage für berufsgruppen-orientierte Forschungsfragen ([[user-stories#Endogamie in einer Berufsgruppe]]). Verwandtschaftsbezeichnungen liegen in `kin_relations_in_sources.csv` als freier deutscher Begriff vor („Gemahlin", „Hausfrau", „Gatte"); ein typisierter Heirats-Tag existiert nicht, ein String-Match auf eine Heirats-Begriffsliste löst den Anwendungsfall.
 
 ## Sonderfall Menschen-Events
 
-Im Datenbestand vorkommend. Definition in [[glossar#Menschen-Event]]. Im UI werden Personen-Annotationen in verschachtelten Events nicht doppelt gezählt, siehe [[decisions#Nennungen zählen nur Personen-Annotationen außerhalb mentioned Events]].
+Im Datenbestand vorkommend. Definition in [[glossar#Menschen-Event]]. Im UI werden Personen-Annotationen in verschachtelten Events nicht doppelt gezählt, siehe [[specification#Nennungen zählen nur Personen-Annotationen außerhalb mentioned Events]].
 
 ## Aggregat-Schicht
 

@@ -31,7 +31,7 @@ from frontend.build._kpi import (
 # Controlled role vocabulary for the persons register.
 # The `persons_in_events.csv` CSV yields four non-empty values:
 # issuer/recipient/witness/other (witness covers 'sealer or witness',
-# see knowledge/decisions.md). Empty/`none` values are filtered out.
+# see knowledge/specification.md). Empty/`none` values are filtered out.
 PERSON_ROLES = ("issuer", "recipient", "witness", "other")
 
 
@@ -788,7 +788,7 @@ def _build_exploration(all_metadata, persons, env):
 
     Lives under /analysis/ because it shows quantitative analyses
     (statistical distributions), not visual exploration — see
-    knowledge/decisions.md "Auswertungen gehoeren in den Analyse-Bereich".
+    knowledge/specification.md "Auswertungen gehoert in den Analyse-Bereich".
     Previously three separate sub-pages (roles/networks/transactions)
     under /exploration/, then merged into /exploration/auswertungen.html,
     finally moved to /analysis/.
@@ -936,7 +936,7 @@ def _build_exploration_timeline(all_metadata, env):
 
     Lives under /exploration/ because it is visual-interactive exploration
     of the data structure (not a distribution display) — see knowledge/
-    decisions.md "Exploration und Analyse als getrennte Bereiche".
+    specification.md "Exploration und Analyse als getrennte Bereiche".
     """
     transactions_path = DATA_DIR / "transactions.json"
 

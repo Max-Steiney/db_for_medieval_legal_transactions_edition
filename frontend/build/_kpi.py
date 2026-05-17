@@ -60,7 +60,7 @@ def _scan_released_tei():
       only counts if the annotation is not inside a nested rs-event.
 
     The asymmetry is intentional and documented in
-    ``knowledge/decisions.md`` ("Asymmetrische Zaehlung: individuelle
+    ``knowledge/specification.md`` ("Asymmetrische Zaehlung: individuelle
     Personen vs. Nennungen").
 
     Returns a tuple (totals, per_corpus) where totals is a flat dict and

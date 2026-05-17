@@ -16,7 +16,7 @@ Stand: aktueller Build. Versionierung pro Datei über `meta.schema_version` bzw.
 
 **Kompakt-Felder in Massendaten.** `search.json`, `persons_search.json` und die `register/*.json` verwenden 1–3-Buchstaben-Keys für Bandbreiten-Reduktion. Die Mappings sind unten dokumentiert.
 
-**Aggregat-Konvention (`roles.json` / `relations.json` / `transactions.json`).** Vier Top-Level-Blöcke sind Standard: `meta`, `observations` (Kreuztabellen als verschachtelte Objekte), `drill_down` (Listen von `file_key`-Verweisen pro Aggregat-Zelle), `coverage` (Datenqualitäts-Indikatoren). Siehe [knowledge/architecture.md](../../knowledge/architecture.md) und [decisions.md](../../knowledge/decisions.md) für Begründung.
+**Aggregat-Konvention (`roles.json` / `relations.json` / `transactions.json`).** Vier Top-Level-Blöcke sind Standard: `meta`, `observations` (Kreuztabellen als verschachtelte Objekte), `drill_down` (Listen von `file_key`-Verweisen pro Aggregat-Zelle), `coverage` (Datenqualitäts-Indikatoren). Siehe [knowledge/architecture.md](../../knowledge/architecture.md) und [knowledge/specification.md](../../knowledge/specification.md) für Begründung.
 
 ---
 

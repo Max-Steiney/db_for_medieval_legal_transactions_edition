@@ -14,7 +14,7 @@ method:
   name: Promptotyping
   url: https://lisa.gerda-henkel-stiftung.de/digitale_geschichte_pollin
 topics: ["[[Information Visualisation]]", "[[Scholar-Centered Design]]"]
-related: [specification, scholar-user-stories, decisions, analyse, exploration]
+related: [specification, user-stories, analyse, exploration]
 ---
 
 # UI-Design
@@ -29,7 +29,7 @@ Das **Leitprinzip ist maximaler Informations-Output**: Nutzerinnen arbeiten mit 
 
 Eine zweischichtige Lesart durchzieht das UI: technische Identifikatoren (Datei-Schlüssel, Personen-IDs, TEI-Annotationen) koexistieren mit menschenlesbaren Labels. Beide Schichten sind sichtbar.
 
-Siehe [[specification#Informationsdichte vor reduzierter Ästhetik]] und [[decisions#Maximaler Informations-Output als Gestaltungsleitlinie]].
+Siehe [[specification#Maximaler Informations-Output als Gestaltungsleitlinie]].
 
 ## Navigation
 
@@ -48,7 +48,7 @@ Dropdown mit Personen und Organisationen. Beide Register sind freigegeben; jede 
 Dropdown mit zwei Sub-Seiten unter `/analysis/`:
 
 - **Auswertungen** (`auswertungen.html`) zeigt vorberechnete statistische Verteilungen als Donut, Bar-Chart und Tabelle mit Mini-Bars. Filter sind Zeitraum und Geschlecht; eine lokale Zähleinheit-Umschaltung in der Funktionsrollen-Sektion wechselt zwischen Nennungen und Individuellen Personen. Vier Sektionen: Funktionsrollen, Beziehungstypen, Transaktionstypen, Bezeichnungen.
-- **Abfragen** (`index.html`) ist eine strukturierte Konstellations-Abfrage über Rollen-Konstellationen. Forscherinnen legen N nummerierte Personen-Bedingungen an, je mit Rolle und optional Geschlecht und Beruf-Substring, und sehen alle Rechtsgeschäfte, in denen diese Konstellation gemeinsam erfüllt ist. Globale Filter: Zeitraum, Korpus, Verknüpfungs-Modus „im selben Rechtsgeschäft" gegen „in derselben Quelle". Konzept und Begründung in [[analyse#Konstellations-Abfrage]] und [[decisions#Abfragen-Sub-Seite als Konstellations-Abfrage]].
+- **Abfragen** (`index.html`) ist eine strukturierte Konstellations-Abfrage über Rollen-Konstellationen. Forscherinnen legen N nummerierte Personen-Bedingungen an, je mit Rolle und optional Geschlecht und Beruf-Substring, und sehen alle Rechtsgeschäfte, in denen diese Konstellation gemeinsam erfüllt ist. Globale Filter: Zeitraum, Korpus, Verknüpfungs-Modus „im selben Rechtsgeschäft" gegen „in derselben Quelle". Konzept und Begründung in [[analyse#Konstellations-Abfrage]] und [[specification#Abfragen-Sub-Seite als Konstellations-Abfrage]].
 
 Die beiden Sub-Seiten teilen sich Aggregate (`roles.json`/`relations.json`/`transactions.json` plus `role_constellation.json`), unterscheiden sich aber im Interaktionsmodus: Auswertungen filter-getrieben, Abfragen konstellations-getrieben.
 
@@ -67,7 +67,7 @@ Dropdown mit Metaebenen des UI. Über das Projekt, Annotationsrichtlinien, Gloss
 
 ## Zwei Modi nebeneinander
 
-Analyse bedient Nutzerinnen mit einer bestimmten Frage und liefert Zahlen, Verteilungen, exakte Belege. Exploration bedient Nutzerinnen ohne vorab spezifizierte Frage und liefert visuelle Pattern. Innerhalb der Analyse trennen sich filter-getriebene Auswertungen und frage-getriebene Abfragen. Begründung der Trennung in [[decisions#Exploration und Analyse als getrennte Bereiche]] und [[decisions#Auswertungen gehört in den Analyse-Bereich]].
+Analyse bedient Nutzerinnen mit einer bestimmten Frage und liefert Zahlen, Verteilungen, exakte Belege. Exploration bedient Nutzerinnen ohne vorab spezifizierte Frage und liefert visuelle Pattern. Innerhalb der Analyse trennen sich filter-getriebene Auswertungen und frage-getriebene Abfragen. Begründung der Trennung in [[specification#Exploration und Analyse als getrennte Bereiche]] und [[specification#Auswertungen gehört in den Analyse-Bereich]].
 
 ## Information-Seeking-Muster
 
@@ -122,7 +122,7 @@ Auf den Daten-Visualisierungs-Seiten landet der Filter-Stand in den URL-Suchpara
 
 Drill-down-Overlay (Auswertungen) und Brush-Drill (Zeitstrom) bieten einen Footer-Link „→ in Quellen-Liste öffnen", der die übernehmbaren Filter (Zeitraum, Geschlecht) in die Quellen-Listenseite weiterreicht. Die Quellen-Liste kennt das Auswertungs-Vokabular nicht (Rolle, Beziehungstyp, Bezeichnung, Transaktionstyp, Stack-Fokus), diese Filter werden bewusst weggelassen — der Tooltip am Link macht die Lückenführung transparent.
 
-Begründung in [[decisions#Cross-Page-Sprung mit Filter-Übernahme]].
+Begründung in [[specification#Cross-Page-Sprung mit Filter-Übernahme]].
 
 ### Datenkorb
 
@@ -132,7 +132,7 @@ Der Korb unterscheidet zwei Zustände pro Eintrag. **Gesammelt** sind Einträge,
 
 Die Korb-Seite (`/korb.html`) zeigt drei Tabellen untereinander: Quellen, Personen, Organisationen. Jede Tabelle hat ihre eigene Spaltenstruktur (Datum, Korpus und Regest für Quellen; Name, Geschlecht, aktive Jahre und „aus Quelle" für Personen; Name, Typ und „aus Quelle" für Organisationen), eine eigene Remove-pro-Zeile-Aktion, eine eigene Clear-Aktion für den ganzen Typ und einen CSV-Export (UTF-8 mit BOM, Excel-kompatibel) mit Wahlmöglichkeit zwischen „nur gesammelte" und „auch abgeleitete". Abgeleitete Zeilen sind kursiv und gedimmt; ihre „aus Quelle"-Spalte verlinkt zurück auf die belegende Quelle, mit Hover-Tooltip über Datum und Regest-Auszug.
 
-Persistenz lebt in `localStorage` mit versioniertem Schlüssel; parallele Browser-Tabs synchronisieren sich automatisch via `storage`-Event. Begründung in [[decisions#Datenkorb als clientseitige Sammlung]].
+Persistenz lebt in `localStorage` mit versioniertem Schlüssel; parallele Browser-Tabs synchronisieren sich automatisch via `storage`-Event. Begründung in [[specification#Datenkorb als clientseitige Sammlung]].
 
 ### Quellen-Detailseite mit Text-Bild-Synopse
 
@@ -187,7 +187,7 @@ Jede Detailseite hat einen sinnvollen Druck-Zustand. Navigation, Filterleisten u
 ## Siehe auch
 
 - [[specification]] User-Stories, die das Design umsetzt
-- [[scholar-user-stories]] Nutzungsszenarien, die die Komponenten motivieren
+- [[user-stories]] Nutzungsszenarien, die die Komponenten motivieren
 - [[glossar]] Begriffe, die im UI erklärt werden
 - [[exploration]] Detailkonzept des visuell-explorativen Zweigs
 - [[analyse]] Detailkonzept des analytischen Query-Bereichs

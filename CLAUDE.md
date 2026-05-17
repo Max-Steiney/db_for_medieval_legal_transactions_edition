@@ -65,7 +65,7 @@ python -m verification.run --all        # alle drei Stufen
 python -m verification.run --inventory  # TEI-Element-Inventar pro Subkorpus
 ```
 
-`--stage N` setzt `FRONTEND_STAGE=N` und davon abgeleitete Env-Vars. Stufe 1 (Publikation) ist Default und schreibt nach `docs/`. Stufe 2 (Vergleich mit mentioned events) schreibt nach `docs-with-mentioned/`. Stufe 3 (`docs-full/`) ist heute deckungsgleich mit Stufe 1, weil alle `_ready`-Subkorpora freigegeben sind; die Stufe bleibt als Anschluss fuer kuenftige nicht-released `_ready`-Subkorpora. Stufe 4 (`docs-max/`) nimmt zusaetzlich die nicht-`_ready`-Subkorpora auf. Vor einem Vergleichsbuild muss die Pipeline einmal mit dem Mentioned-Filter laufen, damit auch die CSVs verschachtelte Events als volle Events fuehren: `PIPELINE_INCLUDE_MENTIONED_EVENTS=1 python -m pipeline transform`. Mit dem Helper-Skript erledigt sich das pro Stufe automatisch. Konzept und Leitentscheidung in [`knowledge/decisions.md`](knowledge/decisions.md) unter „Stufenmodell fuer Korpus-Auswahl und Annotationsebenen".
+`--stage N` setzt `FRONTEND_STAGE=N` und davon abgeleitete Env-Vars. Stufe 1 (Publikation) ist Default und schreibt nach `docs/`. Stufe 2 (Vergleich mit mentioned events) schreibt nach `docs-with-mentioned/`. Stufe 3 (`docs-full/`) ist heute deckungsgleich mit Stufe 1, weil alle `_ready`-Subkorpora freigegeben sind; die Stufe bleibt als Anschluss fuer kuenftige nicht-released `_ready`-Subkorpora. Stufe 4 (`docs-max/`) nimmt zusaetzlich die nicht-`_ready`-Subkorpora auf. Vor einem Vergleichsbuild muss die Pipeline einmal mit dem Mentioned-Filter laufen, damit auch die CSVs verschachtelte Events als volle Events fuehren: `PIPELINE_INCLUDE_MENTIONED_EVENTS=1 python -m pipeline transform`. Mit dem Helper-Skript erledigt sich das pro Stufe automatisch. Konzept und Anforderung in [`knowledge/specification.md`](knowledge/specification.md) unter „Stufenmodell fuer Korpus-Auswahl und Annotationsebenen".
 
 Test-Strategie und Abgrenzung der drei Säulen (pytest, Verifikation, Sichtprüfung): [`knowledge/architecture.md`](knowledge/architecture.md) Abschnitt _Test-Strategie_.
 
@@ -84,7 +84,7 @@ python -m frontend build         # gegen frische CSVs neu bauen
 
 Begriffsdefinitionen leben in [`frontend/content/project/glossar.md`](frontend/content/project/glossar.md) (Quellenkorpus, Quelle, Event, Rechtsgeschäft, Gesamtnennung, Individuelle Person, Menschen-Event, Rolle, Regest, Faksimile, Volltext, Erschließungsform). Dieselbe Markdown-Quelle wird zur Glossar-Seite gerendert und speist UI-Tooltips über das `glossary_tip`-Macro.
 
-Leitentscheidungen (Begründung pro Entscheidung) leben in [`knowledge/decisions.md`](knowledge/decisions.md). Kanonische Begriffshierarchie: Quellenkorpus → Quelle → Event → Gesamtnennung. Kontrolliertes Rollenvokabular: `issuer`, `recipient`, `sealer or witness`, `other`, `none`.
+Anforderungs-Spezifikation der Anwendung mit allen Leitentscheidungen lebt in [`knowledge/specification.md`](knowledge/specification.md). Kanonische Begriffshierarchie: Quellenkorpus → Quelle → Event → Gesamtnennung. Kontrolliertes Rollenvokabular: `issuer`, `recipient`, `sealer or witness`, `other`, `none`.
 
 Freigabestand: 1177–1412 (mit Erweiterung bis 1414 für QGW II/1 und II/2), Lücke 1418–1447 als „noch nicht ausgewertet". Single-Source-of-Truth: `frontend/config.RELEASED_PERIOD` (Zeitraum) und `pipeline/config.RELEASED_CORPORA` im Schwester-Repo (Korpora-Set). Hardcoded Zahlen in Templates gelten als Fehler.
 

@@ -31,7 +31,7 @@ Build und Pipeline kennen vier benannte Stufen, die Korpus-Auswahl und Annotatio
 | 3 Voller `_ready`-Bestand | heute deckungsgleich mit Stufe 1 | aus | `docs-full/` |
 | 4 Maximalversion | alle mit TEI | ein | `docs-max/` |
 
-Detaillierte Begründung und Achsen in [`knowledge/decisions.md`](knowledge/decisions.md) unter „Stufenmodell für Korpus-Auswahl und Annotationsebenen".
+Detaillierte Begründung und Achsen in [`knowledge/specification.md`](knowledge/specification.md) unter „Stufenmodell für Korpus-Auswahl und Annotationsebenen".
 
 ```
 # Stufe 1 (Default, publizierter Stand)
@@ -120,7 +120,7 @@ Quer durch alle Quellen-Listen liegt der **Datenkorb** (`/korb.html`): clientsei
 
 Begriffe, Datenstruktur, Architektur, Anforderungen und Gestaltungsprinzipien leben in [`knowledge/`](knowledge/) als zusammenhängende Dokumentation in deutscher Sprache, mit Wiki-Links zwischen den Dokumenten. Einstieg über [`knowledge/index.md`](knowledge/index.md).
 
-Begriffsdefinitionen (Quellenkorpus, Quelle, Event, Rechtsgeschäft, Gesamtnennung, Individuelle Person, Menschen-Event, Rolle, Regest, Faksimile, Volltext, Erschließungsform): [`frontend/content/project/glossar.md`](frontend/content/project/glossar.md). Leitentscheidungen: [`knowledge/decisions.md`](knowledge/decisions.md). Chronologisches Arbeitstagebuch: [`knowledge/journal.md`](knowledge/journal.md).
+Begriffsdefinitionen (Quellenkorpus, Quelle, Event, Rechtsgeschäft, Gesamtnennung, Individuelle Person, Menschen-Event, Rolle, Regest, Faksimile, Volltext, Erschließungsform): [`frontend/content/project/glossar.md`](frontend/content/project/glossar.md). Anforderungs-Spezifikation mit allen Leitentscheidungen: [`knowledge/specification.md`](knowledge/specification.md). Chronologisches Arbeitstagebuch: [`knowledge/journal.md`](knowledge/journal.md).
 
 ## Lokales Preview
 

@@ -19,15 +19,15 @@ related: [exploration, specification, ui-design, decisions, glossar]
 
 # Analyse
 
-Der Analysebereich versammelt die quantitativen Zugänge zur Datenbasis. Er steht als gleichberechtigter Zweig neben der [[exploration]]: das Interaktionsmuster ist strukturiert (vorgegebene Achsen, exakte Zahlen, Provenienz), die Exploration arbeitet visuell-interaktiv. Begründung der Trennung in [[decisions#Exploration und Analyse als getrennte Bereiche]].
+Der Analysebereich versammelt die quantitativen Zugänge zur Datenbasis. Er steht als gleichberechtigter Zweig neben der [[exploration]]: das Interaktionsmuster ist strukturiert (vorgegebene Achsen, exakte Zahlen, Provenienz), die Exploration arbeitet visuell-interaktiv. Begründung der Trennung in [[specification#Exploration und Analyse als getrennte Bereiche]].
 
 ## Zwei Sub-Seiten
 
-**Auswertungen** (`/analysis/auswertungen.html`) zeigt vorberechnete Verteilungen: Funktionsrollen, Beziehungstypen, Transaktionstypen, Bezeichnungen — jeweils als Donut, Bar-Chart oder Tabelle mit Mini-Bars. Filter sind Zeitraum und Geschlecht; eine Zähleinheit-Umschaltung in der Funktionsrollen-Sektion wechselt lokal zwischen Nennungen und Individuellen Personen. Die Seite ist filter-getrieben — Nutzerinnen ändern Achsen und sehen Verteilungen sich anpassen. Begründung der Verortung in [[decisions#Auswertungen gehört in den Analyse-Bereich]].
+**Auswertungen** (`/analysis/auswertungen.html`) zeigt vorberechnete Verteilungen: Funktionsrollen, Beziehungstypen, Transaktionstypen, Bezeichnungen — jeweils als Donut, Bar-Chart oder Tabelle mit Mini-Bars. Filter sind Zeitraum und Geschlecht; eine Zähleinheit-Umschaltung in der Funktionsrollen-Sektion wechselt lokal zwischen Nennungen und Individuellen Personen. Die Seite ist filter-getrieben — Nutzerinnen ändern Achsen und sehen Verteilungen sich anpassen. Begründung der Verortung in [[specification#Auswertungen gehört in den Analyse-Bereich]].
 
 Jede Aggregat-Zelle ist klickbar und öffnet das [[ui-design#Drill-down-Overlay]] mit den beitragenden Quellen — Donut-Arc und Legend-Item für Funktionsrollen und Beziehungstypen, Bar für Transaktionstypen, Tabellenzeile für Bezeichnungen. Im Footer steht der Cross-Page-Sprung in die Quellen-Liste mit übernommenem Zeitraum-und-Geschlecht-Filter ([[ui-design#Cross-Page-Sprung in die Quellen-Liste]]). Der Filter-Stand wird in die URL serialisiert, damit jeder Forschungsstand zitierbar ist ([[ui-design#URL-State-Sync]]).
 
-**Abfragen** (`/analysis/index.html`) ist eine strukturierte Konstellations-Abfrage: Forscherinnen legen beliebig viele nummerierte Personen-Bedingungen an, je mit Rolle und optionalen Filtern (Geschlecht, Beruf/Tätigkeit/Amt), und sehen alle Rechtsgeschäfte, in denen diese Konstellation gemeinsam erfüllt ist. Globale Filter: Zeitraum, Korpus, Verknüpfungs-Modus (Rechtsgeschäft eng vs. Quelle weit). Live-Update, kein Submit. Architektur und Begründung in [[decisions#Abfragen-Sub-Seite als Konstellations-Abfrage]].
+**Abfragen** (`/analysis/index.html`) ist eine strukturierte Konstellations-Abfrage: Forscherinnen legen beliebig viele nummerierte Personen-Bedingungen an, je mit Rolle und optionalen Filtern (Geschlecht, Beruf/Tätigkeit/Amt), und sehen alle Rechtsgeschäfte, in denen diese Konstellation gemeinsam erfüllt ist. Globale Filter: Zeitraum, Korpus, Verknüpfungs-Modus (Rechtsgeschäft eng vs. Quelle weit). Live-Update, kein Submit. Architektur und Begründung in [[specification#Abfragen-Sub-Seite als Konstellations-Abfrage]].
 
 Beide Sub-Seiten teilen sich dieselben Aggregate (`roles.json`, `relations.json`, `transactions.json`) und dieselben Filter-Bausteine in der Sidebar. Eine Filteränderung auf der einen Seite überträgt sich nicht automatisch auf die andere; das ist eine offene Designfrage.
 
@@ -42,7 +42,7 @@ Typische Beispielfragen:
 - Welche Rechtsgeschäftstypen treten in welchem Zeitraum auf?
 - In welchen Rollen treten Frauen in Stadtbüchern auf?
 
-Vier konkrete Forschungsfragen aus der editorischen Praxis prägen die Galerie ([[scholar-user-stories#Konkrete Forschungsfragen aus der editorischen Praxis]]):
+Vier konkrete Forschungsfragen aus der editorischen Praxis prägen die Galerie ([[user-stories#2 Konkrete Forschungsfragen aus der editorischen Praxis]]):
 
 - Welche Personen in Uhlirz-Berufskategorie IV sind untereinander verheiratet?
 - Welche Personen in Uhlirz-Berufskategorie VI haben Hausbesitz an welchen Orten?
@@ -118,4 +118,4 @@ Drill-down-Mechanik und Provenienz-Indizierung in [[architecture#Provenienz-Indi
 - Volltextsuche auf `search.json` als alternativer Einstieg neben dem Frage-Interface.
 - Export der Abfragespezifikation als JSON oder CSV zur Weitergabe und Zitation.
 
-Menschen-Events sind ein Sonderfall des Datenmodells (Definition in [[glossar#Menschen-Event]]). Personen-Annotationen in verschachtelten Events werden nicht doppelt gezählt, siehe [[decisions#Nennungen zählen nur Personen-Annotationen außerhalb mentioned Events]]. Kartenvisualisierungen und Netzwerk-Visualisierungen liegen konzeptionell im Bereich [[exploration]].
+Menschen-Events sind ein Sonderfall des Datenmodells (Definition in [[glossar#Menschen-Event]]). Personen-Annotationen in verschachtelten Events werden nicht doppelt gezählt, siehe [[specification#Nennungen zählen nur Personen-Annotationen außerhalb mentioned Events]]. Kartenvisualisierungen und Netzwerk-Visualisierungen liegen konzeptionell im Bereich [[exploration]].

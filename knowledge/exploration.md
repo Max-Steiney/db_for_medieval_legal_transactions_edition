@@ -21,7 +21,7 @@ related: [analyse, specification, ui-design, decisions, glossar]
 
 Wissensdokument zum Explorationsbereich der Datenbank. Die Exploration ist der visuell-interaktive Zweig der Oberfläche und bedient Nutzerinnen ohne vorab spezifizierte Frage. Sie steht als zweiter gleichberechtigter Zweig neben der [[analyse]] und arbeitet mit Information-Visualisation, nicht mit vorgegebenen Auswertungsachsen.
 
-Die konzeptionelle Trennung ist in [[decisions#Exploration und Analyse als getrennte Bereiche]] festgehalten. Implementierte Sub-Seiten sind der **Zeitstrom** unter `/exploration/zeitstrom.html` und das **Personennetzwerk** unter `/exploration/personennetzwerk.html`; ein Sankey-Diagramm zu Transaktionsflüssen ist konzipiert, aber noch nicht umgesetzt. Eine Karten-Visualisierung ist im Stufenmodell als Eigenschaft von Stufe 4 vorgesehen, datenseitig aber an die Koordinaten-Abdeckung in `placeList.xml` gebunden (heute rund 29 Prozent der Orte); bis dahin rendern Forschungsfragen mit Orts-Bezug ihre Antwort als Tabelle mit Lat/Lon-Spalte. Die quantitativen Verteilungen (frühere „Auswertungen") gehören inhaltlich zur [[analyse]] und wurden dorthin verschoben. Siehe [[decisions#Auswertungen gehört in den Analyse-Bereich]] und [[decisions#Stufenmodell für Korpus-Auswahl und Annotationsebenen]].
+Die konzeptionelle Trennung ist in [[specification#Exploration und Analyse als getrennte Bereiche]] festgehalten. Implementierte Sub-Seiten sind der **Zeitstrom** unter `/exploration/zeitstrom.html` und das **Personennetzwerk** unter `/exploration/personennetzwerk.html`; ein Sankey-Diagramm zu Transaktionsflüssen ist konzipiert, aber noch nicht umgesetzt. Eine Karten-Visualisierung ist im Stufenmodell als Eigenschaft von Stufe 4 vorgesehen, datenseitig aber an die Koordinaten-Abdeckung in `placeList.xml` gebunden; bis dahin rendern Forschungsfragen mit Orts-Bezug ihre Antwort als Tabelle mit Lat/Lon-Spalte. Die quantitativen Verteilungen (frühere „Auswertungen") gehören inhaltlich zur [[analyse]] und wurden dorthin verschoben. Siehe [[specification#Auswertungen gehört in den Analyse-Bereich]] und [[specification#Stufenmodell für Korpus-Auswahl und Annotationsebenen]].
 
 ## Zielsetzung
 
@@ -91,7 +91,7 @@ Die Übergänge zur [[analyse]] sind möglich, wo die Daten sie tragen. Aus dem 
 ## Siehe auch
 
 - [[analyse]] der quantitative Zweig: Auswertungen plus Template-Abfragen
-- [[decisions#Exploration und Analyse als getrennte Bereiche]] Begründung der Trennung
-- [[decisions#Auswertungen gehört in den Analyse-Bereich]] warum die früheren „Exploration"-Sub-Seiten zur Analyse gewandert sind
+- [[specification#Exploration und Analyse als getrennte Bereiche]] Begründung der Trennung
+- [[specification#Auswertungen gehört in den Analyse-Bereich]] warum die früheren „Exploration"-Sub-Seiten zur Analyse gewandert sind
 - [[ui-design]] gemeinsame Komponenten
 - [[data]] die Datenbasis, die beide Zweige bedienen

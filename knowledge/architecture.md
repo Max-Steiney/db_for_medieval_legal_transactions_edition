@@ -51,7 +51,7 @@ Eine TEI-Änderung wirkt erst, wenn alle drei Schichten neu laufen: erst Pipelin
 
 ## Stufenmodell als Build-Profil
 
-Der Frontend-Build kennt vier benannte Stufen, die Korpus-Auswahl und Annotationsebenen als zitierbares Profil bündeln (`frontend/stages.py`). CLI-Auslöser ist `--stage N` (1 bis 4); `--include-mentioned` bleibt als Alias auf Stufe 2 erhalten. Jede Stufe schreibt in ein eigenes Output-Verzeichnis (`docs/`, `docs-with-mentioned/`, `docs-full/`, `docs-max/`) und setzt davon abgeleitete Env-Vars für die Pipeline-Transformer. Konzept und vollständige Tabelle in [[decisions#Stufenmodell für Korpus-Auswahl und Annotationsebenen]]; Mapping auf den Datenbestand in [[data#Stufenmodell für Korpus-Auswahl]].
+Der Frontend-Build kennt vier benannte Stufen, die Korpus-Auswahl und Annotationsebenen als zitierbares Profil bündeln (`frontend/stages.py`). CLI-Auslöser ist `--stage N` (1 bis 4); `--include-mentioned` bleibt als Alias auf Stufe 2 erhalten. Jede Stufe schreibt in ein eigenes Output-Verzeichnis (`docs/`, `docs-with-mentioned/`, `docs-full/`, `docs-max/`) und setzt davon abgeleitete Env-Vars für die Pipeline-Transformer. Konzept und vollständige Tabelle in [[specification#Stufenmodell für Korpus-Auswahl und Annotationsebenen]]; Mapping auf den Datenbestand in [[data#Stufenmodell für Korpus-Auswahl]].
 
 ## Test-Strategie
 
@@ -66,7 +66,7 @@ Die Qualitätssicherung steht auf drei Säulen, die unterschiedliche Fehlerklass
 3. **TEI zu HTML** (`python -m verification.run --tei-html`): TEI-Quelldateien direkt vs. gerenderte Quellen-HTMLs. Überspringt die CSV-Pipeline-Zwischenstufe und prüft, ob jede `<rs ref="...">`-Annotation als `data-ref="..."` im HTML erscheint und umgekehrt. Findet sowohl Pipeline-Drops (TEI-Annotation, die der Aggregator entfernt hat) als auch Renderer-Halluzinationen (HTML-Refs ohne TEI-Quelle).
 4. **TEI-Inventar** (`python -m verification.run --inventory`): pro Subkorpus eine Liste aller verwendeten TEI-Elemente mit Datei-Anzahl, Attributen und distinct Attribut-Werten. Kein Vergleich, sondern Sichtbarkeit der Annotations-Realität — Grundlage für Freigabe-Entscheidungen und Forschungsfragen, die auf bestimmte Annotation angewiesen sind.
 
-Das Test-Set nutzt dieselbe Technologie wie die Pipeline (Python, lxml), ist aber bewusst ein separater Codepfad ohne geteilte Aggregations-Funktionen. Die Trennung ist die Verifikationsgarantie: Eine Zahl, die aus derselben Pipeline stammt, die sie angeblich verifiziert, verifiziert sich selbst nicht. Reports sind versioniert in `verification/reports/` (Markdown + JSON). Statuswerte und Befund-Register: `verification/README.md` und `verification/findings.md`. Begründung in [[decisions#Verifikations-Test-Set als eigenständige Komponente]].
+Das Test-Set nutzt dieselbe Technologie wie die Pipeline (Python, lxml), ist aber bewusst ein separater Codepfad ohne geteilte Aggregations-Funktionen. Die Trennung ist die Verifikationsgarantie: Eine Zahl, die aus derselben Pipeline stammt, die sie angeblich verifiziert, verifiziert sich selbst nicht. Reports sind versioniert in `verification/reports/` (Markdown + JSON). Statuswerte und Befund-Register: `verification/README.md` und `verification/findings.md`. Begründung in [[specification#Verifizierbarkeit und Verifikations-Test-Set]].
 
 **Manuelle Sichtprüfung** deckt ab, was sich nicht automatisieren lässt: Layout, Tooltip-Positionierung, Druckansicht, Lesefluss. Sie ist Teil jeder größeren UI-Änderung, nicht der CI.
 
@@ -86,11 +86,11 @@ Die Architektur ist ein Prototyp, kein produktionsreifes System. Entscheidungen 
 
 ## Provenienz-Indizes
 
-Jede aggregierte Kennzahl ist auf die zugrundeliegenden Quelldokumente rückführbar: ein `drill_down`-Abschnitt innerhalb jeder Aggregat-JSON führt zu jedem Kreuztabellen-Feld die sortierte Liste der beitragenden `file_key`-Verweise. Metadaten zum Einzeldokument kommen aus `data/docs_lookup.json`. Begründung in [[decisions#Provenienz als inline Drill-down in den Aggregat-JSONs]], UI-Ausprägung in [[ui-design#Tip-System]].
+Jede aggregierte Kennzahl ist auf die zugrundeliegenden Quelldokumente rückführbar: ein `drill_down`-Abschnitt innerhalb jeder Aggregat-JSON führt zu jedem Kreuztabellen-Feld die sortierte Liste der beitragenden `file_key`-Verweise. Metadaten zum Einzeldokument kommen aus `data/docs_lookup.json`. Begründung in [[specification#Provenienz als inline Drill-down in den Aggregat-JSONs]], UI-Ausprägung in [[ui-design#Tip-System]].
 
 ## Quellenbereinigte Aggregation als Invariante
 
-Das Zählen von Entitäten pro Quelle erfolgt mengenbasiert: die Extraktionsfunktion im Build liefert pro Quelldokument eine Menge referenzierter Entity-IDs, nicht eine Liste mit möglichen Duplikaten. Eine Person, Organisation oder ein Ort wird pro Quelle höchstens einmal gezählt. Begründung in [[decisions#Quellenbereinigte Zählung]], begriffliche Konsequenz in [[glossar#Gesamtnennung]].
+Das Zählen von Entitäten pro Quelle erfolgt mengenbasiert: die Extraktionsfunktion im Build liefert pro Quelldokument eine Menge referenzierter Entity-IDs, nicht eine Liste mit möglichen Duplikaten. Eine Person, Organisation oder ein Ort wird pro Quelle höchstens einmal gezählt. Begründung in [[specification#Quellenbereinigte Zählung]], begriffliche Konsequenz in [[glossar#Gesamtnennung]].
 
 ## Datenstand aus dem Pipeline-Repo
 
@@ -108,11 +108,11 @@ Begründung dieser Trennung ist dieselbe wie die zwischen Pipeline und Aggregato
 
 ## URL-State als Forschungsstand
 
-Auf den Daten-Visualisierungs-Seiten wird der Filter-Stand in die URL-Suchparameter serialisiert und beim Page-Load von dort gelesen. Damit wird ein Forschungsstand bookmark-fähig, teilbar und zitierbar (vgl. [[specification#Quellen ausschnitthaft sammeln, teilen und exportieren]]).
+Auf den Daten-Visualisierungs-Seiten wird der Filter-Stand in die URL-Suchparameter serialisiert und beim Page-Load von dort gelesen. Damit wird ein Forschungsstand bookmark-fähig, teilbar und zitierbar (vgl. [[user-stories#Quellen, Personen und Organisationen sammeln, teilen und exportieren]]).
 
 Die Schreib-Strategie nutzt `history.replaceState`, nicht `pushState` — Filter-Mikrostände sollen nicht den Browser-Back-Stack füllen. Default-Werte werden weggelassen, damit Sharing-URLs minimal bleiben. Während des Page-Inits ist die URL-Sync deaktiviert (Guard `urlSyncActive`), damit ein initiales Apply nicht den eingehenden Filter überschreibt.
 
-Cross-Page-Sprünge transferieren das gemeinsame Subset der Filter (Zeitraum, Geschlecht) in andere Listenseiten. Das Mapping ist asymmetrisch, weil die Filter-Vokabulare nicht symmetrisch sind; Konvention und konkretes Mapping in [[decisions#Cross-Page-Sprung mit Filter-Übernahme]]. Page-spezifische Filter werden nicht übertragen, die Lückenführung ist im Tooltip am Cross-Nav-Link sichtbar.
+Cross-Page-Sprünge transferieren das gemeinsame Subset der Filter (Zeitraum, Geschlecht) in andere Listenseiten. Das Mapping ist asymmetrisch, weil die Filter-Vokabulare nicht symmetrisch sind; Konvention und konkretes Mapping in [[specification#Cross-Page-Sprung mit Filter-Übernahme]]. Page-spezifische Filter werden nicht übertragen, die Lückenführung ist im Tooltip am Cross-Nav-Link sichtbar.
 
 ## Datenkorb als clientseitige Persistenz
 
@@ -120,7 +120,7 @@ Der Datenkorb persistiert in `localStorage` mit versioniertem Schlüssel, Cross-
 
 Komponenten-Verteilung: `basket.js` liefert die State-API und den Ableitungs-Mechanismus, in `base.html` global geladen. `basket-mount.js` hydratisiert eingebettete +-Knopf-Platzhalter auf Detail- und Profilseiten aus ihren `data-basket-*`-Attributen. `basket-page.js` rendert die Korb-Seite.
 
-UI-seitige Mechanik und Sichtbarkeit in [[ui-design#Datenkorb]], Begründung in [[decisions#Datenkorb als clientseitige Sammlung]].
+UI-seitige Mechanik und Sichtbarkeit in [[ui-design#Datenkorb]], Begründung in [[specification#Datenkorb als clientseitige Sammlung]].
 
 ## Siehe auch
 

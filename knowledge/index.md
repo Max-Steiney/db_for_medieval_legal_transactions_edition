@@ -13,7 +13,7 @@ generated-with: Claude Code
 method:
   name: Promptotyping
   url: https://lisa.gerda-henkel-stiftung.de/digitale_geschichte_pollin
-related: [glossar, data, architecture, specification, decisions, ui-design, analyse, exploration, scholar-user-stories, journal]
+related: [glossar, data, architecture, specification, ui-design, analyse, exploration, user-stories, journal]
 ---
 
 # Wissensbasis
@@ -26,12 +26,11 @@ Die kanonischen Definitionen der Fachbegriffe (Quellenkorpus, Quelle, Event, Rec
 
 - [[data]] — Gegenstand der Datenbank: Quellenkorpora, Erschließungsformen, Datenebenen, Annotationsebenen, Aggregat-Schicht.
 - [[architecture]] — Datenfluss von TEI bis statisches HTML, Aggregator, Verifikations-Test-Set, Provenienz-Indizes.
-- [[specification]] — Was das UI heute leistet, als fünf User-Stories aus Historiker*innen-Perspektive plus Querschnitts-Eigenschaften.
-- [[decisions]] — Leitentscheidungen mit Begründung.
+- [[specification]] — Anforderungs-Spezifikation der Anwendung: Korpus und Freigabe, Begriffe und Zählebenen, UI-Bereiche und User-Stories, Querschnitts-Anforderungen, Build und Wissensbasis. Bündelt auch die Leitentscheidungen mit Begründung und Konsequenz.
 - [[ui-design]] — Gestaltungsprinzipien, Navigation, Kernkomponenten, Farben, Druck.
 - [[analyse]] — quantitativer Zweig unter `/analysis/`: Auswertungen und Abfragen.
 - [[exploration]] — visuell-interaktiver Zweig unter `/exploration/`: Zeitstrom und Personennetzwerk.
-- [[scholar-user-stories]] — Nutzungsszenarien aus Forscherinnen-Perspektive.
+- [[user-stories]] — Forschungsszenarien aus Historiker*innen-Perspektive: Anwendungs-Stories, konkrete Forschungsfragen aus der editorischen Praxis, granulare Operationen, wissenschaftliche Absicherung.
 - [[journal]] — einziges chronologisches Dokument der Wissensbasis.
 
 ## Beziehungen zu anderen Dokumentationsorten
