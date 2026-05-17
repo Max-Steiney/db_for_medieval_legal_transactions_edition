@@ -263,6 +263,19 @@
     function updateRangeLabels() {
         if (rangeLabelMin) rangeLabelMin.textContent = state.yearMin;
         if (rangeLabelMax) rangeLabelMax.textContent = state.yearMax;
+        // Position der Labels an die Slider-Handles binden, sonst sitzen
+        // beide auf left:0 uebereinander (analog zu table-infra.js).
+        if (rangeMin && rangeMax && rangeLabelMin && rangeLabelMax) {
+            const dataMin = +rangeMin.min;
+            const dataMax = +rangeMax.max;
+            const span = dataMax - dataMin;
+            if (span > 0) {
+                const pctMin = (state.yearMin - dataMin) / span * 100;
+                const pctMax = (state.yearMax - dataMin) / span * 100;
+                rangeLabelMin.style.left = pctMin + '%';
+                rangeLabelMax.style.left = pctMax + '%';
+            }
+        }
     }
     if (rangeMin && rangeMax) {
         const onRangeInput = () => {
@@ -578,15 +591,10 @@
                             rangeMin.value = RELEASED_MIN; rangeMax.value = RELEASED_MAX;
                             updateRangeLabels(); }});
         }
-        for (const c of state.corpora) {
-            pieces.push({ kind: 'corpus',
-                label: 'Korpus: ' + c,
-                on: () => {
-                    state.corpora.delete(c);
-                    corpusChipsRoot.querySelector('[data-corpus="' + c + '"]')
-                        ?.classList.remove('is-active');
-                }});
-        }
+        // Korpus-Pills werden nicht in den Active-Filter-Strip gezogen,
+        // weil der aktive Korpus-Chip in der Filterleiste oben dieselbe
+        // Information mit Klick-zum-Deaktivieren-Affordance traegt.
+        // Duplikation vermeiden.
         if (state.scope !== 'event') {
             pieces.push({ kind: 'scope',
                 label: 'gemeinsam in: ' + (state.scope === 'source' ? 'Quelle' : 'Rechtsgeschäft'),

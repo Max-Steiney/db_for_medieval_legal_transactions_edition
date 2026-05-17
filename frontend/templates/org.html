@@ -1,5 +1,5 @@
 {% extends "base.html" %}
-{% from "macros.html" import funding_table %}
+{% from "macros.html" import funding_table, occ_table %}
 
 {% block title %}{{ profile.name }}{% endblock %}
 
@@ -230,6 +230,19 @@
         {% if funding.received_by_orgs %}{{ funding_table('Stifter (Organisationen)', funding.received_by_orgs, root_path) }}{% endif %}
         {% if funding.issued_by_persons %}{{ funding_table('Empfaenger (Personen)', funding.issued_by_persons, root_path) }}{% endif %}
         {% if funding.issued_by_orgs %}{{ funding_table('Empfaenger (Organisationen)', funding.issued_by_orgs, root_path) }}{% endif %}
+    </section>
+    {% endif %}
+
+    {# occ-Netzwerk: Personen mit Taetigkeitsverbindung zur Org plus
+       Anzahl ihrer kin-Beziehungen (1-Hop-Verwandtschaft im Quellenkorpus).
+       Quelle: profile.occ_network (occ_persons-Liste mit kin_count). Nur
+       gerendert, wenn Personen vorhanden sind. #}
+    {% set occ = profile.occ_network or {} %}
+    {% if (occ.total or 0) > 0 %}
+    <section class="org-occ-network" aria-label="Taetigkeitsverbindungen">
+        <h2 class="section-head">Personen mit T&auml;tigkeitsverbindung <span class="section-head-count">{{ occ.total }}</span></h2>
+        <p class="section-hint">Personen, die in Quellen mit einem Beruf, einer T&auml;tigkeit oder einem Amt im Bezug zu dieser Einrichtung genannt werden. Die letzte Spalte z&auml;hlt 1-Hop-Verwandtschafts-Beziehungen aus dem Quellenkorpus (kin-Annotation).</p>
+        {{ occ_table(occ.occ_persons, root_path) }}
     </section>
     {% endif %}
 

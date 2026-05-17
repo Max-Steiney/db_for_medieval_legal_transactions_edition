@@ -160,6 +160,49 @@
 </section>
 {% endmacro %}
 
+{# occ-Netzwerk-Tabelle. Pro Person eine Zeile: Name (Link aufs Profil),
+   Berufs- / Taetigkeits-Begriffe aus den Quellen, Anzahl Belege (Link
+   zur ersten Belegquelle, Hover-Tip mit allen), Anzahl kin-Beziehungen
+   im Quellenkorpus (1-Hop, beantwortet die Mail-Frage nach "Verwandten").
+   Sortiert nach kin_count absteigend, dann nach Name. #}
+{% macro occ_table(rows, root_path) %}
+<table class="rel-table sortable-table"{% if rows|length > 50 %} data-truncate-at="50"{% endif %}>
+    <thead>
+        <tr>
+            <th scope="col" class="rel-col-other" data-sort="other">Person</th>
+            <th scope="col" class="rel-col-occ" data-sort="other">Beruf / T&auml;tigkeit / Amt</th>
+            <th scope="col" class="rel-col-count" data-sort="count">Belege</th>
+            <th scope="col" class="rel-col-kin" data-sort="count">Verwandtschaft</th>
+        </tr>
+    </thead>
+    <tbody>
+    {% for row in rows %}
+        {% set files = row.files or [] %}
+        {% set tip_lines = [] %}
+        {% for f in files %}{% set _ = tip_lines.append((f.idno or '?') + (' (' + f.date_display + ')' if f.date_display else '') + (' - ' + f.regest if f.regest else '')) %}{% endfor %}
+        <tr>
+            <td class="rel-col-other" data-sort-value="{{ row.name }}">
+                <a class="rel-other-link rel-other-link--person" href="{{ root_path }}/register/persons/{{ row.entity_id }}.html">{{ row.name }}</a>
+            </td>
+            <td class="rel-col-occ" data-sort-value="{{ row.occ_terms|join(', ') }}">
+                {{ row.occ_terms|join(', ') if row.occ_terms else '&mdash;' }}
+            </td>
+            <td class="rel-col-count" data-sort-value="{{ files|length }}">
+                {% if files and files[0].url %}
+                <a class="rel-source-link" href="{{ root_path }}/{{ files[0].url }}" data-hint="{{ tip_lines|join('\n') }}">{{ files|length }}</a>
+                {% else %}
+                <span data-hint="{{ tip_lines|join('\n') }}">{{ files|length }}</span>
+                {% endif %}
+            </td>
+            <td class="rel-col-kin" data-sort-value="{{ row.kin_count }}">
+                {{ row.kin_count if row.kin_count else '&mdash;' }}
+            </td>
+        </tr>
+    {% endfor %}
+    </tbody>
+</table>
+{% endmacro %}
+
 {# Active filters container (JS-managed). aria-live announces pill changes. #}
 {% macro active_filters() %}
 <div class="active-filters" id="active-filters" aria-live="polite" aria-label="Aktive Filter"></div>
@@ -385,7 +428,8 @@
 {% macro sidebar_corpus_chips(group_id, attr_name, items) %}
 <div class="collection-chips collection-chips--stack" id="{{ group_id }}">
     {% for c in items %}
-    <button type="button" class="chip" {{ attr_name }}="{{ c.key }}">
+    <button type="button" class="chip" {{ attr_name }}="{{ c.key }}"
+            title="{{ c.label }}: {{ c.count }} Eintraege im Korpus">
         <span class="chip-label">{{ c.label }}</span>
         <span class="chip-count" data-corpus-total="{{ c.count }}">{{ c.count }}</span>
     </button>

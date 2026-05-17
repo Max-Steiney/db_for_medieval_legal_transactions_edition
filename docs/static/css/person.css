@@ -165,7 +165,9 @@
 .person-name .pn-fn,
 .person-name .pn-sn,
 .person-name .pn-an {
-    margin-right: 0.3em;
+    /* Wort-Abstand ueber normales Inline-Whitespace, kein zusaetzlicher
+       Margin. Vorher 0.3em Margin plus Template-Whitespace ergab ueberbreite
+       Luecken zwischen den Namensteilen. */
 }
 
 .person-note {
@@ -533,7 +535,10 @@
     color: var(--color-text-muted);
     font-size: var(--text-xs);
 }
-.role-micro-cell.is-zero { opacity: 0.4; }
+.role-micro-cell.is-zero {
+    opacity: 0.28;
+    border-left-color: var(--color-border-light);
+}
 .role-micro-issuer    { border-left-color: var(--anno-fn-issuer); }
 .role-micro-recipient { border-left-color: var(--anno-fn-recipient); }
 .role-micro-witness   { border-left-color: var(--anno-fn-witness); }

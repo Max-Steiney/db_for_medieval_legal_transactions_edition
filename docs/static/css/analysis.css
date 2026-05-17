@@ -89,7 +89,10 @@
     gap: var(--space-2xs);
 }
 
-/* Reset-Block in der Filterleiste: kein Label, Button rechts buendig. */
+/* Reset-Block in der Filterleiste: kein Label, Button auf Baseline der
+   anderen Bloecke. align-self: end zentriert vertikal am unteren Rand der
+   Reihe; die anderen Bloecke haben ein qb-control-label darueber, der
+   Reset hat keines. */
 .analysis-query .qb-filter-block--reset { align-self: end; }
 .analysis-query .qb-filter-block--reset .sidebar-reset {
     width: auto;
