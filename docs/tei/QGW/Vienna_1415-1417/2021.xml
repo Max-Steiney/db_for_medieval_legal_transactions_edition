@@ -1,0 +1,90 @@
+<?xml version="1.0" encoding="UTF-8"?><!DOCTYPE TEI SYSTEM "../../../schema/toolbox_full.dtd">
+<TEI xmlns="http://www.tei-c.org/ns/1.0" xmlns:cei="http://www.monasterium.net/NS/cei"
+   xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance">
+   <teiHeader>
+      <fileDesc>
+         <titleStmt>
+            <title>Tei version of 2021 exported from monasterium.net </title>
+         </titleStmt>
+         <publicationStmt>
+            <p/>
+         </publicationStmt>
+         <!--In Original: cei:front/cei:sourceDesc/cei:sourceDescRegest-->
+         <sourceDesc>
+            <bibl>Quellen zur Geschichte der Stadt Wien, Bd. II/2, Nr. 2021 As published in HAUrk by
+               Wiener Stadt- und Landesarchiv </bibl>
+            <msDesc>
+               <msIdentifier>
+                  <repository>Wiener Stadt- und Landesarchiv</repository>
+                  <idno>2021</idno>
+                  <altIdentifier type="old">
+                     <idno>516229</idno>
+                  </altIdentifier>
+               </msIdentifier>
+               <physDesc>
+                  <sealDesc>
+                     <seal>
+                        <p>Anhangendes kleines Stadtsiegel, roth u. Sch.</p>
+                     </seal>
+                  </sealDesc>
+               </physDesc>
+            </msDesc>
+         </sourceDesc>
+      </fileDesc>
+      <encodingDesc>
+         <projectDesc default="false">
+            <p><label type="contentual-editing">Projekt Christina Lutter Stadt und
+                  Gemeinschaft</label></p>
+         </projectDesc>
+      </encodingDesc>
+      <profileDesc>
+         <creation>
+            <placeName>Wien</placeName>
+            <date when="14150706">1415 VII 06</date>
+            <origDate>Scriptum Wienne sub nostro pendenti sigillo, anno domini millesimo
+               quadringentesimo quindecimo, sabato post Udalrici, confessoris.
+            </origDate></creation>
+      </profileDesc>
+   </teiHeader>
+   <facsimile>
+      <surface>
+         <graphic
+            url="http://images.monasterium.net/pics/AT-WStLA/HA-U/WStLA-HA-Urkunden_02021_r.jpg"/>
+      </surface>
+      <surface>
+         <graphic
+            url="http://images.monasterium.net/pics/AT-WStLA/HA-U/WStLA-HA-Urkunden_02021_v.jpg"/>
+      </surface>
+   </facsimile>
+   <text>
+      <body>
+         <div type="abstract">
+            <p><rs type="event" ref="#ev__QGW_II_II_2021">* <rs type="fn" role="issuer"><rs
+                        type="org" ref="#org__wien">Magister civium, judex nec non consules jurati
+                        civitatis Wienne</rs></rs> präsentieren <rs type="fn" role="recipient">dem
+                        <rs type="person" ref="#pe__georg_von_passau_QGW_II_I_1292"> Bischof Georg
+                        von Passau</rs></rs> für das durch das<rs type="person"
+                     ref="#pe__bartholomaeus_tasseris_QGW_II_II_2021">
+                     <roleName type="dead">Ableben</roleName> des Bartolomeus Tasseris erledigte
+                        <roleName type="occ" corresp="#org__wien-st_maria_im_rathaus"
+                        >Rectorat</roleName></rs> der Marienkapelle im Rathause <rs type="fn"
+                     role="recipient">den <rs type="person"
+                        ref="#pe__johann_mulhaimer_QGW_II_II_2021"><roleName type="prof"
+                           >Priester</roleName><roleName type="occ" corresp="#org__passau-dioezese"
+                              ><add>Priester</add><roleName type="occ" corresp="#org__wien-st_maria_im_rathaus"
+                                 ><add>Rectorat</add></roleName></roleName> der Passauer Diöcese Johannes Mulhaimer de
+                        Franckenmarckt</rs></rs>. </rs></p>
+         </div>
+         <div type="lists">
+            <xi:include xmlns:xi="http://www.w3.org/2001/XInclude"
+               href="../../../../indices/placeList.xml" xpointer="element(/1/2/1/1)"/>
+            <xi:include xmlns:xi="http://www.w3.org/2001/XInclude"
+               href="../../../../indices/personList.xml" xpointer="element(/1/2/1/1)"/>
+            <xi:include xmlns:xi="http://www.w3.org/2001/XInclude"
+               href="../../../../indices/eventList.xml" xpointer="element(/1/2/1/1)"/>
+            <xi:include xmlns:xi="http://www.w3.org/2001/XInclude"
+               href="../../../../indices/orgList.xml" xpointer="element(/1/2/1/1)"/>
+         </div>
+      </body>
+   </text>
+</TEI>

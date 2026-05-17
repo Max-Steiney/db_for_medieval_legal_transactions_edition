@@ -1,0 +1,124 @@
+<?xml version="1.0" encoding="UTF-8"?><!DOCTYPE TEI SYSTEM "../../../schema/toolbox_full.dtd">
+<TEI xmlns="http://www.tei-c.org/ns/1.0" xmlns:cei="http://www.monasterium.net/NS/cei"
+   xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance">
+   <teiHeader>
+      <fileDesc>
+         <titleStmt>
+            <title>Tei version of 2045 exported from monasterium.net </title>
+         </titleStmt>
+         <publicationStmt>
+            <p/>
+         </publicationStmt>
+         <!--In Original: cei:front/cei:sourceDesc/cei:sourceDescRegest-->
+         <sourceDesc>
+            <bibl>Quellen zur Geschichte der Stadt Wien, Bd. II/2, Nr. 2045 As published in HAUrk by
+               Wiener Stadt- und Landesarchiv </bibl>
+            <msDesc>
+               <msIdentifier>
+                  <repository>Wiener Stadt- und Landesarchiv</repository>
+                  <idno>2045</idno>
+                  <altIdentifier type="old">
+                     <idno>516254</idno>
+                  </altIdentifier>
+               </msIdentifier>
+               <msContents>
+                  <msItem>
+                     <listBibl>
+                        <bibl>Camesina, Regesten 40 n° 194 Regest.</bibl>
+                     </listBibl>
+                  </msItem>
+               </msContents>
+               <physDesc>
+                  <sealDesc>
+                     <seal>
+                        <p>Zwei anhangende Siegel, grün u. Sch., 1. fehlt, 3. beschädigt.Siegler:
+                           der Bergherr und die Wiener Bürger <quote>Niclas der Weispacher und
+                              Niclas der Zingk</quote>. </p>
+                     </seal>
+                  </sealDesc>
+               </physDesc>
+            </msDesc>
+         </sourceDesc>
+      </fileDesc>
+      <encodingDesc>
+         <projectDesc default="false">
+            <p><label type="contentual-editing">Projekt Christina Lutter Stadt und
+                  Gemeinschaft</label></p>
+         </projectDesc>
+      </encodingDesc>
+      <profileDesc>
+         <creation>
+            <placeName>Wien</placeName>
+            <date when="14160812">1416 VIII 12</date>
+            <origDate>ze Wienn, des nachsten mitichen nach sand Laurencien tag, des heiligen
+               martrer.</origDate></creation>
+      </profileDesc>
+   </teiHeader>
+   <facsimile>
+      <surface>
+         <graphic
+            url="http://images.monasterium.net/pics/AT-WStLA/HA-U/WStLA-HA-Urkunden_02045_r.jpg"/>
+      </surface>
+      <surface>
+         <graphic
+            url="http://images.monasterium.net/pics/AT-WStLA/HA-U/WStLA-HA-Urkunden_02045_v.jpg"/>
+      </surface>
+   </facsimile>
+   <text>
+      <body>
+         <div type="abstract">
+            <p><rs type="event" ref="#ev__QGW_II_II_2045">
+                  <rs type="fn" role="issuer"><rs type="person" ref="#pe__ulrich_wild_QGW_II_II_2042"
+                        >Ulreich der Wild, <roleName type="occ" corresp="#org__wien"
+                           >burger</roleName> ze Wienn</rs></rs>, verkauft <rs type="fn"
+                     role="other"><triggerstring n="fn">mit Handen</triggerstring> seines <roleName
+                        type="title">Bergherrn</roleName>
+                     <rs type="person" ref="#pe__georg_rukchendorffer_QGW_II_II_2045">Jo/ergen des
+                        Rukchendorffer</rs></rs> zwei Weingärten, ½ Joch gelegen ze Obern Süfring an
+                  dem Harnsperg, genannt der Judel, zenechst dem weingarten, genant der Velczperger,
+                  von dem man 9 Viertel Wein zu Bergrecht und 3 Helbling zu Voitrecht dient, und ein
+                  Viertel, gelegen zu Nidern Süfring auch an dem Harnsperg, genannt der Chünringer
+                  zenechst Jacobs weingarten des Chottrer, von dem man 20 dn. für Berg- und
+                  Voitrecht dient, um 100 lb dn. <rs type="fn" role="recipient">
+                     <rs type="person" ref="#pe__johann_weispacher_QGW_II_II_2042">Hannsen dem
+                        Weispacher, <roleName type="occ" corresp="#org__wien">des rats</roleName> der
+                        stat ze Wienn <add><roleName type="rep"
+                              corresp="#pe__niklas_neuchum_QGW_II_II_2042"
+                           >Ausrichter</roleName></add></rs>, und <rs type="person"
+                        ref="#pe__niklas_radauner_QGW_II_II_2042">Niclasen dem Radauner, <roleName
+                           type="occ" corresp="#org__wien">burger</roleName> ze Wienn , als
+                              <add><roleName type="rep" corresp="#pe__niklas_neuchum_QGW_II_II_2042"
+                              >Ausrichtern</roleName></add></rs></rs>
+                  <rs type="event" ref="NULL">des in das Stadtbuch eingetragenen Geschäftes, so <rs
+                        type="fn" role="issuer"><rs type="person"
+                           ref="#pe__niklas_neuchum_QGW_II_II_2042">Niclas <roleName type="dead"
+                              >selig</roleName> der Neukum</rs></rs> getan hat</rs>, <rs type="fn"
+                     role="recipient">zu der <rs type="person"
+                        ref="#pe__niklas_neuchum_QGW_II_II_2042">von diesem</rs> bei <rs type="org"
+                        ref="#org__wien-st_stephan-altar_st_veit-messe_neukum">St. Stephan
+                        gestifteten Messe</rs></rs>. </rs></p>
+         </div>
+         <div type="seal">
+            <p><rs type="event" ref="#ev__QGW_II_II_2045"><rs type="fn" role="witness">Siegler: <rs
+                        type="person" ref="#pe__georg_rukchendorffer_QGW_II_II_2045">der
+                        Bergherr</rs> und die Wiener <rs type="person"
+                        ref="#pe__niklas_weispacher_QGW_II_I_1298"><roleName type="occ"
+                           corresp="#org__wien">Bürger</roleName> Niclas der Weispacher</rs> und <rs
+                        type="person" ref="#pe__niklas_zinkk_QGW_II_II_3690"><add><roleName
+                              type="occ" corresp="#org__wien">Bürger</roleName></add>Niclas der
+                        Zingk</rs>.</rs>
+               </rs></p>
+         </div>
+         <div type="lists">
+            <xi:include xmlns:xi="http://www.w3.org/2001/XInclude"
+               href="../../../../indices/placeList.xml" xpointer="element(/1/2/1/1)"/>
+            <xi:include xmlns:xi="http://www.w3.org/2001/XInclude"
+               href="../../../../indices/personList.xml" xpointer="element(/1/2/1/1)"/>
+            <xi:include xmlns:xi="http://www.w3.org/2001/XInclude"
+               href="../../../../indices/eventList.xml" xpointer="element(/1/2/1/1)"/>
+            <xi:include xmlns:xi="http://www.w3.org/2001/XInclude"
+               href="../../../../indices/orgList.xml" xpointer="element(/1/2/1/1)"/>
+         </div>
+      </body>
+   </text>
+</TEI>
