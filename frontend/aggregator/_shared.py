@@ -110,6 +110,40 @@ def _load_norm_matching() -> dict[str, str]:
     return result
 
 
+def _load_uhlirz_matching() -> dict[str, list[str]]:
+    """Load roleName_norm_matching.csv -> {original_spelling_lower: [uhlirz_categories]}.
+
+    Tab-delimited. Schluessel ist die Originalschreibung des Berufs
+    (Spalte ``roleName_spelling``), **in Kleinschreibung**, wie sie auch
+    in der TEI-Annotation ``<occupation>`` und damit in den
+    ``occ_relations_in_sources.csv`` Spalte ``occ`` vorkommt. Wert ist
+    eine Liste, weil eine Schreibvariante prinzipiell mehrere Uhlirz-
+    Kategorien tragen kann (selten, aber moeglich nach Daten-Stand
+    2026-05).
+
+    Lookup muss case-insensitiv erfolgen, weil das CSV uneinheitlich
+    sowohl ``Wachsgiesser`` als auch ``wachsgiesser`` enthalten kann,
+    und die ``occ``-Spalte in den Pipeline-CSVs ebenfalls beide
+    Schreibungen tragen kann.
+
+    Eintraege ohne Kategorie werden uebersprungen. Mehrere Zeilen mit
+    derselben Originalschreibung (case-insensitiv) werden zu einer
+    Liste vereinigt (deduplisiert).
+    """
+    path = NORM_LISTS_DIR / "roleName_norm_matching.csv"
+    result: dict[str, set[str]] = {}
+    if not path.exists():
+        return {}
+    with open(path, encoding="utf-8-sig", newline="") as f:
+        reader = csv.DictReader(f, delimiter="\t")
+        for row in reader:
+            src = (row.get("roleName_spelling") or "").strip().lower()
+            cat = (row.get("Gewerbe_nach_Uhlirz_GstW") or "").strip()
+            if src and cat:
+                result.setdefault(src, set()).add(cat)
+    return {k: sorted(v) for k, v in result.items()}
+
+
 def _parse_coord(value: str) -> float | None:
     """Parse a coordinate string, handling comma decimals and text suffixes.
 

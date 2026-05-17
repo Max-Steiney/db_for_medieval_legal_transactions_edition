@@ -1337,6 +1337,7 @@ def _build_analysis(env):
         total_events=rc_coverage.get("total_events", 0),
         total_persons=rc_coverage.get("total_persons", 0),
         occupation_vocab=rc_vocab.get("occupation", []),
+        uhlirz_vocab=rc_vocab.get("uhlirz", []),
         timeline_data=decade_histogram,
         max_count=max_count,
         min_year=min_year,

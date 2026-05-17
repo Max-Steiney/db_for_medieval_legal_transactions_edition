@@ -7,7 +7,13 @@ against this JSON. See docs/data/role_constellation.json for the shape.
 from collections import Counter, defaultdict
 from pathlib import Path
 
-from ._shared import _cached_csv, _load_norm_matching, _meta, _write_json
+from ._shared import (
+    _cached_csv,
+    _load_norm_matching,
+    _load_uhlirz_matching,
+    _meta,
+    _write_json,
+)
 
 
 # --- Helpers --------------------------------------------------------------
@@ -61,6 +67,11 @@ def aggregate_role_constellation(docs_data_dir: Path) -> dict:
     occ_rows = _cached_csv("occ_relations_in_sources.csv")
     title_rows = _cached_csv("title-ref_relations_in_sources.csv")
     norm_map = _load_norm_matching()
+    # Uhlirz-Klassifikation der Berufe (Spalte Gewerbe_nach_Uhlirz_GstW in
+    # roleName_norm_matching.csv im Pipeline-Repo). Mapping
+    # original_spelling -> [uhlirz_categories]. Wird pro Person auf die
+    # o-Liste angewandt und ergibt die u-Liste (deduplisiert).
+    uhlirz_map = _load_uhlirz_matching()
 
     person_info = {
         r["id"]: {"sex": r.get("sex", ""), "name": _person_display_name(r)}
@@ -107,17 +118,30 @@ def aggregate_role_constellation(docs_data_dir: Path) -> dict:
         role = r.get("event_role", "") or "other"
         if role not in VALID_ROLES:
             role = "other"
+        occs = event_occs.get((ek, pk), [])
+        # Uhlirz-Kategorien aus dem Beruf-Mapping ableiten, deduplisiert
+        # und sortiert. Eine Person hat ggf. mehrere Berufe und damit
+        # mehrere Kategorien; eine leere Liste ist der Default fuer
+        # Personen ohne klassifizierten Beruf.
+        uhlirz_set = set()
+        for o in occs:
+            # case-insensitiv, weil das CSV und die TEI-Annotation
+            # gemischte Schreibungen tragen.
+            for cat in uhlirz_map.get(o.lower(), []):
+                uhlirz_set.add(cat)
         event_participants[ek].append({
             "p": pk,
             "n": pinfo.get("name", ""),
             "r": role,
             "s": pinfo.get("sex", ""),
             "t": event_titles.get((ek, pk), []),
-            "o": event_occs.get((ek, pk), []),
+            "o": occs,
+            "u": sorted(uhlirz_set),
         })
 
     events: list[dict] = []
     occ_counter: Counter = Counter()
+    uhlirz_counter: Counter = Counter()
     distinct_persons: set[str] = set()
     distinct_files: set[str] = set()
     decade_counts: Counter = Counter()
@@ -144,6 +168,8 @@ def aggregate_role_constellation(docs_data_dir: Path) -> dict:
             total_participations += 1
             for occ in part["o"]:
                 occ_counter[occ] += 1
+            for cat in part["u"]:
+                uhlirz_counter[cat] += 1
 
     # Histogram across the released period — gap-free decade list so the
     # range-slider histogram has no holes.
@@ -166,18 +192,21 @@ def aggregate_role_constellation(docs_data_dir: Path) -> dict:
         "meta": _meta(
             description="Per-event participant lists for analysis/index.html.",
             sources=["persons.csv", "persons_in_events.csv", "events_in_sources.csv",
-                     "filenames.csv", "occ_relations_in_sources.csv"],
+                     "filenames.csv", "occ_relations_in_sources.csv",
+                     "normalisation_lists/roleName_norm_matching.csv"],
             dimensions=[
                 {"id": "event",      "label": "Event"},
                 {"id": "person",     "label": "Person"},
                 {"id": "role",       "label": "Funktionsrolle", "values": list(VALID_ROLES)},
                 {"id": "sex",        "label": "Geschlecht",     "values": ["m", "f"]},
                 {"id": "occupation", "label": "Beruf/Tätigkeit"},
+                {"id": "uhlirz",     "label": "Uhlirz-Berufsklasse"},
             ],
             measures=[],
         ),
         "vocab": {
             "occupation": [{"value": v, "count": c} for v, c in occ_counter.most_common(50)],
+            "uhlirz": sorted(uhlirz_counter.keys()),
         },
         "coverage": {
             "total_events": len(events),

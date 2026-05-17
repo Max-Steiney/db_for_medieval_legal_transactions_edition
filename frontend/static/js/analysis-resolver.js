@@ -74,18 +74,26 @@
         return dataPromise;
     }
 
-    // Occupation-Vokabular ist im Personen-Tabellen-Container hinterlegt
-    // (data-occupation-vocab attribute). Wir lesen es einmal.
+    // Occupation- und Uhlirz-Vokabular sind im Personen-Tabellen-
+    // Container hinterlegt (data-*-vocab Attribute). Wir lesen sie
+    // einmal.
     try {
         OCC_VOCAB = JSON.parse(personsTable.dataset.occupationVocab || '[]');
     } catch (_) { OCC_VOCAB = []; }
+    let UHLIRZ_VOCAB = [];
+    try {
+        UHLIRZ_VOCAB = JSON.parse(personsTable.dataset.uhlirzVocab || '[]');
+    } catch (_) { UHLIRZ_VOCAB = []; }
 
     /* ---------- Zustand -------------------------------------------------- */
     // State-Form:
-    //   { persons: [ {role, sex, occ} ],
+    //   { persons: [ {role, sex, occ, uhlirz} ],
     //     scope: 'event'|'source',
     //     yearMin, yearMax,
     //     corpora: Set<string> }
+    // uhlirz ist Default '' (= "alle"); ein gesetzter Wert filtert auf
+    // genau diese Uhlirz-Kategorie, gematcht gegen die u-Liste der
+    // Participants in role_constellation.json.
     let state = {
         persons: [],
         scope: 'event',
@@ -180,6 +188,32 @@
         occTd.appendChild(occInput);
         tr.appendChild(occTd);
 
+        // Spalte Uhlirz-Berufsklasse (optional, exakter Match auf
+        // Kategorie). Dropdown wird aus UHLIRZ_VOCAB gespeist; leerer
+        // Default-Wert bedeutet "alle".
+        const uhlirzTd = document.createElement('td');
+        uhlirzTd.className = 'qb-col-uhlirz';
+        const uhlirzSel = document.createElement('select');
+        uhlirzSel.setAttribute('aria-label',
+            'Uhlirz-Berufsklasse Person ' + (idx + 1));
+        const uhlBlank = document.createElement('option');
+        uhlBlank.value = '';
+        uhlBlank.textContent = '— alle —';
+        uhlirzSel.appendChild(uhlBlank);
+        UHLIRZ_VOCAB.forEach(cat => {
+            const o = document.createElement('option');
+            o.value = cat;
+            o.textContent = cat;
+            if ((p.uhlirz || '') === cat) o.selected = true;
+            uhlirzSel.appendChild(o);
+        });
+        uhlirzSel.addEventListener('change', () => {
+            state.persons[idx].uhlirz = uhlirzSel.value;
+            sync();
+        });
+        uhlirzTd.appendChild(uhlirzSel);
+        tr.appendChild(uhlirzTd);
+
         // Spalte Entfernen
         const rmTd = document.createElement('td');
         rmTd.className = 'qb-col-rm';
@@ -224,7 +258,7 @@
 
     /* ---------- Globale Filter: Verkabelung ----------------------------- */
     addPersonBtn.addEventListener('click', () => {
-        state.persons.push({ role: '', sex: '', occ: '' });
+        state.persons.push({ role: '', sex: '', occ: '', uhlirz: '' });
         renderPersonsTable();
         sync();
     });
@@ -337,6 +371,10 @@
             const needle = card.occ.toLowerCase();
             const hit = (person.o || []).some(o => (o || '').toLowerCase().includes(needle));
             if (!hit) return false;
+        }
+        if (card.uhlirz) {
+            const cats = person.u || [];
+            if (cats.indexOf(card.uhlirz) === -1) return false;
         }
         return true;
     }
@@ -623,11 +661,12 @@
     function writeUrl() {
         const params = [];
         state.persons.forEach((p, idx) => {
-            if (!p.role && !p.sex && !p.occ) return;
+            if (!p.role && !p.sex && !p.occ && !p.uhlirz) return;
             const parts = [];
-            if (p.role) parts.push('r=' + p.role);
-            if (p.sex)  parts.push('s=' + p.sex);
-            if (p.occ)  parts.push('o=' + encodeURIComponent(p.occ));
+            if (p.role)   parts.push('r=' + p.role);
+            if (p.sex)    parts.push('s=' + p.sex);
+            if (p.occ)    parts.push('o=' + encodeURIComponent(p.occ));
+            if (p.uhlirz) parts.push('u=' + encodeURIComponent(p.uhlirz));
             params.push('p' + (idx + 1) + '=' + parts.join(','));
         });
         if (state.yearMin !== RELEASED_MIN || state.yearMax !== RELEASED_MAX) {
@@ -661,7 +700,7 @@
                 const idx = parseInt(m[1], 10) - 1;
                 if (idx < 0) return;
                 while (state.persons.length <= idx) {
-                    state.persons.push({ role: '', sex: '', occ: '' });
+                    state.persons.push({ role: '', sex: '', occ: '', uhlirz: '' });
                 }
                 v.split(',').forEach(pair => {
                     const e = pair.indexOf('=');
@@ -670,6 +709,7 @@
                     if (pk === 'r') state.persons[idx].role = pv;
                     if (pk === 's') state.persons[idx].sex = pv;
                     if (pk === 'o') state.persons[idx].occ = pv;
+                    if (pk === 'u') state.persons[idx].uhlirz = pv;
                 });
             } else if (k === 'y') {
                 const yr = v.split('-');
@@ -768,13 +808,18 @@
         'clergy-pair': [
             { role: 'issuer',    sex: '', occ: 'pfarr' },
             { role: 'recipient', sex: '', occ: 'pfarr' }
+        ],
+        'verwaltung': [
+            { role: 'issuer', sex: '', occ: '', uhlirz: 'XVIII Verwaltung' }
         ]
     };
 
     function applyExample(key) {
         const tpl = EXAMPLES[key];
         if (!tpl) return;
-        state.persons = tpl.map(p => ({ role: p.role, sex: p.sex, occ: p.occ }));
+        state.persons = tpl.map(p => ({
+            role: p.role, sex: p.sex, occ: p.occ, uhlirz: p.uhlirz || ''
+        }));
         renderPersonsTable();
         sync();
         // Scroll zur Personen-Tabelle, damit Forscherin sieht, was gesetzt wurde.

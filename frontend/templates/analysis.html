@@ -89,7 +89,8 @@
                 {% endcall %}</p>
 
                 <table class="qb-persons-table" id="qb-persons-table"
-                       data-occupation-vocab='{{ occupation_vocab|tojson }}'>
+                       data-occupation-vocab='{{ occupation_vocab|tojson }}'
+                       data-uhlirz-vocab='{{ uhlirz_vocab|tojson }}'>
                     <thead>
                         <tr>
                             <th scope="col" class="qb-col-num">Nr.</th>
@@ -97,6 +98,8 @@
                             <th scope="col" class="qb-col-sex">Geschlecht</th>
                             <th scope="col" class="qb-col-occ">Beruf, Tätigkeit oder Amt
                                 <span class="qb-col-hint">(wie ediert, enthält)</span></th>
+                            <th scope="col" class="qb-col-uhlirz">Uhlirz-Berufsklasse
+                                <span class="qb-col-hint">(klassifiziert)</span></th>
                             <th scope="col" class="qb-col-rm" aria-label="Entfernen"></th>
                         </tr>
                     </thead>
@@ -211,6 +214,14 @@
                             <code>pfarrer</code>, <code>pharrer</code> und
                             Schreibvarianten in Aussteller- und
                             Empfänger-Rolle</span>
+                    </button>
+                    <button type="button" class="qb-example" role="listitem"
+                            data-example="verwaltung">
+                        <span class="qb-example-title">Aussteller mit
+                            Uhlirz-Klasse <code>XVIII Verwaltung</code></span>
+                        <span class="qb-example-desc">Exakter Match auf die
+                            Uhlirz-Berufsklassifikation, deckt alle Personen
+                            mit klassifiziertem Verwaltungs-Beruf ab</span>
                     </button>
                 </div>
                 <p class="qb-onboarding-hint">

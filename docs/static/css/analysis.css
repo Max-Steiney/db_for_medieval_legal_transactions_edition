@@ -138,11 +138,12 @@
 .analysis-query .qb-persons-table tbody:empty + .btn-add { margin-top: 0; }
 
 /* Spaltenbreiten — kompakt und gleichmaessig. */
-.analysis-query .qb-col-num  { width: 2.5rem; }
-.analysis-query .qb-col-role { width: 12rem; }
-.analysis-query .qb-col-sex  { width: 10rem; }
-.analysis-query .qb-col-occ  { width: auto; min-width: 14rem; }
-.analysis-query .qb-col-rm   { width: 2rem; }
+.analysis-query .qb-col-num    { width: 2.5rem; }
+.analysis-query .qb-col-role   { width: 10rem; }
+.analysis-query .qb-col-sex    { width: 8rem; }
+.analysis-query .qb-col-occ    { width: auto; min-width: 11rem; }
+.analysis-query .qb-col-uhlirz { width: 14rem; }
+.analysis-query .qb-col-rm     { width: 2rem; }
 
 /* Nummern-Pill in der ersten Spalte. */
 .analysis-query .qb-person-num {
