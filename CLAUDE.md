@@ -55,6 +55,8 @@ python -m frontend build                # baut docs/ aus aktuellem Pipeline-Outp
 python -m frontend build --single FILE  # einzelne Quelle
 python -m frontend build --stage N      # Stufenmodell, N in 1..4 (siehe frontend/stages.py)
 python -m frontend build --include-mentioned   # Alias fuer --stage 2, schreibt nach docs-with-mentioned/
+python scripts/build_all_stages.py      # Pipeline+Frontend fuer alle Stufen am Stueck
+python scripts/build_all_stages.py --only 1 3   # nur ausgewaehlte Stufen
 python -m pytest frontend/tests/        # Frontend-Tests (kompakt: -q --tb=no --no-header)
 python -m verification.run              # Stufe 1: TEI -> JSON-Aggregate
 python -m verification.run --html       # Stufe 2: Pipeline-CSV -> gerendertes HTML
@@ -63,7 +65,7 @@ python -m verification.run --all        # alle drei Stufen
 python -m verification.run --inventory  # TEI-Element-Inventar pro Subkorpus
 ```
 
-`--stage N` setzt `FRONTEND_STAGE=N` und davon abgeleitete Env-Vars. Stufe 1 (Publikation) ist Default und schreibt nach `docs/`. Stufe 2 (Vergleich mit mentioned events) schreibt nach `docs-with-mentioned/`. Stufen 3 und 4 (`docs-full/`, `docs-max/`) bauen, liefern aber heute denselben Daten-Output wie 1 bzw. 2, weil die zugehoerigen Subkorpora noch nicht aktiv sind. Vor einem Vergleichsbuild muss die Pipeline einmal mit dem Mentioned-Filter laufen, damit auch die CSVs verschachtelte Events als volle Events fuehren: `PIPELINE_INCLUDE_MENTIONED_EVENTS=1 python -m pipeline transform`. Konzept und Leitentscheidung in [`knowledge/decisions.md`](knowledge/decisions.md) unter „Stufenmodell fuer Korpus-Auswahl und Annotationsebenen".
+`--stage N` setzt `FRONTEND_STAGE=N` und davon abgeleitete Env-Vars. Stufe 1 (Publikation) ist Default und schreibt nach `docs/`. Stufe 2 (Vergleich mit mentioned events) schreibt nach `docs-with-mentioned/`. Stufe 3 (`docs-full/`) ist heute deckungsgleich mit Stufe 1, weil alle `_ready`-Subkorpora freigegeben sind; die Stufe bleibt als Anschluss fuer kuenftige nicht-released `_ready`-Subkorpora. Stufe 4 (`docs-max/`) nimmt zusaetzlich die nicht-`_ready`-Subkorpora auf. Vor einem Vergleichsbuild muss die Pipeline einmal mit dem Mentioned-Filter laufen, damit auch die CSVs verschachtelte Events als volle Events fuehren: `PIPELINE_INCLUDE_MENTIONED_EVENTS=1 python -m pipeline transform`. Mit dem Helper-Skript erledigt sich das pro Stufe automatisch. Konzept und Leitentscheidung in [`knowledge/decisions.md`](knowledge/decisions.md) unter „Stufenmodell fuer Korpus-Auswahl und Annotationsebenen".
 
 Test-Strategie und Abgrenzung der drei Säulen (pytest, Verifikation, Sichtprüfung): [`knowledge/architecture.md`](knowledge/architecture.md) Abschnitt _Test-Strategie_.
 

@@ -6,16 +6,56 @@ Dieses Repository ist die **Publikations-Schicht** der Datenbank: Build-Code, Te
 
 ## Freigegebene Korpora
 
-Aktuell sind zwei Subkorpora freigegeben und werden gerendert:
+Aktuell sind fünf Subkorpora freigegeben und werden gerendert:
 
 - `QGW/Vienna_1177-1414_ready` — Quellen zur Geschichte der Stadt Wien, Wiener Urkunden 1177–1414.
+- `QGW/Vienna_1415-1417` — Anschluss-Subkorpus 1415–1417.
+- `QGW/Vienna_1448-57_ready` — Auswahl 1448–1457 mit konsequenter Orts- und Mentioned-Annotation.
 - `Stadtbuecher/Band_1_1395-1400_ready` — Stadtbücher, Band 1, 1395–1400.
+- `Satzbuch_CD/SB_CD_1448-60_ready` — Satzbuch CD, 1448–1460, mit konsequenter Orts- und Mentioned-Annotation.
 
 Single Source of Truth ist das Tupel `RELEASED_CORPORA` in `../db_for_medieval_legal_transactions/pipeline/config.py`. Es steuert sowohl die CSV-Erzeugung der Pipeline als auch die Sichtbarkeit im Frontend-Build. Subkorpora außerhalb dieses Tupels liegen zwar in `sources/` für die editorische Arbeit, werden aber weder exportiert noch gerendert.
 
 Ein Override für interne Analysen existiert: `PIPELINE_INCLUDE_UNRELEASED=1 python -m pipeline transform` zieht alle Subkorpora ein, auch die ungeprüften. Nicht für den publizierten Build verwenden.
 
 Aufnahme eines weiteren Subkorpus in vier Schritten: Quelle unter `sources/<Collection>/<Subcollection>_ready/` ablegen, `RELEASED_CORPORA` ergänzen, `python -m pipeline transform`, `python -m frontend build`. Liegt der neue Korpus außerhalb von 1177–1414, zusätzlich `RELEASED_PERIOD` in [`frontend/config.py`](frontend/config.py) anpassen.
+
+## Stufenmodell
+
+Build und Pipeline kennen vier benannte Stufen, die Korpus-Auswahl und Annotationsebenen als zitierbares Profil bündeln. Aktiviert über `--stage N`; ohne Flag gilt Stufe 1 (Publikation).
+
+| Stufe | Subkorpora | Mentioned-Events | Output |
+|---|---|---|---|
+| 1 Publikation | alle freigegebenen `_ready` | aus | `docs/` |
+| 2 Vergleich | wie Stufe 1 | ein | `docs-with-mentioned/` |
+| 3 Voller `_ready`-Bestand | heute deckungsgleich mit Stufe 1 | aus | `docs-full/` |
+| 4 Maximalversion | alle mit TEI | ein | `docs-max/` |
+
+Detaillierte Begründung und Achsen in [`knowledge/decisions.md`](knowledge/decisions.md) unter „Stufenmodell für Korpus-Auswahl und Annotationsebenen".
+
+```
+# Stufe 1 (Default, publizierter Stand)
+python -m frontend build
+
+# Stufe 2 (Vergleich mit Mentioned-Events)
+cd ../db_for_medieval_legal_transactions
+PIPELINE_INCLUDE_MENTIONED_EVENTS=1 python -m pipeline transform
+cd ../db_for_medieval_legal_transactions_edition
+python -m frontend build --stage 2
+
+# Stufen 3 und 4 analog
+cd ../db_for_medieval_legal_transactions
+FRONTEND_STAGE=3 python -m pipeline transform
+cd ../db_for_medieval_legal_transactions_edition
+python -m frontend build --stage 3
+```
+
+Helper zum Bauen aller Stufen am Stück: [`scripts/build_all_stages.py`](scripts/build_all_stages.py).
+
+```
+python scripts/build_all_stages.py            # alle vier Stufen
+python scripts/build_all_stages.py --only 1 3 # nur ausgewaehlte Stufen
+```
 
 ## Zwei-Repository-Setup
 
