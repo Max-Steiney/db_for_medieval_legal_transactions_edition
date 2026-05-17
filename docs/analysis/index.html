@@ -9,17 +9,17 @@
     <title>Abfragen, Datenbank</title>
     <link rel="preload" as="font" type="font/woff2" crossorigin
           href="../static/fonts/inter-400-latin.woff2">
-    <link rel="stylesheet" href="../static/css/fonts.css?v=20260517093142">
-    <link rel="stylesheet" href="../static/css/tokens.css?v=20260517093142">
-    <link rel="stylesheet" href="../static/css/base.css?v=20260517093142">
-    <link rel="stylesheet" href="../static/css/components.css?v=20260517093142">
-    <link rel="stylesheet" href="../static/css/responsive.css?v=20260517093142">
-    <link rel="stylesheet" href="../static/css/print.css?v=20260517093142">
-    <link rel="stylesheet" href="../static/css/tip.css?v=20260517093142">
+    <link rel="stylesheet" href="../static/css/fonts.css?v=20260517094635">
+    <link rel="stylesheet" href="../static/css/tokens.css?v=20260517094635">
+    <link rel="stylesheet" href="../static/css/base.css?v=20260517094635">
+    <link rel="stylesheet" href="../static/css/components.css?v=20260517094635">
+    <link rel="stylesheet" href="../static/css/responsive.css?v=20260517094635">
+    <link rel="stylesheet" href="../static/css/print.css?v=20260517094635">
+    <link rel="stylesheet" href="../static/css/tip.css?v=20260517094635">
     
 
-<link rel="stylesheet" href="../static/css/index.css?v=20260517093200">
-<link rel="stylesheet" href="../static/css/analysis.css?v=20260517093200">
+<link rel="stylesheet" href="../static/css/index.css?v=20260517094653">
+<link rel="stylesheet" href="../static/css/analysis.css?v=20260517094653">
 
 </head>
 <body data-root-path=".."
@@ -113,11 +113,11 @@
         <h1>Abfragen</h1>
         <p class="kpi-strip">
             Korpus:
-            <strong>2.603</strong>&nbsp;Quellen
+            <strong>2.654</strong>&nbsp;Quellen
             <span class="kpi-sep">&middot;</span>
-            <strong>2.610</strong>&nbsp;Rechtsgeschäfte
+            <strong>2.661</strong>&nbsp;Rechtsgeschäfte
             <span class="kpi-sep">&middot;</span>
-            <strong>8.168</strong>&nbsp;Personen
+            <strong>8.368</strong>&nbsp;Personen
         </p>
     </header>
 
@@ -359,6 +359,34 @@
              data-hint="1410er: 232 Rechtsgeschäfte">
         </div>
         
+        <div class="range-bar"
+             data-decade="1420"
+             data-count="0"
+             data-height="0"
+             data-hint="1420er: 0 Rechtsgeschäfte">
+        </div>
+        
+        <div class="range-bar"
+             data-decade="1430"
+             data-count="1"
+             data-height="4"
+             data-hint="1430er: 1 Rechtsgeschäft">
+        </div>
+        
+        <div class="range-bar"
+             data-decade="1440"
+             data-count="16"
+             data-height="4"
+             data-hint="1440er: 16 Rechtsgeschäfte">
+        </div>
+        
+        <div class="range-bar"
+             data-decade="1450"
+             data-count="34"
+             data-height="5"
+             data-hint="1450er: 34 Rechtsgeschäfte">
+        </div>
+        
     </div>
     <div class="range-inputs">
         <input type="range" id="range-min"
@@ -396,9 +424,15 @@
     </button>
     
     <button type="button" class="chip" data-corpus="QGW II/2"
-            title="QGW II/2: 33 Eintraege im Korpus">
+            title="QGW II/2: 46 Eintraege im Korpus">
         <span class="chip-label">QGW II/2</span>
-        <span class="chip-count" data-corpus-total="33">33</span>
+        <span class="chip-count" data-corpus-total="46">46</span>
+    </button>
+    
+    <button type="button" class="chip" data-corpus="Satzbuch CD"
+            title="Satzbuch CD: 38 Eintraege im Korpus">
+        <span class="chip-label">Satzbuch CD</span>
+        <span class="chip-count" data-corpus-total="38">38</span>
     </button>
     
 </div>
@@ -448,7 +482,7 @@
 </p>
 
                 <table class="qb-persons-table" id="qb-persons-table"
-                       data-occupation-vocab='[{"count": 747, "value": "purger"}, {"count": 313, "value": "B\u00fcrger"}, {"count": 211, "value": "purgermaister"}, {"count": 195, "value": "amptman"}, {"count": 190, "value": "pharrer"}, {"count": 171, "value": "Herzog"}, {"count": 161, "value": "B\u00fcrgers"}, {"count": 161, "value": "rats"}, {"count": 132, "value": "B\u00fcrgermeisters"}, {"count": 109, "value": "statrichter"}, {"count": 107, "value": "rates"}, {"count": 100, "value": "burger"}, {"count": 99, "value": "Kaplan"}, {"count": 97, "value": "chaplan"}, {"count": 86, "value": "Bergmeisters"}, {"count": 82, "value": "richter"}, {"count": 72, "value": "prior"}, {"count": 53, "value": "diener"}, {"count": 52, "value": "schaffer"}, {"count": 52, "value": "m\u00fcnzmaister"}, {"count": 51, "value": "Wiener B\u00fcrger"}, {"count": 49, "value": "Bischof"}, {"count": 46, "value": "pergmaister"}, {"count": 44, "value": "hofmaister"}, {"count": 43, "value": "Diener"}, {"count": 43, "value": "rat"}, {"count": 41, "value": "verweser"}, {"count": 40, "value": "judenrichter"}, {"count": 40, "value": "statschreiber"}, {"count": 39, "value": "chorherr"}, {"count": 39, "value": "rats der stat"}, {"count": 37, "value": "herzog"}, {"count": 37, "value": "phleger"}, {"count": 35, "value": "ambtman"}, {"count": 33, "value": "spitalmaister"}, {"count": 33, "value": "kaplan"}, {"count": 33, "value": "burgermaister"}, {"count": 32, "value": "Schafferin"}, {"count": 32, "value": "purger ze Wienne"}, {"count": 31, "value": "chapplan"}, {"count": 30, "value": "chapellan"}, {"count": 30, "value": "abt"}, {"count": 30, "value": "maister"}, {"count": 30, "value": "comiteur"}, {"count": 29, "value": "consul"}, {"count": 28, "value": "Wiener B\u00fcrgers"}, {"count": 28, "value": "purger ze Wienn"}, {"count": 26, "value": "rates der stat ze Wienne"}, {"count": 26, "value": "huebmaister"}, {"count": 26, "value": "mitpurger"}]'
+                       data-occupation-vocab='[{"count": 747, "value": "purger"}, {"count": 315, "value": "B\u00fcrger"}, {"count": 211, "value": "purgermaister"}, {"count": 196, "value": "amptman"}, {"count": 193, "value": "pharrer"}, {"count": 171, "value": "Herzog"}, {"count": 166, "value": "rats"}, {"count": 161, "value": "B\u00fcrgers"}, {"count": 132, "value": "B\u00fcrgermeisters"}, {"count": 123, "value": "burger"}, {"count": 109, "value": "statrichter"}, {"count": 107, "value": "rates"}, {"count": 103, "value": "Kaplan"}, {"count": 97, "value": "chaplan"}, {"count": 86, "value": "Bergmeisters"}, {"count": 82, "value": "richter"}, {"count": 72, "value": "prior"}, {"count": 53, "value": "diener"}, {"count": 52, "value": "schaffer"}, {"count": 52, "value": "m\u00fcnzmaister"}, {"count": 51, "value": "Wiener B\u00fcrger"}, {"count": 49, "value": "Bischof"}, {"count": 47, "value": "pergmaister"}, {"count": 44, "value": "hofmaister"}, {"count": 43, "value": "Diener"}, {"count": 43, "value": "statschreiber"}, {"count": 43, "value": "rat"}, {"count": 41, "value": "verweser"}, {"count": 40, "value": "judenrichter"}, {"count": 39, "value": "chorherr"}, {"count": 39, "value": "rats der stat"}, {"count": 37, "value": "herzog"}, {"count": 37, "value": "phleger"}, {"count": 35, "value": "kaplan"}, {"count": 35, "value": "ambtman"}, {"count": 35, "value": "burgermaister"}, {"count": 34, "value": "spitalmaister"}, {"count": 32, "value": "Schafferin"}, {"count": 32, "value": "purger ze Wienne"}, {"count": 31, "value": "chapplan"}, {"count": 30, "value": "chapellan"}, {"count": 30, "value": "abt"}, {"count": 30, "value": "maister"}, {"count": 30, "value": "comiteur"}, {"count": 29, "value": "consul"}, {"count": 28, "value": "Wiener B\u00fcrgers"}, {"count": 28, "value": "purger ze Wienn"}, {"count": 26, "value": "rates der stat ze Wienne"}, {"count": 26, "value": "huebmaister"}, {"count": 26, "value": "mitpurger"}]'
                        data-uhlirz-vocab='["I Landwirtschaft Gaertnerei Forstwirtschaft Thierzucht", "III Metallverarbeitung", "IV Erzeugung und Vertrieb von Leuchtstoffen Fetten und Oelen", "IX Bekleidungsindustrie", "VI Lederindustrie", "VIII Bereitung und Vertrieb von Nahrungs- und Genussmitteln Gast- und Schank Gewerbe", "X Gewerbe fuer Koerperpflege und Reinigung", "XI Baugewerbe", "XII Handel und Verkehr", "XIII Graphische Gewerbe", "XIV Spielleute und Fahrendes Volk", "XV Verschiedene gewerbliche Berufe und Lohnarbeiter", "XVI Geistliche Berufe", "XVII Bildung", "XVIII Verwaltung"]'>
                     <thead>
                         <tr>
@@ -725,7 +759,7 @@
 
 { "url": "../data/role_constellation.json" }
 </script>
-<script src="../static/js/analysis-resolver.js?v=20260517093200"></script>
+<script src="../static/js/analysis-resolver.js?v=20260517094653"></script>
 
 
     </main>
@@ -751,10 +785,10 @@
         </div>
     </footer>
 
-    <script src="../static/js/core.js?v=20260517093142"></script>
-    <script src="../static/js/tip.js?v=20260517093142"></script>
-    <script src="../static/js/hint.js?v=20260517093142"></script>
-    <script src="../static/js/basket.js?v=20260517093142"></script>
+    <script src="../static/js/core.js?v=20260517094635"></script>
+    <script src="../static/js/tip.js?v=20260517094635"></script>
+    <script src="../static/js/hint.js?v=20260517094635"></script>
+    <script src="../static/js/basket.js?v=20260517094635"></script>
     
 </body>
 </html>

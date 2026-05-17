@@ -28,6 +28,14 @@ Einträge in umgekehrt chronologischer Reihenfolge, neueste oben.
 
 ---
 
+## 2026-05-17 Neue _ready-Subkorpora in den publizierten Stand übernommen
+
+Auf Bitte der Editorin werden die heute eingespielten `_ready`-Subkorpora (QGW Vienna 1448–57 und Satzbuch CD 1448–60) Teil von Stufe 1, also des publizierten Bestands. Editorisches Argument: die neuen Quellen zeigen die volle Bandbreite des Erfassungsschemas, insbesondere die konsequent ausgezeichneten Ortsbeziehungen und Mentioned-Events, und sollen als Datengrundlage für künftige Frontend-Arbeit verbindlich sein.
+
+Technisch: `RELEASED_CORPORA` im Pipeline-Repo um die beiden Subkorpora erweitert. `ALL_READY_CORPORA` (Stufe 3) wird damit deckungsgleich mit Stufe 1; die Konstante bleibt als Anschluss für künftige nicht-released `_ready`-Subkorpora. Stufe 4 wächst entsprechend mit. KPIs Stufe 1: 2.654 Quellen, 2.661 Rechtsgeschäfte, 8.368 Personen. Tests 377 grün, ohne Anpassung, weil die gestern eingeführten Range-Checks und asymmetrischen Inklusionen die Erweiterung tragen.
+
+Beobachtung zu den Mail-Fragen 1 und 2: Uhlirz-Kategorien IV (Wachsgießer) und VI (Lederindustrie) liegen weiterhin bei einer Person — die neuen Subkorpora liefern viele Personen mit verwaltungs- und schreibnahen Berufen, aber wenige mit ausgezeichneter Handwerker-Berufsbezeichnung in genau diesen beiden Kategorien. Befund in [[findings|verification/findings]] aktualisiert.
+
 ## 2026-05-17 Stufen 3 und 4 datenseitig aktiviert
 
 Das gestern als reines CLI-Gerüst eingeführte [[decisions#Stufenmodell für Korpus-Auswahl und Annotationsebenen|Stufenmodell]] wird datenseitig wirksam. Pipeline-Repo: zwei neue `_ready`-Subkorpora committet (`QGW/Vienna_1448-57_ready`, `Satzbuch_CD/SB_CD_1448-60_ready`) und die `pipeline/config.py`-Korpus-Konstanten so geordnet, dass `RELEASED_CORPORA` (Stufe 1) unverändert bleibt, `ALL_READY_CORPORA` (Stufe 3) die kuratierten _ready-Subkorpora addiert, `ALL_TEI_CORPORA` (Stufe 4) zusätzlich die nicht-_ready-Subkorpora aus QGW (1458-66, 1493-1500, 1524). `active_corpora()` liest `FRONTEND_STAGE` und liefert die passende Liste.

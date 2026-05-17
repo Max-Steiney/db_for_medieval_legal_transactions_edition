@@ -9,15 +9,15 @@
     <title>Quellen, Datenbank</title>
     <link rel="preload" as="font" type="font/woff2" crossorigin
           href="./static/fonts/inter-400-latin.woff2">
-    <link rel="stylesheet" href="./static/css/fonts.css?v=20260517093142">
-    <link rel="stylesheet" href="./static/css/tokens.css?v=20260517093142">
-    <link rel="stylesheet" href="./static/css/base.css?v=20260517093142">
-    <link rel="stylesheet" href="./static/css/components.css?v=20260517093142">
-    <link rel="stylesheet" href="./static/css/responsive.css?v=20260517093142">
-    <link rel="stylesheet" href="./static/css/print.css?v=20260517093142">
-    <link rel="stylesheet" href="./static/css/tip.css?v=20260517093142">
+    <link rel="stylesheet" href="./static/css/fonts.css?v=20260517094635">
+    <link rel="stylesheet" href="./static/css/tokens.css?v=20260517094635">
+    <link rel="stylesheet" href="./static/css/base.css?v=20260517094635">
+    <link rel="stylesheet" href="./static/css/components.css?v=20260517094635">
+    <link rel="stylesheet" href="./static/css/responsive.css?v=20260517094635">
+    <link rel="stylesheet" href="./static/css/print.css?v=20260517094635">
+    <link rel="stylesheet" href="./static/css/tip.css?v=20260517094635">
     
-<link rel="stylesheet" href="./static/css/index.css?v=20260517093142">
+<link rel="stylesheet" href="./static/css/index.css?v=20260517094635">
 
 </head>
 <body data-root-path="."
@@ -302,6 +302,34 @@
              data-hint="1410er: 243 Quellen">
         </div>
         
+        <div class="range-bar"
+             data-decade="1420"
+             data-count="0"
+             data-height="0"
+             data-hint="1420er: 0 Quellen">
+        </div>
+        
+        <div class="range-bar"
+             data-decade="1430"
+             data-count="1"
+             data-height="4"
+             data-hint="1430er: 1 Quelle">
+        </div>
+        
+        <div class="range-bar"
+             data-decade="1440"
+             data-count="16"
+             data-height="4"
+             data-hint="1440er: 16 Quellen">
+        </div>
+        
+        <div class="range-bar"
+             data-decade="1450"
+             data-count="34"
+             data-height="4"
+             data-hint="1450er: 34 Quellen">
+        </div>
+        
     </div>
     <div class="range-inputs">
         <input type="range" id="range-min"
@@ -342,6 +370,18 @@
             title="QGW II/2 (1415–1417): 34 Eintraege im Korpus">
         <span class="chip-label">QGW II/2 (1415–1417)</span>
         <span class="chip-count" data-corpus-total="34">34</span>
+    </button>
+    
+    <button type="button" class="chip" data-collection="QGW/Vienna_1448-57_ready"
+            title="QGW II/2 (1448–1457): 13 Eintraege im Korpus">
+        <span class="chip-label">QGW II/2 (1448–1457)</span>
+        <span class="chip-count" data-corpus-total="13">13</span>
+    </button>
+    
+    <button type="button" class="chip" data-collection="Satzbuch_CD/SB_CD_1448-60_ready"
+            title="Satzbuch CD (1448–1460): 38 Eintraege im Korpus">
+        <span class="chip-label">Satzbuch CD (1448–1460)</span>
+        <span class="chip-count" data-corpus-total="38">38</span>
     </button>
     
     <button type="button" class="chip" data-collection="Stadtbuecher/Band_1_1395-1400_ready"
@@ -416,7 +456,7 @@
                 <select id="filter-place" aria-label="Ort filtern">
                     <option value="">Alle Orte</option>
                     
-                    <option value="Wien">Wien (1537)</option>
+                    <option value="Wien">Wien (1548)</option>
                     
                     <option value="Pressburg">Pressburg (9)</option>
                     
@@ -436,13 +476,13 @@
                     
                     <option value="Rom">Rom (4)</option>
                     
+                    <option value="St. Pölten">St. Pölten (4)</option>
+                    
                     <option value="Venedig">Venedig (3)</option>
                     
                     <option value="Linz">Linz (3)</option>
                     
                     <option value="Avignon">Avignon (3)</option>
-                    
-                    <option value="St. Pölten">St. Pölten (3)</option>
                     
                     <option value="Tulln">Tulln (3)</option>
                     
@@ -520,7 +560,7 @@
     
                 <select id="filter-facs" aria-label="Faksimile">
                     <option value="">alle</option>
-                    <option value="1">mit Faksimile (2011)</option>
+                    <option value="1">mit Faksimile (2062)</option>
                     <option value="0">ohne Faksimile (624)</option>
                 </select>
             
@@ -543,7 +583,7 @@
                 <span class="result-count-wrap">
                     
 <div class="result-count" id="result-count" aria-live="polite" aria-atomic="true">
-    2635 Quellen
+    2686 Quellen
 </div>
 
 <span class="tip-wrap">
@@ -782,13 +822,13 @@
         </div>
     </footer>
 
-    <script src="./static/js/core.js?v=20260517093142"></script>
-    <script src="./static/js/tip.js?v=20260517093142"></script>
-    <script src="./static/js/hint.js?v=20260517093142"></script>
-    <script src="./static/js/basket.js?v=20260517093142"></script>
+    <script src="./static/js/core.js?v=20260517094635"></script>
+    <script src="./static/js/tip.js?v=20260517094635"></script>
+    <script src="./static/js/hint.js?v=20260517094635"></script>
+    <script src="./static/js/basket.js?v=20260517094635"></script>
     
-<script src="./static/js/table-infra.js?v=20260517093142"></script>
-<script src="./static/js/index.js?v=20260517093142"></script>
+<script src="./static/js/table-infra.js?v=20260517094635"></script>
+<script src="./static/js/index.js?v=20260517094635"></script>
 
 </body>
 </html>

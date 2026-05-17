@@ -1,0 +1,85 @@
+<?xml version="1.0" encoding="UTF-8"?><!DOCTYPE TEI   SYSTEM "../../../schema/toolbox_full.dtd"><TEI xmlns="http://www.tei-c.org/ns/1.0" xmlns:cei="http://www.monasterium.net/NS/cei" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xml:id="e00083_1457-10-26.xml"><teiHeader><fileDesc><titleStmt><title type="main">Eintrag vom 1457-10-26</title><title type="rubrik">Tempore dominorum, Jacoben Rechwein, consulis, et Hannsen von
+               Eslorn, anno etc. lvi<hi rend="super">to</hi>.</title><title type="sub">Digitale Edition der Wiener Grundbücher</title><respStmt>
+               <resp>Transkription</resp>
+               <name>
+                  <rs type="person" ref="https://id.acdh.oeaw.ac.at/kgruenwald">Korbinian
+                     Grünwald</rs>
+               </name>
+            </respStmt></titleStmt><publicationStmt><publisher>Thomas Ertl, Korbinian Grünwald, Richard Weinbergmaier, Patrick Fiska, Peter
+               Andorfer</publisher><availability default="false"><licence target="https://creativecommons.org/licenses/by/4.0/">
+                  <p>CC-BY</p>
+                  <p>You are free to: Share — copy and redistribute the material in any medium or
+                     format. Adapt — remix, transform, and build upon the material for any purpose,
+                     even commercially.</p>
+               </licence></availability><idno type="handle">https://hdl.handle.net/21.11115/0000-000E-0013-C</idno></publicationStmt><sourceDesc><bibl type="url">https://grundbuecher.acdh.oeaw.ac.at/e00083_1457-10-26.html</bibl><msDesc type="invetory" status="draft"><msIdentifier><institution>Wiener Stadt- und Landesarchiv (WStLA)</institution><repository>Grundbücher</repository><idno type="archive">WStLA 2.1.2.1.B1.34</idno></msIdentifier><msContents><msItem><locus from="[13v]" to="[14r]"/><p>[13v] - [14r]</p></msItem></msContents><history>
+                  <origin notAfter="1457-10-26"/>
+               </history></msDesc></sourceDesc></fileDesc><encodingDesc xmlns:tei="http://www.tei-c.org/ns/1.0" xmlns:xi="http://www.w3.org/2001/XInclude"><projectDesc default="false"><p><label type="contentual-editing">Dissertation Korbinian Grünwald</label></p><p>Die Originalquellen wurden in Microsoft Word transkribiert, wobei ausgewählte
+               Textmerkmale mittels projektspezifischer Formatvorlagen ausgezeichnet wurden. <table>
+                  <row rend="header">
+                     <cell>Name der Formatvorlage</cell>
+                     <cell>Beschreibung des damit ausgezeichnetem Phänomen</cell>
+                  </row>
+                  <row>
+                     <cell>Folioangabe</cell>
+                     <cell>Seitenangabe durch Angabe von Folio mit recto *r und verso *v (im
+                        Nachhinein mit Bleistift im Grundbuch eingetragen). Auf den Seiten befinden
+                        sich zudem (ws. zeitnah zur Entstehung angebrachte) Foliozählungen in
+                        lateinischen Zahlzeichen in Tinte</cell>
+                  </row>
+                  <row>
+                     <cell>Faksimilelink</cell>
+                     <cell>Dateiname des Faksimiles - zur technischen Verknüpfung des Textes mit der
+                        Bilddatei</cell>
+                  </row>
+                  <row>
+                     <cell>Rubrik</cell>
+                     <cell>Gliederung nach Bürgermeistern und Jahren</cell>
+                  </row>
+                  <row>
+                     <cell>Urkundendatum</cell>
+                     <cell>Aufgeschlüsseltes Datum der Urkunde</cell>
+                  </row>
+                  <row>
+                     <cell>Standard</cell>
+                     <cell>Text des Grundbucheintrags</cell>
+                  </row>
+                  <row>
+                     <cell>Summa</cell>
+                     <cell>Für den jeweiligen Grundbucheintrag abgerechnete Summe</cell>
+                  </row>
+                  <row>
+                     <cell>Nachtrag</cell>
+                     <cell>Verschiedene nachträgliche Vermerke und Anmerkungen</cell>
+                  </row>
+                  <row>
+                     <cell>Seitenautor</cell>
+                     <cell>Erstbearbeiter der Seite/des Seitenabschnitts (nicht angezeigt, für die
+                        interne Organisation)</cell>
+                  </row>
+                  <row>
+                     <cell>Durchgestrichen</cell>
+                     <cell>Durchgestrichen</cell>
+                  </row>
+                  <row>
+                     <cell>Hochgestellt</cell>
+                     <cell>Hochgestellt</cell>
+                  </row>
+               </table>
+            </p><p>Die Transkripte respektive die docx-Dokumente wurden anschließend mittels der
+               TEI-Community-Stylesheets und Oxygen in ein generisches TEI transformiert. Dieses TEI
+               wurde anschließend mit den von Peter Andorfer mit Unterstützung von Dario Kampkaspar
+               geschriebenen XSLTs oxgarage2tei.xsl und splitCorpus.xsl weiterverarbeitet.</p></projectDesc></encodingDesc></teiHeader><facsimile><graphic url="WSTLA_Grundbuch_Stadt_Wien_B1_34_SatzbuchCD_0035.jpg"/></facsimile><text><body><div type="entry" resp="kg"><p><rs type="event" ref="ev__SB_CD_00083"><rs type="fn" role="issuer"><rs type="person" ref="pe__andreas_hart_QGW_II_III_4318">Andre Hàrt <roleName type="title_ref" corresp="pl__steindorf">von</roleName> Steinestorf</rs> und <rs type="person" ref="pe__anna_QGW_II_III_4318">Anna sein <roleName type="kin" corresp="pe__andreas_hart_QGW_II_III_4318">hausfrau</roleName></rs></rs>
+                  <triggerstring n="disp">habent versaczt</triggerstring>
+                  <rs type="fn" role="transactiongood_I"><rs type="place" ref="pl__wien-immo_schottentor_13"><roleName type="owner" corresp="pe__andreas_hart_QGW_II_III_4318">ir</roleName>
+                        <roleName type="owner" corresp="pe__anna_QGW_II_III_4318"><add>ir</add></roleName> haws, <roleName type="topo" corresp="pl__wien-schottentor">gelegen vor Schottentor undern
+                           Léden</roleName>
+                        <roleName type="topo" corresp="pl__wien-immo_schottentor_8">zenagst</roleName>
+                        <rs type="place" ref="pl__wien-immo_schottentor_8"><roleName type="owner" corresp="pe__georg_schuchler_QGW_II_II_3272">weilent Jorgen des
+                              Schúchler</roleName> haws</rs></rs>,</rs>
+                  <rs type="fn" role="recipient">der <rs type="person" ref="pe__anna_SB_CD_00083"><roleName type="title">erbern</roleName> Annen, <rs type="person" ref="pe__matthias_pracher_QGW_II_II_3038">Mathesen Pracher des <roleName type="prof">huter</roleName>
+                           <roleName type="dead"><add>witiben</add></roleName></rs>
+                        <roleName type="kin" corresp="pe__matthias_pracher_QGW_II_II_3038">witiben</roleName></rs> und irn erben</rs>
+                  <rs type="fn" role="transactiongood_II">umb <measure>sibenundfunfczig pfunt
+                        pfenig</measure>. <triggerstring n="impl_rules">Und sind zu beczalen auf die
+                        nagstkunfftigen Ostern an alles vercziehen</triggerstring>.</rs>
+                  <date>Actum an Mitichen vor Symons et Jude, anno domini etc. lvii<hi rend="super">o</hi></date>.</rs></p><p rend="Summa">Summa iii s. xxviii d.</p></div><div type="lists"><xi:include xmlns:xi="http://www.w3.org/2001/XInclude" href="../../../../indices/placeList.xml" xpointer="element(/1/2/1/1)"/><xi:include xmlns:xi="http://www.w3.org/2001/XInclude" href="../../../../indices/personList.xml" xpointer="element(/1/2/1/1)"/><xi:include xmlns:xi="http://www.w3.org/2001/XInclude" href="../../../../indices/eventList.xml" xpointer="element(/1/2/1/1)"/><xi:include xmlns:xi="http://www.w3.org/2001/XInclude" href="../../../../indices/orgList.xml" xpointer="element(/1/2/1/1)"/></div></body></text></TEI>

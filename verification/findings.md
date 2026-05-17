@@ -187,16 +187,19 @@ dahin zählt jeder im Frontend ausgewiesene Heirats-Befund als
 Stand: 2026-05-17
 Status: offen, langfristig
 
-Auch in Stufe 4 (alle TEI-Subkorpora) trägt die Uhlirz-Kategorie IV
-(Erzeugung und Vertrieb von Leuchtstoffen, Fetten und Ölen) im Aggregat
-nur eine Person. Das `roleName_norm_matching.csv` hat das Mapping
-(`kerzenmacher`, `cherczenmacher`, `öler` etc.), aber die TEI-Quellen
-tragen diese Berufsbezeichnungen kaum in `<occupation>`-Elementen.
-Konsequenz: Mail-Frage 1 (Heirats-Konstellationen unter Wachsgießern)
-lässt sich nicht aus dem aktuell annotierten Bestand beantworten,
-unabhängig vom Aggregator-Pfad. Die Beantwortung wartet auf weiteres
-TEI-Material oder auf editorische Nachannotation in den bestehenden
-Quellen.
+Auch nach Aufnahme der neuen `_ready`-Subkorpora (QGW 1448–57,
+Satzbuch CD 1448–60) in Stufe 1 und in Stufe 4 (alle TEI-Subkorpora)
+tragen die Uhlirz-Kategorien IV (Erzeugung und Vertrieb von
+Leuchtstoffen, Fetten und Ölen) und VI (Lederindustrie) je nur eine
+Person. Das `roleName_norm_matching.csv` hat die Mappings
+(`kerzenmacher`, `cherczenmacher`, `öler`, diverse Leder-Begriffe),
+aber die TEI-Quellen tragen diese Berufsbezeichnungen kaum in
+`<occupation>`-Elementen. Konsequenz: Mail-Frage 1 (Heirats-
+Konstellationen unter Wachsgießern) und Mail-Frage 2 (Hausbesitz von
+Personen mit Uhlirz-Kategorie VI) lassen sich nicht aus dem aktuell
+annotierten Bestand beantworten, unabhängig vom Aggregator-Pfad. Die
+Beantwortung wartet auf weiteres TEI-Material oder auf editorische
+Nachannotation in den bestehenden Quellen.
 
 ### Filenames-Filter: `status="in progress"`
 

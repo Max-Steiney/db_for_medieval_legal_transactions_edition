@@ -1,0 +1,109 @@
+<?xml version="1.0" encoding="UTF-8"?><!DOCTYPE TEI   SYSTEM "../../../schema/toolbox_full.dtd"><TEI xmlns="http://www.tei-c.org/ns/1.0" xmlns:cei="http://www.monasterium.net/NS/cei" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xml:id="e00072_1454-08-21.xml"><teiHeader><fileDesc><titleStmt><title type="main">Eintrag vom 1454-08-21</title><title type="rubrik">Tempore dominorum, Kristan Wissinger, consulis, et Peter von
+               Aslabing, anno etc. liiii<hi rend="super">to</hi>.</title><title type="sub">Digitale Edition der Wiener Grundbücher</title><respStmt>
+               <resp>Transkription</resp>
+               <name>
+                  <rs type="person" ref="https://id.acdh.oeaw.ac.at/kgruenwald">Korbinian
+                     Grünwald</rs>
+               </name>
+            </respStmt></titleStmt><publicationStmt><publisher>Thomas Ertl, Korbinian Grünwald, Richard Weinbergmaier, Patrick Fiska, Peter
+               Andorfer</publisher><availability default="false"><licence target="https://creativecommons.org/licenses/by/4.0/">
+                  <p>CC-BY</p>
+                  <p>You are free to: Share — copy and redistribute the material in any medium or
+                     format. Adapt — remix, transform, and build upon the material for any purpose,
+                     even commercially.</p>
+               </licence></availability><idno type="handle">https://hdl.handle.net/21.11115/0000-000E-0007-A</idno></publicationStmt><sourceDesc><bibl type="url">https://grundbuecher.acdh.oeaw.ac.at/e00072_1454-08-21.html</bibl><msDesc type="invetory" status="draft"><msIdentifier><institution>Wiener Stadt- und Landesarchiv (WStLA)</institution><repository>Grundbücher</repository><idno type="archive">WStLA 2.1.2.1.B1.34</idno></msIdentifier><msContents><msItem><locus from="xii" to="[12v]"/><p>xii - [12v]</p></msItem></msContents><history>
+                  <origin notAfter="1454-08-21"/>
+               </history></msDesc></sourceDesc></fileDesc><encodingDesc xmlns:tei="http://www.tei-c.org/ns/1.0" xmlns:xi="http://www.w3.org/2001/XInclude"><projectDesc default="false"><p><label type="contentual-editing">Dissertation Korbinian Grünwald</label></p><p>Die Originalquellen wurden in Microsoft Word transkribiert, wobei ausgewählte
+               Textmerkmale mittels projektspezifischer Formatvorlagen ausgezeichnet wurden. <table>
+                  <row rend="header">
+                     <cell>Name der Formatvorlage</cell>
+                     <cell>Beschreibung des damit ausgezeichnetem Phänomen</cell>
+                  </row>
+                  <row>
+                     <cell>Folioangabe</cell>
+                     <cell>Seitenangabe durch Angabe von Folio mit recto *r und verso *v (im
+                        Nachhinein mit Bleistift im Grundbuch eingetragen). Auf den Seiten befinden
+                        sich zudem (ws. zeitnah zur Entstehung angebrachte) Foliozählungen in
+                        lateinischen Zahlzeichen in Tinte</cell>
+                  </row>
+                  <row>
+                     <cell>Faksimilelink</cell>
+                     <cell>Dateiname des Faksimiles - zur technischen Verknüpfung des Textes mit der
+                        Bilddatei</cell>
+                  </row>
+                  <row>
+                     <cell>Rubrik</cell>
+                     <cell>Gliederung nach Bürgermeistern und Jahren</cell>
+                  </row>
+                  <row>
+                     <cell>Urkundendatum</cell>
+                     <cell>Aufgeschlüsseltes Datum der Urkunde</cell>
+                  </row>
+                  <row>
+                     <cell>Standard</cell>
+                     <cell>Text des Grundbucheintrags</cell>
+                  </row>
+                  <row>
+                     <cell>Summa</cell>
+                     <cell>Für den jeweiligen Grundbucheintrag abgerechnete Summe</cell>
+                  </row>
+                  <row>
+                     <cell>Nachtrag</cell>
+                     <cell>Verschiedene nachträgliche Vermerke und Anmerkungen</cell>
+                  </row>
+                  <row>
+                     <cell>Seitenautor</cell>
+                     <cell>Erstbearbeiter der Seite/des Seitenabschnitts (nicht angezeigt, für die
+                        interne Organisation)</cell>
+                  </row>
+                  <row>
+                     <cell>Durchgestrichen</cell>
+                     <cell>Durchgestrichen</cell>
+                  </row>
+                  <row>
+                     <cell>Hochgestellt</cell>
+                     <cell>Hochgestellt</cell>
+                  </row>
+               </table>
+            </p><p>Die Transkripte respektive die docx-Dokumente wurden anschließend mittels der
+               TEI-Community-Stylesheets und Oxygen in ein generisches TEI transformiert. Dieses TEI
+               wurde anschließend mit den von Peter Andorfer mit Unterstützung von Dario Kampkaspar
+               geschriebenen XSLTs oxgarage2tei.xsl und splitCorpus.xsl weiterverarbeitet.</p></projectDesc></encodingDesc></teiHeader><facsimile><graphic url="WSTLA_Grundbuch_Stadt_Wien_B1_34_SatzbuchCD_0032.jpg"/></facsimile><text><body><div type="entry" resp="kg"><p><rs type="event" ref="ev__SB_CD_00072"><rs type="fn" role="issuer"><rs type="person" ref="pe__achatius_rukchendorffer_QGW_II_III_3911">Achatii Rukchendorffer der
+                           <roleName type="prof">kramer</roleName></rs> und <rs type="person" ref="pe__margarethe_SB_CD_00072">Margreth sein <roleName type="kin" corresp="pe__achatius_rukchendorffer_QGW_II_III_3911">hausfrau</roleName></rs></rs>
+                  <triggerstring n="disp">habent versaczt</triggerstring>
+                  <rs type="fn" role="transactiongood_I"><rs type="place" ref="pl__wien-immo_baeckerstrasse_hintere_5"><roleName type="owner" corresp="pe__achatius_rukchendorffer_QGW_II_III_3911">ir</roleName>
+                        <roleName type="owner" corresp="pe__margarethe_SB_CD_00072"><add>ir</add></roleName> haws, <roleName type="topo" corresp="pl__wien-baeckerstrasse_hintere">gelegen mit dem vordern tail in
+                           der hindern Pekchenstrass</roleName>
+                        <roleName type="topo" corresp="pl__wien-immo_baeckerstrasse_hintere_4">zenagst</roleName>
+                        <rs type="place" ref="pl__wien-immo_baeckerstrasse_hintere_4"><roleName type="owner" corresp="pe__peter_volczian_QGW_II_II_3239">maister
+                              Petern Vòllczians</roleName> haws</rs>
+                        <roleName type="topo" corresp="pl__wien-heiligenkreuzerhof_gasse_bei">und
+                           stosset mit dem hindern tail in das gessl pey der Heiligenkreuczer
+                           hof</roleName></rs>.</rs>
+                  <rs type="fn" role="recipient">Den <rs type="person" ref="pe__stephan_auer_SB_CD_00229"><roleName type="title">erbern</roleName>
+                        <roleName type="title">weisen</roleName> Steffan Awer <roleName type="occ" corresp="org__wien"><add>rats</add></roleName>
+                        <roleName type="rep" corresp="pe__katharina_QGW_II_II_3482a"><add>anstat</add></roleName>
+                        <roleName type="rep" corresp="pe__katharina_QGW_II_II_3482a"><add>gerhaben</add></roleName></rs>, <rs type="person" ref="pe__niklas_ernst_SB_CD_01146"><roleName type="title"><add>erbern</add></roleName>
+                        <roleName type="title"><add>weisen</add></roleName> Niclasen Ernst, dieczeit
+                        des <roleName type="occ" corresp="org__wien">rats</roleName> der stat zu
+                        Wienn <roleName type="rep" corresp="pe__katharina_QGW_II_II_3482a"><add>anstat</add></roleName>
+                        <roleName type="rep" corresp="pe__katharina_QGW_II_II_3482a"><add>gerhaben</add></roleName></rs>, und <rs type="person" ref="pe__leonhard_gruenpacher_QGW_II_II_2953"><roleName type="title"><add>erbern</add></roleName>
+                        <roleName type="title"><add>weisen</add></roleName> Linharten dem
+                        Grunpacher, <roleName type="occ" corresp="org__wien">burger</roleName>
+                        daselbs, <roleName type="rep" corresp="pe__katharina_QGW_II_II_3482a">anstat</roleName> und als <roleName type="rep" corresp="pe__katharina_QGW_II_II_3482a">gerhaben</roleName>
+                        <rs type="person" ref="pe__katharina_QGW_II_II_3482a">junkfraun Kathrein,
+                              <rs type="person" ref="pe__ulrich_phanczagl_QGW_II_II_2630">Ulreichs
+                              Pfanczagls <roleName type="dead">seligen</roleName></rs>
+                           <roleName type="kin" corresp="pe__ulrich_phanczagl_QGW_II_II_2630">tochter</roleName></rs></rs> und irn erben</rs>
+                  <unclear facs="durch" instant="false">umb hundertzwen und sibenczig Ungrischer gulden, gerecht in
+                     gold und wag.</unclear>
+                  <rs type="fn" role="recipient">Und <rs type="person" ref="pe__georg_hoppaur_QGW_II_II_3240"><roleName type="title"><add>erbern</add></roleName>
+                        <roleName type="title"><add>weisen</add></roleName>
+                        <roleName type="title">maister</roleName> Jorgen Hopphawer <roleName type="rep" corresp="pe__sigmund_phanczagl_SB_CD_00072">anstat</roleName>
+                        <rs type="person" ref="pe__sigmund_phanczagl_SB_CD_00072"><roleName type="title">maister</roleName> Sigmunds Phanczagl</rs>, <roleName type="rep" corresp="pe__sigmund_phanczagl_SB_CD_00072">des gewalt er
+                           hat</roleName></rs>,</rs>
+                  <rs type="fn" role="transactiongood_II">umb <measure>hundert sibenundzwainczig
+                        Ungrisch gulden in gold und funfundsibenczig pfening</measure>. <triggerstring n="impl_rules">Und sind all zu beczalen auf unser lieben Fraun tag der
+                        Liechtmess nagstkünfftigen an alles vercziehen</triggerstring>.</rs> Actum an
+                  Mittichen vor sand Pertlmes tag, anno domini etc. liiii<hi rend="super">to</hi>.</rs></p><p rend="Summa">Summa ii tl., vii s. d. </p><p rend="Nachtrag"><rs type="event" ref="ev__SB_CD_00072"><rs type="fn" role="issuer"><rs type="person" ref="pe__niklas_ernst_SB_CD_01146">Ernst</rs></rs>
+                  <triggerstring n="disp">habet cedulam</triggerstring>.</rs></p></div><div type="lists"><xi:include xmlns:xi="http://www.w3.org/2001/XInclude" href="../../../../indices/placeList.xml" xpointer="element(/1/2/1/1)"/><xi:include xmlns:xi="http://www.w3.org/2001/XInclude" href="../../../../indices/personList.xml" xpointer="element(/1/2/1/1)"/><xi:include xmlns:xi="http://www.w3.org/2001/XInclude" href="../../../../indices/eventList.xml" xpointer="element(/1/2/1/1)"/><xi:include xmlns:xi="http://www.w3.org/2001/XInclude" href="../../../../indices/orgList.xml" xpointer="element(/1/2/1/1)"/></div></body></text></TEI>

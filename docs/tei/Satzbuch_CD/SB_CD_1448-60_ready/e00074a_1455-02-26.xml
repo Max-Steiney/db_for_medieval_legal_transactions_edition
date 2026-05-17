@@ -1,0 +1,185 @@
+<?xml version="1.0" encoding="UTF-8"?><!DOCTYPE TEI   SYSTEM "../../../schema/toolbox_full.dtd">
+<TEI xmlns="http://www.tei-c.org/ns/1.0" xmlns:cei="http://www.monasterium.net/NS/cei"
+    xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xml:id="e00074a_1455-02-26.xml">
+    <teiHeader>
+        <fileDesc>
+            <titleStmt>
+                <title type="main">Eintrag vom 1455-02-26</title>
+                <title type="rubrik">Tempore dominorum, Niclas Tèschler, consulis, Thoman
+                    Egkenperger, anno etc. lv<hi rend="super">to</hi>.</title>
+                <title type="sub">Digitale Edition der Wiener Grundbücher</title>
+                <respStmt>
+                    <resp>Transkription</resp>
+                    <name>
+                        <rs type="person" ref="https://id.acdh.oeaw.ac.at/kgruenwald">Korbinian
+                            Grünwald</rs>
+                    </name>
+                </respStmt>
+            </titleStmt>
+            <publicationStmt>
+                <publisher>Thomas Ertl, Korbinian Grünwald, Richard Weinbergmaier, Patrick Fiska,
+                    Peter Andorfer</publisher>
+                <availability default="false">
+                    <licence target="https://creativecommons.org/licenses/by/4.0/">
+                        <p>CC-BY</p>
+                        <p>You are free to: Share — copy and redistribute the material in any medium
+                            or format. Adapt — remix, transform, and build upon the material for any
+                            purpose, even commercially.</p>
+                    </licence>
+                </availability>
+                <idno type="handle">https://hdl.handle.net/21.11115/0000-000E-000A-7</idno>
+            </publicationStmt>
+            <sourceDesc>
+                <bibl type="url">https://grundbuecher.acdh.oeaw.ac.at/e00074a_1455-02-26.html</bibl>
+                <msDesc type="invetory" status="draft">
+                    <msIdentifier>
+                        <institution>Wiener Stadt- und Landesarchiv (WStLA)</institution>
+                        <repository>Grundbücher</repository>
+                        <idno type="archive">WStLA 2.1.2.1.B1.34</idno>
+                    </msIdentifier>
+                    <msContents>
+                        <msItem>
+                            <locus from="xii" to="[12v]"/>
+                            <p>xii - [12v]</p>
+                        </msItem>
+                    </msContents>
+                    <history>
+                        <origin notAfter="1455-02-26"/>
+                    </history>
+                </msDesc>
+            </sourceDesc>
+        </fileDesc>
+        <encodingDesc xmlns:tei="http://www.tei-c.org/ns/1.0"
+            xmlns:xi="http://www.w3.org/2001/XInclude">
+            <projectDesc default="false">
+                <p><label type="contentual-editing">Dissertation Korbinian Grünwald</label></p>
+                <p>Die original Quellen wurden in Microsoft Word transkribiert. Für folgende
+                    Textmerkamle wurden dafür projektspezifische Formatvorlagen erstellt: <table>
+                        <row rend="header">
+                            <cell>Name der Formatvorlage</cell>
+                            <cell>Beschreibung des damit ausgezeichnetem Phänomen</cell>
+                        </row>
+                        <row>
+                            <cell>Folioangabe</cell>
+                            <cell>Seitenangabe durch Angabe von Folio mit recto *r und verso *v (im
+                                Nachhinein mit Bleistift im Grundbuch eingetragen). Auf den Seiten
+                                befinden sich zudem (ws. zeitnah zur Entstehung angebrachte)
+                                Foliozählungen in lateinischen Zahlzeichen in Tinte</cell>
+                        </row>
+                        <row>
+                            <cell>Faksimilelink</cell>
+                            <cell>Dateiname des Faksimiles - zur technischen Verknüpfung des Textes
+                                mit der Bilddatei</cell>
+                        </row>
+                        <row>
+                            <cell>Rubrik</cell>
+                            <cell>Gliederung nach Bürgermeistern und Jahren</cell>
+                        </row>
+                        <row>
+                            <cell>Urkundendatum</cell>
+                            <cell>Aufgeschlüsseltes Datum der Urkunde</cell>
+                        </row>
+                        <row>
+                            <cell>Standard</cell>
+                            <cell>Text des Grundbucheintrags</cell>
+                        </row>
+                        <row>
+                            <cell>Summa</cell>
+                            <cell>Für den jeweiligen Grundbucheintrag abgerechnete Summe</cell>
+                        </row>
+                        <row>
+                            <cell>Nachtrag</cell>
+                            <cell>Verschiedene nachträgliche Vermerke und Anmerkungen</cell>
+                        </row>
+                        <row>
+                            <cell>Seitenautor</cell>
+                            <cell>Erstbearbeiter der Seite/des Seitenabschnitts (nicht angezeigt,
+                                für die interne Organisation)</cell>
+                        </row>
+                        <row>
+                            <cell>Durchgestrichen</cell>
+                            <cell>Durchgestrichen</cell>
+                        </row>
+                        <row>
+                            <cell>Hochgestellt</cell>
+                            <cell>Hochgestellt</cell>
+                        </row>
+                    </table>
+                </p>
+                <p>Die Transripte respektive die .docx Dokumente wurden anschließend mittels der TEI
+                    community stlye sheets und Oxygen in ein generisches TEI transformiert. Dieses
+                    TEI wurde anschließend mit den von Peter Andorfer mit Unterstützung von Dario
+                    Kampkaspar geschriebenen XSLTs oxgarage2tei.xsl und splitCorpus.xsl weiter
+                    verarbeitet.</p>
+            </projectDesc>
+        </encodingDesc>
+    </teiHeader>
+    <facsimile>
+        <graphic url="WSTLA_Grundbuch_Stadt_Wien_B1_34_SatzbuchCD_0033.jpg"/>
+    </facsimile>
+    <text>
+        <body>
+            <div type="entry" resp="kg">
+                <p><rs type="event" ref="ev__SB_CD_00074a"><rs type="fn" role="issuer"><rs
+                                type="person" ref="pe__albrecht_hergensperger_SB_CD_00074a">Albrecht
+                                Hergensperger, <roleName type="prof">zimerman</roleName></rs>, <rs
+                                type="person" ref="pe__margarethe_SB_CD_00074a">Margret sein
+                                    <roleName type="kin"
+                                    corresp="pe__albrecht_hergensperger_SB_CD_00074a"
+                                    >hausfraw</roleName></rs></rs>
+                        <triggerstring n="disp">habent versaczt</triggerstring>
+                        <rs type="fn" role="transactiongood_I"><rs type="place"
+                                ref="pl__wien-immo_mentlerstrasse_1"><roleName type="owner"
+                                    corresp="pe__albrecht_hergensperger_SB_CD_00074a">ir</roleName>
+                                <roleName type="owner" corresp="pe__margarethe_SB_CD_00074a"
+                                        ><add>ir</add></roleName> haws, <roleName type="topo"
+                                    corresp="pl__wien-mentlerstrasse">gelegen in der
+                                    Mèntlerstrass</roleName>
+                                <roleName type="topo" corresp="pl__wien-immo_mentlerstrasse_2"
+                                    >zenagst</roleName>
+                                <rs type="place" ref="pl__wien-immo_mentlerstrasse_2">weilnt der
+                                    Schèczlin haws, <roleName type="owner"
+                                        corresp="pe__wolfgang_missingdorfer_QGW_II_III_3862"
+                                        cert="medium">dacz yecz <rs type="person"
+                                            ref="pe__wolfgang_missingdorfer_QGW_II_III_3862"
+                                            cert="medium">der Missingdorffer</rs>
+                                    innhat</roleName></rs>, <rs type="event"
+                                    ref="ev__SB_CD_00074a_men_1"><rs type="fn" role="issuer"><rs
+                                            type="place" ref="pl__wien-immo_mentlerstrasse_1"
+                                            >davon</rs> man</rs>
+                                    <triggerstring n="disp">jerlich dint <add>zu
+                                        purkrecht</add></triggerstring>
+                                    <rs type="fn" role="recipient"><rs type="place"
+                                            ref="pl__wien-immo_mentlerstrasse_2">in derselben
+                                            Schéczlin haus</rs></rs>
+                                    <rs type="fn" role="transactiongood_I"><measure>iii s.
+                                            d.</measure>
+                                        <triggerstring n="fn">zu purkrecht</triggerstring></rs> und nicht
+                                    mer</rs></rs>.</rs>
+                        <rs type="fn" role="recipient">Dem <rs type="person"
+                                ref="pe__jakob_tschech_SB_CD_00074a"><roleName type="title"
+                                    >erbern</roleName> Jacoben Tschéch, <roleName type="prof"
+                                    >Joppner</roleName></rs>, und <rs type="person"
+                                ref="pe__katharina_SB_CD_00074a">Kathrein seiner <roleName
+                                    type="kin" corresp="pe__jakob_tschech_SB_CD_00074a"
+                                    >hausfrawn</roleName></rs></rs>
+                        <rs type="fn" role="transactiongood_II">umb <measure>xvi tl. d.</measure>
+                            <triggerstring n="impl_rules">und sind zu beczaln auf sand Michels tag
+                                nagst kunftigen anvercziehen</triggerstring>.</rs>
+                        <date>Actum an Mitichen vor Reminiscere in der vasten, anno domini etc.
+                                lv<hi rend="super">to</hi></date>.</rs></p>
+                <p rend="Summa">Summa xxxii d.</p>
+            </div>
+            <div type="lists">
+                <xi:include xmlns:xi="http://www.w3.org/2001/XInclude"
+                    href="../../../../indices/placeList.xml" xpointer="element(/1/2/1/1)"/>
+                <xi:include xmlns:xi="http://www.w3.org/2001/XInclude"
+                    href="../../../../indices/personList.xml" xpointer="element(/1/2/1/1)"/>
+                <xi:include xmlns:xi="http://www.w3.org/2001/XInclude"
+                    href="../../../../indices/eventList.xml" xpointer="element(/1/2/1/1)"/>
+                <xi:include xmlns:xi="http://www.w3.org/2001/XInclude"
+                    href="../../../../indices/orgList.xml" xpointer="element(/1/2/1/1)"/>
+            </div>
+        </body>
+    </text>
+</TEI>
