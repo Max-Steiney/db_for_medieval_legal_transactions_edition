@@ -9,17 +9,17 @@
     <title>Abfragen, Datenbank</title>
     <link rel="preload" as="font" type="font/woff2" crossorigin
           href="../static/fonts/inter-400-latin.woff2">
-    <link rel="stylesheet" href="../static/css/fonts.css?v=20260518131302">
-    <link rel="stylesheet" href="../static/css/tokens.css?v=20260518131302">
-    <link rel="stylesheet" href="../static/css/base.css?v=20260518131302">
-    <link rel="stylesheet" href="../static/css/components.css?v=20260518131302">
-    <link rel="stylesheet" href="../static/css/responsive.css?v=20260518131302">
-    <link rel="stylesheet" href="../static/css/print.css?v=20260518131302">
-    <link rel="stylesheet" href="../static/css/tip.css?v=20260518131302">
+    <link rel="stylesheet" href="../static/css/fonts.css?v=20260518142436">
+    <link rel="stylesheet" href="../static/css/tokens.css?v=20260518142436">
+    <link rel="stylesheet" href="../static/css/base.css?v=20260518142436">
+    <link rel="stylesheet" href="../static/css/components.css?v=20260518142436">
+    <link rel="stylesheet" href="../static/css/responsive.css?v=20260518142436">
+    <link rel="stylesheet" href="../static/css/print.css?v=20260518142436">
+    <link rel="stylesheet" href="../static/css/tip.css?v=20260518142436">
     
 
-<link rel="stylesheet" href="../static/css/index.css?v=20260518131321">
-<link rel="stylesheet" href="../static/css/analysis.css?v=20260518131321">
+<link rel="stylesheet" href="../static/css/index.css?v=20260518142454">
+<link rel="stylesheet" href="../static/css/analysis.css?v=20260518142454">
 
 </head>
 <body data-root-path=".."
@@ -177,7 +177,7 @@
                             <input type="checkbox" data-corpus="QGW II/1" checked
                                    class="qb-pill-check">
                             <span class="qb-pill-label">QGW II/1</span>
-                            <span class="qb-pill-count">2000</span>
+                            <span class="qb-pill-count">2025</span>
                         </label>
                         
                         <label class="qb-pill is-active" data-corpus="Stadtbücher Bd. 1">
@@ -206,14 +206,14 @@
 
             </div>
 
-            <div class="qb-persons">
-                <p class="qb-section-label">Personen-Bedingungen
+            <div class="qb-conditions">
+                <p class="qb-section-label">Bedingungen
 <span class="tip-wrap">
     <button type="button" class="tip-trigger tip-trigger--icon"
             aria-expanded="false" aria-haspopup="dialog"
-            aria-controls="help-persons"
-            data-tip="help-persons"
-            aria-label="Hilfe: Personen-Bedingungen">
+            aria-controls="help-conditions"
+            data-tip="help-conditions"
+            aria-label="Hilfe: Bedingungen">
         <svg width="13" height="13" viewBox="0 0 16 16" aria-hidden="true">
             <circle cx="8" cy="8" r="7" stroke="currentColor" stroke-width="1.4" fill="none"/>
             <text x="8" y="11.6" text-anchor="middle" font-size="9.5" font-weight="700"
@@ -221,49 +221,79 @@
         </svg>
     </button>
     <aside class="tip-popover tip-popover--help"
-           id="help-persons" role="dialog" aria-hidden="true"
-           aria-label="Hilfe: Personen-Bedingungen">
+           id="help-conditions" role="dialog" aria-hidden="true"
+           aria-label="Hilfe: Bedingungen">
         <header class="tip-head">
-            <h3 class="tip-title">Personen-Bedingungen</h3>
+            <h3 class="tip-title">Bedingungen</h3>
             <button type="button" class="tip-close" aria-label="Schlie&szlig;en">&times;</button>
         </header>
         <div class="tip-body">
             
-                    <p>Pro gesuchter Person eine Zeile in der Tabelle. Rolle ist Pflicht,
-                        Geschlecht und Beruf/Taetigkeit/Amt sind optional.</p>
-                    <p>Alle Zeilen muessen gemeinsam erfuellt sein. Ohne mindestens eine
-                        Zeile mit gesetzter Rolle bleibt die Trefferliste leer.</p>
+                    <p>Eine Zeile pro gesuchter Person, Organisation oder Ort. Alle
+                        Slots sind optional; eine Zeile zaehlt als aktive Bedingung,
+                        sobald irgendein Slot gesetzt ist.</p>
+                    <p>Alle aktiven Zeilen muessen gemeinsam erfuellt sein. Ohne
+                        mindestens eine aktive Zeile bleibt die Trefferliste leer.</p>
                 
         </div>
     </aside>
 </span>
 </p>
 
-                <table class="qb-persons-table" id="qb-persons-table"
-                       data-occupation-vocab='[{"count": 747, "value": "purger"}, {"count": 315, "value": "B\u00fcrger"}, {"count": 211, "value": "purgermaister"}, {"count": 197, "value": "amptman"}, {"count": 195, "value": "pharrer"}, {"count": 171, "value": "Herzog"}, {"count": 166, "value": "rats"}, {"count": 161, "value": "B\u00fcrgers"}, {"count": 132, "value": "B\u00fcrgermeisters"}, {"count": 123, "value": "burger"}, {"count": 109, "value": "statrichter"}, {"count": 107, "value": "rates"}, {"count": 103, "value": "Kaplan"}, {"count": 97, "value": "chaplan"}, {"count": 86, "value": "Bergmeisters"}, {"count": 82, "value": "richter"}, {"count": 73, "value": "prior"}, {"count": 58, "value": "priester"}, {"count": 57, "value": "Priester"}, {"count": 53, "value": "schaffer"}, {"count": 53, "value": "diener"}, {"count": 52, "value": "m\u00fcnzmaister"}, {"count": 51, "value": "Wiener B\u00fcrger"}, {"count": 49, "value": "Bischof"}, {"count": 47, "value": "pergmaister"}, {"count": 44, "value": "hofmaister"}, {"count": 43, "value": "Diener"}, {"count": 43, "value": "statschreiber"}, {"count": 43, "value": "rat"}, {"count": 41, "value": "verweser"}, {"count": 40, "value": "judenrichter"}, {"count": 39, "value": "chorherr"}, {"count": 39, "value": "rats der stat"}, {"count": 37, "value": "herzog"}, {"count": 37, "value": "phleger"}, {"count": 35, "value": "kaplan"}, {"count": 35, "value": "ambtman"}, {"count": 35, "value": "burgermaister"}, {"count": 34, "value": "spitalmaister"}, {"count": 32, "value": "Schafferin"}, {"count": 32, "value": "purger ze Wienne"}, {"count": 31, "value": "pinter"}, {"count": 31, "value": "wachsgiesser"}, {"count": 31, "value": "chapplan"}, {"count": 31, "value": "maister"}, {"count": 30, "value": "chapellan"}, {"count": 30, "value": "abt"}, {"count": 30, "value": "comiteur"}, {"count": 29, "value": "ledrer"}, {"count": 29, "value": "consul"}]'
-                       data-uhlirz-vocab='["I Landwirtschaft Gaertnerei Forstwirtschaft Thierzucht", "II Verarbeitung von Stein und Erde", "III Metallverarbeitung", "IV Erzeugung und Vertrieb von Leuchtstoffen Fetten und Oelen", "IX Bekleidungsindustrie", "V Textilgewerbe", "VI Lederindustrie", "VII Holz und Horn verarbeitende gewerbe", "VIII Bereitung und Vertrieb von Nahrungs- und Genussmitteln Gast- und Schank Gewerbe", "X Gewerbe fuer Koerperpflege und Reinigung", "XI Baugewerbe", "XII Handel und Verkehr", "XIII Graphische Gewerbe", "XIV Spielleute und Fahrendes Volk", "XV Verschiedene gewerbliche Berufe und Lohnarbeiter", "XVI Geistliche Berufe", "XVII Bildung", "XVIII Verwaltung"]'>
-                    <thead>
-                        <tr>
-                            <th scope="col" class="qb-col-num">Nr.</th>
-                            <th scope="col" class="qb-col-role">Rolle</th>
-                            <th scope="col" class="qb-col-sex">Geschlecht</th>
-                            <th scope="col" class="qb-col-occ">Beruf, Tätigkeit oder Amt
-                                <span class="qb-col-hint">(wie ediert, enthält)</span></th>
-                            <th scope="col" class="qb-col-uhlirz">Uhlirz-Berufsklasse
-                                <span class="qb-col-hint">(klassifiziert)</span></th>
-                            <th scope="col" class="qb-col-rm" aria-label="Entfernen"></th>
-                        </tr>
-                    </thead>
-                    <tbody id="qb-persons-tbody">
-                        
-                    </tbody>
-                </table>
-
-                <div class="qb-actions-row">
-                    <button type="button" class="qb-pill qb-pill--primary" id="qb-add-person">
-                        + Person hinzufügen
-                    </button>
+                <div class="qb-cond-group" data-cond="persons">
+                    <div class="qb-cond-bar">
+                        <h3 class="qb-cond-heading">Personen</h3>
+                        <button type="button" class="qb-pill qb-pill--primary qb-add qb-add--person" id="qb-add-person">
+                            + Person
+                        </button>
+                    </div>
+                    <table class="qb-cond-table qb-cond-table--persons" id="qb-persons-table"
+                           data-occupation-vocab='[{"count": 747, "value": "purger"}, {"count": 315, "value": "B\u00fcrger"}, {"count": 211, "value": "purgermaister"}, {"count": 197, "value": "amptman"}, {"count": 195, "value": "pharrer"}, {"count": 171, "value": "Herzog"}, {"count": 166, "value": "rats"}, {"count": 161, "value": "B\u00fcrgers"}, {"count": 132, "value": "B\u00fcrgermeisters"}, {"count": 123, "value": "burger"}, {"count": 109, "value": "statrichter"}, {"count": 107, "value": "rates"}, {"count": 103, "value": "Kaplan"}, {"count": 97, "value": "chaplan"}, {"count": 86, "value": "Bergmeisters"}, {"count": 82, "value": "richter"}, {"count": 73, "value": "prior"}, {"count": 58, "value": "priester"}, {"count": 57, "value": "Priester"}, {"count": 53, "value": "schaffer"}, {"count": 53, "value": "diener"}, {"count": 52, "value": "m\u00fcnzmaister"}, {"count": 51, "value": "Wiener B\u00fcrger"}, {"count": 49, "value": "Bischof"}, {"count": 47, "value": "pergmaister"}, {"count": 44, "value": "hofmaister"}, {"count": 43, "value": "Diener"}, {"count": 43, "value": "statschreiber"}, {"count": 43, "value": "rat"}, {"count": 41, "value": "verweser"}, {"count": 40, "value": "judenrichter"}, {"count": 39, "value": "chorherr"}, {"count": 39, "value": "rats der stat"}, {"count": 37, "value": "herzog"}, {"count": 37, "value": "phleger"}, {"count": 35, "value": "kaplan"}, {"count": 35, "value": "ambtman"}, {"count": 35, "value": "burgermaister"}, {"count": 34, "value": "spitalmaister"}, {"count": 32, "value": "Schafferin"}, {"count": 32, "value": "purger ze Wienne"}, {"count": 31, "value": "pinter"}, {"count": 31, "value": "wachsgiesser"}, {"count": 31, "value": "chapplan"}, {"count": 31, "value": "maister"}, {"count": 30, "value": "chapellan"}, {"count": 30, "value": "abt"}, {"count": 30, "value": "comiteur"}, {"count": 29, "value": "ledrer"}, {"count": 29, "value": "consul"}]'
+                           data-uhlirz-vocab='["I Landwirtschaft Gaertnerei Forstwirtschaft Thierzucht", "II Verarbeitung von Stein und Erde", "III Metallverarbeitung", "IV Erzeugung und Vertrieb von Leuchtstoffen Fetten und Oelen", "IX Bekleidungsindustrie", "V Textilgewerbe", "VI Lederindustrie", "VII Holz und Horn verarbeitende gewerbe", "VIII Bereitung und Vertrieb von Nahrungs- und Genussmitteln Gast- und Schank Gewerbe", "X Gewerbe fuer Koerperpflege und Reinigung", "XI Baugewerbe", "XII Handel und Verkehr", "XIII Graphische Gewerbe", "XIV Spielleute und Fahrendes Volk", "XV Verschiedene gewerbliche Berufe und Lohnarbeiter", "XVI Geistliche Berufe", "XVII Bildung", "XVIII Verwaltung"]'>
+                        <thead>
+                            <tr>
+                                <th scope="col" class="qb-col-num">Nr.</th>
+                                <th scope="col" class="qb-col-role">Rolle</th>
+                                <th scope="col" class="qb-col-sex">Geschlecht</th>
+                                <th scope="col" class="qb-col-occ">Beruf, Tätigkeit oder Amt
+                                    <span class="qb-col-hint">(wie ediert, enthält)</span></th>
+                                <th scope="col" class="qb-col-uhlirz">Uhlirz-Berufsklasse
+                                    <span class="qb-col-hint">(klassifiziert)</span></th>
+                                <th scope="col" class="qb-col-rm" aria-label="Entfernen"></th>
+                            </tr>
+                        </thead>
+                        <tbody id="qb-persons-tbody">
+                            
+                        </tbody>
+                    </table>
                 </div>
+
+                <div class="qb-cond-group" data-cond="orgs">
+                    <div class="qb-cond-bar">
+                        <h3 class="qb-cond-heading">Organisationen</h3>
+                        <button type="button" class="qb-pill qb-pill--primary qb-add qb-add--org" id="qb-add-org">
+                            + Organisation
+                        </button>
+                    </div>
+                    <table class="qb-cond-table qb-cond-table--orgs" id="qb-orgs-table"
+                           data-organisation-vocab='[{"count": 778, "value": "Wien"}, {"count": 103, "value": "St. Stephan (Pfarr- und Domkirche)"}, {"count": 87, "value": "Wiener B\u00fcrgerspital"}, {"count": 66, "value": "Karmeliter (Weissenbr\u00fcder) Wien"}, {"count": 59, "value": "St. Niklas (vor dem Stubentor) Wien"}, {"count": 51, "value": "Dominikaner (Prediger) Wien | Dominikaner (Prediger) Wien"}, {"count": 47, "value": "Minoriten Wien"}, {"count": 44, "value": "St. Mariakapelle im Rathaus"}, {"count": 40, "value": "Augustinereremiten Wien"}, {"count": 36, "value": "St. Agnes (auf der Himmelpforte) Wien"}, {"count": 35, "value": "Schottenkloster Wien"}, {"count": 34, "value": "St. Lazarus (St. Marx)"}, {"count": 34, "value": "Deutsche Herren Wien"}, {"count": 34, "value": "St. Hieronymus Wien"}, {"count": 33, "value": "St. Hiob"}, {"count": 30, "value": "St. Jakob (auf der H\u00fclben) Wien"}, {"count": 28, "value": "Dominikanerinnenkloster St. Laurenz (am alten Fleischmarkt) Wien"}, {"count": 22, "value": "Marienkapelle am Gestade"}, {"count": 21, "value": "Herzogtum \u00d6sterreich"}, {"count": 21, "value": "St. Johannes in der Siechenals"}, {"count": 19, "value": "St. Maria Magdalena (Augustinernonnenkloster vor dem Schottentor) Wien"}, {"count": 17, "value": "St. Klara Wien"}, {"count": 16, "value": "St. Michael"}, {"count": 15, "value": "Zisterzienser Heiligenkreuz"}, {"count": 14, "value": "Tulln"}, {"count": 11, "value": "St. Peter (I. Bezirk)"}, {"count": 10, "value": "Schreiberzeche auf dem Neuen Karner"}, {"count": 10, "value": "Heiligengeistspital"}, {"count": 10, "value": "Stuben(tor)br\u00fccke"}, {"count": 9, "value": "Zisterzienser Rein"}, {"count": 8, "value": "B\u00fcrgermeister, Richter und Rat der Stadt Wiener Neustadt"}, {"count": 7, "value": "Dominikanerinnen Tulln"}, {"count": 7, "value": "Deutsche Herren (Orden)"}, {"count": 7, "value": "Kart\u00e4user Mauerbach"}, {"count": 7, "value": "Zisterzienser Lilienfeld"}, {"count": 6, "value": "St. Erasmus im neuen Karner auf dem St. Stephansfriedhof"}, {"count": 6, "value": "Messe Leonhard Poll"}, {"count": 6, "value": "Jahrtag Ulrich und Katharina von Radendorf"}, {"count": 5, "value": "Strobeinmesse"}, {"count": 5, "value": "Prag"}, {"count": 5, "value": "St. Paul Erdberg"}, {"count": 5, "value": "Bistum Passau"}, {"count": 5, "value": "Schauermesse"}, {"count": 4, "value": "Passau"}, {"count": 4, "value": "St. Martin vor dem Widmertor"}, {"count": 4, "value": "Gottesleichnamszeche"}, {"count": 4, "value": "Frauenaltar"}, {"count": 4, "value": "St. Leonhardsaltar"}, {"count": 4, "value": "B\u00fcrgermeister, Richter und Rat der Stadt Klosterneuburg"}, {"count": 4, "value": "Messstiftung des Johann Hager"}]'
+                           data-org-type-vocab='["Altar", "Dioezese_Erzdioezese", "Gemeinde", "Herzogtum", "Kirche", "Kirche_Kapelle", "Kloster_f", "Kloster_m", "Messe", "OTHER", "Orden", "Pfarre", "Spital_Siechenhaus", "Stadt", "Universitaet", "Zeche_Bruderschaft"]'>
+                        <thead>
+                            <tr>
+                                <th scope="col" class="qb-col-num">Nr.</th>
+                                <th scope="col" class="qb-col-role">Rolle</th>
+                                <th scope="col" class="qb-col-org-name">Name
+                                    <span class="qb-col-hint">(enthält)</span></th>
+                                <th scope="col" class="qb-col-org-type">Typ</th>
+                                <th scope="col" class="qb-col-rm" aria-label="Entfernen"></th>
+                            </tr>
+                        </thead>
+                        <tbody id="qb-orgs-tbody">
+                            
+                        </tbody>
+                    </table>
+                </div>
+
             </div>
 
         </div>
@@ -382,13 +412,13 @@
     </aside>
 </span>
 </th>
-                    <th scope="col" class="col-persons">Beteiligte Personen
+                    <th scope="col" class="col-persons">Beteiligte
 <span class="tip-wrap">
     <button type="button" class="tip-trigger tip-trigger--icon"
             aria-expanded="false" aria-haspopup="dialog"
             aria-controls="col-info-persons"
             data-tip="col-info-persons"
-            aria-label="Definition: Beteiligte Personen">
+            aria-label="Definition: Beteiligte">
         <svg width="13" height="13" viewBox="0 0 16 16" aria-hidden="true">
             <circle cx="8" cy="8" r="7" stroke="currentColor" stroke-width="1.4" fill="none"/>
             <text x="8" y="11.6" text-anchor="middle" font-size="9.5" font-weight="700"
@@ -397,14 +427,16 @@
     </button>
     <aside class="tip-popover tip-popover--glossary"
            id="col-info-persons" role="dialog" aria-hidden="true"
-           aria-label="Definition: Beteiligte Personen">
+           aria-label="Definition: Beteiligte">
         <header class="tip-head">
-            <h3 class="tip-title">Beteiligte Personen</h3>
+            <h3 class="tip-title">Beteiligte</h3>
             <button type="button" class="tip-close" aria-label="Schlie&szlig;en">&times;</button>
         </header>
         <div class="tip-body">
             
-                        <p>Die Personen aus dem Treffer, die die Bedingungen der Abfrage erfuellen — eine je nummerierter Zeile, in der angefragten Rolle.</p>
+                        <p>Personen und Organisationen aus dem Treffer, die die Bedingungen
+                            der Abfrage erfuellen — eine Pille je nummerierter Zeile, in
+                            der angefragten Rolle.</p>
                     
             
         </div>
@@ -474,6 +506,10 @@
                             data-example="verwaltung">
                         Aussteller, Uhlirz <code>XVIII Verwaltung</code>
                     </button>
+                    <button type="button" class="qb-example" role="listitem"
+                            data-example="org-st-agnes">
+                        Organisation <code>St. Agnes</code> als Empfänger
+                    </button>
                 </div>
             </div>
         </div>
@@ -510,14 +546,14 @@
         </div>
     </footer>
 
-    <script src="../static/js/core.js?v=20260518131302"></script>
-    <script src="../static/js/tip.js?v=20260518131302"></script>
-    <script src="../static/js/hint.js?v=20260518131302"></script>
-    <script src="../static/js/basket.js?v=20260518131302"></script>
+    <script src="../static/js/core.js?v=20260518142436"></script>
+    <script src="../static/js/tip.js?v=20260518142436"></script>
+    <script src="../static/js/hint.js?v=20260518142436"></script>
+    <script src="../static/js/basket.js?v=20260518142436"></script>
     
-<script src="../static/js/table-infra.js?v=20260518131302"></script>
-<script src="../static/js/viz-core.js?v=20260518131302"></script>
-<script src="../static/js/analysis-resolver.js?v=20260518131302"></script>
+<script src="../static/js/table-infra.js?v=20260518142436"></script>
+<script src="../static/js/viz-core.js?v=20260518142436"></script>
+<script src="../static/js/analysis-resolver.js?v=20260518142436"></script>
 
 </body>
 </html>

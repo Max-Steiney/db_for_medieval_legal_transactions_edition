@@ -1338,6 +1338,8 @@ def _build_analysis(env):
         total_persons=rc_coverage.get("total_persons", 0),
         occupation_vocab=rc_vocab.get("occupation", []),
         uhlirz_vocab=rc_vocab.get("uhlirz", []),
+        organisation_vocab=rc_vocab.get("organisation", []),
+        org_type_vocab=rc_vocab.get("org_type", []),
         timeline_data=decade_histogram,
         max_count=max_count,
         min_year=min_year,

@@ -73,6 +73,8 @@ def aggregate_role_constellation(docs_data_dir: Path) -> dict:
     occ_rows = _cached_csv("occ_relations_in_sources.csv")
     pis_rows = _cached_csv("persons_in_sources.csv")
     title_rows = _cached_csv("title-ref_relations_in_sources.csv")
+    org_rows = _cached_csv("organisations.csv")
+    oie_rows = _cached_csv("orgs_in_events.csv")
     norm_map = _load_norm_matching()
     # Uhlirz-Klassifikation der Berufe (Spalte Gewerbe_nach_Uhlirz_GstW in
     # roleName_norm_matching.csv im Pipeline-Repo). Mapping
@@ -87,6 +89,22 @@ def aggregate_role_constellation(docs_data_dir: Path) -> dict:
             "note": (r.get("note", "") or "").strip(),
         }
         for r in persons_rows if r.get("id")
+    }
+
+    # Stammdaten der Organisationen: Name + Typ. organisations.csv ist
+    # nicht nach RELEASED_CORPORA gefiltert (kein file_key), aber die
+    # Verweise aus orgs_in_events sind es bereits, weil _cached_csv die
+    # event-bezogenen Zeilen ueber file_key filtert. Org-Stammdaten ohne
+    # tatsaechliche Event-Beteiligung tauchen einfach nirgends auf.
+    # Primaerschluessel ist `id`; das Feld `org_key` in organisations.csv
+    # ist eine Doubletten-Referenz auf einen anderen Org-Eintrag und wird
+    # hier nicht ausgewertet.
+    org_info: dict[str, dict] = {
+        r["id"]: {
+            "name": (r.get("name_reg", "") or "").strip(),
+            "type": (r.get("type", "") or "").strip(),
+        }
+        for r in org_rows if r.get("id")
     }
 
     file_corpus: dict[str, str] = {}
@@ -185,10 +203,33 @@ def aggregate_role_constellation(docs_data_dir: Path) -> dict:
             participant["nt"] = pinfo["note"]
         event_participants[ek].append(participant)
 
+    # Org-Beteiligungen pro Event. Rolle ist dasselbe Vokabular wie bei
+    # Personen (issuer/recipient/witness/other); seltene Sonderwerte
+    # (transactiongood_I/II) werden auf "other" normalisiert, damit der
+    # Resolver keine Sonderfaelle braucht.
+    event_orgs: dict[str, list[dict]] = defaultdict(list)
+    for r in oie_rows:
+        ek, ok = r.get("event_key", ""), r.get("org_key", "")
+        if not (ek and ok):
+            continue
+        role = (r.get("event_role", "") or "other").strip()
+        if role not in VALID_ROLES:
+            role = "other"
+        info = org_info.get(ok, {})
+        event_orgs[ek].append({
+            "g": ok,
+            "n": info.get("name", "") or ok,
+            "r": role,
+            "tp": info.get("type", ""),
+        })
+
     events: list[dict] = []
     occ_counter: Counter = Counter()
     uhlirz_counter: Counter = Counter()
+    org_type_counter: Counter = Counter()
+    org_name_counter: Counter = Counter()
     distinct_persons: set[str] = set()
+    distinct_orgs: set[str] = set()
     distinct_files: set[str] = set()
     decade_counts: Counter = Counter()
     corpus_event_counts: Counter = Counter()
@@ -196,14 +237,20 @@ def aggregate_role_constellation(docs_data_dir: Path) -> dict:
 
     for ek, meta in event_meta.items():
         participants = event_participants.get(ek, [])
-        if not participants:
+        orgs = event_orgs.get(ek, [])
+        # Events ohne jegliche Beteiligung (weder Person noch Org)
+        # bleiben aussen vor; sie taugen nicht als Treffer-Ziel.
+        if not participants and not orgs:
             continue
         fk = meta["file_key"]
         corpus_short = _corpus_short(fk, file_corpus)
-        events.append({
+        ev_out = {
             "e": ek, "f": fk, "c": corpus_short,
             "d": meta["date"], "tx": meta["tx"], "p": participants,
-        })
+        }
+        if orgs:
+            ev_out["og"] = orgs
+        events.append(ev_out)
         distinct_files.add(fk)
         corpus_event_counts[corpus_short] += 1
         year_str = (meta["date"] or "")[:4]
@@ -216,6 +263,12 @@ def aggregate_role_constellation(docs_data_dir: Path) -> dict:
                 occ_counter[occ] += 1
             for cat in part["u"]:
                 uhlirz_counter[cat] += 1
+        for o in orgs:
+            distinct_orgs.add(o["g"])
+            if o["n"]:
+                org_name_counter[o["n"]] += 1
+            if o["tp"]:
+                org_type_counter[o["tp"]] += 1
 
     # Histogram across the released period — gap-free decade list so the
     # range-slider histogram has no holes.
@@ -239,26 +292,37 @@ def aggregate_role_constellation(docs_data_dir: Path) -> dict:
             description="Per-event participant lists for analysis/index.html.",
             sources=["persons.csv", "persons_in_events.csv", "events_in_sources.csv",
                      "filenames.csv", "occ_relations_in_sources.csv",
-                     "persons_in_sources.csv",
+                     "persons_in_sources.csv", "organisations.csv",
+                     "orgs_in_events.csv",
                      "normalisation_lists/roleName_norm_matching.csv"],
             dimensions=[
-                {"id": "event",      "label": "Event"},
-                {"id": "person",     "label": "Person"},
-                {"id": "role",       "label": "Funktionsrolle", "values": list(VALID_ROLES)},
-                {"id": "sex",        "label": "Geschlecht",     "values": ["m", "f"]},
-                {"id": "occupation", "label": "Beruf/Tätigkeit"},
-                {"id": "uhlirz",     "label": "Uhlirz-Berufsklasse"},
+                {"id": "event",        "label": "Event"},
+                {"id": "person",       "label": "Person"},
+                {"id": "role",         "label": "Funktionsrolle", "values": list(VALID_ROLES)},
+                {"id": "sex",          "label": "Geschlecht",     "values": ["m", "f"]},
+                {"id": "occupation",   "label": "Beruf/Tätigkeit"},
+                {"id": "uhlirz",       "label": "Uhlirz-Berufsklasse"},
+                {"id": "organisation", "label": "Organisation"},
+                {"id": "org_type",     "label": "Organisationstyp"},
             ],
             measures=[],
         ),
         "vocab": {
             "occupation": [{"value": v, "count": c} for v, c in occ_counter.most_common(50)],
             "uhlirz": sorted(uhlirz_counter.keys()),
+            # Org-Namen: Top-Liste fuer das Autocomplete. Wir bleiben bei
+            # 50 Eintraegen analog zu Berufen; St. Stephan/St. Agnes etc.
+            # stehen wegen Frequenz ganz oben.
+            "organisation": [
+                {"value": v, "count": c} for v, c in org_name_counter.most_common(50)
+            ],
+            "org_type": sorted(org_type_counter.keys()),
         },
         "coverage": {
             "total_events": len(events),
             "total_sources": len(distinct_files),
             "total_persons": len(distinct_persons),
+            "total_orgs": len(distinct_orgs),
             "total_participations": total_participations,
             "decade_histogram": decade_histogram,
             "corpus_event_counts": [

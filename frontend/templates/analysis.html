@@ -68,39 +68,69 @@
 
             </div>
 
-            <div class="qb-persons">
-                <p class="qb-section-label">Personen-Bedingungen{% call tip_help('help-persons', 'Personen-Bedingungen') %}
-                    <p>Pro gesuchter Person eine Zeile in der Tabelle. Rolle ist Pflicht,
-                        Geschlecht und Beruf/Taetigkeit/Amt sind optional.</p>
-                    <p>Alle Zeilen muessen gemeinsam erfuellt sein. Ohne mindestens eine
-                        Zeile mit gesetzter Rolle bleibt die Trefferliste leer.</p>
+            <div class="qb-conditions">
+                <p class="qb-section-label">Bedingungen{% call tip_help('help-conditions', 'Bedingungen') %}
+                    <p>Eine Zeile pro gesuchter Person, Organisation oder Ort. Alle
+                        Slots sind optional; eine Zeile zaehlt als aktive Bedingung,
+                        sobald irgendein Slot gesetzt ist.</p>
+                    <p>Alle aktiven Zeilen muessen gemeinsam erfuellt sein. Ohne
+                        mindestens eine aktive Zeile bleibt die Trefferliste leer.</p>
                 {% endcall %}</p>
 
-                <table class="qb-persons-table" id="qb-persons-table"
-                       data-occupation-vocab='{{ occupation_vocab|tojson }}'
-                       data-uhlirz-vocab='{{ uhlirz_vocab|tojson }}'>
-                    <thead>
-                        <tr>
-                            <th scope="col" class="qb-col-num">Nr.</th>
-                            <th scope="col" class="qb-col-role">Rolle</th>
-                            <th scope="col" class="qb-col-sex">Geschlecht</th>
-                            <th scope="col" class="qb-col-occ">Beruf, Tätigkeit oder Amt
-                                <span class="qb-col-hint">(wie ediert, enthält)</span></th>
-                            <th scope="col" class="qb-col-uhlirz">Uhlirz-Berufsklasse
-                                <span class="qb-col-hint">(klassifiziert)</span></th>
-                            <th scope="col" class="qb-col-rm" aria-label="Entfernen"></th>
-                        </tr>
-                    </thead>
-                    <tbody id="qb-persons-tbody">
-                        {# Personen-Zeilen werden vom Resolver-JS eingesetzt. #}
-                    </tbody>
-                </table>
-
-                <div class="qb-actions-row">
-                    <button type="button" class="qb-pill qb-pill--primary" id="qb-add-person">
-                        + Person hinzufügen
-                    </button>
+                <div class="qb-cond-group" data-cond="persons">
+                    <div class="qb-cond-bar">
+                        <h3 class="qb-cond-heading">Personen</h3>
+                        <button type="button" class="qb-pill qb-pill--primary qb-add qb-add--person" id="qb-add-person">
+                            + Person
+                        </button>
+                    </div>
+                    <table class="qb-cond-table qb-cond-table--persons" id="qb-persons-table"
+                           data-occupation-vocab='{{ occupation_vocab|tojson }}'
+                           data-uhlirz-vocab='{{ uhlirz_vocab|tojson }}'>
+                        <thead>
+                            <tr>
+                                <th scope="col" class="qb-col-num">Nr.</th>
+                                <th scope="col" class="qb-col-role">Rolle</th>
+                                <th scope="col" class="qb-col-sex">Geschlecht</th>
+                                <th scope="col" class="qb-col-occ">Beruf, Tätigkeit oder Amt
+                                    <span class="qb-col-hint">(wie ediert, enthält)</span></th>
+                                <th scope="col" class="qb-col-uhlirz">Uhlirz-Berufsklasse
+                                    <span class="qb-col-hint">(klassifiziert)</span></th>
+                                <th scope="col" class="qb-col-rm" aria-label="Entfernen"></th>
+                            </tr>
+                        </thead>
+                        <tbody id="qb-persons-tbody">
+                            {# Personen-Zeilen werden vom Resolver-JS eingesetzt. #}
+                        </tbody>
+                    </table>
                 </div>
+
+                <div class="qb-cond-group" data-cond="orgs">
+                    <div class="qb-cond-bar">
+                        <h3 class="qb-cond-heading">Organisationen</h3>
+                        <button type="button" class="qb-pill qb-pill--primary qb-add qb-add--org" id="qb-add-org">
+                            + Organisation
+                        </button>
+                    </div>
+                    <table class="qb-cond-table qb-cond-table--orgs" id="qb-orgs-table"
+                           data-organisation-vocab='{{ organisation_vocab|tojson }}'
+                           data-org-type-vocab='{{ org_type_vocab|tojson }}'>
+                        <thead>
+                            <tr>
+                                <th scope="col" class="qb-col-num">Nr.</th>
+                                <th scope="col" class="qb-col-role">Rolle</th>
+                                <th scope="col" class="qb-col-org-name">Name
+                                    <span class="qb-col-hint">(enthält)</span></th>
+                                <th scope="col" class="qb-col-org-type">Typ</th>
+                                <th scope="col" class="qb-col-rm" aria-label="Entfernen"></th>
+                            </tr>
+                        </thead>
+                        <tbody id="qb-orgs-tbody">
+                            {# Org-Zeilen werden vom Resolver-JS eingesetzt. #}
+                        </tbody>
+                    </table>
+                </div>
+
             </div>
 
         </div>
@@ -143,8 +173,10 @@
                     <th scope="col" class="col-corpus" data-sort="corpus">Korpus{% call tip_glossary('col-info-korpus', 'Korpus') %}
                         <p>Editionskorpus, aus dem die Quelle stammt (QGW II/1 oder Stadtbücher Bd. 1).</p>
                     {% endcall %}</th>
-                    <th scope="col" class="col-persons">Beteiligte Personen{% call tip_glossary('col-info-persons', 'Beteiligte Personen') %}
-                        <p>Die Personen aus dem Treffer, die die Bedingungen der Abfrage erfuellen — eine je nummerierter Zeile, in der angefragten Rolle.</p>
+                    <th scope="col" class="col-persons">Beteiligte{% call tip_glossary('col-info-persons', 'Beteiligte') %}
+                        <p>Personen und Organisationen aus dem Treffer, die die Bedingungen
+                            der Abfrage erfuellen — eine Pille je nummerierter Zeile, in
+                            der angefragten Rolle.</p>
                     {% endcall %}</th>
                     <th scope="col" class="col-tx" data-sort="tx">Rechtsgeschäft{% call tip_glossary('col-info-tx', 'Rechtsgeschäft', slug='rechtsgeschaeft') %}
                         <p>Normalisierter Transaktionstyp des Rechtsgeschäfts, in dem die Konstellation auftritt.</p>
@@ -183,6 +215,10 @@
                     <button type="button" class="qb-example" role="listitem"
                             data-example="verwaltung">
                         Aussteller, Uhlirz <code>XVIII Verwaltung</code>
+                    </button>
+                    <button type="button" class="qb-example" role="listitem"
+                            data-example="org-st-agnes">
+                        Organisation <code>St. Agnes</code> als Empfänger
                     </button>
                 </div>
             </div>

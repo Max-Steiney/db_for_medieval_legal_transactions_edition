@@ -16,10 +16,13 @@
 
    Datenshape (role_constellation.json::events[]):
      { e, f, c, d, tx,
-       p: [ { p, n, r, s, t, o } ] }
+       p:  [ { p, n, r, s, t, o, u, nt? } ],
+       og: [ { g, n, r, tp } ]? }
        r ∈ {issuer, recipient, witness, other}
        s ∈ {m, f, ""}
        o[] = occupation strings (Originalform)
+       u[] = Uhlirz-Berufsklassen
+       og[].tp ∈ org_type-Vokabular (Kloster_m, Pfarre, …)
    ========================================================================== */
 
 (function () {
@@ -31,7 +34,10 @@
 
     const personsTable = root.querySelector('#qb-persons-table');
     const personsTbody = root.querySelector('#qb-persons-tbody');
+    const orgsTable = root.querySelector('#qb-orgs-table');
+    const orgsTbody = root.querySelector('#qb-orgs-tbody');
     const addPersonBtn = root.querySelector('#qb-add-person');
+    const addOrgBtn = root.querySelector('#qb-add-org');
     const resetBtn = root.querySelector('#filter-reset');
     const scopeChips = root.querySelectorAll('[data-filter="scope"] .qb-pill');
     const corpusChecksRoot = root.querySelector('#filter-corpora');
@@ -101,15 +107,176 @@
     try {
         UHLIRZ_VOCAB = JSON.parse(personsTable.dataset.uhlirzVocab || '[]');
     } catch (_) { UHLIRZ_VOCAB = []; }
+    let ORG_VOCAB = [];
+    try {
+        ORG_VOCAB = orgsTable
+            ? JSON.parse(orgsTable.dataset.organisationVocab || '[]')
+            : [];
+    } catch (_) { ORG_VOCAB = []; }
+    let ORG_TYPE_VOCAB = [];
+    try {
+        ORG_TYPE_VOCAB = orgsTable
+            ? JSON.parse(orgsTable.dataset.orgTypeVocab || '[]')
+            : [];
+    } catch (_) { ORG_TYPE_VOCAB = []; }
+
+    /* ---------- Autocomplete-Popover ------------------------------------ */
+    // Eigene Komponente statt nativer <datalist>, weil die OS-eigene
+    // Darstellung (besonders Windows-Chrome: dunkles Panel mit weißem
+    // Text) sich nicht stylen laesst. Das Popover ist:
+    //   - heller Hintergrund, gleiche Tokens wie der Rest der UI
+    //   - zeigt Vokabel-Wert + Hinweis "N Vorkommen im Korpus"
+    //   - Tastatur-Navigation mit Pfeil hoch/runter, Enter, Esc
+    //   - Filter case-insensitiv ueber alle Substrings; ohne Eingabe
+    //     werden die haeufigsten Eintraege oben gezeigt
+    //   - schließt sich bei Click ausserhalb und bei Tab/Blur
+    //   - genau eine Instanz zur Zeit; ist global im body verankert,
+    //     damit Tabellen-Overflow das Panel nicht abschneidet
+    let activePopover = null;
+    function closePopover() {
+        if (activePopover) {
+            activePopover.panel.remove();
+            document.removeEventListener('mousedown', activePopover.onDocMouseDown);
+            window.removeEventListener('resize', activePopover.onWindowChange);
+            window.removeEventListener('scroll', activePopover.onWindowChange, true);
+            activePopover = null;
+        }
+    }
+
+    function attachAutocomplete(input, vocab, hintLabel) {
+        if (!vocab || !vocab.length) return;
+        const hint = hintLabel || 'Vorkommen';
+        let selectedIdx = -1;
+
+        function buildItems(query) {
+            const q = (query || '').trim().toLowerCase();
+            const matches = q
+                ? vocab.filter(v => v.value.toLowerCase().includes(q))
+                : vocab.slice();
+            return matches.slice(0, 30);
+        }
+
+        function renderItems(panel, items) {
+            panel.innerHTML = '';
+            if (!items.length) {
+                const empty = document.createElement('div');
+                empty.className = 'qb-ac-empty';
+                empty.textContent = 'Keine Vorschläge';
+                panel.appendChild(empty);
+                return;
+            }
+            items.forEach((it, i) => {
+                const row = document.createElement('button');
+                row.type = 'button';
+                row.className = 'qb-ac-item' + (i === selectedIdx ? ' is-active' : '');
+                row.dataset.idx = i;
+                const value = document.createElement('span');
+                value.className = 'qb-ac-value';
+                value.textContent = it.value;
+                const meta = document.createElement('span');
+                meta.className = 'qb-ac-meta';
+                meta.textContent = it.count + ' ' + hint;
+                row.appendChild(value);
+                row.appendChild(meta);
+                row.addEventListener('mouseenter', () => {
+                    selectedIdx = i;
+                    Array.from(panel.children).forEach((el, k) => {
+                        el.classList.toggle('is-active', k === i);
+                    });
+                });
+                row.addEventListener('mousedown', (e) => {
+                    // mousedown statt click, damit das Blur-Event nicht
+                    // zuvor das Popover wegnimmt.
+                    e.preventDefault();
+                    input.value = it.value;
+                    input.dispatchEvent(new Event('input', { bubbles: true }));
+                    closePopover();
+                });
+                panel.appendChild(row);
+            });
+        }
+
+        function positionPanel(panel) {
+            const rect = input.getBoundingClientRect();
+            panel.style.left = (rect.left + window.scrollX) + 'px';
+            panel.style.top = (rect.bottom + window.scrollY + 2) + 'px';
+            panel.style.width = rect.width + 'px';
+        }
+
+        function openPopover() {
+            closePopover();
+            const panel = document.createElement('div');
+            panel.className = 'qb-ac-panel';
+            panel.setAttribute('role', 'listbox');
+            document.body.appendChild(panel);
+            const items = buildItems(input.value);
+            selectedIdx = items.length ? 0 : -1;
+            renderItems(panel, items);
+            positionPanel(panel);
+
+            const onDocMouseDown = (e) => {
+                if (e.target === input) return;
+                if (panel.contains(e.target)) return;
+                closePopover();
+            };
+            const onWindowChange = () => positionPanel(panel);
+            document.addEventListener('mousedown', onDocMouseDown);
+            window.addEventListener('resize', onWindowChange);
+            window.addEventListener('scroll', onWindowChange, true);
+
+            activePopover = { panel, input, items, onDocMouseDown, onWindowChange };
+        }
+
+        function refreshPopover() {
+            if (!activePopover || activePopover.input !== input) {
+                openPopover();
+                return;
+            }
+            const items = buildItems(input.value);
+            selectedIdx = items.length ? 0 : -1;
+            activePopover.items = items;
+            renderItems(activePopover.panel, items);
+        }
+
+        input.setAttribute('autocomplete', 'off');
+        input.addEventListener('focus', openPopover);
+        input.addEventListener('input', refreshPopover);
+        input.addEventListener('keydown', (e) => {
+            if (!activePopover || activePopover.input !== input) return;
+            const items = activePopover.items;
+            if (e.key === 'ArrowDown') {
+                e.preventDefault();
+                selectedIdx = Math.min(items.length - 1, selectedIdx + 1);
+                renderItems(activePopover.panel, items);
+            } else if (e.key === 'ArrowUp') {
+                e.preventDefault();
+                selectedIdx = Math.max(0, selectedIdx - 1);
+                renderItems(activePopover.panel, items);
+            } else if (e.key === 'Enter') {
+                if (selectedIdx >= 0 && items[selectedIdx]) {
+                    e.preventDefault();
+                    input.value = items[selectedIdx].value;
+                    input.dispatchEvent(new Event('input', { bubbles: true }));
+                    closePopover();
+                }
+            } else if (e.key === 'Escape') {
+                closePopover();
+            }
+        });
+    }
 
     /* ---------- Zustand -------------------------------------------------- */
     // State-Form:
     //   { persons: [ {role, sex, occ, uhlirz} ],
+    //     orgs:    [ {role, name, type} ],
     //     scope: 'event'|'source',
     //     corpora: Set<string> }
     // uhlirz ist Default '' (= "alle"); ein gesetzter Wert filtert auf
     // genau diese Uhlirz-Kategorie, gematcht gegen die u-Liste der
     // Participants in role_constellation.json.
+    // orgs.name ist eine Teilstring-Suche (case-insensitiv) auf dem
+    // Registernamen der Organisation; orgs.type filtert auf den exakten
+    // Typ (Kloster_m, Pfarre, …).
     // corpora: leeres Set bedeutet "alle Korpora" (kein Filter); ein
     // explizit befuelltes Set filtert auf die gewaehlten Korpora.
     // Defaults werden aus den Checkboxen gelesen (alle initial aktiv).
@@ -119,8 +286,14 @@
         : [];
     let state = {
         persons: [],
+        orgs: [],
         scope: 'event',
-        corpora: new Set(ALL_CORPORA)
+        corpora: new Set(ALL_CORPORA),
+        // Sortierung der Trefferliste. key ∈ {date, source, corpus, tx},
+        // dir 1 = aufsteigend, -1 = absteigend. Default: chronologisch,
+        // leere Daten ans Ende.
+        sortKey: 'date',
+        sortDir: 1
     };
 
     const ROLE_LABELS = {
@@ -195,7 +368,6 @@
         occTd.className = 'qb-col-occ';
         const occInput = document.createElement('input');
         occInput.type = 'text';
-        occInput.setAttribute('list', 'qb-occ-suggestions');
         occInput.setAttribute('aria-label',
             'Beruf, Tätigkeit oder Amt Person ' + (idx + 1) + ' (enthält)');
         occInput.placeholder = 'z. B. purger, Bürger, pharrer';
@@ -204,6 +376,8 @@
             state.persons[idx].occ = occInput.value.trim();
             sync();
         });
+        attachAutocomplete(occInput, OCC_VOCAB,
+            'Vorkommen im Korpus');
         occTd.appendChild(occInput);
         tr.appendChild(occTd);
 
@@ -257,22 +431,120 @@
         state.persons.forEach((p, idx) => {
             personsTbody.appendChild(renderPersonRow(idx, p));
         });
-        // Datalist für Occ-Vorschläge einmalig anlegen — ausserhalb der
-        // Tabelle, damit es nicht im tbody clearend mit entfernt wird.
-        if (!document.getElementById('qb-occ-suggestions')) {
-            const dl = document.createElement('datalist');
-            dl.id = 'qb-occ-suggestions';
-            OCC_VOCAB.forEach(v => {
-                const o = document.createElement('option');
-                o.value = v.value;
-                o.label = v.value + ' (' + v.count + ')';
-                dl.appendChild(o);
-            });
-            personsTable.parentNode.appendChild(dl);
-        }
         // Tabelle ausblenden, wenn keine Zeilen vorhanden — der Header
         // alleine waere optisch leer.
         personsTable.classList.toggle('is-empty', state.persons.length === 0);
+    }
+
+    /* ---------- Renderer: Organisations-Tabelle ------------------------- */
+    function renderOrgRow(idx, o) {
+        const tr = document.createElement('tr');
+        tr.className = 'qb-org-row';
+        tr.dataset.orgIdx = idx;
+
+        // Spalte Nr.
+        const numTd = document.createElement('td');
+        numTd.className = 'qb-col-num';
+        const numSpan = document.createElement('span');
+        numSpan.className = 'qb-org-num';
+        numSpan.textContent = idx + 1;
+        numTd.appendChild(numSpan);
+        tr.appendChild(numTd);
+
+        // Spalte Rolle
+        const roleTd = document.createElement('td');
+        roleTd.className = 'qb-col-role';
+        const roleSel = document.createElement('select');
+        roleSel.className = 'qb-org-role';
+        roleSel.setAttribute('aria-label', 'Rolle Organisation ' + (idx + 1));
+        const blank = document.createElement('option');
+        blank.value = '';
+        blank.textContent = '— beliebige Rolle —';
+        roleSel.appendChild(blank);
+        ROLE_LIST.forEach(r => {
+            const op = document.createElement('option');
+            op.value = r;
+            op.textContent = ROLE_LABELS[r];
+            if (o.role === r) op.selected = true;
+            roleSel.appendChild(op);
+        });
+        roleSel.addEventListener('change', () => {
+            state.orgs[idx].role = roleSel.value;
+            sync();
+        });
+        roleTd.appendChild(roleSel);
+        tr.appendChild(roleTd);
+
+        // Spalte Name (Teilstring) mit Autocomplete
+        const nameTd = document.createElement('td');
+        nameTd.className = 'qb-col-org-name';
+        const nameInput = document.createElement('input');
+        nameInput.type = 'text';
+        nameInput.setAttribute('aria-label',
+            'Name Organisation ' + (idx + 1) + ' (enthält)');
+        nameInput.placeholder = 'z. B. Himmelpforte, Stephan, Klosterneuburg';
+        nameInput.value = o.name || '';
+        nameInput.addEventListener('input', () => {
+            state.orgs[idx].name = nameInput.value.trim();
+            sync();
+        });
+        attachAutocomplete(nameInput, ORG_VOCAB,
+            'Vorkommen im Korpus');
+        nameTd.appendChild(nameInput);
+        tr.appendChild(nameTd);
+
+        // Spalte Typ
+        const typeTd = document.createElement('td');
+        typeTd.className = 'qb-col-org-type';
+        const typeSel = document.createElement('select');
+        typeSel.setAttribute('aria-label',
+            'Typ Organisation ' + (idx + 1));
+        const tBlank = document.createElement('option');
+        tBlank.value = '';
+        tBlank.textContent = '— alle —';
+        typeSel.appendChild(tBlank);
+        ORG_TYPE_VOCAB.forEach(t => {
+            const op = document.createElement('option');
+            op.value = t;
+            op.textContent = t;
+            if ((o.type || '') === t) op.selected = true;
+            typeSel.appendChild(op);
+        });
+        typeSel.addEventListener('change', () => {
+            state.orgs[idx].type = typeSel.value;
+            sync();
+        });
+        typeTd.appendChild(typeSel);
+        tr.appendChild(typeTd);
+
+        // Spalte Entfernen
+        const rmTd = document.createElement('td');
+        rmTd.className = 'qb-col-rm';
+        const rm = document.createElement('button');
+        rm.type = 'button';
+        rm.className = 'qb-org-remove';
+        rm.setAttribute('aria-label', 'Organisation ' + (idx + 1) + ' entfernen');
+        rm.innerHTML = '&times;';
+        rm.addEventListener('click', () => {
+            state.orgs.splice(idx, 1);
+            renderOrgsTable();
+            sync();
+        });
+        rmTd.appendChild(rm);
+        tr.appendChild(rmTd);
+
+        return tr;
+    }
+
+    function renderOrgsTable() {
+        if (!orgsTbody) return;
+        orgsTbody.innerHTML = '';
+        state.orgs.forEach((o, idx) => {
+            orgsTbody.appendChild(renderOrgRow(idx, o));
+        });
+        if (orgsTable) {
+            orgsTable.classList.toggle('is-empty', state.orgs.length === 0);
+        }
     }
 
     /* ---------- Globale Filter: Verkabelung ----------------------------- */
@@ -281,6 +553,14 @@
         renderPersonsTable();
         sync();
     });
+
+    if (addOrgBtn) {
+        addOrgBtn.addEventListener('click', () => {
+            state.orgs.push({ role: '', name: '', type: '' });
+            renderOrgsTable();
+            sync();
+        });
+    }
 
     scopeChips.forEach(chip => {
         chip.addEventListener('click', () => {
@@ -310,6 +590,7 @@
 
     resetBtn.addEventListener('click', () => {
         state.persons = [];
+        state.orgs = [];
         state.scope = 'event';
         state.corpora = new Set(ALL_CORPORA);
         scopeChips.forEach(c => {
@@ -326,6 +607,7 @@
                 });
         }
         renderPersonsTable();
+        renderOrgsTable();
         sync();
     });
 
@@ -353,6 +635,16 @@
         return true;
     }
 
+    function orgMatchesCard(org, card) {
+        if (card.role && org.r !== card.role) return false;
+        if (card.name) {
+            const needle = card.name.toLowerCase();
+            if (!(org.n || '').toLowerCase().includes(needle)) return false;
+        }
+        if (card.type && (org.tp || '') !== card.type) return false;
+        return true;
+    }
+
     // Pro Treffer-Event ordnen wir jedem aktiven Block einen Participant zu
     // (distinct, kein doppeltes Belegen einer Person). Liefert die Liste der
     // zugeordneten Participants in Block-Reihenfolge, oder null bei Misserfolg.
@@ -373,14 +665,36 @@
         return out;
     }
 
+    function assignOrgs(ev, cards) {
+        const list = ev.og || [];
+        const used = new Set();
+        const out = [];
+        for (let i = 0; i < cards.length; i++) {
+            const card = cards[i];
+            let found = null;
+            for (let j = 0; j < list.length; j++) {
+                if (used.has(j)) continue;
+                if (orgMatchesCard(list[j], card)) { found = j; break; }
+            }
+            if (found == null) return null;
+            used.add(found);
+            out.push(list[found]);
+        }
+        return out;
+    }
+
     function activeCards() {
         return state.persons.filter(p => p.role || p.sex || p.occ || p.uhlirz);
+    }
+    function activeOrgCards() {
+        return state.orgs.filter(o => o.role || o.name || o.type);
     }
 
     function compute() {
         const cards = activeCards();
-        if (!DATA || !cards.length) {
-            return { hits: [], cards: cards };
+        const orgCards = activeOrgCards();
+        if (!DATA || (!cards.length && !orgCards.length)) {
+            return { hits: [], cards: cards, orgCards: orgCards };
         }
         const events = DATA.events || [];
 
@@ -389,15 +703,21 @@
             const hits = [];
             for (const ev of events) {
                 if (!eventInCorpus(ev)) continue;
-                const assigned = assignParticipants(ev, cards);
-                if (assigned) hits.push({ ev: ev, persons: assigned });
+                const assignedP = cards.length ? assignParticipants(ev, cards) : [];
+                if (cards.length && !assignedP) continue;
+                const assignedO = orgCards.length ? assignOrgs(ev, orgCards) : [];
+                if (orgCards.length && !assignedO) continue;
+                hits.push({
+                    ev: ev,
+                    persons: assignedP || [],
+                    orgs: assignedO || []
+                });
             }
-            return { hits: hits, cards: cards };
+            return { hits: hits, cards: cards, orgCards: orgCards };
         }
 
-        // Weit: alle Personen muessen in derselben Quelle (file_key)
-        // vorkommen, nicht zwingend im selben Event. Wir suchen pro Quelle
-        // eine Block-Zuordnung, deren Treffer aus den Quell-Events stammen.
+        // Weit: alle Bedingungen muessen in derselben Quelle (file_key)
+        // gemeinsam erfuellbar sein, nicht zwingend im selben Event.
         const byFile = new Map();
         for (const ev of events) {
             if (!eventInCorpus(ev)) continue;
@@ -406,27 +726,38 @@
         }
         const hits = [];
         for (const [fk, evs] of byFile.entries()) {
-            // sammele alle Personen der Quelle in einem Pseudo-Event
             const allP = [];
-            for (const ev of evs) for (const p of ev.p) allP.push(p);
+            const allO = [];
+            for (const ev of evs) {
+                for (const p of ev.p) allP.push(p);
+                for (const o of (ev.og || [])) allO.push(o);
+            }
             const pseudo = {
                 e: evs[0].e, f: fk, c: evs[0].c,
-                d: evs[0].d, tx: evs[0].tx, p: allP
+                d: evs[0].d, tx: evs[0].tx, p: allP, og: allO
             };
-            const assigned = assignParticipants(pseudo, cards);
-            if (assigned) hits.push({ ev: pseudo, persons: assigned });
+            const assignedP = cards.length ? assignParticipants(pseudo, cards) : [];
+            if (cards.length && !assignedP) continue;
+            const assignedO = orgCards.length ? assignOrgs(pseudo, orgCards) : [];
+            if (orgCards.length && !assignedO) continue;
+            hits.push({
+                ev: pseudo,
+                persons: assignedP || [],
+                orgs: assignedO || []
+            });
         }
-        return { hits: hits, cards: cards };
+        return { hits: hits, cards: cards, orgCards: orgCards };
     }
 
     /* ---------- Renderer: Treffer-Tabelle ------------------------------- */
     function renderHits(result) {
-        const { hits, cards } = result;
+        const { hits, cards, orgCards } = result;
+        const totalCards = cards.length + (orgCards ? orgCards.length : 0);
         const onboarding = root.querySelector('#qb-onboarding');
         tbody.innerHTML = '';
-        if (!cards.length) {
+        if (!totalCards) {
             emptyBox.classList.remove('hidden');
-            emptyMsg.textContent = 'Person hinzufügen oder Beispiel wählen.';
+            emptyMsg.textContent = 'Person oder Organisation hinzufügen oder Beispiel wählen.';
             if (onboarding) onboarding.classList.remove('hidden');
             if (resultsToolbar) resultsToolbar.hidden = true;
             if (hitsTable) hitsTable.hidden = true;
@@ -466,20 +797,12 @@
             csvBtn.removeAttribute('title');
         }
 
-        // Stabil: sortiere nach Datum, dann nach Quelle.
-        // Leere Datümer (Stadtbuch-Einträge ohne Einzeldatierung) ans Ende.
-        hits.sort((a, b) => {
-            const da = (a.ev.d || '').trim(), db = (b.ev.d || '').trim();
-            if (!da && !db) return a.ev.f.localeCompare(b.ev.f);
-            if (!da) return 1;
-            if (!db) return -1;
-            return da < db ? -1 : da > db ? 1 : a.ev.f.localeCompare(b.ev.f);
-        });
+        sortHits(hits);
 
         const frag = document.createDocumentFragment();
         const limit = 500;
         for (let i = 0; i < Math.min(hits.length, limit); i++) {
-            frag.appendChild(buildRow(hits[i], cards));
+            frag.appendChild(buildRow(hits[i], cards, orgCards || []));
         }
         if (hits.length > limit) {
             const tr = document.createElement('tr');
@@ -497,7 +820,69 @@
         tbody.appendChild(frag);
     }
 
-    function buildRow(hit, cards) {
+    function buildPersonPill(p, num) {
+        // num=null -> "weitere Beteiligte" ohne Nummern-Pille und
+        // dezenter; num>=1 -> Bedingungs-Treffer mit Hervorhebung.
+        const pill = document.createElement('span');
+        pill.className = 'person-pill' + (num == null ? ' is-context' : '');
+        const tipParts = [p.n || p.p];
+        if (p.nt) tipParts.push(p.nt);
+        tipParts.push('ID: ' + p.p);
+        pill.title = tipParts.join('\n');
+        if (num != null) {
+            const numEl = document.createElement('span');
+            numEl.className = 'person-pill-num';
+            numEl.textContent = num;
+            pill.appendChild(numEl);
+        }
+        const a = document.createElement('a');
+        a.href = '../register/persons/' + encodeURIComponent(p.p) + '.html';
+        a.textContent = p.n || p.p;
+        pill.appendChild(a);
+        const role = (p.r && ROLE_LABELS[p.r]) || '';
+        if (role) {
+            const r = document.createElement('span');
+            r.className = 'person-pill-role';
+            r.textContent = role;
+            pill.appendChild(r);
+        }
+        if (p.s === 'm' || p.s === 'f') {
+            const s = document.createElement('span');
+            s.className = 'person-pill-sex person-pill-sex--' + p.s;
+            s.textContent = p.s === 'f' ? 'weiblich' : 'maennlich';
+            pill.appendChild(s);
+        }
+        return pill;
+    }
+
+    function buildOrgPill(o, num) {
+        const pill = document.createElement('span');
+        pill.className = 'org-pill' + (num == null ? ' is-context' : '');
+        const tipParts = [o.n || o.g];
+        if (o.tp) tipParts.push('Typ: ' + o.tp);
+        tipParts.push('ID: ' + o.g);
+        pill.title = tipParts.join('\n');
+        if (num != null) {
+            const numEl = document.createElement('span');
+            numEl.className = 'org-pill-num';
+            numEl.textContent = num;
+            pill.appendChild(numEl);
+        }
+        const a = document.createElement('a');
+        a.href = '../register/orgs/' + encodeURIComponent(o.g) + '.html';
+        a.textContent = o.n || o.g;
+        pill.appendChild(a);
+        const role = (o.r && ROLE_LABELS[o.r]) || '';
+        if (role) {
+            const r = document.createElement('span');
+            r.className = 'org-pill-role';
+            r.textContent = role;
+            pill.appendChild(r);
+        }
+        return pill;
+    }
+
+    function buildRow(hit, cards, orgCards) {
         const tr = document.createElement('tr');
         const ev = hit.ev;
 
@@ -513,48 +898,94 @@
 
         td(tr, ev.c, 'col-corpus');
 
-        // Beteiligte Personen als Pills, eine pro Bedingungs-Zeile. Pille
-        // zeigt Nummer + Name + Rolle + Geschlecht, damit das Trefferbild
-        // ohne Profil-Klick lesbar ist.
+        // Beteiligte: Aussteller werden immer gezeigt (selten viele,
+        // fast immer 1-4). Empfaenger werden gezeigt, aber gekappt:
+        // bei mehr als RECIPIENT_LIMIT pro Entitaetstyp wandern die
+        // ueberzaehligen in den "+N weitere"-Ausklapper, wo auch alle
+        // Zeugen/Siegler und sonstigen Beteiligungen landen. So bleiben
+        // Stiftungen und Testamente lesbar, ohne die Konstellation zu
+        // verlieren. Bedingungs-Treffer (Nummern-Pille) sind IMMER
+        // sichtbar, egal in welcher Rolle und egal an welcher Position.
         const personsTd = document.createElement('td');
         personsTd.className = 'col-persons';
-        hit.persons.forEach((p, idx) => {
-            const pill = document.createElement('span');
-            pill.className = 'person-pill';
-            // Tooltip mit voller Stammdaten-Info: voller Name, ID, Note.
-            // Hilft die Person zu identifizieren, wenn der angezeigte
-            // Kurzname mehrdeutig waere (mehrere "Johann" in der Liste).
-            const tipParts = [p.n || p.p];
-            if (p.nt) tipParts.push(p.nt);
-            tipParts.push('ID: ' + p.p);
-            pill.title = tipParts.join('\n');
-            const num = document.createElement('span');
-            num.className = 'person-pill-num';
-            num.textContent = idx + 1;
-            const a = document.createElement('a');
-            a.href = '../register/persons/' + encodeURIComponent(p.p) + '.html';
-            a.textContent = p.n || p.p;
-            pill.appendChild(num);
-            pill.appendChild(a);
-            // Rolle als kurze Pille hinter dem Namen (issuer -> Aussteller).
-            const role = (p.r && ROLE_LABELS[p.r]) || '';
-            if (role) {
-                const r = document.createElement('span');
-                r.className = 'person-pill-role';
-                r.textContent = role;
-                pill.appendChild(r);
+
+        const RECIPIENT_LIMIT = 4;
+
+        // Index: welche Person/Org ist Bedingungs-Treffer? Reihenfolge
+        // entspricht den Bedingungs-Zeilen 1..N.
+        const personHitIdx = new Map();
+        hit.persons.forEach((p, idx) => personHitIdx.set(p.p, idx + 1));
+        const orgHitIdx = new Map();
+        (hit.orgs || []).forEach((o, idx) => orgHitIdx.set(o.g, idx + 1));
+
+        const allPersons = ev.p || [];
+        const allOrgs = ev.og || [];
+
+        // Trennung pro Entitaetstyp in Bedingungs-Treffer, Aussteller,
+        // Empfaenger und Rest. Bedingungs-Treffer aus den anderen
+        // Buckets rausfiltern, damit sie nicht doppelt erscheinen.
+        function partition(items, getId, hitMap) {
+            const hits = [], issuers = [], recipients = [], rest = [];
+            for (const it of items) {
+                if (hitMap.has(getId(it))) { hits.push(it); continue; }
+                if (it.r === 'issuer') issuers.push(it);
+                else if (it.r === 'recipient') recipients.push(it);
+                else rest.push(it);
             }
-            // Geschlecht als kleines Suffix (m/f). 'u' und '' werden
-            // weggelassen, damit nur tatsaechlich belegte Werte sichtbar
-            // sind.
-            if (p.s === 'm' || p.s === 'f') {
-                const s = document.createElement('span');
-                s.className = 'person-pill-sex person-pill-sex--' + p.s;
-                s.textContent = p.s === 'f' ? 'weiblich' : 'maennlich';
-                pill.appendChild(s);
-            }
-            personsTd.appendChild(pill);
-        });
+            return { hits, issuers, recipients, rest };
+        }
+        const pp = partition(allPersons, p => p.p, personHitIdx);
+        const oo = partition(allOrgs, o => o.g, orgHitIdx);
+
+        // Sichtbar: Bedingungs-Treffer + alle Aussteller + die ersten
+        // RECIPIENT_LIMIT Empfaenger. Versteckt: ueberzaehlige
+        // Empfaenger + alles ueber andere Rollen.
+        const visiblePersons = [
+            ...pp.hits, ...pp.issuers,
+            ...pp.recipients.slice(0, RECIPIENT_LIMIT)
+        ];
+        const hiddenPersons = [
+            ...pp.recipients.slice(RECIPIENT_LIMIT), ...pp.rest
+        ];
+        const visibleOrgs = [
+            ...oo.hits, ...oo.issuers,
+            ...oo.recipients.slice(0, RECIPIENT_LIMIT)
+        ];
+        const hiddenOrgs = [
+            ...oo.recipients.slice(RECIPIENT_LIMIT), ...oo.rest
+        ];
+
+        visiblePersons.forEach(p => personsTd.appendChild(
+            buildPersonPill(p, personHitIdx.get(p.p) || null)));
+        visibleOrgs.forEach(o => personsTd.appendChild(
+            buildOrgPill(o, orgHitIdx.get(o.g) || null)));
+
+        const hiddenCount = hiddenPersons.length + hiddenOrgs.length;
+        if (hiddenCount > 0) {
+            const toggle = document.createElement('button');
+            toggle.type = 'button';
+            toggle.className = 'col-persons-more';
+            toggle.textContent = '+' + hiddenCount + ' weitere';
+            toggle.setAttribute('aria-expanded', 'false');
+            personsTd.appendChild(toggle);
+
+            const more = document.createElement('span');
+            more.className = 'col-persons-more-pills';
+            more.hidden = true;
+            hiddenPersons.forEach(p => more.appendChild(buildPersonPill(p, null)));
+            hiddenOrgs.forEach(o => more.appendChild(buildOrgPill(o, null)));
+            personsTd.appendChild(more);
+
+            toggle.addEventListener('click', () => {
+                const open = !more.hidden ? false : true;
+                more.hidden = !open;
+                toggle.setAttribute('aria-expanded', open ? 'true' : 'false');
+                toggle.textContent = open
+                    ? 'weniger anzeigen'
+                    : '+' + hiddenCount + ' weitere';
+            });
+        }
+
         tr.appendChild(personsTd);
 
         td(tr, ev.tx || '', 'col-tx');
@@ -587,11 +1018,52 @@
     }
 
     function formatDate(s) {
-        // "1342-04-08" -> "1342-04-08". Stadtbuch-Eintraege ohne
+        // "1342-04-08" -> "8. Apr 1342". Stadtbuch-Eintraege ohne
         // Einzeldatierung haben einen leeren d-Wert; im UI markieren
-        // wir das transparent als "—".
+        // wir das transparent als "—". Nur-Jahr-Daten ("1342") bleiben
+        // als Jahr stehen. Sortierung passiert separat ueber den
+        // ISO-String, nicht ueber diese Anzeigeform.
         const t = (s || '').trim();
-        return t || '—';
+        if (!t) return '—';
+        const m = /^(\d{4})(?:-(\d{2}))?(?:-(\d{2}))?$/.exec(t);
+        if (!m) return t;
+        const year = m[1];
+        const mon = m[2] && parseInt(m[2], 10);
+        const day = m[3] && parseInt(m[3], 10);
+        const MONTHS_DE = ['Jan', 'Feb', 'Mär', 'Apr', 'Mai', 'Jun',
+                           'Jul', 'Aug', 'Sep', 'Okt', 'Nov', 'Dez'];
+        if (day && mon)  return day + '. ' + MONTHS_DE[mon - 1] + ' ' + year;
+        if (mon)         return MONTHS_DE[mon - 1] + ' ' + year;
+        return year;
+    }
+
+    // Stabiler Sortier-Key fuer Treffer. Liefert einen String, der
+    // lexikographisch sortiert das gewuenschte Ergebnis liefert.
+    // Leere Werte landen am Ende (durch '~' als Prefix).
+    function hitSortKey(hit, key) {
+        const ev = hit.ev;
+        if (key === 'date') {
+            const d = (ev.d || '').trim();
+            return d ? d : '~';
+        }
+        if (key === 'source') return docIdno(ev.f).toString().toLowerCase();
+        if (key === 'corpus') return (ev.c || '').toLowerCase();
+        if (key === 'tx')     {
+            const t = (ev.tx || '').trim();
+            return t ? t.toLowerCase() : '~';
+        }
+        return '';
+    }
+    function sortHits(hits) {
+        const k = state.sortKey;
+        const dir = state.sortDir;
+        hits.sort((a, b) => {
+            const ka = hitSortKey(a, k), kb = hitSortKey(b, k);
+            if (ka < kb) return -1 * dir;
+            if (ka > kb) return 1 * dir;
+            // Tiebreaker: Quelle, damit die Reihenfolge stabil bleibt.
+            return a.ev.f.localeCompare(b.ev.f);
+        });
     }
 
     function fmt(n) {
@@ -634,6 +1106,14 @@
             if (p.uhlirz) parts.push('u=' + encodeURIComponent(p.uhlirz));
             params.push('p' + (idx + 1) + '=' + parts.join(','));
         });
+        state.orgs.forEach((o, idx) => {
+            if (!o.role && !o.name && !o.type) return;
+            const parts = [];
+            if (o.role) parts.push('r=' + o.role);
+            if (o.name) parts.push('n=' + encodeURIComponent(o.name));
+            if (o.type) parts.push('t=' + encodeURIComponent(o.type));
+            params.push('g' + (idx + 1) + '=' + parts.join(','));
+        });
         // Korpus-Auswahl nur dann serialisieren, wenn sie vom Default
         // (alle Korpora aktiv) abweicht. Default = leerer Parameter.
         if (state.corpora.size !== ALL_CORPORA.length) {
@@ -654,12 +1134,14 @@
         if (!raw) return;
         const parts = raw.split('&');
         const personRe = /^p(\d+)$/;
+        const orgRe = /^g(\d+)$/;
         parts.forEach(seg => {
             const eq = seg.indexOf('=');
             if (eq < 0) return;
             const k = seg.slice(0, eq);
             const v = seg.slice(eq + 1);
             const m = personRe.exec(k);
+            const mo = orgRe.exec(k);
             if (m) {
                 const idx = parseInt(m[1], 10) - 1;
                 if (idx < 0) return;
@@ -674,6 +1156,20 @@
                     if (pk === 's') state.persons[idx].sex = pv;
                     if (pk === 'o') state.persons[idx].occ = pv;
                     if (pk === 'u') state.persons[idx].uhlirz = pv;
+                });
+            } else if (mo) {
+                const idx = parseInt(mo[1], 10) - 1;
+                if (idx < 0) return;
+                while (state.orgs.length <= idx) {
+                    state.orgs.push({ role: '', name: '', type: '' });
+                }
+                v.split(',').forEach(pair => {
+                    const e = pair.indexOf('=');
+                    if (e < 0) return;
+                    const pk = pair.slice(0, e), pv = decodeURIComponent(pair.slice(e + 1));
+                    if (pk === 'r') state.orgs[idx].role = pv;
+                    if (pk === 'n') state.orgs[idx].name = pv;
+                    if (pk === 't') state.orgs[idx].type = pv;
                 });
             } else if (k === 'c') {
                 // Explizite Korpus-Auswahl aus URL ueberschreibt den
@@ -710,18 +1206,13 @@
     function downloadCsv() {
         const result = compute();
         if (!result.hits.length) return;
-        // Identische Sortierung wie in der Tabelle: nach Datum, leere
-        // Datümer ans Ende, Stichschluss nach Quelle. CSV soll exakt das
+        // Identische Sortierung wie in der Tabelle: CSV soll exakt das
         // wiedergeben, was die Forscherin am Bildschirm sieht.
-        result.hits.sort((a, b) => {
-            const da = (a.ev.d || '').trim(), db = (b.ev.d || '').trim();
-            if (!da && !db) return a.ev.f.localeCompare(b.ev.f);
-            if (!da) return 1;
-            if (!db) return -1;
-            return da < db ? -1 : da > db ? 1 : a.ev.f.localeCompare(b.ev.f);
-        });
+        sortHits(result.hits);
+        const orgCards = result.orgCards || [];
         const headers = ['Datum', 'Quelle', 'Korpus'];
         for (let i = 1; i <= result.cards.length; i++) headers.push('Person ' + i);
+        for (let i = 1; i <= orgCards.length; i++) headers.push('Organisation ' + i);
         headers.push('Rechtsgeschäft');
         const lines = [headers.map(csvEscape).join(';')];
         for (const h of result.hits) {
@@ -730,6 +1221,7 @@
                 docIdno(h.ev.f),
                 h.ev.c || '',
                 ...h.persons.map(p => p.n || p.p || ''),
+                ...(h.orgs || []).map(o => o.n || o.g || ''),
                 h.ev.tx || ''
             ];
             lines.push(row.map(csvEscape).join(';'));
@@ -753,6 +1245,10 @@
     });
 
     /* ---------- Onboarding: Beispiel-Abfragen --------------------------- */
+    // Eintraege koennen Personen- und Org-Bedingungen tragen. Format:
+    //   { persons: [ {role, sex, occ, uhlirz} ], orgs: [ {role, name, type} ] }
+    // Alte Form (flaches Array) bleibt fuer Personen-only Beispiele aus
+    // Kompatibilitaet erhalten.
     const EXAMPLES = {
         'women-issuers': [
             { role: 'issuer', sex: 'f', occ: '' }
@@ -770,16 +1266,30 @@
         ],
         'verwaltung': [
             { role: 'issuer', sex: '', occ: '', uhlirz: 'XVIII Verwaltung' }
-        ]
+        ],
+        'org-st-agnes': {
+            persons: [],
+            orgs: [
+                { role: 'recipient', name: 'St. Agnes', type: '' }
+            ]
+        }
     };
 
     function applyExample(key) {
         const tpl = EXAMPLES[key];
         if (!tpl) return;
-        state.persons = tpl.map(p => ({
-            role: p.role, sex: p.sex, occ: p.occ, uhlirz: p.uhlirz || ''
+        // Personen-Liste: aus tpl.persons (neue Form) oder tpl selbst (alt).
+        const personsTpl = Array.isArray(tpl) ? tpl : (tpl.persons || []);
+        const orgsTpl = Array.isArray(tpl) ? [] : (tpl.orgs || []);
+        state.persons = personsTpl.map(p => ({
+            role: p.role || '', sex: p.sex || '',
+            occ: p.occ || '', uhlirz: p.uhlirz || ''
+        }));
+        state.orgs = orgsTpl.map(o => ({
+            role: o.role || '', name: o.name || '', type: o.type || ''
         }));
         renderPersonsTable();
+        renderOrgsTable();
         sync();
         // Scroll zur Personen-Tabelle, damit Forscherin sieht, was gesetzt wurde.
         personsTable.scrollIntoView({ behavior: 'smooth', block: 'center' });
@@ -806,6 +1316,7 @@
     // mitzuschleppen.
     function resetStateFromUrl() {
         state.persons = [];
+        state.orgs = [];
         state.scope = 'event';
         state.corpora = new Set(ALL_CORPORA);
         scopeChips.forEach(c => {
@@ -823,12 +1334,14 @@
         }
         readUrl();
         renderPersonsTable();
+        renderOrgsTable();
     }
 
     // Hat der Nutzer eine Abweichung vom Default-Zustand vorgenommen?
-    // Default = keine Personen, scope=event, alle Korpora aktiv.
+    // Default = keine Personen/Orgs, scope=event, alle Korpora aktiv.
     function hasNonDefaultState() {
         return state.persons.length > 0 ||
+               state.orgs.length > 0 ||
                state.scope !== 'event' ||
                state.corpora.size !== ALL_CORPORA.length;
     }
@@ -839,20 +1352,54 @@
             sync();
         } else {
             renderActiveFilters();
-            renderHits({ hits: [], cards: [] });
+            renderHits({ hits: [], cards: [], orgCards: [] });
         }
     });
+
+    /* ---------- Spalten-Sortierung -------------------------------------- */
+    // Header tragen data-sort="date|source|corpus|tx". Klick wechselt
+    // den Sort-Key; erneuter Klick auf dieselbe Spalte dreht die Richtung.
+    // Visuelles Feedback ueber aria-sort und sorted-asc/sorted-desc-
+    // Klassen, die das globale Tabellen-CSS bereits stylt.
+    if (hitsTable) {
+        const sortHeaders = hitsTable.querySelectorAll('th[data-sort]');
+        function refreshSortIndicators() {
+            sortHeaders.forEach(h => {
+                h.classList.remove('sorted-asc', 'sorted-desc');
+                h.setAttribute('aria-sort', 'none');
+                if (h.dataset.sort === state.sortKey) {
+                    h.classList.add(state.sortDir === 1 ? 'sorted-asc' : 'sorted-desc');
+                    h.setAttribute('aria-sort',
+                        state.sortDir === 1 ? 'ascending' : 'descending');
+                }
+            });
+        }
+        sortHeaders.forEach(th => {
+            th.addEventListener('click', e => {
+                // Klicks auf Tipp-Trigger ignorieren — die oeffnen das
+                // Glossar-Popover, das ist ein anderer Interaktionspfad.
+                if (e.target.closest('.tip-trigger, .tip-popover')) return;
+                const key = th.dataset.sort;
+                if (state.sortKey === key) state.sortDir *= -1;
+                else { state.sortKey = key; state.sortDir = 1; }
+                refreshSortIndicators();
+                if (DATA) renderHits(compute());
+            });
+        });
+        refreshSortIndicators();
+    }
 
     /* ---------- Boot ---------------------------------------------------- */
     readUrl();
     renderPersonsTable();
+    renderOrgsTable();
     // Daten erst beim ersten Sync laden — Initial-Render zeigt leere Tabelle.
     if (hasNonDefaultState()) {
         sync();
     } else {
         // Kein State aus URL: nur den UI-State darstellen, keine Daten laden.
         renderActiveFilters();
-        renderHits({ hits: [], cards: [] });
+        renderHits({ hits: [], cards: [], orgCards: [] });
     }
 
 })();
