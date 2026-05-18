@@ -21,6 +21,19 @@
     const decFilter = V.makeDecadeFilter(STATE);
 
     // ---------------------------------------------------------------------
+    // Mark a detail table with the active sex filter so CSS can de-emphasise
+    // the columns belonging to the filtered-out sex. The aggregate values
+    // themselves stay readable on hover; this only shifts the visual weight
+    // so the donut/legend filter feels honest about its scope.
+    // ---------------------------------------------------------------------
+    function applySexFilterClass(table, sex) {
+        if (!table) return;
+        table.classList.remove('is-filter-m', 'is-filter-f');
+        if (sex === 'm') table.classList.add('is-filter-m');
+        else if (sex === 'f') table.classList.add('is-filter-f');
+    }
+
+    // ---------------------------------------------------------------------
     // M/F bar + counts; same look in donut legends and the labels table.
     // Returns an HTML snippet; the caller chooses the wrapper.
     // ---------------------------------------------------------------------
@@ -195,8 +208,10 @@
     }
 
     function renderRolesDetailTable(data) {
-        const tbody = document.querySelector('#roles-table tbody');
+        const table = document.getElementById('roles-table');
+        const tbody = table ? table.querySelector('tbody') : null;
         if (!tbody) return;
+        applySexFilterClass(table, STATE.sex);
         const totalM = V.ROLE_ORDER.reduce((s, r) => s + (data[r].m || 0), 0);
         const totalF = V.ROLE_ORDER.reduce((s, r) => s + (data[r].f || 0), 0);
         const grandTotal = totalM + totalF;
@@ -278,8 +293,10 @@
     }
 
     function renderRelationsDetailTable(perType, personsTotal) {
-        const tbody = document.querySelector('#relations-table tbody');
+        const table = document.getElementById('relations-table');
+        const tbody = table ? table.querySelector('tbody') : null;
         if (!tbody) return;
+        applySexFilterClass(table, STATE.sex);
         const grandRels = perType.reduce((s, x) => s + x.total, 0);
         const totalM = perType.reduce((s, x) => s + x.m, 0);
         const totalF = perType.reduce((s, x) => s + x.f, 0);
@@ -421,8 +438,10 @@
 
         const filtered = all.filter(l => {
             if (typeFilter !== 'all' && l.type !== typeFilter) return false;
-            if (sexFilter === 'm' && (l.m || 0) === 0) return false;
-            if (sexFilter === 'f' && (l.f || 0) === 0) return false;
+            // Sex filter checks unique-person counts (pm/pf) so the filter
+            // matches the M/W bar column shown in the row.
+            if (sexFilter === 'm' && (l.pm || 0) === 0) return false;
+            if (sexFilter === 'f' && (l.pf || 0) === 0) return false;
             return true;
         });
         filtered.sort((a, b) => (b.persons || 0) - (a.persons || 0));
@@ -438,7 +457,11 @@
             const persons = l.persons || 0;
             const barWidth = (persons / maxPersons * 100).toFixed(2);
             const variants = (l.variants || []).slice(0, 6).join(', ');
+            // norm holds the canonical aggregation key — the drill_down map
+            // is keyed by it, not by the display label.
+            const normKey = l.norm || (l.label || '').toLowerCase();
             return `<tr data-label="${encodeURIComponent(l.label)}"
+                data-norm="${encodeURIComponent(normKey)}"
                 title="${variants ? 'Varianten: ' + variants : ''}">
                 <td class="col-label">${l.label}</td>
                 <td>${V.REL_LABELS[l.type] || l.type}</td>
@@ -448,7 +471,7 @@
                         <span class="cell-mini-bar-num">${V.fmt(persons)}</span>
                     </div>
                 </td>
-                <td class="col-sexbar">${sexBarHTML(l.m || 0, l.f || 0)}</td>
+                <td class="col-sexbar">${sexBarHTML(l.pm || 0, l.pf || 0)}</td>
             </tr>`;
         });
         tbody.innerHTML = rows.join('') ||
@@ -612,14 +635,17 @@
         }
         openDrill('Transaktionstyp: ' + V.labelize(txKey), keys);
     }
-    function drillLabel(label) {
-        // label_sex keys are composite: "{lowercased_label}__{m|f}"
+    function drillLabel(normKey, label) {
+        // label_sex keys are composite: "{normalised_label}__{m|f}" —
+        // built from the aggregator's _LABEL_NORM map. The display label is
+        // the most-frequent raw variant and is NOT the lookup key (e.g.
+        // display "anstatt" maps to canonical key "anstat").
         const dd = (RELATIONS.drill_down || {}).label_sex || {};
         const sex = STATE.sex;
-        const lc = label.toLowerCase();
         const keys = [];
-        if (sex === 'all' || sex === 'm') (dd[lc + '__m'] || []).forEach(k => keys.push(k));
-        if (sex === 'all' || sex === 'f') (dd[lc + '__f'] || []).forEach(k => keys.push(k));
+        if (sex === 'all' || sex === 'm') (dd[normKey + '__m'] || []).forEach(k => keys.push(k));
+        if (sex === 'all' || sex === 'f') (dd[normKey + '__f'] || []).forEach(k => keys.push(k));
+        if (sex === 'all' || sex === 'unspecified') (dd[normKey + '__unspecified'] || []).forEach(k => keys.push(k));
         const sexNote = (sex !== 'all') ? ' · ' + (V.SEX_LABELS_DE[sex] || sex) : '';
         openDrill('Bezeichnung: ' + label + sexNote, keys);
     }
@@ -705,7 +731,8 @@
                 const tr = e.target.closest('tr[data-label]');
                 if (!tr) return;
                 const label = decodeURIComponent(tr.dataset.label);
-                drillLabel(label);
+                const normKey = decodeURIComponent(tr.dataset.norm || tr.dataset.label);
+                drillLabel(normKey, label);
             });
         }
         // Roles detail table: same drill as the legend; the row's data-role

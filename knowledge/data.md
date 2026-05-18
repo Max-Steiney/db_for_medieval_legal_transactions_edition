@@ -73,6 +73,8 @@ Jede Ebene hat ihre eigene Zählung. Wer nach Urkunden zählt, bleibt auf Quelle
 
 Auf der Nennungsebene gilt: Mehrfacherwähnungen einer Entität innerhalb einer Quelle werden bei der Aggregation zu einer Nennung zusammengefasst. Die Zählebene [[glossar#Gesamtnennung]] ist damit quellenbereinigt. Die Entscheidung und ihr Hintergrund stehen in [[specification#Quellenbereinigte Zählung]], die technische Umsetzung in [[architecture#Quellenbereinigte Aggregation als Invariante]].
 
+In der publizierten Datenbasis ist die Hierarchie Quelle → Event in der Praxis fast überall flach: Im freigegebenen Bestand tragen 2.648 von 2.654 Quellen mit Events genau ein Event, nur sechs Quellen tragen zwei oder drei. Eine Urkunde dokumentiert in der editorischen Realität meist ein einziges Rechtsgeschäft; Mehrfach-Event-Quellen sind die Ausnahme. UI-Aussagen, die Quellen- und Event-Counts nebeneinander stellen („X Rechtsgeschäfte in Y Quellen"), zeigen daher fast immer dieselbe oder eine sehr nahe beieinander liegende Zahl. Die Begriffshierarchie bleibt trotzdem ein eigener Wert, weil sie die Grundlage für Aussagen über Geltungsbereich („gemeinsam in derselben Quelle" gegen „im selben Rechtsgeschäft") und für die Mehrfach-Event-Ausnahmen ist.
+
 ## Register
 
 Die Datenbank publiziert zwei Register: Personen und Organisationen. Jeder Eintrag ist eine konsolidierte Identität mit eindeutiger ID, verknüpft die Vorkommen in den Quellen und trägt eine eigene Detail-Profilseite. Beziehungen zwischen Entitäten (Verwandtschaft, Freundschaft, Vertretung, Beruf, Titelverweis) sind in beiden Profilen sichtbar, wo es semantisch trägt: Verwandtschaft, Freundschaft und Vertretung sind bidirektional aufgelöst (eine CSV-Zeile erscheint im Profil beider Seiten), Beruf und Titelverweis sind einseitig (das Gegenüber ist eine Organisation).
@@ -92,6 +94,18 @@ Entitäten referenzieren die Register-Einträge für Personen, Organisationen un
 Attribute halten zusätzliche Merkmale fest, etwa Verwandtschaftsbeziehungen, Berufe oder topographische Zuordnungen.
 
 Berufe sind im Quellen-Text in der Original-Schreibweise belegt und werden über `normalisation_lists/roleName_norm_matching.csv` normalisiert. Die Spalte `Gewerbe_nach_Uhlirz_GstW` ordnet jedem normalisierten Beruf eine Uhlirz-Kategorie zu (römische Ziffer plus Klartext, von „I Landwirtschaft" bis „XVIII Verwaltung"). Diese Klassifikation ist die Grundlage für berufsgruppen-orientierte Forschungsfragen ([[user-stories#Endogamie in einer Berufsgruppe]]). Verwandtschaftsbezeichnungen liegen in `kin_relations_in_sources.csv` als freier deutscher Begriff vor („Gemahlin", „Hausfrau", „Gatte"); ein typisierter Heirats-Tag existiert nicht, ein String-Match auf eine Heirats-Begriffsliste löst den Anwendungsfall.
+
+### Drei Orte für die Berufs-Angabe
+
+Eine Berufsbezeichnung kann in der Pipeline an drei verschiedenen Stellen auftauchen, und jede Stelle steht für eine andere Annotationspraxis:
+
+- `occ_relations_in_sources.csv` hält Berufe, die im TEI durch ein explizites `<occupation>`-Element annotiert sind, samt Bezug zu Event und Person. Dies ist die strengste Form: die Annotation hat einen eigenen `<rs>`-Wrapper und ist als Berufs-Aussage typisiert.
+- `persons_in_sources.csv::source_prof` hält die Berufsangabe, wie sie im Quellentext als Apposition zur Personenerwähnung erscheint („Hannsen, dem wachsgiesser"). Diese Form ist häufiger, weil sie näher an der Quellenformulierung bleibt, und ist nicht als eigenständige Beruf-Annotation modelliert.
+- `persons.csv::addname_orig` hält Beinamen in der Personen-Stammdatei. Wenn ein Beruf identitätsbildend ist („Jakob Wachsgießer"), wandert er hierher und nicht zwangsläufig in die quellenbezogenen Spalten.
+
+Diese Mehrfach-Lokalisierung ist editorische Realität, nicht Designfehler — sie spiegelt unterschiedlich tiefe Auszeichnungs-Entscheidungen je Person und Quelle. Schwerpunkt ist erkennbar: `occ_relations` trägt häufig institutionelle Funktion und Status (purger, clericus, official, Bürger), `source_prof` häufig das eigentliche Handwerk in der Quellenformulierung (wachsgiesser, ledrer, chramer, gürtler). Beide Pfade stehen unabhängig und in 326 Person-Quelle-Paaren parallel; nur in 11 davon trägt eine Spalte denselben String wie die andere.
+
+Konsequenz für die Aggregat-Schicht: Jeder Aggregator, der Berufe oder Uhlirz-Kategorien verwendet, muss bewusst entscheiden, welchen der drei Orte er liest. Die zwei UI-getriebenen Konstellations-Aggregatoren (`role_constellation.py`) und die Verifikations-Säule (`verification/research_questions.py` und `frontend/aggregator/research_questions.py`) lesen beide `occ_relations` und `source_prof` und vereinigen sie deduliziert; die Personen- und Organisationsprofile listen die Einträge aus beiden Spalten separat unter Quellenvorkommen, damit die editorische Tiefe pro Person sichtbar bleibt. `addname_orig` aus der Stammdatei fließt heute in keinen der Beruf-Filter ein, sondern bleibt Bestandteil des Anzeigenamens.
 
 ## Sonderfall Menschen-Events
 

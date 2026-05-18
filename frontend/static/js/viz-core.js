@@ -228,6 +228,10 @@ let VizCore = (function () {
         }
         minEl.addEventListener('input', update);
         maxEl.addEventListener('input', update);
+        // Initial paint: data-height is set per bar in the template but only
+        // projected onto style.height by updateRangeHistogram. Without this
+        // first call the histogram stays flat until the user moves the slider.
+        updateRangeHistogram(parseInt(minEl.value, 10), parseInt(maxEl.value, 10));
     }
 
     function updateRangeHistogram(lo, hi) {

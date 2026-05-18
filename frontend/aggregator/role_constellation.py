@@ -19,13 +19,19 @@ from ._shared import (
 # --- Helpers --------------------------------------------------------------
 
 def _person_display_name(row: dict) -> str:
-    """Forename + surname (or addname) + genname; multi-values take the first."""
+    """Forename + surname (or addname) + genname; multi-values take the first.
+
+    Fallback-Kette fuer den Beinamen: surname_reg ist Hauptfeld (~11.6k
+    Personen); fehlt der, traegt addname_reg den Beinamen (~3.4k Personen,
+    z. B. "von Purgstall auf der Schuett"); zuletzt addname_orig (~600).
+    """
     def first(s: str) -> str:
         return (s or "").split("|")[0].strip()
 
     fn = first(row.get("forename_reg", ""))
-    # addname_orig actually holds the regularised form (inherited XSLT column swap).
-    sn = first(row.get("surname_reg", "")) or first(row.get("addname_orig", ""))
+    sn = (first(row.get("surname_reg", ""))
+          or first(row.get("addname_reg", ""))
+          or first(row.get("addname_orig", "")))
     gen = first(row.get("genname", ""))
     return " ".join(p for p in (fn, sn, gen) if p) or row.get("id", "")
 
@@ -65,6 +71,7 @@ def aggregate_role_constellation(docs_data_dir: Path) -> dict:
     eis_rows = _cached_csv("events_in_sources.csv")
     fn_rows = _cached_csv("filenames.csv")
     occ_rows = _cached_csv("occ_relations_in_sources.csv")
+    pis_rows = _cached_csv("persons_in_sources.csv")
     title_rows = _cached_csv("title-ref_relations_in_sources.csv")
     norm_map = _load_norm_matching()
     # Uhlirz-Klassifikation der Berufe (Spalte Gewerbe_nach_Uhlirz_GstW in
@@ -74,7 +81,11 @@ def aggregate_role_constellation(docs_data_dir: Path) -> dict:
     uhlirz_map = _load_uhlirz_matching()
 
     person_info = {
-        r["id"]: {"sex": r.get("sex", ""), "name": _person_display_name(r)}
+        r["id"]: {
+            "sex": r.get("sex", ""),
+            "name": _person_display_name(r),
+            "note": (r.get("note", "") or "").strip(),
+        }
         for r in persons_rows if r.get("id")
     }
 
@@ -102,12 +113,29 @@ def aggregate_role_constellation(docs_data_dir: Path) -> dict:
         if ek and pk:
             event_occs[(ek, pk)].extend(_split_pipes(r.get("occ", "")))
 
+    # Zweiter Beruf-Pfad: source_prof aus persons_in_sources.csv. Dort
+    # liegt die Apposition im Quellentext (Hannsen, dem wachsgiesser).
+    # Editorisch ist das oft das eigentliche Handwerk, waehrend
+    # occ_relations eher Funktion und Status traegt (purger, clericus).
+    # Beide Spalten zusammen entsprechen dem Forschungsinteresse "wer
+    # tritt als Wachsgiesser im Bestand auf", unabhaengig vom
+    # Annotationsort. Gemappt wird per file_key (Quelle), weil
+    # source_prof ohne event-Bezug vorliegt; alle Events einer Quelle
+    # erben die source_prof-Eintraege der dort genannten Person.
+    file_person_profs: dict[tuple, list[str]] = defaultdict(list)
+    for r in pis_rows:
+        fk, pk = r.get("file_key", ""), r.get("person_key", "")
+        if fk and pk:
+            file_person_profs[(fk, pk)].extend(_split_pipes(r.get("source_prof", "")))
+
     event_titles: dict[tuple, list[str]] = defaultdict(list)
     for r in title_rows:
         ek, pk = r.get("event_key", ""), r.get("person_key", "")
         tit = (r.get("title_ref", "") or "").strip()
         if ek and pk and tit:
             event_titles[(ek, pk)].append(tit)
+
+    event_to_file = {ek: meta["file_key"] for ek, meta in event_meta.items()}
 
     event_participants: dict[str, list[dict]] = defaultdict(list)
     for r in pie_rows:
@@ -118,7 +146,22 @@ def aggregate_role_constellation(docs_data_dir: Path) -> dict:
         role = r.get("event_role", "") or "other"
         if role not in VALID_ROLES:
             role = "other"
-        occs = event_occs.get((ek, pk), [])
+        # Beruf-Liste vereinigt zwei Quellen, case-insensitiv dedupliziert
+        # (occ_relations kommt zuerst, dann nur die source_prof-Werte, die
+        # noch nicht vertreten sind). Die Trennung der zwei Annotationsorte
+        # ist editorisch real (siehe knowledge/data.md), wird hier aber
+        # bewusst aufgegeben, weil das Forschungsinteresse "wer tritt als
+        # Wachsgiesser auf" beide Wege gleichermaßen meint. Die Detail-
+        # Trennung bleibt auf den Personenprofilen erhalten.
+        occs = list(event_occs.get((ek, pk), []))
+        seen_lower = {o.lower() for o in occs}
+        fk = event_to_file.get(ek, "")
+        for prof in file_person_profs.get((fk, pk), []):
+            key = prof.lower()
+            if key in seen_lower:
+                continue
+            occs.append(prof)
+            seen_lower.add(key)
         # Uhlirz-Kategorien aus dem Beruf-Mapping ableiten, deduplisiert
         # und sortiert. Eine Person hat ggf. mehrere Berufe und damit
         # mehrere Kategorien; eine leere Liste ist der Default fuer
@@ -129,7 +172,7 @@ def aggregate_role_constellation(docs_data_dir: Path) -> dict:
             # gemischte Schreibungen tragen.
             for cat in uhlirz_map.get(o.lower(), []):
                 uhlirz_set.add(cat)
-        event_participants[ek].append({
+        participant = {
             "p": pk,
             "n": pinfo.get("name", ""),
             "r": role,
@@ -137,7 +180,10 @@ def aggregate_role_constellation(docs_data_dir: Path) -> dict:
             "t": event_titles.get((ek, pk), []),
             "o": occs,
             "u": sorted(uhlirz_set),
-        })
+        }
+        if pinfo.get("note"):
+            participant["nt"] = pinfo["note"]
+        event_participants[ek].append(participant)
 
     events: list[dict] = []
     occ_counter: Counter = Counter()
@@ -193,6 +239,7 @@ def aggregate_role_constellation(docs_data_dir: Path) -> dict:
             description="Per-event participant lists for analysis/index.html.",
             sources=["persons.csv", "persons_in_events.csv", "events_in_sources.csv",
                      "filenames.csv", "occ_relations_in_sources.csv",
+                     "persons_in_sources.csv",
                      "normalisation_lists/roleName_norm_matching.csv"],
             dimensions=[
                 {"id": "event",      "label": "Event"},

@@ -6,8 +6,10 @@
 
    - Anfangszustand: keine Personen-Box, leere Trefferliste.
    - Forscherin klickt "+ Person hinzufuegen": neue nummerierte Box mit
-     Rollen-Dropdown und optionalen Bedingungen (Geschlecht, Beruf-enthaelt).
-   - Mindestens eine Box mit gesetzter Rolle => Treffer werden gerechnet.
+     Bedingungs-Slots (Rolle, Geschlecht, Beruf, Uhlirz-Klasse). Alle
+     Slots sind optional, die leere Rolle bedeutet "beliebige Rolle".
+   - Eine Box zaehlt als aktive Filter-Bedingung, sobald irgendein Slot
+     gesetzt ist; mindestens eine aktive Box => Treffer werden gerechnet.
    - Live-Update bei jeder Aenderung, kein Submit.
    - URL-Hash serialisiert den Abfrage-Stand, Reload reproduziert ihn.
    - CSV-Export der aktuellen Tabelle.
@@ -31,12 +33,8 @@
     const personsTbody = root.querySelector('#qb-persons-tbody');
     const addPersonBtn = root.querySelector('#qb-add-person');
     const resetBtn = root.querySelector('#filter-reset');
-    const scopeChips = root.querySelectorAll('[data-filter="scope"] .form-filter-chip');
-    const corpusChipsRoot = root.querySelector('#filter-corpora');
-    const rangeMin = root.querySelector('#range-min');
-    const rangeMax = root.querySelector('#range-max');
-    const rangeLabelMin = root.querySelector('#range-label-min');
-    const rangeLabelMax = root.querySelector('#range-label-max');
+    const scopeChips = root.querySelectorAll('[data-filter="scope"] .qb-pill');
+    const corpusChecksRoot = root.querySelector('#filter-corpora');
     const hitsSrc = root.querySelector('#hits-sources');
     const hitsEv  = root.querySelector('#hits-events');
     const tbody = root.querySelector('#hits-tbody');
@@ -44,9 +42,12 @@
     const emptyMsg = root.querySelector('#hits-empty-msg');
     const csvBtn = root.querySelector('#csv-download');
     const activeStrip = root.querySelector('#active-filters');
+    const resultsToolbar = root.querySelector('#results-toolbar');
+    const hitsTable = root.querySelector('#hits-table');
 
     /* ---------- Daten ---------------------------------------------------- */
     let DATA = null;       // role_constellation.json
+    let DOCS_LOOKUP = {};  // file_key -> {u, i, d, c, r} aus docs_lookup.json
     let OCC_VOCAB = [];    // [{value, count}]
     let dataPromise = null;
 
@@ -62,9 +63,17 @@
     function loadData() {
         if (DATA) return Promise.resolve(DATA);
         if (dataPromise) return dataPromise;
-        dataPromise = fetch(getDataUrl())
-            .then(r => { if (!r.ok) throw new Error('HTTP ' + r.status); return r.json(); })
-            .then(json => { DATA = json; return DATA; })
+        // role_constellation.json fuer die Trefferlogik, docs_lookup.json
+        // fuer korrekte Quellen-URLs und sprechende Idnos. Beide parallel.
+        const cstUrl = getDataUrl();
+        const lookupUrl = (window.ROOT_PATH || '..') + '/data/docs_lookup.json';
+        dataPromise = Promise.all([
+            fetch(cstUrl).then(r => {
+                if (!r.ok) throw new Error('HTTP ' + r.status); return r.json();
+            }),
+            fetch(lookupUrl).then(r => r.ok ? r.json() : {}).catch(() => ({})),
+        ])
+            .then(([json, lookup]) => { DATA = json; DOCS_LOOKUP = lookup || {}; return DATA; })
             .catch(err => {
                 emptyMsg.textContent =
                     'Daten konnten nicht geladen werden (' + err.message + '). ' +
@@ -74,9 +83,17 @@
         return dataPromise;
     }
 
-    // Occupation- und Uhlirz-Vokabular sind im Personen-Tabellen-
-    // Container hinterlegt (data-*-vocab Attribute). Wir lesen sie
-    // einmal.
+    // /analysis/ liegt eine Ebene tief; docs_lookup haelt root-relative URLs.
+    function docUrl(fileKey) {
+        const rec = DOCS_LOOKUP[fileKey];
+        if (rec && rec.u) return '../' + rec.u;
+        return '../documents/' + encodeURIComponent(fileKey) + '.html';
+    }
+    function docIdno(fileKey) {
+        const rec = DOCS_LOOKUP[fileKey];
+        return (rec && rec.i) || fileKey;
+    }
+
     try {
         OCC_VOCAB = JSON.parse(personsTable.dataset.occupationVocab || '[]');
     } catch (_) { OCC_VOCAB = []; }
@@ -89,20 +106,22 @@
     // State-Form:
     //   { persons: [ {role, sex, occ, uhlirz} ],
     //     scope: 'event'|'source',
-    //     yearMin, yearMax,
     //     corpora: Set<string> }
     // uhlirz ist Default '' (= "alle"); ein gesetzter Wert filtert auf
     // genau diese Uhlirz-Kategorie, gematcht gegen die u-Liste der
     // Participants in role_constellation.json.
+    // corpora: leeres Set bedeutet "alle Korpora" (kein Filter); ein
+    // explizit befuelltes Set filtert auf die gewaehlten Korpora.
+    // Defaults werden aus den Checkboxen gelesen (alle initial aktiv).
+    const ALL_CORPORA = corpusChecksRoot
+        ? Array.from(corpusChecksRoot.querySelectorAll('input[data-corpus]'))
+            .map(cb => cb.dataset.corpus)
+        : [];
     let state = {
         persons: [],
         scope: 'event',
-        yearMin: rangeMin ? +rangeMin.min : 1177,
-        yearMax: rangeMax ? +rangeMax.max : 1414,
-        corpora: new Set()
+        corpora: new Set(ALL_CORPORA)
     };
-    const RELEASED_MIN = state.yearMin;
-    const RELEASED_MAX = state.yearMax;
 
     const ROLE_LABELS = {
         issuer:    'Aussteller',
@@ -128,7 +147,7 @@
         numTd.appendChild(numSpan);
         tr.appendChild(numTd);
 
-        // Spalte Rolle (Pflicht)
+        // Spalte Rolle (optional; leer = beliebige Rolle)
         const roleTd = document.createElement('td');
         roleTd.className = 'qb-col-role';
         const roleSel = document.createElement('select');
@@ -136,7 +155,7 @@
         roleSel.setAttribute('aria-label', 'Rolle Person ' + (idx + 1));
         const blank = document.createElement('option');
         blank.value = '';
-        blank.textContent = '— Rolle wählen —';
+        blank.textContent = '— beliebige Rolle —';
         roleSel.appendChild(blank);
         ROLE_LIST.forEach(r => {
             const o = document.createElement('option');
@@ -276,88 +295,43 @@
         });
     });
 
-    if (corpusChipsRoot) {
-        corpusChipsRoot.querySelectorAll('.chip').forEach(chip => {
-            chip.addEventListener('click', () => {
-                const key = chip.dataset.corpus;
-                if (state.corpora.has(key)) {
-                    state.corpora.delete(key);
-                    chip.classList.remove('is-active');
-                    chip.setAttribute('aria-pressed', 'false');
-                } else {
-                    state.corpora.add(key);
-                    chip.classList.add('is-active');
-                    chip.setAttribute('aria-pressed', 'true');
-                }
+    if (corpusChecksRoot) {
+        corpusChecksRoot.querySelectorAll('input[data-corpus]').forEach(cb => {
+            cb.addEventListener('change', () => {
+                const key = cb.dataset.corpus;
+                if (cb.checked) state.corpora.add(key);
+                else state.corpora.delete(key);
+                const label = cb.closest('label');
+                if (label) label.classList.toggle('is-active', cb.checked);
                 sync();
             });
         });
     }
 
-    function updateRangeLabels() {
-        if (rangeLabelMin) rangeLabelMin.textContent = state.yearMin;
-        if (rangeLabelMax) rangeLabelMax.textContent = state.yearMax;
-        // Position der Labels an die Slider-Handles binden, sonst sitzen
-        // beide auf left:0 uebereinander (analog zu table-infra.js).
-        if (rangeMin && rangeMax && rangeLabelMin && rangeLabelMax) {
-            const dataMin = +rangeMin.min;
-            const dataMax = +rangeMax.max;
-            const span = dataMax - dataMin;
-            if (span > 0) {
-                const pctMin = (state.yearMin - dataMin) / span * 100;
-                const pctMax = (state.yearMax - dataMin) / span * 100;
-                rangeLabelMin.style.left = pctMin + '%';
-                rangeLabelMax.style.left = pctMax + '%';
-            }
-        }
-    }
-    if (rangeMin && rangeMax) {
-        const onRangeInput = () => {
-            let lo = +rangeMin.value, hi = +rangeMax.value;
-            if (lo > hi) { [lo, hi] = [hi, lo]; }
-            state.yearMin = lo;
-            state.yearMax = hi;
-            updateRangeLabels();
-            sync();
-        };
-        rangeMin.addEventListener('input', onRangeInput);
-        rangeMax.addEventListener('input', onRangeInput);
-    }
-
     resetBtn.addEventListener('click', () => {
         state.persons = [];
         state.scope = 'event';
-        state.yearMin = RELEASED_MIN;
-        state.yearMax = RELEASED_MAX;
-        state.corpora.clear();
-        // UI-Reset
-        if (rangeMin) rangeMin.value = RELEASED_MIN;
-        if (rangeMax) rangeMax.value = RELEASED_MAX;
-        updateRangeLabels();
+        state.corpora = new Set(ALL_CORPORA);
         scopeChips.forEach(c => {
             const isDefault = c.dataset.scope === 'event';
             c.classList.toggle('is-active', isDefault);
             c.setAttribute('aria-pressed', isDefault ? 'true' : 'false');
         });
-        if (corpusChipsRoot) {
-            corpusChipsRoot.querySelectorAll('.chip').forEach(c => {
-                c.classList.remove('is-active');
-                c.setAttribute('aria-pressed', 'false');
-            });
+        if (corpusChecksRoot) {
+            corpusChecksRoot.querySelectorAll('input[data-corpus]')
+                .forEach(cb => {
+                    cb.checked = true;
+                    const label = cb.closest('label');
+                    if (label) label.classList.add('is-active');
+                });
         }
         renderPersonsTable();
         sync();
     });
 
     /* ---------- Matching ------------------------------------------------ */
-    function eventInDateRange(ev) {
-        const y = parseInt((ev.d || '').slice(0, 4), 10);
-        if (isNaN(y)) return true;  // unknown date: do not exclude
-        return y >= state.yearMin && y <= state.yearMax;
-    }
-
     function eventInCorpus(ev) {
-        if (!state.corpora.size) return true;
+        if (!state.corpora.size) return false;
         return state.corpora.has(ev.c);
     }
 
@@ -400,7 +374,7 @@
     }
 
     function activeCards() {
-        return state.persons.filter(p => p.role);
+        return state.persons.filter(p => p.role || p.sex || p.occ || p.uhlirz);
     }
 
     function compute() {
@@ -414,7 +388,7 @@
             // Eng: Konstellation muss innerhalb desselben Events erfuellt sein.
             const hits = [];
             for (const ev of events) {
-                if (!eventInDateRange(ev) || !eventInCorpus(ev)) continue;
+                if (!eventInCorpus(ev)) continue;
                 const assigned = assignParticipants(ev, cards);
                 if (assigned) hits.push({ ev: ev, persons: assigned });
             }
@@ -426,7 +400,7 @@
         // eine Block-Zuordnung, deren Treffer aus den Quell-Events stammen.
         const byFile = new Map();
         for (const ev of events) {
-            if (!eventInDateRange(ev) || !eventInCorpus(ev)) continue;
+            if (!eventInCorpus(ev)) continue;
             if (!byFile.has(ev.f)) byFile.set(ev.f, []);
             byFile.get(ev.f).push(ev);
         }
@@ -452,28 +426,28 @@
         tbody.innerHTML = '';
         if (!cards.length) {
             emptyBox.classList.remove('hidden');
-            emptyMsg.textContent =
-                'Noch keine Abfrage zusammengestellt. Eine Person mit ' +
-                'Rolle hinzufuegen oder ein Beispiel unten anklicken.';
+            emptyMsg.textContent = 'Person hinzufügen oder Beispiel wählen.';
             if (onboarding) onboarding.classList.remove('hidden');
-            hitsSrc.textContent = '0 Quellen';
-            hitsEv.textContent = '0 Rechtsgeschäfte';
+            if (resultsToolbar) resultsToolbar.hidden = true;
+            if (hitsTable) hitsTable.hidden = true;
             csvBtn.setAttribute('disabled', '');
             return;
         }
         if (!hits.length) {
             emptyBox.classList.remove('hidden');
-            emptyMsg.textContent =
-                'Keine Treffer. Eine Bedingung lockern, eine Person ' +
-                'entfernen oder den Zeitraum erweitern.';
+            emptyMsg.textContent = 'Keine Treffer. Bedingung lockern oder Korpus erweitern.';
             if (onboarding) onboarding.classList.add('hidden');
-            hitsSrc.textContent = '0 Quellen';
-            hitsEv.textContent = '0 Rechtsgeschäfte';
+            if (resultsToolbar) resultsToolbar.hidden = false;
+            if (hitsTable) hitsTable.hidden = true;
+            hitsSrc.textContent = '0';
+            hitsEv.textContent = '0';
             csvBtn.setAttribute('disabled', '');
             return;
         }
         emptyBox.classList.add('hidden');
         if (onboarding) onboarding.classList.add('hidden');
+        if (resultsToolbar) resultsToolbar.hidden = false;
+        if (hitsTable) hitsTable.hidden = false;
 
         const sourceKeys = new Set();
         const eventKeys = new Set();
@@ -481,8 +455,8 @@
             sourceKeys.add(h.ev.f);
             eventKeys.add(h.ev.e);
         }
-        hitsSrc.textContent = fmt(sourceKeys.size) + ' Quellen';
-        hitsEv.textContent  = fmt(eventKeys.size)  + ' Rechtsgeschäfte';
+        hitsSrc.textContent = fmt(sourceKeys.size);
+        hitsEv.textContent  = fmt(eventKeys.size);
         csvBtn.removeAttribute('disabled');
         if (hits.length > 500) {
             csvBtn.setAttribute('title',
@@ -532,8 +506,8 @@
         const sourceTd = document.createElement('td');
         sourceTd.className = 'col-idno';
         const srcA = document.createElement('a');
-        srcA.href = '../documents/' + encodeURIComponent(ev.f) + '.html';
-        srcA.textContent = ev.f;
+        srcA.href = docUrl(ev.f);
+        srcA.textContent = docIdno(ev.f);
         sourceTd.appendChild(srcA);
         tr.appendChild(sourceTd);
 
@@ -547,6 +521,13 @@
         hit.persons.forEach((p, idx) => {
             const pill = document.createElement('span');
             pill.className = 'person-pill';
+            // Tooltip mit voller Stammdaten-Info: voller Name, ID, Note.
+            // Hilft die Person zu identifizieren, wenn der angezeigte
+            // Kurzname mehrdeutig waere (mehrere "Johann" in der Liste).
+            const tipParts = [p.n || p.p];
+            if (p.nt) tipParts.push(p.nt);
+            tipParts.push('ID: ' + p.p);
+            pill.title = tipParts.join('\n');
             const num = document.createElement('span');
             num.className = 'person-pill-num';
             num.textContent = idx + 1;
@@ -585,8 +566,8 @@
             basketTd.innerHTML = DataBasket.buttonHTML({
                 type: 'source',
                 id: ev.f,
-                label: ev.f,
-                url: '../documents/' + ev.f + '.html',
+                label: docIdno(ev.f),
+                url: docUrl(ev.f),
                 date: ev.d,
                 coll: ev.c,
                 regest: ''
@@ -618,26 +599,12 @@
     }
 
     /* ---------- Aktive-Filter-Chips ------------------------------------- */
-    // Korpus-Pills werden bewusst nicht in den Active-Filter-Strip gezogen,
-    // weil der aktive Korpus-Chip in der Filterleiste oben dieselbe
-    // Information mit Klick-zum-Deaktivieren-Affordance traegt; Duplikation
-    // vermeiden.
+    // Korpus-Auswahl wird bewusst nicht dupliziert: die Checkboxen oben
+    // sind die einzige Quelle der Wahrheit, ein zusaetzlicher "Korpus: …"-
+    // Pill waere Redundanz.
     function renderActiveFilters() {
         if (!activeStrip || !window.VizCore) return;
         const pieces = [];
-        if (state.yearMin !== RELEASED_MIN || state.yearMax !== RELEASED_MAX) {
-            pieces.push({
-                label: 'Zeitraum: ' + state.yearMin + '–' + state.yearMax,
-                onClear: () => {
-                    state.yearMin = RELEASED_MIN;
-                    state.yearMax = RELEASED_MAX;
-                    rangeMin.value = RELEASED_MIN;
-                    rangeMax.value = RELEASED_MAX;
-                    updateRangeLabels();
-                    sync();
-                },
-            });
-        }
         if (state.scope !== 'event') {
             pieces.push({
                 label: 'gemeinsam in: ' + (state.scope === 'source' ? 'Quelle' : 'Rechtsgeschäft'),
@@ -667,10 +634,9 @@
             if (p.uhlirz) parts.push('u=' + encodeURIComponent(p.uhlirz));
             params.push('p' + (idx + 1) + '=' + parts.join(','));
         });
-        if (state.yearMin !== RELEASED_MIN || state.yearMax !== RELEASED_MAX) {
-            params.push('y=' + state.yearMin + '-' + state.yearMax);
-        }
-        if (state.corpora.size) {
+        // Korpus-Auswahl nur dann serialisieren, wenn sie vom Default
+        // (alle Korpora aktiv) abweicht. Default = leerer Parameter.
+        if (state.corpora.size !== ALL_CORPORA.length) {
             params.push('c=' + Array.from(state.corpora).map(encodeURIComponent).join(','));
         }
         if (state.scope !== 'event') {
@@ -709,25 +675,20 @@
                     if (pk === 'o') state.persons[idx].occ = pv;
                     if (pk === 'u') state.persons[idx].uhlirz = pv;
                 });
-            } else if (k === 'y') {
-                const yr = v.split('-');
-                if (yr.length === 2) {
-                    const lo = parseInt(yr[0], 10), hi = parseInt(yr[1], 10);
-                    if (!isNaN(lo) && !isNaN(hi)) {
-                        state.yearMin = lo; state.yearMax = hi;
-                        if (rangeMin) rangeMin.value = lo;
-                        if (rangeMax) rangeMax.value = hi;
-                        updateRangeLabels();
-                    }
-                }
             } else if (k === 'c') {
+                // Explizite Korpus-Auswahl aus URL ueberschreibt den
+                // All-Default. Checkboxen entsprechend synchronisieren.
+                state.corpora.clear();
                 v.split(',').map(decodeURIComponent).forEach(c => state.corpora.add(c));
-                state.corpora.forEach(c => {
-                    corpusChipsRoot.querySelector('[data-corpus="' + c + '"]')
-                        ?.classList.add('is-active');
-                    corpusChipsRoot.querySelector('[data-corpus="' + c + '"]')
-                        ?.setAttribute('aria-pressed', 'true');
-                });
+                if (corpusChecksRoot) {
+                    corpusChecksRoot.querySelectorAll('input[data-corpus]')
+                        .forEach(cb => {
+                            const on = state.corpora.has(cb.dataset.corpus);
+                            cb.checked = on;
+                            const label = cb.closest('label');
+                            if (label) label.classList.toggle('is-active', on);
+                        });
+                }
             } else if (k === 'scope') {
                 state.scope = v === 'source' ? 'source' : 'event';
                 scopeChips.forEach(c => {
@@ -766,7 +727,7 @@
         for (const h of result.hits) {
             const row = [
                 h.ev.d || '',
-                h.ev.f || '',
+                docIdno(h.ev.f),
                 h.ev.c || '',
                 ...h.persons.map(p => p.n || p.p || ''),
                 h.ev.tx || ''
@@ -846,33 +807,35 @@
     function resetStateFromUrl() {
         state.persons = [];
         state.scope = 'event';
-        state.yearMin = RELEASED_MIN;
-        state.yearMax = RELEASED_MAX;
-        state.corpora.clear();
-        if (rangeMin) rangeMin.value = RELEASED_MIN;
-        if (rangeMax) rangeMax.value = RELEASED_MAX;
-        updateRangeLabels();
+        state.corpora = new Set(ALL_CORPORA);
         scopeChips.forEach(c => {
             const isDefault = c.dataset.scope === 'event';
             c.classList.toggle('is-active', isDefault);
             c.setAttribute('aria-pressed', isDefault ? 'true' : 'false');
         });
-        if (corpusChipsRoot) {
-            corpusChipsRoot.querySelectorAll('.chip').forEach(c => {
-                c.classList.remove('is-active');
-                c.setAttribute('aria-pressed', 'false');
-            });
+        if (corpusChecksRoot) {
+            corpusChecksRoot.querySelectorAll('input[data-corpus]')
+                .forEach(cb => {
+                    cb.checked = true;
+                    const label = cb.closest('label');
+                    if (label) label.classList.add('is-active');
+                });
         }
         readUrl();
         renderPersonsTable();
-        updateRangeLabels();
+    }
+
+    // Hat der Nutzer eine Abweichung vom Default-Zustand vorgenommen?
+    // Default = keine Personen, scope=event, alle Korpora aktiv.
+    function hasNonDefaultState() {
+        return state.persons.length > 0 ||
+               state.scope !== 'event' ||
+               state.corpora.size !== ALL_CORPORA.length;
     }
 
     window.addEventListener('hashchange', () => {
         resetStateFromUrl();
-        if (state.persons.length || state.corpora.size ||
-            state.yearMin !== RELEASED_MIN || state.yearMax !== RELEASED_MAX ||
-            state.scope !== 'event') {
+        if (hasNonDefaultState()) {
             sync();
         } else {
             renderActiveFilters();
@@ -883,11 +846,8 @@
     /* ---------- Boot ---------------------------------------------------- */
     readUrl();
     renderPersonsTable();
-    updateRangeLabels();
     // Daten erst beim ersten Sync laden — Initial-Render zeigt leere Tabelle.
-    if (state.persons.length || state.corpora.size ||
-        state.yearMin !== RELEASED_MIN || state.yearMax !== RELEASED_MAX ||
-        state.scope !== 'event') {
+    if (hasNonDefaultState()) {
         sync();
     } else {
         // Kein State aus URL: nur den UI-State darstellen, keine Daten laden.

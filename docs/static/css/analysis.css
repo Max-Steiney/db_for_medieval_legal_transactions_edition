@@ -11,27 +11,13 @@
    Werte ausschliesslich aus tokens.css.
    ========================================================================== */
 
-/* ---------- KPI-Strip unter H1 ------------------------------------------- */
 .analysis-query .index-header {
-    display: flex;
-    flex-wrap: wrap;
-    align-items: baseline;
-    gap: var(--space-md);
     margin-bottom: var(--space-sm);
 }
-.analysis-query .kpi-strip {
-    margin: 0;
-    font-size: var(--text-sm);
-    color: var(--color-text-light);
-}
-.analysis-query .kpi-strip strong {
-    color: var(--color-text);
-    font-weight: 600;
-}
-.analysis-query .kpi-sep { color: var(--color-text-muted); margin: 0 var(--space-2xs); }
 
 /* ---------- Abfrage-Container -------------------------------------------- */
 .analysis-query .qb {
+    position: relative;
     background: var(--color-bg-card);
     border: 1px solid var(--color-border);
     border-radius: var(--radius-lg);
@@ -39,6 +25,14 @@
 }
 .analysis-query .qb-body {
     padding: var(--space-sm) var(--space-md);
+}
+
+/* Global-Reset oben rechts in der Container-Ecke: betrifft die ganze
+   Abfrage (Modus, Korpus, Personen). */
+.analysis-query .qb-reset-corner {
+    position: absolute;
+    top: var(--space-sm);
+    right: var(--space-md);
 }
 
 /* ---------- Control-Labels (klein, dezent) ------------------------------ */
@@ -54,50 +48,97 @@
     margin: 0 0 var(--space-2xs);
 }
 
-/* ---------- Filterleiste einzeilig --------------------------------------- */
-.analysis-query .qb-filters-row {
-    display: grid;
-    grid-template-columns: auto minmax(0, 1fr) auto auto;
-    gap: var(--space-md);
-    align-items: end;
+/* ---------- Geltungsbereich -------------------------------------------- */
+.analysis-query .qb-scope {
     margin-bottom: var(--space-md);
-    padding-bottom: var(--space-sm);
+    padding-bottom: var(--space-md);
     border-bottom: 1px solid var(--color-border-light);
 }
-.analysis-query .qb-filter-block { min-width: 0; }
-.analysis-query .qb-filter-block .form-filter-chips {
+.analysis-query .qb-scope-row {
     display: flex;
     flex-wrap: wrap;
-    gap: var(--space-2xs);
+    align-items: center;
+    gap: var(--space-sm) var(--space-md);
+    margin-bottom: var(--space-sm);
+}
+.analysis-query .qb-scope-row:last-child { margin-bottom: 0; }
+.analysis-query .qb-control-label--inline {
+    display: inline-flex;
+    align-items: center;
+    margin: 0;
+    min-width: 8rem;
 }
 
-/* Zeitraum-Slider: Histogramm-Bars optisch deaktivieren (Macro-Grundgeruest
-   bleibt unveraendert, damit die anderen Listen-Seiten weiter funktionieren). */
-.analysis-query .range-slider { padding-top: 0; }
-.analysis-query .range-histogram { display: none; }
-.analysis-query .range-inputs { margin-top: 0; }
-.analysis-query .range-labels {
-    font-size: var(--text-xs);
-    color: var(--color-text-light);
-}
-
-/* Korpus-Chips: horizontale Zeile statt gestapelt. */
-.analysis-query .collection-chips {
+/* ---------- qb-pill: einheitliche Pillen-Form fuer Toggle, Checkbox,
+   Add-Action und Ghost-Action auf der ganzen Abfrage-Seite ------------ */
+.analysis-query .qb-pill-group {
     display: flex;
-    flex-direction: row;
     flex-wrap: wrap;
-    gap: var(--space-2xs);
+    gap: var(--space-sm);
 }
-
-/* Reset-Block in der Filterleiste: kein Label, Button auf Baseline der
-   anderen Bloecke. align-self: end zentriert vertikal am unteren Rand der
-   Reihe; die anderen Bloecke haben ein qb-control-label darueber, der
-   Reset hat keines. */
-.analysis-query .qb-filter-block--reset { align-self: end; }
-.analysis-query .qb-filter-block--reset .sidebar-reset {
-    width: auto;
+.analysis-query .qb-pill {
+    display: inline-flex;
+    align-items: center;
+    gap: var(--space-xs);
+    padding: var(--space-xs) var(--space-md);
+    background: var(--color-bg-card);
+    border: 1px solid var(--color-border);
+    border-radius: 999px;
+    font-family: var(--font-sans);
+    font-size: var(--text-sm);
+    color: var(--color-text-muted);
+    cursor: pointer;
+    line-height: 1.4;
+    transition: background-color var(--transition-fast),
+                border-color var(--transition-fast),
+                color var(--transition-fast);
+}
+.analysis-query .qb-pill:hover {
+    border-color: var(--color-border-dark);
+    color: var(--color-text);
+}
+.analysis-query .qb-pill.is-active {
+    background: var(--anno-person-bg);
+    border-color: var(--anno-person-border);
+    color: var(--anno-person);
+}
+.analysis-query .qb-pill-check {
+    accent-color: var(--anno-person);
+    cursor: pointer;
     margin: 0;
 }
+.analysis-query .qb-pill-label { font-weight: 500; }
+.analysis-query .qb-pill-count {
+    font-variant-numeric: tabular-nums;
+    font-size: var(--text-xs);
+    color: var(--color-text-muted);
+}
+.analysis-query .qb-pill-count::before { content: "("; }
+.analysis-query .qb-pill-count::after  { content: ")"; }
+.analysis-query .qb-pill.is-active .qb-pill-count { color: var(--anno-person); }
+
+/* Primaere Aktion: solider Akzent statt dezenter Outline. */
+.analysis-query .qb-pill--primary {
+    background: var(--anno-person-bg);
+    border-color: var(--anno-person);
+    color: var(--anno-person);
+    font-weight: 500;
+}
+.analysis-query .qb-pill--primary:hover {
+    background: var(--anno-person);
+    color: var(--color-text-inverse);
+}
+
+/* Ghost: nur Text in Pillen-Form, ohne Border, fuer sekundaere Aktionen. */
+.analysis-query .qb-pill--ghost {
+    background: transparent;
+    border-color: transparent;
+}
+.analysis-query .qb-pill--ghost:hover {
+    background: var(--color-bg-subtle);
+    color: var(--anno-person);
+}
+
 
 /* ---------- Personen-Sektion --------------------------------------------- */
 .analysis-query .qb-persons { margin-bottom: var(--space-md); }
@@ -117,7 +158,7 @@
     text-transform: uppercase;
     letter-spacing: 0.05em;
     color: var(--color-text-light);
-    padding: var(--space-2xs) var(--space-xs);
+    padding: var(--space-xs) var(--space-sm);
     border-bottom: 1px solid var(--color-border);
     white-space: nowrap;
 }
@@ -130,18 +171,18 @@
     font-size: var(--text-2xs);
 }
 .analysis-query .qb-persons-table tbody td {
-    padding: var(--space-2xs) var(--space-xs);
+    padding: var(--space-xs) var(--space-sm);
     border-bottom: 1px solid var(--color-border-light);
     vertical-align: middle;
 }
 .analysis-query .qb-persons-table.is-empty thead { display: none; }
-.analysis-query .qb-persons-table tbody:empty + .btn-add { margin-top: 0; }
 
-/* Spaltenbreiten — kompakt und gleichmaessig. */
-.analysis-query .qb-col-num    { width: 2.5rem; }
-.analysis-query .qb-col-role   { width: 10rem; }
-.analysis-query .qb-col-sex    { width: 8rem; }
-.analysis-query .qb-col-occ    { width: auto; min-width: 11rem; }
+/* Spaltenbreiten — Rolle braucht Platz fuer "sealer or witness", Geschlecht
+   kommt mit weniger aus, Beruf und Uhlirz teilen sich den Rest. */
+.analysis-query .qb-col-num    { width: 2rem; }
+.analysis-query .qb-col-role   { width: 12rem; }
+.analysis-query .qb-col-sex    { width: 7rem; }
+.analysis-query .qb-col-occ    { width: auto; min-width: 12rem; }
 .analysis-query .qb-col-uhlirz { width: 14rem; }
 .analysis-query .qb-col-rm     { width: 2rem; }
 
@@ -164,7 +205,7 @@
 .analysis-query .qb-persons-table select,
 .analysis-query .qb-persons-table input {
     width: 100%;
-    padding: 2px var(--space-2xs);
+    padding: var(--space-3xs) var(--space-2xs);
     font-family: var(--font-sans);
     font-size: var(--text-sm);
     border: 1px solid var(--color-border);
@@ -172,9 +213,24 @@
     background: var(--color-bg-card);
     color: var(--color-text);
 }
+/* Lange Option-Texte (Uhlirz-Klassen) sollen die Zellen-Grenze nicht
+   ueberschreiten; geschlossenes <select> truncated mit ellipsis,
+   geoeffnetes Dropdown zeigt weiterhin die vollen Labels. */
+.analysis-query .qb-persons-table select {
+    text-overflow: ellipsis;
+    overflow: hidden;
+}
 .analysis-query .qb-person-role {
     font-weight: 600;
     cursor: pointer;
+}
+
+/* Default-Werte (leerer Filter) dezenter darstellen: hellerer Text und
+   kursiv, damit auf einen Blick sichtbar ist, welche Felder aktiv filtern. */
+.analysis-query .qb-persons-table select:has(option[value=""]:checked),
+.analysis-query .qb-persons-table input:placeholder-shown {
+    color: var(--color-text-muted);
+    font-style: italic;
 }
 
 /* Entfernen-Button. */
@@ -189,65 +245,45 @@
 }
 .analysis-query .qb-person-remove:hover { color: var(--anno-person); }
 
-/* ---------- Add-Buttons (gestrichelt, dezent) --------------------------- */
-.analysis-query .btn-add {
-    background: none;
-    border: 1px dashed var(--color-border);
-    color: var(--color-text-light);
-    padding: var(--space-2xs) var(--space-sm);
-    border-radius: var(--radius);
-    font-family: var(--font-sans);
-    font-size: var(--text-xs);
-    cursor: pointer;
-    text-align: center;
-    margin-top: var(--space-2xs);
-    line-height: 1.4;
-}
-.analysis-query .btn-add:hover {
-    border-color: var(--anno-person);
-    color: var(--anno-person);
-}
-.analysis-query .person-card .btn-add { width: 100%; }
-.analysis-query .btn-add--primary {
-    border-style: solid;
-    border-color: var(--anno-person);
-    color: var(--anno-person);
-    background: var(--anno-person-bg);
-    font-weight: 500;
-    margin-top: var(--space-xs);
-    width: auto;
-    padding: var(--space-2xs) var(--space-md);
+.analysis-query .qb-actions-row {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    gap: var(--space-sm);
+    margin-top: var(--space-sm);
+    flex-wrap: wrap;
 }
 
-/* ---------- Ergebnis-Toolbar --------------------------------------------- */
-.analysis-query .main-toolbar {
+/* ---------- Trefferzeile, nahtlos vor dem Tabellen-Header -------------- */
+.analysis-query .hits-toolbar {
     display: flex;
-    align-items: baseline;
-    gap: var(--space-sm);
+    align-items: center;
+    justify-content: space-between;
+    gap: var(--space-md);
     flex-wrap: wrap;
-    margin-bottom: var(--space-2xs);
+    background: var(--color-bg-warm);
+    padding: var(--space-sm) var(--space-md);
 }
-.analysis-query .main-toolbar .result-count {
-    display: inline;
-    margin: 0;
-    font-size: var(--text-base);
-    font-weight: 600;
+.analysis-query .hits-toolbar[hidden] { display: none; }
+.analysis-query .hits-kpi {
+    font-family: var(--font-sans);
+    font-size: var(--text-sm);
     color: var(--color-text);
 }
-.analysis-query .result-count-sep {
-    color: var(--color-text-muted);
-    margin: 0 var(--space-2xs);
+.analysis-query .hits-kpi-num {
+    font-weight: 700;
+    color: var(--anno-person);
+    font-variant-numeric: tabular-nums;
+    margin-right: var(--space-2xs);
+    transition: color var(--transition-fast);
+}
+.analysis-query .hits-kpi-unit { font-weight: 500; }
+.analysis-query .hits-kpi-num--sec {
+    color: var(--color-text);
+    font-weight: 600;
+    margin: 0 var(--space-3xs);
 }
 
-/* ---------- Aktion-Buttons ueber der Tabelle ---------------------------- */
-.analysis-query .results-actions {
-    display: flex;
-    gap: var(--space-xs);
-    margin-bottom: var(--space-sm);
-    flex-wrap: wrap;
-    align-items: center;
-}
-.analysis-query .results-actions-spacer { flex: 1; }
 .analysis-query .toolbar-btn {
     background: var(--color-bg-card);
     border: 1px solid var(--color-border);
@@ -280,9 +316,9 @@
 .analysis-query .person-pill {
     display: inline-flex;
     align-items: center;
-    gap: var(--space-2xs);
-    margin: 0 var(--space-2xs) var(--space-2xs) 0;
-    padding: 2px var(--space-2xs);
+    gap: var(--space-xs);
+    margin: 0 var(--space-xs) var(--space-2xs) 0;
+    padding: 3px var(--space-xs);
     border: 1px solid var(--color-border-light);
     border-radius: var(--radius);
     font-size: var(--text-xs);
@@ -301,88 +337,79 @@
     font-size: 0.65rem;
     font-weight: 700;
 }
-.analysis-query .person-pill a { color: var(--color-text); }
+.analysis-query .person-pill a {
+    color: var(--color-text);
+    font-weight: 500;
+    max-width: 18rem;
+    overflow: hidden;
+    text-overflow: ellipsis;
+    white-space: nowrap;
+}
 .analysis-query .person-pill-role {
     color: var(--color-text-light);
     font-size: 0.92em;
     border-left: 1px solid var(--color-border-light);
-    padding-left: var(--space-2xs);
-    margin-left: var(--space-3xs);
+    padding-left: var(--space-xs);
+    margin-left: 0;
 }
 .analysis-query .person-pill-sex {
     color: var(--color-text-light);
     font-size: 0.92em;
+    border-left: 1px solid var(--color-border-light);
+    padding-left: var(--space-xs);
+    margin-left: 0;
 }
 .analysis-query .person-pill-sex--f { color: #8b3a62; }
 .analysis-query .person-pill-sex--m { color: #2f6a8f; }
 
-/* ---------- Onboarding-Block im Empty-State ----------------------------- */
-.analysis-query .qb-onboarding {
-    margin-top: var(--space-md);
-    padding-top: var(--space-md);
-    border-top: 1px solid var(--color-border);
-    text-align: left;
-}
-.analysis-query .qb-onboarding-intro {
+/* ---------- Empty-State: kurze Meldung + Beispiel-Pills ---------------- */
+.analysis-query .qb-empty-msg {
     margin: 0 0 var(--space-sm) 0;
     font-size: var(--text-sm);
-    color: var(--color-text);
-}
-.analysis-query .qb-onboarding-hint {
-    margin: var(--space-sm) 0 0 0;
-    font-size: var(--text-xs);
     color: var(--color-text-light);
 }
+.analysis-query .qb-onboarding {
+    margin-top: 0;
+    padding-top: 0;
+    border-top: none;
+    text-align: left;
+}
 .analysis-query .qb-examples {
-    display: grid;
-    grid-template-columns: repeat(auto-fit, minmax(16rem, 1fr));
-    gap: var(--space-xs);
+    display: flex;
+    flex-wrap: wrap;
+    gap: var(--space-sm);
 }
 .analysis-query .qb-example {
-    display: flex;
-    flex-direction: column;
-    gap: var(--space-3xs);
-    text-align: left;
-    padding: var(--space-xs) var(--space-sm);
-    background: var(--color-surface);
+    display: inline-flex;
+    align-items: center;
+    padding: var(--space-xs) var(--space-md);
+    background: var(--color-bg-card);
     border: 1px solid var(--color-border);
-    border-radius: var(--radius);
+    border-radius: 999px;
     color: var(--color-text);
     cursor: pointer;
     font-family: var(--font-sans);
-    line-height: 1.35;
-    transition: border-color 0.15s, background 0.15s;
+    font-size: var(--text-xs);
+    line-height: 1.4;
+    transition: border-color 0.15s, background 0.15s, color 0.15s;
 }
 .analysis-query .qb-example:hover,
 .analysis-query .qb-example:focus-visible {
     border-color: var(--anno-person);
-    background: var(--color-surface-alt, var(--color-surface));
+    background: var(--anno-person-bg);
+    color: var(--anno-person);
     outline: none;
-}
-.analysis-query .qb-example-title {
-    font-size: var(--text-sm);
-    font-weight: 600;
-}
-.analysis-query .qb-example-desc {
-    font-size: var(--text-xs);
-    color: var(--color-text-light);
 }
 .analysis-query .qb-example code {
     font-family: var(--font-mono, monospace);
     font-size: 0.92em;
     background: var(--color-bg, #fff);
-    padding: 0 0.18em;
+    padding: 0 0.25em;
+    margin-left: 0.25em;
     border-radius: 2px;
 }
 
-/* ---------- Responsive --------------------------------------------------- */
 @media (max-width: 900px) {
-    .analysis-query .qb-filters-row {
-        grid-template-columns: 1fr;
-        gap: var(--space-sm);
-    }
-    /* Personen-Tabelle: bei schmaler Viewport horizontal scrollbar machen
-       statt umzubrechen, damit die Spalten-Logik klar bleibt. */
     .analysis-query .qb-persons { overflow-x: auto; }
     .analysis-query .qb-persons-table { min-width: 40rem; }
 }

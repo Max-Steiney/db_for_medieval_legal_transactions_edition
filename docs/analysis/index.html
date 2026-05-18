@@ -9,17 +9,17 @@
     <title>Abfragen, Datenbank</title>
     <link rel="preload" as="font" type="font/woff2" crossorigin
           href="../static/fonts/inter-400-latin.woff2">
-    <link rel="stylesheet" href="../static/css/fonts.css?v=20260517112520">
-    <link rel="stylesheet" href="../static/css/tokens.css?v=20260517112520">
-    <link rel="stylesheet" href="../static/css/base.css?v=20260517112520">
-    <link rel="stylesheet" href="../static/css/components.css?v=20260517112520">
-    <link rel="stylesheet" href="../static/css/responsive.css?v=20260517112520">
-    <link rel="stylesheet" href="../static/css/print.css?v=20260517112520">
-    <link rel="stylesheet" href="../static/css/tip.css?v=20260517112520">
+    <link rel="stylesheet" href="../static/css/fonts.css?v=20260518131302">
+    <link rel="stylesheet" href="../static/css/tokens.css?v=20260518131302">
+    <link rel="stylesheet" href="../static/css/base.css?v=20260518131302">
+    <link rel="stylesheet" href="../static/css/components.css?v=20260518131302">
+    <link rel="stylesheet" href="../static/css/responsive.css?v=20260518131302">
+    <link rel="stylesheet" href="../static/css/print.css?v=20260518131302">
+    <link rel="stylesheet" href="../static/css/tip.css?v=20260518131302">
     
 
-<link rel="stylesheet" href="../static/css/index.css?v=20260517112536">
-<link rel="stylesheet" href="../static/css/analysis.css?v=20260517112536">
+<link rel="stylesheet" href="../static/css/index.css?v=20260518131321">
+<link rel="stylesheet" href="../static/css/analysis.css?v=20260518131321">
 
 </head>
 <body data-root-path=".."
@@ -111,25 +111,22 @@
 
     <header class="index-header">
         <h1>Abfragen</h1>
-        <p class="kpi-strip">
-            Korpus:
-            <strong>2.654</strong>&nbsp;Quellen
-            <span class="kpi-sep">&middot;</span>
-            <strong>2.661</strong>&nbsp;Rechtsgeschäfte
-            <span class="kpi-sep">&middot;</span>
-            <strong>8.368</strong>&nbsp;Personen
-        </p>
     </header>
 
     
     <section class="qb" aria-label="Abfrage zusammenstellen">
 
+        <button type="button" class="qb-pill qb-reset-corner" id="filter-reset"
+                aria-label="Abfrage zurückstellen">
+            &#x21BA; Zurückstellen
+        </button>
+
         <div class="qb-body">
 
-            <div class="qb-filters-row">
+            <div class="qb-scope">
 
-                <div class="qb-filter-block">
-                    <span class="qb-control-label">Gemeinsam in
+                <div class="qb-scope-row">
+                    <span class="qb-control-label qb-control-label--inline">Gemeinsam in
 <span class="tip-wrap">
     <button type="button" class="tip-trigger tip-trigger--icon"
             aria-expanded="false" aria-haspopup="dialog"
@@ -162,288 +159,49 @@
     </aside>
 </span>
 </span>
-                    <div class="form-filter-chips" role="group" aria-label="Verknüpfung der Personen"
-                         data-filter="scope">
-                        <button type="button" class="form-filter-chip" aria-pressed="false"
-                                data-scope="source">
-                            <span class="form-filter-chip-label">derselben Quelle</span>
-                        </button>
-                        <button type="button" class="form-filter-chip is-active" aria-pressed="true"
-                                data-scope="event">
-                            <span class="form-filter-chip-label">demselben Rechtsgeschäft</span>
-                        </button>
+                    <div class="qb-pill-group" role="group"
+                         aria-label="Verknüpfung der Personen" data-filter="scope">
+                        <button type="button" class="qb-pill" aria-pressed="false"
+                                data-scope="source">derselben Quelle</button>
+                        <button type="button" class="qb-pill is-active" aria-pressed="true"
+                                data-scope="event">demselben Rechtsgeschäft</button>
                     </div>
                 </div>
 
-                <div class="qb-filter-block qb-filter-block--time">
-                    <span class="qb-control-label">Zeitraum</span>
-                    
-
-
-<div class="range-slider" id="range-slider"
-     data-min="1177" data-max="1414">
-    <div class="range-histogram" id="range-histogram">
-        
-        <div class="range-bar"
-             data-decade="1170"
-             data-count="1"
-             data-height="4"
-             data-hint="1170er: 1 Rechtsgeschäft">
-        </div>
-        
-        <div class="range-bar"
-             data-decade="1180"
-             data-count="0"
-             data-height="0"
-             data-hint="1180er: 0 Rechtsgeschäfte">
-        </div>
-        
-        <div class="range-bar"
-             data-decade="1190"
-             data-count="1"
-             data-height="4"
-             data-hint="1190er: 1 Rechtsgeschäft">
-        </div>
-        
-        <div class="range-bar"
-             data-decade="1200"
-             data-count="1"
-             data-height="4"
-             data-hint="1200er: 1 Rechtsgeschäft">
-        </div>
-        
-        <div class="range-bar"
-             data-decade="1210"
-             data-count="0"
-             data-height="0"
-             data-hint="1210er: 0 Rechtsgeschäfte">
-        </div>
-        
-        <div class="range-bar"
-             data-decade="1220"
-             data-count="1"
-             data-height="4"
-             data-hint="1220er: 1 Rechtsgeschäft">
-        </div>
-        
-        <div class="range-bar"
-             data-decade="1230"
-             data-count="1"
-             data-height="4"
-             data-hint="1230er: 1 Rechtsgeschäft">
-        </div>
-        
-        <div class="range-bar"
-             data-decade="1240"
-             data-count="0"
-             data-height="0"
-             data-hint="1240er: 0 Rechtsgeschäfte">
-        </div>
-        
-        <div class="range-bar"
-             data-decade="1250"
-             data-count="1"
-             data-height="4"
-             data-hint="1250er: 1 Rechtsgeschäft">
-        </div>
-        
-        <div class="range-bar"
-             data-decade="1260"
-             data-count="3"
-             data-height="4"
-             data-hint="1260er: 3 Rechtsgeschäfte">
-        </div>
-        
-        <div class="range-bar"
-             data-decade="1270"
-             data-count="8"
-             data-height="4"
-             data-hint="1270er: 8 Rechtsgeschäfte">
-        </div>
-        
-        <div class="range-bar"
-             data-decade="1280"
-             data-count="6"
-             data-height="4"
-             data-hint="1280er: 6 Rechtsgeschäfte">
-        </div>
-        
-        <div class="range-bar"
-             data-decade="1290"
-             data-count="7"
-             data-height="4"
-             data-hint="1290er: 7 Rechtsgeschäfte">
-        </div>
-        
-        <div class="range-bar"
-             data-decade="1300"
-             data-count="24"
-             data-height="4"
-             data-hint="1300er: 24 Rechtsgeschäfte">
-        </div>
-        
-        <div class="range-bar"
-             data-decade="1310"
-             data-count="29"
-             data-height="4"
-             data-hint="1310er: 29 Rechtsgeschäfte">
-        </div>
-        
-        <div class="range-bar"
-             data-decade="1320"
-             data-count="45"
-             data-height="7"
-             data-hint="1320er: 45 Rechtsgeschäfte">
-        </div>
-        
-        <div class="range-bar"
-             data-decade="1330"
-             data-count="94"
-             data-height="15"
-             data-hint="1330er: 94 Rechtsgeschäfte">
-        </div>
-        
-        <div class="range-bar"
-             data-decade="1340"
-             data-count="135"
-             data-height="22"
-             data-hint="1340er: 135 Rechtsgeschäfte">
-        </div>
-        
-        <div class="range-bar"
-             data-decade="1350"
-             data-count="191"
-             data-height="32"
-             data-hint="1350er: 191 Rechtsgeschäfte">
-        </div>
-        
-        <div class="range-bar"
-             data-decade="1360"
-             data-count="239"
-             data-height="40"
-             data-hint="1360er: 239 Rechtsgeschäfte">
-        </div>
-        
-        <div class="range-bar"
-             data-decade="1370"
-             data-count="210"
-             data-height="35"
-             data-hint="1370er: 210 Rechtsgeschäfte">
-        </div>
-        
-        <div class="range-bar"
-             data-decade="1380"
-             data-count="215"
-             data-height="36"
-             data-hint="1380er: 215 Rechtsgeschäfte">
-        </div>
-        
-        <div class="range-bar"
-             data-decade="1390"
-             data-count="592"
-             data-height="100"
-             data-hint="1390er: 592 Rechtsgeschäfte">
-        </div>
-        
-        <div class="range-bar"
-             data-decade="1400"
-             data-count="436"
-             data-height="73"
-             data-hint="1400er: 436 Rechtsgeschäfte">
-        </div>
-        
-        <div class="range-bar"
-             data-decade="1410"
-             data-count="232"
-             data-height="39"
-             data-hint="1410er: 232 Rechtsgeschäfte">
-        </div>
-        
-        <div class="range-bar"
-             data-decade="1420"
-             data-count="0"
-             data-height="0"
-             data-hint="1420er: 0 Rechtsgeschäfte">
-        </div>
-        
-        <div class="range-bar"
-             data-decade="1430"
-             data-count="1"
-             data-height="4"
-             data-hint="1430er: 1 Rechtsgeschäft">
-        </div>
-        
-        <div class="range-bar"
-             data-decade="1440"
-             data-count="16"
-             data-height="4"
-             data-hint="1440er: 16 Rechtsgeschäfte">
-        </div>
-        
-        <div class="range-bar"
-             data-decade="1450"
-             data-count="34"
-             data-height="5"
-             data-hint="1450er: 34 Rechtsgeschäfte">
-        </div>
-        
-    </div>
-    <div class="range-inputs">
-        <input type="range" id="range-min"
-               min="1177" max="1414"
-               value="1177" step="1"
-               aria-label="Startjahr">
-        <input type="range" id="range-max"
-               min="1177" max="1414"
-               value="1414" step="1"
-               aria-label="Endjahr">
-    </div>
-    <div class="range-labels">
-        <span class="range-label-min" id="range-label-min">1177</span>
-        <span class="range-label-max" id="range-label-max">1414</span>
-    </div>
-</div>
-
-                </div>
-
-                <div class="qb-filter-block">
-                    <span class="qb-control-label">Korpus</span>
-                    
-<div class="collection-chips collection-chips--stack" id="filter-corpora">
-    
-    <button type="button" class="chip" data-corpus="QGW II/1"
-            title="QGW II/1: 2000 Eintraege im Korpus">
-        <span class="chip-label">QGW II/1</span>
-        <span class="chip-count" data-corpus-total="2000">2000</span>
-    </button>
-    
-    <button type="button" class="chip" data-corpus="Stadtbücher Bd. 1"
-            title="Stadtbücher Bd. 1: 577 Eintraege im Korpus">
-        <span class="chip-label">Stadtbücher Bd. 1</span>
-        <span class="chip-count" data-corpus-total="577">577</span>
-    </button>
-    
-    <button type="button" class="chip" data-corpus="QGW II/2"
-            title="QGW II/2: 46 Eintraege im Korpus">
-        <span class="chip-label">QGW II/2</span>
-        <span class="chip-count" data-corpus-total="46">46</span>
-    </button>
-    
-    <button type="button" class="chip" data-corpus="Satzbuch CD"
-            title="Satzbuch CD: 38 Eintraege im Korpus">
-        <span class="chip-label">Satzbuch CD</span>
-        <span class="chip-count" data-corpus-total="38">38</span>
-    </button>
-    
-</div>
-
-                </div>
-
-                <div class="qb-filter-block qb-filter-block--reset">
-                    <button type="button" class="sidebar-reset" id="filter-reset"
-                            aria-label="Alle Filter zurücksetzen">
-                        &#x21BA; Zurücksetzen
-                    </button>
+                <div class="qb-scope-row">
+                    <span class="qb-control-label qb-control-label--inline">Korpus</span>
+                    <div class="qb-pill-group" id="filter-corpora"
+                         role="group" aria-label="Korpora auswählen">
+                        
+                        <label class="qb-pill is-active" data-corpus="QGW II/1">
+                            <input type="checkbox" data-corpus="QGW II/1" checked
+                                   class="qb-pill-check">
+                            <span class="qb-pill-label">QGW II/1</span>
+                            <span class="qb-pill-count">2000</span>
+                        </label>
+                        
+                        <label class="qb-pill is-active" data-corpus="Stadtbücher Bd. 1">
+                            <input type="checkbox" data-corpus="Stadtbücher Bd. 1" checked
+                                   class="qb-pill-check">
+                            <span class="qb-pill-label">Stadtbücher Bd. 1</span>
+                            <span class="qb-pill-count">577</span>
+                        </label>
+                        
+                        <label class="qb-pill is-active" data-corpus="QGW II/2">
+                            <input type="checkbox" data-corpus="QGW II/2" checked
+                                   class="qb-pill-check">
+                            <span class="qb-pill-label">QGW II/2</span>
+                            <span class="qb-pill-count">46</span>
+                        </label>
+                        
+                        <label class="qb-pill is-active" data-corpus="Satzbuch CD">
+                            <input type="checkbox" data-corpus="Satzbuch CD" checked
+                                   class="qb-pill-check">
+                            <span class="qb-pill-label">Satzbuch CD</span>
+                            <span class="qb-pill-count">38</span>
+                        </label>
+                        
+                    </div>
                 </div>
 
             </div>
@@ -482,8 +240,8 @@
 </p>
 
                 <table class="qb-persons-table" id="qb-persons-table"
-                       data-occupation-vocab='[{"count": 747, "value": "purger"}, {"count": 315, "value": "B\u00fcrger"}, {"count": 211, "value": "purgermaister"}, {"count": 196, "value": "amptman"}, {"count": 193, "value": "pharrer"}, {"count": 171, "value": "Herzog"}, {"count": 166, "value": "rats"}, {"count": 161, "value": "B\u00fcrgers"}, {"count": 132, "value": "B\u00fcrgermeisters"}, {"count": 123, "value": "burger"}, {"count": 109, "value": "statrichter"}, {"count": 107, "value": "rates"}, {"count": 103, "value": "Kaplan"}, {"count": 97, "value": "chaplan"}, {"count": 86, "value": "Bergmeisters"}, {"count": 82, "value": "richter"}, {"count": 72, "value": "prior"}, {"count": 53, "value": "diener"}, {"count": 52, "value": "schaffer"}, {"count": 52, "value": "m\u00fcnzmaister"}, {"count": 51, "value": "Wiener B\u00fcrger"}, {"count": 49, "value": "Bischof"}, {"count": 47, "value": "pergmaister"}, {"count": 44, "value": "hofmaister"}, {"count": 43, "value": "Diener"}, {"count": 43, "value": "statschreiber"}, {"count": 43, "value": "rat"}, {"count": 41, "value": "verweser"}, {"count": 40, "value": "judenrichter"}, {"count": 39, "value": "chorherr"}, {"count": 39, "value": "rats der stat"}, {"count": 37, "value": "herzog"}, {"count": 37, "value": "phleger"}, {"count": 35, "value": "kaplan"}, {"count": 35, "value": "ambtman"}, {"count": 35, "value": "burgermaister"}, {"count": 34, "value": "spitalmaister"}, {"count": 32, "value": "Schafferin"}, {"count": 32, "value": "purger ze Wienne"}, {"count": 31, "value": "chapplan"}, {"count": 30, "value": "chapellan"}, {"count": 30, "value": "abt"}, {"count": 30, "value": "maister"}, {"count": 30, "value": "comiteur"}, {"count": 29, "value": "consul"}, {"count": 28, "value": "Wiener B\u00fcrgers"}, {"count": 28, "value": "purger ze Wienn"}, {"count": 26, "value": "rates der stat ze Wienne"}, {"count": 26, "value": "huebmaister"}, {"count": 26, "value": "mitpurger"}]'
-                       data-uhlirz-vocab='["I Landwirtschaft Gaertnerei Forstwirtschaft Thierzucht", "III Metallverarbeitung", "IV Erzeugung und Vertrieb von Leuchtstoffen Fetten und Oelen", "IX Bekleidungsindustrie", "VI Lederindustrie", "VIII Bereitung und Vertrieb von Nahrungs- und Genussmitteln Gast- und Schank Gewerbe", "X Gewerbe fuer Koerperpflege und Reinigung", "XI Baugewerbe", "XII Handel und Verkehr", "XIII Graphische Gewerbe", "XIV Spielleute und Fahrendes Volk", "XV Verschiedene gewerbliche Berufe und Lohnarbeiter", "XVI Geistliche Berufe", "XVII Bildung", "XVIII Verwaltung"]'>
+                       data-occupation-vocab='[{"count": 747, "value": "purger"}, {"count": 315, "value": "B\u00fcrger"}, {"count": 211, "value": "purgermaister"}, {"count": 197, "value": "amptman"}, {"count": 195, "value": "pharrer"}, {"count": 171, "value": "Herzog"}, {"count": 166, "value": "rats"}, {"count": 161, "value": "B\u00fcrgers"}, {"count": 132, "value": "B\u00fcrgermeisters"}, {"count": 123, "value": "burger"}, {"count": 109, "value": "statrichter"}, {"count": 107, "value": "rates"}, {"count": 103, "value": "Kaplan"}, {"count": 97, "value": "chaplan"}, {"count": 86, "value": "Bergmeisters"}, {"count": 82, "value": "richter"}, {"count": 73, "value": "prior"}, {"count": 58, "value": "priester"}, {"count": 57, "value": "Priester"}, {"count": 53, "value": "schaffer"}, {"count": 53, "value": "diener"}, {"count": 52, "value": "m\u00fcnzmaister"}, {"count": 51, "value": "Wiener B\u00fcrger"}, {"count": 49, "value": "Bischof"}, {"count": 47, "value": "pergmaister"}, {"count": 44, "value": "hofmaister"}, {"count": 43, "value": "Diener"}, {"count": 43, "value": "statschreiber"}, {"count": 43, "value": "rat"}, {"count": 41, "value": "verweser"}, {"count": 40, "value": "judenrichter"}, {"count": 39, "value": "chorherr"}, {"count": 39, "value": "rats der stat"}, {"count": 37, "value": "herzog"}, {"count": 37, "value": "phleger"}, {"count": 35, "value": "kaplan"}, {"count": 35, "value": "ambtman"}, {"count": 35, "value": "burgermaister"}, {"count": 34, "value": "spitalmaister"}, {"count": 32, "value": "Schafferin"}, {"count": 32, "value": "purger ze Wienne"}, {"count": 31, "value": "pinter"}, {"count": 31, "value": "wachsgiesser"}, {"count": 31, "value": "chapplan"}, {"count": 31, "value": "maister"}, {"count": 30, "value": "chapellan"}, {"count": 30, "value": "abt"}, {"count": 30, "value": "comiteur"}, {"count": 29, "value": "ledrer"}, {"count": 29, "value": "consul"}]'
+                       data-uhlirz-vocab='["I Landwirtschaft Gaertnerei Forstwirtschaft Thierzucht", "II Verarbeitung von Stein und Erde", "III Metallverarbeitung", "IV Erzeugung und Vertrieb von Leuchtstoffen Fetten und Oelen", "IX Bekleidungsindustrie", "V Textilgewerbe", "VI Lederindustrie", "VII Holz und Horn verarbeitende gewerbe", "VIII Bereitung und Vertrieb von Nahrungs- und Genussmitteln Gast- und Schank Gewerbe", "X Gewerbe fuer Koerperpflege und Reinigung", "XI Baugewerbe", "XII Handel und Verkehr", "XIII Graphische Gewerbe", "XIV Spielleute und Fahrendes Volk", "XV Verschiedene gewerbliche Berufe und Lohnarbeiter", "XVI Geistliche Berufe", "XVII Bildung", "XVIII Verwaltung"]'>
                     <thead>
                         <tr>
                             <th scope="col" class="qb-col-num">Nr.</th>
@@ -501,9 +259,11 @@
                     </tbody>
                 </table>
 
-                <button type="button" class="btn-add btn-add--primary" id="qb-add-person">
-                    + Person hinzufügen
-                </button>
+                <div class="qb-actions-row">
+                    <button type="button" class="qb-pill qb-pill--primary" id="qb-add-person">
+                        + Person hinzufügen
+                    </button>
+                </div>
             </div>
 
         </div>
@@ -511,30 +271,27 @@
 
     
 
-    <div class="main-toolbar">
-        <span class="result-count-wrap">
-            <span class="result-count" id="hits-sources">0&nbsp;Quellen</span>
-            <span class="result-count-sep">&middot;</span>
-            <span class="result-count" id="hits-events">0&nbsp;Rechtsgeschäfte</span>
-        </span>
-        <div class="active-filters" id="active-filters"
-             aria-live="polite" aria-label="Aktive Filter"></div>
-    </div>
-
-    <div class="results-actions">
-        <span class="results-actions-spacer"></span>
-        <button type="button" class="toolbar-btn" id="csv-download" disabled
-                aria-label="Aktuelle Trefferliste als CSV herunterladen">
-            <svg width="14" height="14" viewBox="0 0 16 16" aria-hidden="true">
-                <path d="M8 2v9m0 0l-3.5-3.5M8 11l3.5-3.5M2.5 13.5h11"
-                      stroke="currentColor" stroke-width="1.4"
-                      stroke-linecap="round" stroke-linejoin="round" fill="none"/>
-            </svg>
-            Tabelle als CSV herunterladen
-        </button>
-    </div>
+    <div class="active-filters" id="active-filters"
+         aria-live="polite" aria-label="Aktive Filter"></div>
 
     <section class="index-table-wrap">
+        <div class="hits-toolbar" id="results-toolbar" hidden>
+            <span class="hits-kpi" aria-live="polite">
+                <span class="hits-kpi-num" id="hits-events">0</span>
+                <span class="hits-kpi-unit">Rechtsgeschäfte in
+                    <span class="hits-kpi-num hits-kpi-num--sec" id="hits-sources">0</span>
+                    Quellen</span>
+            </span>
+            <button type="button" class="toolbar-btn" id="csv-download" disabled
+                    aria-label="Aktuelle Trefferliste als CSV herunterladen">
+                <svg width="14" height="14" viewBox="0 0 16 16" aria-hidden="true">
+                    <path d="M8 2v9m0 0l-3.5-3.5M8 11l3.5-3.5M2.5 13.5h11"
+                          stroke="currentColor" stroke-width="1.4"
+                          stroke-linecap="round" stroke-linejoin="round" fill="none"/>
+                </svg>
+                Tabelle als CSV herunterladen
+            </button>
+        </div>
         <table class="index-table" id="hits-table">
             <thead>
                 <tr>
@@ -692,63 +449,32 @@
         </table>
 
         <div class="no-results" id="hits-empty" role="status">
-            <p id="hits-empty-msg">Noch keine Abfrage zusammengestellt.
-                Eine Person mit Rolle hinzufügen, dann erscheinen Treffer.</p>
+            <p id="hits-empty-msg" class="qb-empty-msg">
+                Person hinzufügen oder Beispiel wählen.</p>
 
             <div class="qb-onboarding" id="qb-onboarding">
-                <p class="qb-onboarding-intro">
-                    Diese Seite findet Rechtsgeschäfte, in denen mehrere Personen
-                    gleichzeitig vorkommen — je mit gewählter Rolle, Geschlecht oder
-                    Beruf. Zum Einstieg ein Beispiel anklicken:
-                </p>
                 <div class="qb-examples" role="list" aria-label="Beispiel-Abfragen">
                     <button type="button" class="qb-example" role="listitem"
                             data-example="women-issuers">
-                        <span class="qb-example-title">Eine Person,
-                            Rolle Aussteller, Geschlecht weiblich</span>
-                        <span class="qb-example-desc">Alle Rechtsgeschäfte mit
-                            einer Frau als Ausstellerin</span>
+                        Ausstellerin (weiblich)
                     </button>
                     <button type="button" class="qb-example" role="listitem"
                             data-example="women-issuers-men-recipients">
-                        <span class="qb-example-title">Zwei Personen:
-                            Ausstellerin weiblich, Empfänger männlich</span>
-                        <span class="qb-example-desc">Konstellation aus weiblicher
-                            Ausstellerin und männlichem Empfänger im selben
-                            Geschäft</span>
+                        Ausstellerin + männlicher Empfänger
                     </button>
                     <button type="button" class="qb-example" role="listitem"
                             data-example="burger-recipients">
-                        <span class="qb-example-title">Rolle Empfänger, Beruf
-                            enthält <code>urger</code></span>
-                        <span class="qb-example-desc">Substring-Match auf der
-                            Original-Annotation (fängt <code>purger</code>,
-                            <code>Bürger</code>, <code>burger</code> und
-                            Schreibvarianten ein)</span>
+                        Empfänger, Beruf <code>urger</code>
                     </button>
                     <button type="button" class="qb-example" role="listitem"
                             data-example="clergy-pair">
-                        <span class="qb-example-title">Zwei Personen,
-                            Beruf jeweils enthält <code>pfarr</code></span>
-                        <span class="qb-example-desc">Substring-Match auf
-                            <code>pfarrer</code>, <code>pharrer</code> und
-                            Schreibvarianten in Aussteller- und
-                            Empfänger-Rolle</span>
+                        Zwei Personen, Beruf <code>pfarr</code>
                     </button>
                     <button type="button" class="qb-example" role="listitem"
                             data-example="verwaltung">
-                        <span class="qb-example-title">Aussteller mit
-                            Uhlirz-Klasse <code>XVIII Verwaltung</code></span>
-                        <span class="qb-example-desc">Exakter Match auf die
-                            Uhlirz-Berufsklassifikation, deckt alle Personen
-                            mit klassifiziertem Verwaltungs-Beruf ab</span>
+                        Aussteller, Uhlirz <code>XVIII Verwaltung</code>
                     </button>
                 </div>
-                <p class="qb-onboarding-hint">
-                    Beispiele setzen Rolle, Geschlecht oder Beruf-Substring vor,
-                    alle Felder bleiben editierbar. Oder oben über
-                    „+ Person hinzufügen" eine eigene Konstellation zusammenstellen.
-                </p>
             </div>
         </div>
     </section>
@@ -759,9 +485,6 @@
 
 { "url": "../data/role_constellation.json" }
 </script>
-<script src="../static/js/table-infra.js?v=20260517112520"></script>
-<script src="../static/js/viz-core.js?v=20260517112520"></script>
-<script src="../static/js/analysis-resolver.js?v=20260517112520"></script>
 
 
     </main>
@@ -771,7 +494,7 @@
             <div class="footer-col">
                 <p class="footer-project">Stadt und Gemeinschaft Wien, Datenbank</p>
                 <p>Tr&auml;gerprojekt &raquo;Stadt und Gemeinschaft&laquo; (Universit&auml;t Wien)</p>
-                <p class="footer-meta">Datenstand: 17. Mai 2026 &middot; Seite generiert: 17. Mai 2026</p>
+                <p class="footer-meta">Datenstand: 17. Mai 2026 &middot; Seite generiert: 18. Mai 2026</p>
                 
                 
             </div>
@@ -787,10 +510,14 @@
         </div>
     </footer>
 
-    <script src="../static/js/core.js?v=20260517112520"></script>
-    <script src="../static/js/tip.js?v=20260517112520"></script>
-    <script src="../static/js/hint.js?v=20260517112520"></script>
-    <script src="../static/js/basket.js?v=20260517112520"></script>
+    <script src="../static/js/core.js?v=20260518131302"></script>
+    <script src="../static/js/tip.js?v=20260518131302"></script>
+    <script src="../static/js/hint.js?v=20260518131302"></script>
+    <script src="../static/js/basket.js?v=20260518131302"></script>
     
+<script src="../static/js/table-infra.js?v=20260518131302"></script>
+<script src="../static/js/viz-core.js?v=20260518131302"></script>
+<script src="../static/js/analysis-resolver.js?v=20260518131302"></script>
+
 </body>
 </html>

@@ -1,6 +1,5 @@
 {% extends "base.html" %}
-{% from "macros.html" import sidebar_range_slider, sidebar_corpus_chips,
-                              no_results, tip_glossary, tip_help %}
+{% from "macros.html" import no_results, tip_glossary, tip_help %}
 
 {% block title %}Abfragen{% endblock %}
 
@@ -15,14 +14,6 @@
 
     <header class="index-header">
         <h1>Abfragen</h1>
-        <p class="kpi-strip">
-            Korpus:
-            <strong>{{ '{:,}'.format(total_sources).replace(',', '.') }}</strong>&nbsp;Quellen
-            <span class="kpi-sep">&middot;</span>
-            <strong>{{ '{:,}'.format(total_events).replace(',', '.') }}</strong>&nbsp;Rechtsgeschäfte
-            <span class="kpi-sep">&middot;</span>
-            <strong>{{ '{:,}'.format(total_persons).replace(',', '.') }}</strong>&nbsp;Personen
-        </p>
     </header>
 
     {# ============================================================
@@ -33,12 +24,17 @@
        ============================================================ #}
     <section class="qb" aria-label="Abfrage zusammenstellen">
 
+        <button type="button" class="qb-pill qb-reset-corner" id="filter-reset"
+                aria-label="Abfrage zurückstellen">
+            &#x21BA; Zurückstellen
+        </button>
+
         <div class="qb-body">
 
-            <div class="qb-filters-row">
+            <div class="qb-scope">
 
-                <div class="qb-filter-block">
-                    <span class="qb-control-label">Gemeinsam in{% call tip_help('help-link', 'Gemeinsam in') %}
+                <div class="qb-scope-row">
+                    <span class="qb-control-label qb-control-label--inline">Gemeinsam in{% call tip_help('help-link', 'Gemeinsam in') %}
                         <p>Was als <em>gemeinsamer Kontext</em> zaehlt, in dem alle Personen
                             gleichzeitig erfuellt sein muessen.</p>
                         <ul>
@@ -46,36 +42,28 @@
                             <li><strong>Rechtsgeschaeft</strong> &mdash; enger: alle Personen am selben Akt beteiligt.</li>
                         </ul>
                     {% endcall %}</span>
-                    <div class="form-filter-chips" role="group" aria-label="Verknüpfung der Personen"
-                         data-filter="scope">
-                        <button type="button" class="form-filter-chip" aria-pressed="false"
-                                data-scope="source">
-                            <span class="form-filter-chip-label">derselben Quelle</span>
-                        </button>
-                        <button type="button" class="form-filter-chip is-active" aria-pressed="true"
-                                data-scope="event">
-                            <span class="form-filter-chip-label">demselben Rechtsgeschäft</span>
-                        </button>
+                    <div class="qb-pill-group" role="group"
+                         aria-label="Verknüpfung der Personen" data-filter="scope">
+                        <button type="button" class="qb-pill" aria-pressed="false"
+                                data-scope="source">derselben Quelle</button>
+                        <button type="button" class="qb-pill is-active" aria-pressed="true"
+                                data-scope="event">demselben Rechtsgeschäft</button>
                     </div>
                 </div>
 
-                <div class="qb-filter-block qb-filter-block--time">
-                    <span class="qb-control-label">Zeitraum</span>
-                    {{ sidebar_range_slider(min_year, max_year, timeline_data,
-                                            max_count, unit='Rechtsgeschäfte',
-                                            unit_singular='Rechtsgeschäft') }}
-                </div>
-
-                <div class="qb-filter-block">
-                    <span class="qb-control-label">Korpus</span>
-                    {{ sidebar_corpus_chips('filter-corpora', 'data-corpus', collections) }}
-                </div>
-
-                <div class="qb-filter-block qb-filter-block--reset">
-                    <button type="button" class="sidebar-reset" id="filter-reset"
-                            aria-label="Alle Filter zurücksetzen">
-                        &#x21BA; Zurücksetzen
-                    </button>
+                <div class="qb-scope-row">
+                    <span class="qb-control-label qb-control-label--inline">Korpus</span>
+                    <div class="qb-pill-group" id="filter-corpora"
+                         role="group" aria-label="Korpora auswählen">
+                        {% for c in collections %}
+                        <label class="qb-pill is-active" data-corpus="{{ c.key }}">
+                            <input type="checkbox" data-corpus="{{ c.key }}" checked
+                                   class="qb-pill-check">
+                            <span class="qb-pill-label">{{ c.label }}</span>
+                            <span class="qb-pill-count">{{ c.count }}</span>
+                        </label>
+                        {% endfor %}
+                    </div>
                 </div>
 
             </div>
@@ -108,9 +96,11 @@
                     </tbody>
                 </table>
 
-                <button type="button" class="btn-add btn-add--primary" id="qb-add-person">
-                    + Person hinzufügen
-                </button>
+                <div class="qb-actions-row">
+                    <button type="button" class="qb-pill qb-pill--primary" id="qb-add-person">
+                        + Person hinzufügen
+                    </button>
+                </div>
             </div>
 
         </div>
@@ -120,30 +110,27 @@
        Ergebnis-Bereich.
        ============================================================ #}
 
-    <div class="main-toolbar">
-        <span class="result-count-wrap">
-            <span class="result-count" id="hits-sources">0&nbsp;Quellen</span>
-            <span class="result-count-sep">&middot;</span>
-            <span class="result-count" id="hits-events">0&nbsp;Rechtsgeschäfte</span>
-        </span>
-        <div class="active-filters" id="active-filters"
-             aria-live="polite" aria-label="Aktive Filter"></div>
-    </div>
-
-    <div class="results-actions">
-        <span class="results-actions-spacer"></span>
-        <button type="button" class="toolbar-btn" id="csv-download" disabled
-                aria-label="Aktuelle Trefferliste als CSV herunterladen">
-            <svg width="14" height="14" viewBox="0 0 16 16" aria-hidden="true">
-                <path d="M8 2v9m0 0l-3.5-3.5M8 11l3.5-3.5M2.5 13.5h11"
-                      stroke="currentColor" stroke-width="1.4"
-                      stroke-linecap="round" stroke-linejoin="round" fill="none"/>
-            </svg>
-            Tabelle als CSV herunterladen
-        </button>
-    </div>
+    <div class="active-filters" id="active-filters"
+         aria-live="polite" aria-label="Aktive Filter"></div>
 
     <section class="index-table-wrap">
+        <div class="hits-toolbar" id="results-toolbar" hidden>
+            <span class="hits-kpi" aria-live="polite">
+                <span class="hits-kpi-num" id="hits-events">0</span>
+                <span class="hits-kpi-unit">Rechtsgeschäfte in
+                    <span class="hits-kpi-num hits-kpi-num--sec" id="hits-sources">0</span>
+                    Quellen</span>
+            </span>
+            <button type="button" class="toolbar-btn" id="csv-download" disabled
+                    aria-label="Aktuelle Trefferliste als CSV herunterladen">
+                <svg width="14" height="14" viewBox="0 0 16 16" aria-hidden="true">
+                    <path d="M8 2v9m0 0l-3.5-3.5M8 11l3.5-3.5M2.5 13.5h11"
+                          stroke="currentColor" stroke-width="1.4"
+                          stroke-linecap="round" stroke-linejoin="round" fill="none"/>
+                </svg>
+                Tabelle als CSV herunterladen
+            </button>
+        </div>
         <table class="index-table" id="hits-table">
             <thead>
                 <tr>
@@ -172,63 +159,32 @@
         </table>
 
         <div class="no-results" id="hits-empty" role="status">
-            <p id="hits-empty-msg">Noch keine Abfrage zusammengestellt.
-                Eine Person mit Rolle hinzufügen, dann erscheinen Treffer.</p>
+            <p id="hits-empty-msg" class="qb-empty-msg">
+                Person hinzufügen oder Beispiel wählen.</p>
 
             <div class="qb-onboarding" id="qb-onboarding">
-                <p class="qb-onboarding-intro">
-                    Diese Seite findet Rechtsgeschäfte, in denen mehrere Personen
-                    gleichzeitig vorkommen — je mit gewählter Rolle, Geschlecht oder
-                    Beruf. Zum Einstieg ein Beispiel anklicken:
-                </p>
                 <div class="qb-examples" role="list" aria-label="Beispiel-Abfragen">
                     <button type="button" class="qb-example" role="listitem"
                             data-example="women-issuers">
-                        <span class="qb-example-title">Eine Person,
-                            Rolle Aussteller, Geschlecht weiblich</span>
-                        <span class="qb-example-desc">Alle Rechtsgeschäfte mit
-                            einer Frau als Ausstellerin</span>
+                        Ausstellerin (weiblich)
                     </button>
                     <button type="button" class="qb-example" role="listitem"
                             data-example="women-issuers-men-recipients">
-                        <span class="qb-example-title">Zwei Personen:
-                            Ausstellerin weiblich, Empfänger männlich</span>
-                        <span class="qb-example-desc">Konstellation aus weiblicher
-                            Ausstellerin und männlichem Empfänger im selben
-                            Geschäft</span>
+                        Ausstellerin + männlicher Empfänger
                     </button>
                     <button type="button" class="qb-example" role="listitem"
                             data-example="burger-recipients">
-                        <span class="qb-example-title">Rolle Empfänger, Beruf
-                            enthält <code>urger</code></span>
-                        <span class="qb-example-desc">Substring-Match auf der
-                            Original-Annotation (fängt <code>purger</code>,
-                            <code>Bürger</code>, <code>burger</code> und
-                            Schreibvarianten ein)</span>
+                        Empfänger, Beruf <code>urger</code>
                     </button>
                     <button type="button" class="qb-example" role="listitem"
                             data-example="clergy-pair">
-                        <span class="qb-example-title">Zwei Personen,
-                            Beruf jeweils enthält <code>pfarr</code></span>
-                        <span class="qb-example-desc">Substring-Match auf
-                            <code>pfarrer</code>, <code>pharrer</code> und
-                            Schreibvarianten in Aussteller- und
-                            Empfänger-Rolle</span>
+                        Zwei Personen, Beruf <code>pfarr</code>
                     </button>
                     <button type="button" class="qb-example" role="listitem"
                             data-example="verwaltung">
-                        <span class="qb-example-title">Aussteller mit
-                            Uhlirz-Klasse <code>XVIII Verwaltung</code></span>
-                        <span class="qb-example-desc">Exakter Match auf die
-                            Uhlirz-Berufsklassifikation, deckt alle Personen
-                            mit klassifiziertem Verwaltungs-Beruf ab</span>
+                        Aussteller, Uhlirz <code>XVIII Verwaltung</code>
                     </button>
                 </div>
-                <p class="qb-onboarding-hint">
-                    Beispiele setzen Rolle, Geschlecht oder Beruf-Substring vor,
-                    alle Felder bleiben editierbar. Oder oben über
-                    „+ Person hinzufügen" eine eigene Konstellation zusammenstellen.
-                </p>
             </div>
         </div>
     </section>
@@ -239,8 +195,11 @@
 {# Die JSON-Datei selbst wird per fetch geladen. Hier nur der Pfad. #}
 { "url": "{{ root_path }}/data/role_constellation.json" }
 </script>
+
+{% endblock %}
+
+{% block scripts %}
 <script src="{{ root_path }}/static/js/table-infra.js?v={{ asset_v }}"></script>
 <script src="{{ root_path }}/static/js/viz-core.js?v={{ asset_v }}"></script>
 <script src="{{ root_path }}/static/js/analysis-resolver.js?v={{ asset_v }}"></script>
-
 {% endblock %}

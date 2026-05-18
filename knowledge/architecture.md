@@ -88,6 +88,8 @@ Die Architektur ist ein Prototyp, kein produktionsreifes System. Entscheidungen 
 
 Jede aggregierte Kennzahl ist auf die zugrundeliegenden Quelldokumente rückführbar: ein `drill_down`-Abschnitt innerhalb jeder Aggregat-JSON führt zu jedem Kreuztabellen-Feld die sortierte Liste der beitragenden `file_key`-Verweise. Metadaten zum Einzeldokument kommen aus `data/docs_lookup.json`. Begründung in [[specification#Provenienz als inline Drill-down in den Aggregat-JSONs]], UI-Ausprägung in [[ui-design#Tip-System]].
 
+`docs_lookup.json` ist die einzige Stelle, an der ein `file_key` (`f__QGW_1551`) in die tatsächliche Quellen-URL, das anzuzeigende Idno, das normalisierte Datum, das Korpus-Label und den Kurzregest aufgelöst wird. Die Pfad-Struktur unter `documents/` (`<korpus>/<subkorpus>/<idno>.html`) ist nicht aus dem `file_key` ableitbar — sie hängt am Korpus-Pfad in `filenames.csv`. Jedes Frontend-Modul, das einen Quellen-Link, einen Datenkorb-Eintrag oder eine CSV-Spalte „Quelle" baut, geht über `docs_lookup`. Eine naive Konstruktion `documents/<file_key>.html` produziert deterministisch 404 für jede QGW- und Stadtbücher-Quelle und ist als Bug zu behandeln. Der gemeinsame Helper in `viz-core.js` lädt den Lookup einmal pro Seite; page-spezifische Resolver (etwa `analysis-resolver.js`) hängen sich daran an.
+
 ## Quellenbereinigte Aggregation als Invariante
 
 Das Zählen von Entitäten pro Quelle erfolgt mengenbasiert: die Extraktionsfunktion im Build liefert pro Quelldokument eine Menge referenzierter Entity-IDs, nicht eine Liste mit möglichen Duplikaten. Eine Person, Organisation oder ein Ort wird pro Quelle höchstens einmal gezählt. Begründung in [[specification#Quellenbereinigte Zählung]], begriffliche Konsequenz in [[glossar#Gesamtnennung]].

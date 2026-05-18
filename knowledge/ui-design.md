@@ -114,6 +114,12 @@ Aktive Filter werden in den Drill mitgenommen, soweit der Aggregat-Schlüssel si
 
 Begründung: Forschende verlieren den Überblick, welche Filter aktiv sind, sobald die Sidebar einklappt oder die Filter-Quellen heterogen sind (Sidebar-Chips, Donut-Klicks, Toggles, Slider). Die Pillen-Leiste fasst alles an einer Stelle.
 
+### Pillen-System und Tabellen-Toolbar auf der Abfragen-Seite
+
+Die Abfragen-Sub-Seite (`/analysis/index.html`) verwendet eine eigene Klassenfamilie `.qb-pill` für alle interaktiven Form-Elemente im Abfrage-Bereich (Modus-Toggle, Korpus-Checkboxen, Add-Person, Reset). Die Klasse ist absichtlich getrennt von der globalen `.form-filter-chip`-Klasse, die in der Sidebar der Listen-Seiten lebt: dort sind viele eng gepackte Chips für eine Mehrfachauswahl typisch, hier sind wenige prominente Filter-Pillen mit großzügiger Schrift und Padding gemeint. Eine spätere Konsolidierung wäre möglich, würde aber Padding- und Größen-Tokens parametrisieren müssen; bis dahin bleiben die zwei Familien parallel.
+
+Die Trefferliste der Konstellations-Abfrage führt eine Toolbar-Zeile direkt im Tabellen-Container über den Spaltenköpfen, mit derselben `--color-bg-warm`-Hintergrundfarbe wie die Spaltenköpfe. Visueller Effekt: KPI („X Rechtsgeschäfte in Y Quellen") und CSV-Download wirken als zusätzliche Header-Zeile, nicht als schwebender Block über der Tabelle. Die KPI hebt die führende Zahl in der Akzent-Farbe hervor, damit die dynamische Abfrage-Antwort visuell von den darum stehenden Begleitworten getrennt ist.
+
 ### URL-State-Sync
 
 Auf den Daten-Visualisierungs-Seiten landet der Filter-Stand in den URL-Suchparametern und ist damit bookmark-fähig, teilbar und als Permalink in einer Publikation zitierbar. Mechanik in [[architecture#URL-State als Forschungsstand]].

@@ -1916,6 +1916,14 @@
 .aggregat-table .sex-f { background-color: rgba(150, 60, 90, 0.045); }
 .aggregat-table .is-dimmed { opacity: 0.32; }
 
+/* Sidebar-Geschlechtsfilter spiegelt sich in der Detailtabelle: die
+   ausgeblendete Spalte wird abgedunkelt, damit der Donut-Wert in der
+   Zeile nicht mit dem Tabellen-Wert in Konflikt steht. */
+.aggregat-table.is-filter-m .sex-f,
+.aggregat-table.is-filter-f .sex-m {
+    opacity: 0.32;
+}
+
 /* Roles / Relations Detailtabelle: gleiche Klick-Affordanz wie Labels und Donut */
 #roles-table tbody tr[data-role],
 #relations-table tbody tr[data-rel] {

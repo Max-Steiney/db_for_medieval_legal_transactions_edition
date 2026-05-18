@@ -182,24 +182,53 @@ zu `Gewerbe_nach_Uhlirz_GstW` in `roleName_norm_matching.csv`). Bis
 dahin zählt jeder im Frontend ausgewiesene Heirats-Befund als
 „provisorisch, Substring-basiert".
 
-### Wachsgießer-Heirats-Frage: Datengrundlage in allen Stufen knapp
+### Wachsgießer-Heirats-Frage: Aggregator erweitert, asymmetrische Annotation bleibt
 
-Stand: 2026-05-17
-Status: offen, langfristig
+Stand: 2026-05-17, präzisiert 2026-05-18, gelöst 2026-05-18
+Status: aggregator-seitig gelöst, editorische Asymmetrie bleibt
 
-Auch nach Aufnahme der neuen `_ready`-Subkorpora (QGW 1448–57,
-Satzbuch CD 1448–60) in Stufe 1 und in Stufe 4 (alle TEI-Subkorpora)
-tragen die Uhlirz-Kategorien IV (Erzeugung und Vertrieb von
-Leuchtstoffen, Fetten und Ölen) und VI (Lederindustrie) je nur eine
-Person. Das `roleName_norm_matching.csv` hat die Mappings
-(`kerzenmacher`, `cherczenmacher`, `öler`, diverse Leder-Begriffe),
-aber die TEI-Quellen tragen diese Berufsbezeichnungen kaum in
-`<occupation>`-Elementen. Konsequenz: Mail-Frage 1 (Heirats-
-Konstellationen unter Wachsgießern) und Mail-Frage 2 (Hausbesitz von
-Personen mit Uhlirz-Kategorie VI) lassen sich nicht aus dem aktuell
-annotierten Bestand beantworten, unabhängig vom Aggregator-Pfad. Die
-Beantwortung wartet auf weiteres TEI-Material oder auf editorische
-Nachannotation in den bestehenden Quellen.
+Frühere Diagnose (Stand 2026-05-17): „die TEI-Quellen tragen diese
+Berufsbezeichnungen kaum in `<occupation>`-Elementen". Diese Diagnose
+war zu vorsichtig. Eine Nachprüfung (2026-05-18) gegen
+`persons_in_sources.csv::source_prof` zeigt: das Pipeline-Repo führt
+in der Originalschreibung mindestens elf individuelle Wachsgießer-
+Personen mit insgesamt rund 37 Belegen (`wachsgiesser`,
+`Wachsgiezzer`, `waxgiesser`, `waxgyser`), darunter mehrere mit kin-
+Beziehungen (Jakob Wachsgießer mit Hausfrau Katharina und Tochter
+Anna, Johann Wachsgießer mit Hausfrau Katharina, Johann von Purgstall
+mit Schwager Jakob Wachsgießer).
+
+Was die `role_constellation`-Abfrage `Uhlirz IV` heute zeigt, ist
+genau eine Person (Martin Wachsgießer), weil der Aggregator
+`role_constellation.py` Berufe ausschließlich aus
+`occ_relations_in_sources.csv` zieht — der Tabelle der explizit als
+`<occupation>` annotierten Berufe. Die Apposition im Quellentext
+(„Hannsen, dem wachsgiesser") landet in `source_prof`, nicht in
+`occ_relations`. Beide Spalten existieren parallel und sind
+editorische Realität, nicht Designfehler ([[data#Drei Orte für die
+Berufs-Angabe]]).
+
+Lösung (2026-05-18): `role_constellation.py` liest jetzt beide
+Beruf-Pfade und vereinigt sie pro Event und Person case-insensitiv
+dedupliziert. Effekt: Uhlirz IV im Konstellations-UI wuchs von 1
+auf 21 Personen (inklusive Frauen mit eigener Berufsannotation:
+Endlein Ölerin, Margarethe Kerzenmacherin); Uhlirz VI von 1 auf 101
+Personen. Die UI-Treffermengen decken sich jetzt mit denen der
+Verifikations-Säule.
+
+Die eigentliche Forschungsfrage „verheiratete Paare beide Uhlirz IV"
+liefert über alle Stufen ein einziges symmetrisches Paar: Johann
+Wachsgießer ↔ Katharina in Stadtbuch I/164, beidseitig als Heirat
+annotiert (`hawsfraw` / `wirt`). Vierzehn weitere Wachsgießer und
+Öler haben Heirats-Einträge, aber asymmetrisch: der Mann trägt die
+Berufsannotation, die Frau ist als „seine hausfraw" erwähnt, ohne
+eigene Berufsklassifikation. Das ist editorische Realität und nicht
+Aggregator-Frage; die Datenbank trägt die Aussage „diese Frau ist
+auch Wachsgießerin durch Heirat" so nicht. Eine symmetrische
+Konstellations-Suche kann diesen Befund per Definition nicht
+einfangen; die asymmetrische Form („Mann ist Uhlirz IV und hat
+eine Heirats-kin") bräuchte einen kin-Filter als eigene
+UI-Achse — heute nicht modelliert.
 
 ### Filenames-Filter: `status="in progress"`
 

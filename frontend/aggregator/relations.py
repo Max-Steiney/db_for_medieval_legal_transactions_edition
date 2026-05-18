@@ -113,13 +113,23 @@ def aggregate_relations(docs_data_dir: Path) -> dict:
         # occ – canon
         ("korherr", ["chorherr"]),
         # rep – on behalf of
-        ("anstat", ["an stat", "anstatt", "anstat und zuhanden"]),
+        ("anstat", ["an stat", "anstatt", "anstat und zuhanden",
+                    "statt", "stat", "an seines herrn statt"]),
         # rep – executor
         ("geschefftleuten", ["geschefftleut"]),
         # rep – for
         ("zu handen", ["zu hannden"]),
-        # rep – executor
-        ("geschäftsvollstrecker", ["geschäftsherr", "geschäftsherren"]),
+        # rep – executor (medieval German "Geschäftsherr/-herren" — many
+        # spellings: geschefft- / gescheft- / geschäft-, with or without
+        # final -n; all collapse onto one canonical key).
+        ("geschäftsvollstrecker", [
+            "geschäftsherr", "geschäftsherren", "geschäftsherrn",
+            "geschefftherr", "geschefftherren", "geschefftherrn",
+            "gescheftherr", "gescheftherren", "gescheftherrn",
+        ]),
+        # rep / occ – advocate ("vorsprech" without final -en is the older
+        # form, both meanings overlap; conflated regardless of type bucket).
+        ("vorsprech", ["vorsprechen", "vorsprecher", "vorsprechern"]),
     ]
     for canonical, variants in _norm_groups:
         for v in variants:
@@ -144,10 +154,16 @@ def aggregate_relations(docs_data_dir: Path) -> dict:
     type_by_sex_by_decade: dict[str, dict[int, Counter]] = {
         t: defaultdict(Counter) for t in REL_TYPES
     }
-    # Label aggregation: (label_norm, type) -> {m, f, unspecified, persons, decades}
+    # Label aggregation: (label_norm, type) -> nennungen + unique-person sets.
+    # m/f/unspecified count nennungen (one increment per CSV row), persons_*
+    # are sets of unique person_keys; the latter are what gets reported in
+    # the labels table so the sex breakdown matches the Personen column.
     label_agg: dict[tuple, dict] = defaultdict(
         lambda: {"m": 0, "f": 0, "unspecified": 0,
-                 "persons": set(), "decades": set(), "raw_label": "",
+                 "persons": set(),
+                 "persons_m": set(), "persons_f": set(),
+                 "persons_unspecified": set(),
+                 "decades": set(), "raw_label": "",
                  "variant_counts": Counter()}
     )
     # Per-person relationship list (for detail panel)
@@ -187,6 +203,7 @@ def aggregate_relations(docs_data_dir: Path) -> dict:
                 la = label_agg[key]
                 la[sex] += 1
                 la["persons"].add(pk)
+                la[f"persons_{sex}"].add(pk)
                 if dec is not None:
                     la["decades"].add(dec)
                 # Track variant frequencies to pick best display label
@@ -238,6 +255,12 @@ def aggregate_relations(docs_data_dir: Path) -> dict:
             "unspecified": agg["unspecified"],
             "total": total,
             "persons": len(agg["persons"]),
+            # Unique-person counts per sex. pm + pf + pu == persons.
+            # Used by the labels table for an M/W bar that matches the
+            # Personen column.
+            "pm": len(agg["persons_m"]),
+            "pf": len(agg["persons_f"]),
+            "pu": len(agg["persons_unspecified"]),
             "decade_range": [decades[0], decades[-1]] if decades else [],
         }
         if variants:
@@ -379,7 +402,11 @@ def aggregate_relations(docs_data_dir: Path) -> dict:
             "type_by_sex": overview_tbs,
             "type_by_sex_by_decade": overview_tbsd,
         },
-        "labels": [{k: v for k, v in e.items() if k != "_norm_key"}
+        # The normalised key (kept as "norm" in the output) is what the
+        # drill_down.label_sex map is keyed by — the display "label" is just
+        # the most-frequent raw variant. Frontend uses "norm" for drill-down,
+        # "label" for rendering.
+        "labels": [{("norm" if k == "_norm_key" else k): v for k, v in e.items()}
                    for e in labels_list],
         "persons": persons_out,
         "drill_down": {
