@@ -1,10 +1,16 @@
 """Forschungsfragen-Verifikation (Stufe 4).
 
 Die ersten drei Stufen pruefen TEI->JSON, CSV->HTML und TEI->HTML.
-Diese vierte Stufe rechnet vier konkrete Forschungsfragen direkt aus
+Diese vierte Stufe rechnet konkrete Forschungsfragen direkt aus
 TEI/Indices/Pipeline-CSV neu und veroeffentlicht die Referenzzahlen.
-Der Vergleich gegen das Frontend-Output kommt in einer spaeteren
-Iteration; vorerst dient der Report als unabhaengiger Sollwert.
+
+Wo das Frontend eine direkte Antwort auf die Frage rendert (Frage 3:
+Org-Profil St. Stephan, Block "Personen mit Taetigkeitsverbindung"),
+wird der Frontend-Wert zusaetzlich gelesen und mit dem Sollwert
+verglichen. Eine kleinere Frontend-Zahl als der Sollwert ist
+erwartbar (Korpus-Freigabe-Filter im Aggregator) und wird als
+"known_gap" markiert; ein groesserer Frontend-Wert waere echter Drift
+und faellt als "mismatch" auf.
 
 Aufruf:
     python -m verification.run --research-questions
@@ -23,9 +29,10 @@ from datetime import date
 from pathlib import Path
 
 from lxml import etree
+from lxml import html as lxml_html
 
 from pipeline.config import INDICES_DIR, NORM_LISTS_DIR, PIPELINE_OUTPUT
-from verification.config import REPORTS_DIR, TEI_NS
+from verification.config import HTML_REGISTER_ORGS, REPORTS_DIR, TEI_NS
 
 _NS = {"tei": TEI_NS}
 
@@ -227,8 +234,79 @@ def _suborgs_of(target_id: str) -> set[str]:
     return result
 
 
+def _read_occ_network_from_html(org_id: str) -> dict | None:
+    """Liest den Block 'Personen mit Taetigkeitsverbindung' aus dem
+    gerenderten Org-Profil. Returns None, wenn die Datei nicht
+    existiert oder den Block nicht enthaelt.
+
+    Aussagekraeftig sind drei Werte:
+      - section_count: die Zahl im section-head ('<span class="section-head-count">N</span>')
+      - row_count: die tatsaechliche Anzahl Datenzeilen im tbody
+      - kin_sum: Summe der kin-Eintraege aus der Spalte rel-col-kin
+    section_count und row_count sollten uebereinstimmen; falls nicht,
+    deutet das auf einen Renderer-Drift hin.
+    """
+    path = HTML_REGISTER_ORGS / f"{org_id}.html"
+    if not path.exists():
+        return None
+    try:
+        tree = lxml_html.parse(str(path))
+    except Exception:
+        return None
+    sections = tree.xpath("//section[contains(@class, 'org-occ-network')]")
+    if not sections:
+        return None
+    section = sections[0]
+    section_count = None
+    head = section.xpath(".//span[contains(@class, 'section-head-count')]")
+    if head and head[0].text:
+        try:
+            section_count = int(head[0].text.strip())
+        except ValueError:
+            section_count = None
+    rows = section.xpath(".//table//tbody/tr")
+    kin_sum = 0
+    for tr in rows:
+        kin_cells = tr.xpath(".//td[contains(@class, 'rel-col-kin')]")
+        if not kin_cells:
+            continue
+        sort_val = kin_cells[0].get("data-sort-value")
+        try:
+            kin_sum += int(sort_val) if sort_val is not None else 0
+        except ValueError:
+            pass
+    return {
+        "section_count": section_count,
+        "row_count": len(rows),
+        "kin_sum": kin_sum,
+    }
+
+
+def _frontend_vs_sollwert_status(frontend: int | None, sollwert: int) -> str:
+    """Vergleich Frontend-Zahl gegen Pipeline-Sollwert.
+
+    - frontend is None: 'no_frontend' (Profil oder Block nicht gerendert)
+    - frontend == sollwert: 'match'
+    - frontend < sollwert: 'known_gap' (Freigabe-Filter im Aggregator)
+    - frontend > sollwert: 'mismatch' (echter Drift, darf nicht passieren)
+    """
+    if frontend is None:
+        return "no_frontend"
+    if frontend == sollwert:
+        return "match"
+    if frontend < sollwert:
+        return "known_gap"
+    return "mismatch"
+
+
 def compute_occ_st_stephan() -> dict:
-    """Occupations bei St. Stephan (Haupt-Org + Sub-Orgs)."""
+    """Occupations bei St. Stephan (Haupt-Org + Sub-Orgs).
+
+    Vergleicht zusaetzlich gegen das gerenderte Org-Profil (Frontend),
+    weil Frage 3 genau dort ihre direkte Antwort findet. Die Aggregator-
+    Logik filtert Personen ueber den freigegebenen Quellenkorpus, eine
+    kleinere Frontend-Zahl ist also erwartbar (known_gap).
+    """
     main_only = {_ST_STEPHAN_ID}
     full = _suborgs_of(_ST_STEPHAN_ID)
 
@@ -247,14 +325,57 @@ def compute_occ_st_stephan() -> dict:
                 persons_full.add(person_key)
 
     # Personen mit irgendeiner Kin-Relation (als person_key ODER related_key).
+    # Zwei Sollwerte: persons_with_kin (distinct Personen) ist die
+    # konzeptionelle Antwort; kin_records_sum (Summe der kin-Records pro
+    # Person, mit Mehrfachzaehlung) entspricht der Spalten-Summe, die das
+    # Frontend in 'rel-col-kin' zeigt. Letzterer Wert ist der direkte
+    # Vergleichspartner fuer frontend_kin_sum.
     kin = _read_csv(PIPELINE_OUTPUT / "kin_relations_in_sources.csv")
     persons_in_kin: set[str] = set()
+    kin_records_per_person: defaultdict[str, int] = defaultdict(int)
     for row in kin:
-        for col in ("person_key", "related_key"):
-            v = (row.get(col) or "").strip()
-            if v:
-                persons_in_kin.add(v)
+        pk = (row.get("person_key") or "").strip()
+        if pk:
+            persons_in_kin.add(pk)
+            kin_records_per_person[pk] += 1
+        rk = (row.get("related_key") or "").strip()
+        if rk:
+            persons_in_kin.add(rk)
     persons_with_kin = len(persons_full & persons_in_kin)
+    kin_records_sum = sum(
+        kin_records_per_person.get(pk, 0) for pk in persons_full
+    )
+
+    # Frontend-Vergleich: Werte aus dem gerenderten Org-Profil lesen
+    # und gegen die Sollwerte stellen.
+    frontend = _read_occ_network_from_html(_ST_STEPHAN_ID)
+    if frontend is None:
+        frontend_block = {
+            "frontend_section_count": None,
+            "frontend_row_count": None,
+            "frontend_kin_sum": None,
+            "status_persons": "no_frontend",
+            "status_kin": "no_frontend",
+            "status_section_vs_rows": "no_frontend",
+        }
+    else:
+        frontend_block = {
+            "frontend_section_count": frontend["section_count"],
+            "frontend_row_count": frontend["row_count"],
+            "frontend_kin_sum": frontend["kin_sum"],
+            "status_persons": _frontend_vs_sollwert_status(
+                frontend["row_count"], len(persons_full)
+            ),
+            "status_kin": _frontend_vs_sollwert_status(
+                frontend["kin_sum"], kin_records_sum
+            ),
+            "status_section_vs_rows": (
+                "match"
+                if (frontend["section_count"] is not None
+                    and frontend["section_count"] == frontend["row_count"])
+                else "mismatch"
+            ),
+        }
 
     return {
         "question_id": "occ_st_stephan",
@@ -263,6 +384,8 @@ def compute_occ_st_stephan() -> dict:
         "occ_records_including_suborgs": occ_full,
         "distinct_persons": len(persons_full),
         "persons_with_kin_relations": persons_with_kin,
+        "kin_records_sum": kin_records_sum,
+        **frontend_block,
     }
 
 
