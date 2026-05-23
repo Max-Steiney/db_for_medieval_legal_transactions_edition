@@ -28,8 +28,28 @@
 </head>
 <body data-root-path="{{ root_path }}"
       data-released-min="{{ released_period.min_year }}"
-      data-released-max="{{ released_period.max_year_with_extensions }}">
+      data-released-max="{{ released_period.max_year_with_extensions }}"
+      data-audience="{{ audience_id }}">
     <a class="skip-link" href="#main-content">Zum Inhalt springen</a>
+    {% if audience_id == 'internal' %}
+    <div class="audience-banner" role="status" aria-label="Interne Version">
+        <strong>Interne Version.</strong>
+        Nicht für die Veröffentlichung. Enthält experimentelle Sektionen
+        (Analyse, Exploration) und technische IDs.
+    </div>
+    <style>
+        .audience-banner {
+            background: #7a1f1f;
+            color: #fff;
+            padding: 0.45rem 1rem;
+            text-align: center;
+            font-size: 0.9rem;
+            line-height: 1.35;
+            border-bottom: 1px solid rgba(255, 255, 255, 0.25);
+        }
+        .audience-banner strong { font-weight: 600; }
+    </style>
+    {% endif %}
     <nav class="site-nav">
         <div class="nav-inner">
             <a href="{{ root_path }}/index.html" class="nav-brand">
@@ -66,7 +86,8 @@
                 {% for it in nav_entries -%}
                     {% if it.kind == 'link' %}{{ nav_link(it.label, it.href) }}{% else %}{{ nav_dropdown(it.label, it.children) }}{% endif %}
                 {%- endfor %}
-                <a href="{{ root_path }}/korb.html" class="nav-basket" aria-label="Datenkorb">
+                <a href="{{ root_path }}/korb.html" class="nav-basket" aria-label="Datenkorb"
+                   data-hint="Datenkorb: Sammlung von Quellen, Personen und Organisationen, lokal in diesem Browser. Klick &ouml;ffnet die Korb-Seite.">
                     <svg width="18" height="18" viewBox="0 0 18 18" fill="none" aria-hidden="true">
                         <path d="M3 5h12l-1.2 8.5a1 1 0 0 1-1 .85H5.2a1 1 0 0 1-1-.85L3 5z"
                               stroke="currentColor" stroke-width="1.4" fill="none"

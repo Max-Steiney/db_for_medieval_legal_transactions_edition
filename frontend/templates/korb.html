@@ -13,10 +13,35 @@
     <header class="index-header basket-header">
         <h1>Datenkorb</h1>
         <p class="basket-subtitle">
-            Lokale Sammlung im Browser. Eintr&auml;ge mit dem
-            &bdquo;+&ldquo;-Knopf hinzuf&uuml;gen, hier verwalten und
-            als CSV exportieren.
+            Lokale Sammlung im Browser. Eintr&auml;ge auf Listen- und
+            Detailseiten mit dem &bdquo;+&ldquo;-Knopf hinzuf&uuml;gen,
+            hier verwalten und als CSV exportieren.
         </p>
+        <div class="basket-explainer">
+            <p>
+                <strong>Persistenz:</strong> Die Sammlung lebt nur in
+                diesem Browser. Cache-Leeren, ein Wechsel des Browsers
+                oder ein anderes Ger&auml;t l&ouml;schen sie. Kein Login,
+                keine Server-Synchronisierung.
+            </p>
+            <p>
+                <strong>Gesammelt</strong> sind Eintr&auml;ge, die per
+                &bdquo;+&ldquo;-Knopf manuell aufgenommen wurden.
+                <strong>Abgeleitet</strong> sind Personen und
+                Organisationen, die automatisch erscheinen, weil eine
+                gesammelte Quelle sie annotiert; sie verschwinden mit
+                dem Entfernen der Quelle. Der &bdquo;*&ldquo;-Knopf
+                wandelt einen abgeleiteten Eintrag in einen gesammelten
+                um, sodass er die Quelle &uuml;berdauert.
+            </p>
+            <p>
+                <strong>CSV-Export:</strong> Pro Sektion ein Knopf, der
+                die Tabelle als UTF-8-CSV mit den sichtbaren Feldern
+                speichert. &bdquo;Mit abgeleiteten&ldquo; nimmt zus&auml;tzlich
+                die abgeleiteten Eintr&auml;ge auf, jeweils mit Spalte
+                &bdquo;aus_quelle&ldquo;.
+            </p>
+        </div>
     </header>
 
     <p id="basket-empty-all" class="aggregat-empty" hidden>
@@ -38,7 +63,7 @@
                 <button type="button" class="explore-btn"
                         data-action="export-gathered" data-type="source"
                         data-hint="CSV mit allen gesammelten Quellen: id, date, collection, regest, url.">
-                    Gesammelte exportieren
+                    Quellen exportieren
                 </button>
                 <button type="button" class="explore-btn explore-btn--danger"
                         data-action="clear" data-type="source"
@@ -85,12 +110,12 @@
                 <button type="button" class="explore-btn"
                         data-action="export-gathered" data-type="person"
                         data-hint="CSV mit den gesammelten Personen: id, label, sex, active_min, active_max, url.">
-                    Gesammelte exportieren
+                    Nur gesammelte exportieren
                 </button>
                 <button type="button" class="explore-btn"
                         data-action="export-all" data-type="person"
                         data-hint="CSV mit gesammelten und abgeleiteten Personen plus Spalte aus_quelle.">
-                    Alles exportieren
+                    Mit abgeleiteten exportieren
                 </button>
                 <button type="button" class="explore-btn explore-btn--danger"
                         data-action="clear" data-type="person"
@@ -104,7 +129,8 @@
                 <tr>
                     <th scope="col" class="col-name">Name</th>
                     <th scope="col" class="col-sex">Geschlecht</th>
-                    <th scope="col" class="col-active">Aktiv</th>
+                    <th scope="col" class="col-active"
+                        data-hint="Erstes und letztes Jahr aus den Quellen, in denen die Person belegt ist.">Datum der Quellen</th>
                     <th scope="col" class="col-source"
                         data-hint="Quelle, ueber die diese Person automatisch eingespielt wurde. Nur bei abgeleiteten Eintraegen belegt.">aus Quelle</th>
                     <th scope="col" class="col-actions" aria-label="Aktionen"></th>
@@ -136,12 +162,12 @@
                 <button type="button" class="explore-btn"
                         data-action="export-gathered" data-type="org"
                         data-hint="CSV mit den gesammelten Organisationen: id, label, type, url.">
-                    Gesammelte exportieren
+                    Nur gesammelte exportieren
                 </button>
                 <button type="button" class="explore-btn"
                         data-action="export-all" data-type="org"
                         data-hint="CSV mit gesammelten und abgeleiteten Organisationen plus Spalte aus_quelle.">
-                    Alles exportieren
+                    Mit abgeleiteten exportieren
                 </button>
                 <button type="button" class="explore-btn explore-btn--danger"
                         data-action="clear" data-type="org"

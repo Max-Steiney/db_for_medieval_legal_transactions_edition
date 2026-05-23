@@ -192,6 +192,26 @@
     font-size: var(--text-sm);
     max-width: 70ch;
 }
+.basket-page .basket-explainer {
+    margin-top: var(--space-sm);
+    padding: var(--space-sm) var(--space-md);
+    background: var(--color-bg-warm);
+    border-left: 3px solid var(--color-border);
+    max-width: 70ch;
+    font-size: var(--text-sm);
+}
+.basket-page .basket-explainer p {
+    margin: 0 0 var(--space-xs) 0;
+    color: var(--color-text-primary);
+    line-height: 1.45;
+}
+.basket-page .basket-explainer p:last-child {
+    margin-bottom: 0;
+}
+.basket-page .basket-explainer strong {
+    color: var(--color-text-primary);
+    font-weight: 600;
+}
 .basket-toolbar {
     display: flex;
     justify-content: space-between;
@@ -377,4 +397,33 @@
     border-color: var(--anno-place);
     color: var(--anno-place);
     background: color-mix(in srgb, var(--anno-place) 8%, transparent);
+}
+
+/* Sortier-Pfeile fuer alle .sortable-table-Tabellen projektweit. Die
+   gruppen-aware Sortier-Logik lebt jeweils pro Page (profile.js,
+   document.js, ...), die optische Anzeige der Sortierrichtung ist
+   gemeinsam. Variante an org-Profilseiten zieht ueber spezifischere
+   Selektoren ihre eigene Akzentfarbe. */
+.sortable-table th[data-sort] {
+    cursor: pointer;
+    user-select: none;
+    white-space: nowrap;
+}
+.sortable-table th[data-sort]::after {
+    content: ' \2195';
+    margin-left: 0.25em;
+    opacity: 0.35;
+    font-size: 0.85em;
+    transition: opacity var(--transition-fast, 0.15s), color var(--transition-fast, 0.15s);
+}
+.sortable-table th[data-sort]:hover::after { opacity: 0.7; }
+.sortable-table th.sorted-asc::after {
+    content: ' \2191';
+    opacity: 1;
+    color: var(--anno-person);
+}
+.sortable-table th.sorted-desc::after {
+    content: ' \2193';
+    opacity: 1;
+    color: var(--anno-person);
 }
