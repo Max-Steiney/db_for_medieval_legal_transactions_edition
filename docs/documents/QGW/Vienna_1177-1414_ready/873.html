@@ -3,21 +3,22 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <meta http-equiv="Content-Security-Policy" content="default-src 'self'; script-src 'self'; style-src 'self'; font-src 'self'; img-src 'self' data: https://images.monasterium.net https://www.monasterium.net; connect-src 'self'; base-uri 'self'; form-action 'self'; upgrade-insecure-requests">
+    
+    <meta http-equiv="Content-Security-Policy" content="default-src 'self'; script-src 'self'; style-src 'self' 'unsafe-inline'; font-src 'self'; img-src 'self' data: https://images.monasterium.net https://www.monasterium.net; connect-src 'self'; base-uri 'self'; form-action 'self'; upgrade-insecure-requests">
     <meta name="referrer" content="strict-origin-when-cross-origin">
     <meta http-equiv="Permissions-Policy" content="camera=(), microphone=(), geolocation=(), interest-cohort=()">
     <title>Nr. 873 (1376 I 31), Datenbank</title>
     <link rel="preload" as="font" type="font/woff2" crossorigin
           href="../../../static/fonts/inter-400-latin.woff2">
-    <link rel="stylesheet" href="../../../static/css/fonts.css?v=20260523115011">
-    <link rel="stylesheet" href="../../../static/css/tokens.css?v=20260523115011">
-    <link rel="stylesheet" href="../../../static/css/base.css?v=20260523115011">
-    <link rel="stylesheet" href="../../../static/css/components.css?v=20260523115011">
-    <link rel="stylesheet" href="../../../static/css/responsive.css?v=20260523115011">
-    <link rel="stylesheet" href="../../../static/css/print.css?v=20260523115011">
-    <link rel="stylesheet" href="../../../static/css/tip.css?v=20260523115011">
+    <link rel="stylesheet" href="../../../static/css/fonts.css?v=20260523134309">
+    <link rel="stylesheet" href="../../../static/css/tokens.css?v=20260523134309">
+    <link rel="stylesheet" href="../../../static/css/base.css?v=20260523134309">
+    <link rel="stylesheet" href="../../../static/css/components.css?v=20260523134309">
+    <link rel="stylesheet" href="../../../static/css/responsive.css?v=20260523134309">
+    <link rel="stylesheet" href="../../../static/css/print.css?v=20260523134309">
+    <link rel="stylesheet" href="../../../static/css/tip.css?v=20260523134309">
     
-<link rel="stylesheet" href="../../../static/css/document.css?v=20260523115011">
+<link rel="stylesheet" href="../../../static/css/document.css?v=20260523134309">
 <link rel="canonical" href="documents/QGW/Vienna_1177-1414_ready/873.html">
 <meta name="citation_title" content="Nr. 873 (1376 I 31)">
 <meta name="citation_collection" content="QGW II/1 (1177–1414)">
@@ -136,12 +137,6 @@
                 <div class="doc-toolbar-meta">
                     
                     <span class="meta-pair">
-                        <span class="meta-label">Originaldatierung</span>
-                        <span class="meta-value">ze Wienne, des nechsten phinztags nach sand Pauls tage, als er bechert warde.</span>
-                    </span>
-                    
-                    
-                    <span class="meta-pair">
                         <span class="meta-label">Quelle</span>
                         <span class="meta-value" data-hint="Quellen zur Geschichte der Stadt Wien, Bd. II/1, Nr. 873">Quellen zur Geschichte der Stadt Wien, Bd. II/1, Nr. 873</span>
                     </span>
@@ -181,11 +176,11 @@
                     
                     <button type="button" class="legend-toggle"
                             data-layer="triggers" aria-pressed="true"
-                            data-hint="Dispositivformel ein-/ausblenden">
+                            data-hint="Dispositivformeln ein-/ausblenden">
                         <span class="legend-toggle-dots">
                             <span class="legend-swatch swatch-trigger"></span>
                         </span>
-                        <span class="legend-toggle-label">Dispositivformel</span>
+                        <span class="legend-toggle-label">Dispositivformeln</span>
                     </button>
                     
                 </div>
@@ -230,47 +225,48 @@
         <!-- Document body (rendered TEI) -->
         <div class="doc-body">
             <section class="tei-abstract"><h2 class="tei-section-head">Regest</h2><p>
-               <span class="anno-event" data-ref="ev__QGW_II_I_873"><span class="anno-fn anno-fn-issuer" data-role="issuer"><span class="fn-label">Aussteller*in</span><a class="anno-person" data-ref="pe__margarethe_QGW_II_I_777" data-hint="Margarethe Vierdungin [pe__margarethe_QGW_II_I_777]" data-hint-type="Person" href="../../../register/persons/pe__margarethe_QGW_II_I_777.html"><span class="anno-attr anno-attr-title">Swester</span>
-                        Margret die Vierdunginne, <span class="anno-attr anno-attr-occ" data-corresp="org__wien-st_agnes_auf_der_himmelpforte">priorinne</span>
+               <span class="anno-event" data-ref="ev__QGW_II_I_873"><span class="anno-fn anno-fn-issuer" data-role="issuer"><span class="fn-label">Aussteller*in</span><a class="anno-person" data-ref="pe__margarethe_QGW_II_I_777" data-sex="f" data-hint="Margarethe Vierdungin [pe__margarethe_QGW_II_I_777]" data-hint-type="Person" href="../../../register/persons/pe__margarethe_QGW_II_I_777.html"><span class="anno-attr anno-attr-title" data-hint="Titel oder Anrede" data-hint-type="Titel">Swester</span>
+                        Margret die Vierdunginne, <span class="anno-attr anno-attr-occ" data-corresp="org__wien-st_agnes_auf_der_himmelpforte" data-hint="Amts- oder Berufsbezeichnung mit Organisations- oder Ortsbezug" data-hint-type="Amt">priorinne</span>
                         der geistleichen vrowen chloster dacz der Himelporten ze Wienne</a> , und
                      der <a class="anno-org" data-ref="org__wien-st_agnes_auf_der_himmelpforte" data-hint="St. Agnes (auf der Himmelpforte) Wien (Kloster_f) [org__wien-st_agnes_auf_der_himmelpforte]" data-hint-type="Organisation" href="../../../register/orgs/org__wien-st_agnes_auf_der_himmelpforte.html">convent gemain
-                        daselbs</a> , <a class="anno-person" data-ref="pe__niklas_von_ragelsdorf_QGW_II_I_1107" data-hint="Niklas von Ragelsdorf [pe__niklas_von_ragelsdorf_QGW_II_I_1107]" data-hint-type="Person" href="../../../register/persons/pe__niklas_von_ragelsdorf_QGW_II_I_1107.html">Nichlas,
-                           <span class="anno-attr anno-attr-occ" data-corresp="org__wien-st_maria_im_rathaus-messe_reicholf">Kaplan</span>
+                        daselbs</a> , <a class="anno-person" data-ref="pe__niklas_von_ragelsdorf_QGW_II_I_1107" data-sex="m" data-hint="Niklas von Ragelsdorf [pe__niklas_von_ragelsdorf_QGW_II_I_1107]" data-hint-type="Person" href="../../../register/persons/pe__niklas_von_ragelsdorf_QGW_II_I_1107.html">Nichlas,
+                           <span class="anno-attr anno-attr-occ" data-corresp="org__wien-st_maria_im_rathaus-messe_reicholf" data-hint="Amts- oder Berufsbezeichnung mit Organisations- oder Ortsbezug" data-hint-type="Amt">Kaplan</span>
                         der von hern Seifrid dem Reicholf seligen in Unser Vrown chapellen, gelegen
                         in der purger altem Rathaus, hern Otten Haimen seligen Stiftung, gestifteten
-                        Messe</a></span> , <span class="anno-trigger anno-trigger-disp">verkaufen</span>
-                  <span class="anno-fn anno-fn-other" data-role="other"><span class="fn-label">Sonstige</span><span class="anno-trigger anno-trigger-fn">mit Handen</span> des <a class="anno-person" data-ref="pe__johann_an_dem_kienmarkt_QGW_II_I_1009" data-hint="Johann an dem Kienmarkt an dem Kienmarkt († 23.09.1381) [pe__johann_an_dem_kienmarkt_QGW_II_I_1009]" data-hint-type="Person" href="../../../register/persons/pe__johann_an_dem_kienmarkt_QGW_II_I_1009.html"><span class="anno-attr anno-attr-occ" data-corresp="org__wien">Bürgermeisters</span>
-                        <span class="anno-attr anno-attr-title">hern</span> Hannsen an dem Chienmarkcht</a> und
+                        Messe</a></span> , <span class="anno-trigger anno-trigger-disp" data-hint="Verb, das das Rechtsgeschäft anzeigt" data-hint-type="Dispositivformel">verkaufen</span>
+                  <span class="anno-fn anno-fn-other" data-role="other"><span class="fn-label">Sonstige</span><span class="anno-trigger anno-trigger-fn" data-hint="Verb, das eine Funktionsrolle markiert" data-hint-type="Funktionsrollen-Trigger">mit Handen</span> des <a class="anno-person" data-ref="pe__johann_an_dem_kienmarkt_QGW_II_I_1009" data-sex="m" data-hint="Johann an dem Kienmarkt an dem Kienmarkt († 23.09.1381) [pe__johann_an_dem_kienmarkt_QGW_II_I_1009]" data-hint-type="Person" href="../../../register/persons/pe__johann_an_dem_kienmarkt_QGW_II_I_1009.html"><span class="anno-attr anno-attr-occ" data-corresp="org__wien" data-hint="Amts- oder Berufsbezeichnung mit Organisations- oder Ortsbezug" data-hint-type="Amt">Bürgermeisters</span>
+                        <span class="anno-attr anno-attr-title" data-hint="Titel oder Anrede" data-hint-type="Titel">hern</span> Hannsen an dem Chienmarkcht</a> und
                      des <a class="anno-org" data-ref="org__wien" data-hint="Wien (Stadt) [org__wien]" data-hint-type="Organisation" href="../../../register/orgs/org__wien.html">rates gemain der stat ze Wienne</a></span>
-                  ein Haus um 150 lb dn. <span class="anno-fn anno-fn-recipient" data-role="recipient"><span class="fn-label">Empfänger*in</span><a class="anno-person" data-ref="pe__ulrich_ebner_QGW_II_I_836" data-hint="Ulrich Ebner Ebner [pe__ulrich_ebner_QGW_II_I_836]" data-hint-type="Person" href="../../../register/persons/pe__ulrich_ebner_QGW_II_I_836.html">Ulreichen dem Ebner, <span class="anno-attr anno-attr-occ" data-corresp="org__wien">purger ze Wienne</span></a></span> , <span class="anno-trigger anno-trigger-fn">mit der Bestimmung</span>, dass das Haus nach Ulreichs Tod seiner
-                     <span class="anno-fn anno-fn-other" data-role="other"><span class="fn-label">Sonstige</span><a class="anno-person" data-ref="pe__klara_QGW_II_I_852" data-hint="Klara [pe__klara_QGW_II_I_852]" data-hint-type="Person" href="../../../register/persons/pe__klara_QGW_II_I_852.html"><span class="anno-attr anno-attr-kin" data-corresp="pe__ulrich_ebner_QGW_II_I_836">Frau</span>
+                  ein Haus um 150 lb dn. <span class="anno-fn anno-fn-recipient" data-role="recipient"><span class="fn-label">Empfänger*in</span><a class="anno-person" data-ref="pe__ulrich_ebner_QGW_II_I_836" data-sex="m" data-hint="Ulrich Ebner Ebner [pe__ulrich_ebner_QGW_II_I_836]" data-hint-type="Person" href="../../../register/persons/pe__ulrich_ebner_QGW_II_I_836.html">Ulreichen dem Ebner, <span class="anno-attr anno-attr-occ" data-corresp="org__wien" data-hint="Amts- oder Berufsbezeichnung mit Organisations- oder Ortsbezug" data-hint-type="Amt">purger ze Wienne</span></a></span> , <span class="anno-trigger anno-trigger-fn" data-hint="Verb, das eine Funktionsrolle markiert" data-hint-type="Funktionsrollen-Trigger">mit der Bestimmung</span>, dass das Haus nach Ulreichs Tod seiner
+                     <span class="anno-fn anno-fn-other" data-role="other"><span class="fn-label">Sonstige</span><a class="anno-person" data-ref="pe__klara_QGW_II_I_852" data-sex="f" data-hint="Klara [pe__klara_QGW_II_I_852]" data-hint-type="Person" href="../../../register/persons/pe__klara_QGW_II_I_852.html"><span class="anno-attr anno-attr-kin" data-corresp="pe__ulrich_ebner_QGW_II_I_836" data-hint="Verwandtschaftsbeziehung" data-hint-type="Verwandtschaft">Frau</span>
                         Chlar</a></span> auf Lebzeiten zu Leibgeding verbleiben, nach ihrem Tode aber
                   an Ulreichs Erben fallen solle, und zwar verkauft das Kloster seine zwei tail
                   hauses, gelegen in der Hindern Pekchenstrasse ze Wienne zenechst dem drittail
                   hauses, der weilnt hern Seifrids des Reicholfs gewesen ist, gelegen daselbs
                   zenechst Michels haus des Vierdungs , <span class="anno-event" data-ref="ev__QGW_II_I_873_men_1">welche ihm von
-                     den <a class="anno-person" data-ref="pe__elisabeth_QGW_II_I_873" data-hint="Elisabeth Reicholfin Reicholf († 10.04.1356) [pe__elisabeth_QGW_II_I_873]" data-hint-type="Person" href="../../../register/persons/pe__elisabeth_QGW_II_I_873.html"><span class="anno-attr anno-attr-title">Conventschwestern</span> Elsbeten <span class="anno-attr anno-attr-kin" data-corresp="pe__pilgrim_rot_QGW_II_I_408_a"><span class="tei-add">tochter</span></span></a> und <a class="anno-person" data-ref="pe__christine_QGW_II_I_873" data-hint="Christine [pe__christine_QGW_II_I_873]" data-hint-type="Person" href="../../../register/persons/pe__christine_QGW_II_I_873.html"><span class="anno-attr anno-attr-title">junchvrowen</span> Christein, Pilgreims <span class="anno-attr anno-attr-kin" data-corresp="pe__pilgrim_rot_QGW_II_I_408_a">töchter</span>, <a class="anno-person" data-ref="pe__pilgrim_rot_QGW_II_I_408_a" data-hint="Pilgrim Rot Rot († 12.01.1352) [pe__pilgrim_rot_QGW_II_I_408_a]" data-hint-type="Person" href="../../../register/persons/pe__pilgrim_rot_QGW_II_I_408_a.html"><span class="tei-add">Pilgreims</span> des Roten Marcharts
-                        sun</a></a>, bei <a class="anno-person" data-ref="pe__anna_QGW_II_I_777" data-hint="Anna († 10.08.1370) [pe__anna_QGW_II_I_777]" data-hint-type="Person" href="../../../register/persons/pe__anna_QGW_II_I_777.html"><span class="anno-attr anno-attr-title">vrown</span> Annen, seiner <span class="anno-attr anno-attr-kin" data-corresp="pe__pilgrim_rot_QGW_II_I_408_a">hausvrowen</span>, <a class="anno-person" data-ref="pe__lukas_popphinger_QGW_II_I_776" data-hint="Lukas Popphinger Popphinger († 26.07.1370) [pe__lukas_popphinger_QGW_II_I_776]" data-hint-type="Person" href="../../../register/persons/pe__lukas_popphinger_QGW_II_I_776.html"><span class="anno-attr anno-attr-title">hern</span> Lucas
-                              <span class="tei-add">des Popphinger</span></a>
-                        <span class="anno-attr anno-attr-kin" data-corresp="pe__lukas_popphinger_QGW_II_I_776">swester</span> des
+                     den <a class="anno-person" data-ref="pe__elisabeth_QGW_II_I_873" data-sex="f" data-hint="Elisabeth Reicholfin Reicholf († 10.04.1356) [pe__elisabeth_QGW_II_I_873]" data-hint-type="Person" href="../../../register/persons/pe__elisabeth_QGW_II_I_873.html"><span class="anno-attr anno-attr-title" data-hint="Titel oder Anrede" data-hint-type="Titel">Conventschwestern</span> Elsbeten <span class="anno-attr anno-attr-kin" data-corresp="pe__pilgrim_rot_QGW_II_I_408_a" data-hint="Verwandtschaftsbeziehung" data-hint-type="Verwandtschaft"><span class="tei-add" data-hint="Vom Editor sinngemäß ergänzt" data-hint-type="Editorische Ergänzung">tochter</span></span></a> und <a class="anno-person" data-ref="pe__christine_QGW_II_I_873" data-sex="f" data-hint="Christine [pe__christine_QGW_II_I_873]" data-hint-type="Person" href="../../../register/persons/pe__christine_QGW_II_I_873.html"><span class="anno-attr anno-attr-title" data-hint="Titel oder Anrede" data-hint-type="Titel">junchvrowen</span> Christein, Pilgreims <span class="anno-attr anno-attr-kin" data-corresp="pe__pilgrim_rot_QGW_II_I_408_a" data-hint="Verwandtschaftsbeziehung" data-hint-type="Verwandtschaft">töchter</span>, <a class="anno-person" data-ref="pe__pilgrim_rot_QGW_II_I_408_a" data-sex="m" data-hint="Pilgrim Rot Rot († 12.01.1352) [pe__pilgrim_rot_QGW_II_I_408_a]" data-hint-type="Person" href="../../../register/persons/pe__pilgrim_rot_QGW_II_I_408_a.html"><span class="tei-add" data-hint="Vom Editor sinngemäß ergänzt" data-hint-type="Editorische Ergänzung">Pilgreims</span> des Roten Marcharts
+                        sun</a></a>, bei <a class="anno-person" data-ref="pe__anna_QGW_II_I_777" data-sex="f" data-hint="Anna († 10.08.1370) [pe__anna_QGW_II_I_777]" data-hint-type="Person" href="../../../register/persons/pe__anna_QGW_II_I_777.html"><span class="anno-attr anno-attr-title" data-hint="Titel oder Anrede" data-hint-type="Titel">vrown</span> Annen, seiner <span class="anno-attr anno-attr-kin" data-corresp="pe__pilgrim_rot_QGW_II_I_408_a" data-hint="Verwandtschaftsbeziehung" data-hint-type="Verwandtschaft">hausvrowen</span>, <a class="anno-person" data-ref="pe__lukas_popphinger_QGW_II_I_776" data-sex="m" data-hint="Lukas Popphinger Popphinger († 26.07.1370) [pe__lukas_popphinger_QGW_II_I_776]" data-hint-type="Person" href="../../../register/persons/pe__lukas_popphinger_QGW_II_I_776.html"><span class="anno-attr anno-attr-title" data-hint="Titel oder Anrede" data-hint-type="Titel">hern</span> Lucas
+                              <span class="tei-add" data-hint="Vom Editor sinngemäß ergänzt" data-hint-type="Editorische Ergänzung">des Popphinger</span></a>
+                        <span class="anno-attr anno-attr-kin" data-corresp="pe__lukas_popphinger_QGW_II_I_776" data-hint="Verwandtschaftsbeziehung" data-hint-type="Verwandtschaft">swester</span> des
                         Popphinger</a> , anerstorben waren</span>, für 50 lb dn., Nichlas aber den
                   angeführten dritten Theil des Hauses, <span class="anno-event" data-ref="ev__QGW_II_I_873_men_2">der weilnt des
                      vorgenanten hern Seifrids des Reicholfs gewesen ist, und der für versessenes
                      Burgrecht der Messe gerichtlich zugesprochen worden war</span>, für 100 lb dn.
                </span></p></section><section class="tei-nota"><h2 class="tei-section-head">Indorsat / Nota</h2><p></p></section>
 
-            <!-- Data layer: provenance strip. Korpus + Idno stehen schon
-                 in der Toolbar-Breadcrumb; hier daher NUR die technische
-                 Provenance (Archiv, Counts, externe Links). -->
+            <!-- Aufbewahrungsort der physischen Quelle: Archiv (tei:repository)
+                 plus Monasterium-Link auf den Bestandseintrag. Annotations-
+                 Counts gehoeren nicht hierher, die wandern in den
+                 annotations-summary weiter unten. -->
             <footer class="doc-provenance">
-                <span class="prov-label">Datenherkunft</span>
+                <span class="prov-label">Aufbewahrungsort</span>
                 
                 <span class="prov-item">Wiener Stadt- und Landesarchiv</span>
-                <span class="prov-sep">·</span>
                 
-                <span class="prov-item">10 Pers., 2 Org.</span>
                 
                 <span class="prov-sep">·</span>
+                
+                
                 <span class="prov-item"><a href="https://www.monasterium.net/mom/AT-WStLA/HAUrk/873/charter" target="_blank" rel="noopener noreferrer" class="prov-ext-link">Monasterium.net 
 <svg width="12" height="12" viewBox="0 0 12 12" fill="none"><path d="M3.5 1.5H2C1.72 1.5 1.5 1.72 1.5 2V10C1.5 10.28 1.72 10.5 2 10.5H10C10.28 10.5 10.5 10.28 10.5 10V8.5M7 1.5H10.5V5M10.25 1.75L5.5 6.5" stroke="currentColor" stroke-linecap="round" stroke-linejoin="round"/></svg>
 </a></span>
@@ -285,20 +281,20 @@
                 <div class="facs-controls">
                     <div class="facs-controls-pages">
                         
-                        <button type="button" class="facs-prev" aria-label="Vorherige Seite" disabled>&#8249;</button>
+                        <button type="button" class="facs-prev" aria-label="Vorherige Seite" data-hint="Vorherige Seite" disabled>&#8249;</button>
                         
                         <span class="facs-page-indicator">
                             Seite <span id="facs-current">1</span>/<span>2</span>
                         </span>
                         
-                        <button type="button" class="facs-next" aria-label="Nächste Seite">&#8250;</button>
+                        <button type="button" class="facs-next" aria-label="Nächste Seite" data-hint="Nächste Seite">&#8250;</button>
                         
                     </div>
                     <div class="facs-controls-zoom">
-                        <button type="button" class="facs-zoom-in" aria-label="Vergrößern">+</button>
-                        <button type="button" class="facs-zoom-out" aria-label="Verkleinern">&minus;</button>
-                        <button type="button" class="facs-zoom-reset" aria-label="Ansicht zurücksetzen">1:1</button>
-                        <button type="button" class="facs-rotate" aria-label="Um 90 Grad drehen" title="Um 90° drehen">&#10227;</button>
+                        <button type="button" class="facs-zoom-in" aria-label="Vergrößern" data-hint="Vergrößern">+</button>
+                        <button type="button" class="facs-zoom-out" aria-label="Verkleinern" data-hint="Verkleinern">&minus;</button>
+                        <button type="button" class="facs-zoom-reset" aria-label="Ansicht zurücksetzen" data-hint="Ansicht zurücksetzen">1:1</button>
+                        <button type="button" class="facs-rotate" aria-label="Um 90 Grad drehen" data-hint="Um 90° drehen">&#10227;</button>
                     </div>
                 </div>
                 <div class="facs-image-wrap" id="facs-image-wrap"
@@ -363,17 +359,17 @@
         </div>
     </footer>
 
-    <script src="../../../static/js/core.js?v=20260523115011"></script>
-    <script src="../../../static/js/tip.js?v=20260523115011"></script>
-    <script src="../../../static/js/hint.js?v=20260523115011"></script>
-    <script src="../../../static/js/basket.js?v=20260523115011"></script>
+    <script src="../../../static/js/core.js?v=20260523134309"></script>
+    <script src="../../../static/js/tip.js?v=20260523134309"></script>
+    <script src="../../../static/js/hint.js?v=20260523134309"></script>
+    <script src="../../../static/js/basket.js?v=20260523134309"></script>
     
 
 <script src="../../../static/vendor/openseadragon/openseadragon.min.js?v=6.0.2"></script>
 
-<script src="../../../static/js/facsimile.js?v=20260523115011"></script>
-<script src="../../../static/js/document.js?v=20260523115011"></script>
-<script src="../../../static/js/basket-mount.js?v=20260523115011"></script>
+<script src="../../../static/js/facsimile.js?v=20260523134309"></script>
+<script src="../../../static/js/document.js?v=20260523134309"></script>
+<script src="../../../static/js/basket-mount.js?v=20260523134309"></script>
 
 </body>
 </html>

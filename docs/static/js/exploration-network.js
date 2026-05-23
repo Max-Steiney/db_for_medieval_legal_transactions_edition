@@ -247,7 +247,7 @@
             const nameCell = isOrg
                 ? `<span class="net-detail-name net-detail-name--org">${escapeHtml(name)}</span>`
                 : `<button type="button" class="net-detail-recenter" data-pid="${escapeAttr(e.otherKey)}"
-                       title="Zum Mittelpunkt machen">${escapeHtml(name)}</button>`;
+                       data-hint="Zum Mittelpunkt machen">${escapeHtml(name)}</button>`;
             // Personen sind nicht im Datenkorb sammelbar; der Korb fasst nur
             // Quellen. Hier daher kein Korb-Knopf.
             let basketBtn = '';

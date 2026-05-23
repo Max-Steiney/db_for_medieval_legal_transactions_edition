@@ -3,22 +3,23 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <meta http-equiv="Content-Security-Policy" content="default-src 'self'; script-src 'self'; style-src 'self'; font-src 'self'; img-src 'self' data: https://images.monasterium.net https://www.monasterium.net; connect-src 'self'; base-uri 'self'; form-action 'self'; upgrade-insecure-requests">
+    
+    <meta http-equiv="Content-Security-Policy" content="default-src 'self'; script-src 'self'; style-src 'self' 'unsafe-inline'; font-src 'self'; img-src 'self' data: https://images.monasterium.net https://www.monasterium.net; connect-src 'self'; base-uri 'self'; form-action 'self'; upgrade-insecure-requests">
     <meta name="referrer" content="strict-origin-when-cross-origin">
     <meta http-equiv="Permissions-Policy" content="camera=(), microphone=(), geolocation=(), interest-cohort=()">
     <title>Christian von St. Pölten der Weber, Datenbank</title>
     <link rel="preload" as="font" type="font/woff2" crossorigin
           href="../../static/fonts/inter-400-latin.woff2">
-    <link rel="stylesheet" href="../../static/css/fonts.css?v=20260523115011">
-    <link rel="stylesheet" href="../../static/css/tokens.css?v=20260523115011">
-    <link rel="stylesheet" href="../../static/css/base.css?v=20260523115011">
-    <link rel="stylesheet" href="../../static/css/components.css?v=20260523115011">
-    <link rel="stylesheet" href="../../static/css/responsive.css?v=20260523115011">
-    <link rel="stylesheet" href="../../static/css/print.css?v=20260523115011">
-    <link rel="stylesheet" href="../../static/css/tip.css?v=20260523115011">
+    <link rel="stylesheet" href="../../static/css/fonts.css?v=20260523134309">
+    <link rel="stylesheet" href="../../static/css/tokens.css?v=20260523134309">
+    <link rel="stylesheet" href="../../static/css/base.css?v=20260523134309">
+    <link rel="stylesheet" href="../../static/css/components.css?v=20260523134309">
+    <link rel="stylesheet" href="../../static/css/responsive.css?v=20260523134309">
+    <link rel="stylesheet" href="../../static/css/print.css?v=20260523134309">
+    <link rel="stylesheet" href="../../static/css/tip.css?v=20260523134309">
     
-<link rel="stylesheet" href="../../static/css/document.css?v=20260523115011">
-<link rel="stylesheet" href="../../static/css/person.css?v=20260523115011">
+<link rel="stylesheet" href="../../static/css/document.css?v=20260523134309">
+<link rel="stylesheet" href="../../static/css/person.css?v=20260523134309">
 
 </head>
 <body data-root-path="../.."
@@ -194,13 +195,13 @@
         <dl class="ph-meta-strip">
             <div class="ph-meta-pair"><dt>Geschlecht</dt><dd>männlich</dd></div>
             
-            <div class="ph-meta-pair"><dt>Belegt
+            <div class="ph-meta-pair"><dt>Datum der Quelle
 <span class="tip-wrap">
     <button type="button" class="tip-trigger tip-trigger--icon"
             aria-expanded="false" aria-haspopup="dialog"
-            aria-controls="person-belegt"
-            data-tip="person-belegt"
-            aria-label="Definition: Beleg-Zeitraum">
+            aria-controls="datum-der-quellen"
+            data-tip="datum-der-quellen"
+            aria-label="Definition: Datum der Quelle">
         <svg width="13" height="13" viewBox="0 0 16 16" aria-hidden="true">
             <circle cx="8" cy="8" r="7" stroke="currentColor" stroke-width="1.4" fill="none"/>
             <text x="8" y="11.6" text-anchor="middle" font-size="9.5" font-weight="700"
@@ -208,14 +209,14 @@
         </svg>
     </button>
     <aside class="tip-popover tip-popover--glossary"
-           id="person-belegt" role="dialog" aria-hidden="true"
-           aria-label="Definition: Beleg-Zeitraum">
+           id="datum-der-quellen" role="dialog" aria-hidden="true"
+           aria-label="Definition: Datum der Quelle">
         <header class="tip-head">
-            <h3 class="tip-title">Beleg-Zeitraum</h3>
+            <h3 class="tip-title">Datum der Quelle</h3>
             <button type="button" class="tip-close" aria-label="Schlie&szlig;en">&times;</button>
         </header>
         <div class="tip-body">
-            <p>Erstes und letztes Jahr aus den ISO-Datierungen der Quellen, in denen die Person belegt ist. Unscharfe Datierungen wie &bdquo;1. H. 13. Jh.&ldquo; werden von der Pipeline auf ein konkretes ISO-Jahr aufgeloest; daher kann die Spanne enger oder weiter wirken als die in der Quellen-Tabelle gezeigten Datums-Strings.</p>
+            <p>Erstes und letztes Jahr aus den ISO-Datierungen der Quellen, in denen diese Person belegt ist. Unscharfe Datierungen wie &bdquo;1. H. 13. Jh.&ldquo; werden von der Pipeline auf ein konkretes ISO-Jahr aufgeloest; daher kann die Spanne enger oder weiter wirken als die in der Quellen-Tabelle gezeigten Datums-Strings.</p>
             
         </div>
     </aside>
@@ -341,14 +342,14 @@
         </div>
     </footer>
 
-    <script src="../../static/js/core.js?v=20260523115011"></script>
-    <script src="../../static/js/tip.js?v=20260523115011"></script>
-    <script src="../../static/js/hint.js?v=20260523115011"></script>
-    <script src="../../static/js/basket.js?v=20260523115011"></script>
+    <script src="../../static/js/core.js?v=20260523134309"></script>
+    <script src="../../static/js/tip.js?v=20260523134309"></script>
+    <script src="../../static/js/hint.js?v=20260523134309"></script>
+    <script src="../../static/js/basket.js?v=20260523134309"></script>
     
-<script src="../../static/js/table-infra.js?v=20260523115011"></script>
-<script src="../../static/js/profile.js?v=20260523115011"></script>
-<script src="../../static/js/basket-mount.js?v=20260523115011"></script>
+<script src="../../static/js/table-infra.js?v=20260523134309"></script>
+<script src="../../static/js/profile.js?v=20260523134309"></script>
+<script src="../../static/js/basket-mount.js?v=20260523134309"></script>
 
 </body>
 </html>

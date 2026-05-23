@@ -3,21 +3,22 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <meta http-equiv="Content-Security-Policy" content="default-src 'self'; script-src 'self'; style-src 'self'; font-src 'self'; img-src 'self' data: https://images.monasterium.net https://www.monasterium.net; connect-src 'self'; base-uri 'self'; form-action 'self'; upgrade-insecure-requests">
+    
+    <meta http-equiv="Content-Security-Policy" content="default-src 'self'; script-src 'self'; style-src 'self' 'unsafe-inline'; font-src 'self'; img-src 'self' data: https://images.monasterium.net https://www.monasterium.net; connect-src 'self'; base-uri 'self'; form-action 'self'; upgrade-insecure-requests">
     <meta name="referrer" content="strict-origin-when-cross-origin">
     <meta http-equiv="Permissions-Policy" content="camera=(), microphone=(), geolocation=(), interest-cohort=()">
     <title>Nr. 1264a (1393 VI 20), Datenbank</title>
     <link rel="preload" as="font" type="font/woff2" crossorigin
           href="../../../static/fonts/inter-400-latin.woff2">
-    <link rel="stylesheet" href="../../../static/css/fonts.css?v=20260523115011">
-    <link rel="stylesheet" href="../../../static/css/tokens.css?v=20260523115011">
-    <link rel="stylesheet" href="../../../static/css/base.css?v=20260523115011">
-    <link rel="stylesheet" href="../../../static/css/components.css?v=20260523115011">
-    <link rel="stylesheet" href="../../../static/css/responsive.css?v=20260523115011">
-    <link rel="stylesheet" href="../../../static/css/print.css?v=20260523115011">
-    <link rel="stylesheet" href="../../../static/css/tip.css?v=20260523115011">
+    <link rel="stylesheet" href="../../../static/css/fonts.css?v=20260523134309">
+    <link rel="stylesheet" href="../../../static/css/tokens.css?v=20260523134309">
+    <link rel="stylesheet" href="../../../static/css/base.css?v=20260523134309">
+    <link rel="stylesheet" href="../../../static/css/components.css?v=20260523134309">
+    <link rel="stylesheet" href="../../../static/css/responsive.css?v=20260523134309">
+    <link rel="stylesheet" href="../../../static/css/print.css?v=20260523134309">
+    <link rel="stylesheet" href="../../../static/css/tip.css?v=20260523134309">
     
-<link rel="stylesheet" href="../../../static/css/document.css?v=20260523115011">
+<link rel="stylesheet" href="../../../static/css/document.css?v=20260523134309">
 <link rel="canonical" href="documents/QGW/Vienna_1177-1414_ready/1264a.html">
 <meta name="citation_title" content="Nr. 1264a (1393 VI 20)">
 <meta name="citation_collection" content="QGW II/1 (1177–1414)">
@@ -136,12 +137,6 @@
                 <div class="doc-toolbar-meta">
                     
                     <span class="meta-pair">
-                        <span class="meta-label">Originaldatierung</span>
-                        <span class="meta-value">Geben ze Wienn an freitag nach sand Veits tag, anno domini millesimo trecentesimo nonagesimo tercio.</span>
-                    </span>
-                    
-                    
-                    <span class="meta-pair">
                         <span class="meta-label">Quelle</span>
                         <span class="meta-value" data-hint="Quellen zur Geschichte der Stadt Wien, Bd. II/1, Nr. a">Quellen zur Geschichte der Stadt Wien, Bd. II/1, Nr. a</span>
                     </span>
@@ -181,11 +176,11 @@
                     
                     <button type="button" class="legend-toggle"
                             data-layer="triggers" aria-pressed="true"
-                            data-hint="Dispositivformel ein-/ausblenden">
+                            data-hint="Dispositivformeln ein-/ausblenden">
                         <span class="legend-toggle-dots">
                             <span class="legend-swatch swatch-trigger"></span>
                         </span>
-                        <span class="legend-toggle-label">Dispositivformel</span>
+                        <span class="legend-toggle-label">Dispositivformeln</span>
                     </button>
                     
                 </div>
@@ -229,35 +224,36 @@
     <div class="doc-content">
         <!-- Document body (rendered TEI) -->
         <div class="doc-body">
-            <section class="tei-abstract"><h2 class="tei-section-head">Regest</h2><p><span class="anno-event" data-ref="ev__QGW_II_I_1264a"><span class="anno-fn anno-fn-issuer" data-role="issuer"><span class="fn-label">Aussteller*in</span><a class="anno-person" data-ref="pe__albrecht_herzog_von_oesterreich_QGW_II_I_1020" data-hint="Albrecht von Habsburg († 31.07.1397) [pe__albrecht_herzog_von_oesterreich_QGW_II_I_1020]" data-hint-type="Person" href="../../../register/persons/pe__albrecht_herzog_von_oesterreich_QGW_II_I_1020.html"><span class="anno-attr anno-attr-occ" data-corresp="org__oesterreich-herzogtum">Herzog</span>
+            <section class="tei-abstract"><h2 class="tei-section-head">Regest</h2><p><span class="anno-event" data-ref="ev__QGW_II_I_1264a"><span class="anno-fn anno-fn-issuer" data-role="issuer"><span class="fn-label">Aussteller*in</span><a class="anno-person" data-ref="pe__albrecht_herzog_von_oesterreich_QGW_II_I_1020" data-sex="m" data-hint="Albrecht von Habsburg († 31.07.1397) [pe__albrecht_herzog_von_oesterreich_QGW_II_I_1020]" data-hint-type="Person" href="../../../register/persons/pe__albrecht_herzog_von_oesterreich_QGW_II_I_1020.html"><span class="anno-attr anno-attr-occ" data-corresp="org__oesterreich-herzogtum" data-hint="Amts- oder Berufsbezeichnung mit Organisations- oder Ortsbezug" data-hint-type="Amt">Herzog</span>
                         Albrecht III.</a></span>
-                  <span class="anno-trigger anno-trigger-disp">theilt <span class="tei-add">mit</span></span>
+                  <span class="anno-trigger anno-trigger-disp" data-hint="Verb, das das Rechtsgeschäft anzeigt" data-hint-type="Dispositivformel">theilt <span class="tei-add" data-hint="Vom Editor sinngemäß ergänzt" data-hint-type="Editorische Ergänzung">mit</span></span>
                   <span class="anno-fn anno-fn-recipient" data-role="recipient"><span class="fn-label">Empfänger*in</span><a class="anno-org" data-ref="org__oesterreich-herzogtum" data-hint="Herzogtum Österreich (Herzogtum) [org__oesterreich-herzogtum]" data-hint-type="Organisation" href="../../../register/orgs/org__oesterreich-herzogtum.html">allen Grafen, Landherren, Rittern, Knechten, Hauptleuten, Pflegern,
                         Burggrafen, Richtern, Vitzthumen, Mauthnern, Zöllnern und anderen Amtsleuten
-                        und Unterthanen in seinen Landen mit</a></span>, <span class="anno-trigger anno-trigger-disp">dass er
+                        und Unterthanen in seinen Landen mit</a></span>, <span class="anno-trigger anno-trigger-disp" data-hint="Verb, das das Rechtsgeschäft anzeigt" data-hint-type="Dispositivformel">dass er
                      seinen Kaufleuten zu Wien und Anderen</span>, die recht mit in habent,
-                  gen Venedi ze faren, <span class="anno-trigger anno-trigger-disp">bis auf Widerruf erlaubt
+                  gen Venedi ze faren, <span class="anno-trigger anno-trigger-disp" data-hint="Verb, das das Rechtsgeschäft anzeigt" data-hint-type="Dispositivformel">bis auf Widerruf erlaubt
                      habe</span>, mit ihrer Kauf mannschaft gen Venedi ze farn die strass uber
                   den Charst, also doch dass sie an dem gevert heraus von Venedi die rechten strass
                   uber den Charst faren derrichts her gen Wienn und auch da ir kaufmanschaft
                   niderlegen und aufpinden und verkaufen, als niderlegunge ze Wienn recht ist , zu
                   welchem Behufe er ihnen auch gestattet habe, die Strasse durch ihre Diener und
-                  gewiss poten behüten zu lassen, <span class="anno-trigger anno-trigger-disp">und weist sie
+                  gewiss poten behüten zu lassen, <span class="anno-trigger anno-trigger-disp" data-hint="Verb, das das Rechtsgeschäft anzeigt" data-hint-type="Dispositivformel">und weist sie
                   an</span>, die <a class="anno-org" data-ref="org__wien" data-hint="Wien (Stadt) [org__wien]" data-hint-type="Organisation" href="../../../register/orgs/org__wien.html">Wiener</a> in diesen Rechten
-                     <span class="anno-trigger anno-trigger-disp">zu schirmen</span>.</span></p></section>
+                     <span class="anno-trigger anno-trigger-disp" data-hint="Verb, das das Rechtsgeschäft anzeigt" data-hint-type="Dispositivformel">zu schirmen</span>.</span></p></section>
 
-            <!-- Data layer: provenance strip. Korpus + Idno stehen schon
-                 in der Toolbar-Breadcrumb; hier daher NUR die technische
-                 Provenance (Archiv, Counts, externe Links). -->
+            <!-- Aufbewahrungsort der physischen Quelle: Archiv (tei:repository)
+                 plus Monasterium-Link auf den Bestandseintrag. Annotations-
+                 Counts gehoeren nicht hierher, die wandern in den
+                 annotations-summary weiter unten. -->
             <footer class="doc-provenance">
-                <span class="prov-label">Datenherkunft</span>
+                <span class="prov-label">Aufbewahrungsort</span>
                 
                 <span class="prov-item">Wiener Stadt- und Landesarchiv</span>
-                <span class="prov-sep">·</span>
                 
-                <span class="prov-item">1 Pers., 2 Org.</span>
                 
                 <span class="prov-sep">·</span>
+                
+                
                 <span class="prov-item"><a href="https://www.monasterium.net/mom/AT-WStLA/HAUrk/1264a/charter" target="_blank" rel="noopener noreferrer" class="prov-ext-link">Monasterium.net 
 <svg width="12" height="12" viewBox="0 0 12 12" fill="none"><path d="M3.5 1.5H2C1.72 1.5 1.5 1.72 1.5 2V10C1.5 10.28 1.72 10.5 2 10.5H10C10.28 10.5 10.5 10.28 10.5 10V8.5M7 1.5H10.5V5M10.25 1.75L5.5 6.5" stroke="currentColor" stroke-linecap="round" stroke-linejoin="round"/></svg>
 </a></span>
@@ -319,15 +315,15 @@
         </div>
     </footer>
 
-    <script src="../../../static/js/core.js?v=20260523115011"></script>
-    <script src="../../../static/js/tip.js?v=20260523115011"></script>
-    <script src="../../../static/js/hint.js?v=20260523115011"></script>
-    <script src="../../../static/js/basket.js?v=20260523115011"></script>
+    <script src="../../../static/js/core.js?v=20260523134309"></script>
+    <script src="../../../static/js/tip.js?v=20260523134309"></script>
+    <script src="../../../static/js/hint.js?v=20260523134309"></script>
+    <script src="../../../static/js/basket.js?v=20260523134309"></script>
     
 
-<script src="../../../static/js/facsimile.js?v=20260523115011"></script>
-<script src="../../../static/js/document.js?v=20260523115011"></script>
-<script src="../../../static/js/basket-mount.js?v=20260523115011"></script>
+<script src="../../../static/js/facsimile.js?v=20260523134309"></script>
+<script src="../../../static/js/document.js?v=20260523134309"></script>
+<script src="../../../static/js/basket-mount.js?v=20260523134309"></script>
 
 </body>
 </html>

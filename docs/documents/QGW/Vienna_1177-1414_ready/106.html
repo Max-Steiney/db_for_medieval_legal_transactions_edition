@@ -3,21 +3,22 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <meta http-equiv="Content-Security-Policy" content="default-src 'self'; script-src 'self'; style-src 'self'; font-src 'self'; img-src 'self' data: https://images.monasterium.net https://www.monasterium.net; connect-src 'self'; base-uri 'self'; form-action 'self'; upgrade-insecure-requests">
+    
+    <meta http-equiv="Content-Security-Policy" content="default-src 'self'; script-src 'self'; style-src 'self' 'unsafe-inline'; font-src 'self'; img-src 'self' data: https://images.monasterium.net https://www.monasterium.net; connect-src 'self'; base-uri 'self'; form-action 'self'; upgrade-insecure-requests">
     <meta name="referrer" content="strict-origin-when-cross-origin">
     <meta http-equiv="Permissions-Policy" content="camera=(), microphone=(), geolocation=(), interest-cohort=()">
     <title>Nr. 106 (1328 II 03), Datenbank</title>
     <link rel="preload" as="font" type="font/woff2" crossorigin
           href="../../../static/fonts/inter-400-latin.woff2">
-    <link rel="stylesheet" href="../../../static/css/fonts.css?v=20260523115011">
-    <link rel="stylesheet" href="../../../static/css/tokens.css?v=20260523115011">
-    <link rel="stylesheet" href="../../../static/css/base.css?v=20260523115011">
-    <link rel="stylesheet" href="../../../static/css/components.css?v=20260523115011">
-    <link rel="stylesheet" href="../../../static/css/responsive.css?v=20260523115011">
-    <link rel="stylesheet" href="../../../static/css/print.css?v=20260523115011">
-    <link rel="stylesheet" href="../../../static/css/tip.css?v=20260523115011">
+    <link rel="stylesheet" href="../../../static/css/fonts.css?v=20260523134309">
+    <link rel="stylesheet" href="../../../static/css/tokens.css?v=20260523134309">
+    <link rel="stylesheet" href="../../../static/css/base.css?v=20260523134309">
+    <link rel="stylesheet" href="../../../static/css/components.css?v=20260523134309">
+    <link rel="stylesheet" href="../../../static/css/responsive.css?v=20260523134309">
+    <link rel="stylesheet" href="../../../static/css/print.css?v=20260523134309">
+    <link rel="stylesheet" href="../../../static/css/tip.css?v=20260523134309">
     
-<link rel="stylesheet" href="../../../static/css/document.css?v=20260523115011">
+<link rel="stylesheet" href="../../../static/css/document.css?v=20260523134309">
 <link rel="canonical" href="documents/QGW/Vienna_1177-1414_ready/106.html">
 <meta name="citation_title" content="Nr. 106 (1328 II 03)">
 <meta name="citation_collection" content="QGW II/1 (1177–1414)">
@@ -136,12 +137,6 @@
                 <div class="doc-toolbar-meta">
                     
                     <span class="meta-pair">
-                        <span class="meta-label">Originaldatierung</span>
-                        <span class="meta-value">ze Wienne, an sand Blaesen tage.</span>
-                    </span>
-                    
-                    
-                    <span class="meta-pair">
                         <span class="meta-label">Quelle</span>
                         <span class="meta-value" data-hint="Quellen zur Geschichte der Stadt Wien, Bd. II/1, Nr. 106">Quellen zur Geschichte der Stadt Wien, Bd. II/1, Nr. 106</span>
                     </span>
@@ -181,11 +176,11 @@
                     
                     <button type="button" class="legend-toggle"
                             data-layer="triggers" aria-pressed="true"
-                            data-hint="Dispositivformel ein-/ausblenden">
+                            data-hint="Dispositivformeln ein-/ausblenden">
                         <span class="legend-toggle-dots">
                             <span class="legend-swatch swatch-trigger"></span>
                         </span>
-                        <span class="legend-toggle-label">Dispositivformel</span>
+                        <span class="legend-toggle-label">Dispositivformeln</span>
                     </button>
                     
                 </div>
@@ -230,43 +225,44 @@
         <!-- Document body (rendered TEI) -->
         <div class="doc-body">
             <section class="tei-abstract"><h2 class="tei-section-head">Regest</h2><p>
-               <span class="anno-event" data-ref="ev__QGW_II_I_106"><span class="anno-fn anno-fn-issuer" data-role="issuer"><span class="fn-label">Aussteller*in</span><a class="anno-person" data-ref="pe__dietrich_chrannest_QGW_II_I_319" data-hint="Dietrich Chrannest [pe__dietrich_chrannest_QGW_II_I_319]" data-hint-type="Person" href="../../../register/persons/pe__dietrich_chrannest_QGW_II_I_319.html">Dietreich der Chrannest</a> und
-                        <a class="anno-person" data-ref="pe__elisabeth_QGW_II_I_131" data-hint="Elisabeth Chrannestin [pe__elisabeth_QGW_II_I_131]" data-hint-type="Person" href="../../../register/persons/pe__elisabeth_QGW_II_I_131.html">Elsbet, seine
-                        Hausfrau</a></span>, <span class="anno-trigger anno-trigger-disp">verkaufen mit gesammter
+               <span class="anno-event" data-ref="ev__QGW_II_I_106"><span class="anno-fn anno-fn-issuer" data-role="issuer"><span class="fn-label">Aussteller*in</span><a class="anno-person" data-ref="pe__dietrich_chrannest_QGW_II_I_319" data-sex="m" data-hint="Dietrich Chrannest [pe__dietrich_chrannest_QGW_II_I_319]" data-hint-type="Person" href="../../../register/persons/pe__dietrich_chrannest_QGW_II_I_319.html">Dietreich der Chrannest</a> und
+                        <a class="anno-person" data-ref="pe__elisabeth_QGW_II_I_131" data-sex="f" data-hint="Elisabeth Chrannestin [pe__elisabeth_QGW_II_I_131]" data-hint-type="Person" href="../../../register/persons/pe__elisabeth_QGW_II_I_131.html">Elsbet, seine
+                        Hausfrau</a></span>, <span class="anno-trigger anno-trigger-disp" data-hint="Verb, das das Rechtsgeschäft anzeigt" data-hint-type="Dispositivformel">verkaufen mit gesammter
                      Hand</span> Gülten, die <span class="anno-event" data-ref="NULL">der Elsbet von ihrem
-                        <a class="anno-person" data-ref="pe__wisent_QGW_II_I_228" data-hint="Wisent der Kramer († 26.06.1333) [pe__wisent_QGW_II_I_228]" data-hint-type="Person" href="../../../register/persons/pe__wisent_QGW_II_I_228.html"><span class="anno-attr anno-attr-kin" data-corresp="pe__elisabeth_QGW_II_I_131">Vater</span>
-                        <span class="anno-attr anno-attr-title">hern</span> Wisenten, dem <span class="anno-attr anno-attr-prof">chramer</span>, <span class="anno-attr anno-attr-dead" title="Als verstorben genannt">anerstorben</span></a>
+                        <a class="anno-person" data-ref="pe__wisent_QGW_II_I_228" data-sex="m" data-hint="Wisent der Kramer († 26.06.1333) [pe__wisent_QGW_II_I_228]" data-hint-type="Person" href="../../../register/persons/pe__wisent_QGW_II_I_228.html"><span class="anno-attr anno-attr-kin" data-corresp="pe__elisabeth_QGW_II_I_131" data-hint="Verwandtschaftsbeziehung" data-hint-type="Verwandtschaft">Vater</span>
+                        <span class="anno-attr anno-attr-title" data-hint="Titel oder Anrede" data-hint-type="Titel">hern</span> Wisenten, dem <span class="anno-attr anno-attr-prof" data-hint="Berufsbezeichnung" data-hint-type="Beruf">chramer</span>, <span class="anno-attr anno-attr-dead" data-hint="In der Quelle als verstorben genannt" data-hint-type="Verstorben">anerstorben</span></a>
                      waren, und die sie ihrem Gemahle zu rechter Morgengabe gegeben hatte</span>, um
                   ainlef march silbers, ie zwenundsibenzich grosser pehemischer phenninge für deu
-                  march, <span class="anno-fn anno-fn-recipient" data-role="recipient"><span class="fn-label">Empfänger*in</span><a class="anno-person" data-ref="pe__heinrich_gausrabe_QGW_II_I_789" data-hint="Heinrich Gausrabe [pe__heinrich_gausrabe_QGW_II_I_789]" data-hint-type="Person" href="../../../register/persons/pe__heinrich_gausrabe_QGW_II_I_789.html"><span class="anno-attr anno-attr-title">hern</span> Hainreichen dem Gausraben</a> und <a class="anno-person" data-ref="pe__siegfried_minnganch_QGW_II_I_192" data-hint="Siegfried Minnganch [pe__siegfried_minnganch_QGW_II_I_192]" data-hint-type="Person" href="../../../register/persons/pe__siegfried_minnganch_QGW_II_I_192.html"><span class="anno-attr anno-attr-title">hern</span> Seifriden dem Minnganch</a> und ir gesellschaft</span> .
+                  march, <span class="anno-fn anno-fn-recipient" data-role="recipient"><span class="fn-label">Empfänger*in</span><a class="anno-person" data-ref="pe__heinrich_gausrabe_QGW_II_I_789" data-sex="m" data-hint="Heinrich Gausrabe [pe__heinrich_gausrabe_QGW_II_I_789]" data-hint-type="Person" href="../../../register/persons/pe__heinrich_gausrabe_QGW_II_I_789.html"><span class="anno-attr anno-attr-title" data-hint="Titel oder Anrede" data-hint-type="Titel">hern</span> Hainreichen dem Gausraben</a> und <a class="anno-person" data-ref="pe__siegfried_minnganch_QGW_II_I_192" data-sex="m" data-hint="Siegfried Minnganch [pe__siegfried_minnganch_QGW_II_I_192]" data-hint-type="Person" href="../../../register/persons/pe__siegfried_minnganch_QGW_II_I_192.html"><span class="anno-attr anno-attr-title" data-hint="Titel oder Anrede" data-hint-type="Titel">hern</span> Seifriden dem Minnganch</a> und ir gesellschaft</span> .
                   Die Gülten werden im einzelnen angegeben: 13 sh. dn. geltes, die da ligent enhalb
                   der Wienne auf zwain hêusern und zwain paumgarten hinden daran und auf alle deu
                   und darzu gehoret, swie so das genant ist und mit allen den aechern, die auch
-                  darzu gehorent und ligent zenaehst Marichartes haus an Smaltz , ferner <span class="anno-fn anno-fn-other" data-role="other"><span class="fn-label">Sonstige</span><span class="anno-trigger anno-trigger-fn">mit Handen</span> des <a class="anno-person" data-ref="pe__ruediger_QGW_II_I_251" data-hint="Ruger [pe__ruediger_QGW_II_I_251]" data-hint-type="Person" href="../../../register/persons/pe__ruediger_QGW_II_I_251.html"><span class="anno-attr anno-attr-title">Grundherrn</span> Ru/edger, <span class="anno-attr anno-attr-occ" data-corresp="org__wien-st_niklas_dacz_den_roeren">Kaplans</span> der S.
+                  darzu gehorent und ligent zenaehst Marichartes haus an Smaltz , ferner <span class="anno-fn anno-fn-other" data-role="other"><span class="fn-label">Sonstige</span><span class="anno-trigger anno-trigger-fn" data-hint="Verb, das eine Funktionsrolle markiert" data-hint-type="Funktionsrollen-Trigger">mit Handen</span> des <a class="anno-person" data-ref="pe__ruediger_QGW_II_I_251" data-sex="m" data-hint="Ruger [pe__ruediger_QGW_II_I_251]" data-hint-type="Person" href="../../../register/persons/pe__ruediger_QGW_II_I_251.html"><span class="anno-attr anno-attr-title" data-hint="Titel oder Anrede" data-hint-type="Titel">Grundherrn</span> Ru/edger, <span class="anno-attr anno-attr-occ" data-corresp="org__wien-st_niklas_dacz_den_roeren" data-hint="Amts- oder Berufsbezeichnung mit Organisations- oder Ortsbezug" data-hint-type="Amt">Kaplans</span> der S.
                         Niclas-Kapelle in hern Chu/onrades haus des Chrannestes</a></span>, 9 sh. dn.
                   Geldes Burgrechts, wovon 3 sh. dn. Geldes liegen auf Hainreichs haus, des smides,
                   zenaehst der padstuben vor Stubenpurgtor, und 6 sh. dn. auf Liebhardes haus, des
                   ledrer, zenaehst Jo/erigen dem Paeurlein, welche 9 sh. dn. das erste Burgrecht
                   nach dem den Frauen bei S. Niclas gehörigen sein sollen.</span>
-            </p></section><section class="tei-seal"><h2 class="tei-section-head">Siegelbeschreibung</h2><p><span class="anno-event" data-ref="ev__QGW_II_I_106"><span class="anno-fn anno-fn-witness" data-role="witness"><span class="fn-label">Zeug*in</span>Besiegelt : <a class="anno-person" data-ref="pe__dietrich_chrannest_QGW_II_I_319" data-hint="Dietrich Chrannest [pe__dietrich_chrannest_QGW_II_I_319]" data-hint-type="Person" href="../../../register/persons/pe__dietrich_chrannest_QGW_II_I_319.html">1. von dem
-                        Aussteller</a>, <a class="anno-person" data-ref="pe__ruediger_QGW_II_I_251" data-hint="Ruger [pe__ruediger_QGW_II_I_251]" data-hint-type="Person" href="../../../register/persons/pe__ruediger_QGW_II_I_251.html">2. von
-                        dem Grundherrn</a>, <a class="anno-person" data-ref="pe__jakob_chrannest_QGW_II_I_208" data-hint="Jakob Chrannest [pe__jakob_chrannest_QGW_II_I_208]" data-hint-type="Person" href="../../../register/persons/pe__jakob_chrannest_QGW_II_I_208.html">3. von dem <span class="anno-attr anno-attr-kin" data-corresp="pe__dietrich_chrannest_QGW_II_I_319">Bruder</span> des
-                        Ausstellers <span class="anno-attr anno-attr-title">hern</span> Jacob dem
+            </p></section><section class="tei-seal"><h2 class="tei-section-head">Siegelbeschreibung</h2><p><span class="anno-event" data-ref="ev__QGW_II_I_106"><span class="anno-fn anno-fn-witness" data-role="witness"><span class="fn-label">Zeug*in</span>Besiegelt : <a class="anno-person" data-ref="pe__dietrich_chrannest_QGW_II_I_319" data-sex="m" data-hint="Dietrich Chrannest [pe__dietrich_chrannest_QGW_II_I_319]" data-hint-type="Person" href="../../../register/persons/pe__dietrich_chrannest_QGW_II_I_319.html">1. von dem
+                        Aussteller</a>, <a class="anno-person" data-ref="pe__ruediger_QGW_II_I_251" data-sex="m" data-hint="Ruger [pe__ruediger_QGW_II_I_251]" data-hint-type="Person" href="../../../register/persons/pe__ruediger_QGW_II_I_251.html">2. von
+                        dem Grundherrn</a>, <a class="anno-person" data-ref="pe__jakob_chrannest_QGW_II_I_208" data-sex="m" data-hint="Jakob Chrannest [pe__jakob_chrannest_QGW_II_I_208]" data-hint-type="Person" href="../../../register/persons/pe__jakob_chrannest_QGW_II_I_208.html">3. von dem <span class="anno-attr anno-attr-kin" data-corresp="pe__dietrich_chrannest_QGW_II_I_319" data-hint="Verwandtschaftsbeziehung" data-hint-type="Verwandtschaft">Bruder</span> des
+                        Ausstellers <span class="anno-attr anno-attr-title" data-hint="Titel oder Anrede" data-hint-type="Titel">hern</span> Jacob dem
                      Chranneste</a>.</span></span>
             </p></section>
 
-            <!-- Data layer: provenance strip. Korpus + Idno stehen schon
-                 in der Toolbar-Breadcrumb; hier daher NUR die technische
-                 Provenance (Archiv, Counts, externe Links). -->
+            <!-- Aufbewahrungsort der physischen Quelle: Archiv (tei:repository)
+                 plus Monasterium-Link auf den Bestandseintrag. Annotations-
+                 Counts gehoeren nicht hierher, die wandern in den
+                 annotations-summary weiter unten. -->
             <footer class="doc-provenance">
-                <span class="prov-label">Datenherkunft</span>
+                <span class="prov-label">Aufbewahrungsort</span>
                 
                 <span class="prov-item">Wiener Stadt- und Landesarchiv</span>
-                <span class="prov-sep">·</span>
                 
-                <span class="prov-item">7 Pers., 0 Org.</span>
                 
                 <span class="prov-sep">·</span>
+                
+                
                 <span class="prov-item"><a href="https://www.monasterium.net/mom/AT-WStLA/HAUrk/106/charter" target="_blank" rel="noopener noreferrer" class="prov-ext-link">Monasterium.net 
 <svg width="12" height="12" viewBox="0 0 12 12" fill="none"><path d="M3.5 1.5H2C1.72 1.5 1.5 1.72 1.5 2V10C1.5 10.28 1.72 10.5 2 10.5H10C10.28 10.5 10.5 10.28 10.5 10V8.5M7 1.5H10.5V5M10.25 1.75L5.5 6.5" stroke="currentColor" stroke-linecap="round" stroke-linejoin="round"/></svg>
 </a></span>
@@ -281,20 +277,20 @@
                 <div class="facs-controls">
                     <div class="facs-controls-pages">
                         
-                        <button type="button" class="facs-prev" aria-label="Vorherige Seite" disabled>&#8249;</button>
+                        <button type="button" class="facs-prev" aria-label="Vorherige Seite" data-hint="Vorherige Seite" disabled>&#8249;</button>
                         
                         <span class="facs-page-indicator">
                             Seite <span id="facs-current">1</span>/<span>2</span>
                         </span>
                         
-                        <button type="button" class="facs-next" aria-label="Nächste Seite">&#8250;</button>
+                        <button type="button" class="facs-next" aria-label="Nächste Seite" data-hint="Nächste Seite">&#8250;</button>
                         
                     </div>
                     <div class="facs-controls-zoom">
-                        <button type="button" class="facs-zoom-in" aria-label="Vergrößern">+</button>
-                        <button type="button" class="facs-zoom-out" aria-label="Verkleinern">&minus;</button>
-                        <button type="button" class="facs-zoom-reset" aria-label="Ansicht zurücksetzen">1:1</button>
-                        <button type="button" class="facs-rotate" aria-label="Um 90 Grad drehen" title="Um 90° drehen">&#10227;</button>
+                        <button type="button" class="facs-zoom-in" aria-label="Vergrößern" data-hint="Vergrößern">+</button>
+                        <button type="button" class="facs-zoom-out" aria-label="Verkleinern" data-hint="Verkleinern">&minus;</button>
+                        <button type="button" class="facs-zoom-reset" aria-label="Ansicht zurücksetzen" data-hint="Ansicht zurücksetzen">1:1</button>
+                        <button type="button" class="facs-rotate" aria-label="Um 90 Grad drehen" data-hint="Um 90° drehen">&#10227;</button>
                     </div>
                 </div>
                 <div class="facs-image-wrap" id="facs-image-wrap"
@@ -359,17 +355,17 @@
         </div>
     </footer>
 
-    <script src="../../../static/js/core.js?v=20260523115011"></script>
-    <script src="../../../static/js/tip.js?v=20260523115011"></script>
-    <script src="../../../static/js/hint.js?v=20260523115011"></script>
-    <script src="../../../static/js/basket.js?v=20260523115011"></script>
+    <script src="../../../static/js/core.js?v=20260523134309"></script>
+    <script src="../../../static/js/tip.js?v=20260523134309"></script>
+    <script src="../../../static/js/hint.js?v=20260523134309"></script>
+    <script src="../../../static/js/basket.js?v=20260523134309"></script>
     
 
 <script src="../../../static/vendor/openseadragon/openseadragon.min.js?v=6.0.2"></script>
 
-<script src="../../../static/js/facsimile.js?v=20260523115011"></script>
-<script src="../../../static/js/document.js?v=20260523115011"></script>
-<script src="../../../static/js/basket-mount.js?v=20260523115011"></script>
+<script src="../../../static/js/facsimile.js?v=20260523134309"></script>
+<script src="../../../static/js/document.js?v=20260523134309"></script>
+<script src="../../../static/js/basket-mount.js?v=20260523134309"></script>
 
 </body>
 </html>

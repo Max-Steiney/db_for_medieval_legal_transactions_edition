@@ -3,21 +3,22 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <meta http-equiv="Content-Security-Policy" content="default-src 'self'; script-src 'self'; style-src 'self'; font-src 'self'; img-src 'self' data: https://images.monasterium.net https://www.monasterium.net; connect-src 'self'; base-uri 'self'; form-action 'self'; upgrade-insecure-requests">
+    
+    <meta http-equiv="Content-Security-Policy" content="default-src 'self'; script-src 'self'; style-src 'self' 'unsafe-inline'; font-src 'self'; img-src 'self' data: https://images.monasterium.net https://www.monasterium.net; connect-src 'self'; base-uri 'self'; form-action 'self'; upgrade-insecure-requests">
     <meta name="referrer" content="strict-origin-when-cross-origin">
     <meta http-equiv="Permissions-Policy" content="camera=(), microphone=(), geolocation=(), interest-cohort=()">
     <title>Nr. WStLA 2.1.2.1.B1.34 (1452-05-12), Datenbank</title>
     <link rel="preload" as="font" type="font/woff2" crossorigin
           href="../../../static/fonts/inter-400-latin.woff2">
-    <link rel="stylesheet" href="../../../static/css/fonts.css?v=20260523115011">
-    <link rel="stylesheet" href="../../../static/css/tokens.css?v=20260523115011">
-    <link rel="stylesheet" href="../../../static/css/base.css?v=20260523115011">
-    <link rel="stylesheet" href="../../../static/css/components.css?v=20260523115011">
-    <link rel="stylesheet" href="../../../static/css/responsive.css?v=20260523115011">
-    <link rel="stylesheet" href="../../../static/css/print.css?v=20260523115011">
-    <link rel="stylesheet" href="../../../static/css/tip.css?v=20260523115011">
+    <link rel="stylesheet" href="../../../static/css/fonts.css?v=20260523134309">
+    <link rel="stylesheet" href="../../../static/css/tokens.css?v=20260523134309">
+    <link rel="stylesheet" href="../../../static/css/base.css?v=20260523134309">
+    <link rel="stylesheet" href="../../../static/css/components.css?v=20260523134309">
+    <link rel="stylesheet" href="../../../static/css/responsive.css?v=20260523134309">
+    <link rel="stylesheet" href="../../../static/css/print.css?v=20260523134309">
+    <link rel="stylesheet" href="../../../static/css/tip.css?v=20260523134309">
     
-<link rel="stylesheet" href="../../../static/css/document.css?v=20260523115011">
+<link rel="stylesheet" href="../../../static/css/document.css?v=20260523134309">
 <link rel="canonical" href="documents/Satzbuch_CD/SB_CD_1448-60_ready/e00066_1452-05-12.html">
 <meta name="citation_title" content="Nr. WStLA 2.1.2.1.B1.34 (1452-05-12)">
 <meta name="citation_collection" content="Satzbuch CD (1448–1460)">
@@ -135,7 +136,6 @@
 
                 <div class="doc-toolbar-meta">
                     
-                    
                 </div>
             </div>
 
@@ -171,11 +171,11 @@
                     
                     <button type="button" class="legend-toggle"
                             data-layer="triggers" aria-pressed="true"
-                            data-hint="Dispositivformel ein-/ausblenden">
+                            data-hint="Dispositivformeln ein-/ausblenden">
                         <span class="legend-toggle-dots">
                             <span class="legend-swatch swatch-trigger"></span>
                         </span>
-                        <span class="legend-toggle-label">Dispositivformel</span>
+                        <span class="legend-toggle-label">Dispositivformeln</span>
                     </button>
                     
                 </div>
@@ -219,50 +219,51 @@
     <div class="doc-content">
         <!-- Document body (rendered TEI) -->
         <div class="doc-body">
-            <section class="tei-entry"><h2 class="tei-section-head">Eintrag</h2><p><span class="anno-event" data-ref="ev__SB_CD_00066"><span class="anno-fn anno-fn-issuer" data-role="issuer"><span class="fn-label">Aussteller*in</span><a class="anno-person" data-ref="pe__adam_herting_QGW_II_II_3494" data-hint="Adam Herting [pe__adam_herting_QGW_II_II_3494]" data-hint-type="Person" href="../../../register/persons/pe__adam_herting_QGW_II_II_3494.html">Adam Hertting</a> und <a class="anno-person" data-ref="pe__margarethe_SB_CD_00066" data-hint="Margarethe Hertingin [pe__margarethe_SB_CD_00066]" data-hint-type="Person" href="../../../register/persons/pe__margarethe_SB_CD_00066.html">Margreth sein <span class="anno-attr anno-attr-kin" data-corresp="pe__adam_herting_QGW_II_II_3494">hausfrau</span></a></span>
-                  <span class="anno-trigger anno-trigger-disp">habent verkaufft <span class="tei-add">gelts purkrechts</span></span>
+            <section class="tei-entry"><h2 class="tei-section-head">Eintrag</h2><p><span class="anno-event" data-ref="ev__SB_CD_00066"><span class="anno-fn anno-fn-issuer" data-role="issuer"><span class="fn-label">Aussteller*in</span><a class="anno-person" data-ref="pe__adam_herting_QGW_II_II_3494" data-sex="m" data-hint="Adam Herting [pe__adam_herting_QGW_II_II_3494]" data-hint-type="Person" href="../../../register/persons/pe__adam_herting_QGW_II_II_3494.html">Adam Hertting</a> und <a class="anno-person" data-ref="pe__margarethe_SB_CD_00066" data-sex="f" data-hint="Margarethe Hertingin [pe__margarethe_SB_CD_00066]" data-hint-type="Person" href="../../../register/persons/pe__margarethe_SB_CD_00066.html">Margreth sein <span class="anno-attr anno-attr-kin" data-corresp="pe__adam_herting_QGW_II_II_3494" data-hint="Verwandtschaftsbeziehung" data-hint-type="Verwandtschaft">hausfrau</span></a></span>
+                  <span class="anno-trigger anno-trigger-disp" data-hint="Verb, das das Rechtsgeschäft anzeigt" data-hint-type="Dispositivformel">habent verkaufft <span class="tei-add" data-hint="Vom Editor sinngemäß ergänzt" data-hint-type="Editorische Ergänzung">gelts purkrechts</span></span>
                   <span class="anno-fn anno-fn-transactiongood_I" data-role="transactiongood_I"><span class="fn-label">transactiongood_I</span>zehen phunt
-                     <span class="anno-trigger anno-trigger-fn">gelts purkrechts</span> auf <span class="anno-place" data-ref="pl__wien-immo_roterturm_9" data-hint="Margarethe Hertingin / Preuerin und Johann Herting Haus (immo) [pl__wien-immo_roterturm_9]" data-hint-type="Ort"><span class="anno-attr anno-attr-owner" data-corresp="pe__margarethe_SB_CD_00066">írn</span>
-                        <span class="anno-attr anno-attr-owner" data-corresp="pe__adam_herting_QGW_II_II_3494"><span class="tei-add">írn</span></span> zwain drittailen hauss, <span class="anno-event" data-ref="ev__SB_CD_00066_men_1"><span class="anno-fn anno-fn-transactiongood_I" data-role="transactiongood_I"><span class="fn-label">transactiongood_I</span><span class="anno-place" data-ref="pl__wien-immo_roterturm_9" data-hint="Margarethe Hertingin / Preuerin und Johann Herting Haus (immo) [pl__wien-immo_roterturm_9]" data-hint-type="Ort">die</span></span>
-                           <span class="anno-fn anno-fn-recipient" data-role="recipient"><span class="fn-label">Empfänger*in</span><a class="anno-person" data-ref="pe__margarethe_SB_CD_00066" data-hint="Margarethe Hertingin [pe__margarethe_SB_CD_00066]" data-hint-type="Person" href="../../../register/persons/pe__margarethe_SB_CD_00066.html">si</a>
-                              <a class="anno-person" data-ref="pe__adam_herting_QGW_II_II_3494" data-hint="Adam Herting [pe__adam_herting_QGW_II_II_3494]" data-hint-type="Person" href="../../../register/persons/pe__adam_herting_QGW_II_II_3494.html"><span class="tei-add">si</span></a></span>
-                           <span class="anno-fn anno-fn-issuer" data-role="issuer"><span class="fn-label">Aussteller*in</span>von <a class="anno-person" data-ref="pe__barbara_SB_CD_00066" data-hint="Barbara von Steyr [pe__barbara_SB_CD_00066]" data-hint-type="Person" href="../../../register/persons/pe__barbara_SB_CD_00066.html">Barbaren, <a class="anno-person" data-ref="pe__sebastian_zieglshauser_QGW_II_III_3864" data-hint="Sebastian Zieglshauser [pe__sebastian_zieglshauser_QGW_II_III_3864]" data-hint-type="Person" href="../../../register/persons/pe__sebastian_zieglshauser_QGW_II_III_3864.html">Sebastians des
+                     <span class="anno-trigger anno-trigger-fn" data-hint="Verb, das eine Funktionsrolle markiert" data-hint-type="Funktionsrollen-Trigger">gelts purkrechts</span> auf <span class="anno-place" data-ref="pl__wien-immo_roterturm_9" data-hint="Margarethe Hertingin / Preuerin und Johann Herting Haus (immo) [pl__wien-immo_roterturm_9]" data-hint-type="Ort"><span class="anno-attr anno-attr-owner" data-corresp="pe__margarethe_SB_CD_00066" data-hint="Besitzverhältnis zu einer Person, Organisation oder einem Ort" data-hint-type="Besitz">írn</span>
+                        <span class="anno-attr anno-attr-owner" data-corresp="pe__adam_herting_QGW_II_II_3494" data-hint="Besitzverhältnis zu einer Person, Organisation oder einem Ort" data-hint-type="Besitz"><span class="tei-add" data-hint="Vom Editor sinngemäß ergänzt" data-hint-type="Editorische Ergänzung">írn</span></span> zwain drittailen hauss, <span class="anno-event" data-ref="ev__SB_CD_00066_men_1"><span class="anno-fn anno-fn-transactiongood_I" data-role="transactiongood_I"><span class="fn-label">transactiongood_I</span><span class="anno-place" data-ref="pl__wien-immo_roterturm_9" data-hint="Margarethe Hertingin / Preuerin und Johann Herting Haus (immo) [pl__wien-immo_roterturm_9]" data-hint-type="Ort">die</span></span>
+                           <span class="anno-fn anno-fn-recipient" data-role="recipient"><span class="fn-label">Empfänger*in</span><a class="anno-person" data-ref="pe__margarethe_SB_CD_00066" data-sex="f" data-hint="Margarethe Hertingin [pe__margarethe_SB_CD_00066]" data-hint-type="Person" href="../../../register/persons/pe__margarethe_SB_CD_00066.html">si</a>
+                              <a class="anno-person" data-ref="pe__adam_herting_QGW_II_II_3494" data-sex="m" data-hint="Adam Herting [pe__adam_herting_QGW_II_II_3494]" data-hint-type="Person" href="../../../register/persons/pe__adam_herting_QGW_II_II_3494.html"><span class="tei-add" data-hint="Vom Editor sinngemäß ergänzt" data-hint-type="Editorische Ergänzung">si</span></a></span>
+                           <span class="anno-fn anno-fn-issuer" data-role="issuer"><span class="fn-label">Aussteller*in</span>von <a class="anno-person" data-ref="pe__barbara_SB_CD_00066" data-sex="f" data-hint="Barbara von Steyr [pe__barbara_SB_CD_00066]" data-hint-type="Person" href="../../../register/persons/pe__barbara_SB_CD_00066.html">Barbaren, <a class="anno-person" data-ref="pe__sebastian_zieglshauser_QGW_II_III_3864" data-sex="m" data-hint="Sebastian Zieglshauser [pe__sebastian_zieglshauser_QGW_II_III_3864]" data-hint-type="Person" href="../../../register/persons/pe__sebastian_zieglshauser_QGW_II_III_3864.html">Sebastians des
                                     Zieglshauser</a>
-                                 <span class="anno-attr anno-attr-kin" data-corresp="pe__sebastian_zieglshauser_QGW_II_III_3864">hausfraun</span></a></span>
-                           <span class="anno-trigger anno-trigger-disp">gekaufft habent</span>,</span> ganczes <span class="anno-attr anno-attr-topo" data-corresp="pl__wien-roterturm">gelegen pei dem
-                           Rotentúrn</span>, zenagst <span class="anno-place" data-ref="pl__wien-immo_roterturm_3" data-hint="Thomas Praitenweidacher Haus (immo) [pl__wien-immo_roterturm_3]" data-hint-type="Ort"><span class="anno-attr anno-attr-owner" data-corresp="pe__thomas_praitenweidacher_QGW_II_II_3462">Thomans
-                              Praitenweidaher</span> haus <span class="anno-attr anno-attr-topo" data-corresp="pl__wien-roterturm_steig_bei">auf dem steig</span></span>
-                        <span class="anno-attr anno-attr-topo" data-corresp="pl__wien-immo_roterturm_3"><span class="tei-add">zenagst</span>
+                                 <span class="anno-attr anno-attr-kin" data-corresp="pe__sebastian_zieglshauser_QGW_II_III_3864" data-hint="Verwandtschaftsbeziehung" data-hint-type="Verwandtschaft">hausfraun</span></a></span>
+                           <span class="anno-trigger anno-trigger-disp" data-hint="Verb, das das Rechtsgeschäft anzeigt" data-hint-type="Dispositivformel">gekaufft habent</span>,</span> ganczes <span class="anno-attr anno-attr-topo" data-corresp="pl__wien-roterturm" data-hint="Topographische Lagebezeichnung" data-hint-type="Topographie">gelegen pei dem
+                           Rotentúrn</span>, zenagst <span class="anno-place" data-ref="pl__wien-immo_roterturm_3" data-hint="Thomas Praitenweidacher Haus (immo) [pl__wien-immo_roterturm_3]" data-hint-type="Ort"><span class="anno-attr anno-attr-owner" data-corresp="pe__thomas_praitenweidacher_QGW_II_II_3462" data-hint="Besitzverhältnis zu einer Person, Organisation oder einem Ort" data-hint-type="Besitz">Thomans
+                              Praitenweidaher</span> haus <span class="anno-attr anno-attr-topo" data-corresp="pl__wien-roterturm_steig_bei" data-hint="Topographische Lagebezeichnung" data-hint-type="Topographie">auf dem steig</span></span>
+                        <span class="anno-attr anno-attr-topo" data-corresp="pl__wien-immo_roterturm_3" data-hint="Topographische Lagebezeichnung" data-hint-type="Topographie"><span class="tei-add" data-hint="Vom Editor sinngemäß ergänzt" data-hint-type="Editorische Ergänzung">zenagst</span>
                            an aim tail</span>
-                        <span class="anno-attr anno-attr-topo" data-corresp="pl__wien-immo_roterturm_10">und an dem andern
+                        <span class="anno-attr anno-attr-topo" data-corresp="pl__wien-immo_roterturm_10" data-hint="Topographische Lagebezeichnung" data-hint-type="Topographie">und an dem andern
                            zenagst</span>
-                        <span class="anno-place" data-ref="pl__wien-immo_roterturm_10" data-hint="Johann Hermann Haus (immo) [pl__wien-immo_roterturm_10]" data-hint-type="Ort"><span class="anno-attr anno-attr-owner" data-corresp="pe__johann_hermann_SB_CD_00621">Hansen Hermans</span>
+                        <span class="anno-place" data-ref="pl__wien-immo_roterturm_10" data-hint="Johann Hermann Haus (immo) [pl__wien-immo_roterturm_10]" data-hint-type="Ort"><span class="anno-attr anno-attr-owner" data-corresp="pe__johann_hermann_SB_CD_00621" data-hint="Besitzverhältnis zu einer Person, Organisation oder einem Ort" data-hint-type="Besitz">Hansen Hermans</span>
                            haws</span>. Und auf allen den gemechen und gemainen stukchen, die nach
                         lautt der tailbrief zu denselben zwain drittailen hauss gehörnt</span>.</span>
                   <span class="anno-fn anno-fn-transactiongood_II" data-role="transactiongood_II"><span class="fn-label">transactiongood_II</span>Umb hundert phund
                         phening</span>
-                  <span class="anno-fn anno-fn-recipient" data-role="recipient"><span class="fn-label">Empfänger*in</span>dem <a class="anno-person" data-ref="pe__georg_schrot_QGW_II_II_3733" data-hint="Georg Schrot [pe__georg_schrot_QGW_II_II_3733]" data-hint-type="Person" href="../../../register/persons/pe__georg_schrot_QGW_II_II_3733.html"><span class="anno-attr anno-attr-title">erbern</span>
-                        <span class="anno-attr anno-attr-title">hern</span> Jorgen Schrot, <span class="anno-attr anno-attr-occ" data-corresp="org__wien-st_peter-altar_zehntausend_ritter_und_eilftausend_maid-messe_chastner">caplan</span> Sand Peters cappelln, dieczeit verweser der messe, die
+                  <span class="anno-fn anno-fn-recipient" data-role="recipient"><span class="fn-label">Empfänger*in</span>dem <a class="anno-person" data-ref="pe__georg_schrot_QGW_II_II_3733" data-sex="m" data-hint="Georg Schrot [pe__georg_schrot_QGW_II_II_3733]" data-hint-type="Person" href="../../../register/persons/pe__georg_schrot_QGW_II_II_3733.html"><span class="anno-attr anno-attr-title" data-hint="Titel oder Anrede" data-hint-type="Titel">erbern</span>
+                        <span class="anno-attr anno-attr-title" data-hint="Titel oder Anrede" data-hint-type="Titel">hern</span> Jorgen Schrot, <span class="anno-attr anno-attr-occ" data-corresp="org__wien-st_peter-altar_zehntausend_ritter_und_eilftausend_maid-messe_chastner" data-hint="Amts- oder Berufsbezeichnung mit Organisations- oder Ortsbezug" data-hint-type="Amt">caplan</span> Sand Peters cappelln, dieczeit verweser der messe, die
                         Eberhart Kasstner daselbs zu stifften geschafft hat</a> und <a class="anno-org" data-ref="org__wien-st_peter-altar_zehntausend_ritter_und_eilftausend_maid-messe_chastner" data-hint="Chastnerstiftung (Messe) [org__wien-st_peter-altar_zehntausend_ritter_und_eilftausend_maid-messe_chastner]" data-hint-type="Organisation" href="../../../register/orgs/org__wien-st_peter-altar_zehntausend_ritter_und_eilftausend_maid-messe_chastner.html">seinen nachkomen</a>.</span>
                   <span class="anno-fn anno-fn-transactiongood_I" data-role="transactiongood_I"><span class="fn-label">transactiongood_I</span><span class="anno-trigger anno-trigger-impl_rules">Und sind zu dienn zu drein
                         tègen und wider abczukauffen miteinander und den nagsten dinst damitt, ut
                         littera</span>.</span> Actum an Freitag sand Pangreczen tag, anno etc.
                      liido.</span></p><p>Summa vi s. xx d.</p><p><span class="anno-event" data-ref="ev__SB_CD_00066"><span class="anno-fn anno-fn-transactiongood_II" data-role="transactiongood_II"><span class="fn-label">transactiongood_II</span>Die hundert pfunt</span>
-                  <span class="anno-trigger anno-trigger-disp">sind zum puch gelegt</span> feria sexta ante
+                  <span class="anno-trigger anno-trigger-disp" data-hint="Verb, das das Rechtsgeschäft anzeigt" data-hint-type="Dispositivformel">sind zum puch gelegt</span> feria sexta ante
                   Scolastice, anno etc. liii.</span></p></section>
 
-            <!-- Data layer: provenance strip. Korpus + Idno stehen schon
-                 in der Toolbar-Breadcrumb; hier daher NUR die technische
-                 Provenance (Archiv, Counts, externe Links). -->
+            <!-- Aufbewahrungsort der physischen Quelle: Archiv (tei:repository)
+                 plus Monasterium-Link auf den Bestandseintrag. Annotations-
+                 Counts gehoeren nicht hierher, die wandern in den
+                 annotations-summary weiter unten. -->
             <footer class="doc-provenance">
-                <span class="prov-label">Datenherkunft</span>
+                <span class="prov-label">Aufbewahrungsort</span>
                 
                 <span class="prov-item">Grundbücher</span>
-                <span class="prov-sep">·</span>
                 
-                <span class="prov-item">5 Pers., 1 Org.</span>
                 
                 <span class="prov-sep">·</span>
+                
+                
                 <span class="prov-item"><a href="https://grundbuecher.acdh.oeaw.ac.at/e00066_1452-05-12.html" target="_blank" rel="noopener noreferrer" class="prov-ext-link">Monasterium.net 
 <svg width="12" height="12" viewBox="0 0 12 12" fill="none"><path d="M3.5 1.5H2C1.72 1.5 1.5 1.72 1.5 2V10C1.5 10.28 1.72 10.5 2 10.5H10C10.28 10.5 10.5 10.28 10.5 10V8.5M7 1.5H10.5V5M10.25 1.75L5.5 6.5" stroke="currentColor" stroke-linecap="round" stroke-linejoin="round"/></svg>
 </a></span>
@@ -283,10 +284,10 @@
                         
                     </div>
                     <div class="facs-controls-zoom">
-                        <button type="button" class="facs-zoom-in" aria-label="Vergrößern">+</button>
-                        <button type="button" class="facs-zoom-out" aria-label="Verkleinern">&minus;</button>
-                        <button type="button" class="facs-zoom-reset" aria-label="Ansicht zurücksetzen">1:1</button>
-                        <button type="button" class="facs-rotate" aria-label="Um 90 Grad drehen" title="Um 90° drehen">&#10227;</button>
+                        <button type="button" class="facs-zoom-in" aria-label="Vergrößern" data-hint="Vergrößern">+</button>
+                        <button type="button" class="facs-zoom-out" aria-label="Verkleinern" data-hint="Verkleinern">&minus;</button>
+                        <button type="button" class="facs-zoom-reset" aria-label="Ansicht zurücksetzen" data-hint="Ansicht zurücksetzen">1:1</button>
+                        <button type="button" class="facs-rotate" aria-label="Um 90 Grad drehen" data-hint="Um 90° drehen">&#10227;</button>
                     </div>
                 </div>
                 <div class="facs-image-wrap" id="facs-image-wrap"
@@ -351,17 +352,17 @@
         </div>
     </footer>
 
-    <script src="../../../static/js/core.js?v=20260523115011"></script>
-    <script src="../../../static/js/tip.js?v=20260523115011"></script>
-    <script src="../../../static/js/hint.js?v=20260523115011"></script>
-    <script src="../../../static/js/basket.js?v=20260523115011"></script>
+    <script src="../../../static/js/core.js?v=20260523134309"></script>
+    <script src="../../../static/js/tip.js?v=20260523134309"></script>
+    <script src="../../../static/js/hint.js?v=20260523134309"></script>
+    <script src="../../../static/js/basket.js?v=20260523134309"></script>
     
 
 <script src="../../../static/vendor/openseadragon/openseadragon.min.js?v=6.0.2"></script>
 
-<script src="../../../static/js/facsimile.js?v=20260523115011"></script>
-<script src="../../../static/js/document.js?v=20260523115011"></script>
-<script src="../../../static/js/basket-mount.js?v=20260523115011"></script>
+<script src="../../../static/js/facsimile.js?v=20260523134309"></script>
+<script src="../../../static/js/document.js?v=20260523134309"></script>
+<script src="../../../static/js/basket-mount.js?v=20260523134309"></script>
 
 </body>
 </html>

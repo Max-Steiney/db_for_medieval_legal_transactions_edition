@@ -3,21 +3,22 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <meta http-equiv="Content-Security-Policy" content="default-src 'self'; script-src 'self'; style-src 'self'; font-src 'self'; img-src 'self' data: https://images.monasterium.net https://www.monasterium.net; connect-src 'self'; base-uri 'self'; form-action 'self'; upgrade-insecure-requests">
+    
+    <meta http-equiv="Content-Security-Policy" content="default-src 'self'; script-src 'self'; style-src 'self' 'unsafe-inline'; font-src 'self'; img-src 'self' data: https://images.monasterium.net https://www.monasterium.net; connect-src 'self'; base-uri 'self'; form-action 'self'; upgrade-insecure-requests">
     <meta name="referrer" content="strict-origin-when-cross-origin">
     <meta http-equiv="Permissions-Policy" content="camera=(), microphone=(), geolocation=(), interest-cohort=()">
     <title>Nr. 957 (1379 II 15), Datenbank</title>
     <link rel="preload" as="font" type="font/woff2" crossorigin
           href="../../../static/fonts/inter-400-latin.woff2">
-    <link rel="stylesheet" href="../../../static/css/fonts.css?v=20260523115011">
-    <link rel="stylesheet" href="../../../static/css/tokens.css?v=20260523115011">
-    <link rel="stylesheet" href="../../../static/css/base.css?v=20260523115011">
-    <link rel="stylesheet" href="../../../static/css/components.css?v=20260523115011">
-    <link rel="stylesheet" href="../../../static/css/responsive.css?v=20260523115011">
-    <link rel="stylesheet" href="../../../static/css/print.css?v=20260523115011">
-    <link rel="stylesheet" href="../../../static/css/tip.css?v=20260523115011">
+    <link rel="stylesheet" href="../../../static/css/fonts.css?v=20260523134309">
+    <link rel="stylesheet" href="../../../static/css/tokens.css?v=20260523134309">
+    <link rel="stylesheet" href="../../../static/css/base.css?v=20260523134309">
+    <link rel="stylesheet" href="../../../static/css/components.css?v=20260523134309">
+    <link rel="stylesheet" href="../../../static/css/responsive.css?v=20260523134309">
+    <link rel="stylesheet" href="../../../static/css/print.css?v=20260523134309">
+    <link rel="stylesheet" href="../../../static/css/tip.css?v=20260523134309">
     
-<link rel="stylesheet" href="../../../static/css/document.css?v=20260523115011">
+<link rel="stylesheet" href="../../../static/css/document.css?v=20260523134309">
 <link rel="canonical" href="documents/QGW/Vienna_1177-1414_ready/957.html">
 <meta name="citation_title" content="Nr. 957 (1379 II 15)">
 <meta name="citation_collection" content="QGW II/1 (1177–1414)">
@@ -136,12 +137,6 @@
                 <div class="doc-toolbar-meta">
                     
                     <span class="meta-pair">
-                        <span class="meta-label">Originaldatierung</span>
-                        <span class="meta-value">ze Wienne, des eritags vor sand Peters tag, als er auf den stuel gesaczt warde.</span>
-                    </span>
-                    
-                    
-                    <span class="meta-pair">
                         <span class="meta-label">Quelle</span>
                         <span class="meta-value" data-hint="Quellen zur Geschichte der Stadt Wien, Bd. II/1, Nr. 957">Quellen zur Geschichte der Stadt Wien, Bd. II/1, Nr. 957</span>
                     </span>
@@ -181,11 +176,11 @@
                     
                     <button type="button" class="legend-toggle"
                             data-layer="triggers" aria-pressed="true"
-                            data-hint="Dispositivformel ein-/ausblenden">
+                            data-hint="Dispositivformeln ein-/ausblenden">
                         <span class="legend-toggle-dots">
                             <span class="legend-swatch swatch-trigger"></span>
                         </span>
-                        <span class="legend-toggle-label">Dispositivformel</span>
+                        <span class="legend-toggle-label">Dispositivformeln</span>
                     </button>
                     
                 </div>
@@ -230,50 +225,51 @@
         <!-- Document body (rendered TEI) -->
         <div class="doc-body">
             <section class="tei-abstract"><h2 class="tei-section-head">Regest</h2><p>
-               <span class="anno-event" data-ref="ev__QGW_II_I_957"><span class="anno-fn anno-fn-issuer" data-role="issuer"><span class="fn-label">Aussteller*in</span><a class="anno-person" data-ref="pe__johann_von_der_schemnitz_ii_QGW_II_I_932" data-hint="Johann von der Schemnitz [pe__johann_von_der_schemnitz_ii_QGW_II_I_932]" data-hint-type="Person" href="../../../register/persons/pe__johann_von_der_schemnitz_ii_QGW_II_I_932.html">Janns von der Schebnicz, <span class="anno-attr anno-attr-occ" data-corresp="org__wien">purger</span> ze Wienne</a>,
-                     und <a class="anno-person" data-ref="pe__margarethe_QGW_II_I_932" data-hint="Margarethe [pe__margarethe_QGW_II_I_932]" data-hint-type="Person" href="../../../register/persons/pe__margarethe_QGW_II_I_932.html">Margret, seine
-                           <span class="anno-attr anno-attr-kin" data-corresp="pe__johann_von_der_schemnitz_ii_QGW_II_I_932">Hausfrau</span></a></span>, <span class="anno-trigger anno-trigger-disp">stellen <span class="tei-add">einen
+               <span class="anno-event" data-ref="ev__QGW_II_I_957"><span class="anno-fn anno-fn-issuer" data-role="issuer"><span class="fn-label">Aussteller*in</span><a class="anno-person" data-ref="pe__johann_von_der_schemnitz_ii_QGW_II_I_932" data-sex="m" data-hint="Johann von der Schemnitz [pe__johann_von_der_schemnitz_ii_QGW_II_I_932]" data-hint-type="Person" href="../../../register/persons/pe__johann_von_der_schemnitz_ii_QGW_II_I_932.html">Janns von der Schebnicz, <span class="anno-attr anno-attr-occ" data-corresp="org__wien" data-hint="Amts- oder Berufsbezeichnung mit Organisations- oder Ortsbezug" data-hint-type="Amt">purger</span> ze Wienne</a>,
+                     und <a class="anno-person" data-ref="pe__margarethe_QGW_II_I_932" data-sex="f" data-hint="Margarethe [pe__margarethe_QGW_II_I_932]" data-hint-type="Person" href="../../../register/persons/pe__margarethe_QGW_II_I_932.html">Margret, seine
+                           <span class="anno-attr anno-attr-kin" data-corresp="pe__johann_von_der_schemnitz_ii_QGW_II_I_932" data-hint="Verwandtschaftsbeziehung" data-hint-type="Verwandtschaft">Hausfrau</span></a></span>, <span class="anno-trigger anno-trigger-disp" data-hint="Verb, das das Rechtsgeschäft anzeigt" data-hint-type="Dispositivformel">stellen <span class="tei-add" data-hint="Vom Editor sinngemäß ergänzt" data-hint-type="Editorische Ergänzung">einen
                         Schuldbrief aus</span></span>
-                  <span class="anno-fn anno-fn-recipient" data-role="recipient"><span class="fn-label">Empfänger*in</span><a class="anno-person" data-ref="pe__heczschl_jude_von_herzogenburg" data-hint="Heczschl [pe__heczschl_jude_von_herzogenburg]" data-hint-type="Person" href="../../../register/persons/pe__heczschl_jude_von_herzogenburg.html">Hetschlein, dem Juden von
+                  <span class="anno-fn anno-fn-recipient" data-role="recipient"><span class="fn-label">Empfänger*in</span><a class="anno-person" data-ref="pe__heczschl_jude_von_herzogenburg" data-sex="m" data-hint="Heczschl [pe__heczschl_jude_von_herzogenburg]" data-hint-type="Person" href="../../../register/persons/pe__heczschl_jude_von_herzogenburg.html">Hetschlein, dem Juden von
                         Herzogenburkch</a></span>, einen Schuldbrief über 72 lb dn. aus, für die sie
                   sich im Falle, als der Betrag nicht am nächsten sand Jorgen tage rückerstattet
                   würde, zur Zahlung eines gesuches von 3 dn. wöchentlich für jedes Pfund Pfenninge
-                  verpflichten. Sie <span class="anno-trigger anno-trigger-disp">verpfänden</span> dem Juden <span class="anno-fn anno-fn-other" data-role="other"><span class="fn-label">Sonstige</span><span class="anno-trigger anno-trigger-fn">mit Handen</span> des <a class="anno-person" data-ref="pe__paul_holzkaeufel_QGW_II_I_1010" data-hint="Paul Holzkäufel [pe__paul_holzkaeufel_QGW_II_I_1010]" data-hint-type="Person" href="../../../register/persons/pe__paul_holzkaeufel_QGW_II_I_1010.html">
-                        <span class="anno-attr anno-attr-occ" data-corresp="org__wien">Bürgermeisters</span>
-                        <span class="anno-attr anno-attr-title">hern</span> Pauln des Holzchauffels</a> und des
+                  verpflichten. Sie <span class="anno-trigger anno-trigger-disp" data-hint="Verb, das das Rechtsgeschäft anzeigt" data-hint-type="Dispositivformel">verpfänden</span> dem Juden <span class="anno-fn anno-fn-other" data-role="other"><span class="fn-label">Sonstige</span><span class="anno-trigger anno-trigger-fn" data-hint="Verb, das eine Funktionsrolle markiert" data-hint-type="Funktionsrollen-Trigger">mit Handen</span> des <a class="anno-person" data-ref="pe__paul_holzkaeufel_QGW_II_I_1010" data-sex="m" data-hint="Paul Holzkäufel [pe__paul_holzkaeufel_QGW_II_I_1010]" data-hint-type="Person" href="../../../register/persons/pe__paul_holzkaeufel_QGW_II_I_1010.html">
+                        <span class="anno-attr anno-attr-occ" data-corresp="org__wien" data-hint="Amts- oder Berufsbezeichnung mit Organisations- oder Ortsbezug" data-hint-type="Amt">Bürgermeisters</span>
+                        <span class="anno-attr anno-attr-title" data-hint="Titel oder Anrede" data-hint-type="Titel">hern</span> Pauln des Holzchauffels</a> und des
                         <a class="anno-org" data-ref="org__wien" data-hint="Wien (Stadt) [org__wien]" data-hint-type="Organisation" href="../../../register/orgs/org__wien.html">rates gemain der stat ze Wienne</a></span> ihr
                   Haus, das der Margarethe ledige Morgengabe ist, gelegen an dem Alten
                   Fleischmarkcht ze Wienne, zenachst Albrechts haus des Tursen an ainem tail und
                   zenachst der Hofgeberinne haus an dem andern tail und stosset mit dem hindern tail
                   an der Heiligchreuzer hof , von welchem Hause man hinz sand Larenzen ze Wienne 4
-                  lb dn. zu Burgrecht und der <a class="anno-person" data-ref="pe__elisabeth_QGW_II_I_932" data-hint="Elisabeth die Schermiczerin [pe__elisabeth_QGW_II_I_932]" data-hint-type="Person" href="../../../register/persons/pe__elisabeth_QGW_II_I_932.html"><span class="anno-attr anno-attr-kin" data-corresp="pe__johann_von_der_schemnitz_ii_QGW_II_I_932">Schwester</span> Jannsens, Elsbeten, <span class="anno-attr anno-attr-occ" data-corresp="org__wien-st_jakob_auf_der_huelben">conventswester</span> dacz
+                  lb dn. zu Burgrecht und der <a class="anno-person" data-ref="pe__elisabeth_QGW_II_I_932" data-sex="f" data-hint="Elisabeth die Schermiczerin [pe__elisabeth_QGW_II_I_932]" data-hint-type="Person" href="../../../register/persons/pe__elisabeth_QGW_II_I_932.html"><span class="anno-attr anno-attr-kin" data-corresp="pe__johann_von_der_schemnitz_ii_QGW_II_I_932" data-hint="Verwandtschaftsbeziehung" data-hint-type="Verwandtschaft">Schwester</span> Jannsens, Elsbeten, <span class="anno-attr anno-attr-occ" data-corresp="org__wien-st_jakob_auf_der_huelben" data-hint="Amts- oder Berufsbezeichnung mit Organisations- oder Ortsbezug" data-hint-type="Amt">conventswester</span> dacz
                      sand Jacob auf der Hülben</a>, 15 guldein phening auf Lebzeiten dient. Sie
-                     <span class="anno-trigger anno-trigger-disp">verpflichten <span class="tei-add">zur Rückzahlung</span></span> sich
+                     <span class="anno-trigger anno-trigger-disp" data-hint="Verb, das das Rechtsgeschäft anzeigt" data-hint-type="Dispositivformel">verpflichten <span class="tei-add" data-hint="Vom Editor sinngemäß ergänzt" data-hint-type="Editorische Ergänzung">zur Rückzahlung</span></span> sich
                   für den Fall, als der Gläubiger nach dem angeführten Termine des Geldes bedürfe,
                   zur Rückzahlung und gestehen im Falle, als sie dieser Forderung nicht nachkommen
-                  könnten, dem Gläubiger <span class="anno-trigger anno-trigger-disp"><span class="tei-add">gestehen </span> das Recht
-                     zu</span>, ohne fürbot und Klage <span class="anno-trigger anno-trigger-disp">das verpfändete
+                  könnten, dem Gläubiger <span class="anno-trigger anno-trigger-disp" data-hint="Verb, das das Rechtsgeschäft anzeigt" data-hint-type="Dispositivformel"><span class="tei-add" data-hint="Vom Editor sinngemäß ergänzt" data-hint-type="Editorische Ergänzung">gestehen </span> das Recht
+                     zu</span>, ohne fürbot und Klage <span class="anno-trigger anno-trigger-disp" data-hint="Verb, das das Rechtsgeschäft anzeigt" data-hint-type="Dispositivformel">das verpfändete
                      Haus an sich zu nehmen</span>.</span>
             </p></section><section class="tei-seal"><h2 class="tei-section-head">Siegelbeschreibung</h2><p><span class="anno-event" data-ref="ev__QGW_II_I_957"><span class="anno-fn anno-fn-witness" data-role="witness"><span class="fn-label">Zeug*in</span>Besiegelt mit
-                     den Siegeln: 1. des <a class="anno-person" data-ref="pe__johann_von_der_schemnitz_ii_QGW_II_I_932" data-hint="Johann von der Schemnitz [pe__johann_von_der_schemnitz_ii_QGW_II_I_932]" data-hint-type="Person" href="../../../register/persons/pe__johann_von_der_schemnitz_ii_QGW_II_I_932.html">Ausstellers</a>, 2. des <a class="anno-person" data-ref="pe__johann_vorlauf_QGW_II_I_886" data-hint="Johann Vorlauf Vorlauf [pe__johann_vorlauf_QGW_II_I_886]" data-hint-type="Person" href="../../../register/persons/pe__johann_vorlauf_QGW_II_I_886.html">Wiener
-                           <span class="anno-attr anno-attr-occ" data-corresp="org__wien">Bürgers</span> Jannsen
+                     den Siegeln: 1. des <a class="anno-person" data-ref="pe__johann_von_der_schemnitz_ii_QGW_II_I_932" data-sex="m" data-hint="Johann von der Schemnitz [pe__johann_von_der_schemnitz_ii_QGW_II_I_932]" data-hint-type="Person" href="../../../register/persons/pe__johann_von_der_schemnitz_ii_QGW_II_I_932.html">Ausstellers</a>, 2. des <a class="anno-person" data-ref="pe__johann_vorlauf_QGW_II_I_886" data-sex="m" data-hint="Johann Vorlauf Vorlauf [pe__johann_vorlauf_QGW_II_I_886]" data-hint-type="Person" href="../../../register/persons/pe__johann_vorlauf_QGW_II_I_886.html">Wiener
+                           <span class="anno-attr anno-attr-occ" data-corresp="org__wien" data-hint="Amts- oder Berufsbezeichnung mit Organisations- oder Ortsbezug" data-hint-type="Amt">Bürgers</span> Jannsen
                         des Vorlaufs</a>, und wenne die herren des rates irer stat gruntinsigel
                      under die Juden nicht anlegent, darumb so habent si den sacz den vorgenanten
                      Juden ze einer gedechtnusse in der stat reigister haissen schreiben.</span></span>
             </p></section><section class="tei-nota"><h2 class="tei-section-head">Indorsat / Nota</h2><p>Auf dem Buge drei Zeilen in hebräischer Schrift. Durch Einschnitt cassiert.</p></section>
 
-            <!-- Data layer: provenance strip. Korpus + Idno stehen schon
-                 in der Toolbar-Breadcrumb; hier daher NUR die technische
-                 Provenance (Archiv, Counts, externe Links). -->
+            <!-- Aufbewahrungsort der physischen Quelle: Archiv (tei:repository)
+                 plus Monasterium-Link auf den Bestandseintrag. Annotations-
+                 Counts gehoeren nicht hierher, die wandern in den
+                 annotations-summary weiter unten. -->
             <footer class="doc-provenance">
-                <span class="prov-label">Datenherkunft</span>
+                <span class="prov-label">Aufbewahrungsort</span>
                 
                 <span class="prov-item">Wiener Stadt- und Landesarchiv</span>
-                <span class="prov-sep">·</span>
                 
-                <span class="prov-item">6 Pers., 1 Org.</span>
                 
                 <span class="prov-sep">·</span>
+                
+                
                 <span class="prov-item"><a href="https://www.monasterium.net/mom/AT-WStLA/HAUrk/957/charter" target="_blank" rel="noopener noreferrer" class="prov-ext-link">Monasterium.net 
 <svg width="12" height="12" viewBox="0 0 12 12" fill="none"><path d="M3.5 1.5H2C1.72 1.5 1.5 1.72 1.5 2V10C1.5 10.28 1.72 10.5 2 10.5H10C10.28 10.5 10.5 10.28 10.5 10V8.5M7 1.5H10.5V5M10.25 1.75L5.5 6.5" stroke="currentColor" stroke-linecap="round" stroke-linejoin="round"/></svg>
 </a></span>
@@ -288,20 +284,20 @@
                 <div class="facs-controls">
                     <div class="facs-controls-pages">
                         
-                        <button type="button" class="facs-prev" aria-label="Vorherige Seite" disabled>&#8249;</button>
+                        <button type="button" class="facs-prev" aria-label="Vorherige Seite" data-hint="Vorherige Seite" disabled>&#8249;</button>
                         
                         <span class="facs-page-indicator">
                             Seite <span id="facs-current">1</span>/<span>2</span>
                         </span>
                         
-                        <button type="button" class="facs-next" aria-label="Nächste Seite">&#8250;</button>
+                        <button type="button" class="facs-next" aria-label="Nächste Seite" data-hint="Nächste Seite">&#8250;</button>
                         
                     </div>
                     <div class="facs-controls-zoom">
-                        <button type="button" class="facs-zoom-in" aria-label="Vergrößern">+</button>
-                        <button type="button" class="facs-zoom-out" aria-label="Verkleinern">&minus;</button>
-                        <button type="button" class="facs-zoom-reset" aria-label="Ansicht zurücksetzen">1:1</button>
-                        <button type="button" class="facs-rotate" aria-label="Um 90 Grad drehen" title="Um 90° drehen">&#10227;</button>
+                        <button type="button" class="facs-zoom-in" aria-label="Vergrößern" data-hint="Vergrößern">+</button>
+                        <button type="button" class="facs-zoom-out" aria-label="Verkleinern" data-hint="Verkleinern">&minus;</button>
+                        <button type="button" class="facs-zoom-reset" aria-label="Ansicht zurücksetzen" data-hint="Ansicht zurücksetzen">1:1</button>
+                        <button type="button" class="facs-rotate" aria-label="Um 90 Grad drehen" data-hint="Um 90° drehen">&#10227;</button>
                     </div>
                 </div>
                 <div class="facs-image-wrap" id="facs-image-wrap"
@@ -366,17 +362,17 @@
         </div>
     </footer>
 
-    <script src="../../../static/js/core.js?v=20260523115011"></script>
-    <script src="../../../static/js/tip.js?v=20260523115011"></script>
-    <script src="../../../static/js/hint.js?v=20260523115011"></script>
-    <script src="../../../static/js/basket.js?v=20260523115011"></script>
+    <script src="../../../static/js/core.js?v=20260523134309"></script>
+    <script src="../../../static/js/tip.js?v=20260523134309"></script>
+    <script src="../../../static/js/hint.js?v=20260523134309"></script>
+    <script src="../../../static/js/basket.js?v=20260523134309"></script>
     
 
 <script src="../../../static/vendor/openseadragon/openseadragon.min.js?v=6.0.2"></script>
 
-<script src="../../../static/js/facsimile.js?v=20260523115011"></script>
-<script src="../../../static/js/document.js?v=20260523115011"></script>
-<script src="../../../static/js/basket-mount.js?v=20260523115011"></script>
+<script src="../../../static/js/facsimile.js?v=20260523134309"></script>
+<script src="../../../static/js/document.js?v=20260523134309"></script>
+<script src="../../../static/js/basket-mount.js?v=20260523134309"></script>
 
 </body>
 </html>

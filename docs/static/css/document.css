@@ -397,12 +397,66 @@
 }
 
 .annotations-table td {
-    padding: var(--space-xs) var(--space-sm);
+    padding: var(--space-sm) var(--space-sm);
     border-bottom: 1px solid var(--color-border-light);
-    vertical-align: top;
+    vertical-align: middle;
+    line-height: 1.45;
 }
 
 .annotations-table tr:hover td { background: var(--color-bg-warm); }
+
+/* Event-Gruppen-Header in der Entitaeten-Tabelle. Bringt die strukturelle
+   Zugehoerigkeit der Entitaeten zum jeweiligen Rechtsgeschaeft visuell
+   ins Markup, ohne dass eine zweite "Ereignisse"-Tabelle noetig waere. */
+.annotations-table .annotations-group-row th {
+    text-align: left;
+    background: var(--color-bg-warm);
+    font-family: var(--font-sans);
+    font-size: var(--text-sm);
+    font-weight: 600;
+    color: var(--color-text-primary);
+    letter-spacing: 0;
+    text-transform: none;
+    padding: var(--space-sm) var(--space-sm);
+    border-top: 2px solid var(--color-border-dark);
+    border-bottom: 1px solid var(--color-border);
+}
+
+/* Geschlechts-Glyph in der Annotations-Tabelle: knapp, monochrom,
+   uebernimmt die Token-Farbe der jeweiligen Tabellen-Zelle. Unbekanntes
+   Geschlecht (kein @sex im Register) als gedaempfter Dash. */
+.anno-sex {
+    font-family: var(--font-sans);
+    font-size: var(--text-sm);
+    color: var(--color-text-primary);
+}
+.anno-sex--unknown { color: var(--color-text-light); }
+
+
+/* Im Gruppen-Header: vorne der Quellentext (das Disp-Verb), kursiv und
+   in der Trigger-Farbe -- damit die Leserin visuell erkennt, dass das
+   aus der historischen Quelle kommt und nicht aus dem UI. Dahinter
+   die rohe ev__-ID dezent fuer die Annotations-Editor:innen. */
+.annotations-group-source {
+    font-style: italic;
+    color: var(--anno-trigger);
+    font-weight: 700;
+}
+.annotations-group-label { font-weight: 600; }
+.annotations-group-id {
+    font-family: var(--font-mono, ui-monospace, SFMono-Regular, monospace);
+    font-size: 0.78em;
+    color: var(--color-text-muted);
+    margin-left: var(--space-sm);
+    font-weight: 400;
+    font-style: normal;
+}
+
+.annotations-table .annotations-group-row:first-child th {
+    border-top: 0;
+}
+
+.annotations-table .annotations-group-row:hover th { background: var(--color-bg-warm); }
 
 /* Profil-Verlinkung in der Entitäten-Tabelle: subtil unterstreichen,
    damit erkennbar ist, dass die Person zu einem Profil führt. */
@@ -865,8 +919,15 @@ a.anno-place {
     color: var(--color-text-muted);
 }
 
+/* Dispositivformel: jede Auspraegung im Volltext einzeln markiert,
+   damit benachbarte Trigger-Verben als eigenstaendige Annotationen
+   sichtbar sind (Kunden-Feedback 2026-05). Konsistent mit dem
+   dashed-border-Stil des Legenden-Swatches. */
 .anno-trigger-disp {
     font-weight: 700;
+    text-decoration: underline dashed var(--anno-trigger);
+    text-decoration-thickness: 1px;
+    text-underline-offset: 3px;
 }
 
 
@@ -967,6 +1028,7 @@ a.anno-place {
     font-weight: inherit;
     color: inherit;
     border-bottom: none;
+    text-decoration: none;
 }
 
 

@@ -3,21 +3,22 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <meta http-equiv="Content-Security-Policy" content="default-src 'self'; script-src 'self'; style-src 'self'; font-src 'self'; img-src 'self' data: https://images.monasterium.net https://www.monasterium.net; connect-src 'self'; base-uri 'self'; form-action 'self'; upgrade-insecure-requests">
+    
+    <meta http-equiv="Content-Security-Policy" content="default-src 'self'; script-src 'self'; style-src 'self' 'unsafe-inline'; font-src 'self'; img-src 'self' data: https://images.monasterium.net https://www.monasterium.net; connect-src 'self'; base-uri 'self'; form-action 'self'; upgrade-insecure-requests">
     <meta name="referrer" content="strict-origin-when-cross-origin">
     <meta http-equiv="Permissions-Policy" content="camera=(), microphone=(), geolocation=(), interest-cohort=()">
     <title>Nr. 594 (1400 August 5), Datenbank</title>
     <link rel="preload" as="font" type="font/woff2" crossorigin
           href="../../../static/fonts/inter-400-latin.woff2">
-    <link rel="stylesheet" href="../../../static/css/fonts.css?v=20260523115011">
-    <link rel="stylesheet" href="../../../static/css/tokens.css?v=20260523115011">
-    <link rel="stylesheet" href="../../../static/css/base.css?v=20260523115011">
-    <link rel="stylesheet" href="../../../static/css/components.css?v=20260523115011">
-    <link rel="stylesheet" href="../../../static/css/responsive.css?v=20260523115011">
-    <link rel="stylesheet" href="../../../static/css/print.css?v=20260523115011">
-    <link rel="stylesheet" href="../../../static/css/tip.css?v=20260523115011">
+    <link rel="stylesheet" href="../../../static/css/fonts.css?v=20260523134309">
+    <link rel="stylesheet" href="../../../static/css/tokens.css?v=20260523134309">
+    <link rel="stylesheet" href="../../../static/css/base.css?v=20260523134309">
+    <link rel="stylesheet" href="../../../static/css/components.css?v=20260523134309">
+    <link rel="stylesheet" href="../../../static/css/responsive.css?v=20260523134309">
+    <link rel="stylesheet" href="../../../static/css/print.css?v=20260523134309">
+    <link rel="stylesheet" href="../../../static/css/tip.css?v=20260523134309">
     
-<link rel="stylesheet" href="../../../static/css/document.css?v=20260523115011">
+<link rel="stylesheet" href="../../../static/css/document.css?v=20260523134309">
 <link rel="canonical" href="documents/Stadtbuecher/Band_1_1395-1400_ready/594.html">
 <meta name="citation_title" content="Nr. 594 (1400 August 5)">
 <meta name="citation_collection" content="Stadtbücher Bd. 1 (1395–1400)">
@@ -135,7 +136,6 @@
 
                 <div class="doc-toolbar-meta">
                     
-                    
                     <span class="meta-pair">
                         <span class="meta-label">Quelle</span>
                         <span class="meta-value" data-hint="Wilhelm Brauneder / Gerhard Jaritz. Die Wiener Stadtbücher 1395 - 1430. Teil 1: 1395 - 1400. Wien/Köln: Böhlau Verlag.">Wilhelm Brauneder / Gerhard Jaritz. Die Wiener Stadtbücher 1395 - 1430. Teil 1: 1395 - 1400. Wien/Köln: Böhlau Verlag.</span>
@@ -176,11 +176,11 @@
                     
                     <button type="button" class="legend-toggle"
                             data-layer="triggers" aria-pressed="true"
-                            data-hint="Dispositivformel ein-/ausblenden">
+                            data-hint="Dispositivformeln ein-/ausblenden">
                         <span class="legend-toggle-dots">
                             <span class="legend-swatch swatch-trigger"></span>
                         </span>
-                        <span class="legend-toggle-label">Dispositivformel</span>
+                        <span class="legend-toggle-label">Dispositivformeln</span>
                     </button>
                     
                 </div>
@@ -230,41 +230,42 @@
          </header>
          <section class="tei-entry"><h2 class="tei-section-head">Eintrag</h2>
             <p> pr. mü., 2 Einbr. = Zg., Me (Indez: Item geseheft Kathrein Niclass hausfrawn von
-               Pruck) <span class="anno-event" data-ref="ev__StB_I_594">Desselben tages <span class="anno-fn anno-fn-witness" data-role="witness"><span class="fn-label">Zeug*in</span>komen fur den rat <a class="anno-person" data-ref="pe__simon_geltinger_StB_I_594" data-hint="Simon Geltinger [pe__simon_geltinger_StB_I_594]" data-hint-type="Person" href="../../../register/persons/pe__simon_geltinger_StB_I_594.html">der <span class="anno-attr anno-attr-title">erber</span>
-                        <span class="anno-attr anno-attr-prof">priester</span>
-                        <span class="anno-attr anno-attr-title">her</span> Symon der Geltinger, die zeit
-                           <span class="anno-attr anno-attr-occ" data-corresp="org__wien-st_stephan-altar_allerheiligen">cappelan</span> aller heiligen altar gelegen dacz Sand Stephan ze
-                        Wienn</a>, und <a class="anno-person" data-ref="pe__niklas_unterkaeufel_StB_I_594" data-hint="Niklas Unterkäufel [pe__niklas_unterkaeufel_StB_I_594]" data-hint-type="Person" href="../../../register/persons/pe__niklas_unterkaeufel_StB_I_594.html">Nycoleto der Underchawffel</a> und habent da gesagt, der vorgenant her
+               Pruck) <span class="anno-event" data-ref="ev__StB_I_594">Desselben tages <span class="anno-fn anno-fn-witness" data-role="witness"><span class="fn-label">Zeug*in</span>komen fur den rat <a class="anno-person" data-ref="pe__simon_geltinger_StB_I_594" data-sex="m" data-hint="Simon Geltinger [pe__simon_geltinger_StB_I_594]" data-hint-type="Person" href="../../../register/persons/pe__simon_geltinger_StB_I_594.html">der <span class="anno-attr anno-attr-title" data-hint="Titel oder Anrede" data-hint-type="Titel">erber</span>
+                        <span class="anno-attr anno-attr-prof" data-hint="Berufsbezeichnung" data-hint-type="Beruf">priester</span>
+                        <span class="anno-attr anno-attr-title" data-hint="Titel oder Anrede" data-hint-type="Titel">her</span> Symon der Geltinger, die zeit
+                           <span class="anno-attr anno-attr-occ" data-corresp="org__wien-st_stephan-altar_allerheiligen" data-hint="Amts- oder Berufsbezeichnung mit Organisations- oder Ortsbezug" data-hint-type="Amt">cappelan</span> aller heiligen altar gelegen dacz Sand Stephan ze
+                        Wienn</a>, und <a class="anno-person" data-ref="pe__niklas_unterkaeufel_StB_I_594" data-sex="m" data-hint="Niklas Unterkäufel [pe__niklas_unterkaeufel_StB_I_594]" data-hint-type="Person" href="../../../register/persons/pe__niklas_unterkaeufel_StB_I_594.html">Nycoleto der Underchawffel</a> und habent da gesagt, der vorgenant her
                      Symon bey seiner gewizzen und derselb Nicoleto mit seinen trewen an aide stat,
                      zu rechter zeit als si ze recht solten,</span>
-                  <span class="anno-fn anno-fn-issuer" data-role="issuer"><span class="fn-label">Aussteller*in</span>umb daz geschefft, so <a class="anno-person" data-ref="pe__katharina_StB_I_594" data-hint="Katharina von Prukk [pe__katharina_StB_I_594]" data-hint-type="Person" href="../../../register/persons/pe__katharina_StB_I_594.html"><span class="anno-attr anno-attr-title">fraw</span> Kathrey
-                           <span class="anno-attr anno-attr-dead" title="Als verstorben genannt">selig</span>, <span class="anno-attr anno-attr-kin" data-corresp="pe__niklas_von_prukk_StB_I_594"><span class="tei-add">hausfraw</span></span>
-                        <a class="anno-person" data-ref="pe__niklas_von_prukk_StB_I_594" data-hint="Niklas von Prukk [pe__niklas_von_prukk_StB_I_594]" data-hint-type="Person" href="../../../register/persons/pe__niklas_von_prukk_StB_I_594.html">Niclas hausfraw von
-                           Prukk</a><a class="anno-person" data-ref="pe__simon_geltinger_StB_I_594" data-hint="Simon Geltinger [pe__simon_geltinger_StB_I_594]" data-hint-type="Person" href="../../../register/persons/pe__simon_geltinger_StB_I_594.html"><span class="tei-add">des
+                  <span class="anno-fn anno-fn-issuer" data-role="issuer"><span class="fn-label">Aussteller*in</span>umb daz geschefft, so <a class="anno-person" data-ref="pe__katharina_StB_I_594" data-sex="f" data-hint="Katharina von Prukk [pe__katharina_StB_I_594]" data-hint-type="Person" href="../../../register/persons/pe__katharina_StB_I_594.html"><span class="anno-attr anno-attr-title" data-hint="Titel oder Anrede" data-hint-type="Titel">fraw</span> Kathrey
+                           <span class="anno-attr anno-attr-dead" data-hint="In der Quelle als verstorben genannt" data-hint-type="Verstorben">selig</span>, <span class="anno-attr anno-attr-kin" data-corresp="pe__niklas_von_prukk_StB_I_594" data-hint="Verwandtschaftsbeziehung" data-hint-type="Verwandtschaft"><span class="tei-add" data-hint="Vom Editor sinngemäß ergänzt" data-hint-type="Editorische Ergänzung">hausfraw</span></span>
+                        <a class="anno-person" data-ref="pe__niklas_von_prukk_StB_I_594" data-sex="m" data-hint="Niklas von Prukk [pe__niklas_von_prukk_StB_I_594]" data-hint-type="Person" href="../../../register/persons/pe__niklas_von_prukk_StB_I_594.html">Niclas hausfraw von
+                           Prukk</a><a class="anno-person" data-ref="pe__simon_geltinger_StB_I_594" data-sex="m" data-hint="Simon Geltinger [pe__simon_geltinger_StB_I_594]" data-hint-type="Person" href="../../../register/persons/pe__simon_geltinger_StB_I_594.html"><span class="tei-add" data-hint="Vom Editor sinngemäß ergänzt" data-hint-type="Editorische Ergänzung">des
                               egenanten hern Symons</span></a>
-                        <span class="anno-attr anno-attr-kin" data-corresp="pe__simon_geltinger_StB_I_594"><span class="tei-add">swester</span></span></a>, an iren leczten zeiten getan hat,
+                        <span class="anno-attr anno-attr-kin" data-corresp="pe__simon_geltinger_StB_I_594" data-hint="Verwandtschaftsbeziehung" data-hint-type="Verwandtschaft"><span class="tei-add" data-hint="Vom Editor sinngemäß ergänzt" data-hint-type="Editorische Ergänzung">swester</span></span></a>, an iren leczten zeiten getan hat,
                      des egenanten hern Symons swester, daz daz also geschehen sey, als hernach
                      geschriben stet.</span> Von erst hat si geschafft irm vatern ein weizzen seidel
-                  und ein plaben mantel. Darnach hat si geschafft <span class="anno-fn anno-fn-recipient" data-role="recipient"><span class="fn-label">Empfänger*in</span><a class="anno-person" data-ref="pe__simon_geltinger_StB_I_594" data-hint="Simon Geltinger [pe__simon_geltinger_StB_I_594]" data-hint-type="Person" href="../../../register/persons/pe__simon_geltinger_StB_I_594.html">dem vorgenanten hern
-                        Symon, irem <span class="anno-attr anno-attr-kin" data-corresp="pe__katharina_StB_I_594">pruder</span>, <span class="anno-fn anno-fn-transactiongood_I" data-role="transactiongood_I"><span class="fn-label">transactiongood_I</span>3 tl.
+                  und ein plaben mantel. Darnach hat si geschafft <span class="anno-fn anno-fn-recipient" data-role="recipient"><span class="fn-label">Empfänger*in</span><a class="anno-person" data-ref="pe__simon_geltinger_StB_I_594" data-sex="m" data-hint="Simon Geltinger [pe__simon_geltinger_StB_I_594]" data-hint-type="Person" href="../../../register/persons/pe__simon_geltinger_StB_I_594.html">dem vorgenanten hern
+                        Symon, irem <span class="anno-attr anno-attr-kin" data-corresp="pe__katharina_StB_I_594" data-hint="Verwandtschaftsbeziehung" data-hint-type="Verwandtschaft">pruder</span>, <span class="anno-fn anno-fn-transactiongood_I" data-role="transactiongood_I"><span class="fn-label">transactiongood_I</span>3 tl.
                         dn.</span></a>, und andern frawn ir pend.</span>
-                  <span class="anno-fn anno-fn-other" data-role="other"><span class="fn-label">Sonstige</span>Und hab auch <a class="anno-person" data-ref="pe__niklas_unterkaeufel_StB_I_594" data-hint="Niklas Unterkäufel [pe__niklas_unterkaeufel_StB_I_594]" data-hint-type="Person" href="../../../register/persons/pe__niklas_unterkaeufel_StB_I_594.html">der vorgenant Niclas, ir <span class="anno-attr anno-attr-occ" data-corresp="pe__katharina_StB_I_594">wirt</span></a>,
-                     gesprochen, daz er daz besunder selber <span class="anno-trigger anno-trigger-fn">ausrichten</span> wolt.</span>
+                  <span class="anno-fn anno-fn-other" data-role="other"><span class="fn-label">Sonstige</span>Und hab auch <a class="anno-person" data-ref="pe__niklas_unterkaeufel_StB_I_594" data-sex="m" data-hint="Niklas Unterkäufel [pe__niklas_unterkaeufel_StB_I_594]" data-hint-type="Person" href="../../../register/persons/pe__niklas_unterkaeufel_StB_I_594.html">der vorgenant Niclas, ir <span class="anno-attr anno-attr-occ" data-corresp="pe__katharina_StB_I_594" data-hint="Amts- oder Berufsbezeichnung mit Organisations- oder Ortsbezug" data-hint-type="Amt">wirt</span></a>,
+                     gesprochen, daz er daz besunder selber <span class="anno-trigger anno-trigger-fn" data-hint="Verb, das eine Funktionsrolle markiert" data-hint-type="Funktionsrollen-Trigger">ausrichten</span> wolt.</span>
                   <span class="anno-fn anno-fn-other" data-role="other"><span class="fn-label">Sonstige</span>Und also habent es <a class="anno-org" data-ref="org__wien" data-hint="Wien (Stadt) [org__wien]" data-hint-type="Organisation" href="../../../register/orgs/org__wien.html">die
                         herren des rates</a> zu einer gedechtnuss in dicz gegenwurtig statpuch
-                        <span class="anno-trigger anno-trigger-fn">haissen schreyben</span>.</span></span>
+                        <span class="anno-trigger anno-trigger-fn" data-hint="Verb, das eine Funktionsrolle markiert" data-hint-type="Funktionsrollen-Trigger">haissen schreyben</span>.</span></span>
             </p>
          </section>
          
       
 
-            <!-- Data layer: provenance strip. Korpus + Idno stehen schon
-                 in der Toolbar-Breadcrumb; hier daher NUR die technische
-                 Provenance (Archiv, Counts, externe Links). -->
+            <!-- Aufbewahrungsort der physischen Quelle: Archiv (tei:repository)
+                 plus Monasterium-Link auf den Bestandseintrag. Annotations-
+                 Counts gehoeren nicht hierher, die wandern in den
+                 annotations-summary weiter unten. -->
             <footer class="doc-provenance">
-                <span class="prov-label">Datenherkunft</span>
+                <span class="prov-label">Aufbewahrungsort</span>
                 
-                <span class="prov-item">4 Pers., 1 Org.</span>
+                
                 
             </footer>
         </div>
@@ -323,15 +324,15 @@
         </div>
     </footer>
 
-    <script src="../../../static/js/core.js?v=20260523115011"></script>
-    <script src="../../../static/js/tip.js?v=20260523115011"></script>
-    <script src="../../../static/js/hint.js?v=20260523115011"></script>
-    <script src="../../../static/js/basket.js?v=20260523115011"></script>
+    <script src="../../../static/js/core.js?v=20260523134309"></script>
+    <script src="../../../static/js/tip.js?v=20260523134309"></script>
+    <script src="../../../static/js/hint.js?v=20260523134309"></script>
+    <script src="../../../static/js/basket.js?v=20260523134309"></script>
     
 
-<script src="../../../static/js/facsimile.js?v=20260523115011"></script>
-<script src="../../../static/js/document.js?v=20260523115011"></script>
-<script src="../../../static/js/basket-mount.js?v=20260523115011"></script>
+<script src="../../../static/js/facsimile.js?v=20260523134309"></script>
+<script src="../../../static/js/document.js?v=20260523134309"></script>
+<script src="../../../static/js/basket-mount.js?v=20260523134309"></script>
 
 </body>
 </html>

@@ -3,22 +3,23 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <meta http-equiv="Content-Security-Policy" content="default-src 'self'; script-src 'self'; style-src 'self'; font-src 'self'; img-src 'self' data: https://images.monasterium.net https://www.monasterium.net; connect-src 'self'; base-uri 'self'; form-action 'self'; upgrade-insecure-requests">
+    
+    <meta http-equiv="Content-Security-Policy" content="default-src 'self'; script-src 'self'; style-src 'self' 'unsafe-inline'; font-src 'self'; img-src 'self' data: https://images.monasterium.net https://www.monasterium.net; connect-src 'self'; base-uri 'self'; form-action 'self'; upgrade-insecure-requests">
     <meta name="referrer" content="strict-origin-when-cross-origin">
     <meta http-equiv="Permissions-Policy" content="camera=(), microphone=(), geolocation=(), interest-cohort=()">
     <title>Personen, Datenbank</title>
     <link rel="preload" as="font" type="font/woff2" crossorigin
           href="../static/fonts/inter-400-latin.woff2">
-    <link rel="stylesheet" href="../static/css/fonts.css?v=20260523115011">
-    <link rel="stylesheet" href="../static/css/tokens.css?v=20260523115011">
-    <link rel="stylesheet" href="../static/css/base.css?v=20260523115011">
-    <link rel="stylesheet" href="../static/css/components.css?v=20260523115011">
-    <link rel="stylesheet" href="../static/css/responsive.css?v=20260523115011">
-    <link rel="stylesheet" href="../static/css/print.css?v=20260523115011">
-    <link rel="stylesheet" href="../static/css/tip.css?v=20260523115011">
+    <link rel="stylesheet" href="../static/css/fonts.css?v=20260523134309">
+    <link rel="stylesheet" href="../static/css/tokens.css?v=20260523134309">
+    <link rel="stylesheet" href="../static/css/base.css?v=20260523134309">
+    <link rel="stylesheet" href="../static/css/components.css?v=20260523134309">
+    <link rel="stylesheet" href="../static/css/responsive.css?v=20260523134309">
+    <link rel="stylesheet" href="../static/css/print.css?v=20260523134309">
+    <link rel="stylesheet" href="../static/css/tip.css?v=20260523134309">
     
-<link rel="stylesheet" href="../static/css/index.css?v=20260523115011">
-<link rel="stylesheet" href="../static/css/register.css?v=20260523115011">
+<link rel="stylesheet" href="../static/css/index.css?v=20260523134309">
+<link rel="stylesheet" href="../static/css/register.css?v=20260523134309">
 
 </head>
 <body data-root-path=".."
@@ -118,8 +119,10 @@
 
             
             
+            
+            
 <section class="sidebar-block">
-    <p class="sidebar-block-label">Aktivit&auml;tszeitraum</p>
+    <p class="sidebar-block-label">Datum der Quellen</p>
     
                 
 
@@ -349,7 +352,7 @@
 </div>
 
             
-    <p class="sidebar-block-hint">Erste &amp; letzte Quellennennung je Person</p>
+    <p class="sidebar-block-hint">Erste und letzte Quellennennung je Person</p>
 </section>
 
             
@@ -363,31 +366,31 @@
 <div class="collection-chips collection-chips--stack" id="filter-corpora">
     
     <button type="button" class="chip" data-corpus="QGW/Vienna_1177-1414_ready"
-            title="QGW II/1 (1177–1414): 5647 Eintraege im Korpus">
+            data-hint="QGW II/1 (1177–1414): 5647 Eintraege im Korpus">
         <span class="chip-label">QGW II/1 (1177–1414)</span>
         <span class="chip-count" data-corpus-total="5647">5647</span>
     </button>
     
     <button type="button" class="chip" data-corpus="QGW/Vienna_1415-1417"
-            title="QGW II/2 (1415–1417): 147 Eintraege im Korpus">
+            data-hint="QGW II/2 (1415–1417): 147 Eintraege im Korpus">
         <span class="chip-label">QGW II/2 (1415–1417)</span>
         <span class="chip-count" data-corpus-total="147">147</span>
     </button>
     
     <button type="button" class="chip" data-corpus="QGW/Vienna_1448-57_ready"
-            title="QGW II/2 (1448–1457): 73 Eintraege im Korpus">
+            data-hint="QGW II/2 (1448–1457): 73 Eintraege im Korpus">
         <span class="chip-label">QGW II/2 (1448–1457)</span>
         <span class="chip-count" data-corpus-total="73">73</span>
     </button>
     
     <button type="button" class="chip" data-corpus="Satzbuch_CD/SB_CD_1448-60_ready"
-            title="Satzbuch CD (1448–1460): 146 Eintraege im Korpus">
+            data-hint="Satzbuch CD (1448–1460): 146 Eintraege im Korpus">
         <span class="chip-label">Satzbuch CD (1448–1460)</span>
         <span class="chip-count" data-corpus-total="146">146</span>
     </button>
     
     <button type="button" class="chip" data-corpus="Stadtbuecher/Band_1_1395-1400_ready"
-            title="Stadtbücher Bd. 1 (1395–1400): 3143 Eintraege im Korpus">
+            data-hint="Stadtbücher Bd. 1 (1395–1400): 3143 Eintraege im Korpus">
         <span class="chip-label">Stadtbücher Bd. 1 (1395–1400)</span>
         <span class="chip-count" data-corpus-total="3143">3143</span>
     </button>
@@ -429,7 +432,7 @@
                     <ul>
                         <li><strong>Name</strong>, auch <strong>Vorname</strong> und <strong>Familienname</strong> einzeln</li>
                         <li><strong>ID</strong> der konsolidierten Person</li>
-                        <li><strong>Aktivit&auml;tszeitraum</strong>, Jahre der ersten und letzten Quellennennung (z.&nbsp;B. „1340")</li>
+                        <li><strong>Datum der Quellen</strong>, Jahre der ersten und letzten Quellennennung (z.&nbsp;B. „1340")</li>
                         <li><strong>Sub-Label</strong> der Erstnennung (z.&nbsp;B. „QGW Nr. 66")</li>
                     </ul>
                     
@@ -749,13 +752,13 @@
         </div>
     </footer>
 
-    <script src="../static/js/core.js?v=20260523115011"></script>
-    <script src="../static/js/tip.js?v=20260523115011"></script>
-    <script src="../static/js/hint.js?v=20260523115011"></script>
-    <script src="../static/js/basket.js?v=20260523115011"></script>
+    <script src="../static/js/core.js?v=20260523134309"></script>
+    <script src="../static/js/tip.js?v=20260523134309"></script>
+    <script src="../static/js/hint.js?v=20260523134309"></script>
+    <script src="../static/js/basket.js?v=20260523134309"></script>
     
-<script src="../static/js/table-infra.js?v=20260523115011"></script>
-<script src="../static/js/register.js?v=20260523115011"></script>
+<script src="../static/js/table-infra.js?v=20260523134309"></script>
+<script src="../static/js/register.js?v=20260523134309"></script>
 
 </body>
 </html>
