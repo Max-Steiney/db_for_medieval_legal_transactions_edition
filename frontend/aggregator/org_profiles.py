@@ -15,6 +15,7 @@ from ._profile_labels import (
 )
 from ._profile_enrichment import (
     file_key_lookup,
+    file_meta_by_key,
     per_doc_label_orgs,
     per_doc_roles_orgs,
     enrich_sources,
@@ -228,7 +229,7 @@ def _build_funding_network(file_lookup, person_names, org_display_names):
     return out
 
 
-def _build_occ_network(file_lookup, person_names):
+def _build_occ_network(file_meta, person_names):
     """Pro Org: Personen, die ueber occ (Taetigkeit) angebunden sind.
 
     Forschungsfrage 3 aus der Mail vom 16. Mai 2026: Personen mit occ-
@@ -273,7 +274,7 @@ def _build_occ_network(file_lookup, person_names):
         for pk, info in persons.items():
             files = []
             for fk in info["files"]:
-                src = file_lookup.get(fk, {})
+                src = file_meta.get(fk, {})
                 if not src:
                     continue
                 files.append({
@@ -395,7 +396,7 @@ def build_org_profiles(reverse_index):
     org_display_names = {oid: _org_display_name(s) for oid, s in stamm.items()}
     funding_network = _build_funding_network(file_lookup, person_names,
                                               org_display_names)
-    occ_network = _build_occ_network(file_lookup, person_names)
+    occ_network = _build_occ_network(file_meta_by_key(), person_names)
 
     released_org_ids = {oid for oid, docs in reverse_index.items()
                         if oid.startswith("org__") and docs}

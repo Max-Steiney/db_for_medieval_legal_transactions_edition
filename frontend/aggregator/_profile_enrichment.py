@@ -50,6 +50,38 @@ def file_key_lookup() -> dict[tuple[str, str], str]:
     return out
 
 
+def file_meta_by_key() -> dict[str, dict]:
+    """file_key -> minimal source metadata from filenames.csv.
+
+    Counterpart to ``file_key_lookup`` for callers that already have
+    the file_key (from a per-source CSV) and need idno, URL, date and
+    collection path back. Fields not in filenames.csv (date_display,
+    regest, collection_label) are filled with safe defaults.
+    """
+    from urllib.parse import quote
+
+    out = {}
+    for r in _cached_csv("filenames.csv"):
+        fk = r.get("id", "")
+        fname = r.get("file", "")
+        coll = r.get("collection", "")
+        sub = r.get("subcollection", "")
+        date = r.get("date", "")
+        if not fk or not fname or not coll or not sub:
+            continue
+        idno = fname[:-4] if fname.endswith(".xml") else fname
+        out[fk] = {
+            "idno": idno,
+            "collection_path": f"{coll}/{sub}",
+            "date_iso": date,
+            "date_display": date,
+            "url": f"documents/{coll}/{sub}/{quote(idno)}.html",
+            "collection_label": "",
+            "regest": "",
+        }
+    return out
+
+
 def _per_doc_label(csv_name: str, key_col: str,
                    label_cols: tuple[str, ...]) -> dict[tuple[str, str], str]:
     """(entity_key, file_key) -> most-frequent label in that source.
