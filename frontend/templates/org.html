@@ -157,9 +157,11 @@
     </section>
     {% endif %}
 
-    {% set rel_total = profile.relations.occ|length + profile.relations.title_ref|length %}
+    {# occ-Beziehungen leben aggregiert im 'Personen mit Taetigkeits-
+       verbindung'-Block (occ_table, weiter unten). Hier nur title_ref. #}
+    {% set rel_total = profile.relations.title_ref|length %}
     {% set active_rel_types = [] %}
-    {% for rt in ['occ', 'title_ref'] %}{% if profile.relations[rt] %}{% set _ = active_rel_types.append(rt) %}{% endif %}{% endfor %}
+    {% for rt in ['title_ref'] %}{% if profile.relations[rt] %}{% set _ = active_rel_types.append(rt) %}{% endif %}{% endfor %}
 
     {% if rel_total %}
     <section class="person-relations{% if active_rel_types|length == 1 %} is-single{% endif %}" aria-label="Personen mit Beziehung zu dieser Organisation">
