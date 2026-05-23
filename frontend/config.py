@@ -10,6 +10,7 @@ from pathlib import Path
 
 from pipeline.config import REPO_ROOT as PIPELINE_REPO_ROOT
 from frontend.stages import active_stage
+from frontend.audiences import active_audience, output_dir_suffix as _audience_suffix
 
 # This frontend's own repo root (the publication / Pages-served repo).
 EDITION_DIR = Path(__file__).resolve().parent
@@ -19,10 +20,13 @@ FRONTEND_REPO_ROOT = EDITION_DIR.parent
 # Welches Unterverzeichnis genau, bestimmt die aktive Stufe (siehe
 # frontend/stages.py): Stufe 1 schreibt nach docs/, Stufe 2 nach
 # docs-with-mentioned/, Stufe 3 nach docs-full/, Stufe 4 nach docs-max/.
-# Der Default ist Stufe 1; ohne CLI-Flag bleibt der publizierte Build
-# unangetastet.
+# Die Audience (siehe frontend/audiences.py) haengt orthogonal ein
+# '-internal'-Suffix an: Stage 1 + audience=internal --> docs-internal/.
+# Default ist Stufe 1, Audience 'public'; ohne CLI-Flag bleibt der
+# publizierte Build unangetastet.
 _ACTIVE_STAGE = active_stage()
-DOCS_DIR = FRONTEND_REPO_ROOT / _ACTIVE_STAGE["output_dir"]
+_ACTIVE_AUDIENCE = active_audience()
+DOCS_DIR = FRONTEND_REPO_ROOT / (_ACTIVE_STAGE["output_dir"] + _audience_suffix())
 DATA_DIR = DOCS_DIR / "data"
 
 # Templates, static assets, and content travel with the build code.
@@ -71,6 +75,21 @@ RELEASED_PERIOD = {
 # not an edition concept). Re-exported here so existing edition imports
 # keep working.
 from pipeline.config import RELEASED_CORPORA, is_released_corpus  # noqa: E402,F401
+
+
+# Public corpora: the strict subset that the stakeholder considers
+# fully verified for the public-facing edition. Smaller than
+# RELEASED_CORPORA (which also contains _ready corpora that are
+# editorially complete but not yet stakeholder-signed-off).
+# Source: Stakeholder protocol 18.05.2026 ("QGW bis 1414, StB Bd. 1").
+PUBLIC_CORPORA = (
+    "QGW/Vienna_1177-1414_ready",
+    "Stadtbuecher/Band_1_1395-1400_ready",
+)
+
+
+def is_public_corpus(collection_path: str) -> bool:
+    return collection_path in PUBLIC_CORPORA
 
 
 def released_period_label():

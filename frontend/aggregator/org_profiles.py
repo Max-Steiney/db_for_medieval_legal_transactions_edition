@@ -8,6 +8,7 @@ released set).
 
 from collections import Counter, defaultdict
 
+from frontend.config import is_public_corpus
 from ._shared import _cached_csv
 from ._profile_labels import (
     split_pipe_names, split_authorities, label_org_type,
@@ -413,7 +414,8 @@ def build_org_profiles(reverse_index):
         s = stamm.get(oid, {})
         name_main, name_aliases = split_pipe_names(s.get("name_raw", ""))
         years = [d.get("date_iso", "")[:4] for d in docs
-                 if d.get("date_iso", "")[:4].isdigit()]
+                 if d.get("date_iso", "")[:4].isdigit()
+                 and is_public_corpus(d.get("collection_path", ""))]
         roles = org_roles.get(oid, Counter())
         roles_dict = {r: roles.get(r, 0) for r in _ROLES}
         rels = relations.get(oid, {"occ": [], "title_ref": []})
