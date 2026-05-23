@@ -24,7 +24,7 @@ Statische Site ohne Serverkomponente und ohne Laufzeit-Datenbank. Build-Output l
 - Frontend: Vanilla-[JavaScript](https://developer.mozilla.org/de/docs/Web/JavaScript) und Vanilla-[CSS](https://developer.mozilla.org/de/docs/Web/CSS) mit Design-Tokens; Visualisierungen als handgeschriebenes [SVG](https://developer.mozilla.org/de/docs/Web/SVG)
 - Schriften: self-hosted woff2, [Crimson Pro](https://fonts.google.com/specimen/Crimson+Pro), [Inter](https://fonts.google.com/specimen/Inter), [JetBrains Mono](https://www.jetbrains.com/lp/mono/) unter [SIL OFL](https://openfontlicense.org/)
 - [localStorage](https://developer.mozilla.org/de/docs/Web/API/Window/localStorage) (Datenkorbskorb), URL-Parameter (Filter-Stand)
-- Sicherheit: strikte [Content-Security-Policy](https://developer.mozilla.org/de/docs/Web/HTTP/CSP) (default-src 'self', kein unsafe-inline)
+- Sicherheit: [Content-Security-Policy](https://developer.mozilla.org/de/docs/Web/HTTP/CSP) — `script-src 'self'` strikt (kein `unsafe-inline`); `style-src 'self' 'unsafe-inline'` wegen der vendored OpenSeadragon-Lib, die ihre Stile dynamisch setzt (commit c0454a27df). Risiko-Modell: statische Site ohne User-Input, daher minimal.
 
 ## **Konventionen für dieses Dokument**
 
@@ -81,6 +81,10 @@ Regeln, die für alle Punkte gelten und deshalb nicht in jedem einzeln wiederhol
    * Offen: Klären, was genau gemeint ist (Quellen-Anzahl vs. Gesamtnennungen), dann entscheiden, ob ein zweites Zahlenfeld nötig ist.
 - [x] **Die angezeigten Daten dürfen nur aus den geprüften Korpora stammen (QGW, StB). Es dürfen nur die Personen aufscheinen, die in diesen Beständen genannt sind.** (Herkunft: eigene Beobachtung)
    * Umsetzung: Eine zentrale Freigabeliste `RELEASED_CORPORA` in `pipeline/config.py` wird beim Build an drei Stellen geprüft (beim Einlesen der TEI-Dateien, beim Sammeln der Personen-IDs, beim Schreiben der Index-JSONs) und durch das unabhängige `verification/`-Test-Set gegengeprüft.
+
+- [x] **Personen-Profile zeigten Vor- oder Nachnamen nicht, wenn nur `<orig>` in personList.xml gefüllt ist.** (Herkunft: eigene Beobachtung)
+   * Befund: Strikt-`_reg`-lesender Profilkopf ließ den Namen weg, obwohl Listing und Suche ihn zeigten. Stichproben: Schonhauer, Hagker, Payr. ~100 Profile betroffen.
+   * Umsetzung: `_load_person_stammdaten` und `_orig_display` mit Fallback `_reg or _orig` pro Feld (commit 74b02d7c75). Bulk-Verifikation 98/98 IDs grün.
 
 #### Organisations-Register
 
@@ -188,23 +192,34 @@ Regeln, die für alle Punkte gelten und deshalb nicht in jedem einzeln wiederhol
 - [x] **Zoom-Funktion der Digitalisate ist nicht navigierbar, vergrößerte Ausschnitte lassen sich nicht verschieben.** (Herkunft: Stakeholder-Review 11.05.2026)
    * Umsetzung: Der Faksimile-Viewer wurde neu gebaut. Ausschnitte lassen sich jetzt mit dem Mausrad oder den Knöpfen vergrößern, mit gehaltener Maustaste verschieben und um 90 Grad drehen; ein Knopf stellt die ursprüngliche Ansicht wieder her.
    * Verifikation: [QGW Vienna Nr. 100](https://chpollin.github.io/db_for_medieval_legal_transactions_edition/documents/QGW/Vienna_1177-1414_ready/100.html)
-- [~] **„Datenherkunft" ist unklar formuliert („Wiener Stadt- und Landesarchiv 9 Pers., 0 Org.").** (Herkunft: Stakeholder-Review 11.05.2026)
-   * Umsetzung: „9 Pers., 0 Org." entfernt.
-   * Offen: Label „Datenherkunft" selbst überarbeiten oder durch eindeutigen Begriff ersetzen.
+- [x] **„Datenherkunft" ist unklar formuliert („Wiener Stadt- und Landesarchiv 9 Pers., 0 Org.").** (Herkunft: Stakeholder-Review 11.05.2026)
+   * Umsetzung: Label „Datenherkunft" durch „Aufbewahrungsort" ersetzt, Inhalt reduziert auf Archivname (`tei:repository`) und Monasterium-Link. Personen- und Organisations-Counts wandern aus dem Footer in den Annotations-Summary mit Aufschlüsselung nach Typ (commit c0454a27df).
+   * Verifikation: [QGW Vienna Nr. 1022](https://chpollin.github.io/db_for_medieval_legal_transactions_edition/documents/QGW/Vienna_1177-1414_ready/1022.html)
 - [x] **„Originaldatierung" wird nicht ganz angezeigt und ist nicht notwendig, da sie ohnehin im Regest steht.** (Herkunft: Stakeholder-Review 11.05.2026)
    * Umsetzung: Feld entfernt.
-- [?] **Dispositivformeln werden nicht klar voneinander getrennt dargestellt.** (Herkunft: Stakeholder-Review 11.05.2026)
-   * Befund: siehe Screenshot ![][image1] (im Original-Dokument verlinkt).
-   * Offen: visuelle Trennung der Dispositivformeln im Quellen-Body festlegen.
-- [?] **Mehrere Kategorien innerhalb der Annotationstabellen erscheinen unklar oder nicht notwendig. Tabellen auf wissenschaftlich nachvollziehbare und öffentlich verständliche Kategorien reduzieren.** (Herkunft: Stakeholder-Review 11.05.2026)
-   * Offen: Welche Kategorien werden gebraucht, warum (um daraus abzuleiten, wie und wo sie dargestellt werden sollen)?
+- [x] **Dispositivformeln werden nicht klar voneinander getrennt dargestellt.** (Herkunft: Stakeholder-Review 11.05.2026)
+   * Umsetzung: Jede Dispositivformel im Quellentext wird mit einer gestrichelten Unterstreichung in der Trigger-Farbe markiert (konsistent mit dem Legenden-Swatch), und jede trägt einen Hover-Tooltip „Dispositivformel — Verb, das das Rechtsgeschäft anzeigt" (commit c0454a27df).
+   * Verifikation: [QGW Vienna Nr. 1022](https://chpollin.github.io/db_for_medieval_legal_transactions_edition/documents/QGW/Vienna_1177-1414_ready/1022.html), fünf benachbarte Dispositivformeln im Regest sind jetzt einzeln erkennbar.
+- [~] **Mehrere Kategorien innerhalb der Annotationstabellen erscheinen unklar oder nicht notwendig. Tabellen auf wissenschaftlich nachvollziehbare und öffentlich verständliche Kategorien reduzieren.** (Herkunft: Stakeholder-Review 11.05.2026)
+   * Umsetzung (commit c0454a27df):
+      * Redundante „Ereignisse"-Untertabelle entfernt; Entitäten nach Top-Level-Event gruppiert; Gruppen-Header zeigt den Dispositiv-Verb-Wortlaut der Quelle (kursiv, Trigger-Farbe) plus rohe `ev__`-ID als Anker. Nested events (Erwähnungen in der Narrative) sind ausgeblendet, ihre Entitäten wandern in die Eltern-Gruppe.
+      * Spalten umbenannt: „Entität" → „Genannt als", „Rolle" → „Funktionsrolle". Spalte „Abschnitt" entfernt (Info bleibt im Row-Tooltip). Neue Spalte „Geschlecht" mit m/w/—-Glyph (Daten über `data-sex` auf `rs[@type=person]`).
+      * Spalten-Header-Tooltips mit Ein-Satz-Definition pro Kategorie.
+      * xml:id aus den Zellen entfernt (lebt nur im Row-Tooltip), Padding angehoben, gruppen-aware Sortierung.
+   * Verifikation: [QGW Vienna Nr. 1022](https://chpollin.github.io/db_for_medieval_legal_transactions_edition/documents/QGW/Vienna_1177-1414_ready/1022.html) (Mehrfach-Event-Worst-Case), [QGW Vienna Nr. 23](https://chpollin.github.io/db_for_medieval_legal_transactions_edition/documents/QGW/Vienna_1177-1414_ready/23.html) (Einfach-Event-Fall).
+   * Offen (geparkt): Disp-Verb-/Event-ID-Politur — die rohen `ev__…`-IDs als sprechende Namen, eine spätere Evaluierungs-Runde.
+   * Offen (Backlog): Type-Pillen pro Wert in der „Attribute"-Spalte; kleine „erwähnt"-Pille auf Zeilen, die nur aus eingebetteten Ereignissen stammen; analoge Event-Gruppierung der Tabellen „Dispositivformeln" und „Editorische Ergänzungen".
 
 ### **Sonstiges und Daten**
 
 - [ ] **Texte auf Startseite** (Herkunft: eigene Beobachtung)
-- [ ] **Tooltips** (Herkunft: eigene Beobachtung)
-   * Glossar-Texte für Tooltips, CSS-Klasse: `.prov-trigger .prov-trigger--icon`
-   * Datenpunkt-Provenance Tooltip
+- [x] **Hover-Tooltips für alle Annotations-Typen im Quellentext** (Herkunft: eigene Beobachtung)
+   * Umsetzung: Vorher hatten nur `rs[@type='person|org|place']` einen `data-hint` mit Type-Label. Triggerstrings (Dispositivformeln und Funktionsrollen-Verben), `roleName`-Attribute (alle Subtypen wie Verwandtschaft, Titel, Beruf, Stellvertretung etc.) und `add` (editorische Ergänzungen) tragen jetzt ebenfalls einheitliches `data-hint` plus `data-hint-type`. Coverage in QGW Nr. 1022 stieg von 13/40 auf 32/40 Annotationen mit Tooltip (commit c0454a27df).
+- [x] **Einheitlicher Tooltip-Look projektweit** (Herkunft: eigene Beobachtung)
+   * Umsetzung: Native `title="..."`-Tooltips (Browser-Default) durchgehend auf das projekteigene `data-hint`-System mit `hint.js` migriert. Betrifft Facsimile-Buttons, Exploration-Chips, Korpus-Sidebar-Chips, Cite-Copy-Buttons, Sparkline-Bars und Decade-Säulen im Zeitstrom, Geschlechtsbars im Aggregat, Network-Recenter-Buttons (commit c0454a27df).
+- [ ] **Glossar-Tooltips und Datenpunkt-Provenance** (Herkunft: eigene Beobachtung)
+   * Offen: Glossar-Texte als `tip_glossary`-Popover an UI-Stellen einsetzen, an denen Fachbegriffe stehen (Quellenkorpus, Event, Rechtsgeschäft, Regest etc.). Eigene Tooltip-Form, neben dem Hover-Hint-System.
+   * Offen: Datenpunkt-Provenance-Popover an Zahlen auf der Startseite und in Aggregat-Quadranten (zeigt, woher die Zahl kommt).
 - [ ] **Datenkorb** (Herkunft: eigene Beobachtung)
 - [~] **Es muss möglich sein, anzeigen zu lassen, welche Personen in einem bestimmten Band der QGW vorkommen.** (Herkunft: Stakeholder-Anfrage)
    * Befund: Personen- und Organisations-Register tragen in der Sidebar einen Korpus-Filter (`frontend/templates/register_list.html:30`, `sidebar_corpus_chips`), Mehrfachauswahl möglich. Im freigegebenen Korpus existiert bisher nur ein QGW-Band (`QGW/Vienna_1177-1414_ready`), daher entspricht „in bestimmtem Band" aktuell genau dem QGW-Chip. Verifikation: [Personen-Register, Sidebar-Bestandsfilter](https://chpollin.github.io/db_for_medieval_legal_transactions_edition/register/persons.html).
