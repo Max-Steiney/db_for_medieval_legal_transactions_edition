@@ -5,9 +5,9 @@ project:
   repository: https://github.com/chpollin/db_for_medieval_legal_transactions_edition
 status: active
 language: de
-version: 1.1
+version: 1.2
 created: 2026-02-19
-updated: 2026-05-17
+updated: 2026-05-23
 authors: [Christopher Pollin]
 generated-with: Claude Code
 method:
@@ -85,6 +85,15 @@ Sechs große Forschungsszenarien aus Historiker*innen-Perspektive. Pro Story Rol
 * **Pfad** An jedem Eintrag in den Listen und an jeder Detail- und Profilseite steht ein „+"-Knopf, der den Eintrag in den Datenkorb legt. Das Korb-Icon im Nav führt zur Korb-Seite mit drei Sektionen, jeweils eigener Remove-Aktion und eigenem CSV-Export. Wer eine Quelle in den Korb legt, sieht ihre annotierten Personen und Organisationen automatisch als abgeleitete Einträge — ein zweiter „+"-Klick stuft sie zur eigenständigen Sammlung hoch.
 * **Anforderung** [[specification#Datenkorb als clientseitige Sammlung]], [[specification#Forschungsstand zitierbar via URL-Parameter]], [[specification#Cross-Page-Sprung mit Filter-Übernahme]]
 * **Komponente** [[ui-design#Datenkorb]]
+
+## Die Daten editorisch prüfen und intern erweitert lesen
+
+* **Rolle** Editionsbearbeiterin, Annotatorin oder Projektleitung
+* **Wunsch** im laufenden Editions-Workflow Sichten brauchen, die für die öffentliche Forscherin nicht gedacht sind (Dispositivformeln als eigene Sub-Tabelle, technische IDs als Anker, vollständige Annotations-Inventur, alle Aggregations-Achsen ungefiltert)
+* **Zweck** Annotationen prüfen, Pipeline-Outputs gegen TEI-Quellen vergleichen, Stakeholder-Diskussionen mit konkretem Anker führen
+* **Eingelöst durch** zwei Schichten. Build-zeit gibt es eine Audience-Achse (`--audience internal`), die `docs-internal/` parallel zu `docs/` produziert mit allen editorisch relevanten Sektionen, IDs und Aggregat-Achsen. Client-zeit gibt es einen Dev-Mode-Schalter (`?dev=1` an der URL), der `.dev-only`-Elemente im selben Build sichtbar macht, etwa die Dispositivformeln-Tabelle in der Annotationsansicht. Beide Schichten sind orthogonal und addieren sich.
+* **Anforderung** [[specification#Öffentliche versus interne Sicht in zwei Schichten]]
+* **Komponente** [[ui-design#Dev-Mode-Schalter]], [[ui-design#Annotations-Block]]
 
 ---
 

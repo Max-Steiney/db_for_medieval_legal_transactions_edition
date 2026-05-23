@@ -5,9 +5,9 @@ project:
   repository: https://github.com/chpollin/db_for_medieval_legal_transactions_edition
 status: active
 language: de
-version: 0.2
+version: 0.3
 created: 2026-02-19
-updated: 2026-05-16
+updated: 2026-05-23
 authors: [Christopher Pollin]
 generated-with: Claude Code
 method:
@@ -126,6 +126,8 @@ Die Aufschlüsselung nach Event-Subtyp macht die TEI-Heterogenität sichtbar: ei
 Neben den thematischen Aggregaten (Funktionsrollen × Geschlecht × Dekade in `roles`, Beziehungstypen und Bezeichnungen in `relations`, Transaktionstypen × Dekade in `transactions`) führt jede dieser JSON-Strukturen einen `drill_down`-Schnitt: pro Aggregat-Zelle eine Liste der beitragenden `file_key`-Verweise. Eine Quelle kann in mehreren Zellen erscheinen, der Schnitt führt sie pro Zelle nur einmal. Aufgelöst werden die `file_keys` über `data/docs_lookup.json`, das pro Schlüssel die Stammdaten Datum, Korpus-Label, Kurzregest und Quellen-URL hält. Damit ist jede aggregierte Zahl im Frontend bis zur einzelnen Quelldokument-Seite rückführbar — die Provenienz-Garantie aus [[specification#Datenrobustheit und Provenienz]] hängt an dieser doppelten Schicht (Aggregat + Lookup).
 
 Eine zweite Aggregat-Familie bedient die Entitäts-Profile. Die Module `person_profiles` und `org_profiles` joinen Stammdaten (Name, Geschlecht, Todesdatum, Notiz, Wien-Wiki-Link bzw. Typ, Observanz, Hierarchie), Quellenvorkommen, Rollen-Aggregation pro Person und die fünf Beziehungs-CSVs (Verwandtschaft, Freundschaft, Vertretung, Beruf, Titelverweis) zu einem Profil pro Entität, das direkt server-seitig zu `register/persons/<id>.html` und `register/orgs/<id>.html` gerendert wird. Eine zusätzliche Forward-Index-JSON `docs_entities.json` ordnet jeder Quelle die Liste ihrer annotierten Personen- und Organisations-IDs zu; der Datenkorb nutzt diesen Index, um beim Sammeln einer Quelle die zugehörigen Entitäten automatisch als abgeleitete Einträge in den Korb zu legen.
+
+Audience-bewusste Filterung. Aggregat-JSONs werden für die öffentliche Audience gefiltert, sodass technische Identifikatoren (`pe__`-, `org__`-, `ev__`-IDs als Schlüssel oder Inline-Felder) nicht in den public-Build leaken. Internal-Audience trägt sie unverändert für die editorische Verifikation. Die Filterung lebt im Aggregator selbst, nicht im Template, damit die Audience-Trennung auch bei direkter JSON-Konsumption durch externe Werkzeuge greift. Konvention in [[specification#Öffentliche versus interne Sicht in zwei Schichten]], Build-Mechanik in [[architecture#Audience-Schicht für öffentliche und interne Sicht]].
 
 Technische Umsetzung in [[architecture#Datenschichten und Aggregator]].
 

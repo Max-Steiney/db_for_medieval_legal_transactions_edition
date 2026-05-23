@@ -57,6 +57,22 @@ python scripts/build_all_stages.py            # alle vier Stufen
 python scripts/build_all_stages.py --only 1 3 # nur ausgewaehlte Stufen
 ```
 
+## Sichtbarkeit öffentlich versus intern
+
+Neben dem Stufenmodell trägt der Build eine zweite, orthogonale Achse, die unterscheidet, *für wen* der Output gedacht ist. Sie wird auf zwei Schichten gelöst.
+
+Build-zeit über die Audience-Achse. CLI-Flag `--audience public|internal`, Default `public`. Die interne Variante hängt `-internal` an das Stage-Output-Verzeichnis (Stufe 1 plus internal landet in `docs-internal/`) und behält editorisch relevante Sektionen, technische IDs und Aggregat-Achsen, die im öffentlichen Build gefiltert werden. Die Achse ist orthogonal zum Stufenmodell, beide kombinieren sich frei.
+
+```
+python -m frontend build                            # public, Stufe 1 → docs/
+python -m frontend build --audience internal        # interne Sicht → docs-internal/
+python -m frontend build --stage 2 --audience internal   # Stufe 2 plus interne Sicht
+```
+
+Client-zeit über einen Dev-Mode-Schalter. URL-Parameter `?dev=1` an einer beliebigen Quellen-Detailseite setzt `.dev-mode` auf das HTML-Wurzel-Element und macht alle Elemente mit der Klasse `.dev-only` sichtbar, ergänzt um einen gelben gestrichelten Rahmen und ein „Entwicklung"-Label. Default-Sicht blendet sie aus. Erstes Anwendungsbeispiel ist die Dispositivformeln-Sub-Tabelle in der Annotationsansicht.
+
+Die zwei Schichten lösen verschiedene Dinge. Audience entscheidet build-zeit, *ob* etwas im Output enthalten ist. Dev-Mode entscheidet client-zeit, *ob* enthaltene Elemente sichtbar geschaltet werden. Begründung in [`knowledge/specification.md`](knowledge/specification.md) unter „Öffentliche versus interne Sicht in zwei Schichten", Architektur-Detail in [`knowledge/architecture.md`](knowledge/architecture.md).
+
 ## Zwei-Repository-Setup
 
 Die Datenbank lebt in zwei Repositories, die nebeneinander geklont werden müssen.
@@ -87,9 +103,11 @@ cd ../db_for_medieval_legal_transactions
 python -m pipeline transform           # CSVs neu erzeugen, falls TEI-Quellen sich geändert haben
 
 cd ../db_for_medieval_legal_transactions_edition
-python -m frontend build               # Site neu rendern → docs/
-python -m frontend build --single FILE # einzelne Quelle
-python -m pytest frontend/tests/       # Frontend-Tests
+python -m frontend build                                    # Site neu rendern → docs/
+python -m frontend build --single FILE                      # einzelne Quelle
+python -m frontend build --stage N                          # Stufe 1..4 (siehe oben)
+python -m frontend build --audience public|internal         # öffentlich oder intern (siehe oben)
+python -m pytest frontend/tests/                            # Frontend-Tests
 ```
 
 ## Technischer Stack

@@ -5,9 +5,9 @@ project:
   repository: https://github.com/chpollin/db_for_medieval_legal_transactions_edition
 status: active
 language: de
-version: 1.0
+version: 1.1
 created: 2026-02-19
-updated: 2026-05-17
+updated: 2026-05-23
 authors: [Christopher Pollin]
 generated-with: Claude Code
 method:
@@ -103,6 +103,16 @@ Pro Anforderung steht eine kurze Erläuterung, eine Begründung und eine Konsequ
 **Konsequenz.** Pipeline-seitig schaltet `pipeline.config.include_mentioned_events()` die Filter in `pipeline/utils/event_helpers.py` zentral um; `event_mentions.csv` bleibt im Vergleichsbuild leer, damit verschachtelte Events nicht doppelt gezählt werden. Frontend-seitig setzt `frontend/__main__.py` die Env-Var vor dem Import von `frontend.config`; `DOCS_DIR` wählt dann das Output-Verzeichnis. `_kpi.py` schaltet die XPath-Selektoren um, sodass die Hero-KPIs der Startseite konsistent mit dem CSV-Stand laufen. Aufrufkette: `PIPELINE_INCLUDE_MENTIONED_EVENTS=1 python -m pipeline transform` im Pipeline-Repo, dann `python -m frontend build --include-mentioned` (oder `--stage 2`) im Frontend-Repo.
 
 **Nicht gemeint ist**, dass `docs-with-mentioned/` öffentlich publiziert wird. Der Stand ist ein editorisches Vergleichswerkzeug. GitHub Pages serviert weiterhin nur `docs/`.
+
+## Öffentliche versus interne Sicht in zwei Schichten
+
+**Anforderung.** Die Anwendung unterscheidet zwei Sichtbarkeits-Schichten. Build-zeit greift eine Audience-Achse (`--audience public|internal`), die ganze Sektionen und Datenpunkte vor dem Rendern aus dem Output filtert. Client-zeit greift ein Dev-Mode-Schalter (`?dev=1` an der URL), der Elemente mit der CSS-Klasse `.dev-only` im selben Build sichtbar macht. Die zwei Schichten sind orthogonal und addieren sich.
+
+**Begründung.** Editorische Arbeit braucht laufend Sichten, die die Forscherin nicht braucht (Dispositivformeln-Tabelle, technische IDs, vollständige Annotationsstruktur). Eine reine Build-Achse löst das mit separaten Output-Ständen, ist aber langsam (jeder Wechsel braucht einen Build) und unbequem (mehrere Browser-Tabs, mehrere URLs). Ein reiner Client-Schalter ist schnell und bequem, kann aber keine Inhalte aus dem Build halten, sobald sie einmal in einem Aggregat-JSON oder im HTML stehen. Erst die Kombination liefert beides. Audience entscheidet, *ob* etwas im Build enthalten ist; Dev-Mode entscheidet, *ob* enthaltene Elemente sichtbar geschaltet werden.
+
+**Konsequenz.** Audience-Mechanik in `frontend/audiences.py`, analog zu `frontend/stages.py`. CLI-Flag `--audience public|internal` mit Default `public`. Internal-Variante hängt `-internal` an das Stage-Output-Verzeichnis, Stufe 1 plus internal landet in `docs-internal/`. Audience ist als Jinja-Global auf allen Templates verfügbar und als `data-audience`-Attribut auf `<body>`. Dev-Mode-Schalter über `?dev=1` setzt `.dev-mode` auf `<html>`; CSS-Klasse `.dev-only` wird in der Default-Sicht versteckt, im Dev-Mode mit gelbem gestrichelten Rahmen und „Entwicklung"-Label sichtbar. Mechanik universell auf jedes UI-Element anwendbar, ohne dass eine eigene Render-Schiene gebaut werden muss. Architektur-Detail in [[architecture#Audience-Schicht für öffentliche und interne Sicht]] und [[architecture#Dev-Mode-Schalter als komplementäre Client-Schicht]].
+
+**Nicht gemeint ist**, dass die zwei Schichten dasselbe Problem lösen. Wenn ein Datenpunkt aus Datenschutz- oder Editionsethik-Gründen nicht in den öffentlichen Build gehört (etwa technische IDs, die noch nicht zitierfähig sind), gehört er hinter Audience, nicht hinter Dev-Mode. Wenn ein UI-Element editorisch nützlich, öffentlich aber nur ablenkend ist, gehört es hinter Dev-Mode.
 
 ---
 
@@ -261,6 +271,16 @@ Der Beruf- und der Uhlirz-Filter ziehen ihre Werte aus zwei Annotationsorten: `o
 
 **Nicht gemeint ist**, dass jedes Profil eine vollständige Biografie liefert. Die Profile zeigen, was die TEI-Annotation hergibt.
 
+## Annotations-Block trägt Sub-Tabellen als Tab-Toggle
+
+**Anforderung.** Der Annotations-Block auf der Quellen-Detailseite konsolidiert die Sub-Tabellen (Entitäten, Dispositivformeln, Editorische Ergänzungen) als Tab-Toggle. Genau eine Sub-Tabelle ist gleichzeitig sichtbar, die Tab-Pille trägt das Label und einen Count. Bei nur einer sichtbaren Sub-Tabelle bleibt der Tab-Strip verborgen, weil ein Either-Or-Schalter ohne Alternative redundant wäre.
+
+**Begründung.** Die frühere Lösung mit drei untereinander stehenden Tabellen plus separater Counter-Pille im Block-Header ließ den Block länger werden als nötig und führte zu Redundanz zwischen Header-Counts und Tabellen-Zeilen. Eine Tab-Konsolidierung adressiert den Stakeholder-Punkt „Mehrere Kategorien innerhalb der Annotationstabellen erscheinen unklar oder nicht notwendig" und macht jede Sub-Tabelle für sich lesbar.
+
+**Konsequenz.** Im Annotations-Block-Markup steht ein `<nav class="annotations-tabs">`-Container neben der bestehenden Body-Sektion. JS rendert pro Sub-Tabelle eine Tab-Pille, das aktive Panel ist sichtbar, andere tragen `hidden`. Default-aktiv ist das erste nicht-`dev-only`-Panel, sodass die öffentliche Sicht ohne dev-Schalter sinnvoll startet. UI-Detail in [[ui-design#Annotations-Block]].
+
+**Nicht gemeint ist**, dass alle künftigen Sub-Tabellen ebenfalls Tabs werden müssen. Der Annotations-Block trägt eine besondere Last (drei ontologisch unterschiedliche Annotation-Typen pro Quelle), andere Bereiche haben homogenere Tabellen-Inhalte und kommen ohne Tab-Schalter aus.
+
 ## Datenkorb als clientseitige Sammlung
 
 **Anforderung.** Forschende sammeln Quellen, Personen und Organisationen über Sitzungen hinweg in einem clientseitigen Datenkorb. Daten bleiben rein clientseitig, keine Server-Persistenz, keine Identitätspflicht.
@@ -356,6 +376,16 @@ Der Beruf- und der Uhlirz-Filter ziehen ihre Werte aus zwei Annotationsorten: `o
 **Konsequenz.** Tooltips, Filterstatus und Zählebenen-Anzeige sind dauerhaft sichtbar. Ausführung in [[ui-design#Gestaltungshaltung]].
 
 **Nicht gemeint ist**, dass Dichte Unübersichtlichkeit bedeutet. Die Oberfläche strebt hohe Informationsdichte mit klarer hierarchischer Gliederung an, nicht visuelles Rauschen.
+
+## Visuelle Trennung kontrolliertes Vokabular und quellennahe Beischrift
+
+**Anforderung.** Datenpunkte in Tabellen-Zellen werden nach ihrer Kategorie visuell unterschiedlich gerendert. Werte aus kontrolliertem Vokabular (Funktionsrolle, Beziehungstyp, Korpus-Label) erscheinen als gefüllte Pille in der Akzentfarbe. Werte als quellennahe Beischrift (Attribute aus `roleName`-Annotationen, freie Zusatzangaben) erscheinen als umrandete Tags pro Einzelwert ohne Füllung.
+
+**Begründung.** Die zwei Datenklassen sind im TEI-Modell verschieden, im UI aber oft in derselben Tabellen-Zeile angeordnet. Ohne visuelle Trennung verlieren Forschende die Information, welche Werte klassifiziert sind und welche Quellenwortlaut tragen. Die gefüllte-versus-umrandete-Konvention lässt die Kategorie auf einen Blick erkennen, ohne den Spaltenkopf zu lesen.
+
+**Konsequenz.** Cell-Renderer für Funktionsrolle als `.role-pill` (gefüllt, Akzentblau), für Attribut als `.attr-tag` (umrandet, ein Tag pro Wert). Konvention projektweit anwendbar, zentral umgesetzt in der geteilten Tabellen-Schicht ([[architecture#Geteilte Tabellen-Schicht]]). UI-Detail in [[ui-design#Tabellen-Schicht]].
+
+**Nicht gemeint ist**, dass jeder Wert in jeder Tabelle eine Pille bekommt. Reine Textwerte (Datum, Quellen-Idno, Personennamen) bleiben Klartext, weil sie keine Kategorie sind, sondern Inhalt.
 
 ---
 
