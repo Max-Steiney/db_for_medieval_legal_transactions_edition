@@ -10,21 +10,23 @@
     <title>Quellen, Datenbank</title>
     <link rel="preload" as="font" type="font/woff2" crossorigin
           href="./static/fonts/inter-400-latin.woff2">
-    <link rel="stylesheet" href="./static/css/fonts.css?v=20260523134309">
-    <link rel="stylesheet" href="./static/css/tokens.css?v=20260523134309">
-    <link rel="stylesheet" href="./static/css/base.css?v=20260523134309">
-    <link rel="stylesheet" href="./static/css/components.css?v=20260523134309">
-    <link rel="stylesheet" href="./static/css/responsive.css?v=20260523134309">
-    <link rel="stylesheet" href="./static/css/print.css?v=20260523134309">
-    <link rel="stylesheet" href="./static/css/tip.css?v=20260523134309">
+    <link rel="stylesheet" href="./static/css/fonts.css?v=20260523185345">
+    <link rel="stylesheet" href="./static/css/tokens.css?v=20260523185345">
+    <link rel="stylesheet" href="./static/css/base.css?v=20260523185345">
+    <link rel="stylesheet" href="./static/css/components.css?v=20260523185345">
+    <link rel="stylesheet" href="./static/css/responsive.css?v=20260523185345">
+    <link rel="stylesheet" href="./static/css/print.css?v=20260523185345">
+    <link rel="stylesheet" href="./static/css/tip.css?v=20260523185345">
     
-<link rel="stylesheet" href="./static/css/index.css?v=20260523134309">
+<link rel="stylesheet" href="./static/css/index.css?v=20260523185345">
 
 </head>
 <body data-root-path="."
       data-released-min="1177"
-      data-released-max="1460">
+      data-released-max="1460"
+      data-audience="public">
     <a class="skip-link" href="#main-content">Zum Inhalt springen</a>
+    
     <nav class="site-nav">
         <div class="nav-inner">
             <a href="./index.html" class="nav-brand">
@@ -52,7 +54,7 @@
     </div>
 </div>
 
-<div class="nav-dropdown">
+<div class="nav-dropdown dev-only">
     <button type="button" class="nav-item nav-dropdown-trigger" aria-expanded="false" aria-haspopup="true">Analyse <span class="nav-dropdown-arrow">&#x25BE;</span></button>
     <div class="nav-dropdown-menu">
         
@@ -63,7 +65,7 @@
     </div>
 </div>
 
-<div class="nav-dropdown">
+<div class="nav-dropdown dev-only">
     <button type="button" class="nav-item nav-dropdown-trigger" aria-expanded="false" aria-haspopup="true">Exploration <span class="nav-dropdown-arrow">&#x25BE;</span></button>
     <div class="nav-dropdown-menu">
         
@@ -89,7 +91,8 @@
     </div>
 </div>
 
-                <a href="./korb.html" class="nav-basket" aria-label="Datenkorb">
+                <a href="./korb.html" class="nav-basket" aria-label="Datenkorb"
+                   data-hint="Datenkorb: Sammlung von Quellen, Personen und Organisationen, lokal in diesem Browser. Klick &ouml;ffnet die Korb-Seite.">
                     <svg width="18" height="18" viewBox="0 0 18 18" fill="none" aria-hidden="true">
                         <path d="M3 5h12l-1.2 8.5a1 1 0 0 1-1 .85H5.2a1 1 0 0 1-1-.85L3 5z"
                               stroke="currentColor" stroke-width="1.4" fill="none"
@@ -510,10 +513,43 @@
 </section>
 
 
+            <section class="sidebar-block">
+                <div class="sidebar-block-label">Erschließungsform
+<span class="tip-wrap">
+    <button type="button" class="tip-trigger tip-trigger--icon"
+            aria-expanded="false" aria-haspopup="dialog"
+            aria-controls="forms-help"
+            data-tip="forms-help"
+            aria-label="Hilfe: Erschließungsform">
+        <svg width="13" height="13" viewBox="0 0 16 16" aria-hidden="true">
+            <circle cx="8" cy="8" r="7" stroke="currentColor" stroke-width="1.4" fill="none"/>
+            <text x="8" y="11.6" text-anchor="middle" font-size="9.5" font-weight="700"
+                  fill="currentColor" font-family="Georgia, serif">i</text>
+        </svg>
+    </button>
+    <aside class="tip-popover tip-popover--help"
+           id="forms-help" role="dialog" aria-hidden="true"
+           aria-label="Hilfe: Erschließungsform">
+        <header class="tip-head">
+            <h3 class="tip-title">Erschließungsform</h3>
+            <button type="button" class="tip-close" aria-label="Schlie&szlig;en">&times;</button>
+        </header>
+        <div class="tip-body">
             
-<section class="sidebar-block">
-    <p class="sidebar-block-label">Erschließungsform</p>
-    
+                    <p>Filtert die Quellen-Liste nach editorischen Strukturen, die in der Quelle annotiert sind.</p>
+                    <ul>
+                        <li><strong>Regest</strong>, redaktionelle Inhaltszusammenfassung</li>
+                        <li><strong>Siegel</strong>, Beschreibung der Sigille (Form, Material, Erhaltung)</li>
+                        <li><strong>Eintrag</strong>, Quelle ist Teil eines Stadtbuchs</li>
+                        <li><strong>Nota</strong>, Marginalie oder Nachsatz</li>
+                        <li><strong>ohne</strong>, keine dieser Strukturen erkannt</li>
+                    </ul>
+                    <p>Eine Quelle kann mehrere tragen. Mehrere Filter wirken als ODER-Verknüpfung: gezeigt werden Quellen, die mindestens einen der gewählten Werte erfüllen.</p>
+                
+        </div>
+    </aside>
+</span>
+</div>
                 
 <div class="form-filter-chips" id="filter-forms" role="group"
      aria-label="Nach Erschließungsform filtern (Mehrfachauswahl)">
@@ -550,10 +586,7 @@
     
 </div>
 
-            
-    <p class="sidebar-block-hint">Mehrfachauswahl möglich (ODER-Verknüpfung)</p>
-</section>
-
+            </section>
 
             
 <section class="sidebar-block">
@@ -610,7 +643,7 @@
             
                         <p>Eine einzelne &Uuml;berlieferungseinheit (Urkunde, Stadtbuch-Eintrag) mit eigenem TEI-Dokument.</p>
                     
-            <a class="tip-link" href="/project/glossary.html#quelle">im Glossar</a>
+            <a class="tip-link" href="./project/glossary.html#quelle">im Glossar</a>
         </div>
     </aside>
 </span>
@@ -743,7 +776,7 @@
             
                                     <p>Inhaltszusammenfassung der Quelle. Die Tabelle zeigt die ersten 200 Zeichen; die Vorschau und die Detailseite enthalten den vollen Regest.</p>
                                 
-            <a class="tip-link" href="/project/glossary.html#regest">im Glossar</a>
+            <a class="tip-link" href="./project/glossary.html#regest">im Glossar</a>
         </div>
     </aside>
 </span>
@@ -774,7 +807,7 @@
             
                                     <p>Anzahl <em>individueller</em> Personen pro Quelle. Mehrfachnennungen derselben Person z&auml;hlen einmal. Der Zahlenwert ist der Sortierschl&uuml;ssel; die Pillen rechts daneben markieren TEI-Strukturen, Faksimile und Multi-Event.</p>
                                 
-            <a class="tip-link" href="/project/glossary.html#individuelle-person">im Glossar</a>
+            <a class="tip-link" href="./project/glossary.html#individuelle-person">im Glossar</a>
         </div>
     </aside>
 </span>
@@ -823,13 +856,13 @@
         </div>
     </footer>
 
-    <script src="./static/js/core.js?v=20260523134309"></script>
-    <script src="./static/js/tip.js?v=20260523134309"></script>
-    <script src="./static/js/hint.js?v=20260523134309"></script>
-    <script src="./static/js/basket.js?v=20260523134309"></script>
+    <script src="./static/js/core.js?v=20260523185345"></script>
+    <script src="./static/js/tip.js?v=20260523185345"></script>
+    <script src="./static/js/hint.js?v=20260523185345"></script>
+    <script src="./static/js/basket.js?v=20260523185345"></script>
     
-<script src="./static/js/table-infra.js?v=20260523134309"></script>
-<script src="./static/js/index.js?v=20260523134309"></script>
+<script src="./static/js/table-infra.js?v=20260523185345"></script>
+<script src="./static/js/index.js?v=20260523185345"></script>
 
 </body>
 </html>

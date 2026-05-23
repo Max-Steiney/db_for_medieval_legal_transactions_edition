@@ -158,10 +158,10 @@
             }
 
             let pills = [];
-            if (doc.ecR > 0) pills.push(['r', 'Regest', 'Regest-Annotation in der TEI-Quelle']);
-            if (doc.ecS > 0) pills.push(['s', 'Siegel', 'Siegelbeschreibung in der TEI-Quelle']);
-            if (doc.ecE > 0) pills.push(['e', 'Eintrag', 'Stadtbuch-Eintrag in der TEI-Quelle']);
-            if (doc.ecN > 0) pills.push(['n', 'Nota', 'Nachsatz/Notiz in der TEI-Quelle']);
+            if (doc.ecR > 0) pills.push(['r', 'Regest', 'Quelle trägt eine Regest-Auszeichnung im Original-Markup. Der Text in der Regest-Spalte daneben kommt unabhängig davon aus dem Quellen-Volltext und kann auch ohne diese Auszeichnung gefüllt sein.']);
+            if (doc.ecS > 0) pills.push(['s', 'Siegel', 'Quelle trägt eine Siegel-Beschreibung im Original-Markup (Form, Material, Erhaltung).']);
+            if (doc.ecE > 0) pills.push(['e', 'Eintrag', 'Quelle ist ein Stadtbuch-Eintrag im Original-Markup.']);
+            if (doc.ecN > 0) pills.push(['n', 'Nota', 'Quelle trägt eine Nota im Original-Markup (Nachsatz oder Marginalie).']);
             if (doc.f) pills.push(['f', 'Faksimile', 'Digitalisat des Originals verlinkt']);
             // Multi-transaction marker as a regular pill \u2014 stacked rectangles;
             // the actual count lives in the tooltip body.
@@ -285,7 +285,7 @@
             S: 'Beschreibung des oder der an einer Urkunde angebrachten Siegel: Form, Material, Erhaltung, gegebenenfalls siegelnde Person. Im TEI als <seal>.',
             E: 'In einem Verwaltungsbuch (Stadtbuch, Grundbuch) verzeichnetes Rechtsgeschaeft als Teil einer fortlaufenden Aufzeichnung. Im TEI als <entry>.',
             N: 'Nachsatz oder Marginalie zur Hauptquelle, nachtraeglich angefuegt (Ergaenzung, Korrektur, Hinweis). Im TEI als <nota>.',
-            none: 'Quelle ohne erkannte Erschliessungsform — keines der TEI-Elemente abstract/seal/entry/nota vorhanden.'
+            none: 'Quelle ohne erkannte Erschliessungsform, keines der TEI-Elemente abstract, seal, entry, nota vorhanden. Drei verschiedene Pools sind hier zusammengefasst: QGW-Privilegien (parallel im Privilegienband ediert), Satzbuch CD insgesamt (noch nicht annotiert) und ein Teilbestand der Stadtbuecher (ohne <entry>).'
         };
         // Glossar-Anker pro Form. Klick auf das i-Icon springt zur
         // entsprechenden Stelle in /project/glossary.html.

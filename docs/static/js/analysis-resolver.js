@@ -979,7 +979,6 @@
         pill.className = 'person-pill' + (num == null ? ' is-context' : '');
         const tipParts = [p.n || p.p];
         if (p.nt) tipParts.push(p.nt);
-        tipParts.push('ID: ' + p.p);
         pill.title = tipParts.join('\n');
         if (num != null) {
             const numEl = document.createElement('span');
@@ -1012,7 +1011,6 @@
         pill.className = 'org-pill' + (num == null ? ' is-context' : '');
         const tipParts = [o.n || o.g];
         if (o.tp) tipParts.push('Typ: ' + o.tp);
-        tipParts.push('ID: ' + o.g);
         pill.title = tipParts.join('\n');
         if (num != null) {
             const numEl = document.createElement('span');

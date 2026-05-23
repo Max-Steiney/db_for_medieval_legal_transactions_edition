@@ -409,29 +409,8 @@
     white-space: nowrap;
 }
 
-/* Sort-Pfeile auf den Profil-Tabellen analog zu .index-table. */
-.sortable-table th[data-sort] {
-    cursor: pointer;
-    user-select: none;
-}
-.sortable-table th[data-sort]::after {
-    content: ' \2195';
-    margin-left: 0.25em;
-    opacity: 0.35;
-    font-size: 0.85em;
-    transition: opacity var(--transition-fast, 0.15s), color var(--transition-fast, 0.15s);
-}
-.sortable-table th[data-sort]:hover::after { opacity: 0.7; }
-.sortable-table th.sorted-asc::after {
-    content: ' \2191';
-    opacity: 1;
-    color: var(--anno-person);
-}
-.sortable-table th.sorted-desc::after {
-    content: ' \2193';
-    opacity: 1;
-    color: var(--anno-person);
-}
+/* Sortier-Pfeile leben jetzt in components.css (projektweit). Hier
+   nur noch die org-Profilseiten-spezifische Akzent-Farbe. */
 .org-profile .sortable-table th.sorted-asc::after,
 .org-profile .sortable-table th.sorted-desc::after {
     color: var(--anno-org);
