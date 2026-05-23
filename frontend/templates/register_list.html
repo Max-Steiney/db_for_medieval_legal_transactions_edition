@@ -22,8 +22,10 @@
         <aside class="index-sidebar" aria-label="Filter">
 
             {% if timeline_data %}
-            {% call sidebar_block('Aktivit&auml;tszeitraum', 'Erste &amp; letzte Quellennennung je Person') %}
-                {{ sidebar_range_slider(min_year, max_year, timeline_data, max_count, unit='Personen', unit_singular='Person') }}
+            {% set _unit_label = 'Personen' if register_type == 'persons' else 'Organisationen' %}
+            {% set _unit_singular = 'Person' if register_type == 'persons' else 'Organisation' %}
+            {% call sidebar_block('Datum der Quellen', 'Erste und letzte Quellennennung je ' ~ _unit_singular) %}
+                {{ sidebar_range_slider(min_year, max_year, timeline_data, max_count, unit=_unit_label, unit_singular=_unit_singular) }}
             {% endcall %}
             {% endif %}
 
@@ -41,7 +43,7 @@
                     <ul>
                         <li><strong>Name</strong>, auch <strong>Vorname</strong> und <strong>Familienname</strong> einzeln</li>
                         <li><strong>ID</strong> der konsolidierten Person</li>
-                        <li><strong>Aktivit&auml;tszeitraum</strong>, Jahre der ersten und letzten Quellennennung (z.&nbsp;B. „1340")</li>
+                        <li><strong>Datum der Quellen</strong>, Jahre der ersten und letzten Quellennennung (z.&nbsp;B. „1340")</li>
                         <li><strong>Sub-Label</strong> der Erstnennung (z.&nbsp;B. „QGW Nr. 66")</li>
                     </ul>
                     {% else %}
@@ -50,7 +52,7 @@
                     <ul>
                         <li><strong>Name</strong> der Organisation</li>
                         <li><strong>ID</strong> der konsolidierten Organisation</li>
-                        <li><strong>Aktivit&auml;tszeitraum</strong>, Jahre der ersten und letzten Quellennennung (z.&nbsp;B. „1340")</li>
+                        <li><strong>Datum der Quellen</strong>, Jahre der ersten und letzten Quellennennung (z.&nbsp;B. „1340")</li>
                         <li><strong>Sub-Label</strong> der Erstnennung (z.&nbsp;B. „QGW Nr. 66")</li>
                     </ul>
                     {% endif %}

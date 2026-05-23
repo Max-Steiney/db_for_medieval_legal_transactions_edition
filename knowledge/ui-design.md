@@ -31,6 +31,12 @@ Eine zweischichtige Lesart durchzieht das UI: technische Identifikatoren (Datei-
 
 Siehe [[specification#Maximaler Informations-Output als Gestaltungsleitlinie]].
 
+## Begriffs- und Label-Konsistenz
+
+Ein Feld oder Begriff trägt im gesamten UI dieselbe Bezeichnung. Liegt dieselbe Datenlogik in mehreren Ansichten (z. B. min und max der Quellen-Jahre einer Entität auf Org-Profil, Personen-Profil und Sidebar-Filter), muss das Label überall identisch sein, einschließlich Tooltip-Titeln und Hilfe-Texten. Inkonsistenzen sind Bug, nicht Designfreiheit. Wer ein Label an einer Stelle ändert, prüft alle anderen Stellen mit.
+
+Begründung: Wechselnde Bezeichnungen für dieselbe Sache zwingen Forschende, jedes Mal neu zu prüfen, ob dasselbe gemeint ist. Das bricht die Lese-Gravitation und führt zu Fehl-Interpretationen.
+
 ## Navigation
 
 Die Hauptnavigation gliedert sich in fünf Bereiche.

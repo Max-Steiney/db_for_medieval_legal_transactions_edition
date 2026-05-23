@@ -1,5 +1,5 @@
 {% extends "base.html" %}
-{% from "macros.html" import funding_table, occ_table %}
+{% from "macros.html" import funding_table, occ_table, tip_glossary %}
 
 {% block title %}{{ profile.name }}{% endblock %}
 
@@ -91,7 +91,7 @@
             {% if profile.type_label %}<div class="ph-meta-pair"><dt>Typ</dt><dd>{{ profile.type_label }}</dd></div>{% endif %}
             {% if profile.observance %}<div class="ph-meta-pair"><dt>Observanz</dt><dd>{{ profile.observance }}</dd></div>{% endif %}
             {% if profile.active_min %}
-            <div class="ph-meta-pair"><dt>Belegt</dt><dd>{% if profile.active_max and profile.active_max != profile.active_min %}{{ profile.active_min }}&ndash;{{ profile.active_max }}{% else %}{{ profile.active_min }}{% endif %}</dd></div>
+            <div class="ph-meta-pair"><dt>{% if profile.source_count == 1 %}Datum der Quelle{% else %}Datum der Quellen{% endif %}{% call tip_glossary('datum-der-quellen', 'Datum der Quelle') %}<p>Erstes und letztes Jahr aus den ISO-Datierungen der Quellen, in denen diese Organisation belegt ist. Unscharfe Datierungen wie &bdquo;1. H. 13. Jh.&ldquo; werden von der Pipeline auf ein konkretes ISO-Jahr aufgeloest; daher kann die Spanne enger oder weiter wirken als die in der Quellen-Tabelle gezeigten Datums-Strings.</p>{% endcall %}</dt><dd>{% if profile.active_max and profile.active_max != profile.active_min %}{{ profile.active_min }} bis {{ profile.active_max }}{% else %}{{ profile.active_min }}{% endif %}</dd></div>
             {% endif %}
             {% if profile.place_name %}<div class="ph-meta-pair"><dt>Standort</dt><dd>{{ profile.place_name }}</dd></div>{% endif %}
             {% if profile.parent_org_id %}
