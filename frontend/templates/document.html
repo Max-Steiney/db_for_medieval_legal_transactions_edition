@@ -31,7 +31,7 @@
         ('entities', 'Entitäten', ['person', 'org', 'place']),
         ('functions', 'Funktionsrollen', ['fn-issuer', 'fn-recipient', 'fn-witness']),
         ('attributes', 'Attribute', ['attr', 'add']),
-        ('triggers', 'Dispositivformel', ['trigger']),
+        ('triggers', 'Dispositivformeln', ['trigger']),
     ] %}
     <div class="doc-toolbar">
         <div class="doc-toolbar-inner">
@@ -50,12 +50,6 @@
                 </nav>
 
                 <div class="doc-toolbar-meta">
-                    {% if meta.orig_date %}
-                    <span class="meta-pair">
-                        <span class="meta-label">Originaldatierung</span>
-                        <span class="meta-value">{{ meta.orig_date }}</span>
-                    </span>
-                    {% endif %}
                     {% if meta.citation %}
                     <span class="meta-pair">
                         <span class="meta-label">Quelle</span>
@@ -107,18 +101,19 @@
         <div class="doc-body">
             {{ body | safe }}
 
-            <!-- Data layer: provenance strip. Korpus + Idno stehen schon
-                 in der Toolbar-Breadcrumb; hier daher NUR die technische
-                 Provenance (Archiv, Counts, externe Links). -->
+            <!-- Aufbewahrungsort der physischen Quelle: Archiv (tei:repository)
+                 plus Monasterium-Link auf den Bestandseintrag. Annotations-
+                 Counts gehoeren nicht hierher, die wandern in den
+                 annotations-summary weiter unten. -->
             <footer class="doc-provenance">
-                <span class="prov-label">Datenherkunft</span>
+                <span class="prov-label">Aufbewahrungsort</span>
                 {% if meta.repository %}
                 <span class="prov-item">{{ meta.repository }}</span>
+                {% endif %}
+                {% if meta.repository and meta.source_url %}
                 <span class="prov-sep">·</span>
                 {% endif %}
-                <span class="prov-item">{{ meta.person_count }} Pers., {{ meta.org_count }} Org.</span>
                 {% if meta.source_url %}
-                <span class="prov-sep">·</span>
                 <span class="prov-item"><a href="{{ meta.source_url }}" target="_blank" rel="noopener noreferrer" class="prov-ext-link">Monasterium.net {{ external_icon() }}</a></span>
                 {% endif %}
             </footer>
@@ -131,20 +126,20 @@
                 <div class="facs-controls">
                     <div class="facs-controls-pages">
                         {% if meta.facsimile_urls|length > 1 %}
-                        <button type="button" class="facs-prev" aria-label="Vorherige Seite" disabled>&#8249;</button>
+                        <button type="button" class="facs-prev" aria-label="Vorherige Seite" data-hint="Vorherige Seite" disabled>&#8249;</button>
                         {% endif %}
                         <span class="facs-page-indicator">
                             Seite <span id="facs-current">1</span>/<span>{{ meta.facsimile_urls|length }}</span>
                         </span>
                         {% if meta.facsimile_urls|length > 1 %}
-                        <button type="button" class="facs-next" aria-label="Nächste Seite">&#8250;</button>
+                        <button type="button" class="facs-next" aria-label="Nächste Seite" data-hint="Nächste Seite">&#8250;</button>
                         {% endif %}
                     </div>
                     <div class="facs-controls-zoom">
-                        <button type="button" class="facs-zoom-in" aria-label="Vergrößern">+</button>
-                        <button type="button" class="facs-zoom-out" aria-label="Verkleinern">&minus;</button>
-                        <button type="button" class="facs-zoom-reset" aria-label="Ansicht zurücksetzen">1:1</button>
-                        <button type="button" class="facs-rotate" aria-label="Um 90 Grad drehen" title="Um 90° drehen">&#10227;</button>
+                        <button type="button" class="facs-zoom-in" aria-label="Vergrößern" data-hint="Vergrößern">+</button>
+                        <button type="button" class="facs-zoom-out" aria-label="Verkleinern" data-hint="Verkleinern">&minus;</button>
+                        <button type="button" class="facs-zoom-reset" aria-label="Ansicht zurücksetzen" data-hint="Ansicht zurücksetzen">1:1</button>
+                        <button type="button" class="facs-rotate" aria-label="Um 90 Grad drehen" data-hint="Um 90° drehen">&#10227;</button>
                     </div>
                 </div>
                 <div class="facs-image-wrap" id="facs-image-wrap"

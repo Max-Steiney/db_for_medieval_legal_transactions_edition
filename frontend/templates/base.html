@@ -3,7 +3,15 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <meta http-equiv="Content-Security-Policy" content="default-src 'self'; script-src 'self'; style-src 'self'; font-src 'self'; img-src 'self' data: https://images.monasterium.net https://www.monasterium.net; connect-src 'self'; base-uri 'self'; form-action 'self'; upgrade-insecure-requests">
+    {# CSP: script-src bleibt strikt 'self' (kein unsafe-inline) — das ist
+       die sicherheitskritische Schraube. style-src erlaubt 'unsafe-inline',
+       weil der vendored OpenSeadragon-Viewer dynamisch Inline-Styles fuer
+       Positionierung, Zoom und Rotation setzt; das eigene Frontend selbst
+       nutzt den CSP-konformen IDL-Property-Pfad via applyDataStyles
+       (viz-core.js). Praktisches Risiko fuer Nutzerinnen ist minimal:
+       die Seite ist statisch, keine Logins, kein User-Input, kein
+       Tracking. #}
+    <meta http-equiv="Content-Security-Policy" content="default-src 'self'; script-src 'self'; style-src 'self' 'unsafe-inline'; font-src 'self'; img-src 'self' data: https://images.monasterium.net https://www.monasterium.net; connect-src 'self'; base-uri 'self'; form-action 'self'; upgrade-insecure-requests">
     <meta name="referrer" content="strict-origin-when-cross-origin">
     <meta http-equiv="Permissions-Policy" content="camera=(), microphone=(), geolocation=(), interest-cohort=()">
     <title>{% block title %}Stadt und Gemeinschaft Wien{% endblock %}, Datenbank</title>

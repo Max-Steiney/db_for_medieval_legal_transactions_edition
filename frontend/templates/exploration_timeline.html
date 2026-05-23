@@ -38,22 +38,22 @@
                      role="group" aria-label="Stapel-Achse">
                     <button type="button" class="form-filter-chip is-active"
                             data-stack="collection" aria-pressed="true"
-                            title="Stapel nach Quellenkorpus (QGW, Stadtb&uuml;cher).">
+                            data-hint="Stapel nach Quellenkorpus (QGW, Stadtb&uuml;cher).">
                         <span class="form-filter-chip-label">Quellenkorpus</span>
                     </button>
                     <button type="button" class="form-filter-chip"
                             data-stack="form" aria-pressed="false"
-                            title="Stapel nach Erschlie&szlig;ungsform: Regest, Siegel, Eintrag, Nota.">
+                            data-hint="Stapel nach Erschlie&szlig;ungsform: Regest, Siegel, Eintrag, Nota.">
                         <span class="form-filter-chip-label">Erschlie&szlig;ungsform</span>
                     </button>
                     <button type="button" class="form-filter-chip"
                             data-stack="sex" aria-pressed="false"
-                            title="Stapel nach Geschlecht der beteiligten Personen (nur m&auml;nnlich / nur weiblich / gemischt / ohne Personen).">
+                            data-hint="Stapel nach Geschlecht der beteiligten Personen (nur m&auml;nnlich / nur weiblich / gemischt / ohne Personen).">
                         <span class="form-filter-chip-label">Geschlecht</span>
                     </button>
                     <button type="button" class="form-filter-chip"
                             data-stack="tx" aria-pressed="false"
-                            title="Stapel nach Transaktionstyp (Top 8 normalisierte Verbkategorien; aus events_in_sources.csv).">
+                            data-hint="Stapel nach Transaktionstyp (Top 8 normalisierte Verbkategorien; aus events_in_sources.csv).">
                         <span class="form-filter-chip-label">Transaktionstyp</span>
                     </button>
                 </div>
@@ -100,23 +100,23 @@
                              role="group" aria-label="Sortierung">
                             <button type="button" class="form-filter-chip is-active"
                                     data-sort="date-asc" aria-pressed="true"
-                                    title="Sortiert nach Datum aufsteigend (alt zuerst).">
+                                    data-hint="Sortiert nach Datum aufsteigend (alt zuerst).">
                                 <span class="form-filter-chip-label">Datum &uarr;</span>
                             </button>
                             <button type="button" class="form-filter-chip"
                                     data-sort="date-desc" aria-pressed="false"
-                                    title="Sortiert nach Datum absteigend (neu zuerst).">
+                                    data-hint="Sortiert nach Datum absteigend (neu zuerst).">
                                 <span class="form-filter-chip-label">Datum &darr;</span>
                             </button>
                             <button type="button" class="form-filter-chip"
                                     data-sort="coll" aria-pressed="false"
-                                    title="Gruppiert nach Quellenkorpus, dann Datum aufsteigend.">
+                                    data-hint="Gruppiert nach Quellenkorpus, dann Datum aufsteigend.">
                                 <span class="form-filter-chip-label">Korpus</span>
                             </button>
                         </div>
                         <a class="explore-btn explore-stream-drill-crossnav"
                            id="drill-crossnav" href="#"
-                           title="Filter (Zeitraum) wird in die Quellen-Listenseite übernommen.">
+                           data-hint="Filter (Zeitraum) wird in die Quellen-Listenseite übernommen.">
                            → in Quellen-Liste öffnen
                         </a>
                         <button type="button" class="explore-stream-drill-clear"

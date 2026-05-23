@@ -252,7 +252,7 @@
                 return `<span class="explore-stream-seg${segDim}"
                               data-h="${hpx}"
                               data-bg="${c.color}"
-                              title="${c.label}: ${V.fmt(v)}"></span>`;
+                              data-hint="${c.label}: ${V.fmt(v)}"></span>`;
             }).join('');
             // X-tick: full year only at century starts and every 5th decade.
             // Other ticks show the last two digits to keep the axis compact
@@ -264,7 +264,7 @@
                 class="explore-stream-col${dimmed ? ' is-dimmed' : ''}"
                 data-decade="${d}"
                 aria-label="${d}er: ${V.fmt(totals[d])}"
-                title="${d}er: ${V.fmt(totals[d])}">
+                data-hint="${d}er: ${V.fmt(totals[d])}">
                 <span class="explore-stream-stack">${segs}</span>
                 <span class="${tickCls}">${tickLabel}</span>
             </button>`;
@@ -302,7 +302,7 @@
                 : 'Klick: nur ' + c.label + ' im Brush-Drill anzeigen';
             return `<li class="${cls}" data-cat="${c.key}"
                 role="button" tabindex="0" aria-pressed="${ariaPressed}"
-                title="${title}">
+                data-hint="${title}">
                 <span class="legend-swatch" data-bg="${c.color}"></span>
                 <span class="legend-label">${c.label}</span>
                 <span class="legend-count">${V.fmt(sum)}</span>

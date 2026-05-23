@@ -168,12 +168,13 @@ class TestZeitstromPage:
         assert 'id="stream-yaxis"' in html
 
     def test_four_stack_axes_with_titles(self, html):
-        """Alle vier Stapel-Achsen-Chips inkl. erklaerendem title-Attribut."""
+        """Alle vier Stapel-Achsen-Chips inkl. erklaerendem hover-hint."""
         for stack in ('collection', 'form', 'sex', 'tx'):
             assert f'data-stack="{stack}"' in html, f'Stack chip {stack} fehlt'
-        # Tooltips wurden im Rahmen der UX-Politur ergaenzt.
-        assert 'title="Stapel nach Quellenkorpus' in html
-        assert 'title="Stapel nach Transaktionstyp' in html
+        # Hover-Hints (data-hint) statt nativer title-Tooltips, damit alle
+        # Tooltips im Projekt einheitlich aus hint.js gestylt werden.
+        assert 'data-hint="Stapel nach Quellenkorpus' in html
+        assert 'data-hint="Stapel nach Transaktionstyp' in html
 
     def test_brush_hint_present(self, html):
         """Tipp-Zeile direkt unter der Chart-Ueberschrift erklaert Brush

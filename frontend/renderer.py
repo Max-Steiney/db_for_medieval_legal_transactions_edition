@@ -40,6 +40,30 @@ _HINT_TYPE = {
     "place": "Ort",
 }
 
+# triggerstring/@n -> (type label, body) for the hover-hint. Mirrors the
+# unified hint.js contract used by entity references, so Dispositivformeln
+# and Funktionsrollen-Trigger pop out the same way in the body text.
+_TRIGGER_HINT = {
+    "disp": ("Dispositivformel", "Verb, das das Rechtsgeschäft anzeigt"),
+    "fn":   ("Funktionsrollen-Trigger", "Verb, das eine Funktionsrolle markiert"),
+}
+
+# roleName/@type -> (type label, body) for the hover-hint. Without these,
+# the user has no way to tell whether italic text like "statrichter" is a
+# Beruf, ein Titel oder ein Verwandtschaftsbezug. Werte stammen aus den
+# Edition-Guidelines, Abschnitt 2 Ebene 4.
+_ROLENAME_HINT = {
+    "kin":    ("Verwandtschaft",   "Verwandtschaftsbeziehung"),
+    "title":  ("Titel",            "Titel oder Anrede"),
+    "prof":   ("Beruf",            "Berufsbezeichnung"),
+    "occ":    ("Amt",              "Amts- oder Berufsbezeichnung mit Organisations- oder Ortsbezug"),
+    "dead":   ("Verstorben",       "In der Quelle als verstorben genannt"),
+    "rep":    ("Stellvertretung",  "Vertretung einer anderen Person"),
+    "friend": ("Freundschaft",     "Freundschafts- oder Bündnisbeziehung"),
+    "topo":   ("Topographie",      "Topographische Lagebezeichnung"),
+    "owner":  ("Besitz",           "Besitzverhältnis zu einer Person, Organisation oder einem Ort"),
+}
+
 
 def render_document(body_element, registers, root_path="."):
     """Render a TEI <body> element to an HTML string.
@@ -225,6 +249,16 @@ def _render_rs(element, registers):
         # Hover-hint type label, shown as small caps above the tooltip body.
         hint_type = _HINT_TYPE.get(rs_type, "")
         # Person and org annotations link to register/<dir>/<id>.html.
+        # Geschlecht (nur Person) als data-sex auf den Anker setzen,
+        # damit die Annotations-Tabelle es ohne zusaetzlichen JSON-Fetch
+        # in einer Spalte zeigen kann. Leere Strings werden nicht
+        # emittiert -- "unbekannt" laesst die Tabelle als Dash rendern.
+        sex_attr = ""
+        if rs_type == "person" and ref in register:
+            sex_val = (register[ref] or {}).get("sex", "")
+            if sex_val:
+                sex_attr = f' data-sex="{escape(sex_val)}"'
+
         # Place annotations stay as span when the place register has no
         # detail page for them.
         if ref and ref in register and rs_type in _ENTITY_PAGE:
@@ -232,13 +266,13 @@ def _render_rs(element, registers):
             page = _ENTITY_PAGE[rs_type]
             href = f"{root_path}/{page}/{ref}.html"
             return (
-                f'<a class="anno-{rs_type}" data-ref="{escape(ref)}" '
+                f'<a class="anno-{rs_type}" data-ref="{escape(ref)}"{sex_attr} '
                 f'data-hint="{escape(tooltip)}" data-hint-type="{hint_type}" '
                 f'href="{escape(href)}">'
                 f"{children}</a>"
             )
         return (
-            f'<span class="anno-{rs_type}" data-ref="{escape(ref)}" '
+            f'<span class="anno-{rs_type}" data-ref="{escape(ref)}"{sex_attr} '
             f'data-hint="{escape(tooltip)}" data-hint-type="{hint_type}">'
             f"{children}</span>"
         )
@@ -265,11 +299,11 @@ def _render_rolename(element, registers):
 
     css = f"anno-attr anno-attr-{rn_type}" if rn_type else "anno-attr"
     attrs = f' data-corresp="{escape(corresp)}"' if corresp else ""
-    # Native tooltip on the dagger glyph (CSS ::after) for type="dead",
-    # so readers see "als verstorben genannt" without consulting the
-    # annotation guidelines.
-    if rn_type == "dead":
-        attrs += ' title="Als verstorben genannt"'
+
+    hint = _ROLENAME_HINT.get(rn_type)
+    if hint:
+        type_label, body = hint
+        attrs += f' data-hint="{escape(body)}" data-hint-type="{escape(type_label)}"'
 
     return f'<span class="{css}"{attrs}>{_render_children(element, registers)}</span>'
 
@@ -278,6 +312,14 @@ def _render_triggerstring(element, registers):
     """Render <triggerstring n="...">."""
     n = element.get("n", "")
     css = f"anno-trigger anno-trigger-{n}" if n else "anno-trigger"
+    hint = _TRIGGER_HINT.get(n)
+    if hint:
+        type_label, body = hint
+        return (
+            f'<span class="{css}" '
+            f'data-hint="{escape(body)}" data-hint-type="{escape(type_label)}">'
+            f'{_render_children(element, registers)}</span>'
+        )
     return f'<span class="{css}">{_render_children(element, registers)}</span>'
 
 
@@ -286,6 +328,19 @@ def _make_span_wrapper(css_class):
     def handler(element, registers):
         return f'<span class="{css_class}">{_render_children(element, registers)}</span>'
     return handler
+
+
+def _render_add(element, registers):
+    """Render <add>: editorial addition, marked in the body via square
+    brackets (CSS ::before/::after). Hover-hint erklaert die eckigen
+    Klammern, damit die Lesehilfe ohne Konsultation der Richtlinien
+    auskommt."""
+    return (
+        f'<span class="tei-add" '
+        f'data-hint="Vom Editor sinngemäß ergänzt" '
+        f'data-hint-type="Editorische Ergänzung">'
+        f'{_render_children(element, registers)}</span>'
+    )
 
 
 def _render_lb(element, registers):
@@ -331,7 +386,7 @@ ELEMENT_HANDLERS = {
     "roleName": _render_rolename,
     "triggerstring": _render_triggerstring,
     # Simple span wrappers
-    "add": _make_span_wrapper("tei-add"),
+    "add": _render_add,
     "unclear": _make_span_wrapper("tei-unclear"),
     "note": _make_span_wrapper("tei-note"),
     "bibl": _make_span_wrapper("tei-bibl"),

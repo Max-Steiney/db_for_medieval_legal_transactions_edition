@@ -429,7 +429,7 @@
 <div class="collection-chips collection-chips--stack" id="{{ group_id }}">
     {% for c in items %}
     <button type="button" class="chip" {{ attr_name }}="{{ c.key }}"
-            title="{{ c.label }}: {{ c.count }} Eintraege im Korpus">
+            data-hint="{{ c.label }}: {{ c.count }} Eintraege im Korpus">
         <span class="chip-label">{{ c.label }}</span>
         <span class="chip-count" data-corpus-total="{{ c.count }}">{{ c.count }}</span>
     </button>

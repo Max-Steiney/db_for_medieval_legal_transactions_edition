@@ -43,7 +43,7 @@
         const fPct = tot ? (f / tot * 100) : 0;
         return `
             <span class="legend-sex-bar"
-                  title="männlich ${V.fmt(m)} · weiblich ${V.fmt(f)}">
+                  data-hint="männlich ${V.fmt(m)} · weiblich ${V.fmt(f)}">
                 <span class="legend-sex-bar-m" data-w="${mPct.toFixed(2)}"></span>
                 <span class="legend-sex-bar-f" data-w="${fPct.toFixed(2)}"></span>
             </span>
@@ -462,7 +462,7 @@
             const normKey = l.norm || (l.label || '').toLowerCase();
             return `<tr data-label="${encodeURIComponent(l.label)}"
                 data-norm="${encodeURIComponent(normKey)}"
-                title="${variants ? 'Varianten: ' + variants : ''}">
+                ${variants ? `data-hint="Varianten: ${variants}"` : ''}>
                 <td class="col-label">${l.label}</td>
                 <td>${V.REL_LABELS[l.type] || l.type}</td>
                 <td class="num col-persons">

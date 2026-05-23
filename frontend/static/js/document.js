@@ -92,7 +92,8 @@
                     attributes: attrs.join(', '),
                     event: eventSpan ? (eventSpan.getAttribute('data-ref') || '') : '',
                     ref: entity.getAttribute('data-ref') || '',
-                    section: _sectionTypeFor(entity)
+                    section: _sectionTypeFor(entity),
+                    sex: entity.getAttribute('data-sex') || ''
                 });
                 seen.add(entity);
             }
@@ -116,19 +117,49 @@
                 attributes: elAttrs.join(', '),
                 event: elEvent ? (elEvent.getAttribute('data-ref') || '') : '',
                 ref: el.getAttribute('data-ref') || '',
-                section: _sectionTypeFor(el)
+                section: _sectionTypeFor(el),
+                sex: el.getAttribute('data-sex') || ''
             });
         }
 
         // ---- 2. Events: one row per event span (deduped by ref).
+        // Nested-Events (Events innerhalb von Events; "erwaehnte
+        // Ereignisse" aus der Narrative) werden in der Tabelle nicht
+        // als eigene Gruppe gefuehrt; ihre Entitaeten wandern in die
+        // Gruppe ihres Eltern-Events. Der Gruppen-Header zeigt
+        // ausschliesslich, was in der Quelle steht: das erste
+        // Disp-Verb des Events plus die rohe ev__-ID als Anker.
         let events = [];
         let eventSeen = new Set();
         let eventSpans = body.querySelectorAll('.anno-event');
+
+        // Map jede ref auf das outermost-anno-event in der Hierarchie.
+        // Wird beim Entitaeten-Gruppieren genutzt, um nested-Events in
+        // ihre Eltern-Gruppe zu kollabieren.
+        let topLevelByRef = {};
+        for (let e = 0; e < eventSpans.length; e++) {
+            let span = eventSpans[e];
+            let ref = span.getAttribute('data-ref') || '';
+            if (!ref || topLevelByRef[ref]) continue;
+            let topRef = ref;
+            let walker = span.parentElement;
+            while (walker && walker !== body) {
+                if (walker.classList && walker.classList.contains('anno-event')) {
+                    let pref = walker.getAttribute('data-ref') || '';
+                    if (pref) topRef = pref;
+                }
+                walker = walker.parentElement;
+            }
+            topLevelByRef[ref] = topRef;
+        }
+
         for (let e = 0; e < eventSpans.length; e++) {
             let ev = eventSpans[e];
             let ref = ev.getAttribute('data-ref') || '';
             if (eventSeen.has(ref)) continue;
             eventSeen.add(ref);
+            let isNested = topLevelByRef[ref] !== ref;
+            if (isNested) continue; // nested events erscheinen nicht als eigene Gruppe
             let trigger = ev.querySelector('.anno-trigger-disp, .anno-trigger');
             events.push({
                 ref: ref,
@@ -166,9 +197,20 @@
         }
 
         // ---- Summary in the header pill.
+        // Entitaeten werden in Personen/Organisationen/Orte aufgeschluesselt,
+        // damit der Quellen-Footer den Hinweis "X Pers., Y Org." nicht
+        // mehr tragen muss (Kunden-Feedback 2026-05).
         let summaryParts = [];
         if (entities.length) {
-            summaryParts.push(entities.length + ' Entität' + (entities.length !== 1 ? 'en' : ''));
+            let personCount = 0, orgCount = 0, placeCount = 0;
+            for (let i = 0; i < entities.length; i++) {
+                if (entities[i].type === 'Person') personCount++;
+                else if (entities[i].type === 'Organisation') orgCount++;
+                else if (entities[i].type === 'Ort') placeCount++;
+            }
+            if (personCount) summaryParts.push(personCount + ' Person' + (personCount !== 1 ? 'en' : ''));
+            if (orgCount) summaryParts.push(orgCount + ' Organisation' + (orgCount !== 1 ? 'en' : ''));
+            if (placeCount) summaryParts.push(placeCount + ' Ort' + (placeCount !== 1 ? 'e' : ''));
         }
         if (events.length) {
             summaryParts.push(events.length + ' Ereignis' + (events.length !== 1 ? 'se' : ''));
@@ -198,6 +240,7 @@
             if (f.attributes) parts.push('Attribute: ' + f.attributes);
             if (f.event) parts.push('Event: ' + f.event);
             if (f.section) parts.push('Abschnitt: ' + f.section);
+            if (f.ref) parts.push('ID: ' + f.ref);
             return parts.join(' · ');
         }
 
@@ -254,25 +297,46 @@
         }
 
         if (entities.length) {
-            // Profile linking: person refs (pe__) get a link to
-            // register/persons/<id>.html. Orgs/places have no profile
-            // pages (yet), so plain-text name only there. The xml:id is
-            // rendered as small print under the name (instead of its
-            // own column) to reduce horizontal noise in collective-
-            // issuer sources like Nr. 24 (14 identical role columns).
+            // Entitaeten nach Event gruppieren, damit auf einen Blick
+            // erkennbar ist, welche Personen/Orgs/Orte zum selben
+            // Rechtsgeschaeft gehoeren. Sortierung wirkt gruppen-aware:
+            // Klick auf Spaltenkopf sortiert die Zeilen jeder Gruppe,
+            // die Gruppen-Reihenfolge bleibt fix (Dokument-Reihenfolge
+            // der Events). Diese Logik lebt in _attachAnnotationSorting.
             let rootPath = (document.body && document.body.dataset.rootPath) || '..';
-            html += '<section class="annotation-group">'
-                + '<h3 class="annotation-group-title">Personen, Organisationen, Orte</h3>'
-                + '<table class="annotations-table sortable-table"><thead><tr>'
-                + '<th scope="col" data-sort="name">Entität</th>'
-                + '<th scope="col" data-sort="type">Typ</th>'
-                + '<th scope="col" data-sort="role">Rolle</th>'
-                + '<th scope="col" data-sort="attributes">Attribute</th>'
-                + '<th scope="col" data-sort="section">Abschnitt</th>'
-                + '<th scope="col" data-sort="event">Event</th>'
-                + '</tr></thead><tbody>';
+
+            let entityGroups = {};
+            let entityOrder = [];
             for (let p = 0; p < entities.length; p++) {
-                let f = entities[p];
+                let rawKey = entities[p].event || '';
+                // Entitaeten in nested events landen in der Gruppe ihres
+                // outermost-Eltern-Events. Damit verschwindet die
+                // Sub-Gruppierung "Erwaehntes Ereignis N" aus der UI.
+                let key = rawKey && topLevelByRef[rawKey] ? topLevelByRef[rawKey] : rawKey;
+                if (!entityGroups[key]) { entityGroups[key] = []; entityOrder.push(key); }
+                entityGroups[key].push(entities[p]);
+            }
+            // Event-Meta nach Ref fuer schnellen Lookup beim Rendern.
+            let eventByRef = {};
+            for (let i = 0; i < events.length; i++) eventByRef[events[i].ref] = events[i];
+
+            // Gruppen-Reihenfolge: erst Events in der Reihenfolge ihres
+            // Auftretens im Body, dann nicht-gemappte Gruppen (selten),
+            // zuletzt ohne-Event-Gruppe.
+            let renderedGroups = {};
+            let orderedKeys = [];
+            for (let e2 = 0; e2 < events.length; e2++) {
+                let r = events[e2].ref;
+                if (entityGroups[r] && !renderedGroups[r]) {
+                    orderedKeys.push(r); renderedGroups[r] = true;
+                }
+            }
+            for (let k = 0; k < entityOrder.length; k++) {
+                let key = entityOrder[k];
+                if (!renderedGroups[key]) { orderedKeys.push(key); renderedGroups[key] = true; }
+            }
+
+            function entityRow(f) {
                 let nameMain;
                 if (f.type === 'Person' && f.ref && f.ref.indexOf('pe__') === 0) {
                     nameMain = '<a class="anno-table-link" href="'
@@ -285,35 +349,62 @@
                 } else {
                     nameMain = esc(f.name);
                 }
-                let nameCell = nameMain
-                    + (f.ref ? '<small class="anno-table-id">' + esc(f.ref) + '</small>' : '');
-                html += '<tr' + tipAttrs(f.type + '-Annotation', entityTipBody(f)) + '>'
-                    + '<td' + sortAttr(f.name) + '>' + nameCell + '</td>'
+                // ID lebt nur noch im Row-Tooltip (entityTipBody),
+                // damit jede Zeile einzeilig bleibt und mehrere Entitaeten
+                // untereinander nicht zur Tapete werden. Abschnitt
+                // (Regest/Siegelbeschreibung/...) ebenfalls nur im
+                // Tooltip -- meist Regest, geringer analytischer Wert
+                // als eigene Spalte.
+                // Geschlecht-Glyph nur bei Person, sonst leere Zelle.
+                let sexCell = '';
+                let sexSort = '';
+                if (f.type === 'Person') {
+                    if (f.sex === 'm') { sexCell = '<span class="anno-sex">m</span>'; sexSort = 'm'; }
+                    else if (f.sex === 'f') { sexCell = '<span class="anno-sex">w</span>'; sexSort = 'w'; }
+                    else { sexCell = '<span class="anno-sex anno-sex--unknown">' + DASH + '</span>'; sexSort = 'z'; }
+                }
+                return '<tr' + tipAttrs(f.type + '-Annotation', entityTipBody(f)) + '>'
+                    + '<td' + sortAttr(f.name) + '>' + nameMain + '</td>'
                     + '<td' + sortAttr(f.type) + '>' + typeBadge(f.type) + '</td>'
                     + '<td' + sortAttr(f.role) + '>' + esc(f.role) + '</td>'
                     + '<td' + sortAttr(f.attributes) + '>' + esc(f.attributes || DASH) + '</td>'
-                    + '<td' + sortAttr(f.section) + '>' + esc(f.section || DASH) + '</td>'
-                    + '<td' + sortAttr(f.event) + '><span class="cell-id">' + esc(f.event || DASH) + '</span></td>'
+                    + '<td' + sortAttr(sexSort) + '>' + sexCell + '</td>'
                     + '</tr>';
             }
-            html += '</tbody></table></section>';
-        }
 
-        if (events.length) {
             html += '<section class="annotation-group">'
-                + '<h3 class="annotation-group-title">Ereignisse</h3>'
+                + '<h3 class="annotation-group-title">Entitäten</h3>'
                 + '<table class="annotations-table sortable-table"><thead><tr>'
-                + '<th scope="col" data-sort="section">Abschnitt</th>'
-                + '<th scope="col" data-sort="trigger">Dispositiv-Verb</th>'
-                + '<th scope="col" data-sort="ref">ID</th>'
+                + '<th scope="col" data-sort="name" data-hint="Wortlaut, mit dem die Person, Organisation oder der Ort in der Quelle erscheint.">Genannt als</th>'
+                + '<th scope="col" data-sort="type" data-hint="Annotations-Kategorie: Person, Organisation oder Ort.">Typ</th>'
+                + '<th scope="col" data-sort="role" data-hint="Funktion im Rechtsgeschäft: Aussteller*in, Empfänger*in, Zeug*in oder Sonstige.">Funktionsrolle</th>'
+                + '<th scope="col" data-sort="attributes" data-hint="Zusatzangaben zur Entität: Beruf, Titel, Verwandtschaftsbezug, als verstorben genannt etc.">Attribute</th>'
+                + '<th scope="col" data-sort="sex" data-hint="Geschlecht laut Personenregister (m oder w). Nur bei Personen belegt.">Geschlecht</th>'
                 + '</tr></thead><tbody>';
-            for (let e2 = 0; e2 < events.length; e2++) {
-                let ev = events[e2];
-                html += '<tr' + tipAttrs('Ereignis-Annotation', eventTipBody(ev)) + '>'
-                    + '<td' + sortAttr(ev.section) + '>' + esc(ev.section || DASH) + '</td>'
-                    + '<td' + sortAttr(ev.trigger) + '>' + esc(ev.trigger || DASH) + '</td>'
-                    + '<td' + sortAttr(ev.ref) + '><span class="cell-id">' + esc(ev.ref) + '</span></td>'
-                    + '</tr>';
+            for (let g = 0; g < orderedKeys.length; g++) {
+                let key = orderedKeys[g];
+                let label;
+                if (!key) {
+                    label = '<span class="annotations-group-label">Ohne Event</span>';
+                } else {
+                    let ev = eventByRef[key];
+                    // Quellentext (Disp-Verb) als kursiv und in
+                    // Trigger-Farbe markieren -- wiedererkennbar mit
+                    // den Disp-Verben im Body. Kein UI-Vorspann mehr.
+                    let trig = ev && ev.trigger ? ev.trigger : '';
+                    if (trig) {
+                        label = '<span class="annotations-group-source">' + esc(trig) + '</span>'
+                              + '<span class="annotations-group-id">' + esc(key) + '</span>';
+                    } else {
+                        label = '<span class="annotations-group-id">' + esc(key) + '</span>';
+                    }
+                }
+                html += '<tr class="annotations-group-row"><th colspan="5" scope="rowgroup">'
+                    + label + '</th></tr>';
+                let rows = entityGroups[key];
+                for (let r2 = 0; r2 < rows.length; r2++) {
+                    html += entityRow(rows[r2]);
+                }
             }
             html += '</tbody></table></section>';
         }
@@ -397,20 +488,43 @@
         }
 
         function applySort() {
-            let rows;
+            let frag = document.createDocumentFragment();
             if (state.key === null) {
-                rows = originalOrder.slice();
-            } else {
-                let colIndex = indexByKey[state.key];
-                if (colIndex === undefined || colIndex < 0) return;
-                rows = Array.prototype.slice.call(tbody.querySelectorAll('tr'));
-                rows.sort(function (a, b) {
+                originalOrder.forEach(function (tr) { frag.appendChild(tr); });
+                tbody.appendChild(frag);
+                return;
+            }
+            let colIndex = indexByKey[state.key];
+            if (colIndex === undefined || colIndex < 0) return;
+
+            // Gruppen-aware Sortierung: tbody wird an den
+            // .annotations-group-row-Grenzen segmentiert; jede Gruppe
+            // wird in sich sortiert, die Gruppen-Reihenfolge bleibt
+            // fix. Tabellen ohne Gruppen-Header fallen auf eine
+            // implizite Einzel-Gruppe zurueck (= globale Sortierung).
+            let allRows = Array.prototype.slice.call(tbody.children);
+            let segments = [];
+            let current = { header: null, dataRows: [] };
+            segments.push(current);
+            for (let i = 0; i < allRows.length; i++) {
+                let row = allRows[i];
+                if (row.classList && row.classList.contains('annotations-group-row')) {
+                    current = { header: row, dataRows: [] };
+                    segments.push(current);
+                } else {
+                    current.dataRows.push(row);
+                }
+            }
+            segments.forEach(function (seg) {
+                seg.dataRows.sort(function (a, b) {
                     return EdCore.compareValues(
                         cellValue(a, colIndex), cellValue(b, colIndex), state.dir);
                 });
-            }
-            let frag = document.createDocumentFragment();
-            rows.forEach(function (tr) { frag.appendChild(tr); });
+            });
+            segments.forEach(function (seg) {
+                if (seg.header) frag.appendChild(seg.header);
+                seg.dataRows.forEach(function (tr) { frag.appendChild(tr); });
+            });
             tbody.appendChild(frag);
         }
 
@@ -520,12 +634,12 @@
         popover.innerHTML = '<div class="cite-section">'
             + '<div class="cite-label">Chicago</div>'
             + '<div class="cite-text" id="cite-chicago">' + esc(chicago) + '</div>'
-            + '<button class="cite-copy-btn" data-target="cite-chicago" title="Kopieren">&#x2398;</button>'
+            + '<button class="cite-copy-btn" data-target="cite-chicago" data-hint="Kopieren">&#x2398;</button>'
             + '</div>'
             + '<div class="cite-section">'
             + '<div class="cite-label">BibTeX</div>'
             + '<pre class="cite-text cite-bibtex" id="cite-bibtex">' + esc(bibtex) + '</pre>'
-            + '<button class="cite-copy-btn" data-target="cite-bibtex" title="Kopieren">&#x2398;</button>'
+            + '<button class="cite-copy-btn" data-target="cite-bibtex" data-hint="Kopieren">&#x2398;</button>'
             + '</div>';
 
         // Wire up copy buttons
