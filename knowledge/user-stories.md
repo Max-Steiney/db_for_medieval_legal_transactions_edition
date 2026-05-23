@@ -90,14 +90,15 @@ Sechs große Forschungsszenarien aus Historiker*innen-Perspektive. Pro Story Rol
 
 # 2 Konkrete Forschungsfragen aus der editorischen Praxis
 
-Vier Fragen, die das Fachteam an die Datenbasis stellt. Sie sind die inhaltliche Konkretisierung der Anwendungs-Story über Forschungsfragen ([[specification#Forschungsfragen als Implementierungs-Achse]]): prototypisch für eine ganze Klasse ähnlicher Fragen und prägen die Galerie unter `/analysis/index.html` sowie die Sektionen der Organisationsprofile. Datenbasis und Komponente pro Frage benannt, damit nachvollziehbar bleibt, woraus die Antwort entsteht.
+Vier Fragen, die das Fachteam an die Datenbasis stellt. Sie sind die inhaltliche Konkretisierung der Anwendungs-Story über Forschungsfragen ([[specification#Forschungsfragen als Implementierungs-Achse]]): prototypisch für eine ganze Klasse ähnlicher Fragen und prägen das Abfrage-Interface unter `/analysis/index.html` sowie die Sektionen der Organisationsprofile. Pro Frage werden Datenbasis, heutige Einlösung und strukturell offene Punkte benannt, damit nachvollziehbar bleibt, woraus die Antwort entsteht und wo sie endet. Die strukturell offenen Punkte werden im Abschnitt „Datenpfad-Vorbehalte" von [[specification#Abfragen-Sub-Seite als Konstellations-Abfrage]] gebündelt erklärt.
 
 ## Endogamie in einer Berufsgruppe
 
 *Als Forscherin, die Heiratsstrategien innerhalb von Handwerkergruppen untersuche, will ich alle Personen erkennen, die einer bestimmten Uhlirz-Berufskategorie zugeordnet sind und untereinander durch Heirat verbunden sind, damit ich Endogamie-Muster im spätmittelalterlichen Wiener Gewerbe rekonstruieren kann.*
 
 * **Datenbasis** Uhlirz-Spalte `Gewerbe_nach_Uhlirz_GstW` in `roleName_norm_matching.csv`; Verwandtschaft in `kin_relations_in_sources.csv` mit freier deutscher Bezeichnung („Gemahlin", „Hausfrau", „Gatte"); Match-Liste für Heirat
-* **Komponente** Galerie-Frage in [[analyse]]
+* **Heute eingelöst durch** Uhlirz-Filter im Abfrage-Interface (`p1=u=…`) als Vorfilter auf Events mit Personen der Klasse; Verwandtschaft als Spalte auf den Personenprofilen
+* **Strukturell offen** kin-Annotation ist nicht im Konstellations-Aggregat; kein Bedingungs-Slot „verwandt mit Person Y"; kein kin-Typ-Filter „Ehe"; paar-zentrierte Ergebnisform fehlt (Abfrage-Interface liefert Events, nicht Tupel)
 * **Beispiel** Uhlirz IV (Erzeugung und Vertrieb von Leuchtstoffen, Fetten, Ölen) plus Heirats-Beziehung
 
 ## Berufsgruppe und Hausbesitz
@@ -105,15 +106,18 @@ Vier Fragen, die das Fachteam an die Datenbasis stellt. Sie sind die inhaltliche
 *Als Forscherin, die die topographische Verteilung eines Gewerbes untersuche, will ich alle Personen einer Berufskategorie auflisten und ihre Hausbesitz-Orte als Tabelle mit Datum und Quelle einsehen, damit ich räumliche Verdichtungen erkenne.*
 
 * **Datenbasis** Uhlirz-Spalte; `owner_relations_in_sources.csv`; `placeList.xml` (Koordinaten teilweise vorhanden)
-* **Komponente** Galerie-Frage in [[analyse]] als Tabelle
-* **Beispiel** Uhlirz VI (Lederindustrie) plus Hausbesitz; Kartendarstellung deferred, Tabelle zeigt Lat/Lon-Spalte
+* **Heute eingelöst durch** Uhlirz-Filter im Abfrage-Interface (`p1=u=VI Lederindustrie`) liefert die Personenmenge über deren Events
+* **Strukturell offen** Ortsstammdaten nicht konsolidiert, daher kein Sprungziel für `rs type="place"` und keine Hausbesitz-Tabelle; owner-Relation Person→Ort ist nicht im Aggregat; Karte deferred
+* **Beispiel** Uhlirz VI (Lederindustrie) plus Hausbesitz
 
 ## Tätigkeitsverbindung zu einer Institution plus Verwandte
 
 *Als Forscherin, die das soziale Umfeld einer geistlichen Institution untersuche, will ich auf dem Organisationsprofil alle Personen sehen, die als Kaplan, Chorherr, Verweser oder in vergleichbarer Funktion an die Institution gebunden sind, mit Link auf das Personenprofil, wo ich ihre Verwandten finde, damit ich die klerikal-soziale Verflechtung rekonstruiere.*
 
 * **Datenbasis** `occ_relations_in_sources.csv` (Person → Org mit Tätigkeitsbegriff); `kin_relations_in_sources.csv`
-* **Komponente** Sektion „Personen mit Tätigkeitsverbindung" auf jeder Organisations-Profilseite ([[ui-design#Entitäts-Profilseite]])
+* **Heute eingelöst durch** Sektion „Personen mit Tätigkeitsverbindung" auf jeder Organisations-Profilseite ([[ui-design#Entitäts-Profilseite]]) mit Tätigkeitsbezeichnungen, Belegzahl und einer Spalte mit der Anzahl der 1-Hop-Verwandtschaftsbeziehungen aus dem Quellenkorpus
+* **Bekannte Lücke** die kin-Spalte zeigt eine Zahl, aber nicht die Namen der Verwandten. Auflösung als Tooltip oder Popover wäre ein kleiner Eingriff (Aggregator führt die kin-Personen mit, Markup verlinkt sie)
+* **Strukturell offen im Abfrage-Interface** occ-Relation Person→Org und kin-Relation Person→Person sind nicht als Bedingungs-Slots verfügbar. Bewusste Aufgabenteilung: Profilseite trägt Entitäts-Beziehungen, Abfrage-Interface trägt Ko-Vorkommens-Schnitte
 * **Beispiel** St. Stephan in Wien plus alle Sub-Orgs (Altäre, Messen, Zechen, Kapellen)
 
 ## Stifter-Empfänger-Netzwerk einer Organisation
@@ -121,7 +125,10 @@ Vier Fragen, die das Fachteam an die Datenbasis stellt. Sie sind die inhaltliche
 *Als Klosterforscherin, die das Stifternetzwerk einer Klosterkirche rekonstruiere, will ich auf dem Organisationsprofil alle Personen und Organisationen sehen, die in einem Issuer-Recipient-Verhältnis zu dieser Institution stehen, damit ich nachvollziehe, wer ihr Stiftungen zugewendet hat.*
 
 * **Datenbasis** `persons_in_events.csv` und `orgs_in_events.csv` mit Rolle Issuer/Recipient; Org-Hierarchie in `orgList.xml`
-* **Komponente** Sektion „Stiftungsnetzwerk" auf jeder Organisations-Profilseite ([[ui-design#Entitäts-Profilseite]])
+* **Heute eingelöst durch (zwei Pfade)**
+  - Org-Profil, Sektion „Stiftungsnetzwerk" ([[ui-design#Entitäts-Profilseite]]) als aggregiertes Bild der Einrichtung
+  - Abfrage-Interface mit Personen- und Organisations-Bedingungen und gegenläufigen Rollen, z. B. `p1=r=issuer` plus `g1=r=recipient,n=…`, als event-zentriertes Slicing der Konstellation
+* **Strukturell offen** keine spezifische Lücke; die zwei Pfade ergänzen sich
 * **Beispiel** St. Agnes auf der Himmelpforte (Wien, Augustinerinnen)
 
 ---

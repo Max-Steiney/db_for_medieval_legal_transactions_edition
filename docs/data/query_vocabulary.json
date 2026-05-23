@@ -3,7 +3,7 @@
     "version": "3.0",
     "decided": "2026-05-02",
     "note": "Vokabular fuer den Composer der Analyse-Seite. Subjekte (mit Filtern und Einheits-Label), Filter-Definitionen mit Wert-Listen oder dynamischen Wert-Quellen, Coverage-Texte, Filter-Limit. Keine Gruppierung — der Composer rendert immer Einzelwerte und Subjekt-Uebersichtskarten.",
-    "created": "2026-05-18"
+    "created": "2026-05-23"
   },
   "subjects": {
     "persons": {
@@ -209,7 +209,7 @@
     }
   },
   "coverage": {
-    "persons": "Datenbasis: 4.214 Rechtsgeschaefte aus 1177-1414. Gezaehlt werden Nennungen, nicht individuelle Personen.",
+    "persons": "Datenbasis: 4.214 Rechtsgeschaefte aus dem Freigabezeitraum. Gezaehlt werden Nennungen, nicht individuelle Personen.",
     "sources": "Datenbasis: 2.665 freigegebene Quellen aus QGW (2.037) und Stadtbuechern (628).",
     "events": "Datenbasis: 4.214 Rechtsgeschaefte, davon 1.043 (24,7%) ins kontrollierte Vokabular ueberfuehrt.",
     "relationships": "Datenbasis: 12.038 annotierte Beziehungen, 5.592 beteiligte Personen."

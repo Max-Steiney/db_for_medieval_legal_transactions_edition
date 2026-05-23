@@ -129,25 +129,27 @@
         <div class="doc-facs-panel">
             <div class="facs-viewer">
                 <div class="facs-controls">
-                    {% if meta.facsimile_urls|length > 1 %}
-                    <button type="button" class="facs-prev" aria-label="Vorherige Seite" disabled>&#8249;</button>
-                    {% endif %}
-                    <span class="facs-page-indicator">
-                        Seite <span id="facs-current">1</span>/<span>{{ meta.facsimile_urls|length }}</span>
-                    </span>
-                    {% if meta.facsimile_urls|length > 1 %}
-                    <button type="button" class="facs-next" aria-label="Nächste Seite">&#8250;</button>
-                    {% endif %}
+                    <div class="facs-controls-pages">
+                        {% if meta.facsimile_urls|length > 1 %}
+                        <button type="button" class="facs-prev" aria-label="Vorherige Seite" disabled>&#8249;</button>
+                        {% endif %}
+                        <span class="facs-page-indicator">
+                            Seite <span id="facs-current">1</span>/<span>{{ meta.facsimile_urls|length }}</span>
+                        </span>
+                        {% if meta.facsimile_urls|length > 1 %}
+                        <button type="button" class="facs-next" aria-label="Nächste Seite">&#8250;</button>
+                        {% endif %}
+                    </div>
+                    <div class="facs-controls-zoom">
+                        <button type="button" class="facs-zoom-in" aria-label="Vergrößern">+</button>
+                        <button type="button" class="facs-zoom-out" aria-label="Verkleinern">&minus;</button>
+                        <button type="button" class="facs-zoom-reset" aria-label="Ansicht zurücksetzen">1:1</button>
+                        <button type="button" class="facs-rotate" aria-label="Um 90 Grad drehen" title="Um 90° drehen">&#10227;</button>
+                    </div>
                 </div>
-                <div class="facs-image-wrap" id="facs-image-wrap">
-                    <img class="facs-image" id="facs-image"
-                         alt="Faksimile von Nr. {{ meta.idno }}"
-                         loading="lazy">
-                </div>
-                <div class="facs-zoom-controls">
-                    <button type="button" class="facs-zoom-in" aria-label="Vergrößern">+</button>
-                    <button type="button" class="facs-zoom-out" aria-label="Verkleinern">&minus;</button>
-                    <button type="button" class="facs-zoom-reset" aria-label="Zurücksetzen">1:1</button>
+                <div class="facs-image-wrap" id="facs-image-wrap"
+                     role="img" aria-label="Faksimile von Nr. {{ meta.idno }}">
+                    <div class="facs-osd" id="facs-osd"></div>
                 </div>
             </div>
         </div>
@@ -186,6 +188,9 @@
 {% endblock %}
 
 {% block scripts %}
+{% if meta.facsimile_urls %}
+<script src="{{ root_path }}/static/vendor/openseadragon/openseadragon.min.js?v=6.0.2"></script>
+{% endif %}
 <script src="{{ root_path }}/static/js/facsimile.js?v={{ asset_v }}"></script>
 <script src="{{ root_path }}/static/js/document.js?v={{ asset_v }}"></script>
 <script src="{{ root_path }}/static/js/basket-mount.js?v={{ asset_v }}"></script>

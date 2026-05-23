@@ -7,7 +7,7 @@ status: active
 language: de
 version: 0.3
 created: 2026-02-19
-updated: 2026-05-17
+updated: 2026-05-23
 authors: [Christopher Pollin]
 generated-with: Claude Code
 method:
@@ -23,6 +23,14 @@ Arbeitstagebuch. Einziges chronologisches Dokument der Wissensbasis.
 Format pro Eintrag: Datum, Kurztitel, ein bis drei Absätze. Was umgesetzt wurde, warum (oft mit verworfener Alternative), wo das Detail zeitlos abgelegt ist. Was nicht rein darf: Personennamen, Meeting-Protokolle, Projektmanagement-Stand, Quantitäten des Korpus, Test- und Build-Zahlen.
 
 Einträge in umgekehrt chronologischer Reihenfolge, neueste oben.
+
+## 2026-05-23 Faksimile-Viewer auf OpenSeadragon umgestellt
+
+Der bisherige Viewer war ein img-Element mit CSS-transform-Zoom. Vergrößern funktionierte, aber Pannen nicht: der vergrößerte Ausschnitt blieb unerreichbar, das Lesen größerer Bildbereiche damit faktisch ausgeschlossen. Verworfene Alternative war ein eigener Pan-Handler in Vanilla-JS. Bei der vollen Anforderungs-Liste (Mausrad-Zoom, Drag-Pan, Pinch, Rotation, Constraint-Pan) ist die eigene Lösung kein klarer Vorteil mehr; eine ausgereifte Lib trägt das wartungsärmer.
+
+OpenSeadragon wird lokal unter `frontend/static/vendor/openseadragon/` mitgeführt und nur auf Detailseiten mit Faksimile geladen. Die Lib wird vendoret statt per CDN bezogen, weil die Edition langfristig laufen soll und externe Hosts URL- oder Versionsbrüche tragen. Die bestehende Toolbar bleibt im Look, OSD-Default-Buttons sind ausgeschaltet, die Toolbar bindet sich an die OSD-Viewport-API. Ein Rotate-Knopf für 90°-Schritte kommt dazu. Drawer auf `canvas` festgelegt, weil für einzelne JPEGs ohne Tile-Streaming der WebGL-Pfad keinen Mehrwert bringt und auf manchen Geräten eine Init-Warnung produzierte.
+
+Das Panel hat fortan eine feste Höhe und scrollt nicht intern; Navigation größerer Ausschnitte erfolgt ausschließlich durch den Viewer. Detail in [[ui-design#Quellen-Detailseite mit Text-Bild-Synopse]].
 
 ## 2026-05-17 Stufenmodell datenseitig wirksam, neue Subkorpora freigegeben
 

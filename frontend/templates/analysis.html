@@ -33,23 +33,15 @@
 
             <div class="qb-scope">
 
-                <div class="qb-scope-row">
-                    <span class="qb-control-label qb-control-label--inline">Gemeinsam in{% call tip_help('help-link', 'Gemeinsam in') %}
-                        <p>Was als <em>gemeinsamer Kontext</em> zaehlt, in dem alle Personen
-                            gleichzeitig erfuellt sein muessen.</p>
-                        <ul>
-                            <li><strong>Quelle</strong> &mdash; weiter: alle Personen in derselben Urkunde / im selben Stadtbuch-Eintrag.</li>
-                            <li><strong>Rechtsgeschaeft</strong> &mdash; enger: alle Personen am selben Akt beteiligt.</li>
-                        </ul>
-                    {% endcall %}</span>
-                    <div class="qb-pill-group" role="group"
-                         aria-label="Verknüpfung der Personen" data-filter="scope">
-                        <button type="button" class="qb-pill" aria-pressed="false"
-                                data-scope="source">derselben Quelle</button>
-                        <button type="button" class="qb-pill is-active" aria-pressed="true"
-                                data-scope="event">demselben Rechtsgeschäft</button>
-                    </div>
-                </div>
+                {# Scope-Schalter (Quelle vs. Rechtsgeschaeft) ausgeblendet:
+                   Im aktuellen Korpus tragen 2.671 von 2.678 Quellen genau
+                   ein Event, beide Modi liefern darum fast immer dieselben
+                   Treffer. Default 'demselben Rechtsgeschaeft' (state.scope
+                   = 'event') bleibt aktiv. Resolver-Logik und URL-Parser
+                   verstehen scope=source weiterhin, damit alte Permalinks
+                   nicht brechen. Den Block wieder einblenden, sobald Stufe
+                   2 (mentioned events) oder feiner annotierte Stadtbuecher
+                   den Schalter wieder unterscheidbar machen. #}
 
                 <div class="qb-scope-row">
                     <span class="qb-control-label qb-control-label--inline">Korpus</span>
@@ -86,6 +78,7 @@
                     </div>
                     <table class="qb-cond-table qb-cond-table--persons" id="qb-persons-table"
                            data-occupation-vocab='{{ occupation_vocab|tojson }}'
+                           data-occupation-full-vocab='{{ occupation_full_vocab|tojson }}'
                            data-uhlirz-vocab='{{ uhlirz_vocab|tojson }}'>
                         <thead>
                             <tr>
@@ -93,9 +86,21 @@
                                 <th scope="col" class="qb-col-role">Rolle</th>
                                 <th scope="col" class="qb-col-sex">Geschlecht</th>
                                 <th scope="col" class="qb-col-occ">Beruf, Tätigkeit oder Amt
-                                    <span class="qb-col-hint">(wie ediert, enthält)</span></th>
-                                <th scope="col" class="qb-col-uhlirz">Uhlirz-Berufsklasse
-                                    <span class="qb-col-hint">(klassifiziert)</span></th>
+                                    {% call tip_help('tip-occ-help', 'Beruf, Tätigkeit oder Amt') %}
+                                        <p>Das Feld matcht den Beruf-, Tätigkeits- oder
+                                        Amtstext, wie er ediert wurde
+                                        (Substring, case-insensitiv). „Bürger" trifft
+                                        auch „Bürgermeister".</p>
+                                        <p>Die Vorschlagsliste zeigt die 50 häufigsten
+                                        Schreibungen. Das Eingabefeld selbst durchsucht
+                                        aber alle im Korpus belegten Schreibungen
+                                        (rund 1.500 distinkte Formen). Sobald der
+                                        Suchbegriff auch außerhalb der Top-50 trifft,
+                                        werden die zusätzlichen Treffer unten im
+                                        Popover als „auch erkannt" angezeigt.</p>
+                                    {% endcall %}
+                                </th>
+                                <th scope="col" class="qb-col-uhlirz">Uhlirz-Berufsklasse</th>
                                 <th scope="col" class="qb-col-rm" aria-label="Entfernen"></th>
                             </tr>
                         </thead>
@@ -114,13 +119,13 @@
                     </div>
                     <table class="qb-cond-table qb-cond-table--orgs" id="qb-orgs-table"
                            data-organisation-vocab='{{ organisation_vocab|tojson }}'
+                           data-organisation-full-vocab='{{ organisation_full_vocab|tojson }}'
                            data-org-type-vocab='{{ org_type_vocab|tojson }}'>
                         <thead>
                             <tr>
                                 <th scope="col" class="qb-col-num">Nr.</th>
                                 <th scope="col" class="qb-col-role">Rolle</th>
-                                <th scope="col" class="qb-col-org-name">Name
-                                    <span class="qb-col-hint">(enthält)</span></th>
+                                <th scope="col" class="qb-col-org-name">Name</th>
                                 <th scope="col" class="qb-col-org-type">Typ</th>
                                 <th scope="col" class="qb-col-rm" aria-label="Entfernen"></th>
                             </tr>
@@ -237,5 +242,6 @@
 {% block scripts %}
 <script src="{{ root_path }}/static/js/table-infra.js?v={{ asset_v }}"></script>
 <script src="{{ root_path }}/static/js/viz-core.js?v={{ asset_v }}"></script>
+<script src="{{ root_path }}/static/js/analysis-url.js?v={{ asset_v }}"></script>
 <script src="{{ root_path }}/static/js/analysis-resolver.js?v={{ asset_v }}"></script>
 {% endblock %}

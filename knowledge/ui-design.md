@@ -160,6 +160,8 @@ Persistenz lebt in `localStorage` mit versioniertem Schlüssel; parallele Browse
 
 Die Detailseite einer Quelle stellt edierten Text und Faksimile nebeneinander, sofern ein Faksimile vorliegt. Die Synopse ist Default, kein Tab — wer Text und Bild gleichzeitig braucht, soll dafür nicht klicken müssen. Quellen ohne Faksimile fallen auf eine zentrierte Lese-Spalte zurück. Eine ausschaltbare Annotations-Schicht macht die TEI-Auszeichnung sichtbar oder unsichtbar.
 
+Das Faksimile-Panel ist ein Deep-Zoom-Viewer auf Basis von OpenSeadragon. Das Panel hat eine feste Höhe (`100vh − Header`) und scrollt nicht intern; Lesen größerer Ausschnitte erfolgt über den Viewer selbst. Bedienung: Mausrad und Toolbar-Knöpfe für Zoom, Drag und Pinch für Pan, ein Rotate-Knopf für 90°-Schritte, ein 1:1-Reset setzt Zoom und Rotation auf den Ausgangszustand. Bei mehrseitigen Quellen schalten Pfeil-Knöpfe zwischen den Seiten um; die Rotation wird beim Seitenwechsel zurückgesetzt, damit eine neu geladene Seite nicht verkippt startet. Pan ist durch OpenSeadragon-Constraints geklemmt, das Bild bleibt im Sichtbereich.
+
 ### Register-Listenseite
 
 Personen- und Organisationsregister teilen sich ein einheitliches Listenseiten-Muster: Alphabet-Leiste, Suche, Filter (Geschlecht/Typ/Quellenanzahl), sortierbare Tabelle. Die Namens-Spalte verlinkt auf die Detail-Profilseite der Entität. Eine Zeile lässt sich zusätzlich aufklappen und zeigt alle belegenden Quellen inline, ohne den Filterkontext zu verlieren. Ein „+"-Knopf pro Zeile legt die Entität in den Datenkorb.

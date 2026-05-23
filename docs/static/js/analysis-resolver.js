@@ -39,6 +39,9 @@
     const addPersonBtn = root.querySelector('#qb-add-person');
     const addOrgBtn = root.querySelector('#qb-add-org');
     const resetBtn = root.querySelector('#filter-reset');
+    // Aktuell leer (UI im Template ausgeblendet, siehe analysis.html).
+    // Die scopeChips-forEach-Aufrufe weiter unten sind dann No-Ops; die
+    // Logik bleibt fuer den Fall, dass der Schalter wiederkommt.
     const scopeChips = root.querySelectorAll('[data-filter="scope"] .qb-pill');
     const corpusChecksRoot = root.querySelector('#filter-corpora');
     const hitsSrc = root.querySelector('#hits-sources');
@@ -103,6 +106,14 @@
     try {
         OCC_VOCAB = JSON.parse(personsTable.dataset.occupationVocab || '[]');
     } catch (_) { OCC_VOCAB = []; }
+    // Voll-Vokabular: alle im Korpus belegten Berufsschreibungen (ca.
+    // 1500), nur als Lookup fuer den "auch erkannt"-Block. Das eigentliche
+    // Dropdown bleibt der Top-50-Vorschlag. Wenn der Build kein full
+    // mitliefert, fallen wir leise auf das normale Vokabular zurueck.
+    let OCC_FULL_VOCAB = [];
+    try {
+        OCC_FULL_VOCAB = JSON.parse(personsTable.dataset.occupationFullVocab || '[]');
+    } catch (_) { OCC_FULL_VOCAB = []; }
     let UHLIRZ_VOCAB = [];
     try {
         UHLIRZ_VOCAB = JSON.parse(personsTable.dataset.uhlirzVocab || '[]');
@@ -113,6 +124,12 @@
             ? JSON.parse(orgsTable.dataset.organisationVocab || '[]')
             : [];
     } catch (_) { ORG_VOCAB = []; }
+    let ORG_FULL_VOCAB = [];
+    try {
+        ORG_FULL_VOCAB = orgsTable
+            ? JSON.parse(orgsTable.dataset.organisationFullVocab || '[]')
+            : [];
+    } catch (_) { ORG_FULL_VOCAB = []; }
     let ORG_TYPE_VOCAB = [];
     try {
         ORG_TYPE_VOCAB = orgsTable
@@ -143,17 +160,118 @@
         }
     }
 
-    function attachAutocomplete(input, vocab, hintLabel) {
+    function attachAutocomplete(input, opts) {
+        const vocab = opts.vocab;
         if (!vocab || !vocab.length) return;
-        const hint = hintLabel || 'Vorkommen';
+        const hint = opts.hint || 'Vorkommen';
+        const getContext = opts.getContext;
+        const extra = (opts.extraVocab && opts.extraVocab.length)
+            ? opts.extraVocab : null;
         let selectedIdx = -1;
+
+        function ctx() {
+            try { return (getContext && getContext()) || null; }
+            catch (_) { return null; }
+        }
+        // Effektiver Count unter aktivem Filter. Sex-Filter wendet die
+        // Counts-pro-Geschlecht im Eintrag an; Typ-Filter setzt Items
+        // mit nicht passendem Typ auf 0, damit sie ausgegraut nach
+        // unten wandern statt zu verschwinden.
+        function effectiveCount(item, c) {
+            if (!c) return item.count || 0;
+            if (c.sex === 'm') return item.count_m || 0;
+            if (c.sex === 'f') return item.count_f || 0;
+            if (c.sex === 'u') return item.count_u || 0;
+            if (c.orgType && (item.type || '') !== c.orgType) return 0;
+            return item.count || 0;
+        }
 
         function buildItems(query) {
             const q = (query || '').trim().toLowerCase();
             const matches = q
                 ? vocab.filter(v => v.value.toLowerCase().includes(q))
                 : vocab.slice();
+            const c = ctx();
+            // 0-Counts ans Ende, sonst stehen leere Vorschlaege oben.
+            if (c && (c.sex || c.orgType)) {
+                const decorated = matches.map((m, i) => ({
+                    m, i, eff: effectiveCount(m, c),
+                }));
+                decorated.sort((a, b) => {
+                    const az = a.eff === 0;
+                    const bz = b.eff === 0;
+                    if (az !== bz) return az ? 1 : -1;
+                    return a.i - b.i;
+                });
+                return decorated.slice(0, 30).map(d => d.m);
+            }
             return matches.slice(0, 30);
+        }
+
+        // Baut eine Vorschlags-Zeile. Primaer-Zeilen (variant 'primary')
+        // tragen Tastatur-Index und sex-aware Counts; Tail-Zeilen
+        // (variant 'extra') sind statisch und simpel.
+        function makeRow(it, variant, primaryIdx, c, hasSexCounts) {
+            const isPrimary = variant === 'primary';
+            const eff = isPrimary ? effectiveCount(it, c) : (it.count || 0);
+            const isZero = isPrimary && !!(c && (c.sex || c.orgType) && eff === 0);
+            const row = document.createElement('button');
+            row.type = 'button';
+            row.className = 'qb-ac-item'
+                + (isPrimary && primaryIdx === selectedIdx ? ' is-active' : '')
+                + (isZero ? ' is-empty' : '')
+                + (!isPrimary ? ' qb-ac-item--extra' : '');
+            if (isPrimary) row.dataset.idx = primaryIdx;
+
+            const value = document.createElement('span');
+            value.className = 'qb-ac-value';
+            value.textContent = it.value;
+            row.appendChild(value);
+
+            const meta = document.createElement('span');
+            meta.className = 'qb-ac-meta';
+            if (isPrimary && hasSexCounts) {
+                const sexKey = c && c.sex;
+                // u-Segment nur einblenden, wenn relevant.
+                const showU = sexKey === 'u' || (it.count_u || 0) > 0;
+                function seg(cls, n, isActive) {
+                    const s = document.createElement('span');
+                    s.className = 'qb-ac-count qb-ac-count--' + cls
+                        + (isActive ? ' is-active' : '')
+                        + (sexKey && !isActive ? ' is-dim' : '');
+                    s.textContent = n;
+                    return s;
+                }
+                meta.appendChild(seg('total', (it.count || 0), !sexKey));
+                meta.appendChild(seg('m', (it.count_m || 0), sexKey === 'm'));
+                meta.appendChild(seg('f', (it.count_f || 0), sexKey === 'f'));
+                if (showU) meta.appendChild(seg('u', (it.count_u || 0), sexKey === 'u'));
+                meta.title = 'Gesamt ' + (it.count || 0) + ' ' + hint
+                    + ', davon ' + (it.count_m || 0) + ' ' + SEX_LABELS.m
+                    + ', ' + (it.count_f || 0) + ' ' + SEX_LABELS.f
+                    + (showU ? ', ' + (it.count_u || 0) + ' ' + SEX_LABELS.u : '');
+            } else {
+                meta.textContent = (it.count || 0) + ' ' + hint;
+            }
+            row.appendChild(meta);
+
+            if (isPrimary) {
+                row.addEventListener('mouseenter', () => {
+                    selectedIdx = primaryIdx;
+                    Array.from(row.parentNode.children).forEach((el, k) => {
+                        el.classList.toggle('is-active', k === primaryIdx);
+                    });
+                });
+            }
+            // mousedown statt click: Blur-Event nimmt sonst das Popover
+            // weg, bevor click feuert.
+            row.addEventListener('mousedown', (e) => {
+                e.preventDefault();
+                input.value = it.value;
+                input.dispatchEvent(new Event('input', { bubbles: true }));
+                closePopover();
+            });
+            return row;
         }
 
         function renderItems(panel, items) {
@@ -165,35 +283,34 @@
                 panel.appendChild(empty);
                 return;
             }
+            const c = ctx();
+            // Sex-Counts gibt es nur im Beruf-Vokabular; Org-/Uhlirz-
+            // Eintraege tragen nur ein einzelnes count.
+            const hasSexCounts = 'count_m' in items[0] || 'count_f' in items[0];
             items.forEach((it, i) => {
-                const row = document.createElement('button');
-                row.type = 'button';
-                row.className = 'qb-ac-item' + (i === selectedIdx ? ' is-active' : '');
-                row.dataset.idx = i;
-                const value = document.createElement('span');
-                value.className = 'qb-ac-value';
-                value.textContent = it.value;
-                const meta = document.createElement('span');
-                meta.className = 'qb-ac-meta';
-                meta.textContent = it.count + ' ' + hint;
-                row.appendChild(value);
-                row.appendChild(meta);
-                row.addEventListener('mouseenter', () => {
-                    selectedIdx = i;
-                    Array.from(panel.children).forEach((el, k) => {
-                        el.classList.toggle('is-active', k === i);
-                    });
-                });
-                row.addEventListener('mousedown', (e) => {
-                    // mousedown statt click, damit das Blur-Event nicht
-                    // zuvor das Popover wegnimmt.
-                    e.preventDefault();
-                    input.value = it.value;
-                    input.dispatchEvent(new Event('input', { bubbles: true }));
-                    closePopover();
-                });
-                panel.appendChild(row);
+                panel.appendChild(makeRow(it, 'primary', i, c, hasSexCounts));
             });
+
+            // "Auch erkannt"-Block triggert bei Suchstring ODER aktivem
+            // Typ-Filter. Letzteres ist noetig, damit z. B. die 9 sehr
+            // seltenen Gemeinden auch ohne Eintippen sichtbar werden.
+            const q = (input.value || '').trim().toLowerCase();
+            const triggerByType = !!(c && c.orgType);
+            if (!extra || (!q && !triggerByType)) return;
+
+            const primarySet = new Set(items.map(it => it.value));
+            const tail = extra
+                .filter(v => !primarySet.has(v.value)
+                    && (!q || v.value.toLowerCase().includes(q))
+                    && (!triggerByType || (v.type || '') === c.orgType))
+                .slice(0, 12);
+            if (!tail.length) return;
+
+            const head = document.createElement('div');
+            head.className = 'qb-ac-section';
+            head.textContent = 'Auch erkannt (nicht in der Liste)';
+            panel.appendChild(head);
+            tail.forEach(it => panel.appendChild(makeRow(it, 'extra', -1, c, false)));
         }
 
         function positionPanel(panel) {
@@ -349,7 +466,12 @@
         sexTd.className = 'qb-col-sex';
         const sexSel = document.createElement('select');
         sexSel.setAttribute('aria-label', 'Geschlecht Person ' + (idx + 1));
-        ['', 'm', 'f', 'u'].forEach(v => {
+        // 'u' (ohne Angabe) bewusst weggelassen: im aktuellen Korpus
+        // hat jede annotierte Person ein Geschlecht (m oder f), die
+        // Option liefert immer 0 Treffer. Falls spaeter Personen ohne
+        // Geschlechtsangabe ins Korpus kommen, einfach 'u' wieder
+        // aufnehmen.
+        ['', 'm', 'f'].forEach(v => {
             const o = document.createElement('option');
             o.value = v;
             o.textContent = v === '' ? '— alle —' : SEX_LABELS[v];
@@ -359,6 +481,12 @@
         sexSel.addEventListener('change', () => {
             state.persons[idx].sex = sexSel.value;
             sync();
+            // Wenn das Beruf-Autocomplete dieses Slots gerade offen ist,
+            // neu rendern, damit die sex-spezifischen Counts (und das
+            // Ausgrauen von 0-Eintraegen) sofort sichtbar sind.
+            if (activePopover && activePopover.input === occInput) {
+                activePopover.input.dispatchEvent(new Event('input', { bubbles: true }));
+            }
         });
         sexTd.appendChild(sexSel);
         tr.appendChild(sexTd);
@@ -376,8 +504,14 @@
             state.persons[idx].occ = occInput.value.trim();
             sync();
         });
-        attachAutocomplete(occInput, OCC_VOCAB,
-            'Vorkommen im Korpus');
+        // getContext liest das aktuell gesetzte Geschlecht aus dem
+        // State, damit Counts pro Beruf sex-aware angezeigt werden.
+        attachAutocomplete(occInput, {
+            vocab: OCC_VOCAB,
+            hint: 'Vorkommen im Korpus',
+            getContext: () => ({ sex: (state.persons[idx] || {}).sex || '' }),
+            extraVocab: OCC_FULL_VOCAB,
+        });
         occTd.appendChild(occInput);
         tr.appendChild(occTd);
 
@@ -488,8 +622,15 @@
             state.orgs[idx].name = nameInput.value.trim();
             sync();
         });
-        attachAutocomplete(nameInput, ORG_VOCAB,
-            'Vorkommen im Korpus');
+        // ORG_FULL_VOCAB ist hier essenziell: Typ-Filter wie "Gemeinde"
+        // haben alle 9 Treffer ausserhalb der Top-50, ohne extraVocab
+        // bliebe die Liste komplett ausgegraut.
+        attachAutocomplete(nameInput, {
+            vocab: ORG_VOCAB,
+            hint: 'Vorkommen im Korpus',
+            getContext: () => ({ orgType: (state.orgs[idx] || {}).type || '' }),
+            extraVocab: ORG_FULL_VOCAB,
+        });
         nameTd.appendChild(nameInput);
         tr.appendChild(nameTd);
 
@@ -513,6 +654,12 @@
         typeSel.addEventListener('change', () => {
             state.orgs[idx].type = typeSel.value;
             sync();
+            // Wenn das Name-Autocomplete dieses Slots gerade offen ist,
+            // neu rendern, damit Typ-passende Namen sofort oben stehen
+            // und nicht-passende ausgegraut werden.
+            if (activePopover && activePopover.input === nameInput) {
+                activePopover.input.dispatchEvent(new Event('input', { bubbles: true }));
+            }
         });
         typeTd.appendChild(typeSel);
         tr.appendChild(typeTd);
@@ -683,11 +830,16 @@
         return out;
     }
 
+    // Jede hinzugefuegte Card zaehlt als aktive Bedingung, auch wenn
+    // alle Slots leer sind: das explizite "+"-Klicken ist die Aussage
+    // "ich suche nach Person/Organisation hier". Eine leere Card
+    // matcht jede Person/Org und liefert damit den Trivialfall
+    // "alle Events mit mindestens N Beteiligten".
     function activeCards() {
-        return state.persons.filter(p => p.role || p.sex || p.occ || p.uhlirz);
+        return state.persons.slice();
     }
     function activeOrgCards() {
-        return state.orgs.filter(o => o.role || o.name || o.type);
+        return state.orgs.slice();
     }
 
     function compute() {
@@ -1095,34 +1247,17 @@
     }
 
     /* ---------- URL-State ----------------------------------------------- */
+    // Pure Serialisierung/Parsing in analysis-url.js (window.AnalysisURL),
+    // damit Round-Trip-Tests ohne DOM laufen koennen. Hier nur DOM-Sync.
     function writeUrl() {
-        const params = [];
-        state.persons.forEach((p, idx) => {
-            if (!p.role && !p.sex && !p.occ && !p.uhlirz) return;
-            const parts = [];
-            if (p.role)   parts.push('r=' + p.role);
-            if (p.sex)    parts.push('s=' + p.sex);
-            if (p.occ)    parts.push('o=' + encodeURIComponent(p.occ));
-            if (p.uhlirz) parts.push('u=' + encodeURIComponent(p.uhlirz));
-            params.push('p' + (idx + 1) + '=' + parts.join(','));
-        });
-        state.orgs.forEach((o, idx) => {
-            if (!o.role && !o.name && !o.type) return;
-            const parts = [];
-            if (o.role) parts.push('r=' + o.role);
-            if (o.name) parts.push('n=' + encodeURIComponent(o.name));
-            if (o.type) parts.push('t=' + encodeURIComponent(o.type));
-            params.push('g' + (idx + 1) + '=' + parts.join(','));
-        });
-        // Korpus-Auswahl nur dann serialisieren, wenn sie vom Default
-        // (alle Korpora aktiv) abweicht. Default = leerer Parameter.
-        if (state.corpora.size !== ALL_CORPORA.length) {
-            params.push('c=' + Array.from(state.corpora).map(encodeURIComponent).join(','));
-        }
-        if (state.scope !== 'event') {
-            params.push('scope=' + state.scope);
-        }
-        const hash = params.length ? '#' + params.join('&') : '';
+        const snapshot = {
+            persons: state.persons,
+            orgs: state.orgs,
+            scope: state.scope,
+            corpora: Array.from(state.corpora),
+        };
+        const body = window.AnalysisURL.serializeQueryState(snapshot, ALL_CORPORA);
+        const hash = body ? '#' + body : '';
         if (window.location.hash !== hash) {
             history.replaceState(null, '',
                 window.location.pathname + window.location.search + hash);
@@ -1130,70 +1265,36 @@
     }
 
     function readUrl() {
-        const raw = window.location.hash.replace(/^#/, '');
-        if (!raw) return;
-        const parts = raw.split('&');
-        const personRe = /^p(\d+)$/;
-        const orgRe = /^g(\d+)$/;
-        parts.forEach(seg => {
-            const eq = seg.indexOf('=');
-            if (eq < 0) return;
-            const k = seg.slice(0, eq);
-            const v = seg.slice(eq + 1);
-            const m = personRe.exec(k);
-            const mo = orgRe.exec(k);
-            if (m) {
-                const idx = parseInt(m[1], 10) - 1;
-                if (idx < 0) return;
-                while (state.persons.length <= idx) {
-                    state.persons.push({ role: '', sex: '', occ: '', uhlirz: '' });
-                }
-                v.split(',').forEach(pair => {
-                    const e = pair.indexOf('=');
-                    if (e < 0) return;
-                    const pk = pair.slice(0, e), pv = decodeURIComponent(pair.slice(e + 1));
-                    if (pk === 'r') state.persons[idx].role = pv;
-                    if (pk === 's') state.persons[idx].sex = pv;
-                    if (pk === 'o') state.persons[idx].occ = pv;
-                    if (pk === 'u') state.persons[idx].uhlirz = pv;
-                });
-            } else if (mo) {
-                const idx = parseInt(mo[1], 10) - 1;
-                if (idx < 0) return;
-                while (state.orgs.length <= idx) {
-                    state.orgs.push({ role: '', name: '', type: '' });
-                }
-                v.split(',').forEach(pair => {
-                    const e = pair.indexOf('=');
-                    if (e < 0) return;
-                    const pk = pair.slice(0, e), pv = decodeURIComponent(pair.slice(e + 1));
-                    if (pk === 'r') state.orgs[idx].role = pv;
-                    if (pk === 'n') state.orgs[idx].name = pv;
-                    if (pk === 't') state.orgs[idx].type = pv;
-                });
-            } else if (k === 'c') {
-                // Explizite Korpus-Auswahl aus URL ueberschreibt den
-                // All-Default. Checkboxen entsprechend synchronisieren.
-                state.corpora.clear();
-                v.split(',').map(decodeURIComponent).forEach(c => state.corpora.add(c));
-                if (corpusChecksRoot) {
-                    corpusChecksRoot.querySelectorAll('input[data-corpus]')
-                        .forEach(cb => {
-                            const on = state.corpora.has(cb.dataset.corpus);
-                            cb.checked = on;
-                            const label = cb.closest('label');
-                            if (label) label.classList.toggle('is-active', on);
-                        });
-                }
-            } else if (k === 'scope') {
-                state.scope = v === 'source' ? 'source' : 'event';
-                scopeChips.forEach(c => {
-                    const active = c.dataset.scope === state.scope;
-                    c.classList.toggle('is-active', active);
-                    c.setAttribute('aria-pressed', active ? 'true' : 'false');
-                });
+        const parsed = window.AnalysisURL.parseQueryHash(window.location.hash);
+        if (!parsed.persons.length && !parsed.orgs.length
+            && parsed.corpora === null && parsed.scope === 'event') {
+            return;
+        }
+        if (parsed.persons.length) state.persons = parsed.persons;
+        if (parsed.orgs.length) state.orgs = parsed.orgs;
+        if (parsed.corpora) {
+            // Explizite Korpus-Auswahl aus URL ueberschreibt den
+            // All-Default. Checkboxen entsprechend synchronisieren.
+            state.corpora.clear();
+            parsed.corpora.forEach(c => state.corpora.add(c));
+            if (corpusChecksRoot) {
+                corpusChecksRoot.querySelectorAll('input[data-corpus]')
+                    .forEach(cb => {
+                        const on = state.corpora.has(cb.dataset.corpus);
+                        cb.checked = on;
+                        const label = cb.closest('label');
+                        if (label) label.classList.toggle('is-active', on);
+                    });
             }
-        });
+        }
+        if (parsed.scope && parsed.scope !== state.scope) {
+            state.scope = parsed.scope;
+            scopeChips.forEach(c => {
+                const active = c.dataset.scope === state.scope;
+                c.classList.toggle('is-active', active);
+                c.setAttribute('aria-pressed', active ? 'true' : 'false');
+            });
+        }
     }
 
     /* ---------- CSV-Export ---------------------------------------------- */

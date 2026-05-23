@@ -59,7 +59,8 @@ RELEASED_PERIOD = {
     "min_year": 1177,
     "max_year": 1412,
     "extensions": [
-        {"corpora": "QGW II/1 und II/2", "until": 1414},
+        {"corpora": "QGW II/2", "until": 1457},
+        {"corpora": "Satzbuch CD", "until": 1460},
     ],
     "unprocessed_gaps": [
         {"from": 1418, "to": 1447},
@@ -73,13 +74,25 @@ from pipeline.config import RELEASED_CORPORA, is_released_corpus  # noqa: E402,F
 
 
 def released_period_label():
-    """Build the human-readable label for the released period."""
+    """Build the human-readable label for the released period.
+
+    Liste der Extensions wird als "ergaenzt durch X bis Y und Z bis W"
+    formatiert. Eine einzelne Extension behaelt die kuerzere Form bei.
+    """
     rp = RELEASED_PERIOD
     label = f"{rp['min_year']}\u2013{rp['max_year']}"
-    if rp["extensions"]:
-        ext = rp["extensions"][0]
-        label += f" (mit Erg\u00e4nzungen bis {ext['until']} f\u00fcr {ext['corpora']})"
-    return label
+    exts = rp.get("extensions") or []
+    if not exts:
+        return label
+    if len(exts) == 1:
+        e = exts[0]
+        return label + f" (mit Erg\u00e4nzungen bis {e['until']} f\u00fcr {e['corpora']})"
+    parts = [f"{e['corpora']} bis {e['until']}" for e in exts]
+    if len(parts) == 2:
+        ext_text = " und ".join(parts)
+    else:
+        ext_text = ", ".join(parts[:-1]) + " und " + parts[-1]
+    return label + f" (erg\u00e4nzt durch {ext_text})"
 
 
 def max_year_with_extensions():

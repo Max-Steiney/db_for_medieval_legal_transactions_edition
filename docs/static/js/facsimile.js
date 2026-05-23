@@ -1,6 +1,6 @@
 /* ==========================================================================
-   Wiener Urkundenbuch — Digital Edition
-   Facsimile viewer (synopsis mode)
+   Wiener Urkundenbuch - Digital Edition
+   Facsimile viewer (OpenSeadragon)
    ========================================================================== */
 
 (function() {
@@ -13,83 +13,83 @@
             try { facsUrls = JSON.parse(urlScript.textContent); } catch(e) { /* ignore */ }
         }
         if (!facsUrls.length) return;
+        if (typeof OpenSeadragon !== 'function') return;
+
+        let host = document.getElementById('facs-osd');
+        if (!host) return;
 
         let currentPage = 0;
-        let zoom = 1;
-        let imgEl = document.getElementById('facs-image');
-        let wrapEl = document.getElementById('facs-image-wrap');
         let currentEl = document.getElementById('facs-current');
         let prevBtn = document.querySelector('.facs-prev');
         let nextBtn = document.querySelector('.facs-next');
-        let loaded = {};
+        let zoomIn = document.querySelector('.facs-zoom-in');
+        let zoomOut = document.querySelector('.facs-zoom-out');
+        let zoomReset = document.querySelector('.facs-zoom-reset');
+        let rotateBtn = document.querySelector('.facs-rotate');
 
-        loadCurrentImage();
+        let viewer = OpenSeadragon({
+            element: host,
+            tileSources: { type: 'image', url: facsUrls[currentPage] },
+            drawer: 'canvas',
+            showNavigationControl: false,
+            showNavigator: false,
+            showRotationControl: false,
+            showFullPageControl: false,
+            showHomeControl: false,
+            showZoomControl: false,
+            animationTime: 0.4,
+            blendTime: 0.1,
+            minZoomImageRatio: 1,
+            maxZoomPixelRatio: 6,
+            visibilityRatio: 1,
+            constrainDuringPan: true,
+            homeFillsViewer: false,
+            gestureSettingsMouse: { scrollToZoom: true,  clickToZoom: false, dblClickToZoom: true, dragToPan: true, pinchToZoom: false },
+            gestureSettingsTouch: { scrollToZoom: false, clickToZoom: false, dblClickToZoom: true, dragToPan: true, pinchToZoom: true  },
+            gestureSettingsPen:   { scrollToZoom: false, clickToZoom: false, dblClickToZoom: true, dragToPan: true, pinchToZoom: false }
+        });
 
-        function loadCurrentImage() {
-            if (!imgEl || currentPage >= facsUrls.length) return;
-            let url = facsUrls[currentPage];
-            // Per-page alt text: append page number for multi-page sources
-            // so screen readers can distinguish facsimile pages.
-            let baseAlt = imgEl.getAttribute('data-alt-base');
-            if (!baseAlt) {
-                baseAlt = imgEl.getAttribute('alt') || '';
-                imgEl.setAttribute('data-alt-base', baseAlt);
-            }
-            if (facsUrls.length > 1) {
-                imgEl.alt = baseAlt + ', Seite ' + (currentPage + 1) + ' von ' + facsUrls.length;
-            } else {
-                imgEl.alt = baseAlt;
-            }
-            if (loaded[url]) { imgEl.src = url; return; }
-            imgEl.classList.add('loading');
-            imgEl.src = url;
-            imgEl.onload = function() { imgEl.classList.remove('loading'); loaded[url] = true; };
-            imgEl.onerror = function() { imgEl.classList.remove('loading'); imgEl.alt = 'Bild konnte nicht geladen werden'; };
+        function loadPage(idx) {
+            if (idx < 0 || idx >= facsUrls.length) return;
+            currentPage = idx;
+            viewer.open({ type: 'image', url: facsUrls[currentPage] });
+            updatePageControls();
         }
-
-        if (prevBtn) prevBtn.addEventListener('click', function() {
-            if (currentPage > 0) { currentPage--; updatePageControls(); loadCurrentImage(); }
-        });
-        if (nextBtn) nextBtn.addEventListener('click', function() {
-            if (currentPage < facsUrls.length - 1) { currentPage++; updatePageControls(); loadCurrentImage(); }
-        });
 
         function updatePageControls() {
             if (currentEl) currentEl.textContent = currentPage + 1;
             if (prevBtn) prevBtn.disabled = currentPage === 0;
             if (nextBtn) nextBtn.disabled = currentPage >= facsUrls.length - 1;
-            resetZoom();
         }
 
-        let zoomIn = document.querySelector('.facs-zoom-in');
-        let zoomOut = document.querySelector('.facs-zoom-out');
-        let zoomReset = document.querySelector('.facs-zoom-reset');
+        if (prevBtn) prevBtn.addEventListener('click', function() { loadPage(currentPage - 1); });
+        if (nextBtn) nextBtn.addEventListener('click', function() { loadPage(currentPage + 1); });
 
-        if (zoomIn) zoomIn.addEventListener('click', function() { setZoom(zoom * 1.3); });
-        if (zoomOut) zoomOut.addEventListener('click', function() { setZoom(zoom / 1.3); });
-        if (zoomReset) zoomReset.addEventListener('click', resetZoom);
+        if (zoomIn) zoomIn.addEventListener('click', function() {
+            viewer.viewport.zoomBy(1.3);
+            viewer.viewport.applyConstraints();
+        });
+        if (zoomOut) zoomOut.addEventListener('click', function() {
+            viewer.viewport.zoomBy(1 / 1.3);
+            viewer.viewport.applyConstraints();
+        });
+        if (zoomReset) zoomReset.addEventListener('click', function() {
+            viewer.viewport.setRotation(0);
+            viewer.viewport.goHome();
+        });
+        if (rotateBtn) rotateBtn.addEventListener('click', function() {
+            let next = (viewer.viewport.getRotation() + 90) % 360;
+            viewer.viewport.setRotation(next);
+        });
 
-        function setZoom(z) {
-            zoom = Math.max(0.5, Math.min(5, z));
-            if (imgEl) imgEl.style.transform = 'scale(' + zoom + ')';
-        }
+        // Reset rotation on page change so a new page does not start tilted.
+        viewer.addHandler('open', function() {
+            viewer.viewport.setRotation(0);
+        });
 
-        function resetZoom() {
-            zoom = 1;
-            if (imgEl) imgEl.style.transform = 'scale(1)';
-        }
-
-        if (wrapEl) {
-            wrapEl.addEventListener('wheel', function(e) {
-                e.preventDefault();
-                let delta = e.deltaY > 0 ? 0.9 : 1.1;
-                setZoom(zoom * delta);
-            }, { passive: false });
-        }
+        updatePageControls();
     }
 
-    document.addEventListener('DOMContentLoaded', function() {
-        initFacsimileViewer();
-    });
+    document.addEventListener('DOMContentLoaded', initFacsimileViewer);
 
 })();

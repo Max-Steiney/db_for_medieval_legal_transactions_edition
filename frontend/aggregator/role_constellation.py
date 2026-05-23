@@ -225,9 +225,17 @@ def aggregate_role_constellation(docs_data_dir: Path) -> dict:
 
     events: list[dict] = []
     occ_counter: Counter = Counter()
+    # Sex-aufgeschluesselte Counts pro Beruf, fuer das sex-aware
+    # Autocomplete in analysis-resolver.js. Schluessel: (beruf, bucket),
+    # bucket ∈ {'m', 'f', 'u'}.
+    occ_sex_counter: Counter = Counter()
     uhlirz_counter: Counter = Counter()
     org_type_counter: Counter = Counter()
     org_name_counter: Counter = Counter()
+    # Name → Typ. Im Korpus 1:1 stabil, also reicht setdefault. Erlaubt
+    # dem Org-Autocomplete, Eintraege mit nicht passendem Typ-Filter
+    # auszugrauen.
+    org_name_to_type: dict[str, str] = {}
     distinct_persons: set[str] = set()
     distinct_orgs: set[str] = set()
     distinct_files: set[str] = set()
@@ -259,14 +267,17 @@ def aggregate_role_constellation(docs_data_dir: Path) -> dict:
         for part in participants:
             distinct_persons.add(part["p"])
             total_participations += 1
+            sex_bucket = part["s"] if part["s"] in ("m", "f") else "u"
             for occ in part["o"]:
                 occ_counter[occ] += 1
+                occ_sex_counter[(occ, sex_bucket)] += 1
             for cat in part["u"]:
                 uhlirz_counter[cat] += 1
         for o in orgs:
             distinct_orgs.add(o["g"])
             if o["n"]:
                 org_name_counter[o["n"]] += 1
+                org_name_to_type.setdefault(o["n"], o["tp"])
             if o["tp"]:
                 org_type_counter[o["tp"]] += 1
 
@@ -308,13 +319,52 @@ def aggregate_role_constellation(docs_data_dir: Path) -> dict:
             measures=[],
         ),
         "vocab": {
-            "occupation": [{"value": v, "count": c} for v, c in occ_counter.most_common(50)],
+            "occupation": [
+                {
+                    "value": v,
+                    "count": c,
+                    "count_m": occ_sex_counter.get((v, "m"), 0),
+                    "count_f": occ_sex_counter.get((v, "f"), 0),
+                    "count_u": occ_sex_counter.get((v, "u"), 0),
+                }
+                for v, c in occ_counter.most_common(50)
+            ],
+            # Vollstaendige Beruf-Liste fuer den "auch erkannt"-Block
+            # im Popover: das Eingabefeld matcht jeden Begriff per
+            # Substring, aber nur die Top-50 sind als Vorschlag sichtbar.
+            # Damit die Forscherin merkt, dass auch "mitpurger" oder
+            # "schreiber" treffen, zeigen wir bei einem Such-Substring
+            # die Tail-Eintraege an. Schlanker Eintragstyp ohne Sex-
+            # Counts: der Block hat nur Lookup-Charakter und treibt
+            # nicht die sex-aware Sortierung.
+            "occupation_full": [
+                {"value": v, "count": c}
+                for v, c in occ_counter.most_common()
+            ],
             "uhlirz": sorted(uhlirz_counter.keys()),
             # Org-Namen: Top-Liste fuer das Autocomplete. Wir bleiben bei
             # 50 Eintraegen analog zu Berufen; St. Stephan/St. Agnes etc.
             # stehen wegen Frequenz ganz oben.
             "organisation": [
-                {"value": v, "count": c} for v, c in org_name_counter.most_common(50)
+                {
+                    "value": v,
+                    "count": c,
+                    "type": org_name_to_type.get(v, ""),
+                }
+                for v, c in org_name_counter.most_common(50)
+            ],
+            # Voll-Vokabular fuer den "auch erkannt"-Block im Popover:
+            # alle im Korpus belegten Org-Namen mit Typ. Wird benoetigt,
+            # damit ein gesetzter Typ-Filter (z. B. "Gemeinde") nicht nur
+            # die 50 haeufigsten ausgegraut hinterlaesst, sondern auch
+            # die Tail-Eintraege mit passendem Typ einblenden kann.
+            "organisation_full": [
+                {
+                    "value": v,
+                    "count": c,
+                    "type": org_name_to_type.get(v, ""),
+                }
+                for v, c in org_name_counter.most_common()
             ],
             "org_type": sorted(org_type_counter.keys()),
         },
