@@ -1,5 +1,5 @@
 {% extends "base.html" %}
-{% from "macros.html" import tip_glossary %}
+{% from "macros.html" import tip_glossary with context %}
 
 {% block title %}{{ profile.display }}{% if profile.death_display %} (&dagger; {{ profile.death_display }}){% endif %}{% endblock %}
 

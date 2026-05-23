@@ -1,7 +1,7 @@
 {% extends "base.html" %}
 {% from "macros.html" import search_box, result_count, active_filters, no_results, tip_glossary,
                               tip_help, sidebar_block, sidebar_range_slider, sidebar_chip_group,
-                              sidebar_corpus_chips, sidebar_reset_button %}
+                              sidebar_corpus_chips, sidebar_reset_button with context %}
 
 {% block title %}Quellen{% endblock %}
 
@@ -73,10 +73,21 @@
                 </select>
             {% endcall %}
 
-            {% call sidebar_block('Erschließungsform', 'Mehrfachauswahl möglich (ODER-Verknüpfung)') %}
+            <section class="sidebar-block">
+                <div class="sidebar-block-label">Erschließungsform{% call tip_help('forms-help', 'Erschließungsform') %}
+                    <p>Filtert die Quellen-Liste nach editorischen Strukturen, die in der Quelle annotiert sind.</p>
+                    <ul>
+                        <li><strong>Regest</strong>, redaktionelle Inhaltszusammenfassung</li>
+                        <li><strong>Siegel</strong>, Beschreibung der Sigille (Form, Material, Erhaltung)</li>
+                        <li><strong>Eintrag</strong>, Quelle ist Teil eines Stadtbuchs</li>
+                        <li><strong>Nota</strong>, Marginalie oder Nachsatz</li>
+                        <li><strong>ohne</strong>, keine dieser Strukturen erkannt</li>
+                    </ul>
+                    <p>Eine Quelle kann mehrere tragen. Mehrere Filter wirken als ODER-Verknüpfung: gezeigt werden Quellen, die mindestens einen der gewählten Werte erfüllen.</p>
+                {% endcall %}</div>
                 {{ sidebar_chip_group('filter-forms', 'data-form', form_data,
                                       aria_label='Nach Erschließungsform filtern (Mehrfachauswahl)') }}
-            {% endcall %}
+            </section>
 
             {% call sidebar_block('Faksimile') %}
                 <select id="filter-facs" aria-label="Faksimile">

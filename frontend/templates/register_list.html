@@ -1,7 +1,7 @@
 {% extends "base.html" %}
 {% from "macros.html" import search_box, result_count, active_filters, no_results, tip_glossary,
                               tip_help, sidebar_block, sidebar_range_slider, sidebar_chip_group,
-                              sidebar_corpus_chips, sidebar_reset_button %}
+                              sidebar_corpus_chips, sidebar_reset_button with context %}
 
 {% block title %}{{ register_label }}{% endblock %}
 
