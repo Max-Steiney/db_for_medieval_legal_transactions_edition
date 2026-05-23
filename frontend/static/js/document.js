@@ -8,6 +8,14 @@
 
     let esc = EdCore.esc;
 
+    // Dev-Mode-Schalter ueber ?dev=1 in der URL. Setzt .dev-mode auf
+    // <html> und macht damit alle .dev-only-Elemente sichtbar (gelber
+    // gestrichelter Rahmen, Label "Entwicklung"). Default-Sicht ohne
+    // URL-Parameter bleibt schlank.
+    if (window.location && window.location.search.indexOf('dev=1') >= 0) {
+        document.documentElement.classList.add('dev-mode');
+    }
+
 
     /* ------------------------------------------------------------------
        Annotations — all annotated layers from the TEI as structured
@@ -54,7 +62,7 @@
     function buildAnnotationsTables(container) {
         let body = document.querySelector('.doc-body');
         let bodyEl = container.querySelector('.annotations-body');
-        let summaryEl = container.querySelector('.annotations-summary');
+        let tabsEl = container.querySelector('.annotations-tabs');
         if (!body || !bodyEl) return;
 
         let DASH = '–';
@@ -196,39 +204,10 @@
             });
         }
 
-        // ---- Summary in the header pill.
-        // Entitaeten werden in Personen/Organisationen/Orte aufgeschluesselt,
-        // damit der Quellen-Footer den Hinweis "X Pers., Y Org." nicht
-        // mehr tragen muss (Kunden-Feedback 2026-05).
-        let summaryParts = [];
-        if (entities.length) {
-            let personCount = 0, orgCount = 0, placeCount = 0;
-            for (let i = 0; i < entities.length; i++) {
-                if (entities[i].type === 'Person') personCount++;
-                else if (entities[i].type === 'Organisation') orgCount++;
-                else if (entities[i].type === 'Ort') placeCount++;
-            }
-            if (personCount) summaryParts.push(personCount + ' Person' + (personCount !== 1 ? 'en' : ''));
-            if (orgCount) summaryParts.push(orgCount + ' Organisation' + (orgCount !== 1 ? 'en' : ''));
-            if (placeCount) summaryParts.push(placeCount + ' Ort' + (placeCount !== 1 ? 'e' : ''));
-        }
-        if (events.length) {
-            summaryParts.push(events.length + ' Ereignis' + (events.length !== 1 ? 'se' : ''));
-        }
-        if (triggers.length) {
-            summaryParts.push(triggers.length + ' Dispositivformel' + (triggers.length !== 1 ? 'n' : ''));
-        }
-        if (adds.length) {
-            summaryParts.push(adds.length + ' Ergänzung' + (adds.length !== 1 ? 'en' : ''));
-        }
-        if (summaryEl) summaryEl.textContent = summaryParts.join('  ·  ');
-
         if (!entities.length && !events.length && !triggers.length && !adds.length) {
             bodyEl.innerHTML = '<p class="annotations-empty">Keine Annotationen in dieser Quelle.</p>';
             return;
         }
-
-        let html = '';
 
         // Per-row hover hint: each annotation gets data-hint (body) plus
         // data-hint-type (small caps label). Picked up by hint.js. Body
@@ -284,17 +263,58 @@
             return ' data-sort-value="' + escAttr(value) + '"';
         }
 
-        // Type-Badge: einheitliche Pillen-Komponente, systemweit als
-        // .entity-badge verwendet (auch Register-Profile, Quellenliste).
-        // Klasse --person/--organisation/--ort uebersetzt aus dem
-        // type-Label.
-        function typeBadge(type) {
-            let mod = type === 'Person' ? 'person'
-                    : type === 'Organisation' ? 'organisation'
-                    : type === 'Ort' ? 'place' : 'other';
-            return '<span class="entity-badge entity-badge--' + mod
-                + '">' + esc(type) + '</span>';
+        // Funktionsrolle als gefuellte Pille -- kontrolliertes Vokabular,
+        // visuell auf den ersten Blick als Kategorie erkennbar. None /
+        // unbekannte Rolle erscheint als gedaempfter Halbgeviertstrich.
+        function rolePill(role) {
+            if (!role || role === DASH) {
+                return '<span class="role-pill role-pill--none">' + DASH + '</span>';
+            }
+            let mod = '';
+            if (role === 'Aussteller*in') mod = ' role-pill--issuer';
+            else if (role === 'Empfänger*in') mod = ' role-pill--recipient';
+            else if (role === 'Zeug*in') mod = ' role-pill--witness';
+            else if (role === 'Sonstige') mod = ' role-pill--other';
+            return '<span class="role-pill' + mod + '">' + esc(role) + '</span>';
         }
+
+        // Attribute als umrandete Tags, ein Tag pro Wert -- quellennahe
+        // Beischriften, visuell von der kontrollierten Funktionsrolle
+        // abgesetzt.
+        function attrTags(arr) {
+            if (!arr || !arr.length) return '<span class="attr-empty">' + DASH + '</span>';
+            let out = '';
+            for (let i = 0; i < arr.length; i++) {
+                out += '<span class="attr-tag">' + esc(arr[i]) + '</span>';
+            }
+            return out;
+        }
+
+        // Disp-Vorschau fuer den Event-Gruppen-Header: erste und letzte
+        // Dispositivformel mit Auslassung in der Mitte. Bei genau einer
+        // Formel nur diese, bei zwei beide ohne Auslassung.
+        let dispTriggersByEvent = {};
+        for (let t = 0; t < triggers.length; t++) {
+            if (triggers[t].kind !== 'Dispositiv') continue;
+            let evRef = triggers[t].event || '';
+            if (!evRef) continue;
+            let topRef = topLevelByRef[evRef] || evRef;
+            if (!dispTriggersByEvent[topRef]) dispTriggersByEvent[topRef] = [];
+            dispTriggersByEvent[topRef].push(triggers[t].text);
+        }
+        function dispPreview(evRef) {
+            let arr = dispTriggersByEvent[evRef] || [];
+            if (arr.length === 0) return '';
+            if (arr.length === 1) return arr[0];
+            if (arr.length === 2) return arr[0] + ' … ' + arr[1];
+            return arr[0] + ' … ' + arr[arr.length - 1];
+        }
+
+        let panels = [];
+        // Default-Aktiv ist der erste nicht-devOnly-Panel, damit ohne
+        // dev-Schalter nicht versehentlich ein verstecktes Panel als
+        // aktiv markiert wird. Wird unten vor dem Rendern bestimmt.
+        let defaultActiveKey = '';
 
         if (entities.length) {
             // Entitaeten nach Event gruppieren, damit auf einen Blick
@@ -309,20 +329,13 @@
             let entityOrder = [];
             for (let p = 0; p < entities.length; p++) {
                 let rawKey = entities[p].event || '';
-                // Entitaeten in nested events landen in der Gruppe ihres
-                // outermost-Eltern-Events. Damit verschwindet die
-                // Sub-Gruppierung "Erwaehntes Ereignis N" aus der UI.
                 let key = rawKey && topLevelByRef[rawKey] ? topLevelByRef[rawKey] : rawKey;
                 if (!entityGroups[key]) { entityGroups[key] = []; entityOrder.push(key); }
                 entityGroups[key].push(entities[p]);
             }
-            // Event-Meta nach Ref fuer schnellen Lookup beim Rendern.
             let eventByRef = {};
             for (let i = 0; i < events.length; i++) eventByRef[events[i].ref] = events[i];
 
-            // Gruppen-Reihenfolge: erst Events in der Reihenfolge ihres
-            // Auftretens im Body, dann nicht-gemappte Gruppen (selten),
-            // zuletzt ohne-Event-Gruppe.
             let renderedGroups = {};
             let orderedKeys = [];
             for (let e2 = 0; e2 < events.length; e2++) {
@@ -334,6 +347,15 @@
             for (let k = 0; k < entityOrder.length; k++) {
                 let key = entityOrder[k];
                 if (!renderedGroups[key]) { orderedKeys.push(key); renderedGroups[key] = true; }
+            }
+
+            function entityTypeMarker(type) {
+                let mod = type === 'Person' ? 'person'
+                        : type === 'Organisation' ? 'organisation'
+                        : type === 'Ort' ? 'place' : 'other';
+                let label = type;
+                return '<span class="anno-type-dot anno-type-dot--' + mod
+                    + '" aria-label="' + esc(label) + '" data-hint="' + esc(label) + '"></span>';
             }
 
             function entityRow(f) {
@@ -349,105 +371,200 @@
                 } else {
                     nameMain = esc(f.name);
                 }
-                // ID lebt nur noch im Row-Tooltip (entityTipBody),
-                // damit jede Zeile einzeilig bleibt und mehrere Entitaeten
-                // untereinander nicht zur Tapete werden. Abschnitt
-                // (Regest/Siegelbeschreibung/...) ebenfalls nur im
-                // Tooltip -- meist Regest, geringer analytischer Wert
-                // als eigene Spalte.
-                // Geschlecht-Glyph nur bei Person, sonst leere Zelle.
+                let nameCell = entityTypeMarker(f.type) + nameMain;
+
+                // Geschlecht ausgeschrieben (weiblich/maennlich), damit
+                // nichts abgekuerzt im UI steht. Nicht-Personen leer.
                 let sexCell = '';
                 let sexSort = '';
                 if (f.type === 'Person') {
-                    if (f.sex === 'm') { sexCell = '<span class="anno-sex">m</span>'; sexSort = 'm'; }
-                    else if (f.sex === 'f') { sexCell = '<span class="anno-sex">w</span>'; sexSort = 'w'; }
+                    if (f.sex === 'm') { sexCell = '<span class="anno-sex">männlich</span>'; sexSort = 'm'; }
+                    else if (f.sex === 'f') { sexCell = '<span class="anno-sex">weiblich</span>'; sexSort = 'w'; }
                     else { sexCell = '<span class="anno-sex anno-sex--unknown">' + DASH + '</span>'; sexSort = 'z'; }
                 }
+                let attrArr = f.attributes ? f.attributes.split(/, /).filter(Boolean) : [];
                 return '<tr' + tipAttrs(f.type + '-Annotation', entityTipBody(f)) + '>'
-                    + '<td' + sortAttr(f.name) + '>' + nameMain + '</td>'
-                    + '<td' + sortAttr(f.type) + '>' + typeBadge(f.type) + '</td>'
-                    + '<td' + sortAttr(f.role) + '>' + esc(f.role) + '</td>'
-                    + '<td' + sortAttr(f.attributes) + '>' + esc(f.attributes || DASH) + '</td>'
+                    + '<td' + sortAttr(f.name) + '>' + nameCell + '</td>'
+                    + '<td' + sortAttr(f.role) + '>' + rolePill(f.role) + '</td>'
+                    + '<td' + sortAttr(f.attributes) + '>' + attrTags(attrArr) + '</td>'
                     + '<td' + sortAttr(sexSort) + '>' + sexCell + '</td>'
                     + '</tr>';
             }
 
-            html += '<section class="annotation-group">'
-                + '<h3 class="annotation-group-title">Entitäten</h3>'
-                + '<table class="annotations-table sortable-table"><thead><tr>'
+            let entHtml = '<table class="annotations-table sortable-table"><thead><tr>'
                 + '<th scope="col" data-sort="name" data-hint="Wortlaut, mit dem die Person, Organisation oder der Ort in der Quelle erscheint.">Genannt als</th>'
-                + '<th scope="col" data-sort="type" data-hint="Annotations-Kategorie: Person, Organisation oder Ort.">Typ</th>'
                 + '<th scope="col" data-sort="role" data-hint="Funktion im Rechtsgeschäft: Aussteller*in, Empfänger*in, Zeug*in oder Sonstige.">Funktionsrolle</th>'
                 + '<th scope="col" data-sort="attributes" data-hint="Zusatzangaben zur Entität: Beruf, Titel, Verwandtschaftsbezug, als verstorben genannt etc.">Attribute</th>'
-                + '<th scope="col" data-sort="sex" data-hint="Geschlecht laut Personenregister (m oder w). Nur bei Personen belegt.">Geschlecht</th>'
+                + '<th scope="col" data-sort="sex" data-hint="Geschlecht laut Personenregister (weiblich oder männlich). Nur bei Personen belegt.">Geschlecht</th>'
                 + '</tr></thead><tbody>';
             for (let g = 0; g < orderedKeys.length; g++) {
                 let key = orderedKeys[g];
+                let rows = entityGroups[key];
                 let label;
                 if (!key) {
-                    label = '<span class="annotations-group-label">Ohne Event</span>';
+                    label = '<span class="annotations-group-label">Ohne Rechtsgeschäft</span>';
                 } else {
-                    let ev = eventByRef[key];
-                    // Quellentext (Disp-Verb) als kursiv und in
-                    // Trigger-Farbe markieren -- wiedererkennbar mit
-                    // den Disp-Verben im Body. Kein UI-Vorspann mehr.
-                    let trig = ev && ev.trigger ? ev.trigger : '';
-                    if (trig) {
-                        label = '<span class="annotations-group-source">' + esc(trig) + '</span>'
-                              + '<span class="annotations-group-id">' + esc(key) + '</span>';
-                    } else {
-                        label = '<span class="annotations-group-id">' + esc(key) + '</span>';
+                    let preview = dispPreview(key);
+                    if (!preview) {
+                        let ev = eventByRef[key];
+                        preview = ev && ev.trigger ? ev.trigger : '';
+                    }
+                    let count = rows.length;
+                    let countLabel = count + ' Genannte' + (count !== 1 ? '' : 'r');
+                    label = '<div class="annotations-group-head">'
+                        + '<span class="annotations-group-count">' + esc(countLabel) + '</span>'
+                        + '</div>';
+                    if (preview) {
+                        label += '<div class="annotations-group-quote"><q class="annotations-group-source">' + esc(preview) + '</q></div>';
                     }
                 }
-                html += '<tr class="annotations-group-row"><th colspan="5" scope="rowgroup">'
+                entHtml += '<tr class="annotations-group-row"><th colspan="4" scope="rowgroup">'
                     + label + '</th></tr>';
-                let rows = entityGroups[key];
                 for (let r2 = 0; r2 < rows.length; r2++) {
-                    html += entityRow(rows[r2]);
+                    entHtml += entityRow(rows[r2]);
                 }
             }
-            html += '</tbody></table></section>';
+            entHtml += '</tbody></table>';
+            panels.push({
+                key: 'entities',
+                label: 'Entitäten',
+                count: entities.length,
+                hint: 'Personen, Organisationen und Orte aus der TEI-Auszeichnung, gruppiert nach Rechtsgeschäft.',
+                html: entHtml
+            });
         }
 
         if (triggers.length) {
-            html += '<section class="annotation-group">'
-                + '<h3 class="annotation-group-title">Dispositivformeln</h3>'
-                + '<table class="annotations-table sortable-table"><thead><tr>'
-                + '<th scope="col" data-sort="text">Text</th>'
-                + '<th scope="col" data-sort="kind">Art</th>'
-                + '<th scope="col" data-sort="section">Abschnitt</th>'
-                + '<th scope="col" data-sort="event">Event</th>'
+            let trHtml = '<table class="annotations-table sortable-table"><thead><tr>'
+                + '<th scope="col" data-sort="text" data-hint="Verb-Wortlaut aus der Quelle, der das Rechtsgeschäft oder eine Funktionsrolle markiert.">Text</th>'
+                + '<th scope="col" data-sort="kind" data-hint="Dispositiv (markiert das Rechtsgeschäft) oder Funktionsrolle (markiert eine Rolle).">Art</th>'
+                + '<th scope="col" data-sort="section" data-hint="Strukturteil der Quelle, in dem die Formel steht.">Abschnitt</th>'
+                + '<th scope="col" data-sort="event" data-hint="Rechtsgeschäft, zu dem die Formel gehört.">Rechtsgeschäft</th>'
                 + '</tr></thead><tbody>';
             for (let t2 = 0; t2 < triggers.length; t2++) {
                 let tr2 = triggers[t2];
-                html += '<tr' + tipAttrs('Dispositivformel', triggerTipBody(tr2)) + '>'
+                let evRef = tr2.event || '';
+                let evCell;
+                if (evRef) {
+                    let topRef = topLevelByRef[evRef] || evRef;
+                    let preview = dispPreview(topRef);
+                    let display = preview || topRef;
+                    evCell = '<span class="annotations-group-source">' + esc(display) + '</span>';
+                } else {
+                    evCell = '<span class="cell-id">' + DASH + '</span>';
+                }
+                trHtml += '<tr' + tipAttrs('Dispositivformel', triggerTipBody(tr2)) + '>'
                     + '<td' + sortAttr(tr2.text) + '>' + esc(tr2.text) + '</td>'
                     + '<td' + sortAttr(tr2.kind) + '>' + esc(tr2.kind) + '</td>'
                     + '<td' + sortAttr(tr2.section) + '>' + esc(tr2.section || DASH) + '</td>'
-                    + '<td' + sortAttr(tr2.event) + '><span class="cell-id">' + esc(tr2.event || DASH) + '</span></td>'
+                    + '<td' + sortAttr(evRef) + '>' + evCell + '</td>'
                     + '</tr>';
             }
-            html += '</tbody></table></section>';
+            trHtml += '</tbody></table>';
+            panels.push({
+                key: 'triggers',
+                label: 'Dispositivformeln',
+                count: triggers.length,
+                hint: 'Verb-Spannen, die im TEI das Rechtsgeschäft oder eine Funktionsrolle anzeigen.',
+                html: trHtml,
+                devOnly: true
+            });
         }
 
         if (adds.length) {
-            html += '<section class="annotation-group">'
-                + '<h3 class="annotation-group-title">Editorische Ergänzungen</h3>'
-                + '<table class="annotations-table sortable-table"><thead><tr>'
-                + '<th scope="col" data-sort="text">Text</th>'
-                + '<th scope="col" data-sort="section">Abschnitt</th>'
+            let adHtml = '<table class="annotations-table sortable-table"><thead><tr>'
+                + '<th scope="col" data-sort="text" data-hint="Sinngemäße Ergänzung der Editorin im Quellentext.">Text</th>'
+                + '<th scope="col" data-sort="section" data-hint="Strukturteil der Quelle, in dem die Ergänzung steht.">Abschnitt</th>'
                 + '</tr></thead><tbody>';
             for (let a2 = 0; a2 < adds.length; a2++) {
                 let ad2 = adds[a2];
-                html += '<tr' + tipAttrs('Editorische Ergänzung', addTipBody(ad2)) + '>'
+                adHtml += '<tr' + tipAttrs('Editorische Ergänzung', addTipBody(ad2)) + '>'
                     + '<td' + sortAttr(ad2.text) + '>' + esc(ad2.text) + '</td>'
                     + '<td' + sortAttr(ad2.section) + '>' + esc(ad2.section || DASH) + '</td>'
                     + '</tr>';
             }
-            html += '</tbody></table></section>';
+            adHtml += '</tbody></table>';
+            panels.push({
+                key: 'adds',
+                label: 'Editorische Ergänzungen',
+                count: adds.length,
+                hint: 'Vom Editor sinngemäß in den Quellentext eingefügte Wörter.',
+                html: adHtml
+            });
         }
 
+        // Tabs-Strip rendern. Default-aktiv ist der erste Panel
+        // (typischerweise Entitäten). Bei nur einem Panel bleibt der
+        // Strip unsichtbar.
+        for (let i = 0; i < panels.length; i++) {
+            if (!panels[i].devOnly) { defaultActiveKey = panels[i].key; break; }
+        }
+        if (!defaultActiveKey && panels.length) defaultActiveKey = panels[0].key;
+
+        // Tab-Strip nur rendern, wenn mehr als ein sichtbares Panel
+        // vorhanden ist. Dev-Only-Panels (z.B. Dispositivformeln in der
+        // oeffentlichen Sicht) zaehlen erst, wenn .dev-mode aktiv ist.
+        let isDevMode = document.documentElement.classList.contains('dev-mode');
+        let visiblePanelCount = panels.filter(function(p) {
+            return !p.devOnly || isDevMode;
+        }).length;
+
+        let tabsHtml = '';
+        if (tabsEl && visiblePanelCount > 1) {
+            for (let i = 0; i < panels.length; i++) {
+                let p = panels[i];
+                let active = p.key === defaultActiveKey;
+                let cls = 'annotations-tab' + (active ? ' is-active' : '') + (p.devOnly ? ' dev-only' : '');
+                tabsHtml += '<button type="button" class="' + cls + '"'
+                    + ' role="tab"'
+                    + ' aria-selected="' + (active ? 'true' : 'false') + '"'
+                    + ' aria-controls="annotations-panel-' + esc(p.key) + '"'
+                    + ' data-tab-target="' + esc(p.key) + '"'
+                    + ' data-hint="' + escAttr(p.hint) + '">'
+                    + '<span class="annotations-tab-label">' + esc(p.label) + '</span>'
+                    + '<span class="annotations-tab-count">' + p.count + '</span>'
+                    + '</button>';
+            }
+        }
+        if (tabsEl) tabsEl.innerHTML = tabsHtml;
+
+        let html = '';
+        for (let i = 0; i < panels.length; i++) {
+            let p = panels[i];
+            let hidden = p.key === defaultActiveKey ? '' : ' hidden';
+            let cls = 'annotation-group' + (p.devOnly ? ' dev-only' : '');
+            html += '<section class="' + cls + '" id="annotations-panel-' + esc(p.key) + '"'
+                + ' data-tab-panel="' + esc(p.key) + '"'
+                + ' role="tabpanel"' + hidden + '>'
+                + p.html
+                + '</section>';
+        }
         bodyEl.innerHTML = html;
+
+        // Tab-Switch: nur ein Panel sichtbar, andere hidden. Aktiver
+        // Tab visuell hervorgehoben, aria-selected konsistent gepflegt.
+        if (tabsEl && visiblePanelCount > 1) {
+            let tabButtons = tabsEl.querySelectorAll('.annotations-tab');
+            tabButtons.forEach(function(btn) {
+                btn.addEventListener('click', function() {
+                    let target = btn.getAttribute('data-tab-target');
+                    tabButtons.forEach(function(b) {
+                        let isActive = b.getAttribute('data-tab-target') === target;
+                        b.classList.toggle('is-active', isActive);
+                        b.setAttribute('aria-selected', isActive ? 'true' : 'false');
+                    });
+                    let allPanels = bodyEl.querySelectorAll('[data-tab-panel]');
+                    allPanels.forEach(function(panel) {
+                        if (panel.getAttribute('data-tab-panel') === target) {
+                            panel.removeAttribute('hidden');
+                        } else {
+                            panel.setAttribute('hidden', '');
+                        }
+                    });
+                });
+            });
+        }
+
 
         // Attach column sorting to every freshly built table. Mechanik
         // analog zu profile.js: data-sort-value pro td, EdCore.compareValues
