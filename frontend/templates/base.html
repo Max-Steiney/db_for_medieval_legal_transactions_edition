@@ -67,11 +67,11 @@
                     {'label': 'Personen',       'href': root_path ~ '/register/persons.html'},
                     {'label': 'Organisationen', 'href': root_path ~ '/register/orgs.html'},
                 ]},
-                {'kind': 'dropdown', 'label': 'Analyse', 'children': [
+                {'kind': 'dropdown', 'label': 'Analyse', 'dev_only': True, 'children': [
                     {'label': 'Auswertungen', 'href': root_path ~ '/analysis/auswertungen.html'},
                     {'label': 'Abfragen',     'href': root_path ~ '/analysis/index.html'},
                 ]},
-                {'kind': 'dropdown', 'label': 'Exploration', 'children': [
+                {'kind': 'dropdown', 'label': 'Exploration', 'dev_only': True, 'children': [
                     {'label': 'Zeitstrom',         'href': root_path ~ '/exploration/zeitstrom.html'},
                     {'label': 'Personennetzwerk',  'href': root_path ~ '/exploration/personennetzwerk.html'},
                 ]},
@@ -84,7 +84,7 @@
             ] %}
             <div class="nav-links" id="nav-links">
                 {% for it in nav_entries -%}
-                    {% if it.kind == 'link' %}{{ nav_link(it.label, it.href) }}{% else %}{{ nav_dropdown(it.label, it.children) }}{% endif %}
+                    {% if it.kind == 'link' %}{{ nav_link(it.label, it.href) }}{% else %}{{ nav_dropdown(it.label, it.children, dev_only=it.dev_only|default(False)) }}{% endif %}
                 {%- endfor %}
                 <a href="{{ root_path }}/korb.html" class="nav-basket" aria-label="Datenkorb"
                    data-hint="Datenkorb: Sammlung von Quellen, Personen und Organisationen, lokal in diesem Browser. Klick &ouml;ffnet die Korb-Seite.">

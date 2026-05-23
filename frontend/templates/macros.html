@@ -9,8 +9,8 @@
 <a class="nav-item" href="{{ href }}">{{ label }}</a>
 {% endmacro %}
 
-{% macro nav_dropdown(label, entries) %}
-<div class="nav-dropdown">
+{% macro nav_dropdown(label, entries, dev_only=False) %}
+<div class="nav-dropdown{% if dev_only %} dev-only{% endif %}">
     <button type="button" class="nav-item nav-dropdown-trigger" aria-expanded="false" aria-haspopup="true">{{ label }} <span class="nav-dropdown-arrow">&#x25BE;</span></button>
     <div class="nav-dropdown-menu">
         {% for it in entries %}
