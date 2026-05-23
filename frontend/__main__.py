@@ -64,6 +64,19 @@ def main():
             "und zaehlt verschachtelte rs-events als volle Events."
         ),
     )
+    build_cmd.add_argument(
+        "--audience",
+        type=str,
+        choices=["public", "internal"],
+        default=None,
+        help=(
+            "Zielpublikum (siehe frontend/audiences.py): 'public' fuer "
+            "den Veroeffentlichungs-Stand (Default, schreibt nach docs/), "
+            "'internal' fuer Projektpartner und interne Pruefung "
+            "(schreibt nach docs-internal/ und blendet experimentelle "
+            "Sektionen und technische IDs ein)."
+        ),
+    )
 
     status_cmd = sub.add_parser("status", help="Show project status dashboard")
     status_cmd.add_argument(
@@ -77,18 +90,23 @@ def main():
 
     args = parser.parse_args()
 
-    # Stufe vor jedem Modulimport setzen: frontend.config und die
-    # Pipeline-Transformer lesen die abgeleiteten Env-Vars beim Import und
-    # leiten Output-Verzeichnis sowie Mentioned-Toggle daraus ab. Ohne
-    # explizite Wahl bleibt Stufe 1 (Publikation).
+    # Stufe und Audience vor jedem Modulimport setzen: frontend.config und
+    # die Pipeline-Transformer lesen die abgeleiteten Env-Vars beim Import
+    # und leiten Output-Verzeichnis sowie Mentioned-Toggle daraus ab. Ohne
+    # explizite Wahl bleiben Stufe 1 (Publikation) und Audience 'public'.
     if args.command == "build":
-        from frontend import stages
+        from frontend import stages, audiences
         stage_id = getattr(args, "stage", None)
         if stage_id is None and getattr(args, "include_mentioned", False):
             stage_id = 2
         if stage_id is None:
             stage_id = stages.DEFAULT_STAGE_ID
         stages.set_stage_env(stage_id)
+
+        audience_id = getattr(args, "audience", None)
+        if audience_id is None:
+            audience_id = audiences.DEFAULT_AUDIENCE_ID
+        audiences.set_audience_env(audience_id)
 
     from pipeline.utils.run_log import run_logged
 

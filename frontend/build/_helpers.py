@@ -26,6 +26,7 @@ from frontend.config import (
     RELEASED_PERIOD, is_released_corpus,
     released_period_label, unprocessed_gaps_label, max_year_with_extensions,
 )
+from frontend.audiences import active_audience
 from frontend.register import load_persons, load_orgs, load_places
 
 
@@ -179,6 +180,9 @@ def _init_jinja():
     env.globals["released_period"] = rp
     env.globals["released_period_label"] = released_period_label()
     env.globals["unprocessed_gaps_label"] = unprocessed_gaps_label()
+    audience = active_audience()
+    env.globals["audience"] = audience
+    env.globals["audience_id"] = audience["id"]
     env.filters["de_int"] = _format_de_int
     return env
 
