@@ -41,26 +41,27 @@ describe('document.js Tooltip-Body', () => {
 
 describe('document.js Annotationen-Tabelle: Markup-Konvention', () => {
     test('Tabellen tragen sortable-table-Klasse', () => {
-        // Jede der vier Untertabellen muss das CSS-Hook fuer
-        // .sortable-table tragen, damit Sort-Pfeile + Hover-Stil aus
-        // person.css greifen.
+        // Drei Sub-Tabellen (Entitaeten, Dispositivformeln,
+        // Editorische Ergaenzungen) tragen das CSS-Hook fuer
+        // .sortable-table, damit Sort-Pfeile und Hover-Stil greifen.
         const matches = SOURCE.match(/annotations-table sortable-table/g);
         expect(matches).not.toBeNull();
-        expect(matches.length).toBeGreaterThanOrEqual(4);
+        expect(matches.length).toBeGreaterThanOrEqual(3);
     });
 
     test('jede th hat data-sort', () => {
         // Heuristik: Anzahl <th-Tags muss die Anzahl data-sort-Attribute
-        // matchen (im Tabellenbau). Wir zaehlen <th scope="col" und
-        // data-sort=" inside the entities/events/triggers/adds tables.
+        // matchen (im Tabellenbau).
         const thCount = (SOURCE.match(/<th scope="col"/g) || []).length;
         const dataSortCount = (SOURCE.match(/data-sort="/g) || []).length;
         expect(thCount).toBeGreaterThan(0);
         expect(dataSortCount).toBeGreaterThanOrEqual(thCount);
     });
 
-    test('Type-Badge nutzt entity-badge-Klasse', () => {
-        const match = SOURCE.match(/entity-badge entity-badge--/);
+    test('Type-Marker als anno-type-dot vor der Nennform', () => {
+        // Loest die frueher separate "Typ"-Spalte ab. Annotations-Token-
+        // Farbe traegt die Typ-Information ohne Spaltenbreite zu kosten.
+        const match = SOURCE.match(/anno-type-dot anno-type-dot--/);
         expect(match).not.toBeNull();
     });
 
@@ -69,8 +70,10 @@ describe('document.js Annotationen-Tabelle: Markup-Konvention', () => {
         expect(match).toBeNull();
     });
 
-    test('ID-Spalte ist als xml-id-Kleintext unter dem Namen', () => {
-        const match = SOURCE.match(/anno-table-id/);
+    test('Tabs-Strip wird gerendert', () => {
+        // Drei Sub-Tabellen wandern in einen Tab-Toggle, sobald mehr als
+        // eine Tabelle Inhalt traegt.
+        const match = SOURCE.match(/class="annotations-tab/);
         expect(match).not.toBeNull();
     });
 
