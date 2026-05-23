@@ -51,13 +51,23 @@ def _load_person_stammdaten():
         pid = r.get("id", "")
         if not pid:
             continue
+        # Fallback _reg -> _orig: manche Editor:innen fuellen nur <orig>
+        # (z.B. wenn Quellen-Wortlaut = Normalform). Ohne Fallback
+        # verlieren ~100 Profile im freigegebenen Korpus Vor- oder
+        # Nachnamen im Header, obwohl Listing und Suche sie zeigen.
+        forename_reg = (r.get("forename_reg") or "").strip()
+        surname_reg  = (r.get("surname_reg") or "").strip()
+        addname_reg  = (r.get("addname_reg") or "").strip()
+        forename_orig = (r.get("forename_orig") or "").strip()
+        surname_orig  = (r.get("surname_orig") or "").strip()
+        addname_orig  = (r.get("addname_orig") or "").strip()
         out[pid] = {
-            "forename":      (r.get("forename_reg") or "").strip(),
-            "surname":       (r.get("surname_reg") or "").strip(),
-            "addName":       (r.get("addname_reg") or "").strip(),
-            "forename_orig": (r.get("forename_orig") or "").strip(),
-            "surname_orig":  (r.get("surname_orig") or "").strip(),
-            "addname_orig":  (r.get("addname_orig") or "").strip(),
+            "forename":      forename_reg or forename_orig,
+            "surname":       surname_reg  or surname_orig,
+            "addName":       addname_reg  or addname_orig,
+            "forename_orig": forename_orig,
+            "surname_orig":  surname_orig,
+            "addname_orig":  addname_orig,
             "sex":           (r.get("sex") or "").strip(),
             "note":          (r.get("note") or "").strip(),
             "death_iso":     (r.get("dead_before") or "").strip(),
@@ -112,19 +122,17 @@ def _display_name(s):
 def _orig_display(s):
     """Compact original-form display name; empty if no _orig form differs.
 
-    Concatenates the *_orig values when at least one of them is set and
-    differs from the regularised form. Used by the template to surface
-    the source spelling alongside the regularised header.
+    Per-Feld-Vergleich: ein _orig-Anteil wird nur aufgenommen, wenn er
+    sich von der Header-Form unterscheidet. Bei _reg-_orig-Fallback
+    (orig wurde als reg-Ersatz verwendet) waere der Vergleich identisch
+    und der Anteil entfaellt; "Im Quellen-Wortlaut" zeigt also nur noch
+    echte Schreibvarianten.
     """
-    fo = s.get("forename_orig", "")
-    so = s.get("surname_orig", "")
-    ao = s.get("addname_orig", "")
+    fo = s.get("forename_orig", "") if s.get("forename_orig", "") != s.get("forename", "") else ""
+    so = s.get("surname_orig", "")  if s.get("surname_orig", "")  != s.get("surname", "")  else ""
+    ao = s.get("addname_orig", "")  if s.get("addname_orig", "")  != s.get("addName", "")  else ""
     parts = [p for p in (fo, so, ao) if p]
-    if not parts:
-        return ""
-    reg = _display_name(s)
-    candidate = " ".join(parts)
-    return candidate if candidate != reg else ""
+    return " ".join(parts) if parts else ""
 
 
 def _file_to_source_lookup(reverse_index):
