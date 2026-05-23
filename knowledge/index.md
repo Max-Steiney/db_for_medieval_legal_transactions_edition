@@ -13,7 +13,7 @@ generated-with: Claude Code
 method:
   name: Promptotyping
   url: https://lisa.gerda-henkel-stiftung.de/digitale_geschichte_pollin
-related: [glossar, data, architecture, specification, ui-design, analyse, exploration, user-stories, journal]
+related: [glossar, data, architecture, specification, ui-design, analyse, exploration, user-stories, test-strategy, journal]
 ---
 
 # Wissensbasis
@@ -31,6 +31,7 @@ Die kanonischen Definitionen der Fachbegriffe (Quellenkorpus, Quelle, Event, Rec
 - [[analyse]] — quantitativer Zweig unter `/analysis/`: Auswertungen und Abfragen.
 - [[exploration]] — visuell-interaktiver Zweig unter `/exploration/`: Zeitstrom und Personennetzwerk.
 - [[user-stories]] — Forschungsszenarien aus Historiker*innen-Perspektive: Anwendungs-Stories, konkrete Forschungsfragen aus der editorischen Praxis, granulare Operationen, wissenschaftliche Absicherung.
+- [[test-strategy]] — vier Säulen der Qualitätssicherung (Pytest, Verifikation, JS-Tests, Sichtprüfung), Pattern „Code plus Test im selben Commit", Datenfeld-Coverage als nächster Ausbauschritt.
 - [[journal]] — einziges chronologisches Dokument der Wissensbasis.
 
 ## Beziehungen zu anderen Dokumentationsorten

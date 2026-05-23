@@ -5,9 +5,9 @@ project:
   repository: https://github.com/chpollin/db_for_medieval_legal_transactions_edition
 status: active
 language: de
-version: 0.2
+version: 0.3
 created: 2026-02-19
-updated: 2026-05-16
+updated: 2026-05-23
 authors: [Christopher Pollin]
 generated-with: Claude Code
 method:
@@ -53,6 +53,20 @@ Eine TEI-Änderung wirkt erst, wenn alle drei Schichten neu laufen: erst Pipelin
 
 Der Frontend-Build kennt vier benannte Stufen, die Korpus-Auswahl und Annotationsebenen als zitierbares Profil bündeln (`frontend/stages.py`). CLI-Auslöser ist `--stage N` (1 bis 4); `--include-mentioned` bleibt als Alias auf Stufe 2 erhalten. Jede Stufe schreibt in ein eigenes Output-Verzeichnis (`docs/`, `docs-with-mentioned/`, `docs-full/`, `docs-max/`) und setzt davon abgeleitete Env-Vars für die Pipeline-Transformer. Konzept und vollständige Tabelle in [[specification#Stufenmodell für Korpus-Auswahl und Annotationsebenen]]; Mapping auf den Datenbestand in [[data#Stufenmodell für Korpus-Auswahl]].
 
+## Audience-Schicht für öffentliche und interne Sicht
+
+Orthogonal zum Stufenmodell führt der Build eine zweite Achse, die unterscheidet, *für wen* der Output gedacht ist. CLI-Auslöser ist `--audience public|internal` (Default `public`). Die Mechanik lebt in `frontend/audiences.py` analog zu `frontend/stages.py` und setzt `FRONTEND_AUDIENCE` als Env-Var. Internal hängt das Suffix `-internal` an das Stage-Output-Verzeichnis (Stufe 1 plus internal landet in `docs-internal/`), Public schreibt unverändert in das Stufen-Verzeichnis.
+
+Aufgaben der Audience-Schicht. Sie steuert build-zeit, was überhaupt in den Output gelangt. Sektionen wie Analyse und Exploration werden in der öffentlichen Variante über Template-Gates ausgeblendet, der Aggregator filtert technische IDs (`pe__`-, `org__`-, `ev__`-IDs) aus den JSONs, ein Banner markiert die interne Variante visuell. Die Audience ist als Jinja-Global auf allen Templates verfügbar und als `data-audience`-Attribut auf `<body>` für CSS-Hooks.
+
+Die Achse ist orthogonal zum Stufenmodell. Stufe entscheidet, welche Subkorpora und Annotationsebenen drinstecken; Audience entscheidet, welche Sektionen und Datenpunkte für die Zielgruppe sichtbar sind. Die Kombinationen `Stufe × Audience` ergeben acht prinzipielle Output-Stände, in der Praxis publiziert wird nur Stufe 1 Public; die übrigen sind editorische Werkzeuge. `.gitignore` hält alle Audience-Internal-Verzeichnisse aus dem Repo.
+
+## Dev-Mode-Schalter als komplementäre Client-Schicht
+
+Neben dem build-zeit-Filter über Audience existiert ein client-zeit-Schalter über die URL. `?dev=1` an einer beliebigen Quellen-Detailseite setzt `.dev-mode` auf das `<html>`-Element. CSS-Selektor `.dev-mode .dev-only` macht alle Elemente mit der Klasse `.dev-only` sichtbar, ergänzt um einen gelben gestrichelten Rahmen mit „Entwicklung"-Label. Default-Ansicht (ohne URL-Parameter) hat `.dev-only`-Elemente auf `display: none`.
+
+Die Trennung ist klar. Audience entscheidet, *ob* etwas im Build enthalten ist; Dev-Mode entscheidet, *ob* enthaltene Elemente sichtbar geschaltet werden, ohne den Build umzustellen. Erstes Anwendungsbeispiel ist die Dispositivformeln-Sub-Tabelle in der Annotationsansicht. Mechanik ist universell anwendbar, jedes UI-Element kann mit `.dev-only` markiert werden, ohne dass eine eigene Render-Schiene gebaut werden muss.
+
 ## Test-Strategie
 
 Die Qualitätssicherung steht auf drei Säulen, die unterschiedliche Fehlerklassen abdecken und sich nicht ersetzen.
@@ -68,9 +82,11 @@ Die Qualitätssicherung steht auf drei Säulen, die unterschiedliche Fehlerklass
 
 Das Test-Set nutzt dieselbe Technologie wie die Pipeline (Python, lxml), ist aber bewusst ein separater Codepfad ohne geteilte Aggregations-Funktionen. Die Trennung ist die Verifikationsgarantie: Eine Zahl, die aus derselben Pipeline stammt, die sie angeblich verifiziert, verifiziert sich selbst nicht. Reports sind versioniert in `verification/reports/` (Markdown + JSON). Statuswerte und Befund-Register: `verification/README.md` und `verification/findings.md`. Begründung in [[specification#Verifizierbarkeit und Verifikations-Test-Set]].
 
+**JS-Tests** (`frontend/tests/js/`) testen die Browser-Logik der page-spezifischen Module: URL-Sync der Abfrage-Page, Core-Helpers, Document-spezifische Annotation-Builder. Decken den Teil ab, den statische HTML-Snapshots nicht erreichen.
+
 **Manuelle Sichtprüfung** deckt ab, was sich nicht automatisieren lässt: Layout, Tooltip-Positionierung, Druckansicht, Lesefluss. Sie ist Teil jeder größeren UI-Änderung, nicht der CI.
 
-Die Säulen sind komplementär. Pytest fängt Code-Regressionen, Verifikation fängt Daten- und Rendering-Drift, Sichtprüfung fängt visuelle Brüche. Eine Änderung an Daten oder Templates wird typischerweise von zwei der drei Säulen gesehen.
+Die vier Säulen sind komplementär. Pytest fängt Code-Regressionen, Verifikation fängt Daten- und Rendering-Drift, JS-Tests fangen Browser-Logik-Regressionen, Sichtprüfung fängt visuelle Brüche. Eine Änderung an Daten oder Templates wird typischerweise von zwei oder drei Säulen gesehen. Pattern und Detailkonzept in [[test-strategy]].
 
 ## Templates
 
@@ -107,6 +123,14 @@ Die Daten-Visualisierungs-Seiten unter `/analysis/` und `/exploration/` teilen e
 Eine Seite wird damit zu einem dünnen Orchestrator: sie definiert ihren eigenen State, schreibt ihre page-spezifischen Aggregations- und Renderer-Funktionen, und ruft in `DOMContentLoaded` die `viz-core`-Bindings. Eine neue visuelle Sub-Seite (Personen-Netzwerk, Karten, Sankey) muss das Filter-Boilerplate nicht wiederholen.
 
 Begründung dieser Trennung ist dieselbe wie die zwischen Pipeline und Aggregator: Wiederverwendbarkeit und ein einziger Ort für jede Konvention. Eine Änderung am Active-Filter-Strip oder an der CSP-Style-Projektion greift in allen Visualisierungen gleichzeitig.
+
+## Geteilte Tabellen-Schicht
+
+Die Tabellen-Komponenten im Frontend (Annotationstabelle auf Quellen-Detailseiten, Personen- und Organisations-Register-Liste, Profil-Tabellen, Datenkorb-Tabelle, Konstellations-Trefferliste, Quellen-Liste) folgen denselben Konventionen für Cell-Renderer, sind aber heute über mehrere page-spezifische JS-Module verteilt. Ein geteiltes Modul `table-core` bündelt die wiederkehrenden Bausteine analog zu `viz-core`.
+
+Drei Klassen von Bausteinen. Erstens Cell-Renderer für die häufigen Datenpunkte: `personLink` und `orgLink` für die Profil-Verlinkung, `typeMarker` als farbiger Punkt vor der Nennform, `rolePill` als gefüllte Akzentblau-Pille für kontrolliertes Vokabular, `attrTags` als umrandete Tags pro Wert für quellennahe Beischriften, `sexLabel` mit Text-Modus für Tabellen-Zellen und Glyph-Modus für Visualisierungs-Achsen, `dateDisplay` als lesbares Format mit ISO als Sortier-Wert. Zweitens die Sortier-Logik mit dem `groupAware`-Flag, das die jetzt page-lokale Annotationstabellen-Sortierung in eine geteilte Funktion zieht. Drittens die CSS-Klassen für Pillen, Tags und Marker, die aus den page-spezifischen Stylesheets nach `components.css` ziehen.
+
+Die Konsolidierung adressiert einen konkreten Konsistenz-Befund. Die Geschlechts-Beschriftung lebt aktuell an sechs Stellen mit drei abweichenden Schreibweisen für den Unbekannt-Fall (Halbgeviertstrich, „ohne Angabe", „Geschlecht unbestimmt"). Eine geteilte `sexLabel`-Funktion mit konsequentem Fallback schließt die Lücke und verankert die UI-Konsistenz-Forderung aus [[ui-design#Begriffs- und Label-Konsistenz]] strukturell.
 
 ## URL-State als Forschungsstand
 

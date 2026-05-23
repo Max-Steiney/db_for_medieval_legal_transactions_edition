@@ -51,21 +51,24 @@ verification/             unabhängiges Verifikations-Test-Set (Python, lxml)
 **Frontend-Änderungen** (Templates, Build-Code, Content, Assets) gehören hierher:
 
 ```
-python -m frontend build                # baut docs/ aus aktuellem Pipeline-Output (Stufe 1)
-python -m frontend build --single FILE  # einzelne Quelle
-python -m frontend build --stage N      # Stufenmodell, N in 1..4 (siehe frontend/stages.py)
-python -m frontend build --include-mentioned   # Alias fuer --stage 2, schreibt nach docs-with-mentioned/
-python scripts/build_all_stages.py      # Pipeline+Frontend fuer alle Stufen am Stueck
-python scripts/build_all_stages.py --only 1 3   # nur ausgewaehlte Stufen
-python -m pytest frontend/tests/        # Frontend-Tests (kompakt: -q --tb=no --no-header)
-python -m verification.run              # Stufe 1: TEI -> JSON-Aggregate
-python -m verification.run --html       # Stufe 2: Pipeline-CSV -> gerendertes HTML
-python -m verification.run --tei-html   # Stufe 3: TEI direkt -> gerendertes HTML
-python -m verification.run --all        # alle drei Stufen
-python -m verification.run --inventory  # TEI-Element-Inventar pro Subkorpus
+python -m frontend build                          # baut docs/ aus aktuellem Pipeline-Output (Stufe 1, public)
+python -m frontend build --single FILE            # einzelne Quelle
+python -m frontend build --stage N                # Stufenmodell, N in 1..4 (siehe frontend/stages.py)
+python -m frontend build --audience public|internal   # Sichtbarkeits-Achse, Default public
+python -m frontend build --include-mentioned      # Alias fuer --stage 2, schreibt nach docs-with-mentioned/
+python scripts/build_all_stages.py                # Pipeline+Frontend fuer alle Stufen am Stueck
+python scripts/build_all_stages.py --only 1 3     # nur ausgewaehlte Stufen
+python -m pytest frontend/tests/                  # Frontend-Tests (kompakt: -q --tb=no --no-header)
+python -m verification.run                        # Stufe 1: TEI -> JSON-Aggregate
+python -m verification.run --html                 # Stufe 2: Pipeline-CSV -> gerendertes HTML
+python -m verification.run --tei-html             # Stufe 3: TEI direkt -> gerendertes HTML
+python -m verification.run --all                  # alle drei Stufen
+python -m verification.run --inventory            # TEI-Element-Inventar pro Subkorpus
 ```
 
-`--stage N` setzt `FRONTEND_STAGE=N` und davon abgeleitete Env-Vars. Stufe 1 (Publikation) ist Default und schreibt nach `docs/`. Stufe 2 (Vergleich mit mentioned events) schreibt nach `docs-with-mentioned/`. Stufe 3 (`docs-full/`) ist heute deckungsgleich mit Stufe 1, weil alle `_ready`-Subkorpora freigegeben sind; die Stufe bleibt als Anschluss fuer kuenftige nicht-released `_ready`-Subkorpora. Stufe 4 (`docs-max/`) nimmt zusaetzlich die nicht-`_ready`-Subkorpora auf. Vor einem Vergleichsbuild muss die Pipeline einmal mit dem Mentioned-Filter laufen, damit auch die CSVs verschachtelte Events als volle Events fuehren: `PIPELINE_INCLUDE_MENTIONED_EVENTS=1 python -m pipeline transform`. Mit dem Helper-Skript erledigt sich das pro Stufe automatisch. Konzept und Anforderung in [`knowledge/specification.md`](knowledge/specification.md) unter „Stufenmodell fuer Korpus-Auswahl und Annotationsebenen".
+`--stage N` setzt `FRONTEND_STAGE=N` und davon abgeleitete Env-Vars. Stufen schreiben in eigene Output-Verzeichnisse (`docs/`, `docs-with-mentioned/`, `docs-full/`, `docs-max/`). Vor einem Vergleichsbuild muss die Pipeline einmal mit dem Mentioned-Filter laufen (`PIPELINE_INCLUDE_MENTIONED_EVENTS=1 python -m pipeline transform`); mit dem Helper-Skript automatisch. Konzept und vollständige Stufentabelle in [`knowledge/specification.md`](knowledge/specification.md) unter „Stufenmodell fuer Korpus-Auswahl und Annotationsebenen".
+
+`--audience public|internal` (Default `public`) ist die zweite, orthogonale Achse. Public schreibt unverändert in das Stufen-Verzeichnis, internal hängt `-internal` an (Stufe 1 plus internal landet in `docs-internal/`). Die interne Variante behält editorisch relevante Sektionen, technische IDs und Aggregat-Achsen, die der öffentliche Build filtert. Daneben existiert ein Client-Schalter: `?dev=1` an einer beliebigen Quellen-Detailseite setzt `.dev-mode` auf `<html>` und macht `.dev-only`-Elemente sichtbar mit gelbem Rahmen. Konzept und Begründung in [`knowledge/specification.md`](knowledge/specification.md) unter „Öffentliche versus interne Sicht in zwei Schichten".
 
 Test-Strategie und Abgrenzung der drei Säulen (pytest, Verifikation, Sichtprüfung): [`knowledge/architecture.md`](knowledge/architecture.md) Abschnitt _Test-Strategie_.
 
@@ -101,7 +104,17 @@ Gestaltungsprinzip: maximaler Informations-Output. Nachvollziehbarkeit vor reduz
 - **Keine Annahmen:** Wenn Kontext fehlt, recherchieren oder rückfragen — nicht raten.
 - **Vor Änderungen:** prüfen, ob Frontend (hier) oder Datengrundlage (Schwester-Repo) betroffen ist. `docs/` nicht direkt editieren.
 - **Keine UI-Inkonsistenzen:** Derselbe Begriff hat im gesamten UI dasselbe Label. Labels für gleiche Daten-Felder werden über Org-Profil, Personen-Profil, Sidebar, Tooltips synchron gehalten. Detail in [`knowledge/ui-design.md`](knowledge/ui-design.md) unter „Begriffs- und Label-Konsistenz".
+- **Sichtbarkeits-Konvention:** Elemente, die nur in der internen Sicht erscheinen sollen, werden mit der CSS-Klasse `.dev-only` markiert, nicht mit eigenen Render-Branches. Default-Sicht blendet sie aus, `?dev=1` an der URL macht sie mit gelbem Rahmen sichtbar. Strukturelle Entfernung aus dem Build (statt nur Verbergen) geht über den Audience-Track (`--audience public|internal`), nicht über `.dev-only`. Konzeptuelle Trennung in [`knowledge/specification.md`](knowledge/specification.md) unter „Öffentliche versus interne Sicht in zwei Schichten".
+- **Keine technischen IDs im Public-UI:** Personen-, Org- und Event-IDs (`pe__...`, `org__...`, `ev__...`) erscheinen in der öffentlichen Sicht nicht im sichtbaren Text. Sie leben weiter im URL-Slug und in `href`/`data-ref`-Attributen für Zitierbarkeit und Verlinkung. Im internen Build und mit `?dev=1` sichtbar. Beschluss: Stakeholder-Protokoll 18.05.2026 A.3.2.
+- **Macros mit `with context` importieren**, wenn sie `root_path` oder andere Template-Variablen aus dem Kontext nutzen. `tip_glossary` ist das prominente Beispiel; ohne `with context` produziert es absolute `/project/...`-Links, die auf GitHub Pages mit Subpfad ins Leere zeigen. Macros, die `root_path` als expliziten Parameter nehmen (`doc_nav`, `funding_table`, `occ_table`), sind nicht betroffen.
+- **Test-Pair pro UI-Änderung:** Jede UI- oder Daten-Änderung bekommt im selben Commit einen Regression-Test in `frontend/tests/`. Pattern und Begründung in [`knowledge/test-strategy.md`](knowledge/test-strategy.md). Wenn kein Test sinnvoll ist (rein visuelle Politur), in der Commit-Message vermerken.
 - **Subagents auf Windows:** Worktrees brauchen `git config --global core.longpaths true`. Sonst scheitern Subagents am 260-Zeichen-Limit, weil die langen Org-Profil-Dateinamen (`org__wien-st_stephan-kapelle_...`) plus `.claude/worktrees/agent-<id>/`-Pfade die Grenze sprengen.
+
+## Stakeholder-Protokolle
+
+Aktive Stakeholder-Entscheidungen, deren Bezug man pro Task kennen muss.
+
+- **18.05.2026 (Lutter, Handl, Siegl, Steinböck):** Prio 1 Analyse und Exploration aus öffentlicher Sicht ausblenden, ausschließlich freigegebene Korpora (QGW bis 1414, StB Bd. 1), gendergerechte Sprache, Konsistenz Korpus vs. Frontend, Suchlogik. Prio 2 relationale Verknüpfungen, Tabellen-Erklärungen, visuelle Lesbarkeit der Annotationen, problematische Analysekategorien. Pflicht-Bezug: jede Frontend-Task prüft, ob sie Punkt aus diesem Protokoll betrifft.
 
 ## Vor-Start-Checkliste
 
@@ -110,10 +123,12 @@ Gestaltungsprinzip: maximaler Informations-Output. Nachvollziehbarkeit vor reduz
 | Titel/Nav/Footer ändern | `frontend/templates/base.html` |
 | Startseite-Inhalt ändern | `frontend/templates/startseite.html` |
 | Quellen-Übersicht (Filter, Chips, Tabelle) | `frontend/templates/index.html`, `frontend/static/js/index.js` |
+| Annotations-Block auf Quellen-Detailseite (Tabs, Sub-Tabellen, Section-Header) | `frontend/static/js/document.js`, `frontend/static/css/document.css`; UI-Konvention in [`knowledge/ui-design.md`](knowledge/ui-design.md) unter „Annotations-Block" und „Tabellen-Schicht" |
+| Sichtbarkeit öffentlich oder intern ändern | `frontend/audiences.py` (Audience-Achse, Build-zeit) für strukturelle Entfernung; CSS-Klasse `.dev-only` plus `?dev=1`-Schalter (Client-Schicht) für Verbergen im selben Build. Konzept in [`knowledge/specification.md`](knowledge/specification.md) unter „Öffentliche versus interne Sicht in zwei Schichten" |
 | Auswertungen-/Zeitstrom-/neue Visualisierungs-Sub-Seite | `frontend/static/js/viz-core.js` zuerst (geteilte Helfer: Range-Slider, Active-Filter-Strip, URL-Sync, Drill-Overlay, JSON-Loader, Domain-Konstanten); page-spezifischer Renderer ruft die Bindings in `DOMContentLoaded` |
 | Datenkorb-Anbindung (jede neue Quellen-Liste) | `DataBasket.buttonHTML({id, label, url, date, coll, regest})` ins Zeilen-Markup; Click-Handling über globale Event-Delegation in `frontend/static/js/basket.js` |
 | Provenienz- oder Glossar-Tooltip einsetzen | `frontend/templates/macros.html` (`prov_stat`, `prov_popover`, `prov_ratio_stat`, `glossary_tip`) |
-| Faksimile-Viewer (Zoom, Pan, Rotation) | `frontend/static/js/facsimile.js` (OpenSeadragon-Init, Bindings an Toolbar); Container und Toolbar in `frontend/templates/document.html` unter `doc-facs-panel`; Layout in `frontend/static/css/document.css`. Lib lokal gevendoret unter `frontend/static/vendor/openseadragon/`; bei Update Datei tauschen und `?v=`-Query im Template anpassen. |
+| Faksimile-Viewer (Zoom, Pan, Rotation) | `frontend/static/js/facsimile.js` plus `doc-facs-panel` in `frontend/templates/document.html`; Lib vendoret unter `frontend/static/vendor/openseadragon/`. UI-Detail in [`knowledge/ui-design.md`](knowledge/ui-design.md) unter „Quellen-Detailseite mit Text-Bild-Synopse" |
 | Pro-Quelle-Daten (Personen/Events/Datum) | `frontend/aggregator.py::aggregate_docs` schreibt `docs/data/docs_aggregate.json` |
 | Erschließungsform | aus `events_in_sources.csv:event_in` aggregiert (abstract / seal / entry / nota); keine Heuristik im Frontend |
 | Annotationsrichtlinien (lokale Kopie) | `frontend/content/project/edition-guidelines.md`; kanonische Quelle im Schwester-Repo (`../db_for_medieval_legal_transactions/edition_guidelines.md`), Kopie bei Bedarf synchronisieren |
@@ -123,4 +138,5 @@ Gestaltungsprinzip: maximaler Informations-Output. Nachvollziehbarkeit vor reduz
 | Register | `../db_for_medieval_legal_transactions/indices/` |
 | Pipeline / CSV-Format | `../db_for_medieval_legal_transactions/knowledge/architecture.md` |
 | Verifikations-Test-Set | [`verification/README.md`](verification/README.md) (drei Coverage-Stufen, Run-Kommandos, Statuswerte) und [`verification/findings.md`](verification/findings.md) (aktive Befunde) |
+| Test-Strategie und Pattern „Code plus Test im selben Commit" | [`knowledge/test-strategy.md`](knowledge/test-strategy.md) |
 | Konzeptionelle Wissensbasis | [`knowledge/`](knowledge/) — Einstieg über `knowledge/index.md` |

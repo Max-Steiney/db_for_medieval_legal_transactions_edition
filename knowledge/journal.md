@@ -5,7 +5,7 @@ project:
   repository: https://github.com/chpollin/db_for_medieval_legal_transactions_edition
 status: active
 language: de
-version: 0.3
+version: 0.4
 created: 2026-02-19
 updated: 2026-05-23
 authors: [Christopher Pollin]
@@ -23,6 +23,34 @@ Arbeitstagebuch. Einziges chronologisches Dokument der Wissensbasis.
 Format pro Eintrag: Datum, Kurztitel, ein bis drei Absätze. Was umgesetzt wurde, warum (oft mit verworfener Alternative), wo das Detail zeitlos abgelegt ist. Was nicht rein darf: Personennamen, Meeting-Protokolle, Projektmanagement-Stand, Quantitäten des Korpus, Test- und Build-Zahlen.
 
 Einträge in umgekehrt chronologischer Reihenfolge, neueste oben.
+
+## 2026-05-23 Public-UI-Politur und Test-Strategie
+
+Vier Tasks aus dem Stakeholder-Protokoll 18.05.2026 umgesetzt. Erstens Glossar-Links in der Korpora-Übersicht auf der Startseite repariert: das Macro `tip_glossary` zog `root_path` aus dem Template-Kontext, war aber ohne `with context` importiert und produzierte daher absolute Pfade, die auf GitHub Pages mit Subpfad ins Leere zeigten. Zweitens die Disp-Vorschau im Annotations-Section-Header als Quellenzitat visuell markiert: Counter rechts oben in eigener schmaler Header-Zeile, Quellenzitat in eigener zentrierter Zeile darunter, deutsche Anführungszeichen via `<q lang="de">`, gedämpft grau. Klarer Bruch zur kräftigen Inline-Trigger-Farbe im Volltext. Detail in [[ui-design#Section-Header in Tabellen mit Quellenzitat]].
+
+Drittens die Datenkorb-Seite mit einem mehrteiligen Erklär-Block (Persistenz, gesammelt vs. abgeleitet, CSV-Export) ergänzt. Export-Knöpfe paarweise geschärft („Nur gesammelte exportieren" gegen „Mit abgeleiteten exportieren"). Spalte „Aktiv" in „Datum der Quellen" umbenannt, konsistent mit Personen- und Org-Profil. Geklärt: Topbar-Counter summiert alle Einträge gesammelt plus abgeleitet über alle drei Sektionen, kein Bug, dynamischer Tooltip am Korb-Button erklärt das. Detail in [[ui-design#Datenkorb-Erklär-Pattern]].
+
+Viertens technische IDs (`pe__`, `org__`, `ev__`) aus der öffentlichen Sicht entfernt: ID-Pair im Meta-Strip der Profile, „ID: ..."-Zeilen in Annotations-Tooltips und Drill-down-Pills, `[xml_id]`-Suffix in Body-Annotations-Tooltips, Event-ID als alleiniger Tooltip-Titel durch sprechenden Fallback ersetzt. Zitierbarkeit bleibt über URL-Slug und HTML-Attribute. In `?dev=1` und im Audience-Internal-Build weiter sichtbar. Detail in [[ui-design#Gestaltungshaltung]] (überarbeitete zweischichtige Lesart).
+
+Im selben Zug ein neues Knowledge-Dokument [[test-strategy]] angelegt, das die bisher in [[architecture#Test-Strategie]] verstreute Linie konsolidiert: vier Säulen (Pytest, Verifikation, JS-Tests, Sichtprüfung), Pattern „Code plus Regression-Test im selben Commit", Datenfeld-Coverage als nächster Ausbauschritt. Die bisherige drei-Säulen-Beschreibung in [[architecture]] um die JS-Tests-Säule erweitert.
+
+## 2026-05-23 Annotations-Block-Politur, Tab-Konsolidierung, Dev-Mode-Schalter
+
+Der Annotations-Block auf der Quellen-Detailseite war ontologisch heterogen (Entitäten, Dispositivformeln, Editorische Ergänzungen, Events) und wurde als drei untereinander stehende Sub-Tabellen plus separater Counter-Pille gerendert. Stakeholder-Befund war „unklar oder nicht notwendig", insbesondere fehlte eine klare visuelle Trennung zwischen kontrolliertem Vokabular und quellennaher Beischrift. Umstellung auf einen Tab-Toggle, der genau eine Sub-Tabelle gleichzeitig sichtbar macht. Block-Header reduziert auf den reinen Titel, Counter wandern in die Tab-Pillen. Bei nur einer sichtbaren Tab bleibt der Tab-Strip ausgeblendet.
+
+Detail-Politur. Typ-Spalte raus, dafür ein farbiger Punkt als Type-Marker vor der Nennform (Annotations-Token-Farbe pro Person/Org/Ort). Funktionsrolle als gefüllte Akzentblau-Pille, Attribute als umrandete Tags pro Wert. Geschlecht ausgeschrieben „weiblich"/„männlich"/Halbgeviertstrich, kein Glyph mehr. Section-Header pro Event zeigt eine kursive Disp-Vorschau mit erstem und letztem Trigger mit Auslassung dazwischen (z. B. „stiftet … bestellt") plus „N Genannte" rechts. Die rohe `ev__`-ID ist nicht mehr sichtbar.
+
+Im selben Zug entstand eine universelle `.dev-only`-Mechanik mit URL-Schalter `?dev=1`. Default-Sicht blendet markierte Elemente aus, Dev-Mode macht sie sichtbar mit gelbem gestrichelten Rahmen und „Entwicklung"-Label. Erste Anwendung ist die Dispositivformeln-Sub-Tabelle, die editorisch nützlich aber öffentlich überflüssig ist. Die Mechanik ist komplementär zum parallel laufenden Audience-Track ([[specification#Öffentliche versus interne Sicht in zwei Schichten]]). Detail in [[ui-design#Annotations-Block]] und [[architecture#Geteilte Tabellen-Schicht]].
+
+Befund am Rande. Die Geschlechts-Beschriftung lebt an sechs Stellen im Frontend mit drei abweichenden Fallback-Strings („–", „ohne Angabe", „Geschlecht unbestimmt"). Eine geteilte Tabellen-Schicht (`table-core`) ist geplant, die diese Inkonsistenz strukturell schließt.
+
+## 2026-05-23 Audience-Schalter (Schritt 1 von 4)
+
+Neuer CLI-Schalter `python -m frontend build --audience public|internal`, Default public. Setzt `FRONTEND_AUDIENCE` als Env-Var, analog zum `--stage`-Pattern. Public schreibt unverändert in das Stage-Output-Verzeichnis, internal hängt `-internal` an (Stufe 1 plus internal landet in `docs-internal/`). Mechanik in `frontend/audiences.py`, Audience als Jinja-Global und als `data-audience` auf `<body>`. Roter Banner „Interne Version" markiert die interne Variante. Detail in [[architecture#Audience-Schicht für öffentliche und interne Sicht]] und [[specification#Öffentliche versus interne Sicht in zwei Schichten]].
+
+Schritt 1 löst nur die Build-Achse selbst. Schritt 2 wird die Sektionen Analyse und Exploration audience-gaten (Nav-Items raus, Sektion-Templates per Audience-Bedingung). Schritt 3 entfernt technische IDs aus der öffentlichen Variante auf Aggregator-Ebene, damit `pe__`/`org__`/`ev__` nicht in die JSONs leaken. Schritt 4 ist Datenkorb-Polish (der Datenkorb bleibt öffentlich, braucht aber bessere Erklärung).
+
+Verworfen wurde eine reine Stufenmodell-Erweiterung (Stufe 5 als „public"). Audience ist orthogonal zum Stufenmodell, nicht eine weitere Stufe. Die Kombination `Stufe × Audience` macht beide Achsen einzeln zitierbar; eine zusammengelegte Achse würde die Begründung verwischen.
 
 ## 2026-05-23 Faksimile-Viewer auf OpenSeadragon umgestellt
 

@@ -5,9 +5,9 @@ project:
   repository: https://github.com/chpollin/db_for_medieval_legal_transactions_edition
 status: active
 language: de
-version: 0.2
+version: 0.3
 created: 2026-02-19
-updated: 2026-05-16
+updated: 2026-05-23
 authors: [Christopher Pollin]
 generated-with: Claude Code
 method:
@@ -27,15 +27,33 @@ Die Oberfläche folgt einer wissenschaftlichen Lese-Gravitation. Serifen-Typogra
 
 Das **Leitprinzip ist maximaler Informations-Output**: Nutzerinnen arbeiten mit den Daten, sie konsumieren sie nicht. Herkunftsanzeigen, Filterzustände und die aktive Zählebene werden nicht versteckt, um die Oberfläche „sauber" wirken zu lassen — eine Reduktion, die Herkunft verschleiert, wäre fachlich dysfunktional. Dichte Darstellung und hierarchische Gliederung sind beide gefragt, nicht gegeneinander.
 
-Eine zweischichtige Lesart durchzieht das UI: technische Identifikatoren (Datei-Schlüssel, Personen-IDs, TEI-Annotationen) koexistieren mit menschenlesbaren Labels. Beide Schichten sind sichtbar.
+Eine zweischichtige Lesart durchzieht das UI: technische Identifikatoren (Datei-Schlüssel, TEI-Annotationen, Korpus-Pfade) koexistieren mit menschenlesbaren Labels. Die öffentliche Sicht zeigt die menschenlesbare Schicht; die technischen Personen-, Org- und Event-IDs (`pe__...`, `org__...`, `ev__...`) leben weiter im URL-Slug und in HTML-Attributen für Zitierbarkeit und Verlinkung, aber nicht im sichtbaren Text. Die interne Sicht (`?dev=1` oder Audience-Internal-Build) blendet sie ein. Beschluss: Stakeholder-Protokoll 18.05.2026 A.3.2.
 
-Siehe [[specification#Maximaler Informations-Output als Gestaltungsleitlinie]].
+Siehe [[specification#Maximaler Informations-Output als Gestaltungsleitlinie]] und [[architecture#Audience-Schicht für öffentliche und interne Sicht]].
 
 ## Begriffs- und Label-Konsistenz
 
 Ein Feld oder Begriff trägt im gesamten UI dieselbe Bezeichnung. Liegt dieselbe Datenlogik in mehreren Ansichten (z. B. min und max der Quellen-Jahre einer Entität auf Org-Profil, Personen-Profil und Sidebar-Filter), muss das Label überall identisch sein, einschließlich Tooltip-Titeln und Hilfe-Texten. Inkonsistenzen sind Bug, nicht Designfreiheit. Wer ein Label an einer Stelle ändert, prüft alle anderen Stellen mit.
 
 Begründung: Wechselnde Bezeichnungen für dieselbe Sache zwingen Forschende, jedes Mal neu zu prüfen, ob dasselbe gemeint ist. Das bricht die Lese-Gravitation und führt zu Fehl-Interpretationen.
+
+Konkrete Beispiele aus der Pflege: „Datum der Quelle" (bei einer Quelle) bzw. „Datum der Quellen" (bei mehreren) für die Min-/Max-Spanne der ISO-Jahre einer Entität, identisch in Org-Profil, Personen-Profil, Personen-Datenkorb-Tabelle und Sidebar-Filter beider Register. „Empfänger*in", „Aussteller*in", „Zeug*in", „Sonstige" als kontrolliertes Rollenvokabular in Profil-Header, Annotations-Tabelle, Drill-Down-Pills und Filter-Chips.
+
+## Section-Header in Tabellen mit Quellenzitat
+
+Eine Tabellen-Gruppen-Überschrift, die ein Quellenzitat trägt (z. B. die Dispositiv-Vorschau pro Rechtsgeschäft in der Annotations-Tabelle), folgt einer zweischichtigen Anordnung. Oben rechts ein schmaler Header-Streifen mit Meta-Information (Counter, gegebenenfalls ein Statusmarker). Darunter eine eigene zentrierte Zeile mit dem Quellenzitat, in deutschen Anführungszeichen „..." über `<q lang="de">`, kursiv, gedämpft grau, klar abgesetzt von der kräftigen Inline-Trigger-Farbe im Volltext.
+
+Begründung: das Zitat ist Quellentext und keine UI-Aussage. Wenn es mit dem Counter in einer Zeile mitläuft, vermischt sich beides optisch. Die Zentrierung und Anführungszeichen markieren es eindeutig als Zitat; die gedämpfte Farbe verhindert die Verwechslung mit den kräftigeren Inline-Annotationen im Volltext darüber.
+
+Fallback bei fehlendem Quellentext (häufig im Stadtbuch-Korpus): die Quote-Zeile wird gar nicht erst gerendert. Der Counter bleibt. Kein Text-Fallback wie „kein Quellen-Verb erfasst", weil das eine editorische Aussage über die Datenlage wäre, die der Stakeholder nicht treffen will, solange keine bewusste Entscheidung getroffen wurde.
+
+## Datenkorb-Erklär-Pattern
+
+Die Korb-Seite trägt einen mehrteiligen Erklär-Block direkt unter dem Titel: Persistenz (lokal im Browser, kein Login, kein Server-Sync, geht beim Cache-Leeren verloren), Bedeutung der Status-Marker „gesammelt" und „abgeleitet" inkl. Beförderungs-Mechanik per „*"-Knopf, und das Export-Verhalten der Knöpfe. Visuell als linksbündige Erklär-Box mit Borderstreifen, nicht als Fließtext.
+
+Die Export-Knöpfe sind in den Sektionen Personen und Organisationen paarweise beschriftet: „Nur gesammelte exportieren" gegen „Mit abgeleiteten exportieren". Im Quellen-Block reicht ein einzelner Knopf „Quellen exportieren", weil Quellen nicht abgeleitet werden können. Der Korb-Button in der Topbar trägt einen Tooltip, der die aktuelle Aufschlüsselung dynamisch zeigt (`breakdownText()`), plus statischen Fallback-Hint für den Initial-Render.
+
+Begründung: Stakeholder-Anliegen aus Protokoll 18.05.2026 A.1.2 („Datenkorb als gute Idee, aber Erklärung und Testung notwendig") und das wiederkehrende Missverständnis, dass der Topbar-Counter alle Einträge (gesammelt plus abgeleitet) über alle drei Sektionen summiert, nicht nur die direkt gesammelten.
 
 ## Navigation
 
@@ -120,6 +138,26 @@ Aktive Filter werden in den Drill mitgenommen, soweit der Aggregat-Schlüssel si
 
 Begründung: Forschende verlieren den Überblick, welche Filter aktiv sind, sobald die Sidebar einklappt oder die Filter-Quellen heterogen sind (Sidebar-Chips, Donut-Klicks, Toggles, Slider). Die Pillen-Leiste fasst alles an einer Stelle.
 
+### Tabellen-Schicht
+
+Tabellen erscheinen projektweit nach denselben Konventionen, getragen durch geteilte Cell-Renderer und CSS-Klassen ([[architecture#Geteilte Tabellen-Schicht]]). Vier wiederkehrende Cell-Formen.
+
+**Type-Marker** als kleiner farbiger Punkt vor der Nennform, in der Annotations-Token-Farbe der jeweiligen Kategorie (Person blau, Organisation lila, Ort grün). Trägt die Typ-Information ohne eigene Spalte zu kosten. Hover-Tooltip nennt den Typ aus.
+
+**Funktionsrollen-Pille** als gefüllter Pillen-Chip in Akzentblau für kontrolliertes Vokabular (Aussteller*in, Empfänger*in, Zeug*in, Sonstige). Die Füllung signalisiert „klassifizierter Wert", visuell hervorgehoben gegenüber dem darum stehenden Klartext.
+
+**Attribut-Tag** als umrandeter Pillen-Chip ohne Füllung, ein Tag pro Einzelwert für quellennahe Beischriften aus `roleName`-Annotationen (`frawen`, `witib`, `statrichter`, `chaplan`). Type-Information liegt im Hover-Tooltip. Die Umrandung statt Füllung signalisiert „Quellenwortlaut, keine Klassifikation".
+
+**Geschlechts-Label** ausgeschrieben als „weiblich"/„männlich"/„ohne Angabe" für Tabellen-Zellen, Glyph-Variante `♀ weiblich`/`♂ männlich` für Visualisierungs-Achsen. Konsequenter Fallback-Wert „ohne Angabe" projektweit, nicht abweichend pro Page.
+
+Sortier-Pfeile sind global gesetzt (`components.css`, Klasse `.sortable-table`), `white-space: nowrap` auf den Spaltenköpfen verhindert, dass der Pfeil unter das Label rutscht. Eine gruppen-aware Sortierung respektiert Section-Header (Annotations-Tabelle mit Event-Gruppen).
+
+### Dev-Mode-Schalter
+
+Ein URL-Parameter `?dev=1` an einer beliebigen Seite setzt `.dev-mode` auf das `<html>`-Element. CSS-Selektor `.dev-mode .dev-only` macht Elemente mit der Klasse `.dev-only` sichtbar, ergänzt um einen gelben gestrichelten Rahmen und ein „Entwicklung"-Label am rechten oberen Rand. Default-Sicht ohne URL-Parameter blendet sie aus.
+
+Die Mechanik ist projektweit anwendbar und parallel zur build-zeit-Audience-Achse. Audience entscheidet, *ob* etwas im Build enthalten ist, Dev-Mode entscheidet, *ob* enthaltene Elemente sichtbar geschaltet werden. Erstes Anwendungsbeispiel ist die Dispositivformeln-Sub-Tabelle in der Annotationsansicht. Begründung in [[specification#Öffentliche versus interne Sicht in zwei Schichten]], Architektur-Detail in [[architecture#Dev-Mode-Schalter als komplementäre Client-Schicht]].
+
 ### Pillen-System und Tabellen-Toolbar auf der Abfragen-Seite
 
 Die Abfragen-Sub-Seite (`/analysis/index.html`) verwendet eine eigene Klassenfamilie `.qb-pill` für alle interaktiven Form-Elemente im Abfrage-Bereich (Modus-Toggle, Korpus-Checkboxen, Add-Person, Add-Organisation, Reset). Die Klasse ist absichtlich getrennt von der globalen `.form-filter-chip`-Klasse, die in der Sidebar der Listen-Seiten lebt: dort sind viele eng gepackte Chips für eine Mehrfachauswahl typisch, hier sind wenige prominente Filter-Pillen mit großzügiger Schrift und Padding gemeint. Eine spätere Konsolidierung wäre möglich, würde aber Padding- und Größen-Tokens parametrisieren müssen; bis dahin bleiben die zwei Familien parallel.
@@ -167,6 +205,18 @@ Persistenz lebt in `localStorage` mit versioniertem Schlüssel; parallele Browse
 Die Detailseite einer Quelle stellt edierten Text und Faksimile nebeneinander, sofern ein Faksimile vorliegt. Die Synopse ist Default, kein Tab — wer Text und Bild gleichzeitig braucht, soll dafür nicht klicken müssen. Quellen ohne Faksimile fallen auf eine zentrierte Lese-Spalte zurück. Eine ausschaltbare Annotations-Schicht macht die TEI-Auszeichnung sichtbar oder unsichtbar.
 
 Das Faksimile-Panel ist ein Deep-Zoom-Viewer auf Basis von OpenSeadragon. Das Panel hat eine feste Höhe (`100vh − Header`) und scrollt nicht intern; Lesen größerer Ausschnitte erfolgt über den Viewer selbst. Bedienung: Mausrad und Toolbar-Knöpfe für Zoom, Drag und Pinch für Pan, ein Rotate-Knopf für 90°-Schritte, ein 1:1-Reset setzt Zoom und Rotation auf den Ausgangszustand. Bei mehrseitigen Quellen schalten Pfeil-Knöpfe zwischen den Seiten um; die Rotation wird beim Seitenwechsel zurückgesetzt, damit eine neu geladene Seite nicht verkippt startet. Pan ist durch OpenSeadragon-Constraints geklemmt, das Bild bleibt im Sichtbereich.
+
+### Annotations-Block
+
+Unter Quellentext und Faksimile-Panel steht der Annotations-Block als dritter Lese-Bereich. Er trägt die aus dem TEI extrahierten Annotationen in einer Sub-Tabellen-Struktur, konsolidiert über einen Tab-Toggle.
+
+Block-Header. Reine Überschrift „Annotationen" als Titel, kein Untertitel und keine Counter-Pille. Die Zahlen leben in den Tab-Pillen darunter (z. B. „Entitäten 19"). Bei genau einer sichtbaren Sub-Tabelle bleibt der Tab-Strip ausgeblendet, weil ein Either-Or-Schalter ohne Alternative überflüssig wäre.
+
+Tab-Strip. Zentriert über dem Body, drei Tab-Pillen für Entitäten, Dispositivformeln und Editorische Ergänzungen. Aktive Pille gefüllt in Akzentblau, inaktive Pille umrandet. Pro Pille ein Count als kleine Sub-Pille. Die Dispositivformeln-Tab trägt die Klasse `.dev-only` und ist in der öffentlichen Sicht versteckt, in der internen Sicht (`?dev=1`) sichtbar mit gelbem Rahmen.
+
+Entitäten-Tabelle. Vier Spalten: Genannt als, Funktionsrolle, Attribute, Geschlecht. Sortierung gruppen-aware innerhalb der Event-Sections. Type-Marker vor der Nennform als farbiger Punkt ([[#Tabellen-Schicht]]), Funktionsrolle als gefüllte Pille, Attribute als umrandete Tags pro Wert, Geschlecht ausgeschrieben.
+
+Section-Header pro Rechtsgeschäft. Innerhalb der Entitäten-Tabelle gruppiert ein Section-Header die Beteiligten pro Event. Inhalt ist eine kursive Disp-Vorschau (erste und letzte Dispositivformel des Events mit `…` dazwischen, in Trigger-Farbe) und rechtsbündig „N Genannte". Die rohe `ev__`-ID ist nicht sichtbar, der Disp-Wortlaut übernimmt die Mini-Titel-Funktion. Nested Events sind eingeklappt und ihre Entitäten wandern in die Eltern-Gruppe.
 
 ### Register-Listenseite
 
