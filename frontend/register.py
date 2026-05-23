@@ -157,7 +157,6 @@ def build_tooltip_person(person_data, xml_id):
     parts = [person_data["display"]]
     if person_data["death"]:
         parts.append(f"(† {_format_death_german(person_data['death'])})")
-    parts.append(f"[{xml_id}]")
     return " ".join(parts)
 
 
@@ -166,7 +165,6 @@ def build_tooltip_org(org_data, xml_id):
     parts = [org_data["name"]]
     if org_data["type"]:
         parts.append(f"({org_data['type']})")
-    parts.append(f"[{xml_id}]")
     return " ".join(parts)
 
 
@@ -177,5 +175,4 @@ def build_tooltip_place(place_data, xml_id):
         parts.append(f"({place_data['type']})")
     if place_data["lat"] and place_data["lng"]:
         parts.append(f"[{place_data['lat']}, {place_data['lng']}]")
-    parts.append(f"[{xml_id}]")
     return " ".join(parts)

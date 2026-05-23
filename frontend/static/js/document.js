@@ -217,16 +217,15 @@
             let parts = [f.name];
             if (f.role && f.role !== DASH) parts.push('Rolle: ' + f.role);
             if (f.attributes) parts.push('Attribute: ' + f.attributes);
-            if (f.event) parts.push('Event: ' + f.event);
             if (f.section) parts.push('Abschnitt: ' + f.section);
-            if (f.ref) parts.push('ID: ' + f.ref);
             return parts.join(' · ');
         }
 
         function eventTipBody(ev) {
-            let parts = [ev.ref];
+            let parts = [];
             if (ev.trigger) parts.push('Dispositiv-Verb: ' + ev.trigger);
             if (ev.section) parts.push('Abschnitt: ' + ev.section);
+            if (!parts.length) parts.push('Rechtsgeschäft');
             return parts.join(' · ');
         }
 

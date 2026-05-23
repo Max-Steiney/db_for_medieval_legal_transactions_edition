@@ -131,7 +131,6 @@
             <div class="ph-meta-pair"><dt>Verstorben genannt{% call tip_glossary('als-verstorben-genannt', 'Als verstorben genannt') %}<p>Die Person wird in mindestens einer Quelle bereits als verstorben bezeichnet (TEI <code>roleName type="dead"</code>). Ein gesichertes Sterbedatum ist im Personenregister nicht hinterlegt.</p>{% endcall %}</dt><dd>{% if profile.dead_mentions == 1 %}in 1 Quelle{% else %}in {{ profile.dead_mentions }} Quellen{% endif %}</dd></div>
             {% endif %}
             <div class="ph-meta-pair"><dt>Quellen</dt><dd>{{ profile.source_count }}</dd></div>
-            <div class="ph-meta-pair"><dt>ID</dt><dd><code class="person-id">{{ profile.id }}</code></dd></div>
         </dl>
     </header>
 
