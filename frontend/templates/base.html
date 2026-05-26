@@ -56,7 +56,7 @@
                 <span class="nav-brand-sigil">&#x2756;</span>
                 <span class="nav-brand-text">Stadt und Gemeinschaft Wien</span>
             </a>
-            <span class="nav-badge">Prototyp</span>
+            <span class="nav-badge" title="Build-Stand: {{ audience.label }}, generiert am {{ build_date }}">Prototyp &middot; {{ audience.label }} &middot; {{ build_date }}</span>
             <button type="button" class="nav-hamburger" id="nav-hamburger" aria-label="Menü öffnen" aria-expanded="false">
                 <span></span><span></span><span></span>
             </button>
@@ -88,7 +88,6 @@
                 {'kind': 'dropdown', 'label': 'Projekt', 'children': [
                     {'label': 'Über das Projekt',     'href': root_path ~ '/project/about.html'},
                     {'label': 'Annotationsrichtlinien',  'href': root_path ~ '/project/edition-guidelines.html'},
-                    {'label': 'Glossar',              'href': root_path ~ '/project/glossary.html'},
                     {'label': 'Impressum',            'href': root_path ~ '/impressum.html'},
                 ]}
             ) %}
