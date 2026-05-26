@@ -67,13 +67,14 @@ def main():
     build_cmd.add_argument(
         "--audience",
         type=str,
-        choices=["public", "internal"],
+        choices=["public", "private"],
         default=None,
         help=(
-            "Zielpublikum (siehe frontend/audiences.py): 'public' fuer "
-            "den Veroeffentlichungs-Stand (Default, schreibt nach docs/), "
-            "'internal' fuer Projektpartner und interne Pruefung "
-            "(schreibt nach docs-internal/ und blendet experimentelle "
+            "Zielpublikum (siehe frontend/audiences.py), Begriffsbildung "
+            "analog zu GitHub-Repos: 'public' fuer den "
+            "Veroeffentlichungs-Stand (Default, schreibt nach docs/), "
+            "'private' fuer Projektpartner und interne Pruefung "
+            "(schreibt nach docs-private/ und blendet experimentelle "
             "Sektionen und technische IDs ein)."
         ),
     )

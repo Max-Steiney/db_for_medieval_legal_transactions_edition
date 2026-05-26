@@ -21,7 +21,7 @@ FRONTEND_REPO_ROOT = EDITION_DIR.parent
 # frontend/stages.py): Stufe 1 schreibt nach docs/, Stufe 2 nach
 # docs-with-mentioned/, Stufe 3 nach docs-full/, Stufe 4 nach docs-max/.
 # Die Audience (siehe frontend/audiences.py) haengt orthogonal ein
-# '-internal'-Suffix an: Stage 1 + audience=internal --> docs-internal/.
+# '-private'-Suffix an: Stage 1 + audience=private --> docs-private/.
 # Default ist Stufe 1, Audience 'public'; ohne CLI-Flag bleibt der
 # publizierte Build unangetastet.
 _ACTIVE_STAGE = active_stage()

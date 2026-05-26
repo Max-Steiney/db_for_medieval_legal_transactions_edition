@@ -91,8 +91,8 @@ Sechs große Forschungsszenarien aus Historiker*innen-Perspektive. Pro Story Rol
 * **Rolle** Editionsbearbeiterin, Annotatorin oder Projektleitung
 * **Wunsch** im laufenden Editions-Workflow Sichten brauchen, die für die öffentliche Forscherin nicht gedacht sind (Dispositivformeln als eigene Sub-Tabelle, technische IDs als Anker, vollständige Annotations-Inventur, alle Aggregations-Achsen ungefiltert)
 * **Zweck** Annotationen prüfen, Pipeline-Outputs gegen TEI-Quellen vergleichen, Stakeholder-Diskussionen mit konkretem Anker führen
-* **Eingelöst durch** zwei Schichten. Build-zeit gibt es eine Audience-Achse (`--audience internal`), die `docs-internal/` parallel zu `docs/` produziert mit allen editorisch relevanten Sektionen, IDs und Aggregat-Achsen. Client-zeit gibt es einen Dev-Mode-Schalter (`?dev=1` an der URL), der `.dev-only`-Elemente im selben Build sichtbar macht, etwa die Dispositivformeln-Tabelle in der Annotationsansicht. Beide Schichten sind orthogonal und addieren sich.
-* **Anforderung** [[specification#Öffentliche versus interne Sicht in zwei Schichten]]
+* **Eingelöst durch** zwei Schichten. Build-zeit gibt es eine Audience-Achse (`--audience private`), die `docs-private/` parallel zu `docs/` produziert mit allen editorisch relevanten Sektionen, IDs und Aggregat-Achsen. Client-zeit gibt es einen Dev-Mode-Schalter (`?dev=1` an der URL), der `.dev-only`-Elemente im selben Build sichtbar macht, etwa die Dispositivformeln-Tabelle in der Annotationsansicht. Beide Schichten sind orthogonal und addieren sich.
+* **Anforderung** [[specification#Öffentliche versus private Sicht in zwei Schichten]]
 * **Komponente** [[ui-design#Dev-Mode-Schalter]], [[ui-design#Annotations-Block]]
 
 ---

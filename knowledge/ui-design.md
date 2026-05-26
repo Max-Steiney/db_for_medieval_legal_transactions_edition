@@ -27,9 +27,9 @@ Die Oberfläche folgt einer wissenschaftlichen Lese-Gravitation. Serifen-Typogra
 
 Das **Leitprinzip ist maximaler Informations-Output**: Nutzerinnen arbeiten mit den Daten, sie konsumieren sie nicht. Herkunftsanzeigen, Filterzustände und die aktive Zählebene werden nicht versteckt, um die Oberfläche „sauber" wirken zu lassen — eine Reduktion, die Herkunft verschleiert, wäre fachlich dysfunktional. Dichte Darstellung und hierarchische Gliederung sind beide gefragt, nicht gegeneinander.
 
-Eine zweischichtige Lesart durchzieht das UI: technische Identifikatoren (Datei-Schlüssel, TEI-Annotationen, Korpus-Pfade) koexistieren mit menschenlesbaren Labels. Die öffentliche Sicht zeigt die menschenlesbare Schicht; die technischen Personen-, Org- und Event-IDs (`pe__...`, `org__...`, `ev__...`) leben weiter im URL-Slug und in HTML-Attributen für Zitierbarkeit und Verlinkung, aber nicht im sichtbaren Text. Die interne Sicht (`?dev=1` oder Audience-Internal-Build) blendet sie ein. Beschluss: Stakeholder-Protokoll 18.05.2026 A.3.2.
+Eine zweischichtige Lesart durchzieht das UI: technische Identifikatoren (Datei-Schlüssel, TEI-Annotationen, Korpus-Pfade) koexistieren mit menschenlesbaren Labels. Die öffentliche Sicht zeigt die menschenlesbare Schicht; die technischen Personen-, Org- und Event-IDs (`pe__...`, `org__...`, `ev__...`) leben weiter im URL-Slug und in HTML-Attributen für Zitierbarkeit und Verlinkung, aber nicht im sichtbaren Text. Die private Sicht (`?dev=1` oder Audience-Private-Build) blendet sie ein. Beschluss: Stakeholder-Protokoll 18.05.2026 A.3.2.
 
-Siehe [[specification#Maximaler Informations-Output als Gestaltungsleitlinie]] und [[architecture#Audience-Schicht für öffentliche und interne Sicht]].
+Siehe [[specification#Maximaler Informations-Output als Gestaltungsleitlinie]] und [[architecture#Audience-Schicht für öffentliche und private Sicht]].
 
 ## Begriffs- und Label-Konsistenz
 
@@ -156,7 +156,7 @@ Sortier-Pfeile sind global gesetzt (`components.css`, Klasse `.sortable-table`),
 
 Ein URL-Parameter `?dev=1` an einer beliebigen Seite setzt `.dev-mode` auf das `<html>`-Element. CSS-Selektor `.dev-mode .dev-only` macht Elemente mit der Klasse `.dev-only` sichtbar, ergänzt um einen gelben gestrichelten Rahmen und ein „Entwicklung"-Label am rechten oberen Rand. Default-Sicht ohne URL-Parameter blendet sie aus.
 
-Die Mechanik ist projektweit anwendbar und parallel zur build-zeit-Audience-Achse. Audience entscheidet, *ob* etwas im Build enthalten ist, Dev-Mode entscheidet, *ob* enthaltene Elemente sichtbar geschaltet werden. Erstes Anwendungsbeispiel ist die Dispositivformeln-Sub-Tabelle in der Annotationsansicht. Begründung in [[specification#Öffentliche versus interne Sicht in zwei Schichten]], Architektur-Detail in [[architecture#Dev-Mode-Schalter als komplementäre Client-Schicht]].
+Die Mechanik ist projektweit anwendbar und parallel zur build-zeit-Audience-Achse. Audience entscheidet, *ob* etwas im Build enthalten ist, Dev-Mode entscheidet, *ob* enthaltene Elemente sichtbar geschaltet werden. Erstes Anwendungsbeispiel ist die Dispositivformeln-Sub-Tabelle in der Annotationsansicht. Begründung in [[specification#Öffentliche versus private Sicht in zwei Schichten]], Architektur-Detail in [[architecture#Dev-Mode-Schalter als komplementäre Client-Schicht]].
 
 ### Pillen-System und Tabellen-Toolbar auf der Abfragen-Seite
 
@@ -212,7 +212,7 @@ Unter Quellentext und Faksimile-Panel steht der Annotations-Block als dritter Le
 
 Block-Header. Reine Überschrift „Annotationen" als Titel, kein Untertitel und keine Counter-Pille. Die Zahlen leben in den Tab-Pillen darunter (z. B. „Entitäten 19"). Bei genau einer sichtbaren Sub-Tabelle bleibt der Tab-Strip ausgeblendet, weil ein Either-Or-Schalter ohne Alternative überflüssig wäre.
 
-Tab-Strip. Zentriert über dem Body, drei Tab-Pillen für Entitäten, Dispositivformeln und Editorische Ergänzungen. Aktive Pille gefüllt in Akzentblau, inaktive Pille umrandet. Pro Pille ein Count als kleine Sub-Pille. Die Dispositivformeln-Tab trägt die Klasse `.dev-only` und ist in der öffentlichen Sicht versteckt, in der internen Sicht (`?dev=1`) sichtbar mit gelbem Rahmen.
+Tab-Strip. Zentriert über dem Body, drei Tab-Pillen für Entitäten, Dispositivformeln und Editorische Ergänzungen. Aktive Pille gefüllt in Akzentblau, inaktive Pille umrandet. Pro Pille ein Count als kleine Sub-Pille. Die Dispositivformeln-Tab trägt die Klasse `.dev-only` und ist in der öffentlichen Sicht versteckt, in der privaten Sicht (`?dev=1`) sichtbar mit gelbem Rahmen.
 
 Entitäten-Tabelle. Vier Spalten: Genannt als, Funktionsrolle, Attribute, Geschlecht. Sortierung gruppen-aware innerhalb der Event-Sections. Type-Marker vor der Nennform als farbiger Punkt ([[#Tabellen-Schicht]]), Funktionsrolle als gefüllte Pille, Attribute als umrandete Tags pro Wert, Geschlecht ausgeschrieben.
 

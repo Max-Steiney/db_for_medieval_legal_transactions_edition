@@ -1,19 +1,19 @@
-"""Audience-Modell fuer oeffentliche vs. interne Builds.
+"""Audience-Modell fuer oeffentliche vs. private Builds.
 
 Steuert, welche Funktionen und Felder im Build sichtbar sind. Orthogonal
 zur Stufenwahl in frontend.stages: Stage waehlt den Korpus-Umfang und
 das Mentioned-Toggle, Audience waehlt die UI-Sichtbarkeit von noch nicht
 publikationsreifen Sektionen und technischen IDs.
 
-Werte:
-- public:   Veroeffentlichungs-Stand fuer GitHub Pages. Versteckt die
-            Sektionen Analyse und Exploration und blendet technische IDs
-            (pe__..., org__..., Event-IDs) im Frontend aus.
-- internal: Vollstand fuer Projektpartner und interne Pruefung. Enthaelt
-            alle experimentellen Sektionen und IDs.
+Werte (Begriffsbildung analog zu GitHub-Repos):
+- public:  Veroeffentlichungs-Stand fuer GitHub Pages. Versteckt die
+           Sektionen Analyse und Exploration und blendet technische IDs
+           (pe__..., org__..., Event-IDs) im Frontend aus.
+- private: Vollstand fuer Projektpartner und interne Pruefung. Enthaelt
+           alle experimentellen Sektionen und IDs.
 
 Ein Audience-Wechsel wirkt ueber die Umgebungsvariable FRONTEND_AUDIENCE
-auf frontend.config.DOCS_DIR (Suffix -internal fuer interne Builds) und
+auf frontend.config.DOCS_DIR (Suffix -private fuer private Builds) und
 ueber den Jinja-Globals-Eintrag 'audience' auf alle Templates.
 
 Hintergrund: Protokoll der internen Besprechung vom 18. Mai 2026.
@@ -38,9 +38,9 @@ AUDIENCES = {
             "technische IDs (pe__..., org__..., Event-IDs)."
         ),
     },
-    "internal": {
-        "id": "internal",
-        "label": "Intern",
+    "private": {
+        "id": "private",
+        "label": "Privat",
         "show_analysis_section": True,
         "show_exploration_section": True,
         "show_entity_ids": True,
@@ -93,10 +93,10 @@ def output_dir_suffix(audience_id: str | None = None) -> str:
     """Suffix fuer das Output-Verzeichnis.
 
     Leerer String fuer public (damit der Default-Build weiterhin nach
-    docs/ schreibt), '-internal' fuer interne Builds. Wird in
+    docs/ schreibt), '-private' fuer private Builds. Wird in
     frontend.config an den Stage-Output-Dir-Namen angehaengt, so dass
-    Stage 1 + internal nach docs-internal/ schreibt und Stage 2 +
-    internal nach docs-with-mentioned-internal/.
+    Stage 1 + private nach docs-private/ schreibt und Stage 2 +
+    private nach docs-with-mentioned-private/.
     """
     aid = audience_id if audience_id is not None else active_audience_id()
     if aid == DEFAULT_AUDIENCE_ID:
