@@ -16,6 +16,7 @@ def aggregate_relations(docs_data_dir: Path) -> dict:
     """
     persons_rows = _cached_csv("persons.csv")
     events_rows = _cached_csv("events_in_sources.csv")
+    org_rows = _cached_csv("organisations.csv")
 
     # Person lookup: sex + display name
     person_sex: dict[str, str] = {}
@@ -26,6 +27,16 @@ def aggregate_relations(docs_data_dir: Path) -> dict:
         person_sex[pk] = sex if sex in ("m", "f") else "unspecified"
         parts = [r.get("forename_reg", ""), r.get("surname_reg", "")]
         person_names[pk] = " ".join(p for p in parts if p).strip() or pk
+
+    # Organisation lookup: id -> registered display name.  Used by the
+    # Personennetzwerk to turn org__keys into lesbare Header und Knoten-
+    # Labels, sobald eine Organisation Mittelpunkt des Ego-Layouts wird.
+    org_names: dict[str, str] = {}
+    for r in org_rows:
+        oid = (r.get("id") or "").strip()
+        nm = (r.get("name_reg") or "").strip()
+        if oid and nm:
+            org_names[oid] = nm
 
     # Event → decade lookup (from date_not_after)
     event_decade: dict[str, int | None] = {}
@@ -279,6 +290,21 @@ def aggregate_relations(docs_data_dir: Path) -> dict:
             "rels": person_rels[pk],
         })
 
+    # ── Build orgs array: only orgs that appear as relation target (rel.r
+    # mit Praefix org__).  Liefert dem Frontend lesbare Anzeigenamen, damit
+    # das Akteursnetzwerk Organisationen als gleichwertige Mittelpunkte
+    # rendern kann, ohne den org_key prettifyen zu muessen. ──
+    referenced_orgs: set[str] = set()
+    for rels in person_rels.values():
+        for rel in rels:
+            target = (rel.get("r") or "")
+            if target.startswith("org__"):
+                referenced_orgs.add(target)
+    orgs_out = [
+        {"id": oid, "name": org_names.get(oid, oid)}
+        for oid in sorted(referenced_orgs)
+    ]
+
     # ── Build drill-down blocks ──
     dd_ts = {k: sorted(v) for k, v in dd_type_sex.items()}
 
@@ -409,6 +435,7 @@ def aggregate_relations(docs_data_dir: Path) -> dict:
         "labels": [{("norm" if k == "_norm_key" else k): v for k, v in e.items()}
                    for e in labels_list],
         "persons": persons_out,
+        "orgs": orgs_out,
         "drill_down": {
             "type_sex": dd_ts,
             "label_sex": dd_ls,
