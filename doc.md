@@ -214,8 +214,14 @@ Regeln, die für alle Punkte gelten und deshalb nicht in jedem einzeln wiederhol
 
 ### **Exploration**
 
-- [ ] **Zeitstrom** (Herkunft: eigene Beobachtung)
-- [ ] **Personennetzwerk** (Herkunft: eigene Beobachtung)
+- [~] **Zeitstrom** (Herkunft: eigene Beobachtung, Stakeholder-Protokoll A.5.2)
+   * Befund A.5.2 Detailkorrektur: „Shift + Pfeiltaste" extendierte den Brush nur um eine Dekade, weil die Tastatur-Verschiebung den ursprünglich fokussierten Spalten-`dec` als Anker beibehielt und der Fokus auf dem ausgewählten Knopf hängen blieb. Folge: zweite und dritte Shift-Pfeil-Eingabe lieferten dasselbe Maximum, der Brush wuchs nicht weiter.
+   * Umsetzung Stand 2026-05-26: `exploration-timeline.js` rechnet die Ziel-Dekade explizit (`targetDec = dec + step`) und setzt nach `renderChart()` den Fokus auf die Nachbar-Spalte `data-decade="<targetDec>"`. So wandert Brush und Tastatur-Fokus in eins über die Achse, beliebig oft hintereinander. Regression `frontend/tests/test_a52_personennetzwerk_quellen.py::TestZeitstromShiftArrow` sichert das Verhalten ab.
+   * Offen: weitere A.5.1-Themen (Stack-Achsen, Brush-Reset, Drill-Sortierung) noch nicht durchgegangen.
+- [~] **Personennetzwerk** (Herkunft: eigene Beobachtung, Stakeholder-Protokoll A.5.2)
+   * Befund A.5.2: „Nachvollziehbarkeit relationaler Aussagen muss verbessert werden — Quellen direkt verlinkt, Beziehungsbegriffe überprüfbar, relationale Aussagen leichter auf ihre Grundlage zurückführen." Die Detail-Tabelle zeigte je Verbindung nur einen Belege-Zähler (4); für eine Verifikation am Quelltext fehlte der Sprung in die zugehörigen Urkunden. Außerdem nutzte das Grouping nur die Wortlaut-Form `l` ("pruder"), nicht die normalisierte Form `ln` ("bruder"), und die Tabelle bot keine Möglichkeit, beide nebeneinander zu sehen.
+   * Umsetzung Stand 2026-05-26: Spalte „Belege" in „Quellen" umbenannt und mit klickbaren Chips (Signatur · Datum) gefüllt; Hover blendet den Regest-Anriss als Hint ein, Klick öffnet die jeweilige Quellen-Detailseite. `exploration-network.js` sammelt jetzt `r.ln` zusätzlich zu `r.l`; die Bezeichnungs-Zelle zeigt die Manuskript-Form und blendet die normalisierte Form kursiv in Klammern dazu, sobald sie sich unterscheidet. `docs_lookup.json` wird vor dem ersten Render abgewartet, damit Chips nicht zunächst als unresolved erscheinen. SVG-`<title>` an Edges nutzt dieselbe Doppel-Form. CSS in `exploration.css` (`.net-source-chips`, `.net-source-chip`, `.net-label-norm`). Regression `frontend/tests/test_a52_personennetzwerk_quellen.py`.
+   * Offen: Personennetzwerk ist (per A.6) nur im internen Build sichtbar. Für die öffentliche Ausspielung muss die A.6-Diskussion zur Exploration-Sichtbarkeit fortgeführt werden, bevor die A.5.2-Verbesserungen ein öffentliches Publikum erreichen.
 - [ ] **…**
 
 ### **Projekt**
