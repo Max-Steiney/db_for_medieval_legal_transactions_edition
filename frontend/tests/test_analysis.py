@@ -99,7 +99,7 @@ def test_build_analysis_renders(docs_dir):
     assert out.exists(), "analysis/index.html was not generated"
     content = out.read_text(encoding="utf-8")
     assert "<!DOCTYPE html>" in content
-    assert "Analyse" in content
+    assert "Abfragen" in content
 
 
 def test_build_analysis_renders_constellation(docs_dir):

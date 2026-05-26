@@ -128,8 +128,10 @@
 
     </div>
 
-    <section class="start-twoways dev-only">
+    {% if audience.show_analysis_section or audience.show_exploration_section %}
+    <section class="start-twoways">
 
+        {% if audience.show_analysis_section %}
         <div class="start-twoways-column">
             <h2 class="start-twoways-heading">Analyse</h2>
             <div class="start-twoways-grid">
@@ -165,7 +167,9 @@
 
             </div>
         </div>
+        {% endif %}
 
+        {% if audience.show_exploration_section %}
         <div class="start-twoways-column">
             <h2 class="start-twoways-heading">Exploration</h2>
             <div class="start-twoways-grid">
@@ -205,8 +209,10 @@
 
             </div>
         </div>
+        {% endif %}
 
     </section>
+    {% endif %}
 
 
 </div>

@@ -67,21 +67,31 @@
                     {'label': 'Personen',       'href': root_path ~ '/register/persons.html'},
                     {'label': 'Organisationen', 'href': root_path ~ '/register/orgs.html'},
                 ]},
-                {'kind': 'dropdown', 'label': 'Analyse', 'dev_only': True, 'children': [
+            ] %}
+            {% if audience.show_analysis_section %}
+            {% set _ = nav_entries.append(
+                {'kind': 'dropdown', 'label': 'Analyse', 'children': [
                     {'label': 'Auswertungen', 'href': root_path ~ '/analysis/auswertungen.html'},
                     {'label': 'Abfragen',     'href': root_path ~ '/analysis/index.html'},
-                ]},
-                {'kind': 'dropdown', 'label': 'Exploration', 'dev_only': True, 'children': [
+                ]}
+            ) %}
+            {% endif %}
+            {% if audience.show_exploration_section %}
+            {% set _ = nav_entries.append(
+                {'kind': 'dropdown', 'label': 'Exploration', 'children': [
                     {'label': 'Zeitstrom',         'href': root_path ~ '/exploration/zeitstrom.html'},
                     {'label': 'Personennetzwerk',  'href': root_path ~ '/exploration/personennetzwerk.html'},
-                ]},
+                ]}
+            ) %}
+            {% endif %}
+            {% set _ = nav_entries.append(
                 {'kind': 'dropdown', 'label': 'Projekt', 'children': [
                     {'label': 'Über das Projekt',     'href': root_path ~ '/project/about.html'},
                     {'label': 'Annotationsrichtlinien',  'href': root_path ~ '/project/edition-guidelines.html'},
                     {'label': 'Glossar',              'href': root_path ~ '/project/glossary.html'},
                     {'label': 'Impressum',            'href': root_path ~ '/impressum.html'},
-                ]},
-            ] %}
+                ]}
+            ) %}
             <div class="nav-links" id="nav-links">
                 {% for it in nav_entries -%}
                     {% if it.kind == 'link' %}{{ nav_link(it.label, it.href) }}{% else %}{{ nav_dropdown(it.label, it.children, dev_only=it.dev_only|default(False)) }}{% endif %}

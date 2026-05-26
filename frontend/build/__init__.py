@@ -60,6 +60,8 @@ from frontend.build._metadata import (
     _write_file,
 )
 
+from frontend.audiences import active_audience
+
 from frontend.build._kpi import (
     _TEI_NS,
     _XP_TOP_EVENTS,
@@ -229,9 +231,11 @@ def build_all():
     _build_person_profiles(reverse_index, env,
                            linked_orgs=linked_orgs)
 
-    _build_exploration(all_metadata, persons, env)
-    _build_exploration_timeline(all_metadata, env)
-    _build_exploration_network(env)
+    audience = active_audience()
+    if audience["show_exploration_section"]:
+        _build_exploration(all_metadata, persons, env)
+        _build_exploration_timeline(all_metadata, env)
+        _build_exploration_network(env)
     _build_basket(env)
 
     _build_guidelines(env)
@@ -241,7 +245,8 @@ def build_all():
     _build_glossary(env)
     _write_categories()
     _write_query_vocabulary()
-    _build_analysis(env)
+    if audience["show_analysis_section"]:
+        _build_analysis(env)
 
     _copy_static()
     _copy_tei_sources()
