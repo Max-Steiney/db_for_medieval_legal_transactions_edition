@@ -232,6 +232,48 @@ class TestNetworkLayoutPolishV3:
         assert "border-top" not in chunk
 
 
+class TestNetworkHubScalability:
+    """Hub-Akteure (z.B. Wien, 725 Verbindungen) wuerden den Ring zur
+    unleserlichen Wolke aufblasen. Der Graph ist die Lesart, die
+    Detail-Tabelle die vollstaendige Quelle. Sichtbare Knoten werden
+    gekappt, Labels ab mittlerer Dichte ausgeblendet, die Tabelle
+    behaelt alle Eintraege."""
+
+    def setup_method(self):
+        self.js = _read(ROOT / "static" / "js" / "exploration-network.js")
+
+    def test_has_graph_node_cap(self):
+        assert "MAX_GRAPH_NODES" in self.js
+        assert "LABEL_THRESHOLD" in self.js
+
+    def test_visible_edges_sorted_by_source_count(self):
+        """Sortierung nach sourceKeys.length absteigend, damit im
+        gekappten Graph die belegstaerksten Verbindungen sichtbar bleiben."""
+        assert "sortedEdges" in self.js
+        assert "b.sourceKeys.length - a.sourceKeys.length" in self.js
+
+    def test_visible_edges_capped(self):
+        assert "sortedEdges.slice(0, MAX_GRAPH_NODES)" in self.js
+
+    def test_labels_hidden_above_threshold(self):
+        """showLabels = visibleEdges.length <= LABEL_THRESHOLD, sodass
+        im dichten Ring Labels weggelassen werden und Hover-Tooltips
+        die Identifikation uebernehmen."""
+        assert "showLabels" in self.js
+        assert "visibleEdges.length <= LABEL_THRESHOLD" in self.js
+
+    def test_heading_announces_cap_to_user(self):
+        """Wenn gekappt wird, soll der Block-Header mitteilen, wie viele
+        der Verbindungen im Graph sichtbar sind."""
+        assert "im Graph die" in self.js
+        assert "capped" in self.js
+
+    def test_detail_table_gets_full_sorted_list(self):
+        """Tabelle erhaelt alle sortierten Eintraege, nicht nur die
+        sichtbaren Graph-Knoten."""
+        assert "renderDetailTable(center, sortedEdges)" in self.js
+
+
 class TestZeitstromShiftArrow:
     """Shift+Pfeiltaste verschiebt Fokus auf die Nachbar-Spalte und erweitert
     den Brush wiederholbar."""
