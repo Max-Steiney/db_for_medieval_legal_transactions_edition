@@ -171,10 +171,20 @@ class TestZeitstromPage:
         """Alle vier Stapel-Achsen-Chips inkl. erklaerendem hover-hint."""
         for stack in ('collection', 'form', 'sex', 'tx'):
             assert f'data-stack="{stack}"' in html, f'Stack chip {stack} fehlt'
-        # Hover-Hints (data-hint) statt nativer title-Tooltips, damit alle
-        # Tooltips im Projekt einheitlich aus hint.js gestylt werden.
-        assert 'data-hint="Stapel nach Quellenkorpus' in html
-        assert 'data-hint="Stapel nach Transaktionstyp' in html
+        # Tooltip-Schaerfung: jeder Chip muss seine Berechnungs-Logik
+        # erklaeren (Multi-Zaehlung, Bucket-Definition, Coverage), nicht
+        # nur die Kategorien-Liste.
+        assert 'doppelt gez' in html, \
+            'Erschliessungsform-Chip muss Mehrfach-Zaehlung erklaeren'
+        assert 'Coverage' in html, \
+            'Transaktionstyp-Chip muss Coverage-Verlust erklaeren'
+        assert 'ohne Geschlechtsangabe' in html, \
+            'Geschlecht-Chip muss Bucket "ohne Geschlechtsangabe" erklaeren'
+
+    def test_no_explore_page_intro(self, html):
+        """Page-Intro-Paragraf raus, Konsistenz mit Personennetzwerk."""
+        assert 'explore-page-intro' not in html, \
+            'Intro-Paragraf entfernt; Konsistenz zu exploration_network.html'
 
     def test_brush_hint_present(self, html):
         """Tipp-Zeile direkt unter der Chart-Ueberschrift erklaert Brush
@@ -202,6 +212,42 @@ class TestZeitstromPage:
 
     def test_active_filter_strip_present(self, html):
         assert 'id="active-filters"' in html
+
+
+class TestZeitstromAxisLogic:
+    """Verifiziert, dass die Stapel-Achsen-Logik in exploration-timeline.js
+    die ehrliche Bucket-Definition und Coverage-Anzeige enthaelt."""
+
+    @pytest.fixture(scope="class")
+    def js(self):
+        from pathlib import Path
+        path = Path(__file__).parent.parent / "static" / "js" / "exploration-timeline.js"
+        if not path.exists():
+            pytest.skip("exploration-timeline.js not found")
+        return path.read_text(encoding="utf-8")
+
+    def test_sex_bucket_has_unspecified_category(self, js):
+        """Personen ohne Geschlechts-Annotation landen nicht mehr stillschweigend
+        in 'ohne Personen', sondern in eigenem Bucket 'unspecified'."""
+        assert "key: 'unspecified'" in js
+        assert "'ohne Geschlechtsangabe'" in js
+
+    def test_sex_bucket_uses_pcd_for_none_distinction(self, js):
+        """Die Bucket-Logik muss pcd (Gesamtzahl) verwenden, um 'none' von
+        'unspecified' zu trennen."""
+        assert "doc.pcd" in js
+        assert "total === 0" in js
+
+    def test_tx_heading_shows_coverage_rate(self, js):
+        """TX-Modus-Heading muss die Coverage-Rate (normalised/total) ausweisen."""
+        assert "TRANSACTIONS.coverage" in js
+        assert "normalised_events" in js
+        assert "Coverage" in js
+
+    def test_form_heading_signals_multi_count(self, js):
+        """Form-Modus-Heading muss die Mehrfach-Zaehlung pro Quelle ausweisen."""
+        assert "Erschließungs-Belege" in js or "Erschliessungs-Belege" in js
+        assert "Mehrfach-Zählung" in js or "Mehrfach-Zaehlung" in js
 
 
 class TestEpicBData:
