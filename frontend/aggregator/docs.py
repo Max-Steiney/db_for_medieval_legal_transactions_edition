@@ -6,6 +6,7 @@ from pathlib import Path
 from urllib.parse import unquote
 
 from ._shared import _cached_csv, _meta, _write_json
+from frontend.config import is_visible_corpus
 
 
 def _parse_date_range(date_str: str) -> tuple[str | None, str | None, int | None]:
@@ -78,15 +79,21 @@ def aggregate_docs(docs_data_dir: Path) -> dict:
         events_per_file[fk]["_all"].add(ek)
         events_per_file[fk][bucket].add(ek)
 
-    # Build records (released sources only — _cached_csv pre-filters by
-    # collection; here also filter status='done' to match build.py which
-    # only processes TEI files under .../done/ subdirectories).
+    # Build records. _cached_csv pre-filters by RELEASED_CORPORA (all five),
+    # but the per-source aggregate must follow the audience-coupled visible
+    # set: in the public build only the two stakeholder-approved corpora may
+    # appear, otherwise docs_aggregate.json (timeline, per-source counts)
+    # leaks hidden volumes the rest of the build already excludes. Also
+    # filter status='done' to match build.py (only .../done/ TEI files).
     records = []
     for f in fnames:
         fk = f.get("id", "")
         if not fk:
             continue
         if (f.get("status", "") or "").strip() != "done":
+            continue
+        collection_path = f"{f.get('collection', '')}/{f.get('subcollection', '')}"
+        if not is_visible_corpus(collection_path):
             continue
 
         date_raw = (f.get("date", "") or "").strip()
@@ -115,9 +122,7 @@ def aggregate_docs(docs_data_dir: Path) -> dict:
         records.append({
             "file_key": fk,
             "idno": idno,
-            "collection_path": (
-                f"{f.get('collection', '')}/{f.get('subcollection', '')}"
-            ),
+            "collection_path": collection_path,
             "date_iso_start": date_iso_start,
             "date_iso_end": date_iso_end,
             "date_year": date_year,

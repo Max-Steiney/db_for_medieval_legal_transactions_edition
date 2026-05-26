@@ -39,6 +39,30 @@ def _load(rel):
     return json.loads(p.read_text(encoding="utf-8"))
 
 
+def test_no_hidden_corpus_in_any_data_json():
+    """Keine Daten-JSON im oeffentlichen Build nennt eine versteckte Sammlung.
+
+    Breiter Klassen-Test ueber das gesamte data/-Verzeichnis statt einzelner
+    Dateien: faengt das docs_aggregate.json-Leck und jede kuenftige Aggregat-
+    Datei, die den Sicht-Filter vergisst. Wuerde frueher gegriffen haben,
+    haette dieser Test den per-Quelle-Aggregat-Leak sofort gemeldet.
+    """
+    data_dir = DOCS / "data"
+    if not data_dir.exists():
+        pytest.skip("docs/data/ noch nicht gebaut")
+    needles = HIDDEN_SUBDIRS + HIDDEN_DOC_PATHS
+    offenders = []
+    for p in sorted(data_dir.glob("*.json")):
+        txt = p.read_text(encoding="utf-8")
+        hits = sum(txt.count(n) for n in needles)
+        if hits:
+            offenders.append(f"{p.name} ({hits})")
+    assert not offenders, (
+        f"Daten-JSONs nennen versteckte Sammlungen: {offenders}. "
+        f"Wahrscheinlich fehlt ein is_visible_corpus-Filter in der Aggregation."
+    )
+
+
 def test_no_hidden_corpus_document_dirs():
     if not DOCS.exists():
         pytest.skip("docs/ noch nicht gebaut")
