@@ -5,18 +5,10 @@
 
 (function() {
     'use strict';
-    // Build-time values reach the client via <body data-*> attributes
-    // (no inline <script> needed -- compatible with strict CSP).
     let body = document.body;
     if (body) {
         if (body.dataset.rootPath !== undefined && window.ROOT_PATH === undefined) {
             window.ROOT_PATH = body.dataset.rootPath;
-        }
-        if (body.dataset.releasedMin && body.dataset.releasedMax && window.RELEASED_PERIOD === undefined) {
-            window.RELEASED_PERIOD = {
-                min: parseInt(body.dataset.releasedMin, 10),
-                max: parseInt(body.dataset.releasedMax, 10)
-            };
         }
     }
 })();
