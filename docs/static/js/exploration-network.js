@@ -127,6 +127,14 @@
 
     const W = 720, H = 520, CX = W / 2, CY = H / 2;
     const RADIUS_NEIGHBOR = 200;
+    // Hub-Akteure (z.B. org__wien mit 725 Verbindungen) wuerden den Ring
+    // zu einer unleserlichen Wolke aufblasen. Der Graph ist die Lesart,
+    // die Detail-Tabelle die vollstaendige Quelle. Labels werden ab
+    // mittlerer Dichte ausgeblendet, sichtbare Knoten ab hoher Dichte
+    // gekappt (sortiert nach Quellen-Anzahl, also visuelle Prominenz
+    // folgt Beleg-Staerke).
+    const MAX_GRAPH_NODES = 48;
+    const LABEL_THRESHOLD = 18;
 
     function nodeRadius(edgeCount) {
         return Math.min(22, Math.max(8, 8 + Math.sqrt(edgeCount) * 2.5));
@@ -157,17 +165,33 @@
             return;
         }
         const edges = activeEdges(key);
+        const sortedEdges = edges.slice().sort((a, b) => {
+            if (b.sourceKeys.length !== a.sourceKeys.length)
+                return b.sourceKeys.length - a.sourceKeys.length;
+            const an = (getActor(a.otherKey) || {}).name || a.otherKey;
+            const bn = (getActor(b.otherKey) || {}).name || b.otherKey;
+            return an.localeCompare(bn);
+        });
+        const visibleEdges = sortedEdges.slice(0, MAX_GRAPH_NODES);
+        const showLabels = visibleEdges.length <= LABEL_THRESHOLD;
+        const capped = sortedEdges.length > visibleEdges.length;
+
         if (heading) {
             const kindBadge = center.kind === 'org' ? ' <span class="net-heading-kind">(Organisation)</span>' : '';
+            const capNote = capped
+                ? ` · im Graph die ${visibleEdges.length} quellenstärksten`
+                : '';
+            const filterNote = STATE.types.size < REL_ORDER.length
+                ? ` · gefiltert auf ${STATE.types.size} Typ(en)`
+                : '';
             heading.innerHTML = `<span class="net-heading-name">${escapeHtml(center.name)}</span>${kindBadge}
-                <span class="aggregat-quadrant-h2-meta">${V.fmt(edges.length)} Verbindungen
-                ${STATE.types.size < REL_ORDER.length ? `· gefiltert auf ${STATE.types.size} Typ(en)` : ''}</span>`;
+                <span class="aggregat-quadrant-h2-meta">${V.fmt(edges.length)} Verbindungen${capNote}${filterNote}</span>`;
         }
         if (hint) hint.hidden = true;
         if (detail) detail.hidden = false;
 
-        const N = edges.length;
-        const positioned = edges.map((e, i) => {
+        const N = visibleEdges.length;
+        const positioned = visibleEdges.map((e, i) => {
             const angle = (2 * Math.PI * i / Math.max(N, 1)) - Math.PI / 2;
             return {
                 edge: e,
@@ -201,13 +225,16 @@
                 : `data-pid="${escapeAttr(e.otherKey)}"`;
             const hint = nodeHintText(other, e.otherKey, isOrgNeighbor);
             const hintType = isOrgNeighbor ? 'Organisation' : 'Person';
+            const labelMarkup = showLabels
+                ? `<text x="${pos.x.toFixed(1)}" y="${(pos.y + r + 14).toFixed(1)}"
+                          text-anchor="middle" class="net-node-label"
+                          stroke="var(--color-bg)" stroke-width="3" paint-order="stroke">${escapeHtml(truncate(name, 24))}</text>`
+                : '';
             return `<g class="net-node ${isOrgNeighbor ? 'is-org' : 'is-person'}" ${dataAttr}
                        data-hint="${escapeAttr(hint)}" data-hint-type="${hintType}">
                 <circle cx="${pos.x.toFixed(1)}" cy="${pos.y.toFixed(1)}" r="${r}"
                         fill="${color}" stroke="white" stroke-width="2"/>
-                <text x="${pos.x.toFixed(1)}" y="${(pos.y + r + 14).toFixed(1)}"
-                      text-anchor="middle" class="net-node-label"
-                      stroke="var(--color-bg)" stroke-width="3" paint-order="stroke">${escapeHtml(truncate(name, 24))}</text>
+                ${labelMarkup}
             </g>`;
         }).join('');
 
@@ -231,7 +258,7 @@
             ${centerNode}
         </svg>`;
 
-        renderDetailTable(center, edges);
+        renderDetailTable(center, sortedEdges);
     }
 
     function renderSuggestions() {
@@ -321,15 +348,7 @@
         if (title) title.textContent = `Verbindungen von ${center.name}`;
         if (meta)  meta.textContent  = `${V.fmt(edges.length)} Eintr${edges.length === 1 ? 'ag' : 'äge'}`;
 
-        const sorted = edges.slice().sort((a, b) => {
-            if (b.sourceKeys.length !== a.sourceKeys.length)
-                return b.sourceKeys.length - a.sourceKeys.length;
-            const an = (getActor(a.otherKey) || {}).name || a.otherKey;
-            const bn = (getActor(b.otherKey) || {}).name || b.otherKey;
-            return an.localeCompare(bn);
-        });
-
-        const rows = sorted.map(e => {
+        const rows = edges.map(e => {
             const other = getActor(e.otherKey);
             const isOrgTarget = e.otherKind === 'org';
             const name = other ? other.name : (isOrgTarget ? prettifyOrg(e.otherKey) : e.otherKey);
