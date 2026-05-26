@@ -14,34 +14,34 @@ import pytest
 from frontend import audiences
 
 
-def test_default_audience_is_public():
-    assert audiences.DEFAULT_AUDIENCE_ID == "public"
+def test_default_audience_is_oeffentlich():
+    assert audiences.DEFAULT_AUDIENCE_ID == "oeffentlich"
 
 
-def test_active_audience_defaults_to_public(monkeypatch):
+def test_active_audience_defaults_to_oeffentlich(monkeypatch):
     monkeypatch.delenv("FRONTEND_AUDIENCE", raising=False)
-    assert audiences.active_audience_id() == "public"
+    assert audiences.active_audience_id() == "oeffentlich"
     a = audiences.active_audience()
-    assert a["id"] == "public"
+    assert a["id"] == "oeffentlich"
     assert a["show_entity_ids"] is False
 
 
-def test_active_audience_private(monkeypatch):
-    monkeypatch.setenv("FRONTEND_AUDIENCE", "private")
-    assert audiences.active_audience_id() == "private"
+def test_active_audience_intern(monkeypatch):
+    monkeypatch.setenv("FRONTEND_AUDIENCE", "intern")
+    assert audiences.active_audience_id() == "intern"
     a = audiences.active_audience()
     assert a["show_entity_ids"] is True
     assert a["show_analysis_section"] is True
 
 
-def test_invalid_audience_falls_back_to_public(monkeypatch):
+def test_invalid_audience_falls_back_to_oeffentlich(monkeypatch):
     monkeypatch.setenv("FRONTEND_AUDIENCE", "foobar")
-    assert audiences.active_audience_id() == "public"
+    assert audiences.active_audience_id() == "oeffentlich"
 
 
 def test_output_dir_suffix():
-    assert audiences.output_dir_suffix("public") == ""
-    assert audiences.output_dir_suffix("private") == "-private"
+    assert audiences.output_dir_suffix("oeffentlich") == ""
+    assert audiences.output_dir_suffix("intern") == "-intern"
 
 
 def test_set_audience_env_rejects_unknown():
@@ -51,5 +51,5 @@ def test_set_audience_env_rejects_unknown():
 
 def test_set_audience_env_writes_env(monkeypatch):
     monkeypatch.delenv("FRONTEND_AUDIENCE", raising=False)
-    audiences.set_audience_env("private")
-    assert os.environ.get("FRONTEND_AUDIENCE") == "private"
+    audiences.set_audience_env("intern")
+    assert os.environ.get("FRONTEND_AUDIENCE") == "intern"

@@ -236,8 +236,8 @@ def _is_released_file(filepath):
 def _is_visible_file(filepath):
     """True if the file belongs to a corpus visible in the current build.
 
-    Sicht-abhaengig (siehe frontend.config.visible_corpora): im public-Build
-    nur die freigegebenen Sammlungen, im private-Build der volle Umfang.
+    Sicht-abhaengig (siehe frontend.config.visible_corpora): im oeffentlichen
+    Build nur die freigegebenen Sammlungen, im internen Build der volle Umfang.
     """
     rel = filepath.relative_to(SOURCES_DIR)
     if len(rel.parts) < 2:

@@ -25,3 +25,12 @@ package-lock.json
 docs-with-mentioned/
 docs-full/
 docs-max/
+
+# Audience-Builds, siehe frontend/audiences.py.
+# docs-intern/ ist der interne Vollstand (Audience 'intern').
+# docs-private/ ist der Vorgaengername (vor Umbenennung 26.05.2026).
+docs-intern/
+docs-private/
+docs-with-mentioned-intern/
+docs-full-intern/
+docs-max-intern/

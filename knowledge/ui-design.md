@@ -27,9 +27,9 @@ Die Oberfläche folgt einer wissenschaftlichen Lese-Gravitation. Serifen-Typogra
 
 Das **Leitprinzip ist maximaler Informations-Output**: Nutzerinnen arbeiten mit den Daten, sie konsumieren sie nicht. Herkunftsanzeigen, Filterzustände und die aktive Zählebene werden nicht versteckt, um die Oberfläche „sauber" wirken zu lassen — eine Reduktion, die Herkunft verschleiert, wäre fachlich dysfunktional. Dichte Darstellung und hierarchische Gliederung sind beide gefragt, nicht gegeneinander.
 
-Eine zweischichtige Lesart durchzieht das UI: technische Identifikatoren (Datei-Schlüssel, TEI-Annotationen, Korpus-Pfade) koexistieren mit menschenlesbaren Labels. Die öffentliche Sicht zeigt die menschenlesbare Schicht; die technischen Personen-, Org- und Event-IDs (`pe__...`, `org__...`, `ev__...`) leben weiter im URL-Slug und in HTML-Attributen für Zitierbarkeit und Verlinkung, aber nicht im sichtbaren Text. Die private Sicht (`?dev=1` oder Audience-Private-Build) blendet sie ein. Beschluss: Stakeholder-Protokoll 18.05.2026 A.3.2.
+Eine zweischichtige Lesart durchzieht das UI: technische Identifikatoren (Datei-Schlüssel, TEI-Annotationen, Korpus-Pfade) koexistieren mit menschenlesbaren Labels. Die öffentliche Sicht zeigt die menschenlesbare Schicht; die technischen Personen-, Org- und Event-IDs (`pe__...`, `org__...`, `ev__...`) leben weiter im URL-Slug und in HTML-Attributen für Zitierbarkeit und Verlinkung, aber nicht im sichtbaren Text. Die interne Sicht (`?dev=1` oder interner Audience-Build) blendet sie ein. Beschluss: Stakeholder-Protokoll 18.05.2026 A.3.2.
 
-Siehe [[specification#Maximaler Informations-Output als Gestaltungsleitlinie]] und [[architecture#Audience-Schicht für öffentliche und private Sicht]].
+Siehe [[specification#Maximaler Informations-Output als Gestaltungsleitlinie]] und [[architecture#Audience-Schicht für öffentliche und interne Sicht]].
 
 ## Begriffs- und Label-Konsistenz
 
@@ -156,7 +156,7 @@ Sortier-Pfeile sind global gesetzt (`components.css`, Klasse `.sortable-table`),
 
 Ein URL-Parameter `?dev=1` an einer beliebigen Seite setzt `.dev-mode` auf das `<html>`-Element. CSS-Selektor `.dev-mode .dev-only` macht Elemente mit der Klasse `.dev-only` sichtbar, ergänzt um einen gelben gestrichelten Rahmen und ein „Entwicklung"-Label am rechten oberen Rand. Default-Sicht ohne URL-Parameter blendet sie aus.
 
-Die Mechanik ist projektweit anwendbar und parallel zur build-zeit-Audience-Achse. Audience entscheidet, *ob* etwas im Build enthalten ist, Dev-Mode entscheidet, *ob* enthaltene Elemente sichtbar geschaltet werden. Erstes Anwendungsbeispiel ist die Dispositivformeln-Sub-Tabelle in der Annotationsansicht. Begründung in [[specification#Öffentliche versus private Sicht in zwei Schichten]], Architektur-Detail in [[architecture#Dev-Mode-Schalter als komplementäre Client-Schicht]].
+Die Mechanik ist projektweit anwendbar und parallel zur build-zeit-Audience-Achse. Audience entscheidet, *ob* etwas im Build enthalten ist, Dev-Mode entscheidet, *ob* enthaltene Elemente sichtbar geschaltet werden. Erstes Anwendungsbeispiel ist die Dispositivformeln-Sub-Tabelle in der Annotationsansicht. Begründung in [[specification#Öffentliche versus interne Sicht in zwei Schichten]], Architektur-Detail in [[architecture#Dev-Mode-Schalter als komplementäre Client-Schicht]].
 
 ### Pillen-System und Tabellen-Toolbar auf der Abfragen-Seite
 

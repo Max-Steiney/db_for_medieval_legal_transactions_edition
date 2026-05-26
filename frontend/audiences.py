@@ -1,22 +1,23 @@
-"""Audience-Modell fuer oeffentliche vs. private Builds.
+"""Audience-Modell fuer oeffentliche vs. interne Builds.
 
 Steuert, welche Funktionen und Felder im Build sichtbar sind. Orthogonal
 zur Stufenwahl in frontend.stages: Stage waehlt den Korpus-Umfang und
 das Mentioned-Toggle, Audience waehlt die UI-Sichtbarkeit von noch nicht
 publikationsreifen Sektionen und technischen IDs.
 
-Werte (Begriffsbildung analog zu GitHub-Repos):
-- public:  Veroeffentlichungs-Stand fuer GitHub Pages. Versteckt die
-           Sektionen Analyse und Exploration und blendet technische IDs
-           (pe__..., org__..., Event-IDs) im Frontend aus.
-- private: Vollstand fuer Projektpartner und interne Pruefung. Enthaelt
-           alle experimentellen Sektionen und IDs.
+Werte:
+- oeffentlich: Veroeffentlichungs-Stand fuer GitHub Pages. Versteckt die
+               Sektionen Analyse und Exploration und blendet technische
+               IDs (pe__..., org__..., Event-IDs) im Frontend aus.
+- intern:      Vollstand fuer Projektpartner und interne Pruefung.
+               Enthaelt alle experimentellen Sektionen und IDs.
 
 Ein Audience-Wechsel wirkt ueber die Umgebungsvariable FRONTEND_AUDIENCE
-auf frontend.config.DOCS_DIR (Suffix -private fuer private Builds) und
+auf frontend.config.DOCS_DIR (Suffix -intern fuer interne Builds) und
 ueber den Jinja-Globals-Eintrag 'audience' auf alle Templates.
 
-Hintergrund: Protokoll der internen Besprechung vom 18. Mai 2026.
+Hintergrund: Protokoll der internen Besprechung vom 18. Mai 2026,
+Begriffsumbenennung public/private -> oeffentlich/intern am 26. Mai 2026.
 """
 
 from __future__ import annotations
@@ -25,9 +26,9 @@ import os
 
 
 AUDIENCES = {
-    "public": {
-        "id": "public",
-        "label": "Oeffentlich",
+    "oeffentlich": {
+        "id": "oeffentlich",
+        "label": "Öffentlich",
         "show_analysis_section": False,
         "show_exploration_section": False,
         "show_entity_ids": False,
@@ -38,9 +39,9 @@ AUDIENCES = {
             "technische IDs (pe__..., org__..., Event-IDs)."
         ),
     },
-    "private": {
-        "id": "private",
-        "label": "Privat",
+    "intern": {
+        "id": "intern",
+        "label": "Intern",
         "show_analysis_section": True,
         "show_exploration_section": True,
         "show_entity_ids": True,
@@ -53,13 +54,13 @@ AUDIENCES = {
 }
 
 
-DEFAULT_AUDIENCE_ID = "public"
+DEFAULT_AUDIENCE_ID = "oeffentlich"
 
 
 def active_audience_id() -> str:
     """Aktive Audience-ID aus FRONTEND_AUDIENCE.
 
-    Faellt auf 'public' zurueck, wenn die Variable fehlt oder einen
+    Faellt auf 'oeffentlich' zurueck, wenn die Variable fehlt oder einen
     ungueltigen Wert traegt.
     """
     raw = os.environ.get("FRONTEND_AUDIENCE", "").strip().lower()
@@ -71,7 +72,7 @@ def active_audience_id() -> str:
 
 
 def active_audience() -> dict:
-    """Aktives Audience-Dict. Nie None: faellt auf 'public' zurueck."""
+    """Aktives Audience-Dict. Nie None: faellt auf 'oeffentlich' zurueck."""
     return AUDIENCES[active_audience_id()]
 
 
@@ -92,11 +93,11 @@ def set_audience_env(audience_id: str) -> None:
 def output_dir_suffix(audience_id: str | None = None) -> str:
     """Suffix fuer das Output-Verzeichnis.
 
-    Leerer String fuer public (damit der Default-Build weiterhin nach
-    docs/ schreibt), '-private' fuer private Builds. Wird in
+    Leerer String fuer oeffentlich (damit der Default-Build weiterhin
+    nach docs/ schreibt), '-intern' fuer interne Builds. Wird in
     frontend.config an den Stage-Output-Dir-Namen angehaengt, so dass
-    Stage 1 + private nach docs-private/ schreibt und Stage 2 +
-    private nach docs-with-mentioned-private/.
+    Stage 1 + intern nach docs-intern/ schreibt und Stage 2 + intern
+    nach docs-with-mentioned-intern/.
     """
     aid = audience_id if audience_id is not None else active_audience_id()
     if aid == DEFAULT_AUDIENCE_ID:

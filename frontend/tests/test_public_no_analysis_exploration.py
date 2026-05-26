@@ -1,6 +1,7 @@
-"""Regression test: der Public-Build (docs/) darf weder Analyse- noch
-Exploration-Seiten enthalten und die Nav-Bar einer beliebigen
-Public-Seite darf keine Links auf /analysis/ oder /exploration/ tragen.
+"""Regression test: der oeffentliche Build (docs/) darf weder Analyse-
+noch Exploration-Seiten enthalten und die Nav-Bar einer beliebigen
+oeffentlichen Seite darf keine Links auf /analysis/ oder /exploration/
+tragen.
 
 Stakeholder-Anforderung 18.05.2026: klare Trennung zwischen oeffentlich
 sichtbaren Bereichen und intern zugaenglichen experimentellen Funktionen.
@@ -29,7 +30,7 @@ def test_public_build_has_no_analysis_dir():
     if not DOCS_ROOT.exists():
         pytest.skip("docs/ noch nicht gebaut")
     assert not (DOCS_ROOT / "analysis").exists(), (
-        "docs/analysis/ existiert im Public-Build. "
+        "docs/analysis/ existiert im oeffentlichen Build. "
         "Der Schalter audience.show_analysis_section wird ignoriert."
     )
 
@@ -38,7 +39,7 @@ def test_public_build_has_no_exploration_dir():
     if not DOCS_ROOT.exists():
         pytest.skip("docs/ noch nicht gebaut")
     assert not (DOCS_ROOT / "exploration").exists(), (
-        "docs/exploration/ existiert im Public-Build. "
+        "docs/exploration/ existiert im oeffentlichen Build. "
         "Der Schalter audience.show_exploration_section wird ignoriert."
     )
 
@@ -51,7 +52,7 @@ def test_public_nav_has_no_analysis_or_exploration_links(rel_path):
     text = page.read_text(encoding="utf-8")
     for forbidden in FORBIDDEN_DIRS:
         assert f"/{forbidden}/" not in text, (
-            f"{rel_path} verweist im Public-Build auf /{forbidden}/. "
+            f"{rel_path} verweist im oeffentlichen Build auf /{forbidden}/. "
             "Nav-Eintrag muss audience-conditional sein."
         )
 

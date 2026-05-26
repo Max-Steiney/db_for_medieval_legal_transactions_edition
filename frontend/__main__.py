@@ -68,14 +68,13 @@ def main():
     build_cmd.add_argument(
         "--audience",
         type=str,
-        choices=["public", "private"],
+        choices=["oeffentlich", "intern"],
         default=None,
         help=(
-            "Zielpublikum (siehe frontend/audiences.py), Begriffsbildung "
-            "analog zu GitHub-Repos: 'public' fuer den "
-            "Veroeffentlichungs-Stand (Default, schreibt nach docs/), "
-            "'private' fuer Projektpartner und interne Pruefung "
-            "(schreibt nach docs-private/ und blendet experimentelle "
+            "Zielpublikum (siehe frontend/audiences.py): 'oeffentlich' "
+            "fuer den Veroeffentlichungs-Stand (Default, schreibt nach "
+            "docs/), 'intern' fuer Projektpartner und interne Pruefung "
+            "(schreibt nach docs-intern/ und blendet experimentelle "
             "Sektionen und technische IDs ein)."
         ),
     )
@@ -86,8 +85,9 @@ def main():
         help=(
             "Explizite Sammlungs-Auswahl, kommasepariert, z.B. "
             "'QGW/Vienna_1177-1414_ready,Stadtbuecher/Band_1_1395-1400_ready'. "
-            "Hat Vorrang vor der Audience-Vorgabe. Ohne Flag rendert public "
-            "nur die freigegebenen Sammlungen, private den vollen Umfang."
+            "Hat Vorrang vor der Audience-Vorgabe. Ohne Flag rendert "
+            "oeffentlich nur die freigegebenen Sammlungen, intern den "
+            "vollen Umfang."
         ),
     )
 
@@ -106,7 +106,7 @@ def main():
     # Stufe und Audience vor jedem Modulimport setzen: frontend.config und
     # die Pipeline-Transformer lesen die abgeleiteten Env-Vars beim Import
     # und leiten Output-Verzeichnis sowie Mentioned-Toggle daraus ab. Ohne
-    # explizite Wahl bleiben Stufe 1 (Publikation) und Audience 'public'.
+    # explizite Wahl bleiben Stufe 1 (Publikation) und Audience 'oeffentlich'.
     if args.command == "build":
         from frontend import stages, audiences
         stage_id = getattr(args, "stage", None)

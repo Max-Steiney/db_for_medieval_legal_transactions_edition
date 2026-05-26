@@ -21,8 +21,8 @@ FRONTEND_REPO_ROOT = EDITION_DIR.parent
 # frontend/stages.py): Stufe 1 schreibt nach docs/, Stufe 2 nach
 # docs-with-mentioned/, Stufe 3 nach docs-full/, Stufe 4 nach docs-max/.
 # Die Audience (siehe frontend/audiences.py) haengt orthogonal ein
-# '-private'-Suffix an: Stage 1 + audience=private --> docs-private/.
-# Default ist Stufe 1, Audience 'public'; ohne CLI-Flag bleibt der
+# '-intern'-Suffix an: Stage 1 + audience=intern --> docs-intern/.
+# Default ist Stufe 1, Audience 'oeffentlich'; ohne CLI-Flag bleibt der
 # publizierte Build unangetastet.
 _ACTIVE_STAGE = active_stage()
 _ACTIVE_AUDIENCE = active_audience()
@@ -95,9 +95,9 @@ def is_public_corpus(collection_path: str) -> bool:
 def visible_corpora():
     """Sammlungen, die der aktuelle Build beruecksichtigt.
 
-    An die Sicht gekoppelt: 'public' rendert nur PUBLIC_CORPORA (der vom
-    Stakeholder freigegebene Teil), 'private' den vollen Korpus-Umfang der
-    aktiven Stufe. Eine explizite Auswahl ueber die Umgebungsvariable
+    An die Sicht gekoppelt: 'oeffentlich' rendert nur PUBLIC_CORPORA (der
+    vom Stakeholder freigegebene Teil), 'intern' den vollen Korpus-Umfang
+    der aktiven Stufe. Eine explizite Auswahl ueber die Umgebungsvariable
     FRONTEND_CORPORA (kommaseparierte Sammlungs-Pfade, gesetzt durch das
     CLI-Flag --corpora) hat Vorrang vor der Sicht-Vorgabe.
     """
@@ -105,7 +105,7 @@ def visible_corpora():
     override = os.environ.get("FRONTEND_CORPORA", "").strip()
     if override:
         return tuple(c.strip() for c in override.split(",") if c.strip())
-    if active_audience_id() == "public":
+    if active_audience_id() == "oeffentlich":
         return PUBLIC_CORPORA
     return tuple(active_corpora())
 
