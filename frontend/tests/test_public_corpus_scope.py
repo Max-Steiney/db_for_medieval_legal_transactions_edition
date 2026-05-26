@@ -1,0 +1,117 @@
+"""Invarianten gegen den gebauten oeffentlichen Stand (docs/).
+
+Behauptet das Stakeholder-Prinzip direkt: oeffentlich erscheinen nur die
+zwei freigegebenen Sammlungen, keine Entitaet ohne Quelle, keine verwaiste
+Profil-Datei, kein Link in eine versteckte Quelle. Diese Tests haetten die
+beiden gefundenen Lecks (verwaiste Profile, occ-Netzwerk) gefangen.
+Stakeholder decision: Protokoll 18.05.2026 ("QGW bis 1414, StB Bd. 1").
+
+Lesen den oeffentlichen Build-Output; ueberspringen, wenn er fehlt.
+"""
+
+import json
+from pathlib import Path
+
+import pytest
+
+DOCS = Path(__file__).resolve().parents[2] / "docs"
+
+PUBLIC_CORPORA = {
+    "QGW/Vienna_1177-1414_ready",
+    "Stadtbuecher/Band_1_1395-1400_ready",
+}
+HIDDEN_SUBDIRS = (
+    "QGW/Vienna_1415-1417",
+    "QGW/Vienna_1448-57_ready",
+    "Satzbuch_CD/SB_CD_1448-60_ready",
+)
+HIDDEN_DOC_PATHS = (
+    "documents/QGW/Vienna_1415-1417",
+    "documents/QGW/Vienna_1448-57",
+    "documents/Satzbuch_CD",
+)
+
+
+def _load(rel):
+    p = DOCS / rel
+    if not p.exists():
+        pytest.skip(f"build artifact not found: {rel}")
+    return json.loads(p.read_text(encoding="utf-8"))
+
+
+def test_no_hidden_corpus_document_dirs():
+    if not DOCS.exists():
+        pytest.skip("docs/ noch nicht gebaut")
+    for sub in HIDDEN_SUBDIRS:
+        assert not (DOCS / "documents" / sub).exists(), (
+            f"Versteckte Sammlung {sub} wurde oeffentlich gerendert."
+        )
+
+
+def test_register_entities_all_have_a_source():
+    for rel in ("data/persons_search.json", "data/orgs_search.json"):
+        data = _load(rel)
+        zero = [e["id"] for e in data if e.get("dc", 0) < 1]
+        assert not zero, (
+            f"{rel}: {len(zero)} Eintraege ohne Quelle, z.B. {zero[:3]}. "
+            f"Eine Entitaet ohne Quelle darf in keiner Ansicht erscheinen."
+        )
+
+
+def test_register_search_only_public_corpora():
+    for rel in ("data/persons_search.json", "data/orgs_search.json"):
+        data = _load(rel)
+        bad = [(e["id"], cp) for e in data for cp in e.get("co", [])
+               if cp not in PUBLIC_CORPORA]
+        assert not bad, (
+            f"{rel}: Verweise auf nicht-oeffentliche Sammlungen, z.B. {bad[:3]}."
+        )
+
+
+def test_reverse_index_only_public_corpora():
+    for rel in ("register/persons.json", "register/organisations.json"):
+        data = _load(rel)
+        bad = []
+        for eid, sources in data.items():
+            for s in sources:
+                if any(h in s.get("u", "") for h in HIDDEN_DOC_PATHS):
+                    bad.append((eid, s.get("u", "")))
+                    break
+        assert not bad, (
+            f"{rel}: Quellen aus versteckten Sammlungen, z.B. {bad[:3]}."
+        )
+
+
+def test_profiles_have_no_hidden_corpus_links():
+    """Kein Personen- oder Org-Profil verlinkt eine versteckte Quelle.
+
+    Faengt das occ-Netzwerk-Leck (gelistete Orgs wie Kuttenberg) und
+    verwaiste Alt-Profile (Teuffl-Fall) gleichermassen. Gelistete Personen-
+    Profile koennen nicht lecken (ihre Beziehungen filtern auf sichtbare
+    Quellen), darum reicht dort der Scan der nicht-gelisteten Dateien; das
+    haelt den Test schnell statt ueber 8000 Dateien zu lesen.
+    """
+    if not (DOCS / "register").exists():
+        pytest.skip("register/ noch nicht gebaut")
+    offenders = []
+
+    org_dir = DOCS / "register" / "orgs"
+    if org_dir.exists():
+        for f in org_dir.glob("*.html"):
+            if any(h in f.read_text(encoding="utf-8") for h in HIDDEN_DOC_PATHS):
+                offenders.append(f"orgs/{f.name}")
+
+    persons = set(_load("register/persons.json"))
+    pers_dir = DOCS / "register" / "persons"
+    if pers_dir.exists():
+        for f in pers_dir.glob("*.html"):
+            if f.stem in persons:
+                continue
+            if any(h in f.read_text(encoding="utf-8") for h in HIDDEN_DOC_PATHS):
+                offenders.append(f"persons/{f.name}")
+
+    assert not offenders, (
+        f"{len(offenders)} Profile verlinken versteckte Quellen, z.B. "
+        f"{offenders[:3]}. Ursache meist verwaiste Alt-Datei oder eine "
+        f"Beziehungs-Liste, die nicht auf sichtbare Sammlungen filtert."
+    )

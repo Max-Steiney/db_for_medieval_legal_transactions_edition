@@ -23,7 +23,7 @@ from pipeline.utils.text_utils import normalize_space, elem_text, strip_hash
 from frontend.config import (
     DOCS_DIR, TEMPLATES_DIR, STATIC_DIR,
     DATA_DIR, FACSIMILE_BASE_URLS,
-    RELEASED_PERIOD, is_released_corpus,
+    RELEASED_PERIOD, is_released_corpus, is_visible_corpus,
     released_period_label, unprocessed_gaps_label, max_year_with_extensions,
 )
 from frontend.audiences import active_audience
@@ -233,6 +233,18 @@ def _is_released_file(filepath):
     return is_released_corpus(f"{rel.parts[0]}/{rel.parts[1]}")
 
 
+def _is_visible_file(filepath):
+    """True if the file belongs to a corpus visible in the current build.
+
+    Sicht-abhaengig (siehe frontend.config.visible_corpora): im public-Build
+    nur die freigegebenen Sammlungen, im private-Build der volle Umfang.
+    """
+    rel = filepath.relative_to(SOURCES_DIR)
+    if len(rel.parts) < 2:
+        return False
+    return is_visible_corpus(f"{rel.parts[0]}/{rel.parts[1]}")
+
+
 def _tei_output_path(filepath):
     """Compute output path for TEI-XML source copy.
 
@@ -357,7 +369,7 @@ def _copy_tei_sources():
         shutil.rmtree(tei_dir)
 
     all_files = collect_source_files()
-    done_files = [f for f in all_files if _is_done_file(f) and _is_released_file(f)]
+    done_files = [f for f in all_files if _is_done_file(f) and _is_visible_file(f)]
 
     copied = 0
     for filepath in done_files:

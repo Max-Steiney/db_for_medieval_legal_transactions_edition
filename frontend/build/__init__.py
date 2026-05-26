@@ -44,6 +44,7 @@ from frontend.build._helpers import (
     _relative_to_root,
     _is_done_file,
     _is_released_file,
+    _is_visible_file,
     _tei_output_path,
     _load_registers,
     _sort_key_for_nav,
@@ -134,8 +135,9 @@ def build_all():
     env = _init_jinja()
 
     all_files = collect_source_files()
-    done_files = [f for f in all_files if _is_done_file(f) and _is_released_file(f)]
-    print(f"Found {len(done_files)} documents to render (released corpora only).")
+    done_files = [f for f in all_files if _is_done_file(f) and _is_visible_file(f)]
+    print(f"Found {len(done_files)} documents to render "
+          f"({active_audience()['id']} audience, visible corpora only).")
 
     parsed = []
     t1 = time.time()
@@ -273,7 +275,7 @@ __all__ = [
     "_xpath_text", "_extract_regest", "_extract_entity_refs",
     "_init_jinja", "_normalize_facsimile_url",
     "_output_path", "_relative_to_root",
-    "_is_done_file", "_is_released_file",
+    "_is_done_file", "_is_released_file", "_is_visible_file",
     "_tei_output_path", "_load_registers",
     "_sort_key_for_nav", "_compute_prev_next",
     "_format_table_date", "_load_docs_aggregate_lookup",

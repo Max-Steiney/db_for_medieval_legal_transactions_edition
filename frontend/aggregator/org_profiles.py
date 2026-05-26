@@ -8,7 +8,7 @@ released set).
 
 from collections import Counter, defaultdict
 
-from frontend.config import is_public_corpus
+from frontend.config import is_visible_corpus
 from ._shared import _cached_csv
 from ._profile_labels import (
     split_pipe_names, split_authorities, label_org_type,
@@ -396,7 +396,9 @@ def build_org_profiles(reverse_index):
     org_display_names = {oid: _org_display_name(s) for oid, s in stamm.items()}
     funding_network = _build_funding_network(file_lookup, person_names,
                                               org_display_names)
-    occ_network = _build_occ_network(file_meta_by_key(), person_names)
+    visible_file_meta = {fk: m for fk, m in file_meta_by_key().items()
+                         if is_visible_corpus(m.get("collection_path", ""))}
+    occ_network = _build_occ_network(visible_file_meta, person_names)
 
     released_org_ids = {oid for oid, docs in reverse_index.items()
                         if oid.startswith("org__") and docs}
@@ -416,7 +418,7 @@ def build_org_profiles(reverse_index):
         name_main, name_aliases = split_pipe_names(s.get("name_raw", ""))
         years = [d.get("date_iso", "")[:4] for d in docs
                  if d.get("date_iso", "")[:4].isdigit()
-                 and is_public_corpus(d.get("collection_path", ""))]
+                 and is_visible_corpus(d.get("collection_path", ""))]
         roles = org_roles.get(oid, Counter())
         roles_dict = {r: roles.get(r, 0) for r in _ROLES}
         rels = relations.get(oid, {"occ": [], "title_ref": []})

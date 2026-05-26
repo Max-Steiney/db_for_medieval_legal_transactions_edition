@@ -25,7 +25,7 @@ Relation types per person:
 
 from collections import Counter, defaultdict
 
-from frontend.config import is_public_corpus
+from frontend.config import is_visible_corpus
 from ._shared import _cached_csv
 from ._profile_labels import split_authorities
 from ._profile_enrichment import (
@@ -428,7 +428,7 @@ def build_person_profiles(reverse_index):
         s = stamm.get(pid, {})
         years = [d.get("date_iso", "")[:4] for d in docs
                  if d.get("date_iso", "")[:4].isdigit()
-                 and is_public_corpus(d.get("collection_path", ""))]
+                 and is_visible_corpus(d.get("collection_path", ""))]
         roles = person_roles.get(pid, Counter())
         roles_dict = {r: roles.get(r, 0) for r in _ROLES}
         rels = relations.get(pid, {k: [] for k in

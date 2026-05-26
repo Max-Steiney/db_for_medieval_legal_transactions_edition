@@ -6,6 +6,7 @@ to suppress logging.
 """
 
 import argparse
+import os
 import sys
 
 
@@ -78,6 +79,17 @@ def main():
             "Sektionen und technische IDs ein)."
         ),
     )
+    build_cmd.add_argument(
+        "--corpora",
+        type=str,
+        default=None,
+        help=(
+            "Explizite Sammlungs-Auswahl, kommasepariert, z.B. "
+            "'QGW/Vienna_1177-1414_ready,Stadtbuecher/Band_1_1395-1400_ready'. "
+            "Hat Vorrang vor der Audience-Vorgabe. Ohne Flag rendert public "
+            "nur die freigegebenen Sammlungen, private den vollen Umfang."
+        ),
+    )
 
     status_cmd = sub.add_parser("status", help="Show project status dashboard")
     status_cmd.add_argument(
@@ -108,6 +120,10 @@ def main():
         if audience_id is None:
             audience_id = audiences.DEFAULT_AUDIENCE_ID
         audiences.set_audience_env(audience_id)
+
+        corpora = getattr(args, "corpora", None)
+        if corpora:
+            os.environ["FRONTEND_CORPORA"] = corpora
 
     from pipeline.utils.run_log import run_logged
 

@@ -9,7 +9,7 @@ import csv as _csv
 
 from markupsafe import Markup
 
-from frontend.config import RELEASED_CORPORA
+from frontend.config import RELEASED_CORPORA, visible_corpora
 from frontend.build._helpers import COLLECTION_LABELS
 
 
@@ -79,12 +79,13 @@ def _scan_released_tei():
             "distinct_events": set(),
         }
 
+    corpora = visible_corpora()
     totals = _new_bucket()
-    per_corpus = {c: _new_bucket() for c in RELEASED_CORPORA}
+    per_corpus = {c: _new_bucket() for c in corpora}
     event_xp = _active_event_xpath()
     person_mention_xp = _active_person_mention_xpath()
 
-    for path_key in RELEASED_CORPORA:
+    for path_key in corpora:
         coll, sub = path_key.split("/", 1)
         done = SOURCES_DIR / coll / sub / "done"
         if not done.exists():
@@ -135,7 +136,7 @@ def _scan_released_tei():
     flat_totals = _flatten(totals)
     flat_per_corpus = [
         {"path": c, "label": COLLECTION_LABELS.get(c, c), **_flatten(per_corpus[c])}
-        for c in RELEASED_CORPORA
+        for c in corpora
     ]
     return flat_totals, flat_per_corpus
 
@@ -289,7 +290,7 @@ def _released_person_keys():
     from pipeline.config import SOURCES_DIR
 
     keys = set()
-    for path_key in RELEASED_CORPORA:
+    for path_key in visible_corpora():
         coll, sub = path_key.split("/", 1)
         done = SOURCES_DIR / coll / sub / "done"
         if not done.exists():

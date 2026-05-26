@@ -7,6 +7,7 @@ writes HTML/JSON to docs/.
 
 import json
 import re as _re
+import shutil
 import sys
 from collections import Counter
 from datetime import date, datetime
@@ -715,6 +716,8 @@ def _build_person_profiles(reverse_index, env, linked_orgs=None):
 
     template = env.get_template("person.html")
     out_dir = DOCS_DIR / "register" / "persons"
+    if out_dir.exists():
+        shutil.rmtree(out_dir)
     out_dir.mkdir(parents=True, exist_ok=True)
 
     linked_persons = set(profiles.keys())
@@ -757,6 +760,8 @@ def _build_org_profiles(reverse_index, env, linked_persons=None):
 
     template = env.get_template("org.html")
     out_dir = DOCS_DIR / "register" / "orgs"
+    if out_dir.exists():
+        shutil.rmtree(out_dir)
     out_dir.mkdir(parents=True, exist_ok=True)
 
     linked_orgs = set(profiles.keys())

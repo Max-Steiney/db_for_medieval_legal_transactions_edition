@@ -10,7 +10,7 @@ from pathlib import Path
 
 from pipeline.config import REPO_ROOT as PIPELINE_REPO_ROOT
 from frontend.stages import active_stage
-from frontend.audiences import active_audience, output_dir_suffix as _audience_suffix
+from frontend.audiences import active_audience, active_audience_id, output_dir_suffix as _audience_suffix
 
 # This frontend's own repo root (the publication / Pages-served repo).
 EDITION_DIR = Path(__file__).resolve().parent
@@ -74,7 +74,7 @@ RELEASED_PERIOD = {
 # Released-corpora scope is owned by the pipeline (it's a data concept,
 # not an edition concept). Re-exported here so existing edition imports
 # keep working.
-from pipeline.config import RELEASED_CORPORA, is_released_corpus  # noqa: E402,F401
+from pipeline.config import RELEASED_CORPORA, is_released_corpus, active_corpora  # noqa: E402,F401
 
 
 # Public corpora: the strict subset that the stakeholder considers
@@ -90,6 +90,28 @@ PUBLIC_CORPORA = (
 
 def is_public_corpus(collection_path: str) -> bool:
     return collection_path in PUBLIC_CORPORA
+
+
+def visible_corpora():
+    """Sammlungen, die der aktuelle Build beruecksichtigt.
+
+    An die Sicht gekoppelt: 'public' rendert nur PUBLIC_CORPORA (der vom
+    Stakeholder freigegebene Teil), 'private' den vollen Korpus-Umfang der
+    aktiven Stufe. Eine explizite Auswahl ueber die Umgebungsvariable
+    FRONTEND_CORPORA (kommaseparierte Sammlungs-Pfade, gesetzt durch das
+    CLI-Flag --corpora) hat Vorrang vor der Sicht-Vorgabe.
+    """
+    import os
+    override = os.environ.get("FRONTEND_CORPORA", "").strip()
+    if override:
+        return tuple(c.strip() for c in override.split(",") if c.strip())
+    if active_audience_id() == "public":
+        return PUBLIC_CORPORA
+    return tuple(active_corpora())
+
+
+def is_visible_corpus(collection_path: str) -> bool:
+    return collection_path in visible_corpora()
 
 
 def released_period_label():
