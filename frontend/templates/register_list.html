@@ -96,7 +96,7 @@
             <div class="main-toolbar">
                 <span class="result-count-wrap">
                     {{ result_count(total_count, register_label) }}{% if register_type == 'persons' %}{% call tip_glossary('gloss-person-results', 'Individuelle Person', slug='individuelle-person') %}
-                        <p>Konsolidierte Identit&auml;t. Jede Zeile ist eine eindeutige Person, unabh&auml;ngig von der Anzahl ihrer Nennungen in den Quellen.</p>
+                        <p>Definition in redaktioneller &Uuml;berarbeitung.</p>
                     {% endcall %}{% endif %}
                 </span>
                 {{ active_filters() }}
@@ -111,7 +111,7 @@
                             <th scope="col" class="col-sex" data-sort="sex">Geschlecht</th>
                             <th scope="col" class="col-roles">
                                 Rollen{% call tip_glossary('col-info-roles', 'Rolle', slug='rolle') %}
-                                    <p>Handlungsrolle der Person in den Events ihrer Quellen. Die Pillen stehen f&uuml;r <strong>A</strong>&nbsp;Aussteller, <strong>E</strong>&nbsp;Empf&auml;nger, <strong>Z</strong>&nbsp;Zeuge oder Siegler, <strong>S</strong>&nbsp;Sonstige. Eine Person kann in unterschiedlichen Quellen unterschiedliche Rollen einnehmen.</p>
+                                    <p>Definition in redaktioneller &Uuml;berarbeitung.</p>
                                 {% endcall %}
                             </th>
                             {% else %}

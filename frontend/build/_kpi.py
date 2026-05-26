@@ -209,8 +209,7 @@ def _compute_matrix_columns(total_docs, total_mentions, total_events):
             "glossary_term": "Quelle",
             "glossary_slug": "quelle",
             "glossary_def": Markup(
-                "Eine einzelne Urkunde oder ein Regest als Datensatz-Einheit. "
-                "Tr&auml;ger eines oder mehrerer Events."
+                "Definition in redaktioneller &Uuml;berarbeitung."
             ),
             "total": total_docs,
             "row_key": "sources",
@@ -233,9 +232,7 @@ def _compute_matrix_columns(total_docs, total_mentions, total_events):
             "glossary_term": "Gesamtnennung",
             "glossary_slug": "gesamtnennung",
             "glossary_def": Markup(
-                "Eine Beziehung zwischen einer Person und einer Quelle, in "
-                "der sie genannt wird. Quellenbereinigt: Mehrfacherw&auml;hnungen "
-                "in derselben Quelle z&auml;hlen einmal."
+                "Definition in redaktioneller &Uuml;berarbeitung."
             ),
             "total": total_mentions,
             "row_key": "mentions",
@@ -259,9 +256,7 @@ def _compute_matrix_columns(total_docs, total_mentions, total_events):
             "glossary_term": "Event",
             "glossary_slug": "event",
             "glossary_def": Markup(
-                "Ein konkreter Vorgang im Quellentext: Rechtsgesch&auml;ft "
-                "(Kauf, Schenkung &hellip;), Siegelvermerk, Kanzleieintrag "
-                "oder Notiz."
+                "Definition in redaktioneller &Uuml;berarbeitung."
             ),
             "total": total_events,
             "row_key": "events",
