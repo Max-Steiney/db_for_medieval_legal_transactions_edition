@@ -38,7 +38,7 @@
             PERSONS.set(p.id, p);
         }
         for (const p of RELATIONS.persons || []) {
-            const edges = new Map();    // (other|type) -> {otherKey, type, labels[], sourceKeys[]}
+            const edges = new Map();
             for (const r of p.rels || []) {
                 const t = r.t;
                 const other = r.r || '';
@@ -51,15 +51,15 @@
                         otherIsOrg: isOrg,
                         type: t,
                         labels: [],
+                        labelsNorm: [],
                         sourceKeys: [],
                     });
                 }
                 const e = edges.get(key);
                 if (r.l && !e.labels.includes(r.l)) e.labels.push(r.l);
+                if (r.ln && !e.labelsNorm.includes(r.ln)) e.labelsNorm.push(r.ln);
                 if (r.f && !e.sourceKeys.includes(r.f)) e.sourceKeys.push(r.f);
-                // Remember org entry for display name.
                 if (isOrg && !ORGS.has(other)) {
-                    // Org key has form "org__alias" — use as readable label.
                     ORGS.set(other, prettifyOrg(other));
                 }
             }
@@ -155,7 +155,7 @@
             stroke="${REL_COLORS[pos.edge.type] || '#888'}"
             stroke-width="${1 + Math.min(pos.edge.sourceKeys.length, 4)}"
             stroke-opacity="0.55">
-            <title>${escapeAttr(REL_LABELS[pos.edge.type] || pos.edge.type)}: ${pos.edge.labels.map(escapeAttr).join(', ') || '(ohne Bezeichnung)'} · ${pos.edge.sourceKeys.length} Beleg(e)</title>
+            <title>${escapeAttr(REL_LABELS[pos.edge.type] || pos.edge.type)}: ${edgeLabelText(pos.edge)} · ${pos.edge.sourceKeys.length} Quelle(n)</title>
         </line>`).join('');
 
         const neighborNodes = positioned.map(pos => {
@@ -221,6 +221,44 @@
         canvas.innerHTML = `<div class="net-suggestions">${items}</div>`;
     }
 
+    function edgeLabelText(e) {
+        if (!e.labels.length && !e.labelsNorm.length) return '(ohne Bezeichnung)';
+        const raw = e.labels.map(escapeAttr).join(', ');
+        const norm = e.labelsNorm.map(escapeAttr).join(', ');
+        if (!raw) return norm;
+        if (!norm || raw === norm) return raw;
+        return raw + ' (normalisiert: ' + norm + ')';
+    }
+
+    function renderLabelCell(e) {
+        if (!e.labels.length && !e.labelsNorm.length) {
+            return '<span class="text-muted-inline">&mdash;</span>';
+        }
+        const raw = e.labels.map(escapeHtml).join(', ');
+        const norm = e.labelsNorm.map(escapeHtml).join(', ');
+        if (!raw) return `<span class="net-label-norm">${norm}</span>`;
+        if (!norm || raw === norm) return raw;
+        return `${raw}<span class="net-label-norm" data-hint="Normalisierte Form fuer Auswertungen"> (${norm})</span>`;
+    }
+
+    function renderSourceCell(e) {
+        const keys = e.sourceKeys;
+        if (!keys.length) return '<span class="text-muted-inline">&mdash;</span>';
+        const chips = keys.map(fk => {
+            const meta = DOCS_LOOKUP[fk];
+            if (!meta) {
+                return `<span class="net-source-chip net-source-chip--unresolved"
+                              data-hint="Quelle ${escapeAttr(fk)} nicht im Lookup; ggf. ausserhalb des freigegebenen Korpus">${escapeHtml(fk.replace(/^f__/, ''))}</span>`;
+            }
+            const url = '../' + meta.u;
+            const label = (meta.i || fk) + (meta.d ? ' · ' + meta.d : '');
+            const hint = meta.r ? meta.r.slice(0, 240) : '';
+            return `<a class="net-source-chip" href="${escapeAttr(url)}"
+                       data-hint="${escapeAttr(hint)}">${escapeHtml(label)}</a>`;
+        }).join('');
+        return `<div class="net-source-chips">${chips}</div>`;
+    }
+
     function renderDetailTable(center, edges) {
         const tbody = document.getElementById('net-detail-tbody');
         const meta = document.getElementById('net-detail-meta');
@@ -230,7 +268,6 @@
         if (title) title.textContent = `Verbindungen von ${center.name}`;
         if (meta)  meta.textContent  = `${V.fmt(edges.length)} Eintr${edges.length === 1 ? 'ag' : 'äge'}`;
 
-        // Sort: evidence count descending, then by name.
         const sorted = edges.slice().sort((a, b) => {
             if (b.sourceKeys.length !== a.sourceKeys.length)
                 return b.sourceKeys.length - a.sourceKeys.length;
@@ -243,20 +280,16 @@
             const isOrg = e.otherIsOrg;
             const other = isOrg ? null : getPerson(e.otherKey);
             const name = isOrg ? getOrgName(e.otherKey) : (other ? other.name : e.otherKey);
-            const labels = e.labels.length ? e.labels.map(escapeHtml).join(', ') : '<span class="text-muted-inline">—</span>';
             const nameCell = isOrg
                 ? `<span class="net-detail-name net-detail-name--org">${escapeHtml(name)}</span>`
                 : `<button type="button" class="net-detail-recenter" data-pid="${escapeAttr(e.otherKey)}"
                        data-hint="Zum Mittelpunkt machen">${escapeHtml(name)}</button>`;
-            // Personen sind nicht im Datenkorb sammelbar; der Korb fasst nur
-            // Quellen. Hier daher kein Korb-Knopf.
-            let basketBtn = '';
             return `<tr>
                 <td class="col-label">${nameCell}</td>
                 <td>${escapeHtml(REL_LABELS[e.type] || e.type)}${isOrg ? ' (Org)' : ''}</td>
-                <td>${labels}</td>
-                <td class="num">${V.fmt(e.sourceKeys.length)}</td>
-                <td class="col-actions">${basketBtn}</td>
+                <td>${renderLabelCell(e)}</td>
+                <td>${renderSourceCell(e)}</td>
+                <td class="col-actions"></td>
             </tr>`;
         });
         tbody.innerHTML = rows.join('') ||
@@ -475,10 +508,14 @@
         bindTypeFilter();
         bindReset();
         applyUrlState();
-        renderActive();
         updateActiveFilters();
-        urlSyncActive = true;
-        writeUrl();
-        V.loadDocsLookup().then(lk => { DOCS_LOOKUP = lk; }).catch(() => {});
+        V.loadDocsLookup()
+            .then(lk => { DOCS_LOOKUP = lk; })
+            .catch(() => {})
+            .finally(() => {
+                renderActive();
+                urlSyncActive = true;
+                writeUrl();
+            });
     });
 })();

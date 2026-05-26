@@ -380,15 +380,20 @@
                 if (e.shiftKey && (e.key === 'ArrowLeft' || e.key === 'ArrowRight')) {
                     if (STATE.brushMin === null) return;
                     e.preventDefault();
+                    const step = (e.key === 'ArrowLeft') ? -10 : 10;
+                    const targetDec = dec + step;
                     if (e.key === 'ArrowLeft') {
-                        STATE.brushMin = Math.min(STATE.brushMin, dec - 10);
+                        STATE.brushMin = Math.min(STATE.brushMin, targetDec);
                     } else {
-                        STATE.brushMax = Math.max(STATE.brushMax, dec + 10);
+                        STATE.brushMax = Math.max(STATE.brushMax, targetDec);
                     }
                     renderChart();
                     renderDrill();
                     updateActiveFilters();
                     writeUrl();
+                    const next = document.querySelector(
+                        '.explore-stream-col[data-decade="' + targetDec + '"]');
+                    if (next) next.focus();
                 }
             });
         });
