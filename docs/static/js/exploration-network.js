@@ -156,7 +156,6 @@
         const canvas = document.getElementById('net-canvas');
         const heading = document.getElementById('net-graph-heading');
         const hint = document.getElementById('net-hint');
-        const detail = document.getElementById('net-detail');
         if (!canvas) return;
 
         const center = getActor(key);
@@ -188,7 +187,6 @@
                 <span class="aggregat-quadrant-h2-meta">${V.fmt(edges.length)} Verbindungen${capNote}${filterNote}</span>`;
         }
         if (hint) hint.hidden = true;
-        if (detail) detail.hidden = false;
 
         const N = visibleEdges.length;
         const positioned = visibleEdges.map((e, i) => {
@@ -265,12 +263,11 @@
         const canvas = document.getElementById('net-canvas');
         const heading = document.getElementById('net-graph-heading');
         const hint = document.getElementById('net-hint');
-        const detail = document.getElementById('net-detail');
         if (!canvas) return;
 
         if (heading) heading.textContent = 'Vorschläge: Akteure mit vielen Verbindungen';
         if (hint) hint.hidden = false;
-        if (detail) detail.hidden = true;
+        renderDetailPlaceholder();
 
         const list = topSuggestions(12);
         const items = list.map(a => {
@@ -337,6 +334,20 @@
                        data-hint="${escapeAttr(hint)}">${escapeHtml(label)}</a>`;
         }).join('');
         return `<div class="net-source-chips">${chips}</div>`;
+    }
+
+    function renderDetailPlaceholder() {
+        const tbody = document.getElementById('net-detail-tbody');
+        const meta = document.getElementById('net-detail-meta');
+        const title = document.getElementById('net-detail-title');
+        if (!tbody) return;
+        if (title) title.textContent = 'Verbindungen';
+        if (meta)  meta.textContent  = '';
+        tbody.innerHTML =
+            '<tr><td colspan="4" class="net-detail-empty">' +
+            'Akteur auswählen, um die Verbindungs-Tabelle anzuzeigen. ' +
+            'Suche oben in der Filterleiste oder Klick auf einen Vorschlag im Graph links.' +
+            '</td></tr>';
     }
 
     function renderDetailTable(center, edges) {
