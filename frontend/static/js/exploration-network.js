@@ -194,7 +194,7 @@
             const other = getActor(e.otherKey);
             const isOrgNeighbor = e.otherKind === 'org';
             const name = other ? other.name : (isOrgNeighbor ? prettifyOrg(e.otherKey) : e.otherKey);
-            const r = isOrgNeighbor ? 8 : nodeRadius(getEdgeCount(e.otherKey));
+            const r = nodeRadius(getEdgeCount(e.otherKey));
             const color = nodeColor(other || { kind: e.otherKind, sex: 'unspecified' });
             const dataAttr = isOrgNeighbor
                 ? `data-org="${escapeAttr(e.otherKey)}"`
@@ -205,20 +205,23 @@
                        data-hint="${escapeAttr(hint)}" data-hint-type="${hintType}">
                 <circle cx="${pos.x.toFixed(1)}" cy="${pos.y.toFixed(1)}" r="${r}"
                         fill="${color}" stroke="white" stroke-width="2"/>
-                <text x="${pos.x.toFixed(1)}" y="${(pos.y + r + 12).toFixed(1)}"
-                      text-anchor="middle" class="net-node-label">${escapeHtml(truncate(name, 24))}</text>
+                <text x="${pos.x.toFixed(1)}" y="${(pos.y + r + 14).toFixed(1)}"
+                      text-anchor="middle" class="net-node-label"
+                      stroke="var(--color-bg)" stroke-width="3" paint-order="stroke">${escapeHtml(truncate(name, 24))}</text>
             </g>`;
         }).join('');
 
         const centerKindClass = center.kind === 'org' ? ' is-org' : ' is-person';
         const centerHint = nodeHintText(center, center.id, center.kind === 'org') + ' | Mittelpunkt';
         const centerHintType = center.kind === 'org' ? 'Organisation' : 'Person';
+        const centerOuterR = cR + 4;
         const centerNode = `<g class="net-node net-node--center${centerKindClass}" ${actorDataAttr(center)}
                                 data-hint="${escapeAttr(centerHint)}" data-hint-type="${centerHintType}">
-            <circle cx="${CX}" cy="${CY}" r="${cR + 4}"
+            <circle cx="${CX}" cy="${CY}" r="${centerOuterR}"
                     fill="${nodeColor(center)}" stroke="var(--color-text)" stroke-width="2.5"/>
-            <text x="${CX}" y="${(CY + cR + 18).toFixed(1)}" text-anchor="middle"
-                  class="net-node-label net-node-label--center">${escapeHtml(center.name)}</text>
+            <text x="${CX}" y="${(CY + centerOuterR + 18).toFixed(1)}" text-anchor="middle"
+                  class="net-node-label net-node-label--center"
+                  stroke="var(--color-bg)" stroke-width="4" paint-order="stroke">${escapeHtml(center.name)}</text>
         </g>`;
 
         canvas.innerHTML = `<svg class="net-svg" viewBox="0 0 ${W} ${H}"
@@ -299,8 +302,10 @@
                               data-hint="Quelle ${escapeAttr(fk)} nicht im Lookup; ggf. ausserhalb des freigegebenen Korpus">${escapeHtml(fk.replace(/^f__/, ''))}</span>`;
             }
             const url = '../' + meta.u;
-            const label = (meta.i || fk) + (meta.d ? ' · ' + meta.d : '');
-            const hint = meta.r ? meta.r.slice(0, 240) : '';
+            const label = meta.i || fk;
+            const dateBit = meta.d ? meta.d + ' · ' : '';
+            const regestBit = meta.r ? meta.r.slice(0, 240) : '';
+            const hint = (dateBit + regestBit).trim();
             return `<a class="net-source-chip" href="${escapeAttr(url)}"
                        data-hint="${escapeAttr(hint)}">${escapeHtml(label)}</a>`;
         }).join('');
@@ -337,15 +342,14 @@
                        data-hint="${escapeAttr(hint)}">${escapeHtml(name)}</button>`;
             const relSuffix = (isOrgTarget && center.kind === 'person') ? ' (Org)' : '';
             return `<tr>
-                <td class="col-label">${nameCell}</td>
-                <td>${escapeHtml(REL_LABELS[e.type] || e.type)}${relSuffix}</td>
-                <td>${renderLabelCell(e)}</td>
-                <td>${renderSourceCell(e)}</td>
-                <td class="col-actions"></td>
+                <td class="col-net-person">${nameCell}</td>
+                <td class="col-net-type">${escapeHtml(REL_LABELS[e.type] || e.type)}${relSuffix}</td>
+                <td class="col-net-label">${renderLabelCell(e)}</td>
+                <td class="col-net-sources">${renderSourceCell(e)}</td>
             </tr>`;
         });
         tbody.innerHTML = rows.join('') ||
-            '<tr><td colspan="5" class="aggregat-empty">Keine Verbindungen für die aktive Filterauswahl.</td></tr>';
+            '<tr><td colspan="4" class="aggregat-empty">Keine Verbindungen für die aktive Filterauswahl.</td></tr>';
     }
 
     function bindSearch() {

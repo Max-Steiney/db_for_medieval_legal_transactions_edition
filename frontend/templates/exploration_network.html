@@ -110,14 +110,19 @@
                 </h2>
             </header>
             <div class="aggregat-table--labels-wrap explore-net-detail-scroll">
-                <table class="aggregat-table aggregat-table--labels" id="net-detail-table">
+                <table class="aggregat-table aggregat-table--labels net-detail-table" id="net-detail-table">
+                    <colgroup>
+                        <col class="col-net-person">
+                        <col class="col-net-type">
+                        <col class="col-net-label">
+                        <col class="col-net-sources">
+                    </colgroup>
                     <thead>
                         <tr>
-                            <th scope="col" class="col-label">Person</th>
+                            <th scope="col">Akteur</th>
                             <th scope="col">Beziehung</th>
                             <th scope="col">Bezeichnung</th>
                             <th scope="col">Quellen</th>
-                            <th scope="col" class="col-actions" aria-label="Aktionen"></th>
                         </tr>
                     </thead>
                     <tbody id="net-detail-tbody"></tbody>

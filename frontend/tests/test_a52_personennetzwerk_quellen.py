@@ -172,6 +172,66 @@ class TestNetworkTooltipsAndLegend:
             )
 
 
+class TestNetworkLayoutPolishV3:
+    """Visual-Polish-Pass nach erstem User-Sichttest am internen Build.
+
+    Akute Befunde aus dem Screenshot 2026-05-26:
+    - Quellen-Chips liefen rechts aus dem Detail-Panel raus, weil die
+      Tabelle keine festen Spaltenbreiten hatte und die Chip-Labels mit
+      Datum sehr breit waren.
+    - Center-Label wurde optisch vom Knoten ueberlagert, weil zu wenig
+      Abstand und kein Hintergrund-Halo.
+    - Org-Knoten wirkten visuell zweitrangig, weil sie fix r=8 hatten
+      waehrend Personen-Knoten nach Verbindungsanzahl skalierten.
+    - Tabelle hatte eine leere 5. Aktionen-Spalte ohne Inhalt.
+    """
+
+    def setup_method(self):
+        self.js = _read(ROOT / "static" / "js" / "exploration-network.js")
+        self.tpl = _read(ROOT / "templates" / "exploration_network.html")
+        self.css = _read(ROOT / "static" / "css" / "exploration.css")
+
+    def test_table_uses_colgroup_with_four_columns(self):
+        assert "<colgroup>" in self.tpl
+        for cls in ("col-net-person", "col-net-type",
+                    "col-net-label", "col-net-sources"):
+            assert f'class="{cls}"' in self.tpl, f"colgroup col {cls} fehlt"
+
+    def test_table_no_more_actions_column(self):
+        assert 'class="col-actions"' not in self.tpl
+        assert 'aria-label="Aktionen"' not in self.tpl
+
+    def test_table_layout_fixed_in_css(self):
+        assert ".net-detail-table" in self.css
+        assert "table-layout: fixed" in self.css
+
+    def test_source_chip_label_has_no_inline_date(self):
+        """Quellen-Chip rendert nur die Signatur; Datum landet im Hint,
+        damit der Chip kompakt bleibt und in die Spalte passt."""
+        assert "const label = meta.i || fk;" in self.js
+        assert "const dateBit = meta.d" in self.js
+
+    def test_center_label_has_halo_stroke(self):
+        """paint-order=stroke + bg-Stroke macht das Center-Label auch
+        ueber dem dunklen Knoten lesbar."""
+        assert 'paint-order="stroke"' in self.js
+
+    def test_org_neighbor_uses_node_radius(self):
+        """Org-Knoten skalieren wie Personen-Knoten nach Verbindungsanzahl,
+        damit Akteurs-Gleichwertigkeit visuell sichtbar bleibt."""
+        assert "const r = nodeRadius(getEdgeCount(e.otherKey));" in self.js
+        assert "isOrgNeighbor ? 8 :" not in self.js, (
+            "Alte Fixgroesse fuer Org-Knoten muss raus"
+        )
+
+    def test_active_filters_strip_has_no_dashed_border(self):
+        """In der Filterleiste sitzt der Active-Filter-Strip ohne dashed
+        border, damit er sich harmonisch in die Leiste einfuegt."""
+        bar = self.css[self.css.index('.exploration-network-page .explore-net-filterbar .active-filters'):]
+        chunk = bar[:300]
+        assert "border-top" not in chunk
+
+
 class TestZeitstromShiftArrow:
     """Shift+Pfeiltaste verschiebt Fokus auf die Nachbar-Spalte und erweitert
     den Brush wiederholbar."""
