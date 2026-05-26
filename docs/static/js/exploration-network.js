@@ -1,41 +1,50 @@
-// Exploration / person network: Ego-layout around a single person.
-// Pick a person (search or suggestion click) -> that person sits in the
-// center, their direct connections (filtered by relation type) are arranged
-// radially around it. Clicking a neighbor person moves the center.
+// Exploration / Personennetzwerk.
+// Akteure sind Personen UND Organisationen. Ego-Layout um einen Akteur;
+// Klick auf einen Nachbar-Knoten verlagert das Zentrum, beim Wechsel von
+// Person zu Org (oder umgekehrt) wird die Visualisierung passend gespiegelt:
+// fuer eine Org rechnen wir aus den Personen-Relationen die Nachbar-
+// Personen (occ-, rep-Targets), fuer eine Person die direkten rels.
 (function () {
     'use strict';
 
     const V = VizCore;
 
-    const REL_LABELS = V.REL_LABELS;        // {kin, occ, rep, friend}
+    const REL_LABELS = V.REL_LABELS;
     const REL_COLORS = V.REL_COLORS;
     const REL_ORDER  = V.REL_ORDER;
 
-    // Sex colors for person nodes (from tokens.css).
     const SEX_COLORS = {
         m: '#5d3a74',
         f: '#2d6650',
         unspecified: '#9a9590',
     };
+    const ORG_COLOR = '#a08470';
 
-    // ---------------------------------------------------------------------
-    // Load data + build index
-    // ---------------------------------------------------------------------
     const RELATIONS = V.readJsonScript('network-data-relations', { persons: [] });
     let DOCS_LOOKUP = {};
 
-    // PERSONS: id -> {id, name, sex, rels[]}
-    // ORGS:    id -> name (orgs appear as occ targets; they have no own record)
-    const PERSONS = new Map();
-    const ORGS = new Map();
-    // Edge index: pid -> [{otherKey, otherIsOrg, type, label, sourceKeys: [fk]}]
+    // Single actor index: key (pe__... or org__...) -> actor record.
+    // kind === 'person' fuer Personen mit sex und rels[]; kind === 'org'
+    // fuer Organisationen mit Anzeigenamen aus relations.json::orgs.
+    const ACTORS = new Map();
+    // Edges pro Akteur: actor_key -> [{otherKey, otherKind, type,
+    // labels[], labelsNorm[], sourceKeys[]}]. Fuer Personen direkt aus rels,
+    // fuer Orgs als invertierte Spiegel der Personen-Edges.
     const EDGE_INDEX = new Map();
 
     function buildIndex() {
         for (const p of RELATIONS.persons || []) {
-            // Pre-normalise once for bindSearch (umlaut-tolerant, word-AND).
             p._s = EdCore.normForSearch(p.name || '');
-            PERSONS.set(p.id, p);
+            ACTORS.set(p.id, {
+                id: p.id, name: p.name, kind: 'person',
+                sex: p.sex, _s: p._s,
+            });
+        }
+        for (const o of RELATIONS.orgs || []) {
+            ACTORS.set(o.id, {
+                id: o.id, name: o.name, kind: 'org',
+                _s: EdCore.normForSearch(o.name || ''),
+            });
         }
         for (const p of RELATIONS.persons || []) {
             const edges = new Map();
@@ -43,27 +52,49 @@
                 const t = r.t;
                 const other = r.r || '';
                 if (!other) continue;
-                const isOrg = other.startsWith('org__');
+                const otherKind = other.startsWith('org__') ? 'org' : 'person';
                 const key = other + '|' + t;
                 if (!edges.has(key)) {
                     edges.set(key, {
-                        otherKey: other,
-                        otherIsOrg: isOrg,
-                        type: t,
-                        labels: [],
-                        labelsNorm: [],
-                        sourceKeys: [],
+                        otherKey: other, otherKind, type: t,
+                        labels: [], labelsNorm: [], sourceKeys: [],
                     });
                 }
                 const e = edges.get(key);
                 if (r.l && !e.labels.includes(r.l)) e.labels.push(r.l);
                 if (r.ln && !e.labelsNorm.includes(r.ln)) e.labelsNorm.push(r.ln);
                 if (r.f && !e.sourceKeys.includes(r.f)) e.sourceKeys.push(r.f);
-                if (isOrg && !ORGS.has(other)) {
-                    ORGS.set(other, prettifyOrg(other));
+                if (otherKind === 'org' && !ACTORS.has(other)) {
+                    const fallback = prettifyOrg(other);
+                    ACTORS.set(other, {
+                        id: other, name: fallback, kind: 'org',
+                        _s: EdCore.normForSearch(fallback),
+                    });
                 }
             }
             EDGE_INDEX.set(p.id, Array.from(edges.values()));
+        }
+        // Inverse Edges fuer Orgs: pro Person-Edge, das auf eine Org zeigt,
+        // ein Spiegel-Edge mit Person als otherKey unter der Org anlegen.
+        const personIds = [];
+        for (const a of ACTORS.values()) {
+            if (a.kind === 'person') personIds.push(a.id);
+        }
+        for (const pid of personIds) {
+            const edges = EDGE_INDEX.get(pid) || [];
+            for (const e of edges) {
+                if (e.otherKind !== 'org') continue;
+                let orgEdges = EDGE_INDEX.get(e.otherKey);
+                if (!orgEdges) {
+                    orgEdges = [];
+                    EDGE_INDEX.set(e.otherKey, orgEdges);
+                }
+                orgEdges.push({
+                    otherKey: pid, otherKind: 'person', type: e.type,
+                    labels: e.labels, labelsNorm: e.labelsNorm,
+                    sourceKeys: e.sourceKeys,
+                });
+            }
         }
     }
 
@@ -71,73 +102,70 @@
         return V.labelize(orgKey.replace(/^org__/, ''));
     }
 
-    function getPerson(id)  { return PERSONS.get(id); }
-    function getOrgName(id) { return ORGS.get(id) || prettifyOrg(id); }
-    function getEdges(pid)  { return EDGE_INDEX.get(pid) || []; }
-    function getEdgeCount(pid) { return getEdges(pid).length; }
+    function getActor(key) { return ACTORS.get(key); }
+    function getEdges(key) { return EDGE_INDEX.get(key) || []; }
+    function getEdgeCount(key) { return getEdges(key).length; }
 
-    // ---------------------------------------------------------------------
-    // Filter state
-    // ---------------------------------------------------------------------
     const STATE = {
-        center: null,            // pid or null (= suggestion mode)
+        center: null,
         types: new Set(REL_ORDER),
     };
 
-    function activeEdges(pid) {
-        return getEdges(pid).filter(e => STATE.types.has(e.type));
+    function activeEdges(key) {
+        return getEdges(key).filter(e => STATE.types.has(e.type));
     }
 
-    // ---------------------------------------------------------------------
-    // Suggestions: top-N persons with the most connections
-    // ---------------------------------------------------------------------
     function topSuggestions(n) {
         const candidates = [];
-        for (const p of PERSONS.values()) {
-            const c = activeEdges(p.id).length;
-            if (c > 0) candidates.push({ p, c });
+        for (const a of ACTORS.values()) {
+            const c = activeEdges(a.id).length;
+            if (c > 0) candidates.push({ a, c });
         }
-        candidates.sort((a, b) => b.c - a.c);
-        return candidates.slice(0, n).map(x => x.p);
+        candidates.sort((x, y) => y.c - x.c);
+        return candidates.slice(0, n).map(x => x.a);
     }
 
-    // ---------------------------------------------------------------------
-    // SVG renderer (inline, no external lib)
-    // ---------------------------------------------------------------------
     const W = 720, H = 520, CX = W / 2, CY = H / 2;
     const RADIUS_NEIGHBOR = 200;
 
     function nodeRadius(edgeCount) {
-        // 8..22px, smoothly monotonic with number of relations.
         return Math.min(22, Math.max(8, 8 + Math.sqrt(edgeCount) * 2.5));
     }
 
-    function nodeColor(person) {
-        return SEX_COLORS[person.sex] || SEX_COLORS.unspecified;
+    function nodeColor(actor) {
+        if (!actor) return SEX_COLORS.unspecified;
+        if (actor.kind === 'org') return ORG_COLOR;
+        return SEX_COLORS[actor.sex] || SEX_COLORS.unspecified;
     }
 
-    function renderEgo(pid) {
+    function actorDataAttr(actor) {
+        return actor.kind === 'org'
+            ? `data-org="${escapeAttr(actor.id)}"`
+            : `data-pid="${escapeAttr(actor.id)}"`;
+    }
+
+    function renderEgo(key) {
         const canvas = document.getElementById('net-canvas');
         const heading = document.getElementById('net-graph-heading');
         const hint = document.getElementById('net-hint');
         const detail = document.getElementById('net-detail');
         if (!canvas) return;
 
-        const center = getPerson(pid);
+        const center = getActor(key);
         if (!center) {
             renderSuggestions();
             return;
         }
-        const edges = activeEdges(pid);
+        const edges = activeEdges(key);
         if (heading) {
-            heading.innerHTML = `<span class="net-heading-name">${escapeHtml(center.name)}</span>
+            const kindBadge = center.kind === 'org' ? ' <span class="net-heading-kind">(Organisation)</span>' : '';
+            heading.innerHTML = `<span class="net-heading-name">${escapeHtml(center.name)}</span>${kindBadge}
                 <span class="aggregat-quadrant-h2-meta">${V.fmt(edges.length)} Verbindungen
                 ${STATE.types.size < REL_ORDER.length ? `· gefiltert auf ${STATE.types.size} Typ(en)` : ''}</span>`;
         }
         if (hint) hint.hidden = true;
         if (detail) detail.hidden = false;
 
-        // Radial layout: distribute neighbors on a circle.
         const N = edges.length;
         const positioned = edges.map((e, i) => {
             const angle = (2 * Math.PI * i / Math.max(N, 1)) - Math.PI / 2;
@@ -149,40 +177,48 @@
         });
 
         const cR = nodeRadius(edges.length);
-        const lines = positioned.map(pos => `<line
-            class="net-edge net-edge--${pos.edge.type}"
-            x1="${CX}" y1="${CY}" x2="${pos.x.toFixed(1)}" y2="${pos.y.toFixed(1)}"
-            stroke="${REL_COLORS[pos.edge.type] || '#888'}"
-            stroke-width="${1 + Math.min(pos.edge.sourceKeys.length, 4)}"
-            stroke-opacity="0.55">
-            <title>${escapeAttr(REL_LABELS[pos.edge.type] || pos.edge.type)}: ${edgeLabelText(pos.edge)} · ${pos.edge.sourceKeys.length} Quelle(n)</title>
-        </line>`).join('');
+        const lines = positioned.map(pos => {
+            const edgeHint = `${REL_LABELS[pos.edge.type] || pos.edge.type}: ${edgeLabelText(pos.edge)} | ${pos.edge.sourceKeys.length} Quelle(n)`;
+            return `<line
+                class="net-edge net-edge--${pos.edge.type}"
+                x1="${CX}" y1="${CY}" x2="${pos.x.toFixed(1)}" y2="${pos.y.toFixed(1)}"
+                stroke="${REL_COLORS[pos.edge.type] || '#888'}"
+                stroke-width="${1 + Math.min(pos.edge.sourceKeys.length, 4)}"
+                stroke-opacity="0.55"
+                data-hint="${escapeAttr(edgeHint)}"
+                data-hint-type="Beziehung"></line>`;
+        }).join('');
 
         const neighborNodes = positioned.map(pos => {
             const e = pos.edge;
-            const isOrg = e.otherIsOrg;
-            const other = isOrg ? null : getPerson(e.otherKey);
-            const name = isOrg ? getOrgName(e.otherKey) : (other ? other.name : e.otherKey);
-            const r = isOrg ? 8 : nodeRadius(getEdgeCount(e.otherKey));
-            const color = isOrg ? '#a08470' : nodeColor(other || { sex: 'unspecified' });
-            const dataAttr = isOrg
+            const other = getActor(e.otherKey);
+            const isOrgNeighbor = e.otherKind === 'org';
+            const name = other ? other.name : (isOrgNeighbor ? prettifyOrg(e.otherKey) : e.otherKey);
+            const r = isOrgNeighbor ? 8 : nodeRadius(getEdgeCount(e.otherKey));
+            const color = nodeColor(other || { kind: e.otherKind, sex: 'unspecified' });
+            const dataAttr = isOrgNeighbor
                 ? `data-org="${escapeAttr(e.otherKey)}"`
                 : `data-pid="${escapeAttr(e.otherKey)}"`;
-            return `<g class="net-node ${isOrg ? 'is-org' : 'is-person'}" ${dataAttr}>
+            const hint = nodeHintText(other, e.otherKey, isOrgNeighbor);
+            const hintType = isOrgNeighbor ? 'Organisation' : 'Person';
+            return `<g class="net-node ${isOrgNeighbor ? 'is-org' : 'is-person'}" ${dataAttr}
+                       data-hint="${escapeAttr(hint)}" data-hint-type="${hintType}">
                 <circle cx="${pos.x.toFixed(1)}" cy="${pos.y.toFixed(1)}" r="${r}"
                         fill="${color}" stroke="white" stroke-width="2"/>
                 <text x="${pos.x.toFixed(1)}" y="${(pos.y + r + 12).toFixed(1)}"
                       text-anchor="middle" class="net-node-label">${escapeHtml(truncate(name, 24))}</text>
-                <title>${escapeAttr(name)}${isOrg ? ' (Organisation)' : ''}</title>
             </g>`;
         }).join('');
 
-        const centerNode = `<g class="net-node net-node--center" data-pid="${escapeAttr(center.id)}">
+        const centerKindClass = center.kind === 'org' ? ' is-org' : ' is-person';
+        const centerHint = nodeHintText(center, center.id, center.kind === 'org') + ' | Mittelpunkt';
+        const centerHintType = center.kind === 'org' ? 'Organisation' : 'Person';
+        const centerNode = `<g class="net-node net-node--center${centerKindClass}" ${actorDataAttr(center)}
+                                data-hint="${escapeAttr(centerHint)}" data-hint-type="${centerHintType}">
             <circle cx="${CX}" cy="${CY}" r="${cR + 4}"
                     fill="${nodeColor(center)}" stroke="var(--color-text)" stroke-width="2.5"/>
             <text x="${CX}" y="${(CY + cR + 18).toFixed(1)}" text-anchor="middle"
                   class="net-node-label net-node-label--center">${escapeHtml(center.name)}</text>
-            <title>${escapeAttr(center.name)} (Mittelpunkt)</title>
         </g>`;
 
         canvas.innerHTML = `<svg class="net-svg" viewBox="0 0 ${W} ${H}"
@@ -202,23 +238,35 @@
         const detail = document.getElementById('net-detail');
         if (!canvas) return;
 
-        if (heading) heading.textContent = 'Vorschläge: Personen mit vielen Verbindungen';
-        if (hint) {
-            hint.hidden = false;
-            hint.textContent = 'Klicke auf eine Person, um ins Netz einzutreten — oder suche links nach einem Namen.';
-        }
+        if (heading) heading.textContent = 'Vorschläge: Akteure mit vielen Verbindungen';
+        if (hint) hint.hidden = false;
         if (detail) detail.hidden = true;
 
         const list = topSuggestions(12);
-        const items = list.map(p => {
-            const c = activeEdges(p.id).length;
-            return `<button type="button" class="net-suggestion-card" data-pid="${escapeAttr(p.id)}">
-                <span class="net-suggestion-dot" style="background:${nodeColor(p)}"></span>
-                <span class="net-suggestion-name">${escapeHtml(p.name)}</span>
+        const items = list.map(a => {
+            const c = activeEdges(a.id).length;
+            const kindLabel = a.kind === 'org' ? ' Org' : '';
+            return `<button type="button" class="net-suggestion-card" ${actorDataAttr(a)}>
+                <span class="net-suggestion-dot" style="background:${nodeColor(a)}"></span>
+                <span class="net-suggestion-name">${escapeHtml(a.name)}${kindLabel ? ` <span class="net-suggestion-kind">${kindLabel}</span>` : ''}</span>
                 <span class="net-suggestion-count">${V.fmt(c)} Verb.</span>
             </button>`;
         }).join('');
         canvas.innerHTML = `<div class="net-suggestions">${items}</div>`;
+    }
+
+    const SEX_LABEL = { m: 'männlich', f: 'weiblich', unspecified: 'ohne Angabe' };
+
+    function nodeHintText(actor, fallbackKey, isOrg) {
+        if (isOrg) {
+            const name = actor ? actor.name : prettifyOrg(fallbackKey);
+            const c = getEdgeCount(fallbackKey);
+            return `${name} | Organisation | ${V.fmt(c)} Verbindung${c === 1 ? '' : 'en'} im Korpus`;
+        }
+        if (!actor) return fallbackKey;
+        const sex = SEX_LABEL[actor.sex] || SEX_LABEL.unspecified;
+        const c = getEdgeCount(actor.id);
+        return `${actor.name} | ${sex} | ${V.fmt(c)} Verbindung${c === 1 ? '' : 'en'} im Korpus`;
     }
 
     function edgeLabelText(e) {
@@ -271,22 +319,26 @@
         const sorted = edges.slice().sort((a, b) => {
             if (b.sourceKeys.length !== a.sourceKeys.length)
                 return b.sourceKeys.length - a.sourceKeys.length;
-            const an = a.otherIsOrg ? getOrgName(a.otherKey) : (getPerson(a.otherKey) || {}).name || '';
-            const bn = b.otherIsOrg ? getOrgName(b.otherKey) : (getPerson(b.otherKey) || {}).name || '';
+            const an = (getActor(a.otherKey) || {}).name || a.otherKey;
+            const bn = (getActor(b.otherKey) || {}).name || b.otherKey;
             return an.localeCompare(bn);
         });
 
         const rows = sorted.map(e => {
-            const isOrg = e.otherIsOrg;
-            const other = isOrg ? null : getPerson(e.otherKey);
-            const name = isOrg ? getOrgName(e.otherKey) : (other ? other.name : e.otherKey);
-            const nameCell = isOrg
-                ? `<span class="net-detail-name net-detail-name--org">${escapeHtml(name)}</span>`
-                : `<button type="button" class="net-detail-recenter" data-pid="${escapeAttr(e.otherKey)}"
-                       data-hint="Zum Mittelpunkt machen">${escapeHtml(name)}</button>`;
+            const other = getActor(e.otherKey);
+            const isOrgTarget = e.otherKind === 'org';
+            const name = other ? other.name : (isOrgTarget ? prettifyOrg(e.otherKey) : e.otherKey);
+            const cls = isOrgTarget ? 'net-detail-recenter net-detail-recenter--org' : 'net-detail-recenter';
+            const hint = isOrgTarget
+                ? 'Organisation zum Mittelpunkt machen'
+                : 'Person zum Mittelpunkt machen';
+            const nameCell = `<button type="button" class="${cls}"
+                       ${isOrgTarget ? `data-org="${escapeAttr(e.otherKey)}"` : `data-pid="${escapeAttr(e.otherKey)}"`}
+                       data-hint="${escapeAttr(hint)}">${escapeHtml(name)}</button>`;
+            const relSuffix = (isOrgTarget && center.kind === 'person') ? ' (Org)' : '';
             return `<tr>
                 <td class="col-label">${nameCell}</td>
-                <td>${escapeHtml(REL_LABELS[e.type] || e.type)}${isOrg ? ' (Org)' : ''}</td>
+                <td>${escapeHtml(REL_LABELS[e.type] || e.type)}${relSuffix}</td>
                 <td>${renderLabelCell(e)}</td>
                 <td>${renderSourceCell(e)}</td>
                 <td class="col-actions"></td>
@@ -296,9 +348,6 @@
             '<tr><td colspan="5" class="aggregat-empty">Keine Verbindungen für die aktive Filterauswahl.</td></tr>';
     }
 
-    // ---------------------------------------------------------------------
-    // Search
-    // ---------------------------------------------------------------------
     function bindSearch() {
         const input = document.getElementById('net-person-search');
         const results = document.getElementById('net-search-results');
@@ -307,9 +356,9 @@
             const q = EdCore.normForSearch(input.value.trim());
             if (q.length < 2) { results.innerHTML = ''; results.hidden = true; return; }
             const matches = [];
-            for (const p of PERSONS.values()) {
-                if (EdCore.matchesQuery(p._s, q)) {
-                    matches.push(p);
+            for (const a of ACTORS.values()) {
+                if (EdCore.matchesQuery(a._s, q)) {
+                    matches.push(a);
                     if (matches.length >= 12) break;
                 }
             }
@@ -318,11 +367,12 @@
                 results.hidden = false;
                 return;
             }
-            results.innerHTML = matches.map(p => {
-                const c = getEdgeCount(p.id);
+            results.innerHTML = matches.map(a => {
+                const c = getEdgeCount(a.id);
+                const kindLabel = a.kind === 'org' ? ' <span class="net-search-hit-kind">Org</span>' : '';
                 return `<li>
-                    <button type="button" class="net-search-hit" data-pid="${escapeAttr(p.id)}">
-                        <span class="net-search-hit-name">${escapeHtml(p.name)}</span>
+                    <button type="button" class="net-search-hit" ${actorDataAttr(a)}>
+                        <span class="net-search-hit-name">${escapeHtml(a.name)}${kindLabel}</span>
                         <span class="net-search-hit-count">${V.fmt(c)} Verb.</span>
                     </button>
                 </li>`;
@@ -330,32 +380,30 @@
             results.hidden = false;
         });
         results.addEventListener('click', (e) => {
-            const btn = e.target.closest('[data-pid]');
+            const btn = e.target.closest('[data-pid], [data-org]');
             if (!btn) return;
-            const pid = btn.dataset.pid;
             input.value = '';
             results.hidden = true;
             results.innerHTML = '';
-            recenter(pid);
+            recenter(btn.dataset.pid || btn.dataset.org);
         });
     }
 
     function bindGraphInteraction() {
         const canvas = document.getElementById('net-canvas');
-        if (!canvas) return;
-        canvas.addEventListener('click', (e) => {
-            const node = e.target.closest('[data-pid]');
-            if (node) {
-                recenter(node.dataset.pid);
-                return;
-            }
-        });
+        if (canvas) {
+            canvas.addEventListener('click', (e) => {
+                const node = e.target.closest('[data-pid], [data-org]');
+                if (!node) return;
+                recenter(node.dataset.pid || node.dataset.org);
+            });
+        }
         const detail = document.getElementById('net-detail');
         if (detail) {
             detail.addEventListener('click', (e) => {
-                const btn = e.target.closest('.net-detail-recenter[data-pid]');
+                const btn = e.target.closest('.net-detail-recenter');
                 if (!btn) return;
-                recenter(btn.dataset.pid);
+                recenter(btn.dataset.pid || btn.dataset.org);
             });
         }
     }
@@ -368,7 +416,7 @@
             if (!btn) return;
             const t = btn.getAttribute('data-net-type');
             if (STATE.types.has(t)) {
-                if (STATE.types.size > 1) STATE.types.delete(t);   // keep at least 1 type active
+                if (STATE.types.size > 1) STATE.types.delete(t);
             } else {
                 STATE.types.add(t);
             }
@@ -389,7 +437,6 @@
         btn.addEventListener('click', () => {
             STATE.center = null;
             STATE.types = new Set(REL_ORDER);
-            // Sync type chips visually.
             const group = document.getElementById('net-type-filter');
             if (group) {
                 for (const b of group.querySelectorAll('[data-net-type]')) {
@@ -405,31 +452,31 @@
         });
     }
 
-    function recenter(pid) {
-        if (!PERSONS.has(pid)) return;
-        STATE.center = pid;
-        renderEgo(pid);
+    function recenter(key) {
+        if (!key || !ACTORS.has(key)) return;
+        STATE.center = key;
+        renderEgo(key);
         updateActiveFilters();
         writeUrl();
     }
 
     function renderActive() {
-        if (STATE.center && PERSONS.has(STATE.center)) {
+        if (STATE.center && ACTORS.has(STATE.center)) {
             renderEgo(STATE.center);
         } else {
             renderSuggestions();
         }
     }
 
-    // ---------------------------------------------------------------------
-    // Active filter strip
-    // ---------------------------------------------------------------------
     function updateActiveFilters() {
         const filters = [];
-        if (STATE.center && PERSONS.has(STATE.center)) {
-            const p = PERSONS.get(STATE.center);
+        if (STATE.center && ACTORS.has(STATE.center)) {
+            const a = ACTORS.get(STATE.center);
+            const label = a.kind === 'org'
+                ? 'Mittelpunkt (Org): ' + a.name
+                : 'Mittelpunkt: ' + a.name;
             filters.push({
-                label: 'Mittelpunkt: ' + p.name,
+                label,
                 onClear: () => { STATE.center = null; renderActive(); updateActiveFilters(); writeUrl(); },
             });
         }
@@ -451,10 +498,6 @@
         V.renderActiveFilters('active-filters', filters);
     }
 
-    // ---------------------------------------------------------------------
-    // URL state sync
-    // ?p=pe__xxx&types=kin,occ
-    // ---------------------------------------------------------------------
     let urlSyncActive = false;
 
     function writeUrl() {
@@ -472,8 +515,7 @@
             const set = new Set(u.types.split(',').filter(t => REL_ORDER.includes(t)));
             if (set.size > 0) STATE.types = set;
         }
-        if (u.p && PERSONS.has(u.p)) STATE.center = u.p;
-        // Sync type chips visually.
+        if (u.p && ACTORS.has(u.p)) STATE.center = u.p;
         const group = document.getElementById('net-type-filter');
         if (group) {
             for (const b of group.querySelectorAll('[data-net-type]')) {
@@ -484,9 +526,6 @@
         }
     }
 
-    // ---------------------------------------------------------------------
-    // Helpers
-    // ---------------------------------------------------------------------
     function escapeHtml(s) {
         return String(s == null ? '' : s)
             .replace(/&/g, '&amp;').replace(/</g, '&lt;').replace(/>/g, '&gt;');
@@ -498,9 +537,6 @@
         return s && s.length > n ? s.slice(0, n - 1) + '…' : (s || '');
     }
 
-    // ---------------------------------------------------------------------
-    // Init
-    // ---------------------------------------------------------------------
     document.addEventListener('DOMContentLoaded', () => {
         buildIndex();
         bindSearch();

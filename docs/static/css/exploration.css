@@ -1519,8 +1519,77 @@
    ========================================================================== */
 
 .exploration-network-page .index-header { margin-bottom: var(--space-md); }
-.exploration-network-page .active-filters {
-    justify-content: center; margin: var(--space-sm) 0 0;
+.exploration-network-page .explore-net-filterbar .active-filters {
+    justify-content: flex-start;
+    margin: var(--space-2xs) 0 0;
+    padding-top: var(--space-2xs);
+    border-top: 1px dashed var(--color-border);
+}
+.exploration-network-page .explore-net-filterbar .active-filters:empty {
+    display: none;
+}
+
+/* Horizontale Filter-Leiste oberhalb des zweispaltigen Layouts. */
+.explore-net-filterbar {
+    display: flex;
+    flex-direction: column;
+    gap: var(--space-2xs);
+    padding: var(--space-sm) var(--space-md);
+    margin-bottom: var(--space-md);
+    background: var(--color-surface);
+    border: 1px solid var(--color-border);
+    border-radius: 4px;
+}
+.explore-net-filterbar-row {
+    display: flex;
+    flex-wrap: wrap;
+    align-items: flex-start;
+    gap: var(--space-md);
+}
+.explore-net-filterbar-field {
+    display: flex;
+    flex-direction: column;
+    gap: var(--space-2xs);
+    flex: 0 0 auto;
+}
+.explore-net-filterbar-field:first-child {
+    flex: 1 1 240px;
+    min-width: 220px;
+    max-width: 360px;
+}
+.explore-net-filterbar-label {
+    font-family: var(--font-sans);
+    font-size: var(--text-xs);
+    font-weight: 600;
+    text-transform: uppercase;
+    letter-spacing: 0.06em;
+    color: var(--color-text-light);
+}
+.explore-net-filterbar-actions {
+    margin-left: auto;
+    display: flex;
+    align-items: flex-end;
+}
+.explore-net-filterbar .form-filter-chips {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 6px;
+}
+.explore-net-filterbar .sidebar-reset {
+    margin: 0;
+}
+
+/* Zweispalter: Graph links, Detail-Tabelle rechts. */
+.explore-net-layout {
+    display: grid;
+    grid-template-columns: minmax(0, 1fr) minmax(360px, 460px);
+    gap: var(--space-md);
+    align-items: start;
+}
+@media (max-width: 1100px) {
+    .explore-net-layout {
+        grid-template-columns: minmax(0, 1fr);
+    }
 }
 
 .explore-network-block {
@@ -1528,20 +1597,59 @@
     border: 1px solid var(--color-border);
     border-radius: 4px;
     padding: var(--space-sm) var(--space-md) var(--space-md);
-    margin-bottom: var(--space-md);
 }
 .explore-network-canvas {
     margin-top: var(--space-sm);
-    min-height: 540px;
+    min-height: 520px;
     display: flex;
     align-items: center;
     justify-content: center;
 }
 .net-svg {
     width: 100%;
-    max-width: 760px;
+    max-width: 720px;
     height: auto;
 }
+
+.explore-net-detail-scroll {
+    max-height: 640px;
+    overflow-y: auto;
+}
+
+/* Such-Dropdown in der Filter-Leiste muss absolut liegen, damit es die
+   anderen Filter-Felder beim Aufklappen nicht verschiebt. */
+.explore-net-filterbar .net-search-wrap { position: relative; }
+.explore-net-filterbar .net-search-results {
+    position: absolute;
+    top: 100%;
+    left: 0;
+    right: 0;
+    z-index: 20;
+    margin-top: 4px;
+}
+
+/* Filter-Chips als Farb-Legende: kleines Quadrat in der Beziehungstyp-Farbe
+   links vom Label, damit der Filter zugleich zeigt, welche Edge-Farbe zu
+   welcher Beziehung gehoert. Farben spiegeln REL_COLORS aus viz-core.js. */
+.explore-net-filterbar-label-hint {
+    color: var(--color-text-muted);
+    font-weight: 400;
+    text-transform: none;
+    letter-spacing: 0;
+}
+.net-type-swatch {
+    display: inline-block;
+    width: 10px;
+    height: 10px;
+    border-radius: 2px;
+    margin-right: 6px;
+    vertical-align: middle;
+    border: 1px solid rgba(0, 0, 0, 0.15);
+}
+[data-net-type="kin"]    .net-type-swatch { background: #b85c2f; }
+[data-net-type="occ"]    .net-type-swatch { background: #c4a035; }
+[data-net-type="rep"]    .net-type-swatch { background: #6b6040; }
+[data-net-type="friend"] .net-type-swatch { background: #2e7a88; }
 
 /* Knoten + Kanten */
 .net-node { cursor: pointer; }
@@ -1563,7 +1671,11 @@
     font-weight: 600;
     font-size: 13px;
 }
-.net-edge { transition: stroke-opacity var(--transition-fast); }
+.net-edge {
+    transition: stroke-opacity var(--transition-fast), stroke-width var(--transition-fast);
+    cursor: help;
+}
+.net-edge:hover { stroke-opacity: 0.95; stroke-width: 4; }
 .net-node:hover ~ .net-edge,
 .net-svg:hover .net-edge { stroke-opacity: 0.55; }
 
@@ -1681,9 +1793,27 @@
     color: var(--color-text);
     text-decoration: underline;
 }
-.net-detail-name--org {
+.net-detail-recenter--org {
+    color: #6f5c4d;
+    font-style: italic;
+}
+.net-heading-kind {
     color: var(--color-text-muted);
     font-style: italic;
+    font-size: 0.85em;
+    font-weight: 400;
+}
+.net-suggestion-kind,
+.net-search-hit-kind {
+    display: inline-block;
+    margin-left: 4px;
+    padding: 0 5px;
+    border: 1px solid var(--color-border);
+    border-radius: 2px;
+    color: var(--color-text-muted);
+    font-size: var(--text-2xs);
+    font-style: italic;
+    vertical-align: middle;
 }
 .net-label-norm {
     color: var(--color-text-muted);
