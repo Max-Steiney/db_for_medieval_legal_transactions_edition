@@ -1,7 +1,6 @@
 {% extends "base.html" %}
 {% from "macros.html" import tip_glossary, active_filters,
-                              sidebar_block, sidebar_range_slider,
-                              sidebar_chip_group, sidebar_reset_button with context %}
+                              sidebar_range_slider with context %}
 
 {% block title %}Zeitstrom{% endblock %}
 
@@ -15,20 +14,20 @@
 
     <header class="index-header aggregat-header">
         <h1>Zeitstrom</h1>
-        {{ active_filters() }}
     </header>
 
-    <div class="index-layout">
-
-        <aside class="index-sidebar" aria-label="Filter">
+    <section class="explore-filterbar" aria-label="Filter">
+        <div class="explore-filterbar-row">
 
             {% if timeline_data %}
-            {% call sidebar_block('Zeitraum') %}
+            <div class="explore-filterbar-field explore-filterbar-field--range">
+                <span class="explore-filterbar-label">Zeitraum</span>
                 {{ sidebar_range_slider(min_year, max_year, timeline_data, max_count, unit='Quellen', unit_singular='Quelle') }}
-            {% endcall %}
+            </div>
             {% endif %}
 
-            {% call sidebar_block('Stapel-Achse', 'Bestimmt die farbliche Aufschl&uuml;sselung der Balken') %}
+            <div class="explore-filterbar-field">
+                <span class="explore-filterbar-label">Stapel-Achse <span class="explore-filterbar-label-hint">(Aufschl&uuml;sselung der Balken)</span></span>
                 <div class="form-filter-chips form-filter-chips--stack" id="stream-stack-axis"
                      role="group" aria-label="Stapel-Achse">
                     <button type="button" class="form-filter-chip is-active"
@@ -52,78 +51,83 @@
                         <span class="form-filter-chip-label">Transaktionstyp</span>
                     </button>
                 </div>
-            {% endcall %}
+            </div>
 
-            {{ sidebar_reset_button() }}
-
-        </aside>
-
-        <div class="index-main">
-
-            <section class="explore-stream-block">
-                <header class="aggregat-quadrant-head">
-                    <h2 id="stream-axis-heading">Quellen pro Jahrzehnt</h2>
-                    <span class="aggregat-quadrant-source">
-                        {% call tip_glossary('gloss-stream-source', 'Zeitstrom') %}
-                            <p>Anzahl freigegebener Quellen pro Jahrzehnt, gestapelt nach der gew&auml;hlten Kategorie. Per Klick und Ziehen &uuml;ber den Stream wird ein Zeitabschnitt ausgew&auml;hlt; die enthaltenen Quellen erscheinen darunter.</p>
-                        {% endcall %}
-                    </span>
-                </header>
-
-                <p class="explore-stream-hint">
-                    <strong>Tipp:</strong> &Uuml;ber die S&auml;ulen ziehen, um einen Zeitabschnitt auszuw&auml;hlen.
-                    Tastatur: S&auml;ule fokussieren und <kbd>Enter</kbd> setzt eine Decade, <kbd>Shift&nbsp;+&nbsp;&larr;/&rarr;</kbd> erweitert die Auswahl.
-                </p>
-
-                <div class="explore-stream-wrap">
-                    <div class="explore-stream-yaxis" id="stream-yaxis"></div>
-                    <div class="explore-stream-chart" id="stream-chart"
-                         role="img" aria-label="Quellendichte pro Jahrzehnt">
-                    </div>
-                </div>
-
-                <ul class="explore-stream-legend" id="stream-legend"></ul>
-            </section>
-
-            <section class="explore-stream-drill" id="stream-drill" hidden>
-                <header class="aggregat-quadrant-head">
-                    <h2><span id="drill-title">Auswahl</span>
-                        <span class="aggregat-quadrant-h2-meta" id="drill-meta"></span>
-                    </h2>
-                    <div class="explore-stream-drill-actions">
-                        <div class="explore-stream-drill-sort" id="drill-sort"
-                             role="group" aria-label="Sortierung">
-                            <button type="button" class="form-filter-chip is-active"
-                                    data-sort="date-asc" aria-pressed="true"
-                                    data-hint="Sortiert nach Datum aufsteigend (alt zuerst).">
-                                <span class="form-filter-chip-label">Datum &uarr;</span>
-                            </button>
-                            <button type="button" class="form-filter-chip"
-                                    data-sort="date-desc" aria-pressed="false"
-                                    data-hint="Sortiert nach Datum absteigend (neu zuerst).">
-                                <span class="form-filter-chip-label">Datum &darr;</span>
-                            </button>
-                            <button type="button" class="form-filter-chip"
-                                    data-sort="coll" aria-pressed="false"
-                                    data-hint="Gruppiert nach Quellenkorpus, dann Datum aufsteigend.">
-                                <span class="form-filter-chip-label">Korpus</span>
-                            </button>
-                        </div>
-                        <a class="explore-btn explore-stream-drill-crossnav"
-                           id="drill-crossnav" href="#"
-                           data-hint="Filter (Zeitraum) wird in die Quellen-Listenseite übernommen.">
-                           → in Quellen-Liste öffnen
-                        </a>
-                        <button type="button" class="explore-stream-drill-clear"
-                                id="drill-clear" aria-label="Auswahl aufheben">
-                            Auswahl aufheben
-                        </button>
-                    </div>
-                </header>
-                <ol class="explore-stream-doclist" id="drill-list"></ol>
-            </section>
+            <div class="explore-filterbar-actions">
+                <button type="button" class="sidebar-reset" id="filter-reset"
+                        aria-label="Alle Filter zur&uuml;cksetzen">
+                    &#x21BA; Filter zur&uuml;cksetzen
+                </button>
+            </div>
 
         </div>
+        {{ active_filters() }}
+    </section>
+
+    <div class="explore-timeline-layout">
+
+        <section class="explore-stream-block">
+            <header class="aggregat-quadrant-head">
+                <h2 id="stream-axis-heading">Quellen pro Jahrzehnt</h2>
+                <span class="aggregat-quadrant-source">
+                    {% call tip_glossary('gloss-stream-source', 'Zeitstrom') %}
+                        <p>Anzahl freigegebener Quellen pro Jahrzehnt, gestapelt nach der gew&auml;hlten Kategorie. Per Klick und Ziehen &uuml;ber den Stream wird ein Zeitabschnitt ausgew&auml;hlt; die enthaltenen Quellen erscheinen darunter.</p>
+                    {% endcall %}
+                </span>
+            </header>
+
+            <p class="explore-stream-hint">
+                <strong>Tipp:</strong> &Uuml;ber die S&auml;ulen ziehen, um einen Zeitabschnitt auszuw&auml;hlen.
+                Tastatur: S&auml;ule fokussieren und <kbd>Enter</kbd> setzt eine Decade, <kbd>Shift&nbsp;+&nbsp;&larr;/&rarr;</kbd> erweitert die Auswahl.
+            </p>
+
+            <div class="explore-stream-wrap">
+                <div class="explore-stream-yaxis" id="stream-yaxis"></div>
+                <div class="explore-stream-chart" id="stream-chart"
+                     role="img" aria-label="Quellendichte pro Jahrzehnt">
+                </div>
+            </div>
+
+            <ul class="explore-stream-legend" id="stream-legend"></ul>
+        </section>
+
+        <section class="explore-stream-drill" id="stream-drill" hidden>
+            <header class="aggregat-quadrant-head">
+                <h2><span id="drill-title">Auswahl</span>
+                    <span class="aggregat-quadrant-h2-meta" id="drill-meta"></span>
+                </h2>
+                <div class="explore-stream-drill-actions">
+                    <div class="explore-stream-drill-sort" id="drill-sort"
+                         role="group" aria-label="Sortierung">
+                        <button type="button" class="form-filter-chip is-active"
+                                data-sort="date-asc" aria-pressed="true"
+                                data-hint="Sortiert nach Datum aufsteigend (alt zuerst).">
+                            <span class="form-filter-chip-label">Datum &uarr;</span>
+                        </button>
+                        <button type="button" class="form-filter-chip"
+                                data-sort="date-desc" aria-pressed="false"
+                                data-hint="Sortiert nach Datum absteigend (neu zuerst).">
+                            <span class="form-filter-chip-label">Datum &darr;</span>
+                        </button>
+                        <button type="button" class="form-filter-chip"
+                                data-sort="coll" aria-pressed="false"
+                                data-hint="Gruppiert nach Quellenkorpus, dann Datum aufsteigend.">
+                            <span class="form-filter-chip-label">Korpus</span>
+                        </button>
+                    </div>
+                    <a class="explore-btn explore-stream-drill-crossnav"
+                       id="drill-crossnav" href="#"
+                       data-hint="Filter (Zeitraum) wird in die Quellen-Listenseite übernommen.">
+                       → in Quellen-Liste öffnen
+                    </a>
+                    <button type="button" class="explore-stream-drill-clear"
+                            id="drill-clear" aria-label="Auswahl aufheben">
+                        Auswahl aufheben
+                    </button>
+                </div>
+            </header>
+            <ol class="explore-stream-doclist" id="drill-list"></ol>
+        </section>
 
     </div>
 

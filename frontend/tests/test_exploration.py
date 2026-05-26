@@ -157,10 +157,32 @@ class TestZeitstromPage:
             pytest.skip("exploration/zeitstrom.html not found")
         return path.read_text(encoding="utf-8")
 
-    def test_uses_index_layout(self, html):
-        assert 'index-layout' in html
-        assert 'index-sidebar' in html
-        assert 'index-main' in html
+    def test_uses_filterbar_layout(self, html):
+        """Filter sitzen jetzt oben in einer horizontalen Leiste (geteilt mit
+        Personennetzwerk), Chart und Drill liegen darunter in voller Breite."""
+        assert 'explore-filterbar' in html
+        assert 'explore-timeline-layout' in html
+        # Alte Sidebar-Struktur muss raus, sonst nutzt der Chart nicht die
+        # volle Breite.
+        assert 'index-sidebar' not in html
+        assert 'index-main' not in html
+
+    def test_filterbar_holds_range_chips_and_reset(self, html):
+        """Alle drei Filter-Bedienelemente sitzen in derselben Leiste."""
+        bar_start = html.index('explore-filterbar')
+        bar_end = html.index('explore-timeline-layout')
+        bar = html[bar_start:bar_end]
+        assert 'id="range-slider"' in bar, 'Zeitraum-Slider fehlt in der Filter-Leiste'
+        assert 'id="stream-stack-axis"' in bar, 'Stack-Achsen-Chips fehlen in der Filter-Leiste'
+        assert 'id="filter-reset"' in bar, 'Reset-Button fehlt in der Filter-Leiste'
+
+    def test_active_filters_inside_filterbar(self, html):
+        """Active-Filter-Strip sitzt in derselben Leiste wie die Filter selbst."""
+        bar_start = html.index('explore-filterbar')
+        bar_end = html.index('explore-timeline-layout')
+        bar = html[bar_start:bar_end]
+        assert 'id="active-filters"' in bar, \
+            'Active-Filter-Strip muss innerhalb der Filterleiste stehen'
 
     def test_chart_and_legend_present(self, html):
         assert 'id="stream-chart"' in html

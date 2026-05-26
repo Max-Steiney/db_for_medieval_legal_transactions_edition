@@ -15,10 +15,10 @@
         <h1>Personennetzwerk</h1>
     </header>
 
-    <section class="explore-net-filterbar" aria-label="Filter">
-        <div class="explore-net-filterbar-row">
-        <div class="explore-net-filterbar-field">
-            <label for="net-person-search" class="explore-net-filterbar-label">Person</label>
+    <section class="explore-filterbar" aria-label="Filter">
+        <div class="explore-filterbar-row">
+        <div class="explore-filterbar-field">
+            <label for="net-person-search" class="explore-filterbar-label">Person</label>
             <div class="net-search-wrap">
                 <input type="search" id="net-person-search" class="aggregat-search-input"
                        placeholder="Name eingeben&hellip;" autocomplete="off"
@@ -35,8 +35,8 @@
             </div>
         </div>
 
-        <div class="explore-net-filterbar-field">
-            <span class="explore-net-filterbar-label">Beziehungstyp <span class="explore-net-filterbar-label-hint">(Filter und Farb-Legende)</span></span>
+        <div class="explore-filterbar-field">
+            <span class="explore-filterbar-label">Beziehungstyp <span class="explore-filterbar-label-hint">(Filter und Farb-Legende)</span></span>
             <div class="form-filter-chips net-type-chips" id="net-type-filter"
                  role="group" aria-label="Beziehungstyp">
                 <button type="button" class="form-filter-chip is-active"
@@ -66,7 +66,7 @@
             </div>
         </div>
 
-        <div class="explore-net-filterbar-actions">
+        <div class="explore-filterbar-actions">
             <button type="button" class="sidebar-reset" id="filter-reset"
                     aria-label="Alle Filter zur&uuml;cksetzen">
                 &#x21BA; Filter zur&uuml;cksetzen
@@ -103,7 +103,7 @@
             </p>
         </section>
 
-        <section class="explore-network-detail" id="net-detail" hidden>
+        <section class="explore-network-detail" id="net-detail">
             <header class="aggregat-quadrant-head">
                 <h2><span id="net-detail-title">Verbindungen</span>
                     <span class="aggregat-quadrant-h2-meta" id="net-detail-meta"></span>

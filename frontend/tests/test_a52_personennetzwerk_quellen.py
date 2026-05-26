@@ -72,8 +72,8 @@ class TestNetworkLayoutV2:
         )
 
     def test_filterbar_present_above_layout(self):
-        assert 'explore-net-filterbar' in self.tpl
-        bar_pos = self.tpl.index('explore-net-filterbar')
+        assert 'explore-filterbar' in self.tpl
+        bar_pos = self.tpl.index('explore-filterbar')
         layout_pos = self.tpl.index('explore-net-layout')
         assert bar_pos < layout_pos, "Filter-Leiste muss vor dem Grid stehen"
 
@@ -81,7 +81,7 @@ class TestNetworkLayoutV2:
         assert 'explore-net-layout' in self.tpl
 
     def test_filterbar_holds_search_and_chips_and_reset(self):
-        bar = self.tpl[self.tpl.index('explore-net-filterbar'):
+        bar = self.tpl[self.tpl.index('explore-filterbar'):
                        self.tpl.index('explore-net-layout')]
         assert 'id="net-person-search"' in bar
         assert 'id="net-type-filter"' in bar
@@ -90,11 +90,45 @@ class TestNetworkLayoutV2:
     def test_active_filters_inside_filterbar(self):
         """A.5.2-Wunsch: aktive Filter sollen in derselben Leiste sichtbar
         sein, nicht in einem separaten Strip oberhalb."""
-        bar = self.tpl[self.tpl.index('explore-net-filterbar'):
+        bar = self.tpl[self.tpl.index('explore-filterbar'):
                        self.tpl.index('explore-net-layout')]
         assert 'active_filters()' in bar, (
             "active_filters-Macro muss innerhalb der Filter-Leiste stehen"
         )
+
+
+class TestNetworkDetailAlwaysVisible:
+    """Die Detail-Tabelle rechts ist von Anfang an sichtbar; ohne Auswahl
+    zeigt sie einen Platzhalter, mit Auswahl die Verbindungen."""
+
+    def setup_method(self):
+        self.tpl = _read(ROOT / "templates" / "exploration_network.html")
+        self.js  = _read(ROOT / "static" / "js" / "exploration-network.js")
+
+    def test_detail_section_not_hidden_on_load(self):
+        """Section #net-detail hat kein hidden-Attribut mehr im Markup; die
+        Tabelle ist beim ersten Aufruf der Seite bereits sichtbar."""
+        # Suche das net-detail-Element-Markup und stelle sicher, kein hidden.
+        idx = self.tpl.index('id="net-detail"')
+        snippet = self.tpl[max(0, idx - 80):idx + 80]
+        assert 'hidden' not in snippet, (
+            'Detail-Section darf nicht mit hidden-Attribut starten'
+        )
+
+    def test_render_suggestions_uses_placeholder_not_hide(self):
+        """Bei Vorschlags-Ansicht (kein Center) wird die Tabelle mit einem
+        Platzhalter belegt statt ausgeblendet."""
+        assert 'renderDetailPlaceholder' in self.js
+        # Nirgends mehr detail.hidden = true gesetzt
+        assert 'detail.hidden = true' not in self.js
+        assert 'detail.hidden = false' not in self.js, (
+            'Sichtbarkeit der Detail-Tabelle wird nicht mehr ueber hidden gesteuert'
+        )
+
+    def test_placeholder_message_is_informative(self):
+        """Platzhalter erklaert, wie eine Auswahl getroffen wird."""
+        assert 'Akteur auswählen' in self.js or 'Akteur auswaehlen' in self.js
+        assert 'net-detail-empty' in self.js
 
 
 class TestAkteursnetzwerk:
@@ -227,7 +261,7 @@ class TestNetworkLayoutPolishV3:
     def test_active_filters_strip_has_no_dashed_border(self):
         """In der Filterleiste sitzt der Active-Filter-Strip ohne dashed
         border, damit er sich harmonisch in die Leiste einfuegt."""
-        bar = self.css[self.css.index('.exploration-network-page .explore-net-filterbar .active-filters'):]
+        bar = self.css[self.css.index('.exploration-network-page .explore-filterbar .active-filters'):]
         chunk = bar[:300]
         assert "border-top" not in chunk
 
