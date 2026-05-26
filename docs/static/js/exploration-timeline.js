@@ -42,15 +42,18 @@
         sex: {
             label: 'Geschlecht der Beteiligten',
             categories: [
-                { key: 'mixed', label: 'gemischt',         color: '#7a6b8c' },
-                { key: 'm',     label: 'nur ♂ männlich',   color: '#5d3a74' },
-                { key: 'f',     label: 'nur ♀ weiblich',   color: '#2d6650' },
-                { key: 'none',  label: 'ohne Personen',    color: '#9a9590' },
+                { key: 'mixed',       label: 'gemischt',                 color: '#7a6b8c' },
+                { key: 'm',           label: 'nur ♂ männlich', color: '#5d3a74' },
+                { key: 'f',           label: 'nur ♀ weiblich',      color: '#2d6650' },
+                { key: 'unspecified', label: 'ohne Geschlechtsangabe',   color: '#a08470' },
+                { key: 'none',        label: 'ohne Personen',            color: '#c9c5c0' },
             ],
             assign: (doc) => {
                 const m = doc.pcdm || 0;
                 const f = doc.pcdf || 0;
-                if (m === 0 && f === 0) return 'none';
+                const total = doc.pcd || 0;
+                if (total === 0) return 'none';
+                if (m === 0 && f === 0) return 'unspecified';
                 if (m > 0 && f === 0) return 'm';
                 if (f > 0 && m === 0) return 'f';
                 return 'mixed';
@@ -223,9 +226,23 @@
 
         const stackDef = effectiveStackDef();
         if (heading) {
-            heading.textContent = (STATE.stack === 'tx')
-                ? `Rechtsgeschäfte pro Jahrzehnt — Top ${categories.length} Transaktionstypen`
-                : `Quellen pro Jahrzehnt — Stapel: ${stackDef.label}`;
+            if (STATE.stack === 'tx') {
+                const cov = (TRANSACTIONS.coverage || {});
+                const tot = cov.total_events || 0;
+                const norm = cov.normalised_events || 0;
+                const rate = tot ? Math.round((norm / tot) * 100) : 0;
+                const covBit = tot
+                    ? ` (normalisierte Events, Coverage ${rate} %)`
+                    : '';
+                heading.textContent =
+                    `Rechtsgeschäfte pro Jahrzehnt — Top ${categories.length} Transaktionstypen${covBit}`;
+            } else if (STATE.stack === 'form') {
+                heading.textContent =
+                    `Erschließungs-Belege pro Jahrzehnt — Stapel: ${stackDef.label} (Mehrfach-Zählung pro Quelle möglich)`;
+            } else {
+                heading.textContent =
+                    `Quellen pro Jahrzehnt — Stapel: ${stackDef.label}`;
+            }
         }
 
         if (yax) {
