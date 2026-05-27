@@ -30,6 +30,17 @@ HIDDEN_DOC_PATHS = (
     "documents/QGW/Vienna_1448-57",
     "documents/Satzbuch_CD",
 )
+# So tauchen versteckte Sammlungen in den Aggregat-JSONs auf: als
+# file_key-Praefix (f__Satzbuch_CD_...) bzw. Collection-Key und als
+# Anzeige-Label (corpus_event_counts, per-Event-Feld). Die file_keys der
+# QGW-II/2-Quellen kollidieren mit den oeffentlichen QGW-Keys (f__QGW_<n>),
+# darum wird QGW II/2 nur ueber das Label erkannt. Diese Marker fehlten und
+# liessen das Aggregat-Leck (Befund Gesamtanalyse 2026-05-27) durchrutschen.
+HIDDEN_AGGREGATE_MARKERS = (
+    "Satzbuch_CD",
+    "Satzbuch CD",
+    "QGW II/2",
+)
 
 
 def _load(rel):
@@ -50,7 +61,7 @@ def test_no_hidden_corpus_in_any_data_json():
     data_dir = DOCS / "data"
     if not data_dir.exists():
         pytest.skip("docs/data/ noch nicht gebaut")
-    needles = HIDDEN_SUBDIRS + HIDDEN_DOC_PATHS
+    needles = HIDDEN_SUBDIRS + HIDDEN_DOC_PATHS + HIDDEN_AGGREGATE_MARKERS
     offenders = []
     for p in sorted(data_dir.glob("*.json")):
         txt = p.read_text(encoding="utf-8")
@@ -60,6 +71,33 @@ def test_no_hidden_corpus_in_any_data_json():
     assert not offenders, (
         f"Daten-JSONs nennen versteckte Sammlungen: {offenders}. "
         f"Wahrscheinlich fehlt ein is_visible_corpus-Filter in der Aggregation."
+    )
+
+
+def test_aggregate_jsons_free_of_hidden_corpora():
+    """Die fuenf ueber _cached_csv aggregierten JSONs nennen kein verstecktes Korpus.
+
+    Engt den breiten Klassen-Test auf genau die Dateien ein, die das Leck
+    getragen haben (Befund Gesamtanalyse 2026-05-27): sie filtern ueber
+    _shared._cached_csv und mussten von is_released_corpus auf
+    is_visible_corpus umgestellt werden. Der Test verteidigt diese
+    Umstellung gezielt, falls der breite Test je verengt wird.
+    """
+    targets = ("roles.json", "relations.json", "transactions.json",
+               "role_constellation.json", "timeline.json")
+    markers = HIDDEN_SUBDIRS + HIDDEN_DOC_PATHS + HIDDEN_AGGREGATE_MARKERS
+    offenders = []
+    for name in targets:
+        p = DOCS / "data" / name
+        if not p.exists():
+            pytest.skip(f"build artifact not found: data/{name}")
+        txt = p.read_text(encoding="utf-8")
+        hits = {m: txt.count(m) for m in markers if txt.count(m)}
+        if hits:
+            offenders.append(f"{name}: {hits}")
+    assert not offenders, (
+        f"Aggregate enthalten versteckte Korpora: {offenders}. "
+        f"Ursache: _cached_csv filtert nicht auf is_visible_corpus."
     )
 
 

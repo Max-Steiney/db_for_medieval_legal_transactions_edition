@@ -15,7 +15,7 @@ from datetime import date, datetime
 from frontend.config import (
     DOCS_DIR, CONTENT_DIR, KNOWLEDGE_DIR, DATA_DIR,
     EDITION_GUIDELINES_PATH, EDITION_GUIDELINES_CANONICAL,
-    RELEASED_PERIOD, max_year_with_extensions,
+    RELEASED_PERIOD, max_year_with_extensions, visible_corpora,
 )
 
 from frontend.build._helpers import (
@@ -1275,6 +1275,18 @@ def _write_query_vocabulary():
 
     data = json.loads(src.read_text(encoding="utf-8"))
     data.setdefault("meta", {})["created"] = date.today().isoformat()
+
+    # Sicht-Filter: die korpus-Filterwerte sind Collection-Keys (erstes
+    # Pfad-Segment der Sammlung). Im oeffentlichen Build nur die sichtbaren
+    # Sammlungen anbieten, damit kein nicht-freigegebenes Korpus (z.B.
+    # Satzbuch CD) als Filteroption in der oeffentlich ausgelieferten
+    # Vokabular-Datei auftaucht. Intern bleiben alle freigegebenen erhalten.
+    visible_colls = {c.split("/")[0] for c in visible_corpora()}
+    korpus = data.get("filters", {}).get("korpus")
+    if korpus and isinstance(korpus.get("values"), list):
+        korpus["values"] = [
+            v for v in korpus["values"] if v.get("value") in visible_colls
+        ]
 
     DATA_DIR.mkdir(parents=True, exist_ok=True)
     (DATA_DIR / "query_vocabulary.json").write_text(

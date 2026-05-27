@@ -1,8 +1,10 @@
-"""Shared helpers, CSV cache and RELEASED_CORPORA filter.
+"""Shared helpers, CSV cache and corpus visibility filter.
 
 Consumed by the entire aggregator package. Contains:
-- _load_csv / _cached_csv: CSV reader with module-level cache
-- _is_released_row / _released_file_keys: RELEASED_CORPORA filter
+- _cached_csv: CSV reader with module-level cache, filtered to the corpora
+  visible in the current view (audience-coupled, see _is_visible_row)
+- _is_visible_row / _is_released_row: visible vs released corpus filters
+- _visible_file_keys / _released_file_keys: scoped file_key sets
 - _load_norm_matching: normalisation tables
 - _parse_coord / _decade: value parsers
 - _meta / _write_json: output helpers
@@ -18,7 +20,7 @@ from datetime import date
 from pathlib import Path
 
 from pipeline.config import PIPELINE_OUTPUT, NORM_LISTS_DIR
-from frontend.config import is_released_corpus
+from frontend.config import is_released_corpus, is_visible_corpus
 
 # Schema version — increment when output structure changes
 SCHEMA_VERSION = "1.0"
@@ -39,6 +41,22 @@ def _is_released_row(row: dict) -> bool:
     if not coll or not sub:
         return False
     return is_released_corpus(f"{coll}/{sub}")
+
+
+def _is_visible_row(row: dict) -> bool:
+    """True if the CSV row belongs to a corpus visible in the current view.
+
+    Audience-gekoppelt: 'oeffentlich' laesst nur PUBLIC_CORPORA durch,
+    'intern' den vollen freigegebenen Umfang. Dies ist der Filter fuer die
+    oeffentlich ausgelieferten Aggregat-JSONs, damit kein nicht-freigegebenes
+    Korpus (z.B. Satzbuch CD, QGW II/2) ueber roles/relations/transactions/
+    role_constellation/timeline in die oeffentliche Sicht leckt.
+    """
+    coll = row.get("collection", "")
+    sub = row.get("subcollection", "")
+    if not coll or not sub:
+        return False
+    return is_visible_corpus(f"{coll}/{sub}")
 
 
 def _load_csv(path: Path, delimiter: str = ";") -> list[dict]:
@@ -70,24 +88,44 @@ def _released_file_keys() -> set[str]:
     return _released_file_keys_cache
 
 
+_visible_file_keys_cache: set[str] | None = None
+
+
+def _visible_file_keys() -> set[str]:
+    """Set of file_keys belonging to corpora visible in the current view.
+
+    Wie _released_file_keys, aber sicht-gekoppelt (siehe _is_visible_row).
+    Backed by filenames.csv; reads the CSV directly here so _cached_csv is
+    not invoked recursively.
+    """
+    global _visible_file_keys_cache
+    if _visible_file_keys_cache is None:
+        rows = _load_csv(PIPELINE_OUTPUT / "filenames.csv")
+        _visible_file_keys_cache = {
+            r.get("id", "") for r in rows if _is_visible_row(r)
+        }
+    return _visible_file_keys_cache
+
+
 def _cached_csv(name: str, delimiter: str = ";") -> list[dict]:
     """Load a pipeline CSV once, return cached result on subsequent calls.
 
-    Filters out rows from non-released source corpora:
+    Filters out rows from corpora not visible in the current view
+    (audience-coupled, see _is_visible_row):
     - CSVs with `collection` + `subcollection` via direct path check.
-    - CSVs with `file_key` (and no collection) via the set of released
+    - CSVs with `file_key` (and no collection) via the set of visible
       file_keys from filenames.csv.
-    This way mentions from non-released volumes leak neither into counts
-    nor into drill-downs.
+    This way mentions from non-public volumes leak neither into counts
+    nor into drill-downs of the public-facing aggregate JSONs.
     """
     if name not in _csv_cache:
         rows = _load_csv(PIPELINE_OUTPUT / name, delimiter)
         if rows:
             first = rows[0]
             if "collection" in first and "subcollection" in first:
-                rows = [r for r in rows if _is_released_row(r)]
+                rows = [r for r in rows if _is_visible_row(r)]
             elif "file_key" in first:
-                fks = _released_file_keys()
+                fks = _visible_file_keys()
                 rows = [r for r in rows if r.get("file_key", "") in fks]
         _csv_cache[name] = rows
     return _csv_cache[name]

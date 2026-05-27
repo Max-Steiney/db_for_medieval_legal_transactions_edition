@@ -24,6 +24,7 @@ def run_aggregation(docs_data_dir: Path, reverse_index: dict | None = None) -> d
     # run_aggregation is called multiple times in different tmp_paths).
     _shared._csv_cache.clear()
     _shared._released_file_keys_cache = None
+    _shared._visible_file_keys_cache = None
 
     timeline = aggregate_timeline(docs_data_dir)
     print(f"  Timeline: {timeline['total']} documents, "
