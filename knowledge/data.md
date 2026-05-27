@@ -44,7 +44,7 @@ Single Source of Truth für die freigegebenen Subkorpora ist `RELEASED_CORPORA` 
 
 - **Stufe 1 Publikation** bedient den freigegebenen Bestand und entspricht der Single Source of Truth in `RELEASED_CORPORA`.
 - **Stufe 2 Vergleich** ist Stufe 1 plus mentioned events als volle Events.
-- **Stufe 3 voller `_ready`-Bestand** ergänzt alle Subkorpora mit `_ready`-Suffix, die heute zusätzlich `QGW/Vienna_1448-57_ready` und `Satzbuch_CD/SB_CD_1448-60_ready` umfassen.
+- **Stufe 3 voller `_ready`-Bestand** zieht alle Subkorpora mit `_ready`-Suffix ein und ist heute deckungsgleich mit Stufe 1, weil alle `_ready`-Subkorpora freigegeben sind; beide divergieren erst, sobald ein `_ready`-Subkorpus die Freigabe nicht hat.
 - **Stufe 4 Maximalversion** zieht alle Subkorpora mit TEI-Annotation ein, auch solche ohne `_ready`-Suffix; sie dient dem Schema-Stresstest, nicht der Publikation.
 
 Stufen 3 und 4 sind heute strukturell vorhanden und baubar, datenseitig aber an die jeweilige Korpus-Erweiterung gebunden. Aussagen unter höheren Stufen sind methodisch breiter, aber editorisch weniger geprüft.
@@ -73,7 +73,7 @@ Jede Ebene hat ihre eigene Zählung. Wer nach Urkunden zählt, bleibt auf Quelle
 
 Auf der Nennungsebene gilt: Mehrfacherwähnungen einer Entität innerhalb einer Quelle werden bei der Aggregation zu einer Nennung zusammengefasst. Die Zählebene [[glossar#Gesamtnennung]] ist damit quellenbereinigt. Die Entscheidung und ihr Hintergrund stehen in [[specification#Quellenbereinigte Zählung]], die technische Umsetzung in [[architecture#Quellenbereinigte Aggregation als Invariante]].
 
-In der publizierten Datenbasis ist die Hierarchie Quelle → Event in der Praxis fast überall flach: Im freigegebenen Bestand tragen 2.648 von 2.654 Quellen mit Events genau ein Event, nur sechs Quellen tragen zwei oder drei. Eine Urkunde dokumentiert in der editorischen Realität meist ein einziges Rechtsgeschäft; Mehrfach-Event-Quellen sind die Ausnahme. UI-Aussagen, die Quellen- und Event-Counts nebeneinander stellen („X Rechtsgeschäfte in Y Quellen"), zeigen daher fast immer dieselbe oder eine sehr nahe beieinander liegende Zahl. Die Begriffshierarchie bleibt trotzdem ein eigener Wert, weil sie die Grundlage für Aussagen über Geltungsbereich („gemeinsam in derselben Quelle" gegen „im selben Rechtsgeschäft") und für die Mehrfach-Event-Ausnahmen ist.
+In der publizierten Datenbasis ist die Hierarchie Quelle → Event in der Praxis fast überall flach: nahezu alle Quellen mit Events tragen genau ein Event, nur eine Handvoll trägt zwei oder drei. Eine Urkunde dokumentiert in der editorischen Realität meist ein einziges Rechtsgeschäft; Mehrfach-Event-Quellen sind die Ausnahme. UI-Aussagen, die Quellen- und Event-Counts nebeneinander stellen („X Rechtsgeschäfte in Y Quellen"), zeigen daher fast immer dieselbe oder eine sehr nahe beieinander liegende Zahl. Die Begriffshierarchie bleibt trotzdem ein eigener Wert, weil sie die Grundlage für Aussagen über Geltungsbereich („gemeinsam in derselben Quelle" gegen „im selben Rechtsgeschäft") und für die Mehrfach-Event-Ausnahmen ist.
 
 ## Register
 
