@@ -23,6 +23,14 @@ python -m verification.run --all        # alle drei Pfade
 python -m verification.run --inventory  # TEI-Element-Inventar pro Subkorpus
 ```
 
+Verglichen wird gegen die **interne Fassung** (`docs-intern/`). Das Test-Set liest TEI im released-Scope (`is_released_corpus`), und nur der interne Build rendert genau diesen Umfang; der öffentliche Build (`docs/`) ist seit der Korpus-Trennung bewusst schmaler und würde Scope-Differenzen als Mismatch melden, die keine Drift sind. Vor dem Lauf muss die interne Fassung gebaut sein:
+
+```
+python -m frontend build --audience intern
+```
+
+Mit `VERIFICATION_DOCS_DIR=<verzeichnis>` lässt sich ein anderer Build erzwingen, z. B. `VERIFICATION_DOCS_DIR=docs` für den öffentlichen Build (dann erscheinen die schmaleren Korpus-Grenzen als erwartete Scope-Differenzen). Fehlt das Ziel-Verzeichnis, bricht der Runner mit einer Bauanweisung ab.
+
 Exit-Code `0` solange nur `match`, `known_gap` oder `info` auftreten. Exit-Code `1` erst bei mindestens einem echten `mismatch`. Der Inventar-Modus liefert keine Vergleichs-Resultate und gibt immer Exit-Code 0.
 
 Reports werden in `verification/reports/YYYY-MM-DD.md` (menschenlesbar) und `verification/reports/YYYY-MM-DD.json` (maschinenlesbar) geschrieben. Stufen-Suffixe: `-html` für CSV→HTML, `-tei-html` für TEI→HTML, `-all` für alle drei, `inventory-` für das Inventar. Die Reports sind Teil der Versionierung — Veränderungen im Verlauf sind per `git log verification/reports/` nachvollziehbar.
@@ -62,7 +70,7 @@ Die drei Stufen laufen unabhängig; einzelne Felder können in einer Stufe match
 
 Das Verifikations-Set prüft end-to-end gegen **TEI-XML + Register-XML**, ohne die CSV-Zwischenstufen der Pipeline. Damit werden auch Fehler in der TEI-zu-CSV-Vorverarbeitung gefangen.
 
-**Eingeschränkter Corpus:** TEI-Quellen liegen nur für `QGW` und `Stadtbuecher` vor. Andere Quellenkorpora (Copeybuch_Zeibig, GenanntenListe_Weinzettel, Genanntenliste_Stubenviertel, Gewerbuch_D, Satzbuch_CD, Widmerliste) erscheinen aktuell im Frontend als Regesten-Rendering, liegen aber nicht in `sources/` und werden von den Aggregaten in `data/*.json` derzeit nicht berücksichtigt. Sobald für diese Korpora TEI bereitgestellt wird, erweitert sich der Scope automatisch.
+**Eingeschränkter Corpus:** Das Test-Set re-aggregiert TEI nur aus `QGW` und `Stadtbuecher` (`COLLECTIONS_WITH_TEI` in `config.py`). `Satzbuch_CD` ist seit 2026-05 freigegeben, liegt als TEI in `sources/` vor und ist Teil der internen Fassung, wird hier aber noch nicht gelesen: der Parser extrahiert SB_CD-Datumsangaben und Personennennungen noch nicht zuverlässig (abweichende Annotationsstruktur). Per-Korpus-Checks behandeln SB_CD deshalb als `known_gap` statt als Mismatch; die volle SB_CD-Abdeckung ist ein offener Folgepunkt. Weitere Korpora (Copeybuch_Zeibig, GenanntenListe_Weinzettel, Genanntenliste_Stubenviertel, Gewerbuch_D, Widmerliste) liegen nicht als released-TEI vor und erscheinen im Frontend nur als Regesten-Rendering.
 
 ## Struktur
 

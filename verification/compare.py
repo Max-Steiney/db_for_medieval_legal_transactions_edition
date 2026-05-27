@@ -12,6 +12,7 @@ from dataclasses import dataclass
 from typing import Any, Dict, List, Optional
 
 from verification import aggregate, parse_indices, parse_json, parse_tei
+from verification.config import COLLECTIONS_WITH_TEI
 
 
 @dataclass
@@ -96,13 +97,31 @@ def run_checks(
     tei_range = aggregate.docs_date_range(docs)
     json_range = parse_json.timeline_date_range()
     for collection in sorted(set(tei_range.keys()) | set(json_range.keys())):
-        results.append(
-            _check_equal(
-                f"docs.date_range.{collection}",
-                tei_range.get(collection),
-                json_range.get(collection),
+        if collection not in COLLECTIONS_WITH_TEI:
+            # Korpus erscheint im JSON (interne Fassung enthaelt es), liegt
+            # aber nicht im TEI-Lesebereich des Test-Sets. Ohne TEI-Seite ist
+            # kein unabhaengiger Vergleich moeglich; das ist kein Drift,
+            # sondern eine noch offene Abdeckung (siehe COLLECTIONS_WITH_TEI).
+            results.append(
+                _known_gap(
+                    f"docs.date_range.{collection}",
+                    tei_range.get(collection),
+                    json_range.get(collection),
+                    note=(
+                        f"{collection} liegt nicht im TEI-Lesebereich des "
+                        f"Test-Sets (COLLECTIONS_WITH_TEI); Datumsspanne nicht "
+                        f"unabhaengig verifizierbar."
+                    ),
+                )
             )
-        )
+        else:
+            results.append(
+                _check_equal(
+                    f"docs.date_range.{collection}",
+                    tei_range.get(collection),
+                    json_range.get(collection),
+                )
+            )
 
     # --- Register ----------------------------------------------------------
     # persons_search.json ist auf den freigegebenen Subset gefiltert

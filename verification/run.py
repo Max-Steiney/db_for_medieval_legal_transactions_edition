@@ -20,6 +20,7 @@ from verification import (
     compare,
     compare_html,
     compare_tei_html,
+    config,
     inventory,
     parse_indices,
     parse_tei,
@@ -27,6 +28,28 @@ from verification import (
     report,
     research_questions,
 )
+
+
+def _ensure_target_exists() -> bool:
+    """Prueft, ob der Ziel-Build vorhanden ist; gibt sonst eine Bauanweisung.
+
+    Default-Ziel ist die interne Fassung (docs-intern/, released-Scope), die
+    nicht versioniert ist. Fehlt sie, wuerde der Vergleich nur leere Seiten
+    finden und eine Flut von Schein-Mismatches melden statt eines klaren
+    Hinweises.
+    """
+    if config.DOCS_DIR.exists():
+        return True
+    print(
+        f"[verify] Ziel-Build fehlt: {config.DOCS_DIR}\n"
+        f"[verify] Das Test-Set vergleicht im released-Scope gegen die interne\n"
+        f"[verify] Fassung. Bitte zuerst bauen:\n"
+        f"[verify]   python -m frontend build --audience intern\n"
+        f"[verify] Oder ein anderes Verzeichnis erzwingen, z. B. den\n"
+        f"[verify] oeffentlichen Build (mit erwarteten Scope-Differenzen):\n"
+        f"[verify]   VERIFICATION_DOCS_DIR=docs python -m verification.run ..."
+    )
+    return False
 
 
 def run_tei_checks():
@@ -92,6 +115,9 @@ def main() -> int:
     if args.research_questions:
         research_questions.run_research_questions()
         return 0
+
+    if not _ensure_target_exists():
+        return 2
 
     results = []
     if args.all:
