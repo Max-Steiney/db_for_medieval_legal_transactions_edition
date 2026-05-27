@@ -1,0 +1,131 @@
+{
+  "date": "2026-05-27",
+  "summary": {
+    "total": 17,
+    "match": 13,
+    "mismatch": 2,
+    "known_gap": 1,
+    "info": 1
+  },
+  "results": [
+    {
+      "name": "teihtml.pair_coverage.documents_paired",
+      "tei": 2783,
+      "json": 2648,
+      "status": "info",
+      "note": "135 TEI-Quellen ohne HTML-Pendant"
+    },
+    {
+      "name": "teihtml.pair_coverage.tei_without_html",
+      "tei": 135,
+      "json": 0,
+      "status": "known_gap",
+      "note": "Pipeline-Filterung filenames.csv status='in progress' (noch nicht freigegeben). QGW_Vienna_1177-1414_ready_1432, QGW_Vienna_1177-1414_ready_1438, QGW_Vienna_1177-1414_ready_1493 (+132 weitere)"
+    },
+    {
+      "name": "teihtml.person_refs.missing_in_html",
+      "tei": 0,
+      "json": 0,
+      "status": "match",
+      "note": null
+    },
+    {
+      "name": "teihtml.person_refs.extra_in_html",
+      "tei": 0,
+      "json": 0,
+      "status": "match",
+      "note": null
+    },
+    {
+      "name": "teihtml.org_refs.missing_in_html",
+      "tei": 0,
+      "json": 0,
+      "status": "match",
+      "note": null
+    },
+    {
+      "name": "teihtml.org_refs.extra_in_html",
+      "tei": 0,
+      "json": 0,
+      "status": "match",
+      "note": null
+    },
+    {
+      "name": "teihtml.place_refs.missing_in_html",
+      "tei": 0,
+      "json": 0,
+      "status": "match",
+      "note": null
+    },
+    {
+      "name": "teihtml.place_refs.extra_in_html",
+      "tei": 0,
+      "json": 0,
+      "status": "match",
+      "note": null
+    },
+    {
+      "name": "teihtml.event_refs.missing_in_html",
+      "tei": 0,
+      "json": 0,
+      "status": "match",
+      "note": null
+    },
+    {
+      "name": "teihtml.event_refs.extra_in_html",
+      "tei": 0,
+      "json": 0,
+      "status": "match",
+      "note": null
+    },
+    {
+      "name": "teihtml.person_roles.missing_in_html",
+      "tei": 0,
+      "json": 0,
+      "status": "match",
+      "note": null
+    },
+    {
+      "name": "teihtml.person_roles.extra_in_html",
+      "tei": 0,
+      "json": 0,
+      "status": "match",
+      "note": null
+    },
+    {
+      "name": "teihtml.org_roles.missing_in_html",
+      "tei": 0,
+      "json": 0,
+      "status": "match",
+      "note": null
+    },
+    {
+      "name": "teihtml.org_roles.extra_in_html",
+      "tei": 0,
+      "json": 0,
+      "status": "match",
+      "note": null
+    },
+    {
+      "name": "teihtml.date_display_vs_tei",
+      "tei": 0,
+      "json": 4,
+      "status": "mismatch",
+      "note": "Beispiele: Stadtbuecher_Band_1_1395-1400_ready_190: TEI='1397 Oktober ISa)' HTML='1397 Oktober ISa'; Stadtbuecher_Band_1_1395-1400_ready_265: TEI='1398 Mai 7 a )' HTML='1398 Mai 7 a'; Stadtbuecher_Band_1_1395-1400_ready_32: TEI='1396 Januar 20&quot;)' HTML='1396 Januar 20\"'"
+    },
+    {
+      "name": "teihtml.date_display_html_missing",
+      "tei": 0,
+      "json": 1,
+      "status": "mismatch",
+      "note": "Quellen mit TEI-Datum, aber leerem HTML-date_display: Stadtbuecher_Band_1_1395-1400_ready_333"
+    },
+    {
+      "name": "teihtml.attr_name_glued",
+      "tei": 0,
+      "json": 0,
+      "status": "match",
+      "note": null
+    }
+  ]
+}
