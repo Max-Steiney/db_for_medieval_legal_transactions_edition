@@ -241,7 +241,7 @@ class TestDocsLookupJson:
 class TestSchemaVersioning:
     @pytest.mark.parametrize("filename", [
         "docs_aggregate.json", "roles.json", "relations.json", "transactions.json",
-        "timeline.json",
+        "timeline.json", "role_constellation.json",
     ])
     def test_aggregate_files_have_schema_version(self, filename):
         data = _load(DOCS_DATA / filename)
@@ -258,3 +258,30 @@ class TestSchemaVersioning:
         # editorial files use 'version' instead of 'schema_version'
         assert "version" in data["meta"] or "schema_version" in data["meta"], \
             f"{filename} meta missing version field"
+
+
+# ---------------------------------------------------------------------------
+# role_constellation.json — per-event participant lists (SCHEMA.md)
+# ---------------------------------------------------------------------------
+
+class TestRoleConstellationJson:
+    """role_constellation.json: documented top-level blocks and event shape."""
+
+    @pytest.fixture(scope="class")
+    def data(self):
+        return _load(DOCS_DATA / "role_constellation.json")
+
+    def test_top_level_blocks(self, data):
+        # From SCHEMA.md: meta, vocab, coverage, events
+        for key in ("meta", "vocab", "coverage", "events"):
+            assert key in data, f"role_constellation.json missing block {key}"
+
+    def test_events_array_and_short_keys(self, data):
+        events = data["events"]
+        assert isinstance(events, list)
+        assert len(events) > 100
+        # From SCHEMA.md event fields: e, f, c, d, tx, p
+        ev = events[0]
+        for key in ("e", "f", "c", "d", "tx", "p"):
+            assert key in ev, f"event missing documented key {key}"
+        assert isinstance(ev["p"], list)

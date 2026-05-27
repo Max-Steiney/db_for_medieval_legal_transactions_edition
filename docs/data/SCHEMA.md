@@ -24,7 +24,7 @@ Stand: aktueller Build. Versionierung pro Datei über `meta.schema_version` bzw.
 
 **Zweck.** Such-Index der Quellen-Übersicht. Trägt alle Filter- und Sortier-Felder für die Tabelle unter `documents.html`.
 
-**Producer.** `frontend/build.py::_build_index` (Z. ~870), Join aus `all_metadata` und `docs_aggregate.json`.
+**Producer.** `frontend/build/_pages.py::_build_index`, Join aus `all_metadata` und `docs_aggregate.json`.
 **Consumer.** `frontend/static/js/index.js`.
 
 **Form.** Top-Level Array. Pro Quelle ein Record mit kompakten Feldnamen.
@@ -66,7 +66,7 @@ Stand: aktueller Build. Versionierung pro Datei über `meta.schema_version` bzw.
 
 **Zweck.** Pro-Quelle-Aggregat: zentrale Datenschicht zwischen Pipeline-CSVs und Frontend-Views. Trägt Datum (ISO-normalisiert mit Range-Behandlung), Personen-Counts mit Geschlechter-Aufschlüsselung, Event-Counts mit Aufschlüsselung nach `rs/@type='event'`-Subtyp.
 
-**Producer.** `frontend/aggregator.py::aggregate_docs`. Join aus `filenames.csv`, `persons.csv`, `persons_in_sources.csv`, `events_in_sources.csv`.
+**Producer.** `frontend/aggregator/docs.py::aggregate_docs`. Join aus `filenames.csv`, `persons.csv`, `persons_in_sources.csv`, `events_in_sources.csv`.
 **Consumer.** `frontend/build.py::_build_index` zum Bauen von `search.json`.
 
 **Form.** `{meta, docs}` mit `docs` als Array von Records.
@@ -89,7 +89,7 @@ Konzeptionelle Beschreibung: [knowledge/data.md#Aggregat-Schicht](../../knowledg
 
 **Zweck.** `file_key → Metadaten`-Lookup für Drill-down-Overlays in den Exploration-Sub-Seiten. Erlaubt Klick auf eine Aggregat-Zelle → Quellen-Liste auflösen.
 
-**Producer.** `frontend/aggregator.py::build_docs_lookup`.
+**Producer.** `frontend/aggregator/docs.py::build_docs_lookup`.
 **Consumer.** `frontend/static/js/drill-down.js`.
 
 **Form.** Top-Level-Objekt, Schlüssel sind `file_key`s.
@@ -106,10 +106,10 @@ Konzeptionelle Beschreibung: [knowledge/data.md#Aggregat-Schicht](../../knowledg
 
 ## `roles.json` — Rollen × Geschlecht × Dekade × Organisationstyp
 
-**Zweck.** Datenbasis der Sub-Seite [Rollen](../exploration/roles.html). Kreuztabellen über Personen-Event-Beteiligungen.
+**Zweck.** Datenbasis der [Auswertungen](../analysis/auswertungen.html). Kreuztabellen über Personen-Event-Beteiligungen.
 
 **Producer.** `frontend/aggregator/roles.py::aggregate_roles`.
-**Consumer.** `frontend/static/js/exploration-roles.js`.
+**Consumer.** `frontend/static/js/analysis-aggregat.js` (über eingebettetes Script-Tag der Auswertungen-Seite).
 
 **Top-Level-Blöcke.**
 
@@ -131,10 +131,10 @@ Konzeptionelle Beschreibung: [knowledge/data.md#Aggregat-Schicht](../../knowledg
 
 ## `relations.json` — Beziehungen
 
-**Zweck.** Datenbasis der Sub-Seite [Beziehungen](../exploration/networks.html). Annotierte Verbindungen zwischen Personen, klassifiziert nach Typ.
+**Zweck.** Datenbasis der [Auswertungen](../analysis/auswertungen.html) und des [Personennetzwerks](../exploration/personennetzwerk.html). Annotierte Verbindungen zwischen Personen, klassifiziert nach Typ.
 
 **Producer.** `frontend/aggregator/relations.py::aggregate_relations`.
-**Consumer.** `frontend/static/js/exploration-networks.js`.
+**Consumer.** `frontend/static/js/analysis-aggregat.js` (Auswertungen), `frontend/static/js/exploration-network.js` (Org-Namen im Netzwerk).
 
 **Top-Level-Blöcke.**
 
@@ -156,10 +156,10 @@ Konzeptionelle Beschreibung: [knowledge/data.md#Aggregat-Schicht](../../knowledg
 
 ## `transactions.json` — Transaktionen
 
-**Zweck.** Datenbasis der Sub-Seite [Transaktionen](../exploration/transactions.html). Repertoire der Rechtsgeschäfte über die Zeit.
+**Zweck.** Datenbasis der [Auswertungen](../analysis/auswertungen.html). Repertoire der Rechtsgeschäfte über die Zeit.
 
 **Producer.** `frontend/aggregator/transactions.py::aggregate_transactions`.
-**Consumer.** `frontend/static/js/exploration-transactions.js`.
+**Consumer.** `frontend/static/js/analysis-aggregat.js` (über eingebettetes Script-Tag der Auswertungen-Seite).
 
 **Top-Level-Blöcke.**
 
@@ -178,11 +178,35 @@ Konzeptionelle Beschreibung: [knowledge/data.md#Aggregat-Schicht](../../knowledg
 
 ---
 
+## `role_constellation.json` — Rollen-Konstellation pro Event
+
+**Zweck.** Datenbasis des [Abfrage-Interface](../analysis/index.html). Pro Event die Liste seiner Beteiligten mit Rolle, Geschlecht, Titeln und Berufen; der Client-Resolver matcht N-Personen-Abfragen gegen diese Liste.
+
+**Producer.** `frontend/aggregator/role_constellation.py::aggregate_role_constellation`.
+**Consumer.** `frontend/static/js/analysis-resolver.js`.
+
+**Top-Level-Blöcke.**
+
+| Block | Inhalt |
+|---|---|
+| `meta` | Schema-Version, Datenquellen, Dimensions-Beschreibung |
+| `vocab` | Kontrollierte Vokabulare (Rollen, Organisationstypen) für die Abfrage-UI |
+| `coverage` | Gesamtsummen (Events, Beteiligte) |
+| `events` | Liste der Events, je `{e, f, c, d, tx, p}` |
+
+**Event-Felder.** `e` event_key, `f` file_key, `c` Korpus-Kurzlabel, `d` Datum (ISO), `tx` normalisierter Transaktionstyp, `p` Liste der Beteiligten.
+
+**Beteiligten-Felder (`p[]`).** Personen- oder Organisations-Referenz mit Rolle (`issuer`, `recipient`, `witness`, `other`), Geschlecht, Anzeigename sowie Titeln und Berufen (Originalschreibung und Uhlirz-Klassifikation). Maßgeblich für die Feldnamen ist der Resolver `analysis-resolver.js`.
+
+**Dimensionen.** `role`, `sex`, `org_type`, `transaction_type`, `occupation` (Original und Uhlirz).
+
+---
+
 ## `persons_search.json`
 
 **Zweck.** Such-Index für das Personenregister.
 
-**Producer.** `frontend/build.py::_person_search_data` (gefiltert auf `_released_person_keys()`).
+**Producer.** `frontend/build/_pages.py::_person_search_data` (gefiltert auf `_released_person_keys()`).
 **Consumer.** `frontend/static/js/register.js`.
 
 **Form.** Top-Level Array.
@@ -203,7 +227,7 @@ Konzeptionelle Beschreibung: [knowledge/data.md#Aggregat-Schicht](../../knowledg
 
 **Zweck.** Reverse-Index für die Inline-Detail-Erweiterung im Register: Klick auf einen Eintrag → Liste aller Quellen, in denen er vorkommt.
 
-**Producer.** `frontend/build.py::_build_register_json`. Personen sind auf `_released_person_keys()` gefiltert; Organisationen und Orte über den `reverse_index` implizit (nur Entitäten, die in freigegebenen Quellen referenziert sind).
+**Producer.** `frontend/build/_pages.py::_build_register_json`. Personen sind auf `_released_person_keys()` gefiltert; Organisationen und Orte über den `reverse_index` implizit (nur Entitäten, die in freigegebenen Quellen referenziert sind).
 **Consumer.** `frontend/static/js/register.js` (Lazy-Load bei erstem Klick).
 
 **Form.** Top-Level-Objekt, Schlüssel sind Entity-IDs.
@@ -222,7 +246,7 @@ Konzeptionelle Beschreibung: [knowledge/data.md#Aggregat-Schicht](../../knowledg
 
 **Zweck.** Histogramm-Daten für den Zeit-Range-Slider auf Quellen-Übersicht und Exploration-Sub-Seiten.
 
-**Producer.** `frontend/aggregator.py::aggregate_timeline`.
+**Producer.** `frontend/aggregator/timeline.py::aggregate_timeline`.
 **Consumer.** `frontend/templates/index.html` (Server-Side-Rendering der Bars), JS-Histogramm-Update.
 
 **Top-Level-Blöcke.**
@@ -241,7 +265,7 @@ Konzeptionelle Beschreibung: [knowledge/data.md#Aggregat-Schicht](../../knowledg
 
 **Zweck.** Editorielle Zuordnungstabelle Organisationstyp → Kategorie (`geistlich`, `weltlich`, `sonstige`). Wird nicht aus den TEI-Daten abgeleitet, sondern als Modellierungsentscheidung gepflegt.
 
-**Producer.** `frontend/content/categories.json` (Quelle), `frontend/build.py::_write_categories` kopiert nach `docs/data/`.
+**Producer.** `frontend/content/categories.json` (Quelle), `frontend/build/_pages.py::_write_categories` kopiert nach `docs/data/`.
 **Consumer.** Analyse-Seite, Exploration-Filter.
 
 **Top-Level-Blöcke.**
@@ -259,7 +283,7 @@ Konzeptionelle Beschreibung: [knowledge/data.md#Aggregat-Schicht](../../knowledg
 
 **Zweck.** Vokabular für die Analyse-Seite (Composer-Dashboard): Subjekte, Filter, Werte, Constraints.
 
-**Producer.** `frontend/content/query_vocabulary.json` (Quelle), `frontend/build.py::_write_query_vocabulary` kopiert.
+**Producer.** `frontend/content/query_vocabulary.json` (Quelle), `frontend/build/_pages.py::_write_query_vocabulary` kopiert.
 **Consumer.** `frontend/static/js/analysis-composer.js`.
 
 **Top-Level-Blöcke.**
