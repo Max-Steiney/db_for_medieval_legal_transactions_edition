@@ -560,9 +560,10 @@
         }
     }
 
+    // Text-Escaping kommt aus EdCore (textContent-Verfahren, hier geladen);
+    // escapeAttr ergaenzt nur das Anfuehrungszeichen fuer Attribut-Kontexte.
     function escapeHtml(s) {
-        return String(s == null ? '' : s)
-            .replace(/&/g, '&amp;').replace(/</g, '&lt;').replace(/>/g, '&gt;');
+        return EdCore.esc(s);
     }
     function escapeAttr(s) {
         return escapeHtml(s).replace(/"/g, '&quot;');
