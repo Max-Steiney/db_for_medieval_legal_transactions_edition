@@ -619,7 +619,7 @@
             }
             if (state.roles.length) {
                 let label = 'Rolle: ' + state.roles.map(function(r) {
-                    return (ROLE_LABELS[r] && ROLE_LABELS[r].long) || r;
+                    return ROLE_LABELS[r] || r;
                 }).join(', ');
                 TableInfra.addFilterChip(activeFiltersEl, label, function() {
                     state.roles = [];
