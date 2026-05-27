@@ -19,7 +19,7 @@ related: [exploration, specification, ui-design, decisions, glossar]
 
 # Analyse
 
-Der Analysebereich versammelt die quantitativen Zugänge zur Datenbasis. Er steht als gleichberechtigter Zweig neben der [[exploration]]: das Interaktionsmuster ist strukturiert (vorgegebene Achsen, exakte Zahlen, Provenienz), die Exploration arbeitet visuell-interaktiv. Begründung der Trennung in [[specification#Exploration und Analyse als getrennte Bereiche]].
+Der Analysebereich versammelt die quantitativen Zugänge zur Datenbasis. Er steht als gleichberechtigter Zweig neben der [[exploration]]: das Interaktionsmuster ist strukturiert (vorgegebene Achsen, exakte Zahlen, Provenienz), die Exploration arbeitet visuell-interaktiv. Begründung der Trennung in [[specification#Exploration und Analyse als getrennte Bereiche]]. In der öffentlichen Sicht ist der Analysebereich derzeit ausgeblendet (Stakeholder-Protokoll 18.05.2026, Prio 1); seine Seiten entstehen nur im internen Build (`--audience intern`).
 
 ## Zwei Sub-Seiten
 
@@ -89,7 +89,7 @@ Datenquelle ist `docs/data/role_constellation.json`, ein Per-Event-Aggregat aus 
 
 ### Eingabeformen der Bedingungen
 
-Geschlecht und Rolle nutzen kontrollierte Vokabulare und werden als Dropdown angeboten. Beruf, Tätigkeit oder Amt wird als Freitext-Feld mit Operator „enthält" und smarten Vorschlägen (HTML-`<datalist>`) aus den Top-Originalvarianten samt Belegzahl angeboten. Eine Bedingung „Titel" gibt es nicht — die TEI-Edition trennt Honorifics nicht von Berufen, beide stehen gemeinsam in `<occupation>`. Eine eigene Titel-Achse wäre eine Pipeline-Erweiterung im Schwester-Repo, nicht eine UI-Frage.
+Geschlecht und Rolle nutzen kontrollierte Vokabulare und werden als Dropdown angeboten. Beruf, Tätigkeit oder Amt wird als Freitext-Feld mit Operator „enthält" und smarten Vorschlägen (eigenes Autocomplete-Popover statt des nativen `<datalist>`, das sich nicht stylen lässt) aus den Top-Originalvarianten samt Belegzahl angeboten. Eine Bedingung „Titel" gibt es nicht — die TEI-Edition trennt Honorifics nicht von Berufen, beide stehen gemeinsam in `<occupation>`. Eine eigene Titel-Achse wäre eine Pipeline-Erweiterung im Schwester-Repo, nicht eine UI-Frage.
 
 ### Anfangszustand und Empty-States
 
