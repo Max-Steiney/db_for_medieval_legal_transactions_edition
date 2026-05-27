@@ -100,6 +100,18 @@ def main():
         "--test", action="store_true",
         help="Run edition tests and include results",
     )
+    status_cmd.add_argument(
+        "--stage", type=int, choices=[1, 2, 3, 4], default=None,
+        help="Build-Stufe, deren Output das Dashboard meldet. Default 1.",
+    )
+    status_cmd.add_argument(
+        "--audience", type=str, choices=["oeffentlich", "intern"], default=None,
+        help=(
+            "Sicht, deren Output das Dashboard meldet. 'oeffentlich' liest "
+            "docs/, 'intern' liest docs-intern/ und erwartet Analyse- und "
+            "Exploration-Seiten. Default 'oeffentlich'."
+        ),
+    )
 
     args = parser.parse_args()
 
@@ -107,7 +119,9 @@ def main():
     # die Pipeline-Transformer lesen die abgeleiteten Env-Vars beim Import
     # und leiten Output-Verzeichnis sowie Mentioned-Toggle daraus ab. Ohne
     # explizite Wahl bleiben Stufe 1 (Publikation) und Audience 'oeffentlich'.
-    if args.command == "build":
+    # Gilt auch fuer status, damit das Dashboard den per Flag gewaehlten
+    # Build-Stand meldet statt eines fest verdrahteten Verzeichnisses.
+    if args.command in ("build", "status"):
         from frontend import stages, audiences
         stage_id = getattr(args, "stage", None)
         if stage_id is None and getattr(args, "include_mentioned", False):

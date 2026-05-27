@@ -10,10 +10,19 @@ import sys
 from datetime import date
 from pathlib import Path
 
-from pipeline.config import REPO_ROOT
+from frontend.config import FRONTEND_REPO_ROOT
+from frontend.stages import active_stage
+from frontend.audiences import active_audience, output_dir_suffix
 
-DOCS_DIR = REPO_ROOT / "docs"
-DATA_DIR = DOCS_DIR / "data"
+
+def _docs_dir() -> Path:
+    """Output-Verzeichnis des aktiven Builds (Stufe plus Sicht), frisch aus der Umgebung."""
+    return FRONTEND_REPO_ROOT / (active_stage()["output_dir"] + output_dir_suffix())
+
+
+def _data_dir() -> Path:
+    """data/-Unterverzeichnis des aktiven Builds."""
+    return _docs_dir() / "data"
 
 # Frontend milestones — hardcoded after Phase I substantially completed.
 # Update by hand when a milestone moves between completed and pending.
@@ -49,12 +58,13 @@ def _parse_milestones() -> dict:
 
 
 def _data_files() -> list:
-    """List JSON files in docs/data/ with sizes."""
-    if not DATA_DIR.exists():
+    """List JSON files in the active build's data/ directory with sizes."""
+    data_dir = _data_dir()
+    if not data_dir.exists():
         return []
 
     files = []
-    for p in sorted(DATA_DIR.glob("*.json")):
+    for p in sorted(data_dir.glob("*.json")):
         size = p.stat().st_size
         files.append({"name": p.name, "bytes": size})
     return files
@@ -70,26 +80,33 @@ def _format_size(b: int) -> str:
         return f"{b / (1024 * 1024):.1f}M"
 
 
-def _html_pages() -> list:
-    """Check which top-level HTML pages exist (post-URL-refactor paths)."""
-    expected = [
+def _expected_pages() -> list:
+    """Erwartete Top-Level-Seiten des aktiven Builds; Analyse/Exploration nur in der internen Sicht."""
+    pages = [
         "index.html",
         "documents.html",
         "impressum.html",
         "register/persons.html",
-        "register/organisations.html",
-        "analysis/auswertungen.html",
-        "exploration/zeitstrom.html",
-        "exploration/personennetzwerk.html",
+        "register/orgs.html",
         "korb.html",
         "project/edition-guidelines.html",
         "project/about.html",
         "project/glossary.html",
     ]
+    aud = active_audience()
+    if aud["show_analysis_section"]:
+        pages += ["analysis/auswertungen.html", "analysis/index.html"]
+    if aud["show_exploration_section"]:
+        pages += ["exploration/zeitstrom.html", "exploration/personennetzwerk.html"]
+    return pages
+
+
+def _html_pages() -> list:
+    """Check which expected HTML pages exist for the active build."""
+    docs = _docs_dir()
     result = []
-    for name in expected:
-        path = DOCS_DIR / name
-        result.append({"name": name, "exists": path.exists()})
+    for name in _expected_pages():
+        result.append({"name": name, "exists": (docs / name).exists()})
     return result
 
 
@@ -98,7 +115,7 @@ def _git_log(n: int = 5) -> list:
     try:
         out = subprocess.run(
             ["git", "log", f"--oneline", f"-{n}"],
-            capture_output=True, text=True, cwd=str(REPO_ROOT),
+            capture_output=True, text=True, cwd=str(FRONTEND_REPO_ROOT),
             timeout=5,
         )
         if out.returncode == 0:
@@ -113,7 +130,7 @@ def _run_tests() -> dict | None:
     try:
         out = subprocess.run(
             [sys.executable, "-m", "pytest", "frontend/tests/", "-q", "--tb=no"],
-            capture_output=True, text=True, cwd=str(REPO_ROOT),
+            capture_output=True, text=True, cwd=str(FRONTEND_REPO_ROOT),
             timeout=120,
         )
         for line in reversed(out.stdout.splitlines()):
