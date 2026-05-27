@@ -85,7 +85,7 @@ python -m frontend build         # gegen frische CSVs neu bauen
 
 ## Begriffe und Leitentscheidungen
 
-Begriffsdefinitionen leben in [`frontend/content/project/glossar.md`](frontend/content/project/glossar.md) (Quellenkorpus, Quelle, Event, Rechtsgeschäft, Gesamtnennung, Individuelle Person, Menschen-Event, Rolle, Regest, Faksimile, Volltext, Erschließungsform). Dieselbe Markdown-Quelle wird zur Glossar-Seite gerendert und speist UI-Tooltips über das `glossary_tip`-Macro.
+Begriffsdefinitionen leben in [`frontend/content/project/glossar.md`](frontend/content/project/glossar.md) (Quellenkorpus, Quelle, Event, Rechtsgeschäft, Gesamtnennung, Individuelle Person, Menschen-Event, Rolle, Regest, Faksimile, Volltext, Erschließungsform). Dieselbe Markdown-Quelle wird zur Glossar-Seite gerendert und speist UI-Tooltips über das `tip_glossary`-Macro.
 
 Anforderungs-Spezifikation der Anwendung mit allen Leitentscheidungen lebt in [`knowledge/specification.md`](knowledge/specification.md). Kanonische Begriffshierarchie: Quellenkorpus → Quelle → Event → Gesamtnennung. Kontrolliertes Rollenvokabular: `issuer`, `recipient`, `sealer or witness`, `other`, `none`.
 
@@ -127,7 +127,7 @@ Aktive Stakeholder-Entscheidungen, deren Bezug man pro Task kennen muss.
 | Sichtbarkeit öffentlich oder intern ändern | `frontend/audiences.py` (Audience-Achse, Build-zeit) für strukturelle Entfernung; CSS-Klasse `.dev-only` plus `?dev=1`-Schalter (Client-Schicht) für Verbergen im selben Build. Konzept in [`knowledge/specification.md`](knowledge/specification.md) unter „Öffentliche versus interne Sicht in zwei Schichten" |
 | Auswertungen-/Zeitstrom-/neue Visualisierungs-Sub-Seite | `frontend/static/js/viz-core.js` zuerst (geteilte Helfer: Range-Slider, Active-Filter-Strip, URL-Sync, Drill-Overlay, JSON-Loader, Domain-Konstanten); page-spezifischer Renderer ruft die Bindings in `DOMContentLoaded` |
 | Datenkorb-Anbindung (jede neue Quellen-Liste) | `DataBasket.buttonHTML({id, label, url, date, coll, regest})` ins Zeilen-Markup; Click-Handling über globale Event-Delegation in `frontend/static/js/basket.js` |
-| Provenienz- oder Glossar-Tooltip einsetzen | `frontend/templates/macros.html` (`prov_stat`, `prov_popover`, `prov_ratio_stat`, `glossary_tip`) |
+| Provenienz- oder Glossar-Tooltip einsetzen | `frontend/templates/macros.html` (`tip_glossary` Glossar, `tip_help` UI-Hilfe, `tip_data_trigger`/`tip_data_body` Provenienz-Popover) |
 | Faksimile-Viewer (Zoom, Pan, Rotation) | `frontend/static/js/facsimile.js` plus `doc-facs-panel` in `frontend/templates/document.html`; Lib vendoret unter `frontend/static/vendor/openseadragon/`. UI-Detail in [`knowledge/ui-design.md`](knowledge/ui-design.md) unter „Quellen-Detailseite mit Text-Bild-Synopse" |
 | Pro-Quelle-Daten (Personen/Events/Datum) | `frontend/aggregator.py::aggregate_docs` schreibt `docs/data/docs_aggregate.json` |
 | Erschließungsform | aus `events_in_sources.csv:event_in` aggregiert (abstract / seal / entry / nota); keine Heuristik im Frontend |

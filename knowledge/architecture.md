@@ -69,11 +69,11 @@ Die Trennung ist klar. Audience entscheidet, *ob* etwas im Build enthalten ist; 
 
 ## Test-Strategie
 
-Die Qualitätssicherung steht auf drei Säulen, die unterschiedliche Fehlerklassen abdecken und sich nicht ersetzen.
+Die Qualitätssicherung steht auf vier Säulen, die unterschiedliche Fehlerklassen abdecken und sich nicht ersetzen.
 
 **Pytest** (`frontend/tests/`) testet den Build-Code selbst: Aggregator-Funktionen, Renderer, Template-Rendering, JS-Infrastruktur. Die Suite läuft schnell (rund elf Sekunden) und gehört zu jedem Build (`python -m pytest frontend/tests/`). Sie fängt Regressionen in der Programmlogik, nicht in den Daten.
 
-**Verifikations-Test-Set** (`verification/`) prüft die Daten-Konsistenz End-to-End: TEI-Quellen und Register-XMLs werden ohne Umweg über die Pipeline-Zwischenformate eingelesen, Aggregate eigenständig nachgerechnet und mit den vom Build erzeugten JSON-Dateien und gerenderten HTMLs verglichen. Drei Coverage-Stufen:
+**Verifikations-Test-Set** (`verification/`) prüft die Daten-Konsistenz End-to-End: TEI-Quellen und Register-XMLs werden ohne Umweg über die Pipeline-Zwischenformate eingelesen, Aggregate eigenständig nachgerechnet und mit den vom Build erzeugten JSON-Dateien und gerenderten HTMLs verglichen. Drei Coverage-Stufen plus Inventar-Modus:
 
 1. **TEI zu JSON** (`python -m verification.run`): unabhängige TEI-Aggregation vs. Pipeline-Output unter `docs/data/*.json`. Findet Pipeline-Fehler in der Aggregations-Logik.
 2. **CSV zu HTML** (`python -m verification.run --html`): Pipeline-CSVs vs. gerenderte Profil- und Quellen-HTMLs. Findet Renderer-Drift, fehlende Felder im Template, Orphan-Annotationen.
