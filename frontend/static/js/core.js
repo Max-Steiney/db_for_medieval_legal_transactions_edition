@@ -1,5 +1,5 @@
 /* ==========================================================================
-   Wiener Urkundenbuch — Digital Edition
+   Stadt und Gemeinschaft Wien, digitale Edition
    Core: navigation, hamburger menu, esc() utility, build-time globals.
    ========================================================================== */
 

@@ -1,5 +1,5 @@
 /* ==========================================================================
-   Wiener Urkundenbuch — Digital Edition
+   Stadt und Gemeinschaft Wien, digitale Edition
    Document page: annotations view + citation helper + layer toggles
    ========================================================================== */
 
@@ -733,14 +733,15 @@
             if (dateDisplay) chicago += ' (' + dateDisplay + ')';
             chicago += '.';
         }
-        chicago += ' In: Wiener Urkundenbuch Digital. Universität Wien.';
+        chicago += ' In: Stadt und Gemeinschaft Wien, Datenbank zu mittelalterlichen Wiener Rechtsgeschäften, hg. von Korbinian Grünwald. Universität Wien.';
         chicago += ' ' + url + ' (Zugriff: ' + today + ').';
 
         // BibTeX
-        let bibKey = 'WUB_' + idno.replace(/[^a-zA-Z0-9_]/g, '_');
+        let bibKey = 'SuGW_' + idno.replace(/[^a-zA-Z0-9_]/g, '_');
         let bibtex = '@misc{' + bibKey + ',\n'
             + '  title     = {Nr. ' + idno + (dateDisplay ? ' (' + dateDisplay + ')' : '') + '},\n'
-            + '  author    = {{Wiener Urkundenbuch Digital}},\n'
+            + '  author    = {{Stadt und Gemeinschaft Wien}},\n'
+            + '  editor    = {Grünwald, Korbinian},\n'
             + '  publisher = {Universität Wien},\n'
             + '  year      = {' + (dateDisplay.match(/\d{4}/) || ['s.d.'])[0] + '},\n'
             + '  howpublished = {\\url{' + url + '}},\n'
@@ -790,7 +791,17 @@
         let toggles = document.querySelectorAll('.legend-toggle[data-layer]');
         if (!body || !toggles.length) return;
 
-        let STORAGE_KEY = 'wub-anno-layers';
+        let STORAGE_KEY = 'sugw-anno-layers';
+        // Einmalige Migration des alten localStorage-Schluessels (Praefix
+        // 'wub-' aus dem frueheren Projektnamen). Sichtbarkeits-Praeferenz
+        // uebernehmen, dann alten Schluessel entfernen.
+        try {
+            let legacy = localStorage.getItem('wub-anno-layers');
+            if (legacy !== null && localStorage.getItem(STORAGE_KEY) === null) {
+                localStorage.setItem(STORAGE_KEY, legacy);
+                localStorage.removeItem('wub-anno-layers');
+            }
+        } catch(e) { /* ignore */ }
         let classMap = {
             entities: 'hide-entities',
             functions: 'hide-functions',
