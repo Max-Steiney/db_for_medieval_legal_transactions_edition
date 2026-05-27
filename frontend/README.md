@@ -20,12 +20,13 @@ parent/
 
 ## Contents
 
-- `build.py`, `__main__.py` — orchestrator and command-line entry point.
+- `build/` (package), `__main__.py` — orchestrator and command-line entry point.
 - `renderer.py` — recursive TEI-to-HTML conversion via dispatch table.
 - `register.py` — person, organisation, and place register lookup from the
   sibling repo's `indices/*.xml`.
-- `aggregator.py` — derives data for the visualisation perspectives (roles,
-  transactions, networks, places) from the sibling repo's `pipeline/output/`.
+- `aggregator/` (package) — derives the aggregate JSONs (roles, relations,
+  transactions, role_constellation, timeline, per-source docs_aggregate) from
+  the sibling repo's `pipeline/output/`.
 - `status.py` — milestone + data-file overview for development context.
 - `config.py` — paths. `DOCS_DIR` lives in this repo (output); `SOURCES_DIR`
   and `KNOWLEDGE_DIR` resolve into the sibling.
@@ -67,7 +68,7 @@ python -m pytest frontend/tests/                                  # frontend tes
 ## See also
 
 - [../knowledge/architecture.md](../knowledge/architecture.md) — build system in the wider architecture.
-- [../knowledge/ui.md](../knowledge/ui.md) — UI components, templates, JavaScript modules.
-- [../knowledge/design.md](../knowledge/design.md) — design system (tokens, colours, typography).
-- [../knowledge/visualization.md](../knowledge/visualization.md) — visualisation perspectives and open questions.
+- [../knowledge/ui-design.md](../knowledge/ui-design.md) — UI components, templates, JavaScript modules, design system (tokens, colours, typography).
+- [../knowledge/data.md](../knowledge/data.md) — data model and aggregate JSONs.
+- [../knowledge/analyse.md](../knowledge/analyse.md) and [../knowledge/exploration.md](../knowledge/exploration.md) — analysis and exploration perspectives.
 - [../../db_for_medieval_legal_transactions/edition_guidelines.md](../../db_for_medieval_legal_transactions/edition_guidelines.md) — annotation model and editorial conventions (lives in the pipeline repo, rendered into the site by `_build_guidelines()`).

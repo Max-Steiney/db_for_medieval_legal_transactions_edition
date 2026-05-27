@@ -131,7 +131,7 @@ python -m pytest frontend/tests/                            # Frontend-Tests
 Die Datenbank gliedert sich in vier Top-Level-Bereiche:
 
 - **Quellen** (`/documents.html`) — Listenansicht aller freigegebenen Quellen mit Filter, Suche, sortierbarer Tabelle, Volltext-/Regest-Detail.
-- **Register → Personen** (`/register/persons.html` + `/register/persons/<id>.html`) — Personenregister mit Suche, Filter, Profilseite pro individueller Person mit Beziehungen und Quellen-Vorkommen. Organisations- und Ortsregister sind angelegt, aber nicht freigegeben.
+- **Register → Personen** (`/register/persons.html` + `/register/persons/<id>.html`) — Personenregister mit Suche, Filter, Profilseite pro individueller Person mit Beziehungen und Quellen-Vorkommen. Das Organisationsregister (`/register/orgs.html` plus Profilseiten) ist ebenfalls freigegeben. Ein Ortsregister gibt es nicht: Orts-Stammdaten sind nicht konsolidiert, Orte erscheinen nur als Inline-Markup im Volltext ohne Sprungziel.
 - **Analyse** — quantitative Zugänge, zwei Sub-Seiten:
   - `/analysis/auswertungen.html` — vorberechnete Verteilungen (Donut für Funktionsrollen + Beziehungstypen, Bar-Chart für Transaktionstypen, Tabelle mit Mini-Bars für Bezeichnungen). Drill-down ins Quellen-Detail per Klick auf jede Aggregat-Zelle. Filter-Stand in der URL.
   - `/analysis/index.html` — Abfragen-Modus mit vorgefertigten Template-Familien.
