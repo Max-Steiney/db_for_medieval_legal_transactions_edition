@@ -12,11 +12,32 @@ from frontend.aggregator import (
     run_aggregation,
 )
 from pipeline.config import PIPELINE_OUTPUT, NORM_LISTS_DIR
+from frontend.aggregator._run import (
+    _remove_legacy_data_files,
+    _LEGACY_DATA_FILES,
+)
 
 
 # ---------------------------------------------------------------------------
 # Unit tests for helpers
 # ---------------------------------------------------------------------------
+
+
+class TestLegacyDataCleanup:
+    """M2: verwaiste epic_*.json werden beim Aggregationslauf entfernt,
+    aktuelle Aggregate bleiben unberuehrt."""
+
+    def test_removes_legacy_epic_files(self, tmp_path):
+        for name in _LEGACY_DATA_FILES:
+            (tmp_path / name).write_text("{}", encoding="utf-8")
+        (tmp_path / "roles.json").write_text("{}", encoding="utf-8")
+        _remove_legacy_data_files(tmp_path)
+        for name in _LEGACY_DATA_FILES:
+            assert not (tmp_path / name).exists()
+        assert (tmp_path / "roles.json").exists()
+
+    def test_idempotent_when_absent(self, tmp_path):
+        _remove_legacy_data_files(tmp_path)  # darf nicht werfen, wenn nichts da ist
 
 
 class TestDecade:

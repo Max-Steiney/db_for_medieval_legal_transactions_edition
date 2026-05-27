@@ -11,6 +11,20 @@ from .docs import aggregate_docs
 from .role_constellation import aggregate_role_constellation
 
 
+# Veraltete Aggregat-Dateien, die der Build nicht mehr schreibt. Bis
+# 2026-05-11 hiessen roles/relations/transactions noch epic_a/b/c; die
+# umbenannten Vorgaenger blieben als verwaiste, veraltete Artefakte in
+# docs/data/ liegen. Beim Aggregationslauf entfernen, damit ein Rebuild aus
+# einem aelteren Checkout sie nicht zuruecklaesst und docs/data/ nicht
+# weiter akkumuliert.
+_LEGACY_DATA_FILES = ("epic_a.json", "epic_b.json", "epic_c.json")
+
+
+def _remove_legacy_data_files(docs_data_dir: Path) -> None:
+    for name in _LEGACY_DATA_FILES:
+        (docs_data_dir / name).unlink(missing_ok=True)
+
+
 def run_aggregation(docs_data_dir: Path, reverse_index: dict | None = None) -> dict:
     """Run all aggregations and write JSON files to docs/data/.
 
@@ -19,6 +33,7 @@ def run_aggregation(docs_data_dir: Path, reverse_index: dict | None = None) -> d
     """
     print("Running data aggregation for visualisations...")
     docs_data_dir.mkdir(parents=True, exist_ok=True)
+    _remove_legacy_data_files(docs_data_dir)
 
     # Reset shared caches for a fresh run (relevant in tests where
     # run_aggregation is called multiple times in different tmp_paths).
