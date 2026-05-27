@@ -407,7 +407,7 @@
     padding: 6px 14px;
     border-radius: 999px;
     border: 1px solid var(--color-border);
-    background: var(--color-surface);
+    background: var(--color-bg-card);
     font-family: var(--font-sans);
     font-size: var(--text-sm);
     font-weight: 500;
@@ -485,7 +485,7 @@
     font-family: var(--font-sans);
     font-size: var(--text-sm);
     font-weight: 600;
-    color: var(--color-text-primary);
+    color: var(--color-text);
     letter-spacing: 0;
     text-transform: none;
     padding: var(--space-sm) var(--space-sm);
@@ -499,7 +499,7 @@
 .anno-sex {
     font-family: var(--font-sans);
     font-size: var(--text-sm);
-    color: var(--color-text-primary);
+    color: var(--color-text);
 }
 .anno-sex--unknown { color: var(--color-text-light); }
 
@@ -597,7 +597,7 @@
     margin: 1px 4px 1px 0;
     border-radius: 999px;
     background: transparent;
-    color: var(--color-text-primary);
+    color: var(--color-text);
     border: 1px solid var(--color-border-dark);
     white-space: nowrap;
     letter-spacing: 0;

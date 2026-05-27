@@ -202,14 +202,14 @@
 }
 .basket-page .basket-explainer p {
     margin: 0 0 var(--space-xs) 0;
-    color: var(--color-text-primary);
+    color: var(--color-text);
     line-height: 1.45;
 }
 .basket-page .basket-explainer p:last-child {
     margin-bottom: 0;
 }
 .basket-page .basket-explainer strong {
-    color: var(--color-text-primary);
+    color: var(--color-text);
     font-weight: 600;
 }
 .basket-toolbar {
@@ -246,7 +246,7 @@
     align-items: center;
     gap: 6px;
 }
-.basket-chip:hover { background: var(--color-surface-alt); }
+.basket-chip:hover { background: var(--color-bg-hover); }
 .basket-chip.is-active {
     background: var(--color-text);
     color: #fff;
@@ -317,7 +317,7 @@
 }
 .basket-section-head h2 {
     font-family: var(--font-sans);
-    font-size: var(--text-md);
+    font-size: var(--text-base);
     font-weight: 600;
     margin: 0;
     display: flex;
