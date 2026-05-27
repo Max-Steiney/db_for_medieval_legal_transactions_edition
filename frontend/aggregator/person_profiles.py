@@ -26,6 +26,7 @@ Relation types per person:
 from collections import Counter, defaultdict
 
 from frontend.config import is_visible_corpus
+from frontend.register import _format_death_german
 from ._shared import _cached_csv
 from ._profile_labels import split_authorities
 from ._profile_enrichment import (
@@ -100,18 +101,6 @@ def _load_place_names():
         if pid:
             out[pid] = name.split("|", 1)[0].strip() or pid
     return out
-
-
-def _format_death_german(death_iso):
-    if not death_iso:
-        return ""
-    parts = death_iso.split("-")
-    if len(parts) == 3 and all(p.isdigit() for p in parts):
-        y, m, d = parts
-        return f"{int(d):02d}.{int(m):02d}.{int(y):04d}"
-    if len(parts) == 1 and parts[0].isdigit():
-        return parts[0]
-    return death_iso
 
 
 def _display_name(s):

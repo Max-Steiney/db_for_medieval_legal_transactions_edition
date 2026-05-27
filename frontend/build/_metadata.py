@@ -4,6 +4,7 @@ Per-source pipeline: load TEI-XML, extract header fields, render body,
 collect reverse-index refs, render templates, write file.
 """
 
+import re as _re
 import sys
 from collections import Counter
 
@@ -80,9 +81,6 @@ def _build_citation(root):
     text = normalize_space("".join(b.itertext()))
     text = _re.sub(r"\s+As published in [^.]*$", "", text, flags=_re.IGNORECASE).strip()
     return text
-
-
-import re as _re
 
 
 def _extract_metadata(tree, filepath):
