@@ -168,3 +168,90 @@ class TestPersonProfileBuildStep:
         # Berthold profile must NOT be linked because not in linked_persons.
         assert f'href="{PE_BERTHOLD}.html"' not in diemut_html
         assert f'href="../../register/persons/{PE_BERTHOLD}.html"' not in diemut_html
+
+
+class TestDedupAddname:
+    """_dedup_addname ist die SSoT fuer die Dedup-Bedingung.
+
+    Beide Konsumenten (_display_name und der Profile-Dict-Aufbau)
+    rufen diese Helper-Funktion auf. Hier zentral getestet.
+    """
+
+    @pytest.mark.parametrize("surname,addname,expected", [
+        # Identisch -> addname ausgenullt
+        ("von Cremona", "von Cremona", ""),
+        # Case-Unterschied -> ausgenullt
+        ("der chramer", "der Chramer", ""),
+        # Trailing-Whitespace -> ausgenullt
+        ("von Schönberg", " von Schönberg ", ""),
+        # Distinkt -> addname bleibt
+        ("Gorser", "zu Schönberg", "zu Schönberg"),
+        # Leerer surname -> addname bleibt (kann nicht doppeln)
+        ("", "von X", "von X"),
+        # Leerer addname -> bleibt leer
+        ("Hacking", "", ""),
+    ])
+    def test_dedup_bedingung(self, surname, addname, expected):
+        from frontend.aggregator.person_profiles import _dedup_addname
+        assert _dedup_addname(surname, addname) == expected
+
+
+class TestDisplayNameDedup:
+    """End-to-End-Outcome: _display_name und profile.addName ziehen
+    beide den Dedup ueber denselben Helper. Geht eine der beiden
+    Stellen kaputt (oder vergisst den Helper-Aufruf), schlaegt der
+    Integrations-Test an.
+
+    Reale Faelle aus persons.csv: TEI-Annotation traegt bei
+    Adelsfamilien den Toponym-Bestandteil identisch in <surname> und
+    <addName>. Ohne Dedup erscheinen 'Albert von Cremona von Cremona'
+    und 156 weitere.
+    """
+
+    def test_display_name_konsument(self):
+        """_display_name nutzt den Helper und liefert den Namen ohne
+        Doppel-Suffix."""
+        from frontend.aggregator.person_profiles import _display_name
+        assert _display_name({
+            "forename": "Albert",
+            "surname": "von Cremona",
+            "addName": "von Cremona",
+        }) == "Albert von Cremona"
+
+    def test_profile_dict_konsument(self):
+        """Profile-Output: profile.addName ist ausgenullt, profile.display
+        zeigt 'Vorname Surname' ohne Doppel. Echter Integrations-Test
+        gegen build_person_profiles mit dem realen pe__rapoto-Stamm
+        (surname='von Schönberg', addname_reg='von Schönberg').
+        """
+        from frontend.aggregator import build_person_profiles
+        rapoto_id = "pe__rapoto_von_schoenberg_QGW_II_I_1"
+        rev = {rapoto_id: [DOC_10]}
+        profiles = build_person_profiles(rev)
+        assert rapoto_id in profiles, (
+            "Stamm-Lookup fehlgeschlagen; persons.csv-Eintrag fehlt?"
+        )
+        rapoto = profiles[rapoto_id]
+        assert rapoto["addName"] == "", (
+            f"addName muss ausgenullt sein, ist: {rapoto['addName']!r}"
+        )
+        assert rapoto["display"] == "Rapoto von Schönberg", (
+            f"display soll ohne Doppel sein, ist: {rapoto['display']!r}"
+        )
+
+    def test_distinct_addname_bleibt_im_profile(self):
+        """Gegenprobe: wenn surname und addName verschieden sind,
+        bleiben beide im Profile erhalten. Schutz gegen einen
+        ueber-aggressiven Dedup."""
+        from frontend.aggregator import build_person_profiles
+        # pe__thomas_gorser_SB_CD_00787_a hat surname='Gorser',
+        # addname_reg='zu Schönberg' -- distinkt, Dedup darf nicht
+        # greifen.
+        thomas_id = "pe__thomas_gorser_SB_CD_00787_a"
+        rev = {thomas_id: [DOC_10]}
+        profiles = build_person_profiles(rev)
+        if thomas_id not in profiles:
+            pytest.skip(f"{thomas_id} nicht im Stamm; CSV evtl. geaendert")
+        thomas = profiles[thomas_id]
+        assert thomas["addName"] == "zu Schönberg"
+        assert "zu Schönberg" in thomas["display"]

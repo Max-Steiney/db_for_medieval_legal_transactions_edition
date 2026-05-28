@@ -10,7 +10,7 @@
 
 {% set sex_label = {'m': 'männlich', 'f': 'weiblich'}.get(profile.sex, 'Geschlecht unbestimmt') %}
 
-{% set ROLE_LABEL = {'issuer': 'Aussteller*in', 'recipient': 'Empfänger*in', 'witness': 'Zeuge / Siegler*in', 'other': 'Sonstige'} %}
+{% set ROLE_LABEL = ROLE_LABELS %}
 {% set REL_LABEL = {
     'kin': 'Verwandtschaft',
     'friend': 'Freundschaft',
@@ -148,7 +148,7 @@
                     <th scope="col" class="src-col-date" data-sort="date">Datum</th>
                     <th scope="col" class="src-col-corpus" data-sort="corpus">Quellenkorpus</th>
                     <th scope="col" class="src-col-label" data-sort="label">Bezeichnung</th>
-                    <th scope="col" class="src-col-role" data-sort="role">Rolle</th>
+                    <th scope="col" class="src-col-role" data-sort="role">Funktionsrolle</th>
                     <th scope="col" class="src-col-regest">Regest</th>
                 </tr>
             </thead>

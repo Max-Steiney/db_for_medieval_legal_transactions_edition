@@ -7,8 +7,9 @@ collect reverse-index refs, render templates, write file.
 import re as _re
 import sys
 from collections import Counter
+from pathlib import Path
 
-from pipeline.config import SOURCES_DIR, NS_MAP, REPO_ROOT
+from pipeline.config import SOURCES_DIR, NS_MAP, REPO_ROOT, PIPELINE_OUTPUT
 from pipeline.utils.xml_loader import load_xml
 from pipeline.utils.text_utils import normalize_space, strip_hash
 from pipeline.utils.date_parser import create_date
@@ -21,6 +22,30 @@ from frontend.build._helpers import (
     _extract_regest, _extract_entity_refs,
     _output_path, _relative_to_root, _tei_output_path,
 )
+from frontend.build._place_normalize import (
+    build_canonical_index,
+    canonical_place_name,
+)
+
+
+_FRONTEND_ROOT = Path(__file__).resolve().parent.parent
+_PLACE_ALIASES_PATH = _FRONTEND_ROOT / "content" / "place_aliases.json"
+_PLACE_INDEX: dict[str, str] | None = None
+
+
+def _place_index() -> dict[str, str]:
+    """Lazy-build und cache fuer den Place-Lookup-Index.
+
+    Wird einmal pro Build-Prozess aus places.csv + place_aliases.json
+    aufgebaut. Tests koennen _PLACE_INDEX zwischen Runs auf None setzen.
+    """
+    global _PLACE_INDEX
+    if _PLACE_INDEX is None:
+        _PLACE_INDEX = build_canonical_index(
+            PIPELINE_OUTPUT / "places.csv",
+            _PLACE_ALIASES_PATH,
+        )
+    return _PLACE_INDEX
 
 
 def _build_citation(root):
@@ -92,6 +117,7 @@ def _extract_metadata(tree, filepath):
     title = _xpath_text(root, ".//tei:teiHeader//tei:titleStmt/tei:title") or filepath.stem
     date_display = _xpath_text(root, ".//tei:teiHeader//tei:profileDesc/tei:creation/tei:date") or iso_date
     place = _xpath_text(root, ".//tei:teiHeader//tei:profileDesc/tei:creation/tei:placeName")
+    place = canonical_place_name(place, _place_index())
     repository = _xpath_text(root, ".//tei:teiHeader//tei:repository")
     idno = _xpath_text(root, ".//tei:teiHeader//tei:msIdentifier/tei:idno") or filepath.stem
     source_url = _xpath_text(root, ".//tei:teiHeader//tei:sourceDesc/tei:bibl[@type='url']")

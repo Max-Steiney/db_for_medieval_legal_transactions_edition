@@ -12,7 +12,7 @@
    .person-header, .rel-table, .person-source-table) for visual consistency
    across both entity profiles. The class name is historical. #}
 
-{% set ROLE_LABEL = {'issuer': 'Aussteller*in', 'recipient': 'Empfänger*in', 'witness': 'Zeuge / Siegler*in', 'other': 'Sonstige'} %}
+{% set ROLE_LABEL = ROLE_LABELS %}
 {% set REL_LABEL = {'occ': 'Personen mit Beruf / Amt', 'title_ref': 'Personen mit Titel'} %}
 {% set REL_HINT = {
     'occ': 'Personen, deren Beruf oder Amt im Verhältnis zu dieser Organisation belegt ist.',
@@ -118,7 +118,7 @@
                     <th scope="col" class="src-col-date" data-sort="date">Datum</th>
                     <th scope="col" class="src-col-corpus" data-sort="corpus">Quellenkorpus</th>
                     <th scope="col" class="src-col-label" data-sort="label">Bezeichnung</th>
-                    <th scope="col" class="src-col-role" data-sort="role">Rolle</th>
+                    <th scope="col" class="src-col-role" data-sort="role">Funktionsrolle</th>
                     <th scope="col" class="src-col-regest">Regest</th>
                 </tr>
             </thead>

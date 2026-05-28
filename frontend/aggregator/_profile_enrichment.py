@@ -19,13 +19,9 @@ from ._shared import _cached_csv
 
 
 # Persons and orgs share one event-role vocabulary. Places have no
-# profile pages, so no place vocabulary lives here.
-ROLE_LABEL_PERSON = {
-    "issuer":    "Aussteller*in",
-    "recipient": "Empfänger*in",
-    "witness":   "Zeuge / Siegler*in",
-    "other":     "Sonstige",
-}
+# profile pages, so no place vocabulary lives here. Quelle-of-truth
+# liegt in frontend/role_labels.py.
+from frontend.role_labels import ROLE_LABELS as ROLE_LABEL_PERSON
 
 ROLE_LABEL_ORG = ROLE_LABEL_PERSON
 

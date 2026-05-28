@@ -1,0 +1,79 @@
+"""Konsistenz-Test fuer das zentrale Funktionsrollen-Label-Mapping.
+
+frontend/role_labels.py ist die Single-Source-of-Truth. Test prueft,
+dass Python-Konsumenten (renderer, _profile_enrichment) und der
+JS-Fallback in document.js denselben Wert fuer 'witness' tragen, plus
+dass kein alter String mehr im Quellcode lebt.
+"""
+
+import re
+from pathlib import Path
+
+from frontend.role_labels import ROLE_LABELS
+
+
+REPO_ROOT = Path(__file__).resolve().parent.parent.parent
+FRONTEND_ROOT = REPO_ROOT / "frontend"
+
+
+class TestRoleLabelsCanonical:
+    """Die SSoT hat die erwarteten Werte."""
+
+    def test_witness_ist_zeugin_und_sieglerin(self):
+        assert ROLE_LABELS["witness"] == "Zeug*in / Siegler*in"
+
+    def test_alle_vier_tei_werte_belegt(self):
+        for key in ("issuer", "recipient", "witness", "other"):
+            assert key in ROLE_LABELS
+            assert ROLE_LABELS[key]
+
+
+class TestRoleLabelsKonsumenten:
+    """Konsumenten lesen aus der SSoT, nicht aus eigenen Inline-Dicts."""
+
+    def test_renderer_nutzt_ssot(self):
+        from frontend.renderer import _fn_label
+        assert _fn_label("witness") == ROLE_LABELS["witness"]
+        assert _fn_label("issuer") == ROLE_LABELS["issuer"]
+
+    def test_profile_enrichment_nutzt_ssot(self):
+        from frontend.aggregator._profile_enrichment import (
+            ROLE_LABEL_PERSON,
+            ROLE_LABEL_ORG,
+        )
+        assert ROLE_LABEL_PERSON is ROLE_LABELS or ROLE_LABEL_PERSON == ROLE_LABELS
+        assert ROLE_LABEL_ORG is ROLE_LABELS or ROLE_LABEL_ORG == ROLE_LABELS
+
+    def test_kein_alter_witness_string_im_quellcode(self):
+        """'Zeuge / Siegler*in' und 'Zeug*in' als Standalone-Wert duerfen
+        nur noch in role_labels.py (SSoT) und in document.js (Fallback)
+        und in Tests vorkommen.
+        """
+        forbidden_files = []
+        for path in FRONTEND_ROOT.rglob("*"):
+            if not path.is_file():
+                continue
+            if path.suffix not in (".py", ".html", ".js"):
+                continue
+            if "test" in path.parts:
+                continue
+            if path.name in ("role_labels.py", "document.js"):
+                continue
+            try:
+                text = path.read_text(encoding="utf-8")
+            except (UnicodeDecodeError, OSError):
+                continue
+            if re.search(r"'witness'\s*:\s*'Zeug(e\s*/\s*Siegler\*in|\*in)'", text):
+                forbidden_files.append(str(path.relative_to(REPO_ROOT)))
+            if re.search(r'"witness"\s*:\s*"Zeug(e\s*/\s*Siegler\*in|\*in)"', text):
+                forbidden_files.append(str(path.relative_to(REPO_ROOT)))
+        assert forbidden_files == [], (
+            f"Alte witness-Mapping-Strings ausserhalb der SSoT: "
+            f"{forbidden_files}"
+        )
+
+    def test_jinja_globals_enthalten_role_labels(self):
+        from frontend.build._helpers import _init_jinja
+        env = _init_jinja()
+        assert "ROLE_LABELS" in env.globals
+        assert env.globals["ROLE_LABELS"] == ROLE_LABELS

@@ -283,13 +283,8 @@ def _render_rs(element, registers):
 
 def _fn_label(role):
     """Human-readable label for function roles."""
-    labels = {
-        "issuer": "Aussteller*in",
-        "recipient": "Empfänger*in",
-        "witness": "Zeug*in",
-        "other": "Sonstige",
-    }
-    return labels.get(role, role)
+    from frontend.role_labels import ROLE_LABELS
+    return ROLE_LABELS.get(role, role)
 
 
 def _render_rolename(element, registers):

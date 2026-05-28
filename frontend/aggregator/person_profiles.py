@@ -103,9 +103,30 @@ def _load_place_names():
     return out
 
 
+def _dedup_addname(surname: str, addname: str) -> str:
+    """addName ausnullen, wenn er den surname doppelt.
+
+    Vergleich case- und whitespace-insensitiv. TEI-Quellen annotieren
+    bei Adelsfamilien haeufig denselben Toponym-Bestandteil in
+    <surname> und <addName>; ohne Dedup entsteht 'Albert von Cremona
+    von Cremona' im Display-Namen und in den getrennten H1-Spans.
+
+    Zentrale Single-Source-of-Truth: ``_display_name`` (Display-String)
+    und der Profile-Dict-Aufbau (getrennte Spans) rufen diese Funktion
+    auf, damit beide Konsumenten exakt dieselbe Bedingung sehen.
+    """
+    if (addname and surname
+            and addname.casefold().strip() == surname.casefold().strip()):
+        return ""
+    return addname
+
+
 def _display_name(s):
     """Compact display name from regularised master data."""
-    parts = [s.get("forename", ""), s.get("surname", ""), s.get("addName", "")]
+    forename = s.get("forename", "")
+    surname = s.get("surname", "")
+    add_name = _dedup_addname(surname, s.get("addName", ""))
+    parts = [forename, surname, add_name]
     return " ".join(p for p in parts if p) or ""
 
 
@@ -434,7 +455,7 @@ def build_person_profiles(reverse_index):
             "display": _display_name(s) or pid,
             "forename": s.get("forename", ""),
             "surname":  s.get("surname", ""),
-            "addName":  s.get("addName", ""),
+            "addName":  _dedup_addname(s.get("surname", ""), s.get("addName", "")),
             "name_orig_display": _orig_display(s),
             "sex":      s.get("sex", ""),
             "note":     s.get("note", ""),

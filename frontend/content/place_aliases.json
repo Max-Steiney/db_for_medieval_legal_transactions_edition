@@ -1,0 +1,6 @@
+{
+  "_description": "Redaktionell gepflegte Alias-Tabelle fuer Ortsnamen. Schreibvarianten links, kanonischer Name (matched gegen places.csv name_reg) rechts. Wird in frontend/build/_place_normalize.py konsultiert nach dem places.csv-Lookup. Bindestrich-/Leerzeichen-/Casing-Varianten brauchen keinen Eintrag (deckt normalize_place_key automatisch ab). Eintraege brauchen nur historische, lateinische oder sprachverschiedene Schreibungen.",
+  "Posonium": "Pressburg",
+  "Sankt Pölten": "St. Pölten",
+  "Sankt Poelten": "St. Pölten"
+}

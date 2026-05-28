@@ -183,6 +183,8 @@ def _init_jinja():
     audience = active_audience()
     env.globals["audience"] = audience
     env.globals["audience_id"] = audience["id"]
+    from frontend.role_labels import ROLE_LABELS
+    env.globals["ROLE_LABELS"] = ROLE_LABELS
     env.filters["de_int"] = _format_de_int
     return env
 
