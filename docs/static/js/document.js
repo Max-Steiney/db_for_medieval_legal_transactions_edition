@@ -66,12 +66,21 @@
         if (!body || !bodyEl) return;
 
         let DASH = '–';
-        let ROLE_LABELS = {
-            'issuer': 'Aussteller*in',
-            'recipient': 'Empfänger*in',
-            'witness': 'Zeug*in',
-            'other': 'Sonstige'
-        };
+        // Role-Labels werden vom Build aus frontend/role_labels.py in
+        // <script id="role-labels"> in base.html eingebettet. Fallback
+        // sichert ab, falls das Element fehlt (z.B. in Tests).
+        let ROLE_LABELS = (function() {
+            try {
+                let el = document.getElementById('role-labels');
+                if (el) return JSON.parse(el.textContent);
+            } catch (e) {}
+            return {
+                'issuer': 'Aussteller*in',
+                'recipient': 'Empfänger*in',
+                'witness': 'Zeug*in / Siegler*in',
+                'other': 'Sonstige'
+            };
+        })();
 
         // ---- 1. Entities: first inside function-role spans (with role),
         //         then standalone (without role).
