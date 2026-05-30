@@ -28,7 +28,7 @@ parent/
   transactions, role_constellation, timeline, per-source docs_aggregate) from
   the sibling repo's `pipeline/output/`.
 - `status.py` — milestone + data-file overview for development context.
-- `config.py` — paths. `DOCS_DIR` lives in this repo (output); `SOURCES_DIR`
+- `config.py` — paths. `DOCS_DIR` lives in this repo (output); `SOURCES_REPO_ROOT`
   and `KNOWLEDGE_DIR` resolve into the sibling.
 - `templates/` — Jinja2 templates for document, register, statistics, and
   exploration pages.

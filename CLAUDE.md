@@ -24,17 +24,17 @@ docs/                     Build-Output, von GitHub Pages serviert
                             (Ortsregister entfernt: Orts-Stammdaten noch nicht
                              konsolidiert; rs type="place" bleibt als Span mit
                              Tooltip im Quellen-Volltext, aber ohne Sprungziel)
-  /analysis/              Analyse-Bereich
+  /analysis/              Analyse-Bereich (nur interner Build docs-intern/, oeffentlich ausgeblendet)
                             auswertungen.html  quantitative Verteilungen (Donut, Bar, Tabelle), Drill-down + Cross-Nav
                             index.html         Abfragen (Template-Familien)
-  /exploration/           visuell-interaktive Erkundung
+  /exploration/           visuell-interaktive Erkundung (nur interner Build docs-intern/, oeffentlich ausgeblendet)
                             zeitstrom.html         gestapelter Timeline-Bar-Chart mit Brush-to-Drill-down,
                                                    Stack-Kategorie isolierbar
                             personennetzwerk.html  Ego-Layout um eine Person, Klick verlagert Zentrum
                             (Sankey - geplant; keine Karten - Orts-Aussagen liegen
                              ausserhalb des Forschungsfokus)
   korb.html               Datenkorb (clientseitig, localStorage); CSV-Export, Cross-Tab-Sync
-  /project/               About, Statistik, Qualität, Annotationsrichtlinien, Glossar
+  /project/               About, Annotationsrichtlinien, Glossar
   /static/                CSS, JS, Fonts
 knowledge/                konzeptionelle Wissensbasis (Obsidian-Markdown, Wiki-Links)
 verification/             unabhängiges Verifikations-Test-Set (Python, lxml)
@@ -64,13 +64,14 @@ python -m verification.run --html                 # Stufe 2: Pipeline-CSV -> ger
 python -m verification.run --tei-html             # Stufe 3: TEI direkt -> gerendertes HTML
 python -m verification.run --all                  # alle drei Stufen
 python -m verification.run --inventory            # TEI-Element-Inventar pro Subkorpus
+python -m verification.run --research-questions    # Stufe 4: Forschungsfragen gegen Pipeline-Sollwert
 ```
 
 `--stage N` setzt `FRONTEND_STAGE=N` und davon abgeleitete Env-Vars. Stufen schreiben in eigene Output-Verzeichnisse (`docs/`, `docs-with-mentioned/`, `docs-full/`, `docs-max/`). Vor einem Vergleichsbuild muss die Pipeline einmal mit dem Mentioned-Filter laufen (`PIPELINE_INCLUDE_MENTIONED_EVENTS=1 python -m pipeline transform`); mit dem Helper-Skript automatisch. Konzept und vollständige Stufentabelle in [`knowledge/specification.md`](knowledge/specification.md) unter „Stufenmodell fuer Korpus-Auswahl und Annotationsebenen".
 
 `--audience oeffentlich|intern` (Default `oeffentlich`) ist die zweite, orthogonale Achse. Öffentlich schreibt unverändert in das Stufen-Verzeichnis, intern hängt `-intern` an (Stufe 1 plus intern landet in `docs-intern/`). Die interne Variante behält editorisch relevante Sektionen, technische IDs und Aggregat-Achsen, die der öffentliche Build filtert. Daneben existiert ein Client-Schalter: `?dev=1` an einer beliebigen Quellen-Detailseite setzt `.dev-mode` auf `<html>` und macht `.dev-only`-Elemente sichtbar mit gelbem Rahmen. Konzept und Begründung in [`knowledge/specification.md`](knowledge/specification.md) unter „Öffentliche versus interne Sicht in zwei Schichten".
 
-Test-Strategie und Abgrenzung der drei Säulen (pytest, Verifikation, Sichtprüfung): [`knowledge/architecture.md`](knowledge/architecture.md) Abschnitt _Test-Strategie_.
+Test-Strategie und Abgrenzung der vier Säulen (pytest, Verifikation, JS-Tests, Sichtprüfung): [`knowledge/architecture.md`](knowledge/architecture.md) Abschnitt _Test-Strategie_.
 
 **TEI-Quellen, Register, Pipeline-Code** gehören ins Schwester-Repo. Nach Änderungen dort:
 
@@ -87,9 +88,9 @@ python -m frontend build         # gegen frische CSVs neu bauen
 
 Begriffsdefinitionen leben in [`frontend/content/project/glossar.md`](frontend/content/project/glossar.md) (Quellenkorpus, Quelle, Event, Rechtsgeschäft, Gesamtnennung, Individuelle Person, Menschen-Event, Rolle, Regest, Faksimile, Volltext, Erschließungsform). Dieselbe Markdown-Quelle wird zur Glossar-Seite gerendert und speist UI-Tooltips über das `tip_glossary`-Macro.
 
-Anforderungs-Spezifikation der Anwendung mit allen Leitentscheidungen lebt in [`knowledge/specification.md`](knowledge/specification.md). Kanonische Begriffshierarchie: Quellenkorpus → Quelle → Event → Gesamtnennung. Kontrolliertes Rollenvokabular: `issuer`, `recipient`, `sealer or witness`, `other`, `none`.
+Anforderungs-Spezifikation der Anwendung mit allen Leitentscheidungen lebt in [`knowledge/specification.md`](knowledge/specification.md). Kanonische Begriffshierarchie: Quellenkorpus → Quelle → Event → Gesamtnennung. Kontrolliertes Rollenvokabular (Code-Werte): `issuer`, `recipient`, `witness`, `other`. `witness` deckt die TEI-Formulierung „sealer or witness" ab; ein nicht gesetzter Wert ist der leere String, nicht `none`.
 
-Freigabestand: 1177–1412 (mit Erweiterung bis 1414 für QGW II/1 und II/2), Lücke 1418–1447 als „noch nicht ausgewertet". Single-Source-of-Truth: `frontend/config.RELEASED_PERIOD` (Zeitraum) und `pipeline/config.RELEASED_CORPORA` im Schwester-Repo (Korpora-Set). Hardcoded Zahlen in Templates gelten als Fehler.
+Freigabestand laut SSoT `frontend/config.RELEASED_PERIOD`: Kernzeitraum 1177 bis 1412, ergänzt durch QGW II/2 bis 1457 und Satzbuch CD bis 1460, Lücke 1418 bis 1447 als „noch nicht ausgewertet". Der öffentliche Build zeigt nur den engeren `PUBLIC_CORPORA`-Ausschnitt (QGW II/1 bis 1414 und Stadtbücher Bd. 1); die übrigen freigegebenen Korpora erscheinen nur im internen Build. Single-Source-of-Truth: `frontend/config.RELEASED_PERIOD` (Zeitraum) und `pipeline/config.RELEASED_CORPORA` im Schwester-Repo (Korpora-Set). Hardcoded Zahlen in Templates gelten als Fehler.
 
 Datenstand (Footer) ist das Datum des letzten Pipeline-Repo-Commits, nicht das Build-Datum. Ermittelt in `frontend/build._pipeline_repo_data_date()`.
 
@@ -129,7 +130,7 @@ Aktive Stakeholder-Entscheidungen, deren Bezug man pro Task kennen muss.
 | Datenkorb-Anbindung (jede neue Quellen-Liste) | `DataBasket.buttonHTML({id, label, url, date, coll, regest})` ins Zeilen-Markup; Click-Handling über globale Event-Delegation in `frontend/static/js/basket.js` |
 | Provenienz- oder Glossar-Tooltip einsetzen | `frontend/templates/macros.html` (`tip_glossary` Glossar, `tip_help` UI-Hilfe, `tip_data_trigger`/`tip_data_body` Provenienz-Popover) |
 | Faksimile-Viewer (Zoom, Pan, Rotation) | `frontend/static/js/facsimile.js` plus `doc-facs-panel` in `frontend/templates/document.html`; Lib vendoret unter `frontend/static/vendor/openseadragon/`. UI-Detail in [`knowledge/ui-design.md`](knowledge/ui-design.md) unter „Quellen-Detailseite mit Text-Bild-Synopse" |
-| Pro-Quelle-Daten (Personen/Events/Datum) | `frontend/aggregator.py::aggregate_docs` schreibt `docs/data/docs_aggregate.json` |
+| Pro-Quelle-Daten (Personen/Events/Datum) | `frontend/aggregator/docs.py::aggregate_docs` schreibt `docs/data/docs_aggregate.json` |
 | Erschließungsform | aus `events_in_sources.csv:event_in` aggregiert (abstract / seal / entry / nota); keine Heuristik im Frontend |
 | Annotationsrichtlinien (lokale Kopie) | `frontend/content/project/edition-guidelines.md`; kanonische Quelle im Schwester-Repo (`../db_for_medieval_legal_transactions/edition_guidelines.md`), Kopie bei Bedarf synchronisieren |
 | About / Glossar / Annotationsrichtlinien | `frontend/content/project/` |

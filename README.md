@@ -1,6 +1,6 @@
 # Stadt und Gemeinschaft Wien — Datenbank zu mittelalterlichen Rechtsgeschäften
 
-Datenbank zu mittelalterlichen Wiener Rechtsgeschäften, freigegebener Zeitraum 1177–1412 (mit Erweiterung bis 1414 für QGW II/1 und II/2). Zeitraum 1418–1447 ist noch nicht ausgewertet.
+Datenbank zu mittelalterlichen Wiener Rechtsgeschäften, freigegebener Kernzeitraum 1177 bis 1412, ergänzt durch QGW II/2 bis 1457 und Satzbuch CD bis 1460 (SSoT `frontend/config.RELEASED_PERIOD`). Der öffentliche Build zeigt den engeren `PUBLIC_CORPORA`-Ausschnitt bis 1414. Zeitraum 1418 bis 1447 ist noch nicht ausgewertet.
 
 Dieses Repository ist die **Publikations-Schicht** der Datenbank: Build-Code, Templates, statische Assets, gerenderte Seite. Die Auslieferung läuft über GitHub Pages aus `docs/`.
 
@@ -22,7 +22,7 @@ Durchgängige Regel, die das absichert: eine Person oder Organisation, die in ke
 
 Override für interne Analysen: `PIPELINE_INCLUDE_UNRELEASED=1 python -m pipeline transform` zieht alle Subkorpora in den CSV-Export. Nicht für den publizierten Build verwenden.
 
-Aufnahme eines weiteren Subkorpus: Quelle unter `sources/<Collection>/<Subcollection>_ready/` ablegen, `RELEASED_CORPORA` ergänzen, `python -m pipeline transform`, `python -m frontend build`. Soll der Korpus auch öffentlich erscheinen, zusätzlich in `PUBLIC_CORPORA` aufnehmen. Liegt er außerhalb von 1177–1414, zusätzlich `RELEASED_PERIOD` in [`frontend/config.py`](frontend/config.py) anpassen.
+Aufnahme eines weiteren Subkorpus: Quelle unter `sources/<Collection>/<Subcollection>_ready/` ablegen, `RELEASED_CORPORA` ergänzen, `python -m pipeline transform`, `python -m frontend build`. Soll der Korpus auch öffentlich erscheinen, zusätzlich in `PUBLIC_CORPORA` aufnehmen. Liegt er außerhalb des in `RELEASED_PERIOD` erfassten Zeitraums, zusätzlich `RELEASED_PERIOD` in [`frontend/config.py`](frontend/config.py) anpassen.
 
 ## Stufenmodell
 
@@ -128,14 +128,14 @@ python -m pytest frontend/tests/                            # Frontend-Tests
 
 ## UI-Bereiche
 
-Die Datenbank gliedert sich in vier Top-Level-Bereiche:
+Die Datenbank gliedert sich in vier Top-Level-Bereiche. Der öffentliche Build (`docs/`, GitHub Pages) zeigt davon nur Quellen und Register; Analyse und Exploration erscheinen ausschließlich im internen Build (`docs-intern/`), per Stakeholder-Protokoll 18.05.2026 aus der öffentlichen Sicht ausgeblendet.
 
 - **Quellen** (`/documents.html`) — Listenansicht aller freigegebenen Quellen mit Filter, Suche, sortierbarer Tabelle, Volltext-/Regest-Detail.
 - **Register → Personen** (`/register/persons.html` + `/register/persons/<id>.html`) — Personenregister mit Suche, Filter, Profilseite pro individueller Person mit Beziehungen und Quellen-Vorkommen. Das Organisationsregister (`/register/orgs.html` plus Profilseiten) ist ebenfalls freigegeben. Ein Ortsregister gibt es nicht: Orts-Stammdaten sind nicht konsolidiert, Orte erscheinen nur als Inline-Markup im Volltext ohne Sprungziel.
-- **Analyse** — quantitative Zugänge, zwei Sub-Seiten:
+- **Analyse** (nur interner Build `docs-intern/`) — quantitative Zugänge, zwei Sub-Seiten:
   - `/analysis/auswertungen.html` — vorberechnete Verteilungen (Donut für Funktionsrollen + Beziehungstypen, Bar-Chart für Transaktionstypen, Tabelle mit Mini-Bars für Bezeichnungen). Drill-down ins Quellen-Detail per Klick auf jede Aggregat-Zelle. Filter-Stand in der URL.
   - `/analysis/index.html` — Abfragen-Modus mit vorgefertigten Template-Familien.
-- **Exploration** — visuell-interaktive Erkundung der Datenstruktur:
+- **Exploration** (nur interner Build `docs-intern/`) — visuell-interaktive Erkundung der Datenstruktur:
   - `/exploration/zeitstrom.html` — gestapelter Bar-Chart der Quellendichte pro Jahrzehnt; Stack-Achse umschaltbar (Quellenkorpus / Erschließungsform / Geschlecht / Transaktionstyp); Brush-zu-Drill-down; Stack-Kategorie isolierbar. Filter-Stand in der URL.
   - `/exploration/personennetzwerk.html` — Ego-Layout um eine Person; Klick auf Nachbar verlagert Zentrum; Beziehungstyp-Filter (Verwandtschaft / Beruf-Stand / Vertretung / Freundschaft); Personen-Suche.
   - Sankey-Diagramm zu Transaktionsflüssen — geplant.
