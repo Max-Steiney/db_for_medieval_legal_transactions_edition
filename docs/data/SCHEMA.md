@@ -57,7 +57,7 @@ Stand: aktueller Build. Versionierung pro Datei über `meta.schema_version` bzw.
 {"id":"0a","t":"Papst Alexander III. ...","cp":"QGW/Vienna_1177-1414_ready",
  "cl":"QGW II/1 (1177–1414)","d":"1177 V 10","di":"1177-05-10",
  "p":"Venedig","u":"documents/QGW/Vienna_1177-1414_ready/0a.html",
- "f":0,"q":1,"qc":1,"pcd":1,"pcdm":1,"ec":1,"ecR":1}
+ "f":0,"pcd":1,"pcdm":1,"ec":1,"ecR":1}
 ```
 
 ---
@@ -67,7 +67,7 @@ Stand: aktueller Build. Versionierung pro Datei über `meta.schema_version` bzw.
 **Zweck.** Pro-Quelle-Aggregat: zentrale Datenschicht zwischen Pipeline-CSVs und Frontend-Views. Trägt Datum (ISO-normalisiert mit Range-Behandlung), Personen-Counts mit Geschlechter-Aufschlüsselung, Event-Counts mit Aufschlüsselung nach `rs/@type='event'`-Subtyp.
 
 **Producer.** `frontend/aggregator/docs.py::aggregate_docs`. Join aus `filenames.csv`, `persons.csv`, `persons_in_sources.csv`, `events_in_sources.csv`.
-**Consumer.** `frontend/build.py::_build_index` zum Bauen von `search.json`.
+**Consumer.** `frontend/build/_pages.py::_build_index` zum Bauen von `search.json`.
 
 **Form.** `{meta, docs}` mit `docs` als Array von Records.
 
@@ -90,7 +90,7 @@ Konzeptionelle Beschreibung: [knowledge/data.md#Aggregat-Schicht](../../knowledg
 **Zweck.** `file_key → Metadaten`-Lookup für Drill-down-Overlays in den Exploration-Sub-Seiten. Erlaubt Klick auf eine Aggregat-Zelle → Quellen-Liste auflösen.
 
 **Producer.** `frontend/aggregator/docs.py::build_docs_lookup`.
-**Consumer.** `frontend/static/js/drill-down.js`.
+**Consumer.** `frontend/static/js/analysis-resolver.js`, `frontend/static/js/viz-core.js`, `frontend/static/js/exploration-timeline.js`.
 
 **Form.** Top-Level-Objekt, Schlüssel sind `file_key`s.
 
@@ -121,7 +121,7 @@ Konzeptionelle Beschreibung: [knowledge/data.md#Aggregat-Schicht](../../knowledg
 | `observations.transaction_types` | `{transaction_type: count}` |
 | `observations.org_type_by_sex` | `{org_type: {sex: count}}` |
 | `observations.org_type_totals` | `{org_type: count}` |
-| `observations.org_type_by_decade_by_sex` | `{org_type: {decade: {sex: count}}}` |
+| `observations.org_type_by_decade` | `{org_type: {decade: count}}` |
 | `drill_down` | Pro Kreuztabellen-Zelle eine sortierte `file_key`-Liste |
 | `coverage` | Gesamtsummen, Normalisierungsraten |
 
@@ -218,7 +218,8 @@ Konzeptionelle Beschreibung: [knowledge/data.md#Aggregat-Schicht](../../knowledg
 | `fn` | Vorname |
 | `sn` | Familienname |
 | `sex` | `m`, `f` oder leer |
-| `d` | Sterbedatum oder leer |
+| `am` | Aktivitäts-Beginn (frühestes belegtes Jahr) oder leer |
+| `ax` | Aktivitäts-Ende (spätestes belegtes Jahr) oder leer |
 | `dc` | Document Count (Anzahl Quellen mit Nennung) |
 
 ---
@@ -284,7 +285,7 @@ Konzeptionelle Beschreibung: [knowledge/data.md#Aggregat-Schicht](../../knowledg
 **Zweck.** Vokabular für die Analyse-Seite (Composer-Dashboard): Subjekte, Filter, Werte, Constraints.
 
 **Producer.** `frontend/content/query_vocabulary.json` (Quelle), `frontend/build/_pages.py::_write_query_vocabulary` kopiert.
-**Consumer.** `frontend/static/js/analysis-composer.js`.
+**Consumer.** `frontend/static/js/analysis-resolver.js`.
 
 **Top-Level-Blöcke.**
 

@@ -32,24 +32,24 @@ Vollständiger Katalog aller Kennzahlen, die das Frontend anzeigt, mit Herkunft 
 
 | Name | JSON-Pfad | TEI-Regel | Status |
 |---|---|---|---|
-| orgs.total_individual | `organisations_search.json` Arraylänge | Anzahl `//tei:org` in `indices/orgList.xml` | planned |
+| orgs.total_individual | `orgs_search.json` Arraylänge | Anzahl `//tei:org` in `indices/orgList.xml` | planned |
 | orgs.total_mentions | — | Anzahl `//tei:rs[@type='org']` über alle TEI-Dateien | planned |
-| orgs.dc | `organisations_search.json[*].dc` | wie persons.dc, für Organisationen | planned |
+| orgs.dc | `orgs_search.json[*].dc` | wie persons.dc, für Organisationen | planned |
 
 ### Orte
 
 | Name | JSON-Pfad | TEI-Regel | Status |
 |---|---|---|---|
-| places.total_individual | `places_search.json` Arraylänge | Anzahl `//tei:place` in `indices/placeList.xml` | planned |
-| places.total_mentions | — | Anzahl `//tei:rs[@type='place']` plus ggf. `//tei:placeName` in Metadaten | planned |
-| places.dc | `places_search.json[*].dc` | wie persons.dc, für Orte | planned |
+| places.total_individual | entfernt (Ortsregister entfernt, kein Such-JSON) | Anzahl `//tei:place` in `indices/placeList.xml` | skipped (Ortsregister entfernt) |
+| places.total_mentions | entfernt (Ortsregister entfernt) | Anzahl `//tei:rs[@type='place']` plus ggf. `//tei:placeName` in Metadaten | skipped (Ortsregister entfernt) |
+| places.dc | entfernt (Ortsregister entfernt, kein Such-JSON) | wie persons.dc, für Orte | skipped (Ortsregister entfernt) |
 
 ### Events / Rechtsgeschäfte
 
 | Name | JSON-Pfad | TEI-Regel | Status |
 |---|---|---|---|
 | events.total | abgeleitet aus `roles.json#coverage.total_events` | Anzahl `//tei:rs[@type='event']` über alle TEI-Dateien | planned |
-| events.by_decade | `transactions.json#tx_timeline.*.*` (Summe) | Events gruppiert nach Dekade des enthaltenden Dokuments | planned |
+| events.by_decade | `transactions.json#observations.tx_timeline.*.*` (Summe) | Events gruppiert nach Dekade des enthaltenden Dokuments | planned |
 
 ### Qualität
 
@@ -71,22 +71,22 @@ Vollständiger Katalog aller Kennzahlen, die das Frontend anzeigt, mit Herkunft 
 
 | Name | JSON-Pfad | TEI-Regel | Status |
 |---|---|---|---|
-| relations.by_type | `relations.json#overview.by_type` | Counter über `//tei:roleName[@type][@corresp]` mit Typ-Normalisierung | planned |
-| relations.by_type_decade | `relations.json#overview.by_decade` | wie oben, zusätzlich nach Dekade | planned |
+| relations.by_type | `relations.json#overview.type_by_sex` | Counter über `//tei:roleName[@type][@corresp]` mit Typ-Normalisierung | planned |
+| relations.by_type_decade | `relations.json#overview.type_by_sex_by_decade` | wie oben, zusätzlich nach Dekade | planned |
 
 ### Transaktionsverben
 
 | Name | JSON-Pfad | TEI-Regel | Status |
 |---|---|---|---|
-| transactions.by_verb_decade | `transactions.json#tx_timeline` | Text von `//tei:rs[@type='event']/tei:triggerstring[@n='disp']`, normalisiert zu Catchwords (Normalisierung aus Pipeline übernehmen oder mindestens Rohtext vergleichen) | planned |
+| transactions.by_verb_decade | `transactions.json#observations.tx_timeline` | Text von `//tei:rs[@type='event']/tei:triggerstring[@n='disp']`, normalisiert zu Catchwords (Normalisierung aus Pipeline übernehmen oder mindestens Rohtext vergleichen) | planned |
 | transactions.recipients | `transactions.json#recipients` | Organisationen in `<rs type="fn" role="recipient">` innerhalb eines Events | planned |
 
 ### Orte mit Dokumentbezug
 
 | Name | JSON-Pfad | TEI-Regel | Status |
 |---|---|---|---|
-| places.doc_count | `epic_d.json#places[*].doc_count` | Anzahl distinkter `file_key` pro Ort-ID | planned |
-| places.decades | `epic_d.json#places[*].decades` | Dekaden-Abdeckung pro Ort-ID | planned |
+| places.doc_count | entfernt (Orte-Exploration entfernt, kein JSON) | Anzahl distinkter `file_key` pro Ort-ID | skipped (Feature entfernt) |
+| places.decades | entfernt (Orte-Exploration entfernt, kein JSON) | Dekaden-Abdeckung pro Ort-ID | skipped (Feature entfernt) |
 
 ## Reihenfolge der Implementierung
 

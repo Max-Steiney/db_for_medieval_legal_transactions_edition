@@ -19,9 +19,12 @@ Vom Edition-Repo-Root:
 python -m verification.run              # TEI → JSON-Aggregate
 python -m verification.run --html       # Pipeline-CSV → gerendertes HTML
 python -m verification.run --tei-html   # TEI direkt → gerendertes HTML
+python -m verification.run --research-questions  # Stufe 4: Forschungsfragen-Verifikation
 python -m verification.run --all        # alle drei Pfade
 python -m verification.run --inventory  # TEI-Element-Inventar pro Subkorpus
 ```
+
+Neben den drei Pfaden existiert Stufe 4 (Forschungsfragen-Verifikation, `--research-questions`).
 
 Verglichen wird gegen die **interne Fassung** (`docs-intern/`). Das Test-Set liest TEI im released-Scope (`is_released_corpus`), und nur der interne Build rendert genau diesen Umfang; der öffentliche Build (`docs/`) ist seit der Korpus-Trennung bewusst schmaler und würde Scope-Differenzen als Mismatch melden, die keine Drift sind. Vor dem Lauf muss die interne Fassung gebaut sein:
 
@@ -33,7 +36,7 @@ Mit `VERIFICATION_DOCS_DIR=<verzeichnis>` lässt sich ein anderer Build erzwinge
 
 Exit-Code `0` solange nur `match`, `known_gap` oder `info` auftreten. Exit-Code `1` erst bei mindestens einem echten `mismatch`. Der Inventar-Modus liefert keine Vergleichs-Resultate und gibt immer Exit-Code 0.
 
-Reports werden in `verification/reports/YYYY-MM-DD.md` (menschenlesbar) und `verification/reports/YYYY-MM-DD.json` (maschinenlesbar) geschrieben. Stufen-Suffixe: `-html` für CSV→HTML, `-tei-html` für TEI→HTML, `-all` für alle drei, `inventory-` für das Inventar. Die Reports sind Teil der Versionierung — Veränderungen im Verlauf sind per `git log verification/reports/` nachvollziehbar.
+Reports werden in `verification/reports/YYYY-MM-DD.md` (menschenlesbar) und `verification/reports/YYYY-MM-DD.json` (maschinenlesbar) geschrieben. Stufen-Suffixe: `-html` für CSV→HTML, `-tei-html` für TEI→HTML, `-all` für alle drei, `inventory-` für das Inventar, `research_questions-` für die Forschungsfragen-Verifikation. Die Reports sind Teil der Versionierung — Veränderungen im Verlauf sind per `git log verification/reports/` nachvollziehbar.
 
 ### Inventar-Modus
 
@@ -51,8 +54,8 @@ VERIFY_SOURCES_DIR=/pfad/zu/alternativem/sources python -m verification.run --in
 
 Das Test-Set deckt drei Pfade ab, die zusammen die End-to-End-Verifikation ergeben:
 
-1. **TEI → JSON** (`run` ohne Argument): unabhängige TEI-Aggregation vs. Pipeline-Output unter `docs/data/*.json`. Findet Pipeline-Fehler in der Aggregations-Logik.
-2. **CSV → HTML** (`run --html`): Pipeline-CSVs (Aggregator-Input) vs. gerenderte Profil- und Quellen-HTMLs unter `docs/`. Findet Renderer-Drift, fehlende Felder im Template, Orphan-Annotationen.
+1. **TEI → JSON** (`run` ohne Argument): unabhängige TEI-Aggregation vs. Pipeline-Output unter `docs-intern/data/*.json`. Findet Pipeline-Fehler in der Aggregations-Logik.
+2. **CSV → HTML** (`run --html`): Pipeline-CSVs (Aggregator-Input) vs. gerenderte Profil- und Quellen-HTMLs unter `docs-intern/`. Findet Renderer-Drift, fehlende Felder im Template, Orphan-Annotationen.
 3. **TEI → HTML** (`run --tei-html`): TEI-Quelldateien direkt vs. gerenderte Quellen-HTMLs. Ueberspringt die CSV-Pipeline und prueft End-to-End, ob jede `<rs ref="...">`-Annotation als `data-ref="..."` im HTML erscheint und umgekehrt. Findet sowohl Pipeline-Drops (TEI-Annotation, die der Aggregator entfernt hat) als auch Renderer-Halluzinationen (HTML-Refs ohne TEI-Quelle).
 
 Die drei Stufen laufen unabhängig; einzelne Felder können in einer Stufe match sein und in der anderen mismatch.
@@ -80,6 +83,9 @@ verification/
   inventory.md        Aggregat-Katalog: was getestet wird, woher die Erwartung stammt
   contract.py         Feld-Vertraege fuer die HTML-Coverage
   config.py           Pfade (TEI-Quellen, Register, JSON-Output), Konstanten
+  inventory.py        Stufe Inventar: TEI-Element-Inventar pro Subkorpus
+  research_questions.py  Stufe 4: Forschungsfragen-Verifikation
+  provenance.py       Provenienz-Konsistenz-Checks innerhalb der JSON-Ausgaben
   parse_tei.py        TEI-Parser (lxml): Nennungen, Rollen, Events, Beziehungen
   parse_indices.py    Register-Loader (personList, orgList, placeList)
   parse_html.py       HTML-Reader (lxml.html): Profile, Quellen, data-ref

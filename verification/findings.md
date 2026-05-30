@@ -144,7 +144,7 @@ Konvention festlegen.
 
 ### TEI-Konvention: `<rs type="event" ref="NULL">`
 
-119 Quellen verwenden `ref="NULL"` für Events ohne stabilen Identifier
+146 Quellen verwenden `ref="NULL"` für Events ohne stabilen Identifier
 (z. B. unbenannte Anschluss-Geschäfte). Der Frontend-Renderer filtert
 diese Fälle korrekt. Die Verifikation zählt sie nicht als Drift —
 `compare_tei_html.check_event_refs` filtert `NULL` explizit raus.
@@ -232,7 +232,7 @@ UI-Achse — heute nicht modelliert.
 
 ### Filenames-Filter: `status="in progress"`
 
-64 TEI-Quellen (14 QGW, 50 Stadtbuecher) haben in
+519 TEI-Quellen (469 QGW, 50 Stadtbuecher) haben in
 `pipeline/output/filenames.csv` den Status `in progress` und werden vom
 Build nicht zu HTML gerendert. `compare_tei_html.check_pair_coverage`
 meldet das als `known_gap`. Wenn der Status auf `done` wechselt, wird
