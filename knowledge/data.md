@@ -17,7 +17,7 @@ topics: ["[[TEI]]", "[[Prosopography]]", "[[Data Modelling]]"]
 knowledge-sources:
   standards:
     TEI P5: https://tei-c.org/release/doc/tei-p5-doc/en/html/
-related: [architecture, specification, decisions, glossar]
+related: [architecture, specification, glossar]
 ---
 
 # Datenbasis

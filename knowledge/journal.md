@@ -13,7 +13,7 @@ generated-with: Claude Code
 method:
   name: Promptotyping
   url: https://lisa.gerda-henkel-stiftung.de/digitale_geschichte_pollin
-related: [decisions, specification, architecture]
+related: [specification, architecture]
 ---
 
 # Journal

@@ -37,11 +37,11 @@ Ein Feld oder Begriff trägt im gesamten UI dieselbe Bezeichnung. Liegt dieselbe
 
 Begründung: Wechselnde Bezeichnungen für dieselbe Sache zwingen Forschende, jedes Mal neu zu prüfen, ob dasselbe gemeint ist. Das bricht die Lese-Gravitation und führt zu Fehl-Interpretationen.
 
-Konkrete Beispiele aus der Pflege: „Datum der Quelle" (bei einer Quelle) bzw. „Datum der Quellen" (bei mehreren) für die Min-/Max-Spanne der ISO-Jahre einer Entität, identisch in Org-Profil, Personen-Profil, Personen-Datenkorb-Tabelle und Sidebar-Filter beider Register. „Empfänger*in", „Aussteller*in", „Zeug*in", „Sonstige" als kontrolliertes Rollenvokabular in Profil-Header, Annotations-Tabelle, Drill-Down-Pills und Filter-Chips.
+Konkrete Beispiele aus der Pflege: „Datum der Quelle" (bei einer Quelle) bzw. „Datum der Quellen" (bei mehreren) für die Min-/Max-Spanne der ISO-Jahre einer Entität, identisch in Org-Profil, Personen-Profil, Personen-Datenkorb-Tabelle und Sidebar-Filter beider Register. „Empfänger*in", „Aussteller*in", „Zeug*in / Siegler*in", „Sonstige" als kontrolliertes Rollenvokabular in Profil-Header, Annotations-Tabelle, Drill-Down-Pills und Filter-Chips.
 
 ## Section-Header in Tabellen mit Quellenzitat
 
-Eine Tabellen-Gruppen-Überschrift, die ein Quellenzitat trägt (z. B. die Dispositiv-Vorschau pro Rechtsgeschäft in der Annotations-Tabelle), folgt einer zweischichtigen Anordnung. Oben rechts ein schmaler Header-Streifen mit Meta-Information (Counter, gegebenenfalls ein Statusmarker). Darunter eine eigene zentrierte Zeile mit dem Quellenzitat, in deutschen Anführungszeichen „..." über `<q lang="de">`, kursiv, gedämpft grau, klar abgesetzt von der kräftigen Inline-Trigger-Farbe im Volltext.
+Eine Tabellen-Gruppen-Überschrift, die ein Quellenzitat trägt (z. B. die Dispositiv-Vorschau pro Rechtsgeschäft in der Annotations-Tabelle), folgt einer zweischichtigen Anordnung. Oben rechts ein schmaler Header-Streifen mit Meta-Information (Counter, gegebenenfalls ein Statusmarker). Darunter eine eigene zentrierte Zeile mit dem Quellenzitat, in deutschen Anführungszeichen „..." über `<q class="annotations-group-source">`, kursiv, gedämpft grau, klar abgesetzt von der kräftigen Inline-Trigger-Farbe im Volltext.
 
 Begründung: das Zitat ist Quellentext und keine UI-Aussage. Wenn es mit dem Counter in einer Zeile mitläuft, vermischt sich beides optisch. Die Zentrierung und Anführungszeichen markieren es eindeutig als Zitat; die gedämpfte Farbe verhindert die Verwechslung mit den kräftigeren Inline-Annotationen im Volltext darüber.
 
@@ -144,7 +144,7 @@ Tabellen erscheinen projektweit nach denselben Konventionen, getragen durch gete
 
 **Type-Marker** als kleiner farbiger Punkt vor der Nennform, in der Annotations-Token-Farbe der jeweiligen Kategorie (Person blau, Organisation lila, Ort grün). Trägt die Typ-Information ohne eigene Spalte zu kosten. Hover-Tooltip nennt den Typ aus.
 
-**Funktionsrollen-Pille** als gefüllter Pillen-Chip in Akzentblau für kontrolliertes Vokabular (Aussteller*in, Empfänger*in, Zeug*in, Sonstige). Die Füllung signalisiert „klassifizierter Wert", visuell hervorgehoben gegenüber dem darum stehenden Klartext.
+**Funktionsrollen-Pille** als gefüllter Pillen-Chip in Akzentblau für kontrolliertes Vokabular (Aussteller*in, Empfänger*in, Zeug*in / Siegler*in, Sonstige). Die Füllung signalisiert „klassifizierter Wert", visuell hervorgehoben gegenüber dem darum stehenden Klartext.
 
 **Attribut-Tag** als umrandeter Pillen-Chip ohne Füllung, ein Tag pro Einzelwert für quellennahe Beischriften aus `roleName`-Annotationen (`frawen`, `witib`, `statrichter`, `chaplan`). Type-Information liegt im Hover-Tooltip. Die Umrandung statt Füllung signalisiert „Quellenwortlaut, keine Klassifikation".
 

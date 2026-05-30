@@ -155,7 +155,7 @@ Wer Nennungen für Häufigkeitsstatistiken oder Belegdichten zählt, will expliz
        [ancestor::tei:rs[@type='event']])]
 ```
 
-`frontend/build.py::_scan_released_tei` wertet diesen XPath direkt gegen die freigegebenen TEI-Quellen aus. CSV-Outputs der Pipeline werden für KPIs nicht mehr verwendet, sodass keine zwischenzeitliche Datentransformation die Definition ändern kann.
+`frontend/build/_kpi.py::_scan_released_tei` wertet diesen XPath direkt gegen die freigegebenen TEI-Quellen aus. CSV-Outputs der Pipeline werden für KPIs nicht mehr verwendet, sodass keine zwischenzeitliche Datentransformation die Definition ändern kann.
 
 **Nicht gemeint ist**, dass `@corresp`-Verknüpfungen oder mentioned Events aus dem Datenmodell entfernt werden. Sie bleiben in den TEI-Quellen und in den CSV-Outputs der Pipeline für Beziehungsanalysen und Querverweise verfügbar. Die Filterung greift ausschließlich bei der Frontend-Anzeige.
 
@@ -167,7 +167,7 @@ Wer Nennungen für Häufigkeitsstatistiken oder Belegdichten zählt, will expliz
 
 Die Asymmetrie ist semantisch konsistent: Eine Person, die nur als Querverweis in einer einzigen Quelle erscheint, ist trotzdem im Register vermerkt (und damit zählbar als Individuum), aber sie hat keine *eigene* Quellenpräsenz, die in Nennungs-Statistiken aufscheinen sollte.
 
-**Konsequenz.** `frontend/build.py::_scan_released_tei` führt zwei XPath-Pässe pro Datei: `_XP_PERSONS_ALL` für Distinct-Zählung und Sex-Splitt; `_XP_PERSONS_EXCL_MENTIONED` für die Nennungszählung. Die Asymmetrie ist im Glossar-Eintrag [[glossar#Individuelle Person]] und in den Provenienz-Tooltips auf der Startseite explizit benannt.
+**Konsequenz.** `frontend/build/_kpi.py::_scan_released_tei` führt zwei XPath-Pässe pro Datei: `_XP_PERSONS_ALL` für Distinct-Zählung und Sex-Splitt; `_XP_PERSONS_EXCL_MENTIONED` für die Nennungszählung. Die Asymmetrie ist im Glossar-Eintrag [[glossar#Individuelle Person]] und in den Provenienz-Tooltips auf der Startseite explizit benannt.
 
 ## KPIs werden direkt aus TEI via XPath gerechnet
 
@@ -175,7 +175,7 @@ Die Asymmetrie ist semantisch konsistent: Eine Person, die nur als Querverweis i
 
 **Begründung.** Eine Zahl ist nur dann wissenschaftlich verwendbar, wenn ihre Provenienz transparent, ihre Berechnungsoperation dokumentiert und ihr Ergebnis selbstständig reproduzierbar ist. Eine zweistufige Aggregation (TEI → Pipeline-CSV → Frontend) erzeugt eine Zwischenebene, an der Definitionen subtil abweichen können — die Pipeline-Spalte `kind_of_linking` etwa mappt auf TEI-Annotationen, ist aber nicht 1:1 identisch mit der semantischen Frage „erscheint Person X im Quellentext". Direkter XPath auf TEI ist die kürzeste, prüfbarste Operation und in den Tooltips wörtlich abgedruckt — eine Verifikation reicht aus, um eine Zahl zu reproduzieren.
 
-**Konsequenz.** `frontend/build.py` definiert die XPath-Konstanten `_XP_TOP_EVENTS`, `_XP_PERSONS_ALL`, `_XP_PERSONS_EXCL_MENTIONED` und scannt einmal pro Build alle freigegebenen TEI-Quellen mit lxml. Die Funktion `_scan_released_tei` ist die alleinige Quelle der Wahrheit für `_compute_release_kpis`, `_compute_corpus_breakdown` und `_released_person_keys`. Der Scan ist kein Bottleneck.
+**Konsequenz.** `frontend/build/_kpi.py` definiert die XPath-Konstanten `_XP_TOP_EVENTS`, `_XP_PERSONS_ALL`, `_XP_PERSONS_EXCL_MENTIONED` und scannt einmal pro Build alle freigegebenen TEI-Quellen mit lxml. Die Funktion `_scan_released_tei` ist die alleinige Quelle der Wahrheit für `_compute_release_kpis`, `_compute_corpus_breakdown` und `_released_person_keys`. Der Scan ist kein Bottleneck.
 
 **Nicht gemeint ist**, dass die Pipeline-CSVs überflüssig werden. Sie bleiben für die Detailansichten (Personenregister, Suche, Exploration), für Verifikations-Tests (`verification/`) und für externe SQL-Importe relevant. Nur für die Hero-KPIs der Startseite gilt: TEI direkt, kein Umweg.
 
@@ -185,7 +185,7 @@ Die Asymmetrie ist semantisch konsistent: Eine Person, die nur als Querverweis i
 
 **Begründung.** Im TEI-Kodierungsmodell der Datenbank wird ein Rechtsgeschäft als oberstes `<rs type="event">` markiert. Innerhalb seines Prosatexts können weitere Geschäfte zitiert werden, etwa eine ältere Urkunde, auf die sich das aktuelle bezieht. Diese Zitate werden ebenfalls mit `<rs type="event">` ausgezeichnet, sind aber semantisch keine eigenständigen Geschäfte des aktuellen Dokuments. Wer alle rs-Events ungefiltert zählt, summiert Geschäfte und Zitate in einen Topf und überschätzt den Umfang systematisch.
 
-**Konsequenz.** Der zentrale XPath in `pipeline/transformers/events.py` lautet:
+**Konsequenz.** Der zentrale XPath in `pipeline/utils/event_helpers.py::iter_top_level_events` lautet:
 
 ```
 //tei:body//tei:rs[@type='event'][not(ancestor::tei:rs[@type='event'])]
@@ -311,7 +311,7 @@ Der Beruf- und der Uhlirz-Filter ziehen ihre Werte aus zwei Annotationsorten: `o
 
 **Begründung.** Vier konkrete Fragen schlagen zehn abstrakte Slot-Kombinationen. Forscherinnen kommen mit Fragen, nicht mit Achsen; die Galerie braucht eine kritische Masse konkreter Einträge, damit Nutzerinnen das Muster erkennen und auf eigene Fragen übertragen. Jede Frage etabliert einen wiederverwendbaren Aggregator-Baustein (Uhlirz-Kategorie-Join, Heirats-Begriffs-Match, Org-Hierarchie-Traversal, Cross-Role-Query), der für viele weitere Fragen verfügbar ist; der Aufwand pro Frage zahlt vierfach ein. Frühere Architektur-Entscheidungen (Org-Profilseiten, Galerie-Composer, Drill-Down-Indizes) tragen die Antwort bereits, sodass massive neue Views Overengineering wären.
 
-**Konsequenz.** Neue Aggregator-Funktionen in den bestehenden Modulen `org_profiles` und `aggregator/analysis` (für die Galerie). Neue normierte Listen (Uhlirz-Kategorien aus `roleName_norm_matching.csv`, Heirats-Begriffe als Konstante im Pipeline-Code) als kleine Code-Bausteine. Verifikation als vierte Säule in `verification/research_questions.py` deckt pro abdeckbarer Frage eine erwartete Zahlen-Antwort aus den TEI- oder CSV-Daten ab und vergleicht sie gegen das Frontend-Resultat. Fragen, die heute strukturell nicht abdeckbar sind (kin als Bedingung, Ortsstammdaten, paar-zentrierte Ergebnisform), werden in [[user-stories#2 Konkrete Forschungsfragen aus der editorischen Praxis]] als „strukturell offen" geführt und bleiben in der Verifikation außen vor, bis die Datengrundlage erweitert ist. Die strukturellen Lücken sind oben unter „Datenpfad-Vorbehalte" gebündelt.
+**Konsequenz.** Neue Aggregator-Funktionen in den bestehenden Modulen `org_profiles` und `aggregator/role_constellation.py`. Neue normierte Listen (Uhlirz-Kategorien aus `roleName_norm_matching.csv`, Heirats-Begriffe als Konstante im Pipeline-Code) als kleine Code-Bausteine. Verifikation als vierte Säule in `verification/research_questions.py` deckt pro abdeckbarer Frage eine erwartete Zahlen-Antwort aus den TEI- oder CSV-Daten ab und vergleicht sie gegen das Frontend-Resultat. Fragen, die heute strukturell nicht abdeckbar sind (kin als Bedingung, Ortsstammdaten, paar-zentrierte Ergebnisform), werden in [[user-stories#2 Konkrete Forschungsfragen aus der editorischen Praxis]] als „strukturell offen" geführt und bleiben in der Verifikation außen vor, bis die Datengrundlage erweitert ist. Die strukturellen Lücken sind oben unter „Datenpfad-Vorbehalte" gebündelt.
 
 **Nicht gemeint ist**, dass jede denkbare Frage einen Galerie-Eintrag bekommt. Die Galerie wächst mit der editorischen Praxis und mit den fachlich tragenden Forschungsfragen, nicht beliebig.
 

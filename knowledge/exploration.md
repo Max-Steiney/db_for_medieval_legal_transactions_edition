@@ -53,11 +53,11 @@ Ego-Layout um eine Person: Mittelpunkt ist eine ausgewählte Person, ihre direkt
 
 Bewusst gegen Force-Layout: die meisten Co-Occurrence-Kanten haben Gewicht 1 — ein Strukturartefakt der Urkundenform, kein analytisch belastbares Beziehungsmaß. Ein Force-Layout über das Gesamt-Beziehungsnetz würde als unleserliches „Knäuel" erscheinen, in dem nichts erkennbar ist. Das Ego-Layout schneidet stattdessen pro Schritt einen lesbaren lokalen Ausschnitt — analog zum klassischen Genealogie-Stammbaum, nur mit Klick-Hopping als Navigation. Globale Topologie lässt sich daraus durch sequenzielles Erkunden rekonstruieren.
 
-Datenquelle: `relations.json::persons`, jede Person trägt eine `rels`-Liste mit `{type, label, label_norm, source_file_key, related_key}`. Beruflich-institutionelle Beziehungen (`occ`) zeigen Person → Organisation; sie werden als Knoten anderer Farbe (Sand) dargestellt. Innerhalb des Netzwerks tragen sie das Klick-Hopping nicht — Verwandtschaft, Vertretung und Freundschaft sind person-zu-person und navigierbar. Die Organisations-Profile existieren inzwischen separat im Register und sind aus der Detail-Tabelle unter dem Graphen verlinkt.
+Datenquelle: `relations.json::persons`, jede Person trägt eine `rels`-Liste mit kompakten Schlüsseln `{t, l, ln, f, r}` (Typ, Bezeichnung, normalisierte Bezeichnung, Quell-File-Key, Ziel-Key). Das Personennetzwerk ist tatsächlich ein Akteur-Netzwerk über Personen UND Organisationen: `exploration-network.js` behandelt beide Akteur-Arten als gleichrangig (`ACTORS` indiziert Personen wie Organisationen aus `RELATIONS.orgs`), inverse Org→Person-Kanten werden aufgebaut. Beide Knoten-Arten sind anklickbar und verlagern per `recenter()` den Mittelpunkt; Organisationen werden in Sandfarbe (`#a08470`) gerendert und über inverse Kanten erreicht.
 
-Detail-Tabelle unter dem Graphen listet alle Verbindungen der Mittelpunkt-Person mit Beziehungstyp, Bezeichnung, Beleg-Anzahl und „+"-Knopf für den [[ui-design#Datenkorb]] (Sammlung verlinkter Personen oder Organisationen).
+Detail-Tabelle unter dem Graphen listet alle Verbindungen des Mittelpunkt-Akteurs in genau vier Spalten: Akteur, Beziehung, Bezeichnung, Quellen. Die Quellen erscheinen als verlinkte Chips in die Quellen-Detailseiten. Ein Datenkorb-Knopf existiert auf der Netzwerk-Seite nicht; der [[ui-design#Datenkorb]] lebt nur in der Zeitstrom-Drill-Liste.
 
-URL-State: `?p=pe__id&types=kin,occ` macht jeden Personen-Mittelpunkt zitierbar.
+URL-State: `?p=pe__id&types=kin,occ` macht jeden Akteur-Mittelpunkt zitierbar; `applyUrlState` akzeptiert jede Akteur-ID in `ACTORS`, also sowohl `pe__...` als auch `org__...`, der Mittelpunkt kann eine Person oder eine Organisation sein.
 
 ### Sankey-Diagramm der Transaktionen (geplant)
 

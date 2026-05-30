@@ -14,7 +14,7 @@ method:
   name: Promptotyping
   url: https://lisa.gerda-henkel-stiftung.de/digitale_geschichte_pollin
 topics: ["[[Static Site Architecture]]", "[[TEI]]"]
-related: [data, specification, decisions, ui-design, journal]
+related: [data, specification, ui-design, journal]
 ---
 
 # Architektur
@@ -126,11 +126,11 @@ Begründung dieser Trennung ist dieselbe wie die zwischen Pipeline und Aggregato
 
 ## Geteilte Tabellen-Schicht
 
-Die Tabellen-Komponenten im Frontend (Annotationstabelle auf Quellen-Detailseiten, Personen- und Organisations-Register-Liste, Profil-Tabellen, Datenkorb-Tabelle, Konstellations-Trefferliste, Quellen-Liste) folgen denselben Konventionen für Cell-Renderer, sind aber heute über mehrere page-spezifische JS-Module verteilt. Ein geteiltes Modul `table-core` bündelt die wiederkehrenden Bausteine analog zu `viz-core`.
+Die Tabellen-Komponenten im Frontend (Annotationstabelle auf Quellen-Detailseiten, Personen- und Organisations-Register-Liste, Profil-Tabellen, Datenkorb-Tabelle, Konstellations-Trefferliste, Quellen-Liste) folgen denselben Konventionen für Cell-Renderer, sind aber heute über mehrere page-spezifische JS-Module verteilt. Geteilt vorhanden ist bislang `frontend/static/js/table-infra.js` (Objekt `TableInfra`), das mit `initRangeSlider`, `setupSearch`, `setupSortHeaders`, `createTableRenderer` und `addFilterChip` die Tabellen-Mechanik bündelt. Geplant ist, dieses Modul analog zu `viz-core` um eine geteilte Renderer-Ebene zu erweitern, die die wiederkehrenden Bausteine konsolidiert.
 
-Drei Klassen von Bausteinen. Erstens Cell-Renderer für die häufigen Datenpunkte: `personLink` und `orgLink` für die Profil-Verlinkung, `typeMarker` als farbiger Punkt vor der Nennform, `rolePill` als gefüllte Akzentblau-Pille für kontrolliertes Vokabular, `attrTags` als umrandete Tags pro Wert für quellennahe Beischriften, `sexLabel` mit Text-Modus für Tabellen-Zellen und Glyph-Modus für Visualisierungs-Achsen, `dateDisplay` als lesbares Format mit ISO als Sortier-Wert. Zweitens die Sortier-Logik mit dem `groupAware`-Flag, das die jetzt page-lokale Annotationstabellen-Sortierung in eine geteilte Funktion zieht. Drittens die CSS-Klassen für Pillen, Tags und Marker, die aus den page-spezifischen Stylesheets nach `components.css` ziehen.
+Drei Klassen von Bausteinen wären dann zusammengeführt. Erstens Cell-Renderer für die häufigen Datenpunkte: `personLink` und `orgLink` für die Profil-Verlinkung, `typeMarker` als farbiger Punkt vor der Nennform, `rolePill` als gefüllte Akzentblau-Pille für kontrolliertes Vokabular, `attrTags` als umrandete Tags pro Wert für quellennahe Beischriften, `sexLabel` mit Text-Modus für Tabellen-Zellen und Glyph-Modus für Visualisierungs-Achsen, `dateDisplay` als lesbares Format mit ISO als Sortier-Wert. Von diesen existieren heute nur `rolePill` und `attrTags`, und zwar als page-lokale Funktionen in `document.js`; die übrigen sind Zielentwurf. Zweitens die Sortier-Logik mit einem `groupAware`-Flag, das die jetzt page-lokale Annotationstabellen-Sortierung in eine geteilte Funktion ziehen würde. Drittens die CSS-Klassen für Pillen, Tags und Marker, die aus den page-spezifischen Stylesheets nach `components.css` ziehen würden.
 
-Die Konsolidierung adressiert einen konkreten Konsistenz-Befund. Die Geschlechts-Beschriftung lebt aktuell an sechs Stellen mit drei abweichenden Schreibweisen für den Unbekannt-Fall (Halbgeviertstrich, „ohne Angabe", „Geschlecht unbestimmt"). Eine geteilte `sexLabel`-Funktion mit konsequentem Fallback schließt die Lücke und verankert die UI-Konsistenz-Forderung aus [[ui-design#Begriffs- und Label-Konsistenz]] strukturell.
+Die geplante Konsolidierung adressiert einen konkreten Konsistenz-Befund. Die Geschlechts-Beschriftung lebt aktuell an sechs Stellen mit drei abweichenden Schreibweisen für den Unbekannt-Fall (Halbgeviertstrich, „ohne Angabe", „Geschlecht unbestimmt"). Eine geteilte `sexLabel`-Funktion mit konsequentem Fallback würde die Lücke schließen und die UI-Konsistenz-Forderung aus [[ui-design#Begriffs- und Label-Konsistenz]] strukturell verankern.
 
 ## URL-State als Forschungsstand
 

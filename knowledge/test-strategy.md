@@ -71,7 +71,7 @@ Nicht alles ist automatisierbar oder lohnt sich.
 
 ## Datenfeld-Coverage als nächster Ausbauschritt
 
-Pro relevantem Datenfeld eine Spec-Zeile: „Feld `display` aus `persons.csv` muss in Personen-Profil (header), Quellen-Tabelle (Spalte Name) und Drill-Down-Tooltip auftauchen, mit identischem Wert." Tests prüfen das gegen den Build. Sicherer Schutz gegen UI-Inkonsistenz, würde die Memory-Regel „UI-Konsistenz" automatisiert sichern statt nur als Soll-Bestimmung.
+Pro relevantem Datenfeld eine Spec-Zeile: „Der Anzeigename `display` (keine eigene `persons.csv`-Spalte, sondern in `register.py` aus den Namensteilen `forename`/`surname`/`addName` zusammengesetzt) muss in Personen-Profil (header), Quellen-Tabelle (Spalte Name) und Drill-Down-Tooltip auftauchen, mit identischem Wert." Tests prüfen das gegen den Build. Sicherer Schutz gegen UI-Inkonsistenz, würde die Memory-Regel „UI-Konsistenz" automatisiert sichern statt nur als Soll-Bestimmung.
 
 Skizzen-Datei wäre `frontend/tests/test_data_coverage.py` mit einer Liste von Spec-Tupeln `(csv_feld, [(html_pfad, selector, transformation)])`.
 
@@ -79,9 +79,9 @@ Skizzen-Datei wäre `frontend/tests/test_data_coverage.py` mit einer Liste von S
 
 | Säule | Tests | Status |
 |---|---|---|
-| Pytest | 380 | grün |
-| Verifikations-Test-Set Stufe 1 (TEI zu JSON) | 18 checks | grün |
-| Verifikations-Test-Set Stufe 2 (CSV zu HTML) | 18 checks | grün |
+| Pytest | 516 | grün |
+| Verifikations-Test-Set Stufe 1 (TEI zu JSON) | 27 checks | grün |
+| Verifikations-Test-Set Stufe 2 (CSV zu HTML) | 25 checks | grün |
 | Verifikations-Test-Set Stufe 3 (TEI zu HTML) | aktiv | wechselnd |
 | JS-Tests | 3 Files | grün |
 | Build-then-grep für IDs | offen | Task auf der Sofort-Liste |

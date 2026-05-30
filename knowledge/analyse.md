@@ -27,9 +27,9 @@ Der Analysebereich versammelt die quantitativen Zugänge zur Datenbasis. Er steh
 
 Jede Aggregat-Zelle ist klickbar und öffnet das [[ui-design#Drill-down-Overlay]] mit den beitragenden Quellen — Donut-Arc und Legend-Item für Funktionsrollen und Beziehungstypen, Bar für Transaktionstypen, Tabellenzeile für Bezeichnungen. Im Footer steht der Cross-Page-Sprung in die Quellen-Liste mit übernommenem Zeitraum-und-Geschlecht-Filter ([[ui-design#Cross-Page-Sprung in die Quellen-Liste]]). Der Filter-Stand wird in die URL serialisiert, damit jeder Forschungsstand zitierbar ist ([[ui-design#URL-State-Sync]]).
 
-**Abfragen** (`/analysis/index.html`) ist eine strukturierte Konstellations-Abfrage: Forscherinnen legen beliebig viele nummerierte Personen-Bedingungen an, je mit Rolle und optionalen Filtern (Geschlecht, Beruf/Tätigkeit/Amt), und sehen alle Rechtsgeschäfte, in denen diese Konstellation gemeinsam erfüllt ist. Globale Filter: Zeitraum, Korpus, Verknüpfungs-Modus (Rechtsgeschäft eng vs. Quelle weit). Live-Update, kein Submit. Architektur und Begründung in [[specification#Abfragen-Sub-Seite als Konstellations-Abfrage]].
+**Abfragen** (`/analysis/index.html`) ist eine strukturierte Konstellations-Abfrage: Forscherinnen legen beliebig viele nummerierte Personen-Bedingungen an, je mit Rolle und optionalen Filtern (Geschlecht, Beruf/Tätigkeit/Amt), und sehen alle Rechtsgeschäfte, in denen diese Konstellation gemeinsam erfüllt ist. Globaler Filter: Korpus (Mehrfachauswahl) plus Reset. Der Verknüpfungs-Modus (Rechtsgeschäft eng vs. Quelle weit) ist im UI ausgeblendet. Live-Update, kein Submit. Architektur und Begründung in [[specification#Abfragen-Sub-Seite als Konstellations-Abfrage]].
 
-Beide Sub-Seiten teilen sich dieselben Aggregate (`roles.json`, `relations.json`, `transactions.json`) und dieselben Filter-Bausteine in der Sidebar. Eine Filteränderung auf der einen Seite überträgt sich nicht automatisch auf die andere; das ist eine offene Designfrage.
+Die beiden Sub-Seiten lesen unterschiedliche Aggregate und tragen unterschiedliche Filter. Auswertungen stützt sich auf `roles.json`, `relations.json` und `transactions.json` und filtert nach Zeitraum und Geschlecht; Abfragen liest allein `role_constellation.json` (plus `docs_lookup.json` für die Metadaten) und filtert nur nach Korpus. Eine Filteränderung auf der einen Seite überträgt sich nicht automatisch auf die andere; das ist eine offene Designfrage.
 
 ## Zielsetzung
 
@@ -65,7 +65,7 @@ Das `tp`-Feld des Organisationsregisters führt eine geschlossene Typologie. Die
 
 ### Datenqualität und Freigabestand
 
-Der Validierungsreport (`quality.json`) und die `coverage`-Blöcke der Aggregat-JSONs machen die Datenqualität sichtbar. Charakteristisch ist eine durchgängig niedrige Normalisierungsrate. Diese Verhältnisse sind keine nebensächliche Meta-Information: eine Zählung *Transaktionen vom Typ Kauf* bedeutet nicht, dass alle anderen Events keine Käufe sind, sondern dass nur ein Bruchteil überhaupt kategorisiert ist.
+Die `coverage`-Blöcke der Aggregat-JSONs (etwa `role_constellation.json.coverage`) machen die Datenqualität sichtbar. Charakteristisch ist eine durchgängig niedrige Normalisierungsrate. Diese Verhältnisse sind keine nebensächliche Meta-Information: eine Zählung *Transaktionen vom Typ Kauf* bedeutet nicht, dass alle anderen Events keine Käufe sind, sondern dass nur ein Bruchteil überhaupt kategorisiert ist.
 
 Single Source of Truth für die freigegebenen Korpora ist `RELEASED_CORPORA` im Schwester-Repo (`pipeline/config.py`); der Zeitraum lebt als `RELEASED_PERIOD` im Frontend-Repo (`frontend/config.py`). Hardcoded Werte in Templates sind ein Fehler.
 
@@ -81,11 +81,11 @@ Die Abfragen-Sub-Seite ist eine strukturierte Datenbank-Abfrage über Rollen-Kon
 
 1. **Personen-Bedingungen.** Beliebig viele nummerierte Tabellenzeilen, je mit einer Rolle (Aussteller, Empfänger, Zeuge oder Siegler, sonstige Beteiligung) und optionalen Filtern für Geschlecht und Beruf/Tätigkeit/Amt. Die Zeile ist visuell selbsterklärend; sie braucht kein Etikett und wird im UI nur über ihre Nummer adressiert („Person 1", „Person 2"). Der Begriff „Personenblock" aus der frühen Iteration ist Entwickler-Sprache und wird im UI nicht verwendet.
 2. **Verknüpfungs-Modus.** „Im selben Rechtsgeschäft" (eng, Default) oder „in derselben Quelle" (weit). Im weiten Modus werden alle Personen einer Urkunde oder eines Stadtbuch-Eintrags zusammen ausgewertet, im engen nur die eines einzelnen Geschäfts.
-3. **Globale Filter.** Zeitraum (Range-Slider), Quellenkorpus (Mehrfachauswahl), Reset.
+3. **Globale Filter.** Quellenkorpus (Mehrfachauswahl) und Reset. Der Verknüpfungs-Modus ist im UI ausgeblendet (Default Rechtsgeschäft eng), der Parser versteht `scope=source` weiterhin für alte Permalinks.
 
 ### Datenbasis und Matching
 
-Datenquelle ist `docs/data/role_constellation.json`, ein Per-Event-Aggregat aus `frontend/aggregator/role_constellation.py`. Jedes Event trägt seine Participants mit `{p, n, r, s, t, o}` (Personen-ID, Name, Rolle, Geschlecht, Titel-Marker, Berufsliste). Das Matching läuft clientseitig in `frontend/static/js/analysis-resolver.js`: pro Treffer ordnet ein Greedy-Pass jedem aktiven Block einen Participant zu, ohne eine Person doppelt zu belegen. Ergebnis ist eine Trefferliste, die nach Datum und Quelle stabil sortiert wird.
+Datenquelle ist `docs/data/role_constellation.json`, ein Per-Event-Aggregat aus `frontend/aggregator/role_constellation.py`. Jedes Event trägt seine Participants mit `{p, n, r, s, t, o, u}` (Personen-ID, Name, Rolle, Geschlecht, Titel-Marker, Berufsliste, Uhlirz-Berufsklasse); optional kommt `nt` (Personen-Note) hinzu. Das Matching läuft clientseitig in `frontend/static/js/analysis-resolver.js`: pro Treffer ordnet ein Greedy-Pass jedem aktiven Block einen Participant zu, ohne eine Person doppelt zu belegen. Ergebnis ist eine Trefferliste, die nach Datum und Quelle stabil sortiert wird.
 
 ### Eingabeformen der Bedingungen
 
@@ -97,7 +97,7 @@ Beim Öffnen der Seite ist die Trefferliste leer und keine Personen-Zeile angele
 
 ### Permalink und Export
 
-Der gesamte Abfrage-Stand wird als URL-Fragment serialisiert (`#p1=r=issuer,s=m,o=snyder&p2=r=recipient,s=f&y=1340-1410&c=QGW&scope=event`) und beim Reload reproduziert. Der CSV-Export der angezeigten Tabelle nutzt die UI-Spalten: Datum, Quelle, Korpus, je Personen-Zeile eine Spalte mit dem Personennamen, Rechtsgeschäfts-Typ. Dateiname `abfrage_YYYY-MM-DD.csv`, UTF-8 mit BOM (Excel-kompatibel). Wer eine Trefferzeile in den Datenkorb legt, hält den Quellenbezug über Sitzungen hinweg.
+Der gesamte Abfrage-Stand wird als URL-Fragment serialisiert (`#p1=r=issuer,s=m,o=snyder&p2=r=recipient,s=f&c=QGW`) und beim Reload reproduziert. Ein `scope`-Parameter erscheint nur abweichend vom Default (`scope=source`); ein `y=`-Parameter wird nicht serialisiert. Der CSV-Export der angezeigten Tabelle nutzt die UI-Spalten: Datum, Quelle, Korpus, je Personen-Zeile eine Spalte mit dem Personennamen, Rechtsgeschäfts-Typ. Dateiname `abfrage_YYYY-MM-DD.csv`, UTF-8 mit BOM (Excel-kompatibel). Wer eine Trefferzeile in den Datenkorb legt, hält den Quellenbezug über Sitzungen hinweg.
 
 ## Provenienz und epistemische Transparenz
 
