@@ -26,7 +26,7 @@ Die Edition umfasst aktuell folgende Quellensammlungen:
 
 Weitere Subkorpora (QGW/Vienna_1458-66, QGW/Vienna_1493-1500, QGW/Vienna_1524 sowie Gewerbuch_D, Copeybuch_Zeibig, Widmerliste, Genanntenlisten) liegen als TEI-Annotation im Editionsbestand, sind aber aktuell nicht freigegeben.
 
-Aktuelle Bestandszahlen sind auf der [Datengrundlage](datengrundlage.html) abrufbar; die Schema-Validierung erfolgt gegen `sources/schema/toolbox.rng` (RelaxNG).
+Die Schema-Validierung erfolgt gegen `sources/schema/toolbox.rng` (RelaxNG).
 
 
 ## 2. Annotationsmodell
@@ -438,7 +438,7 @@ Das Praefix `immo_` kennzeichnet Immobilien. Hierarchisierung (Haeuser in Strass
 
 Die Normalisierung von Trigger-Formeln, Funktionen und Rollennamen erfolgt ueber projekteigene Normalisierungslisten, die in `normalisation_lists/` gepflegt werden. Die Normalisierung von Vornamen wird ueber einen externen Webservice (`medieval-legal-transactions.univie.ac.at/norm_names/`) verwaltet, der mit projekteigenen Zugangsdaten zugaenglich ist. Die normalisierten Formen fliessen in die Personen-IDs und Register-Eintraege ein.
 
-Nicht alle Triggerstrings und roleName-Eintraege im Bestand sind durch die Normalisierungslisten abgedeckt; aktuelle Abdeckungsraten sind auf der [Datengrundlage](datengrundlage.html) einsehbar.
+Nicht alle Triggerstrings und roleName-Eintraege im Bestand sind durch die Normalisierungslisten abgedeckt.
 
 
 ## 6. Vokabular und Validierung
