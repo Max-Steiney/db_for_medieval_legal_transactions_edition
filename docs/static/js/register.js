@@ -84,6 +84,8 @@
         let colCount = (isPersons ? 4 : 3) + basketCol;
         let entityLabel = (isPersons ? 'Personen'
                            : (regType === 'orgs' ? 'Organisationen' : 'Orte'));
+        let entitySingular = (isPersons ? 'Person'
+                           : (regType === 'orgs' ? 'Organisation' : 'Ort'));
         let filterSexEl = document.getElementById('filter-sex');
         let filterRolesEl = document.getElementById('filter-roles');
         let filterTypesEl = document.getElementById('filter-types');
@@ -571,7 +573,12 @@
                 let pct = c > 0 ? Math.max(4, Math.round(c / maxCount * 100)) : 0;
                 bar.style.setProperty('--bar-height', pct + '%');
                 bar.setAttribute('data-count', c);
-                bar.title = dec + 'er: ' + c + ' ' + entityLabel;
+                // Nur data-hint (eigener Tooltip via hint.js) aktualisieren,
+                // kein natives title-Attribut: sonst zeigt der Browser einen
+                // zweiten Tooltip mit der Build-Zeit-Zahl daneben. Live-Zahl
+                // spiegelt jetzt die aktive Filterung.
+                bar.setAttribute('data-hint',
+                    dec + 'er: ' + c + ' ' + (c === 1 ? entitySingular : entityLabel));
             });
         }
 
