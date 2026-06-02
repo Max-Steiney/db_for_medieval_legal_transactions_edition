@@ -306,22 +306,35 @@ let DataBasket = (function () {
         }
     }
 
-    // Build a compact, comma-separated breakdown whose per-type numbers match
-    // the badge pills (totals per type), with the derived share as a suffix:
-    //   "Datenkorb: 1 Quelle, 35 Personen, 7 Organisationen. Davon 41 abgeleitet."
+    // Per-type breakdown that names what is gathered vs derived, so the badge
+    // totals (e.g. 1/45/8) become legible:
+    //   "Datenkorb: 1 Quelle gesammelt, 45 Personen abgeleitet,
+    //    8 Organisationen abgeleitet."
+    // A type with both shows "(N gesammelt, M abgeleitet)".
     function breakdownText() {
-        const tS = count('source');
-        const tP = count('person');
-        const tO = count('org');
-        const dAll = countDerived();
-        if (tS + tP + tO === 0) return 'Datenkorb ist leer';
+        const defs = [
+            ['source', 'Quelle',       'Quellen'],
+            ['person', 'Person',       'Personen'],
+            ['org',    'Organisation', 'Organisationen'],
+        ];
         const parts = [];
-        if (tS) parts.push(tS === 1 ? '1 Quelle'       : tS + ' Quellen');
-        if (tP) parts.push(tP === 1 ? '1 Person'       : tP + ' Personen');
-        if (tO) parts.push(tO === 1 ? '1 Organisation' : tO + ' Organisationen');
-        let text = 'Datenkorb: ' + parts.join(', ');
-        if (dAll) text += '. Davon ' + dAll + ' abgeleitet';
-        return text;
+        defs.forEach(function (d) {
+            const g = countGathered(d[0]);
+            const der = countDerived(d[0]);
+            const total = g + der;
+            if (total === 0) return;
+            const noun = total === 1 ? d[1] : d[2];
+            if (g && der) {
+                parts.push(total + ' ' + noun +
+                    ' (' + g + ' gesammelt, ' + der + ' abgeleitet)');
+            } else if (g) {
+                parts.push(g + ' ' + noun + ' gesammelt');
+            } else {
+                parts.push(der + ' ' + noun + ' abgeleitet');
+            }
+        });
+        if (!parts.length) return 'Datenkorb ist leer';
+        return 'Datenkorb: ' + parts.join(', ');
     }
 
     // SVG glyphs. Same canvas (16x16), same stroke weight, so the three
