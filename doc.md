@@ -394,7 +394,7 @@ Arbeitsstand des Durchgangs, in den jeweiligen thematischen Punkten oben querver
 - [x] **B3 doc 105: „ihr" mit aufgelöstem Namen aus der Verknüpfung.** (Herkunft: Stakeholder-Durchgang 02.06.2026)
    * Befund: „ihr" ist ein `<rs type="person" ref="#pe__gertrud...">`, der aufgelöste Name steckt im Hover-Tooltip, war aber nicht in der Annotationstabelle sichtbar.
    * Entscheidung 02.06.2026: Auflösung in der Annotationstabelle (Variante C), nicht im Fließtext. ID nur intern.
-   * Umsetzung (Commit 267e787): Die „Genannt als"-Zelle zeigt unter dem Quell-Wortlaut „identifiziert als <Registername>" (aus dem `data-hint` des Spans). Die technische ID (`pe__`/`org__`) erscheint zusätzlich nur im internen Build (`data-audience="intern"`) oder mit `?dev=1`, öffentlich nicht. Guards in `test_anno_resolve.py`.
+   * Umsetzung (Commits 267e787, 026daa0): Die „Genannt als"-Zelle zeigt den aufgelösten Registernamen als Hauptnamen und den Quell-Wortlaut kursiv in Klammern dahinter, also „Gertrude (ihr)" (Name aus dem `data-hint` des Spans). Die technische ID (`pe__`/`org__`) erscheint zusätzlich nur im internen Build (`data-audience="intern"`) oder mit `?dev=1`, öffentlich nicht. Geschlechtsspalte als Kurzform m/w wie Register und Korb. Guards in `test_anno_resolve.py`.
    * Verifikation: [QGW Nr. 105, Annotationen](https://chpollin.github.io/db_for_medieval_legal_transactions_edition/documents/QGW/Vienna_1177-1414_ready/105.html), Zeile „ihr".
 
 #### C) Rollen-Labels (siehe „Rollen-Label-Wording und projektweite Gender-Regel" oben)
