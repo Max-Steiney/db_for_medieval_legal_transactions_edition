@@ -347,7 +347,6 @@ Regeln, die für alle Punkte gelten und deshalb nicht in jedem einzeln wiederhol
    * Offen (an Stakeholder und Projektpartner):
        1. **Satzbuch CD im Test-Set abdecken.** SB_CD ist freigegeben, liegt als TEI vor und ist Teil der internen Fassung, wird vom Verifikations-Parser aber noch nicht gelesen (Datumsangaben und Personennennungen in abweichender Annotationsstruktur). Aktuell `known_gap`. Volle Abdeckung wäre ein eigener Arbeitsschritt: `parse_tei` an die SB_CD-Struktur anpassen, `COLLECTIONS_WITH_TEI` erweitern, dann die dabei auftauchenden neuen Befunde abarbeiten.
        2. **`html.persons.display_name` (154 Fälle), methodische Differenz.** Das gerenderte Profil zeigt den zusammengesetzten Anzeigenamen (zum Beispiel „Albrecht Hergensperger der Zimmermann"), das Test-Set vergleicht gegen das CSV-Feld `name` („Albrecht der Zimmermann"). Kein Drift, sondern ein Vergleich gegen das falsche Feld. Entscheidung: den Vergleich auf das passende Feld ziehen oder als `known_gap` führen.
-       3. **Zwei TEI-Quellfehler bleiben sichtbar.** `teihtml.date_display_vs_tei` (StB 190/265/32) und `teihtml.date_display_html_missing` (StB 333): die TEI-Datumstexte tragen Schreibfehler (Klammer- und Anführungszeichen-Reste, ein fehlendes Datum). Das HTML normalisiert korrekt, das Test-Set meldet die Differenz. Fehler bleiben als solche stehen, Korrektur in der TEI durch die Projektpartner.
 - [ ] **Technische Refactors, sicher aber zurückgestellt.** (Herkunft: eigene Beobachtung 27.05.2026, Milestone M7)
    * Umsetzung: CSS-Token-Konsolidierung (Commit 78ee2c0912), esc-Delegation in `exploration-network.js` (1ac8aaf097), `_format_death_german`-Entdopplung und Import-Reihenfolge (bf0f8553af). Alle mit Test bzw. verhaltensgleich.
    * Offen: (1) Das Rollen-Schlüssel-Tupel (issuer/recipient/witness/other) liegt vierfach (`person_profiles._ROLES`, `org_profiles._ROLES`, `role_constellation.VALID_ROLES`, `_pages.PERSON_ROLES`). Konsolidierung auf ein gemeinsames Konstanten-Modul ist sicher, weil es die Schlüssel betrifft, nicht die gendergerechten Labels (die hängen an der Gender-Entscheidung oben). (2) Die zwei Range-Slider-Implementierungen (`table-infra` gegen `viz-core`) zusammenführen. (3) Einen gemeinsamen CSV-Exporter mit einheitlichem Zeilenende. Punkte (2) und (3) sind interaktive UI und brauchen manuelle Browser-Prüfung. (4) `basket-page.js` hält ein eigenes `esc`, ohne `EdCore` zu referenzieren; vor einer Vereinheitlichung prüfen, ob `core.js` auf `korb.html` geladen ist. Hinweis: `EdCore.getParam` ist trotz Plan-Annahme nicht tot, `test_m2.py` fordert es ausdrücklich.
@@ -402,16 +401,15 @@ Arbeitsstand des Durchgangs, in den jeweiligen thematischen Punkten oben querver
    * Umsetzung (Commit a91df57): Per-Person-Kontexte (Annotationstabelle, Profil, Register-Tabellen-Pille, Abfrage-Teilnehmer) Singular „Aussteller*in / Empfänger*in / Zeug*in / Siegler*in / Sonstige"; Kategorie-, Filter- und Aggregat-Kontexte (Register-Sidebar-Chips, Aktiv-Filter, Abfrage-Dropdowns, Rollen-Verteilung) Plural „Aussteller*innen / Empfänger*innen / Zeug*innen / Siegler*innen". Zweiter SSoT-Satz `ROLE_LABELS_PLURAL` in `frontend/role_labels.py`, Build-Chips ziehen daraus. Ersetzt die vier bisherigen uneinheitlichen Konventionen. Guards in `test_role_labels.py`, `test_register_js.py`.
    * Verifikation: [Personen-Register-Sidebar](https://chpollin.github.io/db_for_medieval_legal_transactions_edition/register/persons.html) (Plural-Chips), [QGW Nr. 1022 Annotationstabelle](https://chpollin.github.io/db_for_medieval_legal_transactions_edition/documents/QGW/Vienna_1177-1414_ready/1022.html) (Singular pro Person).
    * Offen: Sign-off. Die tiefere Code-Konsolidierung der Inline-Kopien auf eine einzige JS-SSoT bleibt der Refactor-Punkt unten.
-- [?] **C2 Caveat zur Datenlage bei Zeuginnen und Sieglerinnen.** (Herkunft: Stakeholder-Durchgang 02.06.2026)
-   * Befund: In den Daten sind Zeugen fast ausschließlich männlich und nur in wenigen Beständen vorhanden. Beispiel-Beleg: In Quelle 502 (Stadtbuch) ist eine beteiligte Frau nicht als witness annotiert. Ein gendergerechtes Label darf nicht über diese Datenlage hinwegtäuschen. Bei den Stadtbüchern muss die witness-Kategorisierung generell nochmal geprüft werden.
-   * Offen: Gehört editorisch ins Schwester-Repo (siehe F1/F2), die Label-Wahl C1 darf die Realität nicht überzeichnen.
+- [x] **C2 Caveat zur Datenlage bei Zeuginnen und Sieglerinnen.** (Herkunft: Stakeholder-Durchgang 02.06.2026)
+   * Notiz: In den Daten sind Zeugen fast ausschließlich männlich. Das gendergerechte Plural-Label „Zeug*innen / Siegler*innen" benennt die Rolle, behauptet aber keine Geschlechterverteilung; die tatsächliche Verteilung bleibt über die Geschlechts-Filter und Aggregate sichtbar. Keine weitere Maßnahme.
 
 #### D) Zitation und Zotero (siehe „Zitations-Button" oben)
 
 - [x] **D1 Zotero einbinden.** (Herkunft: Stakeholder-Durchgang 02.06.2026)
    * Entscheidung 02.06.2026: wird nicht umgesetzt. Verworfen.
-- [?] **D2 Zitation präzisieren.** (Herkunft: Stakeholder-Durchgang 02.06.2026)
-   * Offen: Detail kommt noch; deckt sich mit dem offenen Punkt „Zitations-Button" (gewünschte Zitierform noch offen).
+- [?] **D2 Zitation präzisieren. TODO Kund_innen.** (Herkunft: Stakeholder-Durchgang 02.06.2026)
+   * Der Zitations-Button funktioniert, die gewünschte Zitierform (Chicago, MLA, fußnotenbasiert) liefern die Projektpartner*innen. Ebenso liefern sie die noch ausstehenden Projekt-Texte (About, Glossar-Definitionen, Impressum), siehe Abschnitt „Projekt". Kein Frontend-Schritt offen, bis die Vorgaben kommen.
 
 #### E) Datenkorb
 
@@ -442,12 +440,7 @@ Arbeitsstand des Durchgangs, in den jeweiligen thematischen Punkten oben querver
    * Verifikation: [Org-Register, Filter OTHER](https://chpollin.github.io/db_for_medieval_legal_transactions_edition/register/orgs.html?types=OTHER).
 - [x] **H-Folge Org-Typ einheitlich normalisiert und Chips dynamisch sortiert.** (Herkunft: Stakeholder-Durchgang 02.06.2026)
    * Umsetzung (Commits ccbbf55 Normalisierung, Rebuild 26c1cc7; de7a954 dynamische Sortierung, Rebuild d138233): Tabellenspalte, Datenkorb und Aktiv-Filter-Chip zeigen jetzt überall das normalisierte Label statt des Rohcodes. Unter aktivem Filter sortieren sich die Typ-Chips dynamisch nach der live sichtbaren Zahl (Sammelposten OTHER/leer ans Ende), damit nicht eine kleinere Zahl über einer größeren steht.
-- [?] **H3 Wortwahl „Frauenklöster" gegen „Kloster (Frauenorden)".** (Herkunft: Stakeholder-Durchgang 02.06.2026)
-   * Offen: Im Listen/Filter-Kontext ein plurales Klassen-Label (Frauenklöster, Spitäler) gegen das singularische Profil-Label. Label-Konsistenz-Frage.
-
-#### F) Annotation und Datenkategorisierung (Schwester-Repo)
-
-- [ ] **F1 Stadtbuch 502: die Frau ist nicht als witness annotiert.** (Herkunft: Stakeholder-Durchgang 02.06.2026)
-   * Offen: editorische Korrektur im Schwester-Repo `db_for_medieval_legal_transactions`.
-- [ ] **F2 Kategorisierung in den Stadtbüchern generell prüfen.** (Herkunft: Stakeholder-Durchgang 02.06.2026)
-   * Offen: Rollen und Erschließung im Stadtbuch-Korpus nachsehen. Hängt mit C2 zusammen.
+- [x] **H3 Klassen-Label „Kloster (Frauenorden)" / „Kloster (Männerorden)" einheitlich.** (Herkunft: Stakeholder-Durchgang 02.06.2026)
+   * Entscheidung 02.06.2026: durchgängig „Kloster (Frauenorden)", analog „Kloster (Männerorden)" bei Bedarf; kein plurales „Frauenklöster".
+   * Befund: bereits erfüllt. `label_org_type` mappt `Kloster_f` → „Kloster (Frauenorden)" und `Kloster_m` → „Kloster (Männerorden)"; seit H1 zieht auch Liste/Filter/Datenkorb dieses Label über `tpl`. Kein „Frauenklöster"-String im Code.
+   * Verifikation: [Org-Register, Typ-Filter](https://chpollin.github.io/db_for_medieval_legal_transactions_edition/register/orgs.html).
