@@ -910,12 +910,14 @@
                 //   d   TEI-Datum-Form (z.B. "1177 V 10")
                 //   dn  Anzeige-Datum (z.B. "10.05.1177", "1198-1230"),
                 //       damit die Tabellenform tippbar ist
-                //   p   Ort, id   Signatur, cl  Korpus-Label
+                //   id  Signatur, cl  Korpus-Label
+                // Ort (doc.p) ist bewusst NICHT im Volltext: Ortssuche
+                // laeuft ueber den eigenen Ort-Filter, nicht ueber die Suche.
                 let norm = EdCore.normForSearch;
                 allDocs.forEach(function(doc) {
                     doc._s = norm([
                         doc.t, doc.tf || '', doc.d, doc.dn || '',
-                        doc.p, doc.id, doc.cl
+                        doc.id, doc.cl
                     ].join(' '));
                     if (doc.cp && !collectionLabels[doc.cp]) collectionLabels[doc.cp] = doc.cl;
                 });

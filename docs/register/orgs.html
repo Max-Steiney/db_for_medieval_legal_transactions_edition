@@ -10,16 +10,16 @@
     <title>Organisationen, Datenbank</title>
     <link rel="preload" as="font" type="font/woff2" crossorigin
           href="../static/fonts/inter-400-latin.woff2">
-    <link rel="stylesheet" href="../static/css/fonts.css?v=20260530090121">
-    <link rel="stylesheet" href="../static/css/tokens.css?v=20260530090121">
-    <link rel="stylesheet" href="../static/css/base.css?v=20260530090121">
-    <link rel="stylesheet" href="../static/css/components.css?v=20260530090121">
-    <link rel="stylesheet" href="../static/css/responsive.css?v=20260530090121">
-    <link rel="stylesheet" href="../static/css/print.css?v=20260530090121">
-    <link rel="stylesheet" href="../static/css/tip.css?v=20260530090121">
+    <link rel="stylesheet" href="../static/css/fonts.css?v=20260602154414">
+    <link rel="stylesheet" href="../static/css/tokens.css?v=20260602154414">
+    <link rel="stylesheet" href="../static/css/base.css?v=20260602154414">
+    <link rel="stylesheet" href="../static/css/components.css?v=20260602154414">
+    <link rel="stylesheet" href="../static/css/responsive.css?v=20260602154414">
+    <link rel="stylesheet" href="../static/css/print.css?v=20260602154414">
+    <link rel="stylesheet" href="../static/css/tip.css?v=20260602154414">
     
-<link rel="stylesheet" href="../static/css/index.css?v=20260530090121">
-<link rel="stylesheet" href="../static/css/register.css?v=20260530090121">
+<link rel="stylesheet" href="../static/css/index.css?v=20260602154414">
+<link rel="stylesheet" href="../static/css/register.css?v=20260602154414">
 
 </head>
 <body data-root-path=".."
@@ -31,7 +31,7 @@
                 <span class="nav-brand-sigil">&#x2756;</span>
                 <span class="nav-brand-text">Stadt und Gemeinschaft Wien</span>
             </a>
-            <span class="nav-badge" title="Build-Stand: Öffentlich, generiert am 30. Mai 2026">Prototyp &middot; Öffentlich &middot; 30. Mai 2026</span>
+            <span class="nav-badge" title="Build-Stand: Öffentlich, generiert am 2. Juni 2026">Prototyp &middot; Öffentlich &middot; 2. Juni 2026</span>
             <button type="button" class="nav-hamburger" id="nav-hamburger" aria-label="Menü öffnen" aria-expanded="false">
                 <span></span><span></span><span></span>
             </button>
@@ -402,8 +402,8 @@
      aria-label="Nach Typ filtern (Mehrfachauswahl)">
     
     <button type="button" class="form-filter-chip" data-type="Messe"
-            aria-pressed="false" data-hint="Messe">
-        <span class="form-filter-chip-label">Messe</span>
+            aria-pressed="false" data-hint="Messstiftung">
+        <span class="form-filter-chip-label">Messstiftung</span>
         <span class="form-filter-chip-count">181</span>
     </button>
     
@@ -420,20 +420,20 @@
     </button>
     
     <button type="button" class="form-filter-chip" data-type="Kirche_Kapelle"
-            aria-pressed="false" data-hint="Kirche_Kapelle">
-        <span class="form-filter-chip-label">Kirche_Kapelle</span>
+            aria-pressed="false" data-hint="Kirche / Kapelle">
+        <span class="form-filter-chip-label">Kirche / Kapelle</span>
         <span class="form-filter-chip-count">53</span>
     </button>
     
     <button type="button" class="form-filter-chip" data-type="Dioezese_Erzdioezese"
-            aria-pressed="false" data-hint="Dioezese_Erzdioezese">
-        <span class="form-filter-chip-label">Dioezese_Erzdioezese</span>
+            aria-pressed="false" data-hint="Diözese / Erzdiözese">
+        <span class="form-filter-chip-label">Diözese / Erzdiözese</span>
         <span class="form-filter-chip-count">52</span>
     </button>
     
     <button type="button" class="form-filter-chip" data-type="Kloster_m"
-            aria-pressed="false" data-hint="Kloster_m">
-        <span class="form-filter-chip-label">Kloster_m</span>
+            aria-pressed="false" data-hint="Kloster (Männerorden)">
+        <span class="form-filter-chip-label">Kloster (Männerorden)</span>
         <span class="form-filter-chip-count">40</span>
     </button>
     
@@ -450,38 +450,32 @@
     </button>
     
     <button type="button" class="form-filter-chip" data-type="Zeche_Bruderschaft"
-            aria-pressed="false" data-hint="Zeche_Bruderschaft">
-        <span class="form-filter-chip-label">Zeche_Bruderschaft</span>
+            aria-pressed="false" data-hint="Zeche Bruderschaft">
+        <span class="form-filter-chip-label">Zeche Bruderschaft</span>
         <span class="form-filter-chip-count">16</span>
     </button>
     
     <button type="button" class="form-filter-chip" data-type="Kloster_f"
-            aria-pressed="false" data-hint="Kloster_f">
-        <span class="form-filter-chip-label">Kloster_f</span>
-        <span class="form-filter-chip-count">14</span>
-    </button>
-    
-    <button type="button" class="form-filter-chip" data-type="OTHER"
-            aria-pressed="false" data-hint="OTHER">
-        <span class="form-filter-chip-label">OTHER</span>
+            aria-pressed="false" data-hint="Kloster (Frauenorden)">
+        <span class="form-filter-chip-label">Kloster (Frauenorden)</span>
         <span class="form-filter-chip-count">14</span>
     </button>
     
     <button type="button" class="form-filter-chip" data-type="Spital_Siechenhaus"
-            aria-pressed="false" data-hint="Spital_Siechenhaus">
-        <span class="form-filter-chip-label">Spital_Siechenhaus</span>
+            aria-pressed="false" data-hint="Spital / Siechenhaus">
+        <span class="form-filter-chip-label">Spital / Siechenhaus</span>
         <span class="form-filter-chip-count">10</span>
-    </button>
-    
-    <button type="button" class="form-filter-chip" data-type="Orden"
-            aria-pressed="false" data-hint="Orden">
-        <span class="form-filter-chip-label">Orden</span>
-        <span class="form-filter-chip-count">4</span>
     </button>
     
     <button type="button" class="form-filter-chip" data-type="Herzogtum"
             aria-pressed="false" data-hint="Herzogtum">
         <span class="form-filter-chip-label">Herzogtum</span>
+        <span class="form-filter-chip-count">4</span>
+    </button>
+    
+    <button type="button" class="form-filter-chip" data-type="Orden"
+            aria-pressed="false" data-hint="Orden">
+        <span class="form-filter-chip-label">Orden</span>
         <span class="form-filter-chip-count">4</span>
     </button>
     
@@ -492,14 +486,14 @@
     </button>
     
     <button type="button" class="form-filter-chip" data-type="Koenigreich"
-            aria-pressed="false" data-hint="Koenigreich">
-        <span class="form-filter-chip-label">Koenigreich</span>
+            aria-pressed="false" data-hint="Königreich">
+        <span class="form-filter-chip-label">Königreich</span>
         <span class="form-filter-chip-count">3</span>
     </button>
     
-    <button type="button" class="form-filter-chip" data-type="Reich"
-            aria-pressed="false" data-hint="Reich">
-        <span class="form-filter-chip-label">Reich</span>
+    <button type="button" class="form-filter-chip" data-type="Kirche"
+            aria-pressed="false" data-hint="Kirche">
+        <span class="form-filter-chip-label">Kirche</span>
         <span class="form-filter-chip-count">1</span>
     </button>
     
@@ -509,16 +503,22 @@
         <span class="form-filter-chip-count">1</span>
     </button>
     
-    <button type="button" class="form-filter-chip" data-type="Kirche"
-            aria-pressed="false" data-hint="Kirche">
-        <span class="form-filter-chip-label">Kirche</span>
+    <button type="button" class="form-filter-chip" data-type="Reich"
+            aria-pressed="false" data-hint="Reich">
+        <span class="form-filter-chip-label">Reich</span>
         <span class="form-filter-chip-count">1</span>
     </button>
     
     <button type="button" class="form-filter-chip" data-type="Universitaet"
-            aria-pressed="false" data-hint="Universitaet">
-        <span class="form-filter-chip-label">Universitaet</span>
+            aria-pressed="false" data-hint="Universität">
+        <span class="form-filter-chip-label">Universität</span>
         <span class="form-filter-chip-count">1</span>
+    </button>
+    
+    <button type="button" class="form-filter-chip" data-type="OTHER"
+            aria-pressed="false" data-hint="Sonstige">
+        <span class="form-filter-chip-label">Sonstige</span>
+        <span class="form-filter-chip-count">14</span>
     </button>
     
 </div>
@@ -679,7 +679,7 @@
             <div class="footer-col">
                 <p class="footer-project">Stadt und Gemeinschaft Wien, Datenbank</p>
                 <p>Tr&auml;gerprojekt &raquo;Stadt und Gemeinschaft&laquo; (Universit&auml;t Wien)</p>
-                <p class="footer-meta">Datenstand: 17. Mai 2026 &middot; Seite generiert: 30. Mai 2026</p>
+                <p class="footer-meta">Datenstand: 30. Mai 2026 &middot; Seite generiert: 2. Juni 2026</p>
                 
                 <p class="footer-meta">607 Organisationen</p>
             </div>
@@ -696,13 +696,13 @@
     </footer>
 
     <script id="role-labels" type="application/json">{"issuer": "Aussteller*in", "other": "Sonstige", "recipient": "Empf\u00e4nger*in", "witness": "Zeug*in / Siegler*in"}</script>
-    <script src="../static/js/core.js?v=20260530090121"></script>
-    <script src="../static/js/tip.js?v=20260530090121"></script>
-    <script src="../static/js/hint.js?v=20260530090121"></script>
-    <script src="../static/js/basket.js?v=20260530090121"></script>
+    <script src="../static/js/core.js?v=20260602154414"></script>
+    <script src="../static/js/tip.js?v=20260602154414"></script>
+    <script src="../static/js/hint.js?v=20260602154414"></script>
+    <script src="../static/js/basket.js?v=20260602154414"></script>
     
-<script src="../static/js/table-infra.js?v=20260530090121"></script>
-<script src="../static/js/register.js?v=20260530090121"></script>
+<script src="../static/js/table-infra.js?v=20260602154414"></script>
+<script src="../static/js/register.js?v=20260602154414"></script>
 
 </body>
 </html>
