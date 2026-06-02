@@ -28,8 +28,10 @@ Frauenkloester gegen Kloster (Frauenorden)).
 
 ## B) Quellen-Detailseite und Faksimile-Viewer
 
-- B1 [klären/feature] Vollbildansicht für den Viewer (Beispiel doc 2).
-- B2 [fix] doc 105: Faksimile sitzt zu weit unten, Layout-Bug.
+- B1 [erledigt] Vollbildansicht für den Viewer. Eigener Button links von
+  Zoom +/-, native Fullscreen-API auf das ganze Viewer-Panel.
+- B2 [erledigt] doc 105: Faksimile sitzt zu weit unten. Panel ist jetzt
+  sticky statt grid-stretch, bleibt beim Scrollen auf gleicher Höhe.
 - B3 [klären] doc 105: "ihr" soll mit echtem Namen aus der Verknüpfung
   angezeigt werden; interne Version zusätzlich ID und Name. Offen, was
   genau annotiert ist.
