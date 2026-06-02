@@ -49,10 +49,7 @@
     function buildPersonRow(it, items, root) {
         const url = it.url ? esc(root + '/' + it.url) : '#';
         const rowCls = it.gathered ? '' : ' basket-row-derived';
-        const sexLabel = it.sex === 'm' ? 'männlich'
-                       : it.sex === 'f' ? 'weiblich'
-                       : it.sex === 'u' ? 'unbestimmt'
-                       : '';
+        const sexLabel = it.sex === 'm' ? 'm' : it.sex === 'f' ? 'w' : '–';
         const active = (it.active_min || '') +
             (it.active_max && it.active_max !== it.active_min
                 ? ' bis ' + it.active_max : '');
@@ -79,9 +76,40 @@
         </tr>`;
     }
 
-    // Sort: gathered first, then by primary key (date for sources, label
+    // Per-section column sort, driven by clicks on the th[data-sort] headers.
+    // key null = default order (gathered first, then date/label).
+    const sortState = {
+        source: { key: null, dir: 1 },
+        person: { key: null, dir: 1 },
+        org:    { key: null, dir: 1 },
+    };
+
+    function sortGetter(type, key) {
+        if (type === 'source') {
+            if (key === 'idno') return it => it.id || '';
+            if (key === 'date') return it => it.date || '';
+            if (key === 'coll') return it => it.coll || '';
+        } else if (type === 'person') {
+            if (key === 'name')   return it => it.label || it.id || '';
+            if (key === 'sex')    return it => it.sex || '';
+            if (key === 'active') return it => it.active_min || '';
+        } else if (type === 'org') {
+            if (key === 'name') return it => it.label || it.id || '';
+            if (key === 'type') return it => it.type_label || '';
+        }
+        return () => '';
+    }
+
+    // Sort: with an active column, sort purely by it (like the registers).
+    // Otherwise gathered first, then primary key (date for sources, label
     // otherwise) so each section has a stable, scannable order.
     function sortItems(items, type) {
+        const st = sortState[type];
+        if (st && st.key) {
+            const get = sortGetter(type, st.key);
+            return items.slice().sort((a, b) =>
+                EdCore.compareValues(get(a), get(b), st.dir));
+        }
         const dateKey = type === 'source';
         return items.slice().sort((a, b) => {
             if (a.gathered !== b.gathered) return a.gathered ? -1 : 1;
@@ -219,6 +247,29 @@
                 if (!tr) return;
                 DataBasket.remove(tr.dataset.type, tr.dataset.id);
                 renderAll();
+            });
+            // Column sort: click cycles asc -> desc -> default.
+            const type = sec.getAttribute('data-section');
+            const heads = sec.querySelectorAll('thead th[data-sort]');
+            heads.forEach(th => {
+                th.addEventListener('click', () => {
+                    const st = sortState[type];
+                    const key = th.getAttribute('data-sort');
+                    if (st.key === key) {
+                        if (st.dir === 1) st.dir = -1;
+                        else { st.key = null; st.dir = 1; }
+                    } else { st.key = key; st.dir = 1; }
+                    heads.forEach(h => {
+                        h.classList.remove('sorted-asc', 'sorted-desc');
+                        h.setAttribute('aria-sort', 'none');
+                    });
+                    if (st.key !== null) {
+                        th.classList.add(st.dir === 1 ? 'sorted-asc' : 'sorted-desc');
+                        th.setAttribute('aria-sort',
+                            st.dir === 1 ? 'ascending' : 'descending');
+                    }
+                    renderSection(type);
+                });
             });
         });
         // Global "clear everything" button lives in the header, outside the

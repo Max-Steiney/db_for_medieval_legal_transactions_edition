@@ -235,9 +235,10 @@ def build_docs_entities(
             oid = row.get("id", "")
             if oid:
                 omap[oid] = {
-                    "id": oid,
-                    "n":  row.get("n", ""),
-                    "tp": row.get("tp", ""),
+                    "id":  oid,
+                    "n":   row.get("n", ""),
+                    "tp":  row.get("tp", ""),
+                    "tpl": row.get("tpl", ""),
                 }
 
     out: dict[str, dict[str, list[dict]]] = {}

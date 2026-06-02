@@ -79,13 +79,13 @@
                 </button>
             </div>
         </header>
-        <table class="aggregat-table basket-table" data-type-table="source">
+        <table class="index-table basket-table" data-type-table="source">
             <thead>
                 <tr>
-                    <th scope="col" class="col-idno"
+                    <th scope="col" class="col-idno" data-sort="idno"
                         data-hint="Quellen-Identifikator (idno) innerhalb des Korpus.">Nr.</th>
-                    <th scope="col" class="col-date">Datum</th>
-                    <th scope="col" class="col-coll">Quellenkorpus</th>
+                    <th scope="col" class="col-date" data-sort="date">Datum</th>
+                    <th scope="col" class="col-coll" data-sort="coll">Quellenkorpus</th>
                     <th scope="col" class="col-regest"
                         data-hint="Inhaltszusammenfassung der Quelle. Hier verkuerzt; vollstaendig in der Quellen-Detailseite.">Regest</th>
                     <th scope="col" class="col-actions" aria-label="Aktionen"></th>
@@ -131,12 +131,12 @@
                 </button>
             </div>
         </header>
-        <table class="aggregat-table basket-table" data-type-table="person">
+        <table class="index-table basket-table" data-type-table="person">
             <thead>
                 <tr>
-                    <th scope="col" class="col-name">Name</th>
-                    <th scope="col" class="col-sex">Geschlecht</th>
-                    <th scope="col" class="col-active"
+                    <th scope="col" class="col-name" data-sort="name">Name</th>
+                    <th scope="col" class="col-sex" data-sort="sex">Geschlecht</th>
+                    <th scope="col" class="col-active" data-sort="active"
                         data-hint="Erstes und letztes Jahr aus den Quellen, in denen die Person belegt ist.">Datum der Quellen</th>
                     <th scope="col" class="col-source"
                         data-hint="Quelle, ueber die diese Person automatisch eingespielt wurde. Nur bei abgeleiteten Eintraegen belegt.">aus Quelle</th>
@@ -183,11 +183,11 @@
                 </button>
             </div>
         </header>
-        <table class="aggregat-table basket-table" data-type-table="org">
+        <table class="index-table basket-table" data-type-table="org">
             <thead>
                 <tr>
-                    <th scope="col" class="col-name">Name</th>
-                    <th scope="col" class="col-type">Typ</th>
+                    <th scope="col" class="col-name" data-sort="name">Name</th>
+                    <th scope="col" class="col-type" data-sort="type">Typ</th>
                     <th scope="col" class="col-source"
                         data-hint="Quelle, ueber die diese Organisation automatisch eingespielt wurde. Nur bei abgeleiteten Eintraegen belegt.">aus Quelle</th>
                     <th scope="col" class="col-actions" aria-label="Aktionen"></th>
