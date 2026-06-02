@@ -391,8 +391,11 @@ Arbeitsstand des Durchgangs, in den jeweiligen thematischen Punkten oben querver
 - [x] **B1 Vollbildansicht für den Viewer.** (Herkunft: Stakeholder-Durchgang 02.06.2026)
    * Umsetzung (Commit 7093051, Rebuild 50e0989): Eigener Vollbild-Button links von Zoom +/-, native Fullscreen-API auf das gesamte `.facs-viewer`-Element, damit Seiten-Navigation und Zoom auch im Vollbild bedienbar bleiben. ESC und erneuter Klick schließen, Tooltip wechselt. `:fullscreen`-CSS füllt den Bildschirm randlos. Guard `frontend/tests/test_facs_fullscreen.py`.
    * Verifikation: [QGW Nr. 2](https://chpollin.github.io/db_for_medieval_legal_transactions_edition/documents/QGW/Vienna_1177-1414_ready/2.html).
-- [?] **B3 doc 105: „ihr" soll mit echtem Namen aus der Verknüpfung angezeigt werden.** (Herkunft: Stakeholder-Durchgang 02.06.2026)
-   * Offen: Interne Version zusätzlich ID und Name. Noch zu klären, was genau im TEI annotiert ist.
+- [x] **B3 doc 105: „ihr" mit aufgelöstem Namen aus der Verknüpfung.** (Herkunft: Stakeholder-Durchgang 02.06.2026)
+   * Befund: „ihr" ist ein `<rs type="person" ref="#pe__gertrud...">`, der aufgelöste Name steckt im Hover-Tooltip, war aber nicht in der Annotationstabelle sichtbar.
+   * Entscheidung 02.06.2026: Auflösung in der Annotationstabelle (Variante C), nicht im Fließtext. ID nur intern.
+   * Umsetzung (Commit 267e787): Die „Genannt als"-Zelle zeigt unter dem Quell-Wortlaut „identifiziert als <Registername>" (aus dem `data-hint` des Spans). Die technische ID (`pe__`/`org__`) erscheint zusätzlich nur im internen Build (`data-audience="intern"`) oder mit `?dev=1`, öffentlich nicht. Guards in `test_anno_resolve.py`.
+   * Verifikation: [QGW Nr. 105, Annotationen](https://chpollin.github.io/db_for_medieval_legal_transactions_edition/documents/QGW/Vienna_1177-1414_ready/105.html), Zeile „ihr".
 
 #### C) Rollen-Labels (siehe „Rollen-Label-Wording und projektweite Gender-Regel" oben)
 
