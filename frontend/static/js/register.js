@@ -521,7 +521,9 @@
                     let tp = e.tp || '';
                     counts[tp] = (counts[tp] || 0) + 1;
                 });
-                filterTypesEl.querySelectorAll('.form-filter-chip').forEach(function(c) {
+                let typeChips = Array.from(
+                    filterTypesEl.querySelectorAll('.form-filter-chip'));
+                typeChips.forEach(function(c) {
                     let v = c.getAttribute('data-type');
                     let n = counts[v] || 0;
                     let ce = c.querySelector('.form-filter-chip-count');
@@ -529,6 +531,19 @@
                     let isActive = c.classList.contains('is-active');
                     c.hidden = (n === 0 && !isActive);
                 });
+                // Reihenfolge an die aktuell sichtbaren Zahlen anpassen, damit
+                // unter einem Korpus-Filter nicht eine kleinere Zahl ueber
+                // einer groesseren steht. Sammelposten (OTHER, leer) bleiben
+                // ans Ende gepinnt.
+                typeChips.sort(function(a, b) {
+                    let va = a.getAttribute('data-type');
+                    let vb = b.getAttribute('data-type');
+                    let ta = (va === 'OTHER' || va === '') ? 1 : 0;
+                    let tb = (vb === 'OTHER' || vb === '') ? 1 : 0;
+                    if (ta !== tb) return ta - tb;
+                    return (counts[vb] || 0) - (counts[va] || 0);
+                });
+                typeChips.forEach(function(c) { filterTypesEl.appendChild(c); });
             }
         }
 

@@ -22,3 +22,23 @@ def test_role_filter_chip_uses_label_not_raw_key():
     assert "ROLE_LABELS[r] || r" in src, (
         "Der Rollen-Filter-Chip soll das deutsche Label aus ROLE_LABELS nutzen."
     )
+
+
+def test_org_type_column_uses_normalised_label():
+    # Tabellenspalte und Datenkorb sollen das normalisierte Label (tpl) zeigen,
+    # nicht den rohen Code (tp). Guard zur Einheitlichkeit ueber alle Stellen.
+    src = REGISTER_JS.read_text(encoding="utf-8")
+    assert "entry.tpl || entry.tp" in src, (
+        "Die Org-Typ-Spalte faellt wieder auf den rohen Code zurueck."
+    )
+
+
+def test_org_type_chips_resort_by_live_count():
+    # Unter einem aktiven Filter sollen die Typ-Chips nach der aktuell
+    # sichtbaren Zahl umsortiert werden (Sammelposten OTHER/leer ans Ende),
+    # damit nicht eine kleinere Zahl ueber einer groesseren steht.
+    src = REGISTER_JS.read_text(encoding="utf-8")
+    assert "typeChips.sort(" in src, (
+        "Die Typ-Chips werden nicht mehr dynamisch nach Zahl sortiert; "
+        "die feste Build-Reihenfolge ist zurueck (Burg 3 ueber Orden 1)."
+    )
