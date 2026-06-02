@@ -33,16 +33,16 @@ def test_badge_markup_is_pill_container():
     )
 
 
-def test_tooltip_matches_badge_totals():
-    # Tooltip und Pillen muessen dieselbe Logik nutzen: Gesamtzahl pro Typ,
-    # abgeleiteter Anteil als Zusatz. Sonst stehen im Badge andere Zahlen
-    # (1/35/7) als im Tooltip (1 Quelle, 1 Person).
+def test_tooltip_names_gathered_and_derived_per_type():
+    # Tooltip muss pro Typ benennen, was gesammelt und was abgeleitet ist,
+    # damit die Badge-Totals (1/45/8) lesbar werden. Nicht nur eine Summe
+    # "Davon N abgeleitet".
     src = BASKET_JS.read_text(encoding="utf-8")
-    assert "const tP = count('person')" in src, (
-        "breakdownText zaehlt Personen nicht als Gesamtzahl (E1)."
+    assert "countGathered(d[0])" in src and "countDerived(d[0])" in src, (
+        "breakdownText schluesselt gesammelt/abgeleitet nicht pro Typ auf (E1)."
     )
-    assert "abgeleitet" in src and "Davon" in src, (
-        "Der abgeleitete Anteil fehlt als Zusatz im Tooltip (E1)."
+    assert "gesammelt" in src and "abgeleitet" in src, (
+        "Tooltip benennt gesammelt/abgeleitet nicht (E1)."
     )
 
 
