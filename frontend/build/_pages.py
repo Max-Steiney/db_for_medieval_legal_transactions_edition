@@ -27,6 +27,7 @@ from frontend.build._kpi import (
     _compute_release_kpis, _compute_corpus_breakdown, _compute_matrix_columns,
     _released_person_keys, _persons_with_org_released,
 )
+from frontend.aggregator._profile_labels import label_org_type
 
 
 # Controlled role vocabulary for the persons register.
@@ -536,19 +537,35 @@ def _build_persons_register(persons, reverse_index, env):
 def _type_chip_data(search_data):
     """Build chip data for the ``tp`` (type) facet on orgs/places.
 
-    Aggregates counts per distinct ``tp`` value. Empty values are bucketed
-    under the literal key ``""`` and rendered as "ohne Angabe".
+    Aggregates counts per distinct ``tp`` value. Raw codes are turned into
+    German display labels via ``label_org_type`` (the same mapping the org
+    profiles use). The catch-all bucket ``OTHER`` reads as "Sonstige" and
+    the empty key as "ohne Angabe"; both are always sorted to the end, the
+    remaining types by descending count.
     """
     counts = Counter()
     for row in search_data:
         counts[row.get("tp") or ""] += 1
+
+    def _label(key):
+        if key == "":
+            return "ohne Angabe"
+        if key == "OTHER":
+            return "Sonstige"
+        return label_org_type(key)
+
+    def _sort_key(item):
+        key, c = item
+        tail = 1 if key in ("OTHER", "") else 0
+        return (tail, -c, _label(key).lower())
+
     out = []
-    for key, c in counts.most_common():
+    for key, c in sorted(counts.items(), key=_sort_key):
         if c <= 0:
             continue
         out.append({
             "key":   key,
-            "label": key or "ohne Angabe",
+            "label": _label(key),
             "count": c,
         })
     return out

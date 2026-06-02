@@ -13,7 +13,7 @@ from frontend.build import (
     _org_search_data,
     _build_register_json,
 )
-from frontend.build._pages import _short_collection_label
+from frontend.build._pages import _short_collection_label, _type_chip_data
 from frontend.register import load_persons, load_orgs, load_places
 
 
@@ -28,6 +28,44 @@ class TestShortCollectionLabel:
 
     def test_falls_back_to_path(self):
         assert _short_collection_label("Unknown/Path") == "Unknown/Path"
+
+
+# --- Org-Typ-Filter-Chips: Labels und Sortierung (H1/H2, Meeting 02.06.2026) ---
+
+
+class TestTypeChipData:
+    def test_raw_codes_get_german_labels(self):
+        data = [
+            {"tp": "Kloster_f"},
+            {"tp": "Spital_Siechenhaus"},
+            {"tp": "Dioezese_Erzdioezese"},
+        ]
+        out = {c["key"]: c["label"] for c in _type_chip_data(data)}
+        assert out["Kloster_f"] == "Kloster (Frauenorden)"
+        assert out["Spital_Siechenhaus"] == "Spital / Siechenhaus"
+        assert out["Dioezese_Erzdioezese"] == "Diözese / Erzdiözese"
+
+    def test_other_label_is_sonstige(self):
+        out = {c["key"]: c["label"] for c in _type_chip_data([{"tp": "OTHER"}])}
+        assert out["OTHER"] == "Sonstige"
+
+    def test_other_sorted_last_even_with_highest_count(self):
+        data = [{"tp": "OTHER"}] * 50 + [{"tp": "Messe"}] * 3 + [{"tp": "Pfarre"}]
+        out = _type_chip_data(data)
+        assert out[-1]["key"] == "OTHER"
+        non_other = [c["key"] for c in out if c["key"] != "OTHER"]
+        assert non_other == ["Messe", "Pfarre"]
+
+    def test_empty_key_is_ohne_angabe_and_last(self):
+        data = [{"tp": ""}] * 5 + [{"tp": "Messe"}]
+        out = _type_chip_data(data)
+        assert out[-1]["label"] == "ohne Angabe"
+
+    def test_chip_key_stays_raw_for_url_linking(self):
+        # Der Filter-Link ?types=OTHER muss weiter funktionieren: nur das
+        # Label wird uebersetzt, der key bleibt der Rohwert.
+        out = {c["key"]: c for c in _type_chip_data([{"tp": "OTHER"}])}
+        assert "OTHER" in out
 
     def test_empty_input(self):
         assert _short_collection_label("") == ""
