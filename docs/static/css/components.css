@@ -156,14 +156,16 @@
     transition: background-color var(--transition-fast);
 }
 .nav-basket:hover { background: rgba(255, 255, 255, 0.1); }
-.nav-basket-count {
-    position: absolute;
-    top: -2px;
-    right: -2px;
+.nav-basket-counts {
+    display: inline-flex;
+    gap: 3px;
+    margin-left: 5px;
+}
+.nav-basket-counts[hidden] { display: none; }
+.nav-basket-pill {
     min-width: 16px;
     height: 16px;
     padding: 0 4px;
-    background: var(--anno-place);
     color: #fff;
     font-family: var(--font-sans);
     font-size: 10px;
@@ -172,8 +174,11 @@
     display: flex;
     align-items: center;
     justify-content: center;
+    line-height: 1;
 }
-.nav-basket-count[hidden] { display: none; }
+.nav-basket-pill--source { background: var(--anno-place); }
+.nav-basket-pill--person { background: var(--anno-person); }
+.nav-basket-pill--org    { background: var(--anno-org); }
 
 /* Basket page */
 .basket-page .index-header,

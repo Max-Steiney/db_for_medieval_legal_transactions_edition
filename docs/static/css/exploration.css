@@ -919,6 +919,7 @@
 }
 
 /* Buttons (shared across aggregat pages) */
+.explore-btn[hidden] { display: none; }
 .explore-btn {
     display: inline-flex;
     align-items: center;
