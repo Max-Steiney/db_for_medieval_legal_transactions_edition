@@ -1,6 +1,7 @@
 """B3: die Annotationstabelle loest Pronomen/Bezugswoerter zur Person aus
-dem Register auf ("identifiziert als <Name>"); die technische ID erscheint
-nur im internen Build oder mit ?dev=1. Source-Guards gegen document.js/CSS."""
+dem Register auf (Registername als Hauptname, Quell-Wortlaut in Klammern);
+die technische ID erscheint nur im internen Build oder mit ?dev=1.
+Source-Guards gegen document.js/CSS."""
 
 from pathlib import Path
 
@@ -13,8 +14,11 @@ def test_resolved_name_captured_and_rendered():
     src = DOC_JS.read_text(encoding="utf-8")
     assert "resolved: (entity.getAttribute('data-hint')" in src
     assert "resolved: (el.getAttribute('data-hint')" in src
-    assert "identifiziert als " in src, (
-        "Die Annotationstabelle zeigt den aufgeloesten Registernamen nicht (B3)."
+    assert "let hasResolved = f.resolved && f.resolved !== f.name" in src, (
+        "Die Annotationstabelle loest die Identitaet nicht mehr auf (B3)."
+    )
+    assert 'class="anno-wording"' in src, (
+        "Der Quell-Wortlaut in Klammern fehlt (B3)."
     )
 
 
@@ -30,4 +34,4 @@ def test_id_only_internal_or_dev():
 
 def test_resolve_css_present():
     css = DOC_CSS.read_text(encoding="utf-8")
-    assert ".anno-resolved" in css and ".anno-ref" in css
+    assert ".anno-wording" in css and ".anno-ref" in css
