@@ -45,6 +45,20 @@ def test_faksimile_filter_entfernt():
     )
 
 
+def test_geschlecht_filter_umbenannt_ohne_none():
+    # A4: Filter heisst jetzt "Geschlecht der Beteiligten", die Option
+    # "ohne Personen" (value none) ist entfernt, weil sie keine
+    # Geschlechts-Aussage ist.
+    html = INDEX_HTML.read_text(encoding="utf-8")
+    assert "Geschlecht der Beteiligten" in html
+    assert "Geschlechter-Mix" not in html
+    assert ">ohne Personen<" not in html
+    src = INDEX_JS.read_text(encoding="utf-8")
+    assert "sex === 'none'" not in src, (
+        "Die none-Variante (ohne Personen) ist im Sex-Filter zurueck (A4)."
+    )
+
+
 def test_zeitraum_balken_setzt_kein_natives_title():
     # A5: ein natives title-Attribut am Histogramm-Balken erzeugt neben dem
     # eigenen hint.js-Tooltip einen zweiten Browser-Tooltip. Der Balken darf

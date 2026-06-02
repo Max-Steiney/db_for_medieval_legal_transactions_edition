@@ -42,7 +42,7 @@
             collection: '',
             place: '',         // sentinel '__none__' = "without place"
             facs: '',
-            sex: '',           // '' | 'with-f' | 'only-f' | 'only-m' | 'none'
+            sex: '',           // '' | 'with-f' | 'only-f' | 'only-m'
             forms: [],         // subset of 'R','S','E','N','none' — empty = all
             yearMin: 0,
             yearMax: 9999,
@@ -71,7 +71,6 @@
             if (sex === 'with-f') return doc.pcdf > 0;
             if (sex === 'only-f') return doc.pcdf > 0 && doc.pcdm === 0;
             if (sex === 'only-m') return doc.pcdm > 0 && doc.pcdf === 0;
-            if (sex === 'none') return doc.pcd === 0;
             return true;
         }
 
@@ -587,13 +586,12 @@
             }
             // Sex mix
             if (filterSex) {
-                let counts = {'with-f': 0, 'only-f': 0, 'only-m': 0, 'none': 0};
+                let counts = {'with-f': 0, 'only-f': 0, 'only-m': 0};
                 allDocs.forEach(function(doc) {
                     if (!matchesAllExcept(doc, 'sex')) return;
                     if (doc.pcdf > 0) counts['with-f']++;
                     if (doc.pcdf > 0 && doc.pcdm === 0) counts['only-f']++;
                     if (doc.pcdm > 0 && doc.pcdf === 0) counts['only-m']++;
-                    if (doc.pcd === 0) counts['none']++;
                 });
                 filterSex.querySelectorAll('option').forEach(function(opt) {
                     if (!opt.dataset.label) opt.dataset.label = opt.textContent.split(' (')[0];
@@ -868,8 +866,7 @@
                 let sexLabels = {
                     'with-f': 'Mit Frauenbeteiligung',
                     'only-f': 'Nur Frauen',
-                    'only-m': 'Nur Männer',
-                    'none':   'Ohne Personen'
+                    'only-m': 'Nur Männer'
                 };
                 TableInfra.addFilterChip(activeFiltersEl, 'Geschlecht: ' + (sexLabels[state.sex] || state.sex),
                     clearFilter('sex', function() { if (filterSex) filterSex.value = ''; }));
