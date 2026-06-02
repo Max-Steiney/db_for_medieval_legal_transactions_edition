@@ -476,6 +476,20 @@
 
 .annotations-table tr:hover td { background: var(--color-bg-warm); }
 
+/* Aufgeloeste Identitaet unter dem Quell-Wortlaut in der Genannt-als-Zelle:
+   Registername, plus technische ID nur im internen Build oder mit ?dev=1. */
+.anno-resolved {
+    display: block;
+    font-size: var(--text-xs);
+    color: var(--color-text-muted);
+}
+.anno-ref {
+    display: block;
+    font-family: var(--font-mono);
+    font-size: var(--text-2xs);
+    color: var(--color-text-light);
+}
+
 /* Event-Gruppen-Header in der Entitaeten-Tabelle. Bringt die strukturelle
    Zugehoerigkeit der Entitaeten zum jeweiligen Rechtsgeschaeft visuell
    ins Markup, ohne dass eine zweite "Ereignisse"-Tabelle noetig waere. */

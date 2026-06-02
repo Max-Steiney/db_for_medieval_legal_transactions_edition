@@ -109,6 +109,7 @@
                     attributes: attrs.join(', '),
                     event: eventSpan ? (eventSpan.getAttribute('data-ref') || '') : '',
                     ref: entity.getAttribute('data-ref') || '',
+                    resolved: (entity.getAttribute('data-hint') || '').trim(),
                     section: _sectionTypeFor(entity),
                     sex: entity.getAttribute('data-sex') || ''
                 });
@@ -134,6 +135,7 @@
                 attributes: elAttrs.join(', '),
                 event: elEvent ? (elEvent.getAttribute('data-ref') || '') : '',
                 ref: el.getAttribute('data-ref') || '',
+                resolved: (el.getAttribute('data-hint') || '').trim(),
                 section: _sectionTypeFor(el),
                 sex: el.getAttribute('data-sex') || ''
             });
@@ -332,6 +334,8 @@
             // die Gruppen-Reihenfolge bleibt fix (Dokument-Reihenfolge
             // der Events). Diese Logik lebt in _attachAnnotationSorting.
             let rootPath = (document.body && document.body.dataset.rootPath) || '..';
+            let showIds = (document.body && document.body.getAttribute('data-audience') === 'intern')
+                || document.documentElement.classList.contains('dev-mode');
 
             let entityGroups = {};
             let entityOrder = [];
@@ -380,6 +384,13 @@
                     nameMain = esc(f.name);
                 }
                 let nameCell = entityTypeMarker(f.type) + nameMain;
+                if (f.resolved && f.resolved !== f.name) {
+                    nameCell += '<span class="anno-resolved">identifiziert als '
+                        + esc(f.resolved) + '</span>';
+                }
+                if (showIds && f.ref) {
+                    nameCell += '<span class="anno-ref">' + esc(f.ref) + '</span>';
+                }
 
                 // Geschlecht ausgeschrieben (weiblich/maennlich), damit
                 // nichts abgekuerzt im UI steht. Nicht-Personen leer.
