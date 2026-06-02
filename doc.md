@@ -109,7 +109,8 @@ Regeln, die für alle Punkte gelten und deshalb nicht in jedem einzeln wiederhol
        3. Für die 149 Stadtbuch-Quellen klären, ob sie noch nicht annotiert sind oder als eigene Klasse zu führen sind.
    * Verifikation: [Quellen-Liste mit Filter „ohne Erschließungsform"](https://chpollin.github.io/db_for_medieval_legal_transactions_edition/documents.html?forms=none) zeigt die 176 oeffentlich sichtbaren (27 QGW-Privilegien plus 149 Stadtbuecher; Satzbuch CD nur im internen Build, Released-Scope gesamt 214); [eingeengt auf QGW](https://chpollin.github.io/db_for_medieval_legal_transactions_edition/documents.html?forms=none&collection=QGW/Vienna_1177-1414_ready) zeigt die 27 Privilegien-Quellen; [QGW Nr. 15 als Stichprobe](https://chpollin.github.io/db_for_medieval_legal_transactions_edition/documents/QGW/Vienna_1177-1414_ready/15.html).
 
-- [?] **Filter „Erschließungsform" für Nicht-Fachleute schwer einordnenbar.** (Herkunft: Stakeholder-Review 11.05.2026)
+- [x] **Filter „Erschließungsform" für Nicht-Fachleute schwer einordnenbar.** (Herkunft: Stakeholder-Review 11.05.2026; entschieden Stakeholder-Durchgang 02.06.2026)
+   * Entscheidung 02.06.2026: Der Filter wird komplett entfernt (Punkt A2), nicht nur konsolidiert. Siehe Abschnitt „Stakeholder-Durchgang 02.06.2026". Die folgenden Befunde dokumentieren den Stand davor.
    * Befund: In der Sidebar der Quellen-Liste filtert ein Block namens „Erschließungsform" über fünf Werte (Regest, Siegel, Eintrag, Nota, ohne). Stakeholder berichten, dass sowohl die Überschrift als auch einzelne Werte ohne editorisches Vorwissen schwer einzuordnen sind. Zwei strukturelle Schwächen kommen hinzu. Die Werte „Regest" und „Eintrag" decken sich faktisch mit dem Korpus-Filter direkt darüber. „Regest" zeigt fast nur QGW-Quellen, „Eintrag" fast nur Stadtbuch-Quellen, beide bringen gegenüber dem Korpus-Filter keinen Mehrwert. Nur „Siegel" und „Nota" sind echte Sonderfälle innerhalb der Korpora und filtern wirklich. Der Wert „ohne" (oeffentlich 176, im Released-Scope 214 inklusive Satzbuch CD) wirft die drei Pools aus dem vorherigen Punkt unter einem Label zusammen und ist in dieser Form nicht interpretierbar.
    * Offen, UI-Pfade zur Wahl.
        1. **Minimal-Pfad**, ohne Daten- oder Logik-Eingriff. Überschrift verständlicher benennen (Vorschlag „Editorische Sonderfälle" oder „Strukturen in der Quelle"); Tooltip-Texte mit Beispielen und Korpus-Bezug anreichern; einzeiligen Hilfe-Satz unter der Überschrift einbauen, der den Filter als „TEI-Strukturen pro Quelle, mehrere möglich" verständlich macht.
@@ -316,7 +317,7 @@ Regeln, die für alle Punkte gelten und deshalb nicht in jedem einzeln wiederhol
    * Offen: Datenpunkt-Provenance-Popover an Zahlen auf der Startseite und in Aggregat-Quadranten (zeigt, woher die Zahl kommt).
 - [~] **Datenkorb-Erklärung ergänzen** (Herkunft: Stakeholder-Protokoll 18.05.2026 A.1.2: „Datenkorb als gute Idee aber Erklärung und Testung notwendig.")
    * Umsetzung Stand 2026-05-23 (commit 9af4ca93d9): Mehrteiliger Erklär-Block direkt unter dem Titel: Persistenz (lokal im Browser, kein Login, kein Server-Sync, geht beim Cache-Leeren verloren), Bedeutung der Status-Marker „gesammelt" und „abgeleitet" inkl. Beförderungs-Mechanik per „*"-Knopf, Export-Verhalten der drei Knöpfe. Export-Knöpfe paarweise beschriftet: „Nur gesammelte exportieren" und „Mit abgeleiteten exportieren". Quellen-Knopf einfach „Quellen exportieren" (Quellen werden nicht abgeleitet). Spalte „Aktiv" in der Personen-Tabelle umbenannt zu „Datum der Quellen" plus Tooltip, konsistent mit Personen- und Org-Profil. Tooltip am Korb-Button in der Topbar ergänzt.
-   * Geklärt: Topbar-Counter (z. B. „32") summiert alle Einträge (gesammelt plus abgeleitet) über alle drei Sektionen. Kein Bug, dynamischer `breakdownText()`-Tooltip am Korb-Button erklärt das.
+   * Überholt 02.06.2026 (Punkt E1): Der Topbar-Counter summierte alle Einträge über alle Sektionen zu einer Zahl (1 Quelle plus 40 abgeleitete Personen = 41), was als unklar bemängelt wurde. Jetzt zeigt der Badge pro Entitätstyp eine eigene farbige Pille (Quelle grün, Person blau, Organisation violett); der Tooltip nennt dieselben Zahlen plus den abgeleiteten Anteil. Dazu ein globaler „Gesamten Datenkorb leeren"-Button. Siehe Abschnitt „Stakeholder-Durchgang 02.06.2026".
    * Verifikation: [Datenkorb-Seite](https://chpollin.github.io/db_for_medieval_legal_transactions_edition/korb.html). Hover über Korb-Button in der Topbar zeigt die Aufschlüsselung.
    * Offen: Sign-off Stakeholder. Sortierung der Tabellen und Such-/Filter-Funktion im Korb für große Sammlungen wären ein nächster Ausbau-Schritt.
 
@@ -358,3 +359,90 @@ Regeln, die für alle Punkte gelten und deshalb nicht in jedem einzeln wiederhol
    * Zwischenstand 2026-05-27 (Commit f18e92b064): Der davon unabhängige Anzeige-Bug ist behoben. Der aktive Rollen-Filter-Chip im Register zeigte den rohen englischen Schlüssel (issuer/recipient/...) statt eines deutschen Labels (`ROLE_LABELS[r].long` auf flacher Map ergab immer undefined). Direkter Zugriff `ROLE_LABELS[r] || r`; das Wording selbst bleibt bis zur Entscheidung unverändert.
 - [x] **Kategorie „Tod" in „als verstorben genannt" umbenennen.** (Herkunft: Stakeholder-Review)
    * Verifikation: [pe\_\_christian\_von\_strass\_StB\_I\_624](https://chpollin.github.io/db_for_medieval_legal_transactions_edition/register/persons/pe__christian_von_strass_StB_I_624.html)
+
+### **Stakeholder-Durchgang 02.06.2026**
+
+Arbeitsstand des Durchgangs, in den jeweiligen thematischen Punkten oben querverwiesen. Diese Sektion löst die frühere separate Datei `OFFENE-PUNKTE-MEETING.md` ab.
+
+#### A) Quellen-Liste und Filter-Sidebar
+
+- [x] **A1 Ausstellungsort aus der Volltextsuche entfernen.** (Herkunft: Stakeholder-Durchgang 02.06.2026)
+   * Umsetzung (Commit 8d90d9f, Rebuild 4b16f48): `doc.p` aus dem `_s`-Such-Haystack in `frontend/static/js/index.js` entfernt; Such-Hilfe und Platzhalter angepasst (kein „Ort" mehr). Der Ort bleibt über den eigenen Ort-Filter erreichbar, nicht über die Volltextsuche. Signatur bleibt bewusst durchsuchbar (Fundstelle aus der Fußnote auffindbar). Guard `frontend/tests/test_index_filters.py`.
+   * Verifikation: [Quellen-Liste](https://chpollin.github.io/db_for_medieval_legal_transactions_edition/documents.html).
+- [x] **A2 Erschließungsform-Filter komplett entfernen.** (Herkunft: Stakeholder-Durchgang 02.06.2026)
+   * Umsetzung (Commit 8d90d9f, Rebuild 4b16f48): Der gesamte Sidebar-Block (Regest/Siegel/Nota/ohne) aus `frontend/templates/index.html` entfernt. Die JS-Referenzen waren bereits defensiv mit `if (filterFormsEl)` abgesichert, das Entfernen des Markup genügte. Keine Tabellenspalte betroffen, das R/S/E/N-Symbol in den Zeilen bleibt. Löst den früheren offenen Schicht-2-Punkt „Erschließungsform-Filter konsolidieren".
+- [x] **A3 Faksimile-Filter komplett entfernen.** (Herkunft: Stakeholder-Durchgang 02.06.2026)
+   * Umsetzung (Commit 8d90d9f, Rebuild 4b16f48): Sidebar-Block `id="filter-facs"` aus `frontend/templates/index.html` entfernt, JS ebenfalls defensiv abgesichert. Guard in `test_index_filters.py`.
+- [?] **A4 Filter „Geschlechter-Mix" entfernen oder beschneiden.** (Herkunft: Stakeholder-Durchgang 02.06.2026)
+   * Befund: Notiz im Durchgang war „eher entfernen, verzerrend" plus „nur Personen (53) entfernen". Der Filter in der Quellen-Sidebar kann als Ganzes raus oder nur um einzelne Optionen beschnitten werden.
+   * Offen: Entscheidung, ganzer Filter raus gegen nur einzelne Optionen.
+- [x] **A5 Zeitraum-Histogramm zeigt zwei Tooltips gleichzeitig.** (Herkunft: Stakeholder-Durchgang 02.06.2026)
+   * Befund: Jeder Histogramm-Balken trug ein natives `title`-Attribut neben dem eigenen `data-hint` (hint.js), beim Drüberfahren überlagerten sich zwei Tooltips mit verschiedenen Zahlen.
+   * Umsetzung (Commit 0ea9797, Rebuild 0f60729): Statt `title` wird nur noch `data-hint` mit der live gefilterten Zahl gesetzt, in `index.js` und `register.js`. Guards in `test_index_filters.py` und `test_register_js.py` (`bar.title not in src`).
+   * Verifikation: [Quellen-Liste](https://chpollin.github.io/db_for_medieval_legal_transactions_edition/documents.html), Zeitraum-Histogramm.
+
+#### B) Faksimile-Viewer
+
+- [x] **B2 Faksimile sitzt bei langem Regest zu weit unten.** (Herkunft: Stakeholder-Durchgang 02.06.2026)
+   * Befund: Die Synopse stellte Text und Faksimile als gleich hohe Grid-Spalten (`align-items: stretch`); bei langem Regest wurde das Panel sehr hoch und OpenSeadragon zentrierte das Bild weit unter dem Fold.
+   * Umsetzung (Commit 7093051, Rebuild 50e0989): `.doc-facs-panel` ist jetzt `position: sticky` mit bildschirmrelativer Höhe statt grid-stretch; der Viewer bleibt beim Scrollen auf gleicher Höhe sichtbar. Guard `frontend/tests/test_facs_panel_sticky.py`.
+   * Verifikation: [QGW Nr. 105](https://chpollin.github.io/db_for_medieval_legal_transactions_edition/documents/QGW/Vienna_1177-1414_ready/105.html) (langes Regest), [QGW Nr. 2](https://chpollin.github.io/db_for_medieval_legal_transactions_edition/documents/QGW/Vienna_1177-1414_ready/2.html) (kurzes Regest).
+- [x] **B1 Vollbildansicht für den Viewer.** (Herkunft: Stakeholder-Durchgang 02.06.2026)
+   * Umsetzung (Commit 7093051, Rebuild 50e0989): Eigener Vollbild-Button links von Zoom +/-, native Fullscreen-API auf das gesamte `.facs-viewer`-Element, damit Seiten-Navigation und Zoom auch im Vollbild bedienbar bleiben. ESC und erneuter Klick schließen, Tooltip wechselt. `:fullscreen`-CSS füllt den Bildschirm randlos. Guard `frontend/tests/test_facs_fullscreen.py`.
+   * Verifikation: [QGW Nr. 2](https://chpollin.github.io/db_for_medieval_legal_transactions_edition/documents/QGW/Vienna_1177-1414_ready/2.html).
+- [?] **B3 doc 105: „ihr" soll mit echtem Namen aus der Verknüpfung angezeigt werden.** (Herkunft: Stakeholder-Durchgang 02.06.2026)
+   * Offen: Interne Version zusätzlich ID und Name. Noch zu klären, was genau im TEI annotiert ist.
+
+#### C) Rollen-Labels (siehe „Rollen-Label-Wording und projektweite Gender-Regel" oben)
+
+- [?] **C1 Rollen-Labels gendergerecht und konsistent über Profile, Sidebar, Tooltips.** (Herkunft: Stakeholder-Durchgang 02.06.2026)
+   * Verweis: deckt sich mit dem offenen Punkt „Rollen-Label-Wording und projektweite Gender-Regel" im Abschnitt „Sonstiges und Daten". Aktueller Anzeigestand: Aussteller, Empfänger, Zeuge / Siegler, Sonstige.
+- [?] **C2 Caveat zur Datenlage bei Zeuginnen und Sieglerinnen.** (Herkunft: Stakeholder-Durchgang 02.06.2026)
+   * Befund: In den Daten sind Zeugen fast ausschließlich männlich und nur in wenigen Beständen vorhanden. Beispiel-Beleg: In Quelle 502 (Stadtbuch) ist eine beteiligte Frau nicht als witness annotiert. Ein gendergerechtes Label darf nicht über diese Datenlage hinwegtäuschen. Bei den Stadtbüchern muss die witness-Kategorisierung generell nochmal geprüft werden.
+   * Offen: Gehört editorisch ins Schwester-Repo (siehe F1/F2), die Label-Wahl C1 darf die Realität nicht überzeichnen.
+
+#### D) Zitation und Zotero (siehe „Zitations-Button" oben)
+
+- [?] **D1 Zotero einbinden.** (Herkunft: Stakeholder-Durchgang 02.06.2026)
+   * Offen: eingebettete Metadaten (COinS/unAPI für den Zotero-Connector) gegen Export-Button.
+- [?] **D2 Zitation präzisieren.** (Herkunft: Stakeholder-Durchgang 02.06.2026)
+   * Offen: Detail kommt noch; deckt sich mit dem offenen Punkt „Zitations-Button" (gewünschte Zitierform noch offen).
+
+#### E) Datenkorb
+
+- [x] **E1 Topbar-Badge entitätsweise aufschlüsseln, globaler Leeren-Button.** (Herkunft: Stakeholder-Durchgang 02.06.2026)
+   * Befund: Der Badge summierte alle Einträge zu einer Zahl (Beispiel 41 = 1 gesammelte Quelle plus 40 abgeleitete Personen), unklar was im Korb liegt.
+   * Umsetzung (Commit ed6600c, Rebuild bc37157): Badge zeigt pro Entitätstyp eine farbige Pille (Quelle grün `--anno-place`, Person blau `--anno-person`, Organisation violett `--anno-org`), leere Typen ausgeblendet. Der Korb-Tooltip nutzt dieselbe Logik (Gesamtzahl pro Typ plus „Davon N abgeleitet"), Badge und Tooltip stimmen überein. Neuer globaler „Gesamten Datenkorb leeren"-Button im Korb-Header mit Sicherheitsabfrage, ausgeblendet bei leerem Korb. Dabei behobener Nebenbug: `.explore-btn` setzt `display: inline-flex` und schlug die UA-Regel `[hidden]{display:none}`, sodass der Button im leeren Korb sichtbar blieb; expliziter `[hidden]`-Reset ergänzt. Guards `test_basket_badge.py`, `test_basket_clear_all.py`.
+   * Verifikation: [Datenkorb-Seite](https://chpollin.github.io/db_for_medieval_legal_transactions_edition/korb.html). Eintrag auf einer Quellenseite hinzufügen, dann Nav-Badge und Korb-Header prüfen.
+- [ ] **Korb-Tabellen-Konsistenz mit den Listen-Seiten.** (Herkunft: eigene Beobachtung 02.06.2026)
+   * Befund: Die Korb-Seite rendert ihre drei Tabellen mit `aggregat-table` (Tabellenstil aus dem Analyse-/Explorationsbereich), während Quellen-Liste und Register die Listen mit `index-table` rendern (`register_list.html:106`). Die beiden Stil-Familien unterscheiden sich in Kopf, Zebra und Dichte. Da der Korb dieselben Entitäten listet wie die Register, wäre `index-table` konsistenter.
+   * Offen: Entscheidung, ob die Korb-Tabellen auf `index-table` umgestellt werden; betrifft `frontend/templates/korb.html` und `basket-page.js`.
+
+#### G) Freigabe-Entscheidung
+
+- [?] **G1 Stadtbücher Bd. 1 aus der öffentlichen Sicht nur in den internen Bereich.** (Herkunft: Stakeholder-Durchgang 02.06.2026)
+   * Befund: Umsetzung wäre eine Zeile (Korpus aus `PUBLIC_CORPORA` in `frontend/config` entfernen, bleibt in `RELEASED_CORPORA`), öffentlicher Build zeigte dann nur noch QGW bis 1414.
+   * Offen, zurückgestellt: Vom Nutzer am 02.06.2026 vorerst zurückgestellt („brauchen wir vorerst nicht").
+- [?] **G2 Leitsatz „wir sammeln nur alles was wir haben" präzisieren.** (Herkunft: Stakeholder-Durchgang 02.06.2026)
+   * Offen: Bedeutung und Konsequenz für die Darstellung noch zu klären.
+
+#### H) Org-Register, Typ-Filter
+
+- [x] **H1 Typ-Filter zeigt Rohcodes statt Labels.** (Herkunft: Stakeholder-Durchgang 02.06.2026)
+   * Befund: `_type_chip_data` in `frontend/build/_pages.py` setzte `label = key` (Kloster_f, Spital_Siechenhaus, …); das Mapping `label_org_type` lag nur in den Profilen.
+   * Umsetzung (Commit 0d8cb35, Rebuild 4b16f48): Helfer `_org_type_label` labelt Filter-Chips, Tabellenspalte, Datenkorb und Aktiv-Filter-Chip einheitlich (`tpl`-Feld in `_org_search_data`, gespiegelt in `register.js`). Guards in `test_register_pages.py`, `test_register_js.py`.
+   * Verifikation: [Organisations-Register](https://chpollin.github.io/db_for_medieval_legal_transactions_edition/register/orgs.html).
+- [x] **H2 OTHER ans Ende, als „Sonstige" anzeigen.** (Herkunft: Stakeholder-Durchgang 02.06.2026)
+   * Umsetzung (Commit 0d8cb35): `_org_type_label` mappt OTHER auf „Sonstige", Sortierschlüssel zieht OTHER und leeren Wert ans Ende.
+   * Verifikation: [Org-Register, Filter OTHER](https://chpollin.github.io/db_for_medieval_legal_transactions_edition/register/orgs.html?types=OTHER).
+- [x] **H-Folge Org-Typ einheitlich normalisiert und Chips dynamisch sortiert.** (Herkunft: Stakeholder-Durchgang 02.06.2026)
+   * Umsetzung (Commits ccbbf55 Normalisierung, Rebuild 26c1cc7; de7a954 dynamische Sortierung, Rebuild d138233): Tabellenspalte, Datenkorb und Aktiv-Filter-Chip zeigen jetzt überall das normalisierte Label statt des Rohcodes. Unter aktivem Filter sortieren sich die Typ-Chips dynamisch nach der live sichtbaren Zahl (Sammelposten OTHER/leer ans Ende), damit nicht eine kleinere Zahl über einer größeren steht.
+- [?] **H3 Wortwahl „Frauenklöster" gegen „Kloster (Frauenorden)".** (Herkunft: Stakeholder-Durchgang 02.06.2026)
+   * Offen: Im Listen/Filter-Kontext ein plurales Klassen-Label (Frauenklöster, Spitäler) gegen das singularische Profil-Label. Label-Konsistenz-Frage.
+
+#### F) Annotation und Datenkategorisierung (Schwester-Repo)
+
+- [ ] **F1 Stadtbuch 502: die Frau ist nicht als witness annotiert.** (Herkunft: Stakeholder-Durchgang 02.06.2026)
+   * Offen: editorische Korrektur im Schwester-Repo `db_for_medieval_legal_transactions`.
+- [ ] **F2 Kategorisierung in den Stadtbüchern generell prüfen.** (Herkunft: Stakeholder-Durchgang 02.06.2026)
+   * Offen: Rollen und Erschließung im Stadtbuch-Korpus nachsehen. Hängt mit C2 zusammen.
