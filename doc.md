@@ -374,9 +374,10 @@ Arbeitsstand des Durchgangs, in den jeweiligen thematischen Punkten oben querver
    * Umsetzung (Commit 8d90d9f, Rebuild 4b16f48): Der gesamte Sidebar-Block (Regest/Siegel/Nota/ohne) aus `frontend/templates/index.html` entfernt. Die JS-Referenzen waren bereits defensiv mit `if (filterFormsEl)` abgesichert, das Entfernen des Markup genügte. Keine Tabellenspalte betroffen, das R/S/E/N-Symbol in den Zeilen bleibt. Löst den früheren offenen Schicht-2-Punkt „Erschließungsform-Filter konsolidieren".
 - [x] **A3 Faksimile-Filter komplett entfernen.** (Herkunft: Stakeholder-Durchgang 02.06.2026)
    * Umsetzung (Commit 8d90d9f, Rebuild 4b16f48): Sidebar-Block `id="filter-facs"` aus `frontend/templates/index.html` entfernt, JS ebenfalls defensiv abgesichert. Guard in `test_index_filters.py`.
-- [?] **A4 Filter „Geschlechter-Mix" entfernen oder beschneiden.** (Herkunft: Stakeholder-Durchgang 02.06.2026)
-   * Befund: Notiz im Durchgang war „eher entfernen, verzerrend" plus „nur Personen (53) entfernen". Der Filter in der Quellen-Sidebar kann als Ganzes raus oder nur um einzelne Optionen beschnitten werden.
-   * Offen: Entscheidung, ganzer Filter raus gegen nur einzelne Optionen.
+- [x] **A4 Filter „Geschlechter-Mix" umbenennen, Option „ohne Personen" entfernen.** (Herkunft: Stakeholder-Durchgang 02.06.2026)
+   * Entscheidung 02.06.2026: Filter behalten, aber klarer benennen und die sachfremde Option entfernen.
+   * Umsetzung (Commit 6ab0714): „Geschlechter-Mix" heißt jetzt „Geschlecht der Beteiligten". Die Option „ohne Personen" (die 53 Quellen ganz ohne annotierte Person) ist entfernt, weil sie keine Geschlechts-Aussage trifft. Vier Optionen (alle, mit Frauenbeteiligung, nur Frauen, nur Männer). Template plus `index.js` (Match, Zähler, Aktiv-Filter-Label). Guard in `test_index_filters.py`.
+   * Verifikation: [Quellen-Liste, Sidebar](https://chpollin.github.io/db_for_medieval_legal_transactions_edition/documents.html).
 - [x] **A5 Zeitraum-Histogramm zeigt zwei Tooltips gleichzeitig.** (Herkunft: Stakeholder-Durchgang 02.06.2026)
    * Befund: Jeder Histogramm-Balken trug ein natives `title`-Attribut neben dem eigenen `data-hint` (hint.js), beim Drüberfahren überlagerten sich zwei Tooltips mit verschiedenen Zahlen.
    * Umsetzung (Commit 0ea9797, Rebuild 0f60729): Statt `title` wird nur noch `data-hint` mit der live gefilterten Zahl gesetzt, in `index.js` und `register.js`. Guards in `test_index_filters.py` und `test_register_js.py` (`bar.title not in src`).
@@ -407,8 +408,8 @@ Arbeitsstand des Durchgangs, in den jeweiligen thematischen Punkten oben querver
 
 #### D) Zitation und Zotero (siehe „Zitations-Button" oben)
 
-- [?] **D1 Zotero einbinden.** (Herkunft: Stakeholder-Durchgang 02.06.2026)
-   * Offen: eingebettete Metadaten (COinS/unAPI für den Zotero-Connector) gegen Export-Button.
+- [x] **D1 Zotero einbinden.** (Herkunft: Stakeholder-Durchgang 02.06.2026)
+   * Entscheidung 02.06.2026: wird nicht umgesetzt. Verworfen.
 - [?] **D2 Zitation präzisieren.** (Herkunft: Stakeholder-Durchgang 02.06.2026)
    * Offen: Detail kommt noch; deckt sich mit dem offenen Punkt „Zitations-Button" (gewünschte Zitierform noch offen).
 
