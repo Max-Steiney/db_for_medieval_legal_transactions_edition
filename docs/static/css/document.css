@@ -706,12 +706,13 @@
 .doc-body p:last-child { margin-bottom: 0; }
 
 
-/* --- Facsimile panel (always visible in synopsis) ---
-   The panel matches the height of the text card via grid stretch.
-   The viewer fills the panel; OpenSeadragon fits the image into
-   the remaining space below the control bar. */
+/* Facsimile panel: sticky, not grid-stretched. Long regest would
+   otherwise make the panel tall and center the image below the fold. */
 .doc-facs-panel {
-    height: 100%;
+    align-self: start;
+    position: sticky;
+    top: 8rem;
+    height: calc(100vh - 9rem);
 }
 
 .facs-viewer {
@@ -722,6 +723,13 @@
     border: 1px solid var(--color-border-light);
     border-radius: var(--radius-lg);
     background: var(--color-bg-warm);
+}
+
+.facs-viewer:fullscreen {
+    width: 100vw;
+    height: 100vh;
+    border: none;
+    border-radius: 0;
 }
 
 /* Single combined control bar: page navigation on the left,

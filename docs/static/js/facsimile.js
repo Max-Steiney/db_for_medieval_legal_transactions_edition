@@ -26,6 +26,8 @@
         let zoomOut = document.querySelector('.facs-zoom-out');
         let zoomReset = document.querySelector('.facs-zoom-reset');
         let rotateBtn = document.querySelector('.facs-rotate');
+        let fullscreenBtn = document.querySelector('.facs-fullscreen');
+        let viewerEl = document.querySelector('.facs-viewer');
 
         let viewer = OpenSeadragon({
             element: host,
@@ -81,6 +83,24 @@
             let next = (viewer.viewport.getRotation() + 90) % 360;
             viewer.viewport.setRotation(next);
         });
+
+        // Native fullscreen on the whole viewer so page nav and zoom stay usable.
+        if (fullscreenBtn && viewerEl && viewerEl.requestFullscreen) {
+            fullscreenBtn.addEventListener('click', function() {
+                if (document.fullscreenElement) {
+                    document.exitFullscreen();
+                } else {
+                    viewerEl.requestFullscreen();
+                }
+            });
+            document.addEventListener('fullscreenchange', function() {
+                let active = document.fullscreenElement === viewerEl;
+                fullscreenBtn.setAttribute('data-hint', active ? 'Vollbild verlassen' : 'Vollbild');
+                fullscreenBtn.setAttribute('aria-label', active ? 'Vollbild verlassen' : 'Vollbild');
+            });
+        } else if (fullscreenBtn) {
+            fullscreenBtn.style.display = 'none';
+        }
 
         // Reset rotation on page change so a new page does not start tilted.
         viewer.addHandler('open', function() {
