@@ -44,13 +44,13 @@
                     <ul>
                         <li><strong>Signatur</strong> (z.&nbsp;B. „0a", „1023")</li>
                         <li><strong>Datum</strong>, TEI-Form und Anzeigeform (z.&nbsp;B. „1177 V 10", „10.05.1177", „1198&ndash;1230")</li>
-                        <li><strong>Ort</strong> (Ausstellungsort)</li>
                         <li><strong>Korpus-Label</strong> (z.&nbsp;B. „QGW II/1", „Stadtb&uuml;cher Bd. 1")</li>
                         <li><strong>Regest</strong>, Anriss und Volltext</li>
                     </ul>
+                    <p>Der Ausstellungsort wird nicht durchsucht, daf&uuml;r gibt es den eigenen Ort-Filter.</p>
                     <p>Umlaute werden ignoriert, mehrere W&ouml;rter mit UND verkn&uuml;pft. Eine echte Volltext-Suche im Quellentext der Stadtb&uuml;cher ist das (noch) nicht.</p>
                 {% endcall %}</div>
-                {{ search_box('Signatur, Datum, Ort, Regest …') }}
+                {{ search_box('Signatur, Datum, Regest …') }}
             </section>
 
             {% call sidebar_block('Ort') %}
@@ -70,30 +70,6 @@
                     <option value="only-f">nur Frauen</option>
                     <option value="only-m">nur Männer</option>
                     <option value="none">ohne Personen</option>
-                </select>
-            {% endcall %}
-
-            <section class="sidebar-block">
-                <div class="sidebar-block-label">Erschließungsform{% call tip_help('forms-help', 'Erschließungsform') %}
-                    <p>Filtert die Quellen-Liste nach editorischen Strukturen, die in der Quelle annotiert sind.</p>
-                    <ul>
-                        <li><strong>Regest</strong>, redaktionelle Inhaltszusammenfassung</li>
-                        <li><strong>Siegel</strong>, Beschreibung der Sigille (Form, Material, Erhaltung)</li>
-                        <li><strong>Eintrag</strong>, Quelle ist Teil eines Stadtbuchs</li>
-                        <li><strong>Nota</strong>, Marginalie oder Nachsatz</li>
-                        <li><strong>ohne</strong>, keine dieser Strukturen erkannt</li>
-                    </ul>
-                    <p>Eine Quelle kann mehrere tragen. Mehrere Filter wirken als ODER-Verknüpfung: gezeigt werden Quellen, die mindestens einen der gewählten Werte erfüllen.</p>
-                {% endcall %}</div>
-                {{ sidebar_chip_group('filter-forms', 'data-form', form_data,
-                                      aria_label='Nach Erschließungsform filtern (Mehrfachauswahl)') }}
-            </section>
-
-            {% call sidebar_block('Faksimile') %}
-                <select id="filter-facs" aria-label="Faksimile">
-                    <option value="">alle</option>
-                    <option value="1">mit Faksimile ({{ facs_count }})</option>
-                    <option value="0">ohne Faksimile ({{ total_count - facs_count }})</option>
                 </select>
             {% endcall %}
 
