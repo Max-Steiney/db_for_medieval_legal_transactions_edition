@@ -364,9 +364,11 @@
     padding: var(--space-xs) var(--space-md);
 }
 .basket-section .basket-table tbody td {
-    background: #fff;
     padding: var(--space-xs) var(--space-md);
 }
+/* Nicht sortierbare Header (Regest, aus Quelle, Aktionen) tragen keinen
+   Pointer, damit nur die data-sort-Spalten als klickbar lesbar sind. */
+.basket-table th:not([data-sort]) { cursor: default; }
 .basket-section .basket-table tbody tr:hover td {
     background: var(--color-bg-warm);
 }

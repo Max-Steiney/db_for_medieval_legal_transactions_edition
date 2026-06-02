@@ -235,7 +235,7 @@ let DataBasket = (function () {
                     id:         o.id,
                     label:      o.n || o.id,
                     url:        'register/orgs/' + encodeURIComponent(o.id) + '.html',
-                    type_label: o.tp || '',
+                    type_label: o.tpl || o.tp || '',
                 }, srcId) || changed;
             });
             if (changed) write(items);

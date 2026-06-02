@@ -414,9 +414,15 @@
     };
 
     const ROLE_LABELS = {
-        issuer:    'Aussteller',
-        recipient: 'Empfänger',
-        witness:   'Zeuge / Siegler',
+        issuer:    'Aussteller*in',
+        recipient: 'Empfänger*in',
+        witness:   'Zeug*in / Siegler*in',
+        other:     'sonstige Beteiligung'
+    };
+    const ROLE_LABELS_PLURAL = {
+        issuer:    'Aussteller*innen',
+        recipient: 'Empfänger*innen',
+        witness:   'Zeug*innen / Siegler*innen',
         other:     'sonstige Beteiligung'
     };
     const ROLE_LIST = ['issuer', 'recipient', 'witness', 'other'];
@@ -450,7 +456,7 @@
         ROLE_LIST.forEach(r => {
             const o = document.createElement('option');
             o.value = r;
-            o.textContent = ROLE_LABELS[r];
+            o.textContent = ROLE_LABELS_PLURAL[r];
             if (p.role === r) o.selected = true;
             roleSel.appendChild(o);
         });
@@ -598,7 +604,7 @@
         ROLE_LIST.forEach(r => {
             const op = document.createElement('option');
             op.value = r;
-            op.textContent = ROLE_LABELS[r];
+            op.textContent = ROLE_LABELS_PLURAL[r];
             if (o.role === r) op.selected = true;
             roleSel.appendChild(op);
         });

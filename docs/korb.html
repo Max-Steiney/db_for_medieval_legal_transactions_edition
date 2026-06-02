@@ -10,16 +10,16 @@
     <title>Datenkorb, Datenbank</title>
     <link rel="preload" as="font" type="font/woff2" crossorigin
           href="./static/fonts/inter-400-latin.woff2">
-    <link rel="stylesheet" href="./static/css/fonts.css?v=20260602185231">
-    <link rel="stylesheet" href="./static/css/tokens.css?v=20260602185231">
-    <link rel="stylesheet" href="./static/css/base.css?v=20260602185231">
-    <link rel="stylesheet" href="./static/css/components.css?v=20260602185231">
-    <link rel="stylesheet" href="./static/css/responsive.css?v=20260602185231">
-    <link rel="stylesheet" href="./static/css/print.css?v=20260602185231">
-    <link rel="stylesheet" href="./static/css/tip.css?v=20260602185231">
+    <link rel="stylesheet" href="./static/css/fonts.css?v=20260602192209">
+    <link rel="stylesheet" href="./static/css/tokens.css?v=20260602192209">
+    <link rel="stylesheet" href="./static/css/base.css?v=20260602192209">
+    <link rel="stylesheet" href="./static/css/components.css?v=20260602192209">
+    <link rel="stylesheet" href="./static/css/responsive.css?v=20260602192209">
+    <link rel="stylesheet" href="./static/css/print.css?v=20260602192209">
+    <link rel="stylesheet" href="./static/css/tip.css?v=20260602192209">
     
-<link rel="stylesheet" href="./static/css/index.css?v=20260602185231">
-<link rel="stylesheet" href="./static/css/exploration.css?v=20260602185231">
+<link rel="stylesheet" href="./static/css/index.css?v=20260602192209">
+<link rel="stylesheet" href="./static/css/exploration.css?v=20260602192209">
 
 </head>
 <body data-root-path="."
@@ -157,13 +157,13 @@
                 </button>
             </div>
         </header>
-        <table class="aggregat-table basket-table" data-type-table="source">
+        <table class="index-table basket-table" data-type-table="source">
             <thead>
                 <tr>
-                    <th scope="col" class="col-idno"
+                    <th scope="col" class="col-idno" data-sort="idno"
                         data-hint="Quellen-Identifikator (idno) innerhalb des Korpus.">Nr.</th>
-                    <th scope="col" class="col-date">Datum</th>
-                    <th scope="col" class="col-coll">Quellenkorpus</th>
+                    <th scope="col" class="col-date" data-sort="date">Datum</th>
+                    <th scope="col" class="col-coll" data-sort="coll">Quellenkorpus</th>
                     <th scope="col" class="col-regest"
                         data-hint="Inhaltszusammenfassung der Quelle. Hier verkuerzt; vollstaendig in der Quellen-Detailseite.">Regest</th>
                     <th scope="col" class="col-actions" aria-label="Aktionen"></th>
@@ -209,12 +209,12 @@
                 </button>
             </div>
         </header>
-        <table class="aggregat-table basket-table" data-type-table="person">
+        <table class="index-table basket-table" data-type-table="person">
             <thead>
                 <tr>
-                    <th scope="col" class="col-name">Name</th>
-                    <th scope="col" class="col-sex">Geschlecht</th>
-                    <th scope="col" class="col-active"
+                    <th scope="col" class="col-name" data-sort="name">Name</th>
+                    <th scope="col" class="col-sex" data-sort="sex">Geschlecht</th>
+                    <th scope="col" class="col-active" data-sort="active"
                         data-hint="Erstes und letztes Jahr aus den Quellen, in denen die Person belegt ist.">Datum der Quellen</th>
                     <th scope="col" class="col-source"
                         data-hint="Quelle, ueber die diese Person automatisch eingespielt wurde. Nur bei abgeleiteten Eintraegen belegt.">aus Quelle</th>
@@ -261,11 +261,11 @@
                 </button>
             </div>
         </header>
-        <table class="aggregat-table basket-table" data-type-table="org">
+        <table class="index-table basket-table" data-type-table="org">
             <thead>
                 <tr>
-                    <th scope="col" class="col-name">Name</th>
-                    <th scope="col" class="col-type">Typ</th>
+                    <th scope="col" class="col-name" data-sort="name">Name</th>
+                    <th scope="col" class="col-type" data-sort="type">Typ</th>
                     <th scope="col" class="col-source"
                         data-hint="Quelle, ueber die diese Organisation automatisch eingespielt wurde. Nur bei abgeleiteten Eintraegen belegt.">aus Quelle</th>
                     <th scope="col" class="col-actions" aria-label="Aktionen"></th>
@@ -304,12 +304,12 @@
     </footer>
 
     <script id="role-labels" type="application/json">{"issuer": "Aussteller*in", "other": "Sonstige", "recipient": "Empf\u00e4nger*in", "witness": "Zeug*in / Siegler*in"}</script>
-    <script src="./static/js/core.js?v=20260602185231"></script>
-    <script src="./static/js/tip.js?v=20260602185231"></script>
-    <script src="./static/js/hint.js?v=20260602185231"></script>
-    <script src="./static/js/basket.js?v=20260602185231"></script>
+    <script src="./static/js/core.js?v=20260602192209"></script>
+    <script src="./static/js/tip.js?v=20260602192209"></script>
+    <script src="./static/js/hint.js?v=20260602192209"></script>
+    <script src="./static/js/basket.js?v=20260602192209"></script>
     
-<script src="./static/js/basket-page.js?v=20260602185231"></script>
+<script src="./static/js/basket-page.js?v=20260602192209"></script>
 
 </body>
 </html>
