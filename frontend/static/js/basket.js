@@ -289,34 +289,38 @@ let DataBasket = (function () {
     function updateBadge() {
         const badge = document.getElementById('nav-basket-count');
         const anchor = badge ? badge.closest('.nav-basket') : null;
-        const c = count();
         if (badge) {
-            badge.textContent = c > 0 ? String(c) : '';
-            badge.hidden = (c === 0);
+            let html = '';
+            ['source', 'person', 'org'].forEach(function (t) {
+                const n = count(t);
+                if (n > 0) {
+                    html += '<span class="nav-basket-pill nav-basket-pill--' +
+                        t + '">' + n + '</span>';
+                }
+            });
+            badge.innerHTML = html;
+            badge.hidden = (html === '');
         }
         if (anchor) {
             anchor.setAttribute('data-hint', breakdownText());
         }
     }
 
-    // Build a compact, comma-separated breakdown:
-    //   "Datenkorb: 3 Quellen, 1 Person, 2 Organisationen.
-    //    Abgeleitet 8 weitere."
-    // The second sentence is suppressed if there are no derived entries.
+    // Build a compact, comma-separated breakdown whose per-type numbers match
+    // the badge pills (totals per type), with the derived share as a suffix:
+    //   "Datenkorb: 1 Quelle, 35 Personen, 7 Organisationen. Davon 41 abgeleitet."
     function breakdownText() {
-        const gS = countGathered('source');
-        const gP = countGathered('person');
-        const gO = countGathered('org');
+        const tS = count('source');
+        const tP = count('person');
+        const tO = count('org');
         const dAll = countDerived();
-        if (gS + gP + gO + dAll === 0) return 'Datenkorb ist leer';
+        if (tS + tP + tO === 0) return 'Datenkorb ist leer';
         const parts = [];
-        if (gS) parts.push(gS === 1 ? '1 Quelle'       : gS + ' Quellen');
-        if (gP) parts.push(gP === 1 ? '1 Person'       : gP + ' Personen');
-        if (gO) parts.push(gO === 1 ? '1 Organisation' : gO + ' Organisationen');
-        let text = parts.length
-            ? 'Datenkorb: ' + parts.join(', ')
-            : 'Datenkorb: nichts gesammelt';
-        if (dAll) text += '. Abgeleitet ' + dAll + ' weitere';
+        if (tS) parts.push(tS === 1 ? '1 Quelle'       : tS + ' Quellen');
+        if (tP) parts.push(tP === 1 ? '1 Person'       : tP + ' Personen');
+        if (tO) parts.push(tO === 1 ? '1 Organisation' : tO + ' Organisationen');
+        let text = 'Datenkorb: ' + parts.join(', ');
+        if (dAll) text += '. Davon ' + dAll + ' abgeleitet';
         return text;
     }
 

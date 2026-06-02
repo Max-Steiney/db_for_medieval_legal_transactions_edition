@@ -133,6 +133,8 @@
         renderSection('org');
         const empty = document.getElementById('basket-empty-all');
         if (empty) empty.hidden = (DataBasket.count() > 0);
+        const clearAll = document.getElementById('basket-clear-all');
+        if (clearAll) clearAll.hidden = (DataBasket.count() === 0);
     }
 
     function csvDownload(filename, header, rows) {
@@ -219,6 +221,18 @@
                 renderAll();
             });
         });
+        // Global "clear everything" button lives in the header, outside the
+        // section delegation above.
+        const clearAll = document.getElementById('basket-clear-all');
+        if (clearAll) {
+            clearAll.addEventListener('click', () => {
+                if (DataBasket.count() === 0) return;
+                if (!confirm('Den gesamten Datenkorb leeren? Alle Quellen, ' +
+                    'Personen und Organisationen werden entfernt.')) return;
+                DataBasket.clear();
+                renderAll();
+            });
+        }
         // Reactive updates.
         window.addEventListener('basket-change', renderAll);
         window.addEventListener('storage', (e) => {
