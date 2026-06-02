@@ -1,17 +1,15 @@
-/* ==========================================================================
-   Hover hint: lightweight transient tooltip following the cursor.
-
-   Trigger contract: any element with [data-hint="text"]. Optionally a
-   small uppercase type label via [data-hint-type="Person"] etc.
-
-   Replaces native title-attributes for UI controls (Toolbar-Actions, Nav,
-   Histogram-Bars) and entity annotations in the document text
-   (.anno-person, .anno-org, .anno-place).
-
-   A single .tip-hint element is appended to body and positioned at the
-   cursor on mouseover. No click persistence, no ARIA dialog semantics --
-   this is decorative UI orientation, not content.
-   ========================================================================== */
+// Hover hint: lightweight transient tooltip following the cursor.
+//
+// Trigger contract: any element with [data-hint="text"]. Optionally a
+// small uppercase type label via [data-hint-type="Person"] etc.
+//
+// Replaces native title-attributes for UI controls (Toolbar-Actions, Nav,
+// Histogram-Bars) and entity annotations in the document text
+// (.anno-person, .anno-org, .anno-place).
+//
+// A single .tip-hint element is appended to body and positioned at the
+// cursor on mouseover. No click persistence, no ARIA dialog semantics --
+// this is decorative UI orientation, not content.
 
 (function () {
     'use strict';

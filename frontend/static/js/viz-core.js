@@ -1,18 +1,13 @@
-/* ==========================================================================
-   Stadt und Gemeinschaft Wien — Viz-Core
-   Shared visualisation layer for the data visualisation pages under
-   /analysis/ and /exploration/. Provides data loaders, decade helpers,
-   CSP-safe style projection, chip toggling, sidebar bindings and the
-   Active-Filter-Strip rendering. Domain constants (roles, relations,
-   sex labels) live here centrally so all pages stay consistent.
-   ========================================================================== */
+// Shared visualisation layer for the data visualisation pages under
+// /analysis/ and /exploration/. Provides data loaders, decade helpers,
+// CSP-safe style projection, chip toggling, sidebar bindings and the
+// Active-Filter-Strip rendering. Domain constants (roles, relations,
+// sex labels) live here centrally so all pages stay consistent.
 
 let VizCore = (function () {
     'use strict';
 
-    // ---------------------------------------------------------------------
     // Domain constants — kept consistent project-wide
-    // ---------------------------------------------------------------------
     const ROLE_LABELS = {
         'issuer':    'Aussteller*innen',
         'recipient': 'Empfänger*innen',
@@ -49,9 +44,6 @@ let VizCore = (function () {
         'unspecified': 'ohne Angabe',
     };
 
-    // ---------------------------------------------------------------------
-    // Number formatting
-    // ---------------------------------------------------------------------
     function fmt(n) {
         return (n || 0).toLocaleString('de-AT').replace(/,/g, '.');
     }
@@ -60,11 +52,9 @@ let VizCore = (function () {
         return ((n / total) * 100).toFixed(1).replace('.', ',');
     }
 
-    // ---------------------------------------------------------------------
     // Decade helpers — decade arithmetic and range filtering.
     // makeDecadeFilter(state) binds to a page state object holding numeric
     // fields decadeMin/decadeMax (null = no filter).
-    // ---------------------------------------------------------------------
     function decadeOf(year) { return Math.floor(year / 10) * 10; }
 
     function makeDecadeFilter(state) {
@@ -84,18 +74,15 @@ let VizCore = (function () {
         };
     }
 
-    // ---------------------------------------------------------------------
     // Turn pipeline underscore keys ("ueber_gabe") back into display form.
     // Umlaut recovery must be case-sensitive — otherwise "Uebergabe" would
     // not round-trip to "Übergabe".
-    // ---------------------------------------------------------------------
     function labelize(k) {
         return k.replace(/_/g, ' ')
             .replace(/Ae/g, 'Ä').replace(/Oe/g, 'Ö').replace(/Ue/g, 'Ü')
             .replace(/ae/g, 'ä').replace(/oe/g, 'ö').replace(/ue/g, 'ü');
     }
 
-    // ---------------------------------------------------------------------
     // CSP-safe style projection
     // CSP "style-src 'self'" blocks inline style="..." attributes. We
     // encode values as data attributes and project them after each
@@ -105,7 +92,6 @@ let VizCore = (function () {
     //   data-h        -> style.height = "<v>px"
     //   data-bg       -> style.background = "<v>"
     //   data-bottom   -> style.bottom = "<v>px"
-    // ---------------------------------------------------------------------
     function applyDataStyles(root) {
         if (!root) return;
         root.querySelectorAll('[data-w]').forEach(el => {
@@ -122,9 +108,7 @@ let VizCore = (function () {
         });
     }
 
-    // ---------------------------------------------------------------------
     // Read JSON from an embedded <script type="application/json">
-    // ---------------------------------------------------------------------
     function readJsonScript(id, fallback) {
         const el = document.getElementById(id);
         if (!el) return fallback || null;
@@ -135,11 +119,9 @@ let VizCore = (function () {
         }
     }
 
-    // ---------------------------------------------------------------------
     // Document preprocessing for search.json
     // Annotates each doc with _dec (parsable decade from di/d) and returns
     // {docs, byDecade} for fast lookup.
-    // ---------------------------------------------------------------------
     function preprocessDocs(raw) {
         const docs = [];
         const byDecade = new Map();
@@ -173,13 +155,11 @@ let VizCore = (function () {
         return fetch(root + '/data/docs_lookup.json').then(r => r.json());
     }
 
-    // ---------------------------------------------------------------------
     // Chip active-toggle helper
     // Marks the button matching activeKey in a chip group as active (CSS
     // class + aria-pressed); all others are cleared. activeClass defaults
     // to 'active' (sidebar standard); quadrant-header toggle buttons pass
     // 'is-active' instead.
-    // ---------------------------------------------------------------------
     function setActiveChip(group, activeKey, attr, activeClass) {
         if (!group) return;
         activeClass = activeClass || 'active';
@@ -190,13 +170,11 @@ let VizCore = (function () {
         });
     }
 
-    // ---------------------------------------------------------------------
     // Range-Slider binding
     // bindRangeSlider({state, onChange}) binds to the inputs generated by
     // the macro (#range-min, #range-max). Mutates state.decadeMin/decadeMax
     // (null when fully expanded -> no filter). Updates range-label-min/max
     // and histogram highlights. onChange fires after every change.
-    // ---------------------------------------------------------------------
     function bindRangeSlider(opts) {
         const state = opts.state;
         const onChange = opts.onChange || function () {};
@@ -275,12 +253,10 @@ let VizCore = (function () {
         updateRangeHistogram(parseInt(minEl.value, 10), parseInt(maxEl.value, 10));
     }
 
-    // ---------------------------------------------------------------------
     // URL state sync
     // parseUrlState() reads URL search parameters as a flat object.
     // writeUrlState({...}) writes via history.replaceState — no history
     // entries, no page loads. Empty/null values are dropped.
-    // ---------------------------------------------------------------------
     function parseUrlState() {
         const out = {};
         const p = new URLSearchParams(location.search);
@@ -316,7 +292,6 @@ let VizCore = (function () {
         return root + '/documents.html' + (qs ? '?' + qs : '');
     }
 
-    // ---------------------------------------------------------------------
     // Drill-down overlay
     // Uses the drill_down_overlay() macro from macros.html (which already
     // ships CSS, header, table, footer count and close button).
@@ -324,7 +299,6 @@ let VizCore = (function () {
     //                    decadeFilter, note }) populates the overlay table
     // and shows it. The caller has wired up the close handler once via
     // bindDrillOverlay().
-    // ---------------------------------------------------------------------
     // Element to return focus to after the drill-down overlay closes.
     let _drillReturnFocus = null;
 
@@ -466,12 +440,10 @@ let VizCore = (function () {
         }
     }
 
-    // ---------------------------------------------------------------------
     // Active-Filter-Strip
     // renderActiveFilters(containerId, filters) — filters is an array of
     // {label, onClear} objects. Each entry renders a removable pill;
     // clicking it calls onClear.
-    // ---------------------------------------------------------------------
     function renderActiveFilters(containerId, filters) {
         const el = document.getElementById(containerId);
         if (!el) return;
@@ -483,9 +455,6 @@ let VizCore = (function () {
         }
     }
 
-    // ---------------------------------------------------------------------
-    // Public API
-    // ---------------------------------------------------------------------
     return {
         // Constants
         ROLE_LABELS, ROLE_ORDER, ROLE_COLORS,

@@ -1,18 +1,16 @@
-/* ==========================================================================
-   Tip popover: persistent tooltip for glossary terms and data provenance.
-
-   Interaction model:
-   - Hover / focus     -> transient open (closes on leave)
-   - Click             -> pinned (stays open until explicitly closed)
-   - Hover over pinned -> ignored (prevents flicker)
-   - ESC / outside     -> closes both modes
-
-   Single shared mechanic for .tip-popover--glossary, --data and --help.
-   At most one popover is open at a time.
-
-   Trigger contract: any element with [data-tip="popover-id"]. The popover
-   element itself is .tip-popover with id="popover-id".
-   ========================================================================== */
+// Tip popover: persistent tooltip for glossary terms and data provenance.
+//
+// Interaction model:
+// - Hover / focus     -> transient open (closes on leave)
+// - Click             -> pinned (stays open until explicitly closed)
+// - Hover over pinned -> ignored (prevents flicker)
+// - ESC / outside     -> closes both modes
+//
+// Single shared mechanic for .tip-popover--glossary, --data and --help.
+// At most one popover is open at a time.
+//
+// Trigger contract: any element with [data-tip="popover-id"]. The popover
+// element itself is .tip-popover with id="popover-id".
 
 (function () {
     'use strict';
@@ -84,8 +82,6 @@
         }, HOVER_CLOSE_DELAY);
     }
 
-    // --- Click: pin / toggle / close -----------------------------------
-
     document.addEventListener('click', function (e) {
         let trigger = e.target.closest('[data-tip]');
         if (trigger) {
@@ -111,8 +107,6 @@
             close(currentOpen);
         }
     });
-
-    // --- Hover / focus: transient open ---------------------------------
 
     document.addEventListener('mouseover', function (e) {
         let trigger = e.target.closest('[data-tip]');
@@ -156,8 +150,6 @@
         if (!trigger) return;
         if (currentOpen && !pinned) scheduleHoverClose(currentOpen);
     });
-
-    // --- Keyboard: ESC closes ------------------------------------------
 
     document.addEventListener('keydown', function (e) {
         if (e.key === 'Escape' && currentOpen) {

@@ -1,7 +1,4 @@
-/* ==========================================================================
-   Stadt und Gemeinschaft Wien, digitale Edition
-   Index page: search, filter, sort, preview
-   ========================================================================== */
+/* Index page: search, filter, sort, preview. */
 
 (function() {
     'use strict';
@@ -276,9 +273,9 @@
         // data-tip-* and "i" affordance for the definition. The 'none' chip
         // ('ohne') has no table counterpart — icon omitted, definition stays.
         let FORM_LABELS = {R: 'Regest', S: 'Siegel', E: 'Eintrag', N: 'Nota', none: 'Ohne Erschließungsform'};
-        // Tooltip-Texte spiegeln die Erstdefinition aus dem Glossar
-        // (frontend/content/project/glossar.md). Bei Aenderungen dort
-        // hier nachziehen; der "im Glossar"-Link unten fuehrt zum Vollteext.
+        // Tooltip texts mirror the primary definition in the glossary
+        // (frontend/content/project/glossar.md). Keep in sync when that
+        // changes; the "im Glossar" link below points to the full text.
         let FORM_DESCRIPTIONS = {
             R: 'Redaktionelle Zusammenfassung des wesentlichen Inhalts einer Quelle, ohne den Quellentext im Wortlaut. Im TEI als <abstract>.',
             S: 'Beschreibung des oder der an einer Urkunde angebrachten Siegel: Form, Material, Erhaltung, gegebenenfalls siegelnde Person. Im TEI als <seal>.',
@@ -286,8 +283,8 @@
             N: 'Nachsatz oder Marginalie zur Hauptquelle, nachtraeglich angefuegt (Ergaenzung, Korrektur, Hinweis). Im TEI als <nota>.',
             none: 'Quelle ohne erkannte Erschliessungsform, keines der TEI-Elemente abstract, seal, entry, nota vorhanden. Drei verschiedene Pools sind hier zusammengefasst: QGW-Privilegien (parallel im Privilegienband ediert), Satzbuch CD insgesamt (noch nicht annotiert) und ein Teilbestand der Stadtbuecher (ohne <entry>).'
         };
-        // Glossar-Anker pro Form. Klick auf das i-Icon springt zur
-        // entsprechenden Stelle in /project/glossary.html.
+        // Glossary anchor per form. Clicking the i-icon jumps to the
+        // matching spot in /project/glossary.html.
         let FORM_GLOSSARY_SLUGS = {
             R: 'regest', S: 'siegel', E: 'eintrag', N: 'nota'
         };
@@ -317,9 +314,8 @@
                     let slug = FORM_GLOSSARY_SLUGS[key];
                     let info;
                     if (slug) {
-                        // i-Icon als Glossar-Link, oeffnet die Glossar-Seite
-                        // beim entsprechenden Eintrag. Klick auf das Icon
-                        // soll nicht den Chip selbst toggeln.
+                        // i-icon as a glossary link to the matching entry.
+                        // Clicking the icon must not toggle the chip itself.
                         info = document.createElement('a');
                         info.className = 'form-filter-chip-info';
                         info.href = (window.ROOT_PATH || '.') +
@@ -496,9 +492,9 @@
                 let pct = c > 0 ? Math.max(4, Math.round(c / maxCount * 100)) : 0;
                 bar.style.setProperty('--bar-height', pct + '%');
                 bar.setAttribute('data-count', c);
-                // Nur data-hint (hint.js) aktualisieren, kein natives title:
-                // sonst zweiter Browser-Tooltip mit der Build-Zeit-Zahl. Live-
-                // Zahl spiegelt jetzt die aktive Filterung.
+                // Update only data-hint (hint.js), no native title: otherwise
+                // a second browser tooltip shows the build-time number. The
+                // live number now reflects the active filtering.
                 bar.setAttribute('data-hint',
                     dec + 'er: ' + c + ' ' + (c === 1 ? 'Quelle' : 'Quellen'));
             });
@@ -788,10 +784,10 @@
                 thumbHtml = '<div class="preview-thumb"><img src="' + esc(doc.fu) + '" loading="lazy" alt="Faksimile"></div>';
             }
 
-            // Felder fuer den Meta-Strip: nur was in der Tabellenzeile NICHT
-            // sichtbar ist. Datum, Ort, Korpus, Personenanzahl stehen schon
-            // in den Spalten daneben \u2014 hier kommen Geschlechter-Aufschluesselung
-            // und Erschliessungsform-Klartext rein.
+            // Meta-strip fields: only what is NOT already visible in the
+            // table row. Date, place, corpus and person count are shown in
+            // the adjacent columns; here go the sex breakdown and the
+            // plain-text form of treatment.
             let metaParts = [];
             let sexParts = [];
             if (doc.pcdf) sexParts.push(doc.pcdf + ' weiblich');
@@ -903,17 +899,17 @@
             .then(function(r) { return r.json(); })
             .then(function(data) {
                 allDocs = data;
-                // Pre-compute search strings, Umlaut-tolerant ueber
-                // EdCore.normForSearch. Felder:
-                //   t   Regest-Anriss (200 Zeichen)
-                //   tf  Volltext-Regest (kann deutlich laenger sein,
-                //       insbesondere bei Stadtbuecher-Eintraegen)
-                //   d   TEI-Datum-Form (z.B. "1177 V 10")
-                //   dn  Anzeige-Datum (z.B. "10.05.1177", "1198-1230"),
-                //       damit die Tabellenform tippbar ist
-                //   id  Signatur, cl  Korpus-Label
-                // Ort (doc.p) ist bewusst NICHT im Volltext: Ortssuche
-                // laeuft ueber den eigenen Ort-Filter, nicht ueber die Suche.
+                // Pre-compute search strings, umlaut-tolerant via
+                // EdCore.normForSearch. Fields:
+                //   t   regest teaser (200 chars)
+                //   tf  full-text regest (can be much longer, especially
+                //       for Stadtbuch entries)
+                //   d   TEI date form (e.g. "1177 V 10")
+                //   dn  display date (e.g. "10.05.1177", "1198-1230"),
+                //       so the table form is typeable
+                //   id  shelfmark, cl  corpus label
+                // Place (doc.p) is deliberately NOT in the full text: place
+                // search runs via the dedicated place filter, not the search.
                 let norm = EdCore.normForSearch;
                 allDocs.forEach(function(doc) {
                     doc._s = norm([

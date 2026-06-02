@@ -1,7 +1,4 @@
-/* ==========================================================================
-   Stadt und Gemeinschaft Wien, digitale Edition
-   Facsimile viewer (OpenSeadragon)
-   ========================================================================== */
+// Facsimile viewer (OpenSeadragon)
 
 (function() {
     'use strict';

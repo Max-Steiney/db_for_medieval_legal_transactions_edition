@@ -1,37 +1,11 @@
-/* Entity-Profil-Interaktivitaet.
- *
- * Zwei progressive-enhancement-Aufgaben:
- *
- *  1. Tabellen-Truncation: rel-table und person-source-table tragen ein
- *     data-truncate-at-Attribut, wenn der Server mehr Zeilen als die
- *     Schwelle gerendert hat. Ueberzaehlige tr bekommen .is-overflow,
- *     ein Toggle-Button expandiert/zusammenfaltet die Tabelle.
- *
- *  2. Spalten-Sortierung: Tabellen mit .sortable-table und th[data-sort]
- *     reagieren auf Klicks im Header. Sortier-Werte kommen aus
- *     data-sort-value am td (ISO-Datum fuer chronologisch, sonst
- *     textContent), Default-Reihenfolge ist die serverseitige (meist
- *     chronologisch). Mechanik analog zu setupSortHeaders in
- *     table-infra.js, aber DOM-basiert statt array-basiert. Nach Sort
- *     wird die Truncate-Markierung neu vergeben, damit "erste N Zeilen"
- *     immer die ersten N nach aktueller Sortierung sind.
- *
- * Kein Framework, kein Build-Step, kein State ausserhalb des DOM. Alle
- * Sektionen sind serverseitig vollstaendig gerendert; das JS verbessert
- * nur die Sicht.
- *
- * Genannt-als-Bezeichnungen sind im aktuellen Markup ein <details>-
- * Element, das ohne JS kollabiert/aufklappt. Frueher gab es hier eine
- * separate Toggle-Logik (applySourceTitlesCollapse); die ist mit dem
- * Header-Refactor entfallen.
+/* Entity profile progressive enhancement: table truncation (rows beyond
+ * data-truncate-at get .is-overflow plus a toggle button) and click-to-sort
+ * columns (DOM-based, sort values from td[data-sort-value]). All sections are
+ * fully server-rendered; the JS only improves the view.
  */
 
 (function () {
     'use strict';
-
-    /* ----------------------------------------------------------------
-       Truncate
-       ---------------------------------------------------------------- */
 
     function reapplyTruncationMarks(table) {
         var threshold = parseInt(table.getAttribute('data-truncate-at') || '0', 10);
@@ -65,13 +39,8 @@
         table.insertAdjacentElement('afterend', btn);
     }
 
-    /* ----------------------------------------------------------------
-       Spalten-Sortierung
-       ----------------------------------------------------------------
-       Vergleichs-Primitive (sortKey, compareValues) liegen in EdCore.
-       Hier nur der DOM-Teil: data-sort-value pro td auslesen, tr-Sortier
-       und Truncate-Re-Mark. */
-
+    // Comparison primitives live in EdCore; this is only the DOM part:
+    // read data-sort-value per td, sort the tr, re-mark truncation.
     function cellValue(tr, colIndex) {
         var td = tr.children[colIndex];
         if (!td) return '';
@@ -86,14 +55,14 @@
         var tbody = table.querySelector('tbody');
         if (!tbody) return;
 
-        // Spalten-Index pro data-sort-Key einmal cachen (O(n) statt O(n^2)
-        // pro Sort-Klick).
+        // Cache column index per data-sort key once (O(n) instead of O(n^2)
+        // per sort click).
         var indexByKey = {};
         sortHeaders.forEach(function (h) {
             indexByKey[h.getAttribute('data-sort')] = allHeaders.indexOf(h);
         });
 
-        // Default-Reihenfolge (serverseitig, meist chronologisch) merken.
+        // Remember the default (server-side, usually chronological) order.
         var originalOrder = Array.prototype.slice.call(tbody.querySelectorAll('tr'));
         var state = { key: null, dir: 1 };
 
@@ -112,8 +81,8 @@
             var frag = document.createDocumentFragment();
             rows.forEach(function (tr) { frag.appendChild(tr); });
             tbody.appendChild(frag);
-            // Truncate-Markierung an neuer Position vergeben, damit "erste
-            // 50 Zeilen" zur aktuellen Sortierung passt.
+            // Re-mark truncation at the new positions so "first N rows"
+            // matches the current sort order.
             reapplyTruncationMarks(table);
         }
 
@@ -125,7 +94,7 @@
                     if (state.dir === 1) {
                         state.dir = -1;
                     } else {
-                        // Dritter Klick: Sortierung zuruecknehmen.
+                        // Third click: clear the sort.
                         state.key = null;
                         state.dir = 1;
                     }
@@ -150,10 +119,6 @@
     function applySortableTables() {
         document.querySelectorAll('table.sortable-table').forEach(setupSortableTable);
     }
-
-    /* ----------------------------------------------------------------
-       Init
-       ---------------------------------------------------------------- */
 
     function init() {
         document.querySelectorAll('table[data-truncate-at]').forEach(applyTruncation);

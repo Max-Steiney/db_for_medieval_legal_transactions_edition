@@ -1,34 +1,16 @@
-/* ==========================================================================
-   Stadt und Gemeinschaft Wien — analysis/index.html
-   Konstellations-Resolver
-
-   Datenbank-Abfrage-UI ueber docs/data/role_constellation.json.
-
-   - Anfangszustand: keine Personen-Box, leere Trefferliste.
-   - Forscherin klickt "+ Person hinzufuegen": neue nummerierte Box mit
-     Bedingungs-Slots (Rolle, Geschlecht, Beruf, Uhlirz-Klasse). Alle
-     Slots sind optional, die leere Rolle bedeutet "beliebige Rolle".
-   - Eine Box zaehlt als aktive Filter-Bedingung, sobald irgendein Slot
-     gesetzt ist; mindestens eine aktive Box => Treffer werden gerechnet.
-   - Live-Update bei jeder Aenderung, kein Submit.
-   - URL-Hash serialisiert den Abfrage-Stand, Reload reproduziert ihn.
-   - CSV-Export der aktuellen Tabelle.
-
-   Datenshape (role_constellation.json::events[]):
-     { e, f, c, d, tx,
-       p:  [ { p, n, r, s, t, o, u, nt? } ],
-       og: [ { g, n, r, tp } ]? }
-       r ∈ {issuer, recipient, witness, other}
-       s ∈ {m, f, ""}
-       o[] = occupation strings (Originalform)
-       u[] = Uhlirz-Berufsklassen
-       og[].tp ∈ org_type-Vokabular (Kloster_m, Pfarre, …)
-   ========================================================================== */
+// Constellation query UI for analysis/index.html, driven by
+// role_constellation.json. Each "+ Person/Organisation" box is an optional
+// filter condition; any non-empty box triggers live matching (no submit).
+// State round-trips through the URL hash; the current table exports to CSV.
+//
+// Event shape (role_constellation.json::events[]):
+//   { e, f, c, d, tx, p:[{p,n,r,s,t,o,u,nt?}], og:[{g,n,r,tp}]? }
+//   r in {issuer, recipient, witness, other}; s in {m, f, ""}
+//   o[] occupation strings (verbatim); u[] Uhlirz classes; og[].tp org type
 
 (function () {
     'use strict';
 
-    /* ---------- DOM-Bezuege ---------------------------------------------- */
     const root = document.querySelector('.analysis-query');
     if (!root) return;
 
@@ -39,9 +21,8 @@
     const addPersonBtn = root.querySelector('#qb-add-person');
     const addOrgBtn = root.querySelector('#qb-add-org');
     const resetBtn = root.querySelector('#filter-reset');
-    // Aktuell leer (UI im Template ausgeblendet, siehe analysis.html).
-    // Die scopeChips-forEach-Aufrufe weiter unten sind dann No-Ops; die
-    // Logik bleibt fuer den Fall, dass der Schalter wiederkommt.
+    // Empty for now (scope switch hidden in analysis.html); the scopeChips
+    // handlers below are then no-ops but kept in case it returns.
     const scopeChips = root.querySelectorAll('[data-filter="scope"] .qb-pill');
     const corpusChecksRoot = root.querySelector('#filter-corpora');
     const hitsSrc = root.querySelector('#hits-sources');
@@ -54,9 +35,8 @@
     const resultsToolbar = root.querySelector('#results-toolbar');
     const hitsTable = root.querySelector('#hits-table');
 
-    /* ---------- Daten ---------------------------------------------------- */
     let DATA = null;       // role_constellation.json
-    let DOCS_LOOKUP = {};  // file_key -> {u, i, d, c, r} aus docs_lookup.json
+    let DOCS_LOOKUP = {};  // file_key -> {u, i, d, c, r} from docs_lookup.json
     let OCC_VOCAB = [];    // [{value, count}]
     let dataPromise = null;
 
@@ -72,8 +52,7 @@
     function loadData() {
         if (DATA) return Promise.resolve(DATA);
         if (dataPromise) return dataPromise;
-        // role_constellation.json fuer die Trefferlogik, docs_lookup.json
-        // fuer korrekte Quellen-URLs und sprechende Idnos. Beide parallel.
+        // Load matching data and the lookup (source URLs + readable idnos) in parallel.
         const cstUrl = getDataUrl();
         const lookupUrl = (window.ROOT_PATH || '..') + '/data/docs_lookup.json';
         dataPromise = Promise.all([
@@ -92,7 +71,7 @@
         return dataPromise;
     }
 
-    // /analysis/ liegt eine Ebene tief; docs_lookup haelt root-relative URLs.
+    // /analysis/ sits one level deep; docs_lookup holds root-relative URLs.
     function docUrl(fileKey) {
         const rec = DOCS_LOOKUP[fileKey];
         if (rec && rec.u) return '../' + rec.u;
@@ -106,10 +85,9 @@
     try {
         OCC_VOCAB = JSON.parse(personsTable.dataset.occupationVocab || '[]');
     } catch (_) { OCC_VOCAB = []; }
-    // Voll-Vokabular: alle im Korpus belegten Berufsschreibungen (ca.
-    // 1500), nur als Lookup fuer den "auch erkannt"-Block. Das eigentliche
-    // Dropdown bleibt der Top-50-Vorschlag. Wenn der Build kein full
-    // mitliefert, fallen wir leise auf das normale Vokabular zurueck.
+    // Full vocabulary (all attested occupations) feeds only the "also
+    // recognized" block; the dropdown stays the top-50. Falls back silently
+    // to the normal vocabulary when the build ships no full list.
     let OCC_FULL_VOCAB = [];
     try {
         OCC_FULL_VOCAB = JSON.parse(personsTable.dataset.occupationFullVocab || '[]');
@@ -137,18 +115,9 @@
             : [];
     } catch (_) { ORG_TYPE_VOCAB = []; }
 
-    /* ---------- Autocomplete-Popover ------------------------------------ */
-    // Eigene Komponente statt nativer <datalist>, weil die OS-eigene
-    // Darstellung (besonders Windows-Chrome: dunkles Panel mit weißem
-    // Text) sich nicht stylen laesst. Das Popover ist:
-    //   - heller Hintergrund, gleiche Tokens wie der Rest der UI
-    //   - zeigt Vokabel-Wert + Hinweis "N Vorkommen im Korpus"
-    //   - Tastatur-Navigation mit Pfeil hoch/runter, Enter, Esc
-    //   - Filter case-insensitiv ueber alle Substrings; ohne Eingabe
-    //     werden die haeufigsten Eintraege oben gezeigt
-    //   - schließt sich bei Click ausserhalb und bei Tab/Blur
-    //   - genau eine Instanz zur Zeit; ist global im body verankert,
-    //     damit Tabellen-Overflow das Panel nicht abschneidet
+    // Custom popover instead of native <datalist>, which cannot be styled
+    // (Windows Chrome renders a dark panel with white text). One instance at
+    // a time, anchored on body so table overflow does not clip it.
     let activePopover = null;
     function closePopover() {
         if (activePopover) {
@@ -173,10 +142,9 @@
             try { return (getContext && getContext()) || null; }
             catch (_) { return null; }
         }
-        // Effektiver Count unter aktivem Filter. Sex-Filter wendet die
-        // Counts-pro-Geschlecht im Eintrag an; Typ-Filter setzt Items
-        // mit nicht passendem Typ auf 0, damit sie ausgegraut nach
-        // unten wandern statt zu verschwinden.
+        // Effective count under the active filter. Sex filter picks the
+        // per-sex count; type filter zeroes non-matching items so they grey
+        // out and sink instead of disappearing.
         function effectiveCount(item, c) {
             if (!c) return item.count || 0;
             if (c.sex === 'm') return item.count_m || 0;
@@ -192,7 +160,7 @@
                 ? vocab.filter(v => v.value.toLowerCase().includes(q))
                 : vocab.slice();
             const c = ctx();
-            // 0-Counts ans Ende, sonst stehen leere Vorschlaege oben.
+            // Zero counts to the end, else empty suggestions sit on top.
             if (c && (c.sex || c.orgType)) {
                 const decorated = matches.map((m, i) => ({
                     m, i, eff: effectiveCount(m, c),
@@ -208,9 +176,8 @@
             return matches.slice(0, 30);
         }
 
-        // Baut eine Vorschlags-Zeile. Primaer-Zeilen (variant 'primary')
-        // tragen Tastatur-Index und sex-aware Counts; Tail-Zeilen
-        // (variant 'extra') sind statisch und simpel.
+        // Build a suggestion row. Primary rows carry a keyboard index and
+        // sex-aware counts; tail rows ('extra') are static and plain.
         function makeRow(it, variant, primaryIdx, c, hasSexCounts) {
             const isPrimary = variant === 'primary';
             const eff = isPrimary ? effectiveCount(it, c) : (it.count || 0);
@@ -232,7 +199,7 @@
             meta.className = 'qb-ac-meta';
             if (isPrimary && hasSexCounts) {
                 const sexKey = c && c.sex;
-                // u-Segment nur einblenden, wenn relevant.
+                // Show the u segment only when relevant.
                 const showU = sexKey === 'u' || (it.count_u || 0) > 0;
                 function seg(cls, n, isActive) {
                     const s = document.createElement('span');
@@ -263,8 +230,7 @@
                     });
                 });
             }
-            // mousedown statt click: Blur-Event nimmt sonst das Popover
-            // weg, bevor click feuert.
+            // mousedown, not click: blur would tear down the popover first.
             row.addEventListener('mousedown', (e) => {
                 e.preventDefault();
                 input.value = it.value;
@@ -284,16 +250,16 @@
                 return;
             }
             const c = ctx();
-            // Sex-Counts gibt es nur im Beruf-Vokabular; Org-/Uhlirz-
-            // Eintraege tragen nur ein einzelnes count.
+            // Sex counts exist only in the occupation vocabulary; org/Uhlirz
+            // entries carry a single count.
             const hasSexCounts = 'count_m' in items[0] || 'count_f' in items[0];
             items.forEach((it, i) => {
                 panel.appendChild(makeRow(it, 'primary', i, c, hasSexCounts));
             });
 
-            // "Auch erkannt"-Block triggert bei Suchstring ODER aktivem
-            // Typ-Filter. Letzteres ist noetig, damit z. B. die 9 sehr
-            // seltenen Gemeinden auch ohne Eintippen sichtbar werden.
+            // The "also recognized" block triggers on a search string OR an
+            // active type filter; the latter so rare types (e.g. the few
+            // Gemeinden) surface without typing.
             const q = (input.value || '').trim().toLowerCase();
             const triggerByType = !!(c && c.orgType);
             if (!extra || (!q && !triggerByType)) return;
@@ -382,21 +348,11 @@
         });
     }
 
-    /* ---------- Zustand -------------------------------------------------- */
-    // State-Form:
-    //   { persons: [ {role, sex, occ, uhlirz} ],
-    //     orgs:    [ {role, name, type} ],
-    //     scope: 'event'|'source',
-    //     corpora: Set<string> }
-    // uhlirz ist Default '' (= "alle"); ein gesetzter Wert filtert auf
-    // genau diese Uhlirz-Kategorie, gematcht gegen die u-Liste der
-    // Participants in role_constellation.json.
-    // orgs.name ist eine Teilstring-Suche (case-insensitiv) auf dem
-    // Registernamen der Organisation; orgs.type filtert auf den exakten
-    // Typ (Kloster_m, Pfarre, …).
-    // corpora: leeres Set bedeutet "alle Korpora" (kein Filter); ein
-    // explizit befuelltes Set filtert auf die gewaehlten Korpora.
-    // Defaults werden aus den Checkboxen gelesen (alle initial aktiv).
+    // State: { persons:[{role,sex,occ,uhlirz}], orgs:[{role,name,type}],
+    //          scope:'event'|'source', corpora:Set<string> }
+    // occ and orgs.name are case-insensitive substring matches; uhlirz and
+    // orgs.type are exact. An empty corpora set means "all corpora".
+    // Defaults come from the checkboxes (all active initially).
     const ALL_CORPORA = corpusChecksRoot
         ? Array.from(corpusChecksRoot.querySelectorAll('input[data-corpus]'))
             .map(cb => cb.dataset.corpus)
@@ -406,9 +362,8 @@
         orgs: [],
         scope: 'event',
         corpora: new Set(ALL_CORPORA),
-        // Sortierung der Trefferliste. key ∈ {date, source, corpus, tx},
-        // dir 1 = aufsteigend, -1 = absteigend. Default: chronologisch,
-        // leere Daten ans Ende.
+        // Result sort: key in {date, source, corpus, tx}, dir 1 asc / -1 desc.
+        // Default chronological, empty dates last.
         sortKey: 'date',
         sortDir: 1
     };
@@ -428,13 +383,11 @@
     const ROLE_LIST = ['issuer', 'recipient', 'witness', 'other'];
     const SEX_LABELS = { m: 'männlich', f: 'weiblich', u: 'ohne Angabe' };
 
-    /* ---------- Renderer: Personen-Tabelle ------------------------------ */
     function renderPersonRow(idx, p) {
         const tr = document.createElement('tr');
         tr.className = 'qb-person-row';
         tr.dataset.personIdx = idx;
 
-        // Spalte Nr.
         const numTd = document.createElement('td');
         numTd.className = 'qb-col-num';
         const numSpan = document.createElement('span');
@@ -443,7 +396,7 @@
         numTd.appendChild(numSpan);
         tr.appendChild(numTd);
 
-        // Spalte Rolle (optional; leer = beliebige Rolle)
+        // Role (optional; blank = any role)
         const roleTd = document.createElement('td');
         roleTd.className = 'qb-col-role';
         const roleSel = document.createElement('select');
@@ -467,16 +420,14 @@
         roleTd.appendChild(roleSel);
         tr.appendChild(roleTd);
 
-        // Spalte Geschlecht (optional)
+        // Sex (optional)
         const sexTd = document.createElement('td');
         sexTd.className = 'qb-col-sex';
         const sexSel = document.createElement('select');
         sexSel.setAttribute('aria-label', 'Geschlecht Person ' + (idx + 1));
-        // 'u' (ohne Angabe) bewusst weggelassen: im aktuellen Korpus
-        // hat jede annotierte Person ein Geschlecht (m oder f), die
-        // Option liefert immer 0 Treffer. Falls spaeter Personen ohne
-        // Geschlechtsangabe ins Korpus kommen, einfach 'u' wieder
-        // aufnehmen.
+        // 'u' (unspecified) deliberately omitted: in the current corpus every
+        // annotated person has a sex (m or f), so the option always yields 0
+        // hits. Re-add 'u' once persons without a sex enter the corpus.
         ['', 'm', 'f'].forEach(v => {
             const o = document.createElement('option');
             o.value = v;
@@ -487,9 +438,8 @@
         sexSel.addEventListener('change', () => {
             state.persons[idx].sex = sexSel.value;
             sync();
-            // Wenn das Beruf-Autocomplete dieses Slots gerade offen ist,
-            // neu rendern, damit die sex-spezifischen Counts (und das
-            // Ausgrauen von 0-Eintraegen) sofort sichtbar sind.
+            // Re-render this slot's occupation autocomplete if open, so the
+            // sex-specific counts (and greying of 0 entries) show at once.
             if (activePopover && activePopover.input === occInput) {
                 activePopover.input.dispatchEvent(new Event('input', { bubbles: true }));
             }
@@ -497,7 +447,7 @@
         sexTd.appendChild(sexSel);
         tr.appendChild(sexTd);
 
-        // Spalte Beruf, Tätigkeit oder Amt (optional, Substring, Vorschlagsliste)
+        // Occupation (optional; substring match, with suggestion list)
         const occTd = document.createElement('td');
         occTd.className = 'qb-col-occ';
         const occInput = document.createElement('input');
@@ -510,8 +460,8 @@
             state.persons[idx].occ = occInput.value.trim();
             sync();
         });
-        // getContext liest das aktuell gesetzte Geschlecht aus dem
-        // State, damit Counts pro Beruf sex-aware angezeigt werden.
+        // getContext reads the current sex from state so per-occupation
+        // counts can be shown sex-aware.
         attachAutocomplete(occInput, {
             vocab: OCC_VOCAB,
             hint: 'Vorkommen im Korpus',
@@ -521,9 +471,8 @@
         occTd.appendChild(occInput);
         tr.appendChild(occTd);
 
-        // Spalte Uhlirz-Berufsklasse (optional, exakter Match auf
-        // Kategorie). Dropdown wird aus UHLIRZ_VOCAB gespeist; leerer
-        // Default-Wert bedeutet "alle".
+        // Uhlirz occupation class (optional; exact category match). Dropdown
+        // fed from UHLIRZ_VOCAB; empty default means "any".
         const uhlirzTd = document.createElement('td');
         uhlirzTd.className = 'qb-col-uhlirz';
         const uhlirzSel = document.createElement('select');
@@ -547,7 +496,6 @@
         uhlirzTd.appendChild(uhlirzSel);
         tr.appendChild(uhlirzTd);
 
-        // Spalte Entfernen
         const rmTd = document.createElement('td');
         rmTd.className = 'qb-col-rm';
         const rm = document.createElement('button');
@@ -571,18 +519,15 @@
         state.persons.forEach((p, idx) => {
             personsTbody.appendChild(renderPersonRow(idx, p));
         });
-        // Tabelle ausblenden, wenn keine Zeilen vorhanden — der Header
-        // alleine waere optisch leer.
+        // Hide the table when it has no rows; the header alone looks empty.
         personsTable.classList.toggle('is-empty', state.persons.length === 0);
     }
 
-    /* ---------- Renderer: Organisations-Tabelle ------------------------- */
     function renderOrgRow(idx, o) {
         const tr = document.createElement('tr');
         tr.className = 'qb-org-row';
         tr.dataset.orgIdx = idx;
 
-        // Spalte Nr.
         const numTd = document.createElement('td');
         numTd.className = 'qb-col-num';
         const numSpan = document.createElement('span');
@@ -591,7 +536,6 @@
         numTd.appendChild(numSpan);
         tr.appendChild(numTd);
 
-        // Spalte Rolle
         const roleTd = document.createElement('td');
         roleTd.className = 'qb-col-role';
         const roleSel = document.createElement('select');
@@ -615,7 +559,7 @@
         roleTd.appendChild(roleSel);
         tr.appendChild(roleTd);
 
-        // Spalte Name (Teilstring) mit Autocomplete
+        // Name (substring) with autocomplete
         const nameTd = document.createElement('td');
         nameTd.className = 'qb-col-org-name';
         const nameInput = document.createElement('input');
@@ -628,9 +572,9 @@
             state.orgs[idx].name = nameInput.value.trim();
             sync();
         });
-        // ORG_FULL_VOCAB ist hier essenziell: Typ-Filter wie "Gemeinde"
-        // haben alle 9 Treffer ausserhalb der Top-50, ohne extraVocab
-        // bliebe die Liste komplett ausgegraut.
+        // ORG_FULL_VOCAB is essential here: for type filters like "Gemeinde"
+        // all matches sit outside the top-50, so without extraVocab the list
+        // would be fully greyed out.
         attachAutocomplete(nameInput, {
             vocab: ORG_VOCAB,
             hint: 'Vorkommen im Korpus',
@@ -640,7 +584,6 @@
         nameTd.appendChild(nameInput);
         tr.appendChild(nameTd);
 
-        // Spalte Typ
         const typeTd = document.createElement('td');
         typeTd.className = 'qb-col-org-type';
         const typeSel = document.createElement('select');
@@ -660,9 +603,8 @@
         typeSel.addEventListener('change', () => {
             state.orgs[idx].type = typeSel.value;
             sync();
-            // Wenn das Name-Autocomplete dieses Slots gerade offen ist,
-            // neu rendern, damit Typ-passende Namen sofort oben stehen
-            // und nicht-passende ausgegraut werden.
+            // Re-render this slot's name autocomplete if open, so type-matching
+            // names move to the top and non-matching ones grey out.
             if (activePopover && activePopover.input === nameInput) {
                 activePopover.input.dispatchEvent(new Event('input', { bubbles: true }));
             }
@@ -670,7 +612,6 @@
         typeTd.appendChild(typeSel);
         tr.appendChild(typeTd);
 
-        // Spalte Entfernen
         const rmTd = document.createElement('td');
         rmTd.className = 'qb-col-rm';
         const rm = document.createElement('button');
@@ -700,7 +641,6 @@
         }
     }
 
-    /* ---------- Globale Filter: Verkabelung ----------------------------- */
     addPersonBtn.addEventListener('click', () => {
         state.persons.push({ role: '', sex: '', occ: '', uhlirz: '' });
         renderPersonsTable();
@@ -764,7 +704,6 @@
         sync();
     });
 
-    /* ---------- Matching ------------------------------------------------ */
     function eventInCorpus(ev) {
         if (!state.corpora.size) return false;
         return state.corpora.has(ev.c);
@@ -798,9 +737,9 @@
         return true;
     }
 
-    // Pro Treffer-Event ordnen wir jedem aktiven Block einen Participant zu
-    // (distinct, kein doppeltes Belegen einer Person). Liefert die Liste der
-    // zugeordneten Participants in Block-Reihenfolge, oder null bei Misserfolg.
+    // Assign each active card a distinct participant within the event (no
+    // person used twice). Returns the assigned participants in card order, or
+    // null if assignment fails.
     function assignParticipants(ev, cards) {
         const used = new Set();
         const out = [];
@@ -836,11 +775,10 @@
         return out;
     }
 
-    // Jede hinzugefuegte Card zaehlt als aktive Bedingung, auch wenn
-    // alle Slots leer sind: das explizite "+"-Klicken ist die Aussage
-    // "ich suche nach Person/Organisation hier". Eine leere Card
-    // matcht jede Person/Org und liefert damit den Trivialfall
-    // "alle Events mit mindestens N Beteiligten".
+    // Every added card counts as an active condition, even with all slots
+    // empty: clicking "+" asserts "I am searching for a person/org here". An
+    // empty card matches any person/org, giving the trivial "all events with
+    // at least N participants" case.
     function activeCards() {
         return state.persons.slice();
     }
@@ -857,7 +795,7 @@
         const events = DATA.events || [];
 
         if (state.scope === 'event') {
-            // Eng: Konstellation muss innerhalb desselben Events erfuellt sein.
+            // Narrow: the constellation must hold within the same event.
             const hits = [];
             for (const ev of events) {
                 if (!eventInCorpus(ev)) continue;
@@ -874,8 +812,8 @@
             return { hits: hits, cards: cards, orgCards: orgCards };
         }
 
-        // Weit: alle Bedingungen muessen in derselben Quelle (file_key)
-        // gemeinsam erfuellbar sein, nicht zwingend im selben Event.
+        // Wide: all conditions must be jointly satisfiable within the same
+        // source (file_key), not necessarily within the same event.
         const byFile = new Map();
         for (const ev of events) {
             if (!eventInCorpus(ev)) continue;
@@ -907,7 +845,6 @@
         return { hits: hits, cards: cards, orgCards: orgCards };
     }
 
-    /* ---------- Renderer: Treffer-Tabelle ------------------------------- */
     function renderHits(result) {
         const { hits, cards, orgCards } = result;
         const totalCards = cards.length + (orgCards ? orgCards.length : 0);
@@ -979,8 +916,8 @@
     }
 
     function buildPersonPill(p, num) {
-        // num=null -> "weitere Beteiligte" ohne Nummern-Pille und
-        // dezenter; num>=1 -> Bedingungs-Treffer mit Hervorhebung.
+        // num=null -> context participant, no number pill and toned down;
+        // num>=1 -> condition hit, highlighted.
         const pill = document.createElement('span');
         pill.className = 'person-pill' + (num == null ? ' is-context' : '');
         const tipParts = [p.n || p.p];
@@ -1054,21 +991,18 @@
 
         td(tr, ev.c, 'col-corpus');
 
-        // Beteiligte: Aussteller werden immer gezeigt (selten viele,
-        // fast immer 1-4). Empfaenger werden gezeigt, aber gekappt:
-        // bei mehr als RECIPIENT_LIMIT pro Entitaetstyp wandern die
-        // ueberzaehligen in den "+N weitere"-Ausklapper, wo auch alle
-        // Zeugen/Siegler und sonstigen Beteiligungen landen. So bleiben
-        // Stiftungen und Testamente lesbar, ohne die Konstellation zu
-        // verlieren. Bedingungs-Treffer (Nummern-Pille) sind IMMER
-        // sichtbar, egal in welcher Rolle und egal an welcher Position.
+        // Participants: issuers always shown (rarely many, almost always 1-4).
+        // Recipients shown but capped: beyond RECIPIENT_LIMIT per entity type
+        // the surplus moves into the "+N weitere" expander, where all
+        // witnesses/sealers and other participants also land. Condition hits
+        // (number pill) are ALWAYS visible, regardless of role or position.
         const personsTd = document.createElement('td');
         personsTd.className = 'col-persons';
 
         const RECIPIENT_LIMIT = 4;
 
-        // Index: welche Person/Org ist Bedingungs-Treffer? Reihenfolge
-        // entspricht den Bedingungs-Zeilen 1..N.
+        // Index: which person/org is a condition hit? Order follows the
+        // condition rows 1..N.
         const personHitIdx = new Map();
         hit.persons.forEach((p, idx) => personHitIdx.set(p.p, idx + 1));
         const orgHitIdx = new Map();
@@ -1077,9 +1011,9 @@
         const allPersons = ev.p || [];
         const allOrgs = ev.og || [];
 
-        // Trennung pro Entitaetstyp in Bedingungs-Treffer, Aussteller,
-        // Empfaenger und Rest. Bedingungs-Treffer aus den anderen
-        // Buckets rausfiltern, damit sie nicht doppelt erscheinen.
+        // Split per entity type into condition hits, issuers, recipients and
+        // rest. Condition hits are kept out of the other buckets so they do
+        // not appear twice.
         function partition(items, getId, hitMap) {
             const hits = [], issuers = [], recipients = [], rest = [];
             for (const it of items) {
@@ -1093,9 +1027,8 @@
         const pp = partition(allPersons, p => p.p, personHitIdx);
         const oo = partition(allOrgs, o => o.g, orgHitIdx);
 
-        // Sichtbar: Bedingungs-Treffer + alle Aussteller + die ersten
-        // RECIPIENT_LIMIT Empfaenger. Versteckt: ueberzaehlige
-        // Empfaenger + alles ueber andere Rollen.
+        // Visible: condition hits + all issuers + first RECIPIENT_LIMIT
+        // recipients. Hidden: surplus recipients + everything in other roles.
         const visiblePersons = [
             ...pp.hits, ...pp.issuers,
             ...pp.recipients.slice(0, RECIPIENT_LIMIT)
@@ -1146,7 +1079,6 @@
 
         td(tr, ev.tx || '', 'col-tx');
 
-        // Datenkorb-Button
         const basketTd = document.createElement('td');
         basketTd.className = 'col-basket';
         if (window.DataBasket && DataBasket.buttonHTML) {
@@ -1174,11 +1106,9 @@
     }
 
     function formatDate(s) {
-        // "1342-04-08" -> "8. Apr 1342". Stadtbuch-Eintraege ohne
-        // Einzeldatierung haben einen leeren d-Wert; im UI markieren
-        // wir das transparent als "—". Nur-Jahr-Daten ("1342") bleiben
-        // als Jahr stehen. Sortierung passiert separat ueber den
-        // ISO-String, nicht ueber diese Anzeigeform.
+        // "1342-04-08" -> "8. Apr 1342". Entries without a single date have an
+        // empty d-value, shown as "—"; year-only dates stay as the year.
+        // Sorting happens separately over the ISO string, not this display form.
         const t = (s || '').trim();
         if (!t) return '—';
         const m = /^(\d{4})(?:-(\d{2}))?(?:-(\d{2}))?$/.exec(t);
@@ -1193,9 +1123,8 @@
         return year;
     }
 
-    // Stabiler Sortier-Key fuer Treffer. Liefert einen String, der
-    // lexikographisch sortiert das gewuenschte Ergebnis liefert.
-    // Leere Werte landen am Ende (durch '~' als Prefix).
+    // Stable sort key for hits. Returns a string whose lexicographic order
+    // yields the desired result; empty values sort last (via '~' prefix).
     function hitSortKey(hit, key) {
         const ev = hit.ev;
         if (key === 'date') {
@@ -1217,7 +1146,7 @@
             const ka = hitSortKey(a, k), kb = hitSortKey(b, k);
             if (ka < kb) return -1 * dir;
             if (ka > kb) return 1 * dir;
-            // Tiebreaker: Quelle, damit die Reihenfolge stabil bleibt.
+            // Tiebreaker on source so the order stays stable.
             return a.ev.f.localeCompare(b.ev.f);
         });
     }
@@ -1226,10 +1155,9 @@
         return n.toLocaleString('de-DE');
     }
 
-    /* ---------- Aktive-Filter-Chips ------------------------------------- */
-    // Korpus-Auswahl wird bewusst nicht dupliziert: die Checkboxen oben
-    // sind die einzige Quelle der Wahrheit, ein zusaetzlicher "Korpus: …"-
-    // Pill waere Redundanz.
+    // Corpus selection is deliberately not duplicated: the checkboxes above
+    // are the single source of truth, an extra "Korpus: …" pill would be
+    // redundant.
     function renderActiveFilters() {
         if (!activeStrip || !window.VizCore) return;
         const pieces = [];
@@ -1250,9 +1178,8 @@
         window.VizCore.renderActiveFilters(activeStrip.id, pieces);
     }
 
-    /* ---------- URL-State ----------------------------------------------- */
-    // Pure Serialisierung/Parsing in analysis-url.js (window.AnalysisURL),
-    // damit Round-Trip-Tests ohne DOM laufen koennen. Hier nur DOM-Sync.
+    // Pure serialization/parsing lives in analysis-url.js (window.AnalysisURL)
+    // so round-trip tests can run without a DOM. Here only DOM sync.
     function writeUrl() {
         const snapshot = {
             persons: state.persons,
@@ -1277,8 +1204,8 @@
         if (parsed.persons.length) state.persons = parsed.persons;
         if (parsed.orgs.length) state.orgs = parsed.orgs;
         if (parsed.corpora) {
-            // Explizite Korpus-Auswahl aus URL ueberschreibt den
-            // All-Default. Checkboxen entsprechend synchronisieren.
+            // Explicit corpus selection from the URL overrides the all-default;
+            // sync the checkboxes accordingly.
             state.corpora.clear();
             parsed.corpora.forEach(c => state.corpora.add(c));
             if (corpusChecksRoot) {
@@ -1301,7 +1228,6 @@
         }
     }
 
-    /* ---------- CSV-Export ---------------------------------------------- */
     function csvEscape(s) {
         const str = (s == null) ? '' : String(s);
         if (/[",;\n]/.test(str)) return '"' + str.replace(/"/g, '""') + '"';
@@ -1311,8 +1237,7 @@
     function downloadCsv() {
         const result = compute();
         if (!result.hits.length) return;
-        // Identische Sortierung wie in der Tabelle: CSV soll exakt das
-        // wiedergeben, was die Forscherin am Bildschirm sieht.
+        // Same sort as the table so the CSV mirrors what is on screen.
         sortHits(result.hits);
         const orgCards = result.orgCards || [];
         const headers = ['Datum', 'Quelle', 'Korpus'];
@@ -1331,7 +1256,7 @@
             ];
             lines.push(row.map(csvEscape).join(';'));
         }
-        // BOM für Excel-Kompatibilitaet
+        // BOM for Excel compatibility
         const blob = new Blob(['﻿' + lines.join('\n')],
             { type: 'text/csv;charset=utf-8' });
         const url = URL.createObjectURL(blob);
@@ -1349,11 +1274,10 @@
         if (!csvBtn.hasAttribute('disabled')) downloadCsv();
     });
 
-    /* ---------- Onboarding: Beispiel-Abfragen --------------------------- */
-    // Eintraege koennen Personen- und Org-Bedingungen tragen. Format:
+    // Entries may carry person and org conditions. Format:
     //   { persons: [ {role, sex, occ, uhlirz} ], orgs: [ {role, name, type} ] }
-    // Alte Form (flaches Array) bleibt fuer Personen-only Beispiele aus
-    // Kompatibilitaet erhalten.
+    // The old form (flat array) is kept for compatibility with persons-only
+    // examples.
     const EXAMPLES = {
         'women-issuers': [
             { role: 'issuer', sex: 'f', occ: '' }
@@ -1383,7 +1307,7 @@
     function applyExample(key) {
         const tpl = EXAMPLES[key];
         if (!tpl) return;
-        // Personen-Liste: aus tpl.persons (neue Form) oder tpl selbst (alt).
+        // Persons list from tpl.persons (new form) or tpl itself (old form).
         const personsTpl = Array.isArray(tpl) ? tpl : (tpl.persons || []);
         const orgsTpl = Array.isArray(tpl) ? [] : (tpl.orgs || []);
         state.persons = personsTpl.map(p => ({
@@ -1396,7 +1320,7 @@
         renderPersonsTable();
         renderOrgsTable();
         sync();
-        // Scroll zur Personen-Tabelle, damit Forscherin sieht, was gesetzt wurde.
+        // Scroll to the persons table so the user sees what was set.
         personsTable.scrollIntoView({ behavior: 'smooth', block: 'center' });
     }
 
@@ -1404,21 +1328,17 @@
         btn.addEventListener('click', () => applyExample(btn.dataset.example));
     });
 
-    /* ---------- Sync-Loop ----------------------------------------------- */
     function sync() {
         writeUrl();
         renderActiveFilters();
         loadData().then(() => {
             renderHits(compute());
-        }).catch(() => {/* loadData hat schon Fehlertext gesetzt */});
+        }).catch(() => {/* loadData already set the error text */});
     }
 
-    /* ---------- State-Reset auf URL-Hash --------------------------------- */
-    // Setzt den gesamten Abfrage-Stand auf den Default zurueck und liest
-    // dann den aktuellen URL-Hash ein. Wird beim initialen Boot und bei
-    // jeder hashchange-Aenderung gerufen, damit Permalinks immer einen
-    // sauberen Zustand erzeugen, statt Reste aus vorigen Hash-Zustaenden
-    // mitzuschleppen.
+    // Reset the whole query state to default, then read the current URL hash.
+    // Called on initial boot and on every hashchange, so permalinks always
+    // produce a clean state instead of carrying over remnants of prior hashes.
     function resetStateFromUrl() {
         state.persons = [];
         state.orgs = [];
@@ -1442,8 +1362,8 @@
         renderOrgsTable();
     }
 
-    // Hat der Nutzer eine Abweichung vom Default-Zustand vorgenommen?
-    // Default = keine Personen/Orgs, scope=event, alle Korpora aktiv.
+    // Has the user diverged from the default state?
+    // Default = no persons/orgs, scope=event, all corpora active.
     function hasNonDefaultState() {
         return state.persons.length > 0 ||
                state.orgs.length > 0 ||
@@ -1461,11 +1381,10 @@
         }
     });
 
-    /* ---------- Spalten-Sortierung -------------------------------------- */
-    // Header tragen data-sort="date|source|corpus|tx". Klick wechselt
-    // den Sort-Key; erneuter Klick auf dieselbe Spalte dreht die Richtung.
-    // Visuelles Feedback ueber aria-sort und sorted-asc/sorted-desc-
-    // Klassen, die das globale Tabellen-CSS bereits stylt.
+    // Headers carry data-sort="date|source|corpus|tx". A click switches the
+    // sort key; clicking the same column again flips the direction. Visual
+    // feedback via aria-sort and sorted-asc/sorted-desc classes, already
+    // styled by the global table CSS.
     if (hitsTable) {
         const sortHeaders = hitsTable.querySelectorAll('th[data-sort]');
         function refreshSortIndicators() {
@@ -1481,8 +1400,8 @@
         }
         sortHeaders.forEach(th => {
             th.addEventListener('click', e => {
-                // Klicks auf Tipp-Trigger ignorieren — die oeffnen das
-                // Glossar-Popover, das ist ein anderer Interaktionspfad.
+                // Ignore clicks on tip triggers; they open the glossary
+                // popover, a separate interaction path.
                 if (e.target.closest('.tip-trigger, .tip-popover')) return;
                 const key = th.dataset.sort;
                 if (state.sortKey === key) state.sortDir *= -1;
@@ -1494,15 +1413,14 @@
         refreshSortIndicators();
     }
 
-    /* ---------- Boot ---------------------------------------------------- */
     readUrl();
     renderPersonsTable();
     renderOrgsTable();
-    // Daten erst beim ersten Sync laden — Initial-Render zeigt leere Tabelle.
+    // Load data only on the first sync; the initial render shows an empty table.
     if (hasNonDefaultState()) {
         sync();
     } else {
-        // Kein State aus URL: nur den UI-State darstellen, keine Daten laden.
+        // No state from URL: render only the UI state, load no data.
         renderActiveFilters();
         renderHits({ hits: [], cards: [], orgCards: [] });
     }
