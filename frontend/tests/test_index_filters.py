@@ -43,3 +43,14 @@ def test_faksimile_filter_entfernt():
     assert 'id="filter-facs"' not in html, (
         "Der Faksimile-Filter ist wieder in der Sidebar (A3)."
     )
+
+
+def test_zeitraum_balken_setzt_kein_natives_title():
+    # A5: ein natives title-Attribut am Histogramm-Balken erzeugt neben dem
+    # eigenen hint.js-Tooltip einen zweiten Browser-Tooltip. Der Balken darf
+    # nur data-hint aktualisieren.
+    src = INDEX_JS.read_text(encoding="utf-8")
+    assert "bar.title" not in src, (
+        "Histogramm-Balken setzt wieder ein natives title-Attribut: "
+        "zweiter Tooltip neben dem hint.js-Popover (A5)."
+    )

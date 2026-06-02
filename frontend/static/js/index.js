@@ -497,7 +497,11 @@
                 let pct = c > 0 ? Math.max(4, Math.round(c / maxCount * 100)) : 0;
                 bar.style.setProperty('--bar-height', pct + '%');
                 bar.setAttribute('data-count', c);
-                bar.title = dec + 'er: ' + c + ' Quellen';
+                // Nur data-hint (hint.js) aktualisieren, kein natives title:
+                // sonst zweiter Browser-Tooltip mit der Build-Zeit-Zahl. Live-
+                // Zahl spiegelt jetzt die aktive Filterung.
+                bar.setAttribute('data-hint',
+                    dec + 'er: ' + c + ' ' + (c === 1 ? 'Quelle' : 'Quellen'));
             });
         }
 

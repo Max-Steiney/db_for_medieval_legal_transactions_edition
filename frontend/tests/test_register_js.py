@@ -42,3 +42,13 @@ def test_org_type_chips_resort_by_live_count():
         "Die Typ-Chips werden nicht mehr dynamisch nach Zahl sortiert; "
         "die feste Build-Reihenfolge ist zurueck (Burg 3 ueber Orden 1)."
     )
+
+
+def test_zeitraum_balken_setzt_kein_natives_title():
+    # A5: doppelter Tooltip am Zeitraum-Histogramm. Der Balken darf kein
+    # natives title-Attribut setzen, nur data-hint aktualisieren.
+    src = REGISTER_JS.read_text(encoding="utf-8")
+    assert "bar.title" not in src, (
+        "Histogramm-Balken setzt wieder ein natives title-Attribut: "
+        "zweiter Tooltip neben dem hint.js-Popover (A5)."
+    )
