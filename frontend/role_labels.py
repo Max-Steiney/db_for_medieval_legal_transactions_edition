@@ -20,3 +20,14 @@ ROLE_LABELS = {
     "witness":   "Zeug*in / Siegler*in",
     "other":     "Sonstige",
 }
+
+# Plural-Variante fuer Kategorie-, Filter- und Aggregat-Kontexte (Register-
+# Sidebar-Chips, Aktiv-Filter, Abfrage-Dropdowns, Rollen-Verteilung), wo ein
+# Label eine Gruppe meint, nicht eine Einzelperson. Per-Person-Stellen
+# (Annotationstabelle, Profil, Tabellen-Pille) nutzen den Singular oben.
+ROLE_LABELS_PLURAL = {
+    "issuer":    "Aussteller*innen",
+    "recipient": "Empfänger*innen",
+    "witness":   "Zeug*innen / Siegler*innen",
+    "other":     "Sonstige",
+}

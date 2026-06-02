@@ -19,8 +19,9 @@ def test_role_filter_chip_uses_label_not_raw_key():
         "Der kaputte .long-Zugriff auf die flache ROLE_LABELS-Map ist zurueck; "
         "der Filter-Chip zeigt dann wieder den rohen Schluessel."
     )
-    assert "ROLE_LABELS[r] || r" in src, (
-        "Der Rollen-Filter-Chip soll das deutsche Label aus ROLE_LABELS nutzen."
+    assert "ROLE_LABELS_PLURAL[r] || r" in src, (
+        "Der Rollen-Filter-Chip (Kategorie-Kontext) soll das deutsche "
+        "Plural-Label aus ROLE_LABELS_PLURAL nutzen."
     )
 
 

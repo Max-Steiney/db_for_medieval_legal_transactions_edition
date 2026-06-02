@@ -49,9 +49,15 @@
             '</svg>'
     };
     let ROLE_LABELS = {
-        issuer:    'Aussteller',
-        recipient: 'Empfänger',
-        witness:   'Zeuge / Siegler',
+        issuer:    'Aussteller*in',
+        recipient: 'Empfänger*in',
+        witness:   'Zeug*in / Siegler*in',
+        other:     'Sonstige'
+    };
+    let ROLE_LABELS_PLURAL = {
+        issuer:    'Aussteller*innen',
+        recipient: 'Empfänger*innen',
+        witness:   'Zeug*innen / Siegler*innen',
         other:     'Sonstige'
     };
     let ROLE_DESCRIPTIONS = {
@@ -332,7 +338,7 @@
                     pill.innerHTML = ROLE_ICONS[k];
                     c.insertBefore(pill, c.firstChild);
                 }
-                let label = ROLE_LABELS[k] || '';
+                let label = ROLE_LABELS_PLURAL[k] || '';
                 let desc = ROLE_DESCRIPTIONS[k] || '';
                 if (desc) c.setAttribute('data-hint', desc);
                 if (label) c.setAttribute('data-hint-type', label);
@@ -646,7 +652,7 @@
             }
             if (state.roles.length) {
                 let label = 'Rolle: ' + state.roles.map(function(r) {
-                    return ROLE_LABELS[r] || r;
+                    return ROLE_LABELS_PLURAL[r] || r;
                 }).join(', ');
                 TableInfra.addFilterChip(activeFiltersEl, label, function() {
                     state.roles = [];

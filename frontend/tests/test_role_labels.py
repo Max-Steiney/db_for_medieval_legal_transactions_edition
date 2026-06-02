@@ -9,7 +9,7 @@ dass kein alter String mehr im Quellcode lebt.
 import re
 from pathlib import Path
 
-from frontend.role_labels import ROLE_LABELS
+from frontend.role_labels import ROLE_LABELS, ROLE_LABELS_PLURAL
 
 
 REPO_ROOT = Path(__file__).resolve().parent.parent.parent
@@ -26,6 +26,38 @@ class TestRoleLabelsCanonical:
         for key in ("issuer", "recipient", "witness", "other"):
             assert key in ROLE_LABELS
             assert ROLE_LABELS[key]
+
+
+class TestRoleLabelsPlural:
+    """Plural-Variante fuer Kategorie/Filter/Aggregat-Kontexte."""
+
+    def test_witness_plural(self):
+        assert ROLE_LABELS_PLURAL["witness"] == "Zeug*innen / Siegler*innen"
+
+    def test_issuer_recipient_plural(self):
+        assert ROLE_LABELS_PLURAL["issuer"] == "Aussteller*innen"
+        assert ROLE_LABELS_PLURAL["recipient"] == "Empfänger*innen"
+
+    def test_kategorie_js_nutzt_plural_witness(self):
+        # Register-Sidebar/Aktiv-Filter, Abfrage-Dropdown und Rollen-
+        # Verteilung sind Kategorie-Kontexte und tragen den Plural.
+        for rel in ("static/js/register.js", "static/js/viz-core.js",
+                    "static/js/analysis-resolver.js"):
+            text = (FRONTEND_ROOT / rel).read_text(encoding="utf-8")
+            assert "Zeug*innen / Siegler*innen" in text, (
+                f"{rel} traegt nicht das Plural-witness-Label."
+            )
+
+    def test_query_vocabulary_plural(self):
+        text = (FRONTEND_ROOT / "content" / "query_vocabulary.json").read_text(
+            encoding="utf-8")
+        assert "Zeug*innen / Siegler*innen" in text
+
+    def test_pages_baut_chips_aus_plural_ssot(self):
+        text = (FRONTEND_ROOT / "build" / "_pages.py").read_text(encoding="utf-8")
+        assert "ROLE_LABELS_PLURAL[key]" in text, (
+            "Register-Sidebar-Chips werden nicht aus der Plural-SSoT gebaut."
+        )
 
 
 class TestRoleLabelsKonsumenten:

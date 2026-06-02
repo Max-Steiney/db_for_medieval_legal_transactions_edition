@@ -28,6 +28,7 @@ from frontend.build._kpi import (
     _released_person_keys, _persons_with_org_released,
 )
 from frontend.aggregator._profile_labels import label_org_type
+from frontend.role_labels import ROLE_LABELS_PLURAL
 
 
 # Controlled role vocabulary for the persons register.
@@ -444,22 +445,17 @@ def _build_persons_register(persons, reverse_index, env):
     for row in search_data:
         for r in row["rl"]:
             role_counts[r] += 1
-    ROLE_LABELS = {
-        "issuer":    "Aussteller",
-        "recipient": "Empfänger",
-        "witness":   "Zeuge / Siegler",
-        "other":     "Sonstige",
-    }
     # Sidebar chips show only label + count — analogous to the
     # form-of-treatment chips on the sources page. Icon differentiation
-    # happens in the table pills (see register.js ROLE_ICONS).
+    # happens in the table pills (see register.js ROLE_ICONS). Kategorie-
+    # Kontext, daher Plural-Labels aus der SSoT.
     role_data = []
     for key in PERSON_ROLES:
         c = role_counts.get(key, 0)
         if c > 0:
             role_data.append({
                 "key":   key,
-                "label": ROLE_LABELS[key],
+                "label": ROLE_LABELS_PLURAL[key],
                 "count": c,
             })
 
