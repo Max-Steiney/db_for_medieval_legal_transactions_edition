@@ -371,39 +371,42 @@
             }
 
             function entityRow(f) {
-                let nameMain;
+                // Anzeigename: aufgeloeste Identitaet zuerst, Quell-Wortlaut
+                // in Klammern dahinter, wenn beide sich unterscheiden.
+                let hasResolved = f.resolved && f.resolved !== f.name;
+                let primary = hasResolved ? f.resolved : f.name;
+                let primaryHtml;
                 if (f.type === 'Person' && f.ref && f.ref.indexOf('pe__') === 0) {
-                    nameMain = '<a class="anno-table-link" href="'
+                    primaryHtml = '<a class="anno-table-link" href="'
                         + esc(rootPath) + '/register/persons/' + esc(f.ref) + '.html">'
-                        + esc(f.name) + '</a>';
+                        + esc(primary) + '</a>';
                 } else if (f.type === 'Organisation' && f.ref && f.ref.indexOf('org__') === 0) {
-                    nameMain = '<a class="anno-table-link" href="'
+                    primaryHtml = '<a class="anno-table-link" href="'
                         + esc(rootPath) + '/register/orgs/' + esc(f.ref) + '.html">'
-                        + esc(f.name) + '</a>';
+                        + esc(primary) + '</a>';
                 } else {
-                    nameMain = esc(f.name);
+                    primaryHtml = esc(primary);
                 }
-                let nameCell = entityTypeMarker(f.type) + nameMain;
-                if (f.resolved && f.resolved !== f.name) {
-                    nameCell += '<span class="anno-resolved">identifiziert als '
-                        + esc(f.resolved) + '</span>';
+                let nameCell = entityTypeMarker(f.type) + primaryHtml;
+                if (hasResolved) {
+                    nameCell += ' <span class="anno-wording">(' + esc(f.name) + ')</span>';
                 }
                 if (showIds && f.ref) {
                     nameCell += '<span class="anno-ref">' + esc(f.ref) + '</span>';
                 }
 
-                // Geschlecht ausgeschrieben (weiblich/maennlich), damit
-                // nichts abgekuerzt im UI steht. Nicht-Personen leer.
+                // Geschlecht als Kurzform m/w wie im Register und Korb.
+                // Nicht-Personen leer.
                 let sexCell = '';
                 let sexSort = '';
                 if (f.type === 'Person') {
-                    if (f.sex === 'm') { sexCell = '<span class="anno-sex">männlich</span>'; sexSort = 'm'; }
-                    else if (f.sex === 'f') { sexCell = '<span class="anno-sex">weiblich</span>'; sexSort = 'w'; }
+                    if (f.sex === 'm') { sexCell = '<span class="anno-sex">m</span>'; sexSort = 'm'; }
+                    else if (f.sex === 'f') { sexCell = '<span class="anno-sex">w</span>'; sexSort = 'w'; }
                     else { sexCell = '<span class="anno-sex anno-sex--unknown">' + DASH + '</span>'; sexSort = 'z'; }
                 }
                 let attrArr = f.attributes ? f.attributes.split(/, /).filter(Boolean) : [];
                 return '<tr' + tipAttrs(f.type + '-Annotation', entityTipBody(f)) + '>'
-                    + '<td' + sortAttr(f.name) + '>' + nameCell + '</td>'
+                    + '<td' + sortAttr(primary) + '>' + nameCell + '</td>'
                     + '<td' + sortAttr(f.role) + '>' + rolePill(f.role) + '</td>'
                     + '<td' + sortAttr(f.attributes) + '>' + attrTags(attrArr) + '</td>'
                     + '<td' + sortAttr(sexSort) + '>' + sexCell + '</td>'

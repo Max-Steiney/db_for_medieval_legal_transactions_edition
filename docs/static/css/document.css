@@ -476,12 +476,11 @@
 
 .annotations-table tr:hover td { background: var(--color-bg-warm); }
 
-/* Aufgeloeste Identitaet unter dem Quell-Wortlaut in der Genannt-als-Zelle:
-   Registername, plus technische ID nur im internen Build oder mit ?dev=1. */
-.anno-resolved {
-    display: block;
-    font-size: var(--text-xs);
+/* Genannt-als-Zelle: aufgeloeste Identitaet als Hauptname, der Quell-
+   Wortlaut in Klammern dahinter; technische ID nur intern oder mit ?dev=1. */
+.anno-wording {
     color: var(--color-text-muted);
+    font-style: italic;
 }
 .anno-ref {
     display: block;
