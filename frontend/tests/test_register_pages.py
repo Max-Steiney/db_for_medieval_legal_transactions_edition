@@ -13,7 +13,9 @@ from frontend.build import (
     _org_search_data,
     _build_register_json,
 )
-from frontend.build._pages import _short_collection_label, _type_chip_data
+from frontend.build._pages import (
+    _short_collection_label, _type_chip_data, _org_type_label,
+)
 from frontend.register import load_persons, load_orgs, load_places
 
 
@@ -247,7 +249,42 @@ class TestSearchDataStructure:
         data = _org_search_data(orgs, reverse)
         assert data[0]["dc"] == 1
         assert data[0]["tp"] == "Kloster"
+        # tpl traegt das normalisierte Label fuer die Tabellenspalte, der
+        # rohe tp bleibt fuer das Filter-Matching erhalten.
+        assert data[0]["tpl"] == "Kloster"
         assert "u" not in data[0]
+
+    def test_org_search_data_labels_raw_code(self):
+        orgs = {"org__x": {"name": "X", "type": "Kloster_f"},
+                "org__y": {"name": "Y", "type": "OTHER"}}
+        reverse = {
+            "org__x": [{"url": "a", "idno": "1", "date_iso": "1300-01-01",
+                        "date_display": "1300", "collection_path": "QGW/Vienna_1177-1414_ready",
+                        "collection_label": "QGW", "regest": ""}],
+            "org__y": [{"url": "b", "idno": "2", "date_iso": "1300-01-01",
+                        "date_display": "1300", "collection_path": "QGW/Vienna_1177-1414_ready",
+                        "collection_label": "QGW", "regest": ""}],
+        }
+        by_id = {d["id"]: d for d in _org_search_data(orgs, reverse)}
+        assert by_id["org__x"]["tpl"] == "Kloster (Frauenorden)"
+        assert by_id["org__x"]["tp"] == "Kloster_f"
+        assert by_id["org__y"]["tpl"] == "Sonstige"
+
+
+class TestOrgTypeLabel:
+    def test_known_codes(self):
+        assert _org_type_label("Kloster_f") == "Kloster (Frauenorden)"
+        assert _org_type_label("Spital_Siechenhaus") == "Spital / Siechenhaus"
+
+    def test_other_and_empty(self):
+        assert _org_type_label("OTHER") == "Sonstige"
+        assert _org_type_label("") == "ohne Angabe"
+        assert _org_type_label(None) == "ohne Angabe"
+
+    def test_unknown_falls_through_readable(self):
+        # Nicht gemappte Codes fallen lesbar durch (Unterstrich -> Leerzeichen).
+        assert _org_type_label("Gemeinde") == "Gemeinde"
+        assert _org_type_label("Zeche_Bruderschaft") == "Zeche Bruderschaft"
 
 class TestRegisterJson:
     """Test that _build_register_json writes correct JSON files."""

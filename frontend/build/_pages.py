@@ -376,6 +376,7 @@ def _org_search_data(orgs, reverse_index):
             "id": xml_id,
             "n":  o["name"],
             "tp": o["type"],
+            "tpl": _org_type_label(o["type"]),
             "dc": len(docs),
             "am": am,
             "ax": ax,
@@ -534,30 +535,33 @@ def _build_persons_register(persons, reverse_index, env):
 # ---------------------------------------------------------------------------
 
 
+def _org_type_label(key):
+    """German display label for an org-type code, uniform across the
+    register: filter chips, table column, basket export and active-filter
+    strip all read the same mapping. Catch-all ``OTHER`` reads "Sonstige",
+    the empty key "ohne Angabe", everything else via ``label_org_type``."""
+    if key == "" or key is None:
+        return "ohne Angabe"
+    if key == "OTHER":
+        return "Sonstige"
+    return label_org_type(key)
+
+
 def _type_chip_data(search_data):
     """Build chip data for the ``tp`` (type) facet on orgs/places.
 
-    Aggregates counts per distinct ``tp`` value. Raw codes are turned into
-    German display labels via ``label_org_type`` (the same mapping the org
-    profiles use). The catch-all bucket ``OTHER`` reads as "Sonstige" and
-    the empty key as "ohne Angabe"; both are always sorted to the end, the
-    remaining types by descending count.
+    Aggregates counts per distinct ``tp`` value, labels them via
+    ``_org_type_label``. ``OTHER`` and the empty key are always sorted to
+    the end, the remaining types by descending count.
     """
     counts = Counter()
     for row in search_data:
         counts[row.get("tp") or ""] += 1
 
-    def _label(key):
-        if key == "":
-            return "ohne Angabe"
-        if key == "OTHER":
-            return "Sonstige"
-        return label_org_type(key)
-
     def _sort_key(item):
         key, c = item
         tail = 1 if key in ("OTHER", "") else 0
-        return (tail, -c, _label(key).lower())
+        return (tail, -c, _org_type_label(key).lower())
 
     out = []
     for key, c in sorted(counts.items(), key=_sort_key):
@@ -565,7 +569,7 @@ def _type_chip_data(search_data):
             continue
         out.append({
             "key":   key,
-            "label": _label(key),
+            "label": _org_type_label(key),
             "count": c,
         })
     return out

@@ -97,6 +97,11 @@
         let urlSyncEnabled = false;
 
         let allEntries = [];
+        // Raw org-type code -> German label, gefuellt beim Laden der
+        // Suchdaten (e.tpl). Quelle ist _org_type_label im Build, hier nur
+        // gespiegelt, damit Tabelle, Datenkorb und Aktiv-Filter-Strip
+        // dasselbe Label zeigen wie die Filter-Chips.
+        let typeLabels = {};
         let state = {
             query: '',
             letter: '',
@@ -248,7 +253,7 @@
                         id: entry.id,
                         label: entry.n,
                         url: profileUrl,
-                        type_label: entry.tp || ''
+                        type_label: entry.tpl || entry.tp || ''
                     }) + '</td>';
                 }
                 if (isPersons) {
@@ -260,7 +265,7 @@
                         '<td class="col-docs">' + renderDocsBadge(entry) + '</td>' +
                         basketCell;
                 } else {
-                    let typeLabel = entry.tp ? esc(entry.tp) : '<span class="cell-empty">&ndash;</span>';
+                    let typeLabel = entry.tp ? esc(entry.tpl || entry.tp) : '<span class="cell-empty">&ndash;</span>';
                     tr.innerHTML =
                         '<td class="col-name">' + nameHtml + '</td>' +
                         '<td class="col-type">' + typeLabel + '</td>' +
@@ -648,7 +653,7 @@
                 });
             }
             if (state.types.length) {
-                let label = 'Typ: ' + state.types.map(function(t) { return t || 'ohne Angabe'; }).join(', ');
+                let label = 'Typ: ' + state.types.map(function(t) { return typeLabels[t] || t || 'ohne Angabe'; }).join(', ');
                 TableInfra.addFilterChip(activeFiltersEl, label, function() {
                     state.types = [];
                     if (filterTypesEl) filterTypesEl.querySelectorAll('.form-filter-chip').forEach(function(c) {
@@ -772,6 +777,7 @@
                     e._coCount = (e.co || []).map(function(k) {
                         return {label: corpusLabels[k] || k, n: 1};
                     });
+                    if (e.tp) typeLabels[e.tp] = e.tpl || e.tp;
                 });
                 filteredEntries = allEntries.slice();
                 urlSyncEnabled = true;
