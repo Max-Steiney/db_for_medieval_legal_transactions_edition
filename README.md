@@ -22,7 +22,35 @@ Durchgängige Regel, die das absichert: eine Person oder Organisation, die in ke
 
 Override für interne Analysen: `PIPELINE_INCLUDE_UNRELEASED=1 python -m pipeline transform` zieht alle Subkorpora in den CSV-Export. Nicht für den publizierten Build verwenden.
 
-Aufnahme eines weiteren Subkorpus: Quelle unter `sources/<Collection>/<Subcollection>_ready/` ablegen, `RELEASED_CORPORA` ergänzen, `python -m pipeline transform`, `python -m frontend build`. Soll der Korpus auch öffentlich erscheinen, zusätzlich in `PUBLIC_CORPORA` aufnehmen. Liegt er außerhalb des in `RELEASED_PERIOD` erfassten Zeitraums, zusätzlich `RELEASED_PERIOD` in [`frontend/config.py`](frontend/config.py) anpassen.
+Wie man eine **einzelne neue Quelle** oder ein **ganzes neues Subkorpus** aufnimmt, steht im Abschnitt [Daten hinzufügen](#daten-hinzufügen).
+
+## Daten hinzufügen
+
+Zwei Fälle. Die eigentliche TEI-Auszeichnung und die Register-Pflege passieren immer im Pipeline-Repo `../db_for_medieval_legal_transactions`; dieses Repo rendert nur. Annotationsmodell, ID-Regeln und Individualisierung stehen in dessen [`edition_guidelines.md`](../db_for_medieval_legal_transactions/edition_guidelines.md).
+
+### Einzelne neue Quelle in ein bestehendes Subkorpus
+
+1. TEI-Datei im Pipeline-Repo unter `sources/<Collection>/<Subcollection>_ready/done/<n>.xml` ablegen. **Nur Dateien im `done/`-Ordner werden gerendert** (Status `done`); Quellen in Geschwister-Ordnern wie `actually_not_relevant/` bleiben absichtlich außen vor.
+2. Neue Personen/Organisationen/Orte, auf die `@ref`/`@corresp` zeigt, in die Register `indices/personList.xml`, `orgList.xml`, `placeList.xml` eintragen (ID-Präfixe `pe__`, `org__`, `pl__`).
+3. Validieren und neu bauen:
+
+```
+cd ../db_for_medieval_legal_transactions
+python -m pipeline validate      # prueft, dass @ref/@corresp aufloesen
+python -m pipeline transform      # CSVs neu erzeugen
+cd ../db_for_medieval_legal_transactions_edition
+python -m frontend build          # -> docs/
+```
+
+Liegt das Subkorpus in `PUBLIC_CORPORA`, erscheint die Quelle automatisch auch öffentlich. Keine Config-Änderung nötig.
+
+### Ganzes neues Subkorpus freigeben
+
+1. Quellen unter `sources/<Collection>/<Subcollection>_ready/done/` ablegen (wie oben).
+2. Pfad `"<Collection>/<Subcollection>_ready"` zu `RELEASED_CORPORA` in `../db_for_medieval_legal_transactions/pipeline/config.py` ergänzen.
+3. Soll das Subkorpus auch **öffentlich** erscheinen, zusätzlich zu `PUBLIC_CORPORA` in [`frontend/config.py`](frontend/config.py) ergänzen.
+4. Liegt es außerhalb des erfassten Zeitraums, `RELEASED_PERIOD` in [`frontend/config.py`](frontend/config.py) anpassen (SSoT für den Freigabestand).
+5. Validieren, `python -m pipeline transform`, `python -m frontend build` (wie oben).
 
 ## Stufenmodell
 
@@ -102,6 +130,16 @@ parent/
     verification/   unabhängiges Verifikations-Test-Set
 ```
 
+## Voraussetzungen
+
+- Python 3.11.
+- Beide Repositories nebeneinander geklont (siehe „Zwei-Repository-Setup").
+- Abhängigkeiten (`lxml`, `Jinja2`, `markdown`, `pytest`). Dieses Repo hat keine eigene `requirements.txt`; sie sind in der des Pipeline-Repos gepflegt:
+
+```
+pip install -r ../db_for_medieval_legal_transactions/requirements.txt
+```
+
 ## Build
 
 ```
@@ -115,7 +153,9 @@ python -m frontend build --single FILE                      # einzelne Quelle
 python -m frontend build --stage N                          # Stufe 1..4 (siehe oben)
 python -m frontend build --audience oeffentlich|intern      # öffentlich oder intern (siehe oben)
 python -m frontend build --corpora PFAD,PFAD                 # ausdrueckliche Korpus-Auswahl (Vorrang vor Audience)
+python -m frontend status                                   # Projekt-Status-Dashboard
 python -m pytest frontend/tests/                            # Frontend-Tests
+python -m verification.run --all                            # unabhaengiges Verifikations-Test-Set (alle Stufen)
 ```
 
 ## Technischer Stack
@@ -150,11 +190,16 @@ Begriffsdefinitionen (Quellenkorpus, Quelle, Event, Rechtsgeschäft, Gesamtnennu
 
 ## Lokales Preview
 
+Öffentliche und interne Sicht lassen sich parallel auf eigenen Ports servieren:
+
 ```
-python -m http.server 8765 --directory docs/
+python -m frontend build --audience oeffentlich    # -> docs/
+python -m frontend build --audience intern         # -> docs-intern/
+python -m http.server 8000 --directory docs        --bind 127.0.0.1   # oeffentlich
+python -m http.server 8001 --directory docs-intern --bind 127.0.0.1   # intern
 ```
 
-Aufruf unter `http://localhost:8765/`.
+Aufruf unter `http://127.0.0.1:8000/` (öffentlich) bzw. `http://127.0.0.1:8001/` (intern).
 
 ## Lizenz
 

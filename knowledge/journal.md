@@ -5,9 +5,9 @@ project:
   repository: https://github.com/chpollin/db_for_medieval_legal_transactions_edition
 status: active
 language: de
-version: 0.4
+version: 0.5
 created: 2026-02-19
-updated: 2026-05-23
+updated: 2026-06-17
 authors: [Christopher Pollin]
 generated-with: Claude Code
 method:
@@ -23,6 +23,22 @@ Arbeitstagebuch. Einziges chronologisches Dokument der Wissensbasis.
 Format pro Eintrag: Datum, Kurztitel, ein bis drei Absätze. Was umgesetzt wurde, warum (oft mit verworfener Alternative), wo das Detail zeitlos abgelegt ist. Was nicht rein darf: Personennamen, Meeting-Protokolle, Projektmanagement-Stand, Quantitäten des Korpus, Test- und Build-Zahlen.
 
 Einträge in umgekehrt chronologischer Reihenfolge, neueste oben.
+
+## 2026-06-17 Stadtbücher Band 1 vorerst aus der öffentlichen Sicht
+
+Die öffentliche Sicht zeigt zunächst nur das Kernkorpus QGW II/1; Stadtbücher Band 1 wird später veröffentlicht und ist deshalb aus `PUBLIC_CORPORA` genommen (bleibt freigegeben und im internen Build sichtbar). Der Schnitt sitzt bewusst allein in `PUBLIC_CORPORA` als Single Source of Truth der öffentlichen Sichtbarkeit. Weil der Sicht-Filter `is_visible_corpus` schon in der Aggregat-Schicht greift und nicht erst beim Rendern, propagiert die Entscheidung durch alle Aggregat-JSONs, Profile und das Reverse-Register; entsprechend ziehen mehrere Sicht-Regressionstests mit.
+
+Beim Umsetzen fiel ein Altlast-Pfad auf: `query_vocabulary.json`, das Vokabular der Analyse-Seite, wurde auch im öffentlichen Build geschrieben und trug einen Beschreibungstext mit Korpus-Namen. Da die Analyse-Seite ohnehin nur intern erscheint, wird die Datei jetzt an dieselbe Audience-Bedingung gekoppelt und im öffentlichen Build nicht mehr erzeugt. Detail in [[specification#Öffentliche versus interne Sicht in zwei Schichten]].
+
+## 2026-06-17 Sterbedatum aus Tooltip und Annotations-Hint entfernt
+
+Das Personenregister führt Sterbedaten als `notAfter`-Termini (Terminus ante quem). Im Tooltip und im Annotations-Hint wurden sie als exaktes „† Datum" dargestellt und waren dadurch missverständlich — verschärft dort, wo aufgelöste Identität und Wortlaut auseinanderfallen: eine Nennung als „Tochter des N" löst auf den Vater auf, dessen Datum dann scheinbar an der Tochter-Nennung steht. Die exakte „†"-Form entfällt daher aus dem Tooltip-Aufbau und dem Seitentitel.
+
+Der Profil-Header behält das Datum, aber in der bereits korrekten Form „Verstorben vor …", die den `notAfter`-Charakter wiedergibt. Verworfen wurde, das Datum vollständig zu tilgen: die Terminus-ante-quem-Aussage ist editorisch belastbar, sobald sie als solche beschriftet ist; missverständlich war nur die exakte „†"-Schreibung. Detail in [[ui-design]] (Identitätsanzeige „Name (Wortlaut)") und [[data]] (Register-Datierung).
+
+## 2026-06-17 occ-Bezeichnungen auf inhaltliche Normalform
+
+In der Tätigkeits-/Amts-Spalte der Org-Profile standen mehrere Schreibungen derselben Tätigkeit nebeneinander, weil je Quelle die rohe Wortlaut-Schreibung gesammelt wurde — etwa eine mittelhochdeutsche und eine moderne Form desselben Amtes. Die Normalisierungsliste `roleName_norm_matching.csv` bildet diese Schreibungen längst auf eine inhaltliche Normalform ab, wurde in dieser Anzeige aber nicht genutzt. Die occ-Begriffe werden nun vor der Deduplizierung über diese Liste gezogen, sodass die Spalte die Normalform trägt; die Zahl der Belege bleibt unberührt, weil sie an den Quellen-Dateien hängt, nicht an den Schreibvarianten. Detail in [[data]] (Normalisierungslisten) und [[architecture]] (Aggregator).
 
 ## 2026-05-23 Public-UI-Politur und Test-Strategie
 

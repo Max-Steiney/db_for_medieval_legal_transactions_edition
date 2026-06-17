@@ -5,7 +5,7 @@ flachen String-Map gelesen, was immer undefined ergab und den Chip auf den
 rohen Schluessel (issuer/recipient/witness/other) zuruckfallen liess. Das
 verstiess gegen "keine technischen IDs im oeffentlichen UI". Die Wording- und
 Gender-Vereinheitlichung der Rollen-Labels ist eine offene Stakeholder-
-Entscheidung (siehe doc.md) und nicht Gegenstand dieses Tests.
+Entscheidung (siehe knowledge/status.md) und nicht Gegenstand dieses Tests.
 """
 
 from pathlib import Path

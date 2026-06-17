@@ -36,4 +36,4 @@ Die kanonischen Definitionen der Fachbegriffe (Quellenkorpus, Quelle, Event, Rec
 
 ## Beziehungen zu anderen Dokumentationsorten
 
-`CLAUDE.md` im Repo-Root trägt Agent-Regeln, Build-Kommandos und die Vor-Start-Checkliste. `README.md` führt den Repo-Setup für externe Leserinnen. Die redaktionellen Annotationsrichtlinien zur TEI-Auszeichnung leben im Schwester-Repo unter `edition_guidelines.md`.
+`CLAUDE.md` im Repo-Root trägt Agent-Regeln, Build-Kommandos und die Vor-Start-Checkliste. `README.md` führt den Repo-Setup für externe Leserinnen. Die redaktionellen Annotationsrichtlinien zur TEI-Auszeichnung leben im Schwester-Repo unter `edition_guidelines.md`. `status.md` in diesem Ordner ist der lebende Projekt-Tracker (Anforderungs-Stand und Meeting-Notizen) und bewusst nicht zeitlos wie die übrigen Dokumente hier.

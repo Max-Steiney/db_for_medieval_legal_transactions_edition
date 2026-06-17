@@ -67,8 +67,6 @@ Nicht alles ist automatisierbar oder lohnt sich.
 
 **JS-rendered DOM-Inhalte.** Die Annotations-Tabelle wird zur Laufzeit aus den TEI-Spans aufgebaut, statisches HTML zeigt nur Container. Build-then-grep-Tests greifen hier nicht direkt. Die `frontend/tests/js/`-Tests decken die Logik ab, nicht das gerenderte DOM.
 
-**Stakeholder-Acceptance.** Status `[~]` oder `[x]` in `doc.md` heißt aktuell „behauptet erledigt", nicht „Test grün". Acceptance-Test pro Doc.md-Anforderung wäre möglich, ist aber Eigenprojekt.
-
 ## Datenfeld-Coverage als nächster Ausbauschritt
 
 Pro relevantem Datenfeld eine Spec-Zeile: „Der Anzeigename `display` (keine eigene `persons.csv`-Spalte, sondern in `register.py` aus den Namensteilen `forename`/`surname`/`addName` zusammengesetzt) muss in Personen-Profil (header), Quellen-Tabelle (Spalte Name) und Drill-Down-Tooltip auftauchen, mit identischem Wert." Tests prüfen das gegen den Build. Sicherer Schutz gegen UI-Inkonsistenz, würde die Memory-Regel „UI-Konsistenz" automatisiert sichern statt nur als Soll-Bestimmung.
