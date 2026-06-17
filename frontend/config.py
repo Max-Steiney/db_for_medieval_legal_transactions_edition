@@ -82,9 +82,11 @@ from pipeline.config import RELEASED_CORPORA, is_released_corpus, active_corpora
 # RELEASED_CORPORA (which also contains _ready corpora that are
 # editorially complete but not yet stakeholder-signed-off).
 # Source: Stakeholder protocol 18.05.2026 ("QGW bis 1414, StB Bd. 1").
+# Frontend-Meeting 2026-06-17: Stadtbuecher Bd. 1 vorerst aus der
+# oeffentlichen Sicht genommen (wird spaeter veroeffentlicht); bleibt
+# RELEASED und im internen Build sichtbar. QGW II/1 wird zuerst publiziert.
 PUBLIC_CORPORA = (
     "QGW/Vienna_1177-1414_ready",
-    "Stadtbuecher/Band_1_1395-1400_ready",
 )
 
 

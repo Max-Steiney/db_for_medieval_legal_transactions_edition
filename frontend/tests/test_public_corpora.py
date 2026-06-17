@@ -1,7 +1,8 @@
 """Regression test: Datums-Span in Org- and Person-Profilen darf
-nur Jahre aus den vom Stakeholder freigegebenen Public-Korpora
-ziehen (QGW/Vienna_1177-1414_ready und Stadtbuecher/Band_1_1395-1400_ready).
-Stakeholder decision: Protokoll 18.05.2026 ("QGW bis 1414, StB Bd. 1").
+nur Jahre aus den oeffentlich sichtbaren Public-Korpora ziehen
+(seit Frontend-Meeting 2026-06-17 nur QGW/Vienna_1177-1414_ready;
+Stadtbuecher Bd. 1 wurde aus PUBLIC_CORPORA genommen).
+Stakeholder decision: Protokoll 18.05.2026, angepasst 2026-06-17.
 """
 
 import re

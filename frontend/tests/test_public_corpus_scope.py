@@ -18,17 +18,20 @@ DOCS = Path(__file__).resolve().parents[2] / "docs"
 
 PUBLIC_CORPORA = {
     "QGW/Vienna_1177-1414_ready",
-    "Stadtbuecher/Band_1_1395-1400_ready",
 }
 HIDDEN_SUBDIRS = (
     "QGW/Vienna_1415-1417",
     "QGW/Vienna_1448-57_ready",
     "Satzbuch_CD/SB_CD_1448-60_ready",
+    # Stadtbuecher Bd. 1: seit Frontend-Meeting 2026-06-17 nicht mehr
+    # oeffentlich (aus PUBLIC_CORPORA entfernt), bleibt aber freigegeben.
+    "Stadtbuecher/Band_1_1395-1400_ready",
 )
 HIDDEN_DOC_PATHS = (
     "documents/QGW/Vienna_1415-1417",
     "documents/QGW/Vienna_1448-57",
     "documents/Satzbuch_CD",
+    "documents/Stadtbuecher",
 )
 # So tauchen versteckte Sammlungen in den Aggregat-JSONs auf: als
 # file_key-Praefix (f__Satzbuch_CD_...) bzw. Collection-Key und als
@@ -40,6 +43,8 @@ HIDDEN_AGGREGATE_MARKERS = (
     "Satzbuch_CD",
     "Satzbuch CD",
     "QGW II/2",
+    "Stadtbuecher",
+    "Stadtbücher",
 )
 
 

@@ -130,6 +130,32 @@ def aggregation_results(tmp_path_factory):
     return results
 
 
+@pytest.fixture(scope="module")
+def aggregation_results_intern(tmp_path_factory):
+    """Aggregation unter interner Sicht (alle freigegebenen Korpora).
+
+    Stadtbuecher Bd. 1 ist seit dem Frontend-Meeting 2026-06-17 nicht mehr
+    in PUBLIC_CORPORA. Der TEI-Wahrheits-Spotcheck dafuer braucht daher die
+    interne Aggregation, die alle freigegebenen Sammlungen einschliesst.
+    """
+    import os
+    data_dir = tmp_path_factory.mktemp("data_intern")
+    prev = os.environ.get("FRONTEND_AUDIENCE")
+    os.environ["FRONTEND_AUDIENCE"] = "intern"
+    try:
+        run_aggregation(data_dir)
+    finally:
+        if prev is None:
+            os.environ.pop("FRONTEND_AUDIENCE", None)
+        else:
+            os.environ["FRONTEND_AUDIENCE"] = prev
+    return {
+        "docs_aggregate": json.loads(
+            (data_dir / "docs_aggregate.json").read_text(encoding="utf-8")
+        )
+    }
+
+
 class TestMetaBlock:
     def test_all_files_have_meta(self, aggregation_results):
         for name in ["timeline", "roles", "relations", "transactions",
@@ -428,11 +454,12 @@ class TestDocsAggregate:
         Obergrenze vor durchgesickerten Nicht-released-Subkorpora.
         """
         docs = aggregation_results["docs_aggregate"]["docs"]
-        # Untergrenze schuetzt vor Datenverlust (Stufe 1: ca. 2600 Quellen),
-        # Obergrenze erfasst auch Stufe 4 mit allen TEI-Subkorpora
-        # (heute ca. 3100 Quellen). Beide Werte sind absichtlich grob.
-        assert 2500 <= len(docs) <= 3500, \
-            f"Source count {len(docs)} ausserhalb plausibler Spanne 2500-3500"
+        # Untergrenze schuetzt vor Datenverlust (oeffentlich Stufe 1 nach
+        # Entfernung von Stadtbuecher Bd. 1 aus PUBLIC_CORPORA, Meeting
+        # 2026-06-17: ca. 2000 Quellen, nur QGW II/1). Obergrenze erfasst
+        # auch Stufe 4 mit allen TEI-Subkorpora. Beide Werte sind grob.
+        assert 1800 <= len(docs) <= 3500, \
+            f"Source count {len(docs)} ausserhalb plausibler Spanne 1800-3500"
 
     def test_qgw_0a_against_tei_truth(self, aggregation_results):
         """Spot check: 0a has 1 male person, 1 abstract event."""
@@ -455,9 +482,13 @@ class TestDocsAggregate:
         assert d["events"]["abstract"] >= 1
         assert d["events"]["seal"] >= 1
 
-    def test_stadtbuecher_10_against_tei_truth(self, aggregation_results):
-        """Spot check: StB 10 has 7 persons (1f, 6m), 1 entry event."""
-        docs = aggregation_results["docs_aggregate"]["docs"]
+    def test_stadtbuecher_10_against_tei_truth(self, aggregation_results_intern):
+        """Spot check: StB 10 has 7 persons (1f, 6m), 1 entry event.
+
+        Stadtbuecher Bd. 1 ist nicht mehr oeffentlich (Meeting 2026-06-17),
+        daher gegen die interne Aggregation gepruft.
+        """
+        docs = aggregation_results_intern["docs_aggregate"]["docs"]
         d = _doc_by_idno_collection(docs, "10", "Stadtbuecher/Band_1_1395-1400_ready")
         assert d is not None
         assert d["persons"] == {"distinct": 7, "f": 1, "m": 6, "u": 0}

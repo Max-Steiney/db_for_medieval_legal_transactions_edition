@@ -20,9 +20,9 @@ def _reg_text(element):
 def _format_death_german(death_iso):
     """Format an ISO death date as German `15.07.1396` (or pass through).
 
-    Tooltip convention: `† 15.07.1396`. Returns the ISO value unchanged
-    if the format is not parsable (tolerant: year-only values, special
-    characters, etc.).
+    Wird im Personenprofil als "Verstorben vor 15.07.1396" angezeigt
+    (notAfter-Terminus). Returns the ISO value unchanged if the format is
+    not parsable (tolerant: year-only values, special characters, etc.).
     """
     if not death_iso:
         return ""
@@ -38,7 +38,8 @@ def _format_death_german(death_iso):
 def load_persons():
     """Load personList.xml into {xml_id: {forename, surname, addName, death}}.
 
-    Tooltip format: "Forename Surname († DD.MM.YYYY) [pe__id]"
+    Das Sterbedatum (death) erscheint nur noch im Personenprofil als
+    "Verstorben vor ...", nicht mehr im Tooltip oder Annotations-Hint.
     """
     tree = load_index("personList.xml")
     persons = {}
@@ -153,11 +154,15 @@ def load_places():
 
 
 def build_tooltip_person(person_data, xml_id):
-    """Build tooltip string for a person."""
-    parts = [person_data["display"]]
-    if person_data["death"]:
-        parts.append(f"(† {_format_death_german(person_data['death'])})")
-    return " ".join(parts)
+    """Build tooltip string for a person.
+
+    Sterbedatum wird hier bewusst NICHT mehr angehaengt (Meeting 2026-06-17):
+    die personList-Werte sind `notAfter`-Termini (Terminus ante quem), wurden
+    im Tooltip und im Annotations-Hint aber als exaktes "† Datum" dargestellt
+    und waren dadurch missverstaendlich. Das Personenprofil zeigt das Datum
+    weiterhin korrekt als "Verstorben vor ...".
+    """
+    return person_data["display"]
 
 
 def build_tooltip_org(org_data, xml_id):

@@ -11,9 +11,11 @@ Stakeholder decision: Protokoll 18.05.2026 ("QGW bis 1414, StB Bd. 1").
 from frontend import config
 
 
-PUBLIC = ("QGW/Vienna_1177-1414_ready", "Stadtbuecher/Band_1_1395-1400_ready")
+# Stadtbuecher Bd. 1 seit Frontend-Meeting 2026-06-17 nicht mehr oeffentlich.
+PUBLIC = ("QGW/Vienna_1177-1414_ready",)
 HIDDEN = ("QGW/Vienna_1415-1417", "QGW/Vienna_1448-57_ready",
-          "Satzbuch_CD/SB_CD_1448-60_ready")
+          "Satzbuch_CD/SB_CD_1448-60_ready",
+          "Stadtbuecher/Band_1_1395-1400_ready")
 
 
 def test_oeffentliche_audience_only_public_corpora(monkeypatch):

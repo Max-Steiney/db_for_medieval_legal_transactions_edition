@@ -33,3 +33,34 @@ def test_kufstein_phleger_has_one_beleg():
         f"Kufstein) ist {count}, sollte mindestens 1 sein "
         f"(Quelle 223a belegt ihn)."
     )
+
+
+def test_occ_terms_normalised_basel():
+    """occ-Schreibweisen werden auf die inhaltliche Normalform gezogen.
+
+    Peter von Aspelt ist mit org__basel-dioezese in zwei Quellen verbunden:
+    Quelle 27 als Wortlaut "pischolf", Quelle 28 als "Bischof". Die occ-Spalte
+    darf nur die Normalform "Bischof" zeigen, nicht "Bischof, pischolf"
+    (Meeting 2026-06-17); die Belege bleiben unveraendert zwei.
+    """
+    path = DOCS_ROOT / "register/orgs/org__basel-dioezese.html"
+    if not path.exists():
+        pytest.skip("build artifact not found")
+    text = path.read_text(encoding="utf-8")
+    m = re.search(
+        r'data-sort-value="Peter von Aspelt".*?'
+        r'<td class="rel-col-occ" data-sort-value="([^"]*)"',
+        text,
+        re.DOTALL,
+    )
+    assert m is not None, (
+        "Peter-von-Aspelt-Zeile im occ-Netzwerk von Basel nicht gefunden"
+    )
+    occ = m.group(1)
+    assert "pischolf" not in occ, (
+        f'occ-Spalte zeigt noch die Rohschreibung: "{occ}" '
+        f'(erwartet normalisiert auf "Bischof").'
+    )
+    assert "Bischof" in occ, (
+        f'occ-Spalte zeigt nicht die Normalform "Bischof": "{occ}"'
+    )

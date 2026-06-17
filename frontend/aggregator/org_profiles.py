@@ -9,7 +9,7 @@ released set).
 from collections import Counter, defaultdict
 
 from frontend.config import is_visible_corpus
-from ._shared import _cached_csv
+from ._shared import _cached_csv, _load_rolename_norm
 from ._profile_labels import (
     split_pipe_names, split_authorities, label_org_type,
 )
@@ -242,7 +242,11 @@ def _build_occ_network(file_meta, person_names):
       3. Liefere {"occ_persons": [...], "total": n}; nur Orgs mit
          occ_persons aufnehmen.
     """
-    # Schritt 1: pro Org Personen mit occ-Begriffen und Belegen sammeln
+    # Schritt 1: pro Org Personen mit occ-Begriffen und Belegen sammeln.
+    # occ-Schreibweisen werden auf ihre inhaltliche Normalform gezogen
+    # (Meeting 2026-06-17), damit nicht dieselbe Taetigkeit in mehreren
+    # Schreibungen nebeneinander steht (z. B. "Bischof, pischolf" -> "Bischof").
+    rolename_norm = _load_rolename_norm()
     org_to_persons = defaultdict(lambda: defaultdict(lambda: {
         "occ_terms": set(),
         "files": set(),
@@ -256,7 +260,7 @@ def _build_occ_network(file_meta, person_names):
             continue
         bucket = org_to_persons[rk][pk]
         if occ:
-            bucket["occ_terms"].add(occ)
+            bucket["occ_terms"].add(rolename_norm.get(occ.lower(), occ))
         if fk:
             bucket["files"].add(fk)
 

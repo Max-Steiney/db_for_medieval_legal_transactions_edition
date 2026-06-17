@@ -148,6 +148,33 @@ def _load_norm_matching() -> dict[str, str]:
     return result
 
 
+def _load_rolename_norm() -> dict[str, str]:
+    """Load roleName_norm_matching.csv -> {spelling_lower: contentual_norm}.
+
+    Bildet die (case-insensitive) Schreibweise einer Rollen-/Amts-/Berufs-
+    bezeichnung auf ihre inhaltliche Normalform ab, z. B. "pischolf" ->
+    "Bischof". Faellt auf die Schreibungs-Normform und schliesslich (im
+    Aufrufer) auf die Rohschreibung zurueck, wenn die inhaltliche Normform
+    fehlt. Tab-delimited, utf-8-sig; Lookup case-insensitiv wie bei
+    _load_uhlirz_matching, weil die occ-Spalte gemischte Schreibung traegt.
+    """
+    path = NORM_LISTS_DIR / "roleName_norm_matching.csv"
+    result: dict[str, str] = {}
+    if not path.exists():
+        return {}
+    with open(path, encoding="utf-8-sig", newline="") as f:
+        reader = csv.DictReader(f, delimiter="\t")
+        for row in reader:
+            src = (row.get("roleName_spelling") or "").strip().lower()
+            if not src:
+                continue
+            norm = ((row.get("roleName_contentual_norm") or "").strip()
+                    or (row.get("roleName_spelling_norm") or "").strip())
+            if norm:
+                result[src] = norm
+    return result
+
+
 def _load_uhlirz_matching() -> dict[str, list[str]]:
     """Load roleName_norm_matching.csv -> {original_spelling_lower: [uhlirz_categories]}.
 

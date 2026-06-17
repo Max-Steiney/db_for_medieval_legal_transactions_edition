@@ -311,7 +311,10 @@ class TestEpicBData:
 
     def test_coverage(self, relations):
         cov = relations["coverage"]
-        assert cov["total_relations"] > 10000
+        # Public scope (DATA_DIR ist die oeffentliche Sicht): seit der
+        # Stadtbuecher-Entfernung aus PUBLIC_CORPORA (Meeting 2026-06-17) nur
+        # noch QGW II/1, daher niedriger als der fruehere QGW+StB-Stand.
+        assert cov["total_relations"] > 8000
         assert cov["persons_with_relations"] > 3000
 
     def test_json_size(self):
@@ -426,9 +429,10 @@ class TestEpicCData:
 
     def test_coverage_stats(self, transactions):
         cov = transactions["coverage"]
-        # Threshold reflects the released-corpora top-level event scope
-        # (RELEASED_CORPORA in pipeline.config; iter_top_level_events).
-        assert cov["total_events"] > 4000
+        # Public scope (DATA_DIR ist die oeffentliche Sicht): seit der
+        # Stadtbuecher-Entfernung aus PUBLIC_CORPORA (Meeting 2026-06-17) nur
+        # noch QGW II/1, daher niedriger als der fruehere QGW+StB-Stand.
+        assert cov["total_events"] > 3500
         assert cov["normalised_events"] > 0
         assert cov["normalised_events"] < cov["total_events"]
         assert cov["unique_verb_forms"] > 100

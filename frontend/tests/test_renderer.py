@@ -69,7 +69,9 @@ def test_rs_person_with_register():
     assert len(spans) == 1
     assert spans[0][1]["data-ref"] == "pe__hans_test"
     assert "Hans Test" in html
-    assert "1350" in html
+    # Sterbedatum erscheint seit Meeting 2026-06-17 nicht mehr im Annotations-
+    # Hint (notAfter-Terminus, war als exaktes Datum missverstaendlich).
+    assert "1350" not in html
 
 
 def test_rs_person_orphaned_ref():

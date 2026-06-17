@@ -19,7 +19,10 @@ class TestTooltipBuilders:
         data = {"display": "Konrad Goldstein", "death": "1350-06-23",
                 "forename": "Konrad", "surname": "Goldstein", "addName": "", "sex": "m"}
         result = build_tooltip_person(data, "pe__konrad_goldstein")
-        assert result == "Konrad Goldstein († 23.06.1350)"
+        # Sterbedatum seit Meeting 2026-06-17 nicht mehr im Tooltip/Hint:
+        # notAfter-Terminus, als exaktes Datum missverstaendlich.
+        assert result == "Konrad Goldstein"
+        assert "†" not in result
 
     def test_person_tooltip_no_death(self):
         data = {"display": "Hans", "death": "",

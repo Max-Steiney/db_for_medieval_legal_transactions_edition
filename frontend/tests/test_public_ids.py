@@ -23,7 +23,6 @@ SAMPLE_FILES = [
     "register/orgs/org__wien-st_stephan.html",
     "register/persons.html",
     "register/orgs.html",
-    "documents/Stadtbuecher/Band_1_1395-1400_ready/223a.html",
     "documents/QGW/Vienna_1177-1414_ready/100.html",
     "documents/QGW/Vienna_1177-1414_ready/1022.html",
 ]

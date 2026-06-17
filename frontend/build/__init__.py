@@ -246,8 +246,11 @@ def build_all():
 
     _build_glossary(env)
     _write_categories()
-    _write_query_vocabulary()
+    # query_vocabulary.json speist allein die Analyse-Seite und traegt einen
+    # Beschreibungstext mit Korpus-Namen; nur im internen Build schreiben, sonst
+    # leakt eine nicht-oeffentliche Sammlung in docs/data/ (Meeting 2026-06-17).
     if audience["show_analysis_section"]:
+        _write_query_vocabulary()
         _build_analysis(env)
 
     _copy_static()

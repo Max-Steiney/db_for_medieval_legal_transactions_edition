@@ -1,7 +1,7 @@
 {% extends "base.html" %}
 {% from "macros.html" import tip_glossary with context %}
 
-{% block title %}{{ profile.display }}{% if profile.death_display %} (&dagger; {{ profile.death_display }}){% endif %}{% endblock %}
+{% block title %}{{ profile.display }}{% endblock %}
 
 {% block head %}
 <link rel="stylesheet" href="{{ root_path }}/static/css/document.css?v={{ asset_v }}">
