@@ -7,9 +7,6 @@
 
     const V = VizCore;
 
-    // ---------------------------------------------------------------------
-    // Stack definitions
-    // ---------------------------------------------------------------------
     const STACKS = {
         collection: {
             label: 'Quellenkorpus',
@@ -75,17 +72,11 @@
         '#9a9590',
     ];
 
-    // ---------------------------------------------------------------------
-    // Data loading
-    // ---------------------------------------------------------------------
     const TRANSACTIONS = V.readJsonScript('exploration-data-transactions', { observations: {} });
     let DOCS = [];
     let DOCS_BY_DECADE = new Map();
     let DOCS_LOOKUP = {};   // file_key -> doc base record (lazy, for tx drill)
 
-    // ---------------------------------------------------------------------
-    // Filter state
-    // ---------------------------------------------------------------------
     const STATE = {
         decadeMin: null,
         decadeMax: null,
@@ -97,9 +88,6 @@
     };
     const decFilter = V.makeDecadeFilter(STATE);
 
-    // ---------------------------------------------------------------------
-    // Aggregation
-    // ---------------------------------------------------------------------
     function aggregate() {
         const stackDef = effectiveStackDef();
         const categories = stackDef.categories;
@@ -211,9 +199,6 @@
         return Object.assign({}, def, { categories: cats });
     }
 
-    // ---------------------------------------------------------------------
-    // Renderer
-    // ---------------------------------------------------------------------
     function renderChart() {
         const chart = document.getElementById('stream-chart');
         const yax = document.getElementById('stream-yaxis');
@@ -259,11 +244,9 @@
             const segs = categories.map(c => {
                 const v = values[d][c.key] || 0;
                 if (v === 0) return '';
-                // hpx kann sub-pixel werden (1 Doc in einem 700er-Maximum).
-                // Wir geben dem Renderer trotzdem den proportionalen Wert
-                // und lassen die CSS min-height 2px den Strich sichtbar
-                // halten — sonst gehen die Anfangsjahre des Korpus
-                // (jeweils 1 Quelle) optisch verloren.
+                // hpx can go sub-pixel (1 doc against a large maximum); pass the
+                // proportional value anyway and let the CSS min-height keep the
+                // bar visible, else single-source early years vanish optically.
                 const hpx = Math.max(1, Math.round((v / maxTotal) * 220));
                 const segDim = (focus !== null && c.key !== focus) ? ' is-dimmed' : '';
                 return `<span class="explore-stream-seg${segDim}"
@@ -353,9 +336,6 @@
         });
     }
 
-    // ---------------------------------------------------------------------
-    // Brush / bar click
-    // ---------------------------------------------------------------------
     let brushAnchor = null;
 
     function bindBars() {
@@ -435,9 +415,7 @@
         writeUrl();
     }
 
-    // ---------------------------------------------------------------------
     // Drill-down: source list for the brushed decades
-    // ---------------------------------------------------------------------
     function renderDrill() {
         const drill = document.getElementById('stream-drill');
         const list = document.getElementById('drill-list');
@@ -609,9 +587,6 @@
         return docs;
     }
 
-    // ---------------------------------------------------------------------
-    // Sidebar controls
-    // ---------------------------------------------------------------------
     function bindStackChips() {
         const group = document.getElementById('stream-stack-axis');
         if (!group) return;
@@ -663,9 +638,6 @@
         if (btn) btn.addEventListener('click', clearBrush);
     }
 
-    // ---------------------------------------------------------------------
-    // Active filter strip
-    // ---------------------------------------------------------------------
     function clearStackFocus() {
         STATE.stackFocus = null;
         renderChart();
@@ -699,9 +671,6 @@
         V.renderActiveFilters('active-filters', filters);
     }
 
-    // ---------------------------------------------------------------------
-    // Init
-    // ---------------------------------------------------------------------
     function onSliderChange() {
         renderChart();
         renderDrill();
@@ -709,10 +678,8 @@
         writeUrl();
     }
 
-    // ---------------------------------------------------------------------
     // URL state sync
     // Format: ?dec=1300-1380&stack=tx&brush=1340-1370&focus=Kauf
-    // ---------------------------------------------------------------------
     let urlSyncActive = false;
 
     function writeUrl() {

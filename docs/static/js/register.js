@@ -1,10 +1,6 @@
-/* ==========================================================================
-   Stadt und Gemeinschaft Wien — Datenbank
-   Person register: sidebar filters, sort, sub-label disambiguation,
-   faceted-search counts. Architecture parallels the sources page (index.js):
-   same components from TableInfra (range slider, search, sort, renderer),
-   same tooltip/popover family (data-tip-* + provenance.js).
-   ========================================================================== */
+// Register page: sidebar filters, sort, sub-label disambiguation, faceted
+// counts. Mirrors the sources page (index.js): same TableInfra components and
+// tooltip/popover family.
 
 (function() {
     'use strict';
@@ -105,10 +101,8 @@
         let urlSyncEnabled = false;
 
         let allEntries = [];
-        // Raw org-type code -> German label, gefuellt beim Laden der
-        // Suchdaten (e.tpl). Quelle ist _org_type_label im Build, hier nur
-        // gespiegelt, damit Tabelle, Datenkorb und Aktiv-Filter-Strip
-        // dasselbe Label zeigen wie die Filter-Chips.
+        // Raw org-type code -> German label, filled from search data (e.tpl);
+        // mirrored so table, basket and active-filter strip share the chip label.
         let typeLabels = {};
         let state = {
             query: '',
@@ -125,7 +119,6 @@
 
         let filteredEntries = [];
 
-        // --- Detail JSON cache (inline detail row per person) ---
         let detailCache = null;
         let jsonFile = (window.ROOT_PATH || '.') + '/register/' + regType + '.json';
 
@@ -177,9 +170,8 @@
             });
         }
 
-        // --- Renderer: name cell with sub-label, sex, role pills, linked sources ---
         function renderActivity(entry) {
-            // Sub-label beneath the name: 'belegt 1340 · QGW II/1 · Nr. 66'
+            // Sub-label beneath the name, e.g. 'belegt 1340 · QGW II/1 · Nr. 66'
             let bits = [];
             if (entry.am) {
                 let span = (entry.ax && entry.ax !== entry.am)
@@ -283,10 +275,8 @@
             }
         });
 
-        // --- Click handler for name + linked-sources badge ---
-        // In the person register the name link goes straight to the profile
-        // (no inline detail). The linked-sources badge stays the inline
-        // trigger; org/place keep the button toggle.
+        // Name link navigates to the profile; the linked-sources badge stays
+        // the inline-detail trigger.
         let tbody = document.getElementById('register-tbody');
         tbody.addEventListener('click', function(e) {
             // Never intercept anchor tags (<a href>) — browser navigation.
@@ -303,7 +293,6 @@
             if (entry) renderDetailRow(entry, tr);
         });
 
-        // --- Shared infrastructure: search + sort headers + range slider ---
         let searchControl = TableInfra.setupSearch(state, applyFilters);
         TableInfra.setupSortHeaders('register-table', state, applyFilters);
         _applyInitialBarHeights();
@@ -353,7 +342,6 @@
             });
         }
 
-        // --- Multi-select chip helper (sex / roles / corpora) ---
         function bindMultiChips(container, key, attr) {
             if (!container) return;
             container.querySelectorAll('.form-filter-chip, .chip').forEach(function(chip) {
@@ -381,7 +369,7 @@
         bindMultiChips(filterTypesEl,   'types',   'data-type');
         bindMultiChips(filterCorporaEl, 'corpora', 'data-corpus');
 
-        // --- URL parameter restore (takes effect before the first applyFilters) ---
+        // URL parameter restore, before the first applyFilters.
         let urlParams = new URLSearchParams(window.location.search);
         let urlQuery = urlParams.get('q');
         if (urlQuery && searchControl) {
@@ -422,7 +410,6 @@
             }
         }
 
-        // --- Faceted search: matchesAllExcept(entry, skip) ---
         function entryYears(entry) {
             let am = parseInt(entry.am);
             let ax = parseInt(entry.ax);
@@ -472,7 +459,6 @@
             return true;
         }
 
-        // --- Live counts on sidebar chips ---
         function updateChipCounts() {
             if (filterSexEl) {
                 let counts = {};
@@ -539,10 +525,8 @@
                     let isActive = c.classList.contains('is-active');
                     c.hidden = (n === 0 && !isActive);
                 });
-                // Reihenfolge an die aktuell sichtbaren Zahlen anpassen, damit
-                // unter einem Korpus-Filter nicht eine kleinere Zahl ueber
-                // einer groesseren steht. Sammelposten (OTHER, leer) bleiben
-                // ans Ende gepinnt.
+                // Reorder by currently visible counts; catch-all buckets
+                // (OTHER, empty) stay pinned to the end.
                 typeChips.sort(function(a, b) {
                     let va = a.getAttribute('data-type');
                     let vb = b.getAttribute('data-type');
@@ -579,10 +563,8 @@
                 let pct = c > 0 ? Math.max(4, Math.round(c / maxCount * 100)) : 0;
                 bar.style.setProperty('--bar-height', pct + '%');
                 bar.setAttribute('data-count', c);
-                // Nur data-hint (eigener Tooltip via hint.js) aktualisieren,
-                // kein natives title-Attribut: sonst zeigt der Browser einen
-                // zweiten Tooltip mit der Build-Zeit-Zahl daneben. Live-Zahl
-                // spiegelt jetzt die aktive Filterung.
+                // Update only data-hint, not native title: a title would show
+                // a second tooltip with the stale build-time count.
                 bar.setAttribute('data-hint',
                     dec + 'er: ' + c + ' ' + (c === 1 ? entitySingular : entityLabel));
             });
@@ -595,12 +577,10 @@
             });
         }
 
-        // --- Sort helper: thin wrapper around EdCore.compareValues ---
         function _compareEntries(a, b, key, dir) {
             return EdCore.compareValues(a[key], b[key], dir);
         }
 
-        // --- Sync URL from state ---
         function syncUrlFromState() {
             if (!urlSyncEnabled) return;
             let p = new URLSearchParams();
@@ -619,7 +599,6 @@
             history.replaceState(null, '', url);
         }
 
-        // --- Active filter pills ---
         function updateActiveFilters() {
             if (!activeFiltersEl) return;
             activeFiltersEl.innerHTML = '';
@@ -743,7 +722,7 @@
             syncUrlFromState();
         }
 
-        // --- Deep link via hash (#pe__id) ---
+        // Deep link via hash (#pe__id).
         function openFromHash() {
             let hash = window.location.hash;
             if (!hash || hash.length < 2) return;
@@ -768,7 +747,6 @@
             renderDetailRow(entry, row);
         }
 
-        // --- Load data ---
         let loadingTbody = document.getElementById('register-tbody');
         loadingTbody.innerHTML = '<tr><td colspan="' + colCount + '" class="cell-placeholder">Daten werden geladen…</td></tr>';
 

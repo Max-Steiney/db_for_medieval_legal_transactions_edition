@@ -1,9 +1,5 @@
-// Exploration / Personennetzwerk.
-// Akteure sind Personen UND Organisationen. Ego-Layout um einen Akteur;
-// Klick auf einen Nachbar-Knoten verlagert das Zentrum, beim Wechsel von
-// Person zu Org (oder umgekehrt) wird die Visualisierung passend gespiegelt:
-// fuer eine Org rechnen wir aus den Personen-Relationen die Nachbar-
-// Personen (occ-, rep-Targets), fuer eine Person die direkten rels.
+// Ego-network of actors (persons and orgs). Clicking a neighbour re-centers.
+// Org edges are mirrored from person relations since only persons carry rels.
 (function () {
     'use strict';
 
@@ -23,13 +19,9 @@
     const RELATIONS = V.readJsonScript('network-data-relations', { persons: [] });
     let DOCS_LOOKUP = {};
 
-    // Single actor index: key (pe__... or org__...) -> actor record.
-    // kind === 'person' fuer Personen mit sex und rels[]; kind === 'org'
-    // fuer Organisationen mit Anzeigenamen aus relations.json::orgs.
+    // Actor index: key (pe__... or org__...) -> actor record.
     const ACTORS = new Map();
-    // Edges pro Akteur: actor_key -> [{otherKey, otherKind, type,
-    // labels[], labelsNorm[], sourceKeys[]}]. Fuer Personen direkt aus rels,
-    // fuer Orgs als invertierte Spiegel der Personen-Edges.
+    // Edges per actor: from person rels directly, for orgs as inverted mirrors.
     const EDGE_INDEX = new Map();
 
     function buildIndex() {
@@ -74,8 +66,7 @@
             }
             EDGE_INDEX.set(p.id, Array.from(edges.values()));
         }
-        // Inverse Edges fuer Orgs: pro Person-Edge, das auf eine Org zeigt,
-        // ein Spiegel-Edge mit Person als otherKey unter der Org anlegen.
+        // For each person->org edge, add a mirror edge under the org.
         const personIds = [];
         for (const a of ACTORS.values()) {
             if (a.kind === 'person') personIds.push(a.id);
@@ -127,12 +118,9 @@
 
     const W = 720, H = 520, CX = W / 2, CY = H / 2;
     const RADIUS_NEIGHBOR = 200;
-    // Hub-Akteure (z.B. org__wien mit 725 Verbindungen) wuerden den Ring
-    // zu einer unleserlichen Wolke aufblasen. Der Graph ist die Lesart,
-    // die Detail-Tabelle die vollstaendige Quelle. Labels werden ab
-    // mittlerer Dichte ausgeblendet, sichtbare Knoten ab hoher Dichte
-    // gekappt (sortiert nach Quellen-Anzahl, also visuelle Prominenz
-    // folgt Beleg-Staerke).
+    // Hub actors would blow the ring into an unreadable cloud, so the graph
+    // caps visible nodes (sorted by source count) and hides labels past a
+    // density threshold; the detail table remains the complete source.
     const MAX_GRAPH_NODES = 48;
     const LABEL_THRESHOLD = 18;
 
@@ -560,8 +548,7 @@
         }
     }
 
-    // Text-Escaping kommt aus EdCore (textContent-Verfahren, hier geladen);
-    // escapeAttr ergaenzt nur das Anfuehrungszeichen fuer Attribut-Kontexte.
+    // HTML escaping comes from EdCore; escapeAttr only adds quote escaping.
     function escapeHtml(s) {
         return EdCore.esc(s);
     }

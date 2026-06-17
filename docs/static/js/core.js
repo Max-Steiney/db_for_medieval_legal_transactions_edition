@@ -1,7 +1,4 @@
-/* ==========================================================================
-   Stadt und Gemeinschaft Wien, digitale Edition
-   Core: navigation, hamburger menu, esc() utility, build-time globals.
-   ========================================================================== */
+// Core: navigation, hamburger menu, esc() utility, build-time globals.
 
 (function() {
     'use strict';
@@ -16,10 +13,7 @@
 let EdCore = (function() {
     'use strict';
 
-    /* ------------------------------------------------------------------
-       HTML-escape utility (used by multiple modules)
-       ------------------------------------------------------------------ */
-
+    // HTML-escape utility (used by multiple modules)
     let esc = (function() {
         let d = document.createElement('div');
         return function(s) {
@@ -29,10 +23,6 @@ let EdCore = (function() {
         };
     })();
 
-
-    /* ------------------------------------------------------------------
-       Navigation dropdown
-       ------------------------------------------------------------------ */
 
     function closeAllDropdowns(dropdowns) {
         dropdowns.forEach(function(d) {
@@ -71,10 +61,6 @@ let EdCore = (function() {
     }
 
 
-    /* ------------------------------------------------------------------
-       Hamburger menu (responsive nav)
-       ------------------------------------------------------------------ */
-
     function initNavHamburger() {
         let btn = document.getElementById('nav-hamburger');
         let links = document.getElementById('nav-links');
@@ -103,13 +89,10 @@ let EdCore = (function() {
     }
 
 
-    /* ------------------------------------------------------------------
-       Active-page marker in the top nav. Pure client-side so the build
-       output stays stateless. Top-level <a> gets aria-current="page";
-       dropdown wrappers additionally get .is-current when one of their
-       sub-links is active.
-       ------------------------------------------------------------------ */
-
+    // Active-page marker in the top nav. Pure client-side so the build
+    // output stays stateless. Top-level <a> gets aria-current="page";
+    // dropdown wrappers additionally get .is-current when one of their
+    // sub-links is active.
     function initNavActive() {
         let here = (window.location.pathname || '').replace(/\/+$/, '/index.html');
         if (here.endsWith('/')) here += 'index.html';
@@ -148,10 +131,6 @@ let EdCore = (function() {
     }
 
 
-    /* ------------------------------------------------------------------
-       Initialise on every page
-       ------------------------------------------------------------------ */
-
     document.addEventListener('DOMContentLoaded', function() {
         initNavDropdown();
         initNavHamburger();
@@ -159,10 +138,7 @@ let EdCore = (function() {
     });
 
 
-    /* ------------------------------------------------------------------
-       URL parameter utility (E6 cross-epic navigation)
-       ------------------------------------------------------------------ */
-
+    // URL parameter utility (E6 cross-epic navigation)
     function getParam(name) {
         try {
             return new URLSearchParams(window.location.search).get(name);
@@ -172,15 +148,12 @@ let EdCore = (function() {
     }
 
 
-    /* ------------------------------------------------------------------
-       Search normalisation: map German umlauts to their two-letter
-       equivalents (ö <-> oe, ü <-> ue, ä <-> ae, ß <-> ss), then strip
-       remaining combining diacritics via NFD. Used on both the pre-
-       computed search strings and the live input; both sides MUST be
-       normalised identically for substring matching to work, e.g.
-       "Poetel" finds "Pötel", "Strauss" finds "Strauß".
-       ------------------------------------------------------------------ */
-
+    // Search normalisation: map German umlauts to their two-letter
+    // equivalents (ö <-> oe, ü <-> ue, ä <-> ae, ß <-> ss), then strip
+    // remaining combining diacritics via NFD. Used on both the pre-
+    // computed search strings and the live input; both sides MUST be
+    // normalised identically for substring matching to work, e.g.
+    // "Poetel" finds "Pötel", "Strauss" finds "Strauß".
     let COMBINING_MARKS_RE = new RegExp('[\\u0300-\\u036f]', 'g');
 
     function normForSearch(s) {
@@ -196,14 +169,10 @@ let EdCore = (function() {
     }
 
 
-    /* ------------------------------------------------------------------
-       Word-AND match against an already-normalised haystack.
-
-       Both arguments must be pre-normalised via normForSearch() — this
-       keeps the hot path (one call per row per keystroke) free of
-       string allocations. Whitespace-split, empty query returns true.
-       ------------------------------------------------------------------ */
-
+    // Word-AND match against an already-normalised haystack.
+    // Both arguments must be pre-normalised via normForSearch() — this
+    // keeps the hot path (one call per row per keystroke) free of
+    // string allocations. Whitespace-split, empty query returns true.
     function matchesQuery(haystack, normQuery) {
         if (!normQuery) return true;
         if (!haystack) return false;
@@ -215,25 +184,22 @@ let EdCore = (function() {
     }
 
 
-    /* ------------------------------------------------------------------
-       Sort utilities (shared by index.js, profile.js, register.js)
-
-       sortKey() normalises a value for lexicographic comparison:
-       - strips square brackets (editorial markup like "[Wien]" sorts
-         under W, not under [)
-       - trims leading/trailing punctuation (",", ";", ":", whitespace);
-         "Wien," sorts with "Wien", "St. Poelten" is left alone because
-         its dot is internal
-       - lowercases (defensive; localeCompare 'de' would handle case but
-         we want a deterministic comparable form)
-
-       compareValues() is the generic cell-vs-cell comparator:
-       - empty values (undefined/null/""/"-") sort to the end
-       - both values numeric -> numeric compare
-       - otherwise -> sortKey + localeCompare('de')
-       - dir = +1 ascending, -1 descending
-       ------------------------------------------------------------------ */
-
+    // Sort utilities (shared by index.js, profile.js, register.js)
+    //
+    // sortKey() normalises a value for lexicographic comparison:
+    // - strips square brackets (editorial markup like "[Wien]" sorts
+    //   under W, not under [)
+    // - trims leading/trailing punctuation (",", ";", ":", whitespace);
+    //   "Wien," sorts with "Wien", "St. Poelten" is left alone because
+    //   its dot is internal
+    // - lowercases (defensive; localeCompare 'de' would handle case but
+    //   we want a deterministic comparable form)
+    //
+    // compareValues() is the generic cell-vs-cell comparator:
+    // - empty values (undefined/null/""/"-") sort to the end
+    // - both values numeric -> numeric compare
+    // - otherwise -> sortKey + localeCompare('de')
+    // - dir = +1 ascending, -1 descending
     let NUM_RE = /^-?\d+(\.\d+)?$/;
 
     function sortKey(v) {
@@ -268,10 +234,6 @@ let EdCore = (function() {
         return sortKey(sa).localeCompare(sortKey(sb), 'de') * dir;
     }
 
-
-    /* ------------------------------------------------------------------
-       Public API
-       ------------------------------------------------------------------ */
 
     return {
         esc: esc,

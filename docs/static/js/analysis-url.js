@@ -1,24 +1,11 @@
-/* ==========================================================================
-   Stadt und Gemeinschaft Wien — analysis/index.html
-   URL-Serialisierung der Konstellations-Abfrage
-
-   Pure-Logic-Modul: nimmt einen State-Snapshot entgegen und produziert
-   einen Hash-String, bzw. parst einen Hash-String zurueck in einen
-   State-Patch. Wird vom analysis-resolver.js verwendet (und in
-   tests/js/analysis-url.test.js geprueft).
-
-   State-Form:
-     { persons: [{role, sex, occ, uhlirz}],
-       orgs:    [{role, name, type}],
-       scope:   'event'|'source',
-       corpora: array<string> }
-
-   URL-Form:
-     pN=r=...,s=...,o=...,u=...   pro Personen-Bedingung
-     gN=r=...,n=...,t=...         pro Org-Bedingung
-     c=corpus1,corpus2            nur wenn != allCorpora
-     scope=source                 nur wenn != 'event'
-   ========================================================================== */
+// URL serialization for the constellation query. Pure logic: turns a state
+// snapshot into a hash string and parses it back into a state patch. Used by
+// analysis-resolver.js, covered by tests/js/analysis-url.test.js.
+//
+// State: { persons:[{role,sex,occ,uhlirz}], orgs:[{role,name,type}],
+//          scope:'event'|'source', corpora:array<string> }
+// URL:   pN=r=...,s=...,o=...,u=... per person; gN=r=...,n=...,t=... per org;
+//        c=... only when != allCorpora; scope=source only when != 'event'
 
 (function () {
     'use strict';
@@ -48,7 +35,7 @@
     }
 
     /**
-     * State -> Hash-String (ohne fuehrendes '#').
+     * State -> hash string (without leading '#').
      * @param {object} state
      * @param {string[]} allCorpora full set of corpora — used as default,
      *   only deviations are serialized.
@@ -67,8 +54,7 @@
         const all = allCorpora || [];
         const corporaSet = new Set(corpora);
         const allSet = new Set(all);
-        // Default ist "alle Korpora aktiv". Nur wenn die Auswahl davon
-        // abweicht (kleiner oder anders), wird sie serialisiert.
+        // Default is "all corpora active"; only a deviating selection is serialized.
         const isAllCorpora =
             corpora.length === all.length &&
             corpora.every(c => allSet.has(c));
@@ -82,10 +68,8 @@
     }
 
     /**
-     * Hash-String (ohne fuehrendes '#') -> State-Patch.
-     * Fehlende Slots werden NICHT vorbefuellt; der Aufrufer muss leere
-     * Personen/Orgs-Cards selbst initialisieren (siehe defaultPerson/
-     * defaultOrg).
+     * Hash string (without leading '#') -> state patch. Missing slots are NOT
+     * pre-filled; the caller initializes empty person/org cards itself.
      */
     function parseQueryHash(hash) {
         const state = {

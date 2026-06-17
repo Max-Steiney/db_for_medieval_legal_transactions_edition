@@ -1,17 +1,9 @@
-/* ==========================================================================
-   Stadt und Gemeinschaft Wien, digitale Edition
-   Shared table infrastructure (range slider, search, sort, renderer, chips)
-   ========================================================================== */
+// Shared table infrastructure (range slider, search, sort, renderer, chips)
 
 let TableInfra = (function() {
     'use strict';
 
     let esc = EdCore.esc;
-
-
-    /* ------------------------------------------------------------------
-       Range slider with histogram
-       ------------------------------------------------------------------ */
 
     function initRangeSlider(state, applyFilters) {
         let slider = document.getElementById('range-slider');
@@ -103,10 +95,6 @@ let TableInfra = (function() {
     }
 
 
-    /* ------------------------------------------------------------------
-       Debounced search input + clear button
-       ------------------------------------------------------------------ */
-
     function setupSearch(state, applyFilters) {
         let searchInput = document.getElementById('search-input');
         let searchClear = document.getElementById('search-clear');
@@ -160,10 +148,6 @@ let TableInfra = (function() {
     }
 
 
-    /* ------------------------------------------------------------------
-       Sortable column headers
-       ------------------------------------------------------------------ */
-
     function setupSortHeaders(tableId, state, applyFilters) {
         let headers = document.querySelectorAll('#' + tableId + ' th[data-sort]');
         headers.forEach(function(th) {
@@ -192,12 +176,9 @@ let TableInfra = (function() {
     }
 
 
-    /* ------------------------------------------------------------------
-       Progressive-rendering table engine
-       config: {tbodyId, noResultsId, colCount, renderRow(item, index, tr)}
-       Returns {render(items)}
-       ------------------------------------------------------------------ */
-
+    // Progressive-rendering table engine
+    // config: {tbodyId, noResultsId, colCount, renderRow(item, index, tr)}
+    // Returns {render(items)}
     function createTableRenderer(config) {
         let tbody = document.getElementById(config.tbodyId);
         let noResults = document.getElementById(config.noResultsId);
@@ -253,10 +234,6 @@ let TableInfra = (function() {
     }
 
 
-    /* ------------------------------------------------------------------
-       Filter chip
-       ------------------------------------------------------------------ */
-
     function addFilterChip(container, label, onRemove) {
         // Click anywhere on the pill removes the filter \u2014 looks like a
         // removable tag and acts like one. A dedicated \u2715 button stays
@@ -272,10 +249,6 @@ let TableInfra = (function() {
         container.appendChild(chip);
     }
 
-
-    /* ------------------------------------------------------------------
-       Public API
-       ------------------------------------------------------------------ */
 
     return {
         initRangeSlider: initRangeSlider,

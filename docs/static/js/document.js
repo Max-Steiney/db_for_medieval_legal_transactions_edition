@@ -1,33 +1,16 @@
-/* ==========================================================================
-   Stadt und Gemeinschaft Wien, digitale Edition
-   Document page: annotations view + citation helper + layer toggles
-   ========================================================================== */
-
 (function() {
     'use strict';
 
     let esc = EdCore.esc;
 
-    // Dev-Mode-Schalter ueber ?dev=1 in der URL. Setzt .dev-mode auf
-    // <html> und macht damit alle .dev-only-Elemente sichtbar (gelber
-    // gestrichelter Rahmen, Label "Entwicklung"). Default-Sicht ohne
-    // URL-Parameter bleibt schlank.
+    // ?dev=1 sets .dev-mode on <html>, revealing all .dev-only elements.
     if (window.location && window.location.search.indexOf('dev=1') >= 0) {
         document.documentElement.classList.add('dev-mode');
     }
 
 
-    /* ------------------------------------------------------------------
-       Annotations — all annotated layers from the TEI as structured
-       tables below edition text + facsimile. Permanent area, no toggle.
-       Four sub-tables:
-         1. Persons / organisations / places (with role, attributes,
-            event, section)
-         2. Events (event refs + section type + dispositive verb)
-         3. Dispositive formulas (trigger strings)
-         4. Editorial additions (.anno-add)
-       ------------------------------------------------------------------ */
-
+    // Renders all annotated TEI layers as structured tables: entities,
+    // events, dispositive formulas, and editorial additions.
     function initAssertionsView() {
         let container = document.getElementById('annotations-view');
         if (!container) return;
@@ -66,9 +49,8 @@
         if (!body || !bodyEl) return;
 
         let DASH = '–';
-        // Role-Labels werden vom Build aus frontend/role_labels.py in
-        // <script id="role-labels"> in base.html eingebettet. Fallback
-        // sichert ab, falls das Element fehlt (z.B. in Tests).
+        // Role labels are embedded by the build into <script id="role-labels">;
+        // the fallback covers cases where that element is absent (e.g. in tests).
         let ROLE_LABELS = (function() {
             try {
                 let el = document.getElementById('role-labels');
@@ -82,8 +64,8 @@
             };
         })();
 
-        // ---- 1. Entities: first inside function-role spans (with role),
-        //         then standalone (without role).
+        // Entities: first those inside function-role spans (with role),
+        // then standalone ones (without role).
         let entities = [];
         let seen = new Set();
         let fnSpans = body.querySelectorAll('.anno-fn');
@@ -141,20 +123,15 @@
             });
         }
 
-        // ---- 2. Events: one row per event span (deduped by ref).
-        // Nested-Events (Events innerhalb von Events; "erwaehnte
-        // Ereignisse" aus der Narrative) werden in der Tabelle nicht
-        // als eigene Gruppe gefuehrt; ihre Entitaeten wandern in die
-        // Gruppe ihres Eltern-Events. Der Gruppen-Header zeigt
-        // ausschliesslich, was in der Quelle steht: das erste
-        // Disp-Verb des Events plus die rohe ev__-ID als Anker.
+        // Events: one row per event span (deduped by ref). Nested events
+        // do not form their own group; their entities collapse into the
+        // parent event's group.
         let events = [];
         let eventSeen = new Set();
         let eventSpans = body.querySelectorAll('.anno-event');
 
-        // Map jede ref auf das outermost-anno-event in der Hierarchie.
-        // Wird beim Entitaeten-Gruppieren genutzt, um nested-Events in
-        // ihre Eltern-Gruppe zu kollabieren.
+        // Maps each ref to the outermost anno-event in the hierarchy, so
+        // entity grouping can collapse nested events into their parent group.
         let topLevelByRef = {};
         for (let e = 0; e < eventSpans.length; e++) {
             let span = eventSpans[e];
@@ -178,7 +155,7 @@
             if (eventSeen.has(ref)) continue;
             eventSeen.add(ref);
             let isNested = topLevelByRef[ref] !== ref;
-            if (isNested) continue; // nested events erscheinen nicht als eigene Gruppe
+            if (isNested) continue; // nested events do not form their own group
             let trigger = ev.querySelector('.anno-trigger-disp, .anno-trigger');
             events.push({
                 ref: ref,
@@ -187,7 +164,6 @@
             });
         }
 
-        // ---- 3. Dispositive formulas / trigger strings.
         let triggers = [];
         let triggerSpans = body.querySelectorAll('.anno-trigger');
         for (let t = 0; t < triggerSpans.length; t++) {
@@ -204,7 +180,6 @@
             });
         }
 
-        // ---- 4. Editorial additions (.anno-add).
         let adds = [];
         let addSpans = body.querySelectorAll('.anno-add');
         for (let a = 0; a < addSpans.length; a++) {
@@ -220,10 +195,8 @@
             return;
         }
 
-        // Per-row hover hint: each annotation gets data-hint (body) plus
-        // data-hint-type (small caps label). Picked up by hint.js. Body
-        // is plain structured text -- no raw TEI markup leaking into
-        // the UI tooltip layer (see Block 3 of the 2026-05 plan).
+        // Per-row hover hint picked up by hint.js. Body is plain structured
+        // text so no raw TEI markup leaks into the tooltip layer.
         function entityTipBody(f) {
             let parts = [f.name];
             if (f.role && f.role !== DASH) parts.push('Rolle: ' + f.role);
@@ -254,28 +227,20 @@
         }
 
         function escAttr(s) {
-            // EdCore.esc emits &lt;/&gt;/&amp; but does not escape the
-            // double quote — for attribute values " must also be
-            // escaped, otherwise the first " in the body would
-            // prematurely close the attribute.
+            // EdCore.esc does not escape the double quote, which must also
+            // be escaped in attribute values to avoid closing the attribute.
             return esc(s).replace(/"/g, '&quot;');
         }
         function tipAttrs(type, body) {
             return ' data-hint="' + escAttr(body) + '" data-hint-type="' + escAttr(type) + '"';
         }
 
-        // data-sort-value on each <td> drives the column sorter, which
-        // re-uses the .sortable-table convention from profile.js.
-        // For cells where the visible content is a link or a badge,
-        // the plain text equivalent goes into data-sort-value so that
-        // alphabetical sorting compares names, not href markup.
+        // data-sort-value drives the column sorter. For link or badge cells
+        // it holds the plain text so sorting compares names, not markup.
         function sortAttr(value) {
             return ' data-sort-value="' + escAttr(value) + '"';
         }
 
-        // Funktionsrolle als gefuellte Pille -- kontrolliertes Vokabular,
-        // visuell auf den ersten Blick als Kategorie erkennbar. None /
-        // unbekannte Rolle erscheint als gedaempfter Halbgeviertstrich.
         function rolePill(role) {
             if (!role || role === DASH) {
                 return '<span class="role-pill role-pill--none">' + DASH + '</span>';
@@ -288,9 +253,6 @@
             return '<span class="role-pill' + mod + '">' + esc(role) + '</span>';
         }
 
-        // Attribute als umrandete Tags, ein Tag pro Wert -- quellennahe
-        // Beischriften, visuell von der kontrollierten Funktionsrolle
-        // abgesetzt.
         function attrTags(arr) {
             if (!arr || !arr.length) return '<span class="attr-empty">' + DASH + '</span>';
             let out = '';
@@ -300,9 +262,8 @@
             return out;
         }
 
-        // Disp-Vorschau fuer den Event-Gruppen-Header: erste und letzte
-        // Dispositivformel mit Auslassung in der Mitte. Bei genau einer
-        // Formel nur diese, bei zwei beide ohne Auslassung.
+        // Dispositive preview for the event group header: first and last
+        // formula with an ellipsis between, or fewer when there are one or two.
         let dispTriggersByEvent = {};
         for (let t = 0; t < triggers.length; t++) {
             if (triggers[t].kind !== 'Dispositiv') continue;
@@ -321,18 +282,15 @@
         }
 
         let panels = [];
-        // Default-Aktiv ist der erste nicht-devOnly-Panel, damit ohne
-        // dev-Schalter nicht versehentlich ein verstecktes Panel als
-        // aktiv markiert wird. Wird unten vor dem Rendern bestimmt.
+        // Default active panel is the first non-devOnly one, so a hidden
+        // panel is never marked active without the dev switch. Set below.
         let defaultActiveKey = '';
 
         if (entities.length) {
-            // Entitaeten nach Event gruppieren, damit auf einen Blick
-            // erkennbar ist, welche Personen/Orgs/Orte zum selben
-            // Rechtsgeschaeft gehoeren. Sortierung wirkt gruppen-aware:
-            // Klick auf Spaltenkopf sortiert die Zeilen jeder Gruppe,
-            // die Gruppen-Reihenfolge bleibt fix (Dokument-Reihenfolge
-            // der Events). Diese Logik lebt in _attachAnnotationSorting.
+            // Group entities by event so it is clear which belong to the
+            // same legal transaction. Sorting is group-aware (see
+            // _attachAnnotationSorting): rows sort within each group, group
+            // order stays fixed in document order.
             let rootPath = (document.body && document.body.dataset.rootPath) || '..';
             let showIds = (document.body && document.body.getAttribute('data-audience') === 'intern')
                 || document.documentElement.classList.contains('dev-mode');
@@ -371,8 +329,8 @@
             }
 
             function entityRow(f) {
-                // Anzeigename: aufgeloeste Identitaet zuerst, Quell-Wortlaut
-                // in Klammern dahinter, wenn beide sich unterscheiden.
+                // Display name: resolved identity first, source wording in
+                // parentheses after it when the two differ.
                 let hasResolved = f.resolved && f.resolved !== f.name;
                 let primary = hasResolved ? f.resolved : f.name;
                 let primaryHtml;
@@ -395,8 +353,7 @@
                     nameCell += '<span class="anno-ref">' + esc(f.ref) + '</span>';
                 }
 
-                // Geschlecht als Kurzform m/w wie im Register und Korb.
-                // Nicht-Personen leer.
+                // Sex as the short m/w form used in register and basket; empty for non-persons.
                 let sexCell = '';
                 let sexSort = '';
                 if (f.type === 'Person') {
@@ -515,17 +472,13 @@
             });
         }
 
-        // Tabs-Strip rendern. Default-aktiv ist der erste Panel
-        // (typischerweise Entitäten). Bei nur einem Panel bleibt der
-        // Strip unsichtbar.
         for (let i = 0; i < panels.length; i++) {
             if (!panels[i].devOnly) { defaultActiveKey = panels[i].key; break; }
         }
         if (!defaultActiveKey && panels.length) defaultActiveKey = panels[0].key;
 
-        // Tab-Strip nur rendern, wenn mehr als ein sichtbares Panel
-        // vorhanden ist. Dev-Only-Panels (z.B. Dispositivformeln in der
-        // oeffentlichen Sicht) zaehlen erst, wenn .dev-mode aktiv ist.
+        // Only render the tab strip with more than one visible panel.
+        // Dev-only panels count only when .dev-mode is active.
         let isDevMode = document.documentElement.classList.contains('dev-mode');
         let visiblePanelCount = panels.filter(function(p) {
             return !p.devOnly || isDevMode;
@@ -563,8 +516,8 @@
         }
         bodyEl.innerHTML = html;
 
-        // Tab-Switch: nur ein Panel sichtbar, andere hidden. Aktiver
-        // Tab visuell hervorgehoben, aria-selected konsistent gepflegt.
+        // Tab switch: only one panel visible, the others hidden; active tab
+        // highlighted and aria-selected kept consistent.
         if (tabsEl && visiblePanelCount > 1) {
             let tabButtons = tabsEl.querySelectorAll('.annotations-tab');
             tabButtons.forEach(function(btn) {
@@ -588,22 +541,16 @@
         }
 
 
-        // Attach column sorting to every freshly built table. Mechanik
-        // analog zu profile.js: data-sort-value pro td, EdCore.compareValues
-        // als Vergleichs-Primitive, dritter Klick setzt zurueck.
+        // Attach column sorting to every freshly built table.
         let sortTables = bodyEl.querySelectorAll('table.sortable-table');
         for (let s = 0; s < sortTables.length; s++) {
             _attachAnnotationSorting(sortTables[s]);
         }
     }
 
-    /* ------------------------------------------------------------------
-       Sortierung der Annotationen-Untertabellen.
-       Nachgebaut nach profile.js -> setupSortableTable. profile.js wird
-       auf Document-Pages nicht geladen, ausserdem laeuft seine init zu
-       frueh (DOMContentLoaded), bevor buildAnnotationsTables die
-       Tabellen erzeugt hat. Daher eigene, schlanke Variante hier.
-       ------------------------------------------------------------------ */
+    // Sorting for the annotation sub-tables. A slim local variant of
+    // profile.js setupSortableTable, which is not loaded on document pages
+    // and whose init runs before these tables are built.
     function _attachAnnotationSorting(table) {
         let allHeaders = Array.prototype.slice.call(table.querySelectorAll('thead th'));
         let sortHeaders = allHeaders.filter(function (h) { return h.hasAttribute('data-sort'); });
@@ -636,11 +583,10 @@
             let colIndex = indexByKey[state.key];
             if (colIndex === undefined || colIndex < 0) return;
 
-            // Gruppen-aware Sortierung: tbody wird an den
-            // .annotations-group-row-Grenzen segmentiert; jede Gruppe
-            // wird in sich sortiert, die Gruppen-Reihenfolge bleibt
-            // fix. Tabellen ohne Gruppen-Header fallen auf eine
-            // implizite Einzel-Gruppe zurueck (= globale Sortierung).
+            // Group-aware sort: tbody is segmented at the
+            // .annotations-group-row boundaries; each group sorts within
+            // itself, group order stays fixed. Tables without group headers
+            // fall back to a single implicit group (global sort).
             let allRows = Array.prototype.slice.call(tbody.children);
             let segments = [];
             let current = { header: null, dataRows: [] };
@@ -696,10 +642,7 @@
     }
 
 
-    /* ------------------------------------------------------------------
-       Citation Helper — formatted citation with copy-to-clipboard
-       ------------------------------------------------------------------ */
-
+    // Citation helper: formatted citation with copy-to-clipboard.
     function initCitationHelper() {
         let btn = document.getElementById('cite-toggle');
         let popover = document.getElementById('cite-popover');
@@ -800,24 +743,16 @@
     }
 
 
-    /* ------------------------------------------------------------------
-       Annotation toggle — detail legend is the control. Clicking a
-       group (entities / function roles / attributes / dispositive
-       formula) toggles its layer class on `.doc-body`. State persists
-       via localStorage; classes follow the existing classMap scheme so
-       current CSS selectors (.doc-body.hide-entities .anno-...) keep
-       working.
-       ------------------------------------------------------------------ */
-
+    // Annotation toggle: clicking a legend group toggles its layer class on
+    // .doc-body (classMap scheme). State persists via localStorage.
     function initAnnotationToggle() {
         let body = document.querySelector('.doc-body');
         let toggles = document.querySelectorAll('.legend-toggle[data-layer]');
         if (!body || !toggles.length) return;
 
         let STORAGE_KEY = 'sugw-anno-layers';
-        // Einmalige Migration des alten localStorage-Schluessels (Praefix
-        // 'wub-' aus dem frueheren Projektnamen). Sichtbarkeits-Praeferenz
-        // uebernehmen, dann alten Schluessel entfernen.
+        // One-time migration of the old 'wub-' localStorage key from the
+        // former project name: carry over the preference, then drop it.
         try {
             let legacy = localStorage.getItem('wub-anno-layers');
             if (legacy !== null && localStorage.getItem(STORAGE_KEY) === null) {
@@ -872,10 +807,6 @@
         }
     }
 
-
-    /* ------------------------------------------------------------------
-       Initialise on document pages
-       ------------------------------------------------------------------ */
 
     document.addEventListener('DOMContentLoaded', function() {
         if (document.querySelector('.doc-body')) {

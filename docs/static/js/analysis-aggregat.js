@@ -20,12 +20,10 @@
     };
     const decFilter = V.makeDecadeFilter(STATE);
 
-    // ---------------------------------------------------------------------
     // Mark a detail table with the active sex filter so CSS can de-emphasise
     // the columns belonging to the filtered-out sex. The aggregate values
     // themselves stay readable on hover; this only shifts the visual weight
     // so the donut/legend filter feels honest about its scope.
-    // ---------------------------------------------------------------------
     function applySexFilterClass(table, sex) {
         if (!table) return;
         table.classList.remove('is-filter-m', 'is-filter-f');
@@ -33,10 +31,8 @@
         else if (sex === 'f') table.classList.add('is-filter-f');
     }
 
-    // ---------------------------------------------------------------------
     // M/F bar + counts; same look in donut legends and the labels table.
     // Returns an HTML snippet; the caller chooses the wrapper.
-    // ---------------------------------------------------------------------
     function sexBarHTML(m, f) {
         const tot = (m || 0) + (f || 0);
         const mPct = tot ? (m / tot * 100) : 0;
@@ -54,10 +50,8 @@
             </span>`;
     }
 
-    // ---------------------------------------------------------------------
     // Donut renderer (inline SVG, no external lib).
     // segments: [{key, label, value, color}, ...]
-    // ---------------------------------------------------------------------
     function renderDonut(container, segments, opts) {
         if (!container) return;
         opts = opts || {};
@@ -100,9 +94,7 @@
         </svg>`;
     }
 
-    // ---------------------------------------------------------------------
     // Legend: one entry per segment with color, label, count, %, M/F bar.
-    // ---------------------------------------------------------------------
     function renderLegend(container, entries, total) {
         if (!container) return;
         const items = entries.map(e => {
@@ -121,9 +113,7 @@
         V.applyDataStyles(container);
     }
 
-    // ---------------------------------------------------------------------
     // Section 1: function roles
-    // ---------------------------------------------------------------------
     function aggregateRoles() {
         const dec = ROLES.observations.role_by_sex_by_decade || {};
         const persDec = ROLES.observations.role_persons_by_decade || {};
@@ -247,9 +237,7 @@
         tbody.innerHTML = rows.join('');
     }
 
-    // ---------------------------------------------------------------------
     // Section 2: relation types
-    // ---------------------------------------------------------------------
     function renderRelations() {
         const overview = (RELATIONS.overview || {}).type_by_sex || {};
         const cov = (RELATIONS.coverage || {});
@@ -323,9 +311,7 @@
         tbody.innerHTML = rows.join('');
     }
 
-    // ---------------------------------------------------------------------
     // Section 3: transaction types — horizontal bars
-    // ---------------------------------------------------------------------
     function aggregateTxTypes() {
         const tl = (TRANSACTIONS.observations || {}).tx_timeline || {};
         const noTime = decFilter.noFilter();
@@ -424,9 +410,7 @@
         }
     }
 
-    // ---------------------------------------------------------------------
     // Section 4: labels — table with mini bars
-    // ---------------------------------------------------------------------
     function renderLabels() {
         const tbody = document.querySelector('#labels-table tbody');
         const meta = document.getElementById('labels-count-meta');
@@ -479,9 +463,7 @@
         V.applyDataStyles(tbody);
     }
 
-    // ---------------------------------------------------------------------
     // Filter controls
-    // ---------------------------------------------------------------------
     function bindSexFilter() {
         const group = document.getElementById('filter-sex');
         if (!group) return;
@@ -555,9 +537,7 @@
         });
     }
 
-    // ---------------------------------------------------------------------
     // Active filter strip — filter descriptions + clear callbacks
-    // ---------------------------------------------------------------------
     function clearSexFilter() {
         STATE.sex = 'all';
         V.setActiveChip(document.getElementById('filter-sex'), 'all', 'data-sex');
@@ -598,11 +578,9 @@
         V.renderActiveFilters('active-filters', filters);
     }
 
-    // ---------------------------------------------------------------------
     // Drill-down: click on donut arc / bar / label -> sources list.
     // Collects file_keys from the drill_down indices of the roles/relations/transactions aggregates
     // and calls V.openDrillOverlay to display them.
-    // ---------------------------------------------------------------------
     function drillRoleSex(roleKey) {
         const dd = ((ROLES.drill_down || {}).role_sex || {})[roleKey] || {};
         const sex = STATE.sex;
@@ -758,14 +736,12 @@
         }
     }
 
-    // ---------------------------------------------------------------------
     // Time-filter awareness hint.
     // Roles + TX aggregates carry decade buckets, so the time slider works
     // on them; Relations + Labels aggregates do not. We expose that
     // honestly by showing a small hint in the affected quadrants whenever
     // a non-trivial time range is active. The hint elements live in the
     // template; this only toggles visibility.
-    // ---------------------------------------------------------------------
     function updateTimeAwareHints() {
         const active = decFilter.isActive();
         document.querySelectorAll('.aggregat-quadrant-time-hint').forEach(el => {
@@ -773,11 +749,9 @@
         });
     }
 
-    // ---------------------------------------------------------------------
     // URL state sync. Filter state is serialised into the query string so
     // the current research state is citable / bookmarkable.
     // Format: ?dec=1300-1380&sex=f&type=kin&q=hausfrau&mode=persons
-    // ---------------------------------------------------------------------
     let urlSyncActive = false;   // guard so apply-from-URL does not re-write
 
     function writeUrl() {
@@ -817,9 +791,6 @@
                         STATE.rolesMode, 'data-roles-mode', 'is-active');
     }
 
-    // ---------------------------------------------------------------------
-    // Master render
-    // ---------------------------------------------------------------------
     function renderAll() {
         renderRoles();
         renderRelations();

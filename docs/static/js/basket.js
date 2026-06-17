@@ -1,28 +1,26 @@
-/* ==========================================================================
-   Data basket, persistent collection of sources, persons, and organisations
-   across sessions. localStorage-based; a flat array of items keyed by the
-   compound key "<type>:<id>". Nav badge updates via custom event
-   'basket-change'.
-
-   Allowed types: 'source' | 'person' | 'org'.
-   Entries lacking a type field are treated as 'source' (backwards-compat
-   with the single-type basket that shipped first).
-
-   Derived entries (Phase 2): adding a source pulls in its annotated
-   persons / orgs as 'derived' entries via a per-source lookup
-   (data/docs_entities.json). Derived entries carry the source idnos
-   in their `src` array. A separate flag `gathered: true|false` keeps
-   the user-collected entries distinct from purely derived ones.
-
-       gathered === true   : explicitly added by the user via '+'
-       gathered === false  : purely derived (src is non-empty)
-
-   A manual '+' on a derived entry sets gathered=true (promotion). The
-   entry then survives when its source(s) get removed.
-
-   UI label is German ("Datenkorb"); code-side symbols use the English
-   "basket" so the source stays consistent with the rest of the codebase.
-   ========================================================================== */
+// Data basket, persistent collection of sources, persons, and organisations
+// across sessions. localStorage-based; a flat array of items keyed by the
+// compound key "<type>:<id>". Nav badge updates via custom event
+// 'basket-change'.
+//
+// Allowed types: 'source' | 'person' | 'org'.
+// Entries lacking a type field are treated as 'source' (backwards-compat
+// with the single-type basket that shipped first).
+//
+// Derived entries (Phase 2): adding a source pulls in its annotated
+// persons / orgs as 'derived' entries via a per-source lookup
+// (data/docs_entities.json). Derived entries carry the source idnos
+// in their `src` array. A separate flag `gathered: true|false` keeps
+// the user-collected entries distinct from purely derived ones.
+//
+//     gathered === true   : explicitly added by the user via '+'
+//     gathered === false  : purely derived (src is non-empty)
+//
+// A manual '+' on a derived entry sets gathered=true (promotion). The
+// entry then survives when its source(s) get removed.
+//
+// UI label is German ("Datenkorb"); code-side symbols use the English
+// "basket" so the source stays consistent with the rest of the codebase.
 
 let DataBasket = (function () {
     'use strict';
@@ -193,7 +191,6 @@ let DataBasket = (function () {
         write(read().filter(x => normType(x.type) !== t));
     }
 
-    // -------------- Derived attach / detach --------------
     // The lookup is keyed by source idno: { "<idno>": { p: [...], o: [...] } }.
     let entitiesCache = null;
     let entitiesPromise = null;
