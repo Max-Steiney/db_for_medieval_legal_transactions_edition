@@ -24,6 +24,10 @@ Format pro Eintrag: Datum, Kurztitel, ein bis drei Absätze. Was umgesetzt wurde
 
 Einträge in umgekehrt chronologischer Reihenfolge, neueste oben.
 
+## 2026-06-21 Toten Datengrundlage-Verweis als Regression abgesichert
+
+Ein Test der Editionsrichtlinien-Seite forderte einen Verweis auf eine `datengrundlage.html`, die nie gebaut wurde. Die kanonische Richtlinien-Quelle im Schwester-Repo hatte alle Verweise darauf bereits entfernt, der Frontend-Test prüfte aber weiter auf ihr Vorhandensein und lief deshalb dauerhaft rot. Der Test ist umgedreht: er sichert jetzt, dass der tote Verweis nicht wieder in die gerenderte Seite zurückkehrt. Damit deckt sich die Test-Erwartung wieder mit der editorischen Entscheidung, statt ihr zu widersprechen.
+
 ## 2026-06-17 Stadtbücher Band 1 vorerst aus der öffentlichen Sicht
 
 Die öffentliche Sicht zeigt zunächst nur das Kernkorpus QGW II/1; Stadtbücher Band 1 wird später veröffentlicht und ist deshalb aus `PUBLIC_CORPORA` genommen (bleibt freigegeben und im internen Build sichtbar). Der Schnitt sitzt bewusst allein in `PUBLIC_CORPORA` als Single Source of Truth der öffentlichen Sichtbarkeit. Weil der Sicht-Filter `is_visible_corpus` schon in der Aggregat-Schicht greift und nicht erst beim Rendern, propagiert die Entscheidung durch alle Aggregat-JSONs, Profile und das Reverse-Register; entsprechend ziehen mehrere Sicht-Regressionstests mit.

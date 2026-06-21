@@ -108,10 +108,16 @@ def test_no_stale_file_count(built_guidelines):
     assert "3.530" not in sections_before_changelog
 
 
-def test_datengrundlage_reference(built_guidelines):
-    """Guidelines reference the Datengrundlage page for dynamic metrics."""
+def test_no_dead_datengrundlage_reference(built_guidelines):
+    """The dead Datengrundlage reference must stay removed.
+
+    A datengrundlage.html page was never built. The canonical guidelines
+    source (sister repo, commit fa187242d1, 2026-05-30 "tote
+    Datengrundlage-Verweise entfernen") dropped all references to it. This
+    guard keeps the dead link from silently reappearing in the rendered page.
+    """
     _, content = built_guidelines
-    assert "datengrundlage.html" in content
+    assert "datengrundlage.html" not in content
 
 
 def test_has_zitierhinweis_section(built_guidelines):

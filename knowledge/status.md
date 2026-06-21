@@ -90,9 +90,48 @@ Mehrere TEI-Quellfehler sind dokumentiert (`verification/findings.md`): Klammer-
 
 Zwei Frontend-Tests waren schon vor den heutigen Änderungen rot (gegengeprüft mit der alten Korpus-Menge): `test_qgw_ready_event_total_distribution` — die Norm „QGW-_ready-Quellen tragen fast immer genau ein Event" stimmt nicht mehr (Daten-/Pipeline-Drift). Und `test_datengrundlage_reference` — die Annotationsrichtlinien sollen eine Seite `datengrundlage.html` verlinken, die im Build nirgends erzeugt wird. Separat zu klären.
 
+Aufgelöst 2026-06-21 (Abschluss-Verifikation): `test_qgw_ready_event_total_distribution` läuft mit dem aktuellen Korpus-Stand wieder grün, der Drift ist verschwunden. `test_datengrundlage_reference` war nicht ein fehlender Build, sondern ein veralteter Test: die kanonische Richtlinien-Quelle im Schwester-Repo (Commit `fa187242d1`, 2026-05-30) hatte den toten `datengrundlage.html`-Verweis bewusst entfernt, der Test forderte ihn aber weiter. Der Test ist umgedreht (`test_no_dead_datengrundlage_reference`) und sichert jetzt das Wegbleiben des Verweises. Damit ist die Frontend-Suite vollständig grün.
+
 ### Zusätzlicher Bereich: Annotationsänderungen durch Claude Code (kein Frontend-Punkt)
 
 Auslöser: Stadtbücher. Personen, die ein Geschäft ins Stadtbuch einbringen, sind als `witness` annotiert, sind aber keine Zeugen; sinnvoll wäre eine eigene Rolle „Einbringer". Daraus die offene Frage, ob Claude Code solche Annotationsänderungen direkt in den TEI-Quellen vornehmen kann. Kein Frontend-Punkt, sondern Daten- und Bearbeitungs-Workflow im Schwester-Repo. Zu durchdenken: menschliche Verifikation einbauen; Workflow in `CLAUDE.md` beschreiben; Rolle „Einbringer" definieren (mit Beispiel); Python-Skript als Support-Werkzeug; teiCrafter einbeziehen; Diff über Git/GitHub als Verifikationsschritt; Konfidenz ggf. mit schriftlicher Erklärung als Prompting-Strategie; Änderungen im teiHeader `revisionDesc` dokumentieren; größeren Teil des Korpus ins Context-Window holen; dynamische Workflows/Subagents; Verifikation durch Mensch und Agent.
+
+## Abschluss-Verifikation 2026-06-21
+
+Verifizierter Schlussstand der Frontend-Lane. Alle Aussagen sind gegen den Git-Stand und committete Artefakte nachprüfbar.
+
+### Git-Anker
+
+- Frontend-Repo `main` auf `95c4aa8b3cd` (chore(build): docs/ neu gebaut nach Meeting 2026-06-17), synchron mit `origin/main`.
+- Datengrundlage (Schwester-Repo `db_for_medieval_legal_transactions`) auf `fa187242d1` (2026-05-30). Der Footer-Datenstand ist dieses Datum, nicht das Build-Datum.
+
+### Build und Tests
+
+- Der committete `docs/`-Build ist reproduzierbar. Ein frischer öffentlicher Build erzeugt keine inhaltliche Differenz, nur build-datums-abgeleitete Stempel (Cache-Busting-Versionsstring `?v=`, Nav-Badge-Datum, `created`-Feld in den Aggregat-JSONs). Kein Dateninhalt weicht ab.
+- Frontend-Tests grün: vollständige Suite ohne roten Test (vorher ein dauerhaft roter Befund, siehe unten). 33 Tests bleiben bewusst übersprungen (umgebungsabhängig).
+- Die zehn im 02.06-Durchgang als Beleg genannten Guard-Tests existieren und laufen grün (`test_index_filters`, `test_facs_panel_sticky`, `test_facs_fullscreen`, `test_anno_resolve`, `test_role_labels`, `test_register_js`, `test_basket_badge`, `test_basket_clear_all`, `test_register_pages`, `test_occ_network_belege`). Die behaupteten Stakeholder-Umsetzungen sind damit code-belegt, nicht nur im Tracker vermerkt.
+- Verifikations-Suite Stufe 1 (TEI gegen JSON-Aggregate) meldet null Mismatch, also keinen echten Drift; die übrigen Abweichungen sind als `known_gap` klassifiziert (Korpus-Freigabe-Filter, Satzbuch-CD-Parser-Lücke, Methoden-Differenz `display_name`, siehe Punkt „Verifikations-Ziel"). Report committet unter `verification/reports/2026-06-21.{md,json}`.
+- Eine Build-Warnung bleibt benigne stehen: `classified types not in roles.json: ['Koenigreich', 'OTHER']`. Sie ist eine Konsistenzprüfung der editorischen `categories.json` gegen die real vorkommenden Org-Typen und blockiert nichts. Eine Änderung an `categories.json` braucht Editor-Sign-off (siehe Auswertungen-Punkt, Vorschlag 7) und wird hier nicht unilateral vorgenommen.
+
+### Statusmarker-Aufschlüsselung und realer Fortschritt
+
+Auszählung der Anforderungs-Punkte: 36 `[x]` (erledigt und verifiziert), 19 `[~]` (umgesetzt, technische Verifikation offen), 12 `[?]` (in Klärung mit Stakeholder), 14 `[ ]` (offen).
+
+Diese Zahlen unterzeichnen den realen Frontend-Fortschritt, weil `[~]` seit dem 02.06-/17.06-Sign-off nicht mehr „behauptet erledigt" heißt, sondern nur „kein getrenntes Verifikations-Ticket". Der zum Meeting 2026-06-17 umgesetzte Stand ist vom Stakeholder abgenommen. Die meisten `[~]`-Punkte tragen einen Commit-Hash und einen Verifikations-Link und sind faktisch fertig. Engineering-seitig ist die Frontend-Lane damit weitgehend abgeschlossen. Was die Marker `[?]` und `[ ]` tragen, ist überwiegend keine offene Frontend-Arbeit, sondern wartet auf Stakeholder-Vorgaben oder gehört ins Pipeline-Repo. Die Triage darunter trennt das.
+
+### Triage der verbleibenden Punkte
+
+**A. Frontend steht (engineering abgeschlossen).** Korpus-Sichtbarkeit öffentlich/intern durchgängig gefiltert; Quellen-Liste, Personen- und Org-Register mit Live-Suche und Korpus-Filter; Faksimile-Viewer (Zoom, Pan, Rotation, Vollbild, Sticky-Panel); Annotations-Block mit Tab-Konsolidierung und aufgelöster Identität; Datenkorb mit entitätsweisem Badge und globalem Leeren; projektweites Tooltip-System; Dev-Mode- und Audience-Mechanik; der gesamte 02.06-Durchgang (A1–A5, B1–B3, C1/C2, E1, H1–H3) und die 17.06-Meeting-Punkte (Stadtbücher aus öffentlicher Sicht, Sterbedatum-Korrektur, occ-Normalform).
+
+**B. Frontend offen, wartet auf Stakeholder-Vorgabe (kein Engineering-Schritt bis dahin).** Projekt-Texte About, Glossar-Definitionen, Impressum (Platzhalter gesetzt, Inhalt vom Editorenteam); Zitierform D2 (Chicago/MLA/fußnotenbasiert, von Projektpartner*innen); Lizenz-Sign-off und `LICENSE`-Datei; Register-Konsistenz-Entscheidung A.3.2 (relationale Verweise ohne eigene `rs`-Nennung einschließend oder streng, hängt mit quellenlosen Namen in Beziehungs- und Org-Hierarchie zusammen); G2 Leitsatz-Präzisierung; mehrere `[?]`-Wording-Fragen („für" als Rolle, „im Quellen-Wortlaut", Provenienz der Aggregat-Kategorien Block A/B).
+
+**C. Sache des Pipeline-/Daten-Repos, nicht des Frontends.** Erschließungsform-Pools (Satzbuch-CD-Annotations-Rückstand, QGW-Privilegien ohne `<abstract>`); Satzbuch-CD-Abdeckung im Verifikations-Parser; die in `verification/findings.md` dokumentierten TEI-Quellfehler (Klammer-Anomalien Stadtbücher, fehlende Sigillanten-Rollen QGW_II_I_24, nicht annotierter Bischof, ID-Renaming-Rest, untypisierte Heirats-Begriffe); die vorgeschlagene `kin_norm_matching.csv` mit `is_marriage`-Spalte (verschiebt Frontend-Hartcodierung in editor-verantwortete Tabellen, Block B); der Annotations-Workflow für eine eigene Rolle „Einbringer" der Stadtbuch-Einbringer (aktuell als `witness` annotiert).
+
+**D. Frontend offen, technisch klein, ohne Blocker.** Kin-Bezeichnungen in der Beziehungsspalte werden ohne Trenner aneinandergehängt („Schwester Enkelkindtochter"), wobei zusätzlich die `<add>`-Markierung der editorischen Ergänzung verlorengeht (Lokalisierung steht aus, berührt die Semantik getrennter Beziehungsaussagen, daher kein Schnellschuss); geteilte `sexLabel`-Funktion fehlt (sechs Stellen, drei Schreibweisen für „unbekannt"), ist aber an die Gender-Entscheidung C1 gekoppelt; Korb-Tabellen auf `index-table` vereinheitlichen; die zurückgestellten technischen Refactors aus Milestone M7 (Rollen-Schlüssel-Tupel auf ein Konstanten-Modul, Range-Slider-Zusammenführung, gemeinsamer CSV-Exporter).
+
+### In dieser Runde geschlossen
+
+- Veralteter Test `test_datengrundlage_reference` umgedreht zu `test_no_dead_datengrundlage_reference`; er forderte einen Verweis, den die kanonische Richtlinien-Quelle bewusst entfernt hatte. Damit ist der letzte dauerhaft rote Frontend-Test weg und die Suite vollständig grün. Detail im [[journal]] (2026-06-21).
 
 ## **Anforderungen und Umsetzung**
 
