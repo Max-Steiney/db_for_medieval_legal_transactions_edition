@@ -9,9 +9,9 @@ let VizCore = (function () {
 
     // Domain constants — kept consistent project-wide
     const ROLE_LABELS = {
-        'issuer':    'Aussteller*innen',
-        'recipient': 'Empfänger*innen',
-        'witness':   'Zeug*innen / Siegler*innen',
+        'issuer':    'Aussteller:innen',
+        'recipient': 'Empfänger:innen',
+        'witness':   'Zeug:innen / Siegler:innen',
         'other':     'Sonstige',
         '':          'keine Rolle',
     };

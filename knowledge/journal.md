@@ -24,6 +24,16 @@ Format pro Eintrag: Datum, Kurztitel, ein bis drei Absätze. Was umgesetzt wurde
 
 Einträge in umgekehrt chronologischer Reihenfolge, neueste oben.
 
+## 2026-06-21 Funktionsrollen-Labels auf den Gender-Doppelpunkt
+
+Die gendergerechten Funktionsrollen-Labels standen bisher in der Sternform (Entscheidung vom 02.06., „durchgängig Sternform"). Sie sind jetzt durchgängig auf den Gender-Doppelpunkt umgestellt, Form `:in` im Singular und `:innen` im Plural. Damit folgt das Frontend derselben Schreibweise, die die Editionsrichtlinien schon für Bearbeiter:innen verwenden; die frühere Mischung aus Stern im UI und Doppelpunkt in den Richtlinien ist aufgelöst.
+
+Die Umstellung läuft über die Single Source of Truth `frontend/role_labels.py` und alle Stellen, die deren Werte spiegeln: das vom Build eingebettete `role-labels`-JSON, die JS-Fallbacks und Vergleichswerte sowie das Abfrage-Vokabular. Ein Regressions-Guard scannt den Quellcode auf die alte Sternform und verhindert, dass sie zurückkehrt. Der frühere 02.06-Befund bleibt als damaliger Stand im [[status]] stehen, die neue Entscheidung ist dort als Ablösung vermerkt. Herkunft: Forschungsleitstelle-Order, Entscheidung 1.
+
+## 2026-06-21 Redaktionelle Inhaltsseiten als Markdown-Struktur dokumentiert
+
+Glossar, „Über das Projekt" und Impressum werden aus Markdown-Dateien gebaut, ein Abschnitt je Begriff oder Thema, der Build zieht sie über eine gemeinsame Inhaltsseiten-Pipeline in die jeweilige Seite. Diese Struktur bestand bereits; sie ist jetzt als redaktioneller Pflegeweg bestätigt, mit einem ausgefüllten Beispielbegriff im Glossar und einer Pflege- und Build-Anleitung neben den Inhaltsdateien. Glossarbegriffe lassen sich über `[[#Term]]` aufeinander verlinken. Die Definitionen der übrigen Begriffe liefert das Editorenteam. Herkunft: Forschungsleitstelle-Order, Entscheidung 2.
+
 ## 2026-06-21 Toten Datengrundlage-Verweis als Regression abgesichert
 
 Ein Test der Editionsrichtlinien-Seite forderte einen Verweis auf eine `datengrundlage.html`, die nie gebaut wurde. Die kanonische Richtlinien-Quelle im Schwester-Repo hatte alle Verweise darauf bereits entfernt, der Frontend-Test prüfte aber weiter auf ihr Vorhandensein und lief deshalb dauerhaft rot. Der Test ist umgedreht: er sichert jetzt, dass der tote Verweis nicht wieder in die gerenderte Seite zurückkehrt. Damit deckt sich die Test-Erwartung wieder mit der editorischen Entscheidung, statt ihr zu widersprechen.

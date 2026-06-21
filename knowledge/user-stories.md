@@ -19,7 +19,7 @@ related: [specification, ui-design, analyse, exploration, glossar]
 
 # User Stories
 
-Konzeptionelles Dokument zu den Forschungsszenarien, die das Fachteam an die Datenbank trägt. Beschreibt, was Forscher*innen mit dem Material untersuchen wollen, und ordnet jedes Szenario den Anforderungen, Komponenten und Begriffen zu, die es einlöst.
+Konzeptionelles Dokument zu den Forschungsszenarien, die das Fachteam an die Datenbank trägt. Beschreibt, was Forscher:innen mit dem Material untersuchen wollen, und ordnet jedes Szenario den Anforderungen, Komponenten und Begriffen zu, die es einlöst.
 
 Vier Schichten:
 
@@ -34,7 +34,7 @@ Die Stories sind beschreibend, kein Backlog. Implementierungsstand, datenseitige
 
 # 1 Anwendungs-Stories
 
-Sechs große Forschungsszenarien aus Historiker*innen-Perspektive. Pro Story Rolle, Wunsch, Zweck und die Komponenten der Anwendung, die das Szenario einlösen.
+Sechs große Forschungsszenarien aus Historiker:innen-Perspektive. Pro Story Rolle, Wunsch, Zweck und die Komponenten der Anwendung, die das Szenario einlösen.
 
 ## Eine Person über ihre Quellen und Rollen verfolgen
 
@@ -144,7 +144,7 @@ Vier Fragen, die das Fachteam an die Datenbasis stellt. Sie sind die inhaltliche
 
 # 3 Granulare Forschungsoperationen
 
-Kleinere Arbeitsschritte, die in den Anwendungs-Stories aufgehen, aber als eigenständige Operationen benannt sind, weil Forscher*innen sie als Mikropraxis erkennen.
+Kleinere Arbeitsschritte, die in den Anwendungs-Stories aufgehen, aber als eigenständige Operationen benannt sind, weil Forscher:innen sie als Mikropraxis erkennen.
 
 ## Verteilung einer Kategorie überblicken
 

@@ -149,7 +149,7 @@ def enrich_sources(sources: list[dict], entity_key: str,
     """Return a new list with ``label`` and ``roles`` added per source.
 
     ``roles`` is a list of dicts ``[{"key": "issuer", "label":
-    "Aussteller*in"}]`` so the template can style each chip independently.
+    "Aussteller:in"}]`` so the template can style each chip independently.
     The original entries from ``reverse_index`` are preserved verbatim.
     """
     out = []

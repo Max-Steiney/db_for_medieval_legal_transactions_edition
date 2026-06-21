@@ -123,7 +123,7 @@ Diese Zahlen unterzeichnen den realen Frontend-Fortschritt, weil `[~]` seit dem 
 
 **A. Frontend steht (engineering abgeschlossen).** Korpus-Sichtbarkeit öffentlich/intern durchgängig gefiltert; Quellen-Liste, Personen- und Org-Register mit Live-Suche und Korpus-Filter; Faksimile-Viewer (Zoom, Pan, Rotation, Vollbild, Sticky-Panel); Annotations-Block mit Tab-Konsolidierung und aufgelöster Identität; Datenkorb mit entitätsweisem Badge und globalem Leeren; projektweites Tooltip-System; Dev-Mode- und Audience-Mechanik; der gesamte 02.06-Durchgang (A1–A5, B1–B3, C1/C2, E1, H1–H3) und die 17.06-Meeting-Punkte (Stadtbücher aus öffentlicher Sicht, Sterbedatum-Korrektur, occ-Normalform).
 
-**B. Frontend offen, wartet auf Stakeholder-Vorgabe (kein Engineering-Schritt bis dahin).** Projekt-Texte About, Glossar-Definitionen, Impressum (Platzhalter gesetzt, Inhalt vom Editorenteam); Zitierform D2 (Chicago/MLA/fußnotenbasiert, von Projektpartner*innen); Lizenz-Sign-off und `LICENSE`-Datei; Register-Konsistenz-Entscheidung A.3.2 (relationale Verweise ohne eigene `rs`-Nennung einschließend oder streng, hängt mit quellenlosen Namen in Beziehungs- und Org-Hierarchie zusammen); G2 Leitsatz-Präzisierung; mehrere `[?]`-Wording-Fragen („für" als Rolle, „im Quellen-Wortlaut", Provenienz der Aggregat-Kategorien Block A/B).
+**B. Frontend offen, wartet auf Stakeholder-Vorgabe (kein Engineering-Schritt bis dahin).** Projekt-Texte About, Glossar-Definitionen, Impressum (Platzhalter gesetzt, Inhalt vom Editorenteam); Zitierform D2 (Chicago/MLA/fußnotenbasiert, von Projektpartner:innen); Lizenz-Sign-off und `LICENSE`-Datei; Register-Konsistenz-Entscheidung A.3.2 (relationale Verweise ohne eigene `rs`-Nennung einschließend oder streng, hängt mit quellenlosen Namen in Beziehungs- und Org-Hierarchie zusammen); G2 Leitsatz-Präzisierung; mehrere `[?]`-Wording-Fragen („für" als Rolle, „im Quellen-Wortlaut", Provenienz der Aggregat-Kategorien Block A/B).
 
 **C. Sache des Pipeline-/Daten-Repos, nicht des Frontends.** Erschließungsform-Pools (Satzbuch-CD-Annotations-Rückstand, QGW-Privilegien ohne `<abstract>`); Satzbuch-CD-Abdeckung im Verifikations-Parser; die in `verification/findings.md` dokumentierten TEI-Quellfehler (Klammer-Anomalien Stadtbücher, fehlende Sigillanten-Rollen QGW_II_I_24, nicht annotierter Bischof, ID-Renaming-Rest, untypisierte Heirats-Begriffe); die vorgeschlagene `kin_norm_matching.csv` mit `is_marriage`-Spalte (verschiebt Frontend-Hartcodierung in editor-verantwortete Tabellen, Block B); der Annotations-Workflow für eine eigene Rolle „Einbringer" der Stadtbuch-Einbringer (aktuell als `witness` annotiert).
 
@@ -132,6 +132,8 @@ Diese Zahlen unterzeichnen den realen Frontend-Fortschritt, weil `[~]` seit dem 
 ### In dieser Runde geschlossen
 
 - Veralteter Test `test_datengrundlage_reference` umgedreht zu `test_no_dead_datengrundlage_reference`; er forderte einen Verweis, den die kanonische Richtlinien-Quelle bewusst entfernt hatte. Damit ist der letzte dauerhaft rote Frontend-Test weg und die Suite vollständig grün. Detail im [[journal]] (2026-06-21).
+- Funktionsrollen-Labels von der Sternform auf den Gender-Doppelpunkt umgestellt (Form `:in`/`:innen`), einheitlich über die SSoT `frontend/role_labels.py` und alle Konsumenten (`query_vocabulary.json`, `viz-core.js`, `document.js`, `register.js`, `analysis-resolver.js`, eingebettetes `role-labels`-JSON in `base.html`). Das ersetzt die 02.06-Entscheidung „durchgängig Sternform" (Befunde C1, weiter unten als damaliger Stand belassen). Neuer Regressions-Guard `test_role_labels.py::test_keine_asterisk_genderform_im_quellcode` hält die Sternform aus dem Quellcode fern; Suite grün, `docs/` neu gebaut. Herkunft: Leitstelle-Order 2026-06-21, Entscheidung 1.
+- Redaktionell pflegbare Inhaltsseiten (About, Glossar, Impressum) als Markdown-Struktur bestätigt und dokumentiert: ein `##`-Abschnitt je Glossarbegriff, der Build zieht sie über `_render_content_page` in die Seite, Glossar-Querverweise via `[[#Term]]`. Beispieleintrag „Quellenkorpus" ausgefüllt, Pflege- und Build-Anleitung in `frontend/content/README.md`. Die Inhalte der übrigen Begriffe liefert das Editorenteam. Herkunft: Leitstelle-Order 2026-06-21, Entscheidung 2.
 
 ## **Anforderungen und Umsetzung**
 
@@ -491,7 +493,7 @@ Arbeitsstand des Durchgangs, in den jeweiligen thematischen Punkten oben querver
 - [x] **D1 Zotero einbinden.** (Herkunft: Stakeholder-Durchgang 02.06.2026)
    * Entscheidung 02.06.2026: wird nicht umgesetzt. Verworfen.
 - [?] **D2 Zitation präzisieren. TODO Kund_innen.** (Herkunft: Stakeholder-Durchgang 02.06.2026)
-   * Der Zitations-Button funktioniert, die gewünschte Zitierform (Chicago, MLA, fußnotenbasiert) liefern die Projektpartner*innen. Ebenso liefern sie die noch ausstehenden Projekt-Texte (About, Glossar-Definitionen, Impressum), siehe Abschnitt „Projekt". Kein Frontend-Schritt offen, bis die Vorgaben kommen.
+   * Der Zitations-Button funktioniert, die gewünschte Zitierform (Chicago, MLA, fußnotenbasiert) liefern die Projektpartner:innen. Ebenso liefern sie die noch ausstehenden Projekt-Texte (About, Glossar-Definitionen, Impressum), siehe Abschnitt „Projekt". Kein Frontend-Schritt offen, bis die Vorgaben kommen.
 
 #### E) Datenkorb
 

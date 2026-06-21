@@ -44,7 +44,7 @@ Definition in redaktioneller Überarbeitung.
 
 ## Quellenkorpus
 
-Definition in redaktioneller Überarbeitung.
+Ein Quellenkorpus ist die oberste Ordnungsebene der Datenbank. Er fasst überlieferungsgeschichtlich oder inhaltlich zusammengehörige Quellen zu einem benannten Bestand zusammen, etwa die Quellen zur Geschichte der Stadt Wien oder die Wiener Stadtbücher. Jeder Quellenkorpus enthält einzelne [[#Quelle|Quellen]], in denen die einzelnen Rechtsgeschäfte erfasst sind. Öffentlich sichtbar wird ein Korpus erst, wenn er als fertig erschlossen gilt.
 
 ## Rechtsgeschäft
 

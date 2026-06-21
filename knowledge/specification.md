@@ -21,7 +21,7 @@ related: [user-stories, architecture, ui-design, analyse, exploration]
 
 Anforderungs-Spezifikation der Anwendung. Was die Datenbank publiziert, welche Querschnitts-Erwartungen das UI einlöst, und welche Leitentscheidungen das Verhalten festlegen.
 
-Pro Anforderung steht eine kurze Erläuterung, eine Begründung und eine Konsequenz (Implementierung oder Verweis). Manche Anforderungen tragen zusätzlich eine Abgrenzung „Nicht gemeint ist" zu Missverständnissen. Was Forscher*innen damit untersuchen wollen, beschreibt [[user-stories]]. Chronologische Notizen zur Umsetzung leben im [[journal]].
+Pro Anforderung steht eine kurze Erläuterung, eine Begründung und eine Konsequenz (Implementierung oder Verweis). Manche Anforderungen tragen zusätzlich eine Abgrenzung „Nicht gemeint ist" zu Missverständnissen. Was Forscher:innen damit untersuchen wollen, beschreibt [[user-stories]]. Chronologische Notizen zur Umsetzung leben im [[journal]].
 
 ## Inhalt
 

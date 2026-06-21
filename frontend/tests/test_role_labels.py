@@ -20,7 +20,7 @@ class TestRoleLabelsCanonical:
     """Die SSoT hat die erwarteten Werte."""
 
     def test_witness_ist_zeugin_und_sieglerin(self):
-        assert ROLE_LABELS["witness"] == "Zeug*in / Siegler*in"
+        assert ROLE_LABELS["witness"] == "Zeug:in / Siegler:in"
 
     def test_alle_vier_tei_werte_belegt(self):
         for key in ("issuer", "recipient", "witness", "other"):
@@ -32,11 +32,11 @@ class TestRoleLabelsPlural:
     """Plural-Variante fuer Kategorie/Filter/Aggregat-Kontexte."""
 
     def test_witness_plural(self):
-        assert ROLE_LABELS_PLURAL["witness"] == "Zeug*innen / Siegler*innen"
+        assert ROLE_LABELS_PLURAL["witness"] == "Zeug:innen / Siegler:innen"
 
     def test_issuer_recipient_plural(self):
-        assert ROLE_LABELS_PLURAL["issuer"] == "Aussteller*innen"
-        assert ROLE_LABELS_PLURAL["recipient"] == "Empfänger*innen"
+        assert ROLE_LABELS_PLURAL["issuer"] == "Aussteller:innen"
+        assert ROLE_LABELS_PLURAL["recipient"] == "Empfänger:innen"
 
     def test_kategorie_js_nutzt_plural_witness(self):
         # Register-Sidebar/Aktiv-Filter, Abfrage-Dropdown und Rollen-
@@ -44,14 +44,14 @@ class TestRoleLabelsPlural:
         for rel in ("static/js/register.js", "static/js/viz-core.js",
                     "static/js/analysis-resolver.js"):
             text = (FRONTEND_ROOT / rel).read_text(encoding="utf-8")
-            assert "Zeug*innen / Siegler*innen" in text, (
+            assert "Zeug:innen / Siegler:innen" in text, (
                 f"{rel} traegt nicht das Plural-witness-Label."
             )
 
     def test_query_vocabulary_plural(self):
         text = (FRONTEND_ROOT / "content" / "query_vocabulary.json").read_text(
             encoding="utf-8")
-        assert "Zeug*innen / Siegler*innen" in text
+        assert "Zeug:innen / Siegler:innen" in text
 
     def test_pages_baut_chips_aus_plural_ssot(self):
         text = (FRONTEND_ROOT / "build" / "_pages.py").read_text(encoding="utf-8")
@@ -76,32 +76,30 @@ class TestRoleLabelsKonsumenten:
         assert ROLE_LABEL_PERSON is ROLE_LABELS or ROLE_LABEL_PERSON == ROLE_LABELS
         assert ROLE_LABEL_ORG is ROLE_LABELS or ROLE_LABEL_ORG == ROLE_LABELS
 
-    def test_kein_alter_witness_string_im_quellcode(self):
-        """'Zeuge / Siegler*in' und 'Zeug*in' als Standalone-Wert duerfen
-        nur noch in role_labels.py (SSoT) und in document.js (Fallback)
-        und in Tests vorkommen.
+    def test_keine_asterisk_genderform_im_quellcode(self):
+        """Die veraltete Asterisk-Genderform ('Zeug*in', 'Siegler*in' und
+        die aelteren Aussteller*/Empfaenger*-Varianten) darf nirgends mehr
+        im Quellcode leben. Seit der Umstellung auf den Gender-Doppelpunkt
+        traegt die SSoT durchgaengig die Form ':in' bzw. ':innen'.
         """
-        forbidden_files = []
+        legacy = re.compile(r"(Aussteller|Empfänger|Zeug|Siegler)\*in")
+        forbidden_files = set()
         for path in FRONTEND_ROOT.rglob("*"):
             if not path.is_file():
                 continue
             if path.suffix not in (".py", ".html", ".js"):
                 continue
-            if "test" in path.parts:
-                continue
-            if path.name in ("role_labels.py", "document.js"):
+            if "tests" in path.parts or path.name.startswith("test_"):
                 continue
             try:
                 text = path.read_text(encoding="utf-8")
             except (UnicodeDecodeError, OSError):
                 continue
-            if re.search(r"'witness'\s*:\s*'Zeug(e\s*/\s*Siegler\*in|\*in)'", text):
-                forbidden_files.append(str(path.relative_to(REPO_ROOT)))
-            if re.search(r'"witness"\s*:\s*"Zeug(e\s*/\s*Siegler\*in|\*in)"', text):
-                forbidden_files.append(str(path.relative_to(REPO_ROOT)))
-        assert forbidden_files == [], (
-            f"Alte witness-Mapping-Strings ausserhalb der SSoT: "
-            f"{forbidden_files}"
+            if legacy.search(text):
+                forbidden_files.add(str(path.relative_to(REPO_ROOT)))
+        assert forbidden_files == set(), (
+            f"Veraltete Asterisk-Genderform im Quellcode: "
+            f"{sorted(forbidden_files)}"
         )
 
     def test_jinja_globals_enthalten_role_labels(self):
