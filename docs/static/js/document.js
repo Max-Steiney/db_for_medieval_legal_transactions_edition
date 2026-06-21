@@ -57,9 +57,9 @@
                 if (el) return JSON.parse(el.textContent);
             } catch (e) {}
             return {
-                'issuer': 'Aussteller*in',
-                'recipient': 'Empfänger*in',
-                'witness': 'Zeug*in / Siegler*in',
+                'issuer': 'Aussteller:in',
+                'recipient': 'Empfänger:in',
+                'witness': 'Zeug:in / Siegler:in',
                 'other': 'Sonstige'
             };
         })();
@@ -246,9 +246,9 @@
                 return '<span class="role-pill role-pill--none">' + DASH + '</span>';
             }
             let mod = '';
-            if (role === 'Aussteller*in') mod = ' role-pill--issuer';
-            else if (role === 'Empfänger*in') mod = ' role-pill--recipient';
-            else if (role === 'Zeug*in') mod = ' role-pill--witness';
+            if (role === 'Aussteller:in') mod = ' role-pill--issuer';
+            else if (role === 'Empfänger:in') mod = ' role-pill--recipient';
+            else if (role === 'Zeug:in') mod = ' role-pill--witness';
             else if (role === 'Sonstige') mod = ' role-pill--other';
             return '<span class="role-pill' + mod + '">' + esc(role) + '</span>';
         }
@@ -372,7 +372,7 @@
 
             let entHtml = '<table class="annotations-table sortable-table"><thead><tr>'
                 + '<th scope="col" data-sort="name" data-hint="Wortlaut, mit dem die Person, Organisation oder der Ort in der Quelle erscheint.">Genannt als</th>'
-                + '<th scope="col" data-sort="role" data-hint="Funktion im Rechtsgeschäft: Aussteller*in, Empfänger*in, Zeug*in oder Sonstige.">Funktionsrolle</th>'
+                + '<th scope="col" data-sort="role" data-hint="Funktion im Rechtsgeschäft: Aussteller:in, Empfänger:in, Zeug:in oder Sonstige.">Funktionsrolle</th>'
                 + '<th scope="col" data-sort="attributes" data-hint="Zusatzangaben zur Entität: Beruf, Titel, Verwandtschaftsbezug, als verstorben genannt etc.">Attribute</th>'
                 + '<th scope="col" data-sort="sex" data-hint="Geschlecht laut Personenregister (weiblich oder männlich). Nur bei Personen belegt.">Geschlecht</th>'
                 + '</tr></thead><tbody>';

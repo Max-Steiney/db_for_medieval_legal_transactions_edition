@@ -45,15 +45,15 @@
             '</svg>'
     };
     let ROLE_LABELS = {
-        issuer:    'Aussteller*in',
-        recipient: 'Empfänger*in',
-        witness:   'Zeug*in / Siegler*in',
+        issuer:    'Aussteller:in',
+        recipient: 'Empfänger:in',
+        witness:   'Zeug:in / Siegler:in',
         other:     'Sonstige'
     };
     let ROLE_LABELS_PLURAL = {
-        issuer:    'Aussteller*innen',
-        recipient: 'Empfänger*innen',
-        witness:   'Zeug*innen / Siegler*innen',
+        issuer:    'Aussteller:innen',
+        recipient: 'Empfänger:innen',
+        witness:   'Zeug:innen / Siegler:innen',
         other:     'Sonstige'
     };
     let ROLE_DESCRIPTIONS = {
