@@ -14,6 +14,8 @@
 .demo-tip-demo .tip-link{display:inline-block;margin-top:.4rem;font-size:.85rem}
 .demo-editnote{border-left:3px solid #e0a800;background:#fff8e1;padding:.5rem .8rem;margin:.6rem 0;font-size:.85rem}
 .demo-xref{font-size:.85rem;color:var(--color-text-muted,#6b6356);margin:0 0 .5rem}
+.dev-only{display:none !important}
+.dev-mode .dev-only{display:block !important;border:2px solid #e0b000;background:#fffbe6;padding:.5rem .75rem;margin:.75rem 0;border-radius:4px}
 </style>
 
 Das Glossar ist der Kern dieses Modells: eine Begriffsdefinitionssammlung des
@@ -67,11 +69,9 @@ Ein Stadtbucheintrag ist ein einzelner Eintrag innerhalb der Wiener Stadtbücher
 
 Die grundlegende Analyseeinheit der Datenbank. Ein Event entspricht einem in
 einer Quelle dokumentierten Vorgang – oft ein Rechtsgeschäft, etwa ein Verkauf,
-eine Stiftung, eine letztwillige Verfügung oder ein Gerichtsverfahren. Ein
-Ereignis ist zugleich eine Entität des Datenmodells: Die zentralen
-Analyseeinheiten (Entitäten) sind Ereignisse, Personen, Organisationen und Orte.
+eine Stiftung, eine letztwillige Verfügung oder ein Gerichtsverfahren.
 
-<div class="demo-editnote dev-only">Redaktion (#6): Ereignis als Entität benannt (Lutter et al. 2021, insb. Abb. 2).</div>
+<div class="demo-editnote dev-only">Redaktion (#6): Ereignis/Event als Entität des Datenmodells benennen (Kommentar #6, Lutter et al. 2021, insb. Abb. 2). Achtung: Die Entität-Definition im nächsten Abschnitt umfasst laut Extrakt Zeile 20 nur Personen/Organisationen (künftig Orte); eine stillschweigende Erweiterung um Ereignisse dort würde der Definition widersprechen. Inhaltliche Klärung steht noch aus.</div>
 
 ### Factoid
 
@@ -108,10 +108,10 @@ eine Amtszugehörigkeit.
 
 ### Attribut
 
-Eine Eigenschaft einer Entität, beispielsweise ein Beruf, ein Titel oder das
-Geschlecht.
+Eine Eigenschaft einer Entität, beispielsweise ein Beruf, ein Titel oder ein
+Status.
 
-<div class="demo-editnote dev-only">Redaktion (#7): kin hier gestrichen – das ist eine Relation und gehört in die saubere Trennung Attribute (prof/title/dead) vs. Relationen (kin/rep/occ/title_ref) auf der <a href="technik.html#rollen">Technik-Seite</a>. Als Attribut-Beispiel daher Beruf, Titel oder Geschlecht.</div>
+<div class="demo-editnote dev-only">Redaktion (#7): „Verwandtschaftsbeziehung" gestrichen – kin ist eine Relation und gehört in die saubere Trennung Attribute (prof/title/dead) vs. Relationen (kin/rep/occ/title_ref) auf der <a href="technik.html#rollen">Technik-Seite</a>. Als Attribut-Beispiele: Beruf (prof), Titel (title), Status (dead: Todesfloskel „selig", „weilent") — alle drei im Extrakt Zeilen 154–156 belegt.</div>
 
 ### Verknüpfung
 
@@ -197,6 +197,20 @@ Eine Person oder Institution, deren Siegel zur Beglaubigung eines Dokuments
 verwendet wurde.
 
 <div class="demo-editnote dev-only">Redaktion (#13/#14): Zeug:in und Siegler:in werden getrennt beschrieben – die Funktionen sind vergleichbar, aber nicht dieselben. Der gemeinsame Code-Wert <code>witness</code> und der Auswertungsmodus (siegelnde Zeugen und siegelnde Aussteller:innen als beglaubigende Personen) werden auf der <a href="technik.html#rollen">Technik-Seite</a> erklärt.</div>
+
+### Einbringer:in
+
+Eine Person, die ein Rechtsgeschäft oder eine letztwillige Verfügung dem Rat
+oder einer anderen Autorität vorlegt und dessen Anerkennung veranlasst.
+
+### Erblasser:in
+
+Die Person, deren Vermögen nach ihrem Tod nach ihrem Willen verteilt wird.
+
+### Testamentsvollstrecker:in
+
+Eine Person, die mit der Durchführung einer letztwilligen Verfügung beauftragt
+ist.
 
 ### Grundherr:in („mit Handen", other)
 

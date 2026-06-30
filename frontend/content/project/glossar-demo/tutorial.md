@@ -24,8 +24,9 @@ das kontrollierte Vokabular kennt vier Code-Werte – `issuer`, `recipient`,
 `none`). Die folgenden drei Fälle lösen diese Rollen jeweils im Kontext der
 Quelle auf und verlinken auf das gerenderte Regest.
 
+### Fallbeispiel 1: Verkauf „mit Handen" der Stadt (Nr. 604) {#fallbeispiel-1}
+
 <div class="demo-case">
-  <h3>Fallbeispiel 1: Verkauf „mit Handen" der Stadt (Nr. 604)</h3>
   <blockquote>„Hainreich der Santwerfer und Elsbet, seine Hausfrau, verkaufen
   mit Handen hern Jansen von Tirnach, purgermaister und munsmaister, und des
   rates gemain der stat ze Wienne 1 lb dn. gelts purchrechts (ablösbar) auf
@@ -52,8 +53,9 @@ Quelle auf und verlinken auf das gerenderte Regest.
   Ratsmitglied — an die Stadt Wien gebunden; gehören auf die Technik-Seite.</p>
 </div>
 
+### Fallbeispiel 2: Schenkung für das Seelenheil an ein Kloster (Nr. 16) {#fallbeispiel-2}
+
 <div class="demo-case">
-  <h3>Fallbeispiel 2: Schenkung für das Seelenheil an ein Kloster (Nr. 16)</h3>
   <blockquote>„Benedicta de Arnstain schenkt für das Seelenheil ihres Bruders
   und den Nachlass ihrer Sünden der Aebtissin und dem Collegium der Nonnen bei
   S. Nikolaus zu Wien die curia Ebonis und einen Weingarten, beides ausserhalb
@@ -76,8 +78,9 @@ Quelle auf und verlinken auf das gerenderte Regest.
   diesen gemeinsamen Wert teilen, steht auf der Technik-Seite, nicht hier.</p>
 </div>
 
+### Fallbeispiel 3: eine Witwe vergibt Erbe (Urkunde 1869) {#fallbeispiel-3}
+
 <div class="demo-case">
-  <h3>Fallbeispiel 3: eine Witwe vergibt Erbe (Urkunde 1869)</h3>
   <blockquote>„Margret, Niclass, des fleischakcher, witib ze Wienn, gibt ihrem
   Vetter Hannsen von Künigsprunn alles das gut und hab, so ihr von ihrer
   Schwester fraun Margreten seligen, etwenn wirtin in des graven von Czily haus

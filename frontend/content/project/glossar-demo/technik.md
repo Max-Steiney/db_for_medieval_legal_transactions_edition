@@ -90,7 +90,7 @@ ausgezeichnet. Zu unterscheiden sind **Attribute** (ohne Relation) und
 ### Attribute (`roleName` ohne `corresp`)
 
 Eine Eigenschaft, die einer Entität für sich zukommt, etwa ein Beruf, ein Titel
-oder das Geschlecht.
+oder ein Status (Todesfloskel: „selig", „weilent").
 
 <table class="roleName-grid">
   <thead><tr><th>type</th><th>Bedeutung</th><th>Beispiele</th></tr></thead>
@@ -120,7 +120,10 @@ Entität verweist.
 Redaktionsnotiz (#7): Verwandtschaft (<code>kin</code>) gehört zur sauberen
 Trennung in Attribute (prof/title/dead) und Relationen (kin/rep/occ/title_ref)
 und wird daher hier auf der Technik-Seite als Relation geführt — nicht als
-Attribut-Beispiel im Glossar (dort z. B. Beruf, Titel, Geschlecht).
+Attribut-Beispiel im Glossar. Als Attribut-Beispiele werden Beruf (prof), Titel
+(title) und Status/Todesfloskel (dead) genannt — alle drei im Extrakt Zeilen
+154–156 belegt. „Geschlecht" kommt im Extrakt nicht als Attribut-Beispiel vor
+und wurde daher nicht übernommen.
 </div>
 
 ## Wie die Tags in den Fallbeispielen zusammenwirken {#faelle}

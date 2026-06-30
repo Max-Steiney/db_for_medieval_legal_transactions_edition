@@ -10,15 +10,15 @@
     <title>Glossar (Demo), Datenbank</title>
     <link rel="preload" as="font" type="font/woff2" crossorigin
           href="../../static/fonts/inter-400-latin.woff2">
-    <link rel="stylesheet" href="../../static/css/fonts.css?v=20260630130630">
-    <link rel="stylesheet" href="../../static/css/tokens.css?v=20260630130630">
-    <link rel="stylesheet" href="../../static/css/base.css?v=20260630130630">
-    <link rel="stylesheet" href="../../static/css/components.css?v=20260630130630">
-    <link rel="stylesheet" href="../../static/css/responsive.css?v=20260630130630">
-    <link rel="stylesheet" href="../../static/css/print.css?v=20260630130630">
-    <link rel="stylesheet" href="../../static/css/tip.css?v=20260630130630">
+    <link rel="stylesheet" href="../../static/css/fonts.css?v=20260630131528">
+    <link rel="stylesheet" href="../../static/css/tokens.css?v=20260630131528">
+    <link rel="stylesheet" href="../../static/css/base.css?v=20260630131528">
+    <link rel="stylesheet" href="../../static/css/components.css?v=20260630131528">
+    <link rel="stylesheet" href="../../static/css/responsive.css?v=20260630131528">
+    <link rel="stylesheet" href="../../static/css/print.css?v=20260630131528">
+    <link rel="stylesheet" href="../../static/css/tip.css?v=20260630131528">
     
-<link rel="stylesheet" href="../../static/css/content.css?v=20260630130630">
+<link rel="stylesheet" href="../../static/css/content.css?v=20260630131528">
 
 </head>
 <body data-root-path="../.."
@@ -127,6 +127,9 @@
 <li><a href="#empfangerin-recipient">Empfänger:in (recipient)</a></li>
 <li><a href="#zeugin-witness">Zeug:in (witness)</a></li>
 <li><a href="#sieglerin-witness">Siegler:in (witness)</a></li>
+<li><a href="#einbringerin">Einbringer:in</a></li>
+<li><a href="#erblasserin">Erblasser:in</a></li>
+<li><a href="#testamentsvollstreckerin">Testamentsvollstrecker:in</a></li>
 <li><a href="#grundherrin-mit-handen-other">Grundherr:in („mit Handen", other)</a></li>
 </ul>
 </li>
@@ -152,6 +155,8 @@
 .demo-tip-demo .tip-link{display:inline-block;margin-top:.4rem;font-size:.85rem}
 .demo-editnote{border-left:3px solid #e0a800;background:#fff8e1;padding:.5rem .8rem;margin:.6rem 0;font-size:.85rem}
 .demo-xref{font-size:.85rem;color:var(--color-text-muted,#6b6356);margin:0 0 .5rem}
+.dev-only{display:none !important}
+.dev-mode .dev-only{display:block !important;border:2px solid #e0b000;background:#fffbe6;padding:.5rem .75rem;margin:.75rem 0;border-radius:4px}
 </style>
 
 <p>Das Glossar ist der Kern dieses Modells: eine Begriffsdefinitionssammlung des
@@ -194,10 +199,8 @@ Ein Stadtbucheintrag ist ein einzelner Eintrag innerhalb der Wiener Stadtbücher
 <h3 id="event-ereignis">Event / Ereignis<a class="headerlink" href="#event-ereignis" title="Permanent link">&para;</a></h3>
 <p>Die grundlegende Analyseeinheit der Datenbank. Ein Event entspricht einem in
 einer Quelle dokumentierten Vorgang – oft ein Rechtsgeschäft, etwa ein Verkauf,
-eine Stiftung, eine letztwillige Verfügung oder ein Gerichtsverfahren. Ein
-Ereignis ist zugleich eine Entität des Datenmodells: Die zentralen
-Analyseeinheiten (Entitäten) sind Ereignisse, Personen, Organisationen und Orte.</p>
-<div class="demo-editnote dev-only">Redaktion (#6): Ereignis als Entität benannt (Lutter et al. 2021, insb. Abb. 2).</div>
+eine Stiftung, eine letztwillige Verfügung oder ein Gerichtsverfahren.</p>
+<div class="demo-editnote dev-only">Redaktion (#6): Ereignis/Event als Entität des Datenmodells benennen (Kommentar #6, Lutter et al. 2021, insb. Abb. 2). Achtung: Die Entität-Definition im nächsten Abschnitt umfasst laut Extrakt Zeile 20 nur Personen/Organisationen (künftig Orte); eine stillschweigende Erweiterung um Ereignisse dort würde der Definition widersprechen. Inhaltliche Klärung steht noch aus.</div>
 
 <h3 id="factoid">Factoid<a class="headerlink" href="#factoid" title="Permanent link">&para;</a></h3>
 <p>Eine einzelne strukturierte Information, die aus einer Quelle gewonnen wurde und
@@ -223,9 +226,9 @@ erläutert.</p>
 <p>Eine Verbindung zwischen zwei Entitäten, etwa eine Verwandtschaftsbeziehung oder
 eine Amtszugehörigkeit.</p>
 <h3 id="attribut">Attribut<a class="headerlink" href="#attribut" title="Permanent link">&para;</a></h3>
-<p>Eine Eigenschaft einer Entität, beispielsweise ein Beruf, ein Titel oder das
-Geschlecht.</p>
-<div class="demo-editnote dev-only">Redaktion (#7): kin hier gestrichen – das ist eine Relation und gehört in die saubere Trennung Attribute (prof/title/dead) vs. Relationen (kin/rep/occ/title_ref) auf der <a href="technik.html#rollen">Technik-Seite</a>. Als Attribut-Beispiel daher Beruf, Titel oder Geschlecht.</div>
+<p>Eine Eigenschaft einer Entität, beispielsweise ein Beruf, ein Titel oder ein
+Status.</p>
+<div class="demo-editnote dev-only">Redaktion (#7): „Verwandtschaftsbeziehung" gestrichen – kin ist eine Relation und gehört in die saubere Trennung Attribute (prof/title/dead) vs. Relationen (kin/rep/occ/title_ref) auf der <a href="technik.html#rollen">Technik-Seite</a>. Als Attribut-Beispiele: Beruf (prof), Titel (title), Status (dead: Todesfloskel „selig", „weilent") — alle drei im Extrakt Zeilen 154–156 belegt.</div>
 
 <h3 id="verknupfung">Verknüpfung<a class="headerlink" href="#verknupfung" title="Permanent link">&para;</a></h3>
 <p>Die technische Verknüpfung von Informationen innerhalb der Datenbank,
@@ -281,6 +284,14 @@ erhält.</p>
 verwendet wurde.</p>
 <div class="demo-editnote dev-only">Redaktion (#13/#14): Zeug:in und Siegler:in werden getrennt beschrieben – die Funktionen sind vergleichbar, aber nicht dieselben. Der gemeinsame Code-Wert <code>witness</code> und der Auswertungsmodus (siegelnde Zeugen und siegelnde Aussteller:innen als beglaubigende Personen) werden auf der <a href="technik.html#rollen">Technik-Seite</a> erklärt.</div>
 
+<h3 id="einbringerin">Einbringer:in<a class="headerlink" href="#einbringerin" title="Permanent link">&para;</a></h3>
+<p>Eine Person, die ein Rechtsgeschäft oder eine letztwillige Verfügung dem Rat
+oder einer anderen Autorität vorlegt und dessen Anerkennung veranlasst.</p>
+<h3 id="erblasserin">Erblasser:in<a class="headerlink" href="#erblasserin" title="Permanent link">&para;</a></h3>
+<p>Die Person, deren Vermögen nach ihrem Tod nach ihrem Willen verteilt wird.</p>
+<h3 id="testamentsvollstreckerin">Testamentsvollstrecker:in<a class="headerlink" href="#testamentsvollstreckerin" title="Permanent link">&para;</a></h3>
+<p>Eine Person, die mit der Durchführung einer letztwilligen Verfügung beauftragt
+ist.</p>
 <h3 id="grundherrin-mit-handen-other">Grundherr:in („mit Handen", other)<a class="headerlink" href="#grundherrin-mit-handen-other" title="Permanent link">&para;</a></h3>
 <p>Die Person oder Institution, die einem Rechtsgeschäft als betroffene
 Grundherrschaft zustimmt. Wer ein Haus oder ein Burgrecht veräußert, tut dies
@@ -321,12 +332,12 @@ diese Funktion zur Sammelrolle other.</p>
     </footer>
 
     <script id="role-labels" type="application/json">{"issuer": "Aussteller:in", "other": "Sonstige", "recipient": "Empf\u00e4nger:in", "witness": "Zeug:in / Siegler:in"}</script>
-    <script src="../../static/js/core.js?v=20260630130630"></script>
-    <script src="../../static/js/tip.js?v=20260630130630"></script>
-    <script src="../../static/js/hint.js?v=20260630130630"></script>
-    <script src="../../static/js/basket.js?v=20260630130630"></script>
+    <script src="../../static/js/core.js?v=20260630131528"></script>
+    <script src="../../static/js/tip.js?v=20260630131528"></script>
+    <script src="../../static/js/hint.js?v=20260630131528"></script>
+    <script src="../../static/js/basket.js?v=20260630131528"></script>
     
-<script src="../../static/js/content.js?v=20260630130630"></script>
+<script src="../../static/js/content.js?v=20260630131528"></script>
 
 </body>
 </html>
