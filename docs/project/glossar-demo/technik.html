@@ -10,15 +10,15 @@
     <title>Technik / Datenmodell (Demo), Datenbank</title>
     <link rel="preload" as="font" type="font/woff2" crossorigin
           href="../../static/fonts/inter-400-latin.woff2">
-    <link rel="stylesheet" href="../../static/css/fonts.css?v=20260630125527">
-    <link rel="stylesheet" href="../../static/css/tokens.css?v=20260630125527">
-    <link rel="stylesheet" href="../../static/css/base.css?v=20260630125527">
-    <link rel="stylesheet" href="../../static/css/components.css?v=20260630125527">
-    <link rel="stylesheet" href="../../static/css/responsive.css?v=20260630125527">
-    <link rel="stylesheet" href="../../static/css/print.css?v=20260630125527">
-    <link rel="stylesheet" href="../../static/css/tip.css?v=20260630125527">
+    <link rel="stylesheet" href="../../static/css/fonts.css?v=20260630130630">
+    <link rel="stylesheet" href="../../static/css/tokens.css?v=20260630130630">
+    <link rel="stylesheet" href="../../static/css/base.css?v=20260630130630">
+    <link rel="stylesheet" href="../../static/css/components.css?v=20260630130630">
+    <link rel="stylesheet" href="../../static/css/responsive.css?v=20260630130630">
+    <link rel="stylesheet" href="../../static/css/print.css?v=20260630130630">
+    <link rel="stylesheet" href="../../static/css/tip.css?v=20260630130630">
     
-<link rel="stylesheet" href="../../static/css/content.css?v=20260630125527">
+<link rel="stylesheet" href="../../static/css/content.css?v=20260630130630">
 
 </head>
 <body data-root-path="../.."
@@ -97,15 +97,166 @@
                 <h2>Inhalt</h2>
                 <div class="toc">
 <ul>
-<li><a href="#rollen-im-rechtsgeschaft">Rollen im Rechtsgeschäft</a></li>
+<li><a href="#rollen">Rollen im Rechtsgeschäft</a><ul>
+<li><a href="#witness">Warum Zeug:in und Siegler:in denselben Code-Wert tragen</a></li>
+</ul>
+</li>
+<li><a href="#disp">Dispositive Verben</a></li>
+<li><a href="#rolename">roleName-Typen: Attribute und Relationen</a><ul>
+<li><a href="#attribute-rolename-ohne-corresp">Attribute (roleName ohne corresp)</a></li>
+<li><a href="#relationen-rolename-mit-corresp">Relationen (roleName mit corresp)</a></li>
+</ul>
+</li>
+<li><a href="#faelle">Wie die Tags in den Fallbeispielen zusammenwirken</a><ul>
+<li><a href="#fallbeispiel-1-verkauf-mit-handen-der-stadt-nr-604">Fallbeispiel 1: Verkauf „mit Handen" der Stadt (Nr. 604)</a></li>
+<li><a href="#fallbeispiel-2-schenkung-fur-das-seelenheil-an-ein-kloster-nr-16">Fallbeispiel 2: Schenkung für das Seelenheil an ein Kloster (Nr. 16)</a></li>
+<li><a href="#fallbeispiel-3-eine-witwe-vergibt-erbe-urkunde-1869">Fallbeispiel 3: eine Witwe vergibt Erbe (Urkunde 1869)</a></li>
+</ul>
+</li>
 </ul>
 </div>
 
             </div>
         </nav>
         <div class="guidelines-body">
-            <h2 id="rollen-im-rechtsgeschaft">Rollen im Rechtsgeschäft<a class="headerlink" href="#rollen-im-rechtsgeschaft" title="Permanent link">&para;</a></h2>
-<p>Kontrolliertes Vokabular: <code>issuer</code>, <code>recipient</code>, <code>witness</code>, <code>other</code>.</p>
+            <nav class="demo-pagenav">
+  <a href="glossar.html">Glossar</a> ·
+  <a href="tutorial.html">Tutorial</a> ·
+  <strong>Technik / Datenmodell</strong>
+</nav>
+
+<style>
+.demo-pagenav { margin: 0 0 1.5rem; padding: .5rem .75rem; background: #f4f1ea; border: 1px solid #d8d2c4; border-radius: 4px; font-size: .95rem; }
+.demo-pagenav strong { color: #5a4a2f; }
+.tech-codes { list-style: none; padding-left: 0; }
+.tech-codes > li { margin: .4rem 0; }
+.tech-codes code { background: #f0ede4; padding: .1rem .35rem; border-radius: 3px; }
+.roleName-grid th, .roleName-grid td { vertical-align: top; }
+.dev-only { display: none; }
+.dev-mode .dev-only { display: block; border: 2px solid #e0b000; background: #fffbe6; padding: .5rem .75rem; margin: .75rem 0; border-radius: 4px; }
+</style>
+
+<p>Diese Seite erklärt, wie die im <a href="glossar.html">Glossar</a> definierten Begriffe in
+den TEI-Quellen technisch ausgezeichnet sind. Die Tags erscheinen in der
+herunterladbaren XML jeder Quelle. Die Beispiele stammen aus den drei
+<a href="tutorial.html">Fallbeispielen</a>.</p>
+<h2 id="rollen">Rollen im Rechtsgeschäft<a class="headerlink" href="#rollen" title="Permanent link">&para;</a></h2>
+<p>Die Funktion, die eine Person oder Organisation innerhalb eines Rechtsgeschäfts
+einnimmt, wird als <code>&lt;rs type="fn" role="…"&gt;</code> ausgezeichnet. Das kontrollierte
+Vokabular kennt genau vier Code-Werte; ein nicht gesetzter Wert ist der leere
+String, <strong>nicht</strong> <code>none</code>.</p>
+<ul class="tech-codes">
+  <li><code>issuer</code> — Aussteller/Geber (Person/Organisation, die verfügt oder erklärt).</li>
+  <li><code>recipient</code> — Empfänger/Adressat (erhält Recht, Gut, Geld).</li>
+  <li><code>witness</code> — Zeuge/Siegler (bekräftigt, siegelt, „bei/sigillavit").</li>
+  <li><code>other</code> — weitere Beteiligte/Funktionen (z. B. Grundherrin/-herr „mit Handen", Ratgeber, Intervenient). Spezifikation der Funktion via <code>&lt;triggerstring n="fn"&gt;</code>.</li>
+</ul>
+
+<div class="highlight"><pre><span></span><code><span class="nt">&lt;rs</span><span class="w"> </span><span class="na">type=</span><span class="s">&quot;fn&quot;</span><span class="w"> </span><span class="na">role=</span><span class="s">&quot;issuer&quot;</span><span class="nt">&gt;</span>Hainreich<span class="w"> </span>der<span class="w"> </span>Santwerfer<span class="nt">&lt;/rs&gt;</span>
+</code></pre></div>
+
+<h3 id="witness">Warum Zeug:in und Siegler:in denselben Code-Wert tragen<a class="headerlink" href="#witness" title="Permanent link">&para;</a></h3>
+<p>Im <a href="glossar.html">Glossar</a> werden <strong>Zeug:in</strong> und <strong>Siegler:in</strong> getrennt
+beschrieben, weil es zwei verschiedene Funktionen sind: Eine Zeug:in bezeugt ein
+Rechtsgeschäft und stärkt dadurch dessen Gültigkeit; eine Siegler:in beglaubigt
+ein Dokument durch ihr Siegel. Die Funktionen sind vergleichbar, aber nicht
+dieselben.</p>
+<p>Im <strong>Auswertungsmodell</strong> fallen beide unter den gemeinsamen Code-Wert
+<code>witness</code>: siegelnde Zeug:innen und siegelnde Aussteller:innen werden gemeinsam
+als die das Rechtsgeschäft beglaubigenden Personen erfasst. Eine
+Aussteller:in, die zugleich ihr Siegel anbringt, erscheint dadurch in mehreren
+Rollen — einmal als <code>issuer</code> und einmal als <code>witness</code>.</p>
+<div class="dev-only">
+Redaktionsnotiz (#12/#13): Die getrennte Beschreibung der beiden Funktionen
+bleibt im Glossar; hier auf der Technik-Seite wird nur erklärt, warum die
+Auswertung sie unter <code>witness</code> zusammenführt. Der frühere Satz, der
+Zeug:innen und Siegler:innen als <code>witness</code> „zusammenführt", wurde
+bewusst nicht übernommen (Kardinalfehler, Kommentar #14).
+</div>
+
+<h2 id="disp">Dispositive Verben<a class="headerlink" href="#disp" title="Permanent link">&para;</a></h2>
+<p>Zentrale Aktionswörter, die das Event typisieren, werden als
+<code>&lt;triggerstring n="disp"&gt;</code> ausgezeichnet (Beispiele inkl. typischer
+Formulierungen):</p>
+<ul>
+<li><strong>Kauf/Verkauf:</strong> verkaufen, erkaufen, verhandeln; <em>habent verkaufft</em>; <em>gelts purkrechts</em> (Burgrechtskauf).</li>
+<li><strong>Schenkung/Stiftung/Widmung:</strong> schenken, stiften, widmen.</li>
+<li><strong>Übergabe/Übertragung:</strong> übergeben, übertragen, einantworten, auflassen.</li>
+<li><strong>Verpfändung/Sicherung:</strong> verpfänden, versetzen, verpflichten.</li>
+<li><strong>Darlehen/Kredit/Zins:</strong> leihen, aufnehmen, verzinsen, quittieren.</li>
+<li><strong>Bestätigung/Beglaubigung:</strong> bestätigen, beurkunden, vidimieren.</li>
+<li><strong>Gericht/Verfahren:</strong> klagen, antworten, vergleichen, sprechen/zusprechen, verurteilen.</li>
+<li><strong>Bestellung/Einsetzung:</strong> setzen, bestellen, einsetzen (Amt/Vertretung).</li>
+<li><strong>Nutzung/Miete/Pacht:</strong> mieten, pachten, verleihen (Nutzungsrechte).</li>
+<li><strong>Lösen/Ablösen:</strong> lösen, ablösen, auslösen.</li>
+</ul>
+<div class="highlight"><pre><span></span><code><span class="nt">&lt;triggerstring</span><span class="w"> </span><span class="na">n=</span><span class="s">&quot;disp&quot;</span><span class="nt">&gt;</span>verkaufen<span class="nt">&lt;/triggerstring&gt;</span>
+</code></pre></div>
+
+<h2 id="rolename">roleName-Typen: Attribute und Relationen<a class="headerlink" href="#rolename" title="Permanent link">&para;</a></h2>
+<p>Eigenschaften und Bindungen einer Entität werden als <code>&lt;roleName type="…"&gt;</code>
+ausgezeichnet. Zu unterscheiden sind <strong>Attribute</strong> (ohne Relation) und
+<strong>Relationen</strong> (mit <code>corresp</code>, das auf die verbundene Entität verweist).</p>
+<h3 id="attribute-rolename-ohne-corresp">Attribute (<code>roleName</code> ohne <code>corresp</code>)<a class="headerlink" href="#attribute-rolename-ohne-corresp" title="Permanent link">&para;</a></h3>
+<p>Eine Eigenschaft, die einer Entität für sich zukommt, etwa ein Beruf, ein Titel
+oder das Geschlecht.</p>
+<table class="roleName-grid">
+  <thead><tr><th>type</th><th>Bedeutung</th><th>Beispiele</th></tr></thead>
+  <tbody>
+    <tr><td><code>prof</code></td><td>Beruf (Ausbildung)</td><td>„maurer", „schneider"</td></tr>
+    <tr><td><code>title</code></td><td>Titel/Rang</td><td>„her", „magister"</td></tr>
+    <tr><td><code>dead</code></td><td>Todesfloskel/Status</td><td>„selig", „weilent"</td></tr>
+  </tbody>
+</table>
+
+<h3 id="relationen-rolename-mit-corresp">Relationen (<code>roleName</code> mit <code>corresp</code>)<a class="headerlink" href="#relationen-rolename-mit-corresp" title="Permanent link">&para;</a></h3>
+<p>Eine Verbindung zwischen zwei Entitäten, die über <code>corresp</code> auf die verbundene
+Entität verweist.</p>
+<table class="roleName-grid">
+  <thead><tr><th>type</th><th>Bedeutung</th><th>Beispiele</th></tr></thead>
+  <tbody>
+    <tr><td><code>kin</code></td><td>Verwandtschaft</td><td>„witib", „sohn", „swager"</td></tr>
+    <tr><td><code>rep</code></td><td>Rechtliche Vertretung/Prokuration</td><td>„Gerhaben"</td></tr>
+    <tr><td><code>occ</code></td><td>Tätigkeitsbeziehung (Amtsträger zu Amt/Institution; Dienstverhältnis)</td><td>Bürgermeister, Ratsmitglied</td></tr>
+    <tr><td><code>title_ref</code></td><td>Titulare Bindung an einen Ort</td><td>„von"</td></tr>
+  </tbody>
+</table>
+
+<div class="dev-only">
+Redaktionsnotiz (#7): Verwandtschaft (<code>kin</code>) gehört zur sauberen
+Trennung in Attribute (prof/title/dead) und Relationen (kin/rep/occ/title_ref)
+und wird daher hier auf der Technik-Seite als Relation geführt — nicht als
+Attribut-Beispiel im Glossar (dort z. B. Beruf, Titel, Geschlecht).
+</div>
+
+<h2 id="faelle">Wie die Tags in den Fallbeispielen zusammenwirken<a class="headerlink" href="#faelle" title="Permanent link">&para;</a></h2>
+<p>Die drei <a href="tutorial.html">Fallbeispiele</a> im Tutorial zeigen die Auszeichnung an
+konkreten Quellen. Aus technischer Sicht:</p>
+<h3 id="fallbeispiel-1-verkauf-mit-handen-der-stadt-nr-604">Fallbeispiel 1: Verkauf „mit Handen" der Stadt (Nr. 604)<a class="headerlink" href="#fallbeispiel-1-verkauf-mit-handen-der-stadt-nr-604" title="Permanent link">&para;</a></h3>
+<ul>
+<li><strong>Aussteller:innen</strong> (<code>issuer</code>): das Ehepaar Hainreich der Santwerfer und seine Hausfrau Elsbet</li>
+<li><strong>Empfänger</strong> (<code>recipient</code>): eine Einzelperson, Jans der Urbetsch</li>
+<li><strong>„mit Handen"</strong> (<code>other</code>): Bürgermeister Jans von Tirnach (zugleich Münzmeister) und der Rat der Stadt Wien</li>
+<li><strong>Zeugen/Siegler</strong> (<code>witness</code> / sealer): Stadtrat und Ratsmitglied Leopold Polz</li>
+<li><strong>Ämter</strong> (<code>occ</code>): Bürgermeister, Münzmeister, Ratsmitglied — an die Stadt Wien gebunden</li>
+</ul>
+<h3 id="fallbeispiel-2-schenkung-fur-das-seelenheil-an-ein-kloster-nr-16">Fallbeispiel 2: Schenkung für das Seelenheil an ein Kloster (Nr. 16)<a class="headerlink" href="#fallbeispiel-2-schenkung-fur-das-seelenheil-an-ein-kloster-nr-16" title="Permanent link">&para;</a></h3>
+<ul>
+<li><strong>Ausstellerin</strong> (<code>issuer</code>): Person, Benedicta de Arnstain</li>
+<li><strong>Empfängerin</strong> (<code>recipient</code>): Institution, der Nonnenkonvent St. Niklas</li>
+<li><strong>Siegler</strong> (sealer): ihr Ehemann siegelt für sie</li>
+</ul>
+<h3 id="fallbeispiel-3-eine-witwe-vergibt-erbe-urkunde-1869">Fallbeispiel 3: eine Witwe vergibt Erbe (Urkunde 1869)<a class="headerlink" href="#fallbeispiel-3-eine-witwe-vergibt-erbe-urkunde-1869" title="Permanent link">&para;</a></h3>
+<ul>
+<li><strong>Ausstellerin</strong> (<code>issuer</code>): Person, Margret, Witwe des Fleischhackers Niklas</li>
+<li><strong>Empfänger</strong> (<code>recipient</code>): ein Verwandter, ihr Vetter Hanns von Künigsprunn</li>
+<li><strong>Verwandtschaft</strong> (<code>kin</code>): „witib" (Witwe), „Vetter", „Schwester"</li>
+<li><strong>Todesvermerk</strong> (<code>dead</code>): die „selige" (verstorbene) Schwester</li>
+<li><strong>Beruf</strong> (<code>prof</code>): die Schwester war „wirtin" im Haus des Grafen von Cilli</li>
+<li><strong>Siegler</strong> (<code>witness</code>): zwei Siegler</li>
+</ul>
+<hr />
+<p>Zurück zum <a href="glossar.html">Glossar</a> · weiter zum <a href="tutorial.html">Tutorial</a>.</p>
         </div>
     </div>
 
@@ -138,12 +289,12 @@
     </footer>
 
     <script id="role-labels" type="application/json">{"issuer": "Aussteller:in", "other": "Sonstige", "recipient": "Empf\u00e4nger:in", "witness": "Zeug:in / Siegler:in"}</script>
-    <script src="../../static/js/core.js?v=20260630125527"></script>
-    <script src="../../static/js/tip.js?v=20260630125527"></script>
-    <script src="../../static/js/hint.js?v=20260630125527"></script>
-    <script src="../../static/js/basket.js?v=20260630125527"></script>
+    <script src="../../static/js/core.js?v=20260630130630"></script>
+    <script src="../../static/js/tip.js?v=20260630130630"></script>
+    <script src="../../static/js/hint.js?v=20260630130630"></script>
+    <script src="../../static/js/basket.js?v=20260630130630"></script>
     
-<script src="../../static/js/content.js?v=20260630125527"></script>
+<script src="../../static/js/content.js?v=20260630130630"></script>
 
 </body>
 </html>

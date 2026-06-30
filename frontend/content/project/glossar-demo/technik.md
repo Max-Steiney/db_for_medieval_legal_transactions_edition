@@ -1,3 +1,156 @@
-## Rollen im Rechtsgeschäft
+<nav class="demo-pagenav">
+  <a href="glossar.html">Glossar</a> ·
+  <a href="tutorial.html">Tutorial</a> ·
+  <strong>Technik / Datenmodell</strong>
+</nav>
 
-Kontrolliertes Vokabular: `issuer`, `recipient`, `witness`, `other`.
+<style>
+.demo-pagenav { margin: 0 0 1.5rem; padding: .5rem .75rem; background: #f4f1ea; border: 1px solid #d8d2c4; border-radius: 4px; font-size: .95rem; }
+.demo-pagenav strong { color: #5a4a2f; }
+.tech-codes { list-style: none; padding-left: 0; }
+.tech-codes > li { margin: .4rem 0; }
+.tech-codes code { background: #f0ede4; padding: .1rem .35rem; border-radius: 3px; }
+.roleName-grid th, .roleName-grid td { vertical-align: top; }
+.dev-only { display: none; }
+.dev-mode .dev-only { display: block; border: 2px solid #e0b000; background: #fffbe6; padding: .5rem .75rem; margin: .75rem 0; border-radius: 4px; }
+</style>
+
+Diese Seite erklärt, wie die im [Glossar](glossar.html) definierten Begriffe in
+den TEI-Quellen technisch ausgezeichnet sind. Die Tags erscheinen in der
+herunterladbaren XML jeder Quelle. Die Beispiele stammen aus den drei
+[Fallbeispielen](tutorial.html).
+
+## Rollen im Rechtsgeschäft {#rollen}
+
+Die Funktion, die eine Person oder Organisation innerhalb eines Rechtsgeschäfts
+einnimmt, wird als `<rs type="fn" role="…">` ausgezeichnet. Das kontrollierte
+Vokabular kennt genau vier Code-Werte; ein nicht gesetzter Wert ist der leere
+String, **nicht** `none`.
+
+<ul class="tech-codes">
+  <li><code>issuer</code> — Aussteller/Geber (Person/Organisation, die verfügt oder erklärt).</li>
+  <li><code>recipient</code> — Empfänger/Adressat (erhält Recht, Gut, Geld).</li>
+  <li><code>witness</code> — Zeuge/Siegler (bekräftigt, siegelt, „bei/sigillavit").</li>
+  <li><code>other</code> — weitere Beteiligte/Funktionen (z. B. Grundherrin/-herr „mit Handen", Ratgeber, Intervenient). Spezifikation der Funktion via <code>&lt;triggerstring n="fn"&gt;</code>.</li>
+</ul>
+
+```xml
+<rs type="fn" role="issuer">Hainreich der Santwerfer</rs>
+```
+
+### Warum Zeug:in und Siegler:in denselben Code-Wert tragen {#witness}
+
+Im [Glossar](glossar.html) werden **Zeug:in** und **Siegler:in** getrennt
+beschrieben, weil es zwei verschiedene Funktionen sind: Eine Zeug:in bezeugt ein
+Rechtsgeschäft und stärkt dadurch dessen Gültigkeit; eine Siegler:in beglaubigt
+ein Dokument durch ihr Siegel. Die Funktionen sind vergleichbar, aber nicht
+dieselben.
+
+Im **Auswertungsmodell** fallen beide unter den gemeinsamen Code-Wert
+`witness`: siegelnde Zeug:innen und siegelnde Aussteller:innen werden gemeinsam
+als die das Rechtsgeschäft beglaubigenden Personen erfasst. Eine
+Aussteller:in, die zugleich ihr Siegel anbringt, erscheint dadurch in mehreren
+Rollen — einmal als `issuer` und einmal als `witness`.
+
+<div class="dev-only">
+Redaktionsnotiz (#12/#13): Die getrennte Beschreibung der beiden Funktionen
+bleibt im Glossar; hier auf der Technik-Seite wird nur erklärt, warum die
+Auswertung sie unter <code>witness</code> zusammenführt. Der frühere Satz, der
+Zeug:innen und Siegler:innen als <code>witness</code> „zusammenführt", wurde
+bewusst nicht übernommen (Kardinalfehler, Kommentar #14).
+</div>
+
+## Dispositive Verben {#disp}
+
+Zentrale Aktionswörter, die das Event typisieren, werden als
+`<triggerstring n="disp">` ausgezeichnet (Beispiele inkl. typischer
+Formulierungen):
+
+- **Kauf/Verkauf:** verkaufen, erkaufen, verhandeln; *habent verkaufft*; *gelts purkrechts* (Burgrechtskauf).
+- **Schenkung/Stiftung/Widmung:** schenken, stiften, widmen.
+- **Übergabe/Übertragung:** übergeben, übertragen, einantworten, auflassen.
+- **Verpfändung/Sicherung:** verpfänden, versetzen, verpflichten.
+- **Darlehen/Kredit/Zins:** leihen, aufnehmen, verzinsen, quittieren.
+- **Bestätigung/Beglaubigung:** bestätigen, beurkunden, vidimieren.
+- **Gericht/Verfahren:** klagen, antworten, vergleichen, sprechen/zusprechen, verurteilen.
+- **Bestellung/Einsetzung:** setzen, bestellen, einsetzen (Amt/Vertretung).
+- **Nutzung/Miete/Pacht:** mieten, pachten, verleihen (Nutzungsrechte).
+- **Lösen/Ablösen:** lösen, ablösen, auslösen.
+
+```xml
+<triggerstring n="disp">verkaufen</triggerstring>
+```
+
+## roleName-Typen: Attribute und Relationen {#rolename}
+
+Eigenschaften und Bindungen einer Entität werden als `<roleName type="…">`
+ausgezeichnet. Zu unterscheiden sind **Attribute** (ohne Relation) und
+**Relationen** (mit `corresp`, das auf die verbundene Entität verweist).
+
+### Attribute (`roleName` ohne `corresp`)
+
+Eine Eigenschaft, die einer Entität für sich zukommt, etwa ein Beruf, ein Titel
+oder das Geschlecht.
+
+<table class="roleName-grid">
+  <thead><tr><th>type</th><th>Bedeutung</th><th>Beispiele</th></tr></thead>
+  <tbody>
+    <tr><td><code>prof</code></td><td>Beruf (Ausbildung)</td><td>„maurer", „schneider"</td></tr>
+    <tr><td><code>title</code></td><td>Titel/Rang</td><td>„her", „magister"</td></tr>
+    <tr><td><code>dead</code></td><td>Todesfloskel/Status</td><td>„selig", „weilent"</td></tr>
+  </tbody>
+</table>
+
+### Relationen (`roleName` mit `corresp`)
+
+Eine Verbindung zwischen zwei Entitäten, die über `corresp` auf die verbundene
+Entität verweist.
+
+<table class="roleName-grid">
+  <thead><tr><th>type</th><th>Bedeutung</th><th>Beispiele</th></tr></thead>
+  <tbody>
+    <tr><td><code>kin</code></td><td>Verwandtschaft</td><td>„witib", „sohn", „swager"</td></tr>
+    <tr><td><code>rep</code></td><td>Rechtliche Vertretung/Prokuration</td><td>„Gerhaben"</td></tr>
+    <tr><td><code>occ</code></td><td>Tätigkeitsbeziehung (Amtsträger zu Amt/Institution; Dienstverhältnis)</td><td>Bürgermeister, Ratsmitglied</td></tr>
+    <tr><td><code>title_ref</code></td><td>Titulare Bindung an einen Ort</td><td>„von"</td></tr>
+  </tbody>
+</table>
+
+<div class="dev-only">
+Redaktionsnotiz (#7): Verwandtschaft (<code>kin</code>) gehört zur sauberen
+Trennung in Attribute (prof/title/dead) und Relationen (kin/rep/occ/title_ref)
+und wird daher hier auf der Technik-Seite als Relation geführt — nicht als
+Attribut-Beispiel im Glossar (dort z. B. Beruf, Titel, Geschlecht).
+</div>
+
+## Wie die Tags in den Fallbeispielen zusammenwirken {#faelle}
+
+Die drei [Fallbeispiele](tutorial.html) im Tutorial zeigen die Auszeichnung an
+konkreten Quellen. Aus technischer Sicht:
+
+### Fallbeispiel 1: Verkauf „mit Handen" der Stadt (Nr. 604)
+
+- **Aussteller:innen** (`issuer`): das Ehepaar Hainreich der Santwerfer und seine Hausfrau Elsbet
+- **Empfänger** (`recipient`): eine Einzelperson, Jans der Urbetsch
+- **„mit Handen"** (`other`): Bürgermeister Jans von Tirnach (zugleich Münzmeister) und der Rat der Stadt Wien
+- **Zeugen/Siegler** (`witness` / sealer): Stadtrat und Ratsmitglied Leopold Polz
+- **Ämter** (`occ`): Bürgermeister, Münzmeister, Ratsmitglied — an die Stadt Wien gebunden
+
+### Fallbeispiel 2: Schenkung für das Seelenheil an ein Kloster (Nr. 16)
+
+- **Ausstellerin** (`issuer`): Person, Benedicta de Arnstain
+- **Empfängerin** (`recipient`): Institution, der Nonnenkonvent St. Niklas
+- **Siegler** (sealer): ihr Ehemann siegelt für sie
+
+### Fallbeispiel 3: eine Witwe vergibt Erbe (Urkunde 1869)
+
+- **Ausstellerin** (`issuer`): Person, Margret, Witwe des Fleischhackers Niklas
+- **Empfänger** (`recipient`): ein Verwandter, ihr Vetter Hanns von Künigsprunn
+- **Verwandtschaft** (`kin`): „witib" (Witwe), „Vetter", „Schwester"
+- **Todesvermerk** (`dead`): die „selige" (verstorbene) Schwester
+- **Beruf** (`prof`): die Schwester war „wirtin" im Haus des Grafen von Cilli
+- **Siegler** (`witness`): zwei Siegler
+
+---
+
+Zurück zum [Glossar](glossar.html) · weiter zum [Tutorial](tutorial.html).

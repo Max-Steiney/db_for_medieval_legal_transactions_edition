@@ -10,15 +10,15 @@
     <title>Glossar (Demo), Datenbank</title>
     <link rel="preload" as="font" type="font/woff2" crossorigin
           href="../../static/fonts/inter-400-latin.woff2">
-    <link rel="stylesheet" href="../../static/css/fonts.css?v=20260630125527">
-    <link rel="stylesheet" href="../../static/css/tokens.css?v=20260630125527">
-    <link rel="stylesheet" href="../../static/css/base.css?v=20260630125527">
-    <link rel="stylesheet" href="../../static/css/components.css?v=20260630125527">
-    <link rel="stylesheet" href="../../static/css/responsive.css?v=20260630125527">
-    <link rel="stylesheet" href="../../static/css/print.css?v=20260630125527">
-    <link rel="stylesheet" href="../../static/css/tip.css?v=20260630125527">
+    <link rel="stylesheet" href="../../static/css/fonts.css?v=20260630130630">
+    <link rel="stylesheet" href="../../static/css/tokens.css?v=20260630130630">
+    <link rel="stylesheet" href="../../static/css/base.css?v=20260630130630">
+    <link rel="stylesheet" href="../../static/css/components.css?v=20260630130630">
+    <link rel="stylesheet" href="../../static/css/responsive.css?v=20260630130630">
+    <link rel="stylesheet" href="../../static/css/print.css?v=20260630130630">
+    <link rel="stylesheet" href="../../static/css/tip.css?v=20260630130630">
     
-<link rel="stylesheet" href="../../static/css/content.css?v=20260630125527">
+<link rel="stylesheet" href="../../static/css/content.css?v=20260630130630">
 
 </head>
 <body data-root-path="../.."
@@ -97,15 +97,198 @@
                 <h2>Inhalt</h2>
                 <div class="toc">
 <ul>
+<li><a href="#a-datenbank-und-datenmodell">A. Datenbank und Datenmodell</a><ul>
 <li><a href="#quelle">Quelle</a></li>
+<li><a href="#quellenkorpus">Quellenkorpus</a></li>
+<li><a href="#event-ereignis">Event / Ereignis</a></li>
+<li><a href="#factoid">Factoid</a></li>
+<li><a href="#annotation">Annotation</a></li>
+<li><a href="#entitat">Entität</a></li>
+<li><a href="#rolle">Rolle</a></li>
+<li><a href="#beziehung">Beziehung</a></li>
+<li><a href="#attribut">Attribut</a></li>
+<li><a href="#verknupfung">Verknüpfung</a></li>
+<li><a href="#register">Register</a></li>
+<li><a href="#normierung">Normierung</a></li>
+</ul>
+</li>
+<li><a href="#b-quellen-und-uberlieferung">B. Quellen und Überlieferung</a><ul>
+<li><a href="#urkunde">Urkunde</a></li>
+<li><a href="#regest">Regest</a></li>
+<li><a href="#edition">Edition</a></li>
+<li><a href="#digitalisat">Digitalisat</a></li>
+<li><a href="#transkription">Transkription</a></li>
+<li><a href="#siegel">Siegel</a></li>
+<li><a href="#vidimus-vidimierung">Vidimus / Vidimierung</a></li>
+</ul>
+</li>
+<li><a href="#rollen-in-rechtsgeschaften">Rollen in Rechtsgeschäften</a><ul>
+<li><a href="#ausstellerin-issuer">Aussteller:in (issuer)</a></li>
+<li><a href="#empfangerin-recipient">Empfänger:in (recipient)</a></li>
+<li><a href="#zeugin-witness">Zeug:in (witness)</a></li>
+<li><a href="#sieglerin-witness">Siegler:in (witness)</a></li>
+<li><a href="#grundherrin-mit-handen-other">Grundherr:in („mit Handen", other)</a></li>
+</ul>
+</li>
 </ul>
 </div>
 
             </div>
         </nav>
         <div class="guidelines-body">
-            <h2 id="quelle">Quelle<a class="headerlink" href="#quelle" title="Permanent link">&para;</a></h2>
-<p>Eine einzelne historische Quelle, die in der Datenbank erfasst wurde.</p>
+            <nav class="demo-pagenav">
+  <strong>Glossar</strong> ·
+  <a href="tutorial.html">Tutorial</a> ·
+  <a href="technik.html">Technik / Datenmodell</a>
+</nav>
+
+<style>
+.demo-pagenav{font-size:.9rem;margin:0 0 1.5rem;padding:.6rem .8rem;background:var(--color-bg-warm,#f6f3ec);border-radius:6px}
+.demo-tip-demo{border:1px solid var(--color-border,#d8d2c4);border-radius:8px;padding:1rem;margin:1.5rem 0;background:var(--color-bg-warm,#f6f3ec)}
+.demo-tip-demo .tip-popover{position:static;display:block;max-width:340px;box-shadow:0 1px 4px rgba(0,0,0,.12);background:#fff;border:1px solid #d8d2c4;border-radius:6px;padding:0}
+.demo-tip-demo .tip-head{display:flex;justify-content:space-between;align-items:center;padding:.5rem .8rem;border-bottom:1px solid #e7e2d6}
+.demo-tip-demo .tip-title{margin:0;font-size:1rem}
+.demo-tip-demo .tip-body{padding:.6rem .8rem;font-size:.9rem}
+.demo-tip-demo .tip-link{display:inline-block;margin-top:.4rem;font-size:.85rem}
+.demo-editnote{border-left:3px solid #e0a800;background:#fff8e1;padding:.5rem .8rem;margin:.6rem 0;font-size:.85rem}
+.demo-xref{font-size:.85rem;color:var(--color-text-muted,#6b6356);margin:0 0 .5rem}
+</style>
+
+<p>Das Glossar ist der Kern dieses Modells: eine Begriffsdefinitionssammlung des
+Projekts, die zugleich die Tooltips im UI speist. Anwendungsbezogene
+Erklärungen finden sich im <a href="tutorial.html">Tutorial</a>, die TEI-Auszeichnung und
+das vollständige Rollenvokabular auf der Seite
+<a href="technik.html">Technik / Datenmodell</a>.</p>
+<p>Die Begriffe sind in zwei Abschnitte gegliedert: <strong>A. Datenbank und Datenmodell</strong>
+und <strong>B. Quellen und Überlieferung</strong>.</p>
+<h2 id="a-datenbank-und-datenmodell">A. Datenbank und Datenmodell<a class="headerlink" href="#a-datenbank-und-datenmodell" title="Permanent link">&para;</a></h2>
+<h3 id="quelle">Quelle<a class="headerlink" href="#quelle" title="Permanent link">&para;</a></h3>
+<p>Eine einzelne historische Quelle, die in der Datenbank erfasst wurde. Im Projekt
+„Stadt und Gemeinschaft" handelt es sich vor allem um Urkunden und
+Stadtbucheinträge.</p>
+<p>So erscheint ein Glossar-Begriff als Tooltip im UI – dieselbe Definition, gekoppelt
+an das i-Symbol im Fließtext:</p>
+<div class="demo-tip-demo">
+  <p class="demo-xref">Tooltip-Vorschau (echtes Popover-Markup):</p>
+  <aside class="tip-popover tip-popover--glossary" role="dialog" aria-hidden="false" aria-label="Definition: Quelle">
+    <header class="tip-head"><h3 class="tip-title">Quelle</h3></header>
+    <div class="tip-body">Eine einzelne historische Quelle, die in der Datenbank erfasst wurde. Im Projekt „Stadt und Gemeinschaft" handelt es sich vor allem um Urkunden und Stadtbucheinträge.<a class="tip-link" href="glossar.html#quelle">im Glossar</a></div>
+  </aside>
+</div>
+
+<h3 id="quellenkorpus">Quellenkorpus<a class="headerlink" href="#quellenkorpus" title="Permanent link">&para;</a></h3>
+<p>Eine Sammlung zusammengehöriger Quellen, im Fall des Projekts „Stadt und
+Gemeinschaft" handelt es sich derzeit um Regesten aus den „Quellen zur Geschichte
+der Stadt Wien" (Uhlirz) und Einträge aus dem ersten Band der Wiener Stadtbücher
+1395–1400 (hrsg. von Jaritz/Brauneder). Künftig werden weitere Korpora
+hinzukommen, z.B. Grundbücher.</p>
+<p>Öffentlich zugänglich sind die erfassten Daten aus den Regesten im Band II.1 und
+II.2 der QGW von 1177 bis 1414. Es handelt sich dabei um Regesten von Urkunden im
+Wiener Stadt- und Landesarchiv. Auf monasterium.net sind sowohl die Regesten als
+auch Digitalisate der Urkunden zugänglich.</p>
+<p>Die Wiener Stadtbücher sind ein von der Stadtverwaltung geführtes Register, in dem
+Rechtsgeschäfte, letztwillige Verfügungen und andere Vorgänge eingetragen wurden.
+Ein Stadtbucheintrag ist ein einzelner Eintrag innerhalb der Wiener Stadtbücher.</p>
+<div class="demo-editnote dev-only">Redaktion offen (#0–#5): QGW- und Stadtbuch-Unterpunkte ausführen oder nur ins Wien-Wiki verlinken; Neschwara-Referenz und Jaritz/Brauneder-Definition aus Band 1 noch einarbeiten.</div>
+
+<h3 id="event-ereignis">Event / Ereignis<a class="headerlink" href="#event-ereignis" title="Permanent link">&para;</a></h3>
+<p>Die grundlegende Analyseeinheit der Datenbank. Ein Event entspricht einem in
+einer Quelle dokumentierten Vorgang – oft ein Rechtsgeschäft, etwa ein Verkauf,
+eine Stiftung, eine letztwillige Verfügung oder ein Gerichtsverfahren. Ein
+Ereignis ist zugleich eine Entität des Datenmodells: Die zentralen
+Analyseeinheiten (Entitäten) sind Ereignisse, Personen, Organisationen und Orte.</p>
+<div class="demo-editnote dev-only">Redaktion (#6): Ereignis als Entität benannt (Lutter et al. 2021, insb. Abb. 2).</div>
+
+<h3 id="factoid">Factoid<a class="headerlink" href="#factoid" title="Permanent link">&para;</a></h3>
+<p>Eine einzelne strukturierte Information, die aus einer Quelle gewonnen wurde und
+der Quelle zugeordnet bleibt; auch widersprüchliche Angaben bleiben enthalten.
+Factoids ermöglichen es, Personen, Orte, Organisationen und ihre Beziehungen
+systematisch auszuwerten.</p>
+<h3 id="annotation">Annotation<a class="headerlink" href="#annotation" title="Permanent link">&para;</a></h3>
+<p>Eine Markierung im Quellentext, mit der Informationen wie Personen,
+Organisationen, Orte und ihre Eigenschaften ausgezeichnet werden – im Fall des
+Projekts „Stadt und Gemeinschaft" handelt es sich dabei um in digitale
+Textdateien umgewandelte Regesten und Stadtbucheinträge, die nach den Standards
+der TEI annotiert/codiert wurden.</p>
+<h3 id="entitat">Entität<a class="headerlink" href="#entitat" title="Permanent link">&para;</a></h3>
+<p>Personen oder Organisationen (künftig auch Orte), die in einer Quelle genannt
+werden und als eigener Datensatz in der Datenbank erfasst sind.</p>
+<h3 id="rolle">Rolle<a class="headerlink" href="#rolle" title="Permanent link">&para;</a></h3>
+<p>Die Funktion, die eine Person oder Organisation innerhalb eines bestimmten
+Ereignisses einnimmt. Dieselbe Person kann in einer oder mehreren Quellen
+verschiedene Rollen einnehmen. Das kontrollierte Rollenvokabular und seine
+Code-Werte werden auf der Seite <a href="technik.html#rollen">Technik / Datenmodell</a>
+erläutert.</p>
+<h3 id="beziehung">Beziehung<a class="headerlink" href="#beziehung" title="Permanent link">&para;</a></h3>
+<p>Eine Verbindung zwischen zwei Entitäten, etwa eine Verwandtschaftsbeziehung oder
+eine Amtszugehörigkeit.</p>
+<h3 id="attribut">Attribut<a class="headerlink" href="#attribut" title="Permanent link">&para;</a></h3>
+<p>Eine Eigenschaft einer Entität, beispielsweise ein Beruf, ein Titel oder das
+Geschlecht.</p>
+<div class="demo-editnote dev-only">Redaktion (#7): kin hier gestrichen – das ist eine Relation und gehört in die saubere Trennung Attribute (prof/title/dead) vs. Relationen (kin/rep/occ/title_ref) auf der <a href="technik.html#rollen">Technik-Seite</a>. Als Attribut-Beispiel daher Beruf, Titel oder Geschlecht.</div>
+
+<h3 id="verknupfung">Verknüpfung<a class="headerlink" href="#verknupfung" title="Permanent link">&para;</a></h3>
+<p>Die technische Verknüpfung von Informationen innerhalb der Datenbank,
+beispielsweise zwischen einer Person und den Quellen, in denen sie erwähnt wird.</p>
+<h3 id="register">Register<a class="headerlink" href="#register" title="Permanent link">&para;</a></h3>
+<p>Ein Verzeichnis von Personen, Organisationen oder Orten, die in den Quellen
+vorkommen, in unserem Fall insbesondere die Register der Quellen zur Geschichte
+der Stadt Wien (hrsg. von Karl Uhlirz), ergänzend auch Werke wie „Die Wiener
+Ratsbürger 1396–1526" (hrsg. von Richard Perger).</p>
+<div class="demo-editnote dev-only">Redaktion offen (#8): Zusatz, dass im Prozess dieses Projekts selbst Register (persons / organisations / places / events) erstellt werden, gegen die Begriffsverwendung auf der Projektwebsite abgleichen.</div>
+
+<h3 id="normierung">Normierung<a class="headerlink" href="#normierung" title="Permanent link">&para;</a></h3>
+<p>Die Vereinheitlichung zeitgenössisch variabler Schreibweisen oder Bezeichnungen,
+um Informationen systematisch durchsuchen und auswerten zu können, beispielsweise
+der Begriff Bürger/Bürgerin, der unter anderem auch in den Schreibweisen
+purger/purgerin oder civis wiennensis vorkommt.</p>
+<h2 id="b-quellen-und-uberlieferung">B. Quellen und Überlieferung<a class="headerlink" href="#b-quellen-und-uberlieferung" title="Permanent link">&para;</a></h2>
+<div class="demo-editnote dev-only">Redaktion offen (#9): Abschnitt B überarbeiten und mit Ad Fontes abgleichen; die ad-fontes-Links pro Begriff ergänzen.</div>
+
+<h3 id="urkunde">Urkunde<a class="headerlink" href="#urkunde" title="Permanent link">&para;</a></h3>
+<p>Ein schriftliches, beglaubigtes Dokument, das ein Rechtsgeschäft, einen
+Rechtsanspruch oder eine rechtlich relevante Handlung festhält.</p>
+<h3 id="regest">Regest<a class="headerlink" href="#regest" title="Permanent link">&para;</a></h3>
+<p>Eine knappe Inhaltsangabe einer historischen Quelle, die wichtige Informationen
+zusammenfasst.</p>
+<h3 id="edition">Edition<a class="headerlink" href="#edition" title="Permanent link">&para;</a></h3>
+<p>Eine wissenschaftliche Veröffentlichung historischer Quellen, meist mit
+Transkriptionen, Kommentaren und Erläuterungen.</p>
+<h3 id="digitalisat">Digitalisat<a class="headerlink" href="#digitalisat" title="Permanent link">&para;</a></h3>
+<p>Eine digitale Aufnahme einer historischen Quelle.</p>
+<h3 id="transkription">Transkription<a class="headerlink" href="#transkription" title="Permanent link">&para;</a></h3>
+<p>Die buchstabengetreue Übertragung eines historischen Textes in moderne Schrift.</p>
+<h3 id="siegel">Siegel<a class="headerlink" href="#siegel" title="Permanent link">&para;</a></h3>
+<p>Ein Beglaubigungsmittel, mit dem die Echtheit einer Urkunde und die beteiligten
+Personen bestätigt wurden.</p>
+<h3 id="vidimus-vidimierung">Vidimus / Vidimierung<a class="headerlink" href="#vidimus-vidimierung" title="Permanent link">&para;</a></h3>
+<p>Die rechtsgültige Bestätigung, dass eine Abschrift dem Original entspricht.</p>
+<h2 id="rollen-in-rechtsgeschaften">Rollen in Rechtsgeschäften<a class="headerlink" href="#rollen-in-rechtsgeschaften" title="Permanent link">&para;</a></h2>
+<p>Die folgenden Funktionsrollen werden hier nur kurz eingeführt; ihre
+Code-Werte und die TEI-Auszeichnung stehen auf der Seite
+<a href="technik.html#rollen">Technik / Datenmodell</a>. Konkrete Quellen mit aufgelösten
+Rollen zeigt das <a href="tutorial.html">Tutorial</a>.</p>
+<h3 id="ausstellerin-issuer">Aussteller:in (issuer)<a class="headerlink" href="#ausstellerin-issuer" title="Permanent link">&para;</a></h3>
+<p>Die Person oder Organisation, die verfügt oder erklärt. Bei einem Verkauf ist
+dies meist die verkaufende Person, bei einem Testament die testierende Person.</p>
+<h3 id="empfangerin-recipient">Empfänger:in (recipient)<a class="headerlink" href="#empfangerin-recipient" title="Permanent link">&para;</a></h3>
+<p>Die Person oder Organisation, die eine Leistung, ein Recht oder einen Gegenstand
+erhält.</p>
+<h3 id="zeugin-witness">Zeug:in (witness)<a class="headerlink" href="#zeugin-witness" title="Permanent link">&para;</a></h3>
+<p>Eine Person, die ein Rechtsgeschäft bezeugt und dadurch dessen Gültigkeit stärkt.</p>
+<h3 id="sieglerin-witness">Siegler:in (witness)<a class="headerlink" href="#sieglerin-witness" title="Permanent link">&para;</a></h3>
+<p>Eine Person oder Institution, deren Siegel zur Beglaubigung eines Dokuments
+verwendet wurde.</p>
+<div class="demo-editnote dev-only">Redaktion (#13/#14): Zeug:in und Siegler:in werden getrennt beschrieben – die Funktionen sind vergleichbar, aber nicht dieselben. Der gemeinsame Code-Wert <code>witness</code> und der Auswertungsmodus (siegelnde Zeugen und siegelnde Aussteller:innen als beglaubigende Personen) werden auf der <a href="technik.html#rollen">Technik-Seite</a> erklärt.</div>
+
+<h3 id="grundherrin-mit-handen-other">Grundherr:in („mit Handen", other)<a class="headerlink" href="#grundherrin-mit-handen-other" title="Permanent link">&para;</a></h3>
+<p>Die Person oder Institution, die einem Rechtsgeschäft als betroffene
+Grundherrschaft zustimmt. Wer ein Haus oder ein Burgrecht veräußert, tut dies
+„mit Handen" des Grundherrn bzw. der Grundherrin – neben individuellen Personen
+ist das oft der Stadtrat oder eine geistliche Institution. Im Datenmodell gehört
+diese Funktion zur Sammelrolle other.</p>
+<hr />
+<p>Querverweise: <a href="tutorial.html">Tutorial</a> · <a href="technik.html">Technik / Datenmodell</a></p>
         </div>
     </div>
 
@@ -138,12 +321,12 @@
     </footer>
 
     <script id="role-labels" type="application/json">{"issuer": "Aussteller:in", "other": "Sonstige", "recipient": "Empf\u00e4nger:in", "witness": "Zeug:in / Siegler:in"}</script>
-    <script src="../../static/js/core.js?v=20260630125527"></script>
-    <script src="../../static/js/tip.js?v=20260630125527"></script>
-    <script src="../../static/js/hint.js?v=20260630125527"></script>
-    <script src="../../static/js/basket.js?v=20260630125527"></script>
+    <script src="../../static/js/core.js?v=20260630130630"></script>
+    <script src="../../static/js/tip.js?v=20260630130630"></script>
+    <script src="../../static/js/hint.js?v=20260630130630"></script>
+    <script src="../../static/js/basket.js?v=20260630130630"></script>
     
-<script src="../../static/js/content.js?v=20260630125527"></script>
+<script src="../../static/js/content.js?v=20260630130630"></script>
 
 </body>
 </html>
