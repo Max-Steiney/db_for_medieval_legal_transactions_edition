@@ -260,3 +260,13 @@ def test_tutorial_has_case_framing(built_demo):
     c = built_demo["tutorial"]
     # Jeder der drei Faelle bekommt eine "Was dieser Fall zeigt"-Rahmung
     assert c.count("Was dieser Fall zeigt") == 3
+
+
+def test_tooltip_preview_reset_positioning():
+    from pathlib import Path
+    css = (Path(__file__).resolve().parents[1] / "static" / "css" / "glossar-demo.css").read_text(encoding="utf-8")
+    # Der Demo-Override muss die absolute-Positionierung der echten tip.css neutralisieren
+    block = css.split(".demo-tip-demo .tip-popover", 1)[-1].split("}", 1)[0]
+    assert "transform: none" in block
+    assert "animation: none" in block
+    assert "left: auto" in block

@@ -20,10 +20,17 @@
     background: var(--color-bg-warm, #f6f3ec);
 }
 .demo-tip-demo .tip-popover {
-    position: static; display: block; max-width: 340px;
+    position: static;
+    top: auto;
+    left: auto;
+    transform: none;
+    animation: none;
+    min-width: 0;
+    display: block; max-width: 340px;
     box-shadow: 0 1px 4px rgba(0, 0, 0, .12);
     background: #fff; border: 1px solid #d8d2c4; border-radius: 6px; padding: 0;
 }
+.demo-tip-demo .tip-popover::before { display: none; }
 .demo-tip-demo .tip-head {
     display: flex; justify-content: space-between; align-items: center;
     padding: .5rem .8rem; border-bottom: 1px solid #e7e2d6;
