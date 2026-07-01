@@ -7,7 +7,7 @@ Glossar-Demo-Seiten. frontend/__init__.py bleibt unveraendert.
 Aufruf:  python3 scripts/build_glossar_demo.py
 """
 
-import shutil  # noqa: E402  (oben zu den Imports ziehen)
+import shutil
 import sys
 from pathlib import Path
 
