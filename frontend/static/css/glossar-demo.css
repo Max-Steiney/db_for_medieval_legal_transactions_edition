@@ -56,6 +56,17 @@
 /* Querverweis-Zeilen */
 .demo-xref { font-size: .85rem; color: var(--color-text-muted, #6b6356); margin: 0 0 .5rem; }
 
+/* Referenz-Zeilen am Eintrags-Ende (Verwandt / Weiterfuehrend / Literatur) */
+.entry-refs {
+    font-size: .85rem;
+    line-height: 1.5;
+    color: var(--color-text-muted, #6b6356);
+    margin: .5rem 0 1.25rem;
+    padding-left: .75rem;
+    border-left: 2px solid var(--color-border, #d8d2c4);
+}
+.entry-refs strong { color: var(--color-text-strong, #5a4a2f); font-weight: 600; }
+
 /* Redaktionsnotizen: im oeffentlichen Build verborgen, per ?dev=1 sichtbar */
 .demo-editnote { border-left: 3px solid #e0a800; background: #fff8e1; padding: .5rem .8rem; margin: .6rem 0; font-size: .85rem; }
 .dev-only { display: none !important; }

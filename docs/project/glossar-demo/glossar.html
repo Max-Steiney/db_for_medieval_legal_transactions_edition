@@ -10,18 +10,18 @@
     <title>Glossar (Demo), Datenbank</title>
     <link rel="preload" as="font" type="font/woff2" crossorigin
           href="../../static/fonts/inter-400-latin.woff2">
-    <link rel="stylesheet" href="../../static/css/fonts.css?v=20260701104042">
-    <link rel="stylesheet" href="../../static/css/tokens.css?v=20260701104042">
-    <link rel="stylesheet" href="../../static/css/base.css?v=20260701104042">
-    <link rel="stylesheet" href="../../static/css/components.css?v=20260701104042">
-    <link rel="stylesheet" href="../../static/css/responsive.css?v=20260701104042">
-    <link rel="stylesheet" href="../../static/css/print.css?v=20260701104042">
-    <link rel="stylesheet" href="../../static/css/tip.css?v=20260701104042">
+    <link rel="stylesheet" href="../../static/css/fonts.css?v=20260701163519">
+    <link rel="stylesheet" href="../../static/css/tokens.css?v=20260701163519">
+    <link rel="stylesheet" href="../../static/css/base.css?v=20260701163519">
+    <link rel="stylesheet" href="../../static/css/components.css?v=20260701163519">
+    <link rel="stylesheet" href="../../static/css/responsive.css?v=20260701163519">
+    <link rel="stylesheet" href="../../static/css/print.css?v=20260701163519">
+    <link rel="stylesheet" href="../../static/css/tip.css?v=20260701163519">
     
 
-<link rel="stylesheet" href="../../static/css/content.css?v=20260701104042">
+<link rel="stylesheet" href="../../static/css/content.css?v=20260701163519">
 
-<link rel="stylesheet" href="../../static/css/glossar-demo.css?v=20260701104042">
+<link rel="stylesheet" href="../../static/css/glossar-demo.css?v=20260701163519">
 
 </head>
 <body data-root-path="../.."
@@ -103,7 +103,7 @@
 <li><a href="#a-datenbank-und-datenmodell">A. Datenbank und Datenmodell</a><ul>
 <li><a href="#quelle">Quelle</a></li>
 <li><a href="#quellenkorpus">Quellenkorpus</a></li>
-<li><a href="#event-ereignis">Event / Ereignis</a></li>
+<li><a href="#event">Event</a></li>
 <li><a href="#factoid">Factoid</a></li>
 <li><a href="#annotation">Annotation</a></li>
 <li><a href="#entitat">Entität</a></li>
@@ -172,7 +172,7 @@ an das i-Symbol im Fließtext:</p>
 
 <h3 id="quellenkorpus">Quellenkorpus<a class="headerlink" href="#quellenkorpus" title="Permanent link">&para;</a></h3>
 <p>Eine Sammlung zusammengehöriger Quellen, im Fall des Projekts „Stadt und
-Gemeinschaft" handelt es sich derzeit um Regesten aus den „Quellen zur Geschichte
+Gemeinschaft" handelt es sich derzeit um <a href="#regest">Regesten</a> aus den „Quellen zur Geschichte
 der Stadt Wien" (Uhlirz) und Einträge aus dem ersten Band der Wiener Stadtbücher
 1395–1400 (hrsg. von Jaritz/Brauneder). Künftig werden weitere Korpora
 hinzukommen, z.B. Grundbücher.</p>
@@ -185,9 +185,12 @@ Rechtsgeschäfte, letztwillige Verfügungen und andere Vorgänge eingetragen wur
 Ein Stadtbucheintrag ist ein einzelner Eintrag innerhalb der Wiener Stadtbücher.</p>
 <div class="demo-editnote dev-only">Redaktion offen (#0–#5): QGW- und Stadtbuch-Unterpunkte ausführen oder nur ins Wien-Wiki verlinken; Neschwara-Referenz und Jaritz/Brauneder-Definition aus Band 1 noch einarbeiten.</div>
 
-<h3 id="event-ereignis">Event / Ereignis<a class="headerlink" href="#event-ereignis" title="Permanent link">&para;</a></h3>
-<p>Die grundlegende Analyseeinheit der Datenbank. Ein Event entspricht einem in
-einer Quelle dokumentierten Vorgang – oft ein Rechtsgeschäft, etwa ein Verkauf,
+<p class="entry-refs"><strong>Verwandt:</strong> <a href="#quelle">Quelle</a><br />
+<strong>Weiterführend:</strong> <a href="https://www.geschichtewiki.wien.gv.at/Quellen_zur_Geschichte_der_Stadt_Wien">Wien-Wiki: Quellen zur Geschichte der Stadt Wien</a><br />
+<strong>Literatur:</strong> Brauneder/Jaritz (Hg.), Die Wiener Stadtbücher 1395–1430, Teil 1, FRA III/10 (Wien/Köln 1989)</p>
+<h3 id="event">Event<a class="headerlink" href="#event" title="Permanent link">&para;</a></h3>
+<p>Ein Event (auch: Ereignis) ist die grundlegende Analyseeinheit der Datenbank. Ein Event entspricht einem in
+einer <a href="#quelle">Quelle</a> dokumentierten Vorgang – oft ein Rechtsgeschäft, etwa ein Verkauf,
 eine Stiftung, eine letztwillige Verfügung oder ein Gerichtsverfahren.</p>
 <div class="demo-editnote dev-only">Redaktion (#6): Ereignis/Event als Entität des Datenmodells benennen (Kommentar #6, Lutter et al. 2021, insb. Abb. 2). Achtung: Die Entität-Definition im nächsten Abschnitt umfasst laut Extrakt Zeile 20 nur Personen/Organisationen (künftig Orte); eine stillschweigende Erweiterung um Ereignisse dort würde der Definition widersprechen. Inhaltliche Klärung steht noch aus.</div>
 
@@ -200,7 +203,7 @@ systematisch auszuwerten.</p>
 <p>Eine Markierung im Quellentext, mit der Informationen wie Personen,
 Organisationen, Orte und ihre Eigenschaften ausgezeichnet werden – im Fall des
 Projekts „Stadt und Gemeinschaft" handelt es sich dabei um in digitale
-Textdateien umgewandelte Regesten und Stadtbucheinträge, die nach den Standards
+Textdateien umgewandelte <a href="#regest">Regesten</a> und Stadtbucheinträge, die nach den Standards
 der TEI annotiert/codiert wurden.</p>
 <h3 id="entitat">Entität<a class="headerlink" href="#entitat" title="Permanent link">&para;</a></h3>
 <p>Personen oder Organisationen (künftig auch Orte), die in einer Quelle genannt
@@ -229,6 +232,7 @@ der Stadt Wien (hrsg. von Karl Uhlirz), ergänzend auch Werke wie „Die Wiener
 Ratsbürger 1396–1526" (hrsg. von Richard Perger).</p>
 <div class="demo-editnote dev-only">Redaktion offen (#8): Zusatz, dass im Prozess dieses Projekts selbst Register (persons / organisations / places / events) erstellt werden, gegen die Begriffsverwendung auf der Projektwebsite abgleichen.</div>
 
+<p class="entry-refs"><strong>Literatur:</strong> Perger, Die Wiener Ratsbürger 1396–1526</p>
 <h3 id="normierung">Normierung<a class="headerlink" href="#normierung" title="Permanent link">&para;</a></h3>
 <p>Die Vereinheitlichung zeitgenössisch variabler Schreibweisen oder Bezeichnungen,
 um Informationen systematisch durchsuchen und auswerten zu können, beispielsweise
@@ -240,19 +244,27 @@ purger/purgerin oder civis wiennensis vorkommt.</p>
 <h3 id="urkunde">Urkunde<a class="headerlink" href="#urkunde" title="Permanent link">&para;</a></h3>
 <p>Ein schriftliches, beglaubigtes Dokument, das ein Rechtsgeschäft, einen
 Rechtsanspruch oder eine rechtlich relevante Handlung festhält.</p>
+<p class="entry-refs"><strong>Verwandt:</strong> <a href="#regest">Regest</a> · <a href="#siegel">Siegel</a><br />
+<strong>Weiterführend:</strong> <a href="https://www.adfontes.uzh.ch/tutorium/quellen-auswerten/urkunden-und-diplomatik/definition-urkunde/">ad fontes: „Urkunde"</a></p>
 <h3 id="regest">Regest<a class="headerlink" href="#regest" title="Permanent link">&para;</a></h3>
-<p>Eine knappe Inhaltsangabe einer historischen Quelle, die wichtige Informationen
+<p>Eine knappe Inhaltsangabe einer <a href="#quelle">Quelle</a>, die wichtige Informationen
 zusammenfasst.</p>
+<p class="entry-refs"><strong>Verwandt:</strong> <a href="#urkunde">Urkunde</a> · <a href="#quelle">Quelle</a><br />
+<strong>Weiterführend:</strong> <a href="https://www.adfontes.uzh.ch/tutorium/quellen-erschliessen/regesten/">ad fontes: „Regest"</a></p>
 <h3 id="edition">Edition<a class="headerlink" href="#edition" title="Permanent link">&para;</a></h3>
 <p>Eine wissenschaftliche Veröffentlichung historischer Quellen, meist mit
 Transkriptionen, Kommentaren und Erläuterungen.</p>
+<p class="entry-refs"><strong>Verwandt:</strong> <a href="#transkription">Transkription</a><br />
+<strong>Weiterführend:</strong> <a href="https://www.adfontes.uzh.ch/tutorium/quellen-erschliessen/kritische-edition/">ad fontes: „kritische Edition"</a></p>
 <h3 id="digitalisat">Digitalisat<a class="headerlink" href="#digitalisat" title="Permanent link">&para;</a></h3>
 <p>Eine digitale Aufnahme einer historischen Quelle.</p>
 <h3 id="transkription">Transkription<a class="headerlink" href="#transkription" title="Permanent link">&para;</a></h3>
 <p>Die buchstabengetreue Übertragung eines historischen Textes in moderne Schrift.</p>
+<p class="entry-refs"><strong>Weiterführend:</strong> <a href="https://www.adfontes.uzh.ch/tutorium/quellen-erschliessen/transkription/">ad fontes: „Transkription"</a></p>
 <h3 id="siegel">Siegel<a class="headerlink" href="#siegel" title="Permanent link">&para;</a></h3>
 <p>Ein Beglaubigungsmittel, mit dem die Echtheit einer Urkunde und die beteiligten
 Personen bestätigt wurden.</p>
+<p class="entry-refs"><strong>Weiterführend:</strong> <a href="https://www.adfontes.uzh.ch/tutorium/handschriften-beschreiben/siegel/">ad fontes: „Siegel"</a></p>
 <h3 id="vidimus-vidimierung">Vidimus / Vidimierung<a class="headerlink" href="#vidimus-vidimierung" title="Permanent link">&para;</a></h3>
 <p>Die rechtsgültige Bestätigung, dass eine Abschrift dem Original entspricht.</p>
 <h2 id="rollen-in-rechtsgeschaften">Rollen in Rechtsgeschäften<a class="headerlink" href="#rollen-in-rechtsgeschaften" title="Permanent link">&para;</a></h2>
@@ -323,12 +335,12 @@ diese Funktion zur Sammelrolle other.</p>
     </footer>
 
     <script id="role-labels" type="application/json">{"issuer": "Aussteller:in", "other": "Sonstige", "recipient": "Empf\u00e4nger:in", "witness": "Zeug:in / Siegler:in"}</script>
-    <script src="../../static/js/core.js?v=20260701104042"></script>
-    <script src="../../static/js/tip.js?v=20260701104042"></script>
-    <script src="../../static/js/hint.js?v=20260701104042"></script>
-    <script src="../../static/js/basket.js?v=20260701104042"></script>
+    <script src="../../static/js/core.js?v=20260701163519"></script>
+    <script src="../../static/js/tip.js?v=20260701163519"></script>
+    <script src="../../static/js/hint.js?v=20260701163519"></script>
+    <script src="../../static/js/basket.js?v=20260701163519"></script>
     
-<script src="../../static/js/content.js?v=20260701104042"></script>
+<script src="../../static/js/content.js?v=20260701163519"></script>
 
 </body>
 </html>

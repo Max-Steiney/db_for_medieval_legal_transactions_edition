@@ -206,3 +206,37 @@ def test_glossar_role_anchor_not_drifted(built_demo):
     c = built_demo["glossar"]
     assert 'id="ausstellerin-issuer"' not in c
     assert 'id="aussteller-in-issuer"' not in c
+
+
+def test_glossar_has_reference_lines(built_demo):
+    c = built_demo["glossar"]
+    assert 'class="entry-refs"' in c
+    # Beschriftungen der Referenz-Zeilen
+    assert "Weiterführend" in c
+    assert "Literatur" in c
+    assert "Verwandt" in c
+
+
+def test_glossar_has_external_links(built_demo):
+    c = built_demo["glossar"]
+    assert "adfontes.uzh.ch" in c
+    assert "geschichtewiki.wien.gv.at" in c
+
+
+def test_glossar_internal_first_mention_links(built_demo):
+    # Der Event-Eintrag verlinkt intern auf #quelle (Selbst-Verlinkung).
+    c = built_demo["glossar"]
+    assert 'href="#quelle"' in c
+
+
+def test_glossar_event_heading_clean_slug(built_demo):
+    # '### Event' -> id="event"; kein Slug-Drift durch '/ Ereignis'
+    c = built_demo["glossar"]
+    assert 'id="event"' in c
+    assert 'id="event--ereignis"' not in c
+
+
+def test_entry_refs_styled_in_css():
+    from pathlib import Path
+    css = (Path(__file__).resolve().parents[1] / "static" / "css" / "glossar-demo.css").read_text(encoding="utf-8")
+    assert ".entry-refs" in css

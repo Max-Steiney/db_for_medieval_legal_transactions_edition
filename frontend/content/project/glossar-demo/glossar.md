@@ -35,7 +35,7 @@ an das i-Symbol im Fließtext:
 ### Quellenkorpus
 
 Eine Sammlung zusammengehöriger Quellen, im Fall des Projekts „Stadt und
-Gemeinschaft" handelt es sich derzeit um Regesten aus den „Quellen zur Geschichte
+Gemeinschaft" handelt es sich derzeit um [[#Regest|Regesten]] aus den „Quellen zur Geschichte
 der Stadt Wien" (Uhlirz) und Einträge aus dem ersten Band der Wiener Stadtbücher
 1395–1400 (hrsg. von Jaritz/Brauneder). Künftig werden weitere Korpora
 hinzukommen, z.B. Grundbücher.
@@ -51,10 +51,15 @@ Ein Stadtbucheintrag ist ein einzelner Eintrag innerhalb der Wiener Stadtbücher
 
 <div class="demo-editnote dev-only">Redaktion offen (#0–#5): QGW- und Stadtbuch-Unterpunkte ausführen oder nur ins Wien-Wiki verlinken; Neschwara-Referenz und Jaritz/Brauneder-Definition aus Band 1 noch einarbeiten.</div>
 
-### Event / Ereignis
+**Verwandt:** [[#Quelle]]  
+**Weiterführend:** [Wien-Wiki: Quellen zur Geschichte der Stadt Wien](https://www.geschichtewiki.wien.gv.at/Quellen_zur_Geschichte_der_Stadt_Wien)  
+**Literatur:** Brauneder/Jaritz (Hg.), Die Wiener Stadtbücher 1395–1430, Teil 1, FRA III/10 (Wien/Köln 1989)
+{: .entry-refs }
 
-Die grundlegende Analyseeinheit der Datenbank. Ein Event entspricht einem in
-einer Quelle dokumentierten Vorgang – oft ein Rechtsgeschäft, etwa ein Verkauf,
+### Event
+
+Ein Event (auch: Ereignis) ist die grundlegende Analyseeinheit der Datenbank. Ein Event entspricht einem in
+einer [[#Quelle]] dokumentierten Vorgang – oft ein Rechtsgeschäft, etwa ein Verkauf,
 eine Stiftung, eine letztwillige Verfügung oder ein Gerichtsverfahren.
 
 <div class="demo-editnote dev-only">Redaktion (#6): Ereignis/Event als Entität des Datenmodells benennen (Kommentar #6, Lutter et al. 2021, insb. Abb. 2). Achtung: Die Entität-Definition im nächsten Abschnitt umfasst laut Extrakt Zeile 20 nur Personen/Organisationen (künftig Orte); eine stillschweigende Erweiterung um Ereignisse dort würde der Definition widersprechen. Inhaltliche Klärung steht noch aus.</div>
@@ -71,7 +76,7 @@ systematisch auszuwerten.
 Eine Markierung im Quellentext, mit der Informationen wie Personen,
 Organisationen, Orte und ihre Eigenschaften ausgezeichnet werden – im Fall des
 Projekts „Stadt und Gemeinschaft" handelt es sich dabei um in digitale
-Textdateien umgewandelte Regesten und Stadtbucheinträge, die nach den Standards
+Textdateien umgewandelte [[#Regest|Regesten]] und Stadtbucheinträge, die nach den Standards
 der TEI annotiert/codiert wurden.
 
 ### Entität
@@ -113,6 +118,9 @@ Ratsbürger 1396–1526" (hrsg. von Richard Perger).
 
 <div class="demo-editnote dev-only">Redaktion offen (#8): Zusatz, dass im Prozess dieses Projekts selbst Register (persons / organisations / places / events) erstellt werden, gegen die Begriffsverwendung auf der Projektwebsite abgleichen.</div>
 
+**Literatur:** Perger, Die Wiener Ratsbürger 1396–1526
+{: .entry-refs }
+
 ### Normierung
 
 Die Vereinheitlichung zeitgenössisch variabler Schreibweisen oder Bezeichnungen,
@@ -129,15 +137,27 @@ purger/purgerin oder civis wiennensis vorkommt.
 Ein schriftliches, beglaubigtes Dokument, das ein Rechtsgeschäft, einen
 Rechtsanspruch oder eine rechtlich relevante Handlung festhält.
 
+**Verwandt:** [[#Regest]] · [[#Siegel]]  
+**Weiterführend:** [ad fontes: „Urkunde"](https://www.adfontes.uzh.ch/tutorium/quellen-auswerten/urkunden-und-diplomatik/definition-urkunde/)
+{: .entry-refs }
+
 ### Regest
 
-Eine knappe Inhaltsangabe einer historischen Quelle, die wichtige Informationen
+Eine knappe Inhaltsangabe einer [[#Quelle]], die wichtige Informationen
 zusammenfasst.
+
+**Verwandt:** [[#Urkunde]] · [[#Quelle]]  
+**Weiterführend:** [ad fontes: „Regest"](https://www.adfontes.uzh.ch/tutorium/quellen-erschliessen/regesten/)
+{: .entry-refs }
 
 ### Edition
 
 Eine wissenschaftliche Veröffentlichung historischer Quellen, meist mit
 Transkriptionen, Kommentaren und Erläuterungen.
+
+**Verwandt:** [[#Transkription]]  
+**Weiterführend:** [ad fontes: „kritische Edition"](https://www.adfontes.uzh.ch/tutorium/quellen-erschliessen/kritische-edition/)
+{: .entry-refs }
 
 ### Digitalisat
 
@@ -147,10 +167,16 @@ Eine digitale Aufnahme einer historischen Quelle.
 
 Die buchstabengetreue Übertragung eines historischen Textes in moderne Schrift.
 
+**Weiterführend:** [ad fontes: „Transkription"](https://www.adfontes.uzh.ch/tutorium/quellen-erschliessen/transkription/)
+{: .entry-refs }
+
 ### Siegel
 
 Ein Beglaubigungsmittel, mit dem die Echtheit einer Urkunde und die beteiligten
 Personen bestätigt wurden.
+
+**Weiterführend:** [ad fontes: „Siegel"](https://www.adfontes.uzh.ch/tutorium/handschriften-beschreiben/siegel/)
+{: .entry-refs }
 
 ### Vidimus / Vidimierung
 
