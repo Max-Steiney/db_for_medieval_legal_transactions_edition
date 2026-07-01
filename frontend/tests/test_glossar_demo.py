@@ -306,3 +306,15 @@ def test_beziehung_links_to_entitat(built_demo):
     assert idx != -1, "Beziehung-Heading fehlt"
     seg = c[idx:idx + 500]
     assert 'href="#entitat"' in seg, "Beziehung verlinkt nicht auf Entität"
+
+
+# --- Task 4: Tutorial als geführter Rundgang ---
+
+def test_tutorial_guided_tour(built_demo):
+    c = built_demo["tutorial"]
+    for marker in ("Was ist diese Datenbank",
+                   "Wie lese ich eine annotierte Quelle",
+                   "Wie geht es weiter"):
+        assert marker in c, marker
+    # die drei Fall-Rahmungen bleiben erhalten
+    assert c.count("Was dieser Fall zeigt") == 3

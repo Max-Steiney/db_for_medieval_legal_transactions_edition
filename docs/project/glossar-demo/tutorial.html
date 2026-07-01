@@ -10,18 +10,18 @@
     <title>Tutorial (Demo), Datenbank</title>
     <link rel="preload" as="font" type="font/woff2" crossorigin
           href="../../static/fonts/inter-400-latin.woff2">
-    <link rel="stylesheet" href="../../static/css/fonts.css?v=20260701215124">
-    <link rel="stylesheet" href="../../static/css/tokens.css?v=20260701215124">
-    <link rel="stylesheet" href="../../static/css/base.css?v=20260701215124">
-    <link rel="stylesheet" href="../../static/css/components.css?v=20260701215124">
-    <link rel="stylesheet" href="../../static/css/responsive.css?v=20260701215124">
-    <link rel="stylesheet" href="../../static/css/print.css?v=20260701215124">
-    <link rel="stylesheet" href="../../static/css/tip.css?v=20260701215124">
+    <link rel="stylesheet" href="../../static/css/fonts.css?v=20260701215453">
+    <link rel="stylesheet" href="../../static/css/tokens.css?v=20260701215453">
+    <link rel="stylesheet" href="../../static/css/base.css?v=20260701215453">
+    <link rel="stylesheet" href="../../static/css/components.css?v=20260701215453">
+    <link rel="stylesheet" href="../../static/css/responsive.css?v=20260701215453">
+    <link rel="stylesheet" href="../../static/css/print.css?v=20260701215453">
+    <link rel="stylesheet" href="../../static/css/tip.css?v=20260701215453">
     
 
-<link rel="stylesheet" href="../../static/css/content.css?v=20260701215124">
+<link rel="stylesheet" href="../../static/css/content.css?v=20260701215453">
 
-<link rel="stylesheet" href="../../static/css/glossar-demo.css?v=20260701215124">
+<link rel="stylesheet" href="../../static/css/glossar-demo.css?v=20260701215453">
 
 </head>
 <body data-root-path="../.."
@@ -100,12 +100,15 @@
                 <h2>Inhalt</h2>
                 <div class="toc">
 <ul>
-<li><a href="#so-funktioniert-die-datenbank">So funktioniert die Datenbank</a><ul>
+<li><a href="#was-ist-diese-datenbank">Was ist diese Datenbank?</a></li>
+<li><a href="#so-funktioniert-die-datenbank">So funktioniert die Datenbank</a></li>
+<li><a href="#wie-lese-ich-eine-annotierte-quelle">Wie lese ich eine annotierte Quelle?</a><ul>
 <li><a href="#fallbeispiel-1">Fallbeispiel 1: Verkauf „mit Handen" der Stadt (Nr. 604)</a></li>
 <li><a href="#fallbeispiel-2">Fallbeispiel 2: Schenkung für das Seelenheil an ein Kloster (Nr. 16)</a></li>
 <li><a href="#fallbeispiel-3">Fallbeispiel 3: eine Witwe vergibt Erbe (Urkunde 1869)</a></li>
 </ul>
 </li>
+<li><a href="#wie-geht-es-weiter">Wie geht es weiter?</a></li>
 </ul>
 </div>
 
@@ -118,14 +121,10 @@
   <a href="technik.html">Technik / Datenmodell</a>
 </nav>
 
-<p>So ist die Datenbank aufgebaut – erklärt an drei konkreten Quellen. Die
-Fachbegriffe sind im <a href="glossar.html">Glossar</a> definiert, ihre technische
-Auszeichnung beschreibt die Seite <a href="technik.html">Technik / Datenmodell</a>. Jede
-Person oder Organisation nimmt innerhalb eines Ereignisses eine <strong>Rolle</strong> ein;
-das kontrollierte Vokabular kennt vier Code-Werte – <code>issuer</code>, <code>recipient</code>,
-<code>witness</code> und <code>other</code> (ein nicht gesetzter Wert ist der leere String, nicht
-<code>none</code>). Die folgenden drei Fälle lösen diese Rollen jeweils im Kontext der
-Quelle auf und verlinken auf das gerenderte Regest.</p>
+<h2 id="was-ist-diese-datenbank">Was ist diese Datenbank?<a class="headerlink" href="#was-ist-diese-datenbank" title="Permanent link">&para;</a></h2>
+<p>Diese Datenbank erschließt mittelalterliche Wiener Rechtsgeschäfte — Verkäufe, Schenkungen, Stiftungen, Verpfändungen und weitere Rechtsakte — aus handschriftlichen Überlieferungen des 12. bis 15. Jahrhunderts. Die Quellen stammen aus Regesten und Stadtbucheinträgen, die im Laufe der historischen Forschung transkribiert und ediert wurden.</p>
+<p>Ziel der Datenbank ist es, die beteiligten Personen, Organisationen und ihre Rechtsgeschäfte systematisch durchsuch- und auswertbar zu machen. Jede <a href="glossar.html#quelle">Quelle</a> — ob <a href="glossar.html#regest">Regest</a> oder vollständig transkribierter Stadtbucheintrag — ist nach einem einheitlichen Modell erschlossen: Wer war beteiligt? In welcher Funktion? Welches Rechtsgeschäft lag vor?</p>
+<p>Das folgende Tutorial führt durch die Grundbegriffe und zeigt an drei realen Quellen, wie das Modell in der Praxis aussieht.</p>
 <h2 id="so-funktioniert-die-datenbank">So funktioniert die Datenbank<a class="headerlink" href="#so-funktioniert-die-datenbank" title="Permanent link">&para;</a></h2>
 <p>Jede Quelle dokumentiert ein oder mehrere <strong>Ereignisse</strong>. Ein
 <a href="glossar.html#event">Event</a> (Ereignis) ist die grundlegende Analyseeinheit —
@@ -137,6 +136,10 @@ kontrollierte Vokabular kennt vier Code-Werte (<code>issuer</code>, <code>recipi
 Events verknüpft.</p>
 <p>Die folgenden drei Quellen spielen diese Logik durch — jeder Fall zeigt einen
 anderen Aspekt.</p>
+<h2 id="wie-lese-ich-eine-annotierte-quelle">Wie lese ich eine annotierte Quelle?<a class="headerlink" href="#wie-lese-ich-eine-annotierte-quelle" title="Permanent link">&para;</a></h2>
+<p>Im Quellentext sind Personen, Organisationen und Orte ausgezeichnet — man sagt: <strong>annotiert</strong>. Das bedeutet, dass hinter jedem Namen in der Transkription eine maschinenlesbare Verknüpfung steht: die Person ist mit ihrem Registereintrag verbunden, die Organisation mit ihrer eigenen Entität in der Datenbank.</p>
+<p>Jede Person, die an einem Rechtsgeschäft beteiligt ist, trägt eine <a href="glossar.html#rolle">Rolle</a>: Sie kann Ausstellerin oder Aussteller sein, Empfängerin oder Empfänger, Zeugin oder Zeuge — oder eine andere beteiligte Partei. Diese Rollen machen es möglich, über alle Quellen hinweg zu fragen: In welchen Rechtsgeschäften tritt eine bestimmte Person als Ausstellerin auf?</p>
+<p>Die technische Seite dieser Auszeichnung — wie die TEI-XML-Elemente aufgebaut sind, welche Attributwerte möglich sind — beschreibt die <a href="technik.html">Technik-Seite</a>. Jede Quelle in der Datenbank kann außerdem als TEI-XML heruntergeladen werden; der Download-Link steht auf der jeweiligen Quellendetailseite.</p>
 <h3 id="fallbeispiel-1">Fallbeispiel 1: Verkauf „mit Handen" der Stadt (Nr. 604)<a class="headerlink" href="#fallbeispiel-1" title="Permanent link">&para;</a></h3>
 <div class="demo-case">
   <blockquote>„Hainreich der Santwerfer und Elsbet, seine Hausfrau, verkaufen
@@ -216,12 +219,15 @@ anderen Aspekt.</p>
   gehört auf die <a href="technik.html">Technik-Seite</a>.</p>
 </div>
 
-<p>Diese drei Quellen zeigen denselben Mechanismus: Ein <strong>Ereignis</strong> (etwa ein
-Verkauf oder eine Schenkung) bündelt mehrere Beteiligte, von denen jede:r über
-die Rolle mit einem der vier Code-Werte (<code>issuer</code>, <code>recipient</code>, <code>witness</code>,
-<code>other</code>) an das Ereignis gebunden ist. Die Begriffe dazu stehen im
-<a href="glossar.html">Glossar</a>, die TEI-Auszeichnung und die roleName-Typen auf der
-Seite <a href="technik.html">Technik / Datenmodell</a>.</p>
+<h2 id="wie-geht-es-weiter">Wie geht es weiter?<a class="headerlink" href="#wie-geht-es-weiter" title="Permanent link">&para;</a></h2>
+<p>Die drei Fallbeispiele zeigen denselben Grundmechanismus: Ein <a href="glossar.html#event">Event</a> — etwa ein Verkauf oder eine Schenkung — bündelt mehrere Beteiligte, von denen jede:r über eine <a href="glossar.html#rolle">Rolle</a> mit dem Ereignis verknüpft ist.</p>
+<p>Wenn Sie tiefer einsteigen möchten, bieten sich drei Wege an:</p>
+<ul>
+<li><strong>Begriffe nachschlagen:</strong> Das <a href="glossar.html">Glossar</a> erklärt alle zentralen Fachbegriffe der Datenbank — von <a href="glossar.html#quelle">Quelle</a> und <a href="glossar.html#regest">Regest</a> über <a href="glossar.html#event">Event</a> bis hin zu Rechtsgeschäft und Entität.</li>
+<li><strong>Technik verstehen:</strong> Die <a href="technik.html">Technik-Seite</a> beschreibt den technischen Aufbau der Auszeichnung: wie TEI-XML-Elemente aufgebaut sind, welche Rollentypen und Personen-Attribute das Datenmodell kennt, und wie die maschinenlesbare Verknüpfung zwischen Text und Register hergestellt wird.</li>
+<li><strong>Eine Quelle selbst öffnen:</strong> Klicken Sie auf einen der Quellen-Links in den Fallbeispielen oben, um eine reale annotierte Quelle in der Datenbank zu sehen. Im Volltext sind Personen und Organisationen hervorgehoben und mit ihren Registerprofilen verlinkt.</li>
+</ul>
+<p>Die Datenbank wächst fortlaufend — neue Quellen werden erschlossen, bestehende Erschließungen werden verfeinert. Willkommen im Korpus.</p>
         </div>
     </div>
 
@@ -254,12 +260,12 @@ Seite <a href="technik.html">Technik / Datenmodell</a>.</p>
     </footer>
 
     <script id="role-labels" type="application/json">{"issuer": "Aussteller:in", "other": "Sonstige", "recipient": "Empf\u00e4nger:in", "witness": "Zeug:in / Siegler:in"}</script>
-    <script src="../../static/js/core.js?v=20260701215124"></script>
-    <script src="../../static/js/tip.js?v=20260701215124"></script>
-    <script src="../../static/js/hint.js?v=20260701215124"></script>
-    <script src="../../static/js/basket.js?v=20260701215124"></script>
+    <script src="../../static/js/core.js?v=20260701215453"></script>
+    <script src="../../static/js/tip.js?v=20260701215453"></script>
+    <script src="../../static/js/hint.js?v=20260701215453"></script>
+    <script src="../../static/js/basket.js?v=20260701215453"></script>
     
-<script src="../../static/js/content.js?v=20260701215124"></script>
+<script src="../../static/js/content.js?v=20260701215453"></script>
 
 </body>
 </html>
