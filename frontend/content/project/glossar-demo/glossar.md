@@ -234,6 +234,122 @@ Grundherrschaft zustimmt. Wer ein Haus oder ein Burgrecht veräußert, tut dies
 ist das oft der Stadtrat oder eine geistliche Institution. Im Datenmodell gehört
 diese Funktion zur Sammelrolle other.
 
+## D. Historische Institutionen und Personengruppen
+
+### Stadtrat
+Das zentrale politische Entscheidungsgremium einer mittelalterlichen Stadt.
+
+### Bürgermeister
+Der gewählte Vorsitzende/führende Vertreter des [[#Stadtrat|Stadtrats]].
+
+### Richter
+Vorsteher des Stadtgerichts. Sein Bestellungsmodus war im Untersuchungszeitraum
+des Projekts immer wieder umstritten; prinzipiell galt er als städtisches Amt mit
+landesfürstlicher Bestellung.
+
+### Bürger:in
+Eine Person mit Bürgerrecht in einer Stadt.
+
+### Hofmeister:in
+Ein:e Verwalter:in eines größeren Haushalts oder Besitzkomplexes.
+
+### Bürgerschranne
+Sitz des Stadtgerichts der Stadt Wien.
+
+**Weiterführend:** [Wien-Wiki: Schranne](https://www.geschichtewiki.wien.gv.at/Schranne)
+{: .entry-refs }
+
+## E. Rechtsgeschäfte
+
+### Rechtsgeschäft
+Eine Willenserklärung mit rechtlich relevanten Folgen zwischen Personen oder
+Institutionen. Im Datenmodell ist ein Rechtsgeschäft der häufigste Typ eines
+[Events](glossar.html#event).
+
+### Verkauf
+Die Übertragung eines Gutes gegen Bezahlung.
+
+### Schenkung
+Die unentgeltliche Übertragung eines Gutes.
+
+### Stiftung
+Die dauerhafte Zuwendung von Besitz oder Einkünften für einen bestimmten Zweck,
+häufig religiöser Art (Gebetsgedenken/memoria für das Seelenheil).
+
+### Letztwillige Verfügung
+Eine Verfügung über den Nachlass für die Zeit nach dem Tod (zeitgenössisch
+„Geschäft").
+
+**Literatur:** Brauneder/Jaritz (Hg.), Die Wiener Stadtbücher 1395–1430, Teil 1, FRA III/10 (Wien/Köln 1989), S. 17
+{: .entry-refs }
+
+### Verpfändung
+Die Überlassung eines Gutes als Sicherheit für eine Forderung.
+
+### Darlehen
+Die zeitweise Überlassung von Geld oder Gütern gegen Rückgabe.
+
+### Urteil
+Die Entscheidung eines Gerichts oder einer anderen rechtsprechenden Instanz.
+
+### Offener Brief
+Eine [[#Urkunde]], die nicht verschlossen ausgestellt wurde und öffentlich
+vorgelegt werden konnte.
+
+## F. Maße, Währungen und Besitzrecht
+
+### Wiener Pfennig
+Der denarius (`d.` / `Wr. Pf.`) war die einzige tatsächlich ausgemünzte
+Umlaufwährung und – neben Naturalien – Basis des Alltagsverkehrs; über das ganze
+15. Jahrhundert die maßgebliche Bezugsgröße.
+
+**Weiterführend:** [Wien-Wiki: Kaufkraftrechner](https://www.geschichtewiki.wien.gv.at/Kaufkraftrechner)  
+**Literatur:** Geyer, Münze und Geld (Wien 1938); Ertl, Wien 1448 (Wien/Köln/Weimar 2020)
+{: .entry-refs }
+
+### Pfund und Schilling
+Recheneinheiten (nicht geprägt): 1 Pfund (`lb.`, libra) = 240 denarii;
+1 Schilling (`ß.`/`s.`, solidus) = 30 denarii. Das Pfund diente auch als
+Gewichtseinheit.
+
+### Gulden
+Goldmünze (florenus) als „Oberwährung": der ungarische (`fl. ung.`) und der
+rheinische Gulden (`fl. rh.`) dienten wegen ihres konstanten Metallwerts als
+Maßstab bei größeren Zahlungen.
+
+### Kreuzer und Groschen
+Spätere Silbermünzen (späteres 15. Jh.): Kreuzer = 4 Pfennig; Groschen =
+zunächst 2 Kreuzer. Sie verdrängten den Pfennig nach der „Schinderlingszeit"
+zunehmend, lösten ihn als Recheneinheit aber nicht ab.
+
+### Joch
+Flächenmaß für ländlichen Boden; in Wien nutzungsabhängig: bei Weingärten 3.200
+Quadratklafter (≈ 1,15 ha), bei Äckern 1.600 Quadratklafter (≈ 0,58 ha).
+
+### Tagwerk
+Flächenmaß nach Arbeitszeit bemessen; in Wien entspricht dies einem [[#Joch]].
+
+### Quadratklafter
+Grundeinheit der Flächenberechnung, ≈ 3,6 m²; die Klafter ist zugleich das
+zugrunde liegende Längenmaß.
+
+### Wiener Pfund (Gewicht) und Zentner
+Ein Wiener Pfund sind ca. 0,56 kg; ein Zentner (100 Wiener Pfund) ca. 56 kg
+(für schwere Waren).
+
+### Grundzins / Grunddienst
+Eine regelmäßig zu entrichtende Abgabe für die Nutzung eines Grundstücks — die
+ursprüngliche Belastung aus dem Bodenleihe-/Besitzverhältnis.
+
+### Burgrecht
+Eine durch ein Geld-/Rentengeschäft neu geschaffene Rente: Gläubiger:innen
+(„Käufer:innen") überlassen den Grundbesitzer:innen („Verkäufer:innen") Kapital
+und beziehen dafür einen jährlichen Zins (meist 8–12,5 %). Das Burgrecht tritt
+als zweite Belastung neben den Grunddienst.
+
+**Literatur:** Czeike, Das „Burgrecht" in Wien im 15. Jahrhundert (JbVGStW 10, 1952/53)
+{: .entry-refs }
+
 ---
 
 Querverweise: [Tutorial](tutorial.html) · [Technik / Datenmodell](technik.html)

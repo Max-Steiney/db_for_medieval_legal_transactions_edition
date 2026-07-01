@@ -270,3 +270,29 @@ def test_tooltip_preview_reset_positioning():
     assert "transform: none" in block
     assert "animation: none" in block
     assert "left: auto" in block
+
+
+# --- Task 2 (D/E/F): neue Abschnitte ---
+
+def test_glossar_has_sections_def(built_demo):
+    c = built_demo["glossar"]
+    for term in ("Stadtrat", "Bürgermeister", "Richter", "Bürgerschranne",
+                 "Rechtsgeschäft", "Verkauf", "Schenkung", "Stiftung",
+                 "Verpfändung", "Darlehen", "Urteil",
+                 "Wiener Pfennig", "Gulden", "Joch", "Burgrecht"):
+        assert term in c, term
+
+
+def test_glossar_def_references(built_demo):
+    c = built_demo["glossar"]
+    assert "Czeike" in c
+    assert ("Geyer" in c) or ("Ertl" in c)
+    assert "geschichtewiki.wien.gv.at/Schranne" in c
+    assert "geschichtewiki.wien.gv.at/Kaufkraftrechner" in c
+
+
+def test_glossar_gender_doppelpunkt():
+    from pathlib import Path
+    md = (Path(__file__).resolve().parents[1] / "content" / "project" / "glossar-demo" / "glossar.md").read_text(encoding="utf-8")
+    assert "*in" not in md  # kein Gender-Stern aus dem .docx
+    assert "Bürger:in" in md
