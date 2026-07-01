@@ -4,17 +4,6 @@
   <strong>Technik / Datenmodell</strong>
 </nav>
 
-<style>
-.demo-pagenav { margin: 0 0 1.5rem; padding: .5rem .75rem; background: #f4f1ea; border: 1px solid #d8d2c4; border-radius: 4px; font-size: .95rem; }
-.demo-pagenav strong { color: #5a4a2f; }
-.tech-codes { list-style: none; padding-left: 0; }
-.tech-codes > li { margin: .4rem 0; }
-.tech-codes code { background: #f0ede4; padding: .1rem .35rem; border-radius: 3px; }
-.roleName-grid th, .roleName-grid td { vertical-align: top; }
-.dev-only { display: none; }
-.dev-mode .dev-only { display: block; border: 2px solid #e0b000; background: #fffbe6; padding: .5rem .75rem; margin: .75rem 0; border-radius: 4px; }
-</style>
-
 Diese Seite erklärt, wie die im [Glossar](glossar.html) definierten Begriffe in
 den TEI-Quellen technisch ausgezeichnet sind. Die Tags erscheinen in der
 herunterladbaren XML jeder Quelle. Die Beispiele stammen aus den drei

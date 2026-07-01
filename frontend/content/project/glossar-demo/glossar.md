@@ -4,20 +4,6 @@
   <a href="technik.html">Technik / Datenmodell</a>
 </nav>
 
-<style>
-.demo-pagenav{font-size:.9rem;margin:0 0 1.5rem;padding:.6rem .8rem;background:var(--color-bg-warm,#f6f3ec);border-radius:6px}
-.demo-tip-demo{border:1px solid var(--color-border,#d8d2c4);border-radius:8px;padding:1rem;margin:1.5rem 0;background:var(--color-bg-warm,#f6f3ec)}
-.demo-tip-demo .tip-popover{position:static;display:block;max-width:340px;box-shadow:0 1px 4px rgba(0,0,0,.12);background:#fff;border:1px solid #d8d2c4;border-radius:6px;padding:0}
-.demo-tip-demo .tip-head{display:flex;justify-content:space-between;align-items:center;padding:.5rem .8rem;border-bottom:1px solid #e7e2d6}
-.demo-tip-demo .tip-title{margin:0;font-size:1rem}
-.demo-tip-demo .tip-body{padding:.6rem .8rem;font-size:.9rem}
-.demo-tip-demo .tip-link{display:inline-block;margin-top:.4rem;font-size:.85rem}
-.demo-editnote{border-left:3px solid #e0a800;background:#fff8e1;padding:.5rem .8rem;margin:.6rem 0;font-size:.85rem}
-.demo-xref{font-size:.85rem;color:var(--color-text-muted,#6b6356);margin:0 0 .5rem}
-.dev-only{display:none !important}
-.dev-mode .dev-only{display:block !important;border:2px solid #e0b000;background:#fffbe6;padding:.5rem .75rem;margin:.75rem 0;border-radius:4px}
-</style>
-
 Das Glossar ist der Kern dieses Modells: eine Begriffsdefinitionssammlung des
 Projekts, die zugleich die Tooltips im UI speist. Anwendungsbezogene
 Erklärungen finden sich im [Tutorial](tutorial.html), die TEI-Auszeichnung und

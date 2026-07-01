@@ -157,3 +157,27 @@ def test_mutual_cross_links(built_demo):
 def test_glossary_demo_does_not_touch_production(docs_dir):
     # produktive glossary.html wird vom Demo-Build NICHT geschrieben
     assert not (docs_dir / "project" / "glossary.html").exists()
+
+
+def test_pages_link_demo_css(built_demo):
+    for name, c in built_demo.items():
+        assert "static/css/glossar-demo.css" in c, name
+
+
+def test_md_sources_have_no_inline_style():
+    from pathlib import Path
+    base = Path(__file__).resolve().parents[1] / "content" / "project" / "glossar-demo"
+    for name in ("glossar", "technik", "tutorial"):
+        md = (base / f"{name}.md").read_text(encoding="utf-8")
+        assert "<style>" not in md, name
+
+
+def test_demo_css_asset_exists():
+    from pathlib import Path
+    css = Path(__file__).resolve().parents[1] / "static" / "css" / "glossar-demo.css"
+    assert css.exists()
+    body = css.read_text(encoding="utf-8")
+    # Kern-Klassen der drei Seiten muessen abgedeckt sein
+    for cls in (".demo-pagenav", ".demo-tip-demo", ".demo-case", ".demo-editnote",
+                ".tech-codes", ".roleName-grid", ".dev-only"):
+        assert cls in body, cls

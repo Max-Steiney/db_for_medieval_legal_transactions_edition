@@ -1417,5 +1417,6 @@ def _build_glossar_demo(env):
             page_subtitle=subtitle,
             out_path=out_dir / f"{name}.html",
             root_path="../..",
+            template_name="glossar_demo.html",
         )
     print("  Glossar-Demo: project/glossar-demo/{glossar,technik,tutorial}.html")

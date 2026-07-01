@@ -4,17 +4,6 @@
   <a href="technik.html">Technik / Datenmodell</a>
 </nav>
 
-<style>
-.demo-case{border:1px solid var(--color-border,#d8d2c4);border-radius:8px;padding:1rem 1.2rem;margin:1.5rem 0;background:#fff}
-.demo-case h3{margin-top:0}
-.demo-case blockquote{font-style:italic;color:var(--color-text-muted,#5a5346);border-left:3px solid var(--color-border,#d8d2c4);margin:.6rem 0;padding-left:.8rem}
-.demo-case .roles{margin:.6rem 0 0;padding-left:1.1rem}
-.demo-case .roles code{font-size:.92em}
-.demo-case .demo-xref{margin:.8rem 0 0;font-size:.95em}
-.dev-only{display:none}
-.dev-mode .dev-only{display:block;border:1px dashed #c8a200;background:#fffbe6;padding:.5rem .7rem;margin:.6rem 0;font-size:.9em}
-</style>
-
 So ist die Datenbank aufgebaut – erklärt an drei konkreten Quellen. Die
 Fachbegriffe sind im [Glossar](glossar.html) definiert, ihre technische
 Auszeichnung beschreibt die Seite [Technik / Datenmodell](technik.html). Jede
