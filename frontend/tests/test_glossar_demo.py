@@ -278,7 +278,7 @@ def test_glossar_has_sections_def(built_demo):
     c = built_demo["glossar"]
     for term in ("Stadtrat", "Bürgermeister", "Richter", "Bürgerschranne",
                  "Rechtsgeschäft", "Verkauf", "Schenkung", "Stiftung",
-                 "Verpfändung", "Darlehen", "Urteil",
+                 "Verpfändung", "Darlehen", "Urteil", "Offener Brief",
                  "Wiener Pfennig", "Gulden", "Joch", "Burgrecht"):
         assert term in c, term
 
