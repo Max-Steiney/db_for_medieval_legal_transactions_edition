@@ -94,12 +94,12 @@ erläutert.
 
 ### Beziehung
 
-Eine Verbindung zwischen zwei Entitäten, etwa eine Verwandtschaftsbeziehung oder
+Eine Verbindung zwischen zwei [[#Entität|Entitäten]], etwa eine Verwandtschaftsbeziehung oder
 eine Amtszugehörigkeit.
 
 ### Attribut
 
-Eine Eigenschaft einer Entität, beispielsweise ein Beruf, ein Titel oder ein
+Eine Eigenschaft einer [[#Entität]], beispielsweise ein Beruf, ein Titel oder ein
 Status.
 
 <div class="demo-editnote dev-only">Redaktion (#7): „Verwandtschaftsbeziehung" gestrichen – kin ist eine Relation und gehört in die saubere Trennung Attribute (prof/title/dead) vs. Relationen (kin/rep/occ/title_ref) auf der <a href="technik.html#rollen">Technik-Seite</a>. Als Attribut-Beispiele: Beruf (prof), Titel (title), Status (dead: Todesfloskel „selig", „weilent") — alle drei im Extrakt Zeilen 154–156 belegt.</div>
@@ -107,7 +107,7 @@ Status.
 ### Verknüpfung
 
 Die technische Verknüpfung von Informationen innerhalb der Datenbank,
-beispielsweise zwischen einer Person und den Quellen, in denen sie erwähnt wird.
+beispielsweise zwischen einer Person und den [[#Quelle|Quellen]], in denen sie erwähnt wird.
 
 ### Register
 

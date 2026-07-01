@@ -296,3 +296,13 @@ def test_glossar_gender_doppelpunkt():
     md = (Path(__file__).resolve().parents[1] / "content" / "project" / "glossar-demo" / "glossar.md").read_text(encoding="utf-8")
     assert "*in" not in md  # kein Gender-Stern aus dem .docx
     assert "Bürger:in" in md
+
+
+# --- Task 3: inflected/plural internal links ---
+
+def test_beziehung_links_to_entitat(built_demo):
+    c = built_demo["glossar"]
+    idx = c.find('id="beziehung"')
+    assert idx != -1, "Beziehung-Heading fehlt"
+    seg = c[idx:idx + 500]
+    assert 'href="#entitat"' in seg, "Beziehung verlinkt nicht auf Entität"
