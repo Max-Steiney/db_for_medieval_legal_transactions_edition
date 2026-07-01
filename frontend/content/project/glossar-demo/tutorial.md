@@ -13,6 +13,20 @@ das kontrollierte Vokabular kennt vier Code-Werte – `issuer`, `recipient`,
 `none`). Die folgenden drei Fälle lösen diese Rollen jeweils im Kontext der
 Quelle auf und verlinken auf das gerenderte Regest.
 
+## So funktioniert die Datenbank
+
+Jede Quelle dokumentiert ein oder mehrere **Ereignisse**. Ein
+[Event](glossar.html#event) (Ereignis) ist die grundlegende Analyseeinheit —
+oft ein Rechtsgeschäft wie ein Verkauf oder eine Schenkung. An jedem Event sind
+mehrere Beteiligte über eine [Rolle](glossar.html#rolle) gebunden; das
+kontrollierte Vokabular kennt vier Code-Werte (`issuer`, `recipient`,
+`witness`, `other`). Personen und Organisationen werden als
+[Entität](glossar.html#entitat) einmalig erfasst und über ihre Rollen mit den
+Events verknüpft.
+
+Die folgenden drei Quellen spielen diese Logik durch — jeder Fall zeigt einen
+anderen Aspekt.
+
 ### Fallbeispiel 1: Verkauf „mit Handen" der Stadt (Nr. 604) {#fallbeispiel-1}
 
 <div class="demo-case">
@@ -33,6 +47,7 @@ Quelle auf und verlinken auf das gerenderte Regest.
     <li><strong>Zeugen / Siegler</strong> (<code>witness</code>): Stadtrat und
     Ratsmitglied Leopold Polz</li>
   </ul>
+  <p><strong>Was dieser Fall zeigt:</strong> ein Event mit gleich vier Rollen — ein ausstellendes Ehepaar, ein Empfänger, die zustimmende Grundherrschaft „mit Handen" und ein siegelnder Zeuge.</p>
   <p class="demo-xref"><a href="../../documents/QGW/Vienna_1177-1414_ready/604.html">Quelle 604 ansehen</a>
   · <a href="technik.html#rollen">Rollen technisch</a></p>
   <p class="dev-only">Redaktionsnotiz (#22): Rollen exakt aus dem Entwurf
@@ -58,6 +73,7 @@ Quelle auf und verlinken auf das gerenderte Regest.
     <li><strong>Siegler</strong> (<code>witness</code>): ihr Ehemann siegelt für
     sie</li>
   </ul>
+  <p><strong>Was dieser Fall zeigt:</strong> eine einzelne Ausstellerin und eine Institution als Empfängerin — und dass für eine Frau ihr Ehemann siegelt (der Siegler ist nicht die Ausstellerin).</p>
   <p class="demo-xref"><a href="../../documents/QGW/Vienna_1177-1414_ready/16.html">Quelle 16 ansehen</a>
   · <a href="technik.html#rollen">Rollen technisch</a></p>
   <p class="dev-only">Redaktionsnotiz (#22): Hier feminin Singular wie im
@@ -83,6 +99,7 @@ Quelle auf und verlinken auf das gerenderte Regest.
     Vetter Hanns von Künigsprunn</li>
     <li><strong>Siegler</strong> (<code>witness</code>): zwei Siegler</li>
   </ul>
+  <p><strong>Was dieser Fall zeigt:</strong> wie Attribute und Relationen erfasst werden — Verwandtschaft (Witwe, Vetter, Schwester), ein Todesvermerk und ein Beruf hängen an den beteiligten Personen.</p>
   <p class="demo-xref"><a href="../../documents/QGW/Vienna_1177-1414_ready/1869.html">Quelle 1869 ansehen</a>
   · <a href="technik.html#rollen">Rollen technisch</a></p>
   <p class="dev-only">Redaktionsnotiz (#7): Verwandtschaft (kin: „witib"/Witwe,

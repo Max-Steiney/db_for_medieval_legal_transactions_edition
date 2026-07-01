@@ -246,3 +246,17 @@ def test_entry_refs_styled_in_css():
     from pathlib import Path
     css = (Path(__file__).resolve().parents[1] / "static" / "css" / "glossar-demo.css").read_text(encoding="utf-8")
     assert ".entry-refs" in css
+
+
+def test_tutorial_has_datenlogik_intro(built_demo):
+    c = built_demo["tutorial"]
+    # Einleitung erklaert die Grundbegriffe der Datenlogik und verlinkt ins Glossar
+    for term in ("Event", "Rolle", "Entität"):
+        assert term in c, term
+    assert "glossar.html#" in c
+
+
+def test_tutorial_has_case_framing(built_demo):
+    c = built_demo["tutorial"]
+    # Jeder der drei Faelle bekommt eine "Was dieser Fall zeigt"-Rahmung
+    assert c.count("Was dieser Fall zeigt") == 3
