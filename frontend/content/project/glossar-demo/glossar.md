@@ -163,24 +163,26 @@ Code-Werte und die TEI-Auszeichnung stehen auf der Seite
 [Technik / Datenmodell](technik.html#rollen). Konkrete Quellen mit aufgelösten
 Rollen zeigt das [Tutorial](tutorial.html).
 
-### Aussteller:in (issuer)
+### Aussteller:in
 
 Die Person oder Organisation, die verfügt oder erklärt. Bei einem Verkauf ist
 dies meist die verkaufende Person, bei einem Testament die testierende Person.
+Code-Wert im Datenmodell: `issuer`.
 
-### Empfänger:in (recipient)
+### Empfänger:in
 
 Die Person oder Organisation, die eine Leistung, ein Recht oder einen Gegenstand
-erhält.
+erhält. Code-Wert im Datenmodell: `recipient`.
 
-### Zeug:in (witness)
+### Zeug:in
 
 Eine Person, die ein Rechtsgeschäft bezeugt und dadurch dessen Gültigkeit stärkt.
+Code-Wert im Datenmodell: `witness`.
 
-### Siegler:in (witness)
+### Siegler:in
 
 Eine Person oder Institution, deren Siegel zur Beglaubigung eines Dokuments
-verwendet wurde.
+verwendet wurde. Code-Wert im Datenmodell: `witness`.
 
 <div class="demo-editnote dev-only">Redaktion (#13/#14): Zeug:in und Siegler:in werden getrennt beschrieben – die Funktionen sind vergleichbar, aber nicht dieselben. Der gemeinsame Code-Wert <code>witness</code> und der Auswertungsmodus (siegelnde Zeugen und siegelnde Aussteller:innen als beglaubigende Personen) werden auf der <a href="technik.html#rollen">Technik-Seite</a> erklärt.</div>
 
@@ -198,7 +200,7 @@ Die Person, deren Vermögen nach ihrem Tod nach ihrem Willen verteilt wird.
 Eine Person, die mit der Durchführung einer letztwilligen Verfügung beauftragt
 ist.
 
-### Grundherr:in („mit Handen", other)
+### Grundherr:in
 
 Die Person oder Institution, die einem Rechtsgeschäft als betroffene
 Grundherrschaft zustimmt. Wer ein Haus oder ein Burgrecht veräußert, tut dies

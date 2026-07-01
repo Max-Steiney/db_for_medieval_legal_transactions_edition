@@ -10,18 +10,18 @@
     <title>Glossar (Demo), Datenbank</title>
     <link rel="preload" as="font" type="font/woff2" crossorigin
           href="../../static/fonts/inter-400-latin.woff2">
-    <link rel="stylesheet" href="../../static/css/fonts.css?v=20260701103315">
-    <link rel="stylesheet" href="../../static/css/tokens.css?v=20260701103315">
-    <link rel="stylesheet" href="../../static/css/base.css?v=20260701103315">
-    <link rel="stylesheet" href="../../static/css/components.css?v=20260701103315">
-    <link rel="stylesheet" href="../../static/css/responsive.css?v=20260701103315">
-    <link rel="stylesheet" href="../../static/css/print.css?v=20260701103315">
-    <link rel="stylesheet" href="../../static/css/tip.css?v=20260701103315">
+    <link rel="stylesheet" href="../../static/css/fonts.css?v=20260701104042">
+    <link rel="stylesheet" href="../../static/css/tokens.css?v=20260701104042">
+    <link rel="stylesheet" href="../../static/css/base.css?v=20260701104042">
+    <link rel="stylesheet" href="../../static/css/components.css?v=20260701104042">
+    <link rel="stylesheet" href="../../static/css/responsive.css?v=20260701104042">
+    <link rel="stylesheet" href="../../static/css/print.css?v=20260701104042">
+    <link rel="stylesheet" href="../../static/css/tip.css?v=20260701104042">
     
 
-<link rel="stylesheet" href="../../static/css/content.css?v=20260701103315">
+<link rel="stylesheet" href="../../static/css/content.css?v=20260701104042">
 
-<link rel="stylesheet" href="../../static/css/glossar-demo.css?v=20260701103315">
+<link rel="stylesheet" href="../../static/css/glossar-demo.css?v=20260701104042">
 
 </head>
 <body data-root-path="../.."
@@ -126,14 +126,14 @@
 </ul>
 </li>
 <li><a href="#rollen-in-rechtsgeschaften">Rollen in Rechtsgeschäften</a><ul>
-<li><a href="#ausstellerin-issuer">Aussteller:in (issuer)</a></li>
-<li><a href="#empfangerin-recipient">Empfänger:in (recipient)</a></li>
-<li><a href="#zeugin-witness">Zeug:in (witness)</a></li>
-<li><a href="#sieglerin-witness">Siegler:in (witness)</a></li>
+<li><a href="#ausstellerin">Aussteller:in</a></li>
+<li><a href="#empfangerin">Empfänger:in</a></li>
+<li><a href="#zeugin">Zeug:in</a></li>
+<li><a href="#sieglerin">Siegler:in</a></li>
 <li><a href="#einbringerin">Einbringer:in</a></li>
 <li><a href="#erblasserin">Erblasser:in</a></li>
 <li><a href="#testamentsvollstreckerin">Testamentsvollstrecker:in</a></li>
-<li><a href="#grundherrin-mit-handen-other">Grundherr:in („mit Handen", other)</a></li>
+<li><a href="#grundherrin">Grundherr:in</a></li>
 </ul>
 </li>
 </ul>
@@ -260,17 +260,19 @@ Personen bestätigt wurden.</p>
 Code-Werte und die TEI-Auszeichnung stehen auf der Seite
 <a href="technik.html#rollen">Technik / Datenmodell</a>. Konkrete Quellen mit aufgelösten
 Rollen zeigt das <a href="tutorial.html">Tutorial</a>.</p>
-<h3 id="ausstellerin-issuer">Aussteller:in (issuer)<a class="headerlink" href="#ausstellerin-issuer" title="Permanent link">&para;</a></h3>
+<h3 id="ausstellerin">Aussteller:in<a class="headerlink" href="#ausstellerin" title="Permanent link">&para;</a></h3>
 <p>Die Person oder Organisation, die verfügt oder erklärt. Bei einem Verkauf ist
-dies meist die verkaufende Person, bei einem Testament die testierende Person.</p>
-<h3 id="empfangerin-recipient">Empfänger:in (recipient)<a class="headerlink" href="#empfangerin-recipient" title="Permanent link">&para;</a></h3>
+dies meist die verkaufende Person, bei einem Testament die testierende Person.
+Code-Wert im Datenmodell: <code>issuer</code>.</p>
+<h3 id="empfangerin">Empfänger:in<a class="headerlink" href="#empfangerin" title="Permanent link">&para;</a></h3>
 <p>Die Person oder Organisation, die eine Leistung, ein Recht oder einen Gegenstand
-erhält.</p>
-<h3 id="zeugin-witness">Zeug:in (witness)<a class="headerlink" href="#zeugin-witness" title="Permanent link">&para;</a></h3>
-<p>Eine Person, die ein Rechtsgeschäft bezeugt und dadurch dessen Gültigkeit stärkt.</p>
-<h3 id="sieglerin-witness">Siegler:in (witness)<a class="headerlink" href="#sieglerin-witness" title="Permanent link">&para;</a></h3>
+erhält. Code-Wert im Datenmodell: <code>recipient</code>.</p>
+<h3 id="zeugin">Zeug:in<a class="headerlink" href="#zeugin" title="Permanent link">&para;</a></h3>
+<p>Eine Person, die ein Rechtsgeschäft bezeugt und dadurch dessen Gültigkeit stärkt.
+Code-Wert im Datenmodell: <code>witness</code>.</p>
+<h3 id="sieglerin">Siegler:in<a class="headerlink" href="#sieglerin" title="Permanent link">&para;</a></h3>
 <p>Eine Person oder Institution, deren Siegel zur Beglaubigung eines Dokuments
-verwendet wurde.</p>
+verwendet wurde. Code-Wert im Datenmodell: <code>witness</code>.</p>
 <div class="demo-editnote dev-only">Redaktion (#13/#14): Zeug:in und Siegler:in werden getrennt beschrieben – die Funktionen sind vergleichbar, aber nicht dieselben. Der gemeinsame Code-Wert <code>witness</code> und der Auswertungsmodus (siegelnde Zeugen und siegelnde Aussteller:innen als beglaubigende Personen) werden auf der <a href="technik.html#rollen">Technik-Seite</a> erklärt.</div>
 
 <h3 id="einbringerin">Einbringer:in<a class="headerlink" href="#einbringerin" title="Permanent link">&para;</a></h3>
@@ -281,7 +283,7 @@ oder einer anderen Autorität vorlegt und dessen Anerkennung veranlasst.</p>
 <h3 id="testamentsvollstreckerin">Testamentsvollstrecker:in<a class="headerlink" href="#testamentsvollstreckerin" title="Permanent link">&para;</a></h3>
 <p>Eine Person, die mit der Durchführung einer letztwilligen Verfügung beauftragt
 ist.</p>
-<h3 id="grundherrin-mit-handen-other">Grundherr:in („mit Handen", other)<a class="headerlink" href="#grundherrin-mit-handen-other" title="Permanent link">&para;</a></h3>
+<h3 id="grundherrin">Grundherr:in<a class="headerlink" href="#grundherrin" title="Permanent link">&para;</a></h3>
 <p>Die Person oder Institution, die einem Rechtsgeschäft als betroffene
 Grundherrschaft zustimmt. Wer ein Haus oder ein Burgrecht veräußert, tut dies
 „mit Handen" des Grundherrn bzw. der Grundherrin – neben individuellen Personen
@@ -321,12 +323,12 @@ diese Funktion zur Sammelrolle other.</p>
     </footer>
 
     <script id="role-labels" type="application/json">{"issuer": "Aussteller:in", "other": "Sonstige", "recipient": "Empf\u00e4nger:in", "witness": "Zeug:in / Siegler:in"}</script>
-    <script src="../../static/js/core.js?v=20260701103315"></script>
-    <script src="../../static/js/tip.js?v=20260701103315"></script>
-    <script src="../../static/js/hint.js?v=20260701103315"></script>
-    <script src="../../static/js/basket.js?v=20260701103315"></script>
+    <script src="../../static/js/core.js?v=20260701104042"></script>
+    <script src="../../static/js/tip.js?v=20260701104042"></script>
+    <script src="../../static/js/hint.js?v=20260701104042"></script>
+    <script src="../../static/js/basket.js?v=20260701104042"></script>
     
-<script src="../../static/js/content.js?v=20260701103315"></script>
+<script src="../../static/js/content.js?v=20260701104042"></script>
 
 </body>
 </html>

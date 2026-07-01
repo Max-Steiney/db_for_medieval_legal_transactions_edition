@@ -181,3 +181,28 @@ def test_demo_css_asset_exists():
     for cls in (".demo-pagenav", ".demo-tip-demo", ".demo-case", ".demo-editnote",
                 ".tech-codes", ".roleName-grid", ".dev-only"):
         assert cls in body, cls
+
+
+# --- Task 2: slug-konforme Rollen-Ueberschriften ---
+
+def test_glossar_role_headings_are_clean():
+    from pathlib import Path
+    md = (Path(__file__).resolve().parents[1] / "content" / "project"
+          / "glossar-demo" / "glossar.md").read_text(encoding="utf-8")
+    for line in md.splitlines():
+        if line.startswith("### "):
+            for alias in ("(issuer)", "(recipient)", "(witness)", "(other)"):
+                assert alias not in line, line
+
+
+def test_glossar_role_codes_present_in_body(built_demo):
+    c = built_demo["glossar"]
+    for code in ("issuer", "recipient", "witness", "other"):
+        assert code in c, code
+
+
+def test_glossar_role_anchor_not_drifted(built_demo):
+    # Der Anker der Aussteller:in-Ueberschrift darf den Code nicht enthalten
+    c = built_demo["glossar"]
+    assert 'id="ausstellerin-issuer"' not in c
+    assert 'id="aussteller-in-issuer"' not in c
