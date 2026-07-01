@@ -224,9 +224,15 @@ def test_glossar_has_external_links(built_demo):
 
 
 def test_glossar_internal_first_mention_links(built_demo):
-    # Der Event-Eintrag verlinkt intern auf #quelle (Selbst-Verlinkung).
+    # Der Event-Eintrag selbst verlinkt intern auf #quelle (Selbst-Verlinkung).
     c = built_demo["glossar"]
-    assert 'href="#quelle"' in c
+    # Ausschnitt vom Event-Heading bis zum naechsten <h3>
+    start = c.find('id="event"')
+    assert start != -1, "Event-Heading fehlt"
+    seg = c[start:]
+    nxt = seg.find("<h3", 3)
+    seg = seg[:nxt] if nxt != -1 else seg
+    assert 'href="#quelle"' in seg, "Event-Eintrag verlinkt nicht auf #quelle"
 
 
 def test_glossar_event_heading_clean_slug(built_demo):

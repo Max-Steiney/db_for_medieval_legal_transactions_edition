@@ -49,12 +49,12 @@ Die Wiener Stadtbücher sind ein von der Stadtverwaltung geführtes Register, in
 Rechtsgeschäfte, letztwillige Verfügungen und andere Vorgänge eingetragen wurden.
 Ein Stadtbucheintrag ist ein einzelner Eintrag innerhalb der Wiener Stadtbücher.
 
-<div class="demo-editnote dev-only">Redaktion offen (#0–#5): QGW- und Stadtbuch-Unterpunkte ausführen oder nur ins Wien-Wiki verlinken; Neschwara-Referenz und Jaritz/Brauneder-Definition aus Band 1 noch einarbeiten.</div>
-
 **Verwandt:** [[#Quelle]]  
 **Weiterführend:** [Wien-Wiki: Quellen zur Geschichte der Stadt Wien](https://www.geschichtewiki.wien.gv.at/Quellen_zur_Geschichte_der_Stadt_Wien)  
 **Literatur:** Brauneder/Jaritz (Hg.), Die Wiener Stadtbücher 1395–1430, Teil 1, FRA III/10 (Wien/Köln 1989)
 {: .entry-refs }
+
+<div class="demo-editnote dev-only">Redaktion offen (#0–#5): QGW- und Stadtbuch-Unterpunkte ausführen oder nur ins Wien-Wiki verlinken; Neschwara-Referenz und Jaritz/Brauneder-Definition aus Band 1 noch einarbeiten.</div>
 
 ### Event
 
@@ -116,10 +116,10 @@ vorkommen, in unserem Fall insbesondere die Register der Quellen zur Geschichte
 der Stadt Wien (hrsg. von Karl Uhlirz), ergänzend auch Werke wie „Die Wiener
 Ratsbürger 1396–1526" (hrsg. von Richard Perger).
 
-<div class="demo-editnote dev-only">Redaktion offen (#8): Zusatz, dass im Prozess dieses Projekts selbst Register (persons / organisations / places / events) erstellt werden, gegen die Begriffsverwendung auf der Projektwebsite abgleichen.</div>
-
 **Literatur:** Perger, Die Wiener Ratsbürger 1396–1526
 {: .entry-refs }
+
+<div class="demo-editnote dev-only">Redaktion offen (#8): Zusatz, dass im Prozess dieses Projekts selbst Register (persons / organisations / places / events) erstellt werden, gegen die Begriffsverwendung auf der Projektwebsite abgleichen.</div>
 
 ### Normierung
 
