@@ -47,21 +47,16 @@ Die technische Seite dieser Auszeichnung — wie die TEI-XML-Elemente aufgebaut 
   <ul class="roles">
     <li><strong>Aussteller:innen</strong> (<code>issuer</code>): das Ehepaar
     Hainreich der Santwerfer und seine Hausfrau Elsbet</li>
-    <li><strong>Empfänger</strong> (<code>recipient</code>): eine Einzelperson,
-    Jans der Urbetsch</li>
+    <li><strong>Empfänger</strong> (<code>recipient</code>): Jans der
+    Urbetsch</li>
     <li><strong>„mit Handen"</strong> (<code>other</code>): Bürgermeister Jans
     von Tirnach (zugleich Münzmeister) und der Rat der Stadt Wien</li>
     <li><strong>Zeugen / Siegler</strong> (<code>witness</code>): Stadtrat und
     Ratsmitglied Leopold Polz</li>
   </ul>
-  <p><strong>Was dieser Fall zeigt:</strong> ein Event mit gleich vier Rollen — ein ausstellendes Ehepaar, ein Empfänger, die zustimmende Grundherrschaft „mit Handen" und ein siegelnder Zeuge.</p>
+  <p><strong>Was dieser Fall zeigt:</strong> ein Event mit gleich vier Rollen — ein ausstellendes Ehepaar, ein Empfänger, die zustimmende Grundherrschaft „mit Handen" und ein siegelnder Zeuge. Rechtsgeschäft: ein Verkauf um 8 Pfund Pfennig (ein ablösbares Burgrecht auf dem Haus). Einzelne Beteiligte sind zudem über Ämter an die Stadt Wien gebunden (Bürgermeister, Münzmeister, Ratsmitglied) — solche Tätigkeitsbeziehungen (<code>occ</code>) beschreibt die <a href="technik.html#rolename">Technik-Seite</a>.</p>
   <p class="demo-xref"><a href="../../documents/QGW/Vienna_1177-1414_ready/604.html">Quelle 604 ansehen</a>
   · <a href="technik.html#rollen">Rollen technisch</a></p>
-  <p class="dev-only">Redaktionsnotiz (#22): Rollen exakt aus dem Entwurf
-  übernommen, hier kein generisches Gendern. Das Ehepaar bleibt
-  „Aussteller:innen". Rechtsgeschäft: Verkauf; Geld/Besitz: 8 Pfund Pfennig,
-  ablösbares Burgrecht auf dem Haus. Ämter (occ): Bürgermeister, Münzmeister,
-  Ratsmitglied — an die Stadt Wien gebunden; gehören auf die Technik-Seite.</p>
 </div>
 
 ### Fallbeispiel 2: Schenkung für das Seelenheil an ein Kloster (Nr. 16) {#fallbeispiel-2}
@@ -80,14 +75,9 @@ Die technische Seite dieser Auszeichnung — wie die TEI-XML-Elemente aufgebaut 
     <li><strong>Siegler</strong> (<code>witness</code>): ihr Ehemann siegelt für
     sie</li>
   </ul>
-  <p><strong>Was dieser Fall zeigt:</strong> eine einzelne Ausstellerin und eine Institution als Empfängerin — und dass für eine Frau ihr Ehemann siegelt (der Siegler ist nicht die Ausstellerin).</p>
+  <p><strong>Was dieser Fall zeigt:</strong> eine einzelne Ausstellerin und eine Institution als Empfängerin — und dass für eine Frau ihr Ehemann siegelt (der Siegler ist nicht die Ausstellerin). Rechtsgeschäft: eine Schenkung für das Seelenheil ihres Bruders.</p>
   <p class="demo-xref"><a href="../../documents/QGW/Vienna_1177-1414_ready/16.html">Quelle 16 ansehen</a>
   · <a href="technik.html#rollen">Rollen technisch</a></p>
-  <p class="dev-only">Redaktionsnotiz (#22): Hier feminin Singular wie im
-  Original – „Ausstellerin", „Empfängerin". Rechtsgeschäft: Schenkung für das
-  Seelenheil ihres Bruders. Der Siegler (Ehemann) trägt im Datenmodell den
-  Code-Wert <code>witness</code> – warum siegelnde und bezeugende Funktion
-  diesen gemeinsamen Wert teilen, steht auf der Technik-Seite, nicht hier.</p>
 </div>
 
 ### Fallbeispiel 3: eine Witwe vergibt Erbe (Urkunde 1869) {#fallbeispiel-3}
@@ -100,20 +90,15 @@ Die technische Seite dieser Auszeichnung — wie die TEI-XML-Elemente aufgebaut 
   <blockquote>„Besiegelt mit den Siegeln Jorgen des Grünpekchen und Marxen des
   Gödinger"</blockquote>
   <ul class="roles">
-    <li><strong>Ausstellerin</strong> (<code>issuer</code>): Person, Margret,
-    Witwe des Fleischhackers Niklas</li>
+    <li><strong>Ausstellerin</strong> (<code>issuer</code>): Margret, Witwe des
+    Fleischhackers Niklas</li>
     <li><strong>Empfänger</strong> (<code>recipient</code>): ein Verwandter, ihr
     Vetter Hanns von Künigsprunn</li>
-    <li><strong>Siegler</strong> (<code>witness</code>): zwei Siegler</li>
+    <li><strong>Siegler</strong> (<code>witness</code> / sealer): zwei Siegler</li>
   </ul>
-  <p><strong>Was dieser Fall zeigt:</strong> wie Attribute und Relationen erfasst werden — Verwandtschaft (Witwe, Vetter, Schwester), ein Todesvermerk und ein Beruf hängen an den beteiligten Personen.</p>
+  <p><strong>Was dieser Fall zeigt:</strong> wie Attribute und Relationen erfasst werden — Verwandtschaft (Witwe, Vetter, Schwester), ein Todesvermerk und ein Beruf hängen an den beteiligten Personen. Und einen Grenzfall der Klassifikation: Ist die Vergabe an den Vetter eine Schenkung oder ein Erbe? Solche offenen Zuordnungen bleiben in der Erschließung sichtbar.</p>
   <p class="demo-xref"><a href="../../documents/QGW/Vienna_1177-1414_ready/1869.html">Quelle 1869 ansehen</a>
   · <a href="technik.html#rollen">Rollen technisch</a></p>
-  <p class="dev-only">Redaktionsnotiz (#7): Verwandtschaft (kin: „witib"/Witwe,
-  „Vetter", „Schwester"), Todesvermerk (dead: die „selige" Schwester) und Beruf
-  (die Schwester war „wirtin" im Haus des Grafen von Cilli) sind hier nur
-  inhaltlich angedeutet; ihre technische Auszeichnung als Attribut bzw. Relation
-  gehört auf die <a href="technik.html">Technik-Seite</a>.</p>
 </div>
 
 ## Wie geht es weiter?

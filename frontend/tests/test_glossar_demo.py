@@ -318,3 +318,73 @@ def test_tutorial_guided_tour(built_demo):
         assert marker in c, marker
     # die drei Fall-Rahmungen bleiben erhalten
     assert c.count("Was dieser Fall zeigt") == 3
+
+
+# --- Import des finalen .docx: gesperrte Invarianten ---
+
+def test_glossar_quellenkorpus_erfassungsstand(built_demo):
+    # Final: QGW/Uhlirz als aktueller Korpus, Erfassungsstand 1177–1414, Monasterium-Link
+    c = built_demo["glossar"]
+    assert "Erfassungsstand" in c
+    assert "1177" in c and "1414" in c
+    assert "monasterium.net" in c
+    assert "Uhlirz" in c
+
+
+def test_glossar_hofmeister_removed(built_demo):
+    # Final entfernt Hofmeister:in aus Abschnitt D
+    assert "Hofmeister" not in built_demo["glossar"]
+
+
+def test_glossar_section_b_expanded(built_demo):
+    # Ausbau-Saetze aus Abschnitt B (Urkunde/Edition/Vidimus) + AdFontes-Sammelglossar
+    c = built_demo["glossar"]
+    for term in ("Privaturkunden", "Transsumpt", "Textzeugen"):
+        assert term in c, term
+    assert "adfontes.uzh.ch/glossar" in c
+
+
+def test_glossar_section_e_expanded(built_demo):
+    c = built_demo["glossar"]
+    assert "imareal.sbg.ac.at" in c            # Brauneder/Neschwara-Glossar (Intro E)
+    assert "Vogtbarkeit" in c                  # Geschaeftsfaehigkeits-Absatz
+    assert ("Messstiftung" in c) or ("Altarpfründe" in c)
+    # Grundzins und Burgrecht liegen in Abschnitt E (aus F verschoben)
+    assert "Grundzins" in c and "Burgrecht" in c
+
+
+def test_glossar_all_eight_roles(built_demo):
+    c = built_demo["glossar"]
+    for role in ("Aussteller:in", "Empfänger:in", "Einbringer:in", "Zeug:in",
+                 "Siegler:in", "Grundherr:in", "Erblasser:in",
+                 "Testamentsvollstrecker:in"):
+        assert role in c, role
+
+
+def test_glossar_section_c_heading(built_demo):
+    assert "C. Rollen in Rechtsgeschäften" in built_demo["glossar"]
+
+
+def test_no_gender_star_in_any_demo_source():
+    base = Path(__file__).resolve().parents[1] / "content" / "project" / "glossar-demo"
+    for name in ("glossar", "technik", "tutorial"):
+        md = (base / f"{name}.md").read_text(encoding="utf-8")
+        assert "*in" not in md, name
+
+
+def test_technik_case2_sealer_has_witness_code():
+    # Konsistenz: alle drei Faelle geben fuer die Siegler-Funktion den Code witness an.
+    # Pruefung an der .md-Quelle (das gerenderte HTML enthaelt ein TOC mit gleichen Titeln).
+    md = (Path(__file__).resolve().parents[1] / "content" / "project"
+          / "glossar-demo" / "technik.md").read_text(encoding="utf-8")
+    seg = md.split("Benedicta de Arnstain", 1)[-1].split("Fallbeispiel 3", 1)[0]
+    assert "Siegler" in seg and "witness" in seg
+    # kein isoliertes "(sealer)" ohne witness in irgendeinem Fall
+    assert "(sealer)" not in md
+
+
+def test_tutorial_case1_names_occ_binding(built_demo):
+    # Aemter/occ-Bindung aus dem finalen Abschnitt H ist im Tutorial-Fall 1 aufgenommen
+    c = built_demo["tutorial"]
+    seg = c.split("604.html", 1)[0][-1800:]
+    assert "occ" in seg and "Ämter" in seg

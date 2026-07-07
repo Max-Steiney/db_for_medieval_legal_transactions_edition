@@ -41,14 +41,6 @@ als die das Rechtsgeschäft beglaubigenden Personen erfasst. Eine
 Aussteller:in, die zugleich ihr Siegel anbringt, erscheint dadurch in mehreren
 Rollen — einmal als `issuer` und einmal als `witness`.
 
-<div class="dev-only">
-Redaktionsnotiz (#12/#13): Die getrennte Beschreibung der beiden Funktionen
-bleibt im Glossar; hier auf der Technik-Seite wird nur erklärt, warum die
-Auswertung sie unter <code>witness</code> zusammenführt. Der frühere Satz, der
-Zeug:innen und Siegler:innen als <code>witness</code> „zusammenführt", wurde
-bewusst nicht übernommen (Kardinalfehler, Kommentar #14).
-</div>
-
 ## Dispositive Verben {#disp}
 
 Zentrale Aktionswörter, die das Event typisieren, werden als
@@ -105,16 +97,6 @@ Entität verweist.
   </tbody>
 </table>
 
-<div class="dev-only">
-Redaktionsnotiz (#7): Verwandtschaft (<code>kin</code>) gehört zur sauberen
-Trennung in Attribute (prof/title/dead) und Relationen (kin/rep/occ/title_ref)
-und wird daher hier auf der Technik-Seite als Relation geführt — nicht als
-Attribut-Beispiel im Glossar. Als Attribut-Beispiele werden Beruf (prof), Titel
-(title) und Status/Todesfloskel (dead) genannt — alle drei im Extrakt Zeilen
-154–156 belegt. „Geschlecht" kommt im Extrakt nicht als Attribut-Beispiel vor
-und wurde daher nicht übernommen.
-</div>
-
 ## Wie die Tags in den Fallbeispielen zusammenwirken {#faelle}
 
 Die drei [Fallbeispiele](tutorial.html) im Tutorial zeigen die Auszeichnung an
@@ -123,7 +105,7 @@ konkreten Quellen. Aus technischer Sicht:
 ### Fallbeispiel 1: Verkauf „mit Handen" der Stadt (Nr. 604)
 
 - **Aussteller:innen** (`issuer`): das Ehepaar Hainreich der Santwerfer und seine Hausfrau Elsbet
-- **Empfänger** (`recipient`): eine Einzelperson, Jans der Urbetsch
+- **Empfänger** (`recipient`): Jans der Urbetsch
 - **„mit Handen"** (`other`): Bürgermeister Jans von Tirnach (zugleich Münzmeister) und der Rat der Stadt Wien
 - **Zeugen/Siegler** (`witness` / sealer): Stadtrat und Ratsmitglied Leopold Polz
 - **Ämter** (`occ`): Bürgermeister, Münzmeister, Ratsmitglied — an die Stadt Wien gebunden
@@ -132,16 +114,16 @@ konkreten Quellen. Aus technischer Sicht:
 
 - **Ausstellerin** (`issuer`): Person, Benedicta de Arnstain
 - **Empfängerin** (`recipient`): Institution, der Nonnenkonvent St. Niklas
-- **Siegler** (sealer): ihr Ehemann siegelt für sie
+- **Siegler** (`witness` / sealer): ihr Ehemann siegelt für sie
 
 ### Fallbeispiel 3: eine Witwe vergibt Erbe (Urkunde 1869)
 
-- **Ausstellerin** (`issuer`): Person, Margret, Witwe des Fleischhackers Niklas
+- **Ausstellerin** (`issuer`): Margret, Witwe des Fleischhackers Niklas
 - **Empfänger** (`recipient`): ein Verwandter, ihr Vetter Hanns von Künigsprunn
+- **Siegler** (`witness` / sealer): zwei Siegler
 - **Verwandtschaft** (`kin`): „witib" (Witwe), „Vetter", „Schwester"
 - **Todesvermerk** (`dead`): die „selige" (verstorbene) Schwester
 - **Beruf** (`prof`): die Schwester war „wirtin" im Haus des Grafen von Cilli
-- **Siegler** (`witness`): zwei Siegler
 
 ---
 
