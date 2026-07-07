@@ -49,8 +49,8 @@ Erfassungsstand: von Beginn der Überlieferung 1177 bis inklusive das Jahr 1414.
 
 ### Event
 
-Ein Event (auch: Ereignis) ist die grundlegende Analyseeinheit der Datenbank. Ein
-Event entspricht einem in einer [[#Quelle]] dokumentierten Vorgang – oft ein
+Die grundlegende Analyseeinheit der Datenbank. Ein Event (auch: Ereignis)
+entspricht einem in einer [[#Quelle]] dokumentierten Vorgang – oft ein
 Rechtsgeschäft, etwa ein Verkauf, eine Stiftung, eine letztwillige Verfügung oder
 ein Gerichtsverfahren.
 
@@ -132,8 +132,8 @@ hervor.
 
 ### Regest
 
-Eine knappe Inhaltsangabe einer [[#Quelle]], die wichtige Informationen
-zusammenfasst. Regesten erfassen vor allem Rechtsinhalt, Datierung und beteiligte
+Eine knappe Inhaltsangabe einer historischen [[#Quelle]], die wichtige
+Informationen zusammenfasst. Regesten erfassen vor allem Rechtsinhalt, Datierung und beteiligte
 Personen und dienen seit dem Mittelalter der Ordnung und Erschließung von
 Urkundenbeständen (etwa in den Regesta Imperii).
 
@@ -191,7 +191,7 @@ Original entspricht. Konkret handelt es sich um eine beglaubigte Abschrift, die
 das Original rechtlich ersetzen kann. Davon zu unterscheiden ist das Transsumpt,
 das den Inhalt einer Urkunde in eine neue Urkunde aufnimmt.
 
-Für alle Einträge dieses Abschnitts vgl. weiterführend auch das [Glossar von ad
+Für alle Einträge unter weiterführende Angabe vgl. auch das [Glossar von ad
 fontes (UZH)](https://www.adfontes.uzh.ch/glossar).
 
 ## C. Rollen in Rechtsgeschäften
@@ -262,8 +262,8 @@ Der gewählte Vorsitzende/führende Vertreter des [[#Stadtrat|Stadtrats]].
 
 ### Richter
 Vorsteher des Stadtgerichts. Sein Bestellungsmodus war im Untersuchungszeitraum
-des Projekts immer wieder umstritten; prinzipiell galt er als städtisches Amt mit
-landesfürstlicher Bestellung.
+des Projektes immer wieder umstritten. Prinzipiell galt er aber als städtisches
+Amt mit landesfürstlicher Bestellung.
 
 **Weiterführend:** [Wien-Wiki: Stadtrichter](https://www.geschichtewiki.wien.gv.at/Stadtrichter)  
 **Literatur:** Czeike, Historisches Lexikon Wien, Band 5, S. 302 (Stadtrichter)
@@ -354,9 +354,9 @@ Eine [[#Urkunde]], die nicht verschlossen ausgestellt wurde und öffentlich
 vorgelegt werden konnte.
 
 ### Grundzins / Grunddienst
-Eine regelmäßig zu entrichtende Abgabe für die Nutzung eines Grundstücks – die
+Eine regelmäßig zu entrichtende Abgabe für die Nutzung eines Grundstücks = die
 ursprüngliche Belastung des Grundstücks aus dem Bodenleihe-/Besitzverhältnis.
-Vgl. den Eintrag [[#Burgrecht]] (Burgrechts-Leihe; Teil 1, S. 13 f.).
+Vgl. den Eintrag [[#Burgrecht]], Burgrechts-Leihe (Teil 1, S. 13 f.).
 
 ### Burgrecht
 Eine durch ein Geld-/Rentengeschäft (Kapitalanlage auf der Liegenschaft) neu
