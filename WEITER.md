@@ -4,7 +4,10 @@
 
 **Der finale `.docx` ist eingearbeitet** (Commit `2b1f618ed4`): `specs/material/glossar-final.docx`
 extrahiert nach `specs/material/glossar-final.{txt,-kommentare.txt}` (196 Absätze, kommentfrei),
-Texte in alle drei Seiten übernommen, adversarial verifiziert, **48/48 Tests grün**.
+Texte in alle drei Seiten übernommen, adversarial verifiziert, **49/49 Tests grün**.
+Abschnitt F bildet die `.docx`-Gliederung wortgetreu ab (Stakeholder-Entscheidung 2026-07-07,
+Commit `e309e041a5`): Kategorie-Überschriften + Abkürzungs-Legende + Erläuterungs-Absätze statt
+Pro-Begriff-Einträge. A–E folgen dem Pro-Begriff-Format.
 
 ## „weiter" — was tun, wenn ich das lese
 
@@ -12,7 +15,7 @@ Wenn der User „weiter" sagt:
 1. Prüfe den Stand: `git branch --show-current` (soll `feat/glossar-demo` sein), `git log --oneline main..HEAD`.
 2. Baue + teste einmal, um den Ist-Zustand zu bestätigen:
    `python3 scripts/build_glossar_demo.py` und
-   `PYTHONPATH=../db_for_medieval_legal_transactions_MS_Test python3 -m pytest frontend/tests/test_glossar_demo.py -q` (erwartet: 48 passed).
+   `PYTHONPATH=../db_for_medieval_legal_transactions_MS_Test python3 -m pytest frontend/tests/test_glossar_demo.py -q` (erwartet: 49 passed).
 3. Falls eine **neuere `.docx`-Fassung** kommt: nach `specs/material/` legen, mit
    `scratchpad/extract_docx.py`-Muster extrahieren (DOCX=ZIP → `word/document.xml`+`word/comments.xml`),
    gegen `glossar-final.txt` diffen, Deltas konventionskonform übernehmen (siehe unten). Sonst → Branch-Abschluss unten.
@@ -25,7 +28,7 @@ Wir bauen eine **visuelle Demo eines neuen Glossars** (drei Seiten: Glossar / Te
 
 - **3-Seiten-Demo** unter `frontend/content/project/glossar-demo/{glossar,technik,tutorial}.md` → gerendert nach `docs/project/glossar-demo/*.html` via `scripts/build_glossar_demo.py`.
 - **Umgesetzt & reviewt (VERDIKT ready):** Grund-Demo; Plan A (produktions-konform: CSS-Asset `frontend/static/css/glossar-demo.css` + Template `frontend/templates/glossar_demo.html`, Slug-Normalisierung); Verweise/Referenzen + Tutorial-Didaktik; Refinements (Tooltip-Fix, Abschnitte D/E/F, gebeugte Verlinkung, Tutorial-Rundgang).
-- **Tests:** `frontend/tests/test_glossar_demo.py` — **48 passing** (inkl. 9 Final-Import-Invarianten).
+- **Tests:** `frontend/tests/test_glossar_demo.py` — **49 passing** (inkl. 10 Final-Import-Invarianten).
 - **Inhalt aus dem FINALEN `.docx`** (`specs/material/glossar-final.docx` → `…-final.txt`), von Hand eingearbeitet + adversarial verifiziert. **Es gibt keinen automatischen Importer.**
 
 ## Nächster Schritt: nur bei einer NEUEREN `.docx`-Fassung
