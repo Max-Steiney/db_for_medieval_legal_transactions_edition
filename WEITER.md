@@ -1,6 +1,10 @@
 # WEITER.md — Übergabe & Fortsetzung (Glossar-Demo)
 
-**Stand:** 2026-07-03 · **Branch:** `feat/glossar-demo` (22 Commits, alles LOKAL, NICHT gepusht)
+**Stand:** 2026-07-07 · **Branch:** `feat/glossar-demo` (24 Commits, alles LOKAL, NICHT gepusht)
+
+**Der finale `.docx` ist eingearbeitet** (Commit `2b1f618ed4`): `specs/material/glossar-final.docx`
+extrahiert nach `specs/material/glossar-final.{txt,-kommentare.txt}` (196 Absätze, kommentfrei),
+Texte in alle drei Seiten übernommen, adversarial verifiziert, **48/48 Tests grün**.
 
 ## „weiter" — was tun, wenn ich das lese
 
@@ -8,8 +12,10 @@ Wenn der User „weiter" sagt:
 1. Prüfe den Stand: `git branch --show-current` (soll `feat/glossar-demo` sein), `git log --oneline main..HEAD`.
 2. Baue + teste einmal, um den Ist-Zustand zu bestätigen:
    `python3 scripts/build_glossar_demo.py` und
-   `PYTHONPATH=../db_for_medieval_legal_transactions_MS_Test python3 -m pytest frontend/tests/test_glossar_demo.py -q` (erwartet: 39 passed).
-3. Frag den User, ob der **finale Glossar-`.docx`** jetzt vorliegt. Falls ja → „Nächster Schritt" unten. Falls nein → auf sein Signal warten.
+   `PYTHONPATH=../db_for_medieval_legal_transactions_MS_Test python3 -m pytest frontend/tests/test_glossar_demo.py -q` (erwartet: 48 passed).
+3. Falls eine **neuere `.docx`-Fassung** kommt: nach `specs/material/` legen, mit
+   `scratchpad/extract_docx.py`-Muster extrahieren (DOCX=ZIP → `word/document.xml`+`word/comments.xml`),
+   gegen `glossar-final.txt` diffen, Deltas konventionskonform übernehmen (siehe unten). Sonst → Branch-Abschluss unten.
 
 ## Was ist das Projekt
 
@@ -19,19 +25,17 @@ Wir bauen eine **visuelle Demo eines neuen Glossars** (drei Seiten: Glossar / Te
 
 - **3-Seiten-Demo** unter `frontend/content/project/glossar-demo/{glossar,technik,tutorial}.md` → gerendert nach `docs/project/glossar-demo/*.html` via `scripts/build_glossar_demo.py`.
 - **Umgesetzt & reviewt (VERDIKT ready):** Grund-Demo; Plan A (produktions-konform: CSS-Asset `frontend/static/css/glossar-demo.css` + Template `frontend/templates/glossar_demo.html`, Slug-Normalisierung); Verweise/Referenzen + Tutorial-Didaktik; Refinements (Tooltip-Fix, Abschnitte D/E/F, gebeugte Verlinkung, Tutorial-Rundgang).
-- **Tests:** `frontend/tests/test_glossar_demo.py` — **39 passing**.
-- **Inhalt bisher aus dem ENTWURFS-`.docx`** (`specs/material/glossar-entwurf.txt`), von Hand eingearbeitet. **Es gibt keinen automatischen Importer.**
+- **Tests:** `frontend/tests/test_glossar_demo.py` — **48 passing** (inkl. 9 Final-Import-Invarianten).
+- **Inhalt aus dem FINALEN `.docx`** (`specs/material/glossar-final.docx` → `…-final.txt`), von Hand eingearbeitet + adversarial verifiziert. **Es gibt keinen automatischen Importer.**
 
-## Nächster Schritt (der „weiter"-Kern): finaler `.docx`
+## Nächster Schritt: nur bei einer NEUEREN `.docx`-Fassung
 
-Der Import ist **im Wesentlichen einmalig**. Empfehlung: **manuell-aber-verifiziert** einarbeiten (wie bisher), kein aufwändiges Tool nötig (optionale Tooling-Spec: `specs/2026-07-01-glossar-import-system-design.md`, Teil B — NICHT gebaut).
-
-Ablauf beim finalen `.docx`:
-1. `.docx` nach `specs/material/` legen (Binärdatei bleibt ggf. ungetrackt).
-2. Text + Kommentare extrahieren (einmaliges Python: `.docx` ist ein ZIP → `word/document.xml` + `word/comments.xml`; Überschriften = Begriffe, Absätze = Definitionen). Vorlage: die vorhandenen `specs/material/glossar-entwurf.txt` / `…-kommentare.txt` wurden so erzeugt.
-3. Die finalen Texte in die `glossar-demo/*.md` übernehmen — **Struktur & Konventionen unten strikt beibehalten**; Referenzen (`Weiterführend`/`Literatur`) und interne `[[#Begriff]]`-Verweise mitziehen.
-4. Bauen, Tests grün, sichten.
-5. **Offener Prüfpunkt aus dem Review:** ß-Slug-Divergenz — die TOC-Slugify wirft `ß` weg, `_slug_anchor` faltet `ß→ss`. Begriffe mit `ß` NICHT als interne Link-Ziele nehmen bzw. Slugs angleichen.
+Der finale `.docx` ist eingearbeitet. Falls eine noch neuere Fassung kommt, gilt derselbe **manuell-aber-verifizierte** Ablauf (kein Tool nötig):
+1. `.docx` nach `specs/material/` legen (Binärdatei bleibt ungetrackt; `.gitignore` ignoriert alle `specs/material/*.docx`).
+2. Text + Kommentare extrahieren. Fertiges Muster liegt im Session-Scratchpad (`extract_docx.py`): `.docx` ist ein ZIP → `word/document.xml` + `word/comments.xml`; Überschriften = Begriffe, Absätze = Definitionen, `<w:commentReference>` inline als `[Kommentar #N]`.
+3. Gegen `specs/material/glossar-final.txt` diffen (`git diff --no-index --word-diff …`), nur die Deltas konventionskonform in `glossar-demo/*.md` übernehmen.
+4. Bauen, Tests grün, sichten; für neue/umbenannte Begriffe Regressionstests nachziehen.
+5. **Offener Prüfpunkt:** ß-Slug-Divergenz — TOC-Slugify wirft `ß` weg, `_slug_anchor` faltet `ß→ss`. Begriffe mit `ß` NICHT als interne Link-Ziele nehmen. (Aktuell kein Link-Ziel mit `ß`; die H2 „F. … Maße …" hat `ß`, ist aber kein Sprungziel.)
 
 ## Konventionen (verbindlich, nicht brechen)
 
