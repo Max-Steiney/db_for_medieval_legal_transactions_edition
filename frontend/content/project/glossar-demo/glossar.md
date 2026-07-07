@@ -371,45 +371,55 @@ Grundherr:innen auch „Burgherr:innen".
 
 ## F. Projektrelevante Maße, Währungen und Besitzrecht
 
-### Wiener Pfennig
-Der denarius (`d.` / `Wr. Pf.`) war die einzige tatsächlich ausgemünzte
-Umlaufwährung und – neben Naturalien – Basis des Alltagsverkehrs; über das ganze
-15. Jahrhundert die maßgebliche Bezugsgröße.
+### Silber
+- `d.` / `Wr. Pf.` = denarius / Wiener Pfennig
+
+### Gold
+- `fl. ung.` = florenus / Gulden, ungarisch
+- `fl. rh.` = florenus / Gulden, rheinisch
+
+### Recheneinheiten
+- `lb.` = libra / Pfund = 240 denarii
+- `ß.` / `s.` = solidus / Schilling, 1 solidus = 30 denarii
+
+### Recheneinheiten vs. Umlaufsmünze
+Grundlage war die Pfennigwährung; der Wiener Pfennig war die einzige tatsächlich
+ausgemünzte Umlaufwährung und – neben Naturalien – Basis des Alltagsverkehrs.
+
+Pfund und Schilling wurden nicht geprägt, sondern dienten als Recheneinheiten.
+Das Pfund diente auch als Gewichtseinheit.
+
+Der Pfennig blieb über das ganze 15. Jh. die maßgebliche Bezugsgröße.
+
+### Weitere Silbermünzen (späteres 15. Jh.)
+Kreuzer = 4 Pfennig; Groschen = zunächst 2 Kreuzer.
+
+Sie verdrängten den Pfennig nach der „Schinderlingszeit" (1450er/60er Jahre)
+zunehmend, lösten ihn als Recheneinheit aber nicht ab.
+
+### Goldmünzen als „Oberwährung"
+Maßgeblich waren der ungarische (`fl. ung.`) und der rheinische Gulden
+(`fl. rh.`).
+
+Wegen ihres konstanten Metallwerts dienten sie als Maßstab bei größeren
+Zahlungen und als Referenzgröße zur Bewertung der Silbermünzen.
+
+### Projektrelevante Grundstücks- und Flächenmaße
+- **Joch:** Flächenmaß für ländlichen Boden; in Wien nutzungsabhängig: bei
+  Weingärten 3.200 Quadratklafter (≈ 1,15 ha), bei Äckern 1.600 Quadratklafter
+  (≈ 0,58 ha).
+- **Tagwerk:** Flächenmaß nach Arbeitszeit bemessen; in Wien entspricht dies
+  einem Joch.
+- **Quadratklafter:** Grundeinheit der Flächenberechnung, ≈ 3,6 m²; die Klafter
+  ist zugleich das zugrunde liegende Längenmaß für Grundstücksabmessungen.
+
+### Relevante Gewichtsmaße
+- **Wiener Pfund (Gewicht):** ca. 0,56 kg.
+- **Zentner** = 100 Wiener Pfund, ca. 56 kg; für schwere Waren.
 
 **Weiterführend:** [Wien-Wiki: Kaufkraftrechner](https://www.geschichtewiki.wien.gv.at/Kaufkraftrechner)  
-**Literatur:** Geyer, Münze und Geld (Wien 1938); Ertl, Wien 1448 (Wien/Köln/Weimar 2020)
+**Literatur:** Rudolf Geyer, Münze und Geld. Maß und Gewicht in Nieder- und Oberösterreich (Wien 1938); Thomas Ertl, Wien 1448. Steuerwesen und Wohnverhältnisse in einer spätmittelalterlichen Stadt (Wien/Köln/Weimar 2020)
 {: .entry-refs }
-
-### Pfund und Schilling
-Recheneinheiten (nicht geprägt): 1 Pfund (`lb.`, libra) = 240 denarii;
-1 Schilling (`ß.`/`s.`, solidus) = 30 denarii. Das Pfund diente auch als
-Gewichtseinheit.
-
-### Gulden
-Goldmünze (florenus) als „Oberwährung": der ungarische (`fl. ung.`) und der
-rheinische Gulden (`fl. rh.`) dienten wegen ihres konstanten Metallwerts als
-Maßstab bei größeren Zahlungen und als Referenzgröße zur Bewertung der
-Silbermünzen.
-
-### Kreuzer und Groschen
-Spätere Silbermünzen (späteres 15. Jh.): Kreuzer = 4 Pfennig; Groschen =
-zunächst 2 Kreuzer. Sie verdrängten den Pfennig nach der „Schinderlingszeit"
-(1450er/60er Jahre) zunehmend, lösten ihn als Recheneinheit aber nicht ab.
-
-### Joch
-Flächenmaß für ländlichen Boden; in Wien nutzungsabhängig: bei Weingärten 3.200
-Quadratklafter (≈ 1,15 ha), bei Äckern 1.600 Quadratklafter (≈ 0,58 ha).
-
-### Tagwerk
-Flächenmaß nach Arbeitszeit bemessen; in Wien entspricht dies einem [[#Joch]].
-
-### Quadratklafter
-Grundeinheit der Flächenberechnung, ≈ 3,6 m²; die Klafter ist zugleich das
-zugrunde liegende Längenmaß für Grundstücksabmessungen.
-
-### Wiener Pfund (Gewicht) und Zentner
-Ein Wiener Pfund sind ca. 0,56 kg; ein Zentner (100 Wiener Pfund) ca. 56 kg
-(für schwere Waren).
 
 ---
 

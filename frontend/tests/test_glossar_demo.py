@@ -388,3 +388,18 @@ def test_tutorial_case1_names_occ_binding(built_demo):
     c = built_demo["tutorial"]
     seg = c.split("604.html", 1)[0][-1800:]
     assert "occ" in seg and "Ämter" in seg
+
+
+def test_glossar_section_f_mirrors_docx_structure(built_demo):
+    # Abschnitt F folgt der .docx-Gliederung (Kategorien + Legende + Erlaeuterungen),
+    # nicht der frueheren Pro-Begriff-Paraphrase (Stakeholder-Entscheidung 2026-07-07).
+    c = built_demo["glossar"]
+    for header in ("Recheneinheiten vs. Umlaufsmünze",
+                   "Weitere Silbermünzen",
+                   "Goldmünzen als"):
+        assert header in c, header
+    # woertliche Abkuerzungs-Legende
+    for token in ("denarius", "libra", "solidus", "240 denarii"):
+        assert token in c, token
+    # Inhalte vollstaendig erhalten
+    assert "Schinderlingszeit" in c and "Quadratklafter" in c and "Zentner" in c
