@@ -195,10 +195,16 @@ def test_glossar_role_headings_are_clean():
                 assert alias not in line, line
 
 
-def test_glossar_role_codes_present_in_body(built_demo):
-    c = built_demo["glossar"]
-    for code in ("issuer", "recipient", "witness", "other"):
-        assert code in c, code
+def test_glossar_role_code_lines_removed():
+    # Demo-eigene "Code-Wert"-Zeilen entfernt (Stakeholder 2026-07-08); die Codes leben auf der Technik-Seite.
+    from pathlib import Path
+    md = (Path(__file__).resolve().parents[1] / "content" / "project"
+          / "glossar-demo" / "glossar.md").read_text(encoding="utf-8")
+    assert "Code-Wert im Datenmodell" not in md
+    for code in ("issuer", "recipient", "witness"):
+        assert code not in md, code
+    # `other` bleibt nur, weil der .docx-Grundherr-Eintrag ihn nennt ("Sammelrolle other")
+    assert "`other`" in md
 
 
 def test_glossar_role_anchor_not_drifted(built_demo):
@@ -415,8 +421,6 @@ def test_glossar_has_literaturverzeichnis(built_demo):
     # beide QGW-Baende erfasst
     assert "1239" in c and "1411" in c
     assert "1412" in c and "1457" in c
-    # verkuerzte Inline-Zitate verweisen auf das Verzeichnis
-    assert 'href="#g-literaturverzeichnis"' in c
 
 
 def test_glossar_event_drops_gerichtsverfahren(built_demo):

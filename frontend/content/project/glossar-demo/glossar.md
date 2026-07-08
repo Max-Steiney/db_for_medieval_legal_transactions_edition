@@ -46,7 +46,7 @@ Grundbücher.
 Erfassungsstand: von Beginn der Überlieferung 1177 bis inklusive das Jahr 1414.
 
 **Weiterführend:** [Monasterium: Hausurkunden (WStLA)](https://www.monasterium.net/mom/AT-WStLA/HAUrk/fond) · [Wien-Wiki: QGW, Band II.1](https://www.geschichtewiki.wien.gv.at/Quellen_zur_Geschichte_der_Stadt_Wien#Band_II.1:_Verzeichnis_der_Originalurkunden_des_Städtischen_Archives_1239_-_1411) · [Edition der Wiener Stadtbücher (imareal)](https://www.imareal.sbg.ac.at/publikationen-uebersicht/die-wiener-stadtbuecher/)  
-**Literatur:** Uhlirz, QGW II/1 (1239–1411) und II/2 (1412–1457); Brauneder/Jaritz, Die Wiener Stadtbücher 1395–1430, Bd. 1 — Vollzitate im [Literaturverzeichnis](#g-literaturverzeichnis)
+**Literatur:** Uhlirz, QGW II/1 (1239–1411) und II/2 (1412–1457); Brauneder/Jaritz, Die Wiener Stadtbücher 1395–1430, Bd. 1
 {: .entry-refs }
 
 ### Event
@@ -80,9 +80,7 @@ werden und als eigener Datensatz in der Datenbank erfasst sind.
 
 Die Funktion, die eine Person oder Organisation innerhalb eines bestimmten
 Ereignisses einnimmt. Dieselbe Person kann in einer oder mehreren Quellen
-verschiedene Rollen einnehmen. Das kontrollierte Rollenvokabular und seine
-Code-Werte werden auf der Seite [Technik / Datenmodell](technik.html#rollen)
-erläutert.
+verschiedene Rollen einnehmen.
 
 ### Attribut
 
@@ -195,21 +193,15 @@ das den Inhalt einer Urkunde in eine neue Urkunde aufnimmt.
 
 ## C. Rollen in Rechtsgeschäften
 
-Die folgenden Funktionsrollen werden hier nur kurz eingeführt; ihre
-Code-Werte und die TEI-Auszeichnung stehen auf der Seite
-[Technik / Datenmodell](technik.html#rollen). Konkrete Quellen mit aufgelösten
-Rollen zeigt das [Tutorial](tutorial.html).
-
 ### Aussteller:in
 
 Die Person oder Organisation, die verfügt oder erklärt. Bei einem Verkauf ist
 dies meist die verkaufende Person, bei einem Testament die testierende Person.
-Code-Wert im Datenmodell: `issuer`.
 
 ### Empfänger:in
 
 Die Person oder Organisation, die eine Leistung, ein Recht oder einen Gegenstand
-erhält. Code-Wert im Datenmodell: `recipient`.
+erhält.
 
 ### Einbringer:in
 
@@ -219,12 +211,11 @@ oder einer anderen Autorität vorlegt und dessen Anerkennung veranlasst.
 ### Zeug:in
 
 Eine Person, die ein Rechtsgeschäft bezeugt und dadurch dessen Gültigkeit stärkt.
-Code-Wert im Datenmodell: `witness`.
 
 ### Siegler:in
 
 Eine Person oder Institution, deren Siegel zur Beglaubigung eines Dokuments
-verwendet wurde. Code-Wert im Datenmodell: `witness`.
+verwendet wurde.
 
 ### Grundherr:in
 
@@ -293,8 +284,7 @@ Edition.
 
 ### Rechtsgeschäft
 Eine Willenserklärung mit rechtlich relevanten Folgen zwischen Personen oder
-Institutionen. Im Datenmodell ist ein Rechtsgeschäft der häufigste Typ eines
-[[#Event|Events]]. Zur zeitgenössischen Unterscheidung von einseitigem und
+Institutionen. Zur zeitgenössischen Unterscheidung von einseitigem und
 gegenseitigem Rechtsgeschäft vgl. *Geschäft* (Teil 1, S. 17 f.) und *Gemächt*
 (Teil 2, S. 13).
 
@@ -324,8 +314,7 @@ verwaltet, oder als *Altarpfründe*, bei der sich die Stifter:innen über die
 auf die Stiftung vorbehalten.
 
 ### Letztwillige Verfügung
-Eine Verfügung über den Nachlass für die Zeit nach dem Tod (zeitgenössisch
-„Geschäft").
+Eine Verfügung über den Nachlass für die Zeit nach dem Tod.
 
 In der Wiener Rechtssprache bezeichnet „Geschäft" (zu „(ver)schaffen") die
 einseitige, jederzeit widerrufliche Verfügung von Todes wegen. Im Unterschied zu
@@ -366,7 +355,7 @@ als zweite Belastung neben den Grunddienst. Die Liegenschaft hat damit neben
 Grundherr:innen auch „Burgherr:innen"; vgl. *Burgrecht* (dort Burgrechts-Rente,
 Teil 1, S. 14).
 
-**Literatur:** Czeike, Das „Burgrecht" (Vollzitat im [Literaturverzeichnis](#g-literaturverzeichnis))
+**Literatur:** Czeike, Das „Burgrecht"
 {: .entry-refs }
 
 ## F. Projektrelevante Maße, Währungen und Besitzrecht
@@ -418,12 +407,10 @@ Zahlungen und als Referenzgröße zur Bewertung der Silbermünzen.
 - **Zentner** = 100 Wiener Pfund, ca. 56 kg; für schwere Waren.
 
 **Weiterführend:** [Wien-Wiki: Kaufkraftrechner](https://www.geschichtewiki.wien.gv.at/Kaufkraftrechner)  
-**Literatur:** Geyer, Münze und Geld; Ertl, Wien 1448 (Vollzitate im [Literaturverzeichnis](#g-literaturverzeichnis))
+**Literatur:** Geyer, Münze und Geld; Ertl, Wien 1448
 {: .entry-refs }
 
 ## G. Literaturverzeichnis
-
-Vollständige bibliografische Angaben zu den oben verkürzt zitierten Werken.
 
 - Karl UHLIRZ (Hg.), Verzeichnis der Originalurkunden des Städtischen Archives 1239–1411, Wien 1898. (Quellen zur Geschichte der Stadt Wien, Abt. 2: Regesten aus dem Archiv der Stadt Wien 1).
 - Karl UHLIRZ (Hg.), Verzeichnis der Originalurkunden des Städtischen Archives 1412–1457, Wien 1898. (Quellen zur Geschichte der Stadt Wien, Abt. 2: Regesten aus dem Archiv der Stadt Wien 2).
