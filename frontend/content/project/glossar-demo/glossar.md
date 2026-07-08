@@ -270,8 +270,8 @@ Die Erklärungen der in diesem Abschnitt genannten Begriffe folgen großteils de
 Rechtshistorischen Glossaren in den Editionsbänden der Wiener Stadtbücher
 (Brauneder/Jaritz/Neschwara); konsolidiert sind sie auch online zugänglich:
 [Rechtshistorisches Glossar](https://www.imareal.sbg.ac.at/rechtshistorisches-glossar/). Die
-Seitenverweise („Teil 1", „Teil 2" usw.) beziehen sich auf die Bände dieser
-Edition.
+Seitenverweise („Teil 1", „Teil 2" usw.) beziehen sich auf die gedruckten Bände
+dieser Edition.
 
 ### Rechtsgeschäft
 Eine Willenserklärung mit rechtlich relevanten Folgen zwischen Personen oder
