@@ -1,20 +1,13 @@
 <nav class="demo-pagenav">
   <strong>Glossar</strong> ·
-  <a href="tutorial.html">Tutorial</a> ·
   <a href="technik.html">Technik / Datenmodell</a>
 </nav>
 
 Das Glossar ist der Kern dieses Modells: eine Begriffsdefinitionssammlung des
-Projekts, die zugleich die Tooltips im UI speist. Anwendungsbezogene
-Erklärungen finden sich im [Tutorial](tutorial.html), die TEI-Auszeichnung und
-das vollständige Rollenvokabular auf der Seite
-[Technik / Datenmodell](technik.html).
-
-Die Begriffe sind in sechs thematische Abschnitte (A–F) gegliedert: **A. Datenbank
-und Datenmodell**, **B. Quellen und Überlieferung**, **C. Rollen in
-Rechtsgeschäften**, **D. Historische Institutionen**, **E. Rechtsgeschäfte** und
-**F. Projektrelevante Maße, Währungen und Besitzrecht**. **G. Literaturverzeichnis**
-bündelt die vollständigen bibliografischen Angaben.
+Projekts, die zugleich die Tooltips im UI speist. Dies ist das inhaltliche
+Glossar, das hier im Fokus steht; die technische Auszeichnung (TEI-Tags,
+Rollenvokabular) sammelt ein ergänzendes [technisches Glossar](technik.html) —
+derzeit in Arbeit.
 
 ## A. Datenbank und Datenmodell
 
@@ -23,17 +16,6 @@ bündelt die vollständigen bibliografischen Angaben.
 Eine einzelne historische Quelle, die in der Datenbank erfasst wurde. Im Projekt
 „Stadt und Gemeinschaft" handelt es sich derzeit vor allem um Urkunden und
 Stadtbucheinträge.
-
-So erscheint ein Glossar-Begriff als Tooltip im UI – dieselbe Definition, gekoppelt
-an das i-Symbol im Fließtext:
-
-<div class="demo-tip-demo">
-  <p class="demo-xref">Tooltip-Vorschau (echtes Popover-Markup):</p>
-  <aside class="tip-popover tip-popover--glossary" role="dialog" aria-hidden="false" aria-label="Definition: Quelle">
-    <header class="tip-head"><h3 class="tip-title">Quelle</h3></header>
-    <div class="tip-body">Eine einzelne historische Quelle, die in der Datenbank erfasst wurde. Im Projekt „Stadt und Gemeinschaft" handelt es sich derzeit vor allem um Urkunden und Stadtbucheinträge.<a class="tip-link" href="glossar.html#quelle">im Glossar</a></div>
-  </aside>
-</div>
 
 ### Quellenkorpus
 
@@ -423,4 +405,4 @@ Zahlungen und als Referenzgröße zur Bewertung der Silbermünzen.
 
 ---
 
-Querverweise: [Tutorial](tutorial.html) · [Technik / Datenmodell](technik.html)
+Querverweise: [Technik / Datenmodell](technik.html)

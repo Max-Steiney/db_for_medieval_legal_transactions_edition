@@ -1,13 +1,15 @@
 <nav class="demo-pagenav">
   <a href="glossar.html">Glossar</a> ·
-  <a href="tutorial.html">Tutorial</a> ·
   <strong>Technik / Datenmodell</strong>
 </nav>
 
+> **In Arbeit.** Das technische Glossar (TEI-Auszeichnung, Datenmodell) wird
+> derzeit erarbeitet; Inhalte und Struktur sind vorläufig.
+
 Diese Seite erklärt, wie die im [Glossar](glossar.html) definierten Begriffe in
 den TEI-Quellen technisch ausgezeichnet sind. Die Tags erscheinen in der
-herunterladbaren XML jeder Quelle. Die Beispiele stammen aus den drei
-[Fallbeispielen](tutorial.html).
+herunterladbaren XML jeder Quelle. Die Beispiele unten stammen aus drei
+konkreten Quellen.
 
 ## Rollen im Rechtsgeschäft {#rollen}
 
@@ -99,8 +101,8 @@ Entität verweist.
 
 ## Wie die Tags in den Fallbeispielen zusammenwirken {#faelle}
 
-Die drei [Fallbeispiele](tutorial.html) im Tutorial zeigen die Auszeichnung an
-konkreten Quellen. Aus technischer Sicht:
+Die drei folgenden Fallbeispiele zeigen die Auszeichnung an konkreten Quellen.
+Aus technischer Sicht:
 
 ### Fallbeispiel 1: Verkauf „mit Handen" der Stadt (Nr. 604)
 
@@ -127,4 +129,4 @@ konkreten Quellen. Aus technischer Sicht:
 
 ---
 
-Zurück zum [Glossar](glossar.html) · weiter zum [Tutorial](tutorial.html).
+Zurück zum [Glossar](glossar.html).

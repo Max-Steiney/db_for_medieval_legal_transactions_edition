@@ -1397,13 +1397,13 @@ def _build_glossar_demo(env):
     """
     demo_dir = CONTENT_DIR / "project" / "glossar-demo"
     out_dir = DOCS_DIR / "project" / "glossar-demo"
+    # Tutorial vorerst aus der Demo genommen (Stakeholder 2026-07-08); die Quelle
+    # tutorial.md bleibt fuer die spaetere Wiederaufnahme (Fallstudien) liegen.
     pages = [
         ("glossar", "Glossar (Demo)",
          "Begriffsdefinitionen des Projekts – Kern des Modells, speist die Tooltips."),
         ("technik", "Technik / Datenmodell (Demo)",
          "TEI-Auszeichnung, Rollen und roleName-Typen der Datenbank."),
-        ("tutorial", "Tutorial (Demo)",
-         "Einstieg in die Datenbank anhand dreier konkreter Quellen."),
     ]
     for name, title, subtitle in pages:
         md_path = demo_dir / f"{name}.md"
@@ -1419,4 +1419,4 @@ def _build_glossar_demo(env):
             root_path="../..",
             template_name="glossar_demo.html",
         )
-    print("  Glossar-Demo: project/glossar-demo/{glossar,technik,tutorial}.html")
+    print("  Glossar-Demo: project/glossar-demo/{glossar,technik}.html")

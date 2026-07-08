@@ -12,7 +12,7 @@ def built_demo(docs_dir):
     env = _init_jinja()
     _build_glossar_demo(env)
     base = docs_dir / "project" / "glossar-demo"
-    pages = {p: (base / f"{p}.html") for p in ("glossar", "technik", "tutorial")}
+    pages = {p: (base / f"{p}.html") for p in ("glossar", "technik")}
     contents = {}
     for name, path in pages.items():
         assert path.exists(), f"glossar-demo/{name}.html was not generated"
@@ -22,8 +22,9 @@ def built_demo(docs_dir):
 
 # --- Task 1: build plumbing / smoke ---
 
-def test_all_three_pages_built(built_demo):
-    assert set(built_demo) == {"glossar", "technik", "tutorial"}
+def test_active_demo_pages_built(built_demo):
+    # Tutorial vorerst aus der Demo genommen (Stakeholder 2026-07-08); nur Glossar + Technik.
+    assert set(built_demo) == {"glossar", "technik"}
 
 
 def test_pages_have_native_chrome(built_demo):
@@ -55,14 +56,17 @@ def test_glossar_attribut_without_verwandtschaft(built_demo):
     assert "Verwandtschaft" not in block[:600]
 
 
-def test_glossar_has_tooltip_coupling_demo(built_demo):
+def test_glossar_tooltip_preview_removed(built_demo):
+    # Tooltip-Vorschau-Block entfernt (Stakeholder 2026-07-08)
     c = built_demo["glossar"]
-    assert "tip-popover" in c  # Demonstration des echten Tooltip-Looks
+    assert "demo-tip-demo" not in c
+    assert "tip-popover" not in c
 
 
-def test_glossar_links_to_other_demo_pages(built_demo):
+def test_glossar_links_to_technik_not_tutorial(built_demo):
     c = built_demo["glossar"]
-    assert "technik.html" in c and "tutorial.html" in c
+    assert "technik.html" in c
+    assert "tutorial.html" not in c  # Tutorial vorerst entfernt
 
 
 def test_glossar_witness_and_sealer_separated(built_demo):
@@ -98,60 +102,20 @@ def test_technik_explains_witness_grouping(built_demo):
 
 def test_technik_links_back(built_demo):
     c = built_demo["technik"]
-    assert "glossar.html" in c and "tutorial.html" in c
+    assert "glossar.html" in c
+    assert "tutorial.html" not in c  # Tutorial vorerst entfernt
 
 
-# --- Task 4: Tutorial page (three case examples) ---
-
-CASE_DOCS = ("604", "16", "1869")
-
-
-def test_tutorial_links_to_three_real_sources(built_demo):
-    c = built_demo["tutorial"]
-    base = "documents/QGW/Vienna_1177-1414_ready"
-    for nr in CASE_DOCS:
-        assert f"{base}/{nr}.html" in c, nr
-
-
-def test_tutorial_case_sources_exist_in_repo():
-    # Die drei Fall-Quellen muessen real gebaut vorliegen
-    repo = Path(__file__).resolve().parents[2]
-    for nr in CASE_DOCS:
-        p = repo / "docs" / "documents" / "QGW" / "Vienna_1177-1414_ready" / f"{nr}.html"
-        assert p.exists(), p
-
-
-def test_tutorial_resolves_roles_in_context(built_demo):
-    c = built_demo["tutorial"]
-    for code in ("issuer", "recipient", "witness", "other"):
-        assert code in c, code
-
-
-def test_tutorial_links_into_glossar_and_technik(built_demo):
-    c = built_demo["tutorial"]
-    assert "glossar.html" in c and "technik.html" in c
-
-
-def test_tutorial_case2_not_generically_gendered(built_demo):
-    # Kommentar #22: in den Faellen exakte Rollen, kein generisches Gendern.
-    # Fall 2 (Nr. 16) hat eine Ausstellerin (Singular feminin) -> "Ausstellerin".
-    c = built_demo["tutorial"]
-    seg = c.split("16.html", 1)[0][-1200:] + c.split("16.html", 1)[-1][:1200]
-    assert "Ausstellerin" in seg
-
+# --- Tutorial vorerst aus der Demo genommen (Stakeholder 2026-07-08) ---
+# Tutorial-/Fallbeispiel-Tests entfallen, bis das Tutorial mit den Fallstudien
+# wieder aufgenommen wird. tutorial.md bleibt als ruhende Quelle erhalten.
 
 # --- Task 5: cross-linking / integration ---
 
 def test_mutual_cross_links(built_demo):
-    # jede Seite verlinkt die beiden anderen
-    pairs = {
-        "glossar": ("technik.html", "tutorial.html"),
-        "technik": ("glossar.html", "tutorial.html"),
-        "tutorial": ("glossar.html", "technik.html"),
-    }
-    for page, targets in pairs.items():
-        for t in targets:
-            assert t in built_demo[page], f"{page} -> {t}"
+    # Die beiden aktiven Seiten verlinken einander
+    assert "technik.html" in built_demo["glossar"]
+    assert "glossar.html" in built_demo["technik"]
 
 
 def test_glossary_demo_does_not_touch_production(docs_dir):
@@ -167,7 +131,7 @@ def test_pages_link_demo_css(built_demo):
 def test_md_sources_have_no_inline_style():
     from pathlib import Path
     base = Path(__file__).resolve().parents[1] / "content" / "project" / "glossar-demo"
-    for name in ("glossar", "technik", "tutorial"):
+    for name in ("glossar", "technik"):
         md = (base / f"{name}.md").read_text(encoding="utf-8")
         assert "<style>" not in md, name
 
@@ -254,20 +218,6 @@ def test_entry_refs_styled_in_css():
     assert ".entry-refs" in css
 
 
-def test_tutorial_has_datenlogik_intro(built_demo):
-    c = built_demo["tutorial"]
-    # Einleitung erklaert die Grundbegriffe der Datenlogik und verlinkt ins Glossar
-    for term in ("Event", "Rolle", "Entität"):
-        assert term in c, term
-    assert "glossar.html#" in c
-
-
-def test_tutorial_has_case_framing(built_demo):
-    c = built_demo["tutorial"]
-    # Jeder der drei Faelle bekommt eine "Was dieser Fall zeigt"-Rahmung
-    assert c.count("Was dieser Fall zeigt") == 3
-
-
 def test_tooltip_preview_reset_positioning():
     from pathlib import Path
     css = (Path(__file__).resolve().parents[1] / "static" / "css" / "glossar-demo.css").read_text(encoding="utf-8")
@@ -312,18 +262,6 @@ def test_beziehung_links_to_entitat(built_demo):
     assert idx != -1, "Beziehung-Heading fehlt"
     seg = c[idx:idx + 500]
     assert 'href="#entitat"' in seg, "Beziehung verlinkt nicht auf Entität"
-
-
-# --- Task 4: Tutorial als geführter Rundgang ---
-
-def test_tutorial_guided_tour(built_demo):
-    c = built_demo["tutorial"]
-    for marker in ("Was ist diese Datenbank",
-                   "Wie lese ich eine annotierte Quelle",
-                   "Wie geht es weiter"):
-        assert marker in c, marker
-    # die drei Fall-Rahmungen bleiben erhalten
-    assert c.count("Was dieser Fall zeigt") == 3
 
 
 # --- Import des finalen .docx: gesperrte Invarianten ---
@@ -373,7 +311,7 @@ def test_glossar_section_c_heading(built_demo):
 
 def test_no_gender_star_in_any_demo_source():
     base = Path(__file__).resolve().parents[1] / "content" / "project" / "glossar-demo"
-    for name in ("glossar", "technik", "tutorial"):
+    for name in ("glossar", "technik"):
         md = (base / f"{name}.md").read_text(encoding="utf-8")
         assert "*in" not in md, name
 
@@ -387,13 +325,6 @@ def test_technik_case2_sealer_has_witness_code():
     assert "Siegler" in seg and "witness" in seg
     # kein isoliertes "(sealer)" ohne witness in irgendeinem Fall
     assert "(sealer)" not in md
-
-
-def test_tutorial_case1_names_occ_binding(built_demo):
-    # Aemter/occ-Bindung aus dem finalen Abschnitt H ist im Tutorial-Fall 1 aufgenommen
-    c = built_demo["tutorial"]
-    seg = c.split("604.html", 1)[0][-1800:]
-    assert "occ" in seg and "Ämter" in seg
 
 
 def test_glossar_section_f_mirrors_docx_structure(built_demo):
@@ -429,3 +360,27 @@ def test_glossar_event_drops_gerichtsverfahren(built_demo):
     start = c.find('id="event"')
     seg = c[start:c.find("<h3", start + 3)]
     assert "Gerichtsverfahren" not in seg
+
+
+# --- Struktur 2026-07-08: Tutorial entfernt, Technik als "in Arbeit" ---
+
+def test_technik_marked_in_arbeit(built_demo):
+    # Die Technik-Seite ist klar als "in Arbeit" gekennzeichnet (Stakeholder 2026-07-08)
+    assert "In Arbeit" in built_demo["technik"]
+
+
+def test_no_tutorial_references_in_active_demo():
+    # Keine Tutorial-Links/-Mentions mehr in den aktiven Demo-Quellen
+    base = Path(__file__).resolve().parents[1] / "content" / "project" / "glossar-demo"
+    for name in ("glossar", "technik"):
+        md = (base / f"{name}.md").read_text(encoding="utf-8")
+        assert "tutorial.html" not in md, name
+        assert "Tutorial" not in md, name
+
+
+def test_glossar_intro_links_technik_as_technisches_glossar(built_demo):
+    # Intro verlinkt nur noch auf Technik, als "technisches Glossar"
+    c = built_demo["glossar"]
+    assert "technisches Glossar" in c
+    # Inhalt-Raster (Abschnittsaufzaehlung) im Intro entfernt
+    assert "sechs thematische Abschnitte" not in c
