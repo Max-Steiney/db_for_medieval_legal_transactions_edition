@@ -69,8 +69,10 @@
     line-height: 1.5;
     color: var(--color-text-muted, #6b6356);
     margin: .5rem 0 1.25rem;
-    padding-left: .75rem;
-    border-left: 2px solid var(--color-border, #d8d2c4);
+    padding: .5rem .75rem;
+    background: var(--color-bg-warm, #f0ece4);
+    border-left: 3px solid var(--color-border-dark, #c8c2b8);
+    border-radius: 4px;
 }
 .entry-refs strong { color: var(--color-text-strong, #5a4a2f); font-weight: 600; }
 
