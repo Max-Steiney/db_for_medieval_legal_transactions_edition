@@ -18,9 +18,11 @@ ChPollin-gerichtete Kurz-Doku: `HANDOVER-ChPollin.md`. **45/45 Tests grün.**
 `glossar-final-kommentare.txt`) waren Working Documents — u. a. enthielt `…-entwurf-kommentare.txt`
 interne Team-Kommentare (Klarnamen, E-Mail-Adresse, candide Anmerkungen). Sie wurden per
 `git filter-branch` **komplett aus der Branch-Historie entfernt** und der Branch force-gepusht,
-damit sie nicht im öffentlichen PR erscheinen. Im Repo bleiben nur die Design-Specs (`specs/*.md`)
-und Pläne (`specs/plans/*.md`). Das `.docx` selbst ist ohnehin **gitignored** (nie im Repo);
-`glossar-final.docx` liegt lokal weiter auf Platte als redaktionelle Quelle.
+damit sie nicht im öffentlichen PR erscheinen. Im Repo bleiben die Design-Specs (`specs/*.md`)
+und Pläne (`specs/plans/*.md`). Der lokale Entwurf `glossar-entwurf.docx` wurde gelöscht.
+Das **finale `glossar-final.docx` ist bewusst getrackt** (per `.gitignore`-Ausnahme
+`!specs/material/glossar-final.docx`) und wird mitgeliefert, falls ChPollin direkt mit der Datei
+arbeiten will — es ist kommentarfrei; alle anderen `*.docx` bleiben gitignored.
 
 **Stakeholder-Durchgang (2026-07-08) — alle Punkte erledigt (Hashes s. o. nicht mehr gültig):**
 - **Struktur:** Tutorial vorerst ausgesetzt (nicht gebaut; `tutorial.md` ruht für spätere Fallstudien). Demo **zweiseitig: Glossar + Technik**. Technik trägt „In Arbeit"-Banner.
@@ -56,12 +58,12 @@ Wir bauen eine **visuelle Demo eines neuen Glossars** als isoliertes Modell zur 
 - **Demo** unter `frontend/content/project/glossar-demo/{glossar,technik}.md` → gerendert nach `docs/project/glossar-demo/*.html` via `scripts/build_glossar_demo.py` (`tutorial.md` liegt bereit, wird aber nicht gebaut).
 - **Umgesetzt & reviewt (VERDIKT ready):** Grund-Demo; Plan A (produktions-konform: CSS-Asset `frontend/static/css/glossar-demo.css` + Template `frontend/templates/glossar_demo.html`, Slug-Normalisierung); Verweise/Referenzen + Tutorial-Didaktik; Refinements (Tooltip-Fix, Abschnitte D/E/F, gebeugte Verlinkung).
 - **Tests:** `frontend/tests/test_glossar_demo.py` — **45 passing** (2-Seiten-Fixture; Tutorial-Tests entfernt).
-- **Inhalt aus dem FINALEN `.docx`** (liegt lokal/gitignored unter `specs/material/`), von Hand eingearbeitet + adversarial verifiziert. **Es gibt keinen automatischen Importer.**
+- **Inhalt aus dem FINALEN `.docx`** (`specs/material/glossar-final.docx`, im Branch getrackt), von Hand eingearbeitet + adversarial verifiziert. **Es gibt keinen automatischen Importer.**
 
 ## Nächster Schritt: nur bei einer NEUEREN `.docx`-Fassung
 
 Der finale `.docx` ist eingearbeitet. Falls eine noch neuere Fassung kommt, gilt derselbe **manuell-aber-verifizierte** Ablauf (kein Tool nötig):
-1. `.docx` nach `specs/material/` legen (Binärdatei bleibt ungetrackt; `.gitignore` ignoriert alle `specs/material/*.docx`).
+1. `.docx` nach `specs/material/` legen. Ersetzt sie `glossar-final.docx` (gleicher Name), ist sie getrackt (`.gitignore`-Ausnahme) → committen. Andere Namen bleiben gitignored.
 2. Text + Kommentare extrahieren. Muster-Skript `extract_docx.py` (Session-Scratchpad): `.docx` ist ein ZIP → `word/document.xml` + `word/comments.xml`; Überschriften = Begriffe, Absätze = Definitionen, `<w:commentReference>` inline als `[Kommentar #N]`. **Extrakte in eine temporäre Datei (Scratchpad) schreiben, nicht ins Repo committen** (Working Documents).
 3. Alten Stand zum Vergleich aus dem `.docx` bzw. per `git show` extrahieren und mit `git diff --no-index --word-diff …` gegen den neuen Extrakt diffen; nur die Deltas konventionskonform in `glossar-demo/*.md` übernehmen.
 4. Bauen, Tests grün, sichten; für neue/umbenannte Begriffe Regressionstests nachziehen.
@@ -95,7 +97,7 @@ Der finale `.docx` ist eingearbeitet. Falls eine noch neuere Fassung kommt, gilt
 
 - Specs: `specs/2026-06-30-glossar-demo-design.md`, `specs/2026-07-01-glossar-import-system-design.md`, `specs/2026-07-01-glossar-verweise-tutorial-design.md`
 - Pläne: `specs/plans/*.md`
-- Inhalts-Quelle: `specs/material/glossar-final.docx` (lokal, **gitignored**, nicht im Repo). Die früheren `.txt`-Arbeitsextrakte + Kommentar-Dateien wurden am 2026-07-08 als Working Documents aus der Historie entfernt.
+- Inhalts-Quelle: `specs/material/glossar-final.docx` (**getrackt** via `.gitignore`-Ausnahme, kommentarfrei, wird mitgeliefert). Die früheren `.txt`-Arbeitsextrakte + Kommentar-Dateien und der `glossar-entwurf.docx` wurden am 2026-07-08 als Working Documents entfernt/gelöscht.
 - Ausführungs-Ledger (gitignored): `.superpowers/sdd/progress.md`
 
 ## Abschluss / Übergabe an ChPollin
@@ -104,8 +106,8 @@ Was ChPollin bekommt: die gerenderten Seiten `docs/project/glossar-demo/{glossar
 (Optik/Funktion) plus die Quellen (`frontend/content/project/glossar-demo/*.md`,
 `frontend/static/css/glossar-demo.css`, `frontend/templates/glossar_demo.html`) und
 `HANDOVER-ChPollin.md` als Einstieg. Die eigentliche Frontend-Integration macht ChPollin.
-Das `.docx` braucht er dafür nicht (der Text steckt gerendert in `glossar.md`); bei Bedarf als
-E-Mail-Anhang, nicht über den PR.
+Das finale `specs/material/glossar-final.docx` ist im Branch beigelegt, falls er direkt mit der
+Datei arbeiten will (für die Integration nicht nötig — der Text steckt gerendert in `glossar.md`).
 
 **PR-Materialien (Stakeholder öffnet den PR selbst):**
 - Compare-URL:

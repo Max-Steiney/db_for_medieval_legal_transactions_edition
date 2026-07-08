@@ -28,8 +28,11 @@ weiterbauen — er kann deine spätere Arbeit nicht überschreiben.
 | `frontend/tests/test_glossar_demo.py` | 45 Regressionstests |
 | `docs/project/glossar-demo/{glossar,technik}.html` | Gerenderte Seiten (Build-Output) |
 
-Textquelle der Begriffe: `specs/material/glossar-final.{docx,txt}` (das `.docx` des Projektteams;
-`.txt` ist der Extrakt). Das `.docx` ist gitignored, der `.txt`-Extrakt ist getrackt.
+Textquelle der Begriffe: `specs/material/glossar-final.docx` (das finale `.docx` des Projektteams,
+im Branch enthalten). Für die Integration nicht zwingend nötig — der Text steckt bereits gerendert
+in `glossar.md` — aber beigelegt, falls du direkt mit der Datei arbeiten möchtest. Das `.docx`
+enthält zusätzlich die Arbeitsabschnitte H (Datenmodell/roleNames) und I (drei Fallbeispiele mit
+Links auf dein Frontend), die in der Demo bewusst noch nicht erscheinen.
 
 ## Bauen und Ansehen
 
