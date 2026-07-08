@@ -269,7 +269,7 @@ Sitz des Stadtgerichts der Stadt Wien.
 Die Erklärungen der in diesem Abschnitt genannten Begriffe folgen großteils den
 Rechtshistorischen Glossaren in den Editionsbänden der Wiener Stadtbücher
 (Brauneder/Jaritz/Neschwara); konsolidiert sind sie auch online zugänglich:
-[technisches Glossar](https://www.imareal.sbg.ac.at/rechtshistorisches-glossar/). Die
+[Rechtshistorisches Glossar](https://www.imareal.sbg.ac.at/rechtshistorisches-glossar/). Die
 Seitenverweise („Teil 1", „Teil 2" usw.) beziehen sich auf die Bände dieser
 Edition.
 
