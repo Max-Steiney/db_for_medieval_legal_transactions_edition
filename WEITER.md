@@ -2,16 +2,15 @@
 
 **Stand:** 2026-07-08 · **Branch:** `feat/glossar-demo` (29 Commits, alles LOKAL, NICHT gepusht)
 
-**Der finale `.docx` ist eingearbeitet.** Zuletzt aktualisierte `.docx`-Fassung (2026-07-08,
-Commit `84e962ed37`): 209 Absätze, kommentfrei; extrahiert nach
-`specs/material/glossar-final.{txt,-kommentare.txt}`, adversarial verifiziert (4 Lenses),
-**51/51 Tests grün**. Neu darin: **Abschnitt G. Literaturverzeichnis** (8 Vollzitate; Inline-Zitate
-verkürzt und auf `#g-literaturverzeichnis` verlinkt) plus zahlreiche Feinheiten in A–F.
-**Fallbeispiele (Tutorial) und TEI-Abschnitt (Technik) sind seit der Erst-Einarbeitung inhaltlich
-unverändert** — nur der Glossar-Teil (A–G) wird bei `.docx`-Updates berührt.
-Abschnitt F bildet die `.docx`-Gliederung wortgetreu ab (Stakeholder-Entscheidung 2026-07-07,
-Commit `e309e041a5`): Kategorie-Überschriften + Abkürzungs-Legende statt Pro-Begriff-Einträge.
-A–E folgen dem Pro-Begriff-Format.
+**Der finale `.docx` ist eingearbeitet** (zuletzt Fassung 2026-07-08 mit **G. Literaturverzeichnis**;
+Extrakt `specs/material/glossar-final.txt`, adversarial verifiziert). Abschnitt F bildet die
+`.docx`-Gliederung wortgetreu ab (Kategorie-Überschriften + Legende); A–E im Pro-Begriff-Format.
+
+**Stakeholder-Durchgang „Demo-Ergänzungen" (2026-07-08), Stand:**
+- **Bucket B** (Demo-eigene Erklär-/Brücken-Sätze) entfernt, bis auf den E-Intro-Satz (Seitenverweise). Commit `369f67a3c8`.
+- **Bucket A / Struktur:** **Tutorial vorerst aus der Demo genommen** (Commit `d1cd048a9a`) — nicht mehr gebaut, `tutorial.md` bleibt als **ruhende Quelle** für die spätere Wiederaufnahme (Fallstudien). Die Demo ist jetzt **zweiseitig: Glossar + Technik**. Technik trägt ein „In Arbeit"-Banner; das Glossar-Intro verlinkt nur noch auf das „technische Glossar" und hat die Abschnitts-Aufzählung + Tooltip-Vorschau verloren. Referenzzeilen + interne Sprunglinks bleiben.
+- **Offen: Bucket C** (Umformulierungen: saubere Überschriften „Event"/„Letztwillige Verfügung"/„Grundherr:in"/„Siegler:in"; „Grundzins / Grunddienst"; Kurzzitate + Literaturverzeichnis) — noch mit dem Stakeholder durchzugehen.
+- **Tests:** `frontend/tests/test_glossar_demo.py` — **45/45 grün** (Fixture auf 2 Seiten; Tutorial-Tests entfernt).
 
 ## „weiter" — was tun, wenn ich das lese
 
@@ -19,20 +18,20 @@ Wenn der User „weiter" sagt:
 1. Prüfe den Stand: `git branch --show-current` (soll `feat/glossar-demo` sein), `git log --oneline main..HEAD`.
 2. Baue + teste einmal, um den Ist-Zustand zu bestätigen:
    `python3 scripts/build_glossar_demo.py` und
-   `PYTHONPATH=../db_for_medieval_legal_transactions_MS_Test python3 -m pytest frontend/tests/test_glossar_demo.py -q` (erwartet: 51 passed).
+   `PYTHONPATH=../db_for_medieval_legal_transactions_MS_Test python3 -m pytest frontend/tests/test_glossar_demo.py -q` (erwartet: 45 passed).
 3. Falls eine **neuere `.docx`-Fassung** kommt: nach `specs/material/` legen, mit
    `scratchpad/extract_docx.py`-Muster extrahieren (DOCX=ZIP → `word/document.xml`+`word/comments.xml`),
    gegen `glossar-final.txt` diffen, Deltas konventionskonform übernehmen (siehe unten). Sonst → Branch-Abschluss unten.
 
 ## Was ist das Projekt
 
-Wir bauen eine **visuelle Demo eines neuen Glossars** (drei Seiten: Glossar / Technik / Tutorial) als isoliertes Modell zur Übergabe an ChPollin. Zweck: die Optik/Funktion zeigen; die Texte kommen aus einem `.docx` des Projektteams. Die echte Integration ins Frontend macht ChPollin. Details: [knowledge/](knowledge/), CLAUDE.md, und die Spec-Dateien unten.
+Wir bauen eine **visuelle Demo eines neuen Glossars** als isoliertes Modell zur Übergabe an ChPollin. Aktuell zweiseitig (Glossar + Technik); das Tutorial ist vorerst ausgesetzt (siehe Header), `tutorial.md` liegt als ruhende Quelle bereit. Zweck: die Optik/Funktion zeigen; die Texte kommen aus einem `.docx` des Projektteams. Die echte Integration ins Frontend macht ChPollin. Details: [knowledge/](knowledge/), CLAUDE.md, und die Spec-Dateien unten.
 
 ## Aktueller Stand (fertig)
 
-- **3-Seiten-Demo** unter `frontend/content/project/glossar-demo/{glossar,technik,tutorial}.md` → gerendert nach `docs/project/glossar-demo/*.html` via `scripts/build_glossar_demo.py`.
+- **Demo** unter `frontend/content/project/glossar-demo/{glossar,technik}.md` → gerendert nach `docs/project/glossar-demo/*.html` via `scripts/build_glossar_demo.py` (`tutorial.md` liegt bereit, wird aber nicht gebaut).
 - **Umgesetzt & reviewt (VERDIKT ready):** Grund-Demo; Plan A (produktions-konform: CSS-Asset `frontend/static/css/glossar-demo.css` + Template `frontend/templates/glossar_demo.html`, Slug-Normalisierung); Verweise/Referenzen + Tutorial-Didaktik; Refinements (Tooltip-Fix, Abschnitte D/E/F, gebeugte Verlinkung, Tutorial-Rundgang).
-- **Tests:** `frontend/tests/test_glossar_demo.py` — **51 passing** (inkl. Final-Import-Invarianten + G-Literaturverzeichnis).
+- **Tests:** `frontend/tests/test_glossar_demo.py` — **45 passing** (2-Seiten-Fixture; Tutorial-Tests entfernt).
 - **Inhalt aus dem FINALEN `.docx`** (`specs/material/glossar-final.docx` → `…-final.txt`), von Hand eingearbeitet + adversarial verifiziert. **Es gibt keinen automatischen Importer.**
 
 ## Nächster Schritt: nur bei einer NEUEREN `.docx`-Fassung
