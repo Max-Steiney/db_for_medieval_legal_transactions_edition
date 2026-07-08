@@ -1,8 +1,12 @@
 # WEITER.md — Übergabe & Fortsetzung (Glossar-Demo)
 
-**Stand:** 2026-07-08 · **Branch:** `feat/glossar-demo` (40 Commits, alles LOKAL, NICHT gepusht)
+**Stand:** 2026-07-08 · **Branch:** `feat/glossar-demo` (42 Commits, nach `origin` gepusht)
 
-**STATUS: bereit zur FINALEN ABNAHME durch den Stakeholder — danach Übergabe an ChPollin zur Implementierung.**
+**STATUS: ABGENOMMEN — Übergabe an ChPollin läuft (Branch pushen + PR).**
+Der Stakeholder hat die Demo am 2026-07-08 abgenommen. Übergabeweg: Branch nach `origin`
+(mein Fork) gepusht, Übergabe an ChPollin per Cross-Fork-PR gegen `upstream` (= `chpollin/…_edition`).
+`upstream` wird dabei nie gepusht (ein PR schlägt vor). Offener Schritt: PR öffnen (Compare-URL,
+`gh` ist lokal nicht installiert). ChPollin-gerichtete Kurz-Doku: `HANDOVER-ChPollin.md`.
 Die Demo ist inhaltlich und optisch durchgearbeitet; der Stakeholder-Durchgang ist abgeschlossen.
 Der finale `.docx` (`specs/material/glossar-final.docx`, Fassung 2026-07-08) ist eingearbeitet und
 adversarial verifiziert; Extrakt `specs/material/glossar-final.txt` ist synchron. **45/45 Tests grün.**
