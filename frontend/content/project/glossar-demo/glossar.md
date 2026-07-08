@@ -403,14 +403,14 @@ Zahlungen und als Referenzgröße zur Bewertung der Silbermünzen.
 
 ## G. Literaturverzeichnis
 
-- Karl UHLIRZ (Hg.), Verzeichnis der Originalurkunden des Städtischen Archives 1239–1411, Wien 1898. (Quellen zur Geschichte der Stadt Wien, Abt. 2: Regesten aus dem Archiv der Stadt Wien 1).
-- Karl UHLIRZ (Hg.), Verzeichnis der Originalurkunden des Städtischen Archives 1412–1457, Wien 1898. (Quellen zur Geschichte der Stadt Wien, Abt. 2: Regesten aus dem Archiv der Stadt Wien 2).
 - Wilhelm BRAUNEDER – Gerhard JARITZ – Christian Neschwara (Hg.), Die Wiener Stadtbücher 1395–1430. 6 Bde., Wien/Köln/Graz 1989–2026.
 - Felix CZEIKE, Das „Burgrecht" in Wien im 15. Jahrhundert, in: Jahrbuch des Vereins für Geschichte der Stadt Wien 10 (1952/53), S. 115–137.
 - Felix CZEIKE, Historisches Lexikon Wien, 6 Bde., Wien 1992–2004.
-- Rudolf GEYER, Münze und Geld. Maß und Gewicht in Nieder- und Oberösterreich, Wien 1938.
 - Thomas ERTL, Wien 1448. Steuerwesen und Wohnverhältnisse in einer spätmittelalterlichen Stadt, Wien/Köln/Weimar 2020.
+- Rudolf GEYER, Münze und Geld. Maß und Gewicht in Nieder- und Oberösterreich, Wien 1938.
 - Richard PERGER, Die Wiener Ratsbürger 1396–1526, Wien 1988 (Forschungen und Beiträge zur Wiener Stadtgeschichte, 18).
+- Karl UHLIRZ (Hg.), Verzeichnis der Originalurkunden des Städtischen Archives 1239–1411, Wien 1898. (Quellen zur Geschichte der Stadt Wien, Abt. 2: Regesten aus dem Archiv der Stadt Wien 1).
+- Karl UHLIRZ (Hg.), Verzeichnis der Originalurkunden des Städtischen Archives 1412–1457, Wien 1898. (Quellen zur Geschichte der Stadt Wien, Abt. 2: Regesten aus dem Archiv der Stadt Wien 2).
 
 ---
 
