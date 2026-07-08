@@ -1,27 +1,33 @@
 # WEITER.md — Übergabe & Fortsetzung (Glossar-Demo)
 
-**Stand:** 2026-07-08 · **Branch:** `feat/glossar-demo` (29 Commits, alles LOKAL, NICHT gepusht)
+**Stand:** 2026-07-08 · **Branch:** `feat/glossar-demo` (40 Commits, alles LOKAL, NICHT gepusht)
 
-**Der finale `.docx` ist eingearbeitet** (zuletzt Fassung 2026-07-08 mit **G. Literaturverzeichnis**;
-Extrakt `specs/material/glossar-final.txt`, adversarial verifiziert). Abschnitt F bildet die
-`.docx`-Gliederung wortgetreu ab (Kategorie-Überschriften + Legende); A–E im Pro-Begriff-Format.
+**STATUS: bereit zur FINALEN ABNAHME durch den Stakeholder — danach Übergabe an ChPollin zur Implementierung.**
+Die Demo ist inhaltlich und optisch durchgearbeitet; der Stakeholder-Durchgang ist abgeschlossen.
+Der finale `.docx` (`specs/material/glossar-final.docx`, Fassung 2026-07-08) ist eingearbeitet und
+adversarial verifiziert; Extrakt `specs/material/glossar-final.txt` ist synchron. **45/45 Tests grün.**
 
-**Stakeholder-Durchgang „Demo-Ergänzungen" (2026-07-08), Stand:**
-- **Bucket B** (Demo-eigene Erklär-/Brücken-Sätze) entfernt, bis auf den E-Intro-Satz (Seitenverweise). Commit `369f67a3c8`.
-- **Bucket A / Struktur:** **Tutorial vorerst aus der Demo genommen** (Commit `d1cd048a9a`) — nicht mehr gebaut, `tutorial.md` bleibt als **ruhende Quelle** für die spätere Wiederaufnahme (Fallstudien). Die Demo ist jetzt **zweiseitig: Glossar + Technik**. Technik trägt ein „In Arbeit"-Banner; das Glossar-Intro verlinkt nur noch auf das „technische Glossar" und hat die Abschnitts-Aufzählung + Tooltip-Vorschau verloren. Referenzzeilen + interne Sprunglinks bleiben.
-- **Offen: Bucket C** (Umformulierungen: saubere Überschriften „Event"/„Letztwillige Verfügung"/„Grundherr:in"/„Siegler:in"; „Grundzins / Grunddienst"; Kurzzitate + Literaturverzeichnis) — noch mit dem Stakeholder durchzugehen.
-- **Tests:** `frontend/tests/test_glossar_demo.py` — **45/45 grün** (Fixture auf 2 Seiten; Tutorial-Tests entfernt).
+**Stakeholder-Durchgang (2026-07-08) — alle Punkte erledigt:**
+- **Struktur:** **Tutorial vorerst ausgesetzt** (nicht gebaut; `tutorial.md` ruht für spätere Fallstudien). Demo **zweiseitig: Glossar + Technik**. Technik trägt „In Arbeit"-Banner. (`d1cd048a9a`)
+- **Demo-eigene Zusätze (Bucket B):** entfernt bis auf den E-Intro-Satz (Seitenverweise). (`369f67a3c8`)
+- **Umformulierungen (Bucket C):** geprüft und **bewusst behalten** — saubere Überschriften „Event"/„Letztwillige Verfügung"/„Grundherr:in"/„Siegler:in", „Grundzins / Grunddienst", Kurzzitate + G. Literaturverzeichnis. Abschnitt F bildet die `.docx`-Gliederung wortgetreu ab (Kategorie-Überschriften + Legende); A–E im Pro-Begriff-Format.
+- **Quellenkorpus:** drei Quellenangaben wie im `.docx` (2× Uhlirz QGW, 1× Brauneder/Jaritz) als eingerückte Liste; Links verkürzt als „Weiterführend:"-Zeilen. (`94f5df09ee`, `e98e97769c`)
+- **Optik:** `.entry-refs` als abgesetzte Box (warmer Hintergrund); Inhalt-TOC: Abschnitte A–G fett (`.toc > ul > li > a`). (`e2b5f8a620`, `9fc9946e32`)
+- **E-Intro:** Link „Rechtshistorisches Glossar" (statt URL); „gedruckten Bände" ergänzt. (`8f450a06d5`, `ead90684f2`)
+- **Literaturverzeichnis:** alphabetisch (Brauneder, Czeike×2, Ertl, Geyer, Perger, Uhlirz×2); „Christian NESCHWARA" in Großbuchstaben. (`a1c5164d03`, `9fc9946e32`)
+
+**Hinweis zum `.docx`:** Die `.docx` auf Platte wurde von uns zweimal formaterhaltend editiert (Literaturverzeichnis alphabetisch sortiert; „Neschwara"→„NESCHWARA" nur im Brauneder-Vollzitat) — via lxml, nur Bibliografie-Absätze, Rest byte-gleich, Zip-Integrität geprüft. `glossar-final.txt` ist synchron. (Ephemere Backups lagen im Session-Scratchpad; die `.docx` auf Platte ist der maßgebliche Stand.)
 
 ## „weiter" — was tun, wenn ich das lese
 
-Wenn der User „weiter" sagt:
-1. Prüfe den Stand: `git branch --show-current` (soll `feat/glossar-demo` sein), `git log --oneline main..HEAD`.
-2. Baue + teste einmal, um den Ist-Zustand zu bestätigen:
-   `python3 scripts/build_glossar_demo.py` und
-   `PYTHONPATH=../db_for_medieval_legal_transactions_MS_Test python3 -m pytest frontend/tests/test_glossar_demo.py -q` (erwartet: 45 passed).
-3. Falls eine **neuere `.docx`-Fassung** kommt: nach `specs/material/` legen, mit
-   `scratchpad/extract_docx.py`-Muster extrahieren (DOCX=ZIP → `word/document.xml`+`word/comments.xml`),
-   gegen `glossar-final.txt` diffen, Deltas konventionskonform übernehmen (siehe unten). Sonst → Branch-Abschluss unten.
+Nächster Schritt ist die **finale Abnahme** durch den Stakeholder, danach die Übergabe an ChPollin.
+1. Stand prüfen: `git branch --show-current` (= `feat/glossar-demo`), `git log --oneline main..HEAD`.
+2. Ist-Zustand bestätigen und vorlegen: `python3 scripts/build_glossar_demo.py`, Tests
+   (`PYTHONPATH=../db_for_medieval_legal_transactions_MS_Test python3 -m pytest frontend/tests/test_glossar_demo.py -q`, erwartet: 45 passed),
+   CSP-freie Vorschau erneuern (Abschnitt „Build/Test/Ansehen") und dem Stakeholder zur Abnahme zeigen.
+3. **Abnahme-Feedback** einarbeiten, falls Punkte offen sind (jeweils: bauen, Tests grün, sichten, lokal committen).
+4. **Nach Freigabe → Übergabe an ChPollin** (Abschnitt „Abschluss/Übergabe" unten; Branch liegt lokal, NICHT gepusht).
+5. Falls doch eine **neuere `.docx`-Fassung** kommt: Diff-/Import-Ablauf im Abschnitt „Nächster Schritt" unten.
 
 ## Was ist das Projekt
 
@@ -73,6 +79,12 @@ Der finale `.docx` ist eingearbeitet. Falls eine noch neuere Fassung kommt, gilt
 - Inhalts-Extrakt (Entwurf): `specs/material/glossar-entwurf.{docx,txt}`, `…-kommentare.txt`
 - Ausführungs-Ledger (gitignored): `.superpowers/sdd/progress.md`
 
-## Abschluss-Optionen für den Branch (wenn gewünscht)
+## Abschluss / Übergabe an ChPollin
 
-Branch bleibt aktuell liegen (Option „so lassen"). Alternativen später: lokal nach `main` mergen, oder — nur auf ausdrücklichen Auftrag — nach `origin` pushen. Nie nach `upstream`.
+Nach der finalen Abnahme geht die Demo an ChPollin. Was ChPollin bekommt: die gerenderten Seiten
+`docs/project/glossar-demo/{glossar,technik}.html` (Optik/Funktion) plus die Quellen
+(`frontend/content/project/glossar-demo/*.md`, `frontend/static/css/glossar-demo.css`,
+`frontend/templates/glossar_demo.html`). Die eigentliche Frontend-Integration macht ChPollin.
+
+Branch-Optionen (Stakeholder entscheidet): „so lassen" (liegt lokal); lokal nach `main` mergen;
+oder — **nur auf ausdrücklichen Auftrag** — nach `origin` (mein Fork) pushen bzw. PR. **Nie nach `upstream`.**
