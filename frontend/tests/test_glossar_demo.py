@@ -403,3 +403,25 @@ def test_glossar_section_f_mirrors_docx_structure(built_demo):
         assert token in c, token
     # Inhalte vollstaendig erhalten
     assert "Schinderlingszeit" in c and "Quadratklafter" in c and "Zentner" in c
+
+
+def test_glossar_has_literaturverzeichnis(built_demo):
+    # Abschnitt G: konsolidiertes Literaturverzeichnis (neu in der .docx-Fassung 2026-07-08)
+    c = built_demo["glossar"]
+    assert "G. Literaturverzeichnis" in c
+    for cite in ("Uhlirz", "Brauneder", "Jaritz", "Neschwara", "Czeike",
+                 "Geyer", "Ertl", "Perger"):
+        assert cite in c, cite
+    # beide QGW-Baende erfasst
+    assert "1239" in c and "1411" in c
+    assert "1412" in c and "1457" in c
+    # verkuerzte Inline-Zitate verweisen auf das Verzeichnis
+    assert 'href="#g-literaturverzeichnis"' in c
+
+
+def test_glossar_event_drops_gerichtsverfahren(built_demo):
+    # Final 2026-07-08: Event-Beispiele ohne Gerichtsverfahren
+    c = built_demo["glossar"]
+    start = c.find('id="event"')
+    seg = c[start:c.find("<h3", start + 3)]
+    assert "Gerichtsverfahren" not in seg

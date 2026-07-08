@@ -10,17 +10,18 @@ Erklärungen finden sich im [Tutorial](tutorial.html), die TEI-Auszeichnung und
 das vollständige Rollenvokabular auf der Seite
 [Technik / Datenmodell](technik.html).
 
-Die Begriffe sind in sechs Abschnitte gegliedert: **A. Datenbank und
-Datenmodell**, **B. Quellen und Überlieferung**, **C. Rollen in
+Die Begriffe sind in sechs thematische Abschnitte (A–F) gegliedert: **A. Datenbank
+und Datenmodell**, **B. Quellen und Überlieferung**, **C. Rollen in
 Rechtsgeschäften**, **D. Historische Institutionen**, **E. Rechtsgeschäfte** und
-**F. Projektrelevante Maße, Währungen und Besitzrecht**.
+**F. Projektrelevante Maße, Währungen und Besitzrecht**. **G. Literaturverzeichnis**
+bündelt die vollständigen bibliografischen Angaben.
 
 ## A. Datenbank und Datenmodell
 
 ### Quelle
 
 Eine einzelne historische Quelle, die in der Datenbank erfasst wurde. Im Projekt
-„Stadt und Gemeinschaft" handelt es sich vor allem um Urkunden und
+„Stadt und Gemeinschaft" handelt es sich derzeit vor allem um Urkunden und
 Stadtbucheinträge.
 
 So erscheint ein Glossar-Begriff als Tooltip im UI – dieselbe Definition, gekoppelt
@@ -30,7 +31,7 @@ an das i-Symbol im Fließtext:
   <p class="demo-xref">Tooltip-Vorschau (echtes Popover-Markup):</p>
   <aside class="tip-popover tip-popover--glossary" role="dialog" aria-hidden="false" aria-label="Definition: Quelle">
     <header class="tip-head"><h3 class="tip-title">Quelle</h3></header>
-    <div class="tip-body">Eine einzelne historische Quelle, die in der Datenbank erfasst wurde. Im Projekt „Stadt und Gemeinschaft" handelt es sich vor allem um Urkunden und Stadtbucheinträge.<a class="tip-link" href="glossar.html#quelle">im Glossar</a></div>
+    <div class="tip-body">Eine einzelne historische Quelle, die in der Datenbank erfasst wurde. Im Projekt „Stadt und Gemeinschaft" handelt es sich derzeit vor allem um Urkunden und Stadtbucheinträge.<a class="tip-link" href="glossar.html#quelle">im Glossar</a></div>
   </aside>
 </div>
 
@@ -39,20 +40,20 @@ an das i-Symbol im Fließtext:
 Eine Sammlung zusammengehöriger Quellen, im Fall des Projekts „Stadt und
 Gemeinschaft" handelt es sich derzeit um [[#Regest|Regesten]] aus den „Quellen
 zur Geschichte der Stadt Wien" (Uhlirz). Künftig werden im Frontend weitere
-Korpora hinzukommen, z.B. die „Wiener Stadtbücher" und Grundbücher.
+Korpora hinzukommen, z.B. die „Wiener Stadtbücher" (Brauneder/Jaritz) und
+Grundbücher.
 
 Erfassungsstand: von Beginn der Überlieferung 1177 bis inklusive das Jahr 1414.
 
-**Weiterführend:** [Monasterium: Haus­urkunden (WStLA)](https://www.monasterium.net/mom/AT-WStLA/HAUrk/fond) · [Wien-Wiki: QGW, Band II.1](https://www.geschichtewiki.wien.gv.at/Quellen_zur_Geschichte_der_Stadt_Wien#Band_II.1:_Verzeichnis_der_Originalurkunden_des_Städtischen_Archives_1239_-_1411)  
-**Literatur:** Karl Uhlirz (Hg.), Verzeichnis der Originalurkunden des Städtischen Archives 1239–1411 (Wien 1898). (Quellen zur Geschichte der Stadt Wien, Abt. 2: Regesten aus dem Archiv der Stadt Wien 1)
+**Weiterführend:** [Monasterium: Hausurkunden (WStLA)](https://www.monasterium.net/mom/AT-WStLA/HAUrk/fond) · [Wien-Wiki: QGW, Band II.1](https://www.geschichtewiki.wien.gv.at/Quellen_zur_Geschichte_der_Stadt_Wien#Band_II.1:_Verzeichnis_der_Originalurkunden_des_Städtischen_Archives_1239_-_1411) · [Edition der Wiener Stadtbücher (imareal)](https://www.imareal.sbg.ac.at/publikationen-uebersicht/die-wiener-stadtbuecher/)  
+**Literatur:** Uhlirz, QGW II/1 (1239–1411) und II/2 (1412–1457); Brauneder/Jaritz, Die Wiener Stadtbücher 1395–1430, Bd. 1 — Vollzitate im [Literaturverzeichnis](#g-literaturverzeichnis)
 {: .entry-refs }
 
 ### Event
 
 Die grundlegende Analyseeinheit der Datenbank. Ein Event (auch: Ereignis)
 entspricht einem in einer [[#Quelle]] dokumentierten Vorgang – oft ein
-Rechtsgeschäft, etwa ein Verkauf, eine Stiftung, eine letztwillige Verfügung oder
-ein Gerichtsverfahren.
+Rechtsgeschäft, etwa ein Verkauf, eine Stiftung oder eine letztwillige Verfügung.
 
 ### Factoid
 
@@ -66,13 +67,13 @@ systematisch auszuwerten.
 Eine Markierung im Quellentext, mit der Informationen wie Personen,
 Organisationen, Orte und ihre [[#Attribut|Attribute]] ausgezeichnet werden – im
 Fall des Projekts „Stadt und Gemeinschaft" handelt es sich dabei um in digitale
-Textdateien umgewandelte [[#Regest|Regesten]] und Stadtbucheinträge, die nach den
+Textdateien umgewandelte [[#Regest|Urkundenregesten]] und Stadtbucheinträge, die nach den
 Standards der TEI annotiert/codiert wurden.
 
 ### Entität
 
 Die zentralen Analyseeinheiten (Entitäten) sind Ereignisse, Personen,
-Organisationen und Orte (künftig auch im Frontend), die in einer Quelle genannt
+Organisationen und künftig auch Orte, die in einer Quelle genannt
 werden und als eigener Datensatz in der Datenbank erfasst sind.
 
 ### Rolle
@@ -101,9 +102,9 @@ eine Amtszugehörigkeit.
 ### Register
 
 Ein Verzeichnis von Personen, Organisationen oder Orten, die in den Quellen
-vorkommen, in unserem Fall insbesondere die Register der Quellen zur Geschichte
-der Stadt Wien (hrsg. von Karl Uhlirz), ergänzend auch Werke wie „Die Wiener
-Ratsbürger 1396–1526" (hrsg. von Richard Perger).
+vorkommen, in unserem Fall insbesondere die Namensregister der Quellen zur
+Geschichte der Stadt Wien (Uhlirz), ergänzend auch Werke wie „Die Wiener
+Ratsbürger 1396–1526" (Richard Perger).
 
 **Literatur:** Perger, Die Wiener Ratsbürger 1396–1526
 {: .entry-refs }
@@ -117,14 +118,17 @@ purger/purgerin oder civis wiennensis vorkommt.
 
 ## B. Quellen und Überlieferung
 
+Für allgemeine Informationen zu allen Einträgen vgl. das [Glossar von ad fontes
+(UZH)](https://www.adfontes.uzh.ch/glossar).
+
 ### Urkunde
 
 Ein schriftliches, beglaubigtes Dokument, das ein Rechtsgeschäft, einen
 Rechtsanspruch oder eine rechtlich relevante Handlung festhält. Sie folgt einem
 festen formalen Aufbau und trägt Beglaubigungsmittel wie Siegel,
 Herrschermonogramm oder Zeugenreihe, die ihr Rechts- und Beweiskraft verleihen.
-Im Spätmittelalter treten vermehrt Privaturkunden von Städten, Räten und Bürgern
-hervor.
+Im Spätmittelalter treten vermehrt Privaturkunden von Städten und einzelnen
+Bürger:innen hervor.
 
 **Verwandt:** [[#Regest]] · [[#Siegel]]  
 **Weiterführend:** [ad fontes: „Urkunde"](https://www.adfontes.uzh.ch/tutorium/quellen-auswerten/urkunden-und-diplomatik/definition-urkunde/)
@@ -158,9 +162,7 @@ kritischen Apparat dokumentiert, häufig ergänzt durch Stellen- und Namenregist
 
 Eine digitale Aufnahme einer historischen Quelle. Es entsteht als Endprodukt der
 Digitalisierung, bei der ein analoges Objekt (etwa eine Urkunde oder Handschrift)
-für die elektronische Speicherung und Verbreitung aufbereitet wird. Ziel ist die
-möglichst originalgetreue Wiedergabe der Vorlage nach wissenschaftlichen
-Erfordernissen.
+für die elektronische Speicherung und Verbreitung aufbereitet wird.
 
 ### Transkription
 
@@ -190,9 +192,6 @@ Die rechtsgültige Bestätigung, dass eine Abschrift (z.B. einer Urkunde) dem
 Original entspricht. Konkret handelt es sich um eine beglaubigte Abschrift, die
 das Original rechtlich ersetzen kann. Davon zu unterscheiden ist das Transsumpt,
 das den Inhalt einer Urkunde in eine neue Urkunde aufnimmt.
-
-Für alle Einträge unter weiterführende Angabe vgl. auch das [Glossar von ad
-fontes (UZH)](https://www.adfontes.uzh.ch/glossar).
 
 ## C. Rollen in Rechtsgeschäften
 
@@ -266,7 +265,7 @@ des Projektes immer wieder umstritten. Prinzipiell galt er aber als städtisches
 Amt mit landesfürstlicher Bestellung.
 
 **Weiterführend:** [Wien-Wiki: Stadtrichter](https://www.geschichtewiki.wien.gv.at/Stadtrichter)  
-**Literatur:** Czeike, Historisches Lexikon Wien, Band 5, S. 302 (Stadtrichter)
+**Literatur:** Czeike, Historisches Lexikon Wien, Band 5, S. 302
 {: .entry-refs }
 
 ### Bürger:in
@@ -285,19 +284,19 @@ Sitz des Stadtgerichts der Stadt Wien.
 
 ## E. Rechtsgeschäfte
 
-Die in diesem Abschnitt genannten Begriffe sind großteils auch im konsolidierten
-*Rechtshistorischen Glossar der Wiener Stadtbücher* (hg. von Wilhelm Brauneder und
-Christian Neschwara, Institut für Realienkunde, Universität Salzburg) online
-zugänglich: [imareal.sbg.ac.at/rechtshistorisches-glossar](https://www.imareal.sbg.ac.at/rechtshistorisches-glossar/). Die
+Die Erklärungen der in diesem Abschnitt genannten Begriffe folgen großteils den
+Rechtshistorischen Glossaren in den Editionsbänden der Wiener Stadtbücher
+(Brauneder/Jaritz/Neschwara); konsolidiert sind sie auch online zugänglich:
+[imareal.sbg.ac.at/rechtshistorisches-glossar](https://www.imareal.sbg.ac.at/rechtshistorisches-glossar/). Die
 Seitenverweise („Teil 1", „Teil 2" usw.) beziehen sich auf die Bände dieser
 Edition.
 
 ### Rechtsgeschäft
 Eine Willenserklärung mit rechtlich relevanten Folgen zwischen Personen oder
 Institutionen. Im Datenmodell ist ein Rechtsgeschäft der häufigste Typ eines
-[[#Event|Events]]. Vgl. zur zeitgenössischen Unterscheidung von einseitigem und
-gegenseitigem Rechtsgeschäft die Einträge *Geschäft* (Teil 1, S. 17 f.) und
-*Gemächt* (Teil 2, S. 13).
+[[#Event|Events]]. Zur zeitgenössischen Unterscheidung von einseitigem und
+gegenseitigem Rechtsgeschäft vgl. *Geschäft* (Teil 1, S. 17 f.) und *Gemächt*
+(Teil 2, S. 13).
 
 Die Wirksamkeit eines Rechtsgeschäfts setzt Geschäftsfähigkeit voraus:
 Rechtsgeschäfte Minderjähriger sind nach Wiener Recht nur schwebend wirksam und
@@ -306,45 +305,45 @@ grundsätzlich mit 18 Jahren) durch Bestätigung unwiderruflich; vgl.
 *Volljährigkeitsweisung* (Teil 4, S. 11 f.).
 
 ### Verkauf
-Die Übertragung eines Gutes gegen Bezahlung. Vgl. zum liegenschaftsrechtlichen
-Rahmen der Veräußerung und Belastung den Eintrag [[#Burgrecht]] (Teil 1, S. 13 f.).
+Die Übertragung eines Gutes gegen Bezahlung. Zum liegenschaftsrechtlichen Rahmen
+der Veräußerung und Belastung vgl. [[#Burgrecht]] (Teil 1, S. 13 f.).
 
 ### Schenkung
-Die unentgeltliche Übertragung eines Gutes. Vgl. zu unentgeltlichen Zuwendungen
-von Todes wegen (Vermächtnis/Legat) den Eintrag *Geschäft* (Teil 1, S. 17 f.).
+Die unentgeltliche Übertragung eines Gutes. Zu unentgeltlichen Zuwendungen von
+Todes wegen (Vermächtnis/Legat) vgl. *Geschäft* (Teil 1, S. 17 f.).
 
 ### Stiftung
 Die dauerhafte Zuwendung von Besitz oder Einkünften für einen bestimmten Zweck,
-häufig religiöser Art (Gebetsgedenken/memoria für das Seelenheil); für eine
-ausführliche Begriffserklärung (dort unter dem Stichwort *Messstiftung*) vgl.
-Teil 1, S. 18.
+häufig religiöser Art (Gebetsgedenken/memoria für das Seelenheil). Für eine
+ausführliche Begriffserklärung vgl. *Messstiftung* (Teil 1, S. 18).
 
 In Wien überwiegen Messstiftungen zur Feier von Seelenmessen: entweder als
 *Klosterstiftung*, bei der das Kloster das Stiftungsvermögen erhält und selbst
-verwaltet, oder als *Altarpfründe*, bei der sich der Stifter über die
+verwaltet, oder als *Altarpfründe*, bei der sich die Stifter:innen über die
 „Lehenschaft" (Bestellung und Kontrolle des Messpriesters) weltlichen Einfluss
-auf die Stiftung vorbehält.
+auf die Stiftung vorbehalten.
 
 ### Letztwillige Verfügung
 Eine Verfügung über den Nachlass für die Zeit nach dem Tod (zeitgenössisch
 „Geschäft").
 
 In der Wiener Rechtssprache bezeichnet „Geschäft" (zu „(ver)schaffen") die
-einseitige, jederzeit widerrufliche Verfügung von Todes wegen, im Unterschied zu
-den mit „(ver)machen" umschriebenen Verfügungen unter Lebenden und
-sachenrechtlichen Abreden (*Gemächt*); mit der Vollziehung eines Geschäfts werden
-ein oder mehrere Willensvollstrecker („Geschäftsherren") betraut. (Teil 1, S. 17)
+einseitige, jederzeit widerrufliche Verfügung von Todes wegen. Im Unterschied zu
+den, mit dem Wort „(ver)machen", umschriebenen Verfügungen unter Lebenden, sowie
+sachenrechtlichen Abreden (*Gemächt*). Mit der Vollziehung eines Geschäfts werden
+ein oder mehrere Willensvollstrecker („Geschäftsherren") betraut; vgl. *Geschäft*
+(Teil 1, S. 17 f.).
 
 ### Verpfändung
-Die Überlassung eines Gutes als Sicherheit für eine Forderung. Vgl. den Eintrag
-[[#Burgrecht]] (Teil 1, S. 13 f.); zur Verpfändung von Erbgut in Notlagen *Echte
-Not* (Teil 1, S. 14 f.), zur Haftung mit dem gesamten Vermögen *Geloben „zu allem
-Gut"* (Teil 2, S. 12).
+Die Überlassung eines Gutes als Sicherheit für eine Forderung, vgl. [[#Burgrecht]]
+(Teil 1, S. 13 f.); zur Verpfändung von Erbgut in Notlagen *„echte Not"* (Teil 1,
+S. 14 f.), zur Haftung mit dem gesamten Vermögen *Geloben „zu allem Gut"* (Teil 2,
+S. 12).
 
 ### Darlehen
-Die zeitweise Überlassung von Geld oder Gütern gegen Rückgabe. Vgl. zur
-zeitgenössischen Kreditgewährung durch Rentenkauf den Eintrag [[#Burgrecht]]
-(dort Burgrechts-Rente; Teil 1, S. 14).
+Die zeitweise Überlassung von Geld oder Gütern gegen Rückgabe. Zur
+zeitgenössischen Kreditgewährung durch Rentenkauf vgl. [[#Burgrecht]] (dort
+Burgrechts-Rente, Teil 1, S. 14).
 
 ### Urteil
 Die Entscheidung eines Gerichts oder einer anderen rechtsprechenden Instanz.
@@ -355,8 +354,8 @@ vorgelegt werden konnte.
 
 ### Grundzins / Grunddienst
 Eine regelmäßig zu entrichtende Abgabe für die Nutzung eines Grundstücks = die
-ursprüngliche Belastung des Grundstücks aus dem Bodenleihe-/Besitzverhältnis.
-Vgl. den Eintrag [[#Burgrecht]], Burgrechts-Leihe (Teil 1, S. 13 f.).
+ursprüngliche Belastung des Grundstücks aus dem Bodenleihe-/Besitzverhältnis;
+vgl. [[#Burgrecht]] (dort Burgrechts-Leihe, Teil 1, S. 13 f.).
 
 ### Burgrecht
 Eine durch ein Geld-/Rentengeschäft (Kapitalanlage auf der Liegenschaft) neu
@@ -364,9 +363,10 @@ geschaffene Rente: Die Gläubiger:innen („Käufer:innen") überlassen den
 Grundbesitzer:innen („Verkäufer:innen") Kapital und beziehen dafür einen
 jährlichen Zins (meist 8–12,5 % des überlassenen Kapitals). Das Burgrecht tritt
 als zweite Belastung neben den Grunddienst. Die Liegenschaft hat damit neben
-Grundherr:innen auch „Burgherr:innen".
+Grundherr:innen auch „Burgherr:innen"; vgl. *Burgrecht* (dort Burgrechts-Rente,
+Teil 1, S. 14).
 
-**Literatur:** Felix Czeike, Das „Burgrecht" in Wien im 15. Jahrhundert, in: Jahrbuch des Vereins für Geschichte der Stadt Wien 10 (1952/53), S. 115–137
+**Literatur:** Czeike, Das „Burgrecht" (Vollzitat im [Literaturverzeichnis](#g-literaturverzeichnis))
 {: .entry-refs }
 
 ## F. Projektrelevante Maße, Währungen und Besitzrecht
@@ -404,7 +404,7 @@ Maßgeblich waren der ungarische (`fl. ung.`) und der rheinische Gulden
 Wegen ihres konstanten Metallwerts dienten sie als Maßstab bei größeren
 Zahlungen und als Referenzgröße zur Bewertung der Silbermünzen.
 
-### Projektrelevante Grundstücks- und Flächenmaße
+### Projektrelevante Grundstücks- / Flächenmaße
 - **Joch:** Flächenmaß für ländlichen Boden; in Wien nutzungsabhängig: bei
   Weingärten 3.200 Quadratklafter (≈ 1,15 ha), bei Äckern 1.600 Quadratklafter
   (≈ 0,58 ha).
@@ -418,8 +418,21 @@ Zahlungen und als Referenzgröße zur Bewertung der Silbermünzen.
 - **Zentner** = 100 Wiener Pfund, ca. 56 kg; für schwere Waren.
 
 **Weiterführend:** [Wien-Wiki: Kaufkraftrechner](https://www.geschichtewiki.wien.gv.at/Kaufkraftrechner)  
-**Literatur:** Rudolf Geyer, Münze und Geld. Maß und Gewicht in Nieder- und Oberösterreich (Wien 1938); Thomas Ertl, Wien 1448. Steuerwesen und Wohnverhältnisse in einer spätmittelalterlichen Stadt (Wien/Köln/Weimar 2020)
+**Literatur:** Geyer, Münze und Geld; Ertl, Wien 1448 (Vollzitate im [Literaturverzeichnis](#g-literaturverzeichnis))
 {: .entry-refs }
+
+## G. Literaturverzeichnis
+
+Vollständige bibliografische Angaben zu den oben verkürzt zitierten Werken.
+
+- Karl UHLIRZ (Hg.), Verzeichnis der Originalurkunden des Städtischen Archives 1239–1411, Wien 1898. (Quellen zur Geschichte der Stadt Wien, Abt. 2: Regesten aus dem Archiv der Stadt Wien 1).
+- Karl UHLIRZ (Hg.), Verzeichnis der Originalurkunden des Städtischen Archives 1412–1457, Wien 1898. (Quellen zur Geschichte der Stadt Wien, Abt. 2: Regesten aus dem Archiv der Stadt Wien 2).
+- Wilhelm BRAUNEDER – Gerhard JARITZ – Christian Neschwara (Hg.), Die Wiener Stadtbücher 1395–1430. 6 Bde., Wien/Köln/Graz 1989–2026.
+- Felix CZEIKE, Das „Burgrecht" in Wien im 15. Jahrhundert, in: Jahrbuch des Vereins für Geschichte der Stadt Wien 10 (1952/53), S. 115–137.
+- Felix CZEIKE, Historisches Lexikon Wien, 6 Bde., Wien 1992–2004.
+- Rudolf GEYER, Münze und Geld. Maß und Gewicht in Nieder- und Oberösterreich, Wien 1938.
+- Thomas ERTL, Wien 1448. Steuerwesen und Wohnverhältnisse in einer spätmittelalterlichen Stadt, Wien/Köln/Weimar 2020.
+- Richard PERGER, Die Wiener Ratsbürger 1396–1526, Wien 1988 (Forschungen und Beiträge zur Wiener Stadtgeschichte, 18).
 
 ---
 
