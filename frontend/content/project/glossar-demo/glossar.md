@@ -403,7 +403,7 @@ Zahlungen und als Referenzgröße zur Bewertung der Silbermünzen.
 
 ## G. Literaturverzeichnis
 
-- Wilhelm BRAUNEDER – Gerhard JARITZ – Christian Neschwara (Hg.), Die Wiener Stadtbücher 1395–1430. 6 Bde., Wien/Köln/Graz 1989–2026.
+- Wilhelm BRAUNEDER – Gerhard JARITZ – Christian NESCHWARA (Hg.), Die Wiener Stadtbücher 1395–1430. 6 Bde., Wien/Köln/Graz 1989–2026.
 - Felix CZEIKE, Das „Burgrecht" in Wien im 15. Jahrhundert, in: Jahrbuch des Vereins für Geschichte der Stadt Wien 10 (1952/53), S. 115–137.
 - Felix CZEIKE, Historisches Lexikon Wien, 6 Bde., Wien 1992–2004.
 - Thomas ERTL, Wien 1448. Steuerwesen und Wohnverhältnisse in einer spätmittelalterlichen Stadt, Wien/Köln/Weimar 2020.
