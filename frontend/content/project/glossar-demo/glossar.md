@@ -25,17 +25,20 @@ zur Geschichte der Stadt Wien" (Uhlirz). Künftig werden im Frontend weitere
 Korpora hinzukommen, z.B. die „Wiener Stadtbücher" (Brauneder/Jaritz) und
 Grundbücher.
 
-Erfassungsstand: von Beginn der Überlieferung 1177 bis inklusive das Jahr 1414  
-Karl UHLIRZ (Hg.), Verzeichnis der Originalurkunden des Städtischen Archives 1239–1411, Wien 1898. (Quellen zur Geschichte der Stadt Wien, Abt. 2: Regesten aus dem Archiv der Stadt Wien 1).  
-Karl UHLIRZ (Hg.), Verzeichnis der Originalurkunden des Städtischen Archives 1412–1457, Wien 1898. (Quellen zur Geschichte der Stadt Wien, Abt. 2: Regesten aus dem Archiv der Stadt Wien 2).
+Erfassungsstand: von Beginn der Überlieferung 1177 bis inklusive das Jahr 1414
 
-Monasterium: [https://www.monasterium.net/mom/AT-WStLA/HAUrk/fond](https://www.monasterium.net/mom/AT-WStLA/HAUrk/fond)  
-Übersicht der QGWs im Wien-Wiki: [https://www.geschichtewiki.wien.gv.at/Quellen_zur_Geschichte_der_Stadt_Wien#Band_II.1:_Verzeichnis_der_Originalurkunden_des_Städtischen_Archives_1239_-_1411](https://www.geschichtewiki.wien.gv.at/Quellen_zur_Geschichte_der_Stadt_Wien#Band_II.1:_Verzeichnis_der_Originalurkunden_des_Städtischen_Archives_1239_-_1411)
+- Karl UHLIRZ (Hg.), Verzeichnis der Originalurkunden des Städtischen Archives 1239–1411, Wien 1898. (Quellen zur Geschichte der Stadt Wien, Abt. 2: Regesten aus dem Archiv der Stadt Wien 1).
+- Karl UHLIRZ (Hg.), Verzeichnis der Originalurkunden des Städtischen Archives 1412–1457, Wien 1898. (Quellen zur Geschichte der Stadt Wien, Abt. 2: Regesten aus dem Archiv der Stadt Wien 2).
 
-Erfassungsstand: Band 1 (1395-1400)  
-Wilhelm BRAUNEDER – Gerhard JARITZ (Hg.), Die Wiener Stadtbücher 1395–1430. Band 1, Wien/Köln/Graz 1989 (Fontes Rerum Austriacarum 3/10/1).
+**Weiterführend:** [Monasterium](https://www.monasterium.net/mom/AT-WStLA/HAUrk/fond) · [Übersicht zu den QGWs im Wien-Wiki](https://www.geschichtewiki.wien.gv.at/Quellen_zur_Geschichte_der_Stadt_Wien#Band_II.1:_Verzeichnis_der_Originalurkunden_des_Städtischen_Archives_1239_-_1411)
+{: .entry-refs }
 
-Link zur Edition der Wiener Stadtbücher: [https://www.imareal.sbg.ac.at/publikationen-uebersicht/die-wiener-stadtbuecher/](https://www.imareal.sbg.ac.at/publikationen-uebersicht/die-wiener-stadtbuecher/)
+Erfassungsstand: Band 1 (1395-1400)
+
+- Wilhelm BRAUNEDER – Gerhard JARITZ (Hg.), Die Wiener Stadtbücher 1395–1430. Band 1, Wien/Köln/Graz 1989 (Fontes Rerum Austriacarum 3/10/1).
+
+**Weiterführend:** [Edition der Wiener Stadtbücher](https://www.imareal.sbg.ac.at/publikationen-uebersicht/die-wiener-stadtbuecher/)
+{: .entry-refs }
 
 ### Event
 
