@@ -104,8 +104,14 @@
         // Raw org-type code -> German label, filled from search data (e.tpl);
         // mirrored so table, basket and active-filter strip share the chip label.
         let typeLabels = {};
+        // Technical IDs (pe__/org__) are searchable only in the internal
+        // build; the public UI must not react to them (Protokoll 18.05.2026
+        // A.3.2, Offene Punkte 09.07.2026).
+        let idSearchable = document.body.getAttribute('data-audience') === 'intern';
+
         let state = {
             query: '',
+            hashId: '',       // deep-link constraint (#pe__id), independent of search
             letter: '',
             sex: [],          // m/f/u — empty = all (persons only)
             roles: [],        // issuer/recipient/witness/other — OR logic (persons only)
@@ -416,6 +422,7 @@
             return [isNaN(am) ? null : am, isNaN(ax) ? null : ax];
         }
         function matchesAllExcept(entry, skip) {
+            if (skip !== 'hash' && state.hashId && entry.id !== state.hashId) return false;
             if (skip !== 'letter' && state.letter) {
                 if (entry._fl !== state.letter) return false;
             }
@@ -599,9 +606,28 @@
             history.replaceState(null, '', url);
         }
 
+        function clearHashConstraint() {
+            state.hashId = '';
+            if (window.location.hash) {
+                history.replaceState(null, '', location.pathname + location.search);
+            }
+        }
+
         function updateActiveFilters() {
             if (!activeFiltersEl) return;
             activeFiltersEl.innerHTML = '';
+            if (state.hashId) {
+                let entry = null;
+                for (let i = 0; i < allEntries.length; i++) {
+                    if (allEntries[i].id === state.hashId) { entry = allEntries[i]; break; }
+                }
+                // Chip label shows the display name, never the technical ID.
+                let label = 'Auswahl: ' + (entry && entry.n ? entry.n : 'Direktlink');
+                TableInfra.addFilterChip(activeFiltersEl, label, function() {
+                    clearHashConstraint();
+                    applyFilters();
+                });
+            }
             if (state.query) {
                 TableInfra.addFilterChip(activeFiltersEl, 'Suche: ' + state.query, function() {
                     if (searchControl) searchControl.reset();
@@ -679,6 +705,7 @@
         let resetBtn = document.getElementById('filter-reset');
         if (resetBtn) {
             resetBtn.addEventListener('click', function() {
+                clearHashConstraint();
                 state.letter = '';
                 state.sex = [];
                 state.roles = [];
@@ -732,9 +759,11 @@
                 if (allEntries[i].id === targetId) { entry = allEntries[i]; break; }
             }
             if (!entry) return;
-            // Constrain via the search to the target id so the row is
-            // guaranteed to land in the virtualised tbody.
-            if (searchControl) searchControl.set(targetId);
+            // Constrain via state.hashId so the row is guaranteed to land in
+            // the virtualised tbody. Deliberately not via the search box: the
+            // public haystack excludes technical IDs and the raw ID must not
+            // surface in the UI.
+            state.hashId = targetId;
             state.letter = '';
             state.sex = [];
             state.roles = [];
@@ -765,13 +794,14 @@
                     });
                 }
                 allEntries.forEach(function(e) {
-                    // Search index covers name/ID/first name/surname plus
-                    // activity years and the sub-label (corpus + Nr.) — so
+                    // Search index covers name/first name/surname (plus the
+                    // technical ID in the internal build only), activity
+                    // years and the sub-label (corpus + Nr.) — so
                     // '1340 Katharina' and 'Nr. 66' work as search terms.
                     // Add 'Nr. <i0>' explicitly so users can search the
                     // sub-label spelling directly.
                     let parts = [
-                        e.n || '', e.id || '',
+                        e.n || '', idSearchable ? (e.id || '') : '',
                         e.fn || '', e.sn || '',
                         e.am || '', e.ax || '',
                         e.cl0 || '', e.i0 || '',

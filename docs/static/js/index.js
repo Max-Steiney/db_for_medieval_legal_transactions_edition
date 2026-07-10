@@ -119,6 +119,13 @@
                '<path d="M2.6 11.6l3-2.6l2.4 2l3-2.6l2.4 2.2" ' +
                'stroke="currentColor" stroke-width="1.2" stroke-linejoin="round" fill="none"/>' +
                '</svg>',
+            // No form of treatment yet: dashed placeholder circle. An empty
+            // cell would read as a data error, so the gap is marked
+            // explicitly (Offene Punkte 09.07.2026).
+            x: '<svg viewBox="0 0 16 16" aria-hidden="true">' +
+               '<circle cx="8" cy="8" r="5.5" stroke="currentColor" stroke-width="1.3" ' +
+               'stroke-dasharray="2.4 2.2" fill="none"/>' +
+               '</svg>',
             // Multiple legal transactions: two slightly offset rectangles,
             // read as 'more than one transaction in one source'.
             m: '<svg viewBox="0 0 16 16" aria-hidden="true">' +
@@ -158,6 +165,10 @@
             if (doc.ecS > 0) pills.push(['s', 'Siegel', 'Quelle trägt eine Siegel-Beschreibung im Original-Markup (Form, Material, Erhaltung).']);
             if (doc.ecE > 0) pills.push(['e', 'Eintrag', 'Quelle ist ein Stadtbuch-Eintrag im Original-Markup.']);
             if (doc.ecN > 0) pills.push(['n', 'Nota', 'Quelle trägt eine Nota im Original-Markup (Nachsatz oder Marginalie).']);
+            if (!doc.ecR && !doc.ecS && !doc.ecE && !doc.ecN) {
+                pills.push(['x', 'Ohne Erschließungsform',
+                            'Quelle trägt noch keine der TEI-Erschließungsformen (Regest, Siegel, Eintrag, Nota) im Original-Markup. Betrifft die parallel im Privilegienband edierten QGW-Privilegien, das Satzbuch CD und einen Teilbestand der Stadtbücher; Aufarbeitung offen.']);
+            }
             if (doc.f) pills.push(['f', 'Faksimile', 'Digitalisat des Originals verlinkt']);
             // Multi-transaction marker as a regular pill \u2014 stacked rectangles;
             // the actual count lives in the tooltip body.
@@ -464,7 +475,9 @@
             chips.forEach(function(chip) {
                 let key = chip.getAttribute('data-collection');
                 let countEl = chip.querySelector('.chip-count');
-                if (countEl) countEl.textContent = counts[key] || 0;
+                let n = counts[key] || 0;
+                if (countEl) countEl.textContent = n;
+                _setChipHidden(chip, n);
             });
         }
 
@@ -802,10 +815,10 @@
             if (doc.ecS) formParts.push('Siegel');
             if (doc.ecE) formParts.push('Eintrag');
             if (doc.ecN) formParts.push('Nota');
-            if (formParts.length) {
-                metaParts.push('<span><strong>Erschliessungsform:</strong> ' +
-                               formParts.join(', ') + '</span>');
-            }
+            metaParts.push('<span><strong>Erschliessungsform:</strong> ' +
+                           (formParts.length ? formParts.join(', ')
+                                             : 'noch keine (Aufarbeitung offen)') +
+                           '</span>');
             if (doc.ec > 1) {
                 metaParts.push('<span><strong>Rechtsgesch\u00e4fte:</strong> ' +
                                doc.ec + ' in dieser Quelle</span>');
