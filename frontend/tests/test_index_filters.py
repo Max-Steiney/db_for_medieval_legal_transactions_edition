@@ -100,3 +100,15 @@ def test_preview_meta_nennt_fehlende_erschliessungsform():
     assert "noch keine (Aufarbeitung offen)" in src, (
         "Der Vorschau-Meta-Streifen verschweigt fehlende Erschliessungsformen wieder."
     )
+
+
+def test_chip_hidden_regel_existiert():
+    # Live-Befund 10.07.2026: der Korpus-Chip blieb trotz chip.hidden=true
+    # mit "(0)" stehen, weil '.chip { display: inline-flex }' die
+    # UA-Regel '[hidden] { display: none }' ueberstimmt. Gegenregel noetig,
+    # analog zu '.form-filter-chip[hidden]'.
+    css = (_ROOT / "static" / "css" / "index.css").read_text(encoding="utf-8")
+    assert ".chip[hidden]" in css, (
+        "Die Gegenregel .chip[hidden] { display: none } fehlt; "
+        "0-Treffer-Korpus-Chips bleiben dann sichtbar."
+    )

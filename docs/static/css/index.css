@@ -208,6 +208,12 @@
     white-space: nowrap;
 }
 
+/* Wie .form-filter-chip[hidden]: die eigene display-Regel wuerde das
+   [hidden]-Attribut der 0-Treffer-Ausblendung sonst ueberstimmen. */
+.chip[hidden] {
+    display: none;
+}
+
 .chip:hover {
     border-color: var(--anno-person);
     background: var(--color-bg-warm);
