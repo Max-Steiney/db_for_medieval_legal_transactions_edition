@@ -42,7 +42,7 @@
                     <p>Folgende Felder werden gepr&uuml;ft:</p>
                     <ul>
                         <li><strong>Name</strong>, auch <strong>Vorname</strong> und <strong>Familienname</strong> einzeln</li>
-                        <li><strong>ID</strong> der konsolidierten Person</li>
+                        {% if audience.show_entity_ids %}<li><strong>ID</strong> der konsolidierten Person</li>{% endif %}
                         <li><strong>Datum der Quellen</strong>, Jahre der ersten und letzten Quellennennung (z.&nbsp;B. „1340")</li>
                         <li><strong>Sub-Label</strong> der Erstnennung (z.&nbsp;B. „QGW Nr. 66")</li>
                     </ul>
@@ -51,14 +51,14 @@
                     <p>Folgende Felder werden gepr&uuml;ft:</p>
                     <ul>
                         <li><strong>Name</strong> der Organisation</li>
-                        <li><strong>ID</strong> der konsolidierten Organisation</li>
+                        {% if audience.show_entity_ids %}<li><strong>ID</strong> der konsolidierten Organisation</li>{% endif %}
                         <li><strong>Datum der Quellen</strong>, Jahre der ersten und letzten Quellennennung (z.&nbsp;B. „1340")</li>
                         <li><strong>Sub-Label</strong> der Erstnennung (z.&nbsp;B. „QGW Nr. 66")</li>
                     </ul>
                     {% endif %}
                     <p>Umlaute werden ignoriert, mehrere W&ouml;rter mit UND verkn&uuml;pft.</p>
                 {% endcall %}</div>
-                {{ search_box('Name, ID, Jahr ...') }}
+                {{ search_box('Name, ID, Jahr ...' if audience.show_entity_ids else 'Name, Jahr ...') }}
             </section>
 
             {% if sex_data %}
