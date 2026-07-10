@@ -96,7 +96,7 @@
             <div class="main-toolbar">
                 <span class="result-count-wrap">
                     {{ result_count(total_count, register_label) }}{% if register_type == 'persons' %}{% call tip_glossary('gloss-person-results', 'Individuelle Person') %}
-                        <p>Definition in redaktioneller &Uuml;berarbeitung.</p>
+                        <p>Eine konsolidierte Identit&auml;t im Personenregister, unabh&auml;ngig von der Anzahl ihrer Nennungen; dieselbe historische Person z&auml;hlt genau einmal.</p>
                     {% endcall %}{% endif %}
                 </span>
                 {{ active_filters() }}
@@ -111,7 +111,7 @@
                             <th scope="col" class="col-sex" data-sort="sex">Geschlecht</th>
                             <th scope="col" class="col-roles">
                                 Rollen{% call tip_glossary('col-info-roles', 'Rolle', slug='rolle') %}
-                                    <p>Definition in redaktioneller &Uuml;berarbeitung.</p>
+                                    <p>Die Funktion, die eine Person innerhalb eines bestimmten Ereignisses einnimmt. Dieselbe Person kann in einer oder mehreren Quellen verschiedene Rollen einnehmen.</p>
                                 {% endcall %}
                             </th>
                             {% else %}

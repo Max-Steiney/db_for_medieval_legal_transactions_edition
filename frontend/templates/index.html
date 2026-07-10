@@ -81,7 +81,7 @@
             <div class="main-toolbar">
                 <span class="result-count-wrap">
                     {{ result_count(total_count, 'Quellen') }}{% call tip_glossary('gloss-quelle-results', 'Quelle', slug='quelle') %}
-                        <p>Definition in redaktioneller &Uuml;berarbeitung.</p>
+                        <p>Eine einzelne historische Quelle, die in der Datenbank erfasst wurde; derzeit vor allem Urkunden und Stadtbucheintr&auml;ge.</p>
                     {% endcall %}
                 </span>
                 {{ active_filters() }}
@@ -108,12 +108,12 @@
                             </th>
                             <th scope="col" class="col-title">
                                 Regest{% call tip_glossary('col-info-regest', 'Regest', slug='regest') %}
-                                    <p>Definition in redaktioneller &Uuml;berarbeitung.</p>
+                                    <p>Knappe Inhaltsangabe einer historischen Quelle. Regesten erfassen vor allem Rechtsinhalt, Datierung und beteiligte Personen.</p>
                                 {% endcall %}
                             </th>
                             <th scope="col" class="col-content" data-sort="pcd">
                                 Beteiligte{% call tip_glossary('col-info-beteiligte', 'Beteiligte') %}
-                                    <p>Definition in redaktioneller &Uuml;berarbeitung.</p>
+                                    <p>Anzahl der in der Quelle annotierten Personen. Die Symbole daneben zeigen die Erschlie&szlig;ungsform der Quelle, ein verlinktes Faksimile und mehrere Rechtsgesch&auml;fte in einer Quelle an.</p>
                                 {% endcall %}
                             </th>
                             <th scope="col" class="col-basket" aria-label="Datenkorb-Aktion"></th>
