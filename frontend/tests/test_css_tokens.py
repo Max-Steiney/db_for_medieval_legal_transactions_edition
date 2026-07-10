@@ -27,6 +27,7 @@ RUNTIME_OR_FALLBACK = {
     "--rank-pct",           # exploration: var(--rank-pct, 0%), pro Balken
     "--swatch-color",       # exploration: var(--swatch-color, var(--color-text-muted))
     "--color-on-accent",    # document: var(--color-on-accent, #fff)
+    "--color-text-strong",  # glossar-demo: var(--color-text-strong, #5a4a2f)
 }
 
 _DEF = re.compile(r"(--[A-Za-z0-9_-]+)\s*:")
