@@ -68,3 +68,35 @@ def test_zeitraum_balken_setzt_kein_natives_title():
         "Histogramm-Balken setzt wieder ein natives title-Attribut: "
         "zweiter Tooltip neben dem hint.js-Popover (A5)."
     )
+
+
+def test_korpus_chips_verbergen_nullwerte():
+    # Offene Punkte 09.07.2026: Nullwerte ausgefilterter Kategorien nicht
+    # dauerhaft anzeigen. Die Korpus-Chips muessen wie alle anderen
+    # Filtergruppen ueber _setChipHidden ausgeblendet werden, sobald ihr
+    # Live-Count unter den aktiven Filtern 0 ist (aktiver Chip bleibt).
+    src = INDEX_JS.read_text(encoding="utf-8")
+    corpus_fn = src.split("function updateCorpusCounts()")[1].split("function ")[0]
+    assert "_setChipHidden(chip, n)" in corpus_fn, (
+        "updateCorpusCounts() blendet Chips mit Count 0 nicht mehr aus; "
+        "tote '(0)'-Chips bleiben dann dauerhaft sichtbar."
+    )
+
+
+def test_quelle_ohne_erschliessungsform_bekommt_platzhalter_pille():
+    # Offene Punkte 09.07.2026: 66 Quellen ohne Form zeigten gar kein Symbol,
+    # was wie ein Datenfehler wirkt. Die Zeile traegt jetzt eine explizite
+    # Platzhalter-Pille (gestrichelter Kreis) mit Erklaer-Tooltip.
+    src = INDEX_JS.read_text(encoding="utf-8")
+    assert "if (!doc.ecR && !doc.ecS && !doc.ecE && !doc.ecN) {" in src
+    assert "'Ohne Erschließungsform'" in src.split("function renderContent")[1].split("function ")[0]
+    assert "stroke-dasharray" in src, (
+        "Das Platzhalter-Icon (FORM_ICONS.x) fehlt."
+    )
+
+
+def test_preview_meta_nennt_fehlende_erschliessungsform():
+    src = INDEX_JS.read_text(encoding="utf-8")
+    assert "noch keine (Aufarbeitung offen)" in src, (
+        "Der Vorschau-Meta-Streifen verschweigt fehlende Erschliessungsformen wieder."
+    )
