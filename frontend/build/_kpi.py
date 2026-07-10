@@ -230,7 +230,7 @@ def _compute_matrix_columns(total_docs, total_mentions, total_events):
             "label": "Nennungen",
             "glossary_id": "gloss-nennung",
             "glossary_term": "Gesamtnennung",
-            "glossary_slug": "gesamtnennung",
+            "glossary_slug": None,
             "glossary_def": Markup(
                 "Definition in redaktioneller &Uuml;berarbeitung."
             ),

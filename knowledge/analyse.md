@@ -118,4 +118,4 @@ Drill-down-Mechanik und Provenienz-Indizierung in [[architecture#Provenienz-Indi
 - Volltextsuche auf `search.json` als alternativer Einstieg neben dem Frage-Interface.
 - Export der Abfragespezifikation als JSON oder CSV zur Weitergabe und Zitation.
 
-Menschen-Events sind ein Sonderfall des Datenmodells (Definition in [[glossar#Menschen-Event]]). Personen-Annotationen in verschachtelten Events werden nicht doppelt gezählt, siehe [[specification#Nennungen zählen nur Personen-Annotationen außerhalb mentioned Events]]. Kartenvisualisierungen und Netzwerk-Visualisierungen liegen konzeptionell im Bereich [[exploration]].
+Menschen-Events sind ein Sonderfall des Datenmodells (Definition in [[technik#Menschen-Event]]). Personen-Annotationen in verschachtelten Events werden nicht doppelt gezählt, siehe [[specification#Nennungen zählen nur Personen-Annotationen außerhalb mentioned Events]]. Kartenvisualisierungen und Netzwerk-Visualisierungen liegen konzeptionell im Bereich [[exploration]].

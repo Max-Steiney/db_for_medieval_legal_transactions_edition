@@ -95,7 +95,7 @@
 
             <div class="main-toolbar">
                 <span class="result-count-wrap">
-                    {{ result_count(total_count, register_label) }}{% if register_type == 'persons' %}{% call tip_glossary('gloss-person-results', 'Individuelle Person', slug='individuelle-person') %}
+                    {{ result_count(total_count, register_label) }}{% if register_type == 'persons' %}{% call tip_glossary('gloss-person-results', 'Individuelle Person') %}
                         <p>Definition in redaktioneller &Uuml;berarbeitung.</p>
                     {% endcall %}{% endif %}
                 </span>

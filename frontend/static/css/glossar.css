@@ -1,7 +1,7 @@
 /* Glossar-Demo — seiten-lokale Styles (Demo-Modell, isoliert).
    Wird ueber glossar_demo.html (block head) eingehaengt, analog content.css. */
 
-.demo-pagenav {
+.glossar-pagenav {
     font-size: .9rem;
     margin: 0 0 1.5rem;
     padding: .6rem .8rem;
@@ -9,7 +9,7 @@
     border: 1px solid var(--color-border, #d8d2c4);
     border-radius: 6px;
 }
-.demo-pagenav strong { color: var(--color-text-strong, #5a4a2f); }
+.glossar-pagenav strong { color: var(--color-text-strong, #5a4a2f); }
 
 /* Tooltip-Kopplungs-Demo (Glossar) */
 .demo-tip-demo {

@@ -1,29 +1,28 @@
-"""Tests for the three-page glossary demo build."""
+"""Tests for the production glossary pages (glossary.html + technik.html)."""
 
 from pathlib import Path
 
 import pytest
 
-from frontend.build import _build_glossar_demo, _init_jinja
+from frontend.build import _build_glossary, _init_jinja
 
 
 @pytest.fixture(scope="module")
 def built_demo(docs_dir):
     env = _init_jinja()
-    _build_glossar_demo(env)
-    base = docs_dir / "project" / "glossar-demo"
-    pages = {p: (base / f"{p}.html") for p in ("glossar", "technik")}
+    _build_glossary(env)
+    base = docs_dir / "project"
+    pages = {"glossar": base / "glossary.html", "technik": base / "technik.html"}
     contents = {}
     for name, path in pages.items():
-        assert path.exists(), f"glossar-demo/{name}.html was not generated"
+        assert path.exists(), f"project/{path.name} was not generated"
         contents[name] = path.read_text(encoding="utf-8")
     return contents
 
 
 # --- Task 1: build plumbing / smoke ---
 
-def test_active_demo_pages_built(built_demo):
-    # Tutorial vorerst aus der Demo genommen (Stakeholder 2026-07-08); nur Glossar + Technik.
+def test_both_pages_built(built_demo):
     assert set(built_demo) == {"glossar", "technik"}
 
 
@@ -102,7 +101,7 @@ def test_technik_explains_witness_grouping(built_demo):
 
 def test_technik_links_back(built_demo):
     c = built_demo["technik"]
-    assert "glossar.html" in c
+    assert "glossary.html" in c
     assert "tutorial.html" not in c  # Tutorial vorerst entfernt
 
 
@@ -115,34 +114,29 @@ def test_technik_links_back(built_demo):
 def test_mutual_cross_links(built_demo):
     # Die beiden aktiven Seiten verlinken einander
     assert "technik.html" in built_demo["glossar"]
-    assert "glossar.html" in built_demo["technik"]
+    assert "glossary.html" in built_demo["technik"]
 
 
-def test_glossary_demo_does_not_touch_production(docs_dir):
-    # produktive glossary.html wird vom Demo-Build NICHT geschrieben
-    assert not (docs_dir / "project" / "glossary.html").exists()
-
-
-def test_pages_link_demo_css(built_demo):
+def test_pages_link_glossar_css(built_demo):
     for name, c in built_demo.items():
-        assert "static/css/glossar-demo.css" in c, name
+        assert "static/css/glossar.css" in c, name
 
 
 def test_md_sources_have_no_inline_style():
     from pathlib import Path
-    base = Path(__file__).resolve().parents[1] / "content" / "project" / "glossar-demo"
+    base = Path(__file__).resolve().parents[1] / "content" / "project"
     for name in ("glossar", "technik"):
         md = (base / f"{name}.md").read_text(encoding="utf-8")
         assert "<style>" not in md, name
 
 
-def test_demo_css_asset_exists():
+def test_glossar_css_asset_exists():
     from pathlib import Path
-    css = Path(__file__).resolve().parents[1] / "static" / "css" / "glossar-demo.css"
+    css = Path(__file__).resolve().parents[1] / "static" / "css" / "glossar.css"
     assert css.exists()
     body = css.read_text(encoding="utf-8")
     # Kern-Klassen der drei Seiten muessen abgedeckt sein
-    for cls in (".demo-pagenav", ".demo-tip-demo", ".demo-case", ".demo-editnote",
+    for cls in (".glossar-pagenav", ".demo-tip-demo", ".demo-case", ".demo-editnote",
                 ".tech-codes", ".roleName-grid", ".dev-only"):
         assert cls in body, cls
 
@@ -151,8 +145,7 @@ def test_demo_css_asset_exists():
 
 def test_glossar_role_headings_are_clean():
     from pathlib import Path
-    md = (Path(__file__).resolve().parents[1] / "content" / "project"
-          / "glossar-demo" / "glossar.md").read_text(encoding="utf-8")
+    md = (Path(__file__).resolve().parents[1] / "content" / "project" / "glossar.md").read_text(encoding="utf-8")
     for line in md.splitlines():
         if line.startswith("### "):
             for alias in ("(issuer)", "(recipient)", "(witness)", "(other)"):
@@ -162,8 +155,7 @@ def test_glossar_role_headings_are_clean():
 def test_glossar_role_code_lines_removed():
     # Demo-eigene "Code-Wert"-Zeilen entfernt (Stakeholder 2026-07-08); die Codes leben auf der Technik-Seite.
     from pathlib import Path
-    md = (Path(__file__).resolve().parents[1] / "content" / "project"
-          / "glossar-demo" / "glossar.md").read_text(encoding="utf-8")
+    md = (Path(__file__).resolve().parents[1] / "content" / "project" / "glossar.md").read_text(encoding="utf-8")
     assert "Code-Wert im Datenmodell" not in md
     for code in ("issuer", "recipient", "witness"):
         assert code not in md, code
@@ -214,13 +206,13 @@ def test_glossar_event_heading_clean_slug(built_demo):
 
 def test_entry_refs_styled_in_css():
     from pathlib import Path
-    css = (Path(__file__).resolve().parents[1] / "static" / "css" / "glossar-demo.css").read_text(encoding="utf-8")
+    css = (Path(__file__).resolve().parents[1] / "static" / "css" / "glossar.css").read_text(encoding="utf-8")
     assert ".entry-refs" in css
 
 
 def test_tooltip_preview_reset_positioning():
     from pathlib import Path
-    css = (Path(__file__).resolve().parents[1] / "static" / "css" / "glossar-demo.css").read_text(encoding="utf-8")
+    css = (Path(__file__).resolve().parents[1] / "static" / "css" / "glossar.css").read_text(encoding="utf-8")
     # Der Demo-Override muss die absolute-Positionierung der echten tip.css neutralisieren
     block = css.split(".demo-tip-demo .tip-popover", 1)[-1].split("}", 1)[0]
     assert "transform: none" in block
@@ -249,7 +241,7 @@ def test_glossar_def_references(built_demo):
 
 def test_glossar_gender_doppelpunkt():
     from pathlib import Path
-    md = (Path(__file__).resolve().parents[1] / "content" / "project" / "glossar-demo" / "glossar.md").read_text(encoding="utf-8")
+    md = (Path(__file__).resolve().parents[1] / "content" / "project" / "glossar.md").read_text(encoding="utf-8")
     assert "*in" not in md  # kein Gender-Stern aus dem .docx
     assert "Bürger:in" in md
 
@@ -309,8 +301,8 @@ def test_glossar_section_c_heading(built_demo):
     assert "C. Rollen in Rechtsgeschäften" in built_demo["glossar"]
 
 
-def test_no_gender_star_in_any_demo_source():
-    base = Path(__file__).resolve().parents[1] / "content" / "project" / "glossar-demo"
+def test_no_gender_star_in_any_source():
+    base = Path(__file__).resolve().parents[1] / "content" / "project"
     for name in ("glossar", "technik"):
         md = (base / f"{name}.md").read_text(encoding="utf-8")
         assert "*in" not in md, name
@@ -319,8 +311,7 @@ def test_no_gender_star_in_any_demo_source():
 def test_technik_case2_sealer_has_witness_code():
     # Konsistenz: alle drei Faelle geben fuer die Siegler-Funktion den Code witness an.
     # Pruefung an der .md-Quelle (das gerenderte HTML enthaelt ein TOC mit gleichen Titeln).
-    md = (Path(__file__).resolve().parents[1] / "content" / "project"
-          / "glossar-demo" / "technik.md").read_text(encoding="utf-8")
+    md = (Path(__file__).resolve().parents[1] / "content" / "project" / "technik.md").read_text(encoding="utf-8")
     seg = md.split("Benedicta de Arnstain", 1)[-1].split("Fallbeispiel 3", 1)[0]
     assert "Siegler" in seg and "witness" in seg
     # kein isoliertes "(sealer)" ohne witness in irgendeinem Fall
@@ -369,9 +360,9 @@ def test_technik_marked_in_arbeit(built_demo):
     assert "In Arbeit" in built_demo["technik"]
 
 
-def test_no_tutorial_references_in_active_demo():
+def test_no_tutorial_references_in_active_pages():
     # Keine Tutorial-Links/-Mentions mehr in den aktiven Demo-Quellen
-    base = Path(__file__).resolve().parents[1] / "content" / "project" / "glossar-demo"
+    base = Path(__file__).resolve().parents[1] / "content" / "project"
     for name in ("glossar", "technik"):
         md = (base / f"{name}.md").read_text(encoding="utf-8")
         assert "tutorial.html" not in md, name
@@ -384,3 +375,25 @@ def test_glossar_intro_links_technik_as_technisches_glossar(built_demo):
     assert "technisches Glossar" in c
     # Inhalt-Raster (Abschnittsaufzaehlung) im Intro entfernt
     assert "sechs thematische Abschnitte" not in c
+
+
+# --- Produktiv-Integration 2026-07-10 ---
+
+def test_glossar_in_project_nav(built_demo):
+    # Glossar ist im Projekt-Dropdown verlinkt; Technik (in Arbeit) bewusst nicht
+    c = built_demo["glossar"]
+    assert 'href="../project/glossary.html"' in c
+    assert '/project/technik.html"' not in c.split('nav-links')[1].split('</nav>')[0]
+
+
+def test_ui_glossary_slugs_have_anchors(built_demo):
+    # Jeder slug=... aus Templates/_kpi muss als Anker existieren
+    import re
+    base = Path(__file__).resolve().parents[1]
+    referenced = set()
+    for f in list((base / "templates").glob("*.html")) + [base / "build" / "_kpi.py"]:
+        referenced.update(re.findall(r"slug='([a-z0-9-]+)'", f.read_text(encoding="utf-8")))
+        referenced.update(re.findall(r'"glossary_slug": "([a-z0-9-]+)"', f.read_text(encoding="utf-8")))
+    anchors = set(re.findall(r'id="([a-z0-9-]+)"', built_demo["glossar"]))
+    missing = referenced - anchors
+    assert not missing, f"UI verlinkt Glossar-Anker, die nicht existieren: {sorted(missing)}"

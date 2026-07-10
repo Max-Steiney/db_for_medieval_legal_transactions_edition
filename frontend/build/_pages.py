@@ -1198,22 +1198,28 @@ def _render_content_page(env, *, md_source, page_title, page_subtitle,
 
 
 def _build_glossary(env):
-    """Build glossary page from frontend/content/project/glossar.md."""
-    md_path = CONTENT_DIR / "project" / "glossar.md"
-    if not md_path.exists():
-        print("  WARN: glossar.md nicht gefunden, skip glossary.",
-              file=sys.stderr)
-        return
-
-    _render_content_page(
-        env,
-        md_source=md_path.read_text(encoding="utf-8"),
-        page_title="Glossar",
-        page_subtitle="Kanonische Definitionen aller Fachbegriffe der Datenbank.",
-        out_path=DOCS_DIR / "project" / "glossary.html",
-        root_path="..",
-    )
-    print("  Glossary page: project/glossary.html")
+    """Build glossary + technik pages from frontend/content/project/."""
+    pages = [
+        ("glossar.md", "glossary.html", "Glossar",
+         "Begriffsdefinitionen des Projekts."),
+        ("technik.md", "technik.html", "Technik / Datenmodell",
+         "TEI-Auszeichnung, Rollen und roleName-Typen der Datenbank."),
+    ]
+    for md_name, out_name, title, subtitle in pages:
+        md_path = CONTENT_DIR / "project" / md_name
+        if not md_path.exists():
+            print(f"  WARN: {md_name} nicht gefunden, skip.", file=sys.stderr)
+            continue
+        _render_content_page(
+            env,
+            md_source=md_path.read_text(encoding="utf-8"),
+            page_title=title,
+            page_subtitle=subtitle,
+            out_path=DOCS_DIR / "project" / out_name,
+            root_path="..",
+            template_name="glossar.html",
+        )
+    print("  Glossary pages: project/{glossary,technik}.html")
 
 
 def _build_impressum(env):
@@ -1386,37 +1392,3 @@ def _build_analysis(env):
     out.parent.mkdir(parents=True, exist_ok=True)
     out.write_text(html, encoding="utf-8")
     print("  Analysis page: analysis/index.html")
-
-
-def _build_glossar_demo(env):
-    """Build the three-page glossary demo (Glossar/Technik/Tutorial).
-
-    Isoliertes Demo-Modell zur Übergabe; nutzt dasselbe about.html-Gerüst
-    wie die produktive Glossar-Seite, schreibt aber nach project/glossar-demo/
-    und lässt die produktive glossary.html unberührt.
-    """
-    demo_dir = CONTENT_DIR / "project" / "glossar-demo"
-    out_dir = DOCS_DIR / "project" / "glossar-demo"
-    # Tutorial vorerst aus der Demo genommen (Stakeholder 2026-07-08); die Quelle
-    # tutorial.md bleibt fuer die spaetere Wiederaufnahme (Fallstudien) liegen.
-    pages = [
-        ("glossar", "Glossar (Demo)",
-         "Begriffsdefinitionen des Projekts – Kern des Modells, speist die Tooltips."),
-        ("technik", "Technik / Datenmodell (Demo)",
-         "TEI-Auszeichnung, Rollen und roleName-Typen der Datenbank."),
-    ]
-    for name, title, subtitle in pages:
-        md_path = demo_dir / f"{name}.md"
-        if not md_path.exists():
-            print(f"  WARN: {md_path} nicht gefunden, skip.", file=sys.stderr)
-            continue
-        _render_content_page(
-            env,
-            md_source=md_path.read_text(encoding="utf-8"),
-            page_title=title,
-            page_subtitle=subtitle,
-            out_path=out_dir / f"{name}.html",
-            root_path="../..",
-            template_name="glossar_demo.html",
-        )
-    print("  Glossar-Demo: project/glossar-demo/{glossar,technik}.html")

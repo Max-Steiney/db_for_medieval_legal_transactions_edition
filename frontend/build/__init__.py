@@ -92,7 +92,6 @@ from frontend.build._pages import (
     _build_guidelines,
     _build_about,
     _build_glossary,
-    _build_glossar_demo,
     _build_impressum,
     _write_categories,
     _write_query_vocabulary,
@@ -246,7 +245,6 @@ def build_all():
     _build_impressum(env)
 
     _build_glossary(env)
-    _build_glossar_demo(env)
     _write_categories()
     # query_vocabulary.json speist allein die Analyse-Seite und traegt einen
     # Beschreibungstext mit Korpus-Namen; nur im internen Build schreiben, sonst
@@ -300,7 +298,6 @@ __all__ = [
     "_build_org_profiles",
     "_build_exploration", "_build_exploration_timeline",
     "_build_exploration_network", "_build_basket",
-    "_build_guidelines", "_build_about", "_build_glossary", "_build_glossar_demo",
-    "_build_impressum",
+    "_build_guidelines", "_build_about", "_build_glossary", "_build_impressum",
     "_write_categories", "_write_query_vocabulary", "_build_analysis",
 ]

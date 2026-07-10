@@ -122,9 +122,9 @@ Pro Anforderung steht eine kurze Erläuterung, eine Begründung und eine Konsequ
 
 **Anforderung.** Die Zählebene aller Erwähnungen heißt im UI „Gesamtnennungen", nicht „Nennungen". Die Zählebene der konsolidierten Register-Einträge heißt „Individuelle Personen", „Individuelle Organisationen", „Individuelle Orte".
 
-**Begründung.** Das Präfix schafft eine explizite Abgrenzung zur [[glossar#Individuelle Person]] und reduziert die Verwechslungsgefahr in publikationsrelevanten Zahlen. Die Kurzform „Nennungen" war zu nahe an der alltagssprachlichen Verwendung und lud zu Fehlinterpretationen ein.
+**Begründung.** Das Präfix schafft eine explizite Abgrenzung zur [[technik#Individuelle Person]] und reduziert die Verwechslungsgefahr in publikationsrelevanten Zahlen. Die Kurzform „Nennungen" war zu nahe an der alltagssprachlichen Verwendung und lud zu Fehlinterpretationen ein.
 
-**Konsequenz.** Alle UI-Labels, Filter- und Achsenbeschriftungen verwenden „Gesamtnennungen" oder „Individuelle Personen". Siehe [[glossar#Gesamtnennung]]. Welche der beiden Zählebenen einer konkreten Zahl zugrunde liegt, soll am Provenienz-Tooltip erkennbar sein, siehe [[ui-design#Tip-System]]. Ein Label, das eine Zahl fälschlich der anderen Zählebene zuordnet, ist ein Fehler im Sinne von [[#Datenrobustheit und Provenienz]] und wird vom Verifikations-Test-Set sichtbar gemacht, siehe [[architecture#Test-Strategie]].
+**Konsequenz.** Alle UI-Labels, Filter- und Achsenbeschriftungen verwenden „Gesamtnennungen" oder „Individuelle Personen". Siehe [[technik#Gesamtnennung]]. Welche der beiden Zählebenen einer konkreten Zahl zugrunde liegt, soll am Provenienz-Tooltip erkennbar sein, siehe [[ui-design#Tip-System]]. Ein Label, das eine Zahl fälschlich der anderen Zählebene zuordnet, ist ein Fehler im Sinne von [[#Datenrobustheit und Provenienz]] und wird vom Verifikations-Test-Set sichtbar gemacht, siehe [[architecture#Test-Strategie]].
 
 ## Quellenbereinigte Zählung
 
@@ -132,7 +132,7 @@ Pro Anforderung steht eine kurze Erläuterung, eine Begründung und eine Konsequ
 
 **Begründung.** Urteilslisten, Zeugenreihen und Formularwiederholungen führen dazu, dass ein und dieselbe Person innerhalb einer Urkunde namentlich vielfach auftaucht. Eine Zählung pro Einzelerwähnung würde solche Formelpartien gegenüber substanziellen Einzelnennungen überproportional gewichten und Vergleiche zwischen Regesten (wenige Nennungen pro Quelle) und edierten Volltexten (viele Nennungen pro Quelle) systematisch verzerren. Die quellenbereinigte Zählung beantwortet die Forschungsfrage „in wie vielen Quellen ist Person X belegt" präzise und ist robust gegen das Erschließungsformat.
 
-**Konsequenz.** Die Definition in [[glossar#Gesamtnennung]] ist entsprechend formuliert. Der [[ui-design#Tip-System]] benennt diese Zählebene an jeder betroffenen Zahl explizit. Eine Umschaltung auf ungereinigte Einzelerwähnungen ist nicht vorgesehen; sie wäre statistisch missverständlich und fachlich schwer interpretierbar.
+**Konsequenz.** Die Definition in [[technik#Gesamtnennung]] ist entsprechend formuliert. Der [[ui-design#Tip-System]] benennt diese Zählebene an jeder betroffenen Zahl explizit. Eine Umschaltung auf ungereinigte Einzelerwähnungen ist nicht vorgesehen; sie wäre statistisch missverständlich und fachlich schwer interpretierbar.
 
 **Nicht gemeint ist**, dass das Datenmodell die Information über Mehrfachnennungen verliert. Die TEI-Quellen markieren jede Erwähnung einzeln. Die Dedupizierung greift erst in der Aggregation.
 
@@ -167,7 +167,7 @@ Wer Nennungen für Häufigkeitsstatistiken oder Belegdichten zählt, will expliz
 
 Die Asymmetrie ist semantisch konsistent: Eine Person, die nur als Querverweis in einer einzigen Quelle erscheint, ist trotzdem im Register vermerkt (und damit zählbar als Individuum), aber sie hat keine *eigene* Quellenpräsenz, die in Nennungs-Statistiken aufscheinen sollte.
 
-**Konsequenz.** `frontend/build/_kpi.py::_scan_released_tei` führt zwei XPath-Pässe pro Datei: `_XP_PERSONS_ALL` für Distinct-Zählung und Sex-Splitt; `_XP_PERSONS_EXCL_MENTIONED` für die Nennungszählung. Die Asymmetrie ist im Glossar-Eintrag [[glossar#Individuelle Person]] und in den Provenienz-Tooltips auf der Startseite explizit benannt.
+**Konsequenz.** `frontend/build/_kpi.py::_scan_released_tei` führt zwei XPath-Pässe pro Datei: `_XP_PERSONS_ALL` für Distinct-Zählung und Sex-Splitt; `_XP_PERSONS_EXCL_MENTIONED` für die Nennungszählung. Die Asymmetrie ist im Glossar-Eintrag [[technik#Individuelle Person]] und in den Provenienz-Tooltips auf der Startseite explizit benannt.
 
 ## KPIs werden direkt aus TEI via XPath gerechnet
 
