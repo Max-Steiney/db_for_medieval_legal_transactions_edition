@@ -5,6 +5,7 @@ on:
     branches: [main]
   pull_request:
     branches: [main]
+  workflow_dispatch:
 
 jobs:
   frontend:
@@ -16,11 +17,15 @@ jobs:
         with:
           path: db_for_medieval_legal_transactions_edition
 
-      # 2. Check out the sibling pipeline repo next to it (same parent dir)
-      #    so frontend/__init__.py finds it via Path(...).parent.parent.parent
+      # 2. Check out the sibling data repo (canonical source of truth) next to
+      #    it (same parent dir) so frontend/__init__.py finds it via
+      #    Path(...).parent.parent.parent. The data repo is private, so we
+      #    authenticate with a classic PAT (scope `repo`, owned by a KGruenwald
+      #    collaborator) stored as the repo secret DATA_REPO_TOKEN.
       - uses: actions/checkout@v4
         with:
-          repository: chpollin/db_for_medieval_legal_transactions
+          repository: KGruenwald/db_for_medieval_legal_transactions
+          token: ${{ secrets.DATA_REPO_TOKEN }}
           path: db_for_medieval_legal_transactions
 
       - uses: actions/setup-python@v5
