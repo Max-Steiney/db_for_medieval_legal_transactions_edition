@@ -44,15 +44,20 @@ Digital Humanities Craft OG.
 
 ## Lizenz
 
-Die Inhalte dieser Datenbank stehen unter der **Creative Commons Attribution 4.0 International License (CC BY 4.0)**.
+Die Inhalte dieser Datenbank stehen unter der **Creative Commons Attribution-NonCommercial-ShareAlike 4.0 International License (CC BY-NC-SA 4.0)**.
 
 Sie dürfen:
 
 - **Teilen**: das Material in jedwedem Format oder Medium vervielfältigen und weiterverbreiten
 - **Bearbeiten**: das Material remixen, verändern und darauf aufbauen
 
+Der Lizenzgeber kann diese Freiheiten nicht widerrufen, solange Sie sich an die Lizenzbedingungen halten.
+
 Unter folgenden Bedingungen:
 
-- **Namensnennung**: Sie müssen angemessene Urheber- und Rechteangaben machen
+- **Namensnennung**: Sie müssen angemessene Urheber- und Rechteangaben machen, einen Link zur Lizenz beifügen und angeben, ob Änderungen vorgenommen wurden.
+- **Nicht kommerziell**: Sie dürfen das Material nicht für kommerzielle Zwecke nutzen.
+- **Weitergabe unter gleichen Bedingungen**: Wenn Sie das Material remixen, verändern oder anderweitig direkt darauf aufbauen, dürfen Sie Ihre Beiträge nur unter derselben Lizenz wie das Original verbreiten.
+- **Keine weiteren Einschränkungen**: Sie dürfen keine zusätzlichen Klauseln oder technischen Verfahren einsetzen, die anderen rechtlich irgendetwas untersagen, was die Lizenz erlaubt.
 
-Volltext der Lizenz: [CC BY 4.0](https://creativecommons.org/licenses/by/4.0/)
+Volltext der Lizenz: [CC BY-NC-SA 4.0](https://creativecommons.org/licenses/by-nc-sa/4.0/deed.de)
