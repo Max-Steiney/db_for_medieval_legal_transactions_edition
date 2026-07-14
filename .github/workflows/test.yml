@@ -58,6 +58,15 @@ jobs:
         working-directory: db_for_medieval_legal_transactions_edition
         run: python -m frontend build
 
+      # Interner Build fuer den Drift-Monitor: verification.run vergleicht den
+      # released-Scope gegen die INTERNE Fassung unter docs-intern/. Ohne diesen
+      # Build bricht die Verifikation mit "Ziel-Build fehlt" (exit 2) ab.
+      # Schreibt nach docs-intern/ und laesst den oeffentlichen docs/-Build fuer
+      # die pytest-Schemapruefung unberuehrt.
+      - name: Smoke build (intern, fuer Drift-Monitor)
+        working-directory: db_for_medieval_legal_transactions_edition
+        run: python -m frontend build --audience intern
+
       - name: Run frontend tests
         working-directory: db_for_medieval_legal_transactions_edition
         run: python -m pytest frontend/tests/ -v --tb=short
