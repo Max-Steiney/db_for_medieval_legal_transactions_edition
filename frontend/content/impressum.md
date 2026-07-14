@@ -6,29 +6,29 @@
 Prosopographische Datenbank mittelalterlicher Wiener Rechtsgeschäfte.
 
 Univ.-Prof. Mag. Dr. Christina Lutter (Projekt)
-Mail: christina.lutter[at]univie.ac.at
+Mail: [christina.lutter@univie.ac.at](mailto:christina.lutter@univie.ac.at)
 
 
 Korbinian Grünwald, BA MA (Datenbank)
-Mail: korbinian.gruenwald[at]univie.ac.at
+Mail: [korbinian.gruenwald@univie.ac.at](mailto:korbinian.gruenwald@univie.ac.at)
 
 ## Team
 
 **Aktuelle Mitarbeiter*innen**
 
-Jan Bigalke
-Daniel Gonaus
-Korbinian Grünwald
-Viktor Handl
-Beate Pamperl
-Carina Siegl
-Maximilian Steinböck
+- Jan Bigalke
+- Daniel Gonaus
+- Korbinian Grünwald
+- Viktor Handl
+- Beate Pamperl
+- Carina Siegl
+- Maximilian Steinböck
 
 **Ehemalige Mitarbeiter*innen**
 
-Daniel Frey
-Herbert Krammer
-Ronald Salzer
+- Daniel Frey
+- Herbert Krammer
+- Ronald Salzer
 
 
 ## Technische Umsetzung
