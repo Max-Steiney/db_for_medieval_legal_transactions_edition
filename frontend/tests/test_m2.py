@@ -88,8 +88,8 @@ class TestImpressum:
         md_path = Path(frontend.build.CONTENT_DIR) / "impressum.md"
         assert md_path.exists()
         content = md_path.read_text(encoding="utf-8")
-        assert 'CC BY 4.0' in content
-        assert 'Universität Wien' in content
+        assert 'CC BY-NC-SA 4.0' in content
+        assert 'univie.ac.at' in content
 
     def test_build_impressum_function_exists(self):
         assert hasattr(frontend.build, '_build_impressum')

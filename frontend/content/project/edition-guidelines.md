@@ -490,7 +490,7 @@ Die Lizenzierung wird auf drei Geltungsbereiche bezogen.
 
 ### Die digitale Edition als Werk
 
-Die im Rahmen der Modernisierung erstellten Bestandteile (die generierten HTML-Seiten, das Layout, die vorliegenden Annotationsrichtlinien, der Pipeline-Code, das RelaxNG-Schema und die Visualisierungen) werden unter der [Creative Commons Attribution 4.0 International License (CC BY 4.0)](http://creativecommons.org/licenses/by/4.0/) veroeffentlicht. Der vollstaendige Lizenztext liegt im Repository unter `LICENSE`.
+Die im Rahmen der Modernisierung erstellten Bestandteile (die generierten HTML-Seiten, das Layout, die vorliegenden Annotationsrichtlinien, der Pipeline-Code, das RelaxNG-Schema und die Visualisierungen) werden unter der [Creative Commons Attribution-NonCommercial-ShareAlike 4.0 International License (CC BY-NC-SA 4.0)](https://creativecommons.org/licenses/by-nc-sa/4.0/deed.de) veroeffentlicht. Der vollstaendige Lizenztext liegt im Repository unter `LICENSE`.
 
 ### Die TEI-Quelldaten und Register
 
