@@ -203,4 +203,4 @@ Aufruf unter `http://127.0.0.1:8000/` (öffentlich) bzw. `http://127.0.0.1:8001/
 
 ## Lizenz
 
-Noch zu klären.
+Creative Commons Attribution-NonCommercial-ShareAlike 4.0 International (**CC BY-NC-SA 4.0**) — siehe [creativecommons.org/licenses/by-nc-sa/4.0/deed.de](https://creativecommons.org/licenses/by-nc-sa/4.0/deed.de). Die vollständigen Lizenzhinweise stehen im [Impressum](https://max-steiney.github.io/db_for_medieval_legal_transactions_edition/impressum.html).
