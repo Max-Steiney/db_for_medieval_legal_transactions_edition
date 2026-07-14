@@ -5,13 +5,31 @@
 **Stadt und Gemeinschaft Wien, Datenbank zu mittelalterlichen Wiener Rechtsgeschäften.**
 Prosopographische Datenbank mittelalterlicher Wiener Rechtsgeschäfte.
 
-**Projektleitung:**
-Mag. Korbinian Grünwald, Universität Wien.
+Univ.-Prof. Mag. Dr. Christina Lutter (Projekt)
+Mail: christina.lutter[at]univie.ac.at
 
-**Forschungsprojekte:**
 
-- „Im Netz der Stadt" (Dissertation, Universität Wien)
-- „Stadt und Gemeinschaft" (Universität Wien)
+Korbinian Grünwald, BA MA (Datenbank)
+Mail: korbinian.gruenwald[at]univie.ac.at
+
+## Team
+
+**Aktuelle Mitarbeiter*innen**
+
+Jan Bigalke
+Daniel Gonaus
+Korbinian Grünwald
+Viktor Handl
+Beate Pamperl
+Carina Siegl
+Maximilian Steinböck
+
+**Ehemalige Mitarbeiter*innen**
+
+Daniel Frey
+Herbert Krammer
+Ronald Salzer
+
 
 ## Technische Umsetzung
 
@@ -38,21 +56,3 @@ Unter folgenden Bedingungen:
 - **Namensnennung**: Sie müssen angemessene Urheber- und Rechteangaben machen
 
 Volltext der Lizenz: [CC BY 4.0](https://creativecommons.org/licenses/by/4.0/)
-
-## Datenquellen
-
-**Faksimile-Bilder:** [Monasterium.net](https://www.monasterium.net/), virtuelles Archiv mittelalterlicher Urkunden Europas.
-
-**Quellengrundlage:** Quellen zur Geschichte der Stadt Wien (QGW), Stadtbücher, Satzbuch CD.
-
-## Zitierweise
-
-Bei Verwendung der Datenbank bitte wie folgt zitieren:
-
-> Grünwald, Korbinian: Stadt und Gemeinschaft Wien, Datenbank zu mittelalterlichen Wiener Rechtsgeschäften. Universität Wien. URL: [Permalink]. Zugriff: [Datum].
-
-Einzeldokumente können über den Zitierhelfer (Anführungszeichen-Button auf jeder Dokumentseite) in Chicago- und BibTeX-Format exportiert werden.
-
-## Kontakt
-
-Für Fragen zur Datenbank, den Daten oder zum Forschungsprojekt wenden Sie sich bitte an die Projektleitung an der Universität Wien.
