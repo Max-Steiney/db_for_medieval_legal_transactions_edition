@@ -20,11 +20,12 @@ Die Edition umfasst aktuell folgende Quellensammlungen:
 |----------|----------|
 | QGW/Vienna\_1177-1414\_ready | 1177 bis 1414 |
 | QGW/Vienna\_1415-1417 | 1415 bis 1417 |
-| QGW/Vienna\_1448-57\_ready | 1448 bis 1457 |
+| QGW/Vienna\_1458-66 | 1458 bis 1466 |
+| QGW/Vienna\_1493-1500 | 1493 bis 1500 |
+| QGW/Vienna\_1524 | 1524 |
 | Stadtbuecher/Band\_1\_1395-1400\_ready | 1395 bis 1400 |
-| Satzbuch\_CD/SB\_CD\_1448-60\_ready | 1448 bis 1460 |
 
-Weitere Subkorpora (QGW/Vienna_1458-66, QGW/Vienna_1493-1500, QGW/Vienna_1524 sowie Gewerbuch_D, Copeybuch_Zeibig, Widmerliste, Genanntenlisten) liegen als TEI-Annotation im Editionsbestand, sind aber aktuell nicht freigegeben.
+Die im Rahmen der Dissertation *Im Netz der Stadt* erfassten Sammlungen (Gewerbuch_D, Satzbuch_CD, Copeybuch_Zeibig, Widmerliste, Genanntenlisten) sind aus dem oeffentlichen Bestand zurueckgezogen.
 
 Die Schema-Validierung erfolgt gegen `sources/schema/toolbox.rng` (RelaxNG).
 
@@ -118,7 +119,7 @@ Attribute und Relationen werden mit `<roleName type="..." corresp="...">` annoti
 
 Zwei Arten von `@type`-Werten sind zu unterscheiden:
 
-- **Attribute** charakterisieren die Entitaet selbst und benoetigen kein `@corresp` (z.B. ein Titel oder die Markierung "als verstorben genannt").
+- **Attribute** charakterisieren die Entitaet selbst und benoetigen kein `@corresp` (z.B. ein Titel oder die Markierung "verstorben").
 - **Relationen** verknuepfen die Entitaet ueber `@corresp` mit einem zweiten Eintrag (z.B. eine Verwandtschaftsbeziehung zu einer Person, eine Amtsfunktion in einer Organisation, eine topographische Lage in einem Ort).
 
 Die im Bestand belegten Relationstypen umfassen unter anderem Verwandtschaft, Berufs- und Amtszuordnung, Stellvertretung, Freundschaft, Topographie und Besitzverhaeltnisse. Die maßgebliche Liste der zulaessigen Werte wird im Schema gefuehrt; die Ausweisung im Bestand ist im Validierungsbericht (`pipeline/output/validation_report.md`) abgebildet.

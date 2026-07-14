@@ -10,15 +10,15 @@
     <title>Annotationsrichtlinien, Datenbank</title>
     <link rel="preload" as="font" type="font/woff2" crossorigin
           href="../static/fonts/inter-400-latin.woff2">
-    <link rel="stylesheet" href="../static/css/fonts.css?v=20260710130732">
-    <link rel="stylesheet" href="../static/css/tokens.css?v=20260710130732">
-    <link rel="stylesheet" href="../static/css/base.css?v=20260710130732">
-    <link rel="stylesheet" href="../static/css/components.css?v=20260710130732">
-    <link rel="stylesheet" href="../static/css/responsive.css?v=20260710130732">
-    <link rel="stylesheet" href="../static/css/print.css?v=20260710130732">
-    <link rel="stylesheet" href="../static/css/tip.css?v=20260710130732">
+    <link rel="stylesheet" href="../static/css/fonts.css?v=20260714142535">
+    <link rel="stylesheet" href="../static/css/tokens.css?v=20260714142535">
+    <link rel="stylesheet" href="../static/css/base.css?v=20260714142535">
+    <link rel="stylesheet" href="../static/css/components.css?v=20260714142535">
+    <link rel="stylesheet" href="../static/css/responsive.css?v=20260714142535">
+    <link rel="stylesheet" href="../static/css/print.css?v=20260714142535">
+    <link rel="stylesheet" href="../static/css/tip.css?v=20260714142535">
     
-<link rel="stylesheet" href="../static/css/content.css?v=20260710130732">
+<link rel="stylesheet" href="../static/css/content.css?v=20260714142535">
 
 </head>
 <body data-root-path=".."
@@ -30,7 +30,7 @@
                 <span class="nav-brand-sigil">&#x2756;</span>
                 <span class="nav-brand-text">Stadt und Gemeinschaft Wien</span>
             </a>
-            <span class="nav-badge" title="Build-Stand: Öffentlich, generiert am 10. Juli 2026">Prototyp &middot; Öffentlich &middot; 10. Juli 2026</span>
+            <span class="nav-badge" title="Build-Stand: Öffentlich, generiert am 14. Juli 2026">Prototyp &middot; Öffentlich &middot; 14. Juli 2026</span>
             <button type="button" class="nav-hamburger" id="nav-hamburger" aria-label="Menü öffnen" aria-expanded="false">
                 <span></span><span></span><span></span>
             </button>
@@ -183,20 +183,24 @@
 <td>1415 bis 1417</td>
 </tr>
 <tr>
-<td>QGW/Vienna_1448-57_ready</td>
-<td>1448 bis 1457</td>
+<td>QGW/Vienna_1458-66</td>
+<td>1458 bis 1466</td>
+</tr>
+<tr>
+<td>QGW/Vienna_1493-1500</td>
+<td>1493 bis 1500</td>
+</tr>
+<tr>
+<td>QGW/Vienna_1524</td>
+<td>1524</td>
 </tr>
 <tr>
 <td>Stadtbuecher/Band_1_1395-1400_ready</td>
 <td>1395 bis 1400</td>
 </tr>
-<tr>
-<td>Satzbuch_CD/SB_CD_1448-60_ready</td>
-<td>1448 bis 1460</td>
-</tr>
 </tbody>
 </table>
-<p>Weitere Subkorpora (QGW/Vienna_1458-66, QGW/Vienna_1493-1500, QGW/Vienna_1524 sowie Gewerbuch_D, Copeybuch_Zeibig, Widmerliste, Genanntenlisten) liegen als TEI-Annotation im Editionsbestand, sind aber aktuell nicht freigegeben.</p>
+<p>Die im Rahmen der Dissertation <em>Im Netz der Stadt</em> erfassten Sammlungen (Gewerbuch_D, Satzbuch_CD, Copeybuch_Zeibig, Widmerliste, Genanntenlisten) sind aus dem oeffentlichen Bestand zurueckgezogen.</p>
 <p>Die Schema-Validierung erfolgt gegen <code>sources/schema/toolbox.rng</code> (RelaxNG).</p>
 <h2 id="2-annotationsmodell">2. Annotationsmodell<a class="headerlink" href="#2-annotationsmodell" title="Permanent link">&para;</a></h2>
 <p>Das Annotationsmodell wird im Folgenden in vier konzeptuellen Ebenen dargestellt. Die Ebenen sind hierarchisch aufgebaut: Jede ist Teil der jeweils hoeheren, und die Verschachtelung im XML spiegelt diese Hierarchie wider.</p>
@@ -318,7 +322,7 @@
 <p>Attribute und Relationen werden mit <code>&lt;roleName type="..." corresp="..."&gt;</code> annotiert. Der <code>@type</code> bestimmt die Art der Aussage; <code>@corresp</code> verknuepft sie mit einem Eintrag in einem der Register.</p>
 <p>Zwei Arten von <code>@type</code>-Werten sind zu unterscheiden:</p>
 <ul>
-<li><strong>Attribute</strong> charakterisieren die Entitaet selbst und benoetigen kein <code>@corresp</code> (z.B. ein Titel oder die Markierung "als verstorben genannt").</li>
+<li><strong>Attribute</strong> charakterisieren die Entitaet selbst und benoetigen kein <code>@corresp</code> (z.B. ein Titel oder die Markierung "verstorben").</li>
 <li><strong>Relationen</strong> verknuepfen die Entitaet ueber <code>@corresp</code> mit einem zweiten Eintrag (z.B. eine Verwandtschaftsbeziehung zu einer Person, eine Amtsfunktion in einer Organisation, eine topographische Lage in einem Ort).</li>
 </ul>
 <p>Die im Bestand belegten Relationstypen umfassen unter anderem Verwandtschaft, Berufs- und Amtszuordnung, Stellvertretung, Freundschaft, Topographie und Besitzverhaeltnisse. Die maßgebliche Liste der zulaessigen Werte wird im Schema gefuehrt; die Ausweisung im Bestand ist im Validierungsbericht (<code>pipeline/output/validation_report.md</code>) abgebildet.</p>
@@ -709,7 +713,7 @@
     </div>
 
     <footer class="guidelines-footer">
-        <p>Zuletzt aktualisiert: 10. Juli 2026</p>
+        <p>Zuletzt aktualisiert: 14. Juli 2026</p>
     </footer>
 </article>
 
@@ -720,7 +724,7 @@
             <div class="footer-col">
                 <p class="footer-project">Stadt und Gemeinschaft Wien, Datenbank</p>
                 <p>Tr&auml;gerprojekt &raquo;Stadt und Gemeinschaft&laquo; (Universit&auml;t Wien)</p>
-                <p class="footer-meta">Datenstand: 30. Mai 2026 &middot; Seite generiert: 10. Juli 2026</p>
+                <p class="footer-meta">Datenstand: 14. Juli 2026 &middot; Seite generiert: 14. Juli 2026</p>
                 
                 <p class="footer-meta">Annotationsrichtlinien</p>
             </div>
@@ -737,12 +741,12 @@
     </footer>
 
     <script id="role-labels" type="application/json">{"issuer": "Aussteller:in", "other": "Sonstige", "recipient": "Empf\u00e4nger:in", "witness": "Zeug:in / Siegler:in"}</script>
-    <script src="../static/js/core.js?v=20260710130732"></script>
-    <script src="../static/js/tip.js?v=20260710130732"></script>
-    <script src="../static/js/hint.js?v=20260710130732"></script>
-    <script src="../static/js/basket.js?v=20260710130732"></script>
+    <script src="../static/js/core.js?v=20260714142535"></script>
+    <script src="../static/js/tip.js?v=20260714142535"></script>
+    <script src="../static/js/hint.js?v=20260714142535"></script>
+    <script src="../static/js/basket.js?v=20260714142535"></script>
     
-<script src="../static/js/content.js?v=20260710130732"></script>
+<script src="../static/js/content.js?v=20260714142535"></script>
 
 </body>
 </html>
