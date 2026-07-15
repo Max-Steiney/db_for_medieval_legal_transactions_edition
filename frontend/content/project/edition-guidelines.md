@@ -467,7 +467,7 @@ Die Zuordnung der Kuerzel zu konkreten Personen wird projektintern gepflegt und 
 
 ### Empfohlene Zitierweise
 
-> *Stadt und Gemeinschaft Wien: Datenbank zu mittelalterlichen Wiener Rechtsgeschaeften.* Universitaet Wien, 2026. https://chpollin.github.io/db_for_medieval_legal_transactions/
+> *Stadt und Gemeinschaft Wien: Datenbank zu mittelalterlichen Wiener Rechtsgeschaeften.* Universitaet Wien, 2026. https://max-steiney.github.io/db_for_medieval_legal_transactions_edition/
 
 ### BibTeX
 
@@ -477,7 +477,7 @@ Die Zuordnung der Kuerzel zu konkreten Personen wird projektintern gepflegt und 
   title        = {Stadt und Gemeinschaft Wien: Datenbank zu mittelalterlichen Wiener Rechtsgeschaeften},
   year         = {2026},
   publisher    = {Universitaet Wien},
-  url          = {https://chpollin.github.io/db_for_medieval_legal_transactions/}
+  url          = {https://max-steiney.github.io/db_for_medieval_legal_transactions_edition/}
 }
 ```
 
