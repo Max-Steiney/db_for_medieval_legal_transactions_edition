@@ -2,7 +2,7 @@
 title: User Stories
 project:
   name: Stadt und Gemeinschaft Wien
-  repository: https://github.com/chpollin/db_for_medieval_legal_transactions_edition
+  repository: https://github.com/Max-Steiney/db_for_medieval_legal_transactions_edition
 status: active
 language: de
 version: 1.2
