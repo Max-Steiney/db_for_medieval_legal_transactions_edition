@@ -3,6 +3,7 @@
 ## Projektverantwortung
 
 **Stadt und Gemeinschaft Wien, Datenbank zu mittelalterlichen Wiener Rechtsgeschäften.**
+
 Prosopographische Datenbank mittelalterlicher Wiener Rechtsgeschäfte.
 
 Univ.-Prof. Mag. Dr. Christina Lutter (Projekt)

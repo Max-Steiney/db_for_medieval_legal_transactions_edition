@@ -14,9 +14,10 @@ Zwar bieten mitteleuropäische Städte im Vergleich mit jenen in stärker urbani
 
 Verwandtschaft, politische Ämter und Stiftungsgemeinschaften sind chronologisch und sozial verbindende Konstanten. Dasselbe gilt für die Kategorie Geschlecht. Die Überlieferung zu vielen europäischen Städten macht Bürgerinnen als geschäftsfähige Akteurinnen und gleichwertige Partnerinnen unterschiedlicher Rechtsgeschäfte sichtbar. Manche von ihnen kamen aus Familien, die im Stadtrat und in anderen wichtigen Funktionen vertreten waren, und setzten diese Beziehungen nicht zuletzt als Mitglieder und Funktionsträgerinnen in Klöstern fort. Hier wird die enge Verflechtung städtischer und geistlicher Kultur besonders deutlich. Familien- und Besitzverhältnisse waren mit politischen und religiösen Interessen verknüpft. Über diese komplexen sozialen Netzwerke ist für besonders gut dokumentierte Städte wie etwa Florenz bereits auf der Basis jahrzehntelanger Forschungen recht viel bekannt; v.a. wurden sie zunehmend mit neuen digitalen Methoden systematisch ausgewertet und auch visualisiert.
 
-## Annotationsmodell
+## Datenbank und technische Umsetzung
 
-[Datenbank](https://stadtgemeinschaftwien.univie.ac.at/datenbank)
+- [Allgemeines zur Datenbank](https://stadtgemeinschaftwien.univie.ac.at/datenbank)
+- [Technische Umsetzung und Annotationsrichtlinien](edition-guidelines.html)
 
 ## Methodischer Ansatz: Prosopographie und Netzwerkanalyse
 
@@ -25,3 +26,11 @@ Basierend auf zwei von der Österreichischen Akademie der Wissenschaften (ÖAW) 
 ## Qualitätssicherung
 
 Um die komplexen Relationen zwischen Gütergemeinschaften, Verwandtschaftsbeziehungen, Jenseitsökonomie und ihren Auswirkungen auf die Bildung von sozialen Gemeinschaftsformen systematisch nachzugehen, ist eine Erhebung prosopographischer Daten von personellen und institutionellen Akteuren auf breiter Basis notwendig. Dafür nutzen wir Methoden der digitalen Datenerhebung, sowie zu deren Auswertung Methoden der Sozialen Netzwerkanalyse (SNA). Die dichte sakrale Topographie des mittelalterlichen Wiens bietet dafür eine hervorragende Grundlage. Die ab dem 14. Jahrhundert stark zunehmende Überlieferung setzt sich aus urkundlichen Quellen und Verwaltungsquellen in sogenannten „Stadtbüchern“ zusammen, deren systematische Auswertung im Zentrum dieses Vorhabens steht.
+
+## Publikationen
+
+[Publikationen im Kontext des Projektes](https://stadtgemeinschaftwien.univie.ac.at/publikationen)
+
+## Kooperationen
+
+[Zu unseren Kooperationen](https://stadtgemeinschaftwien.univie.ac.at/kooperationen)
