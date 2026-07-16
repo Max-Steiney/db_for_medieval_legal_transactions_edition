@@ -1,51 +1,43 @@
 ## 1. Projektkontext
 
-Die Datenbank `db_for_medieval_legal_transactions` ist eine TEI-XML-basierte prosopographische Datenbank mittelalterlicher Wiener Rechtsgeschaefte (ca. 1177 bis 1524). Das Datenmodell orientiert sich an [TEI P5](https://tei-c.org/release/doc/tei-p5-doc/en/html/) und an Konventionen der digitalen Prosopographie.
-
-### Entstehungsgeschichte
-
-- **Masterarbeit:** Immobilientransfers Wien 1360 bis 1373 (Excel-basiert)
-- **Konzeptualisierung:** Uebergang zu einer XML-basierten Datenbank
-- **Dissertation:** *Im Netz der Stadt*, Erstellung der vollstaendigen DTD
-- **Forschungsprojekt:** *Stadt und Gemeinschaft* (Universitaet Wien), parallele Nutzung und Erweiterung
-- **Publikation:** *Die digitale Erfassung von mittelalterlichen Rechtsgeschaeften*, DHd-Blog, 31. Okt. 2021
-
-Eine Kompatibilitaet mit [CIDOC-CRM](https://www.cidoc-crm.org/) ist langfristig angedacht.
+Die Datenbank `db_for_medieval_legal_transactions` ist eine TEI-XML-basierte prosopographische Datenbank mittelalterlicher Wiener Rechtsgeschäfte (aktuell 1177 bis 1414). Das Datenmodell orientiert sich an [TEI P5](https://tei-c.org/release/doc/tei-p5-doc/en/html/) und an Konventionen der digitalen Prosopographie.
 
 ### Quellensammlungen
 
 Die Edition umfasst aktuell folgende Quellensammlungen:
 
-| Sammlung | Zeitraum |
-|----------|----------|
-| QGW/Vienna\_1177-1414\_ready | 1177 bis 1414 |
-| QGW/Vienna\_1415-1417 | 1415 bis 1417 |
-| QGW/Vienna\_1458-66 | 1458 bis 1466 |
-| QGW/Vienna\_1493-1500 | 1493 bis 1500 |
-| QGW/Vienna\_1524 | 1524 |
-| Stadtbuecher/Band\_1\_1395-1400\_ready | 1395 bis 1400 |
+| Korpora |
+|---------|
+| **QGW/Vienna\_1177-1414** \* |
+| QGW/Vienna\_1415-1417 |
+| QGW/Vienna\_1458-66 |
+| QGW/Vienna\_1493-1500 |
+| QGW/Vienna\_1524 |
+| Stadtbuecher/Band\_1\_1395-1400 |
 
-Die im Rahmen der Dissertation *Im Netz der Stadt* erfassten Sammlungen (Gewerbuch_D, Satzbuch_CD, Copeybuch_Zeibig, Widmerliste, Genanntenlisten) sind aus dem oeffentlichen Bestand zurueckgezogen.
+\* Im Frontend wird aktuell nur der Bestand QGW/Vienna\_1177-1414 angezeigt; die Freischaltung der übrigen Bestände folgt.
 
 Die Schema-Validierung erfolgt gegen `sources/schema/toolbox.rng` (RelaxNG).
+
+Eine Kompatibilität mit [CIDOC-CRM](https://www.cidoc-crm.org/) ist langfristig angedacht.
 
 
 ## 2. Annotationsmodell
 
-Das Annotationsmodell wird im Folgenden in vier konzeptuellen Ebenen dargestellt. Die Ebenen sind hierarchisch aufgebaut: Jede ist Teil der jeweils hoeheren, und die Verschachtelung im XML spiegelt diese Hierarchie wider.
+Das Annotationsmodell wird im Folgenden in vier konzeptuellen Ebenen dargestellt. Die Ebenen sind hierarchisch aufgebaut: Jede ist Teil der jeweils höheren, und die Verschachtelung im XML spiegelt diese Hierarchie wider.
 
 | Ebene | Gegenstand | TEI-Element | Klassifikation |
 |-------|-----------|-------------|----------------|
-| 1. Ereignisse | Rechtsgeschaefte | `<rs type="event">` | ueber `<triggerstring n="disp">` |
-| 2. Funktionen | Rollen im Rechtsgeschaeft | `<rs type="fn">` | ueber `@role` |
-| 3. Entitaeten | Personen, Orte, Organisationen | `<rs type="person\|org\|place">` | ID-Verknuepfung mit Registern |
-| 4. Attribute/Relationen | Eigenschaften und Beziehungen | `<roleName>` | ueber `@type` und `@corresp` |
+| 1. Ereignisse | Rechtsgeschäfte | `<rs type="event">` | über `<triggerstring n="disp">` |
+| 2. Funktionen | Rollen im Rechtsgeschäft | `<rs type="fn">` | über `@role` |
+| 3. Entitäten | Personen, Orte, Organisationen | `<rs type="person\|org\|place">` | über `@type` und `@ref` |
+| 4. Attribute/Relationen | Eigenschaften und Beziehungen | `<roleName>` | über `@type` und `@corresp` |
 
 ### Ebene 1: Ereignisse
 
-Ein Ereignis umschliesst eine vollstaendige rechtliche Handlung. Es wird mit `<rs type="event" ref="ev__*">` annotiert. Der `@ref`-Wert verweist auf eine Ereignis-ID.
+Ein Ereignis umschließt eine vollständige rechtliche Handlung. Es wird mit `<rs type="event" ref="ev__*">` annotiert. Der `@ref`-Wert verweist auf eine Ereignis-ID.
 
-Innerhalb des Ereignisses markiert `<triggerstring n="disp">` den **dispositiven Triggerstring**, das Verb oder die Verbalphrase, die die Art des Rechtsgeschaefts bestimmt. Die Kategorisierung erfolgt nicht a priori, sondern durch Extraktion dispositiver Verben und nachtraegliche Kategorienbildung.
+Innerhalb des Ereignisses markiert `<triggerstring n="disp">` den **dispositiven Triggerstring**, das Verb oder die Verbalphrase, die die Art des Rechtsgeschäfts bestimmt. Die Kategorisierung erfolgt nicht a priori, sondern durch Extraktion dispositiver Verben und nachträgliche Kategorienbildung.
 
 ```xml
 <rs type="event" ref="ev__QGW_II_I_1">
@@ -62,11 +54,11 @@ Innerhalb des Ereignisses markiert `<triggerstring n="disp">` den **dispositiven
 </rs>
 ```
 
-*Quelle: QGW II/1 Nr. 1 (1198 bis 1230)*
+*Quelle: [QGW II/1 Nr. 1 (1198 bis 1230)](https://max-steiney.github.io/db_for_medieval_legal_transactions_edition/documents/QGW/Vienna_1177-1414_ready/1.html)*
 
 ### Ebene 2: Funktionen
 
-Funktionen beschreiben die Rolle einer Person oder Organisation innerhalb eines Ereignisses. Sie werden mit `<rs type="fn" role="...">` annotiert. Die im Bestand vorkommenden Rollen klassifizieren die Beteiligung an einem Rechtsgeschaeft (Aussteller, Empfaenger, Zeuge, sonstige Beteiligung) sowie das Transaktionsgut. Bei der Rolle `other` wird die spezifische Funktion durch einen zusaetzlichen Triggerstring naeher bestimmt:
+Funktionen beschreiben die Rolle einer Person oder Organisation innerhalb eines Ereignisses. Sie werden mit `<rs type="fn" role="...">` annotiert. Die im Bestand vorkommenden Rollen klassifizieren die Beteiligung an einem Rechtsgeschäft: Aussteller, Empfänger, Zeuge, sonstige Beteiligung. Sonstige Beteiligungen werden unter der Rolle `other` über einen zusätzlichen Triggerstring näher bestimmt:
 
 ```xml
 <rs type="fn" role="other">
@@ -78,13 +70,13 @@ Funktionen beschreiben die Rolle einer Person oder Organisation innerhalb eines 
 </rs>
 ```
 
-*Quelle: QGW II/1 Nr. 10 (1274)*
+*Quelle: [QGW II/1 Nr. 10 (1274)](https://max-steiney.github.io/db_for_medieval_legal_transactions_edition/documents/QGW/Vienna_1177-1414_ready/10.html)*
 
-### Ebene 3: Entitaeten
+### Ebene 3: Entitäten
 
-Entitaeten sind Personen, Organisationen und Orte. Sie werden mit `<rs>` annotiert und ueber `@ref` mit den Registern verknuepft.
+Entitäten sind Personen, Organisationen und Orte. Sie werden mit `<rs>` annotiert und über `@ref` mit den Indices verknüpft.
 
-| Typ | Element | ID-Praefix | Register |
+| Typ | Element | ID-Präfix | Index |
 |-----|---------|-----------|----------|
 | Person | `<rs type="person" ref="pe__*">` | `pe__` | personList.xml |
 | Organisation | `<rs type="org" ref="org__*">` | `org__` | orgList.xml |
@@ -107,22 +99,60 @@ Entitaeten sind Personen, Organisationen und Orte. Sie werden mit `<rs>` annotie
 **Ort:**
 
 ```xml
-<rs type="place" ref="pl__wien-immo_hoher_markt_wentkremen_33">
-  zway hewser gelegen ... ze Wienn</rs>
+<rs type="place" ref="pl__wien-kohlmarkt">Kolmarkcht</rs>
 ```
-
-**Hinweis zu Ortsreferenzen:** Orte sind im Annotationsbestand systematisch unterrepraesentiert. Direkte `<rs type="place">`-Referenzen sind selten. Orte werden primaer ueber `@corresp`-Attribute in `<roleName>` referenziert (topographische und Besitzrelationen, s. Ebene 4).
 
 ### Ebene 4: Attribute und Relationen
 
-Attribute und Relationen werden mit `<roleName type="..." corresp="...">` annotiert. Der `@type` bestimmt die Art der Aussage; `@corresp` verknuepft sie mit einem Eintrag in einem der Register.
+Attribute und Relationen werden mit `<roleName type="...">` annotiert; damit werden Personen und Organisationen mit weiteren Informationen versehen. Der `@type` bestimmt die Art der Aussage.
 
 Zwei Arten von `@type`-Werten sind zu unterscheiden:
 
-- **Attribute** charakterisieren die Entitaet selbst und benoetigen kein `@corresp` (z.B. ein Titel oder die Markierung "verstorben").
-- **Relationen** verknuepfen die Entitaet ueber `@corresp` mit einem zweiten Eintrag (z.B. eine Verwandtschaftsbeziehung zu einer Person, eine Amtsfunktion in einer Organisation, eine topographische Lage in einem Ort).
+- **Attribute** charakterisieren die Entität selbst (z.B. ein Titel oder die Markierung "verstorben").
+- **Relationen** verknüpfen die Entität über `@corresp` mit einem zweiten Eintrag (z.B. eine Verwandtschaftsbeziehung zu einer Person, eine Amtsfunktion in einer Organisation, eine topographische Lage in einem Ort).
 
-Die im Bestand belegten Relationstypen umfassen unter anderem Verwandtschaft, Berufs- und Amtszuordnung, Stellvertretung, Freundschaft, Topographie und Besitzverhaeltnisse. Die maßgebliche Liste der zulaessigen Werte wird im Schema gefuehrt; die Ausweisung im Bestand ist im Validierungsbericht (`pipeline/output/validation_report.md`) abgebildet.
+**Attribute:**
+
+**Beruf (prof):**
+
+```xml
+<rs type="person" ref="pe__prokop_chreier_QGW_II_I_1227">Proko, des Chreier
+  <roleName type="prof">wirt</roleName> in seinem haus ze Prag</rs>
+```
+
+*Quelle: [QGW II/1 Nr. 1227 (1392)](https://max-steiney.github.io/db_for_medieval_legal_transactions_edition/documents/QGW/Vienna_1177-1414_ready/1227.html)*
+
+**Titel (title):**
+
+```xml
+<rs type="person" ref="pe__herbert_auf_der_saeule_QGW_II_I_184">
+  <roleName type="title">Grundherren</roleName>,
+  <roleName type="title">hern</roleName> Herbortes auf der Seul</rs>
+```
+
+*Quelle: [QGW II/1 Nr. 100 (1327)](https://max-steiney.github.io/db_for_medieval_legal_transactions_edition/documents/QGW/Vienna_1177-1414_ready/100.html)*
+
+**Verstorben (dead):**
+
+```xml
+<rs type="person" ref="pe__dietrich_QGW_II_I_566">
+  <roleName type="dead">Tode</roleName> des ...</rs>
+```
+
+*Quelle: [QGW II/1 Nr. 566 (1360)](https://max-steiney.github.io/db_for_medieval_legal_transactions_edition/documents/QGW/Vienna_1177-1414_ready/566.html)*
+
+**Relationen:**
+
+**Amtsträger (occ):**
+
+```xml
+<rs type="person" ref="pe__berthold_QGW_II_I_10">Bertoldus,
+  <roleName type="occ" corresp="org__oesterreich-herzogtum">
+    camerarius</roleName>
+</rs>
+```
+
+*Quelle: [QGW II/1 Nr. 10 (1274)](https://max-steiney.github.io/db_for_medieval_legal_transactions_edition/documents/QGW/Vienna_1177-1414_ready/10.html)*
 
 **Verwandtschaft (kin):**
 
@@ -133,53 +163,7 @@ Die im Bestand belegten Relationstypen umfassen unter anderem Verwandtschaft, Be
 </rs>
 ```
 
-*Quelle: QGW II/1 Nr. 100 (1327)*
-
-**Amtstraeger (occ):**
-
-```xml
-<rs type="person" ref="pe__berthold_QGW_II_I_10">Bertoldus,
-  <roleName type="occ" corresp="org__oesterreich-herzogtum">
-    camerarius</roleName>
-</rs>
-```
-
-*Quelle: QGW II/1 Nr. 10 (1274)*
-
-**Titel (title):**
-
-```xml
-<rs type="person" ref="pe__herbert_auf_der_saeule_QGW_II_I_184">
-  <roleName type="title">Grundherren</roleName>,
-  <roleName type="title">hern</roleName> Herbortes auf der Seul</rs>
-```
-
-*Quelle: QGW II/1 Nr. 100 (1327)*
-
-**Freundschaft (friend):**
-
-```xml
-<roleName type="friend"
-  corresp="pe__albrecht_chirichhaimer_QGW_II_I_996">
-  <add>lieben Freund</add></roleName>
-```
-
-*Quelle: QGW II/1 Nr. 996*
-
-**Topographie und Besitz (topo, owner):**
-
-```xml
-<rs type="place" ref="pl__wien-immo_hoher_markt_wentkremen_33">
-  <roleName type="owner" corresp="pe__katharina_StB_I_8">irew</roleName>
-  zway hewser gelegen
-  <roleName type="topo" corresp="pl__wien-hoher_markt_wentkremen">
-    under den</roleName>
-  <rs type="place" ref="pl__wien-hoher_markt_wentkremen">
-    Wentchremen ze Wienn</rs>
-</rs>
-```
-
-*Quelle: Stadtbuecher Bd. 1, Nr. 8*
+*Quelle: [QGW II/1 Nr. 100 (1327)](https://max-steiney.github.io/db_for_medieval_legal_transactions_edition/documents/QGW/Vienna_1177-1414_ready/100.html)*
 
 **Stellvertretung (rep):**
 
@@ -191,26 +175,11 @@ Die im Bestand belegten Relationstypen umfassen unter anderem Verwandtschaft, Be
 </rs>
 ```
 
-*Quelle: QGW II/1 Nr. 999*
-
-### Zusaetzliche Attribute
-
-- **`@cert`**: Sicherheitsangabe zu einer Annotation, vergeben in Stufen.
-- **`@select`**: traegt im Projekt einen zweiten XPointer-Verweis und kontextualisiert die durch `@corresp` etablierte Relation, indem ein zweiter Registereintrag (typischerweise ein Ort oder eine Organisation) mitreferenziert wird. Beispiel:
-
-  ```xml
-  <roleName type="occ"
-            corresp="#org__tulln-dominikanerinnen"
-            select="#pl__doebling">amptman</roleName>
-  ```
-
-  ("Amtmann der Tullner Dominikanerinnen mit Zustaendigkeit in Doebling".)
-
-  Diese Verwendung ist eine projektspezifische Konvention und weicht von der TEI-Definition ab, nach der `@select` der Aufloesung von Ambiguitaeten zwischen alternativen Lesarten dient ([att.global.linking](https://tei-c.org/release/doc/tei-p5-doc/en/html/ref-att.global.linking.html)).
+*Quelle: [QGW II/1 Nr. 999](https://max-steiney.github.io/db_for_medieval_legal_transactions_edition/documents/QGW/Vienna_1177-1414_ready/999.html)*
 
 ### Zusammenspiel der Ebenen
 
-Ein vollstaendiges Beispiel zeigt die Verschachtelung aller vier Ebenen:
+Ein vollständiges Beispiel zeigt die Verschachtelung aller vier Ebenen:
 
 ```xml
 <!-- Ebene 1: Ereignis -->
@@ -249,103 +218,167 @@ Ein vollstaendiges Beispiel zeigt die Verschachtelung aller vier Ebenen:
 </rs>
 ```
 
-*Quelle: QGW II/1 Nr. 10 (1274). Bertoldus, Kaemmerer des Herzogtums Oesterreich, gibt mit Zustimmung seiner Gemahlin Dimu/od eine Rente an das Nonnenkloster St. Nikolaus.*
+*Quelle: [QGW II/1 Nr. 10 (1274)](https://max-steiney.github.io/db_for_medieval_legal_transactions_edition/documents/QGW/Vienna_1177-1414_ready/10.html). Bertoldus, Kämmerer des Herzogtums Österreich, gibt mit Zustimmung seiner Gemahlin Dimu/od eine Rente an das Nonnenkloster St. Nikolaus.*
+
+### Zusätzliche Attribute
+
+**`@cert`**: Sicherheitsangabe zu einer Annotation, vergeben in Stufen.
+
+```xml
+<rs type="person" ref="pe__georg_QGW_II_I_144">Georg, des hubmaisters
+  <roleName type="occ" corresp="pe__konrad_hubmeister_QGW_II_I_207" cert="low">schreiber</roleName></rs>
+```
+
+*Quelle: [QGW II/1 Nr. 165 (1335)](https://max-steiney.github.io/db_for_medieval_legal_transactions_edition/documents/QGW/Vienna_1177-1414_ready/165.html)*
+
+**`@select`**: trägt im Projekt einen zweiten XPointer-Verweis und kontextualisiert die durch `@corresp` etablierte Relation, indem ein zweiter Indexeintrag (typischerweise ein Ort oder eine Organisation) mitreferenziert wird.
+
+```xml
+<rs type="person" ref="pe__andreas_hoechstel_QGW_II_I_1043">Andre der Höchstel,
+  <roleName type="occ"
+            corresp="org__tulln-dominikanerinnen"
+            select="pl__doebling">amptman</roleName></rs>
+```
+
+*Quelle: [QGW II/1 Nr. 1043 (1382)](https://max-steiney.github.io/db_for_medieval_legal_transactions_edition/documents/QGW/Vienna_1177-1414_ready/1043.html)* ("Amtmann der Tullner Dominikanerinnen mit Zuständigkeit in Döbling".)
+
+Diese Verwendung ist eine projektspezifische Konvention und weicht von der TEI-Definition ab, nach der `@select` der Auflösung von Ambiguitäten zwischen alternativen Lesarten dient ([att.global.linking](https://tei-c.org/release/doc/tei-p5-doc/en/html/ref-att.global.linking.html)).
 
 
 ## 3. Tagging-Workflow
 
-Die folgende Reihenfolge beschreibt den typischen Ablauf, in dem Annotationen in einer Quelle angelegt werden.
-
-### Schritt 1: Bearbeiter:innen-Kuerzel
-
-Jede:r Bearbeiter:in traegt ein Kuerzel in das `@resp`-Attribut des `<div>`-Elements ein:
+Die folgende Reihenfolge beschreibt den typischen Ablauf, in dem Annotationen in einer Quelle angelegt werden. Der Workflow wird durchgehend an einer Quelle gezeigt: [QGW II/1 Nr. 10 (1274)](https://max-steiney.github.io/db_for_medieval_legal_transactions_edition/documents/QGW/Vienna_1177-1414_ready/10.html). Die vollständig annotierte Quelle:
 
 ```xml
-<div type="abstract" resp="kg">
+<div type="abstract" resp="ks">
+  <p>
+    <rs type="event" ref="ev__QGW_II_I_10">*
+      <rs type="fn" role="issuer">
+        <rs type="person" ref="pe__berthold_QGW_II_I_10">Bertoldus,
+          <roleName type="occ" corresp="org__oesterreich-herzogtum">camerarius</roleName></rs>
+      </rs>,
+      <triggerstring n="disp">gibt</triggerstring>
+      <rs type="fn" role="other">
+        <triggerstring n="fn">mit Zustimmung</triggerstring> seiner
+        <rs type="person" ref="pe__diemut_QGW_II_I_10">
+          <roleName type="kin" corresp="pe__berthold_QGW_II_I_10">Gemahlin</roleName> Dimu/od</rs>
+        und seiner Kinder und Erben
+      </rs>
+      eine Rente von 12 sh. dn. innerhalb der Mauern Wiens auf dem
+      gemeinhin Langmaur genannten Orte an
+      <rs type="fn" role="recipient">
+        <rs type="org" ref="org__wien-st_niklas_vor_dem_stubentor_zisterzienserinnen">das Nonnenkloster bei S. Nikolaus</rs>
+      </rs>
+      mit der Bestimmung, dass 6 sh. zur Kammer, 6 sh. zum Krankenhause
+      der Nonnen gereicht werden sollen.
+    </rs>
+  </p>
+</div>
+<div type="seal">
+  <p>
+    <rs type="event" ref="ev__QGW_II_I_10">
+      <rs type="fn" role="witness">Siegler: der
+        <rs type="person" ref="pe__berthold_QGW_II_I_10">Aussteller</rs>.</rs>
+    </rs>
+  </p>
+</div>
 ```
 
-Die Zuordnung der Kuerzel zu konkreten Personen wird projektintern gepflegt (siehe Abschnitt 7).
+### Schritt 1: Bearbeiter:innen-Kürzel
+
+Jede:r Bearbeiter:in trägt ein Kürzel in das `@resp`-Attribut des `<div>`-Elements und an Einträgen in den Indices ein. Im Beispiel trägt der Abstract-Div das Kürzel `ks`:
+
+```xml
+<div type="abstract" resp="ks">
+```
+
+Mehrere Kürzel können durch Bindestrich verbunden werden, um eine gemeinsame Verantwortung mehrerer Bearbeiter:innen auszuweisen (z.B. `df-hk-kg`). Die Zuordnung der Kürzel zu konkreten Personen wird projektintern gepflegt und ist nicht Bestandteil der öffentlichen Edition; Pflegestelle ist die Datei `normalisation_lists/editors/Name_of_Editors.csv`.
 
 ### Schritt 2: Ereignisse
 
-Alle Rechtsgeschaefte werden als Ereignisse markiert:
+Alle Rechtsgeschäfte werden als Ereignisse markiert. Im Beispiel umschließt ein Ereignis die gesamte Schenkung:
 
 ```xml
-<rs type="event" ref="ev__QGW_II_I_1">...</rs>
-```
-
-Erwaehnte Ereignisse (nicht das Hauptereignis der Urkunde) erhalten das Suffix `_men_`:
-
-```xml
-<rs type="event" ref="ev__QGW_II_II_00606_men_1">...</rs>
+<rs type="event" ref="ev__QGW_II_I_10">...</rs>
 ```
 
 ### Schritt 3: Dispositivformeln
 
-Dispositive Verben und Verbalphrasen werden mit `<triggerstring n="disp">` markiert:
+Dispositive Verben und Verbalphrasen werden mit `<triggerstring n="disp">` markiert. Im Beispiel ist das die Schenkungsformel:
 
 ```xml
-<triggerstring n="disp">verkaufen</triggerstring>
+<triggerstring n="disp">gibt</triggerstring>
 ```
 
-Fuer implizite Informationen wird `<add>` innerhalb des Triggerstrings verwendet:
+### Schritt 4: Funktionen
+
+Allen beteiligten Personen und Organisationen wird eine Funktionsrolle zugewiesen. Im Beispiel sind alle vier Rollen belegt:
+
+```xml
+<rs type="fn" role="issuer">Bertoldus, ...</rs>
+<rs type="fn" role="other"><triggerstring n="fn">mit Zustimmung</triggerstring> seiner Gemahlin ...</rs>
+<rs type="fn" role="recipient">das Nonnenkloster bei S. Nikolaus</rs>
+<rs type="fn" role="witness">Siegler: der Aussteller.</rs>
+```
+
+### Schritt 5: Entitäten
+
+Entitäten werden zuerst mit leerem `<rs/>` markiert, dann wird die ID (`@ref`) zugewiesen:
+
+```xml
+<!-- Schritt 5a: Markierung -->
+<rs type="person">Bertoldus</rs>
+
+<!-- Schritt 5b: ID-Zuweisung -->
+<rs type="person" ref="pe__berthold_QGW_II_I_10">Bertoldus, ...</rs>
+```
+
+### Schritt 6: Attribute und Relationen
+
+Attribute und Relationen werden innerhalb der Entität annotiert. Im Beispiel trägt Bertoldus das Amt (`occ`), seine Gemahlin Diemut die Verwandtschaftsrelation (`kin`):
+
+```xml
+<rs type="person" ref="pe__berthold_QGW_II_I_10">Bertoldus,
+  <roleName type="occ" corresp="org__oesterreich-herzogtum">camerarius</roleName></rs>
+```
+
+### Zusätzliche Konventionen
+
+Über den gezeigten Ablauf hinaus treten weitere Fälle auf:
+
+**Erwähnte Ereignisse** (nicht das Hauptereignis der Urkunde, sondern ein darin nur erwähntes Rechtsgeschäft) erhalten das Suffix `_men_`:
+
+```xml
+<rs type="event" ref="ev__QGW_II_I_823_men_1">dass das Haus vor offenem
+  Gerichte in der Bürgerschranne der Kapelle zugesprochen wurde</rs>
+```
+
+*Quelle: [QGW II/1 Nr. 823 (1372)](https://max-steiney.github.io/db_for_medieval_legal_transactions_edition/documents/QGW/Vienna_1177-1414_ready/823.html)*
+
+**Implizite Informationen** werden mit `<add>` in den Tag geholt — etwas, das im Text erst später oder nur implizit erscheint. Im Triggerstring:
 
 ```xml
 <triggerstring n="disp">haben <add>gegeben</add></triggerstring>
 ```
 
-### Schritt 4: Funktionen
-
-Allen beteiligten Personen und Organisationen wird eine Funktionsrolle zugewiesen:
+`<add>` kann auch an anderer Stelle stehen, etwa innerhalb eines `<rs type="person">`, um einen erst später genannten Namensteil zu ergänzen:
 
 ```xml
-<rs type="fn" role="issuer">...</rs>
-<rs type="fn" role="recipient">...</rs>
-<rs type="fn" role="witness">...</rs>
-<rs type="fn" role="other"><triggerstring n="fn">mit Handen</triggerstring> ...</rs>
+<rs type="person" ref="pe__heinrich_chamrer_QGW_II_I_1516">
+  <add>Heinrich</add> des Chamrer</rs>
 ```
 
-### Schritt 5: Entitaeten
+*Quelle: [QGW II/1 Nr. 1347 (1396)](https://max-steiney.github.io/db_for_medieval_legal_transactions_edition/documents/QGW/Vienna_1177-1414_ready/1347.html)*
 
-Entitaeten werden zuerst mit leerem `<rs/>` markiert, dann wird die ID (`@ref`) zugewiesen:
+**`<unclear>`** markiert unleserliche oder schwer lesbare Passagen:
 
 ```xml
-<!-- Schritt 5a: Markierung -->
-<rs type="person">Chunrat der Chrannest</rs>
-
-<!-- Schritt 5b: ID-Zuweisung -->
-<rs type="person" ref="pe__konrad_chrannest_QGW_II_I_99">
-  Chunrat der Chrannest</rs>
+<rs type="person" ref="pe__leonhard_QGW_II_I_1553">Lienharts des Mu/echsen,
+  <roleName type="occ" corresp="org__mauerbach-kartaeuser">pergmaister
+    <unclear>zu Eczkestorf</unclear></roleName></rs>
 ```
 
-### Schritt 6: Attribute und Relationen
-
-Attribute und Relationen werden innerhalb der Entitaet annotiert:
-
-```xml
-<rs type="person" ref="pe__berthold_QGW_II_I_10">Bertoldus,
-  <roleName type="occ" corresp="org__oesterreich-herzogtum">
-    camerarius</roleName>
-</rs>
-```
-
-Wenn eine Relation neben dem `@corresp`-Verweis durch einen zweiten Registereintrag kontextualisiert werden soll, wird `@select` verwendet (zur Funktion siehe Abschnitt 2, Ebene 4):
-
-```xml
-<roleName type="occ"
-          corresp="#org__tulln-dominikanerinnen"
-          select="#pl__doebling">amptman</roleName>
-```
-
-### Schritt 7: Masseinheiten
-
-Masseinheiten und Waehrungsangaben werden mit `<measure/>` markiert.
-
-### Zusaetzliche Konventionen
-
-- **`@cert`**: Wahrscheinlichkeitsangabe fuer unsichere Zuordnungen
-- **`<unclear>`**: Unleserliche oder schwer lesbare Passagen
-- **`<add>`**: Editorische Ergaenzungen und implizite Informationen
+*Quelle: [QGW II/1 Nr. 1553 (1403)](https://max-steiney.github.io/db_for_medieval_legal_transactions_edition/documents/QGW/Vienna_1177-1414_ready/1553.html)*
 
 
 ## 4. ID-Konstruktionsregeln
@@ -359,10 +392,7 @@ ev__ + Quellenabkuerzung + (_) Nummer
 | Muster | Beispiel |
 |--------|---------|
 | Hauptereignis | `ev__QGW_II_I_1` |
-| Hauptereignis (mit Nullen) | `ev__SB_CD_00642` |
-| Erwaehnte Ereignisse | `ev__QGW_II_II_00606_men_1` |
-
-Im Bestand treten zusaetzliche Sondervarianten auf, etwa fuer Privilegienurkunden. Ihre genaue Bildungsregel ist projektintern zu klaeren.
+| Erwähnte Ereignisse | `ev__QGW_II_I_823_men_1` |
 
 ### Personen (pe\_\_)
 
@@ -372,37 +402,51 @@ pe__ + normalisierter_Vorname + (_) normalisierter_Nachname + (_) Quellenabkuerz
 
 | Muster | Beispiel |
 |--------|---------|
-| Standard | `pe__johann_maurperger_QGW_II_II_2870` |
-| Homonyme (Suffixunterscheidung) | `pe__agnes_QGW_II_II_3250_a`, `pe__agnes_QGW_II_II_3250_b` |
-| Ohne Nachname (Beruf stattdessen) | `pe__berthold_QGW_II_I_10` |
+| Standard | `pe__heinrich_straiher_QGW_II_I_331` |
+| Homonyme (Suffixunterscheidung) | `pe__elisabeth_QGW_II_I_301_a`, `pe__elisabeth_QGW_II_I_301_b` |
 
 **Konventionen:**
 
 - Keine Umlaute in IDs.
-- Vornamen werden ueber eine externe Normalisierungstabelle vereinheitlicht (siehe Abschnitt 5).
+- Vornamen werden über eine externe Normalisierungstabelle vereinheitlicht (siehe Abschnitt 5).
 - Nachnamen stammen aus dem Quellenregister; fehlt ein Register, wird die Originalschreibung verwendet.
 - Bei fehlendem Nachnamen wird der Beruf verwendet.
-- Bei Frauen und Kindern wird ein potenzieller Nachname in `<add>` ergaenzt.
+- Bei Frauen und Kindern wird ein potenzieller Nachname in `<add>` ergänzt.
 
 Diese Konventionen beschreiben die im Bestand erkennbare Praxis; Detailausnahmen werden im konkreten Einzelfall editorisch entschieden.
 
 ### Individualisierungsverfahren
 
-Die Disambiguierung von Homonymen erfolgt durch das Suffix `_a` / `_b` (usw.) an der Personen-ID. Dieses Verfahren greift, wenn derselbe Name in derselben Quelle mehrfach vorkommt und die Personen durch Kontextinformationen (Beruf, Verwandtschaft, Amt) unterschieden werden koennen.
-
-**Register-Struktur (personList.xml):**
-
-Jeder Personeneintrag enthaelt:
-
-- `<persName>`: `<forename>`, `<surname>` (jeweils mit `<reg>` fuer normalisierte Form), `<addName>` (Beiname), `<genName>` (Generationsname)
-- `<death notAfter="">`: Todesdatum
-- `<idno>`: Verknuepfung mit externen Normdateien
-- `@sex` (f/m), `@source`, `@resp`, `@cert`
-- `@sameAs`: Queridentifikation mit einer anderen Person im Register
+Die Disambiguierung von Homonymen erfolgt durch das Suffix `_a` / `_b` (usw.) an der Personen-ID. Dieses Verfahren greift, wenn derselbe Name in derselben Quelle mehrfach vorkommt und die Personen durch Kontextinformationen (Beruf, Verwandtschaft, Amt) unterschieden werden können.
 
 **Namenskonvention als Individualisierungsstrategie:**
 
-Die Struktur der Personen-ID selbst, normalisierter Vorname plus Nachname plus Quelle plus Nummer, bildet bereits eine erste Individualisierungsschicht. Unterschiedliche Quellen erzeugen unterschiedliche IDs fuer potentiell identische Personen. Die Zusammenfuehrung erfolgt ueber `@sameAs` im Register; sie ist eine historisch-prosopographische Urteilsfrage und keine algorithmische Operation.
+Die Struktur der Personen-ID selbst, normalisierter Vorname plus Nachname plus Quelle plus Nummer, bildet bereits eine erste Individualisierungsschicht. Unterschiedliche Quellen erzeugen unterschiedliche IDs für potentiell identische Personen. Die Zusammenführung erfolgt über `@sameAs` im Index; sie ist eine historisch-prosopographische Urteilsfrage und keine algorithmische Operation.
+
+**Index-Struktur (personList.xml):**
+
+Jeder Personeneintrag kann folgende Informationen enthalten:
+
+- `<persName>`: `<forename>`, `<surname>` (jeweils mit `<reg>` für normalisierte Form), `<addName>` (Beiname), `<genName>` (Generationsname)
+- `<death notAfter="">`: Todesdatum
+- `<idno>`: Verknüpfung mit externen Normdateien
+- `@sex` (f/m), `@source`, `@resp`, `@cert`
+- `@sameAs`: Queridentifikation mit einer anderen Person im Index
+
+Ein gut gefüllter Eintrag, hier der Wiener Bürgermeister [Heinrich Straiher](https://max-steiney.github.io/db_for_medieval_legal_transactions_edition/register/persons/pe__heinrich_straiher_QGW_II_I_331.html):
+
+```xml
+<person sex="m" source="QGW_II_I_register_pg_579" resp="ks" xml:id="pe__heinrich_straiher_QGW_II_I_331">
+  <persName type="wienwiki">Heinrich Straicher</persName>
+  <persName>
+    <forename><reg>Heinrich</reg></forename> <surname><reg>Straiher</reg></surname>
+  </persName>
+  <note>Hofmeister zu Dornbach, Judenrichter, Bgm., Gem. Klara</note>
+  <death notAfter="1363-08-22">1363-08-22</death>
+  <idno type="URI">https://www.geschichtewiki.wien.gv.at/Special:URIResolver/?curid=18785</idno>
+</person>
+```
+
 
 ### Organisationen (org\_\_)
 
@@ -418,7 +462,19 @@ org__ + Siedlung + (-) Patron/Eigenname + (_) Institutionstyp + (-) Unterorganis
 
 **Prinzip:** Vom Allgemeinen zum Spezifischen. Hierarchische Verschachtelung in orgList.xml.
 
-Die im Register vorkommenden Organisationstypen reichen von uebergeordneten Herrschaftsverbaenden (Reich, Koenigreich, Herzogtum) ueber kirchliche Einrichtungen (Dioezese, Pfarre, Kirche, Kapelle, Kloster, Altar, Messe, Bruderschaft) bis zu staedtischen und karitativen Einrichtungen (Stadtverwaltung, Spital).
+Beispiel ([org__wien](https://max-steiney.github.io/db_for_medieval_legal_transactions_edition/register/orgs/org__wien.html) mit hierarchisch verschachtelten Unterorganisationen):
+
+```xml
+<org type="Stadt" xml:id="org__wien" resp="kg">
+  <orgName><reg>Wien</reg></orgName>
+  <note>Bürgermeister, Rat (und Gemein)</note>
+  <location><address><addrLine corresp="#pl__wien"/></address></location>
+  <org type="Stadtviertel" xml:id="org__wien-stubarum">
+    <orgName><reg xml:lang="LAT">Stubarum</reg> <reg xml:lang="GER">Stubenviertel</reg></orgName>
+    ...
+  </org>
+</org>
+```
 
 ### Orte (pl\_\_)
 
@@ -429,45 +485,42 @@ pl__ + Siedlung + (-) Name
 | Muster | Beispiel |
 |--------|---------|
 | Siedlung | `pl__wien` |
-| Strasse | `pl__wien-hoher_markt` |
-| Immobilie | `pl__wien-immo_karntnerstrasse_1` |
 
-Das Praefix `immo_` kennzeichnet Immobilien. Hierarchisierung (Haeuser in Strassen) ist moeglich.
+Beispiel (`pl__wien`):
+
+```xml
+<place xml:id="pl__wien" type="settlement" resp="kg">
+  <placeName><reg>Wien</reg></placeName>
+  <location><geo decls="LatLng">48.20849 16.37208</geo></location>
+  <idno type="URL">https://www.geonames.org/2761369/vienna.html</idno>
+</place>
+```
 
 
 ## 5. Normalisierung
 
-Die Normalisierung von Trigger-Formeln, Funktionen und Rollennamen erfolgt ueber projekteigene Normalisierungslisten, die in `normalisation_lists/` gepflegt werden. Die Normalisierung von Vornamen wird ueber einen externen Webservice (`medieval-legal-transactions.univie.ac.at/norm_names/`) verwaltet, der mit projekteigenen Zugangsdaten zugaenglich ist. Die normalisierten Formen fliessen in die Personen-IDs und Register-Eintraege ein.
-
-Nicht alle Triggerstrings und roleName-Eintraege im Bestand sind durch die Normalisierungslisten abgedeckt.
+Die Normalisierung von Trigger-Formeln, Funktionen und Rollennamen erfolgt über projekteigene Normalisierungslisten, die in `normalisation_lists/` gepflegt werden. Die Normalisierung von Vornamen wird über einen externen Webservice (`medieval-legal-transactions.univie.ac.at/norm_names/`) verwaltet, der mit projekteigenen Zugangsdaten zugänglich ist. Die normalisierten Formen fließen in die Personen-IDs und Index-Einträge ein.
 
 
 ## 6. Vokabular und Validierung
 
-Dieser Abschnitt beschreibt die Funktion der wesentlichen Attribute. Die kanonischen Wertelisten werden hier nicht ausgezaehlt: Sie sind im RelaxNG-Schema (`sources/schema/toolbox.rng`) festgelegt und werden bei jedem Validierungslauf gegen den Bestand abgeglichen. Der Validierungsbericht (`pipeline/output/validation_report.md`) listet Abweichungen mit Datei und Zeile.
+Dieser Abschnitt beschreibt die Funktion der wesentlichen Attribute. Die kanonischen Wertelisten werden hier nicht ausgezählt: Sie sind im RelaxNG-Schema (`sources/schema/toolbox.rng`) festgelegt und werden bei jedem Validierungslauf gegen den Bestand abgeglichen. Der Validierungsbericht (`pipeline/output/validation_report.md`) listet Abweichungen mit Datei und Zeile.
 
 - **`rs/@type`** klassifiziert, was die Referenz bezeichnet (Person, Organisation, Ort, Ereignis, Funktionsrolle).
-- **`rs/@role`** klassifiziert die Rolle einer Funktion innerhalb eines Ereignisses (Aussteller, Empfaenger, Zeuge, sonstige Beteiligung, Transaktionsgut).
-- **`roleName/@type`** klassifiziert die Art des Attributs oder der Relation an einer Entitaet (Beruf, Verwandtschaft, Titel, Stellvertretung, Topographie, Besitz u.a., siehe Abschnitt 2, Ebene 4).
-- **`triggerstring/@n`** klassifiziert die Funktion einer Triggerformel (Disposition, Funktionstext, Begruendung).
-- **`@cert`** traegt einen Sicherheitsgrad zu einer Annotation, vergeben in mehreren Stufen.
-- **`div/@resp`** sowie das `@resp`-Attribut an Registereintraegen tragen ein Bearbeiter:innen-Kuerzel; siehe Abschnitt 7.
+- **`rs/@role`** klassifiziert die Rolle einer Funktion innerhalb eines Ereignisses (Aussteller, Empfänger, Zeuge, sonstige Beteiligung).
+- **`roleName/@type`** klassifiziert die Art des Attributs oder der Relation an einer Entität (Beruf, Verwandtschaft, Titel, Stellvertretung, Topographie, Besitz u.a., siehe Abschnitt 2, Ebene 4).
+- **`triggerstring/@n`** klassifiziert die Funktion einer Triggerformel (Disposition, Funktionstext, Begründung).
+- **`@cert`** trägt einen Sicherheitsgrad zu einer Annotation, vergeben in mehreren Stufen.
+- **`div/@resp`** sowie das `@resp`-Attribut an Indexeinträgen tragen ein Bearbeiter:innen-Kürzel; siehe Abschnitt 3, Schritt 1.
 
-Bekannte Schreibvarianten und Tippfehler in den Quelldaten werden bei der Tabellenerzeugung durch die Pipeline normalisiert; die XML-Quelldateien bleiben als geschuetzte Forschungsdaten unveraendert. Eine Korrektur an der Quelle ist Aufgabe der Bearbeiter:innen.
-
-
-## 7. Bearbeiter:innen-Konvention
-
-Das Attribut `@resp` an `<div>`-Elementen in den Quelldokumenten und an Eintraegen in den Registern traegt ein kurzes Bearbeiter:innen-Kuerzel. Mehrere Kuerzel koennen durch Bindestrich verbunden werden, um eine gemeinsame Verantwortung mehrerer Bearbeiter:innen auszuweisen (z.B. `df-hk-kg`).
-
-Die Zuordnung der Kuerzel zu konkreten Personen wird projektintern gepflegt und ist nicht Bestandteil der oeffentlichen Edition. Pflegestelle ist die Datei `normalisation_lists/editors/Name_of_Editors.csv`.
+Bekannte Schreibvarianten in den Quelldaten werden bei der Tabellenerzeugung durch die Pipeline normalisiert; die XML-Quelldateien bleiben als geschützte Forschungsdaten unverändert. Eine Korrektur an der Quelle ist Aufgabe der Bearbeiter:innen.
 
 
-## 8. Zitierhinweis
+## 7. Zitierhinweis
 
 ### Empfohlene Zitierweise
 
-> *Stadt und Gemeinschaft Wien: Datenbank zu mittelalterlichen Wiener Rechtsgeschaeften.* Universitaet Wien, 2026. https://max-steiney.github.io/db_for_medieval_legal_transactions_edition/
+> *Stadt und Gemeinschaft Wien: Datenbank zu mittelalterlichen Wiener Rechtsgeschäften.* Universität Wien, 2026. https://max-steiney.github.io/db_for_medieval_legal_transactions_edition/
 
 ### BibTeX
 
@@ -484,34 +537,18 @@ Die Zuordnung der Kuerzel zu konkreten Personen wird projektintern gepflegt und 
 Ein persistenter Identifikator (DOI) ist in Vorbereitung. Bei Einzelquellen-Zitaten empfiehlt sich die Angabe der Datei-ID (z.B. `QGW_1177-1414_0001`).
 
 
-## 9. Lizenzierung
+## 8. Lizenzierung
 
 Die Lizenzierung wird auf drei Geltungsbereiche bezogen.
 
 ### Die digitale Edition als Werk
 
-Die im Rahmen der Modernisierung erstellten Bestandteile (die generierten HTML-Seiten, das Layout, die vorliegenden Annotationsrichtlinien, der Pipeline-Code, das RelaxNG-Schema und die Visualisierungen) werden unter der [Creative Commons Attribution-NonCommercial-ShareAlike 4.0 International License (CC BY-NC-SA 4.0)](https://creativecommons.org/licenses/by-nc-sa/4.0/deed.de) veroeffentlicht. Der vollstaendige Lizenztext liegt im Repository unter `LICENSE`.
+Die im Rahmen der Modernisierung erstellten Bestandteile (die generierten HTML-Seiten, das Layout, die vorliegenden Annotationsrichtlinien, der Pipeline-Code, das RelaxNG-Schema und die Visualisierungen) werden unter der [Creative Commons Attribution-NonCommercial-ShareAlike 4.0 International License (CC BY-NC-SA 4.0)](https://creativecommons.org/licenses/by-nc-sa/4.0/deed.de) veröffentlicht. Der vollständige Lizenztext liegt im Repository unter `LICENSE`.
 
-### Die TEI-Quelldaten und Register
+### Die TEI-Quelldaten und Indices
 
-Die Quelldokumente in `sources/` und die drei Register in `indices/` tragen ihre Urheber- und Bearbeitungsangaben in den eigenen `<publicationStmt>`- und `<sourceDesc>`-Elementen. Diese Angaben werden im Rahmen der Modernisierung nicht ueberschrieben. Eine einheitliche Lizenzangabe fuer die oeffentliche Veroeffentlichung dieser Daten ist zwischen den Projektpartner:innen und der Universitaet Wien zu vereinbaren; bis zu dieser Vereinbarung gelten die in den Quelldateien selbst dokumentierten Angaben.
+Die Quelldokumente in `sources/` und die drei Indexlisten in `indices/` tragen ihre Urheber- und Bearbeitungsangaben in den eigenen `<publicationStmt>`- und `<sourceDesc>`-Elementen. Diese Angaben werden im Rahmen der Modernisierung nicht überschrieben. Eine einheitliche Lizenzangabe für die öffentliche Veröffentlichung dieser Daten ist zwischen den Projektpartner:innen und der Universität Wien zu vereinbaren; bis zu dieser Vereinbarung gelten die in den Quelldateien selbst dokumentierten Angaben.
 
 ### Die Normalisierungslisten
 
-Die Normalisierungslisten in `normalisation_lists/` werden Gegenstand einer ausdruecklichen Lizenzvereinbarung sein. Eine Lizenzangabe pro Datei ist vorgesehen.
-
-
-## 10. Versionsgeschichte
-
-| Datum | Aenderung |
-|-------|----------|
-| 2026-02-20 | Ersterfassung des Korpus, Aufbau der Python-Pipeline und der automatisierten Tests |
-| 2026-03-01 | RelaxNG-Schema, Integritaetspruefungen und Klassifikation der Annotationsbefunde |
-| 2026-03-01 | Editionsrichtlinien v1: erstmalige Konsolidierung, Markdown-Build-Pipeline, Erfuellung der Gutachten-Anforderungen #5+#6 |
-| 2026-03-12 | Kontrolliertes Vokabular und Normalisierung bekannter Tippfehler in der Pipeline |
-| 2026-03-12 | Richtlinien-Ueberarbeitung: Restrukturierung, Zwei-Spalten-Layout, Hyperlinks, Zitierhinweis, Lizenz |
-| 2026-03-20 | Korpus-Bereinigung: Rueckzug der dissertationsspezifischen Sammlungen aus dem oeffentlichen Bestand |
-| 2026-04 | URI-Plausibilitaetspruefung, Worked-Examples im Validierungsreport |
-| 2026-04-28 | Verifikation gegen den Bestand: `@select` als projektspezifische Konvention dokumentiert; Vokabular-Abschnitt auf Funktionsbeschreibung umgestellt; Bearbeiter:innen-Konvention von Personenliste entkoppelt; Lizenzierung auf drei Geltungsbereiche aufgeschluesselt |
-
-Die detaillierte Aenderungshistorie ist in der Git-Historie des Repositoriums (`git log`) dokumentiert; den aktuellen Lieferstand fasst `knowledge/status.md` zusammen.
+Die Normalisierungslisten in `normalisation_lists/` werden Gegenstand einer ausdrücklichen Lizenzvereinbarung sein. Eine Lizenzangabe pro Datei ist vorgesehen.
