@@ -49,11 +49,14 @@ def test_glossar_has_core_terms(built_demo):
 
 
 def test_glossar_has_zaehlbegriffe(built_demo):
-    # Die drei Zaehlbegriffe wurden aus der (archivierten) Technik-Seite ins
-    # Glossar ueberfuehrt (2026-07-17).
+    # Gesamtnennung + Individuelle Person aus der (archivierten) Technik-Seite
+    # ins Glossar ueberfuehrt (2026-07-17). Menschen-Event vorerst NICHT
+    # aufgenommen (kein UI-Element, das ihn surfaced); wird nachgezogen, wenn
+    # der Ein-/Ausschluss-Filter im UI existiert.
     c = built_demo["glossar"]
-    for term in ("Gesamtnennung", "Individuelle Person", "Menschen-Event"):
+    for term in ("Gesamtnennung", "Individuelle Person"):
         assert term in c, term
+    assert "Menschen-Event" not in c
 
 
 def test_glossar_event_is_named_entity(built_demo):

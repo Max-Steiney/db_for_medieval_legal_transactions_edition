@@ -115,7 +115,7 @@ Das Match-Verhalten ist parallel zu Personen: der Org-Name ist Substring-Match a
 
 ## Sonderfall Menschen-Events
 
-Im Datenbestand vorkommend. Definition in [[glossar#Menschen-Event]]. Im UI werden Personen-Annotationen in verschachtelten Events nicht doppelt gezählt, siehe [[specification#Nennungen zählen nur Personen-Annotationen außerhalb mentioned Events]].
+Im Datenbestand vorkommend. Definition in Menschen-Event. Im UI werden Personen-Annotationen in verschachtelten Events nicht doppelt gezählt, siehe [[specification#Nennungen zählen nur Personen-Annotationen außerhalb mentioned Events]].
 
 ## Aggregat-Schicht
 

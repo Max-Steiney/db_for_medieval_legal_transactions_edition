@@ -22,7 +22,7 @@ Konzeptionelle Dokumentation der Datenbank „Stadt und Gemeinschaft Wien, Daten
 
 ## Lesepfad
 
-Die kanonischen Definitionen der Fachbegriffe (Quellenkorpus, Quelle, Event, Rechtsgeschäft, Gesamtnennung, Individuelle Person, Menschen-Event, Rolle, Erschließungsform) liegen außerhalb dieses Ordners im Frontend-Content unter `frontend/content/project/glossar.md` und werden zur Glossar-Seite gerendert.
+Die kanonischen Definitionen der Fachbegriffe (Quellenkorpus, Quelle, Event, Rechtsgeschäft, Gesamtnennung, Individuelle Person, Rolle, Erschließungsform) liegen außerhalb dieses Ordners im Frontend-Content unter `frontend/content/project/glossar.md` und werden zur Glossar-Seite gerendert.
 
 - [[data]] — Gegenstand der Datenbank: Quellenkorpora, Erschließungsformen, Datenebenen, Annotationsebenen, Aggregat-Schicht.
 - [[architecture]] — Datenfluss von TEI bis statisches HTML, Aggregator, Verifikations-Test-Set, Provenienz-Indizes.

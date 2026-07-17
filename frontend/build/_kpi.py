@@ -229,7 +229,7 @@ def _compute_matrix_columns(total_docs, total_mentions, total_events):
         },
         {
             "id": "mentions",
-            "label": "Nennungen",
+            "label": "Gesamtnennungen",
             "glossary_id": "gloss-nennung",
             "glossary_term": "Gesamtnennung",
             "glossary_slug": None,
@@ -241,7 +241,7 @@ def _compute_matrix_columns(total_docs, total_mentions, total_events):
             "total": total_mentions,
             "row_key": "mentions",
             "prov_id": "prov-total-mentions",
-            "prov_title": "Nennungen",
+            "prov_title": "Gesamtnennungen",
             "prov_description": Markup(
                 "Wie oft Personen in den Quellen genannt werden. "
                 "Eine Person, die in zwei verschiedenen Quellen vorkommt, "

@@ -182,15 +182,15 @@ Pfad Brush: Auswertungen → Transaktionstypen-Sektion → wechseln auf die Zeit
 
 ## Menschen-Events kontrolliert behandeln
 
-*Als Forscherin, die exakte Statistiken zu Personen in einem Rechtsgeschäft aufstellt, will ich [[glossar#Menschen-Event|Menschen-Events]] aktiv ein- oder ausschließen, damit referenzierte Personen aus früheren Geschäften meine Zahlen nicht verzerren.*
+*Als Forscherin, die exakte Statistiken zu Personen in einem Rechtsgeschäft aufstellt, will ich Menschen-Events aktiv ein- oder ausschließen, damit referenzierte Personen aus früheren Geschäften meine Zahlen nicht verzerren.*
 
 Default-Stand schliesst mentioned Events aus. Der Vergleichsstand wird über `--stage 2` als separater Build erzeugt, nicht über einen UI-Toggle. Begründung: [[specification#Mentioned-Event-Vergleichsstand als Build-Flag]] und [[specification#Nennungen zählen nur Personen-Annotationen außerhalb mentioned Events]].
 
-* **Begriff** [[glossar#Menschen-Event]]
+* **Begriff** Menschen-Event
 
 ## Unbekannten Begriff an Ort und Stelle verstehen
 
-*Als Forscherin, die einem projektspezifischen Begriff wie [[glossar#Menschen-Event]] zum ersten Mal begegnet, will ich seine Bedeutung im UI nachschlagen, ohne den Kontext zu verlassen, damit ich die Konsequenz einer Filteraktion verstehe.*
+*Als Forscherin, die einem projektspezifischen Begriff wie Menschen-Event zum ersten Mal begegnet, will ich seine Bedeutung im UI nachschlagen, ohne den Kontext zu verlassen, damit ich die Konsequenz einer Filteraktion verstehe.*
 
 * **Komponente** [[ui-design#Glossar-Integration]]
 

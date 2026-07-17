@@ -2,8 +2,9 @@
      Frontend gerendert und ist ueber keinen Live-Link erreichbar. Die technische
      TEI-Auszeichnung (Tags, Rollen, roleName-Typen) ist jetzt in den
      Annotationsrichtlinien (edition_guidelines) dokumentiert. Die drei
-     Zaehlbegriffe (Gesamtnennung, Individuelle Person, Menschen-Event) sind ins
-     Glossar (glossar.md) uebernommen. Der Inhalt bleibt fuer eine moegliche
+     Zaehlbegriffe Gesamtnennung und Individuelle Person sind ins Glossar
+     (glossar.md) uebernommen; Menschen-Event wurde vorerst nicht aufgenommen
+     (kein UI-Element surfaced ihn). Der Inhalt bleibt fuer eine moegliche
      spaetere Ueberarbeitung/Wiederaufnahme erhalten. -->
 
 <nav class="glossar-pagenav">

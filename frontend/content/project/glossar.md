@@ -103,43 +103,33 @@ um Informationen systematisch durchsuchen und auswerten zu können, beispielswei
 der Begriff Bürger/Bürgerin, der unter anderem auch in den Schreibweisen
 purger/purgerin oder civis wiennensis vorkommt.
 
-### Gesamtnennung
-
-Eine Beziehung zwischen einer Person, Organisation oder einem Ort und einer
-Quelle, in der sie genannt wird. Wer in drei Quellen vorkommt, trägt drei
-Gesamtnennungen bei. Eine Person, die in derselben Quelle mehrfach erwähnt
-wird (typisch für Zeugenreihen oder Urteilslisten), trägt für diese Quelle
-nur eine Gesamtnennung bei (quellenbereinigte Zählung).
-
-Gesamtnennungen sind die Zählebene für Häufigkeit gesellschaftlicher Präsenz.
-Eine Gesamtnennung entsteht ausschließlich aus einer direkten
-Personen-Annotation im Quellentext (`<rs type="person">` mit `@ref`).
-Korrespondierende Hilfsverknüpfungen (`@corresp`) und Personen-Annotationen
-innerhalb verschachtelter `<rs type="event">`-Elemente (mentioned Events)
-zählen nicht. Nicht zu verwechseln mit [[#Individuelle Person]]; beide
-Zählebenen sind gleichzeitig gültig, beantworten aber verschiedene Fragen.
+Gleichzeitig werden auch die Nachnamen von Ehepersonen und Kindern normiert.
+So werden zur einfacheren Identifikation von Personen, zum Beispiel Ehefrauen
+und Kinder mit demselben Namen geführt wie der verbundene Ehemann oder Vater. 
+Solche ergänzten Nachnamen werden im Datenbestand mit einem <add> ausgewiesen. 
 
 ### Individuelle Person
 
-Eine konsolidierte Identität im Personenregister, unabhängig von der Anzahl
-ihrer Nennungen. Dieselbe historische Person ist genau eine individuelle
-Person, auch wenn sie in fünfzig Quellen erscheint. Analog gelten
-individuelle Organisationen.
+Eine konsolidierte Identität im Personenregister: dieselbe historische Person
+zählt genau einmal, unabhängig davon, wie oft und in welcher Rolle sie genannt
+wird. Analog gelten individuelle Organisationen.
 
-Eine Person zählt, sobald sie in mindestens einer freigegebenen Quelle als
-`<rs type="person">` annotiert ist, gleich ob direkt im Top-Level-Event oder
-innerhalb eines verschachtelten (mentioned) rs-Events. Eine Person, die nur
-als Querverweis in einem mentioned Event auftritt, ist damit im Register
-enthalten, trägt aber keine [[#Gesamtnennung]] bei.
+Eine Person oder Organisation zählt als individuell, sobald sie in mindestens
+einer Quelle annotiert ist. Nicht zu verwechseln mit der Zählebene
+[[#Gesamtnennung]]: Dort wird die Häufigkeit der Nennungen gezählt, hier die Zahl der
+unterschiedlichen Personen/ Organisationen.
 
-### Menschen-Event
+### Gesamtnennung
 
-Eine Person, die in einem Rechtsgeschäft namentlich erwähnt wird, weil sie in
-einem früheren, referenzierten Geschäft bereits vorkam. Sie ist mit einem
-Personennamen belegt, gehört aber nicht zum unmittelbaren Ereignis der
-aktuellen Quelle. Der Begriff ist spezifisch für das Datenmodell dieser
-Datenbank. Das UI macht den Ein- oder Ausschluss an jeder Abfrage sichtbar,
-weil eine stillschweigende Behandlung Statistiken verzerren würde.
+Eine Gesamtnennung ist die Beziehung zwischen einer Person (oder Organisation)
+und einer Quelle, in der sie genannt wird. Mehrfache Erwähnungen in derselben
+Quelle (typisch für Zeugenreihen oder Urteilslisten) zählen dabei als eine
+Gesamtnennung. Wer in drei Quellen vorkommt, trägt drei Gesamtnennungen bei.
+
+Gesamtnennungen summieren diese Beziehungen über alle Personen — sie sind die
+Zählebene für die Häufigkeit gesellschaftlicher Präsenz. Nicht zu verwechseln
+mit der [[#Individuelle Person|Individuellen Person]]: beide Zählebenen sind
+gleichzeitig gültig, beantworten aber verschiedene Fragen.
 
 ## B. Quellen und Überlieferung
 
