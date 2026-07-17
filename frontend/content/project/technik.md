@@ -1,3 +1,11 @@
+<!-- ARCHIVIERT / PASSIV (Stand 2026-07-17): Diese Seite wird derzeit NICHT im
+     Frontend gerendert und ist ueber keinen Live-Link erreichbar. Die technische
+     TEI-Auszeichnung (Tags, Rollen, roleName-Typen) ist jetzt in den
+     Annotationsrichtlinien (edition_guidelines) dokumentiert. Die drei
+     Zaehlbegriffe (Gesamtnennung, Individuelle Person, Menschen-Event) sind ins
+     Glossar (glossar.md) uebernommen. Der Inhalt bleibt fuer eine moegliche
+     spaetere Ueberarbeitung/Wiederaufnahme erhalten. -->
+
 <nav class="glossar-pagenav">
   <a href="glossary.html">Glossar</a> ·
   <strong>Technik / Datenmodell</strong>
@@ -98,50 +106,6 @@ Entität verweist.
     <tr><td><code>title_ref</code></td><td>Titulare Bindung an einen Ort</td><td>„von"</td></tr>
   </tbody>
 </table>
-
-## Zählbegriffe des Frontends {#zaehlbegriffe}
-
-Drei Begriffe des Datenmodells, auf denen die Zählungen und Register des
-Frontends aufbauen. Die Definitionen sind vorläufig (Stakeholder-Sign-off
-steht aus).
-
-### Gesamtnennung
-
-Eine Beziehung zwischen einer Person, Organisation oder einem Ort und einer
-Quelle, in der sie genannt wird. Wer in drei Quellen vorkommt, trägt drei
-Gesamtnennungen bei. Eine Person, die in derselben Quelle mehrfach erwähnt
-wird (typisch für Zeugenreihen oder Urteilslisten), trägt für diese Quelle
-nur eine Gesamtnennung bei (quellenbereinigte Zählung).
-
-Gesamtnennungen sind die Zählebene für Häufigkeit gesellschaftlicher Präsenz.
-Eine Gesamtnennung entsteht ausschließlich aus einer direkten
-Personen-Annotation im Quellentext (`<rs type="person">` mit `@ref`).
-Korrespondierende Hilfsverknüpfungen (`@corresp`) und Personen-Annotationen
-innerhalb verschachtelter `<rs type="event">`-Elemente (mentioned Events)
-zählen nicht. Nicht zu verwechseln mit [[#Individuelle Person]]; beide
-Zählebenen sind gleichzeitig gültig, beantworten aber verschiedene Fragen.
-
-### Individuelle Person
-
-Eine konsolidierte Identität im Personenregister, unabhängig von der Anzahl
-ihrer Nennungen. Dieselbe historische Person ist genau eine individuelle
-Person, auch wenn sie in fünfzig Quellen erscheint. Analog gelten
-individuelle Organisationen.
-
-Eine Person zählt, sobald sie in mindestens einer freigegebenen Quelle als
-`<rs type="person">` annotiert ist, gleich ob direkt im Top-Level-Event oder
-innerhalb eines verschachtelten (mentioned) rs-Events. Eine Person, die nur
-als Querverweis in einem mentioned Event auftritt, ist damit im Register
-enthalten, trägt aber keine [[#Gesamtnennung]] bei.
-
-### Menschen-Event
-
-Eine Person, die in einem Rechtsgeschäft namentlich erwähnt wird, weil sie in
-einem früheren, referenzierten Geschäft bereits vorkam. Sie ist mit einem
-Personennamen belegt, gehört aber nicht zum unmittelbaren Ereignis der
-aktuellen Quelle. Der Begriff ist spezifisch für das Datenmodell dieser
-Datenbank. Das UI macht den Ein- oder Ausschluss an jeder Abfrage sichtbar,
-weil eine stillschweigende Behandlung Statistiken verzerren würde.
 
 ## Wie die Tags in den Fallbeispielen zusammenwirken {#faelle}
 

@@ -1,4 +1,10 @@
-"""Tests for the production glossary pages (glossary.html + technik.html)."""
+"""Tests for the production glossary page (glossary.html).
+
+technik.md und tutorial.md sind archiviert/passiv (Stand 2026-07-17) und
+werden nicht mehr gerendert: die technische TEI-Auszeichnung ist in den
+Annotationsrichtlinien dokumentiert, die drei Zaehlbegriffe sind ins Glossar
+ueberfuehrt. Die frueheren Technik-/Tutorial-Tests entfallen entsprechend.
+"""
 
 from pathlib import Path
 
@@ -12,7 +18,7 @@ def built_demo(docs_dir):
     env = _init_jinja()
     _build_glossary(env)
     base = docs_dir / "project"
-    pages = {"glossar": base / "glossary.html", "technik": base / "technik.html"}
+    pages = {"glossar": base / "glossary.html"}
     contents = {}
     for name, path in pages.items():
         assert path.exists(), f"project/{path.name} was not generated"
@@ -22,8 +28,8 @@ def built_demo(docs_dir):
 
 # --- Task 1: build plumbing / smoke ---
 
-def test_both_pages_built(built_demo):
-    assert set(built_demo) == {"glossar", "technik"}
+def test_glossar_built(built_demo):
+    assert set(built_demo) == {"glossar"}
 
 
 def test_pages_have_native_chrome(built_demo):
@@ -39,6 +45,14 @@ def test_glossar_has_core_terms(built_demo):
     c = built_demo["glossar"]
     for term in ("Quelle", "Quellenkorpus", "Event", "Entit", "Rolle",
                  "Annotation", "Regest", "Rechtsgesch"):
+        assert term in c, term
+
+
+def test_glossar_has_zaehlbegriffe(built_demo):
+    # Die drei Zaehlbegriffe wurden aus der (archivierten) Technik-Seite ins
+    # Glossar ueberfuehrt (2026-07-17).
+    c = built_demo["glossar"]
+    for term in ("Gesamtnennung", "Individuelle Person", "Menschen-Event"):
         assert term in c, term
 
 
@@ -62,10 +76,13 @@ def test_glossar_tooltip_preview_removed(built_demo):
     assert "tip-popover" not in c
 
 
-def test_glossar_links_to_technik_not_tutorial(built_demo):
+def test_glossar_links_to_guidelines_not_technik(built_demo):
+    # technik.html ist archiviert/passiv (2026-07-17); der Verweis geht jetzt
+    # auf die Annotationsrichtlinien.
     c = built_demo["glossar"]
-    assert "technik.html" in c
-    assert "tutorial.html" not in c  # Tutorial vorerst entfernt
+    assert "edition-guidelines.html" in c
+    assert "technik.html" not in c
+    assert "tutorial.html" not in c
 
 
 def test_glossar_witness_and_sealer_separated(built_demo):
@@ -74,35 +91,11 @@ def test_glossar_witness_and_sealer_separated(built_demo):
     assert "zusammenzuführen" not in c and "zusammenführen" not in c
 
 
-# --- Task 3: Technik / Datenmodell page ---
-
-def test_technik_has_role_codes(built_demo):
-    c = built_demo["technik"]
-    for code in ("issuer", "recipient", "witness", "other"):
-        assert code in c, code
-
-
-def test_technik_has_rolename_types(built_demo):
-    c = built_demo["technik"]
-    for t in ("prof", "title", "dead", "kin", "rep", "occ", "title_ref"):
-        assert t in c, t
-
-
-def test_technik_has_xml_snippet(built_demo):
-    c = built_demo["technik"]
-    assert "rs type=" in c and "role=" in c
-
-
-def test_technik_explains_witness_grouping(built_demo):
-    # #12/#13: witness fasst siegelnde Zeugen und Aussteller zusammen, Rollen aber getrennt beschrieben
-    c = built_demo["technik"].lower()
-    assert "witness" in c and "siegel" in c
-
-
-def test_technik_links_back(built_demo):
-    c = built_demo["technik"]
-    assert "glossary.html" in c
-    assert "tutorial.html" not in c  # Tutorial vorerst entfernt
+# --- Technik / Datenmodell: Seite archiviert/passiv (2026-07-17) ---
+# technik.md wird nicht mehr gerendert; die frueheren, an die gebaute
+# Technik-Seite gekoppelten Tests (Rollen-Codes, roleName-Typen, XML-Snippet,
+# witness-Gruppierung, Rueckverlinkung) entfallen. Der technische Inhalt lebt
+# jetzt in den Annotationsrichtlinien; die md-Quelle bleibt als ruhendes Archiv.
 
 
 # --- Tutorial vorerst aus der Demo genommen (Stakeholder 2026-07-08) ---
@@ -111,10 +104,9 @@ def test_technik_links_back(built_demo):
 
 # --- Task 5: cross-linking / integration ---
 
-def test_mutual_cross_links(built_demo):
-    # Die beiden aktiven Seiten verlinken einander
-    assert "technik.html" in built_demo["glossar"]
-    assert "glossary.html" in built_demo["technik"]
+def test_glossar_cross_links_guidelines(built_demo):
+    # Das Glossar verlinkt auf die Annotationsrichtlinien (technik archiviert).
+    assert "edition-guidelines.html" in built_demo["glossar"]
 
 
 def test_pages_link_glossar_css(built_demo):
@@ -353,28 +345,22 @@ def test_glossar_event_drops_gerichtsverfahren(built_demo):
     assert "Gerichtsverfahren" not in seg
 
 
-# --- Struktur 2026-07-08: Tutorial entfernt, Technik als "in Arbeit" ---
+# --- Struktur 2026-07-17: Technik + Tutorial archiviert/passiv ---
 
-def test_technik_marked_in_arbeit(built_demo):
-    # Die Technik-Seite ist klar als "in Arbeit" gekennzeichnet (Stakeholder 2026-07-08)
-    assert "In Arbeit" in built_demo["technik"]
-
-
-def test_no_tutorial_references_in_active_pages():
-    # Keine Tutorial-Links/-Mentions mehr in den aktiven Demo-Quellen
+def test_no_tutorial_references_in_glossar():
+    # Keine Tutorial-Links/-Mentions in der aktiven Glossar-Quelle
     base = Path(__file__).resolve().parents[1] / "content" / "project"
-    for name in ("glossar", "technik"):
-        md = (base / f"{name}.md").read_text(encoding="utf-8")
-        assert "tutorial.html" not in md, name
-        assert "Tutorial" not in md, name
+    md = (base / "glossar.md").read_text(encoding="utf-8")
+    assert "tutorial.html" not in md
+    assert "Tutorial" not in md
 
 
-def test_glossar_intro_links_technik_as_technisches_glossar(built_demo):
-    # Intro verlinkt nur noch auf Technik, als "technisches Glossar"
+def test_glossar_intro_links_guidelines(built_demo):
+    # Intro verlinkt jetzt auf die Annotationsrichtlinien (technik archiviert).
     c = built_demo["glossar"]
-    assert "technisches Glossar" in c
-    # Inhalt-Raster (Abschnittsaufzaehlung) im Intro entfernt
-    assert "sechs thematische Abschnitte" not in c
+    assert "edition-guidelines.html" in c
+    assert "Annotationsrichtlinien" in c
+    assert "technisches Glossar" not in c
 
 
 # --- Produktiv-Integration 2026-07-10 ---

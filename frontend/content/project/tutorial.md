@@ -1,3 +1,8 @@
+<!-- ARCHIVIERT / PASSIV (Stand 2026-07-17): Diese Seite wird derzeit NICHT im
+     Frontend gerendert und ist ueber keinen Live-Link erreichbar. Der Inhalt
+     bleibt fuer eine moegliche spaetere Ueberarbeitung/Wiederaufnahme erhalten.
+     Interne Verweise auf technik.html/glossar.html sind hier nur historisch. -->
+
 <nav class="demo-pagenav">
   <a href="glossar.html">Glossar</a> ·
   <strong>Tutorial</strong> ·

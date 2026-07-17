@@ -148,10 +148,10 @@ Kleinere Arbeitsschritte, die in den Anwendungs-Stories aufgehen, aber als eigen
 
 ## Verteilung einer Kategorie überblicken
 
-*Als Forscherin, die Häufigkeitsstrukturen in einer Kategorie untersucht, will ich jederzeit zwischen [[technik#Gesamtnennung]] und [[technik#Individuelle Person]] umschalten, damit ich Frequenz und Breite sauber voneinander trennen kann.*
+*Als Forscherin, die Häufigkeitsstrukturen in einer Kategorie untersucht, will ich jederzeit zwischen [[glossar#Gesamtnennung]] und [[glossar#Individuelle Person]] umschalten, damit ich Frequenz und Breite sauber voneinander trennen kann.*
 
 * **Komponente** lokale Zähleinheit-Umschaltung auf der [[analyse#Zwei Sub-Seiten|Auswertungs-Sub-Seite]] (Sektion Funktionsrollen); eine globale Umschaltung ist fachlich nur in dieser Sektion tragend
-* **Begriffe** [[technik#Gesamtnennung]], [[technik#Individuelle Person]]
+* **Begriffe** [[glossar#Gesamtnennung]], [[glossar#Individuelle Person]]
 
 ## Bestandsvergleich
 
@@ -182,15 +182,15 @@ Pfad Brush: Auswertungen → Transaktionstypen-Sektion → wechseln auf die Zeit
 
 ## Menschen-Events kontrolliert behandeln
 
-*Als Forscherin, die exakte Statistiken zu Personen in einem Rechtsgeschäft aufstellt, will ich [[technik#Menschen-Event|Menschen-Events]] aktiv ein- oder ausschließen, damit referenzierte Personen aus früheren Geschäften meine Zahlen nicht verzerren.*
+*Als Forscherin, die exakte Statistiken zu Personen in einem Rechtsgeschäft aufstellt, will ich [[glossar#Menschen-Event|Menschen-Events]] aktiv ein- oder ausschließen, damit referenzierte Personen aus früheren Geschäften meine Zahlen nicht verzerren.*
 
 Default-Stand schliesst mentioned Events aus. Der Vergleichsstand wird über `--stage 2` als separater Build erzeugt, nicht über einen UI-Toggle. Begründung: [[specification#Mentioned-Event-Vergleichsstand als Build-Flag]] und [[specification#Nennungen zählen nur Personen-Annotationen außerhalb mentioned Events]].
 
-* **Begriff** [[technik#Menschen-Event]]
+* **Begriff** [[glossar#Menschen-Event]]
 
 ## Unbekannten Begriff an Ort und Stelle verstehen
 
-*Als Forscherin, die einem projektspezifischen Begriff wie [[technik#Menschen-Event]] zum ersten Mal begegnet, will ich seine Bedeutung im UI nachschlagen, ohne den Kontext zu verlassen, damit ich die Konsequenz einer Filteraktion verstehe.*
+*Als Forscherin, die einem projektspezifischen Begriff wie [[glossar#Menschen-Event]] zum ersten Mal begegnet, will ich seine Bedeutung im UI nachschlagen, ohne den Kontext zu verlassen, damit ich die Konsequenz einer Filteraktion verstehe.*
 
 * **Komponente** [[ui-design#Glossar-Integration]]
 

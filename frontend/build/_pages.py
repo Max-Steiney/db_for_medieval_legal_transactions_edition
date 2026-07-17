@@ -1198,12 +1198,17 @@ def _render_content_page(env, *, md_source, page_title, page_subtitle,
 
 
 def _build_glossary(env):
-    """Build glossary + technik pages from frontend/content/project/."""
+    """Build the glossary page from frontend/content/project/.
+
+    technik.md und tutorial.md sind derzeit archiviert/passiv (Stand
+    2026-07-17): die technische TEI-Auszeichnung ist in den
+    Annotationsrichtlinien (edition_guidelines) dokumentiert, die drei
+    Zaehlbegriffe sind ins Glossar uebernommen. Beide Markdown-Quellen
+    bleiben im Repo, werden aber nicht gerendert.
+    """
     pages = [
         ("glossar.md", "glossary.html", "Glossar",
          "Begriffsdefinitionen des Projekts."),
-        ("technik.md", "technik.html", "Technik / Datenmodell",
-         "TEI-Auszeichnung, Rollen und roleName-Typen der Datenbank."),
     ]
     for md_name, out_name, title, subtitle in pages:
         md_path = CONTENT_DIR / "project" / md_name
@@ -1219,7 +1224,7 @@ def _build_glossary(env):
             root_path="..",
             template_name="glossar.html",
         )
-    print("  Glossary pages: project/{glossary,technik}.html")
+    print("  Glossary page: project/glossary.html")
 
 
 def _build_impressum(env):

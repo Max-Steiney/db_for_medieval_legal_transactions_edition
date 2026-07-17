@@ -1,11 +1,11 @@
 <nav class="glossar-pagenav">
   <strong>Glossar</strong> ·
-  <a href="technik.html">Technik / Datenmodell</a>
+  <a href="edition-guidelines.html">Annotationsrichtlinien</a>
 </nav>
 
 Begriffsdefinitionen des Projekts; sie speisen zugleich die Tooltips im UI.
-Die technische Auszeichnung (TEI-Tags, Rollenvokabular) sammelt ein
-ergänzendes [technisches Glossar](technik.html), derzeit in Arbeit.
+Die technische Auszeichnung (TEI-Tags, Rollenvokabular, roleName-Typen) ist in
+den [Annotationsrichtlinien](edition-guidelines.html) dokumentiert.
 
 ## A. Datenbank und Datenmodell
 
@@ -102,6 +102,44 @@ Die Vereinheitlichung zeitgenössisch variabler Schreibweisen oder Bezeichnungen
 um Informationen systematisch durchsuchen und auswerten zu können, beispielsweise
 der Begriff Bürger/Bürgerin, der unter anderem auch in den Schreibweisen
 purger/purgerin oder civis wiennensis vorkommt.
+
+### Gesamtnennung
+
+Eine Beziehung zwischen einer Person, Organisation oder einem Ort und einer
+Quelle, in der sie genannt wird. Wer in drei Quellen vorkommt, trägt drei
+Gesamtnennungen bei. Eine Person, die in derselben Quelle mehrfach erwähnt
+wird (typisch für Zeugenreihen oder Urteilslisten), trägt für diese Quelle
+nur eine Gesamtnennung bei (quellenbereinigte Zählung).
+
+Gesamtnennungen sind die Zählebene für Häufigkeit gesellschaftlicher Präsenz.
+Eine Gesamtnennung entsteht ausschließlich aus einer direkten
+Personen-Annotation im Quellentext (`<rs type="person">` mit `@ref`).
+Korrespondierende Hilfsverknüpfungen (`@corresp`) und Personen-Annotationen
+innerhalb verschachtelter `<rs type="event">`-Elemente (mentioned Events)
+zählen nicht. Nicht zu verwechseln mit [[#Individuelle Person]]; beide
+Zählebenen sind gleichzeitig gültig, beantworten aber verschiedene Fragen.
+
+### Individuelle Person
+
+Eine konsolidierte Identität im Personenregister, unabhängig von der Anzahl
+ihrer Nennungen. Dieselbe historische Person ist genau eine individuelle
+Person, auch wenn sie in fünfzig Quellen erscheint. Analog gelten
+individuelle Organisationen.
+
+Eine Person zählt, sobald sie in mindestens einer freigegebenen Quelle als
+`<rs type="person">` annotiert ist, gleich ob direkt im Top-Level-Event oder
+innerhalb eines verschachtelten (mentioned) rs-Events. Eine Person, die nur
+als Querverweis in einem mentioned Event auftritt, ist damit im Register
+enthalten, trägt aber keine [[#Gesamtnennung]] bei.
+
+### Menschen-Event
+
+Eine Person, die in einem Rechtsgeschäft namentlich erwähnt wird, weil sie in
+einem früheren, referenzierten Geschäft bereits vorkam. Sie ist mit einem
+Personennamen belegt, gehört aber nicht zum unmittelbaren Ereignis der
+aktuellen Quelle. Der Begriff ist spezifisch für das Datenmodell dieser
+Datenbank. Das UI macht den Ein- oder Ausschluss an jeder Abfrage sichtbar,
+weil eine stillschweigende Behandlung Statistiken verzerren würde.
 
 ## B. Quellen und Überlieferung
 
@@ -412,4 +450,4 @@ Zahlungen und als Referenzgröße zur Bewertung der Silbermünzen.
 
 ---
 
-Querverweise: [Technik / Datenmodell](technik.html)
+Querverweise: [Annotationsrichtlinien](edition-guidelines.html)

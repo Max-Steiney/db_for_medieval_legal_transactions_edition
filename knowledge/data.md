@@ -69,9 +69,9 @@ Grundbücher und verwandte Bestände befinden sich auf unterschiedlichen Stufen 
 
 Die Daten sind in vier Ebenen organisiert. [[glossar#Quellenkorpus]] ist die oberste Gruppierung, darunter einzelne [[glossar#Quelle|Quellen]], darunter einzelne [[glossar#Event|Events]], darunter einzelne Nennungen.
 
-Jede Ebene hat ihre eigene Zählung. Wer nach Urkunden zählt, bleibt auf Quellenebene. Wer nach Rechtsgeschäften zählt, steigt auf Event-Ebene ab. Wer nach Personen zählt, wählt zwischen [[technik#Gesamtnennung]] und [[technik#Individuelle Person]].
+Jede Ebene hat ihre eigene Zählung. Wer nach Urkunden zählt, bleibt auf Quellenebene. Wer nach Rechtsgeschäften zählt, steigt auf Event-Ebene ab. Wer nach Personen zählt, wählt zwischen [[glossar#Gesamtnennung]] und [[glossar#Individuelle Person]].
 
-Auf der Nennungsebene gilt: Mehrfacherwähnungen einer Entität innerhalb einer Quelle werden bei der Aggregation zu einer Nennung zusammengefasst. Die Zählebene [[technik#Gesamtnennung]] ist damit quellenbereinigt. Die Entscheidung und ihr Hintergrund stehen in [[specification#Quellenbereinigte Zählung]], die technische Umsetzung in [[architecture#Quellenbereinigte Aggregation als Invariante]].
+Auf der Nennungsebene gilt: Mehrfacherwähnungen einer Entität innerhalb einer Quelle werden bei der Aggregation zu einer Nennung zusammengefasst. Die Zählebene [[glossar#Gesamtnennung]] ist damit quellenbereinigt. Die Entscheidung und ihr Hintergrund stehen in [[specification#Quellenbereinigte Zählung]], die technische Umsetzung in [[architecture#Quellenbereinigte Aggregation als Invariante]].
 
 In der publizierten Datenbasis ist die Hierarchie Quelle → Event in der Praxis fast überall flach: nahezu alle Quellen mit Events tragen genau ein Event, nur eine Handvoll trägt zwei oder drei. Eine Urkunde dokumentiert in der editorischen Realität meist ein einziges Rechtsgeschäft; Mehrfach-Event-Quellen sind die Ausnahme. UI-Aussagen, die Quellen- und Event-Counts nebeneinander stellen („X Rechtsgeschäfte in Y Quellen"), zeigen daher fast immer dieselbe oder eine sehr nahe beieinander liegende Zahl. Die Begriffshierarchie bleibt trotzdem ein eigener Wert, weil sie die Grundlage für Aussagen über Geltungsbereich („gemeinsam in derselben Quelle" gegen „im selben Rechtsgeschäft") und für die Mehrfach-Event-Ausnahmen ist.
 
@@ -115,7 +115,7 @@ Das Match-Verhalten ist parallel zu Personen: der Org-Name ist Substring-Match a
 
 ## Sonderfall Menschen-Events
 
-Im Datenbestand vorkommend. Definition in [[technik#Menschen-Event]]. Im UI werden Personen-Annotationen in verschachtelten Events nicht doppelt gezählt, siehe [[specification#Nennungen zählen nur Personen-Annotationen außerhalb mentioned Events]].
+Im Datenbestand vorkommend. Definition in [[glossar#Menschen-Event]]. Im UI werden Personen-Annotationen in verschachtelten Events nicht doppelt gezählt, siehe [[specification#Nennungen zählen nur Personen-Annotationen außerhalb mentioned Events]].
 
 ## Aggregat-Schicht
 

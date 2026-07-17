@@ -108,7 +108,7 @@ Jede aggregierte Kennzahl ist auf die zugrundeliegenden Quelldokumente rückfüh
 
 ## Quellenbereinigte Aggregation als Invariante
 
-Das Zählen von Entitäten pro Quelle erfolgt mengenbasiert: die Extraktionsfunktion im Build liefert pro Quelldokument eine Menge referenzierter Entity-IDs, nicht eine Liste mit möglichen Duplikaten. Eine Person, Organisation oder ein Ort wird pro Quelle höchstens einmal gezählt. Begründung in [[specification#Quellenbereinigte Zählung]], begriffliche Konsequenz in [[technik#Gesamtnennung]].
+Das Zählen von Entitäten pro Quelle erfolgt mengenbasiert: die Extraktionsfunktion im Build liefert pro Quelldokument eine Menge referenzierter Entity-IDs, nicht eine Liste mit möglichen Duplikaten. Eine Person, Organisation oder ein Ort wird pro Quelle höchstens einmal gezählt. Begründung in [[specification#Quellenbereinigte Zählung]], begriffliche Konsequenz in [[glossar#Gesamtnennung]].
 
 ## Datenstand aus dem Pipeline-Repo
 

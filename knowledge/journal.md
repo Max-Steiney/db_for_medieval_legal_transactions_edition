@@ -176,7 +176,7 @@ UI-Terminologie durchgehend auf die kanonischen Begriffe aus [[glossar]] und [[s
 
 Startseite konzeptionell neu geordnet: zwei gleichberechtigte Säulen Exploration und Analyse nebeneinander, statt einer einzelnen Exploration-Sektion mit Trennstrich. Eyebrow-Labels in Sans-Caps markieren die Bereiche. Footer trennt Datenstand und Build-Datum. Bis zuletzt zeigte „Datenstand" das Build-Tagesdatum, was inhaltlich falsch ist. Datenstand ist jetzt das Datum des letzten Commits im Pipeline-Repo, ermittelt über `git log -1 --format=%cI`. Hilfsfunktion in `frontend.build._pipeline_repo_data_date()`.
 
-Begleitend [[technik#Gesamtnennung]] präzisiert: die Zählebene ist quellenbereinigt, Mehrfacherwähnungen einer Person in derselben Quelle werden zu einer Nennung zusammengefasst. Detail in [[specification#Quellenbereinigte Zählung]].
+Begleitend [[glossar#Gesamtnennung]] präzisiert: die Zählebene ist quellenbereinigt, Mehrfacherwähnungen einer Person in derselben Quelle werden zu einer Nennung zusammengefasst. Detail in [[specification#Quellenbereinigte Zählung]].
 
 ## 2026-04-17 Verifikations-Test-Set entsteht
 
