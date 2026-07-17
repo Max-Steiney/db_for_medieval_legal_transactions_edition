@@ -269,3 +269,37 @@
 @media (max-width: 600px) {
     .start-twoways-grid { grid-template-columns: 1fr; }
 }
+
+
+/* ── Open-Beta-Begrüßung ─────────────────────────────────────── */
+.start-beta-note {
+    max-width: var(--max-width);
+    margin: var(--space-lg) auto 0;
+    padding: var(--space-md);
+    background: var(--color-bg-warm);
+    border: 1px solid var(--color-border);
+    border-left: 3px solid var(--color-accent);
+    border-radius: var(--radius-lg);
+}
+
+.start-beta-note-title {
+    font-family: var(--font-serif);
+    font-size: var(--text-lg);
+    font-weight: 600;
+    margin: 0 0 var(--space-xs);
+    color: var(--color-text);
+}
+
+.start-beta-note p {
+    font-family: var(--font-sans);
+    font-size: var(--text-base);
+    color: var(--color-text-muted);
+    line-height: var(--leading-body);
+    margin: 0;
+    max-width: 46rem;
+}
+
+.start-beta-note a {
+    color: var(--color-accent);
+    font-weight: 600;
+}
