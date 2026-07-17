@@ -10,16 +10,16 @@
     <title>Startseite, Datenbank</title>
     <link rel="preload" as="font" type="font/woff2" crossorigin
           href="./static/fonts/inter-400-latin.woff2">
-    <link rel="stylesheet" href="./static/css/fonts.css?v=20260717113445">
-    <link rel="stylesheet" href="./static/css/tokens.css?v=20260717113445">
-    <link rel="stylesheet" href="./static/css/base.css?v=20260717113445">
-    <link rel="stylesheet" href="./static/css/components.css?v=20260717113445">
-    <link rel="stylesheet" href="./static/css/responsive.css?v=20260717113445">
-    <link rel="stylesheet" href="./static/css/print.css?v=20260717113445">
-    <link rel="stylesheet" href="./static/css/tip.css?v=20260717113445">
+    <link rel="stylesheet" href="./static/css/fonts.css?v=20260717120623">
+    <link rel="stylesheet" href="./static/css/tokens.css?v=20260717120623">
+    <link rel="stylesheet" href="./static/css/base.css?v=20260717120623">
+    <link rel="stylesheet" href="./static/css/components.css?v=20260717120623">
+    <link rel="stylesheet" href="./static/css/responsive.css?v=20260717120623">
+    <link rel="stylesheet" href="./static/css/print.css?v=20260717120623">
+    <link rel="stylesheet" href="./static/css/tip.css?v=20260717120623">
     
-<link rel="stylesheet" href="./static/css/exploration.css?v=20260717113445">
-<link rel="stylesheet" href="./static/css/startseite.css?v=20260717113445">
+<link rel="stylesheet" href="./static/css/exploration.css?v=20260717120623">
+<link rel="stylesheet" href="./static/css/startseite.css?v=20260717120623">
 
 </head>
 <body data-root-path="."
@@ -150,7 +150,7 @@
 
                         </th>
                         
-                        <th scope="col">
+                        <th scope="col" data-col="sources">
                             Quellen
 <span class="tip-wrap">
     <button type="button" class="tip-trigger tip-trigger--icon"
@@ -182,7 +182,7 @@
 
                         </th>
                         
-                        <th scope="col">
+                        <th scope="col" data-col="mentions">
                             Gesamtnennungen
 <span class="tip-wrap">
     <button type="button" class="tip-trigger tip-trigger--icon"
@@ -207,14 +207,14 @@
             
                                 <p>Beziehung zwischen einer Person und einer Quelle, in der sie genannt wird. Mehrfachnennungen in derselben Quelle z&auml;hlen einmal.</p>
                             
-            
+            <a class="tip-link" href="./project/glossary.html#gesamtnennung">im Glossar</a>
         </div>
     </aside>
 </span>
 
                         </th>
                         
-                        <th scope="col">
+                        <th scope="col" data-col="events">
                             Events
 <span class="tip-wrap">
     <button type="button" class="tip-trigger tip-trigger--icon"
@@ -266,86 +266,11 @@
                     <tr>
                         <th scope="row">Gesamt</th>
                         
-                        <td>
-                            <span class="tip-wrap">
-                                
-<button type="button" class="tip-trigger"
-        aria-expanded="false" aria-haspopup="dialog"
-        aria-controls="prov-total-sources"
-        data-tip="prov-total-sources">2.023</button>
-
-                                
-<aside class="tip-popover tip-popover--data tip-popover--top"
-       id="prov-total-sources" role="dialog" aria-hidden="true"
-       aria-label="Herkunft: Quellen">
-    <header class="tip-head">
-        <h3 class="tip-title">Quellen</h3>
-        <button type="button" class="tip-close" aria-label="Schlie&szlig;en">&times;</button>
-    </header>
-    <div class="tip-body">
-        
-                                    <p>Anzahl der freigegebenen Quellen im Editionsstand. Eine Quelle ist eine einzelne TEI-XML-Datei mit einem Regest und seinen Annotationen.</p>
-                                    <p class="tip-source">Direkt aus den freigegebenen TEI-Quellen, gez&auml;hlt pro Datei.</p>
-                                
-    </div>
-</aside>
-
-                            </span>
-                        </td>
+                        <td>2.023</td>
                         
-                        <td>
-                            <span class="tip-wrap">
-                                
-<button type="button" class="tip-trigger"
-        aria-expanded="false" aria-haspopup="dialog"
-        aria-controls="prov-total-mentions"
-        data-tip="prov-total-mentions">12.437</button>
-
-                                
-<aside class="tip-popover tip-popover--data tip-popover--top"
-       id="prov-total-mentions" role="dialog" aria-hidden="true"
-       aria-label="Herkunft: Gesamtnennungen">
-    <header class="tip-head">
-        <h3 class="tip-title">Gesamtnennungen</h3>
-        <button type="button" class="tip-close" aria-label="Schlie&szlig;en">&times;</button>
-    </header>
-    <div class="tip-body">
-        
-                                    <p>Wie oft Personen in den Quellen genannt werden. Eine Person, die in zwei verschiedenen Quellen vorkommt, z&auml;hlt zweimal.</p>
-                                    <p class="tip-source">Aus den Personen-Annotationen in den freigegebenen TEI-Quellen. Mehrfachnennungen innerhalb derselben Quelle z&auml;hlen einmal.</p>
-                                
-    </div>
-</aside>
-
-                            </span>
-                        </td>
+                        <td>12.437</td>
                         
-                        <td>
-                            <span class="tip-wrap">
-                                
-<button type="button" class="tip-trigger"
-        aria-expanded="false" aria-haspopup="dialog"
-        aria-controls="prov-total-events"
-        data-tip="prov-total-events">2.029</button>
-
-                                
-<aside class="tip-popover tip-popover--data tip-popover--top"
-       id="prov-total-events" role="dialog" aria-hidden="true"
-       aria-label="Herkunft: Events">
-    <header class="tip-head">
-        <h3 class="tip-title">Events</h3>
-        <button type="button" class="tip-close" aria-label="Schlie&szlig;en">&times;</button>
-    </header>
-    <div class="tip-body">
-        
-                                    <p>Anzahl der annotierten Vorg&auml;nge in den Quellen. Ein Event ist ein konkreter Akt: Rechtsgesch&auml;ft, Siegelvermerk, Stadtbucheintrag oder Notiz.</p>
-                                    <p class="tip-source">Aus den Event-Annotationen in den freigegebenen TEI-Quellen, verschachtelte Events ausgeschlossen.</p>
-                                
-    </div>
-</aside>
-
-                            </span>
-                        </td>
+                        <td>2.029</td>
                         
                     </tr>
                 </tfoot>
@@ -451,10 +376,10 @@
     </footer>
 
     <script id="role-labels" type="application/json">{"issuer": "Aussteller:in", "other": "Sonstige", "recipient": "Empf\u00e4nger:in", "witness": "Zeug:in / Siegler:in"}</script>
-    <script src="./static/js/core.js?v=20260717113445"></script>
-    <script src="./static/js/tip.js?v=20260717113445"></script>
-    <script src="./static/js/hint.js?v=20260717113445"></script>
-    <script src="./static/js/basket.js?v=20260717113445"></script>
+    <script src="./static/js/core.js?v=20260717120623"></script>
+    <script src="./static/js/tip.js?v=20260717120623"></script>
+    <script src="./static/js/hint.js?v=20260717120623"></script>
+    <script src="./static/js/basket.js?v=20260717120623"></script>
     
 </body>
 </html>

@@ -45,7 +45,7 @@
                             {% endcall %}
                         </th>
                         {% for col in matrix_columns %}
-                        <th scope="col">
+                        <th scope="col" data-col="{{ col.id }}">
                             {{ col.label }}{% call tip_glossary(col.glossary_id, col.glossary_term, slug=col.glossary_slug, placement='top') %}
                                 <p>{{ col.glossary_def }}</p>
                             {% endcall %}
@@ -67,15 +67,7 @@
                     <tr>
                         <th scope="row">Gesamt</th>
                         {% for col in matrix_columns %}
-                        <td>
-                            <span class="tip-wrap">
-                                {% call tip_data_trigger(col.prov_id) %}{{ col.total | de_int }}{% endcall %}
-                                {% call tip_data_body(col.prov_id, col.prov_title, placement='top') %}
-                                    <p>{{ col.prov_description }}</p>
-                                    <p class="tip-source">{{ col.prov_source }}</p>
-                                {% endcall %}
-                            </span>
-                        </td>
+                        <td>{{ col.total | de_int }}</td>
                         {% endfor %}
                     </tr>
                 </tfoot>
