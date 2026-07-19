@@ -106,7 +106,7 @@ purger/purgerin oder civis wiennensis vorkommt.
 Gleichzeitig werden auch die Nachnamen von Ehepersonen und Kindern normiert.
 So werden zur einfacheren Identifikation von Personen, zum Beispiel Ehefrauen
 und Kinder mit demselben Namen geführt wie der verbundene Ehemann oder Vater. 
-Solche ergänzten Nachnamen werden im Datenbestand mit einem <add> ausgewiesen. 
+Solche ergänzten Nachnamen werden im Datenbestand mit einem `<add>` ausgewiesen. 
 
 ### Individuelle Person
 
