@@ -7,7 +7,7 @@ status: active
 language: de
 version: 0.5
 created: 2026-02-19
-updated: 2026-06-17
+updated: 2026-07-20
 authors: [Christopher Pollin]
 generated-with: Claude Code
 method:
@@ -23,6 +23,14 @@ Arbeitstagebuch. Einziges chronologisches Dokument der Wissensbasis.
 Format pro Eintrag: Datum, Kurztitel, ein bis drei Absätze. Was umgesetzt wurde, warum (oft mit verworfener Alternative), wo das Detail zeitlos abgelegt ist. Was nicht rein darf: Personennamen, Meeting-Protokolle, Projektmanagement-Stand, Quantitäten des Korpus, Test- und Build-Zahlen.
 
 Einträge in umgekehrt chronologischer Reihenfolge, neueste oben.
+
+## 2026-07-20 Gesamtnennungen-KPI auf die quellenbereinigte Zählung gestellt
+
+Die Startseiten-Kennzahl „Gesamtnennungen" zählte seit der Code-Übernahme pro Annotations-Element statt pro Quelle-Person-Paar — im Widerspruch zur Entscheidung [[specification#Quellenbereinigte Zählung]], zum [[glossar#Gesamtnennung]] und zu beiden Matrix-Tooltips, die alle die quellenbereinigte Ebene beschreiben. Die Zählschleife in `frontend/build/_kpi.py::_scan_released_tei` sammelt jetzt pro Quelle eine Referenz-Menge; jede Person zählt pro Quelle genau einmal, egal wie oft Zeugenreihen, Bedingungsketten oder Formular-Rückverweise („der Aussteller") sie wiederholen. Die Register- und Profilseiten zählten bereits richtig und blieben unverändert; die Definitionstexte mussten nicht angepasst werden — sie stimmten, nur die Zahl nicht.
+
+Neu ist die Prüfung, deren Fehlen den Widerspruch monatelang verdeckte: `frontend/tests/test_kpi_mentions.py` koppelt Definition und Zahl über eine unabhängige Paar-Nachrechnung und über bekannte Mehrfach-Annotations-Fälle als Fixpunkte, ohne Korpuszahlen zu verdrahten. Damit ist der Anspruch aus [[specification#Begriff Gesamtnennungen]] („ein Label, das eine Zahl fälschlich der anderen Zählebene zuordnet, ist ein Fehler und wird vom Test-Set sichtbar gemacht") erstmals tatsächlich operationalisiert. Begleitend wurden die Definitionstexte präzisiert: Der Glossar-Eintrag nennt nur noch Personen (die Kennzahl zählt keine Organisationen), Glossar und Kopf-Tooltip formulieren die Beziehung parallel („zwischen einer Person und den Quellen, in denen sie genannt wird").
+
+Die inklusive Zählvariante mit mentioned Events bleibt wie gehabt der Stufe-2-Vergleichsbuild (`--include-mentioned`, vgl. [[specification#Asymmetrische Zählung: individuelle Personen vs. Nennungen]]); sie profitiert automatisch von der Quellenbereinigung.
 
 ## 2026-06-21 Funktionsrollen-Labels auf den Gender-Doppelpunkt
 
