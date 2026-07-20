@@ -104,26 +104,20 @@ Gleichzeitig werden auch die Nachnamen von Ehepersonen und Kindern normiert. Wen
 
 ### Individuelle Person
 
-Eine konsolidierte Identität im Personenregister: dieselbe historische Person
-zählt genau einmal, unabhängig davon, wie oft und in welcher Rolle sie genannt
-wird. Analog gelten individuelle Organisationen.
+Eine konsolidierte Identität im Personenregister: dieselbe historische Person zählt genau einmal, unabhängig davon, wie oft und in welcher Rolle sie genannt wird. Dasselbe gilt analog für individuelle Organisationen.
 
-Eine Person oder Organisation zählt als individuell, sobald sie in mindestens
-einer Quelle annotiert ist. Nicht zu verwechseln mit der Zählebene
-[[#Gesamtnennung]]: Dort wird die Häufigkeit der Nennungen gezählt, hier die Zahl der
-unterschiedlichen Personen/ Organisationen.
+Eine Person oder Organisation zählt als individuell, sobald sie in mindestens einer Quelle annotiert ist. Nicht zu verwechseln mit der Zählebene Gesamtnennung: Dort wird die Häufigkeit der Nennungen gezählt, hier die Zahl der unterschiedlichen Personen/ Organisationen.
 
 ### Gesamtnennung
 
 Eine Gesamtnennung ist die Beziehung zwischen einer Person (oder Organisation)
-und einer Quelle, in der sie genannt wird. Mehrfache Erwähnungen in derselben
+und den Quellen, in denen sie genannt wird. Mehrfache Erwähnungen in derselben
 Quelle (typisch für Zeugenreihen oder Urteilslisten) zählen dabei als eine
-Gesamtnennung. Wer in drei Quellen vorkommt, trägt drei Gesamtnennungen bei.
+Nennung. Wer in drei Quellen vorkommt, trägt drei Nennungen zur Gesamtnennung bei.
 
 Gesamtnennungen summieren diese Beziehungen über alle Personen — sie sind die
 Zählebene für die Häufigkeit gesellschaftlicher Präsenz. Nicht zu verwechseln
-mit der [[#Individuelle Person|Individuellen Person]]: beide Zählebenen sind
-gleichzeitig gültig, beantworten aber verschiedene Fragen.
+sind Gesamtnennung mit der Zählung der [[#Individuelle Person|Individuellen Person]]: beide Zählebenen sind gleichzeitig gültig, beantworten aber verschiedene Fragen.
 
 ## B. Quellen und Überlieferung
 
