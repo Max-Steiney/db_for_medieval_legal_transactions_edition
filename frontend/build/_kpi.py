@@ -105,12 +105,20 @@ def _scan_released_tei():
                     cb["distinct_events"].add(ref)
                     totals["distinct_events"].add(ref)
 
+            # Quellenbereinigt (specification.md, "Quellenbereinigte
+            # Zaehlung"): jede Person zaehlt pro Quelle genau einmal,
+            # egal wie oft sie darin annotiert ist (Zeugenreihen,
+            # Bedingungsketten, Formular-Rueckverweise wie "der
+            # Aussteller"). Bis 20.07.2026 wurde hier pro Annotations-
+            # Element gezaehlt — entgegen Glossar, Tooltips und Spec.
+            file_mention_refs = set()
             for el in tree.xpath(person_mention_xp, namespaces=_TEI_NS):
                 ref = (el.get("ref") or "").strip().lstrip("#")
                 if not ref.startswith("pe__"):
                     continue
-                cb["person_mentions"] += 1
-                totals["person_mentions"] += 1
+                file_mention_refs.add(ref)
+            cb["person_mentions"] += len(file_mention_refs)
+            totals["person_mentions"] += len(file_mention_refs)
 
             file_has_person = False
             for el in tree.xpath(_XP_PERSONS_ALL, namespaces=_TEI_NS):
