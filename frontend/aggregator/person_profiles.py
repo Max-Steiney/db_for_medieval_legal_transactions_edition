@@ -72,6 +72,8 @@ def _load_person_stammdaten():
             "addname_orig":  addname_orig,
             "sex":           (r.get("sex") or "").strip(),
             "note":          (r.get("note") or "").strip(),
+            # Nachname vom Projekt ergaenzt (<surname><add> in personList.xml)
+            "surname_added": (r.get("surname_added") or "").strip() == "1",
             "death_iso":     (r.get("dead_before") or "").strip(),
             "authority":     (r.get("authority") or "").strip(),
             "wiki_pageid":   (r.get("PAGEID_WienWiki") or "").strip(),
@@ -459,6 +461,8 @@ def build_person_profiles(reverse_index):
             "name_orig_display": _orig_display(s),
             "sex":      s.get("sex", ""),
             "note":     s.get("note", ""),
+            # Anmerkung nur, wenn tatsaechlich ein Nachname angezeigt wird
+            "surname_added": bool(s.get("surname_added")) and bool(s.get("surname", "")),
             "death_iso":     s.get("death_iso", ""),
             "death_display": _format_death_german(s.get("death_iso", "")),
             "dead_mentions": dead_mentions.get(pid, 0),

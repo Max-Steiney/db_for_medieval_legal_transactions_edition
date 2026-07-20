@@ -1,5 +1,5 @@
 {% extends "base.html" %}
-{% from "macros.html" import tip_glossary with context %}
+{% from "macros.html" import tip_glossary, tip_help with context %}
 
 {% block title %}{{ profile.display }}{% endblock %}
 
@@ -91,8 +91,14 @@
 
         {# Identitaets-Sub-Zeile: Wortlaut, Bezeichnungen, externe Links.
            Nur gerendert, wenn mindestens ein Eintrag vorhanden ist. #}
-        {% if profile.name_orig_display or profile.source_titles or (profile.wiki_label and profile.wiki_pageid) or profile.authority_urls %}
+        {% if profile.surname_added or profile.name_orig_display or profile.source_titles or (profile.wiki_label and profile.wiki_pageid) or profile.authority_urls %}
         <div class="ph-subline">
+            {% if profile.surname_added %}
+            <span><span class="orig-label">Anmerkung:</span> Nachname vom Projekt ergänzt{% call tip_help('hint-surname-added', 'Nachname vom Projekt ergänzt') %}
+                <p>Der Nachname &bdquo;{{ profile.surname }}&ldquo; ist im Quellentext f&uuml;r diese Person nicht direkt belegt. Er wurde bei der Erschlie&szlig;ung vom Projekt erg&auml;nzt &ndash; in der Regel abgeleitet von einer in der Quelle genannten verwandten Person (im Datenbestand mit TEI <code>&lt;add&gt;</code> ausgewiesen).</p>
+                <p>Vgl. <a href="{{ root_path }}/project/edition-guidelines.html#personen-pe__">Annotationsrichtlinien</a> und <a href="{{ root_path }}/project/glossary.html#normierung">Glossar: Normierung</a>.</p>
+            {% endcall %}</span>
+            {% endif %}
             {% if profile.name_orig_display %}
             <span><span class="orig-label">Im Quellen-Wortlaut:</span> <em>{{ profile.name_orig_display }}</em></span>
             {% endif %}

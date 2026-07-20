@@ -255,3 +255,41 @@ class TestDisplayNameDedup:
         thomas = profiles[thomas_id]
         assert thomas["addName"] == "zu Schönberg"
         assert "zu Schönberg" in thomas["display"]
+
+
+class TestSurnameAddedAnmerkung:
+    """persons.csv-Spalte surname_added -> Anmerkung "Nachname vom Projekt ergänzt".
+
+    Agnes Eibansprunnerin (QGW II/1 Nr. 386) traegt <surname><add> in
+    personList.xml (Normierung ueber den Ehemann); Heinrich Straiher
+    (Nr. 331) ist die Gegenprobe ohne <add>.
+    """
+
+    PE_AGNES = "pe__agnes_QGW_II_I_386"
+    PE_STRAIHER = "pe__heinrich_straiher_QGW_II_I_331"
+
+    def test_aggregator_flag(self):
+        out = build_person_profiles(
+            {self.PE_AGNES: [DOC_10], self.PE_STRAIHER: [DOC_10]})
+        assert out[self.PE_AGNES]["surname_added"] is True
+        assert out[self.PE_STRAIHER]["surname_added"] is False
+
+    def test_html_anmerkung_nur_bei_add(self, tmp_path, monkeypatch):
+        from frontend.tests.conftest import patch_build_path
+        from frontend.build._helpers import _init_jinja
+        from frontend.build._pages import _build_person_profiles
+
+        patch_build_path(monkeypatch, "DOCS_DIR", tmp_path)
+        env = _init_jinja()
+        _build_person_profiles(
+            {self.PE_AGNES: [DOC_10], self.PE_STRAIHER: [DOC_10]}, env)
+
+        out_dir = tmp_path / "register" / "persons"
+        agnes = (out_dir / f"{self.PE_AGNES}.html").read_text(encoding="utf-8")
+        straiher = (out_dir / f"{self.PE_STRAIHER}.html").read_text(encoding="utf-8")
+
+        assert "Nachname vom Projekt ergänzt" in agnes
+        # Popover verlinkt Richtlinien + Glossar-Eintrag Normierung
+        assert "edition-guidelines.html#personen-pe__" in agnes
+        assert "glossary.html#normierung" in agnes
+        assert "Nachname vom Projekt ergänzt" not in straiher
