@@ -242,7 +242,7 @@ def _compute_matrix_columns(total_docs, total_mentions, total_events):
             "glossary_term": "Gesamtnennung",
             "glossary_slug": "gesamtnennung",
             "glossary_def": Markup(
-                "Beziehung zwischen einer Person und einer Quelle, in der "
+                "Beziehung zwischen einer Person und den Quellen, in denen "
                 "sie genannt wird. Mehrfachnennungen in derselben Quelle "
                 "z&auml;hlen einmal."
             ),

@@ -110,7 +110,7 @@ Eine Person oder Organisation zählt als individuell, sobald sie in mindestens e
 
 ### Gesamtnennung
 
-Eine Gesamtnennung ist die Beziehung zwischen einer Person (oder Organisation)
+Eine Gesamtnennung ist die Beziehung zwischen einer Person
 und den Quellen, in denen sie genannt wird. Mehrfache Erwähnungen in derselben
 Quelle (typisch für Zeugenreihen oder Urteilslisten) zählen dabei als eine
 Nennung. Wer in drei Quellen vorkommt, trägt drei Nennungen zur Gesamtnennung bei.
