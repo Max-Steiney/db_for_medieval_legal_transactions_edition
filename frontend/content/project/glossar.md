@@ -117,7 +117,7 @@ Nennung. Wer in drei Quellen vorkommt, trägt drei Nennungen zur Gesamtnennung b
 
 Gesamtnennungen summieren diese Beziehungen über alle Personen — sie sind die
 Zählebene für die Häufigkeit gesellschaftlicher Präsenz. Nicht zu verwechseln
-sind Gesamtnennung mit der Zählung der [[#Individuelle Person|Individuellen Person]]: beide Zählebenen sind gleichzeitig gültig, beantworten aber verschiedene Fragen.
+sind Gesamtnennungen mit der Zählung der [[#Individuelle Person|Individuellen Person]]: beide Zählebenen sind gleichzeitig gültig, beantworten aber verschiedene Fragen.
 
 ## B. Quellen und Überlieferung
 
