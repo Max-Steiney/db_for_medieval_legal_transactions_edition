@@ -106,7 +106,7 @@ Gleichzeitig werden auch die Nachnamen von Ehepersonen und Kindern normiert. Wen
 
 Eine konsolidierte Identität im Personenregister: dieselbe historische Person zählt genau einmal, unabhängig davon, wie oft und in welcher Rolle sie genannt wird. Dasselbe gilt analog für individuelle Organisationen.
 
-Eine Person oder Organisation zählt als individuell, sobald sie in mindestens einer Quelle annotiert ist. Nicht zu verwechseln mit der Zählebene Gesamtnennung: Dort wird die Häufigkeit der Nennungen gezählt, hier die Zahl der unterschiedlichen Personen/ Organisationen.
+Eine Person oder Organisation zählt als individuell, sobald sie in mindestens einer Quelle annotiert ist. Nicht zu verwechseln mit der Zählebene [[#Gesamtnennung]]: Dort wird die Häufigkeit der Nennungen gezählt, hier die Zahl der unterschiedlichen Personen/ Organisationen.
 
 ### Gesamtnennung
 
