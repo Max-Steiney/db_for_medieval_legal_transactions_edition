@@ -699,7 +699,7 @@
             if (dateDisplay) chicago += ' (' + dateDisplay + ')';
             chicago += '.';
         }
-        chicago += ' In: Stadt und Gemeinschaft Wien, Datenbank zu mittelalterlichen Wiener Rechtsgeschäften, hg. von Korbinian Grünwald. Universität Wien.';
+        chicago += ' In: Stadt und Gemeinschaft Wien: Datenbank zu mittelalterlichen Wiener Rechtsgeschäften, hg. von Korbinian Grünwald. Universität Wien.';
         chicago += ' ' + url + ' (Zugriff: ' + today + ').';
 
         // BibTeX

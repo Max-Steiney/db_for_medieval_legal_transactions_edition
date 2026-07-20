@@ -2,7 +2,7 @@
 
 ## Was ist das hier?
 
-Dieses Repo ist die **Publikations-Schicht** der Datenbank „Stadt und Gemeinschaft Wien, Datenbank zu mittelalterlichen Wiener Rechtsgeschäften". Hier liegen Build-Code, Templates, statische Assets und das gerenderte HTML, das GitHub Pages ausliefert.
+Dieses Repo ist die **Publikations-Schicht** der Datenbank „Stadt und Gemeinschaft Wien: Datenbank zu mittelalterlichen Wiener Rechtsgeschäften". Hier liegen Build-Code, Templates, statische Assets und das gerenderte HTML, das GitHub Pages ausliefert.
 
 Die **Datengrundlage** (TEI-Quellen, Register, Normalisierungslisten, CSV-Pipeline) liegt im Schwester-Repo `../db_for_medieval_legal_transactions`. Beide Repos müssen nebeneinander geklont sein. `frontend/__init__.py` legt das Pipeline-Repo automatisch auf `sys.path`, damit `from pipeline.config import …` ohne Install-Step funktioniert.
 

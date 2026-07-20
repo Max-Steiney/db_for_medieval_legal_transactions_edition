@@ -134,3 +134,24 @@ def test_kein_gender_stern_in_content():
 def test_impressum_hat_projektmail():
     md = (BASE / "content" / "impressum.md").read_text(encoding="utf-8")
     assert "stadtgemeinschaftwien.ioeg@univie.ac.at" in md
+
+
+# --- Audit-Punkt 9: Browser-Tab-Titel + Werktitel-Trennzeichen ---
+
+def test_title_tag_traegt_projektname():
+    # Tab-Titel war "<Seite>, Datenbank" ohne Projektname; jetzt
+    # "<Seite> – Stadt und Gemeinschaft Wien".
+    src = (BASE / "templates" / "base.html").read_text(encoding="utf-8")
+    assert "&ndash; Stadt und Gemeinschaft Wien</title>" in src
+    assert ", Datenbank</title>" not in src
+
+
+def test_werktitel_mit_doppelpunkt():
+    # Kanonische Zitierform (Annotationsrichtlinien §7): "Stadt und
+    # Gemeinschaft Wien: Datenbank zu ..." — die Komma-Variante darf in
+    # Impressum und Zitier-Helfer nicht zurueckkehren.
+    for rel in ("content/impressum.md", "static/js/document.js"):
+        text = (BASE / rel).read_text(encoding="utf-8")
+        assert "Stadt und Gemeinschaft Wien, Datenbank zu" not in text, rel
+    impressum = (BASE / "content" / "impressum.md").read_text(encoding="utf-8")
+    assert "Stadt und Gemeinschaft Wien: Datenbank zu" in impressum

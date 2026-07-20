@@ -2,7 +2,7 @@
 
 ## Projektverantwortung
 
-**Stadt und Gemeinschaft Wien, Datenbank zu mittelalterlichen Wiener Rechtsgeschäften.**
+**Stadt und Gemeinschaft Wien: Datenbank zu mittelalterlichen Wiener Rechtsgeschäften.**
 
 Prosopographische Datenbank mittelalterlicher Wiener Rechtsgeschäfte.
 
