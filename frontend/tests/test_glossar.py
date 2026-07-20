@@ -59,6 +59,15 @@ def test_glossar_has_zaehlbegriffe(built_demo):
     assert "Menschen-Event" not in c
 
 
+def test_glossar_normierung_add_tag_visible(built_demo):
+    # Normierung-Eintrag (2026-07-19): das TEI-Element <add> muss als Code-Span
+    # sichtbar sein. Ohne Backticks in glossar.md landet es als rohes,
+    # unbekanntes HTML-Tag im Output und der Browser blendet es aus.
+    c = built_demo["glossar"]
+    assert "<code>&lt;add&gt;</code>" in c
+    assert "einem <add>" not in c
+
+
 def test_glossar_event_is_named_entity(built_demo):
     # Kommentar #6: Ereignis auch als Entitaet benennen
     c = built_demo["glossar"].lower()
