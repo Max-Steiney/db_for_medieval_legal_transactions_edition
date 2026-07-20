@@ -31,7 +31,7 @@ Erfassungsstand: von Beginn der Überlieferung 1177 bis inklusive das Jahr 1414
 **Weiterführend:** [Monasterium](https://www.monasterium.net/mom/AT-WStLA/HAUrk/fond) · [Übersicht zu den QGWs im Wien-Wiki](https://www.geschichtewiki.wien.gv.at/Quellen_zur_Geschichte_der_Stadt_Wien#Band_II.1:_Verzeichnis_der_Originalurkunden_des_Städtischen_Archives_1239_-_1411)
 {: .entry-refs }
 
-Erfassungsstand: Band 1 (1395-1400)
+In Vorbereitung (im Frontend noch nicht freigeschaltet): Band 1 (1395-1400)
 
 - Wilhelm BRAUNEDER – Gerhard JARITZ (Hg.), Die Wiener Stadtbücher 1395–1430. Band 1, Wien/Köln/Graz 1989 (Fontes Rerum Austriacarum 3/10/1).
 

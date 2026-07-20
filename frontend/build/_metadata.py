@@ -14,7 +14,7 @@ from pipeline.utils.xml_loader import load_xml
 from pipeline.utils.text_utils import normalize_space, strip_hash
 from pipeline.utils.date_parser import create_date
 
-from frontend.config import DOCS_DIR
+from frontend.config import DOCS_DIR, SITE_BASE_URL
 from frontend.renderer import render_document
 
 from frontend.build._helpers import (
@@ -274,6 +274,7 @@ def _write_file(meta, body_html, output, env):
         meta=meta,
         body=body_html,
         root_path=root_path,
+        site_base_url=SITE_BASE_URL,
     )
 
     output.parent.mkdir(parents=True, exist_ok=True)

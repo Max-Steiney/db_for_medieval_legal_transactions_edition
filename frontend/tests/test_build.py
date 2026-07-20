@@ -76,3 +76,16 @@ def test_done_not_in_path(built_doc):
     """The 'done' directory should be stripped from output paths."""
     output, _, _ = built_doc
     assert "done" not in str(output)
+
+
+def test_canonical_is_absolute(built_doc):
+    """Audit-Fix 20.07.2026: der canonical-Link war relativ und zeigte,
+    gegen die Seiten-URL aufgeloest, auf einen nicht existierenden
+    Doppelpfad. Er muss die absolute oeffentliche URL tragen."""
+    from frontend.config import SITE_BASE_URL
+    _, content, _ = built_doc
+    expected = (f'<link rel="canonical" '
+                f'href="{SITE_BASE_URL}/documents/QGW/'
+                f'Vienna_1177-1414_ready/100.html">')
+    assert expected in content
+    assert '<link rel="canonical" href="documents/' not in content

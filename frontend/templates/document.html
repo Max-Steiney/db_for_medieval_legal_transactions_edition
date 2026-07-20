@@ -5,7 +5,7 @@
 
 {% block head %}
 <link rel="stylesheet" href="{{ root_path }}/static/css/document.css?v={{ asset_v }}">
-<link rel="canonical" href="{{ meta.url }}">
+<link rel="canonical" href="{{ site_base_url }}/{{ meta.url }}">
 <meta name="citation_title" content="Nr. {{ meta.idno }}{% if meta.date_display %} ({{ meta.date_display }}){% endif %}">
 <meta name="citation_collection" content="{{ meta.collection_label }}">
 {% endblock %}

@@ -23,6 +23,7 @@ Relation types per person:
 - tenant    (place tenancy)         — person<-place, place-side relation
 """
 
+import re
 from collections import Counter, defaultdict
 
 from frontend.config import is_visible_corpus
@@ -39,6 +40,71 @@ from ._profile_enrichment import (
 
 
 _ROLES = ("issuer", "recipient", "witness", "other")
+
+# Editorische Register-Notizen enthalten teils rohe Entitaets-IDs
+# ("Gem. v. pe__otto_QGW_II_I_49a"). In der oeffentlichen Sicht duerfen
+# keine technischen IDs im sichtbaren Text stehen (Stakeholder-Beschluss
+# 18.05.2026 A.3.2), daher werden sie beim Aggregieren zu Klarnamen
+# aufgeloest.
+_ENTITY_ID_RE = re.compile(r"\b(?:pe|org)__[A-Za-z0-9_-]+")
+
+# ID-Segmente, die Korpus/Nummer statt Namensbestandteil sind.
+_ID_NON_NAME = {"qgw", "gqw", "stb", "gb", "sb", "cd", "urk", "stak",
+                "i", "ii", "iii", "iv"}
+_ID_PARTICLES = {"von", "der", "dem", "des", "zu", "zum", "zur",
+                 "in", "im", "an", "am", "auf", "und", "den", "mit"}
+
+
+def _humanize_entity_id(eid):
+    """Lesbarer Fallback-Name fuer eine nicht im Register aufloesbare ID.
+
+    ``pe__niklas_lebansorg`` -> ``Niklas Lebansorg``. Korpus-/Nummern-
+    Segmente werden verworfen; kann nichts extrahiert werden, bleibt der
+    Slug ohne Praefix/Unterstriche stehen (nie die rohe ID).
+    """
+    slug = re.sub(r"^(?:pe|org)__", "", eid)
+    words = []
+    for seg in slug.split("_"):
+        if not seg or any(ch.isdigit() for ch in seg) \
+                or seg.lower() in _ID_NON_NAME:
+            continue
+        words.append(seg if seg in _ID_PARTICLES else seg.capitalize())
+    return " ".join(words) or slug.replace("_", " ")
+
+
+def _resolved_display(eid, person_names, org_names):
+    """Registername zu einer Entitaets-ID, sonst humanisierter Slug.
+
+    Beide Namens-Maps fallen bei fehlendem Registernamen auf die rohe
+    ID zurueck — die darf hier nie durchschlagen.
+    """
+    name = person_names.get(eid) or org_names.get(eid) or ""
+    if not name or name.startswith(("pe__", "org__")):
+        name = _humanize_entity_id(eid)
+    return name
+
+
+def _resolve_ids_in_text(text, person_names, org_names):
+    """Ersetzt rohe pe__/org__-IDs in Freitext durch Registernamen.
+
+    Steht der (Nach-)Name unmittelbar vor der ID bereits im Text
+    ("Gem. v. Konrad Futrer pe__konrad_futrer_QGW_II_I_251"), wird die
+    ID ersatzlos entfernt statt den Namen zu doppeln.
+    """
+    if "pe__" not in text and "org__" not in text:
+        return text
+
+    def _replace(match):
+        eid = match.group(0)
+        name = _resolved_display(eid, person_names, org_names)
+        preceding = text[:match.start()].rstrip().rstrip(",;:").lower()
+        name_words = name.lower().split()
+        if name_words and any(preceding.endswith(w) for w in name_words):
+            return ""
+        return name
+
+    resolved = _ENTITY_ID_RE.sub(_replace, text)
+    return re.sub(r"\s+", " ", resolved).strip()
 
 
 def _load_person_stammdaten():
@@ -278,14 +344,27 @@ def _build_relation_index(file_lookup, person_names, org_names, place_names):
                 "url":        src.get("url", ""),
                 "regest":     src.get("regest", ""),
             }
+            # rep-Relationen koennen Organisationen als Gegenpart tragen
+            # (z.B. Vertretung "vorsprechen" vor org__wien) — Aufloesung
+            # daher wie im occ-Loop nach Praefix, sonst stuende die rohe
+            # ID im sichtbaren Text.
+            if rk.startswith("org__"):
+                other_kind = "org"
+                other_name = _resolved_display(rk, {}, org_names)
+            else:
+                other_kind = "person"
+                other_name = person_names.get(rk, rk)
             sub = dict(base, other_id=rk,
-                       other_name=person_names.get(rk, rk),
-                       other_kind="person", role="subject")
+                       other_name=other_name,
+                       other_kind=other_kind, role="subject")
             rel[pk][group].append(sub)
-            cp = dict(base, other_id=pk,
-                      other_name=person_names.get(pk, pk),
-                      other_kind="person", role="counterpart")
-            rel[rk][group].append(cp)
+            # Spiegel-Eintrag nur fuer Personen-Gegenparts — Org-Profile
+            # lesen diesen Index nicht.
+            if other_kind == "person":
+                cp = dict(base, other_id=pk,
+                          other_name=person_names.get(pk, pk),
+                          other_kind="person", role="counterpart")
+                rel[rk][group].append(cp)
 
     # Person -> {Org or Person}, unidirectional. Person owns the relation.
     # ``related_key`` in occ_relations is mixed: ~60% org__, ~40% pe__
@@ -460,7 +539,8 @@ def build_person_profiles(reverse_index):
             "addName":  _dedup_addname(s.get("surname", ""), s.get("addName", "")),
             "name_orig_display": _orig_display(s),
             "sex":      s.get("sex", ""),
-            "note":     s.get("note", ""),
+            "note":     _resolve_ids_in_text(s.get("note", ""),
+                                             person_names, org_names),
             # Anmerkung nur, wenn tatsaechlich ein Nachname angezeigt wird
             "surname_added": bool(s.get("surname_added")) and bool(s.get("surname", "")),
             "death_iso":     s.get("death_iso", ""),

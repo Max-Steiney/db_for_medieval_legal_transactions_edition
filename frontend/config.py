@@ -57,6 +57,12 @@ FACSIMILE_BASE_URLS = {
     "Satzbuch_CD": "https://id.acdh.oeaw.ac.at/grundbuecher-facs/",
 }
 
+# Oeffentliche Basis-URL der Edition (GitHub Pages, mit Subpfad, ohne
+# abschliessenden Slash). Fuer absolute Verweise wie den canonical-Link
+# der Quellseiten; relative canonicals wuerden vom Browser gegen den
+# Seitenpfad aufgeloest und zeigten ins Leere.
+SITE_BASE_URL = "https://max-steiney.github.io/db_for_medieval_legal_transactions_edition"
+
 # Editorial settings defining the release state of the edition.
 # Single source of truth — propagated to templates during the build.
 RELEASED_PERIOD = {

@@ -13,9 +13,12 @@ Mail: [christina.lutter@univie.ac.at](mailto:christina.lutter@univie.ac.at)
 Korbinian Grünwald, BA MA (Datenbank)
 Mail: [korbinian.gruenwald@univie.ac.at](mailto:korbinian.gruenwald@univie.ac.at)
 
+Allgemeine Anfragen, Hinweise und Anregungen zur Webseite:
+[stadtgemeinschaftwien.ioeg@univie.ac.at](mailto:stadtgemeinschaftwien.ioeg@univie.ac.at)
+
 ## Team
 
-**Aktuelle Mitarbeiter*innen**
+**Aktuelle Mitarbeiter:innen**
 
 - Jan Bigalke
 - Daniel Gonaus
@@ -25,7 +28,7 @@ Mail: [korbinian.gruenwald@univie.ac.at](mailto:korbinian.gruenwald@univie.ac.at
 - Carina Siegl
 - Maximilian Steinböck
 
-**Ehemalige Mitarbeiter*innen**
+**Ehemalige Mitarbeiter:innen**
 
 - Daniel Frey
 - Herbert Krammer

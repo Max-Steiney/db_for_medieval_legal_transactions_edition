@@ -44,11 +44,11 @@
                     <ul>
                         <li><strong>Signatur</strong> (z.&nbsp;B. „0a", „1023")</li>
                         <li><strong>Datum</strong>, TEI-Form und Anzeigeform (z.&nbsp;B. „1177 V 10", „10.05.1177", „1198&ndash;1230")</li>
-                        <li><strong>Korpus-Label</strong> (z.&nbsp;B. „QGW II/1", „Stadtb&uuml;cher Bd. 1")</li>
+                        <li><strong>Korpus-Label</strong> (z.&nbsp;B. „QGW II/1")</li>
                         <li><strong>Regest</strong>, Anriss und Volltext</li>
                     </ul>
                     <p>Der Ausstellungsort wird nicht durchsucht, daf&uuml;r gibt es den eigenen Ort-Filter.</p>
-                    <p>Umlaute werden ignoriert, mehrere W&ouml;rter mit UND verkn&uuml;pft. Eine echte Volltext-Suche im Quellentext der Stadtb&uuml;cher ist das (noch) nicht.</p>
+                    <p>Umlaute werden ignoriert, mehrere W&ouml;rter mit UND verkn&uuml;pft. Eine echte Volltext-Suche in den Quellentexten ist das (noch) nicht.</p>
                 {% endcall %}</div>
                 {{ search_box('Signatur, Datum, Regest …') }}
             </section>
@@ -93,7 +93,7 @@
                         <tr>
                             <th scope="col" class="col-idno" data-sort="id">
                                 Signatur{% call tip_glossary('col-info-signatur', 'Signatur') %}
-                                    <p>Eindeutige Kennung der Quelle: Korpus-K&uuml;rzel (z.&nbsp;B. QGW II/1, Stadtb&uuml;cher Bd. 1) plus die interne Quellen-Nummer aus der Edition.</p>
+                                    <p>Eindeutige Kennung der Quelle: Korpus-K&uuml;rzel (z.&nbsp;B. QGW II/1) plus die interne Quellen-Nummer aus der Edition.</p>
                                 {% endcall %}
                             </th>
                             <th scope="col" class="col-date" data-sort="di">
