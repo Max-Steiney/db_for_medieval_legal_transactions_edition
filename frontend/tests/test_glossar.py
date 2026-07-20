@@ -59,12 +59,15 @@ def test_glossar_has_zaehlbegriffe(built_demo):
     assert "Menschen-Event" not in c
 
 
-def test_glossar_normierung_add_tag_visible(built_demo):
-    # Normierung-Eintrag (2026-07-19): das TEI-Element <add> muss als Code-Span
-    # sichtbar sein. Ohne Backticks in glossar.md landet es als rohes,
-    # unbekanntes HTML-Tag im Output und der Browser blendet es aus.
+def test_glossar_normierung_entry(built_demo):
+    # Normierung-Eintrag: Anker ist Ziel des surname_added-Popovers auf den
+    # Personen-Profilen (person.html -> glossary.html#normierung). Inhalt am
+    # 20.07.2026 neu gefasst (weibliche Namensform statt <add>-Verweis);
+    # rohe, unescapte TEI-Tags duerfen nie im Output landen (Browser wuerde
+    # sie verschlucken).
     c = built_demo["glossar"]
-    assert "<code>&lt;add&gt;</code>" in c
+    assert 'id="normierung"' in c
+    assert "weiblichen Form" in c
     assert "einem <add>" not in c
 
 

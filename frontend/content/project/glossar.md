@@ -98,15 +98,9 @@ Ratsbürger 1396–1526" (Richard Perger).
 
 ### Normierung
 
-Die Vereinheitlichung zeitgenössisch variabler Schreibweisen oder Bezeichnungen,
-um Informationen systematisch durchsuchen und auswerten zu können, beispielsweise
-der Begriff Bürger/Bürgerin, der unter anderem auch in den Schreibweisen
-purger/purgerin oder civis wiennensis vorkommt.
+Die Vereinheitlichung zeitgenössisch variabler Schreibweisen oder Bezeichnungen, um Informationen systematisch durchsuchen und auswerten zu können, beispielsweise der Begriff Bürger/Bürgerin, der unter anderem auch in den Schreibweisen purger/purgerin oder civis wiennensis vorkommt.
 
-Gleichzeitig werden auch die Nachnamen von Ehepersonen und Kindern normiert.
-So werden zur einfacheren Identifikation von Personen, zum Beispiel Ehefrauen
-und Kinder mit demselben Namen geführt wie der verbundene Ehemann oder Vater. 
-Solche ergänzten Nachnamen werden im Datenbestand mit einem `<add>` ausgewiesen. 
+Gleichzeitig werden auch die Nachnamen von Ehepersonen und Kindern normiert. Wenn Frauen allein im Rechtsgeschäft auftreten wird ihr Name üblicherweise eindeutig weiblich formuliert, z.B. Lucia Nähzeugierin. Wenn Frauen zusammen mit ihren Ehemännern im Rechtsgeschäft auftreten werden sie meist über ihre Heiratsverwandtschaft definiert. Daraus ergibt sich für den Normierungsvorgang zum Zweck der quantitativen Auswertung: Frauen, die in relation zu ihrem Ehemann genannt werden, erhalten dessen Nachnamen und zwar in der weiblichen Form, die verwendet wird, wenn Frauen alleine auftreten. Dasselbe gilt für Kinder, jeweils differenziert nach Geschlecht so die Quelle dieses explizit aufweist. 
 
 ### Individuelle Person
 
