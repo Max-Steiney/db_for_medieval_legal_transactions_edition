@@ -1,6 +1,6 @@
 ## 1. Projektkontext
 
-Die Datenbank `db_for_medieval_legal_transactions` ist eine TEI-XML-basierte prosopographische Datenbank mittelalterlicher Wiener Rechtsgeschäfte (aktuell 1177 bis 1414). Das Datenmodell orientiert sich an [TEI P5](https://tei-c.org/release/doc/tei-p5-doc/en/html/) und an Konventionen der digitalen Prosopographie.
+Die Datenbank `db_for_medieval_legal_transactions` ist eine TEI-XML-basierte Datenbank mittelalterlicher Wiener Rechtsgeschäfte (aktuell 1177 bis 1414). Das Datenmodell orientiert sich an [TEI P5](https://tei-c.org/release/doc/tei-p5-doc/en/html/) und an Konventionen der digitalen Prosopographie. Infolge wird Aufbau und Funktionsweise der Datenbank überblicksrtig skizziert. Eine Detailirte Beschreibung der Modellierung befindet sich unter:
 
 ### Quellensammlungen
 
@@ -8,12 +8,8 @@ Die Edition umfasst aktuell folgende Quellensammlungen:
 
 | Korpora |
 |---------|
-| **QGW/Vienna\_1177-1414** \* |
-| QGW/Vienna\_1415-1417 |
-| QGW/Vienna\_1458-66 |
-| QGW/Vienna\_1493-1500 |
-| QGW/Vienna\_1524 |
-| Stadtbuecher/Band\_1\_1395-1400 |
+| **QGW/Vienna\_1177-1414** |
+| Stadtbuecher/Band\_1\_1395-1400 \* |
 
 \* Im Frontend wird aktuell nur der Bestand QGW/Vienna\_1177-1414 angezeigt; die Freischaltung der übrigen Bestände folgt.
 
