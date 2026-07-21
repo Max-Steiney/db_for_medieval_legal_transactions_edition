@@ -89,3 +89,39 @@ class TestRegisterLoading:
         assert "pl__seefeld_tirol" in places
         assert places["pl__seefeld_tirol"]["lat"] != ""
         assert places["pl__seefeld_tirol"]["lng"] != ""
+
+
+class TestAddnameDedupRegisterliste:
+    """load_persons() nutzt dieselbe Dedup-SSoT wie die Profilseiten.
+
+    Befund 20.07.2026: Personen, deren addName den surname woertlich
+    doppelt, erschienen in Register-Liste, Suche und Tooltips doppelt
+    benannt ("Heinrich Holm Holm"), auf der Profilseite aber korrekt —
+    weil load_persons() nie an _dedup_addname angeschlossen war.
+    """
+
+    def test_holm_erscheint_nur_einmal(self):
+        persons = load_persons()
+        p = persons["pe__heinrich_holm_QGW_II_I_634"]
+        assert p["display"] == "Heinrich Holm"
+        assert p["addName"] == ""
+
+    def test_distinkter_addname_bleibt(self):
+        persons = load_persons()
+        p = persons["pe__thomas_gorser_SB_CD_00787_a"]
+        assert p["addName"] == "zu Schönberg"
+        assert p["display"] == "Thomas Gorser zu Schönberg"
+
+    def test_keine_surname_dopplung_im_gesamten_register(self):
+        persons = load_persons()
+        dopplungen = [
+            xml_id for xml_id, p in persons.items()
+            if p["addName"] and p["surname"]
+            and p["addName"].casefold().strip() == p["surname"].casefold().strip()
+        ]
+        assert dopplungen == []
+
+    def test_tooltip_erbt_dedupliziertes_display(self):
+        persons = load_persons()
+        p = persons["pe__heinrich_holm_QGW_II_I_634"]
+        assert build_tooltip_person(p, "pe__heinrich_holm_QGW_II_I_634") == "Heinrich Holm"

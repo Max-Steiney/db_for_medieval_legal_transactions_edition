@@ -35,11 +35,34 @@ def _format_death_german(death_iso):
     return death_iso
 
 
+def _dedup_addname(surname: str, addname: str) -> str:
+    """addName ausnullen, wenn er den surname doppelt.
+
+    Vergleich case- und whitespace-insensitiv. TEI-Quellen annotieren
+    bei Adelsfamilien haeufig denselben Toponym-Bestandteil in
+    <surname> und <addName>; ohne Dedup entsteht 'Albert von Cremona
+    von Cremona' im Display-Namen.
+
+    Zentrale Single-Source-of-Truth fuer ALLE Namens-Konsumenten:
+    ``load_persons`` (Register-Liste, Suche, Tooltips) wendet sie hier
+    an; die Profilseiten (``aggregator.person_profiles``: ``_display_name``
+    und Profile-Dict) importieren sie von hier, damit jeder Konsument
+    exakt dieselbe Bedingung sieht.
+    """
+    if (addname and surname
+            and addname.casefold().strip() == surname.casefold().strip()):
+        return ""
+    return addname
+
+
 def load_persons():
     """Load personList.xml into {xml_id: {forename, surname, addName, death}}.
 
     Das Sterbedatum (death) erscheint nur noch im Personenprofil als
     "Verstorben vor ...", nicht mehr im Tooltip oder Annotations-Hint.
+    addName laeuft durch ``_dedup_addname`` — wortgleiche surname-Dopplung
+    ("Heinrich Holm Holm") wird hier ausgenullt, damit display, Suche und
+    Tooltips mit den Profilseiten uebereinstimmen.
     """
     tree = load_index("personList.xml")
     persons = {}
@@ -74,6 +97,8 @@ def load_persons():
             death = death_elems[0].get("notAfter", "") or normalize_space(
                 elem_text(death_elems[0])
             )
+
+        add_name = _dedup_addname(surname, add_name)
 
         parts = [p for p in [forename, surname, add_name] if p]
         display = " ".join(parts) if parts else xml_id

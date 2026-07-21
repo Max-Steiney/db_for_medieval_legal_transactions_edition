@@ -27,7 +27,7 @@ import re
 from collections import Counter, defaultdict
 
 from frontend.config import is_visible_corpus
-from frontend.register import _format_death_german
+from frontend.register import _format_death_german, _dedup_addname
 from ._shared import _cached_csv
 from ._profile_labels import split_authorities
 from ._profile_enrichment import (
@@ -169,24 +169,6 @@ def _load_place_names():
         if pid:
             out[pid] = name.split("|", 1)[0].strip() or pid
     return out
-
-
-def _dedup_addname(surname: str, addname: str) -> str:
-    """addName ausnullen, wenn er den surname doppelt.
-
-    Vergleich case- und whitespace-insensitiv. TEI-Quellen annotieren
-    bei Adelsfamilien haeufig denselben Toponym-Bestandteil in
-    <surname> und <addName>; ohne Dedup entsteht 'Albert von Cremona
-    von Cremona' im Display-Namen und in den getrennten H1-Spans.
-
-    Zentrale Single-Source-of-Truth: ``_display_name`` (Display-String)
-    und der Profile-Dict-Aufbau (getrennte Spans) rufen diese Funktion
-    auf, damit beide Konsumenten exakt dieselbe Bedingung sehen.
-    """
-    if (addname and surname
-            and addname.casefold().strip() == surname.casefold().strip()):
-        return ""
-    return addname
 
 
 def _display_name(s):
