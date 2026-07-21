@@ -1,6 +1,6 @@
 ## 1. Projektkontext
 
-Die Datenbank `db_for_medieval_legal_transactions` ist eine TEI-XML-basierte Datenbank mittelalterlicher Wiener Rechtsgeschäfte (aktuell 1177 bis 1414). Das Datenmodell orientiert sich an [TEI P5](https://tei-c.org/release/doc/tei-p5-doc/en/html/) und an Konventionen der digitalen Prosopographie. Infolge wird Aufbau und Funktionsweise der Datenbank überblicksrtig skizziert.
+Die Datenbank `db_for_medieval_legal_transactions` ist eine TEI-XML-basierte Datenbank mittelalterlicher Wiener Rechtsgeschäfte (aktuell 1177 bis 1414). Das Datenmodell orientiert sich an [TEI P5](https://tei-c.org/release/doc/tei-p5-doc/en/html/) und an Konventionen der digitalen Prosopographie. Infolge wird Aufbau und Funktionsweise der Datenbank überblicksartig skizziert.
 
 Eine detaillierte Beschreibung inklusive Entity-Relationship-Modell (ER-Model) finden Sie in folgendem Artikel:
 

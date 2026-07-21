@@ -63,3 +63,7 @@ Unter folgenden Bedingungen:
 - **Nicht kommerziell**: Sie dürfen das Material nicht für kommerzielle Zwecke nutzen.
 - **Weitergabe unter gleichen Bedingungen**: Wenn Sie das Material remixen, verändern oder anderweitig direkt darauf aufbauen, dürfen Sie Ihre Beiträge nur unter derselben Lizenz wie das Original verbreiten.
 - **Keine weiteren Einschränkungen**: Sie dürfen keine zusätzlichen Klauseln oder technischen Verfahren einsetzen, die anderen rechtlich irgendetwas untersagen, was die Lizenz erlaubt.
+
+## Bildnachweis
+
+Die Faksimiles der Urkunden werden über [Monasterium.net](https://www.monasterium.net/mom/AT-WStLA/HAUrk/fond) eingebunden. Die Digitalisate stammen aus dem Bestand des Wiener Stadt- und Landesarchivs (WStLA). Die Rechte an den Abbildungen verbleiben beim Archiv; sie sind von der oben genannten CC-Lizenz ausgenommen.

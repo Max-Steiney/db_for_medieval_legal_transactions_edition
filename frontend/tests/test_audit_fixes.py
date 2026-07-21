@@ -136,6 +136,19 @@ def test_impressum_hat_projektmail():
     assert "stadtgemeinschaftwien.ioeg@univie.ac.at" in md
 
 
+# --- Audit-Punkt: Bildnachweis-Zeile im Impressum ---
+
+def test_impressum_hat_bildnachweis():
+    # Faksimile-/Bildrechte waren nur per Monasterium-Link auf den
+    # Quellseiten attribuiert; das Impressum traegt jetzt einen
+    # eigenen Bildnachweis (Monasterium.net / WStLA, von der
+    # CC-Lizenz ausgenommen).
+    md = (BASE / "content" / "impressum.md").read_text(encoding="utf-8")
+    assert "## Bildnachweis" in md
+    assert "Monasterium.net" in md
+    assert "Wiener Stadt- und Landesarchiv" in md
+
+
 # --- Audit-Punkt 9: Browser-Tab-Titel + Werktitel-Trennzeichen ---
 
 def test_title_tag_traegt_projektname():
