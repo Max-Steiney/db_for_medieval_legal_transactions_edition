@@ -24,8 +24,10 @@ def test_has_doctype(built_guidelines):
 
 
 def test_has_title(built_guidelines):
+    """Seite heisst seit der Ueberarbeitung "Annotationsrichtlinien"."""
     _, content = built_guidelines
-    assert "Editionsrichtlinien" in content
+    assert "Annotationsrichtlinien" in content
+    assert "Editionsrichtlinien" not in content
 
 
 def test_has_toc_container(built_guidelines):
@@ -59,9 +61,13 @@ def test_has_xml_code_examples(built_guidelines):
     assert "rs type=" in content or 'rs type="event"' in content
 
 
-def test_has_kontrolliertes_vokabular_section(built_guidelines):
+def test_has_validierung_section(built_guidelines):
+    """Abschnitt 6 heisst seit dem Meeting 21.07.2026 "Validierung"
+    (vorher "Vokabular und Validierung", davor "Kontrolliertes
+    Vokabular")."""
     _, content = built_guidelines
-    assert "Kontrolliertes Vokabular" in content
+    assert 'id="6-validierung"' in content
+    assert "Kontrolliertes Vokabular" not in content
 
 
 # --- Tests for redesigned layout ---
@@ -128,12 +134,16 @@ def test_has_zitierhinweis_section(built_guidelines):
 
 
 def test_has_lizenz_section(built_guidelines):
-    """Section 9: Lizenz exists with CC-BY-4.0 link."""
+    """Abschnitt 8: einheitliche Lizenz CC BY-NC-SA 4.0 mit CC-Link
+    (Meeting-Entscheidung 21.07.2026)."""
     _, content = built_guidelines
-    assert "CC BY 4.0" in content or "CC-BY-4.0" in content or "creativecommons.org" in content
+    assert "CC BY-NC-SA 4.0" in content
+    assert "creativecommons.org" in content
 
 
-def test_has_versionsgeschichte_section(built_guidelines):
-    """Section 10: Versionsgeschichte exists with changelog entries."""
+def test_versionsgeschichte_removed(built_guidelines):
+    """Versionsgeschichte bewusst entfernt: keine Vogeler-Auflage
+    verlangt sie, Versionierung leistet die Git-Historie des
+    Daten-Repos (analog test_section5_removed/test_section7_removed)."""
     _, content = built_guidelines
-    assert "Versionsgeschichte" in content
+    assert "Versionsgeschichte" not in content
