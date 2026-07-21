@@ -1,6 +1,12 @@
 ## 1. Projektkontext
 
-Die Datenbank `db_for_medieval_legal_transactions` ist eine TEI-XML-basierte Datenbank mittelalterlicher Wiener Rechtsgeschäfte (aktuell 1177 bis 1414). Das Datenmodell orientiert sich an [TEI P5](https://tei-c.org/release/doc/tei-p5-doc/en/html/) und an Konventionen der digitalen Prosopographie. Infolge wird Aufbau und Funktionsweise der Datenbank überblicksrtig skizziert. Eine Detailirte Beschreibung der Modellierung befindet sich unter:
+Die Datenbank `db_for_medieval_legal_transactions` ist eine TEI-XML-basierte Datenbank mittelalterlicher Wiener Rechtsgeschäfte (aktuell 1177 bis 1414). Das Datenmodell orientiert sich an [TEI P5](https://tei-c.org/release/doc/tei-p5-doc/en/html/) und an Konventionen der digitalen Prosopographie. Infolge wird Aufbau und Funktionsweise der Datenbank überblicksrtig skizziert.
+
+Eine detaillierte Beschreibung inklusive Entity-Relationship-Modell (ER-Model) finden Sie in folgendem Artikel:
+
+Korbinian Grünwald, [Die digitale Erfassung von mittelalterlichen Rechtsgeschäften – Beschreibung der semistrukturierten XML-Datenbank db_for_medieval_legal_transactions](https://dhd-blog.org/?p=16737), in: DHdBlog: Digital Humanities im deutschsprachigen Raum (2021).
+
+Eine Kompatibilität mit [CIDOC-CRM](https://www.cidoc-crm.org/) ist langfristig angedacht.
 
 ### Quellensammlungen
 
@@ -13,14 +19,10 @@ Die Edition umfasst aktuell folgende Quellensammlungen:
 
 \* Im Frontend wird aktuell nur der Bestand QGW/Vienna\_1177-1414 angezeigt; die Freischaltung der übrigen Bestände folgt.
 
-Die Schema-Validierung erfolgt gegen `sources/schema/toolbox.rng` (RelaxNG).
-
-Eine Kompatibilität mit [CIDOC-CRM](https://www.cidoc-crm.org/) ist langfristig angedacht.
-
-
 ## 2. Annotationsmodell
 
 Das Annotationsmodell wird im Folgenden in vier konzeptuellen Ebenen dargestellt. Die Ebenen sind hierarchisch aufgebaut: Jede ist Teil der jeweils höheren, und die Verschachtelung im XML spiegelt diese Hierarchie wider.
+Die Schema-Validierung erfolgt gegen `sources/schema/toolbox.rng` (RelaxNG).
 
 | Ebene | Gegenstand | TEI-Element | Klassifikation |
 |-------|-----------|-------------|----------------|
@@ -227,20 +229,6 @@ Ein vollständiges Beispiel zeigt die Verschachtelung aller vier Ebenen:
 
 *Quelle: [QGW II/1 Nr. 165 (1335)](https://max-steiney.github.io/db_for_medieval_legal_transactions_edition/documents/QGW/Vienna_1177-1414_ready/165.html)*
 
-**`@select`**: trägt im Projekt einen zweiten XPointer-Verweis und kontextualisiert die durch `@corresp` etablierte Relation, indem ein zweiter Indexeintrag (typischerweise ein Ort oder eine Organisation) mitreferenziert wird.
-
-```xml
-<rs type="person" ref="pe__andreas_hoechstel_QGW_II_I_1043">Andre der Höchstel,
-  <roleName type="occ"
-            corresp="org__tulln-dominikanerinnen"
-            select="pl__doebling">amptman</roleName></rs>
-```
-
-*Quelle: [QGW II/1 Nr. 1043 (1382)](https://max-steiney.github.io/db_for_medieval_legal_transactions_edition/documents/QGW/Vienna_1177-1414_ready/1043.html)* ("Amtmann der Tullner Dominikanerinnen mit Zuständigkeit in Döbling".)
-
-Diese Verwendung ist eine projektspezifische Konvention und weicht von der TEI-Definition ab, nach der `@select` der Auflösung von Ambiguitäten zwischen alternativen Lesarten dient ([att.global.linking](https://tei-c.org/release/doc/tei-p5-doc/en/html/ref-att.global.linking.html)).
-
-
 ## 3. Tagging-Workflow
 
 Die folgende Reihenfolge beschreibt den typischen Ablauf, in dem Annotationen in einer Quelle angelegt werden. Der Workflow wird durchgehend an einer Quelle gezeigt: [QGW II/1 Nr. 10 (1274)](https://max-steiney.github.io/db_for_medieval_legal_transactions_edition/documents/QGW/Vienna_1177-1414_ready/10.html). Die vollständig annotierte Quelle:
@@ -415,10 +403,6 @@ Diese Konventionen beschreiben die im Bestand erkennbare Praxis; Detailausnahmen
 
 Die Disambiguierung von Homonymen erfolgt durch das Suffix `_a` / `_b` (usw.) an der Personen-ID. Dieses Verfahren greift, wenn derselbe Name in derselben Quelle mehrfach vorkommt und die Personen durch Kontextinformationen (Beruf, Verwandtschaft, Amt) unterschieden werden können.
 
-**Namenskonvention als Individualisierungsstrategie:**
-
-Die Struktur der Personen-ID selbst, normalisierter Vorname plus Nachname plus Quelle plus Nummer, bildet bereits eine erste Individualisierungsschicht. Unterschiedliche Quellen erzeugen unterschiedliche IDs für potentiell identische Personen. Die Zusammenführung erfolgt über `@sameAs` im Index; sie ist eine historisch-prosopographische Urteilsfrage und keine algorithmische Operation.
-
 **Index-Struktur (personList.xml):**
 
 Jeder Personeneintrag kann folgende Informationen enthalten:
@@ -495,10 +479,10 @@ Beispiel (`pl__wien`):
 
 ## 5. Normalisierung
 
-Die Normalisierung von Trigger-Formeln, Funktionen und Rollennamen erfolgt über projekteigene Normalisierungslisten, die in `normalisation_lists/` gepflegt werden. Die Normalisierung von Vornamen wird über einen externen Webservice (`medieval-legal-transactions.univie.ac.at/norm_names/`) verwaltet, der mit projekteigenen Zugangsdaten zugänglich ist. Die normalisierten Formen fließen in die Personen-IDs und Index-Einträge ein.
+Die Normalisierung von Trigger-Formeln, Funktionen und Rollennamen erfolgt über projekteigene Normalisierungslisten, die in `normalisation_lists/` gepflegt werden. Die Normalisierung von Vornamen wird über einen externen Webservice (`medieval-legal-transactions.univie.ac.at/norm_names/`) verwaltet, der mit projekteigenen Zugangsdaten zugänglich ist. 
 
 
-## 6. Vokabular und Validierung
+## 6. Validierung
 
 Dieser Abschnitt beschreibt die Funktion der wesentlichen Attribute. Die kanonischen Wertelisten werden hier nicht ausgezählt: Sie sind im RelaxNG-Schema (`sources/schema/toolbox.rng`) festgelegt und werden bei jedem Validierungslauf gegen den Bestand abgeglichen. Der Validierungsbericht (`pipeline/output/validation_report.md`) listet Abweichungen mit Datei und Zeile.
 
@@ -535,16 +519,4 @@ Ein persistenter Identifikator (DOI) ist in Vorbereitung. Bei Einzelquellen-Zita
 
 ## 8. Lizenzierung
 
-Die Lizenzierung wird auf drei Geltungsbereiche bezogen.
-
-### Die digitale Edition als Werk
-
-Die im Rahmen der Modernisierung erstellten Bestandteile (die generierten HTML-Seiten, das Layout, die vorliegenden Annotationsrichtlinien, der Pipeline-Code, das RelaxNG-Schema und die Visualisierungen) werden unter der [Creative Commons Attribution-NonCommercial-ShareAlike 4.0 International License (CC BY-NC-SA 4.0)](https://creativecommons.org/licenses/by-nc-sa/4.0/deed.de) veröffentlicht. Der vollständige Lizenztext liegt im Repository unter `LICENSE`.
-
-### Die TEI-Quelldaten und Indices
-
-Die Quelldokumente in `sources/` und die drei Indexlisten in `indices/` tragen ihre Urheber- und Bearbeitungsangaben in den eigenen `<publicationStmt>`- und `<sourceDesc>`-Elementen. Diese Angaben werden im Rahmen der Modernisierung nicht überschrieben. Eine einheitliche Lizenzangabe für die öffentliche Veröffentlichung dieser Daten ist zwischen den Projektpartner:innen und der Universität Wien zu vereinbaren; bis zu dieser Vereinbarung gelten die in den Quelldateien selbst dokumentierten Angaben.
-
-### Die Normalisierungslisten
-
-Die Normalisierungslisten in `normalisation_lists/` werden Gegenstand einer ausdrücklichen Lizenzvereinbarung sein. Eine Lizenzangabe pro Datei ist vorgesehen.
+Alle Inhalte der Datenbank — die TEI-annotierten Quellentexte, die Register (Personen, Organisationen, Orte), die Normalisierungslisten sowie deren Darstellung im Frontend — stehen unter der Lizenz [Creative Commons Attribution-NonCommercial-ShareAlike 4.0 International (CC BY-NC-SA 4.0)](https://creativecommons.org/licenses/by-nc-sa/4.0/deed.de). Sie dürfen für nicht-kommerzielle Zwecke frei genutzt, geteilt und bearbeitet werden, sofern die Quelle genannt wird und Bearbeitungen unter derselben Lizenz veröffentlicht werden. Für die Namensnennung wird die Zitierweise aus Abschnitt 7 empfohlen. Der vollständige Lizenztext liegt im Repository unter `LICENSE`.

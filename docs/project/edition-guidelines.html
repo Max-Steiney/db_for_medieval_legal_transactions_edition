@@ -10,15 +10,15 @@
     <title>Annotationsrichtlinien &ndash; Stadt und Gemeinschaft Wien</title>
     <link rel="preload" as="font" type="font/woff2" crossorigin
           href="../static/fonts/inter-400-latin.woff2">
-    <link rel="stylesheet" href="../static/css/fonts.css?v=20260721134538">
-    <link rel="stylesheet" href="../static/css/tokens.css?v=20260721134538">
-    <link rel="stylesheet" href="../static/css/base.css?v=20260721134538">
-    <link rel="stylesheet" href="../static/css/components.css?v=20260721134538">
-    <link rel="stylesheet" href="../static/css/responsive.css?v=20260721134538">
-    <link rel="stylesheet" href="../static/css/print.css?v=20260721134538">
-    <link rel="stylesheet" href="../static/css/tip.css?v=20260721134538">
+    <link rel="stylesheet" href="../static/css/fonts.css?v=20260721143955">
+    <link rel="stylesheet" href="../static/css/tokens.css?v=20260721143955">
+    <link rel="stylesheet" href="../static/css/base.css?v=20260721143955">
+    <link rel="stylesheet" href="../static/css/components.css?v=20260721143955">
+    <link rel="stylesheet" href="../static/css/responsive.css?v=20260721143955">
+    <link rel="stylesheet" href="../static/css/print.css?v=20260721143955">
+    <link rel="stylesheet" href="../static/css/tip.css?v=20260721143955">
     
-<link rel="stylesheet" href="../static/css/content.css?v=20260721134538">
+<link rel="stylesheet" href="../static/css/content.css?v=20260721143955">
 
 </head>
 <body data-root-path=".."
@@ -131,18 +131,13 @@
 </ul>
 </li>
 <li><a href="#5-normalisierung">5. Normalisierung</a></li>
-<li><a href="#6-vokabular-und-validierung">6. Vokabular und Validierung</a></li>
+<li><a href="#6-validierung">6. Validierung</a></li>
 <li><a href="#7-zitierhinweis">7. Zitierhinweis</a><ul>
 <li><a href="#empfohlene-zitierweise">Empfohlene Zitierweise</a></li>
 <li><a href="#bibtex">BibTeX</a></li>
 </ul>
 </li>
-<li><a href="#8-lizenzierung">8. Lizenzierung</a><ul>
-<li><a href="#die-digitale-edition-als-werk">Die digitale Edition als Werk</a></li>
-<li><a href="#die-tei-quelldaten-und-indices">Die TEI-Quelldaten und Indices</a></li>
-<li><a href="#die-normalisierungslisten">Die Normalisierungslisten</a></li>
-</ul>
-</li>
+<li><a href="#8-lizenzierung">8. Lizenzierung</a></li>
 </ul>
 </div>
 
@@ -150,7 +145,10 @@
         </nav>
         <div class="guidelines-body">
             <h2 id="1-projektkontext">1. Projektkontext<a class="headerlink" href="#1-projektkontext" title="Permanent link">&para;</a></h2>
-<p>Die Datenbank <code>db_for_medieval_legal_transactions</code> ist eine TEI-XML-basierte Datenbank mittelalterlicher Wiener Rechtsgeschäfte (aktuell 1177 bis 1414). Das Datenmodell orientiert sich an <a href="https://tei-c.org/release/doc/tei-p5-doc/en/html/">TEI P5</a> und an Konventionen der digitalen Prosopographie. Infolge wird Aufbau und Funktionsweise der Datenbank überblicksrtig skizziert. Eine Detailirte Beschreibung der Modellierung befindet sich unter:</p>
+<p>Die Datenbank <code>db_for_medieval_legal_transactions</code> ist eine TEI-XML-basierte Datenbank mittelalterlicher Wiener Rechtsgeschäfte (aktuell 1177 bis 1414). Das Datenmodell orientiert sich an <a href="https://tei-c.org/release/doc/tei-p5-doc/en/html/">TEI P5</a> und an Konventionen der digitalen Prosopographie. Infolge wird Aufbau und Funktionsweise der Datenbank überblicksrtig skizziert.</p>
+<p>Eine detaillierte Beschreibung inklusive Entity-Relationship-Modell (ER-Model) finden Sie in folgendem Artikel:</p>
+<p>Korbinian Grünwald, <a href="https://dhd-blog.org/?p=16737">Die digitale Erfassung von mittelalterlichen Rechtsgeschäften – Beschreibung der semistrukturierten XML-Datenbank db_for_medieval_legal_transactions</a>, in: DHdBlog: Digital Humanities im deutschsprachigen Raum (2021).</p>
+<p>Eine Kompatibilität mit <a href="https://www.cidoc-crm.org/">CIDOC-CRM</a> ist langfristig angedacht.</p>
 <h3 id="quellensammlungen">Quellensammlungen<a class="headerlink" href="#quellensammlungen" title="Permanent link">&para;</a></h3>
 <p>Die Edition umfasst aktuell folgende Quellensammlungen:</p>
 <table>
@@ -169,10 +167,9 @@
 </tbody>
 </table>
 <p>* Im Frontend wird aktuell nur der Bestand QGW/Vienna_1177-1414 angezeigt; die Freischaltung der übrigen Bestände folgt.</p>
-<p>Die Schema-Validierung erfolgt gegen <code>sources/schema/toolbox.rng</code> (RelaxNG).</p>
-<p>Eine Kompatibilität mit <a href="https://www.cidoc-crm.org/">CIDOC-CRM</a> ist langfristig angedacht.</p>
 <h2 id="2-annotationsmodell">2. Annotationsmodell<a class="headerlink" href="#2-annotationsmodell" title="Permanent link">&para;</a></h2>
-<p>Das Annotationsmodell wird im Folgenden in vier konzeptuellen Ebenen dargestellt. Die Ebenen sind hierarchisch aufgebaut: Jede ist Teil der jeweils höheren, und die Verschachtelung im XML spiegelt diese Hierarchie wider.</p>
+<p>Das Annotationsmodell wird im Folgenden in vier konzeptuellen Ebenen dargestellt. Die Ebenen sind hierarchisch aufgebaut: Jede ist Teil der jeweils höheren, und die Verschachtelung im XML spiegelt diese Hierarchie wider.
+Die Schema-Validierung erfolgt gegen <code>sources/schema/toolbox.rng</code> (RelaxNG).</p>
 <table>
 <thead>
 <tr>
@@ -384,15 +381,6 @@
 </code></pre></div>
 
 <p><em>Quelle: <a href="https://max-steiney.github.io/db_for_medieval_legal_transactions_edition/documents/QGW/Vienna_1177-1414_ready/165.html">QGW II/1 Nr. 165 (1335)</a></em></p>
-<p><strong><code>@select</code></strong>: trägt im Projekt einen zweiten XPointer-Verweis und kontextualisiert die durch <code>@corresp</code> etablierte Relation, indem ein zweiter Indexeintrag (typischerweise ein Ort oder eine Organisation) mitreferenziert wird.</p>
-<div class="highlight"><pre><span></span><code><span class="nt">&lt;rs</span><span class="w"> </span><span class="na">type=</span><span class="s">&quot;person&quot;</span><span class="w"> </span><span class="na">ref=</span><span class="s">&quot;pe__andreas_hoechstel_QGW_II_I_1043&quot;</span><span class="nt">&gt;</span>Andre<span class="w"> </span>der<span class="w"> </span>Höchstel,
-<span class="w">  </span><span class="nt">&lt;roleName</span><span class="w"> </span><span class="na">type=</span><span class="s">&quot;occ&quot;</span>
-<span class="w">            </span><span class="na">corresp=</span><span class="s">&quot;org__tulln-dominikanerinnen&quot;</span>
-<span class="w">            </span><span class="na">select=</span><span class="s">&quot;pl__doebling&quot;</span><span class="nt">&gt;</span>amptman<span class="nt">&lt;/roleName&gt;&lt;/rs&gt;</span>
-</code></pre></div>
-
-<p><em>Quelle: <a href="https://max-steiney.github.io/db_for_medieval_legal_transactions_edition/documents/QGW/Vienna_1177-1414_ready/1043.html">QGW II/1 Nr. 1043 (1382)</a></em> ("Amtmann der Tullner Dominikanerinnen mit Zuständigkeit in Döbling".)</p>
-<p>Diese Verwendung ist eine projektspezifische Konvention und weicht von der TEI-Definition ab, nach der <code>@select</code> der Auflösung von Ambiguitäten zwischen alternativen Lesarten dient (<a href="https://tei-c.org/release/doc/tei-p5-doc/en/html/ref-att.global.linking.html">att.global.linking</a>).</p>
 <h2 id="3-tagging-workflow">3. Tagging-Workflow<a class="headerlink" href="#3-tagging-workflow" title="Permanent link">&para;</a></h2>
 <p>Die folgende Reihenfolge beschreibt den typischen Ablauf, in dem Annotationen in einer Quelle angelegt werden. Der Workflow wird durchgehend an einer Quelle gezeigt: <a href="https://max-steiney.github.io/db_for_medieval_legal_transactions_edition/documents/QGW/Vienna_1177-1414_ready/10.html">QGW II/1 Nr. 10 (1274)</a>. Die vollständig annotierte Quelle:</p>
 <div class="highlight"><pre><span></span><code><span class="nt">&lt;div</span><span class="w"> </span><span class="na">type=</span><span class="s">&quot;abstract&quot;</span><span class="w"> </span><span class="na">resp=</span><span class="s">&quot;ks&quot;</span><span class="nt">&gt;</span>
@@ -549,8 +537,6 @@
 <p>Diese Konventionen beschreiben die im Bestand erkennbare Praxis; Detailausnahmen werden im konkreten Einzelfall editorisch entschieden.</p>
 <h3 id="individualisierungsverfahren">Individualisierungsverfahren<a class="headerlink" href="#individualisierungsverfahren" title="Permanent link">&para;</a></h3>
 <p>Die Disambiguierung von Homonymen erfolgt durch das Suffix <code>_a</code> / <code>_b</code> (usw.) an der Personen-ID. Dieses Verfahren greift, wenn derselbe Name in derselben Quelle mehrfach vorkommt und die Personen durch Kontextinformationen (Beruf, Verwandtschaft, Amt) unterschieden werden können.</p>
-<p><strong>Namenskonvention als Individualisierungsstrategie:</strong></p>
-<p>Die Struktur der Personen-ID selbst, normalisierter Vorname plus Nachname plus Quelle plus Nummer, bildet bereits eine erste Individualisierungsschicht. Unterschiedliche Quellen erzeugen unterschiedliche IDs für potentiell identische Personen. Die Zusammenführung erfolgt über <code>@sameAs</code> im Index; sie ist eine historisch-prosopographische Urteilsfrage und keine algorithmische Operation.</p>
 <p><strong>Index-Struktur (personList.xml):</strong></p>
 <p>Jeder Personeneintrag kann folgende Informationen enthalten:</p>
 <ul>
@@ -638,8 +624,8 @@
 </code></pre></div>
 
 <h2 id="5-normalisierung">5. Normalisierung<a class="headerlink" href="#5-normalisierung" title="Permanent link">&para;</a></h2>
-<p>Die Normalisierung von Trigger-Formeln, Funktionen und Rollennamen erfolgt über projekteigene Normalisierungslisten, die in <code>normalisation_lists/</code> gepflegt werden. Die Normalisierung von Vornamen wird über einen externen Webservice (<code>medieval-legal-transactions.univie.ac.at/norm_names/</code>) verwaltet, der mit projekteigenen Zugangsdaten zugänglich ist. Die normalisierten Formen fließen in die Personen-IDs und Index-Einträge ein.</p>
-<h2 id="6-vokabular-und-validierung">6. Vokabular und Validierung<a class="headerlink" href="#6-vokabular-und-validierung" title="Permanent link">&para;</a></h2>
+<p>Die Normalisierung von Trigger-Formeln, Funktionen und Rollennamen erfolgt über projekteigene Normalisierungslisten, die in <code>normalisation_lists/</code> gepflegt werden. Die Normalisierung von Vornamen wird über einen externen Webservice (<code>medieval-legal-transactions.univie.ac.at/norm_names/</code>) verwaltet, der mit projekteigenen Zugangsdaten zugänglich ist. </p>
+<h2 id="6-validierung">6. Validierung<a class="headerlink" href="#6-validierung" title="Permanent link">&para;</a></h2>
 <p>Dieser Abschnitt beschreibt die Funktion der wesentlichen Attribute. Die kanonischen Wertelisten werden hier nicht ausgezählt: Sie sind im RelaxNG-Schema (<code>sources/schema/toolbox.rng</code>) festgelegt und werden bei jedem Validierungslauf gegen den Bestand abgeglichen. Der Validierungsbericht (<code>pipeline/output/validation_report.md</code>) listet Abweichungen mit Datei und Zeile.</p>
 <ul>
 <li><strong><code>rs/@type</code></strong> klassifiziert, was die Referenz bezeichnet (Person, Organisation, Ort, Ereignis, Funktionsrolle).</li>
@@ -667,13 +653,7 @@
 
 <p>Ein persistenter Identifikator (DOI) ist in Vorbereitung. Bei Einzelquellen-Zitaten empfiehlt sich die Angabe der Datei-ID (z.B. <code>QGW_1177-1414_0001</code>).</p>
 <h2 id="8-lizenzierung">8. Lizenzierung<a class="headerlink" href="#8-lizenzierung" title="Permanent link">&para;</a></h2>
-<p>Die Lizenzierung wird auf drei Geltungsbereiche bezogen.</p>
-<h3 id="die-digitale-edition-als-werk">Die digitale Edition als Werk<a class="headerlink" href="#die-digitale-edition-als-werk" title="Permanent link">&para;</a></h3>
-<p>Die im Rahmen der Modernisierung erstellten Bestandteile (die generierten HTML-Seiten, das Layout, die vorliegenden Annotationsrichtlinien, der Pipeline-Code, das RelaxNG-Schema und die Visualisierungen) werden unter der <a href="https://creativecommons.org/licenses/by-nc-sa/4.0/deed.de">Creative Commons Attribution-NonCommercial-ShareAlike 4.0 International License (CC BY-NC-SA 4.0)</a> veröffentlicht. Der vollständige Lizenztext liegt im Repository unter <code>LICENSE</code>.</p>
-<h3 id="die-tei-quelldaten-und-indices">Die TEI-Quelldaten und Indices<a class="headerlink" href="#die-tei-quelldaten-und-indices" title="Permanent link">&para;</a></h3>
-<p>Die Quelldokumente in <code>sources/</code> und die drei Indexlisten in <code>indices/</code> tragen ihre Urheber- und Bearbeitungsangaben in den eigenen <code>&lt;publicationStmt&gt;</code>- und <code>&lt;sourceDesc&gt;</code>-Elementen. Diese Angaben werden im Rahmen der Modernisierung nicht überschrieben. Eine einheitliche Lizenzangabe für die öffentliche Veröffentlichung dieser Daten ist zwischen den Projektpartner:innen und der Universität Wien zu vereinbaren; bis zu dieser Vereinbarung gelten die in den Quelldateien selbst dokumentierten Angaben.</p>
-<h3 id="die-normalisierungslisten">Die Normalisierungslisten<a class="headerlink" href="#die-normalisierungslisten" title="Permanent link">&para;</a></h3>
-<p>Die Normalisierungslisten in <code>normalisation_lists/</code> werden Gegenstand einer ausdrücklichen Lizenzvereinbarung sein. Eine Lizenzangabe pro Datei ist vorgesehen.</p>
+<p>Alle Inhalte der Datenbank — die TEI-annotierten Quellentexte, die Register (Personen, Organisationen, Orte), die Normalisierungslisten sowie deren Darstellung im Frontend — stehen unter der Lizenz <a href="https://creativecommons.org/licenses/by-nc-sa/4.0/deed.de">Creative Commons Attribution-NonCommercial-ShareAlike 4.0 International (CC BY-NC-SA 4.0)</a>. Sie dürfen für nicht-kommerzielle Zwecke frei genutzt, geteilt und bearbeitet werden, sofern die Quelle genannt wird und Bearbeitungen unter derselben Lizenz veröffentlicht werden. Für die Namensnennung wird die Zitierweise aus Abschnitt 7 empfohlen. Der vollständige Lizenztext liegt im Repository unter <code>LICENSE</code>.</p>
         </div>
     </div>
 
@@ -706,12 +686,12 @@
     </footer>
 
     <script id="role-labels" type="application/json">{"issuer": "Aussteller:in", "other": "Sonstige", "recipient": "Empf\u00e4nger:in", "witness": "Zeug:in / Siegler:in"}</script>
-    <script src="../static/js/core.js?v=20260721134538"></script>
-    <script src="../static/js/tip.js?v=20260721134538"></script>
-    <script src="../static/js/hint.js?v=20260721134538"></script>
-    <script src="../static/js/basket.js?v=20260721134538"></script>
+    <script src="../static/js/core.js?v=20260721143955"></script>
+    <script src="../static/js/tip.js?v=20260721143955"></script>
+    <script src="../static/js/hint.js?v=20260721143955"></script>
+    <script src="../static/js/basket.js?v=20260721143955"></script>
     
-<script src="../static/js/content.js?v=20260721134538"></script>
+<script src="../static/js/content.js?v=20260721143955"></script>
 
 </body>
 </html>
