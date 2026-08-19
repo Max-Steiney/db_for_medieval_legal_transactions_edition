@@ -76,6 +76,11 @@
             let nested = fnSpan.querySelectorAll('.anno-person, .anno-org, .anno-place');
             for (let j = 0; j < nested.length; j++) {
                 let entity = nested[j];
+                // fn spans can nest in the sources (e.g. QGW 313, item 11
+                // spanning items 12-14). Count each entity only for its
+                // nearest fn ancestor, otherwise it gets one row per
+                // enclosing fn. Mirrors the pipeline's parent::*[@type='fn'].
+                if (entity.closest('.anno-fn') !== fnSpan) continue;
                 let type = _entityType(entity);
                 if (!type) continue;
                 let attrs = [];

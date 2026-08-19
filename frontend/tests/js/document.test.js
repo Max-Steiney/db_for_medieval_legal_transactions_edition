@@ -82,3 +82,54 @@ describe('document.js Annotationen-Tabelle: Markup-Konvention', () => {
         expect(match).not.toBeNull();
     });
 });
+
+describe('document.js Annotationen-Tabelle: verschachtelte fn-Spans', () => {
+    // Im Bestand kommen fn-in-fn-Verschachtelungen vor (Scan 19.08.2026:
+    // 501 innere fn-Spans, z.B. QGW 313, wo der fn-Span von Punkt 11 erst
+    // nach Punkt 14 schliesst). Eine Entitaet darf trotzdem nur EINE
+    // Tabellenzeile bekommen — zugeordnet ihrem naechstgelegenen fn-Span,
+    // analog zur Pipeline (parent::*[@type='fn']).
+    test('Entitaet im inneren fn ergibt genau eine Zeile mit der inneren Rolle', () => {
+        const { EdCore } = require('../../static/js/core.js');
+        globalThis.EdCore = EdCore;
+
+        document.body.innerHTML = `
+            <div class="doc-body">
+              <section class="tei-abstract">
+                <p>
+                  <span class="anno-event" data-ref="ev__test">
+                    <span class="anno-fn anno-fn-recipient" data-role="recipient">
+                      <span class="fn-label">Empfänger:in</span>
+                      <a class="anno-person" data-ref="pe__aussen" data-sex="m"
+                         data-hint="Aussenperson">Aussenperson</a>
+                      <span class="anno-fn anno-fn-witness" data-role="witness">
+                        <span class="fn-label">Zeug:in</span>
+                        <a class="anno-person" data-ref="pe__anna_b" data-sex="f"
+                           data-hint="Anna">Annen</a>
+                      </span>
+                    </span>
+                  </span>
+                </p>
+              </section>
+            </div>
+            <section id="annotations-view">
+              <nav class="annotations-tabs"></nav>
+              <div class="annotations-body"></div>
+            </section>`;
+
+        (0, eval)(SOURCE);
+        document.dispatchEvent(new Event('DOMContentLoaded'));
+
+        const view = document.getElementById('annotations-view');
+        const annaLinks = view.querySelectorAll('a.anno-table-link[href*="pe__anna_b"]');
+        const aussenLinks = view.querySelectorAll('a.anno-table-link[href*="pe__aussen"]');
+        expect(annaLinks.length).toBe(1);
+        expect(aussenLinks.length).toBe(1);
+
+        // Rolle kommt aus dem inneren fn-Span, nicht aus dem umschliessenden.
+        const annaRow = annaLinks[0].closest('tr');
+        expect(annaRow.textContent).toContain('Zeug:in');
+        const aussenRow = aussenLinks[0].closest('tr');
+        expect(aussenRow.textContent).toContain('Empfänger:in');
+    });
+});
