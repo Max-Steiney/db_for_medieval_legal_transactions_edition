@@ -137,7 +137,9 @@ def _extract_metadata(tree, filepath):
             facsimile_urls.append(normalized)
 
     regest = _extract_regest(root)
-    regest_full = _extract_regest(root, max_len=500)
+    # Untruncated: feeds the tf search field, so the client-side search
+    # scans the complete regest text (stakeholder request 19.08.2026).
+    regest_full = _extract_regest(root, max_len=None)
 
     source_path = str(filepath.relative_to(REPO_ROOT)).replace("\\", "/")
 

@@ -71,6 +71,17 @@ class TestSearchJson:
             assert not d["u"].startswith("/"), f"absolute URL: {d['u']}"
             assert d["u"].endswith(".html")
 
+    def test_tf_not_truncated(self, data):
+        # Regression guard: tf carries the complete regest so the search
+        # scans the full text. The former 500-char cap left ~half of the
+        # corpus with a truncated search string ending in the ellipsis
+        # that _extract_regest appends when it cuts.
+        longest = max(len(d.get("tf", "")) for d in data)
+        assert longest > 500, (
+            f"longest tf is {longest} chars - looks like the 500-char cap "
+            "is back (or docs/ is stale, rebuild with python -m frontend build)"
+        )
+
 
 # ---------------------------------------------------------------------------
 # persons_search.json — person register search index

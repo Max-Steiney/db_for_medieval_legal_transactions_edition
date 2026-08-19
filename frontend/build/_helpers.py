@@ -116,7 +116,10 @@ def _xpath_text(root, xpath_expr, default=""):
 
 
 def _extract_regest(root, max_len=200):
-    """Extract abstract/entry text as regest preview."""
+    """Extract abstract/entry text as regest preview.
+
+    max_len=None returns the complete text untruncated.
+    """
     for div_type in ("abstract", "entry"):
         divs = root.xpath(
             f".//tei:text//tei:div[@type='{div_type}']", namespaces=NS_MAP
@@ -124,7 +127,7 @@ def _extract_regest(root, max_len=200):
         if divs:
             raw = normalize_space("".join(divs[0].itertext()))
             if raw and not raw.lower().startswith("tei version"):
-                if len(raw) > max_len:
+                if max_len is not None and len(raw) > max_len:
                     return raw[:max_len].rsplit(" ", 1)[0] + "…"
                 return raw
     return ""

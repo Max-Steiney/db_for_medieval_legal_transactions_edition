@@ -3,6 +3,8 @@
 import pytest
 from pathlib import Path
 
+from lxml import etree
+
 from pipeline.config import SOURCES_DIR
 from frontend.build import (
     _output_path,
@@ -92,6 +94,19 @@ class TestExtractRegest:
         tree = load_xml(filepath)
         result = _extract_regest(tree.getroot())
         assert len(result) > 0
+
+    def test_max_len_none_returns_full_text(self):
+        # max_len=None must return the complete regest untruncated, so the
+        # search index can cover the full text (no 500-char cap).
+        long_text = " ".join(["wort"] * 300)
+        xml = (
+            '<TEI xmlns="http://www.tei-c.org/ns/1.0"><text><body>'
+            '<div type="abstract"><p>' + long_text + "</p></div>"
+            "</body></text></TEI>"
+        )
+        root = etree.fromstring(xml.encode("utf-8"))
+        result = _extract_regest(root, max_len=None)
+        assert result == long_text
 
 
 class TestRelativeToRoot:
