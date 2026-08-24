@@ -1,5 +1,5 @@
 {% extends "base.html" %}
-{% from "macros.html" import funding_table, occ_table, tip_glossary with context %}
+{% from "macros.html" import funding_table, occ_table, tip_glossary, tip_data_trigger, tip_data_body with context %}
 
 {% block title %}{{ profile.name }}{% endblock %}
 
@@ -110,7 +110,11 @@
     {# Quellen-Tabelle: zentral fuer das Profil. Identische Spaltenstruktur
        zur Quellen-Uebersicht. Sortierbar via data-sort auf den th. #}
     <section class="person-sources" aria-label="Quellen mit Nennung">
-        <h2 class="section-head">Quellen mit Nennung <span class="section-head-count">{{ profile.sources|length }}</span></h2>
+        {# Die Zahl ist tip_data-Trigger (Provenienz einer aggregierten
+           Zahl). Zaehlregel wie beim Personen-Profil; zusaetzlich
+           relevant: Quellen, die nur eine Unterorganisation referenzieren,
+           zaehlen fuer das Mutterhaus nicht mit. #}
+        <h2 class="section-head">Quellen mit Nennung <span class="tip-wrap">{% call tip_data_trigger('prov-profile-sources') %}<span class="section-head-count">{{ profile.sources|length }}</span>{% endcall %}{% call tip_data_body('prov-profile-sources', 'Quellen mit Nennung') %}<p>Anzahl der freigegebenen Quellen, in denen diese Organisation genannt wird &ndash; namentlich annotiert oder indirekt &uuml;ber eine Amtsbezeichnung (etwa &bdquo;Abt von St. Niklas&ldquo;). Mehrfachnennungen in derselben Quelle z&auml;hlen einmal. Quellen, die nur eine Unterorganisation nennen, z&auml;hlen hier nicht mit.</p><a class="tip-link" href="{{ root_path }}/project/glossary.html#gesamtnennung">im Glossar</a>{% endcall %}</span></h2>
         <table class="person-source-table sortable-table"{% if profile.sources|length > 50 %} data-truncate-at="50"{% endif %}>
             <thead>
                 <tr>

@@ -118,8 +118,8 @@
                             <th scope="col" class="col-type" data-sort="tp">Typ</th>
                             {% endif %}
                             <th scope="col" class="col-docs" data-sort="dc">
-                                Quellen{% call tip_glossary('col-info-docs', 'Quellen mit Nennung') %}
-                                    <p>Anzahl freigegebener Quellen, in denen die Entit&auml;t namentlich vorkommt. Mehrfachnennungen in derselben Quelle z&auml;hlen einmal.</p>
+                                Quellen{% call tip_glossary('col-info-docs', 'Quellen mit Nennung', slug='gesamtnennung') %}
+                                    <p>Anzahl freigegebener Quellen, in denen die Entit&auml;t genannt wird &ndash; namentlich annotiert oder indirekt &uuml;ber eine Amts- oder Rollenbezeichnung. Mehrfachnennungen in derselben Quelle z&auml;hlen einmal.</p>
                                 {% endcall %}
                             </th>
                             {% if register_type in ('persons', 'orgs') %}
