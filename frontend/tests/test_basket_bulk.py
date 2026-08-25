@@ -136,8 +136,14 @@ def test_mount_js_hydrates_bulk_mount():
     assert "DataBasket.addMany(" in src, (
         "Der Bulk-Klick geht nicht ueber DataBasket.addMany."
     )
-    assert "DataBasket.isGathered('source'" in src, (
+    assert "DataBasket.list('source')" in src, (
         "Der Knopf-Zustand wird nicht aus dem Korb-Inhalt berechnet."
+    )
+    # Ein isGathered pro gelisteter Quelle liest und parst den kompletten
+    # Korb je Eintrag (O(Quellen x Korbgroesse)). Der Zustand kommt aus
+    # genau einem Read pro Repaint, siehe tests/js/basket-mount.test.js.
+    assert "DataBasket.isGathered(" not in src, (
+        "Bulk-Zustand wieder ueber isGathered je Quelle berechnet."
     )
     assert "'basket-change'" in src and "'storage'" in src, (
         "Der Knopf reagiert nicht auf Korb-Aenderungen (auch aus anderen Tabs)."

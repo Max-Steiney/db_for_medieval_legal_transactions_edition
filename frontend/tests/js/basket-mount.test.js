@@ -28,6 +28,18 @@ function source(id) {
     };
 }
 
+// Jede Evaluierung von basket-mount.js haengt window-Listener an
+// (basket-change, storage). Ohne Aufraeumen wuerden die Knoepfe frueherer
+// Tests weiter mitzeichnen. Erfasst werden nur die Registrierungen aus dem
+// Mount selbst, nicht die von basket.js.
+const mountListeners = [];
+function dropMountListeners() {
+    while (mountListeners.length) {
+        const reg = mountListeners.pop();
+        window.removeEventListener(reg[0], reg[1], reg[2]);
+    }
+}
+
 // Baut das Markup, das sources_bulk_mount rendert, und laesst das Skript
 // darauf laufen. Rueckgabe ist der hydrierte Knopf.
 function mount(payload) {
@@ -38,11 +50,30 @@ function mount(payload) {
         '<script type="application/json" class="basket-bulk-data">' +
         JSON.stringify(payload) + '</script>' +
         '</h2></section>';
-    (0, eval)(MOUNT_SRC);
+    const nativeAdd = window.addEventListener;
+    window.addEventListener = function (type, fn, opts) {
+        mountListeners.push([type, fn, opts]);
+        return nativeAdd.call(window, type, fn, opts);
+    };
+    try {
+        (0, eval)(MOUNT_SRC);
+    } finally {
+        window.addEventListener = nativeAdd;
+    }
     return document.querySelector('.basket-bulk-btn');
 }
 
+// Zaehlt die localStorage-Lesezugriffe waehrend fn().
+function countReads(fn) {
+    const orig = localStorage.getItem;
+    let n = 0;
+    localStorage.getItem = function (k) { n++; return orig.call(localStorage, k); };
+    try { fn(); } finally { localStorage.getItem = orig; }
+    return n;
+}
+
 beforeEach(() => {
+    dropMountListeners();
     localStorage.clear();
 });
 
@@ -113,6 +144,35 @@ describe('Bulk-Mount auf Profilseiten', () => {
         DataBasket.remove('source', 'A-2');
         expect(btn.disabled).toBe(false);
         expect(btn.textContent).toBe('Alle 2 Quellen in den Datenkorb');
+    });
+
+    test('ein Repaint liest den Korb einmal, nicht einmal pro Quelle', () => {
+        // Regression: paintBulk rief isGathered pro gelisteter Quelle auf,
+        // und jedes isGathered parst den kompletten Korb. Die Zahl der
+        // Lesezugriffe eines Repaints darf nicht mit der Laenge der Liste
+        // wachsen -- gerade im Fertig-Zustand, in dem every() nicht mehr
+        // abkuerzt und den der Knopf selbst herstellt.
+        const readsFor = function (n, prefix) {
+            dropMountListeners();
+            localStorage.clear();
+            const payload = Array.from({ length: n }, (_, i) => source(prefix + i));
+            DataBasket.addMany(payload.map(
+                d => Object.assign({ type: 'source' }, d)
+            ));
+            const btn = mount(payload);
+            expect(btn.disabled).toBe(true);
+            return countReads(function () {
+                window.dispatchEvent(new CustomEvent('basket-change', {
+                    detail: {},
+                }));
+            });
+        };
+        const small = readsFor(5, 'S-');
+        const large = readsFor(60, 'L-');
+        // Gleiche Kosten bei 5 und bei 60 Quellen; der Sockel stammt aus
+        // dem Badge-Update in basket.js.
+        expect(large).toBe(small);
+        expect(large).toBeLessThan(60);
     });
 
     test('kaputter Payload laesst den Knopf einfach aus', () => {

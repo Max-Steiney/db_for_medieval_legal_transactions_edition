@@ -89,9 +89,19 @@
     // Zustand haengt allein am Korb-Inhalt, nicht am Rueckgabewert von
     // addMany: Entfernen im Korb oder in einem anderen Tab muss den Knopf
     // wieder aktivieren.
+    //
+    // Genau EIN Korb-Read pro Repaint: isGathered() liest und parst bei
+    // jedem Aufruf den kompletten localStorage-Eintrag, ein Aufruf pro
+    // gelisteter Quelle waere also O(Quellen x Korbgroesse). Auf Profilen
+    // mit vielen Quellen (org__wien: 1.330) blockiert das den Main-Thread,
+    // und zwar genau im Fertig-Zustand, den der Knopf selbst herstellt.
     function paintBulk(btn, payload) {
+        const gathered = new Set();
+        DataBasket.list('source').forEach(function (x) {
+            if (x.gathered === true) gathered.add(x.id);
+        });
         const done = payload.every(function (d) {
-            return DataBasket.isGathered('source', d.id);
+            return gathered.has(d.id);
         });
         const label = bulkLabel(payload.length, done);
         btn.className = 'basket-bulk-btn' + (done ? ' is-in' : '');
