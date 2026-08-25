@@ -137,6 +137,41 @@ let DataBasket = (function () {
         return true;
     }
 
+    // Public bulk add. Same add / promote semantics as add(), but the
+    // whole list runs through a single read/write pass, so a bulk button
+    // fires exactly one 'basket-change' instead of one per item. The
+    // derived pass (Phase 2) is bundled as well, see attachDerivedMany.
+    // Returns the number of changed entries: newly inserted plus promoted
+    // from derived to gathered. A repeated call with the same items
+    // returns 0 and only refreshes the derived links (idempotent, like
+    // add()).
+    function addMany(items) {
+        if (!Array.isArray(items) || items.length === 0) return 0;
+        const stored = read();
+        const sources = [];
+        let changed = 0;
+        items.forEach(item => {
+            if (!item || !item.id) return;
+            const idx = find(stored, item.type, item.id);
+            if (idx >= 0) {
+                // Promotion path: entry present, so far only derived.
+                if (!stored[idx].gathered) {
+                    stored[idx].gathered = true;
+                    changed++;
+                }
+            } else {
+                const entry = normalise(item);
+                entry.gathered = true; // direct add is always gathered
+                stored.push(entry);
+                changed++;
+            }
+            if (normType(item.type) === 'source') sources.push(item);
+        });
+        if (changed) write(stored);
+        attachDerivedMany(sources);
+        return changed;
+    }
+
     // Public remove. For sources, also detaches their derived entries.
     function remove(type, id) {
         const items = read();
@@ -205,38 +240,50 @@ let DataBasket = (function () {
         return entitiesPromise;
     }
 
-    // For a freshly-added source, fetch the lookup and add its annotated
-    // persons / orgs as derived basket entries (gathered=false). If an
-    // entry already exists (gathered or derived), only add the source id
-    // to its `src` array.
-    function attachDerived(sourceItem) {
-        if (!sourceItem || normType(sourceItem.type) !== 'source') return;
-        const srcId = sourceItem.id;
+    // For freshly-added sources, fetch the lookup once and add their
+    // annotated persons / orgs as derived basket entries (gathered=false).
+    // If an entry already exists (gathered or derived), only add the source
+    // id to its `src` array. Every source of the batch folds into one
+    // read/write cycle, so a bulk add costs at most one extra
+    // 'basket-change'.
+    function attachDerivedMany(sourceItems) {
+        const srcIds = (sourceItems || [])
+            .filter(s => s && s.id && normType(s.type) === 'source')
+            .map(s => s.id);
+        if (srcIds.length === 0) return;
         loadEntities().then(map => {
-            const bucket = map[srcId];
-            if (!bucket) return;
             const items = read();
             let changed = false;
-            (bucket.p || []).forEach(p => {
-                changed = upsertDerived(items, 'person', {
-                    id:         p.id,
-                    label:      p.n || p.id,
-                    url:        'register/persons/' + encodeURIComponent(p.id) + '.html',
-                    sex:        p.sex || '',
-                    active_min: p.am  || '',
-                    active_max: p.ax  || '',
-                }, srcId) || changed;
-            });
-            (bucket.o || []).forEach(o => {
-                changed = upsertDerived(items, 'org', {
-                    id:         o.id,
-                    label:      o.n || o.id,
-                    url:        'register/orgs/' + encodeURIComponent(o.id) + '.html',
-                    type_label: o.tpl || o.tp || '',
-                }, srcId) || changed;
+            srcIds.forEach(srcId => {
+                const bucket = map[srcId];
+                if (!bucket) return;
+                (bucket.p || []).forEach(p => {
+                    changed = upsertDerived(items, 'person', {
+                        id:         p.id,
+                        label:      p.n || p.id,
+                        url:        'register/persons/' + encodeURIComponent(p.id) + '.html',
+                        sex:        p.sex || '',
+                        active_min: p.am  || '',
+                        active_max: p.ax  || '',
+                    }, srcId) || changed;
+                });
+                (bucket.o || []).forEach(o => {
+                    changed = upsertDerived(items, 'org', {
+                        id:         o.id,
+                        label:      o.n || o.id,
+                        url:        'register/orgs/' + encodeURIComponent(o.id) + '.html',
+                        type_label: o.tpl || o.tp || '',
+                    }, srcId) || changed;
+                });
             });
             if (changed) write(items);
         });
+    }
+
+    // Single-source variant, kept as the call site of add(). The mapping
+    // logic lives once, in attachDerivedMany.
+    function attachDerived(sourceItem) {
+        attachDerivedMany([sourceItem]);
     }
 
     // Add a derived entry or register the source on an existing entry.
@@ -449,8 +496,14 @@ let DataBasket = (function () {
     }
 
     return {
-        add, remove, toggle, has, isGathered,
+        add, addMany, remove, toggle, has, isGathered,
         list, count, countGathered, countDerived,
         clear, updateBadge, buttonHTML,
     };
 })();
+
+// CommonJS export for Vitest. `module` is undefined in the browser,
+// so this block is a no-op there.
+if (typeof module !== 'undefined' && module.exports) {
+    module.exports = { DataBasket };
+}

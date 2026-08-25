@@ -1,5 +1,5 @@
 {% extends "base.html" %}
-{% from "macros.html" import tip_glossary, tip_help, tip_data_trigger, tip_data_body with context %}
+{% from "macros.html" import tip_glossary, tip_help, tip_data_trigger, tip_data_body, sources_bulk_mount with context %}
 
 {% block title %}{{ profile.display }}{% endblock %}
 
@@ -150,7 +150,7 @@
            Zahl): Hover/Klick erklaert die Zaehlregel inkl. der indirekten
            roleName-corresp-Schiene, die im Quellen-Volltext nicht als
            Namensnennung sichtbar ist. #}
-        <h2 class="section-head">Quellen mit Nennung <span class="tip-wrap">{% call tip_data_trigger('prov-profile-sources') %}<span class="section-head-count">{{ profile.sources|length }}</span>{% endcall %}{% call tip_data_body('prov-profile-sources', 'Quellen mit Nennung') %}<p>Anzahl der freigegebenen Quellen, in denen diese Person genannt wird &ndash; namentlich annotiert oder indirekt &uuml;ber eine Amts- oder Rollenbezeichnung (etwa wenn nur &bdquo;der Gr&auml;fin Amtmann&ldquo; im Text steht). Mehrfachnennungen in derselben Quelle z&auml;hlen einmal.</p><a class="tip-link" href="{{ root_path }}/project/glossary.html#gesamtnennung">im Glossar</a>{% endcall %}</span></h2>
+        <h2 class="section-head">Quellen mit Nennung <span class="tip-wrap">{% call tip_data_trigger('prov-profile-sources') %}<span class="section-head-count">{{ profile.sources|length }}</span>{% endcall %}{% call tip_data_body('prov-profile-sources', 'Quellen mit Nennung') %}<p>Anzahl der freigegebenen Quellen, in denen diese Person genannt wird &ndash; namentlich annotiert oder indirekt &uuml;ber eine Amts- oder Rollenbezeichnung (etwa wenn nur &bdquo;der Gr&auml;fin Amtmann&ldquo; im Text steht). Mehrfachnennungen in derselben Quelle z&auml;hlen einmal.</p><a class="tip-link" href="{{ root_path }}/project/glossary.html#gesamtnennung">im Glossar</a>{% endcall %}</span>{{ sources_bulk_mount(profile.sources) }}</h2>
         <table class="person-source-table sortable-table"{% if profile.sources|length > 50 %} data-truncate-at="50"{% endif %}>
             <thead>
                 <tr>

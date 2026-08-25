@@ -3,8 +3,16 @@
 // per detail page (sources, persons, orgs). On load we read the dataset,
 // build the proper basket button via DataBasket.buttonHTML, and replace
 // the placeholder. Click handling stays in basket.js via event delegation.
+//
+// Second path: the bulk mount on person / org profiles
+// (<span class="basket-bulk-mount"> plus a JSON payload block, rendered by
+// the sources_bulk_mount macro). It becomes a labelled button that adds
+// every listed source at once via DataBasket.addMany.
 (function () {
     'use strict';
+
+    const BASKET_KEY = 'sugw-basket-v1';
+
     function fieldsFor(type, ds) {
         const base = {
             type: type,
@@ -37,9 +45,92 @@
             el.replaceWith(wrap);
         });
     }
-    if (document.readyState === 'loading') {
-        document.addEventListener('DOMContentLoaded', hydrate);
-    } else {
+    // --- Bulk-Mount ----------------------------------------------------
+    // Glyphen im Stil von basket.js (16x16-Canvas, currentColor), damit
+    // der Bulk-Knopf dieselbe Formsprache traegt wie der Einzel-Knopf.
+    const SVG_PLUS =
+        '<svg class="basket-btn-icon" viewBox="0 0 16 16" aria-hidden="true">' +
+        '<path d="M8 4v8M4 8h8" stroke="currentColor" stroke-width="1.5" ' +
+        'stroke-linecap="round" fill="none"/></svg>';
+    const SVG_CHECK =
+        '<svg class="basket-btn-icon" viewBox="0 0 16 16" aria-hidden="true">' +
+        '<path d="M3.5 8.2l3 3l6-6" stroke="currentColor" stroke-width="1.6" ' +
+        'stroke-linecap="round" stroke-linejoin="round" fill="none"/></svg>';
+    const HINT_OPEN = 'Alle gelisteten Quellen in den Datenkorb aufnehmen. ' +
+        'Annotierte Personen und Organisationen werden als abgeleitete ' +
+        'Eintraege mit uebernommen.';
+    const HINT_DONE = 'Alle Quellen dieser Liste sind im Datenkorb.';
+
+    // Payload liegt im Nachbar-Script des Mounts. Fehlerhaftes JSON laesst
+    // den Knopf einfach ausfallen, die Seite bleibt bedienbar.
+    function bulkPayload(el) {
+        let node = el.nextElementSibling;
+        if (!node || !node.classList.contains('basket-bulk-data')) {
+            node = el.parentElement
+                ? el.parentElement.querySelector('script.basket-bulk-data')
+                : null;
+        }
+        if (!node) return null;
+        try {
+            const data = JSON.parse(node.textContent || '[]');
+            if (!Array.isArray(data)) return null;
+            return data.filter(function (d) { return d && d.id; })
+                .map(function (d) {
+                    return Object.assign({ type: 'source' }, d);
+                });
+        } catch (_) { return null; }
+    }
+
+    function bulkLabel(n, done) {
+        const subject = n === 1 ? 'Quelle' : 'Alle ' + n + ' Quellen';
+        return subject + (done ? ' im Datenkorb' : ' in den Datenkorb');
+    }
+
+    // Zustand haengt allein am Korb-Inhalt, nicht am Rueckgabewert von
+    // addMany: Entfernen im Korb oder in einem anderen Tab muss den Knopf
+    // wieder aktivieren.
+    function paintBulk(btn, payload) {
+        const done = payload.every(function (d) {
+            return DataBasket.isGathered('source', d.id);
+        });
+        const label = bulkLabel(payload.length, done);
+        btn.className = 'basket-bulk-btn' + (done ? ' is-in' : '');
+        btn.disabled = done;
+        btn.innerHTML = (done ? SVG_CHECK : SVG_PLUS) +
+            '<span class="basket-bulk-label"></span>';
+        btn.querySelector('.basket-bulk-label').textContent = label;
+        btn.setAttribute('data-hint', done ? HINT_DONE : HINT_OPEN);
+    }
+
+    function hydrateBulk() {
+        if (typeof DataBasket === 'undefined') return;
+        document.querySelectorAll('.basket-bulk-mount').forEach(function (el) {
+            const payload = bulkPayload(el);
+            if (!payload || !payload.length) return;
+            const btn = document.createElement('button');
+            btn.type = 'button';
+            paintBulk(btn, payload);
+            btn.addEventListener('click', function () {
+                DataBasket.addMany(payload);
+                paintBulk(btn, payload);
+            });
+            const repaint = function () { paintBulk(btn, payload); };
+            window.addEventListener('basket-change', repaint);
+            window.addEventListener('storage', function (e) {
+                if (e.key === BASKET_KEY) repaint();
+            });
+            el.replaceWith(btn);
+        });
+    }
+
+    function mountAll() {
         hydrate();
+        hydrateBulk();
+    }
+
+    if (document.readyState === 'loading') {
+        document.addEventListener('DOMContentLoaded', mountAll);
+    } else {
+        mountAll();
     }
 })();

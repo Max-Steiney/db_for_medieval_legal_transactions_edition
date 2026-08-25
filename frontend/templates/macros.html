@@ -215,6 +215,30 @@
 </div>
 {% endmacro %}
 
+{# Datenkorb-Bulk-Mount fuer die Quellenliste eines Profils (Person, Org).
+   Rendert einen leeren Platzhalter, den basket-mount.js zum Knopf
+   "Alle N Quellen in den Datenkorb" hydriert, plus den Payload als
+   JSON-Block. Die Feldform je Quelle ist identisch zum Einzel-Mount der
+   Quellen-Detailseite (document.html), damit Eintraege aus beiden Wegen
+   gleich im Korb landen. |tojson escapet '<', der Block ist damit im
+   Script-Tag sicher. Braucht keinen Template-Kontext. #}
+{% macro sources_bulk_mount(sources) %}
+{%- if sources %}
+{%- set payload = [] %}
+{%- for d in sources %}
+{%- set _ = payload.append({
+    'id': d.idno,
+    'label': d.idno,
+    'url': d.url,
+    'date': d.date_iso or d.date_display or '',
+    'coll': d.collection_label,
+    'regest': d.regest or ''
+}) %}
+{%- endfor %}
+<span class="basket-bulk-mount"></span><script type="application/json" class="basket-bulk-data">{{ payload | tojson }}</script>
+{%- endif %}
+{%- endmacro %}
+
 {# ============================================================
    Tip-System (Tooltip-Familie, vier Klassen)
    ============================================================
