@@ -84,6 +84,8 @@ describe('Bulk-Mount auf Profilseiten', () => {
         expect(btn.textContent).toBe('Alle 3 Quellen in den Datenkorb');
         expect(btn.disabled).toBe(false);
         expect(btn.getAttribute('data-hint')).toContain('abgeleitete');
+        // Normalzustand traegt keine Glyphe: nur das Text-Label.
+        expect(btn.querySelector('svg')).toBe(null);
         // Der Platzhalter ist ersetzt, der Payload-Block bleibt stehen.
         expect(document.querySelector('.basket-bulk-mount')).toBe(null);
         expect(document.querySelector('script.basket-bulk-data')).toBeTruthy();
@@ -116,6 +118,8 @@ describe('Bulk-Mount auf Profilseiten', () => {
         expect(btn.getAttribute('data-hint')).toBe(
             'Alle Quellen dieser Liste sind im Datenkorb.'
         );
+        // Nur der Fertig-Zustand traegt eine Glyphe (Haekchen).
+        expect(btn.querySelectorAll('svg').length).toBe(1);
     });
 
     test('startet im Fertig-Zustand, wenn schon alles im Korb liegt', () => {

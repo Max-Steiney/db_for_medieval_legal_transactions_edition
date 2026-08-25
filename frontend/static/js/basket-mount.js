@@ -46,12 +46,10 @@
         });
     }
     // --- Bulk-Mount ----------------------------------------------------
-    // Glyphen im Stil von basket.js (16x16-Canvas, currentColor), damit
-    // der Bulk-Knopf dieselbe Formsprache traegt wie der Einzel-Knopf.
-    const SVG_PLUS =
-        '<svg class="basket-btn-icon" viewBox="0 0 16 16" aria-hidden="true">' +
-        '<path d="M8 4v8M4 8h8" stroke="currentColor" stroke-width="1.5" ' +
-        'stroke-linecap="round" fill="none"/></svg>';
+    // Nur der Fertig-Zustand traegt eine Glyphe (Haekchen im Stil von
+    // basket.js: 16x16-Canvas, currentColor). Im Normalzustand steht der
+    // Knopf allein auf seinem Text-Label -- ein zusaetzliches Plus davor
+    // wirkte neben dem ausgeschriebenen "in den Datenkorb" doppelt.
     const SVG_CHECK =
         '<svg class="basket-btn-icon" viewBox="0 0 16 16" aria-hidden="true">' +
         '<path d="M3.5 8.2l3 3l6-6" stroke="currentColor" stroke-width="1.6" ' +
@@ -106,7 +104,7 @@
         const label = bulkLabel(payload.length, done);
         btn.className = 'basket-bulk-btn' + (done ? ' is-in' : '');
         btn.disabled = done;
-        btn.innerHTML = (done ? SVG_CHECK : SVG_PLUS) +
+        btn.innerHTML = (done ? SVG_CHECK : '') +
             '<span class="basket-bulk-label"></span>';
         btn.querySelector('.basket-bulk-label').textContent = label;
         btn.setAttribute('data-hint', done ? HINT_DONE : HINT_OPEN);
