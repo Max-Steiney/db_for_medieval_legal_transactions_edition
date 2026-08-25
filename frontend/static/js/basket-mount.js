@@ -54,9 +54,11 @@
         '<svg class="basket-btn-icon" viewBox="0 0 16 16" aria-hidden="true">' +
         '<path d="M3.5 8.2l3 3l6-6" stroke="currentColor" stroke-width="1.6" ' +
         'stroke-linecap="round" stroke-linejoin="round" fill="none"/></svg>';
+    // Sichtbare Labels tragen echte Umlaute; die ASCII-Schreibweise gilt
+    // nur fuer Code-Kommentare und Symbolnamen.
     const HINT_OPEN = 'Alle gelisteten Quellen in den Datenkorb aufnehmen. ' +
         'Annotierte Personen und Organisationen werden als abgeleitete ' +
-        'Eintraege mit uebernommen.';
+        'Einträge mit übernommen.';
     const HINT_DONE = 'Alle Quellen dieser Liste sind im Datenkorb.';
 
     // Payload liegt im Nachbar-Script des Mounts. Fehlerhaftes JSON laesst

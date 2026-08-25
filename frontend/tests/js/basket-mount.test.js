@@ -83,7 +83,12 @@ describe('Bulk-Mount auf Profilseiten', () => {
         expect(btn).toBeTruthy();
         expect(btn.textContent).toBe('Alle 3 Quellen in den Datenkorb');
         expect(btn.disabled).toBe(false);
-        expect(btn.getAttribute('data-hint')).toContain('abgeleitete');
+        // Sichtbarer Text mit echten Umlauten (Code-Kommentare bleiben ASCII).
+        expect(btn.getAttribute('data-hint')).toBe(
+            'Alle gelisteten Quellen in den Datenkorb aufnehmen. Annotierte ' +
+            'Personen und Organisationen werden als abgeleitete Einträge ' +
+            'mit übernommen.'
+        );
         // Normalzustand traegt keine Glyphe: nur das Text-Label.
         expect(btn.querySelector('svg')).toBe(null);
         // Der Platzhalter ist ersetzt, der Payload-Block bleibt stehen.

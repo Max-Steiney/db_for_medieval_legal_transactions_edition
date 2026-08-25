@@ -166,9 +166,32 @@ def test_bulk_button_labels_are_german_and_count_aware():
     assert "'Alle ' + n + ' Quellen'" in src, (
         "Das Label nennt die Zahl der Quellen nicht."
     )
+    # Sichtbare Labels tragen echte Umlaute; die ASCII-Schreibweise gilt nur
+    # fuer Code-Kommentare und Symbolnamen.
+    assert "Einträge mit übernommen." in src, (
+        "Der Hovertext des Bulk-Knopfs nutzt keine echten Umlaute."
+    )
+    assert "uebernommen" not in src and "Eintraege mit" not in src, (
+        "ASCII-Transliteration im sichtbaren Hovertext."
+    )
     assert "' im Datenkorb'" in src and "' in den Datenkorb'" in src, (
         "Normal- und Fertig-Zustand tragen nicht die vereinbarten Labels."
     )
+
+
+def test_basket_button_labels_use_real_umlauts():
+    """Begriffs- und Label-Konsistenz im Datenkorb: sichtbare Labels und
+    Hovertexte tragen echte Umlaute, die ASCII-Schreibweise bleibt
+    Code-Kommentaren und Symbolnamen vorbehalten."""
+    src = BASKET_JS.read_text(encoding="utf-8")
+    for good, bad in (
+        ("In den Datenkorb übernehmen", "uebernehmen"),
+        ("Klick übernimmt den Eintrag", "uebernimmt"),
+        ("als eigenständig gesammelt", "eigenstaendig"),
+        ("Zum Datenkorb hinzufügen", "hinzufuegen"),
+    ):
+        assert good in src, f"Label fehlt oder ist transliteriert: {good!r}"
+        assert bad not in src, f"ASCII-Transliteration im sichtbaren Label: {bad!r}"
 
 
 def test_bulk_css_present():
