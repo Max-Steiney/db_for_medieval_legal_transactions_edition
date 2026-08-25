@@ -18,6 +18,7 @@ MOUNT_JS = _ROOT / "static" / "js" / "basket-mount.js"
 MACROS_HTML = TEMPLATES / "macros.html"
 PERSON_HTML = TEMPLATES / "person.html"
 ORG_HTML = TEMPLATES / "org.html"
+KORB_HTML = TEMPLATES / "korb.html"
 COMPONENTS_CSS = _ROOT / "static" / "css" / "components.css"
 PERSON_CSS = _ROOT / "static" / "css" / "person.css"
 
@@ -192,6 +193,22 @@ def test_basket_button_labels_use_real_umlauts():
     ):
         assert good in src, f"Label fehlt oder ist transliteriert: {good!r}"
         assert bad not in src, f"ASCII-Transliteration im sichtbaren Label: {bad!r}"
+
+
+def test_korb_page_hints_use_real_umlauts():
+    """Die Korb-Seite beschreibt dieselben Vorgaenge wie die Knopf-Tooltips
+    auf den Profilseiten ("uebernimmt", "Eintraegen"). Sobald dort echte
+    Umlaute stehen, darf hier keine ASCII-Transliteration zurueckbleiben."""
+    hints = re.findall(
+        r'data-hint="([^"]*)"', KORB_HTML.read_text(encoding="utf-8")
+    )
+    assert hints, "Keine data-hint-Texte in korb.html gefunden."
+    for bad in ("uebernimmt", "uebernommen", "ueber die",
+                "Eintraegen", "verkuerzt", "vollstaendig"):
+        hit = [h for h in hints if bad in h]
+        assert not hit, (
+            f"ASCII-Transliteration {bad!r} im sichtbaren Hovertext: {hit[:1]}"
+        )
 
 
 def test_bulk_css_present():
