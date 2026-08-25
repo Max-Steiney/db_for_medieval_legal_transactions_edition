@@ -265,6 +265,17 @@
     gap: var(--space-sm);
 }
 
+/* Der Datenkorb-Bulk-Knopf sitzt rechtsbuendig in der Kopfzeile der
+   Quellen-Sektion. .section-head ist bereits Flex-Container mit
+   Baseline-Ausrichtung; margin-left:auto schiebt nur den Knopf ans
+   Zeilenende und laesst Ueberschrift und Provenienz-Tooltip an der Zahl
+   unveraendert stehen. Der JSON-Payload-Block daneben ist ein
+   <script>-Element und damit nicht im Layout. */
+.person-sources .section-head .basket-bulk-btn {
+    margin-left: auto;
+    align-self: center;
+}
+
 /* Solo-Variante: einzige rel-Gruppe vorhanden, daher uebernimmt der
    rel-block-title die Section-Heading-Funktion. Optisch identisch zum
    section-head, damit Beziehungen und Quellen visuell auf derselben

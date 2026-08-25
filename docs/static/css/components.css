@@ -144,6 +144,48 @@
 .basket-btn.is-in:hover .basket-btn-icon .glyph-check { display: none; }
 .basket-btn.is-in:hover .basket-btn-icon .glyph-minus { display: inline; }
 
+/* Bulk-Knopf "Alle N Quellen in den Datenkorb" im Kopf der Quellen-Liste
+   auf Personen- und Org-Profilen. Gleiche Outline-Formsprache, Glyphe und
+   Akzentfarbe wie .basket-btn, aber als Pille mit Label statt als runder
+   Icon-Knopf, weil er eine ganze Liste betrifft. Traegt bewusst NICHT die
+   Klasse .basket-btn: die globale Click-Delegation in basket.js wuerde
+   ihn sonst wie einen Einzel-Knopf behandeln. */
+.basket-bulk-btn {
+    display: inline-flex;
+    align-items: center;
+    gap: 6px;
+    padding: 3px 10px;
+    background: transparent;
+    border: 1px solid var(--color-border);
+    border-radius: var(--radius);
+    font-family: var(--font-sans);
+    font-size: var(--text-xs);
+    font-weight: 400;
+    line-height: 1.4;
+    letter-spacing: 0;
+    text-transform: none;
+    color: var(--color-text-muted);
+    cursor: pointer;
+    transition: border-color var(--transition-fast),
+                background-color var(--transition-fast),
+                color var(--transition-fast);
+}
+.basket-bulk-btn:hover {
+    border-color: var(--anno-place);
+    color: var(--anno-place);
+    background: color-mix(in srgb, var(--anno-place) 8%, transparent);
+}
+/* Fertig-Zustand: alle gelisteten Quellen liegen im Korb. Der Knopf ist
+   disabled und dient nur noch als Statusanzeige; Entfernen bleibt der
+   Korb-Seite vorbehalten. */
+.basket-bulk-btn.is-in,
+.basket-bulk-btn.is-in:hover {
+    border-color: var(--anno-place);
+    background: color-mix(in srgb, var(--anno-place) 8%, transparent);
+    color: var(--anno-place);
+    cursor: default;
+}
+
 .nav-basket {
     position: relative;
     display: inline-flex;
