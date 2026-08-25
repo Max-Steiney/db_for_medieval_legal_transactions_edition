@@ -425,14 +425,14 @@ let DataBasket = (function () {
             return {
                 cls:  'basket-btn is-derived',
                 icon: SVG_DASHED_PLUS,
-                lab:  'In den Datenkorb uebernehmen',
-                hint: 'Abgeleitet aus einer gesammelten Quelle. Klick uebernimmt den Eintrag als eigenstaendig gesammelt.'
+                lab:  'In den Datenkorb übernehmen',
+                hint: 'Abgeleitet aus einer gesammelten Quelle. Klick übernimmt den Eintrag als eigenständig gesammelt.'
             };
         }
         return {
             cls:  'basket-btn',
             icon: SVG_PLUS,
-            lab:  'Zum Datenkorb hinzufuegen',
+            lab:  'Zum Datenkorb hinzufügen',
             hint: 'Eintrag in den Datenkorb aufnehmen.'
         };
     }
