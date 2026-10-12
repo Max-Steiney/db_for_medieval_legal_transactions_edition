@@ -6,6 +6,15 @@ from pathlib import Path
 from ._shared import _cached_csv, _decade, _meta, _write_json
 
 
+def _range_start(date_str: str) -> str:
+    """Reduce a filenames.csv date to its start day.
+
+    Range-dated sources carry "from | to" (e.g. "1458-01-01 | 1458-12-31");
+    min/max per collection must compare the start day, not the raw string.
+    """
+    return (date_str or "").split("|")[0].strip()
+
+
 def aggregate_timeline(docs_data_dir: Path) -> dict:
     """Aggregate filenames.csv into timeline data by collection and decade."""
     rows = _cached_csv("filenames.csv")
@@ -31,7 +40,7 @@ def aggregate_timeline(docs_data_dir: Path) -> dict:
             decades[dec][coll] += 1
             year = int(date_str[:4])
             all_years.append(year)
-            collections[coll]["dates"].append(date_str)
+            collections[coll]["dates"].append(_range_start(date_str))
 
     # Summarise collections
     coll_summary = {}

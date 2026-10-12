@@ -580,3 +580,20 @@ class TestDocsAggregate:
         with_year = sum(1 for d in docs if d.get("date_year"))
         assert with_year / len(docs) > 0.95, \
             f"Only {with_year}/{len(docs)} sources with year"
+
+
+class TestTimelineRangeDates:
+    """Range-dated sources ("from | to") must not leak the raw string into min/max."""
+
+    def test_range_start_strips_to_part(self):
+        from frontend.aggregator.timeline import _range_start
+        assert _range_start("1458-01-01 | 1458-12-31") == "1458-01-01"
+        assert _range_start("1457-12-19") == "1457-12-19"
+        assert _range_start("") == ""
+
+    def test_collection_min_max_are_plain_days(self, aggregation_results):
+        for coll, info in aggregation_results["timeline"]["collections"].items():
+            for key in ("min_date", "max_date"):
+                value = info[key]
+                if value is not None:
+                    assert "|" not in value, f"{coll}.{key} = {value!r}"

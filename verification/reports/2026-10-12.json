@@ -1,0 +1,328 @@
+{
+  "date": "2026-10-12",
+  "summary": {
+    "total": 28,
+    "match": 9,
+    "mismatch": 0,
+    "known_gap": 11,
+    "info": 8
+  },
+  "results": [
+    {
+      "name": "docs.total",
+      "tei": 3270,
+      "json": 4074,
+      "status": "known_gap",
+      "note": "Pipeline zählt zusätzlich Dokumente aus filenames.csv ohne TEI-Quelle (z. B. Vienna_1448-57_ready). Das Verifikations-Set rechnet nur auf TEI-Basis und deckt die Lücke auf."
+    },
+    {
+      "name": "docs.by_collection",
+      "tei": {
+        "QGW": 2642,
+        "Stadtbuecher": 628
+      },
+      "json": {
+        "QGW": 2642,
+        "Satzbuch_CD": 804,
+        "Stadtbuecher": 628
+      },
+      "status": "known_gap",
+      "note": "Pipeline zählt zusätzlich Dokumente aus filenames.csv ohne TEI-Quelle (z. B. Vienna_1448-57_ready). Das Verifikations-Set rechnet nur auf TEI-Basis und deckt die Lücke auf."
+    },
+    {
+      "name": "docs.date_range.QGW",
+      "tei": {
+        "min_date": "1177-05-10",
+        "max_date": "1458-01-01"
+      },
+      "json": {
+        "min_date": "1177-05-10",
+        "max_date": "1458-01-01"
+      },
+      "status": "match",
+      "note": null
+    },
+    {
+      "name": "docs.date_range.Satzbuch_CD",
+      "tei": null,
+      "json": {
+        "min_date": "1448-02-20",
+        "max_date": "1460-12-03"
+      },
+      "status": "known_gap",
+      "note": "Satzbuch_CD liegt nicht im TEI-Lesebereich des Test-Sets (COLLECTIONS_WITH_TEI); Datumsspanne nicht unabhaengig verifizierbar."
+    },
+    {
+      "name": "docs.date_range.Stadtbuecher",
+      "tei": {
+        "min_date": "1388-07-13",
+        "max_date": "1401-11-03"
+      },
+      "json": {
+        "min_date": "1388-07-13",
+        "max_date": "1401-11-03"
+      },
+      "status": "match",
+      "note": null
+    },
+    {
+      "name": "persons.total_individual",
+      "tei": 16084,
+      "json": 11307,
+      "status": "known_gap",
+      "note": "personList.xml enthaelt das volle editorische Register; persons_search.json ist auf den freigegebenen Subset gefiltert (siehe knowledge/decisions.md, Personenregister-Freigabe)."
+    },
+    {
+      "name": "persons.by_sex",
+      "tei": {
+        "m": 11858,
+        "f": 4226
+      },
+      "json": {
+        "m": 8246,
+        "f": 3061
+      },
+      "status": "known_gap",
+      "note": "Selbe Wurzel wie persons.total_individual: TEI zaehlt das volle Register, JSON nur den freigegebenen Subset."
+    },
+    {
+      "name": "orgs.total_individual",
+      "tei": 1079,
+      "json": null,
+      "status": "info",
+      "note": "organisations_search.json nicht gebaut (Register noch nicht freigegeben)."
+    },
+    {
+      "name": "places.total_individual",
+      "tei": 2538,
+      "json": null,
+      "status": "info",
+      "note": "places_search.json nicht gebaut (Register noch nicht freigegeben)."
+    },
+    {
+      "name": "events.total",
+      "tei": 4397,
+      "json": 6354,
+      "status": "info",
+      "note": "roles.coverage.total_events zählt Event-Nennungen (nicht dedupliziert); TEI-Zählung dedupliziert pro Dokument nach Event-Ref. Kein direkter Match zu erwarten."
+    },
+    {
+      "name": "roles.by_role",
+      "tei": {
+        "issuer": 5267,
+        "witness": 5717,
+        "recipient": 5320,
+        "other": 3048,
+        "transactiongood_II": 31,
+        "transactiongood_I": 117,
+        "none": 1630,
+        "transactiongood_III": 27
+      },
+      "json": null,
+      "status": "info",
+      "note": "Rollen-Counter aus TEI; kein direktes Pendant in JSON (nur role_by_sex)."
+    },
+    {
+      "name": "roles.by_role_sex.issuer",
+      "tei": {
+        "m": 4046,
+        "f": 1221
+      },
+      "json": {
+        "m": 4341,
+        "f": 1562
+      },
+      "status": "known_gap",
+      "note": "Verifikation zaehlt rohe rs[@type='person']/@role-Annotationen in TEI; roles zaehlt aus persons_in_events.csv (Pipeline-CSV mit eigenen Scoping-Regeln). Differenz ist methodisch, kein Drift."
+    },
+    {
+      "name": "roles.by_role_sex.none",
+      "tei": {
+        "f": 375,
+        "m": 1255
+      },
+      "json": {
+        "m": 2852,
+        "f": 427
+      },
+      "status": "known_gap",
+      "note": "Verifikation zaehlt rohe rs[@type='person']/@role-Annotationen in TEI; roles zaehlt aus persons_in_events.csv (Pipeline-CSV mit eigenen Scoping-Regeln). Differenz ist methodisch, kein Drift."
+    },
+    {
+      "name": "roles.by_role_sex.other",
+      "tei": {
+        "m": 2613,
+        "f": 435
+      },
+      "json": {
+        "f": 410,
+        "m": 2379
+      },
+      "status": "known_gap",
+      "note": "Verifikation zaehlt rohe rs[@type='person']/@role-Annotationen in TEI; roles zaehlt aus persons_in_events.csv (Pipeline-CSV mit eigenen Scoping-Regeln). Differenz ist methodisch, kein Drift."
+    },
+    {
+      "name": "roles.by_role_sex.recipient",
+      "tei": {
+        "m": 3766,
+        "f": 1554
+      },
+      "json": {
+        "m": 4283,
+        "f": 1855
+      },
+      "status": "known_gap",
+      "note": "Verifikation zaehlt rohe rs[@type='person']/@role-Annotationen in TEI; roles zaehlt aus persons_in_events.csv (Pipeline-CSV mit eigenen Scoping-Regeln). Differenz ist methodisch, kein Drift."
+    },
+    {
+      "name": "roles.by_role_sex.transactiongood_I",
+      "tei": {
+        "m": 107,
+        "f": 10
+      },
+      "json": {
+        "m": 2
+      },
+      "status": "info",
+      "note": "Pseudo-Rolle aus TEI-Annotationsfehlern; kein echter Rollen-Wert."
+    },
+    {
+      "name": "roles.by_role_sex.transactiongood_II",
+      "tei": {
+        "m": 29,
+        "f": 2
+      },
+      "json": {
+        "m": 1
+      },
+      "status": "info",
+      "note": "Pseudo-Rolle aus TEI-Annotationsfehlern; kein echter Rollen-Wert."
+    },
+    {
+      "name": "roles.by_role_sex.transactiongood_III",
+      "tei": {
+        "m": 21,
+        "f": 6
+      },
+      "json": {
+        "m": 2
+      },
+      "status": "info",
+      "note": "Pseudo-Rolle aus TEI-Annotationsfehlern; kein echter Rollen-Wert."
+    },
+    {
+      "name": "roles.by_role_sex.witness",
+      "tei": {
+        "m": 5382,
+        "f": 335
+      },
+      "json": {
+        "m": 5077,
+        "f": 309
+      },
+      "status": "known_gap",
+      "note": "Verifikation zaehlt rohe rs[@type='person']/@role-Annotationen in TEI; roles zaehlt aus persons_in_events.csv (Pipeline-CSV mit eigenen Scoping-Regeln). Differenz ist methodisch, kein Drift."
+    },
+    {
+      "name": "relations.by_type",
+      "tei": {
+        "occ": 7051,
+        "title_ref": 132,
+        "owner": 421,
+        "topo": 575,
+        "rep": 658,
+        "kin": 6634,
+        "friend": 98,
+        "org": 1,
+        "title": 5,
+        "titel_ref": 1,
+        "prof": 16
+      },
+      "json": {
+        "kin": 8038,
+        "occ": 7593,
+        "rep": 1108,
+        "friend": 98
+      },
+      "status": "known_gap",
+      "note": "Pipeline normalisiert Beziehungstypen auf kin/occ/rep/friend. TEI enthält rohe @type-Werte inklusive Typo-Varianten (titel_ref, title, buis, ...). Counts daher nicht direkt vergleichbar."
+    },
+    {
+      "name": "transactions.disp_top",
+      "tei": {
+        "verkaufen": 373,
+        "verkauft": 241,
+        "bestätigt": 169,
+        "bestätigen": 144,
+        "beurkundet": 93,
+        "gibt": 92,
+        "beurkunden": 83,
+        "stellen": 65,
+        "an": 63,
+        "theilt": 59,
+        "stellt": 53,
+        "mit": 41,
+        "ersucht": 37,
+        "geklagt habe": 36,
+        "schafft": 34,
+        "geben": 33,
+        "einen schuldbrief": 32,
+        "befiehlt": 31,
+        "verleiht": 29,
+        "aus": 28
+      },
+      "json": null,
+      "status": "info",
+      "note": "Top-20 Roh-Trigger für disp; Vergleich mit normalisierten Transaktionstypen in transactions noch offen."
+    },
+    {
+      "name": "provenance.roles.role_sex",
+      "tei": "15054 file_keys geprüft",
+      "json": "alle in docs_lookup",
+      "status": "match",
+      "note": null
+    },
+    {
+      "name": "provenance.relations.drill_down",
+      "tei": "17001 file_keys geprüft",
+      "json": "alle in docs_lookup",
+      "status": "match",
+      "note": null
+    },
+    {
+      "name": "provenance.relations.persons.rels",
+      "tei": "16837 file_keys geprüft",
+      "json": "alle in docs_lookup",
+      "status": "match",
+      "note": null
+    },
+    {
+      "name": "provenance.transactions.drill_down",
+      "tei": "3264 file_keys geprüft",
+      "json": "alle in docs_lookup",
+      "status": "match",
+      "note": null
+    },
+    {
+      "name": "provenance.register.persons",
+      "tei": "11195 Doc-URLs geprüft",
+      "json": "alle in docs_lookup",
+      "status": "match",
+      "note": null
+    },
+    {
+      "name": "provenance.register.organisations",
+      "tei": "3600 Doc-URLs geprüft",
+      "json": "alle in docs_lookup",
+      "status": "match",
+      "note": null
+    },
+    {
+      "name": "provenance.register.places",
+      "tei": "38 Doc-URLs geprüft",
+      "json": "alle in docs_lookup",
+      "status": "match",
+      "note": null
+    }
+  ]
+}
