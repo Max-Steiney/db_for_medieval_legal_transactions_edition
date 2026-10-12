@@ -148,8 +148,41 @@ def _load_norm_matching() -> dict[str, str]:
     return result
 
 
+def tag_text(value: str) -> str:
+    """Anzeigeform eines Rollen-/Berufs-Werts aus den Beziehungs-CSVs.
+
+    Die Pipeline verkettet die Textknoten EINES roleName-Tags mit ``|``
+    (XSLT-Erbe: ``normalize-space(string-join(.//text(), '|'))``). Ein
+    Strich markiert dort also eine Elementgrenze innerhalb des Tags
+    (``Bürger|meister``, ``mein genedig |herren| herczog``), kein
+    zweites Tag. Fuer Anzeige und Nachschlagen wird er zu einem
+    Leerzeichen, Leerraum wird zusammengezogen.
+    """
+    return re.sub(r"\s+", " ", (value or "").replace("|", " ")).strip()
+
+
+def norm_key(value: str) -> str:
+    """Vergleichsschluessel fuer die roleName-Normliste: ``tag_text`` in
+    Kleinschreibung. Wird auf BEIDE Seiten angewandt (Listenschluessel
+    und CSV-Wert), damit Striche, Leerraum und Gross/Klein nie
+    entscheiden. Entspricht ``_norm_key`` in ``pipeline/integrity.py``.
+    """
+    return tag_text(value).lower()
+
+
+def split_multi(cell: str) -> list[str]:
+    """Zerlegt eine Mehrfach-Zelle aus ``persons_in_sources.csv``
+    (``source_prof``, ``source_titles``) in ihre Tags.
+
+    Dort trennt ``|`` MEHRERE Tags derselben Art einer Person
+    (``Hantfestschreiber|Pikcher`` = zwei prof-Tags). Jeder Teil wird
+    einzeln nachgeschlagen. Leere Teile entfallen.
+    """
+    return [p.strip() for p in (cell or "").split("|") if p.strip()]
+
+
 def _load_rolename_norm() -> dict[str, str]:
-    """Load roleName_norm_matching.csv -> {spelling_lower: contentual_norm}.
+    """Load roleName_norm_matching.csv -> {norm_key(spelling): contentual_norm}.
 
     Bildet die (case-insensitive) Schreibweise einer Rollen-/Amts-/Berufs-
     bezeichnung auf ihre inhaltliche Normalform ab, z. B. "pischolf" ->
@@ -165,7 +198,7 @@ def _load_rolename_norm() -> dict[str, str]:
     with open(path, encoding="utf-8-sig", newline="") as f:
         reader = csv.DictReader(f, delimiter="\t")
         for row in reader:
-            src = (row.get("roleName_spelling") or "").strip().lower()
+            src = norm_key(row.get("roleName_spelling") or "")
             if not src:
                 continue
             norm = ((row.get("roleName_contentual_norm") or "").strip()
@@ -202,7 +235,7 @@ def _load_uhlirz_matching() -> dict[str, list[str]]:
     with open(path, encoding="utf-8-sig", newline="") as f:
         reader = csv.DictReader(f, delimiter="\t")
         for row in reader:
-            src = (row.get("roleName_spelling") or "").strip().lower()
+            src = norm_key(row.get("roleName_spelling") or "")
             cat = (row.get("Gewerbe_nach_Uhlirz_GstW") or "").strip()
             if src and cat:
                 result.setdefault(src, set()).add(cat)

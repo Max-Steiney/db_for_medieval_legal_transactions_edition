@@ -27,6 +27,8 @@ from frontend.aggregator._shared import (
     _cached_csv,
     _parse_coord,
     _released_file_keys,
+    norm_key,
+    split_multi,
 )
 
 
@@ -81,7 +83,7 @@ def _contains_marriage_term(kin: str) -> bool:
 
 
 def _load_uhlirz_index() -> dict[str, str]:
-    """Mapping ``source_prof_spelling -> Uhlirz-Kategorie`` (case-sensitive).
+    """Mapping ``norm_key(source_prof_spelling) -> Uhlirz-Kategorie``.
 
     TAB-delimited; nur Zeilen mit nicht leerer ``Gewerbe_nach_Uhlirz_GstW``.
     Wenn dieselbe Schreibweise mehrere Kategorien hat (selten), gewinnt der
@@ -92,7 +94,7 @@ def _load_uhlirz_index() -> dict[str, str]:
     with open(path, encoding="utf-8", newline="") as fh:
         reader = csv.DictReader(fh, delimiter="\t")
         for row in reader:
-            spelling = (row.get("roleName_spelling") or "").strip()
+            spelling = norm_key(row.get("roleName_spelling") or "")
             cat = (row.get("Gewerbe_nach_Uhlirz_GstW") or "").strip()
             if spelling and cat and spelling not in result:
                 result[spelling] = cat
@@ -112,17 +114,20 @@ def _persons_by_category(category_prefix: str) -> tuple[dict[str, str], str]:
     category_label = ""
     rows = _cached_csv("persons_in_sources.csv")
     for row in rows:
-        prof = (row.get("source_prof") or "").strip()
         pkey = (row.get("person_key") or "").strip()
-        if not prof or not pkey:
+        if not pkey:
             continue
-        cat = uhlirz.get(prof)
-        if not cat or not cat.startswith(category_prefix):
-            continue
-        if not category_label:
-            category_label = cat
-        # Falls dieselbe Person mehrere Eintraege hat, ersten Beruf behalten.
-        persons.setdefault(pkey, prof)
+        # source_prof fasst mehrere prof-Tags mit ``|`` zusammen
+        # (``Hantfestschreiber|Pikcher``); jedes Tag einzeln nachschlagen.
+        for prof in split_multi(row.get("source_prof") or ""):
+            cat = uhlirz.get(norm_key(prof))
+            if not cat or not cat.startswith(category_prefix):
+                continue
+            if not category_label:
+                category_label = cat
+            # Falls dieselbe Person mehrere Eintraege hat, ersten Beruf behalten.
+            persons.setdefault(pkey, prof)
+            break
     return persons, category_label
 
 

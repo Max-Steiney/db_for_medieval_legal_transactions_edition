@@ -11,6 +11,9 @@ from ._shared import (
     _cached_csv,
     _load_norm_matching,
     _load_uhlirz_matching,
+    norm_key,
+    split_multi,
+    tag_text,
     _meta,
     _write_json,
 )
@@ -129,7 +132,11 @@ def aggregate_role_constellation(docs_data_dir: Path) -> dict:
     for r in occ_rows:
         ek, pk = r.get("event_key", ""), r.get("person_key", "")
         if ek and pk:
-            event_occs[(ek, pk)].extend(_split_pipes(r.get("occ", "")))
+            # occ ist EIN Tag; ein Strich darin ist eine Elementgrenze,
+            # kein zweiter Beruf (siehe _shared.tag_text).
+            occ = tag_text(r.get("occ", ""))
+            if occ:
+                event_occs[(ek, pk)].append(occ)
 
     # Zweiter Beruf-Pfad: source_prof aus persons_in_sources.csv. Dort
     # liegt die Apposition im Quellentext (Hannsen, dem wachsgiesser).
@@ -144,7 +151,7 @@ def aggregate_role_constellation(docs_data_dir: Path) -> dict:
     for r in pis_rows:
         fk, pk = r.get("file_key", ""), r.get("person_key", "")
         if fk and pk:
-            file_person_profs[(fk, pk)].extend(_split_pipes(r.get("source_prof", "")))
+            file_person_profs[(fk, pk)].extend(split_multi(r.get("source_prof", "")))
 
     event_titles: dict[tuple, list[str]] = defaultdict(list)
     for r in title_rows:
@@ -172,10 +179,10 @@ def aggregate_role_constellation(docs_data_dir: Path) -> dict:
         # Wachsgiesser auf" beide Wege gleichermaßen meint. Die Detail-
         # Trennung bleibt auf den Personenprofilen erhalten.
         occs = list(event_occs.get((ek, pk), []))
-        seen_lower = {o.lower() for o in occs}
+        seen_lower = {norm_key(o) for o in occs}
         fk = event_to_file.get(ek, "")
         for prof in file_person_profs.get((fk, pk), []):
-            key = prof.lower()
+            key = norm_key(prof)
             if key in seen_lower:
                 continue
             occs.append(prof)
@@ -188,7 +195,7 @@ def aggregate_role_constellation(docs_data_dir: Path) -> dict:
         for o in occs:
             # case-insensitiv, weil das CSV und die TEI-Annotation
             # gemischte Schreibungen tragen.
-            for cat in uhlirz_map.get(o.lower(), []):
+            for cat in uhlirz_map.get(norm_key(o), []):
                 uhlirz_set.add(cat)
         participant = {
             "p": pk,

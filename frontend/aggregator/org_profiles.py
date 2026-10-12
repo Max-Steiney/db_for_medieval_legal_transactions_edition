@@ -9,7 +9,7 @@ released set).
 from collections import Counter, defaultdict
 
 from frontend.config import is_visible_corpus
-from ._shared import _cached_csv, _load_rolename_norm
+from ._shared import _cached_csv, _load_rolename_norm, norm_key, tag_text
 from ._profile_labels import (
     split_pipe_names, split_authorities, label_org_type,
 )
@@ -254,13 +254,13 @@ def _build_occ_network(file_meta, person_names):
     for r in _cached_csv("occ_relations_in_sources.csv"):
         pk = (r.get("person_key") or "").strip()
         rk = (r.get("related_key") or "").strip()
-        occ = (r.get("occ") or "").strip().strip("|").strip()
+        occ = tag_text(r.get("occ") or "")
         fk = (r.get("file_key") or "").strip()
         if not pk or not rk:
             continue
         bucket = org_to_persons[rk][pk]
         if occ:
-            bucket["occ_terms"].add(rolename_norm.get(occ.lower(), occ))
+            bucket["occ_terms"].add(rolename_norm.get(norm_key(occ), occ))
         if fk:
             bucket["files"].add(fk)
 
