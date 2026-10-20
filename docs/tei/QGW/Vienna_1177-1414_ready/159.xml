@@ -67,8 +67,8 @@
                         <p>
                               <rs type="event" ref="#ev__QGW_II_I_159"><rs type="fn" role="issuer"
                                                 ><rs type="person"
-                                                ref="#pe__heinrich_unverzaget_QGW_II_I_159">Hainreich
-                                                der Unverzaget</rs> und <rs type="person"
+                                                ref="#pe__heinrich_unverzaget_QGW_II_I_159"
+                                                >Hainreich der Unverzaget</rs> und <rs type="person"
                                                 ref="#pe__gertrud_QGW_II_I_159">Gedraut, seine
                                                   <roleName type="kin"
                                                   corresp="#pe__heinrich_unverzaget_QGW_II_I_159"
@@ -83,10 +83,10 @@
                                                   >maister</roleName> des hauses dacz Sand Johans
                                                 der Siechen Alsse vor Schottentor</rs>
                                     </rs>, dem <rs type="fn" role="recipient"><rs type="person"
-                                                ref="#pe__hermann_chuedorfer_QGW_II_I_159"
-                                                >geistlichen Manne <roleName type="title"
-                                                  corresp="#org__deutsche_herren">pruder</roleName>
-                                                Hermannen dem Chuedorfer, <roleName type="occ"
+                                                ref="#pe__hermann_chuedorfer_QGW_II_I_159"><roleName
+                                                  type="prof">geistlichen Manne</roleName>
+                                                <roleName type="title">pruder</roleName> Hermannen
+                                                dem Chuedorfer, <roleName type="occ"
                                                   corresp="#org__deutsche_herren"
                                                   >comenteur</roleName> dacz dem Deutschenhaus ze
                                                 Wienne</rs>, und <rs type="org"
@@ -111,17 +111,13 @@
                   </div>
                   <div type="lists">
                         <xi:include xmlns:xi="http://www.w3.org/2001/XInclude"
-                              href="../../../../indices/placeList.xml"
-                              xpointer="element(/1/2/1/1)"/>
+                              href="../../../../indices/placeList.xml" xpointer="element(/1/2/1/1)"/>
                         <xi:include xmlns:xi="http://www.w3.org/2001/XInclude"
-                              href="../../../../indices/personList.xml"
-                              xpointer="element(/1/2/1/1)"/>
+                              href="../../../../indices/personList.xml" xpointer="element(/1/2/1/1)"/>
                         <xi:include xmlns:xi="http://www.w3.org/2001/XInclude"
-                              href="../../../../indices/eventList.xml"
-                              xpointer="element(/1/2/1/1)"/>
+                              href="../../../../indices/eventList.xml" xpointer="element(/1/2/1/1)"/>
                         <xi:include xmlns:xi="http://www.w3.org/2001/XInclude"
-                              href="../../../../indices/orgList.xml"
-                              xpointer="element(/1/2/1/1)"/>
+                              href="../../../../indices/orgList.xml" xpointer="element(/1/2/1/1)"/>
                   </div>
             </body>
       </text>
