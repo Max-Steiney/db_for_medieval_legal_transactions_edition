@@ -181,52 +181,63 @@ def split_multi(cell: str) -> list[str]:
     return [p.strip() for p in (cell or "").split("|") if p.strip()]
 
 
-def _load_rolename_norm() -> dict[str, str]:
-    """Load roleName_norm_matching.csv -> {norm_key(spelling): contentual_norm}.
+def _load_rolename_norm(role_type: str | None = None) -> dict:
+    """Load roleName_norm_matching.csv -> inhaltliche Normalform je Tag.
 
-    Bildet die (case-insensitive) Schreibweise einer Rollen-/Amts-/Berufs-
-    bezeichnung auf ihre inhaltliche Normalform ab, z. B. "pischolf" ->
-    "Bischof". Faellt auf die Schreibungs-Normform und schliesslich (im
-    Aufrufer) auf die Rohschreibung zurueck, wenn die inhaltliche Normform
-    fehlt. Tab-delimited, utf-8-sig; Lookup case-insensitiv wie bei
-    _load_uhlirz_matching, weil die occ-Spalte gemischte Schreibung traegt.
+    Schluessel ist seit 30.10.2026 das Paar aus roleName-Typ (Spalte
+    ``type``: occ, prof, kin, title, rep, title_ref, tenant) und
+    ``norm_key(roleName_spelling)``. Dieselbe Schreibung kann je Typ
+    eine andere Klasse tragen ("wirt" als kin = Ehegatt_in, als prof =
+    Gastwirt_in; "bruder" als kin = Geschwister, als title =
+    Ordensbruder_Schwester), ein Lookup nur ueber die Schreibung waere
+    deshalb mehrdeutig.
+
+    - ``role_type`` gesetzt: ``{norm_key(spelling): klasse}`` nur fuer
+      Zeilen dieses Typs (so rufen die Aggregatoren auf).
+    - ``role_type`` None: ``{(type, norm_key(spelling)): klasse}``.
+
+    Klasse = ``roleName_contentual_norm``, ersatzweise
+    ``roleName_spelling_norm``; der Aufrufer faellt auf die Rohschreibung
+    zurueck. Erste Zeile je Schluessel gewinnt. Zeilen ohne Typ werden
+    uebersprungen. Tab-delimited, utf-8-sig.
     """
     path = NORM_LISTS_DIR / "roleName_norm_matching.csv"
-    result: dict[str, str] = {}
+    result: dict = {}
     if not path.exists():
         return {}
     with open(path, encoding="utf-8-sig", newline="") as f:
         reader = csv.DictReader(f, delimiter="\t")
         for row in reader:
+            rtype = (row.get("type") or "").strip()
             src = norm_key(row.get("roleName_spelling") or "")
-            if not src:
+            if not src or not rtype:
+                continue
+            if role_type is not None and rtype != role_type:
                 continue
             norm = ((row.get("roleName_contentual_norm") or "").strip()
                     or (row.get("roleName_spelling_norm") or "").strip())
-            if norm:
-                result[src] = norm
+            if not norm:
+                continue
+            key = src if role_type is not None else (rtype, src)
+            result.setdefault(key, norm)
     return result
 
 
-def _load_uhlirz_matching() -> dict[str, list[str]]:
-    """Load roleName_norm_matching.csv -> {original_spelling_lower: [uhlirz_categories]}.
+def _load_uhlirz_matching(role_type: str = "prof") -> dict[str, list[str]]:
+    """Load roleName_norm_matching.csv -> {norm_key(spelling): [uhlirz_categories]}.
 
-    Tab-delimited. Schluessel ist die Originalschreibung des Berufs
-    (Spalte ``roleName_spelling``), **in Kleinschreibung**, wie sie auch
-    in der TEI-Annotation ``<occupation>`` und damit in den
-    ``occ_relations_in_sources.csv`` Spalte ``occ`` vorkommt. Wert ist
-    eine Liste, weil eine Schreibvariante prinzipiell mehrere Uhlirz-
-    Kategorien tragen kann (selten, aber moeglich nach Daten-Stand
-    2026-05).
+    Die Uhlirz-Klassifikation (Spalte ``Gewerbe_nach_Uhlirz_GstW``) ist
+    seit 30.10.2026 ausschliesslich eine Eigenschaft von Berufen, also
+    von Zeilen mit ``type`` = prof. Werte an occ- oder rep-Zeilen in der
+    Liste sind Altbestand und werden hier ignoriert (``role_type``
+    steuert das; Default prof). Schluessel ist ``norm_key`` der
+    Originalschreibung, wie sie in ``persons_in_sources.csv`` Spalte
+    ``source_prof`` steht (dort ``|``-getrennt je Tag, siehe
+    ``split_multi``).
 
-    Lookup muss case-insensitiv erfolgen, weil das CSV uneinheitlich
-    sowohl ``Wachsgiesser`` als auch ``wachsgiesser`` enthalten kann,
-    und die ``occ``-Spalte in den Pipeline-CSVs ebenfalls beide
-    Schreibungen tragen kann.
-
-    Eintraege ohne Kategorie werden uebersprungen. Mehrere Zeilen mit
-    derselben Originalschreibung (case-insensitiv) werden zu einer
-    Liste vereinigt (deduplisiert).
+    Wert ist eine Liste, weil eine Schreibung prinzipiell mehrere
+    Kategorien tragen kann. Eintraege ohne Kategorie werden
+    uebersprungen, mehrere Zeilen derselben Schreibung werden vereinigt.
     """
     path = NORM_LISTS_DIR / "roleName_norm_matching.csv"
     result: dict[str, set[str]] = {}
@@ -235,6 +246,8 @@ def _load_uhlirz_matching() -> dict[str, list[str]]:
     with open(path, encoding="utf-8-sig", newline="") as f:
         reader = csv.DictReader(f, delimiter="\t")
         for row in reader:
+            if (row.get("type") or "").strip() != role_type:
+                continue
             src = norm_key(row.get("roleName_spelling") or "")
             cat = (row.get("Gewerbe_nach_Uhlirz_GstW") or "").strip()
             if src and cat:

@@ -246,7 +246,9 @@ def _build_occ_network(file_meta, person_names):
     # occ-Schreibweisen werden auf ihre inhaltliche Normalform gezogen
     # (Meeting 2026-06-17), damit nicht dieselbe Taetigkeit in mehreren
     # Schreibungen nebeneinander steht (z. B. "Bischof, pischolf" -> "Bischof").
-    rolename_norm = _load_rolename_norm()
+    # Nur occ-Zeilen der Liste: dieselbe Schreibung kann als kin oder
+    # title eine andere Klasse tragen (Lookup ueber Typ + Schreibung).
+    rolename_norm = _load_rolename_norm("occ")
     org_to_persons = defaultdict(lambda: defaultdict(lambda: {
         "occ_terms": set(),
         "files": set(),

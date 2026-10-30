@@ -289,11 +289,18 @@ class TestEpicBConsistency:
                 f"Label {lb['label']}: total mismatch"
 
     def test_drill_down_type_sex_keys(self, aggregation_results):
-        dd = aggregation_results["relations"]["drill_down"]["type_sex"]
-        for t in ["kin", "occ", "rep", "friend"]:
+        rel = aggregation_results["relations"]
+        dd = rel["drill_down"]["type_sex"]
+        # friend ist seit 24.10.2026 in kin aufgegangen (Normlisten-Tranche);
+        # friend_relations_in_sources.csv ist leer, die Schluessel fehlen dann
+        # zu Recht. Verlangt werden nur Typen mit Belegen in overview.type_by_sex.
+        for t, counts in rel["overview"]["type_by_sex"].items():
             for s in ["m", "f"]:
-                key = f"{t}_{s}"
-                assert key in dd, f"Missing drill_down key: {key}"
+                if counts.get(s):
+                    key = f"{t}_{s}"
+                    assert key in dd, f"Missing drill_down key: {key}"
+        for t in ["kin", "occ", "rep"]:
+            assert rel["overview"]["type_by_sex"][t]["m"], f"{t} ohne Belege"
 
     def test_persons_have_valid_rels(self, aggregation_results):
         for p in aggregation_results["relations"]["persons"][:20]:

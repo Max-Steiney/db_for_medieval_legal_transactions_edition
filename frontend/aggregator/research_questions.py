@@ -24,6 +24,7 @@ from xml.etree import ElementTree as ET
 from pipeline.config import INDICES_DIR, NORM_LISTS_DIR, TEI_NS, XML_NS
 
 from frontend.aggregator._shared import (
+    _load_uhlirz_matching,
     _cached_csv,
     _parse_coord,
     _released_file_keys,
@@ -85,20 +86,11 @@ def _contains_marriage_term(kin: str) -> bool:
 def _load_uhlirz_index() -> dict[str, str]:
     """Mapping ``norm_key(source_prof_spelling) -> Uhlirz-Kategorie``.
 
-    TAB-delimited; nur Zeilen mit nicht leerer ``Gewerbe_nach_Uhlirz_GstW``.
-    Wenn dieselbe Schreibweise mehrere Kategorien hat (selten), gewinnt der
-    erste Treffer.
+    Nur prof-Zeilen der Liste (Uhlirz ist eine Berufseigenschaft, siehe
+    ``_load_uhlirz_matching``). Wenn dieselbe Schreibweise mehrere
+    Kategorien hat (selten), gewinnt die erste.
     """
-    path = NORM_LISTS_DIR / "roleName_norm_matching.csv"
-    result: dict[str, str] = {}
-    with open(path, encoding="utf-8", newline="") as fh:
-        reader = csv.DictReader(fh, delimiter="\t")
-        for row in reader:
-            spelling = norm_key(row.get("roleName_spelling") or "")
-            cat = (row.get("Gewerbe_nach_Uhlirz_GstW") or "").strip()
-            if spelling and cat and spelling not in result:
-                result[spelling] = cat
-    return result
+    return {k: cats[0] for k, cats in _load_uhlirz_matching("prof").items() if cats}
 
 
 def _persons_by_category(category_prefix: str) -> tuple[dict[str, str], str]:

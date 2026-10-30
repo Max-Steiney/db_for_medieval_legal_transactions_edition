@@ -80,10 +80,10 @@ def aggregate_role_constellation(docs_data_dir: Path) -> dict:
     oie_rows = _cached_csv("orgs_in_events.csv")
     norm_map = _load_norm_matching()
     # Uhlirz-Klassifikation der Berufe (Spalte Gewerbe_nach_Uhlirz_GstW in
-    # roleName_norm_matching.csv im Pipeline-Repo). Mapping
-    # original_spelling -> [uhlirz_categories]. Wird pro Person auf die
-    # o-Liste angewandt und ergibt die u-Liste (deduplisiert).
-    uhlirz_map = _load_uhlirz_matching()
+    # roleName_norm_matching.csv im Pipeline-Repo, nur prof-Zeilen).
+    # Mapping original_spelling -> [uhlirz_categories]. Wird pro Person
+    # auf die prof-Tags angewandt und ergibt die u-Liste (deduplisiert).
+    uhlirz_map = _load_uhlirz_matching("prof")
 
     person_info = {
         r["id"]: {
@@ -191,11 +191,13 @@ def aggregate_role_constellation(docs_data_dir: Path) -> dict:
         # und sortiert. Eine Person hat ggf. mehrere Berufe und damit
         # mehrere Kategorien; eine leere Liste ist der Default fuer
         # Personen ohne klassifizierten Beruf.
+        # Seit 30.10.2026 nur aus den prof-Tags der Person (source_prof):
+        # die Uhlirz-Klassifikation ist eine Berufseigenschaft, occ-Tags
+        # (Aemter, Funktionen) tragen keine. Die o-Liste bleibt die
+        # Vereinigung aus occ und prof.
         uhlirz_set = set()
-        for o in occs:
-            # case-insensitiv, weil das CSV und die TEI-Annotation
-            # gemischte Schreibungen tragen.
-            for cat in uhlirz_map.get(norm_key(o), []):
+        for prof in file_person_profs.get((fk, pk), []):
+            for cat in uhlirz_map.get(norm_key(prof), []):
                 uhlirz_set.add(cat)
         participant = {
             "p": pk,
